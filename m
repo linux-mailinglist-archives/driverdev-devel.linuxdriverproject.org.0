@@ -1,71 +1,110 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 83830B465
-	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Apr 2019 21:54:14 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8FDA0B470
+	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Apr 2019 22:06:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CD7FF860A2;
-	Sat, 27 Apr 2019 19:54:11 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5A6EA86CF0;
+	Sat, 27 Apr 2019 20:06:02 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id mRv5IENK-dyt; Sat, 27 Apr 2019 20:06:02 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id A8DE685C8C;
+	Sat, 27 Apr 2019 20:06:01 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B04391BF841
+ for <devel@linuxdriverproject.org>; Sat, 27 Apr 2019 20:05:59 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id A9A7D85C98
+ for <devel@linuxdriverproject.org>; Sat, 27 Apr 2019 20:05:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OW-HI9Tq9XEV; Sat, 27 Apr 2019 19:54:11 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6C0A685475;
-	Sat, 27 Apr 2019 19:54:10 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DF5631BF28A
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 27 Apr 2019 19:54:07 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D73D722DC7
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 27 Apr 2019 19:54:07 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QG06WgnJaqYB
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 27 Apr 2019 19:54:05 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from kadath.azazel.net (kadath.azazel.net [81.187.231.250])
- by silver.osuosl.org (Postfix) with ESMTPS id 9DD2821549
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 27 Apr 2019 19:54:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=azazel.net; 
- s=20190108;
- h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
- Message-Id:Date:Subject:To:From:Sender:Reply-To:Cc:Content-Type:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=USF7LgGywSKxva/ukWGFpNzs9S2i20MX7rR0LPHRYkU=; b=Zy1nHUrHdmfa21EWMkP2BGXvbq
- O7cIt8vjlE6AlWPVzuEO2xgGrYMcbL6eWL1Dl4DGFq6MSIA89bO/+w3FdeX4Dxp3atospnaflY7ab
- Tbtbys7gNANJ3emfLrFId+YnrVoFZqU3Tm7+6qfbZ5rRauzgeoL6rXKMeVqDe2zQTH4PoRn9jzoU4
- +3Dz0xUJhse2KNsqHBoVwpQnWiOXTbIjRAxRk7h9TCPgR5sXuh958Hs4RAvuObczLwFJY6tTePbGN
- 73Z0KI8O6iEs+aeEAKODywHTPjocOEPqG/33twLTVMK5rjnCljCy1D+1DUkOjI7xuFhK8P/GDlQ4Q
- cMttU0zA==;
-Received: from ulthar.dreamlands ([192.168.96.2])
- by kadath.azazel.net with esmtp (Exim 4.89)
- (envelope-from <jeremy@azazel.net>) id 1hKTOb-0002Tf-H2
- for driverdev-devel@linuxdriverproject.org; Sat, 27 Apr 2019 20:54:01 +0100
-From: Jeremy Sowden <jeremy@azazel.net>
-To: Linux Driver Project Developer List
- <driverdev-devel@linuxdriverproject.org>
-Subject: [PATCH 2/2] staging: kpc2000_spi: eliminated duplicate initialization
- of master local variable.
-Date: Sat, 27 Apr 2019 20:54:01 +0100
-Message-Id: <20190427195401.12650-3-jeremy@azazel.net>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190427195401.12650-1-jeremy@azazel.net>
-References: <20190427195401.12650-1-jeremy@azazel.net>
+ with ESMTP id wRgu6qFETAjk for <devel@linuxdriverproject.org>;
+ Sat, 27 Apr 2019 20:05:58 +0000 (UTC)
+X-Greylist: delayed 00:05:14 by SQLgrey-1.7.6
+Received: from mout.kundenserver.de (mout.kundenserver.de [217.72.192.75])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 1C746853FC
+ for <devel@driverdev.osuosl.org>; Sat, 27 Apr 2019 20:05:57 +0000 (UTC)
+Received: from [192.168.1.164] ([37.4.249.100]) by mrelayeu.kundenserver.de
+ (mreue109 [212.227.15.183]) with ESMTPSA (Nemesis) id
+ 1M8QNy-1hOrCz3RJY-004PJi; Sat, 27 Apr 2019 22:00:25 +0200
+Subject: Re: [PATCH] staging: vc04_services: bcm2835-camera: Modify return
+ statement.
+To: Vatsala Narang <vatsalanarang@gmail.com>, gregkh@linuxfoundation.org
+References: <20190427160749.11191-1-vatsalanarang@gmail.com>
+From: Stefan Wahren <stefan.wahren@i2se.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=stefan.wahren@i2se.com; keydata=
+ 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 AQ==
+Message-ID: <93576e8a-63e7-4416-ced8-4b58a012cedf@i2se.com>
+Date: Sat, 27 Apr 2019 22:00:22 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 192.168.96.2
-X-SA-Exim-Mail-From: jeremy@azazel.net
-X-SA-Exim-Scanned: No (on kadath.azazel.net); SAEximRunCond expanded to false
+In-Reply-To: <20190427160749.11191-1-vatsalanarang@gmail.com>
+Content-Language: en-US
+X-Provags-ID: V03:K1:542D4fB7+Z8XbmXgHNl5RDc/72QTc+gWQj87fqOQ96s4I/Uic3B
+ kCBG27U8iMmajTqZxEbp87iU+4fn6efTrmVebaawrmSzkdD6mqWtBPtIu+FjxdZdHdnCIXm
+ m56mhgNE/7LBGYEUWiKS53lDvIfyID65lZk7IWi1rJdpVYX3giPwHMxBG717xMxe892Vkzh
+ a4HwyzQnIm1l9abUnxtgw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:RaOyuocX5bw=:9PxKHfEDcdVVLG9n4ATUab
+ IvJ5fbf/9I5n2kMx/HeJ+lVuyPvQ3hfdOlwNOy6lXHvYy9ovpxu9smVn1j5J+m2V64oz9Nes0
+ 9eZ9Of70A/qTFG65WE84OLmgJMuW2vcJXFN0CdkGK9d/qmRTDw6EKEXcd9qSrPRb6A6CMXwjH
+ IA+YS+bbmUwmqhk+IS+WAeez75jS5Q1Br23uaZUUJLjpV7lNFdGQVQya7huhXqBkt6BJQZ/HY
+ qKguWaUdnv82AwYQeOzOYGkXpIOnjdQ9SglmvaS/VwiNmQzSkfqDYAel2FnzzFyL3rQ37050G
+ C4Fa33ITYIeF1f3LsmJ3uMvr/GjUs2GKCHu9+tCqbyUvHZe+N5DcV1jUtnuf0SV5821t09BiE
+ 3bbJMBOjI6S7aZXFfo4lQoiy0hiRnn3/L8umfjBSvR6VKqaRm3Hw59UwmwkWKWpraVmtJiVCY
+ v/s2NHlLsNCZF2X8QKo7em2ZtrQsILhkqHy9aRhfSrb7MweTIL5Gkh8nGnQ3Jiommj2vc+/jM
+ JKEGJi3YtAVzMcOv4awPtckTtryYExoz9Zj5mjhtIhmJSI8G2G7wfXK7zSWPy7MP2D+J5XPD+
+ /n3SFg0QgDC0/9iThcavFDJTZX+BzJPxswIKsUdWyFJIaCykJ5UdDtlwwQqQuQyT8OWWKTOhG
+ L6CLm5ICIPT3Nqq2qEsfbM0u61c2vhUJaTwUlNgxF5EhV+/q9Gwj1YxMyr9zpMbix8bkFcu42
+ 3AkGtjueh+FMUfTt6p+ql6/jEHDq+M3qkITXnWA15VC7wJGfWlZmNvuCrMM=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,39 +117,22 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, f.fainelli@gmail.com, sbranden@broadcom.com,
+ julia.lawall@lip6.fr, rjui@broadcom.com, linux-kernel@vger.kernel.org,
+ eric@anholt.net, bcm-kernel-feedback-list@broadcom.com,
+ linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-master was being initialized to a particular value and then having the
-same value assigned to it immediately afterwards.  Removed the
-initializer.
-
-Since the value assigned to master was dynamically allocated, this fixes
-a memory-leak.
-
-Signed-off-by: Jeremy Sowden <jeremy@azazel.net>
----
- drivers/staging/kpc2000/kpc_spi/spi_driver.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/kpc2000/kpc_spi/spi_driver.c b/drivers/staging/kpc2000/kpc_spi/spi_driver.c
-index e77f04bf02d9..c0999e080577 100644
---- a/drivers/staging/kpc2000/kpc_spi/spi_driver.c
-+++ b/drivers/staging/kpc2000/kpc_spi/spi_driver.c
-@@ -408,7 +408,7 @@ static int
- kp_spi_probe(struct platform_device *pldev)
- {
-     struct kpc_core_device_platdata *drvdata;
--    struct spi_master *master = spi_alloc_master(&pldev->dev, sizeof(struct kp_spi));
-+    struct spi_master *master;
-     struct kp_spi *kpspi;
-     struct resource *r;
-     int status = 0;
--- 
-2.20.1
-
+Am 27.04.19 um 18:07 schrieb Vatsala Narang:
+> Modify return statement and remove the respective assignment.
+>
+> Issue found by Coccinelle.
+>
+> Signed-off-by: Vatsala Narang <vatsalanarang@gmail.com>
+Acked-by: Stefan Wahren <stefan.wahren@i2se.com>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
