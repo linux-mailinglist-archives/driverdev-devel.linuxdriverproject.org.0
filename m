@@ -1,75 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A772BB30E
-	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Apr 2019 09:21:12 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 860ECB323
+	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Apr 2019 11:20:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id C6039226A9;
-	Sat, 27 Apr 2019 07:21:10 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3687A86D11;
+	Sat, 27 Apr 2019 09:20:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZKqDslsA35Xb; Sat, 27 Apr 2019 07:21:10 +0000 (UTC)
+	with ESMTP id a5dCYcYIDliv; Sat, 27 Apr 2019 09:20:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 63056226FC;
-	Sat, 27 Apr 2019 07:21:08 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A773D85A2E;
+	Sat, 27 Apr 2019 09:20:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0E4FB1BF3EE
- for <devel@linuxdriverproject.org>; Sat, 27 Apr 2019 07:21:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 933BD1BF346
+ for <devel@linuxdriverproject.org>; Sat, 27 Apr 2019 09:20:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0B09586D63
- for <devel@linuxdriverproject.org>; Sat, 27 Apr 2019 07:21:07 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9029A861EB
+ for <devel@linuxdriverproject.org>; Sat, 27 Apr 2019 09:20:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3wNr5lGVwWhb for <devel@linuxdriverproject.org>;
- Sat, 27 Apr 2019 07:21:06 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f195.google.com (mail-oi1-f195.google.com
- [209.85.167.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 132B586D11
- for <devel@driverdev.osuosl.org>; Sat, 27 Apr 2019 07:21:06 +0000 (UTC)
-Received: by mail-oi1-f195.google.com with SMTP id k10so4728764oik.7
- for <devel@driverdev.osuosl.org>; Sat, 27 Apr 2019 00:21:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=MhLA4X+a5rMjmgHTPodvSWDw3ddBPwuLk4iywBiynBU=;
- b=QeiUrKut3FEsTH1x42QQzm0y57di//P8DpDlWt4OjnwnoYoIUIA41fPUsLUwGWHvKJ
- r37+tOup3+pTgUb453VWuJi6nw/QXyLU+si2A22zzUQsu/QXa4RzD83EJ93fjKBkubv1
- pybLEs3d95fpGBfrHkyVxB1hJiZqQr/fVNkCRT9hawKoLIXIbRWxWMMomDVTEX79haC3
- bSwwOn4LTCMjsnqtib6Lsnl+AZ4eN2e5sdppFaIsmK0l8eNYHCrZncoyu0uNo04d1caZ
- KSEs3/u8meolvncYTE914ZflfaFWuLhj0I0FFSPFnN70t8T9d9+feAK0HU6ZHgT2KGe1
- biMw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=MhLA4X+a5rMjmgHTPodvSWDw3ddBPwuLk4iywBiynBU=;
- b=KsI5YQRsaDBSHqyBcXkqW2/3y+zgtrXZAlu+PG9/+i7C64/Di/gRqMavVXciaMmTso
- 2AUrOUc/tMI4LFUhQJCeHBN3E/igkjyI/eaRVWIAiV+Y3+bm5XbtSYqGqsM54gAE3lwM
- Mig7YNu14quCa9m2Wy6IRYVO7958QpI+6S9IRKtfKi0zVTZcxzz6Wr/+PvZFPtKRFh/r
- qbFsC6OFJdLgIUbQAWkaTKGSeMaUh8hOuCCA1rHBbO+gIuVUJPma7QpGMtkoqNZz8lt7
- Fl0C16spJwmJYDPZfSgEui+VKXIy1JO68JNvdvElHPZq/FHJKICuIcHXTljb4vS6fR3+
- mQ8g==
-X-Gm-Message-State: APjAAAWGnfc2wFZ0lsl4cM+QrzUJnBXJFeG6rKwCh6JN2FPRg9MN8Q//
- 9I8Y8d2LAVCVSZukg595LS/L7rFKhS2VfgpS2h0=
-X-Google-Smtp-Source: APXvYqwPwsTZHdPKhGJaSYtB9lz4zVOVaLWbbof/ytOS23yHhDq94/FTbQscRXXwAPLbgiQiE1OaRoYuvc9IH1t12b8=
-X-Received: by 2002:aca:4202:: with SMTP id p2mr8930068oia.169.1556349665179; 
- Sat, 27 Apr 2019 00:21:05 -0700 (PDT)
-MIME-Version: 1.0
-References: <1556339208-7722-1-git-send-email-hofrat@osadl.org>
- <CAGngYiXBrNu7Jrk535=L89-mOSNx-6EfqL=1EwwG49Sf44R0Vg@mail.gmail.com>
- <20190427070021.GA2290@osadl.at>
-In-Reply-To: <20190427070021.GA2290@osadl.at>
-From: Sven Van Asbroeck <thesven73@gmail.com>
-Date: Sat, 27 Apr 2019 03:20:54 -0400
-Message-ID: <CAGngYiX-s6dCc5focdXW5WYaiWiBF=dzacqFjSvXggvdxD3zAQ@mail.gmail.com>
-Subject: Re: [PATCH RFC] staging: fieldbus: anybus-s: use proper type for
- wait_for_completion_timeout
-To: Nicholas Mc Guire <der.herr@hofr.at>
+ with ESMTP id 3QHA65ykjndE for <devel@linuxdriverproject.org>;
+ Sat, 27 Apr 2019 09:20:15 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from www.osadl.org (www.osadl.org [62.245.132.105])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D987185A2E
+ for <devel@driverdev.osuosl.org>; Sat, 27 Apr 2019 09:20:14 +0000 (UTC)
+Received: from debian01.hofrr.at (178.115.242.59.static.drei.at
+ [178.115.242.59])
+ by www.osadl.org (8.13.8/8.13.8/OSADL-2007092901) with ESMTP id x3R9K4GY028122;
+ Sat, 27 Apr 2019 11:20:04 +0200
+From: Nicholas Mc Guire <hofrat@osadl.org>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH RFC V2] staging: kpc2000: use int for
+ wait_for_completion_interruptible
+Date: Sat, 27 Apr 2019 11:14:34 +0200
+Message-Id: <1556356474-8575-1-git-send-email-hofrat@osadl.org>
+X-Mailer: git-send-email 2.1.4
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,36 +54,85 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Nicholas Mc Guire <hofrat@osadl.org>
+Cc: devel@driverdev.osuosl.org, Matt Sickler <Matt.Sickler@daktronics.com>,
+ linux-kernel@vger.kernel.org, Nicholas Mc Guire <hofrat@osadl.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, Apr 27, 2019 at 3:01 AM Nicholas Mc Guire <der.herr@hofr.at> wrote:
-> > > (some unrelated sparse warnings (cast to restricted __be16))
-> >
-> > That sounds interesting too. Could you provide more details?
->
-> make C=1
-> drivers/staging/fieldbus/anybuss/host.c:1350:25: warning: cast to restricted __be16
-> drivers/staging/fieldbus/anybuss/host.c:1350:25: warning: cast to restricted __be16
-> drivers/staging/fieldbus/anybuss/host.c:1350:25: warning: cast to restricted __be16
-> drivers/staging/fieldbus/anybuss/host.c:1350:25: warning: cast to restricted __be16
-> drivers/staging/fieldbus/anybuss/host.c:1350:25: warning: cast to restricted
+weit_for_completion_interruptible returns in (0 on completion and 
+-ERESTARTSYS on interruption) - so use an int not long for API conformance
+and simplify the logic here a bit: need not check explicitly for == 0 as
+this is either -ERESTARTSYS or 0.
 
-regmap_bulk_read(cd->regmap, REG_FIELDBUS_TYPE, &fieldbus_type,
-        sizeof(fieldbus_type));
-fieldbus_type = be16_to_cpu(fieldbus_type);
+Signed-off-by: Nicholas Mc Guire <hofrat@osadl.org>
+---
 
-Probably because the parameter to be16_to_cpu() should be __be16.
-Would you like to spin a separate patch for this too? Or shall I?
+Problem located with experimental API conformance checking cocci script
 
-> I'll send the V2 later today then.
+V2: kbuild reported a missing closing comment - seems that I managed
+    send out the the initial version before compile testing/checkpatching
+    sorry for the noise.
 
-Thank you !
+Not sure if making such point-wise fixes makes much sense - this driver has
+a number of issues both style-wise and API compliance wise.
+
+Note that kpc_dma_transfer() returns int not long - currently rv (long) is
+being returned in most places (some places do return int) - so the return
+handling here is a bit inconsistent.
+
+Patch was compile-tested with: x86_64_defconfig + KPC2000=y, KPC2000_DMA=y
+(with a number of unrelated sparse warnings about non-declared symbols, and
+ smatch warnings about overflowing constants as well as coccicheck warning
+ about usless casting)
+
+Patch is against 5.1-rc6 (localversion-next is next-20190426)
+
+ drivers/staging/kpc2000/kpc_dma/fileops.c | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c b/drivers/staging/kpc2000/kpc_dma/fileops.c
+index 5741d2b..66f0d5a 100644
+--- a/drivers/staging/kpc2000/kpc_dma/fileops.c
++++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
+@@ -38,6 +38,7 @@ int  kpc_dma_transfer(struct dev_private_data *priv, struct kiocb *kcb, unsigned
+ {
+ 	unsigned int i = 0;
+ 	long rv = 0;
++	int ret = 0;
+ 	struct kpc_dma_device *ldev;
+ 	struct aio_cb_data *acd;
+ 	DECLARE_COMPLETION_ONSTACK(done);
+@@ -180,16 +181,17 @@ int  kpc_dma_transfer(struct dev_private_data *priv, struct kiocb *kcb, unsigned
+ 	
+ 	// If this is a synchronous kiocb, we need to put the calling process to sleep until the transfer is complete
+ 	if (kcb == NULL || is_sync_kiocb(kcb)){
+-		rv = wait_for_completion_interruptible(&done);
+-		// If the user aborted (rv == -ERESTARTSYS), we're no longer responsible for cleaning up the acd
+-		if (rv == -ERESTARTSYS){
++		ret = wait_for_completion_interruptible(&done);
++		/* If the user aborted (ret == -ERESTARTSYS), we're
++		 * no longer responsible for cleaning up the acd
++		 */
++		if (ret) {
+ 			acd->cpl = NULL;
+-		}
+-		if (rv == 0){
+-			rv = acd->len;
++		} else {
++			ret = acd->len;
+ 			kfree(acd);
+ 		}
+-		return rv;
++		return ret;
+ 	}
+ 	
+ 	return -EIOCBQUEUED;
+-- 
+2.1.4
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
