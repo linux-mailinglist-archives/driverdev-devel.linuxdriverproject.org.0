@@ -1,62 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 665BDB37F
-	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Apr 2019 15:00:26 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 26DED85C62;
-	Sat, 27 Apr 2019 13:00:24 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id s91K07bREhLS; Sat, 27 Apr 2019 13:00:24 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3282385C6F;
-	Sat, 27 Apr 2019 13:00:23 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 923EF1BF2B6
- for <devel@linuxdriverproject.org>; Sat, 27 Apr 2019 13:00:20 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 027E6B3B5
+	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Apr 2019 16:14:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 8F4F52279B
- for <devel@linuxdriverproject.org>; Sat, 27 Apr 2019 13:00:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A222E2291B;
+	Sat, 27 Apr 2019 14:14:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id h1NJ1c2BPX1m; Sat, 27 Apr 2019 14:14:51 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id E9EA8228BA;
+	Sat, 27 Apr 2019 14:14:49 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6F69D1BF340
+ for <devel@linuxdriverproject.org>; Sat, 27 Apr 2019 14:14:48 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 69C3D857A4
+ for <devel@linuxdriverproject.org>; Sat, 27 Apr 2019 14:14:48 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id f63-ASZtEv85 for <devel@linuxdriverproject.org>;
- Sat, 27 Apr 2019 13:00:20 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 0808B2266F
- for <devel@driverdev.osuosl.org>; Sat, 27 Apr 2019 13:00:20 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 535BD2087C;
- Sat, 27 Apr 2019 13:00:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1556370019;
- bh=iGRFi0Km+sdfY//PO/gcrE6YZGld79ZiIjYE2iI73JE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=eY1St2jmLd9C/4LAtbgIhozEkq3dDj9XjNLYY9Ma6FuVcoePzZN7v5NK4XbTy+avL
- xLbpdI8pcWFg/JBJit7GS/I1uvSWXGHq5rGVPpm9fNhXt6gYnxlEX3Sm+s1ro0cNhX
- z8wIfz457Wf+zGuSvwwQWYChNv1hzOEH4x0H9cGM=
-Date: Sat, 27 Apr 2019 15:00:17 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Ian Abbott <abbotti@mev.co.uk>
-Subject: Re: [PATCH] staging: comedi: comedi_isadma: Use a non-NULL device
- for DMA API
-Message-ID: <20190427130017.GA25587@kroah.com>
-References: <20190425162644.21947-1-abbotti@mev.co.uk>
- <20190425171351.GB11105@kroah.com>
- <e1322f35-af8b-8151-b560-0ba76775b237@mev.co.uk>
+ with ESMTP id 1o3UKEesGaVL for <devel@linuxdriverproject.org>;
+ Sat, 27 Apr 2019 14:14:46 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ot1-f66.google.com (mail-ot1-f66.google.com
+ [209.85.210.66])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 75E2C8575A
+ for <devel@driverdev.osuosl.org>; Sat, 27 Apr 2019 14:14:46 +0000 (UTC)
+Received: by mail-ot1-f66.google.com with SMTP id g24so468711otq.2
+ for <devel@driverdev.osuosl.org>; Sat, 27 Apr 2019 07:14:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=fNJmGKbv36s3sMlqGpxows0ZUIacXcPpEBALYAGUe/Y=;
+ b=jdh6WW5fZa0BSmUAfpt5gppjYPJC/lPFo0HvEw9/IRuKGWuv7V97rcx6eu2yw48MKt
+ ikDwjTMWg/ftRINw4uUiIx6ESwWi055wr6nXzWtuObnmffMIFX0bRr8Bd0S28PtgPAk1
+ 7NnU8hStFZaHyqPkcNOShf7gSaXIvSBGnzdEfzw+L2P3X0o1CVoyjkAf2JdPEN/vAD94
+ I8ULa6x3tn0+jiIONZtDm2zWdCa7jg/d4/jdXXoEyAabDoZIyjH/XAzXrASsmw6OAs5G
+ kMul83Ct7GlK/orI/l2FQLDZEpXMQwwdfKcNPCqLdDWdXjfM9XTWgo04EcKVx0tSs0ok
+ IR0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=fNJmGKbv36s3sMlqGpxows0ZUIacXcPpEBALYAGUe/Y=;
+ b=KpdB715iMITibEnPEKMbhLZtSzjQeSqf6P6Npj3O3HQ+S/amfrqpCWYOAQCMa1IUO3
+ oIMOHrsd5X0uk7YbelCDv9gB0VxaGBbcMxy99RRPXGL3NPgJhOghcDShbORyMau46rqN
+ 1AP8NvglHFpa2mFFqFutbA6pZFyzcRxkv7eLD1Ezt8tpp+26fTyF5guF1tyEka3eNmi8
+ flMP0yDqzLwZpRw2fcujIBPH6XyTxjYmcVl4L5CX59KJzP58JCAP7aNpNulsPw5lJDtY
+ CcR/2hmJkgZ+zh5bDUUnQrm0UVcqR3Cl8ubs0oaYG7T1G6pXTZnNzRph1jASuE3YTJ6k
+ OU3Q==
+X-Gm-Message-State: APjAAAU3B2Uhm3HZ4PIAaDdpwjWAGGR83+UEo8Atv5iGf5N8jN1YTFqm
+ TXYE/wL7LoH92DGxMtwMwiP7I6MrqJh54JpDsCg=
+X-Google-Smtp-Source: APXvYqxkImR+uL6ynwmODFrvJPQgKvcJlSeetJ+/1qZDSYG6jnKoglmkofm3yF3nHlxxZh3++2BbiWykhSBjuHZvxaI=
+X-Received: by 2002:a9d:6318:: with SMTP id q24mr18403400otk.95.1556374485344; 
+ Sat, 27 Apr 2019 07:14:45 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <e1322f35-af8b-8151-b560-0ba76775b237@mev.co.uk>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+References: <1556339208-7722-1-git-send-email-hofrat@osadl.org>
+ <CAGngYiXBrNu7Jrk535=L89-mOSNx-6EfqL=1EwwG49Sf44R0Vg@mail.gmail.com>
+ <20190427070021.GA2290@osadl.at>
+ <CAGngYiX-s6dCc5focdXW5WYaiWiBF=dzacqFjSvXggvdxD3zAQ@mail.gmail.com>
+ <20190427111748.GA3157@osadl.at>
+In-Reply-To: <20190427111748.GA3157@osadl.at>
+From: Sven Van Asbroeck <thesven73@gmail.com>
+Date: Sat, 27 Apr 2019 10:14:32 -0400
+Message-ID: <CAGngYiV3YCDqD7c4qcc3hyBM2wV05Sk54_ROZckf5S4SLXSbvA@mail.gmail.com>
+Subject: Re: [PATCH RFC] staging: fieldbus: anybus-s: use proper type for
+ wait_for_completion_timeout
+To: Nicholas Mc Guire <der.herr@hofr.at>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,80 +84,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Nicholas Mc Guire <hofrat@osadl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Apr 26, 2019 at 10:41:20AM +0100, Ian Abbott wrote:
-> On 25/04/2019 18:13, Greg Kroah-Hartman wrote:
-> > On Thu, Apr 25, 2019 at 05:26:44PM +0100, Ian Abbott wrote:
-> > > The "comedi_isadma" module calls `dma_alloc_coherent()` and
-> > > `dma_free_coherent()` with a NULL device pointer which is no longer
-> > > allowed.  If the `hw_dev` member of the `struct comedi_device` has been
-> > > set to a valid device, that can be used instead.  Unfortunately, all the
-> > > current users of the "comedi_isadma" module leave the `hw_dev` member
-> > > set to NULL.  In that case, use a static dummy fallback device structure
-> > > with the coherent DMA mask set to the ISA bus limit of 16MB.
-> > > 
-> > > Signed-off-by: Ian Abbott <abbotti@mev.co.uk>
-> > > ---
-> > >   drivers/staging/comedi/drivers/comedi_isadma.c | 15 +++++++++++++--
-> > >   drivers/staging/comedi/drivers/comedi_isadma.h |  3 +++
-> > >   2 files changed, 16 insertions(+), 2 deletions(-)
-> > > 
-> > > diff --git a/drivers/staging/comedi/drivers/comedi_isadma.c b/drivers/staging/comedi/drivers/comedi_isadma.c
-> > > index b77dc8d5d3ff..8929952516a1 100644
-> > > --- a/drivers/staging/comedi/drivers/comedi_isadma.c
-> > > +++ b/drivers/staging/comedi/drivers/comedi_isadma.c
-> > > @@ -14,6 +14,16 @@
-> > >   #include "comedi_isadma.h"
-> > > +/*
-> > > + * Fallback device used when hardware device is NULL.
-> > > + * This can be removed after drivers have been converted to use isa_driver.
-> > > + */
-> > > +static struct device fallback_dev = {
-> > > +	.init_name = "comedi_isadma fallback device",
-> > > +	.coherent_dma_mask = DMA_BIT_MASK(24),
-> > > +	.dma_mask = &fallback_dev.coherent_dma_mask,
-> > > +};
-> > 
-> > Ick, no, static struct device are a very bad idea as this is a reference
-> > counted structure and making it static can cause odd problems.
-> 
-> This was based on the use of `struct device x86_dma_fallback_dev` in
-> "arch/x86/kernel/pci-dma.c", and `static struct device isa_dma_dev` in
-> "arch/arm/kernel/dma-isa.c", but perhaps it is not appropriate in non-arch
-> code.
+On Sat, Apr 27, 2019 at 7:18 AM Nicholas Mc Guire <der.herr@hofr.at> wrote:
+>
+> so the issue is simply that the endiannes anotatoin is missing even
+> though the conversion is being done - with other words there is no code
+> lvel funcitonal bug here but rather sparse needs the anotation to verify
+> correctness and that is missing. Just want to make sure I understand
+> this before I try to "fix" a sparse warning.
 
-No, those are probably broken as well :)
+Correct.
 
-Ah, I see why, ugh, ISA.
-
-> > Why not just create a "real" one?  Or better yet, use the real device
-> > for the comedi device as all of these drivers should have one now.
-> 
-> I suppose I could use the comedi class device pointed to by the `class_dev`
-> member of `struct comedi_device` (although that could also be NULL because
-> the comedi core does not currently treat `device_create()` failures as
-> fatal).
-
-Why would device_create() fail?  If it does, the driver should not have
-been bound to anything.
-
-And no, this shouldn't be the class device, but the "real" hardware
-device that does dma, which is what is needed anyway here to allow the
-DMA to happen properly.
-
-I guess the problem is with the ISA drivers, right?  And I doubt that is
-ever going to get fixed up, hopefully just deleted :)
-
-Your second patch is "good enough", I'll go queue that up now.
-
-thanks,
-
-greg k-h
+Thanks,
+Sven
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
