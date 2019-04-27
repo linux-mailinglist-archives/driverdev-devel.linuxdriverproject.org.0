@@ -1,43 +1,46 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8FDA0B470
-	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Apr 2019 22:06:04 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B9538B474
+	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Apr 2019 22:10:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5A6EA86CF0;
-	Sat, 27 Apr 2019 20:06:02 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B573A8560C;
+	Sat, 27 Apr 2019 20:10:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mRv5IENK-dyt; Sat, 27 Apr 2019 20:06:02 +0000 (UTC)
+	with ESMTP id HRbw1pLaEzg7; Sat, 27 Apr 2019 20:10:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A8DE685C8C;
-	Sat, 27 Apr 2019 20:06:01 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2A4FD8456F;
+	Sat, 27 Apr 2019 20:10:26 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B04391BF841
- for <devel@linuxdriverproject.org>; Sat, 27 Apr 2019 20:05:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A6D8E1BF30A
+ for <devel@linuxdriverproject.org>; Sat, 27 Apr 2019 20:10:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A9A7D85C98
- for <devel@linuxdriverproject.org>; Sat, 27 Apr 2019 20:05:59 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id A33DC85C98
+ for <devel@linuxdriverproject.org>; Sat, 27 Apr 2019 20:10:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wRgu6qFETAjk for <devel@linuxdriverproject.org>;
- Sat, 27 Apr 2019 20:05:58 +0000 (UTC)
-X-Greylist: delayed 00:05:14 by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [217.72.192.75])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1C746853FC
- for <devel@driverdev.osuosl.org>; Sat, 27 Apr 2019 20:05:57 +0000 (UTC)
+ with ESMTP id DSPBUySyH7Pn for <devel@linuxdriverproject.org>;
+ Sat, 27 Apr 2019 20:10:17 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mout.kundenserver.de (mout.kundenserver.de [217.72.192.73])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id ABA36838D9
+ for <devel@driverdev.osuosl.org>; Sat, 27 Apr 2019 20:10:16 +0000 (UTC)
 Received: from [192.168.1.164] ([37.4.249.100]) by mrelayeu.kundenserver.de
  (mreue109 [212.227.15.183]) with ESMTPSA (Nemesis) id
- 1M8QNy-1hOrCz3RJY-004PJi; Sat, 27 Apr 2019 22:00:25 +0200
-Subject: Re: [PATCH] staging: vc04_services: bcm2835-camera: Modify return
- statement.
-To: Vatsala Narang <vatsalanarang@gmail.com>, gregkh@linuxfoundation.org
-References: <20190427160749.11191-1-vatsalanarang@gmail.com>
+ 1M4JeB-1hKkd32Ztp-000IQy; Sat, 27 Apr 2019 22:10:04 +0200
+Subject: Re: [PATCH v3] Staging: vc04_services: Cleanup in ctrl_set_bitrate()
+To: Madhumitha Prabakaran <madhumithabiw@gmail.com>, eric@anholt.net,
+ gregkh@linuxfoundation.org, f.fainelli@gmail.com, rjui@broadcom.com,
+ sbranden@broadcom.com, bcm-kernel-feedback-list@broadcom.com,
+ linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+References: <20190423144745.21474-1-madhumithabiw@gmail.com>
 From: Stefan Wahren <stefan.wahren@i2se.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=stefan.wahren@i2se.com; keydata=
@@ -82,29 +85,29 @@ Autocrypt: addr=stefan.wahren@i2se.com; keydata=
  AZYZD+/iLm5TaKWN6oGIti0VjJv8ZZOZOfCb6vqFIkJW+aOu4orTLFMz28aoU3QyWpNC8FFm
  dYsVua8s6gN1NIa6y3qa/ZB8bA/iky59AEz4iDIRrgUzMEg8Ak7Tfm1KiYeiTtBDCo25BvXj
  bqsyxkQD1nkRm6FAVzEuOPIe8JuqW2xD9ixGYvjU5hkRgJp3gP5b+cnG3LPqquQ2E6goKUML AQ==
-Message-ID: <93576e8a-63e7-4416-ced8-4b58a012cedf@i2se.com>
-Date: Sat, 27 Apr 2019 22:00:22 +0200
+Message-ID: <4c81db45-c9cc-5835-f947-2bf874b1b5f8@i2se.com>
+Date: Sat, 27 Apr 2019 22:10:03 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <20190427160749.11191-1-vatsalanarang@gmail.com>
+In-Reply-To: <20190423144745.21474-1-madhumithabiw@gmail.com>
 Content-Language: en-US
-X-Provags-ID: V03:K1:542D4fB7+Z8XbmXgHNl5RDc/72QTc+gWQj87fqOQ96s4I/Uic3B
- kCBG27U8iMmajTqZxEbp87iU+4fn6efTrmVebaawrmSzkdD6mqWtBPtIu+FjxdZdHdnCIXm
- m56mhgNE/7LBGYEUWiKS53lDvIfyID65lZk7IWi1rJdpVYX3giPwHMxBG717xMxe892Vkzh
- a4HwyzQnIm1l9abUnxtgw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:RaOyuocX5bw=:9PxKHfEDcdVVLG9n4ATUab
- IvJ5fbf/9I5n2kMx/HeJ+lVuyPvQ3hfdOlwNOy6lXHvYy9ovpxu9smVn1j5J+m2V64oz9Nes0
- 9eZ9Of70A/qTFG65WE84OLmgJMuW2vcJXFN0CdkGK9d/qmRTDw6EKEXcd9qSrPRb6A6CMXwjH
- IA+YS+bbmUwmqhk+IS+WAeez75jS5Q1Br23uaZUUJLjpV7lNFdGQVQya7huhXqBkt6BJQZ/HY
- qKguWaUdnv82AwYQeOzOYGkXpIOnjdQ9SglmvaS/VwiNmQzSkfqDYAel2FnzzFyL3rQ37050G
- C4Fa33ITYIeF1f3LsmJ3uMvr/GjUs2GKCHu9+tCqbyUvHZe+N5DcV1jUtnuf0SV5821t09BiE
- 3bbJMBOjI6S7aZXFfo4lQoiy0hiRnn3/L8umfjBSvR6VKqaRm3Hw59UwmwkWKWpraVmtJiVCY
- v/s2NHlLsNCZF2X8QKo7em2ZtrQsILhkqHy9aRhfSrb7MweTIL5Gkh8nGnQ3Jiommj2vc+/jM
- JKEGJi3YtAVzMcOv4awPtckTtryYExoz9Zj5mjhtIhmJSI8G2G7wfXK7zSWPy7MP2D+J5XPD+
- /n3SFg0QgDC0/9iThcavFDJTZX+BzJPxswIKsUdWyFJIaCykJ5UdDtlwwQqQuQyT8OWWKTOhG
- L6CLm5ICIPT3Nqq2qEsfbM0u61c2vhUJaTwUlNgxF5EhV+/q9Gwj1YxMyr9zpMbix8bkFcu42
- 3AkGtjueh+FMUfTt6p+ql6/jEHDq+M3qkITXnWA15VC7wJGfWlZmNvuCrMM=
+X-Provags-ID: V03:K1:TRMLT6gu87xPioZML+mE8keoijhkkpde2/S33vAcd4wGz2YBCkA
+ yXeJe7Srp1tCdRzLmNgGBNyvsT99P1XpYhMnwxhS+4+iEtTo6sQ0tWb3lSoiF1hNf2Fexlr
+ nHp9Tb71JDOAw2WUBByl/Suhi5rcT93N4FCfA5mIWtBWGjOlWkZR7xNaOAfajB8yQBS4muN
+ vyF3aMwmiNdOzwobnA1MA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:a1xJf0cMFfk=:owaO7jyuRsE5Q2A1P41RoB
+ s7AXZ1OEj56ycv7wu8e0pvR1uxPkAHcsXap3sZmnCDUjnljzGdSj/QK5g4Meh3vGzJCVJPxdQ
+ jM/N8h9x8tine2BOQEcpAVvEnnj3qDaRUzHX51P6QHSaAQ5WydFQzIpapMv/JBzDGpmBWDnQp
+ hv7oRF0svDe5jlhsrmQPR/zdBhFEmEXQuOfG/MWI8xCkXi6P/fm40HQn98xUeMLaLmj401IrF
+ 6mr4pHytKLCDUo2jYMWK4oEYFSLIyl5PZW4gauUrviWT4qtxx4+nUaYc3oIlhDiKzjAJOJ6xO
+ Nk2k0D9HNDHx6QQz6UtU6lVB08DDP1uFqIrAG9mVLhEXRmgoiY6Ww4TMXDYDXUhBnabrDkPZj
+ x7P2CIfCFft5lRvGJYp9wXXnWtfUeoOuxm+eZmh4wL3ers/F4Ba9vMQCGz+qS8n9lGnLRU+RZ
+ abceHNMKw/fIprObq+Le9r4i+ZMz4ItkBOSjkTQCyBAbbbV5bAvFqiKLbz9UNKmGloxkXEM3z
+ e7DOU6FdcaGYZIchr8CS0cJbdN/RkwXc2ve4uDyndiKlo2MSKAnnTZCXYuYGJ9BkDt098btJo
+ sTqTl8rhzuKnzJn8Dg0CaB36W3gGbBAUM5RoSV6Tz2haAPIXk8aqnyQrb1Il+YLWd4FVGvbPV
+ OJo+0Km4GTdtyyzA0JfcVsKcwDCBExCkTwX3RFIwb8/GW7J2eJ7DxvRpT6k77zSPY4FliHnF+
+ sV2MI9R9jsS8YqfFTrsy651PxDxGUK79IEZ9bsO5C+c3x7cNTWrOJqj8t8A=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,21 +120,19 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, f.fainelli@gmail.com, sbranden@broadcom.com,
- julia.lawall@lip6.fr, rjui@broadcom.com, linux-kernel@vger.kernel.org,
- eric@anholt.net, bcm-kernel-feedback-list@broadcom.com,
- linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Am 27.04.19 um 18:07 schrieb Vatsala Narang:
-> Modify return statement and remove the respective assignment.
+Am 23.04.19 um 16:47 schrieb Madhumitha Prabakaran:
+> Remove unnecessary variable from the function and make a corresponding
+> change w.r.t the variable. In addition to that align the parameters in
+> the parentheses to maintain Linux kernel coding style
 >
-> Issue found by Coccinelle.
+> Issue suggested by Coccinelle.
 >
-> Signed-off-by: Vatsala Narang <vatsalanarang@gmail.com>
+> Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
 Acked-by: Stefan Wahren <stefan.wahren@i2se.com>
 _______________________________________________
 devel mailing list
