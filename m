@@ -1,79 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 785A6B3EA
-	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Apr 2019 18:34:12 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id CA0E4B466
+	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Apr 2019 21:54:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C30C38577A;
-	Sat, 27 Apr 2019 16:34:10 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6C0FA22F22;
+	Sat, 27 Apr 2019 19:54:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ckBE8t8CEifY; Sat, 27 Apr 2019 16:34:10 +0000 (UTC)
+	with ESMTP id RcllGIxVe0JZ; Sat, 27 Apr 2019 19:54:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7A1A685495;
-	Sat, 27 Apr 2019 16:34:09 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by silver.osuosl.org (Postfix) with ESMTP id 6CA9021549;
+	Sat, 27 Apr 2019 19:54:08 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B5EA81BF32D
- for <devel@linuxdriverproject.org>; Sat, 27 Apr 2019 16:34:06 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 0D9821BF28A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 27 Apr 2019 19:54:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B292A865C2
- for <devel@linuxdriverproject.org>; Sat, 27 Apr 2019 16:34:06 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 0A88B227FF
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 27 Apr 2019 19:54:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1sMRLWsxoERz for <devel@linuxdriverproject.org>;
- Sat, 27 Apr 2019 16:34:06 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f67.google.com (mail-io1-f67.google.com
- [209.85.166.67])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 23E7685CA8
- for <devel@driverdev.osuosl.org>; Sat, 27 Apr 2019 16:34:06 +0000 (UTC)
-Received: by mail-io1-f67.google.com with SMTP id h26so5523133ioj.1
- for <devel@driverdev.osuosl.org>; Sat, 27 Apr 2019 09:34:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=XEvDpPUhRZq1dLEcwfgrpdw5Bqx40j/OhihVlJzo794=;
- b=XA0RhfXe0wftUHw2AzmePmRF1GUeiky6OfulKPNLYdpW7HhiRN4jkF6bYsbfaYbA8S
- 8O/P33bxVoUk31zZ2nZ39qPGNU5Ibgx90mqcxE4mWi15cE570m8z1eQxlqsk9KArwt+h
- 89qkQ/T8oFvFfOFKiSAyNrt73sIiD9cw+XiEz/RnuLZAiiAvIvQbIv1MIIDrxg1IBKoV
- 4xDjOb7c0TlNNUbk0DUkCqTrIR2enEJAHBw7RHYthzZmUyLp4ygemcUH8VmHbrD8MGj+
- k7NMQmWsyth0pkTFt2jDzxTKXZT3ah4sgDHpr6extxuiow9FEA0dvFZQtk8M9ZeOP+6z
- QaMA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=XEvDpPUhRZq1dLEcwfgrpdw5Bqx40j/OhihVlJzo794=;
- b=j7ccoNtib2uxhJURpFX3imqL6V4y51ZNbVGiSxGUbjpijQ07TWqQ4JhWMp20tSXjSl
- fL2evA+GN/dg1A4KDtK2XPKWTNWoojI28urHMOYHr328I3OONUTIa1nGd8fmRCsRc5Y5
- cAPZxdWE08q5YTkgbRYYANWqBEcUR320R8dx4AkOx/uh++qV4m2JpMs5MDwYR5QgOwL+
- X2Z1qdmr3FwxXiGNfeVV4blY1bUGvJkCEoi+OJsUJRznRRtOK8+ZAaox9t8GgJOMtOMC
- Z4S0YMqaOZc4f9vrJkGPzAq8jAx31Du9Gs/t0/svUg07u6/oCSVXyXmxWIE/P3G/dDB6
- Hrew==
-X-Gm-Message-State: APjAAAUVbt0POntiJDpfeb4WthZRfRxdS9g2TeOUJbSaEqIDTFzqwLp0
- LVtUlLQ47BzOevvMx8kDoO8=
-X-Google-Smtp-Source: APXvYqwbHJI7m792lzw+7MV7zVXopqousiFs9iR5NQkQAUbNwEXONOfjgk5bFmmS2Hom81KafuR+ug==
-X-Received: by 2002:a6b:ba57:: with SMTP id k84mr26041475iof.211.1556382845471; 
- Sat, 27 Apr 2019 09:34:05 -0700 (PDT)
-Received: from localhost.localdomain (c-73-243-191-173.hsd1.co.comcast.net.
- [73.243.191.173])
- by smtp.gmail.com with ESMTPSA id p67sm13781876itb.11.2019.04.27.09.34.04
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 27 Apr 2019 09:34:04 -0700 (PDT)
-From: Kelsey Skunberg <skunberg.kelsey@gmail.com>
-To: sudipm.mukherjee@gmail.com, teddy.wang@siliconmotion.com,
- gregkh@linuxfoundation.org, linux-fbdev@vger.kernel.org,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] Staging: sm750fb: Change *array into *const array
-Date: Sat, 27 Apr 2019 10:33:34 -0600
-Message-Id: <20190427163334.7109-1-skunberg.kelsey@gmail.com>
+ with ESMTP id dDPtNoAefEjJ
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 27 Apr 2019 19:54:05 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from kadath.azazel.net (kadath.azazel.net [81.187.231.250])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9DDE922264
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 27 Apr 2019 19:54:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=azazel.net; 
+ s=20190108;
+ h=Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject
+ :To:From:Sender:Reply-To:Cc:Content-Type:Content-ID:Content-Description:
+ Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+ In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=Npyd+n/D35oze7NCXDKIdQ9dFKstGt5c/kunQlSZSBw=; b=aGgqG3OWcHM2yxEI+bTGH5cxNp
+ 3VDlmdBSSDeH5pA8F0GnMndWOGm55dfiOMnffduWw1Gvcop2FuV6ZppztGZZGIGNs/P2P2U+UJfZM
+ bbaKX6dasF3OsbQJnJrsny9siOyRr7X3W3W4cffBLd5TrcL/dK4BjFAokDj/B7ZBRfvuFiAOxisX5
+ zl9efoneb5Uvo3TEg2U1Ui/lswMV1s3Q0cRaoOue2UzJGmE3sXWw8tEE/5jVNvPyXBXsQUAUcSufX
+ 3N9Mm8Z4IYi7HvUaXxaWPqW4/y6EeYCKWu6hxJm3JkZRt6ZHaWI5hSqkE0OlJYAl3qVFrKysOEHwW
+ jVt2aCDQ==;
+Received: from ulthar.dreamlands ([192.168.96.2])
+ by kadath.azazel.net with esmtp (Exim 4.89)
+ (envelope-from <jeremy@azazel.net>) id 1hKTOb-0002Tf-71
+ for driverdev-devel@linuxdriverproject.org; Sat, 27 Apr 2019 20:54:01 +0100
+From: Jeremy Sowden <jeremy@azazel.net>
+To: Linux Driver Project Developer List
+ <driverdev-devel@linuxdriverproject.org>
+Subject: [PATCH 0/2] staging: kpc2000_spi: eliminated duplicate initialization
+ of two local variables.
+Date: Sat, 27 Apr 2019 20:53:59 +0100
+Message-Id: <20190427195401.12650-1-jeremy@azazel.net>
 X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
+X-SA-Exim-Connect-IP: 192.168.96.2
+X-SA-Exim-Mail-From: jeremy@azazel.net
+X-SA-Exim-Scanned: No (on kadath.azazel.net); SAEximRunCond expanded to false
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,37 +76,27 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Kelsey Skunberg <skunberg.kelsey@gmail.com>,
- linux-kernel-mentees@lists.linuxfoundation.org, skhan@linuxfoundation.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Resolve checkpatch warning for static const char * array by using const
-pointers.
+A couple of the local variables in kp_spi_probe had initializers which were
+being overwritten by immediate assignment of the same values.  One of them was
+dynamically allocated and so would leak memory.
 
-Checkpatch Warning in sm750.c:
-static const char * array should probably be static const char * const
+Checkpatch whinges about the formatting, but fixing that would be rather a large
+job.
 
-Signed-off-by: Kelsey Skunberg <skunberg.kelsey@gmail.com>
----
- drivers/staging/sm750fb/sm750.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Jeremy Sowden (2):
+  staging: kpc2000_spi: eliminated duplicate initialization of drvdata local
+    variable.
+  staging: kpc2000_spi: eliminated duplicate initialization of master local
+    variable.
 
-diff --git a/drivers/staging/sm750fb/sm750.c b/drivers/staging/sm750fb/sm750.c
-index 105089b97bf5..59568d18ce23 100644
---- a/drivers/staging/sm750fb/sm750.c
-+++ b/drivers/staging/sm750fb/sm750.c
-@@ -748,7 +748,7 @@ static int lynxfb_set_fbinfo(struct fb_info *info, int index)
- 		lynx750_ext, NULL, vesa_modes,
- 	};
- 	int cdb[] = {ARRAY_SIZE(lynx750_ext), 0, VESA_MODEDB_SIZE};
--	static const char *mdb_desc[] = {
-+	static const char * const mdb_desc[] = {
- 		"driver prepared modes",
- 		"kernel prepared default modedb",
- 		"kernel HELPERS prepared vesa_modes",
+ drivers/staging/kpc2000/kpc_spi/spi_driver.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
 -- 
 2.20.1
 
