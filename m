@@ -1,74 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6E440B3D8
-	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Apr 2019 18:08:15 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 785A6B3EA
+	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Apr 2019 18:34:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3D2F386AD4;
-	Sat, 27 Apr 2019 16:08:13 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C30C38577A;
+	Sat, 27 Apr 2019 16:34:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wt+0a3BofKJx; Sat, 27 Apr 2019 16:08:13 +0000 (UTC)
+	with ESMTP id ckBE8t8CEifY; Sat, 27 Apr 2019 16:34:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9B4D4865EE;
-	Sat, 27 Apr 2019 16:08:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7A1A685495;
+	Sat, 27 Apr 2019 16:34:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C99411BF841
- for <devel@linuxdriverproject.org>; Sat, 27 Apr 2019 16:08:10 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B5EA81BF32D
+ for <devel@linuxdriverproject.org>; Sat, 27 Apr 2019 16:34:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C5D7D855D8
- for <devel@linuxdriverproject.org>; Sat, 27 Apr 2019 16:08:10 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id B292A865C2
+ for <devel@linuxdriverproject.org>; Sat, 27 Apr 2019 16:34:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kIWWUMMMqQ40 for <devel@linuxdriverproject.org>;
- Sat, 27 Apr 2019 16:08:10 +0000 (UTC)
+ with ESMTP id 1sMRLWsxoERz for <devel@linuxdriverproject.org>;
+ Sat, 27 Apr 2019 16:34:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2486385481
- for <devel@driverdev.osuosl.org>; Sat, 27 Apr 2019 16:08:10 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id t22so46468pgi.10
- for <devel@driverdev.osuosl.org>; Sat, 27 Apr 2019 09:08:10 -0700 (PDT)
+Received: from mail-io1-f67.google.com (mail-io1-f67.google.com
+ [209.85.166.67])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 23E7685CA8
+ for <devel@driverdev.osuosl.org>; Sat, 27 Apr 2019 16:34:06 +0000 (UTC)
+Received: by mail-io1-f67.google.com with SMTP id h26so5523133ioj.1
+ for <devel@driverdev.osuosl.org>; Sat, 27 Apr 2019 09:34:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=jrtjq2Yr4HF77ya+Bh8Y543ibzBroImWXM+PFp8HcNA=;
- b=Ne5FvEOmBkxwTy2jX6gYCth3dn2KTnAtafRBz7JPu1Kw9BVIwGeEJCLpiKWoamMBcz
- urGD/8j0mz74mFKO3VtZEjzRVBwwIB6gYUb9VCqbSEK248CVHbMH2l/NKiMioer2a/vg
- MdQgJt2CFHiRTA5JIJUG1VXpICsh+w6igmDLbqoH7bgDSQ4hAgNPirMdTscfsLwslEZL
- cy/o0/oaK2wTTuDGvYCt5gjRG5HhQRC1mumeoqgQQYKxmFhF+keouNxB4hXtbgUmY+n3
- 3tUv0qI+6aK7NhA+itZjAMYxJ00Efc+aZ/VuxxXeDa6deD/qwbjaBimIBzzPxOD94DQ0
- gXgg==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=XEvDpPUhRZq1dLEcwfgrpdw5Bqx40j/OhihVlJzo794=;
+ b=XA0RhfXe0wftUHw2AzmePmRF1GUeiky6OfulKPNLYdpW7HhiRN4jkF6bYsbfaYbA8S
+ 8O/P33bxVoUk31zZ2nZ39qPGNU5Ibgx90mqcxE4mWi15cE570m8z1eQxlqsk9KArwt+h
+ 89qkQ/T8oFvFfOFKiSAyNrt73sIiD9cw+XiEz/RnuLZAiiAvIvQbIv1MIIDrxg1IBKoV
+ 4xDjOb7c0TlNNUbk0DUkCqTrIR2enEJAHBw7RHYthzZmUyLp4ygemcUH8VmHbrD8MGj+
+ k7NMQmWsyth0pkTFt2jDzxTKXZT3ah4sgDHpr6extxuiow9FEA0dvFZQtk8M9ZeOP+6z
+ QaMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=jrtjq2Yr4HF77ya+Bh8Y543ibzBroImWXM+PFp8HcNA=;
- b=hrj+mvsCUQHpRFH13PAXIptfSkv5FbsAeEhZzS0ktqyIEqz2IKGVyJ7zt3vATgmadw
- 1iZERrblZC0izSuGJoBiLjZpdMwAsCqllkkCP4qkIt1GEq4YN7rXhmSaR/briynTil69
- CbSwXNm5KXwFA/2Ko8L+08CoYnhUzS7HS15oB7TslvehcsklZH+nWxTLIMCc9fb4vNpF
- k94G/HzNqLAlwUpjHX61v8YnkUbJ1Vq5MZPkYqYOdr0aq5PadlEfV7I5jKNxC9wgBEpU
- TEU9E9GAAKtQ8fnM4kE3rpCApDS+b/7oZG0xWOHwK47LwPk42DRmWGE+7U+cD3RvENQm
- 1BCQ==
-X-Gm-Message-State: APjAAAVZ10w8MN35xtkxQgG5eL8BTUa83lWK9+EpAfaj7m6A80E4GVop
- UE0LufecyOTjuJXClwgr9DI=
-X-Google-Smtp-Source: APXvYqyF69/OmR7bOmXYXW/LXDpGgNxGAtz8+b6/5BfchkZuZPAVu1YEIQnv0Kd0un/R9zqCk+NSTA==
-X-Received: by 2002:a63:ea52:: with SMTP id l18mr35848874pgk.124.1556381289756; 
- Sat, 27 Apr 2019 09:08:09 -0700 (PDT)
-Received: from localhost.localdomain ([103.87.57.58])
- by smtp.gmail.com with ESMTPSA id a9sm38584613pfo.17.2019.04.27.09.08.04
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=XEvDpPUhRZq1dLEcwfgrpdw5Bqx40j/OhihVlJzo794=;
+ b=j7ccoNtib2uxhJURpFX3imqL6V4y51ZNbVGiSxGUbjpijQ07TWqQ4JhWMp20tSXjSl
+ fL2evA+GN/dg1A4KDtK2XPKWTNWoojI28urHMOYHr328I3OONUTIa1nGd8fmRCsRc5Y5
+ cAPZxdWE08q5YTkgbRYYANWqBEcUR320R8dx4AkOx/uh++qV4m2JpMs5MDwYR5QgOwL+
+ X2Z1qdmr3FwxXiGNfeVV4blY1bUGvJkCEoi+OJsUJRznRRtOK8+ZAaox9t8GgJOMtOMC
+ Z4S0YMqaOZc4f9vrJkGPzAq8jAx31Du9Gs/t0/svUg07u6/oCSVXyXmxWIE/P3G/dDB6
+ Hrew==
+X-Gm-Message-State: APjAAAUVbt0POntiJDpfeb4WthZRfRxdS9g2TeOUJbSaEqIDTFzqwLp0
+ LVtUlLQ47BzOevvMx8kDoO8=
+X-Google-Smtp-Source: APXvYqwbHJI7m792lzw+7MV7zVXopqousiFs9iR5NQkQAUbNwEXONOfjgk5bFmmS2Hom81KafuR+ug==
+X-Received: by 2002:a6b:ba57:: with SMTP id k84mr26041475iof.211.1556382845471; 
+ Sat, 27 Apr 2019 09:34:05 -0700 (PDT)
+Received: from localhost.localdomain (c-73-243-191-173.hsd1.co.comcast.net.
+ [73.243.191.173])
+ by smtp.gmail.com with ESMTPSA id p67sm13781876itb.11.2019.04.27.09.34.04
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 27 Apr 2019 09:08:09 -0700 (PDT)
-From: Vatsala Narang <vatsalanarang@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: vc04_services: bcm2835-camera: Modify return
- statement.
-Date: Sat, 27 Apr 2019 21:37:49 +0530
-Message-Id: <20190427160749.11191-1-vatsalanarang@gmail.com>
-X-Mailer: git-send-email 2.17.1
+ Sat, 27 Apr 2019 09:34:04 -0700 (PDT)
+From: Kelsey Skunberg <skunberg.kelsey@gmail.com>
+To: sudipm.mukherjee@gmail.com, teddy.wang@siliconmotion.com,
+ gregkh@linuxfoundation.org, linux-fbdev@vger.kernel.org,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] Staging: sm750fb: Change *array into *const array
+Date: Sat, 27 Apr 2019 10:33:34 -0600
+Message-Id: <20190427163334.7109-1-skunberg.kelsey@gmail.com>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,58 +86,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: stefan.wahren@i2se.com, devel@driverdev.osuosl.org, f.fainelli@gmail.com,
- sbranden@broadcom.com, julia.lawall@lip6.fr, rjui@broadcom.com,
- linux-kernel@vger.kernel.org, eric@anholt.net,
- bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org,
- Vatsala Narang <vatsalanarang@gmail.com>, linux-arm-kernel@lists.infradead.org
-MIME-Version: 1.0
+Cc: Kelsey Skunberg <skunberg.kelsey@gmail.com>,
+ linux-kernel-mentees@lists.linuxfoundation.org, skhan@linuxfoundation.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Modify return statement and remove the respective assignment.
+Resolve checkpatch warning for static const char * array by using const
+pointers.
 
-Issue found by Coccinelle.
+Checkpatch Warning in sm750.c:
+static const char * array should probably be static const char * const
 
-Signed-off-by: Vatsala Narang <vatsalanarang@gmail.com>
+Signed-off-by: Kelsey Skunberg <skunberg.kelsey@gmail.com>
 ---
- drivers/staging/vc04_services/bcm2835-camera/controls.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+ drivers/staging/sm750fb/sm750.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/vc04_services/bcm2835-camera/controls.c b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-index 2e0a422cdf3e..9841c30450ce 100644
---- a/drivers/staging/vc04_services/bcm2835-camera/controls.c
-+++ b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-@@ -270,11 +270,9 @@ static int ctrl_set_rotate(struct bm2835_mmal_dev *dev,
- 	if (ret < 0)
- 		return ret;
- 
--	ret = vchiq_mmal_port_parameter_set(dev->instance, &camera->output[2],
-+	return vchiq_mmal_port_parameter_set(dev->instance, &camera->output[2],
- 					    mmal_ctrl->mmal_id,
- 					    &u32_value, sizeof(u32_value));
--
--	return ret;
- }
- 
- static int ctrl_set_flip(struct bm2835_mmal_dev *dev,
-@@ -313,11 +311,9 @@ static int ctrl_set_flip(struct bm2835_mmal_dev *dev,
- 	if (ret < 0)
- 		return ret;
- 
--	ret = vchiq_mmal_port_parameter_set(dev->instance, &camera->output[2],
-+	return vchiq_mmal_port_parameter_set(dev->instance, &camera->output[2],
- 					    mmal_ctrl->mmal_id,
- 					    &u32_value, sizeof(u32_value));
--
--	return ret;
- }
- 
- static int ctrl_set_exposure(struct bm2835_mmal_dev *dev,
+diff --git a/drivers/staging/sm750fb/sm750.c b/drivers/staging/sm750fb/sm750.c
+index 105089b97bf5..59568d18ce23 100644
+--- a/drivers/staging/sm750fb/sm750.c
++++ b/drivers/staging/sm750fb/sm750.c
+@@ -748,7 +748,7 @@ static int lynxfb_set_fbinfo(struct fb_info *info, int index)
+ 		lynx750_ext, NULL, vesa_modes,
+ 	};
+ 	int cdb[] = {ARRAY_SIZE(lynx750_ext), 0, VESA_MODEDB_SIZE};
+-	static const char *mdb_desc[] = {
++	static const char * const mdb_desc[] = {
+ 		"driver prepared modes",
+ 		"kernel prepared default modedb",
+ 		"kernel HELPERS prepared vesa_modes",
 -- 
-2.17.1
+2.20.1
 
 _______________________________________________
 devel mailing list
