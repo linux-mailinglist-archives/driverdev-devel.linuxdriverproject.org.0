@@ -2,71 +2,72 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8236EB60A
-	for <lists+driverdev-devel@lfdr.de>; Sun, 28 Apr 2019 16:24:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 66F80B60E
+	for <lists+driverdev-devel@lfdr.de>; Sun, 28 Apr 2019 16:32:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8E94B840D2;
-	Sun, 28 Apr 2019 14:23:59 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4433B84B23;
+	Sun, 28 Apr 2019 14:32:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cSfB3_crjNWX; Sun, 28 Apr 2019 14:23:58 +0000 (UTC)
+	with ESMTP id vQCqysXPBqEp; Sun, 28 Apr 2019 14:32:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 08AB6840BF;
-	Sun, 28 Apr 2019 14:23:58 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B838284867;
+	Sun, 28 Apr 2019 14:32:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CEEA01BF3E9
- for <devel@linuxdriverproject.org>; Sun, 28 Apr 2019 14:23:55 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id ADB681BF3E9
+ for <devel@linuxdriverproject.org>; Sun, 28 Apr 2019 14:32:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id CC127840BF
- for <devel@linuxdriverproject.org>; Sun, 28 Apr 2019 14:23:55 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id AB00284A92
+ for <devel@linuxdriverproject.org>; Sun, 28 Apr 2019 14:32:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id awXqYw6tm8It for <devel@linuxdriverproject.org>;
- Sun, 28 Apr 2019 14:23:55 +0000 (UTC)
+ with ESMTP id hs_mWkTUcz6Q for <devel@linuxdriverproject.org>;
+ Sun, 28 Apr 2019 14:32:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f67.google.com (mail-ot1-f67.google.com
- [209.85.210.67])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3A1DE84083
- for <devel@driverdev.osuosl.org>; Sun, 28 Apr 2019 14:23:55 +0000 (UTC)
-Received: by mail-ot1-f67.google.com with SMTP id d24so6476245otl.11
- for <devel@driverdev.osuosl.org>; Sun, 28 Apr 2019 07:23:55 -0700 (PDT)
+Received: from mail-oi1-f194.google.com (mail-oi1-f194.google.com
+ [209.85.167.194])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7B2DC84867
+ for <devel@driverdev.osuosl.org>; Sun, 28 Apr 2019 14:32:31 +0000 (UTC)
+Received: by mail-oi1-f194.google.com with SMTP id d62so584943oib.13
+ for <devel@driverdev.osuosl.org>; Sun, 28 Apr 2019 07:32:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=UrVxQZBuvnp3JOhkf+W+d2tzb7u+gX+IuPDYN/m+AHg=;
- b=DskcGm1yhQ+wgZj3J9uDOi1xhc54srpJ5DlAcq+k1+TC2hIto1nhunNNhgqELlMwqC
- RUe0nTqQ9rd6e/nIGf4xqV7u3j7IB62bUHbT/vC3TvwMdk0AcB6BuCWjUGSRvAqESGhl
- V1Xb+CY+Qjkr+YRmbQy5SxjmNrdUEdcBxjeq/Jt1iDJaWU7+lHio52Y6Il/FGZQomzXX
- zfQiaUXnupWikDhzGj5PrbbTdBIPSMuiuJncqrnMBpCMiZFQ+NO+Q0lzw3LtWj2+Gjcd
- 7q0UnAEg+Kjtzy90AsbCSlfdjAmeg+j8vvfXB80eqpfMCFetGTZUzUqTL7agFZW0y0+a
- sM0Q==
+ :cc; bh=w+QLN0lhWS0TTAMCusecl/8H1fccZ10EVVpd07BbNgc=;
+ b=P5JkzhtowAoVzgf4mWexhRA/N0+kMAM2EpslYR/Sy9HgyShJdJEFuFkueoKwLz1rwM
+ fj1FiZaJqAxwqKUFdOs5onU5l/ICPOrRdoonoVU0ipUXJQ/mHi+86S67QZWqCoM63RrU
+ bm+JRV/xaMmSIDTjdp4bEDBcGN1lAmstSPfcwCbkK+UNwxAHK3ZFRHpv+bKmBqUEp5hL
+ au6WraHET8uU89ZzNXbmzmZ/U65oQbA6DiBmNTAHQZN85fwNNF1yQvyK9tHcxtYPzX5M
+ kL1pdaAuJYJ2LjbfeEedv7ppykTPJ2fhJL0VvyRrfj7NQi4ADGjcvEDqjY0eM4bi16Mw
+ 3Vew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=UrVxQZBuvnp3JOhkf+W+d2tzb7u+gX+IuPDYN/m+AHg=;
- b=WKc+7dRln5lni9DAeNOoIYX77iNPSkjH60j5Bm+ZFmGuPtRaheYOYfzDOXLP1aM4/P
- FiU+9fLA15eqSEQZx3K4mNMOLlOUg6kEe1RzJzOvTG4NTblA/SgBodga1QdSzAzDkZTH
- Q5gkm+T7+ezTyFwJsVA7DDcEV9U2U7kAw0MP8/t/smK3QyUrL0TEVmtQTE0dGk21KAdv
- gkl2Tu0AarOG+51V+O/lmZlA3Q+KUba3jQSf/8Mj2jTwdBqTKIiv5RxU15n9wUSXTNEE
- x+86gTPTQoaOCNOXdtFqU6Ne0T6YS8vrNKZPrdBWshid6bpeCqQOx3+T4EB6ev9VmBgj
- AfIQ==
-X-Gm-Message-State: APjAAAUZgVwN0Kx5YRFsSUQdZt02suPGDOrTcPKg85Au3vQbhMfoXKDw
- O1htpWuA1RVEdRgejDi5qLjhbM/0XOtBuJ8RvVQdnA==
-X-Google-Smtp-Source: APXvYqysWBYGF4Ebxi+XdneZ+kfNwVpgMHSSoctrVi+yfU7Mm/wvOqmYyRKBxEveUy+JobpgBqBeZUV/i0gFr7hRQsY=
-X-Received: by 2002:a9d:7319:: with SMTP id e25mr1730932otk.279.1556461434231; 
- Sun, 28 Apr 2019 07:23:54 -0700 (PDT)
+ bh=w+QLN0lhWS0TTAMCusecl/8H1fccZ10EVVpd07BbNgc=;
+ b=T70Iz8ytHs7oTAttuTS4O+wJYleE06Ud2nunb55bbByEi7Y8CZDPN58dAd+btTEy8+
+ cxsPFagf0UqCr3Q9abnurhGoWOzM5w6Do0O28nci9zL2b+eItD6xTCM9RAzGGxaJogJi
+ QO5rvRrc14wHLjJ/TBVcgy1PZvLlJ/6t65w9edQg7GIONqBeI9S3wrUOhaGKsSWfkPjn
+ pa8caqdC0w7X3qEAuK1RqwpaBICw5hapHem5brPJGFKbrTMwuccdz99ubTM746npDjpY
+ 5MtthWCF6AkTBM1/UUbGqRwAFcWje814v7OYPWTJJa787xoUW1WadPXSH4zJZvmtFhML
+ bDug==
+X-Gm-Message-State: APjAAAXGycyAYPQMHDovmE+d3hm/bqYIfCGsxC85qB4vJfD7kltUoA+N
+ JgDndhD7yTG5FHzRqE4/XrGpdggQDPr5SffpAbYRa2mk
+X-Google-Smtp-Source: APXvYqxuMJagp05qspO9G7+jFNbo87VF4TjqCNNKuU53Fk/6rzjEptsUWgrMdLXYGvP32BVD4U+74A8E+5QNz3yPP0M=
+X-Received: by 2002:aca:ecc8:: with SMTP id
+ k191mr12544298oih.103.1556461950564; 
+ Sun, 28 Apr 2019 07:32:30 -0700 (PDT)
 MIME-Version: 1.0
 References: <1556418804-10266-1-git-send-email-hofrat@osadl.org>
-In-Reply-To: <1556418804-10266-1-git-send-email-hofrat@osadl.org>
+ <1556418804-10266-2-git-send-email-hofrat@osadl.org>
+In-Reply-To: <1556418804-10266-2-git-send-email-hofrat@osadl.org>
 From: Sven Van Asbroeck <thesven73@gmail.com>
-Date: Sun, 28 Apr 2019 10:23:43 -0400
-Message-ID: <CAGngYiXMMKz2AesEAVO_wdXw0ixsnjNo0o920evZPL9CM0cdJQ@mail.gmail.com>
-Subject: Re: [PATCH V2] staging: fieldbus: anybus-s: consolidate
- wait_for_completion_timeout return handling
+Date: Sun, 28 Apr 2019 10:32:19 -0400
+Message-ID: <CAGngYiV6ykYFuq458tWaLqDGLOo41aL5JE2OZ7uFTp3T4KOYkw@mail.gmail.com>
+Subject: Re: [PATCH] staging: fieldbus: anybus-s: force endiannes annotation
 To: Nicholas Mc Guire <hofrat@osadl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -87,66 +88,60 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Looking good, but see inline.
+Thanks for the contibution! See inline.
 
 On Sat, Apr 27, 2019 at 10:39 PM Nicholas Mc Guire <hofrat@osadl.org> wrote:
 >
-> wait_for_completion_timeout() returns unsigned long (0 on timeout or
-> remaining jiffies) not int - so rather than introducing an additional
-> variable simply wrap the completion into an if().
+> While the endiannes is being handled correctly sparse was unhappy with
+> the missing annotation as be16_to_cpu() expects a __be16.
 
-Your commit message could be improved:
-
-- the headline should make clear what this is, e.g. add functionality,
-bugfix, shutting up sparse, etc. Using the verb 'fix' would be
-good here.
-
-- in case of a bugfix, it would make sense to write a short
-paragraph about what can go wrong, followed by a short
-paragraph outlining what the patch does to fix it.
+Your commit message has room for improvement here. See my remarks
+on your other patch:
+https://lkml.org/lkml/2019/4/28/95
 
 >
 > Signed-off-by: Nicholas Mc Guire <hofrat@osadl.org>
 > ---
 >
-> Problem located with experimental API conformance checking cocci script
+> Problem reported by sparse
 >
-> V2: The original patch's logic was wrong as it was skipping the
->     fall-through if so using the fix proposed by Sven Van Asbroeck
->     <thesven73@gmail.com> - This solution also eliminates the need
->     to introduce an additional variable - Thanks !
+> As far as I understand sparse here the __force is actually the only
+> solution possible to inform sparse that the endiannes handling is ok
 >
 > Patch was compile-tested with. x86_64_defconfig + FIELDBUS_DEV=m,
 > HMS_ANYBUSS_BUS=m
-> (with an unrelated sparse warnings (cast to restricted __be16))
 >
 > Patch is against 5.1-rc6 (localversion-next is next-20190426)
 >
->  drivers/staging/fieldbus/anybuss/host.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+>  drivers/staging/fieldbus/anybuss/host.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
 > diff --git a/drivers/staging/fieldbus/anybuss/host.c b/drivers/staging/fieldbus/anybuss/host.c
-> index e34d424..6227daf 100644
+> index 6227daf..278acac 100644
 > --- a/drivers/staging/fieldbus/anybuss/host.c
 > +++ b/drivers/staging/fieldbus/anybuss/host.c
-> @@ -1325,11 +1325,11 @@ anybuss_host_common_probe(struct device *dev,
->          *   interrupt came in: ready to go !
->          */
->         reset_deassert(cd);
-> -       ret = wait_for_completion_timeout(&cd->card_boot, TIMEOUT);
-> -       if (ret == 0)
-> +       if (!wait_for_completion_timeout(&cd->card_boot, TIMEOUT)) {
->                 ret = -ETIMEDOUT;
-> -       if (ret < 0)
->                 goto err_reset;
-> +       }
-> +
+> @@ -1348,7 +1348,7 @@ anybuss_host_common_probe(struct device *dev,
+>         add_device_randomness(&val, 4);
+>         regmap_bulk_read(cd->regmap, REG_FIELDBUS_TYPE, &fieldbus_type,
+>                          sizeof(fieldbus_type));
+> -       fieldbus_type = be16_to_cpu(fieldbus_type);
+> +       fieldbus_type = be16_to_cpu((__force __be16)fieldbus_type);
 
-Nit: why add a blank line here?
+Hmm... that would be cheating :)
+what if you create a new local variable of type __be16?
+Like so:
 
->         /*
->          * according to the anybus docs, we're allowed to read these
->          * without handshaking / reserving the area
+__be16 fieldbus_type_be;
+<...>
+regmap_bulk_read(cd->regmap, REG_FIELDBUS_TYPE, &fieldbus_type_be,
+                          sizeof(fieldbus_type_be));
+fieldbus_type = be16_to_cpu(fieldbus_type_be);
+
+would that get sparse to shut up?
+
+>         dev_info(dev, "Fieldbus type: %04X", fieldbus_type);
+>         regmap_bulk_read(cd->regmap, REG_MODULE_SW_V, val, 2);
+>         dev_info(dev, "Module SW version: %02X%02X",
 > --
 > 2.1.4
 >
