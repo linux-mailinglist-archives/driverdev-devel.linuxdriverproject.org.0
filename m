@@ -2,73 +2,72 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 27608DB32
-	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Apr 2019 06:35:36 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0F225DB33
+	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Apr 2019 06:37:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id C93EA230ED;
-	Mon, 29 Apr 2019 04:35:33 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AF45D230FE;
+	Mon, 29 Apr 2019 04:37:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IxSmDzxQfqOm; Mon, 29 Apr 2019 04:35:33 +0000 (UTC)
+	with ESMTP id G8fDzeGDdjRp; Mon, 29 Apr 2019 04:37:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 328AC230FD;
-	Mon, 29 Apr 2019 04:35:31 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 37FEF230ED;
+	Mon, 29 Apr 2019 04:37:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C88621BF968
- for <devel@linuxdriverproject.org>; Mon, 29 Apr 2019 04:35:25 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 28C8C1BF968
+ for <devel@linuxdriverproject.org>; Mon, 29 Apr 2019 04:37:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C342E85EA5
- for <devel@linuxdriverproject.org>; Mon, 29 Apr 2019 04:35:25 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 2380F230ED
+ for <devel@linuxdriverproject.org>; Mon, 29 Apr 2019 04:37:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 750Um8TXm0yQ for <devel@linuxdriverproject.org>;
- Mon, 29 Apr 2019 04:35:25 +0000 (UTC)
+ with ESMTP id 69oLc0wVHGGi for <devel@linuxdriverproject.org>;
+ Mon, 29 Apr 2019 04:37:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
- [209.85.215.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4365985CE6
- for <devel@driverdev.osuosl.org>; Mon, 29 Apr 2019 04:35:25 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id k19so4551000pgh.0
- for <devel@driverdev.osuosl.org>; Sun, 28 Apr 2019 21:35:25 -0700 (PDT)
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id 43E1922624
+ for <devel@driverdev.osuosl.org>; Mon, 29 Apr 2019 04:37:05 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id e67so4674583pfe.10
+ for <devel@driverdev.osuosl.org>; Sun, 28 Apr 2019 21:37:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id;
  bh=mHiHv3HQ9faFzIxO2B9sfS+vzSObRQj6POAIshoSRiQ=;
- b=brEFG1bVeq8xkdtgVkXOCL61wFaAjFIO0cYlB67FFUgrCbEaZmq16oIccU4FGzBH5y
- hl9Nuq8nYV1gqTtCufZRN1CcybpZbivtNOtmLGXdTqsxobMKbv5JB1qQg9MbfaYbvbv3
- WlyTYPvNeBRoq+Uts/5MacvXYTqYvKYr95Dh95zCmxv+rhgIvOQZqh/MDZDVGHfjXB10
- 6/rSlqHAJyB1M1ByhLkub50G6d1dX1oeFcRK2ftDKJyd+PhVfSSazHOxLjJc9ZNo//Z2
- OeWSEAn6gi4Y86/itkSo9Vx38d7WR/YLAtO+IfYFsxsxhOJH/7zlxNR40pBpc/WgVPFk
- mziw==
+ b=B59Qf5x1z6kyQzoUOfXBNffjlJcAB6kCe1ckXWE+0kQ8oCocURaexoS67ewY8VO2o/
+ GfoGS/IEEfQI4TU4vPihr+cK0t1IYhzAgcKean9X3QlQjvjqM3PCQCqJwnr1tAL18syO
+ 5AH/aGDB3kHIaKtFyAQuVXbP9IsBSB1Ey5W0OemA+sfc5fYK6MYpiq039kTS91elKJto
+ Blb3X62hiTzZJFn0gdiXGLudasktCbkTfOapizovR4ioFxjxvB34xCIqjk5IOtoc44Fe
+ nFKf85fipTL+MJ7qF1XqhZkv0TJ0B8D2/K9GdXbV6AdckgIuJduNa5Escx0smrSKpuRP
+ rP3A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id;
  bh=mHiHv3HQ9faFzIxO2B9sfS+vzSObRQj6POAIshoSRiQ=;
- b=BME9bO1Jz2JdcUqc+7hp5UAHp49JI6ZRJboSy7BGkGnq/SreZrp8j48ve6LO06Uhry
- r8ngxsKW8uBn5YMZYQnvineSOGR1ZSRL16UemineKxpNeqGwi3oAy1e3Pe+jLb7GuxE+
- owe56WR6r1+gtTAmmWsiG8ryNf8F5L5Q0tpXVDOXYJL4y080Pq9yD01VaOrcxWs3un7W
- MKdrPsThS/Z0Q6LxatjNdmHMazNUlp9xGXQMqxz7XTP2kHDcdvj2LyaMrbBEZxTcLYlV
- Yt3zwfT1GJBGszpHCb+HSYexC0kua78vdwl09yaGDMiaqHucUDc3dpfYR/K1KS82wOs9
- +8Og==
-X-Gm-Message-State: APjAAAUaNok4eVXq0vP9bzyDdT+9GTKKskNqlS+BVWXZWN6Z42I76lok
- 4mE0fhL3o5VSlj22liq7A2k=
-X-Google-Smtp-Source: APXvYqxrvmP324ab6AxgwTnHfSdS8IggIIMZxCmw1gWn2iuwEzjgzC2lV+NhzcLL1jwzGtK5eOOLFA==
-X-Received: by 2002:a62:304:: with SMTP id 4mr59086110pfd.99.1556512524761;
- Sun, 28 Apr 2019 21:35:24 -0700 (PDT)
+ b=cKQkmFzHXzrN7x/srzpgbQwRn6taaLC2245RhnWjO9k/4h4Ig9bn6msXLDhe4QONM8
+ W5pDT3wyeWOX5y9fY8LIHlJRQ37l9259CUjFy4cIHmHETIg3wuts7hUJwhpQrnWOQ6LK
+ sB+g+LEM0ecZDcPz2AGG83gGOIGXBG9V65gmkyPO3zw6NCcmI0TYKEMiwZUAFque2sU/
+ 4QFIStaGLewyEZ6Uti8a9WsdaDwTK8bMKL4bXtvfBvTZWoVc7UqL0baXB5OmpnXVTtPs
+ n5o2Qi3kkwOq5dr4cM4+vY+jRww35gSQlox00eYC6qvWM8IdYWOxyhc/MZ3UGlODe7W4
+ JjDQ==
+X-Gm-Message-State: APjAAAVFGRoH/5s7ugA8Gb3oO8Ga1qleMcYTDYOflFvN8ksiffhkExWi
+ vW/ihtOVs9rzOhcPngsZobc=
+X-Google-Smtp-Source: APXvYqzCuRiLYvNfKIMHqlM0coS7XSbHyK/K9w1wTBIFs3Kv9F7w5UfbBev5TuuLLk7Hi2yonTKh5A==
+X-Received: by 2002:aa7:943b:: with SMTP id y27mr59996451pfo.59.1556512624927; 
+ Sun, 28 Apr 2019 21:37:04 -0700 (PDT)
 Received: from localhost.localdomain ([2405:204:12a5:ab58:559f:ec82:1c85:ce7])
  by smtp.gmail.com with ESMTPSA id
- a3sm51151579pfn.182.2019.04.28.21.35.19
+ g2sm54201297pfd.134.2019.04.28.21.37.00
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sun, 28 Apr 2019 21:35:24 -0700 (PDT)
+ Sun, 28 Apr 2019 21:37:04 -0700 (PDT)
 From: Vatsala Narang <vatsalanarang@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 2/2] staging: rtl8723bs: core: Remove else after return
- statement.
-Date: Mon, 29 Apr 2019 10:05:11 +0530
-Message-Id: <20190429043511.27977-1-vatsalanarang@gmail.com>
+Subject: [PATCH] staging: rtl8723bs: core: Remove else after return statement.
+Date: Mon, 29 Apr 2019 10:06:53 +0530
+Message-Id: <20190429043653.28054-1-vatsalanarang@gmail.com>
 X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
