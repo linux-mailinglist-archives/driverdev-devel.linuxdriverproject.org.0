@@ -2,78 +2,74 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B3E40B6B3
-	for <lists+driverdev-devel@lfdr.de>; Sun, 28 Apr 2019 22:35:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 27608DB32
+	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Apr 2019 06:35:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 73E43230FB;
-	Sun, 28 Apr 2019 20:35:53 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C93EA230ED;
+	Mon, 29 Apr 2019 04:35:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kYS8rzRx1F1G; Sun, 28 Apr 2019 20:35:52 +0000 (UTC)
+	with ESMTP id IxSmDzxQfqOm; Mon, 29 Apr 2019 04:35:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 20CB62306F;
-	Sun, 28 Apr 2019 20:35:50 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 328AC230FD;
+	Mon, 29 Apr 2019 04:35:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5038D1BF955
- for <devel@linuxdriverproject.org>; Sun, 28 Apr 2019 20:35:47 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C88621BF968
+ for <devel@linuxdriverproject.org>; Mon, 29 Apr 2019 04:35:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4BB7421577
- for <devel@linuxdriverproject.org>; Sun, 28 Apr 2019 20:35:47 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id C342E85EA5
+ for <devel@linuxdriverproject.org>; Mon, 29 Apr 2019 04:35:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HWESLjKPjRnM for <devel@linuxdriverproject.org>;
- Sun, 28 Apr 2019 20:35:46 +0000 (UTC)
+ with ESMTP id 750Um8TXm0yQ for <devel@linuxdriverproject.org>;
+ Mon, 29 Apr 2019 04:35:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
- [209.85.128.66])
- by silver.osuosl.org (Postfix) with ESMTPS id 1CD4D21514
- for <devel@driverdev.osuosl.org>; Sun, 28 Apr 2019 20:35:46 +0000 (UTC)
-Received: by mail-wm1-f66.google.com with SMTP id y197so12600722wmd.0
- for <devel@driverdev.osuosl.org>; Sun, 28 Apr 2019 13:35:46 -0700 (PDT)
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4365985CE6
+ for <devel@driverdev.osuosl.org>; Mon, 29 Apr 2019 04:35:25 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id k19so4551000pgh.0
+ for <devel@driverdev.osuosl.org>; Sun, 28 Apr 2019 21:35:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=references:user-agent:from:to:cc:subject:in-reply-to:date
- :message-id:mime-version;
- bh=IZAy47XcoSM8oaf+24nONRYgmpJ1wMLHcNESne/0ILE=;
- b=BroiY2sHfoh63xVR0xXA5FXbM+VHAv1rv4LsbOwztaw9UfMhfLyeXOlbSaHyKuEg3k
- XV1Co4muhFvyu6AOZPktVSecY55Td+EDeBTF+CWw83W11mmeAX45FOEHpyjxXGC/dybh
- DEIs4chJOLQkE1zLYhBwbsN56bT1rmrwXEz7grVuxTAtOQJw1Oq3PD/Nn+y92/UrnlFQ
- NlWcxlr9o6DAuvezVY5EQmCSS1fhMcZpzuSDDxB2giJ9OQZIytDUZedM0w7z7LvqlIVU
- tTmMTvruGpltiUUT0LDMgn+yJV0o1UAvVjErnA8ZjZUQ5qPMIYmBE/RZwaOBCB7HBDZ5
- CPAA==
+ h=from:to:cc:subject:date:message-id;
+ bh=mHiHv3HQ9faFzIxO2B9sfS+vzSObRQj6POAIshoSRiQ=;
+ b=brEFG1bVeq8xkdtgVkXOCL61wFaAjFIO0cYlB67FFUgrCbEaZmq16oIccU4FGzBH5y
+ hl9Nuq8nYV1gqTtCufZRN1CcybpZbivtNOtmLGXdTqsxobMKbv5JB1qQg9MbfaYbvbv3
+ WlyTYPvNeBRoq+Uts/5MacvXYTqYvKYr95Dh95zCmxv+rhgIvOQZqh/MDZDVGHfjXB10
+ 6/rSlqHAJyB1M1ByhLkub50G6d1dX1oeFcRK2ftDKJyd+PhVfSSazHOxLjJc9ZNo//Z2
+ OeWSEAn6gi4Y86/itkSo9Vx38d7WR/YLAtO+IfYFsxsxhOJH/7zlxNR40pBpc/WgVPFk
+ mziw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:references:user-agent:from:to:cc:subject
- :in-reply-to:date:message-id:mime-version;
- bh=IZAy47XcoSM8oaf+24nONRYgmpJ1wMLHcNESne/0ILE=;
- b=IMn6ibfhBtyZsRVgDhRQJuQoxwaF2C0Y0Fpd+CZ5fFLrekyZR0/PD3jAla2Rh01PRu
- PiBDBvx71QKt8vcJYvDfLxmqd0Lc66A/2GKJQfxGqzN3Z0dsiJqbqekwktSkkKDdlD8e
- /ytWFtjLREd4OyWBU33LCfVS5mGcOYlKLcCZ76nGV2HTzRpJHDWywktul9JTHE62P9aF
- UPbuYvEN8Z6plH2pujLYMBo0s+nCXmInaJDmtkcdSJ0gh9I9xhXY0FoE+eZt45HeYGtf
- RHvluyyUu6ICr3Ukwc4lRuPiS4AAClQKu1NIjD61k3ezLEJ3i5Ao3B6sfhqwcJWh9A3x
- 0oRQ==
-X-Gm-Message-State: APjAAAWSLwHYqhS2EBrVdiIlGu2ZXGG7rJ73vMPgAHpnWCT/1FM5sGSO
- QKMA1NboEOk9iHIRsJuWXY4=
-X-Google-Smtp-Source: APXvYqzIJ5IbEB6QgZ35qPVMUP+lOzBHASkLpXOrREvmF5t+xGKUFobpaLc0Fmm5yCDeE3X7L7yC1g==
-X-Received: by 2002:a1c:4d1a:: with SMTP id o26mr2423373wmh.133.1556483744571; 
- Sun, 28 Apr 2019 13:35:44 -0700 (PDT)
-Received: from arch-late (a109-49-46-234.cpe.netcabo.pt. [109.49.46.234])
- by smtp.gmail.com with ESMTPSA id e7sm28046130wme.37.2019.04.28.13.35.43
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Sun, 28 Apr 2019 13:35:43 -0700 (PDT)
-References: <20190412164400.1270-1-rui.silva@linaro.org>
- <a375ed17-72e3-21d7-59c1-60b1fbe4b166@gmail.com>
-User-agent: mu4e 1.2.0; emacs 27.0.50
-From: Rui Miguel Silva <rmfrfs@gmail.com>
-To: driverdev-devel@linuxdriverproject.org
-Subject: Re: [PATCH] media: staging/imx: add media device to capture register
-In-reply-to: <a375ed17-72e3-21d7-59c1-60b1fbe4b166@gmail.com>
-Date: Sun, 28 Apr 2019 21:35:42 +0100
-Message-ID: <m3wojdx3z5.fsf@gmail.com>
-MIME-Version: 1.0
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=mHiHv3HQ9faFzIxO2B9sfS+vzSObRQj6POAIshoSRiQ=;
+ b=BME9bO1Jz2JdcUqc+7hp5UAHp49JI6ZRJboSy7BGkGnq/SreZrp8j48ve6LO06Uhry
+ r8ngxsKW8uBn5YMZYQnvineSOGR1ZSRL16UemineKxpNeqGwi3oAy1e3Pe+jLb7GuxE+
+ owe56WR6r1+gtTAmmWsiG8ryNf8F5L5Q0tpXVDOXYJL4y080Pq9yD01VaOrcxWs3un7W
+ MKdrPsThS/Z0Q6LxatjNdmHMazNUlp9xGXQMqxz7XTP2kHDcdvj2LyaMrbBEZxTcLYlV
+ Yt3zwfT1GJBGszpHCb+HSYexC0kua78vdwl09yaGDMiaqHucUDc3dpfYR/K1KS82wOs9
+ +8Og==
+X-Gm-Message-State: APjAAAUaNok4eVXq0vP9bzyDdT+9GTKKskNqlS+BVWXZWN6Z42I76lok
+ 4mE0fhL3o5VSlj22liq7A2k=
+X-Google-Smtp-Source: APXvYqxrvmP324ab6AxgwTnHfSdS8IggIIMZxCmw1gWn2iuwEzjgzC2lV+NhzcLL1jwzGtK5eOOLFA==
+X-Received: by 2002:a62:304:: with SMTP id 4mr59086110pfd.99.1556512524761;
+ Sun, 28 Apr 2019 21:35:24 -0700 (PDT)
+Received: from localhost.localdomain ([2405:204:12a5:ab58:559f:ec82:1c85:ce7])
+ by smtp.gmail.com with ESMTPSA id
+ a3sm51151579pfn.182.2019.04.28.21.35.19
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Sun, 28 Apr 2019 21:35:24 -0700 (PDT)
+From: Vatsala Narang <vatsalanarang@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH 2/2] staging: rtl8723bs: core: Remove else after return
+ statement.
+Date: Mon, 29 Apr 2019 10:05:11 +0530
+Message-Id: <20190429043511.27977-1-vatsalanarang@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,137 +82,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Hans Verkuil <hverkuil@xs4all.nl>, devel@driverdev.osuosl.org,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Julia.Lawall@lip6.fr,
+ Vatsala Narang <vatsalanarang@gmail.com>, hadess@hadess.net,
+ Larry.Finger@lwfinger.net
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Steve,
-On Sun 28 Apr 2019 at 19:53, Steve Longerbeam wrote:
-> Hi Rui,
->
-> On second thought, there is no reason to pass the media device to 
-> imx_media_capture_device_register(), because it is already available via 
-> v4l2_dev->mdev. I will be posting a patch in v2 of the "Switch to sync 
-> registration for IPU subdevs" series that fixes this.
+Remove else after return statement as it is not useful. Issue found
+using checkpatch.
 
-That make sense to me. I've already took a look to v2 and I like
-the ideas in there, I will give it a proper test and review
-tomorrow. Will send feedback afterwards.
-
-Thanks so much for your work on this.
-
+Signed-off-by: Vatsala Narang <vatsalanarang@gmail.com>
 ---
-Cheers,
-	Rui
+ drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
->
-> Steve
->
->
-> On 4/12/19 9:44 AM, Rui Miguel Silva wrote:
->> When register the capture media device it is assumed that the device
->> data is the media device. In the imx6 case is but in the imx7 is not
->> case. The device data is the csi structure.
->>
->> Add the explicit argument of the media device that we want to
->> associate with the capture device.
->>
->> Reported-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
->> Signed-off-by: Rui Miguel Silva <rui.silva@linaro.org>
->> ---
->>   drivers/staging/media/imx/imx-ic-prpencvf.c   | 2 +-
->>   drivers/staging/media/imx/imx-media-capture.c | 6 +++---
->>   drivers/staging/media/imx/imx-media-csi.c     | 2 +-
->>   drivers/staging/media/imx/imx-media.h         | 3 ++-
->>   drivers/staging/media/imx/imx7-media-csi.c    | 2 +-
->>   5 files changed, 8 insertions(+), 7 deletions(-)
->>
->> diff --git a/drivers/staging/media/imx/imx-ic-prpencvf.c b/drivers/staging/media/imx/imx-ic-prpencvf.c
->> index 5c8e6ad8c025..3ca1422f6154 100644
->> --- a/drivers/staging/media/imx/imx-ic-prpencvf.c
->> +++ b/drivers/staging/media/imx/imx-ic-prpencvf.c
->> @@ -1270,7 +1270,7 @@ static int prp_registered(struct v4l2_subdev *sd)
->>   	if (ret)
->>   		return ret;
->>   
->> -	ret = imx_media_capture_device_register(priv->vdev);
->> +	ret = imx_media_capture_device_register(priv->md, priv->vdev);
->>   	if (ret)
->>   		return ret;
->>   
->> diff --git a/drivers/staging/media/imx/imx-media-capture.c b/drivers/staging/media/imx/imx-media-capture.c
->> index 9703c85b19c4..7688238a3396 100644
->> --- a/drivers/staging/media/imx/imx-media-capture.c
->> +++ b/drivers/staging/media/imx/imx-media-capture.c
->> @@ -706,7 +706,8 @@ void imx_media_capture_device_error(struct imx_media_video_dev *vdev)
->>   }
->>   EXPORT_SYMBOL_GPL(imx_media_capture_device_error);
->>   
->> -int imx_media_capture_device_register(struct imx_media_video_dev *vdev)
->> +int imx_media_capture_device_register(struct imx_media_dev *md,
->> +				      struct imx_media_video_dev *vdev)
->>   {
->>   	struct capture_priv *priv = to_capture_priv(vdev);
->>   	struct v4l2_subdev *sd = priv->src_sd;
->> @@ -715,8 +716,7 @@ int imx_media_capture_device_register(struct imx_media_video_dev *vdev)
->>   	struct v4l2_subdev_format fmt_src;
->>   	int ret;
->>   
->> -	/* get media device */
->> -	priv->md = dev_get_drvdata(sd->v4l2_dev->dev);
->> +	priv->md = md;
->>   
->>   	vfd->v4l2_dev = sd->v4l2_dev;
->>   
->> diff --git a/drivers/staging/media/imx/imx-media-csi.c b/drivers/staging/media/imx/imx-media-csi.c
->> index 3b7517348666..3408ec023d29 100644
->> --- a/drivers/staging/media/imx/imx-media-csi.c
->> +++ b/drivers/staging/media/imx/imx-media-csi.c
->> @@ -1806,7 +1806,7 @@ static int csi_registered(struct v4l2_subdev *sd)
->>   	if (ret)
->>   		goto free_fim;
->>   
->> -	ret = imx_media_capture_device_register(priv->vdev);
->> +	ret = imx_media_capture_device_register(priv->md, priv->vdev);
->>   	if (ret)
->>   		goto free_fim;
->>   
->> diff --git a/drivers/staging/media/imx/imx-media.h b/drivers/staging/media/imx/imx-media.h
->> index ae964c8d5be1..c3a8512bd10f 100644
->> --- a/drivers/staging/media/imx/imx-media.h
->> +++ b/drivers/staging/media/imx/imx-media.h
->> @@ -271,7 +271,8 @@ int imx_media_of_add_csi(struct imx_media_dev *imxmd,
->>   struct imx_media_video_dev *
->>   imx_media_capture_device_init(struct v4l2_subdev *src_sd, int pad);
->>   void imx_media_capture_device_remove(struct imx_media_video_dev *vdev);
->> -int imx_media_capture_device_register(struct imx_media_video_dev *vdev);
->> +int imx_media_capture_device_register(struct imx_media_dev *md,
->> +				       struct imx_media_video_dev *vdev);
->>   void imx_media_capture_device_unregister(struct imx_media_video_dev *vdev);
->>   struct imx_media_buffer *
->>   imx_media_capture_device_next_buf(struct imx_media_video_dev *vdev);
->> diff --git a/drivers/staging/media/imx/imx7-media-csi.c b/drivers/staging/media/imx/imx7-media-csi.c
->> index 3fba7c27c0ec..a907c5feb3eb 100644
->> --- a/drivers/staging/media/imx/imx7-media-csi.c
->> +++ b/drivers/staging/media/imx/imx7-media-csi.c
->> @@ -1124,7 +1124,7 @@ static int imx7_csi_registered(struct v4l2_subdev *sd)
->>   	if (ret < 0)
->>   		return ret;
->>   
->> -	ret = imx_media_capture_device_register(csi->vdev);
->> +	ret = imx_media_capture_device_register(csi->imxmd, csi->vdev);
->>   	if (ret < 0)
->>   		return ret;
->>   
->
-> _______________________________________________
-> devel mailing list
-> devel@linuxdriverproject.org
-> http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
+index c6ae29b3e599..d4842ba64951 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
++++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
+@@ -697,10 +697,9 @@ unsigned int OnProbeReq(struct adapter *padapter, union recv_frame *precv_frame)
+ 					psta->aid = 0;
+ 					DBG_871X("no room for more AIDs\n");
+ 					return _SUCCESS;
+-				} else {
+-					pstapriv->sta_aid[psta->aid - 1] = psta;
+-					DBG_871X("allocate new AID = (%d)\n", psta->aid);
+ 				}
++				pstapriv->sta_aid[psta->aid - 1] = psta;
++				DBG_871X("allocate new AID = (%d)\n", psta->aid);
+ 			}
+ 
+ 			psta->qos_option = 1;
+-- 
+2.17.1
 
 _______________________________________________
 devel mailing list
