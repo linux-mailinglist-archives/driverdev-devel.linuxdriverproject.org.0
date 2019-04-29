@@ -1,79 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 21380E729
-	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Apr 2019 18:01:31 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8E1BA863A3;
-	Mon, 29 Apr 2019 16:01:28 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PkTBUfrAZARn; Mon, 29 Apr 2019 16:01:28 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D625F863D5;
-	Mon, 29 Apr 2019 16:01:26 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7CFA61BF588
- for <devel@linuxdriverproject.org>; Mon, 29 Apr 2019 16:01:24 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6B35BE999
+	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Apr 2019 19:59:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 79B3E85A96
- for <devel@linuxdriverproject.org>; Mon, 29 Apr 2019 16:01:24 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9A0A485BCA;
+	Mon, 29 Apr 2019 17:59:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id OHYuleedDMQV; Mon, 29 Apr 2019 17:59:50 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A98E885BCD;
+	Mon, 29 Apr 2019 17:59:48 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A57521BF23B
+ for <devel@linuxdriverproject.org>; Mon, 29 Apr 2019 17:59:46 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id A299622C44
+ for <devel@linuxdriverproject.org>; Mon, 29 Apr 2019 17:59:46 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id o5bd9Y9pJOoW for <devel@linuxdriverproject.org>;
- Mon, 29 Apr 2019 16:01:23 +0000 (UTC)
+ with ESMTP id iGWbzToZkw3A for <devel@linuxdriverproject.org>;
+ Mon, 29 Apr 2019 17:59:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
- [209.85.214.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id DC1AD85A88
- for <devel@driverdev.osuosl.org>; Mon, 29 Apr 2019 16:01:23 +0000 (UTC)
-Received: by mail-pl1-f196.google.com with SMTP id n8so5262719plp.10
- for <devel@driverdev.osuosl.org>; Mon, 29 Apr 2019 09:01:23 -0700 (PDT)
+Received: from mail-qk1-f196.google.com (mail-qk1-f196.google.com
+ [209.85.222.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id 8119822270
+ for <devel@driverdev.osuosl.org>; Mon, 29 Apr 2019 17:59:45 +0000 (UTC)
+Received: by mail-qk1-f196.google.com with SMTP id p19so6475278qkm.10
+ for <devel@driverdev.osuosl.org>; Mon, 29 Apr 2019 10:59:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=rPf+Jg9gkUTB3UU7vbrJ21JITxZ048x6tuDHzRVFfOM=;
- b=IBR54Z9leOSJOoz0krDwbSwvuKCEsLcMS1x+CJIriQ/b+KZcKHLbDTSd6mXnP8BmDK
- 8IyMS+KsjdDurLlCaV5yzpzFMprUn2tSgjZRr3Re3TeEiKJcgzeNVZ7dsMH38LnD1YDx
- x8yhr7ZPYa4Gxv2PR4w42VlN8ylCY0ExzCrRYK+gINKwXYkgYnlCK9fiwsGE1pXhXBh9
- WjlvGEhOrnZ7Heu0x5VkBbTcv99egOXqwxucL4wyACyMSrZ2Bp/ZkBiPtZYKdVQXfEVr
- 4EYhtppU/D8reOG9JrzzUp8alISqqKB/8EXQShpnO5n0pALSpQQlca1J5MQW0nbcrPt3
- VPiw==
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :content-transfer-encoding:user-agent;
+ bh=yL+SmVseEfdaIJChh77smjXMJCyTOeRPG4sdYAGm78c=;
+ b=S8Wpy22pQ6+hHsvpX2spQhaJkQhcdRhV1lH5EphIHaicUTdZPYoN+iogQNM0dyiXFD
+ 8oh0bD1NbBysGrV6tXX47TnTl0LQ/OQGgnNdWhWgVEt3W5rYcDR0+JeWI3aPxahnumrX
+ VLeYIY0L9YsEKF8XT28Igf9rH27Wcs/AtZyES9YYsu2NR28HCKJuogcp9Pz1CgMLDPL8
+ a3O+37wpF5W1NfRNwLn1Syjw39rnQ7K2bzoTcF+W5OJJxVdiLHVejUrL0LX6bBwz5rw7
+ 6UAjZNwhMmK2E/h7CJre3B+89hXFtXGNhp21E6gTXQ4+Es9VBO0/vmFlDjmJfeLPUKyg
+ Drkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=rPf+Jg9gkUTB3UU7vbrJ21JITxZ048x6tuDHzRVFfOM=;
- b=jhrWOuvSUwzcXp71wxNIRiKvXoWIEqHTwtigjH5HiH6jJVkj2ZM1lX43wuDsxfFo8S
- tOfzc3Emnd5SYkNrtYCBj8oV0fZT5AU1flHblSNbGfVYx4be7ZfjnxsoBbMLprMDsKVX
- ojyK/T6ji6nxlGystffcoOILFyi3N2acTwFieXA+DWmaRUpszLVBDwdOZ6QdYopU4nsE
- 8F5nTf3/8VtFUd7FFRi5AMVPzQcvQ9yHKSLBQxPF+TICQFH8c1bI3Qn5sGJUN3Jaj11z
- 5JXxbt6/Azm1U0Ur9P4lDru/GWeqkIYXuftPUnpj/OqBftlTKuy0hQcIBGoVXGQ5ryOy
- Ub3A==
-X-Gm-Message-State: APjAAAUe/pfk5pXVDthebvPa/o/BaEYqf0dwDD/Nq6E3SWWZIWsRlClJ
- M1hXwjFOVisCaOVMUrGiM/Y=
-X-Google-Smtp-Source: APXvYqwZ+NE3AuT1tjwRUxhJET5X/ePxcDnTFesOqzdpklno+d+pvi8HaUHfAGZHALy4yPR+GM4rFQ==
-X-Received: by 2002:a17:902:8f88:: with SMTP id
- z8mr56305861plo.54.1556553683204; 
- Mon, 29 Apr 2019 09:01:23 -0700 (PDT)
-Received: from localhost.localdomain ([49.206.11.135])
- by smtp.gmail.com with ESMTPSA id j20sm48034979pfn.84.2019.04.29.09.01.18
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 29 Apr 2019 09:01:22 -0700 (PDT)
-From: Vandana BN <bnvandana@gmail.com>
-To: gregkh@linuxfoundation.org, straube.linux@gmail.com, quytelda@tamalin.org,
- colin.king@canonical.com, hdegoede@redhat.com, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v4] staging: rtl8723bs: Fix checkpatch.pl warnings
-Date: Mon, 29 Apr 2019 21:30:45 +0530
-Message-Id: <20190429160045.13110-1-bnvandana@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190426131249.16198-1-bnvandana@gmail.com>
-References: <20190426131249.16198-1-bnvandana@gmail.com>
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:content-transfer-encoding:user-agent;
+ bh=yL+SmVseEfdaIJChh77smjXMJCyTOeRPG4sdYAGm78c=;
+ b=uFnTgF3ReqWcb77bwAhk3dZjUnh9p5RZZoj5ypQQOgmeFmssD6BCBsg4Fnxe1U5mQH
+ afmhcLOqTxLBtxVYMlj4ejwsrESsMtDLaDMu54wJgwg1oVS1PJv36W+V97iKGeMWCOfd
+ hxmONYkxHTNIrX3bvlBcu0softD6qeuJHrleYsVbPcjQ9syzTZis7B+8WeN0Inmrmq44
+ OWs66qKLqpx19yQDWEDksfYipK3vnEs00onb4iV+pfGoeePHhStRzkR6EmKY1DpDOyhW
+ 2QOSjB9WNkPFkIYLra1KpUzdQBRaSizZuHjTGoJZnsBlYiSMofOwwtmi1gTlGIgfg62u
+ Uwlw==
+X-Gm-Message-State: APjAAAUPHEbzltkHAzIixQ+y2l8zALp7ATihGBF7buq9YEEFL9ho/pd1
+ WkZJf4ckfmfrNb2yImQMtjM=
+X-Google-Smtp-Source: APXvYqwqAQNE+Ut09opIpLJIGSCDS7bx5geJX+Lthjy6net0ioLipxgWRdOsP0mj9ccj7uDDu0D9ug==
+X-Received: by 2002:ae9:c20b:: with SMTP id j11mr45839310qkg.357.1556560784513; 
+ Mon, 29 Apr 2019 10:59:44 -0700 (PDT)
+Received: from smtp.gmail.com ([143.107.45.1])
+ by smtp.gmail.com with ESMTPSA id y18sm7542950qkf.7.2019.04.29.10.59.41
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Mon, 29 Apr 2019 10:59:44 -0700 (PDT)
+Date: Mon, 29 Apr 2019 14:59:40 -0300
+From: =?utf-8?B?Sm/Do28=?= Seckler <joaoseckler@gmail.com>
+To: lars@metafoo.de, Michael.Hennerich@analog.com, stefan.popa@analog.com,
+ jic23@kernel.org, knaack.h@gmx.de, pmeerw@pmeerw.net,
+ gregkh@linuxfoundation.org
+Subject: [PATCH] staging: iio: adt7316: match parenthesis alignment
+Message-ID: <20190429175939.2jvt4qwrtbmpvhl6@smtp.gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+User-Agent: NeoMutt/20170113 (1.7.2)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,48 +86,29 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Vandana BN <bnvandana@gmail.com>,
- linux-kernel-mentees@lists.linuxfoundation.org, skhan@linuxfoundation.org
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, kernel-usp@googlegroups.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch resolves coding style brace warning and constant on right warning.
-WARNING: Comparisons should place the constant on the right side of the test
-WARNING: braces {} are not necessary for single statement blocks
-CHECK: Comparison to NULL could be written "!pbuf"
-
-Signed-off-by: Vandana BN <bnvandana@gmail.com>
-------
- v2- Edited commit message and subject
- v3- Edited commit message
- v4- changed NULL check to use !pbuf
-------
----
- drivers/staging/rtl8723bs/core/rtw_debug.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/drivers/staging/rtl8723bs/core/rtw_debug.c b/drivers/staging/rtl8723bs/core/rtw_debug.c
-index 0de1e12a676e..9f8446ccf771 100644
---- a/drivers/staging/rtl8723bs/core/rtw_debug.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_debug.c
-@@ -1425,9 +1425,8 @@ int proc_get_btcoex_info(struct seq_file *m, void *v)
- 	padapter = (struct adapter *)rtw_netdev_priv(dev);
- 
- 	pbuf = rtw_zmalloc(bufsize);
--	if (NULL == pbuf) {
-+	if (!pbuf)
- 		return -ENOMEM;
--	}
- 
- 	rtw_btcoex_DisplayBtCoexInfo(padapter, pbuf, bufsize);
- 
--- 
-2.17.1
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+VGhpcyBwYXRjaCBzb2x2ZXMgdGhlIGZvbGxvd2luZyBjaGVja3BhdGNoLnBsIG1lc3NhZ2U6CkNI
+RUNLOiBBbGlnbm1lbnQgc2hvdWxkIG1hdGNoIG9wZW4gcGFyZW50aGVzaXMuClRoaXMgbWFrZXMg
+dGhlIGZpbGUgbW9yZSBjb21wbGlhbnQgd2l0aCB0aGUgcHJlZmVycmVkIGNvZGluZyBzdHlsZSBm
+b3IKdGhlIExpbnV4IGtlcm5lbC4KClNpZ25lZC1vZmYtYnk6IEpvw6NvIFNlY2tsZXIgPGpvYW9z
+ZWNrbGVyQGdtYWlsLmNvbT4KLS0tCiBkcml2ZXJzL3N0YWdpbmcvaWlvL2FkZGFjL2FkdDczMTYu
+YyB8IDIgKy0KIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQoK
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9paW8vYWRkYWMvYWR0NzMxNi5jIGIvZHJpdmVy
+cy9zdGFnaW5nL2lpby9hZGRhYy9hZHQ3MzE2LmMKaW5kZXggYjZhNjVlZThkNTU4Li4zN2NlNTYz
+Y2IwZTEgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy9paW8vYWRkYWMvYWR0NzMxNi5jCisr
+KyBiL2RyaXZlcnMvc3RhZ2luZy9paW8vYWRkYWMvYWR0NzMxNi5jCkBAIC0yMTU0LDcgKzIxNTQs
+NyBAQCBpbnQgYWR0NzMxNl9wcm9iZShzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBhZHQ3MzE2
+X2J1cyAqYnVzLAogCQljaGlwLT5kYWNfYml0cyA9IDg7CiAKIAljaGlwLT5sZGFjX3BpbiA9IGRl
+dm1fZ3Bpb2RfZ2V0X29wdGlvbmFsKGRldiwgImFkaSxsZGFjIiwKLQkJCQkJCUdQSU9EX09VVF9M
+T1cpOworCQkJCQkJIEdQSU9EX09VVF9MT1cpOwogCWlmIChJU19FUlIoY2hpcC0+bGRhY19waW4p
+KSB7CiAJCXJldCA9IFBUUl9FUlIoY2hpcC0+bGRhY19waW4pOwogCQlkZXZfZXJyKGRldiwgIkZh
+aWxlZCB0byByZXF1ZXN0IGxkYWMgR1BJTzogJWRcbiIsIHJldCk7Ci0tIAoyLjExLjAKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcg
+bGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhk
+cml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
