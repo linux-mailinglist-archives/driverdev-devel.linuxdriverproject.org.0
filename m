@@ -1,46 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id F3269DBCB
-	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Apr 2019 08:11:31 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4CF75DBCC
+	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Apr 2019 08:11:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 8748E231AB;
-	Mon, 29 Apr 2019 06:11:29 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 41D67854A7;
+	Mon, 29 Apr 2019 06:11:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZAkGwr4s561f; Mon, 29 Apr 2019 06:11:27 +0000 (UTC)
+	with ESMTP id oVNFVYK2JQ_S; Mon, 29 Apr 2019 06:11:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4C7D8230ED;
-	Mon, 29 Apr 2019 06:11:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 25B29855A1;
+	Mon, 29 Apr 2019 06:11:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E71011BF2B3
- for <devel@linuxdriverproject.org>; Mon, 29 Apr 2019 06:11:23 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 132501BF2B3
+ for <devel@linuxdriverproject.org>; Mon, 29 Apr 2019 06:11:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DE700858B5
- for <devel@linuxdriverproject.org>; Mon, 29 Apr 2019 06:11:23 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 10B8C8545F
+ for <devel@linuxdriverproject.org>; Mon, 29 Apr 2019 06:11:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fPvDdkG9Ztrt for <devel@linuxdriverproject.org>;
- Mon, 29 Apr 2019 06:11:22 +0000 (UTC)
+ with ESMTP id 1Q7VBVoYcu9e for <devel@linuxdriverproject.org>;
+ Mon, 29 Apr 2019 06:11:34 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from www.osadl.org (www.osadl.org [62.245.132.105])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2A2E18527F
- for <devel@driverdev.osuosl.org>; Mon, 29 Apr 2019 06:11:21 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 77CA085187
+ for <devel@driverdev.osuosl.org>; Mon, 29 Apr 2019 06:11:34 +0000 (UTC)
 Received: from debian01.hofrr.at (178.115.242.59.static.drei.at
  [178.115.242.59])
- by www.osadl.org (8.13.8/8.13.8/OSADL-2007092901) with ESMTP id x3T6BEma005090;
- Mon, 29 Apr 2019 08:11:14 +0200
+ by www.osadl.org (8.13.8/8.13.8/OSADL-2007092901) with ESMTP id x3T6BEmb005090;
+ Mon, 29 Apr 2019 08:11:27 +0200
 From: Nicholas Mc Guire <hofrat@osadl.org>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH V2] staging: fieldbus: anybus-s: force endiannes annotation
-Date: Mon, 29 Apr 2019 08:05:39 +0200
-Message-Id: <1556517940-13725-1-git-send-email-hofrat@osadl.org>
+Subject: [PATCH V3] staging: fieldbus: anybus-s: consolidate
+ wait_for_completion_timeout return handling
+Date: Mon, 29 Apr 2019 08:05:40 +0200
+Message-Id: <1556517940-13725-2-git-send-email-hofrat@osadl.org>
 X-Mailer: git-send-email 2.1.4
+In-Reply-To: <1556517940-13725-1-git-send-email-hofrat@osadl.org>
+References: <1556517940-13725-1-git-send-email-hofrat@osadl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,48 +64,58 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-While the endiannes is being handled correctly sparse was unhappy with
-the missing annotation as be16_to_cpu() expects a __be16. The __force
-cast to __be16 makes sparse happy but has no impact on the generated 
-binary.
+wait_for_completion_timeout() returns unsigned long (0 on timeout or
+remaining jiffies) not int - so this type error allows for a
+theoretically int overflow - though not in this case where TIMEOUT is
+only HZ*2). To fix this type inconsistency the completion is wrapped
+into the if() rather than introducing an additional unsigned long
+variable. 
+
+Along with fixing this type inconsistency the fall-through if is
+consolidated to a single if-block.
 
 Signed-off-by: Nicholas Mc Guire <hofrat@osadl.org>
 ---
 
-Problem reported by sparse
+Problem located with experimental API conformance checking cocci script
 
-V2: As requested by Sven Van Asbroeck <thesven73@gmail.com> make the
-    impact of the patch clear in the commit message.
+V3: As requested by Sven Van Asbroeck <thesven73@gmail.com> cleanup
+    the commit message to make it more clear what the impact of the
+    proposed change is....lets see if this is any better.
 
-As far as I understand sparse here the __force is actually the only 
-solution possible to inform sparse that the endiannes handling is ok
+V2: The original patch's logic was wrong as it was skipping the 
+    fall-through if so using the fix proposed by Sven Van Asbroeck 
+    <thesven73@gmail.com> - This solution also eliminates the need
+    to introduce an additional variable - Thanks !
 
 Patch was compile-tested with. x86_64_defconfig + OF=y, FIELDBUS_DEV=m,
 HMS_ANYBUSS_BUS=m
-
-Verification that the patch has no impact on the binary being generated
-was done by verifying that the diff of the binaries before and after
-applying the patch is empty.
-
+(with an unrelated sparse warnings (cast to restricted __be16))
 
 Patch is against 5.1-rc6 (localversion-next is next-20190426)
 
- drivers/staging/fieldbus/anybuss/host.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/fieldbus/anybuss/host.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/staging/fieldbus/anybuss/host.c b/drivers/staging/fieldbus/anybuss/host.c
-index 6227daf..278acac 100644
+index e34d424..6227daf 100644
 --- a/drivers/staging/fieldbus/anybuss/host.c
 +++ b/drivers/staging/fieldbus/anybuss/host.c
-@@ -1348,7 +1348,7 @@ anybuss_host_common_probe(struct device *dev,
- 	add_device_randomness(&val, 4);
- 	regmap_bulk_read(cd->regmap, REG_FIELDBUS_TYPE, &fieldbus_type,
- 			 sizeof(fieldbus_type));
--	fieldbus_type = be16_to_cpu(fieldbus_type);
-+	fieldbus_type = be16_to_cpu((__force __be16)fieldbus_type);
- 	dev_info(dev, "Fieldbus type: %04X", fieldbus_type);
- 	regmap_bulk_read(cd->regmap, REG_MODULE_SW_V, val, 2);
- 	dev_info(dev, "Module SW version: %02X%02X",
+@@ -1325,11 +1325,11 @@ anybuss_host_common_probe(struct device *dev,
+ 	 *   interrupt came in: ready to go !
+ 	 */
+ 	reset_deassert(cd);
+-	ret = wait_for_completion_timeout(&cd->card_boot, TIMEOUT);
+-	if (ret == 0)
++	if (!wait_for_completion_timeout(&cd->card_boot, TIMEOUT)) {
+ 		ret = -ETIMEDOUT;
+-	if (ret < 0)
+ 		goto err_reset;
++	}
++
+ 	/*
+ 	 * according to the anybus docs, we're allowed to read these
+ 	 * without handshaking / reserving the area
 -- 
 2.1.4
 
