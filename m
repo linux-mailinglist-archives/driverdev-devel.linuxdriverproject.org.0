@@ -1,73 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 84A70E421
-	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Apr 2019 16:01:57 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4FA53E42F
+	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Apr 2019 16:03:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6BBC923337;
-	Mon, 29 Apr 2019 14:01:55 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 10C3487397;
+	Mon, 29 Apr 2019 14:03:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PiyFoN1HToUd; Mon, 29 Apr 2019 14:01:54 +0000 (UTC)
+	with ESMTP id 2ZFBSlzQLuft; Mon, 29 Apr 2019 14:03:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4B32023307;
-	Mon, 29 Apr 2019 14:01:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7EA1C86D41;
+	Mon, 29 Apr 2019 14:03:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4CA2D1BF377
- for <devel@linuxdriverproject.org>; Mon, 29 Apr 2019 14:01:50 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0B3891BF377
+ for <devel@linuxdriverproject.org>; Mon, 29 Apr 2019 14:03:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 49BFB231EF
- for <devel@linuxdriverproject.org>; Mon, 29 Apr 2019 14:01:50 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 0843E86D41
+ for <devel@linuxdriverproject.org>; Mon, 29 Apr 2019 14:03:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VUAsrGPJ+NAO for <devel@linuxdriverproject.org>;
- Mon, 29 Apr 2019 14:01:49 +0000 (UTC)
+ with ESMTP id usaEquYznOZU for <devel@linuxdriverproject.org>;
+ Mon, 29 Apr 2019 14:03:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f194.google.com (mail-oi1-f194.google.com
- [209.85.167.194])
- by silver.osuosl.org (Postfix) with ESMTPS id CD60320797
- for <devel@driverdev.osuosl.org>; Mon, 29 Apr 2019 14:01:49 +0000 (UTC)
-Received: by mail-oi1-f194.google.com with SMTP id l1so6500872oib.0
- for <devel@driverdev.osuosl.org>; Mon, 29 Apr 2019 07:01:49 -0700 (PDT)
+Received: from mail-ot1-f67.google.com (mail-ot1-f67.google.com
+ [209.85.210.67])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C179E86D2D
+ for <devel@driverdev.osuosl.org>; Mon, 29 Apr 2019 14:03:48 +0000 (UTC)
+Received: by mail-ot1-f67.google.com with SMTP id 77so2523072otu.13
+ for <devel@driverdev.osuosl.org>; Mon, 29 Apr 2019 07:03:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=zg2VAolSWzBmZVcirDH3khecUOsjD3mkWFIZwaOymBE=;
- b=VCqhTFYVsxxfua3Q01y1hYgUTno3LKljw5SVUdYSQzm64SsxKFEf2VXgAMkp9PWzvP
- JH7mhmYd8fwzrPFyaha/aWCVr2nO12a29yq6zchS7QqcAAwKN9SFPRSlD0HhwuGVrxBZ
- c4+B+S04RuWdwYPP1qAUmq/bfZvk3oyoydWU9jr9CsQ4ij3oNUqTLJ11MshTQ7QhvrUD
- 0+Y504OZgIxDafwfDgfGM8UhyyOnllsrYpZP5oN3wxi6vQBKNJ7D83xoXhJ4fD3/Nf3t
- doEiU3TJevoMdMHC+0hmAjktiSjR+s7QUATbdVkjfebXZs1SghX7sIT9ZFbQu4bgq+RT
- 9Uqg==
+ :cc; bh=3nbZEajYcruPzq6id7AdlLv792MCTBI+YmufYDAqZQE=;
+ b=PgkptbNYlPk21zA0zOFf5tkW6rkz5xS+hwNIxvYrr0Z0FjU9YBtYNjRLq3zmG9Cd5z
+ gXZGmwGEHL+kNpaS2c5SSQzkLHHM3grcE3UO/+2bIJ7ca/Hlms4PtMqUk4v60YL3NN0s
+ AS69ejY0oud20d0KWzFfLTb9DxnOzHSLZvfJoOdAmkY6XUjLynMCIbD1VkzFu9vOoSLv
+ cw2/fAUs7mXzWInnaaAizx4ifEk0KJOioZV6v9kCDkmWwENlI55WCUVMhHsipAXP1meT
+ y3MHte2ogcR9GBDl6Be9yzZ1jsdqkG/uLz4VdciQP6d1jxFylBzJK6L3nwS47wBP9n7T
+ Vsmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=zg2VAolSWzBmZVcirDH3khecUOsjD3mkWFIZwaOymBE=;
- b=EsH439qNnRcYwj48RD6PWw53L/FtErX94W1U3RmnvR1QwWdM35R85iqdxQGBdwWIyg
- L5SAgirBl3TOwAdtnXvxFXpZFJK3MVD1xF8CnaUI+hQE+NK7qaFb0Daz0eCPzi4PyaPT
- FbExC4R+SZQhGqq6pS6uWPnkt6gC0s6BBztcz28ln3ysI7MV8ND+U+TrMyTam5Kalxep
- w/G5prxu+WicW/T4xRAMqXdhK/ByU8jfXS+dGsy3cLZn/+jDHLCPYMF+D3CHfvw/06VD
- Px5LuMvJZfUhutQLXZKqYhBFd5lyv///2gViYhovzKcfFPJwjC8jwvAoU0IKv+oI69zx
- rp3g==
-X-Gm-Message-State: APjAAAUfsIiz1QVWmLdNsjbg+oFZ/hfi1xs2CmeLf2YBUuZ7IwUzdra0
- 9i0rMUraa8zQ5KU8ou0/FVT8urV5/qjIaQt8yKo=
-X-Google-Smtp-Source: APXvYqz7suEbKwldpa5GjY9BmF02z+nTtQeeRp3CY1mnkeyloRMWO/cKQ8l/njepEzIzUu8Xfqz3sTkCfwOa8nwLQfM=
-X-Received: by 2002:aca:4202:: with SMTP id p2mr14825606oia.169.1556546508930; 
- Mon, 29 Apr 2019 07:01:48 -0700 (PDT)
+ bh=3nbZEajYcruPzq6id7AdlLv792MCTBI+YmufYDAqZQE=;
+ b=JtooVg/PAoTm02w1UeRFH4z4fI5yK++9Ri3KtvqnCyHfakToCJjRsGwpP8bSuVZ+iH
+ ZLOsh5SoYp4OWlzQMJLaYwBb+lswhS0IHpgH8I8Z6VA6uJwpP39e5+J9uRf4ya6KKBoQ
+ RpldGQWxgzIDbTgEw7pZ8wNFt5ZReQHvKgsj9sn0D/Up1Z7pKkKB+9/u58dQiS5WDqm3
+ w2OhXlsUfToSE6FNV9KxP+lqV8kjc4z8RRgB6Ulel5Nr4lp3DUVJZockgoQIIiNfzDea
+ ad6lOwcK0xip6hBpfAN5VQYuC6uhe8uANRGjSrvYS+OYUrLuAqRLtuO9jI9AgglADP/7
+ vk8g==
+X-Gm-Message-State: APjAAAVx91h3FEjUL8eXxqn9K7vADuel/E8FF1Wwy1exPgyog8sqa6hc
+ TWWSyw3p5qjxomvgDlXdW2K3WmR9c+a6RdeKhSM=
+X-Google-Smtp-Source: APXvYqwLxHRFyKBzklDnAsk9KxDUE2OriDGQD6D1ejNY5+eJLkxalL92B5vaGXkmyDo77QB4gn9kd/Cc4AQjO8Yi84Y=
+X-Received: by 2002:a9d:6318:: with SMTP id q24mr23965485otk.95.1556546627790; 
+ Mon, 29 Apr 2019 07:03:47 -0700 (PDT)
 MIME-Version: 1.0
 References: <1556517940-13725-1-git-send-email-hofrat@osadl.org>
- <1556517940-13725-2-git-send-email-hofrat@osadl.org>
-In-Reply-To: <1556517940-13725-2-git-send-email-hofrat@osadl.org>
+In-Reply-To: <1556517940-13725-1-git-send-email-hofrat@osadl.org>
 From: Sven Van Asbroeck <thesven73@gmail.com>
-Date: Mon, 29 Apr 2019 10:01:37 -0400
-Message-ID: <CAGngYiUMbw9c6060vKy=KWe3xzkhKV+H+hFqCt2=VOa0hn1zNQ@mail.gmail.com>
-Subject: Re: [PATCH V3] staging: fieldbus: anybus-s: consolidate
- wait_for_completion_timeout return handling
+Date: Mon, 29 Apr 2019 10:03:36 -0400
+Message-ID: <CAGngYiVDFL1fm2oKALXORNziX6pdcBBNtp7rSnj_FBdr6u4j5w@mail.gmail.com>
+Subject: Re: [PATCH V2] staging: fieldbus: anybus-s: force endiannes annotation
 To: Nicholas Mc Guire <hofrat@osadl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -90,26 +88,12 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 On Mon, Apr 29, 2019 at 2:11 AM Nicholas Mc Guire <hofrat@osadl.org> wrote:
 >
-> wait_for_completion_timeout() returns unsigned long (0 on timeout or
-> remaining jiffies) not int - so this type error allows for a
-> theoretically int overflow - though not in this case where TIMEOUT is
-> only HZ*2). To fix this type inconsistency the completion is wrapped
-> into the if() rather than introducing an additional unsigned long
-> variable.
->
-> Along with fixing this type inconsistency the fall-through if is
-> consolidated to a single if-block.
->
-> Signed-off-by: Nicholas Mc Guire <hofrat@osadl.org>
-> ---
+> V2: As requested by Sven Van Asbroeck <thesven73@gmail.com> make the
+>     impact of the patch clear in the commit message.
 
-Queued to https://gitlab.com/TheSven73/linux branch: fieldbus-dev-testing,
-with my Reviewed-by tag, and the following fix-ups applied:
-- tweaked commit subject and message slightly (less is more)
-- removed spurious newline
-
-Thank you Nicholas, I really appreciate it !
-Sven
+Thank you, but did you miss my comment about creating a local variable
+instead? See:
+https://lkml.org/lkml/2019/4/28/97
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
