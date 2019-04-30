@@ -1,79 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 973C0F85E
-	for <lists+driverdev-devel@lfdr.de>; Tue, 30 Apr 2019 14:08:12 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id BEEA52442C;
-	Tue, 30 Apr 2019 12:08:09 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Jz4Z73BHMjz6; Tue, 30 Apr 2019 12:08:08 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 921DF2420F;
-	Tue, 30 Apr 2019 12:08:06 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 327C01BF28F
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 30 Apr 2019 12:08:05 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 48F5CF85F
+	for <lists+driverdev-devel@lfdr.de>; Tue, 30 Apr 2019 14:08:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 2EE4186905
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 30 Apr 2019 12:08:05 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9BD5E8698E;
+	Tue, 30 Apr 2019 12:08:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0AKyd5JO5He9; Tue, 30 Apr 2019 12:08:13 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5216E86974;
+	Tue, 30 Apr 2019 12:08:12 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E5D751BF28F
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 30 Apr 2019 12:08:09 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id E2D8A8546F
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 30 Apr 2019 12:08:09 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LFFWAi49x5bG
+ with ESMTP id XDCR+Ti14NKc
  for <driverdev-devel@linuxdriverproject.org>;
- Tue, 30 Apr 2019 12:08:04 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa4.microchip.iphmx.com (esa4.microchip.iphmx.com
- [68.232.154.123])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 29FD98686A
+ Tue, 30 Apr 2019 12:08:09 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id E7A9587919
  for <driverdev-devel@linuxdriverproject.org>;
- Tue, 30 Apr 2019 12:08:04 +0000 (UTC)
-Received-SPF: Pass (esa4.microchip.iphmx.com: domain of
- Christian.Gromm@microchip.com designates 198.175.253.82 as
- permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa4.microchip.iphmx.com;
- envelope-from="Christian.Gromm@microchip.com";
- x-sender="Christian.Gromm@microchip.com";
- x-conformance=spf_only; x-record-type="v=spf1";
- x-record-text="v=spf1 mx a:ushub1.microchip.com
- a:smtpout.microchip.com a:mx1.microchip.iphmx.com
- a:mx2.microchip.iphmx.com include:servers.mcsv.net
- include:mktomail.com include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa4.microchip.iphmx.com: no sender
- authenticity information available from domain of
- postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa4.microchip.iphmx.com;
- envelope-from="Christian.Gromm@microchip.com";
- x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa4.microchip.iphmx.com;
- dkim=none (message not signed) header.i=none;
- spf=Pass smtp.mailfrom=Christian.Gromm@microchip.com;
- spf=None smtp.helo=postmaster@email.microchip.com;
- dmarc=pass (p=none dis=none) d=microchip.com
-X-IronPort-AV: E=Sophos;i="5.60,413,1549954800"; d="scan'208";a="31006147"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa4.microchip.iphmx.com with ESMTP/TLS/AES128-SHA;
- 30 Apr 2019 05:08:03 -0700
-Received: from kar-sv-agl01.mchp-main.com (10.10.76.4) by
- CHN-SV-EXCH01.mchp-main.com (10.10.76.37) with Microsoft SMTP Server id
- 14.3.352.0; Tue, 30 Apr 2019 05:07:54 -0700
-From: Christian Gromm <christian.gromm@microchip.com>
-To: <gregkh@linuxfoundation.org>
-Subject: [PATCH v2] staging: most: sound: pass correct device when creating a
- sound card
-Date: Tue, 30 Apr 2019 14:07:48 +0200
-Message-ID: <1556626068-22650-1-git-send-email-christian.gromm@microchip.com>
-X-Mailer: git-send-email 2.7.4
+ Tue, 30 Apr 2019 12:08:08 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 3231F205ED;
+ Tue, 30 Apr 2019 12:08:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1556626088;
+ bh=I47vkYm+6d6c2ywx9BGAVj9Kijj3EMO3PqU/2Pt2WPY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Rx0AoQ9DLC0iBfDmgJ0Ci8+wkqIVLznp+WQpffXuo2zbj/mi2kSOqktkrCrxGEQR4
+ ITgKBqKuwySK9y9mw8avHhyCPoK1YwyK4wAUsQl2CQ0I8L/QsenYJHuccrydhTCx2n
+ PNK/0mG/TjyLalrK0qGjhef7iGTN372iEthPKfaA=
+Date: Tue, 30 Apr 2019 14:08:06 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Christian.Gromm@microchip.com
+Subject: Re: [PATCH] staging: most: sound: pass correct device when creating
+ a sound card
+Message-ID: <20190430120806.GA23538@kroah.com>
+References: <1556614822-21464-1-git-send-email-christian.gromm@microchip.com>
+ <20190430092058.GA14684@kroah.com>
+ <1556625357.21063.13.camel@microchip.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1556625357.21063.13.camel@microchip.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,41 +73,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Christian Gromm <christian.gromm@microchip.com>,
- driverdev-devel@linuxdriverproject.org, erosca@de.adit-jv.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: driverdev-devel@linuxdriverproject.org, erosca@de.adit-jv.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch fixes the usage of the wrong struct device when calling
-function snd_card_new.
+On Tue, Apr 30, 2019 at 11:53:01AM +0000, Christian.Gromm@microchip.com wro=
+te:
+> On Di, 2019-04-30 at 11:20 +0200, Greg KH wrote:
+> > External E-Mail
+> > =
 
-Reported-by: Eugeniu Rosca <erosca@de.adit-jv.com>
-Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
-Fixes: 	commit 69c90cf1b2faf5fa08fe5e18e4b47b044474506e
----
-v2:	add Fixes tag to s-o-b area
+> > =
 
- drivers/staging/most/sound/sound.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> > On Tue, Apr 30, 2019 at 11:00:22AM +0200, Christian Gromm wrote:
+> > > =
 
-diff --git a/drivers/staging/most/sound/sound.c b/drivers/staging/most/sound/sound.c
-index 7c99867..342f390 100644
---- a/drivers/staging/most/sound/sound.c
-+++ b/drivers/staging/most/sound/sound.c
-@@ -613,7 +613,7 @@ static int audio_probe_channel(struct most_interface *iface, int channel_id,
- 	INIT_LIST_HEAD(&adpt->dev_list);
- 	iface->priv = adpt;
- 	list_add_tail(&adpt->list, &adpt_list);
--	ret = snd_card_new(&iface->dev, -1, "INIC", THIS_MODULE,
-+	ret = snd_card_new(iface->driver_dev, -1, "INIC", THIS_MODULE,
- 			   sizeof(*channel), &adpt->card);
- 	if (ret < 0)
- 		goto err_free_adpt;
--- 
-2.7.4
+> > > This patch fixes the usage of the wrong struct device when calling
+> > > function snd_card_new.
+> > > =
 
+> > > Reported-by: Eugeniu Rosca <erosca@de.adit-jv.com>
+> > > Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
+> > > ---
+> > > =A0drivers/staging/most/sound/sound.c | 2 +-
+> > > =A01 file changed, 1 insertion(+), 1 deletion(-)
+> > Does this fix a specific commit?=A0=A0If so, should there be a "Fixes: "
+> > tag
+> > in the s-o-b: area?=A0=A0Does this need to go to the stable trees?
+> =
+
+> Yes, yes and yes. I'll be sending a v2 shortly.
+> =
+
+> I wasn't aware that I need to refer to a certain commit when fixing
+> things up. How can bugfix patches not fix a specific commit anyway?
+> The bugs must have gotten in somehow, right?
+
+Yes, they must have snuck in somehow :)
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
