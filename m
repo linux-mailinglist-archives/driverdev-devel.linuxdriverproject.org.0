@@ -1,148 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42719FE48
-	for <lists+driverdev-devel@lfdr.de>; Tue, 30 Apr 2019 19:00:32 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1B9E3FF06
+	for <lists+driverdev-devel@lfdr.de>; Tue, 30 Apr 2019 19:41:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B1D4C87A2F;
-	Tue, 30 Apr 2019 17:00:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C1FA086B2F;
+	Tue, 30 Apr 2019 17:41:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ng8GgrRaKRy4; Tue, 30 Apr 2019 17:00:29 +0000 (UTC)
+	with ESMTP id wtX73SYzdKyG; Tue, 30 Apr 2019 17:41:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 18EC3879CF;
-	Tue, 30 Apr 2019 17:00:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CCA5C86B0B;
+	Tue, 30 Apr 2019 17:41:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id F0DFA1BF38A
- for <devel@linuxdriverproject.org>; Tue, 30 Apr 2019 17:00:26 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9D7AD1BF3A8
+ for <devel@linuxdriverproject.org>; Tue, 30 Apr 2019 17:41:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id E9ECA221B7
- for <devel@linuxdriverproject.org>; Tue, 30 Apr 2019 17:00:26 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 9612385EC4
+ for <devel@linuxdriverproject.org>; Tue, 30 Apr 2019 17:41:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TmMHQKyFyIX9 for <devel@linuxdriverproject.org>;
- Tue, 30 Apr 2019 17:00:26 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by silver.osuosl.org (Postfix) with ESMTPS id E2EA72155F
- for <devel@driverdev.osuosl.org>; Tue, 30 Apr 2019 17:00:25 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x3UGxQ37020232;
- Tue, 30 Apr 2019 16:59:58 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=subject : to :
- references : from : message-id : date : mime-version : in-reply-to :
- content-type : content-transfer-encoding; s=corp-2018-07-02;
- bh=O3ZAt3pwdEEQS+GY/GtCTEFfPCwH7GRC22PR7x8CM1I=;
- b=XFIYQLYQSdFGS54EVDNiAeucEd0luZjIGwe/Tx4MxFXM2RvVV6lsfUh5XWBYVAqXoko3
- 68QYVG0pUFB3G9JPJvadr9ngsX59J2i32o41iYiTyj0Q4YFzThnXFgjDGwVMgyS9Nfs1
- PfHuN+ObAJ5retPnNZp87vijki+exHhzYahHJ7IepU56N5E5DRGjQGeWUyuBaD7wom6F
- LOocd3x910G9ohoUU9wG2xxhotEfzm8E7Ykcg5jBD7ubOp5YvtU+ANo7J71X3pp8MxUy
- OK0i98/tbD0pE+K1p3X/qaZA7Q3VV6vpMscLMNWcScsDm/7UZeLY9m8zYSegdk465BQ/ 8g== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2120.oracle.com with ESMTP id 2s4fqq5s2a-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 30 Apr 2019 16:59:58 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x3UGwg5a154426;
- Tue, 30 Apr 2019 16:59:58 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by aserp3030.oracle.com with ESMTP id 2s4d4amt2u-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 30 Apr 2019 16:59:57 +0000
-Received: from abhmp0013.oracle.com (abhmp0013.oracle.com [141.146.116.19])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x3UGxltq008049;
- Tue, 30 Apr 2019 16:59:47 GMT
-Received: from bostrovs-us.us.oracle.com (/10.152.32.65)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 30 Apr 2019 09:59:47 -0700
+ with ESMTP id mwrc2mCIide3 for <devel@linuxdriverproject.org>;
+ Tue, 30 Apr 2019 17:41:02 +0000 (UTC)
+X-Greylist: delayed 00:09:13 by SQLgrey-1.7.6
+Received: from pandora.armlinux.org.uk (pandora.armlinux.org.uk [78.32.30.218])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id AAF9185E8A
+ for <devel@driverdev.osuosl.org>; Tue, 30 Apr 2019 17:41:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
+ Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+ Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=X8xU0U6D5kWrphY4pyIW4cT6Pwpmzj8wWI41U0UNHdw=; b=bEGACmCOKe4fNpajmptVRvBbA
+ fz+Abk23XlztD6TL3PZ6Zg/c75wZ3U2MquU1xv8GXapxKn7nVNJVFxRx8CB5T/ZDC0CnsnRbq+wWH
+ POzZF7dj+fVMGUT8hgE8piwTl1K30iUmGwPl+5wtPxS8QDjJbAYfXH4shvuQ/DwUipi0iT4W7j25C
+ 42DgJIE2JEjVh7u0GtLEVX5nYKbSP4HRpZtKr1AgdplZ/xe6+C5H3T5xDsunAbQTrzJfZ0Mip8lz/
+ jnE9LSsIljM/IdbvlHwDnpYSheAuGqT3dvOHka3e0aqnXszWCkBz2zMjnGplqE8j8tzavfGKXmvXm
+ K9RrlxbKA==;
+Received: from shell.armlinux.org.uk
+ ([2001:4d48:ad52:3201:5054:ff:fe00:4ec]:55642)
+ by pandora.armlinux.org.uk with esmtpsa
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
+ (envelope-from <linux@armlinux.org.uk>)
+ id 1hLWbV-0007Nk-ST; Tue, 30 Apr 2019 18:31:42 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.89)
+ (envelope-from <linux@shell.armlinux.org.uk>)
+ id 1hLWbH-0004AW-Ic; Tue, 30 Apr 2019 18:31:27 +0100
+Date: Tue, 30 Apr 2019 18:31:27 +0100
+From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+To: Christian =?iso-8859-1?Q?K=F6nig?= <ckoenig.leichtzumerken@gmail.com>
 Subject: Re: [PATCH] dma-buf: add struct dma_buf_attach_info v2
-To: =?UTF-8?Q?Christian_K=c3=b6nig?= <ckoenig.leichtzumerken@gmail.com>,
- xen-devel@lists.xenproject.org, devel@driverdev.osuosl.org,
- linux-tegra@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-media@vger.kernel.org, sstabellini@kernel.org, jgross@suse.com,
- digetx@gmail.com, gregkh@linuxfoundation.org, arnd@arndb.de,
- mchehab@kernel.org, kyungmin.park@samsung.com,
- m.szyprowski@samsung.com, pawel@osciak.com, jonathanh@nvidia.com,
- thierry.reding@gmail.com, tomi.valkeinen@ti.com,
- rodrigo.vivi@intel.com, joonas.lahtinen@linux.intel.com,
- jani.nikula@linux.intel.com, sean@poorly.run,
- maxime.ripard@bootlin.com, maarten.lankhorst@linux.intel.com,
- linux@armlinux.org.uk, sumit.semwal@linaro.org
+Message-ID: <20190430173127.k5ivpaz6ktbfecgo@shell.armlinux.org.uk>
 References: <20190430111002.106168-1-christian.koenig@amd.com>
-From: Boris Ostrovsky <boris.ostrovsky@oracle.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=boris.ostrovsky@oracle.com; prefer-encrypt=mutual; keydata=
- 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
- Jg6OxFYd01z+a+oL
-Message-ID: <acaa403e-ad0f-dcf5-bccb-6b7331381889@oracle.com>
-Date: Tue, 30 Apr 2019 12:59:23 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
 MIME-Version: 1.0
+Content-Disposition: inline
 In-Reply-To: <20190430111002.106168-1-christian.koenig@amd.com>
-Content-Language: en-US
-X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9243
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=902
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1810050000 definitions=main-1904300103
-X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9243
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=931 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
- definitions=main-1904300103
+User-Agent: NeoMutt/20170113 (1.7.2)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -155,29 +74,479 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: maxime.ripard@bootlin.com, joonas.lahtinen@linux.intel.com,
+ dri-devel@lists.freedesktop.org, thierry.reding@gmail.com, digetx@gmail.com,
+ sumit.semwal@linaro.org, m.szyprowski@samsung.com, devel@driverdev.osuosl.org,
+ sstabellini@kernel.org, arnd@arndb.de, jonathanh@nvidia.com,
+ tomi.valkeinen@ti.com, xen-devel@lists.xenproject.org,
+ linux-media@vger.kernel.org, pawel@osciak.com, intel-gfx@lists.freedesktop.org,
+ maarten.lankhorst@linux.intel.com, jani.nikula@linux.intel.com,
+ rodrigo.vivi@intel.com, linux-tegra@vger.kernel.org,
+ boris.ostrovsky@oracle.com, mchehab@kernel.org, sean@poorly.run,
+ jgross@suse.com, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+ kyungmin.park@samsung.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gNC8zMC8xOSA3OjEwIEFNLCBDaHJpc3RpYW4gS8O2bmlnIHdyb3RlOgo+IGRpZmYgLS1naXQg
-YS9kcml2ZXJzL3hlbi9nbnRkZXYtZG1hYnVmLmMgYi9kcml2ZXJzL3hlbi9nbnRkZXYtZG1hYnVm
-LmMKPiBpbmRleCAyYzRmMzI0Zjg2MjYuLmNhY2NhODMwYjQ4MiAxMDA2NDQKPiAtLS0gYS9kcml2
-ZXJzL3hlbi9nbnRkZXYtZG1hYnVmLmMKPiArKysgYi9kcml2ZXJzL3hlbi9nbnRkZXYtZG1hYnVm
-LmMKPiBAQCAtNjA4LDYgKzYwOCw3IEBAIGRtYWJ1Zl9pbXBfdG9fcmVmcyhzdHJ1Y3QgZ250ZGV2
-X2RtYWJ1Zl9wcml2ICpwcml2LCBzdHJ1Y3QgZGV2aWNlICpkZXYsCj4gIAkJICAgaW50IGZkLCBp
-bnQgY291bnQsIGludCBkb21pZCkKPiAgewo+ICAJc3RydWN0IGdudGRldl9kbWFidWYgKmdudGRl
-dl9kbWFidWYsICpyZXQ7Cj4gKwlzdHJ1Y3QgZG1hX2J1Zl9hdHRhY2hfaW5mbyBhdHRhY2hfaW5m
-bzsKPiAgCXN0cnVjdCBkbWFfYnVmICpkbWFfYnVmOwo+ICAJc3RydWN0IGRtYV9idWZfYXR0YWNo
-bWVudCAqYXR0YWNoOwo+ICAJc3RydWN0IHNnX3RhYmxlICpzZ3Q7Cj4gQEAgLTYyNyw2ICs2Mjgs
-OSBAQCBkbWFidWZfaW1wX3RvX3JlZnMoc3RydWN0IGdudGRldl9kbWFidWZfcHJpdiAqcHJpdiwg
-c3RydWN0IGRldmljZSAqZGV2LAo+ICAJZ250ZGV2X2RtYWJ1Zi0+cHJpdiA9IHByaXY7Cj4gIAln
-bnRkZXZfZG1hYnVmLT5mZCA9IGZkOwo+ICAKPiArCW1lbXNldCgmYXR0YWNoX2luZm8sIDAsIHNp
-emVvZihhdHRhY2hfaW5mbykpOwo+ICsJYXR0YWNoX2luZm8uZGV2ID0gZGV2Owo+ICsJYXR0YWNo
-X2luZm8uZG1hYnVmID0gZG1hX2J1ZjsKPiAgCWF0dGFjaCA9IGRtYV9idWZfYXR0YWNoKGRtYV9i
-dWYsIGRldik7Cj4gIAlpZiAoSVNfRVJSKGF0dGFjaCkpIHsKPiAgCQlyZXQgPSBFUlJfQ0FTVChh
-dHRhY2gpOwoKVGhpcyB3b24ndCBidWlsZC4KCkRpZCB5b3UgbWVhbgoKwqDCoMKgIGF0dGFjaCA9
-IGRtYV9idWZfYXR0YWNoKCZhdHRhY2hfaW5mbyk7Cgo/CgotYm9yaXMKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVs
-QGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2pl
-Y3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+On Tue, Apr 30, 2019 at 01:10:02PM +0200, Christian K=F6nig wrote:
+> Add a structure for the parameters of dma_buf_attach, this makes it much =
+easier
+> to add new parameters later on.
+
+I don't understand this reasoning.  What are the "new parameters" that
+are being proposed, and why do we need to put them into memory to pass
+them across this interface?
+
+If the intention is to make it easier to change the interface, passing
+parameters in this manner mean that it's easy for the interface to
+change and drivers not to notice the changes, since the compiler will
+not warn (unless some member of the structure that the driver is using
+gets removed, in which case it will error.)
+
+Additions to the structure will go unnoticed by drivers - what if the
+caller is expecting some different kind of behaviour, and the driver
+ignores that new addition?
+
+This doesn't seem to me like a good idea.
+
+> =
+
+> v2: rebase cleanup and fix all new implementations as well
+> =
+
+> Signed-off-by: Christian K=F6nig <christian.koenig@amd.com>
+> ---
+>  drivers/dma-buf/dma-buf.c                       | 13 +++++++------
+>  drivers/gpu/drm/armada/armada_gem.c             |  6 +++++-
+>  drivers/gpu/drm/drm_prime.c                     |  6 +++++-
+>  drivers/gpu/drm/i915/i915_gem_dmabuf.c          |  6 +++++-
+>  drivers/gpu/drm/omapdrm/omap_gem_dmabuf.c       |  6 +++++-
+>  drivers/gpu/drm/tegra/gem.c                     |  6 +++++-
+>  drivers/gpu/drm/udl/udl_dmabuf.c                |  6 +++++-
+>  .../common/videobuf2/videobuf2-dma-contig.c     |  6 +++++-
+>  .../media/common/videobuf2/videobuf2-dma-sg.c   |  6 +++++-
+>  drivers/misc/fastrpc.c                          |  6 +++++-
+>  drivers/staging/media/tegra-vde/tegra-vde.c     |  6 +++++-
+>  drivers/xen/gntdev-dmabuf.c                     |  4 ++++
+>  include/linux/dma-buf.h                         | 17 +++++++++++++++--
+>  13 files changed, 76 insertions(+), 18 deletions(-)
+> =
+
+> diff --git a/drivers/dma-buf/dma-buf.c b/drivers/dma-buf/dma-buf.c
+> index 3ae6c0c2cc02..e295e76a8c57 100644
+> --- a/drivers/dma-buf/dma-buf.c
+> +++ b/drivers/dma-buf/dma-buf.c
+> @@ -535,8 +535,9 @@ EXPORT_SYMBOL_GPL(dma_buf_put);
+>  /**
+>   * dma_buf_attach - Add the device to dma_buf's attachments list; option=
+ally,
+>   * calls attach() of dma_buf_ops to allow device-specific attach functio=
+nality
+> - * @dmabuf:	[in]	buffer to attach device to.
+> - * @dev:	[in]	device to be attached.
+> + * @info:	[in]	holds all the attach related information provided
+> + *			by the importer. see &struct dma_buf_attach_info
+> + *			for further details.
+>   *
+>   * Returns struct dma_buf_attachment pointer for this attachment. Attach=
+ments
+>   * must be cleaned up by calling dma_buf_detach().
+> @@ -550,20 +551,20 @@ EXPORT_SYMBOL_GPL(dma_buf_put);
+>   * accessible to @dev, and cannot be moved to a more suitable place. Thi=
+s is
+>   * indicated with the error code -EBUSY.
+>   */
+> -struct dma_buf_attachment *dma_buf_attach(struct dma_buf *dmabuf,
+> -					  struct device *dev)
+> +struct dma_buf_attachment *dma_buf_attach(const struct dma_buf_attach_in=
+fo *info)
+>  {
+> +	struct dma_buf *dmabuf =3D info->dmabuf;
+>  	struct dma_buf_attachment *attach;
+>  	int ret;
+>  =
+
+> -	if (WARN_ON(!dmabuf || !dev))
+> +	if (WARN_ON(!dmabuf || !info->dev))
+>  		return ERR_PTR(-EINVAL);
+>  =
+
+>  	attach =3D kzalloc(sizeof(*attach), GFP_KERNEL);
+>  	if (!attach)
+>  		return ERR_PTR(-ENOMEM);
+>  =
+
+> -	attach->dev =3D dev;
+> +	attach->dev =3D info->dev;
+>  	attach->dmabuf =3D dmabuf;
+>  =
+
+>  	mutex_lock(&dmabuf->lock);
+> diff --git a/drivers/gpu/drm/armada/armada_gem.c b/drivers/gpu/drm/armada=
+/armada_gem.c
+> index 642d0e70d0f8..19c47821032f 100644
+> --- a/drivers/gpu/drm/armada/armada_gem.c
+> +++ b/drivers/gpu/drm/armada/armada_gem.c
+> @@ -501,6 +501,10 @@ armada_gem_prime_export(struct drm_device *dev, stru=
+ct drm_gem_object *obj,
+>  struct drm_gem_object *
+>  armada_gem_prime_import(struct drm_device *dev, struct dma_buf *buf)
+>  {
+> +	struct dma_buf_attach_info attach_info =3D {
+> +		.dev =3D dev->dev,
+> +		.dmabuf =3D buf
+> +	};
+>  	struct dma_buf_attachment *attach;
+>  	struct armada_gem_object *dobj;
+>  =
+
+> @@ -516,7 +520,7 @@ armada_gem_prime_import(struct drm_device *dev, struc=
+t dma_buf *buf)
+>  		}
+>  	}
+>  =
+
+> -	attach =3D dma_buf_attach(buf, dev->dev);
+> +	attach =3D dma_buf_attach(&attach_info);
+>  	if (IS_ERR(attach))
+>  		return ERR_CAST(attach);
+>  =
+
+> diff --git a/drivers/gpu/drm/drm_prime.c b/drivers/gpu/drm/drm_prime.c
+> index dc079efb3b0f..1dd70fc095ee 100644
+> --- a/drivers/gpu/drm/drm_prime.c
+> +++ b/drivers/gpu/drm/drm_prime.c
+> @@ -710,6 +710,10 @@ struct drm_gem_object *drm_gem_prime_import_dev(stru=
+ct drm_device *dev,
+>  					    struct dma_buf *dma_buf,
+>  					    struct device *attach_dev)
+>  {
+> +	struct dma_buf_attach_info attach_info =3D {
+> +		.dev =3D attach_dev,
+> +		.dmabuf =3D dma_buf
+> +	};
+>  	struct dma_buf_attachment *attach;
+>  	struct sg_table *sgt;
+>  	struct drm_gem_object *obj;
+> @@ -730,7 +734,7 @@ struct drm_gem_object *drm_gem_prime_import_dev(struc=
+t drm_device *dev,
+>  	if (!dev->driver->gem_prime_import_sg_table)
+>  		return ERR_PTR(-EINVAL);
+>  =
+
+> -	attach =3D dma_buf_attach(dma_buf, attach_dev);
+> +	attach =3D dma_buf_attach(&attach_info);
+>  	if (IS_ERR(attach))
+>  		return ERR_CAST(attach);
+>  =
+
+> diff --git a/drivers/gpu/drm/i915/i915_gem_dmabuf.c b/drivers/gpu/drm/i91=
+5/i915_gem_dmabuf.c
+> index 5a101a9462d8..978054157c64 100644
+> --- a/drivers/gpu/drm/i915/i915_gem_dmabuf.c
+> +++ b/drivers/gpu/drm/i915/i915_gem_dmabuf.c
+> @@ -277,6 +277,10 @@ static const struct drm_i915_gem_object_ops i915_gem=
+_object_dmabuf_ops =3D {
+>  struct drm_gem_object *i915_gem_prime_import(struct drm_device *dev,
+>  					     struct dma_buf *dma_buf)
+>  {
+> +	struct dma_buf_attach_info attach_info =3D {
+> +		.dev =3D dev->dev,
+> +		.dmabuf =3D dma_buf
+> +	};
+>  	struct dma_buf_attachment *attach;
+>  	struct drm_i915_gem_object *obj;
+>  	int ret;
+> @@ -295,7 +299,7 @@ struct drm_gem_object *i915_gem_prime_import(struct d=
+rm_device *dev,
+>  	}
+>  =
+
+>  	/* need to attach */
+> -	attach =3D dma_buf_attach(dma_buf, dev->dev);
+> +	attach =3D dma_buf_attach(&attach_info);
+>  	if (IS_ERR(attach))
+>  		return ERR_CAST(attach);
+>  =
+
+> diff --git a/drivers/gpu/drm/omapdrm/omap_gem_dmabuf.c b/drivers/gpu/drm/=
+omapdrm/omap_gem_dmabuf.c
+> index 0f8b597ccd10..38d06574b251 100644
+> --- a/drivers/gpu/drm/omapdrm/omap_gem_dmabuf.c
+> +++ b/drivers/gpu/drm/omapdrm/omap_gem_dmabuf.c
+> @@ -156,6 +156,10 @@ struct dma_buf *omap_gem_prime_export(struct drm_dev=
+ice *dev,
+>  struct drm_gem_object *omap_gem_prime_import(struct drm_device *dev,
+>  					     struct dma_buf *dma_buf)
+>  {
+> +	struct dma_buf_attach_info attach_info =3D {
+> +		.dev =3D dev->dev,
+> +		.dmabuf =3D dma_buf
+> +	};
+>  	struct dma_buf_attachment *attach;
+>  	struct drm_gem_object *obj;
+>  	struct sg_table *sgt;
+> @@ -173,7 +177,7 @@ struct drm_gem_object *omap_gem_prime_import(struct d=
+rm_device *dev,
+>  		}
+>  	}
+>  =
+
+> -	attach =3D dma_buf_attach(dma_buf, dev->dev);
+> +	attach =3D dma_buf_attach(&attach_info);
+>  	if (IS_ERR(attach))
+>  		return ERR_CAST(attach);
+>  =
+
+> diff --git a/drivers/gpu/drm/tegra/gem.c b/drivers/gpu/drm/tegra/gem.c
+> index 4f80100ff5f3..8e6b6c879add 100644
+> --- a/drivers/gpu/drm/tegra/gem.c
+> +++ b/drivers/gpu/drm/tegra/gem.c
+> @@ -332,6 +332,10 @@ struct tegra_bo *tegra_bo_create_with_handle(struct =
+drm_file *file,
+>  static struct tegra_bo *tegra_bo_import(struct drm_device *drm,
+>  					struct dma_buf *buf)
+>  {
+> +	struct dma_buf_attach_info attach_info =3D {
+> +		.dev =3D drm->dev,
+> +		.dmabuf =3D buf
+> +	};
+>  	struct tegra_drm *tegra =3D drm->dev_private;
+>  	struct dma_buf_attachment *attach;
+>  	struct tegra_bo *bo;
+> @@ -341,7 +345,7 @@ static struct tegra_bo *tegra_bo_import(struct drm_de=
+vice *drm,
+>  	if (IS_ERR(bo))
+>  		return bo;
+>  =
+
+> -	attach =3D dma_buf_attach(buf, drm->dev);
+> +	attach =3D dma_buf_attach(&attach_info);
+>  	if (IS_ERR(attach)) {
+>  		err =3D PTR_ERR(attach);
+>  		goto free;
+> diff --git a/drivers/gpu/drm/udl/udl_dmabuf.c b/drivers/gpu/drm/udl/udl_d=
+mabuf.c
+> index 556f62662aa9..86b928f9742f 100644
+> --- a/drivers/gpu/drm/udl/udl_dmabuf.c
+> +++ b/drivers/gpu/drm/udl/udl_dmabuf.c
+> @@ -226,6 +226,10 @@ static int udl_prime_create(struct drm_device *dev,
+>  struct drm_gem_object *udl_gem_prime_import(struct drm_device *dev,
+>  				struct dma_buf *dma_buf)
+>  {
+> +	struct dma_buf_attach_info attach_info =3D {
+> +		.dev =3D dev->dev,
+> +		.dmabuf =3D dma_buf
+> +	};
+>  	struct dma_buf_attachment *attach;
+>  	struct sg_table *sg;
+>  	struct udl_gem_object *uobj;
+> @@ -233,7 +237,7 @@ struct drm_gem_object *udl_gem_prime_import(struct dr=
+m_device *dev,
+>  =
+
+>  	/* need to attach */
+>  	get_device(dev->dev);
+> -	attach =3D dma_buf_attach(dma_buf, dev->dev);
+> +	attach =3D dma_buf_attach(&attach_info);
+>  	if (IS_ERR(attach)) {
+>  		put_device(dev->dev);
+>  		return ERR_CAST(attach);
+> diff --git a/drivers/media/common/videobuf2/videobuf2-dma-contig.c b/driv=
+ers/media/common/videobuf2/videobuf2-dma-contig.c
+> index 82389aead6ed..b2d844d45ea6 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-dma-contig.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-dma-contig.c
+> @@ -653,6 +653,10 @@ static void vb2_dc_detach_dmabuf(void *mem_priv)
+>  static void *vb2_dc_attach_dmabuf(struct device *dev, struct dma_buf *db=
+uf,
+>  	unsigned long size, enum dma_data_direction dma_dir)
+>  {
+> +	struct dma_buf_attach_info attach_info =3D {
+> +		.dev =3D dev,
+> +		.dmabuf =3D dbuf
+> +	};
+>  	struct vb2_dc_buf *buf;
+>  	struct dma_buf_attachment *dba;
+>  =
+
+> @@ -668,7 +672,7 @@ static void *vb2_dc_attach_dmabuf(struct device *dev,=
+ struct dma_buf *dbuf,
+>  =
+
+>  	buf->dev =3D dev;
+>  	/* create attachment for the dmabuf with the user device */
+> -	dba =3D dma_buf_attach(dbuf, buf->dev);
+> +	dba =3D dma_buf_attach(&attach_info);
+>  	if (IS_ERR(dba)) {
+>  		pr_err("failed to attach dmabuf\n");
+>  		kfree(buf);
+> diff --git a/drivers/media/common/videobuf2/videobuf2-dma-sg.c b/drivers/=
+media/common/videobuf2/videobuf2-dma-sg.c
+> index 270c3162fdcb..ddd5f36a8ec7 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-dma-sg.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-dma-sg.c
+> @@ -608,6 +608,10 @@ static void vb2_dma_sg_detach_dmabuf(void *mem_priv)
+>  static void *vb2_dma_sg_attach_dmabuf(struct device *dev, struct dma_buf=
+ *dbuf,
+>  	unsigned long size, enum dma_data_direction dma_dir)
+>  {
+> +	struct dma_buf_attach_info attach_info =3D {
+> +		.dev =3D dev,
+> +		.dmabuf =3D dbuf
+> +	};
+>  	struct vb2_dma_sg_buf *buf;
+>  	struct dma_buf_attachment *dba;
+>  =
+
+> @@ -623,7 +627,7 @@ static void *vb2_dma_sg_attach_dmabuf(struct device *=
+dev, struct dma_buf *dbuf,
+>  =
+
+>  	buf->dev =3D dev;
+>  	/* create attachment for the dmabuf with the user device */
+> -	dba =3D dma_buf_attach(dbuf, buf->dev);
+> +	dba =3D dma_buf_attach(&attach_info);
+>  	if (IS_ERR(dba)) {
+>  		pr_err("failed to attach dmabuf\n");
+>  		kfree(buf);
+> diff --git a/drivers/misc/fastrpc.c b/drivers/misc/fastrpc.c
+> index 39f832d27288..93d0aac05715 100644
+> --- a/drivers/misc/fastrpc.c
+> +++ b/drivers/misc/fastrpc.c
+> @@ -482,6 +482,7 @@ static int fastrpc_map_create(struct fastrpc_user *fl=
+, int fd,
+>  			      u64 len, struct fastrpc_map **ppmap)
+>  {
+>  	struct fastrpc_session_ctx *sess =3D fl->sctx;
+> +	struct dma_buf_attach_info attach_info;
+>  	struct fastrpc_map *map =3D NULL;
+>  	int err =3D 0;
+>  =
+
+> @@ -501,7 +502,10 @@ static int fastrpc_map_create(struct fastrpc_user *f=
+l, int fd,
+>  		goto get_err;
+>  	}
+>  =
+
+> -	map->attach =3D dma_buf_attach(map->buf, sess->dev);
+> +	memset(&attach_info, 0, sizeof(attach_info));
+> +	attach_info.dev =3D sess->dev;
+> +	attach_info.dmabuf =3D map->buf;
+> +	map->attach =3D dma_buf_attach(&attach_info);
+>  	if (IS_ERR(map->attach)) {
+>  		dev_err(sess->dev, "Failed to attach dmabuf\n");
+>  		err =3D PTR_ERR(map->attach);
+> diff --git a/drivers/staging/media/tegra-vde/tegra-vde.c b/drivers/stagin=
+g/media/tegra-vde/tegra-vde.c
+> index aa6c6bba961e..5a10c1facc27 100644
+> --- a/drivers/staging/media/tegra-vde/tegra-vde.c
+> +++ b/drivers/staging/media/tegra-vde/tegra-vde.c
+> @@ -568,6 +568,10 @@ static int tegra_vde_attach_dmabuf(struct device *de=
+v,
+>  				   size_t *size,
+>  				   enum dma_data_direction dma_dir)
+>  {
+> +	struct dma_buf_attach_info attach_info =3D {
+> +		.dev =3D dev,
+> +		.dmabuf =3D dmabuf
+> +	};
+>  	struct dma_buf_attachment *attachment;
+>  	struct dma_buf *dmabuf;
+>  	struct sg_table *sgt;
+> @@ -591,7 +595,7 @@ static int tegra_vde_attach_dmabuf(struct device *dev,
+>  		return -EINVAL;
+>  	}
+>  =
+
+> -	attachment =3D dma_buf_attach(dmabuf, dev);
+> +	attachment =3D dma_buf_attach(&attach_info);
+>  	if (IS_ERR(attachment)) {
+>  		dev_err(dev, "Failed to attach dmabuf\n");
+>  		err =3D PTR_ERR(attachment);
+> diff --git a/drivers/xen/gntdev-dmabuf.c b/drivers/xen/gntdev-dmabuf.c
+> index 2c4f324f8626..cacca830b482 100644
+> --- a/drivers/xen/gntdev-dmabuf.c
+> +++ b/drivers/xen/gntdev-dmabuf.c
+> @@ -608,6 +608,7 @@ dmabuf_imp_to_refs(struct gntdev_dmabuf_priv *priv, s=
+truct device *dev,
+>  		   int fd, int count, int domid)
+>  {
+>  	struct gntdev_dmabuf *gntdev_dmabuf, *ret;
+> +	struct dma_buf_attach_info attach_info;
+>  	struct dma_buf *dma_buf;
+>  	struct dma_buf_attachment *attach;
+>  	struct sg_table *sgt;
+> @@ -627,6 +628,9 @@ dmabuf_imp_to_refs(struct gntdev_dmabuf_priv *priv, s=
+truct device *dev,
+>  	gntdev_dmabuf->priv =3D priv;
+>  	gntdev_dmabuf->fd =3D fd;
+>  =
+
+> +	memset(&attach_info, 0, sizeof(attach_info));
+> +	attach_info.dev =3D dev;
+> +	attach_info.dmabuf =3D dma_buf;
+>  	attach =3D dma_buf_attach(dma_buf, dev);
+>  	if (IS_ERR(attach)) {
+>  		ret =3D ERR_CAST(attach);
+> diff --git a/include/linux/dma-buf.h b/include/linux/dma-buf.h
+> index a0bd071466fc..b5b0f5e3f186 100644
+> --- a/include/linux/dma-buf.h
+> +++ b/include/linux/dma-buf.h
+> @@ -375,6 +375,19 @@ struct dma_buf_export_info {
+>  	struct dma_buf_export_info name =3D { .exp_name =3D KBUILD_MODNAME, \
+>  					 .owner =3D THIS_MODULE }
+>  =
+
+> +/**
+> + * struct dma_buf_attach_info - holds information needed to attach to a =
+dma_buf
+> + * @dmabuf:	the exported dma_buf
+> + * @dev:	the device which wants to import the attachment
+> + *
+> + * This structure holds the information required to attach to a buffer. =
+Used
+> + * with dma_buf_attach() only.
+> + */
+> +struct dma_buf_attach_info {
+> +	struct dma_buf *dmabuf;
+> +	struct device *dev;
+> +};
+> +
+>  /**
+>   * get_dma_buf - convenience wrapper for get_file.
+>   * @dmabuf:	[in]	pointer to dma_buf
+> @@ -389,8 +402,8 @@ static inline void get_dma_buf(struct dma_buf *dmabuf)
+>  	get_file(dmabuf->file);
+>  }
+>  =
+
+> -struct dma_buf_attachment *dma_buf_attach(struct dma_buf *dmabuf,
+> -							struct device *dev);
+> +struct dma_buf_attachment *
+> +dma_buf_attach(const struct dma_buf_attach_info *info);
+>  void dma_buf_detach(struct dma_buf *dmabuf,
+>  				struct dma_buf_attachment *dmabuf_attach);
+>  =
+
+> -- =
+
+> 2.17.1
+> =
+
+> =
+
+
+-- =
+
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps =
+up
+According to speedtest.net: 11.9Mbps down 500kbps up
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
