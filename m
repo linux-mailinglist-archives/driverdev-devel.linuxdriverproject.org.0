@@ -1,77 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8B142102D5
-	for <lists+driverdev-devel@lfdr.de>; Wed,  1 May 2019 00:53:27 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A5BF10318
+	for <lists+driverdev-devel@lfdr.de>; Wed,  1 May 2019 01:07:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EB3B386C11;
-	Tue, 30 Apr 2019 22:53:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B1A4687AF4;
+	Tue, 30 Apr 2019 23:07:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id m7hsfFcxzvH6; Tue, 30 Apr 2019 22:53:25 +0000 (UTC)
+	with ESMTP id 6eAqE04OF7sO; Tue, 30 Apr 2019 23:07:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BCF5486B3C;
-	Tue, 30 Apr 2019 22:53:24 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9C1D487A5F;
+	Tue, 30 Apr 2019 23:07:03 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B3D3B1BF295
- for <devel@linuxdriverproject.org>; Tue, 30 Apr 2019 22:53:22 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DD6EA1BF357
+ for <devel@linuxdriverproject.org>; Tue, 30 Apr 2019 23:07:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 06E1D84480
- for <devel@linuxdriverproject.org>; Tue, 30 Apr 2019 22:53:22 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D82C884B7E
+ for <devel@linuxdriverproject.org>; Tue, 30 Apr 2019 23:07:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yovFInXkPLVu for <devel@linuxdriverproject.org>;
- Tue, 30 Apr 2019 22:53:17 +0000 (UTC)
+ with ESMTP id eTvLzBzT3nsX for <devel@linuxdriverproject.org>;
+ Tue, 30 Apr 2019 23:07:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
- [209.85.215.195])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id CCB3385FBA
- for <devel@driverdev.osuosl.org>; Tue, 30 Apr 2019 22:50:41 +0000 (UTC)
-Received: by mail-pg1-f195.google.com with SMTP id l18so7522543pgj.6
- for <devel@driverdev.osuosl.org>; Tue, 30 Apr 2019 15:50:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=/tMVTYKS5f19+Vm4lAbyz0i8RYRYsyQ7fmIGeWfhtUU=;
- b=g8UnKYciCcCeuxEBsFXx9BB0P12k+LHkSTyBE0sTAkr61T4IPd1irA6y4ARoI9o7FZ
- FfvwtujtrOWCUw9DxyxWCqWB7wtALILsGinhawVuPo2yyj4JIF7Q0kKSSUgo9dDIi1Hb
- FP2rYZud3bdZuNpOagA7DzgGc6ndwauBUfewhG3/6vMywxYsKo5j8MyxJv1aRRtLVEKN
- TLBIgIvskDGVT1gayJSt4MrkX7zPbaC9dT6jUdmG10+glVK101thai+zGaO7fZ0bK6DY
- POwCCgFsj7W5eDqiyUWszD0+g+kdbKyG2LAbagDbQSyV/XpBx2MF0O8zqKCZUlxqdAwl
- 4CCA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=/tMVTYKS5f19+Vm4lAbyz0i8RYRYsyQ7fmIGeWfhtUU=;
- b=dCnJgsLx6ImG/vMFLOeDT+AIpDTp65Psbi9AIFBLHTcrVtnHF6oqWjnfsyxERorXgg
- fhWRP95ivT5RhSjAO0vkWtV6xMDNxdAteuKmXgVET+kSkGsetnKfrLzKAbEsIsD0Gg1r
- X+vtbe1/yxY6BkVtCm1LUIZqW70AyP4VbFRceER6ibzmi88Ks/3YpqN3i3Y8PcmUYf7l
- mXJHWWPT4iC94zc6dIVoUZsYRITys61gCKcraFE40T43yTZshJb9Lu8LlTy8jKzrqKlZ
- GNrDTdoyprJoAu5V2zEWhKUWevssih0MmKsmwnxwtDEwQookOSAkxpeF8eFfrpU9RcJx
- 8Sqw==
-X-Gm-Message-State: APjAAAVEPwIfXaUHXUQWlEldJGnXXOrnDcT3ZIu9Upbo92b3MggydZdf
- yqv+c+dwB7pbst6CBNMyl8g=
-X-Google-Smtp-Source: APXvYqxv34ziQubJh4BxSyUCO8v71+zp7yo39zeBhh/bEpP1aYlhXbHb4YuXLJ4JczsxjUJhlDqKLw==
-X-Received: by 2002:aa7:9245:: with SMTP id 5mr34274893pfp.252.1556664641403; 
- Tue, 30 Apr 2019 15:50:41 -0700 (PDT)
-Received: from majic.sklembedded.com (c-73-202-231-77.hsd1.ca.comcast.net.
- [73.202.231.77])
- by smtp.googlemail.com with ESMTPSA id l23sm9804654pgj.36.2019.04.30.15.50.39
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 30 Apr 2019 15:50:40 -0700 (PDT)
-From: Steve Longerbeam <slongerbeam@gmail.com>
-To: linux-media@vger.kernel.org
-Subject: [PATCH v3 8/8] media: staging/imx: Don't set driver data for v4l2_dev
-Date: Tue, 30 Apr 2019 15:50:18 -0700
-Message-Id: <20190430225018.30252-9-slongerbeam@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190430225018.30252-1-slongerbeam@gmail.com>
-References: <20190430225018.30252-1-slongerbeam@gmail.com>
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1438D847F3
+ for <devel@driverdev.osuosl.org>; Tue, 30 Apr 2019 23:07:01 +0000 (UTC)
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 30 Apr 2019 16:07:00 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.60,415,1549958400"; d="scan'208";a="342294710"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by fmsmga006.fm.intel.com with ESMTP; 30 Apr 2019 16:06:55 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1hLbpu-000FHw-OI; Wed, 01 May 2019 07:06:54 +0800
+Date: Wed, 1 May 2019 07:06:51 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Christian =?iso-8859-1?Q?K=F6nig?= <ckoenig.leichtzumerken@gmail.com>
+Subject: Re: [Intel-gfx] [PATCH] dma-buf: add struct dma_buf_attach_info v2
+Message-ID: <201905010708.6RCJMVAw%lkp@intel.com>
+References: <20190430111002.106168-1-christian.koenig@amd.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190430111002.106168-1-christian.koenig@amd.com>
+X-Patchwork-Hint: ignore
+User-Agent: Mutt/1.5.23 (2014-03-12)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,97 +67,226 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- open list <linux-kernel@vger.kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Steve Longerbeam <slongerbeam@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: maxime.ripard@bootlin.com, joonas.lahtinen@linux.intel.com,
+ dri-devel@lists.freedesktop.org, thierry.reding@gmail.com, digetx@gmail.com,
+ sumit.semwal@linaro.org, m.szyprowski@samsung.com, devel@driverdev.osuosl.org,
+ sstabellini@kernel.org, arnd@arndb.de, linux@armlinux.org.uk,
+ jonathanh@nvidia.com, tomi.valkeinen@ti.com, xen-devel@lists.xenproject.org,
+ linux-media@vger.kernel.org, pawel@osciak.com, intel-gfx@lists.freedesktop.org,
+ maarten.lankhorst@linux.intel.com, jani.nikula@linux.intel.com,
+ rodrigo.vivi@intel.com, linux-tegra@vger.kernel.org,
+ boris.ostrovsky@oracle.com, mchehab@kernel.org, sean@poorly.run,
+ jgross@suse.com, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+ kyungmin.park@samsung.com, kbuild-all@01.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The media device is already available via multiple methods, there is no
-need to set driver data for v4l2_dev to the media device.
+Hi "Christian,
 
-In imx_media_link_notify(), get media device from link->graph_obj.mdev.
+I love your patch! Perhaps something to improve:
 
-In imx_media_capture_device_register(), get media device from
-v4l2_dev->mdev.
+[auto build test WARNING on linus/master]
+[also build test WARNING on v5.1-rc7 next-20190430]
+[if your patch is applied to the wrong git tree, please drop us a note to h=
+elp improve the system]
 
-Signed-off-by: Steve Longerbeam <slongerbeam@gmail.com>
+url:    https://github.com/0day-ci/linux/commits/Christian-K-nig/dma-buf-ad=
+d-struct-dma_buf_attach_info-v2/20190430-221017
+reproduce:
+        # apt-get install sparse
+        make ARCH=3Dx86_64 allmodconfig
+        make C=3D1 CF=3D'-fdiagnostic-prefix -D__CHECK_ENDIAN__'
+
+If you fix the issue, kindly add following tag
+Reported-by: kbuild test robot <lkp@intel.com>
+
+
+sparse warnings: (new ones prefixed by >>)
+
+>> drivers/xen/gntdev-dmabuf.c:634:33: sparse: sparse: incorrect type in ar=
+gument 1 (different base types) @@    expected struct dma_buf_attach_info c=
+onst *info @@    got dma_buf_attach_info const *info @@
+>> drivers/xen/gntdev-dmabuf.c:634:33: sparse:    expected struct dma_buf_a=
+ttach_info const *info
+>> drivers/xen/gntdev-dmabuf.c:634:33: sparse:    got struct dma_buf *[assi=
+gned] dma_buf
+>> drivers/xen/gntdev-dmabuf.c:634:32: sparse: sparse: too many arguments f=
+or function dma_buf_attach
+
+vim +634 drivers/xen/gntdev-dmabuf.c
+
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  605  =
+
+932d6562 Oleksandr Andrushchenko 2018-07-20  606  static struct gntdev_dmab=
+uf *
+932d6562 Oleksandr Andrushchenko 2018-07-20  607  dmabuf_imp_to_refs(struct=
+ gntdev_dmabuf_priv *priv, struct device *dev,
+932d6562 Oleksandr Andrushchenko 2018-07-20  608  		   int fd, int count, i=
+nt domid)
+932d6562 Oleksandr Andrushchenko 2018-07-20  609  {
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  610  	struct gntdev_dmabuf *gn=
+tdev_dmabuf, *ret;
+e648feab Christian K=F6nig         2019-04-30  611  	struct dma_buf_attach_=
+info attach_info;
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  612  	struct dma_buf *dma_buf;
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  613  	struct dma_buf_attachmen=
+t *attach;
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  614  	struct sg_table *sgt;
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  615  	struct sg_page_iter sg_i=
+ter;
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  616  	int i;
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  617  =
+
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  618  	dma_buf =3D dma_buf_get(=
+fd);
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  619  	if (IS_ERR(dma_buf))
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  620  		return ERR_CAST(dma_buf=
+);
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  621  =
+
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  622  	gntdev_dmabuf =3D dmabuf=
+_imp_alloc_storage(count);
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  623  	if (IS_ERR(gntdev_dmabuf=
+)) {
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  624  		ret =3D gntdev_dmabuf;
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  625  		goto fail_put;
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  626  	}
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  627  =
+
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  628  	gntdev_dmabuf->priv =3D =
+priv;
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  629  	gntdev_dmabuf->fd =3D fd;
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  630  =
+
+e648feab Christian K=F6nig         2019-04-30  631  	memset(&attach_info, 0=
+, sizeof(attach_info));
+e648feab Christian K=F6nig         2019-04-30  632  	attach_info.dev =3D de=
+v;
+e648feab Christian K=F6nig         2019-04-30  633  	attach_info.dmabuf =3D=
+ dma_buf;
+bf8dc55b Oleksandr Andrushchenko 2018-07-20 @634  	attach =3D dma_buf_attac=
+h(dma_buf, dev);
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  635  	if (IS_ERR(attach)) {
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  636  		ret =3D ERR_CAST(attach=
+);
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  637  		goto fail_free_obj;
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  638  	}
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  639  =
+
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  640  	gntdev_dmabuf->u.imp.att=
+ach =3D attach;
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  641  =
+
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  642  	sgt =3D dma_buf_map_atta=
+chment(attach, DMA_BIDIRECTIONAL);
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  643  	if (IS_ERR(sgt)) {
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  644  		ret =3D ERR_CAST(sgt);
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  645  		goto fail_detach;
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  646  	}
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  647  =
+
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  648  	/* Check number of pages=
+ that imported buffer has. */
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  649  	if (attach->dmabuf->size=
+ !=3D gntdev_dmabuf->nr_pages << PAGE_SHIFT) {
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  650  		ret =3D ERR_PTR(-EINVAL=
+);
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  651  		pr_debug("DMA buffer ha=
+s %zu pages, user-space expects %d\n",
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  652  			 attach->dmabuf->size,=
+ gntdev_dmabuf->nr_pages);
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  653  		goto fail_unmap;
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  654  	}
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  655  =
+
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  656  	gntdev_dmabuf->u.imp.sgt=
+ =3D sgt;
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  657  =
+
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  658  	/* Now convert sgt to ar=
+ray of pages and check for page validity. */
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  659  	i =3D 0;
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  660  	for_each_sg_page(sgt->sg=
+l, &sg_iter, sgt->nents, 0) {
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  661  		struct page *page =3D s=
+g_page_iter_page(&sg_iter);
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  662  		/*
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  663  		 * Check if page is val=
+id: this can happen if we are given
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  664  		 * a page from VRAM or =
+other resources which are not backed
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  665  		 * by a struct page.
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  666  		 */
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  667  		if (!pfn_valid(page_to_=
+pfn(page))) {
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  668  			ret =3D ERR_PTR(-EINVA=
+L);
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  669  			goto fail_unmap;
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  670  		}
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  671  =
+
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  672  		gntdev_dmabuf->pages[i+=
++] =3D page;
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  673  	}
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  674  =
+
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  675  	ret =3D ERR_PTR(dmabuf_i=
+mp_grant_foreign_access(gntdev_dmabuf->pages,
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  676  						      gntdev_dmabuf=
+->u.imp.refs,
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  677  						      count, domid)=
+);
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  678  	if (IS_ERR(ret))
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  679  		goto fail_end_access;
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  680  =
+
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  681  	pr_debug("Imported DMA b=
+uffer with fd %d\n", fd);
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  682  =
+
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  683  	mutex_lock(&priv->lock);
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  684  	list_add(&gntdev_dmabuf-=
+>next, &priv->imp_list);
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  685  	mutex_unlock(&priv->lock=
+);
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  686  =
+
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  687  	return gntdev_dmabuf;
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  688  =
+
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  689  fail_end_access:
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  690  	dmabuf_imp_end_foreign_a=
+ccess(gntdev_dmabuf->u.imp.refs, count);
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  691  fail_unmap:
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  692  	dma_buf_unmap_attachment=
+(attach, sgt, DMA_BIDIRECTIONAL);
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  693  fail_detach:
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  694  	dma_buf_detach(dma_buf, =
+attach);
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  695  fail_free_obj:
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  696  	dmabuf_imp_free_storage(=
+gntdev_dmabuf);
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  697  fail_put:
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  698  	dma_buf_put(dma_buf);
+bf8dc55b Oleksandr Andrushchenko 2018-07-20  699  	return ret;
+932d6562 Oleksandr Andrushchenko 2018-07-20  700  }
+932d6562 Oleksandr Andrushchenko 2018-07-20  701  =
+
+
+:::::: The code at line 634 was first introduced by commit
+:::::: bf8dc55b135873d8bc58bb8fbc91c52f3a902eea xen/gntdev: Implement dma-b=
+uf import functionality
+
+:::::: TO: Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>
+:::::: CC: Boris Ostrovsky <boris.ostrovsky@oracle.com>
+
 ---
- drivers/staging/media/imx/imx-media-capture.c    | 5 +++--
- drivers/staging/media/imx/imx-media-dev-common.c | 7 ++-----
- 2 files changed, 5 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/staging/media/imx/imx-media-capture.c b/drivers/staging/media/imx/imx-media-capture.c
-index b77a67bda47c..565d21f169d8 100644
---- a/drivers/staging/media/imx/imx-media-capture.c
-+++ b/drivers/staging/media/imx/imx-media-capture.c
-@@ -732,15 +732,16 @@ int imx_media_capture_device_register(struct imx_media_video_dev *vdev)
- {
- 	struct capture_priv *priv = to_capture_priv(vdev);
- 	struct v4l2_subdev *sd = priv->src_sd;
-+	struct v4l2_device *v4l2_dev = sd->v4l2_dev;
- 	struct video_device *vfd = vdev->vfd;
- 	struct vb2_queue *vq = &priv->q;
- 	struct v4l2_subdev_format fmt_src;
- 	int ret;
- 
- 	/* get media device */
--	priv->md = dev_get_drvdata(sd->v4l2_dev->dev);
-+	priv->md = container_of(v4l2_dev->mdev, struct imx_media_dev, md);
- 
--	vfd->v4l2_dev = sd->v4l2_dev;
-+	vfd->v4l2_dev = v4l2_dev;
- 
- 	ret = video_register_device(vfd, VFL_TYPE_GRABBER, -1);
- 	if (ret) {
-diff --git a/drivers/staging/media/imx/imx-media-dev-common.c b/drivers/staging/media/imx/imx-media-dev-common.c
-index 89dc4ec8dadb..66b505f7e8df 100644
---- a/drivers/staging/media/imx/imx-media-dev-common.c
-+++ b/drivers/staging/media/imx/imx-media-dev-common.c
-@@ -260,10 +260,11 @@ static int imx_media_inherit_controls(struct imx_media_dev *imxmd,
- static int imx_media_link_notify(struct media_link *link, u32 flags,
- 				 unsigned int notification)
- {
-+	struct imx_media_dev *imxmd = container_of(link->graph_obj.mdev,
-+						   struct imx_media_dev, md);
- 	struct media_entity *source = link->source->entity;
- 	struct imx_media_pad_vdev *pad_vdev;
- 	struct list_head *pad_vdev_list;
--	struct imx_media_dev *imxmd;
- 	struct video_device *vfd;
- 	struct v4l2_subdev *sd;
- 	int pad_idx, ret;
-@@ -279,8 +280,6 @@ static int imx_media_link_notify(struct media_link *link, u32 flags,
- 	sd = media_entity_to_v4l2_subdev(source);
- 	pad_idx = link->source->index;
- 
--	imxmd = dev_get_drvdata(sd->v4l2_dev->dev);
--
- 	pad_vdev_list = to_pad_vdev_list(sd, pad_idx);
- 	if (!pad_vdev_list) {
- 		/* nothing to do if source sd has no pad vdev list */
-@@ -384,8 +383,6 @@ struct imx_media_dev *imx_media_dev_init(struct device *dev,
- 		goto cleanup;
- 	}
- 
--	dev_set_drvdata(imxmd->v4l2_dev.dev, imxmd);
--
- 	INIT_LIST_HEAD(&imxmd->vdev_list);
- 
- 	v4l2_async_notifier_init(&imxmd->notifier);
--- 
-2.17.1
-
+0-DAY kernel test infrastructure                Open Source Technology Cent=
+er
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporati=
+on
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
