@@ -1,73 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91490105B8
-	for <lists+driverdev-devel@lfdr.de>; Wed,  1 May 2019 09:16:07 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5CFF886FA6;
-	Wed,  1 May 2019 07:16:04 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id k-Z086yfaXCz; Wed,  1 May 2019 07:16:03 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 11CE983883;
-	Wed,  1 May 2019 07:16:03 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 049751BF470
- for <devel@linuxdriverproject.org>; Wed,  1 May 2019 07:16:00 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4FBAA10635
+	for <lists+driverdev-devel@lfdr.de>; Wed,  1 May 2019 10:52:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id EEABE26FB9
- for <devel@linuxdriverproject.org>; Wed,  1 May 2019 07:16:00 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B8DF727408;
+	Wed,  1 May 2019 08:52:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id oCdzfjNm7iYb; Wed,  1 May 2019 08:52:01 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 4DBAB2734A;
+	Wed,  1 May 2019 08:52:00 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 177261BF28C
+ for <devel@linuxdriverproject.org>; Wed,  1 May 2019 08:51:59 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 9C15A86277
+ for <devel@linuxdriverproject.org>; Wed,  1 May 2019 08:51:58 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id s0lLZ-iZ1duE for <devel@linuxdriverproject.org>;
- Wed,  1 May 2019 07:16:00 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by silver.osuosl.org (Postfix) with ESMTPS id 1C26C21505
- for <devel@driverdev.osuosl.org>; Wed,  1 May 2019 07:16:00 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id c13so7012629pgt.1
- for <devel@driverdev.osuosl.org>; Wed, 01 May 2019 00:16:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=2lTg3UwRF188Hyu1qFGSZBHjhJOOcy42FRYJbO0gLLI=;
- b=nF1HMGNWHCZzcBQvlVSecKGX5SVnflrEGORafGvOJhRk8aDafzMkiICMCjy2LA98l9
- vi2aTHHFcIDpt9Oyxlm5aSFwRLhs+7M9vE8zheuYGQifEybyxKq5ZsQfiLrMDgK2ShVe
- qowh4o7+s2EL8+i14ReS/9RDMw68qsuKMrhD3Zjh+ZvCLMP/eghsZpctdHtEcUbJ95wR
- c8q26/qZQ7R584up4S1Zzlfo/QNRbhD1TPyRgtOLu7l8ozCtp/JMQibOtLtWYiGbtsul
- QZNh+e6F447FHxVEhSdmG3VPHKgWa3WZpRaZ1j6/jTZT3Yj8M92/1NTNCH4GqKOZWLIh
- gUkg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=2lTg3UwRF188Hyu1qFGSZBHjhJOOcy42FRYJbO0gLLI=;
- b=O9mEXKVWKKQRdQcwGZXUVCYhbUsjfs0+T+E3b1iRymeNjDQsEcYlLFbXB6qsGLk7e9
- tVBtLAyZtfoOKC+6eeg1k5Y+mYhqQooiNbIdoA74AtsXW1Z2sw+CCRryaK6BGZ1LE2M0
- pxBxb9IVMH2bTGkX3Ubuh6MpFnSmZk07XFeA3RAepytXoZ/1wU33zZMHPTpUuUccAOFI
- kx28BxGyBw0w/BQSPNajpizJz380T47rwQhRHn8YrxSxnBGGSHHKNuUjD+J6nSiRxkWx
- jzhMjPF1HL+ylu6HprrUx53Fbb4lbM4tpoH0oy6caPCI8aycB7CpVg5GGBP1yTHgD4JI
- ihWw==
-X-Gm-Message-State: APjAAAXlcDADWchklIpGSm+VoiQaulugQTNVEKVhL7fLXj5CaFRk80tV
- arlFCnf9IIf7ImnBEYyM5mA=
-X-Google-Smtp-Source: APXvYqzhto3zBWANIqlONgb3cXufZS2EXRLnqHv3Qa/bGxdtqrI7gv4AYsngpAiXNVifvC214Qcj9g==
-X-Received: by 2002:a63:f707:: with SMTP id x7mr71571472pgh.343.1556694959735; 
- Wed, 01 May 2019 00:15:59 -0700 (PDT)
-Received: from localhost.localdomain ([103.87.57.94])
- by smtp.gmail.com with ESMTPSA id w65sm25894769pfb.59.2019.05.01.00.15.56
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 01 May 2019 00:15:59 -0700 (PDT)
-From: Vatsala Narang <vatsalanarang@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: iio: adc: Add paragraph to describe Kconfig symbol
-Date: Wed,  1 May 2019 12:45:41 +0530
-Message-Id: <20190501071541.4734-1-vatsalanarang@gmail.com>
-X-Mailer: git-send-email 2.17.1
+ with ESMTP id GNrNqfs1Uq5i for <devel@linuxdriverproject.org>;
+ Wed,  1 May 2019 08:51:56 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 309B086293
+ for <devel@driverdev.osuosl.org>; Wed,  1 May 2019 08:50:53 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 6B25521734;
+ Wed,  1 May 2019 08:50:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1556700652;
+ bh=62WXKOnNc7/9Mu1J6Jr/7oFVgwfd3stPoW7cofa/FnA=;
+ h=Date:From:To:Subject:From;
+ b=mU9OMd1ojZ1YF6GZGsMg36vnGA+IejJ6CN6yu7Ojhll3Znl+zJ+dD9XYwYTgKN7FP
+ YynCGPrxwAkNsExG7UNI48C78pDHUBUrVaZLS3d4U2twz6rzBWAITnpLfi5IvkE+LV
+ dfAChT8qoFin2BWFPdwCy8V667gJPCB13kmnn5tI=
+Date: Wed, 1 May 2019 10:50:50 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: devel@driverdev.osuosl.org
+Subject: [PATCH] staging: kpc2000: fix up build problems with readq()
+Message-ID: <20190501085050.GA2485@kroah.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,39 +64,74 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-iio@vger.kernel.org,
- linux-kernel@vger.kernel.org, julia.lawall@lip6.fr,
- Vatsala Narang <vatsalanarang@gmail.com>, jic23@kernel.org
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch updates Kconfig with paragraph that describe config symbol
-fully.Issue addressed by checkpatch.
+The 0-day system found a bunch of warnings for when readq() is not
+defined on the platform, so fix this by including the
+linux/io-64-nonatomic-lo-hi.h file which will fix up these issues.
 
-Signed-off-by: Vatsala Narang <vatsalanarang@gmail.com>
+Reported-by: kbuild test robot <lkp@intel.com>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/staging/iio/adc/Kconfig | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/staging/kpc2000/kpc2000/cell_probe.c | 1 +
+ drivers/staging/kpc2000/kpc2000/core.c       | 1 +
+ drivers/staging/kpc2000/kpc2000/fileops.c    | 1 +
+ drivers/staging/kpc2000/kpc_i2c/i2c_driver.c | 1 +
+ 4 files changed, 4 insertions(+)
 
-diff --git a/drivers/staging/iio/adc/Kconfig b/drivers/staging/iio/adc/Kconfig
-index 23d9a655a520..31cd9a12f40f 100644
---- a/drivers/staging/iio/adc/Kconfig
-+++ b/drivers/staging/iio/adc/Kconfig
-@@ -12,6 +12,9 @@ config AD7816
- 	  Say yes here to build support for Analog Devices AD7816/7/8
- 	  temperature sensors and ADC.
- 
-+	  To compile this driver as a module, choose M here: the
-+	  module will be called ad7816.
-+
- config AD7192
- 	tristate "Analog Devices AD7190 AD7192 AD7193 AD7195 ADC driver"
- 	depends on SPI
+diff --git a/drivers/staging/kpc2000/kpc2000/cell_probe.c b/drivers/staging/kpc2000/kpc2000/cell_probe.c
+index 13f544f3c0b9..e0dba91e7fa8 100644
+--- a/drivers/staging/kpc2000/kpc2000/cell_probe.c
++++ b/drivers/staging/kpc2000/kpc2000/cell_probe.c
+@@ -6,6 +6,7 @@
+ #include <linux/slab.h>
+ #include <asm/io.h>
+ #include <linux/io.h>
++#include <linux/io-64-nonatomic-lo-hi.h>
+ #include <linux/mfd/core.h>
+ #include <linux/platform_device.h>
+ #include <linux/ioport.h>
+diff --git a/drivers/staging/kpc2000/kpc2000/core.c b/drivers/staging/kpc2000/kpc2000/core.c
+index 35b87cdc4fb0..40390cdd3c8d 100644
+--- a/drivers/staging/kpc2000/kpc2000/core.c
++++ b/drivers/staging/kpc2000/kpc2000/core.c
+@@ -10,6 +10,7 @@
+ #include <linux/mfd/core.h>
+ #include <linux/platform_device.h>
+ #include <linux/ioport.h>
++#include <linux/io-64-nonatomic-lo-hi.h>
+ #include <linux/interrupt.h>
+ #include <linux/workqueue.h>
+ #include <linux/device.h>
+diff --git a/drivers/staging/kpc2000/kpc2000/fileops.c b/drivers/staging/kpc2000/kpc2000/fileops.c
+index a6beca8dbac5..b3b0b763fa1e 100644
+--- a/drivers/staging/kpc2000/kpc2000/fileops.c
++++ b/drivers/staging/kpc2000/kpc2000/fileops.c
+@@ -10,6 +10,7 @@
+ #include <linux/uaccess.h>    /* copy_*_user */
+ #include <linux/rwsem.h>
+ #include <linux/idr.h>
++#include <linux/io-64-nonatomic-lo-hi.h>
+ #include <linux/device.h>
+ #include <linux/sched.h>
+ #include "pcie.h"
+diff --git a/drivers/staging/kpc2000/kpc_i2c/i2c_driver.c b/drivers/staging/kpc2000/kpc_i2c/i2c_driver.c
+index 1fc30dc687f9..0fb068b2408d 100644
+--- a/drivers/staging/kpc2000/kpc_i2c/i2c_driver.c
++++ b/drivers/staging/kpc2000/kpc_i2c/i2c_driver.c
+@@ -14,6 +14,7 @@
+ #include <linux/module.h>
+ #include <linux/types.h>
+ #include <asm/io.h>
++#include <linux/io-64-nonatomic-lo-hi.h>
+ #include <linux/export.h>
+ #include <linux/slab.h>
+ #include <linux/platform_device.h>
 -- 
-2.17.1
+2.21.0
 
 _______________________________________________
 devel mailing list
