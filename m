@@ -1,73 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C8E461055A
-	for <lists+driverdev-devel@lfdr.de>; Wed,  1 May 2019 07:54:20 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 91490105B8
+	for <lists+driverdev-devel@lfdr.de>; Wed,  1 May 2019 09:16:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E234C86200;
-	Wed,  1 May 2019 05:54:18 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5CFF886FA6;
+	Wed,  1 May 2019 07:16:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sWeVXRe2jOaG; Wed,  1 May 2019 05:54:18 +0000 (UTC)
+	with ESMTP id k-Z086yfaXCz; Wed,  1 May 2019 07:16:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 56FE386160;
-	Wed,  1 May 2019 05:54:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 11CE983883;
+	Wed,  1 May 2019 07:16:03 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 49EE41BF310
- for <devel@linuxdriverproject.org>; Wed,  1 May 2019 05:54:15 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 049751BF470
+ for <devel@linuxdriverproject.org>; Wed,  1 May 2019 07:16:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 46C8286160
- for <devel@linuxdriverproject.org>; Wed,  1 May 2019 05:54:15 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id EEABE26FB9
+ for <devel@linuxdriverproject.org>; Wed,  1 May 2019 07:16:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NDk4nGDzLmQ8 for <devel@linuxdriverproject.org>;
- Wed,  1 May 2019 05:54:14 +0000 (UTC)
+ with ESMTP id s0lLZ-iZ1duE for <devel@linuxdriverproject.org>;
+ Wed,  1 May 2019 07:16:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f174.google.com (mail-pf1-f174.google.com
- [209.85.210.174])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B751386130
- for <devel@driverdev.osuosl.org>; Wed,  1 May 2019 05:54:14 +0000 (UTC)
-Received: by mail-pf1-f174.google.com with SMTP id e24so8177615pfi.12
- for <devel@driverdev.osuosl.org>; Tue, 30 Apr 2019 22:54:14 -0700 (PDT)
+Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
+ [209.85.215.194])
+ by silver.osuosl.org (Postfix) with ESMTPS id 1C26C21505
+ for <devel@driverdev.osuosl.org>; Wed,  1 May 2019 07:16:00 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id c13so7012629pgt.1
+ for <devel@driverdev.osuosl.org>; Wed, 01 May 2019 00:16:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id;
- bh=lGmhHTbrp62WjPCsadPfyC1/U+nVR+naFYtOSFn8Cmg=;
- b=tACyKVezHNTMlt1e1Q+CUmGgy0ZYjIaUL5MNsq7A69XdyYaigxSpiHPBYCt9WycK9i
- /tVwMrG0QX9+ieuRWi4UAK6qnAGs4XiOVkSMk73fj2kDKtP4WYeOOvzLlI90tGWJbGEj
- xCLKIAYWY/yPAuH01HaWsH6tp4mOsJ6vkYGmrV5pvRBa4EizH76aEssvW1Q1mZb7uXVx
- x15WlLbkg2sVZCfj23vBh08RFuRAlwyX/g02QCdVHjGuG9HGXcxq3NOki5+RreReVtaV
- P6UDP4WrYRvGl87qRSmwYEBi/XUpX2iK2OrTpDmk0BOw4bZQDWWtC0TBTAOivLL5PJKP
- n48w==
+ bh=2lTg3UwRF188Hyu1qFGSZBHjhJOOcy42FRYJbO0gLLI=;
+ b=nF1HMGNWHCZzcBQvlVSecKGX5SVnflrEGORafGvOJhRk8aDafzMkiICMCjy2LA98l9
+ vi2aTHHFcIDpt9Oyxlm5aSFwRLhs+7M9vE8zheuYGQifEybyxKq5ZsQfiLrMDgK2ShVe
+ qowh4o7+s2EL8+i14ReS/9RDMw68qsuKMrhD3Zjh+ZvCLMP/eghsZpctdHtEcUbJ95wR
+ c8q26/qZQ7R584up4S1Zzlfo/QNRbhD1TPyRgtOLu7l8ozCtp/JMQibOtLtWYiGbtsul
+ QZNh+e6F447FHxVEhSdmG3VPHKgWa3WZpRaZ1j6/jTZT3Yj8M92/1NTNCH4GqKOZWLIh
+ gUkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=lGmhHTbrp62WjPCsadPfyC1/U+nVR+naFYtOSFn8Cmg=;
- b=Gl8XlI29ahujOGrHPUymS4DL3Fx4fjzTLecQYtcHffIjgN/fJTvm/jUPP56Esk6Al7
- S3ph9y7uc7WiIJyU9EwuVNlXpKzRssMBEf+MjtZTROxn8I7rB2rFL0uFTVeoFoHgQYZF
- jeg/gFH+TMwa9sz7xzOexQgDayU2meaDOm9mVutJmuxddt91QUMzGdovQn3zSUk7m8xd
- CKq0pWcYci5sMKNC+8HCQVp7hqRayd4+819moL3kmN1wPVrtS1dOZjPR7V+eSWOhGr75
- BZuVrqhN4tEFXQJqttGnAyDLbmzNQloqdkfosNzwWe/i8buTtbRnmVbBXe5R9591aBBa
- jxJg==
-X-Gm-Message-State: APjAAAUYbOtZMNrh6SBFo5cCtYzROY5HJ8XgRRKtWDtpTtF4tTTyfX2U
- 46mRkn4x39JOiIDFmEJGafE=
-X-Google-Smtp-Source: APXvYqzVYhq/yVFaxE/scWgarPNMtyOGpYnl2Qtq6YhPzhFF/vh4UFOFc+MidadXbez8i4moztfRNw==
-X-Received: by 2002:a62:1a0d:: with SMTP id a13mr76311287pfa.198.1556690053661; 
- Tue, 30 Apr 2019 22:54:13 -0700 (PDT)
+ bh=2lTg3UwRF188Hyu1qFGSZBHjhJOOcy42FRYJbO0gLLI=;
+ b=O9mEXKVWKKQRdQcwGZXUVCYhbUsjfs0+T+E3b1iRymeNjDQsEcYlLFbXB6qsGLk7e9
+ tVBtLAyZtfoOKC+6eeg1k5Y+mYhqQooiNbIdoA74AtsXW1Z2sw+CCRryaK6BGZ1LE2M0
+ pxBxb9IVMH2bTGkX3Ubuh6MpFnSmZk07XFeA3RAepytXoZ/1wU33zZMHPTpUuUccAOFI
+ kx28BxGyBw0w/BQSPNajpizJz380T47rwQhRHn8YrxSxnBGGSHHKNuUjD+J6nSiRxkWx
+ jzhMjPF1HL+ylu6HprrUx53Fbb4lbM4tpoH0oy6caPCI8aycB7CpVg5GGBP1yTHgD4JI
+ ihWw==
+X-Gm-Message-State: APjAAAXlcDADWchklIpGSm+VoiQaulugQTNVEKVhL7fLXj5CaFRk80tV
+ arlFCnf9IIf7ImnBEYyM5mA=
+X-Google-Smtp-Source: APXvYqzhto3zBWANIqlONgb3cXufZS2EXRLnqHv3Qa/bGxdtqrI7gv4AYsngpAiXNVifvC214Qcj9g==
+X-Received: by 2002:a63:f707:: with SMTP id x7mr71571472pgh.343.1556694959735; 
+ Wed, 01 May 2019 00:15:59 -0700 (PDT)
 Received: from localhost.localdomain ([103.87.57.94])
- by smtp.gmail.com with ESMTPSA id e184sm62816141pfc.102.2019.04.30.22.54.08
+ by smtp.gmail.com with ESMTPSA id w65sm25894769pfb.59.2019.05.01.00.15.56
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 30 Apr 2019 22:54:13 -0700 (PDT)
+ Wed, 01 May 2019 00:15:59 -0700 (PDT)
 From: Vatsala Narang <vatsalanarang@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH v2] staging: vc04_services: bcm2835-camera: Compress two lines
- into one line
-Date: Wed,  1 May 2019 11:23:53 +0530
-Message-Id: <20190501055353.1935-1-vatsalanarang@gmail.com>
+Subject: [PATCH] staging: iio: adc: Add paragraph to describe Kconfig symbol
+Date: Wed,  1 May 2019 12:45:41 +0530
+Message-Id: <20190501071541.4734-1-vatsalanarang@gmail.com>
 X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -81,55 +80,37 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: stefan.wahren@i2se.com, devel@driverdev.osuosl.org, f.fainelli@gmail.com,
- sbranden@broadcom.com, julia.lawall@lip6.fr, rjui@broadcom.com,
- linux-kernel@vger.kernel.org, eric@anholt.net,
- bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org,
- Vatsala Narang <vatsalanarang@gmail.com>, linux-arm-kernel@lists.infradead.org
+Cc: devel@driverdev.osuosl.org, linux-iio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, julia.lawall@lip6.fr,
+ Vatsala Narang <vatsalanarang@gmail.com>, jic23@kernel.org
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Return value directly without saving it in a variable and remove that
-variable.
-
-Issue suggested by Coccinelle.
+This patch updates Kconfig with paragraph that describe config symbol
+fully.Issue addressed by checkpatch.
 
 Signed-off-by: Vatsala Narang <vatsalanarang@gmail.com>
 ---
-Changes in v2:
--Change subject line and log message
--Remove respective unused variable
+ drivers/staging/iio/adc/Kconfig | 3 +++
+ 1 file changed, 3 insertions(+)
 
- drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
-
-diff --git a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-index c9b6346111a5..68f08dc18da9 100644
---- a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-+++ b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-@@ -1491,7 +1491,6 @@ static int set_camera_parameters(struct vchiq_mmal_instance *instance,
- 				 struct vchiq_mmal_component *camera,
- 				 struct bm2835_mmal_dev *dev)
- {
--	int ret;
- 	struct mmal_parameter_camera_config cam_config = {
- 		.max_stills_w = dev->max_width,
- 		.max_stills_h = dev->max_height,
-@@ -1507,10 +1506,9 @@ static int set_camera_parameters(struct vchiq_mmal_instance *instance,
- 		.use_stc_timestamp = MMAL_PARAM_TIMESTAMP_MODE_RAW_STC
- 	};
+diff --git a/drivers/staging/iio/adc/Kconfig b/drivers/staging/iio/adc/Kconfig
+index 23d9a655a520..31cd9a12f40f 100644
+--- a/drivers/staging/iio/adc/Kconfig
++++ b/drivers/staging/iio/adc/Kconfig
+@@ -12,6 +12,9 @@ config AD7816
+ 	  Say yes here to build support for Analog Devices AD7816/7/8
+ 	  temperature sensors and ADC.
  
--	ret = vchiq_mmal_port_parameter_set(instance, &camera->control,
-+	return vchiq_mmal_port_parameter_set(instance, &camera->control,
- 					    MMAL_PARAMETER_CAMERA_CONFIG,
- 					    &cam_config, sizeof(cam_config));
--	return ret;
- }
- 
- #define MAX_SUPPORTED_ENCODINGS 20
++	  To compile this driver as a module, choose M here: the
++	  module will be called ad7816.
++
+ config AD7192
+ 	tristate "Analog Devices AD7190 AD7192 AD7193 AD7195 ADC driver"
+ 	depends on SPI
 -- 
 2.17.1
 
