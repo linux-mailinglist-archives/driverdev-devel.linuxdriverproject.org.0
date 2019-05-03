@@ -1,94 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 956AB13415
-	for <lists+driverdev-devel@lfdr.de>; Fri,  3 May 2019 21:40:38 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A1DE21354E
+	for <lists+driverdev-devel@lfdr.de>; Sat,  4 May 2019 00:13:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4A4E587B01;
-	Fri,  3 May 2019 19:40:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9CDF086A35;
+	Fri,  3 May 2019 22:13:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id S9eRopoSfntf; Fri,  3 May 2019 19:40:35 +0000 (UTC)
+	with ESMTP id csybGgdbBz68; Fri,  3 May 2019 22:13:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0EEC987AF1;
-	Fri,  3 May 2019 19:40:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EE90986618;
+	Fri,  3 May 2019 22:13:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0A1231BF400
- for <devel@linuxdriverproject.org>; Fri,  3 May 2019 19:40:33 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 4F1131BF3D2
+ for <devel@linuxdriverproject.org>; Fri,  3 May 2019 22:13:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 06EC888091
- for <devel@linuxdriverproject.org>; Fri,  3 May 2019 19:40:33 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4A21B87548
+ for <devel@linuxdriverproject.org>; Fri,  3 May 2019 22:13:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ROfLlIuSmM-n for <devel@linuxdriverproject.org>;
- Fri,  3 May 2019 19:40:32 +0000 (UTC)
+ with ESMTP id MYvR68kGfBYq for <devel@linuxdriverproject.org>;
+ Fri,  3 May 2019 22:13:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 7260487FB9
- for <devel@driverdev.osuosl.org>; Fri,  3 May 2019 19:40:32 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x43JYGAQ072123;
- Fri, 3 May 2019 19:40:25 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- content-transfer-encoding : in-reply-to; s=corp-2018-07-02;
- bh=zFFPkeKwSl9qs1Gf/nl1E27H+7M/jhvO857WLR2q3z8=;
- b=DpzPTdixPg6Pvz4oxVTvXpjKc9fMHYkTYdnN/3EvhgQl9oc7m7+7zwpvacbG2Pvt9Gqp
- wbsiOQFJ+dGnW2iAlZkAmnr/SnJCy47E0fG3+koASSJTXJb1tecoiA7Q8qHVebMExiAV
- 01GSQyjKN1QVJSSeiZj7gDWDmuyNOPVMnJfLmwpr1sr2B9YxHhq8ewd/pMvtzfxngigL
- EWvJ5huXM/tztCh99qYfnZNGjDi6jS0lmrnwY/We66Jn4+wGsF8kEsbAQSPu5rUt1Ak3
- DeHo0E1e3j6KAvOlB8hxyW2IfNGW8hV9h2JDOUhOLNRCyDMFdDYXokdP1JQ1oXMQbYrw RQ== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2130.oracle.com with ESMTP id 2s6xhyrv9g-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 03 May 2019 19:40:25 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x43JcoHT142847;
- Fri, 3 May 2019 19:40:25 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by aserp3030.oracle.com with ESMTP id 2s7rtcfb6c-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 03 May 2019 19:40:24 +0000
-Received: from abhmp0009.oracle.com (abhmp0009.oracle.com [141.146.116.15])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x43JeCdp003869;
- Fri, 3 May 2019 19:40:14 GMT
-Received: from kadam (/196.104.111.181)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Fri, 03 May 2019 12:40:12 -0700
-Date: Fri, 3 May 2019 22:40:01 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
-Subject: Re: [PATCH v3 08/10] staging: octeon-ethernet: support
- of_get_mac_address new ERR_PTR error
-Message-ID: <20190503194001.GP2239@kadam>
-References: <1556870168-26864-1-git-send-email-ynezz@true.cz>
- <1556870168-26864-9-git-send-email-ynezz@true.cz>
- <20190503103456.GF2269@kadam> <20190503190730.GH71477@meh.true.cz>
+Received: from mail-qt1-f193.google.com (mail-qt1-f193.google.com
+ [209.85.160.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7AE14874DF
+ for <devel@driverdev.osuosl.org>; Fri,  3 May 2019 22:13:20 +0000 (UTC)
+Received: by mail-qt1-f193.google.com with SMTP id g4so8491496qtq.10
+ for <devel@driverdev.osuosl.org>; Fri, 03 May 2019 15:13:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=mfp4K2wyLqvou0VkORSKLnmjS+wOeVL0yi89FQp3u48=;
+ b=hSCZ+yMsnu6RQDJMtD/li/6sNmzj+3PDUXLySbQREbxOPFMJNIBKxUH+8XmkesAbZu
+ 7/oSKnCn3jwK9xlX/HYITipnFGs/nmb8T0OVTMlUe+lBqg8r8cQZ97NGgYBXe8vU0Uys
+ 2DpqeU9/KEQ0+EJnXLPQOHZlaQtcUMd3WuDbCdFPkjyXlAc+QaVFEW0o8UTN9LGBiRAA
+ PfM9apyQr2JTonNA+oyBCwJZgr38gwtOy7HMclS12iLYwcTObQYvE2CQYXkuv7qhRbCY
+ IuEWBv/12BxYlWkxGaWfuAkAkrDFUeI52iU3BtNEbJBBfAao9dAfE7EbUwm6v9LUN8xp
+ Ns3A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=mfp4K2wyLqvou0VkORSKLnmjS+wOeVL0yi89FQp3u48=;
+ b=dbkh4ErMHw7otJjJifom6NuwOS9SUydiVWVv2/M7PXdV8xmrV5lkhVwco9/i3mx7BI
+ T0oKFwFOOtuMfp/PiWvk5Nlcp9WaIkzRjh8taz74AG1oiKnPrCwJgjcrh3rx5EWX8V/m
+ 4H0LTMINDhqlUIstAUwlNvCEZQjuxRXokhJv05lhQlwDGMoWPNqn0nVrpIqgGI7cAb+1
+ zvkGfbQ2fjsTtvGOSaQtaMc60OymDwlhBW29lo+IQw0elJSUlU3k+jEJQwjhBqCk8VmM
+ 3K7g1Xs/0AQ4twRHQmfkMK7/0n6xQJvWkFWEGFf9Azt3rew9LphNr9diwxau6aoQ/i6Z
+ +Eyg==
+X-Gm-Message-State: APjAAAVbaO7iqFNfJ129ey1j50a+x8gwgFP91JOqalYhkoB43bfbPEYD
+ HyE+Nf5WRsPrUJHKMIZUfuQ=
+X-Google-Smtp-Source: APXvYqzBLukP2W0809eViEFsB3nITVw/aCkAWjBj+zSP+L5gpaXEdr7ysvG+e21kCCz6dwgCCCTofg==
+X-Received: by 2002:ac8:74cd:: with SMTP id j13mr10568148qtr.385.1556921599506; 
+ Fri, 03 May 2019 15:13:19 -0700 (PDT)
+Received: from smtp.gmail.com ([143.107.45.1])
+ by smtp.gmail.com with ESMTPSA id v57sm3221643qtc.10.2019.05.03.15.13.14
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Fri, 03 May 2019 15:13:17 -0700 (PDT)
+Date: Fri, 3 May 2019 19:13:06 -0300
+From: Melissa Wen <melissa.srw@gmail.com>
+To: Lars-Peter Clausen <lars@metafoo.de>,
+ Michael Hennerich <Michael.Hennerich@analog.com>,
+ Stefan Popa <stefan.popa@analog.com>, Jonathan Cameron <jic23@kernel.org>,
+ Hartmut Knaack <knaack.h@gmx.de>,
+ Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Barry Song <21cnbao@gmail.com>
+Subject: [PATCH 0/4] staging: iio: ad7150: improve driver readability
+Message-ID: <cover.1556919363.git.melissa.srw@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190503190730.GH71477@meh.true.cz>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9245
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1810050000 definitions=main-1905030128
-X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9245
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
- definitions=main-1905030128
+User-Agent: NeoMutt/20180716
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,36 +89,30 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>, devicetree@vger.kernel.org,
- Maxime Ripard <maxime.ripard@bootlin.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Frank Rowand <frowand.list@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, kernel-usp@googlegroups.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gRnJpLCBNYXkgMDMsIDIwMTkgYXQgMDk6MDc6MzBQTSArMDIwMCwgUGV0ciDFoHRldGlhciB3
-cm90ZToKPiBEYW4gQ2FycGVudGVyIDxkYW4uY2FycGVudGVyQG9yYWNsZS5jb20+IFsyMDE5LTA1
-LTAzIDEzOjM0OjU2XToKPiAKPiBIaSwKPiAKPiA+IE9uIEZyaSwgTWF5IDAzLCAyMDE5IGF0IDA5
-OjU2OjA1QU0gKzAyMDAsIFBldHIgxaB0ZXRpYXIgd3JvdGU6Cj4gPiA+IFRoZXJlIHdhcyBOVk1F
-TSBzdXBwb3J0IGFkZGVkIHRvIG9mX2dldF9tYWNfYWRkcmVzcywgc28gaXQgY291bGQgbm93Cj4g
-PiA+IHJldHVybiBOVUxMIGFuZCBFUlJfUFRSIGVuY29kZWQgZXJyb3IgdmFsdWVzLCBzbyB3ZSBu
-ZWVkIHRvIGFkanVzdCBhbGwKPiA+ID4gY3VycmVudCB1c2VycyBvZiBvZl9nZXRfbWFjX2FkZHJl
-c3MgdG8gdGhpcyBuZXcgZmFjdC4KPiA+IAo+ID4gV2hpY2ggY29tbWl0IGFkZGVkIE5WTUVNIHN1
-cHBvcnQ/ICBJdCBoYXNuJ3QgaGl0IG5ldC1uZXh0IG9yIGxpbnV4LW5leHQKPiA+IHlldC4uLiAg
-VmVyeSBzdHJhbmdlLgo+IAo+IHRoaXMgcGF0Y2ggaXMgYSBwYXJ0IG9mIHRoZSBwYXRjaCBzZXJp
-ZXNbMV0sIHdoZXJlIHRoZSAxc3QgcGF0Y2hbMl0gYWRkcyB0aGlzCj4gTlZNRU0gc3VwcG9ydCB0
-byBvZl9nZXRfbWFjX2FkZHJlc3MgYW5kIGZvbGxvdy11cCBwYXRjaGVzIGFyZSBhZGp1c3RpbmcK
-PiBjdXJyZW50IG9mX2dldF9tYWNfYWRkcmVzcyB1c2VycyB0byB0aGUgbmV3IEVSUl9QVFIgcmV0
-dXJuIHZhbHVlLgoKQmFzaWNhbGx5IGFsbCB0aGUgcGF0Y2hlcyBuZWVkIHRvIGJlIGZvbGRlZCB0
-b2dldGhlciBvdGhlcndpc2UgeW91J3JlCmJyZWFraW5nIGdpdCBiaXNlY3RpYmlsaXR5LiAgSW1h
-Z2luZSB0aGF0IHdlIGp1c3QgYXBwbHkgcGF0Y2ggIzEgcmlnaHQ/ClRoZW4gYWxsIHRoZSBjYWxs
-ZXJzIHdpbGwgYmUgYnJva2VuLiAgSXQncyBub3QgYWxsb3dlZC4KCnJlZ2FyZHMsCmRhbiBjYXJw
-ZW50ZXIKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRl
-dmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2
-ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1k
-ZXZlbAo=
+This patchset solves readability issues in AD7150 code, such as clarify
+register and mask definition, fashion improvement of mask uses, reduce
+tedious operation and useless comments.
+
+Melissa Wen (4):
+  staging: iio: ad7150: organize registers definition
+  staging: iio: ad7150: use FIELD_GET and GENMASK
+  staging: iio: ad7150: simplify i2c SMBus return treatment
+  staging: iio: ad7150: clean up of comments
+
+ drivers/staging/iio/cdc/ad7150.c | 102 ++++++++++++++-----------------
+ 1 file changed, 47 insertions(+), 55 deletions(-)
+
+-- 
+2.20.1
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
