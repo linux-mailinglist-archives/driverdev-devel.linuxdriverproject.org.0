@@ -2,69 +2,70 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CAD2F1355C
-	for <lists+driverdev-devel@lfdr.de>; Sat,  4 May 2019 00:15:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D3D8B13560
+	for <lists+driverdev-devel@lfdr.de>; Sat,  4 May 2019 00:16:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3412830FF7;
-	Fri,  3 May 2019 22:15:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 44BA82305A;
+	Fri,  3 May 2019 22:16:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xio1kmNPit41; Fri,  3 May 2019 22:15:42 +0000 (UTC)
+	with ESMTP id 0VmCQQtRpf4t; Fri,  3 May 2019 22:16:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id BC0162305A;
-	Fri,  3 May 2019 22:15:41 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8F15A23086;
+	Fri,  3 May 2019 22:16:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 098111BF23C
- for <devel@linuxdriverproject.org>; Fri,  3 May 2019 22:15:40 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 36DAA1BF23C
+ for <devel@linuxdriverproject.org>; Fri,  3 May 2019 22:16:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0679C86A53
- for <devel@linuxdriverproject.org>; Fri,  3 May 2019 22:15:40 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3409E87AE8
+ for <devel@linuxdriverproject.org>; Fri,  3 May 2019 22:16:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Wgn4e7fluDvl for <devel@linuxdriverproject.org>;
- Fri,  3 May 2019 22:15:39 +0000 (UTC)
+ with ESMTP id mHsJv42JdJPx for <devel@linuxdriverproject.org>;
+ Fri,  3 May 2019 22:16:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f193.google.com (mail-qt1-f193.google.com
- [209.85.160.193])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7249A86A27
- for <devel@driverdev.osuosl.org>; Fri,  3 May 2019 22:15:39 +0000 (UTC)
-Received: by mail-qt1-f193.google.com with SMTP id d13so8543620qth.5
- for <devel@driverdev.osuosl.org>; Fri, 03 May 2019 15:15:39 -0700 (PDT)
+Received: from mail-qk1-f194.google.com (mail-qk1-f194.google.com
+ [209.85.222.194])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7F62887ACB
+ for <devel@driverdev.osuosl.org>; Fri,  3 May 2019 22:16:25 +0000 (UTC)
+Received: by mail-qk1-f194.google.com with SMTP id g190so599057qkf.8
+ for <devel@driverdev.osuosl.org>; Fri, 03 May 2019 15:16:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=SAG93eFHh+qaETzoOcFQNdt8rlclJfMfJCEB5tyPneU=;
- b=cxRMJufioKVdvfnJKfWHBXy6aUljGfxrLWnsauz+050JKcWB0haJPWdy0XJ3iBvW+Y
- svO5sSi08Sbc+rOJkObJqDwPph9vSPQoyflUwSt0ZOcbeJH+atKZxoZ98zBxY2qN5IOv
- hucZoLfhj7xtykRJhiwXWK0vJ/5+0weq/mTzoE3Ge591qXyOnsAZVAjWOmD+bN7/2Edf
- UmPQZ2hQLydG6WVM6AoQUCqxxX0MAMCzsLSVBTjh9qgRM5CEjzfi1eWBTauTms96wQDO
- QmL0grDYx7346Ad4PNAtBT/X4o4OIyE5ifb0K7zHfKV3qGvKn280hfiVDyQ5Sz7TWpy1
- j4qg==
+ bh=HXos2jVvt23sEGQ2FQBQJsKRHBVFtxk8JTRDuuOZjhU=;
+ b=cshVJY3SgZerxIj0AHhggAibB5NZbPleKezdrPUdWojsti39ecMZQU/GdNIbxlhrYu
+ jkcn/oslpB1yTTpXF5+cBKLS3JTLfkGsWuWlqNRp8FnSXSGjdhUaoRcxaB1fiwkFL28O
+ L8H8TCMUJ64MaQZlHsePK5mBFq/OsUqCFBRpE3LwHv6ed7Eetpxhhrz7G1ipwt8RoLFN
+ 2VxwMozP6w/7IccThhvPKf1UDFw5oTJ6FvZ0czG4U3APBy1gnCnlp56lNnluraNqwx5Y
+ coAUj0L4rf/TTiwYb+DdbQmjk/OcVSqM61xn4FvLzjJdUWlBncBeNs0UGumszChPweLZ
+ gS0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=SAG93eFHh+qaETzoOcFQNdt8rlclJfMfJCEB5tyPneU=;
- b=egvDoxNTSmaNnMw0Z58VZO41zLwS+pgP6+L5dQZusp+VmBt0Wg5WPZgnoDRuA+kvwZ
- 6czfvQLA1rMnJbyakVhdsZNa06YFLz28BUhXURCnKoK1hqWuSbFbrCN2MKkHTs/nSJUw
- 2j+M/qocSY0f8I6lozVrxDfQy7tA9FRIt85mpgWfckxKYwcNF7J5+imQBGF865iHCJWx
- +/f4i6B199IinTidz0snW0DS/KOUmoMk1mV4gq57euKthq0Pb/QDE0F47FVxlygTost1
- ZWVvLlTHBSC6rwsMb5Ds51r2ExdMm5JH2pXOuiwQEVwCAX8TREelSgZwnscNdmf/Bfay
- 4tTw==
-X-Gm-Message-State: APjAAAUPk1DDN3t8OQ/VhQeDTF3bbcS4p4H7cg+LpHIEMWO5xzJDDQlX
- sEmHWHNclkE5GmYKYijsSSQ=
-X-Google-Smtp-Source: APXvYqwN3xXPr46LsBvXQoeM3xNHTgtquMHHKh1QvdRhT3+X053Z7iIDcWI/TfvRozWj41FcfVP6LA==
-X-Received: by 2002:a0c:92af:: with SMTP id b44mr4193122qvb.141.1556921738622; 
- Fri, 03 May 2019 15:15:38 -0700 (PDT)
+ bh=HXos2jVvt23sEGQ2FQBQJsKRHBVFtxk8JTRDuuOZjhU=;
+ b=sX+9PkRIW4VrSwWyihm7D7hPFD9WeRyVOLI3StncDV0tItg5fY6xRGy5YqgrBo87gR
+ tOvHg6ceS/CllssEqBcNszextygqedZnLr8iV0KfJvdEHm+jY6OO1nYSn6iiTXTz32mr
+ tQTAHlCq6GHZKtUNfEAhNuKWO9R5Q5PGq0c6nZ29dgjTPRn6mu78YyjUGhNkR4/jwSdm
+ qFnxub6QP6rBOBcsVf1WWQk7OSoRX/y3/XAsJIZuVLX+0Ta3CMzxggdiRW5OfFQTJX5n
+ Gkodb07NHsT3Yb3yTLd0dmyza55ycNBng6DFMpB64/bG9/QIYrG60LJKLa2JOocLE11q
+ bL+g==
+X-Gm-Message-State: APjAAAUp1B5GaMWFZpY44R/kNKLAjzmgtpSE/bCQBIYvsHKi6ZFcLNKc
+ de3RYaskS9sSJy48CtQ3yNY=
+X-Google-Smtp-Source: APXvYqwloUvPCdvnkCdnkj6YxY613wMJymZiRu4zYZ9KXa+nkanvvNwayrSaDiyLrWtFFgviThhyZA==
+X-Received: by 2002:a05:620a:1326:: with SMTP id
+ p6mr8885799qkj.265.1556921784672; 
+ Fri, 03 May 2019 15:16:24 -0700 (PDT)
 Received: from smtp.gmail.com ([143.107.45.1])
- by smtp.gmail.com with ESMTPSA id t26sm1807490qkm.82.2019.05.03.15.15.34
+ by smtp.gmail.com with ESMTPSA id j39sm2050285qtj.69.2019.05.03.15.16.20
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Fri, 03 May 2019 15:15:37 -0700 (PDT)
-Date: Fri, 3 May 2019 19:15:25 -0300
+ Fri, 03 May 2019 15:16:23 -0700 (PDT)
+Date: Fri, 3 May 2019 19:16:13 -0300
 From: Melissa Wen <melissa.srw@gmail.com>
 To: Lars-Peter Clausen <lars@metafoo.de>,
  Michael Hennerich <Michael.Hennerich@analog.com>,
@@ -73,8 +74,8 @@ To: Lars-Peter Clausen <lars@metafoo.de>,
  Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Barry Song <21cnbao@gmail.com>
-Subject: [PATCH 3/4] staging: iio: ad7150: simplify i2c SMBus return treatment
-Message-ID: <18725f7ddc3ac42b1c781b1848b05fabd4bd8320.1556919363.git.melissa.srw@gmail.com>
+Subject: [PATCH 4/4] staging: iio: ad7150: clean up of comments
+Message-ID: <35ccb46902d0a9a79b5c481d3d3cb9256a390c99.1556919363.git.melissa.srw@gmail.com>
 References: <cover.1556919363.git.melissa.srw@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
@@ -99,38 +100,50 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Since i2c_smbus_write_byte_data returns no-positive value, this commit
-making the treatment of its return value less verbose.
+General cleaning of comments to remove useless information or improve
+description.
 
 Signed-off-by: Melissa Wen <melissa.srw@gmail.com>
 ---
- drivers/staging/iio/cdc/ad7150.c | 10 +++-------
- 1 file changed, 3 insertions(+), 7 deletions(-)
+ drivers/staging/iio/cdc/ad7150.c | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/staging/iio/cdc/ad7150.c b/drivers/staging/iio/cdc/ad7150.c
-index 4ba46fb6ac02..3a4572a9e5ec 100644
+index 3a4572a9e5ec..775818b0761e 100644
 --- a/drivers/staging/iio/cdc/ad7150.c
 +++ b/drivers/staging/iio/cdc/ad7150.c
-@@ -201,16 +201,12 @@ static int ad7150_write_event_params(struct iio_dev *indio_dev,
- 	ret = i2c_smbus_write_byte_data(chip->client,
- 					ad7150_addresses[chan][4],
- 					sens);
--	if (ret < 0)
-+	if (ret)
- 		return ret;
--
--	ret = i2c_smbus_write_byte_data(chip->client,
-+	else
-+		return i2c_smbus_write_byte_data(chip->client,
- 					ad7150_addresses[chan][5],
- 					timeout);
--	if (ret < 0)
--		return ret;
--
--	return 0;
+@@ -162,7 +162,8 @@ static int ad7150_read_event_config(struct iio_dev *indio_dev,
+ 	return -EINVAL;
  }
  
- static int ad7150_write_event_config(struct iio_dev *indio_dev,
+-/* lock should be held */
++/* state_lock should be held to ensure consistent state*/
++
+ static int ad7150_write_event_params(struct iio_dev *indio_dev,
+ 				     unsigned int chan,
+ 				     enum iio_event_type type,
+@@ -484,10 +485,6 @@ static const struct iio_chan_spec ad7150_channels[] = {
+ 	},
+ };
+ 
+-/*
+- * threshold events
+- */
+-
+ static irqreturn_t ad7150_event_handler(int irq, void *private)
+ {
+ 	struct iio_dev *indio_dev = private;
+@@ -576,10 +573,6 @@ static const struct iio_info ad7150_info = {
+ 	.write_event_value = &ad7150_write_event_value,
+ };
+ 
+-/*
+- * device probe and remove
+- */
+-
+ static int ad7150_probe(struct i2c_client *client,
+ 			const struct i2c_device_id *id)
+ {
 -- 
 2.20.1
 
