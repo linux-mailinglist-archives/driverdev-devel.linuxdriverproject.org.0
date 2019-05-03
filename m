@@ -2,78 +2,81 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id F1AE4132A2
-	for <lists+driverdev-devel@lfdr.de>; Fri,  3 May 2019 18:59:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E1090132A5
+	for <lists+driverdev-devel@lfdr.de>; Fri,  3 May 2019 19:00:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 31C3F86A4F;
-	Fri,  3 May 2019 16:58:59 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8E46E86A39;
+	Fri,  3 May 2019 17:00:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id L0cRmGumc2fc; Fri,  3 May 2019 16:58:58 +0000 (UTC)
+	with ESMTP id pm7gdEHzo-j5; Fri,  3 May 2019 17:00:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 60FB686972;
-	Fri,  3 May 2019 16:58:57 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4238D869FD;
+	Fri,  3 May 2019 17:00:05 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 33B2D1BF3D1
- for <devel@linuxdriverproject.org>; Fri,  3 May 2019 16:58:51 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C94031BF3D1
+ for <devel@linuxdriverproject.org>; Fri,  3 May 2019 17:00:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 30B48869FD
- for <devel@linuxdriverproject.org>; Fri,  3 May 2019 16:58:51 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id B7C1522D55
+ for <devel@linuxdriverproject.org>; Fri,  3 May 2019 17:00:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nFvcsqJyCarY for <devel@linuxdriverproject.org>;
- Fri,  3 May 2019 16:58:50 +0000 (UTC)
-X-Greylist: delayed 00:05:02 by SQLgrey-1.7.6
+ with ESMTP id 0HF0M8Mbf94N for <devel@linuxdriverproject.org>;
+ Fri,  3 May 2019 17:00:03 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-ed1-f66.google.com (mail-ed1-f66.google.com
  [209.85.208.66])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B25F086972
- for <devel@driverdev.osuosl.org>; Fri,  3 May 2019 16:58:49 +0000 (UTC)
-Received: by mail-ed1-f66.google.com with SMTP id a8so6792284edx.3
- for <devel@driverdev.osuosl.org>; Fri, 03 May 2019 09:58:49 -0700 (PDT)
+ by silver.osuosl.org (Postfix) with ESMTPS id BAE7821526
+ for <devel@driverdev.osuosl.org>; Fri,  3 May 2019 17:00:02 +0000 (UTC)
+Received: by mail-ed1-f66.google.com with SMTP id b8so6750565edm.11
+ for <devel@driverdev.osuosl.org>; Fri, 03 May 2019 10:00:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=nexus-software-ie.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=2AXsO3p3XUOOmEOW3jRK4tuWsEU6SSZDBzlNLxQJuMU=;
- b=wkVjK/gSjX4MySF1NCzYupRTUFLjtYQV9SaFTglc9wSA+nkRWLvtBg0xwv4eW5cAlY
- vcpfjWHs4mcdk0jp6RUNqGuHAnI7aY4Nsie89PlRMHpXGKRw9Up/XOLHDKI0BGCnHpQC
- cT7PUe4NPDtxcJ3AO/kT1HmxEKMp6z+hvaH4rZGXVLKloq8APDd6/rOD/zXRJF9e4ONI
- J4vJRPmVpKl0OgiHJ20BrjM77FZwxY3JhnCbL9/CvZLcMx4Z/pNujgU4m7ZBwMpjkt6O
- 9W7PLmO3Hbc/6l9ce5pJ9pbz8ZI7ZRXqxAF2WFo8+zmbU1+fbRHNN2hIW2g3JlM4hYbG
- qKuQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=a6vJY+AhwqgrhoRy0OW/Eo7CkRwV/mSGUibAYlqkZ+A=;
+ b=RsaKlqlKUpyB7O4GF2V/3l97KYu7v72h82kAH4IptCguxeVTXCwhBlqaIZugcWXyY+
+ dXXEoIo3C0/WUaK0JvbH12JcVCGrlVoc9539pNW4OUuxiI00xkG1Er+GU6N3HWD3acew
+ SAv9qK6Qv/vPFyP8JtEGA0GpbTKhz6LKCAFMUDqDCkhynPsbjPyN2wEvfLIE4BWLUIrN
+ dd3EBUzOQgPnCWEAuOA/Y1pApp5WpMgjFi6jiBMEeZJanjQ7Ub8of5sbaXQ4P3feWpeE
+ q1dKSlJiJvCn5r5q3zFxOChwFtIzszQTKchBoS0rRuMvnv8H/Vr/cIG2iCTM8rGGdl8Q
+ AR8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=2AXsO3p3XUOOmEOW3jRK4tuWsEU6SSZDBzlNLxQJuMU=;
- b=Y48pkfjptgSsOzVN5E371/8de3MjP4GXOhYCur7YaofbXY5ZZP3/SMNiJIuBwudXvJ
- JNMYQJi5BNLAi5pPbjm91LnZSuFVzY8A6GecnQOMcXMDlV5p0NC3tFIN86Rxclqp02PW
- 0nCtL90H3WHeX73QkPfBD1269H3ZgkK4TBrH1yGLvOaVa4Bkpg6PZdAc5lsbMX7mHzOK
- Pc482kvxIsJSkAwfQDswWanaHZRmrYX1Wyr0j20tKcbi2ghuHH/iU+pp17XmbDONeD+R
- 5ogiw1L6C5JSbLIkfSTR1VRh65mG/MwqforKUkzQ1Wo0W3UgoVWvWnXZkns6u+Cw2zqS
- 1TOQ==
-X-Gm-Message-State: APjAAAVUw1xzlcMhvPtPq6vQyNvqCPGedRWZLG3s0/RU59ALSf11J4V8
- he8HwoUESxAuyjD4zFWjcddXAw==
-X-Google-Smtp-Source: APXvYqznu+dw1Grq076eKc24OB56ZD8jrVot65g+y4tMEPBdS1clOnUBiCr/w9GC71Y/gWnsR9JnDw==
-X-Received: by 2002:a17:906:e10e:: with SMTP id
- gj14mr7324252ejb.285.1556902425262; 
- Fri, 03 May 2019 09:53:45 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=a6vJY+AhwqgrhoRy0OW/Eo7CkRwV/mSGUibAYlqkZ+A=;
+ b=XWI5hNxoWc5+plKC0U2HnoME+6gwTP+mtpBLUgrZeWkcPlw63OhvIO+IV8xOg/3ZKj
+ ifrdkWGfArgXxcBj/CirV0NIbMr1NLE8HH68Lo7o7NM29TmytGFI/agp/RNGZUiBvGSN
+ I7q4h2XMAG9iR45PHNargJK/uTp6SKxaZBX9mxN+PbExDTgrBry0o5TnOirj1axzDx7z
+ ZMg9t+2vnJmCn+K27a16xJK3DvISVJUxmS0dSz220E+3ESRVIzBlWJlmodvdPkp8ODad
+ lSFe+rR0NjC4hPbwEnZfWbgBnuaSYjOk97ZdVm9KUTyjN4w09/5zteqpHdXHPpGjwSw1
+ Rgvw==
+X-Gm-Message-State: APjAAAVzmCnqU1485GKyo+AXrMzJfrAB1afGYsIxoYNipHZ1QdJq8mP0
+ qN1g2+Zw42qokPPXyK6jStSgIw==
+X-Google-Smtp-Source: APXvYqwEkwh/tG36hhpCXh4Wto5Kt7IJFz5ingegOp008Tzt2WHGUNZmVpNSz9irGvTywbQNPQ61Kw==
+X-Received: by 2002:a17:906:2583:: with SMTP id
+ m3mr7222447ejb.74.1556902426396; 
+ Fri, 03 May 2019 09:53:46 -0700 (PDT)
 Received: from event-horizon.net ([80.111.179.123])
- by smtp.gmail.com with ESMTPSA id j55sm707038ede.27.2019.05.03.09.53.44
+ by smtp.gmail.com with ESMTPSA id j55sm707038ede.27.2019.05.03.09.53.45
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 03 May 2019 09:53:44 -0700 (PDT)
+ Fri, 03 May 2019 09:53:45 -0700 (PDT)
 From: Bryan O'Donoghue <pure.logic@nexus-software.ie>
 To: gregkh@linuxfoundation.org, l.stach@pengutronix.de, peng.fan@nxp.com,
  shawnguo@kernel.org, srinivas.kandagatla@linaro.org,
  leonard.crestez@nxp.com
-Subject: [RESEND PATCH v6 0/5] Add i.MX8MM OCOTP support
-Date: Fri,  3 May 2019 17:53:37 +0100
-Message-Id: <20190503165342.30139-1-pure.logic@nexus-software.ie>
+Subject: [PATCH v6 1/5] nvmem: imx-ocotp: Elongate OCOTP_CTRL ADDR field to
+ eight bits
+Date: Fri,  3 May 2019 17:53:38 +0100
+Message-Id: <20190503165342.30139-2-pure.logic@nexus-software.ie>
 X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20190503165342.30139-1-pure.logic@nexus-software.ie>
+References: <20190503165342.30139-1-pure.logic@nexus-software.ie>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -95,104 +98,37 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-V6 RESEND:
-- Adding Greg to sender list. Greg looks like you are the right person to
-  apply this.
+i.MX6 defines OCOTP_CTRLn:ADDR as seven bit address-field with a one bit
+RSVD0 field, i.MX7 defines OCOTP_CTRLn:ADDR as a four bit address-field
+with a four bit RSVD0 field.
 
-- Adding devel@driverdev.osuosl.org to sender list
+i.MX8 defines the OCOTP_CTRLn:ADDR bit-field as a full range eight bits.
 
-- History:
-  https://www.spinics.net/lists/arm-kernel/msg723454.html
-  https://www.spinics.net/lists/arm-kernel/msg723321.html
-  https://www.spinics.net/lists/arm-kernel/msg722655.html
-  https://www.spinics.net/lists/arm-kernel/msg722449.html
-  https://www.spinics.net/lists/arm-kernel/msg722441.html
-  https://www.spinics.net/lists/arm-kernel/msg722350.html
+i.MX6 and i.MX7 should return zero for their respective RSVD0 bits and
+ignore a write-back of zero where i.MX8 will make use of the full range.
 
-V6:
-- Drop BV_ prefix from u-boot timing defines
-- Add RB Leonard
+This patch expands the bit-field definition for all users to eight bits,
+which is safe due to RSVD0 being a no-op for the i.MX6 and i.MX7.
 
-V5:
-- Adopt u-boot method of calculating timings.
-  On the basis that the OTP registers have a programming time that is not
-  related to the ipg_clk rate specify the various timing inputs to the
-  RELAX, STROBE_READ and STROBE_PROG as-is done in u-boot.
+Signed-off-by: Bryan O'Donoghue <pure.logic@nexus-software.ie>
+Reviewed-by: Leonard Crestez <leonard.crestez@nxp.com>
+---
+ drivers/nvmem/imx-ocotp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-  The wait time to burn a given OTP fuse is not documented anywhere except
-  in code in u-boot.
-
-  The ipg_clk then is used to clock the registers in the OCOTP block and to
-  tell the OCOTP block how long to wait for programming to complete and how
-  long to delay before doing an automatic re-read of the registers.
-
-  Tested on the i.MX8MM-EVK
-
-  relax = 1 strobe_read 6 strobe_prog 670
-
-V4:
-- Change the RELAX fix to drop subtraction of -1 for all users - Leonard
-- Expand register definition from the 60 documented OTP registers to the
-  entire 256 registers putatively in the address space*
-- Add Reviewed-by as indicated - Leonard
-- Added Suggested-by where it made sense - Bryan
-
-* Dumping the expanded address space shows that there are indeed OTP values
-  present that can be read back from registers that are not formally
-  documented for i.MX8MM eg.
-
-Bank 20
-        0x55000801
-        0x00014d14
-        0xd503201f
-        0x55000801
-Bank 21
-        0x00014d20
-        0xd503201f
-        0x00000000
-        0x00000000
-
-V3:
-- Fix commit log for the expanding the ADDR field i.MX6 uses seven not four
-  bits, which is why the existing define says 0x7F not 0x0F - bod
-
-V2:
-- Rebased to linux-next/master to align with i.8MQ work
-- Two patches dropped as a result of rebase
-- Added patch to expand OCOTP_CTRL_ADDR to 8 bits for all users - Leonard
-- Makes sure nregs = 60 not 64 for i.MX8MM
-- Tested imx8mm-evk, imx7s-warp7
-
-V1:
-This set adds support for the i.MX8MM.
-
-When adding support for this processor there are two interesting gotchas to
-watch for.
-
-#1 We current do not preserve the WAIT field for i.MX6 and since we are
-   reusing the i.MX6 set_timing() values, this would also affect i.MX8.
-   On the face of it, it appears to be an inocuous error with no real side
-   effects.
-
-#2 Secondly the i.MX8MM will calculate a zero value for the RELAX bit-field
-   when programming up OTP fuses.
-   This is fine for programming the fuses but, it introduces a strange
-   failure state with reloading the shadow registers subsequent to blowing
-   an OTP fuse.
-   The second important patch here then is ensuring the RELAX field is
-   non-zero to avoid the failure state.
-
-Bryan O'Donoghue (5):
-  nvmem: imx-ocotp: Elongate OCOTP_CTRL ADDR field to eight bits
-  nvmem: imx-ocotp: Ensure WAIT bits are preserved when setting timing
-  nvmem: imx-ocotp: Change TIMING calculation to u-boot algorithm
-  nvmem: imx-ocotp: Add i.MX8MM support
-  dt-bindings: imx-ocotp: Add i.MX8MM compatible
-
- .../devicetree/bindings/nvmem/imx-ocotp.txt   |  1 +
- drivers/nvmem/imx-ocotp.c                     | 48 ++++++++++++++++---
- 2 files changed, 43 insertions(+), 6 deletions(-)
-
+diff --git a/drivers/nvmem/imx-ocotp.c b/drivers/nvmem/imx-ocotp.c
+index 4cf7b61e4bf5..6600c4ddeb51 100644
+--- a/drivers/nvmem/imx-ocotp.c
++++ b/drivers/nvmem/imx-ocotp.c
+@@ -45,7 +45,7 @@
+ #define IMX_OCOTP_ADDR_DATA2		0x0040
+ #define IMX_OCOTP_ADDR_DATA3		0x0050
+ 
+-#define IMX_OCOTP_BM_CTRL_ADDR		0x0000007F
++#define IMX_OCOTP_BM_CTRL_ADDR		0x000000FF
+ #define IMX_OCOTP_BM_CTRL_BUSY		0x00000100
+ #define IMX_OCOTP_BM_CTRL_ERROR		0x00000200
+ #define IMX_OCOTP_BM_CTRL_REL_SHADOWS	0x00000400
 -- 
 2.21.0
 
