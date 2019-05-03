@@ -1,70 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D360213552
-	for <lists+driverdev-devel@lfdr.de>; Sat,  4 May 2019 00:14:13 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9AFA513556
+	for <lists+driverdev-devel@lfdr.de>; Sat,  4 May 2019 00:14:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 01A8323026;
-	Fri,  3 May 2019 22:14:12 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4BA29885AC;
+	Fri,  3 May 2019 22:14:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6tSrU6TMPWs3; Fri,  3 May 2019 22:14:10 +0000 (UTC)
+	with ESMTP id cX3B1vq3gjgL; Fri,  3 May 2019 22:14:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id CD4F231024;
-	Fri,  3 May 2019 22:14:05 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BA8BC883E3;
+	Fri,  3 May 2019 22:14:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9E2C81BF3D2
- for <devel@linuxdriverproject.org>; Fri,  3 May 2019 22:14:04 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A91E01BF3D2
+ for <devel@linuxdriverproject.org>; Fri,  3 May 2019 22:14:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9A74186A53
- for <devel@linuxdriverproject.org>; Fri,  3 May 2019 22:14:04 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id A63AA883E9
+ for <devel@linuxdriverproject.org>; Fri,  3 May 2019 22:14:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Zb0KxwYSwsRv for <devel@linuxdriverproject.org>;
- Fri,  3 May 2019 22:14:04 +0000 (UTC)
+ with ESMTP id etiiggHk4nJx for <devel@linuxdriverproject.org>;
+ Fri,  3 May 2019 22:14:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f196.google.com (mail-qt1-f196.google.com
- [209.85.160.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D5ED086A35
- for <devel@driverdev.osuosl.org>; Fri,  3 May 2019 22:14:03 +0000 (UTC)
-Received: by mail-qt1-f196.google.com with SMTP id j6so8555598qtq.1
- for <devel@driverdev.osuosl.org>; Fri, 03 May 2019 15:14:03 -0700 (PDT)
+Received: from mail-qk1-f196.google.com (mail-qk1-f196.google.com
+ [209.85.222.196])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 96ACF883E3
+ for <devel@driverdev.osuosl.org>; Fri,  3 May 2019 22:14:46 +0000 (UTC)
+Received: by mail-qk1-f196.google.com with SMTP id a132so4570505qkb.13
+ for <devel@driverdev.osuosl.org>; Fri, 03 May 2019 15:14:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=7k8Wov7jQEYM2rfxCLHxgiTqZOyUz2SP9zMZgrjLstQ=;
- b=Bhw7KkQUjZsiqWbLEaDqz97+HBxqEteaEk12AYSCalIVlFVcTyWL0lcdvsSn1woeVQ
- 3IZ+BFbtj2bFspdtExTUPbfZEEkvTg6T3V9++z29O5TOiQ+6Re43iO4pupPy9yE3zIS3
- nQLNvCghkaGekDf+dAuNdyIAWf1r8LGdrfkWb0ZVzdB1xRwxt9cIa+GEwiApuYLvYVXk
- 6nR2gwKh0/xIQeIU4RadyzNjS7pZRUBnMrEUzXc+AZWlsHp15kgjqFK5ShGOSOLEJE2T
- hNCvD4268hVd2H4D1zVIjFwex02ybMk0pl6sPbFjTSQTzUNvdcEPFuAAXcQr+daLyAtb
- v0rg==
+ bh=XY7o10BOh3Ussnn5GQ0UW2n/49hS/5+Ve7RxK2jXxNA=;
+ b=eREjwxSw2EQeXDa6ksr5nzPOyVNCTRHxcTWHOnVQB7xAzBXKbRlBz1u2a7CTKV3ahr
+ uwpsFRonSG8RzXz9Q++OMESMD0wEBw7K8bRAmbByfVG5IL3iqFWRzhC0NHM6HJKkuNBV
+ fNxyn4sVWRcJcKF54kGwRhha/HztOU80rQBKjaHKijtVABONs6jEpGBapMrtzmLjcSYA
+ 3oABiLWxYY23G7oUSdA0GPDx0cOr//BkHKDp/vJyvLeAAbAwjDHJnt0ny4AhDsw6efqY
+ 7Ug57FMsTz/xaNTWZIPBUlmtH8Q5sG88jy7XuSYFxJTbgQyORvCmiSn8pp9V5SmQ2zQ5
+ no1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=7k8Wov7jQEYM2rfxCLHxgiTqZOyUz2SP9zMZgrjLstQ=;
- b=q/P9oxD1qzRYxrsnihT+zwkYDXKPqsnoldRJOQblF2edRf1EkWcHRNWtDCrio+vt/6
- cQ6DiRYOJuIv5O21xN8rXSNlpg0Ib4mJxmlFeZuON2ajA6KzfndhY7OGCpB8rAWhce8Q
- /QgzNYIw1buEC2NGUs9szdFwZ5Z0XsD9mnOE5zab3/8oGuowSLK795nu/r7Q1UhtRqCL
- J62BxAezTmGpNZHOPWiwBOv6svkoBEecbHl2PTGVmwI3OAdcuenufnXqB2h0HMwJu1Po
- M7L3MCIe7xtGqaJprAAtY3j47HltNbdmU6wYtNPhBFCv21vf621zrOrcBqUT3r/vlrSR
- XTZA==
-X-Gm-Message-State: APjAAAXWle+c/FNtoxK5VXaUh9uBdI4QdR13dqcm/CKKXQ23C2aAQalp
- sg/AqMsxXsfoRSNqrUgS0Yw=
-X-Google-Smtp-Source: APXvYqykYNGfLyRHcSceDFKQLfRdvTv1c51cU0Ka04/27TJyn/P9BrF/GYdVDBaKulcrLEZytrEBHQ==
-X-Received: by 2002:a0c:c956:: with SMTP id v22mr10511251qvj.164.1556921642900; 
- Fri, 03 May 2019 15:14:02 -0700 (PDT)
+ bh=XY7o10BOh3Ussnn5GQ0UW2n/49hS/5+Ve7RxK2jXxNA=;
+ b=OHWFxGmhwx6IYuO/Wii9JoL2Niq2RZp3hlkVzo0oMI8ODcwg+e3xs3w7PCi75BxYJE
+ B96H08rXjjsjGzhbUubb3w/dCWI3dt9gaRi/tnvtn4VChYeUECBByp4+TwTNAtb3cKMH
+ EQhPt+S2fksr/ZgPabjtl7QOJCh/mg3TthQGOOC/z4EN5HBIeS39K+A9iltdhvQAMD+s
+ pLZmp1NaPZGFySeMbrBpo8/HZF+gNePmJydUKPpbwwFogq4UTLRS2HtgLFwXjDdeL5BV
+ kTkxCW8pcWwPul2u6Lk66OExT98ouRKBvITGEYZUzRNp4Y9FEIkivXiZBdnpcyx/Fb6l
+ /94g==
+X-Gm-Message-State: APjAAAV8Jrik3BvT6VL2q5UEAhJKn5HNgOvlfq+gcuS2PDBJG6Afq6cy
+ PsUZfVPSGXwjfAc7jRovbF0=
+X-Google-Smtp-Source: APXvYqy5/bIS6yRa4NkV4HaJxxsvNL19MtRuXYXfmxFxNLAlDYxjEuZ0SK3X0Ba3xKcP90ctdRWWIw==
+X-Received: by 2002:a37:2f05:: with SMTP id v5mr10123294qkh.157.1556921685702; 
+ Fri, 03 May 2019 15:14:45 -0700 (PDT)
 Received: from smtp.gmail.com ([143.107.45.1])
- by smtp.gmail.com with ESMTPSA id s185sm1844500qkf.74.2019.05.03.15.13.58
+ by smtp.gmail.com with ESMTPSA id 33sm1842035qtg.94.2019.05.03.15.14.41
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Fri, 03 May 2019 15:14:01 -0700 (PDT)
-Date: Fri, 3 May 2019 19:13:50 -0300
+ Fri, 03 May 2019 15:14:44 -0700 (PDT)
+Date: Fri, 3 May 2019 19:14:33 -0300
 From: Melissa Wen <melissa.srw@gmail.com>
 To: Lars-Peter Clausen <lars@metafoo.de>,
  Michael Hennerich <Michael.Hennerich@analog.com>,
@@ -73,8 +73,8 @@ To: Lars-Peter Clausen <lars@metafoo.de>,
  Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Barry Song <21cnbao@gmail.com>
-Subject: [PATCH 1/4] staging: iio: ad7150: organize registers definition
-Message-ID: <10781f40fa8a403480833e49b7356ade5af57b94.1556919363.git.melissa.srw@gmail.com>
+Subject: [PATCH 2/4] staging: iio: ad7150: use FIELD_GET and GENMASK
+Message-ID: <7f7d36348bca1de25bd70350b7c665be6441250f.1556919363.git.melissa.srw@gmail.com>
 References: <cover.1556919363.git.melissa.srw@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
@@ -99,136 +99,46 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Use the suffix REG to make the register addresses clear
-and indentation to highlight field names.
+Use the bitfield macro FIELD_GET, and GENMASK to do the shift and mask in
+one go. This makes the code more readable than explicit masking followed
+by a shift.
 
 Signed-off-by: Melissa Wen <melissa.srw@gmail.com>
 ---
- drivers/staging/iio/cdc/ad7150.c | 75 ++++++++++++++++----------------
- 1 file changed, 37 insertions(+), 38 deletions(-)
+ drivers/staging/iio/cdc/ad7150.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/staging/iio/cdc/ad7150.c b/drivers/staging/iio/cdc/ad7150.c
-index dd7fcab8e19e..24601ba7db88 100644
+index 24601ba7db88..4ba46fb6ac02 100644
 --- a/drivers/staging/iio/cdc/ad7150.c
 +++ b/drivers/staging/iio/cdc/ad7150.c
-@@ -15,35 +15,34 @@
- #include <linux/iio/iio.h>
- #include <linux/iio/sysfs.h>
- #include <linux/iio/events.h>
--/*
-- * AD7150 registers definition
-- */
- 
--#define AD7150_STATUS              0
--#define AD7150_STATUS_OUT1         BIT(3)
--#define AD7150_STATUS_OUT2         BIT(5)
--#define AD7150_CH1_DATA_HIGH       1
--#define AD7150_CH2_DATA_HIGH       3
--#define AD7150_CH1_AVG_HIGH        5
--#define AD7150_CH2_AVG_HIGH        7
--#define AD7150_CH1_SENSITIVITY     9
--#define AD7150_CH1_THR_HOLD_H      9
--#define AD7150_CH1_TIMEOUT         10
--#define AD7150_CH1_SETUP           11
--#define AD7150_CH2_SENSITIVITY     12
--#define AD7150_CH2_THR_HOLD_H      12
--#define AD7150_CH2_TIMEOUT         13
--#define AD7150_CH2_SETUP           14
--#define AD7150_CFG                 15
--#define AD7150_CFG_FIX             BIT(7)
--#define AD7150_PD_TIMER            16
--#define AD7150_CH1_CAPDAC          17
--#define AD7150_CH2_CAPDAC          18
--#define AD7150_SN3                 19
--#define AD7150_SN2                 20
--#define AD7150_SN1                 21
--#define AD7150_SN0                 22
--#define AD7150_ID                  23
-+/* AD7150 registers */
-+
-+#define AD7150_STATUS_REG			0x00
-+#define	 AD7150_STATUS_OUT1			BIT(3)
-+#define	 AD7150_STATUS_OUT2			BIT(5)
-+#define AD7150_CH1_DATA_HIGH_REG		0x01
-+#define AD7150_CH2_DATA_HIGH_REG		0x03
-+#define AD7150_CH1_AVG_HIGH_REG			0x05
-+#define AD7150_CH2_AVG_HIGH_REG			0x07
-+#define AD7150_CH1_SENSITIVITY_REG		0x09
-+#define AD7150_CH1_THR_HOLD_H_REG		0x09
-+#define AD7150_CH2_SENSITIVITY_REG		0x0C
-+#define AD7150_CH1_TIMEOUT_REG			0x0A
-+#define AD7150_CH1_SETUP_REG			0x0B
-+#define AD7150_CH2_THR_HOLD_H_REG		0x0C
-+#define AD7150_CH2_TIMEOUT_REG			0x0D
-+#define AD7150_CH2_SETUP_REG			0x0E
-+#define AD7150_CFG_REG				0x0F
-+#define	 AD7150_CFG_FIX				BIT(7)
-+#define AD7150_PD_TIMER_REG			0x10
-+#define AD7150_CH1_CAPDAC_REG			0x11
-+#define AD7150_CH2_CAPDAC_REG			0x12
-+#define AD7150_SN3_REG				0x13
-+#define AD7150_SN2_REG				0x14
-+#define AD7150_SN1_REG				0x15
-+#define AD7150_SN0_REG				0x16
-+#define AD7150_ID_REG				0x17
- 
- /**
-  * struct ad7150_chip_info - instance specific chip data
-@@ -85,12 +84,12 @@ struct ad7150_chip_info {
+@@ -5,6 +5,7 @@
+  * Copyright 2010-2011 Analog Devices Inc.
   */
  
- static const u8 ad7150_addresses[][6] = {
--	{ AD7150_CH1_DATA_HIGH, AD7150_CH1_AVG_HIGH,
--	  AD7150_CH1_SETUP, AD7150_CH1_THR_HOLD_H,
--	  AD7150_CH1_SENSITIVITY, AD7150_CH1_TIMEOUT },
--	{ AD7150_CH2_DATA_HIGH, AD7150_CH2_AVG_HIGH,
--	  AD7150_CH2_SETUP, AD7150_CH2_THR_HOLD_H,
--	  AD7150_CH2_SENSITIVITY, AD7150_CH2_TIMEOUT },
-+	{ AD7150_CH1_DATA_HIGH_REG, AD7150_CH1_AVG_HIGH_REG,
-+	  AD7150_CH1_SETUP_REG, AD7150_CH1_THR_HOLD_H_REG,
-+	  AD7150_CH1_SENSITIVITY_REG, AD7150_CH1_TIMEOUT_REG },
-+	{ AD7150_CH2_DATA_HIGH_REG, AD7150_CH2_AVG_HIGH_REG,
-+	  AD7150_CH2_SETUP_REG, AD7150_CH2_THR_HOLD_H_REG,
-+	  AD7150_CH2_SENSITIVITY_REG, AD7150_CH2_TIMEOUT_REG },
- };
++#include <linux/bitfield.h>
+ #include <linux/interrupt.h>
+ #include <linux/device.h>
+ #include <linux/kernel.h>
+@@ -44,6 +45,9 @@
+ #define AD7150_SN0_REG				0x16
+ #define AD7150_ID_REG				0x17
  
- static int ad7150_read_raw(struct iio_dev *indio_dev,
-@@ -133,7 +132,7 @@ static int ad7150_read_event_config(struct iio_dev *indio_dev,
- 	bool adaptive;
- 	struct ad7150_chip_info *chip = iio_priv(indio_dev);
- 
--	ret = i2c_smbus_read_byte_data(chip->client, AD7150_CFG);
-+	ret = i2c_smbus_read_byte_data(chip->client, AD7150_CFG_REG);
++/* AD7150 masks */
++#define AD7150_THRESHTYPE_MSK			GENMASK(6, 5)
++
+ /**
+  * struct ad7150_chip_info - instance specific chip data
+  * @client: i2c client for this device
+@@ -136,7 +140,7 @@ static int ad7150_read_event_config(struct iio_dev *indio_dev,
  	if (ret < 0)
  		return ret;
  
-@@ -229,7 +228,7 @@ static int ad7150_write_event_config(struct iio_dev *indio_dev,
- 	if (event_code == chip->current_event)
- 		return 0;
- 	mutex_lock(&chip->state_lock);
--	ret = i2c_smbus_read_byte_data(chip->client, AD7150_CFG);
-+	ret = i2c_smbus_read_byte_data(chip->client, AD7150_CFG_REG);
- 	if (ret < 0)
- 		goto error_ret;
+-	threshtype = (ret >> 5) & 0x03;
++	threshtype = FIELD_GET(AD7150_THRESHTYPE_MSK, ret);
+ 	adaptive = !!(ret & 0x80);
  
-@@ -264,7 +263,7 @@ static int ad7150_write_event_config(struct iio_dev *indio_dev,
- 
- 	cfg |= (!adaptive << 7) | (thresh_type << 5);
- 
--	ret = i2c_smbus_write_byte_data(chip->client, AD7150_CFG, cfg);
-+	ret = i2c_smbus_write_byte_data(chip->client, AD7150_CFG_REG, cfg);
- 	if (ret < 0)
- 		goto error_ret;
- 
-@@ -497,7 +496,7 @@ static irqreturn_t ad7150_event_handler(int irq, void *private)
- 	s64 timestamp = iio_get_time_ns(indio_dev);
- 	int ret;
- 
--	ret = i2c_smbus_read_byte_data(chip->client, AD7150_STATUS);
-+	ret = i2c_smbus_read_byte_data(chip->client, AD7150_STATUS_REG);
- 	if (ret < 0)
- 		return IRQ_HANDLED;
- 
+ 	switch (type) {
 -- 
 2.20.1
 
