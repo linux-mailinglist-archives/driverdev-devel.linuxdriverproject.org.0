@@ -2,73 +2,82 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 287AD13AB9
-	for <lists+driverdev-devel@lfdr.de>; Sat,  4 May 2019 16:42:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9FE6113AC7
+	for <lists+driverdev-devel@lfdr.de>; Sat,  4 May 2019 16:49:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 50BCC85F88;
-	Sat,  4 May 2019 14:42:28 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1C5D085C4C;
+	Sat,  4 May 2019 14:49:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UoPNVLc3BgJp; Sat,  4 May 2019 14:42:27 +0000 (UTC)
+	with ESMTP id j4k-GtyTLWl2; Sat,  4 May 2019 14:49:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CCA7685ABB;
-	Sat,  4 May 2019 14:42:26 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4F1C485CF2;
+	Sat,  4 May 2019 14:49:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 33D191BF2F2
- for <devel@linuxdriverproject.org>; Sat,  4 May 2019 14:42:22 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5EA0D1BF31C
+ for <devel@linuxdriverproject.org>; Sat,  4 May 2019 14:49:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3081784C20
- for <devel@linuxdriverproject.org>; Sat,  4 May 2019 14:42:22 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5B8BB87E41
+ for <devel@linuxdriverproject.org>; Sat,  4 May 2019 14:49:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eLPzB5+5AWbc for <devel@linuxdriverproject.org>;
- Sat,  4 May 2019 14:42:21 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f193.google.com (mail-oi1-f193.google.com
- [209.85.167.193])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 71A0A84BCF
- for <devel@driverdev.osuosl.org>; Sat,  4 May 2019 14:42:21 +0000 (UTC)
-Received: by mail-oi1-f193.google.com with SMTP id a7so1328376oie.13
- for <devel@driverdev.osuosl.org>; Sat, 04 May 2019 07:42:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=r9bJ5mQH0bFiSdzMFFB9aG/I/ocJ8zclWjNdxs2Hvmc=;
- b=F9pvV3Iw0ijwtXW8NVwe7iDvNNXcDLXlSYMftcFbSh3TXFVxECvo0hYJOPGNx7/eIV
- Mnz6OTzHh/I+2tS1nQd9nLT2+ah8qGnw15m3JeCCuLX09gU20NwjZS1zw/Ac+h4lX7Gt
- v5kvfKBC66bIxucRd953nF+f415VzOefkU6MM9CMItaC5QWHUvPtavkoeyMsdybKOd4N
- PqFCzs8yAeXgWd0ldp+H/wlaqEhe4Rp1SE2FGce7oAUVvLu34C6WtYs/+9PL+uJY53za
- g6hWBFiF/QHuvB90NqPEz3C51cOxd9KsL//TrCgQIxQ9h5u7ifEcEQNTGGpp4IaRRQrv
- hWRg==
+ with ESMTP id FYSJGXB-iNQv for <devel@linuxdriverproject.org>;
+ Sat,  4 May 2019 14:49:11 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ed1-f65.google.com (mail-ed1-f65.google.com
+ [209.85.208.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 110DC87E3F
+ for <devel@driverdev.osuosl.org>; Sat,  4 May 2019 14:49:10 +0000 (UTC)
+Received: by mail-ed1-f65.google.com with SMTP id w37so9644587edw.4
+ for <devel@driverdev.osuosl.org>; Sat, 04 May 2019 07:49:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nexus-software-ie.20150623.gappssmtp.com; s=20150623;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=ouSmw5pcZk0fylsN9lA/T+ETjE9vahgI6G1mhrQBT9M=;
+ b=mOZsoflw38rnRLrvjnox0hhMo4ZGXAl+CqtpjM7HoObzVeyfNxtl0Z1wVtA1yTfUih
+ 4bGfM1p/dUVY3YSqyDhxpQyDseB8k1Y2a0Z8r89MMVKA8xLl/EefS2D1ZhOB45M4P571
+ kbM1S1K9sy2hJmId2cejMSr0LtJeZO/bxWCjzE5Rwpc0QvWRcM4PpwcyglFcN0N1uLvR
+ b2U+GQcY/y3jYFNMIjq8DWXFnYjSsVQ00NQRJoXqj/v766Z4EtXv6aTPCf8AMgFILtw1
+ bq3VJ3TRsCtfXFl7FYcJkLqHFdT16QKXz9N2VRkechQu+ZmXtKgP+czYEgTgcI62K9j7
+ TFRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=r9bJ5mQH0bFiSdzMFFB9aG/I/ocJ8zclWjNdxs2Hvmc=;
- b=RCrdtKIHVAZQfxOURFjM57gfC7lMEk+LBebQtNb29BdscfpWbIx2+HMZQAkVoiUw6W
- WNz0JawmtwE0zrBMRNJ4zkAqBYDjixyJVNmq2ydac9e2kHUVFER4/zcJLfksk8mxDxeM
- HARLyg+09+goUJZJ/L/ChYTOGGW8k1zFsSeCUMDY2fcDPxDnliHAIiqmafJiGN1I1hRV
- p+hw2zlqlZjnNoYDc1fjAmv98f+61rBFiCxJYVAWzAUvkIT36k52s3sdwhd2bdPf5qSM
- EBL0FRkc8HYj5FRXSWl0NfuRtAD4Tp3Rv8jONFGKFNW//IGBamwXvfLMRDgubtTA5bA7
- 9axg==
-X-Gm-Message-State: APjAAAU/423i/w7/sqbbGpyKFl0kc2ll8hn1o1wx+NAH6ZUIl7TJUHyq
- 0b6eVCugDUey4XrblXROqZRKSASImDzkuogZKI4=
-X-Google-Smtp-Source: APXvYqzEVEdH+1TEvoSvfgHfEz8LzW/K9QdEdDzS4k7lw+vdiS+OmGvkxrRdA1vw3qZWSKfHjIOhFLNkCCwoNRDDcww=
-X-Received: by 2002:aca:5bd7:: with SMTP id p206mr2766026oib.128.1556980940695; 
- Sat, 04 May 2019 07:42:20 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=ouSmw5pcZk0fylsN9lA/T+ETjE9vahgI6G1mhrQBT9M=;
+ b=M8YwomV1HiI4eolB0WZoG2D7NTxDLODQzbBeL6dS05twK/qn04ph09oYgINzfqN9uG
+ LR0ynm6lgYnBt/Eb9lgjmu2WL75v0F8O9lYI3v0W/PKiefvOF1scj9PQZQ1O/mAEz20W
+ 3tZBX3KdqCAznufJQnhlqsfJnA/ll+d5gsl1pafyrMr0mY+WAn0RcJ40xZBp/C7Wm+So
+ q3eJIcCJ4wYeR5qs8SKAoicZULnnBasQ/nda+ul1XaQBAlBpJqxsrnsLM6XG9suLHYqR
+ e0myq3CZn13DC0tWqT3A+7kmwsl7FFLOUCciD2DlYt9Ub5OYeggabzQ7/acWGpmzxVx3
+ OYBg==
+X-Gm-Message-State: APjAAAUCY1V08SHJs6ZlDepVyB1rYebuxjJQhUhFT5TCcHZVK7P5Z/J8
+ HKmAcr/dYlUjQ/HdHdq/S861+Q==
+X-Google-Smtp-Source: APXvYqzmxhL8Uxmt7IjVnu/du26wC+RwDS29oK6F2rGdOg+rzp+CIUgoqggY/dDbiqq2CfH7yte9BQ==
+X-Received: by 2002:a50:e79b:: with SMTP id b27mr15469587edn.281.1556981348930; 
+ Sat, 04 May 2019 07:49:08 -0700 (PDT)
+Received: from [192.168.192.38] ([80.111.179.123])
+ by smtp.gmail.com with ESMTPSA id f44sm1426053eda.73.2019.05.04.07.49.06
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Sat, 04 May 2019 07:49:08 -0700 (PDT)
+Subject: Re: [RESEND PATCH v6 0/5] Add i.MX8MM OCOTP support
+To: Greg KH <gregkh@linuxfoundation.org>
+References: <20190503165342.30139-1-pure.logic@nexus-software.ie>
+ <20190504083939.GA1859@kroah.com>
+From: Bryan O'Donoghue <pure.logic@nexus-software.ie>
+Message-ID: <d67c692d-9e4f-9d08-12bc-ab3644fbaa8c@nexus-software.ie>
+Date: Sat, 4 May 2019 15:49:05 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-References: <cover.1556919363.git.melissa.srw@gmail.com>
- <CA+U=DsqiRBAdGK0aqp5Chv-AtuL8W47tu+Bq6O_Pc97HYbewkQ@mail.gmail.com>
-In-Reply-To: <CA+U=DsqiRBAdGK0aqp5Chv-AtuL8W47tu+Bq6O_Pc97HYbewkQ@mail.gmail.com>
-From: Alexandru Ardelean <ardeleanalex@gmail.com>
-Date: Sat, 4 May 2019 17:42:06 +0300
-Message-ID: <CA+U=DspNV8JAbSesYZVV0czUL5=1fY1BWwbGFVum4a0aDp33Ng@mail.gmail.com>
-Subject: Re: [PATCH 0/4] staging: iio: ad7150: improve driver readability
-To: Melissa Wen <melissa.srw@gmail.com>, 
- Alexandru Ardelean <alexandru.ardelean@analog.com>
+In-Reply-To: <20190504083939.GA1859@kroah.com>
+Content-Language: en-US-large
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,80 +90,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Lars-Peter Clausen <lars@metafoo.de>,
- Stefan Popa <stefan.popa@analog.com>,
- Michael Hennerich <Michael.Hennerich@analog.com>, linux-iio@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Barry Song <21cnbao@gmail.com>, LKML <linux-kernel@vger.kernel.org>,
- kernel-usp@googlegroups.com, Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
- Hartmut Knaack <knaack.h@gmx.de>, Jonathan Cameron <jic23@kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Cc: devel@driverdev.osuosl.org, aisheng.dong@nxp.com, peng.fan@nxp.com,
+ abel.vesa@nxp.com, anson.huang@nxp.com, srinivas.kandagatla@linaro.org,
+ linux-imx@nxp.com, kernel@pengutronix.de, fabio.estevam@nxp.com,
+ leonard.crestez@nxp.com, shawnguo@kernel.org,
+ linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, May 4, 2019 at 2:12 PM Alexandru Ardelean
-<ardeleanalex@gmail.com> wrote:
->
-> On Sat, May 4, 2019 at 1:24 AM Melissa Wen <melissa.srw@gmail.com> wrote:
-> >
-> > This patchset solves readability issues in AD7150 code, such as clarify
-> > register and mask definition, fashion improvement of mask uses, reduce
-> > tedious operation and useless comments.
-> >
->
-> Hey,
->
-> Two patches seem a bit noisy/un-needed.
-> The other 2 are fine from me.
->
-> This driver does need some work to move it out of staging.
-> I am not sure what would be a big blocker for it, other than maybe it
-> needs a device-tree binding doc (in YAML format).
-> Maybe Jonathan remembers.
->
-> Some other low-hanging-fruit ideas would be:
-> 1) remove the code for platform_data ; that one seems forgotten from
-> some other time; the interrupts should be coming from device-tree,
-> from the i2c bindings
-> 2) you could do a AD7150_EVENT_SPEC() macro (similar to
-> AD7150_TIMEOUT() macro) and use it in the ad7150_events[] list; that
-> would reduce a few lines
-> 3) similar to 2), you could do a AD7150_CHANNEL(x) macro ;
-> 4) in ad7150_event_handler() the checks could be wrapped into a macro,
-> or maybe some function ; i am referring to "(int_status &
-> AD7150_STATUS_OUT1) && (chip->old_state & AD7150_STATUS_OUT1)" checks
-> ; those seem to be repeated
-> 5) add of_match_table to the driver
->
-> I (now) suspect that the reason this driver is still in staging is this comment:
-> /* Timeouts not currently handled by core */
->
-> I wonder if things changed since then ?
-> If not, it would be interesting to implement it in core.
->
+On 04/05/2019 09:39, Greg KH wrote:
+> On Fri, May 03, 2019 at 05:53:37PM +0100, Bryan O'Donoghue wrote:
+>> V6 RESEND:
+>> - Adding Greg to sender list. Greg looks like you are the right person to
+>>    apply this.
+> 
+> $ ./scripts/get_maintainer.pl --file drivers/nvmem/imx-ocotp.c
+> Srinivas Kandagatla <srinivas.kandagatla@linaro.org> (maintainer:NVMEM FRAMEWORK)
+> Shawn Guo <shawnguo@kernel.org> (maintainer:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE)
+> Sascha Hauer <s.hauer@pengutronix.de> (maintainer:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE)
+> Pengutronix Kernel Team <kernel@pengutronix.de> (reviewer:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE)
+> Fabio Estevam <festevam@gmail.com> (reviewer:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE)
+> NXP Linux Team <linux-imx@nxp.com> (reviewer:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE)
+> linux-arm-kernel@lists.infradead.org (moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE)
+> linux-kernel@vger.kernel.org (open list)
+> 
+> 
+> Why me???
+> 
 
-I forgot to mention the wiki page for the driver:
-https://wiki.analog.com/resources/tools-software/linux-drivers/iio-cdc/ad7150
+Looked like you were doing the merges to me.
 
-it may help with a few things
+commit 38e7b6efe997c4eb9a5a809dc2b2fe6c759b7c4b
+Signed-off-by: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 
-> Thanks
-> Alex
->
->
-> > Melissa Wen (4):
-> >   staging: iio: ad7150: organize registers definition
-> >   staging: iio: ad7150: use FIELD_GET and GENMASK
-> >   staging: iio: ad7150: simplify i2c SMBus return treatment
-> >   staging: iio: ad7150: clean up of comments
-> >
-> >  drivers/staging/iio/cdc/ad7150.c | 102 ++++++++++++++-----------------
-> >  1 file changed, 47 insertions(+), 55 deletions(-)
-> >
-> > --
-> > 2.20.1
-> >
+Ping, Srini, any chance you can merge this to your tree ?
+
+---
+bod
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
