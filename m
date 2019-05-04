@@ -1,72 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 80B4913BD0
-	for <lists+driverdev-devel@lfdr.de>; Sat,  4 May 2019 20:47:19 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id ABE1A13BD8
+	for <lists+driverdev-devel@lfdr.de>; Sat,  4 May 2019 20:48:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 245E687E5D;
-	Sat,  4 May 2019 18:47:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2122886B04;
+	Sat,  4 May 2019 18:48:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jmYQTpmdESQP; Sat,  4 May 2019 18:47:16 +0000 (UTC)
+	with ESMTP id hsEquth1rzaA; Sat,  4 May 2019 18:48:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 89D4B87A04;
-	Sat,  4 May 2019 18:47:16 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C345E86866;
+	Sat,  4 May 2019 18:48:26 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9FDF81BF5E9
- for <devel@linuxdriverproject.org>; Sat,  4 May 2019 18:47:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4D6151BF5E9
+ for <devel@linuxdriverproject.org>; Sat,  4 May 2019 18:48:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9CC55228E7
- for <devel@linuxdriverproject.org>; Sat,  4 May 2019 18:47:14 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 4A964226E5
+ for <devel@linuxdriverproject.org>; Sat,  4 May 2019 18:48:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ou9IbpUfzAlp for <devel@linuxdriverproject.org>;
- Sat,  4 May 2019 18:47:14 +0000 (UTC)
+ with ESMTP id ftbNKsfgwZF6 for <devel@linuxdriverproject.org>;
+ Sat,  4 May 2019 18:48:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
- [209.85.215.193])
- by silver.osuosl.org (Postfix) with ESMTPS id EF363215DF
- for <devel@driverdev.osuosl.org>; Sat,  4 May 2019 18:47:13 +0000 (UTC)
-Received: by mail-pg1-f193.google.com with SMTP id d31so4357637pgl.7
- for <devel@driverdev.osuosl.org>; Sat, 04 May 2019 11:47:13 -0700 (PDT)
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id CD049215DF
+ for <devel@driverdev.osuosl.org>; Sat,  4 May 2019 18:48:24 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id b3so4585929pfd.1
+ for <devel@driverdev.osuosl.org>; Sat, 04 May 2019 11:48:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id;
- bh=l3c6KFF6BsmBy3LVEJIfrDKvV0/RDELn3G8eEmiKxLM=;
- b=FH5gmfmQbT7Z7/f7ibgaYZzoAGT0PM9xBJJDOLN8ljEUxvD53vVI8RJD/m2hdsuvX4
- aRuGjIFon600zbymKxPsy7JArdeJP0XNnLueZd9pdoRJbciHY+5aGmYKTzhBSGK9GxVo
- p6oWdxksOTWSmeDcUinlCds+P2/Q8qn4wzaM6WxP+LKdq5gE5PpR7aKEfCEIzbcJi7bC
- Pch8ZHzyFOljRjmfOpk4bd/7eI1yl3nwbajFVUCQM1cZxbdYxE31M0m9l4UeY4uIphKl
- BsQY8zWeL2egFIc66sciXuUeiAfJG14EkyaJEPJH4ptcBKaSOUCOcEOC+V/abRUhv5XI
- wXJg==
+ bh=hmTYC1IMrcB9vVn4blmFDPwB368HGffmno6HFyxlFBg=;
+ b=fEOewwgJy+by43IHCWkxFNXTyAXP6B+iuW6YwAxyWS626ZgBu8vHqedCtgcTSKyE9k
+ Nj87dgstydB/6jy/ZnDqoqx/qru5iV5NYsqqTSdKlIIfuHErQrIEB8pXQlonnvgn6bLC
+ auxEli5EQ+5/4sdwjAZ+GUVBuB2H4c+aMZZdCH5dgjHsD+hOMA5jWQBmZCMj7xKTv0wS
+ NKPtcxlBd1BPjTgZKKHeYf1Q6mf3UCMmhrCkFT+Yf5xknyk3OjGAFPju4vSerHDCiXgY
+ Ge67kwXXx2TTnbj72/vzGXlELFhEYex7ulPSqwFJD765CIf6NThdJp0Am2FTlD2FJNl3
+ eWwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=l3c6KFF6BsmBy3LVEJIfrDKvV0/RDELn3G8eEmiKxLM=;
- b=BbxNujGVg78Zk9PvaGwOPwxVPpVW/qp5kV60AxPnr9I1GNto3erMv2ADwjgDYJjsKg
- oxsPyMnuPL1hd5EDJn8HeBOOVFbEn1A6wzgS7gk5r8xsTjjW9XDI1SR7NKaTcLlZ1xy+
- 9b/KAIYhCulfOTxbReaN9NclGtOi58aRMuVMZetL0+TstAAa6Pnnn2LwE5bmhPYXflgK
- bToo0XySUb5750L8ti/vbzVADXw8dDqMA0Gpd0FBNwVSFs9t0Ht6GzcXiuRFvpnzB/Z4
- y+wxHkFUh5ii1jbtpqNCObXvwolx9pc2nHU6ayRqW8rurJGQD4l94gBaZPKRmrCAJv+S
- ljrw==
-X-Gm-Message-State: APjAAAWp1RL6nPIDqWxXAKwWJmmfCOsOlz4097QCM2PCCzNTFbMtrPMu
- u2cqCKoF1r3CTJdk9cXfTu8=
-X-Google-Smtp-Source: APXvYqymQKkkxsqq8taEVSzOWaYsFAAvsSK6EKs5rUtEyV71u2gBpBEFW5W/MxiIANly9lBD6Q/cZw==
-X-Received: by 2002:a62:27c2:: with SMTP id n185mr20628729pfn.51.1556995633508; 
- Sat, 04 May 2019 11:47:13 -0700 (PDT)
+ bh=hmTYC1IMrcB9vVn4blmFDPwB368HGffmno6HFyxlFBg=;
+ b=E68TWCviRu9u5VlNjBLoHflm8Z1ZsmlEIxkLB98bUSlgU202qlS0OEDx4Zc1p3PEM9
+ Y1d5kwDmndvoeW30YZYVxrurl9rT6J5eq3kf5j15CpcmhHgYTQ7CxNQT13xqy5yHFVgb
+ ma465/vLn8qxWTjjMKqYwLm1S1+w2rPyGN7z6tjSd43CV/N4YAE0Oz9pH9QHxPD/gJZJ
+ jHtBlUmFAPXa4d/XXf9UgJz03KWTTGi8tKmgsaoxsPdmqL++5uMwL3B1TE3j0JtYtRhV
+ BeV436ZzZsUn9MvPPQelvF9DRLcKpLSyJeoqTQT1PtWV1ukW7LGf2wV3J13JZWbl/9+I
+ H+gA==
+X-Gm-Message-State: APjAAAXtlbEuopaGBjqCuJjvb5T1j3sJcO7r6T6rgtOoYjOK2+2uzjxL
+ GwQR8KjuJfSihYnmIvpWNVc=
+X-Google-Smtp-Source: APXvYqwht0JimG6n+2DPZhcHPWNdY9Fi57tT/TCXMmaeFarKieDMoWy1sDk5VRxKpfocLxh8N4MXpw==
+X-Received: by 2002:a65:4183:: with SMTP id a3mr20477551pgq.121.1556995704305; 
+ Sat, 04 May 2019 11:48:24 -0700 (PDT)
 Received: from localhost.localdomain ([103.87.57.241])
- by smtp.gmail.com with ESMTPSA id f21sm6989063pfn.30.2019.05.04.11.47.04
+ by smtp.gmail.com with ESMTPSA id m16sm9550571pfi.29.2019.05.04.11.48.21
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 04 May 2019 11:47:12 -0700 (PDT)
+ Sat, 04 May 2019 11:48:23 -0700 (PDT)
 From: Vatsala Narang <vatsalanarang@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 4/7] staging: rtl8723bs: core: Remove unnecessary parentheses.
-Date: Sun,  5 May 2019 00:16:44 +0530
-Message-Id: <20190504184644.25988-1-vatsalanarang@gmail.com>
+Subject: [PATCH 5/7] staging: rtl8723bs: core: Remove braces from single if
+ statement.
+Date: Sun,  5 May 2019 00:18:01 +0530
+Message-Id: <20190504184801.26056-1-vatsalanarang@gmail.com>
 X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -89,49 +90,61 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove unnecessary parentheses after 'address-of' operator to get rid of
-checkpatch warning.
+Remove braces from single if statement to get rid of checkpatch warning.
 
 Signed-off-by: Vatsala Narang <vatsalanarang@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index 32b66dce99cd..60079532bddd 100644
+index 60079532bddd..6f0205c9504b 100644
 --- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
 +++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -277,7 +277,7 @@ void init_mlme_default_rate_set(struct adapter *padapter)
- static void init_mlme_ext_priv_value(struct adapter *padapter)
- {
- 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
--	struct mlme_ext_info *pmlmeinfo = &(pmlmeext->mlmext_info);
-+	struct mlme_ext_info *pmlmeinfo = &pmlmeext->mlmext_info;
+@@ -370,9 +370,8 @@ static void init_channel_list(struct adapter *padapter, RT_CHANNEL_INFO *channel
+ 		struct p2p_reg_class *reg = NULL;
  
- 	atomic_set(&pmlmeext->event_seq, 0);
- 	pmlmeext->mgnt_seq = 0;/* reset to zero when disconnect at client mode */
-@@ -464,8 +464,8 @@ int	init_mlme_ext_priv(struct adapter *padapter)
- 	int	res = _SUCCESS;
- 	struct registry_priv *pregistrypriv = &padapter->registrypriv;
- 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
--	struct mlme_priv *pmlmepriv = &(padapter->mlmepriv);
--	struct mlme_ext_info *pmlmeinfo = &(pmlmeext->mlmext_info);
-+	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
-+	struct mlme_ext_info *pmlmeinfo = &pmlmeext->mlmext_info;
+ 		for (ch = o->min_chan; ch <= o->max_chan; ch += o->inc) {
+-			if (!has_channel(channel_set, chanset_size, ch)) {
++			if (!has_channel(channel_set, chanset_size, ch))
+ 				continue;
+-			}
  
- 	pmlmeext->padapter = padapter;
+ 			if ((0 == padapter->registrypriv.ht_enable) && (8 == o->inc))
+ 				continue;
+@@ -1950,9 +1949,8 @@ unsigned int OnAction_back(struct adapter *padapter, union recv_frame *precv_fra
  
-@@ -609,8 +609,8 @@ unsigned int OnProbeReq(struct adapter *padapter, union recv_frame *precv_frame)
- 	unsigned char *p;
- 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
+ 	category = frame_body[0];
+ 	if (category == RTW_WLAN_CATEGORY_BACK) {/*  representing Block Ack */
+-		if (!pmlmeinfo->HT_enable) {
++		if (!pmlmeinfo->HT_enable)
+ 			return _SUCCESS;
+-		}
+ 
+ 		action = frame_body[1];
+ 		DBG_871X("%s, action =%d\n", __func__, action);
+@@ -2397,9 +2395,8 @@ s32 dump_mgntframe_and_wait_ack(struct adapter *padapter, struct xmit_frame *pmg
+ 		pxmitpriv->ack_tx = true;
+ 		pxmitpriv->seq_no = seq_no++;
+ 		pmgntframe->ack_report = 1;
+-		if (rtw_hal_mgnt_xmit(padapter, pmgntframe) == _SUCCESS) {
++		if (rtw_hal_mgnt_xmit(padapter, pmgntframe) == _SUCCESS)
+ 			ret = rtw_ack_tx_wait(pxmitpriv, timeout_ms);
+-		}
+ 
+ 		pxmitpriv->ack_tx = false;
+ 		mutex_unlock(&pxmitpriv->ack_tx_mutex);
+@@ -6421,9 +6418,8 @@ u8 setauth_hdl(struct adapter *padapter, unsigned char *pbuf)
  	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
--	struct mlme_ext_info *pmlmeinfo = &(pmlmeext->mlmext_info);
--	struct wlan_bssid_ex	*cur = &(pmlmeinfo->network);
-+	struct mlme_ext_info *pmlmeinfo = &pmlmeext->mlmext_info;
-+	struct wlan_bssid_ex	*cur = &pmlmeinfo->network;
- 	u8 *pframe = precv_frame->u.hdr.rx_data;
- 	uint len = precv_frame->u.hdr.len;
- 	u8 is_valid_p2p_probereq = false;
+ 	struct mlme_ext_info *pmlmeinfo = &(pmlmeext->mlmext_info);
+ 
+-	if (pparm->mode < 4) {
++	if (pparm->mode < 4)
+ 		pmlmeinfo->auth_algo = pparm->mode;
+-	}
+ 
+ 	return	H2C_SUCCESS;
+ }
 -- 
 2.17.1
 
