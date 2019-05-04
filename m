@@ -1,73 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D34BC1393C
-	for <lists+driverdev-devel@lfdr.de>; Sat,  4 May 2019 12:37:03 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E415E1395A
+	for <lists+driverdev-devel@lfdr.de>; Sat,  4 May 2019 12:43:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 86C8D861A1;
-	Sat,  4 May 2019 10:37:01 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DDBCF88335;
+	Sat,  4 May 2019 10:43:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XyeBEynZbIE0; Sat,  4 May 2019 10:37:00 +0000 (UTC)
+	with ESMTP id XVuyYs4MB0Mi; Sat,  4 May 2019 10:43:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D4D3985F87;
-	Sat,  4 May 2019 10:36:59 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5B92D87FCC;
+	Sat,  4 May 2019 10:43:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 696B81BF37F
- for <devel@linuxdriverproject.org>; Sat,  4 May 2019 10:36:57 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5381D1BF20B
+ for <devel@linuxdriverproject.org>; Sat,  4 May 2019 10:43:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 60F448731A
- for <devel@linuxdriverproject.org>; Sat,  4 May 2019 10:36:57 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 48365231AB
+ for <devel@linuxdriverproject.org>; Sat,  4 May 2019 10:43:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id U4EbUpwzzcvP for <devel@linuxdriverproject.org>;
- Sat,  4 May 2019 10:36:56 +0000 (UTC)
+ with ESMTP id gxdyYdm+I6vM for <devel@linuxdriverproject.org>;
+ Sat,  4 May 2019 10:43:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f68.google.com (mail-ot1-f68.google.com
- [209.85.210.68])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 80BED8730E
- for <devel@driverdev.osuosl.org>; Sat,  4 May 2019 10:36:56 +0000 (UTC)
-Received: by mail-ot1-f68.google.com with SMTP id b1so7553177otp.5
- for <devel@driverdev.osuosl.org>; Sat, 04 May 2019 03:36:56 -0700 (PDT)
+Received: from mail-oi1-f195.google.com (mail-oi1-f195.google.com
+ [209.85.167.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id 6E95F2314A
+ for <devel@driverdev.osuosl.org>; Sat,  4 May 2019 10:43:47 +0000 (UTC)
+Received: by mail-oi1-f195.google.com with SMTP id u3so513939oic.12
+ for <devel@driverdev.osuosl.org>; Sat, 04 May 2019 03:43:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=1Mah2M/rOQLB9r1W2J9fPI+hW8KuDg9vx6L7LqhtKuY=;
- b=EkCAs1QHWCGHh45tgjFxaOEZw8KQHdFFAUhgv39Tfe/MgruVYnNcHIJ3rAgM+OlMcb
- Flqs8Z8if2rZi9/Vr1HahEjuKJLetOb52qpdUOY68yPaK+lphO4qaI3QD3JVGcCGW0Tn
- offtkXHHfduGN8+OQQyCVIUjjlo44VPeDALlKyylvflLfelI+mjrL9IbjT4QggJRZ49n
- 3HHlPEdkmG75kQmduua/r7cLb7nugfDvQeYQlFpA7F0PGFTtz11czqC/otPR2r8hPivh
- vQzLq8qec4erkHvg7czYNOH8NcEdDvW7L3gjnQhF7ZR1+0wHohPpkWE/Uow/fYeep+w1
- 2eVA==
+ :cc; bh=jP4HbLDkknhP4A9EDJa5u2q42TL/gPI6IzJv6fDFbOE=;
+ b=QxVjpKX4PVr06tzfYCHVDnwasOj8Lay1fQHuq7MDHynAVFS1ghYDIn9Epz8T7hksdl
+ +Sn6K4p1MCxfb0Sjol0zvoAqsv0sYvL/8kBiHCdOyHmHRM2lwgZCJwf7VgcENDcgrR+2
+ /V3yVEVrmHPz1xsXnCWkShf0F/Uk6Xrd3RUK0PKCW5D1AotrYrTMbKPLosAww7GsY7yY
+ wJmmWdsdevwn3IDuJcYjWu5fEGgwfWxBjv22eUzl3xgfE0GUtuDBW7sYqjj04XmIYath
+ /xX1t1eVkuxSVLnC0Pfq/6ZwtaCuMGDzETzGUrd17jjbamU8lnQzgSRxhQCobguc0J26
+ uzeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=1Mah2M/rOQLB9r1W2J9fPI+hW8KuDg9vx6L7LqhtKuY=;
- b=fH1MCzpE3m63xt/A8e6JGbhwS+MQm961GUqzucrzuruZRrIw/vwDw12SUZQz56u8LH
- owxbJKxHYiK+jt23d5URKnFswVoJKfPaRd6RYK7ghEhYKHZ4D8CKdixHYJ4ACG9Q7H6O
- 5N86pQO/7PW8BEx8reCiIMd+FKrkRa39EMApzDwS/JWWdbIUQqiGBS1BsqcfCYVh0QPy
- aDvcci5MvLfIeUEwsp4rBT/6xtMkmNs+WcNRTFQRen5OF/qgafJzO+mJC/EO1VHP8qFM
- QkENVViPuSkhDpydhjiSD7U6FVJYFn2IL55FdIa1KvJGxguRm46J9rQICzL/wpRt28eC
- j3yw==
-X-Gm-Message-State: APjAAAUcDQzlJlLjXCdOSYIDxLBi564g6OrSVZWg3liDktk1g6ChSYI+
- qe3U/mmifwvOIZeS931uYeAuwPsZlvCrEKfULuQ=
-X-Google-Smtp-Source: APXvYqy06Q/js8Zzz5TSbvg5kclOlz9RDFjeC90xMb/53GJiZ5mxvEINp8+cqpfTQjO7fNpd+G4ZsPMndS3J+I8KWgY=
-X-Received: by 2002:a9d:7858:: with SMTP id c24mr4055310otm.66.1556966215617; 
- Sat, 04 May 2019 03:36:55 -0700 (PDT)
+ bh=jP4HbLDkknhP4A9EDJa5u2q42TL/gPI6IzJv6fDFbOE=;
+ b=HVnx6isxPLfadVTqkJIWZIuR+1rJeSmpCE65mevWSO/kJPZGpLs0tAeC6+/p5T07X/
+ 1qs/R+VI5wWhEH98bxNzEKH79FxShOVBWSEFLEXW6/KNAFErptLdc0B6TNlNnWe3tuI9
+ iK5SFVNitDaHkQpAJIavLO+H3UbwNIroK2XqwX6TiUrDNTxjiQEk4P4Y2aunmX60LXtZ
+ mbzvEXhY8M6OCfSVRGrVDDKpre50VEsMOTcIGGxXyDnqWySRhkXE2X9Trk7/bcDonAFg
+ RJz61D+87qHDubcMSdI7zs4K0dfQImLVEP+1JhWzFmzWjk8QhpKdDWeCGXhILO1bQP3T
+ 1tnA==
+X-Gm-Message-State: APjAAAXw/JxkMCUQ9NhpbzTy+qM9fwqWiMLHgXOukANc2q2kH3DTzMl3
+ 1GqXGeFbex9ccgqBvGe40jva8Utq9TplY/FaOfE=
+X-Google-Smtp-Source: APXvYqwCrRtjDLEJreXyuy076r7vAv19fwipMMdtgaVutPfe+ZBelYYYdLgoyxQ3nllr1qxbJe0rltNF0vUGorWhUNA=
+X-Received: by 2002:aca:305:: with SMTP id 5mr2011759oid.117.1556966626650;
+ Sat, 04 May 2019 03:43:46 -0700 (PDT)
 MIME-Version: 1.0
 References: <cover.1556919363.git.melissa.srw@gmail.com>
- <18725f7ddc3ac42b1c781b1848b05fabd4bd8320.1556919363.git.melissa.srw@gmail.com>
-In-Reply-To: <18725f7ddc3ac42b1c781b1848b05fabd4bd8320.1556919363.git.melissa.srw@gmail.com>
+ <7f7d36348bca1de25bd70350b7c665be6441250f.1556919363.git.melissa.srw@gmail.com>
+In-Reply-To: <7f7d36348bca1de25bd70350b7c665be6441250f.1556919363.git.melissa.srw@gmail.com>
 From: Alexandru Ardelean <ardeleanalex@gmail.com>
-Date: Sat, 4 May 2019 13:36:43 +0300
-Message-ID: <CA+U=DsoYaN_gCc=jcQ9nHHNpC+voPfHCc=RP_ZyQAC497Jx_7A@mail.gmail.com>
-Subject: Re: [PATCH 3/4] staging: iio: ad7150: simplify i2c SMBus return
- treatment
+Date: Sat, 4 May 2019 13:43:34 +0300
+Message-ID: <CA+U=Dso6zSLzhhdiZcc+P4-2zcabxnoMd2539HmofTXrtYoKDQ@mail.gmail.com>
+Subject: Re: [PATCH 2/4] staging: iio: ad7150: use FIELD_GET and GENMASK
 To: Melissa Wen <melissa.srw@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -87,90 +86,65 @@ Cc: devel@driverdev.osuosl.org, Lars-Peter Clausen <lars@metafoo.de>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Barry Song <21cnbao@gmail.com>, LKML <linux-kernel@vger.kernel.org>,
  kernel-usp@googlegroups.com, Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
- Hartmut Knaack <knaack.h@gmx.de>, Jonathan Cameron <jic23@kernel.org>
+ Hartmut Knaack <knaack.h@gmx.de>,
+ Alexandru Ardelean <alexandru.ardelean@analog.com>,
+ Jonathan Cameron <jic23@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, May 4, 2019 at 1:26 AM Melissa Wen <melissa.srw@gmail.com> wrote:
+On Sat, May 4, 2019 at 1:25 AM Melissa Wen <melissa.srw@gmail.com> wrote:
 >
-> Since i2c_smbus_write_byte_data returns no-positive value, this commit
-> making the treatment of its return value less verbose.
+> Use the bitfield macro FIELD_GET, and GENMASK to do the shift and mask in
+> one go. This makes the code more readable than explicit masking followed
+> by a shift.
 >
+
+This looks neat.
+I'd have to remember to ack it from my work email.
+
+One minor comment inline, which would be the object of a new patch.
+
 > Signed-off-by: Melissa Wen <melissa.srw@gmail.com>
 > ---
->  drivers/staging/iio/cdc/ad7150.c | 10 +++-------
->  1 file changed, 3 insertions(+), 7 deletions(-)
+>  drivers/staging/iio/cdc/ad7150.c | 6 +++++-
+>  1 file changed, 5 insertions(+), 1 deletion(-)
 >
 > diff --git a/drivers/staging/iio/cdc/ad7150.c b/drivers/staging/iio/cdc/ad7150.c
-> index 4ba46fb6ac02..3a4572a9e5ec 100644
+> index 24601ba7db88..4ba46fb6ac02 100644
 > --- a/drivers/staging/iio/cdc/ad7150.c
 > +++ b/drivers/staging/iio/cdc/ad7150.c
-> @@ -201,16 +201,12 @@ static int ad7150_write_event_params(struct iio_dev *indio_dev,
->         ret = i2c_smbus_write_byte_data(chip->client,
->                                         ad7150_addresses[chan][4],
->                                         sens);
-> -       if (ret < 0)
-> +       if (ret)
-
-For i2c_smbus_write_byte_data(), checking "ret < 0" or non-zero, is the same.
-Changing this doesn't have any added value.
-
->                 return ret;
-> -
-> -       ret = i2c_smbus_write_byte_data(chip->client,
-> +       else
-> +               return i2c_smbus_write_byte_data(chip->client,
->                                         ad7150_addresses[chan][5],
->                                         timeout);
-
-The introduction of the "else" branch is a bit noisy.
-The code was a bit neater (and readable) before the else branch, and
-functionally identical.
-
-Well, when I say neater before, you have to understand, that I (and I
-assume that some other people who write drivers) have a slight
-fixation for this pattern:
-
-example1:
-ret = fn1();
-
-if (ret < 0)  // could also be just "if (ret)"
-   return ret;
-
-ret = fn2();
-if (ret < 0)  // could also be just "if (ret)"
-   return ret;
-
-example1a:
-+ret = fn3();
-+if (ret < 0)  // could also be just "if (ret)"
-+    return ret;
-
-
-Various higher-level programming languages, will discourage this
-pattern in favor of neater patterns.
-
-I personally, have a few arguments in favor of this pattern:
-1) it is closer to how the machine code ; so, closer to how a
-low-level instruction looks like
-2) if (ever) this needs to be patched, the patch could be neat (see
-example1a) ; the examle assumes that it's been added via a patch at a
-later point in time
-3) it keeps indentation level to a minimum ; this also aligns with
-kernel-coding guidelines
-(https://www.kernel.org/doc/html/v4.10/process/coding-style.html )
-    (indentation seems a bit OCD-like when someone points it out at a
-review, but it has it's value over time)
-
-> -       if (ret < 0)
-> -               return ret;
-> -
-> -       return 0;
->  }
+> @@ -5,6 +5,7 @@
+>   * Copyright 2010-2011 Analog Devices Inc.
+>   */
 >
->  static int ad7150_write_event_config(struct iio_dev *indio_dev,
+> +#include <linux/bitfield.h>
+>  #include <linux/interrupt.h>
+>  #include <linux/device.h>
+>  #include <linux/kernel.h>
+> @@ -44,6 +45,9 @@
+>  #define AD7150_SN0_REG                         0x16
+>  #define AD7150_ID_REG                          0x17
+>
+> +/* AD7150 masks */
+> +#define AD7150_THRESHTYPE_MSK                  GENMASK(6, 5)
+> +
+>  /**
+>   * struct ad7150_chip_info - instance specific chip data
+>   * @client: i2c client for this device
+> @@ -136,7 +140,7 @@ static int ad7150_read_event_config(struct iio_dev *indio_dev,
+>         if (ret < 0)
+>                 return ret;
+>
+> -       threshtype = (ret >> 5) & 0x03;
+> +       threshtype = FIELD_GET(AD7150_THRESHTYPE_MSK, ret);
+>         adaptive = !!(ret & 0x80);
+
+Why not also do something similar for the `adaptive` value ?
+
+>
+>         switch (type) {
 > --
 > 2.20.1
 >
