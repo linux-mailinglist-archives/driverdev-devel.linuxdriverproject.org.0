@@ -2,58 +2,72 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2270013862
-	for <lists+driverdev-devel@lfdr.de>; Sat,  4 May 2019 11:08:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 388841389D
+	for <lists+driverdev-devel@lfdr.de>; Sat,  4 May 2019 12:14:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E6DD888973;
-	Sat,  4 May 2019 09:08:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A05988848C;
+	Sat,  4 May 2019 10:14:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2JwInS+JkwQ2; Sat,  4 May 2019 09:08:22 +0000 (UTC)
+	with ESMTP id Ls+YXD4KRM3w; Sat,  4 May 2019 10:14:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C8F248839F;
-	Sat,  4 May 2019 09:08:21 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 060B48830B;
+	Sat,  4 May 2019 10:14:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6AD041BF417
- for <devel@linuxdriverproject.org>; Sat,  4 May 2019 09:08:19 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0F4541BF20B
+ for <devel@linuxdriverproject.org>; Sat,  4 May 2019 10:14:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 67E412221C
- for <devel@linuxdriverproject.org>; Sat,  4 May 2019 09:08:19 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id F358723120
+ for <devel@linuxdriverproject.org>; Sat,  4 May 2019 10:14:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sZgI8rtqsUmj for <devel@linuxdriverproject.org>;
- Sat,  4 May 2019 09:08:18 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id AD7B6221F8
- for <devel@driverdev.osuosl.org>; Sat,  4 May 2019 09:08:18 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id E44BE20675;
- Sat,  4 May 2019 09:08:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1556960898;
- bh=U13yRfNsyujPL4glFUm3JyfwktjWvzEjmbD29U+zzfc=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=LqldXs6Ae+9ZBPdjrm6Z3ZX5XCxN1JnU7mArT5vZbhUZCJ2LNbZYPZSx2vS1I4je9
- 6fhxvwD06ZbzwiOr/Du9MmZr50QsGfOXpCLO8pxSO3jLn6ycHcamBkkBPqksp+lxCe
- UMuE3gKwZXpdIRIb8FN6aPo6Hppbc3czBu6mptgo=
-Date: Sat, 4 May 2019 11:08:15 +0200
-From: "'gregkh@linuxfoundation.org'" <gregkh@linuxfoundation.org>
-To: Matt Sickler <Matt.Sickler@daktronics.com>
-Subject: Re: RFC: kpc2000 driver naming
-Message-ID: <20190504090815.GF13840@kroah.com>
-References: <SN6PR02MB4016C279A0BBC406734A06D8EE350@SN6PR02MB4016.namprd02.prod.outlook.com>
+ with ESMTP id 3MLZUf6MFdB4 for <devel@linuxdriverproject.org>;
+ Sat,  4 May 2019 10:14:07 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ot1-f65.google.com (mail-ot1-f65.google.com
+ [209.85.210.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id 808C7226E9
+ for <devel@driverdev.osuosl.org>; Sat,  4 May 2019 10:14:07 +0000 (UTC)
+Received: by mail-ot1-f65.google.com with SMTP id g24so7531016otq.2
+ for <devel@driverdev.osuosl.org>; Sat, 04 May 2019 03:14:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=lPA/HIaDQ/Ghehk/BJTv13aPK8G2LL/IH3O3cng7o7E=;
+ b=boNvDlRImfuTWIQlvpaKfakLmm3cBpk/ofsj1V9dSCm5v4fKg/lpVp+gRidxoN7bJ0
+ +ejW1h55gsN0bZd98Tm+av7sQXqOAfhvp0rQhVYy5+W9HQs4kwPtOuKhmouzs5sp/ZU7
+ YRvFJYUPnQZ92Rkvtgha/i/5NQ4z1bNC3Qf5ld+p3yQ+aqTzIc/3h3sCyhwFZadhMhpv
+ 0z6gZLTXoligLLSkkVoOIIX8EOgsjz+6aVWJIICal2pyXq4tZ0jvtfyFEa74ovGF4Dfs
+ w2x/2Ubq+VoA8Uvovg83KWI2/mzyNcoujjBjtKFabhECEohiZBhtAlq3S7nxjylE8qa7
+ VpEQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=lPA/HIaDQ/Ghehk/BJTv13aPK8G2LL/IH3O3cng7o7E=;
+ b=H9jWEAc+452qMjato9YL4kzxwCxBQO+3EHJrA9vCAoXS+SFiaPVPn9cXqQuOXnq2PO
+ uc87WoWqijMGVkDdnh8T3FtABbmIsTMG/1qVJQKhQXBZEpnXhdLj898ZP23xf6HtYGij
+ JiPpuQDASyD4kbC1j9MPKt4AEZR00oPVlMwsWiCXhrVLobBOz6G1rbaaakA753MqiFlf
+ 5ujBwYQL5MCo+dgvS7JbZbPLtxhtje/k1Nn0zoKD53hRLx8hmZSrWxwxKrU/K3UdG0MU
+ T35dt7QDVmodFYYd7/gHWa68GlbFv8orW2bowYVYSy8jbDULdYTOmLRLbEHOUAnGLAxE
+ zSpg==
+X-Gm-Message-State: APjAAAVnfGIeNUUmSmRNQz8HdiuidSwBaw2B7hu0tS4fgWvB7lF7n4JG
+ dCnxjxWqQkV2MLVOikwHqxDpcPemrDSsoISWHbI=
+X-Google-Smtp-Source: APXvYqz/+Q5FmRoRj5RI043UV1KsNjSvB6h0cOf4M8djfpMsgtRlFr1YLNbSahkqeQR3kcyGaB58/7ndpUrX5aSxU2A=
+X-Received: by 2002:a9d:6d93:: with SMTP id x19mr7815895otp.157.1556964846739; 
+ Sat, 04 May 2019 03:14:06 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <SN6PR02MB4016C279A0BBC406734A06D8EE350@SN6PR02MB4016.namprd02.prod.outlook.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+References: <cover.1556919363.git.melissa.srw@gmail.com>
+ <10781f40fa8a403480833e49b7356ade5af57b94.1556919363.git.melissa.srw@gmail.com>
+In-Reply-To: <10781f40fa8a403480833e49b7356ade5af57b94.1556919363.git.melissa.srw@gmail.com>
+From: Alexandru Ardelean <ardeleanalex@gmail.com>
+Date: Sat, 4 May 2019 13:13:55 +0300
+Message-ID: <CA+U=DspGcZjru0cqkO3fHJjg04Gxg-3Yu6jnNKZjx1dBZTG+Pg@mail.gmail.com>
+Subject: Re: [PATCH 1/4] staging: iio: ad7150: organize registers definition
+To: Melissa Wen <melissa.srw@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,74 +80,161 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>
+Cc: devel@driverdev.osuosl.org, Lars-Peter Clausen <lars@metafoo.de>,
+ Stefan Popa <stefan.popa@analog.com>,
+ Michael Hennerich <Michael.Hennerich@analog.com>, linux-iio@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Barry Song <21cnbao@gmail.com>, LKML <linux-kernel@vger.kernel.org>,
+ kernel-usp@googlegroups.com, Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+ Hartmut Knaack <knaack.h@gmx.de>, Jonathan Cameron <jic23@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, May 03, 2019 at 10:24:00PM +0000, Matt Sickler wrote:
-> Hello,
-> 
-> Recently Greg KH posted the first set of drivers for our PCIe device (kpc2000) and shortly after that I posted the kpc2000_dma driver.   I was wondering about naming / structure standards in the Linux kernel.
-> First, a real quick background on these devices:  Daktronics makes a PCIe card with an FPGA on it to drive our LED displays (and other processing tasks).  Inside the FPGA, we use something similar to AXI-4 to divide the PCIe BAR register space [1] into separate "IP cores".  The kpc2000 driver is responsible for probing the PCIe device, doing some basic setup (mapping the BAR, setting up an IRQ, PCIe configuration, etc) and then enumerating these "cores".  Enumeration of the cores is facilitated by the "board info" core that is always at the beginning of the BAR and has a defined format.   Most of the cores are controlled entirely by userspace - the driver will add a UIO sub device for each one which userspace uses to control FPGA registers.   Only 3 core types are handled by drivers: DMA, I2C, SPI.  These are IP cores inside the FPGA that (in the case of i2c and spi) interact with other physical devices on the PCIe card.
-> Currently, we only have the one PCIe device (the "P2K" card) but we have more on our roadmap (one we've been calling "p3k" internally).   I'm 99% confident that the I2C and SPI cores will be exactly the same on the new FPGA design.   I'm 80% confident that the DMA engines themselves will be exactly the same on the new FPGA design.   The next card PCIe driver will quite likely be separate from the kpc2000 driver because how bitstreams are stored / loaded / configured is changing due to using a newer FPGA.  There will likely be common code between the two.
+On Sat, May 4, 2019 at 1:25 AM Melissa Wen <melissa.srw@gmail.com> wrote:
+>
+> Use the suffix REG to make the register addresses clear
+> and indentation to highlight field names.
+>
 
-Please wrap your emails at a sane column, otherwise this is just a huge
-wall of text that is hard to read/understand.
+I'm inclined to say that this change is a bit too much noise versus added value.
+While the REG suffix does make sense (generally), since it hasn't been
+added from the beginning, it doesn't make much sense to add it now.
 
-> Now on to my actual questions: Once the drivers are "good enough" to be moved outside of staging, I'm wondering where the drivers will end up and what their names will/should be.
-> Since the I2C and SPI drivers are single-file, I'm guessing they're going to move to drivers/i2c/busses/i2c-dak/ and drivers/spi/spi-dak/, respectively.  I tweaked the names, since "i2c-dak" and "spi-dak" make more sense to me than "kpc_i2c" and "kpc_spi".
+It is sufficiently clear (as-is) that these macros refer to registers.
+They should be easy to match with the datasheet as well.
 
-Feel free to rename them to whatever you want, I just randomly picked a
-name when I did the import of the drivers.
-
-> So that leaves the DMA and main PCIe drivers.  Where do those end up in the tree?   Would "dak-dma" and "dak-p2k" (and eventually "dak-p3k") make more sense as names for those drivers?
-
-Maybe, as long as it is a "unique" name, that's all that should matter.
-The subsystem maintainers of those areas might care more, but you can
-deal with that when you get closer to moving the code out of staging.
-
-> The final question relates to how Kconfig entries are setup.   The
-> I2C, SPI, and DMA drivers could be "selected" on their own (even if
-> the "dak-p2k" and "dak-p3k" drivers aren't selected), but that doesn't
-> make much sense because they'd never get used in that configuration.
-> Conversely, if you select the "dak-p2k" driver, the I2C, SPI, and DMA
-> drivers better get selected too, otherwise the device won't function
-> correctly.  From what I can tell with Kconfig, if A depends on B, you
-> can't even see (let alone select) A without already selecting B.
-> Right now, the Kconfig entries are setup like this (using the current names, not the new ones presented above):
-> 	KPC2000_DMA depends on KPC2000 (this compiles the kpc2000_dma driver)
-> 	KPC2000_I2C depends on KPC2000 && I2C (this compiles the kpc2000_i2c driver)
-> 	KPC2000_SPI depends on KPC2000 && SPI (this compiles the kpc2000_spi driver)
-> 	KPC2000_CORE depends on  KPC2000
-> 	KPC2000 depends on PCI (this compiles the kpc2000 driver)
-> Greg, what is the purpose of the KPC2000_CORE config option?  Nothing (that I see) depends on it, and it doesn't cause any code to get compiled.
-
-I don't remember, I guess I thought that was a chunk of code the others
-all depended on being present?  If that's not the case, please send a
-patch to fix that up.
-
-> I would have thought something like this makes more sense [2]:
-> 	KPC2000_DMA depends nothing
-
-Not any dma drivers/core?
-
-> 	KPC2000_I2C depends on I2C
-> 	KPC2000_SPI depends on SPI
-> 	KPC2000 depends on PCI && KPC2000_DMA && KPC2000_I2C && KPC2000_SPI
-
-It can't depend on them all, or does it?  If so, that's fine, I just got
-this totally backwards, sorry.
-
-> Which way is "better"?  Does it even matter which way it's setup?
-
-It does matter, try to reflect what depends on what for the code and you
-should be fine.
-
-thanks,
-
-greg k-h
+> Signed-off-by: Melissa Wen <melissa.srw@gmail.com>
+> ---
+>  drivers/staging/iio/cdc/ad7150.c | 75 ++++++++++++++++----------------
+>  1 file changed, 37 insertions(+), 38 deletions(-)
+>
+> diff --git a/drivers/staging/iio/cdc/ad7150.c b/drivers/staging/iio/cdc/ad7150.c
+> index dd7fcab8e19e..24601ba7db88 100644
+> --- a/drivers/staging/iio/cdc/ad7150.c
+> +++ b/drivers/staging/iio/cdc/ad7150.c
+> @@ -15,35 +15,34 @@
+>  #include <linux/iio/iio.h>
+>  #include <linux/iio/sysfs.h>
+>  #include <linux/iio/events.h>
+> -/*
+> - * AD7150 registers definition
+> - */
+>
+> -#define AD7150_STATUS              0
+> -#define AD7150_STATUS_OUT1         BIT(3)
+> -#define AD7150_STATUS_OUT2         BIT(5)
+> -#define AD7150_CH1_DATA_HIGH       1
+> -#define AD7150_CH2_DATA_HIGH       3
+> -#define AD7150_CH1_AVG_HIGH        5
+> -#define AD7150_CH2_AVG_HIGH        7
+> -#define AD7150_CH1_SENSITIVITY     9
+> -#define AD7150_CH1_THR_HOLD_H      9
+> -#define AD7150_CH1_TIMEOUT         10
+> -#define AD7150_CH1_SETUP           11
+> -#define AD7150_CH2_SENSITIVITY     12
+> -#define AD7150_CH2_THR_HOLD_H      12
+> -#define AD7150_CH2_TIMEOUT         13
+> -#define AD7150_CH2_SETUP           14
+> -#define AD7150_CFG                 15
+> -#define AD7150_CFG_FIX             BIT(7)
+> -#define AD7150_PD_TIMER            16
+> -#define AD7150_CH1_CAPDAC          17
+> -#define AD7150_CH2_CAPDAC          18
+> -#define AD7150_SN3                 19
+> -#define AD7150_SN2                 20
+> -#define AD7150_SN1                 21
+> -#define AD7150_SN0                 22
+> -#define AD7150_ID                  23
+> +/* AD7150 registers */
+> +
+> +#define AD7150_STATUS_REG                      0x00
+> +#define         AD7150_STATUS_OUT1                     BIT(3)
+> +#define         AD7150_STATUS_OUT2                     BIT(5)
+> +#define AD7150_CH1_DATA_HIGH_REG               0x01
+> +#define AD7150_CH2_DATA_HIGH_REG               0x03
+> +#define AD7150_CH1_AVG_HIGH_REG                        0x05
+> +#define AD7150_CH2_AVG_HIGH_REG                        0x07
+> +#define AD7150_CH1_SENSITIVITY_REG             0x09
+> +#define AD7150_CH1_THR_HOLD_H_REG              0x09
+> +#define AD7150_CH2_SENSITIVITY_REG             0x0C
+> +#define AD7150_CH1_TIMEOUT_REG                 0x0A
+> +#define AD7150_CH1_SETUP_REG                   0x0B
+> +#define AD7150_CH2_THR_HOLD_H_REG              0x0C
+> +#define AD7150_CH2_TIMEOUT_REG                 0x0D
+> +#define AD7150_CH2_SETUP_REG                   0x0E
+> +#define AD7150_CFG_REG                         0x0F
+> +#define         AD7150_CFG_FIX                         BIT(7)
+> +#define AD7150_PD_TIMER_REG                    0x10
+> +#define AD7150_CH1_CAPDAC_REG                  0x11
+> +#define AD7150_CH2_CAPDAC_REG                  0x12
+> +#define AD7150_SN3_REG                         0x13
+> +#define AD7150_SN2_REG                         0x14
+> +#define AD7150_SN1_REG                         0x15
+> +#define AD7150_SN0_REG                         0x16
+> +#define AD7150_ID_REG                          0x17
+>
+>  /**
+>   * struct ad7150_chip_info - instance specific chip data
+> @@ -85,12 +84,12 @@ struct ad7150_chip_info {
+>   */
+>
+>  static const u8 ad7150_addresses[][6] = {
+> -       { AD7150_CH1_DATA_HIGH, AD7150_CH1_AVG_HIGH,
+> -         AD7150_CH1_SETUP, AD7150_CH1_THR_HOLD_H,
+> -         AD7150_CH1_SENSITIVITY, AD7150_CH1_TIMEOUT },
+> -       { AD7150_CH2_DATA_HIGH, AD7150_CH2_AVG_HIGH,
+> -         AD7150_CH2_SETUP, AD7150_CH2_THR_HOLD_H,
+> -         AD7150_CH2_SENSITIVITY, AD7150_CH2_TIMEOUT },
+> +       { AD7150_CH1_DATA_HIGH_REG, AD7150_CH1_AVG_HIGH_REG,
+> +         AD7150_CH1_SETUP_REG, AD7150_CH1_THR_HOLD_H_REG,
+> +         AD7150_CH1_SENSITIVITY_REG, AD7150_CH1_TIMEOUT_REG },
+> +       { AD7150_CH2_DATA_HIGH_REG, AD7150_CH2_AVG_HIGH_REG,
+> +         AD7150_CH2_SETUP_REG, AD7150_CH2_THR_HOLD_H_REG,
+> +         AD7150_CH2_SENSITIVITY_REG, AD7150_CH2_TIMEOUT_REG },
+>  };
+>
+>  static int ad7150_read_raw(struct iio_dev *indio_dev,
+> @@ -133,7 +132,7 @@ static int ad7150_read_event_config(struct iio_dev *indio_dev,
+>         bool adaptive;
+>         struct ad7150_chip_info *chip = iio_priv(indio_dev);
+>
+> -       ret = i2c_smbus_read_byte_data(chip->client, AD7150_CFG);
+> +       ret = i2c_smbus_read_byte_data(chip->client, AD7150_CFG_REG);
+>         if (ret < 0)
+>                 return ret;
+>
+> @@ -229,7 +228,7 @@ static int ad7150_write_event_config(struct iio_dev *indio_dev,
+>         if (event_code == chip->current_event)
+>                 return 0;
+>         mutex_lock(&chip->state_lock);
+> -       ret = i2c_smbus_read_byte_data(chip->client, AD7150_CFG);
+> +       ret = i2c_smbus_read_byte_data(chip->client, AD7150_CFG_REG);
+>         if (ret < 0)
+>                 goto error_ret;
+>
+> @@ -264,7 +263,7 @@ static int ad7150_write_event_config(struct iio_dev *indio_dev,
+>
+>         cfg |= (!adaptive << 7) | (thresh_type << 5);
+>
+> -       ret = i2c_smbus_write_byte_data(chip->client, AD7150_CFG, cfg);
+> +       ret = i2c_smbus_write_byte_data(chip->client, AD7150_CFG_REG, cfg);
+>         if (ret < 0)
+>                 goto error_ret;
+>
+> @@ -497,7 +496,7 @@ static irqreturn_t ad7150_event_handler(int irq, void *private)
+>         s64 timestamp = iio_get_time_ns(indio_dev);
+>         int ret;
+>
+> -       ret = i2c_smbus_read_byte_data(chip->client, AD7150_STATUS);
+> +       ret = i2c_smbus_read_byte_data(chip->client, AD7150_STATUS_REG);
+>         if (ret < 0)
+>                 return IRQ_HANDLED;
+>
+> --
+> 2.20.1
+>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
