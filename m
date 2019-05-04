@@ -2,77 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 975F3135C9
-	for <lists+driverdev-devel@lfdr.de>; Sat,  4 May 2019 00:44:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D03CA1384A
+	for <lists+driverdev-devel@lfdr.de>; Sat,  4 May 2019 10:23:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 879F887B37;
-	Fri,  3 May 2019 22:44:09 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1D15787AE0;
+	Sat,  4 May 2019 08:23:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bzApDZOUGutG; Fri,  3 May 2019 22:44:08 +0000 (UTC)
+	with ESMTP id bDVKU-gBRTiE; Sat,  4 May 2019 08:23:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B02F687A51;
-	Fri,  3 May 2019 22:44:00 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BFD70878E8;
+	Sat,  4 May 2019 08:23:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EFCE31BF3D2
- for <devel@linuxdriverproject.org>; Fri,  3 May 2019 22:43:58 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B4FAD1BF5A9
+ for <devel@linuxdriverproject.org>; Sat,  4 May 2019 08:23:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id ED31A88951
- for <devel@linuxdriverproject.org>; Fri,  3 May 2019 22:43:58 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id B1AFB88502
+ for <devel@linuxdriverproject.org>; Sat,  4 May 2019 08:23:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2phs2vbRpnlT for <devel@linuxdriverproject.org>;
- Fri,  3 May 2019 22:43:57 +0000 (UTC)
+ with ESMTP id WM+uMzkbu4mz for <devel@linuxdriverproject.org>;
+ Sat,  4 May 2019 08:23:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f193.google.com (mail-pl1-f193.google.com
- [209.85.214.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 6C4508858C
- for <devel@driverdev.osuosl.org>; Fri,  3 May 2019 22:43:49 +0000 (UTC)
-Received: by mail-pl1-f193.google.com with SMTP id a59so3354719pla.5
- for <devel@driverdev.osuosl.org>; Fri, 03 May 2019 15:43:49 -0700 (PDT)
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 33F29884F3
+ for <devel@driverdev.osuosl.org>; Sat,  4 May 2019 08:23:42 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id j11so4071621pff.13
+ for <devel@driverdev.osuosl.org>; Sat, 04 May 2019 01:23:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=HM8iB4CzObwG2SEPGqDToLb7gQBrHKKFyiCMsrsHU3Y=;
- b=mm7sdVx6f2OEyOlk42Jw8HFX6fxKqEPe3irB1UsEQqPzp89d3+kSzdDq0fWSWwBHyf
- duXJdPyZEtNdgrPv+ip2oSYATqkxMXonj3AAcXPMQhLlqrhtdYoniWGsdxc7MhZfxMut
- gNmpGrwtDJaqEYrc3MB7yjckdLdkHSDdabxra8tlNP5hbeL8Hx7BxBuVZCVibXlKdQdE
- HA/Y6kVC9sh4/Miq+EYQvT/ltxs5hMm58GwVVL361XmOaquZtiz3Ens5Zy8VieGaK/z8
- mnK5WcVN0tjmj+0AKTLtGlh7nDy1VluqQVWgy/zjFncgIhbTjrbRJSFazUebMPUkfvSq
- 9WVg==
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=Ei1d/q9b64AgY64YtKeZNvDCgbGXYa1XWRAF1hvMqjQ=;
+ b=mY9UldpHOh2Aff00BG2QSLCDNWmgdV33I2Oq0q9rBK++2b4+VV5meBrQ49oHXFvPdM
+ geJGJhiUiAKKqKMIK+9jsJ0YHlbG3hu7MpVSAiwwGroTGsygS6I1l4w945WOO3WsWF4t
+ a3MVZssgoQTW31r3f8kkN3jfnhUEgYfPJ0Wl9FC4c1xgHnrDAA8fcRSQE6c9vQETnLuc
+ 7McY9HLTn4yIhCnDAjk2bIZNavK9Q/GSUohT1UC42cbxUTjLAyWLP7KlXH64XqXzAcvX
+ S88+AL5L9G1iQivqvr2ajJOwG3RtsOuSl/VF+AIPJ7NABSLsTpKz15vDvUftOwVDdXks
+ gsrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=HM8iB4CzObwG2SEPGqDToLb7gQBrHKKFyiCMsrsHU3Y=;
- b=cUbunD3H2FOp1+flR1Vh0Umfylh8c2XuGRiS3Zpi3d6kGnXpIig9+8dnUSIvPonFLO
- COHs6e6TM9Diy1ey2F4Jawo90/rRzPzZF5JkG1mMzmoTFacU9JMcUavWS+lZGTK2gvk/
- NeiPAPGCQgTt86eYQ5HzhhZijjW+Z0sEyaKZxj6/tsuox5mU2Ac7IDnvVcC5MPm/Sgkc
- kUL4uKMnbPj48vjrnqLaXRwm/CCobEclIIcysM0UseHx4yuAAHZFIjS5AFBB5jXv1B/B
- LM3XQtlKXTKDbB1O2kAJ9UBMq4j3zvVfv63isb5YnBzIPyMUKhy8QHgc7qKRsRzHI7xV
- f1kw==
-X-Gm-Message-State: APjAAAXpuL7yxM2as33OY9IPgnmgbCjzlLaTNh1/29DnzmjnHJR+D0Gt
- kxccRAvM1DKqXxnaiMMvbMs=
-X-Google-Smtp-Source: APXvYqwLjaVOhyMKWnhVjw4/hXIu+HbUJy3eNp9/wbSTaU7dfZGxnJdwBqHfrpl5viIUsQ79HxXQlw==
-X-Received: by 2002:a17:902:1e2:: with SMTP id
- b89mr13646101plb.278.1556923428992; 
- Fri, 03 May 2019 15:43:48 -0700 (PDT)
-Received: from majic.sklembedded.com (c-73-202-231-77.hsd1.ca.comcast.net.
- [73.202.231.77])
- by smtp.googlemail.com with ESMTPSA id e62sm4793871pfa.50.2019.05.03.15.43.47
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 03 May 2019 15:43:48 -0700 (PDT)
-From: Steve Longerbeam <slongerbeam@gmail.com>
-To: linux-media@vger.kernel.org
-Subject: [PATCH v4 8/8] media: staging/imx: Don't set driver data for v4l2_dev
-Date: Fri,  3 May 2019 15:43:26 -0700
-Message-Id: <20190503224326.21039-9-slongerbeam@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190503224326.21039-1-slongerbeam@gmail.com>
-References: <20190503224326.21039-1-slongerbeam@gmail.com>
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=Ei1d/q9b64AgY64YtKeZNvDCgbGXYa1XWRAF1hvMqjQ=;
+ b=FpzGS6EoAjtPluDOOUlMs2L8ZxZ47FI3XDVQbejRDQJ6z8zfyq65E9JV8TECKm8qac
+ 9hlgcEGkczXEXuVxbiXrtXV3A2g+zynuj8GEiB4a7SiYTkiTjMPN35RwhlCdyZUrd18q
+ D6HdXBIP6uomP1V7N0JVQIYwERAbwflcl0rMPQK7BJ9vMuQ8iSU0CpknaUXGweCIhgLy
+ Cd54G+56af0mjnoAWLH7G5PhQibC4wlc2L4jaMjOcCO8BJ3AI05wiJjiN3iHmODKsHKz
+ WsDlBGWOtk0sgd3KdhdC5JZPceRaDDbHIej/6KCgxKJ1CwBHk1/Ol2dHLdxDLR0gGu9K
+ hPTA==
+X-Gm-Message-State: APjAAAX3UUJifJ+28GMl97JeUTivKqjmAgR/tF9JNT6dLbkrmUPYMH6a
+ XvJQRA21LaZ6cJY8c2A5MS0=
+X-Google-Smtp-Source: APXvYqxdwgnu5k4KYGXIHhuUbcHkvlEzHdP5dhc0W0UqhYKW90TPsFbwLXfNFWYwue0M7I+tebv3CQ==
+X-Received: by 2002:a65:6644:: with SMTP id z4mr16860549pgv.300.1556958221679; 
+ Sat, 04 May 2019 01:23:41 -0700 (PDT)
+Received: from arch ([2405:204:70c5:3a7c:f5c0:9a3:5498:848d])
+ by smtp.gmail.com with ESMTPSA id k191sm8983943pfc.151.2019.05.04.01.23.39
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Sat, 04 May 2019 01:23:41 -0700 (PDT)
+Date: Sat, 4 May 2019 13:53:34 +0530
+From: Puranjay Mohan <puranjay12@gmail.com>
+To: greg@kroah.com
+Subject: [PATCH] Staging: rtl8723bs: core: Fix Spelling mistake in comments
+Message-ID: <20190504082330.GA9002@arch>
+MIME-Version: 1.0
+Content-Disposition: inline
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,96 +83,53 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- open list <linux-kernel@vger.kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Steve Longerbeam <slongerbeam@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The media device is already available via multiple methods, there is no
-need to set driver data for v4l2_dev to the media device.
+Change spelling of 'associcated' to 'associated', to fix the spelling
+mistake.
 
-In imx_media_link_notify(), get media device from link->graph_obj.mdev.
-
-In imx_media_capture_device_register(), get media device from
-v4l2_dev->mdev.
-
-Signed-off-by: Steve Longerbeam <slongerbeam@gmail.com>
+Signed-off-by: Puranjay Mohan <puranjay12@gmail.com>
 ---
- drivers/staging/media/imx/imx-media-capture.c    | 5 +++--
- drivers/staging/media/imx/imx-media-dev-common.c | 7 ++-----
- 2 files changed, 5 insertions(+), 7 deletions(-)
+ drivers/staging/rtl8723bs/core/rtw_ap.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/media/imx/imx-media-capture.c b/drivers/staging/media/imx/imx-media-capture.c
-index 8a908c3e5e60..ea7f2decfc16 100644
---- a/drivers/staging/media/imx/imx-media-capture.c
-+++ b/drivers/staging/media/imx/imx-media-capture.c
-@@ -735,15 +735,16 @@ int imx_media_capture_device_register(struct imx_media_video_dev *vdev)
+diff --git a/drivers/staging/rtl8723bs/core/rtw_ap.c b/drivers/staging/rtl8723bs/core/rtw_ap.c
+index bc0230672457..d4bf05462739 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_ap.c
++++ b/drivers/staging/rtl8723bs/core/rtw_ap.c
+@@ -1914,7 +1914,7 @@ static int rtw_ht_operation_update(struct adapter *padapter)
+ 
+ void associated_clients_update(struct adapter *padapter, u8 updated)
  {
- 	struct capture_priv *priv = to_capture_priv(vdev);
- 	struct v4l2_subdev *sd = priv->src_sd;
-+	struct v4l2_device *v4l2_dev = sd->v4l2_dev;
- 	struct video_device *vfd = vdev->vfd;
- 	struct vb2_queue *vq = &priv->q;
- 	struct v4l2_subdev_format fmt_src;
- 	int ret;
- 
- 	/* get media device */
--	priv->md = dev_get_drvdata(sd->v4l2_dev->dev);
-+	priv->md = container_of(v4l2_dev->mdev, struct imx_media_dev, md);
- 
--	vfd->v4l2_dev = sd->v4l2_dev;
-+	vfd->v4l2_dev = v4l2_dev;
- 
- 	ret = video_register_device(vfd, VFL_TYPE_GRABBER, -1);
- 	if (ret) {
-diff --git a/drivers/staging/media/imx/imx-media-dev-common.c b/drivers/staging/media/imx/imx-media-dev-common.c
-index 89dc4ec8dadb..66b505f7e8df 100644
---- a/drivers/staging/media/imx/imx-media-dev-common.c
-+++ b/drivers/staging/media/imx/imx-media-dev-common.c
-@@ -260,10 +260,11 @@ static int imx_media_inherit_controls(struct imx_media_dev *imxmd,
- static int imx_media_link_notify(struct media_link *link, u32 flags,
- 				 unsigned int notification)
- {
-+	struct imx_media_dev *imxmd = container_of(link->graph_obj.mdev,
-+						   struct imx_media_dev, md);
- 	struct media_entity *source = link->source->entity;
- 	struct imx_media_pad_vdev *pad_vdev;
- 	struct list_head *pad_vdev_list;
--	struct imx_media_dev *imxmd;
- 	struct video_device *vfd;
- 	struct v4l2_subdev *sd;
- 	int pad_idx, ret;
-@@ -279,8 +280,6 @@ static int imx_media_link_notify(struct media_link *link, u32 flags,
- 	sd = media_entity_to_v4l2_subdev(source);
- 	pad_idx = link->source->index;
- 
--	imxmd = dev_get_drvdata(sd->v4l2_dev->dev);
--
- 	pad_vdev_list = to_pad_vdev_list(sd, pad_idx);
- 	if (!pad_vdev_list) {
- 		/* nothing to do if source sd has no pad vdev list */
-@@ -384,8 +383,6 @@ struct imx_media_dev *imx_media_dev_init(struct device *dev,
- 		goto cleanup;
+-	/* update associcated stations cap. */
++	/* update associated stations cap. */
+ 	if (updated) {
+ 		struct list_head	*phead, *plist;
+ 		struct sta_info *psta = NULL;
+@@ -2072,7 +2072,7 @@ void bss_cap_update_on_sta_join(struct adapter *padapter, struct sta_info *psta)
+ 		update_beacon(padapter, _HT_ADD_INFO_IE_, NULL, true);
  	}
  
--	dev_set_drvdata(imxmd->v4l2_dev.dev, imxmd);
--
- 	INIT_LIST_HEAD(&imxmd->vdev_list);
+-	/* update associcated stations cap. */
++	/* update associated stations cap. */
+ 	associated_clients_update(padapter,  beacon_updated);
  
- 	v4l2_async_notifier_init(&imxmd->notifier);
+ 	DBG_871X("%s, updated =%d\n", __func__, beacon_updated);
+@@ -2136,7 +2136,7 @@ u8 bss_cap_update_on_sta_leave(struct adapter *padapter, struct sta_info *psta)
+ 		update_beacon(padapter, _HT_ADD_INFO_IE_, NULL, true);
+ 	}
+ 
+-	/* update associcated stations cap. */
++	/* update associated stations cap. */
+ 	/* associated_clients_update(padapter,  beacon_updated); //move it to avoid deadlock */
+ 
+ 	DBG_871X("%s, updated =%d\n", __func__, beacon_updated);
 -- 
-2.17.1
+2.21.0
 
 _______________________________________________
 devel mailing list
