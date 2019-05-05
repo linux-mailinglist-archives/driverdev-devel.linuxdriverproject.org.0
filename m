@@ -1,73 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 276F913FAD
-	for <lists+driverdev-devel@lfdr.de>; Sun,  5 May 2019 15:23:19 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B0265141DC
+	for <lists+driverdev-devel@lfdr.de>; Sun,  5 May 2019 20:32:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 54FA323337;
-	Sun,  5 May 2019 13:23:17 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 013D685CB8;
+	Sun,  5 May 2019 18:32:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Q2iFjpFO4ARN; Sun,  5 May 2019 13:23:16 +0000 (UTC)
+	with ESMTP id V81YxVVFUPwT; Sun,  5 May 2019 18:32:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 363B22287D;
-	Sun,  5 May 2019 13:23:15 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BE10E859D2;
+	Sun,  5 May 2019 18:32:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4D4E51BF3B8
- for <devel@linuxdriverproject.org>; Sun,  5 May 2019 13:23:13 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D77C61BF48C
+ for <devel@linuxdriverproject.org>; Sun,  5 May 2019 18:32:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4A8E4226A2
- for <devel@linuxdriverproject.org>; Sun,  5 May 2019 13:23:13 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id D1CB784BA5
+ for <devel@linuxdriverproject.org>; Sun,  5 May 2019 18:32:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SGQTf4iScBEh for <devel@linuxdriverproject.org>;
- Sun,  5 May 2019 13:23:12 +0000 (UTC)
+ with ESMTP id aa1nhXKfPwHH for <devel@linuxdriverproject.org>;
+ Sun,  5 May 2019 18:32:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
- [209.85.210.194])
- by silver.osuosl.org (Postfix) with ESMTPS id 9C61122658
- for <devel@driverdev.osuosl.org>; Sun,  5 May 2019 13:23:12 +0000 (UTC)
-Received: by mail-pf1-f194.google.com with SMTP id c6so92647pfa.10
- for <devel@driverdev.osuosl.org>; Sun, 05 May 2019 06:23:12 -0700 (PDT)
+Received: from mail-ot1-f68.google.com (mail-ot1-f68.google.com
+ [209.85.210.68])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 2E8E884BF1
+ for <devel@driverdev.osuosl.org>; Sun,  5 May 2019 18:32:38 +0000 (UTC)
+Received: by mail-ot1-f68.google.com with SMTP id l17so69949otq.1
+ for <devel@driverdev.osuosl.org>; Sun, 05 May 2019 11:32:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id;
- bh=UQqO8W5D4CT+ksezNayfRuTwaSX+rCT5sHrxvCqimbQ=;
- b=ErIf4xe5fYpYMe9INM/qc3CEZIKoHTj2S6l6oBe8RS67eQBWDRYdt4hEmdCw8t0sjw
- 5/YpbgsP41BrjdBgFBp1Rj59pK35ihXEg+8rlc4bmDXvxmDjwtsMmRPwpJ7HPxiBX7ME
- o9xfWE+s8WnAVUK7xTRq+H3vK+xcRH5DyJnMncw5gzlbz/WoBc8i3N9ueniTl2tiLz+E
- YK2hz41eW+XLFltiOtDNUFdM+IvHYGxkoyTdYZW1gss48sqzrD+wSRTpyoOQb1SoA0WD
- Y7QUnk1OJjTGoI5T3E5QiA4mq7LQ4i3U9yPZnmfkpuytGIOy74QepzjiDJzE7xP/e9ag
- QouA==
+ bh=ilroapXDZkcgk5LucRhth9os/NqqUQEKzo0yx1KZYRo=;
+ b=RfJNYorhTyUqNvcB2b+P3AIoGlP6lRmXUAHZ/CiZ869NeU+SlkD5290+FQTO/nyu5p
+ bGHEKeQc11KCQ3rocBVuUrZxWHaTD2KZdj7t3tzUqJgcbATTm7/stJdnLfyo7vY3MIFL
+ wjan400FVTh7y42DzJCuoFx/FCn6aNgXGP3ZpZa97ADiRw7NQEe/6j6oFm7h7PPIsxkT
+ PVl/X8F8xgFWhAstmGfad4YWEhYeLF8eHPgqv4nn3yr2Cw2y9Ydm9Ne3xDb4hinpt5nY
+ JQ7KMM/DrrXSOHdl/ojgYH7YpwQntQcYL3ifw7PD+GrAm0AE1ZmtPO4a/kBfx2FI32K8
+ hDTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=UQqO8W5D4CT+ksezNayfRuTwaSX+rCT5sHrxvCqimbQ=;
- b=Zva86CYxhVRZU8dANQWqLak4wxeQcLdnp33eLzSO4FDN5A7Et+bV97kmOiuD5ykrGg
- B9gMUAp4Gl2UqPodb9Q5fBnjSaf69vFzPRJ5DxpzdkWBsrA0KO9+ld88+P2benMPSelj
- dejk2mPMasE2YoO1g8hq4wfk1UsyFOSRRSmAR5ykC1oesdOVKA8fVU7pZ8YOViiqMz45
- NmH99FyGqRe4Cz3mCw7nR98M6c0iAb3eZLMM5P+XW1JFcVbvV190CwpUBdOW7spbZm6/
- DpyYT8tYl1hoX1uEoqq2icEwYmBUqHaiDydX9gE8L+yLl/j44GMlRP9YY+PvpZBQSZhN
- ujLg==
-X-Gm-Message-State: APjAAAVQlYazLSUj+2DEz+P4sngV0m2ZS4guXEkMDm8MRUNqFKqrTIJx
- 8447intpPkD246Q2b56f2SPsM0tX
-X-Google-Smtp-Source: APXvYqxVvYTOatU5SYFHrVIYPqWoVVEyDux3Fe5NTaerGxjib46XgBej05B7sQf8FaoM8/jz0YdViQ==
-X-Received: by 2002:aa7:8d98:: with SMTP id i24mr26015539pfr.8.1557062592276; 
- Sun, 05 May 2019 06:23:12 -0700 (PDT)
-Received: from localhost.localdomain ([103.87.56.229])
- by smtp.gmail.com with ESMTPSA id a26sm10312709pfl.177.2019.05.05.06.23.09
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sun, 05 May 2019 06:23:11 -0700 (PDT)
-From: Vatsala Narang <vatsalanarang@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH v2 6/6] staging: rtl8723bs: core: Move logical operator to
- previous line.
-Date: Sun,  5 May 2019 18:52:53 +0530
-Message-Id: <20190505132253.4516-1-vatsalanarang@gmail.com>
+ bh=ilroapXDZkcgk5LucRhth9os/NqqUQEKzo0yx1KZYRo=;
+ b=DaDmNCwMZ1gCbRhGmTQMkENhDhuMK6khlTOLwVthp+xwVVJeYRc3mSkNvZFQK2Bmn9
+ QLwD0g4jMuHLqeEmlAvVWyxe1ISQJth6ypX2BemcJm9TwIRfn0CzyebJdElB9PXkLkgR
+ AXt5v2LN/g+/n3JL+KqH+nYwLaeHKLQQFXpSg4ZOuHjsRN76b5pZ1kAMZOL+VLck4zLw
+ g+F7HwK9ZQCvBpV6o8EfBugbAEpws744y7ywsYfWY7yoB9St6nThelM188ewhUWsoUMv
+ Bt9XfDjAxtPtOhjaP+lMPpVtJN0A5B1MIbMISDpSupIVqB0ig/SGOgz0P+IluY5yGXMV
+ DlhA==
+X-Gm-Message-State: APjAAAVo81vfuWCXSCBECqZgT5t9nQCQglR0BMvQ5mZOYZ0woFf6E+gE
+ BPEi95LDe44DAqeDjU0cwFA=
+X-Google-Smtp-Source: APXvYqzUwAaGV2anjaIH0cjG/BmFIT9iKjLTsohmrgbffWRrshQbNhsG8W/KaReY7S3ntgA9POplAg==
+X-Received: by 2002:a9d:4d03:: with SMTP id n3mr10942297otf.121.1557081157299; 
+ Sun, 05 May 2019 11:32:37 -0700 (PDT)
+Received: from madhuleo ([2605:6000:1023:606d:2897:6cea:c841:53a2])
+ by smtp.gmail.com with ESMTPSA id e9sm4093787otf.48.2019.05.05.11.32.36
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Sun, 05 May 2019 11:32:36 -0700 (PDT)
+From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] Staging: kpc2000: Cleanup in kpc_dma_transfer()
+Date: Sun,  5 May 2019 13:32:30 -0500
+Message-Id: <20190505183230.24505-1-madhumithabiw@gmail.com>
 X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -81,39 +81,37 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, julia.lawall@lip6.fr,
- linux-kernel@vger.kernel.org, hdegoede@redhat.com, hadess@hadess.net,
- Vatsala Narang <vatsalanarang@gmail.com>
+Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Move logical operator to previous line to get rid of checkpatch warning.
+Remove unnecessary typecast in kzalloc function. In addition to that
+replace kzalloc(sizeof(*acd)) over kzalloc(sizeof(struct aio_cb_data))
+to maintain Linux kernel style.
 
-Signed-off-by: Vatsala Narang <vatsalanarang@gmail.com>
+Issue suggested by Coccinelle.
+
+Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/kpc2000/kpc_dma/fileops.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index 0b5bd047a552..b5e355de1199 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -5656,9 +5656,9 @@ static u8 chk_ap_is_alive(struct adapter *padapter, struct sta_info *psta)
- 	);
- 	#endif
- 
--	if ((sta_rx_data_pkts(psta) == sta_last_rx_data_pkts(psta))
--		&& sta_rx_beacon_pkts(psta) == sta_last_rx_beacon_pkts(psta)
--		&& sta_rx_probersp_pkts(psta) == sta_last_rx_probersp_pkts(psta)
-+	if ((sta_rx_data_pkts(psta) == sta_last_rx_data_pkts(psta)) &&
-+	    sta_rx_beacon_pkts(psta) == sta_last_rx_beacon_pkts(psta) &&
-+	     sta_rx_probersp_pkts(psta) == sta_last_rx_probersp_pkts(psta)
- 	) {
- 		ret = false;
- 	} else {
+diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c b/drivers/staging/kpc2000/kpc_dma/fileops.c
+index 5741d2b49a7d..c24329affd3a 100644
+--- a/drivers/staging/kpc2000/kpc_dma/fileops.c
++++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
+@@ -57,7 +57,7 @@ int  kpc_dma_transfer(struct dev_private_data *priv, struct kiocb *kcb, unsigned
+ 	
+ 	dev_dbg(&priv->ldev->pldev->dev, "kpc_dma_transfer(priv = [%p], kcb = [%p], iov_base = [%p], iov_len = %ld) ldev = [%p]\n", priv, kcb, (void*)iov_base, iov_len, ldev);
+ 	
+-	acd = (struct aio_cb_data *) kzalloc(sizeof(struct aio_cb_data), GFP_KERNEL);
++	acd = kzalloc(sizeof(*acd), GFP_KERNEL);
+ 	if (!acd){
+ 		dev_err(&priv->ldev->pldev->dev, "Couldn't kmalloc space for for the aio data\n");
+ 		return -ENOMEM;
 -- 
 2.17.1
 
