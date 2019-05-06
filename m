@@ -1,46 +1,43 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BE4A31513F
-	for <lists+driverdev-devel@lfdr.de>; Mon,  6 May 2019 18:29:32 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AC07615376
+	for <lists+driverdev-devel@lfdr.de>; Mon,  6 May 2019 20:12:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9C16525C95;
-	Mon,  6 May 2019 16:29:30 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CD65286C59;
+	Mon,  6 May 2019 18:12:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CxklJgvSTw4R; Mon,  6 May 2019 16:29:29 +0000 (UTC)
+	with ESMTP id php7dppoI78c; Mon,  6 May 2019 18:12:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 716BB25BF2;
-	Mon,  6 May 2019 16:29:26 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E63DF86C37;
+	Mon,  6 May 2019 18:12:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 99C741BF8C7
- for <devel@linuxdriverproject.org>; Mon,  6 May 2019 16:29:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5FA551BF36C
+ for <devel@linuxdriverproject.org>; Mon,  6 May 2019 18:12:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 96BE9258EB
- for <devel@linuxdriverproject.org>; Mon,  6 May 2019 16:29:24 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 5CA8920796
+ for <devel@linuxdriverproject.org>; Mon,  6 May 2019 18:12:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id t7SNhYB8kv3C for <devel@linuxdriverproject.org>;
- Mon,  6 May 2019 16:29:23 +0000 (UTC)
+ with ESMTP id TMxRyaHnogoj for <devel@linuxdriverproject.org>;
+ Mon,  6 May 2019 18:12:48 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [217.72.192.73])
- by silver.osuosl.org (Postfix) with ESMTPS id 20ADD226FC
- for <devel@driverdev.osuosl.org>; Mon,  6 May 2019 16:29:22 +0000 (UTC)
+Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.17.13])
+ by silver.osuosl.org (Postfix) with ESMTPS id CC63120780
+ for <devel@driverdev.osuosl.org>; Mon,  6 May 2019 18:12:47 +0000 (UTC)
 Received: from [192.168.1.166] ([37.4.249.123]) by mrelayeu.kundenserver.de
- (mreue108 [212.227.15.183]) with ESMTPSA (Nemesis) id
- 1N4yyQ-1ggpCy1Bqe-010quy; Mon, 06 May 2019 18:28:52 +0200
-Subject: Re: [PATCH v2 2/3] staging: vchiq: revert "switch to
- wait_for_completion_killable"
+ (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis) id
+ 1MHFwM-1hS3hN2Tz6-00DJIf; Mon, 06 May 2019 20:12:29 +0200
+Subject: Re: [PATCH v2 0/3] staging: vchiq: use interruptible waits
 To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
- Dan Carpenter <dan.carpenter@oracle.com>
+ linux-kernel@vger.kernel.org
 References: <20190506144030.29056-1-nsaenzjulienne@suse.de>
- <20190506144030.29056-3-nsaenzjulienne@suse.de> <20190506152039.GT2239@kadam>
- <686a4d50696a87b9cbe2a5908737ce91faec5313.camel@suse.de>
 From: Stefan Wahren <stefan.wahren@i2se.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=stefan.wahren@i2se.com; keydata=
@@ -85,29 +82,29 @@ Autocrypt: addr=stefan.wahren@i2se.com; keydata=
  AZYZD+/iLm5TaKWN6oGIti0VjJv8ZZOZOfCb6vqFIkJW+aOu4orTLFMz28aoU3QyWpNC8FFm
  dYsVua8s6gN1NIa6y3qa/ZB8bA/iky59AEz4iDIRrgUzMEg8Ak7Tfm1KiYeiTtBDCo25BvXj
  bqsyxkQD1nkRm6FAVzEuOPIe8JuqW2xD9ixGYvjU5hkRgJp3gP5b+cnG3LPqquQ2E6goKUML AQ==
-Message-ID: <d1de60bd-c4c6-ebb1-1eac-a5eba41c9a78@i2se.com>
-Date: Mon, 6 May 2019 18:28:48 +0200
+Message-ID: <b2679404-ba00-d18e-fe15-44c6e280dc11@i2se.com>
+Date: Mon, 6 May 2019 20:12:27 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <686a4d50696a87b9cbe2a5908737ce91faec5313.camel@suse.de>
+In-Reply-To: <20190506144030.29056-1-nsaenzjulienne@suse.de>
 Content-Language: en-US
-X-Provags-ID: V03:K1:KPMd0yAIvHU/UF+na4jH2152Sj1Ege8WjWBmfcT+IuEM3YZR1G2
- +sgvLfuoRgxaZr+Hg9dqJ+6FmK9lo2xlfEifB47Tznr0PjqkV9w+I1+xMLnN15/wA5NEYGN
- WlI8/usboIpa/s2P7ZzYzN0WMfbFj1ggpXmk2IcbtgjWURpLcbr9xNyEHrd5MEL9cUMuHgV
- EwtI2P7a2ZRO85e0IJ3Jw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:QkAFUe5uD80=:4tFsC4EB6HweFbgqe7hKjw
- zgBhB3Jz/oZF3haWDtVlXqOhE+mz4P7pKm/shMBfMkTDP3fFEGHa+uimMiKvsKcW54j6O63kA
- 5FOooUiSvT8Ak08aF1vdVjrOJf1OhStWi4L5h9d1xzyn6fX+cdkPNX9vk0ubI4Ma0Y1154JFX
- 5aVIG7Skeu/n+Zwfrwd2rdoL4z+pmsQjtSRH84Mnqj702fh4LMRayROI1noTrro8c6KVV1Mmf
- IejfrbsIoS6jJ5ooNXMKqGyS4gnBEp3UYflPjZdwJdnJ1/SO/AEpbOPb+p8rhhLpnQu//SZTM
- W5FL+2V3l8BCTulzGpg8wa2VTMcoiZZ4oDuqUriv5DGKSnuk1F3LKaSJhaVXtuZWrF/s9OnUn
- Q/EZp1GMs8evvoOwolHZDX7OHvxkCBHWuMVQACgsUAhhcaNd9QluMATwatZkjClGBKVJPqpzX
- y3y8JD0FBb6UF2LU8dHzLnolV1RtsPNfOcAMpD+5oUYtMttg1J+pWGomx6/168YAto0QGdccI
- X/8hs1yBFl2HMcDtoYyciasBH7T7AgFo72MoTF7zQZ5gAMnklNvsYwOGzI/NXl3gy2Evfpv+s
- 5DXkUGCYI019ssum7CXy2rW/+6TUQbqAOdCdaq0PbmSdWoH3zNtD8GIxym5hRQnsnFwdzmUkX
- w/Cz4BiS4DNxXJzXEt/1fY5hrCo8Ww6oFc2apUHxfCNQ9Naym0dobdXiGjTO5uHKo79VFoGqA
- dSGJkEroMY8yt5VJwG4RftZYnRpbpxGpLb2dwWbjog3P4ne/LJ14TY5UI/A=
+X-Provags-ID: V03:K1:OO0YujQIAL03yiODcrGeZwSAoqP+QyZGcS3Rb/0D4viZDd3HuAr
+ A0n/6hygucW8vIYS2sdJnsPBdTgKZVIeJrBLQfCJXdQU82yox2zXEi82Aeh1xK73P87Lwkf
+ fdt1AfVEuBdqTkkgEITpoL3bFeRm3MvFQBya5po2xJvt4rt2lLSzf0NQlXFpi32U8ln6dhY
+ NDXoAES+YgvwLNCrGIXTA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:3UH7jCBTWv8=:f5pksuQByHCya4v0SpsqPd
+ rvQGgK/Xf2fZ9FYd+D6KuDn3qJN+Zbt9Tw+SFtQBpaq6cFtjdcKxJXw9Fy5JuQlVgwtBCX31b
+ z0Z0Hl0XTK6phUUZkj7VGHQdgtexXFW8TPIHyFr7rIgwjxMPKJ+LxKO27AYkkUtd/vCF9U+lr
+ xCigT9DIOy9Mwe8xe7yhDu/bnEn4MO4TwIrG4iU9woBrZgZV9vL/xKNwgTLi74duS9Q16ew5X
+ VoAUCtjyPTO3kdUWffGc/512KXhfUkZwHCzzfWPyZ5LOnAee/MxoExhsgUppX/iB6n7Vd3roy
+ Dvu3n0HeGlFQlFPj3AoduvgguL/J9ONCEIbVTRHdRbZ+CXcjHducbyhmgH5qyQOAgtGOXTadg
+ rBOdc610VxGRLPEDH1kMYiJR3par4JD8+78izqlvoNEY75HoppdHzZeY2j8SZfGc/HJaSgbLi
+ 3Kas8kPfJgRZBLDDw4+C0QFEIz9qYjqSaTGS64OHFZMxonrm2hixuuXkn6pcNRzm/vkaBkEMQ
+ YZ1til0P90w1e9vmGgK51WXz6YsEUZRdHWFnqkWQF9lT33dqWgu8/zuLjV4CHuLQ73+5mCdz9
+ eVsae038tLQ+5C8LzogmOk/I6yTvlwHG36GhYxl7pkJgo2mtZW7qugKnhPpQ688Oz1niaOd6V
+ TRl7aEpOA56HSzu+8FKf4FH++RBHLUE7dT2yQo47X5PU6S6BuDiLDvVeYoKDa6f1Rv792Ws3q
+ crWF3LZmzEg8pNdmeg6mBWvOFSW1uX/f4LpOGp7o5LudukrpVUORNlxnGeA=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -120,10 +117,9 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- phil@raspberrypi.org, linux-kernel@vger.kernel.org,
- Eric Anholt <eric@anholt.net>, linux-rpi-kernel@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, devel@driverdev.osuosl.org,
+ phil@raspberrypi.org, linux-rpi-kernel@lists.infradead.org,
+ dan.carpenter@oracle.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
@@ -131,47 +127,42 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 Hi Nicolas,
 
-Am 06.05.19 um 17:59 schrieb Nicolas Saenz Julienne:
-> Hi Dan, thanks for reviewing.
->
-> On Mon, 2019-05-06 at 18:20 +0300, Dan Carpenter wrote:
->> On Mon, May 06, 2019 at 04:40:29PM +0200, Nicolas Saenz Julienne wrote:
->>> @@ -1740,7 +1740,8 @@ parse_rx_slots(struct vchiq_state *state)
->>>  					&service->bulk_rx : &service->bulk_tx;
->>>  
->>>  				DEBUG_TRACE(PARSE_LINE);
->>> -				if (mutex_lock_killable(&service->bulk_mutex)) {
->>> +				if (mutex_lock_killable(
->>> +					&service->bulk_mutex) != 0) {
->> This series does't add != 0 consistently...  Personally, I would prefer
->> we just leave it out.  I use != 0 for two things.  1)  When I'm talking
->> about the number zero.
->>
->> 	if (len == 0) {
->>
->> Or with strcmp():
->>
->> 	if (strcmp(a, b) == 0) { // a equals b
->> 	if (strcmp(a, b) < 0) {  // a less than b.
->>
->> But here zero means no errors, so I would just leave it out...
-> I agree, I'll fix it.
-
-i also agree with Dan, but this specific patch should revert the changes
-of a772f116702e3f0afdd7e6acadc1b8fb3b20b9ff . So mentioned style issue
-should be fixed in a separate patch.
-
-Regards Stefan
-
+Am 06.05.19 um 16:40 schrieb Nicolas Saenz Julienne:
+> Hi,
+> ...
 >
 > Regards,
 > Nicolas
 >
+> [1] https://github.com/raspberrypi/linux/issues/2881
+> [2] https://archlinuxarm.org/forum/viewtopic.php?f=65&t=13485
+> [3] https://lists.fedoraproject.org/archives/list/arm@lists.fedoraproject.org/message/GBXGJ7DOV5CQQXFPOZCXTRD6W4BEPT4Q/
 >
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+> --
+>
+> Changes since v1:
+>   - Proplery format revert commits
+>   - Add code comment to remind of this issue
+>   - Add Fixes tags
+>
+> Nicolas Saenz Julienne (3):
+>   staging: vchiq_2835_arm: revert "quit using custom
+>     down_interruptible()"
+>   staging: vchiq: revert "switch to wait_for_completion_killable"
+>   staging: vchiq: make wait events interruptible
+>
+>  .../interface/vchiq_arm/vchiq_2835_arm.c      |  2 +-
+>  .../interface/vchiq_arm/vchiq_arm.c           | 21 +++++++------
+>  .../interface/vchiq_arm/vchiq_core.c          | 31 ++++++++++++-------
+>  .../interface/vchiq_arm/vchiq_util.c          |  6 ++--
+>  4 files changed, 35 insertions(+), 25 deletions(-)
+>
+against which tree should this series apply?
+
+Since the merge window opened the current staging-linus wont be
+available soon.
+
+Stefan
 
 _______________________________________________
 devel mailing list
