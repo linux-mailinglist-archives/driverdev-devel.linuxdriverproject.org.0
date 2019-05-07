@@ -1,77 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A1CE515E31
-	for <lists+driverdev-devel@lfdr.de>; Tue,  7 May 2019 09:27:33 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1478E15E62
+	for <lists+driverdev-devel@lfdr.de>; Tue,  7 May 2019 09:41:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 87DF586AFD;
-	Tue,  7 May 2019 07:27:31 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2F61427205;
+	Tue,  7 May 2019 07:41:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aDshCZZdpCvK; Tue,  7 May 2019 07:27:31 +0000 (UTC)
+	with ESMTP id Lu9xjCpl5n+X; Tue,  7 May 2019 07:41:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E64C486A40;
-	Tue,  7 May 2019 07:27:29 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 66AB0220B6;
+	Tue,  7 May 2019 07:41:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C43F81BF336
- for <devel@linuxdriverproject.org>; Tue,  7 May 2019 07:27:27 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C2F6E1BF34D
+ for <devel@linuxdriverproject.org>; Tue,  7 May 2019 07:41:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id BDC3E868F4
- for <devel@linuxdriverproject.org>; Tue,  7 May 2019 07:27:27 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id BFDC3857B0
+ for <devel@linuxdriverproject.org>; Tue,  7 May 2019 07:41:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id d-Hbg7k21Znc for <devel@linuxdriverproject.org>;
- Tue,  7 May 2019 07:27:27 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f67.google.com (mail-ot1-f67.google.com
- [209.85.210.67])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E5B8E860BF
- for <devel@driverdev.osuosl.org>; Tue,  7 May 2019 07:27:26 +0000 (UTC)
-Received: by mail-ot1-f67.google.com with SMTP id l17so4430326otq.1
- for <devel@driverdev.osuosl.org>; Tue, 07 May 2019 00:27:26 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=XByBP7XjRmOOGyhrd0e8L2R6PtcwPlhf6jPxirpwBCU=;
- b=cDU83xXYku0TG4GIgc7QKnb/3IYMGm4A4FB3bC14FjwL2+ToqDu9bZuW3fRhHJUi/9
- sDgExOplU8m7Ek4B4kyikCyuvoiJI7ToxpslHMZIJ22Pfri7Lc1csbqCJg2P2I4wxpEQ
- x8O0nGr3o7UoWrYMPJR5dq+/Lh6jr8S0GqoqxxsvlryMRMSL18AjFe12Sp0g77WOW3BD
- 4HSdWQQFAS1RJl8V5hjuviE9yllOOQGXsCMS4DdYj/+iKd3UbQQ6kBJkJrLYHPUNFgOn
- VX6XA4y9xGv+t52zkG7NlXomLWUq+sW5+WeAveGKtVH7vJrHPKXcxvTiRBo5OnB3CX8p
- B+9w==
-X-Gm-Message-State: APjAAAUbev0CVNrcoS19P660J2int7DTnIBw4uekBy53hte+A0d951Gf
- l1qa7pL8OYzKSwe69obnA90=
-X-Google-Smtp-Source: APXvYqyG6hXWXWpi7XEBI/DlyfoNWcZlsC+PlPheQwnNUwyImO+kZSLDKaxa2x4xmrLvZ3a+smTnDA==
-X-Received: by 2002:a9d:6c5a:: with SMTP id g26mr10914341otq.187.1557214046204; 
- Tue, 07 May 2019 00:27:26 -0700 (PDT)
-Received: from sultan-box.localdomain ([107.193.118.89])
- by smtp.gmail.com with ESMTPSA id s26sm4968147otk.24.2019.05.07.00.27.23
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Tue, 07 May 2019 00:27:25 -0700 (PDT)
-Date: Tue, 7 May 2019 00:27:21 -0700
-From: Sultan Alsawaf <sultan@kerneltoast.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [RFC] simple_lmk: Introduce Simple Low Memory Killer for Android
-Message-ID: <20190507072721.GA4364@sultan-box.localdomain>
-References: <20190317114238.ab6tvvovpkpozld5@brauner.io>
- <CAKOZuetZPhqQqSgZpyY0cLgy0jroLJRx-B93rkQzcOByL8ih_Q@mail.gmail.com>
- <20190318002949.mqknisgt7cmjmt7n@brauner.io>
- <20190318235052.GA65315@google.com>
- <20190319221415.baov7x6zoz7hvsno@brauner.io>
- <CAKOZuessqcjrZ4rfGLgrnOhrLnsVYiVJzOj4Aa=o3ZuZ013d0g@mail.gmail.com>
- <20190319231020.tdcttojlbmx57gke@brauner.io>
- <20190320015249.GC129907@google.com>
- <20190507021622.GA27300@sultan-box.localdomain>
- <20190507070430.GA24150@kroah.com>
+ with ESMTP id X-VeuRctvtfr for <devel@linuxdriverproject.org>;
+ Tue,  7 May 2019 07:41:29 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3C6CA855CB
+ for <devel@driverdev.osuosl.org>; Tue,  7 May 2019 07:41:29 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 9115620989;
+ Tue,  7 May 2019 07:41:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1557214889;
+ bh=bn9LxTz5PdUe1/eUSoWy21rExjTBSKgzZqLiQHJSJt8=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=G9IZEx4Ac6qG5IHydgnkSVdU2W3m3DzHUL1a8UNorDAR3bT8YrmdfqPbnGovYAZqT
+ gJPg1s4gm5MefjSAlyiTpxSL25/qZyI2uPZLngg5B69pvF4BDdV4Ro6afM2qi/0H5h
+ BBPj0fkQFaLnYMa/n4Ir+xUQmGDzRY/bniniJQGg=
+Date: Tue, 7 May 2019 09:41:26 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Dan Carpenter <dan.carpenter@oracle.com>,
+ Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
+Subject: Re: [PATCH net-next v2 0/4] of_get_mac_address ERR_PTR fixes
+Message-ID: <20190507074126.GA26478@kroah.com>
+References: <1557177887-30446-1-git-send-email-ynezz@true.cz>
+ <20190507071914.GJ2269@kadam>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190507070430.GA24150@kroah.com>
+In-Reply-To: <20190507071914.GJ2269@kadam>
 User-Agent: Mutt/1.11.4 (2019-03-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -85,53 +68,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- Daniel Colascione <dancol@google.com>, Todd Kjos <tkjos@android.com>,
- Kees Cook <keescook@chromium.org>, Peter Zijlstra <peterz@infradead.org>,
- Martijn Coenen <maco@android.com>, LKML <linux-kernel@vger.kernel.org>,
- Tim Murray <timmurray@google.com>, Michal Hocko <mhocko@kernel.org>,
- Suren Baghdasaryan <surenb@google.com>, linux-mm <linux-mm@kvack.org>,
- Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
- Ingo Molnar <mingo@redhat.com>, Steven Rostedt <rostedt@goodmis.org>,
- Oleg Nesterov <oleg@redhat.com>, Joel Fernandes <joel@joelfernandes.org>,
- Andy Lutomirski <luto@amacapital.net>, kernel-team <kernel-team@android.com>,
- Christian Brauner <christian@brauner.io>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Maxime Ripard <maxime.ripard@bootlin.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Frank Rowand <frowand.list@gmail.com>, "David S. Miller" <davem@davemloft.net>,
+ linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, May 07, 2019 at 09:04:30AM +0200, Greg Kroah-Hartman wrote:
-> Um, why can't "all" Android devices take the same patches that the Pixel
-> phones are using today?  They should all be in the public android-common
-> kernel repositories that all Android devices should be syncing with on a
-> weekly/monthly basis anyway, right?
-> 
-> thanks,
-> 
-> greg k-h
-
-Hi Greg,
-
-I only see PSI present in the android-common kernels for 4.9 and above. The vast
-majority of Android devices do not run a 4.9+ kernel. It seems unreasonable to
-expect OEMs to toil with backporting PSI themselves to get decent memory
-management.
-
-But even if they did backport PSI, it wouldn't help too much because a
-PSI-enabled LMKD solution is not ready yet. It looks like a PSI-based LMKD is
-still under heavy development and won't be ready for all Android devices for
-quite some time.
-
-Additionally, it looks like the supposedly-dead lowmemorykiller.c is still being
-actively tweaked by Google [1], which does not instill confidence that a
-definitive LMK solution a la PSI is coming any time soon.
-
-Thanks,
-Sultan
-
-[1] https://android.googlesource.com/kernel/common/+/152bacdd85c46f0c76b00c4acc253e414513634c
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gVHVlLCBNYXkgMDcsIDIwMTkgYXQgMTA6MTk6MTRBTSArMDMwMCwgRGFuIENhcnBlbnRlciB3
+cm90ZToKPiBPbiBNb24sIE1heSAwNiwgMjAxOSBhdCAxMToyNDo0M1BNICswMjAwLCBQZXRyIMWg
+dGV0aWFyIHdyb3RlOgo+ID4gSGksCj4gPiAKPiA+IHRoaXMgcGF0Y2ggc2VyaWVzIGlzIGFuIGF0
+dGVtcHQgdG8gZml4IHRoZSBtZXNzLCBJJ3ZlIHNvbWVob3cgbWFuYWdlZCB0bwo+ID4gaW50cm9k
+dWNlLgo+ID4gCj4gPiBGaXJzdCBwYXRjaCBpbiB0aGlzIHNlcmllcyBpcyBkZWZhY3RvIHY1IG9m
+IHRoZSBwcmV2aW91cyAwNS8xMCBwYXRjaCBpbiB0aGUKPiA+IHNlcmllcywgYnV0IHNpbmNlIHRo
+ZSB2NCBvZiB0aGlzIDA1LzEwIHBhdGNoIHdhc24ndCBwaWNrZWQgdXAgYnkgdGhlCj4gPiBwYXRj
+aHdvcmsgZm9yIHNvbWUgdW5rbm93biByZWFzb24sIHRoaXMgcGF0Y2ggd2Fzbid0IGFwcGxpZWQg
+d2l0aCB0aGUgb3RoZXIKPiA+IDkgcGF0Y2hlcyBpbiB0aGUgc2VyaWVzLCBzbyBJJ20gcmVzZW5k
+aW5nIGl0IGFzIGEgc2VwYXJhdGUgcGF0Y2ggb2YgdGhpcwo+ID4gZml4dXAgc2VyaWVzIGFnYWlu
+Lgo+IAo+IEkgZmVlbCBzb3J0IG9mIHJpZGljdWxvdXMgYXNraW5nIHRoaXMgb3ZlciBhbmQgb3Zl
+ci4uLiAgTWF5YmUgeW91ciBzcGFtCj4gZmlsdGVyIGlzIGVhdGluZyBteSBlbWFpbHM/Cj4gCj4g
+VGhpcyBidWcgd2FzIGludHJvZHVjZWQgaW4gaHR0cHM6Ly9wYXRjaHdvcmsub3psYWJzLm9yZy9w
+YXRjaC8xMDk0OTE2Lwo+ICJbdjQsMDEvMTBdIG9mX25ldDogYWRkIE5WTUVNIHN1cHBvcnQgdG8g
+b2ZfZ2V0X21hY19hZGRyZXNzIiBidXQgaXQKPiBsb29rcyBsaWtlIG5vIG9uZSBhcHBsaWVkIGl0
+Lgo+IAo+IFlvdSdyZSBhY3RpbmcgYXMgaWYgaXQgKndhcyogYXBwbGllZCBidXQgeW91IHJlZnVz
+ZSB0byBhbnN3ZXIgbXkKPiBxdWVzdGlvbiB3aG8gYXBwbGllZCBpdCBhbmQgd2hpY2ggdG8gd2hp
+Y2ggdHJlZSBzbyBJIGNhbiBmaWd1cmUgb3V0IHdoYXQKPiB3ZW50IHdyb25nLgo+IAo+IEkgb25s
+eSBzZWUgY29tbWVudHMgZnJvbSBsYXN0IEZyaWRheSB0aGF0IGl0IHNob3VsZG4ndCBiZSBhcHBs
+aWVkLi4uICBJCj4gYWxzbyB0b2xkIHlvdSBvbiBGcmlkYXkgaW4gYSBkaWZmZXJlbnQgdGhyZWFk
+IHRoYXQgdGhhdCBwYXRjaCBzaG91bGRuJ3QKPiBiZSBhcHBsaWVkLiAgQnJlYWtpbmcgZ2l0IGJp
+c2VjdCBpcyBhIGJ1ZywgYW5kIHdlIG5ldmVyIGRvIHRoYXQuICBJJ20KPiBqdXN0IHZlcnkgY29u
+ZnVzZWQgcmlnaHQgbm93Li4uICBXaGF0IEknbSB0cnlpbmcgdG8gZG8gaXMgZmlndXJlIG91dCBp
+bgo+IG15IGhlYWQgaG93IHRoaXMgcHJvY2VzcyBmYWlsZWQgc28gd2UgY2FuIGRvIGJldHRlciBu
+ZXh0IHRpbWUuCgpKdXN0IHRvIHJlc2VuZCB0aGlzLCBzbyB0aGF0IGl0IGhvcGVmdWxseSBkb2Vz
+IF9ub3RfIGdldCBzdHVjayBpbiBhIHNwYW0KZmlsdGVyLgoKUGV0ciwgcGxlYXNlIGFkZHJlc3Mg
+RGFuJ3MgY29tbWVudHMsIGRvIG5vdCBpZ25vcmUgdGhlbS4KCmdyZWcgay1oCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApk
+ZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJw
+cm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
