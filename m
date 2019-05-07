@@ -1,50 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 21D6316C5D
-	for <lists+driverdev-devel@lfdr.de>; Tue,  7 May 2019 22:40:56 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CED3C16C45
+	for <lists+driverdev-devel@lfdr.de>; Tue,  7 May 2019 22:33:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AF6F487E81;
-	Tue,  7 May 2019 20:40:53 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3E99484461;
+	Tue,  7 May 2019 20:33:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Nomt4J0Ml-S7; Tue,  7 May 2019 20:40:53 +0000 (UTC)
+	with ESMTP id ttsMX9caJcOc; Tue,  7 May 2019 20:33:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3A09887D6C;
-	Tue,  7 May 2019 20:40:53 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DFAD0832C6;
+	Tue,  7 May 2019 20:33:29 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C017E1BF363
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  7 May 2019 20:40:50 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9570D1BF363
+ for <devel@linuxdriverproject.org>; Tue,  7 May 2019 20:33:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BCD3987D75
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  7 May 2019 20:40:50 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 92795858AF
+ for <devel@linuxdriverproject.org>; Tue,  7 May 2019 20:33:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id n5sdX8ZOFNy0
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  7 May 2019 20:40:48 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from cloud.eteslaservers.com (unknown [77.69.16.103])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 721D087D6C
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  7 May 2019 20:40:47 +0000 (UTC)
-Received: from gmail.com (gateway [192.168.1.1])
- by cloud.eteslaservers.com (Postfix) with ESMTP id B144C6D41
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  7 May 2019 16:25:39 -0400 (EDT)
-From: klen@gmail.com
-To: driverdev-devel@linuxdriverproject.org
-Subject: Response Needed.. 
-Date: 07 May 2019 13:25:53 -0700
-Message-ID: <20190507132552.9A103208EC3B0243@gmail.com>
+ with ESMTP id av8OLPUldIgw for <devel@linuxdriverproject.org>;
+ Tue,  7 May 2019 20:33:26 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-lj1-f195.google.com (mail-lj1-f195.google.com
+ [209.85.208.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 804E58569B
+ for <devel@linuxdriverproject.org>; Tue,  7 May 2019 20:33:26 +0000 (UTC)
+Received: by mail-lj1-f195.google.com with SMTP id f23so15557013ljc.0
+ for <devel@linuxdriverproject.org>; Tue, 07 May 2019 13:33:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linux-foundation.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=CwOWrdjQnMEu1uy7KkVWTLmIn/O6jKGpZOEzU4R6ZiQ=;
+ b=V+ldPyFPJsh0EzBs7Q5P6t6eRuhwd2Ek6kLnmwqNlQOn8NUqVWxfGfhPQQqq4J/djQ
+ A7C8uCUMIFAoLahIHJIACf5KgxJDeC4GCUvtrKUfbQbUOQ721S3SuX+KLBiRwSK2uP57
+ oZvvllEFipC7USVFAHRebaOzsml54iB4snRdE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=CwOWrdjQnMEu1uy7KkVWTLmIn/O6jKGpZOEzU4R6ZiQ=;
+ b=a9NcZ53U7ethB/lP5VeXyRbbSpg0O6CefUBLrnO8R/ZuVLIf08cSbh+Cnspf/zfhEP
+ cslbiOuChcJZlB9noVgaLIksG3Xw2+1vEK40it6UPD1cRjAn+vCHsBNsugH/GoYj0bg9
+ 4XR3crJ9h8P4CeFXtORBo0KObKdmwpJJxeSYEIxM2L293yGfO9753emm0XGfD9dmfSVg
+ 0awUAm/mhD4Su6l9SwD3NDAeauyJKzQ8VAthTmiJZWKCrxp/vNocpEfh9dRJcEBNQZ0i
+ tdigXrD4D1FS/C8Dck0rOlF9hlhprYZ4LRT/O6F0A+tL6GvE4GJ49v1TG1PkJzr5L2yP
+ AZeg==
+X-Gm-Message-State: APjAAAWHLgz2VHX5l6L0sVKAe8B6qap09pNoWNluMAOeBxV/5jVp526J
+ c6pAOVMiXwfoywU6FfmAvIUj8xEHiRA=
+X-Google-Smtp-Source: APXvYqzmUJE1lnYem3N4zN4X/pEo8NT/6vWzFeTRHMOVjsbpeNB7aO50fbqDq3vLB5eanXXBuzCN+A==
+X-Received: by 2002:a2e:81d0:: with SMTP id s16mr18457629ljg.145.1557261204007; 
+ Tue, 07 May 2019 13:33:24 -0700 (PDT)
+Received: from mail-lf1-f53.google.com (mail-lf1-f53.google.com.
+ [209.85.167.53])
+ by smtp.gmail.com with ESMTPSA id p25sm4017992ljg.9.2019.05.07.13.33.22
+ for <devel@linuxdriverproject.org>
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 07 May 2019 13:33:23 -0700 (PDT)
+Received: by mail-lf1-f53.google.com with SMTP id o16so12828110lfl.7
+ for <devel@linuxdriverproject.org>; Tue, 07 May 2019 13:33:22 -0700 (PDT)
+X-Received: by 2002:a19:ec07:: with SMTP id b7mr11977699lfa.62.1557261202165; 
+ Tue, 07 May 2019 13:33:22 -0700 (PDT)
 MIME-Version: 1.0
+References: <20190507175853.GA11568@kroah.com>
+In-Reply-To: <20190507175853.GA11568@kroah.com>
+From: Linus Torvalds <torvalds@linux-foundation.org>
+Date: Tue, 7 May 2019 13:33:06 -0700
+X-Gmail-Original-Message-ID: <CAHk-=wg+w5+vAo1DQrprSG8APptZ5-Kek4NL_mnr9p08vFyQrg@mail.gmail.com>
+Message-ID: <CAHk-=wg+w5+vAo1DQrprSG8APptZ5-Kek4NL_mnr9p08vFyQrg@mail.gmail.com>
+Subject: Re: [GIT PULL] Staging/IIO driver patches for 5.2-rc1
+To: Greg KH <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,67 +88,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: klenntindle@gmail.com
+Cc: Stephen Rothwell <sfr@canb.auug.org.au>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Linux List Kernel Mailing <linux-kernel@vger.kernel.org>,
+ devel@linuxdriverproject.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello Dear, 
+On Tue, May 7, 2019 at 10:59 AM Greg KH <gregkh@linuxfoundation.org> wrote:
+>
+> All of these have been in linux-next for a while with no reported
+> issues, other than an odd gcc warning for one of the new drivers that
+> should be fixed up soon.
 
-I am Klen Tindle  by name, from America and working with the USA 
-military still on a mission in Afghanistan.  I really need your 
-assistance that is the reason why I contacted you, I want to go 
-into a cordial relationship and business partnership with you, as 
-I don't know how long we would stay in the war zone here, Here in 
-the military zone we are not allowed to make use of mobile 
-phones, we only make use of radio message and e-mail 
-communication.
+Ok, that's truly a funky warning.
 
-I want you to know that we are being attacked by insurgents every 
-day and several bombings. During one of our rescue mission we 
-came across a safe box that contain huge amount of money that 
-belongs to the revolutionaries, which I believe they use in 
-buying weapons and ammunition and it was agreed by all parties 
-present that the money will be shared among us.
+But since I don't deal well with warnings, particularly during the
+merge window, I just fixed it up in the merge.
 
-Out of the total fund my share was $5,000,000 (Five Million US 
-Dollars), I am seeking your assistance to evacuate my share of 
-the money, which is $5,000,000. out of here to you; in as much as 
-you can assure me that my own share will be safe in your care 
-until I complete my service here, This is not stolen money, and 
-there are no dangers involved.
+The fix is to simply not have a bitfield base type of "unsigned char",
+and have it cross a char boundary. Instead the base type should just
+be "unsigned int".
 
-I have made arrangements with a United Nation Diplomat who 
-promised to deliver the fund to any of my chosen destination, I 
-shall be compensating you with 30% of the total fund if you can 
-help me secure the box, while the balance shall be my investment 
-capital in your country, One passionate appeal I will make to you 
-is not to discuss this matter to a third party, if you have 
-reasons to reject this offer, please destroy this e-mail as any 
-leakage of this information will be too bad for me, due to my 
-position as a USAF Lieutenant.
+Of course, I couldn't test my change, but it shuts the compiler up,
+and it very much looks like the right thing.
 
-I have chosen to contact you after my prayers and I believe that 
-you will not betray my trust, but rather take me as your own 
-sister, Though you may wonder why I am so soon revealing myself 
-to you without knowing you, well I will say that my mind 
-convinced me that you are the true person to help me receive and 
-invest the fund.
-
-I do not know how long we will remain here, and I have survived 
-two bomb attacks here, which prompted me to search out for a 
-reliable and trustworthy person to help me receive and invest the 
-fund in his country.
-
-I wish you send me a reply immediately as soon as you receive 
-this proposal, Your urgent reply will be highly appreciated. I 
-hope my explanation is very clear but if you need further 
-clarification, then send your questions, I wait to hear from you 
-soonest.
-
-Regards,
-USAF Lieutenant Klen Tindle.
+                Linus
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
