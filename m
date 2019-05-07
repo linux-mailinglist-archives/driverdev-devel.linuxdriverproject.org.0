@@ -1,78 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 061DF15EE1
-	for <lists+driverdev-devel@lfdr.de>; Tue,  7 May 2019 10:12:48 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9B9C315F8A
+	for <lists+driverdev-devel@lfdr.de>; Tue,  7 May 2019 10:39:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B7A8586B28;
-	Tue,  7 May 2019 08:12:45 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0EE3327379;
+	Tue,  7 May 2019 08:39:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cs9ImZYHCOvq; Tue,  7 May 2019 08:12:45 +0000 (UTC)
+	with ESMTP id DoB0Ba2r9J83; Tue,  7 May 2019 08:39:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5620F86AD9;
-	Tue,  7 May 2019 08:12:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AEEAD26CAB;
+	Tue,  7 May 2019 08:39:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4FF551BF5E6
- for <devel@linuxdriverproject.org>; Tue,  7 May 2019 08:12:42 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 08D671BF868
+ for <devel@linuxdriverproject.org>; Tue,  7 May 2019 08:39:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4CD9321546
- for <devel@linuxdriverproject.org>; Tue,  7 May 2019 08:12:42 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 05EA4226A9
+ for <devel@linuxdriverproject.org>; Tue,  7 May 2019 08:39:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Fq6rTOK3VqaY for <devel@linuxdriverproject.org>;
- Tue,  7 May 2019 08:12:41 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f68.google.com (mail-ot1-f68.google.com
- [209.85.210.68])
- by silver.osuosl.org (Postfix) with ESMTPS id 9709F20791
- for <devel@driverdev.osuosl.org>; Tue,  7 May 2019 08:12:41 +0000 (UTC)
-Received: by mail-ot1-f68.google.com with SMTP id i8so4336952oth.10
- for <devel@driverdev.osuosl.org>; Tue, 07 May 2019 01:12:41 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=NQ6dv2i93HZ0YYfKZpbV9MkWY21B58FCrXMAN8Dpx2E=;
- b=hOQUxp2MWSAcZEz/fn/gdxdYJ+BV4wLE+cLEwd1L6GMfIhaMeK/W3elGBfUCygw01K
- Hn2EY4LXJBrrILB3TlYAMd9yP5vC4X4CTs1jEPVueW4FbMpyFoWrn5qEGgqojx47pDku
- jVjiyRSIMnCZTzIAt65AiwtPxW4ELBuVZUpkFrcx0k7YtN9Rzag0ZpEhu/hD328bgTHz
- OKz6eTHCbzHcINpt9BXDh5AwwiG8ETC0FvBS2/96DjsTjg7DhNWlfNH5jcRKfACh5xHi
- wqut1wVPlNJgAIaRsgZ0kHWhYMy9bzhId3AdOaSGo8WdEu+2LXSpYIdasVhIYIwZFZ66
- R1RA==
-X-Gm-Message-State: APjAAAXPLSBTmCStthUXJU40sIxgLTE7MTWwsKqema0ui19ZSGp0TNeN
- jzWlbpXAUfLkf56taWnBCXI=
-X-Google-Smtp-Source: APXvYqxazZcvVgW8B8Abx61RE3d6GpWO8pSjTz4Bl2xHSbS/zPSIG/vaJXjunEVO9ubN+ITWd3WpFw==
-X-Received: by 2002:a9d:6d19:: with SMTP id o25mr3196049otp.151.1557216760884; 
- Tue, 07 May 2019 01:12:40 -0700 (PDT)
-Received: from sultan-box.localdomain ([107.193.118.89])
- by smtp.gmail.com with ESMTPSA id k60sm5643992otc.42.2019.05.07.01.12.38
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Tue, 07 May 2019 01:12:40 -0700 (PDT)
-Date: Tue, 7 May 2019 01:12:36 -0700
-From: Sultan Alsawaf <sultan@kerneltoast.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [RFC] simple_lmk: Introduce Simple Low Memory Killer for Android
-Message-ID: <20190507081236.GA1531@sultan-box.localdomain>
-References: <20190318002949.mqknisgt7cmjmt7n@brauner.io>
- <20190318235052.GA65315@google.com>
- <20190319221415.baov7x6zoz7hvsno@brauner.io>
- <CAKOZuessqcjrZ4rfGLgrnOhrLnsVYiVJzOj4Aa=o3ZuZ013d0g@mail.gmail.com>
- <20190319231020.tdcttojlbmx57gke@brauner.io>
- <20190320015249.GC129907@google.com>
- <20190507021622.GA27300@sultan-box.localdomain>
- <20190507070430.GA24150@kroah.com>
- <20190507072721.GA4364@sultan-box.localdomain>
- <20190507074334.GB26478@kroah.com>
+ with ESMTP id vDlOKvkuBjZz for <devel@linuxdriverproject.org>;
+ Tue,  7 May 2019 08:39:24 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtp-out.xnet.cz (smtp-out.xnet.cz [178.217.244.18])
+ by silver.osuosl.org (Postfix) with ESMTPS id 41B9E2286F
+ for <devel@driverdev.osuosl.org>; Tue,  7 May 2019 08:39:23 +0000 (UTC)
+Received: from meh.true.cz (meh.true.cz [108.61.167.218])
+ (Authenticated sender: petr@true.cz)
+ by smtp-out.xnet.cz (Postfix) with ESMTPSA id C739A5D6B;
+ Tue,  7 May 2019 10:39:20 +0200 (CEST)
+Received: from localhost (meh.true.cz [local])
+ by meh.true.cz (OpenSMTPD) with ESMTPA id 878559c4;
+ Tue, 7 May 2019 10:39:19 +0200 (CEST)
+Date: Tue, 7 May 2019 10:39:18 +0200
+From: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [PATCH net-next v2 0/4] of_get_mac_address ERR_PTR fixes
+Message-ID: <20190507083918.GI81826@meh.true.cz>
+References: <1557177887-30446-1-git-send-email-ynezz@true.cz>
+ <20190507071914.GJ2269@kadam>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190507074334.GB26478@kroah.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+In-Reply-To: <20190507071914.GJ2269@kadam>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,57 +60,80 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- Daniel Colascione <dancol@google.com>, kernel-team <kernel-team@android.com>,
- Todd Kjos <tkjos@android.com>, Kees Cook <keescook@chromium.org>,
- Peter Zijlstra <peterz@infradead.org>, Suren Baghdasaryan <surenb@google.com>,
- LKML <linux-kernel@vger.kernel.org>, Tim Murray <timmurray@google.com>,
- Michal Hocko <mhocko@kernel.org>, linux-mm <linux-mm@kvack.org>,
- Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
- Ingo Molnar <mingo@redhat.com>, Steven Rostedt <rostedt@goodmis.org>,
- Oleg Nesterov <oleg@redhat.com>, Joel Fernandes <joel@joelfernandes.org>,
- Andy Lutomirski <luto@amacapital.net>, Martijn Coenen <maco@android.com>,
- Christian Brauner <christian@brauner.io>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
+Cc: devel@driverdev.osuosl.org, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Maxime Ripard <maxime.ripard@bootlin.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Frank Rowand <frowand.list@gmail.com>, "David S. Miller" <davem@davemloft.net>,
+ linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, May 07, 2019 at 09:43:34AM +0200, Greg Kroah-Hartman wrote:
-> Given that any "new" android device that gets shipped "soon" should be
-> using 4.9.y or newer, is this a real issue?
-
-It's certainly a real issue for those who can't buy brand new Android devices
-without software bugs every six months :)
-
-> And if it is, I'm sure that asking for those patches to be backported to
-> 4.4.y would be just fine, have you asked?
->
-> Note that I know of Android Go devices, running 3.18.y kernels, do NOT
-> use the in-kernel memory killer, but instead use the userspace solution
-> today.  So trying to get another in-kernel memory killer solution added
-> anywhere seems quite odd.
-
-It's even more odd that although a userspace solution is touted as the proper
-way to go on LKML, almost no Android OEMs are using it, and even in that commit
-I linked in the previous message, Google made a rather large set of
-modifications to the supposedly-defunct lowmemorykiller.c not one month ago.
-What's going on?
-
-Qualcomm still uses lowmemorykiller.c [1] on the Snapdragon 845. If PSI were
-backported to 4.4, or even 3.18, would it really be used? I don't really
-understand the aversion to an in-kernel memory killer on LKML despite the rest
-of the industry's attraction to it. Perhaps there's some inherently great cost
-in using the userspace solution that I'm unaware of?
-
-Regardless, even if PSI were backported, a full-fledged LMKD using it has yet to
-be made, so it wouldn't be of much use now.
-
-Thanks,
-Sultan
-
-[1] https://source.codeaurora.org/quic/la/kernel/msm-4.9/tree/arch/arm64/configs/sdm845_defconfig?h=LA.UM.7.3.r1-07400-sdm845.0#n492
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RGFuIENhcnBlbnRlciA8ZGFuLmNhcnBlbnRlckBvcmFjbGUuY29tPiBbMjAxOS0wNS0wNyAxMDox
+OToxNF06CgpIaSwKCj4gT24gTW9uLCBNYXkgMDYsIDIwMTkgYXQgMTE6MjQ6NDNQTSArMDIwMCwg
+UGV0ciDFoHRldGlhciB3cm90ZToKPiA+IAo+ID4gdGhpcyBwYXRjaCBzZXJpZXMgaXMgYW4gYXR0
+ZW1wdCB0byBmaXggdGhlIG1lc3MsIEkndmUgc29tZWhvdyBtYW5hZ2VkIHRvCj4gPiBpbnRyb2R1
+Y2UuCj4gPiAKPiA+IEZpcnN0IHBhdGNoIGluIHRoaXMgc2VyaWVzIGlzIGRlZmFjdG8gdjUgb2Yg
+dGhlIHByZXZpb3VzIDA1LzEwIHBhdGNoIGluIHRoZQo+ID4gc2VyaWVzLCBidXQgc2luY2UgdGhl
+IHY0IG9mIHRoaXMgMDUvMTAgcGF0Y2ggd2Fzbid0IHBpY2tlZCB1cCBieSB0aGUKPiA+IHBhdGNo
+d29yayBmb3Igc29tZSB1bmtub3duIHJlYXNvbiwgdGhpcyBwYXRjaCB3YXNuJ3QgYXBwbGllZCB3
+aXRoIHRoZSBvdGhlcgo+ID4gOSBwYXRjaGVzIGluIHRoZSBzZXJpZXMsIHNvIEknbSByZXNlbmRp
+bmcgaXQgYXMgYSBzZXBhcmF0ZSBwYXRjaCBvZiB0aGlzCj4gPiBmaXh1cCBzZXJpZXMgYWdhaW4u
+Cj4gCj4gSSBmZWVsIHNvcnQgb2YgcmlkaWN1bG91cyBhc2tpbmcgdGhpcyBvdmVyIGFuZCBvdmVy
+Li4uICBNYXliZSB5b3VyIHNwYW0KPiBmaWx0ZXIgaXMgZWF0aW5nIG15IGVtYWlscz8KCm5vcGUs
+IEkndmUgcmVhZCB5b3VyIGVtYWlsLCB0aGF0J3MgdGhlIG9ubHkgcmVhc29uIEkndmUgc2VudCBv
+dXQgdGhpcyB2MiB3aGljaAphZGRlZCBGaXhlczogdGFnIHlvdSd2ZSBzdWdnZXN0ZWQgaW4geW91
+ciBlbWFpbC4KCj4gVGhpcyBidWcgd2FzIGludHJvZHVjZWQgaW4gaHR0cHM6Ly9wYXRjaHdvcmsu
+b3psYWJzLm9yZy9wYXRjaC8xMDk0OTE2Lwo+ICJbdjQsMDEvMTBdIG9mX25ldDogYWRkIE5WTUVN
+IHN1cHBvcnQgdG8gb2ZfZ2V0X21hY19hZGRyZXNzIiBidXQgaXQKPiBsb29rcyBsaWtlIG5vIG9u
+ZSBhcHBsaWVkIGl0LgoKdGhpcyBwYXRjaCBzZXJpZXMgaXMgYWdhaW5zdCBuZXQtbmV4dCwgYW5k
+IEkndmUgYWRkZWQgRml4ZXM6IHRhZyBhcyB5b3UndmUKcmVxdWVzdGVkIGluIHRoaXMgdjIgc2Vy
+aWVzWzFdICh3aGljaCBleHBhbmRzIHRvIGNvbW1pdFsyXSBpbiBuZXQtbmV4dCk6CgogRml4ZXM6
+IGQwMWY0NDljMDA4YSAoIm9mX25ldDogYWRkIE5WTUVNIHN1cHBvcnQgdG8gb2ZfZ2V0X21hY19h
+ZGRyZXNzIikKCj4gWW91J3JlIGFjdGluZyBhcyBpZiBpdCAqd2FzKiBhcHBsaWVkIGJ1dCB5b3Ug
+cmVmdXNlIHRvIGFuc3dlciBteQo+IHF1ZXN0aW9uIHdobyBhcHBsaWVkIGl0IGFuZCB3aGljaCB0
+byB3aGljaCB0cmVlIHNvIEkgY2FuIGZpZ3VyZSBvdXQgd2hhdAo+IHdlbnQgd3JvbmcuCgppdCB3
+YXMgYXBwbGllZFsyXSB0byBEYXZpZCdzIG5ldC1uZXh0IHRyZWUsIGJ1dCB1bmZvcnR1bmF0ZWx5
+IHBhcnRpYWx5LCBqdXN0IDkKcGF0Y2hlcyBvdXQgb2YgMTAsIGFzIHRoZSBwYXRjaCAwNS8xMCBp
+biB0aGF0IHNlcmllcyAod2hpY2ggaXMgcGF0Y2ggMS80IGluCnRoaXMgc2VyaWVzKSBuZXZlciBy
+ZWFjaGVkIG5ldGRldiBtYWlsaW5nIGxpc3QgYW5kIHBhdGNod29yaywgcHJvYmFibHkgYmVjYXVz
+ZQpvZiBzb21lIG5ldGRldiBtYWlsaW5nIGxpc3Qgc29mdHdhcmUgYW5kL29yIHBhdGNod29yayBo
+aWNjdXAsIHZlcnkgbGlrZWx5IGR1ZQp0byB0aGUgbG9uZyBsaXN0IG9mIHJlY2lwaWVudHMgaW4g
+dGhhdCBwYXRjaCBhbmQgYXMgSSdtIG5vdCBzdWJzY3JpYmVkIHRvIHRoZQpuZXRkZXYgKGR1ZSB0
+byB0aGUgaGlnaCB0cmFmZmljKSBJJ20gcHJvYmFibHkgdHJlYXRlbiBzb21laG93IGRpZmZlcmVu
+dGx5LgoKU28gdG8gc3VtIGl0IHVwLCBJJ3ZlIHNpbXBseSB0aG91Z2h0LCB0aGF0IGl0IHdhcyBl
+bm91Z2ggdG8gc2VuZCBvdXQgdjIgd2l0aAp0aGF0IEZpeGVzOiB0YWcgYW5kIGNvbnNpZGVyZWQg
+aXQgZG9uZS4KCj4gSSBvbmx5IHNlZSBjb21tZW50cyBmcm9tIGxhc3QgRnJpZGF5IHRoYXQgaXQg
+c2hvdWxkbid0IGJlIGFwcGxpZWQuLi4KCkknbSBzb3JyeSwgYnV0IHdoaWNoIGNvbW1lbnRzIGRv
+IHlvdSBtZWFuIGV4YWN0bHk/IFRob3NlIGFib3V0IHRoZQpgbnZtZW0tbWFjLWFkZHJlc3NgIERU
+IChzeXNmcykgZW50cnk/IElmIHRoYXQgaXMgdGhlIGNhc2UsIGZyb20gbXkgcG9pbnQgb2YKdmll
+dywgSSd2ZSBwcm92aWRlZCByZWFzb25hYmxlIGFyZ3VtZW50cyBhbmQgbm9ib2R5IHRvbGQgbWUs
+IHRoYXQgSSdtIHdyb25nCndpdGggbXkgcmVhc29uaW5nIG9yIE5BQ0tlZCB0aGlzIGV4cGxpY2l0
+bHksIHNvIERhdmlkIHByb2JhYmx5IGNvbnNpZGVyZWQgbXkKYXJndW1lbnRzIGdvb2QgZW5vdWdo
+IGFuZCBtZXJnZWQgaXQgYXMgaXQgaXM/IEkgZG9uJ3QgaGF2ZSBhbnkgb3RoZXIKZXhwbGFuYXRp
+b24uCgo+IEkgYWxzbyB0b2xkIHlvdSBvbiBGcmlkYXkgaW4gYSBkaWZmZXJlbnQgdGhyZWFkIHRo
+YXQgdGhhdCBwYXRjaCBzaG91bGRuJ3QgYmUKPiBhcHBsaWVkLiAgQnJlYWtpbmcgZ2l0IGJpc2Vj
+dCBpcyBhIGJ1ZywgYW5kIHdlIG5ldmVyIGRvIHRoYXQuIAoKWWVzLCBhbmQgSSBhZ3JlZSB3aXRo
+IHlvdSwgYnV0IEkndmUgc2ltcGx5IHRob3VnaHQsIHRoYXQgaWYgYW55IG9mIHRoZQptYWludGFp
+bmVycyB3aG8gcHJldmlvdXNseSByZXZpZXdlZCB0aGUgc2VyaWVzIGRpZG4ndCBvYmplY3RlZCBh
+Ym91dCB0aGlzLAp0aGF0IHRoZXkncmUgcG9zc2libHkgZ29pbmcgdG8gc3F1YXNoIHRob3NlIHBh
+dGNoZXMgYnkgdGhlbXNlbHZlcyBkdXJpbmcgdGhlCm1lcmdpbmcgcHJvY2VzcyBvciB0aGF0IHRo
+ZXkncmUgZ29pbmcgdG8gdGVsbCBtZSB0byBkbyBzbyBhbmQgSSB3b3VsZCBhZGRyZXNzCnRoaXMg
+aW4gdGhlIGxhdGVzdCBpbnRlcmF0aW9uIG9mIHRoZSBwYXRjaHNldCBiZWZvcmUgbWVyZ2UuCgpB
+bnl3YXksIGlzIHRoZXJlIGFueSBwb3NzaWJpbGl0eSBob3cgdG8gZml4IHRoYXQgbm93PwoKPiBJ
+J20ganVzdCB2ZXJ5IGNvbmZ1c2VkIHJpZ2h0IG5vdy4gIFdoYXQgSSdtIHRyeWluZyB0byBkbyBp
+cyBmaWd1cmUgb3V0IGluCj4gbXkgaGVhZCBob3cgdGhpcyBwcm9jZXNzIGZhaWxlZCBzbyB3ZSBj
+YW4gZG8gYmV0dGVyIG5leHQgdGltZS4KCkknbSBqdXN0IG9jY2FzaW9uYWwgY29udHJpYnV0b3Is
+IHNvIEknbSBzb3JyeSwgYnV0IEkgY2FuIGhhcmRseSBwcm92aWRlIGFueQppbnB1dC4KCjEuIGh0
+dHBzOi8vcGF0Y2h3b3JrLm96bGFicy5vcmcvcGF0Y2gvMTA5NjA1NC8KMi4gaHR0cHM6Ly9naXQu
+a2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvZGF2ZW0vbmV0LW5leHQuZ2l0L2Nv
+bW1pdC8/aWQ9ZDAxZjQ0OWMwMDhhM2Y0MWZhNDRjNjAzZTI4YTc0NTJhYjhmOGU2OAoKQ2hlZXJz
+LAoKUGV0cgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
+ZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJp
+dmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYt
+ZGV2ZWwK
