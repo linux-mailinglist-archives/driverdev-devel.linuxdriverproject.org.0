@@ -1,93 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1459715B63
-	for <lists+driverdev-devel@lfdr.de>; Tue,  7 May 2019 07:54:32 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3718915DD2
+	for <lists+driverdev-devel@lfdr.de>; Tue,  7 May 2019 09:04:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0BD8D85F10;
-	Tue,  7 May 2019 05:54:30 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 99BFF2286F;
+	Tue,  7 May 2019 07:04:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HPdRDqerGi_z; Tue,  7 May 2019 05:54:29 +0000 (UTC)
+	with ESMTP id r1iJ3o-kmOgt; Tue,  7 May 2019 07:04:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7DC62848ED;
-	Tue,  7 May 2019 05:54:28 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1AAC82286C;
+	Tue,  7 May 2019 07:04:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E4C0A1BF371
- for <devel@linuxdriverproject.org>; Tue,  7 May 2019 05:54:25 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C82701BF2B6
+ for <devel@linuxdriverproject.org>; Tue,  7 May 2019 07:04:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DFCCB84F5A
- for <devel@linuxdriverproject.org>; Tue,  7 May 2019 05:54:25 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id C263022844
+ for <devel@linuxdriverproject.org>; Tue,  7 May 2019 07:04:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OW25K0YdvAsk for <devel@linuxdriverproject.org>;
- Tue,  7 May 2019 05:54:25 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2130.oracle.com (aserp2130.oracle.com [141.146.126.79])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2EE868493F
- for <devel@driverdev.osuosl.org>; Tue,  7 May 2019 05:54:25 +0000 (UTC)
-Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
- by aserp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x475mn5F173525;
- Tue, 7 May 2019 05:54:20 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2018-07-02;
- bh=kJQobYwWo6iFFg61xydLrFO2gb+vbqflfGMqytbSt44=;
- b=FoFGdqOSsVcD9mQe/DscR5O60zlk+Ejev9fOw62vKLZlEilOZD1+sMk5dUblc/KEJOfL
- +gAf1RItHcleauKg8kOyPEhPKJerXL4YpKj/z56S1pfkASQdhdwV3m6o6vI1yVB6Twm9
- X+L6RH7zj2d+oSQ80CjvBjDwLBi/ZO176zo6vHpIgbo/Ik93nbkN0kYmkWT1pBrgtBxJ
- 8OkVEYbfw6E9bmI2erg5nm8bcTIFk0LXJFNLpunYT6zh2j9w3TCQRNzqyfaTTp8yrWDK
- PG9QTzBNjJv2e9BjeQW7TYxEbBn4zUeTeyH8wQ+sxlnny+1WjTPeOWagb64rYsO5Y5SN jg== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by aserp2130.oracle.com with ESMTP id 2s94b5tpe7-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 07 May 2019 05:54:20 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x475qxmF127046;
- Tue, 7 May 2019 05:54:20 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by aserp3030.oracle.com with ESMTP id 2s94b99m85-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 07 May 2019 05:54:20 +0000
-Received: from abhmp0009.oracle.com (abhmp0009.oracle.com [141.146.116.15])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x475sDut019063;
- Tue, 7 May 2019 05:54:13 GMT
-Received: from kadam (/196.109.148.118)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 06 May 2019 22:54:12 -0700
-Date: Tue, 7 May 2019 08:54:05 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-Subject: Re: [PATCH v2 2/3] staging: vchiq: revert "switch to
- wait_for_completion_killable"
-Message-ID: <20190507055405.GI2269@kadam>
-References: <20190506144030.29056-1-nsaenzjulienne@suse.de>
- <20190506144030.29056-3-nsaenzjulienne@suse.de>
+ with ESMTP id NZR+xlsvrE3t for <devel@linuxdriverproject.org>;
+ Tue,  7 May 2019 07:04:33 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id 46DC220796
+ for <devel@driverdev.osuosl.org>; Tue,  7 May 2019 07:04:33 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 7A59721019;
+ Tue,  7 May 2019 07:04:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1557212673;
+ bh=hNi2vt1qB3b6X3N9lBhgsKLvokmDdrvsjVx/J28EZ90=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=1NwSfNdiJdTpK3PxZVb09tk48+2+AXcgrQl+ONIUsuxrfaxWSH5EVRvzyWG0q5iZK
+ GoU2xj/aHaJYSzTAqERyT8jaORLr94yQ1si1oFuQ21nMGXDmmeQt8N0QaISagR8JcU
+ YXN8lw0eZwmxKlwz0uu4QBqj9nvLINBiTWHmBxHY=
+Date: Tue, 7 May 2019 09:04:30 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Sultan Alsawaf <sultan@kerneltoast.com>
+Subject: Re: [RFC] simple_lmk: Introduce Simple Low Memory Killer for Android
+Message-ID: <20190507070430.GA24150@kroah.com>
+References: <20190317015306.GA167393@google.com>
+ <20190317114238.ab6tvvovpkpozld5@brauner.io>
+ <CAKOZuetZPhqQqSgZpyY0cLgy0jroLJRx-B93rkQzcOByL8ih_Q@mail.gmail.com>
+ <20190318002949.mqknisgt7cmjmt7n@brauner.io>
+ <20190318235052.GA65315@google.com>
+ <20190319221415.baov7x6zoz7hvsno@brauner.io>
+ <CAKOZuessqcjrZ4rfGLgrnOhrLnsVYiVJzOj4Aa=o3ZuZ013d0g@mail.gmail.com>
+ <20190319231020.tdcttojlbmx57gke@brauner.io>
+ <20190320015249.GC129907@google.com>
+ <20190507021622.GA27300@sultan-box.localdomain>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190506144030.29056-3-nsaenzjulienne@suse.de>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9249
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1810050000 definitions=main-1905070039
-X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9249
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
- definitions=main-1905070039
+In-Reply-To: <20190507021622.GA27300@sultan-box.localdomain>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,47 +75,59 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: stefan.wahren@i2se.com, devel@driverdev.osuosl.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, phil@raspberrypi.org,
- linux-kernel@vger.kernel.org, Eric Anholt <eric@anholt.net>,
- linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
+ Daniel Colascione <dancol@google.com>, Todd Kjos <tkjos@android.com>,
+ Kees Cook <keescook@chromium.org>, Peter Zijlstra <peterz@infradead.org>,
+ Martijn Coenen <maco@android.com>, LKML <linux-kernel@vger.kernel.org>,
+ Tim Murray <timmurray@google.com>, Michal Hocko <mhocko@kernel.org>,
+ Suren Baghdasaryan <surenb@google.com>, linux-mm <linux-mm@kvack.org>,
+ Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
+ Ingo Molnar <mingo@redhat.com>, Steven Rostedt <rostedt@goodmis.org>,
+ Oleg Nesterov <oleg@redhat.com>, Joel Fernandes <joel@joelfernandes.org>,
+ Andy Lutomirski <luto@amacapital.net>, kernel-team <kernel-team@android.com>,
+ Christian Brauner <christian@brauner.io>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, May 06, 2019 at 04:40:29PM +0200, Nicolas Saenz Julienne wrote:
-> The killable version of wait_for_completion() is meant to be used on
-> situations where it should not fail at all costs, but still have the
-> convenience of being able to kill it if really necessary. VCHIQ doesn't
-> fit this criteria, as it's mainly used as an interface to V4L2 and ALSA
-> devices.
+On Mon, May 06, 2019 at 07:16:22PM -0700, Sultan Alsawaf wrote:
+> This is a complete low memory killer solution for Android that is small
+> and simple. Processes are killed according to the priorities that
+> Android gives them, so that the least important processes are always
+> killed first. Processes are killed until memory deficits are satisfied,
+> as observed from kswapd struggling to free up pages. Simple LMK stops
+> killing processes when kswapd finally goes back to sleep.
 > 
-> Fixes: a772f116702e ("staging: vchiq: switch to wait_for_completion_killable")
-> Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+> The only tunables are the desired amount of memory to be freed per
+> reclaim event and desired frequency of reclaim events. Simple LMK tries
+> to free at least the desired amount of memory per reclaim and waits
+> until all of its victims' memory is freed before proceeding to kill more
+> processes.
 > 
-> This reverts commit a772f116702e3f0afdd7e6acadc1b8fb3b20b9ff.
+> Signed-off-by: Sultan Alsawaf <sultan@kerneltoast.com>
 > ---
+> Hello everyone,
+> 
+> I've addressed some of the concerns that were brought up with the first version
+> of the Simple LMK patch. I understand that a kernel-based solution like this
+> that contains policy decisions for a specific userspace is not the way to go,
+> but the Android ecosystem still has a pressing need for a low memory killer that
+> works well.
+> 
+> Most Android devices still use the ancient and deprecated lowmemorykiller.c
+> kernel driver; Simple LMK seeks to replace that, at the very least until PSI and
+> a userspace daemon utilizing PSI are ready for *all* Android devices, and not
+> just the privileged Pixel phone line.
 
-Git just sets you up for failure with its revert.  That code was from
-when git was really new and now everyone gets annoyed when they see a
-raw git hash without a human readable subject.  Just say at the start of
-the commit message:
+Um, why can't "all" Android devices take the same patches that the Pixel
+phones are using today?  They should all be in the public android-common
+kernel repositories that all Android devices should be syncing with on a
+weekly/monthly basis anyway, right?
 
-This reverts commit a772f116702e ("staging: vchiq: switch to
-wait_for_completion_killable").
+thanks,
 
-The killable version of wait_for_completion() is meant to be used on
-situations where it should not fail at all costs, but still have the
-convenience of being able to kill it if really necessary. VCHIQ doesn't
-fit this criteria, as it's mainly used as an interface to V4L2 and ALSA
-devices.
-
-Fixes: a772f116702e ("staging: vchiq: switch to wait_for_completion_killable")
-
-regards,
-dan carpenter
-
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
