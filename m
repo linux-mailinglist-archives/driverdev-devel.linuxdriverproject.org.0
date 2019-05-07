@@ -1,119 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EEFA716401
-	for <lists+driverdev-devel@lfdr.de>; Tue,  7 May 2019 14:52:03 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D9B87164F2
+	for <lists+driverdev-devel@lfdr.de>; Tue,  7 May 2019 15:49:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5C1542BF4B;
-	Tue,  7 May 2019 12:52:01 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 805C287C89;
+	Tue,  7 May 2019 13:49:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id b1I5P3JSwKEi; Tue,  7 May 2019 12:52:00 +0000 (UTC)
+	with ESMTP id qBwbLWtl2rlj; Tue,  7 May 2019 13:49:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C6E39226C2;
-	Tue,  7 May 2019 12:51:58 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5F5B185945;
+	Tue,  7 May 2019 13:49:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id AF5B91BF2B7
- for <devel@linuxdriverproject.org>; Tue,  7 May 2019 12:51:56 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6F3FB1BF32C
+ for <devel@linuxdriverproject.org>; Tue,  7 May 2019 13:49:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A4F558583C
- for <devel@linuxdriverproject.org>; Tue,  7 May 2019 12:51:56 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6C5DC22699
+ for <devel@linuxdriverproject.org>; Tue,  7 May 2019 13:49:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yjEJX5U6Gv7e for <devel@linuxdriverproject.org>;
- Tue,  7 May 2019 12:51:55 +0000 (UTC)
+ with ESMTP id mixsXB9Orzuk for <devel@linuxdriverproject.org>;
+ Tue,  7 May 2019 13:49:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM03-BY2-obe.outbound.protection.outlook.com
- (mail-eopbgr780119.outbound.protection.outlook.com [40.107.78.119])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 7AC3F85810
- for <devel@linuxdriverproject.org>; Tue,  7 May 2019 12:51:55 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=testarcselector01; d=microsoft.com; cv=none;
- b=E+hA16GAMRZHIHZAs4CR/MpAVOXzHu/EmLXlhi/ZbQPJAz/TI1cFlkxrEtq6w4LRB6VJHds8DlzkR2ACgbdRHSLGPpZ1ytJc6RcCXjkwJa54VOWsUKLDg0jR/6XsY5+5HjTBR1lNxLnlYn5sLLIl8ppbeSNYVpw5zsK0vZd2A/Q=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=testarcselector01;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=k0Ky181NJatpNjnAsO3YPhF0oKBEzAmcIwNcbi6h5yY=;
- b=CVawSngQnpKP9858lGqPvgCpRaelaXy2NtVUVYCOgaBs1owCKvrvL9RESmU7xltnnuRIY5sG+p2/quLYonzzWNJe9EpQeWqxcSVB4gwaLL3xOS11uVFA3o8AMjAa4JgkEZBpPSnTD3VVYAN93U81/hAVNwe+7MotlW96GDBmzRM=
-ARC-Authentication-Results: i=1; test.office365.com 1;spf=none;dmarc=none
- action=none header.from=microsoft.com; dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=k0Ky181NJatpNjnAsO3YPhF0oKBEzAmcIwNcbi6h5yY=;
- b=J4MSG3Ty3FYAGby5SNsEF0eAVXGWZOOOvQetMdJBR47DDt58DIlDnGcI6VAZdqxxqR8kzDaXyHcfE6a9wISKOwtXcx0PEqu9Uw4IAAfPpq+tG6wWn25Fwkm47epb7NUPWjofp61aIgb4KkvxGNFnt1WE+TmYf+AOn2Lnrk8NZBM=
-Received: from DM5PR2101MB0918.namprd21.prod.outlook.com (52.132.132.163) by
- DM5PR2101MB0902.namprd21.prod.outlook.com (52.132.132.159) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1856.2; Tue, 7 May 2019 12:51:52 +0000
-Received: from DM5PR2101MB0918.namprd21.prod.outlook.com
- ([fe80::25b3:455b:5e85:3c60]) by DM5PR2101MB0918.namprd21.prod.outlook.com
- ([fe80::25b3:455b:5e85:3c60%3]) with mapi id 15.20.1900.002; Tue, 7 May 2019
- 12:51:52 +0000
-From: Michael Kelley <mikelley@microsoft.com>
-To: Dexuan Cui <decui@microsoft.com>, "linux-hyperv@vger.kernel.org"
- <linux-hyperv@vger.kernel.org>, "gregkh@linuxfoundation.org"
- <gregkh@linuxfoundation.org>, Stephen Hemminger <sthemmin@microsoft.com>,
- "sashal@kernel.org" <sashal@kernel.org>, Sasha Levin
- <Alexander.Levin@microsoft.com>, Haiyang Zhang <haiyangz@microsoft.com>, KY
- Srinivasan <kys@microsoft.com>, "devel@linuxdriverproject.org"
- <devel@linuxdriverproject.org>, "juliana.rodrigueiro@intra2net.com"
- <juliana.rodrigueiro@intra2net.com>
-Subject: RE: [PATCH] Drivers: hv: vmbus: Fix virt_to_hvpfn() for X86_PAE
-Thread-Topic: [PATCH] Drivers: hv: vmbus: Fix virt_to_hvpfn() for X86_PAE
-Thread-Index: AQHVBKkKTisq9OloE02W7qrjLXJSBaZfnaGA
-Date: Tue, 7 May 2019 12:51:51 +0000
-Message-ID: <DM5PR2101MB09188A7DB0777CD50333F94ED7310@DM5PR2101MB0918.namprd21.prod.outlook.com>
-References: <1557215147-89776-1-git-send-email-decui@microsoft.com>
-In-Reply-To: <1557215147-89776-1-git-send-email-decui@microsoft.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Enabled=True;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SiteId=72f988bf-86f1-41af-91ab-2d7cd011db47;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Owner=mikelley@ntdev.microsoft.com;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SetDate=2019-05-07T12:51:49.1646513Z;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Name=General;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Application=Microsoft Azure
- Information Protection;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_ActionId=98dfddef-5679-453b-aaa2-4ac33bc314a9;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Extended_MSFT_Method=Automatic
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=mikelley@microsoft.com; 
-x-originating-ip: [24.22.167.197]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 038d20fb-c55e-4c35-44c5-08d6d2eac710
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(4618075)(2017052603328)(7193020);
- SRVR:DM5PR2101MB0902; 
-x-ms-traffictypediagnostic: DM5PR2101MB0902:
-x-ld-processed: 72f988bf-86f1-41af-91ab-2d7cd011db47,ExtAddr
-x-microsoft-antispam-prvs: <DM5PR2101MB0902F772A4FB05CCF3A0844CD7310@DM5PR2101MB0902.namprd21.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1360;
-x-forefront-prvs: 0030839EEE
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(376002)(136003)(366004)(396003)(346002)(39860400002)(199004)(189003)(4744005)(10090500001)(71200400001)(71190400001)(86362001)(86612001)(7696005)(256004)(33656002)(186003)(14454004)(81156014)(81166006)(8936002)(22452003)(1511001)(5660300002)(99286004)(54906003)(110136005)(66066001)(316002)(8990500004)(8676002)(2201001)(76176011)(53936002)(9686003)(55016002)(6116002)(7416002)(229853002)(74316002)(68736007)(3846002)(102836004)(7736002)(6246003)(6436002)(2501003)(305945005)(4326008)(2906002)(446003)(6506007)(478600001)(10290500003)(486006)(476003)(52536014)(11346002)(26005)(25786009)(66446008)(73956011)(76116006)(66476007)(66556008)(66946007)(64756008)(921003)(1121003);
- DIR:OUT; SFP:1102; SCL:1; SRVR:DM5PR2101MB0902;
- H:DM5PR2101MB0918.namprd21.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: microsoft.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: b10gQ6SjZVqoPEjp5oLD2AbPp/q6XqYXeFaPDuA6O92UH03zjJh6oYy3OT8xkCHo73+GSWYhoVvh5vnJXlgB60uHFQyfQZJGHbGOF6ziYMagdlyxC3iDop91gzGqPzrzlBXkhaZWCtzjckD/+E6nwc2eWuANlnsVg+kkrKPJZbGo/fDDE6FG/jU+8jSu904TtlR+ogtnruzOALlgghJff4m8zuv2cNvktGRNbBmUXko7m/VdKXg3cipuX0xxqWrvPfxZahk9Li4FFv60Ly7qYwRVT/Q7NMsTIaH7NqFJnBnT0Ygq+J0MfFWLC9VO1ZZZwFsPL3pAIkIr9RByD9qyasBluycADonSmrdu2mN2IHpJD+M3vGest/amGj4d0XUJPICCqM7LkiJKy5hS7hg04ccVFFgW+ANMXJa0xjAArkg=
+Received: from mail-ed1-f68.google.com (mail-ed1-f68.google.com
+ [209.85.208.68])
+ by silver.osuosl.org (Postfix) with ESMTPS id 36A8E2151E
+ for <devel@driverdev.osuosl.org>; Tue,  7 May 2019 13:49:37 +0000 (UTC)
+Received: by mail-ed1-f68.google.com with SMTP id f37so18756797edb.13
+ for <devel@driverdev.osuosl.org>; Tue, 07 May 2019 06:49:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=euemdhHUFLuSuId1RNfwYjKhHGbhd9gRXwryEuN0UN8=;
+ b=Gya7RSBvbDj7ToTPgKhS6yAIXnCX8xm9zep18SKqSe5SUR1WW0paYN3kFGCHu+Kkc6
+ ed5/OlwGHIenGWvC2wror9do3NnU4n6hMDqJ9hhQIFXCqqpBuNOJlH/Sxv80yb+L2bd9
+ lb1lX8u+qVasahpBpBZSi05ly0k0RJSJERSs4c3mmP3wACKt9/72T111HdqTKG2i8LvS
+ z0JVla1ixYxsPpQa7pX20R3l2eEFD/SPABChWG1k0BeuRneH66i1LEwiEHexmnXsy3Ru
+ WY2GS7QigIoHDmXHaQsPCmIhPo3FeM470q7zLGlrAzLaY9G86yp31edMj5hIw2rex6Z3
+ O4GA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=euemdhHUFLuSuId1RNfwYjKhHGbhd9gRXwryEuN0UN8=;
+ b=kswfBX6SazlYZF13/U6VA9B3DCQSElsri350aHKXsIq573ybZEEeCTaCTiNtyTgi5o
+ OqERGeL3CDqXBpYMrEL/3GlvuLCeetfcpYe3lN9Mv8k0NGxkKxuRDaQyM8PIBnV24gEX
+ GYGnCcYHkoABOA0Vn0Sv6fn4kD4JjQko/QAKKyYHiDT1SYnYCmBME1c+6DhAgdtJCDf+
+ KmloqrBB34s2pIvxe0mNpUb+gfSVm0f69qzP1tJ18NdB+4/9r9b6kRllhh4IdTj8mgIT
+ rops/qZ8L1agar0N6JOy6LtA72jPW4HodYr54hTZMQSxjz6InwTfEHNh+xNfXZo/IuPA
+ +YHQ==
+X-Gm-Message-State: APjAAAVBDG1ZXxx46amKj6LY7cVUOQtku7h6WjcgzpCtpfZ6Knd5TgDa
+ O4Em10fCxIVBkxtpwl7Ve7FZw9ONz1v16PFFgRg=
+X-Google-Smtp-Source: APXvYqxrwYWlgdaQeBMp+ljjwiAlV4eVdD+SE5MefsMILZDPoawLtjMFwoNlCkitGwRaPuvwwS7jSO1gQPV7ry1NmLQ=
+X-Received: by 2002:a17:906:6410:: with SMTP id
+ d16mr24602660ejm.75.1557236975656; 
+ Tue, 07 May 2019 06:49:35 -0700 (PDT)
 MIME-Version: 1.0
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 038d20fb-c55e-4c35-44c5-08d6d2eac710
-X-MS-Exchange-CrossTenant-originalarrivaltime: 07 May 2019 12:51:51.0333 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR2101MB0902
+References: <1557177887-30446-1-git-send-email-ynezz@true.cz>
+ <1557177887-30446-3-git-send-email-ynezz@true.cz>
+In-Reply-To: <1557177887-30446-3-git-send-email-ynezz@true.cz>
+From: Vladimir Oltean <olteanv@gmail.com>
+Date: Tue, 7 May 2019 16:49:24 +0300
+Message-ID: <CA+h21hqZnr1C5W6qMQMictdSROZvmggjXoYhX+=biEoT4Fs0jQ@mail.gmail.com>
+Subject: Re: [PATCH net-next v2 2/4] net: dsa: support of_get_mac_address new
+ ERR_PTR error
+To: =?UTF-8?Q?Petr_=C5=A0tetiar?= <ynezz@true.cz>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -126,33 +83,41 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "olaf@aepfle.de" <olaf@aepfle.de>,
- "jasowang@redhat.com" <jasowang@redhat.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "stable@vger.kernel.org" <stable@vger.kernel.org>,
- "apw@canonical.com" <apw@canonical.com>,
- "marcelo.cerri@canonical.com" <marcelo.cerri@canonical.com>,
- vkuznets <vkuznets@redhat.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Maxime Ripard <maxime.ripard@bootlin.com>, netdev <netdev@vger.kernel.org>,
+ linux-kernel@vger.kernel.org, Vivien Didelot <vivien.didelot@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Frank Rowand <frowand.list@gmail.com>, "David S. Miller" <davem@davemloft.net>,
+ Heiner Kallweit <hkallweit1@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Dexuan Cui <decui@microsoft.com> Sent: Tuesday, May 7, 2019 12:47 AM
-> 
-> In the case of X86_PAE, unsigned long is u32, but the physical address type
-> should be u64. Due to the bug here, the netvsc driver can not load
-> successfully, and sometimes the VM can panic due to memory corruption (the
-> hypervisor writes data to the wrong location).
-> 
-> Fixes: 6ba34171bcbd ("Drivers: hv: vmbus: Remove use of slow_virt_to_phys()")
-> Cc: stable@vger.kernel.org
-> Cc: Michael Kelley <mikelley@microsoft.com>
-> Reported-and-tested-by: Juliana Rodrigueiro <juliana.rodrigueiro@intra2net.com>
-> Signed-off-by: Dexuan Cui <decui@microsoft.com>
-
-Reviewed-by:  Michael Kelley <mikelley@microsoft.com>
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gVHVlLCA3IE1heSAyMDE5IGF0IDAwOjI2LCBQZXRyIMWgdGV0aWFyIDx5bmV6ekB0cnVlLmN6
+PiB3cm90ZToKPgo+IFRoZXJlIHdhcyBOVk1FTSBzdXBwb3J0IGFkZGVkIHRvIG9mX2dldF9tYWNf
+YWRkcmVzcywgc28gaXQgY291bGQgbm93Cj4gcmV0dXJuIEVSUl9QVFIgZW5jb2RlZCBlcnJvciB2
+YWx1ZXMsIHNvIHdlIG5lZWQgdG8gYWRqdXN0IGFsbCBjdXJyZW50Cj4gdXNlcnMgb2Ygb2ZfZ2V0
+X21hY19hZGRyZXNzIHRvIHRoaXMgbmV3IGZhY3QuCj4KPiBXaGlsZSBhdCBpdCwgcmVtb3ZlIHN1
+cGVyZmx1b3VzIGlzX3ZhbGlkX2V0aGVyX2FkZHIgYXMgdGhlIE1BQyBhZGRyZXNzCj4gcmV0dXJu
+ZWQgZnJvbSBvZl9nZXRfbWFjX2FkZHJlc3MgaXMgYWx3YXlzIHZhbGlkIGFuZCBjaGVja2VkIGJ5
+Cj4gaXNfdmFsaWRfZXRoZXJfYWRkciBhbnl3YXkuCj4KPiBGaXhlczogZDAxZjQ0OWMwMDhhICgi
+b2ZfbmV0OiBhZGQgTlZNRU0gc3VwcG9ydCB0byBvZl9nZXRfbWFjX2FkZHJlc3MiKQo+IFNpZ25l
+ZC1vZmYtYnk6IFBldHIgxaB0ZXRpYXIgPHluZXp6QHRydWUuY3o+Cj4gLS0tCj4gIG5ldC9kc2Ev
+c2xhdmUuYyB8IDIgKy0KPiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0
+aW9uKC0pCj4KPiBkaWZmIC0tZ2l0IGEvbmV0L2RzYS9zbGF2ZS5jIGIvbmV0L2RzYS9zbGF2ZS5j
+Cj4gaW5kZXggMzE2YmNlOS4uZmU3YjZhNiAxMDA2NDQKPiAtLS0gYS9uZXQvZHNhL3NsYXZlLmMK
+PiArKysgYi9uZXQvZHNhL3NsYXZlLmMKPiBAQCAtMTQxOCw3ICsxNDE4LDcgQEAgaW50IGRzYV9z
+bGF2ZV9jcmVhdGUoc3RydWN0IGRzYV9wb3J0ICpwb3J0KQo+ICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgTkVUSUZfRl9IV19WTEFOX0NUQUdfRklMVEVSOwo+ICAgICAgICAgc2xhdmVf
+ZGV2LT5od19mZWF0dXJlcyB8PSBORVRJRl9GX0hXX1RDOwo+ICAgICAgICAgc2xhdmVfZGV2LT5l
+dGh0b29sX29wcyA9ICZkc2Ffc2xhdmVfZXRodG9vbF9vcHM7Cj4gLSAgICAgICBpZiAocG9ydC0+
+bWFjICYmIGlzX3ZhbGlkX2V0aGVyX2FkZHIocG9ydC0+bWFjKSkKPiArICAgICAgIGlmICghSVNf
+RVJSX09SX05VTEwocG9ydC0+bWFjKSkKPiAgICAgICAgICAgICAgICAgZXRoZXJfYWRkcl9jb3B5
+KHNsYXZlX2Rldi0+ZGV2X2FkZHIsIHBvcnQtPm1hYyk7Cj4gICAgICAgICBlbHNlCj4gICAgICAg
+ICAgICAgICAgIGV0aF9od19hZGRyX2luaGVyaXQoc2xhdmVfZGV2LCBtYXN0ZXIpOwo+IC0tCj4g
+MS45LjEKPgoKVGVzdGVkLWJ5OiBWbGFkaW1pciBPbHRlYW4gPG9sdGVhbnZAZ21haWwuY29tPgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWls
+aW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2Lmxp
+bnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
