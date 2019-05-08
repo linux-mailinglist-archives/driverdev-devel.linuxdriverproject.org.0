@@ -2,117 +2,54 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3FD1217506
-	for <lists+driverdev-devel@lfdr.de>; Wed,  8 May 2019 11:22:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5E43017456
+	for <lists+driverdev-devel@lfdr.de>; Wed,  8 May 2019 10:56:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 1B6A820791;
-	Wed,  8 May 2019 09:22:30 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7D46930C9E;
+	Wed,  8 May 2019 08:56:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OAdyN2mvfNgr; Wed,  8 May 2019 09:22:29 +0000 (UTC)
+	with ESMTP id 4ly6LpihTokm; Wed,  8 May 2019 08:56:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id B23F0228A0;
-	Wed,  8 May 2019 09:22:26 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1717722FC6;
+	Wed,  8 May 2019 08:56:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DD9901BF3E9
- for <devel@linuxdriverproject.org>; Wed,  8 May 2019 09:22:24 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 662561BF3C4
+ for <devel@linuxdriverproject.org>; Wed,  8 May 2019 08:56:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id DA196860EA
- for <devel@linuxdriverproject.org>; Wed,  8 May 2019 09:22:24 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 61C4086E3A
+ for <devel@linuxdriverproject.org>; Wed,  8 May 2019 08:56:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tvEmPa4pO-Mb for <devel@linuxdriverproject.org>;
- Wed,  8 May 2019 09:22:23 +0000 (UTC)
+ with ESMTP id iqcGCguFfdiY for <devel@linuxdriverproject.org>;
+ Wed,  8 May 2019 08:56:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM01-BY2-obe.outbound.protection.outlook.com
- (mail-eopbgr810044.outbound.protection.outlook.com [40.107.81.44])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 64A2E85F8A
- for <devel@driverdev.osuosl.org>; Wed,  8 May 2019 09:22:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=analog.onmicrosoft.com; s=selector1-analog-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=3oq0gIqipBZriyxeQpa6NYSmnWoyGHaohhxiL2LPJlo=;
- b=XP1A4RIZbLyjzrbsjxhl+XDRPDmFLVn5jxtaRg5fXAbrS0/GXoCkMyUZpMMzpfOJ+eeTGtdl5hHNTUZr/DKtcidyE6MiOPOmH6KLsXPCZqzTGBkFGotCDCAGSkIcehq7cpJ2mZ6UBL4CN1Uj0vOAojNmxEST2IRNLtHpyHBtvKk=
-Received: from BY5PR03CA0013.namprd03.prod.outlook.com (2603:10b6:a03:1e0::23)
- by BN3PR03MB2257.namprd03.prod.outlook.com (2a01:111:e400:c5f1::17)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.1856.11; Wed, 8 May
- 2019 07:50:10 +0000
-Received: from CY1NAM02FT056.eop-nam02.prod.protection.outlook.com
- (2a01:111:f400:7e45::204) by BY5PR03CA0013.outlook.office365.com
- (2603:10b6:a03:1e0::23) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.1856.11 via Frontend
- Transport; Wed, 8 May 2019 07:50:10 +0000
-Authentication-Results: spf=pass (sender IP is 137.71.25.57)
- smtp.mailfrom=analog.com; linuxfoundation.org; dkim=none (message not signed)
- header.d=none;linuxfoundation.org; dmarc=bestguesspass action=none
- header.from=analog.com;
-Received-SPF: Pass (protection.outlook.com: domain of analog.com designates
- 137.71.25.57 as permitted sender) receiver=protection.outlook.com;
- client-ip=137.71.25.57; helo=nwd2mta2.analog.com;
-Received: from nwd2mta2.analog.com (137.71.25.57) by
- CY1NAM02FT056.mail.protection.outlook.com (10.152.74.160) with Microsoft SMTP
- Server (version=TLS1_0, cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.1856.11
- via Frontend Transport; Wed, 8 May 2019 07:50:09 +0000
-Received: from NWD2HUBCAS8.ad.analog.com (nwd2hubcas8.ad.analog.com
- [10.64.69.108])
- by nwd2mta2.analog.com (8.13.8/8.13.8) with ESMTP id x487o8fq011479
- (version=TLSv1/SSLv3 cipher=AES256-SHA bits=256 verify=OK);
- Wed, 8 May 2019 00:50:08 -0700
-Received: from NWD2MBX7.ad.analog.com ([fe80::190e:f9c1:9a22:9663]) by
- NWD2HUBCAS8.ad.analog.com ([fe80::90a0:b93e:53c6:afee%12]) with mapi id
- 14.03.0415.000; Wed, 8 May 2019 03:50:08 -0400
-From: "Ardelean, Alexandru" <alexandru.Ardelean@analog.com>
-To: "melissa.srw@gmail.com" <melissa.srw@gmail.com>
-Subject: Re: [PATCH 2/4] staging: iio: ad7150: use FIELD_GET and GENMASK
-Thread-Topic: [PATCH 2/4] staging: iio: ad7150: use FIELD_GET and GENMASK
-Thread-Index: AQHVAmZEuvjZKalljUODTfy22uS+XaZd7oYAgAJ7MACAALnZAA==
-Date: Wed, 8 May 2019 07:50:07 +0000
-Message-ID: <1220395cfe158e2116a1f2826ef6ce96074463b4.camel@analog.com>
-References: <cover.1556919363.git.melissa.srw@gmail.com>
- <7f7d36348bca1de25bd70350b7c665be6441250f.1556919363.git.melissa.srw@gmail.com>
- <CA+U=Dso6zSLzhhdiZcc+P4-2zcabxnoMd2539HmofTXrtYoKDQ@mail.gmail.com>
- <179d019c34cc69e50f19499a6089ac94740b59f5.camel@analog.com>
- <20190507204456.wwjjkeuzq44jy7w7@smtp.gmail.com>
-In-Reply-To: <20190507204456.wwjjkeuzq44jy7w7@smtp.gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.50.1.244]
-x-adiroutedonprem: True
-Content-ID: <7FA9E8C580B32C428CCE2C9F93B26605@analog.com>
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 0162D86C5A
+ for <devel@driverdev.osuosl.org>; Wed,  8 May 2019 08:56:35 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 08 May 2019 01:56:35 -0700
+X-ExtLoop1: 1
+Received: from jnikula-mobl3.fi.intel.com (HELO localhost) ([10.237.66.150])
+ by fmsmga001.fm.intel.com with ESMTP; 08 May 2019 01:56:27 -0700
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: Alastair D'Silva <alastair@au1.ibm.com>, alastair@d-silva.org
+Subject: Re: [PATCH v2 4/7] lib/hexdump.c: Replace ascii bool in
+ hex_dump_to_buffer with flags
+In-Reply-To: <20190508070148.23130-5-alastair@au1.ibm.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <20190508070148.23130-1-alastair@au1.ibm.com>
+ <20190508070148.23130-5-alastair@au1.ibm.com>
+Date: Wed, 08 May 2019 11:58:34 +0300
+Message-ID: <87v9yll3ut.fsf@intel.com>
 MIME-Version: 1.0
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:137.71.25.57; IPV:NLI; CTRY:US; EFV:NLI;
- SFV:NSPM;
- SFS:(10009020)(346002)(376002)(136003)(396003)(39860400002)(2980300002)(189003)(199004)(356004)(4326008)(107886003)(102836004)(446003)(53546011)(436003)(426003)(2351001)(70206006)(478600001)(11346002)(7636002)(7736002)(8936002)(36756003)(23676004)(76176011)(7696005)(2486003)(8676002)(6246003)(246002)(54906003)(118296001)(2501003)(316002)(5640700003)(5660300002)(1361003)(106002)(186003)(26005)(229853002)(7416002)(6116002)(3846002)(336012)(70586007)(47776003)(14444005)(6916009)(14454004)(50466002)(486006)(476003)(126002)(305945005)(2616005)(2906002)(86362001);
- DIR:OUT; SFP:1101; SCL:1; SRVR:BN3PR03MB2257; H:nwd2mta2.analog.com; FPR:;
- SPF:Pass; LANG:en; PTR:nwd2mail11.analog.com; MX:1; A:1; 
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: a2f487d0-abb9-47c0-cbaa-08d6d389cbc9
-X-Microsoft-Antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(4709054)(2017052603328)(7193020);
- SRVR:BN3PR03MB2257; 
-X-MS-TrafficTypeDiagnostic: BN3PR03MB2257:
-X-Microsoft-Antispam-PRVS: <BN3PR03MB22579CF8F287B7D6E1C1DFEBF9320@BN3PR03MB2257.namprd03.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:6790;
-X-Forefront-PRVS: 0031A0FFAF
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam-Message-Info: 9S1Sp473BbNxU36JLnFOdZijNZ/dlQkbaJIFPnCx+1V46yoLCZEr9Jb+DmHSOXfkPiEF9+OZSz08tbFw90E8o8MALbl4M2c++/mrbODEDFNob2e4VyVg55rmkzknSKd+8823rOoHCNz/5yE0FS9SA/3W6WnQOpTyW4y41jSLuvb/PcXISgFqxLNPYrQITz2bszV1DBi1X/QmyaOeR4brwWdrC94iF0zptwAc6tncwZquTVdbZI72UJafNPkIxmkFy1tbTYsYTHohLwz0RDcxoPtrqJOxZFyTeUhloSrTTIl04JZdDlxL+mRTsxc89bAWleYMOfPPh17X70jYqZv9FY7v3Up/UUDmfU6OCtI6hkJVJ0sT5YLPILNzdwnHEX6O+DA8l6jwc8w/56yJCGZKoI9fouiYdB0EsLHA0jz45Rk=
-X-OriginatorOrg: analog.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 May 2019 07:50:09.5283 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: a2f487d0-abb9-47c0-cbaa-08d6d389cbc9
-X-MS-Exchange-CrossTenant-Id: eaa689b4-8f87-40e0-9c6f-7228de4d754a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=eaa689b4-8f87-40e0-9c6f-7228de4d754a; Ip=[137.71.25.57];
- Helo=[nwd2mta2.analog.com]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN3PR03MB2257
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -125,122 +62,346 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- "lars@metafoo.de" <lars@metafoo.de>, "Hennerich,
- Michael" <Michael.Hennerich@analog.com>,
- "linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "21cnbao@gmail.com" <21cnbao@gmail.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "kernel-usp@googlegroups.com" <kernel-usp@googlegroups.com>,
- "ardeleanalex@gmail.com" <ardeleanalex@gmail.com>,
- "pmeerw@pmeerw.net" <pmeerw@pmeerw.net>, "knaack.h@gmx.de" <knaack.h@gmx.de>,
- "Popa, Stefan Serban" <StefanSerban.Popa@analog.com>,
- "jic23@kernel.org" <jic23@kernel.org>
+Cc: linux-fbdev@vger.kernel.org, Stanislaw Gruszka <sgruszka@redhat.com>,
+ Petr Mladek <pmladek@suse.com>, David Airlie <airlied@linux.ie>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, devel@driverdev.osuosl.org,
+ linux-scsi@vger.kernel.org, Jassi Brar <jassisinghbrar@gmail.com>,
+ ath10k@lists.infradead.org, intel-gfx@lists.freedesktop.org,
+ Dan Carpenter <dan.carpenter@oracle.com>, Jose Abreu <Jose.Abreu@synopsys.com>,
+ Tom Lendacky <thomas.lendacky@amd.com>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ Steven Rostedt <rostedt@goodmis.org>, linux-fsdevel@vger.kernel.org,
+ Alexander Viro <viro@zeniv.linux.org.uk>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Benson Leung <bleung@chromium.org>,
+ Kalle Valo <kvalo@codeaurora.org>, Karsten Keil <isdn@linux-pingi.de>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Sergey Senozhatsky <sergey.senozhatsky@gmail.com>,
+ David Laight <David.Laight@ACULAB.COM>, Daniel Vetter <daniel@ffwll.ch>,
+ netdev@vger.kernel.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, 2019-05-07 at 17:44 -0300, Melissa Wen wrote:
-> [External]
-> 
-> 
-> On 05/06, Ardelean, Alexandru wrote:
-> > On Sat, 2019-05-04 at 13:43 +0300, Alexandru Ardelean wrote:
-> > > [External]
-> > > 
-> > > 
-> > > On Sat, May 4, 2019 at 1:25 AM Melissa Wen <melissa.srw@gmail.com>
-> > > wrote:
-> > > > 
-> > > > Use the bitfield macro FIELD_GET, and GENMASK to do the shift and
-> > > > mask
-> > > > in
-> > > > one go. This makes the code more readable than explicit masking
-> > > > followed
-> > > > by a shift.
-> > > > 
-> > > 
-> > > This looks neat.
-> > > I'd have to remember to ack it from my work email.
-> > 
-> > Acked-by: Alexandru Ardelean <alexandru.ardelean@analog.com>
-> > 
-> > > 
-> > > One minor comment inline, which would be the object of a new patch.
-> > > 
-> > > > Signed-off-by: Melissa Wen <melissa.srw@gmail.com>
-> > > > ---
-> > > >  drivers/staging/iio/cdc/ad7150.c | 6 +++++-
-> > > >  1 file changed, 5 insertions(+), 1 deletion(-)
-> > > > 
-> > > > diff --git a/drivers/staging/iio/cdc/ad7150.c
-> > > > b/drivers/staging/iio/cdc/ad7150.c
-> > > > index 24601ba7db88..4ba46fb6ac02 100644
-> > > > --- a/drivers/staging/iio/cdc/ad7150.c
-> > > > +++ b/drivers/staging/iio/cdc/ad7150.c
-> > > > @@ -5,6 +5,7 @@
-> > > >   * Copyright 2010-2011 Analog Devices Inc.
-> > > >   */
-> > > > 
-> > > > +#include <linux/bitfield.h>
-> > > >  #include <linux/interrupt.h>
-> > > >  #include <linux/device.h>
-> > > >  #include <linux/kernel.h>
-> > > > @@ -44,6 +45,9 @@
-> > > >  #define AD7150_SN0_REG                         0x16
-> > > >  #define AD7150_ID_REG                          0x17
-> > > > 
-> > > > +/* AD7150 masks */
-> > > > +#define AD7150_THRESHTYPE_MSK                  GENMASK(6, 5)
-> > > > +
-> > > >  /**
-> > > >   * struct ad7150_chip_info - instance specific chip data
-> > > >   * @client: i2c client for this device
-> > > > @@ -136,7 +140,7 @@ static int ad7150_read_event_config(struct
-> > > > iio_dev
-> > > > *indio_dev,
-> > > >         if (ret < 0)
-> > > >                 return ret;
-> > > > 
-> > > > -       threshtype = (ret >> 5) & 0x03;
-> > > > +       threshtype = FIELD_GET(AD7150_THRESHTYPE_MSK, ret);
-> > > >         adaptive = !!(ret & 0x80);
-> > > 
-> > > Why not also do something similar for the `adaptive` value ?
-> 
-> Hi Alexandru,
-> 
-> Yes, I'm working on it!  However, taking a look at the driver datasheet
-> (Table
-> 13, page 19), there seems to be a little mistake in choosing the variable
-> name
-> and its meaning,  since when bit(7) is 1 (true) the threshold is fixed,
-> and not
-> adaptive. For this reason, I removed it from this patchset to mature the
-> solution. I will send it as a bug fix if I prove it's necessary.
-> Do you have any advice or feeling about it to share?
-> 
+On Wed, 08 May 2019, Alastair D'Silva <alastair@au1.ibm.com> wrote:
+> From: Alastair D'Silva <alastair@d-silva.org>
+>
+> In order to support additional features in hex_dump_to_buffer, replace
+> the ascii bool parameter with flags.
+>
+> Signed-off-by: Alastair D'Silva <alastair@d-silva.org>
+> ---
+>  drivers/gpu/drm/i915/intel_engine_cs.c            |  2 +-
 
-Good find.
-Since this is a bug-fix, typically it's good to fix the code as-is now
-[even if it isn't neat code], and then do the conversions to neat code.
+For i915,
 
-Bug-fixes always take priority over cosmetic changes.
-So, I would send the bug-fix as-soon-as-possible, and then update things.
+Acked-by: Jani Nikula <jani.nikula@intel.com>
 
+>  drivers/isdn/hardware/mISDN/mISDNisar.c           |  6 ++++--
+>  drivers/mailbox/mailbox-test.c                    |  2 +-
+>  drivers/net/ethernet/amd/xgbe/xgbe-drv.c          |  2 +-
+>  drivers/net/ethernet/synopsys/dwc-xlgmac-common.c |  2 +-
+>  drivers/net/wireless/ath/ath10k/debug.c           |  3 ++-
+>  drivers/net/wireless/intel/iwlegacy/3945-mac.c    |  2 +-
+>  drivers/platform/chrome/wilco_ec/debugfs.c        |  2 +-
+>  drivers/scsi/scsi_logging.c                       |  8 +++-----
+>  drivers/staging/fbtft/fbtft-core.c                |  2 +-
+>  fs/seq_file.c                                     |  3 ++-
+>  include/linux/printk.h                            |  8 ++++----
+>  lib/hexdump.c                                     | 15 ++++++++-------
+>  lib/test_hexdump.c                                |  5 +++--
+>  14 files changed, 33 insertions(+), 29 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/i915/intel_engine_cs.c b/drivers/gpu/drm/i915/intel_engine_cs.c
+> index 49fa43ff02ba..fb133e729f9a 100644
+> --- a/drivers/gpu/drm/i915/intel_engine_cs.c
+> +++ b/drivers/gpu/drm/i915/intel_engine_cs.c
+> @@ -1318,7 +1318,7 @@ static void hexdump(struct drm_printer *m, const void *buf, size_t len)
+>  		WARN_ON_ONCE(hex_dump_to_buffer(buf + pos, len - pos,
+>  						rowsize, sizeof(u32),
+>  						line, sizeof(line),
+> -						false) >= sizeof(line));
+> +						0) >= sizeof(line));
+>  		drm_printf(m, "[%04zx] %s\n", pos, line);
+>  
+>  		prev = buf + pos;
+> diff --git a/drivers/isdn/hardware/mISDN/mISDNisar.c b/drivers/isdn/hardware/mISDN/mISDNisar.c
+> index 386731ec2489..f13f34db6c17 100644
+> --- a/drivers/isdn/hardware/mISDN/mISDNisar.c
+> +++ b/drivers/isdn/hardware/mISDN/mISDNisar.c
+> @@ -84,7 +84,8 @@ send_mbox(struct isar_hw *isar, u8 his, u8 creg, u8 len, u8 *msg)
+>  
+>  			while (l < (int)len) {
+>  				hex_dump_to_buffer(msg + l, len - l, 32, 1,
+> -						   isar->log, 256, 1);
+> +						   isar->log, 256,
+> +						   HEXDUMP_ASCII);
+>  				pr_debug("%s: %s %02x: %s\n", isar->name,
+>  					 __func__, l, isar->log);
+>  				l += 32;
+> @@ -113,7 +114,8 @@ rcv_mbox(struct isar_hw *isar, u8 *msg)
+>  
+>  			while (l < (int)isar->clsb) {
+>  				hex_dump_to_buffer(msg + l, isar->clsb - l, 32,
+> -						   1, isar->log, 256, 1);
+> +						   1, isar->log, 256,
+> +						   HEXDUMP_ASCII);
+>  				pr_debug("%s: %s %02x: %s\n", isar->name,
+>  					 __func__, l, isar->log);
+>  				l += 32;
+> diff --git a/drivers/mailbox/mailbox-test.c b/drivers/mailbox/mailbox-test.c
+> index 4e4ac4be6423..2f9a094d0259 100644
+> --- a/drivers/mailbox/mailbox-test.c
+> +++ b/drivers/mailbox/mailbox-test.c
+> @@ -213,7 +213,7 @@ static ssize_t mbox_test_message_read(struct file *filp, char __user *userbuf,
+>  		hex_dump_to_buffer(ptr,
+>  				   MBOX_BYTES_PER_LINE,
+>  				   MBOX_BYTES_PER_LINE, 1, touser + l,
+> -				   MBOX_HEXDUMP_LINE_LEN, true);
+> +				   MBOX_HEXDUMP_LINE_LEN, HEXDUMP_ASCII);
+>  
+>  		ptr += MBOX_BYTES_PER_LINE;
+>  		l += MBOX_HEXDUMP_LINE_LEN;
+> diff --git a/drivers/net/ethernet/amd/xgbe/xgbe-drv.c b/drivers/net/ethernet/amd/xgbe/xgbe-drv.c
+> index 0cc911f928b1..e954a31cee0c 100644
+> --- a/drivers/net/ethernet/amd/xgbe/xgbe-drv.c
+> +++ b/drivers/net/ethernet/amd/xgbe/xgbe-drv.c
+> @@ -2992,7 +2992,7 @@ void xgbe_print_pkt(struct net_device *netdev, struct sk_buff *skb, bool tx_rx)
+>  		unsigned int len = min(skb->len - i, 32U);
+>  
+>  		hex_dump_to_buffer(&skb->data[i], len, 32, 1,
+> -				   buffer, sizeof(buffer), false);
+> +				   buffer, sizeof(buffer), 0);
+>  		netdev_dbg(netdev, "  %#06x: %s\n", i, buffer);
+>  	}
+>  
+> diff --git a/drivers/net/ethernet/synopsys/dwc-xlgmac-common.c b/drivers/net/ethernet/synopsys/dwc-xlgmac-common.c
+> index eb1c6b03c329..b80adfa1f890 100644
+> --- a/drivers/net/ethernet/synopsys/dwc-xlgmac-common.c
+> +++ b/drivers/net/ethernet/synopsys/dwc-xlgmac-common.c
+> @@ -349,7 +349,7 @@ void xlgmac_print_pkt(struct net_device *netdev,
+>  		unsigned int len = min(skb->len - i, 32U);
+>  
+>  		hex_dump_to_buffer(&skb->data[i], len, 32, 1,
+> -				   buffer, sizeof(buffer), false);
+> +				   buffer, sizeof(buffer), 0);
+>  		netdev_dbg(netdev, "  %#06x: %s\n", i, buffer);
+>  	}
+>  
+> diff --git a/drivers/net/wireless/ath/ath10k/debug.c b/drivers/net/wireless/ath/ath10k/debug.c
+> index 32d967a31c65..4c99ea03226d 100644
+> --- a/drivers/net/wireless/ath/ath10k/debug.c
+> +++ b/drivers/net/wireless/ath/ath10k/debug.c
+> @@ -2662,7 +2662,8 @@ void ath10k_dbg_dump(struct ath10k *ar,
+>  						(unsigned int)(ptr - buf));
+>  			hex_dump_to_buffer(ptr, len - (ptr - buf), 16, 1,
+>  					   linebuf + linebuflen,
+> -					   sizeof(linebuf) - linebuflen, true);
+> +					   sizeof(linebuf) - linebuflen,
+> +					   HEXDUMP_ASCII);
+>  			dev_printk(KERN_DEBUG, ar->dev, "%s\n", linebuf);
+>  		}
+>  	}
+> diff --git a/drivers/net/wireless/intel/iwlegacy/3945-mac.c b/drivers/net/wireless/intel/iwlegacy/3945-mac.c
+> index 271977f7fbb0..acbe26d22c34 100644
+> --- a/drivers/net/wireless/intel/iwlegacy/3945-mac.c
+> +++ b/drivers/net/wireless/intel/iwlegacy/3945-mac.c
+> @@ -3247,7 +3247,7 @@ il3945_show_measurement(struct device *d, struct device_attribute *attr,
+>  
+>  	while (size && PAGE_SIZE - len) {
+>  		hex_dump_to_buffer(data + ofs, size, 16, 1, buf + len,
+> -				   PAGE_SIZE - len, true);
+> +				   PAGE_SIZE - len, HEXDUMP_ASCII);
+>  		len = strlen(buf);
+>  		if (PAGE_SIZE - len)
+>  			buf[len++] = '\n';
+> diff --git a/drivers/platform/chrome/wilco_ec/debugfs.c b/drivers/platform/chrome/wilco_ec/debugfs.c
+> index c090db2cd5be..26d9ae5c2dc2 100644
+> --- a/drivers/platform/chrome/wilco_ec/debugfs.c
+> +++ b/drivers/platform/chrome/wilco_ec/debugfs.c
+> @@ -174,7 +174,7 @@ static ssize_t raw_read(struct file *file, char __user *user_buf, size_t count,
+>  		fmt_len = hex_dump_to_buffer(debug_info->raw_data,
+>  					     debug_info->response_size,
+>  					     16, 1, debug_info->formatted_data,
+> -					     FORMATTED_BUFFER_SIZE, true);
+> +					     FORMATTED_BUFFER_SIZE, HEXDUMP_ASCII);
+>  		/* Only return response the first time it is read */
+>  		debug_info->response_size = 0;
+>  	}
+> diff --git a/drivers/scsi/scsi_logging.c b/drivers/scsi/scsi_logging.c
+> index bd70339c1242..fce542bb40e6 100644
+> --- a/drivers/scsi/scsi_logging.c
+> +++ b/drivers/scsi/scsi_logging.c
+> @@ -263,7 +263,7 @@ void scsi_print_command(struct scsi_cmnd *cmd)
+>  						 "CDB[%02x]: ", k);
+>  				hex_dump_to_buffer(&cmd->cmnd[k], linelen,
+>  						   16, 1, logbuf + off,
+> -						   logbuf_len - off, false);
+> +						   logbuf_len - off, 0);
+>  			}
+>  			dev_printk(KERN_INFO, &cmd->device->sdev_gendev, "%s",
+>  				   logbuf);
+> @@ -274,8 +274,7 @@ void scsi_print_command(struct scsi_cmnd *cmd)
+>  	if (!WARN_ON(off > logbuf_len - 49)) {
+>  		off += scnprintf(logbuf + off, logbuf_len - off, " ");
+>  		hex_dump_to_buffer(cmd->cmnd, cmd->cmd_len, 16, 1,
+> -				   logbuf + off, logbuf_len - off,
+> -				   false);
+> +				   logbuf + off, logbuf_len - off, 0);
+>  	}
+>  out_printk:
+>  	dev_printk(KERN_INFO, &cmd->device->sdev_gendev, "%s", logbuf);
+> @@ -354,8 +353,7 @@ scsi_log_dump_sense(const struct scsi_device *sdev, const char *name, int tag,
+>  		off = sdev_format_header(logbuf, logbuf_len,
+>  					 name, tag);
+>  		hex_dump_to_buffer(&sense_buffer[i], len, 16, 1,
+> -				   logbuf + off, logbuf_len - off,
+> -				   false);
+> +				   logbuf + off, logbuf_len - off, 0);
+>  		dev_printk(KERN_INFO, &sdev->sdev_gendev, "%s", logbuf);
+>  	}
+>  	scsi_log_release_buffer(logbuf);
+> diff --git a/drivers/staging/fbtft/fbtft-core.c b/drivers/staging/fbtft/fbtft-core.c
+> index 9b07badf4c6c..2e5df5cc9d61 100644
+> --- a/drivers/staging/fbtft/fbtft-core.c
+> +++ b/drivers/staging/fbtft/fbtft-core.c
+> @@ -61,7 +61,7 @@ void fbtft_dbg_hex(const struct device *dev, int groupsize,
+>  	va_end(args);
+>  
+>  	hex_dump_to_buffer(buf, len, 32, groupsize, text + text_len,
+> -			   512 - text_len, false);
+> +			   512 - text_len, 0);
+>  
+>  	if (len > 32)
+>  		dev_info(dev, "%s ...\n", text);
+> diff --git a/fs/seq_file.c b/fs/seq_file.c
+> index 1dea7a8a5255..a0213637af3e 100644
+> --- a/fs/seq_file.c
+> +++ b/fs/seq_file.c
+> @@ -873,7 +873,8 @@ void seq_hex_dump(struct seq_file *m, const char *prefix_str, int prefix_type,
+>  
+>  		size = seq_get_buf(m, &buffer);
+>  		ret = hex_dump_to_buffer(ptr + i, linelen, rowsize, groupsize,
+> -					 buffer, size, ascii);
+> +					 buffer, size,
+> +					 ascii ? HEXDUMP_ASCII : 0);
+>  		seq_commit(m, ret < size ? ret : -1);
+>  
+>  		seq_putc(m, '\n');
+> diff --git a/include/linux/printk.h b/include/linux/printk.h
+> index 938a67580d78..00a82e468643 100644
+> --- a/include/linux/printk.h
+> +++ b/include/linux/printk.h
+> @@ -480,13 +480,13 @@ enum {
+>  	DUMP_PREFIX_OFFSET
+>  };
+>  
+> -extern int hex_dump_to_buffer(const void *buf, size_t len, int rowsize,
+> -			      int groupsize, char *linebuf, size_t linebuflen,
+> -			      bool ascii);
+> -
+>  #define HEXDUMP_ASCII			(1 << 0)
+>  #define HEXDUMP_SUPPRESS_REPEATED	(1 << 1)
+>  
+> +extern int hex_dump_to_buffer(const void *buf, size_t len, int rowsize,
+> +			      int groupsize, char *linebuf, size_t linebuflen,
+> +			      u64 flags);
+> +
+>  #ifdef CONFIG_PRINTK
+>  extern void print_hex_dump_ext(const char *level, const char *prefix_str,
+>  			   int prefix_type, int rowsize, int groupsize,
+> diff --git a/lib/hexdump.c b/lib/hexdump.c
+> index d61a1e4f19fa..ddd1697e5f9b 100644
+> --- a/lib/hexdump.c
+> +++ b/lib/hexdump.c
+> @@ -85,7 +85,8 @@ EXPORT_SYMBOL(bin2hex);
+>   * @groupsize: number of bytes to print at a time (1, 2, 4, 8; default = 1)
+>   * @linebuf: where to put the converted data
+>   * @linebuflen: total size of @linebuf, including space for terminating NUL
+> - * @ascii: include ASCII after the hex output
+> + * @flags: A bitwise OR of the following flags:
+> + *	HEXDUMP_ASCII:			include ASCII after the hex output
+>   *
+>   * hex_dump_to_buffer() works on one "line" of output at a time, converting
+>   * <groupsize> bytes of input to hexadecimal (and optionally printable ASCII)
+> @@ -97,7 +98,7 @@ EXPORT_SYMBOL(bin2hex);
+>   *
+>   * E.g.:
+>   *   hex_dump_to_buffer(frame->data, frame->len, 16, 1,
+> - *			linebuf, sizeof(linebuf), true);
+> + *			linebuf, sizeof(linebuf), HEXDUMP_ASCII);
+>   *
+>   * example output buffer:
+>   * 40 41 42 43 44 45 46 47 48 49 4a 4b 4c 4d 4e 4f  @ABCDEFGHIJKLMNO
+> @@ -109,7 +110,7 @@ EXPORT_SYMBOL(bin2hex);
+>   * string if enough space had been available.
+>   */
+>  int hex_dump_to_buffer(const void *buf, size_t len, int rowsize, int groupsize,
+> -		       char *linebuf, size_t linebuflen, bool ascii)
+> +		       char *linebuf, size_t linebuflen, u64 flags)
+>  {
+>  	const u8 *ptr = buf;
+>  	int ngroups;
+> @@ -187,7 +188,7 @@ int hex_dump_to_buffer(const void *buf, size_t len, int rowsize, int groupsize,
+>  		if (j)
+>  			lx--;
+>  	}
+> -	if (!ascii)
+> +	if (!(flags & HEXDUMP_ASCII))
+>  		goto nil;
+>  
+>  	while (lx < ascii_column) {
+> @@ -207,7 +208,8 @@ int hex_dump_to_buffer(const void *buf, size_t len, int rowsize, int groupsize,
+>  overflow2:
+>  	linebuf[lx++] = '\0';
+>  overflow1:
+> -	return ascii ? ascii_column + len : (groupsize * 2 + 1) * ngroups - 1;
+> +	return (flags & HEXDUMP_ASCII) ? ascii_column + len :
+> +					 (groupsize * 2 + 1) * ngroups - 1;
+>  }
+>  EXPORT_SYMBOL(hex_dump_to_buffer);
+>  
+> @@ -336,8 +338,7 @@ void print_hex_dump_ext(const char *level, const char *prefix_str,
+>  		}
+>  
+>  		hex_dump_to_buffer(ptr + i, linelen, rowsize, groupsize,
+> -				   linebuf, linebuf_len,
+> -				   flags & HEXDUMP_ASCII);
+> +				   linebuf, linebuf_len, flags);
+>  
+>  		switch (prefix_type) {
+>  		case DUMP_PREFIX_ADDRESS:
+> diff --git a/lib/test_hexdump.c b/lib/test_hexdump.c
+> index 6ab75a209b43..ae340c5c1c6f 100644
+> --- a/lib/test_hexdump.c
+> +++ b/lib/test_hexdump.c
+> @@ -166,7 +166,7 @@ static void __init test_hexdump(size_t len, int rowsize, int groupsize,
+>  
+>  	memset(real, FILL_CHAR, sizeof(real));
+>  	hex_dump_to_buffer(data_b, len, rowsize, groupsize, real, sizeof(real),
+> -			   ascii);
+> +			   ascii ? HEXDUMP_ASCII : 0);
+>  
+>  	memset(test, FILL_CHAR, sizeof(test));
+>  	test_hexdump_prepare_test(len, rowsize, groupsize, test, sizeof(test),
+> @@ -204,7 +204,8 @@ static void __init test_hexdump_overflow(size_t buflen, size_t len,
+>  
+>  	memset(buf, FILL_CHAR, sizeof(buf));
+>  
+> -	rc = hex_dump_to_buffer(data_b, len, rowsize, groupsize, buf, buflen, ascii);
+> +	rc = hex_dump_to_buffer(data_b, len, rowsize, groupsize, buf, buflen,
+> +				ascii ? HEXDUMP_ASCII : 0);
+>  
+>  	/*
+>  	 * Caller must provide the data length multiple of groupsize. The
 
-> P.s.: Sorry for having previously sent an email with HTML.
-> 
-> Melissa
-> 
-> > > 
-> > > > 
-> > > >         switch (type) {
-> > > > --
-> > > > 2.20.1
-> > > > 
+-- 
+Jani Nikula, Intel Open Source Graphics Center
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
