@@ -1,77 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0DFAD1815C
-	for <lists+driverdev-devel@lfdr.de>; Wed,  8 May 2019 22:55:51 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D5E8F18308
+	for <lists+driverdev-devel@lfdr.de>; Thu,  9 May 2019 03:00:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E2FDC87277;
-	Wed,  8 May 2019 20:55:48 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 10D3F8816B;
+	Thu,  9 May 2019 01:00:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wEFgsGIRRoxu; Wed,  8 May 2019 20:55:48 +0000 (UTC)
+	with ESMTP id ECIDIlN-fbjS; Thu,  9 May 2019 01:00:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 28C3C8723B;
-	Wed,  8 May 2019 20:55:47 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AC84388146;
+	Thu,  9 May 2019 01:00:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7ED811BF21A
- for <devel@linuxdriverproject.org>; Wed,  8 May 2019 20:55:45 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5B8321BF20D
+ for <devel@linuxdriverproject.org>; Thu,  9 May 2019 00:59:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 7840F22E6E
- for <devel@linuxdriverproject.org>; Wed,  8 May 2019 20:55:45 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 56D3088146
+ for <devel@linuxdriverproject.org>; Thu,  9 May 2019 00:59:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vCkC3lGOoLHx for <devel@linuxdriverproject.org>;
- Wed,  8 May 2019 20:55:44 +0000 (UTC)
+ with ESMTP id Lct5fac46DQy for <devel@linuxdriverproject.org>;
+ Thu,  9 May 2019 00:59:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lj1-f194.google.com (mail-lj1-f194.google.com
- [209.85.208.194])
- by silver.osuosl.org (Postfix) with ESMTPS id 9CA6622E54
- for <devel@driverdev.osuosl.org>; Wed,  8 May 2019 20:55:44 +0000 (UTC)
-Received: by mail-lj1-f194.google.com with SMTP id m20so138179lji.2
- for <devel@driverdev.osuosl.org>; Wed, 08 May 2019 13:55:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=EdHQ2fN9PmYyyKfWtvF5eYBZ95JotNTRJaQiGnwT22Q=;
- b=nB5PfQEzy7OJ7F4ijNv3ammizGHtT2f6SwnFsNgo1hS/qK94j1nbkEtPpdRPqm0qoS
- UhyFFgLmrWvr/bjASQYCwNGzqZQ7QfTlc7zTsuI04bmZTEIdCbQN+BtGavqQAE4fRSLc
- qWufHDuuvjb83rN7UiVIkSBCOjaj+ai5oLQm6woOtVlGmEEMTj4Q079HJM7SJckKmYeT
- x6QCwhXEOQ0LC7ZxCB7b+Ng7lHhx0sICanN4YAnSNv3pPS22+/SX94ghijuxtVhQebLi
- 3E1oNsy+nMBpizNgSMdXKoxxCdQO/9+b62MkJ+uiBAjylV05a6O44414HXkjN5MOiJh8
- qT1w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=EdHQ2fN9PmYyyKfWtvF5eYBZ95JotNTRJaQiGnwT22Q=;
- b=uaGAEB+fhaaUEmBx8amzeIVKcNYLKjeZDcjM8XLDXpJ3ctZWrGz7ZLgEvBEuGBV7oU
- 5/5eGS68qJbMIaQH69nVuPduzpAbvTz7A41Rfl9Ppdl7BHNfbKOWmjdyJ16r0zk7S6d7
- Ojihydh41+Y1zsccLA8rIqV+LvXHQVFe1Er1ZcwmUYns+AK7Fzb0MuOc8wl3Rg0tPgaF
- f6osln+Orl5RrYXCmBnPUaohJdUoJfEn8m7NKs2BpKIQaCfBK2mQjapRfe6F6Hyzt+FG
- JfxhRkJ4J07mQDtHVZpR1h9d7b/OLPStWv4vJRfOBYLk//R847ENOktpdpJHJLARPXCH
- u2Hg==
-X-Gm-Message-State: APjAAAUjPNZczdD7QFtX/vub6U0M1k9nGRqbjCq+sCN0ah9ef8Mh+q2C
- qQkIRSkl/vLoo9aZY7V8L94=
-X-Google-Smtp-Source: APXvYqxF4bRLmQ0lCdvd24dzL0b5mFPZQZHuqbb41oIPCNbn8ScTXThKxTpVU0p8Ul0YdYCnv6esWg==
-X-Received: by 2002:a2e:568b:: with SMTP id k11mr8084177lje.124.1557348942803; 
- Wed, 08 May 2019 13:55:42 -0700 (PDT)
-Received: from octofox.cadence.com
- (jcmvbkbc-1-pt.tunnel.tserv24.sto1.ipv6.he.net. [2001:470:27:1fa::2])
- by smtp.gmail.com with ESMTPSA id p18sm4833697ljc.54.2019.05.08.13.55.40
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 08 May 2019 13:55:42 -0700 (PDT)
-From: Max Filippov <jcmvbkbc@gmail.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH] drivers/staging/kpc2000: fix build error on xtensa
-Date: Wed,  8 May 2019 13:55:13 -0700
-Message-Id: <20190508205513.11312-1-jcmvbkbc@gmail.com>
-X-Mailer: git-send-email 2.11.0
+Received: from bombadil.infradead.org (bombadil.infradead.org
+ [198.137.202.133])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 144FE88143
+ for <devel@driverdev.osuosl.org>; Thu,  9 May 2019 00:59:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=bombadil.20170209; h=Content-Transfer-Encoding:
+ Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
+ Subject:Sender:Reply-To:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=jF6l3iV1rXe+x0MwS+AXxE/3MQbA5vLmSrDtVx8hKJ0=; b=iDLjyMGHb2MtEiX7sNEsrIOc+
+ r555boyzgroaM/roefjfl/8sPXIlDAXxtafMFPJgts5KIWBA3q3sxMLL9Wjox7NuUoSN+lZsyGDWw
+ 1YIQfXQ89Etqt/gh+FhXMlhdhbL9rncYRHCp1u5Ydd7sskuGKJOM6SqnvXr8Ix+x0A1cHoy/Pusmm
+ afAw4Qn3zKr+mSjjshNzlrS6rfxIYZK+kWmsANoEiID2eXPgmAt9+V8rVX6zZpa52fnCPoRfx1GZ/
+ Wu13zOk/d8d44/7sOxIazBgLErLk/FQfGqZzRDcPlEkhHnuFiQz1PmBOXDcuzYl28U3M+xDV4tosD
+ uSeh53laQ==;
+Received: from static-50-53-52-16.bvtn.or.frontiernet.net ([50.53.52.16]
+ helo=midway.dunlab)
+ by bombadil.infradead.org with esmtpsa (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hOXOb-0001bQ-J1; Thu, 09 May 2019 00:58:49 +0000
+Subject: Re: [PATCH v2 3/7] lib/hexdump.c: Optionally suppress lines of
+ repeated bytes
+To: Alastair D'Silva <alastair@au1.ibm.com>, alastair@d-silva.org
+References: <20190508070148.23130-1-alastair@au1.ibm.com>
+ <20190508070148.23130-4-alastair@au1.ibm.com>
+From: Randy Dunlap <rdunlap@infradead.org>
+Message-ID: <dc093079-43a0-0a45-f5dd-88b20702fd93@infradead.org>
+Date: Wed, 8 May 2019 17:58:46 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
+In-Reply-To: <20190508070148.23130-4-alastair@au1.ibm.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,35 +73,97 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Max Filippov <jcmvbkbc@gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-fbdev@vger.kernel.org, Stanislaw Gruszka <sgruszka@redhat.com>,
+ Tom Lendacky <thomas.lendacky@amd.com>, David Airlie <airlied@linux.ie>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, devel@driverdev.osuosl.org,
+ linux-scsi@vger.kernel.org, Jassi Brar <jassisinghbrar@gmail.com>,
+ ath10k@lists.infradead.org, "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ Dan Carpenter <dan.carpenter@oracle.com>, Jose Abreu <Jose.Abreu@synopsys.com>,
+ Petr Mladek <pmladek@suse.com>, intel-gfx@lists.freedesktop.org,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Steven Rostedt <rostedt@goodmis.org>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Benson Leung <bleung@chromium.org>, Kalle Valo <kvalo@codeaurora.org>,
+ Karsten Keil <isdn@linux-pingi.de>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Sergey Senozhatsky <sergey.senozhatsky@gmail.com>,
+ David Laight <David.Laight@ACULAB.COM>, Daniel Vetter <daniel@ffwll.ch>,
+ netdev@vger.kernel.org, linux-fsdevel@vger.kernel.org,
+ Andrew Morton <akpm@linux-foundation.org>,
+ "David S. Miller" <davem@davemloft.net>,
+ Alexander Viro <viro@zeniv.linux.org.uk>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-a3BjMjAwMC9rcGNfZG1hL2ZpbGVvcHMuYyBpbmNsdWRlcyBhc20vdWFjY2Vzcy5oIGluc3RlYWQg
-b2YKbGludXgvdWFjY2Vzcy5oLCB3aGljaCByZXN1bHRzIGluIHRoZSBmb2xsb3dpbmcgYnVpbGQg
-ZXJyb3Igb24geHRlbnNhCmFyY2hpdGVjdHVyZToKCiAgSW4gZmlsZSBpbmNsdWRlZCBmcm9tCiAg
-ZHJpdmVycy9zdGFnaW5nL2twYzIwMDAva3BjX2RtYS9maWxlb3BzLmM6MTE6CiAgYXJjaC94dGVu
-c2EvaW5jbHVkZS9hc20vdWFjY2Vzcy5oOgogIEluIGZ1bmN0aW9uIOKAmGNsZWFyX3VzZXLigJk6
-CiAgYXJjaC94dGVuc2EvaW5jbHVkZS9hc20vdWFjY2Vzcy5oOjQwOjIyOgogIGVycm9yOiBpbXBs
-aWNpdCBkZWNsYXJhdGlvbiBvZiBmdW5jdGlvbiDigJh1YWNjZXNzX2tlcm5lbOKAmTsgLi4uCiAg
-ICNkZWZpbmUgX19rZXJuZWxfb2sgKHVhY2Nlc3Nfa2VybmVsKCkpCiAgICAgICAgICAgICAgICAg
-ICAgICAgIF5+fn5+fn5+fn5+fn5+CgpJbmNsdWRlIGxpbnV4L3VhY2Nlc3MuaCB0byBmaXggdGhh
-dC4KClNpZ25lZC1vZmYtYnk6IE1heCBGaWxpcHBvdiA8amNtdmJrYmNAZ21haWwuY29tPgotLS0K
-IGRyaXZlcnMvc3RhZ2luZy9rcGMyMDAwL2twY19kbWEvZmlsZW9wcy5jIHwgMiArLQogMSBmaWxl
-IGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0tZ2l0IGEvZHJp
-dmVycy9zdGFnaW5nL2twYzIwMDAva3BjX2RtYS9maWxlb3BzLmMgYi9kcml2ZXJzL3N0YWdpbmcv
-a3BjMjAwMC9rcGNfZG1hL2ZpbGVvcHMuYwppbmRleCA1NzQxZDJiNDlhN2QuLjA4ODZhZDQwOGIw
-ZSAxMDA2NDQKLS0tIGEvZHJpdmVycy9zdGFnaW5nL2twYzIwMDAva3BjX2RtYS9maWxlb3BzLmMK
-KysrIGIvZHJpdmVycy9zdGFnaW5nL2twYzIwMDAva3BjX2RtYS9maWxlb3BzLmMKQEAgLTgsNyAr
-OCw3IEBACiAjaW5jbHVkZSA8bGludXgvZXJybm8uaD4gICAgLyogZXJyb3IgY29kZXMgKi8KICNp
-bmNsdWRlIDxsaW51eC90eXBlcy5oPiAgICAvKiBzaXplX3QgKi8KICNpbmNsdWRlIDxsaW51eC9j
-ZGV2Lmg+Ci0jaW5jbHVkZSA8YXNtL3VhY2Nlc3MuaD4gICAgLyogY29weV8qX3VzZXIgKi8KKyNp
-bmNsdWRlIDxsaW51eC91YWNjZXNzLmg+ICAvKiBjb3B5XypfdXNlciAqLwogI2luY2x1ZGUgPGxp
-bnV4L2Fpby5oPiAgICAgIC8qIGFpbyBzdHVmZiAqLwogI2luY2x1ZGUgPGxpbnV4L2hpZ2htZW0u
-aD4KICNpbmNsdWRlIDxsaW51eC9wYWdlbWFwLmg+Ci0tIAoyLjExLjAKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZl
-bEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9q
-ZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+On 5/8/19 12:01 AM, Alastair D'Silva wrote:
+> From: Alastair D'Silva <alastair@d-silva.org>
+> 
+> Some buffers may only be partially filled with useful data, while the rest
+> is padded (typically with 0x00 or 0xff).
+> 
+> This patch introduces a flag to allow the supression of lines of repeated
+> bytes, which are replaced with '** Skipped %u bytes of value 0x%x **'
+> 
+> An inline wrapper function is provided for backwards compatibility with
+> existing code, which maintains the original behaviour.
+> 
+> Signed-off-by: Alastair D'Silva <alastair@d-silva.org>
+> ---
+>  include/linux/printk.h | 25 +++++++++---
+>  lib/hexdump.c          | 91 ++++++++++++++++++++++++++++++++++++------
+>  2 files changed, 99 insertions(+), 17 deletions(-)
+> 
+
+Hi,
+Did you do "make htmldocs" or something similar on this?
+
+> diff --git a/lib/hexdump.c b/lib/hexdump.c
+> index 3943507bc0e9..d61a1e4f19fa 100644
+> --- a/lib/hexdump.c
+> +++ b/lib/hexdump.c
+> @@ -212,8 +212,44 @@ int hex_dump_to_buffer(const void *buf, size_t len, int rowsize, int groupsize,
+>  EXPORT_SYMBOL(hex_dump_to_buffer);
+>  
+>  #ifdef CONFIG_PRINTK
+> +
+> +/**
+> + * Check if a buffer contains only a single byte value
+> + * @buf: pointer to the buffer
+> + * @len: the size of the buffer in bytes
+> + * @val: outputs the value if if the bytes are identical
+
+Does this work without a function name?
+Documentation/doc-guide/kernel-doc.rst says the general format is:
+
+  /**
+   * function_name() - Brief description of function.
+   * @arg1: Describe the first argument.
+   * @arg2: Describe the second argument.
+   *        One can provide multiple line descriptions
+   *        for arguments.
+   *
+
+> + */
+
+>  /**
+> - * print_hex_dump - print a text hex dump to syslog for a binary blob of data
+> + * print_hex_dump_ext: dump a binary blob of data to syslog in hexadecimal
+
+Also not in the general documented format.
+
+>   * @level: kernel log level (e.g. KERN_DEBUG)
+>   * @prefix_str: string to prefix each line with;
+>   *  caller supplies trailing spaces for alignment if desired
+
+
+-- 
+~Randy
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
