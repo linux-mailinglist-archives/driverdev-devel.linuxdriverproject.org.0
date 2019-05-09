@@ -2,89 +2,46 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 06E9118B49
-	for <lists+driverdev-devel@lfdr.de>; Thu,  9 May 2019 16:13:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C02C618BC7
+	for <lists+driverdev-devel@lfdr.de>; Thu,  9 May 2019 16:31:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DCB868684E;
-	Thu,  9 May 2019 14:12:58 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4D1E2868CF;
+	Thu,  9 May 2019 14:31:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hG0rEK9wrV6D; Thu,  9 May 2019 14:12:58 +0000 (UTC)
+	with ESMTP id HJyUmevYIlHW; Thu,  9 May 2019 14:31:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6F55E84E24;
-	Thu,  9 May 2019 14:12:57 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BCE7C868B5;
+	Thu,  9 May 2019 14:31:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 713001BF580
- for <devel@linuxdriverproject.org>; Thu,  9 May 2019 14:12:55 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E7ECC1BF580
+ for <devel@linuxdriverproject.org>; Thu,  9 May 2019 14:31:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6E15B864E9
- for <devel@linuxdriverproject.org>; Thu,  9 May 2019 14:12:55 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E501E871C5
+ for <devel@linuxdriverproject.org>; Thu,  9 May 2019 14:31:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sQiu3wLJBpPG for <devel@linuxdriverproject.org>;
- Thu,  9 May 2019 14:12:54 +0000 (UTC)
+ with ESMTP id 6Pjx8-36NVJe for <devel@linuxdriverproject.org>;
+ Thu,  9 May 2019 14:31:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A3F58863FD
- for <devel@driverdev.osuosl.org>; Thu,  9 May 2019 14:12:54 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x49Dwxqg157483;
- Thu, 9 May 2019 14:12:51 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2018-07-02;
- bh=nD8rLy+QMi6kereJLer+CD9I0tBeKUoE6uLBEpCj52g=;
- b=yZHNs4Bpp8MLtsa+9Oh5/5F9oYS79p1/+ik71nm9+VmwduJUC//fqbolPA2t/UnzTc1h
- 4Ceqld+Y9uY87SZthLgkIT07YmObAhOrSlXCHFg2Xfw1x8U3JCZNyZzxh/NPzTUongWH
- Y00Zbvz4rXJNQzhnk2dBZGRAJndRzozlqH+qFcswemoXgWhjxWz4y6YaN0kj/jWv9bot
- kdQR93JPI50bMJXtv4h4va0p4wORwcvKTQ7TVPuf7ZBsUF7lB2dRkynD5+7Wh+2Ynuhe
- EHDOWfAVn0me63UU71wrMTIkX3HI72MiW48JNerceFWKwlVT1qYBIWyvG/eYyDPSZd+Q 4g== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2130.oracle.com with ESMTP id 2s94bgb4eg-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 09 May 2019 14:12:51 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x49EBAdk157022;
- Thu, 9 May 2019 14:12:50 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by aserp3030.oracle.com with ESMTP id 2s94bataj8-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 09 May 2019 14:12:50 +0000
-Received: from abhmp0009.oracle.com (abhmp0009.oracle.com [141.146.116.15])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x49ECnYB011244;
- Thu, 9 May 2019 14:12:49 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 09 May 2019 07:12:49 -0700
-Date: Thu, 9 May 2019 17:12:43 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Matt Sickler <Matt.Sickler@daktronics.com>
-Subject: Re: [PATCH v2] kpc_i2c: Remove unused file
-Message-ID: <20190509141243.GE21059@kadam>
-References: <SN6PR02MB4016E93EC94A46E6C79A76DBEE330@SN6PR02MB4016.namprd02.prod.outlook.com>
+Received: from mx1.suse.de (mx2.suse.de [195.135.220.15])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 51A3387624
+ for <devel@driverdev.osuosl.org>; Thu,  9 May 2019 14:31:52 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx1.suse.de (Postfix) with ESMTP id E498EABD4;
+ Thu,  9 May 2019 14:31:49 +0000 (UTC)
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH v3 0/4] staging: vchiq: use interruptible waits
+Date: Thu,  9 May 2019 16:31:32 +0200
+Message-Id: <20190509143137.31254-1-nsaenzjulienne@suse.de>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <SN6PR02MB4016E93EC94A46E6C79A76DBEE330@SN6PR02MB4016.namprd02.prod.outlook.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9251
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1810050000 definitions=main-1905090084
-X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9251
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
- definitions=main-1905090084
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,37 +54,85 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>
+Cc: stefan.wahren@i2se.com, devel@driverdev.osuosl.org,
+ dan.carpenter@oracle.com, linux-arm-kernel@lists.infradead.org,
+ linux-rpi-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Add Staging: to the subject.
+Hi,
+this series tries to address an issue that came up in Raspbian's kernel
+tree [1] and upstream distros [2][3].
 
-[PATCH v2] Staging: kpc_i2c: Remove unused file fileops.c
+We adopted some changes that moved wait calls from a custom
+implementation to the more standard killable family of functions. Users
+complained that all the VCHIQ threads showed up in D state (which is the
+expected behaviour).
 
-On Thu, May 09, 2019 at 01:38:27PM +0000, Matt Sickler wrote:
-> The whole file was wrapped in an #if 0.  I'm guessing it was a leftover file
-> from when we were first developing the driver and we just forgot about it.
-> 
-> V2: Forgot the signed-off-by line on the first patch.
+The custom implementation we deleted tried to mimic the killable family
+of functions, yet accepted more signals than the later; SIGKILL |
+SIGINT | SIGQUIT | SIGTRAP | SIGSTOP | SIGCONT for the custom
+implementation as opposed to plain old SIGKILL.
 
-Put this after the --- cut off line
+Raspbian maintainers decided roll back some of those changes and leave
+the wait functions as interruptible. Hence creating some divergence
+between both trees.
 
-> 
-> Signed-off-by: Matt Sickler <matt.sickler@daktronics.com>
-> ---
-  ^^^
+One could argue that not liking having the threads stuck in D state is
+not really a software issue. It's more a cosmetic thing that can scare
+people when they look at "uptime". On the other hand, if we are ever to
+unstage this driver, we'd really need a proper justification for using
+the killable family of functions. Which I think it's not really clear at
+the moment.
 
-Here.
+As Raspbian's kernel has been working for a while with interruptible
+waits I propose we follow through. If needed we can always go back to
+killable. But at least we'll have a proper understanding on the actual
+needs. In the end the driver is in staging, and the potential for errors
+small.
 
-There is something else wrong with the patch and it's corrupted a bit or
-something.  Please read the first paragraph of
-Documentation/process/email-clients.rst
+The first 3 commits fix the issue, and should probably get in as soon as
+possible, the last commit is just cosmetic and can wait until 5.3.
 
-regards,
-dan carpenter
+Regards,
+Nicolas
+
+[1] https://github.com/raspberrypi/linux/issues/2881
+[2] https://archlinuxarm.org/forum/viewtopic.php?f=65&t=13485
+[3] https://lists.fedoraproject.org/archives/list/arm@lists.fedoraproject.org/message/GBXGJ7DOV5CQQXFPOZCXTRD6W4BEPT4Q/
+
+--
+
+Changes since v2:
+  - Cleaned up revert commit message
+  - Rebase & merge conflict resolutions
+  - Add code cleanup suggested by Dan Carpenter
+
+Changes since v1:
+  - Proplery format revert commits
+  - Add code comment to remind of this issue
+  - Add Fixes tags
+
+Nicolas Saenz Julienne (4):
+  staging: vchiq_2835_arm: revert "quit using custom
+    down_interruptible()"
+  staging: vchiq: revert "switch to wait_for_completion_killable"
+  staging: vchiq: make wait events interruptible
+  staging: vchiq: stop explicitly comparing with zero to catch errors
+
+ .../bcm2835-camera/bcm2835-camera.c           | 11 ++-
+ .../interface/vchiq_arm/vchiq_2835_arm.c      |  2 +-
+ .../interface/vchiq_arm/vchiq_arm.c           | 85 +++++++++----------
+ .../interface/vchiq_arm/vchiq_connected.c     |  4 +-
+ .../interface/vchiq_arm/vchiq_core.c          | 53 +++++++-----
+ .../interface/vchiq_arm/vchiq_debugfs.c       |  4 +-
+ .../interface/vchiq_arm/vchiq_util.c          |  6 +-
+ 7 files changed, 82 insertions(+), 83 deletions(-)
+
+-- 
+2.21.0
 
 _______________________________________________
 devel mailing list
