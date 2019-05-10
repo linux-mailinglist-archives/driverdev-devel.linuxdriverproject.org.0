@@ -1,74 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3158E195FA
-	for <lists+driverdev-devel@lfdr.de>; Fri, 10 May 2019 02:17:30 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A582A196BE
+	for <lists+driverdev-devel@lfdr.de>; Fri, 10 May 2019 04:39:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2732F879D5;
-	Fri, 10 May 2019 00:17:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B3FEC884FC;
+	Fri, 10 May 2019 02:39:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id etBNYxoH7HQn; Fri, 10 May 2019 00:17:27 +0000 (UTC)
+	with ESMTP id 3UG2s-RfyNdq; Fri, 10 May 2019 02:39:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 407F48799C;
-	Fri, 10 May 2019 00:17:26 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D6C4288239;
+	Fri, 10 May 2019 02:39:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6E7C31BF2E2
- for <devel@linuxdriverproject.org>; Fri, 10 May 2019 00:17:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 54AF11BF968
+ for <devel@linuxdriverproject.org>; Fri, 10 May 2019 02:39:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6A6208844C
- for <devel@linuxdriverproject.org>; Fri, 10 May 2019 00:17:24 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4E42888252
+ for <devel@linuxdriverproject.org>; Fri, 10 May 2019 02:39:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MWCKeeobbiUu for <devel@linuxdriverproject.org>;
- Fri, 10 May 2019 00:17:23 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from ushosting.nmnhosting.com (unknown [66.55.73.32])
- by hemlock.osuosl.org (Postfix) with ESMTP id B342B8843D
- for <devel@driverdev.osuosl.org>; Fri, 10 May 2019 00:17:23 +0000 (UTC)
-Received: from mail2.nmnhosting.com (unknown [202.169.106.97])
- by ushosting.nmnhosting.com (Postfix) with ESMTPS id B6DC82DC0070;
- Thu,  9 May 2019 20:17:22 -0400 (EDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=d-silva.org;
- s=201810a; t=1557447443;
- bh=rJY0+D6TdRtTv0MtwykFJbYOSu46lpL7vkuRS2Zg75k=;
- h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
- b=FgHPIPlYLmuLNtrMoQ1JdXOJBzIramXRU528FDdwgmUbYDUSurbrKOmk66MlGYzGl
- 0ruDR9MsmWn6Wa1JGtiiUa7MDmH9NnRiXxafLrfVNihMUrJYoUiQlr9ZF1I4HIM0PV
- bZ9W5c9BAYVyzA9PfwGf5o+hGD2hYyBjKLixvrQ1vno4Whs2Nw5LmAFMtjJBE96JB5
- 3A/TpZPKlUH/LZ9QviX5sPNxejvENaMBIYUal2Z2Hup4BijYTYYiF1F+eWLEYbhMu2
- YBrAElUv44shUa1aHwy6Pfl3sYtAppFsneNmta4kToubNSSN/EMWCAgt+GOmMNuiZU
- dScx2/r4DfVPHVsLyA/C0IlAGJW5xx1NFqr3GJcu3u2ljmH/j2VABFWX8mKiViOjya
- UMzCeSKOTZj7GhaZKQ4wNLMdnnGeX0xRzwZxBPPwQPpa98wFjqGa4P4+HDIkphprBS
- cLR2rNyVdb5sI8TuETSE/d/sK5ExHhfuWol5Jk5PXVNE/IO16n6e0dCf3bBoCa8bTw
- zs4jlO1owv47NzN5dYrbV7R3mEfn3Wk/R8zsonqePsZtnUOe/9EZUeGRp5ITrVsRIK
- bdLoMtcOXzpm23UAwIN2Fr4caFvxOuuMjHxqg9nDMraA52HHWsxcudXZEv+JQvxYxU
- WRl4Hh/Ieej3f+hWeieXK7mA=
-Received: from adsilva.ozlabs.ibm.com (static-82-10.transact.net.au
- [122.99.82.10] (may be forged)) (authenticated bits=0)
- by mail2.nmnhosting.com (8.15.2/8.15.2) with ESMTPSA id x4A0GhJ3030327
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NO);
- Fri, 10 May 2019 10:17:01 +1000 (AEST)
- (envelope-from alastair@d-silva.org)
-Message-ID: <80e51facb280e96018a4220adf8efa6fac823a94.camel@d-silva.org>
-Subject: Re: [PATCH v2 3/7] lib/hexdump.c: Optionally suppress lines of
- repeated bytes
-From: "Alastair D'Silva" <alastair@d-silva.org>
-To: Randy Dunlap <rdunlap@infradead.org>
-Date: Fri, 10 May 2019 10:16:42 +1000
-In-Reply-To: <dc093079-43a0-0a45-f5dd-88b20702fd93@infradead.org>
-References: <20190508070148.23130-1-alastair@au1.ibm.com>
- <20190508070148.23130-4-alastair@au1.ibm.com>
- <dc093079-43a0-0a45-f5dd-88b20702fd93@infradead.org>
-User-Agent: Evolution 3.32.1 (3.32.1-1.fc30) 
+ with ESMTP id wkDVC764uZW5 for <devel@linuxdriverproject.org>;
+ Fri, 10 May 2019 02:39:06 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id BC70A88239
+ for <devel@driverdev.osuosl.org>; Fri, 10 May 2019 02:39:06 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id z16so2205053pgv.11
+ for <devel@driverdev.osuosl.org>; Thu, 09 May 2019 19:39:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=KlxDSnGXbNm8XMD67N/PB5Gqb9omE7jD432RyvZTRH4=;
+ b=KEl11AVN2ASiGMBKu3GkFSZiIJTZ9Rsjtj0RB4lMikrNKk2swkczxZ7f+i3+B/9lUh
+ lcK0THIBUlX47t2ho/ID8CyRYxqhSK/j+ehM6YOPV1b1ZZ95Z8CJMC1Vki1tICIu+nSt
+ 7O4Lc9cHYCanEluHk7Y3C3YG0Crp6peEY58ozVaqaxXLaCChFW2Qu9yPCZwZJrjBOSTc
+ QQIquAIa4ND6ApfcHVAR1/XiL+ezdgAaGZsOdrG7xGHmAYRkQZQtUOalsE+n5fkLRhp3
+ 1Vq1YplkcHxeBTWJQcFG1Lfvm34gpQ8JH+lqEqryUxI8rDLhbhDvdrsnKKXiGMyNVjGI
+ hSaA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=KlxDSnGXbNm8XMD67N/PB5Gqb9omE7jD432RyvZTRH4=;
+ b=WA98W5SqY6x61ekYRjYY3UyE6yHktzkqsTqy+K85kq/DVWlVKshWaIpcUejcllgHcR
+ kMkYBgGqtB9h3o+VeH+QjhMcU0iMfd+BgtO8WHnG6PzwtCe1e7BpBeAY+u7rhJ6e069l
+ QM/MFbz8jsOEYuSOrn8rm+ENpDZX8ruZxACdAsXgcbmtU+etMb43iIxte4hADG034hii
+ FDtqns56JDz+jTogortOqfV6xvISeqIkosLvIFAWNqGjU0aNdFAwg3Jrk3eXNAmSuKLl
+ ahUYHgcBFy4G4/0IUs2cv2SRDu0JRVMlrW+INZuwoSmWTCWptJCPn+AFf+DDzu6Itg2O
+ Q7UA==
+X-Gm-Message-State: APjAAAVwiT4C9pifnS0cSaaQqczVaY+2mBhNK3Ef6PyYuDq2KLPcmzcA
+ pzcJVOH29FwExUtIFZByBTQ=
+X-Google-Smtp-Source: APXvYqxME2jV6vhscQVnlbFqj2TvjyVBUlJwnAwJdiMMZPY6LJbG7DUrXD15+4nDQFO7qZH4PGPlxw==
+X-Received: by 2002:a63:c509:: with SMTP id f9mr10477371pgd.143.1557455946352; 
+ Thu, 09 May 2019 19:39:06 -0700 (PDT)
+Received: from hari-Inspiron-1545 ([183.83.92.73])
+ by smtp.gmail.com with ESMTPSA id c14sm4041719pgl.43.2019.05.09.19.39.03
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 09 May 2019 19:39:05 -0700 (PDT)
+Date: Fri, 10 May 2019 08:09:00 +0530
+From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Tim Collier <osdevtc@gmail.com>, Chris Opperman <eklikeroomys@gmail.com>,
+ Hariprasad Kelam <hariprasad.kelam@gmail.com>,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] staging: wlan-ng: collect return status without variable
+Message-ID: <20190510023900.GA4390@hari-Inspiron-1545>
 MIME-Version: 1.0
-X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.6.2
- (mail2.nmnhosting.com [10.0.1.20]); Fri, 10 May 2019 10:17:17 +1000 (AEST)
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,106 +86,53 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-fbdev@vger.kernel.org, Stanislaw Gruszka <sgruszka@redhat.com>,
- Tom Lendacky <thomas.lendacky@amd.com>, David Airlie <airlied@linux.ie>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, devel@driverdev.osuosl.org,
- linux-scsi@vger.kernel.org, Jassi Brar <jassisinghbrar@gmail.com>,
- ath10k@lists.infradead.org, "James E.J. Bottomley" <jejb@linux.ibm.com>,
- Dan Carpenter <dan.carpenter@oracle.com>, Jose Abreu <Jose.Abreu@synopsys.com>,
- Petr Mladek <pmladek@suse.com>, intel-gfx@lists.freedesktop.org,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Steven Rostedt <rostedt@goodmis.org>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Benson Leung <bleung@chromium.org>, Kalle Valo <kvalo@codeaurora.org>,
- Karsten Keil <isdn@linux-pingi.de>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- Sergey Senozhatsky <sergey.senozhatsky@gmail.com>,
- David Laight <David.Laight@ACULAB.COM>, Daniel Vetter <daniel@ffwll.ch>,
- netdev@vger.kernel.org, linux-fsdevel@vger.kernel.org,
- Andrew Morton <akpm@linux-foundation.org>,
- "David S. Miller" <davem@davemloft.net>,
- Alexander Viro <viro@zeniv.linux.org.uk>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, 2019-05-08 at 17:58 -0700, Randy Dunlap wrote:
-> On 5/8/19 12:01 AM, Alastair D'Silva wrote:
-> > From: Alastair D'Silva <alastair@d-silva.org>
-> > 
-> > Some buffers may only be partially filled with useful data, while
-> > the rest
-> > is padded (typically with 0x00 or 0xff).
-> > 
-> > This patch introduces a flag to allow the supression of lines of
-> > repeated
-> > bytes, which are replaced with '** Skipped %u bytes of value 0x%x
-> > **'
-> > 
-> > An inline wrapper function is provided for backwards compatibility
-> > with
-> > existing code, which maintains the original behaviour.
-> > 
-> > Signed-off-by: Alastair D'Silva <alastair@d-silva.org>
-> > ---
-> >  include/linux/printk.h | 25 +++++++++---
-> >  lib/hexdump.c          | 91 ++++++++++++++++++++++++++++++++++++
-> > ------
-> >  2 files changed, 99 insertions(+), 17 deletions(-)
-> > 
-> 
-> Hi,
-> Did you do "make htmldocs" or something similar on this?
-> 
-> > diff --git a/lib/hexdump.c b/lib/hexdump.c
-> > index 3943507bc0e9..d61a1e4f19fa 100644
-> > --- a/lib/hexdump.c
-> > +++ b/lib/hexdump.c
-> > @@ -212,8 +212,44 @@ int hex_dump_to_buffer(const void *buf, size_t
-> > len, int rowsize, int groupsize,
-> >  EXPORT_SYMBOL(hex_dump_to_buffer);
-> >  
-> >  #ifdef CONFIG_PRINTK
-> > +
-> > +/**
-> > + * Check if a buffer contains only a single byte value
-> > + * @buf: pointer to the buffer
-> > + * @len: the size of the buffer in bytes
-> > + * @val: outputs the value if if the bytes are identical
-> 
-> Does this work without a function name?
-> Documentation/doc-guide/kernel-doc.rst says the general format is:
-> 
->   /**
->    * function_name() - Brief description of function.
->    * @arg1: Describe the first argument.
->    * @arg2: Describe the second argument.
->    *        One can provide multiple line descriptions
->    *        for arguments.
->    *
-> 
-> > + */
-> >  /**
-> > - * print_hex_dump - print a text hex dump to syslog for a binary
-> > blob of data
-> > + * print_hex_dump_ext: dump a binary blob of data to syslog in
-> > hexadecimal
-> 
-> Also not in the general documented format.
-> 
+err and result variables are declared to collect return status
+of prism2_domibset_uint32.
 
-Thanks Randy, I'll address these.
+Check return status in if loop and return directly.
 
+Rearragne code such that we can avoid declaring these variables.
+
+Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+---
+ drivers/staging/wlan-ng/cfg80211.c | 17 ++++++-----------
+ 1 file changed, 6 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/staging/wlan-ng/cfg80211.c b/drivers/staging/wlan-ng/cfg80211.c
+index 8a862f7..5dad5ac 100644
+--- a/drivers/staging/wlan-ng/cfg80211.c
++++ b/drivers/staging/wlan-ng/cfg80211.c
+@@ -231,17 +231,12 @@ static int prism2_set_default_key(struct wiphy *wiphy, struct net_device *dev,
+ {
+ 	struct wlandevice *wlandev = dev->ml_priv;
+ 
+-	int err = 0;
+-	int result = 0;
+-
+-	result = prism2_domibset_uint32(wlandev,
+-		DIDMIB_DOT11SMT_PRIVACYTABLE_WEPDEFAULTKEYID,
+-		key_index);
+-
+-	if (result)
+-		err = -EFAULT;
+-
+-	return err;
++	if (prism2_domibset_uint32(wlandev,
++				   DIDMIB_DOT11SMT_PRIVACYTABLE_WEPDEFAULTKEYID,
++				   key_index))
++		return -EFAULT;
++	else
++		return 0;
+ }
+ 
+ static int prism2_get_station(struct wiphy *wiphy, struct net_device *dev,
 -- 
-Alastair D'Silva           mob: 0423 762 819
-skype: alastair_dsilva    
-Twitter: @EvilDeece
-blog: http://alastair.d-silva.org
-
+2.7.4
 
 _______________________________________________
 devel mailing list
