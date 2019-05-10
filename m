@@ -2,78 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C5B2319042
-	for <lists+driverdev-devel@lfdr.de>; Thu,  9 May 2019 20:34:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3158E195FA
+	for <lists+driverdev-devel@lfdr.de>; Fri, 10 May 2019 02:17:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5FE2987974;
-	Thu,  9 May 2019 18:34:02 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2732F879D5;
+	Fri, 10 May 2019 00:17:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kInKOlAYAGTJ; Thu,  9 May 2019 18:34:01 +0000 (UTC)
+	with ESMTP id etBNYxoH7HQn; Fri, 10 May 2019 00:17:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 98AB08794E;
-	Thu,  9 May 2019 18:34:00 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 407F48799C;
+	Fri, 10 May 2019 00:17:26 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DD1A51BF588
- for <devel@linuxdriverproject.org>; Thu,  9 May 2019 18:33:58 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6E7C31BF2E2
+ for <devel@linuxdriverproject.org>; Fri, 10 May 2019 00:17:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D7DD4221DC
- for <devel@linuxdriverproject.org>; Thu,  9 May 2019 18:33:58 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 6A6208844C
+ for <devel@linuxdriverproject.org>; Fri, 10 May 2019 00:17:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6YzT9GHG8Ns8 for <devel@linuxdriverproject.org>;
- Thu,  9 May 2019 18:33:58 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
- [209.85.215.196])
- by silver.osuosl.org (Postfix) with ESMTPS id 3E4352013C
- for <devel@driverdev.osuosl.org>; Thu,  9 May 2019 18:33:58 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id h1so1645772pgs.2
- for <devel@driverdev.osuosl.org>; Thu, 09 May 2019 11:33:58 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=yqiI+x42OXIbUvTBPZc5iTEkpFbz64YiBLYaRAWuA0c=;
- b=R67LjnbABTLfJ2BI+IG+okTwalUppMZb1kqBLo/kOwr+rHDcJMYi6V76ZzUpCSLwNN
- C2h/PzQd0zYS37RCjlM4hKlIrh113bGr0nVA0u+Uy8qGKt7EbfYWSgzeXupyrKK1b31A
- /JeqOEfBPg8m+DYS/EebeKbPfBiplz4fbfvP7E2P0STrMEuc2B35ubwwR73FaF3xpqV1
- iJANbk9APg2/TOgW9RQm0DOiagKgFrcLV1h4ij7uCKzrKTVmeghM51f7nts2nJVSGq1U
- PAS4vnTHPdojzitY6btcw/yPlGHuTMGwOUeO2U2HTQ6FjardGD95bFsJhdzefsEdQyTH
- G5KQ==
-X-Gm-Message-State: APjAAAV3ytlryNFH++DyBVm5mvBKOpmvHuVmJNi1lHRAgsS4eUA1QLmN
- JD/vO9+wU6SG0/LHwuf0IJ8=
-X-Google-Smtp-Source: APXvYqyEc1uZevZKY+jNDHPdN0qC+8kcKlru+7ZgfAEEO+vBJPv7McdJDqNHLDhPTA7XqyJ/yigK1g==
-X-Received: by 2002:aa7:980e:: with SMTP id e14mr7485557pfl.142.1557426837664; 
- Thu, 09 May 2019 11:33:57 -0700 (PDT)
-Received: from sultan-box.localdomain
- ([2601:200:c001:5f40:7687:d078:2931:7298])
- by smtp.gmail.com with ESMTPSA id o2sm7914179pgq.1.2019.05.09.11.33.55
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 09 May 2019 11:33:56 -0700 (PDT)
-Date: Thu, 9 May 2019 11:33:53 -0700
-From: Sultan Alsawaf <sultan@kerneltoast.com>
-To: Oleg Nesterov <oleg@redhat.com>
-Subject: Re: [RFC] simple_lmk: Introduce Simple Low Memory Killer for Android
-Message-ID: <20190509183353.GA13018@sultan-box.localdomain>
-References: <20190318002949.mqknisgt7cmjmt7n@brauner.io>
- <20190318235052.GA65315@google.com>
- <20190319221415.baov7x6zoz7hvsno@brauner.io>
- <CAKOZuessqcjrZ4rfGLgrnOhrLnsVYiVJzOj4Aa=o3ZuZ013d0g@mail.gmail.com>
- <20190319231020.tdcttojlbmx57gke@brauner.io>
- <20190320015249.GC129907@google.com>
- <20190507021622.GA27300@sultan-box.localdomain>
- <20190507153154.GA5750@redhat.com>
- <20190507163520.GA1131@sultan-box.localdomain>
- <20190509155646.GB24526@redhat.com>
+ with ESMTP id MWCKeeobbiUu for <devel@linuxdriverproject.org>;
+ Fri, 10 May 2019 00:17:23 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from ushosting.nmnhosting.com (unknown [66.55.73.32])
+ by hemlock.osuosl.org (Postfix) with ESMTP id B342B8843D
+ for <devel@driverdev.osuosl.org>; Fri, 10 May 2019 00:17:23 +0000 (UTC)
+Received: from mail2.nmnhosting.com (unknown [202.169.106.97])
+ by ushosting.nmnhosting.com (Postfix) with ESMTPS id B6DC82DC0070;
+ Thu,  9 May 2019 20:17:22 -0400 (EDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=d-silva.org;
+ s=201810a; t=1557447443;
+ bh=rJY0+D6TdRtTv0MtwykFJbYOSu46lpL7vkuRS2Zg75k=;
+ h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+ b=FgHPIPlYLmuLNtrMoQ1JdXOJBzIramXRU528FDdwgmUbYDUSurbrKOmk66MlGYzGl
+ 0ruDR9MsmWn6Wa1JGtiiUa7MDmH9NnRiXxafLrfVNihMUrJYoUiQlr9ZF1I4HIM0PV
+ bZ9W5c9BAYVyzA9PfwGf5o+hGD2hYyBjKLixvrQ1vno4Whs2Nw5LmAFMtjJBE96JB5
+ 3A/TpZPKlUH/LZ9QviX5sPNxejvENaMBIYUal2Z2Hup4BijYTYYiF1F+eWLEYbhMu2
+ YBrAElUv44shUa1aHwy6Pfl3sYtAppFsneNmta4kToubNSSN/EMWCAgt+GOmMNuiZU
+ dScx2/r4DfVPHVsLyA/C0IlAGJW5xx1NFqr3GJcu3u2ljmH/j2VABFWX8mKiViOjya
+ UMzCeSKOTZj7GhaZKQ4wNLMdnnGeX0xRzwZxBPPwQPpa98wFjqGa4P4+HDIkphprBS
+ cLR2rNyVdb5sI8TuETSE/d/sK5ExHhfuWol5Jk5PXVNE/IO16n6e0dCf3bBoCa8bTw
+ zs4jlO1owv47NzN5dYrbV7R3mEfn3Wk/R8zsonqePsZtnUOe/9EZUeGRp5ITrVsRIK
+ bdLoMtcOXzpm23UAwIN2Fr4caFvxOuuMjHxqg9nDMraA52HHWsxcudXZEv+JQvxYxU
+ WRl4Hh/Ieej3f+hWeieXK7mA=
+Received: from adsilva.ozlabs.ibm.com (static-82-10.transact.net.au
+ [122.99.82.10] (may be forged)) (authenticated bits=0)
+ by mail2.nmnhosting.com (8.15.2/8.15.2) with ESMTPSA id x4A0GhJ3030327
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NO);
+ Fri, 10 May 2019 10:17:01 +1000 (AEST)
+ (envelope-from alastair@d-silva.org)
+Message-ID: <80e51facb280e96018a4220adf8efa6fac823a94.camel@d-silva.org>
+Subject: Re: [PATCH v2 3/7] lib/hexdump.c: Optionally suppress lines of
+ repeated bytes
+From: "Alastair D'Silva" <alastair@d-silva.org>
+To: Randy Dunlap <rdunlap@infradead.org>
+Date: Fri, 10 May 2019 10:16:42 +1000
+In-Reply-To: <dc093079-43a0-0a45-f5dd-88b20702fd93@infradead.org>
+References: <20190508070148.23130-1-alastair@au1.ibm.com>
+ <20190508070148.23130-4-alastair@au1.ibm.com>
+ <dc093079-43a0-0a45-f5dd-88b20702fd93@infradead.org>
+User-Agent: Evolution 3.32.1 (3.32.1-1.fc30) 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190509155646.GB24526@redhat.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.6.2
+ (mail2.nmnhosting.com [10.0.1.20]); Fri, 10 May 2019 10:17:17 +1000 (AEST)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,95 +81,107 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- Daniel Colascione <dancol@google.com>, kernel-team <kernel-team@android.com>,
- Todd Kjos <tkjos@android.com>, Kees Cook <keescook@chromium.org>,
- Peter Zijlstra <peterz@infradead.org>,
+Cc: linux-fbdev@vger.kernel.org, Stanislaw Gruszka <sgruszka@redhat.com>,
+ Tom Lendacky <thomas.lendacky@amd.com>, David Airlie <airlied@linux.ie>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, devel@driverdev.osuosl.org,
+ linux-scsi@vger.kernel.org, Jassi Brar <jassisinghbrar@gmail.com>,
+ ath10k@lists.infradead.org, "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ Dan Carpenter <dan.carpenter@oracle.com>, Jose Abreu <Jose.Abreu@synopsys.com>,
+ Petr Mladek <pmladek@suse.com>, intel-gfx@lists.freedesktop.org,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Steven Rostedt <rostedt@goodmis.org>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Benson Leung <bleung@chromium.org>, Kalle Valo <kvalo@codeaurora.org>,
+ Karsten Keil <isdn@linux-pingi.de>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- LKML <linux-kernel@vger.kernel.org>, Tim Murray <timmurray@google.com>,
- Michal Hocko <mhocko@kernel.org>, linux-mm <linux-mm@kvack.org>,
- Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
- Ingo Molnar <mingo@redhat.com>, Martijn Coenen <maco@android.com>,
- Steven Rostedt <rostedt@goodmis.org>, Joel Fernandes <joel@joelfernandes.org>,
- Andy Lutomirski <luto@amacapital.net>, Suren Baghdasaryan <surenb@google.com>,
- Christian Brauner <christian@brauner.io>
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Sergey Senozhatsky <sergey.senozhatsky@gmail.com>,
+ David Laight <David.Laight@ACULAB.COM>, Daniel Vetter <daniel@ffwll.ch>,
+ netdev@vger.kernel.org, linux-fsdevel@vger.kernel.org,
+ Andrew Morton <akpm@linux-foundation.org>,
+ "David S. Miller" <davem@davemloft.net>,
+ Alexander Viro <viro@zeniv.linux.org.uk>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, May 09, 2019 at 05:56:46PM +0200, Oleg Nesterov wrote:
-> Impossible ;) I bet lockdep should report the deadlock as soon as find_victims()
-> calls find_lock_task_mm() when you already have a locked victim.
-
-I hope you're not a betting man ;)
-
-With the following configured:
-CONFIG_DEBUG_RT_MUTEXES=y
-CONFIG_DEBUG_SPINLOCK=y
-# CONFIG_DEBUG_SPINLOCK_BITE_ON_BUG is not set
-CONFIG_DEBUG_SPINLOCK_PANIC_ON_BUG=y
-CONFIG_DEBUG_MUTEXES=y
-CONFIG_DEBUG_WW_MUTEX_SLOWPATH=y
-CONFIG_DEBUG_LOCK_ALLOC=y
-CONFIG_PROVE_LOCKING=y
-CONFIG_LOCKDEP=y
-CONFIG_LOCK_STAT=y
-CONFIG_DEBUG_LOCKDEP=y
-CONFIG_DEBUG_ATOMIC_SLEEP=y
-# CONFIG_DEBUG_LOCKING_API_SELFTESTS is not set
-# CONFIG_LOCK_TORTURE_TEST is not set
-
-And a printk added in vtsk_is_duplicate() to print when a duplicate is detected,
-and my phone's memory cut in half to make simple_lmk do something, this is what
-I observed:
-taimen:/ # dmesg | grep lockdep
-[    0.000000] \x09RCU lockdep checking is enabled.
-taimen:/ # dmesg | grep simple_lmk
-[   23.211091] simple_lmk: Killing android.carrier with adj 906 to free 37420 kiB
-[   23.211160] simple_lmk: Killing oadcastreceiver with adj 906 to free 36784 kiB
-[   23.248457] simple_lmk: Killing .apps.translate with adj 904 to free 45884 kiB
-[   23.248720] simple_lmk: Killing ndroid.settings with adj 904 to free 42868 kiB
-[   23.313417] simple_lmk: DUPLICATE VTSK!
-[   23.313440] simple_lmk: Killing ndroid.keychain with adj 906 to free 33680 kiB
-[   23.313513] simple_lmk: Killing com.whatsapp with adj 904 to free 51436 kiB
-[   34.646695] simple_lmk: DUPLICATE VTSK!
-[   34.646717] simple_lmk: Killing ndroid.apps.gcs with adj 906 to free 37956 kiB
-[   34.646792] simple_lmk: Killing droid.apps.maps with adj 904 to free 63600 kiB
-taimen:/ # dmesg | grep lockdep
-[    0.000000] \x09RCU lockdep checking is enabled.
-taimen:/ # 
-
-> As for https://github.com/kerneltoast/android_kernel_google_wahoo/commit/afc8c9bf2dbde95941253c168d1adb64cfa2e3ad
-> Well,
+On Wed, 2019-05-08 at 17:58 -0700, Randy Dunlap wrote:
+> On 5/8/19 12:01 AM, Alastair D'Silva wrote:
+> > From: Alastair D'Silva <alastair@d-silva.org>
+> > 
+> > Some buffers may only be partially filled with useful data, while
+> > the rest
+> > is padded (typically with 0x00 or 0xff).
+> > 
+> > This patch introduces a flag to allow the supression of lines of
+> > repeated
+> > bytes, which are replaced with '** Skipped %u bytes of value 0x%x
+> > **'
+> > 
+> > An inline wrapper function is provided for backwards compatibility
+> > with
+> > existing code, which maintains the original behaviour.
+> > 
+> > Signed-off-by: Alastair D'Silva <alastair@d-silva.org>
+> > ---
+> >  include/linux/printk.h | 25 +++++++++---
+> >  lib/hexdump.c          | 91 ++++++++++++++++++++++++++++++++++++
+> > ------
+> >  2 files changed, 99 insertions(+), 17 deletions(-)
+> > 
 > 
-> 	mmdrop(mm);
-> 	simple_lmk_mm_freed(mm);
+> Hi,
+> Did you do "make htmldocs" or something similar on this?
 > 
-> looks racy because mmdrop(mm) can free this mm_struct. Yes, simple_lmk_mm_freed()
-> does not dereference this pointer, but the same memory can be re-allocated as
-> another ->mm for the new task which can be found by find_victims(), and _in theory_
-> this all can happen in between, so the "victims[i].mm == mm" can be false positive.
+> > diff --git a/lib/hexdump.c b/lib/hexdump.c
+> > index 3943507bc0e9..d61a1e4f19fa 100644
+> > --- a/lib/hexdump.c
+> > +++ b/lib/hexdump.c
+> > @@ -212,8 +212,44 @@ int hex_dump_to_buffer(const void *buf, size_t
+> > len, int rowsize, int groupsize,
+> >  EXPORT_SYMBOL(hex_dump_to_buffer);
+> >  
+> >  #ifdef CONFIG_PRINTK
+> > +
+> > +/**
+> > + * Check if a buffer contains only a single byte value
+> > + * @buf: pointer to the buffer
+> > + * @len: the size of the buffer in bytes
+> > + * @val: outputs the value if if the bytes are identical
 > 
-> And this also means that simple_lmk_mm_freed() should clear victims[i].mm when
-> it detects "victims[i].mm == mm", otherwise we have the same theoretical race,
-> victims_to_kill is only cleared when the last victim goes away.
+> Does this work without a function name?
+> Documentation/doc-guide/kernel-doc.rst says the general format is:
+> 
+>   /**
+>    * function_name() - Brief description of function.
+>    * @arg1: Describe the first argument.
+>    * @arg2: Describe the second argument.
+>    *        One can provide multiple line descriptions
+>    *        for arguments.
+>    *
+> 
+> > + */
+> >  /**
+> > - * print_hex_dump - print a text hex dump to syslog for a binary
+> > blob of data
+> > + * print_hex_dump_ext: dump a binary blob of data to syslog in
+> > hexadecimal
+> 
+> Also not in the general documented format.
+> 
 
-Fair point. Putting simple_lmk_mm_freed(mm) right before mmdrop(mm), and
-sprinkling in a cmpxchg in simple_lmk_mm_freed() should fix that up.
+Thanks Randy, I'll address these.
 
-> Another nit... you can drop tasklist_lock right after the 1st "find_victims" loop.
+-- 
+Alastair D'Silva           mob: 0423 762 819
+skype: alastair_dsilva    
+Twitter: @EvilDeece
+blog: http://alastair.d-silva.org
 
-True!
 
-> And it seems that you do not really need to walk the "victims" array twice after that,
-> you can do everything in a single loop, but this is cosmetic.
-
-Won't this result in potentially holding the task lock way longer than necessary
-for multiple tasks that aren't going to be killed?
-
-Thanks,
-Sultan
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
