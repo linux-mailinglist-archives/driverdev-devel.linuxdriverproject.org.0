@@ -2,54 +2,52 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B417A1A804
-	for <lists+driverdev-devel@lfdr.de>; Sat, 11 May 2019 15:48:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 30B171A875
+	for <lists+driverdev-devel@lfdr.de>; Sat, 11 May 2019 18:34:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E07B287E62;
-	Sat, 11 May 2019 13:48:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DC3F087B62;
+	Sat, 11 May 2019 16:34:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vVW00ToLQsLv; Sat, 11 May 2019 13:48:22 +0000 (UTC)
+	with ESMTP id cyUfsTNahkzJ; Sat, 11 May 2019 16:34:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 513B587B97;
-	Sat, 11 May 2019 13:48:22 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 53C6087ADB;
+	Sat, 11 May 2019 16:34:51 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B64851BF841
- for <devel@linuxdriverproject.org>; Sat, 11 May 2019 13:48:20 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2B1941BF593
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 11 May 2019 16:34:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B305B86645
- for <devel@linuxdriverproject.org>; Sat, 11 May 2019 13:48:20 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 27B1E87ADB
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 11 May 2019 16:34:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 270cKrvke5Vb for <devel@linuxdriverproject.org>;
- Sat, 11 May 2019 13:48:19 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B649286457
- for <devel@driverdev.osuosl.org>; Sat, 11 May 2019 13:48:19 +0000 (UTC)
-Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
- by youngberry.canonical.com with esmtpsa (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.76) (envelope-from <colin.king@canonical.com>)
- id 1hPSMH-0004ze-GL; Sat, 11 May 2019 13:48:13 +0000
-From: Colin King <colin.king@canonical.com>
-To: Eric Anholt <eric@anholt.net>, Stefan Wahren <stefan.wahren@i2se.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>,
- Scott Branden <sbranden@broadcom.com>,
- bcm-kernel-feedback-list@broadcom.com,
- linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- devel@driverdev.osuosl.org
-Subject: [PATCH] staging: vc04_services: bcm2835-camera: remove redundant
- assignment to variable ret
-Date: Sat, 11 May 2019 14:48:13 +0100
-Message-Id: <20190511134813.5645-1-colin.king@canonical.com>
-X-Mailer: git-send-email 2.20.1
+ with ESMTP id YBfwmB2+D3aK
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 11 May 2019 16:34:48 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mx.emea.email.fireeyecloud.com
+ (mta-690eab826fe87dcdccdc47369ab1a6e9.eu.email-out.fireeyecloud.com
+ [52.215.218.177])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 76A0387AAF
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 11 May 2019 16:34:48 +0000 (UTC)
+Received: from [102.165.48.205] ([102.165.48.205:64704] helo=[102.165.48.205])
+ by prd07-euw1-03 (envelope-from <oleg@org.com>)
+ (ecelerity 4.2.38.62370 r(:)) with ESMTP
+ id 8D/C2-05393-4A9F6DC5; Sat, 11 May 2019 16:34:46 +0000
 MIME-Version: 1.0
+Content-Description: Mail message body
+Subject: Joint Venture !!!!!!
+To: Recipients <oleg@org.com>
+From: "Mr. Vladimir Oleg"<oleg@org.com>
+Date: Sat, 11 May 2019 09:34:42 -0700
+Message-Id: <20190511163449.27B1E87ADB@hemlock.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,40 +60,20 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Reply-To: vladimiroleg1759@mail.ru
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Colin Ian King <colin.king@canonical.com>
+Dear sir,
 
-The variable ret is being initialized however this is never read and later
-it is being reassigned to a new value. The initialization is redundant and
-hence can be removed.
+I  represent a high net-worth investor who is seeking the attention of investors, project owners and general business facilitators away from  his native country. 
 
-Addresses-Coverity: ("Unused Value")
-Signed-off-by: Colin Ian King <colin.king@canonical.com>
----
- drivers/staging/vc04_services/bcm2835-camera/controls.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Can you help achieve this? kindly respond back for further details.
 
-diff --git a/drivers/staging/vc04_services/bcm2835-camera/controls.c b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-index 9841c30450ce..74410fedffad 100644
---- a/drivers/staging/vc04_services/bcm2835-camera/controls.c
-+++ b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-@@ -579,7 +579,7 @@ static int ctrl_set_colfx(struct bm2835_mmal_dev *dev,
- 			  struct v4l2_ctrl *ctrl,
- 			  const struct bm2835_mmal_v4l2_ctrl *mmal_ctrl)
- {
--	int ret = -EINVAL;
-+	int ret;
- 	struct vchiq_mmal_port *control;
- 
- 	control = &dev->component[MMAL_COMPONENT_CAMERA]->control;
--- 
-2.20.1
-
+Regards
+Mr. Vladimir Oleg
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
