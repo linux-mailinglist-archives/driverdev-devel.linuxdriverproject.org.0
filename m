@@ -1,82 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A154D1ABFF
-	for <lists+driverdev-devel@lfdr.de>; Sun, 12 May 2019 14:19:39 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D9DED1AC08
+	for <lists+driverdev-devel@lfdr.de>; Sun, 12 May 2019 14:25:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CC04685775;
-	Sun, 12 May 2019 12:19:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id ABCCD8657C;
+	Sun, 12 May 2019 12:24:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 48n2PbMFHD3z; Sun, 12 May 2019 12:19:37 +0000 (UTC)
+	with ESMTP id jGoaVBNpzHi4; Sun, 12 May 2019 12:24:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 97528853E5;
-	Sun, 12 May 2019 12:19:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0200C86132;
+	Sun, 12 May 2019 12:24:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6A0201BF419
- for <devel@linuxdriverproject.org>; Sun, 12 May 2019 12:19:31 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 071751BF41F
+ for <devel@linuxdriverproject.org>; Sun, 12 May 2019 12:24:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6569121561
- for <devel@linuxdriverproject.org>; Sun, 12 May 2019 12:19:31 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 0168E22660
+ for <devel@linuxdriverproject.org>; Sun, 12 May 2019 12:24:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BNJWyF2WKXwM for <devel@linuxdriverproject.org>;
- Sun, 12 May 2019 12:19:30 +0000 (UTC)
+ with ESMTP id 6n6AiVcd0S1G for <devel@linuxdriverproject.org>;
+ Sun, 12 May 2019 12:24:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
- [209.85.214.194])
- by silver.osuosl.org (Postfix) with ESMTPS id D00132150A
- for <devel@driverdev.osuosl.org>; Sun, 12 May 2019 12:19:30 +0000 (UTC)
-Received: by mail-pl1-f194.google.com with SMTP id f12so2993805plt.8
- for <devel@driverdev.osuosl.org>; Sun, 12 May 2019 05:19:30 -0700 (PDT)
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id 753EE2210F
+ for <devel@driverdev.osuosl.org>; Sun, 12 May 2019 12:24:55 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id a3so5303950pgb.3
+ for <devel@driverdev.osuosl.org>; Sun, 12 May 2019 05:24:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=XnvQJc31NkYJDKHGe2ZPAaF9BNwwW3ZlTSoXFk3nhO4=;
- b=Qni6gC2qcHVxnGYXbzGXFA9Yp5N6QGoVnRMAzbqDpG5X4dbAjsX3knozjJcOCcsecR
- GOzEjXGzJkgzewVsUxOpYfTjVOHxBedYDgI2eB//Qw4tqPeHpxAUq1/yEzzt/plXutlS
- 1OMRMgzbAZErJJbiqmvqlTytA3mDI5Tz3t6eZw3Tq1YK65C6kZRu75Wa+dLFhGsxf254
- dwFRqJRyR9jVVMoJpS49BSe5kt6wfvu2Yx1w3c9JTX8DH9mUCj9I5Oqfiqh+fjEfrNmi
- F0U/wosSM5aAlfjQSKX6ATNwB8/GzzNFXMpxmvujMUU0J0xDVoSe75ZRGYSD3fjOaQWN
- 105w==
+ :user-agent; bh=paH013GOd2gVWUwOGZuSguTs80alOhAT643zCT0EDfM=;
+ b=uoIhMH+1+aCNFxqsoziGwT/juy8qi/hd+C1mYdyApJpsnp+/PXVXVOjJBCK9mh9EEl
+ 4H23uB+vzxw0zllM5Je0rZOcAA4Uuo5OrI1Jg2KL7kEJr2GzwOEeY7WC0zZScTOdMbtL
+ OKOmjt4xGJLOQxPt37x/suDUmOQXRGws65PfopnmH9FT3ygPQEMXTJUel7iXcmPET3yo
+ INxe1Q6HEEZO7qIyHbkzi7SynVgbg8OEk5uH7zKnMV8ND5rGqNm1Rl8rTPdpiwoJSIkr
+ ZE61O2lMpFDHYgCaHnJq3fIQviy2NI3DRIURt1iJa9wfj8rWU4KF7ORlaAObFtSa5bKF
+ KqKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=XnvQJc31NkYJDKHGe2ZPAaF9BNwwW3ZlTSoXFk3nhO4=;
- b=Ih55qoRT4Dz7Lr9WbrlpOH3zxrXNulBdHnq+hUH6+VouX4v6gHjO1QX+ANuDz7bzWL
- 6nwoNf9YupNsMX8EhD6lORBbcPEDpQ4r4xgac1ScEAvsFhiF4/GHm5DnaQyyvy97p09i
- aCy/pOoBH6RsFejgtiZgTOkq7A+k3CT/JevnSH/WXB4yxBGrDhgUyjZNCR/ZbEWfRUWX
- QYKiHQ9Ugtm5gkb9J9Y6XXn3QgTiTawIhUSHucaKWWWBYjzFfHVgD/zQ0hX1tKGjiguG
- M3lZ/fcfMFYIcd+QRcOw6dUvo2xXww20nvKx8c47/p0/ft1Vws6j9Wml7HcST/cYTST2
- X+XQ==
-X-Gm-Message-State: APjAAAWUd104jYMh5PCnt8Wgyo/4siJqlO2cYTyxeWf7cvJXozVxLfU/
- zBhXsJ99jK96kZrYT9DMMKw=
-X-Google-Smtp-Source: APXvYqyC83gg6Ai8bfXkwZua15B6U4OweOWKPKmYAfnGwlo5mj9QUpnoGiMZe3g8HkfI0XukjYdO9g==
-X-Received: by 2002:a17:902:2827:: with SMTP id
- e36mr24196393plb.45.1557663570546; 
- Sun, 12 May 2019 05:19:30 -0700 (PDT)
+ bh=paH013GOd2gVWUwOGZuSguTs80alOhAT643zCT0EDfM=;
+ b=lXQLyKWPIP/NVjiDXTYPWVVhZaRIAYFWUWW8ldNBDY5bm2k3ifJnV7ImguhKGVcxqY
+ 1ZWsdGBidon6NPMDIVF46I5oRx+/X1G3qjAiZ1WR5RGOnhn8eC8GUFT9SCgMKtp7zH43
+ PwPhrmL0T2UsM+bQrmyRE2BXDLkaeGDw4KWdbXQdYe7fVmAVwCEZmN53Qer35lok8r5o
+ hsTDyDTpgtLDZkgfhMLYBInI15mwkFRAcAVSi0Rpndfn21JKuVHnTvgLNIfj1f87b1CV
+ kL3J+dk0gB0WqwudMI5Vjoh5VH73wcR/7mliiMAZdUgqjhh5oyVQYelH5DBW4e9xBB3b
+ 6Iwg==
+X-Gm-Message-State: APjAAAUhopVmP1vmy/RbrCp3L1lNuOp6LTn8G/dtfeqz3z31jx/F/ij1
+ 56ViFYka6s/7Uw10doQ7NwQ=
+X-Google-Smtp-Source: APXvYqxHUSVy5V9IPMXrfnx103n/CN+ISwfPJvPS1CuJ078l6q2X5AhsWDRQJn7Ac9+K69mL4m84ww==
+X-Received: by 2002:a62:ae05:: with SMTP id q5mr26758604pff.13.1557663895110; 
+ Sun, 12 May 2019 05:24:55 -0700 (PDT)
 Received: from hari-Inspiron-1545 ([183.83.92.73])
- by smtp.gmail.com with ESMTPSA id k6sm9195910pfi.86.2019.05.12.05.19.26
+ by smtp.gmail.com with ESMTPSA id q20sm19280391pfi.166.2019.05.12.05.24.51
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sun, 12 May 2019 05:19:29 -0700 (PDT)
-Date: Sun, 12 May 2019 17:49:23 +0530
+ Sun, 12 May 2019 05:24:54 -0700 (PDT)
+Date: Sun, 12 May 2019 17:54:49 +0530
 From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Madhumitha Prabakaran <madhumithabiw@gmail.com>,
- Hans de Goede <hdegoede@redhat.com>, Arnd Bergmann <arnd@arndb.de>,
- Emanuel Bennici <benniciemanuel78@gmail.com>,
- Dan Carpenter <dan.carpenter@oracle.com>,
+ Nishka Dasgupta <nishka.dasgupta@yahoo.com>,
  Hariprasad Kelam <hariprasad.kelam@gmail.com>,
+ Colin Ian King <colin.king@canonical.com>, Arnd Bergmann <arnd@arndb.de>,
  Hardik Singh Rathore <hardiksingh.k@gmail.com>,
+ Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>,
+ Emanuel Bennici <benniciemanuel78@gmail.com>,
  devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
  viswanath.barenkala@gmail.com
-Subject: [PATCH] staging: rtl8723bs: core  fix warning  "Comparison to bool"
-Message-ID: <20190512121923.GA28044@hari-Inspiron-1545>
+Subject: [PATCH] staging: rtl8723bs: core fix warning  Comparison to bool
+Message-ID: <20190512122449.GA28268@hari-Inspiron-1545>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.5.24 (2015-08-30)
@@ -98,27 +97,28 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 fix below issue reported by coccicheck
-drivers/staging/rtl8723bs/core/rtw_cmd.c:1741:7-17: WARNING: Comparison
+
+drivers/staging/rtl8723bs/core/rtw_mlme.c:1675:6-10: WARNING: Comparison
 to bool
 
 Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_cmd.c | 2 +-
+ drivers/staging/rtl8723bs/core/rtw_mlme.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-index ecaa769..fcd26e1 100644
---- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-@@ -1738,7 +1738,7 @@ static void rtw_chk_hi_queue_hdl(struct adapter *padapter)
- 			pstapriv->tim_bitmap &= ~BIT(0);
- 			pstapriv->sta_dz_bitmap &= ~BIT(0);
+diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
+index 5f78f1e..d26d8cf 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
++++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
+@@ -1672,7 +1672,7 @@ void rtw_stadel_event_callback(struct adapter *adapter, u8 *pbuf)
+ 			roam_target = pmlmepriv->roam_network;
+ 		}
  
--			if (update_tim == true)
-+			if (update_tim)
- 				update_beacon(padapter, _TIM_IE_, NULL, true);
- 		} else {/* re check again */
- 			rtw_chk_hi_queue_cmd(padapter);
+-		if (roam == true) {
++		if (roam) {
+ 			if (rtw_to_roam(adapter) > 0)
+ 				rtw_dec_to_roam(adapter); /* this stadel_event is caused by roaming, decrease to_roam */
+ 			else if (rtw_to_roam(adapter) == 0)
 -- 
 2.7.4
 
