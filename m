@@ -1,81 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F3411B405
-	for <lists+driverdev-devel@lfdr.de>; Mon, 13 May 2019 12:27:48 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D159D1B42B
+	for <lists+driverdev-devel@lfdr.de>; Mon, 13 May 2019 12:41:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id BFDF4207A2;
-	Mon, 13 May 2019 10:27:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 63FCA876C3;
+	Mon, 13 May 2019 10:41:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id w6CIIX3rY3gE; Mon, 13 May 2019 10:27:45 +0000 (UTC)
+	with ESMTP id C-IxkiOCDOEy; Mon, 13 May 2019 10:41:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 785CE22BCC;
-	Mon, 13 May 2019 10:27:39 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 87AE287635;
+	Mon, 13 May 2019 10:41:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 675351BF842
- for <devel@linuxdriverproject.org>; Mon, 13 May 2019 10:27:37 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DE44D1BF2EC
+ for <devel@linuxdriverproject.org>; Mon, 13 May 2019 10:41:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 646FD854B3
- for <devel@linuxdriverproject.org>; Mon, 13 May 2019 10:27:37 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id DAFD2875D8
+ for <devel@linuxdriverproject.org>; Mon, 13 May 2019 10:41:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8cUU7bDSkYFM for <devel@linuxdriverproject.org>;
- Mon, 13 May 2019 10:27:36 +0000 (UTC)
+ with ESMTP id JHWUvD2QGx3j for <devel@linuxdriverproject.org>;
+ Mon, 13 May 2019 10:41:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
- [209.85.214.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 16BBF865B0
- for <devel@driverdev.osuosl.org>; Mon, 13 May 2019 10:27:33 +0000 (UTC)
-Received: by mail-pl1-f194.google.com with SMTP id b3so6261449plr.7
- for <devel@driverdev.osuosl.org>; Mon, 13 May 2019 03:27:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=jCVFFIvk/dM3akUvv+q1GBXV3JQofCa1Kd1PS4pC1i4=;
- b=WsbkEv2+u24qjjfmf5Q7lHIg7ZqB/Df3kEknjnkM6zUpRkL07KG025dbev1wr3tMm3
- hHmHSWy2pZ2SIT0KxFuI8LuaxpkOMXgjkLT7YfBVpqNFf31HHlg+Bx5d8o6pqWvoNDyr
- OBG0jcnDbHODSFWpmVam0d1S8qO5kfM6/yV2yb+zn90dVcw1E9QeuMHYwKGCxJxRj5jz
- nkdqTEFQJjANCy9ubw9WO87Eba76vpXii3PMKYMaNXWGjCWbOiDF5UdGy/tkja2FDdmV
- eOj/q6o7LDkFi8r3SIUnBFU0SIfT4sQvRTa4jBpYAYbyStyqom9+dPsx2xyDrZ2aqpbI
- QRcw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=jCVFFIvk/dM3akUvv+q1GBXV3JQofCa1Kd1PS4pC1i4=;
- b=sxY+v34qQ/zVqPXcoz0oKsg0t6UJDs0Yt8uULO5ab+HNrMeYH8DyYSItnE4knFtHKd
- MXHsMlEAdzKV13jWjSxUlMs9Xqfz7RRYxFFY89dIJjPqIOIy4Jc/PfvizP9c6he5B8lT
- BngCxMAGNFnCt9+8a9b36ftjoA0aZy+sqdixCdpGIj4M+Nuw28krEGSSFnJ7p+aQfpdA
- EzjtxoQQjjSd9PGaOZRkMlEArWZORwayI0rECHGKTscVeZ1ec+BdrSJZS8JfonfBMPoG
- j7Wgsvix+mTsc4j/AnugePsBzzjPm/wzf9T/3TgxlnvNNR14wNYn/4AmY/UOBshB7bqE
- F+bw==
-X-Gm-Message-State: APjAAAVSjKB2Td3ytOTu4KJ8f+wT1LbEkOPHq4dVlH1kGMpUxVuRevPy
- cIvPiKGCeX4xZZUg3n2TMf8=
-X-Google-Smtp-Source: APXvYqymWvZ4WEVfo0YerAxV4IAUGp6ilTSVL4wfLHxcBZVZ0y3n26ysaI3oTx4uh2W0rOWxnXaavQ==
-X-Received: by 2002:a17:902:e305:: with SMTP id
- cg5mr29472095plb.112.1557743252621; 
- Mon, 13 May 2019 03:27:32 -0700 (PDT)
-Received: from bnva-HP-Pavilion-g6-Notebook-PC.domain.name ([117.248.72.152])
- by smtp.gmail.com with ESMTPSA id
- r124sm11773487pgr.91.2019.05.13.03.27.29
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 13 May 2019 03:27:32 -0700 (PDT)
-From: Vandana BN <bnvandana@gmail.com>
-To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, lukas.bulwahn@gmail.com
-Subject: [PATCH v3 8/8] Staging: kpc2000: kpc_dma: Resolve cast warning and
- use const for file_operation
-Date: Mon, 13 May 2019 15:56:22 +0530
-Message-Id: <20190513102622.22398-8-bnvandana@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190513102622.22398-1-bnvandana@gmail.com>
-References: <20190510193833.1051-1-bnvandana@gmail.com>
- <20190513102622.22398-1-bnvandana@gmail.com>
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 6826286FDD
+ for <devel@driverdev.osuosl.org>; Mon, 13 May 2019 10:41:19 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x4DAd2GA178407;
+ Mon, 13 May 2019 10:41:18 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2018-07-02;
+ bh=U49fQLHYOqmtPc0EpZSr4iexl3fi+WfNrduBT7mOqOI=;
+ b=zVlr2NKEhYmH0lMooq0qd62v5XtBJeFLF7QQFdzs36yt15UY+f3b+ofTCQv4ysKRIVMZ
+ 6q4MuHFVOtSxU38lRr9bVfDqeUM/ubnaoTP7XVM/bY2ZaAItmtQgqsuxUCIrV0n0+zFX
+ 3AtmRyZcx72XscOi8PAMVrA1Y1vFtqbSIqHJdHQSzzsYMb7TVtqs4L9kaetLyNytV5L9
+ iCBzR5MzcKemaPZG/sdU+uF7/6JgjEVt1GC314SY5aPckYncvXkklXkCgUDkKawkrpRb
+ vzRM8c41OFBd554C9XGsCuDB2uODPugQLR+dkxQOx0e3zE84hZJvmOW4PmS+yqIFjgcz WA== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by userp2120.oracle.com with ESMTP id 2sdq1q5x64-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 13 May 2019 10:41:18 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x4DAdbXn007284;
+ Mon, 13 May 2019 10:41:18 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by userp3020.oracle.com with ESMTP id 2sdnqhvsq4-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 13 May 2019 10:41:18 +0000
+Received: from abhmp0011.oracle.com (abhmp0011.oracle.com [141.146.116.17])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x4DAfFLV013898;
+ Mon, 13 May 2019 10:41:15 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Mon, 13 May 2019 03:41:14 -0700
+Date: Mon, 13 May 2019 13:41:05 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+Subject: Re: [PATCH] drivers: staging :rtl8723bs :os_dep Remove Unneeded
+ variable ret
+Message-ID: <20190513104104.GH18105@kadam>
+References: <20190512113245.GA2221@hari-Inspiron-1545>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190512113245.GA2221@hari-Inspiron-1545>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9255
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=615
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1810050000 definitions=main-1905130077
+X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9255
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=662 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
+ definitions=main-1905130077
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,66 +98,22 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Vandana BN <bnvandana@gmail.com>,
- linux-kernel-mentees@lists.linuxfoundation.org, skhan@linuxfoundation.org
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, Mamta Shukla <mamtashukla555@gmail.com>,
+ viswanath.barenkala@gmail.com, Jia-Ju Bai <baijiaju1990@gmail.com>,
+ Emanuel Bennici <benniciemanuel78@gmail.com>, Wen Yang <wen.yang99@zte.com.cn>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This Patch resolves unnecessary cast warning and const file_operations
-reported by checkpath.pl
-WARNING: unnecessary cast may hide bugs
-WARNING: struct file_operations should normally be const
----
-v2 - split changes to multiple patches
-v3 - edit commit message
----
+Please "drivers" out of the subject line.  We know it's drivers, so that
+doesn't add any information.  The "staging: " bit tells you which git
+tree this path is in, and the "rtl8723bs: " tells you which driver it
+is.
 
-Signed-off-by: Vandana BN <bnvandana@gmail.com>
----
- drivers/staging/kpc2000/kpc_dma/fileops.c        | 4 ++--
- drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.h | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c b/drivers/staging/kpc2000/kpc_dma/fileops.c
-index c21672ea2b4f..54a1419728ce 100644
---- a/drivers/staging/kpc2000/kpc_dma/fileops.c
-+++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
-@@ -59,7 +59,7 @@ int  kpc_dma_transfer(struct dev_private_data *priv, struct kiocb *kcb, unsigned
- 
- 	dev_dbg(&priv->ldev->pldev->dev, "%s(priv = [%p], kcb = [%p], iov_base = [%p], iov_len = %ld) ldev = [%p]\n", __func__, priv, kcb, (void *)iov_base, iov_len, ldev);
- 
--	acd = (struct aio_cb_data *) kzalloc(sizeof(struct aio_cb_data), GFP_KERNEL);
-+	acd = kzalloc(sizeof(struct aio_cb_data), GFP_KERNEL);
- 	if (!acd) {
- 		dev_err(&priv->ldev->pldev->dev, "Couldn't kmalloc space for for the aio data\n");
- 		return -ENOMEM;
-@@ -418,7 +418,7 @@ long  kpc_dma_ioctl(struct file *filp, unsigned int ioctl_num, unsigned long ioc
- 	return -ENOTTY;
- }
- 
--struct file_operations  kpc_dma_fops = {
-+const struct file_operations  kpc_dma_fops = {
- 	.owner      = THIS_MODULE,
- 	.open           = kpc_dma_open,
- 	.release        = kpc_dma_close,
-diff --git a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.h b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.h
-index cf781940ac1b..ee47f43e71cf 100644
---- a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.h
-+++ b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.h
-@@ -57,7 +57,7 @@ struct dev_private_data {
- 
- struct kpc_dma_device *kpc_dma_lookup_device(int minor);
- 
--extern struct file_operations  kpc_dma_fops;
-+extern const struct file_operations  kpc_dma_fops;
- 
- #define ENG_CAP_PRESENT                 0x00000001
- #define ENG_CAP_DIRECTION               0x00000002
--- 
-2.17.1
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
