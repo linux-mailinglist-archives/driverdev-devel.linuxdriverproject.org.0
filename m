@@ -2,90 +2,61 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 429811B1D6
-	for <lists+driverdev-devel@lfdr.de>; Mon, 13 May 2019 10:25:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F9431B202
+	for <lists+driverdev-devel@lfdr.de>; Mon, 13 May 2019 10:42:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9C6F52083F;
-	Mon, 13 May 2019 08:24:57 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CCC3E24C8E;
+	Mon, 13 May 2019 08:42:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id z1tYa9mEY9ph; Mon, 13 May 2019 08:24:56 +0000 (UTC)
+	with ESMTP id OzxTC-SncZrv; Mon, 13 May 2019 08:42:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 433AB2426B;
-	Mon, 13 May 2019 08:24:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0E84D248A1;
+	Mon, 13 May 2019 08:42:24 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 077391BF360
- for <devel@linuxdriverproject.org>; Mon, 13 May 2019 08:24:53 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 600AA1BF360
+ for <devel@linuxdriverproject.org>; Mon, 13 May 2019 08:42:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 03B9686290
- for <devel@linuxdriverproject.org>; Mon, 13 May 2019 08:24:53 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5ADFF84785
+ for <devel@linuxdriverproject.org>; Mon, 13 May 2019 08:42:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Hm2tuSnrMdKj for <devel@linuxdriverproject.org>;
- Mon, 13 May 2019 08:24:52 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3DB028627B
- for <devel@driverdev.osuosl.org>; Mon, 13 May 2019 08:24:52 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x4D8NMKD061231;
- Mon, 13 May 2019 08:24:51 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2018-07-02;
- bh=q2xPT9aYNv3n8ZfbCyQkPK3lG0v/KfOw17OG2y43ouA=;
- b=jk3Yda+Oasbi6baYq6yXo6y/Aoi6qaKs7eOE5B0SfaKyIpLI3eawam1xYiTnjJSNKst7
- CermfOxfId3kH7g1QQVf/abaDmpNOzWG0nf1szjLkUloxggpeIcdQOwelihj8+WR04RL
- WbDx+glCWj+F1UfG8ysw2c1oK8WZZc++Eo87YpNKAYPFOtgCgcmHuslORvzQjA3hJYQt
- /CsEe02fBoM1Cth/ZWwm8ctKrylQ65kiTuMpn75aiobNQYlMBBJ5AXy0YtAzKDWdQiav
- rgTLFTqmYgLwpBqqY5rTBCzxF5XS1scM5UENrS+lhDBJLt0wEivwDnsaBLSVVlunOfWp Eg== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by userp2120.oracle.com with ESMTP id 2sdq1q55mp-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 13 May 2019 08:24:50 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x4D8OA4G122295;
- Mon, 13 May 2019 08:24:50 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by userp3030.oracle.com with ESMTP id 2sf3cmhf4q-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 13 May 2019 08:24:50 +0000
-Received: from abhmp0016.oracle.com (abhmp0016.oracle.com [141.146.116.22])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x4D8OlfG017028;
- Mon, 13 May 2019 08:24:49 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 13 May 2019 08:24:46 +0000
-Date: Mon, 13 May 2019 11:24:39 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-Subject: Re: [PATCH v3] drivers: staging : wlan-ng : collect return status
- without variable
-Message-ID: <20190513082439.GL16030@kadam>
-References: <20190512105345.GA4046@hari-Inspiron-1545>
+ with ESMTP id 9CnDMBC99BNl for <devel@linuxdriverproject.org>;
+ Mon, 13 May 2019 08:42:20 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D7013846F4
+ for <devel@driverdev.osuosl.org>; Mon, 13 May 2019 08:42:20 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 3420E20879;
+ Mon, 13 May 2019 08:42:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1557736940;
+ bh=FFP9OUTbN2hRuzOJDuWvb9U2VH7dyQ34YtSfiVB6ju0=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Yy3S0V1T++ier/Q6FNf8TmwiTQrKwEpHUDClIPmhoTs+mHeV+DG4h+7Hre2RrHwtu
+ YM4qyzBz4xVy/3TtVpIW+9Wjsoupp1U/pN32v+qH2THdIx2Yd1wH5lXOJe22KbAt+g
+ biZvbGvY8xPh5RJMoPM/hgphRsAe47n2xP3E50+E=
+Date: Mon, 13 May 2019 10:42:17 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Vandana BN <bnvandana@gmail.com>
+Subject: Re: [PATCH v2 2/8] Staging: kpc2000: kpc_dma: Resolve coding style
+ errors reported by checkpatch.
+Message-ID: <20190513084217.GA17959@kroah.com>
+References: <20190510193833.1051-1-bnvandana@gmail.com>
+ <20190512234000.16555-1-bnvandana@gmail.com>
+ <20190512234000.16555-2-bnvandana@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190512105345.GA4046@hari-Inspiron-1545>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9255
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=922
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1810050000 definitions=main-1905130061
-X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9255
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=963 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
- definitions=main-1905130061
+In-Reply-To: <20190512234000.16555-2-bnvandana@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,21 +69,35 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Tim Collier <osdevtc@gmail.com>, linux-kernel@vger.kernel.org,
- Chris Opperman <eklikeroomys@gmail.com>
+Cc: devel@driverdev.osuosl.org, lukas.bulwahn@gmail.com,
+ linux-kernel-mentees@lists.linuxfoundation.org, linux-kernel@vger.kernel.org,
+ skhan@linuxfoundation.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Thanks!
+On Mon, May 13, 2019 at 05:09:54AM +0530, Vandana BN wrote:
+> This patch resolves below errors reported by checkpatch
+> ERROR: "(foo*)" should be "(foo *)"
+> ERROR: "foo * bar" should be "foo *bar"
+> ERROR: "foo __init  bar" should be "foo __init bar"
+> ERROR: "foo __exit  bar" should be "foo __exit bar"
+> 
+> Signed-off-by: Vandana BN <bnvandana@gmail.com>
 
-Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
+Better...
 
-regards,
-dan carpenter
+But your subject lines are almost all the same, with some being
+identical to others, yet you are doing different things in each of the
+patch.
 
+So please provide a better subject line saying, in a unique way, exactly
+what you are doing here.
+
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
