@@ -2,57 +2,58 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B80B91B208
-	for <lists+driverdev-devel@lfdr.de>; Mon, 13 May 2019 10:44:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2D6D91B2EA
+	for <lists+driverdev-devel@lfdr.de>; Mon, 13 May 2019 11:33:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 967EC8638F;
-	Mon, 13 May 2019 08:44:06 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 461CD8646F;
+	Mon, 13 May 2019 09:33:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NSxSPYnaH5nI; Mon, 13 May 2019 08:44:05 +0000 (UTC)
+	with ESMTP id By4ycKhokIP7; Mon, 13 May 2019 09:33:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B96B88632F;
-	Mon, 13 May 2019 08:44:04 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 66028864B2;
+	Mon, 13 May 2019 09:33:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5D0BE1BF360
- for <devel@linuxdriverproject.org>; Mon, 13 May 2019 08:44:02 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id CC8AE1BF358
+ for <devel@linuxdriverproject.org>; Mon, 13 May 2019 09:33:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5990886272
- for <devel@linuxdriverproject.org>; Mon, 13 May 2019 08:44:02 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id C95B385829
+ for <devel@linuxdriverproject.org>; Mon, 13 May 2019 09:33:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9xvFL2S1Kgks for <devel@linuxdriverproject.org>;
- Mon, 13 May 2019 08:44:01 +0000 (UTC)
+ with ESMTP id BxEmHWy-jnWv for <devel@linuxdriverproject.org>;
+ Mon, 13 May 2019 09:33:26 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id CBA9E86223
- for <devel@driverdev.osuosl.org>; Mon, 13 May 2019 08:44:01 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id DC39485734
+ for <devel@driverdev.osuosl.org>; Mon, 13 May 2019 09:33:26 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 20DD62084A;
- Mon, 13 May 2019 08:44:00 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 3365D20873;
+ Mon, 13 May 2019 09:33:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1557737041;
- bh=ugMALw/O3cXPViqg+8RfbM4wNDJ1LAMUNwNjIhWmq3k=;
+ s=default; t=1557740006;
+ bh=Oh5xXg6uTFSzSLkeVykgO08l4nnAKG9rNXBddLbIWzs=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=oeReko0CXz8ySA+Ei2LgTAdAe8Wk/ng0mpVKNPA+6RSldcAGioXQhSeUFhBWJmADV
- orKwl8F7ZL+OLqBZ6MLq7jOisf1eAXWm2uk/jZSejuh1FZFqYLTZV6wnGlGC7595+N
- uVdEz78Hn6PTL2wN73zBvo7PeT1mOYiZdWB9AZ+Q=
-Date: Mon, 13 May 2019 10:43:58 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-Subject: Re: [PATCH] staging: rtl8723bs: core fix warning  Comparison to bool
-Message-ID: <20190513084358.GB17959@kroah.com>
-References: <20190512122449.GA28268@hari-Inspiron-1545>
+ b=mxWEuWK7B06nvRkMIiatxxlv4Z+H8puDaQkfQ097Re5RMkyaxLMZGjHSQ2s2nlHsm
+ gOd/TnrushyhGYk+rRfigzDrZx5FyxZVssmt3AwZhDsuFNxp5XsfI+DI8mzRUAsxdl
+ BhefurJNWCigEz+aVb8rYZkIXbrl3+DEOqDmUm7o=
+Date: Mon, 13 May 2019 11:33:24 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Vatsala Narang <vatsalanarang@gmail.com>
+Subject: Re: [PATCH v2 6/6] staging: rtl8723bs: core: Move logical operator
+ to previous line.
+Message-ID: <20190513093324.GA21213@kroah.com>
+References: <20190505132253.4516-1-vatsalanarang@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190512122449.GA28268@hari-Inspiron-1545>
+In-Reply-To: <20190505132253.4516-1-vatsalanarang@gmail.com>
 User-Agent: Mutt/1.11.4 (2019-03-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -66,33 +67,41 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Arnd Bergmann <arnd@arndb.de>,
- linux-kernel@vger.kernel.org, Hardik Singh Rathore <hardiksingh.k@gmail.com>,
- Colin Ian King <colin.king@canonical.com>,
- Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>,
- Emanuel Bennici <benniciemanuel78@gmail.com>,
- Nishka Dasgupta <nishka.dasgupta@yahoo.com>, viswanath.barenkala@gmail.com
+Cc: devel@driverdev.osuosl.org, julia.lawall@lip6.fr,
+ linux-kernel@vger.kernel.org, hadess@hadess.net, hdegoede@redhat.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, May 12, 2019 at 05:54:49PM +0530, Hariprasad Kelam wrote:
-> fix below issue reported by coccicheck
+On Sun, May 05, 2019 at 06:52:53PM +0530, Vatsala Narang wrote:
+> Move logical operator to previous line to get rid of checkpatch warning.
 > 
-> drivers/staging/rtl8723bs/core/rtw_mlme.c:1675:6-10: WARNING: Comparison
-> to bool
-> 
-> Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+> Signed-off-by: Vatsala Narang <vatsalanarang@gmail.com>
 > ---
->  drivers/staging/rtl8723bs/core/rtw_mlme.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
+> index 0b5bd047a552..b5e355de1199 100644
+> --- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
+> +++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
+> @@ -5656,9 +5656,9 @@ static u8 chk_ap_is_alive(struct adapter *padapter, struct sta_info *psta)
+>  	);
+>  	#endif
+>  
+> -	if ((sta_rx_data_pkts(psta) == sta_last_rx_data_pkts(psta))
+> -		&& sta_rx_beacon_pkts(psta) == sta_last_rx_beacon_pkts(psta)
+> -		&& sta_rx_probersp_pkts(psta) == sta_last_rx_probersp_pkts(psta)
+> +	if ((sta_rx_data_pkts(psta) == sta_last_rx_data_pkts(psta)) &&
+> +	    sta_rx_beacon_pkts(psta) == sta_last_rx_beacon_pkts(psta) &&
+> +	     sta_rx_probersp_pkts(psta) == sta_last_rx_probersp_pkts(psta)
 
-You sent 3 patches that do different things, yet have the same subject
-line :(
+Odd, you should align these two lines, right?
 
-Please fix up and send as a numbered patch series, or better yet, fix
-the same thing in the whole file all at ince.
+>  	) {
+
+This should go on the previous line.
 
 thanks,
 
