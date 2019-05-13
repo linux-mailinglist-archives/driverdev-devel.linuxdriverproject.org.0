@@ -1,77 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B74AA1B162
-	for <lists+driverdev-devel@lfdr.de>; Mon, 13 May 2019 09:44:48 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DF0A08739E;
-	Mon, 13 May 2019 07:44:46 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id t9mhhIA5o6C6; Mon, 13 May 2019 07:44:46 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 584D4872E8;
-	Mon, 13 May 2019 07:44:45 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 54C6D1BF387
- for <devel@linuxdriverproject.org>; Mon, 13 May 2019 07:44:43 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 429811B1D6
+	for <lists+driverdev-devel@lfdr.de>; Mon, 13 May 2019 10:25:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4B41D21F6F
- for <devel@linuxdriverproject.org>; Mon, 13 May 2019 07:44:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9C6F52083F;
+	Mon, 13 May 2019 08:24:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id z1tYa9mEY9ph; Mon, 13 May 2019 08:24:56 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 433AB2426B;
+	Mon, 13 May 2019 08:24:55 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 077391BF360
+ for <devel@linuxdriverproject.org>; Mon, 13 May 2019 08:24:53 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 03B9686290
+ for <devel@linuxdriverproject.org>; Mon, 13 May 2019 08:24:53 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mFVGZeWeVkEu for <devel@linuxdriverproject.org>;
- Mon, 13 May 2019 07:44:42 +0000 (UTC)
-X-Greylist: delayed 00:08:42 by SQLgrey-1.7.6
-Received: from ushosting.nmnhosting.com (ushosting.nmnhosting.com
- [66.55.73.32])
- by silver.osuosl.org (Postfix) with ESMTP id EDD6D2107A
- for <devel@driverdev.osuosl.org>; Mon, 13 May 2019 07:44:41 +0000 (UTC)
-Received: from mail2.nmnhosting.com (unknown [202.169.106.97])
- by ushosting.nmnhosting.com (Postfix) with ESMTPS id 231832DC0069;
- Mon, 13 May 2019 03:35:57 -0400 (EDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=d-silva.org;
- s=201810a; t=1557732958;
- bh=aa+i95blYOSxhGwoRx9zFnMo5oG4XUfXT748BNmFJIU=;
- h=From:To:Cc:References:In-Reply-To:Subject:Date:From;
- b=aSet9rLYykQxcyXFS2GF9u8JjdaPfKwlu1qpX3Ek5B3X+zmGgF+1WtmJH8QDHUKVR
- POJW18jnNWqKlc9WV/y9wswfLzQAdORTjoBGt6wbLb+XQzz+YSA8YT8exQIamI1hKA
- NgBZZqdAOIFcj5X4mKMcpOALzVECo4ayuE60g+CPH7CvPt6lSOfmFpWRNnpn+wYPF4
- P6SqYrz3uRsFocaNWbLb6GRXp8TE8CKtYMYUEeB/QfMAnGJ7U/FZrL/hYqxDE0ryBG
- /8/mtlXRqGs0pBJCO5WKEQDm1lzWRXt40l8YPyEBjUBm/McmvG1Iafbx2EfRhysC43
- vKIF2BpJNTxkposUCWaXgJuoNekulC6f7wlHUlNkNooeQHpAKXYuClI/ikmvCrnCff
- Vy/fK7azMrun4S9M5k0UdX9IUayiM9Y1AVv1iAHjIJrMhP8ELgeNkTypKa35MyJMjx
- LmIQVy3zVwlAOW1mMnZhrLapo90FKO26dOcJq140LOTx0ZahhIuR6KISKy+FuwYBfp
- cNemDFNeNEkfGRWxw0VhCsOArzkI9iJJSDwhVYx2DI4O1xJX2kFEObBeq4rx25ClRK
- PDCjVeuymuPU3aUBQKrJtdTxur1fcbH6SvSnl3OKtvCVGly9Za8zstBXG1KdRUNuvp
- kOJclMVcOxeDGLfkA1Mcr7AQ=
-Received: from Hawking (ntp.lan [10.0.1.1]) (authenticated bits=0)
- by mail2.nmnhosting.com (8.15.2/8.15.2) with ESMTPSA id x4D7ZjC4057687
- (version=TLSv1.2 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Mon, 13 May 2019 17:35:46 +1000 (AEST)
- (envelope-from alastair@d-silva.org)
-From: "Alastair D'Silva" <alastair@d-silva.org>
-To: "'Geert Uytterhoeven'" <geert@linux-m68k.org>,
- "'Alastair D'Silva'" <alastair@au1.ibm.com>
-References: <20190508070148.23130-1-alastair@au1.ibm.com>
- <20190508070148.23130-4-alastair@au1.ibm.com>
- <CAMuHMdVefYTgHzGKBc0ebku1z8V3wsM0ydN+6-S2nFKaB8eH_Q@mail.gmail.com>
-In-Reply-To: <CAMuHMdVefYTgHzGKBc0ebku1z8V3wsM0ydN+6-S2nFKaB8eH_Q@mail.gmail.com>
-Subject: RE: [PATCH v2 3/7] lib/hexdump.c: Optionally suppress lines of
- repeated bytes
-Date: Mon, 13 May 2019 17:35:47 +1000
-Message-ID: <04de01d5095e$7f6af730$7e40e590$@d-silva.org>
+ with ESMTP id Hm2tuSnrMdKj for <devel@linuxdriverproject.org>;
+ Mon, 13 May 2019 08:24:52 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3DB028627B
+ for <devel@driverdev.osuosl.org>; Mon, 13 May 2019 08:24:52 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x4D8NMKD061231;
+ Mon, 13 May 2019 08:24:51 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2018-07-02;
+ bh=q2xPT9aYNv3n8ZfbCyQkPK3lG0v/KfOw17OG2y43ouA=;
+ b=jk3Yda+Oasbi6baYq6yXo6y/Aoi6qaKs7eOE5B0SfaKyIpLI3eawam1xYiTnjJSNKst7
+ CermfOxfId3kH7g1QQVf/abaDmpNOzWG0nf1szjLkUloxggpeIcdQOwelihj8+WR04RL
+ WbDx+glCWj+F1UfG8ysw2c1oK8WZZc++Eo87YpNKAYPFOtgCgcmHuslORvzQjA3hJYQt
+ /CsEe02fBoM1Cth/ZWwm8ctKrylQ65kiTuMpn75aiobNQYlMBBJ5AXy0YtAzKDWdQiav
+ rgTLFTqmYgLwpBqqY5rTBCzxF5XS1scM5UENrS+lhDBJLt0wEivwDnsaBLSVVlunOfWp Eg== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by userp2120.oracle.com with ESMTP id 2sdq1q55mp-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 13 May 2019 08:24:50 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x4D8OA4G122295;
+ Mon, 13 May 2019 08:24:50 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by userp3030.oracle.com with ESMTP id 2sf3cmhf4q-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 13 May 2019 08:24:50 +0000
+Received: from abhmp0016.oracle.com (abhmp0016.oracle.com [141.146.116.22])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x4D8OlfG017028;
+ Mon, 13 May 2019 08:24:49 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Mon, 13 May 2019 08:24:46 +0000
+Date: Mon, 13 May 2019 11:24:39 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+Subject: Re: [PATCH v3] drivers: staging : wlan-ng : collect return status
+ without variable
+Message-ID: <20190513082439.GL16030@kadam>
+References: <20190512105345.GA4046@hari-Inspiron-1545>
 MIME-Version: 1.0
-X-Mailer: Microsoft Outlook 16.0
-Content-Language: en-au
-Thread-Index: AQGz7QD7bMLLz3XdMyQiMIIzLY+D4AJkmwv+AXBy99KmjDiokA==
-X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.6.2
- (mail2.nmnhosting.com [10.0.1.20]); Mon, 13 May 2019 17:35:53 +1000 (AEST)
+Content-Disposition: inline
+In-Reply-To: <20190512105345.GA4046@hari-Inspiron-1545>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9255
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=922
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1810050000 definitions=main-1905130061
+X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9255
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=963 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
+ definitions=main-1905130061
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,109 +98,20 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: 'Linux Fbdev development list' <linux-fbdev@vger.kernel.org>,
- 'Stanislaw Gruszka' <sgruszka@redhat.com>, 'Petr Mladek' <pmladek@suse.com>,
- 'David Airlie' <airlied@linux.ie>,
- 'Joonas Lahtinen' <joonas.lahtinen@linux.intel.com>,
- 'DRI Development' <dri-devel@lists.freedesktop.org>,
- 'driverdevel' <devel@driverdev.osuosl.org>,
- 'scsi' <linux-scsi@vger.kernel.org>, 'Jassi Brar' <jassisinghbrar@gmail.com>,
- ath10k@lists.infradead.org,
- 'Intel Graphics Development' <intel-gfx@lists.freedesktop.org>,
- 'Dan Carpenter' <dan.carpenter@oracle.com>,
- 'Jose Abreu' <Jose.Abreu@synopsys.com>,
- 'Tom Lendacky' <thomas.lendacky@amd.com>,
- "'James E.J. Bottomley'" <jejb@linux.ibm.com>,
- 'Jani Nikula' <jani.nikula@linux.intel.com>,
- 'Linux FS Devel' <linux-fsdevel@vger.kernel.org>,
- 'Steven Rostedt' <rostedt@goodmis.org>,
- 'Rodrigo Vivi' <rodrigo.vivi@intel.com>, 'Benson Leung' <bleung@chromium.org>,
- 'Kalle Valo' <kvalo@codeaurora.org>, 'Karsten Keil' <isdn@linux-pingi.de>,
- "'Martin K. Petersen'" <martin.petersen@oracle.com>,
- 'Greg Kroah-Hartman' <gregkh@linuxfoundation.org>,
- 'linux-wireless' <linux-wireless@vger.kernel.org>,
- 'Linux Kernel Mailing List' <linux-kernel@vger.kernel.org>,
- 'Sergey Senozhatsky' <sergey.senozhatsky@gmail.com>,
- 'David Laight' <David.Laight@aculab.com>, 'Daniel Vetter' <daniel@ffwll.ch>,
- 'netdev' <netdev@vger.kernel.org>,
- 'Enric Balletbo i Serra' <enric.balletbo@collabora.com>,
- 'Andrew Morton' <akpm@linux-foundation.org>,
- "'David S. Miller'" <davem@davemloft.net>,
- 'Alexander Viro' <viro@zeniv.linux.org.uk>
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Tim Collier <osdevtc@gmail.com>, linux-kernel@vger.kernel.org,
+ Chris Opperman <eklikeroomys@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-> -----Original Message-----
-> From: Geert Uytterhoeven <geert@linux-m68k.org>
-> Sent: Monday, 13 May 2019 5:01 PM
-> To: Alastair D'Silva <alastair@au1.ibm.com>
-> Cc: alastair@d-silva.org; Jani Nikula <jani.nikula@linux.intel.com>; Joonas
-> Lahtinen <joonas.lahtinen@linux.intel.com>; Rodrigo Vivi
-> <rodrigo.vivi@intel.com>; David Airlie <airlied@linux.ie>; Daniel Vetter
-> <daniel@ffwll.ch>; Dan Carpenter <dan.carpenter@oracle.com>; Karsten
-> Keil <isdn@linux-pingi.de>; Jassi Brar <jassisinghbrar@gmail.com>; Tom
-> Lendacky <thomas.lendacky@amd.com>; David S. Miller
-> <davem@davemloft.net>; Jose Abreu <Jose.Abreu@synopsys.com>; Kalle
-> Valo <kvalo@codeaurora.org>; Stanislaw Gruszka <sgruszka@redhat.com>;
-> Benson Leung <bleung@chromium.org>; Enric Balletbo i Serra
-> <enric.balletbo@collabora.com>; James E.J. Bottomley
-> <jejb@linux.ibm.com>; Martin K. Petersen <martin.petersen@oracle.com>;
-> Greg Kroah-Hartman <gregkh@linuxfoundation.org>; Alexander Viro
-> <viro@zeniv.linux.org.uk>; Petr Mladek <pmladek@suse.com>; Sergey
-> Senozhatsky <sergey.senozhatsky@gmail.com>; Steven Rostedt
-> <rostedt@goodmis.org>; David Laight <David.Laight@aculab.com>; Andrew
-> Morton <akpm@linux-foundation.org>; Intel Graphics Development <intel-
-> gfx@lists.freedesktop.org>; DRI Development <dri-
-> devel@lists.freedesktop.org>; Linux Kernel Mailing List <linux-
-> kernel@vger.kernel.org>; netdev <netdev@vger.kernel.org>;
-> ath10k@lists.infradead.org; linux-wireless <linux-wireless@vger.kernel.org>;
-> scsi <linux-scsi@vger.kernel.org>; Linux Fbdev development list <linux-
-> fbdev@vger.kernel.org>; driverdevel <devel@driverdev.osuosl.org>; Linux
-> FS Devel <linux-fsdevel@vger.kernel.org>
-> Subject: Re: [PATCH v2 3/7] lib/hexdump.c: Optionally suppress lines of
-> repeated bytes
-> 
-> Hi Alastair,
-> 
-> Thanks for your patch!
+Thanks!
 
-And thanks for your politeness :)
+Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
 
-> 
-> On Wed, May 8, 2019 at 9:04 AM Alastair D'Silva <alastair@au1.ibm.com>
-> wrote:
-> > From: Alastair D'Silva <alastair@d-silva.org>
-> >
-> > Some buffers may only be partially filled with useful data, while the
-> > rest is padded (typically with 0x00 or 0xff).
-> >
-> > This patch introduces a flag to allow the supression of lines of
-> > repeated bytes,
-> 
-> Given print_hex_dump() operates on entities of groupsize (1, 2, 4, or 8)
-> bytes, wouldn't it make more sense to consider repeated groups instead of
-> repeated bytes?
-
-Maybe, it would mean that subsequent addresses may not be a multiple of rowsize though, which is useful.
-
-> > which are replaced with '** Skipped %u bytes of value 0x%x **'
-> 
-> Using a custom message instead of just "*", like "hexdump" uses, will require
-> preprocessing the output when recovering the original binary data by
-> feeding it to e.g. "xxd".
-> This may sound worse than it is, though, as I never got "xxd" to work without
-> preprocessing anyway ;-)
-
-I think showing the details of the skipped values is useful when reading the output directly. In situations where binary extracts are desired, the feature can always be disabled.
-
--- 
-Alastair D'Silva           mob: 0423 762 819
-skype: alastair_dsilva     msn: alastair@d-silva.org
-blog: http://alastair.d-silva.org    Twitter: @EvilDeece
-
-
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
