@@ -1,81 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C53A01CC45
-	for <lists+driverdev-devel@lfdr.de>; Tue, 14 May 2019 17:54:54 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id F07811CC62
+	for <lists+driverdev-devel@lfdr.de>; Tue, 14 May 2019 18:02:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 266192E5CF;
-	Tue, 14 May 2019 15:54:52 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 79FFF86C37;
+	Tue, 14 May 2019 16:02:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oO+QhtVxr3ho; Tue, 14 May 2019 15:54:51 +0000 (UTC)
+	with ESMTP id 3YpGWKDJHIvQ; Tue, 14 May 2019 16:02:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 38AE52262B;
-	Tue, 14 May 2019 15:54:49 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1BBA584DDD;
+	Tue, 14 May 2019 16:02:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 76E961BF3F9
- for <devel@linuxdriverproject.org>; Tue, 14 May 2019 15:54:47 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 30F9A1BF3F9
+ for <devel@linuxdriverproject.org>; Tue, 14 May 2019 16:02:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 72677220CA
- for <devel@linuxdriverproject.org>; Tue, 14 May 2019 15:54:47 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2DF0287B8E
+ for <devel@linuxdriverproject.org>; Tue, 14 May 2019 16:02:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BDuEgqTjdYbc for <devel@linuxdriverproject.org>;
- Tue, 14 May 2019 15:54:46 +0000 (UTC)
+ with ESMTP id nus4N1ruSNf5 for <devel@linuxdriverproject.org>;
+ Tue, 14 May 2019 16:02:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by silver.osuosl.org (Postfix) with ESMTPS id E09E420773
- for <devel@driverdev.osuosl.org>; Tue, 14 May 2019 15:54:46 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id 145so8837912pgg.9
- for <devel@driverdev.osuosl.org>; Tue, 14 May 2019 08:54:46 -0700 (PDT)
+Received: from mail-ot1-f65.google.com (mail-ot1-f65.google.com
+ [209.85.210.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 93C9287B6A
+ for <devel@driverdev.osuosl.org>; Tue, 14 May 2019 16:02:14 +0000 (UTC)
+Received: by mail-ot1-f65.google.com with SMTP id i8so15710975oth.10
+ for <devel@driverdev.osuosl.org>; Tue, 14 May 2019 09:02:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=GLufggGK8E2bGMZGas47LMLbeEjUIYqrBsiW4ldDcmY=;
- b=IUU/rhgP3E6oOJKIJeEvKLmECR0h/axMwp4xvis+2BeYbItSAbu1itu7GKr4/wfj0/
- m9kYyiY6QbsonaIK0YA8aUuSZtvK+nW2BrVG/zW4REvXlOUcVwrEfYbPl3lRMW0R4RqG
- LY4j4uCOpVeStB81vwrtyBXXno/4xsMJvFihdY238Fggp4eCOWMlpW9E52y2aZnUN3DR
- WqNFzmWKqAtUNCCpfmzQWY99rkez35kCg8/dPr/K8SMcRFaRYd97s41wuULd4ISWy8O6
- OZrDBJvb2B+qAsjQz7hW6jQRLe+fzQvU6t+8GE8xHD75yff/a8CTZZ+BJHSxkpuUw+lD
- zXBg==
+ h=from:to:cc:subject:date:message-id;
+ bh=fSlgTFf8KtNta0rz8mLnXIN4jROdf8xysWOhaMNIqEU=;
+ b=L9fBlpGqioNOmCkpRrttVJlWrp0wN+k9YLzpMu3TCyxWwKwuMOSUIxOcQoirY8iWBn
+ viwTYQJ/CEYk91rd87TzX91kvczkZ/gVat7F1NLQdS7yC9JLlHMb4g15VavvKWeRzTiU
+ aPPZc/OQtewTBuA4NmxgyV8U45sViu1PJD6egI+K1mOD77SlGApQ14wz3se/bbBZtvxT
+ GTLp+pc1O1mcvhyqRhtSBUzjkJ1RUGl/5nKLRflIpGfRvMqVNmh1n3wd4BVU0COJyw1l
+ R2f7JjTS2SRmbMrQmE3YINq/uKjmt3odgA2Sh9JCE+T/Qa2zF/TOczLow0J1feB2aMjq
+ 5/5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=GLufggGK8E2bGMZGas47LMLbeEjUIYqrBsiW4ldDcmY=;
- b=dlVwnEF6D8xe1j5cFIkdy8DPTUi1UbcIM54S404snYCUkz2RFq8Ax9DJKsUTyX24VD
- wE5JTpubD2JWi4iZlUQT8y4rrUKVLjLwtTfd63nP4srIloUWFESYAHHu7ghYfJeVPBr1
- NAZ9IwEnY7n11e+98IoceyguwFj9GMia1XaB1Rk0y5xnNgmJ1sAqzaZG2Kt0KGkaDFkw
- YUOJlw6UuBMrVPEhSa/QlVkeyYDOJS7Zj3QBuasK0U5aIEL1QkI+iC2dXS/DtuR4hLLJ
- HT1oy2ZFVG0wOliEx46uA60tkXfmp3F5yEjs4qW6hYwLKI/rpEiEPfZLLs8njPtpIvbA
- 0XlQ==
-X-Gm-Message-State: APjAAAUZukkXl0t45o/QRyvHgaorv9NmUQJEEdvFNSJXTPOWaqNfVrZV
- 0ZpxVZ0EpkYiTUEVPlEjZiU=
-X-Google-Smtp-Source: APXvYqzx0ALoleoW+ebEoEDWYJRLx7BzX0358oc0XfxFePB332ZnYWc6r/oDTDFSCuI8cUu225VLBA==
-X-Received: by 2002:a62:5f02:: with SMTP id t2mr1483473pfb.7.1557849286209;
- Tue, 14 May 2019 08:54:46 -0700 (PDT)
-Received: from arch ([2405:204:7145:24c8:f23d:8e91:fd10:9c55])
- by smtp.gmail.com with ESMTPSA id c76sm3387746pfc.43.2019.05.14.08.54.42
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=fSlgTFf8KtNta0rz8mLnXIN4jROdf8xysWOhaMNIqEU=;
+ b=D49dv45X5bfu0Z9xzULH7fBLIFJwIrnirbrzqyx7OOi2m2jHnVY3yGMvYgXNqKcpjb
+ NTZS/AJpczT0RLKk7H+Hnw0L5eiaDgiMT5hpNk9BYE1wrjQAX+ocdJ+mYLijmPqHZXT2
+ 2s/Gh+M3YtR1ZpSKFf9JkFnSVwxoetVL0ijS3y4cFi3yX3mkM5QcDN7fvYESB4VqA3XF
+ cHENSHfdrteT1j8QcrefDDOBn9dpb5hoa2Z3g9NTIDIKL2Q0vRJU6aGe8qt4an3BgdIb
+ Dhz3hTT6pmH8P9E78gZEOCrqGWddF8ap/J2kBwkZnmrdgs6RYPnupzyYMDxextA1XqiJ
+ MHPw==
+X-Gm-Message-State: APjAAAUxq+/AVMVy8mzgKCRWq2JfF+gieXxbAWEWVa3vW2DM9gIpwqWe
+ k9wXghnFAuR5vFTI91+rSB4=
+X-Google-Smtp-Source: APXvYqwss0BQEuHxOP2EKdRXu7b8gJYo7DvkW8SNjwnJuhVOSUneVcogIiRmPHKex4Qqqzc22fHN7A==
+X-Received: by 2002:a05:6830:1097:: with SMTP id
+ y23mr188736oto.108.1557849733699; 
+ Tue, 14 May 2019 09:02:13 -0700 (PDT)
+Received: from madhuleo ([2605:6000:1023:606d:fc47:9acf:eddd:8a77])
+ by smtp.gmail.com with ESMTPSA id m20sm6498783otq.30.2019.05.14.09.02.12
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Tue, 14 May 2019 08:54:45 -0700 (PDT)
-Date: Tue, 14 May 2019 21:24:38 +0530
-From: Puranjay Mohan <puranjay12@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH V2 1/5] Staging: rtl8192u: ieee80211: Fix coding style
- warning
-Message-ID: <20190514155434.GA1371@arch>
-References: <20190514091224.GA786@arch>
- <20190514140905.GA16844@kroah.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190514140905.GA16844@kroah.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+ Tue, 14 May 2019 09:02:12 -0700 (PDT)
+From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+To: eric@anholt.net, stefan.wahren@i2se.com, gregkh@linuxfoundation.org,
+ f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com,
+ bcm-kernel-feedback-list@broadcom.com,
+ linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] Staging: vc04_services: Fix kernel type 'u32' over 'uint32_t'
+Date: Tue, 14 May 2019 11:02:07 -0500
+Message-Id: <20190514160207.11573-1-madhumithabiw@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,43 +85,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, dan.carpenter@oracle.com
+Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, May 14, 2019 at 04:09:05PM +0200, Greg KH wrote:
-> On Tue, May 14, 2019 at 02:42:31PM +0530, Puranjay Mohan wrote:
-> > Remove braces around a single if statement to fix following
-> > checkpatch.pl warning.
-> > WARNING: braces {} are not necessary for single statement blocks
-> > 
-> > Signed-off-by: Puranjay Mohan <puranjay12@gmail.com>
-> > ---
-> > 
-> > V2 - remove extra blank line before the closing brace.
-> 
-> When you fix up a patch in a series, please resend the _whole_ series,
-> otherwise I have to try to piece together the different patches and put
-> them in the proper place.  When dealing with 1000+ emails a day, that's
-> a hard thing to ask a maintainer to do.
-I am sorry! 
-> So please just resend this whole thing, in a threaded email series (such
-> that they are all grouped together.  You are sending these as individual
-> emails, and so email clients do not link them, making them harder to
-> manage :(
-> 
-> thanks,
-> 
-> greg k-h
-I will resend it again properly.
-Sorry for doing mistakes everytime.
-I am trying to learn and trying my best
-to make good contributions.
+Fix the warning issued by checkpatch
+Prefer kernel type 'u32' over 'uint32_t'
 
-Thanks and Regards,
--Puranjay Mohan
+Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+---
+ drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h b/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h
+index d1c57edbe2b8..90793c9f9a0f 100644
+--- a/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h
++++ b/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h
+@@ -309,7 +309,7 @@ struct mmal_msg_port_parameter_set {
+ 	u32 port_handle;      /* port */
+ 	u32 id;     /* Parameter ID  */
+ 	u32 size;      /* Parameter size */
+-	uint32_t value[MMAL_WORKER_PORT_PARAMETER_SPACE];
++	u32 value[MMAL_WORKER_PORT_PARAMETER_SPACE];
+ };
+ 
+ struct mmal_msg_port_parameter_set_reply {
+@@ -331,7 +331,7 @@ struct mmal_msg_port_parameter_get_reply {
+ 	u32 status;           /* Status of mmal_port_parameter_get call */
+ 	u32 id;     /* Parameter ID  */
+ 	u32 size;      /* Parameter size */
+-	uint32_t value[MMAL_WORKER_PORT_PARAMETER_SPACE];
++	u32 value[MMAL_WORKER_PORT_PARAMETER_SPACE];
+ };
+ 
+ /* event messages */
+-- 
+2.17.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
