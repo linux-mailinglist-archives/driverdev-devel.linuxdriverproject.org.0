@@ -2,74 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4226C1CE06
-	for <lists+driverdev-devel@lfdr.de>; Tue, 14 May 2019 19:31:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DF15E1CE07
+	for <lists+driverdev-devel@lfdr.de>; Tue, 14 May 2019 19:31:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E5BEB860C0;
-	Tue, 14 May 2019 17:31:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8EA6C860E6;
+	Tue, 14 May 2019 17:31:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aUJw0OemnGAT; Tue, 14 May 2019 17:31:24 +0000 (UTC)
+	with ESMTP id hCI_oa_4xWG4; Tue, 14 May 2019 17:31:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E4D798605E;
-	Tue, 14 May 2019 17:31:23 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AE8DC86088;
+	Tue, 14 May 2019 17:31:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CE8BE1BF5F5
- for <devel@linuxdriverproject.org>; Tue, 14 May 2019 17:31:21 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D1C671BF5F5
+ for <devel@linuxdriverproject.org>; Tue, 14 May 2019 17:31:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id CB6DE87C3F
- for <devel@linuxdriverproject.org>; Tue, 14 May 2019 17:31:21 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id CEA19860D5
+ for <devel@linuxdriverproject.org>; Tue, 14 May 2019 17:31:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZsJKllBnvtZk for <devel@linuxdriverproject.org>;
- Tue, 14 May 2019 17:31:21 +0000 (UTC)
+ with ESMTP id Gv-Ty32MwgKW for <devel@linuxdriverproject.org>;
+ Tue, 14 May 2019 17:31:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
- [209.85.215.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 59AFE87BFE
- for <devel@driverdev.osuosl.org>; Tue, 14 May 2019 17:31:21 +0000 (UTC)
-Received: by mail-pg1-f195.google.com with SMTP id j26so8965655pgl.5
- for <devel@driverdev.osuosl.org>; Tue, 14 May 2019 10:31:21 -0700 (PDT)
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 592D0860C5
+ for <devel@driverdev.osuosl.org>; Tue, 14 May 2019 17:31:26 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id t87so9500211pfa.2
+ for <devel@driverdev.osuosl.org>; Tue, 14 May 2019 10:31:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=9PfthKOfjAfnWl0b3roJLxEIPPwMIAJjDaAq6lVll6E=;
- b=BcdeWaMCnbI9gsihuQ68wVSzzJR8g6bkU7V1nrpyPidlfaRH+7hcbA2mS5qI4TC+O1
- K7xAV4SflicrJuUVHHoMYHi75BBxPMUl05W5tcs5Om6mC05SaxJo48cWuCsDfLvL43Ti
- X6+AnH4I2zrLfUaG2xGS2yKiU5xC1I6/+/JhnGbGPqg071N+TAxysvNeOgIaLGJLryWz
- lkKjUvC3e3QL8za+0aaylfGqRQICg2YHSLg6b8+QgLuxGRVS6lVk5IOphvSQvOldqC/S
- 11gbclfxo2KjsZwdef6dXSbumcMMIS1r1a5VgILVaIqjUBAffKQpbaKjCFHaRHtAXzOj
- 5hyw==
+ bh=WbasAqxEX90JoEwbVcdWCG+zNNy6OvBBl6/AUooAmpA=;
+ b=aQLWz7cR9HXoi7/OlrcTT82M7u7bwn84nUA6VJP0NwdBAeOMQXiog/BTLC7M7Pxhbl
+ uaN1oeDHZaPtIWBQWr9N2hgnnOwnC6/o4AZdZJ31DpJIH9NUmqkXBDUd7kqnsPjJZXsh
+ htTJY248x+q0UyEGXdekhirGIMivfE+oi09AK+Y54A0z1LvHVNtTLHo2i+HlGNJHn+PM
+ jZ6gijIYO/cHM56j5w3QQVxSQkQXI/nC5xWbn9IUJv/v/0FHvs7K0tp4a1dmkEQT1pEL
+ KfS/+BPdK4XLTXtTYSqibTOVAO5x7b2FypJ2kdBVKTlLAY0da+RwyzirYnuO+iHOX6Lu
+ MDwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=9PfthKOfjAfnWl0b3roJLxEIPPwMIAJjDaAq6lVll6E=;
- b=TNKWs/1Mrvtpwuu+gJl5KpBGQfAXsnt9ASyt82HJkTjYXIQBMfJGXD5sqiXD7iJERB
- 9awOZtlaMtkPyraZ1MIdwLtoBD8NVBOQjLJi7Sz3C/GWQ4jUY3MqfdsJQrM+5e7Wnvd6
- UM0t7GUowA0maAFGbFIQ4qtKFU1MpkWz5/M6I/MyEhkT29Rn6x6v6LE1g8kgspZnlyxm
- ia3rhlnmcXtoNPd4vgrKBaeD/UrlwX6QtejKdkJ9w7lb1iq/PW1+N/fmwfqj6vf56j0/
- qZZCq0LqqyyEXxo08ml2mJ2a44i+spO3XjX8KQmw8V6rZ7XD06GHbD+ZcgZQ4MqoHebb
- X1fw==
-X-Gm-Message-State: APjAAAVgFTCpqj1XGR9M0874dCNrz+m4aWM9GdD9BzdMWU5IKr+VgacG
- LBPiShdlw4aqaLu7ECuIDt4=
-X-Google-Smtp-Source: APXvYqznhH26Iw++socJhLJHB0Q2/ZZOuWpPbNyGSCdchHBoWrvFK4mBnBfUlphXwKrk+6Ayo1WS3Q==
-X-Received: by 2002:a62:6d47:: with SMTP id i68mr42170642pfc.189.1557855080954; 
- Tue, 14 May 2019 10:31:20 -0700 (PDT)
+ bh=WbasAqxEX90JoEwbVcdWCG+zNNy6OvBBl6/AUooAmpA=;
+ b=A7q/eoRNrTs2W/DsL2FnUZ/dDkc787yk6biPRkiJsn9EsfW7NG14gIuqkZwPSLfdOe
+ 6BSAEbLsjuhD4aMPIcD/fbBjvCPVHHDNpWi2sgFii6Fujy+BAPHQTBMS09g/qTKGKi4k
+ i+3BeRk+skVeD7FTNL+f9JgfE2qPkwpffT65xzNJINMG2/+M6WNaQ9NVT20qFQ+IHiIC
+ tOerw7hXaw0qEHbzM//p+X4XNhnZB7X6trNUaChaGit4hBjtGk7A4P1BvdAVyzMWSJUo
+ ftf4HrYmKtO6NtzBiclD+wvmZVLtfkmaR2z+7h3L6LQjdcguxQ9WL1M30d9K4iTjMEx1
+ BKXQ==
+X-Gm-Message-State: APjAAAUcbbDKGsdB/+IZezbFIKOeEwAjAGVc+a4KgOUaUryjClcaUQt2
+ hB9X2ekByXGh4DbbnSLUUd5es2gmxnM=
+X-Google-Smtp-Source: APXvYqyuVkkYTa6xTng+g84uN1ocI673ynEVxM6CR6S2yU4SGUTL7YjZC5fpLyJRWgrY1Ju9g6WyNw==
+X-Received: by 2002:aa7:9203:: with SMTP id 3mr42332432pfo.123.1557855085925; 
+ Tue, 14 May 2019 10:31:25 -0700 (PDT)
 Received: from localhost.localdomain ([2405:204:7145:24c8:f23d:8e91:fd10:9c55])
- by smtp.googlemail.com with ESMTPSA id n9sm2222485pfq.53.2019.05.14.10.31.16
+ by smtp.googlemail.com with ESMTPSA id n9sm2222485pfq.53.2019.05.14.10.31.21
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 14 May 2019 10:31:20 -0700 (PDT)
+ Tue, 14 May 2019 10:31:25 -0700 (PDT)
 From: Puranjay Mohan <puranjay12@gmail.com>
 To: puranjaymohan@gmail.com,
 	greg@kroah.com
-Subject: [PATCH v2 3/5] Staging: rtl8192u: ieee80211: Fix coding style errors
-Date: Tue, 14 May 2019 23:00:21 +0530
-Message-Id: <20190514173023.31146-4-puranjay12@gmail.com>
+Subject: [PATCH v2 4/5] Staging: rtl8192u: ieee80211: Add spaces around '&&'
+ operator
+Date: Tue, 14 May 2019 23:00:22 +0530
+Message-Id: <20190514173023.31146-5-puranjay12@gmail.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190514173023.31146-1-puranjay12@gmail.com>
 References: <20190514173023.31146-1-puranjay12@gmail.com>
@@ -93,166 +94,80 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix coding style errors related to braces for if-else statements.
+Fix coding style errors by adding spaces around '&&' operators.
 
 Signed-off-by: Puranjay Mohan <puranjay12@gmail.com>
 ---
- .../staging/rtl8192u/ieee80211/ieee80211_tx.c | 58 +++++++------------
- 1 file changed, 20 insertions(+), 38 deletions(-)
+ drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-index 8e1ec4409b4f..fc6eb97801e1 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-@@ -169,8 +169,7 @@ int ieee80211_encrypt_fragment(
- 	struct ieee80211_crypt_data *crypt = ieee->crypt[ieee->tx_keyidx];
- 	int res;
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+index a4477b8e7f2a..5483df408049 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+@@ -102,7 +102,7 @@ ieee80211_frag_cache_get(struct ieee80211_device *ieee,
+ 	struct rtl_80211_hdr_4addrqos *hdr_4addrqos;
+ 	u8 tid;
  
--	if (!(crypt && crypt->ops))
--	{
-+	if (!(crypt && crypt->ops)) {
- 		printk("=========>%s(), crypt is null\n", __func__);
- 		return -1;
- 	}
-@@ -309,32 +308,25 @@ static void ieee80211_tx_query_agg_cap(struct ieee80211_device *ieee,
- 	if (!Adapter->HalFunc.GetNmodeSupportBySecCfgHandler(Adapter))
- 		return;
- #endif
--	if (!ieee->GetNmodeSupportBySecCfg(ieee->dev))
--	{
-+	if (!ieee->GetNmodeSupportBySecCfg(ieee->dev)) {
- 		return;
- 	}
--	if (pHTInfo->bCurrentAMPDUEnable)
--	{
--		if (!GetTs(ieee, (struct ts_common_info **)(&pTxTs), hdr->addr1, skb->priority, TX_DIR, true))
--		{
-+	if (pHTInfo->bCurrentAMPDUEnable) {
-+		if (!GetTs(ieee, (struct ts_common_info **)(&pTxTs), hdr->addr1, skb->priority, TX_DIR, true)) {
- 			printk("===>can't get TS\n");
- 			return;
- 		}
--		if (!pTxTs->tx_admitted_ba_record.valid)
--		{
-+		if (!pTxTs->tx_admitted_ba_record.valid) {
- 			TsStartAddBaProcess(ieee, pTxTs);
- 			goto FORCED_AGG_SETTING;
--		}
--		else if (!pTxTs->using_ba)
--		{
-+		} else if (!pTxTs->using_ba) {
- 			if (SN_LESS(pTxTs->tx_admitted_ba_record.start_seq_ctrl.field.seq_num, (pTxTs->tx_cur_seq + 1) % 4096))
- 				pTxTs->using_ba = true;
- 			else
- 				goto FORCED_AGG_SETTING;
- 		}
+-	if (((fc & IEEE80211_FCTL_DSTODS) == IEEE80211_FCTL_DSTODS)&&IEEE80211_QOS_HAS_SEQ(fc)) {
++	if (((fc & IEEE80211_FCTL_DSTODS) == IEEE80211_FCTL_DSTODS) && IEEE80211_QOS_HAS_SEQ(fc)) {
+ 	  hdr_4addrqos = (struct rtl_80211_hdr_4addrqos *)hdr;
+ 	  tid = le16_to_cpu(hdr_4addrqos->qos_ctl) & IEEE80211_QCTL_TID;
+ 	  tid = UP2AC(tid);
+@@ -169,7 +169,7 @@ static int ieee80211_frag_cache_invalidate(struct ieee80211_device *ieee,
+ 	struct rtl_80211_hdr_4addrqos *hdr_4addrqos;
+ 	u8 tid;
  
--		if (ieee->iw_mode == IW_MODE_INFRA)
--		{
-+		if (ieee->iw_mode == IW_MODE_INFRA) {
- 			tcb_desc->bAMPDUEnable = true;
- 			tcb_desc->ampdu_factor = pHTInfo->CurrentAMPDUFactor;
- 			tcb_desc->ampdu_density = pHTInfo->CurrentMPDUDensity;
-@@ -366,12 +358,9 @@ static void ieee80211_qurey_ShortPreambleMode(struct ieee80211_device *ieee,
- 					      struct cb_desc *tcb_desc)
- {
- 	tcb_desc->bUseShortPreamble = false;
--	if (tcb_desc->data_rate == 2)
--	{//// 1M can only use Long Preamble. 11B spec
-+	if (tcb_desc->data_rate == 2) {//// 1M can only use Long Preamble. 11B spec
- 		return;
--	}
--	else if (ieee->current_network.capability & WLAN_CAPABILITY_SHORT_PREAMBLE)
--	{
-+	} else if (ieee->current_network.capability & WLAN_CAPABILITY_SHORT_PREAMBLE) {
- 		tcb_desc->bUseShortPreamble = true;
- 	}
- 	return;
-@@ -386,8 +375,7 @@ ieee80211_query_HTCapShortGI(struct ieee80211_device *ieee, struct cb_desc *tcb_
- 	if (!pHTInfo->bCurrentHTSupport||!pHTInfo->bEnableHT)
- 		return;
+-	if(((fc & IEEE80211_FCTL_DSTODS) == IEEE80211_FCTL_DSTODS)&&IEEE80211_QOS_HAS_SEQ(fc)) {
++	if(((fc & IEEE80211_FCTL_DSTODS) == IEEE80211_FCTL_DSTODS) && IEEE80211_QOS_HAS_SEQ(fc)) {
+ 	  hdr_4addrqos = (struct rtl_80211_hdr_4addrqos *)hdr;
+ 	  tid = le16_to_cpu(hdr_4addrqos->qos_ctl) & IEEE80211_QCTL_TID;
+ 	  tid = UP2AC(tid);
+@@ -426,7 +426,7 @@ static int is_duplicate_packet(struct ieee80211_device *ieee,
  
--	if (pHTInfo->bForcedShortGI)
--	{
-+	if (pHTInfo->bForcedShortGI) {
- 		tcb_desc->bUseShortGI = true;
- 		return;
+ 
+ 	//TO2DS and QoS
+-	if(((fc & IEEE80211_FCTL_DSTODS) == IEEE80211_FCTL_DSTODS)&&IEEE80211_QOS_HAS_SEQ(fc)) {
++	if(((fc & IEEE80211_FCTL_DSTODS) == IEEE80211_FCTL_DSTODS) && IEEE80211_QOS_HAS_SEQ(fc)) {
+ 	  hdr_4addrqos = (struct rtl_80211_hdr_4addrqos *)header;
+ 	  tid = le16_to_cpu(hdr_4addrqos->qos_ctl) & IEEE80211_QCTL_TID;
+ 	  tid = UP2AC(tid);
+@@ -773,7 +773,7 @@ static u8 parse_subframe(struct sk_buff *skb,
+ 	/* just for debug purpose */
+ 	SeqNum = WLAN_GET_SEQ_SEQ(le16_to_cpu(hdr->seq_ctl));
+ 
+-	if ((IEEE80211_QOS_HAS_SEQ(fc))&&\
++	if ((IEEE80211_QOS_HAS_SEQ(fc)) && \
+ 			(((frameqos *)(skb->data + IEEE80211_3ADDR_LEN))->field.reserved)) {
+ 		bIsAggregateFrame = true;
  	}
-@@ -535,27 +523,25 @@ static void ieee80211_txrate_selectmode(struct ieee80211_device *ieee,
- 					struct cb_desc *tcb_desc)
- {
- #ifdef TO_DO_LIST
--	if(!IsDataFrame(pFrame))
--	{
-+	if (!IsDataFrame(pFrame)) {
- 		pTcb->bTxDisableRateFallBack = true;
- 		pTcb->bTxUseDriverAssingedRate = true;
- 		pTcb->RATRIndex = 7;
- 		return;
+@@ -1109,7 +1109,7 @@ int ieee80211_rx(struct ieee80211_device *ieee, struct sk_buff *skb,
+ 	if (stype != IEEE80211_STYPE_DATA &&
+ 	    stype != IEEE80211_STYPE_DATA_CFACK &&
+ 	    stype != IEEE80211_STYPE_DATA_CFPOLL &&
+-	    stype != IEEE80211_STYPE_DATA_CFACKPOLL&&
++	    stype != IEEE80211_STYPE_DATA_CFACKPOLL &&
+ 	    stype != IEEE80211_STYPE_QOS_DATA//add by David,2006.8.4
+ 	    ) {
+ 		if (stype != IEEE80211_STYPE_NULLFUNC)
+@@ -2565,7 +2565,7 @@ static inline void ieee80211_process_probe_response(
+ 		//	printk("====>2 network->ssid=%s FLAG=%d target.ssid=%s FLAG=%d\n", network->ssid, network->flags, target->ssid, target->flags);
+ 		if(((network->flags & NETWORK_EMPTY_ESSID) == NETWORK_EMPTY_ESSID) \
+ 		    && (((network->ssid_len > 0) && (strncmp(target->ssid, network->ssid, network->ssid_len)))\
+-		    ||((ieee->current_network.ssid_len == network->ssid_len)&&(strncmp(ieee->current_network.ssid, network->ssid, network->ssid_len) == 0)&&(ieee->state == IEEE80211_NOLINK))))
++		    ||((ieee->current_network.ssid_len == network->ssid_len) && (strncmp(ieee->current_network.ssid, network->ssid, network->ssid_len) == 0) && (ieee->state == IEEE80211_NOLINK))))
+ 			renew = 1;
+ 		//YJ,add,080819,for hidden ap,end
+ 
+@@ -2575,7 +2575,7 @@ static inline void ieee80211_process_probe_response(
  	}
  
--	if(pMgntInfo->ForcedDataRate!= 0)
--	{
-+	if (pMgntInfo->ForcedDataRate!= 0) {
- 		pTcb->bTxDisableRateFallBack = true;
- 		pTcb->bTxUseDriverAssingedRate = true;
- 		return;
- 	}
- #endif
--	if(ieee->bTxDisableRateFallBack)
-+	if (ieee->bTxDisableRateFallBack)
- 		tcb_desc->bTxDisableRateFallBack = true;
- 
--	if(ieee->bTxUseDriverAssingedRate)
-+	if (ieee->bTxUseDriverAssingedRate)
- 		tcb_desc->bTxUseDriverAssingedRate = true;
--	if(!tcb_desc->bTxDisableRateFallBack || !tcb_desc->bTxUseDriverAssingedRate)
-+	if (!tcb_desc->bTxDisableRateFallBack || !tcb_desc->bTxUseDriverAssingedRate)
- 	{
- 		if (ieee->iw_mode == IW_MODE_INFRA || ieee->iw_mode == IW_MODE_ADHOC)
- 			tcb_desc->RATRIndex = 0;
-@@ -614,7 +600,7 @@ int ieee80211_xmit(struct sk_buff *skb, struct net_device *dev)
- 	}
- 
- 
--	if(likely(ieee->raw_tx == 0)){
-+	if (likely(ieee->raw_tx == 0)) {
- 		if (unlikely(skb->len < SNAP_SIZE + sizeof(u16))) {
- 			printk(KERN_WARNING "%s: skb too small (%d).\n",
- 			ieee->dev->name, skb->len);
-@@ -690,15 +676,13 @@ int ieee80211_xmit(struct sk_buff *skb, struct net_device *dev)
- 		if (is_multicast_ether_addr(header.addr1)) {
- 			frag_size = MAX_FRAG_THRESHOLD;
- 			qos_ctl |= QOS_CTL_NOTCONTAIN_ACK;
--		}
--		else {
-+		} else {
- 			frag_size = ieee->fts;//default:392
- 			qos_ctl = 0;
- 		}
- 
- 		//if (ieee->current_network.QoS_Enable)
--		if(qos_actived)
--		{
-+		if (qos_actived) {
- 			hdr_len = IEEE80211_3ADDR_LEN + 2;
- 
- 			skb->priority = ieee80211_classify(skb, &ieee->current_network);
-@@ -746,12 +730,10 @@ int ieee80211_xmit(struct sk_buff *skb, struct net_device *dev)
- 		txb->payload_size = __cpu_to_le16(bytes);
- 
- 		//if (ieee->current_network.QoS_Enable)
--		if(qos_actived)
--		{
-+		if (qos_actived)
- 			txb->queue_index = UP2AC(skb->priority);
--		} else {
-+		else
- 			txb->queue_index = WME_AC_BK;
--		}
- 
- 
- 
+ 	spin_unlock_irqrestore(&ieee->lock, flags);
+-	if (is_beacon(beacon->header.frame_ctl)&&is_same_network(&ieee->current_network, network, ieee)&&\
++	if (is_beacon(beacon->header.frame_ctl) && is_same_network(&ieee->current_network, network, ieee) && \
+ 		(ieee->state == IEEE80211_LINKED)) {
+ 		if (ieee->handle_beacon != NULL)
+ 			ieee->handle_beacon(ieee->dev,beacon,&ieee->current_network);
 -- 
 2.21.0
 
