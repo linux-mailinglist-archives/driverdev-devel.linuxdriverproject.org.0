@@ -1,74 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 129DA1F579
-	for <lists+driverdev-devel@lfdr.de>; Wed, 15 May 2019 15:19:58 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 841B51F703
+	for <lists+driverdev-devel@lfdr.de>; Wed, 15 May 2019 16:59:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id AF6222FC48;
-	Wed, 15 May 2019 13:19:55 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3815E87E09;
+	Wed, 15 May 2019 14:59:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZGJj5jQZyZYl; Wed, 15 May 2019 13:19:54 +0000 (UTC)
+	with ESMTP id gYmemzFBVMxM; Wed, 15 May 2019 14:59:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 622FA27408;
-	Wed, 15 May 2019 13:19:52 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 348E187D46;
+	Wed, 15 May 2019 14:59:03 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0D0D81BF2C0
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 15 May 2019 13:19:47 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 7CC861BF48D
+ for <devel@linuxdriverproject.org>; Wed, 15 May 2019 14:59:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 09B3B861F6
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 15 May 2019 13:19:47 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7752786C5C
+ for <devel@linuxdriverproject.org>; Wed, 15 May 2019 14:59:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WHqxWsTAvxl7
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 15 May 2019 13:19:46 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from kadath.azazel.net (kadath.azazel.net [81.187.231.250])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 767E3861EE
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 15 May 2019 13:19:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=azazel.net; 
- s=20190108;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:
- Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=4NzXO7WQDo5tGkxnhYjLrTOI/MfkuT89qzlzaQU61Fo=; b=bnWqQmOdPT6gdiswwaUKr4p/xC
- g7Do/nV9uOssvDu0Eep3ZCj2/sUfyHO2K1/EGzINHN9H0Yr90eK/pE9DkQG9hLhQO2iYhJPI5ZE7S
- 8Vi9DkJAHD6WTs2YPayhoxI2Hadpuaw218HZ1CdLdD6aFhy9I+DQmhvWgTLdniRt7nTJbd+qr5+UI
- RZ9AclhnK30z1KEynE2Uu6C4Nuf8RIiZ13gEbowW10rtw+Y6T2yhWzDFTi3m5k5xENypP+k2m5gwQ
- /WHXfxbXLowmDl+0gY4OtZKzyn7y/WZvcDlbIWoYjpufrCJWxICz/a9zsqGvxphBfGIpMqoNNIR2m
- Kpt70+Cw==;
-Received: from kadath.azazel.net ([2001:8b0:135f:bcd1:e2cb:4eff:fedf:e608]
- helo=azazel.net)
- by kadath.azazel.net with esmtpsa (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.89) (envelope-from <jeremy@azazel.net>)
- id 1hQtou-0000tG-7n; Wed, 15 May 2019 14:19:44 +0100
-Date: Wed, 15 May 2019 14:19:43 +0100
-From: Jeremy Sowden <jeremy@azazel.net>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v2 1/5] staging: kpc2000: inverted conditional in order
- to reduce indentation.
-Message-ID: <20190515131942.ylskmjapzbfwvznu@azazel.net>
-References: <20190515103454.18456-1-jeremy@azazel.net>
- <20190515111437.18828-1-jeremy@azazel.net>
- <20190515111437.18828-2-jeremy@azazel.net>
- <20190515131451.GA18438@kroah.com>
+ with ESMTP id YsUpvLHhi1uX for <devel@linuxdriverproject.org>;
+ Wed, 15 May 2019 14:59:00 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id F36958405F
+ for <devel@driverdev.osuosl.org>; Wed, 15 May 2019 14:58:59 +0000 (UTC)
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 9483430BB36D;
+ Wed, 15 May 2019 14:58:41 +0000 (UTC)
+Received: from dhcp-27-174.brq.redhat.com (unknown [10.43.17.159])
+ by smtp.corp.redhat.com (Postfix) with SMTP id 8F97719C7C;
+ Wed, 15 May 2019 14:58:35 +0000 (UTC)
+Received: by dhcp-27-174.brq.redhat.com (nbSMTP-1.00) for uid 1000
+ oleg@redhat.com; Wed, 15 May 2019 16:58:38 +0200 (CEST)
+Date: Wed, 15 May 2019 16:58:32 +0200
+From: Oleg Nesterov <oleg@redhat.com>
+To: Sultan Alsawaf <sultan@kerneltoast.com>
+Subject: Re: [RFC] simple_lmk: Introduce Simple Low Memory Killer for Android
+Message-ID: <20190515145831.GD18892@redhat.com>
+References: <CAKOZuessqcjrZ4rfGLgrnOhrLnsVYiVJzOj4Aa=o3ZuZ013d0g@mail.gmail.com>
+ <20190319231020.tdcttojlbmx57gke@brauner.io>
+ <20190320015249.GC129907@google.com>
+ <20190507021622.GA27300@sultan-box.localdomain>
+ <20190507153154.GA5750@redhat.com>
+ <20190507163520.GA1131@sultan-box.localdomain>
+ <20190509155646.GB24526@redhat.com>
+ <20190509183353.GA13018@sultan-box.localdomain>
+ <20190510151024.GA21421@redhat.com>
+ <20190513164555.GA30128@sultan-box.localdomain>
 MIME-Version: 1.0
-In-Reply-To: <20190515131451.GA18438@kroah.com>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-SA-Exim-Connect-IP: 2001:8b0:135f:bcd1:e2cb:4eff:fedf:e608
-X-SA-Exim-Mail-From: jeremy@azazel.net
-X-SA-Exim-Scanned: No (on kadath.azazel.net); SAEximRunCond expanded to false
+Content-Disposition: inline
+In-Reply-To: <20190513164555.GA30128@sultan-box.localdomain>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.49]); Wed, 15 May 2019 14:58:52 +0000 (UTC)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,93 +76,48 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Linux Driver Project Developer List
- <driverdev-devel@linuxdriverproject.org>
-Content-Type: multipart/mixed; boundary="===============0985246378253597127=="
+Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
+ Daniel Colascione <dancol@google.com>, kernel-team <kernel-team@android.com>,
+ Todd Kjos <tkjos@android.com>, Kees Cook <keescook@chromium.org>,
+ Peter Zijlstra <peterz@infradead.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ LKML <linux-kernel@vger.kernel.org>, Tim Murray <timmurray@google.com>,
+ Michal Hocko <mhocko@kernel.org>, linux-mm <linux-mm@kvack.org>,
+ Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
+ Ingo Molnar <mingo@redhat.com>, Martijn Coenen <maco@android.com>,
+ Steven Rostedt <rostedt@goodmis.org>, Joel Fernandes <joel@joelfernandes.org>,
+ Andy Lutomirski <luto@amacapital.net>, Suren Baghdasaryan <surenb@google.com>,
+ Christian Brauner <christian@brauner.io>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-
---===============0985246378253597127==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="w37q7gzpkfzewvzi"
-Content-Disposition: inline
-
-
---w37q7gzpkfzewvzi
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On 2019-05-15, at 15:14:51 +0200, Greg KH wrote:
-> On Wed, May 15, 2019 at 12:14:33PM +0100, Jeremy Sowden wrote:
-> > Changed:
-> >
-> >   for (...) {
-> >     ...
-> >     if (expr) {
-> >       ...
-> >     }
-> >   }
-> >
-> > into:
-> >
-> >   for (...) {
-> >     ...
-> >     if (!expr)
-> >       continue;
-> >     ...
-> >   }
-> >
-> > in order to reduce indentation of conditional block.  Fixed
-> > indentation of cases blocks at the same time.
-> >
-> > Signed-off-by: Jeremy Sowden <jeremy@azazel.net>
-> > Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
-> > ---
-> >  drivers/staging/kpc2000/kpc2000/cell_probe.c | 43 +++++++++++---------
-> >  1 file changed, 24 insertions(+), 19 deletions(-)
+On 05/13, Sultan Alsawaf wrote:
 >
-> Always be sure to cc: the proper maintainer and developers for your
-> patches.  Otherwise they might get lost in the noise of a mailing
-> list...
+> On Fri, May 10, 2019 at 05:10:25PM +0200, Oleg Nesterov wrote:
+> > I am starting to think I am ;)
+> >
+> > If you have task1 != task2 this code
+> >
+> > 	task_lock(task1);
+> > 	task_lock(task2);
+> >
+> > should trigger print_deadlock_bug(), task1->alloc_lock and task2->alloc_lock are
+> > the "same" lock from lockdep pov, held_lock's will have the same hlock_class().
+>
+> Okay, I've stubbed out debug_locks_off(), and lockdep is now complaining about a
+> bunch of false positives so it is _really_ enabled this time.
 
-Understood.
+Could you explain in detail what exactly did you do and what do you see in dmesg?
 
-Thanks,
+Just in case, lockdep complains only once, print_circular_bug() does debug_locks_off()
+so it it has already reported another false positive __lock_acquire() will simply
+return after that.
 
-J.
-
---w37q7gzpkfzewvzi
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEZ8d+2N/NBLDbUxIF0Z7UzfnX9sMFAlzcEe4ACgkQ0Z7UzfnX
-9sNHORAAtQ89e67OdDifpYEh/ORbp3YkXbF9mlBTde23aD5Ap/Ei4wh0/jRcy3X/
-ikATNNuXFGL27BaP+NvIIWcnk2frHVvEywk1+KtBBA3rR138rVWPahR4NV67Lj0p
-Cktpv8rfXuE/maGUjwginRaWRdWlE4mrrDIwsU+VsSHhgwNVRHPuiIUZ46LlIygr
-wrGhnG9mjJXaj6iKdliPtZTbY/WngqfVVQfEL5+TmihL4K4OGTucpM95JoqNXYjV
-YIHLg3jUxg/UH3qensE89AppBuBbeUM6zC7Cvu/0uR9GluprCXxstqiuXzV9l5e3
-oI1Lbx/7KpHyUndGVdfASTKVn8gso2Hzm6juQtl2xulWJ5WAHr/XQBLP8qqIbCkt
-t9/1b054VsQIh3vdBXPKDSYPJm8e/eHhGGMMKSURj7UnG9c4fF6duHl1aBSYsKiG
-oGIrlNpOZsSvuvm45r5EaZOGG6g4MBywmMM4W6cmqWHE5/bCPMzD+3PTmAf8wKHN
-+ypp2EprEi0DfhC3II00n7IL2h9EzyIt8IPS7G/DiQkE0GO3dlKfCjgOQnXEP5j2
-JMtiLKBHDzqqS0Q5pAGt1p96qW4/qxLRWHRdfKMr57ga5gA5n9xtbHX/hWci9r76
-IThdJ7GgXDMJ7JwXK3TB0fV7CtDqPyAaLujDobgNOyKDCSMvdb0=
-=PEDM
------END PGP SIGNATURE-----
-
---w37q7gzpkfzewvzi--
-
---===============0985246378253597127==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Oleg.
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============0985246378253597127==--
