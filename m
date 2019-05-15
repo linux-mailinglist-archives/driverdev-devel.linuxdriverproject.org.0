@@ -1,52 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C49A21FB31
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 26A371FB30
 	for <lists+driverdev-devel@lfdr.de>; Wed, 15 May 2019 21:42:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8BDD687207;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8B821864EA;
 	Wed, 15 May 2019 19:42:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bWkD0eHjff20; Wed, 15 May 2019 19:42:31 +0000 (UTC)
+	with ESMTP id 3rEjK8yIciUy; Wed, 15 May 2019 19:42:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 98B8E871E0;
-	Wed, 15 May 2019 19:42:30 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5EAB0864AA;
+	Wed, 15 May 2019 19:42:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A40721BF36A
- for <devel@linuxdriverproject.org>; Wed, 15 May 2019 19:42:28 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 35C331BF36A
+ for <devel@linuxdriverproject.org>; Wed, 15 May 2019 19:42:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A0BF7871E1
- for <devel@linuxdriverproject.org>; Wed, 15 May 2019 19:42:28 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2DE6D871D6
+ for <devel@linuxdriverproject.org>; Wed, 15 May 2019 19:42:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wxHXnoME+KHc for <devel@linuxdriverproject.org>;
+ with ESMTP id vIr5UbkQQG5M for <devel@linuxdriverproject.org>;
  Wed, 15 May 2019 19:42:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from allocationsmooth.icu (unknown [193.164.5.94])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1A1E4871D6
+ by whitealder.osuosl.org (Postfix) with ESMTP id 87E8F871E0
  for <devel@driverdev.osuosl.org>; Wed, 15 May 2019 19:42:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail;
  d=allocationsmooth.icu; 
  h=From:Date:MIME-Version:To:Subject:Message-ID:Content-Type:Content-Transfer-Encoding;
- i=apo@allocationsmooth.icu; bh=8LaGothVAcFJKSY0JMHSBf+SXoU=;
- b=gQdSkwLy1PcYBxvOcL9cqcUgixOYvy0qgRNShiEfqWaOnr57HjHj9RvObihoPS2GfaeG2zTF8Mrs
- jGWGsBIyftyco+KH/fzEPfbxUygdu5D8DZJKH2ukd+sAhHVbicZ6V3fh3uFmSQ0YsyU8fg1DnxxA
- X4WuDyccTCRfjJrVwBU=
+ i=thorp@allocationsmooth.icu; bh=LkAbJv9PwOmfT1XAxUwVXCExHaA=;
+ b=tdnRNJPW4ezYKJ4367gsqbQchvwpV5fw85TRDUIuF/f+83zzH7xMxmSkkUNTt8DfqCcfZo57WvYv
+ uRCuOQe6+lZUXQB00O19kJcNmBpbNin95wXFKt7p/IcLs+tWxz+eQKHhdMmn2BCTEbDeXNjNdiFV
+ csK6tHmxLYGoN7OaA6Q=
 DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=allocationsmooth.icu;
- b=Kakx7VF+US9aH1e0Iu8Y/MF7NgPgkNVRQn6oqPMVOmy7EfGn2Q/ELp/caQcvw/F7axiTIWWChQjT
- C1Bs5R1kHzrhLi6ChBvgSRCugV7c/2GUEkXBcS46DkbK1fUzVL1wkassFJWuCL1yzQ8ycy0WSV/W
- B4WAhlyHO/QoWojR4HA=;
-From: " William Green" <apo@allocationsmooth.icu>
-Date: Wed, 15 May 2019 14:24:22 -0500
+ b=sbe6YQ4Al/F0kuBinayRvSB0hvNuFlk22ieUwr23uvKQa+NXVV98HhM/1Um2T2B7g859LtBvUPJB
+ t4T4D0RzB2F2Widh4a/YLqpBr2nYEbMRUodMt/nbE1HDr6tEIKdqHleBxkZBZI2s1/MeUG0wFmn+
+ WC/zPgeFwnyo0CYUsbg=;
+From: " Traci Stone" <thorp@allocationsmooth.icu>
+Date: Wed, 15 May 2019 14:25:03 -0500
 MIME-Version: 1.0
 To: <devel@driverdev.osuosl.org>
-Subject: Boost your IQ by 20 points by taking this
+Subject: Make yourself smarter by eating this daily
 Message-ID: <TW3UC6P7uUSTf3KzOjrQo0efsni8FSBu_bFy5r9vr-Y.y6uz743iK0FJr5wrAmYcTjsKKP3Q_KuRsH9H6PPNGN0@allocationsmooth.icu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -86,16 +86,16 @@ tter of seconds
 
 "I have never seen anything like this. . .  Adds Bill Gates.  I even starte=
 d taking this myself"
-http://www.allocationsmooth.icu/hsags/mwsmbebob28394bequddn/tNcbRnmHm8Sa3Mk=
-nkWIBoNJEA4tI_f5PltHEdktbw7g/oJ5SQomAWmGB-sE5bln-WRb7j5HdE9QjwK-HV1Wk27V7g1=
-azzSHVitSwZGGeOwRJCzt02WPA5HBimIQLrQWdp1FaV0JPnzu2RLsatzos0oYvUGmX8K8Q1_SUR=
-usy3_32
+http://www.allocationsmooth.icu/Igtdys/smswbaav28394sjzxsj/LEXRERFDIet-y-1R=
+OrYTiKy2-MfltOWWCmUSux_dCRg/CE0LKqbcWvCvULRxjV7nzIU0cxYYBqi9HOV48hebJtck_UI=
+yw53qXtqt1v2SOsq_k3BS7fOTEnr-X8X8CIOV8oI1LNyxqUY8-5pfrfJ6sVGc9oa4jHACPRaYC0=
+Ebtgec
 
 Tuesday: Full Report
-http://www.allocationsmooth.icu/hsags/mwsmbebob28394bequddn/tNcbRnmHm8Sa3Mk=
-nkWIBoNJEA4tI_f5PltHEdktbw7g/oJ5SQomAWmGB-sE5bln-WRb7j5HdE9QjwK-HV1Wk27V7g1=
-azzSHVitSwZGGeOwRJCzt02WPA5HBimIQLrQWdp1FaV0JPnzu2RLsatzos0oYvUGmX8K8Q1_SUR=
-usy3_32
+http://www.allocationsmooth.icu/Igtdys/smswbaav28394sjzxsj/LEXRERFDIet-y-1R=
+OrYTiKy2-MfltOWWCmUSux_dCRg/CE0LKqbcWvCvULRxjV7nzIU0cxYYBqi9HOV48hebJtck_UI=
+yw53qXtqt1v2SOsq_k3BS7fOTEnr-X8X8CIOV8oI1LNyxqUY8-5pfrfJ6sVGc9oa4jHACPRaYC0=
+Ebtgec
 
 
 
@@ -113,10 +113,10 @@ This is an ad-coresspondance
 
 
 go here to end
-http://www.allocationsmooth.icu/Oirobljt/23_3ysuRUS_1Q8K8XmGUvYo0soztasLR2u=
-znPJ0VaF1pdWQrLQImiBH5APW20tzCJRwOeGGZwStiVHSzza1g7V72kW1VH-KwjQ9EdH5j7bRW-=
-nlb5Es-BGmWAmoQS5Jo.g7wbtkdEHtlP5f_It4AEJNoBIWknkM3aS8mHmnRbcNt
-331 East Somerset St. Milwaukee, WI 53204
+http://www.allocationsmooth.icu/jdebbxizwn/cegtbE0CYaRPCAHj4ao9cGVs6Jfrfp5-=
+8YUqxyNL1Io8VOIC8X8X-rnETOf7SB3k_qsOS2v1tqtXq35wyIU_kctJbeh84VOH9iqBYYxc0UI=
+zn7VjxRLUvCvWcbqKL0EC.gRCd_xuSUmCWWOtlfM-2yKiTYrOR1-y-teIDFRERXEL
+86 High Ridge Lane Niles, MI 49120
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
