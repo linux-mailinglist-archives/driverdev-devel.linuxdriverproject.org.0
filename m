@@ -2,76 +2,62 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 85D231E41C
-	for <lists+driverdev-devel@lfdr.de>; Tue, 14 May 2019 23:45:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8B0B11E7BA
+	for <lists+driverdev-devel@lfdr.de>; Wed, 15 May 2019 06:43:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 802938568D;
-	Tue, 14 May 2019 21:45:03 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9532D87029;
+	Wed, 15 May 2019 04:42:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CgI22OPyQ9o6; Tue, 14 May 2019 21:45:03 +0000 (UTC)
+	with ESMTP id yEfDSFW+4sFl; Wed, 15 May 2019 04:42:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DB1C9844C0;
-	Tue, 14 May 2019 21:45:01 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3E9EC86EAC;
+	Wed, 15 May 2019 04:42:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 032961BF3DF
- for <devel@linuxdriverproject.org>; Tue, 14 May 2019 21:45:00 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 7D74E1BF3C2
+ for <devel@linuxdriverproject.org>; Wed, 15 May 2019 04:42:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0003185F82
- for <devel@linuxdriverproject.org>; Tue, 14 May 2019 21:44:59 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 773B286EDA
+ for <devel@linuxdriverproject.org>; Wed, 15 May 2019 04:42:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id x4IJcCe7e9-E for <devel@linuxdriverproject.org>;
- Tue, 14 May 2019 21:44:58 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
- [209.85.210.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B42A885F80
- for <devel@driverdev.osuosl.org>; Tue, 14 May 2019 21:44:58 +0000 (UTC)
-Received: by mail-pf1-f196.google.com with SMTP id z28so196489pfk.0
- for <devel@driverdev.osuosl.org>; Tue, 14 May 2019 14:44:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=LdgLuXhuvNe8rZ3DbhnGRD96MYYEiHvDa0jkZMoRBak=;
- b=nKzCOlFSp2arJ/Eek4iuq4oxnEeRvhuHl4dKBftvbvzIyZTHtC2KuljuvBJhrfA/Xe
- Vd4AnY2YISJr2Q0g7DPKJtUj2CsvYF5igyRNJuF/vhrIRQrymH7RdynXTw5WF5+M0G9g
- 9/Thi2WNSWAouQT0QkadRil8HAG/VHxAleLqCMNfYQSiYRHD8YCfSu1D1kDtOzMvVbGR
- 04a7/Bn7QXw6uOEb5HvYqxz0E9DBlfL7lP1qA58GXlsCQZ8TytVwZkxfiZLQQcB/82g8
- KQPLJY+KEz3Uw+Y40KgOkDqiFuL6Tq5ok3VLb6FO0MsYe05yGYcsE7o7Myucx4ER+YNR
- lw7w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=LdgLuXhuvNe8rZ3DbhnGRD96MYYEiHvDa0jkZMoRBak=;
- b=ZR8psowJrG5Dh+dMJYF516YMPETfLi+UZLlfjYUSCothqV+A0DwD6tlqcAw7lcdRzQ
- BBJikVRsJv6hTCKOyV4nsNg2MppeVQ4ovKZ4n3iOFk5jokLqNwxxnEJ0Uc/PncBmAhsj
- r7PI+tTmOemFPsd1UneW+ePqMYaUZ6rEtv3DsA3HqZ0OGU8zeHpoZfppKgTCNC2g9LYr
- N5h1famBKFrP4A4mVXw8Z2gDXK2dQlW38vBEzhupNZAtPnaeJAz5JgKL+eSiPfRy70nZ
- rhpk8GbqtI3DHo73+4qUhlqOTUnvBdL/q0Z1FKRvNT56KiPQ/rrTPiMsUiYR36DJTdMb
- ZHFw==
-X-Gm-Message-State: APjAAAWeDNtjX/WOh8jzWmnsRkpNaUYC+QsTutsYB62yqP97TIhS6TTh
- 9cojyyusdVlFNofmt2caYKQ=
-X-Google-Smtp-Source: APXvYqwpY/F+5Ch1KL1wPmEwyDdD5jz+alh0eL/63kk0FMOpe3wQ/DutZT896isXVZFCVwJbUvnkVQ==
-X-Received: by 2002:a63:40b:: with SMTP id 11mr24021758pge.31.1557870297666;
- Tue, 14 May 2019 14:44:57 -0700 (PDT)
-Received: from localhost.localdomain ([2409:4072:99:37f9:1880:2621:321c:b6a1])
- by smtp.googlemail.com with ESMTPSA id
- o5sm78285pgl.48.2019.05.14.14.44.54
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 14 May 2019 14:44:57 -0700 (PDT)
-From: Puranjay Mohan <puranjay12@gmail.com>
-To: greg@kroah.com
-Subject: [PATCH] Staging: rtl8192e: Use %s and __func__ in strings
-Date: Wed, 15 May 2019 03:14:07 +0530
-Message-Id: <20190514214407.23005-1-puranjay12@gmail.com>
-X-Mailer: git-send-email 2.21.0
-MIME-Version: 1.0
+ with ESMTP id FNnz-cB5t7hx for <devel@linuxdriverproject.org>;
+ Wed, 15 May 2019 04:42:55 +0000 (UTC)
+X-Greylist: delayed 00:06:31 by SQLgrey-1.7.6
+Received: from condef-04.nifty.com (condef-04.nifty.com [202.248.20.69])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4D69786EAC
+ for <devel@driverdev.osuosl.org>; Wed, 15 May 2019 04:42:55 +0000 (UTC)
+Received: from conuserg-07.nifty.com ([10.126.8.70])by condef-04.nifty.com
+ with ESMTP id x4F4Wbww017346
+ for <devel@driverdev.osuosl.org>; Wed, 15 May 2019 13:32:37 +0900
+Received: from localhost.localdomain (p14092-ipngnfx01kyoto.kyoto.ocn.ne.jp
+ [153.142.97.92]) (authenticated)
+ by conuserg-07.nifty.com with ESMTP id x4F4VXWg022418;
+ Wed, 15 May 2019 13:31:33 +0900
+DKIM-Filter: OpenDKIM Filter v2.10.3 conuserg-07.nifty.com x4F4VXWg022418
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nifty.com;
+ s=dec2015msa; t=1557894694;
+ bh=GBhVHyqB4V20+0mYJbhNu4y/q2WNmGqZYid9a78MJE4=;
+ h=From:To:Cc:Subject:Date:From;
+ b=XZoH7GtXDV3vnWy/v1VeM769Jo2+KIK7XrWBoUzLH+vAEQVHuUB+aQ0pB1R+mRxKJ
+ 0U5BDbpC8OFqBsg2cPaunQNiFz4AeqGvD4Gxpkvjg/LfhCzC7I2ezxxMx9JXxx6hyC
+ z0oJpm8ZlgNj9aoOsJOVkJ4x3qV/Q9wHUpQNuWSiHKR5EfiwRNY04P7fJI/1WGxshg
+ CXt/t8aZTV9nNp9mZ9mclzGZtqZfqHTMMnYmm91G8ChGdesX1dEEzEaz0ibNc0XUw9
+ daXB72Ye/pQ9liUDlNoL5b1wvf8XDVQPLtMF6er7M8xDkR28ez/IOA1alpkDiXzk9P
+ l09lvnoo1PWIw==
+X-Nifty-SrcIP: [153.142.97.92]
+From: Masahiro Yamada <yamada.masahiro@socionext.com>
+To: Gao Xiang <gaoxiang25@huawei.com>, Chao Yu <yuchao0@huawei.com>,
+ linux-erofs@lists.ozlabs.org, Greg KH <gregkh@linuxfoundation.org>,
+ devel@driverdev.osuosl.org
+Subject: [PATCH] staging: erofs: drop unneeded -Wall addition
+Date: Wed, 15 May 2019 13:31:22 +0900
+Message-Id: <20190515043123.9106-1-yamada.masahiro@socionext.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,47 +70,41 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Puranjay Mohan <puranjay12@gmail.com>
+Cc: Masahiro Yamada <yamada.masahiro@socionext.com>,
+ linux-kernel@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix following checkpatch.pl warnings by using %s and __func__
-in strings instead of function names.
+The top level Makefile adds -Wall globally:
 
-WARNING: Prefer using '"%s...", __func__' to using '_rtl92e_dm_check_rate_adaptive', this function's name, in a string
-WARNING: Prefer using '"%s...", __func__' to using 'rtl92e_dm_restore_state', this function's name, in a string
+  KBUILD_CFLAGS   := -Wall -Wundef -Werror=strict-prototypes -Wno-trigraphs \
 
-Signed-off-by: Puranjay Mohan <puranjay12@gmail.com>
+I see two "-Wall" added for compiling objects in drivers/staging/erofs/.
+
+Signed-off-by: Masahiro Yamada <yamada.masahiro@socionext.com>
 ---
- drivers/staging/rtl8192e/rtl8192e/rtl_dm.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c b/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-index 55d857926bba..1b7e3fda7905 100644
---- a/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-+++ b/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-@@ -334,7 +334,7 @@ static void _rtl92e_dm_check_rate_adaptive(struct net_device *dev)
+ drivers/staging/erofs/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/erofs/Makefile b/drivers/staging/erofs/Makefile
+index 38ab344a285e..a34248a2a16a 100644
+--- a/drivers/staging/erofs/Makefile
++++ b/drivers/staging/erofs/Makefile
+@@ -2,7 +2,7 @@
  
- 	if (!priv->up) {
- 		RT_TRACE(COMP_RATE,
--			 "<---- _rtl92e_dm_check_rate_adaptive(): driver is going to unload\n");
-+			 "<---- %s: driver is going to unload\n", __func__);
- 		return;
- 	}
+ EROFS_VERSION = "1.0pre1"
  
-@@ -1178,7 +1178,7 @@ void rtl92e_dm_restore_state(struct net_device *dev)
+-ccflags-y += -Wall -DEROFS_VERSION=\"$(EROFS_VERSION)\"
++ccflags-y += -DEROFS_VERSION=\"$(EROFS_VERSION)\"
  
- 	if (!priv->up) {
- 		RT_TRACE(COMP_RATE,
--			 "<---- rtl92e_dm_restore_state(): driver is going to unload\n");
-+			 "<---- %s: driver is going to unload\n", __func__);
- 		return;
- 	}
- 
+ obj-$(CONFIG_EROFS_FS) += erofs.o
+ # staging requirement: to be self-contained in its own directory
 -- 
-2.21.0
+2.17.1
 
 _______________________________________________
 devel mailing list
