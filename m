@@ -1,83 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2AFBA1F969
-	for <lists+driverdev-devel@lfdr.de>; Wed, 15 May 2019 19:40:18 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1737B1F986
+	for <lists+driverdev-devel@lfdr.de>; Wed, 15 May 2019 19:45:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 523A187E65;
-	Wed, 15 May 2019 17:40:14 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6563E30E80;
+	Wed, 15 May 2019 17:45:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7HsY5OSqnDvF; Wed, 15 May 2019 17:40:14 +0000 (UTC)
+	with ESMTP id ayo2U59dYrAz; Wed, 15 May 2019 17:45:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C31F287E49;
-	Wed, 15 May 2019 17:40:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4583230D6A;
+	Wed, 15 May 2019 17:45:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 66FDE1BF36E
- for <devel@linuxdriverproject.org>; Wed, 15 May 2019 17:40:11 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A8FEB1BF3A3
+ for <devel@linuxdriverproject.org>; Wed, 15 May 2019 17:45:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 62C998708B
- for <devel@linuxdriverproject.org>; Wed, 15 May 2019 17:40:11 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A620886352
+ for <devel@linuxdriverproject.org>; Wed, 15 May 2019 17:45:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Fu+5Ag+5IADo for <devel@linuxdriverproject.org>;
- Wed, 15 May 2019 17:40:09 +0000 (UTC)
+ with ESMTP id Sb3UreBUHeGZ for <devel@linuxdriverproject.org>;
+ Wed, 15 May 2019 17:45:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B6CE387066
- for <devel@driverdev.osuosl.org>; Wed, 15 May 2019 17:40:07 +0000 (UTC)
-Received: from mail-pg1-f199.google.com ([209.85.215.199])
- by youngberry.canonical.com with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.76) (envelope-from <kai.heng.feng@canonical.com>)
- id 1hQxsr-0007KJ-5B
- for devel@driverdev.osuosl.org; Wed, 15 May 2019 17:40:05 +0000
-Received: by mail-pg1-f199.google.com with SMTP id e14so355703pgg.12
- for <devel@driverdev.osuosl.org>; Wed, 15 May 2019 10:40:05 -0700 (PDT)
+Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
+ [209.85.210.194])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id BFE79862FB
+ for <devel@driverdev.osuosl.org>; Wed, 15 May 2019 17:45:43 +0000 (UTC)
+Received: by mail-pf1-f194.google.com with SMTP id s11so320004pfm.12
+ for <devel@driverdev.osuosl.org>; Wed, 15 May 2019 10:45:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=7KG4gphMSYoVpwzM1ZvQMXqTiTL0xVi44Ka8WYWEN9k=;
+ b=rXMOIof5bJoNGedyoGRMhQK3gtYhVrqcBF9HPv53m0ylAxn3tUv71F+cKeAN+9WdsV
+ bdp5sJuCOwLpyuvz++9fJFKJYPD+SoPH9kEZ8QydNN6WSQnFkc+XzvNyeYPUhXz/WFV7
+ 1EANcHBtSRLQjZEf9mf0kEn1x7IIEy9Ukyra6DpUpGTye+7hNTWJskKBWjB3Zcc51NXr
+ HbH8DP7MrYthvNSbmchyvJDGnFyMibNo11h1t0FTmuea5MGQGiqWSz3yXo+8gGeZ/vDf
+ CNHIK2xMcOuQ9vxGNrRXXKN9bV+tw87D3BXHo+B5XSrc1Wg0sfRczW6YVpvbPS+Yu39f
+ 8z/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=mFpR4rTTfMsJJxbiWGfgKAelVVLvVLyIq7PoT3hLjvs=;
- b=hvYrYnVdfoMIWbPIJu9rU47PGyZ6MZa9J1BPuOfD6VJ2JVVWdGCfILy2y8izNdVs1E
- ryAUnQtfhPwQVOjFnGGCeFWkSvTwStru1LNfUH/QIVET5JetHkF32sFBt5ZGEM24/dpU
- w9puppctKLn4znlSFyU3Uc8rgpNXO25H7yigGW9UMj/BaRwNqUqIPHFEzbbbAi+S8Qp3
- hHQ0A6BY57uAb18vazXmU69OXsOCG1OY0pLXoo4aQ7jYnIC0xOPg1BDHVDLAl0qvp5gB
- dI37KV0OVhHmhwvc8iiRRcX1obgyd2t3ZBy/iPECjFOi2UALWnNQ3RphlaVIKPBJwVxf
- 6peA==
-X-Gm-Message-State: APjAAAXS5rr+5VseyPBq5u0agE3n9zD/2S80GqkwqwvJgElxwaCcQzom
- lckN0XZjfanv/s1+TeE/aigDKjauNT7dpq4pn99h21bTAtUdSkLzCjasg1Mu7hx3m2GGnyKMjeE
- HeHkRiZBX4sctSOJXCfatMfSng4SbZFL6i5P/3oA=
-X-Received: by 2002:a63:1706:: with SMTP id x6mr45185328pgl.280.1557942003811; 
- Wed, 15 May 2019 10:40:03 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxsUVkNTfD0Bk+OztecBhfR6QBmKx2bNzjxcA0XCAQqd4jt2var1pXK1zpOslEiQ0pYLuZwsA==
-X-Received: by 2002:a63:1706:: with SMTP id x6mr45185298pgl.280.1557942003437; 
- Wed, 15 May 2019 10:40:03 -0700 (PDT)
-Received: from 2001-b011-380f-14b9-2dec-a462-2693-8ecd.dynamic-ip6.hinet.net
- (2001-b011-380f-14b9-2dec-a462-2693-8ecd.dynamic-ip6.hinet.net.
- [2001:b011:380f:14b9:2dec:a462:2693:8ecd])
- by smtp.gmail.com with ESMTPSA id a13sm6270608pfj.169.2019.05.15.10.40.02
+ h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=7KG4gphMSYoVpwzM1ZvQMXqTiTL0xVi44Ka8WYWEN9k=;
+ b=BR5XjIToZmM5D1QIPvUL4+rd6iiVNC3plJvweTwi30Uaku8AL+CJOdudZrPHlkeTel
+ JoK40tZxs44ZXxp8J38k95RiKtKSFM0UXR+tW6VKBv/cQKoEJVAisLNvWtg/xJ6uZuYQ
+ oyOVoQgverDm3PLVaMhnJOw3/Jo51ZkI7QQicUlwZxucCKyjcklXcjFEKYc01WxglafS
+ mwvBm4WI1/G8nX1sPJaHPEGEVrLtGQQEgrL4nc49SrAtRpJz6Q00H7ZYexIyYMdVBFOB
+ dfRzcTayRqaCyTMmNxj3OqmSPuzz6T4cj0GkyN702p9Jy8WZKyqNpdnk5sBSpugOiFac
+ 0u9g==
+X-Gm-Message-State: APjAAAWbeBumlNdHmDoTIJ45LmWcmTJG7t+jUZ9KZOg1AGeqdjVP7OJH
+ cEenhFFWYJgMsEZhgB3rr0o=
+X-Google-Smtp-Source: APXvYqyZeqGHhO5cXnk+znQ4rksWE3oO0D1M/EflXlGIPxjNHyiGwAMMvgyXLUYHZXYEDuGPaI4cWA==
+X-Received: by 2002:a65:5647:: with SMTP id m7mr44591222pgs.348.1557942343300; 
+ Wed, 15 May 2019 10:45:43 -0700 (PDT)
+Received: from hari-Inspiron-1545 ([183.83.92.73])
+ by smtp.gmail.com with ESMTPSA id t26sm3239577pgk.62.2019.05.15.10.45.39
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 15 May 2019 10:40:02 -0700 (PDT)
-Mime-Version: 1.0 (Mac OS X Mail 12.4 \(3445.104.8\))
-Subject: Re: [PATCH] staging: Add rtl8821ce PCIe WiFi driver
-From: Kai-Heng Feng <kai.heng.feng@canonical.com>
-In-Reply-To: <20190515163945.GA5719@kroah.com>
-Date: Thu, 16 May 2019 01:40:00 +0800
-Message-Id: <C6B4FA3D-A590-47F1-9F94-916862DD15CD@canonical.com>
-References: <20190515112401.15373-1-kai.heng.feng@canonical.com>
- <20190515114022.GA18824@kroah.com>
- <6D5557B8-8140-48A8-BED7-9587936902D8@canonical.com>
- <20190515123319.GA435@kroah.com>
- <63833AA2-AC8B-4EEA-AF36-EF2A9BFD4F9F@canonical.com>
- <20190515163945.GA5719@kroah.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-X-Mailer: Apple Mail (2.3445.104.8)
+ Wed, 15 May 2019 10:45:41 -0700 (PDT)
+Date: Wed, 15 May 2019 23:15:36 +0530
+From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Hariprasad Kelam <hariprasad.kelam@gmail.com>,
+ Hardik Singh Rathore <hardiksingh.k@gmail.com>,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] staging: rtl8723bs: core: rtw_recv: fix warning Comparison
+ to NULL
+Message-ID: <20190515174536.GA4965@hari-Inspiron-1545>
+MIME-Version: 1.0
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,84 +87,246 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Larry Finger <Larry.Finger@lwfinger.net>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"; DelSp="yes"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-YXQgMDA6MzksIEdyZWcgS0ggPGdyZWdraEBsaW51eGZvdW5kYXRpb24ub3JnPiB3cm90ZToKCj4g
-T24gV2VkLCBNYXkgMTUsIDIwMTkgYXQgMDk6MDY6NDRQTSArMDgwMCwgS2FpLUhlbmcgRmVuZyB3
-cm90ZToKPj4gYXQgMjA6MzMsIEdyZWcgS0ggPGdyZWdraEBsaW51eGZvdW5kYXRpb24ub3JnPiB3
-cm90ZToKPj4KPj4+IE9uIFdlZCwgTWF5IDE1LCAyMDE5IGF0IDA3OjU0OjU4UE0gKzA4MDAsIEth
-aS1IZW5nIEZlbmcgd3JvdGU6Cj4+Pj4gYXQgMTk6NDAsIEdyZWcgS0ggPGdyZWdraEBsaW51eGZv
-dW5kYXRpb24ub3JnPiB3cm90ZToKPj4+Pgo+Pj4+PiBPbiBXZWQsIE1heSAxNSwgMjAxOSBhdCAw
-NzoyNDowMVBNICswODAwLCBLYWktSGVuZyBGZW5nIHdyb3RlOgo+Pj4+Pj4gVGhlIHJ0bDg4MjFj
-ZSBjYW4gYmUgZm91bmQgb24gbWFueSBIUCBhbmQgTGVub3ZvIGxhcHRvcHMuCj4+Pj4+PiBVc2Vy
-cyBoYXZlIGJlZW4gdXNpbmcgb3V0LW9mLXRyZWUgbW9kdWxlIGZvciBhIHdoaWxlLAo+Pj4+Pj4K
-Pj4+Pj4+IFRoZSBuZXcgUmVhbHRlayBXaUZpIGRyaXZlciwgcnR3ODgsIHdpbGwgc3VwcG9ydCBy
-dGw4ODIxY2UgaW4gMjAyMCBvcgo+Pj4+Pj4gbGF0ZXIuCj4+Pj4+Cj4+Pj4+IFdoZXJlIGlzIHRo
-YXQgZHJpdmVyLCBhbmQgd2h5IGlzIGl0IGdvaW5nIHRvIHRha2Ugc28gbG9uZyB0byBnZXQgIAo+
-Pj4+PiBtZXJnZWQ/Cj4+Pj4KPj4+PiBydHc4OCBpcyBpbiA1LjIgbm93LCBidXQgaXQgZG9lc27i
-gJl0IHN1cHBvcnQgODgyMWNlIHlldC4KPj4+Pgo+Pj4+IFRoZXkgcGxhbiB0byBhZGQgdGhlIHN1
-cHBvcnQgaW4gMjAyMC4KPj4+Cj4+PiBXaG8gaXMgInRoZXkiIGFuZCB3aGF0IGlzIG5lZWRlZCB0
-byBzdXBwb3J0IHRoaXMgZGV2aWNlIGFuZCB3aHkgd2FpdCBhCj4+PiBmdWxsIHllYXI/Cj4+Cj4+
-IOKAnFRoZXnigJ0gcmVmZXJzIHRvIFJlYWx0ZWsuCj4+IEl04oCZcyB0aGVpciBwbGFuIHNvIEkg
-Y2Fu4oCZdCByZWFsbHkgYW5zd2VyIHRoYXQgb24gYmVoYWxmIG9mIFJlYWx0ZWsuCj4KPiBXaGVy
-ZSBkaWQgdGhleSBzYXkgdGhhdD8gIEFueSByZWFzb24gdGhlaXIgZGV2ZWxvcGVycyBhcmUgbm90
-IG9uIHRoaXMKPiBwYXRjaD8KPgo+Pj4+Pj4gMjk2IGZpbGVzIGNoYW5nZWQsIDIwNjE2NiBpbnNl
-cnRpb25zKCspCj4+Pj4+Cj4+Pj4+IFVnaCwgd2h5IGRvIHdlIGtlZXAgaGF2aW5nIHRvIGFkZCB0
-aGUgd2hvbGUgbWVzcyBmb3IgZXZlcnkgc2luZ2xlIG9uZSAgCj4+Pj4+IG9mCj4+Pj4+IHRoZXNl
-IGRldmljZXM/Cj4+Pj4KPj4+PiBCZWNhdXNlIFJlYWx0ZWsgZGV2aWNlcyBhcmUgdW5mb3J0dW5h
-dGVseSB1YmlxdWl0b3VzIHNvIHRoZSBzdXBwb3J0IGlzCj4+Pj4gYmV0dGVyIGNvbWUgZnJvbSBr
-ZXJuZWwuCj4+Pgo+Pj4gVGhhdCdzIG5vdCB0aGUgaXNzdWUgaGVyZS4gIFRoZSBpc3N1ZSBpcyB0
-aGF0IHdlIGtlZXAgYWRkaW5nIHRoZSBzYW1lCj4+PiBodWdlIGRyaXZlciBmaWxlcyB0byB0aGUg
-a2VybmVsIHRyZWUsIG92ZXIgYW5kIG92ZXIsIHdpdGggbm8gcmVhbCBjaGFuZ2UKPj4+IGF0IGFs
-bC4gIFdlIGhhdmUgc2VlbiBhbG1vc3QgYWxsIG9mIHRoZXNlIGZpbGVzIGluIG90aGVyIHJlYWx0
-ZWsKPj4+IGRyaXZlcnMsIHJpZ2h0Pwo+Pgo+PiBZZXMuIFRoZXkgdXNlIG9uZSBzaW5nbGUgZHJp
-dmVyIHRvIHN1cHBvcnQgZGlmZmVyZW50IFNvQ3MsIGRpZmZlcmVudAo+PiBhcmNoaXRlY3R1cmVz
-IGFuZCBldmVuIGRpZmZlcmVudCBPU2VzLgo+Cj4gV2VsbCwgdGhleSB0cnkgdG8sIGl0IGRvZXNu
-J3QgYWx3YXlzIHdvcmsgOigKPgo+PiBUaGF04oCZcyB3aHkgaXTigJlzIGEgbWVzcy4KPgo+IE9o
-IHdlIGFsbCBrbm93IHdoeSB0aGlzIGlzIGEgbWVzcy4gIEJ1dCB0aGV5IGhhdmUgYmVlbiBzYXlp
-bmcgZm9yCj4gX3llYXJzXyB0aGV5IHdvdWxkIGNsZWFuIHVwIHRoaXMgbWVzcy4gIFNvIHB1c2gg
-YmFjaywgSSdtIG5vdCBnb2luZyB0bwo+IHRha2UgYW5vdGhlciAyMDBrIGxpbmVzIGZvciBhIHNp
-bXBsZSB3aWZpIGRyaXZlciwgYWdhaW4uCj4KPiBBbG9uZyB0aG9zZSBsaW5lcywgd2Ugc2hvdWxk
-IHByb2JhYmx5IGp1c3QgZGVsZXRlIHRoZSBvdGhlciBvbGQgcmVhbHRlawo+IGRyaXZlcnMgdGhh
-dCBkb24ndCBzZWVtIHRvIGJlIGdvaW5nIGFueXdoZXJlIGZyb20gc3RhZ2luZyBhcyB3ZWxsLAo+
-IGJlY2F1c2UgdGhvc2UgYXJlIGp1c3QgY29uZnVzaW5nIHBlb3BsZS4KPgo+Pj4gV2h5IG5vdCB1
-c2UgdGhlIG9uZXMgd2UgYWxyZWFkeSBoYXZlPwo+Pgo+PiBJdOKAmXMgdmlydHVhbGx5IGltcG9z
-c2libGUgYmVjYXVzZSBSZWFsdGVr4oCZcyBtZWdhIHdpZmkgZHJpdmVyIHVzZXMgdG9ucyBvZgo+
-PiAjaWZkZWZzLCBvbmx5IG9uZSBjaGlwIGNhbiBiZSBzZWxlY3RlZCB0byBiZSBzdXBwb3J0ZWQg
-YXQgY29tcGlsZSB0aW1lLgo+Cj4gVGhhdCdzIG5vdCB3aGF0IEkgYXNrZWQuCj4KPiBJIHdhbnQg
-dG8ga25vdyB3aHkgdGhleSBjYW4ndCBqdXN0IGFkZCBzdXBwb3J0IGZvciB0aGVpciBuZXcgZGV2
-aWNlcyB0bwo+IG9uZSBvZiB0aGUgbWFueSBleGlzdGluZyByZWFsdGVrIGRyaXZlcnMgd2UgYWxy
-ZWFkeSBoYXZlLiAgVGhhdCBpcyB0aGUKPiBzaW1wbGVyIHdheSwgYW5kIHRoZSBjb3JyZWN0IHdh
-eSB0byBkbyB0aGlzLiAgV2UgZG9uJ3QgZG8gdGhpcyBieSBhZGRpbmcKPiAyMDBrIGxpbmVzLCBh
-Z2Fpbi4KPgo+Pj4gQnV0IGJldHRlciB5ZXQsIHdoeSBub3QgYWRkIHByb3BlciBzdXBwb3J0IGZv
-ciB0aGlzIGhhcmR3YXJlIGFuZCBub3QgdXNlCj4+PiBhIHN0YWdpbmcgZHJpdmVyPwo+Pgo+PiBS
-ZWFsdGVrIHBsYW5zIHRvIGFkZCB0aGUgc3VwcG9ydCBpbiAyMDIwLCBpZiBldmVyeXRoaW5nIGdv
-ZXMgd2VsbC4KPgo+IERldmljZSAiZ29lcyB3ZWxsIiBwbGVhc2UuICBBbmQgd2hlbiBpbiAyMDIw
-PyAgQW5kIHdoeSAyMDIwPyAgV2h5IG5vdAo+IDIwMjI/ICAyMDI0Pwo+Cj4+IE1lYW53aGlsZSwg
-bWFueSB1c2VycyBvZiBIUCBhbmQgTGVub3ZvIGxhcHRvcHMgYXJlIHVzaW5nIG91dC1vZi10cmVl
-ICAKPj4gZHJpdmVyLAo+PiBzb21lIG9mIHRoZW0gYXJlIHN0dWNrIHRvIG9sZGVyIGtlcm5lbHMg
-YmVjYXVzZSB0aGV5IGRvbuKAmXQga25vdyBob3cgdG8gZml4Cj4+IHRoZSBkcml2ZXIuIFNvIEkg
-c3Ryb25nbHkgdGhpbmsgaGF2aW5nIHRoaXMgaW4ga2VybmVsIGlzIGJlbmVmaWNpYWwgdG8gIAo+
-PiBtYW55Cj4+IHVzZXJzLCBldmVuIGl04oCZcyBvbmx5IGZvciBhIHllYXIuCj4KPiBTbyB3aG8g
-aXMgZ29pbmcgdG8gYmUgcmVzcG9uc2libGUgZm9yICJmaXhpbmcgdGhlIGRyaXZlciIgZm9yIGFs
-bCBuZXcKPiBrZXJuZWwgYXBpIHVwZGF0ZXM/ICBJJ20gdGlyZWQgb2Ygc2VlaW5nIG5ldyBkZXZl
-bG9wZXJzIGdldCBsb3N0IGluIHRoZQo+IG1hemUgb2YgeWV0LWFub3RoZXIgcmVhbHRlayB3aWZp
-IGRyaXZlci4gIFdlJ3ZlIGJlZW4gcHV0dGluZyB1cCB3aXRoCj4gdGhpcyBjcnVkIGZvciB5ZWFy
-cywgYW5kIGl0IGhhcyBub3QgZ290dGVuIGFueSBiZXR0ZXIgaWYgeW91IHdhbnQgdG8gYWRkCj4g
-YW5vdGhlciAyMDBrIGxpbmVzIGZvciBzb21lIHVua25vd24gYW1vdW50IG9mIHRpbWUgd2l0aCB0
-aGUgaG9wZSB0aGF0IGEKPiBkcml2ZXIgbWlnaHQgbWFnaWNhbGx5IHNob3cgdXAgb25lIGRheS4K
-CkkgaGF2ZSBubyBpZGVhIHdoeSB0aGV5IGhhdmVu4oCZdCBtYWRlIGV2ZXJ5dGhpbmcgdXBzdHJl
-YW0sIGFuZCBJIGRvIGhvcGUgIAp0aGV5IGRpZCBhIGJldHRlciBqb2IsIHNvIEkgZG9u4oCZdCBu
-ZWVkIHRvIGNsZWFudXAgdGhlaXIgZHJpdmVyIGFuZCBzZW5kIGl0ICAKdXBzdHJlYW0gOigKClNv
-IGJhc2ljYWxseSBJIGNhbuKAmXQgYW5zd2VyIGFueSBvZiB5b3VyIHF1ZXN0aW9ucy4gQXMgTGFy
-cnkgc3VnZ2VzdGVkLCAgCnRoZWlyIGRyaXZlciBzaG91bGQgYmUgaG9zdGVkIHNlcGFyYXRlbHkg
-YW5kIG1heWJlIGJ5IGRvd25zdHJlYW0gZGlzdHJvLgoKS2FpLUhlbmcKCj4KPiB0aGFua3MsCj4K
-PiBncmVnIGstaAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6
-Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZl
-cmRldi1kZXZlbAo=
+fix below warning reported by checkpatch
+
+CHECK: Comparison to NULL could be written
+"!precvpriv->pallocated_frame_buf"
+CHECK: Comparison to NULL could be written "padapter"
+
+Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+---
+ drivers/staging/rtl8723bs/core/rtw_recv.c | 48 +++++++++++++++----------------
+ 1 file changed, 24 insertions(+), 24 deletions(-)
+
+diff --git a/drivers/staging/rtl8723bs/core/rtw_recv.c b/drivers/staging/rtl8723bs/core/rtw_recv.c
+index b543e97..b01dae5 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_recv.c
++++ b/drivers/staging/rtl8723bs/core/rtw_recv.c
+@@ -50,7 +50,7 @@ sint _rtw_init_recv_priv(struct recv_priv *precvpriv, struct adapter *padapter)
+ 
+ 	precvpriv->pallocated_frame_buf = vzalloc(NR_RECVFRAME * sizeof(union recv_frame) + RXFRAME_ALIGN_SZ);
+ 
+-	if (precvpriv->pallocated_frame_buf == NULL) {
++	if (!precvpriv->pallocated_frame_buf) {
+ 		res = _FAIL;
+ 		goto exit;
+ 	}
+@@ -122,7 +122,7 @@ union recv_frame *_rtw_alloc_recvframe(struct __queue *pfree_recv_queue)
+ 
+ 		list_del_init(&precvframe->u.hdr.list);
+ 		padapter = precvframe->u.hdr.adapter;
+-		if (padapter != NULL) {
++		if (padapter) {
+ 			precvpriv = &padapter->recvpriv;
+ 			if (pfree_recv_queue == &precvpriv->free_recv_queue)
+ 				precvpriv->free_recvframe_cnt--;
+@@ -160,7 +160,7 @@ int rtw_free_recvframe(union recv_frame *precvframe, struct __queue *pfree_recv_
+ 
+ 	list_add_tail(&(precvframe->u.hdr.list), get_list_head(pfree_recv_queue));
+ 
+-	if (padapter != NULL) {
++	if (padapter) {
+ 		if (pfree_recv_queue == &precvpriv->free_recv_queue)
+ 				precvpriv->free_recvframe_cnt++;
+ 	}
+@@ -183,7 +183,7 @@ sint _rtw_enqueue_recvframe(union recv_frame *precvframe, struct __queue *queue)
+ 
+ 	list_add_tail(&(precvframe->u.hdr.list), get_list_head(queue));
+ 
+-	if (padapter != NULL)
++	if (padapter)
+ 		if (queue == &precvpriv->free_recv_queue)
+ 			precvpriv->free_recvframe_cnt++;
+ 
+@@ -334,7 +334,7 @@ sint recvframe_chkmic(struct adapter *adapter,  union recv_frame *precvframe)
+ 			prxattrib->ra[0], prxattrib->ra[1], prxattrib->ra[2], prxattrib->ra[3], prxattrib->ra[4], prxattrib->ra[5]));
+ 
+ 		/* calculate mic code */
+-		if (stainfo != NULL) {
++		if (stainfo) {
+ 			if (IS_MCAST(prxattrib->ra)) {
+ 				/* mickey =&psecuritypriv->dot118021XGrprxmickey.skey[0]; */
+ 				/* iv = precvframe->u.hdr.rx_data+prxattrib->hdrlen; */
+@@ -570,7 +570,7 @@ union recv_frame *portctrl(struct adapter *adapter, union recv_frame *precv_fram
+ 	RT_TRACE(_module_rtl871x_recv_c_, _drv_info_, ("########portctrl:adapter->securitypriv.dot11AuthAlgrthm =%d\n", adapter->securitypriv.dot11AuthAlgrthm));
+ 
+ 	if (auth_alg == 2) {
+-		if ((psta != NULL) && (psta->ieee8021x_blocked)) {
++		if ((psta) && (psta->ieee8021x_blocked)) {
+ 			__be16 be_tmp;
+ 
+ 			/* blocked */
+@@ -859,7 +859,7 @@ sint sta2sta_data_frame(
+ 	else
+ 		*psta = rtw_get_stainfo(pstapriv, sta_addr); /*  get ap_info */
+ 
+-	if (*psta == NULL) {
++	if (!*psta) {
+ 		RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, ("can't get psta under sta2sta_data_frame ; drop pkt\n"));
+ 		ret = _FAIL;
+ 		goto exit;
+@@ -942,7 +942,7 @@ sint ap2sta_data_frame(
+ 		else
+ 			*psta = rtw_get_stainfo(pstapriv, pattrib->bssid); /*  get ap_info */
+ 
+-		if (*psta == NULL) {
++		if (!*psta) {
+ 			RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, ("ap2sta: can't get psta under STATION_MODE ; drop pkt\n"));
+ 			#ifdef DBG_RX_DROP_FRAME
+ 			DBG_871X("DBG_RX_DROP_FRAME %s can't get psta under STATION_MODE ; drop pkt\n", __func__);
+@@ -974,7 +974,7 @@ sint ap2sta_data_frame(
+ 
+ 
+ 		*psta = rtw_get_stainfo(pstapriv, pattrib->bssid); /*  get sta_info */
+-		if (*psta == NULL) {
++		if (!*psta) {
+ 			RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, ("can't get psta under MP_MODE ; drop pkt\n"));
+ 			#ifdef DBG_RX_DROP_FRAME
+ 			DBG_871X("DBG_RX_DROP_FRAME %s can't get psta under WIFI_MP_STATE ; drop pkt\n", __func__);
+@@ -991,7 +991,7 @@ sint ap2sta_data_frame(
+ 	} else {
+ 		if (!memcmp(myhwaddr, pattrib->dst, ETH_ALEN) && (!bmcast)) {
+ 			*psta = rtw_get_stainfo(pstapriv, pattrib->bssid); /*  get sta_info */
+-			if (*psta == NULL) {
++			if (!*psta) {
+ 
+ 				/* for AP multicast issue , modify by yiwei */
+ 				static unsigned long send_issue_deauth_time;
+@@ -1042,7 +1042,7 @@ sint sta2ap_data_frame(
+ 		}
+ 
+ 		*psta = rtw_get_stainfo(pstapriv, pattrib->src);
+-		if (*psta == NULL) {
++		if (!*psta == NULL) {
+ 			RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, ("can't get psta under AP_MODE; drop pkt\n"));
+ 			DBG_871X("issue_deauth to sta =" MAC_FMT " for the reason(7)\n", MAC_ARG(pattrib->src));
+ 
+@@ -1099,7 +1099,7 @@ sint validate_recv_ctrl_frame(struct adapter *padapter, union recv_frame *precv_
+ 		return _FAIL;
+ 
+ 	psta = rtw_get_stainfo(pstapriv, GetAddr2Ptr(pframe));
+-	if (psta == NULL)
++	if (!psta)
+ 		return _FAIL;
+ 
+ 	/* for rx pkt statistics */
+@@ -1226,7 +1226,7 @@ sint validate_recv_mgnt_frame(struct adapter *padapter, union recv_frame *precv_
+ 	RT_TRACE(_module_rtl871x_recv_c_, _drv_info_, ("+validate_recv_mgnt_frame\n"));
+ 
+ 	precv_frame = recvframe_chk_defrag(padapter, precv_frame);
+-	if (precv_frame == NULL) {
++	if (!precv_frame) {
+ 		RT_TRACE(_module_rtl871x_recv_c_, _drv_notice_, ("%s: fragment packet\n", __func__));
+ 		return _SUCCESS;
+ 	}
+@@ -1274,7 +1274,7 @@ sint validate_recv_data_frame(struct adapter *adapter, union recv_frame *precv_f
+ 	psa = get_sa(ptr);
+ 	pbssid = get_hdr_bssid(ptr);
+ 
+-	if (pbssid == NULL) {
++	if (!pbssid) {
+ 		#ifdef DBG_RX_DROP_FRAME
+ 		DBG_871X("DBG_RX_DROP_FRAME %s pbssid == NULL\n", __func__);
+ 		#endif
+@@ -1329,7 +1329,7 @@ sint validate_recv_data_frame(struct adapter *adapter, union recv_frame *precv_f
+ 	}
+ 
+ 
+-	if (psta == NULL) {
++	if (!psta) {
+ 		RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, (" after to_fr_ds_chk; psta == NULL\n"));
+ 		#ifdef DBG_RX_DROP_FRAME
+ 		DBG_871X("DBG_RX_DROP_FRAME %s psta == NULL\n", __func__);
+@@ -1426,7 +1426,7 @@ static sint validate_80211w_mgmt(struct adapter *adapter, union recv_frame *prec
+ 			/* actual management data frame body */
+ 			data_len = pattrib->pkt_len - pattrib->hdrlen - pattrib->iv_len - pattrib->icv_len;
+ 			mgmt_DATA = rtw_zmalloc(data_len);
+-			if (mgmt_DATA == NULL) {
++			if (!mgmt_DATA) {
+ 				DBG_871X("%s mgmt allocate fail  !!!!!!!!!\n", __func__);
+ 				goto validate_80211w_fail;
+ 			}
+@@ -1812,7 +1812,7 @@ union recv_frame *recvframe_chk_defrag(struct adapter *padapter, union recv_fram
+ 
+ 	psta_addr = pfhdr->attrib.ta;
+ 	psta = rtw_get_stainfo(pstapriv, psta_addr);
+-	if (psta == NULL) {
++	if (!psta) {
+ 		u8 type = GetFrameType(pfhdr->rx_data);
+ 		if (type != WIFI_DATA_TYPE) {
+ 			psta = rtw_get_bcmc_stainfo(padapter);
+@@ -1828,7 +1828,7 @@ union recv_frame *recvframe_chk_defrag(struct adapter *padapter, union recv_fram
+ 	if (ismfrag == 1) {
+ 		/* 0~(n-1) fragment frame */
+ 		/* enqueue to defraf_g */
+-		if (pdefrag_q != NULL) {
++		if (pdefrag_q) {
+ 			if (fragnum == 0)
+ 				/* the first fragment */
+ 				if (!list_empty(&pdefrag_q->queue))
+@@ -1859,7 +1859,7 @@ union recv_frame *recvframe_chk_defrag(struct adapter *padapter, union recv_fram
+ 	if ((ismfrag == 0) && (fragnum != 0)) {
+ 		/* the last fragment frame */
+ 		/* enqueue the last fragment */
+-		if (pdefrag_q != NULL) {
++		if (pdefrag_q) {
+ 			/* spin_lock(&pdefrag_q->lock); */
+ 			phead = get_list_head(pdefrag_q);
+ 			list_add_tail(&pfhdr->list, phead);
+@@ -1880,7 +1880,7 @@ union recv_frame *recvframe_chk_defrag(struct adapter *padapter, union recv_fram
+ 	}
+ 
+ 
+-	if ((prtnframe != NULL) && (prtnframe->u.hdr.attrib.privacy)) {
++	if ((prtnframe) && (prtnframe->u.hdr.attrib.privacy)) {
+ 		/* after defrag we must check tkip mic code */
+ 		if (recvframe_chkmic(padapter,  prtnframe) == _FAIL) {
+ 			RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, ("recvframe_chkmic(padapter,  prtnframe) == _FAIL\n"));
+@@ -1924,7 +1924,7 @@ static int amsdu_to_msdu(struct adapter *padapter, union recv_frame *prframe)
+ 		}
+ 
+ 		sub_pkt = rtw_os_alloc_msdu_pkt(prframe, nSubframe_Length, pdata);
+-		if (sub_pkt == NULL) {
++		if (!sub_pkt) {
+ 			DBG_871X("%s(): allocate sub packet fail !!!\n", __func__);
+ 			break;
+ 		}
+@@ -2453,7 +2453,7 @@ static int recv_func_posthandle(struct adapter *padapter, union recv_frame *prfr
+ 	DBG_COUNTER(padapter->rx_logs.core_rx_post);
+ 
+ 	prframe = decryptor(padapter, prframe);
+-	if (prframe == NULL) {
++	if (!prframe) {
+ 		RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, ("decryptor: drop pkt\n"));
+ 		#ifdef DBG_RX_DROP_FRAME
+ 		DBG_871X("DBG_RX_DROP_FRAME %s decryptor: drop pkt\n", __func__);
+@@ -2464,7 +2464,7 @@ static int recv_func_posthandle(struct adapter *padapter, union recv_frame *prfr
+ 	}
+ 
+ 	prframe = recvframe_chk_defrag(padapter, prframe);
+-	if (prframe == NULL)	{
++	if (!prframe)	{
+ 		RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, ("recvframe_chk_defrag: drop pkt\n"));
+ 		#ifdef DBG_RX_DROP_FRAME
+ 		DBG_871X("DBG_RX_DROP_FRAME %s recvframe_chk_defrag: drop pkt\n", __func__);
+@@ -2474,7 +2474,7 @@ static int recv_func_posthandle(struct adapter *padapter, union recv_frame *prfr
+ 	}
+ 
+ 	prframe = portctrl(padapter, prframe);
+-	if (prframe == NULL) {
++	if (!prframe) {
+ 		RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, ("portctrl: drop pkt\n"));
+ 		#ifdef DBG_RX_DROP_FRAME
+ 		DBG_871X("DBG_RX_DROP_FRAME %s portctrl: drop pkt\n", __func__);
+-- 
+2.7.4
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
