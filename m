@@ -1,40 +1,40 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7C89E1EC31
-	for <lists+driverdev-devel@lfdr.de>; Wed, 15 May 2019 12:35:20 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 414491EC2B
+	for <lists+driverdev-devel@lfdr.de>; Wed, 15 May 2019 12:35:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 1A761283E2;
-	Wed, 15 May 2019 10:35:19 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C14FE87C70;
+	Wed, 15 May 2019 10:35:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uxu3yjYmY2dd; Wed, 15 May 2019 10:35:11 +0000 (UTC)
+	with ESMTP id cQvi9V2kSzM0; Wed, 15 May 2019 10:35:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 43DBC2E5CF;
-	Wed, 15 May 2019 10:35:06 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 957D587BB1;
+	Wed, 15 May 2019 10:35:04 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AFC491BF997
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 108D01BF41B
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 15 May 2019 10:35:00 +0000 (UTC)
+ Wed, 15 May 2019 10:34:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 14AB7860EF
+ by whitealder.osuosl.org (Postfix) with ESMTP id 0D71D826E6
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 15 May 2019 10:35:00 +0000 (UTC)
+ Wed, 15 May 2019 10:34:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2NS8_PX0yZti
+ with ESMTP id dCUtVrciJtSN
  for <driverdev-devel@linuxdriverproject.org>;
  Wed, 15 May 2019 10:34:57 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from kadath.azazel.net (kadath.azazel.net [81.187.231.250])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E82B8860E0
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3E66285D4B
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 15 May 2019 10:34:56 +0000 (UTC)
+ Wed, 15 May 2019 10:34:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=azazel.net; 
  s=20190108;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
@@ -42,23 +42,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=azazel.net;
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=7Tzhwy+ViBO5bcDD/wZBHBxczCA5Qfqmiqdi6QaSXYE=; b=hfiuSrhIjhFW9uAvSZ+/A6eBBP
- peQAgOBt12+EEO069sqZSjzyBgf6fWc06BfsJuzXOMVHKp59V4dx7Lzbt2dcGUjFIRN0J4iTgYVdE
- U9V5jFQ8LGNTHQTsu6UgP3mqZMJBxzuCpq4FQPECwwDtJq1G6+QS4PhmXD05jjoXzLMegBmtgfIe2
- 5dYMyI1p18tb0ZPeQi8hthD/aEwJnwWbK72yznVbYzYajbmRNAQR7Q3OdKsZ3iAcsUkrK3QAjKD79
- oAseHrHaLJxsCg9m49Kp4HU7WbyUxFabcNMWpgdE6TXVhOEYXquORygY0Ht43St2Sy1O7NxCmP/64
- qvxd3h8A==;
+ bh=T43PTW0mKb1U7lZJZXxvs8Kyvq4o+Sf7IFOT02PD9XM=; b=pY70JKwAyNOdNWPDJLG3L3ugI8
+ buUb34rxibgxINUoFSs/EN8c3a3voyuGDZVkvJHIwLi91mXVIqGOwWfHTxALju5Z+AGAC+vjjqEdS
+ y4ewH1wv4QtvetCmXNFRqePqmW3ltOHBmAymYm4NP0y5sKGAN56Ptocr6DoGTpsJfoCeXT+W8SXAs
+ gRUHMFFgRnoHEwaKpPW0ZP0B9qsGXz69guZ0t7RXG5wAwIgLwktwCCyNd3ZCnSzNFB66eAquZrWIr
+ fuN+I9Dg1u9Ev2ZnCCIzDBpntTYFhM1OjmwsLbEDKgtwPIXL4wUHQcLdvwqNnAtMQMyvQTlZl/m91
+ AnYvqmrg==;
 Received: from ulthar.dreamlands ([192.168.96.2])
  by kadath.azazel.net with esmtp (Exim 4.89)
- (envelope-from <jeremy@azazel.net>) id 1hQrFO-0002JH-Ka
+ (envelope-from <jeremy@azazel.net>) id 1hQrFO-0002JH-Py
  for driverdev-devel@linuxdriverproject.org; Wed, 15 May 2019 11:34:54 +0100
 From: Jeremy Sowden <jeremy@azazel.net>
 To: Linux Driver Project Developer List
  <driverdev-devel@linuxdriverproject.org>
-Subject: [PATCH 1/5] staging: kpc2000: inverted conditional in order to reduce
- indentation.
-Date: Wed, 15 May 2019 11:34:50 +0100
-Message-Id: <20190515103454.18456-2-jeremy@azazel.net>
+Subject: [PATCH 2/5] staging: kpc2000: declare two functions as static.
+Date: Wed, 15 May 2019 11:34:51 +0100
+Message-Id: <20190515103454.18456-3-jeremy@azazel.net>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190515103454.18456-1-jeremy@azazel.net>
 References: <20190515103454.18456-1-jeremy@azazel.net>
@@ -83,87 +82,43 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Changed:
+Two functions were not used outside the translation-unit in which they
+were defined.  Declared them static.
 
-  for (...) {
-    ...
-    if (expr) {
-      ...
-    }
-  }
+Fixes two sparse warnings:
 
-into:
-
-  for (...) {
-    ...
-    if (!expr)
-      continue;
-    ...
-  }
-
-in order to reduce indentation of conditional block.  Fixed indentation
-of cases blocks at the same time.
+  drivers/staging/kpc2000/kpc2000/cell_probe.c:98:5: warning: symbol 'probe_core_basic' was not declared. Should it be static?
+  drivers/staging/kpc2000/kpc2000/cell_probe.c:288:5: warning: symbol 'probe_core_uio' was not declared. Should it be static?
 
 Signed-off-by: Jeremy Sowden <jeremy@azazel.net>
 ---
- drivers/staging/kpc2000/kpc2000/cell_probe.c | 43 +++++++++++---------
- 1 file changed, 24 insertions(+), 19 deletions(-)
+ drivers/staging/kpc2000/kpc2000/cell_probe.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/staging/kpc2000/kpc2000/cell_probe.c b/drivers/staging/kpc2000/kpc2000/cell_probe.c
-index e0dba91e7fa8..fc7038152bb4 100644
+index fc7038152bb4..30e6f176ddfa 100644
 --- a/drivers/staging/kpc2000/kpc2000/cell_probe.c
 +++ b/drivers/staging/kpc2000/kpc2000/cell_probe.c
-@@ -414,26 +414,31 @@ int  kp2000_probe_cores(struct kp2000_device *pcard)
-             read_val = readq(pcard->sysinfo_regs_base + ((pcard->core_table_offset + i) * 8));
-             parse_core_table_entry(&cte, read_val, pcard->core_table_rev);
-             
--            if (cte.type == current_type_id){
--                switch (cte.type){
--                    case KP_CORE_ID_I2C:
--                        err = probe_core_basic(core_num, pcard, KP_DRIVER_NAME_I2C, cte);
--                        break;
--                    
--                    case KP_CORE_ID_SPI:
--                        err = probe_core_basic(core_num, pcard, KP_DRIVER_NAME_SPI, cte);
--                        break;
--                    
--                    default:
--                        err = probe_core_uio(core_num, pcard, "kpc_uio", cte);
--                        break;
--                }
--                if (err){
--                    dev_err(&pcard->pdev->dev, "kp2000_probe_cores: failed to add core %d: %d\n", i, err);
--                    return err;
--                }
--                core_num++;
-+            if (cte.type != current_type_id)
-+                continue;
-+
-+            switch (cte.type) {
-+            case KP_CORE_ID_I2C:
-+                err = probe_core_basic(core_num, pcard,
-+                                       KP_DRIVER_NAME_I2C, cte);
-+                break;
-+
-+            case KP_CORE_ID_SPI:
-+                err = probe_core_basic(core_num, pcard,
-+                                       KP_DRIVER_NAME_SPI, cte);
-+                break;
-+
-+            default:
-+                err = probe_core_uio(core_num, pcard, "kpc_uio", cte);
-+                break;
-             }
-+            if (err) {
-+                dev_err(&pcard->pdev->dev,
-+                        "kp2000_probe_cores: failed to add core %d: %d\n",
-+                        i, err);
-+                return err;
-+            }
-+            core_num++;
-         }
-     }
-     
+@@ -91,7 +91,8 @@ void parse_core_table_entry(struct core_table_entry *cte, const u64 read_val, co
+ }
+ 
+ 
+-int  probe_core_basic(unsigned int core_num, struct kp2000_device *pcard, char *name, const struct core_table_entry cte)
++static int probe_core_basic(unsigned int core_num, struct kp2000_device *pcard,
++			    char *name, const struct core_table_entry cte)
+ {
+     struct mfd_cell  cell = {0};
+     struct resource  resources[2];
+@@ -257,7 +258,8 @@ int kuio_irqcontrol(struct uio_info *uioinfo, s32 irq_on)
+     return 0;
+ }
+ 
+-int  probe_core_uio(unsigned int core_num, struct kp2000_device *pcard, char *name, const struct core_table_entry cte)
++static int probe_core_uio(unsigned int core_num, struct kp2000_device *pcard,
++			  char *name, const struct core_table_entry cte)
+ {
+     struct kpc_uio_device  *kudev;
+     int rv;
 -- 
 2.20.1
 
