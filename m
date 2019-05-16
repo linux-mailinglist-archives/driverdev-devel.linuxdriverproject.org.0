@@ -1,38 +1,38 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C60282101A
-	for <lists+driverdev-devel@lfdr.de>; Thu, 16 May 2019 23:38:30 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 928D52101C
+	for <lists+driverdev-devel@lfdr.de>; Thu, 16 May 2019 23:38:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 141618606C;
-	Thu, 16 May 2019 21:38:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 389568733E;
+	Thu, 16 May 2019 21:38:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vfoiQIm-8FUD; Thu, 16 May 2019 21:38:27 +0000 (UTC)
+	with ESMTP id K9YcMOnGPbtJ; Thu, 16 May 2019 21:38:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3D44084E7C;
-	Thu, 16 May 2019 21:38:27 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 09353873B1;
+	Thu, 16 May 2019 21:38:30 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B796D1C162E
+ by ash.osuosl.org (Postfix) with ESMTP id C6CC01C1639
  for <driverdev-devel@linuxdriverproject.org>;
  Thu, 16 May 2019 21:38:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3145387ECC
+ by hemlock.osuosl.org (Postfix) with ESMTP id C3A7B85F5D
  for <driverdev-devel@linuxdriverproject.org>;
  Thu, 16 May 2019 21:38:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id x46-yBiu5lwO
+ with ESMTP id fTPSeKGGq2n7
  for <driverdev-devel@linuxdriverproject.org>;
  Thu, 16 May 2019 21:38:17 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from kadath.azazel.net (kadath.azazel.net [81.187.231.250])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3A55A85F5D
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4F3E287EC5
  for <driverdev-devel@linuxdriverproject.org>;
  Thu, 16 May 2019 21:38:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=azazel.net; 
@@ -42,23 +42,23 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=azazel.net;
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=wgJhIUKiqDVXDFPFIFqsqBBt8VdcA8q0Tv2osg3juQQ=; b=FzxyP++HYIAFYREr8C1ccjrqxr
- dQzI1q7Yz+mICT9czW8ThqiFBNn/4fmouI1R3eGI9lphw5/owP/qu2dg115A8m5iM2qfqBnrKyo5p
- q3XzlPoA8QZVMsKZJ42lInvm4uhPB4w5eVaEopVjVjhM4aiAPYOpxGJvmUlP7tgUgih9iO4rAWPxs
- z4qpHHUavDOkeGFCh8+DAR9Cbsdfke4u+HkXOYIO1B+nlX4qLN7vW8eSmUYiNuB1JNwQCqLy1CAdf
- jYtYdzsfvC/dWjuCxT8Yu3hM8x14ypCSud8Uzaavm7RPMdOESqIa7mLWEeVkTXqAAZaBQhRXgD53z
- Fl4jnkZA==;
+ bh=js2uYh/1ERsbM4bJglANHnSa95hjUx8olbjQascjRBE=; b=lSq2CpJRgBJSJPcw6HErOUYpB+
+ jVTGQkQm+tt+LoquIX4+iscb11PW6A+cUVWYsl3tshugCRKWtZmbe4wHPiZdmvPV5mIfK9qpmVh39
+ AIyL7ynCZ5nmFfxRAzp7aXD6Y1R318WO3X3D7oKVEWuqTliad1cGuYao5hsrLaMcHAHlzkl5cCWVi
+ Nm80pxWb7Gx60Y21CmdKYlGH3ANAO/1h7fWSLfelQ5YjDHlY93hq+D5o3Z9N+jzqVhipei5iJ8evJ
+ 7tTKBRwAU6iuGtJhOqeN9v6Yfjv95ZPOJ2aIafUySCwkgQvXByQz1pDD7Nx/eEFqX8oN3gGj91Xri
+ XNdtjERw==;
 Received: from ulthar.dreamlands ([192.168.96.2])
  by kadath.azazel.net with esmtp (Exim 4.89)
  (envelope-from <jeremy@azazel.net>)
- id 1hRO4t-0000d7-Af; Thu, 16 May 2019 22:38:15 +0100
+ id 1hRO4t-0000d7-JH; Thu, 16 May 2019 22:38:15 +0100
 From: Jeremy Sowden <jeremy@azazel.net>
 To: Linux Driver Project Developer List
  <driverdev-devel@linuxdriverproject.org>
-Subject: [PATCH v2 7/9] staging: kpc2000: formatting fixes for kp device
- attributes.
-Date: Thu, 16 May 2019 22:38:12 +0100
-Message-Id: <20190516213814.22232-8-jeremy@azazel.net>
+Subject: [PATCH v2 8/9] staging: kpc2000: add separate show functions for
+ readable kp device attributes, and defined them as read-only.
+Date: Thu, 16 May 2019 22:38:13 +0100
+Message-Id: <20190516213814.22232-9-jeremy@azazel.net>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190516213814.22232-1-jeremy@azazel.net>
 References: <20190516200411.17715-1-jeremy@azazel.net>
@@ -85,92 +85,140 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fixed indentation of cpld_reconfigure store call-back and definition of
-attribute list.
+Define separate simple show functions for each attribute instead of
+having a one big one containing a chain of conditionals.
+
+Replaced calls to scnprintf with sprintf since all the outputs are
+single integers.
+
+All the readable device attributes are read-only, so use DEVICE_ATTR_RO
+to define them.
 
 Signed-off-by: Jeremy Sowden <jeremy@azazel.net>
 ---
- drivers/staging/kpc2000/kpc2000/core.c | 55 ++++++++++++++------------
- 1 file changed, 29 insertions(+), 26 deletions(-)
+ drivers/staging/kpc2000/kpc2000/core.c | 89 +++++++++++++++++++-------
+ 1 file changed, 66 insertions(+), 23 deletions(-)
 
 diff --git a/drivers/staging/kpc2000/kpc2000/core.c b/drivers/staging/kpc2000/kpc2000/core.c
-index c05864cf33ce..6147c47c44ab 100644
+index 6147c47c44ab..6fa3dd6531ef 100644
 --- a/drivers/staging/kpc2000/kpc2000/core.c
 +++ b/drivers/staging/kpc2000/kpc2000/core.c
-@@ -47,23 +47,27 @@ static ssize_t  show_cpld_config_reg(struct device *dev, struct device_attribute
- 	val = readq(pcard->sysinfo_regs_base + REG_CPLD_CONFIG);
- 	return scnprintf(buf, PAGE_SIZE, "%016llx\n", val);
- }
--static ssize_t cpld_reconfigure(struct device *dev, struct device_attribute *attr, const char *buf, size_t count)
--{
--    struct kp2000_device *pcard = dev_get_drvdata(dev);
--    long wr_val;
--    int rv;
--
--    rv = kstrtol(buf, 0, &wr_val);
--    if (rv < 0)  return rv;
--    if (wr_val > 7)  return -EINVAL;
+@@ -19,33 +19,76 @@
+ #include <linux/jiffies.h>
+ #include "pcie.h"
  
--    wr_val = wr_val << 8;
--    wr_val |= 0x1; // Set the "Configure Go" bit
--    writeq(wr_val, pcard->sysinfo_regs_base + REG_CPLD_CONFIG);
--    return count;
-+static ssize_t cpld_reconfigure(struct device *dev,
-+				struct device_attribute *attr,
-+				const char *buf, size_t count)
+-
+ static atomic_t next_card_num = ATOMIC_INIT(1);
+ 
+ /*******************************************************
+   * SysFS Attributes
+   ******************************************************/
+-static ssize_t  show_attr(struct device *dev, struct device_attribute *attr, char *buf)
++
++static ssize_t ssid_show(struct device *dev, struct device_attribute *attr,
++			 char *buf)
 +{
 +	struct kp2000_device *pcard = dev_get_drvdata(dev);
-+	long wr_val;
-+	int rv;
 +
-+	rv = kstrtol(buf, 0, &wr_val);
-+	if (rv < 0)
-+		return rv;
-+	if (wr_val > 7)
-+		return -EINVAL;
++	return sprintf(buf, "%016llx\n", pcard->ssid);
++}
 +
-+	wr_val = wr_val << 8;
-+	wr_val |= 0x1; // Set the "Configure Go" bit
-+	writeq(wr_val, pcard->sysinfo_regs_base + REG_CPLD_CONFIG);
-+	return count;
++static ssize_t ddna_show(struct device *dev, struct device_attribute *attr,
++			 char *buf)
++{
++	struct kp2000_device *pcard = dev_get_drvdata(dev);
++
++	return sprintf(buf, "%016llx\n", pcard->ddna);
++}
++
++static ssize_t card_id_show(struct device *dev, struct device_attribute *attr,
++			    char *buf)
++{
++	struct kp2000_device *pcard = dev_get_drvdata(dev);
++
++	return sprintf(buf, "%08x\n", pcard->card_id);
++}
++
++static ssize_t hw_rev_show(struct device *dev, struct device_attribute *attr,
++			   char *buf)
+ {
+-    struct kp2000_device *pcard = dev_get_drvdata(dev);
+-
+-    if (strcmp("ssid", attr->attr.name) == 0){         return scnprintf(buf, PAGE_SIZE, "%016llx\n", pcard->ssid);  } else
+-    if (strcmp("ddna", attr->attr.name) == 0){         return scnprintf(buf, PAGE_SIZE, "%016llx\n", pcard->ddna);  } else
+-    if (strcmp("card_id", attr->attr.name) == 0){      return scnprintf(buf, PAGE_SIZE, "%08x\n", pcard->card_id);  } else
+-    if (strcmp("hw_rev", attr->attr.name) == 0){       return scnprintf(buf, PAGE_SIZE, "%08x\n", pcard->hardware_revision);  } else
+-    if (strcmp("build", attr->attr.name) == 0){        return scnprintf(buf, PAGE_SIZE, "%08x\n", pcard->build_version);  } else
+-    if (strcmp("build_date", attr->attr.name) == 0){   return scnprintf(buf, PAGE_SIZE, "%08x\n", pcard->build_datestamp);  } else
+-    if (strcmp("build_time", attr->attr.name) == 0){   return scnprintf(buf, PAGE_SIZE, "%08x\n", pcard->build_timestamp);  } else
+-    { return -ENXIO; }
++	struct kp2000_device *pcard = dev_get_drvdata(dev);
++
++	return sprintf(buf, "%08x\n", pcard->hardware_revision);
++}
++
++static ssize_t build_show(struct device *dev, struct device_attribute *attr,
++			  char *buf)
++{
++	struct kp2000_device *pcard = dev_get_drvdata(dev);
++
++	return sprintf(buf, "%08x\n", pcard->build_version);
++}
++
++static ssize_t build_date_show(struct device *dev,
++			       struct device_attribute *attr, char *buf)
++{
++	struct kp2000_device *pcard = dev_get_drvdata(dev);
++
++	return sprintf(buf, "%08x\n", pcard->build_datestamp);
++}
++
++static ssize_t build_time_show(struct device *dev,
++			       struct device_attribute *attr, char *buf)
++{
++	struct kp2000_device *pcard = dev_get_drvdata(dev);
++
++	return sprintf(buf, "%08x\n", pcard->build_timestamp);
  }
  
--
- DEVICE_ATTR(ssid,       0444, show_attr, NULL);
- DEVICE_ATTR(ddna,       0444, show_attr, NULL);
- DEVICE_ATTR(card_id,    0444, show_attr, NULL);
-@@ -74,20 +78,19 @@ DEVICE_ATTR(build_time, 0444, show_attr, NULL);
- DEVICE_ATTR(cpld_reg,   0444, show_cpld_config_reg, NULL);
- DEVICE_ATTR(cpld_reconfigure,   0220, NULL, cpld_reconfigure);
+-static ssize_t  show_cpld_config_reg(struct device *dev, struct device_attribute *attr, char *buf)
++static ssize_t cpld_reg_show(struct device *dev, struct device_attribute *attr,
++			     char *buf)
+ {
+ 	struct kp2000_device *pcard = dev_get_drvdata(dev);
+ 	u64 val;
  
--static const struct attribute *  kp_attr_list[] = {
--    &dev_attr_ssid.attr,
--    &dev_attr_ddna.attr,
--    &dev_attr_card_id.attr,
--    &dev_attr_hw_rev.attr,
--    &dev_attr_build.attr,
--    &dev_attr_build_date.attr,
--    &dev_attr_build_time.attr,
--    &dev_attr_cpld_reg.attr,
--    &dev_attr_cpld_reconfigure.attr,
--    NULL,
-+static const struct attribute *kp_attr_list[] = {
-+	&dev_attr_ssid.attr,
-+	&dev_attr_ddna.attr,
-+	&dev_attr_card_id.attr,
-+	&dev_attr_hw_rev.attr,
-+	&dev_attr_build.attr,
-+	&dev_attr_build_date.attr,
-+	&dev_attr_build_time.attr,
-+	&dev_attr_cpld_reg.attr,
-+	&dev_attr_cpld_reconfigure.attr,
-+	NULL,
- };
+ 	val = readq(pcard->sysinfo_regs_base + REG_CPLD_CONFIG);
+-	return scnprintf(buf, PAGE_SIZE, "%016llx\n", val);
++	return sprintf(buf, "%016llx\n", val);
+ }
  
--
- /*******************************************************
-   * Functions
-   ******************************************************/
+ static ssize_t cpld_reconfigure(struct device *dev,
+@@ -68,15 +111,15 @@ static ssize_t cpld_reconfigure(struct device *dev,
+ 	return count;
+ }
+ 
+-DEVICE_ATTR(ssid,       0444, show_attr, NULL);
+-DEVICE_ATTR(ddna,       0444, show_attr, NULL);
+-DEVICE_ATTR(card_id,    0444, show_attr, NULL);
+-DEVICE_ATTR(hw_rev,     0444, show_attr, NULL);
+-DEVICE_ATTR(build,      0444, show_attr, NULL);
+-DEVICE_ATTR(build_date, 0444, show_attr, NULL);
+-DEVICE_ATTR(build_time, 0444, show_attr, NULL);
+-DEVICE_ATTR(cpld_reg,   0444, show_cpld_config_reg, NULL);
+-DEVICE_ATTR(cpld_reconfigure,   0220, NULL, cpld_reconfigure);
++DEVICE_ATTR_RO(ssid);
++DEVICE_ATTR_RO(ddna);
++DEVICE_ATTR_RO(card_id);
++DEVICE_ATTR_RO(hw_rev);
++DEVICE_ATTR_RO(build);
++DEVICE_ATTR_RO(build_date);
++DEVICE_ATTR_RO(build_time);
++DEVICE_ATTR_RO(cpld_reg);
++DEVICE_ATTR(cpld_reconfigure, 0220, NULL, cpld_reconfigure);
+ 
+ static const struct attribute *kp_attr_list[] = {
+ 	&dev_attr_ssid.attr,
 -- 
 2.20.1
 
