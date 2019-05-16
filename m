@@ -2,51 +2,51 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BCA5E20A10
-	for <lists+driverdev-devel@lfdr.de>; Thu, 16 May 2019 16:46:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E329A209B5
+	for <lists+driverdev-devel@lfdr.de>; Thu, 16 May 2019 16:31:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 32770312CE;
-	Thu, 16 May 2019 14:46:47 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4A53F312CF;
+	Thu, 16 May 2019 14:31:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HW6UGleBoC1d; Thu, 16 May 2019 14:46:45 +0000 (UTC)
+	with ESMTP id Spbiw0TUnMo1; Thu, 16 May 2019 14:31:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 3A83C31034;
-	Thu, 16 May 2019 14:46:42 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2B46F3103E;
+	Thu, 16 May 2019 14:31:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3455F1BF37A
- for <devel@linuxdriverproject.org>; Thu, 16 May 2019 14:46:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 468CE1BF3BB
+ for <devel@linuxdriverproject.org>; Thu, 16 May 2019 14:31:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 30933866A9
- for <devel@linuxdriverproject.org>; Thu, 16 May 2019 14:46:41 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3D98186699
+ for <devel@linuxdriverproject.org>; Thu, 16 May 2019 14:31:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xBIMizaiYcWK for <devel@linuxdriverproject.org>;
- Thu, 16 May 2019 14:46:39 +0000 (UTC)
-X-Greylist: delayed 00:14:35 by SQLgrey-1.7.6
-Received: from NAM02-BL2-obe.outbound.protection.outlook.com
- (mail-eopbgr750040.outbound.protection.outlook.com [40.107.75.40])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A2E1A8462E
- for <devel@driverdev.osuosl.org>; Thu, 16 May 2019 14:46:39 +0000 (UTC)
+ with ESMTP id r2M-wILHuoN8 for <devel@linuxdriverproject.org>;
+ Thu, 16 May 2019 14:31:49 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from NAM05-CO1-obe.outbound.protection.outlook.com
+ (mail-eopbgr720064.outbound.protection.outlook.com [40.107.72.64])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E0793855DF
+ for <devel@driverdev.osuosl.org>; Thu, 16 May 2019 14:31:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=analog.onmicrosoft.com; s=selector1-analog-onmicrosoft-com;
+ d=analog.onmicrosoft.com; s=selector1-analog-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=hzDPj83wiHwhkXUL4Fod6Tqy0nErgzy9LkxBMHX3bk4=;
- b=kDbHn6MfcMvoMOyiZUsRGpWq50IujHKADSDPrK/j7JgengHffFLYeVK2g09cEVTGTxAI0LQNtQnj5y3osyQP6ymWQEBPLQjLj4lHhSQNVggYyMI8j5zT026gifQmHqzHPQQS+YDrfNuK6Il8GA/X1xiXK5IK/vncMUIoS/F7j3U=
-Received: from DM6PR03CA0054.namprd03.prod.outlook.com (2603:10b6:5:100::31)
- by CO2PR03MB2262.namprd03.prod.outlook.com (2603:10b6:102:e::25) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.1900.17; Thu, 16 May
- 2019 14:31:35 +0000
-Received: from BL2NAM02FT030.eop-nam02.prod.protection.outlook.com
- (2a01:111:f400:7e46::205) by DM6PR03CA0054.outlook.office365.com
- (2603:10b6:5:100::31) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.1900.17 via Frontend
- Transport; Thu, 16 May 2019 14:31:35 +0000
+ bh=/SGi4KzXxybIE2deu2WtQJI7ZoGuqAfdrEzycFR5+SU=;
+ b=IRiN6M2+r4Z5qg2iWpXszVb3idjm6PfVAaTw3Y+LzbS3rSagpelVsottg8DCZATKrPau3ZWrC3C7l9y40rDrvBr6edhBZpjEBthpnSAJkv7E9c7+Uaun9BcDiMyWVtUg/pxFR0397Lxujc/O1wL9zAlL7NNmi8FtPJXPGPBBxrE=
+Received: from MWHPR03CA0053.namprd03.prod.outlook.com (2603:10b6:301:3b::42)
+ by BN3PR03MB2260.namprd03.prod.outlook.com (2a01:111:e400:7bb9::25)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.1878.24; Thu, 16 May
+ 2019 14:31:46 +0000
+Received: from BL2NAM02FT017.eop-nam02.prod.protection.outlook.com
+ (2a01:111:f400:7e46::209) by MWHPR03CA0053.outlook.office365.com
+ (2603:10b6:301:3b::42) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.1900.16 via Frontend
+ Transport; Thu, 16 May 2019 14:31:45 +0000
 Authentication-Results: spf=pass (sender IP is 137.71.25.55)
  smtp.mailfrom=analog.com; gmx.de; dkim=none (message not signed)
  header.d=none; gmx.de; dmarc=bestguesspass action=none header.from=analog.com; 
@@ -54,52 +54,53 @@ Received-SPF: Pass (protection.outlook.com: domain of analog.com designates
  137.71.25.55 as permitted sender) receiver=protection.outlook.com;
  client-ip=137.71.25.55; helo=nwd2mta1.analog.com;
 Received: from nwd2mta1.analog.com (137.71.25.55) by
- BL2NAM02FT030.mail.protection.outlook.com (10.152.77.172) with Microsoft SMTP
- Server (version=TLS1_0, cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.1900.16
- via Frontend Transport; Thu, 16 May 2019 14:31:34 +0000
+ BL2NAM02FT017.mail.protection.outlook.com (10.152.77.174) with Microsoft SMTP
+ Server (version=TLS1_0, cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.1856.11
+ via Frontend Transport; Thu, 16 May 2019 14:31:45 +0000
 Received: from NWD2HUBCAS7.ad.analog.com (nwd2hubcas7.ad.analog.com
  [10.64.69.107])
- by nwd2mta1.analog.com (8.13.8/8.13.8) with ESMTP id x4GEVYsa027481
+ by nwd2mta1.analog.com (8.13.8/8.13.8) with ESMTP id x4GEVihC027556
  (version=TLSv1/SSLv3 cipher=AES256-SHA bits=256 verify=OK);
- Thu, 16 May 2019 07:31:34 -0700
+ Thu, 16 May 2019 07:31:44 -0700
 Received: from ben-Latitude-E6540.analog.com (10.50.1.133) by
  NWD2HUBCAS7.ad.analog.com (10.64.69.107) with Microsoft SMTP Server id
- 14.3.408.0; Thu, 16 May 2019 10:31:33 -0400
+ 14.3.408.0; Thu, 16 May 2019 10:31:44 -0400
 From: Beniamin Bia <beniamin.bia@analog.com>
 To: <jic23@kernel.org>
-Subject: [PATCH 1/5] iio: adc: ad7606: Move oversampling and scale options to
- chip info
-Date: Thu, 16 May 2019 17:32:04 +0300
-Message-ID: <20190516143208.19294-1-beniamin.bia@analog.com>
+Subject: [PATCH 2/5] iio: adc: ad7606: Add software configuration
+Date: Thu, 16 May 2019 17:32:05 +0300
+Message-ID: <20190516143208.19294-2-beniamin.bia@analog.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190516143208.19294-1-beniamin.bia@analog.com>
+References: <20190516143208.19294-1-beniamin.bia@analog.com>
 MIME-Version: 1.0
 X-ADIRoutedOnPrem: True
 X-EOPAttributedMessage: 0
 X-MS-Office365-Filtering-HT: Tenant
 X-Forefront-Antispam-Report: CIP:137.71.25.55; IPV:NLI; CTRY:US; EFV:NLI;
  SFV:NSPM;
- SFS:(10009020)(136003)(396003)(376002)(346002)(39860400002)(2980300002)(199004)(189003)(6916009)(186003)(26005)(77096007)(478600001)(106002)(8676002)(2351001)(107886003)(53416004)(47776003)(72206003)(16586007)(2906002)(4326008)(8936002)(54906003)(246002)(316002)(50226002)(7416002)(70586007)(305945005)(426003)(5660300002)(86362001)(476003)(126002)(70206006)(2616005)(50466002)(336012)(486006)(356004)(6666004)(36756003)(7696005)(7636002)(14444005)(44832011)(48376002)(1076003)(51416003);
- DIR:OUT; SFP:1101; SCL:1; SRVR:CO2PR03MB2262; H:nwd2mta1.analog.com; FPR:;
- SPF:Pass; LANG:en; PTR:nwd2mail10.analog.com; A:1; MX:1; 
+ SFS:(10009020)(136003)(396003)(376002)(346002)(39860400002)(2980300002)(189003)(199004)(2616005)(446003)(426003)(36756003)(476003)(126002)(7416002)(486006)(11346002)(186003)(26005)(2351001)(76176011)(7636002)(6916009)(47776003)(86362001)(336012)(2906002)(7696005)(23676004)(246002)(8936002)(478600001)(5820100001)(72206003)(50466002)(77096007)(2870700001)(44832011)(53416004)(8676002)(70206006)(106002)(6666004)(54906003)(70586007)(14444005)(356004)(107886003)(1076003)(316002)(4326008)(5660300002)(50226002)(305945005);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:BN3PR03MB2260; H:nwd2mta1.analog.com; FPR:;
+ SPF:Pass; LANG:en; PTR:nwd2mail10.analog.com; MX:1; A:1; 
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 22c31e9e-65f6-41d8-659a-08d6da0b32b5
+X-MS-Office365-Filtering-Correlation-Id: 6bf7b98c-f5ec-4b19-7bdd-08d6da0b38df
 X-Microsoft-Antispam: BCL:0; PCL:0;
  RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(4709054)(2017052603328);
- SRVR:CO2PR03MB2262; 
-X-MS-TrafficTypeDiagnostic: CO2PR03MB2262:
-X-Microsoft-Antispam-PRVS: <CO2PR03MB2262390F2EB2FBB335D6A376F00A0@CO2PR03MB2262.namprd03.prod.outlook.com>
+ SRVR:BN3PR03MB2260; 
+X-MS-TrafficTypeDiagnostic: BN3PR03MB2260:
+X-Microsoft-Antispam-PRVS: <BN3PR03MB22607F41D4954991C4F73FEAF00A0@BN3PR03MB2260.namprd03.prod.outlook.com>
 X-MS-Oob-TLC-OOBClassifiers: OLM:9508;
 X-Forefront-PRVS: 0039C6E5C5
 X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam-Message-Info: QVcCF22YQNw9XFwisnA2wLBAV+knfsFoM2xLMSKyMde744Ttml+ndUO2muyVV31labOHF6INKGTWE3wE+knP9DsbIbnwwFTYCBfk9LIaHDyj7Gu2kx9PqGa6kWroae1oG0AprGTmTZfAQzmUpdxf596PuRfLo9N3Fpg92adCEN4iNQwRLMKofxsZi/DW2np/BHwnQ5Nlwpoz6PV5tQo0U3vy6QM9ODPoi9MzeDPuUgQ5CTYHCkRvVmRsV1hZzCPxO7TcoV+0nrfD2enonGjCq0E/GznwTja6kRj1QxejE3u3stqGv4TeR7AZCZJePHDtA8f89EoYXivJdB3Aw1GubFO6ZolpmSEuoPxER4yoKwUKYG4c49xpr9Xpi8HzJQ6yXmfy8PdMXyaA5PTu44Ws/sM/t/Z4TsCy6DEWuWAtSP4=
+X-Microsoft-Antispam-Message-Info: cP135MHxXNkn4i3XsCLSFOX/JdUsMsKDntD/9YRDhKRtiQe3judiZ0dUOosGlmNTA/aW1QQpV8q0yBIP4/MwK2VAamF636EdCM6Zo5unuSEWJ2wyuZ4UkONS6pZO2VSM9p54hThoVAwNfoFnAWZENKwBhAhH7aIyIQ9H6124klyT1lt6wCDZayhlUgSzsaa7n5wUDmYS8SDJjE1If15ZMKIw1804cZzxeic0tKhhJERTHuKSJGqijAcBoSOvo0/42hRMsZ/uZ+4L1kVcYCHA3QQPTnAG/ZprekgCMLyxlZNj4qlr7GAqJRqKOkcsyl2A2B6jGKTR9ozK6nUUSMAeXXpTtr3tnAdV+8S5SIVv8JjQitfg/iQ5GfiP2kc82ikTtP3TTeceGk9hGjpS8VaOqn7f8KL5Onwox8Ew7KTLJcA=
 X-OriginatorOrg: analog.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 May 2019 14:31:34.8597 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 22c31e9e-65f6-41d8-659a-08d6da0b32b5
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 May 2019 14:31:45.2018 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6bf7b98c-f5ec-4b19-7bdd-08d6da0b38df
 X-MS-Exchange-CrossTenant-Id: eaa689b4-8f87-40e0-9c6f-7228de4d754a
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=eaa689b4-8f87-40e0-9c6f-7228de4d754a; Ip=[137.71.25.55];
  Helo=[nwd2mta1.analog.com]
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO2PR03MB2262
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN3PR03MB2260
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,200 +118,75 @@ Cc: devel@driverdev.osuosl.org, mark.rutland@arm.com, lars@metafoo.de,
  devicetree@vger.kernel.org, linux-iio@vger.kernel.org,
  gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org,
  pmeerw@pmeerw.net, knaack.h@gmx.de, Beniamin Bia <beniamin.bia@analog.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The device dependent options which are going to be different for devices
-which will be supported  in the future by this driver,
-were moved in chip info for a more generic driver. This patch allows
-supporting more devices by the driver. Also, it is an intermediate
-step of adding support for ad7616 in software mode.
-
-Signed-off-by: Beniamin Bia <beniamin.bia@analog.com>
----
- drivers/iio/adc/ad7606.c | 61 +++++++++++++++++++++++++++++-----------
- drivers/iio/adc/ad7606.h | 15 +++++++++-
- 2 files changed, 58 insertions(+), 18 deletions(-)
-
-diff --git a/drivers/iio/adc/ad7606.c b/drivers/iio/adc/ad7606.c
-index 24c70c3cefb4..c66ff22f32d2 100644
---- a/drivers/iio/adc/ad7606.c
-+++ b/drivers/iio/adc/ad7606.c
-@@ -158,7 +158,7 @@ static int ad7606_read_raw(struct iio_dev *indio_dev,
- 		return IIO_VAL_INT;
- 	case IIO_CHAN_INFO_SCALE:
- 		*val = 0;
--		*val2 = st->scale_avail[st->range];
-+		*val2 = st->scale_avail[st->range[0]];
- 		return IIO_VAL_INT_PLUS_MICRO;
- 	case IIO_CHAN_INFO_OVERSAMPLING_RATIO:
- 		*val = st->oversampling;
-@@ -194,6 +194,32 @@ static ssize_t in_voltage_scale_available_show(struct device *dev,
- 
- static IIO_DEVICE_ATTR_RO(in_voltage_scale_available, 0);
- 
-+static int ad7606_write_scale_hw(struct iio_dev *indio_dev, int ch, int val)
-+{
-+	struct ad7606_state *st = iio_priv(indio_dev);
-+
-+	gpiod_set_value(st->gpio_range, val);
-+
-+	return 0;
-+}
-+
-+static int ad7606_write_os_hw(struct iio_dev *indio_dev, int val)
-+{
-+	struct ad7606_state *st = iio_priv(indio_dev);
-+	DECLARE_BITMAP(values, 3);
-+
-+	values[0] = val;
-+
-+	gpiod_set_array_value(ARRAY_SIZE(values), st->gpio_os->desc,
-+			      st->gpio_os->info, values);
-+
-+	/* AD7616 requires a reset to update value */
-+	if (st->chip_info->os_req_reset)
-+		ad7606_reset(st);
-+
-+	return 0;
-+}
-+
- static int ad7606_write_raw(struct iio_dev *indio_dev,
- 			    struct iio_chan_spec const *chan,
- 			    int val,
-@@ -201,15 +227,18 @@ static int ad7606_write_raw(struct iio_dev *indio_dev,
- 			    long mask)
- {
- 	struct ad7606_state *st = iio_priv(indio_dev);
--	DECLARE_BITMAP(values, 3);
--	int i;
-+	int i, ret, ch = 0;
- 
- 	switch (mask) {
- 	case IIO_CHAN_INFO_SCALE:
- 		mutex_lock(&st->lock);
- 		i = find_closest(val2, st->scale_avail, st->num_scales);
--		gpiod_set_value(st->gpio_range, i);
--		st->range = i;
-+		ret = st->write_scale(indio_dev, chan->address, i);
-+		if (ret < 0) {
-+			mutex_unlock(&st->lock);
-+			return ret;
-+		}
-+		st->range[ch] = i;
- 		mutex_unlock(&st->lock);
- 
- 		return 0;
-@@ -218,17 +247,12 @@ static int ad7606_write_raw(struct iio_dev *indio_dev,
- 			return -EINVAL;
- 		i = find_closest(val, st->oversampling_avail,
- 				 st->num_os_ratios);
--
--		values[0] = i;
--
- 		mutex_lock(&st->lock);
--		gpiod_set_array_value(ARRAY_SIZE(values), st->gpio_os->desc,
--				      st->gpio_os->info, values);
--
--		/* AD7616 requires a reset to update value */
--		if (st->chip_info->os_req_reset)
--			ad7606_reset(st);
--
-+		ret = st->write_os(indio_dev, i);
-+		if (ret < 0) {
-+			mutex_unlock(&st->lock);
-+			return ret;
-+		}
- 		st->oversampling = st->oversampling_avail[i];
- 		mutex_unlock(&st->lock);
- 
-@@ -536,7 +560,7 @@ int ad7606_probe(struct device *dev, int irq, void __iomem *base_address,
- 	st->bops = bops;
- 	st->base_address = base_address;
- 	/* tied to logic low, analog input range is +/- 5V */
--	st->range = 0;
-+	st->range[0] = 0;
- 	st->oversampling = 1;
- 	st->scale_avail = ad7606_scale_avail;
- 	st->num_scales = ARRAY_SIZE(ad7606_scale_avail);
-@@ -589,6 +613,9 @@ int ad7606_probe(struct device *dev, int irq, void __iomem *base_address,
- 	if (ret)
- 		dev_warn(st->dev, "failed to RESET: no RESET GPIO specified\n");
- 
-+	st->write_scale = ad7606_write_scale_hw;
-+	st->write_os = ad7606_write_os_hw;
-+
- 	st->trig = devm_iio_trigger_alloc(dev, "%s-dev%d",
- 					  indio_dev->name, indio_dev->id);
- 	if (!st->trig)
-@@ -643,7 +670,7 @@ static int ad7606_resume(struct device *dev)
- 	struct ad7606_state *st = iio_priv(indio_dev);
- 
- 	if (st->gpio_standby) {
--		gpiod_set_value(st->gpio_range, st->range);
-+		gpiod_set_value(st->gpio_range, st->range[0]);
- 		gpiod_set_value(st->gpio_standby, 1);
- 		ad7606_reset(st);
- 	}
-diff --git a/drivers/iio/adc/ad7606.h b/drivers/iio/adc/ad7606.h
-index f9ef52131e74..143c30163df9 100644
---- a/drivers/iio/adc/ad7606.h
-+++ b/drivers/iio/adc/ad7606.h
-@@ -16,6 +16,12 @@
-  *			oversampling ratios.
-  * @oversampling_num	number of elements stored in oversampling_avail array
-  * @os_req_reset	some devices require a reset to update oversampling
-+ * @write_scale_sw	pointer to the function which writes the scale via spi
-+			in software mode
-+ * @write_os_sw		pointer to the function which writes the os via spi
-+			in software mode
-+ * @sw_mode_config:	pointer to a function which configured the device
-+ *			for software mode
-  */
- struct ad7606_chip_info {
- 	const struct iio_chan_spec	*channels;
-@@ -23,6 +29,9 @@ struct ad7606_chip_info {
- 	const unsigned int		*oversampling_avail;
- 	unsigned int			oversampling_num;
- 	bool				os_req_reset;
-+	int (*write_scale_sw)(struct iio_dev *indio_dev, int ch, int val);
-+	int (*write_os_sw)(struct iio_dev *indio_dev, int val);
-+	int (*sw_mode_config)(struct iio_dev *indio_dev);
- };
- 
- /**
-@@ -39,6 +48,8 @@ struct ad7606_chip_info {
-  * @oversampling_avail	pointer to the array which stores the available
-  *			oversampling ratios.
-  * @num_os_ratios	number of elements stored in oversampling_avail array
-+ * @write_scale		pointer to the function which writes the scale
-+ * @write_os		pointer to the function which writes the os
-  * @lock		protect sensor state from concurrent accesses to GPIOs
-  * @gpio_convst	GPIO descriptor for conversion start signal (CONVST)
-  * @gpio_reset		GPIO descriptor for device hard-reset
-@@ -57,13 +68,15 @@ struct ad7606_state {
- 	const struct ad7606_chip_info	*chip_info;
- 	struct regulator		*reg;
- 	const struct ad7606_bus_ops	*bops;
--	unsigned int			range;
-+	unsigned int			range[16];
- 	unsigned int			oversampling;
- 	void __iomem			*base_address;
- 	const unsigned int		*scale_avail;
- 	unsigned int			num_scales;
- 	const unsigned int		*oversampling_avail;
- 	unsigned int			num_os_ratios;
-+	int (*write_scale)(struct iio_dev *indio_dev, int ch, int val);
-+	int (*write_os)(struct iio_dev *indio_dev, int val);
- 
- 	struct mutex			lock; /* protect sensor state */
- 	struct gpio_desc		*gpio_convst;
--- 
-2.17.1
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+QmVjYXVzZSB0aGlzIGRyaXZlciB3aWxsIHN1cHBvcnQgbXVsdGlwbGUgY29uZmlndXJhdGlvbnMg
+Zm9yIHNvZnR3YXJlLAp0aGUgc29mdHdhcmUgY29uZmlndXJhdGlvbiB3YXMgbWFkZSBnZW5lcmlj
+LgoKU2lnbmVkLW9mZi1ieTogQmVuaWFtaW4gQmlhIDxiZW5pYW1pbi5iaWFAYW5hbG9nLmNvbT4K
+LS0tCiBkcml2ZXJzL2lpby9hZGMvYWQ3NjA2LmMgfCA0MCArKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKysrKysrLS0tCiBkcml2ZXJzL2lpby9hZGMvYWQ3NjA2LmggfCAgMiArKwogMiBm
+aWxlcyBjaGFuZ2VkLCAzOSBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdp
+dCBhL2RyaXZlcnMvaWlvL2FkYy9hZDc2MDYuYyBiL2RyaXZlcnMvaWlvL2FkYy9hZDc2MDYuYwpp
+bmRleCBjNjZmZjIyZjMyZDIuLmFiYTBmZDEyM2E1MSAxMDA2NDQKLS0tIGEvZHJpdmVycy9paW8v
+YWRjL2FkNzYwNi5jCisrKyBiL2RyaXZlcnMvaWlvL2FkYy9hZDc2MDYuYwpAQCAtMTQwLDcgKzE0
+MCw3IEBAIHN0YXRpYyBpbnQgYWQ3NjA2X3JlYWRfcmF3KHN0cnVjdCBpaW9fZGV2ICppbmRpb19k
+ZXYsCiAJCQkgICBpbnQgKnZhbDIsCiAJCQkgICBsb25nIG0pCiB7Ci0JaW50IHJldDsKKwlpbnQg
+cmV0LCBjaCA9IDA7CiAJc3RydWN0IGFkNzYwNl9zdGF0ZSAqc3QgPSBpaW9fcHJpdihpbmRpb19k
+ZXYpOwogCiAJc3dpdGNoIChtKSB7CkBAIC0xNTcsOCArMTU3LDEwIEBAIHN0YXRpYyBpbnQgYWQ3
+NjA2X3JlYWRfcmF3KHN0cnVjdCBpaW9fZGV2ICppbmRpb19kZXYsCiAJCSp2YWwgPSAoc2hvcnQp
+cmV0OwogCQlyZXR1cm4gSUlPX1ZBTF9JTlQ7CiAJY2FzZSBJSU9fQ0hBTl9JTkZPX1NDQUxFOgor
+CQlpZiAoc3QtPnN3X21vZGVfZW4pCisJCQljaCA9IGNoYW4tPmFkZHJlc3M7CiAJCSp2YWwgPSAw
+OwotCQkqdmFsMiA9IHN0LT5zY2FsZV9hdmFpbFtzdC0+cmFuZ2VbMF1dOworCQkqdmFsMiA9IHN0
+LT5zY2FsZV9hdmFpbFtzdC0+cmFuZ2VbY2hdXTsKIAkJcmV0dXJuIElJT19WQUxfSU5UX1BMVVNf
+TUlDUk87CiAJY2FzZSBJSU9fQ0hBTl9JTkZPX09WRVJTQU1QTElOR19SQVRJTzoKIAkJKnZhbCA9
+IHN0LT5vdmVyc2FtcGxpbmc7CkBAIC0yMzMsNyArMjM1LDkgQEAgc3RhdGljIGludCBhZDc2MDZf
+d3JpdGVfcmF3KHN0cnVjdCBpaW9fZGV2ICppbmRpb19kZXYsCiAJY2FzZSBJSU9fQ0hBTl9JTkZP
+X1NDQUxFOgogCQltdXRleF9sb2NrKCZzdC0+bG9jayk7CiAJCWkgPSBmaW5kX2Nsb3Nlc3QodmFs
+Miwgc3QtPnNjYWxlX2F2YWlsLCBzdC0+bnVtX3NjYWxlcyk7Ci0JCXJldCA9IHN0LT53cml0ZV9z
+Y2FsZShpbmRpb19kZXYsIGNoYW4tPmFkZHJlc3MsIGkpOworCQlpZiAoc3QtPnN3X21vZGVfZW4p
+CisJCQljaCA9IGNoYW4tPmFkZHJlc3M7CisJCXJldCA9IHN0LT53cml0ZV9zY2FsZShpbmRpb19k
+ZXYsIGNoLCBpKTsKIAkJaWYgKHJldCA8IDApIHsKIAkJCW11dGV4X3VubG9jaygmc3QtPmxvY2sp
+OwogCQkJcmV0dXJuIHJldDsKQEAgLTYxNiw2ICs2MjAsMzYgQEAgaW50IGFkNzYwNl9wcm9iZShz
+dHJ1Y3QgZGV2aWNlICpkZXYsIGludCBpcnEsIHZvaWQgX19pb21lbSAqYmFzZV9hZGRyZXNzLAog
+CXN0LT53cml0ZV9zY2FsZSA9IGFkNzYwNl93cml0ZV9zY2FsZV9odzsKIAlzdC0+d3JpdGVfb3Mg
+PSBhZDc2MDZfd3JpdGVfb3NfaHc7CiAKKwlpZiAoc3QtPmNoaXBfaW5mby0+c3dfbW9kZV9jb25m
+aWcpCisJCXN0LT5zd19tb2RlX2VuID0gZGV2aWNlX3Byb3BlcnR5X3ByZXNlbnQoc3QtPmRldiwK
+KwkJCQkJCQkgImFkaSxzdy1tb2RlIik7CisKKwlpZiAoc3QtPnN3X21vZGVfZW4pIHsKKwkJLyog
+QWZ0ZXIgcmVzZXQsIGluIHNvZnR3YXJlIG1vZGUsIMKxMTAgViBpcyBzZXQgYnkgZGVmYXVsdCAq
+LworCQltZW1zZXQzMihzdC0+cmFuZ2UsIDIsIEFSUkFZX1NJWkUoc3QtPnJhbmdlKSk7CisJCWlu
+ZGlvX2Rldi0+aW5mbyA9ICZhZDc2MDZfaW5mb19vc19hbmRfcmFuZ2U7CisKKwkJLyoKKwkJICog
+SW4gc29mdHdhcmUgbW9kZSwgdGhlIHJhbmdlIGdwaW8gaGFzIG5vIGxvbmdlciBpdHMgZnVuY3Rp
+b24uCisJCSAqIEluc3RlYWQsIHRoZSBzY2FsZSBjYW4gYmUgY29uZmlndXJlZCBpbmRpdmlkdWFs
+bHkgZm9yIGVhY2gKKwkJICogY2hhbm5lbCBmcm9tIHRoZSByYW5nZSByZWdpc3RlcnMuCisJCSAq
+LworCQlpZiAoc3QtPmNoaXBfaW5mby0+d3JpdGVfc2NhbGVfc3cpCisJCQlzdC0+d3JpdGVfc2Nh
+bGUgPSBzdC0+Y2hpcF9pbmZvLT53cml0ZV9zY2FsZV9zdzsKKworCQkvKgorCQkgKiBJbiBzb2Z0
+d2FyZSBtb2RlLCB0aGUgb3ZlcnNhbXBsaW5nIGlzIG5vIGxvbmdlciBjb25maWd1cmVkCisJCSAq
+IHdpdGggR1BJTyBwaW5zLiBJbnN0ZWFkLCB0aGUgb3ZlcnNhbXBsaW5nIGNhbiBiZSBjb25maWd1
+cmVkCisJCSAqIGluIGNvbmZpZ3VyYXRpaW9uIHJlZ2lzdGVyLgorCQkgKi8KKwkJaWYgKHN0LT5j
+aGlwX2luZm8tPndyaXRlX29zX3N3KQorCQkJc3QtPndyaXRlX29zID0gc3QtPmNoaXBfaW5mby0+
+d3JpdGVfb3Nfc3c7CisKKwkJcmV0ID0gc3QtPmNoaXBfaW5mby0+c3dfbW9kZV9jb25maWcoaW5k
+aW9fZGV2KTsKKwkJaWYgKHJldCA8IDApCisJCQlyZXR1cm4gcmV0OworCX0KKwogCXN0LT50cmln
+ID0gZGV2bV9paW9fdHJpZ2dlcl9hbGxvYyhkZXYsICIlcy1kZXYlZCIsCiAJCQkJCSAgaW5kaW9f
+ZGV2LT5uYW1lLCBpbmRpb19kZXYtPmlkKTsKIAlpZiAoIXN0LT50cmlnKQpkaWZmIC0tZ2l0IGEv
+ZHJpdmVycy9paW8vYWRjL2FkNzYwNi5oIGIvZHJpdmVycy9paW8vYWRjL2FkNzYwNi5oCmluZGV4
+IDE0M2MzMDE2M2RmOS4uZDhhNTA5YzJjNDI4IDEwMDY0NAotLS0gYS9kcml2ZXJzL2lpby9hZGMv
+YWQ3NjA2LmgKKysrIGIvZHJpdmVycy9paW8vYWRjL2FkNzYwNi5oCkBAIC00Myw2ICs0Myw3IEBA
+IHN0cnVjdCBhZDc2MDZfY2hpcF9pbmZvIHsKICAqIEByYW5nZQkJdm9sdGFnZSByYW5nZSBzZWxl
+Y3Rpb24sIHNlbGVjdHMgd2hpY2ggc2NhbGUgdG8gYXBwbHkKICAqIEBvdmVyc2FtcGxpbmcJb3Zl
+cnNhbXBsaW5nIHNlbGVjdGlvbgogICogQGJhc2VfYWRkcmVzcwlhZGRyZXNzIGZyb20gd2hlcmUg
+dG8gcmVhZCBkYXRhIGluIHBhcmFsbGVsIG9wZXJhdGlvbgorICogQHN3X21vZGVfZW4JCXNvZnR3
+YXJlIG1vZGUgZW5hYmxlZAogICogQHNjYWxlX2F2YWlsCQlwb2ludGVyIHRvIHRoZSBhcnJheSB3
+aGljaCBzdG9yZXMgdGhlIGF2YWlsYWJsZSBzY2FsZXMKICAqIEBudW1fc2NhbGVzCQludW1iZXIg
+b2YgZWxlbWVudHMgc3RvcmVkIGluIHRoZSBzY2FsZV9hdmFpbCBhcnJheQogICogQG92ZXJzYW1w
+bGluZ19hdmFpbAlwb2ludGVyIHRvIHRoZSBhcnJheSB3aGljaCBzdG9yZXMgdGhlIGF2YWlsYWJs
+ZQpAQCAtNzEsNiArNzIsNyBAQCBzdHJ1Y3QgYWQ3NjA2X3N0YXRlIHsKIAl1bnNpZ25lZCBpbnQJ
+CQlyYW5nZVsxNl07CiAJdW5zaWduZWQgaW50CQkJb3ZlcnNhbXBsaW5nOwogCXZvaWQgX19pb21l
+bQkJCSpiYXNlX2FkZHJlc3M7CisJYm9vbAkJCQlzd19tb2RlX2VuOwogCWNvbnN0IHVuc2lnbmVk
+IGludAkJKnNjYWxlX2F2YWlsOwogCXVuc2lnbmVkIGludAkJCW51bV9zY2FsZXM7CiAJY29uc3Qg
+dW5zaWduZWQgaW50CQkqb3ZlcnNhbXBsaW5nX2F2YWlsOwotLSAKMi4xNy4xCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QK
+ZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVy
+cHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
