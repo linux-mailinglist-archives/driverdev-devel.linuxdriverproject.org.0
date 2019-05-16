@@ -2,37 +2,37 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EA12B20F79
-	for <lists+driverdev-devel@lfdr.de>; Thu, 16 May 2019 22:04:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 94F1020F74
+	for <lists+driverdev-devel@lfdr.de>; Thu, 16 May 2019 22:04:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9763531420;
-	Thu, 16 May 2019 20:04:29 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 90712313B3;
+	Thu, 16 May 2019 20:04:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lGnf1N+a4WZO; Thu, 16 May 2019 20:04:23 +0000 (UTC)
+	with ESMTP id qs3rT2iULjNd; Thu, 16 May 2019 20:04:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id A492631393;
-	Thu, 16 May 2019 20:04:19 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E5DF431380;
+	Thu, 16 May 2019 20:04:18 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3D0BB1BF395
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D13E71BF964
  for <driverdev-devel@linuxdriverproject.org>;
- Thu, 16 May 2019 20:04:16 +0000 (UTC)
+ Thu, 16 May 2019 20:04:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3ACFA86702
+ by silver.osuosl.org (Postfix) with ESMTP id CF34B31380
  for <driverdev-devel@linuxdriverproject.org>;
- Thu, 16 May 2019 20:04:16 +0000 (UTC)
+ Thu, 16 May 2019 20:04:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uFHhwHfeAFWK
+ with ESMTP id oQunxRkAXgq3
  for <driverdev-devel@linuxdriverproject.org>;
  Thu, 16 May 2019 20:04:14 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from kadath.azazel.net (kadath.azazel.net [81.187.231.250])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 732818671E
+ by silver.osuosl.org (Postfix) with ESMTPS id 6A1463137A
  for <driverdev-devel@linuxdriverproject.org>;
  Thu, 16 May 2019 20:04:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=azazel.net; 
@@ -42,23 +42,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=azazel.net;
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=DGrxqFtkEMjc+8ib0m2jIVGc15XtSOwd8aSiXgcYmNQ=; b=El9mXcYO9UWKZeBKOQEAhVKref
- 2GhxcKfHrEFs41foipkCX+l5hqDzjqNLg3n2H3SK0bIW52XDPpduWDYusooAzR+gMHmmgwdy9fu3C
- 4iOWnXxFTpwaR5JZFBIgYsRZaU7CS9qCx8Vp9lgBLbOT575OYKp093vx5XoMqFAbGCZKkpwZUssEI
- Fu2QIFyhclfCbqQx9LZwYy38qZA0rNqMsSguVjBX76U+PITVveA1bpYfHkE85fjIYQcaUYH7FD30F
- LfBYttWasyxoM2XRdNr4MWHwWa/DAkG/rcKpQ/AniQ4WAY8JwR+2OCUtXSwYM9opU/UE3bWl/bygO
- xZIKffCg==;
+ bh=L0DX34PgkFT2N6M74qVeNHo482VFS48zIp+eCQuMcw8=; b=CIn48pKBvoyMjbXGoNJKnU/hUk
+ B14+T2wa9G0TOA+19RI5GqAKhfaVuu5/OeK9wlAVMEzLiI/sp7khMRzMOgrEnhvwWOh2qJwu4l/v8
+ w4qyrUbFgVS+ctV01O2CP/kwdNtjufQ9qCA0ChHQOrdNZEA0d7rIkS+UWtQmBVrpNNL/fTec1XWPm
+ XtwLG3ynDYlaq81anYXD4jm/oUd1EEsQZF8HyO8yq7d6nw0a+F6XN6pFI/8Vde4hIA46SQWOPOHds
+ u5a5RdCNDUSfmOZrk/XHWiKjBCrWkxdcRQsnEHTZEpg1QKqm3IvBMYx7pwP6ReNjiMGYM+Gx/yQbX
+ /w5l3vpw==;
 Received: from ulthar.dreamlands ([192.168.96.2])
  by kadath.azazel.net with esmtp (Exim 4.89)
  (envelope-from <jeremy@azazel.net>)
- id 1hRMbs-0007Ec-EH; Thu, 16 May 2019 21:04:12 +0100
+ id 1hRMbs-0007Ec-JE; Thu, 16 May 2019 21:04:12 +0100
 From: Jeremy Sowden <jeremy@azazel.net>
 To: Linux Driver Project Developer List
  <driverdev-devel@linuxdriverproject.org>
-Subject: [PATCH 05/11] staging: kpc2000: declare all kpc_uio_class device
- attributes as static.
-Date: Thu, 16 May 2019 21:04:05 +0100
-Message-Id: <20190516200411.17715-6-jeremy@azazel.net>
+Subject: [PATCH 06/11] staging: kpc2000: use atomic_t to assign card numbers.
+Date: Thu, 16 May 2019 21:04:06 +0100
+Message-Id: <20190516200411.17715-7-jeremy@azazel.net>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190516200411.17715-1-jeremy@azazel.net>
 References: <20190516200411.17715-1-jeremy@azazel.net>
@@ -84,52 +83,66 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The definitions are only used to populate the kpc_uio_class_attrs
-attribute array, so declare them as static.
+Previously the next card number was assigned from a static int local
+variable, which was read and later incremented.  This was not thread-
+safe, so now we use an atomic_t and atomic_fetch_add instead.
 
-Fixes the following sparse warnings:
-
-  drivers/staging/kpc2000/kpc2000/cell_probe.c:220:1: warning: symbol 'dev_attr_offset' was not declared. Should it be static?
-  drivers/staging/kpc2000/kpc2000/cell_probe.c:221:1: warning: symbol 'dev_attr_size' was not declared. Should it be static?
-  drivers/staging/kpc2000/kpc2000/cell_probe.c:222:1: warning: symbol 'dev_attr_type' was not declared. Should it be static?
-  drivers/staging/kpc2000/kpc2000/cell_probe.c:223:1: warning: symbol 'dev_attr_s2c_dma' was not declared. Should it be static?
-  drivers/staging/kpc2000/kpc2000/cell_probe.c:224:1: warning: symbol 'dev_attr_c2s_dma' was not declared. Should it be static?
-  drivers/staging/kpc2000/kpc2000/cell_probe.c:225:1: warning: symbol 'dev_attr_irq_count' was not declared. Should it be static?
-  drivers/staging/kpc2000/kpc2000/cell_probe.c:226:1: warning: symbol 'dev_attr_irq_base_num' was not declared. Should it be static?
-  drivers/staging/kpc2000/kpc2000/cell_probe.c:227:1: warning: symbol 'dev_attr_core_num' was not declared. Should it be static?
+Updated TODO.
 
 Signed-off-by: Jeremy Sowden <jeremy@azazel.net>
 ---
- drivers/staging/kpc2000/kpc2000/cell_probe.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ drivers/staging/kpc2000/TODO           | 1 -
+ drivers/staging/kpc2000/kpc2000/core.c | 7 ++++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/kpc2000/kpc2000/cell_probe.c b/drivers/staging/kpc2000/kpc2000/cell_probe.c
-index 38c3738209a7..4a1fec7f563b 100644
---- a/drivers/staging/kpc2000/kpc2000/cell_probe.c
-+++ b/drivers/staging/kpc2000/kpc2000/cell_probe.c
-@@ -217,14 +217,14 @@ static ssize_t core_num_show(struct device *dev, struct device_attribute *attr,
- 	return scnprintf(buf, PAGE_SIZE, "%u\n", kudev->core_num);
- }
+diff --git a/drivers/staging/kpc2000/TODO b/drivers/staging/kpc2000/TODO
+index 669fe5bf9637..47530e23e940 100644
+--- a/drivers/staging/kpc2000/TODO
++++ b/drivers/staging/kpc2000/TODO
+@@ -1,6 +1,5 @@
+ - the kpc_spi driver doesn't seem to let multiple transactions (to different instances of the core) happen in parallel...
+ - The kpc_i2c driver is a hot mess, it should probably be cleaned up a ton.  It functions against current hardware though.
+-- pcard->card_num in kp2000_pcie_probe() is a global variable and needs atomic / locking / something better.
+ - would be nice if the AIO fileops in kpc_dma could be made to work
+     - probably want to add a CONFIG_ option to control compilation of the AIO functions
+ - if the AIO fileops in kpc_dma start working, next would be making iov_count > 1 work too
+diff --git a/drivers/staging/kpc2000/kpc2000/core.c b/drivers/staging/kpc2000/kpc2000/core.c
+index eb8bac62d33d..72130a50afd6 100644
+--- a/drivers/staging/kpc2000/kpc2000/core.c
++++ b/drivers/staging/kpc2000/kpc2000/core.c
+@@ -1,4 +1,5 @@
+ // SPDX-License-Identifier: GPL-2.0+
++#include <linux/atomic.h>
+ #include <linux/init.h>
+ #include <linux/module.h>
+ #include <linux/pci.h>
+@@ -19,6 +20,8 @@
+ #include "pcie.h"
  
--DEVICE_ATTR_RO(offset);
--DEVICE_ATTR_RO(size);
--DEVICE_ATTR_RO(type);
--DEVICE_ATTR_RO(s2c_dma);
--DEVICE_ATTR_RO(c2s_dma);
--DEVICE_ATTR_RO(irq_count);
--DEVICE_ATTR_RO(irq_base_num);
--DEVICE_ATTR_RO(core_num);
-+static DEVICE_ATTR_RO(offset);
-+static DEVICE_ATTR_RO(size);
-+static DEVICE_ATTR_RO(type);
-+static DEVICE_ATTR_RO(s2c_dma);
-+static DEVICE_ATTR_RO(c2s_dma);
-+static DEVICE_ATTR_RO(irq_count);
-+static DEVICE_ATTR_RO(irq_base_num);
-+static DEVICE_ATTR_RO(core_num);
  
- struct attribute *kpc_uio_class_attrs[] = {
- 	&dev_attr_offset.attr,
++static atomic_t next_card_num = ATOMIC_INIT(1);
++
+ /*******************************************************
+   * SysFS Attributes
+   ******************************************************/
+@@ -202,7 +205,6 @@ int  kp2000_pcie_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+ {
+     int err = 0;
+     struct kp2000_device *pcard;
+-    static int card_count = 1;
+     int rv;
+     unsigned long reg_bar_phys_addr;
+     unsigned long reg_bar_phys_len;
+@@ -222,8 +224,7 @@ int  kp2000_pcie_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+     //}
+ 
+     //{ Step 2: Initialize trivial pcard elements
+-    pcard->card_num = card_count;
+-    card_count++;
++    pcard->card_num = atomic_fetch_add(1, &next_card_num);
+     scnprintf(pcard->name, 16, "kpcard%d", pcard->card_num);
+ 
+     mutex_init(&pcard->sem);
 -- 
 2.20.1
 
