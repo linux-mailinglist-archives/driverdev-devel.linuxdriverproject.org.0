@@ -2,76 +2,69 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 30C502100D
-	for <lists+driverdev-devel@lfdr.de>; Thu, 16 May 2019 23:33:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1E23821015
+	for <lists+driverdev-devel@lfdr.de>; Thu, 16 May 2019 23:38:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E98678742D;
-	Thu, 16 May 2019 21:33:52 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4659887430;
+	Thu, 16 May 2019 21:38:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rkWgCjlMV07a; Thu, 16 May 2019 21:33:52 +0000 (UTC)
+	with ESMTP id OS4xZKzvcPzq; Thu, 16 May 2019 21:38:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0165087370;
-	Thu, 16 May 2019 21:33:50 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7C44E87370;
+	Thu, 16 May 2019 21:38:19 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B389A1BF2B6
- for <devel@linuxdriverproject.org>; Thu, 16 May 2019 21:33:48 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C8BF21BF29A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 16 May 2019 21:38:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id AFD0021553
- for <devel@linuxdriverproject.org>; Thu, 16 May 2019 21:33:48 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id C3F53228E2
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 16 May 2019 21:38:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FMh9-1ZQlcpi for <devel@linuxdriverproject.org>;
- Thu, 16 May 2019 21:33:47 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f66.google.com (mail-ot1-f66.google.com
- [209.85.210.66])
- by silver.osuosl.org (Postfix) with ESMTPS id EE4A122650
- for <devel@driverdev.osuosl.org>; Thu, 16 May 2019 21:33:46 +0000 (UTC)
-Received: by mail-ot1-f66.google.com with SMTP id l17so4887703otq.1
- for <devel@driverdev.osuosl.org>; Thu, 16 May 2019 14:33:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=RLsybBG6sLbUggVAi7bXCzaTyEG1llzt4l8NvXBkWD0=;
- b=kQKmujFhtAo72AB0snHcaDCif3+naULFQoilmAIC6cMGnoXGg8ewZ21JUB4lOVYrqn
- ziRwjT6PsQTzua7xc3imb9UZ4NgeYhIEclPb/biFpQyoDbDFAidppg+ZW3qHPFUXx0ze
- 5IfccJ4XP9KqRDLcfeOaEywCQOBdZZYgC0GDrZWN+2m3m3f856Op6UdFGfgCGpOJ6QAl
- XXlLDRMeCUo3PgBP/hzld3xTl1ISadWuhZWoCvRqCNp1Qkc85SGbOHdmYMnoRrFT0++7
- rMqZUYKbrckThZrps3MkJEXsX5U4dRBUE5FB9eYeCVbeOysRMEsHfr2+3ePDXRIYTIjy
- zJoQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=RLsybBG6sLbUggVAi7bXCzaTyEG1llzt4l8NvXBkWD0=;
- b=PFkKOR3ASrEGZfXwTpkK9HZVA00awNHqqfUFkaY+j62BCMDrPr7r98F9i7ta0C3hq6
- XXbvcHm4mDyGvhZC4SelWhLx8RmWAsmjpwQqafGn4j52e5QZIlvG1vvAj9g4Sm7DYcM3
- R314tncD3n+8iXJIbypl2RDGW60ftsF3ryVTYcvSHYR6MWBA3ZQo8n7k8+JpEDqEFASh
- CYp4bOp/QxlH7IUq3vOFDqvOsuiY1owqUCjIpzYQLOH/BK3udYDpTEwU+TRw2p2yEH7W
- ruLN3y7D+R+2fqqqagHhi4O8koce/uwNYruVQAFqeNomNa2SDTfEXLCWq6XbadrZ1v0I
- lApw==
-X-Gm-Message-State: APjAAAWjOdR5q9GyO+gC1Cp59eV8WdXT/823k+xdIWilN25ZZ+B4vFmW
- O9ZKq5nSqm7SUHyJBYA3M0o=
-X-Google-Smtp-Source: APXvYqw0GRwZ6MwUBRMhC/o2jF6nAxZtFpTyzX3MJ5sppTLWqV91vvWY1S8vKT1erdagGfEuy/oJcg==
-X-Received: by 2002:a9d:7154:: with SMTP id y20mr7131771otj.369.1558042425977; 
- Thu, 16 May 2019 14:33:45 -0700 (PDT)
-Received: from madhuleo ([2605:6000:1023:606d:10b5:228a:3958:f004])
- by smtp.gmail.com with ESMTPSA id 69sm2282544oty.46.2019.05.16.14.33.44
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 16 May 2019 14:33:44 -0700 (PDT)
-From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-To: eric@anholt.net, stefan.wahren@i2se.com, gregkh@linuxfoundation.org,
- f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com,
- bcm-kernel-feedback-list@broadcom.com,
- linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v2] Staging: bcm2835-camera: Prefer kernel types
-Date: Thu, 16 May 2019 16:33:40 -0500
-Message-Id: <20190516213340.9311-1-madhumithabiw@gmail.com>
-X-Mailer: git-send-email 2.17.1
+ with ESMTP id IQLd-vpPn5Vw
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 16 May 2019 21:38:16 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from kadath.azazel.net (kadath.azazel.net [81.187.231.250])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2524A21553
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 16 May 2019 21:38:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=azazel.net; 
+ s=20190108;
+ h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
+ Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=wruVPQ3bs7taAwHqxX9ar4uYdmHiHM3ziQL33Z8k/WE=; b=QfIjF0XsI4WQp0joPXdrgg5uBe
+ QY5BQmQUMQ+T/ENyEwHkgZa+LSVB0Sg88I4PEZ2DTDDEoOZrXq3AUEgrkx7OveBtM5z9fmvZHPD6J
+ 6X6RRWaMBWlKVXvi3uRwHGxqaYdjLVJ/B7YLBQXHoa7nVtz0DIFcILV6b4XX/YRui/hGo0D17JNnv
+ iABfMxVOg5KIZrdHfMVAo6bAR9Ikg7eTtARGrQDuQZjXXEclZgwKf/d0bb7fGgUnBoJqV3pl3Nl6z
+ Tgj3TDGmsuoOOPVzYSJAlSzTlzGWz/tpa3s7AJm9uZj4KQpkBwr/if3qrCqWoxwjkKytvX2o5pGdZ
+ AFz1Vexw==;
+Received: from ulthar.dreamlands ([192.168.96.2])
+ by kadath.azazel.net with esmtp (Exim 4.89)
+ (envelope-from <jeremy@azazel.net>)
+ id 1hRO4s-0000d7-9H; Thu, 16 May 2019 22:38:14 +0100
+From: Jeremy Sowden <jeremy@azazel.net>
+To: Linux Driver Project Developer List
+ <driverdev-devel@linuxdriverproject.org>
+Subject: [PATCH v2 0/9] staging: kpc2000: another batch of fixes
+Date: Thu, 16 May 2019 22:38:05 +0100
+Message-Id: <20190516213814.22232-1-jeremy@azazel.net>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190516200411.17715-1-jeremy@azazel.net>
+References: <20190516200411.17715-1-jeremy@azazel.net>
+MIME-Version: 1.0
+X-SA-Exim-Connect-IP: 192.168.96.2
+X-SA-Exim-Mail-From: jeremy@azazel.net
+X-SA-Exim-Scanned: No (on kadath.azazel.net); SAEximRunCond expanded to false
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,67 +77,48 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-MIME-Version: 1.0
+Cc: Greg KH <gregkh@linuxfoundation.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix the warning issued by checkpatch
-Prefer kernel type 'u32' over 'uint32_t'.
-Along with that include a blank line after a declaration
-to maintain Linux kernel coding style.
+These apply on top of the ones I sent earlier this week, which are
+currently in the staging-test branch.
 
-Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+There's one white-space patch, a number relating to device attributes
+and one that fixes a race affecting the assignment of card numbers.
 
----
-Changes in v2:
-- Modified subject line
-- Included one more change in control.c
----
- drivers/staging/vc04_services/bcm2835-camera/controls.c | 3 ++-
- drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h | 4 ++--
- 2 files changed, 4 insertions(+), 3 deletions(-)
+Jeremy Sowden (9):
+  staging: kpc2000: removed trailing white-space.
+  staging: kpc2000: add separate show functions for kpc_uio_class device
+    attributes and defined them as read-only.
+  staging: kpc2000: declare all kpc_uio_class device attributes as
+    static.
+  staging: kpc2000: removed two kpc_uio_class device attributes.
+  staging: kpc2000: use atomic_t to assign card numbers.
+  staging: kpc2000: simplified kp2000_device retrieval in device
+    attributes call-backs.
+  staging: kpc2000: formatting fixes for kp device attributes.
+  staging: kpc2000: add separate show functions for readable kp device
+    attributes, and defined them as read-only.
+  staging: kpc2000: declare all kp device attributes as static.
 
-diff --git a/drivers/staging/vc04_services/bcm2835-camera/controls.c b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-index 74410fedffad..5ad957e23895 100644
---- a/drivers/staging/vc04_services/bcm2835-camera/controls.c
-+++ b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-@@ -52,7 +52,8 @@ static const s64 ev_bias_qmenu[] = {
- static const s64 iso_qmenu[] = {
- 	0, 100000, 200000, 400000, 800000,
- };
--static const uint32_t iso_values[] = {
-+
-+static const u32 iso_values[] = {
- 	0, 100, 200, 400, 800,
- };
- 
-diff --git a/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h b/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h
-index d1c57edbe2b8..90793c9f9a0f 100644
---- a/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h
-+++ b/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h
-@@ -309,7 +309,7 @@ struct mmal_msg_port_parameter_set {
- 	u32 port_handle;      /* port */
- 	u32 id;     /* Parameter ID  */
- 	u32 size;      /* Parameter size */
--	uint32_t value[MMAL_WORKER_PORT_PARAMETER_SPACE];
-+	u32 value[MMAL_WORKER_PORT_PARAMETER_SPACE];
- };
- 
- struct mmal_msg_port_parameter_set_reply {
-@@ -331,7 +331,7 @@ struct mmal_msg_port_parameter_get_reply {
- 	u32 status;           /* Status of mmal_port_parameter_get call */
- 	u32 id;     /* Parameter ID  */
- 	u32 size;      /* Parameter size */
--	uint32_t value[MMAL_WORKER_PORT_PARAMETER_SPACE];
-+	u32 value[MMAL_WORKER_PORT_PARAMETER_SPACE];
- };
- 
- /* event messages */
+ drivers/staging/kpc2000/TODO                 |   1 -
+ drivers/staging/kpc2000/kpc2000/cell_probe.c | 184 +++++++------
+ drivers/staging/kpc2000/kpc2000/core.c       | 255 +++++++++++--------
+ drivers/staging/kpc2000/kpc2000/fileops.c    |   2 +-
+ drivers/staging/kpc2000/kpc2000/pcie.h       |  10 +-
+ 5 files changed, 254 insertions(+), 198 deletions(-)
+
+Since v1:
+
+  * merged the DEVICE_ATTR_RO patches with the ones that split up the
+    show call-backs;
+  * converted the show call-backs to use sprintf, instead of scnprintf.
+
 -- 
-2.17.1
+2.20.1
 
 _______________________________________________
 devel mailing list
