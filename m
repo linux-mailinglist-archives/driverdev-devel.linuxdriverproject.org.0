@@ -1,54 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4263E215BB
-	for <lists+driverdev-devel@lfdr.de>; Fri, 17 May 2019 10:52:03 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C221D215BE
+	for <lists+driverdev-devel@lfdr.de>; Fri, 17 May 2019 10:52:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F2E13868C9;
-	Fri, 17 May 2019 08:52:01 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6258031421;
+	Fri, 17 May 2019 08:52:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JU3QRrC-VTH4; Fri, 17 May 2019 08:51:58 +0000 (UTC)
+	with ESMTP id lY9Wx4Tu2bxB; Fri, 17 May 2019 08:52:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CE0528688A;
-	Fri, 17 May 2019 08:51:57 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9FC3531393;
+	Fri, 17 May 2019 08:51:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B576B1BF958
+ by ash.osuosl.org (Postfix) with ESMTP id ADD681BF32C
  for <devel@linuxdriverproject.org>; Fri, 17 May 2019 08:51:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9F7058686D
- for <devel@linuxdriverproject.org>; Fri, 17 May 2019 08:50:22 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 75E7386892
+ for <devel@linuxdriverproject.org>; Fri, 17 May 2019 08:50:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LgSYXAVjRtmo for <devel@linuxdriverproject.org>;
+ with ESMTP id 5-IcjApwsD2B for <devel@linuxdriverproject.org>;
  Fri, 17 May 2019 08:50:11 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D4B4686879
- for <devel@driverdev.osuosl.org>; Fri, 17 May 2019 08:50:08 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 63B2386880
+ for <devel@driverdev.osuosl.org>; Fri, 17 May 2019 08:50:11 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 3D78620879;
- Fri, 17 May 2019 08:50:08 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id C5E3220833;
+ Fri, 17 May 2019 08:50:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1558083008;
+ s=default; t=1558083011;
  bh=A6GwRKW+oEYVYsjLApSZ6TPyTRKGyPhHPu4Euuyeey0=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=c3wbMdAlBca00D/AOK/YULqeVv9sJw75yvEXaK1uln7UqRnFVuPnDYLBkGa37dRJX
- 9RC3tGlhBvJayZc9b0lCEIlasFGm/6phs5PC8RnAJp7v6X2ctz5Sb0Snjvy69H4IL8
- 4HVGV2/DwQKkxe5ZqqUkUc+2g7lBlaix1yCa0dKA=
+ b=Z8nIQpWJOt0UmRE+4Wggv1ZRxVmjgCykUIzhy/1QLg+djNY3v1XaLHiSlOQoYv3us
+ W7jQkQXMgdAV1g5fz+LqnhqZdbv/wz+JNMnDSXVkwIqeGO2eI4cpV66M8zUDhRfxAo
+ MKyZEZRTxRpPItv+ef9Ik07hlp+JYCxqKVAhSV90=
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: devel@driverdev.osuosl.org
-Subject: [PATCH 02/10] staging: kp2000: remove kp200_module.c file
-Date: Fri, 17 May 2019 10:49:36 +0200
-Message-Id: <20190517084945.2810-3-gregkh@linuxfoundation.org>
+Subject: [PATCH 02/10] staging: kpc2000: remove kp200_module.c file
+Date: Fri, 17 May 2019 10:49:37 +0200
+Message-Id: <20190517084945.2810-4-gregkh@linuxfoundation.org>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190517084945.2810-1-gregkh@linuxfoundation.org>
 References: <20190517084945.2810-1-gregkh@linuxfoundation.org>
