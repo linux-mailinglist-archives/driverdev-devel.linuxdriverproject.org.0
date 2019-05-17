@@ -2,72 +2,58 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 644D921C09
-	for <lists+driverdev-devel@lfdr.de>; Fri, 17 May 2019 18:53:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3F1B121C34
+	for <lists+driverdev-devel@lfdr.de>; Fri, 17 May 2019 19:08:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 999E486AD8;
-	Fri, 17 May 2019 16:53:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B417086B62;
+	Fri, 17 May 2019 17:08:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id obs-CFL95LYl; Fri, 17 May 2019 16:53:45 +0000 (UTC)
+	with ESMTP id CD5GIlrgphe2; Fri, 17 May 2019 17:08:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 631B986968;
-	Fri, 17 May 2019 16:53:44 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 37EDD86B65;
+	Fri, 17 May 2019 17:08:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 79D051BF5A7
- for <devel@linuxdriverproject.org>; Fri, 17 May 2019 16:53:22 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 10A691BF397
+ for <devel@linuxdriverproject.org>; Fri, 17 May 2019 17:08:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id BFA0B858DA
- for <devel@linuxdriverproject.org>; Fri, 17 May 2019 16:53:21 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0DC4886AF8
+ for <devel@linuxdriverproject.org>; Fri, 17 May 2019 17:08:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KCxCpNSsvuKT for <devel@linuxdriverproject.org>;
- Fri, 17 May 2019 16:53:19 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
- [209.85.221.68])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 9822A8564D
- for <devel@driverdev.osuosl.org>; Fri, 17 May 2019 16:53:19 +0000 (UTC)
-Received: by mail-wr1-f68.google.com with SMTP id r7so7808524wrr.13
- for <devel@driverdev.osuosl.org>; Fri, 17 May 2019 09:53:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=eOFVUmpMlxT1rgTfcNFqTqJD4K4q18GK946ds9N3qFU=;
- b=dsmBerrW0KEWYy8Sd4HFLOergaCVUedn0iM/0tpAMDcku9/23tuGzzqYbJXeCQvMPA
- jvaYH1a7anzSWWcy+3m7pYYf936uN+DbiE6uMFJIc4GJOOwJ2uCiALJYsRk3R4XEUC2A
- TX8nC83r+ypCSkA0txqWgOLXwT1yoTIY3rvXmw2bocEOPYR2RKNV7L9b9LfIVEloV6Nb
- Pl63NU9wi2nEej7cLLykKKZ8Ar1Ty1c0L4JnXRSRp5Jd9qpv+e0EXAKoPiGUwMx8ICWu
- ofnh+RwSqw9Mi5cr7fqVUUYrMqviHPyvzg9+MxNN7x9NFCsYb/ijwltwIlTIlcofguV1
- nl6g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=eOFVUmpMlxT1rgTfcNFqTqJD4K4q18GK946ds9N3qFU=;
- b=AawYjx8kAvIrnT/0yVZLrFPVBDF8MG8R39ADqcm1JrgV7KK5r/ZTGD787H5ZuNEAUt
- BmvYKPkAVlzED/y24EZXmTFHQ4dV8XkTeXnxjq4trNe7TzrL4+nMZYa8sE61bd5aY797
- vR1mEYsSZoF3k5AsnGUSFP+4+2PProL5MEep8JJ/Gs6pnWjCtw1+bDrV+9ox92QYmYA9
- j5zqaXpiOcJZafkKtzug8LwsMLzI89EK/56BmR5486mlJK+coANGd3u84ryvVVM+YKRQ
- NO+XaWKpUqJt2CzNl1/MH41459K8AoAVKhb1ZzGObK2QuuukDuvxg9JsmL1220yzmbGT
- iTLw==
-X-Gm-Message-State: APjAAAWnM0Y83nbK9Wk0QBkc6qhiuo31zbD7xNDBJVYDCyC+RjmiwPoR
- dNdvs1fxKAvEeB9yurHc4ww=
-X-Google-Smtp-Source: APXvYqxzwPBkio6lC+ydvkXLCUu+2O2QUexsyscQ50xgHeMpsARvymCIsU28JwUsJd9FhtdDJzY2jA==
-X-Received: by 2002:adf:e344:: with SMTP id n4mr12363332wrj.192.1558111997983; 
- Fri, 17 May 2019 09:53:17 -0700 (PDT)
-Received: from luna.home (2.154.17.217.dyn.user.ono.com. [2.154.17.217])
- by smtp.gmail.com with ESMTPSA id w185sm12701690wma.39.2019.05.17.09.53.16
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Fri, 17 May 2019 09:53:16 -0700 (PDT)
-From: Oscar Gomez Fuente <oscargomezf@gmail.com>
-To: oscargomezf@gmail.com
-Subject: [PATCH] staging: fieldbus: solve warning incorrect type dev_core.c
-Date: Fri, 17 May 2019 18:53:11 +0200
-Message-Id: <1558111991-30751-1-git-send-email-oscargomezf@gmail.com>
-X-Mailer: git-send-email 2.7.4
+ with ESMTP id XPnjpGxRiuWr for <devel@linuxdriverproject.org>;
+ Fri, 17 May 2019 17:08:03 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id ABB9486AD8
+ for <devel@driverdev.osuosl.org>; Fri, 17 May 2019 17:08:03 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 09AD220848;
+ Fri, 17 May 2019 17:08:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1558112883;
+ bh=GTG+1jP/TVoKJCDtPyVDCCcYy1RrBeov1C+3tNwcaUI=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=ZS8Xf9xuuvN2a09MEk01c+N1MzAfzmhC181+vlqrCItANmRCv8B7tblhsFKp+88sw
+ fm5TuzNp6wJVxdtmVmjQxQPhwWNXygJAmAed20s9ZyeWoJvDC64qwS+cEhdqoGA0sm
+ Kvfe95tKWFerkxJkEDbyjycAbydpwFw1rufLq8j4=
+Date: Fri, 17 May 2019 19:08:01 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Oscar Gomez Fuente <oscargomezf@gmail.com>
+Subject: Re: [PATCH] staging: fieldbus: solve warning incorrect type dev_core.c
+Message-ID: <20190517170801.GA20089@kroah.com>
+References: <1558111991-30751-1-git-send-email-oscargomezf@gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1558111991-30751-1-git-send-email-oscargomezf@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,46 +66,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, thesven73@gmail.com
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, thesven73@gmail.com,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Signed-off-by: Oscar Gomez Fuente <oscargomezf@gmail.com>
----
- drivers/staging/fieldbus/dev_core.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+On Fri, May 17, 2019 at 06:53:11PM +0200, Oscar Gomez Fuente wrote:
+> Signed-off-by: Oscar Gomez Fuente <oscargomezf@gmail.com>
+> ---
+>  drivers/staging/fieldbus/dev_core.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/fieldbus/dev_core.c b/drivers/staging/fieldbus/dev_core.c
-index 60b851406..f6f5b92 100644
---- a/drivers/staging/fieldbus/dev_core.c
-+++ b/drivers/staging/fieldbus/dev_core.c
-@@ -211,16 +211,16 @@ static ssize_t fieldbus_write(struct file *filp, const char __user *buf,
- 	return fbdev->write_area(fbdev, buf, size, offset);
- }
- 
--static unsigned int fieldbus_poll(struct file *filp, poll_table *wait)
-+static __poll_t fieldbus_poll(struct file *filp, poll_table *wait)
- {
- 	struct fb_open_file *of = filp->private_data;
- 	struct fieldbus_dev *fbdev = of->fbdev;
--	unsigned int mask = POLLIN | POLLRDNORM | POLLOUT | POLLWRNORM;
-+	__poll_t mask = EPOLLIN | EPOLLRDNORM | EPOLLOUT | EPOLLWRNORM;
- 
- 	poll_wait(filp, &fbdev->dc_wq, wait);
- 	/* data changed ? */
- 	if (fbdev->dc_event != of->dc_event)
--		mask |= POLLPRI | POLLERR;
-+		mask |= EPOLLPRI | EPOLLERR;
- 	return mask;
- }
- 
--- 
-2.7.4
+I don't take patches without any changelog text, sorry.
 
+Please fix and resend.
+
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
