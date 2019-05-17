@@ -1,52 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6AA9C2202D
-	for <lists+driverdev-devel@lfdr.de>; Sat, 18 May 2019 00:19:23 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A8246877F7;
-	Fri, 17 May 2019 22:19:20 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nQ3kVm55-RfJ; Fri, 17 May 2019 22:19:20 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5240F877BD;
-	Fri, 17 May 2019 22:19:19 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 315421C1639
- for <devel@linuxdriverproject.org>; Fri, 17 May 2019 22:19:14 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id ACBD92202C
+	for <lists+driverdev-devel@lfdr.de>; Sat, 18 May 2019 00:19:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2317188352
- for <devel@linuxdriverproject.org>; Fri, 17 May 2019 22:19:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 33523884B2;
+	Fri, 17 May 2019 22:19:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id UhaMZFJ-qPis; Fri, 17 May 2019 22:19:17 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id AB03688352;
+	Fri, 17 May 2019 22:19:17 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 15ED91BF997
+ for <devel@linuxdriverproject.org>; Fri, 17 May 2019 22:19:14 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 1AFD52284A
+ for <devel@linuxdriverproject.org>; Fri, 17 May 2019 22:19:14 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YnRH1ROXQ8+R for <devel@linuxdriverproject.org>;
+ with ESMTP id ulXhApLqWILf for <devel@linuxdriverproject.org>;
  Fri, 17 May 2019 22:19:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3334D88316
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id 76EE322613
  for <devel@driverdev.osuosl.org>; Fri, 17 May 2019 22:19:13 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-Result: UNSCANNABLE
 X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  17 May 2019 15:19:12 -0700
 X-ExtLoop1: 1
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 17 May 2019 15:19:11 -0700
+ by FMSMGA003.fm.intel.com with ESMTP; 17 May 2019 15:19:12 -0700
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1hRlC3-00039O-6q; Sat, 18 May 2019 06:19:11 +0800
+ id 1hRlC3-0003AE-8B; Sat, 18 May 2019 06:19:11 +0800
 Date: Sat, 18 May 2019 06:18:23 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: kpc2000: fix badzero.cocci warnings
-Message-ID: <20190517221823.GA77454@lkp-kbuild16>
+Subject: Re: [PATCH 08/10] staging: kpc2000: move the i2c driver out of its
+ subdirectory
+Message-ID: <201905180606.arfqZeuc%lkp@intel.com>
 References: <20190517084945.2810-10-gregkh@linuxfoundation.org>
 MIME-Version: 1.0
 Content-Disposition: inline
@@ -72,42 +73,29 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: kbuild test robot <lkp@intel.com>
+Hi Greg,
 
-drivers/staging/kpc2000/kpc2000_i2c.c:682:16-17: WARNING comparing pointer to 0
+I love your patch! Perhaps something to improve:
 
- Compare pointer-typed values to NULL rather than 0
-
-Semantic patch information:
- This makes an effort to choose between !x and x == NULL.  !x is used
- if it has previously been used with the function used to initialize x.
- This relies on type information.  More type information can be obtained
- using the option -all_includes and the option -I to specify an
- include path.
-
-Generated by: scripts/coccinelle/null/badzero.cocci
-
-Fixes: 98733648ef27 ("staging: kpc2000: move the i2c driver out of its subdirectory")
-CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Signed-off-by: kbuild test robot <lkp@intel.com>
----
+[auto build test WARNING on staging/staging-testing]
+[cannot apply to v5.1 next-20190517]
+[if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
 
 url:    https://github.com/0day-ci/linux/commits/Greg-Kroah-Hartman/staging-kpc2000-fix-a-bunch-of-orginization-and-header-file-issues/20190517-213909
 
- kpc2000_i2c.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+If you fix the issue, kindly add following tag
+Reported-by: kbuild test robot <lkp@intel.com>
 
---- a/drivers/staging/kpc2000/kpc2000_i2c.c
-+++ b/drivers/staging/kpc2000/kpc2000_i2c.c
-@@ -679,7 +679,7 @@ int pi2c_remove(struct platform_device *
-     //pci_set_drvdata(dev, NULL);
-     
-     //cdev_del(&lddev->cdev);
--    if(lddev != 0) {
-+    if(lddev != NULL) {
-         kfree(lddev);
-         pldev->dev.platform_data = 0;
-     }
+
+coccinelle warnings: (new ones prefixed by >>)
+
+>> drivers/staging/kpc2000/kpc2000_i2c.c:682:16-17: WARNING comparing pointer to 0
+
+Please review and possibly fold the followup patch.
+
+---
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
