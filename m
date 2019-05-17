@@ -2,77 +2,58 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7CFB021D58
-	for <lists+driverdev-devel@lfdr.de>; Fri, 17 May 2019 20:34:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A92C21DED
+	for <lists+driverdev-devel@lfdr.de>; Fri, 17 May 2019 20:57:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id EB419318FD;
-	Fri, 17 May 2019 18:34:39 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id EB10F318FD;
+	Fri, 17 May 2019 18:56:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id z9OW0Hd9FK8C; Fri, 17 May 2019 18:34:38 +0000 (UTC)
+	with ESMTP id ddkm3Kmbqd83; Fri, 17 May 2019 18:56:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id BAAC4318F1;
-	Fri, 17 May 2019 18:34:33 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AA92C318F1;
+	Fri, 17 May 2019 18:56:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3171E1BF364
- for <devel@linuxdriverproject.org>; Fri, 17 May 2019 18:34:32 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 4F01C1BF397
+ for <devel@linuxdriverproject.org>; Fri, 17 May 2019 18:56:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 2E214318EB
- for <devel@linuxdriverproject.org>; Fri, 17 May 2019 18:34:32 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4660C86B92
+ for <devel@linuxdriverproject.org>; Fri, 17 May 2019 18:56:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3sIXhP7rBRLY for <devel@linuxdriverproject.org>;
- Fri, 17 May 2019 18:34:31 +0000 (UTC)
+ with ESMTP id t1iom53c-oMr for <devel@linuxdriverproject.org>;
+ Fri, 17 May 2019 18:56:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f47.google.com (mail-lf1-f47.google.com
- [209.85.167.47])
- by silver.osuosl.org (Postfix) with ESMTPS id A02DD318E8
- for <devel@driverdev.osuosl.org>; Fri, 17 May 2019 18:34:30 +0000 (UTC)
-Received: by mail-lf1-f47.google.com with SMTP id f1so6017858lfl.6
- for <devel@driverdev.osuosl.org>; Fri, 17 May 2019 11:34:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=g7FRX6lmjKkHf4gEltOg55G4CMiJiN7kSbZgWhIlzgI=;
- b=b0dL1FuH3a1lfBqowV+hql6lYu1nIOh4vGnKWnEFMsxCWi0JSS9IskPuaZr4fTEEj8
- foqNUxtVqsQJCawO0peg+CLWGUMWnVTPsP2eWNtlsEGHMa/xEI2RmCqV/ZF1ddMH6le3
- sMT7IkUHV9eiM/2LlzjPXPsmEHxK+HeDhe0h6F5MD+tD+W3IPGDeOTw5Yg4ZGVd1UI0y
- t01qN38DAsEb4wVGXKANBKP8S3ikQEOMbIee1f54kJrgCPkjOcusV1VUhxRA6aEvi66Z
- zM1Mm34e7aE/tFZ7LBg6UwCXtdkRqYJus2LippXppzVZkclmxsM/0Md4J48bHr7ht+ft
- IIUw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=g7FRX6lmjKkHf4gEltOg55G4CMiJiN7kSbZgWhIlzgI=;
- b=Rw+XhqH1BkdNKipVrNID1F63xzFfmLetDMHULMQVR/tCV/yMn2rAthZ/RdJF4ADTlp
- o44xlL8kRwcYqPm5Gb//ipK6EJQssqkyO25DR+Fw13ebKXhUZU93xGd7c6s6VuDuivhH
- N8juE6v6sDhquXw9CqVP0dOjRIVdGfoFE/pooSGUj0RSWOFWVOLF2srhm+yd3DoSBKeZ
- RUN8UWVX1pq2bL2TA3H6Q1XlaY/wbFqLi2BG1HxquCPBqMMu5LFVfJIe/nBsO8hiC2bs
- tk3Xq9RGHHP+aeOZzQe41k+o8918EfXJpH0CuRy1SeHQuHdooIziJvcvbguMVLaodMSh
- 40/A==
-X-Gm-Message-State: APjAAAXqi7751JefyH57DF2KAqE+SIJNrvVD9UklaWbaqMtnp3j0ftGD
- /h5yOiT0lWC9pIZM31GJoV8CpWFAIv7tXUCv6YLOdw==
-X-Google-Smtp-Source: APXvYqwT8eA2OYCguqeZW33ksLbVt09B1hZoXU+XYbPwufMdo/fS3GeQYP8wK0uTaqAsyrjLdOvx2glprZY3W3bbpbg=
-X-Received: by 2002:a19:6a08:: with SMTP id u8mr15556lfu.143.1558118068099;
- Fri, 17 May 2019 11:34:28 -0700 (PDT)
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 8076186B8E
+ for <devel@driverdev.osuosl.org>; Fri, 17 May 2019 18:56:36 +0000 (UTC)
+X-Amp-Result: UNSCANNABLE
+X-Amp-File-Uploaded: False
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 17 May 2019 11:56:35 -0700
+X-ExtLoop1: 1
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga008.jf.intel.com with ESMTP; 17 May 2019 11:56:33 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1hRi1x-0009fO-6Y; Sat, 18 May 2019 02:56:33 +0800
+Date: Sat, 18 May 2019 02:56:04 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH 08/10] staging: kpc2000: move the i2c driver out of its
+ subdirectory
+Message-ID: <201905180207.O6TU0SIT%lkp@intel.com>
+References: <20190517084945.2810-10-gregkh@linuxfoundation.org>
 MIME-Version: 1.0
-References: <CACT4Y+Z9GcY-d19ROSXgAq4-d_hOBVArfgGV1VdYcYD_X1coPQ@mail.gmail.com>
- <CAHRSSEw7QAfuKsQhHNZcwizn5zEVA6CjAdO7qh69g3fkXrk7DA@mail.gmail.com>
- <CACT4Y+ZLZHbsW3kFD5oXssuOP6LmY0YRRPnWc41CBQ6APJS4MA@mail.gmail.com>
- <CACT4Y+ZW=OaNBsWm0FMXfefHnNgpjb698r_+Xhn66dQZHfgVRw@mail.gmail.com>
- <CACT4Y+Z5wTRMCWYrhYArb0kBS5kRKJYH82m6F+_6qUucJUy7jQ@mail.gmail.com>
- <CACT4Y+b4+rnStjwQ2X5TzYHR1Jhu36MMA30fRCWZ0iGAuH6CCQ@mail.gmail.com>
-In-Reply-To: <CACT4Y+b4+rnStjwQ2X5TzYHR1Jhu36MMA30fRCWZ0iGAuH6CCQ@mail.gmail.com>
-From: Todd Kjos <tkjos@google.com>
-Date: Fri, 17 May 2019 11:34:16 -0700
-Message-ID: <CAHRSSEx0gkKMHoJu-qLxbb1YKqAwWF8xs6myGWsioeOAz+JvBg@mail.gmail.com>
-Subject: Re: binder stress testing
-To: Dmitry Vyukov <dvyukov@google.com>
+Content-Disposition: inline
+In-Reply-To: <20190517084945.2810-10-gregkh@linuxfoundation.org>
+X-Patchwork-Hint: ignore
+User-Agent: Mutt/1.5.23 (2014-03-12)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,222 +66,274 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- Todd Kjos <tkjos@android.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- LKML <linux-kernel@vger.kernel.org>,
- =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
- syzkaller <syzkaller@googlegroups.com>,
- Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
- Christian Brauner <christian@brauner.io>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ kbuild-all@01.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gRnJpLCBNYXkgMTcsIDIwMTkgYXQgODo1NSBBTSBEbWl0cnkgVnl1a292IDxkdnl1a292QGdv
-b2dsZS5jb20+IHdyb3RlOgo+Cj4gT24gRnJpLCBNYXkgMTcsIDIwMTkgYXQgNTo1MSBQTSBEbWl0
-cnkgVnl1a292IDxkdnl1a292QGdvb2dsZS5jb20+IHdyb3RlOgo+ID4gPiA+ID4KPiA+ID4gPiA+
-IEZyb206IERtaXRyeSBWeXVrb3YgPGR2eXVrb3ZAZ29vZ2xlLmNvbT4KPiA+ID4gPiA+IERhdGU6
-IEZyaSwgTWF5IDE3LCAyMDE5IGF0IDM6MjYgQU0KPiA+ID4gPiA+IFRvOiBHcmVnIEtyb2FoLUhh
-cnRtYW4sIEFydmUgSGrDuG5uZXbDpWcsIFRvZGQgS2pvcywgTWFydGlqbiBDb2VuZW4sCj4gPiA+
-ID4gPiBKb2VsIEZlcm5hbmRlcywgQ2hyaXN0aWFuIEJyYXVuZXIsIG9wZW4gbGlzdDpBTkRST0lE
-IERSSVZFUlMsIExLTUwKPiA+ID4gPiA+IENjOiBzeXprYWxsZXIKPiA+ID4gPiA+Cj4gPiA+ID4g
-PiA+IEhpLAo+ID4gPiA+ID4gPgo+ID4gPiA+ID4gPiBJIGhhdmUgMiBxdWVzdGlvbnMgcmUgZHJp
-dmVycy9hbmRyb2lkL2JpbmRlci5jIHN0cmVzcyB0ZXN0aW5nLgo+ID4gPiA+ID4gPgo+ID4gPiA+
-ID4gPiAxLiBBcmUgdGhlcmUgYW55IGRvY3Mgb24gdGhlIGtlcm5lbCBpbnRlcmZhY2U/IE9yIHNv
-bWUgZXhhbXBsZXMgb24gaG93Cj4gPiA+ID4gPiA+IHRvIHVzZSBpdCBhbmQgcmVmZXJlbmNlIHN5
-c2NhbGwgc2VxdWVuY2VzIHRvIG1ha2UgaXQgZG8gc29tZXRoaW5nCj4gPiA+ID4gPiA+IG1lYW5p
-bmdmdWw/Cj4gPiA+ID4gPiA+IEkgaG9wZWZ1bGx5IGZpZ3VyZWQgb3V0IHN0cnVjdCBsYXlvdXRz
-IGFuZCBvZmZzZXRzIG9mIG9iamVjdHMgdGhpbmcsCj4gPiA+ID4gPiA+IGJ1dCBJIHN0aWxsIGNh
-bid0IGZpZ3VyZSBvdXQgaGFuZGxlcywgcG9pbnRlcnMsIG5vZGVzLCBwb2ludGVyIHRvCj4gPiA+
-ID4gPiA+IG5vZGVzLi4uIHBvaW50ZXIgdG8gZGF0YSAoPyksIHJlZmVyZW5jZXMsIGNvb2tpZXMg
-YW5kIHdoZXJlIGRvZXMgb25lCj4gPiA+ID4gPiA+IGdldCB2YWxpZCB2YWx1ZXMgZm9yIHRoZXNl
-Lgo+ID4gPiA+ID4KPiA+ID4gPiA+IFRoZSBrZXJuZWwgaW50ZXJmYWNlIGlzIG5vdCB3ZWxsIGRv
-Y3VtZW50ZWQgc2luY2UgaXQgaXNuJ3QgaW50ZW5kZWQgdG8KPiA+ID4gPiA+IGJlIHVzZWQgYXBh
-cnQgZnJvbSBsaWJiaW5kZXIuIFRoZSBiZXN0IGV4YW1wbGUgZm9yIHlvdXIgcHVycG9zZXMgaXMK
-PiA+ID4gPiA+IHByb2JhYmx5IHRoZSBiaW5kZXJEcml2ZXJJbnRlcmZhY2VUZXN0IHdoaWNoIHlv
-dSBjYW4gZmluZCBhdAo+ID4gPiA+ID4gaHR0cHM6Ly9hbmRyb2lkLmdvb2dsZXNvdXJjZS5jb20v
-cGxhdGZvcm0vZnJhbWV3b3Jrcy9uYXRpdmUvKy9yZWZzL2hlYWRzL21hc3Rlci9saWJzL2JpbmRl
-ci90ZXN0cy9iaW5kZXJEcml2ZXJJbnRlcmZhY2VUZXN0LmNwcC4KPiA+ID4gPiA+Cj4gPiA+ID4g
-PiBUaGUgbGliYmluZGVyIHNvdXJjZSBpcyBhdAo+ID4gPiA+ID4gaHR0cHM6Ly9hbmRyb2lkLmdv
-b2dsZXNvdXJjZS5jb20vcGxhdGZvcm0vZnJhbWV3b3Jrcy9uYXRpdmUvKy9yZWZzL2hlYWRzL21h
-c3Rlci9saWJzL2JpbmRlci4KPiA+ID4gPiA+Cj4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+IDIuIElu
-IG15IHRlc3RzIGFueSB0cmFuc2FjdGlvbiBicmVha3MgYmluZGVyIGRldmljZSB1bnRpbCB0aGUg
-bmV4dCByZWJvb3QuCj4gPiA+ID4gPiA+IElmIEkgb3BlbiBiaW5kZXIgZGV2aWNlIHR3aWNlLCBt
-bWFwLCBzZXQgY29udGV4dCBhbmQgdGhlbiB0aGUgcHJvY2Vzcwo+ID4gPiA+ID4gPiBkaWVzLCB0
-aGVuIGV2ZXJ5dGhpbmcgaXQgcmVsZWFzZWQgZmluZSwgaW4gcGFydGljdWxhciB0aGUgY29udGV4
-dAo+ID4gPiA+ID4gPiAoY29udGV4dF9tZ3Jfbm9kZSBnb25lKS4gU28gdGhlIGRldmljZSBpcyBy
-ZWFkeSBmb3IgYSBuZXh0IHRlc3Q6Cj4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+IFsgICA0MC4yNDc5
-NzBdWyBUNjIzOV0gYmluZGVyOiBiaW5kZXJfb3BlbjogNjIzODo2MjM5Cj4gPiA+ID4gPiA+IFsg
-ICA0MC4yNTA4MTldWyBUNjIzOV0gYmluZGVyOiA2MjM4OjYyMzkgbm9kZSAxIHUwMDAwMDAwMDAw
-MDAwMDAwCj4gPiA+ID4gPiA+IGMwMDAwMDAwMDAwMDAwMDAwIGNyZWF0ZWQKPiA+ID4gPiA+ID4g
-WyAgIDQwLjI1MzM2NV1bIFQ2MjM5XSBiaW5kZXI6IGJpbmRlcl9tbWFwOiA2MjM4IDIwMGEwMDAw
-LTIwMGEyMDAwICg4Cj4gPiA+ID4gPiA+IEspIHZtYSBmOSBwYWdlcCA4MDAwMDAwMDAwMDAwMDI1
-Cj4gPiA+ID4gPiA+IFsgICA0MC4yNTY0NTRdWyBUNjIzOV0gYmluZGVyOiBiaW5kZXJfb3Blbjog
-NjIzODo2MjM5Cj4gPiA+ID4gPiA+IFsgICA0MC4yNTk2MDRdWyBUNjIzOV0gYmluZGVyOiBiaW5k
-ZXJfbW1hcDogNjIzOCAyMDBjMDAwMC0yMDBjMjAwMCAoOAo+ID4gPiA+ID4gPiBLKSB2bWEgZjkg
-cGFnZXAgODAwMDAwMDAwMDAwMDAyNQo+ID4gPiA+ID4gPiBbICAgNDAuMjcxNTI2XVsgVDYyMzhd
-IGJpbmRlcjogNjIzOCBjbG9zZSB2bSBhcmVhIDIwMGEwMDAwLTIwMGEyMDAwICg4Cj4gPiA+ID4g
-PiA+IEspIHZtYSAxODAyMDBkOSBwYWdlcCA4MDAwMDAwMDAwMDAwMDI1Cj4gPiA+ID4gPiA+IFsg
-ICA0MC4yNzMxMTNdWyBUNjIzOF0gYmluZGVyOiA2MjM4IGNsb3NlIHZtIGFyZWEgMjAwYzAwMDAt
-MjAwYzIwMDAgKDgKPiA+ID4gPiA+ID4gSykgdm1hIDE4MDIwMGQ5IHBhZ2VwIDgwMDAwMDAwMDAw
-MDAwMjUKPiA+ID4gPiA+ID4gWyAgIDQwLjI3NTA1OF1bICAgVDE3XSBiaW5kZXI6IGJpbmRlcl9m
-bHVzaDogNjIzOCB3b2tlIDAgdGhyZWFkcwo+ID4gPiA+ID4gPiBbICAgNDAuMjc1OTk3XVsgICBU
-MTddIGJpbmRlcjogYmluZGVyX2ZsdXNoOiA2MjM4IHdva2UgMCB0aHJlYWRzCj4gPiA+ID4gPiA+
-IFsgICA0MC4yNzY5NjhdWyAgIFQxN10gYmluZGVyOiBiaW5kZXJfZGVmZXJyZWRfcmVsZWFzZTog
-NjIzOCB0aHJlYWRzCj4gPiA+ID4gPiA+IDAsIG5vZGVzIDAgKHJlZiAwKSwgcmVmcyAwLCBhY3Rp
-dmUgdHJhbnNhY3Rpb25zIDAKPiA+ID4gPiA+ID4gWyAgIDQwLjI3ODYyNl1bICAgVDE3XSBiaW5k
-ZXI6IGJpbmRlcl9kZWZlcnJlZF9yZWxlYXNlOiA2MjM4Cj4gPiA+ID4gPiA+IGNvbnRleHRfbWdy
-X25vZGUgZ29uZQo+ID4gPiA+ID4gPiBbICAgNDAuMjc5NzU2XVsgICBUMTddIGJpbmRlcjogYmlu
-ZGVyX2RlZmVycmVkX3JlbGVhc2U6IDYyMzggdGhyZWFkcwo+ID4gPiA+ID4gPiAxLCBub2RlcyAx
-IChyZWYgMCksIHJlZnMgMCwgYWN0aXZlIHRyYW5zYWN0aW9ucyAwCj4gPiA+ID4gPiA+Cj4gPiA+
-ID4gPiA+Cj4gPiA+ID4gPiA+IEhvd2V2ZXIsIGlmIEkgYWxzbyBzZW5kIGEgdHJhbnNhY3Rpb24g
-YmV0d2VlbiB0aGVzZSBmZCdzLCB0aGVuCj4gPiA+ID4gPiA+IGNvbnRleHRfbWdyX25vZGUgaXMg
-bm90IHJlbGVhc2VkOgo+ID4gPiA+ID4gPgo+ID4gPiA+ID4gPiBbICA3ODMuODUxNDAzXVsgVDYx
-NjddIGJpbmRlcjogYmluZGVyX29wZW46IDYxNjY6NjE2Nwo+ID4gPiA+ID4gPiBbICA3ODMuODU4
-ODAxXVsgVDYxNjddIGJpbmRlcjogNjE2Njo2MTY3IG5vZGUgMSB1MDAwMDAwMDAwMDAwMDAwMAo+
-ID4gPiA+ID4gPiBjMDAwMDAwMDAwMDAwMDAwMCBjcmVhdGVkCj4gPiA+ID4gPiA+IFsgIDc4My44
-NjI0NThdWyBUNjE2N10gYmluZGVyOiBiaW5kZXJfbW1hcDogNjE2NiAyMDBhMDAwMC0yMDBhMjAw
-MCAoOAo+ID4gPiA+ID4gPiBLKSB2bWEgZjkgcGFnZXAgODAwMDAwMDAwMDAwMDAyNQo+ID4gPiA+
-ID4gPiBbICA3ODMuODY1Nzc3XVsgVDYxNjddIGJpbmRlcjogYmluZGVyX29wZW46IDYxNjY6NjE2
-Nwo+ID4gPiA+ID4gPiBbICA3ODMuODY3ODkyXVsgVDYxNjddIGJpbmRlcjogYmluZGVyX21tYXA6
-IDYxNjYgMjAwYzAwMDAtMjAwYzIwMDAgKDgKPiA+ID4gPiA+ID4gSykgdm1hIGY5IHBhZ2VwIDgw
-MDAwMDAwMDAwMDAwMjUKPiA+ID4gPiA+ID4gWyAgNzgzLjg3MDgxMF1bIFQ2MTY3XSBiaW5kZXI6
-IDYxNjY6NjE2NyB3cml0ZSA3NiBhdCAwMDAwMDAwMDIwMDAwMTgwLAo+ID4gPiA+ID4gPiByZWFk
-IDAgYXQgMDAwMDAwMDAyMDAwMDMwMAo+ID4gPiA+ID4gPiBbICA3ODMuODcyMjExXVsgVDYxNjdd
-IGJpbmRlcjogNjE2Njo2MTY3IEJDX1RSQU5TQUNUSU9OIDIgLT4gNjE2NiAtCj4gPiA+ID4gPiA+
-IG5vZGUgMSwgZGF0YSAwMDAwMDAwMDIwMDAwMjAwLTAwMDAwMDAwMjAwMDAyYzAgc2l6ZSA4OC0y
-NC0xNgo+ID4gPiA+ID4gPiBbICA3ODMuODczODE5XVsgVDYxNjddIGJpbmRlcjogNjE2Njo2MTY3
-IG5vZGUgMyB1MDAwMDAwMDAwMDAwMDAwMAo+ID4gPiA+ID4gPiBjMDAwMDAwMDAwMDAwMDAwMCBj
-cmVhdGVkCj4gPiA+ID4gPiA+IFsgIDc4My44NzUwMzJdWyBUNjE2N10gYmluZGVyOiA2MTY2IG5l
-dyByZWYgNCBkZXNjIDEgZm9yIG5vZGUgMwo+ID4gPiA+ID4gPiBbICA3ODMuODc1ODYwXVsgVDYx
-NjddIGJpbmRlcjogICAgICAgICBub2RlIDMgdTAwMDAwMDAwMDAwMDAwMDAgLT4gcmVmIDQgZGVz
-YyAxCj4gPiA+ID4gPiA+IFsgIDc4My44NzY4NjhdWyBUNjE2N10gYmluZGVyOiA2MTY2OjYxNjcg
-d3JvdGUgNzYgb2YgNzYsIHJlYWQgcmV0dXJuIDAgb2YgMAo+ID4gPiA+ID4gPiBbICA3ODMuODg2
-NzE0XVsgVDYxNjddIGJpbmRlcjogNjE2NiBjbG9zZSB2bSBhcmVhIDIwMGEwMDAwLTIwMGEyMDAw
-ICg4Cj4gPiA+ID4gPiA+IEspIHZtYSAxODAyMDBkOSBwYWdlcCA4MDAwMDAwMDAwMDAwMDI1Cj4g
-PiA+ID4gPiA+IFsgIDc4My44ODgxNjFdWyBUNjE2N10gYmluZGVyOiA2MTY2IGNsb3NlIHZtIGFy
-ZWEgMjAwYzAwMDAtMjAwYzIwMDAgKDgKPiA+ID4gPiA+ID4gSykgdm1hIDE4MDIwMGQ5IHBhZ2Vw
-IDgwMDAwMDAwMDAwMDAwMjUKPiA+ID4gPiA+ID4gWyAgNzgzLjg5MDEzNF1bICAgVDI3XSBiaW5k
-ZXI6IGJpbmRlcl9mbHVzaDogNjE2NiB3b2tlIDAgdGhyZWFkcwo+ID4gPiA+ID4gPiBbICA3ODMu
-ODkxMDM2XVsgICBUMjddIGJpbmRlcjogYmluZGVyX2ZsdXNoOiA2MTY2IHdva2UgMCB0aHJlYWRz
-Cj4gPiA+ID4gPiA+IFsgIDc4My44OTIwMjddWyBUMjkwM10gYmluZGVyOiByZWxlYXNlIDYxNjY6
-NjE2NyB0cmFuc2FjdGlvbiAyIG91dCwgc3RpbGwgYWN0aXZlCj4gPiA+ID4gPiA+IFsgIDc4My44
-OTMwOTddWyBUMjkwM10gYmluZGVyOiB1bmV4cGVjdGVkIHdvcmsgdHlwZSwgNCwgbm90IGZyZWVk
-Cj4gPiA+ID4gPiA+IFsgIDc4My44OTM5NDddWyBUMjkwM10gYmluZGVyOiB1bmRlbGl2ZXJlZCBU
-UkFOU0FDVElPTl9DT01QTEVURQo+ID4gPiA+ID4gPiBbICA3ODMuODk0ODQ5XVsgVDI5MDNdIGJp
-bmRlcjogbm9kZSAzIG5vdyBkZWFkLCByZWZzIDEsIGRlYXRoIDAKPiA+ID4gPiA+ID4gWyAgNzgz
-Ljg5NTcxN11bIFQyOTAzXSBiaW5kZXI6IGJpbmRlcl9kZWZlcnJlZF9yZWxlYXNlOiA2MTY2IHRo
-cmVhZHMKPiA+ID4gPiA+ID4gMSwgbm9kZXMgMSAocmVmIDEpLCByZWZzIDAsIGFjdGl2ZSB0cmFu
-c2FjdGlvbnMgMQo+ID4gPiA+ID4gPgo+ID4gPiA+ID4gPgo+ID4gPiA+ID4gPiBBbmQgYWxsIHN1
-YnNlcXVlbnQgdGVzdHMgd2lsbCBmYWlsIGJlY2F1c2UgIkJJTkRFUl9TRVRfQ09OVEVYVF9NR1IK
-PiA+ID4gPiA+ID4gYWxyZWFkeSBzZXQiIHByZXN1bWFibHkgdG8gdGhlIG5vdyB1bnJlY292ZXJh
-Ymx5IGRlYWQgcHJvY2VzczoKPiA+ID4gPiA+ID4KPiA+ID4gPiA+ID4gWyAgODMxLjA4NTE3NF1b
-IFQ2MTkxXSBiaW5kZXI6IGJpbmRlcl9vcGVuOiA2MTkwOjYxOTEKPiA+ID4gPiA+ID4gWyAgODMx
-LjA4NzQ1MF1bIFQ2MTkxXSBiaW5kZXI6IEJJTkRFUl9TRVRfQ09OVEVYVF9NR1IgYWxyZWFkeSBz
-ZXQKPiA+ID4gPiA+ID4gWyAgODMxLjA4ODkxMF1bIFQ2MTkxXSBiaW5kZXI6IDYxOTA6NjE5MSBp
-b2N0bCA0MDE4NjIwZCAyMDAwMDBjMCByZXR1cm5lZCAtMTYKPiA+ID4gPiA+ID4gWyAgODMxLjA5
-MDYyNl1bIFQ2MTkxXSBiaW5kZXI6IGJpbmRlcl9tbWFwOiA2MTkwIDIwMGEwMDAwLTIwMGEyMDAw
-ICg4Cj4gPiA+ID4gPiA+IEspIHZtYSBmOSBwYWdlcCA4MDAwMDAwMDAwMDAwMDI1Cj4gPiA+ID4g
-PiA+IFsgIDgzMS4wOTI3ODNdWyBUNjE5MV0gYmluZGVyOiBiaW5kZXJfb3BlbjogNjE5MDo2MTkx
-Cj4gPiA+ID4gPiA+IFsgIDgzMS4wOTQwNzZdWyBUNjE5MV0gYmluZGVyOiBiaW5kZXJfbW1hcDog
-NjE5MCAyMDBjMDAwMC0yMDBjMjAwMCAoOAo+ID4gPiA+ID4gPiBLKSB2bWEgZjkgcGFnZXAgODAw
-MDAwMDAwMDAwMDAyNQo+ID4gPiA+ID4gPiBbICA4MzEuMDk2MjE4XVsgVDYxOTFdIGJpbmRlcjog
-NjE5MDo2MTkxIHdyaXRlIDc2IGF0IDAwMDAwMDAwMjAwMDAxODAsCj4gPiA+ID4gPiA+IHJlYWQg
-MCBhdCAwMDAwMDAwMDIwMDAwMzAwCj4gPiA+ID4gPiA+IFsgIDgzMS4wOTc2MDZdWyBUNjE5MV0g
-YmluZGVyOiA2MTkwOjYxOTEgQkNfVFJBTlNBQ1RJT04gNSAtPiA2MTY2IC0KPiA+ID4gPiA+ID4g
-bm9kZSAxLCBkYXRhIDAwMDAwMDAwMjAwMDAyMDAtMDAwMDAwMDAyMDAwMDJjMCBzaXplIDg4LTI0
-LTE2Cj4gPiA+ID4gPiA+IFsgIDgzMS4wOTkyNTFdWyBUNjE5MV0gYmluZGVyX2FsbG9jOiA2MTY2
-OiBiaW5kZXJfYWxsb2NfYnVmLCBubyB2bWEKPiA+ID4gPiA+ID4gWyAgODMxLjEwMDQzM11bIFQ2
-MTkxXSBiaW5kZXI6IDYxOTA6NjE5MSB0cmFuc2FjdGlvbiBmYWlsZWQgMjkxODkvLTMsCj4gPiA+
-ID4gPiA+IHNpemUgODgtMjQgbGluZSAzMTU3Cj4gPiA+ID4gPiA+IFsgIDgzMS4xMDE1NTldWyBU
-NjE5MV0gYmluZGVyOiA2MTkwOjYxOTEgd3JvdGUgNzYgb2YgNzYsIHJlYWQgcmV0dXJuIDAgb2Yg
-MAo+ID4gPiA+ID4gPiBbICA4MzEuMTEwMzE3XVsgVDYxOTFdIGJpbmRlcjogNjE5MCBjbG9zZSB2
-bSBhcmVhIDIwMGEwMDAwLTIwMGEyMDAwICg4Cj4gPiA+ID4gPiA+IEspIHZtYSAxODAyMDBkOSBw
-YWdlcCA4MDAwMDAwMDAwMDAwMDI1Cj4gPiA+ID4gPiA+IFsgIDgzMS4xMTE3NTJdWyBUNjE5MV0g
-YmluZGVyOiA2MTkwIGNsb3NlIHZtIGFyZWEgMjAwYzAwMDAtMjAwYzIwMDAgKDgKPiA+ID4gPiA+
-ID4gSykgdm1hIDE4MDIwMGQ5IHBhZ2VwIDgwMDAwMDAwMDAwMDAwMjUKPiA+ID4gPiA+ID4gWyAg
-ODMxLjExMzI2Nl1bIFQzMzQ0XSBiaW5kZXI6IGJpbmRlcl9mbHVzaDogNjE5MCB3b2tlIDAgdGhy
-ZWFkcwo+ID4gPiA+ID4gPiBbICA4MzEuMTE0MTQ3XVsgVDMzNDRdIGJpbmRlcjogYmluZGVyX2Zs
-dXNoOiA2MTkwIHdva2UgMCB0aHJlYWRzCj4gPiA+ID4gPiA+IFsgIDgzMS4xMTUwODddWyBUMzM0
-NF0gYmluZGVyOiB1bmRlbGl2ZXJlZCBUUkFOU0FDVElPTl9FUlJPUjogMjkxODkKPiA+ID4gPiA+
-ID4gWyAgODMxLjExNTk5MV1bIFQzMzQ0XSBiaW5kZXI6IGJpbmRlcl9kZWZlcnJlZF9yZWxlYXNl
-OiA2MTkwIHRocmVhZHMKPiA+ID4gPiA+ID4gMSwgbm9kZXMgMCAocmVmIDApLCByZWZzIDAsIGFj
-dGl2ZSB0cmFuc2FjdGlvbnMgMAo+ID4gPiA+ID4gPiBbICA4MzEuMTE3NTI1XVsgVDMzNDRdIGJp
-bmRlcjogYmluZGVyX2RlZmVycmVkX3JlbGVhc2U6IDYxOTAgdGhyZWFkcwo+ID4gPiA+ID4gPiAx
-LCBub2RlcyAwIChyZWYgMCksIHJlZnMgMCwgYWN0aXZlIHRyYW5zYWN0aW9ucyAwCj4gPiA+ID4g
-PiA+Cj4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+IFRoZSBxdWVzdGlvbiBpczogaWYgcHJvY2Vzc2Vz
-IHRoYXQgb3BlbmVkIHRoZSBkZXZpY2UgYW5kIGV2ZXIgbWFwcGVkCj4gPiA+ID4gPiA+IGl0IGFy
-ZSBub3cgY29tcGxldGVseSBnb25lLCBzaG91bGQgaXQgcmVzZXQgdGhlIG9yaWdpbmFsIHN0YXRl
-IHdoZW4KPiA+ID4gPiA+ID4gY29udGV4dCBjYW4gYmUgYm91bmQgYWdhaW4/IElzIGl0IGEgYnVn
-IGluIGJpbmRlciB0aGF0IGl0IGRvZXMgbm90PyBJZgo+ID4gPiA+ID4gPiBzbywgaXMgdGhlcmUg
-c29tZSBraW5kIG9mIHRlbXAgd29yay1hcm91bmQgZm9yIHRoaXM/Cj4gPiA+ID4gPgo+ID4gPiA+
-ID4gSWYgYWxsIHRoZSBwcm9jZXNzZXMgdGhhdCBvcGVuZWQgdGhlIGRldmljZSBhcmUgZ29uZSwg
-ZXZlcnl0aGluZwo+ID4gPiA+ID4gc2hvdWxkIGJlIGNsZWFuZWQgdXAgYW5kIGxlYXZlIGJpbmRl
-ciBpbiBhIHVzZWFibGUgc3RhdGUuIFdoZW4gdGhlCj4gPiA+ID4gPiBkZXZpY2UgaXMgaW4gdGhp
-cyBzdGF0ZSwgY2FuIHlvdSBkdW1wIG91dAo+ID4gPiA+ID4gL3N5cy9kZWJ1Zy9rZXJuZWwvYmlu
-ZGVyL3N0YXRlIGFuZCBzZW5kIGl0IHRvIG1lPwo+ID4gPiA+Cj4gPiA+ID4KPiA+ID4gPiBIZXJl
-IGl0IGlzOgo+ID4gPiA+Cj4gPiA+ID4KPiA+ID4gPiBiaW5kZXIgc3RhdGU6Cj4gPiA+ID4gZGVh
-ZCBub2RlczoKPiA+ID4gPiAgIG5vZGUgMzogdTAwMDAwMDAwMDAwMDAwMDAgYzAwMDAwMDAwMDAw
-MDAwMDAgaHMgMCBodyAwIGxzIDAgbHcgMCBpcyAxCj4gPiA+ID4gaXcgMSB0ciAxIHByb2MgNjE5
-Mwo+ID4gPiA+IHByb2MgNjE5Mwo+ID4gPgo+ID4gPiAvXC9cL1wKPiA+ID4KPiA+ID4gVGhpcyBw
-cm9jZXNzIGRvZXMgbm90IGV4aXN0IGFueW1vcmUgZm9yIG1pbnV0ZXMuIExpa2UgYXQgYWxsLiBF
-dmVuIG5vCj4gPiA+IHByb2NmcyBub2RlLgo+ID4gPgo+ID4gPiA+IGNvbnRleHQgYmluZGVyMAo+
-ID4gPiA+ICAgdGhyZWFkIDYxOTQ6IGwgMDAgbmVlZF9yZXR1cm4gMSB0ciAwCj4gPiA+ID4gICBu
-b2RlIDE6IHUwMDAwMDAwMDAwMDAwMDAwIGMwMDAwMDAwMDAwMDAwMDAwIGhzIDEgaHcgMSBscyAy
-IGx3IDEgaXMgMCBpdyAwIHRyIDEKPiA+ID4gPiAgIHJlZiA0OiBkZXNjIDEgZGVhZCBub2RlIDMg
-cyAxIHcgMCBkIDAwMDAwMDAwZTc3YWVhM2IKPiA+ID4gPiAgIGJ1ZmZlciAyOiAwMDAwMDAwMGIy
-MzAxY2ZhIHNpemUgODg6MjQ6MTYgYWN0aXZlCj4gPiA+ID4gICBwZW5kaW5nIHRyYW5zYWN0aW9u
-IDI6IDAwMDAwMDAwYjE1OTExNjYgZnJvbSAwOjAgdG8gNjE5MzowIGNvZGUgMAo+ID4gPiA+IGZs
-YWdzIDAgcHJpIDAgcjEgbm9kZSAxIHNpemUgODg6MjQgZGF0YSAwMDAwMDAwMGIyMzAxY2ZhCj4g
-PiA+ID4KPiA+ID4gPgo+ID4gPiA+Cj4gPiA+ID4gS2VybmVsIGFsc28gc2FpZDoKPiA+ID4gPgo+
-ID4gPiA+IFsgIDE5Ny4wNDk3MDJdWyAgIFQxMl0gYmluZGVyOiByZWxlYXNlIDYxOTM6NjE5NCB0
-cmFuc2FjdGlvbiAyIG91dCwgc3RpbGwgYWN0aXZlCj4gPiA+ID4gWyAgMTk3LjA1MDgwM11bICAg
-VDEyXSBiaW5kZXI6IHVuZXhwZWN0ZWQgd29yayB0eXBlLCA0LCBub3QgZnJlZWQKPiA+ID4gPiBb
-ICAxOTcuMDUxNjU4XVsgICBUMTJdIGJpbmRlcjogdW5kZWxpdmVyZWQgVFJBTlNBQ1RJT05fQ09N
-UExFVEUKPiA+ID4gPgo+ID4gPiA+IE5vdCBzdXJlIHdoeSB0aGVyZSBpcyBzb21ldGhpbmcgdW5l
-eHBlY3RlZC4gSSBkb24ndCB0cnkgdG8gZnV6eiBpdCBvcgo+ID4gPiA+IHNvbWV0aGluZyBhdCB0
-aGlzIHBvaW50LiBKdXN0IHJ1biBhIGJhc2ljIHRlc3QuCj4gPiA+ID4gSGVyZSBpcyB0aGUgdGVz
-dCwgaXQncyBpbiBzeXprYWxsZXIgbm90YXRpb24sIGJ1dCBob3BlZnVsbHkgeW91IGNhbgo+ID4g
-PiA+IGdldCBvdmVyYWxsIGlkZWE6Cj4gPiA+ID4KPiA+ID4gPiByMCA9IHN5el9vcGVuX2RldiRi
-aW5kZXIoJkFVVE89Jy9kZXYvYmluZGVyI1x4MDAnLCAweDAsIDB4MikKPiA+ID4gPiBpb2N0bCRC
-SU5ERVJfU0VUX0NPTlRFWFRfTUdSX0VYVChyMCwgQVVUTywgJkFVVE89e0FVVE8sIDB4MTAwLCAw
-eDAsIDB4MH0pCj4gPiA+ID4gbW1hcCRiaW5kZXIoJigweDdmMDAwMDBhMDAwMCksIDB4MjAwMCwg
-MHgxLCAweDExLCByMCwgMHgwKQo+ID4gPiA+IHIxID0gc3l6X29wZW5fZGV2JGJpbmRlcigmQVVU
-Tz0nL2Rldi9iaW5kZXIjXHgwMCcsIDB4MCwgMHgyKQo+ID4gPiA+IG1tYXAkYmluZGVyKCYoMHg3
-ZjAwMDAwYzAwMDApLCAweDIwMDAsIDB4MSwgMHgxMSwgcjEsIDB4MCkKPiA+ID4gPiBpb2N0bCRC
-SU5ERVJfV1JJVEVfUkVBRChyMSwgQVVUTywgJkFVVE89e0FVVE8sIEFVVE8sCj4gPiA+ID4gJkFV
-VE89W0B0cmFuc2FjdGlvbl9zZz17QVVUTywgezB4MCwgMHgwLCAweDAsIDB4MCwgMHgwLCAweDAs
-IDB4MCwKPiA+ID4gPiBBVVRPLCBBVVRPLCAmQVVUTz17QGZsYXQ9QGJpbmRlcj17QVVUTywgMHgw
-LCAweDAsIDB4MH0sIEBmZD17QVVUTywKPiA+ID4gPiBBVVRPLCByMCwgQVVUTywgMHgwfSwgQHB0
-cj17QVVUTywgMHgwLCAmQVVUTz0iIi8xMCwgQVVUTywgMHgwLCAweDB9fSwKPiA+ID4gPiAmQVVU
-Tz17QVVUTywgQVVUTywgQVVUT319LCAweDEwfV0sIEFVVE8sIEFVVE8sICZBVVRPfSkKPiA+Cj4g
-Pgo+ID4gSGVyZSBpcyBjb3JyZXNwb25kaW5nIEMgdGVzdCB0aGF0IHlvdSBjYW4gdXNlOgo+ID4g
-aHR0cHM6Ly9naXN0LmdpdGh1YnVzZXJjb250ZW50LmNvbS9kdnl1a292LzQ4NDM2ODk1MDI4OTk1
-NDUxNmUzNTJhMGQwODY3OTRiL3Jhdy9mYWI2YjBmYjNlZjdhZjU3YzMwNDBhM2FkZWVkMjZiY2Yw
-M2U3NWE2L2dpc3RmaWxlMS50eHQKPgo+IFdhaXQsIGlzIGl0IGJlY2F1c2UgSSBzZW5kIGJpbmRl
-ciBmZCBpbiBCSU5ERVJfVFlQRV9GRCBvYmplY3Q/Cj4gSSB3YXMganVzdCB0ZXN0aW5nIGRpZmZl
-cmVudCBvYmplY3QgdHlwZXMgYW5kIGZvciBCSU5ERVJfVFlQRV9GRCBJCj4gbmVlZGVkIGFuIGZk
-LCBhbmQgdGhlIGJpbmRlciBmZCB3YXMgdGhlIG9ubHkgZmQgdGhhdCB0aGUgdGVzdCBhbHJlYWR5
-Cj4gaGFkIG9wZW5lZCwgc28gSSB3YXMgbGlrZSBPSywgaGVyZSBpcyBhbiBmZCBpZiB5b3UgbmVl
-ZCBvbmUgaGVyZS4uLi4KPiBDYW4gaXQgYmUgYSBwcm9ibGVtIGluIHJlYWwgbGlmZT8gQnV0IGVp
-dGhlciB3YXkgdGhpcyBkZWFkbG9jayBpcwo+IHF1aXRlIHVucGxlYXNhbnQgZm9yIGZ1enppbmcu
-Li4KCldoaWNoIGtlcm5lbCBicmFuY2ggaXMgdGhpcz8gSSB0aGluayB5b3UgYXJlIHNlZWluZyBh
-biBpc3N1ZSB0aGF0CnNob3VsZCBoYXZlIGJlZW4gZml4ZWQgaW4gbWFpbmxpbmUgYnkgN2FhMTM1
-ZmNmMjYzICgiQU5EUk9JRDogYmluZGVyOgpwcmV2ZW50IHRyYW5zYWN0aW9ucyBpbnRvIG93biBw
-cm9jZXNzLiIpLiBUaGUgcHJvY2VzcyBpcyBzZW5kaW5nIGEKdHJhbnNhY3Rpb24gdG8gaXRzZWxm
-IHdoaWNoIHNob3VsZCBoYXZlIGZhaWxlZC4KClRoZSBoYW5nIGlzIGJlY2F1c2UgdGhlIGhhbmRs
-aW5nIG9mIEJJTkRFUl9UWVBFX0ZEIGRvZXMgYW4gZmdldCgpIG9uCnRoZSBmZCAod2hpY2ggaXMg
-b24gL2Rldi9iaW5kZXIwIGluIHRoaXMgY2FzZSkuIFNpbmNlIHRoZSB0cmFuc2FjdGlvbgppcyBz
-dHVjayBvbiB0aGUgcXVldWUgKG5vIHNlcnZlciB0aHJlYWQgdG8gaGFuZGxlIGl0KSwgbm8gb25l
-IGlzCmNhbGxpbmcgZnB1dCgpLiBUaGUgcmVzdWx0IGlzIHRoYXQgZXhpdCgpIGRvZXNuJ3QgcmVz
-dWx0IGluCmJpbmRlcl9yZWxlYXNlKCkgYmVpbmcgY2FsbGVkIHRvIGNsZWFudXAgdGhlIHByb2Nl
-c3MgYmluZGVyIHN0YXRlLgoKU28sIGlmIHlvdSB1c2UgYSBkaWZmZXJlbnQgZmQsIHRoZSBpc3N1
-ZSB3b3VsZCBiZSBhdm9pZGVkIC0tIGJ1dCBhcyBJCnNhaWQsIHRoaXMgc2hvdWxkbid0IGhhdmUg
-aGFwcGVuZWQgaW4gdGhlIGZpcnN0IHBsYWNlIG9uIG1haW5saW5lLCBzbwppZiB0aGlzIGlzIG1h
-aW5saW5lIG9yIGFueSBicmFuY2ggdGhhdCBoYXMgdGhlIGFib3ZlIHBhdGNoLCB0aGVyZSBpcyBh
-Cm5ldyBkcml2ZXIgYnVnIHRoYXQgaXMgc29tZWhvdyBhbGxvd2luZyB0cmFuc2FjdGlvbnMgdG8g
-c2VsZi4KCi1Ub2RkCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6
-Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZl
-cmRldi1kZXZlbAo=
+Hi Greg,
+
+I love your patch! Perhaps something to improve:
+
+[auto build test WARNING on staging/staging-testing]
+[cannot apply to v5.1 next-20190517]
+[if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
+
+url:    https://github.com/0day-ci/linux/commits/Greg-Kroah-Hartman/staging-kpc2000-fix-a-bunch-of-orginization-and-header-file-issues/20190517-213909
+reproduce:
+        # apt-get install sparse
+        make ARCH=x86_64 allmodconfig
+        make C=1 CF='-fdiagnostic-prefix -D__CHECK_ENDIAN__'
+
+If you fix the issue, kindly add following tag
+Reported-by: kbuild test robot <lkp@intel.com>
+
+
+sparse warnings: (new ones prefixed by >>)
+
+>> drivers/staging/kpc2000/kpc2000_i2c.c:141:14: sparse: sparse: incorrect type in argument 1 (different address spaces) @@    expected void const volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+>> drivers/staging/kpc2000/kpc2000_i2c.c:141:14: sparse:    expected void const volatile [noderef] <asn:2> *addr
+>> drivers/staging/kpc2000/kpc2000_i2c.c:141:14: sparse:    got void *
+>> drivers/staging/kpc2000/kpc2000_i2c.c:150:9: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+>> drivers/staging/kpc2000/kpc2000_i2c.c:150:9: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:150:9: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:151:18: sparse: sparse: incorrect type in argument 1 (different address spaces) @@    expected void const volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:151:18: sparse:    expected void const volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:151:18: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:172:9: sparse: sparse: incorrect type in argument 1 (different address spaces) @@    expected void const volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:172:9: sparse:    expected void const volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:172:9: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:172:9: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:172:9: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:172:9: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:174:9: sparse: sparse: incorrect type in argument 1 (different address spaces) @@    expected void const volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:174:9: sparse:    expected void const volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:174:9: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:174:9: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:174:9: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:174:9: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:177:18: sparse: sparse: incorrect type in argument 1 (different address spaces) @@    expected void const volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:177:18: sparse:    expected void const volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:177:18: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:181:9: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:181:9: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:181:9: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:200:9: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:200:9: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:200:9: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:201:18: sparse: sparse: incorrect type in argument 1 (different address spaces) @@    expected void const volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:201:18: sparse:    expected void const volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:201:18: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:224:5: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:224:5: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:224:5: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:229:18: sparse: sparse: incorrect type in argument 1 (different address spaces) @@    expected void const volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:229:18: sparse:    expected void const volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:229:18: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:237:5: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:237:5: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:237:5: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:251:18: sparse: sparse: incorrect type in argument 1 (different address spaces) @@    expected void const volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:251:18: sparse:    expected void const volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:251:18: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:258:5: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:258:5: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:258:5: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:268:5: sparse: sparse: incorrect type in argument 1 (different address spaces) @@    expected void const volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:268:5: sparse:    expected void const volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:268:5: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:273:9: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:273:9: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:273:9: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:275:13: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:275:13: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:275:13: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:285:15: sparse: sparse: incorrect type in argument 1 (different address spaces) @@    expected void const volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:285:15: sparse:    expected void const volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:285:15: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:292:34: sparse: sparse: incorrect type in argument 1 (different address spaces) @@    expected void const volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:292:34: sparse:    expected void const volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:292:34: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:316:9: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:316:9: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:316:9: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:317:9: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:317:9: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:317:9: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:334:9: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:334:9: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:334:9: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:337:13: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:337:13: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:337:13: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:343:22: sparse: sparse: incorrect type in argument 1 (different address spaces) @@    expected void const volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:343:22: sparse:    expected void const volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:343:22: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:351:19: sparse: sparse: incorrect type in argument 1 (different address spaces) @@    expected void const volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:351:19: sparse:    expected void const volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:351:19: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:355:24: sparse: sparse: incorrect type in argument 1 (different address spaces) @@    expected void const volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:355:24: sparse:    expected void const volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:355:24: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:356:21: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:356:21: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:356:21: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:358:17: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:358:17: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:358:17: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:366:30: sparse: sparse: incorrect type in argument 1 (different address spaces) @@    expected void const volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:366:30: sparse:    expected void const volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:366:30: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:369:13: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:369:13: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:369:13: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:372:9: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:372:9: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:372:9: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:382:5: sparse: sparse: incorrect type in argument 1 (different address spaces) @@    expected void const volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:382:5: sparse:    expected void const volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:382:5: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:382:5: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:382:5: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:382:5: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:383:10: sparse: sparse: incorrect type in argument 1 (different address spaces) @@    expected void const volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:383:10: sparse:    expected void const volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:383:10: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:455:13: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:455:13: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:455:13: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:461:13: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:461:13: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:461:13: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:463:17: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:463:17: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:463:17: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:469:13: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:469:13: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:469:13: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:470:13: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:470:13: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:470:13: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:472:17: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:472:17: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:472:17: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:478:13: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:478:13: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:478:13: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:479:13: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:479:13: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:479:13: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:481:17: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:481:17: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:481:17: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:482:17: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:482:17: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:482:17: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:488:13: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:488:13: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:488:13: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:489:13: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:489:13: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:489:13: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:496:13: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:496:13: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:496:13: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:500:17: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:500:17: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:500:17: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:502:17: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:502:17: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:502:17: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:513:9: sparse: sparse: incorrect type in argument 1 (different address spaces) @@    expected void const volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:513:9: sparse:    expected void const volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:513:9: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:513:9: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:513:9: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:513:9: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:516:9: sparse: sparse: incorrect type in argument 1 (different address spaces) @@    expected void const volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:516:9: sparse:    expected void const volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:516:9: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:516:9: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:516:9: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:516:9: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:533:9: sparse: sparse: incorrect type in argument 1 (different address spaces) @@    expected void const volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:533:9: sparse:    expected void const volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:533:9: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:533:9: sparse: sparse: incorrect type in argument 2 (different address spaces) @@    expected void volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:533:9: sparse:    expected void volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:533:9: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:552:26: sparse: sparse: incorrect type in argument 1 (different address spaces) @@    expected void const volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:552:26: sparse:    expected void const volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:552:26: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:556:26: sparse: sparse: incorrect type in argument 1 (different address spaces) @@    expected void const volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:556:26: sparse:    expected void const volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:556:26: sparse:    got void *
+   drivers/staging/kpc2000/kpc2000_i2c.c:556:53: sparse: sparse: incorrect type in argument 1 (different address spaces) @@    expected void const volatile [noderef] <asn:2> *addr @@    got n:2> *addr @@
+   drivers/staging/kpc2000/kpc2000_i2c.c:556:53: sparse:    expected void const volatile [noderef] <asn:2> *addr
+   drivers/staging/kpc2000/kpc2000_i2c.c:556:53: sparse:    got void *
+>> drivers/staging/kpc2000/kpc2000_i2c.c:580:42: sparse: sparse: dubious: x | !y
+   drivers/staging/kpc2000/kpc2000_i2c.c:581:42: sparse: sparse: dubious: x | !y
+   drivers/staging/kpc2000/kpc2000_i2c.c:583:73: sparse: sparse: dubious: x | !y
+   drivers/staging/kpc2000/kpc2000_i2c.c:585:42: sparse: sparse: dubious: x | !y
+   drivers/staging/kpc2000/kpc2000_i2c.c:586:42: sparse: sparse: dubious: x | !y
+   drivers/staging/kpc2000/kpc2000_i2c.c:587:42: sparse: sparse: dubious: x | !y
+   drivers/staging/kpc2000/kpc2000_i2c.c:588:42: sparse: sparse: dubious: x | !y
+   drivers/staging/kpc2000/kpc2000_i2c.c:589:42: sparse: sparse: dubious: x | !y
+   drivers/staging/kpc2000/kpc2000_i2c.c:590:42: sparse: sparse: dubious: x | !y
+   drivers/staging/kpc2000/kpc2000_i2c.c:591:42: sparse: sparse: dubious: x | !y
+   drivers/staging/kpc2000/kpc2000_i2c.c:592:42: sparse: sparse: dubious: x | !y
+   drivers/staging/kpc2000/kpc2000_i2c.c:593:42: sparse: sparse: dubious: x | !y
+   drivers/staging/kpc2000/kpc2000_i2c.c:601:42: sparse: sparse: dubious: x | !y
+   drivers/staging/kpc2000/kpc2000_i2c.c:602:42: sparse: sparse: dubious: x | !y
+>> drivers/staging/kpc2000/kpc2000_i2c.c:617:5: sparse: sparse: symbol 'pi2c_probe' was not declared. Should it be static?
+>> drivers/staging/kpc2000/kpc2000_i2c.c:682:17: sparse: sparse: Using plain integer as NULL pointer
+   drivers/staging/kpc2000/kpc2000_i2c.c:684:36: sparse: sparse: Using plain integer as NULL pointer
+>> drivers/staging/kpc2000/kpc2000_i2c.c:667:5: sparse: sparse: symbol 'pi2c_remove' was not declared. Should it be static?
+>> drivers/staging/kpc2000/kpc2000_i2c.c:690:24: sparse: sparse: symbol 'i2c_plat_driver_i' was not declared. Should it be static?
+
+vim +141 drivers/staging/kpc2000/kpc2000_i2c.c
+
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  132  
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  133  /* Make sure the SMBus host is ready to start transmitting.
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  134     Return 0 if it is, -EBUSY if it is not. */
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  135  static int i801_check_pre(struct i2c_device *priv)
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  136  {
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  137      int status;
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  138      
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  139      dev_dbg(&priv->adapter.dev, "i801_check_pre\n");
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  140      
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19 @141      status = inb_p(SMBHSTSTS(priv));
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  142      if (status & SMBHSTSTS_HOST_BUSY) {
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  143          dev_err(&priv->adapter.dev, "SMBus is busy, can't use it! (status=%x)\n", status);
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  144          return -EBUSY;
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  145      }
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  146      
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  147      status &= STATUS_FLAGS;
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  148      if (status) {
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  149          //dev_dbg(&priv->adapter.dev, "Clearing status flags (%02x)\n", status);
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19 @150          outb_p(status, SMBHSTSTS(priv));
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  151          status = inb_p(SMBHSTSTS(priv)) & STATUS_FLAGS;
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  152          if (status) {
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  153            dev_err(&priv->adapter.dev, "Failed clearing status flags (%02x)\n", status);
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  154            return -EBUSY;
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  155          }
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  156      }
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  157      return 0;
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  158  }
+7dc7967f drivers/staging/kpc2000/kpc_i2c/i2c_driver.c Greg Kroah-Hartman 2019-04-19  159  
+
+:::::: The code at line 141 was first introduced by commit
+:::::: 7dc7967fc39af81191558f63eeaf3d2b83899b1c staging: kpc2000: add initial set of Daktronics drivers
+
+:::::: TO: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+:::::: CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+---
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
