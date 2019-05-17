@@ -1,36 +1,36 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 23EB42220D
-	for <lists+driverdev-devel@lfdr.de>; Sat, 18 May 2019 09:31:29 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7E53D86BCB;
-	Sat, 18 May 2019 07:31:27 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GMgjvEYdTRn0; Sat, 18 May 2019 07:31:26 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3034986A3C;
-	Sat, 18 May 2019 07:31:26 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CAF981BF384
- for <devel@linuxdriverproject.org>; Sat, 18 May 2019 07:31:22 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9C0502220C
+	for <lists+driverdev-devel@lfdr.de>; Sat, 18 May 2019 09:31:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C8A2088364
- for <devel@linuxdriverproject.org>; Sat, 18 May 2019 07:31:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D5FEC88517;
+	Sat, 18 May 2019 07:31:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RVXKyfxaT4g2; Sat, 18 May 2019 07:31:24 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 31A5F883B5;
+	Sat, 18 May 2019 07:31:24 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 76B401BF384
+ for <devel@linuxdriverproject.org>; Sat, 18 May 2019 07:31:22 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 6B5D820791
+ for <devel@linuxdriverproject.org>; Sat, 18 May 2019 07:31:22 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hOi4EeIvEdSW for <devel@linuxdriverproject.org>;
- Sat, 18 May 2019 07:31:22 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+ with ESMTP id hvnyer05bNyq for <devel@linuxdriverproject.org>;
+ Sat, 18 May 2019 07:31:21 +0000 (UTC)
+X-Greylist: delayed 11:50:38 by SQLgrey-1.7.6
 Received: from ltc-performance.com (unknown [175.195.223.251])
- by hemlock.osuosl.org (Postfix) with ESMTP id B9AFE88352
- for <devel@linuxdriverproject.org>; Sat, 18 May 2019 07:31:21 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 454A620788
+ for <devel@driverdev.osuosl.org>; Sat, 18 May 2019 07:31:21 +0000 (UTC)
 Received: from [37.49.227.144] (unknown [37.49.227.144])
  by ltc-performance.com (Postfix) with ESMTPA id 4B855C58144F;
  Fri, 17 May 2019 20:20:19 +0900 (JST)
@@ -40,7 +40,7 @@ Subject: Do you need a loan?
 To: Recipients <mrs.elaineslark@gmail.com>
 From: "Elaine Slark" <mrs.elaineslark@gmail.com>
 Date: Fri, 17 May 2019 04:20:12 -0700
-Message-Id: <20190518073122.C8A2088364@hemlock.osuosl.org>
+Message-Id: <20190518073122.6B5D820791@silver.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
