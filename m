@@ -1,54 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C221D215BE
-	for <lists+driverdev-devel@lfdr.de>; Fri, 17 May 2019 10:52:11 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 84A92215B3
+	for <lists+driverdev-devel@lfdr.de>; Fri, 17 May 2019 10:51:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6258031421;
-	Fri, 17 May 2019 08:52:10 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8C3818833A;
+	Fri, 17 May 2019 08:51:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lY9Wx4Tu2bxB; Fri, 17 May 2019 08:52:09 +0000 (UTC)
+	with ESMTP id gdK9MjMLoFZX; Fri, 17 May 2019 08:51:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 9FC3531393;
-	Fri, 17 May 2019 08:51:56 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B7D5388361;
+	Fri, 17 May 2019 08:51:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id ADD681BF32C
- for <devel@linuxdriverproject.org>; Fri, 17 May 2019 08:51:54 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 8453B1BF32C
+ for <devel@linuxdriverproject.org>; Fri, 17 May 2019 08:50:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 75E7386892
- for <devel@linuxdriverproject.org>; Fri, 17 May 2019 08:50:29 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 7E9DF22844
+ for <devel@linuxdriverproject.org>; Fri, 17 May 2019 08:50:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5-IcjApwsD2B for <devel@linuxdriverproject.org>;
- Fri, 17 May 2019 08:50:11 +0000 (UTC)
+ with ESMTP id SSS3AhnVQKfU for <devel@linuxdriverproject.org>;
+ Fri, 17 May 2019 08:50:14 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 63B2386880
- for <devel@driverdev.osuosl.org>; Fri, 17 May 2019 08:50:11 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 30FAA227FC
+ for <devel@driverdev.osuosl.org>; Fri, 17 May 2019 08:50:14 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id C5E3220833;
- Fri, 17 May 2019 08:50:10 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 7F11D2087E;
+ Fri, 17 May 2019 08:50:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1558083011;
- bh=A6GwRKW+oEYVYsjLApSZ6TPyTRKGyPhHPu4Euuyeey0=;
+ s=default; t=1558083014;
+ bh=CR3OB24HqVtGgT29cqqwbP0pU5re8un7DwYzpR+6vGY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Z8nIQpWJOt0UmRE+4Wggv1ZRxVmjgCykUIzhy/1QLg+djNY3v1XaLHiSlOQoYv3us
- W7jQkQXMgdAV1g5fz+LqnhqZdbv/wz+JNMnDSXVkwIqeGO2eI4cpV66M8zUDhRfxAo
- MKyZEZRTxRpPItv+ef9Ik07hlp+JYCxqKVAhSV90=
+ b=BK6RmMg/LhzMdMtHw1DR52H+5pxEdhVJ6DUfxS07IWg3eMpnjnCUB4BAhi9oOtxzX
+ JCrwHhK4bUtK5JdYOzsWBbHRfcoQtGwWGssPVwEFg8/bOB549t7Yut29GyA9YO/1iH
+ eolfxirFdzSjDt3NQfJ6nGdCbILWhgwD9juC45wY=
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: devel@driverdev.osuosl.org
-Subject: [PATCH 02/10] staging: kpc2000: remove kp200_module.c file
-Date: Fri, 17 May 2019 10:49:37 +0200
-Message-Id: <20190517084945.2810-4-gregkh@linuxfoundation.org>
+Subject: [PATCH 03/10] staging: kpc2000: remove fileops.c file.
+Date: Fri, 17 May 2019 10:49:38 +0200
+Message-Id: <20190517084945.2810-5-gregkh@linuxfoundation.org>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190517084945.2810-1-gregkh@linuxfoundation.org>
 References: <20190517084945.2810-1-gregkh@linuxfoundation.org>
@@ -71,168 +71,298 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The kp200_module.c does not need to be stand-alone, so move it into the
+The fileops.c file does not need to be stand-alone, so move it into the
 core.c file.  This lets us make some functions static, reducing the
 global namespace of the driver.
 
 Cc: Matt Sickler <Matt.Sickler@daktronics.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/staging/kpc2000/kpc2000/Makefile      |  2 +-
- drivers/staging/kpc2000/kpc2000/core.c        | 44 ++++++++++++++-
- .../staging/kpc2000/kpc2000/kp2000_module.c   | 54 -------------------
- drivers/staging/kpc2000/kpc2000/pcie.h        |  2 -
- 4 files changed, 43 insertions(+), 59 deletions(-)
- delete mode 100644 drivers/staging/kpc2000/kpc2000/kp2000_module.c
+ drivers/staging/kpc2000/kpc2000/Makefile  |   2 +-
+ drivers/staging/kpc2000/kpc2000/core.c    | 108 ++++++++++++++++++-
+ drivers/staging/kpc2000/kpc2000/fileops.c | 123 ----------------------
+ drivers/staging/kpc2000/kpc2000/pcie.h    |   3 -
+ 4 files changed, 108 insertions(+), 128 deletions(-)
+ delete mode 100644 drivers/staging/kpc2000/kpc2000/fileops.c
 
 diff --git a/drivers/staging/kpc2000/kpc2000/Makefile b/drivers/staging/kpc2000/kpc2000/Makefile
-index 28ab1e185f9f..cfc20e2193df 100644
+index cfc20e2193df..c274ad083db6 100644
 --- a/drivers/staging/kpc2000/kpc2000/Makefile
 +++ b/drivers/staging/kpc2000/kpc2000/Makefile
 @@ -1,4 +1,4 @@
  # SPDX-License-Identifier: GPL-2.0
  
  obj-m := kpc2000.o
--kpc2000-objs += kp2000_module.o  core.o  cell_probe.o  fileops.o
-+kpc2000-objs += core.o  cell_probe.o  fileops.o
+-kpc2000-objs += core.o  cell_probe.o  fileops.o
++kpc2000-objs += core.o  cell_probe.o
 diff --git a/drivers/staging/kpc2000/kpc2000/core.c b/drivers/staging/kpc2000/kpc2000/core.c
-index eb8bac62d33d..e525dd130ce2 100644
+index e525dd130ce2..343db829e157 100644
 --- a/drivers/staging/kpc2000/kpc2000/core.c
 +++ b/drivers/staging/kpc2000/kpc2000/core.c
-@@ -198,7 +198,8 @@ irqreturn_t  kp2000_irq_handler(int irq, void *dev_id)
+@@ -17,7 +17,7 @@
+ #include <linux/sched.h>
+ #include <linux/jiffies.h>
+ #include "pcie.h"
+-
++#include "uapi.h"
+ 
+ /*******************************************************
+   * SysFS Attributes
+@@ -198,6 +198,112 @@ irqreturn_t  kp2000_irq_handler(int irq, void *dev_id)
      return IRQ_HANDLED;
  }
  
--int  kp2000_pcie_probe(struct pci_dev *pdev, const struct pci_device_id *id)
-+static int kp2000_pcie_probe(struct pci_dev *pdev,
-+			     const struct pci_device_id *id)
- {
-     int err = 0;
-     struct kp2000_device *pcard;
-@@ -405,7 +406,7 @@ int  kp2000_pcie_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- }
- 
- 
--void  kp2000_pcie_remove(struct pci_dev *pdev)
-+static void kp2000_pcie_remove(struct pci_dev *pdev)
- {
-     struct kp2000_device *pcard = pci_get_drvdata(pdev);
- 
-@@ -435,3 +436,42 @@ void  kp2000_pcie_remove(struct pci_dev *pdev)
-     unlock_card(pcard);
-     kfree(pcard);
- }
-+
-+struct class *kpc_uio_class;
-+ATTRIBUTE_GROUPS(kpc_uio_class);
-+
-+static const struct pci_device_id kp2000_pci_device_ids[] = {
-+	{ PCI_DEVICE(PCI_VENDOR_ID_DAKTRONICS, PCI_DEVICE_ID_DAKTRONICS) },
-+	{ PCI_DEVICE(PCI_VENDOR_ID_DAKTRONICS, PCI_DEVICE_ID_DAKTRONICS_KADOKA_P2KR0) },
-+	{ 0, }
-+};
-+MODULE_DEVICE_TABLE(pci, kp2000_pci_device_ids);
-+
-+static struct pci_driver kp2000_driver_inst = {
-+	.name =		"kp2000_pcie",
-+	.id_table =	kp2000_pci_device_ids,
-+	.probe =	kp2000_pcie_probe,
-+	.remove =	kp2000_pcie_remove,
-+};
-+
-+static int __init  kp2000_pcie_init(void)
++static int kp2000_cdev_open(struct inode *inode, struct file *filp)
 +{
-+	kpc_uio_class = class_create(THIS_MODULE, "kpc_uio");
-+	if (IS_ERR(kpc_uio_class))
-+		return PTR_ERR(kpc_uio_class);
++	struct kp2000_device *pcard = container_of(filp->private_data, struct kp2000_device, miscdev);
 +
-+	kpc_uio_class->dev_groups = kpc_uio_class_groups;
-+	return pci_register_driver(&kp2000_driver_inst);
++	dev_dbg(&pcard->pdev->dev, "kp2000_cdev_open(filp = [%p], pcard = [%p])\n", filp, pcard);
++
++	filp->private_data = pcard; /* so other methods can access it */
++
++	return 0;
 +}
-+module_init(kp2000_pcie_init);
 +
-+static void __exit  kp2000_pcie_exit(void)
++static int kp2000_cdev_close(struct inode *inode, struct file *filp)
 +{
-+	pci_unregister_driver(&kp2000_driver_inst);
-+	class_destroy(kpc_uio_class);
-+}
-+module_exit(kp2000_pcie_exit);
++	struct kp2000_device *pcard = filp->private_data;
 +
-+MODULE_LICENSE("GPL");
-+MODULE_AUTHOR("Lee.Brooke@Daktronics.com, Matt.Sickler@Daktronics.com");
-+MODULE_SOFTDEP("pre: uio post: kpc_nwl_dma kpc_i2c kpc_spi");
-diff --git a/drivers/staging/kpc2000/kpc2000/kp2000_module.c b/drivers/staging/kpc2000/kpc2000/kp2000_module.c
++	dev_dbg(&pcard->pdev->dev, "kp2000_cdev_close(filp = [%p], pcard = [%p])\n", filp, pcard);
++	return 0;
++}
++
++
++static ssize_t kp2000_cdev_read(struct file *filp, char __user *buf,
++				size_t count, loff_t *f_pos)
++{
++	struct kp2000_device *pcard = filp->private_data;
++	int cnt = 0;
++	int ret;
++#define BUFF_CNT  1024
++	char buff[BUFF_CNT] = {0}; //NOTE: Increase this so it is at least as large as all the scnprintfs.  And don't use unbounded strings. "%s"
++	//NOTE: also, this is a really shitty way to implement the read() call, but it will work for any size 'count'.
++
++	if (WARN(NULL == buf, "kp2000_cdev_read: buf is a NULL pointer!\n"))
++		return -EINVAL;
++
++	cnt += scnprintf(buff+cnt, BUFF_CNT-cnt, "Card ID                 : 0x%08x\n", pcard->card_id);
++	cnt += scnprintf(buff+cnt, BUFF_CNT-cnt, "Build Version           : 0x%08x\n", pcard->build_version);
++	cnt += scnprintf(buff+cnt, BUFF_CNT-cnt, "Build Date              : 0x%08x\n", pcard->build_datestamp);
++	cnt += scnprintf(buff+cnt, BUFF_CNT-cnt, "Build Time              : 0x%08x\n", pcard->build_timestamp);
++	cnt += scnprintf(buff+cnt, BUFF_CNT-cnt, "Core Table Offset       : 0x%08x\n", pcard->core_table_offset);
++	cnt += scnprintf(buff+cnt, BUFF_CNT-cnt, "Core Table Length       : 0x%08x\n", pcard->core_table_length);
++	cnt += scnprintf(buff+cnt, BUFF_CNT-cnt, "Hardware Revision       : 0x%08x\n", pcard->hardware_revision);
++	cnt += scnprintf(buff+cnt, BUFF_CNT-cnt, "SSID                    : 0x%016llx\n", pcard->ssid);
++	cnt += scnprintf(buff+cnt, BUFF_CNT-cnt, "DDNA                    : 0x%016llx\n", pcard->ddna);
++	cnt += scnprintf(buff+cnt, BUFF_CNT-cnt, "IRQ Mask                : 0x%016llx\n", readq(pcard->sysinfo_regs_base + REG_INTERRUPT_MASK));
++	cnt += scnprintf(buff+cnt, BUFF_CNT-cnt, "IRQ Active              : 0x%016llx\n", readq(pcard->sysinfo_regs_base + REG_INTERRUPT_ACTIVE));
++	cnt += scnprintf(buff+cnt, BUFF_CNT-cnt, "CPLD                    : 0x%016llx\n", readq(pcard->sysinfo_regs_base + REG_CPLD_CONFIG));
++
++	if (*f_pos >= cnt)
++		return 0;
++
++	if (count > cnt)
++		count = cnt;
++
++	ret = copy_to_user(buf, buff + *f_pos, count);
++	if (ret)
++		return -EFAULT;
++	*f_pos += count;
++	return count;
++}
++
++static long kp2000_cdev_ioctl(struct file *filp, unsigned int ioctl_num,
++			      unsigned long ioctl_param)
++{
++	struct kp2000_device *pcard = filp->private_data;
++
++	dev_dbg(&pcard->pdev->dev, "kp2000_cdev_ioctl(filp = [%p], ioctl_num = 0x%08x, ioctl_param = 0x%016lx) pcard = [%p]\n", filp, ioctl_num, ioctl_param, pcard);
++
++	switch (ioctl_num){
++	case KP2000_IOCTL_GET_CPLD_REG:             return readq(pcard->sysinfo_regs_base + REG_CPLD_CONFIG);
++	case KP2000_IOCTL_GET_PCIE_ERROR_REG:       return readq(pcard->sysinfo_regs_base + REG_PCIE_ERROR_COUNT);
++
++	case KP2000_IOCTL_GET_EVERYTHING: {
++		struct kp2000_regs temp;
++		int ret;
++
++		memset(&temp, 0, sizeof(temp));
++		temp.card_id = pcard->card_id;
++		temp.build_version = pcard->build_version;
++		temp.build_datestamp = pcard->build_datestamp;
++		temp.build_timestamp = pcard->build_timestamp;
++		temp.hw_rev = pcard->hardware_revision;
++		temp.ssid = pcard->ssid;
++		temp.ddna = pcard->ddna;
++		temp.cpld_reg = readq(pcard->sysinfo_regs_base + REG_CPLD_CONFIG);
++
++		ret = copy_to_user((void*)ioctl_param, (void*)&temp, sizeof(temp));
++		if (ret)
++			return -EFAULT;
++
++		return sizeof(temp);
++		}
++
++	default:
++		return -ENOTTY;
++	}
++	return -ENOTTY;
++}
++
++static struct file_operations kp2000_fops = {
++	.owner =		THIS_MODULE,
++	.open =			kp2000_cdev_open,
++	.release =		kp2000_cdev_close,
++	.read =			kp2000_cdev_read,
++	.llseek =		noop_llseek,
++	.unlocked_ioctl =	kp2000_cdev_ioctl,
++};
++
+ static int kp2000_pcie_probe(struct pci_dev *pdev,
+ 			     const struct pci_device_id *id)
+ {
+diff --git a/drivers/staging/kpc2000/kpc2000/fileops.c b/drivers/staging/kpc2000/kpc2000/fileops.c
 deleted file mode 100644
-index fa3bd266ba54..000000000000
---- a/drivers/staging/kpc2000/kpc2000/kp2000_module.c
+index c582af4383f7..000000000000
+--- a/drivers/staging/kpc2000/kpc2000/fileops.c
 +++ /dev/null
-@@ -1,54 +0,0 @@
+@@ -1,123 +0,0 @@
 -// SPDX-License-Identifier: GPL-2.0+
--#include <linux/init.h>
 -#include <linux/module.h>
--#include <linux/pci.h>
--#include <linux/types.h>
--#include <linux/export.h>
--#include <linux/slab.h>
--#include <asm/io.h>
--#include <linux/io.h>
--#include <linux/mfd/core.h>
--#include <linux/platform_device.h>
--#include <linux/ioport.h>
+-#include <linux/init.h>
+-#include <linux/kernel.h>   /* printk() */
+-#include <linux/slab.h>     /* kmalloc() */
+-#include <linux/fs.h>       /* everything... */
+-#include <linux/errno.h>    /* error codes */
+-#include <linux/types.h>    /* size_t */
+-#include <linux/cdev.h>
+-#include <linux/uaccess.h>    /* copy_*_user */
+-#include <linux/rwsem.h>
+-#include <linux/idr.h>
+-#include <linux/io-64-nonatomic-lo-hi.h>
+-#include <linux/device.h>
+-#include <linux/sched.h>
 -#include "pcie.h"
+-#include "uapi.h"
 -
--
--MODULE_LICENSE("GPL");
--MODULE_AUTHOR("Lee.Brooke@Daktronics.com, Matt.Sickler@Daktronics.com");
--MODULE_SOFTDEP("pre: uio post: kpc_nwl_dma kpc_i2c kpc_spi");
--
--struct class *kpc_uio_class;
--ATTRIBUTE_GROUPS(kpc_uio_class);
--
--static const struct pci_device_id kp2000_pci_device_ids[] = {
--	{ PCI_DEVICE(PCI_VENDOR_ID_DAKTRONICS, PCI_DEVICE_ID_DAKTRONICS) },
--	{ PCI_DEVICE(PCI_VENDOR_ID_DAKTRONICS, PCI_DEVICE_ID_DAKTRONICS_KADOKA_P2KR0) },
--	{ 0, }
--};
--MODULE_DEVICE_TABLE(pci, kp2000_pci_device_ids);
--
--static struct pci_driver  kp2000_driver_inst = {
--	.name       = "kp2000_pcie",
--	.id_table   = kp2000_pci_device_ids,
--	.probe      = kp2000_pcie_probe,
--	.remove     = kp2000_pcie_remove
--};
--
--
--static int __init  kp2000_pcie_init(void)
+-int  kp2000_cdev_open(struct inode *inode, struct file *filp)
 -{
--	kpc_uio_class = class_create(THIS_MODULE, "kpc_uio");
--	if (IS_ERR(kpc_uio_class))
--		return PTR_ERR(kpc_uio_class);
+-	struct kp2000_device *pcard = container_of(filp->private_data, struct kp2000_device, miscdev);
 -
--	kpc_uio_class->dev_groups = kpc_uio_class_groups;
--	return pci_register_driver(&kp2000_driver_inst);
+-	dev_dbg(&pcard->pdev->dev, "kp2000_cdev_open(filp = [%p], pcard = [%p])\n", filp, pcard);
+-
+-	filp->private_data = pcard; /* so other methods can access it */
+-
+-	return 0;
 -}
--module_init(kp2000_pcie_init);
 -
--static void __exit  kp2000_pcie_exit(void)
+-int  kp2000_cdev_close(struct inode *inode, struct file *filp)
 -{
--	pci_unregister_driver(&kp2000_driver_inst);
--	class_destroy(kpc_uio_class);
+-	struct kp2000_device *pcard = filp->private_data;
+-
+-	dev_dbg(&pcard->pdev->dev, "kp2000_cdev_close(filp = [%p], pcard = [%p])\n", filp, pcard);
+-	return 0;
 -}
--module_exit(kp2000_pcie_exit);
+-
+-
+-ssize_t  kp2000_cdev_read(struct file *filp, char __user *buf, size_t count, loff_t *f_pos)
+-{
+-	struct kp2000_device *pcard = filp->private_data;
+-	int cnt = 0;
+-	int ret;
+-#define BUFF_CNT  1024
+-	char buff[BUFF_CNT] = {0}; //NOTE: Increase this so it is at least as large as all the scnprintfs.  And don't use unbounded strings. "%s"
+-	//NOTE: also, this is a really shitty way to implement the read() call, but it will work for any size 'count'.
+-
+-	if (WARN(NULL == buf, "kp2000_cdev_read: buf is a NULL pointer!\n"))
+-		return -EINVAL;
+-
+-	cnt += scnprintf(buff+cnt, BUFF_CNT-cnt, "Card ID                 : 0x%08x\n", pcard->card_id);
+-	cnt += scnprintf(buff+cnt, BUFF_CNT-cnt, "Build Version           : 0x%08x\n", pcard->build_version);
+-	cnt += scnprintf(buff+cnt, BUFF_CNT-cnt, "Build Date              : 0x%08x\n", pcard->build_datestamp);
+-	cnt += scnprintf(buff+cnt, BUFF_CNT-cnt, "Build Time              : 0x%08x\n", pcard->build_timestamp);
+-	cnt += scnprintf(buff+cnt, BUFF_CNT-cnt, "Core Table Offset       : 0x%08x\n", pcard->core_table_offset);
+-	cnt += scnprintf(buff+cnt, BUFF_CNT-cnt, "Core Table Length       : 0x%08x\n", pcard->core_table_length);
+-	cnt += scnprintf(buff+cnt, BUFF_CNT-cnt, "Hardware Revision       : 0x%08x\n", pcard->hardware_revision);
+-	cnt += scnprintf(buff+cnt, BUFF_CNT-cnt, "SSID                    : 0x%016llx\n", pcard->ssid);
+-	cnt += scnprintf(buff+cnt, BUFF_CNT-cnt, "DDNA                    : 0x%016llx\n", pcard->ddna);
+-	cnt += scnprintf(buff+cnt, BUFF_CNT-cnt, "IRQ Mask                : 0x%016llx\n", readq(pcard->sysinfo_regs_base + REG_INTERRUPT_MASK));
+-	cnt += scnprintf(buff+cnt, BUFF_CNT-cnt, "IRQ Active              : 0x%016llx\n", readq(pcard->sysinfo_regs_base + REG_INTERRUPT_ACTIVE));
+-	cnt += scnprintf(buff+cnt, BUFF_CNT-cnt, "CPLD                    : 0x%016llx\n", readq(pcard->sysinfo_regs_base + REG_CPLD_CONFIG));
+-
+-	if (*f_pos >= cnt)
+-		return 0;
+-
+-	if (count > cnt)
+-		count = cnt;
+-
+-	ret = copy_to_user(buf, buff + *f_pos, count);
+-	if (ret)
+-		return -EFAULT;
+-	*f_pos += count;
+-	return count;
+-}
+-
+-long  kp2000_cdev_ioctl(struct file *filp, unsigned int ioctl_num, unsigned long ioctl_param)
+-{
+-	struct kp2000_device *pcard = filp->private_data;
+-
+-	dev_dbg(&pcard->pdev->dev, "kp2000_cdev_ioctl(filp = [%p], ioctl_num = 0x%08x, ioctl_param = 0x%016lx) pcard = [%p]\n", filp, ioctl_num, ioctl_param, pcard);
+-
+-	switch (ioctl_num){
+-	case KP2000_IOCTL_GET_CPLD_REG:             return readq(pcard->sysinfo_regs_base + REG_CPLD_CONFIG);
+-	case KP2000_IOCTL_GET_PCIE_ERROR_REG:       return readq(pcard->sysinfo_regs_base + REG_PCIE_ERROR_COUNT);
+-
+-	case KP2000_IOCTL_GET_EVERYTHING: {
+-		struct kp2000_regs temp;
+-		int ret;
+-
+-		memset(&temp, 0, sizeof(temp));
+-		temp.card_id = pcard->card_id;
+-		temp.build_version = pcard->build_version;
+-		temp.build_datestamp = pcard->build_datestamp;
+-		temp.build_timestamp = pcard->build_timestamp;
+-		temp.hw_rev = pcard->hardware_revision;
+-		temp.ssid = pcard->ssid;
+-		temp.ddna = pcard->ddna;
+-		temp.cpld_reg = readq(pcard->sysinfo_regs_base + REG_CPLD_CONFIG);
+-
+-		ret = copy_to_user((void*)ioctl_param, (void*)&temp, sizeof(temp));
+-		if (ret)
+-			return -EFAULT;
+-
+-		return sizeof(temp);
+-		}
+-
+-	default:
+-		return -ENOTTY;
+-	}
+-	return -ENOTTY;
+-}
+-
+-
+-struct file_operations  kp2000_fops = {
+-	.owner      = THIS_MODULE,
+-	.open       = kp2000_cdev_open,
+-	.release    = kp2000_cdev_close,
+-	.read       = kp2000_cdev_read,
+-	.llseek     = noop_llseek,
+-	.unlocked_ioctl = kp2000_cdev_ioctl,
+-};
+-
 diff --git a/drivers/staging/kpc2000/kpc2000/pcie.h b/drivers/staging/kpc2000/kpc2000/pcie.h
-index 8a032a5a962e..9278084af547 100644
+index 9278084af547..056f2a393de1 100644
 --- a/drivers/staging/kpc2000/kpc2000/pcie.h
 +++ b/drivers/staging/kpc2000/kpc2000/pcie.h
-@@ -84,8 +84,6 @@ struct kp2000_device {
- extern struct class *kpc_uio_class;
- extern struct attribute *kpc_uio_class_attrs[];
- 
--int   kp2000_pcie_probe(struct pci_dev *dev, const struct pci_device_id *id);
--void  kp2000_pcie_remove(struct pci_dev *pdev);
+@@ -87,9 +87,6 @@ extern struct attribute *kpc_uio_class_attrs[];
  int   kp2000_probe_cores(struct kp2000_device *pcard);
  void  kp2000_remove_cores(struct kp2000_device *pcard);
+ 
+-extern struct file_operations  kp2000_fops;
+-
+-
+ // Define this quick little macro because the expression is used frequently
+ #define PCARD_TO_DEV(pcard)  (&(pcard->pdev->dev))
  
 -- 
 2.21.0
