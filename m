@@ -1,61 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 74CBC2144F
-	for <lists+driverdev-devel@lfdr.de>; Fri, 17 May 2019 09:32:02 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8E60B214CD
+	for <lists+driverdev-devel@lfdr.de>; Fri, 17 May 2019 09:50:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 90A7D86864;
-	Fri, 17 May 2019 07:32:00 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0F654313B3;
+	Fri, 17 May 2019 07:50:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zjJi1gm3_n-J; Fri, 17 May 2019 07:31:59 +0000 (UTC)
+	with ESMTP id 0H5ZpFf6cH2T; Fri, 17 May 2019 07:50:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 463DE8685F;
-	Fri, 17 May 2019 07:31:58 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C0FE0241A8;
+	Fri, 17 May 2019 07:50:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 423111BF2E4
- for <devel@linuxdriverproject.org>; Fri, 17 May 2019 07:31:56 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 827701BF2E4
+ for <devel@linuxdriverproject.org>; Fri, 17 May 2019 07:50:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3F28A8811F
- for <devel@linuxdriverproject.org>; Fri, 17 May 2019 07:31:56 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7F20A87048
+ for <devel@linuxdriverproject.org>; Fri, 17 May 2019 07:50:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id q2C9a3uUxa6B for <devel@linuxdriverproject.org>;
- Fri, 17 May 2019 07:31:55 +0000 (UTC)
+ with ESMTP id Gzn0H8g6MZaB for <devel@linuxdriverproject.org>;
+ Fri, 17 May 2019 07:50:11 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C34E1880E7
- for <devel@driverdev.osuosl.org>; Fri, 17 May 2019 07:31:55 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 16BD1206A3;
- Fri, 17 May 2019 07:31:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1558078315;
- bh=W80f0Osmfp2T/2G+HffeiwRgi9eEG28g8hfA/rYHfV4=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=AnTZv7Gdtfl8lB37+XTgoUosol4ItZo2FUfZvDbTGqk5YeTBuIkBW8dUAceharY+n
- fqfW/TGAG14Qm9b4DL7/k7AMS4IbfG/Ycqovq0BgJr5RdLr1vNk7P2ckTPLTOgQWXj
- 0M0P1EtYNk6hUfSEEAiXPyrusp6rBGFtqBSvRAZk=
-Date: Fri, 17 May 2019 09:31:53 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
-Subject: Re: [PATCH v2] staging: vt6656: returns error code on
- vnt_int_start_interrupt fail
-Message-ID: <20190517073153.GA4776@kroah.com>
-References: <20190516093046.1400-1-quentin.deslandes@itdev.co.uk>
- <20190516115653.15120-1-quentin.deslandes@itdev.co.uk>
+Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.17.10])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 1B08F8700E
+ for <devel@driverdev.osuosl.org>; Fri, 17 May 2019 07:50:10 +0000 (UTC)
+Received: from [192.168.178.167] ([109.104.37.130]) by
+ mrelayeu.kundenserver.de (mreue108 [212.227.15.183]) with ESMTPSA (Nemesis)
+ id 1MAwTn-1hYOAy3Hzt-00BN1q; Fri, 17 May 2019 09:49:53 +0200
+Subject: Re: [PATCH v2] Staging: bcm2835-camera: Prefer kernel types
+To: Madhumitha Prabakaran <madhumithabiw@gmail.com>, eric@anholt.net,
+ gregkh@linuxfoundation.org, f.fainelli@gmail.com, rjui@broadcom.com,
+ sbranden@broadcom.com, bcm-kernel-feedback-list@broadcom.com,
+ linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+References: <20190516213340.9311-1-madhumithabiw@gmail.com>
+From: Stefan Wahren <stefan.wahren@i2se.com>
+Message-ID: <bf9d2354-4ba6-bc18-841f-79ad75e6d911@i2se.com>
+Date: Fri, 17 May 2019 09:50:05 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190516115653.15120-1-quentin.deslandes@itdev.co.uk>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+In-Reply-To: <20190516213340.9311-1-madhumithabiw@gmail.com>
+Content-Language: de-DE
+X-Provags-ID: V03:K1:5vRoIj7Qja7sHTo/eTuJyaMrKZswD7CC0dePgB/jan/opZcO5fi
+ 2AxCxBwblWgaxK4pmLJuaq4/kOigN4/CdB8CzWAgCS3XhA9bKcS8xrcdIvoZwV9y1zRRAJa
+ yLDsIdmHDEPG8tJ2TvxwuRuZ92NGjM1s2CI7qwJg9QTJXu2eWKVIPFl2OTzP1aQTCRlQ3Wl
+ I1/nrPVaflIUqTWFtGvxg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:poAiXjetLp8=:Yr5UiP7twLxtvNUfdfsjWz
+ kGhcNLpNAjigYCRlaYnIUZ2fCPSyKH6pRx8yIgziJG/JaYrBHwKjxpWnYyBj0Le5ewTz4kQhO
+ NEodSeLH90X+Tf7yiHZkWZO8H0ezxBKIl25Khko4DWbiEKw6yichg8cJ60ELBRrxTRsy4BPWW
+ 3LtLPzYA+iyTII0B4FkJZBqp4+VCRp8xqa3dQoMRlRSLFMs/V+U7xvqlacCSf/9K7QMmzYpRt
+ Uw5HEV2pxlCV6VFlDWaTkcJQV9m500bMeUrNlFUuLtTFTa12UDxhjEIdsTeF+pNxG6LiEJfyC
+ iBekcSsX5WBbj3G0MW9htNrgs/J8P+gQWFlxv5p+se/D0a0AejU4thkHDoj9K8XjGziXRglQl
+ CYeT1VkRyr0Yx22/7VNZm75RBSuTiy4RatpBdRvMtjbst4i5ZY8VXedmrMd8/0zlloo+Ye/T0
+ vsjSkBPpTR5L5JU0K6y9psUyyNlu3H31m2sZB2rVA7SDhcJ5zekdREITGC917RNgLobf3RT0j
+ ZmRgNE2lJixrYwX2FeI1iiXf9ZtVd3z8NUduqwV5B08JLIYffnt+Co6glitm2bWpzudZSIpx1
+ hnYEQSTUbb6tFbtWFXIDlRHlOabq65ZuiYjmtdmnePGT798me6MpBeo+raVCQjgicwaAbBcs0
+ qPBUlZvD2fi3P7hs0xx/5UY23EsYkG7V8YwlJFGyGwesPN2WLUOy8w0EB0c44pmRtLtFYcoD1
+ r0oJKSqcbcZZo/aTH3KGQG4Q6rea+3t56Y8uBfm40w2hV0SAbC5OtjCHkAM=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,36 +77,21 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- Mukesh Ojha <mojha@codeaurora.org>,
- "kernel-janitors@vger.kernel.org" <kernel-janitors@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Forest Bond <forest@alittletooquiet.net>,
- Ojaswin Mujoo <ojaswin25111998@gmail.com>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, May 16, 2019 at 11:57:15AM +0000, Quentin Deslandes wrote:
-> Returns error code from 'vnt_int_start_interrupt()' so the device's private
-> buffers will be correctly freed and 'struct ieee80211_hw' start function
-> will return an error code.
-> 
-> Signed-off-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
-> ---
->  drivers/staging/vt6656/int.c      |  4 +++-
->  drivers/staging/vt6656/int.h      |  2 +-
->  drivers/staging/vt6656/main_usb.c | 12 +++++++++---
->  3 files changed, 13 insertions(+), 5 deletions(-)
+Am 16.05.2019 um 23:33 schrieb Madhumitha Prabakaran:
+> Fix the warning issued by checkpatch
+> Prefer kernel type 'u32' over 'uint32_t'.
+> Along with that include a blank line after a declaration
+> to maintain Linux kernel coding style.
+>
+> Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
 
-What changed from v1?  Always put that below the --- line.
+Acked-by: Stefan Wahren <stefan.wahren@i2se.com>
 
-Please fix up and resend a v3.
-
-thanks,
-
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
