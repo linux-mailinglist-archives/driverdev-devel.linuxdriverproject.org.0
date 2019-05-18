@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id F364E221D2
-	for <lists+driverdev-devel@lfdr.de>; Sat, 18 May 2019 08:34:56 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 80BA986A8D;
-	Sat, 18 May 2019 06:34:55 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sOiehubxTq_Z; Sat, 18 May 2019 06:34:53 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 47F3986A98;
-	Sat, 18 May 2019 06:34:52 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 895541BF405
- for <devel@linuxdriverproject.org>; Sat, 18 May 2019 06:34:50 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 14184221D3
+	for <lists+driverdev-devel@lfdr.de>; Sat, 18 May 2019 08:35:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 86AEC86074
- for <devel@linuxdriverproject.org>; Sat, 18 May 2019 06:34:50 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 43FE6877BD;
+	Sat, 18 May 2019 06:34:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id tcSdwcuBZN3v; Sat, 18 May 2019 06:34:58 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2A5418435A;
+	Sat, 18 May 2019 06:34:58 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E6BB31BF405
+ for <devel@linuxdriverproject.org>; Sat, 18 May 2019 06:34:56 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E1CB086AD2
+ for <devel@linuxdriverproject.org>; Sat, 18 May 2019 06:34:56 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wFltmZ3oJBfp for <devel@linuxdriverproject.org>;
- Sat, 18 May 2019 06:34:50 +0000 (UTC)
+ with ESMTP id DUh-MfiKtnyC for <devel@linuxdriverproject.org>;
+ Sat, 18 May 2019 06:34:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
- [209.85.210.193])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0E9E48435A
- for <devel@driverdev.osuosl.org>; Sat, 18 May 2019 06:34:50 +0000 (UTC)
-Received: by mail-pf1-f193.google.com with SMTP id t87so4744496pfa.2
- for <devel@driverdev.osuosl.org>; Fri, 17 May 2019 23:34:50 -0700 (PDT)
+Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
+ [209.85.210.194])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B11C086A98
+ for <devel@driverdev.osuosl.org>; Sat, 18 May 2019 06:34:55 +0000 (UTC)
+Received: by mail-pf1-f194.google.com with SMTP id u17so4733100pfn.7
+ for <devel@driverdev.osuosl.org>; Fri, 17 May 2019 23:34:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=wc5ne2C0qlrJ59+3B2aOlKeT4GO/cZZs3Ekwp68VN98=;
- b=ipnrZSoo0H+Z2+SnBu85rH1f6qyomy6PObAPvmmSEHQDsSayThOZWxg/Ds+MguyT4n
- 2mLSA/cAPSYkrhL6BP5IECMuiS01QZTK+f6pNstsr1tLkPqc/nZXaKQTTq0BZk6qNbpu
- lDwvgECaj0P0BXOE5PV8B7s2vuBevXa06H+2/H+GSdQ21X9euS/h96Z3jQwBdLv8gauA
- loTGGi1BRilpjTtHEZArUjKakW8StZ0LPxLobYIGa8q93qOIRlBtRzJYepSPI6w88ylR
- GL8NXru68D39VDU4RsLwTTT6jGEicgeGt8EvMF6vbU2ZWWF87DuQRWSJhNDahPCd+IQB
- dYpw==
+ bh=tfIilT2Dk8Ch0JJk6m3jz6rz/B2rmLh1tKfEeGpFF5Q=;
+ b=N6iVTUcTKDgb7kap1rJ7kyIaAKTa4aehB2CkvFSDEUO24f4c7v0wj2hGNyrriTEsid
+ hfpsZvutmYrtCJ6D8PKQNoWG7YMOiDvxS8T1Mxn/P/IEwG02TrqjjOS6MjIeCtLxOrXq
+ +85KNS0d3uFy12TjnN/26Q1AvvvJkm18M7C+2fjvAoOEbUbvMaLmcUpi6jAJd+hNFqFS
+ HNjJ/9IUAvDL29QgH+L9SsbI4C+OPghz9KH+/Z3KN3nlkLbRqbwTw/tajGiDsqxQYuFN
+ DWHH4MR3St7/OR5uSlfJ90+D/x9gIDGf4xn+YNMVdKqXWTGqLDypEyIxN8rWQRjCU8eG
+ ZfLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=wc5ne2C0qlrJ59+3B2aOlKeT4GO/cZZs3Ekwp68VN98=;
- b=GFt/bQRS49tAPnaQhOwJRVKR2XScqsiNO/5lQNKB5OQ9ZwPNqN8o81NaRR8bYdwRNp
- dL2McY2m/ZAl5XmsspWylYHsCoWYY5d1CuzOns8MH61HVkldK/NWn7gGdf9kmif4qxRF
- /h5/JDmiysl1L6c3DYyhwB5xZPMgXam2O0raqWrLaD+aUzuFe4/LRuVWSwAWBgBjP/0j
- iZagu725FdWlnAy8eQqCLsH6AK2SbTKz5WnQsjlRfg8fJ+bTkO8GVVWPIvQgoZ06QFL2
- UdubPVW//3VzQvBxKnISMkVVfqKIApZ54hT8Ehvv1nK0SWUtfCwnrYvpwlsp6W1AuvG+
- ww2g==
-X-Gm-Message-State: APjAAAUG0291zIEoRIIumCja78czat+JSulyR8A70Ql4PbC0JvzRDxun
- V7200LjQvaMs3+79B21NWb0=
-X-Google-Smtp-Source: APXvYqw5bqfqOoPCJHuwau2XqUoILQqXQK3PrEqTkaTBMFQMfx3iPTdCzhOVf3nQF1UEp3xBFaqV0g==
-X-Received: by 2002:a65:42cd:: with SMTP id l13mr8199475pgp.72.1558161289605; 
- Fri, 17 May 2019 23:34:49 -0700 (PDT)
+ bh=tfIilT2Dk8Ch0JJk6m3jz6rz/B2rmLh1tKfEeGpFF5Q=;
+ b=OfxorhGEoroQ/Z7DkIlABGAH6/ZicQw4DXqxdIJDdb1fQ7Ikt/pcB6tx+cSuiQ1nDx
+ Zf69cf8ehTVSWx/5jn3MIjP+yjGoM2MDk1r266kA1R6AVbkJsYzwcrllLoaDzmTXcGJF
+ 6b+LXKgawKH5kVpqtFN6wOnDrZOM/MT9tkT3pwnZxPwSPwpwwa591lJNIcdXS7OcOSg9
+ wTWH33rmSGiSwx0yKpmabT9dQVNIW4BdrIoTMvvLRwtjNT0n3SDGxY+hRxCjwB3YCE5c
+ PB4yxogTa6c9MIxCzUuaK8D5SJZbYRiBuicELIKwo2nhxlKLpkR99v763XN1r+XoTU0M
+ Dvrg==
+X-Gm-Message-State: APjAAAVi/SrvmizoRyutF/rqceUvOIv5exy9YFExlKGeVM/MEdJSLmcz
+ mWikzIPewxX3ztY+TCMV75w=
+X-Google-Smtp-Source: APXvYqwsj3AvQNNxV2hS+9CFlRon+hwhMEOu7XorWWjr/pRqdXAr5c+gYAOyS4qlJwiEAioyyjPXkw==
+X-Received: by 2002:aa7:93a7:: with SMTP id x7mr65967796pff.196.1558161295206; 
+ Fri, 17 May 2019 23:34:55 -0700 (PDT)
 Received: from localhost.localdomain ([103.227.98.84])
- by smtp.googlemail.com with ESMTPSA id h26sm14347874pgh.26.2019.05.17.23.34.45
+ by smtp.googlemail.com with ESMTPSA id h26sm14347874pgh.26.2019.05.17.23.34.51
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 17 May 2019 23:34:49 -0700 (PDT)
+ Fri, 17 May 2019 23:34:54 -0700 (PDT)
 From: Moses Christopher <moseschristopherb@gmail.com>
 To: gregkh@linuxfoundation.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v1 3/6] staging: unisys: use help instead of ---help--- in
+Subject: [PATCH v1 4/6] staging: rtl8188eu: use help instead of ---help--- in
  Kconfig
-Date: Sat, 18 May 2019 12:03:38 +0530
-Message-Id: <20190518063341.11178-4-moseschristopherb@gmail.com>
+Date: Sat, 18 May 2019 12:03:39 +0530
+Message-Id: <20190518063341.11178-5-moseschristopherb@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190518063341.11178-1-moseschristopherb@gmail.com>
 References: <20190518063341.11178-1-moseschristopherb@gmail.com>
@@ -100,24 +100,31 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 Signed-off-by: Moses Christopher <moseschristopherb@gmail.com>
 ---
- drivers/staging/unisys/Kconfig | 4 ++--
+ drivers/staging/rtl8188eu/Kconfig | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/unisys/Kconfig b/drivers/staging/unisys/Kconfig
-index dc5e1bddc085..43fe1ce538e1 100644
---- a/drivers/staging/unisys/Kconfig
-+++ b/drivers/staging/unisys/Kconfig
-@@ -4,8 +4,8 @@
- #
- menuconfig UNISYSSPAR
- 	bool "Unisys SPAR driver support"
+diff --git a/drivers/staging/rtl8188eu/Kconfig b/drivers/staging/rtl8188eu/Kconfig
+index 4f7ef287a0f2..970d5abd6336 100644
+--- a/drivers/staging/rtl8188eu/Kconfig
++++ b/drivers/staging/rtl8188eu/Kconfig
+@@ -8,7 +8,7 @@ config R8188EU
+ 	select LIB80211
+ 	select LIB80211_CRYPT_WEP
+ 	select LIB80211_CRYPT_CCMP
 -	---help---
--	Support for the Unisys SPAR drivers
 +	help
-+	  Support for the Unisys SPAR drivers
+ 	This option adds the Realtek RTL8188EU USB device such as TP-Link TL-WN725N.
+ 	If built as a module, it will be called r8188eu.
  
- if UNISYSSPAR
- 
+@@ -17,7 +17,7 @@ if R8188EU
+ config 88EU_AP_MODE
+ 	bool "Realtek RTL8188EU AP mode"
+ 	default y
+-	---help---
++	help
+ 	This option enables Access Point mode. Unless you know that your system
+ 	will never be used as an AP, or the target system has limited memory,
+ 	"Y" should be selected.
 -- 
 2.17.1
 
