@@ -2,75 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 38903221CD
-	for <lists+driverdev-devel@lfdr.de>; Sat, 18 May 2019 08:34:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 20D91221CE
+	for <lists+driverdev-devel@lfdr.de>; Sat, 18 May 2019 08:34:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DD8D9885B1;
-	Sat, 18 May 2019 06:34:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BF08D88934;
+	Sat, 18 May 2019 06:34:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id a1mBGoxgaGCR; Sat, 18 May 2019 06:34:41 +0000 (UTC)
+	with ESMTP id vCW02eFQnGtC; Sat, 18 May 2019 06:34:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7252C8844C;
-	Sat, 18 May 2019 06:34:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 59B91884F7;
+	Sat, 18 May 2019 06:34:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 050461BF405
- for <devel@linuxdriverproject.org>; Sat, 18 May 2019 06:34:39 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DCFDD1BF405
+ for <devel@linuxdriverproject.org>; Sat, 18 May 2019 06:34:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0333822882
- for <devel@linuxdriverproject.org>; Sat, 18 May 2019 06:34:39 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id DA8EC88458
+ for <devel@linuxdriverproject.org>; Sat, 18 May 2019 06:34:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id k1PzyK0H9-4r for <devel@linuxdriverproject.org>;
- Sat, 18 May 2019 06:34:38 +0000 (UTC)
+ with ESMTP id juIfdZWqGTj6 for <devel@linuxdriverproject.org>;
+ Sat, 18 May 2019 06:34:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
- [209.85.214.194])
- by silver.osuosl.org (Postfix) with ESMTPS id A09CB21FEF
- for <devel@driverdev.osuosl.org>; Sat, 18 May 2019 06:34:38 +0000 (UTC)
-Received: by mail-pl1-f194.google.com with SMTP id gn7so175126plb.10
- for <devel@driverdev.osuosl.org>; Fri, 17 May 2019 23:34:38 -0700 (PDT)
+Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
+ [209.85.215.193])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 6F96E8844C
+ for <devel@driverdev.osuosl.org>; Sat, 18 May 2019 06:34:44 +0000 (UTC)
+Received: by mail-pg1-f193.google.com with SMTP id i21so4297169pgi.12
+ for <devel@driverdev.osuosl.org>; Fri, 17 May 2019 23:34:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=PqyqrEGcVflPYSbWxCmc19o3WqCd1AbIiuoNiUkRp7M=;
- b=iR8E4eqKoWFy1XQ29eS59a4xHdMW8JkyLu7jv1f3bCL9b230Wl0UOAJCN+M8HzTSL5
- pdLFoVwg91U7VEawkTPIWYxELDdavsHM0EAVFgJ+vIqziCFtSvOHso7FigAK9eTkqW/G
- 478byixgBjGbbErNDW3ZrUuhJbzl5zGuHroikdOyvEDQ/35yKJt5vnxEcVUOWYlvcMUF
- 6J0Zpv55SLcZ0rh0wz8j0TJmm7uVz7XIZlDCcz3gqElo6BlslshtN/DAzTm7L3mPm1pl
- Kf2QNPTyTGDZtIY1uAQE49sCyY7a6mUizeSRr53SKhHGedsXvTYpnY8kCL97e/BbjwrZ
- F3GA==
+ bh=K0RkBKBSAGCnpFcKILpVOgzIRW/m7dsAxctpIh7X+yo=;
+ b=HnoLarijvVvlAxglikknWASEnm3kilfMpvNkN5e7PwpgpeEyk1QXovfa1eEnoRcCyc
+ ecO78LxHCkDaHQQ1goUfaHbSeZa74wCtXmpQ2vdjTbm/IWBjJactwpVUIKOSUFfGQ++z
+ dWBi09MdNtekUp0f4zm1QbONjSlZUO3VFbll+iidqYZWYQxRLPoJRWpYhgaARaI+A2US
+ DEiP2NdOQdbA7+5qInPJKXucZ9rcXXi7FhylNZ3XAb4vuWj3SRGHeIkED6+05nMl2q5K
+ eKJ4RbBVdJtvgVqJmLyDxJTauWsQ1ohHNb89jFMpyYis6VCQ/yyhNcmc4TIuOjmBBu62
+ Hx/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=PqyqrEGcVflPYSbWxCmc19o3WqCd1AbIiuoNiUkRp7M=;
- b=EXOK6YEn6hep5wo/OzflXwlTM+eErPfoJ71vgVvLpp9+VCUlZ0p/3exHyJux8YwG7h
- UnGoOl++S+CMCEvNIki8RxbVer6iMd48AbaVqul3b2MyJofyfildXIQxmKTr5C75xf+3
- lOkNLTVfn419OSDYObwBP993h4kSitDUt7fdzNffxareZ91yu06C3kQ5GGQrka2HwBYg
- KNduwKnjtCgyIzG/cD2soec94zMue8ixRzW8FM39YZmAD+knfUIHpjp34Y1MLMkxaZk8
- jr8Vi9rX25u+7PxbZR1UntKAJjTrpTJcKvy1vLkYSmr87gBkbh0Y0tCD8CZv4geT8QQd
- invw==
-X-Gm-Message-State: APjAAAU68XvlYBCgrjkRR5HCAgTv+QaBsjTSZVp9hMNUfXkyPapJ/3Tj
- Gjty6AauExLAIYIeK8j2GWY=
-X-Google-Smtp-Source: APXvYqy29JCJ1+mDdZ+Eich0xxHz0Ik96q/M/5q5YQlNvQY1obhr7KA1e0bCcTtE3b6Zr4/WUl1wjw==
-X-Received: by 2002:a17:902:4101:: with SMTP id
- e1mr62992501pld.25.1558161278327; 
- Fri, 17 May 2019 23:34:38 -0700 (PDT)
+ bh=K0RkBKBSAGCnpFcKILpVOgzIRW/m7dsAxctpIh7X+yo=;
+ b=cEKpAm1dkTMBJa3qsx79SU4/a6HZUVfS5ITIDvDk+uH6WPdC/++EhASMwLXkj1jFTZ
+ +Qs+NGsW2Pbzu3F9qS+Fbd6iWFNAJil4zUy20V3bqlzDCLEmzPkiHYbR8mpsvjJRkf3M
+ WpU85r8hbRnMgUggWAKFJbt0otL/s631aWQCf9kXE0tz1+oD0VXjF6hWltIIvEBs8gQ3
+ yUM/YF8Gus8b7BN/c7VUGGzH68KdxSBzcmdr+OPzROujMo84vEGeYgj4Lw//SjSGP2rk
+ gZaZn3AElo38eSTsA3MWn1u1zLR37VGvmH7nb+HU8wyJVaCsmCMx+lXDbJeUWe7giejX
+ XZUw==
+X-Gm-Message-State: APjAAAXZyD9AHQ+gMk5McYfONWuN+eAx+H7r12/IhD76AAu6xzHs0dbu
+ OPw6aWpwndWkEtGtmO9KFb8=
+X-Google-Smtp-Source: APXvYqxj5IQslagNyOzjXphME0wdgCZfHpdO+UuiT8WRXZL6twJSfa2PppVZJc9fQ/rcnqjDFCnUjQ==
+X-Received: by 2002:a62:2687:: with SMTP id
+ m129mr67165162pfm.204.1558161284011; 
+ Fri, 17 May 2019 23:34:44 -0700 (PDT)
 Received: from localhost.localdomain ([103.227.98.84])
- by smtp.googlemail.com with ESMTPSA id h26sm14347874pgh.26.2019.05.17.23.34.34
+ by smtp.googlemail.com with ESMTPSA id h26sm14347874pgh.26.2019.05.17.23.34.39
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 17 May 2019 23:34:37 -0700 (PDT)
+ Fri, 17 May 2019 23:34:43 -0700 (PDT)
 From: Moses Christopher <moseschristopherb@gmail.com>
 To: gregkh@linuxfoundation.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v1 1/6] staging: fsl-dpaa2: use help instead of ---help--- in
+Subject: [PATCH v1 2/6] staging: most: use help instead of ---help--- in
  Kconfig
-Date: Sat, 18 May 2019 12:03:36 +0530
-Message-Id: <20190518063341.11178-2-moseschristopherb@gmail.com>
+Date: Sat, 18 May 2019 12:03:37 +0530
+Message-Id: <20190518063341.11178-3-moseschristopherb@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190518063341.11178-1-moseschristopherb@gmail.com>
 References: <20190518063341.11178-1-moseschristopherb@gmail.com>
@@ -97,36 +97,26 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
   - Resolve the following warning from the Kconfig,
-    "WARNING: prefer 'help' over '---help---' for new help texts"
+    "WARNING: prefer 'help' over '---help---' for new help texts
 
 Signed-off-by: Moses Christopher <moseschristopherb@gmail.com>
 ---
- drivers/staging/fsl-dpaa2/Kconfig | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/staging/most/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/fsl-dpaa2/Kconfig b/drivers/staging/fsl-dpaa2/Kconfig
-index 368837cdf281..244237bb068a 100644
---- a/drivers/staging/fsl-dpaa2/Kconfig
-+++ b/drivers/staging/fsl-dpaa2/Kconfig
-@@ -6,7 +6,7 @@
- config FSL_DPAA2
- 	bool "Freescale DPAA2 devices"
- 	depends on FSL_MC_BUS
--	---help---
-+	help
- 	  Build drivers for Freescale DataPath Acceleration
- 	  Architecture (DPAA2) family of SoCs.
- 
-@@ -14,6 +14,6 @@ config FSL_DPAA2_ETHSW
- 	tristate "Freescale DPAA2 Ethernet Switch"
- 	depends on FSL_DPAA2
- 	depends on NET_SWITCHDEV
--	---help---
--	Driver for Freescale DPAA2 Ethernet Switch. Select
--	BRIDGE to have support for bridge tools.
-+	help
-+	  Driver for Freescale DPAA2 Ethernet Switch. Select
-+	  BRIDGE to have support for bridge tools.
+diff --git a/drivers/staging/most/Kconfig b/drivers/staging/most/Kconfig
+index db32ea7d1743..8948d5246409 100644
+--- a/drivers/staging/most/Kconfig
++++ b/drivers/staging/most/Kconfig
+@@ -3,7 +3,7 @@ menuconfig MOST
+         tristate "MOST support"
+ 	depends on HAS_DMA && CONFIGFS_FS
+         default n
+-        ---help---
++        help
+ 	  Say Y here if you want to enable MOST support.
+ 	  This driver needs at least one additional component to enable the
+ 	  desired access from userspace (e.g. character devices) and one that
 -- 
 2.17.1
 
