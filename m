@@ -1,76 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 20D91221CE
-	for <lists+driverdev-devel@lfdr.de>; Sat, 18 May 2019 08:34:49 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id F364E221D2
+	for <lists+driverdev-devel@lfdr.de>; Sat, 18 May 2019 08:34:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BF08D88934;
-	Sat, 18 May 2019 06:34:47 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 80BA986A8D;
+	Sat, 18 May 2019 06:34:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vCW02eFQnGtC; Sat, 18 May 2019 06:34:47 +0000 (UTC)
+	with ESMTP id sOiehubxTq_Z; Sat, 18 May 2019 06:34:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 59B91884F7;
-	Sat, 18 May 2019 06:34:47 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 47F3986A98;
+	Sat, 18 May 2019 06:34:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DCFDD1BF405
- for <devel@linuxdriverproject.org>; Sat, 18 May 2019 06:34:44 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 895541BF405
+ for <devel@linuxdriverproject.org>; Sat, 18 May 2019 06:34:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id DA8EC88458
- for <devel@linuxdriverproject.org>; Sat, 18 May 2019 06:34:44 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 86AEC86074
+ for <devel@linuxdriverproject.org>; Sat, 18 May 2019 06:34:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id juIfdZWqGTj6 for <devel@linuxdriverproject.org>;
- Sat, 18 May 2019 06:34:44 +0000 (UTC)
+ with ESMTP id wFltmZ3oJBfp for <devel@linuxdriverproject.org>;
+ Sat, 18 May 2019 06:34:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
- [209.85.215.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 6F96E8844C
- for <devel@driverdev.osuosl.org>; Sat, 18 May 2019 06:34:44 +0000 (UTC)
-Received: by mail-pg1-f193.google.com with SMTP id i21so4297169pgi.12
- for <devel@driverdev.osuosl.org>; Fri, 17 May 2019 23:34:44 -0700 (PDT)
+Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
+ [209.85.210.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 0E9E48435A
+ for <devel@driverdev.osuosl.org>; Sat, 18 May 2019 06:34:50 +0000 (UTC)
+Received: by mail-pf1-f193.google.com with SMTP id t87so4744496pfa.2
+ for <devel@driverdev.osuosl.org>; Fri, 17 May 2019 23:34:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=K0RkBKBSAGCnpFcKILpVOgzIRW/m7dsAxctpIh7X+yo=;
- b=HnoLarijvVvlAxglikknWASEnm3kilfMpvNkN5e7PwpgpeEyk1QXovfa1eEnoRcCyc
- ecO78LxHCkDaHQQ1goUfaHbSeZa74wCtXmpQ2vdjTbm/IWBjJactwpVUIKOSUFfGQ++z
- dWBi09MdNtekUp0f4zm1QbONjSlZUO3VFbll+iidqYZWYQxRLPoJRWpYhgaARaI+A2US
- DEiP2NdOQdbA7+5qInPJKXucZ9rcXXi7FhylNZ3XAb4vuWj3SRGHeIkED6+05nMl2q5K
- eKJ4RbBVdJtvgVqJmLyDxJTauWsQ1ohHNb89jFMpyYis6VCQ/yyhNcmc4TIuOjmBBu62
- Hx/g==
+ bh=wc5ne2C0qlrJ59+3B2aOlKeT4GO/cZZs3Ekwp68VN98=;
+ b=ipnrZSoo0H+Z2+SnBu85rH1f6qyomy6PObAPvmmSEHQDsSayThOZWxg/Ds+MguyT4n
+ 2mLSA/cAPSYkrhL6BP5IECMuiS01QZTK+f6pNstsr1tLkPqc/nZXaKQTTq0BZk6qNbpu
+ lDwvgECaj0P0BXOE5PV8B7s2vuBevXa06H+2/H+GSdQ21X9euS/h96Z3jQwBdLv8gauA
+ loTGGi1BRilpjTtHEZArUjKakW8StZ0LPxLobYIGa8q93qOIRlBtRzJYepSPI6w88ylR
+ GL8NXru68D39VDU4RsLwTTT6jGEicgeGt8EvMF6vbU2ZWWF87DuQRWSJhNDahPCd+IQB
+ dYpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=K0RkBKBSAGCnpFcKILpVOgzIRW/m7dsAxctpIh7X+yo=;
- b=cEKpAm1dkTMBJa3qsx79SU4/a6HZUVfS5ITIDvDk+uH6WPdC/++EhASMwLXkj1jFTZ
- +Qs+NGsW2Pbzu3F9qS+Fbd6iWFNAJil4zUy20V3bqlzDCLEmzPkiHYbR8mpsvjJRkf3M
- WpU85r8hbRnMgUggWAKFJbt0otL/s631aWQCf9kXE0tz1+oD0VXjF6hWltIIvEBs8gQ3
- yUM/YF8Gus8b7BN/c7VUGGzH68KdxSBzcmdr+OPzROujMo84vEGeYgj4Lw//SjSGP2rk
- gZaZn3AElo38eSTsA3MWn1u1zLR37VGvmH7nb+HU8wyJVaCsmCMx+lXDbJeUWe7giejX
- XZUw==
-X-Gm-Message-State: APjAAAXZyD9AHQ+gMk5McYfONWuN+eAx+H7r12/IhD76AAu6xzHs0dbu
- OPw6aWpwndWkEtGtmO9KFb8=
-X-Google-Smtp-Source: APXvYqxj5IQslagNyOzjXphME0wdgCZfHpdO+UuiT8WRXZL6twJSfa2PppVZJc9fQ/rcnqjDFCnUjQ==
-X-Received: by 2002:a62:2687:: with SMTP id
- m129mr67165162pfm.204.1558161284011; 
- Fri, 17 May 2019 23:34:44 -0700 (PDT)
+ bh=wc5ne2C0qlrJ59+3B2aOlKeT4GO/cZZs3Ekwp68VN98=;
+ b=GFt/bQRS49tAPnaQhOwJRVKR2XScqsiNO/5lQNKB5OQ9ZwPNqN8o81NaRR8bYdwRNp
+ dL2McY2m/ZAl5XmsspWylYHsCoWYY5d1CuzOns8MH61HVkldK/NWn7gGdf9kmif4qxRF
+ /h5/JDmiysl1L6c3DYyhwB5xZPMgXam2O0raqWrLaD+aUzuFe4/LRuVWSwAWBgBjP/0j
+ iZagu725FdWlnAy8eQqCLsH6AK2SbTKz5WnQsjlRfg8fJ+bTkO8GVVWPIvQgoZ06QFL2
+ UdubPVW//3VzQvBxKnISMkVVfqKIApZ54hT8Ehvv1nK0SWUtfCwnrYvpwlsp6W1AuvG+
+ ww2g==
+X-Gm-Message-State: APjAAAUG0291zIEoRIIumCja78czat+JSulyR8A70Ql4PbC0JvzRDxun
+ V7200LjQvaMs3+79B21NWb0=
+X-Google-Smtp-Source: APXvYqw5bqfqOoPCJHuwau2XqUoILQqXQK3PrEqTkaTBMFQMfx3iPTdCzhOVf3nQF1UEp3xBFaqV0g==
+X-Received: by 2002:a65:42cd:: with SMTP id l13mr8199475pgp.72.1558161289605; 
+ Fri, 17 May 2019 23:34:49 -0700 (PDT)
 Received: from localhost.localdomain ([103.227.98.84])
- by smtp.googlemail.com with ESMTPSA id h26sm14347874pgh.26.2019.05.17.23.34.39
+ by smtp.googlemail.com with ESMTPSA id h26sm14347874pgh.26.2019.05.17.23.34.45
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 17 May 2019 23:34:43 -0700 (PDT)
+ Fri, 17 May 2019 23:34:49 -0700 (PDT)
 From: Moses Christopher <moseschristopherb@gmail.com>
 To: gregkh@linuxfoundation.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v1 2/6] staging: most: use help instead of ---help--- in
+Subject: [PATCH v1 3/6] staging: unisys: use help instead of ---help--- in
  Kconfig
-Date: Sat, 18 May 2019 12:03:37 +0530
-Message-Id: <20190518063341.11178-3-moseschristopherb@gmail.com>
+Date: Sat, 18 May 2019 12:03:38 +0530
+Message-Id: <20190518063341.11178-4-moseschristopherb@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190518063341.11178-1-moseschristopherb@gmail.com>
 References: <20190518063341.11178-1-moseschristopherb@gmail.com>
@@ -97,26 +96,28 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
   - Resolve the following warning from the Kconfig,
-    "WARNING: prefer 'help' over '---help---' for new help texts
+    "WARNING: prefer 'help' over '---help---' for new help texts"
 
 Signed-off-by: Moses Christopher <moseschristopherb@gmail.com>
 ---
- drivers/staging/most/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/unisys/Kconfig | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/most/Kconfig b/drivers/staging/most/Kconfig
-index db32ea7d1743..8948d5246409 100644
---- a/drivers/staging/most/Kconfig
-+++ b/drivers/staging/most/Kconfig
-@@ -3,7 +3,7 @@ menuconfig MOST
-         tristate "MOST support"
- 	depends on HAS_DMA && CONFIGFS_FS
-         default n
--        ---help---
-+        help
- 	  Say Y here if you want to enable MOST support.
- 	  This driver needs at least one additional component to enable the
- 	  desired access from userspace (e.g. character devices) and one that
+diff --git a/drivers/staging/unisys/Kconfig b/drivers/staging/unisys/Kconfig
+index dc5e1bddc085..43fe1ce538e1 100644
+--- a/drivers/staging/unisys/Kconfig
++++ b/drivers/staging/unisys/Kconfig
+@@ -4,8 +4,8 @@
+ #
+ menuconfig UNISYSSPAR
+ 	bool "Unisys SPAR driver support"
+-	---help---
+-	Support for the Unisys SPAR drivers
++	help
++	  Support for the Unisys SPAR drivers
+ 
+ if UNISYSSPAR
+ 
 -- 
 2.17.1
 
