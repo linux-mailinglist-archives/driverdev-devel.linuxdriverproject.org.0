@@ -1,80 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0A67D22440
-	for <lists+driverdev-devel@lfdr.de>; Sat, 18 May 2019 19:33:47 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9607622498
+	for <lists+driverdev-devel@lfdr.de>; Sat, 18 May 2019 21:11:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A3C9E87E07;
-	Sat, 18 May 2019 17:33:44 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3133085EB4;
+	Sat, 18 May 2019 19:11:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2LicBk8GeTyd; Sat, 18 May 2019 17:33:44 +0000 (UTC)
+	with ESMTP id ALrDhy_K4SaA; Sat, 18 May 2019 19:11:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C0B0987CFB;
-	Sat, 18 May 2019 17:33:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D1B8885D3D;
+	Sat, 18 May 2019 19:11:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2E0D71BF5DE
- for <devel@linuxdriverproject.org>; Sat, 18 May 2019 17:33:38 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id CFEE81BF2BC
+ for <devel@linuxdriverproject.org>; Sat, 18 May 2019 19:11:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1B1AB863E8
- for <devel@linuxdriverproject.org>; Sat, 18 May 2019 17:33:38 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id CD52622708
+ for <devel@linuxdriverproject.org>; Sat, 18 May 2019 19:11:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0ZQqIcNhW3E1 for <devel@linuxdriverproject.org>;
- Sat, 18 May 2019 17:33:37 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 71F26863D9
- for <devel@driverdev.osuosl.org>; Sat, 18 May 2019 17:33:37 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id z3so4769746pgp.8
- for <devel@driverdev.osuosl.org>; Sat, 18 May 2019 10:33:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=pBUOpcZZhVnAEMzK2Qi13gp5BqUlujzgGPYXraDy+LU=;
- b=auLY2NMGRP93XGfuqVGmCFv10ilgSNvE32chNovFfE3hNYk+VsNegdj6oqOIFK73I8
- nyRJu8ucZYf9s/GnyxmcyL1TYCVAB8kgcSbw2EBPUo1O27isB1yk6MS1MoqMAXBD4tyt
- 0o/2CbJmzo8YtOYlwlReJ2LTMk3330zP9twY45DZrszNfoE33pyL5rUYIYgZeKd9XUmD
- wdRxsywK2ENZRtEyaBQpGCWr5teezmZIRu83oMej7Cer77vKEQdQ5jv8UIiba4yaFrVK
- ZbheqtkH6gSt8mF/FDGh0HjKmeHUgjwWuD/oHMX52RIBM0oCj3XQz2PH6CtLkwnzARoT
- blZw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=pBUOpcZZhVnAEMzK2Qi13gp5BqUlujzgGPYXraDy+LU=;
- b=XoduJCLk0Hpb+N0K+yq/9sfKiq4wNmzSjnL2WuHw8O+FEUYGEWx2prs8JrP+z2Mw/9
- R+xbvNVMCCuuhok89g3+uwmctJ9VICxNvrQgjCcVCovFG8haNrFgEVcsdqUbn7VXVR12
- 6B6lPlNKKz4XxXMJhMBcBssxTNYtH32sHY4ODR3x/81+Orfihf5A7nt3B+6uytR5eWvt
- ZQOMRcVn+bpZGtVDAeIKP0gMx/lBtK7t2QKeMSRQLokjLl1FfTtCjI7iUYvXRonbrImA
- J5EiUuB/jhGdivgLsmLvczPAlEw0mHk4GWEkzXvTKtiazFHA0B/Ho0c7GmKnxPmpDX+e
- ietw==
-X-Gm-Message-State: APjAAAXq/Pqdw9wJICaXAZagDLN+w5YBa1/xdLF1fyUvnIZwL6fkFsRX
- hVkPK/9AQqFkqm1lcLDsTDc=
-X-Google-Smtp-Source: APXvYqxWJTJIdCpHS0U/FnQzuWH0oWUVKu8hlU6RfRmLRWX081s6/gamZSeSuCmsOfOw34bD/oX0jQ==
-X-Received: by 2002:a63:c54d:: with SMTP id g13mr65078775pgd.376.1558200817033; 
- Sat, 18 May 2019 10:33:37 -0700 (PDT)
-Received: from hari-Inspiron-1545 ([183.83.92.73])
- by smtp.gmail.com with ESMTPSA id n21sm15160229pgf.28.2019.05.18.10.33.34
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 18 May 2019 10:33:36 -0700 (PDT)
-Date: Sat, 18 May 2019 23:03:31 +0530
-From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-To: Gao Xiang <gaoxiang25@huawei.com>, Chao Yu <yuchao0@huawei.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-erofs@lists.ozlabs.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: erofs: fix Warning Use BUG_ON instead of if
- condition followed by BUG
-Message-ID: <20190518173331.GA1069@hari-Inspiron-1545>
+ with ESMTP id U-du-QUxQcN2 for <devel@linuxdriverproject.org>;
+ Sat, 18 May 2019 19:11:10 +0000 (UTC)
+X-Greylist: delayed 00:22:35 by SQLgrey-1.7.6
+Received: from mailman.ml.seisen-u.ac.jp (unknown [175.184.45.56])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2248622703
+ for <devel@driverdev.osuosl.org>; Sat, 18 May 2019 19:11:10 +0000 (UTC)
+Received: from User (unknown [177.0.77.71])
+ by mailman.ml.seisen-u.ac.jp (Postfix) with ESMTP id 90687142AA5;
+ Sun, 19 May 2019 03:47:16 +0900 (JST)
+From: "Barrister Dawson"<kitsune@seisen-u.ac.jp>
+Subject: Re: Investment Opportunity
+Date: Sat, 18 May 2019 14:38:16 -0300
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20190518184716.90687142AA5@mailman.ml.seisen-u.ac.jp>
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,38 +56,36 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Reply-To: express.s@gmx.co.uk
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-fix below warning reported by  coccicheck
+Good Day,
 
-drivers/staging/erofs/unzip_pagevec.h:74:2-5: WARNING: Use BUG_ON
-instead of if condition followed by BUG.
+I am Barrister Geoffrey Dawson, legal Attorney to the immediate past President of the Republic of South Africa Mr. Jacob G. Zuma. I am using this medium to request for your assistance and partnership of $50 Million business investment program. This fund is presently deposited with the Barclays Bank in the United Kingdom. This is where you come in to take over the ownership of this said fund to be backed with legal documents from my legal firm. Your assistance is urgently needed to secure the said fund and invest same in any business invest program that is legal and profitable. He is offering 30% of the total sum for your partnership and 70% will be for my client. I assure you that this transaction is risk-free and 100% legal. As an Attorney, I will not be part of anything illegal in my life after years of legal practice. 
 
-Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
----
- drivers/staging/erofs/unzip_pagevec.h | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+As a former head of state, my client cannot afford to work on this project personally or with persons close to him as anyone around betrayed him in the past and that is why I have been instructed with the mandate to find a foreign partner, secure and invest the funds. To make matters worse, he has been Diagnosed of Lung Cancer and he is hospitalized at the moment. You are also advised to reply swiftly if this proposal is acceptable to you with the requested details:
 
-diff --git a/drivers/staging/erofs/unzip_pagevec.h b/drivers/staging/erofs/unzip_pagevec.h
-index f37d8fd..0f61c54 100644
---- a/drivers/staging/erofs/unzip_pagevec.h
-+++ b/drivers/staging/erofs/unzip_pagevec.h
-@@ -70,8 +70,7 @@ z_erofs_pagevec_ctor_next_page(struct z_erofs_pagevec_ctor *ctor,
- 			return tagptr_unfold_ptr(t);
- 	}
- 
--	if (unlikely(nr >= ctor->nr))
--		BUG();
-+	BUG_ON(nr >= ctor->nr);
- 
- 	return NULL;
- }
--- 
-2.7.4
+Full names:
+Home address:
+Phone number:
+Occupation:
+Age:
 
+I will send you the relevant fund deposit documentations for your confirmation upon your reply. These same details will be used for the partnership agreement and legal Power of Attorney that will give you the legal right to the fund. 
+
+Please know this transaction needs almost confidentiality. Looking forward to hearing from you soonest.
+
+Thank you.
+
+Yours in Service,
+Barrister Geoffrey Dawson
+Beach House, Bay View Road, 
+Port St Mary, Isle of Man IM9 5AE,
+United Kingdom.
+Reply Email: grahamjoneschambers@wildblue.net
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
