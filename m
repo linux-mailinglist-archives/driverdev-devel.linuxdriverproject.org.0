@@ -2,56 +2,57 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BDB7922310
-	for <lists+driverdev-devel@lfdr.de>; Sat, 18 May 2019 12:08:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B14FF2231E
+	for <lists+driverdev-devel@lfdr.de>; Sat, 18 May 2019 12:20:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8626E86477;
-	Sat, 18 May 2019 10:07:59 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AC61187034;
+	Sat, 18 May 2019 10:20:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SSZyvZ9N58mj; Sat, 18 May 2019 10:07:59 +0000 (UTC)
+	with ESMTP id tG43fCqlCTYD; Sat, 18 May 2019 10:20:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A962E8654D;
-	Sat, 18 May 2019 10:07:57 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0869E868E5;
+	Sat, 18 May 2019 10:20:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id ABD431BF841
- for <devel@linuxdriverproject.org>; Sat, 18 May 2019 10:07:55 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id DA8D81BF2F7
+ for <devel@linuxdriverproject.org>; Sat, 18 May 2019 10:20:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id A7333227CE
- for <devel@linuxdriverproject.org>; Sat, 18 May 2019 10:07:55 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id D66AB86429
+ for <devel@linuxdriverproject.org>; Sat, 18 May 2019 10:20:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CjGObHd0OfBt for <devel@linuxdriverproject.org>;
- Sat, 18 May 2019 10:07:55 +0000 (UTC)
+ with ESMTP id GT9nRn3W-fOr for <devel@linuxdriverproject.org>;
+ Sat, 18 May 2019 10:20:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 19AF92274A
- for <devel@driverdev.osuosl.org>; Sat, 18 May 2019 10:07:55 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 22146860FF
+ for <devel@driverdev.osuosl.org>; Sat, 18 May 2019 10:20:36 +0000 (UTC)
 Received: from archlinux (cpc91196-cmbg18-2-0-cust659.5-4.cable.virginm.net
  [81.96.234.148])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A642420882;
- Sat, 18 May 2019 10:07:52 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id A21CE20882;
+ Sat, 18 May 2019 10:20:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1558174074;
- bh=sUB5hovs/rIf/1+OYH5HuM1pm0D1fXyH9bo/DU9kax4=;
+ s=default; t=1558174835;
+ bh=6NB9Z0T4EVef3CpmXtyWuLQlD836mhIpMXiN7OIS92U=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=SuqC8lJYndA+qDxIEQ3UiU5TI/vXjU4XgPEfDmaA2NcL+3dWoPt/KkRVJfJCfFhPn
- LHvvS7X59ccHhiLMSJeWH1kQVNQ3kcG+IY65WuytW+H5XOIyd7PBwrCqc8oIMI8mC6
- 1QIGK1lhcfel4EcuqCkJui64jtNlGt7JwzJVn+5M=
-Date: Sat, 18 May 2019 11:07:49 +0100
+ b=Uotz2nEgDQovm2TQSdJ6NAI+XVi+5qRJ/XYINMVixiX908IepDgKjS+tN0rWEm5+R
+ Qb1g6ABesGGcm66qeA2361AROgMx4+PzEKkdHrnSmlMI32eau3h7vN/0FZ6DjTiScN
+ 0iP0MoNLAPm96xCRfhz4eqAyvGwmX4hP7XuSaHJI=
+Date: Sat, 18 May 2019 11:20:30 +0100
 From: Jonathan Cameron <jic23@kernel.org>
 To: Beniamin Bia <beniamin.bia@analog.com>
-Subject: Re: [PATCH 2/5] iio: adc: ad7606: Add software configuration
-Message-ID: <20190518110749.080c7a04@archlinux>
-In-Reply-To: <20190516143208.19294-2-beniamin.bia@analog.com>
+Subject: Re: [PATCH 3/5] iio: adc: ad7606: Make SPI register calculation
+ generic and add spi support
+Message-ID: <20190518112030.56c0411f@archlinux>
+In-Reply-To: <20190516143208.19294-3-beniamin.bia@analog.com>
 References: <20190516143208.19294-1-beniamin.bia@analog.com>
- <20190516143208.19294-2-beniamin.bia@analog.com>
+ <20190516143208.19294-3-beniamin.bia@analog.com>
 X-Mailer: Claws Mail 3.17.3 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -71,82 +72,150 @@ Cc: devel@driverdev.osuosl.org, mark.rutland@arm.com, lars@metafoo.de,
  devicetree@vger.kernel.org, linux-iio@vger.kernel.org,
  gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org,
  pmeerw@pmeerw.net, knaack.h@gmx.de
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gVGh1LCAxNiBNYXkgMjAxOSAxNzozMjowNSArMDMwMApCZW5pYW1pbiBCaWEgPGJlbmlhbWlu
-LmJpYUBhbmFsb2cuY29tPiB3cm90ZToKCj4gQmVjYXVzZSB0aGlzIGRyaXZlciB3aWxsIHN1cHBv
-cnQgbXVsdGlwbGUgY29uZmlndXJhdGlvbnMgZm9yIHNvZnR3YXJlLAo+IHRoZSBzb2Z0d2FyZSBj
-b25maWd1cmF0aW9uIHdhcyBtYWRlIGdlbmVyaWMuCj4gCj4gU2lnbmVkLW9mZi1ieTogQmVuaWFt
-aW4gQmlhIDxiZW5pYW1pbi5iaWFAYW5hbG9nLmNvbT4KQXBwbGllZCB0byB0aGUgdG9ncmVnIGJy
-YW5jaCBvZiBpaW8uZ2l0IGFuZCBwdXNoZWQgb3V0IGFzIHRlc3RpbmcgZm9yCnRoZSBhdXRvYnVp
-bGRlcnMgdG8gcGxheSB3aXRoIGl0LgoKVGhhbmtzCgpKb25hdGhhbgoKPiAtLS0KPiAgZHJpdmVy
-cy9paW8vYWRjL2FkNzYwNi5jIHwgNDAgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKy0tLQo+ICBkcml2ZXJzL2lpby9hZGMvYWQ3NjA2LmggfCAgMiArKwo+ICAyIGZpbGVzIGNo
-YW5nZWQsIDM5IGluc2VydGlvbnMoKyksIDMgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvaWlvL2FkYy9hZDc2MDYuYyBiL2RyaXZlcnMvaWlvL2FkYy9hZDc2MDYuYwo+IGlu
-ZGV4IGM2NmZmMjJmMzJkMi4uYWJhMGZkMTIzYTUxIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvaWlv
-L2FkYy9hZDc2MDYuYwo+ICsrKyBiL2RyaXZlcnMvaWlvL2FkYy9hZDc2MDYuYwo+IEBAIC0xNDAs
-NyArMTQwLDcgQEAgc3RhdGljIGludCBhZDc2MDZfcmVhZF9yYXcoc3RydWN0IGlpb19kZXYgKmlu
-ZGlvX2RldiwKPiAgCQkJICAgaW50ICp2YWwyLAo+ICAJCQkgICBsb25nIG0pCj4gIHsKPiAtCWlu
-dCByZXQ7Cj4gKwlpbnQgcmV0LCBjaCA9IDA7Cj4gIAlzdHJ1Y3QgYWQ3NjA2X3N0YXRlICpzdCA9
-IGlpb19wcml2KGluZGlvX2Rldik7Cj4gIAo+ICAJc3dpdGNoIChtKSB7Cj4gQEAgLTE1Nyw4ICsx
-NTcsMTAgQEAgc3RhdGljIGludCBhZDc2MDZfcmVhZF9yYXcoc3RydWN0IGlpb19kZXYgKmluZGlv
-X2RldiwKPiAgCQkqdmFsID0gKHNob3J0KXJldDsKPiAgCQlyZXR1cm4gSUlPX1ZBTF9JTlQ7Cj4g
-IAljYXNlIElJT19DSEFOX0lORk9fU0NBTEU6Cj4gKwkJaWYgKHN0LT5zd19tb2RlX2VuKQo+ICsJ
-CQljaCA9IGNoYW4tPmFkZHJlc3M7Cj4gIAkJKnZhbCA9IDA7Cj4gLQkJKnZhbDIgPSBzdC0+c2Nh
-bGVfYXZhaWxbc3QtPnJhbmdlWzBdXTsKPiArCQkqdmFsMiA9IHN0LT5zY2FsZV9hdmFpbFtzdC0+
-cmFuZ2VbY2hdXTsKPiAgCQlyZXR1cm4gSUlPX1ZBTF9JTlRfUExVU19NSUNSTzsKPiAgCWNhc2Ug
-SUlPX0NIQU5fSU5GT19PVkVSU0FNUExJTkdfUkFUSU86Cj4gIAkJKnZhbCA9IHN0LT5vdmVyc2Ft
-cGxpbmc7Cj4gQEAgLTIzMyw3ICsyMzUsOSBAQCBzdGF0aWMgaW50IGFkNzYwNl93cml0ZV9yYXco
-c3RydWN0IGlpb19kZXYgKmluZGlvX2RldiwKPiAgCWNhc2UgSUlPX0NIQU5fSU5GT19TQ0FMRToK
-PiAgCQltdXRleF9sb2NrKCZzdC0+bG9jayk7Cj4gIAkJaSA9IGZpbmRfY2xvc2VzdCh2YWwyLCBz
-dC0+c2NhbGVfYXZhaWwsIHN0LT5udW1fc2NhbGVzKTsKPiAtCQlyZXQgPSBzdC0+d3JpdGVfc2Nh
-bGUoaW5kaW9fZGV2LCBjaGFuLT5hZGRyZXNzLCBpKTsKPiArCQlpZiAoc3QtPnN3X21vZGVfZW4p
-Cj4gKwkJCWNoID0gY2hhbi0+YWRkcmVzczsKPiArCQlyZXQgPSBzdC0+d3JpdGVfc2NhbGUoaW5k
-aW9fZGV2LCBjaCwgaSk7Cj4gIAkJaWYgKHJldCA8IDApIHsKPiAgCQkJbXV0ZXhfdW5sb2NrKCZz
-dC0+bG9jayk7Cj4gIAkJCXJldHVybiByZXQ7Cj4gQEAgLTYxNiw2ICs2MjAsMzYgQEAgaW50IGFk
-NzYwNl9wcm9iZShzdHJ1Y3QgZGV2aWNlICpkZXYsIGludCBpcnEsIHZvaWQgX19pb21lbSAqYmFz
-ZV9hZGRyZXNzLAo+ICAJc3QtPndyaXRlX3NjYWxlID0gYWQ3NjA2X3dyaXRlX3NjYWxlX2h3Owo+
-ICAJc3QtPndyaXRlX29zID0gYWQ3NjA2X3dyaXRlX29zX2h3Owo+ICAKPiArCWlmIChzdC0+Y2hp
-cF9pbmZvLT5zd19tb2RlX2NvbmZpZykKPiArCQlzdC0+c3dfbW9kZV9lbiA9IGRldmljZV9wcm9w
-ZXJ0eV9wcmVzZW50KHN0LT5kZXYsCj4gKwkJCQkJCQkgImFkaSxzdy1tb2RlIik7Cj4gKwo+ICsJ
-aWYgKHN0LT5zd19tb2RlX2VuKSB7Cj4gKwkJLyogQWZ0ZXIgcmVzZXQsIGluIHNvZnR3YXJlIG1v
-ZGUsIMKxMTAgViBpcyBzZXQgYnkgZGVmYXVsdCAqLwo+ICsJCW1lbXNldDMyKHN0LT5yYW5nZSwg
-MiwgQVJSQVlfU0laRShzdC0+cmFuZ2UpKTsKPiArCQlpbmRpb19kZXYtPmluZm8gPSAmYWQ3NjA2
-X2luZm9fb3NfYW5kX3JhbmdlOwo+ICsKPiArCQkvKgo+ICsJCSAqIEluIHNvZnR3YXJlIG1vZGUs
-IHRoZSByYW5nZSBncGlvIGhhcyBubyBsb25nZXIgaXRzIGZ1bmN0aW9uLgo+ICsJCSAqIEluc3Rl
-YWQsIHRoZSBzY2FsZSBjYW4gYmUgY29uZmlndXJlZCBpbmRpdmlkdWFsbHkgZm9yIGVhY2gKPiAr
-CQkgKiBjaGFubmVsIGZyb20gdGhlIHJhbmdlIHJlZ2lzdGVycy4KPiArCQkgKi8KPiArCQlpZiAo
-c3QtPmNoaXBfaW5mby0+d3JpdGVfc2NhbGVfc3cpCj4gKwkJCXN0LT53cml0ZV9zY2FsZSA9IHN0
-LT5jaGlwX2luZm8tPndyaXRlX3NjYWxlX3N3Owo+ICsKPiArCQkvKgo+ICsJCSAqIEluIHNvZnR3
-YXJlIG1vZGUsIHRoZSBvdmVyc2FtcGxpbmcgaXMgbm8gbG9uZ2VyIGNvbmZpZ3VyZWQKPiArCQkg
-KiB3aXRoIEdQSU8gcGlucy4gSW5zdGVhZCwgdGhlIG92ZXJzYW1wbGluZyBjYW4gYmUgY29uZmln
-dXJlZAo+ICsJCSAqIGluIGNvbmZpZ3VyYXRpaW9uIHJlZ2lzdGVyLgo+ICsJCSAqLwo+ICsJCWlm
-IChzdC0+Y2hpcF9pbmZvLT53cml0ZV9vc19zdykKPiArCQkJc3QtPndyaXRlX29zID0gc3QtPmNo
-aXBfaW5mby0+d3JpdGVfb3Nfc3c7Cj4gKwo+ICsJCXJldCA9IHN0LT5jaGlwX2luZm8tPnN3X21v
-ZGVfY29uZmlnKGluZGlvX2Rldik7Cj4gKwkJaWYgKHJldCA8IDApCj4gKwkJCXJldHVybiByZXQ7
-Cj4gKwl9Cj4gKwo+ICAJc3QtPnRyaWcgPSBkZXZtX2lpb190cmlnZ2VyX2FsbG9jKGRldiwgIiVz
-LWRldiVkIiwKPiAgCQkJCQkgIGluZGlvX2Rldi0+bmFtZSwgaW5kaW9fZGV2LT5pZCk7Cj4gIAlp
-ZiAoIXN0LT50cmlnKQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2lpby9hZGMvYWQ3NjA2LmggYi9k
-cml2ZXJzL2lpby9hZGMvYWQ3NjA2LmgKPiBpbmRleCAxNDNjMzAxNjNkZjkuLmQ4YTUwOWMyYzQy
-OCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2lpby9hZGMvYWQ3NjA2LmgKPiArKysgYi9kcml2ZXJz
-L2lpby9hZGMvYWQ3NjA2LmgKPiBAQCAtNDMsNiArNDMsNyBAQCBzdHJ1Y3QgYWQ3NjA2X2NoaXBf
-aW5mbyB7Cj4gICAqIEByYW5nZQkJdm9sdGFnZSByYW5nZSBzZWxlY3Rpb24sIHNlbGVjdHMgd2hp
-Y2ggc2NhbGUgdG8gYXBwbHkKPiAgICogQG92ZXJzYW1wbGluZwlvdmVyc2FtcGxpbmcgc2VsZWN0
-aW9uCj4gICAqIEBiYXNlX2FkZHJlc3MJYWRkcmVzcyBmcm9tIHdoZXJlIHRvIHJlYWQgZGF0YSBp
-biBwYXJhbGxlbCBvcGVyYXRpb24KPiArICogQHN3X21vZGVfZW4JCXNvZnR3YXJlIG1vZGUgZW5h
-YmxlZAo+ICAgKiBAc2NhbGVfYXZhaWwJCXBvaW50ZXIgdG8gdGhlIGFycmF5IHdoaWNoIHN0b3Jl
-cyB0aGUgYXZhaWxhYmxlIHNjYWxlcwo+ICAgKiBAbnVtX3NjYWxlcwkJbnVtYmVyIG9mIGVsZW1l
-bnRzIHN0b3JlZCBpbiB0aGUgc2NhbGVfYXZhaWwgYXJyYXkKPiAgICogQG92ZXJzYW1wbGluZ19h
-dmFpbAlwb2ludGVyIHRvIHRoZSBhcnJheSB3aGljaCBzdG9yZXMgdGhlIGF2YWlsYWJsZQo+IEBA
-IC03MSw2ICs3Miw3IEBAIHN0cnVjdCBhZDc2MDZfc3RhdGUgewo+ICAJdW5zaWduZWQgaW50CQkJ
-cmFuZ2VbMTZdOwo+ICAJdW5zaWduZWQgaW50CQkJb3ZlcnNhbXBsaW5nOwo+ICAJdm9pZCBfX2lv
-bWVtCQkJKmJhc2VfYWRkcmVzczsKPiArCWJvb2wJCQkJc3dfbW9kZV9lbjsKPiAgCWNvbnN0IHVu
-c2lnbmVkIGludAkJKnNjYWxlX2F2YWlsOwo+ICAJdW5zaWduZWQgaW50CQkJbnVtX3NjYWxlczsK
-PiAgCWNvbnN0IHVuc2lnbmVkIGludAkJKm92ZXJzYW1wbGluZ19hdmFpbDsKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApk
-ZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJw
-cm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+On Thu, 16 May 2019 17:32:06 +0300
+Beniamin Bia <beniamin.bia@analog.com> wrote:
+
+> In order to support AD7616 software mode, the spi register access must be
+> added and the calculation of registers address must be generic.
+> The length of address and bit which specifies the read/write operation is
+> different for every device, that is why it was made generic.
+> 
+> Signed-off-by: Beniamin Bia <beniamin.bia@analog.com>
+The break up patches has ended up a little odd. This one introduced unused
+functions for example. Probably best to merge this and the next patch.
+
+As a potential follow up, could this driver just use a 16 bit word
+length and avoid some of the endian handling? (this might also fix
+the casting issues).
+
+However, there are some nasty casts in here that sparse is unhappy about.
+I would definitely like those cleaned up before we add more of them.
+
+If changing to 16bit SPI words doesn't do the job, then perhaps
+we have to have a be16 version of data (as a union to avoid more
+space usage).
+
+Thanks,
+
+Jonathan
+
+> ---
+>  drivers/iio/adc/ad7606.c | 60 ++++++++++++++++++++++++++++++++++++++++
+>  drivers/iio/adc/ad7606.h |  2 ++
+>  2 files changed, 62 insertions(+)
+> 
+> diff --git a/drivers/iio/adc/ad7606.c b/drivers/iio/adc/ad7606.c
+> index aba0fd123a51..6df81117cacc 100644
+> --- a/drivers/iio/adc/ad7606.c
+> +++ b/drivers/iio/adc/ad7606.c
+> @@ -25,6 +25,8 @@
+>  #include <linux/iio/triggered_buffer.h>
+>  #include <linux/iio/trigger_consumer.h>
+>  
+> +#include <linux/spi/spi.h>
+> +
+>  #include "ad7606.h"
+>  
+>  /*
+> @@ -43,6 +45,11 @@ static const unsigned int ad7616_oversampling_avail[8] = {
+>  	1, 2, 4, 8, 16, 32, 64, 128,
+>  };
+>  
+> +static int ad7616_spi_rd_wr_cmd(int addr, char isWriteOp)
+> +{
+> +	return ((addr & 0x7F) << 1) | ((isWriteOp & 0x1) << 7);
+> +}
+> +
+>  static int ad7606_reset(struct ad7606_state *st)
+>  {
+>  	if (st->gpio_reset) {
+> @@ -55,6 +62,59 @@ static int ad7606_reset(struct ad7606_state *st)
+>  	return -ENODEV;
+>  }
+>  
+> +static int ad7606_spi_reg_read(struct ad7606_state *st, unsigned int addr)
+> +{
+> +	struct spi_device *spi = to_spi_device(st->dev);
+> +	struct spi_transfer t[] = {
+> +		{
+> +			.tx_buf = &st->data[0],
+> +			.len = 2,
+> +			.cs_change = 0,
+> +		}, {
+> +			.rx_buf = &st->data[1],
+> +			.len = 2,
+> +		},
+> +	};
+> +	int ret;
+> +
+> +	st->data[0] = cpu_to_be16(st->chip_info->spi_rd_wr_cmd(addr, 0) << 8);
+> +
+> +	ret = spi_sync_transfer(spi, t, ARRAY_SIZE(t));
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	return be16_to_cpu(st->data[1]);
+> +}
+> +
+> +static int ad7606_spi_reg_write(struct ad7606_state *st,
+> +				unsigned int addr,
+> +				unsigned int val)
+> +{
+> +	struct spi_device *spi = to_spi_device(st->dev);
+> +
+> +	st->data[0] = cpu_to_be16((st->chip_info->spi_rd_wr_cmd(addr, 1) << 8) |
+> +				  (val & 0x1FF));
+> +
+> +	return spi_write(spi, &st->data[0], sizeof(st->data[0]));
+> +}
+> +
+> +static int ad7606_spi_write_mask(struct ad7606_state *st,
+> +				 unsigned int addr,
+> +				 unsigned long mask,
+> +				 unsigned int val)
+> +{
+> +	int readval;
+> +
+> +	readval = ad7606_spi_reg_read(st, addr);
+> +	if (readval < 0)
+> +		return readval;
+> +
+> +	readval &= ~mask;
+> +	readval |= val;
+> +
+> +	return ad7606_spi_reg_write(st, addr, readval);
+> +}
+> +
+>  static int ad7606_read_samples(struct ad7606_state *st)
+>  {
+>  	unsigned int num = st->chip_info->num_channels;
+> diff --git a/drivers/iio/adc/ad7606.h b/drivers/iio/adc/ad7606.h
+> index d8a509c2c428..dfc60af9b8ac 100644
+> --- a/drivers/iio/adc/ad7606.h
+> +++ b/drivers/iio/adc/ad7606.h
+> @@ -16,6 +16,7 @@
+>   *			oversampling ratios.
+>   * @oversampling_num	number of elements stored in oversampling_avail array
+>   * @os_req_reset	some devices require a reset to update oversampling
+> + * @spi_rd_wr_cmd	pointer to the function which calculates the spi address
+>   * @write_scale_sw	pointer to the function which writes the scale via spi
+>  			in software mode
+>   * @write_os_sw		pointer to the function which writes the os via spi
+> @@ -29,6 +30,7 @@ struct ad7606_chip_info {
+>  	const unsigned int		*oversampling_avail;
+>  	unsigned int			oversampling_num;
+>  	bool				os_req_reset;
+> +	int (*spi_rd_wr_cmd)(int addr, char isWriteOp);
+>  	int (*write_scale_sw)(struct iio_dev *indio_dev, int ch, int val);
+>  	int (*write_os_sw)(struct iio_dev *indio_dev, int val);
+>  	int (*sw_mode_config)(struct iio_dev *indio_dev);
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
