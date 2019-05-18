@@ -2,57 +2,48 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9640B22322
-	for <lists+driverdev-devel@lfdr.de>; Sat, 18 May 2019 12:21:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BD52F22327
+	for <lists+driverdev-devel@lfdr.de>; Sat, 18 May 2019 12:22:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 1163F22DE3;
-	Sat, 18 May 2019 10:21:02 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2CFC32291B;
+	Sat, 18 May 2019 10:22:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YiDeecQ1MrzE; Sat, 18 May 2019 10:21:01 +0000 (UTC)
+	with ESMTP id qt++jTHfb692; Sat, 18 May 2019 10:22:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E3209227FC;
-	Sat, 18 May 2019 10:20:58 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 011CA227CE;
+	Sat, 18 May 2019 10:22:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B29CC1BF2F7
- for <devel@linuxdriverproject.org>; Sat, 18 May 2019 10:20:56 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B47621BF2F7
+ for <devel@linuxdriverproject.org>; Sat, 18 May 2019 10:22:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id AF38587C66
- for <devel@linuxdriverproject.org>; Sat, 18 May 2019 10:20:56 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B0DC0868A6
+ for <devel@linuxdriverproject.org>; Sat, 18 May 2019 10:22:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Pwl7wXhzjkrZ for <devel@linuxdriverproject.org>;
- Sat, 18 May 2019 10:20:55 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id ECB2E86578
- for <devel@driverdev.osuosl.org>; Sat, 18 May 2019 10:20:55 +0000 (UTC)
+ with ESMTP id wNGe3j_j3sCY for <devel@linuxdriverproject.org>;
+ Sat, 18 May 2019 10:22:41 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from saturn.retrosnub.co.uk (saturn.retrosnub.co.uk [46.235.226.198])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 299988685A
+ for <devel@driverdev.osuosl.org>; Sat, 18 May 2019 10:22:41 +0000 (UTC)
 Received: from archlinux (cpc91196-cmbg18-2-0-cust659.5-4.cable.virginm.net
- [81.96.234.148])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 7ED2920B7C;
- Sat, 18 May 2019 10:20:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1558174855;
- bh=L2QavqgoKZTPfEfcnaeMTRj+WgFIra18OpGUJXXhnrw=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=NfRENGIEJe/R9moIle0lzZDUXfTLt8bMu5wjvjZKnmhcdj2DPYLRd8JgHiJdx3oTD
- JsYlxFvLrCmZ/HZaj0Hw8Lgc0KSfsEri3Kr7AwmYkDRWBE74ssYYrvDN43X4CeiEN1
- uZRo1wSPqql1/oBFiisPzV6mMJWoaQCL7GnBoH/c=
-Date: Sat, 18 May 2019 11:20:50 +0100
-From: Jonathan Cameron <jic23@kernel.org>
+ [81.96.234.148]) by saturn.retrosnub.co.uk (Postfix;
+ Retrosnub mail submission) with ESMTPSA id B832D9E8357; 
+ Sat, 18 May 2019 11:22:36 +0100 (BST)
+Date: Sat, 18 May 2019 11:22:35 +0100
+From: Jonathan Cameron <jic23@jic23.retrosnub.co.uk>
 To: Beniamin Bia <beniamin.bia@analog.com>
-Subject: Re: [PATCH 4/5] iio: adc: ad7606: Add support for software mode for
- ad7616
-Message-ID: <20190518112050.35a99bbc@archlinux>
-In-Reply-To: <20190516143208.19294-4-beniamin.bia@analog.com>
+Subject: Re: [PATCH 1/5] iio: adc: ad7606: Move oversampling and scale
+ options to chip info
+Message-ID: <20190518112235.73e98712@archlinux>
+In-Reply-To: <20190518110449.27b18ea7@archlinux>
 References: <20190516143208.19294-1-beniamin.bia@analog.com>
- <20190516143208.19294-4-beniamin.bia@analog.com>
+ <20190518110449.27b18ea7@archlinux>
 X-Mailer: Claws Mail 3.17.3 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -72,138 +63,224 @@ Cc: devel@driverdev.osuosl.org, mark.rutland@arm.com, lars@metafoo.de,
  devicetree@vger.kernel.org, linux-iio@vger.kernel.org,
  gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org,
  pmeerw@pmeerw.net, knaack.h@gmx.de
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gVGh1LCAxNiBNYXkgMjAxOSAxNzozMjowNyArMDMwMApCZW5pYW1pbiBCaWEgPGJlbmlhbWlu
-LmJpYUBhbmFsb2cuY29tPiB3cm90ZToKCj4gU3VwcG9ydCBmb3IgYWQ3NjE2IHJ1bm5pbmcgaW4g
-c29mdHdhcmUgd2FzIGFkZGVkLiBJbiBvcmRlcgo+IHRvIGFjdGl2YXRlIHRoZSBzb2Z0d2FyZSBt
-b2RlLCBIV19STkdTRUwgcGlucyBtdXN0IGJlIHB1bGxlZCBsb3cuCj4gT3ZlcnNhbXBsaW5nIGFu
-ZCBpbnB1dCByYW5nZXMgYXJlIG5vdyBjb25maWd1cmVkIGluIGNvcnJlc3BvbmRpbmcKPiByZWdp
-c3RlcnMuIEFkNzYxNiBoYXMgbXVsdGlwbGUgc2NhbGUgb3B0aW9ucyB3aGVuIGl0IGlzIGNvbmZp
-Z3VyZWQKPiBpbiBzb2Z0d2FyZSBtb2RlLgo+IAo+IFNpZ25lZC1vZmYtYnk6IEJlbmlhbWluIEJp
-YSA8YmVuaWFtaW4uYmlhQGFuYWxvZy5jb20+Ckxvb2tzIGdvb2Qgc3ViamVjdCB0byBjb21tZW50
-cyBvbiB0aGUgcHJldmlvdXMuCgpUaGFua3MsCgpKb25hdGhhbgoKPiAtLS0KPiAgZHJpdmVycy9p
-aW8vYWRjL2FkNzYwNi5jIHwgMTExICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-Ky0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgMTAzIGluc2VydGlvbnMoKyksIDggZGVsZXRpb25zKC0p
-Cj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvaWlvL2FkYy9hZDc2MDYuYyBiL2RyaXZlcnMvaWlv
-L2FkYy9hZDc2MDYuYwo+IGluZGV4IDZkZjgxMTE3Y2FjYy4uZjc3ZGYzZWZlNDNmIDEwMDY0NAo+
-IC0tLSBhL2RyaXZlcnMvaWlvL2FkYy9hZDc2MDYuYwo+ICsrKyBiL2RyaXZlcnMvaWlvL2FkYy9h
-ZDc2MDYuYwo+IEBAIC0yOSw2ICsyOSwyMCBAQAo+ICAKPiAgI2luY2x1ZGUgImFkNzYwNi5oIgo+
-ICAKPiArI2RlZmluZSBBRDc2MDZfUkFOR0VfQ0hfQUREUihjaCkJKDB4MDMgKyAoKGNoKSA+PiAx
-KSkKPiArI2RlZmluZSBBRDc2MDZfT1NfTU9ERQkJCTB4MDgKPiArCj4gKyNkZWZpbmUgQUQ3NjE2
-X0NPTkZJR1VSQVRJT05fUkVHSVNURVIJMHgwMgo+ICsjZGVmaW5lIEFENzYxNl9PU19NQVNLCQkJ
-R0VOTUFTSyg0LCAgMikKPiArI2RlZmluZSBBRDc2MTZfQlVSU1RfTU9ERQkJQklUKDYpCj4gKyNk
-ZWZpbmUgQUQ3NjE2X1NFUUVOX01PREUJCUJJVCg1KQo+ICsjZGVmaW5lIEFENzYxNl9SQU5HRV9D
-SF9BRERSX09GRgkweDA0Cj4gKyNkZWZpbmUgQUQ3NjE2X1JBTkdFX0NIX0FERFIoY2gpCSgoKChj
-aCkgJiAweDEpIDw8IDEpICsgKChjaCkgPj4gMykpCj4gKyNkZWZpbmUgQUQ3NjE2X1JBTkdFX0NI
-X01TSyhjaCkJCShHRU5NQVNLKDEsIDApIDw8ICgoY2gpICYgMHg2KSkKPiArI2RlZmluZSBBRDc2
-MTZfUkFOR0VfQ0hfTU9ERShjaCwgbW9kZSkJKChtb2RlKSA8PCAoY2ggJiBHRU5NQVNLKDIsIDEp
-KSkKPiArCj4gK3N0YXRpYyBpbnQgYWQ3NjE2X3N3X21vZGVfY29uZmlnKHN0cnVjdCBpaW9fZGV2
-ICppbmRpb19kZXYpOwo+ICsKPiAgLyoKPiAgICogU2NhbGVzIGFyZSBjb21wdXRlZCBhcyA1MDAw
-LzMyNzY4IGFuZCAxMDAwMC8zMjc2OCByZXNwZWN0aXZlbHksCj4gICAqIHNvIHRoYXQgd2hlbiBh
-cHBsaWVkIHRvIHRoZSByYXcgdmFsdWVzIHRoZXkgcHJvdmlkZSBtViB2YWx1ZXMKPiBAQCAtMzcs
-NiArNTEsMTEgQEAgc3RhdGljIGNvbnN0IHVuc2lnbmVkIGludCBhZDc2MDZfc2NhbGVfYXZhaWxb
-Ml0gPSB7Cj4gIAkxNTI1ODgsIDMwNTE3Ngo+ICB9Owo+ICAKPiArCj4gK3N0YXRpYyBjb25zdCB1
-bnNpZ25lZCBpbnQgYWQ3NjE2X3N3X3NjYWxlX2F2YWlsWzNdID0gewo+ICsJNzYyOTMsIDE1MjU4
-OCwgMzA1MTc2Cj4gK307Cj4gKwo+ICBzdGF0aWMgY29uc3QgdW5zaWduZWQgaW50IGFkNzYwNl9v
-dmVyc2FtcGxpbmdfYXZhaWxbN10gPSB7Cj4gIAkxLCAyLCA0LCA4LCAxNiwgMzIsIDY0LAo+ICB9
-Owo+IEBAIC0yODIsNiArMzAxLDI2IEBAIHN0YXRpYyBpbnQgYWQ3NjA2X3dyaXRlX29zX2h3KHN0
-cnVjdCBpaW9fZGV2ICppbmRpb19kZXYsIGludCB2YWwpCj4gIAlyZXR1cm4gMDsKPiAgfQo+ICAK
-PiArc3RhdGljIGludCBhZDc2MTZfd3JpdGVfc2NhbGVfc3coc3RydWN0IGlpb19kZXYgKmluZGlv
-X2RldiwgaW50IGNoLCBpbnQgdmFsKQo+ICt7Cj4gKwlzdHJ1Y3QgYWQ3NjA2X3N0YXRlICpzdCA9
-IGlpb19wcml2KGluZGlvX2Rldik7Cj4gKwl1bnNpZ25lZCBpbnQgY2hfYWRkciwgbW9kZTsKPiAr
-Cj4gKwljaF9hZGRyID0gQUQ3NjE2X1JBTkdFX0NIX0FERFJfT0ZGICsgQUQ3NjE2X1JBTkdFX0NI
-X0FERFIoY2gpOwo+ICsJbW9kZSA9IEFENzYxNl9SQU5HRV9DSF9NT0RFKGNoLCAoKHZhbCArIDEp
-ICYgMHgzKSk7Cj4gKwo+ICsJcmV0dXJuIGFkNzYwNl9zcGlfd3JpdGVfbWFzayhzdCwgY2hfYWRk
-ciwgQUQ3NjE2X1JBTkdFX0NIX01TSyhjaCksCj4gKwkJCQkgICAgIG1vZGUpOwo+ICt9Cj4gKwo+
-ICtzdGF0aWMgaW50IGFkNzYxNl93cml0ZV9vc19zdyhzdHJ1Y3QgaWlvX2RldiAqaW5kaW9fZGV2
-LCBpbnQgdmFsKQo+ICt7Cj4gKwlzdHJ1Y3QgYWQ3NjA2X3N0YXRlICpzdCA9IGlpb19wcml2KGlu
-ZGlvX2Rldik7Cj4gKwo+ICsJcmV0dXJuIGFkNzYwNl9zcGlfd3JpdGVfbWFzayhzdCwgQUQ3NjE2
-X0NPTkZJR1VSQVRJT05fUkVHSVNURVIsCj4gKwkJCQkgICAgIEFENzYxNl9PU19NQVNLLCB2YWwg
-PDwgMik7Cj4gK30KPiArCj4gIHN0YXRpYyBpbnQgYWQ3NjA2X3dyaXRlX3JhdyhzdHJ1Y3QgaWlv
-X2RldiAqaW5kaW9fZGV2LAo+ICAJCQkgICAgc3RydWN0IGlpb19jaGFuX3NwZWMgY29uc3QgKmNo
-YW4sCj4gIAkJCSAgICBpbnQgdmFsLAo+IEBAIC0zNjgsMTQgKzQwNywxNCBAQCBzdGF0aWMgY29u
-c3Qgc3RydWN0IGF0dHJpYnV0ZV9ncm91cCBhZDc2MDZfYXR0cmlidXRlX2dyb3VwX3JhbmdlID0g
-ewo+ICAJLmF0dHJzID0gYWQ3NjA2X2F0dHJpYnV0ZXNfcmFuZ2UsCj4gIH07Cj4gIAo+IC0jZGVm
-aW5lIEFENzYwWF9DSEFOTkVMKG51bSwgbWFzaykgewkJCQlcCj4gKyNkZWZpbmUgQUQ3NjBYX0NI
-QU5ORUwobnVtLCBtYXNrX3NlcCwgbWFza190eXBlLCBtYXNrX2FsbCkgewlcCj4gIAkJLnR5cGUg
-PSBJSU9fVk9MVEFHRSwJCQkJXAo+ICAJCS5pbmRleGVkID0gMSwJCQkJCVwKPiAgCQkuY2hhbm5l
-bCA9IG51bSwJCQkJCVwKPiAgCQkuYWRkcmVzcyA9IG51bSwJCQkJCVwKPiAtCQkuaW5mb19tYXNr
-X3NlcGFyYXRlID0gQklUKElJT19DSEFOX0lORk9fUkFXKSwJXAo+IC0JCS5pbmZvX21hc2tfc2hh
-cmVkX2J5X3R5cGUgPSBCSVQoSUlPX0NIQU5fSU5GT19TQ0FMRSksXAo+IC0JCS5pbmZvX21hc2tf
-c2hhcmVkX2J5X2FsbCA9IG1hc2ssCQlcCj4gKwkJLmluZm9fbWFza19zZXBhcmF0ZSA9IG1hc2tf
-c2VwLAkJCVwKPiArCQkuaW5mb19tYXNrX3NoYXJlZF9ieV90eXBlID0gbWFza190eXBlLAkJXAo+
-ICsJCS5pbmZvX21hc2tfc2hhcmVkX2J5X2FsbCA9IG1hc2tfYWxsLAkJXAo+ICAJCS5zY2FuX2lu
-ZGV4ID0gbnVtLAkJCQlcCj4gIAkJLnNjYW5fdHlwZSA9IHsJCQkJCVwKPiAgCQkJLnNpZ24gPSAn
-cycsCQkJCVwKPiBAQCAtMzg1LDExICs0MjQsMTggQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBhdHRy
-aWJ1dGVfZ3JvdXAgYWQ3NjA2X2F0dHJpYnV0ZV9ncm91cF9yYW5nZSA9IHsKPiAgCQl9LAkJCQkJ
-CVwKPiAgfQo+ICAKPiAtI2RlZmluZSBBRDc2MDVfQ0hBTk5FTChudW0pCVwKPiAtCUFENzYwWF9D
-SEFOTkVMKG51bSwgMCkKPiArI2RlZmluZSBBRDc2MDVfQ0hBTk5FTChudW0pCQkJCVwKPiArCUFE
-NzYwWF9DSEFOTkVMKG51bSwgQklUKElJT19DSEFOX0lORk9fUkFXKSwJXAo+ICsJCUJJVChJSU9f
-Q0hBTl9JTkZPX1NDQUxFKSwgMCkKPiArCj4gKyNkZWZpbmUgQUQ3NjA2X0NIQU5ORUwobnVtKQkJ
-CQlcCj4gKwlBRDc2MFhfQ0hBTk5FTChudW0sIEJJVChJSU9fQ0hBTl9JTkZPX1JBVyksCVwKPiAr
-CQlCSVQoSUlPX0NIQU5fSU5GT19TQ0FMRSksCQlcCj4gKwkJQklUKElJT19DSEFOX0lORk9fT1ZF
-UlNBTVBMSU5HX1JBVElPKSkKPiAgCj4gLSNkZWZpbmUgQUQ3NjA2X0NIQU5ORUwobnVtKQlcCj4g
-LQlBRDc2MFhfQ0hBTk5FTChudW0sIEJJVChJSU9fQ0hBTl9JTkZPX09WRVJTQU1QTElOR19SQVRJ
-TykpCj4gKyNkZWZpbmUgQUQ3NjE2X0NIQU5ORUwobnVtKQlcCj4gKwlBRDc2MFhfQ0hBTk5FTChu
-dW0sIEJJVChJSU9fQ0hBTl9JTkZPX1JBVykgfCBCSVQoSUlPX0NIQU5fSU5GT19TQ0FMRSksXAo+
-ICsJCTAsIEJJVChJSU9fQ0hBTl9JTkZPX09WRVJTQU1QTElOR19SQVRJTykpCj4gIAo+ICBzdGF0
-aWMgY29uc3Qgc3RydWN0IGlpb19jaGFuX3NwZWMgYWQ3NjA1X2NoYW5uZWxzW10gPSB7Cj4gIAlJ
-SU9fQ0hBTl9TT0ZUX1RJTUVTVEFNUCg0KSwKPiBAQCAtNDQxLDYgKzQ4NywyNiBAQCBzdGF0aWMg
-Y29uc3Qgc3RydWN0IGlpb19jaGFuX3NwZWMgYWQ3NjE2X2NoYW5uZWxzW10gPSB7Cj4gIAlBRDc2
-MDZfQ0hBTk5FTCgxNSksCj4gIH07Cj4gIAo+ICtzdGF0aWMgY29uc3Qgc3RydWN0IGlpb19jaGFu
-X3NwZWMgYWQ3NjE2X3N3X2NoYW5uZWxzW10gPSB7Cj4gKwlJSU9fQ0hBTl9TT0ZUX1RJTUVTVEFN
-UCgxNiksCj4gKwlBRDc2MTZfQ0hBTk5FTCgwKSwKPiArCUFENzYxNl9DSEFOTkVMKDEpLAo+ICsJ
-QUQ3NjE2X0NIQU5ORUwoMiksCj4gKwlBRDc2MTZfQ0hBTk5FTCgzKSwKPiArCUFENzYxNl9DSEFO
-TkVMKDQpLAo+ICsJQUQ3NjE2X0NIQU5ORUwoNSksCj4gKwlBRDc2MTZfQ0hBTk5FTCg2KSwKPiAr
-CUFENzYxNl9DSEFOTkVMKDcpLAo+ICsJQUQ3NjE2X0NIQU5ORUwoOCksCj4gKwlBRDc2MTZfQ0hB
-Tk5FTCg5KSwKPiArCUFENzYxNl9DSEFOTkVMKDEwKSwKPiArCUFENzYxNl9DSEFOTkVMKDExKSwK
-PiArCUFENzYxNl9DSEFOTkVMKDEyKSwKPiArCUFENzYxNl9DSEFOTkVMKDEzKSwKPiArCUFENzYx
-Nl9DSEFOTkVMKDE0KSwKPiArCUFENzYxNl9DSEFOTkVMKDE1KSwKPiArfTsKPiArCj4gIHN0YXRp
-YyBjb25zdCBzdHJ1Y3QgYWQ3NjA2X2NoaXBfaW5mbyBhZDc2MDZfY2hpcF9pbmZvX3RibFtdID0g
-ewo+ICAJLyogTW9yZSBkZXZpY2VzIGFkZGVkIGluIGZ1dHVyZSAqLwo+ICAJW0lEX0FENzYwNV80
-XSA9IHsKPiBAQCAtNDY4LDkgKzUzNCwxMyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGFkNzYwNl9j
-aGlwX2luZm8gYWQ3NjA2X2NoaXBfaW5mb190YmxbXSA9IHsKPiAgCVtJRF9BRDc2MTZdID0gewo+
-ICAJCS5jaGFubmVscyA9IGFkNzYxNl9jaGFubmVscywKPiAgCQkubnVtX2NoYW5uZWxzID0gMTcs
-Cj4gKwkJLnN3X21vZGVfY29uZmlnID0gYWQ3NjE2X3N3X21vZGVfY29uZmlnLAo+ICAJCS5vdmVy
-c2FtcGxpbmdfYXZhaWwgPSBhZDc2MTZfb3ZlcnNhbXBsaW5nX2F2YWlsLAo+ICAJCS5vdmVyc2Ft
-cGxpbmdfbnVtID0gQVJSQVlfU0laRShhZDc2MTZfb3ZlcnNhbXBsaW5nX2F2YWlsKSwKPiAgCQku
-b3NfcmVxX3Jlc2V0ID0gdHJ1ZSwKPiArCQkuc3BpX3JkX3dyX2NtZCA9IGFkNzYxNl9zcGlfcmRf
-d3JfY21kLAo+ICsJCS53cml0ZV9zY2FsZV9zdyA9IGFkNzYxNl93cml0ZV9zY2FsZV9zdywKPiAr
-CQkud3JpdGVfb3Nfc3cgPSBhZDc2MTZfd3JpdGVfb3Nfc3csCj4gIAl9LAo+ICB9Owo+ICAKPiBA
-QCAtNjA0LDYgKzY3NCwyMyBAQCBzdGF0aWMgdm9pZCBhZDc2MDZfcmVndWxhdG9yX2Rpc2FibGUo
-dm9pZCAqZGF0YSkKPiAgCXJlZ3VsYXRvcl9kaXNhYmxlKHN0LT5yZWcpOwo+ICB9Cj4gIAo+ICtz
-dGF0aWMgaW50IGFkNzYxNl9zd19tb2RlX2NvbmZpZyhzdHJ1Y3QgaWlvX2RldiAqaW5kaW9fZGV2
-KQo+ICt7Cj4gKwlzdHJ1Y3QgYWQ3NjA2X3N0YXRlICpzdCA9IGlpb19wcml2KGluZGlvX2Rldik7
-Cj4gKwo+ICsJLyoKPiArCSAqIFNjYWxlIGNhbiBiZSBjb25maWd1cmVkIGluZGl2aWR1YWxseSBm
-b3IgZWFjaCBjaGFubmVsCj4gKwkgKiBpbiBzb2Z0d2FyZSBtb2RlLgo+ICsJICovCj4gKwlpbmRp
-b19kZXYtPmNoYW5uZWxzID0gYWQ3NjE2X3N3X2NoYW5uZWxzOwo+ICsKPiArCS8qIEFjdGl2YXRl
-IEJ1cnN0IG1vZGUgYW5kIFNFUUVOIE1PREUgKi8KPiArCXJldHVybiBhZDc2MDZfc3BpX3dyaXRl
-X21hc2soc3QsCj4gKwkJCSAgICAgIEFENzYxNl9DT05GSUdVUkFUSU9OX1JFR0lTVEVSLAo+ICsJ
-CQkgICAgICBBRDc2MTZfQlVSU1RfTU9ERSB8IEFENzYxNl9TRVFFTl9NT0RFLAo+ICsJCQkgICAg
-ICBBRDc2MTZfQlVSU1RfTU9ERSB8IEFENzYxNl9TRVFFTl9NT0RFKTsKPiArfQo+ICsKPiAgaW50
-IGFkNzYwNl9wcm9iZShzdHJ1Y3QgZGV2aWNlICpkZXYsIGludCBpcnEsIHZvaWQgX19pb21lbSAq
-YmFzZV9hZGRyZXNzLAo+ICAJCSBjb25zdCBjaGFyICpuYW1lLCB1bnNpZ25lZCBpbnQgaWQsCj4g
-IAkJIGNvbnN0IHN0cnVjdCBhZDc2MDZfYnVzX29wcyAqYm9wcykKPiBAQCAtNjc3LDYgKzc2NCwx
-MCBAQCBpbnQgYWQ3NjA2X3Byb2JlKHN0cnVjdCBkZXZpY2UgKmRldiwgaW50IGlycSwgdm9pZCBf
-X2lvbWVtICpiYXNlX2FkZHJlc3MsCj4gIAlpZiAocmV0KQo+ICAJCWRldl93YXJuKHN0LT5kZXYs
-ICJmYWlsZWQgdG8gUkVTRVQ6IG5vIFJFU0VUIEdQSU8gc3BlY2lmaWVkXG4iKTsKPiAgCj4gKwkv
-KiBBRDc2MTYgcmVxdWlyZXMgYWwgbGVhc3QgMTVtcyB0byByZWNvbmZpZ3VyZSBhZnRlciBhIHJl
-c2V0ICovCj4gKwlpZiAobXNsZWVwX2ludGVycnVwdGlibGUoMTUpKQo+ICsJCXJldHVybiAtRVJF
-U1RBUlRTWVM7Cj4gKwo+ICAJc3QtPndyaXRlX3NjYWxlID0gYWQ3NjA2X3dyaXRlX3NjYWxlX2h3
-Owo+ICAJc3QtPndyaXRlX29zID0gYWQ3NjA2X3dyaXRlX29zX2h3Owo+ICAKPiBAQCAtNjg1LDYg
-Kzc3NiwxMCBAQCBpbnQgYWQ3NjA2X3Byb2JlKHN0cnVjdCBkZXZpY2UgKmRldiwgaW50IGlycSwg
-dm9pZCBfX2lvbWVtICpiYXNlX2FkZHJlc3MsCj4gIAkJCQkJCQkgImFkaSxzdy1tb2RlIik7Cj4g
-IAo+ICAJaWYgKHN0LT5zd19tb2RlX2VuKSB7Cj4gKwkJLyogU2NhbGUgb2YgMC4wNzYyOTMgaXMg
-b25seSBhdmFpbGFibGUgaW4gc3cgbW9kZSAqLwo+ICsJCXN0LT5zY2FsZV9hdmFpbCA9IGFkNzYx
-Nl9zd19zY2FsZV9hdmFpbDsKPiArCQlzdC0+bnVtX3NjYWxlcyA9IEFSUkFZX1NJWkUoYWQ3NjE2
-X3N3X3NjYWxlX2F2YWlsKTsKPiArCj4gIAkJLyogQWZ0ZXIgcmVzZXQsIGluIHNvZnR3YXJlIG1v
-ZGUsIMKxMTAgViBpcyBzZXQgYnkgZGVmYXVsdCAqLwo+ICAJCW1lbXNldDMyKHN0LT5yYW5nZSwg
-MiwgQVJSQVlfU0laRShzdC0+cmFuZ2UpKTsKPiAgCQlpbmRpb19kZXYtPmluZm8gPSAmYWQ3NjA2
-X2luZm9fb3NfYW5kX3JhbmdlOwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5v
-cmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGlu
-Zm8vZHJpdmVyZGV2LWRldmVsCg==
+On Sat, 18 May 2019 11:04:49 +0100
+Jonathan Cameron <jic23@kernel.org> wrote:
+
+> On Thu, 16 May 2019 17:32:04 +0300
+> Beniamin Bia <beniamin.bia@analog.com> wrote:
+> 
+> > The device dependent options which are going to be different for devices
+> > which will be supported  in the future by this driver,
+> > were moved in chip info for a more generic driver. This patch allows
+> > supporting more devices by the driver. Also, it is an intermediate
+> > step of adding support for ad7616 in software mode.
+> > 
+> > Signed-off-by: Beniamin Bia <beniamin.bia@analog.com>  
+> Looks good to me.
+> 
+> Applied to the togreg branch of iio.git and pushed out as testing for
+> the autobuilders to play with it.
+
+Actually, as this only makes sense with the later patches, I'm going
+to back this out until those are ready.
+
+For reference though add
+Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+to v2. Thanks
+
+Jonathan
+
+> 
+> Thanks,
+> 
+> Jonathan
+> 
+> > ---
+> >  drivers/iio/adc/ad7606.c | 61 +++++++++++++++++++++++++++++-----------
+> >  drivers/iio/adc/ad7606.h | 15 +++++++++-
+> >  2 files changed, 58 insertions(+), 18 deletions(-)
+> > 
+> > diff --git a/drivers/iio/adc/ad7606.c b/drivers/iio/adc/ad7606.c
+> > index 24c70c3cefb4..c66ff22f32d2 100644
+> > --- a/drivers/iio/adc/ad7606.c
+> > +++ b/drivers/iio/adc/ad7606.c
+> > @@ -158,7 +158,7 @@ static int ad7606_read_raw(struct iio_dev *indio_dev,
+> >  		return IIO_VAL_INT;
+> >  	case IIO_CHAN_INFO_SCALE:
+> >  		*val = 0;
+> > -		*val2 = st->scale_avail[st->range];
+> > +		*val2 = st->scale_avail[st->range[0]];
+> >  		return IIO_VAL_INT_PLUS_MICRO;
+> >  	case IIO_CHAN_INFO_OVERSAMPLING_RATIO:
+> >  		*val = st->oversampling;
+> > @@ -194,6 +194,32 @@ static ssize_t in_voltage_scale_available_show(struct device *dev,
+> >  
+> >  static IIO_DEVICE_ATTR_RO(in_voltage_scale_available, 0);
+> >  
+> > +static int ad7606_write_scale_hw(struct iio_dev *indio_dev, int ch, int val)
+> > +{
+> > +	struct ad7606_state *st = iio_priv(indio_dev);
+> > +
+> > +	gpiod_set_value(st->gpio_range, val);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int ad7606_write_os_hw(struct iio_dev *indio_dev, int val)
+> > +{
+> > +	struct ad7606_state *st = iio_priv(indio_dev);
+> > +	DECLARE_BITMAP(values, 3);
+> > +
+> > +	values[0] = val;
+> > +
+> > +	gpiod_set_array_value(ARRAY_SIZE(values), st->gpio_os->desc,
+> > +			      st->gpio_os->info, values);
+> > +
+> > +	/* AD7616 requires a reset to update value */
+> > +	if (st->chip_info->os_req_reset)
+> > +		ad7606_reset(st);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> >  static int ad7606_write_raw(struct iio_dev *indio_dev,
+> >  			    struct iio_chan_spec const *chan,
+> >  			    int val,
+> > @@ -201,15 +227,18 @@ static int ad7606_write_raw(struct iio_dev *indio_dev,
+> >  			    long mask)
+> >  {
+> >  	struct ad7606_state *st = iio_priv(indio_dev);
+> > -	DECLARE_BITMAP(values, 3);
+> > -	int i;
+> > +	int i, ret, ch = 0;
+> >  
+> >  	switch (mask) {
+> >  	case IIO_CHAN_INFO_SCALE:
+> >  		mutex_lock(&st->lock);
+> >  		i = find_closest(val2, st->scale_avail, st->num_scales);
+> > -		gpiod_set_value(st->gpio_range, i);
+> > -		st->range = i;
+> > +		ret = st->write_scale(indio_dev, chan->address, i);
+> > +		if (ret < 0) {
+> > +			mutex_unlock(&st->lock);
+> > +			return ret;
+> > +		}
+> > +		st->range[ch] = i;
+> >  		mutex_unlock(&st->lock);
+> >  
+> >  		return 0;
+> > @@ -218,17 +247,12 @@ static int ad7606_write_raw(struct iio_dev *indio_dev,
+> >  			return -EINVAL;
+> >  		i = find_closest(val, st->oversampling_avail,
+> >  				 st->num_os_ratios);
+> > -
+> > -		values[0] = i;
+> > -
+> >  		mutex_lock(&st->lock);
+> > -		gpiod_set_array_value(ARRAY_SIZE(values), st->gpio_os->desc,
+> > -				      st->gpio_os->info, values);
+> > -
+> > -		/* AD7616 requires a reset to update value */
+> > -		if (st->chip_info->os_req_reset)
+> > -			ad7606_reset(st);
+> > -
+> > +		ret = st->write_os(indio_dev, i);
+> > +		if (ret < 0) {
+> > +			mutex_unlock(&st->lock);
+> > +			return ret;
+> > +		}
+> >  		st->oversampling = st->oversampling_avail[i];
+> >  		mutex_unlock(&st->lock);
+> >  
+> > @@ -536,7 +560,7 @@ int ad7606_probe(struct device *dev, int irq, void __iomem *base_address,
+> >  	st->bops = bops;
+> >  	st->base_address = base_address;
+> >  	/* tied to logic low, analog input range is +/- 5V */
+> > -	st->range = 0;
+> > +	st->range[0] = 0;
+> >  	st->oversampling = 1;
+> >  	st->scale_avail = ad7606_scale_avail;
+> >  	st->num_scales = ARRAY_SIZE(ad7606_scale_avail);
+> > @@ -589,6 +613,9 @@ int ad7606_probe(struct device *dev, int irq, void __iomem *base_address,
+> >  	if (ret)
+> >  		dev_warn(st->dev, "failed to RESET: no RESET GPIO specified\n");
+> >  
+> > +	st->write_scale = ad7606_write_scale_hw;
+> > +	st->write_os = ad7606_write_os_hw;
+> > +
+> >  	st->trig = devm_iio_trigger_alloc(dev, "%s-dev%d",
+> >  					  indio_dev->name, indio_dev->id);
+> >  	if (!st->trig)
+> > @@ -643,7 +670,7 @@ static int ad7606_resume(struct device *dev)
+> >  	struct ad7606_state *st = iio_priv(indio_dev);
+> >  
+> >  	if (st->gpio_standby) {
+> > -		gpiod_set_value(st->gpio_range, st->range);
+> > +		gpiod_set_value(st->gpio_range, st->range[0]);
+> >  		gpiod_set_value(st->gpio_standby, 1);
+> >  		ad7606_reset(st);
+> >  	}
+> > diff --git a/drivers/iio/adc/ad7606.h b/drivers/iio/adc/ad7606.h
+> > index f9ef52131e74..143c30163df9 100644
+> > --- a/drivers/iio/adc/ad7606.h
+> > +++ b/drivers/iio/adc/ad7606.h
+> > @@ -16,6 +16,12 @@
+> >   *			oversampling ratios.
+> >   * @oversampling_num	number of elements stored in oversampling_avail array
+> >   * @os_req_reset	some devices require a reset to update oversampling
+> > + * @write_scale_sw	pointer to the function which writes the scale via spi
+> > +			in software mode
+> > + * @write_os_sw		pointer to the function which writes the os via spi
+> > +			in software mode
+> > + * @sw_mode_config:	pointer to a function which configured the device
+> > + *			for software mode
+> >   */
+> >  struct ad7606_chip_info {
+> >  	const struct iio_chan_spec	*channels;
+> > @@ -23,6 +29,9 @@ struct ad7606_chip_info {
+> >  	const unsigned int		*oversampling_avail;
+> >  	unsigned int			oversampling_num;
+> >  	bool				os_req_reset;
+> > +	int (*write_scale_sw)(struct iio_dev *indio_dev, int ch, int val);
+> > +	int (*write_os_sw)(struct iio_dev *indio_dev, int val);
+> > +	int (*sw_mode_config)(struct iio_dev *indio_dev);
+> >  };
+> >  
+> >  /**
+> > @@ -39,6 +48,8 @@ struct ad7606_chip_info {
+> >   * @oversampling_avail	pointer to the array which stores the available
+> >   *			oversampling ratios.
+> >   * @num_os_ratios	number of elements stored in oversampling_avail array
+> > + * @write_scale		pointer to the function which writes the scale
+> > + * @write_os		pointer to the function which writes the os
+> >   * @lock		protect sensor state from concurrent accesses to GPIOs
+> >   * @gpio_convst	GPIO descriptor for conversion start signal (CONVST)
+> >   * @gpio_reset		GPIO descriptor for device hard-reset
+> > @@ -57,13 +68,15 @@ struct ad7606_state {
+> >  	const struct ad7606_chip_info	*chip_info;
+> >  	struct regulator		*reg;
+> >  	const struct ad7606_bus_ops	*bops;
+> > -	unsigned int			range;
+> > +	unsigned int			range[16];
+> >  	unsigned int			oversampling;
+> >  	void __iomem			*base_address;
+> >  	const unsigned int		*scale_avail;
+> >  	unsigned int			num_scales;
+> >  	const unsigned int		*oversampling_avail;
+> >  	unsigned int			num_os_ratios;
+> > +	int (*write_scale)(struct iio_dev *indio_dev, int ch, int val);
+> > +	int (*write_os)(struct iio_dev *indio_dev, int val);
+> >  
+> >  	struct mutex			lock; /* protect sensor state */
+> >  	struct gpio_desc		*gpio_convst;  
+> 
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
