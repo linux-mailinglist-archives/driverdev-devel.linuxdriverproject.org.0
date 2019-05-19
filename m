@@ -1,83 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AB3D522789
-	for <lists+driverdev-devel@lfdr.de>; Sun, 19 May 2019 19:12:39 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 130A5227B2
+	for <lists+driverdev-devel@lfdr.de>; Sun, 19 May 2019 19:27:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BCAF4858B8;
-	Sun, 19 May 2019 17:12:37 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1D1B787592;
+	Sun, 19 May 2019 17:27:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JL9VoryQunR6; Sun, 19 May 2019 17:12:37 +0000 (UTC)
+	with ESMTP id KrOl2wxEhJGo; Sun, 19 May 2019 17:27:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 24DEE857D1;
-	Sun, 19 May 2019 17:12:36 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3DD7D8753D;
+	Sun, 19 May 2019 17:27:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B2D001BF5A4
- for <devel@linuxdriverproject.org>; Sun, 19 May 2019 17:12:34 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B78841BF338
+ for <devel@linuxdriverproject.org>; Sun, 19 May 2019 17:27:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id AF7C021FA9
- for <devel@linuxdriverproject.org>; Sun, 19 May 2019 17:12:34 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B31F085CE2
+ for <devel@linuxdriverproject.org>; Sun, 19 May 2019 17:27:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DocA6+TiPfUo for <devel@linuxdriverproject.org>;
- Sun, 19 May 2019 17:12:34 +0000 (UTC)
+ with ESMTP id xJ56IVT3TTSA for <devel@linuxdriverproject.org>;
+ Sun, 19 May 2019 17:27:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
- [209.85.215.193])
- by silver.osuosl.org (Postfix) with ESMTPS id 38CD0207A6
- for <devel@driverdev.osuosl.org>; Sun, 19 May 2019 17:12:34 +0000 (UTC)
-Received: by mail-pg1-f193.google.com with SMTP id t187so5592954pgb.13
- for <devel@driverdev.osuosl.org>; Sun, 19 May 2019 10:12:34 -0700 (PDT)
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 2A9E7842F6
+ for <devel@driverdev.osuosl.org>; Sun, 19 May 2019 17:27:30 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id w22so5621336pgi.6
+ for <devel@driverdev.osuosl.org>; Sun, 19 May 2019 10:27:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=2aJVDwIx9CNCJgquAEUdJfowE2zu/TP85bAx23aqgcE=;
- b=aa1xhBGV+J6MUtB32Shj+5dPHvNdaqFAnSUVX2fFGJSKdL62Clq1dNrTbNuhBZxCOg
- 19a+Bbu50onEJQS/Vqmzcjl47CKbkJ8sj5jM/NPFw5mrhv942OOjwHDJE0QhP1w+6zZf
- mPIWoXmcpbXCTQGFBnrnE6wMgKkap7wymXycMEkT9WWwv+aAd4xBQ5BqDP5M9X3PTxfZ
- n79Uj7yFVO/tdfrDtb121GelXnybzzqQZ6A8l8rsbGa4JkeEa05RH+Ora5oMf8PYj/v8
- axxgVQHGFBrCp1dC/dtFDbgvYfOaoRkkFrVJafB3kxZJmllbPEAU5bWDyIazb8YJKv5j
- TlVQ==
+ :user-agent; bh=u2lVPbWCs/nw7GnzyUIhDMrqS7+oEodUC8PkBDuay7I=;
+ b=NRo/fDBPGQhDg7e7L2Cq6GJmTZKWrObVIfHPuz8uDY7bH2HMdU4ac3V54Skt3THW44
+ s3Wi/iPla03SRCoQSgwlufGjwYTJ3HuS4OosoGDRU9DHipd0AcgnLsFnxmJEFqnCpr7k
+ UCpjDiw3Nv6/j2dHEot66VQdym4BP6+UE80tUuJzaNSktSLcNnBE1ICS9cN2gUUGY9ls
+ zFoioWW/V4DNGGqjShx6Xo8cYcl/aecbJjC5XwnSPYg2Rc/IHc9cHN6lZajeF6uCxZkT
+ t81iT/AE86e06JJZR+5UFy6fSCUQ3IBrtqClC2Pee8HXuGjWi7Ign89F2G+xa5G3JduY
+ yKWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=2aJVDwIx9CNCJgquAEUdJfowE2zu/TP85bAx23aqgcE=;
- b=VPsf39aR82o48S8jnEDz+qpVBVGSV63nId/45w4Eb+G4QeKJTTXq/a+oYdHMU+gCQT
- 3PB8lvr5ShHW4QcCBXTONtUKuwG4e7OgOkPbnTczWvuhc/rkjpvyAb5ej3xlo2sJboIr
- Wpx30ae1/5H+mIuX3JEulCBboAgBFNscjWIrHARukxuiwr8NUnKN5ozS08y9eqOFAQKV
- 9rrfMN8rkpSaQuHzHOHqbz2M9uIMXNKcQnam+Jj1Ip1PTeGDqhOyqJ6dWO1q+sgRHmMp
- W8lKnnSiiHVHT8CLCp/JNKeZ00AjnNQWH4dUtzXimiqBLTvbwoz0zC8m5rjoEtsFO9E1
- LtCg==
-X-Gm-Message-State: APjAAAVUTElw2GD5jUWE0pia6/RGGQoHdLQJb3DLjdRh8c+RJZWVSa1b
- 84SHOYRe85Rxzsx+raobwU0=
-X-Google-Smtp-Source: APXvYqxsn5ZvQTyKQYV5eB5cw3Gz6/f1BFVE0KCPTTWYwjlRlpndUVeNuqyi3oOVshg2U+TQzzQflQ==
-X-Received: by 2002:aa7:9289:: with SMTP id j9mr30426595pfa.251.1558285953896; 
- Sun, 19 May 2019 10:12:33 -0700 (PDT)
+ bh=u2lVPbWCs/nw7GnzyUIhDMrqS7+oEodUC8PkBDuay7I=;
+ b=hLiuu84tu+eHVirW5rIJNsPxPMvsS8tYNqWUYRUvDCpGGwLPOh2THddi00b3dFRxTA
+ My9BKgS35eqUMTcoH6KPDOMJr+TGrbEtC5iK5sBALgE3AMRZdI8Sz4PQwtQrq+C0vZfa
+ 6SBAU/SPFM1qZSf2lfj9De9MoHhVz8sDbhYUREQgpH177xU6HSyFLCEDd36s/vgnK5py
+ 7VgpwqVu7+0e74UWQ3K5c/3nXcAu83qA+e+bl89UNxSSGIHCrH8ugaZKtSK7fq11IX9o
+ Cf1LaD+0fah9J+QGilSFQ3WGSArVUETZwZ1zQ9D3Ab/16+k0Oei8ZIapBz7lGFb4sw98
+ /Raw==
+X-Gm-Message-State: APjAAAWoo49nWhp/Jg2ehdHoxGYnhl49rsF5t8JtoU1vIioCPfPqNIZ+
+ o9GKPqgNdzRV0vuV4dSCsjw=
+X-Google-Smtp-Source: APXvYqy95PTGfppcoksREPaceYCdDH/7TXPCeJ3K9hlWWD5C+YgPSFmlUTIpVtSRCKW5b51Rx2oS9A==
+X-Received: by 2002:a63:2260:: with SMTP id t32mr32743695pgm.222.1558286849851; 
+ Sun, 19 May 2019 10:27:29 -0700 (PDT)
 Received: from hari-Inspiron-1545 ([183.83.92.73])
- by smtp.gmail.com with ESMTPSA id c76sm28951727pfc.43.2019.05.19.10.12.30
+ by smtp.gmail.com with ESMTPSA id o20sm18727736pgj.70.2019.05.19.10.27.27
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sun, 19 May 2019 10:12:33 -0700 (PDT)
-Date: Sun, 19 May 2019 22:42:27 +0530
+ Sun, 19 May 2019 10:27:29 -0700 (PDT)
+Date: Sun, 19 May 2019 22:57:24 +0530
 From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Emanuel Bennici <benniciemanuel78@gmail.com>,
- Vatsala Narang <vatsalanarang@gmail.com>,
- Nishka Dasgupta <nishka.dasgupta@yahoo.com>,
- Young Xiao <YangX92@hotmail.com>, Aymen Qader <qader.aymen@gmail.com>,
- Henriette Hofmeier <passt@h-hofmeier.de>,
- Hardik Singh Rathore <hardiksingh.k@gmail.com>,
- Madhumitha Prabakaran <madhumithabiw@gmail.com>,
- Michael Straube <straube.linux@gmail.com>,
+ Hariprasad Kelam <hariprasad.kelam@gmail.com>,
+ Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>,
  devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: rtl8723bs: core: rtw_mlme_ext: fix warning Unneeded
- variable: "ret"
-Message-ID: <20190519171227.GA8089@hari-Inspiron-1545>
+Subject: [Patch v2] staging: rtl8723bs: hal: odm_HWConfig: odm_HWConfig:
+ Unneeded variable: "result". Return "HAL_STATUS_SUCCESS"
+Message-ID: <20190519172723.GA9329@hari-Inspiron-1545>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.5.24 (2015-08-30)
@@ -100,54 +94,39 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 This patch fixes below warnings reported by coccicheck
 
-drivers/staging/rtl8723bs/core/rtw_mlme_ext.c:1888:14-17: Unneeded
-variable: "ret". Return "_FAIL" on line 1920
-drivers/staging/rtl8723bs/core/rtw_mlme_ext.c:466:5-8: Unneeded
-variable: "res". Return "_SUCCESS" on line 494
+drivers/staging/rtl8723bs/hal/odm_HWConfig.c:501:4-10: Unneeded
+variable: "result". Return "HAL_STATUS_SUCCESS" on line 526
 
 Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+-----
+Changes in v2:
+  - fixed typo in commit message
 ---
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index d110d45..6a2eb66 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -463,7 +463,6 @@ static u8 init_channel_set(struct adapter *padapter, u8 ChannelPlan, RT_CHANNEL_
+---
+ drivers/staging/rtl8723bs/hal/odm_HWConfig.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/drivers/staging/rtl8723bs/hal/odm_HWConfig.c b/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
+index d802a1f..4711c65 100644
+--- a/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
++++ b/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
+@@ -498,8 +498,6 @@ HAL_STATUS ODM_ConfigBBWithHeaderFile(
  
- int	init_mlme_ext_priv(struct adapter *padapter)
+ HAL_STATUS ODM_ConfigMACWithHeaderFile(PDM_ODM_T pDM_Odm)
  {
--	int	res = _SUCCESS;
- 	struct registry_priv *pregistrypriv = &padapter->registrypriv;
- 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
- 	struct mlme_priv *pmlmepriv = &(padapter->mlmepriv);
-@@ -491,7 +490,7 @@ int	init_mlme_ext_priv(struct adapter *padapter)
- 	pmlmeext->fixed_chan = 0xFF;
- #endif
+-	u8 result = HAL_STATUS_SUCCESS;
+-
+ 	ODM_RT_TRACE(
+ 		pDM_Odm,
+ 		ODM_COMP_INIT,
+@@ -523,5 +521,5 @@ HAL_STATUS ODM_ConfigMACWithHeaderFile(PDM_ODM_T pDM_Odm)
  
--	return res;
-+	return _SUCCESS;
+ 	READ_AND_CONFIG(8723B, _MAC_REG);
  
+-	return result;
++	return HAL_STATUS_SUCCESS;
  }
- 
-@@ -1885,7 +1884,6 @@ unsigned int OnAtim(struct adapter *padapter, union recv_frame *precv_frame)
- 
- unsigned int on_action_spct(struct adapter *padapter, union recv_frame *precv_frame)
- {
--	unsigned int ret = _FAIL;
- 	struct sta_info *psta = NULL;
- 	struct sta_priv *pstapriv = &padapter->stapriv;
- 	u8 *pframe = precv_frame->u.hdr.rx_data;
-@@ -1917,7 +1915,7 @@ unsigned int on_action_spct(struct adapter *padapter, union recv_frame *precv_fr
- 	}
- 
- exit:
--	return ret;
-+	return _FAIL;
- }
- 
- unsigned int OnAction_back(struct adapter *padapter, union recv_frame *precv_frame)
 -- 
 2.7.4
 
