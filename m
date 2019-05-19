@@ -1,76 +1,86 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1501E22687
-	for <lists+driverdev-devel@lfdr.de>; Sun, 19 May 2019 11:50:56 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B2C822692
+	for <lists+driverdev-devel@lfdr.de>; Sun, 19 May 2019 12:11:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6936C865D3;
-	Sun, 19 May 2019 09:50:54 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 70F54857B0;
+	Sun, 19 May 2019 10:11:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uwzN+Bfnt-Qt; Sun, 19 May 2019 09:50:53 +0000 (UTC)
+	with ESMTP id YgKg9OUPTlcY; Sun, 19 May 2019 10:11:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EDA1285DA0;
-	Sun, 19 May 2019 09:50:52 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 091DE857C5;
+	Sun, 19 May 2019 10:11:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 361251BF238
- for <devel@linuxdriverproject.org>; Sun, 19 May 2019 09:50:51 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 831F31BF2EB
+ for <devel@linuxdriverproject.org>; Sun, 19 May 2019 10:11:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3237486005
- for <devel@linuxdriverproject.org>; Sun, 19 May 2019 09:50:51 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7BA92857A4
+ for <devel@linuxdriverproject.org>; Sun, 19 May 2019 10:11:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8-5kcJknmfZ3 for <devel@linuxdriverproject.org>;
- Sun, 19 May 2019 09:50:49 +0000 (UTC)
+ with ESMTP id kcessZ4364aq for <devel@linuxdriverproject.org>;
+ Sun, 19 May 2019 10:11:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic311-23.consmr.mail.gq1.yahoo.com
- (sonic311-23.consmr.mail.gq1.yahoo.com [98.137.65.204])
- by whitealder.osuosl.org (Postfix) with ESMTPS id C30E385DA0
- for <devel@driverdev.osuosl.org>; Sun, 19 May 2019 09:50:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aol.com; s=a2048;
- t=1558259449; bh=uOB1p/mp8q6x2hlmQ4GnENeFke59y23UCzRnpXW2yKA=;
- h=Subject:To:References:Cc:From:Date:In-Reply-To:From:Subject;
- b=KegmFs1c3EXfPugzTcdCmS2T4W30ic5SO9squz3FfnuKml4bz2V9v1vp5dOBjDz/K5cEwLntCnzjyf+hcAn/XAxSwfxDZ37+dFQKNnyyoH7nyQcH5oes3woZcer/94EVjrUv6jhksqJZ3YAtA+pwfrSEzVFm7ekRm0/92lbTmzsOZzgTjDK9uSw++MEuwiiHAoM8J1nrlY8HcEEpjz8Jbvz+s7sedud7ull+DYgFUQUs0Dy91PlsvHDn1FjUeVYLXjcPauoTygnwMmLy4GtT/NOEiFW+MrPeqVDYF1PJg75qHkS+IopIm79CLytCboq6kbO2YIdO4uSBce7MnxFe2g==
-X-YMail-OSG: NL2pl8sVM1n9O.PngIHGRrO0E08jMfeawv4qhea1D5ZhZ4_g0WRNIpl25H3ngzF
- _X5tOjifiO5tIZ1.Z0z7WfLNotmEKuNk7QFUzKxuZ7m9r94jAcLouzYgCEtqwaqkpPPIji5yHKwm
- 5tjRY3b8urWoJa4bmg8rivIXhsicQ0cLjBaGvn5i.3B_BlywTiytmw1M4h_2S_Jn8XB.fyqEnCbR
- tdLw2O.nJWIbx.nysdvdhElR79K5TC5DC95syrYTEFkcijWWjNOFkK9HMxJ0PQGT0tDZkngwNjFs
- RHtmQU_QQWwZCXLYkc7DJPeqyfZCRc.G8ZKB4Wm8Zt.aHxeregCkm3YM_JVl9rfQsjfAIFp1m2zV
- 5tPTrWLjXm6rTzz0pVWbUDaXOc2msQFAglBiyOltyu.pc091RQtTQueATmX6AGfLb8Wy04CKCiQE
- 5vmELBFTjN9bIc3RafOKIyXg9TMT4SxxdupYykrCb74e39.Dfmo7Vymzv2E4hnupJsNwphRIOqcU
- ev_66FxNEd5RApTKeaBi1ZwEnXQL_6fWpFx5jAr80K2sULwGaD5aCiaPLpZhgfE3Yq1Idz5_oj2h
- U5xi.DBfnAX.MMN3S5VWXvdomAJLQS83gRqwAVpHBFzs8Fk.nRi8ET7dhKZTwLfM2xi8kgIHeh1b
- W27Te0__8CdMQykZtzXx0YqIbz6EndqIl9aXKFztBshNmHt4yAIIAbIQ0faDvl4bsoGEBG4QK7fc
- XFgbYw.DGf_bo7VLu7ufb8UV4Ic6eW7SNgjpfDV9b6gZ8qaCCRO4obnMAnnirZRjRBMTDduFROJO
- qBeG89_7MopaWnV5PkZ3AGmEo4KuiFJUabKBCCCf_xLW.ZwL4nysOnh_2JKj7Ok5LCPmy0kyVUa1
- yFD6V9g55UXkcqmUMBhNN9d4GggYi0wxrQqLnATSNV_aFVuMRV8G_vyXKDLSvEMjp4OjNDgMCMQE
- QzRO2hMU0EQ1tKIh3LcwtsZtNQr0SG62WLTkJ8QyDI4SPOMsTmU0SuUejXHoSB1tXnAn0dw.LvKt
- 9C4H.J7Skv4fuHGXHsmthgodNcHnNibyJQsNGlAIxZwS3GJ4Jf3P9WLa2FXu2.SpiIcXDFpWXma9
- aXQNz2QpcEedzDHp28XKdCjjn0suz8Mi7NAVm1jGlw6H.3wjNg0ZdQPzxbapggsW5d2.cfU92QQZ
- Lr1Q8h7.xlrV36UPaXsWW6YN3cKD9ovMeQqI8LXIosY_MDVgspkA-
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic311.consmr.mail.gq1.yahoo.com with HTTP; Sun, 19 May 2019 09:50:49 +0000
-Received: from 183.156.112.94 (EHLO [192.168.199.101]) ([183.156.112.94])
- by smtp404.mail.gq1.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID
- e3bef9504fad3174dbb676844f94f803; 
- Sun, 19 May 2019 09:50:48 +0000 (UTC)
+Received: from mail-pl1-f193.google.com (mail-pl1-f193.google.com
+ [209.85.214.193])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 4886283EF8
+ for <devel@driverdev.osuosl.org>; Sun, 19 May 2019 10:11:39 +0000 (UTC)
+Received: by mail-pl1-f193.google.com with SMTP id f12so5350362plt.8
+ for <devel@driverdev.osuosl.org>; Sun, 19 May 2019 03:11:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to
+ :user-agent; bh=3nXBmIh7/vFkJ4Tm2l4dtTScuooDKNvEF1jpFXfvwsc=;
+ b=prPrOvv+nXzlq37dw9S0qdmegNQMY9mMQmGxVdosiPQlKvmQHZwzyNNaISmaHYISPL
+ X+MnJT//NcQ21npBKca3WpAApauj41TAIoPfE8Yn1PKHUg9dRm+3twylCz1VcUhpj9AY
+ TcBLFLBaEYI9qMBT/BXar0olvQLimM1sWud1T1/GfOO13CqMdqbUwAOF6akeVMHvShBG
+ 389EvyUF/W8ChWuTLWfKobvsEmxcppXOOvx5AbluLHXBrSxVUDsPtbnSGtuNc47AipJP
+ LrRYAfePFA7lz8yV6lvkrbyhb38/XY3u7Pi4ItdkOP+VRZUORZzNtLVvNvBwQHUVJgbK
+ jkPQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to:user-agent;
+ bh=3nXBmIh7/vFkJ4Tm2l4dtTScuooDKNvEF1jpFXfvwsc=;
+ b=nhJQ/LenHiBUXQtR9XF9quQJnfleIK34AIm4sYPVPfFllaxakBelbsiBj410S6ueoc
+ OIKY/PQalNFtPDVG1Aukk+JEWrSWplUFy2ovBNPyUB89JELDHP1Mdg2vin+fM5wUsxz9
+ J/0FsXcDO/e5NqJjrUd2/A6xm9rHTNPOzFh0Ax86CrZpCFsgxp+1sRUG1JApqzXgWaLp
+ Wy75JgG8aI3eym/dAK3fXc6fPekd883lNBdMcoU9zy2juON4hxuM18bd7A71tnmbC0Ws
+ uWvOyLJc2YIYWm4u2o1kuIdfA3gnGY8/moYcdK69CNAwQYelEsh6skoke6eux6/iaSZq
+ ulcA==
+X-Gm-Message-State: APjAAAUy5vgV0tdKl9U77QS8sXP+CmgxwVwcfwovr0ntpgq0ZSWzPYay
+ emFuymRq5oLDCwoBy8h60tI=
+X-Google-Smtp-Source: APXvYqxWU8wpTJXHBJp+Rkhz1pg1a0Wph4MXE9asWBt0UGUSJ69BeobNf1W2Emh5hysyAcKSb/AXeQ==
+X-Received: by 2002:a17:902:204:: with SMTP id 4mr17066355plc.21.1558260698892; 
+ Sun, 19 May 2019 03:11:38 -0700 (PDT)
+Received: from hari-Inspiron-1545 ([183.83.92.73])
+ by smtp.gmail.com with ESMTPSA id c17sm9740268pfo.114.2019.05.19.03.11.35
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Sun, 19 May 2019 03:11:38 -0700 (PDT)
+Date: Sun, 19 May 2019 15:41:32 +0530
+From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+To: Gao Xiang <hsiangkao@aol.com>, Gao Xiang <gaoxiang25@huawei.com>,
+ Chao Yu <yuchao0@huawei.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-erofs@lists.ozlabs.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
 Subject: Re: [Patch v2] staging: erofs: fix Warning Use BUG_ON instead of if
  condition followed by BUG
-To: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+Message-ID: <20190519101132.GA22620@hari-Inspiron-1545>
 References: <20190519093440.GA16838@hari-Inspiron-1545>
-From: Gao Xiang <hsiangkao@aol.com>
-Message-ID: <b32e6bca-60ec-2004-f1d6-16d2b8a478ae@aol.com>
-Date: Sun, 19 May 2019 17:50:40 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+ <b32e6bca-60ec-2004-f1d6-16d2b8a478ae@aol.com>
 MIME-Version: 1.0
-In-Reply-To: <20190519093440.GA16838@hari-Inspiron-1545>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <b32e6bca-60ec-2004-f1d6-16d2b8a478ae@aol.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,34 +93,35 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Chao Yu <yuchao0@huawei.com>, linux-kernel@vger.kernel.org,
- linux-erofs@lists.ozlabs.org
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-CgpPbiAyMDE5LzUvMTkg5LiL5Y2INTozNCwgSGFyaXByYXNhZCBLZWxhbSB3cm90ZToKPiBmaXgg
-YmVsb3cgd2FybmluZyByZXBvcnRlZCBieSAgY29jY2ljaGVjawo+IAo+IGRyaXZlcnMvc3RhZ2lu
-Zy9lcm9mcy91bnppcF9wYWdldmVjLmg6NzQ6Mi01OiBXQVJOSU5HOiBVc2UgQlVHX09OCj4gaW5z
-dGVhZCBvZiBpZiBjb25kaXRpb24gZm9sbG93ZWQgYnkgQlVHLgo+IAo+IFNpZ25lZC1vZmYtYnk6
-IEhhcmlwcmFzYWQgS2VsYW0gPGhhcmlwcmFzYWQua2VsYW1AZ21haWwuY29tPgo+IC0tLS0tCj4g
-Q2hhbmdlcyBpbiB2MjoKPiAgIC0gcmVwbGFjZSBCVUdfT04gd2l0aCAgREJHX0JVR09OCj4gLS0t
-LS0KPiAtLS0KPiAgZHJpdmVycy9zdGFnaW5nL2Vyb2ZzL3VuemlwX3BhZ2V2ZWMuaCB8IDMgKy0t
-Cj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMiBkZWxldGlvbnMoLSkKPiAKPiBk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL2Vyb2ZzL3VuemlwX3BhZ2V2ZWMuaCBiL2RyaXZl
-cnMvc3RhZ2luZy9lcm9mcy91bnppcF9wYWdldmVjLmgKPiBpbmRleCBmMzdkOGZkLi43OTM4ZWUz
-IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy9lcm9mcy91bnppcF9wYWdldmVjLmgKPiAr
-KysgYi9kcml2ZXJzL3N0YWdpbmcvZXJvZnMvdW56aXBfcGFnZXZlYy5oCj4gQEAgLTcwLDggKzcw
-LDcgQEAgel9lcm9mc19wYWdldmVjX2N0b3JfbmV4dF9wYWdlKHN0cnVjdCB6X2Vyb2ZzX3BhZ2V2
-ZWNfY3RvciAqY3RvciwKPiAgCQkJcmV0dXJuIHRhZ3B0cl91bmZvbGRfcHRyKHQpOwo+ICAJfQo+
-ICAKCkknZCBsaWtlIHRvIGRlbGV0ZSB0aGlzIGxpbmUKCj4gLQlpZiAodW5saWtlbHkobnIgPj0g
-Y3Rvci0+bnIpKQo+IC0JCUJVRygpOwo+ICsJREJHX0JVR09OKG5yID49IGN0b3ItPm5yKTsKPiAg
-CgphbmQgdGhpcyBsaW5lLi4gSSBoYXZlIGFscmVhZHkgc2VudCBhIG5ldyBwYXRjaCBiYXNlZCBv
-biB5b3VyIHYxIHBhdGNoLApjb3VsZCB5b3UgcGxlYXNlIGNoZWNrIGl0IG91dCBpZiBpdCBpcyBh
-Y2NlcHRhYmxlIGZvciB5b3U/IDopCgpUaGFua3MsCkdhbyBYaWFuZwoKPiAgCXJldHVybiBOVUxM
-Owo+ICB9Cj4gCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9k
-cml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRl
-di1kZXZlbAo=
+T24gU3VuLCBNYXkgMTksIDIwMTkgYXQgMDU6NTA6NDBQTSArMDgwMCwgR2FvIFhpYW5nIHdyb3Rl
+Ogo+IAo+IAo+IE9uIDIwMTkvNS8xOSDkuIvljYg1OjM0LCBIYXJpcHJhc2FkIEtlbGFtIHdyb3Rl
+Ogo+ID4gZml4IGJlbG93IHdhcm5pbmcgcmVwb3J0ZWQgYnkgIGNvY2NpY2hlY2sKPiA+IAo+ID4g
+ZHJpdmVycy9zdGFnaW5nL2Vyb2ZzL3VuemlwX3BhZ2V2ZWMuaDo3NDoyLTU6IFdBUk5JTkc6IFVz
+ZSBCVUdfT04KPiA+IGluc3RlYWQgb2YgaWYgY29uZGl0aW9uIGZvbGxvd2VkIGJ5IEJVRy4KPiA+
+IAo+ID4gU2lnbmVkLW9mZi1ieTogSGFyaXByYXNhZCBLZWxhbSA8aGFyaXByYXNhZC5rZWxhbUBn
+bWFpbC5jb20+Cj4gPiAtLS0tLQo+ID4gQ2hhbmdlcyBpbiB2MjoKPiA+ICAgLSByZXBsYWNlIEJV
+R19PTiB3aXRoICBEQkdfQlVHT04KPiA+IC0tLS0tCj4gPiAtLS0KPiA+ICBkcml2ZXJzL3N0YWdp
+bmcvZXJvZnMvdW56aXBfcGFnZXZlYy5oIHwgMyArLS0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgMSBp
+bnNlcnRpb24oKyksIDIgZGVsZXRpb25zKC0pCj4gPiAKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJz
+L3N0YWdpbmcvZXJvZnMvdW56aXBfcGFnZXZlYy5oIGIvZHJpdmVycy9zdGFnaW5nL2Vyb2ZzL3Vu
+emlwX3BhZ2V2ZWMuaAo+ID4gaW5kZXggZjM3ZDhmZC4uNzkzOGVlMyAxMDA2NDQKPiA+IC0tLSBh
+L2RyaXZlcnMvc3RhZ2luZy9lcm9mcy91bnppcF9wYWdldmVjLmgKPiA+ICsrKyBiL2RyaXZlcnMv
+c3RhZ2luZy9lcm9mcy91bnppcF9wYWdldmVjLmgKPiA+IEBAIC03MCw4ICs3MCw3IEBAIHpfZXJv
+ZnNfcGFnZXZlY19jdG9yX25leHRfcGFnZShzdHJ1Y3Qgel9lcm9mc19wYWdldmVjX2N0b3IgKmN0
+b3IsCj4gPiAgCQkJcmV0dXJuIHRhZ3B0cl91bmZvbGRfcHRyKHQpOwo+ID4gIAl9Cj4gPiAgCj4g
+Cj4gSSdkIGxpa2UgdG8gZGVsZXRlIHRoaXMgbGluZQo+IAo+ID4gLQlpZiAodW5saWtlbHkobnIg
+Pj0gY3Rvci0+bnIpKQo+ID4gLQkJQlVHKCk7Cj4gPiArCURCR19CVUdPTihuciA+PSBjdG9yLT5u
+cik7Cj4gPiAgCj4gCj4gYW5kIHRoaXMgbGluZS4uIEkgaGF2ZSBhbHJlYWR5IHNlbnQgYSBuZXcg
+cGF0Y2ggYmFzZWQgb24geW91ciB2MSBwYXRjaCwKPiBjb3VsZCB5b3UgcGxlYXNlIGNoZWNrIGl0
+IG91dCBpZiBpdCBpcyBhY2NlcHRhYmxlIGZvciB5b3U/IDopCj4gCj4gVGhhbmtzLAo+IEdhbyBY
+aWFuZwoKSGkgR2FpIFhpYW5nLAoKVGhlIHBhdGNoIHdoaWNoIHlvdSBzZW50IGhhcyBhbGwgcmVx
+dWlyZWQuIApUaGFua3MgZm9yIHRoZSAgcGF0Y2guIFdlIGNhbiBpZ25vcmUgdGhpcyB2MiBwYXRj
+aC4KClRoYW5rcywKSGFyaXByYXNhZCBrCgoKCj4gPiAgCXJldHVybiBOVUxMOwo+ID4gIH0KPiA+
+IApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBt
+YWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2
+LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
