@@ -1,57 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 05A53226B1
-	for <lists+driverdev-devel@lfdr.de>; Sun, 19 May 2019 13:00:51 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A41F7226B5
+	for <lists+driverdev-devel@lfdr.de>; Sun, 19 May 2019 13:03:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9FB7B85B80;
-	Sun, 19 May 2019 11:00:48 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B8A22861AB;
+	Sun, 19 May 2019 11:02:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dOUIGwppZ9zZ; Sun, 19 May 2019 11:00:47 +0000 (UTC)
+	with ESMTP id O3GqaItAITRs; Sun, 19 May 2019 11:02:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 506FD857C5;
-	Sun, 19 May 2019 11:00:46 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5485F86180;
+	Sun, 19 May 2019 11:02:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 312791BF2EB
- for <devel@linuxdriverproject.org>; Sun, 19 May 2019 11:00:42 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A94C41BF2EB
+ for <devel@linuxdriverproject.org>; Sun, 19 May 2019 11:02:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 2C26B228A0
- for <devel@linuxdriverproject.org>; Sun, 19 May 2019 11:00:42 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A52DE22636
+ for <devel@linuxdriverproject.org>; Sun, 19 May 2019 11:02:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XNqrb8ajzL0Z for <devel@linuxdriverproject.org>;
- Sun, 19 May 2019 11:00:41 +0000 (UTC)
+ with ESMTP id 1G-lIGcaiDmg for <devel@linuxdriverproject.org>;
+ Sun, 19 May 2019 11:02:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id BDE0022610
- for <devel@driverdev.osuosl.org>; Sun, 19 May 2019 11:00:35 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 2CE8222122
+ for <devel@driverdev.osuosl.org>; Sun, 19 May 2019 11:02:55 +0000 (UTC)
 Received: from archlinux (cpc91196-cmbg18-2-0-cust659.5-4.cable.virginm.net
  [81.96.234.148])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id C32E521743;
- Sun, 19 May 2019 11:00:32 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 28C9E2177B;
+ Sun, 19 May 2019 11:02:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1558263634;
- bh=N2AfJUm5S/n9kNq0ukcJ2NfhgtOc6Fh2mApK13sY1b0=;
+ s=default; t=1558263775;
+ bh=mBpAhk//8WvsbTtXPi/GRsgbj/yowPAq5t4mJK5gccY=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=SfbqQ7URvAiUBaaGq9YorAgNZZLsiTxuY5c9iLHuYslS1D7htpDvUt3W57XB0XUoH
- 0zjJ5/Zn7wODiPbFk+6Y6AZPCjsSKyhLMq0tDxtQQqeAEL7ooS1e4Q1o+OeXJ63eH3
- dODoRh9i8LZw9gAe42T6vDok5ihEq3zYXmkwhELo=
-Date: Sun, 19 May 2019 12:00:29 +0100
+ b=pYZptuxyzCXeqdm4KC3jNE70+82Jk/nhhiTgXH5L3lozFHn2Bt2SRB5qrN7GITWoX
+ 53y8XAbO4rR2LQGiNSswervuiIzCkuzDTVpR6En2/W6ZddHlODiPc3/sGaLzFj04i5
+ JvRvo6cyOt1Us/mBYWwqQN4zNOJNQHySnd00HXvw=
+Date: Sun, 19 May 2019 12:02:50 +0100
 From: Jonathan Cameron <jic23@kernel.org>
-To: Lucas Oshiro <lucasseikioshiro@gmail.com>
-Subject: Re: [PATCH v2] staging: iio: adis16240: add device to module device
- table
-Message-ID: <20190519120029.1da8f41c@archlinux>
-In-Reply-To: <20190518214434.23660-1-lucasseikioshiro@gmail.com>
-References: <20190518214434.23660-1-lucasseikioshiro@gmail.com>
+To: =?UTF-8?B?Sm/Do28=?= Seckler <joaoseckler@gmail.com>
+Subject: Re: [PATCH] staging: iio: ad7746: add device tree support
+Message-ID: <20190519120250.4644c255@archlinux>
+In-Reply-To: <20190518222733.2ttcgvy7fct4awra@smtp.gmail.com>
+References: <20190518222733.2ttcgvy7fct4awra@smtp.gmail.com>
 X-Mailer: Claws Mail 3.17.3 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -70,80 +69,40 @@ Cc: devel@driverdev.osuosl.org, Lars-Peter Clausen <lars@metafoo.de>,
  Stefan Popa <stefan.popa@analog.com>,
  Michael Hennerich <Michael.Hennerich@analog.com>, linux-iio@vger.kernel.org,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Rodrigo Ribeiro <rodrigorsdc@gmail.com>, kernel-usp@googlegroups.com,
  Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Hartmut Knaack <knaack.h@gmx.de>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, 18 May 2019 18:44:34 -0300
-Lucas Oshiro <lucasseikioshiro@gmail.com> wrote:
-
-> Add a of_device_id struct and MODULE_DEVICE_TABLE call, in order to add
-> device-tree support for this driver.
-> 
-> Signed-off-by: Lucas Oshiro <lucasseikioshiro@gmail.com>
-> Signed-off-by: Rodrigo Ribeiro <rodrigorsdc@gmail.com>
-> Co-developed-by: Rodrigo Ribeiro <rodrigorsdc@gmail.com>
-
-Hi Lucas, Rodrigo,
-
-The description isn't 100% accurate but it's close enough.
-Ever since devicetree was introduced, there has been a fallback mode for
-i2c and spi devices in which, in the absence of either a devicetree match table
-or an ACPI one, an attempt is made to match against the older i2c_device_id
-table entries.
-
-So it'll 'work' for devicetree bindings without this patch, but by a less
-controlled route and one that doesn't allow for the possibility of
-multiple manufacturers using the same part number.
-
-Hence these are good changes to make.  Simplifying the description to enabling
-devicetree probing is fine though.
-
-Under drivers/spi.c, devices probed via a device tree binding use:
-of_register_spi_device (applied to all children of an spi bus, so the slave
-devices).  This calls of_modalias_node which performs a copy of the
-compatible without the manufacturer ID into the modalias field.
-Later, spi_match_device is called, which first attempts
-of_driver_match_device which I think does the precise match.
-
-If that fails, it tries ACPI, and failing that it falls back to matching
-the modalias against the id_table entries.   Thus it can still
-work without these entries but they do make it simpler and more consistent.
-
-Applied to the togreg branch of iio.git and pushed out as testing
-for the autobuilders to play with it.
-
-Thanks,
-
-Jonathan
-
-
-> ---
->  drivers/staging/iio/accel/adis16240.c | 6 ++++++
->  1 file changed, 6 insertions(+)
-> 
-> diff --git a/drivers/staging/iio/accel/adis16240.c b/drivers/staging/iio/accel/adis16240.c
-> index b80e0d248b0f..8c6d23604eca 100644
-> --- a/drivers/staging/iio/accel/adis16240.c
-> +++ b/drivers/staging/iio/accel/adis16240.c
-> @@ -435,6 +435,12 @@ static int adis16240_remove(struct spi_device *spi)
->  	return 0;
->  }
->  
-> +static const struct of_device_id adis16240_of_match[] = {
-> +	{ .compatible = "adi,adis16240" },
-> +	{ },
-> +};
-> +MODULE_DEVICE_TABLE(of, adis16240_of_match);
-> +
->  static struct spi_driver adis16240_driver = {
->  	.driver = {
->  		.name = "adis16240",
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gU2F0LCAxOCBNYXkgMjAxOSAxOToyNzozMyAtMDMwMApKb8OjbyBTZWNrbGVyIDxqb2Fvc2Vj
+a2xlckBnbWFpbC5jb20+IHdyb3RlOgoKPiBBZGQgYSBvZl9kZXZpY2VfaWQgc3RydWN0IHZhcmlh
+YmxlIGFuZCBzdWJzZXF1ZW50IGNhbGwgdG8KPiBNT0RVTEVfREVWSUNFX1RBQkxFIG1hY3JvIHRv
+IHN1cHBvcnQgZGV2aWNlIHRyZWUuCj4gCj4gU2lnbmVkLW9mZi1ieTogSm/Do28gU2Vja2xlciA8
+am9hb3NlY2tsZXJAZ21haWwuY29tPgo+IFNpZ25lZC1vZmYtYnk6IEx1Y2FzIE9zaGlybyA8bHVj
+YXNzZWlraW9zaGlyb0BnbWFpbC5jb20+Cj4gQ28tZGV2ZWxvcGVkLWJ5OiBMdWNhcyBPc2hpcm8g
+PGx1Y2Fzc2Vpa2lvc2hpcm9AZ21haWwuY29tPgpBcHBsaWVkIHRvIHRoZSB0b2dyZWcgYnJhbmNo
+IG9mIGlpby5naXQgYW5kIHB1c2hlZCBvdXQgYXMgdGVzdGluZwpmb3IgdGhlIGF1dG9idWlsZGVy
+cyB0byBwbGF5IHdpdGggaXQuCgpGb3IgYSBmdXR1cmUgaW1wcm92ZW1lbnQsIHRyeSB0byBleHBs
+YWluIHRoZSAnd2h5JyByYXRoZXIgdGhhbgond2hhdCcgb2YgYSBwYXRjaCBpbiB0aGUgZGVzY3Jp
+cHRpb24uICAgVGhpcyBwYXJ0aWN1bGFyIGNoYW5nZQppcyBzbyBjb21tb24gSSBkb24ndCBtaW5k
+IHRoYXQgbXVjaCwgYnV0IGl0IGlzIGEgZ29vZCBoYWJpdCB0bwpnZXQgaW50byEKClRoYW5rcywK
+CkpvbmF0aGFuCj4gLS0tCj4gIGRyaXZlcnMvc3RhZ2luZy9paW8vY2RjL2FkNzc0Ni5jIHwgMTAg
+KysrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgMTAgaW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYg
+LS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvaWlvL2NkYy9hZDc3NDYuYyBiL2RyaXZlcnMvc3RhZ2lu
+Zy9paW8vY2RjL2FkNzc0Ni5jCj4gaW5kZXggNDc2MTBkODYzOTA4Li4yMTUyN2Q4NGY5NDAgMTAw
+NjQ0Cj4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL2lpby9jZGMvYWQ3NzQ2LmMKPiArKysgYi9kcml2
+ZXJzL3N0YWdpbmcvaWlvL2NkYy9hZDc3NDYuYwo+IEBAIC03NDgsOSArNzQ4LDE5IEBAIHN0YXRp
+YyBjb25zdCBzdHJ1Y3QgaTJjX2RldmljZV9pZCBhZDc3NDZfaWRbXSA9IHsKPiAgCj4gIE1PRFVM
+RV9ERVZJQ0VfVEFCTEUoaTJjLCBhZDc3NDZfaWQpOwo+ICAKPiArc3RhdGljIGNvbnN0IHN0cnVj
+dCBvZl9kZXZpY2VfaWQgYWQ3NzQ2X29mX21hdGNoW10gPSB7Cj4gKwl7IC5jb21wYXRpYmxlID0g
+ImFkaSxhZDc3NDUiIH0sCj4gKwl7IC5jb21wYXRpYmxlID0gImFkaSxhZDc3NDYiIH0sCj4gKwl7
+IC5jb21wYXRpYmxlID0gImFkaSxhZDc3NDciIH0sCj4gKwl7IH0sCj4gK307Cj4gKwo+ICtNT0RV
+TEVfREVWSUNFX1RBQkxFKG9mLCBhZDc3NDZfb2ZfbWF0Y2gpOwo+ICsKPiAgc3RhdGljIHN0cnVj
+dCBpMmNfZHJpdmVyIGFkNzc0Nl9kcml2ZXIgPSB7Cj4gIAkuZHJpdmVyID0gewo+ICAJCS5uYW1l
+ID0gS0JVSUxEX01PRE5BTUUsCj4gKwkJLm9mX21hdGNoX3RhYmxlID0gYWQ3NzQ2X29mX21hdGNo
+LAo+ICAJfSwKPiAgCS5wcm9iZSA9IGFkNzc0Nl9wcm9iZSwKPiAgCS5pZF90YWJsZSA9IGFkNzc0
+Nl9pZCwKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRl
+dmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2
+ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1k
+ZXZlbAo=
