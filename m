@@ -1,76 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1D79C22766
-	for <lists+driverdev-devel@lfdr.de>; Sun, 19 May 2019 19:00:58 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id DEBEE2276F
+	for <lists+driverdev-devel@lfdr.de>; Sun, 19 May 2019 19:03:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 17E62857D6;
-	Sun, 19 May 2019 17:00:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E868A22E89;
+	Sun, 19 May 2019 17:03:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KHW6s79p9g4b; Sun, 19 May 2019 17:00:55 +0000 (UTC)
+	with ESMTP id RId634skxSUB; Sun, 19 May 2019 17:03:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BD79985764;
-	Sun, 19 May 2019 17:00:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 243FF2266C;
+	Sun, 19 May 2019 17:03:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 181861BF2F4
- for <devel@linuxdriverproject.org>; Sun, 19 May 2019 17:00:52 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B49421BF2F4
+ for <devel@linuxdriverproject.org>; Sun, 19 May 2019 17:03:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 151408757E
- for <devel@linuxdriverproject.org>; Sun, 19 May 2019 17:00:52 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B194285BB0
+ for <devel@linuxdriverproject.org>; Sun, 19 May 2019 17:03:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5wpNtFpT5M4e for <devel@linuxdriverproject.org>;
- Sun, 19 May 2019 17:00:51 +0000 (UTC)
+ with ESMTP id klkuo1o9TvVs for <devel@linuxdriverproject.org>;
+ Sun, 19 May 2019 17:03:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 89F6586F8D
- for <devel@driverdev.osuosl.org>; Sun, 19 May 2019 17:00:51 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id c13so5617836pgt.1
- for <devel@driverdev.osuosl.org>; Sun, 19 May 2019 10:00:51 -0700 (PDT)
+Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
+ [209.85.215.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3DC3B85B95
+ for <devel@driverdev.osuosl.org>; Sun, 19 May 2019 17:03:30 +0000 (UTC)
+Received: by mail-pg1-f193.google.com with SMTP id w22so5607199pgi.6
+ for <devel@driverdev.osuosl.org>; Sun, 19 May 2019 10:03:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=rQQVI/mBeOa+79Y8UJdObl15S0CHRO2qCfe0m0tOdgU=;
- b=bl2O+BmdmrKT8lcrGoVul3ADEjkpnVI6KhNm6PM+Ca1AqEv52iR2trmdE5RpwGxdWW
- PAonGynkeRpdoxiGuDoQlzOYB2MBBSbGZ+ziszlL46QJKlf3JsjmgyhV3I4zP2Ah6RMb
- nOW6UFtZpsM9DGr94ZxWhAb2nUv84lNtAJJQjD+35jQvx6NlRpDNXDMVxXuQHlTkdZU4
- HvGSwXEBG2BZtYL6tADPeeQ5YApY8wkHhRoa3zSq0en9+sigzVLyITVBe06eQsB59T/+
- 3fE59OxJK8+kzJyHXVvZT0ma6yAOJcfqyZUZMWzC0ROBCt0v/Dza5wxRtjxVTfohio3V
- rEeA==
+ h=date:from:to:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=mwcMY0VK0yx/OQxigRKnWF/1+9CrvrV9U/DB+F7KGAw=;
+ b=gWa0lihcO1Y5ONlmmU0LQ1eEAIlhK6f/aJU1utdVeo0XCYYtEatwMTpEY5kr45Pi5J
+ lfkS21DWq0pWC0tceRES+F56ZHsIKGTk5G5r2i5vuJhieEwMB3nXPsTKkUbnsyS4DhlY
+ dc2RjJ3qf0rVLnhufld77d/RuyYe823BdKP0ljeDqd1xcKqUNX6EEctCYls9PeBumyXE
+ MVz9YpBdJnsszIncMEyW7IFJjccQgZdiiW/9OQR/QJT4sa7s0KyNhCIri9/7dOs9jDsK
+ pK+z0ICK82Sn/Mf9CXm24v1Ywe/SZkgk81kGWRDmv9aRHI+28b3IGw32LTkDeuT9b7NB
+ ArsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=rQQVI/mBeOa+79Y8UJdObl15S0CHRO2qCfe0m0tOdgU=;
- b=dqnO+mo7ildylniOXnYtKjsg7CqwAFRtBdGnlhvghqtvLNVu3exKqRtDneeZCfebpP
- NPrbn/EWDwuVH9msTji/5ISPnexe4eiywjZh6ByuF9gUdxcf8Fzse9Ljuuanuz2U9VUi
- eFX0WWT/jYmjXlgSwHr08erPUv/oPrlsPxrZZ3X77K1MyJEN4n+xleNE1+ZxuNtG7jY2
- VALUTLvCqKDKeluJXb/CA+ayQ/HwtpMi4M+nlFC/5xb5Vzcf3EAXzBDITyNQiwpzbocq
- 7tzUBKQPv+mMpuzb3sH6NoLxP8oIlpGFdf/lRrpkji4MFPngLRMiwc9lPUYbJT4q2SgT
- 3cSA==
-X-Gm-Message-State: APjAAAVlz5IJG717WBJE/34IgPR9aLAR96XtC5vXJUBUqTn4z9iptQrG
- zWRjObG15JLn9qW1jUrILW7yIxCU
-X-Google-Smtp-Source: APXvYqwlaCmcOmF/4dhSuuDF2MUk0ZlqsTLTVH6/Vbrbd2e8yxwCZLgtfbdw1SlrZa2QW35lEzxHBQ==
-X-Received: by 2002:a63:144e:: with SMTP id 14mr53084832pgu.304.1558285251082; 
- Sun, 19 May 2019 10:00:51 -0700 (PDT)
-Received: from localhost.localdomain ([2405:204:700a:25e9:21c8:81ad:7b8b:de85])
- by smtp.googlemail.com with ESMTPSA id t2sm10458657pfh.166.2019.05.19.10.00.48
+ h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=mwcMY0VK0yx/OQxigRKnWF/1+9CrvrV9U/DB+F7KGAw=;
+ b=FCFcaA5a3PGzTr5JVkG8vptAOmDeDvXc4VN5qqya2G2hmxerRwAQ+hiTbFUBwriZxs
+ Mh0aggrT3d8SyvnLfx5wZU3ZzGenIKW7Bg8sOb9wrAkUrhlacdacU8a/3p3wHNkgY641
+ uv6APVc9VNc8bnEwrCCilnKEDpbn+NElmN2G1FCmRzavbz6HkhhF6puYkRq60SDCTVcg
+ oSDtTz+MWiy17t1Mb52r0SvB4DdfjlEwyG0WroAossVZ2g9Ewf9uuS2Dk0u8rct4JN4+
+ /rg5GfnUp+cNsNG3aM05ztFGZf5ekpovHWZDhHu0CrYhC1aaEjknreLlVOHPFqOWXkhw
+ ofKg==
+X-Gm-Message-State: APjAAAV8ppZXyhE39QvbKAkvf1lrzuc+1/dR1bZo36QwZ0iMXqLHQK14
+ UUMCIvLq2ucZ0GZyQyTZBHX2jj4t
+X-Google-Smtp-Source: APXvYqwN11CwT/b0nxrOEpz3Q6XeVBQSUgejFOtkNHoJMx6vFIoAVi+3hhmQ2zsppRxBem7n3E4H3w==
+X-Received: by 2002:a63:e94e:: with SMTP id q14mr69861840pgj.110.1558285409956; 
+ Sun, 19 May 2019 10:03:29 -0700 (PDT)
+Received: from hari-Inspiron-1545 ([183.83.92.73])
+ by smtp.gmail.com with ESMTPSA id l7sm13308033pfl.9.2019.05.19.10.03.27
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sun, 19 May 2019 10:00:50 -0700 (PDT)
-From: Puranjay Mohan <puranjay12@gmail.com>
-To: greg@kroah.com
-Subject: [PATCH] Staging: mt7621-dma: Remove braces around single if statement
-Date: Sun, 19 May 2019 22:30:32 +0530
-Message-Id: <20190519170032.18190-1-puranjay12@gmail.com>
-X-Mailer: git-send-email 2.21.0
+ Sun, 19 May 2019 10:03:29 -0700 (PDT)
+Date: Sun, 19 May 2019 22:33:25 +0530
+From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Hariprasad Kelam <hariprasad.kelam@gmail.com>,
+ Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] taging: rtl8723bs: hal: odm_HWConfig: odm_HWConfig: Unneeded
+ variable: "result". Return "HAL_STATUS_SUCCESS"
+Message-ID: <20190519170325.GA6982@hari-Inspiron-1545>
 MIME-Version: 1.0
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,37 +87,43 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Puranjay Mohan <puranjay12@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix following checkpatch.pl warning by removing unnecessary braces:
-WARNING: braces {} are not necessary for single statement blocks
+This patch fixes below warnings reported by coccicheck
 
-Signed-off-by: Puranjay Mohan <puranjay12@gmail.com>
+drivers/staging/rtl8723bs/hal/odm_HWConfig.c:501:4-10: Unneeded
+variable: "result". Return "HAL_STATUS_SUCCESS" on line 526
+
+Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 ---
- drivers/staging/mt7621-dma/mtk-hsdma.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/staging/rtl8723bs/hal/odm_HWConfig.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
-index 0fbb9932d6bb..a58725dd2611 100644
---- a/drivers/staging/mt7621-dma/mtk-hsdma.c
-+++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
-@@ -664,9 +664,8 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
- 		return -EINVAL;
+diff --git a/drivers/staging/rtl8723bs/hal/odm_HWConfig.c b/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
+index d802a1f..4711c65 100644
+--- a/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
++++ b/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
+@@ -498,8 +498,6 @@ HAL_STATUS ODM_ConfigBBWithHeaderFile(
  
- 	hsdma = devm_kzalloc(&pdev->dev, sizeof(*hsdma), GFP_KERNEL);
--	if (!hsdma) {
-+	if (!hsdma)
- 		return -EINVAL;
--	}
+ HAL_STATUS ODM_ConfigMACWithHeaderFile(PDM_ODM_T pDM_Odm)
+ {
+-	u8 result = HAL_STATUS_SUCCESS;
+-
+ 	ODM_RT_TRACE(
+ 		pDM_Odm,
+ 		ODM_COMP_INIT,
+@@ -523,5 +521,5 @@ HAL_STATUS ODM_ConfigMACWithHeaderFile(PDM_ODM_T pDM_Odm)
  
- 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	base = devm_ioremap_resource(&pdev->dev, res);
+ 	READ_AND_CONFIG(8723B, _MAC_REG);
+ 
+-	return result;
++	return HAL_STATUS_SUCCESS;
+ }
 -- 
-2.21.0
+2.7.4
 
 _______________________________________________
 devel mailing list
