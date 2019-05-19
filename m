@@ -1,83 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 68B8622581
-	for <lists+driverdev-devel@lfdr.de>; Sun, 19 May 2019 00:54:08 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4448C2259C
+	for <lists+driverdev-devel@lfdr.de>; Sun, 19 May 2019 03:05:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0C98687C70;
-	Sat, 18 May 2019 22:54:07 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 99280867F0;
+	Sun, 19 May 2019 01:05:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5SyEwV65rVYk; Sat, 18 May 2019 22:54:06 +0000 (UTC)
+	with ESMTP id ewShLatWgVC0; Sun, 19 May 2019 01:05:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9684D87880;
-	Sat, 18 May 2019 22:54:06 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 890FE86404;
+	Sun, 19 May 2019 01:05:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3CCED1BF3E3
- for <devel@linuxdriverproject.org>; Sat, 18 May 2019 22:54:04 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5112B1BF852
+ for <devel@linuxdriverproject.org>; Sun, 19 May 2019 01:05:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 38BCE87880
- for <devel@linuxdriverproject.org>; Sat, 18 May 2019 22:54:04 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4DA7F85F80
+ for <devel@linuxdriverproject.org>; Sun, 19 May 2019 01:05:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hOOZcnVf1TKF for <devel@linuxdriverproject.org>;
- Sat, 18 May 2019 22:54:00 +0000 (UTC)
-X-Greylist: delayed 00:06:23 by SQLgrey-1.7.6
-Received: from mail-qt1-f196.google.com (mail-qt1-f196.google.com
- [209.85.160.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5864287860
- for <devel@driverdev.osuosl.org>; Sat, 18 May 2019 22:54:00 +0000 (UTC)
-Received: by mail-qt1-f196.google.com with SMTP id m32so12246378qtf.0
- for <devel@driverdev.osuosl.org>; Sat, 18 May 2019 15:54:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=usp-br.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=OHjKUwLAo859x2qa8l2Ned7NAR7EtunrUsrKKRhPIKU=;
- b=zyCbluClALswad88NgfOr1p1BseOf7ybjSc4wkjUWPzfpVHZ0mq1pctuzFPI/HZKQz
- H4/LKV+vB/hVob0m4v73yCL6h38gRoaaQAsUQRH/5BoAl49AqPDOkSpBfs654uU9SUWc
- VoxiA5BIiBKA2PaPWHz6GDevqYMugzie4UXH0aGV3X5EOl0CTBlHeKiATWKX+J6dlYP6
- VI+cSaf3AuxrbDByWmkTtD+7ko+lQZVafQMqU9BpD3HPcWynZ9TfTfLvsqGqplVBr+YO
- mPSVOVDR+sO3a/oVcPYl5W3kTel3Fgv2tzAIJnyoD/iT7OZXUYEuZIMqfXnWxdhp/uJv
- m6QQ==
+ with ESMTP id pVFCeG3C5Eu9 for <devel@linuxdriverproject.org>;
+ Sun, 19 May 2019 01:05:09 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wm1-f67.google.com (mail-wm1-f67.google.com
+ [209.85.128.67])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 77DCE85F68
+ for <devel@driverdev.osuosl.org>; Sun, 19 May 2019 01:05:09 +0000 (UTC)
+Received: by mail-wm1-f67.google.com with SMTP id y3so10008927wmm.2
+ for <devel@driverdev.osuosl.org>; Sat, 18 May 2019 18:05:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=EQEfknT+Pvq496JYf3bTAv5KronZjseZKCaJZPgbjH0=;
+ b=pRUr/6Z6CuZgZtbgnrrOWcWxfnPOW69i939s1wdUmEar6q/feiA9XbLQlxHt3J9n7m
+ q39AhEelGr0lZVXGG6LlBBwjnQS2XHi419ZKgy/ySYKn2E4GihGe2UIlrJZngV36x8di
+ FfzUBvQuhGYCmk3XYDWedMeBbWXK1KuL3m6t+LTXTyBP+mUUMo5ddcYgHJMN0SOosfiF
+ RfaTIqHfVRP2x7ilKi62wfFIY26/cRZzIG55XENf4zL9WY59DI2sVR7hTXtYg3X0TJrt
+ Gj8yZmWSBSNE7PYbQhnNNbFvpeE7Zts5w1+O5xCeTbg6n8ojtMptXdz3lRB+yhCIy/CW
+ EFsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=OHjKUwLAo859x2qa8l2Ned7NAR7EtunrUsrKKRhPIKU=;
- b=NMPsmVRUYA7UzU3hZo4ses9iPT8xZEipqBJWG1aYsoU8PXbobbe1HCxtR49wwBaraw
- 2bAkc/G6iTyuequeLbe6fxbAxNuGaastGmPFIz0E0r74ZWV6PRRXhtzfJCuS4aFsQfG1
- EX81jIAjsaDTYs/UOkHMhP4brzl2MgBwdLfeaQBvZBiyilhuFMBZJZAPsK53g2HlHI4r
- 3LIbDQ8qGImq53ZEgUdBmpvxCqPRtAUR3uUOpTYuBsp/CqvgSxZYsfDHDL3ldfdtw1WJ
- MyEfbPhAKD4j5QFiLrNXleSakjWzSbvwRS4wVF/efRGvWBiS/Eb+nwxXQC0E1VJ7tV4t
- 1ijg==
-X-Gm-Message-State: APjAAAXXxrF4XQC0sqeng6+HuWar0u3vomqvyMSLoZ2LvgfAmXkpLMyW
- hQhznaiO8x8/AIA8x2l+z1EimA==
-X-Google-Smtp-Source: APXvYqyXXskoWq+bQQfwFQVGZAuLOWrfAX3Eiyap7hG8gCEAj3ysL058e7biD8lDeu0/I7VXUshmtQ==
-X-Received: by 2002:ac8:2e3c:: with SMTP id r57mr56606614qta.57.1558219656607; 
- Sat, 18 May 2019 15:47:36 -0700 (PDT)
-Received: from joao-pc.ime.usp.br ([143.107.45.1])
- by smtp.gmail.com with ESMTPSA id y13sm9221004qtc.21.2019.05.18.15.47.33
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=EQEfknT+Pvq496JYf3bTAv5KronZjseZKCaJZPgbjH0=;
+ b=XawL3fO1gg9GzSOR32oL50W74aEP3Cy38o52lCPEBoZpZAJQJ1GJ/VI9d3miEYYIpj
+ M9/IRdSbfxbdlpWKi1FGulBVic6Ty1/6JJei2uMGRql8Hj1VVeSmtvGQfzq+emif81b7
+ p8ESRQp9CPHOBvO7r5nkteRlO6UfYUYsVFbv9LsWPWa+oizp577m5tTlWuMHwjyqDG6s
+ dF9g/OibkV0rro44VmCpAJh5gjWleCxI7eUneLcLzetw3+f8PDrk8GYkQt9HmNHSLnCj
+ MVj/EJQBYKm9eGT9Gigsqzm7F2997XdvNvw3AZ/B7qiOsI4ySNOX/IrG++4MD+mWaVi1
+ ++3A==
+X-Gm-Message-State: APjAAAUdd/RLHJr8ltI780S5diqlmodR2Ogz8LMQl4PFuGQbrMwviXba
+ m/VO6eL5j33dZDX+surf38I=
+X-Google-Smtp-Source: APXvYqyDyZ2OPbtG1vVkFrxQurfhlNIGM/0qiHcfFqPQZr9B1M1FERztOCTjLSZbuOaP8vskS+nTYQ==
+X-Received: by 2002:a1c:2104:: with SMTP id h4mr6868266wmh.146.1558227907595; 
+ Sat, 18 May 2019 18:05:07 -0700 (PDT)
+Received: from smtp.gmail.com ([2001:818:dc0d:4d00:bee4:6ffd:a011:52a7])
+ by smtp.gmail.com with ESMTPSA id f2sm13553440wme.12.2019.05.18.18.05.05
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Sat, 18 May 2019 15:47:36 -0700 (PDT)
-From: =?UTF-8?q?Jo=C3=A3o=20Victor=20Marques=20de=20Oliveira?=
- <joao.marques.oliveira@usp.br>
+ Sat, 18 May 2019 18:05:06 -0700 (PDT)
+Date: Sat, 18 May 2019 22:04:56 -0300
+From: Melissa Wen <melissa.srw@gmail.com>
 To: Lars-Peter Clausen <lars@metafoo.de>,
  Michael Hennerich <Michael.Hennerich@analog.com>,
  Stefan Popa <stefan.popa@analog.com>, Jonathan Cameron <jic23@kernel.org>,
  Hartmut Knaack <knaack.h@gmx.de>,
  Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: iio: ad9834: add of_device_id table
-Date: Sat, 18 May 2019 19:47:20 -0300
-Message-Id: <20190518224720.30404-1-joao.marques.oliveira@usp.br>
-X-Mailer: git-send-email 2.21.0
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Barry Song <21cnbao@gmail.com>
+Subject: [PATCH] staging:iio:ad7150: fix threshold mode config bit
+Message-ID: <20190519010456.lwq7n2e6nkqa6niz@smtp.gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+User-Agent: NeoMutt/20180716
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,37 +89,83 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-iio@vger.kernel.org,
- "Osvaldo M . Yasuda" <omyasuda@yahoo.com.br>, linux-kernel@vger.kernel.org,
- kernel-usp@googlegroups.com, "Thiago L . A . Miller" <tmiller@mochsl.org.br>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, kernel-usp@googlegroups.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-QWRkIGEgb2ZfZGV2aWNlX2lkIHN0cnVjdCBhcnJheSBvZl9tYXRjaF90YWJsZSB2YXJpYWJsZSBh
-bmQgc3Vic2VxdWVudApjYWxsIHRvIE1PRFVMRV9ERVZJQ0VfVEFCTEUgbWFjcm8gdG8gZGV2aWNl
-IHRyZWUgc3VwcG9ydC4KCkNvLWRldmVsb3BlZC1ieTogVGhpYWdvIEwuIEEuIE1pbGxlciA8dG1p
-bGxlckBtb2Noc2wub3JnLmJyPgpTaWduZWQtb2ZmLWJ5OiBUaGlhZ28gTC4gQS4gTWlsbGVyIDx0
-bWlsbGVyQG1vY2hzbC5vcmcuYnI+CkNvLWRldmVsb3BlZC1ieTogT3N2YWxkbyBNLiBZYXN1ZGEg
-PG9teWFzdWRhQHlhaG9vLmNvbS5icj4KU2lnbmVkLW9mZi1ieTogT3N2YWxkbyBNLiBZYXN1ZGEg
-PG9teWFzdWRhQHlhaG9vLmNvbS5icj4KU2lnbmVkLW9mZi1ieTogSm/Do28gVmljdG9yIE1hcnF1
-ZXMgZGUgT2xpdmVpcmEgPGpvYW8ubWFycXVlcy5vbGl2ZWlyYUB1c3AuYnI+Ci0tLQogZHJpdmVy
-cy9zdGFnaW5nL2lpby9mcmVxdWVuY3kvYWQ5ODM0LmMgfCAxMSArKysrKysrKysrKwogMSBmaWxl
-IGNoYW5nZWQsIDExIGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcv
-aWlvL2ZyZXF1ZW5jeS9hZDk4MzQuYyBiL2RyaXZlcnMvc3RhZ2luZy9paW8vZnJlcXVlbmN5L2Fk
-OTgzNC5jCmluZGV4IDZkZTNjZDczNjNkNy4uMDM4ZDY3MzJjM2ZkIDEwMDY0NAotLS0gYS9kcml2
-ZXJzL3N0YWdpbmcvaWlvL2ZyZXF1ZW5jeS9hZDk4MzQuYworKysgYi9kcml2ZXJzL3N0YWdpbmcv
-aWlvL2ZyZXF1ZW5jeS9hZDk4MzQuYwpAQCAtNTIxLDkgKzUyMSwyMCBAQCBzdGF0aWMgY29uc3Qg
-c3RydWN0IHNwaV9kZXZpY2VfaWQgYWQ5ODM0X2lkW10gPSB7CiB9OwogTU9EVUxFX0RFVklDRV9U
-QUJMRShzcGksIGFkOTgzNF9pZCk7CiAKK3N0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lk
-IGFkOTgzNF9vZl9tYXRjaFtdID0geworCXsuY29tcGF0aWJsZSA9ICJhZGksYWQ5ODMzIn0sCisJ
-ey5jb21wYXRpYmxlID0gImFkaSxhZDk4MzQifSwKKwl7LmNvbXBhdGlibGUgPSAiYWRpLGFkOTgz
-NyJ9LAorCXsuY29tcGF0aWJsZSA9ICJhZGksYWQ5ODM4In0sCisJe30KK307CisKK01PRFVMRV9E
-RVZJQ0VfVEFCTEUob2YsIGFkOTgzNF9vZl9tYXRjaCk7CisKIHN0YXRpYyBzdHJ1Y3Qgc3BpX2Ry
-aXZlciBhZDk4MzRfZHJpdmVyID0gewogCS5kcml2ZXIgPSB7CiAJCS5uYW1lCT0gImFkOTgzNCIs
-CisJCS5vZl9tYXRjaF90YWJsZSA9IGFkOTgzNF9vZl9tYXRjaAogCX0sCiAJLnByb2JlCQk9IGFk
-OTgzNF9wcm9iZSwKIAkucmVtb3ZlCQk9IGFkOTgzNF9yZW1vdmUsCi0tIAoyLjIxLjAKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcg
-bGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhk
-cml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+According to the AD7150 configuration register description, bit 7 assumes
+value 1 when the threshold mode is fixed and 0 when it is adaptive,
+however, the operation that identifies this mode was considering the
+opposite values.
+
+This patch renames the boolean variable to describe it correctly and
+properly replaces it in the places where it is used.
+
+Fixes: 531efd6aa0991 ("staging:iio:adc:ad7150: chan_spec conv + i2c_smbus commands + drop unused poweroff timeout control.")
+Signed-off-by: Melissa Wen <melissa.srw@gmail.com>
+---
+ drivers/staging/iio/cdc/ad7150.c | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/staging/iio/cdc/ad7150.c b/drivers/staging/iio/cdc/ad7150.c
+index dd7fcab8e19e..e075244c602b 100644
+--- a/drivers/staging/iio/cdc/ad7150.c
++++ b/drivers/staging/iio/cdc/ad7150.c
+@@ -5,6 +5,7 @@
+  * Copyright 2010-2011 Analog Devices Inc.
+  */
+ 
++#include <linux/bitfield.h>
+ #include <linux/interrupt.h>
+ #include <linux/device.h>
+ #include <linux/kernel.h>
+@@ -130,7 +131,7 @@ static int ad7150_read_event_config(struct iio_dev *indio_dev,
+ {
+ 	int ret;
+ 	u8 threshtype;
+-	bool adaptive;
++	bool thrfixed;
+ 	struct ad7150_chip_info *chip = iio_priv(indio_dev);
+ 
+ 	ret = i2c_smbus_read_byte_data(chip->client, AD7150_CFG);
+@@ -138,21 +139,23 @@ static int ad7150_read_event_config(struct iio_dev *indio_dev,
+ 		return ret;
+ 
+ 	threshtype = (ret >> 5) & 0x03;
+-	adaptive = !!(ret & 0x80);
++
++	/*check if threshold mode is fixed or adaptive*/
++	thrfixed = FIELD_GET(AD7150_CFG_FIX, ret);
+ 
+ 	switch (type) {
+ 	case IIO_EV_TYPE_MAG_ADAPTIVE:
+ 		if (dir == IIO_EV_DIR_RISING)
+-			return adaptive && (threshtype == 0x1);
+-		return adaptive && (threshtype == 0x0);
++			return !thrfixed && (threshtype == 0x1);
++		return !thrfixed && (threshtype == 0x0);
+ 	case IIO_EV_TYPE_THRESH_ADAPTIVE:
+ 		if (dir == IIO_EV_DIR_RISING)
+-			return adaptive && (threshtype == 0x3);
+-		return adaptive && (threshtype == 0x2);
++			return !thrfixed && (threshtype == 0x3);
++		return !thrfixed && (threshtype == 0x2);
+ 	case IIO_EV_TYPE_THRESH:
+ 		if (dir == IIO_EV_DIR_RISING)
+-			return !adaptive && (threshtype == 0x1);
+-		return !adaptive && (threshtype == 0x0);
++			return thrfixed && (threshtype == 0x1);
++		return thrfixed && (threshtype == 0x0);
+ 	default:
+ 		break;
+ 	}
+-- 
+2.20.1
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
