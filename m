@@ -1,54 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3CF4822F31
-	for <lists+driverdev-devel@lfdr.de>; Mon, 20 May 2019 10:47:41 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 679F722F35
+	for <lists+driverdev-devel@lfdr.de>; Mon, 20 May 2019 10:47:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4D77087364;
-	Mon, 20 May 2019 08:47:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1E48922786;
+	Mon, 20 May 2019 08:47:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ISFzU96ZJ6jR; Mon, 20 May 2019 08:47:38 +0000 (UTC)
+	with ESMTP id 5o+Ql1yKmH6Y; Mon, 20 May 2019 08:47:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D1D378700D;
-	Mon, 20 May 2019 08:47:37 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9B719226C2;
+	Mon, 20 May 2019 08:47:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 01D291BF83A
- for <devel@linuxdriverproject.org>; Mon, 20 May 2019 08:47:36 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 452131BF83A
+ for <devel@linuxdriverproject.org>; Mon, 20 May 2019 08:47:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id F0A458545E
- for <devel@linuxdriverproject.org>; Mon, 20 May 2019 08:47:35 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3F2F48531D
+ for <devel@linuxdriverproject.org>; Mon, 20 May 2019 08:47:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id p1tPfOnuaGja for <devel@linuxdriverproject.org>;
- Mon, 20 May 2019 08:47:34 +0000 (UTC)
+ with ESMTP id I3xm5Y--PL7B for <devel@linuxdriverproject.org>;
+ Mon, 20 May 2019 08:47:37 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D7DBF8542B
- for <devel@driverdev.osuosl.org>; Mon, 20 May 2019 08:47:34 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 8F6EB85313
+ for <devel@driverdev.osuosl.org>; Mon, 20 May 2019 08:47:37 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 450D9206BA;
- Mon, 20 May 2019 08:47:34 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id DC1BD206BA;
+ Mon, 20 May 2019 08:47:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1558342054;
- bh=1EBRk6GXAcI/WKXbtdn5P3Q4oF7TRuszs/cF1FOMVrs=;
+ s=default; t=1558342057;
+ bh=GU+rwNZZoNy1kvqnCti6ebty94IjS1++0SLUDZrLlvI=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=zrcymoebjhKod/Dy482j/0XqzYf6DcrXiabNxwJuV7a9Sr/XtB1u8b/BoOqFDLBZr
- GFkFmIzS5v8wgCVGTCtxS/dr/ks1vM6v/Tz1ciJk1Z0ZDpXoooGOCXK91qsi+oJeRg
- r8atkiEWaCRnlAgka5uVtuKXXTobSL0wGq/xXqMs=
+ b=t+arDi3A1OCZ8xHXeP9YMjqwMFrRzQTgstvE5HaGps6hhgd/p+bWcuigsF2pnlON8
+ 9gqPxGSNjYIrZ5gtX75T8jNhM8/7bbsVR/e6XbZDRl8jy0C5wZAOykU3qsm0r4cCwR
+ Q+00Q/1DOdkYeqr+ntLqOClrH+A9NK74QgJclyoU=
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: devel@driverdev.osuosl.org
-Subject: [PATCH v2 2/7] staging: kpc2000: fix coding style in pcie.h
-Date: Mon, 20 May 2019 10:47:11 +0200
-Message-Id: <20190520084716.28063-3-gregkh@linuxfoundation.org>
+Subject: [PATCH v2 3/7] staging: kpc2000: remove spi_parts.h
+Date: Mon, 20 May 2019 10:47:12 +0200
+Message-Id: <20190520084716.28063-4-gregkh@linuxfoundation.org>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190520084716.28063-1-gregkh@linuxfoundation.org>
 References: <20190520084716.28063-1-gregkh@linuxfoundation.org>
@@ -71,141 +71,129 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Use tabs in pcie.h, like is mandated.
+The structures defined in spi_parts.h belong in the .c file that uses
+it.  So move it directly into spi_driver.c to make things simpler to
+manage.
 
 Cc: Matt Sickler <Matt.Sickler@daktronics.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
  v2: no changes
 
- drivers/staging/kpc2000/kpc2000/pcie.h | 106 ++++++++++++-------------
- 1 file changed, 53 insertions(+), 53 deletions(-)
+ drivers/staging/kpc2000/kpc_spi/spi_driver.c | 43 +++++++++++++++++-
+ drivers/staging/kpc2000/kpc_spi/spi_parts.h  | 48 --------------------
+ 2 files changed, 42 insertions(+), 49 deletions(-)
+ delete mode 100644 drivers/staging/kpc2000/kpc_spi/spi_parts.h
 
-diff --git a/drivers/staging/kpc2000/kpc2000/pcie.h b/drivers/staging/kpc2000/kpc2000/pcie.h
-index e204f12632dc..59db46752961 100644
---- a/drivers/staging/kpc2000/kpc2000/pcie.h
-+++ b/drivers/staging/kpc2000/kpc2000/pcie.h
-@@ -27,67 +27,67 @@
-  *      9   <---------------------- IRQ Active Flags ---------------------->
-  */
+diff --git a/drivers/staging/kpc2000/kpc_spi/spi_driver.c b/drivers/staging/kpc2000/kpc_spi/spi_driver.c
+index 86df16547a92..e84bd7015ecf 100644
+--- a/drivers/staging/kpc2000/kpc_spi/spi_driver.c
++++ b/drivers/staging/kpc2000/kpc_spi/spi_driver.c
+@@ -28,8 +28,49 @@
+ #include <linux/mtd/partitions.h>
  
--#define REG_WIDTH   8
--#define REG_MAGIC_NUMBER            (0 * REG_WIDTH)
--#define REG_CARD_ID_AND_BUILD       (1 * REG_WIDTH)
--#define REG_DATE_AND_TIME_STAMPS    (2 * REG_WIDTH)
--#define REG_CORE_TABLE_OFFSET       (3 * REG_WIDTH)
--#define REG_FPGA_SSID               (4 * REG_WIDTH)
--#define REG_FPGA_HW_ID              (5 * REG_WIDTH)
--#define REG_FPGA_DDNA               (6 * REG_WIDTH)
--#define REG_CPLD_CONFIG             (7 * REG_WIDTH)
--#define REG_INTERRUPT_MASK          (8 * REG_WIDTH)
--#define REG_INTERRUPT_ACTIVE        (9 * REG_WIDTH)
--#define REG_PCIE_ERROR_COUNT        (10 * REG_WIDTH)
--
--#define KP2000_MAGIC_VALUE      0x196C61482231894D
--
--#define PCI_VENDOR_ID_DAKTRONICS    0x1c33
--#define PCI_DEVICE_ID_DAKTRONICS    0x6021
--
--#define DMA_BAR     0
--#define REG_BAR     1
-+#define REG_WIDTH			8
-+#define REG_MAGIC_NUMBER		(0 * REG_WIDTH)
-+#define REG_CARD_ID_AND_BUILD		(1 * REG_WIDTH)
-+#define REG_DATE_AND_TIME_STAMPS	(2 * REG_WIDTH)
-+#define REG_CORE_TABLE_OFFSET		(3 * REG_WIDTH)
-+#define REG_FPGA_SSID			(4 * REG_WIDTH)
-+#define REG_FPGA_HW_ID			(5 * REG_WIDTH)
-+#define REG_FPGA_DDNA			(6 * REG_WIDTH)
-+#define REG_CPLD_CONFIG			(7 * REG_WIDTH)
-+#define REG_INTERRUPT_MASK		(8 * REG_WIDTH)
-+#define REG_INTERRUPT_ACTIVE		(9 * REG_WIDTH)
-+#define REG_PCIE_ERROR_COUNT		(10 * REG_WIDTH)
-+
-+#define KP2000_MAGIC_VALUE		0x196C61482231894D
-+
-+#define PCI_VENDOR_ID_DAKTRONICS	0x1c33
-+#define PCI_DEVICE_ID_DAKTRONICS	0x6021
-+
-+#define DMA_BAR				0
-+#define REG_BAR				1
+ #include "../kpc.h"
+-#include "spi_parts.h"
  
- struct kp2000_device {
--    struct pci_dev     *pdev;
--    struct miscdevice   miscdev;
--    char                name[16];
--
--    unsigned int        card_num;
--    struct mutex        sem;
--
--    void __iomem       *sysinfo_regs_base;
--    void __iomem       *regs_bar_base;
--    struct resource     regs_base_resource;
--    void __iomem       *dma_bar_base;
--    void __iomem       *dma_common_regs;
--    struct resource     dma_base_resource;
--
--    // "System Registers"
--    u32                 card_id;
--    u32                 build_version;
--    u32                 build_datestamp;
--    u32                 build_timestamp;
--    u32                 core_table_offset;
--    u32                 core_table_length;
--    u8                  core_table_rev;
--    u8                  hardware_revision;
--    u64                 ssid;
--    u64                 ddna;
--
--    // IRQ stuff
--    unsigned int        irq;
--
--    struct list_head    uio_devices_list;
-+	struct pci_dev		*pdev;
-+	struct miscdevice	miscdev;
-+	char			name[16];
++static struct mtd_partition p2kr0_spi0_parts[] = {
++	{ .name = "SLOT_0",	.size = 7798784,		.offset = 0,                },
++	{ .name = "SLOT_1",	.size = 7798784,		.offset = MTDPART_OFS_NXTBLK},
++	{ .name = "SLOT_2",	.size = 7798784,		.offset = MTDPART_OFS_NXTBLK},
++	{ .name = "SLOT_3",	.size = 7798784,		.offset = MTDPART_OFS_NXTBLK},
++	{ .name = "CS0_EXTRA",	.size = MTDPART_SIZ_FULL,	.offset = MTDPART_OFS_NXTBLK},
++};
++static struct mtd_partition p2kr0_spi1_parts[] = {
++	{ .name = "SLOT_4",	.size = 7798784,		.offset = 0,                },
++	{ .name = "SLOT_5",	.size = 7798784,		.offset = MTDPART_OFS_NXTBLK},
++	{ .name = "SLOT_6",	.size = 7798784,		.offset = MTDPART_OFS_NXTBLK},
++	{ .name = "SLOT_7",	.size = 7798784,		.offset = MTDPART_OFS_NXTBLK},
++	{ .name = "CS1_EXTRA",	.size = MTDPART_SIZ_FULL,	.offset = MTDPART_OFS_NXTBLK},
++};
 +
-+	unsigned int		card_num;
-+	struct mutex		sem;
++static struct flash_platform_data p2kr0_spi0_pdata = {
++	.name =		"SPI0",
++	.nr_parts =	ARRAY_SIZE(p2kr0_spi0_parts),
++	.parts =	p2kr0_spi0_parts,
++};
++static struct flash_platform_data p2kr0_spi1_pdata = {
++	.name =		"SPI1",
++	.nr_parts =	ARRAY_SIZE(p2kr0_spi1_parts),
++	.parts =	p2kr0_spi1_parts,
++};
 +
-+	void __iomem		*sysinfo_regs_base;
-+	void __iomem		*regs_bar_base;
-+	struct resource		regs_base_resource;
-+	void __iomem		*dma_bar_base;
-+	void __iomem		*dma_common_regs;
-+	struct resource		dma_base_resource;
-+
-+	// "System Registers"
-+	u32			card_id;
-+	u32			build_version;
-+	u32			build_datestamp;
-+	u32			build_timestamp;
-+	u32			core_table_offset;
-+	u32			core_table_length;
-+	u8			core_table_rev;
-+	u8			hardware_revision;
-+	u64			ssid;
-+	u64			ddna;
-+
-+	// IRQ stuff
-+	unsigned int		irq;
-+
-+	struct list_head	uio_devices_list;
- };
++static struct spi_board_info p2kr0_board_info[] = {
++	{
++		.modalias =		"n25q256a11",
++		.bus_num =		1,
++		.chip_select =		0,
++		.mode =			SPI_MODE_0,
++		.platform_data =	&p2kr0_spi0_pdata
++	},
++	{
++		.modalias =		"n25q256a11",
++		.bus_num =		1,
++		.chip_select =		1,
++		.mode =			SPI_MODE_0,
++		.platform_data =	&p2kr0_spi1_pdata
++	},
++};
  
- extern struct class *kpc_uio_class;
- extern struct attribute *kpc_uio_class_attrs[];
- 
--int   kp2000_probe_cores(struct kp2000_device *pcard);
--void  kp2000_remove_cores(struct kp2000_device *pcard);
-+int kp2000_probe_cores(struct kp2000_device *pcard);
-+void kp2000_remove_cores(struct kp2000_device *pcard);
- 
- // Define this quick little macro because the expression is used frequently
--#define PCARD_TO_DEV(pcard)  (&(pcard->pdev->dev))
-+#define PCARD_TO_DEV(pcard)	(&(pcard->pdev->dev))
- 
- #endif /* KP2000_PCIE_H */
+ /***************
+  * SPI Defines *
+diff --git a/drivers/staging/kpc2000/kpc_spi/spi_parts.h b/drivers/staging/kpc2000/kpc_spi/spi_parts.h
+deleted file mode 100644
+index 33e62acc5e08..000000000000
+--- a/drivers/staging/kpc2000/kpc_spi/spi_parts.h
++++ /dev/null
+@@ -1,48 +0,0 @@
+-/* SPDX-License-Identifier: GPL-2.0+ */
+-#ifndef __KPC_SPI_SPI_PARTS_H__
+-#define __KPC_SPI_SPI_PARTS_H__
+-
+-static struct mtd_partition p2kr0_spi0_parts[] = {
+-    { .name = "SLOT_0",    .size = 7798784,          .offset = 0,                 },
+-    { .name = "SLOT_1",    .size = 7798784,          .offset = MTDPART_OFS_NXTBLK },
+-    { .name = "SLOT_2",    .size = 7798784,          .offset = MTDPART_OFS_NXTBLK },
+-    { .name = "SLOT_3",    .size = 7798784,          .offset = MTDPART_OFS_NXTBLK },
+-    { .name = "CS0_EXTRA", .size = MTDPART_SIZ_FULL, .offset = MTDPART_OFS_NXTBLK }
+-};
+-static struct mtd_partition p2kr0_spi1_parts[] = {
+-    { .name = "SLOT_4",    .size   = 7798784,          .offset = 0,                 },
+-    { .name = "SLOT_5",    .size   = 7798784,          .offset = MTDPART_OFS_NXTBLK },
+-    { .name = "SLOT_6",    .size   = 7798784,          .offset = MTDPART_OFS_NXTBLK },
+-    { .name = "SLOT_7",    .size   = 7798784,          .offset = MTDPART_OFS_NXTBLK },
+-    { .name = "CS1_EXTRA", .size   = MTDPART_SIZ_FULL, .offset = MTDPART_OFS_NXTBLK }
+-};
+-
+-static struct flash_platform_data p2kr0_spi0_pdata = {
+-    .name = "SPI0",
+-    .nr_parts = ARRAY_SIZE(p2kr0_spi0_parts),
+-    .parts = p2kr0_spi0_parts,
+-};
+-static struct flash_platform_data p2kr0_spi1_pdata = {
+-    .name = "SPI1",
+-    .nr_parts = ARRAY_SIZE(p2kr0_spi1_parts),
+-    .parts = p2kr0_spi1_parts,
+-};
+-
+-static struct spi_board_info p2kr0_board_info[] = {
+-    {
+-        .modalias = "n25q256a11",
+-        .bus_num = 1,
+-        .chip_select = 0,
+-        .mode = SPI_MODE_0,
+-        .platform_data = &p2kr0_spi0_pdata
+-    },
+-    {
+-        .modalias = "n25q256a11",
+-        .bus_num = 1,
+-        .chip_select = 1,
+-        .mode = SPI_MODE_0,
+-        .platform_data = &p2kr0_spi1_pdata
+-    },
+-};
+-
+-#endif
 -- 
 2.21.0
 
