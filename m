@@ -1,51 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B41CB22DBF
-	for <lists+driverdev-devel@lfdr.de>; Mon, 20 May 2019 10:06:39 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 193AF22ED7
+	for <lists+driverdev-devel@lfdr.de>; Mon, 20 May 2019 10:30:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 02F478545E;
-	Mon, 20 May 2019 08:06:38 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7EA498539A;
+	Mon, 20 May 2019 08:30:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2oFB1-nInAoi; Mon, 20 May 2019 08:06:37 +0000 (UTC)
+	with ESMTP id 30mPcsiUJuFW; Mon, 20 May 2019 08:30:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 86C5783970;
-	Mon, 20 May 2019 08:06:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 10E7785313;
+	Mon, 20 May 2019 08:30:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 56A061BF83A
- for <devel@linuxdriverproject.org>; Mon, 20 May 2019 08:06:25 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id CFC851BF2EF
+ for <devel@linuxdriverproject.org>; Mon, 20 May 2019 08:30:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 52A1B84525
- for <devel@linuxdriverproject.org>; Mon, 20 May 2019 08:06:25 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id CBE1621568
+ for <devel@linuxdriverproject.org>; Mon, 20 May 2019 08:30:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HXdWyBDfpTOQ for <devel@linuxdriverproject.org>;
- Mon, 20 May 2019 08:06:24 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from relay3-d.mail.gandi.net (relay3-d.mail.gandi.net
- [217.70.183.195])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D832E83970
- for <devel@driverdev.osuosl.org>; Mon, 20 May 2019 08:06:23 +0000 (UTC)
-X-Originating-IP: 90.88.22.185
-Received: from localhost (aaubervilliers-681-1-80-185.w90-88.abo.wanadoo.fr
- [90.88.22.185]) (Authenticated sender: maxime.ripard@bootlin.com)
- by relay3-d.mail.gandi.net (Postfix) with ESMTPSA id 51B4C60003;
- Mon, 20 May 2019 08:06:17 +0000 (UTC)
-Date: Mon, 20 May 2019 10:06:16 +0200
-From: Maxime Ripard <maxime.ripard@bootlin.com>
-To: Jernej Skrabec <jernej.skrabec@siol.net>
-Subject: Re: [PATCH] media: cedrus: Allow different mod clock rates
-Message-ID: <20190520080616.qlkpru5ypmtsiob6@flea>
-References: <20190518174415.17795-1-jernej.skrabec@siol.net>
+ with ESMTP id X-4OQFqnlF81 for <devel@linuxdriverproject.org>;
+ Mon, 20 May 2019 08:30:29 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id 657BB2078B
+ for <devel@driverdev.osuosl.org>; Mon, 20 May 2019 08:30:29 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id B5A9B20815;
+ Mon, 20 May 2019 08:30:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1558341029;
+ bh=tZDNdez/lL2GlN0vbsvNhon4IRZJAWq0k4THPvqcEfo=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=D5TPMne8RFbuCiGQUHl7kfJHoAQXsPj5GkN6D2NI9WF5vWKj8scGDEdiFEN1NhJPP
+ BW2yAH3DYEgiqxu8qoSjDBSGdYZ5tRq/j6t7eVwr/BByB2fcR4SVx88HirLzKfjP9P
+ huzb74C4c9Iw8Se9qG4CBPrlVZFcwH10BHIolKZk=
+Date: Mon, 20 May 2019 10:30:26 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Geordan Neukum <gneukum1@gmail.com>
+Subject: Re: [PATCH 0/5] Updates to staging driver: kpc_i2c
+Message-ID: <20190520083026.GA13877@kroah.com>
+References: <cover.1558146549.git.gneukum1@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20190518174415.17795-1-jernej.skrabec@siol.net>
-User-Agent: NeoMutt/20180716
+Content-Disposition: inline
+In-Reply-To: <cover.1558146549.git.gneukum1@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,66 +66,24 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org,
- hverkuil-cisco@xs4all.nl, mchehab@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============7855332601711312970=="
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Sat, May 18, 2019 at 02:29:55AM +0000, Geordan Neukum wrote:
+> Attached are an assortment of updates to the kpc_i2c driver in the
+> staging subtree.
 
---===============7855332601711312970==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="z4svvflxvz3jxhmz"
-Content-Disposition: inline
+All now queued up.  I'll rebase my patches that move this file on top of
+yours, as kbuild found some problems with mine, and I'll resend them to
+the list.
 
+thanks,
 
---z4svvflxvz3jxhmz
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Sat, May 18, 2019 at 07:44:15PM +0200, Jernej Skrabec wrote:
-> Some VPU variants may run at higher clock speeds. They actually need
-> extra speed to be capable of decoding more complex codecs like HEVC or
-> bigger image sizes (4K).
->
-> Expand variant structure with mod_rate information.
->
-> Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
-
-Acked-by: Maxime Ripard <maxime.ripard@bootlin.com>
-
-Thanks!
-Maxime
-
---
-Maxime Ripard, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
-
---z4svvflxvz3jxhmz
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCXOJf+AAKCRDj7w1vZxhR
-xYO1AP4hYgh/ydYRZ1dLOpWjomwTaBIE4ZTTvdBGUDoMiNB7vgD/TN9xyBUVpRON
-FUBwqbdUlEFesY7PSvrMnKR0eobJYwg=
-=1oN6
------END PGP SIGNATURE-----
-
---z4svvflxvz3jxhmz--
-
---===============7855332601711312970==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============7855332601711312970==--
