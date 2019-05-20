@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0BD3A22F61
-	for <lists+driverdev-devel@lfdr.de>; Mon, 20 May 2019 10:54:39 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7EB5422F75
+	for <lists+driverdev-devel@lfdr.de>; Mon, 20 May 2019 10:55:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1C99187410;
-	Mon, 20 May 2019 08:54:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 19FC1854A0;
+	Mon, 20 May 2019 08:55:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MGW1af1i6k6O; Mon, 20 May 2019 08:54:36 +0000 (UTC)
+	with ESMTP id WrOR5Do37obm; Mon, 20 May 2019 08:55:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A2AD587368;
-	Mon, 20 May 2019 08:54:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A77378545E;
+	Mon, 20 May 2019 08:55:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CEE451BF2EF
- for <devel@linuxdriverproject.org>; Mon, 20 May 2019 08:54:34 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 884421BF83A
+ for <devel@linuxdriverproject.org>; Mon, 20 May 2019 08:55:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id CBB5781CBE
- for <devel@linuxdriverproject.org>; Mon, 20 May 2019 08:54:34 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 81A6A81F2C
+ for <devel@linuxdriverproject.org>; Mon, 20 May 2019 08:55:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZnXayaoRFgzg for <devel@linuxdriverproject.org>;
- Mon, 20 May 2019 08:54:34 +0000 (UTC)
+ with ESMTP id upiexlfrWfbs for <devel@linuxdriverproject.org>;
+ Mon, 20 May 2019 08:55:41 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3BC0481B74
- for <devel@driverdev.osuosl.org>; Mon, 20 May 2019 08:54:34 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id DB5828545E
+ for <devel@driverdev.osuosl.org>; Mon, 20 May 2019 08:55:41 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 94A5A204FD;
- Mon, 20 May 2019 08:54:33 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 482B2204FD;
+ Mon, 20 May 2019 08:55:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1558342474;
- bh=FuGxZEbM7oawCwQGwg2EzuoBzEWp6BCjit9mc9pQiog=;
+ s=default; t=1558342541;
+ bh=Oee/c2MDV3HNg8hnxn5HjjMAZd7qfmNnxGQ5OCvwopI=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=CLzPaHN+K3lBQVjwdAbX1ZdNL7JPs4n3Jt8lfUV+HGnTAkxTYCXC+zfsBripKgWpx
- EBpoX3l5HN2J3LuZZ3/xcm9XeyR+mS5/G4Iq6MZDfVjDcgSiaTdPxHG/onefYfoJfC
- 2OplTTq3/IjIgqqXGTmmXM3YZMkjJCJnG1yU7UqM=
-Date: Mon, 20 May 2019 10:54:31 +0200
+ b=O5F6SFVQ3q7yTeuTaEgQdA4PTRRLzNIx/A0ruDGhMl2xgHlouZPiVEYr9s/bj2pBJ
+ K8LpDTVsB6Y8VQsty+TM43JBqHxZYQJIy5eyIXTY6uVmKUMhT/hjqM1sD0U1KPZFIQ
+ HVpTsw4KwlXfaRSlvs9gfk4l9jDIM7BxzKH0pRrg=
+Date: Mon, 20 May 2019 10:55:39 +0200
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-Subject: Re: [PATCH] staging: rtl8723bs: os_dep: os_intfs: fix warning
- Unneeded variable: "status". Return "_SUCCESS"
-Message-ID: <20190520085431.GC19183@kroah.com>
-References: <20190519165758.GA6375@hari-Inspiron-1545>
+Subject: Re: [PATCH] staging: rtl8723bs: core: rtw_mlme_ext: fix warning
+ Unneeded variable: "ret"
+Message-ID: <20190520085539.GD19183@kroah.com>
+References: <20190519171227.GA8089@hari-Inspiron-1545>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190519165758.GA6375@hari-Inspiron-1545>
+In-Reply-To: <20190519171227.GA8089@hari-Inspiron-1545>
 User-Agent: Mutt/1.11.4 (2019-03-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -67,66 +67,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Alexander Duyck <alexander.h.duyck@intel.com>, devel@driverdev.osuosl.org,
- Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org,
+Cc: devel@driverdev.osuosl.org, Nishka Dasgupta <nishka.dasgupta@yahoo.com>,
+ Emanuel Bennici <benniciemanuel78@gmail.com>, linux-kernel@vger.kernel.org,
+ Hardik Singh Rathore <hardiksingh.k@gmail.com>,
  Madhumitha Prabakaran <madhumithabiw@gmail.com>,
- Hans de Goede <hdegoede@redhat.com>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
- Emanuel Bennici <benniciemanuel78@gmail.com>, Paolo Abeni <pabeni@redhat.com>
+ Young Xiao <YangX92@hotmail.com>, Henriette Hofmeier <passt@h-hofmeier.de>,
+ Vatsala Narang <vatsalanarang@gmail.com>, Aymen Qader <qader.aymen@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, May 19, 2019 at 10:27:58PM +0530, Hariprasad Kelam wrote:
+On Sun, May 19, 2019 at 10:42:27PM +0530, Hariprasad Kelam wrote:
 > This patch fixes below warnings reported by coccicheck
 > 
-> drivers/staging/rtl8723bs/os_dep/os_intfs.c:228:6-12: Unneeded variable:
-> "status". Return "_SUCCESS" on line 333
-> drivers/staging/rtl8723bs/os_dep/os_intfs.c:607:4-7: Unneeded variable:
-> "ret". Return "_SUCCESS" on line 669
-> drivers/staging/rtl8723bs/os_dep/os_intfs.c:713:4-8: Unneeded variable:
-> "ret8". Return "_SUCCESS" on line 743
-> drivers/staging/rtl8723bs/os_dep/os_intfs.c:1379:5-8: Unneeded variable:
-> "ret". Return "_SUCCESS" on line 1421
-> drivers/staging/rtl8723bs/os_dep/os_intfs.c:1429:5-8: Unneeded variable:
-> "ret". Return "_SUCCESS" on line 1451
-> drivers/staging/rtl8723bs/os_dep/os_intfs.c:1300:5-8: Unneeded variable:
-> "ret". Return "_SUCCESS" on line 1368
+> drivers/staging/rtl8723bs/core/rtw_mlme_ext.c:1888:14-17: Unneeded
+> variable: "ret". Return "_FAIL" on line 1920
+> drivers/staging/rtl8723bs/core/rtw_mlme_ext.c:466:5-8: Unneeded
+> variable: "res". Return "_SUCCESS" on line 494
 > 
 > Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 > ---
->  drivers/staging/rtl8723bs/os_dep/os_intfs.c | 18 ++++++------------
->  1 file changed, 6 insertions(+), 12 deletions(-)
+>  drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 6 ++----
+>  1 file changed, 2 insertions(+), 4 deletions(-)
 > 
-> diff --git a/drivers/staging/rtl8723bs/os_dep/os_intfs.c b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
-> index 8a9d838..71dfac5 100644
-> --- a/drivers/staging/rtl8723bs/os_dep/os_intfs.c
-> +++ b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
-> @@ -225,7 +225,6 @@ static int netdev_close (struct net_device *pnetdev);
+> diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
+> index d110d45..6a2eb66 100644
+> --- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
+> +++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
+> @@ -463,7 +463,6 @@ static u8 init_channel_set(struct adapter *padapter, u8 ChannelPlan, RT_CHANNEL_
 >  
->  static uint loadparam(struct adapter *padapter, _nic_hdl pnetdev)
+>  int	init_mlme_ext_priv(struct adapter *padapter)
 >  {
-> -	uint status = _SUCCESS;
->  	struct registry_priv  *registry_par = &padapter->registrypriv;
+> -	int	res = _SUCCESS;
+>  	struct registry_priv *pregistrypriv = &padapter->registrypriv;
+>  	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
+>  	struct mlme_priv *pmlmepriv = &(padapter->mlmepriv);
+> @@ -491,7 +490,7 @@ int	init_mlme_ext_priv(struct adapter *padapter)
+>  	pmlmeext->fixed_chan = 0xFF;
+>  #endif
 >  
->  	registry_par->chip_version = (u8)rtw_chip_version;
-> @@ -330,7 +329,7 @@ static uint loadparam(struct adapter *padapter, _nic_hdl pnetdev)
->  	registry_par->qos_opt_enable = (u8)rtw_qos_opt_enable;
->  
->  	registry_par->hiq_filter = (u8)rtw_hiq_filter;
-> -	return status;
+> -	return res;
 > +	return _SUCCESS;
->  }
 
-If this, or any of these other functions, can only return "success",
-then why return anything at all?  These should be fixed up to either
-properly return an error if one can happen, or be a void function and
-fix up the caller function as well.
+If it can never fail, it should not be returning a value :(
 
-thanks,
-
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
