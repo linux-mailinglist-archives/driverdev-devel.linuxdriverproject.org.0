@@ -1,40 +1,40 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D2D4124185
-	for <lists+driverdev-devel@lfdr.de>; Mon, 20 May 2019 21:53:08 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AFDD824180
+	for <lists+driverdev-devel@lfdr.de>; Mon, 20 May 2019 21:52:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 674C724ED5;
-	Mon, 20 May 2019 19:53:07 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 35D4B853B9;
+	Mon, 20 May 2019 19:52:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Own4a3NsiDGf; Mon, 20 May 2019 19:53:00 +0000 (UTC)
+	with ESMTP id 3rs3usUhxEd7; Mon, 20 May 2019 19:52:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7F8A724804;
-	Mon, 20 May 2019 19:52:54 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 36FEA84F27;
+	Mon, 20 May 2019 19:52:51 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E5A961BF870
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 027A01BF2FD
  for <driverdev-devel@linuxdriverproject.org>;
  Mon, 20 May 2019 19:52:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id DF29B231F2
+ by whitealder.osuosl.org (Postfix) with ESMTP id F235685074
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 20 May 2019 19:52:49 +0000 (UTC)
+ Mon, 20 May 2019 19:52:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5B6aBwEdLxJz
+ with ESMTP id 8Q6kJB+mvQW7
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 20 May 2019 19:52:47 +0000 (UTC)
+ Mon, 20 May 2019 19:52:48 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from kadath.azazel.net (kadath.azazel.net [81.187.231.250])
- by silver.osuosl.org (Postfix) with ESMTPS id 96C7023223
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 068A08506F
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 20 May 2019 19:52:47 +0000 (UTC)
+ Mon, 20 May 2019 19:52:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=azazel.net; 
  s=20190108;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
@@ -42,23 +42,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=azazel.net;
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=9NcsF98g8oAb5uNTkiSSfFhSehSLdIOEbaMger4gzNc=; b=EQCzUBCQveQNJH7EYTno+pE/lU
- +vKrjnMuCQKnd2HA+GiqLDojvDli9rLD+l7eo5sclX5f5/4yj2mLdgImDSvKwVZEhEmqL3cilE7ba
- /YPAG23lkUKGGNhcc567g9jW1JoSng/d8qsS8SuW9UqCY//NGK75Ml2UcV8UoqnJQ6ksEZKun9xrG
- 1bH3ElVqCZi9b9sCvJobrRvyP8qc5LgqGrLYjPNgGATbE8t8jIUFp2l+726Ev3WyY9KybNDvc5yFf
- QoAcIPt+xX2F0bGi2k0+ulaLbv6NycBvk14UCQAH9Heagm5Or20uHIRAMycbsCFcoNDx1+UlQ2p3/
- 8/pa9lrA==;
+ bh=RzytkayPaRPTVvtPy+fNa6Ft2el60xR0aYvyYL5TUwY=; b=fCsB8hBzrTZ6XWL5vFKdvqQsXo
+ Ps5HdplgktL+ilq3zQpL4w7MDXag90/kBbF+dfOJ+v1OvudY9RGQ+rJlreDHMSM8llTQvMaw8BMVe
+ ykSx9DRrJseGV2wuUmj70pgBAAxXa3isNchQDsunnDKkMYH59CBSvTbjkbW9LbsM713uPyWAhjA1Y
+ sTLbycDx4N0cWDDGdMf1LwaLNMXOll4XHEEKJnUMkIu90TkyB3aPO7y0qH+ceN26aeQ2jokurUOth
+ ODnYCC1038cLAfeLOnxyAr5z3/pFn6y5n1ba8HhvTEfD09nHyoxggwzKyY3gPu/tmlIw60n9ielwP
+ o0Ep4nxg==;
 Received: from ulthar.dreamlands ([192.168.96.2])
  by kadath.azazel.net with esmtp (Exim 4.89)
  (envelope-from <jeremy@azazel.net>)
- id 1hSoKz-0004Ol-OY; Mon, 20 May 2019 20:52:45 +0100
+ id 1hSoL0-0004Ol-2G; Mon, 20 May 2019 20:52:46 +0100
 From: Jeremy Sowden <jeremy@azazel.net>
 To: Linux Driver Project Developer List
  <driverdev-devel@linuxdriverproject.org>
-Subject: [PATCH 8/8] staging: kpc2000: removed superfluous NULL checks from
- device attribute call-backs.
-Date: Mon, 20 May 2019 20:52:34 +0100
-Message-Id: <20190520195243.917-8-jeremy@azazel.net>
+Subject: [PATCH v4 0/8] staging: kpc2000: another batch of fixes
+Date: Mon, 20 May 2019 20:52:35 +0100
+Message-Id: <20190520195243.917-9-jeremy@azazel.net>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190520195243.917-1-jeremy@azazel.net>
 References: <20190517110315.10646-1-jeremy@azazel.net>
@@ -85,111 +84,67 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-All the attribute show call-backs check whether pcard is NULL.  However,
-pci_set_drvdata(pdev, pcard) is called before the sysfs files are
-created during probe, and pci_set_drvdata(pdev, NULL) is not called
-until after they are destroyed during remove; therefore, pcard will not
-be NULL, and we can drop the checks.
+There are a number relating to device attributes, one formatting patch,
+and another that changes how card numbers are assigned.
 
-Signed-off-by: Jeremy Sowden <jeremy@azazel.net>
----
- drivers/staging/kpc2000/kpc2000/core.c | 27 --------------------------
- 1 file changed, 27 deletions(-)
+Greg reckoned that the changes to the code in the attribute call-backs
+that gets the struct kpc2000 object from the struct device object were
+broken.  I've reviewed them and split them into two patches because I
+was doing two different things in the previous patch.  I *think* they
+are correct, but I've moved them to the end of the series in case I
+really have just got the wrong end of the stick, so they can easily be
+dropped.
 
-diff --git a/drivers/staging/kpc2000/kpc2000/core.c b/drivers/staging/kpc2000/kpc2000/core.c
-index f6043ef7b55b..4a0af2645747 100644
---- a/drivers/staging/kpc2000/kpc2000/core.c
-+++ b/drivers/staging/kpc2000/kpc2000/core.c
-@@ -30,9 +30,6 @@ static ssize_t ssid_show(struct device *dev, struct device_attribute *attr,
- {
- 	struct kp2000_device *pcard = dev_get_drvdata(dev);
- 
--	if (!pcard)
--		return -ENXIO;
--
- 	return sprintf(buf, "%016llx\n", pcard->ssid);
- }
- static DEVICE_ATTR_RO(ssid);
-@@ -42,9 +39,6 @@ static ssize_t ddna_show(struct device *dev, struct device_attribute *attr,
- {
- 	struct kp2000_device *pcard = dev_get_drvdata(dev);
- 
--	if (!pcard)
--		return -ENXIO;
--
- 	return sprintf(buf, "%016llx\n", pcard->ddna);
- }
- static DEVICE_ATTR_RO(ddna);
-@@ -54,9 +48,6 @@ static ssize_t card_id_show(struct device *dev, struct device_attribute *attr,
- {
- 	struct kp2000_device *pcard = dev_get_drvdata(dev);
- 
--	if (!pcard)
--		return -ENXIO;
--
- 	return sprintf(buf, "%08x\n", pcard->card_id);
- }
- static DEVICE_ATTR_RO(card_id);
-@@ -66,9 +57,6 @@ static ssize_t hw_rev_show(struct device *dev, struct device_attribute *attr,
- {
- 	struct kp2000_device *pcard = dev_get_drvdata(dev);
- 
--	if (!pcard)
--		return -ENXIO;
--
- 	return sprintf(buf, "%08x\n", pcard->hardware_revision);
- }
- static DEVICE_ATTR_RO(hw_rev);
-@@ -78,9 +66,6 @@ static ssize_t build_show(struct device *dev, struct device_attribute *attr,
- {
- 	struct kp2000_device *pcard = dev_get_drvdata(dev);
- 
--	if (!pcard)
--		return -ENXIO;
--
- 	return sprintf(buf, "%08x\n", pcard->build_version);
- }
- static DEVICE_ATTR_RO(build);
-@@ -90,9 +75,6 @@ static ssize_t build_date_show(struct device *dev,
- {
- 	struct kp2000_device *pcard = dev_get_drvdata(dev);
- 
--	if (!pcard)
--		return -ENXIO;
--
- 	return sprintf(buf, "%08x\n", pcard->build_datestamp);
- }
- static DEVICE_ATTR_RO(build_date);
-@@ -102,9 +84,6 @@ static ssize_t build_time_show(struct device *dev,
- {
- 	struct kp2000_device *pcard = dev_get_drvdata(dev);
- 
--	if (!pcard)
--		return -ENXIO;
--
- 	return sprintf(buf, "%08x\n", pcard->build_timestamp);
- }
- static DEVICE_ATTR_RO(build_time);
-@@ -115,9 +94,6 @@ static ssize_t cpld_reg_show(struct device *dev, struct device_attribute *attr,
- 	struct kp2000_device *pcard = dev_get_drvdata(dev);
- 	u64 val;
- 
--	if (!pcard)
--		return -ENXIO;
--
- 	val = readq(pcard->sysinfo_regs_base + REG_CPLD_CONFIG);
- 	return sprintf(buf, "%016llx\n", val);
- }
-@@ -131,9 +107,6 @@ static ssize_t cpld_reconfigure(struct device *dev,
- 	long wr_val;
- 	int rv;
- 
--	if (!pcard)
--		return -ENXIO;
--
- 	rv = kstrtol(buf, 0, &wr_val);
- 	if (rv < 0)
- 		return rv;
+Jeremy Sowden (8):
+  staging: kpc2000: added separate show functions for kpc_uio_class
+    device attributes, defined them as read-only and declared them
+    static.
+  staging: kpc2000: removed two kpc_uio_class device attributes.
+  staging: kpc2000: improved formatting of core.c.
+  staging: kpc2000: added a helper to get struct kp2000_device from
+    struct device.
+  staging: kpc2000: added separate show functions for readable kp device
+    attributes, defined them as read-only, and declared them static.
+  staging: kpc2000: use IDA to assign card numbers.
+  staging: kpc2000: simplified kp2000_device retrieval in device
+    attribute call-backs.
+  staging: kpc2000: removed superfluous NULL checks from device
+    attribute call-backs.
+
+ drivers/staging/kpc2000/TODO                  |   1 -
+ drivers/staging/kpc2000/kpc2000/cell_probe.c  | 123 ++-
+ drivers/staging/kpc2000/kpc2000/core.c        | 859 ++++++++++--------
+ .../staging/kpc2000/kpc2000/kp2000_module.c   |   1 +
+ drivers/staging/kpc2000/kpc2000/pcie.h        |   9 +-
+ 5 files changed, 558 insertions(+), 435 deletions(-)
+
+Since v3:
+
+  * added the formatting patch for core.c and folded the kp device
+    attribute formatting fixes into it;
+  * added the patch that introduces get_pcard();
+  * added missing clean-up of IDA and reworded the commit message;
+  * split the patch that simplified the retrieval of struct
+    kp2000_device from struct dev in the show call-backs into two, and
+    moved them to the end of the series.
+
+Since v2:
+
+  * dropped the white-space patch since Greg has applied it;
+  * added a reported-by tag to patch that drops two attributes;
+  * merged the patches that declared attributes static with the ones
+    that split up the show call-backs;
+  * moved the attribute definitions next to their call-backs;
+  * moved the patch that fixed the card-number race to the end of the
+  * series;
+  * use an IDA to fix the card-number race, not an atomic_t.
+
+Since v1:
+
+  * merged the DEVICE_ATTR_RO patches with the ones that split up the
+    show call-backs;
+  * converted the show call-backs to use sprintf, instead of scnprintf.
+
 -- 
 2.20.1
 
