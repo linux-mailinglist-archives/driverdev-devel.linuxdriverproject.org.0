@@ -1,64 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4984A24872
-	for <lists+driverdev-devel@lfdr.de>; Tue, 21 May 2019 08:54:08 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6A3A82497D
+	for <lists+driverdev-devel@lfdr.de>; Tue, 21 May 2019 09:56:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 55E4722E3F;
-	Tue, 21 May 2019 06:54:06 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6E12385E13;
+	Tue, 21 May 2019 07:56:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id E7NNYewPSIEr; Tue, 21 May 2019 06:54:05 +0000 (UTC)
+	with ESMTP id uCs0Jd6_GN8W; Tue, 21 May 2019 07:56:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0216E229D4;
-	Tue, 21 May 2019 06:54:04 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D5E1285DF9;
+	Tue, 21 May 2019 07:56:42 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 246131BF328
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 33B5F1BF310
  for <driverdev-devel@linuxdriverproject.org>;
- Tue, 21 May 2019 06:54:02 +0000 (UTC)
+ Tue, 21 May 2019 07:56:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D54702284F
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 300E785CFF
  for <driverdev-devel@linuxdriverproject.org>;
- Tue, 21 May 2019 06:54:01 +0000 (UTC)
+ Tue, 21 May 2019 07:56:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id r80rkXndlUwi
+ with ESMTP id z4uRVCS6lkEv
  for <driverdev-devel@linuxdriverproject.org>;
- Tue, 21 May 2019 06:54:00 +0000 (UTC)
-X-Greylist: delayed 00:09:22 by SQLgrey-1.7.6
-Received: from icp-osb-irony-out6.external.iinet.net.au
- (icp-osb-irony-out6.external.iinet.net.au [203.59.1.106])
- by silver.osuosl.org (Postfix) with ESMTP id 650D52278E
+ Tue, 21 May 2019 07:56:38 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from kadath.azazel.net (kadath.azazel.net [81.187.231.250])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C734A85C2E
  for <driverdev-devel@linuxdriverproject.org>;
- Tue, 21 May 2019 06:54:00 +0000 (UTC)
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-Anti-Spam-Result: =?us-ascii?q?A2AhAgBBneNc/zXSMGcNWBwBAQEEAQE?=
- =?us-ascii?q?HBAEBgWWBZ4ZSk1gBAQEBAQEGgQgIhAOFcIlvhxMJAQEBAQEBAQEBNwEBAYQ?=
- =?us-ascii?q?/gkU4EwEDAQEBBAEBAQEDAYZiJxVBGw0NAiYCXw0IAQGDHoF3pRpxgS8ahS6?=
- =?us-ascii?q?DLYFGgQwogWCKCHiBB4EQKAyCXz6HToJYBIsoiBuBJJM1CYIPhTaNQQYbjF4?=
- =?us-ascii?q?DiUUto3eBeDMaCCgIgyiDMgECjS2PHAEB?=
-X-IPAS-Result: =?us-ascii?q?A2AhAgBBneNc/zXSMGcNWBwBAQEEAQEHBAEBgWWBZ4ZSk?=
- =?us-ascii?q?1gBAQEBAQEGgQgIhAOFcIlvhxMJAQEBAQEBAQEBNwEBAYQ/gkU4EwEDAQEBB?=
- =?us-ascii?q?AEBAQEDAYZiJxVBGw0NAiYCXw0IAQGDHoF3pRpxgS8ahS6DLYFGgQwogWCKC?=
- =?us-ascii?q?HiBB4EQKAyCXz6HToJYBIsoiBuBJJM1CYIPhTaNQQYbjF4DiUUto3eBeDMaC?=
- =?us-ascii?q?CgIgyiDMgECjS2PHAEB?=
-X-IronPort-AV: E=Sophos;i="5.60,494,1549900800"; d="scan'208";a="161492646"
-Received: from unknown (HELO [10.44.0.22]) ([103.48.210.53])
- by icp-osb-irony-out6.iinet.net.au with ESMTP; 21 May 2019 14:44:35 +0800
-To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-From: Greg Ungerer <gerg@kernel.org>
-Subject: Re: staging: mt7621-pci: factor out 'mt7621_pcie_enable_port' function
-Message-ID: <678a78fd-a7f4-5a1f-9819-51c5a0731877@kernel.org>
-Date: Tue, 21 May 2019 16:44:33 +1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+ Tue, 21 May 2019 07:56:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=azazel.net; 
+ s=20190108;
+ h=Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject
+ :Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:Content-Description:
+ Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+ In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=35UjC/H94hhMj83QUH61QgtmgH7PKtbrKKcudcRvGsI=; b=hZN07W/dZxFQqWjzOTE3oVYHBC
+ 27pXnZ2844m8Y80p4B/JTkuHGsd3rEvpWrTqwADOJqjeCH8NLKr8sICdKXjcplgWizwNdUTO0/pn0
+ DnFtC+2Uha33tj2R+NXvEebGZxRTIJs2tlGo2uY0uxpPmo0njf/HKHSHD8aqWH/afwLsmnsW+yUB9
+ uFwDfY4qq4Vvm4gjwfwYYSlmIpCZstHW7gmR9DCpK0Rr/vQgKKvLe1fiU4S3FUhcPEPsexew6vydg
+ CyqwaGrbnMXdnt59HaneaKN8H3eeVV0mUiXDq3GAVB/lqaPHBqn1pzp6PDqg6rgXjCq2SW82Ky9p9
+ UPu7LG7w==;
+Received: from ulthar.dreamlands ([192.168.96.2])
+ by kadath.azazel.net with esmtp (Exim 4.89)
+ (envelope-from <jeremy@azazel.net>)
+ id 1hSzdT-0003vc-1Y; Tue, 21 May 2019 08:56:35 +0100
+From: Jeremy Sowden <jeremy@azazel.net>
+To: Linux Driver Project Developer List
+ <driverdev-devel@linuxdriverproject.org>
+Subject: [PATCH v5 0/8] staging: kpc2000: another batch of fixes
+Date: Tue, 21 May 2019 08:56:27 +0100
+Message-Id: <20190521075635.30458-1-jeremy@azazel.net>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Language: en-US
+X-SA-Exim-Connect-IP: 192.168.96.2
+X-SA-Exim-Mail-From: jeremy@azazel.net
+X-SA-Exim-Scanned: No (on kadath.azazel.net); SAEximRunCond expanded to false
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,86 +75,81 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: NeilBrown <neil@brown.name>, driverdev-devel@linuxdriverproject.org
+Cc: Greg KH <gregkh@linuxfoundation.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+There are a number relating to device attributes, one formatting patch,
+and another that changes how card numbers are assigned.
 
-Hi Sergio,
+Greg reckoned that the changes to the code in the attribute call-backs
+that gets the struct kpc2000 object from the struct device object were
+broken.  I've reviewed them and split them into two patches because I
+was doing two different things in the previous patch.  I *think* they
+are correct, but I've moved them to the end of the series in case I
+really have just got the wrong end of the stick, so they can easily be
+dropped.
 
-I am working on a couple of different MedaiTek MT7621 based platforms
-and am having problems with the PCI bus on those.
+Jeremy Sowden (8):
+  staging: kpc2000: added separate show functions for kpc_uio_class
+    device attributes, defined them as read-only and declared them
+    static.
+  staging: kpc2000: removed two kpc_uio_class device attributes.
+  staging: kpc2000: improved formatting of core.c.
+  staging: kpc2000: added a helper to get struct kp2000_device from
+    struct device.
+  staging: kpc2000: added separate show functions for readable kp device
+    attributes, defined them as read-only, and declared them static.
+  staging: kpc2000: use IDA to assign card numbers.
+  staging: kpc2000: simplified kp2000_device retrieval in device
+    attribute call-backs.
+  staging: kpc2000: removed superfluous NULL checks from device
+    attribute call-backs.
 
-Big picture is that the PCI bus on my boards worked in linux-4.20
-(with the obvious compilation breakage fixed), and it does not work
-in linux-5.0 or linux-5.1.
+ drivers/staging/kpc2000/TODO                  |   1 -
+ drivers/staging/kpc2000/kpc2000/cell_probe.c  | 123 ++-
+ drivers/staging/kpc2000/kpc2000/core.c        | 859 ++++++++++--------
+ .../staging/kpc2000/kpc2000/kp2000_module.c   |   1 +
+ drivers/staging/kpc2000/kpc2000/pcie.h        |   9 +-
+ 5 files changed, 558 insertions(+), 435 deletions(-)
 
-On linux-4.20 the PCI bus probe at kernel boot looks like this:
+Since v4:
 
-***** Xtal 40MHz *****
-PCIE1 no card, disable it(RST&CLK)
-PCIE2 no card, disable it(RST&CLK)
-PCIE0 enabled
-PCI coherence region base: 0x60000000, mask/settings: 0xf0000002
-mt7621-pci 1e140000.pcie: PCI host bridge to bus 0000:00
-pci_bus 0000:00: root bus resource [io  0xffffffff]
-pci_bus 0000:00: root bus resource [mem 0x60000000-0x6fffffff]
-pci_bus 0000:00: root bus resource [bus 00-ff]
-pci 0000:00:00.0: bridge configuration invalid ([bus 00-00]), reconfiguring
-pci 0000:00:00.0: PCI bridge to [bus 01-ff]
-pci 0000:00:00.0: BAR 0: no space for [mem size 0x80000000]
-pci 0000:00:00.0: BAR 0: failed to assign [mem size 0x80000000]
-pci 0000:00:00.0: BAR 8: assigned [mem 0x60000000-0x601fffff]
-pci 0000:00:00.0: BAR 9: assigned [mem 0x60200000-0x602fffff pref]
-pci 0000:00:00.0: BAR 1: assigned [mem 0x60300000-0x6030ffff]
-pci 0000:00:00.0: BAR 7: no space for [io  size 0x1000]
-pci 0000:00:00.0: BAR 7: failed to assign [io  size 0x1000]
-pci 0000:01:00.0: BAR 0: assigned [mem 0x60000000-0x601fffff 64bit]
-pci 0000:01:00.0: BAR 6: assigned [mem 0x60200000-0x6020ffff pref]
-pci 0000:00:00.0: PCI bridge to [bus 01]
-pci 0000:00:00.0:   bridge window [mem 0x60000000-0x601fffff]
-pci 0000:00:00.0:   bridge window [mem 0x60200000-0x602fffff pref]
+  * rebased on to staging-next to pick up Greg's most recent changes.
+  * made a few changes to some commit messages.
+  * sent out the right versions of the patches.
 
-The PCI bus works, and devices on it are found and work as expected.
+Since v3:
 
-On linux-5.1 the PCI initialization and probe fails, with the kernel
-locking up:
+  * added the formatting patch for core.c and folded the kp device
+    attribute formatting fixes into it;
+  * added the patch that introduces get_pcard();
+  * added missing clean-up of IDA and reworded the commit message;
+  * split the patch that simplified the retrieval of struct
+    kp2000_device from struct dev in the show call-backs into two, and
+    moved them to the end of the series.
 
-...
-mt7621-pci 1e140000.pcie: Port 454043648 N_FTS = 0
-mt7621-pci-phy 1e149000.pcie-phy: Xtal is 40MHz
-mt7621-pci 1e140000.pcie: pcie0 no card, disable it (RST & CLK)
-mt7621-pci 1e140000.pcie: Initiating port 0 failed
-mt7621-pci 1e140000.pcie: Port 454043648 N_FTS = 1
-mt7621-pci-phy 1e149000.pcie-phy: Xtal is 40MHz
-mt7621-pci 1e140000.pcie: pcie1 no card, disable it (RST & CLK)
-mt7621-pci 1e140000.pcie: Initiating port 1 failed
-mt7621-pci 1e140000.pcie: Port 454043648 N_FTS = 2
-mt7621-pci-phy 1e14a000.pcie-phy: Xtal is 40MHz
-mt7621-pci 1e140000.pcie: pcie2 no card, disable it (RST & CLK)
+Since v2:
 
-The lockup is in mt7621_pci_phy_power_off(), at the phy_read() call.
-If I modify that code and return immediately in that mt7621_pci_phy_power_off()
-the systemboots - but obviously from the above you can see that the PCI bus
-and no devices were detected.
+  * dropped the white-space patch since Greg has applied it;
+  * added a reported-by tag to patch that drops two attributes;
+  * merged the patches that declared attributes static with the ones
+    that split up the show call-backs;
+  * moved the attribute definitions next to their call-backs;
+  * moved the patch that fixed the card-number race to the end of the
+  * series;
+  * use an IDA to fix the card-number race, not an atomic_t.
 
-Copying in the working linux-4.20 pci-mt7621.c into place on
-linux-5.1 results in a working PCI bus also. I have 2 very different
-MT7621 based boards, and they both exhibit this same problem.
+Since v1:
 
-I tried bisecting that back to find the problem commit.
-It was not at all easy with quite a few of the mt7621 PCI related
-patches not building in isolation while bisecting. But ultimately
-I got to commit 745eeeac68d7 ("staging: mt7621-pci: factor out
-'mt7621_pcie_enable_port' function").
+  * merged the DEVICE_ATTR_RO patches with the ones that split up the
+    show call-backs;
+  * converted the show call-backs to use sprintf, instead of scnprintf.
 
-Any idea what might be going wrong here?
-
-Regards
-Greg
-
+-- 
+2.20.1
 
 _______________________________________________
 devel mailing list
