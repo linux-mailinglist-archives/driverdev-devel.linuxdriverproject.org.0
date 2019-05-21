@@ -1,77 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3A86D25626
-	for <lists+driverdev-devel@lfdr.de>; Tue, 21 May 2019 18:54:04 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3897F86B78;
-	Tue, 21 May 2019 16:54:02 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Tu61NjI3cJ4m; Tue, 21 May 2019 16:54:01 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E332C868CA;
-	Tue, 21 May 2019 16:54:00 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2ED1A1BF29D
- for <devel@linuxdriverproject.org>; Tue, 21 May 2019 16:53:58 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id C940E2564F
+	for <lists+driverdev-devel@lfdr.de>; Tue, 21 May 2019 19:05:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2BD2687AFF
- for <devel@linuxdriverproject.org>; Tue, 21 May 2019 16:53:58 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CA88387BFE;
+	Tue, 21 May 2019 17:05:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id xCN93W02eJ3Q; Tue, 21 May 2019 17:05:31 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id CEF8687BB6;
+	Tue, 21 May 2019 17:05:30 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id F38C61BF57F
+ for <devel@linuxdriverproject.org>; Tue, 21 May 2019 17:05:28 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id ED45E84693
+ for <devel@linuxdriverproject.org>; Tue, 21 May 2019 17:05:28 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2BMAXVBYHXHM for <devel@linuxdriverproject.org>;
- Tue, 21 May 2019 16:53:57 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f65.google.com (mail-ot1-f65.google.com
- [209.85.210.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id AB5C687AFE
- for <devel@driverdev.osuosl.org>; Tue, 21 May 2019 16:53:57 +0000 (UTC)
-Received: by mail-ot1-f65.google.com with SMTP id l25so8623388otp.8
- for <devel@driverdev.osuosl.org>; Tue, 21 May 2019 09:53:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=3f7mHmRjk7fLWcBIYMRJs7xMo0wDV6TbfEsmzCjNuX4=;
- b=IexpasiRg+Bb7Na8aIfMp4uMnKTIcQpKXn6m8U8PPT7pxafFono+NZVqxQql/np9E2
- uVV6nA0U7vA3OW1s18+qiJxODFopSpD0GbWPjQHmofSJH0LBwukRLM1K/3IGMaPrbbo9
- +Us7mESrsAZ/WC75Jjfk330nEuV/GmPChlwqBs0SCg3bo6kg+FcxWkpySkBlBwqrarfE
- dsqzHSmpv+WAUeSCfdOJctkthdw/8BOS2rUHZDSgrTBdQSa4I/7lOvnw5ZZucmu2QbTT
- hy749+PCiUxMl5TUHJX7V2sM/A0O2MKc5BSpocUfJcbKSf/Jz6t8qMcX9Kd/JcIWbK34
- UeWg==
+ with ESMTP id vKc4Dbu9Euj7 for <devel@linuxdriverproject.org>;
+ Tue, 21 May 2019 17:05:27 +0000 (UTC)
+X-Greylist: delayed 00:08:12 by SQLgrey-1.7.6
+Received: from mail-wm1-f42.google.com (mail-wm1-f42.google.com
+ [209.85.128.42])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9429A84542
+ for <devel@driverdev.osuosl.org>; Tue, 21 May 2019 17:05:27 +0000 (UTC)
+Received: by mail-wm1-f42.google.com with SMTP id x64so3732424wmb.5
+ for <devel@driverdev.osuosl.org>; Tue, 21 May 2019 10:05:27 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=3f7mHmRjk7fLWcBIYMRJs7xMo0wDV6TbfEsmzCjNuX4=;
- b=tIBPXm4VRAFInUTj2X55Pqd9j+2UwDguVTqicg4D2hUxIzAWKsW6uJ40Vak1Ahpi5b
- RuoBPcExCVaEuKOGmuo3wcJa/6xXSv20sdHjwYE9nrRWwbRQ8Qal+BGVwCabZg+Nd6cX
- 9f7o+apX6kC/tMDP2ZM3bFvtZaiZPukDzyNZ4QGHXBftOZbaS6n+Ry7TxVuzZGRR9zh9
- hJx2d1Pa6eRtFMK+9dXYGc1qDCrdY6YE9DH2vLBgKa70lo/49/6OpUeQwLh6m+aqqYWu
- UdGMSHu06Nm2GBaWBq2NUTrUipkJuEahxUOg4QSdAuCgB03Bs/AtkfyzkA1FvLw3xygo
- TzgQ==
-X-Gm-Message-State: APjAAAWs2IVGcrMS7JAkywZXkql76njwVjI3a10iSFE77hlgDhG5VI05
- DnCkfFOBuIqZQQ5SzzMIp+DXuc/c+Bn8A89Hkquzbg==
-X-Google-Smtp-Source: APXvYqxWCvUByFG2A9trYQwGtggkpf6EvuOWMVhfCbHUQTZERoRJIl5MIYzVfUQfM1QDA7Nzr1VvoJ74I8AXO/wfTuU=
-X-Received: by 2002:a9d:68c5:: with SMTP id i5mr5230452oto.224.1558457636794; 
- Tue, 21 May 2019 09:53:56 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=XTdOu4nTOIaGJrQvdIq30fU33+PO+XLG2cxp+DkWGwM=;
+ b=uGbGsf3Io5yeO9/gIj6yY19PxoeAnuCeyw3XDbGqX6wuizj3W0Fj7yPMEaR45QE1/O
+ 3R7DLxwHQaIn9JTe5hWuUiWx5BjlGtpDVgW8tE7yWFFSwc4XjcRdtpwhAx3qZITQXuMY
+ ZXbzRbhvSjfyW8hnSSaJdPn8U0gbIh37BfIyQuTjATAohhkK4NhHAHZNkDb64Xe1XOVy
+ EmdtdJSqncmppwG2L95nF5sQs5xtYiYNSP3R7pBJ+Gf58of+Pcw887SPrqdSKNiLNXgH
+ AvxhPMibNMakDzpVga47ebEtVj0lyj+mEav6pc86Q4jbQiNHS3c1caZksNmkKsmTyG+v
+ 13Jw==
+X-Gm-Message-State: APjAAAUW17KdDJMi6pNHu31OsJGuEkkoRmwLuAa7ikxyuU8LUX/x44jp
+ SgMv4IebhBudA6J29kc7SwpKTTm6YtU=
+X-Google-Smtp-Source: APXvYqye+AWXb5HCFzKAmuUc2hl5iceM97h0XJnX91W66r4leZp33RloUJinRkTaK/kyq8GRl79IjQ==
+X-Received: by 2002:a1c:7d8e:: with SMTP id y136mr4020134wmc.129.1558457834031; 
+ Tue, 21 May 2019 09:57:14 -0700 (PDT)
+Received: from localhost.localdomain ([2a01:4f8:1c0c:6c86:46e0:a7ad:5246:f04d])
+ by smtp.gmail.com with ESMTPSA id g11sm6944142wrq.89.2019.05.21.09.57.12
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Tue, 21 May 2019 09:57:13 -0700 (PDT)
+Subject: Re: staging: Add rtl8723bs sdio wifi driver
+To: Colin Ian King <colin.king@canonical.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org
+References: <9c766350-db9b-7a88-5655-54d03c8d2703@canonical.com>
+From: Hans de Goede <hdegoede@redhat.com>
+Message-ID: <4ef8b4e0-9e70-d800-2a68-cb539995d41f@redhat.com>
+Date: Tue, 21 May 2019 18:57:12 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-References: <20190521145116.24378-1-TheSven73@gmail.com>
- <20190521151059.GM31203@kadam>
- <CAGngYiXLN-oT_b9d1kRyBrrFMALhKO-KnuwXB0MjVq0NFc01Xw@mail.gmail.com>
- <20190521154241.GB15818@kroah.com>
- <CAGngYiU_iK5=swD_DA5PcOeYFT0zTrdQ+30Db0YrahuEukEP_A@mail.gmail.com>
- <20190521162451.GA19139@kroah.com>
-In-Reply-To: <20190521162451.GA19139@kroah.com>
-From: Sven Van Asbroeck <thesven73@gmail.com>
-Date: Tue, 21 May 2019 12:53:45 -0400
-Message-ID: <CAGngYiUSgtAXL+utPHz79OEbvrL6_TD9Wfkc6396E9vwQHCFKw@mail.gmail.com>
-Subject: Re: [PATCH] staging: fieldbus: anybuss: force address space conversion
-To: Greg KH <gregkh@linuxfoundation.org>
+In-Reply-To: <9c766350-db9b-7a88-5655-54d03c8d2703@canonical.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,35 +79,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Dan Carpenter <dan.carpenter@oracle.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, May 21, 2019 at 12:24 PM Greg KH <gregkh@linuxfoundation.org> wrote:
->
-> what is so odd about this code that makes you have to jump through
-> strange hoops that no other driver has to?
->
+Hi,
 
-Basically because it creates a regmap which accesses __iomem memory,
-instead of i2c/spi.
+On 5/21/19 3:49 PM, Colin Ian King wrote:
+> Hi,
+> 
+> static analysis with Coverity has detected an issues in the rtl8723bs
+> wifi driver:
+> 
+> File: drivers/staging/rtl8723bs/os_dep/ioctl_linux.c in function
+> rtw_dbg_port():
+> 
+> CID 18480: Operands don't affect result (CONSTANT_EXPRESSION_RESULT)
+> dead_error_condition: The condition (extra_arg & 7U) > 7U cannot be true.
+> 
+>          if ((extra_arg & 0x07) > 0x07)
+>                  padapter->driver_ampdu_spacing = 0xFF;
+>          else
+>                  padapter->driver_ampdu_spacing = extra_arg;
+> 
+> 
+> I'm not sure if the mask is (in)correct or the value it is being
+> compared to 0x07 is (in)correct (or both!)
 
-This was done because future hardware in the company's pipeline will access
-device register space through spi, instead of through a parallel memory bus.
+Hmm, after looking at the rest of the code, it is clear that valid
+values for driver_ampdu_spacing or 0 - 7, otherwise it should
+be set to 0xff which means use the driver default.
 
-The lower driver just has to create the appropriate regmap, __iomem or
-spi, and pass it to the
-upper driver, which does not have to know about the exact way the h/w
-gets accessed.
-So regmap is used as a hw abstraction layer.
+I will send a patch fixing this.
 
-The issue here is that a regmap context is a 'void *' yet the parallel
-memory base pointer
-is 'void __iomem *'. And so the two are incompatible.
+Regards,
+
+Hans
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
