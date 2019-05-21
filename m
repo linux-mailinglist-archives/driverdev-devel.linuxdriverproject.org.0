@@ -1,61 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 63EFB24803
-	for <lists+driverdev-devel@lfdr.de>; Tue, 21 May 2019 08:24:40 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4984A24872
+	for <lists+driverdev-devel@lfdr.de>; Tue, 21 May 2019 08:54:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C55E385BCC;
-	Tue, 21 May 2019 06:24:37 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 55E4722E3F;
+	Tue, 21 May 2019 06:54:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id miJsj0kWx+nm; Tue, 21 May 2019 06:24:37 +0000 (UTC)
+	with ESMTP id E7NNYewPSIEr; Tue, 21 May 2019 06:54:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5F7E081B75;
-	Tue, 21 May 2019 06:24:36 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by silver.osuosl.org (Postfix) with ESMTP id 0216E229D4;
+	Tue, 21 May 2019 06:54:04 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6D8C51BF328
- for <devel@linuxdriverproject.org>; Tue, 21 May 2019 06:24:34 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 246131BF328
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 21 May 2019 06:54:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 6A5D481B75
- for <devel@linuxdriverproject.org>; Tue, 21 May 2019 06:24:34 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id D54702284F
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 21 May 2019 06:54:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XhDwGEaG3tmL for <devel@linuxdriverproject.org>;
- Tue, 21 May 2019 06:24:33 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D60A281B72
- for <devel@driverdev.osuosl.org>; Tue, 21 May 2019 06:24:33 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 31ADE2173C;
- Tue, 21 May 2019 06:24:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1558419873;
- bh=ZshP8rr+U+KG2zbDeHbOGcRJBSaS1gDqRvgJbWlilIc=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=A/egFiqsIZW1N0Uw03GJahczQcAmMMW9SO+vfStlvHvrDZjM7cGIVPKKLe4N5mY0M
- lwacbLuTBuecVsR/mbQCVWmIDUc53d+Aidtm8iQPEinHj7s9Xu9e9WJNXRgwZDX/bU
- tNXboyHWpBw1E+2X4UTGvZwcFHedzHhOoRtz5QzA=
-Date: Tue, 21 May 2019 08:24:30 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
-Subject: Re: [PATCH 6/7] staging: vt6656: clean-up registers initialization
- error path
-Message-ID: <20190521062430.GA13860@kroah.com>
-References: <20190520163844.1225-1-quentin.deslandes@itdev.co.uk>
- <20190520163844.1225-7-quentin.deslandes@itdev.co.uk>
+ with ESMTP id r80rkXndlUwi
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 21 May 2019 06:54:00 +0000 (UTC)
+X-Greylist: delayed 00:09:22 by SQLgrey-1.7.6
+Received: from icp-osb-irony-out6.external.iinet.net.au
+ (icp-osb-irony-out6.external.iinet.net.au [203.59.1.106])
+ by silver.osuosl.org (Postfix) with ESMTP id 650D52278E
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 21 May 2019 06:54:00 +0000 (UTC)
+X-IronPort-Anti-Spam-Filtered: true
+X-IronPort-Anti-Spam-Result: =?us-ascii?q?A2AhAgBBneNc/zXSMGcNWBwBAQEEAQE?=
+ =?us-ascii?q?HBAEBgWWBZ4ZSk1gBAQEBAQEGgQgIhAOFcIlvhxMJAQEBAQEBAQEBNwEBAYQ?=
+ =?us-ascii?q?/gkU4EwEDAQEBBAEBAQEDAYZiJxVBGw0NAiYCXw0IAQGDHoF3pRpxgS8ahS6?=
+ =?us-ascii?q?DLYFGgQwogWCKCHiBB4EQKAyCXz6HToJYBIsoiBuBJJM1CYIPhTaNQQYbjF4?=
+ =?us-ascii?q?DiUUto3eBeDMaCCgIgyiDMgECjS2PHAEB?=
+X-IPAS-Result: =?us-ascii?q?A2AhAgBBneNc/zXSMGcNWBwBAQEEAQEHBAEBgWWBZ4ZSk?=
+ =?us-ascii?q?1gBAQEBAQEGgQgIhAOFcIlvhxMJAQEBAQEBAQEBNwEBAYQ/gkU4EwEDAQEBB?=
+ =?us-ascii?q?AEBAQEDAYZiJxVBGw0NAiYCXw0IAQGDHoF3pRpxgS8ahS6DLYFGgQwogWCKC?=
+ =?us-ascii?q?HiBB4EQKAyCXz6HToJYBIsoiBuBJJM1CYIPhTaNQQYbjF4DiUUto3eBeDMaC?=
+ =?us-ascii?q?CgIgyiDMgECjS2PHAEB?=
+X-IronPort-AV: E=Sophos;i="5.60,494,1549900800"; d="scan'208";a="161492646"
+Received: from unknown (HELO [10.44.0.22]) ([103.48.210.53])
+ by icp-osb-irony-out6.iinet.net.au with ESMTP; 21 May 2019 14:44:35 +0800
+To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+From: Greg Ungerer <gerg@kernel.org>
+Subject: Re: staging: mt7621-pci: factor out 'mt7621_pcie_enable_port' function
+Message-ID: <678a78fd-a7f4-5a1f-9819-51c5a0731877@kernel.org>
+Date: Tue, 21 May 2019 16:44:33 +1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190520163844.1225-7-quentin.deslandes@itdev.co.uk>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,67 +71,87 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- Nishad Kamdar <nishadkamdar@gmail.com>, Mukesh Ojha <mojha@codeaurora.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Forest Bond <forest@alittletooquiet.net>,
- Ojaswin Mujoo <ojaswin25111998@gmail.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: NeilBrown <neil@brown.name>, driverdev-devel@linuxdriverproject.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, May 20, 2019 at 04:39:04PM +0000, Quentin Deslandes wrote:
-> Avoid discarding function's return code during register initialization.
-> Handle it instead and return 0 on success or a negative errno value on
-> error.
-> 
-> Signed-off-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
-> ---
->  drivers/staging/vt6656/main_usb.c | 163 ++++++++++++++++++------------
->  1 file changed, 96 insertions(+), 67 deletions(-)
-> 
-> diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
-> index 5fd845cbdd52..8ed96e8eedbe 100644
-> --- a/drivers/staging/vt6656/main_usb.c
-> +++ b/drivers/staging/vt6656/main_usb.c
-> @@ -109,33 +109,38 @@ static void vnt_set_options(struct vnt_private *priv)
->   */
->  static int vnt_init_registers(struct vnt_private *priv)
->  {
-> +	int ret = 0;
 
-Minor nit here, no need to set this to 0 as you instantly set it with
-this call:
+Hi Sergio,
 
->  	struct vnt_cmd_card_init *init_cmd = &priv->init_command;
->  	struct vnt_rsp_card_init *init_rsp = &priv->init_response;
->  	u8 antenna;
->  	int ii;
-> -	int status = STATUS_SUCCESS;
->  	u8 tmp;
->  	u8 calib_tx_iq = 0, calib_tx_dc = 0, calib_rx_iq = 0;
->  
->  	dev_dbg(&priv->usb->dev, "---->INIbInitAdapter. [%d][%d]\n",
->  		DEVICE_INIT_COLD, priv->packet_type);
->  
-> -	if (!vnt_check_firmware_version(priv)) {
-> -		if (vnt_download_firmware(priv) == true) {
-> -			if (vnt_firmware_branch_to_sram(priv) == false) {
-> -				dev_dbg(&priv->usb->dev,
-> -					" vnt_firmware_branch_to_sram fail\n");
-> -				return false;
-> -			}
-> -		} else {
-> -			dev_dbg(&priv->usb->dev, "FIRMWAREbDownload fail\n");
-> -			return false;
-> +	ret = vnt_check_firmware_version(priv);
+I am working on a couple of different MedaiTek MT7621 based platforms
+and am having problems with the PCI bus on those.
 
-You can fix that up in a later patch :)
+Big picture is that the PCI bus on my boards worked in linux-4.20
+(with the obvious compilation breakage fixed), and it does not work
+in linux-5.0 or linux-5.1.
 
-At first glance, these all look really good, thanks for doing this work.
+On linux-4.20 the PCI bus probe at kernel boot looks like this:
 
-greg k-h
+***** Xtal 40MHz *****
+PCIE1 no card, disable it(RST&CLK)
+PCIE2 no card, disable it(RST&CLK)
+PCIE0 enabled
+PCI coherence region base: 0x60000000, mask/settings: 0xf0000002
+mt7621-pci 1e140000.pcie: PCI host bridge to bus 0000:00
+pci_bus 0000:00: root bus resource [io  0xffffffff]
+pci_bus 0000:00: root bus resource [mem 0x60000000-0x6fffffff]
+pci_bus 0000:00: root bus resource [bus 00-ff]
+pci 0000:00:00.0: bridge configuration invalid ([bus 00-00]), reconfiguring
+pci 0000:00:00.0: PCI bridge to [bus 01-ff]
+pci 0000:00:00.0: BAR 0: no space for [mem size 0x80000000]
+pci 0000:00:00.0: BAR 0: failed to assign [mem size 0x80000000]
+pci 0000:00:00.0: BAR 8: assigned [mem 0x60000000-0x601fffff]
+pci 0000:00:00.0: BAR 9: assigned [mem 0x60200000-0x602fffff pref]
+pci 0000:00:00.0: BAR 1: assigned [mem 0x60300000-0x6030ffff]
+pci 0000:00:00.0: BAR 7: no space for [io  size 0x1000]
+pci 0000:00:00.0: BAR 7: failed to assign [io  size 0x1000]
+pci 0000:01:00.0: BAR 0: assigned [mem 0x60000000-0x601fffff 64bit]
+pci 0000:01:00.0: BAR 6: assigned [mem 0x60200000-0x6020ffff pref]
+pci 0000:00:00.0: PCI bridge to [bus 01]
+pci 0000:00:00.0:   bridge window [mem 0x60000000-0x601fffff]
+pci 0000:00:00.0:   bridge window [mem 0x60200000-0x602fffff pref]
+
+The PCI bus works, and devices on it are found and work as expected.
+
+On linux-5.1 the PCI initialization and probe fails, with the kernel
+locking up:
+
+...
+mt7621-pci 1e140000.pcie: Port 454043648 N_FTS = 0
+mt7621-pci-phy 1e149000.pcie-phy: Xtal is 40MHz
+mt7621-pci 1e140000.pcie: pcie0 no card, disable it (RST & CLK)
+mt7621-pci 1e140000.pcie: Initiating port 0 failed
+mt7621-pci 1e140000.pcie: Port 454043648 N_FTS = 1
+mt7621-pci-phy 1e149000.pcie-phy: Xtal is 40MHz
+mt7621-pci 1e140000.pcie: pcie1 no card, disable it (RST & CLK)
+mt7621-pci 1e140000.pcie: Initiating port 1 failed
+mt7621-pci 1e140000.pcie: Port 454043648 N_FTS = 2
+mt7621-pci-phy 1e14a000.pcie-phy: Xtal is 40MHz
+mt7621-pci 1e140000.pcie: pcie2 no card, disable it (RST & CLK)
+
+The lockup is in mt7621_pci_phy_power_off(), at the phy_read() call.
+If I modify that code and return immediately in that mt7621_pci_phy_power_off()
+the systemboots - but obviously from the above you can see that the PCI bus
+and no devices were detected.
+
+Copying in the working linux-4.20 pci-mt7621.c into place on
+linux-5.1 results in a working PCI bus also. I have 2 very different
+MT7621 based boards, and they both exhibit this same problem.
+
+I tried bisecting that back to find the problem commit.
+It was not at all easy with quite a few of the mt7621 PCI related
+patches not building in isolation while bisecting. But ultimately
+I got to commit 745eeeac68d7 ("staging: mt7621-pci: factor out
+'mt7621_pcie_enable_port' function").
+
+Any idea what might be going wrong here?
+
+Regards
+Greg
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
