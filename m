@@ -1,130 +1,94 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A66E7257B3
-	for <lists+driverdev-devel@lfdr.de>; Tue, 21 May 2019 20:43:46 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6A2F9257EA
+	for <lists+driverdev-devel@lfdr.de>; Tue, 21 May 2019 21:00:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C67248614E;
-	Tue, 21 May 2019 18:43:44 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B4ABA86CE7;
+	Tue, 21 May 2019 19:00:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5m5uhHAc_Bxd; Tue, 21 May 2019 18:43:44 +0000 (UTC)
+	with ESMTP id UMnzjrJvN522; Tue, 21 May 2019 19:00:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D411E83553;
-	Tue, 21 May 2019 18:43:42 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 73E4E86C7B;
+	Tue, 21 May 2019 19:00:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3F0701BF5A9
- for <devel@linuxdriverproject.org>; Tue, 21 May 2019 18:43:38 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id ADFBA1BF5A9
+ for <devel@linuxdriverproject.org>; Tue, 21 May 2019 19:00:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3704F8349B
- for <devel@linuxdriverproject.org>; Tue, 21 May 2019 18:43:38 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id A557286AB6
+ for <devel@linuxdriverproject.org>; Tue, 21 May 2019 19:00:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id H5PAeY0seUdR for <devel@linuxdriverproject.org>;
- Tue, 21 May 2019 18:43:37 +0000 (UTC)
+ with ESMTP id dPCCiFe4bb1H for <devel@linuxdriverproject.org>;
+ Tue, 21 May 2019 19:00:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa2.microchip.iphmx.com (esa2.microchip.iphmx.com
- [68.232.149.84])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 2B4B183487
- for <devel@driverdev.osuosl.org>; Tue, 21 May 2019 18:43:37 +0000 (UTC)
-Received-SPF: Pass (esa2.microchip.iphmx.com: domain of
- Adham.Abozaeid@microchip.com designates 198.175.253.82 as
- permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa2.microchip.iphmx.com;
- envelope-from="Adham.Abozaeid@microchip.com";
- x-sender="Adham.Abozaeid@microchip.com";
- x-conformance=spf_only; x-record-type="v=spf1";
- x-record-text="v=spf1 mx a:ushub1.microchip.com
- a:smtpout.microchip.com a:mx1.microchip.iphmx.com
- a:mx2.microchip.iphmx.com include:servers.mcsv.net
- include:mktomail.com include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa2.microchip.iphmx.com: no sender
- authenticity information available from domain of
- postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa2.microchip.iphmx.com;
- envelope-from="Adham.Abozaeid@microchip.com";
- x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa2.microchip.iphmx.com;
- spf=Pass smtp.mailfrom=Adham.Abozaeid@microchip.com;
- spf=None smtp.helo=postmaster@email.microchip.com;
- dkim=pass (signature verified) header.i=@microchiptechnology.onmicrosoft.com;
- dmarc=pass (p=none dis=none) d=microchip.com
-X-IronPort-AV: E=Sophos;i="5.60,496,1549954800"; d="scan'208";a="34046847"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa2.microchip.iphmx.com with ESMTP/TLS/DHE-RSA-AES256-SHA;
- 21 May 2019 11:43:36 -0700
-Received: from NAM03-CO1-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.76.38) with Microsoft SMTP Server (TLS) id
- 14.3.352.0; Tue, 21 May 2019 11:43:35 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector1-microchiptechnology-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=O8L7sQcUUreJzvv+KdquaYGZ3YdkFj/9QthmEThiJJY=;
- b=UQamTczc0Psv7OgHGjHPvAV3XBPUw17YR4UXAFlVcTuxupCIsOd4JBBPYptiVTmsEg8h0FUpr+0IuyEHkKgthlsg9WcPEsGFztbprFWbis638IagC4iGSCdNG2Ghg6pazeHlAmaidjams8+jTvZywaeWbQpsRaz99ZYSoX/pznc=
-Received: from MWHPR11MB1373.namprd11.prod.outlook.com (10.169.234.141) by
- MWHPR11MB1327.namprd11.prod.outlook.com (10.169.237.9) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1922.15; Tue, 21 May 2019 18:43:27 +0000
-Received: from MWHPR11MB1373.namprd11.prod.outlook.com
- ([fe80::9ce9:4621:3c3f:a961]) by MWHPR11MB1373.namprd11.prod.outlook.com
- ([fe80::9ce9:4621:3c3f:a961%4]) with mapi id 15.20.1900.019; Tue, 21 May 2019
- 18:43:27 +0000
-From: <Adham.Abozaeid@microchip.com>
-To: <colin.king@canonical.com>, <Ajay.Kathat@microchip.com>,
- <gregkh@linuxfoundation.org>, <linux-wireless@vger.kernel.org>,
- <devel@driverdev.osuosl.org>
-Subject: Re: [PATCH] staging: wilc1000: remove redundant masking of pkt_offset
-Thread-Topic: [PATCH] staging: wilc1000: remove redundant masking of pkt_offset
-Thread-Index: AQHVD9egnn/gbMbCgE+l/pOShkDQxKZ16nWA
-Date: Tue, 21 May 2019 18:43:27 +0000
-Message-ID: <f7460c62-2a44-df0d-afaf-04d1c990d2a1@microchip.com>
-References: <20190521131706.30236-1-colin.king@canonical.com>
-In-Reply-To: <20190521131706.30236-1-colin.king@canonical.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [198.175.253.81]
-user-agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.3.0
-x-clientproxiedby: BYAPR08CA0043.namprd08.prod.outlook.com
- (2603:10b6:a03:117::20) To MWHPR11MB1373.namprd11.prod.outlook.com
- (2603:10b6:300:25::13)
-x-ms-exchange-messagesentrepresentingtype: 1
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 667d34e9-56cf-40e5-3e11-08d6de1c368a
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(2017052603328)(7193020);
- SRVR:MWHPR11MB1327; 
-x-ms-traffictypediagnostic: MWHPR11MB1327:
-x-microsoft-antispam-prvs: <MWHPR11MB13272826BF33DD4C3F7F4F848D070@MWHPR11MB1327.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1091;
-x-forefront-prvs: 0044C17179
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(396003)(346002)(376002)(366004)(136003)(39860400002)(199004)(189003)(54906003)(53546011)(68736007)(4326008)(6506007)(256004)(110136005)(305945005)(386003)(7736002)(58126008)(64126003)(316002)(6116002)(3846002)(53936002)(14454004)(102836004)(52116002)(6512007)(5660300002)(6246003)(65826007)(2501003)(73956011)(25786009)(11346002)(76176011)(486006)(2616005)(66946007)(66446008)(64756008)(66556008)(66476007)(6436002)(476003)(71200400001)(71190400001)(26005)(31696002)(6486002)(86362001)(2201001)(8676002)(36756003)(478600001)(66066001)(65806001)(72206003)(81166006)(446003)(81156014)(8936002)(31686004)(99286004)(2906002)(65956001)(14444005)(229853002)(186003);
- DIR:OUT; SFP:1101; SCL:1; SRVR:MWHPR11MB1327;
- H:MWHPR11MB1373.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: microchip.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: 8eCPFPERT7ZPRGwIFBzvDQMs5IzEce6BPjMHoArICZXRmho5o0xhS8OVZu5ASKNUFE21ydfsZdNZKPGFgUmcaqjBAKJb6WL14wj5i4jwRey8MYH+r9GfaD1sY6P1PXfcI3ZKb2TlCmNrgeoIZQ1VrZuHPvJLFVxt94khm1ba6pgDc9iOIiZil0xR7Ah0xiopg6kXiTjNBIsLp0wq+EPJDEDfz4aiZceyyP6VQOhEjXuwoTFCN5iNMB9q7D0JEoaLA8Z6xZzukPN6E98C4LCquVQ1KME+Js8PIGenQAJYKxR0GH5XdXE5rmugYHbbXKdCS9t+1ax8kdDfsJzzRoRBB+R3ZMRMSJjgKkxS8rwJ/ZPlfLDcFa0anfAfeGgemScUYTslWVgc5H5105kEToZLMdgLOQgKVaQVBNjjsLdi/x8=
-Content-ID: <BFFFBADA9DF8FD4CB170D5E21D1F32BC@namprd11.prod.outlook.com>
+Received: from mail-pl1-f193.google.com (mail-pl1-f193.google.com
+ [209.85.214.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id AE49686A48
+ for <devel@driverdev.osuosl.org>; Tue, 21 May 2019 19:00:41 +0000 (UTC)
+Received: by mail-pl1-f193.google.com with SMTP id g9so8852673plm.6
+ for <devel@driverdev.osuosl.org>; Tue, 21 May 2019 12:00:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=4MZBxNvGtwJNQOCKRNJ0W32Q6ImcL8iXyB/wI559tJU=;
+ b=N4K9HkYLbKdsXyle6lkIRWYTwlr3UJMJNZmUHyr/t5ozq2C24VjOg70kUPeGVOeI82
+ hvGLDCyr+0vKoN7kPePARsl74cBjgBquoo7tunT9PVFk+2ff2zIGxhp+tZ1wsIrK5Ern
+ oafZZBSKRi/L4ow9yXcZhRxS+zYhmvoaD4H6xhFT7uOmfilpNj86A9OjNQDTF7tTjk5k
+ 0hMJ+KDSoOUSOJ5zPC+hDuKrILgHT2Y7ul4mVIk1RJAFpMRSwRiIBecn7EXhngB8K5Gl
+ ZF7jVkyVcAwC3KRrlFAM3YHifxUzyUKmGNl0/cN9X8qJD9KZEkXeBkdQOhet8uok/LRl
+ yfaQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=4MZBxNvGtwJNQOCKRNJ0W32Q6ImcL8iXyB/wI559tJU=;
+ b=tyXSvWZih2ttkzNBScAI+EuQ3AuuEHuSEXPcQY7JMvP0QnRboQTy3rYJdRA5TtWJ9i
+ AfDiww1GaekREvJkK48P+oV9DAJAVEuypnTGEzV+kB3OYIw3ZTv5To1pg8tjiVtYHcTi
+ 8yPHnrQ9JW8YlmTgkmXZz+gQX7n6mW/OnLIeRousuzLU2xhW7Tk345nvcGKgiD14cIvm
+ uCkoDJnANINEin2AJifPv/3WgxJZjeeUUQE3zaMOjEU+xyKZMmIf8gMbvA/FNRSwu2J3
+ 5+lZQjgrj8o8NJpkdV/lAiYu+P7uweVvrwhANMT2tci+ZI2A/kiV0PR2jZyHilOrfH0a
+ U3hw==
+X-Gm-Message-State: APjAAAXn2l+V+5axLc+7ePvCBTXmHo8Ac29tpxJg3WnYjFTJFl4xsq5c
+ 8SqFyLevWhnjGkH8b53xG38=
+X-Google-Smtp-Source: APXvYqyKh/7il576XGHp65eMmC1xfXtJ1/wi2PPl4i1nbhDgkXclyXtNHcK4YDXWQiy14U583qT6aw==
+X-Received: by 2002:a17:902:20e2:: with SMTP id
+ v31mr85167668plg.138.1558465241341; 
+ Tue, 21 May 2019 12:00:41 -0700 (PDT)
+Received: from hari-Inspiron-1545 ([183.83.92.73])
+ by smtp.gmail.com with ESMTPSA id 129sm25481818pff.140.2019.05.21.12.00.35
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 21 May 2019 12:00:40 -0700 (PDT)
+Date: Wed, 22 May 2019 00:30:33 +0530
+From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Anirudh Rayabharam <anirudh.rayabharam@gmail.com>,
+ Kimberly Brown <kimbrownkd@gmail.com>,
+ Nishka Dasgupta <nishka.dasgupta@yahoo.com>,
+ Murray McAllister <murray.mcallister@insomniasec.com>,
+ Mamta Shukla <mamtashukla555@gmail.com>,
+ Hardik Singh Rathore <hardiksingh.k@gmail.com>,
+ Hariprasad Kelam <hariprasad.kelam@gmail.com>,
+ Larry Finger <Larry.Finger@lwfinger.net>, Arnd Bergmann <arnd@arndb.de>,
+ Quytelda Kahja <quytelda@tamalin.org>, Omer Efrat <omer.efrat@tandemg.com>,
+ Michael Straube <straube.linux@gmail.com>,
+ Emanuel Bennici <benniciemanuel78@gmail.com>,
+ Andy Shevchenko <andy.shevchenko@gmail.com>,
+ Jia-Ju Bai <baijiaju1990@gmail.com>,
+ Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>,
+ Wen Yang <wen.yang99@zte.com.cn>, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Subject: [Patch v2] staging: rtl8723bs: core: rtw_ap: fix Unneeded variable:
+ "ret". Return "0
+Message-ID: <20190521190032.GA7486@hari-Inspiron-1545>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 667d34e9-56cf-40e5-3e11-08d6de1c368a
-X-MS-Exchange-CrossTenant-originalarrivaltime: 21 May 2019 18:43:27.8596 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1327
-X-OriginatorOrg: microchip.com
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -137,52 +101,126 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+Function "rtw_sta_flush" always returns 0 value.
+So change return type of rtw_sta_flush from int to void.
 
-On 5/21/19 6:17 AM, Colin King wrote:
-> External E-Mail
->
->
-> From: Colin Ian King <colin.king@canonical.com>
->
-> The masking update of pkg_offset is redundant as the updated
-> value is never read and pkg_offset is re-assigned on the next
-> iteration of the loop.  Clean this up by removing the redundant
-> assignment.
->
-> Addresses-Coverity: ("Unused value")
-> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+Same thing applies for rtw_hostapd_sta_flush
 
-Reviewed-by: Adham Abozaeid <adham.abozaeid@microchip.com>
+Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+------
+Changes v2 -
+	change return type of rtw_sta_flush
 
+-----
+ drivers/staging/rtl8723bs/core/rtw_ap.c           | 7 ++-----
+ drivers/staging/rtl8723bs/include/rtw_ap.h        | 2 +-
+ drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c | 4 ++--
+ drivers/staging/rtl8723bs/os_dep/ioctl_linux.c    | 7 +++----
+ 4 files changed, 8 insertions(+), 12 deletions(-)
 
-Thanks,
+diff --git a/drivers/staging/rtl8723bs/core/rtw_ap.c b/drivers/staging/rtl8723bs/core/rtw_ap.c
+index bc02306..19418ea 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_ap.c
++++ b/drivers/staging/rtl8723bs/core/rtw_ap.c
+@@ -2189,10 +2189,9 @@ u8 ap_free_sta(
+ 	return beacon_updated;
+ }
+ 
+-int rtw_sta_flush(struct adapter *padapter)
++void rtw_sta_flush(struct adapter *padapter)
+ {
+ 	struct list_head	*phead, *plist;
+-	int ret = 0;
+ 	struct sta_info *psta = NULL;
+ 	struct sta_priv *pstapriv = &padapter->stapriv;
+ 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
+@@ -2202,7 +2201,7 @@ int rtw_sta_flush(struct adapter *padapter)
+ 	DBG_871X(FUNC_NDEV_FMT"\n", FUNC_NDEV_ARG(padapter->pnetdev));
+ 
+ 	if ((pmlmeinfo->state&0x03) != WIFI_FW_AP_STATE)
+-		return ret;
++		return ;
+ 
+ 	spin_lock_bh(&pstapriv->asoc_list_lock);
+ 	phead = &pstapriv->asoc_list;
+@@ -2226,8 +2225,6 @@ int rtw_sta_flush(struct adapter *padapter)
+ 	issue_deauth(padapter, bc_addr, WLAN_REASON_DEAUTH_LEAVING);
+ 
+ 	associated_clients_update(padapter, true);
+-
+-	return ret;
+ }
+ 
+ /* called > TSR LEVEL for USB or SDIO Interface*/
+diff --git a/drivers/staging/rtl8723bs/include/rtw_ap.h b/drivers/staging/rtl8723bs/include/rtw_ap.h
+index fd56c9db..d6f3a3a 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_ap.h
++++ b/drivers/staging/rtl8723bs/include/rtw_ap.h
+@@ -31,7 +31,7 @@ u8 bss_cap_update_on_sta_leave(struct adapter *padapter, struct sta_info *psta);
+ void sta_info_update(struct adapter *padapter, struct sta_info *psta);
+ void ap_sta_info_defer_update(struct adapter *padapter, struct sta_info *psta);
+ u8 ap_free_sta(struct adapter *padapter, struct sta_info *psta, bool active, u16 reason);
+-int rtw_sta_flush(struct adapter *padapter);
++void rtw_sta_flush(struct adapter *padapter);
+ void start_ap_mode(struct adapter *padapter);
+ void stop_ap_mode(struct adapter *padapter);
+ 
+diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
+index db553f2..ce57e0e 100644
+--- a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
++++ b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
+@@ -2896,9 +2896,9 @@ static int cfg80211_rtw_del_station(struct wiphy *wiphy, struct net_device *ndev
+ 
+ 		flush_all_cam_entry(padapter);	/* clear CAM */
+ 
+-		ret = rtw_sta_flush(padapter);
++		rtw_sta_flush(padapter);
+ 
+-		return ret;
++		return 0;
+ 	}
+ 
+ 
+diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+index e3d3569..a4d05f2 100644
+--- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
++++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+@@ -3754,7 +3754,7 @@ static int rtw_set_beacon(struct net_device *dev, struct ieee_param *param, int
+ 
+ }
+ 
+-static int rtw_hostapd_sta_flush(struct net_device *dev)
++static void rtw_hostapd_sta_flush(struct net_device *dev)
+ {
+ 	/* _irqL irqL; */
+ 	/* struct list_head	*phead, *plist; */
+@@ -3766,8 +3766,7 @@ static int rtw_hostapd_sta_flush(struct net_device *dev)
+ 
+ 	flush_all_cam_entry(padapter);	/* clear CAM */
+ 
+-	return rtw_sta_flush(padapter);
+-
++	rtw_sta_flush(padapter);
+ }
+ 
+ static int rtw_add_sta(struct net_device *dev, struct ieee_param *param)
+@@ -4254,7 +4253,7 @@ static int rtw_hostapd_ioctl(struct net_device *dev, struct iw_point *p)
+ 	switch (param->cmd) {
+ 		case RTL871X_HOSTAPD_FLUSH:
+ 
+-			ret = rtw_hostapd_sta_flush(dev);
++			rtw_hostapd_sta_flush(dev);
+ 
+ 			break;
+ 
+-- 
+2.7.4
 
-Adham
-
-> ---
->  drivers/staging/wilc1000/wilc_wlan.c | 3 ---
->  1 file changed, 3 deletions(-)
->
-> diff --git a/drivers/staging/wilc1000/wilc_wlan.c b/drivers/staging/wilc1000/wilc_wlan.c
-> index 95eaf8fdf4f2..dcd728557958 100644
-> --- a/drivers/staging/wilc1000/wilc_wlan.c
-> +++ b/drivers/staging/wilc1000/wilc_wlan.c
-> @@ -709,9 +709,6 @@ static void wilc_wlan_handle_rx_buff(struct wilc *wilc, u8 *buffer, int size)
->  			break;
->  
->  		if (pkt_offset & IS_MANAGMEMENT) {
-> -			pkt_offset &= ~(IS_MANAGMEMENT |
-> -					IS_MANAGMEMENT_CALLBACK |
-> -					IS_MGMT_STATUS_SUCCES);
->  			buff_ptr += HOST_HDR_OFFSET;
->  			wilc_wfi_mgmt_rx(wilc, buff_ptr, pkt_len);
->  		} else {
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
