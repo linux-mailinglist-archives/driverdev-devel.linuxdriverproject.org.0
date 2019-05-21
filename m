@@ -1,76 +1,90 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AF43625237
-	for <lists+driverdev-devel@lfdr.de>; Tue, 21 May 2019 16:33:01 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2DACF2670B;
-	Tue, 21 May 2019 14:33:00 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Qm8PKNBwATS5; Tue, 21 May 2019 14:32:59 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4886F26291;
-	Tue, 21 May 2019 14:32:57 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A45281BF4E2
- for <devel@linuxdriverproject.org>; Tue, 21 May 2019 14:32:55 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 76F342524E
+	for <lists+driverdev-devel@lfdr.de>; Tue, 21 May 2019 16:37:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9F45786AE3
- for <devel@linuxdriverproject.org>; Tue, 21 May 2019 14:32:55 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 76EAC86B2D;
+	Tue, 21 May 2019 14:37:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 5OqIPfOIe1Cp; Tue, 21 May 2019 14:37:44 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2B3EE86AE5;
+	Tue, 21 May 2019 14:37:44 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id F3DAB1BF4DD
+ for <devel@linuxdriverproject.org>; Tue, 21 May 2019 14:37:40 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id F0EE681DEA
+ for <devel@linuxdriverproject.org>; Tue, 21 May 2019 14:37:40 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KSKvcv5LnAHc for <devel@linuxdriverproject.org>;
- Tue, 21 May 2019 14:32:55 +0000 (UTC)
+ with ESMTP id iqtGyw91HPvh for <devel@linuxdriverproject.org>;
+ Tue, 21 May 2019 14:37:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
- [209.85.215.196])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 17F758695B
- for <devel@driverdev.osuosl.org>; Tue, 21 May 2019 14:32:55 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id c13so8701794pgt.1
- for <devel@driverdev.osuosl.org>; Tue, 21 May 2019 07:32:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Ql9m+VX4YbVWwFilLx1VhhEJDgpjksLlEvcITuctUC8=;
- b=vKgId+SXFB7usz2MCkMbeUFAH0IkBZzwQLzTOc+DkvFlZqZo9GnLczkqGhmdYvhEtW
- h3touIcHkWPo2peybuMDz+HCN6LpSBY12fxMmGlcfVOVz1LyqJhnYuD+axvSEgjtkI67
- NBkemLDPc78vcTjAZJNmRtsAiRt266El95HUMpdS0zYqwN0cXQgStfgJ1aZHjifwc0cQ
- vq9MmbFmHVt7Mps9Kh3VXTwIEmUBU9r1Z04dQlrBVu4a3eLpaeELm/X/12Pdp4lnAvUD
- qHP25m7nDkxMuoTYDNiSfp/wKkqu9dGiu8NsDI74QLkJ1E88Pj7ylq7pw7RmHS0WWhnJ
- lHqw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Ql9m+VX4YbVWwFilLx1VhhEJDgpjksLlEvcITuctUC8=;
- b=esD55+Th0KlLRnTbGwqjPevptkQtAt6kaNRXS6zh6Ye3U1a/CY/tPjMU+8ej975wa4
- y/St/D5UIYJFUWb7rrw0SHEE6ydBjdjM7/GbkLfVb0tR39jQwj++HZi23O3ojDkVUlKl
- c2F6S37vFgqelGqyQtJrPJl2b6yfsbPucS7NRjJSl8PHkeAIwUDHsNc8upEM33fYzVmT
- XfsQ/hOHklp84sZKeBWfC+jA4P81K28pVdpwpbcmPB8ezTH/f8mGkHCsHxSfVqd7MqVx
- WZ4Z2fyB33pa3DBR5NkP5oC9DjiVgEFRZRpQ500C6JxZ/Z8HLYmsGo4llnxpD+FnZhCE
- tUTg==
-X-Gm-Message-State: APjAAAVl15YRO956flNko+UOTInla8w8/NoZQVJ5lVw6NfemMgWVMhl4
- YVsNplLDzNC6VU/60A20n8o=
-X-Google-Smtp-Source: APXvYqy9XXB973q4CxrRym/X6+0Mn5awJA+klzLnNQ68TS76vUW5aGwXzH/9n5Uuq4yaFgdAF1ae0g==
-X-Received: by 2002:a65:638e:: with SMTP id h14mr8961873pgv.209.1558449174456; 
- Tue, 21 May 2019 07:32:54 -0700 (PDT)
-Received: from localhost.localdomain ([2405:204:710a:4b60:ca77:51f2:1492:8f9a])
- by smtp.googlemail.com with ESMTPSA id o1sm8031572pfa.66.2019.05.21.07.32.50
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 21 May 2019 07:32:53 -0700 (PDT)
-From: Puranjay Mohan <puranjay12@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] Staging: rtl8188eu: core: Use !x in place of NULL comparisons
-Date: Tue, 21 May 2019 20:02:25 +0530
-Message-Id: <20190521143225.468-1-puranjay12@gmail.com>
-X-Mailer: git-send-email 2.21.0
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7B3E781ACA
+ for <devel@driverdev.osuosl.org>; Tue, 21 May 2019 14:37:40 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x4LESia5053994;
+ Tue, 21 May 2019 14:37:39 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2018-07-02;
+ bh=RskMyQenR2wM63OcevwOWHNzwugK/Hp4hiHKYsTHcGs=;
+ b=mI86anzZgCOl64SZEtqO81GboHVZc8TD37fnMGspxVJG0lLQGcgTh5wWn4sopBVW2vq2
+ LjIc/aSOzROGo2RCIB+BtG2R2Eq469qTKrBQevEtmobyIPPiYoJOf3awZCMRFZdRipzJ
+ ZwcnZYvS2kG72UzfU0533ZWV8ofPpP9/4WhNx0ubYLtLmmJzVoDYI9eQ5LcXWE7zJUDQ
+ XL6Ggi9QRZ7gs1H2z1enYQAf2QPmPKMODc+AqdiisfTkRtleQ2LEp+Kh1ETI/ksAf7Sw
+ qNMn5zJJJqZe4p2kfkMCEZmtpUiRU4dPUiyFHuOpBslTBZeL55fBtnOYcP6JLrZrrAoF iQ== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by userp2130.oracle.com with ESMTP id 2sj9ftdvd7-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 21 May 2019 14:37:39 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x4LEa216025352;
+ Tue, 21 May 2019 14:37:38 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by aserp3020.oracle.com with ESMTP id 2sm0470wsn-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 21 May 2019 14:37:38 +0000
+Received: from abhmp0015.oracle.com (abhmp0015.oracle.com [141.146.116.21])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x4LEbb6J005043;
+ Tue, 21 May 2019 14:37:37 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 21 May 2019 14:37:36 +0000
+Date: Tue, 21 May 2019 17:37:30 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Sven Van Asbroeck <thesven73@gmail.com>
+Subject: Re: [PATCH v3] staging: fieldbus: core: fix ->poll() annotation
+Message-ID: <20190521143730.GJ31203@kadam>
+References: <20190521142009.7331-1-TheSven73@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190521142009.7331-1-TheSven73@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9263
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1810050000 definitions=main-1905210091
+X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9263
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
+ definitions=main-1905210091
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,91 +97,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Puranjay Mohan <puranjay12@gmail.com>,
- Larry.Finger@lwfinger.net
+Cc: devel@driverdev.osuosl.org, Greg KH <gregkh@linuxfoundation.org>,
+ Oscar Gomez Fuente <oscargomezf@gmail.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change (x == NULL) to !x and (x != NULL) to x, to fix
-following checkpatch.pl warnings:
-CHECK: Comparison to NULL could be written "!x".
+On Tue, May 21, 2019 at 10:20:09AM -0400, Sven Van Asbroeck wrote:
+> From: Oscar Gomez Fuente <oscargomezf@gmail.com>
+> 
+> ->poll() functions should return __poll_t, but the fieldbus
+> core's poll() does not. This generates a sparse warning.
+> 
+> Fix the ->poll() return value, and use recommended __poll_t
+> constants (EPOLLxxx).
+> 
+> Signed-off-by: Oscar Gomez Fuente <oscargomezf@gmail.com>
+> ---
 
-Signed-off-by: Puranjay Mohan <puranjay12@gmail.com>
----
- drivers/staging/rtl8188eu/core/rtw_recv.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+If you're resending someone's patch, you have to add your own Signed off
+by line as well.  Everyone who touches a patch has to sign that they
+didn't add any of SCO's all powerful UnixWare source code into the
+patch.
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
-index 087f6c9a5826..9caf7041ad60 100644
---- a/drivers/staging/rtl8188eu/core/rtw_recv.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
-@@ -450,7 +450,7 @@ static struct recv_frame *portctrl(struct adapter *adapter,
- 		memcpy(&be_tmp, ptr, 2);
- 		ether_type = ntohs(be_tmp);
- 
--		if ((psta != NULL) && (psta->ieee8021x_blocked)) {
-+		if (psta && (psta->ieee8021x_blocked)) {
- 			/* blocked */
- 			/* only accept EAPOL frame */
- 			RT_TRACE(_module_rtl871x_recv_c_, _drv_info_, ("########%s:psta->ieee8021x_blocked==1\n", __func__));
-@@ -700,7 +700,7 @@ static int sta2sta_data_frame(struct adapter *adapter,
- 	else
- 		*psta = rtw_get_stainfo(pstapriv, sta_addr); /*  get ap_info */
- 
--	if (*psta == NULL) {
-+	if (!*psta) {
- 		RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, ("can't get psta under %s ; drop pkt\n", __func__));
- 		ret = _FAIL;
- 		goto exit;
-@@ -764,7 +764,7 @@ static int ap2sta_data_frame(
- 		else
- 			*psta = rtw_get_stainfo(pstapriv, pattrib->bssid); /*  get ap_info */
- 
--		if (*psta == NULL) {
-+		if (!*psta) {
- 			RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, ("ap2sta: can't get psta under STATION_MODE ; drop pkt\n"));
- 			ret = _FAIL;
- 			goto exit;
-@@ -786,7 +786,7 @@ static int ap2sta_data_frame(
- 	} else {
- 		if (!memcmp(myhwaddr, pattrib->dst, ETH_ALEN) && !mcast) {
- 			*psta = rtw_get_stainfo(pstapriv, pattrib->bssid); /*  get sta_info */
--			if (*psta == NULL) {
-+			if (!*psta) {
- 				DBG_88E("issue_deauth to the ap =%pM for the reason(7)\n", (pattrib->bssid));
- 
- 				issue_deauth(adapter, pattrib->bssid, WLAN_REASON_CLASS3_FRAME_FROM_NONASSOC_STA);
-@@ -820,7 +820,7 @@ static int sta2ap_data_frame(struct adapter *adapter,
- 		}
- 
- 		*psta = rtw_get_stainfo(pstapriv, pattrib->src);
--		if (*psta == NULL) {
-+		if (!*psta) {
- 			RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, ("can't get psta under AP_MODE; drop pkt\n"));
- 			DBG_88E("issue_deauth to sta=%pM for the reason(7)\n", (pattrib->src));
- 
-@@ -883,7 +883,7 @@ static int validate_recv_ctrl_frame(struct adapter *padapter,
- 		aid = GetAid(pframe);
- 		psta = rtw_get_stainfo(pstapriv, GetAddr2Ptr(pframe));
- 
--		if ((psta == NULL) || (psta->aid != aid))
-+		if ((!psta) || (psta->aid != aid))
- 			return _FAIL;
- 
- 		/* for rx pkt statistics */
-@@ -1479,7 +1479,7 @@ struct recv_frame *recvframe_chk_defrag(struct adapter *padapter,
- 		}
- 	}
- 
--	if ((prtnframe != NULL) && (prtnframe->attrib.privacy)) {
-+	if (prtnframe && (prtnframe->attrib.privacy)) {
- 		/* after defrag we must check tkip mic code */
- 		if (recvframe_chkmic(padapter,  prtnframe) == _FAIL) {
- 			RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, ("recvframe_chkmic(padapter,  prtnframe)==_FAIL\n"));
--- 
-2.21.0
+regards,
+dan carpenter
+
 
 _______________________________________________
 devel mailing list
