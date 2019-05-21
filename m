@@ -1,63 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B4C925587
-	for <lists+driverdev-devel@lfdr.de>; Tue, 21 May 2019 18:24:58 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3A86D25626
+	for <lists+driverdev-devel@lfdr.de>; Tue, 21 May 2019 18:54:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4E60A87BC0;
-	Tue, 21 May 2019 16:24:56 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3897F86B78;
+	Tue, 21 May 2019 16:54:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6aSdkgc1qpET; Tue, 21 May 2019 16:24:56 +0000 (UTC)
+	with ESMTP id Tu61NjI3cJ4m; Tue, 21 May 2019 16:54:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E2EBA87B18;
-	Tue, 21 May 2019 16:24:55 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E332C868CA;
+	Tue, 21 May 2019 16:54:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3A1DF1BF29D
- for <devel@linuxdriverproject.org>; Tue, 21 May 2019 16:24:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2ED1A1BF29D
+ for <devel@linuxdriverproject.org>; Tue, 21 May 2019 16:53:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3687A87B18
- for <devel@linuxdriverproject.org>; Tue, 21 May 2019 16:24:54 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2BD2687AFF
+ for <devel@linuxdriverproject.org>; Tue, 21 May 2019 16:53:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gsni657Knf-h for <devel@linuxdriverproject.org>;
- Tue, 21 May 2019 16:24:53 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C1D9787360
- for <devel@driverdev.osuosl.org>; Tue, 21 May 2019 16:24:53 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 2122D208C3;
- Tue, 21 May 2019 16:24:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1558455893;
- bh=1yav93c3s0CW0jwkGaIeXDoQbXwlBhxXytODTxJWX1g=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=rU6JQUoAvmja5YUK1L4lvVwie2IZyU7NF60VS2zSzfNmgakQiG6qX7emwLvpL1GUi
- dSPzCVfyMUzWcUHboAOMZdiGyLg7FSmy48Kf/G/s827BBRmiQdeuGRZLyTFVeDC6AQ
- ckdScagWlx0dbweEf00MmdEjEzPzRSX33M/4/sVY=
-Date: Tue, 21 May 2019 18:24:51 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Sven Van Asbroeck <thesven73@gmail.com>
-Subject: Re: [PATCH] staging: fieldbus: anybuss: force address space conversion
-Message-ID: <20190521162451.GA19139@kroah.com>
+ with ESMTP id 2BMAXVBYHXHM for <devel@linuxdriverproject.org>;
+ Tue, 21 May 2019 16:53:57 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ot1-f65.google.com (mail-ot1-f65.google.com
+ [209.85.210.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id AB5C687AFE
+ for <devel@driverdev.osuosl.org>; Tue, 21 May 2019 16:53:57 +0000 (UTC)
+Received: by mail-ot1-f65.google.com with SMTP id l25so8623388otp.8
+ for <devel@driverdev.osuosl.org>; Tue, 21 May 2019 09:53:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=3f7mHmRjk7fLWcBIYMRJs7xMo0wDV6TbfEsmzCjNuX4=;
+ b=IexpasiRg+Bb7Na8aIfMp4uMnKTIcQpKXn6m8U8PPT7pxafFono+NZVqxQql/np9E2
+ uVV6nA0U7vA3OW1s18+qiJxODFopSpD0GbWPjQHmofSJH0LBwukRLM1K/3IGMaPrbbo9
+ +Us7mESrsAZ/WC75Jjfk330nEuV/GmPChlwqBs0SCg3bo6kg+FcxWkpySkBlBwqrarfE
+ dsqzHSmpv+WAUeSCfdOJctkthdw/8BOS2rUHZDSgrTBdQSa4I/7lOvnw5ZZucmu2QbTT
+ hy749+PCiUxMl5TUHJX7V2sM/A0O2MKc5BSpocUfJcbKSf/Jz6t8qMcX9Kd/JcIWbK34
+ UeWg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=3f7mHmRjk7fLWcBIYMRJs7xMo0wDV6TbfEsmzCjNuX4=;
+ b=tIBPXm4VRAFInUTj2X55Pqd9j+2UwDguVTqicg4D2hUxIzAWKsW6uJ40Vak1Ahpi5b
+ RuoBPcExCVaEuKOGmuo3wcJa/6xXSv20sdHjwYE9nrRWwbRQ8Qal+BGVwCabZg+Nd6cX
+ 9f7o+apX6kC/tMDP2ZM3bFvtZaiZPukDzyNZ4QGHXBftOZbaS6n+Ry7TxVuzZGRR9zh9
+ hJx2d1Pa6eRtFMK+9dXYGc1qDCrdY6YE9DH2vLBgKa70lo/49/6OpUeQwLh6m+aqqYWu
+ UdGMSHu06Nm2GBaWBq2NUTrUipkJuEahxUOg4QSdAuCgB03Bs/AtkfyzkA1FvLw3xygo
+ TzgQ==
+X-Gm-Message-State: APjAAAWs2IVGcrMS7JAkywZXkql76njwVjI3a10iSFE77hlgDhG5VI05
+ DnCkfFOBuIqZQQ5SzzMIp+DXuc/c+Bn8A89Hkquzbg==
+X-Google-Smtp-Source: APXvYqxWCvUByFG2A9trYQwGtggkpf6EvuOWMVhfCbHUQTZERoRJIl5MIYzVfUQfM1QDA7Nzr1VvoJ74I8AXO/wfTuU=
+X-Received: by 2002:a9d:68c5:: with SMTP id i5mr5230452oto.224.1558457636794; 
+ Tue, 21 May 2019 09:53:56 -0700 (PDT)
+MIME-Version: 1.0
 References: <20190521145116.24378-1-TheSven73@gmail.com>
  <20190521151059.GM31203@kadam>
  <CAGngYiXLN-oT_b9d1kRyBrrFMALhKO-KnuwXB0MjVq0NFc01Xw@mail.gmail.com>
  <20190521154241.GB15818@kroah.com>
  <CAGngYiU_iK5=swD_DA5PcOeYFT0zTrdQ+30Db0YrahuEukEP_A@mail.gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAGngYiU_iK5=swD_DA5PcOeYFT0zTrdQ+30Db0YrahuEukEP_A@mail.gmail.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+ <20190521162451.GA19139@kroah.com>
+In-Reply-To: <20190521162451.GA19139@kroah.com>
+From: Sven Van Asbroeck <thesven73@gmail.com>
+Date: Tue, 21 May 2019 12:53:45 -0400
+Message-ID: <CAGngYiUSgtAXL+utPHz79OEbvrL6_TD9Wfkc6396E9vwQHCFKw@mail.gmail.com>
+Subject: Re: [PATCH] staging: fieldbus: anybuss: force address space conversion
+To: Greg KH <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,46 +92,27 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, May 21, 2019 at 11:53:15AM -0400, Sven Van Asbroeck wrote:
-> On Tue, May 21, 2019 at 11:42 AM Greg KH <gregkh@linuxfoundation.org> wrote:
-> >
-> > Ick, if you are using __force, almost always something is wrong.
-> >
-> 
-> What if I create a separate structure for the regmap context ?
-> 
-> struct anybus_regmap_context {
->         void __iomem *base;
-> };
-> 
-> Then just store the base pointer inside the struct, and pass the struct
-> as the regmap context:
-> 
-> ctx = devm_kzalloc(dev, sizeof(*ctx), GFP_KERNEL);
-> ctx->base = base;
-> devm_regmap_init(..., ctx);
-> 
-> static int write_reg_bus(void *context, unsigned int reg,
->                   unsigned int val)
-> {
->         struct anybus_regmap_context *ctx = context;
->         <now access ctx->base>
-> }
+On Tue, May 21, 2019 at 12:24 PM Greg KH <gregkh@linuxfoundation.org> wrote:
+>
+> what is so odd about this code that makes you have to jump through
+> strange hoops that no other driver has to?
+>
 
-Ick, no.
+Basically because it creates a regmap which accesses __iomem memory,
+instead of i2c/spi.
 
-> Penalty is an additional dynamic pointer-size
-> allocation. Pro: it'll be formally correct ?
+This was done because future hardware in the company's pipeline will access
+device register space through spi, instead of through a parallel memory bus.
 
-what is so odd about this code that makes you have to jump through
-strange hoops that no other driver has to?
+The lower driver just has to create the appropriate regmap, __iomem or
+spi, and pass it to the
+upper driver, which does not have to know about the exact way the h/w
+gets accessed.
+So regmap is used as a hw abstraction layer.
 
-Just set your pointer types up properly to start with, and all should be
-fine.  Why are you trying to cast anything here?
-
-thanks,
-
-greg k-h
+The issue here is that a regmap context is a 'void *' yet the parallel
+memory base pointer
+is 'void __iomem *'. And so the two are incompatible.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
