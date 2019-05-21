@@ -1,72 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 84BCA24A7B
-	for <lists+driverdev-devel@lfdr.de>; Tue, 21 May 2019 10:34:18 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id ACBC387834;
-	Tue, 21 May 2019 08:34:16 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 24zdQnaH31wM; Tue, 21 May 2019 08:34:16 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2769F86CE0;
-	Tue, 21 May 2019 08:34:16 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3BFD01BF2C5
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 21 May 2019 08:34:14 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2BBE724A83
+	for <lists+driverdev-devel@lfdr.de>; Tue, 21 May 2019 10:35:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 38F8823077
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 21 May 2019 08:34:14 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 69C58251E1;
+	Tue, 21 May 2019 08:35:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id MqWgPP2YAu6A; Tue, 21 May 2019 08:35:20 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id BA29523077;
+	Tue, 21 May 2019 08:35:19 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B25321BF2C8
+ for <devel@linuxdriverproject.org>; Tue, 21 May 2019 08:35:14 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A70FD85E40
+ for <devel@linuxdriverproject.org>; Tue, 21 May 2019 08:35:14 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mnEpo6W88Nfr
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 21 May 2019 08:34:13 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from kadath.azazel.net (kadath.azazel.net [81.187.231.250])
- by silver.osuosl.org (Postfix) with ESMTPS id A539621F65
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 21 May 2019 08:34:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=azazel.net; 
- s=20190108;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:
- Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=kiM5ZtttLgp2aeuS6nMSQTEpaK8+G+tidagR08f/how=; b=oE/DN73Ww8+G+qLqnlxSLNiOTG
- W9qj6CjqTCU3HOkKWOKU8IsaBToOUbhnKKIlqXYBu1Euh3KFR9pH3L2T75PilmH6l1fsES21VVxt5
- kU8R11qRKnzwQ7PUUPcul8HfiQJhUiEOvn0gCaXO7DTiFTg2WER4eKFveaAGbOBm5XaryXRPSuMRa
- 6Pygxrf7qo2LHBPQ6BNcAoRPDnKOGTm3FBUFBxLtZEe8xmIb3K0tRW30t+9YBl/BaJX5bsISIUAKM
- CI/NN+jCjGdQTCTXUVRWU1SKqF2U0HhOhwwZPMrmJNDTCWhTBQ+ph7zm+oTvkqG+l8kLBbnJIbkgS
- 9tcmagew==;
-Received: from kadath.azazel.net ([2001:8b0:135f:bcd1:e2cb:4eff:fedf:e608]
- helo=azazel.net)
- by kadath.azazel.net with esmtpsa (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.89) (envelope-from <jeremy@azazel.net>)
- id 1hT0Dr-0004nm-Fy; Tue, 21 May 2019 09:34:11 +0100
-Date: Tue, 21 May 2019 09:34:10 +0100
-From: Jeremy Sowden <jeremy@azazel.net>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v5 3/8] staging: kpc2000: improved formatting of core.c.
-Message-ID: <20190521083409.bejw4iaoksybnwsk@azazel.net>
-References: <20190521075635.30458-1-jeremy@azazel.net>
- <20190521075635.30458-4-jeremy@azazel.net>
- <20190521083213.GA2460@kroah.com>
+ with ESMTP id QxS143lJRk2s for <devel@linuxdriverproject.org>;
+ Tue, 21 May 2019 08:35:14 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ot1-f68.google.com (mail-ot1-f68.google.com
+ [209.85.210.68])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1F1C185B99
+ for <devel@driverdev.osuosl.org>; Tue, 21 May 2019 08:35:14 +0000 (UTC)
+Received: by mail-ot1-f68.google.com with SMTP id u11so15562454otq.7
+ for <devel@driverdev.osuosl.org>; Tue, 21 May 2019 01:35:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Zhesb/W9XipgqrrNPLPqdvD2/za82zT6LyixgGoAM9s=;
+ b=g8+Nl3k3OmDRuhKnSDZ37atwAn9xDqShtEIgKkznYcwmj+Zel0rTQe6B+bM7VVqTg6
+ HftrbAok5EBMpmqmEzsERSjy5C2VBa4UqvgS0MANQiWbirTmoYJHLvaDE6Jp7AdU7/9S
+ PBOV0OKabhqHvwZyjvdsKEJPtubnCVxFQjp9/cmsDxFOyq03txxbSuDPZ1UfnnABV29f
+ oW6MJug9tmEdAuvq5xAjLP/7k5WUxUi45x5BafEHdBjLryz/mwl8ny+KBbUHB7DxgocO
+ uOtcFo/PY9TTGrIo5ykqyZDnTBQ3BC9Rq3JqT3MpcO6iP7VzQd3v9DiytY2FSSwGnm7H
+ +38w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Zhesb/W9XipgqrrNPLPqdvD2/za82zT6LyixgGoAM9s=;
+ b=Fan/TNYOtjmXOdlRmbNHVPXJN6/dhl5SdrTk0mbrb9hC7AR2omewYM8ywkTl5EX/1w
+ jAPAHxg2Jj/uIrscU5D78uxiHsLjxtX83B1HQV/u7n25jKeowQNu6JsNs31W2Cx0889U
+ gXRQm7RA6vDmF4SXCBDbXhgwTsG9OUi/zFlU3yAhKNVLxpAnpTODMAUQVxUyVt0+gOZx
+ ONZK6AfiEdPmuNIC9uppyyHzT8WFc0Q7bJPK3crhlVYC6u0AA3PyO0eQUeocFkCqMl05
+ NYJzzfysLonK9alDrNs7883T8CU6GbnlEDCYojO6oCj4E+9ZfFKNk2Zd7ojvIs02k4yF
+ Hktw==
+X-Gm-Message-State: APjAAAXUKLxfg8ib1qPptzpuVyq4dzPEIII2VwK5ZSgDGQITLOZ1fCx1
+ l+0VhdB9Iy1ksFWPFq0gjKhDUOJ+FEGbUr1Zu6p1Mo2Z
+X-Google-Smtp-Source: APXvYqz3hpBMsWdirjkxZ8tRVzOfXjig/h3dw4rm3JyHPeypK3C2UNCfDy6OzMjDYsO+eF9M1hj183BMkseb63C8G8o=
+X-Received: by 2002:a9d:10d:: with SMTP id 13mr19056614otu.14.1558427713459;
+ Tue, 21 May 2019 01:35:13 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190521083213.GA2460@kroah.com>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-SA-Exim-Connect-IP: 2001:8b0:135f:bcd1:e2cb:4eff:fedf:e608
-X-SA-Exim-Mail-From: jeremy@azazel.net
-X-SA-Exim-Scanned: No (on kadath.azazel.net); SAEximRunCond expanded to false
+References: <cover.1558146549.git.gneukum1@gmail.com>
+ <20190520083026.GA13877@kroah.com>
+ <CA+T6rvENoDXbUWEi4C5kXxsdamkZKVP19MwzEuxs0qC=ckMyeQ@mail.gmail.com>
+In-Reply-To: <CA+T6rvENoDXbUWEi4C5kXxsdamkZKVP19MwzEuxs0qC=ckMyeQ@mail.gmail.com>
+From: Geordan Neukum <gneukum1@gmail.com>
+Date: Tue, 21 May 2019 08:34:52 +0000
+Message-ID: <CA+T6rvHrhTQLL_WCAPbj9nXngH2NCoW+kMXgGpGWB7+rLfYEOw@mail.gmail.com>
+Subject: Re: [PATCH 0/5] Updates to staging driver: kpc_i2c
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,78 +81,36 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Linux Driver Project Developer List
- <driverdev-devel@linuxdriverproject.org>
-Content-Type: multipart/mixed; boundary="===============2713775169945744732=="
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-
---===============2713775169945744732==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="tzvlfsbwj3ljgrxs"
-Content-Disposition: inline
-
-
---tzvlfsbwj3ljgrxs
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On 2019-05-21, at 10:32:13 +0200, Greg KH wrote:
-> On Tue, May 21, 2019 at 08:56:30AM +0100, Jeremy Sowden wrote:
-> >   * Indented with tabs.
-> >   * Broke lines over 80 columns where possible.
-> >   * Removed braces from one-statement blocks.
-> >   * Tidied up some comments.
-> >   * Removed multiple blank lines.
-> >
-> > Signed-off-by: Jeremy Sowden <jeremy@azazel.net>
-> > ---
-> >  drivers/staging/kpc2000/kpc2000/core.c | 788 ++++++++++++++-----------
-> >  1 file changed, 434 insertions(+), 354 deletions(-)
+> On Mon, May 20, 2019 at 10:30:26AM +0200, Greg Kroah-Hartman wrote:
 >
-> This patch fails to apply to my tree.  Can you rebase your series on
-> my staging-testing branch and resend?
+> All now queued up.  I'll rebase my patches that move this file on top of
+> yours, as kbuild found some problems with mine, and I'll resend them to
+> the list.
+>
+> Thanks.
 
-Will do.
+** Same content as last reply, just realized that I had configured my
+** email client to do something wrong. Resend for readability's sake.
 
-> I've applied the first two already.
+Additionally, I plan on trying to clean up that driver a bit more. Should I
+base my future patches off of the staging tree so that I'll have the
+"latest" driver as my basepoint? I don't want to cause any headaches
+for anyone in the future.
 
-Thanks.
+Apologies, if I missed something obvious on the newbies wiki.
+Assuming that I did not, I will certainly go ahead and try to document
+this case either on or as a link from the "sending your first patch"
+page.
 
-J.
-
---tzvlfsbwj3ljgrxs
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEZ8d+2N/NBLDbUxIF0Z7UzfnX9sMFAlzjt/oACgkQ0Z7UzfnX
-9sP96hAAnuRVOA8C8WB+mm0GfZT3t9SJVt1jTixAlsmS5vqRL6bU+qaLar/UghHL
-L0V+zp5tMS+MVRhoVRtwj+mtng8Z+yi97+wtJUfGi/Sqo8VeuOJK26V9aBhzfL/r
-xUW5/FKBpnVAcP+vNe8U2dWwkk+xrdnWpTocnKb4j33CKJaAC5DYKQnZkcLUtXu5
-HPpxvx0xk/c/O9QT1+Y5K++JXnQFRozQfvzwEuF96rArKhrLztD6DW+/Kvwb+gkH
-5IMKveQ7IAfZua/KiTwyR0Mu1gL7jFpT9hdr3t/W37cni2iUSCKt9gc/zHSVP5wq
-XqtG+zYmOg6oVPckw0/RukTJrf4ZcLtKY8OvAOMfK++MLY17v49UQ5INoUpSLA6i
-B3rqOJqCDO1ZWz5WYHm3PkZwKqn45gYR6r3HLLU1kXrt5F7+2AZgA0y+c92WzuhB
-PJB7mQb/k8lhkAUbCM2vu1BCEdzNgvE8UWVbZ8WVfOjgs/orHwjrfsIqRkwpUDTt
-VHGBrCJAfw4AdE96HoGjHByaUWqVV8aSs5Tf0WsSKdzWWH8aWYTcojyvej7HzBiW
-Lf+pHaBwTGIlqHnEV2amQpo+K0C/GVJBcMVnBVqEupZXbwkcxNk1G4hhlAIOuXOy
-d5J1AgXVrVQKZJ1ejOm6GEaxe3NFHRMmTFkzLbYtwGdcdtkw4/w=
-=eW5o
------END PGP SIGNATURE-----
-
---tzvlfsbwj3ljgrxs--
-
---===============2713775169945744732==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+Cheers,
+Geordan
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============2713775169945744732==--
