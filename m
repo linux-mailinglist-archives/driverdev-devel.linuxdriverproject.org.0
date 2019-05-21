@@ -2,37 +2,37 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB3BF24CCE
-	for <lists+driverdev-devel@lfdr.de>; Tue, 21 May 2019 12:35:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D976424CCF
+	for <lists+driverdev-devel@lfdr.de>; Tue, 21 May 2019 12:35:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1AF0087994;
-	Tue, 21 May 2019 10:35:38 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 06C8C879C3;
+	Tue, 21 May 2019 10:35:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5HAdbZuWskYM; Tue, 21 May 2019 10:35:37 +0000 (UTC)
+	with ESMTP id o72PgBW39YMS; Tue, 21 May 2019 10:35:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 94A8286DC6;
-	Tue, 21 May 2019 10:35:37 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C086386DC6;
+	Tue, 21 May 2019 10:35:38 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 702671BF964
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D1FAC1BF299
  for <driverdev-devel@linuxdriverproject.org>;
  Tue, 21 May 2019 10:35:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 6D35D866BD
+ by silver.osuosl.org (Postfix) with ESMTP id CB3A82379C
  for <driverdev-devel@linuxdriverproject.org>;
  Tue, 21 May 2019 10:35:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JFjixSz07emQ
+ with ESMTP id 2CPz-7T+LmZC
  for <driverdev-devel@linuxdriverproject.org>;
- Tue, 21 May 2019 10:35:28 +0000 (UTC)
+ Tue, 21 May 2019 10:35:29 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from kadath.azazel.net (kadath.azazel.net [81.187.231.250])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B0A9884E2E
+ by silver.osuosl.org (Postfix) with ESMTPS id D18E623449
  for <driverdev-devel@linuxdriverproject.org>;
  Tue, 21 May 2019 10:35:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=azazel.net; 
@@ -42,22 +42,23 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=azazel.net;
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=C0iFiuhpHSah8KPYIiBPsCjQhqZKPbns8UfTTEzYCyI=; b=XwC97qx5iMurBzzJbqJSCm0rSE
- O1dY9nsbxshVA7tJWPdOaQJ+BLOY0iRI32fqreipV5vtgh409TER24cGg95RA0B+vx540530pAPmV
- iUNWeTZSzXXhDjP4NAgYBPPnKFU8W1DW1yTtwKHWAOj4MDOHvrVxsEGB0TGXdloNvVb+SsV5kMvf6
- J19tfmqZxn8DNQWtNBgc0Vdft+4PIJkqddOn/8L6xFzu7XEJtuPDp5JXxeHrgRzuIzlKCCRx4AVxp
- uvx5xeBmng2zqBNs+TYlex2IIp5vAqZ+qy+XBMiaIqdvnzzL9wAS4E/5aZC4hBZZm4Elm7qTaCaFk
- iwK5yR7w==;
+ bh=nHbQi5ir0UP3HRLpTiV8+/9ZVMjN1aeny2by9/2xY/o=; b=jNyfbjgE9XY7Cgp6o+XLOKBI9C
+ URxIu1pSicj1S2ckLBPDlS4zsHGH29MuzVIEGAYE+asgxJcMEt9Hr0oo+d89OA8ZsAeWrhUGAm8FW
+ VvXthdai6Wmujwm4WxrPzwmSKAsNi0bhL7MIv93Dm+we5ury8fm8aY/xtZAtc2Mj4YKsqhEXgJ1lO
+ OQ8w8qnECa2qOzVnlLdWTrTLGM2yK8tBib55d34OehRY7RZJK6h50kJX05IRJaa6WkaB6nzSHlXqz
+ Cnh6kJSDeNiT26W0SIGAYgd8ZY73awYxf+pvfU5y6tJyV6fvAzwBizwNWWEf1fDTTlDqodG/7BYYn
+ f2XXs6vw==;
 Received: from ulthar.dreamlands ([192.168.96.2])
  by kadath.azazel.net with esmtp (Exim 4.89)
  (envelope-from <jeremy@azazel.net>)
- id 1hT27B-00073p-5C; Tue, 21 May 2019 11:35:25 +0100
+ id 1hT27B-00073p-AL; Tue, 21 May 2019 11:35:25 +0100
 From: Jeremy Sowden <jeremy@azazel.net>
 To: Linux Driver Project Developer List
  <driverdev-devel@linuxdriverproject.org>
-Subject: [PATCH v6 4/6] staging: kpc2000: use IDA to assign card numbers.
-Date: Tue, 21 May 2019 11:35:22 +0100
-Message-Id: <20190521103524.2176-5-jeremy@azazel.net>
+Subject: [PATCH v6 5/6] staging: kpc2000: simplified kp2000_device retrieval
+ in device attribute call-backs.
+Date: Tue, 21 May 2019 11:35:23 +0100
+Message-Id: <20190521103524.2176-6-jeremy@azazel.net>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190521103524.2176-1-jeremy@azazel.net>
 References: <20190521103524.2176-1-jeremy@azazel.net>
@@ -83,101 +84,128 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Previously the next card number was assigned from a static int local
-variable.  Replaced it with an IDA.  Avoids the assignment of ever-
-increasing card-numbers by allowing them to be reused.
+All the call-backs used the same formula to retrieve the pcard from dev:
 
-Updated TODO.
+  struct pci_dev *pdev = to_pci_dev(dev);
+  struct kp2000_device *pcard;
 
-Corrected format-specifier for unsigned pcard->card_num.
+  if (!pdev)
+    return NULL;
+
+  pcard = pci_get_drvdata(pdev);
+
+Since to_pci_dev is a wrapper for container_of, it will not return NULL,
+and since pci_get_drvdata just calls dev_get_drvdata on the dev member
+of pdev, this is equivalent to:
+
+  struct kp2000_device *pcard = dev_get_drvdata(&(container_of(dev, struct pci_dev, dev)->dev));
+
+and we can simplify it to:
+
+  struct kp2000_device *pcard = dev_get_drvdata(dev);
 
 Signed-off-by: Jeremy Sowden <jeremy@azazel.net>
 ---
- drivers/staging/kpc2000/TODO           |  1 -
- drivers/staging/kpc2000/kpc2000/core.c | 19 +++++++++++++++----
- 2 files changed, 15 insertions(+), 5 deletions(-)
+ drivers/staging/kpc2000/kpc2000/core.c | 28 +++++++++-----------------
+ 1 file changed, 9 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/staging/kpc2000/TODO b/drivers/staging/kpc2000/TODO
-index 669fe5bf9637..47530e23e940 100644
---- a/drivers/staging/kpc2000/TODO
-+++ b/drivers/staging/kpc2000/TODO
-@@ -1,6 +1,5 @@
- - the kpc_spi driver doesn't seem to let multiple transactions (to different instances of the core) happen in parallel...
- - The kpc_i2c driver is a hot mess, it should probably be cleaned up a ton.  It functions against current hardware though.
--- pcard->card_num in kp2000_pcie_probe() is a global variable and needs atomic / locking / something better.
- - would be nice if the AIO fileops in kpc_dma could be made to work
-     - probably want to add a CONFIG_ option to control compilation of the AIO functions
- - if the AIO fileops in kpc_dma start working, next would be making iov_count > 1 work too
 diff --git a/drivers/staging/kpc2000/kpc2000/core.c b/drivers/staging/kpc2000/kpc2000/core.c
-index 6b56ddcc03fa..7d6b99fcd2bd 100644
+index 7d6b99fcd2bd..2af4170a0d68 100644
 --- a/drivers/staging/kpc2000/kpc2000/core.c
 +++ b/drivers/staging/kpc2000/kpc2000/core.c
-@@ -1,5 +1,6 @@
- // SPDX-License-Identifier: GPL-2.0+
- #include <linux/kernel.h>
-+#include <linux/idr.h>
- #include <linux/init.h>
- #include <linux/module.h>
- #include <linux/pci.h>
-@@ -25,6 +26,8 @@
- #include "pcie.h"
- #include "uapi.h"
- 
-+static DEFINE_IDA(card_num_ida);
-+
- /*******************************************************
+@@ -32,20 +32,10 @@ static DEFINE_IDA(card_num_ida);
   * SysFS Attributes
   ******************************************************/
-@@ -388,7 +391,6 @@ static int kp2000_pcie_probe(struct pci_dev *pdev,
+ 
+-static struct kp2000_device *get_pcard(struct device *dev)
+-{
+-	struct pci_dev *pdev = to_pci_dev(dev);
+-
+-	if (!pdev)
+-		return NULL;
+-
+-	return pci_get_drvdata(pdev);
+-}
+-
+ static ssize_t ssid_show(struct device *dev, struct device_attribute *attr,
+ 			 char *buf)
  {
- 	int err = 0;
- 	struct kp2000_device *pcard;
--	static int card_count = 1;
+-	struct kp2000_device *pcard = get_pcard(dev);
++	struct kp2000_device *pcard = dev_get_drvdata(dev);
+ 
+ 	if (!pcard)
+ 		return -ENXIO;
+@@ -57,7 +47,7 @@ static DEVICE_ATTR_RO(ssid);
+ static ssize_t ddna_show(struct device *dev, struct device_attribute *attr,
+ 			 char *buf)
+ {
+-	struct kp2000_device *pcard = get_pcard(dev);
++	struct kp2000_device *pcard = dev_get_drvdata(dev);
+ 
+ 	if (!pcard)
+ 		return -ENXIO;
+@@ -69,7 +59,7 @@ static DEVICE_ATTR_RO(ddna);
+ static ssize_t card_id_show(struct device *dev, struct device_attribute *attr,
+ 			    char *buf)
+ {
+-	struct kp2000_device *pcard = get_pcard(dev);
++	struct kp2000_device *pcard = dev_get_drvdata(dev);
+ 
+ 	if (!pcard)
+ 		return -ENXIO;
+@@ -81,7 +71,7 @@ static DEVICE_ATTR_RO(card_id);
+ static ssize_t hw_rev_show(struct device *dev, struct device_attribute *attr,
+ 			   char *buf)
+ {
+-	struct kp2000_device *pcard = get_pcard(dev);
++	struct kp2000_device *pcard = dev_get_drvdata(dev);
+ 
+ 	if (!pcard)
+ 		return -ENXIO;
+@@ -93,7 +83,7 @@ static DEVICE_ATTR_RO(hw_rev);
+ static ssize_t build_show(struct device *dev, struct device_attribute *attr,
+ 			  char *buf)
+ {
+-	struct kp2000_device *pcard = get_pcard(dev);
++	struct kp2000_device *pcard = dev_get_drvdata(dev);
+ 
+ 	if (!pcard)
+ 		return -ENXIO;
+@@ -105,7 +95,7 @@ static DEVICE_ATTR_RO(build);
+ static ssize_t build_date_show(struct device *dev,
+ 			       struct device_attribute *attr, char *buf)
+ {
+-	struct kp2000_device *pcard = get_pcard(dev);
++	struct kp2000_device *pcard = dev_get_drvdata(dev);
+ 
+ 	if (!pcard)
+ 		return -ENXIO;
+@@ -117,7 +107,7 @@ static DEVICE_ATTR_RO(build_date);
+ static ssize_t build_time_show(struct device *dev,
+ 			       struct device_attribute *attr, char *buf)
+ {
+-	struct kp2000_device *pcard = get_pcard(dev);
++	struct kp2000_device *pcard = dev_get_drvdata(dev);
+ 
+ 	if (!pcard)
+ 		return -ENXIO;
+@@ -129,7 +119,7 @@ static DEVICE_ATTR_RO(build_time);
+ static ssize_t cpld_reg_show(struct device *dev, struct device_attribute *attr,
+ 			     char *buf)
+ {
+-	struct kp2000_device *pcard = get_pcard(dev);
++	struct kp2000_device *pcard = dev_get_drvdata(dev);
+ 	u64 val;
+ 
+ 	if (!pcard)
+@@ -144,7 +134,7 @@ static ssize_t cpld_reconfigure(struct device *dev,
+ 				struct device_attribute *attr,
+ 				const char *buf, size_t count)
+ {
+-	struct kp2000_device *pcard = get_pcard(dev);
++	struct kp2000_device *pcard = dev_get_drvdata(dev);
+ 	long wr_val;
  	int rv;
- 	unsigned long reg_bar_phys_addr;
- 	unsigned long reg_bar_phys_len;
-@@ -414,9 +416,14 @@ static int kp2000_pcie_probe(struct pci_dev *pdev,
- 	/*
- 	 * Step 2: Initialize trivial pcard elements
- 	 */
--	pcard->card_num = card_count;
--	card_count++;
--	scnprintf(pcard->name, 16, "kpcard%d", pcard->card_num);
-+	err = ida_simple_get(&card_num_ida, 1, INT_MAX, GFP_KERNEL);
-+	if (err < 0) {
-+		dev_err(&pdev->dev, "probe: failed to get card number (%d)\n",
-+			err);
-+		goto out2;
-+	}
-+	pcard->card_num = err;
-+	scnprintf(pcard->name, 16, "kpcard%u", pcard->card_num);
- 
- 	mutex_init(&pcard->sem);
- 	mutex_lock(&pcard->sem);
-@@ -630,6 +637,8 @@ static int kp2000_pcie_probe(struct pci_dev *pdev,
- 	pci_disable_device(pcard->pdev);
- out3:
- 	mutex_unlock(&pcard->sem);
-+	ida_simple_remove(&card_num_ida, pcard->card_num);
-+out2:
- 	kfree(pcard);
- 	return err;
- }
-@@ -663,6 +672,7 @@ static void kp2000_pcie_remove(struct pci_dev *pdev)
- 	pci_disable_device(pcard->pdev);
- 	pci_set_drvdata(pdev, NULL);
- 	mutex_unlock(&pcard->sem);
-+	ida_simple_remove(&card_num_ida, pcard->card_num);
- 	kfree(pcard);
- }
- 
-@@ -698,6 +708,7 @@ static void __exit  kp2000_pcie_exit(void)
- {
- 	pci_unregister_driver(&kp2000_driver_inst);
- 	class_destroy(kpc_uio_class);
-+	ida_destroy(&card_num_ida);
- }
- module_exit(kp2000_pcie_exit);
  
 -- 
 2.20.1
