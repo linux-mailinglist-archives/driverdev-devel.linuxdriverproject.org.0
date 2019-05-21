@@ -2,73 +2,129 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 98D6525790
-	for <lists+driverdev-devel@lfdr.de>; Tue, 21 May 2019 20:29:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A66E7257B3
+	for <lists+driverdev-devel@lfdr.de>; Tue, 21 May 2019 20:43:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CA89E8614A;
-	Tue, 21 May 2019 18:29:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C67248614E;
+	Tue, 21 May 2019 18:43:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LCEA_npqS2QF; Tue, 21 May 2019 18:29:43 +0000 (UTC)
+	with ESMTP id 5m5uhHAc_Bxd; Tue, 21 May 2019 18:43:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9CC6F86132;
-	Tue, 21 May 2019 18:29:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D411E83553;
+	Tue, 21 May 2019 18:43:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 50D451BF3C1
- for <devel@linuxdriverproject.org>; Tue, 21 May 2019 18:29:39 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3F0701BF5A9
+ for <devel@linuxdriverproject.org>; Tue, 21 May 2019 18:43:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 4DCAD87BF5
- for <devel@linuxdriverproject.org>; Tue, 21 May 2019 18:29:39 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3704F8349B
+ for <devel@linuxdriverproject.org>; Tue, 21 May 2019 18:43:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id L0uN+uLF2Xkb for <devel@linuxdriverproject.org>;
- Tue, 21 May 2019 18:29:38 +0000 (UTC)
+ with ESMTP id H5PAeY0seUdR for <devel@linuxdriverproject.org>;
+ Tue, 21 May 2019 18:43:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-it1-f194.google.com (mail-it1-f194.google.com
- [209.85.166.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C44B387BC2
- for <devel@driverdev.osuosl.org>; Tue, 21 May 2019 18:29:38 +0000 (UTC)
-Received: by mail-it1-f194.google.com with SMTP id j17so3423913itk.0
- for <devel@driverdev.osuosl.org>; Tue, 21 May 2019 11:29:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=5lq45XSqNE2uFvBFuFvCqHdT2kO9oK+DRuyIon8Em/o=;
- b=qHKNNvOIgeJJ6MWa9m9U9cs1EZ36EM2S8XRIDU7PCmVfkhWLYb2Gy2ndNaFR6BpCjl
- HdJIohQoJYeMcYgR+uBaydZTu/9uhgqbkoOWBXNl2hPdXdzz4tEj/TYaycwjnZWslF3v
- vjIs+OioZN1Nq39eE1zi5NgCJWlQO3M8GGW/Q0EOACe1UFrNXJPumEDaNoh8D8OoHFiN
- izpXChELzvDAmQBpFtcCkdq4/32a9WUJADUy6pMEQgojKioUatKtVvxAO7YN1BQLjNGR
- 5+kqwdFWtMgY8cmc4FX2aowuPehkFZL3JDhc/z3TQ5rdE4PK9U31w8dntjd1+oPIeojA
- YlLg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=5lq45XSqNE2uFvBFuFvCqHdT2kO9oK+DRuyIon8Em/o=;
- b=slc/DO+58yUVyyGFUbkDUI7PcdkC9gt8Jf5ZC0FoRATEBzuO1uH+bjCQ2NDOJBCd4u
- Cdrxcg6F5t88NAHRmcTDI1ktWysL9btKL9rft0NUL9ENDr85L+9Sg8dQHj8H0/EyHVIc
- WHumtwck9Qu7Hluy9DD/n1ZZr+jCyYvSpjur3c8zCk2wrITMntQJDQnZ+IM7+nbcoOh+
- pXNRZcXGvLM5AJ/zZpSjiZEZMfVd/ESv3uUXZUkbKjm95uM/z9QAMBU4LfSzLFanUQOf
- t4Q7rS2WjggnkJIYvExVIxUlMI48vA4AhqjKYhligtMbC3dtslVtL0ssJ8goKSS5/J5r
- OK+Q==
-X-Gm-Message-State: APjAAAUIe07afnSXn97chp2ZYRr35l64W2Y7IT7hOF5izAQM+lGfGaj4
- 0jsDEhJMh5R49W7g4QjmAXM=
-X-Google-Smtp-Source: APXvYqwp5ZsSzocAb69f4Wj1mmfZ5BRXGnHm2J4cclyR6Jp2LRUTYyQos7tDQCUPyHQNoHChRXI1DQ==
-X-Received: by 2002:a24:af1a:: with SMTP id t26mr5523437ite.55.1558463377841; 
- Tue, 21 May 2019 11:29:37 -0700 (PDT)
-Received: from svens-asus.arcx.com ([184.94.50.30])
- by smtp.gmail.com with ESMTPSA id v134sm1598920ita.16.2019.05.21.11.29.37
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 21 May 2019 11:29:37 -0700 (PDT)
-From: Sven Van Asbroeck <thesven73@gmail.com>
-X-Google-Original-From: Sven Van Asbroeck <TheSven73@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: fieldbus: arcx-anybus: change custom -> mmio regmap
-Date: Tue, 21 May 2019 14:29:32 -0400
-Message-Id: <20190521182932.13502-1-TheSven73@gmail.com>
-X-Mailer: git-send-email 2.17.1
+Received: from esa2.microchip.iphmx.com (esa2.microchip.iphmx.com
+ [68.232.149.84])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2B4B183487
+ for <devel@driverdev.osuosl.org>; Tue, 21 May 2019 18:43:37 +0000 (UTC)
+Received-SPF: Pass (esa2.microchip.iphmx.com: domain of
+ Adham.Abozaeid@microchip.com designates 198.175.253.82 as
+ permitted sender) identity=mailfrom;
+ client-ip=198.175.253.82; receiver=esa2.microchip.iphmx.com;
+ envelope-from="Adham.Abozaeid@microchip.com";
+ x-sender="Adham.Abozaeid@microchip.com";
+ x-conformance=spf_only; x-record-type="v=spf1";
+ x-record-text="v=spf1 mx a:ushub1.microchip.com
+ a:smtpout.microchip.com a:mx1.microchip.iphmx.com
+ a:mx2.microchip.iphmx.com include:servers.mcsv.net
+ include:mktomail.com include:spf.protection.outlook.com ~all"
+Received-SPF: None (esa2.microchip.iphmx.com: no sender
+ authenticity information available from domain of
+ postmaster@email.microchip.com) identity=helo;
+ client-ip=198.175.253.82; receiver=esa2.microchip.iphmx.com;
+ envelope-from="Adham.Abozaeid@microchip.com";
+ x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
+Authentication-Results: esa2.microchip.iphmx.com;
+ spf=Pass smtp.mailfrom=Adham.Abozaeid@microchip.com;
+ spf=None smtp.helo=postmaster@email.microchip.com;
+ dkim=pass (signature verified) header.i=@microchiptechnology.onmicrosoft.com;
+ dmarc=pass (p=none dis=none) d=microchip.com
+X-IronPort-AV: E=Sophos;i="5.60,496,1549954800"; d="scan'208";a="34046847"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa2.microchip.iphmx.com with ESMTP/TLS/DHE-RSA-AES256-SHA;
+ 21 May 2019 11:43:36 -0700
+Received: from NAM03-CO1-obe.outbound.protection.outlook.com (10.10.215.89) by
+ email.microchip.com (10.10.76.38) with Microsoft SMTP Server (TLS) id
+ 14.3.352.0; Tue, 21 May 2019 11:43:35 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=microchiptechnology.onmicrosoft.com;
+ s=selector1-microchiptechnology-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=O8L7sQcUUreJzvv+KdquaYGZ3YdkFj/9QthmEThiJJY=;
+ b=UQamTczc0Psv7OgHGjHPvAV3XBPUw17YR4UXAFlVcTuxupCIsOd4JBBPYptiVTmsEg8h0FUpr+0IuyEHkKgthlsg9WcPEsGFztbprFWbis638IagC4iGSCdNG2Ghg6pazeHlAmaidjams8+jTvZywaeWbQpsRaz99ZYSoX/pznc=
+Received: from MWHPR11MB1373.namprd11.prod.outlook.com (10.169.234.141) by
+ MWHPR11MB1327.namprd11.prod.outlook.com (10.169.237.9) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.1922.15; Tue, 21 May 2019 18:43:27 +0000
+Received: from MWHPR11MB1373.namprd11.prod.outlook.com
+ ([fe80::9ce9:4621:3c3f:a961]) by MWHPR11MB1373.namprd11.prod.outlook.com
+ ([fe80::9ce9:4621:3c3f:a961%4]) with mapi id 15.20.1900.019; Tue, 21 May 2019
+ 18:43:27 +0000
+From: <Adham.Abozaeid@microchip.com>
+To: <colin.king@canonical.com>, <Ajay.Kathat@microchip.com>,
+ <gregkh@linuxfoundation.org>, <linux-wireless@vger.kernel.org>,
+ <devel@driverdev.osuosl.org>
+Subject: Re: [PATCH] staging: wilc1000: remove redundant masking of pkt_offset
+Thread-Topic: [PATCH] staging: wilc1000: remove redundant masking of pkt_offset
+Thread-Index: AQHVD9egnn/gbMbCgE+l/pOShkDQxKZ16nWA
+Date: Tue, 21 May 2019 18:43:27 +0000
+Message-ID: <f7460c62-2a44-df0d-afaf-04d1c990d2a1@microchip.com>
+References: <20190521131706.30236-1-colin.king@canonical.com>
+In-Reply-To: <20190521131706.30236-1-colin.king@canonical.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [198.175.253.81]
+user-agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.3.0
+x-clientproxiedby: BYAPR08CA0043.namprd08.prod.outlook.com
+ (2603:10b6:a03:117::20) To MWHPR11MB1373.namprd11.prod.outlook.com
+ (2603:10b6:300:25::13)
+x-ms-exchange-messagesentrepresentingtype: 1
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 667d34e9-56cf-40e5-3e11-08d6de1c368a
+x-microsoft-antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(2017052603328)(7193020);
+ SRVR:MWHPR11MB1327; 
+x-ms-traffictypediagnostic: MWHPR11MB1327:
+x-microsoft-antispam-prvs: <MWHPR11MB13272826BF33DD4C3F7F4F848D070@MWHPR11MB1327.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:1091;
+x-forefront-prvs: 0044C17179
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(396003)(346002)(376002)(366004)(136003)(39860400002)(199004)(189003)(54906003)(53546011)(68736007)(4326008)(6506007)(256004)(110136005)(305945005)(386003)(7736002)(58126008)(64126003)(316002)(6116002)(3846002)(53936002)(14454004)(102836004)(52116002)(6512007)(5660300002)(6246003)(65826007)(2501003)(73956011)(25786009)(11346002)(76176011)(486006)(2616005)(66946007)(66446008)(64756008)(66556008)(66476007)(6436002)(476003)(71200400001)(71190400001)(26005)(31696002)(6486002)(86362001)(2201001)(8676002)(36756003)(478600001)(66066001)(65806001)(72206003)(81166006)(446003)(81156014)(8936002)(31686004)(99286004)(2906002)(65956001)(14444005)(229853002)(186003);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:MWHPR11MB1327;
+ H:MWHPR11MB1373.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+received-spf: None (protection.outlook.com: microchip.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam-message-info: 8eCPFPERT7ZPRGwIFBzvDQMs5IzEce6BPjMHoArICZXRmho5o0xhS8OVZu5ASKNUFE21ydfsZdNZKPGFgUmcaqjBAKJb6WL14wj5i4jwRey8MYH+r9GfaD1sY6P1PXfcI3ZKb2TlCmNrgeoIZQ1VrZuHPvJLFVxt94khm1ba6pgDc9iOIiZil0xR7Ah0xiopg6kXiTjNBIsLp0wq+EPJDEDfz4aiZceyyP6VQOhEjXuwoTFCN5iNMB9q7D0JEoaLA8Z6xZzukPN6E98C4LCquVQ1KME+Js8PIGenQAJYKxR0GH5XdXE5rmugYHbbXKdCS9t+1ax8kdDfsJzzRoRBB+R3ZMRMSJjgKkxS8rwJ/ZPlfLDcFa0anfAfeGgemScUYTslWVgc5H5105kEToZLMdgLOQgKVaQVBNjjsLdi/x8=
+Content-ID: <BFFFBADA9DF8FD4CB170D5E21D1F32BC@namprd11.prod.outlook.com>
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-Network-Message-Id: 667d34e9-56cf-40e5-3e11-08d6de1c368a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 21 May 2019 18:43:27.8596 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1327
+X-OriginatorOrg: microchip.com
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,100 +137,52 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Dan Carpenter <dan.carpenter@oracle.com>
-MIME-Version: 1.0
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The arcx-anybus's registers are accessed via a memory-mapped
-IO region. A regmap associated with this region is created
-using custom reg_read() / reg_write() callbacks.
 
-However, an abstraction which creates a memory-mapped IO
-region backed regmap already exists: devm_regmap_init_mmio().
+On 5/21/19 6:17 AM, Colin King wrote:
+> External E-Mail
+>
+>
+> From: Colin Ian King <colin.king@canonical.com>
+>
+> The masking update of pkg_offset is redundant as the updated
+> value is never read and pkg_offset is re-assigned on the next
+> iteration of the loop.  Clean this up by removing the redundant
+> assignment.
+>
+> Addresses-Coverity: ("Unused value")
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
 
-Replace the custom regmap with the existing kernel abstraction.
-As a pleasant side-effect, sparse warnings now disappear.
+Reviewed-by: Adham Abozaeid <adham.abozaeid@microchip.com>
 
-Signed-off-by: Sven Van Asbroeck <TheSven73@gmail.com>
----
- .../staging/fieldbus/anybuss/arcx-anybus.c    | 44 ++++++-------------
- 1 file changed, 13 insertions(+), 31 deletions(-)
 
-diff --git a/drivers/staging/fieldbus/anybuss/arcx-anybus.c b/drivers/staging/fieldbus/anybuss/arcx-anybus.c
-index a167fb68e355..2ecffa42e561 100644
---- a/drivers/staging/fieldbus/anybuss/arcx-anybus.c
-+++ b/drivers/staging/fieldbus/anybuss/arcx-anybus.c
-@@ -111,49 +111,31 @@ static void export_reset_1(struct device *dev, bool assert)
-  * at a time for now.
-  */
- 
--static int read_reg_bus(void *context, unsigned int reg,
--			unsigned int *val)
--{
--	void __iomem *base = context;
--
--	*val = readb(base + reg);
--	return 0;
--}
--
--static int write_reg_bus(void *context, unsigned int reg,
--			 unsigned int val)
--{
--	void __iomem *base = context;
--
--	writeb(val, base + reg);
--	return 0;
--}
-+static const struct regmap_config arcx_regmap_cfg = {
-+	.reg_bits = 16,
-+	.val_bits = 8,
-+	.max_register = 0x7ff,
-+	.use_single_read = true,
-+	.use_single_write = true,
-+	/*
-+	 * single-byte parallel bus accesses are atomic, so don't
-+	 * require any synchronization.
-+	 */
-+	.disable_locking = true,
-+};
- 
- static struct regmap *create_parallel_regmap(struct platform_device *pdev,
- 					     int idx)
- {
--	struct regmap_config regmap_cfg = {
--		.reg_bits = 11,
--		.val_bits = 8,
--		/*
--		 * single-byte parallel bus accesses are atomic, so don't
--		 * require any synchronization.
--		 */
--		.disable_locking = true,
--		.reg_read = read_reg_bus,
--		.reg_write = write_reg_bus,
--	};
- 	struct resource *res;
- 	void __iomem *base;
- 	struct device *dev = &pdev->dev;
- 
- 	res = platform_get_resource(pdev, IORESOURCE_MEM, idx + 1);
--	if (resource_size(res) < (1 << regmap_cfg.reg_bits))
--		return ERR_PTR(-EINVAL);
- 	base = devm_ioremap_resource(dev, res);
- 	if (IS_ERR(base))
- 		return ERR_CAST(base);
--	return devm_regmap_init(dev, NULL, base, &regmap_cfg);
-+	return devm_regmap_init_mmio(dev, base, &arcx_regmap_cfg);
- }
- 
- static struct anybuss_host *
--- 
-2.17.1
+Thanks,
 
+Adham
+
+> ---
+>  drivers/staging/wilc1000/wilc_wlan.c | 3 ---
+>  1 file changed, 3 deletions(-)
+>
+> diff --git a/drivers/staging/wilc1000/wilc_wlan.c b/drivers/staging/wilc1000/wilc_wlan.c
+> index 95eaf8fdf4f2..dcd728557958 100644
+> --- a/drivers/staging/wilc1000/wilc_wlan.c
+> +++ b/drivers/staging/wilc1000/wilc_wlan.c
+> @@ -709,9 +709,6 @@ static void wilc_wlan_handle_rx_buff(struct wilc *wilc, u8 *buffer, int size)
+>  			break;
+>  
+>  		if (pkt_offset & IS_MANAGMEMENT) {
+> -			pkt_offset &= ~(IS_MANAGMEMENT |
+> -					IS_MANAGMEMENT_CALLBACK |
+> -					IS_MGMT_STATUS_SUCCES);
+>  			buff_ptr += HOST_HDR_OFFSET;
+>  			wilc_wfi_mgmt_rx(wilc, buff_ptr, pkt_len);
+>  		} else {
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
