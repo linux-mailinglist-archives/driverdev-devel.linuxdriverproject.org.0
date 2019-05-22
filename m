@@ -1,79 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9889225B78
-	for <lists+driverdev-devel@lfdr.de>; Wed, 22 May 2019 03:03:52 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A03BE25E07
+	for <lists+driverdev-devel@lfdr.de>; Wed, 22 May 2019 08:28:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1649B86DD6;
-	Wed, 22 May 2019 01:03:51 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7CB21861D7;
+	Wed, 22 May 2019 06:28:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R0yRsRdNi9Mg; Wed, 22 May 2019 01:03:50 +0000 (UTC)
+	with ESMTP id ly3ojHjiUU_R; Wed, 22 May 2019 06:28:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5104186D08;
-	Wed, 22 May 2019 01:03:42 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 69BCA86079;
+	Wed, 22 May 2019 06:28:00 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6E2191BF2B4
- for <devel@linuxdriverproject.org>; Wed, 22 May 2019 01:03:36 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 981BB1BF471
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 22 May 2019 06:27:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 61E88228EC
- for <devel@linuxdriverproject.org>; Wed, 22 May 2019 01:03:36 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8FE0C85FC9
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 22 May 2019 06:27:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KOZZpqc2ubpC for <devel@linuxdriverproject.org>;
- Wed, 22 May 2019 01:03:35 +0000 (UTC)
+ with ESMTP id wBTF34Rf9kcy
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 22 May 2019 06:27:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f193.google.com (mail-pl1-f193.google.com
- [209.85.214.193])
- by silver.osuosl.org (Postfix) with ESMTPS id 684EC21507
- for <devel@driverdev.osuosl.org>; Wed, 22 May 2019 01:03:35 +0000 (UTC)
-Received: by mail-pl1-f193.google.com with SMTP id w7so197597plz.1
- for <devel@driverdev.osuosl.org>; Tue, 21 May 2019 18:03:35 -0700 (PDT)
+Received: from mail-oi1-f174.google.com (mail-oi1-f174.google.com
+ [209.85.167.174])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 5903985FA8
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 22 May 2019 06:27:56 +0000 (UTC)
+Received: by mail-oi1-f174.google.com with SMTP id f4so748030oib.4
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 21 May 2019 23:27:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=dOvFQYa2L20bDU/RX45j9+9Wd5Kr6fD3oBmwWTXE89o=;
- b=ikwL3w0Rl0KGBAQzF+yPZY3+d1534b40LpfFWBRRMMAEb9m+vAyxOVOaekxQF9EMeM
- rEh1PUa1dEELlBVCw+KBHcHGZkFp4KZtLHNVKO2r9c1aKPfHyM5ZqxY0zi05CIBCisIE
- y+35OvV2XdQNNJd7qFjKYgVptCDEavZ5vr8bA9u/fRtVflmiJKP09UgRq0GNT+QlG04F
- 1IWLoS5wap6EnEKweSFNc3/0Zeg1ngZtIRzVlwJF+9VMgFrcfwYS+7fJVxc4ClhtZpIe
- lEM6PNBNekkTCN2pCp++RtXDeCCfCN4OqgAfYnjlT13C71h+FN3g9GFd3AFwkVKs3spw
- Pm1w==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=t+rWqS68Q2Oq5vZowyKfcMgdMHYWi5TizxMIPGO6GMg=;
+ b=X9+wkuzcAvM+it3HgY1EiNmirhYo2ZZbN35q+fD5oigwKK/GiI5L8lk+wBXhJKvDFs
+ gfvH7GoUHfHs6YNvIc6zFsMkSQKjzI4dN5WCsf4vrBsMDPLTa6Vg1yaoq++Cb67YF4iQ
+ kd7+Ifgd5afQ+jwd7MrNZxL8Zjw5r5K8OGQEGfQB4AmzPJrYTbgmOtPa6AVBEFEe4ULL
+ 2fBXdRa1cvzJ5W3xLebMmjXUpvfmQlOATBUoXAMTM1m91OW97ThRYESyL9PdsUaUeLAX
+ RShL0xIIAn+v+oIwgFqNuks3IBwv9Q1oLygynBM6GeRfDa3ZLqBxCoi9p2CdpcIAfsOJ
+ OKKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=dOvFQYa2L20bDU/RX45j9+9Wd5Kr6fD3oBmwWTXE89o=;
- b=hJ5z0qTPtsCTtYPkzUqwxGNaKcl+vRast4Bren/Qq5ZL7eNnCWvNXjqyYgrcfUjGpE
- twfZgN4YEQpY4t/PJbROJV1Ns3zhVKyI6FCZPVHkJSdRcHIaqwtq9y0BkWs1KcFIUKMw
- ksWtd57vtcOk5njCce0qMvIy38rnrezKqSdlJmVob7Lf0oNoYBjEtNiSBbEraDKif5Hi
- vtCJ5AhmXJ/5K54Ke1EvZ7hzbrMz8o6bOQ0/VIxzbfpNKGyxD4RUBqTKUtFPPl+geaxp
- pJDWqavguD02SBNxrnfKz0ldZQ3UOerwQzBuDyJpgI/5DUclEkqfsLqK+gk79ImMwRyA
- J59w==
-X-Gm-Message-State: APjAAAVa3deqtoC4G/B0LraHskXTskF25TU3iFE7fj7a3QbiARrjO0EF
- pkhJzFutmIREHiqoNnH9bqc=
-X-Google-Smtp-Source: APXvYqyOglaqa4AiJ7+AEdpzAMBW5PxZOMpB3TxkUfQxxEItAUzfuhfHjme7NLbA7ZAtHXAz1w8vkw==
-X-Received: by 2002:a17:902:e701:: with SMTP id
- co1mr53344558plb.259.1558487014880; 
- Tue, 21 May 2019 18:03:34 -0700 (PDT)
-Received: from majic.sklembedded.com (c-73-202-231-77.hsd1.ca.comcast.net.
- [73.202.231.77]) by smtp.googlemail.com with ESMTPSA id
- q193sm34291242pfc.52.2019.05.21.18.03.33
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 21 May 2019 18:03:34 -0700 (PDT)
-From: Steve Longerbeam <slongerbeam@gmail.com>
-To: linux-media@vger.kernel.org
-Subject: [PATCH v8 5/5] media: imx: Try colorimetry at both sink and source
- pads
-Date: Tue, 21 May 2019 18:03:17 -0700
-Message-Id: <20190522010317.23710-6-slongerbeam@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190522010317.23710-1-slongerbeam@gmail.com>
-References: <20190522010317.23710-1-slongerbeam@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=t+rWqS68Q2Oq5vZowyKfcMgdMHYWi5TizxMIPGO6GMg=;
+ b=TBkg2Gk3ykCPLblZ+NrQp5tIlP45adISrlcd1THBvo9G0lS1yzsm7Z5cenVNZkbBjR
+ zp305ScUyazW9ufFiRZAjdXHfkoJSjOu051AyMS7U020klCDoFLwn8ddbIm7CYyrfM4/
+ eK2Qdv8pziv1FqPHASMvPIPqRn0Vcgw7WYaoKPH2WywaFjov9q5G7m8g8W5huUzLn0xW
+ Q0FLcdaK8uYHwXvLjdDIc0glI6VScPXah3+acAX4QGSy2l4D+XEDx76jTk5K04YC+Ace
+ Ts3VQnCs7yIgR7EUAqu4ZyjVYbxJDmJGRqb3a0MB2YPG5lXf/P0sVWFLG1+JnO9xAZFa
+ SPqA==
+X-Gm-Message-State: APjAAAWgdlsngOS2xogMHL4tPOE9HLFMR8CDcbDK26XCCBX2IwlxOKfS
+ 7Txt9/fvhWGqie7OFQ1CMTW2CPv45R4ljYE/GMM=
+X-Google-Smtp-Source: APXvYqwTubsTlTkVgMjy0xF2IkaGUgss2n3FWbO1UUAN8KunT6o1ugsM75sI8qiDktLlN8c8FmRs+k2XDuxSl+f+yrY=
+X-Received: by 2002:aca:ac43:: with SMTP id v64mr6363463oie.40.1558506475523; 
+ Tue, 21 May 2019 23:27:55 -0700 (PDT)
+MIME-Version: 1.0
+References: <678a78fd-a7f4-5a1f-9819-51c5a0731877@kernel.org>
+ <CAMhs-H-Js2wiF5yH3pB5bFq9SE1X17OovsXtYuNH+obe0owknw@mail.gmail.com>
+ <5a7dc59b-f9ef-beab-7221-231f64716d5a@kernel.org>
+In-Reply-To: <5a7dc59b-f9ef-beab-7221-231f64716d5a@kernel.org>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Wed, 22 May 2019 08:27:43 +0200
+Message-ID: <CAMhs-H-8EQPPy0vMFCG-PKu3RLz4_d0ucO6bCgMCfMuD7ZYRSg@mail.gmail.com>
+Subject: Re: staging: mt7621-pci: factor out 'mt7621_pcie_enable_port' function
+To: Greg Ungerer <gerg@kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,327 +86,228 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- open list <linux-kernel@vger.kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Steve Longerbeam <slongerbeam@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>
-MIME-Version: 1.0
+Cc: NeilBrown <neil@brown.name>, driverdev-devel@linuxdriverproject.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Retask imx_media_fill_default_mbus_fields() to try colorimetry parameters,
-renaming it to to imx_media_try_colorimetry(), and call it at both sink and
-source pad try_fmt's. The unrelated check for uninitialized field value is
-moved out to appropriate places in each subdev try_fmt.
+Hi Greg,
 
-The IC now supports Rec.709 and BT.601 Y'CbCr encoding, and both limited
-and full range quantization for both YUV and RGB space, so allow those
-for pipelines that route through the IC.
+On Wed, May 22, 2019 at 2:20 AM Greg Ungerer <gerg@kernel.org> wrote:
+>
+> Hi Sergio,
+>
+> Thanks for the quick response.
+>
+> On 21/5/19 6:14 pm, Sergio Paracuellos wrote:
+> > On Tue, May 21, 2019 at 8:44 AM Greg Ungerer <gerg@kernel.org> wrote:
+> >> I am working on a couple of different MedaiTek MT7621 based platforms
+> >> and am having problems with the PCI bus on those.
+> >>
+> >> Big picture is that the PCI bus on my boards worked in linux-4.20
+> >> (with the obvious compilation breakage fixed), and it does not work
+> >> in linux-5.0 or linux-5.1.
+> >>
+> >> On linux-4.20 the PCI bus probe at kernel boot looks like this:
+> >>
+> >> ***** Xtal 40MHz *****
+> >> PCIE1 no card, disable it(RST&CLK)
+> >> PCIE2 no card, disable it(RST&CLK)
+> >> PCIE0 enabled
+> >> PCI coherence region base: 0x60000000, mask/settings: 0xf0000002
+> >> mt7621-pci 1e140000.pcie: PCI host bridge to bus 0000:00
+> >> pci_bus 0000:00: root bus resource [io  0xffffffff]
+> >> pci_bus 0000:00: root bus resource [mem 0x60000000-0x6fffffff]
+> >> pci_bus 0000:00: root bus resource [bus 00-ff]
+> >> pci 0000:00:00.0: bridge configuration invalid ([bus 00-00]), reconfiguring
+> >> pci 0000:00:00.0: PCI bridge to [bus 01-ff]
+> >> pci 0000:00:00.0: BAR 0: no space for [mem size 0x80000000]
+> >> pci 0000:00:00.0: BAR 0: failed to assign [mem size 0x80000000]
+> >> pci 0000:00:00.0: BAR 8: assigned [mem 0x60000000-0x601fffff]
+> >> pci 0000:00:00.0: BAR 9: assigned [mem 0x60200000-0x602fffff pref]
+> >> pci 0000:00:00.0: BAR 1: assigned [mem 0x60300000-0x6030ffff]
+> >> pci 0000:00:00.0: BAR 7: no space for [io  size 0x1000]
+> >> pci 0000:00:00.0: BAR 7: failed to assign [io  size 0x1000]
+> >> pci 0000:01:00.0: BAR 0: assigned [mem 0x60000000-0x601fffff 64bit]
+> >> pci 0000:01:00.0: BAR 6: assigned [mem 0x60200000-0x6020ffff pref]
+> >> pci 0000:00:00.0: PCI bridge to [bus 01]
+> >> pci 0000:00:00.0:   bridge window [mem 0x60000000-0x601fffff]
+> >> pci 0000:00:00.0:   bridge window [mem 0x60200000-0x602fffff pref]
+> >>
+> >> The PCI bus works, and devices on it are found and work as expected.
+> >>
+> >> On linux-5.1 the PCI initialization and probe fails, with the kernel
+> >> locking up:
+> >>
+> >> ...
+> >> mt7621-pci 1e140000.pcie: Port 454043648 N_FTS = 0
+> >> mt7621-pci-phy 1e149000.pcie-phy: Xtal is 40MHz
+> >> mt7621-pci 1e140000.pcie: pcie0 no card, disable it (RST & CLK)
+> >> mt7621-pci 1e140000.pcie: Initiating port 0 failed
+> >> mt7621-pci 1e140000.pcie: Port 454043648 N_FTS = 1
+> >> mt7621-pci-phy 1e149000.pcie-phy: Xtal is 40MHz
+> >> mt7621-pci 1e140000.pcie: pcie1 no card, disable it (RST & CLK)
+> >> mt7621-pci 1e140000.pcie: Initiating port 1 failed
+> >> mt7621-pci 1e140000.pcie: Port 454043648 N_FTS = 2
+> >> mt7621-pci-phy 1e14a000.pcie-phy: Xtal is 40MHz
+> >> mt7621-pci 1e140000.pcie: pcie2 no card, disable it (RST & CLK)
+> >>
+> >> The lockup is in mt7621_pci_phy_power_off(), at the phy_read() call.
+> >> If I modify that code and return immediately in that mt7621_pci_phy_power_off()
+> >> the systemboots - but obviously from the above you can see that the PCI bus
+> >> and no devices were detected.
+> >
+> > There are two changes with this two commits:
+> >
+> > commit 36d657b011ef49b549aae44d0fe49ce845beb975
+> > Author: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+> > Date:   Wed Apr 17 13:58:38 2019 +0200
+> >
+> >      staging: mt7621-pci-phy: convert driver to use kernel regmap API's
+> >
+> >      Instead of using writel and readl use regmap API which makes
+> >      the driver maintainability easier.
+> >
+> >      Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+> >      Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> >
+> > commit 9445ccb3714c78c26a3a25fafed4d9d965080431
+> > Author: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+> > Date:   Wed Apr 17 13:58:37 2019 +0200
+> >
+> >      staging: mt7621-pci-phy: add quirks for 'E2' revision using
+> > 'soc_device_attribute'
+> >
+> >      Depending on revision of the chip, 'mt7621_bypass_pipe_rst' function
+> >      must be executed. Add better support for this using 'soc_device_match'
+> >      in driver probe function.
+> >
+> >      Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+> >      Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> >
+> > So, I added a quirk for E2 revision of the board as I was suggested to
+> > do by the phy
+> > tree maintainer, and this is the only place I can think the problem could be.
+>
+> I took the pci-mt7621.c and pci-mt7621-phy.c from a linux-5.2-rc1,
+> which has both those commits. Same behavior, PCI probing locks up
+> kernel in mt7621_pci_phy_power_off().
+>
 
-Signed-off-by: Steve Longerbeam <slongerbeam@gmail.com>
----
-Changes in v7:
-- squashed with "media: imx: Allow Rec.709 encoding for IC routes".
-- remove the RGB full-range quantization restriction for IC routes.
----
- drivers/staging/media/imx/imx-ic-prp.c      |  6 +-
- drivers/staging/media/imx/imx-ic-prpencvf.c |  8 +--
- drivers/staging/media/imx/imx-media-csi.c   | 19 +++---
- drivers/staging/media/imx/imx-media-utils.c | 73 ++++++++++-----------
- drivers/staging/media/imx/imx-media-vdic.c  |  5 +-
- drivers/staging/media/imx/imx-media.h       |  5 +-
- drivers/staging/media/imx/imx7-media-csi.c  |  8 +--
- 7 files changed, 62 insertions(+), 62 deletions(-)
+I see, thanks for testing these two also.
 
-diff --git a/drivers/staging/media/imx/imx-ic-prp.c b/drivers/staging/media/imx/imx-ic-prp.c
-index 10ffe00f1a54..f87fe0203720 100644
---- a/drivers/staging/media/imx/imx-ic-prp.c
-+++ b/drivers/staging/media/imx/imx-ic-prp.c
-@@ -193,8 +193,8 @@ static int prp_set_fmt(struct v4l2_subdev *sd,
- 			sdformat->format.code = cc->codes[0];
- 		}
- 
--		imx_media_fill_default_mbus_fields(&sdformat->format, infmt,
--						   true);
-+		if (sdformat->format.field == V4L2_FIELD_ANY)
-+			sdformat->format.field = V4L2_FIELD_NONE;
- 		break;
- 	case PRP_SRC_PAD_PRPENC:
- 	case PRP_SRC_PAD_PRPVF:
-@@ -203,6 +203,8 @@ static int prp_set_fmt(struct v4l2_subdev *sd,
- 		break;
- 	}
- 
-+	imx_media_try_colorimetry(&sdformat->format, true);
-+
- 	fmt = __prp_get_fmt(priv, cfg, sdformat->pad, sdformat->which);
- 	*fmt = sdformat->format;
- out:
-diff --git a/drivers/staging/media/imx/imx-ic-prpencvf.c b/drivers/staging/media/imx/imx-ic-prpencvf.c
-index e8b36a181ccc..f2fe3c11c70e 100644
---- a/drivers/staging/media/imx/imx-ic-prpencvf.c
-+++ b/drivers/staging/media/imx/imx-ic-prpencvf.c
-@@ -907,8 +907,6 @@ static void prp_try_fmt(struct prp_priv *priv,
- 		/* propagate colorimetry from sink */
- 		sdformat->format.colorspace = infmt->colorspace;
- 		sdformat->format.xfer_func = infmt->xfer_func;
--		sdformat->format.quantization = infmt->quantization;
--		sdformat->format.ycbcr_enc = infmt->ycbcr_enc;
- 	} else {
- 		v4l_bound_align_image(&sdformat->format.width,
- 				      MIN_W_SINK, MAX_W_SINK, W_ALIGN_SINK,
-@@ -916,9 +914,11 @@ static void prp_try_fmt(struct prp_priv *priv,
- 				      MIN_H_SINK, MAX_H_SINK, H_ALIGN_SINK,
- 				      S_ALIGN);
- 
--		imx_media_fill_default_mbus_fields(&sdformat->format, infmt,
--						   true);
-+		if (sdformat->format.field == V4L2_FIELD_ANY)
-+			sdformat->format.field = V4L2_FIELD_NONE;
- 	}
-+
-+	imx_media_try_colorimetry(&sdformat->format, true);
- }
- 
- static int prp_set_fmt(struct v4l2_subdev *sd,
-diff --git a/drivers/staging/media/imx/imx-media-csi.c b/drivers/staging/media/imx/imx-media-csi.c
-index 1d248aca40a9..dce4addadff4 100644
---- a/drivers/staging/media/imx/imx-media-csi.c
-+++ b/drivers/staging/media/imx/imx-media-csi.c
-@@ -1375,9 +1375,15 @@ static void csi_try_field(struct csi_priv *priv,
- 	struct v4l2_mbus_framefmt *infmt =
- 		__csi_get_fmt(priv, cfg, CSI_SINK_PAD, sdformat->which);
- 
--	/* no restrictions on sink pad field type */
--	if (sdformat->pad == CSI_SINK_PAD)
-+	/*
-+	 * no restrictions on sink pad field type except must
-+	 * be initialized.
-+	 */
-+	if (sdformat->pad == CSI_SINK_PAD) {
-+		if (sdformat->format.field == V4L2_FIELD_ANY)
-+			sdformat->format.field = V4L2_FIELD_NONE;
- 		return;
-+	}
- 
- 	switch (infmt->field) {
- 	case V4L2_FIELD_SEQ_TB:
-@@ -1455,8 +1461,6 @@ static void csi_try_fmt(struct csi_priv *priv,
- 		/* propagate colorimetry from sink */
- 		sdformat->format.colorspace = infmt->colorspace;
- 		sdformat->format.xfer_func = infmt->xfer_func;
--		sdformat->format.quantization = infmt->quantization;
--		sdformat->format.ycbcr_enc = infmt->ycbcr_enc;
- 
- 		break;
- 	case CSI_SINK_PAD:
-@@ -1476,10 +1480,6 @@ static void csi_try_fmt(struct csi_priv *priv,
- 
- 		csi_try_field(priv, cfg, sdformat);
- 
--		imx_media_fill_default_mbus_fields(
--			&sdformat->format, infmt,
--			priv->active_output_pad == CSI_SRC_PAD_DIRECT);
--
- 		/* Reset crop and compose rectangles */
- 		crop->left = 0;
- 		crop->top = 0;
-@@ -1495,6 +1495,9 @@ static void csi_try_fmt(struct csi_priv *priv,
- 
- 		break;
- 	}
-+
-+	imx_media_try_colorimetry(&sdformat->format,
-+			priv->active_output_pad == CSI_SRC_PAD_DIRECT);
- }
- 
- static int csi_set_fmt(struct v4l2_subdev *sd,
-diff --git a/drivers/staging/media/imx/imx-media-utils.c b/drivers/staging/media/imx/imx-media-utils.c
-index b41842dba5ec..05b63395084e 100644
---- a/drivers/staging/media/imx/imx-media-utils.c
-+++ b/drivers/staging/media/imx/imx-media-utils.c
-@@ -511,21 +511,18 @@ int imx_media_init_cfg(struct v4l2_subdev *sd,
- EXPORT_SYMBOL_GPL(imx_media_init_cfg);
- 
- /*
-- * Check whether the field and colorimetry parameters in tryfmt are
-- * uninitialized, and if so fill them with the values from fmt,
-- * or if tryfmt->colorspace has been initialized, all the default
-- * colorimetry params can be derived from tryfmt->colorspace.
-+ * Default the colorspace in tryfmt to SRGB if set to an unsupported
-+ * colorspace or not initialized. Then set the remaining colorimetry
-+ * parameters based on the colorspace if they are uninitialized.
-  *
-  * tryfmt->code must be set on entry.
-  *
-  * If this format is destined to be routed through the Image Converter,
-- * quantization and Y`CbCr encoding must be fixed. The IC expects and
-- * produces fixed quantization and Y`CbCr encoding at its input and output
-- * (full range for RGB, limited range for YUV, and V4L2_YCBCR_ENC_601).
-+ * Y`CbCr encoding must be fixed. The IC supports only BT.601 Y`CbCr
-+ * or Rec.709 Y`CbCr encoding.
-  */
--void imx_media_fill_default_mbus_fields(struct v4l2_mbus_framefmt *tryfmt,
--					struct v4l2_mbus_framefmt *fmt,
--					bool ic_route)
-+void imx_media_try_colorimetry(struct v4l2_mbus_framefmt *tryfmt,
-+			       bool ic_route)
- {
- 	const struct imx_media_pixfmt *cc;
- 	bool is_rgb = false;
-@@ -533,44 +530,46 @@ void imx_media_fill_default_mbus_fields(struct v4l2_mbus_framefmt *tryfmt,
- 	cc = imx_media_find_mbus_format(tryfmt->code, CS_SEL_ANY, true);
- 	if (!cc)
- 		cc = imx_media_find_ipu_format(tryfmt->code, CS_SEL_ANY);
--	if (cc && cc->cs != IPUV3_COLORSPACE_YUV)
-+	if (cc && cc->cs == IPUV3_COLORSPACE_RGB)
- 		is_rgb = true;
- 
--	/* fill field if necessary */
--	if (tryfmt->field == V4L2_FIELD_ANY)
--		tryfmt->field = fmt->field;
-+	switch (tryfmt->colorspace) {
-+	case V4L2_COLORSPACE_SMPTE170M:
-+	case V4L2_COLORSPACE_REC709:
-+	case V4L2_COLORSPACE_JPEG:
-+	case V4L2_COLORSPACE_SRGB:
-+	case V4L2_COLORSPACE_BT2020:
-+	case V4L2_COLORSPACE_OPRGB:
-+	case V4L2_COLORSPACE_DCI_P3:
-+	case V4L2_COLORSPACE_RAW:
-+		break;
-+	default:
-+		tryfmt->colorspace = V4L2_COLORSPACE_SRGB;
-+		break;
-+	}
-+
-+	if (tryfmt->xfer_func == V4L2_XFER_FUNC_DEFAULT)
-+		tryfmt->xfer_func =
-+			V4L2_MAP_XFER_FUNC_DEFAULT(tryfmt->colorspace);
- 
--	/* fill colorimetry if necessary */
--	if (tryfmt->colorspace == V4L2_COLORSPACE_DEFAULT) {
--		tryfmt->colorspace = fmt->colorspace;
--		tryfmt->xfer_func = fmt->xfer_func;
--		tryfmt->ycbcr_enc = fmt->ycbcr_enc;
--		tryfmt->quantization = fmt->quantization;
-+	if (ic_route) {
-+		if (tryfmt->ycbcr_enc != V4L2_YCBCR_ENC_601 &&
-+		    tryfmt->ycbcr_enc != V4L2_YCBCR_ENC_709)
-+			tryfmt->ycbcr_enc = V4L2_YCBCR_ENC_601;
- 	} else {
--		if (tryfmt->xfer_func == V4L2_XFER_FUNC_DEFAULT) {
--			tryfmt->xfer_func =
--				V4L2_MAP_XFER_FUNC_DEFAULT(tryfmt->colorspace);
--		}
- 		if (tryfmt->ycbcr_enc == V4L2_YCBCR_ENC_DEFAULT) {
- 			tryfmt->ycbcr_enc =
- 				V4L2_MAP_YCBCR_ENC_DEFAULT(tryfmt->colorspace);
- 		}
--		if (tryfmt->quantization == V4L2_QUANTIZATION_DEFAULT) {
--			tryfmt->quantization =
--				V4L2_MAP_QUANTIZATION_DEFAULT(
--					is_rgb, tryfmt->colorspace,
--					tryfmt->ycbcr_enc);
--		}
- 	}
- 
--	if (ic_route) {
--		tryfmt->quantization = is_rgb ?
--			V4L2_QUANTIZATION_FULL_RANGE :
--			V4L2_QUANTIZATION_LIM_RANGE;
--		tryfmt->ycbcr_enc = V4L2_YCBCR_ENC_601;
--	}
-+	if (tryfmt->quantization == V4L2_QUANTIZATION_DEFAULT)
-+		tryfmt->quantization =
-+			V4L2_MAP_QUANTIZATION_DEFAULT(is_rgb,
-+						      tryfmt->colorspace,
-+						      tryfmt->ycbcr_enc);
- }
--EXPORT_SYMBOL_GPL(imx_media_fill_default_mbus_fields);
-+EXPORT_SYMBOL_GPL(imx_media_try_colorimetry);
- 
- int imx_media_mbus_fmt_to_pix_fmt(struct v4l2_pix_format *pix,
- 				  struct v4l2_rect *compose,
-diff --git a/drivers/staging/media/imx/imx-media-vdic.c b/drivers/staging/media/imx/imx-media-vdic.c
-index 4487374c9435..fbafd7fb7aeb 100644
---- a/drivers/staging/media/imx/imx-media-vdic.c
-+++ b/drivers/staging/media/imx/imx-media-vdic.c
-@@ -617,14 +617,13 @@ static void vdic_try_fmt(struct vdic_priv *priv,
- 				      &sdformat->format.height,
- 				      MIN_H, MAX_H_VDIC, H_ALIGN, S_ALIGN);
- 
--		imx_media_fill_default_mbus_fields(&sdformat->format, infmt,
--						   true);
--
- 		/* input must be interlaced! Choose SEQ_TB if not */
- 		if (!V4L2_FIELD_HAS_BOTH(sdformat->format.field))
- 			sdformat->format.field = V4L2_FIELD_SEQ_TB;
- 		break;
- 	}
-+
-+	imx_media_try_colorimetry(&sdformat->format, true);
- }
- 
- static int vdic_set_fmt(struct v4l2_subdev *sd,
-diff --git a/drivers/staging/media/imx/imx-media.h b/drivers/staging/media/imx/imx-media.h
-index 6587aa49e005..23024c9bc887 100644
---- a/drivers/staging/media/imx/imx-media.h
-+++ b/drivers/staging/media/imx/imx-media.h
-@@ -172,9 +172,8 @@ int imx_media_init_mbus_fmt(struct v4l2_mbus_framefmt *mbus,
- 			    const struct imx_media_pixfmt **cc);
- int imx_media_init_cfg(struct v4l2_subdev *sd,
- 		       struct v4l2_subdev_pad_config *cfg);
--void imx_media_fill_default_mbus_fields(struct v4l2_mbus_framefmt *tryfmt,
--					struct v4l2_mbus_framefmt *fmt,
--					bool ic_route);
-+void imx_media_try_colorimetry(struct v4l2_mbus_framefmt *tryfmt,
-+			       bool ic_route);
- int imx_media_mbus_fmt_to_pix_fmt(struct v4l2_pix_format *pix,
- 				  struct v4l2_rect *compose,
- 				  const struct v4l2_mbus_framefmt *mbus,
-diff --git a/drivers/staging/media/imx/imx7-media-csi.c b/drivers/staging/media/imx/imx7-media-csi.c
-index a708a0340eb1..6e2f4c3eb24f 100644
---- a/drivers/staging/media/imx/imx7-media-csi.c
-+++ b/drivers/staging/media/imx/imx7-media-csi.c
-@@ -1003,8 +1003,6 @@ static int imx7_csi_try_fmt(struct imx7_csi *csi,
- 
- 		sdformat->format.colorspace = in_fmt->colorspace;
- 		sdformat->format.xfer_func = in_fmt->xfer_func;
--		sdformat->format.quantization = in_fmt->quantization;
--		sdformat->format.ycbcr_enc = in_fmt->ycbcr_enc;
- 		break;
- 	case IMX7_CSI_PAD_SINK:
- 		*cc = imx_media_find_mbus_format(sdformat->format.code,
-@@ -1015,14 +1013,14 @@ static int imx7_csi_try_fmt(struct imx7_csi *csi,
- 							 false);
- 			sdformat->format.code = (*cc)->codes[0];
- 		}
--
--		imx_media_fill_default_mbus_fields(&sdformat->format, in_fmt,
--						   false);
- 		break;
- 	default:
- 		return -EINVAL;
- 		break;
- 	}
-+
-+	imx_media_try_colorimetry(&sdformat->format, false);
-+
- 	return 0;
- }
- 
--- 
-2.17.1
+>
+> > I think all te changes before this was properly tested by Neil and
+> > results in a working
+> > PCI.
+>
+> Not sure what board Neil is using.
+> I am using a Digi/EX15 and I also tried a Digi/TX54 (very different
+> boards, very different designs).
 
+Neil's board Is a gnubee board.
+
+>
+>
+> >> Copying in the working linux-4.20 pci-mt7621.c into place on
+> >> linux-5.1 results in a working PCI bus also. I have 2 very different
+> >> MT7621 based boards, and they both exhibit this same problem.
+> >>
+> >> I tried bisecting that back to find the problem commit.
+> >> It was not at all easy with quite a few of the mt7621 PCI related
+> >> patches not building in isolation while bisecting. But ultimately
+> >> I got to commit 745eeeac68d7 ("staging: mt7621-pci: factor out
+> >> 'mt7621_pcie_enable_port' function").
+> >
+> > Sorry for your time in this and for the problems with isolation patches. I'll
+>
+> FWIW, I do like your changes, they really clean up that code a lot.
+
+Thanks, is cleaner now and should be ready to be upstreamed but it
+seems has problems
+on some boards yet :)). Let's make it working properly again in all
+scenarios :-).
+
+>
+>
+> > do my best from now to this don't happen again. The problem commit
+> > you are pointing out here had problems at first because depending on the
+> > revision of the chip the reset lines are inverted but this was properly fixed in
+> > this other commit:
+> >
+> > commit e51844bf825169024e0c743a92cf264e27f2366f
+> > Author: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+> > Date:   Sat Nov 24 18:54:54 2018 +0100
+> >
+> >      staging: mt7621-pci: fix reset lines for each pcie port
+> >
+> >      Depending of chip revision reset lines are inverted. It is also
+> >      necessary to read PCIE_FTS_NUM register before enabling the phy.
+> >      Hence update the code to achieve this.
+> >
+> >      Fixes: 745eeeac68d7 ("staging: mt7621-pci: factor out
+> > 'mt7621_pcie_enable_port' function")
+> >      Reported-by: NeilBrown <neil@brown.name>
+> >      Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+> >      Tested-by: NeilBrown <neil@brown.name>
+> >      Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> >
+> >>
+> >> Any idea what might be going wrong here?
+> >
+> > So I do believe that the problem could be with last phy changes I am
+> > pointed out first with quirks
+> > for your revision don't be executing function 'mt7621_bypass_pipe_rst'
+> > inside 'mt7621_pci_phy_init'.
+> > You should take care of quirks if revision of the board is 'E2'.
+>
+> I checked that revision register on my boards, my MT7621 parts report
+> a revision ID of 0x00030103 - so that means they do not match the
+> E2 ID. Tracing the code they do not go through mt7621_bypass_pipe_rst().
+> And that is true even in the older linux-4.20 driver, it does not
+> execute that bypass routine.
+>
+> Although the lock up is bad, the real issue is that the probe of
+> PCI0 is not finding any cards - and it should.
+>
+> I tried restoring some of the probe code from linux-4.20 and had some
+> inconsistent success. But I haven't been able to point to exactly what
+> the problem is.
+
+There are some big changes between 4.20 and 5.x. One is the use of PERST_N
+instead of using gpio. This PERT_N stuff is used now on enable ports
+assuming the
+link of PCI is properly detected after enabling the phy. And it seems
+it is not according to
+your dmesg traces. The previous 4.20 code used gpio before this was done.
+
+This code is the one I am referring:
+
+/* Use GPIO control instead of PERST_N */
+*(unsigned int *)(0xbe000620) |= BIT(19) | BIT(8) | BIT(7); // set DATA
+mdelay(1000);
+
+I assume reset lines on your device tree are properly set up which is
+other of the big changes here: use
+reset lines instead of that hardcoding stuff. Also, the
+mt7621_reset_port routine is also using msleep(100)
+but maybe you can try a bigger value and change it into a mdelay, to
+see if that changes anything.
+
+Other big change is to use the new phy driver but I think the problem
+seems to be related with resets.
+
+>
+> Regards
+> Greg
+
+Please, don't hesitate to ask me whatever you need to.
+
+Hope this helps.
+
+Best regards,
+    Sergio Paracuellos
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
