@@ -1,56 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id F3C4726F9A
-	for <lists+driverdev-devel@lfdr.de>; Wed, 22 May 2019 21:58:46 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 291A426F9B
+	for <lists+driverdev-devel@lfdr.de>; Wed, 22 May 2019 21:58:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2B57E30E73;
-	Wed, 22 May 2019 19:58:45 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4D05287E2E;
+	Wed, 22 May 2019 19:58:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3Tj-AIqD7cZe; Wed, 22 May 2019 19:58:44 +0000 (UTC)
+	with ESMTP id 66BkdU8bxhga; Wed, 22 May 2019 19:58:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 2890E30E27;
-	Wed, 22 May 2019 19:58:43 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0CDB187ED2;
+	Wed, 22 May 2019 19:58:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 571E21BF3BD
- for <devel@linuxdriverproject.org>; Wed, 22 May 2019 19:58:41 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 64D611BF3BD
+ for <devel@linuxdriverproject.org>; Wed, 22 May 2019 19:58:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 53E74871F0
- for <devel@linuxdriverproject.org>; Wed, 22 May 2019 19:58:41 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 624B630E1A
+ for <devel@linuxdriverproject.org>; Wed, 22 May 2019 19:58:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 71mtuKwkEjIc for <devel@linuxdriverproject.org>;
- Wed, 22 May 2019 19:58:40 +0000 (UTC)
+ with ESMTP id wTvZhbn6aMvr for <devel@linuxdriverproject.org>;
+ Wed, 22 May 2019 19:58:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D573B8710C
- for <devel@driverdev.osuosl.org>; Wed, 22 May 2019 19:58:40 +0000 (UTC)
-X-Amp-Result: UNSCANNABLE
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by silver.osuosl.org (Postfix) with ESMTPS id 746A230E11
+ for <devel@driverdev.osuosl.org>; Wed, 22 May 2019 19:58:41 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  22 May 2019 12:58:40 -0700
 X-ExtLoop1: 1
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga008.jf.intel.com with ESMTP; 22 May 2019 12:58:39 -0700
+ by fmsmga004.fm.intel.com with ESMTP; 22 May 2019 12:58:39 -0700
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1hTXNm-0006zH-H1; Thu, 23 May 2019 03:58:38 +0800
-Date: Thu, 23 May 2019 03:58:14 +0800
+ id 1hTXNm-00073h-Ry; Thu, 23 May 2019 03:58:38 +0800
+Date: Thu, 23 May 2019 03:58:15 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Geordan Neukum <gneukum1@gmail.com>
-Subject: [staging:staging-next 106/106]
- drivers/staging/kpc2000/kpc2000_i2c.c:652:3-8: No need to set .owner here.
- The core will do it.
-Message-ID: <201905230355.OQnavbXj%lkp@intel.com>
+Subject: [PATCH] staging: kpc2000: kpc_i2c: fix platform_no_drv_owner.cocci
+ warnings
+Message-ID: <20190522195815.GA49400@lkp-kbuild22>
+References: <201905230355.OQnavbXj%lkp@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
+In-Reply-To: <201905230355.OQnavbXj%lkp@intel.com>
 X-Patchwork-Hint: ignore
 User-Agent: Mutt/1.5.23 (2014-03-12)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -66,29 +67,43 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- kbuild-all@01.org
+ kbuild-all@01.org, Dan Carpenter <dan.carpenter@oracle.com>,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+From: kbuild test robot <lkp@intel.com>
+
+drivers/staging/kpc2000/kpc2000_i2c.c:652:3-8: No need to set .owner here. The core will do it.
+
+ Remove .owner field if calls are used which set it automatically
+
+Generated by: scripts/coccinelle/api/platform_no_drv_owner.cocci
+
+Fixes: 43ad38191816 ("staging: kpc2000: kpc_i2c: add static qual to local symbols in kpc_i2c.c")
+CC: Geordan Neukum <gneukum1@gmail.com>
+Signed-off-by: kbuild test robot <lkp@intel.com>
+---
+
 tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-next
 head:   43ad38191816a6b77cc4bd8222353320a71a1d2d
 commit: 43ad38191816a6b77cc4bd8222353320a71a1d2d [106/106] staging: kpc2000: kpc_i2c: add static qual to local symbols in kpc_i2c.c
 
-If you fix the issue, kindly add following tag
-Reported-by: kbuild test robot <lkp@intel.com>
+ kpc2000_i2c.c |    1 -
+ 1 file changed, 1 deletion(-)
 
-
-coccinelle warnings: (new ones prefixed by >>)
-
->> drivers/staging/kpc2000/kpc2000_i2c.c:652:3-8: No need to set .owner here. The core will do it.
-
-Please review and possibly fold the followup patch.
-
----
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+--- a/drivers/staging/kpc2000/kpc2000_i2c.c
++++ b/drivers/staging/kpc2000/kpc2000_i2c.c
+@@ -649,7 +649,6 @@ static struct platform_driver i2c_plat_d
+ 	.remove     = pi2c_remove,
+ 	.driver     = {
+ 		.name   = KP_DRIVER_NAME_I2C,
+-		.owner  = THIS_MODULE,
+ 	},
+ };
+ 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
