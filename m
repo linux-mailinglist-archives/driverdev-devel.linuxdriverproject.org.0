@@ -1,81 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4412C26393
-	for <lists+driverdev-devel@lfdr.de>; Wed, 22 May 2019 14:15:02 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E36FB87D8E;
-	Wed, 22 May 2019 12:15:00 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PqeuYO5L8M4d; Wed, 22 May 2019 12:15:00 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8B16D85B55;
-	Wed, 22 May 2019 12:15:00 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3C5D21BF2BB
- for <devel@linuxdriverproject.org>; Wed, 22 May 2019 12:14:56 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id D519C263C6
+	for <lists+driverdev-devel@lfdr.de>; Wed, 22 May 2019 14:27:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 30B1F2FC70
- for <devel@linuxdriverproject.org>; Wed, 22 May 2019 12:14:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 617AD30AA7;
+	Wed, 22 May 2019 12:27:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1PKAxwW2+cNJ; Wed, 22 May 2019 12:27:21 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 5CF233059A;
+	Wed, 22 May 2019 12:27:19 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8F9701BF4D8
+ for <devel@linuxdriverproject.org>; Wed, 22 May 2019 12:27:17 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 8C78A87917
+ for <devel@linuxdriverproject.org>; Wed, 22 May 2019 12:27:17 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GNkCJLVE9tQ3 for <devel@linuxdriverproject.org>;
- Wed, 22 May 2019 12:14:55 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qk1-f194.google.com (mail-qk1-f194.google.com
- [209.85.222.194])
- by silver.osuosl.org (Postfix) with ESMTPS id 9EC882F989
- for <devel@driverdev.osuosl.org>; Wed, 22 May 2019 12:14:55 +0000 (UTC)
-Received: by mail-qk1-f194.google.com with SMTP id p18so1297880qkk.0
- for <devel@driverdev.osuosl.org>; Wed, 22 May 2019 05:14:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=H3+FUMVAtUNqd7joLB2Rr4otnxHNV1reLiziKgDKNcc=;
- b=X642QNn8QYxNHPLxyuUwWX3jFVIOC5grd48XSK+K2rm7nsZA0NKHsdh62xKTAegUcR
- yLyKdKFRWnUt/5giHEV4Io6UUxfweTlMVGGzP8BHkIymEEj1GsjeT3S0K9OrO6GwoLan
- BewYEaRcyb5MP6HEzfaKRcPUTb/7fsHV3gbKS9F0no9G+ZtWWBnfuZFR/eoKT+eECmK9
- Z3/3u5EUwlurgr8nuuCVJW2CMuj/unUTmlp9lwaA8zOKpxP9SU461XckYuvbcJ8DMPGz
- 1sS848+UBa76icY11pQXbNYTDCKeWpj9+dD2M0gjVRmM3xR9+efEy0lJ+Ba/Q6pw8xLZ
- LaHA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=H3+FUMVAtUNqd7joLB2Rr4otnxHNV1reLiziKgDKNcc=;
- b=sh/yx6DaQeaCFQhv6Y/zVJPEjapNY0shIYf6gV3srKEUQJtFOi/fYdPNnLnprwpZa0
- bCnpKJvw52qP0z/SLnVtg9wzANKEKWN2Y+71oywJmRbv4p1zrT52Y7uRnBZzc7kh+LQH
- jHhQIq79cKQECVO+JvCY/AIkZFJvvffECFgsewj6WX/PhsJFLimu6m1cjRMETcp1TKkL
- sBZIdJ3zW/YvSKTn06B03EoegQAMjTg99BJQ1srAowX+eVxjHSV6/RaWdcDg/HyYLQkb
- tnzWiOnEb1zHxXGkPqVODIs+4cpMdifQ6kqyJSuQ+/HTaEUKKcj/rcSo+N3rgHpXOCnp
- MRyA==
-X-Gm-Message-State: APjAAAW94tERdi9k2XI6IWk9TVpvgNBWOpCuR02C2vHoapqBW71SSgaS
- rdEFYBTOjbCpEBfSFJcC1gc=
-X-Google-Smtp-Source: APXvYqzspNuecP6vjoKbVMlN1a+zmX6h3pOPqfRPbLQDm3gQyKx3/jQ5yCNmmGbrmJNg10WzZ1Utuw==
-X-Received: by 2002:a37:7002:: with SMTP id l2mr68984568qkc.227.1558527294809; 
- Wed, 22 May 2019 05:14:54 -0700 (PDT)
-Received: from arch-01.home (c-73-132-202-198.hsd1.dc.comcast.net.
- [73.132.202.198])
- by smtp.gmail.com with ESMTPSA id w2sm8742070qto.19.2019.05.22.05.14.53
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 22 May 2019 05:14:54 -0700 (PDT)
-From: Geordan Neukum <gneukum1@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 6/6] staging: kpc2000: kpc_i2c: add static qual to local
- symbols in kpc_i2c.c
-Date: Wed, 22 May 2019 12:14:02 +0000
-Message-Id: <ca1e25c5b0387b54541cf686ceb6b7146c1c76da.1558526487.git.gneukum1@gmail.com>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <cover.1558526487.git.gneukum1@gmail.com>
+ with ESMTP id 3X7WxvCn38cR for <devel@linuxdriverproject.org>;
+ Wed, 22 May 2019 12:27:17 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 30A7186003
+ for <devel@driverdev.osuosl.org>; Wed, 22 May 2019 12:27:17 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 841F42173C;
+ Wed, 22 May 2019 12:27:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1558528037;
+ bh=+GF+6gGeAQLWS1PYEAHsBHfgN/elXRl0cT8VNN1Tgx0=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=syKJ/UmP+vT0+IRYzgr2Wo3ixVdN4xYncKvArjFwyMD41phUE0QTjx/8ziCeFWhLv
+ g930YWcEFQZqxD42eMd5igKRZmDQhNr5qNugSAym1pFDD/A/UMU0jDNWVuGRilv1O0
+ Yh+I/8tDVW7i+/diu55IaQd/PoyJwn/kp/HZbLkE=
+Date: Wed, 22 May 2019 14:27:14 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Geordan Neukum <gneukum1@gmail.com>
+Subject: Re: [PATCH 1/6] staging: kpc2000: make kconfig symbol 'KPC2000'
+ select dependencies
+Message-ID: <20190522122714.GA2270@kroah.com>
 References: <cover.1558526487.git.gneukum1@gmail.com>
+ <932843299b814f3a22dd176771b46be14ceefeea.1558526487.git.gneukum1@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <932843299b814f3a22dd176771b46be14ceefeea.1558526487.git.gneukum1@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,61 +68,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Geordan Neukum <gneukum1@gmail.com>,
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
  Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-kpc_i2c.c declares:
-  - two functions
-    - pi2c_probe()
-    - pi2c_remove()
-  - one struct
-    - i2c_plat_driver_i
-which are local to the file, yet missing the static qualifier. Add the
-static qualifier to these symbols.
+On Wed, May 22, 2019 at 12:13:57PM +0000, Geordan Neukum wrote:
+> The kpc2000 core makes calls against functions which are conditionally
+> exported upon the kconfig symbols 'MFD_CORE' and 'UIO' being selected
+> Therefore, in order to guarantee correct compilation, the 'KPC2000'
+> kconfig symbol (which brings in that code) must explicitly select its
+> hard dependencies.
+> 
+> Signed-off-by: Geordan Neukum <gneukum1@gmail.com>
+> ---
+>  drivers/staging/kpc2000/Kconfig | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/drivers/staging/kpc2000/Kconfig b/drivers/staging/kpc2000/Kconfig
+> index fb5922928f47..8992dc67ff37 100644
+> --- a/drivers/staging/kpc2000/Kconfig
+> +++ b/drivers/staging/kpc2000/Kconfig
+> @@ -3,6 +3,8 @@
+>  config KPC2000
+>  	bool "Daktronics KPC Device support"
+>  	depends on PCI
+> +	select MFD_CORE
+> +	select UIO
 
-Signed-off-by: Geordan Neukum <gneukum1@gmail.com>
----
- drivers/staging/kpc2000/kpc2000_i2c.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+depends on is better than select.  There's a change to depend on UIO for
+this code already in my -linus branch which will show up in Linus's tree
+in a week or so.
 
-diff --git a/drivers/staging/kpc2000/kpc2000_i2c.c b/drivers/staging/kpc2000/kpc2000_i2c.c
-index f9259c06b605..97e738349ba2 100644
---- a/drivers/staging/kpc2000/kpc2000_i2c.c
-+++ b/drivers/staging/kpc2000/kpc2000_i2c.c
-@@ -579,7 +579,7 @@ static const struct i2c_algorithm smbus_algorithm = {
- /********************************
-  *** Part 2 - Driver Handlers ***
-  ********************************/
--int pi2c_probe(struct platform_device *pldev)
-+static int pi2c_probe(struct platform_device *pldev)
- {
- 	int err;
- 	struct i2c_device *priv;
-@@ -626,7 +626,7 @@ int pi2c_probe(struct platform_device *pldev)
- 	return 0;
- }
- 
--int pi2c_remove(struct platform_device *pldev)
-+static int pi2c_remove(struct platform_device *pldev)
- {
- 	struct i2c_device *lddev;
- 
-@@ -644,7 +644,7 @@ int pi2c_remove(struct platform_device *pldev)
- 	return 0;
- }
- 
--struct platform_driver i2c_plat_driver_i = {
-+static struct platform_driver i2c_plat_driver_i = {
- 	.probe      = pi2c_probe,
- 	.remove     = pi2c_remove,
- 	.driver     = {
--- 
-2.21.0
+Are you sure we need MFD_CORE as well for this code?  Why hasn't that
+been seen on any build errors?
 
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
