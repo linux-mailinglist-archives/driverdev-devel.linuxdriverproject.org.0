@@ -1,60 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91B1927846
-	for <lists+driverdev-devel@lfdr.de>; Thu, 23 May 2019 10:43:01 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E8F9027849
+	for <lists+driverdev-devel@lfdr.de>; Thu, 23 May 2019 10:43:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5AC2987E8E;
-	Thu, 23 May 2019 08:42:59 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2872430F6D;
+	Thu, 23 May 2019 08:43:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jQ-Z652mubrh; Thu, 23 May 2019 08:42:59 +0000 (UTC)
+	with ESMTP id SfrXr8ZnvRy1; Thu, 23 May 2019 08:43:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E075886512;
-	Thu, 23 May 2019 08:42:58 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B0D8C23B44;
+	Thu, 23 May 2019 08:43:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D6E451BF358
- for <devel@linuxdriverproject.org>; Thu, 23 May 2019 08:42:57 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 26FB61BF358
+ for <devel@linuxdriverproject.org>; Thu, 23 May 2019 08:43:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D3D75868E7
- for <devel@linuxdriverproject.org>; Thu, 23 May 2019 08:42:57 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 2304E226F3
+ for <devel@linuxdriverproject.org>; Thu, 23 May 2019 08:43:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lpqJebVDbUPd for <devel@linuxdriverproject.org>;
- Thu, 23 May 2019 08:42:56 +0000 (UTC)
+ with ESMTP id LahLZxpWYb3g for <devel@linuxdriverproject.org>;
+ Thu, 23 May 2019 08:43:20 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D916481AB5
- for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 08:42:56 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id AB85D2206E
+ for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 08:43:20 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 2969920881;
- Thu, 23 May 2019 08:42:56 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id EDE3C21019;
+ Thu, 23 May 2019 08:43:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1558600976;
- bh=BuZkJfDpDKsBcnzErUlYWJxVb0Fb5383/quSQvg7bMc=;
+ s=default; t=1558601000;
+ bh=OXEG3ImZ2eXX8KNRXnS3l2zhG1HunyO5thpIuSZ0PVk=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=HqaldpNdJ9Ff+CcLP19DojL0HVbQhgDlbWQInW3/wunoC16ErQ/U+lgM57mI+JDJh
- PpUmkENq2Orc0d+VdH3QRh+IdE3S2FX+NSSzAZ9isjz4EbSReOjnVLbJs0IuwM6qd7
- LrbPCwR0Jnibf8vIViJhOwzBDs8oAuHz/FmDfSlU=
-Date: Thu, 23 May 2019 10:42:54 +0200
+ b=B1b4DkIRb2OITYTbKqQDiZ8X1EyvG/ESTFwupm16zNCuuYoJwUdkbty0QyKnzWlCV
+ v5Opug1jMOEp36PKSvZ80McmgfMrrRmxcnDdx+qBaDw+aZk/SMreDBudFveP8pyjgL
+ //Yxrct3SxxCcBg+6IcgjVaa7mp5q1Wq/LltawIo=
+Date: Thu, 23 May 2019 10:43:18 +0200
 From: Greg KH <gregkh@linuxfoundation.org>
 To: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-Subject: Re: [PATCH] staging: fieldbus: anybuss: Remove unnecessary variables
-Message-ID: <20190523084254.GA831@kroah.com>
-References: <20190523063504.10530-1-nishka.dasgupta@yahoo.com>
- <20190523072220.GC24998@kroah.com>
- <b8cc12d9-2fe3-754b-be08-f23055a31ffe@yahoo.com>
+Subject: Re: [PATCH] staging: fieldbus: anybuss: Remove variable
+Message-ID: <20190523084318.GB831@kroah.com>
+References: <20190523070531.13510-1-nishka.dasgupta@yahoo.com>
+ <20190523072246.GD24998@kroah.com>
+ <4a3d571f-5987-6735-be56-7976457d0797@yahoo.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <b8cc12d9-2fe3-754b-be08-f23055a31ffe@yahoo.com>
+In-Reply-To: <4a3d571f-5987-6735-be56-7976457d0797@yahoo.com>
 User-Agent: Mutt/1.11.4 (2019-03-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -74,64 +74,38 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, May 23, 2019 at 01:51:18PM +0530, Nishka Dasgupta wrote:
+On Thu, May 23, 2019 at 01:52:29PM +0530, Nishka Dasgupta wrote:
 > 
 > 
 > On 23/05/19 12:52 PM, Greg KH wrote:
-> > On Thu, May 23, 2019 at 12:05:01PM +0530, Nishka Dasgupta wrote:
-> > > In the functions export_reset_0 and export_reset_1 in arcx-anybus.c,
-> > > the only operation performed before return is passing the variable cd
-> > > (which takes the value of a function call on one of the parameters) as
-> > > argument to another function. Hence the variable cd can be removed.
-> > > Issue found using Coccinelle.
+> > On Thu, May 23, 2019 at 12:35:26PM +0530, Nishka Dasgupta wrote:
+> > > Variable client, assigned to priv->client, is used only once in a
+> > > function argument; hence, it can be removed and the function argument
+> > > replaced with priv->client directly.
+> > > Issue found with Coccinelle.
 > > > 
 > > > Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
 > > > ---
-> > >   drivers/staging/fieldbus/anybuss/arcx-anybus.c | 8 ++------
-> > >   1 file changed, 2 insertions(+), 6 deletions(-)
+> > >   drivers/staging/fieldbus/anybuss/hms-profinet.c | 4 +---
+> > >   1 file changed, 1 insertion(+), 3 deletions(-)
 > > > 
-> > > diff --git a/drivers/staging/fieldbus/anybuss/arcx-anybus.c b/drivers/staging/fieldbus/anybuss/arcx-anybus.c
-> > > index 2ecffa42e561..e245f940a5c4 100644
-> > > --- a/drivers/staging/fieldbus/anybuss/arcx-anybus.c
-> > > +++ b/drivers/staging/fieldbus/anybuss/arcx-anybus.c
-> > > @@ -87,16 +87,12 @@ static int anybuss_reset(struct controller_priv *cd,
-> > >   static void export_reset_0(struct device *dev, bool assert)
+> > > diff --git a/drivers/staging/fieldbus/anybuss/hms-profinet.c b/drivers/staging/fieldbus/anybuss/hms-profinet.c
+> > > index 5446843e35f4..a7f85912fa92 100644
+> > > --- a/drivers/staging/fieldbus/anybuss/hms-profinet.c
+> > > +++ b/drivers/staging/fieldbus/anybuss/hms-profinet.c
+> > > @@ -124,9 +124,7 @@ static int __profi_enable(struct profi_priv *priv)
+> > >   static int __profi_disable(struct profi_priv *priv)
 > > >   {
-> > > -	struct controller_priv *cd = dev_get_drvdata(dev);
+> > > -	struct anybuss_client *client = priv->client;
 > > > -
-> > > -	anybuss_reset(cd, 0, assert);
-> > > +	anybuss_reset(dev_get_drvdata(dev), 0, assert);
-> > >   }
+> > > -	anybuss_set_power(client, false);
+> > > +	anybuss_set_power(priv->client, false);
 > > 
-> > While your patch is "correct", it's not the nicest thing.  The way the
-> > code looks today is to make it obvious we are passing a pointer to a
-> > struct controller_priv() into anybuss_reset().  But with your change, it
-> > looks like we are passing any random void pointer to it.
-> > 
-> > So I'd prefer the original code please.
+> > Same comments are relevant here as the last patch you sent.
 > 
-> Thank you, I'll drop this patch then.
-> 
-> > Also, you forgot to cc: Sven on this patch, please always use the output
-> > of scripts/get_maintainer.pl.
-> 
-> Which arguments should I use? If I use --nokeywords, --nogit,
-> --nogit-fallback and --norolestats then only your name and the two mailing
-> lists show up.
+> So just to clarify this patch isn't necessary and I should cc Sven?
 
-I don't use any arguments at all:
-$ ./scripts/get_maintainer.pl --file drivers/staging/fieldbus/anybuss/arcx-anybus.c
-Greg Kroah-Hartman <gregkh@linuxfoundation.org> (supporter:STAGING SUBSYSTEM,commit_signer:2/2=100%)
-Sven Van Asbroeck <thesven73@gmail.com> (commit_signer:2/2=100%,authored:2/2=100%,added_lines:412/412=100%,removed_lines:31/31=100%)
-devel@driverdev.osuosl.org (open list:STAGING SUBSYSTEM)
-linux-kernel@vger.kernel.org (open list)
-
-> (Also, regarding the mailing lists: every mail sent to
-> linux-kernel@vger.kernel.org is bouncing; should I not send to that list
-> anymore?)
-
-Please pick a reputable email server, yahoo.com emails are banned from
-all vger.kernel.org mailing lists.
+For future patches to any drivers/staging/fieldbus/ changes, yes.
 
 thanks,
 
