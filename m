@@ -2,78 +2,92 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9801B2784D
-	for <lists+driverdev-devel@lfdr.de>; Thu, 23 May 2019 10:43:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7715F278DF
+	for <lists+driverdev-devel@lfdr.de>; Thu, 23 May 2019 11:09:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4A46E880EE;
-	Thu, 23 May 2019 08:43:55 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6C27388120;
+	Thu, 23 May 2019 09:09:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IViBVfS5WbTk; Thu, 23 May 2019 08:43:55 +0000 (UTC)
+	with ESMTP id FY8pWEvaslR6; Thu, 23 May 2019 09:09:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D989887E5C;
-	Thu, 23 May 2019 08:43:54 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DF55F880E7;
+	Thu, 23 May 2019 09:09:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6F87C1BF358
- for <devel@linuxdriverproject.org>; Thu, 23 May 2019 08:43:50 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 58A3C1BF422
+ for <devel@linuxdriverproject.org>; Thu, 23 May 2019 09:09:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6810F226F3
- for <devel@linuxdriverproject.org>; Thu, 23 May 2019 08:43:50 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 550FD84D41
+ for <devel@linuxdriverproject.org>; Thu, 23 May 2019 09:09:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uUfLkbeNxZgf for <devel@linuxdriverproject.org>;
- Thu, 23 May 2019 08:43:50 +0000 (UTC)
+ with ESMTP id dIdDxm9ORRau for <devel@linuxdriverproject.org>;
+ Thu, 23 May 2019 09:09:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic307-20.consmr.mail.sg3.yahoo.com
- (sonic307-20.consmr.mail.sg3.yahoo.com [106.10.241.37])
- by silver.osuosl.org (Postfix) with ESMTPS id 981772206E
- for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 08:43:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1558601027; bh=aGIIPcF/RibZFDGfgJj/FxtfRaP5Mq78K/Y2aKRXS7U=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From:Subject;
- b=IEgwbfYM4O5sRL6j7MCS2P2DNmWN94NjlrFx9z+s5g+KOF85GYZrCeyT68XxOMPsV44Ds6cUjLxOt+cYLkDZy0Ui+O+pFoctUx8shA5HfjQnXd7BEeaDUkvCOvbrI23rzVyLg7DGDLlha/evI4BPEbeUmSz3Ecc5AKXvHQXFxswuRVtCKTzGq5qtKbUtGRMqDB1k2RspSIMdgTBVMWaNJCa2Hpd9LB9T7WRAv3Njs9kORXJBUu3I0J5vo+K0Wqzhgb7bU/CmJfP+EoLAl/mH+VsJyYx/+IELIAYxZwRucU8hyex3hLcq8TfoK5mTbwZYD10nSONKAX03b/inwNmkmg==
-X-YMail-OSG: rWEMg.oVM1kPeKppvoLFj_jm5CLWGW0QI4iWL1vjo2TRAXWfqJ.OVMNAiXxQQqF
- ndhSUS4cMOLjHQLAwCJv7ec.MTAa_qapOzd5ymDX6jwwJ_BQTljQG.06U6kHcbHVcChVXGAcp52B
- EFuNVTfVkG2FvbvZZmaOVSQ6LTO5ABxSNulNYJk36FdnbINzQUYvw96J6.WCLIgkDZKM.xFvMZEZ
- eO6GdscbIKNA2BoViIb3LHyP.7i77rUOQZF3qwjAVk34HIOO4mED2JGi27H0JSHSke_wVMVj9MTq
- WmH0JIkRVpDJ9QPTAd4vJVWD9KkSS3KTmgH39d_LhMaDFp0OqL2gopMIhZJa46ObMWc_Qg0ttBmm
- rDdO_lIT5itZVEgWWC9OcT2tVKtxhNwhFLOPuVTt37IIa2v19_oGa7fYaK2O_0sp.B0nZlFcmZoD
- 2QTmY0zIF8C1Ba9XfFS9T8Mvn7GXTd9.gfAQ1ZKzJVmhbMF7AO45IQAXD1smdyp6V0okwok4RTNj
- nahbUyvc8bsxAxk5wxgDYUdgk4F.oAhfFpNrVtLevCbFRmgggrr.5swg_zoGBZ.5kc9Bf.7UCWi6
- 16773DqzoQ8phi9QhSTqzf97mSW_Fe2y.6ICbzWLO17ichrOE2HKjcfrYW3eKlzEAJWShhYEP_Bj
- lYJiJj2PbaxhE8EC6XwrFSfPi6OLjmqlmyYZolUyJth5s9ZqEqtXOc_wOcQ9J7yGO7TD3JLas.pL
- 9lQG.NuAWzUGlDR_r41mHI_4qUUi01WMtVq2Fyw3OuJKMHgjyS92oblBfgxiNXPwCchamaEK74Ek
- EYk6DcUgpfzbwcow5L.I7yjSgx5roHIzJiCQFQc4y1Ytx_lZKWz6k7Ua..9CE_4jR4SXDlPF13ep
- MPZKwKNzplVobrQ4KOCgO2vLZnkTOA4nfJxJ7ib8ZRjoWM9bD3Fi6DqB2Egrc7BPVa04YwW5nATU
- xmrf6a0nvypEqqEu2z45_i4M5qsfXDJy24U.MRWbgRWITb3IkZpwNwLl17VP2YdIra0UjQ3.KPRG
- laWAkdhhTq7eTWpLrIsNm2q7z3YEWoeDJZJygYqn9wd4q50nUagQn0DAXE2VyZIuTnXgEg60pcge
- e9.zEsTigSBf2vx_tcuSm9JJLEh0NtPS7lbgp9EeD1yNNTDRKwrdDCZx0nPRDorkP4gbkud6zmGk
- u7rrus.2qboUgSuoDUeNKaA4RB09iJ_5kXcblZxH1hRt174dUUPY0gicDG4bZ6v5wScM5YKQZj3P
- S5cc1ihqGLLQ-
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic307.consmr.mail.sg3.yahoo.com with HTTP; Thu, 23 May 2019 08:43:47 +0000
-Received: from 122.163.94.48 (EHLO [10.0.2.15]) ([122.163.94.48])
- by smtp408.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID
- 25c79b26375a32cee128f62f8d3166c7; 
- Thu, 23 May 2019 08:43:45 +0000 (UTC)
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 41E198667D
+ for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 09:09:36 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x4N94HbX116460;
+ Thu, 23 May 2019 09:09:30 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2018-07-02;
+ bh=cK+Er+gj5m4HRHUWLjAKmLrmA+e9WKEZxpkr8Dvt0+s=;
+ b=JBJ9ZmfCpvpy/aqwU3vAJ65BOLRE96242YjlyNDeTjJYwXgjF6Gq3NcwufG9J4dNwlGU
+ 0a00Z1AYlNFcywHouYsBNLKBs3vd6/CMgEIyPHrFgzyg6Q2gzjIcmchp/YXym3TXeF50
+ JWLOCtOEf+EK+2k772swyr8U5YGf2q41BuuBHmV5FWzLVv8M5jHYF4zGIIroiF69hhey
+ SYJb0k9PtqaW76zRdd42YJ+s1pyevFHK06L4+GLv+OA+aO7J2tId8DFuxz8XFoGFot4H
+ OeXvI83U3GSlQQKVoevcaq4OaHMJ4vhn2LFO2ndqCJX/7T7LddUCSWuZGUcWxDpzR4Oe Vg== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by userp2130.oracle.com with ESMTP id 2smsk5gytf-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 23 May 2019 09:09:30 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x4N999XX136260;
+ Thu, 23 May 2019 09:09:29 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3030.oracle.com with ESMTP id 2smshf4f7t-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 23 May 2019 09:09:29 +0000
+Received: from abhmp0020.oracle.com (abhmp0020.oracle.com [141.146.116.26])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x4N99QA6001722;
+ Thu, 23 May 2019 09:09:26 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 23 May 2019 09:09:25 +0000
+Date: Thu, 23 May 2019 12:09:18 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Jeremy Sowden <jeremy@azazel.net>, Sven Van Asbroeck <TheSven73@gmail.com>
 Subject: Re: [PATCH] staging: fieldbus: anybuss: Remove unnecessary variables
-To: Jeremy Sowden <jeremy@azazel.net>
+Message-ID: <20190523090918.GU31203@kadam>
 References: <20190523063504.10530-1-nishka.dasgupta@yahoo.com>
  <20190523072220.GC24998@kroah.com>
  <b8cc12d9-2fe3-754b-be08-f23055a31ffe@yahoo.com>
  <20190523082702.GB28231@azazel.net>
-From: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-Message-ID: <e0243244-2374-119d-33ca-1bb3fc16333c@yahoo.com>
-Date: Thu, 23 May 2019 14:13:42 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
 MIME-Version: 1.0
+Content-Disposition: inline
 In-Reply-To: <20190523082702.GB28231@azazel.net>
-Content-Language: en-US
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9265
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=673
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1810050000 definitions=main-1905230065
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9265
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=708 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
+ definitions=main-1905230065
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,76 +100,41 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg KH <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Nishka Dasgupta <nishka.dasgupta@yahoo.com>,
+ linux-kernel@vger.kernel.org, Greg KH <gregkh@linuxfoundation.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-
-
-On 23/05/19 1:57 PM, Jeremy Sowden wrote:
+On Thu, May 23, 2019 at 09:27:02AM +0100, Jeremy Sowden wrote:
 > On 2019-05-23, at 13:51:18 +0530, Nishka Dasgupta wrote:
->> On 23/05/19 12:52 PM, Greg KH wrote:
->>> On Thu, May 23, 2019 at 12:05:01PM +0530, Nishka Dasgupta wrote:
->>>> In the functions export_reset_0 and export_reset_1 in
->>>> arcx-anybus.c, the only operation performed before return is
->>>> passing the variable cd (which takes the value of a function call
->>>> on one of the parameters) as argument to another function. Hence
->>>> the variable cd can be removed.  Issue found using Coccinelle.
->>>>
->>>> Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
->>>> ---
->>>>    drivers/staging/fieldbus/anybuss/arcx-anybus.c | 8 ++------
->>>>    1 file changed, 2 insertions(+), 6 deletions(-)
->>>>
->>>> diff --git a/drivers/staging/fieldbus/anybuss/arcx-anybus.c b/drivers/staging/fieldbus/anybuss/arcx-anybus.c
->>>> index 2ecffa42e561..e245f940a5c4 100644
->>>> --- a/drivers/staging/fieldbus/anybuss/arcx-anybus.c
->>>> +++ b/drivers/staging/fieldbus/anybuss/arcx-anybus.c
->>>> @@ -87,16 +87,12 @@ static int anybuss_reset(struct controller_priv *cd,
->>>>    static void export_reset_0(struct device *dev, bool assert)
->>>>    {
->>>> -	struct controller_priv *cd = dev_get_drvdata(dev);
->>>> -
->>>> -	anybuss_reset(cd, 0, assert);
->>>> +	anybuss_reset(dev_get_drvdata(dev), 0, assert);
->>>>    }
->>>
->>> While your patch is "correct", it's not the nicest thing.  The way the
->>> code looks today is to make it obvious we are passing a pointer to a
->>> struct controller_priv() into anybuss_reset().  But with your change, it
->>> looks like we are passing any random void pointer to it.
->>>
->>> So I'd prefer the original code please.
->>
->> Thank you, I'll drop this patch then.
->>
->>> Also, you forgot to cc: Sven on this patch, please always use the output
->>> of scripts/get_maintainer.pl.
->>
->> Which arguments should I use? If I use --nokeywords, --nogit,
->> --nogit-fallback and --norolestats then only your name and the two
->> mailing lists show up.  (Also, regarding the mailing lists: every mail
->> sent to linux-kernel@vger.kernel.org is bouncing; should I not send to
->> that list anymore?)
+> > On 23/05/19 12:52 PM, Greg KH wrote:
+> > > On Thu, May 23, 2019 at 12:05:01PM +0530, Nishka Dasgupta wrote:
+> > > Also, you forgot to cc: Sven on this patch, please always use the output
+> > > of scripts/get_maintainer.pl.
+> >
+> > Which arguments should I use? If I use --nokeywords, --nogit,
+> > --nogit-fallback and --norolestats then only your name and the two
+> > mailing lists show up.  (Also, regarding the mailing lists: every mail
+> > sent to linux-kernel@vger.kernel.org is bouncing; should I not send to
+> > that list anymore?)
 > 
 > He is listed in the TODO:
-
-Thank you.
-
-Nishka
-
->    $ cat drivers/staging/fieldbus/TODO
->    TODO:
->    -Get more people/drivers to use the Fieldbus userspace ABI. It requires
->     verification/sign-off by multiple users.
 > 
->    Contact: Sven Van Asbroeck <TheSven73@gmail.com>
+>   $ cat drivers/staging/fieldbus/TODO
+>   TODO:
+>   -Get more people/drivers to use the Fieldbus userspace ABI. It requires
+>    verification/sign-off by multiple users.
 > 
-> J.
-> 
+>   Contact: Sven Van Asbroeck <TheSven73@gmail.com>
+
+Sven, you should add yourself to the MAINTAINERS file.
+
+regards,
+dan carpenter
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
