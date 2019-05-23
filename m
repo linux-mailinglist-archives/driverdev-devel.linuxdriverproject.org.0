@@ -1,80 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5537C27BE1
-	for <lists+driverdev-devel@lfdr.de>; Thu, 23 May 2019 13:36:53 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6970A27C41
+	for <lists+driverdev-devel@lfdr.de>; Thu, 23 May 2019 13:56:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D364B8676E;
-	Thu, 23 May 2019 11:36:51 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id EFBD63103A;
+	Thu, 23 May 2019 11:55:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8TJe3C-zdNTo; Thu, 23 May 2019 11:36:50 +0000 (UTC)
+	with ESMTP id IHN8s9kjjo9y; Thu, 23 May 2019 11:55:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 645CA866F0;
-	Thu, 23 May 2019 11:36:50 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 370B82291B;
+	Thu, 23 May 2019 11:55:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B5E021BF422
- for <devel@linuxdriverproject.org>; Thu, 23 May 2019 11:36:44 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 58BB41BF422
+ for <devel@linuxdriverproject.org>; Thu, 23 May 2019 11:55:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B30E986701
- for <devel@linuxdriverproject.org>; Thu, 23 May 2019 11:36:44 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5385F8676F
+ for <devel@linuxdriverproject.org>; Thu, 23 May 2019 11:55:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id U7mp03BnbluJ for <devel@linuxdriverproject.org>;
- Thu, 23 May 2019 11:36:41 +0000 (UTC)
+ with ESMTP id 0Brm0A2bOuW5 for <devel@linuxdriverproject.org>;
+ Thu, 23 May 2019 11:55:55 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f65.google.com (mail-lf1-f65.google.com
- [209.85.167.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3A55E86640
- for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 11:36:40 +0000 (UTC)
-Received: by mail-lf1-f65.google.com with SMTP id n134so4123457lfn.11
- for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 04:36:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nikanor-nu.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=MMfGJf5frnUDLRDsQYeuqMunOFEwSP2w0GYWkV6PgaI=;
- b=XAtK57P0NZaxIhWEoFwQxeeQk0DFldgXk/hYNnvn36KLtzGgyXnm+oNoWdK6Z0zkk7
- +JgWI6BDBU83ZcE1znfUsuShCPqqGJN0NOfoNxKMWNRQr1QwkPnd0MfFh2xkwNek14LR
- yb+XQv875anXhOLnQJHqqoo1bAZ/a2Q/n9KkSMRTZQGgFSDkjAEpKKGLLPPW+n113l7a
- XG45xGvcfgZ+N4JNtcv5cBW4+DxBH8/40LBmVZNu19IzlVnscV9d1Ew8Uf6ddAoGmFNN
- 8LnDwcjW+WMnTScaP/Bw34cT2Nz7o5WhYpcAuqrMz4DuhTi3CUMBlatKwa745yFSk/Vs
- GXzw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=MMfGJf5frnUDLRDsQYeuqMunOFEwSP2w0GYWkV6PgaI=;
- b=fKaJyCIhCTK4B/l5AUf255pOdKqJXOBjhfbHEfm1Klri7PhbzjGEapp3AbzmmjWMsB
- 2n65uWvbDmo9wmb1OwP0jjD7J254Qa7zC24Nf7V3fkIZh1ABq30ni8IJ10gJioCGXW28
- YqsLL3Ya1qy+9AQmA67Y+ADXVScpLYhfcZRv8y1rc7dl73EqY+WXFWEiYJfJHAsvutOn
- t6IbugizmqMgdpLd3ktXST65qGBIlr1Y1BUusa8124pNGcorxCXELfxZwZa2FTmrS7FH
- rOozqnehDZOUgpb6X2wwyzu+nBwows/GCdpATx4WBUxYSMl7ejx3VoYbHSiFEsj+pTjR
- fJ2Q==
-X-Gm-Message-State: APjAAAX10CBlsozsH82FJ+7FvjmIe4LxkBn9xsbXsNXnkIhMNYXA3FQp
- cL2rJlg/Z7yzwt+RMJ7LKNa/3A==
-X-Google-Smtp-Source: APXvYqyeGFkmgQDfdbxxObn5avwCTog9iSt4jZ/lHZZHaqQNyYwSHPi1nHkwQuKtdATqm5FLL3IHWA==
-X-Received: by 2002:ac2:4c36:: with SMTP id u22mr1907383lfq.33.1558611398327; 
- Thu, 23 May 2019 04:36:38 -0700 (PDT)
-Received: from dev.nikanor.nu (78-72-133-4-no161.tbcn.telia.com. [78.72.133.4])
- by smtp.gmail.com with ESMTPSA id d68sm5269287lfg.23.2019.05.23.04.36.37
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 23 May 2019 04:36:37 -0700 (PDT)
-From: =?UTF-8?q?Simon=20Sandstr=C3=B6m?= <simon@nikanor.nu>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH 8/8] staging: kpc2000: remove unnecessary include in
- cell_probe.c
-Date: Thu, 23 May 2019 13:36:13 +0200
-Message-Id: <20190523113613.28342-9-simon@nikanor.nu>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190523113613.28342-1-simon@nikanor.nu>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C2B1F86748
+ for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 11:55:55 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0F26C20881;
+ Thu, 23 May 2019 11:55:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1558612555;
+ bh=puKLNTiE7cwyf6xYtoR1KxBZnqtcCNUUrpxzR1l2XNU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=bfSxSYHWib7RKerqZ7PBtGoXvOrTDtTmqD2U0Hu4ZJcKaES8KbxBFvBeXvdfPpmh+
+ cSCuoGOPeAIWKBGxrrDfczrinK/Nd2zWokRXbFG8k56NYkIEUxGNWLpz7ViQZ1ijgZ
+ Jo+Q2LcQ4DoiPoSMEoZuYGCunHxM6MPUTf4wdu9Y=
+Date: Thu, 23 May 2019 13:55:53 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Simon =?iso-8859-1?Q?Sandstr=F6m?= <simon@nikanor.nu>
+Subject: Re: [PATCH 2/8] staging: kpc2000: use __func__ in debug messages
+Message-ID: <20190523115553.GA6953@kroah.com>
 References: <20190523113613.28342-1-simon@nikanor.nu>
+ <20190523113613.28342-3-simon@nikanor.nu>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190523113613.28342-3-simon@nikanor.nu>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,25 +68,46 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- dan.carpenter@oracle.com, simon@nikanor.nu
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ dan.carpenter@oracle.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Rml4ZXMgY2hlY2twYXRjaC5wbCB3YXJuaW5nICJVc2UgI2luY2x1ZGUgPGxpbnV4L2lvLmg+IGlu
-c3RlYWQgb2YKPGFzbS9pby5oPiIuCgpTaWduZWQtb2ZmLWJ5OiBTaW1vbiBTYW5kc3Ryw7ZtIDxz
-aW1vbkBuaWthbm9yLm51PgotLS0KIGRyaXZlcnMvc3RhZ2luZy9rcGMyMDAwL2twYzIwMDAvY2Vs
-bF9wcm9iZS5jIHwgMSAtCiAxIGZpbGUgY2hhbmdlZCwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvc3RhZ2luZy9rcGMyMDAwL2twYzIwMDAvY2VsbF9wcm9iZS5jIGIvZHJpdmVy
-cy9zdGFnaW5nL2twYzIwMDAva3BjMjAwMC9jZWxsX3Byb2JlLmMKaW5kZXggYjFjZTFlNzE1ZDlh
-Li4wMDAwNTAxN2M4NTAgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy9rcGMyMDAwL2twYzIw
-MDAvY2VsbF9wcm9iZS5jCisrKyBiL2RyaXZlcnMvc3RhZ2luZy9rcGMyMDAwL2twYzIwMDAvY2Vs
-bF9wcm9iZS5jCkBAIC00LDcgKzQsNiBAQAogI2luY2x1ZGUgPGxpbnV4L3R5cGVzLmg+CiAjaW5j
-bHVkZSA8bGludXgvZXhwb3J0Lmg+CiAjaW5jbHVkZSA8bGludXgvc2xhYi5oPgotI2luY2x1ZGUg
-PGFzbS9pby5oPgogI2luY2x1ZGUgPGxpbnV4L2lvLmg+CiAjaW5jbHVkZSA8bGludXgvaW8tNjQt
-bm9uYXRvbWljLWxvLWhpLmg+CiAjaW5jbHVkZSA8bGludXgvbWZkL2NvcmUuaD4KLS0gCjIuMjAu
-MQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwg
-bWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRl
-di5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVs
-Cg==
+On Thu, May 23, 2019 at 01:36:07PM +0200, Simon Sandstr=F6m wrote:
+> Fixes checkpatch.pl warning "Prefer using '"%s...", __func__' to using
+> '<function name>', this function's name, in a string".
+> =
+
+> Signed-off-by: Simon Sandstr=F6m <simon@nikanor.nu>
+> ---
+>  drivers/staging/kpc2000/kpc2000/cell_probe.c | 22 +++++++++++++-------
+>  1 file changed, 14 insertions(+), 8 deletions(-)
+> =
+
+> diff --git a/drivers/staging/kpc2000/kpc2000/cell_probe.c b/drivers/stagi=
+ng/kpc2000/kpc2000/cell_probe.c
+> index 95bfbe4aae4d..7b850f3e808b 100644
+> --- a/drivers/staging/kpc2000/kpc2000/cell_probe.c
+> +++ b/drivers/staging/kpc2000/kpc2000/cell_probe.c
+> @@ -299,7 +299,8 @@ static int probe_core_uio(unsigned int core_num, stru=
+ct kp2000_device *pcard,
+>  =
+
+>  	kudev =3D kzalloc(sizeof(struct kpc_uio_device), GFP_KERNEL);
+>  	if (!kudev) {
+> -		dev_err(&pcard->pdev->dev, "probe_core_uio: failed to kzalloc kpc_uio_=
+device\n");
+> +		dev_err(&pcard->pdev->dev, "%s: failed to kzalloc kpc_uio_device\n",
+> +			__func__);
+
+kmalloc and friend error messages should just be deleted.  Didn't
+checkpatch say something about that?
+
+thanks,
+
+greg k-h
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
