@@ -1,76 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BEAAB27D3E
-	for <lists+driverdev-devel@lfdr.de>; Thu, 23 May 2019 14:52:11 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id DC41927D3F
+	for <lists+driverdev-devel@lfdr.de>; Thu, 23 May 2019 14:52:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 680BE88513;
-	Thu, 23 May 2019 12:52:10 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8FAAF87DB0;
+	Thu, 23 May 2019 12:52:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XHMAUzqlMmCz; Thu, 23 May 2019 12:52:10 +0000 (UTC)
+	with ESMTP id DQBbPXYlc3a9; Thu, 23 May 2019 12:52:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 43E3C88517;
-	Thu, 23 May 2019 12:52:08 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 70DCC87D22;
+	Thu, 23 May 2019 12:52:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 383981BF31E
- for <devel@linuxdriverproject.org>; Thu, 23 May 2019 12:52:00 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 20D051BF31E
+ for <devel@linuxdriverproject.org>; Thu, 23 May 2019 12:51:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 322D685F8E
- for <devel@linuxdriverproject.org>; Thu, 23 May 2019 12:52:00 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1D6A686ACC
+ for <devel@linuxdriverproject.org>; Thu, 23 May 2019 12:51:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lJGNOvQGJofj for <devel@linuxdriverproject.org>;
- Thu, 23 May 2019 12:51:56 +0000 (UTC)
+ with ESMTP id hFIkQ4SFQfBq for <devel@linuxdriverproject.org>;
+ Thu, 23 May 2019 12:51:57 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f68.google.com (mail-lf1-f68.google.com
- [209.85.167.68])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 7A21185F5D
- for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 12:51:55 +0000 (UTC)
-Received: by mail-lf1-f68.google.com with SMTP id y19so4319085lfy.5
- for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 05:51:55 -0700 (PDT)
+Received: from mail-lf1-f67.google.com (mail-lf1-f67.google.com
+ [209.85.167.67])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id DE5A286AAA
+ for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 12:51:56 +0000 (UTC)
+Received: by mail-lf1-f67.google.com with SMTP id u27so4303603lfg.10
+ for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 05:51:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=nikanor-nu.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=+9ejD9Dmbikyh/E/C2ffOjcSNuWRasGmPKqlousO2AI=;
- b=2Cvm2iOLdW2zG+hEE7WnSyyadypZpHlWc7YNTc8b8WgJcvLxzJ6v5d+t5TFvjaDd5r
- V6QazTM8O3so3YIG1hBBhFKAGq26HFgRXQ3oq1WFxadqLr8MoC6ovjnMq2HAJheX80xi
- zWBf3P/sih7Rs2VP58sFBZJ3QPesb7GwUyr/yHhc9oObeQU6JdiGWTi8zGoybGTYOqr7
- D1T32fesG31q5rU5AOBC1haHpKMubGyOji7/vS4Qfsr60vK+vwk2PQeOHXyAhcgZhyW2
- 547RMgVd9pC5Kribrnez7P/n9fEmfmRfjku4gb+ZYs7E4n4v55yoR5eGN1tMY2CVPdam
- FGFA==
+ bh=Ia7CedsVGwIb86j/mel4yJY3UB1AG6M5u+2ZXx5Hn7o=;
+ b=2CMbxjkZ6LJd8gm7ntkrCQeJx7LqjcqwKEvmI5El9W4rTiP+Kxt1mKpNr90yXIVbek
+ 8bG07ZU3cTR+kx1TBFcGVZrSP69gNyPlZ2qiKfpJNeY0rJf8CmzQzYtvEXy9aIHfVXCd
+ d9iJQ9JwmkoWOKX0dIXRQMUOG9yiMAuqNKqXA0RudMAjquOFTnyD0/QhUj5+rYxj/xAl
+ atWZW5QLBsUxWDM9Tdr4IKAxw0O2681lJY/+Eh2zfTLqwA8CHOHFhJXjrtRXYnPky6XU
+ B+7z9+uJV7iqfJ6Tk1m3/z5ajyEY3FQNxR6z+Jcyqnid8BdlnyjOB73IxCo16bBV+BZm
+ MMFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=+9ejD9Dmbikyh/E/C2ffOjcSNuWRasGmPKqlousO2AI=;
- b=eXrQROkh6U2XXak/u/chgj64uCp1G2zLUxLjtF5/t/TZoemhlMz86eqk1A0IK6R6wT
- 5qAnInHf6n6e326AMq1O3iuJmH1Fua8WIYi11FxHsPpt5dLDXgsLtZ6bEFNW2gYMEAya
- GhhKT47oSMEYOI8Juqkg8Gg+kIq0AlLwKRjOYvjb/Lg7YOxB5Ex9VRHm967hIU/hIgmP
- eDKznr0iArcDZFCVao3wcNwNDjyPfQfnS6KCJOcJUQO+b3lTmj51LYpFaI68JTis+y0+
- TBS3RBzYYMsHC34vCQPJHR7wZoIEj1ytOO/KPjJ9tcYteNbQDWi5BIH5Lu0thCX8dwN9
- q55Q==
-X-Gm-Message-State: APjAAAWGn2uTEJ35JNe/mW/Q0SbdWwd0GfjFBrSfVRDmJ0M2YLm/P996
- KlWCNUHKUybWKJjziBU/at1zkQ==
-X-Google-Smtp-Source: APXvYqwuga05QEEZFv966dAEMfP4nQxKq+vT82FqzWnvc4YmVcR8kfm5koljHuehptbDMAzunB8ncw==
-X-Received: by 2002:ac2:4209:: with SMTP id y9mr8382103lfh.83.1558615914197;
- Thu, 23 May 2019 05:51:54 -0700 (PDT)
+ bh=Ia7CedsVGwIb86j/mel4yJY3UB1AG6M5u+2ZXx5Hn7o=;
+ b=cay7RS/msXcoFpqqESnOKMzwrQiBKcr5vZIOT4PeJ4koVx5GchiIwABIip5pbIu/A4
+ 8fEYpQfZv0szVlkzwyXjNjjf3ApJy5XhYI9jCXv+6nM+kcLXRPjV2SlIaj5D92WO+9iO
+ NM+iNJNyehD5/JMiRuVJEKiQUsA4eDAUFM1Euj/k9gJ7MAJqS1tCOrXPvhVjXTU6oiHO
+ bIXvEEArtEUHhVdktxQP7YGEJ5V0OOhfvzQv4Wr6rLJiouCnEsWUwhYURzu7s7TS6gCn
+ YxoHwdjcLXS2xgCTcp50byMOvgE7S+oGk/pEdHzxTDXDLcU1Qq+zd4BZGZ5SGt6jJhs5
+ 5f8Q==
+X-Gm-Message-State: APjAAAWjQ0Qvl0V5TLJ5GgusWdvpmNlClC1BPj9rpIWTEf4R4WvYBkzt
+ yocL1VIswa+BWFfrIu/gy1Vb5w==
+X-Google-Smtp-Source: APXvYqyMpM8twI2730Pqo6Oq0I4rCKeDxFMN5e3PhGc9TPfyniD1qBb8sI2/114nfDhBVeRVn8+3Gg==
+X-Received: by 2002:a19:be17:: with SMTP id o23mr21838119lff.170.1558615915079; 
+ Thu, 23 May 2019 05:51:55 -0700 (PDT)
 Received: from dev.nikanor.nu (78-72-133-4-no161.tbcn.telia.com. [78.72.133.4])
- by smtp.gmail.com with ESMTPSA id c19sm5947154lfi.69.2019.05.23.05.51.53
+ by smtp.gmail.com with ESMTPSA id c19sm5947154lfi.69.2019.05.23.05.51.54
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 23 May 2019 05:51:53 -0700 (PDT)
+ Thu, 23 May 2019 05:51:54 -0700 (PDT)
 From: =?UTF-8?q?Simon=20Sandstr=C3=B6m?= <simon@nikanor.nu>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH v2 8/9] staging: kpc2000: remove unnecessary include in
- cell_probe.c
-Date: Thu, 23 May 2019 14:51:42 +0200
-Message-Id: <20190523125143.32511-9-simon@nikanor.nu>
+Subject: [PATCH v2 9/9] staging: kpc2000: remove unnecessary oom message
+Date: Thu, 23 May 2019 14:51:43 +0200
+Message-Id: <20190523125143.32511-10-simon@nikanor.nu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190523125143.32511-1-simon@nikanor.nu>
 References: <20190523125143.32511-1-simon@nikanor.nu>
@@ -94,19 +93,25 @@ Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Rml4ZXMgY2hlY2twYXRjaC5wbCB3YXJuaW5nICJVc2UgI2luY2x1ZGUgPGxpbnV4L2lvLmg+IGlu
-c3RlYWQgb2YKPGFzbS9pby5oPiIuCgpTaWduZWQtb2ZmLWJ5OiBTaW1vbiBTYW5kc3Ryw7ZtIDxz
-aW1vbkBuaWthbm9yLm51PgotLS0KIGRyaXZlcnMvc3RhZ2luZy9rcGMyMDAwL2twYzIwMDAvY2Vs
-bF9wcm9iZS5jIHwgMSAtCiAxIGZpbGUgY2hhbmdlZCwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvc3RhZ2luZy9rcGMyMDAwL2twYzIwMDAvY2VsbF9wcm9iZS5jIGIvZHJpdmVy
-cy9zdGFnaW5nL2twYzIwMDAva3BjMjAwMC9jZWxsX3Byb2JlLmMKaW5kZXggNjgyZDYxZGE1MzY5
-Li41ZTY1YmQ1NmQ2NmUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy9rcGMyMDAwL2twYzIw
-MDAvY2VsbF9wcm9iZS5jCisrKyBiL2RyaXZlcnMvc3RhZ2luZy9rcGMyMDAwL2twYzIwMDAvY2Vs
-bF9wcm9iZS5jCkBAIC00LDcgKzQsNiBAQAogI2luY2x1ZGUgPGxpbnV4L3R5cGVzLmg+CiAjaW5j
-bHVkZSA8bGludXgvZXhwb3J0Lmg+CiAjaW5jbHVkZSA8bGludXgvc2xhYi5oPgotI2luY2x1ZGUg
-PGFzbS9pby5oPgogI2luY2x1ZGUgPGxpbnV4L2lvLmg+CiAjaW5jbHVkZSA8bGludXgvaW8tNjQt
-bm9uYXRvbWljLWxvLWhpLmg+CiAjaW5jbHVkZSA8bGludXgvbWZkL2NvcmUuaD4KLS0gCjIuMjAu
-MQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwg
-bWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRl
-di5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVs
-Cg==
+Rml4ZXMgY2hlY2twYXRjaC5wbCB3YXJuaW5nICJQb3NzaWJsZSB1bm5lY2Vzc2FyeSAnb3V0IG9m
+IG1lbW9yeScKbWVzc2FnZSIuCgpTaWduZWQtb2ZmLWJ5OiBTaW1vbiBTYW5kc3Ryw7ZtIDxzaW1v
+bkBuaWthbm9yLm51PgotLS0KIGRyaXZlcnMvc3RhZ2luZy9rcGMyMDAwL2twYzIwMDAvY2VsbF9w
+cm9iZS5jIHwgNCArLS0tCiAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDMgZGVsZXRp
+b25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL2twYzIwMDAva3BjMjAwMC9jZWxs
+X3Byb2JlLmMgYi9kcml2ZXJzL3N0YWdpbmcva3BjMjAwMC9rcGMyMDAwL2NlbGxfcHJvYmUuYwpp
+bmRleCA1ZTY1YmQ1NmQ2NmUuLmY3MzFhOTdjNmNhYyAxMDA2NDQKLS0tIGEvZHJpdmVycy9zdGFn
+aW5nL2twYzIwMDAva3BjMjAwMC9jZWxsX3Byb2JlLmMKKysrIGIvZHJpdmVycy9zdGFnaW5nL2tw
+YzIwMDAva3BjMjAwMC9jZWxsX3Byb2JlLmMKQEAgLTI5MSwxMCArMjkxLDggQEAgc3RhdGljIGlu
+dCBwcm9iZV9jb3JlX3Vpbyh1bnNpZ25lZCBpbnQgY29yZV9udW0sIHN0cnVjdCBrcDIwMDBfZGV2
+aWNlICpwY2FyZCwKIAlkZXZfZGJnKCZwY2FyZC0+cGRldi0+ZGV2LCAiRm91bmQgVUlPIGNvcmU6
+ICAgdHlwZSA9ICUwMmQgIGRtYSA9ICUwMnggLyAlMDJ4ICBvZmZzZXQgPSAweCV4ICBsZW5ndGgg
+PSAweCV4ICglZCByZWdzKVxuIiwgY3RlLnR5cGUsIEtQQ19PTERfUzJDX0RNQV9DSF9OVU0oY3Rl
+KSwgS1BDX09MRF9DMlNfRE1BX0NIX05VTShjdGUpLCBjdGUub2Zmc2V0LCBjdGUubGVuZ3RoLCBj
+dGUubGVuZ3RoIC8gOCk7CiAKIAlrdWRldiA9IGt6YWxsb2Moc2l6ZW9mKCprdWRldiksIEdGUF9L
+RVJORUwpOwotCWlmICgha3VkZXYpIHsKLQkJZGV2X2VycigmcGNhcmQtPnBkZXYtPmRldiwgInBy
+b2JlX2NvcmVfdWlvOiBmYWlsZWQgdG8ga3phbGxvYyBrcGNfdWlvX2RldmljZVxuIik7CisJaWYg
+KCFrdWRldikKIAkJcmV0dXJuIC1FTk9NRU07Ci0JfQogCiAJSU5JVF9MSVNUX0hFQUQoJmt1ZGV2
+LT5saXN0KTsKIAlrdWRldi0+cGNhcmQgPSBwY2FyZDsKLS0gCjIuMjAuMQoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRl
+dmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnBy
+b2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
