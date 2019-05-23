@@ -1,76 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 47F2A277D8
-	for <lists+driverdev-devel@lfdr.de>; Thu, 23 May 2019 10:21:39 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 32428277D9
+	for <lists+driverdev-devel@lfdr.de>; Thu, 23 May 2019 10:22:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 577DC30F2A;
-	Thu, 23 May 2019 08:21:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B0B668665F;
+	Thu, 23 May 2019 08:22:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id emomt6970Zf0; Thu, 23 May 2019 08:21:34 +0000 (UTC)
+	with ESMTP id L245jDFxsuRz; Thu, 23 May 2019 08:22:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 5103C234AC;
-	Thu, 23 May 2019 08:21:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 555D186613;
+	Thu, 23 May 2019 08:22:43 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 761A01BF358
- for <devel@linuxdriverproject.org>; Thu, 23 May 2019 08:21:30 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 4269B1BF358
+ for <devel@linuxdriverproject.org>; Thu, 23 May 2019 08:22:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 70C9F873D2
- for <devel@linuxdriverproject.org>; Thu, 23 May 2019 08:21:30 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 3F943226F3
+ for <devel@linuxdriverproject.org>; Thu, 23 May 2019 08:22:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BIxHoaThhuW7 for <devel@linuxdriverproject.org>;
- Thu, 23 May 2019 08:21:29 +0000 (UTC)
+ with ESMTP id hwHfbPS6EJjz for <devel@linuxdriverproject.org>;
+ Thu, 23 May 2019 08:22:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic306-19.consmr.mail.sg3.yahoo.com
- (sonic306-19.consmr.mail.sg3.yahoo.com [106.10.241.139])
- by whitealder.osuosl.org (Postfix) with ESMTPS id C8F84873B8
- for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 08:21:28 +0000 (UTC)
+Received: from sonic301-20.consmr.mail.sg3.yahoo.com
+ (sonic301-20.consmr.mail.sg3.yahoo.com [106.10.242.83])
+ by silver.osuosl.org (Postfix) with ESMTPS id 836E622270
+ for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 08:22:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1558599686; bh=E/uHxKenCXnIKVyqamMtzpuIm7N65ct0qGJJ0FCI1Ak=;
+ t=1558599756; bh=S/RYG7PLBW+LGmJyez+/BcqjtLOCtk5wnRcfRY24JtA=;
  h=Subject:To:Cc:References:From:Date:In-Reply-To:From:Subject;
- b=KpSHZCdTjK7243RLm+p4Imlzos9B2DKe0BgvJPaQgbaHxV3Ii+31GwCo8fMbEQ7RQWB74jyQ/2nAgvY33SvSz7SV7ULQ+NMrBC9yqRaScErG2BxuqZBXvDi6Vqze/gjXtTPce6Md17AJtg6zG2ISMoDcyvQZqwB9bmIk3doG414yP5F9p46Hzbv9IpqNLTngomBVPRmukwdshmmo0JJWFI7dw8kinjbZY1F2rbU6grr+rjcdd8mF0cv0yEuHmrmAqfeyU4WHhzr6Y6TDvmppvtdOom6VY66TOl5G4ZGP4uXM9HiIrRRNeekVCh4GzVWeRWRF3DwX5LafXLJpTLFbYg==
-X-YMail-OSG: V2kHCuEVM1l0AtNzk0CGA4otXYpb9KmQZt95mZOk7AUWzYYuxYxCwsw2WJljq0Y
- pwLz8t_Iyc0POHGa9Fmoo25IHq4jPn.OmvJvubNmkeI5myFHZuCeOnwDSlthZc26QbF_VvdJJj3M
- teB3j1iBwORFQiCO19uNQEyBi5eRzTgxFUwtlcRXUS35EFb0gL22nwS3rIgwpprkfSLXXQH7aLW5
- 0i26m1cpV6uf1ZbC0seNNDTjoTfn8mIvNKAAw6qxJLt.CogEohpdC6a2VDyxPAjBfiHSDwBzi4Uj
- TfSEosFVLfAvXl06ppqblU_UnVrBHqENc_VpBsDUC6W3j8bHuto5a_IW3gP5WejmN_u31JtkLSpu
- RDvCrWUy8QQ4OWKbwSBpDwayM.Ul4aYvYIBYREPBta1FgUibpZGUf.erYz5rKufbomDzjU.Aqlae
- GbKvm5lR33pwRuibYvl9c5J2V2pHN2TzcKEtNA7E03JiKkcBhIxpBzr_wIshWWq02IcRbZgZ_oBT
- 31hQ6uxE4cyoPwlUU7gW32xAmB5BB8jEWU7OV_aWhSIHIOjDDoPR9xmPb33evnjiL4yWLYCtHTVU
- 6TZ1pgnBrEznn7FFxuhTtol3JQ2UR02DWDsHdwASek1MTS5yqdN0P0a70ha73ws9H0eTANCnWVqr
- t8Sm9cPN3fXU2OrOdur2bS4U81UG9M40LM9EvQOPPeEUeHxgYbJwib6CY2nXFTD6m_jurcwxn2kI
- d66AmldD4EH3GcFkC3Nr31wFrO8Lznx_mpfi5rGxZP2S2zrdCEi4auNg9DYLt.wBMVvBUuEmaDsf
- N_mZXuXBdNurteCNW_PmyLqVj_YHXyvrUsFbw.67wGBbpS9QuvHssKE5NfQghIhuiPMLBotUwGoi
- _TVLmVH5SRtFeU3aHjRzwS1U.riEsZs88nppS0PntEkLc_nlHBVlAvsx7SW.S3JRhtoEE3fedxld
- VTUQUsWTDqcglP_9erlmAu7DTtsuuvMtSITJkPZncynYSfHNx2mbnuK4TygSgbvDmcRpa7itMuD8
- SUoFcc857og3d3gLZDTDH.mWYkoTrlxSNDX1fZe5J0wZNq3dN6o_ocPDzX2FHKyE0SSlf.nWS0H9
- NM4p3vaFkYmcObRXB8RTUgYbRNmn6f6X2ZPutIVx.rcBecYB_2zAFJh8knJS8GN4KupWJNPh5tkS
- .lni_u9l6Qx_oRh4fWSwhEDCE0JzmFRf1PX8l6QvOLlBpkl5A2A.BH7vZsoew09dMZrz.EOUMjoC
- EFinZr8tK3sDvTrGXTWQ5
+ b=daEP2ToezwdyEkEO4JFynEqWCFw5GIFejhWi2qlAfjRmrTcR3eBjteuX1VbCzSxvpz3IlhGaYmWTDDkYffUzTk/1IMxg2z7u7hdwFXISSDN+GBoTLK/YsN1V2RduFK8B9r08+s6mzzk7ru995iopz/OkbnfzKwlu4QNuK24oE46E/k2dLhfTl60xSLjnSHTOLMd2aMyaR/nv2uJksJolUQ95vem5t+zfBSzCzsVNXlV6VtOk68pbNzqWSoLwZLWnuttVzEcXMhk25n7ir/XgrMPggOIbNKsIjsU9Gi0mdqJUHSKYvvY0PXqX5KFO8r6ROaSGfv4ulMsrQIb+vQagrg==
+X-YMail-OSG: BtiK2OYVM1mDqny_nHk1mG.MVXLHMWkKi1xhqZIt6pMp3Ery09XOhC_81HaeYZH
+ Iavfr9GjoIOQeXFZOj2bU23L1jJg90.6wIO8bR5FYa9u0n36w7pyvXBu3B1I1pcolT894YeJkJ0S
+ DsnE5JTjJ4hUZ98IvbbIBdrG0jfnHrsJMizAyILffURIfSMkuiCLRJoAvVyvPIGjoSKy800nGr22
+ GtK3YtVg_SfnehPQg1x5wl74Dglp6oaEOrlR2cH3NsOYmNcV2WAEEoXJTfpkr9TmR0yiq3guqZvJ
+ rGU49QtUznmF8nHwkoX0An9.zNK9xS6e0TR_qwSGDvZ5y.oDlp0Tz94W8kx1_ArGTisc7CIa4gPV
+ 9oqJqNQMQMS34uaO94Be9lcQaWuauWPE.0Fho3LJw0LtbXShTWM4woYiocyubeAKs07beF_h.KA.
+ ._bpxnC2BH3yB261XlGlgoHJy5ZC7mgqPpu.9JQULdBN.St.OIVli1Bejq4MkGRdgHH3k5ax5Jrv
+ e3OAuAxlvjL.An955IcPsyr5.Yo_Wg8dydKpnpCRRfJzvjF1gP0ntyOfukzqG1RldcvyXCpYH5iP
+ m0EQqdLMEje0QvHtyJqmDNJuY8gYEzim0D1NA74oX.T0WISgm3pmao6WZzW4zvqMg_S99gwZJDmg
+ ZIDPMHMiWQAXarf7WE2_10CMxrIV.C32y9kFoUa00YwlbiqHztXsz5m_VH8QuTSSUl9HuH5PbYnw
+ IKVJMW1bopu6veBhHc61TQxUEsBklKKPL.AMoSSB7DRIxIXAFxCTRuxGNX1re8Cz_u3UHF1ONg8Z
+ UXwROK4Vi7sin8eyvp5Y10zRFdnsnS6CmhAhe4pZsPq5Kl_YfKA8pBymPoRpsUXdLD4Mo6ksmOZn
+ GQVnPRb1Ulf6CB4NqE9a8Uu3epr1XQMuDPHbgZKqyAF7hv0JXXN7vbFZBQ3ayZidHIIT_9WdjgrJ
+ iddUgQefTaOjNrvmUyYgito7hHgQ2ZFpZddVVahYJoVjYcUKu6g.AUTD4flCKY_blvru3aXvzi7G
+ eBasgiYUjKz2vmjluuzvZCA2ROjI7IXMzuPIrICoJqttErpT0YZiSpGvgJpTXIEJo08AekloUlDY
+ a9KgmrBTM8tAnB9cMUMAIKdeF.YzgFbv5dpRF3VJ6MZFIveYLghE8u_Ml68f7Sgcj994Md8RJKYG
+ roxrfsAPVmdamzm9fI1QCmZBBmXrCm_pkBUOFPWzmEcEZNofRmcMLV._9eEdKeycxR2rXhsGaGyH
+ I_UiCDEYurbzpuQg-
 Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic306.consmr.mail.sg3.yahoo.com with HTTP; Thu, 23 May 2019 08:21:26 +0000
+ sonic301.consmr.mail.sg3.yahoo.com with HTTP; Thu, 23 May 2019 08:22:36 +0000
 Received: from 122.163.94.48 (EHLO [10.0.2.15]) ([122.163.94.48])
- by smtp405.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID
- 4bcceba69bc3902cf75a63b0f88bd783; 
- Thu, 23 May 2019 08:21:21 +0000 (UTC)
-Subject: Re: [PATCH] staging: fieldbus: anybuss: Remove unnecessary variables
+ by smtp410.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID
+ fb10a1ac34e19c3e25811b0148e9b370; 
+ Thu, 23 May 2019 08:22:32 +0000 (UTC)
+Subject: Re: [PATCH] staging: fieldbus: anybuss: Remove variable
 To: Greg KH <gregkh@linuxfoundation.org>
-References: <20190523063504.10530-1-nishka.dasgupta@yahoo.com>
- <20190523072220.GC24998@kroah.com>
+References: <20190523070531.13510-1-nishka.dasgupta@yahoo.com>
+ <20190523072246.GD24998@kroah.com>
 From: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-Message-ID: <b8cc12d9-2fe3-754b-be08-f23055a31ffe@yahoo.com>
-Date: Thu, 23 May 2019 13:51:18 +0530
+Message-ID: <4a3d571f-5987-6735-be56-7976457d0797@yahoo.com>
+Date: Thu, 23 May 2019 13:52:29 +0530
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <20190523072220.GC24998@kroah.com>
+In-Reply-To: <20190523072246.GD24998@kroah.com>
 Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -93,50 +93,33 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
 On 23/05/19 12:52 PM, Greg KH wrote:
-> On Thu, May 23, 2019 at 12:05:01PM +0530, Nishka Dasgupta wrote:
->> In the functions export_reset_0 and export_reset_1 in arcx-anybus.c,
->> the only operation performed before return is passing the variable cd
->> (which takes the value of a function call on one of the parameters) as
->> argument to another function. Hence the variable cd can be removed.
->> Issue found using Coccinelle.
+> On Thu, May 23, 2019 at 12:35:26PM +0530, Nishka Dasgupta wrote:
+>> Variable client, assigned to priv->client, is used only once in a
+>> function argument; hence, it can be removed and the function argument
+>> replaced with priv->client directly.
+>> Issue found with Coccinelle.
 >>
 >> Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
 >> ---
->>   drivers/staging/fieldbus/anybuss/arcx-anybus.c | 8 ++------
->>   1 file changed, 2 insertions(+), 6 deletions(-)
+>>   drivers/staging/fieldbus/anybuss/hms-profinet.c | 4 +---
+>>   1 file changed, 1 insertion(+), 3 deletions(-)
 >>
->> diff --git a/drivers/staging/fieldbus/anybuss/arcx-anybus.c b/drivers/staging/fieldbus/anybuss/arcx-anybus.c
->> index 2ecffa42e561..e245f940a5c4 100644
->> --- a/drivers/staging/fieldbus/anybuss/arcx-anybus.c
->> +++ b/drivers/staging/fieldbus/anybuss/arcx-anybus.c
->> @@ -87,16 +87,12 @@ static int anybuss_reset(struct controller_priv *cd,
+>> diff --git a/drivers/staging/fieldbus/anybuss/hms-profinet.c b/drivers/staging/fieldbus/anybuss/hms-profinet.c
+>> index 5446843e35f4..a7f85912fa92 100644
+>> --- a/drivers/staging/fieldbus/anybuss/hms-profinet.c
+>> +++ b/drivers/staging/fieldbus/anybuss/hms-profinet.c
+>> @@ -124,9 +124,7 @@ static int __profi_enable(struct profi_priv *priv)
 >>   
->>   static void export_reset_0(struct device *dev, bool assert)
+>>   static int __profi_disable(struct profi_priv *priv)
 >>   {
->> -	struct controller_priv *cd = dev_get_drvdata(dev);
+>> -	struct anybuss_client *client = priv->client;
 >> -
->> -	anybuss_reset(cd, 0, assert);
->> +	anybuss_reset(dev_get_drvdata(dev), 0, assert);
->>   }
+>> -	anybuss_set_power(client, false);
+>> +	anybuss_set_power(priv->client, false);
 > 
-> While your patch is "correct", it's not the nicest thing.  The way the
-> code looks today is to make it obvious we are passing a pointer to a
-> struct controller_priv() into anybuss_reset().  But with your change, it
-> looks like we are passing any random void pointer to it.
-> 
-> So I'd prefer the original code please.
+> Same comments are relevant here as the last patch you sent.
 
-Thank you, I'll drop this patch then.
-
-> Also, you forgot to cc: Sven on this patch, please always use the output
-> of scripts/get_maintainer.pl.
-
-Which arguments should I use? If I use --nokeywords, --nogit, 
---nogit-fallback and --norolestats then only your name and the two 
-mailing lists show up.
-(Also, regarding the mailing lists: every mail sent to 
-linux-kernel@vger.kernel.org is bouncing; should I not send to that list 
-anymore?)
+So just to clarify this patch isn't necessary and I should cc Sven?
 
 Thanking you,
 Nishka
