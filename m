@@ -1,60 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6970A27C41
-	for <lists+driverdev-devel@lfdr.de>; Thu, 23 May 2019 13:56:02 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 63A1E27C77
+	for <lists+driverdev-devel@lfdr.de>; Thu, 23 May 2019 14:10:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id EFBD63103A;
-	Thu, 23 May 2019 11:55:59 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 98AF7881BE;
+	Thu, 23 May 2019 12:10:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IHN8s9kjjo9y; Thu, 23 May 2019 11:55:59 +0000 (UTC)
+	with ESMTP id kqpZw3zl+rxG; Thu, 23 May 2019 12:10:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 370B82291B;
-	Thu, 23 May 2019 11:55:58 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 375AD859F1;
+	Thu, 23 May 2019 12:10:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 58BB41BF422
- for <devel@linuxdriverproject.org>; Thu, 23 May 2019 11:55:56 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3C71F1BF42E
+ for <devel@linuxdriverproject.org>; Thu, 23 May 2019 12:10:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5385F8676F
- for <devel@linuxdriverproject.org>; Thu, 23 May 2019 11:55:56 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 377D986832
+ for <devel@linuxdriverproject.org>; Thu, 23 May 2019 12:10:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0Brm0A2bOuW5 for <devel@linuxdriverproject.org>;
- Thu, 23 May 2019 11:55:55 +0000 (UTC)
+ with ESMTP id EJL8ndrzQ_8C for <devel@linuxdriverproject.org>;
+ Thu, 23 May 2019 12:10:24 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C2B1F86748
- for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 11:55:55 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 0F26C20881;
- Thu, 23 May 2019 11:55:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1558612555;
- bh=puKLNTiE7cwyf6xYtoR1KxBZnqtcCNUUrpxzR1l2XNU=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=bfSxSYHWib7RKerqZ7PBtGoXvOrTDtTmqD2U0Hu4ZJcKaES8KbxBFvBeXvdfPpmh+
- cSCuoGOPeAIWKBGxrrDfczrinK/Nd2zWokRXbFG8k56NYkIEUxGNWLpz7ViQZ1ijgZ
- Jo+Q2LcQ4DoiPoSMEoZuYGCunHxM6MPUTf4wdu9Y=
-Date: Thu, 23 May 2019 13:55:53 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Simon =?iso-8859-1?Q?Sandstr=F6m?= <simon@nikanor.nu>
+Received: from mail-lf1-f66.google.com (mail-lf1-f66.google.com
+ [209.85.167.66])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 45C5886813
+ for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 12:09:42 +0000 (UTC)
+Received: by mail-lf1-f66.google.com with SMTP id l26so4190551lfh.13
+ for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 05:09:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nikanor-nu.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to
+ :user-agent; bh=h6lj7XxfSxFYE4ZQJuSyQV2q9lHLkjeov5udj7sc3bk=;
+ b=FQ0it7Ctgumei+b9BjeJKiqMgsDTpyHgII+IhNI3w+vYYg27ZDMhMP/uIB26p/Q++R
+ IoXhK9dNk4Zk5iNUJPBqUJM4xxPTQjBkLnwx4od6a3pI8mbuMB2nwFogeJMxioXEm5to
+ 4xH7qVtkEQ1MWEdlRRAYrcEyQxC0492R4fpu87VYZAaM2FHbQOH5eQrssfZuSnu2+L6k
+ sCf5fzP3YEuJhiwAJKml4VYoXhzermIUkUn6OeYiGEN0ZOZTvJtM3TFg/ymm5nUIHM9E
+ uBqcjLdMiKIzl1asXdmj6LiYS1EFDOguetlg6OFcGBCsJnvhChvmlAHubp7Toir/Vlas
+ Y8dg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to:user-agent;
+ bh=h6lj7XxfSxFYE4ZQJuSyQV2q9lHLkjeov5udj7sc3bk=;
+ b=ADrpviE2Of+fO3KGTn+BIzhiLUm9fM6bvqUzFgAMOSQ4yR7t3wcJ/QWtCri4xV8tza
+ ROiCat1rXlIFLK/YWwC5gtw58/A3UnfL5HTKuTbWHGGlK1iBjnehUT64ti/awedseNLE
+ oJ8K4mzOYWaYfk2XM7eAJaCbK8ZEon51aQD1zFRglGG++LrU9FsuvT7Nnu7iEMJcnr7q
+ 7c6jC/E79ucGqTtKBHHqrZxiPwHty7XSY2M/f34g9+g0bg7UcDDSSpExd+FMNYbjR7Na
+ 3wBFqIWJQBAZQX2v1jo/ogy9c64/TH/pmvkJ7OKZeSVOErePp+Au3X/Z36T2fKprUugx
+ WRQg==
+X-Gm-Message-State: APjAAAUlIEMzN7vb27EnZr6Zg5F4mYw2BTT1vIeQfcKP9MzxAWRGuGxv
+ brnJSNvSlhHtS4gc6QsPZ4dr7fYfhdnj6A==
+X-Google-Smtp-Source: APXvYqzlzNEFp/xZRKmB8JdxW6mESUynRvJK0HU3P3lAVOPrac7uvZrZTDwDKYyxkHSAd7eR/nxNVg==
+X-Received: by 2002:ac2:4d0d:: with SMTP id r13mr21381889lfi.30.1558613380386; 
+ Thu, 23 May 2019 05:09:40 -0700 (PDT)
+Received: from dev.nikanor.nu (78-72-133-4-no161.tbcn.telia.com. [78.72.133.4])
+ by smtp.gmail.com with ESMTPSA id g15sm1226340ljk.83.2019.05.23.05.09.39
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Thu, 23 May 2019 05:09:39 -0700 (PDT)
+Date: Thu, 23 May 2019 14:09:37 +0200
+From: Simon =?utf-8?Q?Sandstr=C3=B6m?= <simon@nikanor.nu>
+To: Greg KH <gregkh@linuxfoundation.org>
 Subject: Re: [PATCH 2/8] staging: kpc2000: use __func__ in debug messages
-Message-ID: <20190523115553.GA6953@kroah.com>
+Message-ID: <20190523120937.zq6gif6amslfruna@dev.nikanor.nu>
 References: <20190523113613.28342-1-simon@nikanor.nu>
  <20190523113613.28342-3-simon@nikanor.nu>
+ <20190523115553.GA6953@kroah.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190523113613.28342-3-simon@nikanor.nu>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+In-Reply-To: <20190523115553.GA6953@kroah.com>
+User-Agent: NeoMutt/20180716
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,45 +92,36 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
  dan.carpenter@oracle.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, May 23, 2019 at 01:36:07PM +0200, Simon Sandstr=F6m wrote:
-> Fixes checkpatch.pl warning "Prefer using '"%s...", __func__' to using
-> '<function name>', this function's name, in a string".
-> =
-
-> Signed-off-by: Simon Sandstr=F6m <simon@nikanor.nu>
-> ---
->  drivers/staging/kpc2000/kpc2000/cell_probe.c | 22 +++++++++++++-------
->  1 file changed, 14 insertions(+), 8 deletions(-)
-> =
-
-> diff --git a/drivers/staging/kpc2000/kpc2000/cell_probe.c b/drivers/stagi=
-ng/kpc2000/kpc2000/cell_probe.c
-> index 95bfbe4aae4d..7b850f3e808b 100644
-> --- a/drivers/staging/kpc2000/kpc2000/cell_probe.c
-> +++ b/drivers/staging/kpc2000/kpc2000/cell_probe.c
-> @@ -299,7 +299,8 @@ static int probe_core_uio(unsigned int core_num, stru=
-ct kp2000_device *pcard,
->  =
-
->  	kudev =3D kzalloc(sizeof(struct kpc_uio_device), GFP_KERNEL);
->  	if (!kudev) {
-> -		dev_err(&pcard->pdev->dev, "probe_core_uio: failed to kzalloc kpc_uio_=
-device\n");
-> +		dev_err(&pcard->pdev->dev, "%s: failed to kzalloc kpc_uio_device\n",
-> +			__func__);
-
-kmalloc and friend error messages should just be deleted.  Didn't
-checkpatch say something about that?
-
-thanks,
-
-greg k-h
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gVGh1LCBNYXkgMjMsIDIwMTkgYXQgMDE6NTU6NTNQTSArMDIwMCwgR3JlZyBLSCB3cm90ZToK
+PiBPbiBUaHUsIE1heSAyMywgMjAxOSBhdCAwMTozNjowN1BNICswMjAwLCBTaW1vbiBTYW5kc3Ry
+w7ZtIHdyb3RlOgo+ID4gRml4ZXMgY2hlY2twYXRjaC5wbCB3YXJuaW5nICJQcmVmZXIgdXNpbmcg
+JyIlcy4uLiIsIF9fZnVuY19fJyB0byB1c2luZwo+ID4gJzxmdW5jdGlvbiBuYW1lPicsIHRoaXMg
+ZnVuY3Rpb24ncyBuYW1lLCBpbiBhIHN0cmluZyIuCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IFNp
+bW9uIFNhbmRzdHLDtm0gPHNpbW9uQG5pa2Fub3IubnU+Cj4gPiAtLS0KPiA+ICBkcml2ZXJzL3N0
+YWdpbmcva3BjMjAwMC9rcGMyMDAwL2NlbGxfcHJvYmUuYyB8IDIyICsrKysrKysrKysrKystLS0t
+LS0tCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDE0IGluc2VydGlvbnMoKyksIDggZGVsZXRpb25zKC0p
+Cj4gPiAKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcva3BjMjAwMC9rcGMyMDAwL2Nl
+bGxfcHJvYmUuYyBiL2RyaXZlcnMvc3RhZ2luZy9rcGMyMDAwL2twYzIwMDAvY2VsbF9wcm9iZS5j
+Cj4gPiBpbmRleCA5NWJmYmU0YWFlNGQuLjdiODUwZjNlODA4YiAxMDA2NDQKPiA+IC0tLSBhL2Ry
+aXZlcnMvc3RhZ2luZy9rcGMyMDAwL2twYzIwMDAvY2VsbF9wcm9iZS5jCj4gPiArKysgYi9kcml2
+ZXJzL3N0YWdpbmcva3BjMjAwMC9rcGMyMDAwL2NlbGxfcHJvYmUuYwo+ID4gQEAgLTI5OSw3ICsy
+OTksOCBAQCBzdGF0aWMgaW50IHByb2JlX2NvcmVfdWlvKHVuc2lnbmVkIGludCBjb3JlX251bSwg
+c3RydWN0IGtwMjAwMF9kZXZpY2UgKnBjYXJkLAo+ID4gIAo+ID4gIAlrdWRldiA9IGt6YWxsb2Mo
+c2l6ZW9mKHN0cnVjdCBrcGNfdWlvX2RldmljZSksIEdGUF9LRVJORUwpOwo+ID4gIAlpZiAoIWt1
+ZGV2KSB7Cj4gPiAtCQlkZXZfZXJyKCZwY2FyZC0+cGRldi0+ZGV2LCAicHJvYmVfY29yZV91aW86
+IGZhaWxlZCB0byBremFsbG9jIGtwY191aW9fZGV2aWNlXG4iKTsKPiA+ICsJCWRldl9lcnIoJnBj
+YXJkLT5wZGV2LT5kZXYsICIlczogZmFpbGVkIHRvIGt6YWxsb2Mga3BjX3Vpb19kZXZpY2VcbiIs
+Cj4gPiArCQkJX19mdW5jX18pOwo+IAo+IGttYWxsb2MgYW5kIGZyaWVuZCBlcnJvciBtZXNzYWdl
+cyBzaG91bGQganVzdCBiZSBkZWxldGVkLiAgRGlkbid0Cj4gY2hlY2twYXRjaCBzYXkgc29tZXRo
+aW5nIGFib3V0IHRoYXQ/Cj4gCj4gdGhhbmtzLAo+IAo+IGdyZWcgay1oCgpZZXMgc29ycnksIGl0
+IGRpZC4gU2hvdWxkIEkgZGVsZXRlIHRoaXMgY2h1bmsgZnJvbSB0aGlzIHBhdGNoIGFuZCBhZGQK
+YW5vdGhlciBwYXRjaCB0byB0aGlzIHNlcmllcyB0aGF0IGp1c3QgZGVsZXRlcyB0aGUgbWVzc2Fn
+ZSwgaW4gdjI/CgotIFNpbW9uCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3Jn
+Cmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2RyaXZlcmRldi1kZXZlbAo=
