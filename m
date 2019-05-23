@@ -2,91 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 15DF62810B
-	for <lists+driverdev-devel@lfdr.de>; Thu, 23 May 2019 17:21:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C27A72818E
+	for <lists+driverdev-devel@lfdr.de>; Thu, 23 May 2019 17:46:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DCAE188A76;
-	Thu, 23 May 2019 15:21:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1C48488A82;
+	Thu, 23 May 2019 15:46:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BQiB6TYusyEA; Thu, 23 May 2019 15:21:25 +0000 (UTC)
+	with ESMTP id bGQdeg4xld7Q; Thu, 23 May 2019 15:46:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4FD3E88A27;
-	Thu, 23 May 2019 15:21:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A2CF2889C9;
+	Thu, 23 May 2019 15:46:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4A0C11BF426
- for <devel@linuxdriverproject.org>; Thu, 23 May 2019 15:21:20 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 42EE41BF964
+ for <devel@linuxdriverproject.org>; Thu, 23 May 2019 15:46:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 46D1A87D87
- for <devel@linuxdriverproject.org>; Thu, 23 May 2019 15:21:20 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3F6BE889CA
+ for <devel@linuxdriverproject.org>; Thu, 23 May 2019 15:46:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DVeGfDSxzajJ for <devel@linuxdriverproject.org>;
- Thu, 23 May 2019 15:21:19 +0000 (UTC)
+ with ESMTP id xwTd52hn+V5e for <devel@linuxdriverproject.org>;
+ Thu, 23 May 2019 15:46:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D2C5E87D81
- for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 15:21:18 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x4NFIqaj062657;
- Thu, 23 May 2019 15:21:17 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- content-transfer-encoding : in-reply-to; s=corp-2018-07-02;
- bh=LOcDRDBvuqevUfYHGbx7vmhcJBhEgAgUiuLdp1DKZgo=;
- b=aNLuRKMpfxfHrIVQhB6D6ajL5KJiVCHgV1l4soy2pzoNm4KTMbQ33bYFr+PDooIGnWJo
- FiCe337XLGUk1lyLtHjJB3At//ZOl4TaN/pYld1outbnZpiYUAqC3z2z4PWgNSkJ3eqB
- lafPGnTBoZ7GbksvTE850WEkEie0VDL7Z+sZ1oqi6wH7w0+dqXXKbAOH6X1cwtEjm8xy
- wbYiolySUFKzIRq1YWG+PYOIWF8xX5OSh2gwFEXT2DnrmOsek64xNW9TzDLlRGYolEmH
- pbt/1qjemxTY+fC/KWaQVDnqP2S09TEFFajCXaIJbcwl5Tb0f/WHAPkYyrZdq33hN6bU /A== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by userp2120.oracle.com with ESMTP id 2smsk5b40e-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 23 May 2019 15:21:17 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x4NFJoxI160823;
- Thu, 23 May 2019 15:21:17 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by userp3020.oracle.com with ESMTP id 2smsgvj8yg-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 23 May 2019 15:21:17 +0000
-Received: from abhmp0012.oracle.com (abhmp0012.oracle.com [141.146.116.18])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x4NFL9L8015891;
- Thu, 23 May 2019 15:21:09 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 23 May 2019 15:21:08 +0000
-Date: Thu, 23 May 2019 18:20:55 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: =?utf-8?B?5p2O5aSp5q2j?= <ltz0302@gmail.com>
-Subject: Re: [PATCH] staging/gasket: Fix string split
-Message-ID: <20190523152055.GP19380@kadam>
-References: <20190521150728.25501-1-ltz0302@gmail.com>
- <20190521151444.GN31203@kadam>
- <CAOJV0ikYP5jxrwNzFQ2rmOaAA2cv71TvuOjzasvAW=ezWc3znw@mail.gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAOJV0ikYP5jxrwNzFQ2rmOaAA2cv71TvuOjzasvAW=ezWc3znw@mail.gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9265
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=761
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1810050000 definitions=main-1905230104
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9265
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=816 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
- definitions=main-1905230104
+Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
+ [209.85.128.66])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8364E889C9
+ for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 15:46:44 +0000 (UTC)
+Received: by mail-wm1-f66.google.com with SMTP id w9so184158wmi.0
+ for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 08:46:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=qrctY6UlwvZSSLcwbTDwUkuDUQQP9VVX4afFKiNDkdU=;
+ b=fM7UM775yCnBpiE36t4mQ/gBip8zhKjyW6Bl4brF2h29R1JQ3m+d6ayYXyikxA+MwJ
+ fATJrUEV2FQSoG5aTWL5d0/gENV11wXp62Dqju9rtBfB7NoC44FVNjnyR4sUTA6wJI3o
+ csnczgz71NfheQOf3VC5ZawaX4lt5s1PU5LGu8AJRzGURItCr75IF03aqRWogxVX/rmL
+ xUDwJi2YHLThm922Q2NVKpX+Ic5Wv//H4Xv9LD6lfTXmKxuwMG8AfCkzmCNIWBq1v9pl
+ bkOUdboMj0gieOEP7Qpd4Y6Y97ojDeQUZtrQQJ5fm5JtPqDH6704MwmVNwV5koqITzI+
+ 0meQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=qrctY6UlwvZSSLcwbTDwUkuDUQQP9VVX4afFKiNDkdU=;
+ b=GnjSSP36b7q4JH/EXgCrsCpjRsYFEJjSisKzGTpUNnMtUkQUPdn4qYSvzYYAtnkFJt
+ nrtZ/AZ4exH6X/Mtv2TlQgR2bguv06LHb5o+tGRalzcbxjYkbZ1C9K3a+zv2VQVx5d+U
+ Ait2di1mLG2EpY3L93rqfA923P6GDQQOoA8qcwrUqwdPFLJDYgsiIk33cvX2JjONwS1B
+ Etj/6eLgiuG2WpNaCP9OINhsKLgOag5QaRAPQj6yf8fXBAbEyh9hxhdjxNwXTjJvM/TR
+ cu6ZK6Vq/J5dU7DoCb1sLG0ZDlVJCvLkvbJR29xaLGeWijuB2J6g+oFlseKehfv7lz7/
+ U3Gw==
+X-Gm-Message-State: APjAAAX11/nJB8QmQKm2xErXoVWPtd2PE9eKCU3Y20BcZHGmTRUs+KQc
+ c+oyn4V2qeLPdkk0CkyArk0=
+X-Google-Smtp-Source: APXvYqxTS5Y9Fz7TCCgQvfJCP/+OOFfJh4/vV2wtZP2PgsPS+oDrxHOD1OPV/Dj3IfMRgvDUxnC0UQ==
+X-Received: by 2002:a1c:ce:: with SMTP id 197mr12457924wma.48.1558626402813;
+ Thu, 23 May 2019 08:46:42 -0700 (PDT)
+Received: from localhost.localdomain (ip28.173.mip.uni-hannover.de.
+ [130.75.173.28])
+ by smtp.gmail.com with ESMTPSA id q16sm10211415wmj.17.2019.05.23.08.46.41
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 23 May 2019 08:46:42 -0700 (PDT)
+From: Tianzheng Li <ltz0302@gmail.com>
+To: rspringer@google.com
+Subject: [PATCH] staging/gasket: Fix string split
+Date: Thu, 23 May 2019 17:46:39 +0200
+Message-Id: <20190523154639.42662-1-ltz0302@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,21 +81,113 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Jie Zhang <zhangjie.cnde@gmail.com>,
+Cc: devel@driverdev.osuosl.org, zhangjie.cnde@gmail.com,
  linux-kernel@i4.cs.fau.de, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, Rob Springer <rspringer@google.com>,
- Todd Poynor <toddpoynor@google.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ linux-kernel@vger.kernel.org, toddpoynor@google.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gVGh1LCBNYXkgMjMsIDIwMTkgYXQgMDU6MTE6NTZQTSArMDIwMCwg5p2O5aSp5q2jIHdyb3Rl
-Ogo+IEhlbGxv77yMCj4gd2UgYXJlIGRvaW5nIGEgcHJvamVjdCBpbiB0aGUgdW5pdmVyc2l0eSBh
-bmQgd2UgY29vcGVyYXRlZCB0byBtYWtlIHRoaXMKPiBwYXRjaC4gU29tZSB3YXJuaW5ncyBhcmUg
-Zm91bmQgYnkgTXIuWmhhbmcuCgpVc2UgdGhlIFJlcG9ydGVkLWJ5IHRvIHNob3cgd2hvIGZvdW5k
-IHRoZSBidWcgb3IgQ28tZGV2ZWxvcGVkLWJ5OiBpZiB5b3UKYm90aCB3cm90ZSBjb2RlLgoKcmVn
-YXJkcywKZGFuIGNhcnBlbnRlcgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5v
-cmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGlu
-Zm8vZHJpdmVyZGV2LWRldmVsCg==
+This patch removes unnecessary quoted string splits.
+
+Reported-by: Jie Zhang <zhangjie.cnde@gmail.com>
+Signed-off-by: Tianzheng Li <ltz0302@gmail.com>
+---
+ drivers/staging/gasket/gasket_core.c       |  6 ++----
+ drivers/staging/gasket/gasket_ioctl.c      |  3 +--
+ drivers/staging/gasket/gasket_page_table.c | 14 ++++++--------
+ 3 files changed, 9 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/staging/gasket/gasket_core.c b/drivers/staging/gasket/gasket_core.c
+index a445d58fb399..13179f063a61 100644
+--- a/drivers/staging/gasket/gasket_core.c
++++ b/drivers/staging/gasket/gasket_core.c
+@@ -702,8 +702,7 @@ static bool gasket_mmap_has_permissions(struct gasket_dev *gasket_dev,
+ 	if ((vma->vm_flags & VM_WRITE) &&
+ 	    !gasket_owned_by_current_tgid(&gasket_dev->dev_info)) {
+ 		dev_dbg(gasket_dev->dev,
+-			"Attempting to mmap a region for write without owning "
+-			"device.\n");
++			"Attempting to mmap a region for write without owning device.\n");
+ 		return false;
+ 	}
+ 
+@@ -1054,8 +1053,7 @@ static int gasket_mmap(struct file *filp, struct vm_area_struct *vma)
+ 	}
+ 	if (bar_index > 0 && is_coherent_region) {
+ 		dev_err(gasket_dev->dev,
+-			"double matching bar and coherent buffers for address "
+-			"0x%lx\n",
++			"double matching bar and coherent buffers for address 0x%lx\n",
+ 			raw_offset);
+ 		trace_gasket_mmap_exit(bar_index);
+ 		return -EINVAL;
+diff --git a/drivers/staging/gasket/gasket_ioctl.c b/drivers/staging/gasket/gasket_ioctl.c
+index 0ca48e688818..7ecfba4f2b06 100644
+--- a/drivers/staging/gasket/gasket_ioctl.c
++++ b/drivers/staging/gasket/gasket_ioctl.c
+@@ -353,8 +353,7 @@ long gasket_handle_ioctl(struct file *filp, uint cmd, void __user *argp)
+ 		 */
+ 		trace_gasket_ioctl_integer_data(arg);
+ 		dev_dbg(gasket_dev->dev,
+-			"Unknown ioctl cmd=0x%x not caught by "
+-			"gasket_is_supported_ioctl\n",
++			"Unknown ioctl cmd=0x%x not caught by gasket_is_supported_ioctl\n",
+ 			cmd);
+ 		retval = -EINVAL;
+ 		break;
+diff --git a/drivers/staging/gasket/gasket_page_table.c b/drivers/staging/gasket/gasket_page_table.c
+index d35c4fb19e28..f6d715787da8 100644
+--- a/drivers/staging/gasket/gasket_page_table.c
++++ b/drivers/staging/gasket/gasket_page_table.c
+@@ -237,8 +237,8 @@ int gasket_page_table_init(struct gasket_page_table **ppg_tbl,
+ 	 * hardware register that contains the page table size.
+ 	 */
+ 	if (total_entries == ULONG_MAX) {
+-		dev_dbg(device, "Error reading page table size. "
+-			"Initializing page table with size 0\n");
++		dev_dbg(device,
++			"Error reading page table size. Initializing page table with size 0\n");
+ 		total_entries = 0;
+ 	}
+ 
+@@ -491,8 +491,7 @@ static int gasket_perform_mapping(struct gasket_page_table *pg_tbl,
+ 
+ 			if (ret <= 0) {
+ 				dev_err(pg_tbl->device,
+-					"get user pages failed for addr=0x%lx, "
+-					"offset=0x%lx [ret=%d]\n",
++					"get user pages failed for addr=0x%lx, offset=0x%lx [ret=%d]\n",
+ 					page_addr, offset, ret);
+ 				return ret ? ret : -ENOMEM;
+ 			}
+@@ -779,8 +778,8 @@ static bool gasket_is_extended_dev_addr_bad(struct gasket_page_table *pg_tbl,
+ 
+ 	if (page_lvl0_idx >= pg_tbl->num_extended_entries) {
+ 		dev_err(pg_tbl->device,
+-			"starting level 0 slot at %lu is too large, max is < "
+-			"%u\n", page_lvl0_idx, pg_tbl->num_extended_entries);
++			"starting level 0 slot at %lu is too large, max is < %u\n",
++			page_lvl0_idx, pg_tbl->num_extended_entries);
+ 		return true;
+ 	}
+ 
+@@ -965,8 +964,7 @@ static int gasket_map_extended_pages(struct gasket_page_table *pg_tbl,
+ 	if (ret) {
+ 		dev_addr_end = dev_addr + (num_pages / PAGE_SIZE) - 1;
+ 		dev_err(pg_tbl->device,
+-			"page table slots (%lu,%lu) (@ 0x%lx) to (%lu,%lu) are "
+-			"not available\n",
++			"page table slots (%lu,%lu) (@ 0x%lx) to (%lu,%lu) are not available\n",
+ 			gasket_extended_lvl0_page_idx(pg_tbl, dev_addr),
+ 			dev_addr,
+ 			gasket_extended_lvl1_page_idx(pg_tbl, dev_addr),
+-- 
+2.17.1
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
