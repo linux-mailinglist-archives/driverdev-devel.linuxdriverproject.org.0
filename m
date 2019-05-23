@@ -1,77 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 36C6C28A01
-	for <lists+driverdev-devel@lfdr.de>; Thu, 23 May 2019 21:53:25 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 123F428B50
+	for <lists+driverdev-devel@lfdr.de>; Thu, 23 May 2019 22:10:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 80A9C88ABD;
-	Thu, 23 May 2019 19:53:23 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D981E86B6A;
+	Thu, 23 May 2019 20:10:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PSSHHmllZtte; Thu, 23 May 2019 19:53:23 +0000 (UTC)
+	with ESMTP id uu66rhgolMDK; Thu, 23 May 2019 20:10:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0BE6187985;
-	Thu, 23 May 2019 19:53:23 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 48F0D84C44;
+	Thu, 23 May 2019 20:10:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7BF781BF400
- for <devel@linuxdriverproject.org>; Thu, 23 May 2019 19:53:21 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id AA7051BF3FD
+ for <devel@linuxdriverproject.org>; Thu, 23 May 2019 20:10:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6975788AC3
- for <devel@linuxdriverproject.org>; Thu, 23 May 2019 19:53:21 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A769822798
+ for <devel@linuxdriverproject.org>; Thu, 23 May 2019 20:10:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1+Nq+RbMZ77j for <devel@linuxdriverproject.org>;
- Thu, 23 May 2019 19:53:19 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f66.google.com (mail-io1-f66.google.com
- [209.85.166.66])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 58D59873B6
- for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 19:53:19 +0000 (UTC)
-Received: by mail-io1-f66.google.com with SMTP id g16so5862200iom.9
- for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 12:53:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=VwwctvLi8lHf/da6NNPwV0bi9ifgHdYgUIi1NMjqNzc=;
- b=fG3hNOAVmvEjft12yzYA0H4+VLHBBy08XCV07Jbccv5yXCtOyE3aiVXZrvHjU+phqy
- BjDgig5ZA7ayN1i/sEObFnJYSZjXcl+kGsVjoI8u6CCwAJziy4RXtqA1NV7Dk8QaRGE4
- ivWBsktHy6SERLiwQ/IM+KcDoZdgBGdea3uDgPerZCsjkrdjLkW+ZfiOkgYofjYqZgwe
- BtXjsLXBnKSJjO5MPpP+fAtkAGQumyJg0xtoja3yzqqgAxnZLet1JSI5DyYRruRpW+3+
- Sf3RP4JTSKQybpNQMXlgtonOvi35p5YNof5F2xzm3iE+NUicnXKi2UmwLY0rFBa08Szt
- SmrA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=VwwctvLi8lHf/da6NNPwV0bi9ifgHdYgUIi1NMjqNzc=;
- b=EIBeEYY2yhUsbJAOKt5U1/d/1MGTWP0Wu6mumsxJ8OOBETK0J5JmqCKSOrVFkQi5Hx
- 9+nHtg9hXewtzJYxl2ZvpAeDtFe21a7j9zCVNza+SfSIoKH/4ZbLer9FF/l11pN60uwd
- RiT2i8u12Q9drs2Qxqq92mxznZsTa/2W4mLhZruLkIJyi4k96dzxSsFdVw6740byHgBL
- gdPqvCOea67CHT4POfUBfsiWCRr4FO/3q3y7gdp6AvrzMK7xXwrWyUkdQJsmOYHT5D8r
- 0t+OGx8mHvXkxqlVdw6nNsOpxCIcOvDQ3kzM090yG9uVeOtTK/OzlAnVAodLSwWRdzzc
- ZZzA==
-X-Gm-Message-State: APjAAAVWmMzoWTopOECpEA+PN2OxCbGMyWct4wymU/JheS2V4y3FaByI
- Vn64l/sLpxK1kILZO6iONAhoSxhW
-X-Google-Smtp-Source: APXvYqx8C6F7hrf+pam/MfyUykBrSZUYAFI9ERx/B0RRW3eYtT9Rrb1y/B7S1A0tuYlm4UVs1vDZlQ==
-X-Received: by 2002:a6b:8e56:: with SMTP id q83mr12770670iod.295.1558641198620; 
- Thu, 23 May 2019 12:53:18 -0700 (PDT)
-Received: from svens-asus.arcx.com ([184.94.50.30])
- by smtp.gmail.com with ESMTPSA id w194sm206638itb.33.2019.05.23.12.53.17
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 23 May 2019 12:53:18 -0700 (PDT)
-From: Sven Van Asbroeck <thesven73@gmail.com>
-X-Google-Original-From: Sven Van Asbroeck <TheSven73@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: [PATCH 2/2] MAINTAINERS: Add entry for anybuss drivers
-Date: Thu, 23 May 2019 15:53:13 -0400
-Message-Id: <20190523195313.31008-2-TheSven73@gmail.com>
-X-Mailer: git-send-email 2.17.1
+ with ESMTP id ltoamZYSmui1 for <devel@linuxdriverproject.org>;
+ Thu, 23 May 2019 20:10:40 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0045.hostedemail.com
+ [216.40.44.45])
+ by silver.osuosl.org (Postfix) with ESMTPS id D5CDF2155E
+ for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 20:10:40 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave08.hostedemail.com (Postfix) with ESMTP id 14ACB18002297
+ for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 20:00:56 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay01.hostedemail.com (Postfix) with ESMTP id 297F1100E86C8;
+ Thu, 23 May 2019 20:00:53 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, :::::::::,
+ RULES_HIT:41:355:379:599:800:960:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1539:1593:1594:1711:1714:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3351:3622:3865:3866:3872:4321:5007:7514:7875:8957:10004:10400:10848:11232:11658:11914:12043:12555:12679:12740:12760:12895:13018:13019:13069:13161:13229:13311:13357:13439:14181:14659:14721:21080:21451:21627:30054:30060:30091,
+ 0,
+ RBL:23.242.196.136:@perches.com:.lbl8.mailshell.net-62.14.0.180 64.201.201.201,
+ CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none, DomainCache:0,
+ MSF:not bulk, SPF:fn, MSBL:0, DNSBL:neutral, Custom_rules:0:0:0, LFtime:60,
+ LUA_SUMMARY:none
+X-HE-Tag: hole85_5ee488a53b31a
+X-Filterd-Recvd-Size: 1650
+Received: from XPS-9350.home (cpe-23-242-196-136.socal.res.rr.com
+ [23.242.196.136]) (Authenticated sender: joe@perches.com)
+ by omf14.hostedemail.com (Postfix) with ESMTPA;
+ Thu, 23 May 2019 20:00:51 +0000 (UTC)
+Message-ID: <1b741b25b973e049948b3e490c13aad48716d5b0.camel@perches.com>
+Subject: Re: [PATCH 1/2] MAINTAINERS: Add entry for fieldbus subsystem
+From: Joe Perches <joe@perches.com>
+To: Sven Van Asbroeck <thesven73@gmail.com>, Greg KH
+ <gregkh@linuxfoundation.org>
+Date: Thu, 23 May 2019 13:00:50 -0700
 In-Reply-To: <20190523195313.31008-1-TheSven73@gmail.com>
 References: <20190523195313.31008-1-TheSven73@gmail.com>
+User-Agent: Evolution 3.30.1-1build1 
+Mime-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,38 +79,37 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: devel@driverdev.osuosl.org,
  Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
  Dan Carpenter <dan.carpenter@oracle.com>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Add myself as the maintainer of the anybuss bus driver, and its client
-drivers.
+On Thu, 2019-05-23 at 15:53 -0400, Sven Van Asbroeck wrote:
+> Add myself as the maintainer of the fieldbus subsystem.
+[]
+> diff --git a/MAINTAINERS b/MAINTAINERS
+[]
+> @@ -14905,6 +14905,11 @@ L:	linux-erofs@lists.ozlabs.org
+>  S:	Maintained
+>  F:	drivers/staging/erofs/
+>  
+> +STAGING - FIELDBUS SUBSYSTEM
+> +M:	Sven Van Asbroeck <TheSven73@gmail.com>
+> +S:	Maintained
+> +F:	drivers/staging/fieldbus/*
 
-Signed-off-by: Sven Van Asbroeck <TheSven73@gmail.com>
----
- MAINTAINERS | 5 +++++
- 1 file changed, 5 insertions(+)
+The F: pattern above excludes subdirectories.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 1cac53bced08..68d49623186f 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -14910,6 +14910,11 @@ M:	Sven Van Asbroeck <TheSven73@gmail.com>
- S:	Maintained
- F:	drivers/staging/fieldbus/*
- 
-+STAGING - HMS ANYBUS-S BUS
-+M:	Sven Van Asbroeck <TheSven73@gmail.com>
-+S:	Maintained
-+F:	drivers/staging/fieldbus/anybuss/
-+
- STAGING - INDUSTRIAL IO
- M:	Jonathan Cameron <jic23@kernel.org>
- L:	linux-iio@vger.kernel.org
--- 
-2.17.1
+What about the drivers/staging/fieldbus/Documentation directory?
+
+patch 2/2 specifically covers the anybuss directory,
+but the Documentation directory has no matching pattern.
+
+trivia: anybuss looks like a misspelling.
+It might be better as anybus-s.
+
+
+
 
 _______________________________________________
 devel mailing list
