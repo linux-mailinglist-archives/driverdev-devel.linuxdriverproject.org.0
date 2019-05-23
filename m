@@ -1,82 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D4F45285F3
-	for <lists+driverdev-devel@lfdr.de>; Thu, 23 May 2019 20:35:24 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B447128A00
+	for <lists+driverdev-devel@lfdr.de>; Thu, 23 May 2019 21:53:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A29FD318C6;
-	Thu, 23 May 2019 18:35:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9E6F388ACA;
+	Thu, 23 May 2019 19:53:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id f3xcvCUPN7nh; Thu, 23 May 2019 18:35:22 +0000 (UTC)
+	with ESMTP id ztLjEPnf5ybJ; Thu, 23 May 2019 19:53:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0BC943176E;
-	Thu, 23 May 2019 18:35:20 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 348DE87985;
+	Thu, 23 May 2019 19:53:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6B4EE1BF964
- for <devel@linuxdriverproject.org>; Thu, 23 May 2019 18:35:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5003B1BF400
+ for <devel@linuxdriverproject.org>; Thu, 23 May 2019 19:53:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6734488A99
- for <devel@linuxdriverproject.org>; Thu, 23 May 2019 18:35:18 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4D2568790D
+ for <devel@linuxdriverproject.org>; Thu, 23 May 2019 19:53:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PM31t67VCPz2 for <devel@linuxdriverproject.org>;
- Thu, 23 May 2019 18:35:17 +0000 (UTC)
+ with ESMTP id dEc4QzSOEfjP for <devel@linuxdriverproject.org>;
+ Thu, 23 May 2019 19:53:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
- [209.85.210.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id E0D8F88A98
- for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 18:35:17 +0000 (UTC)
-Received: by mail-pf1-f194.google.com with SMTP id a23so3711657pff.4
- for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 11:35:17 -0700 (PDT)
+Received: from mail-io1-f67.google.com (mail-io1-f67.google.com
+ [209.85.166.67])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id CB250873B6
+ for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 19:53:18 +0000 (UTC)
+Received: by mail-io1-f67.google.com with SMTP id g84so5899546ioa.1
+ for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 12:53:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=UGdXyM1CME4KwYx3fgLzBPCxywcWE4oo6EgOOlK8Fv4=;
- b=k+4H2kGkwk5LvYzjyAAzDQV621YQlhBCwYT7yzcPAaSpAEtVqW+TY+zhTG0yvSkrWj
- GQ6z3IUyCmpIffYXzTHyJq69fwRULEX54aMbMK8faxxk0RX1LWtkIXRgTxhkqQC7u7tH
- tz+W5oBXaKlZkhj8p/DOp4G833AnDwbzOKzqnKuiQ7Z82brOcHR6P+bX2ODxOYgpVCqh
- eivtfvor7iBVK83n3zl6enzJmyP5Q4SFoHjprVqRATAADIilXxgW2Rn50ZCAQV4BbSjk
- ACiKS4kvcD/YhpAqkTWULi+QhSJeu8ODFTdFMrk2QloGc6ebfTZQ9awBYhGHX44Af+dt
- NI4g==
+ h=from:to:cc:subject:date:message-id;
+ bh=DUU/JbmMxaxg7HEI5Jb2l3ME8qgdUZEOoglUf3jK+GY=;
+ b=igINZ4GD+EOp0DvTKqUNFQnlzJ1wiFH4hEOhTjj0cIvpAK3IncMBUgipg+Uy6akPXM
+ oM1m5FQHGxuDD0SnhgkdAEcdanMHc3aDKrCDQIUR0BQJAlZGy47IYOYNn0WeVrBNoGXT
+ G4A9527XT1IEyaaEUwzfJTN3i5o5Fd4hHTdHaAAbf6XWlp2gtioS3KYT9Vj8DniHnSZE
+ 5rH89R5ML0i9TBsCS3NQdtzGagFLiUDYnND742EMZEGgg1QaxwmyIKM40sGPimDdIOYT
+ hboFUwj/at1sWwmTWW8b845KOHsU4s2p4+JeLiaGNKGQSWnHEapnMam2xhYd92iphFiC
+ fazw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=UGdXyM1CME4KwYx3fgLzBPCxywcWE4oo6EgOOlK8Fv4=;
- b=BLzVdGSCUbccHnZnOTmphqDcAxpFWJI+3Sc7rq3bM/q96/cCdPodc5SUu0TlS6QCf+
- p8J8gk6RpzfKoL/4gZCzvEV9U1vcR5nHWjJCTtiwoMj5H5VI9FplPWnxJAGcCdgWB62Y
- smcINZgheQJsua6J/sFD3ljKfdxw3TKBNrb3/O0t6ddqno3POEvElsGtcfL9axV7fxeD
- u/L6SERfkw1IPUpyUyBcrQf0/dOUXCv9M/wgAxMh1WC57H0dSTJvdrsn6Pv6106yQcS3
- c9UgbFh/y2pXgjlXZzYnPJPUP34G5JN7VNtx7fJ2CUTzw9Cm/ftM8uaCtSx41TA4tdiI
- QXAA==
-X-Gm-Message-State: APjAAAWhBm/x8RaRqnMIkRpZOhkag1baaS8YZeo8vEipBYXvWn3vfgwP
- 1WfCHoNIWzdP+Txs8IhVt5U=
-X-Google-Smtp-Source: APXvYqyAGgM62zL/Uh7TSDVYGilK6ktbyrCOFvLMxfqhvED4rFqQqXGVfzjK0DQt2Kn6xYezxdLwMQ==
-X-Received: by 2002:a65:42c3:: with SMTP id l3mr75585700pgp.372.1558636517476; 
- Thu, 23 May 2019 11:35:17 -0700 (PDT)
-Received: from hari-Inspiron-1545 ([183.83.92.73])
- by smtp.gmail.com with ESMTPSA id o7sm123715pfp.168.2019.05.23.11.35.13
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=DUU/JbmMxaxg7HEI5Jb2l3ME8qgdUZEOoglUf3jK+GY=;
+ b=ZM58mKekRIuqbro08ieZJBSAEjGiXwrEJWpjAYiSO/YgxYtN1YBvNFIwl9DFb1v5ku
+ 3id412piS7MaIIKXux6jlZMiALbZL8Rm65vcUiyrnSZu5CQrUh9OJi0hq/muwmhLdfPr
+ HKxPkY1AU799wE4wz92v+HZZtSg80KOqTzN2t8+Ez+BcQjpKK0PET3qT+nmwLAAScrwg
+ 0aGQzFWQwbdpaDSMqdAGzi91Vh0MJe8dDjNV+C3F2c8JadYt7mzHlvn+SOT4xgJhtBYF
+ 0xnmgGxaa6XJExn/+cjOXIhDfMcwD/kUFzoXcxXOPOmv+RAzpCd3JYPW0kQfe4BaSA3p
+ Jjxw==
+X-Gm-Message-State: APjAAAXnxeHkUcubB+YDTgPoHfK5XdvWk5ObWsrzizUSi9Fy2QOyefdh
+ KypzqyEaOR4WjnjqJXvLaZU=
+X-Google-Smtp-Source: APXvYqzZdSej/UV5gAPYiZNghEuZ3itNPIn1ECvcokeYAni5y3sjlxKqulk9wFkuXjR1CQ+YInXCpQ==
+X-Received: by 2002:a5d:9c0e:: with SMTP id 14mr24944306ioe.135.1558641197860; 
+ Thu, 23 May 2019 12:53:17 -0700 (PDT)
+Received: from svens-asus.arcx.com ([184.94.50.30])
+ by smtp.gmail.com with ESMTPSA id w194sm206638itb.33.2019.05.23.12.53.17
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 23 May 2019 11:35:16 -0700 (PDT)
-Date: Fri, 24 May 2019 00:05:10 +0530
-From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-To: reg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- Mamta Shukla <mamtashukla555@gmail.com>,
- NeilBrown <neil@brown.name>, Peter Vernia <peter.vernia@gmail.com>,
- devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: mt7621-pci: pci-mt7621: Remove unneeded variable err
-Message-ID: <20190523183510.GA12942@hari-Inspiron-1545>
-MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+ Thu, 23 May 2019 12:53:17 -0700 (PDT)
+From: Sven Van Asbroeck <thesven73@gmail.com>
+X-Google-Original-From: Sven Van Asbroeck <TheSven73@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Subject: [PATCH 1/2] MAINTAINERS: Add entry for fieldbus subsystem
+Date: Thu, 23 May 2019 15:53:12 -0400
+Message-Id: <20190523195313.31008-1-TheSven73@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,46 +81,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Dan Carpenter <dan.carpenter@oracle.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-devm_request_pci_bus_resources function will return -EBUSY/-ENOMEM
-in fail case and returns 0 on success.
+Add myself as the maintainer of the fieldbus subsystem.
 
-So no need to store return value in err variable.
-
-Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+Signed-off-by: Sven Van Asbroeck <TheSven73@gmail.com>
 ---
- drivers/staging/mt7621-pci/pci-mt7621.c | 7 +------
- 1 file changed, 1 insertion(+), 6 deletions(-)
+ MAINTAINERS | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt7621-pci/pci-mt7621.c
-index 03d919a..bc2a3d1 100644
---- a/drivers/staging/mt7621-pci/pci-mt7621.c
-+++ b/drivers/staging/mt7621-pci/pci-mt7621.c
-@@ -596,17 +596,12 @@ static int mt7621_pcie_request_resources(struct mt7621_pcie *pcie,
- 					 struct list_head *res)
- {
- 	struct device *dev = pcie->dev;
--	int err;
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 5cfbea4ce575..1cac53bced08 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -14905,6 +14905,11 @@ L:	linux-erofs@lists.ozlabs.org
+ S:	Maintained
+ F:	drivers/staging/erofs/
  
- 	pci_add_resource_offset(res, &pcie->io, pcie->offset.io);
- 	pci_add_resource_offset(res, &pcie->mem, pcie->offset.mem);
- 	pci_add_resource(res, &pcie->busn);
- 
--	err = devm_request_pci_bus_resources(dev, res);
--	if (err < 0)
--		return err;
--
--	return 0;
-+	return devm_request_pci_bus_resources(dev, res);
- }
- 
- static int mt7621_pcie_register_host(struct pci_host_bridge *host,
++STAGING - FIELDBUS SUBSYSTEM
++M:	Sven Van Asbroeck <TheSven73@gmail.com>
++S:	Maintained
++F:	drivers/staging/fieldbus/*
++
+ STAGING - INDUSTRIAL IO
+ M:	Jonathan Cameron <jic23@kernel.org>
+ L:	linux-iio@vger.kernel.org
 -- 
-2.7.4
+2.17.1
 
 _______________________________________________
 devel mailing list
