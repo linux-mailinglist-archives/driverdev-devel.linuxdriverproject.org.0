@@ -1,80 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 348DD29092
-	for <lists+driverdev-devel@lfdr.de>; Fri, 24 May 2019 07:53:13 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9D5BF2909A
+	for <lists+driverdev-devel@lfdr.de>; Fri, 24 May 2019 07:54:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E266586B26;
-	Fri, 24 May 2019 05:53:10 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8CFF8228D1;
+	Fri, 24 May 2019 05:54:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ksgtZS_8hPGS; Fri, 24 May 2019 05:53:10 +0000 (UTC)
+	with ESMTP id ybGNhB8zb3Oh; Fri, 24 May 2019 05:54:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5A87086B23;
-	Fri, 24 May 2019 05:53:09 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 39550227E1;
+	Fri, 24 May 2019 05:54:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1E08C1BF3BE
- for <devel@linuxdriverproject.org>; Fri, 24 May 2019 05:53:07 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8B1711BF3BE
+ for <devel@linuxdriverproject.org>; Fri, 24 May 2019 05:54:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 13FAB88072
- for <devel@linuxdriverproject.org>; Fri, 24 May 2019 05:53:07 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 847F586C82
+ for <devel@linuxdriverproject.org>; Fri, 24 May 2019 05:54:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rAZ5wn6H64L5 for <devel@linuxdriverproject.org>;
- Fri, 24 May 2019 05:53:03 +0000 (UTC)
+ with ESMTP id SsKMIM9H_Tyd for <devel@linuxdriverproject.org>;
+ Fri, 24 May 2019 05:54:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
- [209.85.210.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 856D38805D
- for <devel@driverdev.osuosl.org>; Fri, 24 May 2019 05:53:03 +0000 (UTC)
-Received: by mail-pf1-f193.google.com with SMTP id u17so4629884pfn.7
- for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 22:53:03 -0700 (PDT)
+Received: from mail-oi1-f195.google.com (mail-oi1-f195.google.com
+ [209.85.167.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D083786B2C
+ for <devel@driverdev.osuosl.org>; Fri, 24 May 2019 05:54:19 +0000 (UTC)
+Received: by mail-oi1-f195.google.com with SMTP id y124so6192773oiy.3
+ for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 22:54:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=9+4//n5ozpFc0YQBRlOwfVoh3tI6iGzki/F622gvN9Q=;
- b=OoRLoquIDETzGrPfniuEHRUVrwnvvyLKriTpztzO/2ae84pkh06qfBB1dt5GyS+R5B
- p2YQb5nsvqHpkNGtsOtN8zeXb5IfB0/fC4NOk1V55hXPa4aNANE7Li/Nw3bahGnEeJ3d
- D1IrNwHjfXZ6k5ZoyYwhREnTafe6A2aXOwEyyS0CBfsbqdcyWpwdZOWU9AKEdp3cxNLG
- OsAL1C6EqbSAn62VfMmeNm1fWywPuE2x72OdwD1pF8QCggnhmqarT/HPLFU/VPP6i/Bt
- P0PJmCsYqKX3DlkjssJqHbwZq0+xhk3XkwBzJswj4oUpNEmVczj+l61/jFSSuPB7/Guq
- BYJw==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=7Ebgv3UeXA0WytHreGCVh/7DQkPpVomBIGZeLwu/7es=;
+ b=WzxkgAyRBYozpQ9xwmo4jx8O4OFRtPU6J0nptXrnuf+XflBtgcZgTRHwcpnbhEmVAv
+ usBq5i6iGIoTGhH3T4ughQUWoLxun4lJZmnw1D8s4AkM/5A9zCYhUuMJBwBaLG+74xd9
+ cAJfKD65CbgSvqMGfCS9b1xHDIkd6gZI3ar5Z0XvUqUhAaBYVGsX6H7b5uccDJt4eySU
+ MYSo6jGHbKD9L9dnKS05g0Qm1ycdhH2tguBQh9rWV2gyIdEYwANqfWndBfUxBDYMSXb/
+ AzwcI7cP0mhIZnAUnajbr1n0shjsHYdDtiW7moPVVpFA5DhZpV4qTI20AA2LFMx70I7h
+ zf0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=9+4//n5ozpFc0YQBRlOwfVoh3tI6iGzki/F622gvN9Q=;
- b=s9WUa1QPHd1hKyuBAmHzICnOu9T8c6Y2Uk0cD9UcdpDB2H/F4VbMcuYMRhXH3Uv6bv
- wkH11SOJPiOQDpXcxDDOh8g8AnRHJYsiFEa73FN2YM9tQyFH6iH9rHK8Sg3W9lVP0MUa
- jAB4h9Va8tux2veO+IzxDo9qvozoLVIddQEW/0tA/yONqoj9NdsRx8KO/NBEg9xrMXC4
- BQwDSyjpvBEguXHXgGyS6uk80SsfiDsm1Nc0e9/82QLUDqPqVP3beq7U/5F2TjslLa6v
- UDwYMtfSmVSHMpjhOdFDjltaUXNC4ZAKaDJdG4L/kj8g/BDt1bpgIm1LBbR4xGXWbS86
- +MkQ==
-X-Gm-Message-State: APjAAAVuQQoYYqkg0xPkSXLeQp0V1L5fYUlVO4tVezjKIxxp018BBliO
- VAUH9weY1uRYix4K+n+HAJ4=
-X-Google-Smtp-Source: APXvYqyUzwLCAYS1GKGkc1+R9nYGizTKYhIWvIweZOqx3t7ims/KVtLGmUYXlhkkWcdJJWA7p81mlg==
-X-Received: by 2002:a62:e803:: with SMTP id c3mr63391468pfi.58.1558677183225; 
- Thu, 23 May 2019 22:53:03 -0700 (PDT)
-Received: from localhost.localdomain ([110.225.17.212])
- by smtp.gmail.com with ESMTPSA id o2sm1654771pgq.50.2019.05.23.22.52.59
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 23 May 2019 22:53:02 -0700 (PDT)
-From: Nishka Dasgupta <nishkadg.linux@gmail.com>
-To: gregkh@linuxfoundation.org, colin.king@canonical.com,
- herbert@gondor.apana.org.au, qader.aymen@gmail.com,
- sergio.paracuellos@gmail.com, bhanusreemahesh@gmail.com,
- mattmccoy110@gmail.com, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: ks7010: Remove initialisation
-Date: Fri, 24 May 2019 11:22:38 +0530
-Message-Id: <20190524055238.3581-1-nishkadg.linux@gmail.com>
-X-Mailer: git-send-email 2.19.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=7Ebgv3UeXA0WytHreGCVh/7DQkPpVomBIGZeLwu/7es=;
+ b=Yc5RW/QTxwCWV+lhW5SuCqm+NRNRTD+3ZCmQjt9GoTpJo5Ysg+oOYB0OUvk6yWgbUE
+ mw7L5K8lIpQ+oPWo014RkQbTau4LkLl2kNPaeVx1mCBl1aX6g1KEwrArPGlbAna6Kmw7
+ +kPs4IkNJbF/YAVmzrMW2UFJPg65UBtKLhNg66NZzD1VL2LEQFt/+AuPi2Vwz+GcS1RC
+ Cj07+dChnaPY5GuxDFrkbQ8FRuaT1ZDBRyUOlQwQBKr/WzbCB/ina3tSX5xLawY/W3Jf
+ nEuxmL+hJ5Tmf53wrKsLPVTMufiQrG+fzUgpyXCKKHcu7N0H/fGtiMlyujPeeGfl0dew
+ +Ggw==
+X-Gm-Message-State: APjAAAWUq3GZpObquIawgGRaAscMiVVZ38dd2f49M+GLoDW/T6K3jlvb
+ WqD4UHOeaWlLVbnlOpMcdjEBDNLuM8csRigWfpo=
+X-Google-Smtp-Source: APXvYqxMC+I6BinOmBqmotSjJts4Ix18CeAG/RSOJyQ2f/Fct4fsBMOH+wWVl8C6cc2AOAkKi/k7adx3Cjy6I0Xu97w=
+X-Received: by 2002:aca:3c85:: with SMTP id j127mr5285364oia.29.1558677259014; 
+ Thu, 23 May 2019 22:54:19 -0700 (PDT)
 MIME-Version: 1.0
+References: <20190523183510.GA12942@hari-Inspiron-1545>
+In-Reply-To: <20190523183510.GA12942@hari-Inspiron-1545>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Fri, 24 May 2019 07:54:08 +0200
+Message-ID: <CAMhs-H9222OXrqWh4W-D7pFV6FXbhLVVGXz-29gO-Qo0eQaTvQ@mail.gmail.com>
+Subject: Re: [PATCH] staging: mt7621-pci: pci-mt7621: Remove unneeded variable
+ err
+To: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,37 +80,64 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Nishka Dasgupta <nishkadg.linux@gmail.com>
+Cc: devel@driverdev.osuosl.org, reg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ Mamta Shukla <mamtashukla555@gmail.com>, NeilBrown <neil@brown.name>,
+ Peter Vernia <peter.vernia@gmail.com>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The initial value of return variable ret is never used, so it can be
-removed.
-Issue found with Coccinelle.
+Hi Hariprasad,
 
-Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
----
- drivers/staging/ks7010/ks_hostif.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
-index e089366ed02a..3775fd4b89ae 100644
---- a/drivers/staging/ks7010/ks_hostif.c
-+++ b/drivers/staging/ks7010/ks_hostif.c
-@@ -1067,7 +1067,7 @@ int hostif_data_request(struct ks_wlan_private *priv, struct sk_buff *skb)
- 	unsigned int length = 0;
- 	struct hostif_data_request *pp;
- 	unsigned char *p;
--	int result = 0;
-+	int result;
- 	unsigned short eth_proto;
- 	struct ether_hdr *eth_hdr;
- 	unsigned short keyinfo = 0;
--- 
-2.19.1
+On Thu, May 23, 2019 at 8:35 PM Hariprasad Kelam
+<hariprasad.kelam@gmail.com> wrote:
+>
+> devm_request_pci_bus_resources function will return -EBUSY/-ENOMEM
+> in fail case and returns 0 on success.
+>
+> So no need to store return value in err variable.
+>
+> Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+> ---
+>  drivers/staging/mt7621-pci/pci-mt7621.c | 7 +------
+>  1 file changed, 1 insertion(+), 6 deletions(-)
+>
+> diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt7621-pci/pci-mt7621.c
+> index 03d919a..bc2a3d1 100644
+> --- a/drivers/staging/mt7621-pci/pci-mt7621.c
+> +++ b/drivers/staging/mt7621-pci/pci-mt7621.c
+> @@ -596,17 +596,12 @@ static int mt7621_pcie_request_resources(struct mt7621_pcie *pcie,
+>                                          struct list_head *res)
+>  {
+>         struct device *dev = pcie->dev;
+> -       int err;
+>
+>         pci_add_resource_offset(res, &pcie->io, pcie->offset.io);
+>         pci_add_resource_offset(res, &pcie->mem, pcie->offset.mem);
+>         pci_add_resource(res, &pcie->busn);
+>
+> -       err = devm_request_pci_bus_resources(dev, res);
+> -       if (err < 0)
+> -               return err;
+> -
+> -       return 0;
+> +       return devm_request_pci_bus_resources(dev, res);
+>  }
+>
 
+In the patch title, the "mt7621-pci" is repeated twice. With that changed:
+
+Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+
+>  static int mt7621_pcie_register_host(struct pci_host_bridge *host,
+> --
+> 2.7.4
+>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
