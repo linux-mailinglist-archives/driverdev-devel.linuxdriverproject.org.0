@@ -2,75 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD93E2909F
-	for <lists+driverdev-devel@lfdr.de>; Fri, 24 May 2019 07:56:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B3879290A5
+	for <lists+driverdev-devel@lfdr.de>; Fri, 24 May 2019 08:00:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9880887F58;
-	Fri, 24 May 2019 05:56:26 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E90E887F76;
+	Fri, 24 May 2019 06:00:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0O2VEA93T3B3; Fri, 24 May 2019 05:56:26 +0000 (UTC)
+	with ESMTP id pc133Kfa4hMc; Fri, 24 May 2019 06:00:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 43A6687F65;
-	Fri, 24 May 2019 05:56:25 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C217C87F69;
+	Fri, 24 May 2019 06:00:43 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1A2731BF3C6
- for <devel@linuxdriverproject.org>; Fri, 24 May 2019 05:56:22 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BA8BF1BF3BE
+ for <devel@linuxdriverproject.org>; Fri, 24 May 2019 06:00:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 1615C86C8F
- for <devel@linuxdriverproject.org>; Fri, 24 May 2019 05:56:22 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B68E086C9E
+ for <devel@linuxdriverproject.org>; Fri, 24 May 2019 06:00:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HT1uFwBy504S for <devel@linuxdriverproject.org>;
- Fri, 24 May 2019 05:56:21 +0000 (UTC)
+ with ESMTP id rCPOjDeGg_fM for <devel@linuxdriverproject.org>;
+ Fri, 24 May 2019 06:00:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
- [209.85.210.193])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 9D5F686B2C
- for <devel@driverdev.osuosl.org>; Fri, 24 May 2019 05:56:21 +0000 (UTC)
-Received: by mail-pf1-f193.google.com with SMTP id r22so1765389pfh.9
- for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 22:56:21 -0700 (PDT)
+Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
+ [209.85.210.194])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3457A86C8F
+ for <devel@driverdev.osuosl.org>; Fri, 24 May 2019 06:00:41 +0000 (UTC)
+Received: by mail-pf1-f194.google.com with SMTP id g9so4630950pfo.11
+ for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 23:00:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=AoxtaitWGEKFSZOEKz/v/lg67nbZ3fMxSFB5YHzG0Zk=;
- b=AY/0k4r8s0g1pZ0kq+WyGw30gp9iBBM6N/4oGMC4X8ToyKe1a+5qbj4F2mJa54l+ba
- sRvxKw+ypCdS9FwSiPQfbK/3PoRxwGNROKxcUc4wjuo9+Qeh+1sLJCpcvlXR/X/dlQ2d
- SjJw4SA/crQN57zKdk8Ep14IMaaxVVryF/+CinzK1ymLYOFwJveNSs6GDq1I1QB3lYZ+
- p6bbw+J5vjsQyDUWimuZMqZpVvHRlr1UzhEw60PI2pbuVdVIW2D9r1aUOtvMwE+BlUsr
- LsSABLfs72VwRdWoRK0uPaYugFGYrdWfPvKaklCSU+zjlv8CqLq/NzYuTH1JFVuY1Tnz
- 9r1g==
+ bh=xmWkuG4jWMx5HwzGG7LjcSnzIV8NJErFDTw3zvRqZ+Q=;
+ b=TMW6xTQPH1cXrYsBYFEjWou6SN/ARTFeyk422n9y3fNeJ0z/KrnBminyYJZPG0ek7W
+ rULFKnulO1Z9iOXL70jVyvU0lqUd2QB/d0QmHXFUITHgRebc0WT6GycFAhnQf2P/ghJV
+ YVGxR8+jUDr0FCr8k1Bc3uNQ6eiF027M5hyVabzbk3w0TqEklvRojaCtV/HMs+BgyZ0E
+ n8UNj0mxMHncQRiTbaS6D89sICK+ydDtOhpuvKw68wS6JgyWOvgYAX2CPt3uk2C/CakB
+ r6c2IPStvwR2mJahhgGWpBhIFQmKuHxLlgSBd/9AX5z4cJbw0Txx42Fws8RD7L4F0qPS
+ yiVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=AoxtaitWGEKFSZOEKz/v/lg67nbZ3fMxSFB5YHzG0Zk=;
- b=fhbnF6hG4l0pa6tfyHyNOzD1wFD8N6RgPCZ/Pdq1JE5yaQEbYPWTTFPtcTEO2cpzAK
- 9ZA+5DqCEd99BF0omvIv70qLtwBNH3y2B2J/3YEMjLAMj5W5Nnhtjptki+HzmTAWLD2y
- KP68XJ9dwamtICtQv45xfiwxXNb37rZiY3+67+Tgph2RsytuhXmZVmdHAtPMxzG9+9GY
- mWi6DaK0FzL2QPQ1xuP9wJmn7LiiVz5Kc5WcooJLel2AR6H5yGwBkMXTdYh9cSCfep8Z
- SgwIzHZeLL1zfMO/7AedWWYz1IJYndfikJZgsreVo58vxDAeQrr8XFcF/Rp0zpJP2OoG
- xRkg==
-X-Gm-Message-State: APjAAAUZJw+GyZfOnLH/GDes5Ge/vjnAmgaA4WPqDh3IOcjEq56ZM6MU
- 8BJSN7wX0lRtjnSPVyfm3PA=
-X-Google-Smtp-Source: APXvYqzui1RlsbgsXSuGOMkUiXJP91mqSn9EV/ojt8Fi8wiX31QqbqmpC429LfG3fikeBVMYKIMA1w==
-X-Received: by 2002:a63:c64a:: with SMTP id
- x10mr101968551pgg.195.1558677381296; 
- Thu, 23 May 2019 22:56:21 -0700 (PDT)
+ bh=xmWkuG4jWMx5HwzGG7LjcSnzIV8NJErFDTw3zvRqZ+Q=;
+ b=WwalCwb0/6DhcuCr4QJdDHdqDpNDJVkazjlXRmg+Rn+mmD233ma7Olhploc9b3F6N4
+ qaGGjUxO8OtdAMLpZYbsy6no/X37AtqNEin4BodesHp57xZHpFhj8yaSTIzuTjSozZ17
+ Ofhbk2TaB9SrslG/AWFcrn+A0e22F8INKujqdqqA5+ayjO8ngapuUsRLuXXLW+AmnfLI
+ Qj0YgXcVuC7IxoNlCpEbEDTB+Ni40ECoAtggwqf3pWup3EGnTl1yv4fI1BUZ2RB88tS8
+ HhWS/EFnYMmasEY3uuF9cl0bAoRhvnWZVa68EtxWV/UABCb3QSaD4kV0Fn1+BpprrXND
+ xY/g==
+X-Gm-Message-State: APjAAAVzYtH++EMQ/HBbPtwSrNXWst3u5PolezBGVHUsmhIbfY6Mg9nE
+ zUNbzUpttzzLnvbhc1aYhVQ=
+X-Google-Smtp-Source: APXvYqxXNJ9laQAdHSk2ZdCQdd0iJh/nHXwrpS5GNtFqzMpDXRXdg65pICUW9gDYf2NWfnu5Q2j5cg==
+X-Received: by 2002:a63:3d0b:: with SMTP id
+ k11mr103413349pga.349.1558677640953; 
+ Thu, 23 May 2019 23:00:40 -0700 (PDT)
 Received: from localhost.localdomain ([110.225.17.212])
- by smtp.gmail.com with ESMTPSA id x18sm1907129pfj.17.2019.05.23.22.56.18
+ by smtp.gmail.com with ESMTPSA id 5sm1267426pfh.109.2019.05.23.23.00.38
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 23 May 2019 22:56:20 -0700 (PDT)
+ Thu, 23 May 2019 23:00:40 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
-To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: ks7010: Remove initialisation
-Date: Fri, 24 May 2019 11:26:02 +0530
-Message-Id: <20190524055602.3694-1-nishkadg.linux@gmail.com>
+To: gregkh@linuxfoundation.org, colin.king@canonical.com,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: [PATCH 1/2] staging: gdm724x: Remove initialisation
+Date: Fri, 24 May 2019 11:30:25 +0530
+Message-Id: <20190524060026.3763-1-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -91,28 +91,28 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-As the initial value of the return variable result is never used, it can
-be removed.
+The initial value of return variable ret, -1, is never used and hence
+can be removed.
 Issue found with Coccinelle.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/ks7010/ks7010_sdio.c | 2 +-
+ drivers/staging/gdm724x/gdm_usb.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/ks7010/ks7010_sdio.c b/drivers/staging/ks7010/ks7010_sdio.c
-index 74551eb717fc..4b379542ecd5 100644
---- a/drivers/staging/ks7010/ks7010_sdio.c
-+++ b/drivers/staging/ks7010/ks7010_sdio.c
-@@ -380,7 +380,7 @@ int ks_wlan_hw_tx(struct ks_wlan_private *priv, void *p, unsigned long size,
- 					   struct sk_buff *skb),
- 		  struct sk_buff *skb)
- {
--	int result = 0;
-+	int result;
- 	struct hostif_hdr *hdr;
+diff --git a/drivers/staging/gdm724x/gdm_usb.c b/drivers/staging/gdm724x/gdm_usb.c
+index dc4da66c3695..d023f83f9097 100644
+--- a/drivers/staging/gdm724x/gdm_usb.c
++++ b/drivers/staging/gdm724x/gdm_usb.c
+@@ -60,7 +60,7 @@ static int request_mac_address(struct lte_udev *udev)
+ 	struct hci_packet *hci = (struct hci_packet *)buf;
+ 	struct usb_device *usbdev = udev->usbdev;
+ 	int actual;
+-	int ret = -1;
++	int ret;
  
- 	hdr = (struct hostif_hdr *)p;
+ 	hci->cmd_evt = gdm_cpu_to_dev16(udev->gdm_ed, LTE_GET_INFORMATION);
+ 	hci->len = gdm_cpu_to_dev16(udev->gdm_ed, 1);
 -- 
 2.19.1
 
