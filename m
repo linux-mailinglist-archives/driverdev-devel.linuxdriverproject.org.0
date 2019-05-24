@@ -1,70 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 847E628E20
-	for <lists+driverdev-devel@lfdr.de>; Fri, 24 May 2019 02:02:34 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D090828E5F
+	for <lists+driverdev-devel@lfdr.de>; Fri, 24 May 2019 02:35:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E421F87F02;
-	Fri, 24 May 2019 00:02:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CECDC86A54;
+	Fri, 24 May 2019 00:35:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NyI5ThWBy1c0; Fri, 24 May 2019 00:02:31 +0000 (UTC)
+	with ESMTP id agcO13T45WFd; Fri, 24 May 2019 00:35:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 71A7F87E84;
-	Fri, 24 May 2019 00:02:30 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 399F186A3D;
+	Fri, 24 May 2019 00:35:18 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0D3AF1BF973
- for <devel@linuxdriverproject.org>; Fri, 24 May 2019 00:02:28 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E52A91BF9BA
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 24 May 2019 00:35:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0AA66221FF
- for <devel@linuxdriverproject.org>; Fri, 24 May 2019 00:02:28 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E1F1988A98
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 24 May 2019 00:35:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sfUyOfYBScMS for <devel@linuxdriverproject.org>;
- Fri, 24 May 2019 00:02:27 +0000 (UTC)
-X-Greylist: delayed 02:49:51 by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0039.hostedemail.com
- [216.40.44.39])
- by silver.osuosl.org (Postfix) with ESMTPS id 1A08621574
- for <devel@driverdev.osuosl.org>; Fri, 24 May 2019 00:02:26 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave07.hostedemail.com (Postfix) with ESMTP id A6D8318355100
- for <devel@driverdev.osuosl.org>; Thu, 23 May 2019 21:02:26 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay08.hostedemail.com (Postfix) with ESMTP id A6868182CED28;
- Thu, 23 May 2019 21:02:23 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, :::::::::,
- RULES_HIT:41:355:379:421:599:800:960:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1539:1593:1594:1711:1730:1747:1777:1792:2110:2198:2199:2393:2553:2559:2562:2828:2911:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3868:3870:3871:3872:3873:3874:4321:4425:4470:5007:10004:10400:10848:11232:11658:11914:12740:12760:12895:13069:13149:13230:13311:13357:13439:14096:14097:14181:14659:14721:21080:21324:21451:21627:30054:30060:30070:30090:30091,
- 0,
- RBL:23.242.196.136:@perches.com:.lbl8.mailshell.net-62.8.0.180 64.201.201.201,
- CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none, DomainCache:0,
- MSF:not bulk, SPF:fn, MSBL:0, DNSBL:neutral, Custom_rules:0:0:0, LFtime:27,
- LUA_SUMMARY:none
-X-HE-Tag: brick10_31daacd83bf3d
-X-Filterd-Recvd-Size: 1862
-Received: from XPS-9350 (cpe-23-242-196-136.socal.res.rr.com [23.242.196.136])
- (Authenticated sender: joe@perches.com)
- by omf13.hostedemail.com (Postfix) with ESMTPA;
- Thu, 23 May 2019 21:02:22 +0000 (UTC)
-Message-ID: <a3c036b12979ab7269917247a683eeb63df71d58.camel@perches.com>
-Subject: Re: [PATCH 1/2] MAINTAINERS: Add entry for fieldbus subsystem
-From: Joe Perches <joe@perches.com>
-To: Sven Van Asbroeck <thesven73@gmail.com>
-Date: Thu, 23 May 2019 14:02:16 -0700
-In-Reply-To: <CAGngYiUnRSSPLDhXeAg5E0pM_-ZbNV9qpOarSemDdpwLPRZeqA@mail.gmail.com>
-References: <20190523195313.31008-1-TheSven73@gmail.com>
- <1b741b25b973e049948b3e490c13aad48716d5b0.camel@perches.com>
- <CAGngYiUnRSSPLDhXeAg5E0pM_-ZbNV9qpOarSemDdpwLPRZeqA@mail.gmail.com>
-User-Agent: Evolution 3.30.1-1build1 
-Mime-Version: 1.0
+ with ESMTP id VNCZ2PFeaNA2
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 24 May 2019 00:35:13 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from icp-osb-irony-out4.external.iinet.net.au
+ (icp-osb-irony-out4.external.iinet.net.au [203.59.1.220])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 432E688A93
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 24 May 2019 00:35:13 +0000 (UTC)
+X-IronPort-Anti-Spam-Filtered: true
+X-IronPort-Anti-Spam-Result: =?us-ascii?q?A2BFAADYO+dc/zXSMGcNWRwBAQEEAQE?=
+ =?us-ascii?q?HBAEBgVMFAQELAYFmgj+EE5NXAQEBAQEBBoEILYNehXCJb4UaFIFnCQEBAQE?=
+ =?us-ascii?q?BAQEBATcBAQGEPwKCWzYHDgEDAQEBBAEBAQEDAYZfAQEBAQIBIwQRQRALDQs?=
+ =?us-ascii?q?CAiYCAlcGDQYCAQEYgwaBdwWlaXF8MxqFLYMugUaBDCgBgWCKCHiBB4EQASe?=
+ =?us-ascii?q?BbX4+hCwBgyGCWASLNYgegSWFc41TCYIPkwgGG4IehmCDagOBe4dSLaQUCII?=
+ =?us-ascii?q?AMxoIKAg7gmyCGxeBAgEIjSdgjjsBAQ?=
+X-IPAS-Result: =?us-ascii?q?A2BFAADYO+dc/zXSMGcNWRwBAQEEAQEHBAEBgVMFAQELA?=
+ =?us-ascii?q?YFmgj+EE5NXAQEBAQEBBoEILYNehXCJb4UaFIFnCQEBAQEBAQEBATcBAQGEP?=
+ =?us-ascii?q?wKCWzYHDgEDAQEBBAEBAQEDAYZfAQEBAQIBIwQRQRALDQsCAiYCAlcGDQYCA?=
+ =?us-ascii?q?QEYgwaBdwWlaXF8MxqFLYMugUaBDCgBgWCKCHiBB4EQASeBbX4+hCwBgyGCW?=
+ =?us-ascii?q?ASLNYgegSWFc41TCYIPkwgGG4IehmCDagOBe4dSLaQUCIIAMxoIKAg7gmyCG?=
+ =?us-ascii?q?xeBAgEIjSdgjjsBAQ?=
+X-IronPort-AV: E=Sophos;i="5.60,505,1549900800"; d="scan'208";a="165165545"
+Received: from unknown (HELO [10.44.0.22]) ([103.48.210.53])
+ by icp-osb-irony-out4.iinet.net.au with ESMTP; 24 May 2019 08:35:09 +0800
+Subject: Re: staging: mt7621-pci: factor out 'mt7621_pcie_enable_port' function
+To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+References: <678a78fd-a7f4-5a1f-9819-51c5a0731877@kernel.org>
+ <CAMhs-H-Js2wiF5yH3pB5bFq9SE1X17OovsXtYuNH+obe0owknw@mail.gmail.com>
+ <5a7dc59b-f9ef-beab-7221-231f64716d5a@kernel.org>
+ <CAMhs-H-8EQPPy0vMFCG-PKu3RLz4_d0ucO6bCgMCfMuD7ZYRSg@mail.gmail.com>
+ <a2f6ee9c-dc4e-a7e7-8723-880a3472e9ba@kernel.org>
+ <CAMhs-H8der72iXY0NFhXLUyTHvsBZ3t5VUagfgiO4CwuXhAXKw@mail.gmail.com>
+From: Greg Ungerer <gerg@kernel.org>
+Message-ID: <9224bde1-ea67-db9f-570f-178bbc8e6b40@kernel.org>
+Date: Fri, 24 May 2019 10:35:07 +1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
+MIME-Version: 1.0
+In-Reply-To: <CAMhs-H8der72iXY0NFhXLUyTHvsBZ3t5VUagfgiO4CwuXhAXKw@mail.gmail.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,35 +80,200 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg KH <gregkh@linuxfoundation.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Dan Carpenter <dan.carpenter@oracle.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: NeilBrown <neil@brown.name>, driverdev-devel@linuxdriverproject.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, 2019-05-23 at 16:23 -0400, Sven Van Asbroeck wrote:
-> On Thu, May 23, 2019 at 4:00 PM Joe Perches <joe@perches.com> wrote:
-> > trivia: anybuss looks like a misspelling.
-> > It might be better as anybus-s.
-> This came up as well during the review process. When we insert a separator,
-> the include files start looking like anybus-s-controller.h, and the structs
-> become like struct anybus_s_ops. It then no longer looks like a misspelling,
-> but becomes harder to read?
+Hi Sergio,
+
+On 23/5/19 3:26 pm, Sergio Paracuellos wrote:
+> On Thu, May 23, 2019 at 4:11 AM Greg Ungerer <gerg@kernel.org> wrote:
+>> On 22/5/19 4:27 pm, Sergio Paracuellos wrote:
+>> [snip]
+>>> There are some big changes between 4.20 and 5.x. One is the use of PERST_N
+>>> instead of using gpio. This PERT_N stuff is used now on enable ports
+>>> assuming the
+>>> link of PCI is properly detected after enabling the phy. And it seems
+>>> it is not according to
+>>> your dmesg traces. The previous 4.20 code used gpio before this was done.
+>>>
+>>> This code is the one I am referring:
+>>>
+>>> /* Use GPIO control instead of PERST_N */
+>>> *(unsigned int *)(0xbe000620) |= BIT(19) | BIT(8) | BIT(7); // set DATA
+>>> mdelay(1000);
+>>
+>> I have been looking closely at those, wondering why the old code
+>> drove that PERST line as a GPIO instead of using the built-in behavior.
+>> (I have ignored bits 7 and 8 here since they are control of UART 3)
 > 
-> An alternative solution is to get rid of the 's' suffix altogether. Anybus-S
-> is the only flavour we support right now. Although that may obviously
-> change in the future.
+> Yes, this was also at first one of my big concerns so I tried to change into
+> to use builtin behaviour (which is much more cleaner) and when the
+> code was tested
+> it worked. It seems it is not valid for every board.
+> 
+>>
+>>
+>>> I assume reset lines on your device tree are properly set up which is
+>>> other of the big changes here: use
+>>> reset lines instead of that hardcoding stuff. Also, the
+>>> mt7621_reset_port routine is also using msleep(100)
+>>> but maybe you can try a bigger value and change it into a mdelay, to
+>>> see if that changes anything.
+>>
+>> I see the reset line configuration in the pcie section of mt7621.dtsi,
+>> is there any others absolutely required here?  I couldn't see the
+>> gbpc1.dts devicetree do anything else with pcie - othe than enable it.
+>> My device tree for the EX15 is similar in that regard.
+>>
+>> I tried a couple of things with interesting results.
+>>
+>> 1. I made sure that the PERST_N line is set for PCIe operation (not GPIO).
+>>      I forced it with:
+>>
+>>          *(unsigned int *)(0xbe000060) &= ~(0x3 << 10);
+>>
+>>      I checked bits 10 and 11 at kernel PCI init and they were 00 anyway.
+>>      So PERST_N was definitely in PCIe reset mode. No change in behavior,
+>>
+>>
+>> 2. I forced a GPIO style reset of that PERST line (using GPIO19) and got
+>>      the following result on kernel boot:
+>>
+>>       mt7621-pci 1e140000.pcie: Port 454043648 N_FTS = 0
+>>       mt7621-pci-phy 1e149000.pcie-phy: Xtal is 40MHz
+>>       mt7621-pci 1e140000.pcie: Port 454043648 N_FTS = 1
+>>       mt7621-pci 1e140000.pcie: pcie1 no card, disable it (RST & CLK)
+>>       mt7621-pci 1e140000.pcie: Initiating port 1 failed
+>>       mt7621-pci 1e140000.pcie: Port 454043648 N_FTS = 2
+>>       mt7621-pci-phy 1e14a000.pcie-phy: Xtal is 40MHz
+>>       mt7621-pci 1e140000.pcie: pcie2 no card, disable it (RST & CLK)
+>>       mt7621-pci 1e140000.pcie: Initiating port 2 failed
+>>       mt7621-pci 1e140000.pcie: de-assert port 0 PERST_N
+> 
+> This line seems to be the problem. When ports are init, (and with your
+> changes seems the are
+> init properly), the ports with pcie link are stored into a list to be
+> enabled afterwards. This code is
+> located into 'mt7621_pcie_enable_ports' which call simple
+> 'mt7621_pcie_enable_port' to enable each port
+> on the list. In this process it uses the PERS_N built-in register
+> deasserting and asserting it. If enabling fails
+> (and this is ypour case now) the port is removed from the list and it
+> is not properly set up. You should try to
+> comment this code:
+> 
+> /* assert port PERST_N */
+> val = pcie_read(pcie, RALINK_PCI_PCICFG_ADDR);
+> val |= PCIE_PORT_PERST(slot);
+> pcie_write(pcie, val, RALINK_PCI_PCICFG_ADDR);
+> 
+> /* de-assert port PERST_N */
+> val = pcie_read(pcie, RALINK_PCI_PCICFG_ADDR);
+> val &= ~PCIE_PORT_PERST(slot);
+> pcie_write(pcie, val, RALINK_PCI_PCICFG_ADDR);
+> 
+> /* 100ms timeout value should be enough for Gen1 training */
+> err = readl_poll_timeout(port->base + RALINK_PCI_STATUS,
+> val, !!(val & PCIE_PORT_LINKUP),
+> 20, 100 * USEC_PER_MSEC);
+> if (err)
+> return -ETIMEDOUT;
+> 
+> because on enabling, it seems it is getting ETIMEOUT and hence the
+> message '  mt7621-pci 1e140000.pcie: de-assert port 0 PERST_N'.
+> Commenting
+> this code should end up into a properly configured pci?
 
-anybuss just looked odd to me.
+No, unfortunately it doesn't. It does show PCIE0 enabled now though:
 
-Whatever you choose is up to you and
-no doubt you'll choose well.
+mt7621-pci 1e140000.pcie: Port 454043648 N_FTS = 0
+mt7621-pci-phy 1e149000.pcie-phy: Xtal is 40MHz
+mt7621-pci 1e140000.pcie: Port 454043648 N_FTS = 1
+mt7621-pci 1e140000.pcie: pcie1 no card, disable it (RST & CLK)
+mt7621-pci 1e140000.pcie: Initiating port 1 failed
+mt7621-pci 1e140000.pcie: Port 454043648 N_FTS = 2
+mt7621-pci-phy 1e14a000.pcie-phy: Xtal is 40MHz
+mt7621-pci 1e140000.pcie: pcie2 no card, disable it (RST & CLK)
+mt7621-pci 1e140000.pcie: Initiating port 2 failed
+mt7621-pci 1e140000.pcie: PCIE0 enabled
+mt7621-pci 1e140000.pcie: PCI coherence region base: 0x60000000, mask/settings: 0xf0000002
+mt7621-pci 1e140000.pcie: PCI host bridge to bus 0000:00
+pci_bus 0000:00: root bus resource [io  0xffffffff]
+pci_bus 0000:00: root bus resource [mem 0x60000000-0x6fffffff]
+pci_bus 0000:00: root bus resource [bus 00-ff]
 
-cheers, Joe
+And again no devices are found on the PCI bus.
+(System did still boot too).
+
+I'll keep digging.
+
+Thanks
+Greg
 
 
+> 
+>>       mt7621-pci 1e140000.pcie: PCI coherence region base: 0x60000000, mask/settings: 0xf0000002
+>>       mt7621-pci 1e140000.pcie: PCI host bridge to bus 0000:00
+>>       pci_bus 0000:00: root bus resource [io  0xffffffff]
+>>       pci_bus 0000:00: root bus resource [mem 0x60000000-0x6fffffff]
+>>       pci_bus 0000:00: root bus resource [bus 00-ff]
+>>
+>> And the system continued on to fully boot. So it looks like it thinks
+>> pcie0 is active. Better, but the PCI bus probe didn't find any of the
+>> devices it should have.
+> 
+> Yes, that seems what is happening because of my explanation above.
+> 
+>>
+>> I inserted the quick hack code to do this at the top of mt7621_pcie_init_ports()
+>> and it looked like this:
+>>
+>>           /* Force PERST PCIe line into GPIO mode */
+>>           *(unsigned int *)(0xbe000060) &= ~(0x3 << 10);
+>>           *(unsigned int *)(0xbe000060) |=  BIT(10);
+>>           mdelay(100);
+>>
+>>           *(unsigned int *)(0xbe000600) |= BIT(19); // use GPIO19 (PERST_N/)
+>>           mdelay(100);
+>>           *(unsigned int *)(0xbe000620) &= ~(BIT(19)); // clear DATA
+>>           mdelay(1000);
+>>
+>>           /* Use GPIO control instead of PERST_N */
+>>           *(unsigned int *)(0xbe000620) |= BIT(19); // set DATA
+>>           mdelay(1000);
+>>
+>>
+> 
+> I really hate the gpio way of doing this. If this works we have to
+> think in how to achieve this in a cleaner way :))
+> 
+>> Regards
+>> Greg
+> 
+> Thanks for your effort in this.
+> 
+> Best regards,
+>      Sergio Paracuellos
+>>
+>>
+>>> Other big change is to use the new phy driver but I think the problem
+>>> seems to be related with resets.
+>>>
+>>>>
+>>>> Regards
+>>>> Greg
+>>>
+>>> Please, don't hesitate to ask me whatever you need to.
+>>>
+>>> Hope this helps.
+>>>
+>>> Best regards,
+>>>       Sergio Paracuellos
+>>>
+> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
