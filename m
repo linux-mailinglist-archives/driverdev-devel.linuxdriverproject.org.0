@@ -1,77 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2DB8529402
-	for <lists+driverdev-devel@lfdr.de>; Fri, 24 May 2019 10:59:04 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 49CAD29478
+	for <lists+driverdev-devel@lfdr.de>; Fri, 24 May 2019 11:21:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 57E5986D0F;
-	Fri, 24 May 2019 08:59:02 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E4E1788BC7;
+	Fri, 24 May 2019 09:21:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9vGycJ1lJbDZ; Fri, 24 May 2019 08:59:01 +0000 (UTC)
+	with ESMTP id UavfG1YsVKOO; Fri, 24 May 2019 09:21:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 86E2686BBB;
-	Fri, 24 May 2019 08:59:00 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8852D88B9C;
+	Fri, 24 May 2019 09:21:03 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E89B91BF958
- for <devel@linuxdriverproject.org>; Fri, 24 May 2019 08:58:58 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B55A11BF290
+ for <devel@linuxdriverproject.org>; Fri, 24 May 2019 09:21:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id E5C3B221FF
- for <devel@linuxdriverproject.org>; Fri, 24 May 2019 08:58:58 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B0BCD87A95
+ for <devel@linuxdriverproject.org>; Fri, 24 May 2019 09:21:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DW4zeLIw6rLJ for <devel@linuxdriverproject.org>;
- Fri, 24 May 2019 08:58:57 +0000 (UTC)
+ with ESMTP id sy-cF6r+TVQW for <devel@linuxdriverproject.org>;
+ Fri, 24 May 2019 09:20:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f193.google.com (mail-pl1-f193.google.com
- [209.85.214.193])
- by silver.osuosl.org (Postfix) with ESMTPS id 7EC67221B1
- for <devel@driverdev.osuosl.org>; Fri, 24 May 2019 08:58:57 +0000 (UTC)
-Received: by mail-pl1-f193.google.com with SMTP id w7so3913656plz.1
- for <devel@driverdev.osuosl.org>; Fri, 24 May 2019 01:58:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=JWACF3SIPoHGy5EkRZoqUNZ3AjzJ3mymMn0aw/d37Uk=;
- b=g2xv1OoPAO5xli3xO7oBgaNvngcVXWrFOWU+s2iAMJ6mauapv25jjOTC4bkryNgiLf
- UATKBOk4EjF27bJCf47K2U82fiK54MXBpy9mgzlVLOs5JLF8aYTpsvelmce8HqOd3XEf
- Tn2qWxLxtsmwupSRz8d4d/RGBlGrCWiHIUGhFnUMWOcCBJIpQG++kxW4LGc0k3xrwCnR
- yR2ru+JG/pf2Svttek2pjS8TWjyIKTseP6tE6z3H+bC2KUmeioYvHP24MTF+lqVFdRp/
- NWYUmSpp//MOma3OuNav/Fg27M58rI8MpinOOLDr+Hs0fv6fNeYTDliLKP3w8pxxcVw9
- 72CA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=JWACF3SIPoHGy5EkRZoqUNZ3AjzJ3mymMn0aw/d37Uk=;
- b=DYNtriO3wRBJIJ+TlQE8oho4b9tWaVzLdbNVrK6VrB2YL6wQQhMztGT0bkWleUvxvn
- ulWP5hYyk0VDVdtpfmsumrI+rIhZ7t5vxAkX79K5lcXTxBL7z7GaaxjvdefHQ4bXBMsv
- bxrUBxOZi/vDIW9+Pbj2zBEYm8BOHKpn9jwKwXRMe0Zh6byHkFmckUXZM165LDRJ3rr8
- Gv1W2gHcGcmhi3jWctixParjBCf0AEtZVhAHs9byVsB5HYXAul2e6YAEZPHCorW0K61J
- PfsVF5KrBnCOULyYsN2/SNdR17Dk88T/552U2vHH/aTRtSKDdWw/4mn0zwbAZB7GhST1
- V4fQ==
-X-Gm-Message-State: APjAAAWQcKPoXQFOoB6BzEnSTbytwQWWIdPrXmi4wmzDKaCtPo01UhLJ
- IoPnZ9ooYTULWn+5netv3D4=
-X-Google-Smtp-Source: APXvYqxd0j3L5+yAIsyKGXeQQVEfGbfAXSc6Rua6tZ0I2R7hm3Clg/aYloU0p4HMiTN+J9CnT7b+2w==
-X-Received: by 2002:a17:902:2d:: with SMTP id
- 42mr105677421pla.34.1558688337271; 
- Fri, 24 May 2019 01:58:57 -0700 (PDT)
-Received: from localhost.localdomain ([110.225.17.212])
- by smtp.gmail.com with ESMTPSA id z14sm3236286pfk.73.2019.05.24.01.58.54
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 24 May 2019 01:58:56 -0700 (PDT)
-From: Nishka Dasgupta <nishkadg.linux@gmail.com>
-To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v3] staging: ks7010: Remove initialisation in ks7010_sdio.c
-Date: Fri, 24 May 2019 14:28:42 +0530
-Message-Id: <20190524085842.6515-1-nishkadg.linux@gmail.com>
-X-Mailer: git-send-email 2.19.1
+Received: from relay5-d.mail.gandi.net (relay5-d.mail.gandi.net
+ [217.70.183.197])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B5DC887A7C
+ for <devel@driverdev.osuosl.org>; Fri, 24 May 2019 09:20:58 +0000 (UTC)
+X-Originating-IP: 90.88.147.134
+Received: from localhost.localdomain
+ (aaubervilliers-681-1-27-134.w90-88.abo.wanadoo.fr [90.88.147.134])
+ (Authenticated sender: paul.kocialkowski@bootlin.com)
+ by relay5-d.mail.gandi.net (Postfix) with ESMTPSA id F24821C000A;
+ Fri, 24 May 2019 09:20:45 +0000 (UTC)
+From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+To: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org,
+ linux-sunxi@googlegroups.com
+Subject: [PATCH v11 0/4] media: cedrus: Add H264 decoding support
+Date: Fri, 24 May 2019 11:20:27 +0200
+Message-Id: <20190524092031.619-1-paul.kocialkowski@bootlin.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -85,42 +59,178 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Nishka Dasgupta <nishkadg.linux@gmail.com>
+Cc: Hans Verkuil <hverkuil@xs4all.nl>, Jernej Skrabec <jernej.skrabec@siol.net>,
+ Alexandre Courbot <acourbot@chromium.org>, Jonas Karlman <jonas@kwiboo.se>,
+ Maxime Ripard <maxime.ripard@bootlin.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Tomasz Figa <tfiga@chromium.org>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Chen-Yu Tsai <wens@csie.org>, Boris Brezillon <boris.brezillon@collabora.com>,
+ Nicolas Dufresne <nicolas@ndufresne.ca>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Ezequiel Garcia <ezequiel@collabora.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-As the initial value of the return variable result is never used, it can
-be removed.
-Issue found with Coccinelle.
+Hi,
 
-Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
----
-Changes in v3:
-- Edited subject line and commit message
+Here is a new version of the H264 decoding support in the cedrus
+driver.
 
-Changes in v2:
-- Clarified subject line
+As you might already know, the cedrus driver relies on the Request
+API, and is a reverse engineered driver for the video decoding engine
+found on the Allwinner SoCs.
 
- drivers/staging/ks7010/ks7010_sdio.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+This work has been possible thanks to the work done by the people
+behind libvdpau-sunxi found here:
+https://github.com/linux-sunxi/libvdpau-sunxi/
 
-diff --git a/drivers/staging/ks7010/ks7010_sdio.c b/drivers/staging/ks7010/ks7010_sdio.c
-index 74551eb717fc..4b379542ecd5 100644
---- a/drivers/staging/ks7010/ks7010_sdio.c
-+++ b/drivers/staging/ks7010/ks7010_sdio.c
-@@ -380,7 +380,7 @@ int ks_wlan_hw_tx(struct ks_wlan_private *priv, void *p, unsigned long size,
- 					   struct sk_buff *skb),
- 		  struct sk_buff *skb)
- {
--	int result = 0;
-+	int result;
- 	struct hostif_hdr *hdr;
- 
- 	hdr = (struct hostif_hdr *)p;
+I've tested the various ABI using this gdb script:
+http://code.bulix.org/jl4se4-505620?raw
+
+And this test script:
+http://code.bulix.org/8zle4s-505623?raw
+
+The application compiled is quite trivial:
+http://code.bulix.org/e34zp8-505624?raw
+
+The output is:
+arm64:  builds/arm64-test-v4l2-h264-structures
+        SHA1: 1c48d3868ac9049c6b5efed43a74bf97af710aba
+x86:    builds/x86-test-v4l2-h264-structures
+        SHA1: 1c48d3868ac9049c6b5efed43a74bf97af710aba
+arm:    builds/arm-test-v4l2-h264-structures
+        SHA1: 1c48d3868ac9049c6b5efed43a74bf97af710aba
+x64:    builds/x64-test-v4l2-h264-structures
+        SHA1: 1c48d3868ac9049c6b5efed43a74bf97af710aba
+
+Let me know if there's any flaw using that test setup, or if you have
+any comments on the patches.
+
+Maxime and Paul
+
+Changes from v10:
+  - Rebased atop the latest next media tree and Jernej's cedrus clock patch.
+
+Changes from v9:
+  - Fixed spare warnings about endianness for le32 types in the driver
+  - Rebased on next
+
+Changes from v8:
+  - Moved the format into a private header and split the controls, format
+    and format doc into three commits
+  - Changed the name of the variables in v4l2_ctrl_ptr
+  - Added a note in the format documentation to mention that the format is
+    not stable yet
+  - Fixed the label of the format documentation
+  - Fixed a reference in the format documentation
+  - Added tags
+  - Rebase on current next
+
+Changes from v7:
+  - Changed the _slice_param and _decode_param to _params
+
+Changes from v6:
+  - Rebased on next
+  - Renamed the timestamp DPB field to reference_ts
+  - Fixed the collision of control type values
+  - Removed unused fields
+  - Fixed the structure layout that was broken on x86 by reducing the
+    num_slices and nal_ref_idc to 16 bits instead of 32
+
+Changes from v5:
+  - Made the references to the H264 spec more explicit
+  - Added a flag for the IDR pic
+  - Fixed typos
+  - Rebased on v5.1-rc1
+
+Changes from v4:
+  - Changed the luma and chroma weight and offset from s8 to s16
+  - Adjusted chroma and luma denominators masks in the driver
+  - Casted the luma and chroma offset to prevent an overflow
+  - ALways write the interrupt status register
+  - Fix a bug in the sram write routine that would write something even if
+    the length was 0
+  - Make the scaling lists mandatory
+  - Made the reference list order explicit in the documentation
+  - Made the fact that the slice structure can be an array
+  - Renamed the slice format to V4L2_PIX_FMT_H264_SLICE_RAW
+  - Rebased on Hans' tag br-v5.1s
+
+Changes from v3:
+  - Reintroduced long term reference flag and documented it
+  - Reintroduced ref_pic_list_p0/b0/b1 and documented it
+  - Documented the DPB flags
+  - Treat the scaling matrix as optional in the driver, as documented
+  - Free the neighbor buffer
+  - Increase the control IDs by a large margin to be safe of collisions
+  - Reorder the fields documentation according to the structure layout
+  - Change the tag documentation by the timestamp
+  - Convert the sram array to size_t
+  - Simplify the buffer retrieval from timestamp
+  - Rebase
+
+Changes from v2:
+  - Simplified _cedrus_write_ref_list as suggested by Jernej
+  - Set whether the frame is used as reference using nal_ref_idc
+  - Respect chroma_format_idc
+  - Fixes for the scaling list and prediction tables
+  - Wrote the documentation for the flags
+  - Added a bunch of defines to the driver bit fields
+  - Reworded the controls and data format descriptions as suggested
+    by Hans
+  - Reworked the controls' structure field size to avoid padding
+  - Removed the long term reference flag
+  - Reintroduced the neighbor info buffer
+  - Removed the ref_pic_list_p0/b0/b1 arrays that are redundant with the
+    one in the DPB
+  - used the timestamps instead of tags
+  - Rebased on 5.0-rc1
+
+Changes from v1:
+  - Rebased on 4.20
+  - Did the documentation for the userspace API
+  - Used the tags instead of buffer IDs
+  - Added a comment to explain why we still needed the swdec trigger
+  - Reworked the MV col buffer in order to have one slot per frame
+  - Removed the unused neighbor info buffer
+  - Made sure to have the same structure offset and alignments across
+    32 bits and 64 bits architecture
+
+Maxime Ripard (3):
+  media: pixfmt: Add H264 Slice format
+  media: pixfmt: Add H264_SLICE_RAW format documentation
+  media: cedrus: Add H264 decoding support
+
+Pawel Osciak (1):
+  media: uapi: Add H264 low-level decoder API compound controls.
+
+ Documentation/media/uapi/v4l/biblio.rst       |   9 +
+ .../media/uapi/v4l/ext-ctrls-codec.rst        | 569 +++++++++++++++++
+ .../media/uapi/v4l/pixfmt-compressed.rst      |  25 +
+ .../media/uapi/v4l/vidioc-queryctrl.rst       |  30 +
+ .../media/videodev2.h.rst.exceptions          |   5 +
+ drivers/media/v4l2-core/v4l2-ctrls.c          |  42 ++
+ drivers/media/v4l2-core/v4l2-ioctl.c          |   1 +
+ drivers/staging/media/sunxi/cedrus/Makefile   |   3 +-
+ drivers/staging/media/sunxi/cedrus/cedrus.c   |  31 +
+ drivers/staging/media/sunxi/cedrus/cedrus.h   |  38 +-
+ .../staging/media/sunxi/cedrus/cedrus_dec.c   |  13 +
+ .../staging/media/sunxi/cedrus/cedrus_h264.c  | 576 ++++++++++++++++++
+ .../staging/media/sunxi/cedrus/cedrus_hw.c    |   4 +
+ .../staging/media/sunxi/cedrus/cedrus_regs.h  |  91 +++
+ .../staging/media/sunxi/cedrus/cedrus_video.c |   9 +
+ include/media/h264-ctrls.h                    | 197 ++++++
+ include/media/v4l2-ctrls.h                    |  13 +-
+ 17 files changed, 1653 insertions(+), 3 deletions(-)
+ create mode 100644 drivers/staging/media/sunxi/cedrus/cedrus_h264.c
+ create mode 100644 include/media/h264-ctrls.h
+
 -- 
-2.19.1
+2.21.0
 
 _______________________________________________
 devel mailing list
