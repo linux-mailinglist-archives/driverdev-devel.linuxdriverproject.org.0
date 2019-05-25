@@ -1,52 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 569F82A2B4
-	for <lists+driverdev-devel@lfdr.de>; Sat, 25 May 2019 06:18:34 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id CF4592A2EE
+	for <lists+driverdev-devel@lfdr.de>; Sat, 25 May 2019 07:00:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EB8448819F;
-	Sat, 25 May 2019 04:18:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3F12888CAD;
+	Sat, 25 May 2019 05:00:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id M3MWXLJltC+g; Sat, 25 May 2019 04:18:31 +0000 (UTC)
+	with ESMTP id AzyLoBm0X9yf; Sat, 25 May 2019 05:00:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8575487D7F;
-	Sat, 25 May 2019 04:18:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BA14088BED;
+	Sat, 25 May 2019 05:00:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D5B381BF417
- for <devel@linuxdriverproject.org>; Sat, 25 May 2019 04:18:26 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 735391BF292
+ for <devel@linuxdriverproject.org>; Sat, 25 May 2019 05:00:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D191A88C8E
- for <devel@linuxdriverproject.org>; Sat, 25 May 2019 04:18:26 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 705A088BF6
+ for <devel@linuxdriverproject.org>; Sat, 25 May 2019 05:00:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ktZuO9DXjEqb for <devel@linuxdriverproject.org>;
- Sat, 25 May 2019 04:18:26 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D7B4E88517
- for <devel@driverdev.osuosl.org>; Sat, 25 May 2019 04:18:25 +0000 (UTC)
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id A3AC57A6F2A73DE5BF64;
- Sat, 25 May 2019 12:18:22 +0800 (CST)
-Received: from localhost.localdomain.localdomain (10.175.113.25) by
- DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
- 14.3.439.0; Sat, 25 May 2019 12:18:13 +0800
-From: Mao Wenan <maowenan@huawei.com>
-To: <gregkh@linuxfoundation.org>, <jeremy@azazel.net>
-Subject: [PATCH net] =?UTF-8?q?staging:=20Remove=20set=20but=20not=20used?=
- =?UTF-8?q?=20variable=20=E2=80=98status=E2=80=99?=
-Date: Sat, 25 May 2019 12:26:42 +0800
-Message-ID: <20190525042642.78482-1-maowenan@huawei.com>
-X-Mailer: git-send-email 2.20.1
+ with ESMTP id 5vOi-Kau9w9k for <devel@linuxdriverproject.org>;
+ Sat, 25 May 2019 05:00:20 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C4EBA88BED
+ for <devel@driverdev.osuosl.org>; Sat, 25 May 2019 05:00:20 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1488B2177E;
+ Sat, 25 May 2019 05:00:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1558760420;
+ bh=mIXbDXcQPMJSc4UESXKNywctOSB6Moa7tm6Jt46hGR4=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=00FgJh01/Thls1CggdEZBj8yQBkONkK7KKarlpioeuDiFOyer6WSHGtYbOSnyrJ60
+ tHdAcyGob9MFtufyHhv2JzLmHzs4vgpLTUtssIJEZ39/jF1EUOI8wN9wbtFPPR0FaK
+ DQE+bvaZ6bUXPRsbh2hnM2kBUCyZPQi+EfUR64ok=
+Date: Sat, 25 May 2019 07:00:17 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Simon =?iso-8859-1?Q?Sandstr=F6m?= <simon@nikanor.nu>
+Subject: Re: [PATCH 2/2] staging: kpc2000: add missing dependencies for kpc2000
+Message-ID: <20190525050017.GA18684@kroah.com>
+References: <20190524203058.30022-1-simon@nikanor.nu>
+ <20190524203058.30022-3-simon@nikanor.nu>
 MIME-Version: 1.0
-X-Originating-IP: [10.175.113.25]
-X-CFilter-Loop: Reflected
+Content-Disposition: inline
+In-Reply-To: <20190524203058.30022-3-simon@nikanor.nu>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,43 +67,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, kernel-janitors@vger.kernel.org,
- linux-kernel@vger.kernel.org, Mao Wenan <maowenan@huawei.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Rml4ZXMgZ2NjICctV3VudXNlZC1idXQtc2V0LXZhcmlhYmxlJyB3YXJuaW5nOgoKZHJpdmVycy9z
-dGFnaW5nL2twYzIwMDAva3BjX3NwaS9zcGlfZHJpdmVyLmM6IEluIGZ1bmN0aW9uCuKAmGtwX3Nw
-aV90cmFuc2Zlcl9vbmVfbWVzc2FnZeKAmToKZHJpdmVycy9zdGFnaW5nL2twYzIwMDAva3BjX3Nw
-aS9zcGlfZHJpdmVyLmM6MjgyOjk6IHdhcm5pbmc6IHZhcmlhYmxlCuKAmHN0YXR1c+KAmSBzZXQg
-YnV0IG5vdCB1c2VkIFstV3VudXNlZC1idXQtc2V0LXZhcmlhYmxlXQogICAgIGludCBzdGF0dXMg
-PSAwOwogICAgICAgICBefn5+fn4KVGhlIHZhcmlhYmxlICdzdGF0dXMnIGlzIG5vdCB1c2VkIGFu
-eSBtb3JlLCByZW12ZSBpdC4KClNpZ25lZC1vZmYtYnk6IE1hbyBXZW5hbiA8bWFvd2VuYW5AaHVh
-d2VpLmNvbT4KLS0tCiBkcml2ZXJzL3N0YWdpbmcva3BjMjAwMC9rcGNfc3BpL3NwaV9kcml2ZXIu
-YyB8IDMgLS0tCiAxIGZpbGUgY2hhbmdlZCwgMyBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9k
-cml2ZXJzL3N0YWdpbmcva3BjMjAwMC9rcGNfc3BpL3NwaV9kcml2ZXIuYyBiL2RyaXZlcnMvc3Rh
-Z2luZy9rcGMyMDAwL2twY19zcGkvc3BpX2RyaXZlci5jCmluZGV4IDg2ZGYxNjU0N2E5Mi4uMTZm
-OTUxOGY4ZDYzIDEwMDY0NAotLS0gYS9kcml2ZXJzL3N0YWdpbmcva3BjMjAwMC9rcGNfc3BpL3Nw
-aV9kcml2ZXIuYworKysgYi9kcml2ZXJzL3N0YWdpbmcva3BjMjAwMC9rcGNfc3BpL3NwaV9kcml2
-ZXIuYwpAQCAtMjc5LDcgKzI3OSw2IEBAIGtwX3NwaV90cmFuc2Zlcl9vbmVfbWVzc2FnZShzdHJ1
-Y3Qgc3BpX21hc3RlciAqbWFzdGVyLCBzdHJ1Y3Qgc3BpX21lc3NhZ2UgKm0pCiAgICAgc3RydWN0
-IGtwX3NwaSAgICAgICAqa3BzcGk7CiAgICAgc3RydWN0IHNwaV90cmFuc2ZlciAqdHJhbnNmZXI7
-CiAgICAgdW5pb24ga3Bfc3BpX2NvbmZpZyBzYzsKLSAgICBpbnQgc3RhdHVzID0gMDsKICAgICAK
-ICAgICBzcGlkZXYgPSBtLT5zcGk7CiAgICAga3BzcGkgPSBzcGlfbWFzdGVyX2dldF9kZXZkYXRh
-KG1hc3Rlcik7CkBAIC0zMzIsNyArMzMxLDYgQEAga3Bfc3BpX3RyYW5zZmVyX29uZV9tZXNzYWdl
-KHN0cnVjdCBzcGlfbWFzdGVyICptYXN0ZXIsIHN0cnVjdCBzcGlfbWVzc2FnZSAqbSkKICAgICAv
-KiBkbyB0aGUgdHJhbnNmZXJzIGZvciB0aGlzIG1lc3NhZ2UgKi8KICAgICBsaXN0X2Zvcl9lYWNo
-X2VudHJ5KHRyYW5zZmVyLCAmbS0+dHJhbnNmZXJzLCB0cmFuc2Zlcl9saXN0KSB7CiAgICAgICAg
-IGlmICh0cmFuc2Zlci0+dHhfYnVmID09IE5VTEwgJiYgdHJhbnNmZXItPnJ4X2J1ZiA9PSBOVUxM
-ICYmIHRyYW5zZmVyLT5sZW4pIHsKLSAgICAgICAgICAgIHN0YXR1cyA9IC1FSU5WQUw7CiAgICAg
-ICAgICAgICBicmVhazsKICAgICAgICAgfQogICAgICAgICAKQEAgLTM3MCw3ICszNjgsNiBAQCBr
-cF9zcGlfdHJhbnNmZXJfb25lX21lc3NhZ2Uoc3RydWN0IHNwaV9tYXN0ZXIgKm1hc3Rlciwgc3Ry
-dWN0IHNwaV9tZXNzYWdlICptKQogICAgICAgICAgICAgbS0+YWN0dWFsX2xlbmd0aCArPSBjb3Vu
-dDsKICAgICAgICAgICAgIAogICAgICAgICAgICAgaWYgKGNvdW50ICE9IHRyYW5zZmVyLT5sZW4p
-IHsKLSAgICAgICAgICAgICAgICBzdGF0dXMgPSAtRUlPOwogICAgICAgICAgICAgICAgIGJyZWFr
-OwogICAgICAgICAgICAgfQogICAgICAgICB9Ci0tIAoyLjIwLjEKCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBs
-aW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+On Fri, May 24, 2019 at 10:30:58PM +0200, Simon Sandstr=F6m wrote:
+> Fixes build errors:
+> =
+
+> ERROR: "mfd_remove_devices" [kpc2000.ko] undefined!
+> ERROR: "uio_unregister_device" [kpc2000.ko] undefined!
+> ERROR: "mfd_add_devices" [kpc2000.ko] undefined!
+> ERROR: "__uio_register_device" [kpc2000.ko] undefined!
+> =
+
+> Signed-off-by: Simon Sandstr=F6m <simon@nikanor.nu>
+> ---
+>  drivers/staging/kpc2000/Kconfig | 2 ++
+>  1 file changed, 2 insertions(+)
+> =
+
+> diff --git a/drivers/staging/kpc2000/Kconfig b/drivers/staging/kpc2000/Kc=
+onfig
+> index c463d232f2b4..5188b56123ab 100644
+> --- a/drivers/staging/kpc2000/Kconfig
+> +++ b/drivers/staging/kpc2000/Kconfig
+> @@ -3,6 +3,8 @@
+>  config KPC2000
+>  	bool "Daktronics KPC Device support"
+>  	depends on PCI
+> +	select MFD_CORE
+> +	select UIO
+>  	help
+>  	  Select this if you wish to use the Daktronics KPC PCI devices
+>  =
+
+
+This is already in linux-next (in a different form), are you sure you
+are working against the latest kernel tree?
+
+thanks,
+
+greg k-h
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
