@@ -2,59 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3F23D2A479
-	for <lists+driverdev-devel@lfdr.de>; Sat, 25 May 2019 14:51:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1EB262A481
+	for <lists+driverdev-devel@lfdr.de>; Sat, 25 May 2019 14:59:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 8448C2284A;
-	Sat, 25 May 2019 12:51:47 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 189C322851;
+	Sat, 25 May 2019 12:59:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QjBpkbENvtnj; Sat, 25 May 2019 12:51:46 +0000 (UTC)
+	with ESMTP id ail0dVvINE3W; Sat, 25 May 2019 12:59:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id AECDE227E1;
-	Sat, 25 May 2019 12:51:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 72D582282E;
+	Sat, 25 May 2019 12:59:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0B4D71BF255
- for <devel@linuxdriverproject.org>; Sat, 25 May 2019 12:51:43 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C9C051BF291
+ for <devel@linuxdriverproject.org>; Sat, 25 May 2019 12:59:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0581E882BB
- for <devel@linuxdriverproject.org>; Sat, 25 May 2019 12:51:43 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id BD434863E0
+ for <devel@linuxdriverproject.org>; Sat, 25 May 2019 12:59:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FuYyjiJ0Xm-Z for <devel@linuxdriverproject.org>;
- Sat, 25 May 2019 12:51:41 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.siol.net (mailoutvs59.siol.net [185.57.226.250])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1134B882B5
- for <devel@driverdev.osuosl.org>; Sat, 25 May 2019 12:51:40 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.siol.net (Postfix) with ESMTP id 37BEE52243C;
- Sat, 25 May 2019 14:51:38 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at psrvmta09.zcs-production.pri
-Received: from mail.siol.net ([127.0.0.1])
- by localhost (psrvmta09.zcs-production.pri [127.0.0.1]) (amavisd-new,
- port 10032)
- with ESMTP id mbbF_S_xVf-j; Sat, 25 May 2019 14:51:37 +0200 (CEST)
-Received: from mail.siol.net (localhost [127.0.0.1])
- by mail.siol.net (Postfix) with ESMTPS id BC98B522442;
- Sat, 25 May 2019 14:51:37 +0200 (CEST)
-Received: from jernej-laptop.localnet (89-212-178-211.dynamic.t-2.net
- [89.212.178.211]) (Authenticated sender: jernej.skrabec@siol.net)
- by mail.siol.net (Postfix) with ESMTPA id 2A20C52243C;
- Sat, 25 May 2019 14:51:35 +0200 (CEST)
-From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@siol.net>
-To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Subject: Re: [PATCH v5 2/4] media: pixfmt: Add HEVC slice pixel format
-Date: Sat, 25 May 2019 14:51:34 +0200
-Message-ID: <9334832.WyQZ0g7QqJ@jernej-laptop>
-In-Reply-To: <20190524093635.1832-3-paul.kocialkowski@bootlin.com>
-References: <20190524093635.1832-1-paul.kocialkowski@bootlin.com>
- <20190524093635.1832-3-paul.kocialkowski@bootlin.com>
+ with ESMTP id 8LGFzICL9ZE1 for <devel@linuxdriverproject.org>;
+ Sat, 25 May 2019 12:59:20 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ot1-f66.google.com (mail-ot1-f66.google.com
+ [209.85.210.66])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2F988863DD
+ for <devel@driverdev.osuosl.org>; Sat, 25 May 2019 12:59:20 +0000 (UTC)
+Received: by mail-ot1-f66.google.com with SMTP id n14so11135663otk.2
+ for <devel@driverdev.osuosl.org>; Sat, 25 May 2019 05:59:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=BtQTuMfATWXiK2KsTqvrmBV015lDA1qcyuiicuIi0vA=;
+ b=RMDw8eSGj+mSLywZgF2YVM3V88/obPnHf2Y5qE2tGnMQuxg1KUitGTXqbpra8UAY4F
+ iL/9EKNFEx/t65gZ1+iyTD9zo28S0oIcIU8sXqEb/fCAFW4glZK+vr0Ymdy9svKSeG1r
+ n4F4Zn+SDVawAjeSnJvFXqdzOo6kGBWyrYfZZMAWAAQhQ/SIv5SyeJ/ct7zThVxeb2yQ
+ vQ+CB16LyQNs4QTbiSQbYAraZAqaZbTd981NeyrlS3Z9bMlr8FKcLh+/3PBQuJ0+oEBY
+ DmrkqjWhRjoMbnseUHKTFHKghbplHnpXkexkHyWSaa4Tl5d4d7eX/JPnZ0LFWKAZNXdy
+ T8Pg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=BtQTuMfATWXiK2KsTqvrmBV015lDA1qcyuiicuIi0vA=;
+ b=EL2FiRdEFIcISgWKZOdWumBmeGQ+zydcf0yyf2+dNGuMMdIfGl3xjb0X96qdCd7O7Y
+ UsgNdB8KS7x+eoj+lTVJuli5wvYHMslOo/nlFrrGwTVamDqGZM0fes8tB5/lIEkW2aFM
+ Xww/RCtkmYnlD+HX4l9YQyYa7MNclVzsXImvIQ826zWbMRGg8KDiM2QgR87sLuyvp4ke
+ 6F7a0PPLmm0O2rEXXDZBWXKz2qL/9WWD2ck0ITKWsagPKm8EViG9CfABQbwRSus2IbS4
+ 1O8OQOlRxEh7UXfRCpaZ14GUAlGXEvDBcLy9mEp2bwf/CXDrkUGjdzWmO+Y2gQwYrUr9
+ Q5eQ==
+X-Gm-Message-State: APjAAAUBiGk31eM6GPrevfcnODf+Qdu+YCbEc5mm7EvudKqjioY4plOo
+ o4a7YyBZXF1Hzxf+fU7VS59XFPMXOcy8wzmpEw8=
+X-Google-Smtp-Source: APXvYqyOxYb9KGXupIouUlbnXLWlQ3BdKVA8gjHY4z+gTj3DWLA44KWiOPwIW9eLNLODIq5iS6L/1oncgUFQX9wbIDs=
+X-Received: by 2002:a9d:12f2:: with SMTP id
+ g105mr50298032otg.116.1558789159170; 
+ Sat, 25 May 2019 05:59:19 -0700 (PDT)
 MIME-Version: 1.0
+References: <20190525042642.78482-1-maowenan@huawei.com>
+In-Reply-To: <20190525042642.78482-1-maowenan@huawei.com>
+From: Sven Van Asbroeck <thesven73@gmail.com>
+Date: Sat, 25 May 2019 08:59:08 -0400
+Message-ID: <CAGngYiX04W+-jxqnWUD6CLh8LAr61FhtADGM0zbGcdeArqzC-Q@mail.gmail.com>
+Subject: =?UTF-8?Q?Re=3A_=5BPATCH_net=5D_staging=3A_Remove_set_but_not_used_var?=
+ =?UTF-8?Q?iable_=E2=80=98status=E2=80=99?=
+To: Mao Wenan <maowenan@huawei.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,71 +81,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Nicolas Dufresne <nicolas@ndufresne.ca>,
- Tomasz Figa <tfiga@chromium.org>, Alexandre Courbot <acourbot@chromium.org>,
- Maxime Ripard <maxime.ripard@bootlin.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Chen-Yu Tsai <wens@csie.org>, Hans Verkuil <hverkuil@xs4all.nl>,
- linux-sunxi@googlegroups.com, Boris Brezillon <boris.brezillon@collabora.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Ezequiel Garcia <ezequiel@collabora.com>, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Greg KH <gregkh@linuxfoundation.org>,
+ kernel-janitors@vger.kernel.org,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi!
+On Sat, May 25, 2019 at 12:20 AM Mao Wenan <maowenan@huawei.com> wrote:
+>
+> The variable 'status' is not used any more, remve it.
 
-Dne petek, 24. maj 2019 ob 11:36:33 CEST je Paul Kocialkowski napisal(a):
-> Introduce the V4L2_PIX_FMT_HEVC_SLICE pixel format, which currently
-> describes an output buffer with enough appended slice data for
-> producing one decoded frame with a stateless video decoder.
-> 
-> This will need to be reworked (along with the controls and the core) to
-> allow passing slice data individually, as it is the natural decoding
-> unit in HEVC.
-> 
-> We also need to figure out the description of the possible source data:
-> * Compressed slice data only, with slice controls attached;
-> * Slice data in Annex-B format (with raw slice header), without slice
->   controls attached;
-> * Slice data in Annex-B format (with raw slice header), with slice
->   controls attached.
-> 
-> Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-> ---
->  include/media/hevc-ctrls.h | 3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
-> index 9ea013c88afc..2de83d9f6d47 100644
-> --- a/include/media/hevc-ctrls.h
-> +++ b/include/media/hevc-ctrls.h
-> @@ -11,6 +11,9 @@
->  #ifndef _HEVC_CTRLS_H_
->  #define _HEVC_CTRLS_H_
-> 
-> +/* The pixel format isn't stable at the moment and will likely be renamed.
-> */ +#define V4L2_PIX_FMT_HEVC_SLICE v4l2_fourcc('S', '2', '6', '5') /* HEVC
+>      /* do the transfers for this message */
+>      list_for_each_entry(transfer, &m->transfers, transfer_list) {
+>          if (transfer->tx_buf == NULL && transfer->rx_buf == NULL && transfer->len) {
+> -            status = -EINVAL;
+>              break;
+>          }
 
-You should add include to cover v4l2_fourcc() macro.
+This looks like an error condition that's not reported to the spi core.
 
-Best regards,
-Jernej
+Instead of removing the status variable (which also removes the error value!),
+maybe this should be reported to the spi core instead ?
 
-> parsed slices */ +
->  #define V4L2_CID_MPEG_VIDEO_HEVC_SPS		(V4L2_CID_MPEG_BASE + 
-1008)
->  #define V4L2_CID_MPEG_VIDEO_HEVC_PPS		(V4L2_CID_MPEG_BASE + 
-1009)
->  #define V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS	(V4L2_CID_MPEG_BASE + 
-1010)
+Other spi drivers appear to do the following on the error path:
+m->status = status;
+return status;
 
+>
+> @@ -370,7 +368,6 @@ kp_spi_transfer_one_message(struct spi_master *master, struct spi_message *m)
+>
+>              if (count != transfer->len) {
+> -                status = -EIO;
+>                  break;
 
-
-
+Same issue here.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
