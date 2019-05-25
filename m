@@ -1,74 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1EB262A481
-	for <lists+driverdev-devel@lfdr.de>; Sat, 25 May 2019 14:59:27 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5605F2A48D
+	for <lists+driverdev-devel@lfdr.de>; Sat, 25 May 2019 15:28:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 189C322851;
-	Sat, 25 May 2019 12:59:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C218A88A05;
+	Sat, 25 May 2019 13:28:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ail0dVvINE3W; Sat, 25 May 2019 12:59:24 +0000 (UTC)
+	with ESMTP id 9Vgn6EoTH9my; Sat, 25 May 2019 13:28:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 72D582282E;
-	Sat, 25 May 2019 12:59:23 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 46E9F884F3;
+	Sat, 25 May 2019 13:28:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C9C051BF291
- for <devel@linuxdriverproject.org>; Sat, 25 May 2019 12:59:20 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 860F41BF2E3
+ for <devel@linuxdriverproject.org>; Sat, 25 May 2019 13:28:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id BD434863E0
- for <devel@linuxdriverproject.org>; Sat, 25 May 2019 12:59:20 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 78D88884F7
+ for <devel@linuxdriverproject.org>; Sat, 25 May 2019 13:28:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8LGFzICL9ZE1 for <devel@linuxdriverproject.org>;
- Sat, 25 May 2019 12:59:20 +0000 (UTC)
+ with ESMTP id dMMtRkLlg1ou for <devel@linuxdriverproject.org>;
+ Sat, 25 May 2019 13:28:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f66.google.com (mail-ot1-f66.google.com
- [209.85.210.66])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 2F988863DD
- for <devel@driverdev.osuosl.org>; Sat, 25 May 2019 12:59:20 +0000 (UTC)
-Received: by mail-ot1-f66.google.com with SMTP id n14so11135663otk.2
- for <devel@driverdev.osuosl.org>; Sat, 25 May 2019 05:59:20 -0700 (PDT)
+Received: from mail-ot1-f68.google.com (mail-ot1-f68.google.com
+ [209.85.210.68])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C5076884F3
+ for <devel@driverdev.osuosl.org>; Sat, 25 May 2019 13:28:28 +0000 (UTC)
+Received: by mail-ot1-f68.google.com with SMTP id s19so11153223otq.5
+ for <devel@driverdev.osuosl.org>; Sat, 25 May 2019 06:28:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=BtQTuMfATWXiK2KsTqvrmBV015lDA1qcyuiicuIi0vA=;
- b=RMDw8eSGj+mSLywZgF2YVM3V88/obPnHf2Y5qE2tGnMQuxg1KUitGTXqbpra8UAY4F
- iL/9EKNFEx/t65gZ1+iyTD9zo28S0oIcIU8sXqEb/fCAFW4glZK+vr0Ymdy9svKSeG1r
- n4F4Zn+SDVawAjeSnJvFXqdzOo6kGBWyrYfZZMAWAAQhQ/SIv5SyeJ/ct7zThVxeb2yQ
- vQ+CB16LyQNs4QTbiSQbYAraZAqaZbTd981NeyrlS3Z9bMlr8FKcLh+/3PBQuJ0+oEBY
- DmrkqjWhRjoMbnseUHKTFHKghbplHnpXkexkHyWSaa4Tl5d4d7eX/JPnZ0LFWKAZNXdy
- T8Pg==
+ :cc; bh=9qj1HvIOBrDiTk1oOhNlE+ryU/65VrTB2Fp4BYdFFTY=;
+ b=OEw+jbrAZtZ91LNARltGnB0Ee8aP0JV8ce+cfRyKDZWvmimQWWRSIB/eFSiPqWH/qJ
+ KNCI9k3RURHl8m7qbIKe/1XI/6n/Qqs9BRNN9a9UURS8+LN2OtDDXiqGTPvCCq0gpyR7
+ h0quJgTZUo1OA/D/ALJcGigWfKLCMysuHHcEWaKRvb7e87TbK9bIMcYvY8igZYmaZXto
+ rdYdqmcDqq1NOtDYcNAnbZY17/jjEgCYoi26qeAzQK2WVWbMB5FW/F4UgncBw9mob74M
+ DxI1I48cZg5zsxCuAqtzkXKWadGHFoxdT+eOn1iF2WC+dqnmp/WXabrwshj8oawa1oOY
+ ItOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=BtQTuMfATWXiK2KsTqvrmBV015lDA1qcyuiicuIi0vA=;
- b=EL2FiRdEFIcISgWKZOdWumBmeGQ+zydcf0yyf2+dNGuMMdIfGl3xjb0X96qdCd7O7Y
- UsgNdB8KS7x+eoj+lTVJuli5wvYHMslOo/nlFrrGwTVamDqGZM0fes8tB5/lIEkW2aFM
- Xww/RCtkmYnlD+HX4l9YQyYa7MNclVzsXImvIQ826zWbMRGg8KDiM2QgR87sLuyvp4ke
- 6F7a0PPLmm0O2rEXXDZBWXKz2qL/9WWD2ck0ITKWsagPKm8EViG9CfABQbwRSus2IbS4
- 1O8OQOlRxEh7UXfRCpaZ14GUAlGXEvDBcLy9mEp2bwf/CXDrkUGjdzWmO+Y2gQwYrUr9
- Q5eQ==
-X-Gm-Message-State: APjAAAUBiGk31eM6GPrevfcnODf+Qdu+YCbEc5mm7EvudKqjioY4plOo
- o4a7YyBZXF1Hzxf+fU7VS59XFPMXOcy8wzmpEw8=
-X-Google-Smtp-Source: APXvYqyOxYb9KGXupIouUlbnXLWlQ3BdKVA8gjHY4z+gTj3DWLA44KWiOPwIW9eLNLODIq5iS6L/1oncgUFQX9wbIDs=
-X-Received: by 2002:a9d:12f2:: with SMTP id
- g105mr50298032otg.116.1558789159170; 
- Sat, 25 May 2019 05:59:19 -0700 (PDT)
+ bh=9qj1HvIOBrDiTk1oOhNlE+ryU/65VrTB2Fp4BYdFFTY=;
+ b=R8FBoRXXGPbq0EM2iDxQ+Vv7ArALcq+TUgYqWGEmW/SDbSdxwQmqPM969w3NKKfvps
+ gr1F97so8vw30hb30Q0iM79eSRKRCZPUNiUAZlCHfy4jLa/8JR9dTkXO3V09H7CS7lDO
+ j3gGsD5tII8x/pSyHt2dct8znRjZ3TTAieHgtuSowNTJ42/rW7v17559mojJFp/nB9UY
+ 5dY98U7cNIeZG+sL9DZxOINegYu6WRAUSSPGEDv2P8aPIlWm7nrg76c8HQ6D0MqpZrtQ
+ l+Yb+XPSEphWVtvxseLr5NKex/70g6h5h93SUP6qi0RkJhPYfDxIu2vpgjaaHoso+yiG
+ KGAg==
+X-Gm-Message-State: APjAAAWS8cRpFoTVg4pX66XEzkIs0wN7096Y0OTe7AtkAPuh3zDUNBfu
+ X+G0Pu6UzLuUkuyYjfNSn1OcDHMwSeQq2kVEl+o=
+X-Google-Smtp-Source: APXvYqyv/W7CWZEFDJjPt4W8CmN8QSTDN/a1KF93wl7C/cqTB7j2BCU+AoHao8d64vsYOF3FxneCBLtGmh1bD8B6jTo=
+X-Received: by 2002:a05:6830:209a:: with SMTP id
+ y26mr36098774otq.232.1558790907820; 
+ Sat, 25 May 2019 06:28:27 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190525042642.78482-1-maowenan@huawei.com>
-In-Reply-To: <20190525042642.78482-1-maowenan@huawei.com>
+References: <20190524060026.3763-1-nishkadg.linux@gmail.com>
+ <20190524060026.3763-2-nishkadg.linux@gmail.com>
+In-Reply-To: <20190524060026.3763-2-nishkadg.linux@gmail.com>
 From: Sven Van Asbroeck <thesven73@gmail.com>
-Date: Sat, 25 May 2019 08:59:08 -0400
-Message-ID: <CAGngYiX04W+-jxqnWUD6CLh8LAr61FhtADGM0zbGcdeArqzC-Q@mail.gmail.com>
-Subject: =?UTF-8?Q?Re=3A_=5BPATCH_net=5D_staging=3A_Remove_set_but_not_used_var?=
- =?UTF-8?Q?iable_=E2=80=98status=E2=80=99?=
-To: Mao Wenan <maowenan@huawei.com>
+Date: Sat, 25 May 2019 09:28:16 -0400
+Message-ID: <CAGngYiWXH-kjL1wvrH0LcEJ2ADCDBQBCNYh2z4jcsdnixN+HrA@mail.gmail.com>
+Subject: Re: [PATCH 2/2] staging: gdm724x: Remove variable
+To: Nishka Dasgupta <nishkadg.linux@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,41 +82,41 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, Greg KH <gregkh@linuxfoundation.org>,
- kernel-janitors@vger.kernel.org,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ colin.king@canonical.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, May 25, 2019 at 12:20 AM Mao Wenan <maowenan@huawei.com> wrote:
+On Fri, May 24, 2019 at 2:04 AM Nishka Dasgupta
+<nishkadg.linux@gmail.com> wrote:
 >
-> The variable 'status' is not used any more, remve it.
+> The return variable is used only twice (in two different branches), and
+> both times it is assigned the same constant value. These can therefore
+> be merged into the same assignment, placed at the point that both
+> these branches (and no other) go to. The return variable itself can be
+> removed.
 
->      /* do the transfers for this message */
->      list_for_each_entry(transfer, &m->transfers, transfer_list) {
->          if (transfer->tx_buf == NULL && transfer->rx_buf == NULL && transfer->len) {
-> -            status = -EINVAL;
->              break;
->          }
+>  fail:
+>         release_usb(udev);
+> -       return ret;
+> +       return -ENOMEM;
+>  }
 
-This looks like an error condition that's not reported to the spi core.
+At the risk of sticking my nose where it doesn't belong...
 
-Instead of removing the status variable (which also removes the error value!),
-maybe this should be reported to the spi core instead ?
+AFAIK it's a well-established pattern to have a success path returning 0,
+and an error path returning ret, where ret gets assigned the err value.
 
-Other spi drivers appear to do the following on the error path:
-m->status = status;
-return status;
+This patch removes the pattern, making it slightly harder for developers
+to read. And if the function needs to return different err values in the
+future, that future patch will need to add the ret variable back in.
 
->
-> @@ -370,7 +368,6 @@ kp_spi_transfer_one_message(struct spi_master *master, struct spi_message *m)
->
->              if (count != transfer->len) {
-> -                status = -EIO;
->                  break;
+Modern compilers optimize ret away, so the patch won't result in
+smaller or more efficient code.
 
-Same issue here.
+This particular patch sounds like negative work to me.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
