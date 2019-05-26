@@ -1,59 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0AB392AA58
-	for <lists+driverdev-devel@lfdr.de>; Sun, 26 May 2019 16:53:28 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 45ECD2AB45
+	for <lists+driverdev-devel@lfdr.de>; Sun, 26 May 2019 18:39:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EE415869F8;
-	Sun, 26 May 2019 14:53:24 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 073E287A8D;
+	Sun, 26 May 2019 16:39:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id exCCSHXo+dxG; Sun, 26 May 2019 14:53:24 +0000 (UTC)
+	with ESMTP id LYCTxD1WBcHF; Sun, 26 May 2019 16:39:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EAFC68671F;
-	Sun, 26 May 2019 14:53:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 530AF8797A;
+	Sun, 26 May 2019 16:39:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4D6DD1BF41B
- for <devel@linuxdriverproject.org>; Sun, 26 May 2019 14:53:21 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id DDDBC1BF402
+ for <devel@linuxdriverproject.org>; Sun, 26 May 2019 16:39:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 44A4E233B9
- for <devel@linuxdriverproject.org>; Sun, 26 May 2019 14:53:21 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D810A85A78
+ for <devel@linuxdriverproject.org>; Sun, 26 May 2019 16:39:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VYjZvy0Hv8uL for <devel@linuxdriverproject.org>;
- Sun, 26 May 2019 14:53:20 +0000 (UTC)
+ with ESMTP id Ojjsw55x7RFq for <devel@linuxdriverproject.org>;
+ Sun, 26 May 2019 16:39:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 7E6C821579
- for <devel@driverdev.osuosl.org>; Sun, 26 May 2019 14:53:20 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B0A8E85775
+ for <devel@driverdev.osuosl.org>; Sun, 26 May 2019 16:39:17 +0000 (UTC)
 Received: from archlinux (cpc149474-cmbg20-2-0-cust94.5-4.cable.virginm.net
  [82.4.196.95])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id C39E020815;
- Sun, 26 May 2019 14:53:17 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id D3A542075B;
+ Sun, 26 May 2019 16:39:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1558882400;
- bh=65oYITCZXkSQPpBpB70/9NzgHpXMWdm94uzquU8fZ/k=;
+ s=default; t=1558888757;
+ bh=ZRGTIVYaHYRt51w0uSjhKU/386SEDJ1jWuPg7ckiXDM=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=aCh6xJYA6SIzbiUPSW7Hru5Uoii57tRq9u5tvZ2OAgUw0IyhT+1OYPxOFDqhYPLRY
- HETxKnSCbqDqOXS0HlTRnh5fqS0OsKL30PWX8oA4C6NH34DYfSF4gZKDiIB4qLdMKJ
- EfVmJ2TPAxjnyYuG4ncZyesnHtTRDpKO1WiWBEiA=
-Date: Sun, 26 May 2019 15:53:08 +0100
+ b=bTydKIUT2J0nOZF9/pmjOFRvdPIeF8Zg5xRFX+NrRtEW4tVnO3Np8pk3ljl3h66AN
+ U2AiOtugeZE+7vTYGJWNnVWDSOKSgdV77/VKBrYkp/H/UNPPnLuQWNAzKFs6QqcRJX
+ BTb3zpSgztXgw2G1sECkK1EWvtArIhMD4zgpXdAo=
+Date: Sun, 26 May 2019 17:39:11 +0100
 From: Jonathan Cameron <jic23@kernel.org>
-To: "Ardelean, Alexandru" <alexandru.Ardelean@analog.com>
-Subject: Re: [PATCH] staging: iio: adis16240: add of_match_table entry
-Message-ID: <20190526155308.5980cb81@archlinux>
-In-Reply-To: <11a0315e01b80a3a9eb4e81e1b018a2bff7ae559.camel@analog.com>
-References: <20190524032950.2398-1-rodrigorsdc@gmail.com>
- <CA+U=DspqLFBMrRcV6VmypHOpE6Qs7OqmiDzWAd6pxpA7B=4S4g@mail.gmail.com>
- <20190524135034.u2mbtq2jwhp6ent7@smtp.gmail.com>
- <11a0315e01b80a3a9eb4e81e1b018a2bff7ae559.camel@analog.com>
+To: Renato Lui Geh <renatogeh@gmail.com>
+Subject: Re: [PATCH v2 1/2] dt-bindings: iio: adc: add adi,ad7780.yaml binding
+Message-ID: <20190526173911.57ae3d11@archlinux>
+In-Reply-To: <2426649b2d8224ae72e7706bcb8c4f2c44c581d2.1558746978.git.renatogeh@gmail.com>
+References: <cover.1558746978.git.renatogeh@gmail.com>
+ <2426649b2d8224ae72e7706bcb8c4f2c44c581d2.1558746978.git.renatogeh@gmail.com>
 X-Mailer: Claws Mail 3.17.3 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -68,90 +66,195 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- "marcelo.schmitt1@gmail.com" <marcelo.schmitt1@gmail.com>, "Hennerich,
- Michael" <Michael.Hennerich@analog.com>,
- "linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "rodrigorsdc@gmail.com" <rodrigorsdc@gmail.com>,
- "kernel-usp@googlegroups.com" <kernel-usp@googlegroups.com>,
- "ardeleanalex@gmail.com" <ardeleanalex@gmail.com>,
- "lars@metafoo.de" <lars@metafoo.de>, "pmeerw@pmeerw.net" <pmeerw@pmeerw.net>,
- "knaack.h@gmx.de" <knaack.h@gmx.de>, "Popa,
- Stefan Serban" <StefanSerban.Popa@analog.com>
+Cc: mark.rutland@arm.com, devel@driverdev.osuosl.org, lars@metafoo.de,
+ pmeerw@pmeerw.net, Michael.Hennerich@analog.com, devicetree@vger.kernel.org,
+ linux-iio@vger.kernel.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, kernel-usp@googlegroups.com, robh+dt@kernel.org,
+ stefan.popa@analog.com, knaack.h@gmx.de, alexandru.Ardelean@analog.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, 24 May 2019 13:54:49 +0000
-"Ardelean, Alexandru" <alexandru.Ardelean@analog.com> wrote:
+On Fri, 24 May 2019 22:26:30 -0300
+Renato Lui Geh <renatogeh@gmail.com> wrote:
 
-> On Fri, 2019-05-24 at 10:50 -0300, Marcelo Schmitt wrote:
-> > [External]
-> > 
-> > 
-> > Hi Alexandru,
-> > 
-> > On 05/24, Alexandru Ardelean wrote:  
-> > > On Fri, May 24, 2019 at 6:30 AM Rodrigo Ribeiro <rodrigorsdc@gmail.com> wrote:  
-> > > > 
-> > > > This patch adds of_match_table entry in device driver in order to
-> > > > enable spi fallback probing.
-> > > > 
-> > > > Signed-off-by: Rodrigo Ribeiro <rodrigorsdc@gmail.com>
-> > > > Reviewed-by: Marcelo Schmitt <marcelo.schmitt1@gmail.com>
-> > > > ---
-> > > >  drivers/staging/iio/accel/adis16240.c | 1 +
-> > > >  1 file changed, 1 insertion(+)
-> > > > 
-> > > > diff --git a/drivers/staging/iio/accel/adis16240.c b/drivers/staging/iio/accel/adis16240.c
-> > > > index 8c6d23604eca..b80c8529784b 100644
-> > > > --- a/drivers/staging/iio/accel/adis16240.c
-> > > > +++ b/drivers/staging/iio/accel/adis16240.c
-> > > > @@ -444,6 +444,7 @@ MODULE_DEVICE_TABLE(of, adis16240_of_match);
-> > > >  static struct spi_driver adis16240_driver = {
-> > > >         .driver = {
-> > > >                 .name = "adis16240",
-> > > > +               .of_match_table = adis16240_of_match,  
-> > > 
-> > > This patch is missing the actual table.  
-> > 
-> > Struct with compatible devices table was included separately in a
-> > previous patch at commit d9e533b6c0a26c7ef8116b7f3477c164c07bb6fb.
-> > Yeah, I also thought it was missing the match table the first time I was
-> > this patch. It's really confusing when we have two patches, one
-> > depending on another, that are not part of the same patch set. We're
-> > trying to avoid things like this the most but that slipped out from our
-> > internal review. We're sorry about that.  
+> This patch adds a YAML binding for the Analog Devices AD7780/1 and
+> AD7170/1 analog-to-digital converters.
 > 
-> No worries.
-> 
-> It happens to me too.
-> 
-> Thanks
-> Alex
-Oops. I should have caught that one in review as well.
-Oh well, these things happen.
+> Signed-off-by: Renato Lui Geh <renatogeh@gmail.com>
+Looks good to me, but I'm still finding my feet with these so will
+leave it for a few days for others to have time to comment.
 
-Applied to the togreg branch of iio.git and pushed out as testing for
-the autobuilders to play with it.  I rebased the tree to pick up on
-all the other stuff in staging/staging-next after the mere window.
+Michael, looking for a quick reply from you to say if you are happy
+being explicitly listed as maintainer for this one, or if you'd
+rather land it on someone else.  Same applies for patch 2.
+
+Renato, if I seem to have forgotten this in a week or so, feel
+free to give me a poke. I've been known to loose patches entirely!
 
 Thanks,
 
 Jonathan
-
+> ---
+> Changes in v2:
+>  - vref-supply to avdd-supply
+>  - remove avdd-supply from required list
+>  - include adc block in an spi block
 > 
-> >   
-> > >   
-> > > >         },
-> > > >         .probe = adis16240_probe,
-> > > >         .remove = adis16240_remove,
-> > > > --
-> > > > 2.20.1
-> > > >   
+>  .../bindings/iio/adc/adi,ad7780.txt           | 48 ----------
+>  .../bindings/iio/adc/adi,ad7780.yaml          | 87 +++++++++++++++++++
+>  2 files changed, 87 insertions(+), 48 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/iio/adc/adi,ad7780.txt
+>  create mode 100644 Documentation/devicetree/bindings/iio/adc/adi,ad7780.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/iio/adc/adi,ad7780.txt b/Documentation/devicetree/bindings/iio/adc/adi,ad7780.txt
+> deleted file mode 100644
+> index 440e52555349..000000000000
+> --- a/Documentation/devicetree/bindings/iio/adc/adi,ad7780.txt
+> +++ /dev/null
+> @@ -1,48 +0,0 @@
+> -* Analog Devices AD7170/AD7171/AD7780/AD7781
+> -
+> -Data sheets:
+> -
+> -- AD7170:
+> -	* https://www.analog.com/media/en/technical-documentation/data-sheets/AD7170.pdf
+> -- AD7171:
+> -	* https://www.analog.com/media/en/technical-documentation/data-sheets/AD7171.pdf
+> -- AD7780:
+> -	* https://www.analog.com/media/en/technical-documentation/data-sheets/ad7780.pdf
+> -- AD7781:
+> -	* https://www.analog.com/media/en/technical-documentation/data-sheets/AD7781.pdf
+> -
+> -Required properties:
+> -
+> -- compatible: should be one of
+> -	* "adi,ad7170"
+> -	* "adi,ad7171"
+> -	* "adi,ad7780"
+> -	* "adi,ad7781"
+> -- reg: spi chip select number for the device
+> -- vref-supply: the regulator supply for the ADC reference voltage
+> -
+> -Optional properties:
+> -
+> -- powerdown-gpios:  must be the device tree identifier of the PDRST pin. If
+> -		    specified, it will be asserted during driver probe. As the
+> -		    line is active high, it should be marked GPIO_ACTIVE_HIGH.
+> -- adi,gain-gpios:   must be the device tree identifier of the GAIN pin. Only for
+> -		    the ad778x chips. If specified, it will be asserted during
+> -		    driver probe. As the line is active low, it should be marked
+> -		    GPIO_ACTIVE_LOW.
+> -- adi,filter-gpios: must be the device tree identifier of the FILTER pin. Only
+> -		    for the ad778x chips. If specified, it will be asserted
+> -		    during driver probe. As the line is active low, it should be
+> -		    marked GPIO_ACTIVE_LOW.
+> -
+> -Example:
+> -
+> -adc@0 {
+> -	compatible =  "adi,ad7780";
+> -	reg =	      <0>;
+> -	vref-supply = <&vdd_supply>
+> -
+> -	powerdown-gpios  = <&gpio 12 GPIO_ACTIVE_HIGH>;
+> -	adi,gain-gpios   = <&gpio  5 GPIO_ACTIVE_LOW>;
+> -	adi,filter-gpios = <&gpio 15 GPIO_ACTIVE_LOW>;
+> -};
+> diff --git a/Documentation/devicetree/bindings/iio/adc/adi,ad7780.yaml b/Documentation/devicetree/bindings/iio/adc/adi,ad7780.yaml
+> new file mode 100644
+> index 000000000000..d1109416963c
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/iio/adc/adi,ad7780.yaml
+> @@ -0,0 +1,87 @@
+> +# SPDX-License-Identifier: GPL-2.0
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/iio/adc/adi,ad7780.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Analog Devices AD7170/AD7171/AD7780/AD7781 analog to digital converters
+> +
+> +maintainers:
+> +  - Michael Hennerich <michael.hennerich@analog.com>
+> +
+> +description: |
+> +  The ad7780 is a sigma-delta analog to digital converter. This driver provides
+> +  reading voltage values and status bits from both the ad778x and ad717x series.
+> +  Its interface also allows writing on the FILTER and GAIN GPIO pins on the
+> +  ad778x.
+> +
+> +  Specifications on the converters can be found at:
+> +    AD7170:
+> +      https://www.analog.com/media/en/technical-documentation/data-sheets/AD7170.pdf
+> +    AD7171:
+> +      https://www.analog.com/media/en/technical-documentation/data-sheets/AD7171.pdf
+> +    AD7780:
+> +      https://www.analog.com/media/en/technical-documentation/data-sheets/ad7780.pdf
+> +    AD7781:
+> +      https://www.analog.com/media/en/technical-documentation/data-sheets/AD7781.pdf
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - adi,ad7170
+> +      - adi,ad7171
+> +      - adi,ad7780
+> +      - adi,ad7781
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  avdd-supply:
+> +    description:
+> +      The regulator supply for the ADC reference voltage.
+> +    maxItems: 1
+> +
+> +  powerdown-gpios:
+> +    description:
+> +      Must be the device tree identifier of the PDRST pin. If
+> +      specified, it will be asserted during driver probe. As the
+> +      line is active high, it should be marked GPIO_ACTIVE_HIGH.
+> +    maxItems: 1
+> +
+> +  adi,gain-gpios:
+> +    description:
+> +      Must be the device tree identifier of the GAIN pin. Only for
+> +      the ad778x chips. If specified, it will be asserted during
+> +      driver probe. As the line is active low, it should be marked
+> +      GPIO_ACTIVE_LOW.
+> +    maxItems: 1
+> +
+> +  adi,filter-gpios:
+> +    description:
+> +      Must be the device tree identifier of the FILTER pin. Only
+> +      for the ad778x chips. If specified, it will be asserted
+> +      during driver probe. As the line is active low, it should be
+> +      marked GPIO_ACTIVE_LOW.
+> +    maxItems: 1
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/gpio/gpio.h>
+> +    spi0 {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +
+> +        adc@0 {
+> +            compatible = "adi,ad7780";
+> +            reg = <0>;
+> +
+> +            avdd-supply      = <&vdd_supply>;
+> +            powerdown-gpios  = <&gpio0 12 GPIO_ACTIVE_HIGH>;
+> +            adi,gain-gpios   = <&gpio1  5 GPIO_ACTIVE_LOW>;
+> +            adi,filter-gpios = <&gpio2 15 GPIO_ACTIVE_LOW>;
+> +        };
+> +    };
 
 _______________________________________________
 devel mailing list
