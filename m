@@ -1,76 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 07D9A2A780
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C41B22A781
 	for <lists+driverdev-devel@lfdr.de>; Sun, 26 May 2019 03:19:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D717D86090;
-	Sun, 26 May 2019 01:19:38 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 93083882D3;
+	Sun, 26 May 2019 01:19:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 11LlrDRwd7uA; Sun, 26 May 2019 01:19:38 +0000 (UTC)
+	with ESMTP id OorjBGpHDLR7; Sun, 26 May 2019 01:19:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 342AA85FD5;
-	Sun, 26 May 2019 01:19:37 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 11BC68829D;
+	Sun, 26 May 2019 01:19:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8EE0B1BF5A6
- for <devel@linuxdriverproject.org>; Sun, 26 May 2019 01:19:33 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 992A01BF5A6
+ for <devel@linuxdriverproject.org>; Sun, 26 May 2019 01:19:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8C05885FE4
- for <devel@linuxdriverproject.org>; Sun, 26 May 2019 01:19:33 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 965BF85FE4
+ for <devel@linuxdriverproject.org>; Sun, 26 May 2019 01:19:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sD71EY8hT6P5 for <devel@linuxdriverproject.org>;
- Sun, 26 May 2019 01:19:33 +0000 (UTC)
+ with ESMTP id lDXDBOjTY4hG for <devel@linuxdriverproject.org>;
+ Sun, 26 May 2019 01:19:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-vk1-f196.google.com (mail-vk1-f196.google.com
- [209.85.221.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 129F685FD5
- for <devel@driverdev.osuosl.org>; Sun, 26 May 2019 01:19:33 +0000 (UTC)
-Received: by mail-vk1-f196.google.com with SMTP id x196so2918809vkd.9
+Received: from mail-vk1-f193.google.com (mail-vk1-f193.google.com
+ [209.85.221.193])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 027D385FD5
+ for <devel@driverdev.osuosl.org>; Sun, 26 May 2019 01:19:34 +0000 (UTC)
+Received: by mail-vk1-f193.google.com with SMTP id x196so2918814vkd.9
  for <devel@driverdev.osuosl.org>; Sat, 25 May 2019 18:19:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=b3q0HmTjK6ahA4s0OOAEIvrRZJfHHkbeVitRycuPpus=;
- b=sSdwb2vE3hxe2KGfBBFZ8AADbiEMIieWjiMGJoQIHG7mJc52DHR1BpLurF+JqTIrUf
- wZqZjB/I2vn5m37cue9TMKXOA2Ib8QIw+/3Aw7Eq1ZoM+ddfBNIe7qOyWh1+DJ5yzdrs
- 5fb5fYe9IU4Knh++Acd3RMCuK5sej+ASBGqhbNkjkAt4PyHIUOqOJJcJ/8rCL4tZNS9G
- NMQU7MfQgIbN4oOF5Go7hzISJDST2enu3rAB5NfrqckBtlBP1ok3wqk3FCwMYWncllU2
- ZdANDDC63FG+tf7X46ZUQPUSmyHL6t4kQGQ/qD1qfmrpIf0BwjhqdfFCSgfYjCJK4cha
- YBIQ==
+ bh=fnpgGOdciidlMQgT6hGzG/WRh1cBgTY3o2k478rY6UM=;
+ b=B6CTZcrYqQ0WvN3JdD0vakwRpRNKWj+RjGJljZcyiKvCZVSzNURC3Of/05ewDtjiVJ
+ n+OFBvCwoPvpTH39L4ZXCBGFcko1j2kIScpLTLBI/uulRkI9uvCrgGHE556vTp8zfgWR
+ HoGcv8XD1gIT9w+EN1KMhZg5be8FGA4STVDP5ILdvvsYkMuu0w3pTsDn27Bh+8dACfN2
+ KyLZmSVyE1VC5Xq1Hm4AgG9ZigXblFXTM1qTIECReSvArsZwvJWT0fiRXt0i/93fLzyO
+ T0+MNg4ZmuyzjHFyRJ8wsARTk3AbMiA4SS6BBmbfK68AYmOtof9nI8zln1UyAPoY5aLG
+ PPCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=b3q0HmTjK6ahA4s0OOAEIvrRZJfHHkbeVitRycuPpus=;
- b=KSIZaJ86UkGmXpkZSNgy6TQC9p9WesCLczLGP17K7EmktNbAWaExysYONhhV6p3c/f
- TaMAXo4fPEPI+DOeFzrDmBdJleRNTqLkaOxoUESVSqoIKa4SEirXWe3n7qrq9GYJRoaQ
- i5s+f3Np+uS1J6cPFcxMGmug/VR9Xp6JUNQJReM6OH79wZzbIRumBkx3k1Vxhp+00UpC
- vjwE+VekVcZCECuR7mraNXQmXEJSzUybnwF6r4xxJC0jx6C9VFoCtgMOQTZTNlyZOLjM
- lq0JmEPdohSkJYTa5o+XnhOqhhMw2H8ReVvzykPw2GrzMFFVmH0D6yEz+aObOyHTyy3b
- nbIg==
-X-Gm-Message-State: APjAAAWGSd2S5Wn7eX6fYv8nTDhzHTyfH7f3MQRnE/LC+F/5TSJ//RB2
- KzfaRVKToDXWAlOKxU+isY4=
-X-Google-Smtp-Source: APXvYqzN5vYJxuBKMcm/frPuZsw9enO5mm/TxCLy6EWcMt96/+SBh6KPAmz8Es/yD0iHCVBYEYL4Jw==
-X-Received: by 2002:a1f:2157:: with SMTP id h84mr12653417vkh.84.1558833572039; 
- Sat, 25 May 2019 18:19:32 -0700 (PDT)
+ bh=fnpgGOdciidlMQgT6hGzG/WRh1cBgTY3o2k478rY6UM=;
+ b=VGk7yeNCGiaAlE5xSg0uOGcJqZPpOBgRXGtAB1Nq9+uOqADbSEM1l1zYYEQpVlLRHN
+ R90Sqn6+YF8gKdEqqkcOI94eKTKjdGB+hPKV8R5hXSk1rcQk1N1HQWtsVnLjCIJOcbrq
+ /HQQEUgT3Dzv3lKYd9NeYneKhOm2gTm5rVopPrtxa4iTXMcNepEzd/10o6sKKQCf0Iko
+ 3dsBk7ky9SwuV4TbkMQbCG+EOrxOJHJsQHpVZE1K83JbKSQPEF0g8L+hjUeF3KPLtzmm
+ eQsdyN8AnIHR/2h/txXEtyYFJw0mD9bsSgQNhXuOMBqFZSOy3cRIFxRf/1+30f1KXQz8
+ 4FGg==
+X-Gm-Message-State: APjAAAVryNAaGFSjHuJKEqXO+clUgQp8qlr3eYCopuHvl245K7CW61/e
+ Y5yOLXxfBglLyNTWTMe25hs=
+X-Google-Smtp-Source: APXvYqyjAxACk1htIHAwqPyaPOJyLmdZFkegkv7+a/tSbTvYhykfGq3e+vdXk5No541/Mv4S27s5qQ==
+X-Received: by 2002:a1f:24c4:: with SMTP id k187mr12809681vkk.26.1558833573128; 
+ Sat, 25 May 2019 18:19:33 -0700 (PDT)
 Received: from arch-01.home (c-73-132-202-198.hsd1.md.comcast.net.
  [73.132.202.198])
- by smtp.gmail.com with ESMTPSA id 9sm4593181vkk.43.2019.05.25.18.19.31
+ by smtp.gmail.com with ESMTPSA id 9sm4593181vkk.43.2019.05.25.18.19.32
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Sat, 25 May 2019 18:19:31 -0700 (PDT)
+ Sat, 25 May 2019 18:19:32 -0700 (PDT)
 From: Geordan Neukum <gneukum1@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 2/8] staging: kpc2000: kpc_i2c: Remove pldev from i2c_device
- structure
-Date: Sun, 26 May 2019 01:18:28 +0000
-Message-Id: <21d8e5c3902c12d71c251d14d5b8607b5e25cf4c.1558832514.git.gneukum1@gmail.com>
+Subject: [PATCH 3/8] staging: kpc2000: kpc_i2c: Use BIT macro rather than
+ manual bit shifting
+Date: Sun, 26 May 2019 01:18:29 +0000
+Message-Id: <6efa564b07731fde4647a5b62c42b0f71ce82607.1558832514.git.gneukum1@gmail.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <cover.1558832514.git.gneukum1@gmail.com>
 References: <cover.1558832514.git.gneukum1@gmail.com>
@@ -94,37 +94,39 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The i2c_device structure contains a member used to stash a pointer to
-a platform_device. The driver contains no cases of this member being
-used after initialization. Remove the unnecessary struct member and
-the initialization of this member in the sole instance where the
-driver creates a variable of type: struct i2c_device.
+The FEATURES_* symbols use bit shifting of the style (1 << k) in order
+to assign a certain meaning to the value of inividual bits being set
+in the value of a given variable. Instead, use the BIT() macro in
+order to improve readability and maintain consistency with the rest
+of the kernel.
 
 Signed-off-by: Geordan Neukum <gneukum1@gmail.com>
 ---
- drivers/staging/kpc2000/kpc2000_i2c.c | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/staging/kpc2000/kpc2000_i2c.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/staging/kpc2000/kpc2000_i2c.c b/drivers/staging/kpc2000/kpc2000_i2c.c
-index 2c272ad8eca6..b2a9cda05f1b 100644
+index b2a9cda05f1b..1d100bb7c548 100644
 --- a/drivers/staging/kpc2000/kpc2000_i2c.c
 +++ b/drivers/staging/kpc2000/kpc2000_i2c.c
-@@ -36,7 +36,6 @@ MODULE_SOFTDEP("pre: i2c-dev");
- struct i2c_device {
- 	unsigned long           smba;
- 	struct i2c_adapter      adapter;
--	struct platform_device *pldev;
- 	unsigned int            features;
- };
+@@ -116,12 +116,12 @@ struct i2c_device {
+ #define PCI_DEVICE_ID_INTEL_LYNXPOINT_LP_SMBUS      0x9c22
  
-@@ -595,7 +594,6 @@ static int pi2c_probe(struct platform_device *pldev)
- 	res = platform_get_resource(pldev, IORESOURCE_MEM, 0);
- 	priv->smba = (unsigned long)ioremap_nocache(res->start, resource_size(res));
  
--	priv->pldev = pldev;
- 	pldev->dev.platform_data = priv;
+-#define FEATURE_SMBUS_PEC       (1 << 0)
+-#define FEATURE_BLOCK_BUFFER    (1 << 1)
+-#define FEATURE_BLOCK_PROC      (1 << 2)
+-#define FEATURE_I2C_BLOCK_READ  (1 << 3)
++#define FEATURE_SMBUS_PEC       BIT(0)
++#define FEATURE_BLOCK_BUFFER    BIT(1)
++#define FEATURE_BLOCK_PROC      BIT(2)
++#define FEATURE_I2C_BLOCK_READ  BIT(3)
+ /* Not really a feature, but it's convenient to handle it as such */
+-#define FEATURE_IDF             (1 << 15)
++#define FEATURE_IDF             BIT(15)
  
- 	priv->features |= FEATURE_IDF;
+ // FIXME!
+ #undef inb_p
 -- 
 2.21.0
 
