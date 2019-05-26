@@ -1,82 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 106D82A5C7
-	for <lists+driverdev-devel@lfdr.de>; Sat, 25 May 2019 19:20:15 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6719E2A77E
+	for <lists+driverdev-devel@lfdr.de>; Sun, 26 May 2019 03:19:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9D55587AF1;
-	Sat, 25 May 2019 17:20:12 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C8104882A9;
+	Sun, 26 May 2019 01:19:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UVkZ2jrnKleg; Sat, 25 May 2019 17:20:11 +0000 (UTC)
+	with ESMTP id 89Xm1PhpiOR3; Sun, 26 May 2019 01:19:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1FDEA8553C;
-	Sat, 25 May 2019 17:20:11 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4965A880A1;
+	Sun, 26 May 2019 01:19:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3D1271BF349
- for <devel@linuxdriverproject.org>; Sat, 25 May 2019 17:20:09 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 62C481BF5A6
+ for <devel@linuxdriverproject.org>; Sun, 26 May 2019 01:19:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 370E88553C
- for <devel@linuxdriverproject.org>; Sat, 25 May 2019 17:20:09 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5FA2485FE4
+ for <devel@linuxdriverproject.org>; Sun, 26 May 2019 01:19:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AX1x1n8ygbMi for <devel@linuxdriverproject.org>;
- Sat, 25 May 2019 17:20:07 +0000 (UTC)
+ with ESMTP id P6ZWYFgkbRYq for <devel@linuxdriverproject.org>;
+ Sun, 26 May 2019 01:19:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
- [209.85.215.195])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1B131873D2
- for <devel@driverdev.osuosl.org>; Sat, 25 May 2019 17:20:07 +0000 (UTC)
-Received: by mail-pg1-f195.google.com with SMTP id w22so6770732pgi.6
- for <devel@driverdev.osuosl.org>; Sat, 25 May 2019 10:20:07 -0700 (PDT)
+Received: from mail-vs1-f66.google.com (mail-vs1-f66.google.com
+ [209.85.217.66])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C653D85FD5
+ for <devel@driverdev.osuosl.org>; Sun, 26 May 2019 01:19:30 +0000 (UTC)
+Received: by mail-vs1-f66.google.com with SMTP id x8so8350078vsx.13
+ for <devel@driverdev.osuosl.org>; Sat, 25 May 2019 18:19:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=M6D54Y9cAdwUjftrKOdf9/RVXWKvemPtHhP4qHuwDPc=;
- b=oQzOmXyiswoQAHAKdEwj0INIkSyCBfdhsp23Y8yvpbSv8OJ2y/xrSB3fNaGfHTEsPE
- W494Lrnnzdh6Pc5FTSRe2bSKc3BFDH80azlAPda+MXGuMa/F+kilgPgcAX4czQo+zxvB
- hBHLzWpxzkarYsDEMelf7pCRrYIeYMZ9TPPWuGytLZci/MZU8ob3V4HFNUIZrS6t3b9q
- lR5iMBZ9pxPp8ZCSK8t31Ia/Mwd6LEjyTla4/g+T6LEvGx61Lo2vtisNEmwtlQVwU8Ej
- euRNnaTfXzldXKhMeAeihdQCFngYhzDGMutFTVlrAKwsot0DAccO2/xg51hL3PARDTjl
- KzkQ==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=PvvzFoJ2ck5oHxGDatOJeomVyH3WyqM7LMnChkSEXnI=;
+ b=UjMnDA9wE57AVcTR9JMgVNO7ZEjWaLxR5EEP8MDA8Xue4hH2E2AoY694nTZF52hiY+
+ r0up6C6XIeeIwPqQ7XSXi4O0oeE4VX64KsJ1ReMmpRrGIspUEWmg82ONk44bCLY5bLAR
+ PMPVlMgYMb00ig4GxxwnGNgPdUGrFv3Rf8skBRRt2gTxlNiXxx3aMSEvbgeiut8TPlVG
+ CGWHEQNrDA2bLmlW9bvDLWU/PTsbJOuTBxmhlH6wWpYikUTcKkyKCCXuocRGEmLV7i0s
+ S0AuvpieyEzHfqX/Wn+75eAdPu13RgYpm2XqMWt5htXxBq1tG7QzblZEwDwkaxVldFpw
+ Tr/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=M6D54Y9cAdwUjftrKOdf9/RVXWKvemPtHhP4qHuwDPc=;
- b=MdQk+IWhNp0WynET7HckMp6dfuhAOj7JOMIPWVwvouupLjR8g4GEhNk9pqBCpAdzSZ
- OXmkpyhUJDN7yp8ha8V1lqRVTc7xtCsag+X8EVL40do9EN1jpVbf8wt4WGQFEVsEmyuo
- 71rYvqwnuk+TY/kKs1vK2POUtrsqrFkdHlB2FWAFvbKDRZ/x53FqglR6RCtHZ+IStYNc
- yOUNsSAee/MiVFGofBHo9zXyBYjvDmorknCaJLScgD+UomK5HgO1NX42FvoCQesQ4b1v
- +FKWADvbV8TB7NmNkPEF0fHBAeODZhyE6YuoEflI/r+H+jSZNJnwH4E2YiqcVcfu9fxH
- Ne2Q==
-X-Gm-Message-State: APjAAAVmS2apOCzy3Llxeql9gOTgkbGfTx/HEibLPWdW2zswFyRck7HD
- Ta+ZeLKjV/CVp/dASe/ivrQ=
-X-Google-Smtp-Source: APXvYqyhqu3gDCAGd3Nfla0MLJAy5xt2tYnQsgvABDULwzrRsJo83IWwUZxnXD//ER5h4B+4Id/SBw==
-X-Received: by 2002:a63:c24c:: with SMTP id
- l12mr114354053pgg.173.1558804806540; 
- Sat, 25 May 2019 10:20:06 -0700 (PDT)
-Received: from hari-Inspiron-1545 ([183.83.92.73])
- by smtp.gmail.com with ESMTPSA id m9sm6861513pgd.23.2019.05.25.10.20.03
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 25 May 2019 10:20:05 -0700 (PDT)
-Date: Sat, 25 May 2019 22:50:00 +0530
-From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Hariprasad Kelam <hariprasad.kelam@gmail.com>,
- Puranjay Mohan <puranjay12@gmail.com>,
- Colin Ian King <colin.king@canonical.com>,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] Staging: rtl8723bs: hal: fix warning possible condition with
- no effect (if == else)
-Message-ID: <20190525172000.GA18730@hari-Inspiron-1545>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=PvvzFoJ2ck5oHxGDatOJeomVyH3WyqM7LMnChkSEXnI=;
+ b=BH+64rvDeVs8MH11ND+HRSCQHlRXzZ2IQ1p2fmh7Q9LM4Ewx79ja13/NGzX4HNVm37
+ RBO/EbeZC5Sy9wpl9JiXhzmCpOfTB2I9eVCzIilmn+tEA39nbbDmQtBY+oOJsTtNtMxI
+ jM0D/zY549G1kOcykzyYG/HwHY0SYBeqPGecnj26g+Zt+EoClEDpQv4sdrTT+Js/ACXu
+ LxlF4zP/H3x+k5Rdvvp4dZC7vMlfrUFoQKU6WXcdcdMTZZ5XjLCOjMkYcuZnAHGObhmX
+ +YmbUkOJ1TGcSp/ZChOFzrrOd46OdG+bkfOWxYN0c+f3I+oUNl0CUHKPZNWte5qwx3Dg
+ J72Q==
+X-Gm-Message-State: APjAAAUX0G9aMAeYg84jA45gYoPDHiZDlCbmF4ybNqCcAFLkVlwKtORo
+ 9DYxQSNs4SHCsB0rzv3hVTg=
+X-Google-Smtp-Source: APXvYqwLFbh0mFG92YhLGGaRgMd8hdvalz1VWjEk/C3Ybyusw24PKru80bf57vqoXtX+UOA+lwQj/A==
+X-Received: by 2002:a67:ee96:: with SMTP id n22mr26950562vsp.187.1558833569750; 
+ Sat, 25 May 2019 18:19:29 -0700 (PDT)
+Received: from arch-01.home (c-73-132-202-198.hsd1.md.comcast.net.
+ [73.132.202.198])
+ by smtp.gmail.com with ESMTPSA id 9sm4593181vkk.43.2019.05.25.18.19.27
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Sat, 25 May 2019 18:19:28 -0700 (PDT)
+From: Geordan Neukum <gneukum1@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH 0/8] staging: kpc2000: kpc_i2c: assorted driver cleanup
+Date: Sun, 26 May 2019 01:18:26 +0000
+Message-Id: <cover.1558832514.git.gneukum1@gmail.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,43 +84,38 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, Geordan Neukum <gneukum1@gmail.com>,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-this patch fixes below coccicheck warning
+This series contains some patches aimed toward:
 
-./drivers/staging/rtl8723bs/hal/odm_DIG.c:499:1-3: WARNING: possible
-condition with no effect (if == else)
+- cleaning up unused/unneeded parts of driver state
+- a couple of small style fixups
+- a couple of API changes
+- better error handling in probe()
 
-Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
----
- drivers/staging/rtl8723bs/hal/odm_DIG.c | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+in the kpc2000 i2c driver.
 
-diff --git a/drivers/staging/rtl8723bs/hal/odm_DIG.c b/drivers/staging/rtl8723bs/hal/odm_DIG.c
-index d7d87fa..70d98c5 100644
---- a/drivers/staging/rtl8723bs/hal/odm_DIG.c
-+++ b/drivers/staging/rtl8723bs/hal/odm_DIG.c
-@@ -496,13 +496,8 @@ void odm_DIGInit(void *pDM_VOID)
- 	/* To Initi BT30 IGI */
- 	pDM_DigTable->BT30_CurIGI = 0x32;
- 
--	if (pDM_Odm->BoardType & (ODM_BOARD_EXT_PA|ODM_BOARD_EXT_LNA)) {
--		pDM_DigTable->rx_gain_range_max = DM_DIG_MAX_NIC;
--		pDM_DigTable->rx_gain_range_min = DM_DIG_MIN_NIC;
--	} else {
--		pDM_DigTable->rx_gain_range_max = DM_DIG_MAX_NIC;
--		pDM_DigTable->rx_gain_range_min = DM_DIG_MIN_NIC;
--	}
-+	pDM_DigTable->rx_gain_range_max = DM_DIG_MAX_NIC;
-+	pDM_DigTable->rx_gain_range_min = DM_DIG_MIN_NIC;
- 
- }
- 
--- 
-2.7.4
+Geordan Neukum (8):
+  staging: kpc2000: kpc_i2c: Remove unused rw_sem
+  staging: kpc2000: kpc_i2c: Remove pldev from i2c_device structure
+  staging: kpc2000: kpc_i2c: Use BIT macro rather than manual bit
+    shifting
+  staging: kpc2000: kpc_i2c: Remove unnecessary consecutive newlines
+  staging: kpc2000: kpc_i2c: Use drvdata instead of platform_data
+  staging: kpc2000: kpc_i2c: fail probe if unable to get I/O resource
+  staging: kpc2000: kpc_i2c: fail probe if unable to map I/O space
+  staging: kpc2000: kpc_i2c: Use devm_* API to manage mapped I/O space
+
+ drivers/staging/kpc2000/kpc2000_i2c.c | 33 ++++++++++++---------------
+ 1 file changed, 15 insertions(+), 18 deletions(-)
+
+--
+2.21.0
 
 _______________________________________________
 devel mailing list
