@@ -2,50 +2,50 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 79CD32BD41
-	for <lists+driverdev-devel@lfdr.de>; Tue, 28 May 2019 04:32:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 33BA82BD57
+	for <lists+driverdev-devel@lfdr.de>; Tue, 28 May 2019 04:37:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6498423B9B;
-	Tue, 28 May 2019 02:32:49 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4D7642A242;
+	Tue, 28 May 2019 02:37:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1eN33NuedplI; Tue, 28 May 2019 02:32:49 +0000 (UTC)
+	with ESMTP id rrvCTT-L1Csv; Tue, 28 May 2019 02:37:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 61E9622091;
-	Tue, 28 May 2019 02:32:47 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A514029DDA;
+	Tue, 28 May 2019 02:36:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D637E1BF28E
- for <devel@linuxdriverproject.org>; Tue, 28 May 2019 02:32:44 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0431F1BF95E
+ for <devel@linuxdriverproject.org>; Tue, 28 May 2019 02:36:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D334520656
- for <devel@linuxdriverproject.org>; Tue, 28 May 2019 02:32:44 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 00F5087A80
+ for <devel@linuxdriverproject.org>; Tue, 28 May 2019 02:36:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oX8xZSYXHqqw for <devel@linuxdriverproject.org>;
- Tue, 28 May 2019 02:32:43 +0000 (UTC)
+ with ESMTP id 2yz+AvmBWzyY for <devel@linuxdriverproject.org>;
+ Tue, 28 May 2019 02:36:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga05-in.huawei.com [45.249.212.191])
- by silver.osuosl.org (Postfix) with ESMTPS id 84DB51FFC1
- for <devel@driverdev.osuosl.org>; Tue, 28 May 2019 02:32:43 +0000 (UTC)
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id A01172B9E052B8072D83;
- Tue, 28 May 2019 10:32:39 +0800 (CST)
+Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2EFF287592
+ for <devel@driverdev.osuosl.org>; Tue, 28 May 2019 02:36:57 +0000 (UTC)
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 7F76DD1DE4B16BE386D3;
+ Tue, 28 May 2019 10:36:53 +0800 (CST)
 Received: from architecture4.huawei.com (10.140.130.215) by smtp.huawei.com
  (10.3.19.212) with Microsoft SMTP Server (TLS) id 14.3.439.0; Tue, 28 May
- 2019 10:32:29 +0800
+ 2019 10:36:46 +0800
 From: Gao Xiang <gaoxiang25@huawei.com>
 To: Chao Yu <yuchao0@huawei.com>, Greg Kroah-Hartman
  <gregkh@linuxfoundation.org>, <devel@driverdev.osuosl.org>
-Subject: [PATCH 2/2] staging: erofs: fix i_blocks calculation
-Date: Tue, 28 May 2019 10:31:47 +0800
-Message-ID: <20190528023147.94117-2-gaoxiang25@huawei.com>
+Subject: [PATCH v2 2/2] staging: erofs: fix i_blocks calculation
+Date: Tue, 28 May 2019 10:36:02 +0800
+Message-ID: <20190528023602.178923-1-gaoxiang25@huawei.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190528023147.94117-1-gaoxiang25@huawei.com>
-References: <20190528023147.94117-1-gaoxiang25@huawei.com>
+In-Reply-To: <20190528023147.94117-2-gaoxiang25@huawei.com>
+References: <20190528023147.94117-2-gaoxiang25@huawei.com>
 MIME-Version: 1.0
 X-Originating-IP: [10.140.130.215]
 X-CFilter-Loop: Reflected
@@ -72,16 +72,23 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 For compressed files, i_blocks should not be calculated
 by using i_size. i_u.compressed_blocks is used instead.
 
-In addition, i_blocks is miscalculated for non-compressed
+In addition, i_blocks was miscalculated for non-compressed
 files previously, fix it as well.
 
 Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
 ---
+change log v2:
+ - fix description in commit message
+ - fix to 'inode->i_blocks = nblks << LOG_SECTORS_PER_BLOCK'
+
+Thanks,
+Gao Xiang
+
  drivers/staging/erofs/inode.c | 14 ++++++++++++--
  1 file changed, 12 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/staging/erofs/inode.c b/drivers/staging/erofs/inode.c
-index 8da144943ed6..b1b790767089 100644
+index 8da144943ed6..6e67e018784e 100644
 --- a/drivers/staging/erofs/inode.c
 +++ b/drivers/staging/erofs/inode.c
 @@ -20,6 +20,7 @@ static int read_inode(struct inode *inode, void *data)
@@ -122,7 +129,7 @@ index 8da144943ed6..b1b790767089 100644
 +		/* measure inode.i_blocks as generic filesystems */
 +		inode->i_blocks = roundup(inode->i_size, EROFS_BLKSIZ) >> 9;
 +	else
-+		inode->i_blocks = nblks >> LOG_SECTORS_PER_BLOCK;
++		inode->i_blocks = nblks << LOG_SECTORS_PER_BLOCK;
  	return 0;
  }
  
