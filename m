@@ -1,52 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9EC742C2F5
-	for <lists+driverdev-devel@lfdr.de>; Tue, 28 May 2019 11:19:04 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 933602C2FE
+	for <lists+driverdev-devel@lfdr.de>; Tue, 28 May 2019 11:19:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B4A3685FDE;
-	Tue, 28 May 2019 09:19:02 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0612187C9A;
+	Tue, 28 May 2019 09:19:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id N3ilwaL1NYW5; Tue, 28 May 2019 09:19:02 +0000 (UTC)
+	with ESMTP id xprPCBH98C5n; Tue, 28 May 2019 09:19:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E25F385F2F;
-	Tue, 28 May 2019 09:19:00 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 726A487B45;
+	Tue, 28 May 2019 09:19:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3F2821BF964
- for <devel@linuxdriverproject.org>; Tue, 28 May 2019 09:18:54 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 19FE51BF964
+ for <devel@linuxdriverproject.org>; Tue, 28 May 2019 09:19:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3999B86B0E
- for <devel@linuxdriverproject.org>; Tue, 28 May 2019 09:18:54 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 121E185FA8
+ for <devel@linuxdriverproject.org>; Tue, 28 May 2019 09:19:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id z2gStT7r-fy0 for <devel@linuxdriverproject.org>;
- Tue, 28 May 2019 09:18:53 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+ with ESMTP id prFqYl2a3EPC for <devel@linuxdriverproject.org>;
+ Tue, 28 May 2019 09:19:39 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from flexregard.icu (unknown [199.3.144.19])
- by whitealder.osuosl.org (Postfix) with ESMTP id 718E486AF2
- for <devel@linuxdriverproject.org>; Tue, 28 May 2019 09:18:53 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6A77D85F10
+ for <devel@driverdev.osuosl.org>; Tue, 28 May 2019 09:19:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail; d=flexregard.icu; 
  h=From:Date:MIME-Version:To:Subject:Message-ID:Content-Type:Content-Transfer-Encoding;
- i=thorp@flexregard.icu; bh=2gWyLld2VHtXV+9d7/E8lclolug=;
- b=JA9j/OkUstgcAWhYWdN9O6wfpGGGhMpLYX4DWJm0U1nya9IRJB2uyzZi8IrON09rxDZ6XfE+qnEW
- BN8eZZFpG6/7E2rt3uSPseVSYZh1QQDgMfmWVcKdPD5uaeo2N/h6RY++pDCLlhgI0/NEQefi3STE
- Da08zcSyosUVUenC2E0=
+ i=apo@flexregard.icu; bh=G0dShvjfpldWir9SqGrtxSdPXJw=;
+ b=1UfeyZtafbd6SlXfY046JJJwXb13FwZv7blv8FsAXArPrdCQnk1NLiwjIgzmqmWHGdUp+gd+Atl5
+ BvhBuycDj6Zb7NuxEzOR1Bw/3ztorXCMSrfUkoAZQZrR+pNoiFvgSiO9qvnENBxyHBSPZEU15nYF
+ FEnKxpPfT4ta23zZMNI=
 DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=flexregard.icu;
- b=WGLxtSe6GOvSKN9A9nfI7a8x4heL9TRagyDxD5mo97YAqpGRv4g1vIAm4Va7lB3ydx9LHWSnswIF
- dA7PNQ9WyJpAA8pIQ5ewIk8vGbd8vSzZBuSrqTV1ncWABgqfnKhGTmZh+pnzaL/UcxnyJRPcZgWG
- r/z16IcFSlgY6C7H3bE=;
-From: " Thomas" <thorp@flexregard.icu>
-Date: Tue, 28 May 2019 04:05:03 -0500
+ b=jvAHdXF2vQjkP9G51GsKjKHzF65wfV2dsCkxrdS5sbF2UyqxAurcPwRAmrVVgryVY68f2j218Vma
+ bV8lsiJqVNnCWZVl4DwhT01OJ0edfoaNXa0Rqv4Fqmsdv4Oq32EvOAV+N2VqnpxepTtmnwrMXaYX
+ uFfgZhkIndeiRLhf/RU=;
+From: " Carlos Little" <apo@flexregard.icu>
+Date: Tue, 28 May 2019 04:05:18 -0500
 MIME-Version: 1.0
-To: <devel@linuxdriverproject.org>
+To: <devel@driverdev.osuosl.org>
 Subject: Biggest product deal ever on shark tank
-Message-ID: <D7qDIyoZBNROFi2S5sWkbFoapmQT-q_3IbKf0RU4OLg.Cw9KBX5FvKerBFwJ_B9TO0TKmmNHzcYA4ewc3Qzlpmw@flexregard.icu>
+Message-ID: <YN5lxe7rMpTJYBOMoyVI-QzUDwYqM5UXGXH5_zkejIU.8_Mu6ftma6GlF4AduRhJniUnywBXPOwp4OdjSyBYTzY@flexregard.icu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,16 +85,14 @@ tter of seconds
 
 "I have never seen anything like this. . .  Adds Bill Gates.  I even starte=
 d taking this myself"
-http://www.flexregard.icu/rzbqclhg/qugulgz29551sqvdfsn/KCrqpA1EmbkcEFHjpC6y=
-YoIIVOPcBm1nknKA6JRroQg/D1kTsIywazxQJUqN8p6PX0Zj9i0c2BnkRdjbwGfD4UOdNNKwN1I=
-l_9rRDAlRgc7is8BcgAzpAHmIVjSi12wUxHzHvJDH3DHAUwsFPSBCrQk44yAwV2xUlqtTdVknst=
-W1
+http://www.flexregard.icu/yqlbljygxnm/iukwjb29550oomq/H-t5Gzdu5wUBaHuBNyL8b=
+-vzgCl9rCDn10XcTwKqOvI/IZvrFToEUrAKW7q8m8AEAHoP-Zd9KtoT1JaQz_u5x2mdWDsCUpjq=
+C5upxLskOOIObGfkkaNCslWEnOAdubDfqO-v8A9to1s17eMyAqRlPZri--D_cpvr8Sdh1MlWsHxj
 
 Tuesday: Full Report
-http://www.flexregard.icu/rzbqclhg/qugulgz29551sqvdfsn/KCrqpA1EmbkcEFHjpC6y=
-YoIIVOPcBm1nknKA6JRroQg/D1kTsIywazxQJUqN8p6PX0Zj9i0c2BnkRdjbwGfD4UOdNNKwN1I=
-l_9rRDAlRgc7is8BcgAzpAHmIVjSi12wUxHzHvJDH3DHAUwsFPSBCrQk44yAwV2xUlqtTdVknst=
-W1
+http://www.flexregard.icu/yqlbljygxnm/iukwjb29550oomq/H-t5Gzdu5wUBaHuBNyL8b=
+-vzgCl9rCDn10XcTwKqOvI/IZvrFToEUrAKW7q8m8AEAHoP-Zd9KtoT1JaQz_u5x2mdWDsCUpjq=
+C5upxLskOOIObGfkkaNCslWEnOAdubDfqO-v8A9to1s17eMyAqRlPZri--D_cpvr8Sdh1MlWsHxj
 
 
 
@@ -112,10 +110,10 @@ This is an ad-coresspondance
 
 
 go here to end
-http://www.flexregard.icu/quuymzr/1WtsnkVdTtqlUx2VwAy44kQrCBSPFswUAHD3HDJvH=
-zHxUw21iSjVImHApzAgcB8si7cgRlADRr9_lI1NwKNNdOU4DfGwbjdRknB2c0i9jZ0XP6p8NqUJ=
-QxzawyIsTk1D.gQorRJ6AKnkn1mBcPOVIIoYy6CpjHFEckbmE1ApqrCK
-9773 Brandywine Drive Phillipsburg, NJ 08865
+http://www.flexregard.icu/vewexymhb/jxHsWlM1hdS8rvpc_D--irZPlRqAyMe71s1ot9A=
+8v-OqfDbudAOnEWlsCNakkfGbOIOOksLxpu5CqjpUCsDWdm2x5u_zQaJ1TotK9dZ-PoHAEA8m8q=
+7WKArUEoTFrvZI.IvOqKwTcX01nDCr9lCgzv-b8LyNBuHaBUw5udzG5t-H
+538 Cherry Rd. Schaumburg, IL 60193
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
