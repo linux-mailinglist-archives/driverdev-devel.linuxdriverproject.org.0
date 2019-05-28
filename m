@@ -1,54 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1C1F02BDBA
-	for <lists+driverdev-devel@lfdr.de>; Tue, 28 May 2019 05:28:25 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1D7D52BDBC
+	for <lists+driverdev-devel@lfdr.de>; Tue, 28 May 2019 05:28:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8819087B6D;
-	Tue, 28 May 2019 03:28:23 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 13DAD85F8E;
+	Tue, 28 May 2019 03:28:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rKK5IDuN7pdA; Tue, 28 May 2019 03:28:23 +0000 (UTC)
+	with ESMTP id kMD4VAU4FK6o; Tue, 28 May 2019 03:28:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 049B287B4D;
-	Tue, 28 May 2019 03:28:23 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A946585F4B;
+	Tue, 28 May 2019 03:28:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 364FC1BF86C
- for <devel@linuxdriverproject.org>; Tue, 28 May 2019 03:28:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 319591BF86C
+ for <devel@linuxdriverproject.org>; Tue, 28 May 2019 03:28:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 306FE847B3
- for <devel@linuxdriverproject.org>; Tue, 28 May 2019 03:28:21 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 2C2DE85F4B
+ for <devel@linuxdriverproject.org>; Tue, 28 May 2019 03:28:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VeYUS5x_5Hay for <devel@linuxdriverproject.org>;
- Tue, 28 May 2019 03:28:20 +0000 (UTC)
+ with ESMTP id eQc9e7E80ErC for <devel@linuxdriverproject.org>;
+ Tue, 28 May 2019 03:28:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga05-in.huawei.com [45.249.212.191])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 9F52D84789
- for <devel@driverdev.osuosl.org>; Tue, 28 May 2019 03:28:20 +0000 (UTC)
-Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 20D7D620008671148E03;
- Tue, 28 May 2019 11:28:17 +0800 (CST)
+Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9DAEA85F45
+ for <devel@driverdev.osuosl.org>; Tue, 28 May 2019 03:28:47 +0000 (UTC)
+Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 08070316052553E07046;
+ Tue, 28 May 2019 11:28:45 +0800 (CST)
 Received: from [10.134.22.195] (10.134.22.195) by smtp.huawei.com
- (10.3.19.214) with Microsoft SMTP Server (TLS) id 14.3.439.0; Tue, 28 May
- 2019 11:28:09 +0800
-Subject: Re: [PATCH v3 1/2] staging: erofs: support statx
+ (10.3.19.208) with Microsoft SMTP Server (TLS) id 14.3.439.0; Tue, 28 May
+ 2019 11:28:37 +0800
+Subject: Re: [PATCH v3 2/2] staging: erofs: fix i_blocks calculation
 To: Gao Xiang <gaoxiang25@huawei.com>, Greg Kroah-Hartman
  <gregkh@linuxfoundation.org>, <devel@driverdev.osuosl.org>
 References: <20190528023147.94117-2-gaoxiang25@huawei.com>
  <20190528031943.239665-1-gaoxiang25@huawei.com>
+ <20190528031943.239665-2-gaoxiang25@huawei.com>
 From: Chao Yu <yuchao0@huawei.com>
-Message-ID: <c6d53659-02c3-26dc-e97e-daf3dd8afbf1@huawei.com>
-Date: Tue, 28 May 2019 11:28:09 +0800
+Message-ID: <acaed8f7-1449-6509-d7c3-a9e106305224@huawei.com>
+Date: Tue, 28 May 2019 11:28:37 +0800
 User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
  Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20190528031943.239665-1-gaoxiang25@huawei.com>
+In-Reply-To: <20190528031943.239665-2-gaoxiang25@huawei.com>
 Content-Language: en-US
 X-Originating-IP: [10.134.22.195]
 X-CFilter-Loop: Reflected
@@ -73,9 +74,11 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 On 2019/5/28 11:19, Gao Xiang wrote:
-> statx() has already been supported in commit a528d35e8bfc
-> ("statx: Add a system call to make enhanced file info available"),
-> user programs can get more useful attributes.
+> For compressed files, i_blocks should not be calculated
+> by using i_size. use i_u.compressed_blocks instead.
+> 
+> In addition, i_blocks was miscalculated for non-compressed
+> files previously, fix it as well.
 > 
 > Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
 
