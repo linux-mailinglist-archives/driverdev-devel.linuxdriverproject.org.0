@@ -2,76 +2,72 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 472582CDA2
-	for <lists+driverdev-devel@lfdr.de>; Tue, 28 May 2019 19:32:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B12942D2C7
+	for <lists+driverdev-devel@lfdr.de>; Wed, 29 May 2019 02:19:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 38D2687820;
-	Tue, 28 May 2019 17:32:08 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E8E0587D86;
+	Wed, 29 May 2019 00:19:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eiLVMjxXG27c; Tue, 28 May 2019 17:32:08 +0000 (UTC)
+	with ESMTP id H65APHIJs6QU; Wed, 29 May 2019 00:19:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 65BB587A80;
-	Tue, 28 May 2019 17:32:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 719CD87D3D;
+	Wed, 29 May 2019 00:19:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D4F831BF2B8
- for <devel@linuxdriverproject.org>; Tue, 28 May 2019 17:32:05 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id A0B421BF983
+ for <devel@linuxdriverproject.org>; Wed, 29 May 2019 00:19:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C9B72873DA
- for <devel@linuxdriverproject.org>; Tue, 28 May 2019 17:32:05 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 97DB386146
+ for <devel@linuxdriverproject.org>; Wed, 29 May 2019 00:19:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BqJvi7MLSnNN for <devel@linuxdriverproject.org>;
- Tue, 28 May 2019 17:32:05 +0000 (UTC)
+ with ESMTP id g9iVIfh5dwNn for <devel@linuxdriverproject.org>;
+ Wed, 29 May 2019 00:19:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f194.google.com (mail-oi1-f194.google.com
- [209.85.167.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5D2ED87A5E
- for <devel@driverdev.osuosl.org>; Tue, 28 May 2019 17:32:05 +0000 (UTC)
-Received: by mail-oi1-f194.google.com with SMTP id y124so14946689oiy.3
- for <devel@driverdev.osuosl.org>; Tue, 28 May 2019 10:32:05 -0700 (PDT)
+Received: from mail-lj1-f196.google.com (mail-lj1-f196.google.com
+ [209.85.208.196])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9739B85CA1
+ for <devel@driverdev.osuosl.org>; Wed, 29 May 2019 00:19:07 +0000 (UTC)
+Received: by mail-lj1-f196.google.com with SMTP id q16so621639ljj.8
+ for <devel@driverdev.osuosl.org>; Tue, 28 May 2019 17:19:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=69Lkov6l/YB/g8drnt7LyM8Q4caLCPlGFpwyFiDm+Fo=;
- b=VYeNvbuDqk8y3j69S5xOU3CpUaGT4a0Z6qnHUepKh733tlWbbDhfymXdNShIk149Lw
- rRlczBX52L6p2zhDLux8TM+hsLjA4wc7XacC0mjdPvsGN6DmCCqPDG44VTfXvrXiuP+D
- Pgq8ci5GHN7n/OwXsNcD+RxTofVdtGqPGrurJ9Idyrt+rDVriKAc0shCOVgPKBL8WxnC
- zlEA/FLewbomDR3+r4OxAk7YZn88Ph3/vOau5KwUqxtCULuvbNue33gSpqvPzLiEu5Jm
- J4jKkjVh7K1DWni1JjPf1YITzZTTv/FJ/dIfFOQIofs+Wl+CyXAEmAkqi6FGWKjhGWii
- bJ5w==
+ :cc; bh=BtTsiX9fLP1ilIjEBEUD3JJBC+K61VnyY/gr7l2/6Ws=;
+ b=NnONe+izAdPLfKUy8Po++z1ngR/rXmo0Qsl+xByZnGpvVdobMUqZHmA5KwfW7WvWn+
+ 3ANkzwb2vuN5lZMvzrHLkb+z4R+UVi8444eOuoN5YW4HeBzb8Z2ZJAWD69jp6XUnHar1
+ +qNsraJtJTttKc32/+WD3i0TVrlFXtFKXk+jc37zgkA+cqBcCfGpqCAMo35/NJ4l2bsd
+ O12WI/FQQAfYCWItMDxaZTQFN3AKY88Rif42fUDNgbOVSGUJge4tIMx2SCB0GioKjJXY
+ 9eQvgJudtOsEagr/IGzUNyv1kzMbDwpA4Ln4bQ/v5PcIdgTOKT6D+P/I4DS1JyUEU/X+
+ T/FA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=69Lkov6l/YB/g8drnt7LyM8Q4caLCPlGFpwyFiDm+Fo=;
- b=DwhqiLfV3zrbDElHSsFGDZr+pEF0hQJfkiVqNLe+0g3qYVhpI2ICxs5M+at3hnsjJ/
- om1n6j1A70CrYoSKg0XH5z6pCWK6M3wBQxH/JcrSeDirSb4QWdAs7k5EsaA69PbkYajp
- rRXy6v1QsGtHFQCKbyrXe5t+fhYbOzI6U28ZUxt0X18Sf3/9HDI6tiNAXO3iVZz3UEol
- Ei/36W7gX52NMONLkGPdeKJB5I7w5uBDqOSmeqKkZXMZVrhqy6sMnrH69B+wKgxxfiQh
- hz3c7O0vF5pKc8am3Imk+MlKiISKIBr9kyFFZP+tR+jAZNgamgPkbn6TwsAzkpAi+ILr
- q7zw==
-X-Gm-Message-State: APjAAAUuJGXmTlimzAU/emSAmD1dTGTYKt/jJ2BmCBjtnK0nM75PN5oh
- 64BFH7dVh3sct32OZCFToWMlCdAl/xWOL/6w6PI=
-X-Google-Smtp-Source: APXvYqxn+HNU/x1cDWahCiYdLUAroXji3RhlAzBTq6bh/v0lg1ZTn6o1Cg3i0g6ncRZ1i0tVs9UbPO9+4sAfRzBn7SU=
-X-Received: by 2002:aca:580b:: with SMTP id m11mr3252148oib.169.1559064724380; 
- Tue, 28 May 2019 10:32:04 -0700 (PDT)
+ bh=BtTsiX9fLP1ilIjEBEUD3JJBC+K61VnyY/gr7l2/6Ws=;
+ b=ruyHtOi0nWwu4Dw1WmVeSZeo04HiWvQ5BEKNeSCblJX/0hBkhD7zw7w5Dtstpnsd8r
+ FKU0NXlrhzuH/Bmt095PFSWdrmgY1M5SQvQbl+18XyjaqRB7iDuCK8YSzpYDjjRsO45x
+ eqx4h9S2u4PPnqQpHpBl4j6i3fG0WFyxR+GIeMehaooagzZwOZqNdwyFtQmvyqVXYs66
+ fXOVb6QAVLRw8nNLMktKPimdZYnjyp2DvsljNkxLsVCdrv2t2QVSqyffyfbhO2stzK6I
+ 1cI+ieEurOPS38jdeZjYnyJpDBCkeKJhfhir9iM164GoDbY64SlQ1Po8vw7hDPfMilx/
+ vnYA==
+X-Gm-Message-State: APjAAAX0xpBfq9QEgYqKROdeZqvxMJKIA98sTsD7+euKp6LJdl+Tz3uN
+ l7NN+jMx2nmvQzZfnLU9XBLwj/MamBDezD2xfH4=
+X-Google-Smtp-Source: APXvYqwplNqkarrINTuU9IxbWBiqARqN45Gt9GkeoXDEmXe+Phow9DEhwG8Xi+THEJBYMpPcbgnAI2uVS2yJev3oqO0=
+X-Received: by 2002:a2e:9b54:: with SMTP id o20mr4446799ljj.95.1559089145667; 
+ Tue, 28 May 2019 17:19:05 -0700 (PDT)
 MIME-Version: 1.0
-References: <CAGngYiU=uFjJFEoiHFUr+ab73sJksaTBkfxvQwL1X6WJnhchqw@mail.gmail.com>
- <20190528142912.13224-1-yuehaibing@huawei.com>
- <CAGngYiW_hCDPRWao+389BfUH_2sP4S6pL+gteim=kDrnb9UDzQ@mail.gmail.com>
- <3f4c1d4c-656b-8266-38c4-3f7c36a2bd7e@huawei.com>
- <20190528155956.GA21964@kroah.com>
-In-Reply-To: <20190528155956.GA21964@kroah.com>
-From: Sven Van Asbroeck <thesven73@gmail.com>
-Date: Tue, 28 May 2019 13:31:53 -0400
-Message-ID: <CAGngYiW8Y3jt9ikb5e9LtfSkquZquLgB5iSRVXyka9fUXLrqYQ@mail.gmail.com>
-Subject: Re: [PATCH v2 -next] staging: fieldbus: Fix build error without
- CONFIG_REGMAP_MMIO
-To: Greg KH <gregkh@linuxfoundation.org>
+References: <20190522004655.20138-1-fabiolima39@gmail.com>
+ <20190522094130.GS31203@kadam>
+In-Reply-To: <20190522094130.GS31203@kadam>
+From: Fabio Lima <fabiolima39@gmail.com>
+Date: Tue, 28 May 2019 21:18:47 -0300
+Message-ID: <CAAM19CGt1UoAXgQWoO85k7UQ8r3rBx6S7-po1aC5OfQZbcO55Q@mail.gmail.com>
+Subject: Re: [PATCH] staging: rtl8723bs: Add missing blank lines
+To: Dan Carpenter <dan.carpenter@oracle.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,25 +80,98 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, YueHaibing <yuehaibing@huawei.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ lkcamp@lists.libreplanetbr.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, May 28, 2019 at 12:00 PM Greg KH <gregkh@linuxfoundation.org> wrote:
+Em qua, 22 de mai de 2019 06:41, Dan Carpenter
+<dan.carpenter@oracle.com> escreveu:
 >
-> You all need a better email client, mutt handles this just fine, it's
-> not a problem on my system with my workflow at all :)
+> On Tue, May 21, 2019 at 09:46:55PM -0300, Fabio Lima wrote:
+> > This patch resolves the following warning from checkpatch.pl
+> > WARNING: Missing a blank line after declarations
+> >
+> > Signed-off-by: Fabio Lima <fabiolima39@gmail.com>
+> > ---
+> >  drivers/staging/rtl8723bs/core/rtw_debug.c | 2 ++
+> >  1 file changed, 2 insertions(+)
+> >
+> > diff --git a/drivers/staging/rtl8723bs/core/rtw_debug.c b/drivers/staging/rtl8723bs/core/rtw_debug.c
+> > index 9f8446ccf..853362381 100644
+> > --- a/drivers/staging/rtl8723bs/core/rtw_debug.c
+> > +++ b/drivers/staging/rtl8723bs/core/rtw_debug.c
+> > @@ -382,6 +382,7 @@ ssize_t proc_set_roam_tgt_addr(struct file *file, const char __user *buffer, siz
+> >       if (buffer && !copy_from_user(tmp, buffer, sizeof(tmp))) {
+> >
+> >               int num = sscanf(tmp, "%hhx:%hhx:%hhx:%hhx:%hhx:%hhx", addr, addr+1, addr+2, addr+3, addr+4, addr+5);
+> > +
+> >               if (num == 6)
+> >                       memcpy(adapter->mlmepriv.roam_tgt_addr, addr, ETH_ALEN);
+> >
+>
+> I'm sorry but this function is really such nonsense.  Can you send a
+> patch to re-write it instead?
+>
+> drivers/staging/rtl8723bs/core/rtw_debug.c
+>    371  ssize_t proc_set_roam_tgt_addr(struct file *file, const char __user *buffer, size_t count, loff_t *pos, void *data)
+>    372  {
+>    373          struct net_device *dev = data;
+>    374          struct adapter *adapter = (struct adapter *)rtw_netdev_priv(dev);
+>    375
+>    376          char tmp[32];
+>    377          u8 addr[ETH_ALEN];
+>    378
+>    379          if (count < 1)
+>
+> This check is silly.  I guess the safest thing is to change it to:
+>                 if (count < sizeof(tmp))
+>
+>    380                  return -EFAULT;
+>
+> It should be return -EINVAL;
+>
+>    381
+>    382          if (buffer && !copy_from_user(tmp, buffer, sizeof(tmp))) {
+>
+> Remove the check for if the user passes a NULL buffer, because that's
+> already handled in copy_from_user().  Return -EFAULT if copy_from_user()
+> fails.
+>
+>         if (copy_from_user(tmp, buffer, sizeof(tmp)))
+>                 return -EFAULT;
+>
+>
+>    383
+>
+> Extra blank line.
+>
+>    384                  int num = sscanf(tmp, "%hhx:%hhx:%hhx:%hhx:%hhx:%hhx", addr, addr+1, addr+2, addr+3, addr+4, addr+5);
+>
+> You will need to move the num declaration to the start of the function.
+>
+>    385                  if (num == 6)
+>    386                          memcpy(adapter->mlmepriv.roam_tgt_addr, addr, ETH_ALEN);
+>
+> If num != 6 then return -EINVAL;
+>
+>    387
+>    388                  DBG_871X("set roam_tgt_addr to "MAC_FMT"\n", MAC_ARG(adapter->mlmepriv.roam_tgt_addr));
+>    389          }
+>    390
+>    391          return count;
+>    392  }
+>
+> regards,
+> dan carpenter
 
-Argh, my bad. I use Google Mail -> Download Message, which does
-appear to mess up the endings. Luckily, dos2unix fixes it up just fine.
+Thanks for your feedback.
+This is my first patch and I will send the second patch with
+modifications that you suggest.
 
-For the v2 patch:
-Reviewed-by: Sven Van Asbroeck <TheSven73@gmail.com>
-
-Thank you YueHaibing.
+Fabio Lima
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
