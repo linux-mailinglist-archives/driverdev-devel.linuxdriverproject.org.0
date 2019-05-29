@@ -1,76 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7C5C92E587
-	for <lists+driverdev-devel@lfdr.de>; Wed, 29 May 2019 21:42:39 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id CC6072E8F9
+	for <lists+driverdev-devel@lfdr.de>; Thu, 30 May 2019 01:24:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 24E2B864EC;
-	Wed, 29 May 2019 19:42:37 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3D97620343;
+	Wed, 29 May 2019 23:24:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id m986F49fwhOb; Wed, 29 May 2019 19:42:36 +0000 (UTC)
+	with ESMTP id HCkx7bOzXYQP; Wed, 29 May 2019 23:24:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 071A78647E;
-	Wed, 29 May 2019 19:42:35 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BA6702033A;
+	Wed, 29 May 2019 23:24:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 576921BF2B3
- for <devel@linuxdriverproject.org>; Wed, 29 May 2019 19:42:33 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id CBA8C1BF580
+ for <devel@linuxdriverproject.org>; Wed, 29 May 2019 23:24:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 51CA787FA4
- for <devel@linuxdriverproject.org>; Wed, 29 May 2019 19:42:33 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id C28B785137
+ for <devel@linuxdriverproject.org>; Wed, 29 May 2019 23:24:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LPh4lK15pou5 for <devel@linuxdriverproject.org>;
- Wed, 29 May 2019 19:42:32 +0000 (UTC)
+ with ESMTP id RUMcK-GYHHvr for <devel@linuxdriverproject.org>;
+ Wed, 29 May 2019 23:24:05 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lj1-f193.google.com (mail-lj1-f193.google.com
- [209.85.208.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 9CFCD87F93
- for <devel@driverdev.osuosl.org>; Wed, 29 May 2019 19:42:31 +0000 (UTC)
-Received: by mail-lj1-f193.google.com with SMTP id w1so3740193ljw.0
- for <devel@driverdev.osuosl.org>; Wed, 29 May 2019 12:42:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nikanor-nu.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=15FB7VWNTS09jOnKS7kZ1lxWffgJJH8elfqUbjMzIek=;
- b=W5j4zwKb9VnXxdkr6VCOXw01H3xP+Drolc6weYEBYi1SSl5fMA7WPay5KzfRe27+nS
- UUEGUKnMBYlAP193V62aNMxwa5A3IixqGZgYlGUkLBXwGnyiY5j49KX9T56RfwvTIGFm
- aBb9oOYAvZdEXYPatPJnirigsmFJ6zKcKNwT2x54Iu4M2JQxSKBI6FJU9Y5InZTZ5DbD
- StAUqmYTcHH0Kd5nnC24XL3M71Ibf3uCk5FXWCutOspBG1/WD7Z2XAI/r9gEo+kcd5lc
- Y+royAcZQ1UzR9jXbjFmHyIc93mySXzVBWNZZQ9m5KyLgPHeeBhzlL7LMIl7aDBjDRQY
- SYUQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=15FB7VWNTS09jOnKS7kZ1lxWffgJJH8elfqUbjMzIek=;
- b=Mj1m7uuDDl5GgHVb/bK4lRZkcOiNbkcH1FHnBwFp1i5Ap13aVeX8ZyIfTMfx3bP1NK
- /AryEXPof3WLRThJI8Cct88xKWSP7DmxvDjT8nnixITrQPIl/VhYszEnrGUUrY2nNVPD
- e9p2ZDa1bRPQMmr3Xem42D1kbkfbjt37AxpBdKh6EX58dIqVoXwYf+vvMPZbggD/eyMz
- hSnh6JWbVeOOAgIgACSitVkFNAfG4Fi69V8gqem5tfBjAosGeerkBUEbnPceSzX6xqK2
- dwq6MOHZ3S4RYgzcBlB3p2hauU5wAY/PFkDaZMoiM923tpKTrQ4yWIi1riB/H1LPruv2
- iCEw==
-X-Gm-Message-State: APjAAAXL9DU7kAnMFiHY8Kwa4MDELuUPdEpB1DUszAAmLjVqGOOQun67
- JiyCa1bVVkuKop/RIknAom2YnA==
-X-Google-Smtp-Source: APXvYqxA0lxab6Nu0SnqoWH9AnjYE6KgXIbGd4+maWc2k1YB44uaXwmkoYZBDi+B/giCmDI6RB4xUg==
-X-Received: by 2002:a2e:8587:: with SMTP id b7mr59051396lji.101.1559158949520; 
- Wed, 29 May 2019 12:42:29 -0700 (PDT)
-Received: from dev.nikanor.nu (78-72-133-4-no161.tbcn.telia.com. [78.72.133.4])
- by smtp.gmail.com with ESMTPSA id l18sm29731lja.94.2019.05.29.12.42.27
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 29 May 2019 12:42:28 -0700 (PDT)
-From: =?UTF-8?q?Simon=20Sandstr=C3=B6m?= <simon@nikanor.nu>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: kpc2000: replace bogus variable name in core.c
-Date: Wed, 29 May 2019 21:42:22 +0200
-Message-Id: <20190529194222.9048-1-simon@nikanor.nu>
-X-Mailer: git-send-email 2.20.1
+Received: from bombadil.infradead.org (bombadil.infradead.org
+ [198.137.202.133])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9B8B48487A
+ for <devel@driverdev.osuosl.org>; Wed, 29 May 2019 23:24:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=bombadil.20170209; h=Sender:Content-Transfer-Encoding:
+ MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=StJ6LM8sQHkYI5UThzShneAjra5wi5bo/RYRsdxPQsA=; b=V2B9Vgs83dRLjIuQnd2C2vgYZ
+ +JgyOXeO1GKHOK9c4tRnNUqThik6tzysID2WPnKRr+36Nqy1H2ECRX9ShWnHkjcDarRRE36sMjLp8
+ rMBiNxdP14bOP1wi/jaweQN4P3parh4up8rfOPsYIJGMzClSMcNhqm2YUZ7FfQaCciCjPJlpLJJ9c
+ aeXT61eHnnOWKaxRn+HXRc3LwC2Y8Shpt7KozKcXuJxu6PITTqtbQgKa7rv4JBRtqJqIYr0SPtFcn
+ /5RDAzsKEfsB7oXgNPBlX7TDbPq/0Xg+hPhZkg4J+5oeanlc8QNxz2G9sF0j0yZAp7oTlogcPh66P
+ SAaTMxt+g==;
+Received: from 177.132.232.81.dynamic.adsl.gvt.net.br ([177.132.232.81]
+ helo=bombadil.infradead.org)
+ by bombadil.infradead.org with esmtpsa (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hW7vL-0005Rx-II; Wed, 29 May 2019 23:23:59 +0000
+Received: from mchehab by bombadil.infradead.org with local (Exim 4.92)
+ (envelope-from <mchehab@bombadil.infradead.org>)
+ id 1hW7vI-0007wg-Fn; Wed, 29 May 2019 20:23:56 -0300
+From: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+To: Linux Doc Mailing List <linux-doc@vger.kernel.org>
+Subject: [PATCH 00/22] Some documentation fixes
+Date: Wed, 29 May 2019 20:23:31 -0300
+Message-Id: <cover.1559171394.git.mchehab+samsung@kernel.org>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -84,46 +70,153 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- dan.carpenter@oracle.com, simon@nikanor.nu
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: alsa-devel@alsa-project.org, kvm@vger.kernel.org, linux-pci@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
+ linux-mm@kvack.org, keyrings@vger.kernel.org, linux-mtd@lists.infradead.org,
+ linux-i2c@vger.kernel.org, linux-kselftest@vger.kernel.org,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, devel@driverdev.osuosl.org,
+ Jonathan Corbet <corbet@lwn.net>, x86@kernel.org, linux-acpi@vger.kernel.org,
+ xen-devel@lists.xenproject.org, devicetree@vger.kernel.org,
+ linux-pm@vger.kernel.org, Mauro Carvalho Chehab <mchehab@infradead.org>,
+ linux-gpio@vger.kernel.org, linux-amlogic@lists.infradead.org,
+ bpf@vger.kernel.org, devel@acpica.org, patches@opensource.cirrus.com,
+ linux-kernel@vger.kernel.org, linux-security-module@vger.kernel.org,
+ netdev@vger.kernel.org, linux-integrity@vger.kernel.org,
+ linuxppc-dev@lists.ozlabs.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-InN0cnVjdCBrcDIwMDBfcmVncyB0ZW1wIiBoYXMgbm90aGluZyB0byBkbyB3aXRoIHRlbXBlcmF0
-dXJlcywgc28KcmVwbGFjZSBpdCB3aXRoIHRoZSBtb3JlIHByb3BlciBuYW1lICJyZWdzIi4KClNp
-Z25lZC1vZmYtYnk6IFNpbW9uIFNhbmRzdHLDtm0gPHNpbW9uQG5pa2Fub3IubnU+Ci0tLQogZHJp
-dmVycy9zdGFnaW5nL2twYzIwMDAva3BjMjAwMC9jb3JlLmMgfCAyNiArKysrKysrKysrKysrLS0t
-LS0tLS0tLS0tLQogMSBmaWxlIGNoYW5nZWQsIDEzIGluc2VydGlvbnMoKyksIDEzIGRlbGV0aW9u
-cygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9rcGMyMDAwL2twYzIwMDAvY29yZS5j
-IGIvZHJpdmVycy9zdGFnaW5nL2twYzIwMDAva3BjMjAwMC9jb3JlLmMKaW5kZXggNDExMDAzMmQw
-Y2JiLi4xMWFjNTdlMzFkNDUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy9rcGMyMDAwL2tw
-YzIwMDAvY29yZS5jCisrKyBiL2RyaXZlcnMvc3RhZ2luZy9rcGMyMDAwL2twYzIwMDAvY29yZS5j
-CkBAIC0zMTQsMjQgKzMxNCwyNCBAQCBzdGF0aWMgbG9uZyBrcDIwMDBfY2Rldl9pb2N0bChzdHJ1
-Y3QgZmlsZSAqZmlscCwgdW5zaWduZWQgaW50IGlvY3RsX251bSwKIAljYXNlIEtQMjAwMF9JT0NU
-TF9HRVRfUENJRV9FUlJPUl9SRUc6ICAgICAgIHJldHVybiByZWFkcShwY2FyZC0+c3lzaW5mb19y
-ZWdzX2Jhc2UgKyBSRUdfUENJRV9FUlJPUl9DT1VOVCk7CiAKIAljYXNlIEtQMjAwMF9JT0NUTF9H
-RVRfRVZFUllUSElORzogewotCQlzdHJ1Y3Qga3AyMDAwX3JlZ3MgdGVtcDsKKwkJc3RydWN0IGtw
-MjAwMF9yZWdzIHJlZ3M7CiAJCWludCByZXQ7CiAKLQkJbWVtc2V0KCZ0ZW1wLCAwLCBzaXplb2Yo
-dGVtcCkpOwotCQl0ZW1wLmNhcmRfaWQgPSBwY2FyZC0+Y2FyZF9pZDsKLQkJdGVtcC5idWlsZF92
-ZXJzaW9uID0gcGNhcmQtPmJ1aWxkX3ZlcnNpb247Ci0JCXRlbXAuYnVpbGRfZGF0ZXN0YW1wID0g
-cGNhcmQtPmJ1aWxkX2RhdGVzdGFtcDsKLQkJdGVtcC5idWlsZF90aW1lc3RhbXAgPSBwY2FyZC0+
-YnVpbGRfdGltZXN0YW1wOwotCQl0ZW1wLmh3X3JldiA9IHBjYXJkLT5oYXJkd2FyZV9yZXZpc2lv
-bjsKLQkJdGVtcC5zc2lkID0gcGNhcmQtPnNzaWQ7Ci0JCXRlbXAuZGRuYSA9IHBjYXJkLT5kZG5h
-OwotCQl0ZW1wLmNwbGRfcmVnID0gcmVhZHEocGNhcmQtPnN5c2luZm9fcmVnc19iYXNlICsgUkVH
-X0NQTERfQ09ORklHKTsKLQotCQlyZXQgPSBjb3B5X3RvX3VzZXIoKHZvaWQqKWlvY3RsX3BhcmFt
-LCAodm9pZCopJnRlbXAsIHNpemVvZih0ZW1wKSk7CisJCW1lbXNldCgmcmVncywgMCwgc2l6ZW9m
-KHJlZ3MpKTsKKwkJcmVncy5jYXJkX2lkID0gcGNhcmQtPmNhcmRfaWQ7CisJCXJlZ3MuYnVpbGRf
-dmVyc2lvbiA9IHBjYXJkLT5idWlsZF92ZXJzaW9uOworCQlyZWdzLmJ1aWxkX2RhdGVzdGFtcCA9
-IHBjYXJkLT5idWlsZF9kYXRlc3RhbXA7CisJCXJlZ3MuYnVpbGRfdGltZXN0YW1wID0gcGNhcmQt
-PmJ1aWxkX3RpbWVzdGFtcDsKKwkJcmVncy5od19yZXYgPSBwY2FyZC0+aGFyZHdhcmVfcmV2aXNp
-b247CisJCXJlZ3Muc3NpZCA9IHBjYXJkLT5zc2lkOworCQlyZWdzLmRkbmEgPSBwY2FyZC0+ZGRu
-YTsKKwkJcmVncy5jcGxkX3JlZyA9IHJlYWRxKHBjYXJkLT5zeXNpbmZvX3JlZ3NfYmFzZSArIFJF
-R19DUExEX0NPTkZJRyk7CisKKwkJcmV0ID0gY29weV90b191c2VyKCh2b2lkKilpb2N0bF9wYXJh
-bSwgKHZvaWQqKSZyZWdzLCBzaXplb2YocmVncykpOwogCQlpZiAocmV0KQogCQkJcmV0dXJuIC1F
-RkFVTFQ7CiAKLQkJcmV0dXJuIHNpemVvZih0ZW1wKTsKKwkJcmV0dXJuIHNpemVvZihyZWdzKTsK
-IAkJfQogCiAJZGVmYXVsdDoKLS0gCjIuMjAuMQoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVy
-cHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+Fix several warnings and broken links.
+
+This series was generated against linux-next, but was rebased to be applied at
+docs-next. It should apply cleanly on either tree.
+
+There's a git tree with all of them applied on the top of docs/docs-next
+at:
+
+https://git.linuxtv.org/mchehab/experimental.git/log/?h=fix_doc_links_v2
+
+
+Mauro Carvalho Chehab (21):
+  ABI: sysfs-devices-system-cpu: point to the right docs
+  isdn: mISDN: remove a bogus reference to a non-existing doc
+  dt: fix broken references to nand.txt
+  docs: zh_CN: get rid of basic_profiling.txt
+  doc: it_IT: fix reference to magic-number.rst
+  docs: mm: numaperf.rst: get rid of a build warning
+  docs: bpf: get rid of two warnings
+  docs: mark orphan documents as such
+  docs: amd-memory-encryption.rst get rid of warnings
+  gpu: amdgpu: fix broken amdgpu_dma_buf.c references
+  gpu: i915.rst: Fix references to renamed files
+  docs: zh_CN: avoid duplicate citation references
+  docs: vm: hmm.rst: fix some warnings
+  docs: it: license-rules.rst: get rid of warnings
+  docs: gpio: driver.rst: fix a bad tag
+  docs: soundwire: locking: fix tags for a code-block
+  docs: security: trusted-encrypted.rst: fix code-block tag
+  docs: security: core.rst: Fix several warnings
+  docs: net: dpio-driver.rst: fix two codeblock warnings
+  docs: net: sja1105.rst: fix table format
+  docs: fix broken documentation links
+
+Otto Sabart (1):
+  mfd: madera: Fix bad reference to pinctrl.txt file
+
+ .../ABI/testing/sysfs-devices-system-cpu      |  3 +-
+ Documentation/accelerators/ocxl.rst           |  2 +
+ Documentation/acpi/dsd/leds.txt               |  2 +-
+ .../admin-guide/kernel-parameters.rst         |  6 +-
+ .../admin-guide/kernel-parameters.txt         | 16 ++---
+ Documentation/admin-guide/mm/numaperf.rst     |  5 +-
+ Documentation/admin-guide/ras.rst             |  2 +-
+ Documentation/arm/stm32/overview.rst          |  2 +
+ .../arm/stm32/stm32f429-overview.rst          |  2 +
+ .../arm/stm32/stm32f746-overview.rst          |  2 +
+ .../arm/stm32/stm32f769-overview.rst          |  2 +
+ .../arm/stm32/stm32h743-overview.rst          |  2 +
+ .../arm/stm32/stm32mp157-overview.rst         |  2 +
+ Documentation/bpf/btf.rst                     |  2 +
+ .../bindings/mtd/amlogic,meson-nand.txt       |  2 +-
+ .../devicetree/bindings/mtd/gpmc-nand.txt     |  2 +-
+ .../devicetree/bindings/mtd/marvell-nand.txt  |  2 +-
+ .../devicetree/bindings/mtd/tango-nand.txt    |  2 +-
+ .../devicetree/bindings/net/fsl-enetc.txt     |  7 +-
+ .../bindings/pci/amlogic,meson-pcie.txt       |  2 +-
+ .../regulator/qcom,rpmh-regulator.txt         |  2 +-
+ .../devicetree/booting-without-of.txt         |  2 +-
+ Documentation/driver-api/gpio/board.rst       |  2 +-
+ Documentation/driver-api/gpio/consumer.rst    |  2 +-
+ Documentation/driver-api/gpio/driver.rst      |  2 +-
+ .../driver-api/soundwire/locking.rst          |  4 +-
+ .../firmware-guide/acpi/enumeration.rst       |  2 +-
+ .../firmware-guide/acpi/method-tracing.rst    |  2 +-
+ Documentation/gpu/amdgpu.rst                  |  4 +-
+ Documentation/gpu/i915.rst                    |  6 +-
+ Documentation/gpu/msm-crash-dump.rst          |  2 +
+ Documentation/i2c/instantiating-devices       |  2 +-
+ Documentation/interconnect/interconnect.rst   |  2 +
+ Documentation/laptops/lg-laptop.rst           |  2 +
+ .../freescale/dpaa2/dpio-driver.rst           |  4 +-
+ Documentation/networking/dsa/sja1105.rst      |  6 +-
+ Documentation/powerpc/isa-versions.rst        |  2 +
+ Documentation/security/keys/core.rst          | 16 +++--
+ .../security/keys/trusted-encrypted.rst       |  4 +-
+ Documentation/sysctl/kernel.txt               |  4 +-
+ .../translations/it_IT/process/howto.rst      |  2 +-
+ .../it_IT/process/license-rules.rst           | 28 ++++----
+ .../it_IT/process/magic-number.rst            |  2 +-
+ .../it_IT/process/stable-kernel-rules.rst     |  4 +-
+ .../translations/zh_CN/basic_profiling.txt    | 71 -------------------
+ .../translations/zh_CN/process/4.Coding.rst   |  2 +-
+ .../zh_CN/process/management-style.rst        |  4 +-
+ .../zh_CN/process/programming-language.rst    | 28 ++++----
+ .../virtual/kvm/amd-memory-encryption.rst     |  5 ++
+ Documentation/virtual/kvm/vcpu-requests.rst   |  2 +
+ Documentation/vm/hmm.rst                      |  9 ++-
+ Documentation/x86/x86_64/5level-paging.rst    |  2 +-
+ Documentation/x86/x86_64/boot-options.rst     |  4 +-
+ .../x86/x86_64/fake-numa-for-cpusets.rst      |  2 +-
+ MAINTAINERS                                   |  6 +-
+ arch/arm/Kconfig                              |  2 +-
+ arch/arm64/kernel/kexec_image.c               |  2 +-
+ arch/powerpc/Kconfig                          |  2 +-
+ arch/x86/Kconfig                              | 16 ++---
+ arch/x86/Kconfig.debug                        |  2 +-
+ arch/x86/boot/header.S                        |  2 +-
+ arch/x86/entry/entry_64.S                     |  2 +-
+ arch/x86/include/asm/bootparam_utils.h        |  2 +-
+ arch/x86/include/asm/page_64_types.h          |  2 +-
+ arch/x86/include/asm/pgtable_64_types.h       |  2 +-
+ arch/x86/kernel/cpu/microcode/amd.c           |  2 +-
+ arch/x86/kernel/kexec-bzimage64.c             |  2 +-
+ arch/x86/kernel/pci-dma.c                     |  2 +-
+ arch/x86/mm/tlb.c                             |  2 +-
+ arch/x86/platform/pvh/enlighten.c             |  2 +-
+ drivers/acpi/Kconfig                          | 10 +--
+ drivers/isdn/mISDN/dsp_core.c                 |  2 -
+ drivers/net/ethernet/faraday/ftgmac100.c      |  2 +-
+ .../fieldbus/Documentation/fieldbus_dev.txt   |  4 +-
+ drivers/vhost/vhost.c                         |  2 +-
+ include/acpi/acpi_drivers.h                   |  2 +-
+ include/linux/fs_context.h                    |  2 +-
+ include/linux/lsm_hooks.h                     |  2 +-
+ include/linux/mfd/madera/pdata.h              |  3 +-
+ mm/Kconfig                                    |  2 +-
+ security/Kconfig                              |  2 +-
+ tools/include/linux/err.h                     |  2 +-
+ .../Documentation/stack-validation.txt        |  4 +-
+ tools/testing/selftests/x86/protection_keys.c |  2 +-
+ 84 files changed, 183 insertions(+), 212 deletions(-)
+ delete mode 100644 Documentation/translations/zh_CN/basic_profiling.txt
+
+-- 
+2.21.0
+
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
