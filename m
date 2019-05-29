@@ -2,79 +2,76 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DAA762DDFC
-	for <lists+driverdev-devel@lfdr.de>; Wed, 29 May 2019 15:20:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A6142DE10
+	for <lists+driverdev-devel@lfdr.de>; Wed, 29 May 2019 15:25:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DE1A686214;
-	Wed, 29 May 2019 13:20:50 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2B1D986274;
+	Wed, 29 May 2019 13:25:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0pbvItPkw97b; Wed, 29 May 2019 13:20:50 +0000 (UTC)
+	with ESMTP id 1ixXBFekIiop; Wed, 29 May 2019 13:25:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2844285B80;
-	Wed, 29 May 2019 13:20:49 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 51B9E84647;
+	Wed, 29 May 2019 13:25:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8AB861BF2F5
- for <devel@linuxdriverproject.org>; Wed, 29 May 2019 13:20:47 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 353071BF238
+ for <devel@linuxdriverproject.org>; Wed, 29 May 2019 13:25:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8728E85D4B
- for <devel@linuxdriverproject.org>; Wed, 29 May 2019 13:20:47 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 31AB484647
+ for <devel@linuxdriverproject.org>; Wed, 29 May 2019 13:25:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YxKqQCIJFK75 for <devel@linuxdriverproject.org>;
- Wed, 29 May 2019 13:20:46 +0000 (UTC)
+ with ESMTP id BeVbEAjaIbsN for <devel@linuxdriverproject.org>;
+ Wed, 29 May 2019 13:25:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
- [209.85.210.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 69A8985CDC
- for <devel@driverdev.osuosl.org>; Wed, 29 May 2019 13:20:46 +0000 (UTC)
-Received: by mail-pf1-f194.google.com with SMTP id g9so1607354pfo.11
- for <devel@driverdev.osuosl.org>; Wed, 29 May 2019 06:20:46 -0700 (PDT)
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id BB3AC8453F
+ for <devel@driverdev.osuosl.org>; Wed, 29 May 2019 13:25:10 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id c6so1622165pfa.10
+ for <devel@driverdev.osuosl.org>; Wed, 29 May 2019 06:25:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=MnsmjGULYbyE0ak6jRzzu9lNKNNX7Vv2vqMfhHQMf7g=;
- b=fF8OWavKnY8mawPFHREaawr8yDeOuu2jsuoUvXQAbTbB2ZI5fqlKMlGGB6PMpkx0BV
- mCIEllMv3ip5gQTVm5u4+agvoC7NrGXm+GecCTjYa1xrflD+E7Yqg7HgKbzRbT9aTFUP
- 7JzfJZtd2Z68FKXAMuPnXRkK2L6iunF4LzRSxiMrWWkXQ1XLdlrxSFS6dbc4NB89Xgje
- M7O7nSy9LLNyMZNtYCZUxFv60J2pCv+7Zpo3YDzsrtV8hR23x8gJuZIOnylGDWgdMXuS
- XY7F3G2gqjK5XFb9YorFbX3wTeR1Sa7X02PGiXTJzmPHmzr/F+AV2GOo6oNH94zMzAmq
- LOWA==
+ bh=Fc0bMmRDevQdvcZymPuPXJYIf7p7D4ZnMyLrt05NU1Q=;
+ b=EhllIkwG6rXdSQe7QvJaCmmP69I4HJ5aCk+e6JLCT/uIwhqVWUQkV9ZlxJm+73DdqE
+ FnZTc4ERk39gUsFBOAeUbbVuhUgDPOv2U4LtAlAxrhQx0u5Le0eRXyzZplN2HbAnbb7r
+ KKyLv3svObFPiC+GWfqHDzmUSkBdY7FKjzABle/GARb4dLmRutCU/8nJD7y/QYtjNyor
+ hw4YcIc1LBVBmZlXP2L2JxXsWc5cWp6CJBskKUjIoUOUvRWCNDwUx9NyY1C931W9LEel
+ BcyZ0KwoQVlI6A7+goNb7viWimvwQNFLAKSe0aCuJ10YJvBf3Hz8yQi3wDXhPD/480Ch
+ C89w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=MnsmjGULYbyE0ak6jRzzu9lNKNNX7Vv2vqMfhHQMf7g=;
- b=tD/ceYfnC4/c7kwXMjBS4GvnRXkFDFhOYVTO90nRbhN8clfrpzKFdV7aAkCB6leErD
- 0AVF+5+M57nZg40PkEaLSUNgy61+E+CDoQWDjRsw33ooGdxlMclu3RFqfsCxagRdbHOy
- LdBfDfH69nDGZDhISGCHcQ1sQa3GLxyBY4tuiKuM6kQtcD/KsUp/iNPRklWrUFNEbvDw
- e1nIkg2YJQn4WlihfNMRBLZKCxnTsP9blug73MiLzdoDDk+GKMQyPGJ9jelwUqq3CQn3
- EZAsg2HvF55ut/CXDsZFyU0Gl/JtzKZG6ncpKlxKwbnwh3hbnMPvGxbOPcCU9eGU5RQm
- NJEg==
-X-Gm-Message-State: APjAAAWTfIQji4aQk9iV6mbwMg5PdPfnoHPNmyFVKx6BnD3y75qSPecy
- U7bimlB7scNW3hLCa+5p1O0=
-X-Google-Smtp-Source: APXvYqwrIpIcdADUaHyqqcKbgm99ep3yRJ0nrQO/vlRmcdUx3v4Ql4Qq1Svd9NESOvFINo3fGCD8uA==
-X-Received: by 2002:a17:90a:33c5:: with SMTP id
- n63mr12445270pjb.16.1559136046086; 
- Wed, 29 May 2019 06:20:46 -0700 (PDT)
+ bh=Fc0bMmRDevQdvcZymPuPXJYIf7p7D4ZnMyLrt05NU1Q=;
+ b=BD6FnP02kxCq5SNnpuWlaqLmT6mLR+nib86EzbRt5GCCbTiTwj4WDVIPk+2/k9klja
+ cnV2DvW1R/PlJ7/oYA19OgMfjwnWfsVgblo2VSbinsb5SMcvpnqPjfEDM+DDXM3g0ASR
+ KN6Y9ST1KOmENstT5AimsMZVdCc0yCqESr7Wv5cufWXOO8NcYOkj9nXrAww8tebP026U
+ slvf63qNmY//VwG7Ii2uGy1AIknoHooCdkh3bbJ+zvJ345I3r8VdVPafQdqmVcdrhaAz
+ GYXLBi81vj3m6hrWGsOoCxO5cff4vWZmmglYAvJYVxVQ8Mn6A9ucOzkNecABCNVcvvGH
+ Q35Q==
+X-Gm-Message-State: APjAAAUVpYiBGFE15SrXheaz3KQQeJl0Wa/mQeGZqzxiN2POcj5BPJAp
+ 5hZYf40ENAUtTGL3S/hAwDQ=
+X-Google-Smtp-Source: APXvYqz0h58Zk+4/mpryWNDyPJFYqURdAmcglB7phMR6hBDG9LWeOuIsrajsDXn56dZUX8G8uLPPDA==
+X-Received: by 2002:a65:530d:: with SMTP id m13mr44176772pgq.68.1559136310405; 
+ Wed, 29 May 2019 06:25:10 -0700 (PDT)
 Received: from localhost.localdomain ([122.163.67.155])
- by smtp.gmail.com with ESMTPSA id l3sm28812133pgl.3.2019.05.29.06.20.42
+ by smtp.gmail.com with ESMTPSA id k14sm33057573pga.5.2019.05.29.06.25.06
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 29 May 2019 06:20:45 -0700 (PDT)
+ Wed, 29 May 2019 06:25:09 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: larry.finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
- gregkh@linuxfoundation.org, himadri18.07@gmail.com,
- daniela.mormocea@gmail.com, straube.linux@gmail.com,
- vatsalanarang@gmail.com, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: rtl8712: Remove unnecessary variable in
- rtl8712_recv.c
-Date: Wed, 29 May 2019 18:50:31 +0530
-Message-Id: <20190529132031.6493-1-nishkadg.linux@gmail.com>
+ gregkh@linuxfoundation.org, himadri.18.07@gmail.com,
+ valdis.kletnieks@vt.edu, colin.king@canonical.com, straube.linux@gmail.com,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] staging: rtl8712: Remove return variable of different type
+Date: Wed, 29 May 2019 18:54:57 +0530
+Message-Id: <20190529132457.6607-1-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -95,52 +92,38 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove unnecessary variable last_evm in rtl8712_recv.c and use its value
-directly.
+The local return variable ret may be replaced directly by its value,
+especially since its type (uint) is not the same as the function's
+return type (int).
 Issue found with Coccinelle.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/rtl8712/rtl8712_recv.c | 5 ++---
- drivers/staging/rtl8712/rtl871x_cmd.c  | 2 +-
- 2 files changed, 3 insertions(+), 4 deletions(-)
+ drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
-index 82ddc0c3ecd4..f6f7cd5fd0f2 100644
---- a/drivers/staging/rtl8712/rtl8712_recv.c
-+++ b/drivers/staging/rtl8712/rtl8712_recv.c
-@@ -885,7 +885,7 @@ static void query_rx_phy_status(struct _adapter *padapter,
- static void process_link_qual(struct _adapter *padapter,
- 			      union recv_frame *prframe)
+diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+index a7230c0c7b23..b424b8436fcf 100644
+--- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
++++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+@@ -1577,7 +1577,7 @@ static int r8711_wx_get_enc(struct net_device *dev,
+ 				struct iw_request_info *info,
+ 				union iwreq_data *wrqu, char *keybuf)
  {
--	u32	last_evm = 0, tmpVal;
-+	u32	tmpVal;
- 	struct rx_pkt_attrib *pattrib;
- 	struct smooth_rssi_data *sqd = &padapter->recvpriv.signal_qual_data;
+-	uint key, ret = 0;
++	uint key;
+ 	struct _adapter *padapter = netdev_priv(dev);
+ 	struct iw_point *erq = &(wrqu->encoding);
+ 	struct	mlme_priv	*pmlmepriv = &(padapter->mlmepriv);
+@@ -1633,7 +1633,7 @@ static int r8711_wx_get_enc(struct net_device *dev,
+ 		erq->flags |= IW_ENCODE_DISABLED;
+ 		break;
+ 	}
+-	return ret;
++	return 0;
+ }
  
-@@ -898,8 +898,7 @@ static void process_link_qual(struct _adapter *padapter,
- 		 */
- 		if (sqd->total_num++ >= PHY_LINKQUALITY_SLID_WIN_MAX) {
- 			sqd->total_num = PHY_LINKQUALITY_SLID_WIN_MAX;
--			last_evm = sqd->elements[sqd->index];
--			sqd->total_val -= last_evm;
-+			sqd->total_val -= sqd->elements[sqd->index];
- 		}
- 		sqd->total_val += pattrib->signal_qual;
- 		sqd->elements[sqd->index++] = pattrib->signal_qual;
-diff --git a/drivers/staging/rtl8712/rtl871x_cmd.c b/drivers/staging/rtl8712/rtl871x_cmd.c
-index 05a78ac24987..7c437ee9e022 100644
---- a/drivers/staging/rtl8712/rtl871x_cmd.c
-+++ b/drivers/staging/rtl8712/rtl871x_cmd.c
-@@ -880,7 +880,7 @@ void r8712_createbss_cmd_callback(struct _adapter *padapter,
- 		}
- 		r8712_indicate_connect(padapter);
- 	} else {
--		pwlan = _r8712_alloc_network(pmlmepriv);
-+		pwlan = r8712_alloc_network(pmlmepriv);
- 		if (!pwlan) {
- 			pwlan = r8712_get_oldest_wlan_network(
- 				&pmlmepriv->scanned_queue);
+ static int r8711_wx_get_power(struct net_device *dev,
 -- 
 2.19.1
 
