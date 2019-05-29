@@ -1,83 +1,93 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 97D852E1B9
-	for <lists+driverdev-devel@lfdr.de>; Wed, 29 May 2019 17:54:31 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AFD0E2E44B
+	for <lists+driverdev-devel@lfdr.de>; Wed, 29 May 2019 20:15:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6456187EC9;
-	Wed, 29 May 2019 15:54:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C757586E63;
+	Wed, 29 May 2019 18:15:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rYwAKd9-YH1h; Wed, 29 May 2019 15:54:29 +0000 (UTC)
+	with ESMTP id Rvj3lTlMwyUB; Wed, 29 May 2019 18:15:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B9B6B87EA5;
-	Wed, 29 May 2019 15:54:28 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AF4D286CC7;
+	Wed, 29 May 2019 18:15:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 54BBD1BF5D7
- for <devel@linuxdriverproject.org>; Wed, 29 May 2019 15:54:27 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 9262B1BF2CC
+ for <devel@linuxdriverproject.org>; Wed, 29 May 2019 18:15:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 4E30F87DCE
- for <devel@linuxdriverproject.org>; Wed, 29 May 2019 15:54:27 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 8F48B30C76
+ for <devel@linuxdriverproject.org>; Wed, 29 May 2019 18:15:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2YH6neMSdVzj for <devel@linuxdriverproject.org>;
- Wed, 29 May 2019 15:54:25 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lj1-f196.google.com (mail-lj1-f196.google.com
- [209.85.208.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 19D898586F
- for <devel@driverdev.osuosl.org>; Wed, 29 May 2019 15:54:24 +0000 (UTC)
-Received: by mail-lj1-f196.google.com with SMTP id o13so2996542lji.5
- for <devel@driverdev.osuosl.org>; Wed, 29 May 2019 08:54:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nikanor-nu.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to
- :user-agent; bh=HZPIDMHhUw7CgfVQ/9XO5eI1+3TKH0K2oXJxQv63Hxo=;
- b=YLj+z14bB4aNZfVxxhFnzHr+IJ0pqDENed4opWRwB3klsdl+zcbbOsZ5Cz+kb8fF3n
- PYPoAbsciMmnBeh1o3ZEOzy622o6+WWvo1l6+xcYhEBGC1KG2jA+iDGAtAe504we8fuw
- NI4d8Ws93egDU5nhkdLg5rTL97Ryu8Ksl/k3zgW9NN6D3YHQJNY55kto8DGg1v5rTMPs
- KW+fDxM3R82Tcht78VcJ51Qfd3xt3w0ZzCmdzrym5zRrab0CHd81011koMd1G6XWAfkg
- bgzrtoGgdM0nT7faKI/0o9NmgTL1+KPxcF+4fi8bvJBLZfBnNCjJM5Dm96IbByxYodVl
- TLBQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to:user-agent;
- bh=HZPIDMHhUw7CgfVQ/9XO5eI1+3TKH0K2oXJxQv63Hxo=;
- b=Bzm39trLB4intseug7jPCVH82RhTh7KYWVuyiHkXYQAovOQgIirQtz3uFFBhAx0mC1
- TLM6JkbjYCeF9v2/o80dxumLfdr09R+LMRo3J7AauKvv7DVkvZ654p2YEyvF/eDfOuIh
- gMeInldxf3zcx5BrxE4Czo1GRVWTlZUuS3ZnnwgYHruL13vBx/D6hyKHCfqM0lgyxvE3
- F5XRRCs97B6HcQ6FYd3nnl/Mea+HKSRvgHSISiwzHIUG2IUD/tsHwrf+4vIfSlwRnhrY
- u0xEWiiGB70bU/JkYSsVPB5xwJbd2Ov/DBRXF/Ko9o6M/EsNkDRGpBoyYA9oErFb/fxd
- V/XQ==
-X-Gm-Message-State: APjAAAU2DYl1qmeGwmYBgp8Gq7gRF3Lmzj9i2YdFrllaTsM4v0WVTMlQ
- 6hEmMwSGuS2rRZVgtuncEbqvrQ==
-X-Google-Smtp-Source: APXvYqxnp6Ve/wM1vnGRQlgI3iNH7KRfR+IK9dcQlN8Qua6EBlBLsRfVNuraPd66a2x2nieNPzMGWQ==
-X-Received: by 2002:a2e:7001:: with SMTP id l1mr42358017ljc.11.1559145262588; 
- Wed, 29 May 2019 08:54:22 -0700 (PDT)
-Received: from dev.nikanor.nu (78-72-133-4-no161.tbcn.telia.com. [78.72.133.4])
- by smtp.gmail.com with ESMTPSA id y127sm9462lff.34.2019.05.29.08.54.20
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Wed, 29 May 2019 08:54:21 -0700 (PDT)
-Date: Wed, 29 May 2019 17:54:19 +0200
-From: Simon =?utf-8?Q?Sandstr=C3=B6m?= <simon@nikanor.nu>
-To: Dan Carpenter <dan.carpenter@oracle.com>
+ with ESMTP id paFTK4w2Eorp for <devel@linuxdriverproject.org>;
+ Wed, 29 May 2019 18:15:44 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by silver.osuosl.org (Postfix) with ESMTPS id ED5F021532
+ for <devel@driverdev.osuosl.org>; Wed, 29 May 2019 18:15:43 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x4TI45Gd026303;
+ Wed, 29 May 2019 18:15:42 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ content-transfer-encoding : in-reply-to; s=corp-2018-07-02;
+ bh=X1r1l9IbI3BOkFp9ol61hLAsIPyF/vTaoewLMBFuIz4=;
+ b=GCg6eFTfUHhgUB9eSXQA3fJP4YzWZr9DQtM9SwudrdjDKsu/cZFM5ziuaDyOnb5KCu4N
+ acONfWg+yW/wZSxYkdi/qKt0ieppowilWMz67EWhfZZtxvmQ687AJn3yvHY8BBaq98p/
+ Glc5IO7eW9QIyvJtIVxd9nLNHu2tjqL94oDA5hn2SJS5LTVLX2Vu2GALld7vwzldXvx+
+ lVPUbcfN1vjA5J4YPAZNXo+6L6y5NT3YZtnDLVthlDrNwhjboZ1rQzH2N3SWzjl0N7xF
+ CwnRPwr9wbd3tSn23Hmvr2Qc5nef13kNRIzztRJ4WXnYpK3C+fSuXsf1cZrGDerjbpdK Jg== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by userp2130.oracle.com with ESMTP id 2spw4tkq38-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 29 May 2019 18:15:42 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x4TIE7Ja160246;
+ Wed, 29 May 2019 18:15:41 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by aserp3030.oracle.com with ESMTP id 2srbdxj39c-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 29 May 2019 18:15:41 +0000
+Received: from abhmp0012.oracle.com (abhmp0012.oracle.com [141.146.116.18])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x4TIFd4U022602;
+ Wed, 29 May 2019 18:15:39 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Wed, 29 May 2019 11:15:38 -0700
+Date: Wed, 29 May 2019 21:15:32 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Simon =?iso-8859-1?Q?Sandstr=F6m?= <simon@nikanor.nu>
 Subject: Re: [PATCH 3/4] staging: kpc2000: add missing spaces in core.c
-Message-ID: <20190529155419.ego3sfedew65ini5@dev.nikanor.nu>
+Message-ID: <20190529181532.GM24680@kadam>
 References: <20190524110802.2953-1-simon@nikanor.nu>
  <20190524110802.2953-4-simon@nikanor.nu>
  <20190527073159.GX31203@kadam>
+ <20190529155419.ego3sfedew65ini5@dev.nikanor.nu>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190527073159.GX31203@kadam>
-User-Agent: NeoMutt/20180716
+In-Reply-To: <20190529155419.ego3sfedew65ini5@dev.nikanor.nu>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9272
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1810050000 definitions=main-1905290117
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9272
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
+ definitions=main-1905290117
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,26 +102,55 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
  linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gTW9uLCBNYXkgMjcsIDIwMTkgYXQgMTA6MzE6NTlBTSArMDMwMCwgRGFuIENhcnBlbnRlciB3
-cm90ZToKPiBPbiBGcmksIE1heSAyNCwgMjAxOSBhdCAwMTowODowMVBNICswMjAwLCBTaW1vbiBT
-YW5kc3Ryw7ZtIHdyb3RlOgo+ID4gWy4uXQo+ID4gLQkJcmV0ID0gY29weV90b191c2VyKCh2b2lk
-Kilpb2N0bF9wYXJhbSwgKHZvaWQqKSZ0ZW1wLCBzaXplb2YodGVtcCkpOwo+ID4gKwkJcmV0ID0g
-Y29weV90b191c2VyKCh2b2lkICopaW9jdGxfcGFyYW0sICh2b2lkICopJnRlbXAsIHNpemVvZih0
-ZW1wKSk7Cj4gPiAgCQlpZiAocmV0KQo+ID4gIAkJCXJldHVybiAtRUZBVUxUOwo+IAo+IFRoaXMg
-c2hvdWxkIHJlYWxseSBiZSB3cml0dGVuIGxpa2Ugc286Cj4gCj4gCQlpZiAoY29weV90b191c2Vy
-KCh2b2lkIF9fdXNlciAqKWlvY3RsX3BhcmFtLCAmdGVtcCwKPiAJCQkJIHNpemVvZih0ZW1wKSkp
-Cj4gCQkJcmV0dXJuIC1FRkFVTFQ7Cj4gCj4gdGVtcCBpcyByZWFsbHkgdGhlIHdyb25nIG5hbWUu
-ICAidGVtcCIgaXMgZm9yIHRlbXBlcmF0dXJlcy4gICJ0bXAiIG1lYW5zCj4gdGVtcG9yYXJ5LiAg
-QnV0IGFsc28gInRtcCIgaXMgd3JvbmcgaGVyZSBiZWNhdXNlIGl0J3Mgbm90IGEgdGVtcG9yYXJ5
-Cj4gdmFyaWFibGUuICBJdCdzIGJldHRlciB0byBjYWxsIGl0ICJyZWdzIiBoZXJlLgo+IAo+IHJl
-Z2FyZHMsCj4gZGFuIGNhcnBlbnRlcgo+IAoKSSBhZ3JlZSwgYnV0IEkgZG9uJ3QgdGhpbmsgaXQg
-Zml0cyB3aXRoaW4gdGhpcyBwYXRjaC4gSSBjYW4gc2VuZCBhCnNlcGFyYXRlIHBhdGNoIHdpdGgg
-dGhpcyBjaGFuZ2UuCgpUaGFua3MKCi0gU2ltb24KX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVy
-cHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+On Wed, May 29, 2019 at 05:54:19PM +0200, Simon Sandstr=F6m wrote:
+> On Mon, May 27, 2019 at 10:31:59AM +0300, Dan Carpenter wrote:
+> > On Fri, May 24, 2019 at 01:08:01PM +0200, Simon Sandstr=F6m wrote:
+> > > [..]
+> > > -		ret =3D copy_to_user((void*)ioctl_param, (void*)&temp, sizeof(temp=
+));
+> > > +		ret =3D copy_to_user((void *)ioctl_param, (void *)&temp, sizeof(te=
+mp));
+> > >  		if (ret)
+> > >  			return -EFAULT;
+> > =
+
+> > This should really be written like so:
+> > =
+
+> > 		if (copy_to_user((void __user *)ioctl_param, &temp,
+> > 				 sizeof(temp)))
+> > 			return -EFAULT;
+> > =
+
+> > temp is really the wrong name.  "temp" is for temperatures.  "tmp" means
+> > temporary.  But also "tmp" is wrong here because it's not a temporary
+> > variable.  It's better to call it "regs" here.
+> > =
+
+> > regards,
+> > dan carpenter
+> > =
+
+> =
+
+> I agree, but I don't think it fits within this patch. I can send a
+> separate patch with this change.
+
+You could send the other chunk as a separate patch, but I don't think it
+makes sense to apply this chunk when really it just needs to be
+re-written.
+
+I normally don't complain too much about mechanical no-thought patches,
+but in this case the function is very sub-par and should be re-written.
+
+regards,
+dan carpenter
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
