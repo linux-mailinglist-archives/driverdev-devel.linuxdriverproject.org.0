@@ -2,75 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C8D5A2DDC6
-	for <lists+driverdev-devel@lfdr.de>; Wed, 29 May 2019 15:12:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 92D692DDE0
+	for <lists+driverdev-devel@lfdr.de>; Wed, 29 May 2019 15:16:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id DC8393067D;
-	Wed, 29 May 2019 13:12:14 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4E91430B97;
+	Wed, 29 May 2019 13:15:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id A90lM5e-rcoN; Wed, 29 May 2019 13:12:14 +0000 (UTC)
+	with ESMTP id S+WH8xpYwAz0; Wed, 29 May 2019 13:15:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 44DC42E379;
-	Wed, 29 May 2019 13:12:12 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BC0F32FB9A;
+	Wed, 29 May 2019 13:15:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0021E1BF2F5
- for <devel@linuxdriverproject.org>; Wed, 29 May 2019 13:12:10 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id EE5911BF238
+ for <devel@linuxdriverproject.org>; Wed, 29 May 2019 13:15:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id EE5F122FB9
- for <devel@linuxdriverproject.org>; Wed, 29 May 2019 13:12:09 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id EB76A85BAE
+ for <devel@linuxdriverproject.org>; Wed, 29 May 2019 13:15:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oqZckX9sIdw6 for <devel@linuxdriverproject.org>;
- Wed, 29 May 2019 13:12:09 +0000 (UTC)
+ with ESMTP id WWhXwEQ1HJZM for <devel@linuxdriverproject.org>;
+ Wed, 29 May 2019 13:15:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
- [209.85.215.193])
- by silver.osuosl.org (Postfix) with ESMTPS id 6B39A22785
- for <devel@driverdev.osuosl.org>; Wed, 29 May 2019 13:12:09 +0000 (UTC)
-Received: by mail-pg1-f193.google.com with SMTP id v9so1339828pgr.13
- for <devel@driverdev.osuosl.org>; Wed, 29 May 2019 06:12:09 -0700 (PDT)
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 5133185B6F
+ for <devel@driverdev.osuosl.org>; Wed, 29 May 2019 13:15:53 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id s11so1597027pfm.12
+ for <devel@driverdev.osuosl.org>; Wed, 29 May 2019 06:15:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=0aWoIYcgxDupSGtN0AnAKiiYwQa97e1g6WE42QwvCM0=;
- b=LJ55xB9eU8BGL+SzpCNDOjSwgkyqnlLfr0sD8Ar1E1DlrwJbHnBEjmaxJcloSeBguX
- rqTwVYovi64cV45HbMYdlSE1z3ilqCrWQ5ZJ8Y8pqdtPHqL9hDKsQwzucw7d3RDaeZ4y
- 4cAiQ61+prb/BYYUYrMaHHsJzZ+V8vxq5SRMY1wr7RzmNRnc+SgbS5q80xAsTVnn1XZP
- mT1QAYgyDammYmmpSDqHj2BxUeToJQm2QuCRjCNXrqp7qDSh0qDcCpjVUwb7mGBFZYFx
- iLlmB9br7wU4cgIdH+DzupfAzZa12PdogkHp/4+VNyz470WbaHWafEXKGM7Co67x/dkp
- ySBg==
+ bh=xN5neQLEPuy8rf1hiSBhjEvuwhf5Or8I1z3QH2reqRo=;
+ b=KB/ZAgwVtpsscHpxRL2WxEnZSjd07Gwyz2fitS1PZiXG05ZDobhExv0V3qnjvyd5u1
+ IQ9J9BTglpmDw0bu8hG5dkRuNsrk8peU3jiDOnhitl1YfMgq1x1OG9zwddO7K8QCiQcL
+ yYbEaDkBlTyxSKY5Az8//PsZMu9hRaHjjylWtv8Mm93hliHX8wl/rQmOu0UpzUa5z2Ni
+ syP6arMk6/g+h0pRaE6Z+/OuQQeogHLblUZyFQ7mxjFdi1JCizncxqQ0NBZB8438Fz7l
+ 4XmvoJJsbeEcOSlCIZsRYFNiKQqi74X096iz9lgxtysgSLcsgL3/+sac2FmVr1HTYWFh
+ CvZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=0aWoIYcgxDupSGtN0AnAKiiYwQa97e1g6WE42QwvCM0=;
- b=HrErPZBBtf8wufqxGuyXFG3G5RCQwFyEmGhIJRh3tym/7AwD4MpzFFJ5+MuTMQ9MZf
- H08ytKl++aZtXDs0nZb7yGRbpeSwlwKGAJNcgefqgz7+jwXP0p2Dj3qCjgql5cYFbqhu
- 8TF4iCEmtxTNriJWUIzTmTJLY78B7FyDV/KN9y9F7auKNI45Et9eIPjPR/YBLRD1H8tj
- PPqaG31c4EOf46Bp4T78zKXeeGZePTKIXWO8ggav7wvBZRPjnnC3M9g+EDu/btaAwfM7
- ppCTlUgF67vOSUUFSNVnMJ1OEIEXy+eRDr27VQNXDVadaYdNqFWKit6IxouWa8dwzT8t
- Jr+A==
-X-Gm-Message-State: APjAAAXKiUYJHN5AoSgq+k3ynfYoEexE0hF/3X94zJepXVsgqDYALCq6
- BYtvFa4ZnX0+dFHS3FRhtGE=
-X-Google-Smtp-Source: APXvYqzJHRrczMIc52hvYh1l+W+LUzYEuTuROsJXEpl1M7zRkak4KWjbVbYAZWR8O+FJv6rGIDQ/5g==
-X-Received: by 2002:a62:4e0c:: with SMTP id c12mr23624554pfb.17.1559135529196; 
- Wed, 29 May 2019 06:12:09 -0700 (PDT)
+ bh=xN5neQLEPuy8rf1hiSBhjEvuwhf5Or8I1z3QH2reqRo=;
+ b=b04KFzcsIDIIv0RuRgzX7dGGvhp1P37piOJ2H85dcBQK9e0u8lQwBJNofF6EFRXLpQ
+ sPQg/O2IXh8bW0uwisYACKk6ZIQ84oTLTaDTZgdLRZ6kPrVNy9QXoMlNAKbNCMuY7OdM
+ FZDcfT5CZpZ8mCq4BlI0psvN51gjpOmPCf+W+iK2hZa/13DrBsETIi/R4AW90p3fhWVN
+ 3v/3VCUhnvEaM4HNxbyGD9ZpLm88XKo70TEBNAUB0eb9u5J7Mq5bwGM5isELI/8jqfhO
+ GPMeXyQ3xSClw4DQxFdU2cCHJBXBjhAQeCQFZ/KI2S0iY3zJ1IkiMNOwduzWjSST7Nye
+ g4Jw==
+X-Gm-Message-State: APjAAAUI7JYDrcs0V3ySoXb8m+OGXrHGrn+37TgfPev9Dy/T4LroZdSy
+ hSxIYV/++5YWzd0VEbUxjdA=
+X-Google-Smtp-Source: APXvYqxqk6JDonQnV/wxu8JWsy8K0bS3rk427TwK4U+WoZy6ABfTmVuXj+UIawze5M0YKtA8Sa13ig==
+X-Received: by 2002:a62:4d03:: with SMTP id a3mr152436226pfb.2.1559135747593; 
+ Wed, 29 May 2019 06:15:47 -0700 (PDT)
 Received: from localhost.localdomain ([122.163.67.155])
- by smtp.gmail.com with ESMTPSA id f10sm15915670pgo.14.2019.05.29.06.12.05
+ by smtp.gmail.com with ESMTPSA id o6sm17900752pfo.164.2019.05.29.06.15.44
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 29 May 2019 06:12:08 -0700 (PDT)
+ Wed, 29 May 2019 06:15:46 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
-To: gregkh@linuxfoundation.org, bnvandana@gmail.com, madhumithabiw@gmail.com,
- matt.sickler@daktronics.com, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: kpc2000: Change to use DIV_ROUND_UP
-Date: Wed, 29 May 2019 18:41:53 +0530
-Message-Id: <20190529131153.6260-1-nishkadg.linux@gmail.com>
+To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, arnd@arndb.de, qader.aymen@gmail.com,
+ kim.jamie.bradley@gmail.com, keescook@chromium.org
+Subject: [PATCH] staging: rts5208: Remove negations
+Date: Wed, 29 May 2019 18:45:31 +0530
+Message-Id: <20190529131531.6368-1-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -91,29 +91,85 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Use macro DIV_ROUND_UP instead of an equivalent sequence of operations.
+Previously return variable fake_para was being negated before return.
+For simplification, fake_para can be changed to valid_para, which is
+returned without negation (corresponding values swapped accordingly).
+Further, the function names check_sd_current_prior and check_sd_speed_prior
+can be changed to valid_sd_current_prior and valid_sd_speed_prior
+respectively for greater clarity on the purpose of the functions.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/kpc2000/kpc_dma/fileops.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+ drivers/staging/rts5208/rtsx_chip.c | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c b/drivers/staging/kpc2000/kpc_dma/fileops.c
-index 254fee593399..7b17362461b8 100644
---- a/drivers/staging/kpc2000/kpc_dma/fileops.c
-+++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
-@@ -28,10 +28,7 @@ unsigned int  count_pages(unsigned long iov_base, size_t iov_len)
- static inline
- unsigned int  count_parts_for_sge(struct scatterlist *sg)
- {
--	unsigned int sg_length = sg_dma_len(sg);
--
--	sg_length += (0x80000-1);
--	return (sg_length / 0x80000);
-+	return DIV_ROUND_UP(sg_dma_len(sg), 0x80000);
+diff --git a/drivers/staging/rts5208/rtsx_chip.c b/drivers/staging/rts5208/rtsx_chip.c
+index 76c35f3c0208..17c4131f5f62 100644
+--- a/drivers/staging/rts5208/rtsx_chip.c
++++ b/drivers/staging/rts5208/rtsx_chip.c
+@@ -598,38 +598,38 @@ int rtsx_reset_chip(struct rtsx_chip *chip)
+ 	return STATUS_SUCCESS;
  }
  
- /**********  Transfer Helpers  **********/
+-static inline int check_sd_speed_prior(u32 sd_speed_prior)
++static inline int valid_sd_speed_prior(u32 sd_speed_prior)
+ {
+-	bool fake_para = false;
++	bool valid_para = true;
+ 	int i;
+ 
+ 	for (i = 0; i < 4; i++) {
+ 		u8 tmp = (u8)(sd_speed_prior >> (i * 8));
+ 
+ 		if ((tmp < 0x01) || (tmp > 0x04)) {
+-			fake_para = true;
++			valid_para = false;
+ 			break;
+ 		}
+ 	}
+ 
+-	return !fake_para;
++	return valid_para;
+ }
+ 
+-static inline int check_sd_current_prior(u32 sd_current_prior)
++static inline int valid_sd_current_prior(u32 sd_current_prior)
+ {
+-	bool fake_para = false;
++	bool valid_para = true;
+ 	int i;
+ 
+ 	for (i = 0; i < 4; i++) {
+ 		u8 tmp = (u8)(sd_current_prior >> (i * 8));
+ 
+ 		if (tmp > 0x03) {
+-			fake_para = true;
++			valid_para = false;
+ 			break;
+ 		}
+ 	}
+ 
+-	return !fake_para;
++	return valid_para;
+ }
+ 
+ static int rts5208_init(struct rtsx_chip *chip)
+@@ -796,13 +796,13 @@ int rtsx_init_chip(struct rtsx_chip *chip)
+ 		chip->rw_fail_cnt[i] = 0;
+ 	}
+ 
+-	if (!check_sd_speed_prior(chip->sd_speed_prior))
++	if (!valid_sd_speed_prior(chip->sd_speed_prior))
+ 		chip->sd_speed_prior = 0x01040203;
+ 
+ 	dev_dbg(rtsx_dev(chip), "sd_speed_prior = 0x%08x\n",
+ 		chip->sd_speed_prior);
+ 
+-	if (!check_sd_current_prior(chip->sd_current_prior))
++	if (!valid_sd_current_prior(chip->sd_current_prior))
+ 		chip->sd_current_prior = 0x00010203;
+ 
+ 	dev_dbg(rtsx_dev(chip), "sd_current_prior = 0x%08x\n",
 -- 
 2.19.1
 
