@@ -1,97 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B341D30638
-	for <lists+driverdev-devel@lfdr.de>; Fri, 31 May 2019 03:28:53 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 57BD43059D
+	for <lists+driverdev-devel@lfdr.de>; Fri, 31 May 2019 02:01:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3638188543;
-	Fri, 31 May 2019 01:28:51 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0747486AFB;
+	Fri, 31 May 2019 00:01:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QQwfyCdwC4Ft; Fri, 31 May 2019 01:28:51 +0000 (UTC)
+	with ESMTP id sF_zwg4wMDbG; Fri, 31 May 2019 00:01:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B66B2884F4;
-	Fri, 31 May 2019 01:28:50 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A428486A39;
+	Fri, 31 May 2019 00:01:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 903941BF98C
- for <devel@linuxdriverproject.org>; Fri, 31 May 2019 01:28:49 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id EE6231BF97F
+ for <devel@linuxdriverproject.org>; Fri, 31 May 2019 00:01:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 8D7BF88501
- for <devel@linuxdriverproject.org>; Fri, 31 May 2019 01:28:49 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id EB6E2878A8
+ for <devel@linuxdriverproject.org>; Fri, 31 May 2019 00:01:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9aWFVFa7fYqv for <devel@linuxdriverproject.org>;
- Fri, 31 May 2019 01:28:48 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM03-DM3-obe.outbound.protection.outlook.com
- (mail-eopbgr800075.outbound.protection.outlook.com [40.107.80.75])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D6AA1884F4
- for <devel@driverdev.osuosl.org>; Fri, 31 May 2019 01:28:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=daktronics.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5g9ZwTLXGjepc9eOg/poUrw+d5nxerqqHIj9Je2W+/g=;
- b=olgOCW6cnS+J3M7uxe07VHVB/xFdhIKF75ENcCLOLqpwfAknYIm6yHkFekE2YMX4Lv3ku6OQTT/jsYtWVtjlF0jNCXEJm+eMOL1mFR9sHRHeJNJyGSz1McCYjbbc5AO1r389pVHkVIgZYsTLnnSNyhwgtsG4ZcgHH9ywY91QzbM=
-Received: from SN6PR02MB4016.namprd02.prod.outlook.com (52.135.69.145) by
- SN6PR02MB4174.namprd02.prod.outlook.com (52.135.70.145) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1922.16; Thu, 30 May 2019 22:57:09 +0000
-Received: from SN6PR02MB4016.namprd02.prod.outlook.com
- ([fe80::60d8:13ef:ed32:4a6f]) by SN6PR02MB4016.namprd02.prod.outlook.com
- ([fe80::60d8:13ef:ed32:4a6f%5]) with mapi id 15.20.1922.021; Thu, 30 May 2019
- 22:57:09 +0000
-From: Matt Sickler <Matt.Sickler@daktronics.com>
-To: Greg KH <gregkh@linuxfoundation.org>, =?iso-8859-1?Q?Simon_Sandstr=F6m?=
- <simon@nikanor.nu>
-Subject: RE: [PATCH 1/4] staging: kpc2000: add spaces around operators in
- core.c
-Thread-Topic: [PATCH 1/4] staging: kpc2000: add spaces around operators in
- core.c
-Thread-Index: AQHVEiEBEpaijJrwzEWx+f59/zurvaaEMrIAgAAb5vA=
-Date: Thu, 30 May 2019 22:57:09 +0000
-Message-ID: <SN6PR02MB4016139989144F6C08CD4BDAEE180@SN6PR02MB4016.namprd02.prod.outlook.com>
-References: <20190524110802.2953-1-simon@nikanor.nu>
- <20190524110802.2953-2-simon@nikanor.nu> <20190530210558.GA21455@kroah.com>
-In-Reply-To: <20190530210558.GA21455@kroah.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Matt.Sickler@daktronics.com; 
-x-originating-ip: [63.85.214.4]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: ee045381-928e-4e6d-8d07-08d6e5522539
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(5600148)(711020)(4605104)(1401327)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7193020);
- SRVR:SN6PR02MB4174; 
-x-ms-traffictypediagnostic: SN6PR02MB4174:
-x-microsoft-antispam-prvs: <SN6PR02MB4174DB60026617B91EA52668EE180@SN6PR02MB4174.namprd02.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:8882;
-x-forefront-prvs: 00531FAC2C
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(376002)(346002)(136003)(366004)(39860400002)(396003)(189003)(199004)(81156014)(8936002)(71190400001)(53936002)(5660300002)(81166006)(446003)(476003)(3846002)(11346002)(71200400001)(478600001)(66446008)(66574012)(7736002)(76116006)(486006)(6246003)(73956011)(66946007)(68736007)(66556008)(64756008)(25786009)(66476007)(8676002)(256004)(26005)(4326008)(52536014)(74316002)(86362001)(14444005)(305945005)(186003)(76176011)(102836004)(9686003)(33656002)(55016002)(99286004)(229853002)(6506007)(54906003)(110136005)(6116002)(6436002)(7696005)(66066001)(14454004)(316002)(2906002)(72206003);
- DIR:OUT; SFP:1101; SCL:1; SRVR:SN6PR02MB4174;
- H:SN6PR02MB4016.namprd02.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: daktronics.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: 6xkqsidjrTcET8Arn8LOB8/7Cq2kjAfJ8vme4jZmLYo3EP1bzm6MIU6HKeKNRFjN0CcmGZzRT7neySRUunFs40oTVLMEkxUJs0HmVHU+jJoPxJBWrmfnF/lWtpT4QxnYDwTsHv/DWUZ/B4PE5B6ZDbGbki9K2QZe7qk0hG7x6mBCCzxXpgiFdFy066L5IJf2HPHRz7WWN08AdMXhQlRmPfFZJ8TgkLEPTAaQf0KjY4pouxAdw8HLQ9PXS3CZLcKWtex5rszoPbev3yHH5b3BUfwM7lhABmn5SW106ayjmM1vUzfV4YmpbPZIJTZxTGNQLL3MeHLMiZzWHvH09BD7C8zMOadFZ4Vvu3Lr/OouFebY6WZmzQViDmL7ifR8btx+3eOVhV/NtpWvX1fZRjYu1vQ1VB/VHDQUzu+GKLujvpk=
+ with ESMTP id EOoijtq-ERAt for <devel@linuxdriverproject.org>;
+ Fri, 31 May 2019 00:01:10 +0000 (UTC)
+X-Greylist: delayed 00:07:10 by SQLgrey-1.7.6
+Received: from new3-smtp.messagingengine.com (new3-smtp.messagingengine.com
+ [66.111.4.229])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 6015287857
+ for <devel@driverdev.osuosl.org>; Fri, 31 May 2019 00:01:10 +0000 (UTC)
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.42])
+ by mailnew.nyi.internal (Postfix) with ESMTP id 08B342CBB;
+ Thu, 30 May 2019 19:53:59 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute2.internal (MEProxy); Thu, 30 May 2019 19:53:59 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:message-id
+ :mime-version:subject:to:x-me-proxy:x-me-proxy:x-me-sender
+ :x-me-sender:x-sasl-enc; s=fm2; bh=fg8Q3S/7A0Lvcu0KZhM1U56P+Ty9w
+ LituQugZp3Wx28=; b=1wZ7DofR81+AVVRncg64Dh2dnG2VFEGEXP2wP2N3QVQ+n
+ 5FNGX/d4LmjZ3NnYvG2bW0Zoh+cjytajtnBqbGsAly/11IWIvucawy4qG5MqCSuq
+ XN8M2jzgcMFByCFHivht7daM5BGL5NRnDsbTjonejUF2G+WBtwixQkv50+nKIyFc
+ cMbkP+ni0zaYL5Uv0VnhUN73vKjLyrwbr+Nrbobn2VklHui5u69cCTSZGwy34o62
+ rYY6k7vZWDTXWqkBc35Crdb29uRXxJy2UftV96DC2tOknsENc2zvJkbI53NmN+Hw
+ jMHvFu+oyk3ndFvYlOKrhne+GSiHV1yErC6AjVY2g==
+X-ME-Sender: <xms:Fm3wXNv1E-ENAWSDhnXBlM_XdMntB_mGFzxb2_n-I6gycX9wunqHTQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduuddrudeftddgvdeiucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepfffhvffukfggtggusehttdertddttddvnecuhfhrohhmpeeuvghnjhgrmhhi
+ nhcuufhhvghrmhgrnhcuoegsvghnjhgrmhhinhessggvnhhshhgvrhhmrghnrdhioheqne
+ cukfhppeduvdekrdduudefrddujedruddvvdenucfrrghrrghmpehmrghilhhfrhhomhep
+ sggvnhhjrghmihhnsegsvghnshhhvghrmhgrnhdrihhonecuvehluhhsthgvrhfuihiivg
+ eptd
+X-ME-Proxy: <xmx:Fm3wXBGgxtXFLXR35JUbGB6VDROkFFb-rmTg1pHybHnDSBGqRmWJCg>
+ <xmx:Fm3wXGwjr9hOzbcQGxTf9wGKxtgrM9zMAdl4JuDDEHBkq-1gI64f8w>
+ <xmx:Fm3wXD0Z_LT3TUjzb7Qp5WK15PzViFs9wcUfBPvR77XuRnQLRgehmA>
+ <xmx:Fm3wXGRLT314edzJsOG7mgDX1lK3OGnh_NO1aRkGFHEK3GY5-6AGCL2mLVk>
+Received: from valkyrie-prime.rpi (el-tovar-33.dynamic2.rpi.edu
+ [128.113.17.122])
+ by mail.messagingengine.com (Postfix) with ESMTPA id 2E3A9380084;
+ Thu, 30 May 2019 19:53:58 -0400 (EDT)
+Date: Thu, 30 May 2019 23:53:48 +0000
+From: Benjamin Sherman <benjamin@bensherman.io>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: mt7621-dma: sizeof via pointer dereference
+Message-ID: <20190530235348.j3orly64wadtjydx@valkyrie-prime.rpi>
 MIME-Version: 1.0
-X-OriginatorOrg: daktronics.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ee045381-928e-4e6d-8d07-08d6e5522539
-X-MS-Exchange-CrossTenant-originalarrivaltime: 30 May 2019 22:57:09.2872 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: be88af81-0945-42aa-a3d2-b122777351a2
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: matt.sickler@daktronics.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR02MB4174
+Content-Disposition: inline
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,41 +83,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, devel@driverdev.osuosl.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
->From: devel <driverdev-devel-bounces@linuxdriverproject.org> On Behalf Of
->Greg KH
->On Fri, May 24, 2019 at 01:07:59PM +0200, Simon Sandstr=F6m wrote:
->> --- a/drivers/staging/kpc2000/kpc2000/core.c
->> +++ b/drivers/staging/kpc2000/kpc2000/core.c
->> @@ -276,18 +276,18 @@ static ssize_t kp2000_cdev_read(struct file *filp,
->
->This whole function just needs to be deleted, it's a horrible hack.
+Pass the size of a struct into kzalloc by pointer dereference.  This
+complies with the Linux kernel coding style and removes the possibility
+for a bug if the pointer's type is changed.
 
-From the outside, I would definitely agree with you.  On the inside though,=
- we
-rely on this function to quickly identify what kind and version is running =
-on
-a given piece of hardware.  Since that same information is provided by an i=
-octl,
-I could be convinced to remove this API and write a userspace application t=
-hat
-uses the ioctl to get the information and pretty prints it.
-I'd be more inclined to agree with the deletion if it means the whole char =
-dev
-interface can be removed from the kpc2000 driver.  That won't be straightfo=
-rward
-as the ioctl is exposed through this interface.  We could remove the ioctl,=
- but
-we'd need to ensure that all the same information is exposed via sysfs.  Our
-userspace side is all funneled through a single class, so changing it to use
-sysfs wouldn't be too difficult.  I'd support that change if someone wants =
-to make it.
+Signed-off-by: Benjamin Sherman <benjamin@bensherman.io>
+---
+ drivers/staging/mt7621-dma/mtk-hsdma.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
+index a58725dd2611..60db06768c8a 100644
+--- a/drivers/staging/mt7621-dma/mtk-hsdma.c
++++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
+@@ -468,7 +468,7 @@ static struct dma_async_tx_descriptor *mtk_hsdma_prep_dma_memcpy(
+ 	if (len <= 0)
+ 		return NULL;
+ 
+-	desc = kzalloc(sizeof(struct mtk_hsdma_desc), GFP_ATOMIC);
++	desc = kzalloc(sizeof(*desc), GFP_ATOMIC);
+ 	if (!desc) {
+ 		dev_err(c->device->dev, "alloc memcpy decs error\n");
+ 		return NULL;
+-- 
+2.21.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
