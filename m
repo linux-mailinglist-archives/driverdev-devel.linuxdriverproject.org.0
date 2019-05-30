@@ -1,61 +1,46 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C875C2FF55
-	for <lists+driverdev-devel@lfdr.de>; Thu, 30 May 2019 17:21:20 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1C45B320A5
+	for <lists+driverdev-devel@lfdr.de>; Sat,  1 Jun 2019 22:03:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id F23F4876EF;
-	Thu, 30 May 2019 15:21:18 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2A0F1883AD;
+	Sat,  1 Jun 2019 20:03:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id m+r5WLDEqhN9; Thu, 30 May 2019 15:21:18 +0000 (UTC)
+	with ESMTP id 3z+lLmrzYEt3; Sat,  1 Jun 2019 20:03:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EA20E8745C;
-	Thu, 30 May 2019 15:21:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id ADCBC871DE;
+	Sat,  1 Jun 2019 20:03:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3A05F1BF3DD
- for <devel@linuxdriverproject.org>; Thu, 30 May 2019 15:21:16 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 34BF71BF276
+ for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 20:03:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3007785D5C
- for <devel@linuxdriverproject.org>; Thu, 30 May 2019 15:21:16 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2CAB6871DE
+ for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 20:03:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yo6sYn3YdSSg for <devel@linuxdriverproject.org>;
- Thu, 30 May 2019 15:21:15 +0000 (UTC)
-X-Greylist: delayed 05:08:12 by SQLgrey-1.7.6
-Received: from mail.palitramed.ru (mail.palitramed.ru [84.53.237.5])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3DDBF85CC7
- for <devel@driverdev.osuosl.org>; Thu, 30 May 2019 15:21:15 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.palitramed.ru (Postfix) with ESMTP id 669111F850D7
- for <devel@driverdev.osuosl.org>; Thu, 30 May 2019 12:54:30 +0300 (MSK)
-Received: from mail.palitramed.ru ([127.0.0.1])
- by localhost (mail.palitramed.ru [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id qhF4UZJ6xXpV for <devel@driverdev.osuosl.org>;
- Thu, 30 May 2019 12:54:30 +0300 (MSK)
-Received: from localhost (localhost [127.0.0.1])
- by mail.palitramed.ru (Postfix) with ESMTP id D99531F83D4D
- for <devel@driverdev.osuosl.org>; Thu, 30 May 2019 12:37:02 +0300 (MSK)
-X-Virus-Scanned: amavisd-new at palitramed.ru
-Received: from mail.palitramed.ru ([127.0.0.1])
- by localhost (mail.palitramed.ru [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id SK5kGxNBBciO for <devel@driverdev.osuosl.org>;
- Thu, 30 May 2019 12:37:02 +0300 (MSK)
-Received: from [185.234.218.135] (unknown [185.234.218.135])
- by mail.palitramed.ru (Postfix) with ESMTPA id 4DA8F1F8294B
- for <devel@driverdev.osuosl.org>; Thu, 30 May 2019 12:31:13 +0300 (MSK)
+ with ESMTP id d9Y3weEwR+pf for <devel@linuxdriverproject.org>;
+ Sat,  1 Jun 2019 20:03:38 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.lease24.jp (unknown [40.74.80.4])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2435B87133
+ for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 20:03:38 +0000 (UTC)
+Received: from DESKTOP-2SJ3DIV.default (unknown [2.29.142.16])
+ by mail.lease24.jp (Postfix) with ESMTPSA id 55B7540D6F8;
+ Thu, 30 May 2019 20:27:12 +0900 (JST)
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: In A Nutshell
-To: devel@driverdev.osuosl.org
-From: "Emissary" <info@hikari-international.com>
-Date: Thu, 30 May 2019 02:31:12 -0700
-Message-Id: <20190530093113.4DA8F1F8294B@mail.palitramed.ru>
+Subject: REPLY AS SOON AS POSSIBLE    
+To: Recipients <pg2018428@gmail.com>
+From: "Raymond Chien Hang Seng" <pg2018428@gmail.com>
+Date: Thu, 30 May 2019 12:27:02 +0100
+Message-Id: <20190601200340.2CAB6871DE@hemlock.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,20 +53,16 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: Emissary <dannuar4@gmail.com>
+Reply-To: draymndch@yahoo.co.jp
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello, 
+I am Vice Chairman of Hang Seng Bank, I have Important Matter to Discuss with you concerning my late client. Died without a NEXT OF KIN. Send me your private email for full details information. email me at E-Mail: dr29876dr@gmail.com
 
-We have a private business proposition for you,contact me for more details. 
-
-Thank you,     
-
-Datuk.
-5.30.19/135p/28wwe.5
+Regards 
+Mr.Fung
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
