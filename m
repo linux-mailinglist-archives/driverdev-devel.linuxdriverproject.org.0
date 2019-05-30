@@ -2,58 +2,54 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B0F24303E8
-	for <lists+driverdev-devel@lfdr.de>; Thu, 30 May 2019 23:12:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B9932303EA
+	for <lists+driverdev-devel@lfdr.de>; Thu, 30 May 2019 23:15:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5F1D1203E2;
-	Thu, 30 May 2019 21:12:50 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id F423A203E6;
+	Thu, 30 May 2019 21:15:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ezdaq3P+iQZj; Thu, 30 May 2019 21:12:49 +0000 (UTC)
+	with ESMTP id xAzgIhjf6TeS; Thu, 30 May 2019 21:15:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id DE8CD203C7;
-	Thu, 30 May 2019 21:12:48 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 30DCD203DB;
+	Thu, 30 May 2019 21:15:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B9E941BF2BA
- for <devel@linuxdriverproject.org>; Thu, 30 May 2019 21:12:45 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 47C0E1BF2BA
+ for <devel@linuxdriverproject.org>; Thu, 30 May 2019 21:14:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B72498825E
- for <devel@linuxdriverproject.org>; Thu, 30 May 2019 21:12:45 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 44CA887767
+ for <devel@linuxdriverproject.org>; Thu, 30 May 2019 21:14:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8EBYMO+CXcLp for <devel@linuxdriverproject.org>;
- Thu, 30 May 2019 21:12:45 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 36E778815D
- for <devel@driverdev.osuosl.org>; Thu, 30 May 2019 21:12:45 +0000 (UTC)
-Received: from localhost (unknown [207.225.69.115])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id EE53621985;
- Thu, 30 May 2019 21:12:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1559250765;
- bh=8ogzh1kXxnB4e4k6xpIqU2Y6rtedLnLHRgwK4C8BkxQ=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=y+4fRKmJ9QXOZWZLpA/DAp88qHyQyRLnoGL/6/Dme0ree+A+GQ/SE7E5acG8x6hLz
- dV0Cf3jLUqaAQ/GpVK8kfEk0EixWb7d9Y0YZs4F52VX8IUzFN+XNGSmDdkD8TifKsA
- 3ypNkO2Oz4EdiXRAtsp+XS30uh5NuIAVr+H6z1eQ=
-Date: Thu, 30 May 2019 14:12:44 -0700
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Nishka Dasgupta <nishkadg.linux@gmail.com>
-Subject: Re: [PATCH] staging: rtl8712: Remove unnecessary variable in
- rtl8712_recv.c
-Message-ID: <20190530211244.GA24020@kroah.com>
-References: <20190529132031.6493-1-nishkadg.linux@gmail.com>
+ with ESMTP id rYWINMPdkkTd for <devel@linuxdriverproject.org>;
+ Thu, 30 May 2019 21:14:58 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from sonic301-8.consmr.mail.ne1.yahoo.com
+ (sonic301-8.consmr.mail.ne1.yahoo.com [66.163.184.241])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E927686E49
+ for <devel@driverdev.osuosl.org>; Thu, 30 May 2019 21:14:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1559250897; bh=uKLO8Jxsflz5ATBf2FJ0xPL7TG/r4DOMkje1ndo/h+E=;
+ h=Date:From:To:Cc:In-Reply-To:References:Subject:From:Subject;
+ b=pCRiKxId1Y5bR8YXBwNDKHN+L+HxPa58ZGnASwhiWDnxoc9RNGc4fKfOiBDD/EdiQMQF1Bzb7YeuyEksY0q4re6K4vF2OP+bs4RyoSiDcODwIvb4f993lBHujb+3fuIwFAXDjgXjLrvRjorc0rIUMUVNdnpVsyaxwuR8h2CsBIjHedI1Hdx+4JYonJ6Uar+yesfoJaZYkuDQlR5PyQMdhXOIvvHdJfEkQKeD5otcO7mjOySwT3CVL4LqdeNjIjxSKTfyyeA/q1z/gXVn8y1MuVM0QWyljQ+mEpRTp3XtykGScwGyoFedF0nnnPU4aDpMN0ohBDZS4iADCwfDoyd9Sg==
+X-YMail-OSG: N_6BpMEVRDvd.miR6A7lED5GPdAEx7ojsA--
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic301.consmr.mail.ne1.yahoo.com with HTTP; Thu, 30 May 2019 21:14:57 +0000
+Date: Thu, 30 May 2019 21:12:55 +0000 (UTC)
+From: shobhit kukreti <shobhitkukreti@yahoo.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Message-ID: <589437019.1480104.1559250775753@mail.yahoo.com>
+In-Reply-To: <20190523073016.GA14393@kroah.com>
+References: <20190523010619.GA23217@t-1000> <20190523073016.GA14393@kroah.com>
+Subject: Re: [PATCH] staging: pi433: cleanup to adhere with linux coding style
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190529132031.6493-1-nishkadg.linux@gmail.com>
-User-Agent: Mutt/1.12.0 (2019-05-25)
+X-Mailer: WebService/1.1.13634 YMailNorrin Mozilla/5.0 (Windows NT 10.0; Win64;
+ x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169
+ Safari/537.36
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,68 +62,53 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: florian.c.schilhabel@googlemail.com, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, daniela.mormocea@gmail.com,
- vatsalanarang@gmail.com, larry.finger@lwfinger.net
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, May 29, 2019 at 06:50:31PM +0530, Nishka Dasgupta wrote:
-> Remove unnecessary variable last_evm in rtl8712_recv.c and use its value
-> directly.
-> Issue found with Coccinelle.
-> 
-> Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
-> ---
->  drivers/staging/rtl8712/rtl8712_recv.c | 5 ++---
->  drivers/staging/rtl8712/rtl871x_cmd.c  | 2 +-
->  2 files changed, 3 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
-> index 82ddc0c3ecd4..f6f7cd5fd0f2 100644
-> --- a/drivers/staging/rtl8712/rtl8712_recv.c
-> +++ b/drivers/staging/rtl8712/rtl8712_recv.c
-> @@ -885,7 +885,7 @@ static void query_rx_phy_status(struct _adapter *padapter,
->  static void process_link_qual(struct _adapter *padapter,
->  			      union recv_frame *prframe)
->  {
-> -	u32	last_evm = 0, tmpVal;
-> +	u32	tmpVal;
->  	struct rx_pkt_attrib *pattrib;
->  	struct smooth_rssi_data *sqd = &padapter->recvpriv.signal_qual_data;
->  
-> @@ -898,8 +898,7 @@ static void process_link_qual(struct _adapter *padapter,
->  		 */
->  		if (sqd->total_num++ >= PHY_LINKQUALITY_SLID_WIN_MAX) {
->  			sqd->total_num = PHY_LINKQUALITY_SLID_WIN_MAX;
-> -			last_evm = sqd->elements[sqd->index];
-> -			sqd->total_val -= last_evm;
-> +			sqd->total_val -= sqd->elements[sqd->index];
-
-Nope, original code is easier to understand :(
-
->  		}
->  		sqd->total_val += pattrib->signal_qual;
->  		sqd->elements[sqd->index++] = pattrib->signal_qual;
-> diff --git a/drivers/staging/rtl8712/rtl871x_cmd.c b/drivers/staging/rtl8712/rtl871x_cmd.c
-> index 05a78ac24987..7c437ee9e022 100644
-> --- a/drivers/staging/rtl8712/rtl871x_cmd.c
-> +++ b/drivers/staging/rtl8712/rtl871x_cmd.c
-> @@ -880,7 +880,7 @@ void r8712_createbss_cmd_callback(struct _adapter *padapter,
->  		}
->  		r8712_indicate_connect(padapter);
->  	} else {
-> -		pwlan = _r8712_alloc_network(pmlmepriv);
-> +		pwlan = r8712_alloc_network(pmlmepriv);
-
-what does this change have to do with your changelog?
-
-confused,
-
-greg k-h
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+ClRoYW5rIHlvdSBmb3IgdGhlIGZlZWRiYWNrLiBJIGRyb3BwZWQgdGhlIHBhdGNoLsKgCgpCZXN0
+LApTaG9iaGl0IEt1a3JldGkKCgpPbiBUaHVyc2RheSwgTWF5IDIzLCAyMDE5LCAxMjozMDoyMCBB
+TSBQRFQsIEdyZWcgS3JvYWgtSGFydG1hbiA8Z3JlZ2toQGxpbnV4Zm91bmRhdGlvbi5vcmc+IHdy
+b3RlOiAKCgpPbiBXZWQsIE1heSAyMiwgMjAxOSBhdCAwNjowNjoyMlBNIC0wNzAwLCBTaG9iaGl0
+IEt1a3JldGkgd3JvdGU6Cj4gVGhlIGxpbnV4IGNvZGluZyBzdHlsZSBlbXBoYXNpemVzIG9uIGEg
+bGltaXQgb2YgODAgY2hhcmFjdGVycwo+IHBlciBsaW5lLiBDbGVhbmVkIHVwIHNldmVyYWwgb3Zl
+ciA4MCBjaGFyYWN0ZXIgd2FybmluZ3MgaW4gZm9sbG93aW5nIGZpbGVzOgo+IAo+IHBpNDMzX2lm
+LmMKPiBwaTQzM19pZi5oCj4gcmY2OS5jCj4gCj4gU2lnbmVkLW9mZi1ieTogU2hvYmhpdCBLdWty
+ZXRpIDxzaG9iaGl0a3VrcmV0aUB5YWhvby5jb20+Cj4gLS0tCj7CoCBkcml2ZXJzL3N0YWdpbmcv
+cGk0MzMvcGk0MzNfaWYuYyB8IDE1ICsrKystLS0KPsKgIGRyaXZlcnMvc3RhZ2luZy9waTQzMy9w
+aTQzM19pZi5oIHwgMjUgKysrKysrKy0tLS0KPsKgIGRyaXZlcnMvc3RhZ2luZy9waTQzMy9yZjY5
+LmPCoCDCoCB8IDg5ICsrKysrKysrKysrKysrKysrKysrKysrKy0tLS0tLS0tLS0tLS0tLS0KPsKg
+IDMgZmlsZXMgY2hhbmdlZCwgNzggaW5zZXJ0aW9ucygrKSwgNTEgZGVsZXRpb25zKC0pCj4gCj4g
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9waTQzMy9waTQzM19pZi5jIGIvZHJpdmVycy9z
+dGFnaW5nL3BpNDMzL3BpNDMzX2lmLmMKPiBpbmRleCBjODg5ZjBiLi4wNzcxNWM5IDEwMDY0NAo+
+IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy9waTQzMy9waTQzM19pZi5jCj4gKysrIGIvZHJpdmVycy9z
+dGFnaW5nL3BpNDMzL3BpNDMzX2lmLmMKPiBAQCAtNDM5LDggKzQzOSw3IEBAIHBpNDMzX3JlY2Vp
+dmUodm9pZCAqZGF0YSkKPsKgIMKgwqDCoCDCoMKgwqAgLyogd2FpdCBmb3IgUlNTSSBsZXZlbCB0
+byBiZWNvbWUgaGlnaCAqLwo+wqAgwqDCoMKgIMKgwqDCoCBkZXZfZGJnKGRldi0+ZGV2LCAicng6
+IGdvaW5nIHRvIHdhaXQgZm9yIGhpZ2ggUlNTSSBsZXZlbCIpOwo+wqAgwqDCoMKgIMKgwqDCoCBy
+ZXR2YWwgPSB3YWl0X2V2ZW50X2ludGVycnVwdGlibGUoZGV2LT5yeF93YWl0X3F1ZXVlLAo+IC3C
+oMKgwqAgwqDCoMKgIMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKgwqDCoCDCoCByZjY5X2dldF9mbGFn
+KGRldi0+c3BpLAo+IC3CoMKgwqAgwqDCoMKgIMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKgwqDCoCDC
+oMKgwqAgwqDCoMKgIHJzc2lfZXhjZWVkZWRfdGhyZXNob2xkKSk7Cj4gK8KgwqDCoCDCoMKgwqAg
+wqDCoMKgIHJmNjlfZ2V0X2ZsYWcoZGV2LT5zcGkswqDCoMKgIHJzc2lfZXhjZWVkZWRfdGhyZXNo
+b2xkKSk7CgpJY2ssIG5vLsKgIFRoZSBvcmlnaW5hbCBjb2RlIGlzIGZpbmUgaGVyZSwgdGhpcyBt
+YWtlcyBpdCBtdWNoIGhhcmRlciB0bwp1bmRlcnN0YW5kIHdoYXQgaXMgZ29pbmcgb24gaGVyZSwg
+cmlnaHQ/CgoKPsKgIMKgwqDCoCDCoMKgwqAgaWYgKHJldHZhbCkgLyogd2FpdCB3YXMgaW50ZXJy
+dXB0ZWQgKi8KPsKgIMKgwqDCoCDCoMKgwqAgwqDCoMKgIGdvdG8gYWJvcnQ7Cj7CoCDCoMKgwqAg
+wqDCoMKgIGRldi0+aW50ZXJydXB0X3J4X2FsbG93ZWQgPSBmYWxzZTsKPiBAQCAtNDc1LDcgKzQ3
+NCw3IEBAIHBpNDMzX3JlY2VpdmUodm9pZCAqZGF0YSkKPsKgIMKgwqDCoCAvKiBsZW5ndGggYnl0
+ZSBlbmFibGVkPyAqLwo+wqAgwqDCoMKgIGlmIChkZXYtPnJ4X2NmZy5lbmFibGVfbGVuZ3RoX2J5
+dGUgPT0gT1BUSU9OX09OKSB7Cj7CoCDCoMKgwqAgwqDCoMKgIHJldHZhbCA9IHdhaXRfZXZlbnRf
+aW50ZXJydXB0aWJsZShkZXYtPmZpZm9fd2FpdF9xdWV1ZSwKPiAtwqDCoMKgIMKgwqDCoCDCoMKg
+wqAgwqDCoMKgIMKgwqDCoCDCoMKgwqAgwqAgZGV2LT5mcmVlX2luX2ZpZm8gPCBGSUZPX1NJWkUp
+Owo+ICvCoMKgwqAgwqDCoMKgIMKgwqDCoCDCoMKgwqAgwqDCoMKgIGRldi0+ZnJlZV9pbl9maWZv
+IDwgRklGT19TSVpFKTsKCgpTYW1lIGZvciB0aGlzLCBhbmQgYWxsIHRoZSBvdGhlciBjaGFuZ2Vz
+IHlvdSBtYWRlLsKgIFRoZSA4MCBjb2x1bW4gInJ1bGUiCmlzIGp1c3QgYSBzdHJvbmcgaGludC7C
+oCBUaGVyZSBhcmUgb3RoZXIgd2F5cyB0byByZW1vdmUgaXQgaW5zdGVhZCBvZgpqdXN0IG1vdmlu
+ZyBjb2RlIHRvIHRoZSBsZWZ0IGxpa2UgeW91IGRpZCBoZXJlLCBpZiB5b3UgcmVhbGx5IHdhbnQg
+dG8KZml4IHRoZXNlIHdhcm5pbmdzIHVwLgoKdGhhbmtzLAoKZ3JlZyBrLWgKCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApk
+ZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJw
+cm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
