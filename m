@@ -1,78 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 17BDA30390
-	for <lists+driverdev-devel@lfdr.de>; Thu, 30 May 2019 22:51:53 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B1790303A3
+	for <lists+driverdev-devel@lfdr.de>; Thu, 30 May 2019 22:55:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 12137203D9;
-	Thu, 30 May 2019 20:51:51 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C886586A2B;
+	Thu, 30 May 2019 20:55:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Nh31p5jUDTkY; Thu, 30 May 2019 20:51:50 +0000 (UTC)
+	with ESMTP id qvsYtKALX7Ko; Thu, 30 May 2019 20:55:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id CB9FF203B4;
-	Thu, 30 May 2019 20:51:49 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 49FE186A01;
+	Thu, 30 May 2019 20:55:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9649B1BF365
- for <devel@linuxdriverproject.org>; Thu, 30 May 2019 20:51:47 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 76ADE1BF867
+ for <devel@linuxdriverproject.org>; Thu, 30 May 2019 20:55:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 90381203CC
- for <devel@linuxdriverproject.org>; Thu, 30 May 2019 20:51:47 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7390E8841F
+ for <devel@linuxdriverproject.org>; Thu, 30 May 2019 20:55:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EERR7RZkxZvc for <devel@linuxdriverproject.org>;
- Thu, 30 May 2019 20:51:47 +0000 (UTC)
+ with ESMTP id drRpUiivxvDl for <devel@linuxdriverproject.org>;
+ Thu, 30 May 2019 20:55:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
  [209.85.210.194])
- by silver.osuosl.org (Postfix) with ESMTPS id EBF7D203B4
- for <devel@driverdev.osuosl.org>; Thu, 30 May 2019 20:51:46 +0000 (UTC)
-Received: by mail-pf1-f194.google.com with SMTP id a23so4717741pff.4
- for <devel@driverdev.osuosl.org>; Thu, 30 May 2019 13:51:46 -0700 (PDT)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0B1428841A
+ for <devel@driverdev.osuosl.org>; Thu, 30 May 2019 20:55:47 +0000 (UTC)
+Received: by mail-pf1-f194.google.com with SMTP id y11so4682412pfm.13
+ for <devel@driverdev.osuosl.org>; Thu, 30 May 2019 13:55:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=4p2pASPNTAfiZ2UGXZOOvTXaN4TIzU1kzFvlDzWyh4w=;
- b=Ni/WNUHTuyqczU++5ixUXILm5THuCZ0EU475OoqawLzRURm2VKfLiGV+pFUl8Ntrgs
- blCgw/LresMWuR97rTJ1HS8RCIy6c//cbOAPyd256w6XNodlQnc5hsxLxscadQ/Youo0
- TGMGSMRCWai2bCsS/iak91jtqyV6sGg2Fvjtrb2tSRqayjNKRzDZpS7DmZg7o60MriLZ
- xfoHQWgk0OJga2kACCQHlOLyl2mMus3xz7/EFHg0hdjWSPM2Pifo+TCIOSJaAdOsxkNW
- DNwptNA7+YgW8aSu5mx0aVgBhjc8k7SORjyfEfFZnS4fouDmkbYU0K6S/VcVDm/tTSwe
- iP7A==
+ bh=uteyPwppfLddUxR1+sE7iM1BJAEP/f3DTyxZGmrJeF4=;
+ b=oE25Ep7xqDsbPY+5NCN6qcKjPrmaBJqGm9Jwu3KOxRqgsQCVFS2RVHHigWj6oXIESq
+ 8CnmtxtPXVuMgPRquWSEReIZBceayYrSvV8/zgAg8sOmsRlYaRAcFa3XSm06Zmg2M5Ct
+ vV280Wy72vDO69MCNEXTBo/yAdVXk4wFvGxz04NTAHZvsZQZchjurT3X9GKRardssZ18
+ E5QYw86gnqzTmLgCiGkWmXAqP9M8fIfEK/h0Dtx/e0NngadhuIORwxHBfCCQh0/ycFyc
+ FrgiMLA4MqqqyQDA02aJOXfzUI+KelN845m/rXxHFIIXBbiIp8vDwDfkUVW463oxY7zE
+ KR4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=4p2pASPNTAfiZ2UGXZOOvTXaN4TIzU1kzFvlDzWyh4w=;
- b=FcfdG1p3EV3dhTkOcd3o5GCetVpjITRgEgQWgEht7e1nuRtNBj8q4XmmKhD/xjs7pk
- zMw5gorHm1ZbixsblITOkKsIX7Q7xy++QGxDHmdo3X0tnDR/jHZ/N4kVlXbYbs2+MbDY
- dq0aEL0WSQJNnnmY1cSlAOfg/DkFUe5+DUiLWbIOw71KHEFidnvGFKKDBoDZgBCpoky+
- ZFNfA7isjIeOcSnBJWJtZehLdq260Dh5TQ0BeVIexmT7XCdON/5qW6fgT8aIk9jQnPPn
- U629ZmSb5cVRKfgXloaHy4XBBjcjSw7oZX+ti51M30bGV4t/lsUjJGDcIOV/fAipq+s+
- 9qfQ==
-X-Gm-Message-State: APjAAAVDMsPtotpCBWal78l4hPDaQETd6NNG5i43rjeFdc3AuJFhSJnn
- 0DxsriTqOyg9eOgt7iaQvGR6/f4A
-X-Google-Smtp-Source: APXvYqwWAiW85Itx+C8XPGlGH9S7NoFM53EicUlr+Frqg8EveM78IKun3DInNU0MYlp3eKgj2OpJcA==
-X-Received: by 2002:a63:d504:: with SMTP id c4mr5381328pgg.20.1559249506701;
- Thu, 30 May 2019 13:51:46 -0700 (PDT)
+ bh=uteyPwppfLddUxR1+sE7iM1BJAEP/f3DTyxZGmrJeF4=;
+ b=X1FKoVAdwfQ30hRRoovnTeIXCoq00ip5oCXfTG/PDjkC3myHWsOp72Id6aGQLUkVw3
+ MatxA8gXYNeod5e9C2e6yGIVYHjQiJPzxVtG0Pi17rKUnKUFdas2yCBkLcIyWz//4I4h
+ lkGszSsCFi8aCJYpb2U+yZSonZZwrbdmLCkkz/R5JrzMS4cRwWNiID3Q9q6yGmtHz/sT
+ 50W54teczqIT0BShJlOKQrFtSnMkYkRpZhNLVwreUNg7M1wy+n6gjB6z9CTykcnMp80G
+ iWW77BGG8DiUDlzh9Ym4UpaqE2k3fLnlbrAdt8vXmgoaoNnnEJHuYgi8d+eHcTCjdFsP
+ 0C/Q==
+X-Gm-Message-State: APjAAAXOl6cDs31bX9WZiDY9ILepr3uhId5UNgy/puFBjFpkOHujvsbT
+ r5VMwM8abrur2Ai/WK+PthU=
+X-Google-Smtp-Source: APXvYqyNlAlC5Pbp/Qy5331BHKkGNGIynoOtauF7yLjK9abrJ+4vwYu9rlTnuQuugdWffvBv7AxbwQ==
+X-Received: by 2002:a17:90a:2268:: with SMTP id
+ c95mr5319802pje.8.1559249746772; 
+ Thu, 30 May 2019 13:55:46 -0700 (PDT)
 Received: from localhost.localdomain ([47.15.209.13])
- by smtp.gmail.com with ESMTPSA id r185sm3995248pfc.167.2019.05.30.13.51.42
+ by smtp.gmail.com with ESMTPSA id k3sm3426676pgo.81.2019.05.30.13.55.41
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 30 May 2019 13:51:46 -0700 (PDT)
+ Thu, 30 May 2019 13:55:46 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
-To: abbotti@mev.co.uk, hsweeten@visionengravers.com,
- gregkh@linuxfoundation.org, olsonse@umich.edu, jkhasdev@gmail.com,
- giulio.benetti@micronovasrl.com, nishadkamdar@gmail.com,
- kas.sandesh@gmail.com, devel@driverdev.osuosl.org,
+To: larry.finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
+ gregkh@linuxfoundation.org, himadri18.07@gmail.com,
+ dan.carpenter@oracle.com, colin.king@canonical.com,
+ straube.linux@gmail.com, yangx92@hotmail.com, devel@driverdev.osuosl.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: comedi: Remove variable runflags
-Date: Fri, 31 May 2019 02:21:31 +0530
-Message-Id: <20190530205131.29955-1-nishkadg.linux@gmail.com>
+Subject: [PATCH] staging: rtl8712: Replace function r8712_init_mlme_priv
+Date: Fri, 31 May 2019 02:25:31 +0530
+Message-Id: <20190530205531.30016-1-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -93,37 +94,42 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove variable runflags and use its value directly. Issue found with
-checkpatch.
+Delete r8712_init_mlme_priv as it does nothing except call
+_init_mlme_priv, and rename _init_mlme_priv to
+r8712_init_mlme_priv.
+Change the type of the new r8712_init_mlme_priv (formerly _init_mlme_priv)
+to (non-static) int, from static sint.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/comedi/comedi_fops.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+ drivers/staging/rtl8712/rtl871x_mlme.c | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
 
-diff --git a/drivers/staging/comedi/comedi_fops.c b/drivers/staging/comedi/comedi_fops.c
-index f6d1287c7b83..b84ee9293903 100644
---- a/drivers/staging/comedi/comedi_fops.c
-+++ b/drivers/staging/comedi/comedi_fops.c
-@@ -676,16 +676,12 @@ EXPORT_SYMBOL_GPL(comedi_is_subdevice_running);
+diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl8712/rtl871x_mlme.c
+index 7c7267d0fc9e..57d8e7dceef7 100644
+--- a/drivers/staging/rtl8712/rtl871x_mlme.c
++++ b/drivers/staging/rtl8712/rtl871x_mlme.c
+@@ -29,7 +29,7 @@
  
- static bool __comedi_is_subdevice_running(struct comedi_subdevice *s)
+ static void update_ht_cap(struct _adapter *padapter, u8 *pie, uint ie_len);
+ 
+-static sint _init_mlme_priv(struct _adapter *padapter)
++int r8712_init_mlme_priv(struct _adapter *padapter)
  {
--	unsigned int runflags = __comedi_get_subdevice_runflags(s);
--
--	return comedi_is_runflags_running(runflags);
-+	return comedi_is_runflags_running(__comedi_get_subdevice_runflags(s));
+ 	sint	i;
+ 	u8	*pbuf;
+@@ -205,11 +205,6 @@ u8 *r8712_get_capability_from_ie(u8 *ie)
+ 	return ie + 8 + 2;
  }
  
- bool comedi_can_auto_free_spriv(struct comedi_subdevice *s)
- {
--	unsigned int runflags = __comedi_get_subdevice_runflags(s);
+-int r8712_init_mlme_priv(struct _adapter *padapter)
+-{
+-	return _init_mlme_priv(padapter);
+-}
 -
--	return runflags & COMEDI_SRF_FREE_SPRIV;
-+	return __comedi_get_subdevice_runflags(s) & COMEDI_SRF_FREE_SPRIV;
- }
- 
- /**
+ void r8712_free_mlme_priv(struct mlme_priv *pmlmepriv)
+ {
+ 	kfree(pmlmepriv->free_bss_buf);
 -- 
 2.19.1
 
