@@ -2,57 +2,59 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id F0BF4303EE
-	for <lists+driverdev-devel@lfdr.de>; Thu, 30 May 2019 23:15:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D13C7303EF
+	for <lists+driverdev-devel@lfdr.de>; Thu, 30 May 2019 23:15:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6187586A92;
-	Thu, 30 May 2019 21:15:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F2DE486A9E;
+	Thu, 30 May 2019 21:15:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id voBSbaPVpiH6; Thu, 30 May 2019 21:15:41 +0000 (UTC)
+	with ESMTP id 8UZDDvkzXxlO; Thu, 30 May 2019 21:15:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A6BA886A6C;
-	Thu, 30 May 2019 21:15:40 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8757E86A6C;
+	Thu, 30 May 2019 21:15:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5F7B01BF867
- for <devel@linuxdriverproject.org>; Thu, 30 May 2019 21:15:35 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A952B1BF867
+ for <devel@linuxdriverproject.org>; Thu, 30 May 2019 21:15:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5398987767
- for <devel@linuxdriverproject.org>; Thu, 30 May 2019 21:15:35 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 965C886A63
+ for <devel@linuxdriverproject.org>; Thu, 30 May 2019 21:15:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EaU-H9t+Ns1P for <devel@linuxdriverproject.org>;
- Thu, 30 May 2019 21:15:33 +0000 (UTC)
+ with ESMTP id PCW2UL7xsm9y for <devel@linuxdriverproject.org>;
+ Thu, 30 May 2019 21:15:35 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.siol.net (mailoutvs30.siol.net [185.57.226.221])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 669C986E49
- for <devel@driverdev.osuosl.org>; Thu, 30 May 2019 21:15:33 +0000 (UTC)
+Received: from mail.siol.net (mailoutvs50.siol.net [185.57.226.241])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 92F4486A61
+ for <devel@driverdev.osuosl.org>; Thu, 30 May 2019 21:15:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by mail.siol.net (Postfix) with ESMTP id 77B93522867;
- Thu, 30 May 2019 23:15:30 +0200 (CEST)
+ by mail.siol.net (Postfix) with ESMTP id 2B3CF52286B;
+ Thu, 30 May 2019 23:15:33 +0200 (CEST)
 X-Virus-Scanned: amavisd-new at psrvmta11.zcs-production.pri
 Received: from mail.siol.net ([127.0.0.1])
  by localhost (psrvmta11.zcs-production.pri [127.0.0.1]) (amavisd-new,
  port 10032)
- with ESMTP id Q4d6PDinGsox; Thu, 30 May 2019 23:15:30 +0200 (CEST)
+ with ESMTP id Uka6ARN8EejP; Thu, 30 May 2019 23:15:32 +0200 (CEST)
 Received: from mail.siol.net (localhost [127.0.0.1])
- by mail.siol.net (Postfix) with ESMTPS id 23ACA522869;
- Thu, 30 May 2019 23:15:30 +0200 (CEST)
+ by mail.siol.net (Postfix) with ESMTPS id E23B9522869;
+ Thu, 30 May 2019 23:15:32 +0200 (CEST)
 Received: from localhost.localdomain (cpe-86-58-52-202.static.triera.net
  [86.58.52.202]) (Authenticated sender: 031275009)
- by mail.siol.net (Postfix) with ESMTPSA id 41B70522867;
- Thu, 30 May 2019 23:15:28 +0200 (CEST)
+ by mail.siol.net (Postfix) with ESMTPSA id 2720952286B;
+ Thu, 30 May 2019 23:15:30 +0200 (CEST)
 From: Jernej Skrabec <jernej.skrabec@siol.net>
 To: paul.kocialkowski@bootlin.com,
 	maxime.ripard@bootlin.com
-Subject: [PATCH 0/7] media: cedrus: Improvements/cleanup
-Date: Thu, 30 May 2019 23:15:09 +0200
-Message-Id: <20190530211516.1891-1-jernej.skrabec@siol.net>
+Subject: [PATCH 1/7] media: cedrus: Disable engine after each slice decoding
+Date: Thu, 30 May 2019 23:15:10 +0200
+Message-Id: <20190530211516.1891-2-jernej.skrabec@siol.net>
 X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20190530211516.1891-1-jernej.skrabec@siol.net>
+References: <20190530211516.1891-1-jernej.skrabec@siol.net>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -74,32 +76,28 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Here is first batch of random Cedrus improvements/cleanups. Only patch 2
-has a change which raises a question about H264 controls.
+libvdpau-sunxi always disables engine after each decoded slice.
+Do same in Cedrus driver.
 
-Changes were tested on H3 SoC using modified ffmpeg and Kodi.
+Presumably this also lowers power consumption which is always nice.
 
-Please take a look.
+Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
+---
+ drivers/staging/media/sunxi/cedrus/cedrus_hw.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Best regards,
-Jernej
-
-Jernej Skrabec (7):
-  media: cedrus: Disable engine after each slice decoding
-  media: cedrus: Fix H264 default reference index count
-  media: cedrus: Fix decoding for some H264 videos
-  media: cedrus: Remove dst_bufs from context
-  media: cedrus: Don't set chroma size for scale & rotation
-  media: cedrus: Add infra for extra buffers connected to capture
-    buffers
-  media: cedrus: Improve H264 memory efficiency
-
- drivers/staging/media/sunxi/cedrus/cedrus.h   |  12 +-
- .../staging/media/sunxi/cedrus/cedrus_h264.c  | 115 ++++++++----------
- .../staging/media/sunxi/cedrus/cedrus_hw.c    |   4 +-
- .../staging/media/sunxi/cedrus/cedrus_video.c |  25 ++--
- 4 files changed, 68 insertions(+), 88 deletions(-)
-
+diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
+index c34aec7c6e40..9c5819def186 100644
+--- a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
++++ b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
+@@ -123,6 +123,7 @@ static irqreturn_t cedrus_irq(int irq, void *data)
+ 
+ 	dev->dec_ops[ctx->current_codec]->irq_disable(ctx);
+ 	dev->dec_ops[ctx->current_codec]->irq_clear(ctx);
++	cedrus_engine_disable(dev);
+ 
+ 	src_buf = v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+ 	dst_buf = v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
 -- 
 2.21.0
 
