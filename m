@@ -2,78 +2,81 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BAC91303C9
-	for <lists+driverdev-devel@lfdr.de>; Thu, 30 May 2019 23:07:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A540B303D6
+	for <lists+driverdev-devel@lfdr.de>; Thu, 30 May 2019 23:09:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 27B41203E0;
-	Thu, 30 May 2019 21:06:58 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 47ED3203DF;
+	Thu, 30 May 2019 21:09:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AfotElA1uDPy; Thu, 30 May 2019 21:06:57 +0000 (UTC)
+	with ESMTP id RZdqoNv78SBp; Thu, 30 May 2019 21:09:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id DC1381FD45;
-	Thu, 30 May 2019 21:06:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 46A7B20013;
+	Thu, 30 May 2019 21:09:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5C1E41BF867
- for <devel@linuxdriverproject.org>; Thu, 30 May 2019 21:06:54 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 0AEA91BF867
+ for <devel@linuxdriverproject.org>; Thu, 30 May 2019 21:09:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 57D471FD7D
- for <devel@linuxdriverproject.org>; Thu, 30 May 2019 21:06:54 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0769084EEA
+ for <devel@linuxdriverproject.org>; Thu, 30 May 2019 21:09:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mf+C8CGq6V9g for <devel@linuxdriverproject.org>;
- Thu, 30 May 2019 21:06:53 +0000 (UTC)
+ with ESMTP id TU_CaWSnV1mv for <devel@linuxdriverproject.org>;
+ Thu, 30 May 2019 21:09:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
- [209.85.215.193])
- by silver.osuosl.org (Postfix) with ESMTPS id AA2B81FD45
- for <devel@driverdev.osuosl.org>; Thu, 30 May 2019 21:06:53 +0000 (UTC)
-Received: by mail-pg1-f193.google.com with SMTP id 196so2713800pgc.6
- for <devel@driverdev.osuosl.org>; Thu, 30 May 2019 14:06:53 -0700 (PDT)
+Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
+ [209.85.210.193])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D274584EDB
+ for <devel@driverdev.osuosl.org>; Thu, 30 May 2019 21:09:30 +0000 (UTC)
+Received: by mail-pf1-f193.google.com with SMTP id q17so4729734pfq.8
+ for <devel@driverdev.osuosl.org>; Thu, 30 May 2019 14:09:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=DxmOz58/0StlKEibwrCYgGMkPyTrKsPAkT1wgfSCh0A=;
- b=lPw6/+BZnZp0BOUotnoU1MeyuJQwsyrA321feVb/7MXXacRgSmjox3pHL/H8CO+f3p
- imdp8c0qX1FWzrwob6k4izI59UKId2T3mqDABMRTLfh01+74kbrKZ7T7Whi2eta3abb1
- vQRJ8Kr56vB28hFfHtg/5Vf5Ha05EyhrotvxQgaMmw1rnl+a4gu5DGJMMbfelsYYM3zw
- Pfremua9e5oi510HZZKQO241rWg3PsscfMwRm54/3wxKC6dg1qoyqY5nAbFjgGJAFji8
- dTuXqO7Uz2lM65zzg525zN+fPTZ49nOldpzMLKMPyTLCNNlpzc8/yZgGZEqEQJJmGS0n
- 3JyQ==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=j14yKpcraW/rk5VffAXFmNUym97W4z1OGk3c597/tVM=;
+ b=QK1diwgown3rJt0cB8vXV26gQVEfLpYfy8VwmoYRrIcAwHL7l7U2IUd2s9XOHUzm1j
+ vtv9rpjrwza1F/3QNmq16VjemwsPHO+orrG+fUilKc0WCS3fGHS6imwQrF88suA6xOc8
+ 04gYKkUso1YipS9qM5DGa5zgLlYssgmFGnZEY8hcDccKCxmGIsMrE4jtpSbCsyMDsrmI
+ Frq8a0F6p2svJn5nfeZvhGnEbOgA4oEEb0PPvwu2ogvJ1NYcBdVO8Me949P0M6b2t2bF
+ tXxoY8n62PSpu/e1EVoSPmV1B+dPr9F4vmsliOPvPsR4zkprfPmbHyc+osmwMwSJYUXG
+ Hphw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=DxmOz58/0StlKEibwrCYgGMkPyTrKsPAkT1wgfSCh0A=;
- b=lnlf/ObD5bAccbwkUQguvM0dqQJoBrJmz6oJB1FqSuIiPir3XnebM5eXCDkizwj3SO
- Hnfr7J8gRMXJ/xV5H4YnyGOW1+i6T3Gij3fbp8Asg5H+VYSS6D19RvvfSwiTzQ5R0sIz
- cEUDWy5/rfK9rylqkhXutSEgEgOqz0/fhy81IK0yGvUZefdwRjpWH1DSr3S/qfehxFyT
- /h7L94rG5ZhB6i9G97CjIhZWOBiCRQncgObr7fZq1DsVbHYBVJFZ70lRLJ7GjPdW2D3P
- frGzJCS7/ycnsJ8pR75S9yWEn2dAEjyJOehBJab0UkrjtFB84E0nq1zmw3d4yQSXk9Gq
- A/0A==
-X-Gm-Message-State: APjAAAWWmQ486FjSuedb6qmo6w1ZS+Wz185px74uyp2VSjuKTipDqrga
- 6AhCHnQGNvZzcDZiYoRzJnaKj4wQ
-X-Google-Smtp-Source: APXvYqyu1BJ4IxDhFu/YN1BDSVzMQhD3CJxdO23KJDNS4pGJ9TN74IVMryUCyQG9FsRPLXQo03Ob8g==
-X-Received: by 2002:a17:90a:9305:: with SMTP id
- p5mr5307493pjo.33.1559250413396; 
- Thu, 30 May 2019 14:06:53 -0700 (PDT)
-Received: from localhost.localdomain ([47.15.209.13])
- by smtp.gmail.com with ESMTPSA id r2sm3134580pgb.62.2019.05.30.14.06.49
+ bh=j14yKpcraW/rk5VffAXFmNUym97W4z1OGk3c597/tVM=;
+ b=CwYzpBw++x+MXeSS7dlwFSVxlt4iycYaKL5NAL/lyWO3JC2i5P9WCl7e7DxPHUvFtH
+ 9JnScf17GVR7XThCXFkJ7wZQ5q65Own8WTDgtynNdkgbfAEopNhaGHw5BdGb8uFtg5J9
+ 837NbCCEMyNQNmS0nLLRYJk20xo+r7Tctzo2eQncAGy093fwO51UnUBDOtSiHesbRpm7
+ i+om9AxeAGY7jwhfCrFlB6x6LIJCBHUBudBWPi1PXpiYQlFQo8GqP3xqkv++jENr93it
+ VrgFYqshjDRxbu5CqK3DXCBXl62yZN68W7uDNJhcS9U53m7s+rMfYofyc/lzhbotXb9q
+ P1hg==
+X-Gm-Message-State: APjAAAV5DaJiYBIJm/NClxNX+fIseGXjVtyQHAw8OReExXSP/Zaix+91
+ Gqtbo4usUhWvM33MA5XrP5F20Iu6
+X-Google-Smtp-Source: APXvYqyyMX/HcnvTDhYbABKRcF/fe6hNOlg0dP/SvOirSzwJX44yR6CjJMc8vQDER9r8e8H3a8OW/A==
+X-Received: by 2002:a63:1d05:: with SMTP id d5mr5356299pgd.157.1559250570518; 
+ Thu, 30 May 2019 14:09:30 -0700 (PDT)
+Received: from [10.0.2.15] ([47.15.209.13])
+ by smtp.gmail.com with ESMTPSA id p21sm3799580pfn.129.2019.05.30.14.09.26
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 30 May 2019 14:06:52 -0700 (PDT)
+ Thu, 30 May 2019 14:09:30 -0700 (PDT)
+Subject: Re: [PATCH] staging: media: davinci_vpfe: Remove variable vpfe_dev
+To: Greg KH <gregkh@linuxfoundation.org>
+References: <20190530204718.29892-1-nishkadg.linux@gmail.com>
+ <20190530205540.GA5308@kroah.com>
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
-To: larry.finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
- gregkh@linuxfoundation.org, straube.linux@gmail.com,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: rtl8712: Change _SUCCESS/_FAIL to 0/-ENOMEM
-Date: Fri, 31 May 2019 02:36:38 +0530
-Message-Id: <20190530210638.30343-1-nishkadg.linux@gmail.com>
-X-Mailer: git-send-email 2.19.1
+Message-ID: <9b870baa-4d15-cb72-0579-6bb6ca57cadd@gmail.com>
+Date: Fri, 31 May 2019 02:39:23 +0530
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
+In-Reply-To: <20190530205540.GA5308@kroah.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,60 +89,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Nishka Dasgupta <nishkadg.linux@gmail.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: devel@driverdev.osuosl.org, code@wizofe.uk, linux-kernel@vger.kernel.org,
+ hans.verkuil@cisco.com, mchehab@kernel.org, ezequiel@collabora.com,
+ linux-media@vger.kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change return values _SUCCESS and _FAIL to 0 and -ENOMEM respectively,
-to match the convention in the drivers (and also because the return
-value of this changed function is never checked anyway).
-Change return type of the function to int (from u8) to allow the return
-of -ENOMEM.
+On 31/05/19 2:25 AM, Greg KH wrote:
+> On Fri, May 31, 2019 at 02:17:18AM +0530, Nishka Dasgupta wrote:
+>> Remove variable vpfe_dev and replace it with its value (since the
+>> function otherwise uses values directly instead of local variables).
+> 
+> This says _what_ you do.  But we can see that in the patch itself.
+> 
+> You need to say _why_ you are doing this.
+> 
+> There's no need for this change at all.  Again, as I have said before,
+> we write code for developers to read first, the compiler second.  By
+> making these types of changes you are making it harder to
+> read/understand by a developer, and providing absolutely no benifit to
+> the compiler at all.
+> 
+> So it's actually making the code worse!
+> 
+> not good at all.
+> 
+> Please reconsider this type of change, as I keep asking you to.
 
-Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
----
- drivers/staging/rtl8712/rtl871x_cmd.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+Okay. In this case I thought it wouldn't make it worse since the 
+function is low on local variables anyway? Clearly I was wrong, so I 
+won't count this case as an exception in future.
 
-diff --git a/drivers/staging/rtl8712/rtl871x_cmd.c b/drivers/staging/rtl8712/rtl871x_cmd.c
-index 8220829b5c82..e408b15102ce 100644
---- a/drivers/staging/rtl8712/rtl871x_cmd.c
-+++ b/drivers/staging/rtl8712/rtl871x_cmd.c
-@@ -773,7 +773,7 @@ u8 r8712_addbareq_cmd(struct _adapter *padapter, u8 tid)
- 	return _SUCCESS;
- }
- 
--u8 r8712_wdg_timeout_handler(struct _adapter *padapter)
-+int r8712_wdg_timeout_handler(struct _adapter *padapter)
- {
- 	struct cmd_obj *ph2c;
- 	struct drvint_cmd_parm  *pdrvintcmd_param;
-@@ -781,18 +781,18 @@ u8 r8712_wdg_timeout_handler(struct _adapter *padapter)
- 
- 	ph2c = kmalloc(sizeof(*ph2c), GFP_ATOMIC);
- 	if (!ph2c)
--		return _FAIL;
-+		return -ENOMEM;
- 	pdrvintcmd_param = kmalloc(sizeof(*pdrvintcmd_param), GFP_ATOMIC);
- 	if (!pdrvintcmd_param) {
- 		kfree(ph2c);
--		return _FAIL;
-+		return -ENOMEM;
- 	}
- 	pdrvintcmd_param->i_cid = WDG_WK_CID;
- 	pdrvintcmd_param->sz = 0;
- 	pdrvintcmd_param->pbuf = NULL;
- 	init_h2fwcmd_w_parm_no_rsp(ph2c, pdrvintcmd_param, _DRV_INT_CMD_);
- 	r8712_enqueue_cmd_ex(pcmdpriv, ph2c);
--	return _SUCCESS;
-+	return 0;
- }
- 
- void r8712_survey_cmd_callback(struct _adapter *padapter, struct cmd_obj *pcmd)
--- 
-2.19.1
+Thanking you,
+Nishka
+
+> greg k-h
+> 
 
 _______________________________________________
 devel mailing list
