@@ -1,61 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 01781303FF
-	for <lists+driverdev-devel@lfdr.de>; Thu, 30 May 2019 23:15:58 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 866BA203E9;
-	Thu, 30 May 2019 21:15:56 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1VHIT4PwIBCV; Thu, 30 May 2019 21:15:56 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id ED928203E0;
-	Thu, 30 May 2019 21:15:54 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8BC211BF867
- for <devel@linuxdriverproject.org>; Thu, 30 May 2019 21:15:50 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id B545930416
+	for <lists+driverdev-devel@lfdr.de>; Thu, 30 May 2019 23:19:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 81FD98845E
- for <devel@linuxdriverproject.org>; Thu, 30 May 2019 21:15:50 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A75A78848A;
+	Thu, 30 May 2019 21:19:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PmPJxd1ZroO2 for <devel@linuxdriverproject.org>;
- Thu, 30 May 2019 21:15:49 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.siol.net (mailoutvs7.siol.net [185.57.226.198])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5C1538839C
- for <devel@driverdev.osuosl.org>; Thu, 30 May 2019 21:15:49 +0000 (UTC)
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id U6yShHq3Q-R7; Thu, 30 May 2019 21:19:53 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3EBBE881F9;
+	Thu, 30 May 2019 21:19:53 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 511981BF867
+ for <devel@linuxdriverproject.org>; Thu, 30 May 2019 21:19:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by mail.siol.net (Postfix) with ESMTP id 8E450522867;
- Thu, 30 May 2019 23:15:47 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at psrvmta11.zcs-production.pri
-Received: from mail.siol.net ([127.0.0.1])
- by localhost (psrvmta11.zcs-production.pri [127.0.0.1]) (amavisd-new,
- port 10032)
- with ESMTP id v59_8rc0df4p; Thu, 30 May 2019 23:15:47 +0200 (CEST)
-Received: from mail.siol.net (localhost [127.0.0.1])
- by mail.siol.net (Postfix) with ESMTPS id 1AFFE5227EC;
- Thu, 30 May 2019 23:15:47 +0200 (CEST)
-Received: from localhost.localdomain (cpe-86-58-52-202.static.triera.net
- [86.58.52.202]) (Authenticated sender: 031275009)
- by mail.siol.net (Postfix) with ESMTPSA id C8CFD522867;
- Thu, 30 May 2019 23:15:44 +0200 (CEST)
-From: Jernej Skrabec <jernej.skrabec@siol.net>
-To: paul.kocialkowski@bootlin.com,
-	maxime.ripard@bootlin.com
-Subject: [PATCH 7/7] media: cedrus: Improve H264 memory efficiency
-Date: Thu, 30 May 2019 23:15:16 +0200
-Message-Id: <20190530211516.1891-8-jernej.skrabec@siol.net>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20190530211516.1891-1-jernej.skrabec@siol.net>
-References: <20190530211516.1891-1-jernej.skrabec@siol.net>
+ by silver.osuosl.org (Postfix) with ESMTP id 4DC4A203E3
+ for <devel@linuxdriverproject.org>; Thu, 30 May 2019 21:19:51 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id jtO03bVJlUQ0 for <devel@linuxdriverproject.org>;
+ Thu, 30 May 2019 21:19:50 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id AF1BC203E0
+ for <devel@driverdev.osuosl.org>; Thu, 30 May 2019 21:19:50 +0000 (UTC)
+Received: from localhost (unknown [207.225.69.115])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 6F2FA261B4;
+ Thu, 30 May 2019 21:19:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1559251190;
+ bh=KPLvi7aKrEe9JKGxQxgytaIYXMiDco5OH8C4sQ4Vb9E=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=R65oNxcK4J9aIWqT2wTj2zbnoMZaRELxeBGWkFrsU0iypHtacW3ti88aMrtNBVxGO
+ hy8BYGtkTTvW3DLjhP98FfllwefSPAVHzcuvYfF0P1JAshmqk749cpUWw9vfud2IxL
+ hjLCn9gIYRXLk8dFWVZS2Hcx3FbKGj5NDFdoWE3A=
+Date: Thu, 30 May 2019 14:19:50 -0700
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Guenter Roeck <linux@roeck-us.net>
+Subject: Re: [PATCH] staging: kpc2000: Fix build failure caused by wrong
+ include file
+Message-ID: <20190530211950.GA17581@kroah.com>
+References: <1559216022-644-1-git-send-email-linux@roeck-us.net>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1559216022-644-1-git-send-email-linux@roeck-us.net>
+User-Agent: Mutt/1.12.0 (2019-05-25)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,188 +66,48 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, wens@csie.org, mchehab@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-H264 decoder driver preallocated pretty big worst case mv col buffer
-pool. It turns out that pool is most of the time much bigger than it
-needs to be.
+On Thu, May 30, 2019 at 04:33:42AM -0700, Guenter Roeck wrote:
+> xtensa:allmodconfig fails to build.
+> 
+> arch/xtensa/include/asm/uaccess.h: In function 'clear_user':
+> arch/xtensa/include/asm/uaccess.h:40:22: error:
+> 	implicit declaration of function 'uaccess_kernel'
+> 
+> uaccess_kernel() is declared in linux/uaccess.h, not asm/uaccess.h.
+> 
+> Fixes: 7df95299b94a ("staging: kpc2000: Add DMA driver")
+> Cc: Matt Sickler <Matt.Sickler@daktronics.com>
+> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> ---
+>  drivers/staging/kpc2000/kpc_dma/fileops.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c b/drivers/staging/kpc2000/kpc_dma/fileops.c
+> index 5741d2b49a7d..e741fa753ca1 100644
+> --- a/drivers/staging/kpc2000/kpc_dma/fileops.c
+> +++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
+> @@ -8,7 +8,7 @@
+>  #include <linux/errno.h>    /* error codes */
+>  #include <linux/types.h>    /* size_t */
+>  #include <linux/cdev.h>
+> -#include <asm/uaccess.h>    /* copy_*_user */
+> +#include <linux/uaccess.h>    /* copy_*_user */
+>  #include <linux/aio.h>      /* aio stuff */
+>  #include <linux/highmem.h>
+>  #include <linux/pagemap.h>
 
-Solution implemented here is to allocate memory only if capture buffer
-is actually used and only as much as it is really necessary.
+Already fixed by e00839f38823 ("staging: kpc2000: fix build error on
+xtensa") in my staging-linus branch.
 
-This is also preparation for 4K video decoding support, which will be
-implemented later.
+thanks,
 
-Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
----
- drivers/staging/media/sunxi/cedrus/cedrus.h   |  4 -
- .../staging/media/sunxi/cedrus/cedrus_h264.c  | 81 +++++++------------
- 2 files changed, 28 insertions(+), 57 deletions(-)
-
-diff --git a/drivers/staging/media/sunxi/cedrus/cedrus.h b/drivers/staging/media/sunxi/cedrus/cedrus.h
-index 16c1bdfd243a..fcbbbef65494 100644
---- a/drivers/staging/media/sunxi/cedrus/cedrus.h
-+++ b/drivers/staging/media/sunxi/cedrus/cedrus.h
-@@ -106,10 +106,6 @@ struct cedrus_ctx {
- 
- 	union {
- 		struct {
--			void		*mv_col_buf;
--			dma_addr_t	mv_col_buf_dma;
--			ssize_t		mv_col_buf_field_size;
--			ssize_t		mv_col_buf_size;
- 			void		*pic_info_buf;
- 			dma_addr_t	pic_info_buf_dma;
- 			void		*neighbor_info_buf;
-diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
-index b2290f98d81a..758fd0049e8f 100644
---- a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
-+++ b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
-@@ -54,17 +54,14 @@ static void cedrus_h264_write_sram(struct cedrus_dev *dev,
- 		cedrus_write(dev, VE_AVC_SRAM_PORT_DATA, *buffer++);
- }
- 
--static dma_addr_t cedrus_h264_mv_col_buf_addr(struct cedrus_ctx *ctx,
--					      unsigned int position,
-+static dma_addr_t cedrus_h264_mv_col_buf_addr(struct cedrus_buffer *buf,
- 					      unsigned int field)
- {
--	dma_addr_t addr = ctx->codec.h264.mv_col_buf_dma;
--
--	/* Adjust for the position */
--	addr += position * ctx->codec.h264.mv_col_buf_field_size * 2;
-+	dma_addr_t addr = buf->extra_buf_dma;
- 
- 	/* Adjust for the field */
--	addr += field * ctx->codec.h264.mv_col_buf_field_size;
-+	if (field)
-+		addr += buf->extra_buf_size / 2;
- 
- 	return addr;
- }
-@@ -76,7 +73,6 @@ static void cedrus_fill_ref_pic(struct cedrus_ctx *ctx,
- 				struct cedrus_h264_sram_ref_pic *pic)
- {
- 	struct vb2_buffer *vbuf = &buf->m2m_buf.vb.vb2_buf;
--	unsigned int position = buf->codec.h264.position;
- 
- 	pic->top_field_order_cnt = cpu_to_le32(top_field_order_cnt);
- 	pic->bottom_field_order_cnt = cpu_to_le32(bottom_field_order_cnt);
-@@ -84,10 +80,8 @@ static void cedrus_fill_ref_pic(struct cedrus_ctx *ctx,
- 
- 	pic->luma_ptr = cpu_to_le32(cedrus_buf_addr(vbuf, &ctx->dst_fmt, 0));
- 	pic->chroma_ptr = cpu_to_le32(cedrus_buf_addr(vbuf, &ctx->dst_fmt, 1));
--	pic->mv_col_top_ptr =
--		cpu_to_le32(cedrus_h264_mv_col_buf_addr(ctx, position, 0));
--	pic->mv_col_bot_ptr =
--		cpu_to_le32(cedrus_h264_mv_col_buf_addr(ctx, position, 1));
-+	pic->mv_col_top_ptr = cpu_to_le32(cedrus_h264_mv_col_buf_addr(buf, 0));
-+	pic->mv_col_bot_ptr = cpu_to_le32(cedrus_h264_mv_col_buf_addr(buf, 1));
- }
- 
- static void cedrus_write_frame_list(struct cedrus_ctx *ctx,
-@@ -142,6 +136,28 @@ static void cedrus_write_frame_list(struct cedrus_ctx *ctx,
- 	output_buf = vb2_to_cedrus_buffer(&run->dst->vb2_buf);
- 	output_buf->codec.h264.position = position;
- 
-+	if (!output_buf->extra_buf_size) {
-+		const struct v4l2_ctrl_h264_sps *sps = run->h264.sps;
-+		unsigned int field_size;
-+
-+		field_size = DIV_ROUND_UP(ctx->src_fmt.width, 16) *
-+			DIV_ROUND_UP(ctx->src_fmt.height, 16) * 16;
-+		if (!(sps->flags & V4L2_H264_SPS_FLAG_DIRECT_8X8_INFERENCE))
-+			field_size = field_size * 2;
-+		if (!(sps->flags & V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY))
-+			field_size = field_size * 2;
-+
-+		output_buf->extra_buf_size = field_size * 2;
-+		output_buf->extra_buf =
-+			dma_alloc_coherent(dev->dev,
-+					   output_buf->extra_buf_size,
-+					   &output_buf->extra_buf_dma,
-+					   GFP_KERNEL);
-+
-+		if (!output_buf->extra_buf)
-+			output_buf->extra_buf_size = 0;
-+	}
-+
- 	if (slice->flags & V4L2_H264_SLICE_FLAG_FIELD_PIC)
- 		output_buf->codec.h264.pic_type = CEDRUS_H264_PIC_TYPE_FIELD;
- 	else if (sps->flags & V4L2_H264_SPS_FLAG_MB_ADAPTIVE_FRAME_FIELD)
-@@ -476,8 +492,6 @@ static void cedrus_h264_setup(struct cedrus_ctx *ctx,
- static int cedrus_h264_start(struct cedrus_ctx *ctx)
- {
- 	struct cedrus_dev *dev = ctx->dev;
--	unsigned int field_size;
--	unsigned int mv_col_size;
- 	int ret;
- 
- 	/*
-@@ -509,44 +523,8 @@ static int cedrus_h264_start(struct cedrus_ctx *ctx)
- 		goto err_pic_buf;
- 	}
- 
--	field_size = DIV_ROUND_UP(ctx->src_fmt.width, 16) *
--		DIV_ROUND_UP(ctx->src_fmt.height, 16) * 16;
--
--	/*
--	 * FIXME: This is actually conditional to
--	 * V4L2_H264_SPS_FLAG_DIRECT_8X8_INFERENCE not being set, we
--	 * might have to rework this if memory efficiency ever is
--	 * something we need to work on.
--	 */
--	field_size = field_size * 2;
--
--	/*
--	 * FIXME: This is actually conditional to
--	 * V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY not being set, we might
--	 * have to rework this if memory efficiency ever is something
--	 * we need to work on.
--	 */
--	field_size = field_size * 2;
--	ctx->codec.h264.mv_col_buf_field_size = field_size;
--
--	mv_col_size = field_size * 2 * CEDRUS_H264_FRAME_NUM;
--	ctx->codec.h264.mv_col_buf_size = mv_col_size;
--	ctx->codec.h264.mv_col_buf = dma_alloc_coherent(dev->dev,
--							ctx->codec.h264.mv_col_buf_size,
--							&ctx->codec.h264.mv_col_buf_dma,
--							GFP_KERNEL);
--	if (!ctx->codec.h264.mv_col_buf) {
--		ret = -ENOMEM;
--		goto err_neighbor_buf;
--	}
--
- 	return 0;
- 
--err_neighbor_buf:
--	dma_free_coherent(dev->dev, CEDRUS_NEIGHBOR_INFO_BUF_SIZE,
--			  ctx->codec.h264.neighbor_info_buf,
--			  ctx->codec.h264.neighbor_info_buf_dma);
--
- err_pic_buf:
- 	dma_free_coherent(dev->dev, CEDRUS_PIC_INFO_BUF_SIZE,
- 			  ctx->codec.h264.pic_info_buf,
-@@ -558,9 +536,6 @@ static void cedrus_h264_stop(struct cedrus_ctx *ctx)
- {
- 	struct cedrus_dev *dev = ctx->dev;
- 
--	dma_free_coherent(dev->dev, ctx->codec.h264.mv_col_buf_size,
--			  ctx->codec.h264.mv_col_buf,
--			  ctx->codec.h264.mv_col_buf_dma);
- 	dma_free_coherent(dev->dev, CEDRUS_NEIGHBOR_INFO_BUF_SIZE,
- 			  ctx->codec.h264.neighbor_info_buf,
- 			  ctx->codec.h264.neighbor_info_buf_dma);
--- 
-2.21.0
-
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
