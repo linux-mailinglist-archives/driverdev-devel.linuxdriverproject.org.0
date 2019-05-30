@@ -1,63 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC6072E8F9
-	for <lists+driverdev-devel@lfdr.de>; Thu, 30 May 2019 01:24:12 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 973662E9CD
+	for <lists+driverdev-devel@lfdr.de>; Thu, 30 May 2019 02:44:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3D97620343;
-	Wed, 29 May 2019 23:24:10 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9758087476;
+	Thu, 30 May 2019 00:44:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HCkx7bOzXYQP; Wed, 29 May 2019 23:24:09 +0000 (UTC)
+	with ESMTP id DjBAfZwOay3R; Thu, 30 May 2019 00:44:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id BA6702033A;
-	Wed, 29 May 2019 23:24:08 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id D044A87487;
+	Thu, 30 May 2019 00:44:52 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CBA8C1BF580
- for <devel@linuxdriverproject.org>; Wed, 29 May 2019 23:24:06 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C92201BF997
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 30 May 2019 00:44:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C28B785137
- for <devel@linuxdriverproject.org>; Wed, 29 May 2019 23:24:06 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C292687482
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 30 May 2019 00:44:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RUMcK-GYHHvr for <devel@linuxdriverproject.org>;
- Wed, 29 May 2019 23:24:05 +0000 (UTC)
+ with ESMTP id 9wDS02uYs2JP
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 30 May 2019 00:44:49 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from bombadil.infradead.org (bombadil.infradead.org
- [198.137.202.133])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 9B8B48487A
- for <devel@driverdev.osuosl.org>; Wed, 29 May 2019 23:24:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20170209; h=Sender:Content-Transfer-Encoding:
- MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=StJ6LM8sQHkYI5UThzShneAjra5wi5bo/RYRsdxPQsA=; b=V2B9Vgs83dRLjIuQnd2C2vgYZ
- +JgyOXeO1GKHOK9c4tRnNUqThik6tzysID2WPnKRr+36Nqy1H2ECRX9ShWnHkjcDarRRE36sMjLp8
- rMBiNxdP14bOP1wi/jaweQN4P3parh4up8rfOPsYIJGMzClSMcNhqm2YUZ7FfQaCciCjPJlpLJJ9c
- aeXT61eHnnOWKaxRn+HXRc3LwC2Y8Shpt7KozKcXuJxu6PITTqtbQgKa7rv4JBRtqJqIYr0SPtFcn
- /5RDAzsKEfsB7oXgNPBlX7TDbPq/0Xg+hPhZkg4J+5oeanlc8QNxz2G9sF0j0yZAp7oTlogcPh66P
- SAaTMxt+g==;
-Received: from 177.132.232.81.dynamic.adsl.gvt.net.br ([177.132.232.81]
- helo=bombadil.infradead.org)
- by bombadil.infradead.org with esmtpsa (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hW7vL-0005Rx-II; Wed, 29 May 2019 23:23:59 +0000
-Received: from mchehab by bombadil.infradead.org with local (Exim 4.92)
- (envelope-from <mchehab@bombadil.infradead.org>)
- id 1hW7vI-0007wg-Fn; Wed, 29 May 2019 20:23:56 -0300
-From: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
-To: Linux Doc Mailing List <linux-doc@vger.kernel.org>
-Subject: [PATCH 00/22] Some documentation fixes
-Date: Wed, 29 May 2019 20:23:31 -0300
-Message-Id: <cover.1559171394.git.mchehab+samsung@kernel.org>
-X-Mailer: git-send-email 2.21.0
+Received: from icp-osb-irony-out5.external.iinet.net.au
+ (icp-osb-irony-out5.external.iinet.net.au [203.59.1.221])
+ by whitealder.osuosl.org (Postfix) with ESMTP id E0ADD87476
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 30 May 2019 00:44:48 +0000 (UTC)
+X-IronPort-Anti-Spam-Filtered: true
+X-IronPort-Anti-Spam-Result: =?us-ascii?q?A2BJAAAmJ+9c/zXSMGcNWBoBAQEBAQI?=
+ =?us-ascii?q?BAQEBBwIBAQEBgWWIOpNRAQEBAQEBBoUUhXGJcIcWCQEBAQEBAQEBATcBAQG?=
+ =?us-ascii?q?EPwKDGDgTAQMBAQEEAQEBAQMBhmACAQMjFUEQCw0NAiYCAlcGDQgBAYMegXe?=
+ =?us-ascii?q?pJXGBLxqFLYMlgUaBDCiBYYoKeIEHgRAogms+h06CWASLdYdslH8Jgg+TGQY?=
+ =?us-ascii?q?bgh+GaYNuA4laLaRXgXkzGggoCIMokGOPDQEB?=
+X-IPAS-Result: =?us-ascii?q?A2BJAAAmJ+9c/zXSMGcNWBoBAQEBAQIBAQEBBwIBAQEBg?=
+ =?us-ascii?q?WWIOpNRAQEBAQEBBoUUhXGJcIcWCQEBAQEBAQEBATcBAQGEPwKDGDgTAQMBA?=
+ =?us-ascii?q?QEEAQEBAQMBhmACAQMjFUEQCw0NAiYCAlcGDQgBAYMegXepJXGBLxqFLYMlg?=
+ =?us-ascii?q?UaBDCiBYYoKeIEHgRAogms+h06CWASLdYdslH8Jgg+TGQYbgh+GaYNuA4laL?=
+ =?us-ascii?q?aRXgXkzGggoCIMokGOPDQEB?=
+X-IronPort-AV: E=Sophos;i="5.60,529,1549900800"; d="scan'208";a="227062170"
+Received: from unknown (HELO [10.44.0.22]) ([103.48.210.53])
+ by icp-osb-irony-out5.iinet.net.au with ESMTP; 30 May 2019 08:44:43 +0800
+Subject: Re: staging: mt7621-pci: factor out 'mt7621_pcie_enable_port' function
+To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+References: <678a78fd-a7f4-5a1f-9819-51c5a0731877@kernel.org>
+ <CAMhs-H-Js2wiF5yH3pB5bFq9SE1X17OovsXtYuNH+obe0owknw@mail.gmail.com>
+ <5a7dc59b-f9ef-beab-7221-231f64716d5a@kernel.org>
+ <CAMhs-H-8EQPPy0vMFCG-PKu3RLz4_d0ucO6bCgMCfMuD7ZYRSg@mail.gmail.com>
+ <a2f6ee9c-dc4e-a7e7-8723-880a3472e9ba@kernel.org>
+ <CAMhs-H8der72iXY0NFhXLUyTHvsBZ3t5VUagfgiO4CwuXhAXKw@mail.gmail.com>
+ <9224bde1-ea67-db9f-570f-178bbc8e6b40@kernel.org>
+ <CAMhs-H8vutK=KLHVGwpvY2bmx3khpjW5U=2jC=-pEV_HLZP5-Q@mail.gmail.com>
+ <4aa016a4-9fac-5273-0f7f-d372f0de34ba@kernel.org>
+ <CAMhs-H9M8D2nWibZqKeBEZ8y+E38iTRk7sB28vHb0-P5tU8+EA@mail.gmail.com>
+ <9e24fe2f-42df-7b1f-2cd5-82d3f82f688b@kernel.org>
+ <CAMhs-H-GtrJZKx2Y3GhoXn9O=C4xx1QAeQ1CYt51LwrFY7y1sQ@mail.gmail.com>
+ <7335025e-372d-c5bd-80ee-75b3e0c61249@kernel.org>
+ <CAMhs-H_zFUecOu95U-xekQ3Da5psbc6YdQttosCJbZi5vetKSw@mail.gmail.com>
+From: Greg Ungerer <gerg@kernel.org>
+Message-ID: <790e5f32-5c70-e277-46ad-7956aaf32af3@kernel.org>
+Date: Thu, 30 May 2019 10:44:42 +1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
+In-Reply-To: <CAMhs-H_zFUecOu95U-xekQ3Da5psbc6YdQttosCJbZi5vetKSw@mail.gmail.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,151 +86,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, kvm@vger.kernel.org, linux-pci@vger.kernel.org,
- dri-devel@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
- linux-mm@kvack.org, keyrings@vger.kernel.org, linux-mtd@lists.infradead.org,
- linux-i2c@vger.kernel.org, linux-kselftest@vger.kernel.org,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, devel@driverdev.osuosl.org,
- Jonathan Corbet <corbet@lwn.net>, x86@kernel.org, linux-acpi@vger.kernel.org,
- xen-devel@lists.xenproject.org, devicetree@vger.kernel.org,
- linux-pm@vger.kernel.org, Mauro Carvalho Chehab <mchehab@infradead.org>,
- linux-gpio@vger.kernel.org, linux-amlogic@lists.infradead.org,
- bpf@vger.kernel.org, devel@acpica.org, patches@opensource.cirrus.com,
- linux-kernel@vger.kernel.org, linux-security-module@vger.kernel.org,
- netdev@vger.kernel.org, linux-integrity@vger.kernel.org,
- linuxppc-dev@lists.ozlabs.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: NeilBrown <neil@brown.name>, driverdev-devel@linuxdriverproject.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix several warnings and broken links.
+Hi Sergio,
 
-This series was generated against linux-next, but was rebased to be applied at
-docs-next. It should apply cleanly on either tree.
+On 29/5/19 6:08 pm, Sergio Paracuellos wrote:
+[snip]
+> I have added gpio consumer stuff and reorder a bit the code to be more
+> similar to 4.20.
+> 
+> I attach the patch. I have not try it to compile it, because my normal
+> environment is in another
+> computer and I am in the middle of moving from my current house and
+> don't have access to it, sorry.
+> So, please try this and let's see what happens.
 
-There's a git tree with all of them applied on the top of docs/docs-next
-at:
+No problem, thanks for the patch.
 
-https://git.linuxtv.org/mchehab/experimental.git/log/?h=fix_doc_links_v2
+Unfortunately always locks up on kernel boot:
 
+   ...
+   mt7621-pci-phy 1e149000.pcie-phy: Xtal is 40MHz
+   mt7621-pci 1e140000.pcie: Port 454043648 N_FTS = 0
+   mt7621-pci-phy 1e149000.pcie-phy: Xtal is 40MHz
+   mt7621-pci 1e140000.pcie: Port 454043648 N_FTS = 1
+   mt7621-pci-phy 1e14a000.pcie-phy: Xtal is 40MHz
+   mt7621-pci 1e140000.pcie: Port 454043648 N_FTS = 2
+   mt7621-pci 1e140000.pcie: pcie0 no card, disable it (RST & CLK)
+   mt7621-pci 1e140000.pcie: pcie1 no card, disable it (RST & CLK)
+   mt7621-pci 1e140000.pcie: pcie2 no card, disable it (RST & CLK)
 
-Mauro Carvalho Chehab (21):
-  ABI: sysfs-devices-system-cpu: point to the right docs
-  isdn: mISDN: remove a bogus reference to a non-existing doc
-  dt: fix broken references to nand.txt
-  docs: zh_CN: get rid of basic_profiling.txt
-  doc: it_IT: fix reference to magic-number.rst
-  docs: mm: numaperf.rst: get rid of a build warning
-  docs: bpf: get rid of two warnings
-  docs: mark orphan documents as such
-  docs: amd-memory-encryption.rst get rid of warnings
-  gpu: amdgpu: fix broken amdgpu_dma_buf.c references
-  gpu: i915.rst: Fix references to renamed files
-  docs: zh_CN: avoid duplicate citation references
-  docs: vm: hmm.rst: fix some warnings
-  docs: it: license-rules.rst: get rid of warnings
-  docs: gpio: driver.rst: fix a bad tag
-  docs: soundwire: locking: fix tags for a code-block
-  docs: security: trusted-encrypted.rst: fix code-block tag
-  docs: security: core.rst: Fix several warnings
-  docs: net: dpio-driver.rst: fix two codeblock warnings
-  docs: net: sja1105.rst: fix table format
-  docs: fix broken documentation links
+That was original linux-5.1 patched with your attached patch.
 
-Otto Sabart (1):
-  mfd: madera: Fix bad reference to pinctrl.txt file
+I'll try and dig down into that further today and get some
+feedback on where it is failing.
 
- .../ABI/testing/sysfs-devices-system-cpu      |  3 +-
- Documentation/accelerators/ocxl.rst           |  2 +
- Documentation/acpi/dsd/leds.txt               |  2 +-
- .../admin-guide/kernel-parameters.rst         |  6 +-
- .../admin-guide/kernel-parameters.txt         | 16 ++---
- Documentation/admin-guide/mm/numaperf.rst     |  5 +-
- Documentation/admin-guide/ras.rst             |  2 +-
- Documentation/arm/stm32/overview.rst          |  2 +
- .../arm/stm32/stm32f429-overview.rst          |  2 +
- .../arm/stm32/stm32f746-overview.rst          |  2 +
- .../arm/stm32/stm32f769-overview.rst          |  2 +
- .../arm/stm32/stm32h743-overview.rst          |  2 +
- .../arm/stm32/stm32mp157-overview.rst         |  2 +
- Documentation/bpf/btf.rst                     |  2 +
- .../bindings/mtd/amlogic,meson-nand.txt       |  2 +-
- .../devicetree/bindings/mtd/gpmc-nand.txt     |  2 +-
- .../devicetree/bindings/mtd/marvell-nand.txt  |  2 +-
- .../devicetree/bindings/mtd/tango-nand.txt    |  2 +-
- .../devicetree/bindings/net/fsl-enetc.txt     |  7 +-
- .../bindings/pci/amlogic,meson-pcie.txt       |  2 +-
- .../regulator/qcom,rpmh-regulator.txt         |  2 +-
- .../devicetree/booting-without-of.txt         |  2 +-
- Documentation/driver-api/gpio/board.rst       |  2 +-
- Documentation/driver-api/gpio/consumer.rst    |  2 +-
- Documentation/driver-api/gpio/driver.rst      |  2 +-
- .../driver-api/soundwire/locking.rst          |  4 +-
- .../firmware-guide/acpi/enumeration.rst       |  2 +-
- .../firmware-guide/acpi/method-tracing.rst    |  2 +-
- Documentation/gpu/amdgpu.rst                  |  4 +-
- Documentation/gpu/i915.rst                    |  6 +-
- Documentation/gpu/msm-crash-dump.rst          |  2 +
- Documentation/i2c/instantiating-devices       |  2 +-
- Documentation/interconnect/interconnect.rst   |  2 +
- Documentation/laptops/lg-laptop.rst           |  2 +
- .../freescale/dpaa2/dpio-driver.rst           |  4 +-
- Documentation/networking/dsa/sja1105.rst      |  6 +-
- Documentation/powerpc/isa-versions.rst        |  2 +
- Documentation/security/keys/core.rst          | 16 +++--
- .../security/keys/trusted-encrypted.rst       |  4 +-
- Documentation/sysctl/kernel.txt               |  4 +-
- .../translations/it_IT/process/howto.rst      |  2 +-
- .../it_IT/process/license-rules.rst           | 28 ++++----
- .../it_IT/process/magic-number.rst            |  2 +-
- .../it_IT/process/stable-kernel-rules.rst     |  4 +-
- .../translations/zh_CN/basic_profiling.txt    | 71 -------------------
- .../translations/zh_CN/process/4.Coding.rst   |  2 +-
- .../zh_CN/process/management-style.rst        |  4 +-
- .../zh_CN/process/programming-language.rst    | 28 ++++----
- .../virtual/kvm/amd-memory-encryption.rst     |  5 ++
- Documentation/virtual/kvm/vcpu-requests.rst   |  2 +
- Documentation/vm/hmm.rst                      |  9 ++-
- Documentation/x86/x86_64/5level-paging.rst    |  2 +-
- Documentation/x86/x86_64/boot-options.rst     |  4 +-
- .../x86/x86_64/fake-numa-for-cpusets.rst      |  2 +-
- MAINTAINERS                                   |  6 +-
- arch/arm/Kconfig                              |  2 +-
- arch/arm64/kernel/kexec_image.c               |  2 +-
- arch/powerpc/Kconfig                          |  2 +-
- arch/x86/Kconfig                              | 16 ++---
- arch/x86/Kconfig.debug                        |  2 +-
- arch/x86/boot/header.S                        |  2 +-
- arch/x86/entry/entry_64.S                     |  2 +-
- arch/x86/include/asm/bootparam_utils.h        |  2 +-
- arch/x86/include/asm/page_64_types.h          |  2 +-
- arch/x86/include/asm/pgtable_64_types.h       |  2 +-
- arch/x86/kernel/cpu/microcode/amd.c           |  2 +-
- arch/x86/kernel/kexec-bzimage64.c             |  2 +-
- arch/x86/kernel/pci-dma.c                     |  2 +-
- arch/x86/mm/tlb.c                             |  2 +-
- arch/x86/platform/pvh/enlighten.c             |  2 +-
- drivers/acpi/Kconfig                          | 10 +--
- drivers/isdn/mISDN/dsp_core.c                 |  2 -
- drivers/net/ethernet/faraday/ftgmac100.c      |  2 +-
- .../fieldbus/Documentation/fieldbus_dev.txt   |  4 +-
- drivers/vhost/vhost.c                         |  2 +-
- include/acpi/acpi_drivers.h                   |  2 +-
- include/linux/fs_context.h                    |  2 +-
- include/linux/lsm_hooks.h                     |  2 +-
- include/linux/mfd/madera/pdata.h              |  3 +-
- mm/Kconfig                                    |  2 +-
- security/Kconfig                              |  2 +-
- tools/include/linux/err.h                     |  2 +-
- .../Documentation/stack-validation.txt        |  4 +-
- tools/testing/selftests/x86/protection_keys.c |  2 +-
- 84 files changed, 183 insertions(+), 212 deletions(-)
- delete mode 100644 Documentation/translations/zh_CN/basic_profiling.txt
-
--- 
-2.21.0
-
+Regards
+Greg
 
 _______________________________________________
 devel mailing list
