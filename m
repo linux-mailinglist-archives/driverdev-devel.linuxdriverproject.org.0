@@ -1,62 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D171F305B0
-	for <lists+driverdev-devel@lfdr.de>; Fri, 31 May 2019 02:12:03 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 15DBE30657
+	for <lists+driverdev-devel@lfdr.de>; Fri, 31 May 2019 03:47:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 67A918506A;
-	Fri, 31 May 2019 00:12:02 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D73C7880A1;
+	Fri, 31 May 2019 01:47:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id s8c2SC_-F9dL; Fri, 31 May 2019 00:12:01 +0000 (UTC)
+	with ESMTP id Fyc9nNlfjuZy; Fri, 31 May 2019 01:47:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A619684520;
-	Fri, 31 May 2019 00:12:00 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3D62D87E93;
+	Fri, 31 May 2019 01:47:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 45B2B1BF34A
- for <devel@linuxdriverproject.org>; Fri, 31 May 2019 00:11:58 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C76C81BF98C
+ for <devel@linuxdriverproject.org>; Fri, 31 May 2019 01:47:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4147420431
- for <devel@linuxdriverproject.org>; Fri, 31 May 2019 00:11:58 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id C444A86962
+ for <devel@linuxdriverproject.org>; Fri, 31 May 2019 01:47:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ix7Mxfzo2hIu for <devel@linuxdriverproject.org>;
- Fri, 31 May 2019 00:11:57 +0000 (UTC)
+ with ESMTP id EMBrfXnXVq7z for <devel@linuxdriverproject.org>;
+ Fri, 31 May 2019 01:47:33 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 10E0B2042C
- for <devel@driverdev.osuosl.org>; Fri, 31 May 2019 00:11:57 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 06F3E8694A
+ for <devel@linuxdriverproject.org>; Fri, 31 May 2019 01:47:32 +0000 (UTC)
 Received: from localhost (ip67-88-213-2.z213-88-67.customer.algx.net
  [67.88.213.2])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id C7230262F7;
- Fri, 31 May 2019 00:11:56 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id B97002572F;
+ Fri, 31 May 2019 01:47:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1559261516;
- bh=BkaAkAYsINjPVicGtwZ4jKcRDAQKYbJITXtawe8Ms1c=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=TVN6SLSzV1E834OCk47mM45jcIm9bLRoI24rvMu01vyyCnjkWaiHvED1NnjdAwXxC
- VuQr4GqaR8Ia9HoR7Kw2/j6UFGentX1Yr3PK1MkGLQcsu9pK/jUgxbHtrL40TABbaf
- ClQTV4i08DGeKAEbxLpn13N7I1R4k27yuY9ME9iQ=
-Date: Thu, 30 May 2019 17:11:56 -0700
+ s=default; t=1559267252;
+ bh=+OeEewhapcQ/i3CLN4Cm0OE27Ar7683dWewuTciehp0=;
+ h=Date:From:To:Cc:Subject:From;
+ b=dO3JNUuP0GLdhhptxJJVh/Yf38FXkLmRItkZ2xE0xGm1IF7gwD/GY4mRKG0KFcs4V
+ cVOmlafd7ldyJ5RI6DS8AXWIDQchh+gZYW55bGmJ+yy4hHRfnyV0K2rezEhCmTas5O
+ A7b0NxI781PVVn8+8tuO3/wRtkl6zd9iIPgS99MI=
+Date: Thu, 30 May 2019 18:47:32 -0700
 From: Greg KH <gregkh@linuxfoundation.org>
-To: Matt Sickler <Matt.Sickler@daktronics.com>
-Subject: Re: [PATCH 1/4] staging: kpc2000: add spaces around operators in
- core.c
-Message-ID: <20190531001156.GA25210@kroah.com>
-References: <20190524110802.2953-1-simon@nikanor.nu>
- <20190524110802.2953-2-simon@nikanor.nu>
- <20190530210558.GA21455@kroah.com>
- <SN6PR02MB4016139989144F6C08CD4BDAEE180@SN6PR02MB4016.namprd02.prod.outlook.com>
+To: Linus Torvalds <torvalds@linux-foundation.org>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Stephen Rothwell <sfr@canb.auug.org.au>
+Subject: [GIT PULL] Staging/IIO driver fixes for 5.2-rc3
+Message-ID: <20190531014732.GA30765@kroah.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <SN6PR02MB4016139989144F6C08CD4BDAEE180@SN6PR02MB4016.namprd02.prod.outlook.com>
 User-Agent: Mutt/1.12.0 (2019-05-25)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -70,58 +66,98 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Simon =?iso-8859-1?Q?Sandstr=F6m?= <simon@nikanor.nu>
+Cc: devel@linuxdriverproject.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, May 30, 2019 at 10:57:09PM +0000, Matt Sickler wrote:
-> >From: devel <driverdev-devel-bounces@linuxdriverproject.org> On Behalf Of
-> >Greg KH
-> >On Fri, May 24, 2019 at 01:07:59PM +0200, Simon Sandstr=F6m wrote:
-> >> --- a/drivers/staging/kpc2000/kpc2000/core.c
-> >> +++ b/drivers/staging/kpc2000/kpc2000/core.c
-> >> @@ -276,18 +276,18 @@ static ssize_t kp2000_cdev_read(struct file *fil=
-p,
-> >
-> >This whole function just needs to be deleted, it's a horrible hack.
-> =
+The following changes since commit a188339ca5a396acc588e5851ed7e19f66b0ebd9:
 
-> >From the outside, I would definitely agree with you.  On the inside thou=
-gh, we
-> rely on this function to quickly identify what kind and version is runnin=
-g on
-> a given piece of hardware.  Since that same information is provided by an=
- ioctl,
-> I could be convinced to remove this API and write a userspace application=
- that
-> uses the ioctl to get the information and pretty prints it.
+  Linux 5.2-rc1 (2019-05-19 15:47:09 -0700)
 
-The ioctl needs to die as well, just use the sysfs entries instead, as
-you already have them :)
+are available in the Git repository at:
 
-> I'd be more inclined to agree with the deletion if it means the whole cha=
-r dev
-> interface can be removed from the kpc2000 driver.  That won't be straight=
-forward
-> as the ioctl is exposed through this interface.  We could remove the ioct=
-l, but
-> we'd need to ensure that all the same information is exposed via sysfs.
+  git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/sta=
+ging-5.2-rc3
 
-I think you are there already, what is missing?
+for you to fetch changes up to e61ff0fba72d981449c90b5299cebb74534b6f7c:
 
-> Our userspace side is all funneled through a single class, so changing
-> it to use sysfs wouldn't be too difficult.  I'd support that change if
-> someone wants to make it.
+  staging: kpc2000: Add dependency on MFD_CORE to kconfig symbol 'KPC2000' =
+(2019-05-24 09:41:09 +0200)
 
-I will be glad to do that, it's always nice to delete code :)
+----------------------------------------------------------------
+Staging/IIO driver fixes for 5.2-rc3
 
-thanks,
+Here are some Staging and IIO driver fixes to resolve some reported
+problems for 5.2-rc3.
 
-greg k-h
+Nothing major here, just some tiny changes, full details are in the
+shortlog.
+
+All have been in linux-next for a while with no reported issues.
+
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+----------------------------------------------------------------
+Chengguang Xu (1):
+      staging: erofs: set sb->s_root to NULL when failing from __getname()
+
+Dan Carpenter (4):
+      staging: kpc2000: double unlock in error handling in kpc_dma_transfer=
+()
+      Staging: vc04_services: Fix a couple error codes
+      staging: vc04_services: prevent integer overflow in create_pagelist()
+      staging: wilc1000: Fix some double unlock bugs in wilc_wlan_cleanup()
+
+Geordan Neukum (1):
+      staging: kpc2000: Add dependency on MFD_CORE to kconfig symbol 'KPC20=
+00'
+
+Greg Kroah-Hartman (1):
+      Merge tag 'iio-fixes-for-5.2a' of git://git.kernel.org/.../jic23/iio =
+into staging-linus:
+
+Max Filippov (1):
+      staging: kpc2000: fix build error on xtensa
+
+Ruslan Babayev (1):
+      iio: dac: ds4422/ds4424 fix chip verification
+
+Sean Nyekjaer (1):
+      iio: adc: ti-ads8688: fix timestamp is not updated in buffer
+
+Steve Moskovchenko (1):
+      iio: imu: mpu6050: Fix FIFO layout for ICM20602
+
+Tim Collier (1):
+      staging: wlan-ng: fix adapter initialization failure
+
+Tomer Maimon (1):
+      iio: adc: modify NPCM ADC read reference voltage
+
+Vincent Stehl=E9 (1):
+      iio: adc: ads124: avoid buffer overflow
+
+YueHaibing (1):
+      staging: kpc2000: Fix build error without CONFIG_UIO
+
+ drivers/iio/adc/npcm_adc.c                         |  2 +-
+ drivers/iio/adc/ti-ads124s08.c                     |  2 +-
+ drivers/iio/adc/ti-ads8688.c                       |  2 +-
+ drivers/iio/dac/ds4424.c                           |  2 +-
+ drivers/iio/imu/inv_mpu6050/inv_mpu_core.c         | 46 ++++++++++++++++++=
+++--
+ drivers/iio/imu/inv_mpu6050/inv_mpu_iio.h          | 20 +++++++++-
+ drivers/iio/imu/inv_mpu6050/inv_mpu_ring.c         |  3 ++
+ drivers/staging/erofs/super.c                      |  1 +
+ drivers/staging/kpc2000/Kconfig                    |  2 +
+ drivers/staging/kpc2000/kpc_dma/fileops.c          |  4 +-
+ .../vc04_services/bcm2835-camera/controls.c        |  4 +-
+ .../interface/vchiq_arm/vchiq_2835_arm.c           |  9 +++++
+ drivers/staging/wilc1000/wilc_wlan.c               |  8 +++-
+ drivers/staging/wlan-ng/hfa384x_usb.c              |  3 +-
+ 14 files changed, 91 insertions(+), 17 deletions(-)
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
