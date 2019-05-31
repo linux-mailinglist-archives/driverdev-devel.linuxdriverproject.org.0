@@ -1,75 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 210F530C82
-	for <lists+driverdev-devel@lfdr.de>; Fri, 31 May 2019 12:26:04 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id EC18630CE0
+	for <lists+driverdev-devel@lfdr.de>; Fri, 31 May 2019 12:52:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 21106869B9;
-	Fri, 31 May 2019 10:26:02 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6D9B720410;
+	Fri, 31 May 2019 10:52:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WoRCOM7zWz65; Fri, 31 May 2019 10:26:01 +0000 (UTC)
+	with ESMTP id ETWtkOdl6kFz; Fri, 31 May 2019 10:52:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6F506868B6;
-	Fri, 31 May 2019 10:26:00 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by silver.osuosl.org (Postfix) with ESMTP id 911212033F;
+	Fri, 31 May 2019 10:52:41 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id EC8221BF97E
- for <devel@linuxdriverproject.org>; Fri, 31 May 2019 10:25:58 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 12FE81BF97F
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 31 May 2019 10:52:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E988486942
- for <devel@linuxdriverproject.org>; Fri, 31 May 2019 10:25:58 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 100FB876D1
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 31 May 2019 10:52:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WJuJJp5893E9 for <devel@linuxdriverproject.org>;
- Fri, 31 May 2019 10:25:58 +0000 (UTC)
+ with ESMTP id F6Ns-gENNg08
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 31 May 2019 10:52:37 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtp65.ord1d.emailsrvr.com (smtp65.ord1d.emailsrvr.com
- [184.106.54.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3092A868B6
- for <devel@driverdev.osuosl.org>; Fri, 31 May 2019 10:25:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=g001.emailsrvr.com;
- s=20190322-9u7zjiwi; t=1559298357;
- bh=+RyXWqRhvrx46/X9uDvSyUTN7HW9qCylh6KVuj6gMts=;
- h=Subject:To:From:Date:From;
- b=HrTvH2rfJc3JxXza8WwraZ7VbrPncQJsSJinzEHEoln6GccBuDQxq9B4g5kyYoWOW
- JryjYPZvi2RhKOAn/cRTIKCiR7E7gxr5baAfAvuiRyCxKz8Tf8EEfSafxDR5eygFA6
- hTGsVLtCRHOrVbZ3D+gQxJlDHKL6AV5CpB7svr3E=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
- s=20190130-41we5z8j; t=1559298357;
- bh=+RyXWqRhvrx46/X9uDvSyUTN7HW9qCylh6KVuj6gMts=;
- h=Subject:To:From:Date:From;
- b=cvZXbugWw23POqggq5TbKOn/+todCezZby6ZEdzFBsKDmXgNR9jm2aLsDhloYR+Lj
- lRvmKBq1ClFcHCVHfETPN73C/u7VCG8TK+SMzqKlp3kgtLsvG+sqSkp0iIL261YmRT
- WJm5WvH2OQHZEeZyWcwW05BiSM6iBcET1avUYKlI=
-X-Auth-ID: abbotti@mev.co.uk
-Received: by smtp1.relay.ord1d.emailsrvr.com (Authenticated sender:
- abbotti-AT-mev.co.uk) with ESMTPSA id 158AA4015F; 
- Fri, 31 May 2019 06:25:55 -0400 (EDT)
-X-Sender-Id: abbotti@mev.co.uk
-Received: from [10.0.0.62] (remote.quintadena.com [81.133.34.160])
- (using TLSv1.2 with cipher AES128-SHA) by 0.0.0.0:465 (trex/5.7.12);
- Fri, 31 May 2019 06:25:57 -0400
-Subject: Re: [PATCH] staging: comedi: Remove variable runflags
-To: Nishka Dasgupta <nishkadg.linux@gmail.com>, hsweeten@visionengravers.com, 
- gregkh@linuxfoundation.org, olsonse@umich.edu, jkhasdev@gmail.com,
- giulio.benetti@micronovasrl.com, nishadkamdar@gmail.com,
- kas.sandesh@gmail.com, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-References: <20190530205131.29955-1-nishkadg.linux@gmail.com>
-From: Ian Abbott <abbotti@mev.co.uk>
-Organization: MEV Ltd.
-Message-ID: <8292224d-9c4a-d29e-4a86-d3352fcd2be1@mev.co.uk>
-Date: Fri, 31 May 2019 11:25:54 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+Received: from kadath.azazel.net (kadath.azazel.net [81.187.231.250])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B63BE87666
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 31 May 2019 10:52:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=azazel.net; 
+ s=20190108;
+ h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
+ Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=uJIqt6LeFJNvl2TVgYWc6OpCXgcePzPRRxfhBKWA3SA=; b=ENafvR56EGSVJ9BuNICxI42/Ba
+ VdlV5I13xBJTy04j84sENaQSh1iFgueJrDf1wXzt9W1wAvdO8hIaN2I5GE+KIkvAFpBwuc43mh+v2
+ aSPDBask4d2vizpNH/Pg/Qbr5Y4rjkh8/3NUSNNmNCpb9bgLf4fiKUYApLM2fg+zQY/jHVhGXYAU0
+ EgJ2N39VqkYpHa8ely2Lm91frsN0O7C8pNFlkQhHYGAFKS8lXRUD1+E4VQ1OA1jU2pJZboo7Ubsrm
+ d095/0CJdVJkHRUY+XLWTKXO55gj4f9u9sld0yaVvyFlJFlgB50bZ0vtkEsl7d2pkBtZJ+JwSIA62
+ UcdzYahw==;
+Received: from ulthar.dreamlands ([192.168.96.2])
+ by kadath.azazel.net with esmtp (Exim 4.89)
+ (envelope-from <jeremy@azazel.net>)
+ id 1hWf9D-0006f6-R7; Fri, 31 May 2019 11:52:31 +0100
+From: Jeremy Sowden <jeremy@azazel.net>
+To: Linux Driver Project Developer List
+ <driverdev-devel@linuxdriverproject.org>
+Subject: [PATCH 0/2] staging: kpc2000: replace per-card misc devices.
+Date: Fri, 31 May 2019 11:52:29 +0100
+Message-Id: <20190531105231.26380-1-jeremy@azazel.net>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190531001156.GA25210@kroah.com>
+References: <20190531001156.GA25210@kroah.com>
 MIME-Version: 1.0
-In-Reply-To: <20190530205131.29955-1-nishkadg.linux@gmail.com>
-Content-Language: en-GB
+X-SA-Exim-Connect-IP: 192.168.96.2
+X-SA-Exim-Mail-From: jeremy@azazel.net
+X-SA-Exim-Scanned: No (on kadath.azazel.net); SAEximRunCond expanded to false
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,52 +77,29 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: Greg KH <gregkh@linuxfoundation.org>,
+ =?UTF-8?q?Simon=20Sandstr=C3=B6m?= <simon@nikanor.nu>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 30/05/2019 21:51, Nishka Dasgupta wrote:
-> Remove variable runflags and use its value directly. Issue found with
-> checkpatch.
-> 
-> Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
-> ---
->   drivers/staging/comedi/comedi_fops.c | 8 ++------
->   1 file changed, 2 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/staging/comedi/comedi_fops.c b/drivers/staging/comedi/comedi_fops.c
-> index f6d1287c7b83..b84ee9293903 100644
-> --- a/drivers/staging/comedi/comedi_fops.c
-> +++ b/drivers/staging/comedi/comedi_fops.c
-> @@ -676,16 +676,12 @@ EXPORT_SYMBOL_GPL(comedi_is_subdevice_running);
->   
->   static bool __comedi_is_subdevice_running(struct comedi_subdevice *s)
->   {
-> -	unsigned int runflags = __comedi_get_subdevice_runflags(s);
-> -
-> -	return comedi_is_runflags_running(runflags);
-> +	return comedi_is_runflags_running(__comedi_get_subdevice_runflags(s));
->   }
->   
->   bool comedi_can_auto_free_spriv(struct comedi_subdevice *s)
->   {
-> -	unsigned int runflags = __comedi_get_subdevice_runflags(s);
-> -
-> -	return runflags & COMEDI_SRF_FREE_SPRIV;
-> +	return __comedi_get_subdevice_runflags(s) & COMEDI_SRF_FREE_SPRIV;
->   }
->   
->   /**
-> 
+Each card has a misc device associated with it.  The devices are used to get
+access to various attributes of the hardware.  Most of these attributes are also
+available via sysfs.  Therefore, we make all the attributes available via sysfs
+and remove the devices.
 
-I couldn't reproduce this checkpatch issue, even with '--subjective'.
+Jeremy Sowden (2):
+  staging: kpc2000: export more device attributes via sysfs.
+  staging: kpc2000: removed misc device.
+
+ drivers/staging/kpc2000/kpc2000/core.c | 184 ++++++++-----------------
+ drivers/staging/kpc2000/kpc2000/pcie.h |   2 -
+ 2 files changed, 59 insertions(+), 127 deletions(-)
 
 -- 
--=( Ian Abbott <abbotti@mev.co.uk> || Web: www.mev.co.uk )=-
--=( MEV Ltd. is a company registered in England & Wales. )=-
--=( Registered number: 02862268.  Registered address:    )=-
--=( 15 West Park Road, Bramhall, STOCKPORT, SK7 3JZ, UK. )=-
+2.20.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
