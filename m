@@ -1,82 +1,86 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7480A30E58
-	for <lists+driverdev-devel@lfdr.de>; Fri, 31 May 2019 14:47:21 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A9B3A30E5B
+	for <lists+driverdev-devel@lfdr.de>; Fri, 31 May 2019 14:48:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 34E902042F;
-	Fri, 31 May 2019 12:47:19 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 996BB882D3;
+	Fri, 31 May 2019 12:48:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YcNygDGA7tnc; Fri, 31 May 2019 12:47:18 +0000 (UTC)
+	with ESMTP id tLCOAUKsVzsz; Fri, 31 May 2019 12:48:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 8145C2041A;
-	Fri, 31 May 2019 12:47:16 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 81211881DE;
+	Fri, 31 May 2019 12:48:02 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BCA811BF23C
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 31 May 2019 12:47:14 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 745E51BF23C
+ for <devel@linuxdriverproject.org>; Fri, 31 May 2019 12:48:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B816086B0E
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 31 May 2019 12:47:14 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6334285E7C
+ for <devel@linuxdriverproject.org>; Fri, 31 May 2019 12:48:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XMPMTH2+gQ3N
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 31 May 2019 12:47:13 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from icp-osb-irony-out8.external.iinet.net.au
- (icp-osb-irony-out8.external.iinet.net.au [203.59.1.225])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5D25186AE3
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 31 May 2019 12:47:13 +0000 (UTC)
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-Anti-Spam-Result: =?us-ascii?q?A2ANAABtIfFc/zXSMGcNWBoBAQEBAQI?=
- =?us-ascii?q?BAQEBBwIBAQEBgVQCAQEBAQsBhCWEFJNSAQEBAQEBBoE1g1+FcYlxhTCBZwk?=
- =?us-ascii?q?BAQEBAQEBAQE3AQEBhD8Cgyc3Bg4BAwEBAQQBAQEBAwGGXwEBAQECASMVQRA?=
- =?us-ascii?q?LDQsCAiYCAlcGDQYCAQGDHoF3BalVcYEvGoUtgyeBRoEMKAGBYIoMeIEHgRA?=
- =?us-ascii?q?BJ4Ftfj6ELYMhglgEi3iHdJUECYIPiwqIHAYbgiGGcINvA4lhLY11lnqBejM?=
- =?us-ascii?q?aCCgIgyeQZGCOfAEB?=
-X-IPAS-Result: =?us-ascii?q?A2ANAABtIfFc/zXSMGcNWBoBAQEBAQIBAQEBBwIBAQEBg?=
- =?us-ascii?q?VQCAQEBAQsBhCWEFJNSAQEBAQEBBoE1g1+FcYlxhTCBZwkBAQEBAQEBAQE3A?=
- =?us-ascii?q?QEBhD8Cgyc3Bg4BAwEBAQQBAQEBAwGGXwEBAQECASMVQRALDQsCAiYCAlcGD?=
- =?us-ascii?q?QYCAQGDHoF3BalVcYEvGoUtgyeBRoEMKAGBYIoMeIEHgRABJ4Ftfj6ELYMhg?=
- =?us-ascii?q?lgEi3iHdJUECYIPiwqIHAYbgiGGcINvA4lhLY11lnqBejMaCCgIgyeQZGCOf?=
- =?us-ascii?q?AEB?=
-X-IronPort-AV: E=Sophos;i="5.60,535,1549900800"; d="scan'208";a="222764333"
-Received: from unknown (HELO [10.44.0.192]) ([103.48.210.53])
- by icp-osb-irony-out8.iinet.net.au with ESMTP; 31 May 2019 20:47:09 +0800
-Subject: Re: staging: mt7621-pci: factor out 'mt7621_pcie_enable_port' function
-To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-References: <678a78fd-a7f4-5a1f-9819-51c5a0731877@kernel.org>
- <5a7dc59b-f9ef-beab-7221-231f64716d5a@kernel.org>
- <CAMhs-H-8EQPPy0vMFCG-PKu3RLz4_d0ucO6bCgMCfMuD7ZYRSg@mail.gmail.com>
- <a2f6ee9c-dc4e-a7e7-8723-880a3472e9ba@kernel.org>
- <CAMhs-H8der72iXY0NFhXLUyTHvsBZ3t5VUagfgiO4CwuXhAXKw@mail.gmail.com>
- <9224bde1-ea67-db9f-570f-178bbc8e6b40@kernel.org>
- <CAMhs-H8vutK=KLHVGwpvY2bmx3khpjW5U=2jC=-pEV_HLZP5-Q@mail.gmail.com>
- <4aa016a4-9fac-5273-0f7f-d372f0de34ba@kernel.org>
- <CAMhs-H9M8D2nWibZqKeBEZ8y+E38iTRk7sB28vHb0-P5tU8+EA@mail.gmail.com>
- <9e24fe2f-42df-7b1f-2cd5-82d3f82f688b@kernel.org>
- <CAMhs-H-GtrJZKx2Y3GhoXn9O=C4xx1QAeQ1CYt51LwrFY7y1sQ@mail.gmail.com>
- <7335025e-372d-c5bd-80ee-75b3e0c61249@kernel.org>
- <CAMhs-H_zFUecOu95U-xekQ3Da5psbc6YdQttosCJbZi5vetKSw@mail.gmail.com>
- <790e5f32-5c70-e277-46ad-7956aaf32af3@kernel.org>
- <ddd690f9-a2d6-5fbf-260e-9e535d81b3e6@kernel.org>
- <CAMhs-H-x_O21iq=Xm6LDFTTR4xVS4NrN9ePiCLsLpnxVQXieKA@mail.gmail.com>
-From: Greg Ungerer <gerg@kernel.org>
-Message-ID: <7da1739e-2afd-8ff6-29c9-2fa1c53f688d@kernel.org>
-Date: Fri, 31 May 2019 22:47:07 +1000
+ with ESMTP id JfDM3y78Wmsc for <devel@linuxdriverproject.org>;
+ Fri, 31 May 2019 12:47:58 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id DBF8685DF5
+ for <devel@driverdev.osuosl.org>; Fri, 31 May 2019 12:47:58 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id h2so769659pgg.1
+ for <devel@driverdev.osuosl.org>; Fri, 31 May 2019 05:47:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:references:from:message-id:date:user-agent:mime-version
+ :in-reply-to:content-language:content-transfer-encoding;
+ bh=mrOvROKkD6rEtKj8wt1DbcS2uRCJ3D/8JqzJE6LAZsI=;
+ b=Tz/bmVgg+/llAxfI4JKND90fWUcOivF2HhnGibjeZarDNFSasZgVY8nSO1NWp/QGVq
+ Cv1dYM51wKg++UR1jbh1/EuEKhV8SBL32Wz30rcr0vHi765piUJLR6zAWCwJJnVOGQ1n
+ n0pHVSNjw3OWjwdMaBeetNsjmwe85cMWRirG5NiAX3sGPmqfRzHvZwbzOyHrqmF6RQsm
+ JsXDmAawjHvHTUHJw0QWneRhH5U6ioVjGTWDbYdP267LS993J4hEj+RZNPNltTIM4aTG
+ 5ZeOTrSNGFQBXQCBEhW+hjDpboaU321kcz1hgNUtTzXjRr07HEG8zW/YdwQolBi6O8aU
+ Tcbw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=mrOvROKkD6rEtKj8wt1DbcS2uRCJ3D/8JqzJE6LAZsI=;
+ b=M8qIPgFBvA0GiZ1PW2scF6J0rwD2pN850SpX7zMGK6g0s9SA9bbN08jz3iAyD+ciS4
+ nhRxMnD48TUE6MTW5dLkAnUSjxTtuGLCiPu9UZO63jN5ROh8syhhVbb0CTzCg6cApA7n
+ HVJCCx7M6UMxBjM5GL61Fwoj97eKk7QTKvrFDD0GwcmjuEo49hEyn5FWl/vwS1OfbS8r
+ RuEmKposu/XmjX9iBps6yIY7ZgwwwyAWBXGS4mMGTnzPphTshkF8XoyIynDEKM14kOqI
+ seZNfxOLidGMzCxlboNpuiq4Scq9u4IjcPwH9JkZG67izy6upnAIL51d24aLzwr0Iv4Y
+ R7nQ==
+X-Gm-Message-State: APjAAAUm66S1h3iUPWoJkgK6hcY4JIIkF80VxgzbtYMuRHPbVARQPLBF
+ Joslyrkf0bJlMBNrCqGZA4Y=
+X-Google-Smtp-Source: APXvYqzB6F7GVc2P/vdc99tPiND53CNErHrnx/6SB9dA9xIarGsroG8GHVpNUdhbPwiRTCuWtmIlSA==
+X-Received: by 2002:a17:90a:5d15:: with SMTP id
+ s21mr8923444pji.125.1559306878540; 
+ Fri, 31 May 2019 05:47:58 -0700 (PDT)
+Received: from [10.0.2.15] ([157.40.69.0])
+ by smtp.gmail.com with ESMTPSA id q7sm10413838pjb.0.2019.05.31.05.47.53
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 31 May 2019 05:47:57 -0700 (PDT)
+Subject: Re: [PATCH] staging: comedi: Remove variable runflags
+To: Ian Abbott <abbotti@mev.co.uk>, hsweeten@visionengravers.com,
+ gregkh@linuxfoundation.org, olsonse@umich.edu, jkhasdev@gmail.com,
+ giulio.benetti@micronovasrl.com, nishadkamdar@gmail.com,
+ kas.sandesh@gmail.com, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+References: <20190530205131.29955-1-nishkadg.linux@gmail.com>
+ <8292224d-9c4a-d29e-4a86-d3352fcd2be1@mev.co.uk>
+From: Nishka Dasgupta <nishkadg.linux@gmail.com>
+Message-ID: <ceb54997-3057-81df-f3f0-e04b36e950c4@gmail.com>
+Date: Fri, 31 May 2019 18:17:47 +0530
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <CAMhs-H-x_O21iq=Xm6LDFTTR4xVS4NrN9ePiCLsLpnxVQXieKA@mail.gmail.com>
+In-Reply-To: <8292224d-9c4a-d29e-4a86-d3352fcd2be1@mev.co.uk>
 Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -90,113 +94,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: NeilBrown <neil@brown.name>, driverdev-devel@linuxdriverproject.org
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Sergio,
-
-On 31/5/19 10:37 pm, Sergio Paracuellos wrote:
-> On Thu, May 30, 2019 at 3:46 AM Greg Ungerer <gerg@kernel.org> wrote:
->> On 30/5/19 10:44 am, Greg Ungerer wrote:
->>> On 29/5/19 6:08 pm, Sergio Paracuellos wrote:
->>> [snip]
->>>> I have added gpio consumer stuff and reorder a bit the code to be more
->>>> similar to 4.20.
->>>>
->>>> I attach the patch. I have not try it to compile it, because my normal
->>>> environment is in another
->>>> computer and I am in the middle of moving from my current house and
->>>> don't have access to it, sorry.
->>>> So, please try this and let's see what happens.
->>>
->>> No problem, thanks for the patch.
->>>
->>> Unfortunately always locks up on kernel boot:
->>>
->>>     ...
->>>     mt7621-pci-phy 1e149000.pcie-phy: Xtal is 40MHz
->>>     mt7621-pci 1e140000.pcie: Port 454043648 N_FTS = 0
->>>     mt7621-pci-phy 1e149000.pcie-phy: Xtal is 40MHz
->>>     mt7621-pci 1e140000.pcie: Port 454043648 N_FTS = 1
->>>     mt7621-pci-phy 1e14a000.pcie-phy: Xtal is 40MHz
->>>     mt7621-pci 1e140000.pcie: Port 454043648 N_FTS = 2
->>>     mt7621-pci 1e140000.pcie: pcie0 no card, disable it (RST & CLK)
->>>     mt7621-pci 1e140000.pcie: pcie1 no card, disable it (RST & CLK)
->>>     mt7621-pci 1e140000.pcie: pcie2 no card, disable it (RST & CLK)
->>>
->>> That was original linux-5.1 patched with your attached patch.
->>>
->>> I'll try and dig down into that further today and get some
->>> feedback on where it is failing.
->>
->> The first problem I see is that the GPIO MODE register bits for
->> PERST_MODE are set to 00, so in "PCIe Reset" mode. If I hack in
->> a register update for that with:
->>
->>       /* Force PERST PCIe reset into GPIO mode */
->>       *(unsigned int *)(0xbe000060) |=  BIT(10);
-> 
-> I have set GPIO mode for this in the new attached patch.
-> 
->>
->> I do that at the start of mt7621_pcie_init_ports(). With that in
->> place I get further:
->>
->>     mt7621-pci-phy 1e149000.pcie-phy: Xtal is 40MHz
->>     mt7621-pci 1e140000.pcie: Port 454043648 N_FTS = 0
->>     mt7621-pci-phy 1e149000.pcie-phy: Xtal is 40MHz
->>     mt7621-pci 1e140000.pcie: Port 454043648 N_FTS = 1
->>     mt7621-pci-phy 1e14a000.pcie-phy: Xtal is 40MHz
->>     mt7621-pci 1e140000.pcie: Port 454043648 N_FTS = 2
->>     mt7621-pci 1e140000.pcie: pcie1 no card, disable it (RST & CLK)
->>     mt7621-pci 1e140000.pcie: pcie2 no card, disable it (RST & CLK)
->>     mt7621-pci 1e140000.pcie: PCIE0 enabled
->>     mt7621-pci 1e140000.pcie: PCI coherence region base: 0x60000000, mask/settings: 0xf0000002
->>     mt7621-pci 1e140000.pcie: PCI host bridge to bus 0000:00
->>     pci_bus 0000:00: root bus resource [io  0xffffffff]
->>     pci_bus 0000:00: root bus resource [mem 0x60000000-0x6fffffff]
->>     pci_bus 0000:00: root bus resource [bus 00-ff]
->>     pci 0000:00:00.0: bridge configuration invalid ([bus 00-00]), reconfiguring
->>
->> It hangs there...
-> 
-> I had review the boot order is working for you in version 4.20 and the
-> order with the new patch applied. There were
-> only one difference, the place where interrupt bits are set. I have
-> changed that also in the new attached patch.
-> 
-> For me, the order now and how the different boot steps are being done
-> in v4.20 are the same.
-> 
-> One other thing I don't really understand why is needed but is in the
-> v4.20 code are this two lines:
-> 
-> pcie_write(pcie, 0xffffffff, RALINK_PCI_MEMBASE);
-> pcie_write(pcie, RALINK_PCI_IO_MAP_BASE, RALINK_PCI_IOBASE);
-> 
-> These are added also in the current patch.
-
-Thats great, thanks for your efforts on this.
-I will try first thing Monday morning my time and get back to you.
-
-Regards
-Greg
-
-
-
->> Regards
->> Greg
-> 
-> Hope this helps.
-> 
-> Best regards,
->      Sergio Paracuellos
->>
->>
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gMzEvMDUvMTkgMzo1NSBQTSwgSWFuIEFiYm90dCB3cm90ZToKPiBPbiAzMC8wNS8yMDE5IDIx
+OjUxLCBOaXNoa2EgRGFzZ3VwdGEgd3JvdGU6Cj4+IFJlbW92ZSB2YXJpYWJsZSBydW5mbGFncyBh
+bmQgdXNlIGl0cyB2YWx1ZSBkaXJlY3RseS4gSXNzdWUgZm91bmQgd2l0aAo+PiBjaGVja3BhdGNo
+Lgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBOaXNoa2EgRGFzZ3VwdGEgPG5pc2hrYWRnLmxpbnV4QGdt
+YWlsLmNvbT4KPj4gLS0tCj4+IMKgIGRyaXZlcnMvc3RhZ2luZy9jb21lZGkvY29tZWRpX2ZvcHMu
+YyB8IDggKystLS0tLS0KPj4gwqAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgNiBk
+ZWxldGlvbnMoLSkKPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9jb21lZGkvY29t
+ZWRpX2ZvcHMuYyAKPj4gYi9kcml2ZXJzL3N0YWdpbmcvY29tZWRpL2NvbWVkaV9mb3BzLmMKPj4g
+aW5kZXggZjZkMTI4N2M3YjgzLi5iODRlZTkyOTM5MDMgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMv
+c3RhZ2luZy9jb21lZGkvY29tZWRpX2ZvcHMuYwo+PiArKysgYi9kcml2ZXJzL3N0YWdpbmcvY29t
+ZWRpL2NvbWVkaV9mb3BzLmMKPj4gQEAgLTY3NiwxNiArNjc2LDEyIEBAIEVYUE9SVF9TWU1CT0xf
+R1BMKGNvbWVkaV9pc19zdWJkZXZpY2VfcnVubmluZyk7Cj4+IMKgIHN0YXRpYyBib29sIF9fY29t
+ZWRpX2lzX3N1YmRldmljZV9ydW5uaW5nKHN0cnVjdCBjb21lZGlfc3ViZGV2aWNlICpzKQo+PiDC
+oCB7Cj4+IC3CoMKgwqAgdW5zaWduZWQgaW50IHJ1bmZsYWdzID0gX19jb21lZGlfZ2V0X3N1YmRl
+dmljZV9ydW5mbGFncyhzKTsKPj4gLQo+PiAtwqDCoMKgIHJldHVybiBjb21lZGlfaXNfcnVuZmxh
+Z3NfcnVubmluZyhydW5mbGFncyk7Cj4+ICvCoMKgwqAgcmV0dXJuIAo+PiBjb21lZGlfaXNfcnVu
+ZmxhZ3NfcnVubmluZyhfX2NvbWVkaV9nZXRfc3ViZGV2aWNlX3J1bmZsYWdzKHMpKTsKPj4gwqAg
+fQo+PiDCoCBib29sIGNvbWVkaV9jYW5fYXV0b19mcmVlX3Nwcml2KHN0cnVjdCBjb21lZGlfc3Vi
+ZGV2aWNlICpzKQo+PiDCoCB7Cj4+IC3CoMKgwqAgdW5zaWduZWQgaW50IHJ1bmZsYWdzID0gX19j
+b21lZGlfZ2V0X3N1YmRldmljZV9ydW5mbGFncyhzKTsKPj4gLQo+PiAtwqDCoMKgIHJldHVybiBy
+dW5mbGFncyAmIENPTUVESV9TUkZfRlJFRV9TUFJJVjsKPj4gK8KgwqDCoCByZXR1cm4gX19jb21l
+ZGlfZ2V0X3N1YmRldmljZV9ydW5mbGFncyhzKSAmIENPTUVESV9TUkZfRlJFRV9TUFJJVjsKPj4g
+wqAgfQo+PiDCoCAvKioKPj4KPiAKPiBJIGNvdWxkbid0IHJlcHJvZHVjZSB0aGlzIGNoZWNrcGF0
+Y2ggaXNzdWUsIGV2ZW4gd2l0aCAnLS1zdWJqZWN0aXZlJy4KCkknbSBzb3JyeSwgdGhhdCB3YXMg
+ZXh0cmVtZWx5IGNhcmVsZXNzIG9mIG1lLiBJIHVzZWQgQ29jY2luZWxsZSB0byBmaW5kIAp0aGlz
+LCBub3QgQ2hlY2twYXRjaC4KSGVyZSBpcyB0aGUgQ29jY2luZWxsZSBzY3JpcHQgSSB1c2VkOgoK
+QEBpZGVudGlmaWVyIGkxLCBpMiwgZjEsIGYyOyB0eXBlIFQ7IGV4cHJlc3Npb24gZTEsIGUyOyBz
+dGF0ZW1lbnQgUzEsIFMyO0BACigKLSBUIGkxID0gZjEoLi4uKTsKfAotIFQgaTEgPSBlMTsKKQou
+Li4gd2hlbiAhPSBlMiA9IDwrLi4uaTEuLi4rPgogICAgIHdoZW4gIT0gaWYgKDwrLi4uaTEuLi4r
+PikgUzEgZWxzZSBTMgogICAgIHdoZW4gIT0gZjIoLi4uLDwrLi4uaTEuLi4rPiwuLi4pCiAgICAg
+d2hlbiAhPSBpMS0+aTIKICAgICB3aGVuICE9IGkyWzwrLi4uaTEuLi4rPl0KICAgICB3aGVuICE9
+IHdoaWxlKDwrLi4uaTEuLi4rPikgUzEKICAgICB3aGVuICE9IGZvciguLi47PCsuLi5pMS4uLis+
+Oy4uLikgUzEKCkFnYWluLCBJJ20gc29ycnkgZm9yIHRoZSBjb25mdXNpb247IEkgZG9uJ3Qga25v
+dyB3aHkgaXQgaGFwcGVuZWQsIGJ1dCBpdCAKd29uJ3QgaGFwcGVuIGFnYWluLgoKTmlzaGthCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWls
+aW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2Lmxp
+bnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
