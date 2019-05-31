@@ -2,91 +2,51 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id F3E7730EE5
-	for <lists+driverdev-devel@lfdr.de>; Fri, 31 May 2019 15:31:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D782630F00
+	for <lists+driverdev-devel@lfdr.de>; Fri, 31 May 2019 15:39:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F0431855CF;
-	Fri, 31 May 2019 13:31:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C55A28699B;
+	Fri, 31 May 2019 13:39:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id blIWFVj28zXL; Fri, 31 May 2019 13:31:46 +0000 (UTC)
+	with ESMTP id 6gzXHoWfWIrQ; Fri, 31 May 2019 13:39:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BCC4184497;
-	Fri, 31 May 2019 13:31:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6B7A686933;
+	Fri, 31 May 2019 13:39:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id EF3F91BF29E
- for <devel@linuxdriverproject.org>; Fri, 31 May 2019 13:31:43 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E79301BF23C
+ for <devel@linuxdriverproject.org>; Fri, 31 May 2019 13:39:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id EA48C8493F
- for <devel@linuxdriverproject.org>; Fri, 31 May 2019 13:31:43 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E4B6187D8E
+ for <devel@linuxdriverproject.org>; Fri, 31 May 2019 13:39:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Uz58fDuKqetf for <devel@linuxdriverproject.org>;
- Fri, 31 May 2019 13:31:42 +0000 (UTC)
+ with ESMTP id 8MXFJnG2VvTw for <devel@linuxdriverproject.org>;
+ Fri, 31 May 2019 13:39:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B5F1484B88
- for <devel@driverdev.osuosl.org>; Fri, 31 May 2019 13:31:42 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x4VDNQYu041473;
- Fri, 31 May 2019 13:31:40 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2018-07-02;
- bh=0Pb+9bAmSfuo0G6M0SFQAFdEYxAVKO5NFrhx83VLndc=;
- b=Eneutn7oWksclz7rOTEvwJAO0C9V/sg1kp88WXETStRZwtT+VkcpRssNKomPSPaLmwFo
- dOLbuwGSlAeXoYl+XCalDCgAkIfD2RLqxR2xanQylWpGTZGlyqdpberAPgs9H+/U5xD+
- F5SAAOVS+kU2BSozbQFtcAtDB6hweWWrMqehPrOTR1tGc46aRI+z7K39eHUqLybZv3xb
- PaVD2cVW4ka8/+Uj1dxhA2I6VRtw3bAnkVoSk9GGIfRwc59tqhgBwqhlZyOdjF3fbR0f
- 3Mgxw6LL8R+cGjGRaMjk+rMGaP66IEPdxMh7r+u4Eg/onUT13JopTLIjUEW1dQ902lUy bg== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2130.oracle.com with ESMTP id 2spw4tx8jy-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 31 May 2019 13:31:40 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x4VDTvZF101097;
- Fri, 31 May 2019 13:31:39 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by aserp3030.oracle.com with ESMTP id 2su3y497kk-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 31 May 2019 13:31:39 +0000
-Received: from abhmp0003.oracle.com (abhmp0003.oracle.com [141.146.116.9])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x4VDVWQf013237;
- Fri, 31 May 2019 13:31:32 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Fri, 31 May 2019 06:31:32 -0700
-Date: Fri, 31 May 2019 16:31:22 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Nishka Dasgupta <nishkadg.linux@gmail.com>
-Subject: Re: [PATCH] staging: comedi: Remove variable runflags
-Message-ID: <20190531133122.GF31203@kadam>
-References: <20190530205131.29955-1-nishkadg.linux@gmail.com>
- <8292224d-9c4a-d29e-4a86-d3352fcd2be1@mev.co.uk>
- <ceb54997-3057-81df-f3f0-e04b36e950c4@gmail.com>
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C759987D8B
+ for <devel@driverdev.osuosl.org>; Fri, 31 May 2019 13:39:31 +0000 (UTC)
+Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
+ by youngberry.canonical.com with esmtpsa (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.76) (envelope-from <colin.king@canonical.com>)
+ id 1hWhkk-0007Qf-Sd; Fri, 31 May 2019 13:39:26 +0000
+From: Colin King <colin.king@canonical.com>
+To: Eric Anholt <eric@anholt.net>, Stefan Wahren <stefan.wahren@i2se.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ devel@driverdev.osuosl.org
+Subject: [PATCH] staging: vc04_services: remove redundant assignment to
+ pointer service
+Date: Fri, 31 May 2019 14:39:26 +0100
+Message-Id: <20190531133926.17644-1-colin.king@canonical.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <ceb54997-3057-81df-f3f0-e04b36e950c4@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9273
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=806
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1810050000 definitions=main-1905310086
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9273
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=860 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
- definitions=main-1905310086
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,20 +59,41 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, kas.sandesh@gmail.com, nishadkamdar@gmail.com,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
- Ian Abbott <abbotti@mev.co.uk>, olsonse@umich.edu, jkhasdev@gmail.com,
- giulio.benetti@micronovasrl.com
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Anyway, Greg was never going to apply this so it's not worth worrying
-about too much.
+From: Colin Ian King <colin.king@canonical.com>
 
-regards,
-dan carpenter
+Pointer service is being set to NULL however this value is never
+read and so the assignment is redundant and can be removed.
+
+Addresses-Coverity: ("Unused value")
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+---
+ .../staging/vc04_services/interface/vchiq_arm/vchiq_shim.c    | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
+index 13910d205fce..17a4f2c8d8b1 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
+@@ -639,10 +639,8 @@ int32_t vchi_service_close(const VCHI_SERVICE_HANDLE_T handle)
+ 
+ 	if (service) {
+ 		VCHIQ_STATUS_T status = vchiq_close_service(service->handle);
+-		if (status == VCHIQ_SUCCESS) {
++		if (status == VCHIQ_SUCCESS)
+ 			service_free(service);
+-			service = NULL;
+-		}
+ 
+ 		ret = vchiq_status_to_vchi(status);
+ 	}
+-- 
+2.20.1
 
 _______________________________________________
 devel mailing list
