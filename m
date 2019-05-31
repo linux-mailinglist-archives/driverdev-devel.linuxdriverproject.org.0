@@ -1,48 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2D45331686
-	for <lists+driverdev-devel@lfdr.de>; Fri, 31 May 2019 23:18:40 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0ED8031764
+	for <lists+driverdev-devel@lfdr.de>; Sat,  1 Jun 2019 01:00:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id D5CAB204AF;
-	Fri, 31 May 2019 21:18:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 72B91877FD;
+	Fri, 31 May 2019 23:00:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id N0qiJRI7dtK7; Fri, 31 May 2019 21:18:37 +0000 (UTC)
+	with ESMTP id LsUXs7lHJAUk; Fri, 31 May 2019 23:00:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C985E2049B;
-	Fri, 31 May 2019 21:18:35 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3942686767;
+	Fri, 31 May 2019 23:00:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 970551BF281
- for <devel@linuxdriverproject.org>; Fri, 31 May 2019 21:18:32 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C30731BF990
+ for <devel@linuxdriverproject.org>; Fri, 31 May 2019 23:00:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 8A17E2049B
- for <devel@linuxdriverproject.org>; Fri, 31 May 2019 21:18:32 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id BB1CD88461
+ for <devel@linuxdriverproject.org>; Fri, 31 May 2019 23:00:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7QvHy+z9yyax for <devel@linuxdriverproject.org>;
- Fri, 31 May 2019 21:18:30 +0000 (UTC)
+ with ESMTP id ws3MmFkBuVen for <devel@linuxdriverproject.org>;
+ Fri, 31 May 2019 23:00:32 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.jleadmarketing.com.tw (unknown [123.51.166.158])
- by silver.osuosl.org (Postfix) with ESMTP id B570120481
- for <devel@driverdev.osuosl.org>; Fri, 31 May 2019 21:18:30 +0000 (UTC)
-Received: from User (unknown [172.16.168.254])
- by mail.jleadmarketing.com.tw (Postfix) with SMTP id 1CE3327BB76;
- Sat,  1 Jun 2019 02:21:11 +0800 (CST)
-From: "Kaylen Tindle"<klen@gmail.com>
-Subject: Your Sincere Assistance Please.
-Date: Fri, 31 May 2019 11:21:18 -0700
+Received: from novelstand.icu (unknown [63.221.78.20])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1981C883EB
+ for <devel@linuxdriverproject.org>; Fri, 31 May 2019 23:00:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail; d=novelstand.icu; 
+ h=From:Date:MIME-Version:To:Subject:Message-ID:Content-Type:Content-Transfer-Encoding;
+ i=recover@novelstand.icu; bh=5hcmTZQh4jkjExaAqTyOu++qmIA=;
+ b=ae6UN0Fimk1Chp6ncyjGSV9T1dUuMnU5KKyhtlv37LSwCGH3YjoQqcN4hEk+Bej/4MP0Frw/VpbG
+ Av74Js224Ot/zu1y6Ic7kgDHGlQU5CXZWquj6uEjvJsP1j1NgH1STXvQmoo7cu/wODLNLJeokiZa
+ UWz2G3eqaYPSOTJUgs8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=novelstand.icu;
+ b=jaioIXJAkF++OfCJb0B8q2qsxm6di1N7qh1kzh8Y+cq07G9chGg/39MxhvNjk+hBZd/4J6NrnxXG
+ Klc80U8L7txKd/eaqocIuL3Ov3a5wI3nVv33hPyvGZ51ceNQd9rNbIOQ1ja+n0h5jjl9kXJlTjB/
+ +Ihp/iyWLFnjvW9HDJg=;
+From: " Laurie Conner" <recover@novelstand.icu>
+Date: Fri, 31 May 2019 17:45:45 -0500
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20190531211832.8A17E2049B@silver.osuosl.org>
+To: <devel@linuxdriverproject.org>
+Subject: Study and work harder and longer by taking this - Success pill.
+Message-ID: <Z1Qdn-qA2vV8Aof_VxrkP_68zqlOw1ujlwBgj_wBe0M.ySv7dsR0fmD-NU1yYFi7juNpDZrjomBKnUSgk91_BOk@novelstand.icu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,67 +59,98 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: klenntindle@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello Dear,
+ABC Report (Morning Edition)
 
-I am Klen Tindle by name, from America and working with the USA
-military still on a mission in Afghanistan. I really need your
-assistance that is the reason why I contacted you, I want to go
-into a cordial relationship and business partnership with you, as
-I don't know how long we would stay in the war zone here, Here in
-the military zone we are not allowed to make use of mobile
-phones, we only make use of radio message and e-mail
-communication.
+--/--+----/--+----/--+----/--+----/--+----/--+----/--+--
 
-I want you to know that we are being attacked by insurgents every
-day and several bombings. During one of our rescue mission we
-came across a safe box that contain huge amount of money that
-belongs to the revolutionaries, which I believe they use in
-buying weapons and ammunition and it was agreed by all parties
-present that the money will be shared among us.
+12 year old Henry Friedman scores a record 160 IQ
 
-Out of the total fund my share was $5,000,000 (Five Million US
-Dollars), I am seeking your assistance to evacuate my share of
-the money, which is $5,000,000. out of here to you; in as much as
-you can assure me that my own share will be safe in your care
-until I complete my service here, This is not stolen money, and
-there are no dangers involved.
 
-I have made arrangements with a United Nation Diplomat who
-promised to deliver the fund to any of my chosen destination, I
-shall be compensating you with 30% of the total fund if you can
-help me secure the box, while the balance shall be my investment
-capital in your country, One passionate appeal I will make to you
-is not to discuss this matter to a third party, if you have
-reasons to reject this offer, please destroy this e-mail as any
-leakage of this information will be too bad for me, due to my
-position as a USAF Lieutenant.
+He is now considered one of the worlds smartest after taking this daily
 
-I have chosen to contact you after my prayers and I believe that
-you will not betray my trust, but rather take me as your own
-sister, Though you may wonder why I am so soon revealing myself
-to you without knowing you, well I will say that my mind
-convinced me that you are the true person to help me receive and
-invest the fund.
 
-I do not know how long we will remain here, and I have survived
-two bomb attacks here, which prompted me to search out for a
-reliable and trustworthy person to help me receive and invest the
-fund in his country.
+http://www.novelstand.icu/Layyc/cwqxnh29798nmheaatr/YvGZbIYL21zpr1pTKzzXtXW=
+aLNpF1T3EMKOdjR8gzBM/h-E4oI0302-pwmvYUfYC-rF3J07XbzcrwcPr03bdMe422oAuQPmRp7=
+CSQ-lzZ_GspjzYkkfAQ9cf9Yv4kXfAnoMa83_5jypQ-al4Z28n2vp958CZgJ9XqnYyw5cihuFLs=
+2nenbbZRhrasm8Go66aQbBCqCGou0GGodr8wbJ3yfY
 
-I wish you send me a reply immediately as soon as you receive
-this proposal, Your urgent reply will be highly appreciated. I
-hope my explanation is very clear but if you need further
-clarification, then send your questions, I wait to hear from you
-soonest.
 
-Regards,
-USAF Lieutenant Kaylen Tindle. 
+Raise your IQ levels and brain power with this new brain supplement that wi=
+ll change your life
+
+
+Many are now begining to use this in their daily lives to imporve focus and=
+ overall brain power. =
+
+
+
+http://www.novelstand.icu/Layyc/cwqxnh29798nmheaatr/YvGZbIYL21zpr1pTKzzXtXW=
+aLNpF1T3EMKOdjR8gzBM/h-E4oI0302-pwmvYUfYC-rF3J07XbzcrwcPr03bdMe422oAuQPmRp7=
+CSQ-lzZ_GspjzYkkfAQ9cf9Yv4kXfAnoMa83_5jypQ-al4Z28n2vp958CZgJ9XqnYyw5cihuFLs=
+2nenbbZRhrasm8Go66aQbBCqCGou0GGodr8wbJ3yfY
+
+
+--/--+----/--+----/--+----/--+----/--+----/--+----/--+--
+
+
+
+
+
+
+-All the words on this page are an-ad-
+
+
+
+go here to end
+http://www.novelstand.icu/zjttcqd/Yfy3Jbw8rdoGG0uoGCqCBbQa66oG8msarhRZbbnen=
+2sLFuhic5wyYnqX9JgZC859pv2n82Z4la-Qpyj5_38aMonAfXk4vY9fc9QAfkkYzjpsG_Zzl-QS=
+C7pRmPQuAo224eMdb30rPcwrczbX70J3Fr-CYfUYvmwp-2030Io4E-h.MBzg8RjdOKME3T1FpNL=
+aWXtXzzKTp1rpz12LYIbZGvY
+8619 South Wall Ave. Waynesboro, PA 17268
+
+
+Expel your information from our list by confirming your preference here
+http://www.novelstand.icu/awzclhibia/Yfy3Jbw8rdoGG0uoGCqCBbQa66oG8msarhRZbb=
+nen2sLFuhic5wyYnqX9JgZC859pv2n82Z4la-Qpyj5_38aMonAfXk4vY9fc9QAfkkYzjpsG_Zzl=
+-QSC7pRmPQuAo224eMdb30rPcwrczbX70J3Fr-CYfUYvmwp-2030Io4E-h.MBzg8RjdOKME3T1F=
+pNLaWXtXzzKTp1rpz12LYIbZGvY
+7472 Beaver Ridge Ave. Saint Cloud, MN 56301
+
+--/--+----/--+----/--+----/--+----/--+----/--+----/--+--
+
+
+
+--the steep, ladder-like stairs that led to the hay-loft. Betsy scrambled r=
+apidly up, too. It was dark up there, compared to the gorgeous-colored Octo=
+ber day outside, and for a moment she could not see Eleanor. Then she made =
+her out, a dim little shape, picking her way over the hay, and she heard he=
+r talking. Yes, it was real talk, quite, quite different from the loud, imp=
+erious
+
+--miauw! with which Eleanor asked for her milk. This was the softest, prett=
+iest kind of conversation, all little murmurs and chirps and sing-songs. Wh=
+y, Betsy could almost understand it! She could understand it enough to know=
+ that it was love-talk, and then, breaking into this, came a sudden series =
+of shrill, little, needle-like cries that fairly filled the hay-loft. Elean=
+or gave a bound forward and disappeared. Betsy, very much excited, scramble=
+d and climbed up over the hay as fast as she could go. It was all silent no=
+w=E2=80=94the piercing, funny little squalls had stopped as suddenly as the=
+y began. On the top in a little nest lay
+
+--hear. Or rather she seemed to hear something else. For she stopped short,=
+ her head lifted, her ears pricked up, listening very hard to some distant =
+sound. Then Betsy heard it, too, somebody coming into the barn below, littl=
+e, quick, uneven footsteps. It must be little Molly, tagging along, as she =
+always did. What fun to show Molly the kittens! Betsy! called Molly from be=
+low. Molly! called Betsy from above. Come up here quick! Ive got something =
+up here. There was a sound of scrambling, rapid feet on the rough stairs, a=
+nd Mollys yellow curls appeared, shining in the dusk. Ive got a ... she beg=
+an, but Betsy did not let her
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
