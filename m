@@ -1,52 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D782630F00
-	for <lists+driverdev-devel@lfdr.de>; Fri, 31 May 2019 15:39:40 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E1F7D313C3
+	for <lists+driverdev-devel@lfdr.de>; Fri, 31 May 2019 19:25:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C55A28699B;
-	Fri, 31 May 2019 13:39:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2A02120486;
+	Fri, 31 May 2019 17:25:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6gzXHoWfWIrQ; Fri, 31 May 2019 13:39:38 +0000 (UTC)
+	with ESMTP id A+gpI+tI4-WW; Fri, 31 May 2019 17:25:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6B7A686933;
-	Fri, 31 May 2019 13:39:35 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 19D6B20473;
+	Fri, 31 May 2019 17:25:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E79301BF23C
- for <devel@linuxdriverproject.org>; Fri, 31 May 2019 13:39:32 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8E41D1BF616
+ for <devel@linuxdriverproject.org>; Fri, 31 May 2019 17:25:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E4B6187D8E
- for <devel@linuxdriverproject.org>; Fri, 31 May 2019 13:39:32 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 78FE9873C5
+ for <devel@linuxdriverproject.org>; Fri, 31 May 2019 17:25:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8MXFJnG2VvTw for <devel@linuxdriverproject.org>;
- Fri, 31 May 2019 13:39:32 +0000 (UTC)
+ with ESMTP id ORIZ7dGvq9m6 for <devel@linuxdriverproject.org>;
+ Fri, 31 May 2019 17:25:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C759987D8B
- for <devel@driverdev.osuosl.org>; Fri, 31 May 2019 13:39:31 +0000 (UTC)
-Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
- by youngberry.canonical.com with esmtpsa (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.76) (envelope-from <colin.king@canonical.com>)
- id 1hWhkk-0007Qf-Sd; Fri, 31 May 2019 13:39:26 +0000
-From: Colin King <colin.king@canonical.com>
-To: Eric Anholt <eric@anholt.net>, Stefan Wahren <stefan.wahren@i2se.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- devel@driverdev.osuosl.org
-Subject: [PATCH] staging: vc04_services: remove redundant assignment to
- pointer service
-Date: Fri, 31 May 2019 14:39:26 +0100
-Message-Id: <20190531133926.17644-1-colin.king@canonical.com>
-X-Mailer: git-send-email 2.20.1
-MIME-Version: 1.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C3D2987221
+ for <devel@linuxdriverproject.org>; Fri, 31 May 2019 17:25:14 +0000 (UTC)
+Subject: Re: [GIT PULL] Staging/IIO driver fixes for 5.2-rc3
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1559323514;
+ bh=Lv2wQgxrvyQmga2236AJletIBriQxwIocy97b4RHC0s=;
+ h=From:In-Reply-To:References:Date:To:Cc:From;
+ b=AyD+fv3xGQSdFrkiksHs2Z4tTTQg/FoXGnDwXNymiUzLW2gKddZw5aZ84czRUY4HA
+ MUtMPy38lJTGY5ARdhDXElGwMfd40XsxG27w2DvJ7PKrtHLt6qd4HaBdXIwzkI27Ee
+ jesD4QzHX1ztrhLyHmNYYJl3w0iVsVcsrflXoChk=
+From: pr-tracker-bot@kernel.org
+In-Reply-To: <20190531014732.GA30765@kroah.com>
+References: <20190531014732.GA30765@kroah.com>
+X-PR-Tracked-List-Id: <linux-kernel.vger.kernel.org>
+X-PR-Tracked-Message-Id: <20190531014732.GA30765@kroah.com>
+X-PR-Tracked-Remote: git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
+ tags/staging-5.2-rc3
+X-PR-Tracked-Commit-Id: e61ff0fba72d981449c90b5299cebb74534b6f7c
+X-PR-Merge-Tree: torvalds/linux.git
+X-PR-Merge-Refname: refs/heads/master
+X-PR-Merge-Commit-Id: 2209a3055d6f366eeb070c217491afe855d3f389
+Message-Id: <155932351464.8550.1690080308843463434.pr-tracker-bot@kernel.org>
+Date: Fri, 31 May 2019 17:25:14 +0000
+To: Greg KH <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,42 +65,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: Stephen Rothwell <sfr@canb.auug.org.au>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Linus Torvalds <torvalds@linux-foundation.org>, linux-kernel@vger.kernel.org,
+ devel@linuxdriverproject.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Colin Ian King <colin.king@canonical.com>
+The pull request you sent on Thu, 30 May 2019 18:47:32 -0700:
 
-Pointer service is being set to NULL however this value is never
-read and so the assignment is redundant and can be removed.
+> git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/staging-5.2-rc3
 
-Addresses-Coverity: ("Unused value")
-Signed-off-by: Colin Ian King <colin.king@canonical.com>
----
- .../staging/vc04_services/interface/vchiq_arm/vchiq_shim.c    | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+has been merged into torvalds/linux.git:
+https://git.kernel.org/torvalds/c/2209a3055d6f366eeb070c217491afe855d3f389
 
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-index 13910d205fce..17a4f2c8d8b1 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-@@ -639,10 +639,8 @@ int32_t vchi_service_close(const VCHI_SERVICE_HANDLE_T handle)
- 
- 	if (service) {
- 		VCHIQ_STATUS_T status = vchiq_close_service(service->handle);
--		if (status == VCHIQ_SUCCESS) {
-+		if (status == VCHIQ_SUCCESS)
- 			service_free(service);
--			service = NULL;
--		}
- 
- 		ret = vchiq_status_to_vchi(status);
- 	}
+Thank you!
+
 -- 
-2.20.1
-
+Deet-doot-dot, I am a bot.
+https://korg.wiki.kernel.org/userdoc/prtracker
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
