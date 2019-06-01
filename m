@@ -1,52 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C64031A15
-	for <lists+driverdev-devel@lfdr.de>; Sat,  1 Jun 2019 09:33:02 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6CC9D31BC6
+	for <lists+driverdev-devel@lfdr.de>; Sat,  1 Jun 2019 15:17:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3BB9088680;
-	Sat,  1 Jun 2019 07:33:00 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8755C855CE;
+	Sat,  1 Jun 2019 13:17:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id J2+NbbHUlS-h; Sat,  1 Jun 2019 07:32:59 +0000 (UTC)
+	with ESMTP id euapKGN7WHdE; Sat,  1 Jun 2019 13:17:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AC93F88650;
-	Sat,  1 Jun 2019 07:32:59 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8C2D5835DF;
+	Sat,  1 Jun 2019 13:16:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 23E301BF29F
- for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 07:32:57 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 855401BF345
+ for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 13:16:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 17854204EE
- for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 07:32:57 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 7EA94204F5
+ for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 13:16:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GcSE6JYK7Fw5 for <devel@linuxdriverproject.org>;
- Sat,  1 Jun 2019 07:32:56 +0000 (UTC)
-X-Greylist: delayed 00:10:12 by SQLgrey-1.7.6
-Received: from gracegiant.icu (unknown [63.221.78.29])
- by silver.osuosl.org (Postfix) with ESMTP id 714BF204D4
- for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 07:32:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail; d=gracegiant.icu; 
- h=From:Date:MIME-Version:To:Subject:Message-ID:Content-Type:Content-Transfer-Encoding;
- i=apo@gracegiant.icu; bh=oD5PXPOljhV10/rl3x93GxmS824=;
- b=P54OOAPmPN6gSpnY9+cxLOZxldUx8k7qsvLcD7ssZY9lziiKGSlTcuWhibI0pcrW042n/emISdqW
- rVhdFty72/Ue3Z9FWhJdJS9MAcRwR8AUVdSKiIigMm39my1QL0vIMrMcMZvmO8nq+HpGKD5sSC3q
- 99wnKJVokrJ+poXxUUk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=gracegiant.icu;
- b=XMQ8lo97mtN/rbdtZjbUp7yJBCaRBZ0F7bo59L5RWJppEhrcXKCuCK5aEDPfDBf9mEToCWxTSKVV
- sBHsaYQHDdJ0cI2bSppbH6A6VVwGeAJUcvHFvxvPYm0ARZWA1oYE5iJeqGGEIwzoR5AvbISU0DUT
- pAPiEsrWIdzH6C5jc8U=;
-From: " Benjamin" <apo@gracegiant.icu>
-Date: Sat, 01 Jun 2019 02:18:45 -0500
+ with ESMTP id sQN-N32Bxugv for <devel@linuxdriverproject.org>;
+ Sat,  1 Jun 2019 13:16:56 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7A0F1204F4
+ for <devel@driverdev.osuosl.org>; Sat,  1 Jun 2019 13:16:56 +0000 (UTC)
+Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
+ [73.47.72.35])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 4058927227;
+ Sat,  1 Jun 2019 13:16:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1559395016;
+ bh=0BH7zsVElE5DDidWWhc24VgxlmlbeytlvrOF5RZBkgI=;
+ h=From:To:Cc:Subject:Date:From;
+ b=lSYxmBH8OP0szBywwxjPsK1QBhpksA6wA0X5KcGSfZLOYfRfjM4hyZkO9ubwF6Mbp
+ JZi4biO+TPHEYGvcx34tDb/56w9dTf3UlyIpTRq1d19FY5M0Z//riZBQnEtSlT1K5u
+ oL451r0tnRqDHJQgH+psJsSXedjgn2KBaqnqHSKM=
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH AUTOSEL 5.1 001/186] media: rockchip/vpu: Fix/re-order
+ probe-error/remove path
+Date: Sat,  1 Jun 2019 09:13:37 -0400
+Message-Id: <20190601131653.24205-1-sashal@kernel.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-To: <devel@linuxdriverproject.org>
-Subject: Boost your IQ by 20 points by taking this
-Message-ID: <orWwINegqn3ywDH0HCsJ0jocJwt5-H54O6duGwt9JOM.3wFT7VGLnB4ZJbrZ_oYgi4r4Z7UuRCHnBG2x3fwuF9Q@gracegiant.icu>
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,61 +67,72 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: Sasha Levin <sashal@kernel.org>, devel@driverdev.osuosl.org,
+ Jonas Karlman <jonas@kwiboo.se>,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, linux-rockchip@lists.infradead.org,
+ linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-=E2=80=A2__ ABC MORNING REPORT __=E2=80=A2    || Friday, May 31, 2019 ||
-	   By   -
+From: Jonas Karlman <jonas@kwiboo.se>
 
+[ Upstream commit fc8670d1f72b746ff3a5fe441f1fca4c4dba0e6f ]
 
-New Product Receives Record Funding From Facebook and Microsoft
-=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=
-=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=
-=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=
-=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=
-=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=
-=A6
+media_device_cleanup() and v4l2_m2m_unregister_media_controller() were
+missing in the probe error path.
+While at it, re-order calls in the remove path to unregister/cleanup
+things in the reverse order they were initialized/registered.
 
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
+Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Signed-off-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
+diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+index 962412c79b917..33b556b3f0df8 100644
+--- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
++++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+@@ -481,10 +481,12 @@ static int rockchip_vpu_probe(struct platform_device *pdev)
+ 	return 0;
+ err_video_dev_unreg:
+ 	if (vpu->vfd_enc) {
++		v4l2_m2m_unregister_media_controller(vpu->m2m_dev);
+ 		video_unregister_device(vpu->vfd_enc);
+ 		video_device_release(vpu->vfd_enc);
+ 	}
+ err_m2m_rel:
++	media_device_cleanup(&vpu->mdev);
+ 	v4l2_m2m_release(vpu->m2m_dev);
+ err_v4l2_unreg:
+ 	v4l2_device_unregister(&vpu->v4l2_dev);
+@@ -501,13 +503,13 @@ static int rockchip_vpu_remove(struct platform_device *pdev)
+ 	v4l2_info(&vpu->v4l2_dev, "Removing %s\n", pdev->name);
+ 
+ 	media_device_unregister(&vpu->mdev);
+-	v4l2_m2m_unregister_media_controller(vpu->m2m_dev);
+-	v4l2_m2m_release(vpu->m2m_dev);
+-	media_device_cleanup(&vpu->mdev);
+ 	if (vpu->vfd_enc) {
++		v4l2_m2m_unregister_media_controller(vpu->m2m_dev);
+ 		video_unregister_device(vpu->vfd_enc);
+ 		video_device_release(vpu->vfd_enc);
+ 	}
++	media_device_cleanup(&vpu->mdev);
++	v4l2_m2m_release(vpu->m2m_dev);
+ 	v4l2_device_unregister(&vpu->v4l2_dev);
+ 	clk_bulk_unprepare(vpu->variant->num_clocks, vpu->clocks);
+ 	pm_runtime_disable(vpu->dev);
+-- 
+2.20.1
 
-On Shark Tank last night they all go in with large amounts to acqire the mo=
-st incredible product that actually increases your IQ over 150 in just a ma=
-tter of seconds
-
-
-"I have never seen anything like this. . .  Adds Bill Gates.  I even starte=
-d taking this myself"
-http://www.gracegiant.icu/hmndqqie/lkyffh29818ghseg/qE-2rZiyNKSjPzW33jAeg1j=
-jqaeFo_uKeDxk1e41Azg/WhcPntKl1h8j17TPaYhoLlAkaW1YkQDHe8b3LRA1-Umu4Ct74iLpqn=
-ij3yWcMNczPrd_SinxwWftebJyZf4EcVuYHZjw-SZ3iNmvRwvoTI_tq7U01rODyv41YDFFDY3F
-
-Tuesday: Full Report
-http://www.gracegiant.icu/hmndqqie/lkyffh29818ghseg/qE-2rZiyNKSjPzW33jAeg1j=
-jqaeFo_uKeDxk1e41Azg/WhcPntKl1h8j17TPaYhoLlAkaW1YkQDHe8b3LRA1-Umu4Ct74iLpqn=
-ij3yWcMNczPrd_SinxwWftebJyZf4EcVuYHZjw-SZ3iNmvRwvoTI_tq7U01rODyv41YDFFDY3F
-
-
-
-
-
-=E2=80=A2=E2=80=A2=E2=80=A2=E2=80=A2=E2=80=A2=E2=80=A2=E2=80=A2=E2=80=A2=E2=
-=80=A2_
-
-
-
-
-
-
-This is an ad-coresspondance
-
-
-go here to end
-http://www.gracegiant.icu/Oihtako/F3YDFFDY14vyDOr10U7qt_ITovwRvmNi3ZS-wjZHY=
-uVcE4fZyJbetfWwxniS_drPzcNMcWy3jinqpLi47tC4umU-1ARL3b8eHDQkY1WakAlLohYaPT71=
-j8h1lKtnPchW.gzA14e1kxDeKu_oFeaqjj1geAj33WzPjSKNyiZr2-Eq
-9773 Brandywine Drive Phillipsburg, NJ 08865
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
