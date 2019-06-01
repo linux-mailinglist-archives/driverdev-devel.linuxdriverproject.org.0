@@ -1,57 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A7DCD31C28
-	for <lists+driverdev-devel@lfdr.de>; Sat,  1 Jun 2019 15:19:43 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3899331C29
+	for <lists+driverdev-devel@lfdr.de>; Sat,  1 Jun 2019 15:19:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6D2DB877AD;
-	Sat,  1 Jun 2019 13:19:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3481020503;
+	Sat,  1 Jun 2019 13:19:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3R+NcRSNWTDr; Sat,  1 Jun 2019 13:19:39 +0000 (UTC)
+	with ESMTP id ufGJZmQ6FRXs; Sat,  1 Jun 2019 13:19:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 99E3186D39;
-	Sat,  1 Jun 2019 13:19:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C2EF1204F4;
+	Sat,  1 Jun 2019 13:19:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0E3EE1BF345
- for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 13:19:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E56D91BF345
+ for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 13:19:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0A7BB204F4
- for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 13:19:37 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id DF315204F4
+ for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 13:19:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UpiKBhqWgsCI for <devel@linuxdriverproject.org>;
- Sat,  1 Jun 2019 13:19:36 +0000 (UTC)
+ with ESMTP id OMFzS1unO6vs for <devel@linuxdriverproject.org>;
+ Sat,  1 Jun 2019 13:19:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id E846D204E8
- for <devel@driverdev.osuosl.org>; Sat,  1 Jun 2019 13:19:36 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id C77BB204E8
+ for <devel@driverdev.osuosl.org>; Sat,  1 Jun 2019 13:19:46 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id BE4A4272BE;
- Sat,  1 Jun 2019 13:19:35 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 9EF082725F;
+ Sat,  1 Jun 2019 13:19:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1559395176;
- bh=0BH7zsVElE5DDidWWhc24VgxlmlbeytlvrOF5RZBkgI=;
- h=From:To:Cc:Subject:Date:From;
- b=DnuLTbkFfqGn9ia3ApPI4iiDFb+8wx9EuSLf9veL3lVWa0QV0j9T6O6SogD1ivUwV
- Fn9/4XpeFSO1cow30isMmcxRSSEr/1m+8APJjDM1ekazo/Y3IkKI/ppl90tuwjCOrI
- IxOOvDTp0mqM+dXILwCTGrJqz0eg6Ui1CKR3hCcQ=
+ s=default; t=1559395186;
+ bh=NHp4Zus6V4JDtlhyZgmwXxF/CbFxoMXzr6qTYcrfCPI=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=VuiUhad7NAChNF9UZcoCgwfFn9BF/KQ8m6F3TGnJ5ul9mPMLLGFw7rd0UqzSll1ER
+ 6+yk36QjCl/ZGDeXH2kKjAGpP0JjGO5Qzfqsy4id4n+r3f1iQllGL0xtbagcvFpT/g
+ 4DiI0wNSwIYhjGtMvxfYX+M+ZfPGXEx7aStUYXnU=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.0 001/173] media: rockchip/vpu: Fix/re-order
- probe-error/remove path
-Date: Sat,  1 Jun 2019 09:16:33 -0400
-Message-Id: <20190601131934.25053-1-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.0 002/173] media: rockchip/vpu: Add missing
+ dont_use_autosuspend() calls
+Date: Sat,  1 Jun 2019 09:16:34 -0400
+Message-Id: <20190601131934.25053-2-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190601131934.25053-1-sashal@kernel.org>
+References: <20190601131934.25053-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
@@ -80,12 +82,11 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 From: Jonas Karlman <jonas@kwiboo.se>
 
-[ Upstream commit fc8670d1f72b746ff3a5fe441f1fca4c4dba0e6f ]
+[ Upstream commit 5c5b90f5cbad77dc15d8b5582efdb2e362bcd710 ]
 
-media_device_cleanup() and v4l2_m2m_unregister_media_controller() were
-missing in the probe error path.
-While at it, re-order calls in the remove path to unregister/cleanup
-things in the reverse order they were initialized/registered.
+Those calls are needed to restore a clean PM state when the probe fails
+or when the driver is unloaded such that future ->probe() calls can
+initialize runtime PM again.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
@@ -93,43 +94,29 @@ Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
 Signed-off-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+ drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-index 962412c79b917..33b556b3f0df8 100644
+index 33b556b3f0df8..d489b5dd54d7a 100644
 --- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
 +++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-@@ -481,10 +481,12 @@ static int rockchip_vpu_probe(struct platform_device *pdev)
- 	return 0;
- err_video_dev_unreg:
- 	if (vpu->vfd_enc) {
-+		v4l2_m2m_unregister_media_controller(vpu->m2m_dev);
- 		video_unregister_device(vpu->vfd_enc);
- 		video_device_release(vpu->vfd_enc);
- 	}
- err_m2m_rel:
-+	media_device_cleanup(&vpu->mdev);
- 	v4l2_m2m_release(vpu->m2m_dev);
- err_v4l2_unreg:
+@@ -492,6 +492,7 @@ static int rockchip_vpu_probe(struct platform_device *pdev)
  	v4l2_device_unregister(&vpu->v4l2_dev);
-@@ -501,13 +503,13 @@ static int rockchip_vpu_remove(struct platform_device *pdev)
- 	v4l2_info(&vpu->v4l2_dev, "Removing %s\n", pdev->name);
- 
- 	media_device_unregister(&vpu->mdev);
--	v4l2_m2m_unregister_media_controller(vpu->m2m_dev);
--	v4l2_m2m_release(vpu->m2m_dev);
--	media_device_cleanup(&vpu->mdev);
- 	if (vpu->vfd_enc) {
-+		v4l2_m2m_unregister_media_controller(vpu->m2m_dev);
- 		video_unregister_device(vpu->vfd_enc);
- 		video_device_release(vpu->vfd_enc);
- 	}
-+	media_device_cleanup(&vpu->mdev);
-+	v4l2_m2m_release(vpu->m2m_dev);
+ err_clk_unprepare:
+ 	clk_bulk_unprepare(vpu->variant->num_clocks, vpu->clocks);
++	pm_runtime_dont_use_autosuspend(vpu->dev);
+ 	pm_runtime_disable(vpu->dev);
+ 	return ret;
+ }
+@@ -512,6 +513,7 @@ static int rockchip_vpu_remove(struct platform_device *pdev)
+ 	v4l2_m2m_release(vpu->m2m_dev);
  	v4l2_device_unregister(&vpu->v4l2_dev);
  	clk_bulk_unprepare(vpu->variant->num_clocks, vpu->clocks);
++	pm_runtime_dont_use_autosuspend(vpu->dev);
  	pm_runtime_disable(vpu->dev);
+ 	return 0;
+ }
 -- 
 2.20.1
 
