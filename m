@@ -1,52 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 006E8318D7
-	for <lists+driverdev-devel@lfdr.de>; Sat,  1 Jun 2019 03:09:45 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5433C319C4
+	for <lists+driverdev-devel@lfdr.de>; Sat,  1 Jun 2019 07:37:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C6E8086B46;
-	Sat,  1 Jun 2019 01:09:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 03FD1204E5;
+	Sat,  1 Jun 2019 05:37:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fofn72ePovmH; Sat,  1 Jun 2019 01:09:40 +0000 (UTC)
+	with ESMTP id u-UqRe1lIY3Y; Sat,  1 Jun 2019 05:37:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7C9BA86366;
-	Sat,  1 Jun 2019 01:09:39 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 83814204D5;
+	Sat,  1 Jun 2019 05:37:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8293C1BF3A8
- for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 01:09:38 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 368651BF391
+ for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 05:37:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7FE2186366
- for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 01:09:38 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 30EBC2038F
+ for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 05:37:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NeDDENLEi7u9 for <devel@linuxdriverproject.org>;
- Sat,  1 Jun 2019 01:09:38 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from carrysmash.icu (unknown [63.221.78.22])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E5FF284AE1
- for <devel@driverdev.osuosl.org>; Sat,  1 Jun 2019 01:09:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail; d=carrysmash.icu; 
+ with ESMTP id w5eo3XJfQ0dT for <devel@linuxdriverproject.org>;
+ Sat,  1 Jun 2019 05:37:44 +0000 (UTC)
+X-Greylist: delayed 00:10:11 by SQLgrey-1.7.6
+Received: from glasstrend.icu (unknown [63.221.78.27])
+ by silver.osuosl.org (Postfix) with ESMTP id 609EC2002E
+ for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 05:37:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail; d=glasstrend.icu; 
  h=From:Date:MIME-Version:To:Subject:Message-ID:Content-Type:Content-Transfer-Encoding;
- i=offer@carrysmash.icu; bh=roMIlUGr4MYANvBByneUdULzBAQ=;
- b=Ql/y+sXXGqkXcbvMmYo5b/A4Jw5MTnwBa1hXlr9MgvnRysaVpTKjDFUpC+toiNIFviJ7+ZxA5j92
- irZ2Em5ZwrYusnVazAp58QasYaeil7ILEVkfFilSFlY39POgjALgq9PwrgoiZiITGe7zHNVtc3cd
- 7NmUvwcjLplS0yKc3Ow=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=carrysmash.icu;
- b=HTfVyLKyJrriPE7CCtKawslHuL/x9G2aKMZ+Al+7vblH88fyHGVXLxbKIqYRhyjh+v1djX27ThLe
- R+kwDjwvRQMrKYPdFdioCThJmvtMqpQpxaW5RPQHoTnoh9I3p7n31XXj8u6X9fhdvefuyzjToswd
- vwNbPuP4M6n+ZhYbJRo=;
-From: " Gerald Evans" <offer@carrysmash.icu>
-Date: Fri, 31 May 2019 19:53:23 -0500
+ i=hay@glasstrend.icu; bh=tb2utWsr2Q1yVs6UvTmm/BNsMeE=;
+ b=azFj0S44kPWS3zYb9DQZR+0YKhFMdem6YvS+uxzgjOiauPv4Ksxb/Aig27qUMzkc27/b/qLM6cGk
+ E/c+7SLBqIOxOHpQvA7VKdSZ4OQ7VQa7C75at8v1PaOb7CsXESZZoGvESdU7KNFapKzjR5ts4msO
+ UtOMY6WyFOFWpHvnKqE=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=glasstrend.icu;
+ b=IRhDK1OpAM1zchvwe9/sUO5QUyNSmcxdhR+NGRl26sUx3tvPdLsO1BL9kNWvxMkt6j9UT3p7Ypw7
+ TP0N5qqxMReaRWqPAkcwwF5lH5rG8gH7ZY7ao/+L8yc4jP49k3jSiFfB6MZ6SnAJyxzlolBwHPsv
+ wRxvtOP/DMOlbt1OJk0=;
+From: " Irene Jenkins" <hay@glasstrend.icu>
+Date: Sat, 01 Jun 2019 00:22:13 -0500
 MIME-Version: 1.0
-To: <devel@driverdev.osuosl.org>
-Subject: Cure yourself of baldness with new spray
-Message-ID: <pHZW2dyrbdtwfRXRQPTjuUWysG9x2S1Odoe7FVeArwQ.d2znbsxZxd-jMYLd6m1QarhNLs8Rec9W7s82F3gsS8s@carrysmash.icu>
+To: <devel@linuxdriverproject.org>
+Subject: Add 5 inches to your stiffy tonight
+Message-ID: <QURW0n4hyF0QjJUWolRZVTNMn8DeVuZnbuLjlU8OiAo.8PlVGo-dI40jUAEcjhciO_bymcWgLRkSP5pZphr6LPg@glasstrend.icu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,54 +64,84 @@ Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Natrually get all your hair back with this new solution
+=E2=80=94=E2=80=94 US WEEKLY =
 
-Posted By --+
-Doctor  Gerald Evans --+
+=E2=80=94=E2=80=94 MENS EDITION - May 31st
 
+Meet Jeremy - Hes 52 years old yet struggles in the bedroom to get a stff-e=
+rection nightly.   =
 
-You went so many years without hair on top of your head and tried so many d=
-ifferent solutions to get it back.  Until now there hasnt really been a sol=
-ution until this. =
+"I started taking this new formula I saw on shark tank and everything chang=
+ed.  You dont need to be my age and struggle to get it up"
 
-
-http://www.carrysmash.icu/hvbmu/lxnbu29803uiqhmmeh/Fyat7O4Ku_pCnFFUq70nBTvZ=
-8YBbWjKmjz2LWpxSCCE/ytYyXf0u-Dxk_zJzcBcjotuxFc9YTo2eVXwmDL6QTd0AAdpU1PBNBLx=
-OTTPIcktqRGfhkEe9QF4oitVusE8Oe1QEgtfKLDBo47uTrMLC_AwhY8gPkPCnY-ho0CWvHDQS
-	=
-
-The Shark Tank panel just took notice of it even and featured it on the sho=
-w offering it a multi million dollar deal to aquire it.  =
+=CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =
+=CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =
+=CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =
+=CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =
+=CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =
 
 
+This is what I used
+http://www.glasstrend.icu/Lccms/sfgbo29814rtula/F0bJh3wva7qdb8dLRZVF7WZgpX7=
+S79LSrI7EkZg-YJc/HaLMkGPiE1vE8r2qYBQ2mK-8lQKWVdm_8BaCYRXk8xezBpak-Wq3xQjdfk=
+kQo9_559oeIV08BZNeRAxJy2M9VpQ5lNlEtnxnJXbf2Y1yYH1jvcUiEvy1P-NiCORT8tKh
+
+Get it up fast and keep going all night long
 
 
-On Friday, Mark Cuban added "It literally dissolves any tags within seconds=
- of applying.  I have never seen anything like this before. "
-
-
-
-There is no better product then this to get your hair back
-http://www.carrysmash.icu/hvbmu/lxnbu29803uiqhmmeh/Fyat7O4Ku_pCnFFUq70nBTvZ=
-8YBbWjKmjz2LWpxSCCE/ytYyXf0u-Dxk_zJzcBcjotuxFc9YTo2eVXwmDL6QTd0AAdpU1PBNBLx=
-OTTPIcktqRGfhkEe9QF4oitVusE8Oe1QEgtfKLDBo47uTrMLC_AwhY8gPkPCnY-ho0CWvHDQS
-
-
-******=E2=88=9E******=E2=88=9E******=E2=88=9E******=E2=88=9E******=E2=88=9E=
-******=E2=88=9E******=E2=88=9E******=E2=88=9E******=E2=88=9E
+Head judge Mark Cuban went wild for it on Shark Tank over Christmas http://=
+www.glasstrend.icu/Lccms/sfgbo29814rtula/F0bJh3wva7qdb8dLRZVF7WZgpX7S79LSrI=
+7EkZg-YJc/HaLMkGPiE1vE8r2qYBQ2mK-8lQKWVdm_8BaCYRXk8xezBpak-Wq3xQjdfkkQo9_55=
+9oeIV08BZNeRAxJy2M9VpQ5lNlEtnxnJXbf2Y1yYH1jvcUiEvy1P-NiCORT8tKh
 
 
 
+=CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =
+=CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =
+=CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =
+=CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =
+=CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8
 
-What was sent to you is an-ad
 
 
 
-If you wish to longer get these please go here
-http://www.carrysmash.icu/Oflu/SQDHvWC0oh-YnCPkPg8YhwA_CLMrTu74oBDLKftgEQ1e=
-O8EsuVtio4FQ9eEkhfGRqtkcIPTTOxLBNBP1UpdAA0dTQ6LDmwXVe2oTY9cFxutojcBczJz_kxD=
--u0fXyYty.ECCSxpWL2zjmKjWbBY8ZvTBn07qUFFnCp_uK4O7tayF
-55 N. Applegate Street Scotch Plains, NJ 07076
+
+
+This is an ad-coresspondance
+
+
+pleaes see this to end
+http://www.glasstrend.icu/vgzlnbu/hKt8TROCiN-P1yvEiUcvj1HYy1Y2fbXJnxntElNl5=
+QpV9M2yJxAReNZB80VIeo955_9oQkkfdjQx3qW-kapBzex8kXRYCaB8_mdVWKQl8-Km2QBYq2r8=
+Ev1EiPGkMLaH.cJY-gZkE7IrSL97S7XpgZW7FVZRLd8bdq7avw3hJb0F
+594 N. Myrtle Drive Rockledge, FL 32955
+=E2=80=94=E2=80=94
+
+
+
+
+
+crept in: Who neglected that post?  After the ship has got on the rocks, it=
+ is made known to the horrified passengers that there are no ship's lifeboa=
+ts aboard, neither are there any lifebelts: Whose blame is that?  Still the=
+re seems hope, for the shore is not far off, and anxious people line it; bu=
+t no ordinary boat can live in such a sea.  There is no rocket apparatus on=
+ this part of the coast; no mortar apparatus by which a line might be sent =
+on board: Why not?  The nearest lifeboat station is fifteen miles off: Whos=
+e fault is that?  Is the storm our enemy here?  Is not selfish, calculating=
+, miserly man his own enemy in this case?  So
+
+returned Bax, with an approving nod; that's just the point which I'd like y=
+ou and me to stick to: when we see things to be wrong don't let's shirk say=
+in' so as flat as we can; but don't let us go, like too many shallowpates, =
+and say that we know _who's_ wrong and _why_ they're wrong, and offer to pu=
+t them all right on the shortest notice.  Mayhap (here Bax spoke in a soft =
+meditative tone, as if he had forgotten his young friend, and were only thi=
+nking aloud) mayhap we may come to understand the matter one of these days,=
+ and have a better right to speak outwho knows? That I'm certain of cried T=
+ommy, in a tone and with an air that made Bax smile despite the sad sight b=
+efore him. Come, lad, he said, with sudden energy, we must get 'em removed.=
+ Away
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
