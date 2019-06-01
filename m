@@ -2,51 +2,51 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5433C319C4
-	for <lists+driverdev-devel@lfdr.de>; Sat,  1 Jun 2019 07:37:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 98136319C5
+	for <lists+driverdev-devel@lfdr.de>; Sat,  1 Jun 2019 07:38:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 03FD1204E5;
-	Sat,  1 Jun 2019 05:37:49 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3D605204DA;
+	Sat,  1 Jun 2019 05:38:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id u-UqRe1lIY3Y; Sat,  1 Jun 2019 05:37:48 +0000 (UTC)
+	with ESMTP id 31OB3JVxAbYI; Sat,  1 Jun 2019 05:38:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 83814204D5;
-	Sat,  1 Jun 2019 05:37:47 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 16C0320033;
+	Sat,  1 Jun 2019 05:38:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 368651BF391
- for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 05:37:45 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C7EEE1BF391
+ for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 05:38:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 30EBC2038F
- for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 05:37:45 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B266386A57
+ for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 05:38:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id w5eo3XJfQ0dT for <devel@linuxdriverproject.org>;
- Sat,  1 Jun 2019 05:37:44 +0000 (UTC)
-X-Greylist: delayed 00:10:11 by SQLgrey-1.7.6
+ with ESMTP id 6YZlcRlztNZL for <devel@linuxdriverproject.org>;
+ Sat,  1 Jun 2019 05:38:48 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from glasstrend.icu (unknown [63.221.78.27])
- by silver.osuosl.org (Postfix) with ESMTP id 609EC2002E
- for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 05:37:44 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1D5B8867B9
+ for <devel@driverdev.osuosl.org>; Sat,  1 Jun 2019 05:38:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail; d=glasstrend.icu; 
  h=From:Date:MIME-Version:To:Subject:Message-ID:Content-Type:Content-Transfer-Encoding;
- i=hay@glasstrend.icu; bh=tb2utWsr2Q1yVs6UvTmm/BNsMeE=;
- b=azFj0S44kPWS3zYb9DQZR+0YKhFMdem6YvS+uxzgjOiauPv4Ksxb/Aig27qUMzkc27/b/qLM6cGk
- E/c+7SLBqIOxOHpQvA7VKdSZ4OQ7VQa7C75at8v1PaOb7CsXESZZoGvESdU7KNFapKzjR5ts4msO
- UtOMY6WyFOFWpHvnKqE=
+ i=eutaw@glasstrend.icu; bh=9J6txwY+B84pkndZKYBPsyZSS4o=;
+ b=PkPLYxkCTKlevVeYEyBsmswZj2sjGTE2zoUNnzwHqalWTHy9ZpzMoNb4djbDLpqLy6AkqNjAlpLO
+ a7qzVr5W0MpZCRPuQOTxPCOOg6YvQ5sL2OQqXfB8HiiDXnp/CfoaB8a9ZoI34meAkDP+zE0ziONv
+ X2W7D/A+7qS3oy8ybfI=
 DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=glasstrend.icu;
- b=IRhDK1OpAM1zchvwe9/sUO5QUyNSmcxdhR+NGRl26sUx3tvPdLsO1BL9kNWvxMkt6j9UT3p7Ypw7
- TP0N5qqxMReaRWqPAkcwwF5lH5rG8gH7ZY7ao/+L8yc4jP49k3jSiFfB6MZ6SnAJyxzlolBwHPsv
- wRxvtOP/DMOlbt1OJk0=;
-From: " Irene Jenkins" <hay@glasstrend.icu>
-Date: Sat, 01 Jun 2019 00:22:13 -0500
+ b=CH1sz72vtF1OlnD/DlHy4vxGubq7sqXGir7xmlv7rkRmx5LV7lCM5cU6gN4ILmEMwzUHXulhOW/T
+ Yk6aN6uPxAee1XQxEzV6SKrXFFMYaTSToquN92oF6FR7dKTOAXS5exjzYUxES4WrufcEbpc1UPXE
+ SbMWcN0v/rtZQ8cWmqY=;
+From: " Dan Stevenson" <eutaw@glasstrend.icu>
+Date: Sat, 01 Jun 2019 00:23:15 -0500
 MIME-Version: 1.0
-To: <devel@linuxdriverproject.org>
-Subject: Add 5 inches to your stiffy tonight
-Message-ID: <QURW0n4hyF0QjJUWolRZVTNMn8DeVuZnbuLjlU8OiAo.8PlVGo-dI40jUAEcjhciO_bymcWgLRkSP5pZphr6LPg@glasstrend.icu>
+To: <devel@driverdev.osuosl.org>
+Subject: Add 4 inches to your stiffy tonight
+Message-ID: <jzR1htSJYxSu_FVGFZ1e7xxo9foaoW1bJYaTWGqbB4g.yApZhJTOzr35LSleG3aj5iiIZ88NsTn8xaQYUdYpA_g@glasstrend.icu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,17 +82,18 @@ ed.  You dont need to be my age and struggle to get it up"
 
 
 This is what I used
-http://www.glasstrend.icu/Lccms/sfgbo29814rtula/F0bJh3wva7qdb8dLRZVF7WZgpX7=
-S79LSrI7EkZg-YJc/HaLMkGPiE1vE8r2qYBQ2mK-8lQKWVdm_8BaCYRXk8xezBpak-Wq3xQjdfk=
-kQo9_559oeIV08BZNeRAxJy2M9VpQ5lNlEtnxnJXbf2Y1yYH1jvcUiEvy1P-NiCORT8tKh
+http://www.glasstrend.icu/Llmvfbwski/bvkyyr29815zzwhjuev/eMMnRZFqRuEu6z7aGK=
+rk1S-3kaYqL0LoDy2ev2Cn4PQ/Z4PYunCNzgNSXTTFJa62Tw-MXa97TwXCjCYme591-NPG731ek=
+zxTwMl2vQN1eB8xoyNpqhJvjOx8B0BX6wWteCrMCvRUg3SuZ2GxcmkXSBFZmspgtzOr9qkaCQql=
+nLCf
 
 Get it up fast and keep going all night long
 
 
 Head judge Mark Cuban went wild for it on Shark Tank over Christmas http://=
-www.glasstrend.icu/Lccms/sfgbo29814rtula/F0bJh3wva7qdb8dLRZVF7WZgpX7S79LSrI=
-7EkZg-YJc/HaLMkGPiE1vE8r2qYBQ2mK-8lQKWVdm_8BaCYRXk8xezBpak-Wq3xQjdfkkQo9_55=
-9oeIV08BZNeRAxJy2M9VpQ5lNlEtnxnJXbf2Y1yYH1jvcUiEvy1P-NiCORT8tKh
+www.glasstrend.icu/Llmvfbwski/bvkyyr29815zzwhjuev/eMMnRZFqRuEu6z7aGKrk1S-3k=
+aYqL0LoDy2ev2Cn4PQ/Z4PYunCNzgNSXTTFJa62Tw-MXa97TwXCjCYme591-NPG731ekzxTwMl2=
+vQN1eB8xoyNpqhJvjOx8B0BX6wWteCrMCvRUg3SuZ2GxcmkXSBFZmspgtzOr9qkaCQqlnLCf
 
 
 
@@ -111,10 +112,10 @@ This is an ad-coresspondance
 
 
 pleaes see this to end
-http://www.glasstrend.icu/vgzlnbu/hKt8TROCiN-P1yvEiUcvj1HYy1Y2fbXJnxntElNl5=
-QpV9M2yJxAReNZB80VIeo955_9oQkkfdjQx3qW-kapBzex8kXRYCaB8_mdVWKQl8-Km2QBYq2r8=
-Ev1EiPGkMLaH.cJY-gZkE7IrSL97S7XpgZW7FVZRLd8bdq7avw3hJb0F
-594 N. Myrtle Drive Rockledge, FL 32955
+http://www.glasstrend.icu/stysovtj/fCLnlqQCakq9rOztgpsmZFBSXkmcxG2ZuS3gURvC=
+MrCetWw6XB0B8xOjvJhqpNyox8Be1NQv2lMwTxzke137GPN-195emYCjCXwT79aXM-wT26aJFTT=
+XSNgzNCnuYP4Z.QP4nC2ve2yDoL0LqYak3-S1krKGa7z6uEuRqFZRnMMe
+153 Cactus Lane Brockton, MA 02301
 =E2=80=94=E2=80=94
 
 
