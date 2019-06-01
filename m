@@ -1,52 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 580623202E
-	for <lists+driverdev-devel@lfdr.de>; Sat,  1 Jun 2019 19:37:24 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id BB5F03202D
+	for <lists+driverdev-devel@lfdr.de>; Sat,  1 Jun 2019 19:37:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8DA7786D29;
-	Sat,  1 Jun 2019 17:37:21 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JaJq4TiIBeht; Sat,  1 Jun 2019 17:37:20 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 63D568473A;
+	by silver.osuosl.org (Postfix) with ESMTP id AE1A32051E;
 	Sat,  1 Jun 2019 17:37:19 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ChohVadWEHkg; Sat,  1 Jun 2019 17:37:19 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 89C8320512;
+	Sat,  1 Jun 2019 17:37:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0CE7B1BF2CA
- for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 17:37:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 93D9D1BF2CA
+ for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 17:37:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 07F3885FAE
- for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 17:37:18 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 9119185FAE
+ for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 17:37:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id w0StA5fgMNNe for <devel@linuxdriverproject.org>;
- Sat,  1 Jun 2019 17:37:17 +0000 (UTC)
+ with ESMTP id fMTB4rxBbxOP for <devel@linuxdriverproject.org>;
+ Sat,  1 Jun 2019 17:37:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from thirstynun.icu (unknown [63.221.73.7])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5AEB885F46
- for <devel@driverdev.osuosl.org>; Sat,  1 Jun 2019 17:37:17 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id DD52385F46
+ for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 17:37:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail; d=thirstynun.icu; 
  h=From:Date:MIME-Version:To:Subject:Message-ID:Content-Type:Content-Transfer-Encoding;
- i=hay@thirstynun.icu; bh=xDFB6xFFnaquXNBpvtvCzMS/X0o=;
- b=hFqUkYWkfZppPAiM3zGhNyHnna7oVjZAO8Geau9V7KP0NoQgXh2gvYn+xFhNjynI+LayFMqrDHkW
- puLDsz6ZNmHlBgI168sqy8nYsIR5PV3utJkGxVXBnIBF9JU3eZDF8EKtwDkh3eu914aD303uM5mz
- Ron6iiKBDn2hz3Zl8mo=
+ i=eutaw@thirstynun.icu; bh=iydiDUf3RC8sMVe9kcIMCc1Usd4=;
+ b=YJGK34ERZBYh0X0IfKGzzDq5teXM+VWKMhigm7Djt/H30d/ABu+5S372jDEgXOkIACBDToInVh8U
+ DsnaDmaxampCa+jc6904G18LftIQ/wKngeyIpe8VuL6SQof7joBKty/A/LzRHOiM8Ftd9oP4w35G
+ Jc5NCrwuVJPI+frBPn8=
 DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=thirstynun.icu;
- b=NBkzG9PVTFXmAe4Tjih3tC0VFf5ExPxB68ZkY2zSDfLHaqSOfWbZRMSxc4fk3JYTctx67x4iFSfE
- hTXX8kYrBciJMinveu6jipY/GTUGfK9uvSkIJ54aYxMqQN2PKF93imzRJUjPvlPMXC7USIpYjbo6
- GWpA1Xt44mTerwpdK/Q=;
-From: " Harold Hall" <hay@thirstynun.icu>
-Date: Sat, 01 Jun 2019 12:20:18 -0500
+ b=jrl4WXhrg7k3ICGUz8m5Zg8a4O/s9ZMWabEbUTj6G1o/rj+cD4GatBuw+I73tWeejzYqx0wBt0j9
+ x18Tsor8A3PeKhpeSwoC15yvnzDMvyYNZN/+bJMQgGqEsnvvJh3mIyv3z9WLrIrwV1K0cMVnxlS4
+ vnFsAebI/Q7u7eGUE78=;
+From: " Sandra Jenkins" <eutaw@thirstynun.icu>
+Date: Sat, 01 Jun 2019 12:21:09 -0500
 MIME-Version: 1.0
-To: <devel@driverdev.osuosl.org>
-Subject: Add 3 inches to your stiffy tonight
-Message-ID: <yKr50dPfCHY5x3hxOfVn4Cm6SX3xUv7cArrLRfWp3Po.6y7pwKk9uW3Wu8k8snaAgqGEIFc4t3Af7BUMtqxNv98@thirstynun.icu>
+To: <devel@linuxdriverproject.org>
+Subject: Add 4 inches to your stiffy tonight
+Message-ID: <Py7y75b-Bf_d272mHSULmKqZJ-aGGtkmHKTI3ojVqsA.iIKHqOclPtl8TEq6M8KlQt9VgWLslV2xJBypI8tWCgg@thirstynun.icu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,17 +82,18 @@ ed.  You dont need to be my age and struggle to get it up"
 
 
 This is what I used
-http://www.thirstynun.icu/khsxftunf/thteebu29834sixb/OORIzRHNYjs5Xo2O7SCPWV=
-sdgyKkrs7HpG1v2UP8Co4/gHs8Omp5OMupihGx2sH2tAGExM-tzKdt7W_hD-f5AG6AqIn3-e0OC=
-1G5_fHu_s33rmCfE4MSkpI_YM8tJPFE8XiJ4rAVxkb3V8E0exSZRw7XiRS4ph-vtIK00BJUm9d_
+http://www.thirstynun.icu/Iqisrhksfri/zjinacstv29833unyl/W4xWlj0L1Xhzrrk-Wv=
+ixsbYw2jqy8sAXOFN6Uh5fSRs/q55uqRtXvxBrile3hp5TQrwD0ou8iUzqaORNRie16c4qHRgUY=
+r8Jbo-OB1n5Jeu6wiCn2h5hMiWDHSqI_7MlmyaNBDSQEf2GVhDOYnK_s8iwyBx3ZgB5QVfUk2Oy=
+6Tg9
 
 Get it up fast and keep going all night long
 
 
 Head judge Mark Cuban went wild for it on Shark Tank over Christmas http://=
-www.thirstynun.icu/khsxftunf/thteebu29834sixb/OORIzRHNYjs5Xo2O7SCPWVsdgyKkr=
-s7HpG1v2UP8Co4/gHs8Omp5OMupihGx2sH2tAGExM-tzKdt7W_hD-f5AG6AqIn3-e0OC1G5_fHu=
-_s33rmCfE4MSkpI_YM8tJPFE8XiJ4rAVxkb3V8E0exSZRw7XiRS4ph-vtIK00BJUm9d_
+www.thirstynun.icu/Iqisrhksfri/zjinacstv29833unyl/W4xWlj0L1Xhzrrk-WvixsbYw2=
+jqy8sAXOFN6Uh5fSRs/q55uqRtXvxBrile3hp5TQrwD0ou8iUzqaORNRie16c4qHRgUYr8Jbo-O=
+B1n5Jeu6wiCn2h5hMiWDHSqI_7MlmyaNBDSQEf2GVhDOYnK_s8iwyBx3ZgB5QVfUk2Oy6Tg9
 
 
 
@@ -111,9 +112,9 @@ This is an ad-coresspondance
 
 
 pleaes see this to end
-http://www.thirstynun.icu/suksmixzoz/_d9mUJB00KItv-hp4SRiX7wRZSxe0E8V3bkxVA=
-r4JiX8EFPJt8MY_IpkSM4EfCmr33s_uHf_5G1CO0e-3nIqA6GA5f-Dh_W7tdKzt-MxEGAt2Hs2x=
-GhipuMO5pmO8sHg.4oC8PU2v1GpH7srkKygdsVWPCS7O2oX5sjYNHRzIROO
+http://www.thirstynun.icu/zcqmjlryzm/9gT6yO2kUfVQ5BgZ3xBywi8s_KnYODhVG2fEQS=
+DBNaymlM7_IqSHDWiMh5h2nCiw6ueJ5n1BO-obJ8rYUgRHq4c61eiRNROaqzUi8uo0DwrQT5ph3=
+elirBxvXtRqu55q.sRSf5hU6NFOXAs8yqj2wYbsxivW-krrzhX1L0jlWx4W
 248 North Grove Street Rome, NY 13440
 =E2=80=94=E2=80=94
 
