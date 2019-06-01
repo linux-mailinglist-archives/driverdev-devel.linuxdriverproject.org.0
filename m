@@ -2,51 +2,51 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0ABC031A16
-	for <lists+driverdev-devel@lfdr.de>; Sat,  1 Jun 2019 09:34:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5C64031A15
+	for <lists+driverdev-devel@lfdr.de>; Sat,  1 Jun 2019 09:33:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BA01188688;
-	Sat,  1 Jun 2019 07:34:27 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3BB9088680;
+	Sat,  1 Jun 2019 07:33:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dmzX1DfGs+mA; Sat,  1 Jun 2019 07:34:27 +0000 (UTC)
+	with ESMTP id J2+NbbHUlS-h; Sat,  1 Jun 2019 07:32:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 43E5A88668;
-	Sat,  1 Jun 2019 07:34:27 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AC93F88650;
+	Sat,  1 Jun 2019 07:32:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9E5691BF29F
- for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 07:34:24 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 23E301BF29F
+ for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 07:32:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 981B186BF2
- for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 07:34:24 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 17854204EE
+ for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 07:32:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RMHi8z_tmdr8 for <devel@linuxdriverproject.org>;
- Sat,  1 Jun 2019 07:34:24 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+ with ESMTP id GcSE6JYK7Fw5 for <devel@linuxdriverproject.org>;
+ Sat,  1 Jun 2019 07:32:56 +0000 (UTC)
+X-Greylist: delayed 00:10:12 by SQLgrey-1.7.6
 Received: from gracegiant.icu (unknown [63.221.78.29])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 199EB86BED
- for <devel@driverdev.osuosl.org>; Sat,  1 Jun 2019 07:34:24 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 714BF204D4
+ for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 07:32:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail; d=gracegiant.icu; 
  h=From:Date:MIME-Version:To:Subject:Message-ID:Content-Type:Content-Transfer-Encoding;
- i=jidda@gracegiant.icu; bh=ltogZoLbXdXx81Q1cINrqzuYyk4=;
- b=ZDUq/rD3bg5rgluF/DoD7SfIS7P1TeJeIMtWfYC7i0yM8T+ZcYD6OHdszTxxXgpBHBlveq3v2VZ8
- YkZafMSiY4KmWSeTQZ8KuGmbg61BsBw3PE7oRkm5NOxUVGFtP+s0rJGjXqqMx4swmbPgWzaNGpLz
- vafrUReTSFat/jzjubU=
+ i=apo@gracegiant.icu; bh=oD5PXPOljhV10/rl3x93GxmS824=;
+ b=P54OOAPmPN6gSpnY9+cxLOZxldUx8k7qsvLcD7ssZY9lziiKGSlTcuWhibI0pcrW042n/emISdqW
+ rVhdFty72/Ue3Z9FWhJdJS9MAcRwR8AUVdSKiIigMm39my1QL0vIMrMcMZvmO8nq+HpGKD5sSC3q
+ 99wnKJVokrJ+poXxUUk=
 DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=gracegiant.icu;
- b=mCOUFwhaWW0u0QNBAZkkBMw7i6ruVNcIpxbPnK0pA5d0souzYFxzBbkIonD2jUe6zVuPsxjXf25q
- k0RcFjufha/bARmcq6+Likb9CZqm9mn6PaqC13ePeZJ3rUX1LnjpAfCyyT9J0sFzSeE2VYawZFQ0
- 49e/8ly4RbP4bWzokbI=;
-From: " Rachel" <jidda@gracegiant.icu>
-Date: Sat, 01 Jun 2019 02:17:49 -0500
+ b=XMQ8lo97mtN/rbdtZjbUp7yJBCaRBZ0F7bo59L5RWJppEhrcXKCuCK5aEDPfDBf9mEToCWxTSKVV
+ sBHsaYQHDdJ0cI2bSppbH6A6VVwGeAJUcvHFvxvPYm0ARZWA1oYE5iJeqGGEIwzoR5AvbISU0DUT
+ pAPiEsrWIdzH6C5jc8U=;
+From: " Benjamin" <apo@gracegiant.icu>
+Date: Sat, 01 Jun 2019 02:18:45 -0500
 MIME-Version: 1.0
-To: <devel@driverdev.osuosl.org>
-Subject: Shark Tank: Mark Cuban walks off the show
-Message-ID: <Tz8Mn9Jlg26o_HSJv7IumvHPWYzpGlEOIV05jmNemHY.TRERgROC8kbsgPvsWP0R_dDX_vJhp26XhCF7Wnj2SAE@gracegiant.icu>
+To: <devel@linuxdriverproject.org>
+Subject: Boost your IQ by 20 points by taking this
+Message-ID: <orWwINegqn3ywDH0HCsJ0jocJwt5-H54O6duGwt9JOM.3wFT7VGLnB4ZJbrZ_oYgi4r4Z7UuRCHnBG2x3fwuF9Q@gracegiant.icu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,16 +85,14 @@ tter of seconds
 
 "I have never seen anything like this. . .  Adds Bill Gates.  I even starte=
 d taking this myself"
-http://www.gracegiant.icu/reawsanmb/sgzbhzwuo29819xbgeq/QH0mklXbLHBCF9WDoK7=
-iqTUUVcaip77ZDvdjbRyKS40/PoH79NNIQAKYSOlI7EB7IxXOWpChnK0pbGreQDOlvcyFuqvfsT=
-a3odrCYBEpJ5ml3DrNdO534QRWhS6NNWe7adqvs-e8Aeq_LjTW5Sl9xDxE8bP5TDp5ZM64omACh=
-QT2
+http://www.gracegiant.icu/hmndqqie/lkyffh29818ghseg/qE-2rZiyNKSjPzW33jAeg1j=
+jqaeFo_uKeDxk1e41Azg/WhcPntKl1h8j17TPaYhoLlAkaW1YkQDHe8b3LRA1-Umu4Ct74iLpqn=
+ij3yWcMNczPrd_SinxwWftebJyZf4EcVuYHZjw-SZ3iNmvRwvoTI_tq7U01rODyv41YDFFDY3F
 
 Tuesday: Full Report
-http://www.gracegiant.icu/reawsanmb/sgzbhzwuo29819xbgeq/QH0mklXbLHBCF9WDoK7=
-iqTUUVcaip77ZDvdjbRyKS40/PoH79NNIQAKYSOlI7EB7IxXOWpChnK0pbGreQDOlvcyFuqvfsT=
-a3odrCYBEpJ5ml3DrNdO534QRWhS6NNWe7adqvs-e8Aeq_LjTW5Sl9xDxE8bP5TDp5ZM64omACh=
-QT2
+http://www.gracegiant.icu/hmndqqie/lkyffh29818ghseg/qE-2rZiyNKSjPzW33jAeg1j=
+jqaeFo_uKeDxk1e41Azg/WhcPntKl1h8j17TPaYhoLlAkaW1YkQDHe8b3LRA1-Umu4Ct74iLpqn=
+ij3yWcMNczPrd_SinxwWftebJyZf4EcVuYHZjw-SZ3iNmvRwvoTI_tq7U01rODyv41YDFFDY3F
 
 
 
@@ -112,10 +110,10 @@ This is an ad-coresspondance
 
 
 go here to end
-http://www.gracegiant.icu/juejs/2TQhCAmo46MZ5pDT5Pb8ExDx9lS5WTjL_qeA8e-svqd=
-a7eWNN6ShWRQ435OdNrD3lm5JpEBYCrdo3aTsfvquFycvlODQerGbp0KnhCpWOXxI7BE7IlOSYK=
-AQINN97HoP.04SKyRbjdvDZ77piacVUUTqi7KoDW9FCBHLbXlkm0HQ
-9619 Lilac Rd. Waterford, MI 48329
+http://www.gracegiant.icu/Oihtako/F3YDFFDY14vyDOr10U7qt_ITovwRvmNi3ZS-wjZHY=
+uVcE4fZyJbetfWwxniS_drPzcNMcWy3jinqpLi47tC4umU-1ARL3b8eHDQkY1WakAlLohYaPT71=
+j8h1lKtnPchW.gzA14e1kxDeKu_oFeaqjj1geAj33WzPjSKNyiZr2-Eq
+9773 Brandywine Drive Phillipsburg, NJ 08865
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
