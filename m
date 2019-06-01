@@ -1,62 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3899331C29
-	for <lists+driverdev-devel@lfdr.de>; Sat,  1 Jun 2019 15:19:52 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 580623202E
+	for <lists+driverdev-devel@lfdr.de>; Sat,  1 Jun 2019 19:37:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3481020503;
-	Sat,  1 Jun 2019 13:19:50 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8DA7786D29;
+	Sat,  1 Jun 2019 17:37:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ufGJZmQ6FRXs; Sat,  1 Jun 2019 13:19:49 +0000 (UTC)
+	with ESMTP id JaJq4TiIBeht; Sat,  1 Jun 2019 17:37:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C2EF1204F4;
-	Sat,  1 Jun 2019 13:19:48 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 63D568473A;
+	Sat,  1 Jun 2019 17:37:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E56D91BF345
- for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 13:19:46 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 0CE7B1BF2CA
+ for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 17:37:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id DF315204F4
- for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 13:19:46 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 07F3885FAE
+ for <devel@linuxdriverproject.org>; Sat,  1 Jun 2019 17:37:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OMFzS1unO6vs for <devel@linuxdriverproject.org>;
- Sat,  1 Jun 2019 13:19:46 +0000 (UTC)
+ with ESMTP id w0StA5fgMNNe for <devel@linuxdriverproject.org>;
+ Sat,  1 Jun 2019 17:37:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id C77BB204E8
- for <devel@driverdev.osuosl.org>; Sat,  1 Jun 2019 13:19:46 +0000 (UTC)
-Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
- [73.47.72.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9EF082725F;
- Sat,  1 Jun 2019 13:19:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1559395186;
- bh=NHp4Zus6V4JDtlhyZgmwXxF/CbFxoMXzr6qTYcrfCPI=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=VuiUhad7NAChNF9UZcoCgwfFn9BF/KQ8m6F3TGnJ5ul9mPMLLGFw7rd0UqzSll1ER
- 6+yk36QjCl/ZGDeXH2kKjAGpP0JjGO5Qzfqsy4id4n+r3f1iQllGL0xtbagcvFpT/g
- 4DiI0wNSwIYhjGtMvxfYX+M+ZfPGXEx7aStUYXnU=
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.0 002/173] media: rockchip/vpu: Add missing
- dont_use_autosuspend() calls
-Date: Sat,  1 Jun 2019 09:16:34 -0400
-Message-Id: <20190601131934.25053-2-sashal@kernel.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190601131934.25053-1-sashal@kernel.org>
-References: <20190601131934.25053-1-sashal@kernel.org>
+Received: from thirstynun.icu (unknown [63.221.73.7])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5AEB885F46
+ for <devel@driverdev.osuosl.org>; Sat,  1 Jun 2019 17:37:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail; d=thirstynun.icu; 
+ h=From:Date:MIME-Version:To:Subject:Message-ID:Content-Type:Content-Transfer-Encoding;
+ i=hay@thirstynun.icu; bh=xDFB6xFFnaquXNBpvtvCzMS/X0o=;
+ b=hFqUkYWkfZppPAiM3zGhNyHnna7oVjZAO8Geau9V7KP0NoQgXh2gvYn+xFhNjynI+LayFMqrDHkW
+ puLDsz6ZNmHlBgI168sqy8nYsIR5PV3utJkGxVXBnIBF9JU3eZDF8EKtwDkh3eu914aD303uM5mz
+ Ron6iiKBDn2hz3Zl8mo=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=thirstynun.icu;
+ b=NBkzG9PVTFXmAe4Tjih3tC0VFf5ExPxB68ZkY2zSDfLHaqSOfWbZRMSxc4fk3JYTctx67x4iFSfE
+ hTXX8kYrBciJMinveu6jipY/GTUGfK9uvSkIJ54aYxMqQN2PKF93imzRJUjPvlPMXC7USIpYjbo6
+ GWpA1Xt44mTerwpdK/Q=;
+From: " Harold Hall" <hay@thirstynun.icu>
+Date: Sat, 01 Jun 2019 12:20:18 -0500
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+To: <devel@driverdev.osuosl.org>
+Subject: Add 3 inches to your stiffy tonight
+Message-ID: <yKr50dPfCHY5x3hxOfVn4Cm6SX3xUv7cArrLRfWp3Po.6y7pwKk9uW3Wu8k8snaAgqGEIFc4t3Af7BUMtqxNv98@thirstynun.icu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,57 +59,89 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, devel@driverdev.osuosl.org,
- Jonas Karlman <jonas@kwiboo.se>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, linux-rockchip@lists.infradead.org,
- linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Jonas Karlman <jonas@kwiboo.se>
+=E2=80=94=E2=80=94 US WEEKLY =
 
-[ Upstream commit 5c5b90f5cbad77dc15d8b5582efdb2e362bcd710 ]
+=E2=80=94=E2=80=94 MENS EDITION - May 31st
 
-Those calls are needed to restore a clean PM state when the probe fails
-or when the driver is unloaded such that future ->probe() calls can
-initialize runtime PM again.
+Meet Jeremy - Hes 52 years old yet struggles in the bedroom to get a stff-e=
+rection nightly.   =
 
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
-Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Signed-off-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c | 2 ++
- 1 file changed, 2 insertions(+)
+"I started taking this new formula I saw on shark tank and everything chang=
+ed.  You dont need to be my age and struggle to get it up"
 
-diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-index 33b556b3f0df8..d489b5dd54d7a 100644
---- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-+++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-@@ -492,6 +492,7 @@ static int rockchip_vpu_probe(struct platform_device *pdev)
- 	v4l2_device_unregister(&vpu->v4l2_dev);
- err_clk_unprepare:
- 	clk_bulk_unprepare(vpu->variant->num_clocks, vpu->clocks);
-+	pm_runtime_dont_use_autosuspend(vpu->dev);
- 	pm_runtime_disable(vpu->dev);
- 	return ret;
- }
-@@ -512,6 +513,7 @@ static int rockchip_vpu_remove(struct platform_device *pdev)
- 	v4l2_m2m_release(vpu->m2m_dev);
- 	v4l2_device_unregister(&vpu->v4l2_dev);
- 	clk_bulk_unprepare(vpu->variant->num_clocks, vpu->clocks);
-+	pm_runtime_dont_use_autosuspend(vpu->dev);
- 	pm_runtime_disable(vpu->dev);
- 	return 0;
- }
--- 
-2.20.1
+=CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =
+=CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =
+=CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =
+=CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =
+=CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =
 
+
+This is what I used
+http://www.thirstynun.icu/khsxftunf/thteebu29834sixb/OORIzRHNYjs5Xo2O7SCPWV=
+sdgyKkrs7HpG1v2UP8Co4/gHs8Omp5OMupihGx2sH2tAGExM-tzKdt7W_hD-f5AG6AqIn3-e0OC=
+1G5_fHu_s33rmCfE4MSkpI_YM8tJPFE8XiJ4rAVxkb3V8E0exSZRw7XiRS4ph-vtIK00BJUm9d_
+
+Get it up fast and keep going all night long
+
+
+Head judge Mark Cuban went wild for it on Shark Tank over Christmas http://=
+www.thirstynun.icu/khsxftunf/thteebu29834sixb/OORIzRHNYjs5Xo2O7SCPWVsdgyKkr=
+s7HpG1v2UP8Co4/gHs8Omp5OMupihGx2sH2tAGExM-tzKdt7W_hD-f5AG6AqIn3-e0OC1G5_fHu=
+_s33rmCfE4MSkpI_YM8tJPFE8XiJ4rAVxkb3V8E0exSZRw7XiRS4ph-vtIK00BJUm9d_
+
+
+
+=CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =
+=CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =
+=CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =
+=CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =
+=CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8 =CB=9B. =C2=B8
+
+
+
+
+
+
+This is an ad-coresspondance
+
+
+pleaes see this to end
+http://www.thirstynun.icu/suksmixzoz/_d9mUJB00KItv-hp4SRiX7wRZSxe0E8V3bkxVA=
+r4JiX8EFPJt8MY_IpkSM4EfCmr33s_uHf_5G1CO0e-3nIqA6GA5f-Dh_W7tdKzt-MxEGAt2Hs2x=
+GhipuMO5pmO8sHg.4oC8PU2v1GpH7srkKygdsVWPCS7O2oX5sjYNHRzIROO
+248 North Grove Street Rome, NY 13440
+=E2=80=94=E2=80=94
+
+
+
+
+
+crept in: Who neglected that post?  After the ship has got on the rocks, it=
+ is made known to the horrified passengers that there are no ship's lifeboa=
+ts aboard, neither are there any lifebelts: Whose blame is that?  Still the=
+re seems hope, for the shore is not far off, and anxious people line it; bu=
+t no ordinary boat can live in such a sea.  There is no rocket apparatus on=
+ this part of the coast; no mortar apparatus by which a line might be sent =
+on board: Why not?  The nearest lifeboat station is fifteen miles off: Whos=
+e fault is that?  Is the storm our enemy here?  Is not selfish, calculating=
+, miserly man his own enemy in this case?  So
+
+returned Bax, with an approving nod; that's just the point which I'd like y=
+ou and me to stick to: when we see things to be wrong don't let's shirk say=
+in' so as flat as we can; but don't let us go, like too many shallowpates, =
+and say that we know _who's_ wrong and _why_ they're wrong, and offer to pu=
+t them all right on the shortest notice.  Mayhap (here Bax spoke in a soft =
+meditative tone, as if he had forgotten his young friend, and were only thi=
+nking aloud) mayhap we may come to understand the matter one of these days,=
+ and have a better right to speak outwho knows? That I'm certain of cried T=
+ommy, in a tone and with an air that made Bax smile despite the sad sight b=
+efore him. Come, lad, he said, with sudden energy, we must get 'em removed.=
+ Away
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
