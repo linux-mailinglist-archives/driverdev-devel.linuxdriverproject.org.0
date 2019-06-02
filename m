@@ -1,80 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8BD5F323DF
-	for <lists+driverdev-devel@lfdr.de>; Sun,  2 Jun 2019 18:35:52 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DFECD87938;
-	Sun,  2 Jun 2019 16:35:50 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eKPmXl4Ef3hD; Sun,  2 Jun 2019 16:35:50 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6AE2E87893;
-	Sun,  2 Jun 2019 16:35:50 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7CF071BF5A9
- for <devel@linuxdriverproject.org>; Sun,  2 Jun 2019 16:35:47 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id C3EDE32658
+	for <lists+driverdev-devel@lfdr.de>; Mon,  3 Jun 2019 04:03:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 7646786410
- for <devel@linuxdriverproject.org>; Sun,  2 Jun 2019 16:35:47 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 787B986225;
+	Mon,  3 Jun 2019 02:03:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id huTRZwQzpRpN; Mon,  3 Jun 2019 02:03:07 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 243D186151;
+	Mon,  3 Jun 2019 02:03:07 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D4C2D1BF5F4
+ for <devel@linuxdriverproject.org>; Mon,  3 Jun 2019 02:03:04 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D24BE85852
+ for <devel@linuxdriverproject.org>; Mon,  3 Jun 2019 02:03:04 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id y0Wgsx3HN9QK for <devel@linuxdriverproject.org>;
- Sun,  2 Jun 2019 16:35:46 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
- [209.85.221.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A549084EE9
- for <devel@driverdev.osuosl.org>; Sun,  2 Jun 2019 16:35:46 +0000 (UTC)
-Received: by mail-wr1-f65.google.com with SMTP id e16so1441113wrn.1
- for <devel@driverdev.osuosl.org>; Sun, 02 Jun 2019 09:35:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=wWcxgEI3gs42SAaAZOA2b9Y+neLUp9KjqdAC8jB7QHQ=;
- b=PmVtSjB7f/TOFWpB+2Q/vdiDC/y/WjxLBWpT23SHz8vsHy/i5nvOC7GCNJoxb7ltxk
- nvX+h1438RNymOktsMGM8nKRWisn8Hhg4+AeXmHnJdEm/BeY+YR2lQFaaU1wtGIKanp3
- EsOfq1KXs+Ut411etBiUeXsat/FA+CqwB28EAiT6IBOMklhGYQWy/gQGtCWWpTusNwlR
- DDgVKHWKi2XGFF5AFA+e3tzI0isoqevl1mDrbad1aozr6xQgl6pP7O0VaCLL5NRi4BDo
- fVeS/DmoOcKvKG78mYSNOLFywWF3cd3YA5KuI9tT7CmpePhO6FYG6TJ470QjEIdJVIfR
- Ldww==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=wWcxgEI3gs42SAaAZOA2b9Y+neLUp9KjqdAC8jB7QHQ=;
- b=Nxl1hO9KhyTGShDnnoOHGfKM4WxkonoujVKlJV5W+L10MOgoMS15uNnP5kOjTv59vb
- M5K1xPjLtN+HloS1yJ4oZyL7BDHeO+PEPaY4kKaiL1FZA/bt8LmHUxaOyoOXgGKjhB8L
- lSkUGhyL51z3XXXCqrOltEbNQ5fyZWYXVAwbM59FcRgEy5q9nFEHCl8DfdQ0z1r08c7X
- iEj0yEn6Iq+jT9uKw66pTeAFzpJO2nzqG3UxRWYXpQp/wai0nVEnS7xXkhvoMXxEKLdb
- xkHuF0isNqGA2H68pakwFHFnsTsOiFcbQIBiA0mGu6dd3plzhHT+YPH37v1Rc3/06Chx
- u4zQ==
-X-Gm-Message-State: APjAAAWs6SaYWZaeZfA8U23bT6PBx4cBYuy/vcVl5o9DP3ZWAdm3Pp+W
- DFTyryYL7QAmaUirdIg4Jt0=
-X-Google-Smtp-Source: APXvYqx7op/7MpCSPePSRvMMp9c2IfcUO4+YSiAbeshsCOA5pXZyvI9CiP0SAE2kuxE3SH334Wd2KQ==
-X-Received: by 2002:adf:8306:: with SMTP id 6mr13626082wrd.155.1559493345342; 
- Sun, 02 Jun 2019 09:35:45 -0700 (PDT)
-Received: from localhost.localdomain
- ([2a02:8108:96bf:e0ab:2b68:5d76:a12a:e6ba])
- by smtp.gmail.com with ESMTPSA id c5sm6639273wma.19.2019.06.02.09.35.44
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Sun, 02 Jun 2019 09:35:44 -0700 (PDT)
-From: Michael Straube <straube.linux@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH 2/2] staging: rtl8188eu: remove unused definitions from
- ieee80211.h
-Date: Sun,  2 Jun 2019 18:35:28 +0200
-Message-Id: <20190602163528.28495-2-straube.linux@gmail.com>
-X-Mailer: git-send-email 2.21.0
+ with ESMTP id XR7Yw5wwZ9cp for <devel@linuxdriverproject.org>;
+ Mon,  3 Jun 2019 02:03:04 +0000 (UTC)
+X-Greylist: delayed 02:20:12 by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0115.hostedemail.com
+ [216.40.44.115])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 0BDE785817
+ for <devel@driverdev.osuosl.org>; Mon,  3 Jun 2019 02:03:03 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave07.hostedemail.com (Postfix) with ESMTP id 4ECC018016C9F
+ for <devel@driverdev.osuosl.org>; Sun,  2 Jun 2019 20:07:36 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay02.hostedemail.com (Postfix) with ESMTP id 3F17E688F;
+ Sun,  2 Jun 2019 20:07:33 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, :::::::::,
+ RULES_HIT:41:355:379:599:968:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1538:1567:1593:1594:1711:1714:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3622:3865:3867:3870:3871:3872:3873:4321:5007:10004:10400:10848:11026:11232:11473:11657:11658:11914:12043:12296:12555:12740:12760:12895:13069:13311:13357:13439:14659:14721:21063:21080:21451:21611:21627:30054:30091,
+ 0,
+ RBL:23.242.196.136:@perches.com:.lbl8.mailshell.net-62.8.0.180 64.201.201.201,
+ CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none, DomainCache:0,
+ MSF:not bulk, SPF:fn, MSBL:0, DNSBL:neutral, Custom_rules:0:0:0, LFtime:26,
+ LUA_SUMMARY:none
+X-HE-Tag: frog64_79a000550354
+X-Filterd-Recvd-Size: 1430
+Received: from XPS-9350 (cpe-23-242-196-136.socal.res.rr.com [23.242.196.136])
+ (Authenticated sender: joe@perches.com)
+ by omf12.hostedemail.com (Postfix) with ESMTPA;
+ Sun,  2 Jun 2019 20:07:32 +0000 (UTC)
+Message-ID: <9ca0c459d047c72fc459313ad570ecc59cf5d300.camel@perches.com>
+Subject: Re: [PATCH 1/2] staging: rtl8188eu: remove redundant definition of
+ ETH_ALEN
+From: Joe Perches <joe@perches.com>
+To: Michael Straube <straube.linux@gmail.com>, gregkh@linuxfoundation.org
+Date: Sun, 02 Jun 2019 13:07:30 -0700
 In-Reply-To: <20190602163528.28495-1-straube.linux@gmail.com>
 References: <20190602163528.28495-1-straube.linux@gmail.com>
-MIME-Version: 1.0
+User-Agent: Evolution 3.30.1-1build1 
+Mime-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,32 +83,24 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-MGMT_QUEUE_NUM, ETH_TYPE_LEN and PAYLOAD_TYPE_LEN are defined but
-not used in the driver code, so remove them.
+On Sun, 2019-06-02 at 18:35 +0200, Michael Straube wrote:
+> ETH_ALEN is defined in linux/if_ether.h which is included by
+> osdep_service.h, so remove the redundant definition from ieee80211.h.
+[]
+> diff --git a/drivers/staging/rtl8188eu/include/ieee80211.h b/drivers/staging/rtl8188eu/include/ieee80211.h
+[]
+> @@ -14,7 +14,6 @@
+>  
+>  #define MGMT_QUEUE_NUM 5
+>  
+> -#define ETH_ALEN	6
+>  #define ETH_TYPE_LEN		2
+>  #define PAYLOAD_TYPE_LEN	1
 
-Signed-off-by: Michael Straube <straube.linux@gmail.com>
----
- drivers/staging/rtl8188eu/include/ieee80211.h | 5 -----
- 1 file changed, 5 deletions(-)
+While you're at it:
 
-diff --git a/drivers/staging/rtl8188eu/include/ieee80211.h b/drivers/staging/rtl8188eu/include/ieee80211.h
-index d43aa4304ca5..42ee4ebe90eb 100644
---- a/drivers/staging/rtl8188eu/include/ieee80211.h
-+++ b/drivers/staging/rtl8188eu/include/ieee80211.h
-@@ -12,11 +12,6 @@
- #include "wifi.h"
- #include <linux/wireless.h>
- 
--#define MGMT_QUEUE_NUM 5
--
--#define ETH_TYPE_LEN		2
--#define PAYLOAD_TYPE_LEN	1
--
- #ifdef CONFIG_88EU_AP_MODE
- 
- #define RTL_IOCTL_HOSTAPD (SIOCIWFIRSTPRIV + 28)
--- 
-2.21.0
+neither ETH_TYPE_LEN nor PAYLOAD_TYPE_LEN appear to be used.
+
 
 _______________________________________________
 devel mailing list
