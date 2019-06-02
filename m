@@ -1,69 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C3EDE32658
-	for <lists+driverdev-devel@lfdr.de>; Mon,  3 Jun 2019 04:03:10 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 787B986225;
-	Mon,  3 Jun 2019 02:03:08 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id huTRZwQzpRpN; Mon,  3 Jun 2019 02:03:07 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 243D186151;
-	Mon,  3 Jun 2019 02:03:07 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D4C2D1BF5F4
- for <devel@linuxdriverproject.org>; Mon,  3 Jun 2019 02:03:04 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 69AC932511
+	for <lists+driverdev-devel@lfdr.de>; Sun,  2 Jun 2019 23:44:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D24BE85852
- for <devel@linuxdriverproject.org>; Mon,  3 Jun 2019 02:03:04 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9FE4085A49;
+	Sun,  2 Jun 2019 21:44:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id DsTLRfvUrIbD; Sun,  2 Jun 2019 21:44:42 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 43C88858B6;
+	Sun,  2 Jun 2019 21:44:41 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 39EB81BF4D5
+ for <devel@linuxdriverproject.org>; Sun,  2 Jun 2019 21:44:39 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 370FF8515C
+ for <devel@linuxdriverproject.org>; Sun,  2 Jun 2019 21:44:39 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XR7Yw5wwZ9cp for <devel@linuxdriverproject.org>;
- Mon,  3 Jun 2019 02:03:04 +0000 (UTC)
-X-Greylist: delayed 02:20:12 by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0115.hostedemail.com
- [216.40.44.115])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 0BDE785817
- for <devel@driverdev.osuosl.org>; Mon,  3 Jun 2019 02:03:03 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave07.hostedemail.com (Postfix) with ESMTP id 4ECC018016C9F
- for <devel@driverdev.osuosl.org>; Sun,  2 Jun 2019 20:07:36 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay02.hostedemail.com (Postfix) with ESMTP id 3F17E688F;
- Sun,  2 Jun 2019 20:07:33 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, :::::::::,
- RULES_HIT:41:355:379:599:968:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1538:1567:1593:1594:1711:1714:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3622:3865:3867:3870:3871:3872:3873:4321:5007:10004:10400:10848:11026:11232:11473:11657:11658:11914:12043:12296:12555:12740:12760:12895:13069:13311:13357:13439:14659:14721:21063:21080:21451:21611:21627:30054:30091,
- 0,
- RBL:23.242.196.136:@perches.com:.lbl8.mailshell.net-62.8.0.180 64.201.201.201,
- CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none, DomainCache:0,
- MSF:not bulk, SPF:fn, MSBL:0, DNSBL:neutral, Custom_rules:0:0:0, LFtime:26,
- LUA_SUMMARY:none
-X-HE-Tag: frog64_79a000550354
-X-Filterd-Recvd-Size: 1430
-Received: from XPS-9350 (cpe-23-242-196-136.socal.res.rr.com [23.242.196.136])
- (Authenticated sender: joe@perches.com)
- by omf12.hostedemail.com (Postfix) with ESMTPA;
- Sun,  2 Jun 2019 20:07:32 +0000 (UTC)
-Message-ID: <9ca0c459d047c72fc459313ad570ecc59cf5d300.camel@perches.com>
-Subject: Re: [PATCH 1/2] staging: rtl8188eu: remove redundant definition of
- ETH_ALEN
-From: Joe Perches <joe@perches.com>
-To: Michael Straube <straube.linux@gmail.com>, gregkh@linuxfoundation.org
-Date: Sun, 02 Jun 2019 13:07:30 -0700
-In-Reply-To: <20190602163528.28495-1-straube.linux@gmail.com>
-References: <20190602163528.28495-1-straube.linux@gmail.com>
-User-Agent: Evolution 3.30.1-1build1 
-Mime-Version: 1.0
+ with ESMTP id w-nJ2WgGLg9A for <devel@linuxdriverproject.org>;
+ Sun,  2 Jun 2019 21:44:38 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-lf1-f68.google.com (mail-lf1-f68.google.com
+ [209.85.167.68])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 544BC84FD2
+ for <devel@driverdev.osuosl.org>; Sun,  2 Jun 2019 21:44:38 +0000 (UTC)
+Received: by mail-lf1-f68.google.com with SMTP id y198so1500875lfa.1
+ for <devel@driverdev.osuosl.org>; Sun, 02 Jun 2019 14:44:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=SBjg5eRa81EzQPPSxTQMKBg6nX0dKdVE0RBDky8GBmA=;
+ b=YsDpK0enaC3AKpHJBpeWesF3I3XFx4UEa2ArMOUJ2gsU4VYeNUUuq4kR/nx155oPpP
+ xl6GGEIP9QYoSDkJ5aAoJUMPa2/3s0W852J27jTTKA45mngN7mX8kMnfXIHTQxukywXz
+ q7vYo5pRad4doGyTnwL4f7QLHY/pm2sRcSSA03cDGkvt94fRYjgUWlfCsj5CiHL4FfSS
+ LRlmMRRq+MH5nc0Nua1SOa69PCFksPfDcwUv74z9l8SruttXz2bBmMhcpQHswHTTA4z0
+ QgHoXCM5GYRgJrB6GtS2USoORtnW0OVNnzkTo3vEywkLWMLh3AdQyA3iQx2MIlgjw05P
+ HZAQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=SBjg5eRa81EzQPPSxTQMKBg6nX0dKdVE0RBDky8GBmA=;
+ b=PrRTW5FHB8Khzw/eLg/G7p03AiYVWQau46C3VTgvmM8w8uRRmjuuCJ3UbnGeX3EPxv
+ 2ugPiSCLB4G8lWzYB+oqrvwxMIhihaSTHgkglH64/r+QzB+34r3qfVgUhoQphgmLCn28
+ um7vefV8PgY9J36IOnsP54mGr1symlBmTHhCBj74559SdBvVzXGj6CSjOg3a9dEVR2FL
+ CIFsIC6IENozY+BTtEaHYYj2Yd8N0lzSn8sh8bnGMF6iA5H2CaITKEeywJ0Cuha2+YTn
+ 6UIdY5re3XjM/suzkFLxELv20yCWtswK2JMwyWezqeTWCe2AnvTi8mzz++TO3P37P0LB
+ YRyQ==
+X-Gm-Message-State: APjAAAX0Nx3AbOzqlQ3YuHVP9EWJByX1oDc7A+a+hprc1YEkq6hc0vhx
+ IsZWb5mXQZJKgMUWW4YDuZ0=
+X-Google-Smtp-Source: APXvYqzRFvCNnsb07UorKV39uaj4aB8VnwzziVDJkkHdhszJ9fxKQWmdYoy/eC6HvwChuiuiNPCnww==
+X-Received: by 2002:a19:6a01:: with SMTP id u1mr10103527lfu.141.1559511876507; 
+ Sun, 02 Jun 2019 14:44:36 -0700 (PDT)
+Received: from localhost.localdomain ([94.29.35.141])
+ by smtp.gmail.com with ESMTPSA id g22sm2803653lje.43.2019.06.02.14.44.32
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Sun, 02 Jun 2019 14:44:35 -0700 (PDT)
+From: Dmitry Osipenko <digetx@gmail.com>
+To: Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Hans Verkuil <hverkuil@xs4all.nl>, Rob Herring <robh+dt@kernel.org>
+Subject: [PATCH v1 0/4] NVIDIA Tegra Video Decoder driver improvements
+Date: Mon,  3 Jun 2019 00:37:05 +0300
+Message-Id: <20190602213712.26857-1-digetx@gmail.com>
+X-Mailer: git-send-email 2.21.0
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,31 +86,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Larry.Finger@lwfinger.net
+Cc: linux-tegra@vger.kernel.org, devicetree@vger.kernel.org,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, 2019-06-02 at 18:35 +0200, Michael Straube wrote:
-> ETH_ALEN is defined in linux/if_ether.h which is included by
-> osdep_service.h, so remove the redundant definition from ieee80211.h.
-[]
-> diff --git a/drivers/staging/rtl8188eu/include/ieee80211.h b/drivers/staging/rtl8188eu/include/ieee80211.h
-[]
-> @@ -14,7 +14,6 @@
->  
->  #define MGMT_QUEUE_NUM 5
->  
-> -#define ETH_ALEN	6
->  #define ETH_TYPE_LEN		2
->  #define PAYLOAD_TYPE_LEN	1
+Hello,
 
-While you're at it:
+This series cleans up some of minor shortcomings that are caused by
+checkpatch recommendations that are not very applicable for the driver.
+Then IOMMU support is added to the driver and now it can handle sparse
+memory buffers that GPU hands to VDE in a default kernel configuration
+on Tegra30+.
 
-neither ETH_TYPE_LEN nor PAYLOAD_TYPE_LEN appear to be used.
+Dmitry Osipenko (4):
+  staging: media: tegra-vde: Remove BIT() macro from UAPI header
+  staging: media: tegra-vde: Manually pack UAPI structures
+  staging: media: tegra-vde: Add IOMMU support
+  staging: media: tegra-vde: Defer dmabuf's unmapping
 
+ drivers/staging/media/tegra-vde/Kconfig       |   1 +
+ drivers/staging/media/tegra-vde/Makefile      |   1 +
+ .../staging/media/tegra-vde/dmabuf-cache.c    | 223 ++++++++++++++++++
+ drivers/staging/media/tegra-vde/iommu.c       | 146 ++++++++++++
+ drivers/staging/media/tegra-vde/trace.h       |   1 +
+ drivers/staging/media/tegra-vde/uapi.h        |  48 ++--
+ .../media/tegra-vde/{tegra-vde.c => vde.c}    | 212 ++++++-----------
+ drivers/staging/media/tegra-vde/vde.h         | 105 +++++++++
+ 8 files changed, 574 insertions(+), 163 deletions(-)
+ create mode 100644 drivers/staging/media/tegra-vde/dmabuf-cache.c
+ create mode 100644 drivers/staging/media/tegra-vde/iommu.c
+ rename drivers/staging/media/tegra-vde/{tegra-vde.c => vde.c} (88%)
+ create mode 100644 drivers/staging/media/tegra-vde/vde.h
+
+-- 
+2.21.0
 
 _______________________________________________
 devel mailing list
