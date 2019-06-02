@@ -1,76 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 88EFC323C0
-	for <lists+driverdev-devel@lfdr.de>; Sun,  2 Jun 2019 17:59:25 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D2430323C2
+	for <lists+driverdev-devel@lfdr.de>; Sun,  2 Jun 2019 17:59:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 97BFD85C92;
-	Sun,  2 Jun 2019 15:59:22 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7D4C485310;
+	Sun,  2 Jun 2019 15:59:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xcw4GlUOHq7P; Sun,  2 Jun 2019 15:59:21 +0000 (UTC)
+	with ESMTP id akMyzcco+1vK; Sun,  2 Jun 2019 15:59:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 29D5285C52;
-	Sun,  2 Jun 2019 15:59:21 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 058A584854;
+	Sun,  2 Jun 2019 15:59:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 119791BF282
- for <devel@linuxdriverproject.org>; Sun,  2 Jun 2019 15:59:18 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 10FEB1BF282
+ for <devel@linuxdriverproject.org>; Sun,  2 Jun 2019 15:59:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0C34720798
- for <devel@linuxdriverproject.org>; Sun,  2 Jun 2019 15:59:18 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 0CD3A849E2
+ for <devel@linuxdriverproject.org>; Sun,  2 Jun 2019 15:59:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id u-h7AFnbADxp for <devel@linuxdriverproject.org>;
- Sun,  2 Jun 2019 15:59:17 +0000 (UTC)
+ with ESMTP id wWTTWoYa5hZz for <devel@linuxdriverproject.org>;
+ Sun,  2 Jun 2019 15:59:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f194.google.com (mail-qt1-f194.google.com
- [209.85.160.194])
- by silver.osuosl.org (Postfix) with ESMTPS id 62AAB20340
- for <devel@driverdev.osuosl.org>; Sun,  2 Jun 2019 15:59:17 +0000 (UTC)
-Received: by mail-qt1-f194.google.com with SMTP id a15so6809826qtn.7
- for <devel@driverdev.osuosl.org>; Sun, 02 Jun 2019 08:59:17 -0700 (PDT)
+Received: from mail-qt1-f193.google.com (mail-qt1-f193.google.com
+ [209.85.160.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 70EBC84854
+ for <devel@driverdev.osuosl.org>; Sun,  2 Jun 2019 15:59:18 +0000 (UTC)
+Received: by mail-qt1-f193.google.com with SMTP id j19so3110656qtr.12
+ for <devel@driverdev.osuosl.org>; Sun, 02 Jun 2019 08:59:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=cwSi5MhwwNuPtX+N4n2xqn5nIAMMQTMMy9Sqt0rjx2Y=;
- b=MpH4OVk3AUkP/GBsRXlZx67QY3EGSa0W78a99p8pZOpnpfxkJ/YU/KnR5rHablTERN
- ZfJmd7nj8YPKmjv5tW8gFCbjgMrlWoNQ0MTiRqCygyu/+xP1Z0yx3KAyFVhk3hiwEj8p
- jzaaJOYXzMWKOgzHjBBUmZDdtzDY1UQL7bWozRrUi3q6nvaPUmkKoFRtrzJVm5+MnqY8
- 495ecp82BeJVbMgq6UK20O5BV96kr3UnGWg47eF+DihHGvjMzmL8XbH2wMX5T4W99AVT
- 9E3YgiekXuX4Qnl//SpOwrPdZdBTxrwoiug8FJ0IJjPH12ZI5+KNalBIcIdKgZ0Mcyfv
- U/mg==
+ bh=4D6xYVcx65ci50EYrgxQnh1AMljYTOBoiJu7xzeER1s=;
+ b=unIx9W0jhTmqnG9YbWNxmFBYkYOu1c+99DsdX5RP0YBV10dmsAlSUWyUWQF/XW2vV3
+ jfFGdxogecSbQd8quDfv12r8VwBhnX/pH6Ke6XEsellp7vonq3MRgJXKCVi2yVRneRrN
+ rsyInvy4+oH/ch/G28xH8s8rdOmCVheirMaUx056OyphhsC/e5XeXevPeKDnqdWz0lUF
+ BbvWRAcHPTDQAkRR7ZEaoOKskY3iyGLaAjG8sU0jX93kWCbE+GfhvJbnyJrk2Col+1we
+ eeVBl4eQEoOoTgXzmcVZLxJis3AaLcF0iS82WHIjOECoDiNKprBGN3Rd1WnYDrGXAr+H
+ YwvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=cwSi5MhwwNuPtX+N4n2xqn5nIAMMQTMMy9Sqt0rjx2Y=;
- b=dUcwTJ0SW7jf5PKEX1swditmteCVtnpXM5go+l+a2aLe/6awh3Ckqm67LNz9I3RxWo
- JfhnLXwvs9dacDN4nD8KGtE6MtzIgQI2RiDSV4pG0pFv9pOKv6BDiJe4ra27jQksYy4K
- 7nIM4OGrBhN3gfP71/RdbXgrlV2vZLljJELZjFtUdhY3oyZ2IznaJFlHF26Au6/XhYa2
- So3aRbIIusp17NCRZz7FjGDgBVsqLaafzeyNoGU+JRUoxkjdm8uUbcsD3BYYEnWaK76N
- gkzn0DJmO1owgQVYYSjSRKAfGDJF3q/cLp9ndmKfPf8vv7PIhkIT/gELRRf3NxkiJmeF
- ahxg==
-X-Gm-Message-State: APjAAAWkXxgwTM8fCdiTqYn14EC3S0nNS1Bi+JbE6PS6a9D/yOMbE/rh
- YdcXLDVfPIibbfq31KV/MtQ=
-X-Google-Smtp-Source: APXvYqxacy95ztVh2aIoXGuNQecgk7mcerQLv1cPC8o9FeQnvGyIWfIQFt+QNRMJH/HGzuMlf3PjbQ==
-X-Received: by 2002:ac8:38a4:: with SMTP id f33mr19437642qtc.163.1559491156619; 
- Sun, 02 Jun 2019 08:59:16 -0700 (PDT)
+ bh=4D6xYVcx65ci50EYrgxQnh1AMljYTOBoiJu7xzeER1s=;
+ b=dlJgQw76YNxWk/Z73kRZtHklW7dFYRsPo9tDznxrdlnuwl5a4Y8O/PiOpCoR4JSY5a
+ wzp3bYfh3UEahA4ME+FZ7KEAF7KzkJhJbeSAIb/FEIx2AHS+BCgVa/U9RG1vypmXyJ0R
+ KmnqE6iWhlAFeBjpwHcjk3e7oD8EdAJZnHy2EzTe/24uSVbhMSsxPKQ7jMyNPqeBMdr1
+ 3ofqW8Y3/bkrqquPwvgtwKxsDnByOmLSAC2UcS2ceyw69tACLT3ZHHPVPjYAGm8ktxul
+ xIpNvmaQsd/86K2RaIZTjJGuUdSRVsIC1sYfAP0vBKlweoHx5JnmgFP6/Bw1BxYZxiKr
+ yrOA==
+X-Gm-Message-State: APjAAAWSHrk6CP3fcCtRenabKMXRLuXiW8+yYBOVqjKAL4zTkyp5XTBH
+ UkplFFBCd40jgap+oWl7//C2YsDi0FI=
+X-Google-Smtp-Source: APXvYqzxm+ZYCf86Q6YFFaOaPrlJLDQeGGr8n2GIrsIyvcINgZRGq20pyTD/qQqEJ3UdQfn1v3RPKw==
+X-Received: by 2002:ac8:7381:: with SMTP id t1mr19772251qtp.387.1559491157557; 
+ Sun, 02 Jun 2019 08:59:17 -0700 (PDT)
 Received: from arch-01.home (c-73-132-202-198.hsd1.md.comcast.net.
  [73.132.202.198])
- by smtp.gmail.com with ESMTPSA id n7sm7378589qkd.53.2019.06.02.08.59.15
+ by smtp.gmail.com with ESMTPSA id n7sm7378589qkd.53.2019.06.02.08.59.16
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sun, 02 Jun 2019 08:59:16 -0700 (PDT)
+ Sun, 02 Jun 2019 08:59:17 -0700 (PDT)
 From: Geordan Neukum <gneukum1@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 1/5] staging: kpc2000: kpc_spi: Remove unnecessary consecutive
- newlines
-Date: Sun,  2 Jun 2019 15:58:33 +0000
-Message-Id: <bc19f98c3b5468abfc66839569d72016d03c79af.1559488571.git.gneukum1@gmail.com>
+Subject: [PATCH 2/5] staging: kpc2000: kpc_spi: column-align switch and
+ subordinate cases
+Date: Sun,  2 Jun 2019 15:58:34 +0000
+Message-Id: <8a940c89d43ca59bb4c70100cf1b33529501ff5b.1559488571.git.gneukum1@gmail.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <cover.1559488571.git.gneukum1@gmail.com>
 References: <cover.1559488571.git.gneukum1@gmail.com>
@@ -96,88 +96,41 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The kpc2000_spi.c file contains instances of unnecessary consecutive
-newlines which negatively impact the readability of the file. Remove
-all unnecessary consecutive newlines.
+The linux style guide prescribes that switch statements and their
+subordinate case labels should be column-aligned rather than
+double-indenting the case label. Make kpc2000_spi.c follow the desired
+style with respect to switch/case alignment.
 
 Signed-off-by: Geordan Neukum <gneukum1@gmail.com>
 ---
- drivers/staging/kpc2000/kpc2000_spi.c | 13 -------------
- 1 file changed, 13 deletions(-)
+ drivers/staging/kpc2000/kpc2000_spi.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/staging/kpc2000/kpc2000_spi.c b/drivers/staging/kpc2000/kpc2000_spi.c
-index 9a23808ffaa1..ef7e062bf52c 100644
+index ef7e062bf52c..13c4651e1fac 100644
 --- a/drivers/staging/kpc2000/kpc2000_spi.c
 +++ b/drivers/staging/kpc2000/kpc2000_spi.c
-@@ -97,8 +97,6 @@ static struct spi_board_info p2kr0_board_info[] = {
- #define KP_SPI_REG_STATUS_RXFFE 0x40
- #define KP_SPI_REG_STATUS_RXFFF 0x80
- 
--
--
- /******************
-  * SPI Structures *
-  ******************/
-@@ -111,7 +109,6 @@ struct kp_spi {
- 	unsigned int        pin_dir:1;
- };
- 
--
- struct kp_spi_controller_state {
- 	void __iomem   *base;
- 	unsigned long   phys;
-@@ -120,7 +117,6 @@ struct kp_spi_controller_state {
- 	s64             conf_cache;
- };
- 
--
- union kp_spi_config {
- 	/* use this to access individual elements */
- 	struct __attribute__((packed)) spi_config_bitfield {
-@@ -141,8 +137,6 @@ union kp_spi_config {
- 	u32 reg;
- };
- 
--
--
- union kp_spi_status {
- 	struct __attribute__((packed)) spi_status_bitfield {
- 		unsigned int rx    :  1; /* Rx Status       */
-@@ -158,8 +152,6 @@ union kp_spi_status {
- 	u32 reg;
- };
- 
--
--
- union kp_spi_ffctrl {
- 	struct __attribute__((packed)) spi_ffctrl_bitfield {
- 		unsigned int ffstart :  1; /* FIFO Start */
-@@ -168,8 +160,6 @@ union kp_spi_ffctrl {
- 	u32 reg;
- };
- 
--
--
- /***************
-  * SPI Helpers *
-  ***************/
-@@ -445,8 +435,6 @@ kp_spi_cleanup(struct spi_device *spidev)
+@@ -502,13 +502,13 @@ kp_spi_probe(struct platform_device *pldev)
  	}
- }
  
--
--
- /******************
-  * Probe / Remove *
-  ******************/
-@@ -538,7 +526,6 @@ kp_spi_remove(struct platform_device *pldev)
- 	return 0;
- }
+ 	switch ((drvdata->card_id & 0xFFFF0000) >> 16){
+-		case PCI_DEVICE_ID_DAKTRONICS_KADOKA_P2KR0:
+-			NEW_SPI_DEVICE_FROM_BOARD_INFO_TABLE(p2kr0_board_info);
+-			break;
+-		default:
+-			dev_err(&pldev->dev, "Unknown hardware, cant know what partition table to use!\n");
+-			goto free_master;
+-			break;
++	case PCI_DEVICE_ID_DAKTRONICS_KADOKA_P2KR0:
++		NEW_SPI_DEVICE_FROM_BOARD_INFO_TABLE(p2kr0_board_info);
++		break;
++	default:
++		dev_err(&pldev->dev, "Unknown hardware, cant know what partition table to use!\n");
++		goto free_master;
++		break;
+ 	}
  
--
- static struct platform_driver kp_spi_driver = {
- 	.driver = {
- 		.name =     KP_DRIVER_NAME_SPI,
+ 	return status;
 -- 
 2.21.0
 
