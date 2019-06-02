@@ -1,78 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 69AC932511
-	for <lists+driverdev-devel@lfdr.de>; Sun,  2 Jun 2019 23:44:44 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9FE4085A49;
-	Sun,  2 Jun 2019 21:44:42 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DsTLRfvUrIbD; Sun,  2 Jun 2019 21:44:42 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 43C88858B6;
-	Sun,  2 Jun 2019 21:44:41 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 39EB81BF4D5
- for <devel@linuxdriverproject.org>; Sun,  2 Jun 2019 21:44:39 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A6DE32512
+	for <lists+driverdev-devel@lfdr.de>; Sun,  2 Jun 2019 23:44:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 370FF8515C
- for <devel@linuxdriverproject.org>; Sun,  2 Jun 2019 21:44:39 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CC99285B3C;
+	Sun,  2 Jun 2019 21:44:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RTiOye57diCQ; Sun,  2 Jun 2019 21:44:44 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1E7B9859CD;
+	Sun,  2 Jun 2019 21:44:43 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9C5811BF4D5
+ for <devel@linuxdriverproject.org>; Sun,  2 Jun 2019 21:44:40 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 986198598A
+ for <devel@linuxdriverproject.org>; Sun,  2 Jun 2019 21:44:40 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id w-nJ2WgGLg9A for <devel@linuxdriverproject.org>;
- Sun,  2 Jun 2019 21:44:38 +0000 (UTC)
+ with ESMTP id PEojXIitmaLy for <devel@linuxdriverproject.org>;
+ Sun,  2 Jun 2019 21:44:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f68.google.com (mail-lf1-f68.google.com
- [209.85.167.68])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 544BC84FD2
- for <devel@driverdev.osuosl.org>; Sun,  2 Jun 2019 21:44:38 +0000 (UTC)
-Received: by mail-lf1-f68.google.com with SMTP id y198so1500875lfa.1
- for <devel@driverdev.osuosl.org>; Sun, 02 Jun 2019 14:44:38 -0700 (PDT)
+Received: from mail-lf1-f65.google.com (mail-lf1-f65.google.com
+ [209.85.167.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D4BA68536C
+ for <devel@driverdev.osuosl.org>; Sun,  2 Jun 2019 21:44:39 +0000 (UTC)
+Received: by mail-lf1-f65.google.com with SMTP id r15so11966956lfm.11
+ for <devel@driverdev.osuosl.org>; Sun, 02 Jun 2019 14:44:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=SBjg5eRa81EzQPPSxTQMKBg6nX0dKdVE0RBDky8GBmA=;
- b=YsDpK0enaC3AKpHJBpeWesF3I3XFx4UEa2ArMOUJ2gsU4VYeNUUuq4kR/nx155oPpP
- xl6GGEIP9QYoSDkJ5aAoJUMPa2/3s0W852J27jTTKA45mngN7mX8kMnfXIHTQxukywXz
- q7vYo5pRad4doGyTnwL4f7QLHY/pm2sRcSSA03cDGkvt94fRYjgUWlfCsj5CiHL4FfSS
- LRlmMRRq+MH5nc0Nua1SOa69PCFksPfDcwUv74z9l8SruttXz2bBmMhcpQHswHTTA4z0
- QgHoXCM5GYRgJrB6GtS2USoORtnW0OVNnzkTo3vEywkLWMLh3AdQyA3iQx2MIlgjw05P
- HZAQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=v8z6rRyWnHKBHTgKVhKWAyQ8XR13rNpWMzD0eUYSFO0=;
+ b=OiCbszUXlmN6Tzhfkv1LwVF4TPTvleSZ7mCi1x0wtGf1dtlipNsDfa/d+e9QrykZ9N
+ EbF/ejBx8pnOX4KBCQx9LTlTAydPScDE/BgumKbk1MQOprn9D+Vi68Ab+ardIySV+UVr
+ BjRR+s+vVfb6tzIlhxKO9v15ZtETWhSpL0KQ63+bvz3Ga3hutTBPcrM8IdW5nMZvnDgB
+ +o6STAuD+ofam0vnf5Y0maIyX7DufRTl32/mXfHJJwSCO0CNJaj18RTPeuEIx8Y2UVc6
+ OmBkylgIf8G3FP6LLTGtVR+MLjj+TCHRvC1DRLGkTOcuQ7bQ7aKs6908zUPZctpekNDo
+ B7kQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=SBjg5eRa81EzQPPSxTQMKBg6nX0dKdVE0RBDky8GBmA=;
- b=PrRTW5FHB8Khzw/eLg/G7p03AiYVWQau46C3VTgvmM8w8uRRmjuuCJ3UbnGeX3EPxv
- 2ugPiSCLB4G8lWzYB+oqrvwxMIhihaSTHgkglH64/r+QzB+34r3qfVgUhoQphgmLCn28
- um7vefV8PgY9J36IOnsP54mGr1symlBmTHhCBj74559SdBvVzXGj6CSjOg3a9dEVR2FL
- CIFsIC6IENozY+BTtEaHYYj2Yd8N0lzSn8sh8bnGMF6iA5H2CaITKEeywJ0Cuha2+YTn
- 6UIdY5re3XjM/suzkFLxELv20yCWtswK2JMwyWezqeTWCe2AnvTi8mzz++TO3P37P0LB
- YRyQ==
-X-Gm-Message-State: APjAAAX0Nx3AbOzqlQ3YuHVP9EWJByX1oDc7A+a+hprc1YEkq6hc0vhx
- IsZWb5mXQZJKgMUWW4YDuZ0=
-X-Google-Smtp-Source: APXvYqzRFvCNnsb07UorKV39uaj4aB8VnwzziVDJkkHdhszJ9fxKQWmdYoy/eC6HvwChuiuiNPCnww==
-X-Received: by 2002:a19:6a01:: with SMTP id u1mr10103527lfu.141.1559511876507; 
- Sun, 02 Jun 2019 14:44:36 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=v8z6rRyWnHKBHTgKVhKWAyQ8XR13rNpWMzD0eUYSFO0=;
+ b=l0PUdZASPvOnVcBRUoO9jcl+S+vzg5elaLH2BvwBSe+WMhJCmuwPtEPpTb4M7LwV+6
+ 3dV5g5A8T6VX/x83fMDKh5Lr+R/J2MHhvTrWYxOPSDKvFPasa5+75WlOXdNzwjGN56El
+ Fg3n35A8Pk25FT5Zq2A/rBdYte3KdPKfVmQJVvQA2T23WPzfXOyDi7DJFkct7Tpu6KNL
+ HpqDZNm0vSGfuylNfy6O2kV9K5N/4A8DVolxT24R6QTLrAJv4LgJCCjU+u43m59XP1qA
+ vMTlVtRnM51mS39tH9dYP9qIwd3vdDEr7nphqR2S0IV/5+q/DEVTtrwKs9e0lHW3cRKh
+ wPvA==
+X-Gm-Message-State: APjAAAVzaAwleFBvkzkqD/AK0/FeA5Rlrweqt39rLp80kdKct1r+zRiq
+ wxdDMjVtnzWSjIuJsg6hRlA=
+X-Google-Smtp-Source: APXvYqzyORzjm83J0I4MlzrRe1oyXZ2OeIj8QffTLOl0ldVu/NN8oUgdlQ840HpNzpsQXplba0WRaA==
+X-Received: by 2002:ac2:43b7:: with SMTP id t23mr11501647lfl.110.1559511878164; 
+ Sun, 02 Jun 2019 14:44:38 -0700 (PDT)
 Received: from localhost.localdomain ([94.29.35.141])
- by smtp.gmail.com with ESMTPSA id g22sm2803653lje.43.2019.06.02.14.44.32
+ by smtp.gmail.com with ESMTPSA id g22sm2803653lje.43.2019.06.02.14.44.36
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sun, 02 Jun 2019 14:44:35 -0700 (PDT)
+ Sun, 02 Jun 2019 14:44:37 -0700 (PDT)
 From: Dmitry Osipenko <digetx@gmail.com>
 To: Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
  Hans Verkuil <hverkuil@xs4all.nl>, Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v1 0/4] NVIDIA Tegra Video Decoder driver improvements
-Date: Mon,  3 Jun 2019 00:37:05 +0300
-Message-Id: <20190602213712.26857-1-digetx@gmail.com>
+Subject: [PATCH v1] ARM: dts: tegra30: Connect SMMU with Video Decoder Engine
+Date: Mon,  3 Jun 2019 00:37:06 +0300
+Message-Id: <20190602213712.26857-2-digetx@gmail.com>
 X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20190602213712.26857-1-digetx@gmail.com>
+References: <20190602213712.26857-1-digetx@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -94,34 +96,25 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,
+Enable IOMMU support for the video decoder.
 
-This series cleans up some of minor shortcomings that are caused by
-checkpatch recommendations that are not very applicable for the driver.
-Then IOMMU support is added to the driver and now it can handle sparse
-memory buffers that GPU hands to VDE in a default kernel configuration
-on Tegra30+.
+Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
+---
+ arch/arm/boot/dts/tegra30.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
-Dmitry Osipenko (4):
-  staging: media: tegra-vde: Remove BIT() macro from UAPI header
-  staging: media: tegra-vde: Manually pack UAPI structures
-  staging: media: tegra-vde: Add IOMMU support
-  staging: media: tegra-vde: Defer dmabuf's unmapping
-
- drivers/staging/media/tegra-vde/Kconfig       |   1 +
- drivers/staging/media/tegra-vde/Makefile      |   1 +
- .../staging/media/tegra-vde/dmabuf-cache.c    | 223 ++++++++++++++++++
- drivers/staging/media/tegra-vde/iommu.c       | 146 ++++++++++++
- drivers/staging/media/tegra-vde/trace.h       |   1 +
- drivers/staging/media/tegra-vde/uapi.h        |  48 ++--
- .../media/tegra-vde/{tegra-vde.c => vde.c}    | 212 ++++++-----------
- drivers/staging/media/tegra-vde/vde.h         | 105 +++++++++
- 8 files changed, 574 insertions(+), 163 deletions(-)
- create mode 100644 drivers/staging/media/tegra-vde/dmabuf-cache.c
- create mode 100644 drivers/staging/media/tegra-vde/iommu.c
- rename drivers/staging/media/tegra-vde/{tegra-vde.c => vde.c} (88%)
- create mode 100644 drivers/staging/media/tegra-vde/vde.h
-
+diff --git a/arch/arm/boot/dts/tegra30.dtsi b/arch/arm/boot/dts/tegra30.dtsi
+index 934caa83c8db..ce162125e7bf 100644
+--- a/arch/arm/boot/dts/tegra30.dtsi
++++ b/arch/arm/boot/dts/tegra30.dtsi
+@@ -424,6 +424,7 @@
+ 		clocks = <&tegra_car TEGRA30_CLK_VDE>;
+ 		reset-names = "vde", "mc";
+ 		resets = <&tegra_car 61>, <&mc TEGRA30_MC_RESET_VDE>;
++		iommus = <&mc TEGRA_SWGROUP_VDE>;
+ 	};
+ 
+ 	apbmisc@70000800 {
 -- 
 2.21.0
 
