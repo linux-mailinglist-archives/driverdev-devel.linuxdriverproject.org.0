@@ -1,60 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F087A32F64
-	for <lists+driverdev-devel@lfdr.de>; Mon,  3 Jun 2019 14:18:39 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A9D1A32F69
+	for <lists+driverdev-devel@lfdr.de>; Mon,  3 Jun 2019 14:19:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A5FD9879FD;
-	Mon,  3 Jun 2019 12:18:37 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C5F7785CF2;
+	Mon,  3 Jun 2019 12:19:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 994yDZs7Msfi; Mon,  3 Jun 2019 12:18:37 +0000 (UTC)
+	with ESMTP id WN4_nZlRxU5h; Mon,  3 Jun 2019 12:19:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1D1DD879B8;
-	Mon,  3 Jun 2019 12:18:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0B8EC85C43;
+	Mon,  3 Jun 2019 12:19:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C9B631BF4E6
- for <devel@linuxdriverproject.org>; Mon,  3 Jun 2019 12:18:32 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AA5211BF4E6
+ for <devel@linuxdriverproject.org>; Mon,  3 Jun 2019 12:19:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C1F48858AE
- for <devel@linuxdriverproject.org>; Mon,  3 Jun 2019 12:18:32 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id A2E4B858AE
+ for <devel@linuxdriverproject.org>; Mon,  3 Jun 2019 12:19:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7Nyw3KMcGlqS for <devel@linuxdriverproject.org>;
- Mon,  3 Jun 2019 12:18:32 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5BEAC84D16
- for <devel@driverdev.osuosl.org>; Mon,  3 Jun 2019 12:18:32 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B90CA24460;
- Mon,  3 Jun 2019 12:18:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1559564312;
- bh=7qoawnvievmUO6isD6QoKKaHpyd2SkSq+1tZy06rUJo=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=w9cIKuarGmTB/vumIH6h8RGV2B9GhCvFWF6k7aHrTqV7OGrV9FF+zLsKdNQIjw64G
- 6RER/7FQsLKgWrc13SuYXWzAaQegl21XiPVNQGwtrmZNwXtB+x43AmiAHoe8QwleAQ
- fouYyVglEHTnbFXdkuTmRtumXuvQv2VTBtUAgULo=
-Date: Mon, 3 Jun 2019 14:18:29 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Nishka Dasgupta <nishkadg.linux@gmail.com>
-Subject: Re: [PATCH] staging: rtl8712: Replace function
- r8712_free_network_queue
-Message-ID: <20190603121829.GA15705@kroah.com>
-References: <20190530205755.30096-1-nishkadg.linux@gmail.com>
+ with ESMTP id O6YIio-Sex5k for <devel@linuxdriverproject.org>;
+ Mon,  3 Jun 2019 12:19:17 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from relay1-d.mail.gandi.net (relay1-d.mail.gandi.net
+ [217.70.183.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 01DBB84D16
+ for <devel@driverdev.osuosl.org>; Mon,  3 Jun 2019 12:19:16 +0000 (UTC)
+X-Originating-IP: 90.88.144.139
+Received: from localhost (aaubervilliers-681-1-24-139.w90-88.abo.wanadoo.fr
+ [90.88.144.139]) (Authenticated sender: maxime.ripard@bootlin.com)
+ by relay1-d.mail.gandi.net (Postfix) with ESMTPSA id 4F98124001F;
+ Mon,  3 Jun 2019 12:19:02 +0000 (UTC)
+Date: Mon, 3 Jun 2019 14:18:59 +0200
+From: Maxime Ripard <maxime.ripard@bootlin.com>
+To: Jernej Skrabec <jernej.skrabec@siol.net>
+Subject: Re: [PATCH 6/7] media: cedrus: Add infra for extra buffers connected
+ to capture buffers
+Message-ID: <20190603121859.sbphcjy75kmed6oc@flea>
+References: <20190530211516.1891-1-jernej.skrabec@siol.net>
+ <20190530211516.1891-7-jernej.skrabec@siol.net>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190530205755.30096-1-nishkadg.linux@gmail.com>
-User-Agent: Mutt/1.12.0 (2019-05-25)
+In-Reply-To: <20190530211516.1891-7-jernej.skrabec@siol.net>
+User-Agent: NeoMutt/20180716
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,28 +60,118 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: florian.c.schilhabel@googlemail.com, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, yangx92@hotmail.com, colin.king@canonical.com,
- larry.finger@lwfinger.net
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org,
+ mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============2766540186286508548=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, May 31, 2019 at 02:27:55AM +0530, Nishka Dasgupta wrote:
-> Remove function r8712_free_network_queue as it does nothing except call
-> _free_network_queue.
-> Rename _free_network_queue to r8712_free_network_queue (and change its
-> type to static) for continued use of the original functionality.
 
-You did not change the type to static:
+--===============2766540186286508548==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="ymlpox2fd2kt5ivb"
+Content-Disposition: inline
 
-> -static void _free_network_queue(struct _adapter *padapter)
-> +void r8712_free_network_queue(struct _adapter *padapter)
 
-:(
+--ymlpox2fd2kt5ivb
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+Hi,
+
+On Thu, May 30, 2019 at 11:15:15PM +0200, Jernej Skrabec wrote:
+> H264 and HEVC engines need additional buffers for each capture buffer.
+> H264 engine has this currently solved by allocating fixed size pool,
+> which is not ideal. Most of the time pool size is much bigger than it
+> needs to be.
+>
+> Ideally, extra buffer should be allocated at buffer initialization, but
+> that's not efficient. It's size in H264 depends on flags set in SPS, but
+> that information is not available in buffer init callback.
+>
+> Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
+> ---
+>  drivers/staging/media/sunxi/cedrus/cedrus.h   |  4 ++++
+>  .../staging/media/sunxi/cedrus/cedrus_video.c | 19 +++++++++++++++++++
+>  2 files changed, 23 insertions(+)
+>
+> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus.h b/drivers/staging/media/sunxi/cedrus/cedrus.h
+> index d8e6777e5e27..16c1bdfd243a 100644
+> --- a/drivers/staging/media/sunxi/cedrus/cedrus.h
+> +++ b/drivers/staging/media/sunxi/cedrus/cedrus.h
+> @@ -81,6 +81,10 @@ struct cedrus_run {
+>  struct cedrus_buffer {
+>  	struct v4l2_m2m_buffer          m2m_buf;
+>
+> +	void		*extra_buf;
+> +	dma_addr_t	extra_buf_dma;
+> +	ssize_t		extra_buf_size;
+> +
+>  	union {
+>  		struct {
+>  			unsigned int			position;
+> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_video.c b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+> index 681dfe3367a6..d756e0e69634 100644
+> --- a/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+> @@ -411,6 +411,24 @@ static void cedrus_queue_cleanup(struct vb2_queue *vq, u32 state)
+>  	}
+>  }
+>
+> +static void cedrus_buf_cleanup(struct vb2_buffer *vb)
+> +{
+> +	struct vb2_queue *vq = vb->vb2_queue;
+> +
+> +	if (!V4L2_TYPE_IS_OUTPUT(vq->type)) {
+> +		struct cedrus_ctx *ctx = vb2_get_drv_priv(vq);
+> +		struct cedrus_buffer *cedrus_buf;
+> +
+> +		cedrus_buf = vb2_to_cedrus_buffer(vq->bufs[vb->index]);
+> +
+> +		if (cedrus_buf->extra_buf_size)
+> +			dma_free_coherent(ctx->dev->dev,
+> +					  cedrus_buf->extra_buf_size,
+> +					  cedrus_buf->extra_buf,
+> +					  cedrus_buf->extra_buf_dma);
+> +	}
+> +}
+> +
+
+I'm really not a fan of allocating something somewhere, and freeing it
+somewhere else. Making sure you don't leak something is hard enough to
+not have some non-trivial allocation scheme.
+
+Maxime
+
+--
+Maxime Ripard, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
+
+--ymlpox2fd2kt5ivb
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCXPUQMwAKCRDj7w1vZxhR
+xZNaAP9V21ZWkOqlo7WZlTwBZOAkVOmATfNXoqclKE0qWtzOVAD8CPTJeCMOMixQ
+jEzMAC7P8TCOrSNny9fgeSx7u+ReUwM=
+=dENZ
+-----END PGP SIGNATURE-----
+
+--ymlpox2fd2kt5ivb--
+
+--===============2766540186286508548==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============2766540186286508548==--
