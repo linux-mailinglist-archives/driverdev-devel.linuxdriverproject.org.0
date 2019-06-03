@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6816C3308C
-	for <lists+driverdev-devel@lfdr.de>; Mon,  3 Jun 2019 15:05:22 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0D71C33094
+	for <lists+driverdev-devel@lfdr.de>; Mon,  3 Jun 2019 15:06:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9CE8A85135;
-	Mon,  3 Jun 2019 13:05:20 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 46537879FD;
+	Mon,  3 Jun 2019 13:06:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GQnSyQmSkz9P; Mon,  3 Jun 2019 13:05:19 +0000 (UTC)
+	with ESMTP id aalgQJltWzxW; Mon,  3 Jun 2019 13:06:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 33ECD84524;
-	Mon,  3 Jun 2019 13:05:18 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C14A38790F;
+	Mon,  3 Jun 2019 13:06:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 504C01BF4D6
- for <devel@linuxdriverproject.org>; Mon,  3 Jun 2019 13:05:16 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B86ED1BF4D6
+ for <devel@linuxdriverproject.org>; Mon,  3 Jun 2019 13:06:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 4D75E84547
- for <devel@linuxdriverproject.org>; Mon,  3 Jun 2019 13:05:16 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id B445F2210F
+ for <devel@linuxdriverproject.org>; Mon,  3 Jun 2019 13:06:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fh78C-Ta-8t8 for <devel@linuxdriverproject.org>;
- Mon,  3 Jun 2019 13:05:15 +0000 (UTC)
+ with ESMTP id h-rd0tcez63g for <devel@linuxdriverproject.org>;
+ Mon,  3 Jun 2019 13:06:39 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id CD52684524
- for <devel@driverdev.osuosl.org>; Mon,  3 Jun 2019 13:05:15 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id C5E77220EF
+ for <devel@driverdev.osuosl.org>; Mon,  3 Jun 2019 13:06:39 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 36E7C27F5E;
- Mon,  3 Jun 2019 13:05:15 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 2BE2627FD9;
+ Mon,  3 Jun 2019 13:06:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1559567115;
- bh=hvxRq+vA9NJlN13fkQsg4UkvRkk5tlRIY54i7UP0W08=;
+ s=default; t=1559567199;
+ bh=u/EU9dtGqWBptP124xbcl8Ga7MudpimrUE9Y+1d6JO4=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=F7REBrsAD78ynBHQ/dAPvj7q58oyGl8zRMPnwBFkThTZX7TVNNJRHOv5JVjgFdzaZ
- gHUEot/83QUyDDCxVeDHP3T98ENuNCQx5dz9Yxl9ecz6Ffrwz79ko1OkNq3OiZ3azZ
- hdB4ltHX4jF4s6BD68IjmUZ2DrKZggSDFU0ywiqU=
-Date: Mon, 3 Jun 2019 15:05:13 +0200
+ b=Dj9/2BsPf9OJ/Ci9oJOwpWI84f9QDsmruXpzTpeanJEz2z2zpk3RzGvEqyDEkxAx8
+ sXZ2JQoyqaJxHFOBStI9YLXGLw974a/3ZV1/k8kRJFCT6g5H31tK222Q+g4Zs/3LKE
+ wr/9FDeU60B7MxYw56fTLj+G8kMhn3b7euDVGDOw=
+Date: Mon, 3 Jun 2019 15:06:37 +0200
 From: Greg KH <gregkh@linuxfoundation.org>
 To: Christian =?iso-8859-1?Q?M=FCller?= <muellerch-privat@web.de>
-Subject: Re: [PATCH 3/3] drivers/staging/rtl8192u: Fix of checkpatch-errors
-Message-ID: <20190603130513.GB30732@kroah.com>
+Subject: Re: [PATCH 2/3] drivers/staging/rtl8192u: Remove comment-out code
+Message-ID: <20190603130637.GC30732@kroah.com>
 References: <20190603122104.2564-1-muellerch-privat@web.de>
- <20190603122104.2564-4-muellerch-privat@web.de>
+ <20190603122104.2564-3-muellerch-privat@web.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190603122104.2564-4-muellerch-privat@web.de>
+In-Reply-To: <20190603122104.2564-3-muellerch-privat@web.de>
 User-Agent: Mutt/1.12.0 (2019-05-25)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -75,44 +75,134 @@ Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Jun 03, 2019 at 02:21:04PM +0200, Christian M=FCller wrote:
-> Fix issues that lead to multiple checkpatch warnings and errors, most of
-> them regarding formatting of code and comments.
-> Comments that contain only commented out code are removed as well.
+On Mon, Jun 03, 2019 at 02:21:03PM +0200, Christian M=FCller wrote:
+> From: Felix Trommer <felix.trommer@hotmail.de>
+> =
+
+> Remove the majority of all commented-out code. Commented out code, that
+> was adressed by a comment itself is not removed. The code that we left
+> in as comments was mostly due to the "pseudo-code"-like nature of the
+> code that helped to clarify certain functionalities.
 > =
 
 > Signed-off-by: Felix Trommer <felix.trommer@hotmail.de>
 > Signed-off-by: Christian M=FCller <muellerch-privat@web.de>
+> ---
+>  drivers/staging/rtl8192u/ieee80211/dot11d.h   |  2 +-
+>  .../staging/rtl8192u/ieee80211/ieee80211.h    | 35 ++-----
+>  .../rtl8192u/ieee80211/ieee80211_crypt_ccmp.c |  1 -
+>  .../rtl8192u/ieee80211/ieee80211_crypt_tkip.c |  1 -
+>  .../rtl8192u/ieee80211/ieee80211_module.c     |  2 -
+>  .../staging/rtl8192u/ieee80211/ieee80211_rx.c | 50 +---------
+>  .../rtl8192u/ieee80211/ieee80211_softmac.c    | 93 +++----------------
+>  .../rtl8192u/ieee80211/ieee80211_softmac_wx.c | 13 +--
+>  .../staging/rtl8192u/ieee80211/ieee80211_tx.c |  3 +-
+>  .../staging/rtl8192u/ieee80211/ieee80211_wx.c | 19 +---
+>  .../rtl8192u/ieee80211/rtl819x_BAProc.c       |  3 -
+>  .../staging/rtl8192u/ieee80211/rtl819x_HT.h   |  2 -
+>  .../rtl8192u/ieee80211/rtl819x_HTProc.c       | 54 ++---------
+>  .../staging/rtl8192u/ieee80211/rtl819x_Qos.h  |  4 +-
+>  .../rtl8192u/ieee80211/rtl819x_TSProc.c       | 11 ---
+>  drivers/staging/rtl8192u/r8190_rtl8256.c      |  3 -
+>  drivers/staging/rtl8192u/r8192U_core.c        |  5 +-
+>  drivers/staging/rtl8192u/r8192U_dm.c          | 60 ------------
+>  drivers/staging/rtl8192u/r8192U_wx.c          |  2 -
+>  drivers/staging/rtl8192u/r819xU_firmware.c    |  1 -
+>  20 files changed, 38 insertions(+), 326 deletions(-)
+> =
+
+> diff --git a/drivers/staging/rtl8192u/ieee80211/dot11d.h b/drivers/stagin=
+g/rtl8192u/ieee80211/dot11d.h
+> index 8b485fa18089..f27267307b3f 100644
+> --- a/drivers/staging/rtl8192u/ieee80211/dot11d.h
+> +++ b/drivers/staging/rtl8192u/ieee80211/dot11d.h
+> @@ -54,4 +54,4 @@ void dot11d_scan_complete(struct ieee80211_device *dev);
+>  int is_legal_channel(struct ieee80211_device *dev, u8 channel);
+>  int to_legal_channel(struct ieee80211_device *dev, u8 channel);
+> =
+
+> -#endif /* #ifndef __INC_DOT11D_H */
+> +#endif
+
+This type of comment is there for a good reason :(
 
 
-- Your patch did many different things all at once, making it difficult
-  to review.  All Linux kernel patches need to only do one thing at a
-  time.  If you need to do multiple things (such as clean up all coding
-  style issues in a file/driver), do it in a sequence of patches, each
-  one doing only one thing.  This will make it easier to review the
-  patches to ensure that they are correct, and to help alleviate any
-  merge issues that larger patches can cause.
+> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211.h b/drivers/sta=
+ging/rtl8192u/ieee80211/ieee80211.h
+> index 8be8a94a2253..d110e9333799 100644
+> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211.h
+> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
+> @@ -106,17 +106,13 @@ struct cb_desc {
+>  	u8 bRTSUseShortGI:1;
+>  	u8 bMulticast:1;
+>  	u8 bBroadcast:1;
+> -	/* u8 reserved2:2; */
+>  	u8 drv_agg_enable:1;
+>  	u8 reserved2:1;
+> =
 
-- You did not specify a description of why the patch is needed, or
-  possibly, any description at all, in the email body.  Please read the
-  section entitled "The canonical patch format" in the kernel file,
-  Documentation/SubmittingPatches for what is needed in order to
-  properly describe the change.
+>  	/* Tx Desc related element(12-19) */
+>  	u8 rata_index;
+>  	u8 queue_index;
+> -	/* u8 reserved3; */
+> -	/* u8 reserved4; */
+>  	u16 txbuf_size;
+> -	/* u8 reserved5; */
+>  	u8 RATRIndex;
+>  	u8 reserved6;
+>  	u8 reserved7;
+> @@ -127,9 +123,6 @@ struct cb_desc {
+>  	u8 rts_rate;
+>  	u8 ampdu_factor;
+>  	u8 ampdu_density;
+> -	/* u8 reserved9; */
+> -	/* u8 reserved10; */
+> -	/* u8 reserved11; */
+>  	u8 DrvAggrNum;
+>  	u16 pkt_size;
+>  	u8 reserved12;
+> @@ -883,7 +876,8 @@ enum ieee80211_mfie {
+>  	MFIE_TYPE_QOS_PARAMETER =3D 222,
+>  };
+> =
 
-- You did not write a descriptive Subject: for the patch, allowing Greg,
-  and everyone else, to know what this patch is all about.  Please read
-  the section entitled "The canonical patch format" in the kernel file,
-  Documentation/SubmittingPatches for what a proper Subject: line should
-  look like.
+> -/* Minimal header; can be used for passing 802.11 frames with sufficient
+> +/*
+> + * Minimal header; can be used for passing 802.11 frames with sufficient
+>   * information to determine what type of underlying data type is actually
+>   * stored in the data.
+>   */
 
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
+That change is not removing commented out code :(
+
+Please be a lot more careful as to what you are doing in a patch when
+you submit it...
+
+> @@ -1144,7 +1138,6 @@ struct ieee80211_tim_parameters {
+>  	u8 tim_period;
+>  } __packed;
+> =
+
+> -//#else
+>  struct ieee80211_wmm_ts_info {
+>  	u8 ac_dir_tid;
+>  	u8 ac_up_psb;
+> @@ -1274,7 +1267,6 @@ enum {WMM_all_frame, WMM_two_frame, WMM_four_frame,=
+ WMM_six_frame};
+>  #define IEEE80211_PS_MBCAST IEEE80211_DTIM_MBCAST
+> =
+
+>  /* added by David for QoS 2006/6/30 */
+> -//#define WMM_Hang_8187
+>  #ifdef WMM_Hang_8187
+>  #undef WMM_Hang_8187
+>  #endif
+
+Are you sure you should remove this commented out line?
 
 thanks,
 
-greg k-h's patch email bot
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
