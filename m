@@ -1,52 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BF07F32F14
-	for <lists+driverdev-devel@lfdr.de>; Mon,  3 Jun 2019 13:55:48 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 703FF32F30
+	for <lists+driverdev-devel@lfdr.de>; Mon,  3 Jun 2019 14:07:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3285185BE4;
-	Mon,  3 Jun 2019 11:55:47 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3B1AB220C1;
+	Mon,  3 Jun 2019 12:07:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tJTFlrz-NQLC; Mon,  3 Jun 2019 11:55:46 +0000 (UTC)
+	with ESMTP id AVF--+O4T2XE; Mon,  3 Jun 2019 12:07:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B1F6A85B18;
-	Mon,  3 Jun 2019 11:55:45 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 81630220D0;
+	Mon,  3 Jun 2019 12:07:04 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 82C611BF287
- for <devel@linuxdriverproject.org>; Mon,  3 Jun 2019 11:55:43 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8E5581BF4E6
+ for <devel@linuxdriverproject.org>; Mon,  3 Jun 2019 12:07:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 7E2B984BF1
- for <devel@linuxdriverproject.org>; Mon,  3 Jun 2019 11:55:43 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5A99387532
+ for <devel@linuxdriverproject.org>; Mon,  3 Jun 2019 12:06:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pULcar47Fm91 for <devel@linuxdriverproject.org>;
- Mon,  3 Jun 2019 11:55:42 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from relay7-d.mail.gandi.net (relay7-d.mail.gandi.net
- [217.70.183.200])
- by whitealder.osuosl.org (Postfix) with ESMTPS id EBEEE84B8F
- for <devel@driverdev.osuosl.org>; Mon,  3 Jun 2019 11:55:41 +0000 (UTC)
-X-Originating-IP: 90.88.144.139
-Received: from localhost (aaubervilliers-681-1-24-139.w90-88.abo.wanadoo.fr
- [90.88.144.139]) (Authenticated sender: maxime.ripard@bootlin.com)
- by relay7-d.mail.gandi.net (Postfix) with ESMTPSA id E0F012000E;
- Mon,  3 Jun 2019 11:55:36 +0000 (UTC)
-Date: Mon, 3 Jun 2019 13:55:36 +0200
-From: Maxime Ripard <maxime.ripard@bootlin.com>
-To: Jernej Skrabec <jernej.skrabec@siol.net>
-Subject: Re: [PATCH 3/7] media: cedrus: Fix decoding for some H264 videos
-Message-ID: <20190603115536.j5lan6wtmbxpoe2k@flea>
-References: <20190530211516.1891-1-jernej.skrabec@siol.net>
- <20190530211516.1891-4-jernej.skrabec@siol.net>
+ with ESMTP id cuvFtjqm5-XH for <devel@linuxdriverproject.org>;
+ Mon,  3 Jun 2019 12:06:24 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 73247860BC
+ for <devel@driverdev.osuosl.org>; Mon,  3 Jun 2019 12:06:06 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id C6E952500E;
+ Mon,  3 Jun 2019 12:06:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1559563566;
+ bh=EKhNyBAfNxOKEhvdrjWPO+lRER7We/ReqFPk94xj26Y=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=uN1m9V1POrSWguPHinx3MUCOXQraw0IgJJ3xgHaampPd5OiVVQRaaiUvGFxAwq9uV
+ zHQPrZLNHYIUYBN8DC+nnl7zdYweYE4+ud6/t6HWVgJbqLMQQnWTzu/v7k0rTT5Pbj
+ ceJo8Sh4vvOTYAmgM1a1cIyzSI0kdWxnDHKxP9VI=
+Date: Mon, 3 Jun 2019 14:06:03 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Tobias =?iso-8859-1?Q?Nie=DFen?= <tobias.niessen@stud.uni-hannover.de>
+Subject: Re: [PATCH] Improve code style in drivers/staging/rts5208
+Message-ID: <20190603120603.GA23013@kroah.com>
+References: <20190603114350.32242-1-tobias.niessen@stud.uni-hannover.de>
 MIME-Version: 1.0
-In-Reply-To: <20190530211516.1891-4-jernej.skrabec@siol.net>
-User-Agent: NeoMutt/20180716
+Content-Disposition: inline
+In-Reply-To: <20190603114350.32242-1-tobias.niessen@stud.uni-hannover.de>
+User-Agent: Mutt/1.12.0 (2019-05-25)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,127 +66,67 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org,
- mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============1341883216645369653=="
+Cc: devel@driverdev.osuosl.org, Sabrina Gaube <sabrina-gaube@web.de>,
+ linux-kernel@vger.kernel.org, linux-kernel@i4.cs.fau.de
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Mon, Jun 03, 2019 at 01:43:50PM +0200, Tobias Nie=DFen wrote:
+> These changes to sd.c and xd.c slightly improve the code style and
+> reduce the overall line length.
+> =
 
---===============1341883216645369653==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="vveoqlv6ysvji45v"
-Content-Disposition: inline
-
-
---vveoqlv6ysvji45v
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+> Signed-off-by: Tobias Nie=DFen <tobias.niessen@stud.uni-hannover.de>
+> Signed-off-by: Sabrina Gaube <sabrina-gaube@web.de>
+> ---
+>  drivers/staging/rts5208/sd.c | 23 +++++++++++------------
+>  drivers/staging/rts5208/xd.c |  8 ++++----
+>  2 files changed, 15 insertions(+), 16 deletions(-)
 
 Hi,
 
-On Thu, May 30, 2019 at 11:15:12PM +0200, Jernej Skrabec wrote:
-> It seems that for some H264 videos at least one bitstream parsing
-> trigger must be called in order to be decoded correctly. There is no
-> explanation why this helps, but it was observed that two sample videos
-> with this fix are now decoded correctly and there is no regression with
-> others.
->
-> Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
-> ---
-> I have two samples which are fixed by this:
-> http://jernej.libreelec.tv/videos/h264/test.mkv
-> http://jernej.libreelec.tv/videos/h264/Dredd%20%E2%80%93%20DTS%20Sound%20Check%20DTS-HD%20MA%207.1.m2ts
->
-> Although second one also needs support for multi-slice frames, which is not yet implemented here.
->
->  .../staging/media/sunxi/cedrus/cedrus_h264.c  | 22 ++++++++++++++++---
->  1 file changed, 19 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
-> index cc8d17f211a1..d0ee3f90ff46 100644
-> --- a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
-> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
-> @@ -6,6 +6,7 @@
->   * Copyright (c) 2018 Bootlin
->   */
->
-> +#include <linux/delay.h>
->  #include <linux/types.h>
->
->  #include <media/videobuf2-dma-contig.h>
-> @@ -289,6 +290,20 @@ static void cedrus_write_pred_weight_table(struct cedrus_ctx *ctx,
->  	}
->  }
+This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
+a patch that has triggered this response.  He used to manually respond
+to these common problems, but in order to save his sanity (he kept
+writing the same thing over and over, yet to different people), I was
+created.  Hopefully you will not take offence and will fix the problem
+in your patch and resubmit it so that it can be accepted into the Linux
+kernel tree.
 
-We should have a comment here explaining why that is needed
+You are receiving this message because of the following common error(s)
+as indicated below:
 
-> +static void cedrus_skip_bits(struct cedrus_dev *dev, int num)
-> +{
-> +	for (; num > 32; num -= 32) {
-> +		cedrus_write(dev, VE_H264_TRIGGER_TYPE, 0x3 | (32 << 8));
+- Your patch did many different things all at once, making it difficult
+  to review.  All Linux kernel patches need to only do one thing at a
+  time.  If you need to do multiple things (such as clean up all coding
+  style issues in a file/driver), do it in a sequence of patches, each
+  one doing only one thing.  This will make it easier to review the
+  patches to ensure that they are correct, and to help alleviate any
+  merge issues that larger patches can cause.
 
-Using defines here would be great
+- You did not specify a description of why the patch is needed, or
+  possibly, any description at all, in the email body.  Please read the
+  section entitled "The canonical patch format" in the kernel file,
+  Documentation/SubmittingPatches for what is needed in order to
+  properly describe the change.
 
-> +		while (cedrus_read(dev, VE_H264_STATUS) & (1 << 8))
-> +			udelay(1);
-> +	}
+- You did not write a descriptive Subject: for the patch, allowing Greg,
+  and everyone else, to know what this patch is all about.  Please read
+  the section entitled "The canonical patch format" in the kernel file,
+  Documentation/SubmittingPatches for what a proper Subject: line should
+  look like.
 
-A new line here would be great
+If you wish to discuss this problem further, or you have questions about
+how to resolve this issue, please feel free to respond to this email and
+Greg will reply once he has dug out from the pending patches received
+from other developers.
 
-> +	if (num > 0) {
-> +		cedrus_write(dev, VE_H264_TRIGGER_TYPE, 0x3 | (num << 8));
-> +		while (cedrus_read(dev, VE_H264_STATUS) & (1 << 8))
-> +			udelay(1);
-> +	}
+thanks,
 
-Can't we make that a bit simpler by not duplicating the loop?
-
-Something like:
-
-int current = 0;
-
-while (current < num) {
-    int tmp = min(num - current, 32);
-
-    cedrus_write(dev, VE_H264_TRIGGER_TYPE, 0x3 | (current << 8))
-    while (...)
-       ...
-
-    current += tmp;
-}
-
-Maxime
-
---
-Maxime Ripard, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
-
---vveoqlv6ysvji45v
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCXPUKuAAKCRDj7w1vZxhR
-xa7AAP9ziESwTw+9Wv7wL7C0BfDMaT38Drny6yfPw3LoggkqrwEAxQK0/0WKA7bE
-Ny7/W1EpBNFeb58M3ZPKD2rZ9JmR3Qw=
-=ESPy
------END PGP SIGNATURE-----
-
---vveoqlv6ysvji45v--
-
---===============1341883216645369653==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+greg k-h's patch email bot
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============1341883216645369653==--
