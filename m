@@ -2,78 +2,80 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CAEC733893
-	for <lists+driverdev-devel@lfdr.de>; Mon,  3 Jun 2019 20:51:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 019583389E
+	for <lists+driverdev-devel@lfdr.de>; Mon,  3 Jun 2019 20:54:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 59DFC226B0;
-	Mon,  3 Jun 2019 18:51:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5E06D226FC;
+	Mon,  3 Jun 2019 18:54:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wqKFNnGCOILu; Mon,  3 Jun 2019 18:51:39 +0000 (UTC)
+	with ESMTP id duLuHXSihBFD; Mon,  3 Jun 2019 18:54:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id A4AAF226B2;
-	Mon,  3 Jun 2019 18:51:37 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id EF969226C2;
+	Mon,  3 Jun 2019 18:54:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3C5891BF479
- for <devel@linuxdriverproject.org>; Mon,  3 Jun 2019 18:51:36 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 361511BF479
+ for <devel@linuxdriverproject.org>; Mon,  3 Jun 2019 18:54:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 38FC88609B
- for <devel@linuxdriverproject.org>; Mon,  3 Jun 2019 18:51:36 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 2D3D485E09
+ for <devel@linuxdriverproject.org>; Mon,  3 Jun 2019 18:54:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dz3lx4l6sb5b for <devel@linuxdriverproject.org>;
- Mon,  3 Jun 2019 18:51:30 +0000 (UTC)
+ with ESMTP id vX5vuIWiuvbv for <devel@linuxdriverproject.org>;
+ Mon,  3 Jun 2019 18:54:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-it1-f198.google.com (mail-it1-f198.google.com
- [209.85.166.198])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A13658632E
- for <devel@driverdev.osuosl.org>; Mon,  3 Jun 2019 18:51:06 +0000 (UTC)
-Received: by mail-it1-f198.google.com with SMTP id m188so15889158ita.0
- for <devel@driverdev.osuosl.org>; Mon, 03 Jun 2019 11:51:06 -0700 (PDT)
+Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
+ [209.85.214.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id AC19A85D54
+ for <devel@driverdev.osuosl.org>; Mon,  3 Jun 2019 18:54:17 +0000 (UTC)
+Received: by mail-pl1-f196.google.com with SMTP id g9so7320370plm.6
+ for <devel@driverdev.osuosl.org>; Mon, 03 Jun 2019 11:54:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=OW/dmyNaGaVJoTyF3MoMrO/1pdIZuVh4e6+v5z0In/s=;
+ b=QU37X96yUb+WqrlP0wwOS5x4Pn52G1X3+V/xa7s2j7M8nZn7pGnH9/BkYMJSpDNRKe
+ 9P2KZn1BDdDqZ36p3lHJra1PA5b/DaZlPNomnfoRMitiRf5Z5ewrFBakupBCLsD7uhGB
+ EVDijmUj+cFQ2hzrWJ4Zs/67t9aDccvzTxHruhZQN+B5vJL94okoRy2Vxy6CHdJjcfyX
+ +TPAZEn8A20asvY+uno099GtyV1qO7/HFFMncmr26n+u+72eAs3NWTGuowTCgIt6Tnj3
+ lsuVsa6Oh3aRtEQVlwVXIvqKZKU7XVxt5UVSb/IhJ3HEPv/lpsF/s+yABgLLPlQVG9GU
+ UxWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:date:message-id:subject:from:to;
- bh=Hc/Ql5pBCcEqkkw7qSEADSbLYyZ9Yl7/t4LfmUF/Rso=;
- b=hfDNuQ4vbOrx+K5MPhc0j9T6kZRIkxJjrbxJ1KVr9Eu/VWYJbbyHxC8JkktbS+pRo/
- vpmoZL1HHxmCkUzzjp5IGaYVAH6deBIIsENj5omcN6c6XIAMRwiS88eE243DK2elz0CC
- AHbjJ5TqXjk6vItw99gsZJKOSiBBIj8ZGNtyMDiYUrF3/jzZhN+6lVbQXRgy4p4lAUIe
- 6r3RipiDgKUs/q6EXJ3LJ+c+8tIuA/S46ceBIreDqQ6V59TvZg1cVNw21s83vJzHc7jZ
- 8n/jzM8Gd485fWLtpPynFVlOA8Vxo7KcKQw/oO2PUZznKPfV7TMyA/rgT4+vEWe3rax4
- AldA==
-X-Gm-Message-State: APjAAAUn8LpOL4K0wZRauPvGKtPB/ksPC3vegDSaJzE5PHuJc/Y8q25F
- nYpqGPChMNmz2wiQz7RRXDP7RKhr8aXfYLUMDYWZB/7ZDL84
-X-Google-Smtp-Source: APXvYqyv0SnXMwc5y1PdJYmwJwPRSYd45Ii8i3pUCXQWuobZWIPev3JRvnZPyZdLwYw0Im3FKuWPa925cFr0Gdovko4iIv/+z6ee
+ h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=OW/dmyNaGaVJoTyF3MoMrO/1pdIZuVh4e6+v5z0In/s=;
+ b=EUiytgpcn4CgjUlmqg3StnSrx61tKHdGMthZRI6qQX5bl2wfb56i7/MYe4KJfHCnn2
+ e6qaqO0wp2Xs2PWX+7nmEFzrHI2MSo0GrlgRkzQNVwxoxcQ5xlJcmdC9ze92ygtIH19u
+ h/LLP9v5yAdEtt3x2ytnZa1k3iw6owRBecFZFmAUrgDToXss89vHk1DW2+R12z6AyWsv
+ ukOPgqiXNvqZf+bvDhQsXlEzCh2chbCgx112NXg0zEzrMsDzIPu7eHxvaKLmQgiv7lZJ
+ wtiwlcze1wDGA/3U6pwuQogL2nLTTtSh+oibyVY8Wc+NWQiKjvPnorbAK7PJTKJOeyb7
+ vO0A==
+X-Gm-Message-State: APjAAAUP2d3u49iWdBm+SIzKlICXy6abcMqeenT/ypFkjdGqG7tQxTe0
+ vZqR8yp1gs3bemWRLIS1v8o=
+X-Google-Smtp-Source: APXvYqx8QtZUnGrkvDs6bvqITl79TneNWtxFrYaz2XWOJRy/tM6baO9gejR3+HC3/7Tk2mboJhS0RQ==
+X-Received: by 2002:a17:902:bd06:: with SMTP id
+ p6mr31370665pls.112.1559588057354; 
+ Mon, 03 Jun 2019 11:54:17 -0700 (PDT)
+Received: from hari-Inspiron-1545 ([183.83.89.153])
+ by smtp.gmail.com with ESMTPSA id d13sm25827511pfh.113.2019.06.03.11.54.14
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 03 Jun 2019 11:54:16 -0700 (PDT)
+Date: Tue, 4 Jun 2019 00:24:12 +0530
+From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Carmeli Tamir <carmeli.tamir@gmail.com>,
+ Nishad Kamdar <nishadkamdar@gmail.com>, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] Staging: emxx_udc: fix warning "sum of probable bitmasks,
+ consider |"
+Message-ID: <20190603185412.GA11183@hari-Inspiron-1545>
 MIME-Version: 1.0
-X-Received: by 2002:a24:7585:: with SMTP id
- y127mr18509944itc.112.1559587865933; 
- Mon, 03 Jun 2019 11:51:05 -0700 (PDT)
-Date: Mon, 03 Jun 2019 11:51:05 -0700
-X-Google-Appengine-App-Id: s~syzkaller
-X-Google-Appengine-App-Id-Alias: syzkaller
-Message-ID: <000000000000bec591058a6fd889@google.com>
-Subject: WARNING: suspicious RCU usage in in_dev_dump_addr
-From: syzbot <syzbot+bad6e32808a3a97b1515@syzkaller.appspotmail.com>
-To: amitkarwar@gmail.com, anshuman.khandual@arm.com, axboe@kernel.dk, 
- benedictwong@google.com, benve@cisco.com, coreteam@netfilter.org, 
- davej@codemonkey.org.uk, davem@davemloft.net, dbanerje@akamai.com, 
- devel@driverdev.osuosl.org, dledford@redhat.com, doshir@vmware.com, 
- edumazet@google.com, faisal.latif@intel.com, fw@strlen.de, gbhat@marvell.com, 
- gregkh@linuxfoundation.org, gustavo@embeddedor.com, huxinming820@gmail.com, 
- idosch@mellanox.com, jakub.kicinski@netronome.com, jgg@ziepe.ca, 
- johannes@sipsolutions.net, kadlec@blackhole.kfki.hu, keescook@chromium.org, 
- kuznet@ms2.inr.ac.ru, kvalo@codeaurora.org, linux-kernel@vger.kernel.org, 
- linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org, 
- liuhangbin@gmail.com, lucien.xin@gmail.com, matwey@sai.msu.ru, 
- mpe@ellerman.id.au, neescoba@cisco.com, netdev@vger.kernel.org, 
- netfilter-devel@vger.kernel.org, nishants@marvell.com, pablo@netfilter.org, 
- paulmck@linux.ibm.com, petrm@mellanox.com, pkaustub@cisco.com, 
- pv-drivers@vmware.com, romieu@fr.zoreil.com, shannon.nelson@oracle.com, 
- shiraz.saleem@intel.com, steffen.klassert@secunet.com, 
- syzkaller-bugs@googlegroups.com, yoshfuji@linux-ipv6.org
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,104 +88,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"; DelSp="yes"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,
+Knowing the fact that operator '|' is faster than '+'.
+Its better we replace + with | in this case.
 
-syzbot found the following crash on:
+Issue reported by coccicheck
+drivers/staging/emxx_udc/emxx_udc.h:94:34-35: WARNING: sum of probable
+bitmasks, consider |
 
-HEAD commit:    b33bc2b8 nexthop: Add entry to MAINTAINERS
-git tree:       net-next
-console output: https://syzkaller.appspot.com/x/log.txt?x=13f46f52a00000
-kernel config:  https://syzkaller.appspot.com/x/.config?x=1004db091673bbaf
-dashboard link: https://syzkaller.appspot.com/bug?extid=bad6e32808a3a97b1515
-compiler:       gcc (GCC) 9.0.0 20181231 (experimental)
-syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=11dc685aa00000
-C reproducer:   https://syzkaller.appspot.com/x/repro.c?x=16229e36a00000
-
-The bug was bisected to:
-
-commit 2638eb8b50cfc16240e0bb080b9afbf541a9b39d
-Author: Florian Westphal <fw@strlen.de>
-Date:   Fri May 31 16:27:09 2019 +0000
-
-     net: ipv4: provide __rcu annotation for ifa_list
-
-bisection log:  https://syzkaller.appspot.com/x/bisect.txt?x=170e1a0ea00000
-final crash:    https://syzkaller.appspot.com/x/report.txt?x=148e1a0ea00000
-console output: https://syzkaller.appspot.com/x/log.txt?x=108e1a0ea00000
-
-IMPORTANT: if you fix the bug, please add the following tag to the commit:
-Reported-by: syzbot+bad6e32808a3a97b1515@syzkaller.appspotmail.com
-Fixes: 2638eb8b50cf ("net: ipv4: provide __rcu annotation for ifa_list")
-
-=============================
-WARNING: suspicious RCU usage
-5.2.0-rc2+ #13 Not tainted
------------------------------
-net/ipv4/devinet.c:1766 suspicious rcu_dereference_check() usage!
-
-other info that might help us debug this:
-
-
-rcu_scheduler_active = 2, debug_locks = 1
-1 lock held by syz-executor924/9000:
-  #0: 0000000087fe3874 (rtnl_mutex){+.+.}, at: netlink_dump+0xe7/0xfb0  
-net/netlink/af_netlink.c:2208
-
-stack backtrace:
-CPU: 0 PID: 9000 Comm: syz-executor924 Not tainted 5.2.0-rc2+ #13
-Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS  
-Google 01/01/2011
-Call Trace:
-  __dump_stack lib/dump_stack.c:77 [inline]
-  dump_stack+0x172/0x1f0 lib/dump_stack.c:113
-  lockdep_rcu_suspicious+0x153/0x15d kernel/locking/lockdep.c:5250
-  in_dev_dump_addr+0x36f/0x3d0 net/ipv4/devinet.c:1766
-  inet_dump_ifaddr+0xa8f/0xca0 net/ipv4/devinet.c:1826
-  rtnl_dump_all+0x295/0x490 net/core/rtnetlink.c:3444
-  netlink_dump+0x558/0xfb0 net/netlink/af_netlink.c:2253
-  __netlink_dump_start+0x5b1/0x7d0 net/netlink/af_netlink.c:2361
-  netlink_dump_start include/linux/netlink.h:226 [inline]
-  rtnetlink_rcv_msg+0x73d/0xb00 net/core/rtnetlink.c:5181
-  netlink_rcv_skb+0x177/0x450 net/netlink/af_netlink.c:2486
-  rtnetlink_rcv+0x1d/0x30 net/core/rtnetlink.c:5236
-  netlink_unicast_kernel net/netlink/af_netlink.c:1311 [inline]
-  netlink_unicast+0x531/0x710 net/netlink/af_netlink.c:1337
-  netlink_sendmsg+0x8ae/0xd70 net/netlink/af_netlink.c:1926
-  sock_sendmsg_nosec net/socket.c:652 [inline]
-  sock_sendmsg+0xd7/0x130 net/socket.c:671
-  ___sys_sendmsg+0x803/0x920 net/socket.c:2292
-  __sys_sendmsg+0x105/0x1d0 net/socket.c:2330
-  __do_sys_sendmsg net/socket.c:2339 [inline]
-  __se_sys_sendmsg net/socket.c:2337 [inline]
-  __x64_sys_sendmsg+0x78/0xb0 net/socket.c:2337
-  do_syscall_64+0xfd/0x680 arch/x86/entry/common.c:301
-  entry_SYSCALL_64_after_hwframe+0x49/0xbe
-RIP: 0033:0x4402a9
-Code: 18 89 d0 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 00 48 89 f8 48 89 f7  
-48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff  
-ff 0f 83 fb 13 fc ff c3 66 2e 0f 1f 84 00 00 00 00
-RSP: 002b:00007fffe5f26f18 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
-RAX: ffffffffffffffda RBX: 00000000004002c8 RCX: 00000000004402a9
-RDX: 0000000000000000 RSI: 0000000020000240 RDI: 0000000000000003
-RBP: 00000000006ca018 R08: 00000000004002c8 R09: 00000000004002c8
-R10:
-
-
+Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 ---
-This bug is generated by a bot. It may contain errors.
-See https://goo.gl/tpsmEJ for more information about syzbot.
-syzbot engineers can be reached at syzkaller@googlegroups.com.
+ drivers/staging/emxx_udc/emxx_udc.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-syzbot will keep track of this bug report. See:
-https://goo.gl/tpsmEJ#status for how to communicate with syzbot.
-For information about bisection process see: https://goo.gl/tpsmEJ#bisection
-syzbot can test patches for this bug, for details see:
-https://goo.gl/tpsmEJ#testing-patches
+diff --git a/drivers/staging/emxx_udc/emxx_udc.h b/drivers/staging/emxx_udc/emxx_udc.h
+index b8c3dee..88d6bda 100644
+--- a/drivers/staging/emxx_udc/emxx_udc.h
++++ b/drivers/staging/emxx_udc/emxx_udc.h
+@@ -91,7 +91,7 @@ int vbus_irq;
+ #define BIT30		0x40000000
+ #define BIT31		0x80000000
+ 
+-#define TEST_FORCE_ENABLE		(BIT18 + BIT16)
++#define TEST_FORCE_ENABLE		(BIT18 | BIT16)
+ 
+ #define INT_SEL				BIT10
+ #define CONSTFS				BIT09
+-- 
+2.7.4
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
