@@ -1,52 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DBC9533D91
-	for <lists+driverdev-devel@lfdr.de>; Tue,  4 Jun 2019 05:33:39 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A8BA33D92
+	for <lists+driverdev-devel@lfdr.de>; Tue,  4 Jun 2019 05:34:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 187208967C;
-	Tue,  4 Jun 2019 03:33:38 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 42DE688C89;
+	Tue,  4 Jun 2019 03:34:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id T3hw3ysjk8eH; Tue,  4 Jun 2019 03:33:37 +0000 (UTC)
+	with ESMTP id jLrfNyRsve64; Tue,  4 Jun 2019 03:34:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9A33289660;
-	Tue,  4 Jun 2019 03:33:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B4B3988C11;
+	Tue,  4 Jun 2019 03:34:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7957E1BF5F8
- for <devel@linuxdriverproject.org>; Tue,  4 Jun 2019 03:33:34 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 29D5D1BF5F8
+ for <devel@linuxdriverproject.org>; Tue,  4 Jun 2019 03:34:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 742BE88C11
- for <devel@linuxdriverproject.org>; Tue,  4 Jun 2019 03:33:34 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1E1F788C11
+ for <devel@linuxdriverproject.org>; Tue,  4 Jun 2019 03:34:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0rX431u03Ulj for <devel@linuxdriverproject.org>;
- Tue,  4 Jun 2019 03:33:33 +0000 (UTC)
-X-Greylist: delayed 00:10:01 by SQLgrey-1.7.6
+ with ESMTP id KfJ3yP7EAaAx for <devel@linuxdriverproject.org>;
+ Tue,  4 Jun 2019 03:34:31 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from smileaward.icu (unknown [89.43.78.246])
- by whitealder.osuosl.org (Postfix) with ESMTP id AA39C88C0E
- for <devel@linuxdriverproject.org>; Tue,  4 Jun 2019 03:33:33 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 71F4088C0E
+ for <devel@driverdev.osuosl.org>; Tue,  4 Jun 2019 03:34:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail; d=smileaward.icu; 
  h=From:Date:MIME-Version:To:Subject:Message-ID:Content-Type:Content-Transfer-Encoding;
- i=woald@smileaward.icu; bh=ZtPbg8cwS+hH4Vkkdk+yKOdvsz0=;
- b=PHHoH25YaLB8zxqpSY+Ng2SGhTcbIxRl3IVce3MEwgs6nSONbFQxQs2Qs8r7D1PrBEmVsO4UaW7t
- 9mlbT73/Imf5PBDvlSRWRbI9mUYsi6TMzugWQcj7n1Wd/+UwuCkmem86a/BFkTpV/7UDFguDiELZ
- CcpL38OF1OdUJHnmupI=
+ i=kiang@smileaward.icu; bh=005RPsoZV3oZNQp15BxdDAyjNV8=;
+ b=aSv2MgZlc7cL/hiKRiZuspb4POaU7P6srPBv1ZCaTroi0oKOJPJEZWYHN4VXEflKDFFerUkOEVRx
+ TIzqxzHevBeNG+gK/ff0DAT2IGequ4xSsbchixtyK57gfaRzmtBi1qe804v3XFCz86bAuxyBlwEr
+ fmcC3xSC9s73Y9sC4t8=
 DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=smileaward.icu;
- b=YsOMZpNGIiX7r2SjLVjNB3Pdfd/MuusWr26aTY8ry3JdyHAJlOUqkt5By6Sb6poFhg+quFYB7XE6
- M4AKoWat4iIcRuJIhiNPY0p4SF2IrlCt4zfBGLteVQI86fZCWd/dX8tdSJpQoIv1PFVhk64TTsTv
- dRPK/m3kL6rSt/CKMfk=;
-From: " Jeanette Garza" <woald@smileaward.icu>
-Date: Mon, 03 Jun 2019 22:18:55 -0500
+ b=Q4vnX1bRhcqMJizGYEwJnXSmK1SWE9W9qTRDYDf1UsFUAkk9Exg80wU0X9RE18FZBQQtVLP0dZn7
+ xErP0tlieFP4kufVP1BJ5hv1jXL+3R9aIWSk1cDkb2rCWJqQi/T5VLtSh/QAm6gTOwCVyj4SQOMY
+ zvzz3B2NN68JXaxxlLQ=;
+From: " Maria Foster" <kiang@smileaward.icu>
+Date: Mon, 03 Jun 2019 22:19:22 -0500
 MIME-Version: 1.0
-To: <devel@linuxdriverproject.org>
-Subject: With the newest invention by Shark Tank you can dissolve 3lbs/day
-Message-ID: <SfEocK9rWnljG3PvX1XV02qv2q6PTG0muygYHl4j3XY.T8ZNgAugFrI8JTWNZ1SRE9RI833-BGnuWhnZhHCHb_s@smileaward.icu>
+To: <devel@driverdev.osuosl.org>
+Subject: With the newest invention by Shark Tank you can dissolve 2lbs/day
+Message-ID: <7LRsqL7hUtk6xzjNsF9DoN18BFi81i6MWH3G4Y9h7iI.fZMgTXm7IWsCEMvug2mmgH6IGlx7fdQ6oGx3CRkveBk@smileaward.icu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,38 +78,38 @@ g, the results have been unbelievable! =
 
 You can remove 3-pounds every day with this fruit.  =
 
-http://www.smileaward.icu/pfsbuho/qsfuzv29968xtfahlvr/4nGO4HVNJIvQpwc3tXGwD=
-_8Ng7fYw_V_M_a6v8E0cxs/QqW3JIjUt-xdE6FD4yc04UDgdVw6ekbZ8rWCwrwQkRSgHI-9gDzS=
-prEQV8v0HjpBCyBBDWYVjOWxAnB9dnWfXi28FqJcRqFuBS1BIBUdAowu-80EdC1CNRgfrk1czli=
-FwIvQvymYvV1HbokICl_xtVAzqsepwWD7ipyqhNxW1FM
+http://www.smileaward.icu/kznnqyklg/jhkrig29968ubufqrwti/xplxDrL0IOwTJZ3U7t=
+_mUiW07AesfgVTStfXqGBBJJY/vzYLCxQxJHrYIeIGN-prPiNfJKvRbawXTM-56dyFlHmspXuKq=
+XIYrrsFgNWPouFkRrLxmmzQUZdEridn2Yl8uyPn391GKCHN_GXUbaI8ZOCLGcb3FJpruC_acji-=
+vHRMy8X68kYWQFf2PSEPm6VDNtVHpJp9rWIuaBhLfWQkNP4
 
 It's the top product of 2018
 
 
-**Only Monday 2552 samples available**
-http://www.smileaward.icu/pfsbuho/qsfuzv29968xtfahlvr/4nGO4HVNJIvQpwc3tXGwD=
-_8Ng7fYw_V_M_a6v8E0cxs/QqW3JIjUt-xdE6FD4yc04UDgdVw6ekbZ8rWCwrwQkRSgHI-9gDzS=
-prEQV8v0HjpBCyBBDWYVjOWxAnB9dnWfXi28FqJcRqFuBS1BIBUdAowu-80EdC1CNRgfrk1czli=
-FwIvQvymYvV1HbokICl_xtVAzqsepwWD7ipyqhNxW1FM
+**Only Monday 1589 samples available**
+http://www.smileaward.icu/kznnqyklg/jhkrig29968ubufqrwti/xplxDrL0IOwTJZ3U7t=
+_mUiW07AesfgVTStfXqGBBJJY/vzYLCxQxJHrYIeIGN-prPiNfJKvRbawXTM-56dyFlHmspXuKq=
+XIYrrsFgNWPouFkRrLxmmzQUZdEridn2Yl8uyPn391GKCHN_GXUbaI8ZOCLGcb3FJpruC_acji-=
+vHRMy8X68kYWQFf2PSEPm6VDNtVHpJp9rWIuaBhLfWQkNP4
 
 =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
 =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
 =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
 go here to end
-http://www.smileaward.icu/Vukutdz/MF1WxNhqypi7DWwpesqzAVtx_lCIkobH1VvYmyvQv=
-IwFilzc1krfgRNC1CdE08-uwoAdUBIB1SBuFqRcJqF82iXfWnd9BnAxWOjVYWDBByCBpjH0v8VQ=
-ErpSzDg9-IHgSRkQwrwCWr8Zbke6wVdgDU40cy4DF6Edx-tUjIJ3WqQ.sxc0E8v6a_M_V_wYf7g=
-N8_DwGXt3cwpQvIJNVH4OGn4
-153 Cactus Lane Brockton, MA 02301
+http://www.smileaward.icu/fbmrk/4PNkQWfLhBauIWr9pJpHVtNDV6mPESP2fFQWYk86X8y=
+MRHv-ijca_CurpJF3bcGLCOZ8IabUXG_NHCKG193nPyu8lY2ndirEdZUQzmmxLrRkFuoPWNgFsr=
+rYIXqKuXpsmHlFyd65-MTXwabRvKJfNiPrp-NGIeIYrHJxQxCLYzv.YJJBBGqXftSTVgfseA70W=
+iUm_t7U3ZJTwOI0LrDxlpx
+ 516 Honey Creek Lane Capitol Heights, MD 20743
 
 
 
 Eliminate your name from our index by confirming your preference now
-http://www.smileaward.icu/afetzsikms/MF1WxNhqypi7DWwpesqzAVtx_lCIkobH1VvYmy=
-vQvIwFilzc1krfgRNC1CdE08-uwoAdUBIB1SBuFqRcJqF82iXfWnd9BnAxWOjVYWDBByCBpjH0v=
-8VQErpSzDg9-IHgSRkQwrwCWr8Zbke6wVdgDU40cy4DF6Edx-tUjIJ3WqQ.sxc0E8v6a_M_V_wY=
-f7gN8_DwGXt3cwpQvIJNVH4OGn4
-28 W. Colonial Ave. Ellenwood, GA 30294
+http://www.smileaward.icu/axvmxfz/4PNkQWfLhBauIWr9pJpHVtNDV6mPESP2fFQWYk86X=
+8yMRHv-ijca_CurpJF3bcGLCOZ8IabUXG_NHCKG193nPyu8lY2ndirEdZUQzmmxLrRkFuoPWNgF=
+srrYIXqKuXpsmHlFyd65-MTXwabRvKJfNiPrp-NGIeIYrHJxQxCLYzv.YJJBBGqXftSTVgfseA7=
+0WiUm_t7U3ZJTwOI0LrDxlpx
+265 S. Schoolhouse St. Boynton Beach, FL 33435
 =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
 =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
 =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
