@@ -1,53 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1766C351E7
-	for <lists+driverdev-devel@lfdr.de>; Tue,  4 Jun 2019 23:30:48 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 63D66351E8
+	for <lists+driverdev-devel@lfdr.de>; Tue,  4 Jun 2019 23:31:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1E2C186BB7;
-	Tue,  4 Jun 2019 21:30:44 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3D20087CDB;
+	Tue,  4 Jun 2019 21:31:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hIA0U2Ngt93D; Tue,  4 Jun 2019 21:30:43 +0000 (UTC)
+	with ESMTP id A671st-TZoa8; Tue,  4 Jun 2019 21:31:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A2A7186ACB;
-	Tue,  4 Jun 2019 21:30:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BE01187C91;
+	Tue,  4 Jun 2019 21:31:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E22CE1BF39D
- for <devel@linuxdriverproject.org>; Tue,  4 Jun 2019 21:30:39 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C648A1BF39D
+ for <devel@linuxdriverproject.org>; Tue,  4 Jun 2019 21:31:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id DBDCC20390
- for <devel@linuxdriverproject.org>; Tue,  4 Jun 2019 21:30:39 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id BCC0A20390
+ for <devel@linuxdriverproject.org>; Tue,  4 Jun 2019 21:31:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5W6+yPjEJRpQ for <devel@linuxdriverproject.org>;
- Tue,  4 Jun 2019 21:30:39 +0000 (UTC)
-X-Greylist: delayed 00:10:01 by SQLgrey-1.7.6
+ with ESMTP id T6q9QWg2KDKF for <devel@linuxdriverproject.org>;
+ Tue,  4 Jun 2019 21:31:04 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from eggwhiteoutside.club (unknown [185.132.127.202])
- by silver.osuosl.org (Postfix) with ESMTP id 4811C20373
- for <devel@linuxdriverproject.org>; Tue,  4 Jun 2019 21:30:39 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 4215720373
+ for <devel@driverdev.osuosl.org>; Tue,  4 Jun 2019 21:31:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail;
  d=eggwhiteoutside.club; 
  h=From:Date:MIME-Version:To:Subject:Message-ID:Content-Type:Content-Transfer-Encoding;
- i=thorp@eggwhiteoutside.club; bh=ZMLxoeP/byV+9em3YteXuMqxlYU=;
- b=ZTeHbmfV3UNNzRXZX2FHVjqzMuSLIq+AdCbDrQrU4sdkHQ+rZWZt/2vN/Usu31UyQT7SiTCP9qKK
- 2EMqQfhP9zapQIjwSEmdCBx+15njRmTB9rlq4En/7R8v37kHeXfkEiFYdqNUbwJ+uYLFQ24r4r9I
- yjFj2NZY7AsyvM3ItcM=
+ i=gyro@eggwhiteoutside.club; bh=lsOrpTSKQzBPAPicMtaeFUTrjgE=;
+ b=rmDtNAS1ZOlm9Qb3B/1NqYerFdb5Hjz+Momw7WzJ+iCuNxatf3CsQ9+CDrShR9ZhdXkxGz3ZyjGo
+ E8XhXFWB2DbmGq3KiB68/AkxwcySaLbZum7LIqaFh4haaObphB1R0oHngiOiOsp6W7KUZwWjUtfo
+ eNmzGgMuycTPFROMv5k=
 DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=eggwhiteoutside.club;
- b=gB7p1TFFaFfq1WZG2ASEvm9eAe9PhWghbJ97AqyzppGltM2KZKjil3nAlLzlmmfygTaKfY5YT8z4
- p1Um5zCNODrBqAlP8LecFidYzqToDPlY+Y84ztoD2fC9CUt66SCC1T+Xzg3H9ZgS+dA33spBfDdD
- ZkNbFC3qSH5YpyEjoVM=;
-From: " Adrian" <thorp@eggwhiteoutside.club>
-Date: Tue, 04 Jun 2019 16:16:34 -0500
+ b=X4ZtsJ75ETfsY86hPsg4OUecPYXXSUfbi2jEtGrUGt4Hw/+jHBDNAKgPNHNe40xOupjmCW4vd1JV
+ DawfAkyN4Hrd3PCtXrGCF8tJJYlZj6FUVN++h3LclGDt+2ZuioYxFTFV10UhOD0VxwdDZZPw/tHP
+ upakPsq3QB9+8raz64Q=;
+From: " Tyler Ingram" <gyro@eggwhiteoutside.club>
+Date: Tue, 04 Jun 2019 16:17:20 -0500
 MIME-Version: 1.0
-To: <devel@linuxdriverproject.org>
-Subject: Biggest product deal ever on shark tank
-Message-ID: <heuDI69m60LUkKKViUXJjcbHQUyHYQxMHd7EuuQnmPQ.ukIQeyBZRu2T0bRJX3rP9arOZbTK1NEv4jNIpPt9HFw@eggwhiteoutside.club>
+To: <devel@driverdev.osuosl.org>
+Subject: Shark Tank: Mark Cuban walks off the show
+Message-ID: <ykJEMPbkXVBfL0gYKEOsih3yBo9z_6VEI5HjtTisTE8.oME85IoCaviD9mfl8bjYsTWJgZrcZuZDQEVdyh5Aj5o@eggwhiteoutside.club>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,16 +86,16 @@ tter of seconds
 
 "I have never seen anything like this. . .  Adds Bill Gates.  I even starte=
 d taking this myself"
-http://www.eggwhiteoutside.club/wxgxssq/dxgeh30005tkcl/O_ssBTjXEU9qOLq2387T=
-d7s_b8WyK3nJ-RJNy6Lnp1k/M_ij1u7uPB3mmYCLzETQFh4BxVVwQ-PODFkiphgDgYlWM3I1Jkb=
-mVlLDfNIvfl7Nepx1hs3a9ZGNDtB0J3550I1H_QIxLIKer9OVcnG_cy8hgezSks9ZcHCysv4Rfy=
-ym
+http://www.eggwhiteoutside.club/kydvziwsay/hszjdy30005ticgen/2Cx1lwJG61RVUP=
+NPumrkE5srvUnQnmxDpJhjJ_lZdOk/TcIkUDdIx5zFPz7vS-pIrVqZyNFPYnZLJIeZIYqIF6Mt4=
+VXgDdYM-uqQqJgyJMtkZ0Y33uZTsGqmpbPK3mI7Xg0OdJ9cv9pHu85jUDnuLmxErfnUQlefY-f8=
+Nk-SS--j
 
 Tuesday: Full Report
-http://www.eggwhiteoutside.club/wxgxssq/dxgeh30005tkcl/O_ssBTjXEU9qOLq2387T=
-d7s_b8WyK3nJ-RJNy6Lnp1k/M_ij1u7uPB3mmYCLzETQFh4BxVVwQ-PODFkiphgDgYlWM3I1Jkb=
-mVlLDfNIvfl7Nepx1hs3a9ZGNDtB0J3550I1H_QIxLIKer9OVcnG_cy8hgezSks9ZcHCysv4Rfy=
-ym
+http://www.eggwhiteoutside.club/kydvziwsay/hszjdy30005ticgen/2Cx1lwJG61RVUP=
+NPumrkE5srvUnQnmxDpJhjJ_lZdOk/TcIkUDdIx5zFPz7vS-pIrVqZyNFPYnZLJIeZIYqIF6Mt4=
+VXgDdYM-uqQqJgyJMtkZ0Y33uZTsGqmpbPK3mI7Xg0OdJ9cv9pHu85jUDnuLmxErfnUQlefY-f8=
+Nk-SS--j
 
 
 
@@ -113,10 +113,10 @@ This is an ad-coresspondance
 
 
 go here to end
-http://www.eggwhiteoutside.club/vktoxeafa/myyfR4vsyCHcZ9skSzegh8yc_GncVO9re=
-KILxIQ_H1I0553J0BtDNGZ9a3sh1xpeN7lfvINfDLlVmbkJ1I3MWlYgDghpikFDOP-QwVVxB4hF=
-QTEzLCYmm3BPu7u1ji_M.k1pnL6yNJR-Jn3KyW8b_s7dT7832qLOq9UEXjTBss_O
-47 South Rose Street Orchard Park, NY 14127
+http://www.eggwhiteoutside.club/vumzgl/j--SS-kN8f-YfelQUnfrExmLunDUj58uHp9v=
+c9JdO0gX7Im3KPbpmqGsTZu33Y0ZktMJygJqQqu-MYdDgXV4tM6FIqYIZeIJLZnYPFNyZqVrIp-=
+Sv7zPFz5xIdDUkIcT.kOdZl_JjhJpDxmnQnUvrs5EkrmuPNPUVR16GJwl1xC2
+86 High Ridge Lane Niles, MI 49120
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
