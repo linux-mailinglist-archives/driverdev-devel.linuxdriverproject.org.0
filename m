@@ -1,52 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A52C33C6E
-	for <lists+driverdev-devel@lfdr.de>; Tue,  4 Jun 2019 02:29:59 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A81533C69
+	for <lists+driverdev-devel@lfdr.de>; Tue,  4 Jun 2019 02:28:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 21C742C285;
-	Tue,  4 Jun 2019 00:29:57 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 66FEC88DC7;
+	Tue,  4 Jun 2019 00:28:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GTJ-ypFZEraO; Tue,  4 Jun 2019 00:29:56 +0000 (UTC)
+	with ESMTP id R7hUFTIq2+od; Tue,  4 Jun 2019 00:28:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 09FB7230FD;
-	Tue,  4 Jun 2019 00:29:56 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A7EA488DB9;
+	Tue,  4 Jun 2019 00:28:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DD2F81BF2C8
- for <devel@linuxdriverproject.org>; Tue,  4 Jun 2019 00:29:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F03701BF2C8
+ for <devel@linuxdriverproject.org>; Tue,  4 Jun 2019 00:28:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id DA759878F3
- for <devel@linuxdriverproject.org>; Tue,  4 Jun 2019 00:29:53 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E814D878F3
+ for <devel@linuxdriverproject.org>; Tue,  4 Jun 2019 00:28:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fkFYeLh-DLFy for <devel@linuxdriverproject.org>;
- Tue,  4 Jun 2019 00:29:53 +0000 (UTC)
+ with ESMTP id n0F_ce4qJMxJ for <devel@linuxdriverproject.org>;
+ Tue,  4 Jun 2019 00:28:44 +0000 (UTC)
 X-Greylist: delayed 00:10:01 by SQLgrey-1.7.6
 Received: from bridekoran.icu (unknown [89.43.78.241])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 4FF6E878E0
- for <devel@driverdev.osuosl.org>; Tue,  4 Jun 2019 00:29:53 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B0A9C878E0
+ for <devel@linuxdriverproject.org>; Tue,  4 Jun 2019 00:28:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail; d=bridekoran.icu; 
  h=From:Date:MIME-Version:To:Subject:Message-ID:Content-Type:Content-Transfer-Encoding;
- i=jape@bridekoran.icu; bh=5QkukERF0T5FACV5RdrQDCEF/i4=;
- b=mKQ6T6puCOkapDo/PWRqo/G+ekJbX/9txLXR/XBZb4xSj54cGanNF4NXPJeFD/hQi7hq4lU8lkvx
- UzmHMZAVXs28fxpY6sP7jdM56QCv3vyBa2X5fDgX0CFvvASJAL3atySXwAY0KZHLTwNme8B50JUs
- OX9GgVuRN/Rq9bp3gSc=
+ i=cox@bridekoran.icu; bh=cHBWQa3tW9dvJGlR9qE3yhPza8g=;
+ b=YxOH4IQf+j7s1/BE3RAQYlhYt8Qe5KT616HuPvI8MSohyPwH4mblqa1GmAb2zs8qeQlZEIl1sgiU
+ FfazsALOvP9rbQV7sysGvixkbx7HguJNLjBfqPKgRadkgAltCboT5GIOl1gLBnGDp/80cl8MWhup
+ vrEhsY4dghROvBzEPuA=
 DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=bridekoran.icu;
- b=Dt6amqx6ea6Vg1jfhW0bWY7TT1fDDS7eYsKtxnOctYIUcX+68/tmxSyOLuXckeeMuIxmlpjM5u4e
- d0KfhWal7KB4giPnKYPFvzp0VMZMzPIbGX8IPbDvH3sCGlDxOubA8jK8WF5cmjMeNPd5/DMnteOe
- 1d0ORy/V/mr8bvtVad8=;
-From: " Olga Neal" <jape@bridekoran.icu>
-Date: Mon, 03 Jun 2019 19:14:59 -0500
+ b=mCyfWF6kqMqrPI48gyuOCj6HaoevpOZYwUCQRJRcmAk/i4lrjA0XOoZdzHbGIqUS3qfBLm/2DRrR
+ 87v5GTO6dXRZMWwmZH5+/rIeMiI9srtVXUbnXEohgIosdlXR0vs/ByerhYitRXz3/BCErwgI0x05
+ Sdspqccsl1UOLAAlyPE=;
+From: " Joshua Richardson" <cox@bridekoran.icu>
+Date: Mon, 03 Jun 2019 19:15:22 -0500
 MIME-Version: 1.0
-To: <devel@driverdev.osuosl.org>
-Subject: Elephants in Toronto
-Message-ID: <SRqSOjfBLtWpTDVt1oYJgKTkPuWDDbOAAnkIaKmLkAE.OtvoLytwacxrPIw7CwAX12XZEFHP9W-LbfLAzV5bLb8@bridekoran.icu>
+To: <devel@linuxdriverproject.org>
+Subject: Elephants in Sydney
+Message-ID: <l-NO4h6CHsNGpbcn9UstiPJmotxZ_0QotRZbGiP7Lhw.wVwmItRFdfgN1e3utuv4ENjt4qpXCKeYhw6b3kYomj0@bridekoran.icu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,16 +73,16 @@ to go to the gym or even eat healthy again.  =
 
 
 All women are starting to use it
-http://www.bridekoran.icu/wnnlnd/ocjabndsx29956rwced/gcKegI0WBfZgJTiw8Y8UsP=
-aLTkiDXTlDNacWeiS2Pb0/lCZCATX9YIy2xWihoNVM7ZnSH3YDhtdH-WfuCrQ2ymOVIZukfYISS=
-MizhjRXWJcpN51xhLUhVQ5PQ9VUClYIt81V7W1yrYW91Qk06mg_dOo
+http://www.bridekoran.icu/khxkrqobhz/hvhn29956qjnsuww/yCJf7dsHM0bsTJZLsE0-5=
+_x2ShqTmKpPPFr5TGl33eY/qo1zVZmmcEGW5QRW2q3pWpCV8ACw8SfwBiRJfhUuXrnIgeeAu4wa=
+C4I4WYPVNp4-fBtu5VR-qBcmbVSrV533U2qLWp_fIdGiENtzeiN_8PQ
 
 BY THE END OF THE MONTH LOOK AMAZING
 
 Take a look
-http://www.bridekoran.icu/wnnlnd/ocjabndsx29956rwced/gcKegI0WBfZgJTiw8Y8UsP=
-aLTkiDXTlDNacWeiS2Pb0/lCZCATX9YIy2xWihoNVM7ZnSH3YDhtdH-WfuCrQ2ymOVIZukfYISS=
-MizhjRXWJcpN51xhLUhVQ5PQ9VUClYIt81V7W1yrYW91Qk06mg_dOo
+http://www.bridekoran.icu/khxkrqobhz/hvhn29956qjnsuww/yCJf7dsHM0bsTJZLsE0-5=
+_x2ShqTmKpPPFr5TGl33eY/qo1zVZmmcEGW5QRW2q3pWpCV8ACw8SfwBiRJfhUuXrnIgeeAu4wa=
+C4I4WYPVNp4-fBtu5VR-qBcmbVSrV533U2qLWp_fIdGiENtzeiN_8PQ
 
 
 
@@ -93,18 +93,18 @@ MizhjRXWJcpN51xhLUhVQ5PQ9VUClYIt81V7W1yrYW91Qk06mg_dOo
 -This is an ad-coresspondance-
 
 go here to end
-http://www.bridekoran.icu/wnnlnd/ocjabndsx16705rwced/gcKegI0WBfZgJTiw8Y8UsP=
-aLTkiDXTlDNacWeiS2Pb0/lCZCATX9YIy2xWihoNVM7ZnSH3YDhtdH-WfuCrQ2ymOVIZukfYISS=
-MizhjRXWJcpN51xhLUhVQ5PQ9VUClYIt81V7W1yrYW91Qk06mg_dOo
-721 North High Point Court Apex, NC 27502
+http://www.bridekoran.icu/khxkrqobhz/hvhn16705qjnsuww/yCJf7dsHM0bsTJZLsE0-5=
+_x2ShqTmKpPPFr5TGl33eY/qo1zVZmmcEGW5QRW2q3pWpCV8ACw8SfwBiRJfhUuXrnIgeeAu4wa=
+C4I4WYPVNp4-fBtu5VR-qBcmbVSrV533U2qLWp_fIdGiENtzeiN_8PQ
+594 N. Myrtle Drive Rockledge, FL 32955
 
 ---
 
 
 Cut out your email from our list by submitting your name right here
-http://www.bridekoran.icu/aqzhvrv/oOd_gm60kQ19WYry1W7V18tIYlCUV9QP5QVhULhx1=
-5NpcJWXRjhziMSSIYfkuZIVOmy2QrCufW-HdthDY3HSnZ7MVNohiWx2yIY9XTACZCl.0bP2SieW=
-caNDlTXDikTLaPsU8Y8wiTJgZfBW0IgeKcg
+http://www.bridekoran.icu/asdnfwbrf/QP8_NieztNEiGdIf_pWLq2U335VrSVbmcBq-RV5=
+utBf-4pNVPYW4I4Caw4uAeegInrXuUhfJRiBwfS8wCA8VCpWp3q2WRQ5WGEcmmZVz1oq.Ye33lG=
+T5rFPPpKmTqhS2x_5-0EsLZJTsb0MHsd7fJCy
 8578 Alderwood Drive North Augusta, SC 29841
 
 ^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=
