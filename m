@@ -1,60 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 780C7360DF
-	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Jun 2019 18:11:18 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A9493361D8
+	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Jun 2019 18:55:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 195EA870B3;
-	Wed,  5 Jun 2019 16:11:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 004E787F92;
+	Wed,  5 Jun 2019 16:55:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GPttbrBgNmiB; Wed,  5 Jun 2019 16:11:15 +0000 (UTC)
+	with ESMTP id ON6vrcFcEZON; Wed,  5 Jun 2019 16:55:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7678486E3F;
-	Wed,  5 Jun 2019 16:11:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 081C087E93;
+	Wed,  5 Jun 2019 16:55:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4FB6D1BF576
- for <devel@linuxdriverproject.org>; Wed,  5 Jun 2019 16:11:12 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B93501BF576
+ for <devel@linuxdriverproject.org>; Wed,  5 Jun 2019 16:55:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 4606B85F60
- for <devel@linuxdriverproject.org>; Wed,  5 Jun 2019 16:11:12 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B340886BC9
+ for <devel@linuxdriverproject.org>; Wed,  5 Jun 2019 16:55:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 88Hit5Qwr7aZ for <devel@linuxdriverproject.org>;
- Wed,  5 Jun 2019 16:11:11 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B96F584D81
- for <devel@driverdev.osuosl.org>; Wed,  5 Jun 2019 16:11:11 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 11D0C2075C;
- Wed,  5 Jun 2019 16:11:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1559751071;
- bh=DHGMgw+eZFadoBgNgRY+d4u+yvK0QBiz3Bpz93ekE80=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=bz1bKdq0xZjqv7v8IIC6SguSpaYD6TMiAq+cLdeaCb70Z6+MTXDvVooryCKAzoVer
- oLNmWVZDV2rjUAeIV0ELVfaayfkFKsbYLnsqDgAYPVKIiqVD3E3fJbpAvwfoo3nGzg
- PcVF5zfBWtrUBAOInSKhx+RlyJCFtNxftHZlZIus=
-Date: Wed, 5 Jun 2019 18:11:09 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Valerio Genovese <valerio.click@gmail.com>
-Subject: Re: [PATCH] staging: kpc2000: kpc_dma: fix symbol
+ with ESMTP id BNm+YGtzEiNS for <devel@linuxdriverproject.org>;
+ Wed,  5 Jun 2019 16:55:27 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
+ [209.85.128.68])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id EAC1982EE5
+ for <devel@driverdev.osuosl.org>; Wed,  5 Jun 2019 16:55:26 +0000 (UTC)
+Received: by mail-wm1-f68.google.com with SMTP id 22so3037809wmg.2
+ for <devel@driverdev.osuosl.org>; Wed, 05 Jun 2019 09:55:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=IK0GyUMMzaY1SH7H2AwbEA3bGJpZXL0LLtPICxDDdqk=;
+ b=L6iZibdO2eyrgAPTmVEL2E1FnUtXzVrlVNqsTgxxovGuPlEImBtwC1AXfW7dbeZTJx
+ G0Ml8LJCH1/zTCm8bYPTgyCfG480y8smdEhxRNV4hJY/CRDa3HcLvhMtfnOz2Lt28sMu
+ jHY3vMNFSSldjAPgLpEQCnLvCJ7QlLJkqlXjbP9kFvVrODYcLZ4keMnin8Iwl40leUWk
+ wIPk2BeSl5GeqceyQ94LsV6reLSF9VjM89jEPWSX17+2ktnIfTWHtlvnogOtLbbTwU+8
+ fyP7SVC0RdhaqfGR3E5svoN052lGayDWhPAG+ppBqLLrfDPKymCBRDKeaU/CzPEbhSb3
+ crfw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=IK0GyUMMzaY1SH7H2AwbEA3bGJpZXL0LLtPICxDDdqk=;
+ b=XBv3Teg66cwH8WFpPFh3za+phoCUTAzSOUpuKTSJTRZ/RaPM/bBRA19TLM2kZ/Zs6D
+ r+XIvHdfpHJh9TRCCPU0aiYRgTk4CnIY2HW8PeTA4SZByBJnAU/SeOR8iwCHe/fUjWTW
+ I16kIXRrmQIW9cQQhyGbGSgSHPGyEm/8Tsx3vT/yhPWzTLPW7VVS5yib2BSW93k5kD8C
+ 8fT/VPKveHl2cxRo+GvKMwAR1Ra85HJVJYqnuz1KD14Vq93aE1OZmOSPkGKE94Feno7p
+ f+s9spsaAHyQ2nGtdSI6ck7GUatGvADH9ydmPhxVH6zoJw4xwa0P7jrTu3FDszNf6gMW
+ 1ZnA==
+X-Gm-Message-State: APjAAAV3C6LPRIiEA1yP2zUT59taPIBmXlrPfuVyX1Af4MXCLMwJC2vz
+ 0QqMybVATWGYGFCGklPDoqk=
+X-Google-Smtp-Source: APXvYqw8KASEExDoI4ZSJf9u0NtHcudJahZlzODCmfoghfC4hvcT/v7HxRytPDYiOBPIYAnOAqko5Q==
+X-Received: by 2002:a1c:9c4d:: with SMTP id f74mr11057587wme.156.1559753725305; 
+ Wed, 05 Jun 2019 09:55:25 -0700 (PDT)
+Received: from localhost.localdomain
+ (host228-128-static.243-194-b.business.telecomitalia.it. [194.243.128.228])
+ by smtp.googlemail.com with ESMTPSA id b69sm17060610wme.44.2019.06.05.09.55.24
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 05 Jun 2019 09:55:24 -0700 (PDT)
+From: Valerio Genovese <valerio.click@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH v2] staging: staging: kpc2000: kpc_dma: fix symbol
  'kpc_dma_add_device' was not declared.
-Message-ID: <20190605161109.GA17272@kroah.com>
-References: <20190605155711.19722-1-valerio.click@gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190605155711.19722-1-valerio.click@gmail.com>
-User-Agent: Mutt/1.12.0 (2019-05-25)
+Date: Wed,  5 Jun 2019 18:55:16 +0200
+Message-Id: <20190605165516.22183-1-valerio.click@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,44 +83,37 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Jun 05, 2019 at 05:57:11PM +0200, Valerio Genovese wrote:
-> This was reported by sparse:
-> drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c:39:7: warning: symbol 'kpc_dma_add_device
-> ' was not declared. Should it be static?
-> 
-> Signed-off-by: Valerio Genovese <valerio.click@gmail.com>
-> ---
->  drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.h | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.h b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.h
-> index ee47f43e71cf..19e88c3bc13f 100644
-> --- a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.h
-> +++ b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.h
-> @@ -56,6 +56,7 @@ struct dev_private_data {
->  };
->  
->  struct kpc_dma_device *kpc_dma_lookup_device(int minor);
-> +void kpc_dma_add_device(struct kpc_dma_device *ldev);
->  
->  extern const struct file_operations  kpc_dma_fops;
->  
+This was reported by sparse:
+drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c:39:7: warning: symbol 'kpc_dma_add_device
+' was not declared. Should it be static?
 
-This is not how you fix this issue.
+Signed-off-by: Valerio Genovese <valerio.click@gmail.com>
+---
+ drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Look at the warning given to you.  Think about your C programming
-knowledge and remember what the 'static' keyword is and does.
+diff --git a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
+index cda057569163..bc208bb6777f 100644
+--- a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
++++ b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
+@@ -36,7 +36,7 @@ struct kpc_dma_device *kpc_dma_lookup_device(int minor)
+ 	return c;
+ }
+ 
+-void  kpc_dma_add_device(struct kpc_dma_device *ldev)
++static void  kpc_dma_add_device(struct kpc_dma_device *ldev)
+ {
+ 	mutex_lock(&kpc_dma_mtx);
+ 	list_add(&ldev->list, &kpc_dma_list);
+-- 
+2.17.1
 
-Then fix the issue properly.
-
-thanks,
-
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
