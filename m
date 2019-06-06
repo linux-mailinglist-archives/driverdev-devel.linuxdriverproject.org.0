@@ -1,93 +1,119 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 26C6D37210
-	for <lists+driverdev-devel@lfdr.de>; Thu,  6 Jun 2019 12:51:42 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 34214372D2
+	for <lists+driverdev-devel@lfdr.de>; Thu,  6 Jun 2019 13:28:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 951C4204D0;
-	Thu,  6 Jun 2019 10:51:39 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 90F8486308;
+	Thu,  6 Jun 2019 11:28:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id U4j5bzHhgq2z; Thu,  6 Jun 2019 10:51:39 +0000 (UTC)
+	with ESMTP id ANpd-ZmHnPbu; Thu,  6 Jun 2019 11:28:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 3F3AF204BF;
-	Thu,  6 Jun 2019 10:51:38 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0C9DB862BE;
+	Thu,  6 Jun 2019 11:28:24 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 63D921BF426
- for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 10:51:36 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5338B1BF423
+ for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 11:28:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 607AD87360
- for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 10:51:36 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4F29886AFD
+ for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 11:28:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9aN0sfm3xNtu for <devel@linuxdriverproject.org>;
- Thu,  6 Jun 2019 10:51:31 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3042E87937
- for <devel@driverdev.osuosl.org>; Thu,  6 Jun 2019 10:51:20 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x56An497115142;
- Thu, 6 Jun 2019 10:51:18 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2018-07-02;
- bh=CYdJIrBU83khStvSGVg8ySuKn6WPb/kbQ9bMGPSCHnc=;
- b=GSZG8tnYFAcH0V8tG4YkdSsjjld/zZCLtpm1Ujt/QdqJ9BBwlR9lR8poTAQgxfG9BCAW
- SHtrAZFWpYRTkml/xdOmDCl5NAz6QcKXf39DHB+vN8RcdyBvYHBSf+IobnHdO9E+Bj4B
- pYICfwUIKzxhiqKwc8GV1FFy3fMUrcIxotPoMPdmqFcmOKAR0L00Uj1LVbL0c9xOWVyl
- Vd7WpTu8EZPIG+I6x4uEEw++49QhBNcWOASuvuHYBmkWM1HzcsqA+XwwhxQ6llaDocFh
- T1EwzxQgsiin1KV+FSxLgbCJ9gfuiK8aK6jAipVAyTvSXgAkbL2yWEJoROeqswH6zjsT Xg== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2120.oracle.com with ESMTP id 2suj0qqjvd-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 06 Jun 2019 10:51:18 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x56AofFx017801;
- Thu, 6 Jun 2019 10:51:18 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by aserp3030.oracle.com with ESMTP id 2swnhcmfv8-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 06 Jun 2019 10:51:17 +0000
-Received: from abhmp0020.oracle.com (abhmp0020.oracle.com [141.146.116.26])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x56ApGXE022658;
- Thu, 6 Jun 2019 10:51:16 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 06 Jun 2019 03:51:15 -0700
-Date: Thu, 6 Jun 2019 13:51:08 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-Subject: Re: [PATCH] Staging: emxx_udc: fix warning "sum of probable
- bitmasks, consider |"
-Message-ID: <20190606105108.GL31203@kadam>
-References: <20190603185412.GA11183@hari-Inspiron-1545>
- <20190603190457.GA6487@kroah.com>
- <20190605063443.GA5248@hari-Inspiron-1545>
+ with ESMTP id 4ZmjjbsoJ5VA for <devel@linuxdriverproject.org>;
+ Thu,  6 Jun 2019 11:28:20 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from NAM02-SN1-obe.outbound.protection.outlook.com
+ (mail-eopbgr770087.outbound.protection.outlook.com [40.107.77.87])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 474CC869C9
+ for <devel@driverdev.osuosl.org>; Thu,  6 Jun 2019 11:28:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=analog.onmicrosoft.com; s=selector1-analog-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=hI74nD7KRye9xHaTcbOo+4UWxTporcUtYbjDdTHOiuE=;
+ b=qg4ZEC7VG7Y/tnZPdccSV2DTxgN5xqSoihQv5+ohMOiDc/oVMrlwkZ9MnWMF1M8JVXKIWSkMv2Y7qfGMe0viFb1OkiFUPk3bSV9EdHisfns5HCiqKuSkj4o3TST/maU/VgyuRJbbFiYPLCnApiMvDueQpmwIjfn24ySB+T5wNmY=
+Received: from BN6PR03CA0064.namprd03.prod.outlook.com (2603:10b6:404:4c::26)
+ by BL2PR03MB545.namprd03.prod.outlook.com (2a01:111:e400:c23::14)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.1965.12; Thu, 6 Jun
+ 2019 11:13:57 +0000
+Received: from CY1NAM02FT047.eop-nam02.prod.protection.outlook.com
+ (2a01:111:f400:7e45::204) by BN6PR03CA0064.outlook.office365.com
+ (2603:10b6:404:4c::26) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.1965.14 via Frontend
+ Transport; Thu, 6 Jun 2019 11:13:56 +0000
+Authentication-Results: spf=pass (sender IP is 137.71.25.55)
+ smtp.mailfrom=analog.com; vger.kernel.org; dkim=none (message not signed)
+ header.d=none;vger.kernel.org; dmarc=bestguesspass action=none
+ header.from=analog.com;
+Received-SPF: Pass (protection.outlook.com: domain of analog.com designates
+ 137.71.25.55 as permitted sender) receiver=protection.outlook.com;
+ client-ip=137.71.25.55; helo=nwd2mta1.analog.com;
+Received: from nwd2mta1.analog.com (137.71.25.55) by
+ CY1NAM02FT047.mail.protection.outlook.com (10.152.74.177) with Microsoft SMTP
+ Server (version=TLS1_0, cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.1965.12
+ via Frontend Transport; Thu, 6 Jun 2019 11:13:54 +0000
+Received: from NWD2HUBCAS8.ad.analog.com (nwd2hubcas8.ad.analog.com
+ [10.64.69.108])
+ by nwd2mta1.analog.com (8.13.8/8.13.8) with ESMTP id x56BDr2L029599
+ (version=TLSv1/SSLv3 cipher=AES256-SHA bits=256 verify=OK);
+ Thu, 6 Jun 2019 04:13:53 -0700
+Received: from NWD2MBX7.ad.analog.com ([fe80::190e:f9c1:9a22:9663]) by
+ NWD2HUBCAS8.ad.analog.com ([fe80::90a0:b93e:53c6:afee%12]) with mapi id
+ 14.03.0415.000; Thu, 6 Jun 2019 07:13:53 -0400
+From: "Ardelean, Alexandru" <alexandru.Ardelean@analog.com>
+To: "renatogeh@gmail.com" <renatogeh@gmail.com>, "jic23@kernel.org"
+ <jic23@kernel.org>
+Subject: Re: [PATCH v2 1/2] dt-bindings: iio: adc: add adi,ad7780.yaml binding
+Thread-Topic: [PATCH v2 1/2] dt-bindings: iio: adc: add adi,ad7780.yaml binding
+Thread-Index: AQHVEpjnzzdTbL78DUqRDpYuJzSJpqZ94POAgA/5dgCAAPVLAA==
+Date: Thu, 6 Jun 2019 11:13:52 +0000
+Message-ID: <d70b1ffcc903495cd5eac04e17fd1600e67b9c53.camel@analog.com>
+References: <cover.1558746978.git.renatogeh@gmail.com>
+ <2426649b2d8224ae72e7706bcb8c4f2c44c581d2.1558746978.git.renatogeh@gmail.com>
+ <20190526173911.57ae3d11@archlinux>
+ <20190605203554.podktlonhp527iqq@renatolg>
+In-Reply-To: <20190605203554.podktlonhp527iqq@renatolg>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.48.65.129]
+x-adiroutedonprem: True
+Content-ID: <EC1375F4AEF94D4CB95D2D64378F66F1@analog.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190605063443.GA5248@hari-Inspiron-1545>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9279
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1810050000 definitions=main-1906060079
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9279
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
- definitions=main-1906060079
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-HT: Tenant
+X-Forefront-Antispam-Report: CIP:137.71.25.55; IPV:NLI; CTRY:US; EFV:NLI;
+ SFV:NSPM;
+ SFS:(10009020)(136003)(396003)(376002)(39860400002)(346002)(2980300002)(189003)(199004)(50466002)(106002)(8676002)(8936002)(336012)(6116002)(6306002)(118296001)(436003)(5660300002)(476003)(26005)(3846002)(70206006)(14454004)(486006)(47776003)(426003)(7416002)(2501003)(23676004)(186003)(2486003)(478600001)(76176011)(7696005)(102836004)(229853002)(966005)(246002)(14444005)(126002)(53376002)(86362001)(110136005)(356004)(6246003)(316002)(70586007)(11346002)(7636002)(7736002)(2616005)(446003)(2906002)(305945005)(36756003)(4326008)(54906003)(142933001);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:BL2PR03MB545; H:nwd2mta1.analog.com; FPR:;
+ SPF:Pass; LANG:en; PTR:nwd2mail10.analog.com; MX:1; A:1; 
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: c735c048-131a-4aee-74dd-08d6ea7010b5
+X-Microsoft-Antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(4709080)(1401327)(2017052603328)(7193020);
+ SRVR:BL2PR03MB545; 
+X-MS-TrafficTypeDiagnostic: BL2PR03MB545:
+X-MS-Exchange-PUrlCount: 6
+X-Microsoft-Antispam-PRVS: <BL2PR03MB545E46165CFF1A78F66A284F9170@BL2PR03MB545.namprd03.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
+X-Forefront-PRVS: 00603B7EEF
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam-Message-Info: Q2/Xow+6YdWcPsdwbqXfco4H54AO5XUbXHSFJ06kpYQwO//PDk3n6nc8MsvZpwoiDOce12DEpaRQPeUKmMWUG9TrCdSRf3jqbexivWSaoKhW6PpUAQcK9BhliCK6ySabKIIGy1CFu/ZPl7lJxil9cu+Drvq2vESbRQqc2LSURH+rGff7wzqpkF8rndnBPCpGAohWy/VRF77f0zsjTyzXnwt8s+hMf9MyVwrRyIHlEsBtiEWnUCK3TGN6hlhrLfg3Rck1eEv4OJLgw2xAXrkjpAhEj7fAeFKatCrunvvf7IFx6j4ATi5IBRtVRFtr2CfYl7ic74yk/1blfHvZ4LxNkyHtpjnv+YExb6XaJN4PL1DzNJJ2LjeB9pUdBI8ADZoLOje1FEi/Zgf2uIEajBm7EKeQjTxzUplq6w0xnAO0xeM=
+X-OriginatorOrg: analog.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jun 2019 11:13:54.8603 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: c735c048-131a-4aee-74dd-08d6ea7010b5
+X-MS-Exchange-CrossTenant-Id: eaa689b4-8f87-40e0-9c6f-7228de4d754a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=eaa689b4-8f87-40e0-9c6f-7228de4d754a; Ip=[137.71.25.55];
+ Helo=[nwd2mta1.analog.com]
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL2PR03MB545
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,64 +126,228 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, Nishad Kamdar <nishadkamdar@gmail.com>
+Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
+ "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ "lars@metafoo.de" <lars@metafoo.de>, "Hennerich,
+ Michael" <Michael.Hennerich@analog.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "kernel-usp@googlegroups.com" <kernel-usp@googlegroups.com>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "pmeerw@pmeerw.net" <pmeerw@pmeerw.net>, "knaack.h@gmx.de" <knaack.h@gmx.de>,
+ "Popa, Stefan Serban" <StefanSerban.Popa@analog.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Jun 05, 2019 at 12:04:43PM +0530, Hariprasad Kelam wrote:
-> On Mon, Jun 03, 2019 at 09:04:57PM +0200, Greg Kroah-Hartman wrote:
-> > On Tue, Jun 04, 2019 at 12:24:12AM +0530, Hariprasad Kelam wrote:
-> > > Knowing the fact that operator '|' is faster than '+'.
-> > > Its better we replace + with | in this case.
-> > > 
-> > > Issue reported by coccicheck
-> > > drivers/staging/emxx_udc/emxx_udc.h:94:34-35: WARNING: sum of probable
-> > > bitmasks, consider |
-> > > 
-> > > Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-> > > ---
-> > >  drivers/staging/emxx_udc/emxx_udc.h | 2 +-
-> > >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > > 
-> > > diff --git a/drivers/staging/emxx_udc/emxx_udc.h b/drivers/staging/emxx_udc/emxx_udc.h
-> > > index b8c3dee..88d6bda 100644
-> > > --- a/drivers/staging/emxx_udc/emxx_udc.h
-> > > +++ b/drivers/staging/emxx_udc/emxx_udc.h
-> > > @@ -91,7 +91,7 @@ int vbus_irq;
-> > >  #define BIT30		0x40000000
-> > >  #define BIT31		0x80000000
-> > 
-> > All of those BITXX defines should be removed and the "real" BIT(X) macro
-> > used instead.
-> Yes will send separate patch  to address this.
-> > 
-> > > -#define TEST_FORCE_ENABLE		(BIT18 + BIT16)
-> > > +#define TEST_FORCE_ENABLE		(BIT18 | BIT16)
-> > 
-> > It really doesn't matter, a good compiler will have already turned this
-> > into a constant value so you really do not know if this is less/faster
-> > code or not, right?
-> > 
-> > Did you look at the output to verify this actually changed anything?
-> > 
-> > thanks,
-> > 
-> > greg k-h
+On Wed, 2019-06-05 at 17:35 -0300, Renato Lui Geh wrote:
+> [External]
 > 
-> Ok . Treating this as false postive from coccicheck.
+> 
+> On 05/26, Jonathan Cameron wrote:
+> > On Fri, 24 May 2019 22:26:30 -0300
+> > Renato Lui Geh <renatogeh@gmail.com> wrote:
+> > 
+> > > This patch adds a YAML binding for the Analog Devices AD7780/1 and
+> > > AD7170/1 analog-to-digital converters.
+> > > 
+> > > Signed-off-by: Renato Lui Geh <renatogeh@gmail.com>
+> > Looks good to me, but I'm still finding my feet with these so will
+> > leave it for a few days for others to have time to comment.
+> > 
+> > Michael, looking for a quick reply from you to say if you are happy
+> > being explicitly listed as maintainer for this one, or if you'd
+> > rather land it on someone else.  Same applies for patch 2.
+> > 
+> > Renato, if I seem to have forgotten this in a week or so, feel
+> > free to give me a poke. I've been known to loose patches entirely!
+> 
+> Hi Jonathan,
+> 
+> Just here to give you a poke. :)
+> 
+> By the way, in these cases, which would be easier for you? To send you
+> an email like I'm doing right now on last week's thread; or to resend
+> the entire patch(set)?
+> 
 
-I liked the patch.  | is way more normal and readable than +.  It's just
-the commit message was bogus.
+I think in this case, maybe let's wait a bit longer.
+Jonathan has not been active recently.
 
-I would be very surprised if this coccicheck found anything that wasn't
-a compile time constant like this.
+I think a [RESEND] would be a good idea when he gets back/active and misses your patchset.
 
-regards,
-dan carpenter
+Thanks
+Alex
 
+> Thanks,
+> Renato
+> > Thanks,
+> > 
+> > Jonathan
+> > > ---
+> > > Changes in v2:
+> > >  - vref-supply to avdd-supply
+> > >  - remove avdd-supply from required list
+> > >  - include adc block in an spi block
+> > > 
+> > >  .../bindings/iio/adc/adi,ad7780.txt           | 48 ----------
+> > >  .../bindings/iio/adc/adi,ad7780.yaml          | 87 +++++++++++++++++++
+> > >  2 files changed, 87 insertions(+), 48 deletions(-)
+> > >  delete mode 100644 Documentation/devicetree/bindings/iio/adc/adi,ad7780.txt
+> > >  create mode 100644 Documentation/devicetree/bindings/iio/adc/adi,ad7780.yaml
+> > > 
+> > > diff --git a/Documentation/devicetree/bindings/iio/adc/adi,ad7780.txt
+> > > b/Documentation/devicetree/bindings/iio/adc/adi,ad7780.txt
+> > > deleted file mode 100644
+> > > index 440e52555349..000000000000
+> > > --- a/Documentation/devicetree/bindings/iio/adc/adi,ad7780.txt
+> > > +++ /dev/null
+> > > @@ -1,48 +0,0 @@
+> > > -* Analog Devices AD7170/AD7171/AD7780/AD7781
+> > > -
+> > > -Data sheets:
+> > > -
+> > > -- AD7170:
+> > > -    * https://www.analog.com/media/en/technical-documentation/data-sheets/AD7170.pdf
+> > > -- AD7171:
+> > > -    * https://www.analog.com/media/en/technical-documentation/data-sheets/AD7171.pdf
+> > > -- AD7780:
+> > > -    * https://www.analog.com/media/en/technical-documentation/data-sheets/ad7780.pdf
+> > > -- AD7781:
+> > > -    * https://www.analog.com/media/en/technical-documentation/data-sheets/AD7781.pdf
+> > > -
+> > > -Required properties:
+> > > -
+> > > -- compatible: should be one of
+> > > -    * "adi,ad7170"
+> > > -    * "adi,ad7171"
+> > > -    * "adi,ad7780"
+> > > -    * "adi,ad7781"
+> > > -- reg: spi chip select number for the device
+> > > -- vref-supply: the regulator supply for the ADC reference voltage
+> > > -
+> > > -Optional properties:
+> > > -
+> > > -- powerdown-gpios:  must be the device tree identifier of the PDRST pin. If
+> > > -                specified, it will be asserted during driver probe. As the
+> > > -                line is active high, it should be marked GPIO_ACTIVE_HIGH.
+> > > -- adi,gain-gpios:   must be the device tree identifier of the GAIN pin. Only for
+> > > -                the ad778x chips. If specified, it will be asserted during
+> > > -                driver probe. As the line is active low, it should be marked
+> > > -                GPIO_ACTIVE_LOW.
+> > > -- adi,filter-gpios: must be the device tree identifier of the FILTER pin. Only
+> > > -                for the ad778x chips. If specified, it will be asserted
+> > > -                during driver probe. As the line is active low, it should be
+> > > -                marked GPIO_ACTIVE_LOW.
+> > > -
+> > > -Example:
+> > > -
+> > > -adc@0 {
+> > > -    compatible =  "adi,ad7780";
+> > > -    reg =         <0>;
+> > > -    vref-supply = <&vdd_supply>
+> > > -
+> > > -    powerdown-gpios  = <&gpio 12 GPIO_ACTIVE_HIGH>;
+> > > -    adi,gain-gpios   = <&gpio  5 GPIO_ACTIVE_LOW>;
+> > > -    adi,filter-gpios = <&gpio 15 GPIO_ACTIVE_LOW>;
+> > > -};
+> > > diff --git a/Documentation/devicetree/bindings/iio/adc/adi,ad7780.yaml
+> > > b/Documentation/devicetree/bindings/iio/adc/adi,ad7780.yaml
+> > > new file mode 100644
+> > > index 000000000000..d1109416963c
+> > > --- /dev/null
+> > > +++ b/Documentation/devicetree/bindings/iio/adc/adi,ad7780.yaml
+> > > @@ -0,0 +1,87 @@
+> > > +# SPDX-License-Identifier: GPL-2.0
+> > > +%YAML 1.2
+> > > +---
+> > > +$id: http://devicetree.org/schemas/iio/adc/adi,ad7780.yaml#
+> > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > > +
+> > > +title: Analog Devices AD7170/AD7171/AD7780/AD7781 analog to digital converters
+> > > +
+> > > +maintainers:
+> > > +  - Michael Hennerich <michael.hennerich@analog.com>
+> > > +
+> > > +description: |
+> > > +  The ad7780 is a sigma-delta analog to digital converter. This driver provides
+> > > +  reading voltage values and status bits from both the ad778x and ad717x series.
+> > > +  Its interface also allows writing on the FILTER and GAIN GPIO pins on the
+> > > +  ad778x.
+> > > +
+> > > +  Specifications on the converters can be found at:
+> > > +    AD7170:
+> > > +      https://www.analog.com/media/en/technical-documentation/data-sheets/AD7170.pdf
+> > > +    AD7171:
+> > > +      https://www.analog.com/media/en/technical-documentation/data-sheets/AD7171.pdf
+> > > +    AD7780:
+> > > +      https://www.analog.com/media/en/technical-documentation/data-sheets/ad7780.pdf
+> > > +    AD7781:
+> > > +      https://www.analog.com/media/en/technical-documentation/data-sheets/AD7781.pdf
+> > > +
+> > > +properties:
+> > > +  compatible:
+> > > +    enum:
+> > > +      - adi,ad7170
+> > > +      - adi,ad7171
+> > > +      - adi,ad7780
+> > > +      - adi,ad7781
+> > > +
+> > > +  reg:
+> > > +    maxItems: 1
+> > > +
+> > > +  avdd-supply:
+> > > +    description:
+> > > +      The regulator supply for the ADC reference voltage.
+> > > +    maxItems: 1
+> > > +
+> > > +  powerdown-gpios:
+> > > +    description:
+> > > +      Must be the device tree identifier of the PDRST pin. If
+> > > +      specified, it will be asserted during driver probe. As the
+> > > +      line is active high, it should be marked GPIO_ACTIVE_HIGH.
+> > > +    maxItems: 1
+> > > +
+> > > +  adi,gain-gpios:
+> > > +    description:
+> > > +      Must be the device tree identifier of the GAIN pin. Only for
+> > > +      the ad778x chips. If specified, it will be asserted during
+> > > +      driver probe. As the line is active low, it should be marked
+> > > +      GPIO_ACTIVE_LOW.
+> > > +    maxItems: 1
+> > > +
+> > > +  adi,filter-gpios:
+> > > +    description:
+> > > +      Must be the device tree identifier of the FILTER pin. Only
+> > > +      for the ad778x chips. If specified, it will be asserted
+> > > +      during driver probe. As the line is active low, it should be
+> > > +      marked GPIO_ACTIVE_LOW.
+> > > +    maxItems: 1
+> > > +
+> > > +required:
+> > > +  - compatible
+> > > +  - reg
+> > > +
+> > > +examples:
+> > > +  - |
+> > > +    #include <dt-bindings/gpio/gpio.h>
+> > > +    spi0 {
+> > > +        #address-cells = <1>;
+> > > +        #size-cells = <0>;
+> > > +
+> > > +        adc@0 {
+> > > +            compatible = "adi,ad7780";
+> > > +            reg = <0>;
+> > > +
+> > > +            avdd-supply      = <&vdd_supply>;
+> > > +            powerdown-gpios  = <&gpio0 12 GPIO_ACTIVE_HIGH>;
+> > > +            adi,gain-gpios   = <&gpio1  5 GPIO_ACTIVE_LOW>;
+> > > +            adi,filter-gpios = <&gpio2 15 GPIO_ACTIVE_LOW>;
+> > > +        };
+> > > +    };
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
