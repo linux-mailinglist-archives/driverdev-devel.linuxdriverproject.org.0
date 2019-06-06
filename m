@@ -1,97 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 97BDF37EF8
-	for <lists+driverdev-devel@lfdr.de>; Thu,  6 Jun 2019 22:49:21 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E39A3819F
+	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Jun 2019 01:10:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D81CD8769F;
-	Thu,  6 Jun 2019 20:49:19 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6D87D8823B;
+	Thu,  6 Jun 2019 23:10:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rbDZsyU3PqgH; Thu,  6 Jun 2019 20:49:19 +0000 (UTC)
+	with ESMTP id OrA7-zuKlg1T; Thu,  6 Jun 2019 23:10:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9800887686;
-	Thu,  6 Jun 2019 20:49:18 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E76E288173;
+	Thu,  6 Jun 2019 23:10:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5C6211BF330
- for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 20:49:17 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 7870C1BF232
+ for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 23:10:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 589B2204CA
- for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 20:49:17 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 754B188191
+ for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 23:10:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2+NMfXI3Ko9F for <devel@linuxdriverproject.org>;
- Thu,  6 Jun 2019 20:49:16 +0000 (UTC)
+ with ESMTP id pf9yZcJ2jWMc for <devel@linuxdriverproject.org>;
+ Thu,  6 Jun 2019 23:10:52 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM02-CY1-obe.outbound.protection.outlook.com
- (mail-eopbgr760055.outbound.protection.outlook.com [40.107.76.55])
- by silver.osuosl.org (Postfix) with ESMTPS id 0EBC120352
- for <devel@driverdev.osuosl.org>; Thu,  6 Jun 2019 20:49:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=daktronics.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=S70zAWA5rQbuUhwlGGNcaFEkhX0eSelXSSma4HHsMUQ=;
- b=ndHojiFqZ372/msbTgz93J92lJ1tsOHrexoP9CJr9DNCawPgf19U+06e+T37nnaeIhI6iBip/3/Q8c9r4R9D9Cv+CmNDJtiNUTnw++mCyXPM1pwLFfZSKQXyatWGmR1hMgKnyb3e8KS1rHVmy1tP9vJbwBMQ49N0pMJT/M37JOc=
-Received: from SN6PR02MB4016.namprd02.prod.outlook.com (52.135.69.145) by
- SN6PR02MB5070.namprd02.prod.outlook.com (52.135.99.31) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1943.22; Thu, 6 Jun 2019 20:33:56 +0000
-Received: from SN6PR02MB4016.namprd02.prod.outlook.com
- ([fe80::f551:3180:ba2d:7c1f]) by SN6PR02MB4016.namprd02.prod.outlook.com
- ([fe80::f551:3180:ba2d:7c1f%6]) with mapi id 15.20.1965.011; Thu, 6 Jun 2019
- 20:33:56 +0000
-From: Matt Sickler <Matt.Sickler@daktronics.com>
-To: Fabio Estevam <festevam@gmail.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>
-Subject: RE: [PATCH 1/2] staging: kpc2000: Use '%llx' for printing 'long long
- int' type
-Thread-Topic: [PATCH 1/2] staging: kpc2000: Use '%llx' for printing 'long long
- int' type
-Thread-Index: AQHVG+bSke1I+ZyOx0uJICKQyHvgOKaNl9wAgAF+PiA=
-Date: Thu, 6 Jun 2019 20:33:56 +0000
-Message-ID: <SN6PR02MB40169CF68D242DDE66C8B1FBEE170@SN6PR02MB4016.namprd02.prod.outlook.com>
-References: <20190605213648.6887-1-festevam@gmail.com>
- <CAOMZO5DCq=G_qouFp0F4aKp9hCcMqYVx3L6gWyHbj1Ckd8oUUg@mail.gmail.com>
-In-Reply-To: <CAOMZO5DCq=G_qouFp0F4aKp9hCcMqYVx3L6gWyHbj1Ckd8oUUg@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Matt.Sickler@daktronics.com; 
-x-originating-ip: [63.85.214.4]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 5e8a8dda-ea96-4d06-d529-08d6eabe4c60
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(2017052603328)(7193020);
- SRVR:SN6PR02MB5070; 
-x-ms-traffictypediagnostic: SN6PR02MB5070:
-x-microsoft-antispam-prvs: <SN6PR02MB5070632D65620F6DCB03872EEE170@SN6PR02MB5070.namprd02.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:8882;
-x-forefront-prvs: 00603B7EEF
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(346002)(376002)(366004)(396003)(136003)(39850400004)(13464003)(189003)(199004)(55016002)(7696005)(476003)(9686003)(53936002)(102836004)(76176011)(11346002)(71190400001)(446003)(305945005)(14444005)(14454004)(26005)(186003)(6436002)(256004)(71200400001)(316002)(8936002)(74316002)(110136005)(66556008)(66446008)(4744005)(99286004)(81166006)(81156014)(8676002)(64756008)(229853002)(486006)(52536014)(7736002)(5660300002)(4326008)(3846002)(6116002)(2906002)(68736007)(73956011)(66946007)(76116006)(66476007)(33656002)(66066001)(72206003)(478600001)(6246003)(6506007)(86362001)(25786009)(223183001);
- DIR:OUT; SFP:1101; SCL:1; SRVR:SN6PR02MB5070;
- H:SN6PR02MB4016.namprd02.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: daktronics.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: m/qfQTRB0izR/E3DotBLsdmhEYD5rfdQ4VX7pQ2EVK+MHdlZUTa0mt32kB8z9WBVVeSQuQ92cVfyK+wGfJE1Xes1Zh3kGb1cOfH5cpW12UyknlNbavnkgYMTyaw2hRKlMTx3Q+knfHFi3U2CwzGMWMxRk2OGMA9QowIJvvvN/rGcNXGDCKFbKWHbz2ZsukozpbJtbe+qj8Mml5SCnOqDVFUl+1HxSsAmXoahKuYvUjwZ7ZR7muORwoUa7pyJplUzJFV5QpgTX+UWulAdtuMjFbjjkDc9Urus7Q91LXs7nQ5JcZXTSLN+8uDfHEDtmniZ6RY5nMtbkoD/V/ioj0IIpMnarkWjM4zlWf4WkEi19EuKeIBx7QiHRjGeSIpuF5OlhycQmpVAUIaXDHPlL8RF6EMbAbdvJe4ivwtQ/nILtoc=
+Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 881F388173
+ for <devel@driverdev.osuosl.org>; Thu,  6 Jun 2019 23:10:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=merlin.20170209; h=Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender
+ :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+ Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+ List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=WrR8a0nd7OqHeGMYq59lvGgYOhTcXv05lY92PTWM2CQ=; b=oGpZKv7v1449BYsCbjNBM23I59
+ AeS10K3WrsuNY4wsvrv1v35sohJrGMRvaGQEKNq3MdRM8lvHiWBOBBBoPxXt+FXCQN5Fnem47OjSY
+ Qzwa3F1vokFNDVeBNOtxbdTgUvwUk7VOD/k/FinOC44l2cTTG0crQ1sWOAIpg3/Jiq9Y4yiW0I9Aw
+ WGO/zPFTdSE6bCX6qM5sF9XMPGXawRE5EctHBBcCVoct1Leh53VSTvD20ebDJhUzjIzEeDd4v3a1q
+ zUAlixJtXCC1UQp7bOmgCiTpB1DT/LPw8z15jOb8ERhJ/KtT9nqL0MQW22vuzZ1QlwiEUEPuabx4m
+ BH/G2evQ==;
+Received: from static-50-53-52-16.bvtn.or.frontiernet.net ([50.53.52.16]
+ helo=dragon.dunlab)
+ by merlin.infradead.org with esmtpsa (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hZ1Wn-0007f1-Gj; Thu, 06 Jun 2019 23:10:37 +0000
+Subject: Re: [PATCH v2 2/3] media: imx7-media-csi: add i.MX6UL support
+To: =?UTF-8?Q?S=c3=a9bastien_Szymanski?= <sebastien.szymanski@armadeus.com>,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-media@vger.kernel.org, Shawn Guo <shawnguo@kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>
+References: <20190606153825.8183-1-sebastien.szymanski@armadeus.com>
+ <20190606153825.8183-2-sebastien.szymanski@armadeus.com>
+From: Randy Dunlap <rdunlap@infradead.org>
+Message-ID: <92ca6e6e-2ebd-cec4-4f75-2674fd2c3d99@infradead.org>
+Date: Thu, 6 Jun 2019 16:10:30 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-X-OriginatorOrg: daktronics.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5e8a8dda-ea96-4d06-d529-08d6eabe4c60
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Jun 2019 20:33:56.4244 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: be88af81-0945-42aa-a3d2-b122777351a2
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: matt.sickler@daktronics.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR02MB5070
+In-Reply-To: <20190606153825.8183-2-sebastien.szymanski@armadeus.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,23 +75,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
+ NXP Linux Team <linux-imx@nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Steve Longerbeam <slongerbeam@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
->-----Original Message-----
->From: Fabio Estevam <festevam@gmail.com>
->Hi Greg,
->
->Please discard this. It fixes arm32 build warning, but introduces
->warnings with arm64.
->
->I will think about a better fix.
-
-The hardware/driver will only ever be used on amd64.   If it can be totally disabled for any other architecture as an easy fix, that's acceptable to me.
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gNi82LzE5IDg6MzggQU0sIFPDqWJhc3RpZW4gU3p5bWFuc2tpIHdyb3RlOgo+IGkuTVg3IGFu
+ZCBpLk1YNlVML0wgaGF2ZSB0aGUgc2FtZSBDU0kgY29udHJvbGxlci4gU28gYWRkIGkuTVg2VUwv
+TCBzdXBwb3J0Cj4gdG8gaW14Ny1tZWRpYS1jc2kgZHJpdmVyLgo+IAo+IFNpZ25lZC1vZmYtYnk6
+IFPDqWJhc3RpZW4gU3p5bWFuc2tpIDxzZWJhc3RpZW4uc3p5bWFuc2tpQGFybWFkZXVzLmNvbT4K
+PiAtLS0KPiAKPiBDaGFuZ2VzIGZvciB2MjoKPiAgLSByZWJhc2Ugb24gdG9wIG9mIGxpbnV4dHYv
+bWFzdGVyCj4gIC0gbWVudGlvbiBpLk1YNlVML0wgaW4gaGVhZGVyIGFuZCBLY29uZmlnIGhlbHAg
+dGV4dAo+ICAtIHJlbmFtZSBjc2lfdHlwZSB0byBjc2lfc29jX2lkCj4gCj4gIGRyaXZlcnMvc3Rh
+Z2luZy9tZWRpYS9pbXgvS2NvbmZpZyAgICAgICAgICB8ICA0ICstCj4gIGRyaXZlcnMvc3RhZ2lu
+Zy9tZWRpYS9pbXgvaW14Ny1tZWRpYS1jc2kuYyB8IDYyICsrKysrKysrKysrKysrKystLS0tLS0K
+PiAgMiBmaWxlcyBjaGFuZ2VkLCA0OSBpbnNlcnRpb25zKCspLCAxNyBkZWxldGlvbnMoLSkKPiAK
+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2lteC9LY29uZmlnIGIvZHJpdmVy
+cy9zdGFnaW5nL21lZGlhL2lteC9LY29uZmlnCj4gaW5kZXggYWQzZDdkZjZiYjNjLi44YjZkYzQy
+YzM5ZTAgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2lteC9LY29uZmlnCj4g
+KysrIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2lteC9LY29uZmlnCj4gQEAgLTIyLDExICsyMiwx
+MSBAQCBjb25maWcgVklERU9fSU1YX0NTSQo+ICAJICBBIHZpZGVvNGxpbnV4IGNhbWVyYSBzZW5z
+b3IgaW50ZXJmYWNlIGRyaXZlciBmb3IgaS5NWDUvNi4KPiAgCj4gIGNvbmZpZyBWSURFT19JTVg3
+X0NTSQo+IC0JdHJpc3RhdGUgImkuTVg3IENhbWVyYSBTZW5zb3IgSW50ZXJmYWNlIGRyaXZlciIK
+PiArCXRyaXN0YXRlICJpLk1YNlVML0wgLyBpLk1YNyBDYW1lcmEgU2Vuc29yIEludGVyZmFjZSBk
+cml2ZXIiCj4gIAlkZXBlbmRzIG9uIFZJREVPX0lNWF9NRURJQSAmJiBWSURFT19ERVYgJiYgSTJD
+Cj4gIAlkZWZhdWx0IHkKCkhpLApJIHJlYWxpemUgdGhhdCB0aGlzICJkZWZhdWx0IHkiIGlzIG5v
+dCBwYXJ0IG9mIHRoaXMgcGF0Y2ggc2V0LCBidXQgd2UgaGF2ZQpwcmV0dHkgc3Ryb25nIGd1aWRh
+bmNlIHRoYXQgYSBkcml2ZXIgc2hvdWxkIG5vdCBkZWZhdWx0IHRvICd5JyB1bmxlc3MgaXQgaXMK
+bmVlZGVkIGZvciBhIHN5c3RlbSB0byBib290LiAgSWYgdGhpcyBkcml2ZXIgaXMgb3B0aW9uYWws
+IHRoZW4gcGxlYXNlIGRyb3AKdGhlIDIgb2NjdXJyZW5jZXMgb2YgImRlZmF1bHQgeSIgaW4gdGhp
+cyBLY29uZmlnIGZpbGUuCgp0aGFua3MuCj4gIAloZWxwCj4gIAkgIEVuYWJsZSBzdXBwb3J0IGZv
+ciB2aWRlbzRsaW51eCBjYW1lcmEgc2Vuc29yIGludGVyZmFjZSBkcml2ZXIgZm9yCj4gLQkgIGku
+TVg3Lgo+ICsJICBpLk1YNlVML0wgb3IgaS5NWDcuCj4gIGVuZG1lbnUKPiAgZW5kaWYKCgotLSAK
+flJhbmR5Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRl
+dmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2
+ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1k
+ZXZlbAo=
