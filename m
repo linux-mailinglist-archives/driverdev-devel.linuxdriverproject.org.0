@@ -2,58 +2,58 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C580374A9
-	for <lists+driverdev-devel@lfdr.de>; Thu,  6 Jun 2019 14:59:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EED51374C9
+	for <lists+driverdev-devel@lfdr.de>; Thu,  6 Jun 2019 15:02:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AC7A9863A4;
-	Thu,  6 Jun 2019 12:59:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7B8B9863E1;
+	Thu,  6 Jun 2019 13:02:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lpG_yjgCZNLH; Thu,  6 Jun 2019 12:59:32 +0000 (UTC)
+	with ESMTP id EDqsouxuIvJY; Thu,  6 Jun 2019 13:02:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 64D76862A9;
-	Thu,  6 Jun 2019 12:59:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7EC1B847C3;
+	Thu,  6 Jun 2019 13:02:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 67D5F1BF23F
- for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 12:59:29 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 402691BF287
+ for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 13:02:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 64CAA860FC
- for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 12:59:29 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3BFBE86C53
+ for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 13:02:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id R7TbG5ZsqObB for <devel@linuxdriverproject.org>;
- Thu,  6 Jun 2019 12:59:28 +0000 (UTC)
+ with ESMTP id 95dEZHUjyBs9 for <devel@linuxdriverproject.org>;
+ Thu,  6 Jun 2019 13:02:55 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id EE3D8860FB
- for <devel@driverdev.osuosl.org>; Thu,  6 Jun 2019 12:59:28 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id BBBB686C4D
+ for <devel@driverdev.osuosl.org>; Thu,  6 Jun 2019 13:02:55 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 4FE302070B;
- Thu,  6 Jun 2019 12:59:28 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1BD8020872;
+ Thu,  6 Jun 2019 13:02:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1559825968;
- bh=7RZShAsT5Ac6fwFUJ8T+626Y3eZ1PxJCUZdWLG205eg=;
+ s=default; t=1559826175;
+ bh=ZMEpYSkZA0Q0/VcvnwOoovQKU7Ziw+6pF1UaPZVwQAU=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=wRh86ID9iECC18xel4NOQx4MuIWjxcTY7A/Cq7ChoLU+9djPc4mzch9FO8j9RzVoe
- YB2TtTqNJ86cfLEj3lXYWFy4KcmIKHe0HJ/VoyoDmU56sSSfr9QvhfSxY0MlluXH8T
- +rqSl8MdcxtcRlKLZ16dMMjN0BWHvYV+uXUpkF1A=
-Date: Thu, 6 Jun 2019 14:59:26 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Nishka Dasgupta <nishkadg.linux@gmail.com>
-Subject: Re: [PATCH] staging: rtl8188eu: core: Replace function
- rtw_free_network_nolock
-Message-ID: <20190606125926.GA1140@kroah.com>
-References: <20190604081222.12658-1-nishkadg.linux@gmail.com>
+ b=Q0JE+X1PLsBLOR56AmukxAbdTkEoMFaf3p8OY61fXd0Ep2nz2hDA6Qti6r9NxSncX
+ Hms64YiJUI6Z/L8wXeKvidGPtIrqexWEetKYjTrLwmQadIYhe/5syePhmtoUANc3Jj
+ xv7ezCUg+O30LYeMgYbAEIm3rKrk0zC62LrnuJac=
+Date: Thu, 6 Jun 2019 15:02:53 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Shobhit Kukreti <shobhitkukreti@gmail.com>
+Subject: Re: [PATCH] staging: rtl8723bs: CleanUp to remove the error reported
+ by checkpatch
+Message-ID: <20190606130253.GE1140@kroah.com>
+References: <20190606015949.GA2275@t-1000>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190604081222.12658-1-nishkadg.linux@gmail.com>
+In-Reply-To: <20190606015949.GA2275@t-1000>
 User-Agent: Mutt/1.12.0 (2019-05-25)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -67,37 +67,21 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, puranjay12@gmail.com, flbue@gmx.de,
- linux-kernel@vger.kernel.org, larry.finger@lwfinger.net
+Cc: devel@driverdev.osuosl.org, hdegoede@redhat.com,
+ linux-kernel@vger.kernel.org, hadess@hadess.net, Larry.Finger@lwfinger.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Jun 04, 2019 at 01:42:22PM +0530, Nishka Dasgupta wrote:
-> Remove function rtw_free_network_nolock, as all it does is call
-> _rtw_free_network_nolock, and rename _rtw_free_network_nolock to
-> rtw_free_network_nolock.
-> 
-> Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
-> ---
->  drivers/staging/rtl8188eu/core/rtw_mlme.c | 8 +-------
->  1 file changed, 1 insertion(+), 7 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme.c b/drivers/staging/rtl8188eu/core/rtw_mlme.c
-> index 0abb2df32645..454c5795903d 100644
-> --- a/drivers/staging/rtl8188eu/core/rtw_mlme.c
-> +++ b/drivers/staging/rtl8188eu/core/rtw_mlme.c
-> @@ -159,7 +159,7 @@ static void _rtw_free_network(struct mlme_priv *pmlmepriv, struct wlan_network *
->  	spin_unlock_bh(&free_queue->lock);
->  }
->  
-> -void _rtw_free_network_nolock(struct	mlme_priv *pmlmepriv, struct wlan_network *pnetwork)
-> +void rtw_free_network_nolock(struct	mlme_priv *pmlmepriv, struct wlan_network *pnetwork)
+On Wed, Jun 05, 2019 at 06:59:52PM -0700, Shobhit Kukreti wrote:
+> Cleaned up the code to remove the error "(foo*)" should be "(foo *)"
+> reported by checkpatch from the file rtl8723bs/os_dep/ioctl_linux.c
 
-Why is this function moved from being static to not being static?
+Your subject line shoudl give a hint as to what the error you are fixing
+is.
 
-that doesn't seem right to me, does it to you?
+Also, no need for "CleanUp" in it, that's not a real word :)
 
 thanks,
 
