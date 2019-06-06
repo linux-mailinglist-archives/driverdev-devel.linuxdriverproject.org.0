@@ -1,53 +1,93 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 74A7B36EB4
-	for <lists+driverdev-devel@lfdr.de>; Thu,  6 Jun 2019 10:33:23 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 26C6D37210
+	for <lists+driverdev-devel@lfdr.de>; Thu,  6 Jun 2019 12:51:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A784086102;
-	Thu,  6 Jun 2019 08:33:21 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 951C4204D0;
+	Thu,  6 Jun 2019 10:51:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BjCTbPT-aHev; Thu,  6 Jun 2019 08:33:21 +0000 (UTC)
+	with ESMTP id U4j5bzHhgq2z; Thu,  6 Jun 2019 10:51:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 16621860B0;
-	Thu,  6 Jun 2019 08:33:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3F3AF204BF;
+	Thu,  6 Jun 2019 10:51:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id EEE5E1BF3C5
- for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 08:33:17 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 63D921BF426
+ for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 10:51:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E80B3867F0
- for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 08:33:17 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 607AD87360
+ for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 10:51:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Jq2Ls8uSCwrB for <devel@linuxdriverproject.org>;
- Thu,  6 Jun 2019 08:33:16 +0000 (UTC)
+ with ESMTP id 9aN0sfm3xNtu for <devel@linuxdriverproject.org>;
+ Thu,  6 Jun 2019 10:51:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from relay11.mail.gandi.net (relay11.mail.gandi.net [217.70.178.231])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 8DEE6864A0
- for <devel@driverdev.osuosl.org>; Thu,  6 Jun 2019 08:33:16 +0000 (UTC)
-Received: from localhost (aaubervilliers-681-1-24-139.w90-88.abo.wanadoo.fr
- [90.88.144.139]) (Authenticated sender: maxime.ripard@bootlin.com)
- by relay11.mail.gandi.net (Postfix) with ESMTPSA id 6C6F510001B;
- Thu,  6 Jun 2019 08:33:08 +0000 (UTC)
-Date: Thu, 6 Jun 2019 10:33:07 +0200
-From: Maxime Ripard <maxime.ripard@bootlin.com>
-To: Jernej =?utf-8?Q?=C5=A0krabec?= <jernej.skrabec@siol.net>
-Subject: Re: [PATCH 6/7] media: cedrus: Add infra for extra buffers connected
- to capture buffers
-Message-ID: <20190606083307.b5zpk4n6x3w6mtmb@flea>
-References: <20190530211516.1891-1-jernej.skrabec@siol.net>
- <20190530211516.1891-7-jernej.skrabec@siol.net>
- <20190603121859.sbphcjy75kmed6oc@flea>
- <3029072.frl2UAsRGt@jernej-laptop>
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 3042E87937
+ for <devel@driverdev.osuosl.org>; Thu,  6 Jun 2019 10:51:20 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x56An497115142;
+ Thu, 6 Jun 2019 10:51:18 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2018-07-02;
+ bh=CYdJIrBU83khStvSGVg8ySuKn6WPb/kbQ9bMGPSCHnc=;
+ b=GSZG8tnYFAcH0V8tG4YkdSsjjld/zZCLtpm1Ujt/QdqJ9BBwlR9lR8poTAQgxfG9BCAW
+ SHtrAZFWpYRTkml/xdOmDCl5NAz6QcKXf39DHB+vN8RcdyBvYHBSf+IobnHdO9E+Bj4B
+ pYICfwUIKzxhiqKwc8GV1FFy3fMUrcIxotPoMPdmqFcmOKAR0L00Uj1LVbL0c9xOWVyl
+ Vd7WpTu8EZPIG+I6x4uEEw++49QhBNcWOASuvuHYBmkWM1HzcsqA+XwwhxQ6llaDocFh
+ T1EwzxQgsiin1KV+FSxLgbCJ9gfuiK8aK6jAipVAyTvSXgAkbL2yWEJoROeqswH6zjsT Xg== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by userp2120.oracle.com with ESMTP id 2suj0qqjvd-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 06 Jun 2019 10:51:18 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x56AofFx017801;
+ Thu, 6 Jun 2019 10:51:18 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by aserp3030.oracle.com with ESMTP id 2swnhcmfv8-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 06 Jun 2019 10:51:17 +0000
+Received: from abhmp0020.oracle.com (abhmp0020.oracle.com [141.146.116.26])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x56ApGXE022658;
+ Thu, 6 Jun 2019 10:51:16 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 06 Jun 2019 03:51:15 -0700
+Date: Thu, 6 Jun 2019 13:51:08 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+Subject: Re: [PATCH] Staging: emxx_udc: fix warning "sum of probable
+ bitmasks, consider |"
+Message-ID: <20190606105108.GL31203@kadam>
+References: <20190603185412.GA11183@hari-Inspiron-1545>
+ <20190603190457.GA6487@kroah.com>
+ <20190605063443.GA5248@hari-Inspiron-1545>
 MIME-Version: 1.0
-In-Reply-To: <3029072.frl2UAsRGt@jernej-laptop>
-User-Agent: NeoMutt/20180716
+Content-Disposition: inline
+In-Reply-To: <20190605063443.GA5248@hari-Inspiron-1545>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9279
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1810050000 definitions=main-1906060079
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9279
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
+ definitions=main-1906060079
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,94 +100,65 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org,
- mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============6049963522314466705=="
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, Nishad Kamdar <nishadkamdar@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Wed, Jun 05, 2019 at 12:04:43PM +0530, Hariprasad Kelam wrote:
+> On Mon, Jun 03, 2019 at 09:04:57PM +0200, Greg Kroah-Hartman wrote:
+> > On Tue, Jun 04, 2019 at 12:24:12AM +0530, Hariprasad Kelam wrote:
+> > > Knowing the fact that operator '|' is faster than '+'.
+> > > Its better we replace + with | in this case.
+> > > 
+> > > Issue reported by coccicheck
+> > > drivers/staging/emxx_udc/emxx_udc.h:94:34-35: WARNING: sum of probable
+> > > bitmasks, consider |
+> > > 
+> > > Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+> > > ---
+> > >  drivers/staging/emxx_udc/emxx_udc.h | 2 +-
+> > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > > 
+> > > diff --git a/drivers/staging/emxx_udc/emxx_udc.h b/drivers/staging/emxx_udc/emxx_udc.h
+> > > index b8c3dee..88d6bda 100644
+> > > --- a/drivers/staging/emxx_udc/emxx_udc.h
+> > > +++ b/drivers/staging/emxx_udc/emxx_udc.h
+> > > @@ -91,7 +91,7 @@ int vbus_irq;
+> > >  #define BIT30		0x40000000
+> > >  #define BIT31		0x80000000
+> > 
+> > All of those BITXX defines should be removed and the "real" BIT(X) macro
+> > used instead.
+> Yes will send separate patch  to address this.
+> > 
+> > > -#define TEST_FORCE_ENABLE		(BIT18 + BIT16)
+> > > +#define TEST_FORCE_ENABLE		(BIT18 | BIT16)
+> > 
+> > It really doesn't matter, a good compiler will have already turned this
+> > into a constant value so you really do not know if this is less/faster
+> > code or not, right?
+> > 
+> > Did you look at the output to verify this actually changed anything?
+> > 
+> > thanks,
+> > 
+> > greg k-h
+> 
+> Ok . Treating this as false postive from coccicheck.
 
---===============6049963522314466705==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="llwlg2xtnnijika2"
-Content-Disposition: inline
+I liked the patch.  | is way more normal and readable than +.  It's just
+the commit message was bogus.
 
+I would be very surprised if this coccicheck found anything that wasn't
+a compile time constant like this.
 
---llwlg2xtnnijika2
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, Jun 03, 2019 at 05:48:25PM +0200, Jernej =C5=A0krabec wrote:
-> Dne ponedeljek, 03. junij 2019 ob 14:18:59 CEST je Maxime Ripard napisal(=
-a):
-> > > +static void cedrus_buf_cleanup(struct vb2_buffer *vb)
-> > > +{
-> > > +	struct vb2_queue *vq =3D vb->vb2_queue;
-> > > +
-> > > +	if (!V4L2_TYPE_IS_OUTPUT(vq->type)) {
-> > > +		struct cedrus_ctx *ctx =3D vb2_get_drv_priv(vq);
-> > > +		struct cedrus_buffer *cedrus_buf;
-> > > +
-> > > +		cedrus_buf =3D vb2_to_cedrus_buffer(vq->bufs[vb->index]);
-> > > +
-> > > +		if (cedrus_buf->extra_buf_size)
-> > > +			dma_free_coherent(ctx->dev->dev,
-> > > +					  cedrus_buf-
-> >extra_buf_size,
-> > > +					  cedrus_buf-
-> >extra_buf,
-> > > +					  cedrus_buf-
-> >extra_buf_dma);
-> > > +	}
-> > > +}
-> > > +
-> >
-> > I'm really not a fan of allocating something somewhere, and freeing it
-> > somewhere else. Making sure you don't leak something is hard enough to
-> > not have some non-trivial allocation scheme.
->
-> Ok, what about introducing two new optional methods in engine callbacks,
-> buffer_init and buffer_destroy, which would be called from cedrus_buf_ini=
-t() and
-> cedrus_buf_cleanup(), respectively. That way all (de)allocation logic sta=
-ys
-> within the same engine.
-
-Yep, that would work for me.
-
-Thanks!
-Maxime
-
---
-Maxime Ripard, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
-
---llwlg2xtnnijika2
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCXPjPwwAKCRDj7w1vZxhR
-xfVpAQCOr8fs3rk1qqMT7K32xwhOKrfkpEzeOlKL8hYuHFgkPQEA+ZYtxUfOTSQu
-8EDER1DVGqjSGhBpL356m0j1JSeHNgM=
-=Hz+3
------END PGP SIGNATURE-----
-
---llwlg2xtnnijika2--
-
---===============6049963522314466705==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============6049963522314466705==--
