@@ -1,60 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E3F1C37492
-	for <lists+driverdev-devel@lfdr.de>; Thu,  6 Jun 2019 14:55:58 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9C580374A9
+	for <lists+driverdev-devel@lfdr.de>; Thu,  6 Jun 2019 14:59:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 207A6204D7;
-	Thu,  6 Jun 2019 12:55:57 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AC7A9863A4;
+	Thu,  6 Jun 2019 12:59:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Y4tFFWO+63AN; Thu,  6 Jun 2019 12:55:56 +0000 (UTC)
+	with ESMTP id lpG_yjgCZNLH; Thu,  6 Jun 2019 12:59:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D617C204CC;
-	Thu,  6 Jun 2019 12:55:55 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 64D76862A9;
+	Thu,  6 Jun 2019 12:59:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A4A081BF287
- for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 12:55:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 67D5F1BF23F
+ for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 12:59:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A1D5A860B0
- for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 12:55:53 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 64CAA860FC
+ for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 12:59:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VqvQb5FehbZ2 for <devel@linuxdriverproject.org>;
- Thu,  6 Jun 2019 12:55:52 +0000 (UTC)
+ with ESMTP id R7TbG5ZsqObB for <devel@linuxdriverproject.org>;
+ Thu,  6 Jun 2019 12:59:28 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E0EFF86079
- for <devel@driverdev.osuosl.org>; Thu,  6 Jun 2019 12:55:52 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id EE3D8860FB
+ for <devel@driverdev.osuosl.org>; Thu,  6 Jun 2019 12:59:28 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 41CF12070B;
- Thu,  6 Jun 2019 12:55:52 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 4FE302070B;
+ Thu,  6 Jun 2019 12:59:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1559825752;
- bh=1hbBwnqN56Y/JMha8383D60Ivnk7r8lWw9qY3990Jx8=;
+ s=default; t=1559825968;
+ bh=7RZShAsT5Ac6fwFUJ8T+626Y3eZ1PxJCUZdWLG205eg=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=kQpFEkxj1lVEGqH1VbTPjTunTeW0nCtQANi+nuicZUsJauqdNJ6LrfBOvY7TIppIY
- 0eCdtd/Z5WQjDDJRHCCBROkGkflZjOXduAveM+IdB/jZIqUSAzd2U2Hr64J1rhzKo1
- vqvI2Y6bl8KdcfE2ZsuiXyq89F78+22vSWcLE70k=
-Date: Thu, 6 Jun 2019 14:55:50 +0200
+ b=wRh86ID9iECC18xel4NOQx4MuIWjxcTY7A/Cq7ChoLU+9djPc4mzch9FO8j9RzVoe
+ YB2TtTqNJ86cfLEj3lXYWFy4KcmIKHe0HJ/VoyoDmU56sSSfr9QvhfSxY0MlluXH8T
+ +rqSl8MdcxtcRlKLZ16dMMjN0BWHvYV+uXUpkF1A=
+Date: Thu, 6 Jun 2019 14:59:26 +0200
 From: Greg KH <gregkh@linuxfoundation.org>
-To: Simon =?iso-8859-1?Q?Sandstr=F6m?= <simon@nikanor.nu>
-Subject: Re: [PATCH 4/7] staging: kpc2000: use __func__ in debug messages in
- core.c
-Message-ID: <20190606125550.GA11929@kroah.com>
-References: <20190603222916.20698-1-simon@nikanor.nu>
- <20190603222916.20698-5-simon@nikanor.nu>
+To: Nishka Dasgupta <nishkadg.linux@gmail.com>
+Subject: Re: [PATCH] staging: rtl8188eu: core: Replace function
+ rtw_free_network_nolock
+Message-ID: <20190606125926.GA1140@kroah.com>
+References: <20190604081222.12658-1-nishkadg.linux@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190603222916.20698-5-simon@nikanor.nu>
+In-Reply-To: <20190604081222.12658-1-nishkadg.linux@gmail.com>
 User-Agent: Mutt/1.12.0 (2019-05-25)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -68,41 +67,37 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: devel@driverdev.osuosl.org, puranjay12@gmail.com, flbue@gmx.de,
+ linux-kernel@vger.kernel.org, larry.finger@lwfinger.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Jun 04, 2019 at 12:29:13AM +0200, Simon Sandstr=F6m wrote:
-> Fixes checkpatch.pl warning "Prefer using '"%s...", __func__' to using
-> '<function name>', this function's name, in a string".
-> =
-
-> Signed-off-by: Simon Sandstr=F6m <simon@nikanor.nu>
+On Tue, Jun 04, 2019 at 01:42:22PM +0530, Nishka Dasgupta wrote:
+> Remove function rtw_free_network_nolock, as all it does is call
+> _rtw_free_network_nolock, and rename _rtw_free_network_nolock to
+> rtw_free_network_nolock.
+> 
+> Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 > ---
->  drivers/staging/kpc2000/kpc2000/core.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
-> =
+>  drivers/staging/rtl8188eu/core/rtw_mlme.c | 8 +-------
+>  1 file changed, 1 insertion(+), 7 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme.c b/drivers/staging/rtl8188eu/core/rtw_mlme.c
+> index 0abb2df32645..454c5795903d 100644
+> --- a/drivers/staging/rtl8188eu/core/rtw_mlme.c
+> +++ b/drivers/staging/rtl8188eu/core/rtw_mlme.c
+> @@ -159,7 +159,7 @@ static void _rtw_free_network(struct mlme_priv *pmlmepriv, struct wlan_network *
+>  	spin_unlock_bh(&free_queue->lock);
+>  }
+>  
+> -void _rtw_free_network_nolock(struct	mlme_priv *pmlmepriv, struct wlan_network *pnetwork)
+> +void rtw_free_network_nolock(struct	mlme_priv *pmlmepriv, struct wlan_network *pnetwork)
 
-> diff --git a/drivers/staging/kpc2000/kpc2000/core.c b/drivers/staging/kpc=
-2000/kpc2000/core.c
-> index a70665a202c3..6d4fc1f37c9f 100644
-> --- a/drivers/staging/kpc2000/kpc2000/core.c
-> +++ b/drivers/staging/kpc2000/kpc2000/core.c
-> @@ -312,8 +312,8 @@ static int kp2000_pcie_probe(struct pci_dev *pdev,
->  	unsigned long dma_bar_phys_len;
->  	u16 regval;
->  =
+Why is this function moved from being static to not being static?
 
-> -	dev_dbg(&pdev->dev, "kp2000_pcie_probe(pdev =3D [%p], id =3D [%p])\n",
-> -		pdev, id);
-> +	dev_dbg(&pdev->dev, "%s(pdev =3D [%p], id =3D [%p])\n",
-> +		__func__, pdev, id);
-
-debugging lines that say "called this function!" can all be removed, as
-we have ftrace in the kernel tree, we can use that instead.  I'll take
-this, but feel free to clean them up as follow-on patches.
+that doesn't seem right to me, does it to you?
 
 thanks,
 
