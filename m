@@ -1,119 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 34214372D2
-	for <lists+driverdev-devel@lfdr.de>; Thu,  6 Jun 2019 13:28:29 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1C17737301
+	for <lists+driverdev-devel@lfdr.de>; Thu,  6 Jun 2019 13:35:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 90F8486308;
-	Thu,  6 Jun 2019 11:28:27 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2453D87FD8;
+	Thu,  6 Jun 2019 11:35:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ANpd-ZmHnPbu; Thu,  6 Jun 2019 11:28:25 +0000 (UTC)
+	with ESMTP id sSGvzBW3TZUy; Thu,  6 Jun 2019 11:35:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0C9DB862BE;
-	Thu,  6 Jun 2019 11:28:24 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C836987E45;
+	Thu,  6 Jun 2019 11:35:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5338B1BF423
- for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 11:28:22 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E32041BF423
+ for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 11:35:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 4F29886AFD
- for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 11:28:22 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id DED8720355
+ for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 11:35:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4ZmjjbsoJ5VA for <devel@linuxdriverproject.org>;
- Thu,  6 Jun 2019 11:28:20 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM02-SN1-obe.outbound.protection.outlook.com
- (mail-eopbgr770087.outbound.protection.outlook.com [40.107.77.87])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 474CC869C9
- for <devel@driverdev.osuosl.org>; Thu,  6 Jun 2019 11:28:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=analog.onmicrosoft.com; s=selector1-analog-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=hI74nD7KRye9xHaTcbOo+4UWxTporcUtYbjDdTHOiuE=;
- b=qg4ZEC7VG7Y/tnZPdccSV2DTxgN5xqSoihQv5+ohMOiDc/oVMrlwkZ9MnWMF1M8JVXKIWSkMv2Y7qfGMe0viFb1OkiFUPk3bSV9EdHisfns5HCiqKuSkj4o3TST/maU/VgyuRJbbFiYPLCnApiMvDueQpmwIjfn24ySB+T5wNmY=
-Received: from BN6PR03CA0064.namprd03.prod.outlook.com (2603:10b6:404:4c::26)
- by BL2PR03MB545.namprd03.prod.outlook.com (2a01:111:e400:c23::14)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.1965.12; Thu, 6 Jun
- 2019 11:13:57 +0000
-Received: from CY1NAM02FT047.eop-nam02.prod.protection.outlook.com
- (2a01:111:f400:7e45::204) by BN6PR03CA0064.outlook.office365.com
- (2603:10b6:404:4c::26) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.1965.14 via Frontend
- Transport; Thu, 6 Jun 2019 11:13:56 +0000
-Authentication-Results: spf=pass (sender IP is 137.71.25.55)
- smtp.mailfrom=analog.com; vger.kernel.org; dkim=none (message not signed)
- header.d=none;vger.kernel.org; dmarc=bestguesspass action=none
- header.from=analog.com;
-Received-SPF: Pass (protection.outlook.com: domain of analog.com designates
- 137.71.25.55 as permitted sender) receiver=protection.outlook.com;
- client-ip=137.71.25.55; helo=nwd2mta1.analog.com;
-Received: from nwd2mta1.analog.com (137.71.25.55) by
- CY1NAM02FT047.mail.protection.outlook.com (10.152.74.177) with Microsoft SMTP
- Server (version=TLS1_0, cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.1965.12
- via Frontend Transport; Thu, 6 Jun 2019 11:13:54 +0000
-Received: from NWD2HUBCAS8.ad.analog.com (nwd2hubcas8.ad.analog.com
- [10.64.69.108])
- by nwd2mta1.analog.com (8.13.8/8.13.8) with ESMTP id x56BDr2L029599
- (version=TLSv1/SSLv3 cipher=AES256-SHA bits=256 verify=OK);
- Thu, 6 Jun 2019 04:13:53 -0700
-Received: from NWD2MBX7.ad.analog.com ([fe80::190e:f9c1:9a22:9663]) by
- NWD2HUBCAS8.ad.analog.com ([fe80::90a0:b93e:53c6:afee%12]) with mapi id
- 14.03.0415.000; Thu, 6 Jun 2019 07:13:53 -0400
-From: "Ardelean, Alexandru" <alexandru.Ardelean@analog.com>
-To: "renatogeh@gmail.com" <renatogeh@gmail.com>, "jic23@kernel.org"
- <jic23@kernel.org>
-Subject: Re: [PATCH v2 1/2] dt-bindings: iio: adc: add adi,ad7780.yaml binding
-Thread-Topic: [PATCH v2 1/2] dt-bindings: iio: adc: add adi,ad7780.yaml binding
-Thread-Index: AQHVEpjnzzdTbL78DUqRDpYuJzSJpqZ94POAgA/5dgCAAPVLAA==
-Date: Thu, 6 Jun 2019 11:13:52 +0000
-Message-ID: <d70b1ffcc903495cd5eac04e17fd1600e67b9c53.camel@analog.com>
-References: <cover.1558746978.git.renatogeh@gmail.com>
- <2426649b2d8224ae72e7706bcb8c4f2c44c581d2.1558746978.git.renatogeh@gmail.com>
- <20190526173911.57ae3d11@archlinux>
- <20190605203554.podktlonhp527iqq@renatolg>
-In-Reply-To: <20190605203554.podktlonhp527iqq@renatolg>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.48.65.129]
-x-adiroutedonprem: True
-Content-ID: <EC1375F4AEF94D4CB95D2D64378F66F1@analog.com>
+ with ESMTP id tz71FHJ9rWy6 for <devel@linuxdriverproject.org>;
+ Thu,  6 Jun 2019 11:35:07 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by silver.osuosl.org (Postfix) with ESMTPS id 931342034C
+ for <devel@driverdev.osuosl.org>; Thu,  6 Jun 2019 11:35:07 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x56BSh8h146272;
+ Thu, 6 Jun 2019 11:35:05 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ content-transfer-encoding : in-reply-to; s=corp-2018-07-02;
+ bh=Y2hmulEThShe7yuxn2FDcx828sdufBDLO8yrZJpI96k=;
+ b=C9+6sUZfQ7+PaLFXKvcdZ8fP5unf0Hvhk3clst84/Vly+0WEaLItmHwPhVfCpChOcBdn
+ 4VHiUXttyiNBfLzvvATxJcIs8G1HQYYUBfcvDmxUEWk2dkY9TsHIuOu4mG9xjvB2GQkA
+ kVhHh9qgnrHRNTyg3LbJm3qzUEs2l8ifYAVLPc3ijyo/ohRNs9NIp/Ddj8RVPje3F4TS
+ 3qEuBqc2x68nlk+I3VW8LFL39mjIOl3qQdpq2iigQYRlJ+byAOQjIjh3315kC5QXvBBE
+ 34GM5dtWdpIlZxhZci4c3NFhE3pIp1aFGYPLiRcAeA1N0jm2H6gH66iftvEt9PcOBvCZ wQ== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by userp2120.oracle.com with ESMTP id 2suj0qqrgc-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 06 Jun 2019 11:35:05 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x56BZ5hs155775;
+ Thu, 6 Jun 2019 11:35:05 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3030.oracle.com with ESMTP id 2swngmf4a5-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 06 Jun 2019 11:35:05 +0000
+Received: from abhmp0004.oracle.com (abhmp0004.oracle.com [141.146.116.10])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x56BZ2dK028471;
+ Thu, 6 Jun 2019 11:35:03 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 06 Jun 2019 04:35:02 -0700
+Date: Thu, 6 Jun 2019 14:34:55 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Simon =?iso-8859-1?Q?Sandstr=F6m?= <simon@nikanor.nu>
+Subject: Re: [PATCH 7/7] staging: kpc2000: fix incorrect code comment in core.c
+Message-ID: <20190606113455.GM31203@kadam>
+References: <20190603222916.20698-1-simon@nikanor.nu>
+ <20190603222916.20698-8-simon@nikanor.nu>
 MIME-Version: 1.0
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:137.71.25.55; IPV:NLI; CTRY:US; EFV:NLI;
- SFV:NSPM;
- SFS:(10009020)(136003)(396003)(376002)(39860400002)(346002)(2980300002)(189003)(199004)(50466002)(106002)(8676002)(8936002)(336012)(6116002)(6306002)(118296001)(436003)(5660300002)(476003)(26005)(3846002)(70206006)(14454004)(486006)(47776003)(426003)(7416002)(2501003)(23676004)(186003)(2486003)(478600001)(76176011)(7696005)(102836004)(229853002)(966005)(246002)(14444005)(126002)(53376002)(86362001)(110136005)(356004)(6246003)(316002)(70586007)(11346002)(7636002)(7736002)(2616005)(446003)(2906002)(305945005)(36756003)(4326008)(54906003)(142933001);
- DIR:OUT; SFP:1101; SCL:1; SRVR:BL2PR03MB545; H:nwd2mta1.analog.com; FPR:;
- SPF:Pass; LANG:en; PTR:nwd2mail10.analog.com; MX:1; A:1; 
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: c735c048-131a-4aee-74dd-08d6ea7010b5
-X-Microsoft-Antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(4709080)(1401327)(2017052603328)(7193020);
- SRVR:BL2PR03MB545; 
-X-MS-TrafficTypeDiagnostic: BL2PR03MB545:
-X-MS-Exchange-PUrlCount: 6
-X-Microsoft-Antispam-PRVS: <BL2PR03MB545E46165CFF1A78F66A284F9170@BL2PR03MB545.namprd03.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
-X-Forefront-PRVS: 00603B7EEF
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam-Message-Info: Q2/Xow+6YdWcPsdwbqXfco4H54AO5XUbXHSFJ06kpYQwO//PDk3n6nc8MsvZpwoiDOce12DEpaRQPeUKmMWUG9TrCdSRf3jqbexivWSaoKhW6PpUAQcK9BhliCK6ySabKIIGy1CFu/ZPl7lJxil9cu+Drvq2vESbRQqc2LSURH+rGff7wzqpkF8rndnBPCpGAohWy/VRF77f0zsjTyzXnwt8s+hMf9MyVwrRyIHlEsBtiEWnUCK3TGN6hlhrLfg3Rck1eEv4OJLgw2xAXrkjpAhEj7fAeFKatCrunvvf7IFx6j4ATi5IBRtVRFtr2CfYl7ic74yk/1blfHvZ4LxNkyHtpjnv+YExb6XaJN4PL1DzNJJ2LjeB9pUdBI8ADZoLOje1FEi/Zgf2uIEajBm7EKeQjTxzUplq6w0xnAO0xeM=
-X-OriginatorOrg: analog.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jun 2019 11:13:54.8603 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: c735c048-131a-4aee-74dd-08d6ea7010b5
-X-MS-Exchange-CrossTenant-Id: eaa689b4-8f87-40e0-9c6f-7228de4d754a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=eaa689b4-8f87-40e0-9c6f-7228de4d754a; Ip=[137.71.25.55];
- Helo=[nwd2mta1.analog.com]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL2PR03MB545
+Content-Disposition: inline
+In-Reply-To: <20190603222916.20698-8-simon@nikanor.nu>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9279
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=2
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1810050000 definitions=main-1906060085
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9279
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=2 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
+ definitions=main-1906060085
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -126,228 +98,125 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
- "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- "lars@metafoo.de" <lars@metafoo.de>, "Hennerich,
- Michael" <Michael.Hennerich@analog.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "kernel-usp@googlegroups.com" <kernel-usp@googlegroups.com>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "pmeerw@pmeerw.net" <pmeerw@pmeerw.net>, "knaack.h@gmx.de" <knaack.h@gmx.de>,
- "Popa, Stefan Serban" <StefanSerban.Popa@analog.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, 2019-06-05 at 17:35 -0300, Renato Lui Geh wrote:
-> [External]
-> 
-> 
-> On 05/26, Jonathan Cameron wrote:
-> > On Fri, 24 May 2019 22:26:30 -0300
-> > Renato Lui Geh <renatogeh@gmail.com> wrote:
-> > 
-> > > This patch adds a YAML binding for the Analog Devices AD7780/1 and
-> > > AD7170/1 analog-to-digital converters.
-> > > 
-> > > Signed-off-by: Renato Lui Geh <renatogeh@gmail.com>
-> > Looks good to me, but I'm still finding my feet with these so will
-> > leave it for a few days for others to have time to comment.
-> > 
-> > Michael, looking for a quick reply from you to say if you are happy
-> > being explicitly listed as maintainer for this one, or if you'd
-> > rather land it on someone else.  Same applies for patch 2.
-> > 
-> > Renato, if I seem to have forgotten this in a week or so, feel
-> > free to give me a poke. I've been known to loose patches entirely!
-> 
-> Hi Jonathan,
-> 
-> Just here to give you a poke. :)
-> 
-> By the way, in these cases, which would be easier for you? To send you
-> an email like I'm doing right now on last week's thread; or to resend
-> the entire patch(set)?
-> 
+On Tue, Jun 04, 2019 at 12:29:16AM +0200, Simon Sandstr=F6m wrote:
+> Step 11 was removed from kp2000_pcie_probe in a previous commit but the
+> comment was not changed to reflect this, so do it now.
+> =
 
-I think in this case, maybe let's wait a bit longer.
-Jonathan has not been active recently.
+> Signed-off-by: Simon Sandstr=F6m <simon@nikanor.nu>
+> ---
+>  drivers/staging/kpc2000/kpc2000/core.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> =
 
-I think a [RESEND] would be a good idea when he gets back/active and misses your patchset.
+> diff --git a/drivers/staging/kpc2000/kpc2000/core.c b/drivers/staging/kpc=
+2000/kpc2000/core.c
+> index 2d8d188624f7..cd3876f1ce17 100644
+> --- a/drivers/staging/kpc2000/kpc2000/core.c
+> +++ b/drivers/staging/kpc2000/kpc2000/core.c
+> @@ -501,7 +501,7 @@ static int kp2000_pcie_probe(struct pci_dev *pdev,
+>  		goto out10;
+>  =
 
-Thanks
-Alex
+>  	/*
+> -	 * Step 12: Enable IRQs in HW
+> +	 * Step 11: Enable IRQs in HW
 
-> Thanks,
-> Renato
-> > Thanks,
-> > 
-> > Jonathan
-> > > ---
-> > > Changes in v2:
-> > >  - vref-supply to avdd-supply
-> > >  - remove avdd-supply from required list
-> > >  - include adc block in an spi block
-> > > 
-> > >  .../bindings/iio/adc/adi,ad7780.txt           | 48 ----------
-> > >  .../bindings/iio/adc/adi,ad7780.yaml          | 87 +++++++++++++++++++
-> > >  2 files changed, 87 insertions(+), 48 deletions(-)
-> > >  delete mode 100644 Documentation/devicetree/bindings/iio/adc/adi,ad7780.txt
-> > >  create mode 100644 Documentation/devicetree/bindings/iio/adc/adi,ad7780.yaml
-> > > 
-> > > diff --git a/Documentation/devicetree/bindings/iio/adc/adi,ad7780.txt
-> > > b/Documentation/devicetree/bindings/iio/adc/adi,ad7780.txt
-> > > deleted file mode 100644
-> > > index 440e52555349..000000000000
-> > > --- a/Documentation/devicetree/bindings/iio/adc/adi,ad7780.txt
-> > > +++ /dev/null
-> > > @@ -1,48 +0,0 @@
-> > > -* Analog Devices AD7170/AD7171/AD7780/AD7781
-> > > -
-> > > -Data sheets:
-> > > -
-> > > -- AD7170:
-> > > -    * https://www.analog.com/media/en/technical-documentation/data-sheets/AD7170.pdf
-> > > -- AD7171:
-> > > -    * https://www.analog.com/media/en/technical-documentation/data-sheets/AD7171.pdf
-> > > -- AD7780:
-> > > -    * https://www.analog.com/media/en/technical-documentation/data-sheets/ad7780.pdf
-> > > -- AD7781:
-> > > -    * https://www.analog.com/media/en/technical-documentation/data-sheets/AD7781.pdf
-> > > -
-> > > -Required properties:
-> > > -
-> > > -- compatible: should be one of
-> > > -    * "adi,ad7170"
-> > > -    * "adi,ad7171"
-> > > -    * "adi,ad7780"
-> > > -    * "adi,ad7781"
-> > > -- reg: spi chip select number for the device
-> > > -- vref-supply: the regulator supply for the ADC reference voltage
-> > > -
-> > > -Optional properties:
-> > > -
-> > > -- powerdown-gpios:  must be the device tree identifier of the PDRST pin. If
-> > > -                specified, it will be asserted during driver probe. As the
-> > > -                line is active high, it should be marked GPIO_ACTIVE_HIGH.
-> > > -- adi,gain-gpios:   must be the device tree identifier of the GAIN pin. Only for
-> > > -                the ad778x chips. If specified, it will be asserted during
-> > > -                driver probe. As the line is active low, it should be marked
-> > > -                GPIO_ACTIVE_LOW.
-> > > -- adi,filter-gpios: must be the device tree identifier of the FILTER pin. Only
-> > > -                for the ad778x chips. If specified, it will be asserted
-> > > -                during driver probe. As the line is active low, it should be
-> > > -                marked GPIO_ACTIVE_LOW.
-> > > -
-> > > -Example:
-> > > -
-> > > -adc@0 {
-> > > -    compatible =  "adi,ad7780";
-> > > -    reg =         <0>;
-> > > -    vref-supply = <&vdd_supply>
-> > > -
-> > > -    powerdown-gpios  = <&gpio 12 GPIO_ACTIVE_HIGH>;
-> > > -    adi,gain-gpios   = <&gpio  5 GPIO_ACTIVE_LOW>;
-> > > -    adi,filter-gpios = <&gpio 15 GPIO_ACTIVE_LOW>;
-> > > -};
-> > > diff --git a/Documentation/devicetree/bindings/iio/adc/adi,ad7780.yaml
-> > > b/Documentation/devicetree/bindings/iio/adc/adi,ad7780.yaml
-> > > new file mode 100644
-> > > index 000000000000..d1109416963c
-> > > --- /dev/null
-> > > +++ b/Documentation/devicetree/bindings/iio/adc/adi,ad7780.yaml
-> > > @@ -0,0 +1,87 @@
-> > > +# SPDX-License-Identifier: GPL-2.0
-> > > +%YAML 1.2
-> > > +---
-> > > +$id: http://devicetree.org/schemas/iio/adc/adi,ad7780.yaml#
-> > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > > +
-> > > +title: Analog Devices AD7170/AD7171/AD7780/AD7781 analog to digital converters
-> > > +
-> > > +maintainers:
-> > > +  - Michael Hennerich <michael.hennerich@analog.com>
-> > > +
-> > > +description: |
-> > > +  The ad7780 is a sigma-delta analog to digital converter. This driver provides
-> > > +  reading voltage values and status bits from both the ad778x and ad717x series.
-> > > +  Its interface also allows writing on the FILTER and GAIN GPIO pins on the
-> > > +  ad778x.
-> > > +
-> > > +  Specifications on the converters can be found at:
-> > > +    AD7170:
-> > > +      https://www.analog.com/media/en/technical-documentation/data-sheets/AD7170.pdf
-> > > +    AD7171:
-> > > +      https://www.analog.com/media/en/technical-documentation/data-sheets/AD7171.pdf
-> > > +    AD7780:
-> > > +      https://www.analog.com/media/en/technical-documentation/data-sheets/ad7780.pdf
-> > > +    AD7781:
-> > > +      https://www.analog.com/media/en/technical-documentation/data-sheets/AD7781.pdf
-> > > +
-> > > +properties:
-> > > +  compatible:
-> > > +    enum:
-> > > +      - adi,ad7170
-> > > +      - adi,ad7171
-> > > +      - adi,ad7780
-> > > +      - adi,ad7781
-> > > +
-> > > +  reg:
-> > > +    maxItems: 1
-> > > +
-> > > +  avdd-supply:
-> > > +    description:
-> > > +      The regulator supply for the ADC reference voltage.
-> > > +    maxItems: 1
-> > > +
-> > > +  powerdown-gpios:
-> > > +    description:
-> > > +      Must be the device tree identifier of the PDRST pin. If
-> > > +      specified, it will be asserted during driver probe. As the
-> > > +      line is active high, it should be marked GPIO_ACTIVE_HIGH.
-> > > +    maxItems: 1
-> > > +
-> > > +  adi,gain-gpios:
-> > > +    description:
-> > > +      Must be the device tree identifier of the GAIN pin. Only for
-> > > +      the ad778x chips. If specified, it will be asserted during
-> > > +      driver probe. As the line is active low, it should be marked
-> > > +      GPIO_ACTIVE_LOW.
-> > > +    maxItems: 1
-> > > +
-> > > +  adi,filter-gpios:
-> > > +    description:
-> > > +      Must be the device tree identifier of the FILTER pin. Only
-> > > +      for the ad778x chips. If specified, it will be asserted
-> > > +      during driver probe. As the line is active low, it should be
-> > > +      marked GPIO_ACTIVE_LOW.
-> > > +    maxItems: 1
-> > > +
-> > > +required:
-> > > +  - compatible
-> > > +  - reg
-> > > +
-> > > +examples:
-> > > +  - |
-> > > +    #include <dt-bindings/gpio/gpio.h>
-> > > +    spi0 {
-> > > +        #address-cells = <1>;
-> > > +        #size-cells = <0>;
-> > > +
-> > > +        adc@0 {
-> > > +            compatible = "adi,ad7780";
-> > > +            reg = <0>;
-> > > +
-> > > +            avdd-supply      = <&vdd_supply>;
-> > > +            powerdown-gpios  = <&gpio0 12 GPIO_ACTIVE_HIGH>;
-> > > +            adi,gain-gpios   = <&gpio1  5 GPIO_ACTIVE_LOW>;
-> > > +            adi,filter-gpios = <&gpio2 15 GPIO_ACTIVE_LOW>;
-> > > +        };
-> > > +    };
+I don't have a problem with this patch but for the future these numbers
+don't add any value.  And the numbered out labels are sort of ugly.  The
+label name should say what the label does just like a function name says
+what the function does.  Really a lot of these comments in the probe
+function are very obvious and don't add information (delete them).
+
+
+   491          /*
+   492           * Step 9: Setup sysfs attributes
+   493           */
+   494          err =3D sysfs_create_files(&(pdev->dev.kobj), kp_attr_list);
+
+The comment is probably less informative than the code.
+
+   495          if (err) {
+   496                  dev_err(&pdev->dev, "Failed to add sysfs files: %d\=
+n", err);
+   497                  goto out9;
+
+What does goto out9 do?
+
+   498          }
+   499  =
+
+   500          /*
+   501           * Step 10: Probe cores
+   502           */
+   503          err =3D kp2000_probe_cores(pcard);
+   504          if (err)
+   505                  goto out10;
+
+Hopefully, goto out10 deletes the sysfs files but we don't know because
+the label doesn't give any clues away.  We have to search for it and
+then come back.
+
+   506  =
+
+   507          /*
+   508           * Step 12: Enable IRQs in HW
+   509           */
+   510          writel(KPC_DMA_CARD_IRQ_ENABLE | KPC_DMA_CARD_USER_INTERRUP=
+T_MODE,
+   511                 pcard->dma_common_regs);
+   512  =
+
+   513          dev_dbg(&pcard->pdev->dev, "kp2000_pcie_probe() complete!\n=
+");
+   514          mutex_unlock(&pcard->sem);
+   515          return 0;
+   516  =
+
+   517  out10:
+
+err_remove_sysfs:
+
+   518          sysfs_remove_files(&(pdev->dev.kobj), kp_attr_list);
+   519  out9:
+
+err_free_irq:
+
+   520          free_irq(pcard->pdev->irq, pcard);
+   521  out8b:
+
+err_disable_msi:
+
+   522          pci_disable_msi(pcard->pdev);
+   523  out8a:
+   524  out7:
+   525  out6:
+
+err_unmap_dma:
+
+   526          iounmap(pcard->dma_bar_base);
+   527          pci_release_region(pdev, DMA_BAR);
+   528          pcard->dma_bar_base =3D NULL;
+   529  out5:
+
+err_unmap_regs:
+
+   530          iounmap(pcard->regs_bar_base);
+   531          pci_release_region(pdev, REG_BAR);
+   532          pcard->regs_bar_base =3D NULL;
+
+Something like that is way more useful because then you don't have to
+scroll back and forth because new the label names are useful.
+
+regards,
+dan carpenter
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
