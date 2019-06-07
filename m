@@ -2,78 +2,79 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BDD3D383E3
-	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Jun 2019 07:52:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 40E70383E5
+	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Jun 2019 07:52:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id DB579204CA;
-	Fri,  7 Jun 2019 05:52:32 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 91CD42046E;
+	Fri,  7 Jun 2019 05:52:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id J-pR3LgjHdUi; Fri,  7 Jun 2019 05:52:32 +0000 (UTC)
+	with ESMTP id m4bY25qqZ7OL; Fri,  7 Jun 2019 05:52:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E798E2036E;
-	Fri,  7 Jun 2019 05:52:30 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id EB3B92044C;
+	Fri,  7 Jun 2019 05:52:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 98E081BF2C1
- for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 05:52:26 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B036A1BF2C1
+ for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 05:52:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 92327861A3
- for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 05:52:26 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id AD7E52036E
+ for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 05:52:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id S2oz7r5g8KOi for <devel@linuxdriverproject.org>;
- Fri,  7 Jun 2019 05:52:25 +0000 (UTC)
+ with ESMTP id M90XDCQ50FkU for <devel@linuxdriverproject.org>;
+ Fri,  7 Jun 2019 05:52:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f193.google.com (mail-pl1-f193.google.com
- [209.85.214.193])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D575C86194
- for <devel@driverdev.osuosl.org>; Fri,  7 Jun 2019 05:52:25 +0000 (UTC)
-Received: by mail-pl1-f193.google.com with SMTP id a93so386851pla.7
- for <devel@driverdev.osuosl.org>; Thu, 06 Jun 2019 22:52:25 -0700 (PDT)
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id 4AFDF20356
+ for <devel@driverdev.osuosl.org>; Fri,  7 Jun 2019 05:52:35 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id 81so527709pfy.13
+ for <devel@driverdev.osuosl.org>; Thu, 06 Jun 2019 22:52:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=0FoiuBjLg1UBbIKZrQJR0cHIwrk4ez4qkdIgo7/m+JI=;
- b=lCAa2tBOhvpvbHKQYVJJK9xdcKBZQ8w0bMYmxLKz9SmQQOYD/UVsVinvz+wuS5OwWy
- 0Z/ARsfeteZO1VqgPrbTGBV7MP6cu/SnZkB9WXxlWba5dmXb+npC2d5dwKUlOqF6uY6c
- sWl19LxFkxSWnTpDfAL+ScicQNYwxjuL9jgxEAbKin06N/xYXYxq3+g9DBEvGhGkqCdO
- PaQl+ECh152rUPE9ouoh0G6KeHdKliIWH6oBUuwRLLap4A+Rw+TpN2OlEnj4M7usM67s
- euONSZS/7durJ+8nBsj4fVzC6IxqwSlOJtFY2/PFmpwlJsPp37CEefIGWlqRRSiFbZ6N
- Pdkw==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=CmFqEcJ3VNaj9ijKAKVAqwYyQZzMZfiX/GyQUpT57+o=;
+ b=lS/cbBKY+juSQwYNlefp5BGY1yMcvRTiEXjA4pofzJW7Zxz27IfgSt0B/PIN5Sy1p3
+ D1ckVjciYVf/Wba8neZ7il2ahHIIf5nr2GFohyeAc8CzCG9MDx1aYun2MUiMFP8iDPQO
+ vAIzjxzRikdoQi+EYBozcHcuV7zFs4sVwsPGpBwuXmAgAPy6Q01N1a38cyS5kgGc60Ig
+ 8EHAsxhcb+L8aE0wlMe0tBm62NclFEGVQ2xq6RM6TTzAh3vof5QtQbXhs90YedVvhFV9
+ txo9t1mm1sO48D/Zu7ZHwumydtlZIlK+XFLTrUILqW7vgbeV2jSZbtrEDPml4oxnA2Jl
+ esjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=0FoiuBjLg1UBbIKZrQJR0cHIwrk4ez4qkdIgo7/m+JI=;
- b=bv+FP8xk45IigoVPuHp4lhRezLagz6gfadkFO0A/hcv/VYJqShfqbRe33pjGvuBx5Z
- 9MSkGg6pnThpL5xyGal6OJuM9EF2V709mWrKrQWj1FpYv/+7M0BHauwsJcLG+PeeYvPG
- BYiq/yZLdavSoWEWb1g8NeXozaSn+3N5fvQ3+ClYBvFSCn7VQDf9XZLxeDuzubgJzdoY
- 6giyhHrqfi+7mHVCecgZZsCKUBh3X1psGKyBLO/+HgtO3jqZI7kmkNQmrYK6xx4h5RAh
- zswpcAJ4frxGz0wDHYRrIL0Gkn+/e58ec6jAetRBrFd9jenHgC+NcDLZ2wMIOn5275SD
- c8pQ==
-X-Gm-Message-State: APjAAAUdbckeCNK9Pnf6KQ3OQLqBjR7fsTdAWJ1si8RDWXjprZptaSVQ
- 4d4MQz+sX4UxBb2xskqr/uc=
-X-Google-Smtp-Source: APXvYqynylZyHUR6Qr9SPx3GANNBO4MfRAuEkVYeOLLJhjRzqva3Ms99Qt92YE9aw3mRVmTfj6oqLw==
-X-Received: by 2002:a17:902:6bcb:: with SMTP id
- m11mr27545267plt.318.1559886745565; 
- Thu, 06 Jun 2019 22:52:25 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=CmFqEcJ3VNaj9ijKAKVAqwYyQZzMZfiX/GyQUpT57+o=;
+ b=kcSFnPesCj0UPlKpuPjnWWsrdlZXL5y9VMJpMnI8fVydljHotFr6Jy+S4RJYbWNYoW
+ CvuZgewqSIMicxD2dNyvKnCru2WPDUACfL7FkoU24HQ9RwOBrodXyIoPyX0OkItAnz29
+ aoHMal+UW/fdWQhcbMWsIrJDof8sqVlaFWg7apPbdCzzIYeSU2UYa04E7LjYwKWStaZH
+ 4A9UlP1LoTTb2J/xv+cp7awnz7EpWsw3srLXNAGlKt2nBRMj3i01X3p9dSSG927+2XjD
+ aSGN7wNeTbMfKxD5e196vbiTvcfk+5IrMVgYVFLC48ePC1O3BxK+P/4J51np5rpHSIUr
+ DQ1A==
+X-Gm-Message-State: APjAAAUEtEBw5FU2SYn4Ld/7Gd1LsH8gFi9yzDxmG+lgzkci9DWgwCiD
+ IeejbMI6vT/YSgNG7BWfL98vE2gT
+X-Google-Smtp-Source: APXvYqzjY1stl/jV0RrG2iweKYKkCUns9qBVSUq7wSNzWpKgi1Nna7KarneX2XoPyCND2AY2Opjyvg==
+X-Received: by 2002:a65:64d9:: with SMTP id t25mr1305990pgv.130.1559886754882; 
+ Thu, 06 Jun 2019 22:52:34 -0700 (PDT)
 Received: from localhost.localdomain ([110.227.95.145])
- by smtp.gmail.com with ESMTPSA id d9sm861740pgl.20.2019.06.06.22.52.22
+ by smtp.gmail.com with ESMTPSA id d9sm861740pgl.20.2019.06.06.22.52.32
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Thu, 06 Jun 2019 22:52:24 -0700 (PDT)
+ Thu, 06 Jun 2019 22:52:34 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: larry.finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
  gregkh@linuxfoundation.org, straube.linux@gmail.com,
  devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 1/3] staging: rtl8712: xmit_linux.c: Remove leading p from
+Subject: [PATCH 2/3] staging: rtl8712: usb_ops.c: Remove leading p from
  variable names
-Date: Fri,  7 Jun 2019 11:22:06 +0530
-Message-Id: <20190607055209.20954-1-nishkadg.linux@gmail.com>
+Date: Fri,  7 Jun 2019 11:22:08 +0530
+Message-Id: <20190607055209.20954-3-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
+In-Reply-To: <20190607055209.20954-1-nishkadg.linux@gmail.com>
+References: <20190607055209.20954-1-nishkadg.linux@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -93,106 +94,220 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove leading p from the names of the following pointer variables:
-- padapter
-- pxmitpriv
-- pnetdev
-- pxmitframe.
+Remove leading 'p' from the names of the following pointer variables:
+- pintfhdl
+- pintf_hdl (renamed to intfhdl in keeping with the convention in other
+functions)
+- poption
+- pops
+- pintfpriv.
 Issue found with Coccinelle.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/rtl8712/xmit_linux.c | 50 ++++++++++++++--------------
- 1 file changed, 25 insertions(+), 25 deletions(-)
+ drivers/staging/rtl8712/usb_ops.c | 84 +++++++++++++++----------------
+ 1 file changed, 42 insertions(+), 42 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/xmit_linux.c b/drivers/staging/rtl8712/xmit_linux.c
-index 8bcb0775411f..223a4eba4bf4 100644
---- a/drivers/staging/rtl8712/xmit_linux.c
-+++ b/drivers/staging/rtl8712/xmit_linux.c
-@@ -93,22 +93,22 @@ void r8712_set_qos(struct pkt_file *ppktfile, struct pkt_attrib *pattrib)
+diff --git a/drivers/staging/rtl8712/usb_ops.c b/drivers/staging/rtl8712/usb_ops.c
+index eef52d5c730a..e64845e6adf3 100644
+--- a/drivers/staging/rtl8712/usb_ops.c
++++ b/drivers/staging/rtl8712/usb_ops.c
+@@ -22,7 +22,7 @@
+ #include "usb_ops.h"
+ #include "recv_osdep.h"
  
- void r8712_SetFilter(struct work_struct *work)
+-static u8 usb_read8(struct intf_hdl *pintfhdl, u32 addr)
++static u8 usb_read8(struct intf_hdl *intfhdl, u32 addr)
  {
--	struct _adapter *padapter = container_of(work, struct _adapter,
-+	struct _adapter *adapter = container_of(work, struct _adapter,
- 						wkFilterRxFF0);
- 	u8  oldvalue = 0x00, newvalue = 0x00;
- 	unsigned long irqL;
+ 	u8 request;
+ 	u8 requesttype;
+@@ -30,19 +30,19 @@ static u8 usb_read8(struct intf_hdl *pintfhdl, u32 addr)
+ 	u16 index;
+ 	u16 len;
+ 	__le32 data;
+-	struct intf_priv *pintfpriv = pintfhdl->pintfpriv;
++	struct intf_priv *intfpriv = intfhdl->pintfpriv;
  
--	oldvalue = r8712_read8(padapter, 0x117);
-+	oldvalue = r8712_read8(adapter, 0x117);
- 	newvalue = oldvalue & 0xfe;
--	r8712_write8(padapter, 0x117, newvalue);
-+	r8712_write8(adapter, 0x117, newvalue);
- 
--	spin_lock_irqsave(&padapter->lockRxFF0Filter, irqL);
--	padapter->blnEnableRxFF0Filter = 1;
--	spin_unlock_irqrestore(&padapter->lockRxFF0Filter, irqL);
-+	spin_lock_irqsave(&adapter->lockRxFF0Filter, irqL);
-+	adapter->blnEnableRxFF0Filter = 1;
-+	spin_unlock_irqrestore(&adapter->lockRxFF0Filter, irqL);
- 	do {
- 		msleep(100);
--	} while (padapter->blnEnableRxFF0Filter == 1);
--	r8712_write8(padapter, 0x117, oldvalue);
-+	} while (adapter->blnEnableRxFF0Filter == 1);
-+	r8712_write8(adapter, 0x117, oldvalue);
+ 	request = 0x05;
+ 	requesttype = 0x01; /* read_in */
+ 	index = 0;
+ 	wvalue = (u16)(addr & 0x0000ffff);
+ 	len = 1;
+-	r8712_usbctrl_vendorreq(pintfpriv, request, wvalue, index, &data, len,
+-			  requesttype);
++	r8712_usbctrl_vendorreq(intfpriv, request, wvalue, index, &data, len,
++				requesttype);
+ 	return (u8)(le32_to_cpu(data) & 0x0ff);
  }
  
- int r8712_xmit_resource_alloc(struct _adapter *padapter,
-@@ -147,36 +147,36 @@ void r8712_xmit_complete(struct _adapter *padapter, struct xmit_frame *pxframe)
- 	pxframe->pkt = NULL;
+-static u16 usb_read16(struct intf_hdl *pintfhdl, u32 addr)
++static u16 usb_read16(struct intf_hdl *intfhdl, u32 addr)
+ {
+ 	u8 request;
+ 	u8 requesttype;
+@@ -50,19 +50,19 @@ static u16 usb_read16(struct intf_hdl *pintfhdl, u32 addr)
+ 	u16 index;
+ 	u16 len;
+ 	__le32 data;
+-	struct intf_priv *pintfpriv = pintfhdl->pintfpriv;
++	struct intf_priv *intfpriv = intfhdl->pintfpriv;
+ 
+ 	request = 0x05;
+ 	requesttype = 0x01; /* read_in */
+ 	index = 0;
+ 	wvalue = (u16)(addr & 0x0000ffff);
+ 	len = 2;
+-	r8712_usbctrl_vendorreq(pintfpriv, request, wvalue, index, &data, len,
+-			  requesttype);
++	r8712_usbctrl_vendorreq(intfpriv, request, wvalue, index, &data, len,
++				requesttype);
+ 	return (u16)(le32_to_cpu(data) & 0xffff);
  }
  
--int r8712_xmit_entry(_pkt *pkt, struct  net_device *pnetdev)
-+int r8712_xmit_entry(_pkt *pkt, struct  net_device *netdev)
+-static u32 usb_read32(struct intf_hdl *pintfhdl, u32 addr)
++static u32 usb_read32(struct intf_hdl *intfhdl, u32 addr)
  {
--	struct xmit_frame *pxmitframe = NULL;
--	struct _adapter *padapter = netdev_priv(pnetdev);
--	struct xmit_priv *pxmitpriv = &(padapter->xmitpriv);
-+	struct xmit_frame *xmitframe = NULL;
-+	struct _adapter *adapter = netdev_priv(netdev);
-+	struct xmit_priv *xmitpriv = &(adapter->xmitpriv);
+ 	u8 request;
+ 	u8 requesttype;
+@@ -70,19 +70,19 @@ static u32 usb_read32(struct intf_hdl *pintfhdl, u32 addr)
+ 	u16 index;
+ 	u16 len;
+ 	__le32 data;
+-	struct intf_priv *pintfpriv = pintfhdl->pintfpriv;
++	struct intf_priv *intfpriv = intfhdl->pintfpriv;
  
--	if (!r8712_if_up(padapter))
-+	if (!r8712_if_up(adapter))
- 		goto _xmit_entry_drop;
+ 	request = 0x05;
+ 	requesttype = 0x01; /* read_in */
+ 	index = 0;
+ 	wvalue = (u16)(addr & 0x0000ffff);
+ 	len = 4;
+-	r8712_usbctrl_vendorreq(pintfpriv, request, wvalue, index, &data, len,
+-			  requesttype);
++	r8712_usbctrl_vendorreq(intfpriv, request, wvalue, index, &data, len,
++				requesttype);
+ 	return le32_to_cpu(data);
+ }
  
--	pxmitframe = r8712_alloc_xmitframe(pxmitpriv);
--	if (!pxmitframe)
-+	xmitframe = r8712_alloc_xmitframe(xmitpriv);
-+	if (!xmitframe)
- 		goto _xmit_entry_drop;
+-static void usb_write8(struct intf_hdl *pintfhdl, u32 addr, u8 val)
++static void usb_write8(struct intf_hdl *intfhdl, u32 addr, u8 val)
+ {
+ 	u8 request;
+ 	u8 requesttype;
+@@ -90,7 +90,7 @@ static void usb_write8(struct intf_hdl *pintfhdl, u32 addr, u8 val)
+ 	u16 index;
+ 	u16 len;
+ 	__le32 data;
+-	struct intf_priv *pintfpriv = pintfhdl->pintfpriv;
++	struct intf_priv *intfpriv = intfhdl->pintfpriv;
  
--	if ((!r8712_update_attrib(padapter, pkt, &pxmitframe->attrib)))
-+	if ((!r8712_update_attrib(adapter, pkt, &xmitframe->attrib)))
- 		goto _xmit_entry_drop;
+ 	request = 0x05;
+ 	requesttype = 0x00; /* write_out */
+@@ -98,11 +98,11 @@ static void usb_write8(struct intf_hdl *pintfhdl, u32 addr, u8 val)
+ 	wvalue = (u16)(addr & 0x0000ffff);
+ 	len = 1;
+ 	data = cpu_to_le32((u32)val & 0x000000ff);
+-	r8712_usbctrl_vendorreq(pintfpriv, request, wvalue, index, &data, len,
+-			  requesttype);
++	r8712_usbctrl_vendorreq(intfpriv, request, wvalue, index, &data, len,
++				requesttype);
+ }
  
--	padapter->ledpriv.LedControlHandler(padapter, LED_CTL_TX);
--	pxmitframe->pkt = pkt;
--	if (r8712_pre_xmit(padapter, pxmitframe)) {
-+	adapter->ledpriv.LedControlHandler(adapter, LED_CTL_TX);
-+	xmitframe->pkt = pkt;
-+	if (r8712_pre_xmit(adapter, xmitframe)) {
- 		/*dump xmitframe directly or drop xframe*/
- 		dev_kfree_skb_any(pkt);
--		pxmitframe->pkt = NULL;
-+		xmitframe->pkt = NULL;
- 	}
--	pxmitpriv->tx_pkts++;
--	pxmitpriv->tx_bytes += pxmitframe->attrib.last_txcmdsz;
-+	xmitpriv->tx_pkts++;
-+	xmitpriv->tx_bytes += xmitframe->attrib.last_txcmdsz;
- 	return 0;
- _xmit_entry_drop:
--	if (pxmitframe)
--		r8712_free_xmitframe(pxmitpriv, pxmitframe);
--	pxmitpriv->tx_drop++;
-+	if (xmitframe)
-+		r8712_free_xmitframe(xmitpriv, xmitframe);
-+	xmitpriv->tx_drop++;
- 	dev_kfree_skb_any(pkt);
- 	return 0;
+-static void usb_write16(struct intf_hdl *pintfhdl, u32 addr, u16 val)
++static void usb_write16(struct intf_hdl *intfhdl, u32 addr, u16 val)
+ {
+ 	u8 request;
+ 	u8 requesttype;
+@@ -110,7 +110,7 @@ static void usb_write16(struct intf_hdl *pintfhdl, u32 addr, u16 val)
+ 	u16 index;
+ 	u16 len;
+ 	__le32 data;
+-	struct intf_priv *pintfpriv = pintfhdl->pintfpriv;
++	struct intf_priv *intfpriv = intfhdl->pintfpriv;
+ 
+ 	request = 0x05;
+ 	requesttype = 0x00; /* write_out */
+@@ -118,11 +118,11 @@ static void usb_write16(struct intf_hdl *pintfhdl, u32 addr, u16 val)
+ 	wvalue = (u16)(addr & 0x0000ffff);
+ 	len = 2;
+ 	data = cpu_to_le32((u32)val & 0x0000ffff);
+-	r8712_usbctrl_vendorreq(pintfpriv, request, wvalue, index, &data, len,
+-			  requesttype);
++	r8712_usbctrl_vendorreq(intfpriv, request, wvalue, index, &data, len,
++				requesttype);
+ }
+ 
+-static void usb_write32(struct intf_hdl *pintfhdl, u32 addr, u32 val)
++static void usb_write32(struct intf_hdl *intfhdl, u32 addr, u32 val)
+ {
+ 	u8 request;
+ 	u8 requesttype;
+@@ -130,7 +130,7 @@ static void usb_write32(struct intf_hdl *pintfhdl, u32 addr, u32 val)
+ 	u16 index;
+ 	u16 len;
+ 	__le32 data;
+-	struct intf_priv *pintfpriv = pintfhdl->pintfpriv;
++	struct intf_priv *intfpriv = intfhdl->pintfpriv;
+ 
+ 	request = 0x05;
+ 	requesttype = 0x00; /* write_out */
+@@ -138,13 +138,13 @@ static void usb_write32(struct intf_hdl *pintfhdl, u32 addr, u32 val)
+ 	wvalue = (u16)(addr & 0x0000ffff);
+ 	len = 4;
+ 	data = cpu_to_le32(val);
+-	r8712_usbctrl_vendorreq(pintfpriv, request, wvalue, index, &data, len,
+-			  requesttype);
++	r8712_usbctrl_vendorreq(intfpriv, request, wvalue, index, &data, len,
++				requesttype);
+ }
+ 
+-void r8712_usb_set_intf_option(u32 *poption)
++void r8712_usb_set_intf_option(u32 *option)
+ {
+-	*poption = ((*poption) | _INTF_ASYNC_);
++	*option = ((*option) | _INTF_ASYNC_);
+ }
+ 
+ static void usb_intf_hdl_init(u8 *priv)
+@@ -163,24 +163,24 @@ static void usb_intf_hdl_close(u8 *priv)
+ {
+ }
+ 
+-void r8712_usb_set_intf_funs(struct intf_hdl *pintf_hdl)
++void r8712_usb_set_intf_funs(struct intf_hdl *intfhdl)
+ {
+-	pintf_hdl->intf_hdl_init = usb_intf_hdl_init;
+-	pintf_hdl->intf_hdl_unload = usb_intf_hdl_unload;
+-	pintf_hdl->intf_hdl_open = usb_intf_hdl_open;
+-	pintf_hdl->intf_hdl_close = usb_intf_hdl_close;
++	intfhdl->intf_hdl_init = usb_intf_hdl_init;
++	intfhdl->intf_hdl_unload = usb_intf_hdl_unload;
++	intfhdl->intf_hdl_open = usb_intf_hdl_open;
++	intfhdl->intf_hdl_close = usb_intf_hdl_close;
+ }
+ 
+-void r8712_usb_set_intf_ops(struct _io_ops	*pops)
++void r8712_usb_set_intf_ops(struct _io_ops *ops)
+ {
+-	memset((u8 *)pops, 0, sizeof(struct _io_ops));
+-	pops->_read8 = usb_read8;
+-	pops->_read16 = usb_read16;
+-	pops->_read32 = usb_read32;
+-	pops->_read_port = r8712_usb_read_port;
+-	pops->_write8 = usb_write8;
+-	pops->_write16 = usb_write16;
+-	pops->_write32 = usb_write32;
+-	pops->_write_mem = r8712_usb_write_mem;
+-	pops->_write_port = r8712_usb_write_port;
++	memset((u8 *)ops, 0, sizeof(struct _io_ops));
++	ops->_read8 = usb_read8;
++	ops->_read16 = usb_read16;
++	ops->_read32 = usb_read32;
++	ops->_read_port = r8712_usb_read_port;
++	ops->_write8 = usb_write8;
++	ops->_write16 = usb_write16;
++	ops->_write32 = usb_write32;
++	ops->_write_mem = r8712_usb_write_mem;
++	ops->_write_port = r8712_usb_write_port;
  }
 -- 
 2.19.1
