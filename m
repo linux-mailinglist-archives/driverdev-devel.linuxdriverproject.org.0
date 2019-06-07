@@ -1,77 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 40E70383E5
-	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Jun 2019 07:52:41 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A428D383EC
+	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Jun 2019 07:52:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 91CD42046E;
-	Fri,  7 Jun 2019 05:52:39 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CAD0386A26;
+	Fri,  7 Jun 2019 05:52:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id m4bY25qqZ7OL; Fri,  7 Jun 2019 05:52:39 +0000 (UTC)
+	with ESMTP id 8c1k0HzVyJnH; Fri,  7 Jun 2019 05:52:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id EB3B92044C;
-	Fri,  7 Jun 2019 05:52:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CE9EF8693D;
+	Fri,  7 Jun 2019 05:52:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B036A1BF2C1
- for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 05:52:36 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3631E1BF2C1
+ for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 05:52:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id AD7E52036E
- for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 05:52:36 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 335D3861A3
+ for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 05:52:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id M90XDCQ50FkU for <devel@linuxdriverproject.org>;
- Fri,  7 Jun 2019 05:52:35 +0000 (UTC)
+ with ESMTP id 4lmhvWjh2dWL for <devel@linuxdriverproject.org>;
+ Fri,  7 Jun 2019 05:52:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
- [209.85.210.196])
- by silver.osuosl.org (Postfix) with ESMTPS id 4AFDF20356
- for <devel@driverdev.osuosl.org>; Fri,  7 Jun 2019 05:52:35 +0000 (UTC)
-Received: by mail-pf1-f196.google.com with SMTP id 81so527709pfy.13
- for <devel@driverdev.osuosl.org>; Thu, 06 Jun 2019 22:52:35 -0700 (PDT)
+Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
+ [209.85.210.193])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id CB4C586194
+ for <devel@driverdev.osuosl.org>; Fri,  7 Jun 2019 05:52:40 +0000 (UTC)
+Received: by mail-pf1-f193.google.com with SMTP id m30so30482pff.8
+ for <devel@driverdev.osuosl.org>; Thu, 06 Jun 2019 22:52:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=CmFqEcJ3VNaj9ijKAKVAqwYyQZzMZfiX/GyQUpT57+o=;
- b=lS/cbBKY+juSQwYNlefp5BGY1yMcvRTiEXjA4pofzJW7Zxz27IfgSt0B/PIN5Sy1p3
- D1ckVjciYVf/Wba8neZ7il2ahHIIf5nr2GFohyeAc8CzCG9MDx1aYun2MUiMFP8iDPQO
- vAIzjxzRikdoQi+EYBozcHcuV7zFs4sVwsPGpBwuXmAgAPy6Q01N1a38cyS5kgGc60Ig
- 8EHAsxhcb+L8aE0wlMe0tBm62NclFEGVQ2xq6RM6TTzAh3vof5QtQbXhs90YedVvhFV9
- txo9t1mm1sO48D/Zu7ZHwumydtlZIlK+XFLTrUILqW7vgbeV2jSZbtrEDPml4oxnA2Jl
- esjA==
+ bh=qhiwKWVpErEOicj2+HYTIqwvheWT0F6BKl1sqQ0pm9E=;
+ b=ofjDY2J6BOmrpJwAcjCd/GVYIzWyU0Kmhmcmfh6Qrw4dx27su/ucFvekUt3FfXcQId
+ A7dRKrCFIyeueFXL6HTqz8cQ+rHiv+oCUAMICZina4pzB/FnMZyUZx6qeU8FBvmZs0NN
+ 0YNiG37l2HC6eWlTZAydI+wNpluzxjIvCyqsf4mdZw9/52MLVstGcFZracAsA0R3zIc8
+ NAekqyLO4DuQcwAv/X1IWQUWPBpaFPbSoRYkCwvxAkD2SbjPAIm+anEttH+NwfP/+aNZ
+ y8cquzJuw9cvEEOIjPzKYGRIvf/1cxthB03KZWmZpT6LpYBpYZiQrfcoeRIe5RBLxCGD
+ tAIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=CmFqEcJ3VNaj9ijKAKVAqwYyQZzMZfiX/GyQUpT57+o=;
- b=kcSFnPesCj0UPlKpuPjnWWsrdlZXL5y9VMJpMnI8fVydljHotFr6Jy+S4RJYbWNYoW
- CvuZgewqSIMicxD2dNyvKnCru2WPDUACfL7FkoU24HQ9RwOBrodXyIoPyX0OkItAnz29
- aoHMal+UW/fdWQhcbMWsIrJDof8sqVlaFWg7apPbdCzzIYeSU2UYa04E7LjYwKWStaZH
- 4A9UlP1LoTTb2J/xv+cp7awnz7EpWsw3srLXNAGlKt2nBRMj3i01X3p9dSSG927+2XjD
- aSGN7wNeTbMfKxD5e196vbiTvcfk+5IrMVgYVFLC48ePC1O3BxK+P/4J51np5rpHSIUr
- DQ1A==
-X-Gm-Message-State: APjAAAUEtEBw5FU2SYn4Ld/7Gd1LsH8gFi9yzDxmG+lgzkci9DWgwCiD
- IeejbMI6vT/YSgNG7BWfL98vE2gT
-X-Google-Smtp-Source: APXvYqzjY1stl/jV0RrG2iweKYKkCUns9qBVSUq7wSNzWpKgi1Nna7KarneX2XoPyCND2AY2Opjyvg==
-X-Received: by 2002:a65:64d9:: with SMTP id t25mr1305990pgv.130.1559886754882; 
- Thu, 06 Jun 2019 22:52:34 -0700 (PDT)
+ bh=qhiwKWVpErEOicj2+HYTIqwvheWT0F6BKl1sqQ0pm9E=;
+ b=TsFN4fREDrxxyLxVOjRlApcT0tSvxIKbP0dQxBzRKfsAjMZeSr5tvDWo5+gPlieUiV
+ 5kbojl6W9jFy/kn8bgd/KQnww5qPn0VfANU/3Z8R+rgT+/Jh5Pst+zX2PqA0zty/Fo2b
+ xF/Jt/6cJ/orq7LVgOwTCP5ysAoisk9J2D5KQ2VHOuuEm4n4iDFFkAgq6fd2hE2l7Fo4
+ a0U5cWzg89xwZVoLfNsC6HgbU9h0aUPw82ndR+/cx0ALVsdAHRLxDKMHaR3sc8Um3wtG
+ wXwWvFOI8ATxPhSPpJUiuiauxRwcNFfRlntCARm1Jh/E/gUS9bO92kF/HoN4hLwUyCXD
+ casQ==
+X-Gm-Message-State: APjAAAV0G9GRICxpR3IwIJxrmSOdxv060kpguS1JA1FIesiU+JmBLXwT
+ emZn9bofzcNWGDlN/UFPKMw=
+X-Google-Smtp-Source: APXvYqwhnpetVWp399Xknzm3Shdp9ZTLO2dc37flKGXGea96dk4alPGLEllQ1Wls28ePPxYAuqZIGA==
+X-Received: by 2002:a63:6fce:: with SMTP id k197mr1313914pgc.140.1559886759958; 
+ Thu, 06 Jun 2019 22:52:39 -0700 (PDT)
 Received: from localhost.localdomain ([110.227.95.145])
- by smtp.gmail.com with ESMTPSA id d9sm861740pgl.20.2019.06.06.22.52.32
+ by smtp.gmail.com with ESMTPSA id d9sm861740pgl.20.2019.06.06.22.52.36
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Thu, 06 Jun 2019 22:52:34 -0700 (PDT)
+ Thu, 06 Jun 2019 22:52:39 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: larry.finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
  gregkh@linuxfoundation.org, straube.linux@gmail.com,
  devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 2/3] staging: rtl8712: usb_ops.c: Remove leading p from
- variable names
-Date: Fri,  7 Jun 2019 11:22:08 +0530
-Message-Id: <20190607055209.20954-3-nishkadg.linux@gmail.com>
+Subject: [PATCH 3/3] staging: rtl8712: usb_halinit.c: Remove p from variable
+ names
+Date: Fri,  7 Jun 2019 11:22:09 +0530
+Message-Id: <20190607055209.20954-4-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190607055209.20954-1-nishkadg.linux@gmail.com>
 References: <20190607055209.20954-1-nishkadg.linux@gmail.com>
@@ -95,219 +95,453 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 Remove leading 'p' from the names of the following pointer variables:
-- pintfhdl
-- pintf_hdl (renamed to intfhdl in keeping with the convention in other
-functions)
-- poption
-- pops
-- pintfpriv.
+    - padapter
+    - precvbuf
+    - pintfhdl
+    - pregistrypriv
+    - precvpriv.
 Issue found with Coccinelle.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/rtl8712/usb_ops.c | 84 +++++++++++++++----------------
- 1 file changed, 42 insertions(+), 42 deletions(-)
+ drivers/staging/rtl8712/usb_halinit.c | 288 +++++++++++++-------------
+ 1 file changed, 144 insertions(+), 144 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/usb_ops.c b/drivers/staging/rtl8712/usb_ops.c
-index eef52d5c730a..e64845e6adf3 100644
---- a/drivers/staging/rtl8712/usb_ops.c
-+++ b/drivers/staging/rtl8712/usb_ops.c
-@@ -22,7 +22,7 @@
+diff --git a/drivers/staging/rtl8712/usb_halinit.c b/drivers/staging/rtl8712/usb_halinit.c
+index 02e73c2412d4..6cc4a704c3a0 100644
+--- a/drivers/staging/rtl8712/usb_halinit.c
++++ b/drivers/staging/rtl8712/usb_halinit.c
+@@ -21,258 +21,258 @@
  #include "usb_ops.h"
- #include "recv_osdep.h"
+ #include "usb_osintf.h"
  
--static u8 usb_read8(struct intf_hdl *pintfhdl, u32 addr)
-+static u8 usb_read8(struct intf_hdl *intfhdl, u32 addr)
+-u8 r8712_usb_hal_bus_init(struct _adapter *padapter)
++u8 r8712_usb_hal_bus_init(struct _adapter *adapter)
  {
- 	u8 request;
- 	u8 requesttype;
-@@ -30,19 +30,19 @@ static u8 usb_read8(struct intf_hdl *pintfhdl, u32 addr)
- 	u16 index;
- 	u16 len;
- 	__le32 data;
--	struct intf_priv *pintfpriv = pintfhdl->pintfpriv;
-+	struct intf_priv *intfpriv = intfhdl->pintfpriv;
+ 	u8 val8 = 0;
+ 	u8 ret = _SUCCESS;
+ 	int PollingCnt = 20;
+-	struct registry_priv *pregistrypriv = &padapter->registrypriv;
++	struct registry_priv *registrypriv = &adapter->registrypriv;
  
- 	request = 0x05;
- 	requesttype = 0x01; /* read_in */
- 	index = 0;
- 	wvalue = (u16)(addr & 0x0000ffff);
- 	len = 1;
--	r8712_usbctrl_vendorreq(pintfpriv, request, wvalue, index, &data, len,
--			  requesttype);
-+	r8712_usbctrl_vendorreq(intfpriv, request, wvalue, index, &data, len,
-+				requesttype);
- 	return (u8)(le32_to_cpu(data) & 0x0ff);
+-	if (pregistrypriv->chip_version == RTL8712_FPGA) {
++	if (registrypriv->chip_version == RTL8712_FPGA) {
+ 		val8 = 0x01;
+ 		/* switch to 80M clock */
+-		r8712_write8(padapter, SYS_CLKR, val8);
+-		val8 = r8712_read8(padapter, SPS1_CTRL);
++		r8712_write8(adapter, SYS_CLKR, val8);
++		val8 = r8712_read8(adapter, SPS1_CTRL);
+ 		val8 = val8 | 0x01;
+ 		/* enable VSPS12 LDO Macro block */
+-		r8712_write8(padapter, SPS1_CTRL, val8);
+-		val8 = r8712_read8(padapter, AFE_MISC);
++		r8712_write8(adapter, SPS1_CTRL, val8);
++		val8 = r8712_read8(adapter, AFE_MISC);
+ 		val8 = val8 | 0x01;
+ 		/* Enable AFE Macro Block's Bandgap */
+-		r8712_write8(padapter, AFE_MISC, val8);
+-		val8 = r8712_read8(padapter, LDOA15_CTRL);
++		r8712_write8(adapter, AFE_MISC, val8);
++		val8 = r8712_read8(adapter, LDOA15_CTRL);
+ 		val8 = val8 | 0x01;
+ 		/* enable LDOA15 block */
+-		r8712_write8(padapter, LDOA15_CTRL, val8);
+-		val8 = r8712_read8(padapter, SPS1_CTRL);
++		r8712_write8(adapter, LDOA15_CTRL, val8);
++		val8 = r8712_read8(adapter, SPS1_CTRL);
+ 		val8 = val8 | 0x02;
+ 		/* Enable VSPS12_SW Macro Block */
+-		r8712_write8(padapter, SPS1_CTRL, val8);
+-		val8 = r8712_read8(padapter, AFE_MISC);
++		r8712_write8(adapter, SPS1_CTRL, val8);
++		val8 = r8712_read8(adapter, AFE_MISC);
+ 		val8 = val8 | 0x02;
+ 		/* Enable AFE Macro Block's Mbias */
+-		r8712_write8(padapter, AFE_MISC, val8);
+-		val8 = r8712_read8(padapter, SYS_ISO_CTRL + 1);
++		r8712_write8(adapter, AFE_MISC, val8);
++		val8 = r8712_read8(adapter, SYS_ISO_CTRL + 1);
+ 		val8 = val8 | 0x08;
+ 		/* isolate PCIe Analog 1.2V to PCIe 3.3V and PCIE Digital */
+-		r8712_write8(padapter, SYS_ISO_CTRL + 1, val8);
+-		val8 = r8712_read8(padapter, SYS_ISO_CTRL + 1);
++		r8712_write8(adapter, SYS_ISO_CTRL + 1, val8);
++		val8 = r8712_read8(adapter, SYS_ISO_CTRL + 1);
+ 		val8 = val8 & 0xEF;
+ 		/* attatch AFE PLL to MACTOP/BB/PCIe Digital */
+-		r8712_write8(padapter, SYS_ISO_CTRL + 1, val8);
+-		val8 = r8712_read8(padapter, AFE_XTAL_CTRL + 1);
++		r8712_write8(adapter, SYS_ISO_CTRL + 1, val8);
++		val8 = r8712_read8(adapter, AFE_XTAL_CTRL + 1);
+ 		val8 = val8 & 0xFB;
+ 		/* enable AFE clock */
+-		r8712_write8(padapter, AFE_XTAL_CTRL + 1, val8);
+-		val8 = r8712_read8(padapter, AFE_PLL_CTRL);
++		r8712_write8(adapter, AFE_XTAL_CTRL + 1, val8);
++		val8 = r8712_read8(adapter, AFE_PLL_CTRL);
+ 		val8 = val8 | 0x01;
+ 		/* Enable AFE PLL Macro Block */
+-		r8712_write8(padapter, AFE_PLL_CTRL, val8);
++		r8712_write8(adapter, AFE_PLL_CTRL, val8);
+ 		val8 = 0xEE;
+ 		/* release isolation AFE PLL & MD */
+-		r8712_write8(padapter, SYS_ISO_CTRL, val8);
+-		val8 = r8712_read8(padapter, SYS_CLKR + 1);
++		r8712_write8(adapter, SYS_ISO_CTRL, val8);
++		val8 = r8712_read8(adapter, SYS_CLKR + 1);
+ 		val8 = val8 | 0x08;
+ 		/* enable MAC clock */
+-		r8712_write8(padapter, SYS_CLKR + 1, val8);
+-		val8 = r8712_read8(padapter, SYS_FUNC_EN + 1);
++		r8712_write8(adapter, SYS_CLKR + 1, val8);
++		val8 = r8712_read8(adapter, SYS_FUNC_EN + 1);
+ 		val8 = val8 | 0x08;
+ 		/* enable Core digital and enable IOREG R/W */
+-		r8712_write8(padapter, SYS_FUNC_EN + 1, val8);
++		r8712_write8(adapter, SYS_FUNC_EN + 1, val8);
+ 		val8 = val8 | 0x80;
+ 		/* enable REG_EN */
+-		r8712_write8(padapter, SYS_FUNC_EN + 1, val8);
+-		val8 = r8712_read8(padapter, SYS_CLKR + 1);
++		r8712_write8(adapter, SYS_FUNC_EN + 1, val8);
++		val8 = r8712_read8(adapter, SYS_CLKR + 1);
+ 		val8 = (val8 | 0x80) & 0xBF;
+ 		/* switch the control path */
+-		r8712_write8(padapter, SYS_CLKR + 1, val8);
++		r8712_write8(adapter, SYS_CLKR + 1, val8);
+ 		val8 = 0xFC;
+-		r8712_write8(padapter, CR, val8);
++		r8712_write8(adapter, CR, val8);
+ 		val8 = 0x37;
+-		r8712_write8(padapter, CR + 1, val8);
++		r8712_write8(adapter, CR + 1, val8);
+ 		/* reduce EndPoint & init it */
+-		r8712_write8(padapter, 0x102500ab, r8712_read8(padapter,
++		r8712_write8(adapter, 0x102500ab, r8712_read8(adapter,
+ 			     0x102500ab) | BIT(6) | BIT(7));
+ 		/* consideration of power consumption - init */
+-		r8712_write8(padapter, 0x10250008, r8712_read8(padapter,
++		r8712_write8(adapter, 0x10250008, r8712_read8(adapter,
+ 			     0x10250008) & 0xfffffffb);
+-	} else if (pregistrypriv->chip_version == RTL8712_1stCUT) {
++	} else if (registrypriv->chip_version == RTL8712_1stCUT) {
+ 		/* Initialization for power on sequence, */
+-		r8712_write8(padapter, SPS0_CTRL + 1, 0x53);
+-		r8712_write8(padapter, SPS0_CTRL, 0x57);
++		r8712_write8(adapter, SPS0_CTRL + 1, 0x53);
++		r8712_write8(adapter, SPS0_CTRL, 0x57);
+ 		/* Enable AFE Macro Block's Bandgap and Enable AFE Macro
+ 		 * Block's Mbias
+ 		 */
+-		val8 = r8712_read8(padapter, AFE_MISC);
+-		r8712_write8(padapter, AFE_MISC, (val8 | AFE_MISC_BGEN |
++		val8 = r8712_read8(adapter, AFE_MISC);
++		r8712_write8(adapter, AFE_MISC, (val8 | AFE_MISC_BGEN |
+ 			     AFE_MISC_MBEN));
+ 		/* Enable LDOA15 block */
+-		val8 = r8712_read8(padapter, LDOA15_CTRL);
+-		r8712_write8(padapter, LDOA15_CTRL, (val8 | LDA15_EN));
+-		val8 = r8712_read8(padapter, SPS1_CTRL);
+-		r8712_write8(padapter, SPS1_CTRL, (val8 | SPS1_LDEN));
++		val8 = r8712_read8(adapter, LDOA15_CTRL);
++		r8712_write8(adapter, LDOA15_CTRL, (val8 | LDA15_EN));
++		val8 = r8712_read8(adapter, SPS1_CTRL);
++		r8712_write8(adapter, SPS1_CTRL, (val8 | SPS1_LDEN));
+ 		msleep(20);
+ 		/* Enable Switch Regulator Block */
+-		val8 = r8712_read8(padapter, SPS1_CTRL);
+-		r8712_write8(padapter, SPS1_CTRL, (val8 | SPS1_SWEN));
+-		r8712_write32(padapter, SPS1_CTRL, 0x00a7b267);
+-		val8 = r8712_read8(padapter, SYS_ISO_CTRL + 1);
+-		r8712_write8(padapter, SYS_ISO_CTRL + 1, (val8 | 0x08));
++		val8 = r8712_read8(adapter, SPS1_CTRL);
++		r8712_write8(adapter, SPS1_CTRL, (val8 | SPS1_SWEN));
++		r8712_write32(adapter, SPS1_CTRL, 0x00a7b267);
++		val8 = r8712_read8(adapter, SYS_ISO_CTRL + 1);
++		r8712_write8(adapter, SYS_ISO_CTRL + 1, (val8 | 0x08));
+ 		/* Engineer Packet CP test Enable */
+-		val8 = r8712_read8(padapter, SYS_FUNC_EN + 1);
+-		r8712_write8(padapter, SYS_FUNC_EN + 1, (val8 | 0x20));
+-		val8 = r8712_read8(padapter, SYS_ISO_CTRL + 1);
+-		r8712_write8(padapter, SYS_ISO_CTRL + 1, (val8 & 0x6F));
++		val8 = r8712_read8(adapter, SYS_FUNC_EN + 1);
++		r8712_write8(adapter, SYS_FUNC_EN + 1, (val8 | 0x20));
++		val8 = r8712_read8(adapter, SYS_ISO_CTRL + 1);
++		r8712_write8(adapter, SYS_ISO_CTRL + 1, (val8 & 0x6F));
+ 		/* Enable AFE clock */
+-		val8 = r8712_read8(padapter, AFE_XTAL_CTRL + 1);
+-		r8712_write8(padapter, AFE_XTAL_CTRL + 1, (val8 & 0xfb));
++		val8 = r8712_read8(adapter, AFE_XTAL_CTRL + 1);
++		r8712_write8(adapter, AFE_XTAL_CTRL + 1, (val8 & 0xfb));
+ 		/* Enable AFE PLL Macro Block */
+-		val8 = r8712_read8(padapter, AFE_PLL_CTRL);
+-		r8712_write8(padapter, AFE_PLL_CTRL, (val8 | 0x11));
++		val8 = r8712_read8(adapter, AFE_PLL_CTRL);
++		r8712_write8(adapter, AFE_PLL_CTRL, (val8 | 0x11));
+ 		/* Attach AFE PLL to MACTOP/BB/PCIe Digital */
+-		val8 = r8712_read8(padapter, SYS_ISO_CTRL);
+-		r8712_write8(padapter, SYS_ISO_CTRL, (val8 & 0xEE));
++		val8 = r8712_read8(adapter, SYS_ISO_CTRL);
++		r8712_write8(adapter, SYS_ISO_CTRL, (val8 & 0xEE));
+ 		/* Switch to 40M clock */
+-		val8 = r8712_read8(padapter, SYS_CLKR);
+-		r8712_write8(padapter, SYS_CLKR, val8 & (~SYS_CLKSEL));
++		val8 = r8712_read8(adapter, SYS_CLKR);
++		r8712_write8(adapter, SYS_CLKR, val8 & (~SYS_CLKSEL));
+ 		/* SSC Disable */
+-		val8 = r8712_read8(padapter, SYS_CLKR);
++		val8 = r8712_read8(adapter, SYS_CLKR);
+ 		/* Enable MAC clock */
+-		val8 = r8712_read8(padapter, SYS_CLKR + 1);
+-		r8712_write8(padapter, SYS_CLKR + 1, (val8 | 0x18));
++		val8 = r8712_read8(adapter, SYS_CLKR + 1);
++		r8712_write8(adapter, SYS_CLKR + 1, (val8 | 0x18));
+ 		/* Revised POS, */
+-		r8712_write8(padapter, PMC_FSM, 0x02);
++		r8712_write8(adapter, PMC_FSM, 0x02);
+ 		/* Enable Core digital and enable IOREG R/W */
+-		val8 = r8712_read8(padapter, SYS_FUNC_EN + 1);
+-		r8712_write8(padapter, SYS_FUNC_EN + 1, (val8 | 0x08));
++		val8 = r8712_read8(adapter, SYS_FUNC_EN + 1);
++		r8712_write8(adapter, SYS_FUNC_EN + 1, (val8 | 0x08));
+ 		/* Enable REG_EN */
+-		val8 = r8712_read8(padapter, SYS_FUNC_EN + 1);
+-		r8712_write8(padapter, SYS_FUNC_EN + 1, (val8 | 0x80));
++		val8 = r8712_read8(adapter, SYS_FUNC_EN + 1);
++		r8712_write8(adapter, SYS_FUNC_EN + 1, (val8 | 0x80));
+ 		/* Switch the control path to FW */
+-		val8 = r8712_read8(padapter, SYS_CLKR + 1);
+-		r8712_write8(padapter, SYS_CLKR + 1, (val8 | 0x80) & 0xBF);
+-		r8712_write8(padapter, CR, 0xFC);
+-		r8712_write8(padapter, CR + 1, 0x37);
++		val8 = r8712_read8(adapter, SYS_CLKR + 1);
++		r8712_write8(adapter, SYS_CLKR + 1, (val8 | 0x80) & 0xBF);
++		r8712_write8(adapter, CR, 0xFC);
++		r8712_write8(adapter, CR + 1, 0x37);
+ 		/* Fix the RX FIFO issue(usb error), */
+-		val8 = r8712_read8(padapter, 0x1025FE5c);
+-		r8712_write8(padapter, 0x1025FE5c, (val8 | BIT(7)));
+-		val8 = r8712_read8(padapter, 0x102500ab);
+-		r8712_write8(padapter, 0x102500ab, (val8 | BIT(6) | BIT(7)));
++		val8 = r8712_read8(adapter, 0x1025FE5c);
++		r8712_write8(adapter, 0x1025FE5c, (val8 | BIT(7)));
++		val8 = r8712_read8(adapter, 0x102500ab);
++		r8712_write8(adapter, 0x102500ab, (val8 | BIT(6) | BIT(7)));
+ 		/* For power save, used this in the bit file after 970621 */
+-		val8 = r8712_read8(padapter, SYS_CLKR);
+-		r8712_write8(padapter, SYS_CLKR, val8 & (~CPU_CLKSEL));
+-	} else if (pregistrypriv->chip_version == RTL8712_2ndCUT ||
+-		  pregistrypriv->chip_version == RTL8712_3rdCUT) {
++		val8 = r8712_read8(adapter, SYS_CLKR);
++		r8712_write8(adapter, SYS_CLKR, val8 & (~CPU_CLKSEL));
++	} else if (registrypriv->chip_version == RTL8712_2ndCUT ||
++		   registrypriv->chip_version == RTL8712_3rdCUT) {
+ 		/* Initialization for power on sequence,
+ 		 * E-Fuse leakage prevention sequence
+ 		 */
+-		r8712_write8(padapter, 0x37, 0xb0);
++		r8712_write8(adapter, 0x37, 0xb0);
+ 		msleep(20);
+-		r8712_write8(padapter, 0x37, 0x30);
++		r8712_write8(adapter, 0x37, 0x30);
+ 		/* Set control path switch to HW control and reset Digital Core,
+ 		 * CPU Core and MAC I/O to solve FW download fail when system
+ 		 * from resume sate.
+ 		 */
+-		val8 = r8712_read8(padapter, SYS_CLKR + 1);
++		val8 = r8712_read8(adapter, SYS_CLKR + 1);
+ 		if (val8 & 0x80) {
+ 			val8 &= 0x3f;
+-			r8712_write8(padapter, SYS_CLKR + 1, val8);
++			r8712_write8(adapter, SYS_CLKR + 1, val8);
+ 		}
+-		val8 = r8712_read8(padapter, SYS_FUNC_EN + 1);
++		val8 = r8712_read8(adapter, SYS_FUNC_EN + 1);
+ 		val8 &= 0x73;
+-		r8712_write8(padapter, SYS_FUNC_EN + 1, val8);
++		r8712_write8(adapter, SYS_FUNC_EN + 1, val8);
+ 		msleep(20);
+ 		/* Revised POS, */
+ 		/* Enable AFE Macro Block's Bandgap and Enable AFE Macro
+ 		 * Block's Mbias
+ 		 */
+-		r8712_write8(padapter, SPS0_CTRL + 1, 0x53);
+-		r8712_write8(padapter, SPS0_CTRL, 0x57);
+-		val8 = r8712_read8(padapter, AFE_MISC);
++		r8712_write8(adapter, SPS0_CTRL + 1, 0x53);
++		r8712_write8(adapter, SPS0_CTRL, 0x57);
++		val8 = r8712_read8(adapter, AFE_MISC);
+ 		/*Bandgap*/
+-		r8712_write8(padapter, AFE_MISC, (val8 | AFE_MISC_BGEN));
+-		r8712_write8(padapter, AFE_MISC, (val8 | AFE_MISC_BGEN |
++		r8712_write8(adapter, AFE_MISC, (val8 | AFE_MISC_BGEN));
++		r8712_write8(adapter, AFE_MISC, (val8 | AFE_MISC_BGEN |
+ 			     AFE_MISC_MBEN | AFE_MISC_I32_EN));
+ 		/* Enable PLL Power (LDOA15V) */
+-		val8 = r8712_read8(padapter, LDOA15_CTRL);
+-		r8712_write8(padapter, LDOA15_CTRL, (val8 | LDA15_EN));
++		val8 = r8712_read8(adapter, LDOA15_CTRL);
++		r8712_write8(adapter, LDOA15_CTRL, (val8 | LDA15_EN));
+ 		/* Enable LDOV12D block */
+-		val8 = r8712_read8(padapter, LDOV12D_CTRL);
+-		r8712_write8(padapter, LDOV12D_CTRL, (val8 | LDV12_EN));
+-		val8 = r8712_read8(padapter, SYS_ISO_CTRL + 1);
+-		r8712_write8(padapter, SYS_ISO_CTRL + 1, (val8 | 0x08));
++		val8 = r8712_read8(adapter, LDOV12D_CTRL);
++		r8712_write8(adapter, LDOV12D_CTRL, (val8 | LDV12_EN));
++		val8 = r8712_read8(adapter, SYS_ISO_CTRL + 1);
++		r8712_write8(adapter, SYS_ISO_CTRL + 1, (val8 | 0x08));
+ 		/* Engineer Packet CP test Enable */
+-		val8 = r8712_read8(padapter, SYS_FUNC_EN + 1);
+-		r8712_write8(padapter, SYS_FUNC_EN + 1, (val8 | 0x20));
++		val8 = r8712_read8(adapter, SYS_FUNC_EN + 1);
++		r8712_write8(adapter, SYS_FUNC_EN + 1, (val8 | 0x20));
+ 		/* Support 64k IMEM */
+-		val8 = r8712_read8(padapter, SYS_ISO_CTRL + 1);
+-		r8712_write8(padapter, SYS_ISO_CTRL + 1, (val8 & 0x68));
++		val8 = r8712_read8(adapter, SYS_ISO_CTRL + 1);
++		r8712_write8(adapter, SYS_ISO_CTRL + 1, (val8 & 0x68));
+ 		/* Enable AFE clock */
+-		val8 = r8712_read8(padapter, AFE_XTAL_CTRL + 1);
+-		r8712_write8(padapter, AFE_XTAL_CTRL + 1, (val8 & 0xfb));
++		val8 = r8712_read8(adapter, AFE_XTAL_CTRL + 1);
++		r8712_write8(adapter, AFE_XTAL_CTRL + 1, (val8 & 0xfb));
+ 		/* Enable AFE PLL Macro Block */
+-		val8 = r8712_read8(padapter, AFE_PLL_CTRL);
+-		r8712_write8(padapter, AFE_PLL_CTRL, (val8 | 0x11));
++		val8 = r8712_read8(adapter, AFE_PLL_CTRL);
++		r8712_write8(adapter, AFE_PLL_CTRL, (val8 | 0x11));
+ 		/* Some sample will download fw failure. The clock will be
+ 		 * stable with 500 us delay after reset the PLL
+ 		 * TODO: When usleep is added to kernel, change next 3
+ 		 * udelay(500) to usleep(500)
+ 		 */
+ 		udelay(500);
+-		r8712_write8(padapter, AFE_PLL_CTRL, (val8 | 0x51));
++		r8712_write8(adapter, AFE_PLL_CTRL, (val8 | 0x51));
+ 		udelay(500);
+-		r8712_write8(padapter, AFE_PLL_CTRL, (val8 | 0x11));
++		r8712_write8(adapter, AFE_PLL_CTRL, (val8 | 0x11));
+ 		udelay(500);
+ 		/* Attach AFE PLL to MACTOP/BB/PCIe Digital */
+-		val8 = r8712_read8(padapter, SYS_ISO_CTRL);
+-		r8712_write8(padapter, SYS_ISO_CTRL, (val8 & 0xEE));
++		val8 = r8712_read8(adapter, SYS_ISO_CTRL);
++		r8712_write8(adapter, SYS_ISO_CTRL, (val8 & 0xEE));
+ 		/* Switch to 40M clock */
+-		r8712_write8(padapter, SYS_CLKR, 0x00);
++		r8712_write8(adapter, SYS_CLKR, 0x00);
+ 		/* CPU Clock and 80M Clock SSC Disable to overcome FW download
+ 		 * fail timing issue.
+ 		 */
+-		val8 = r8712_read8(padapter, SYS_CLKR);
+-		r8712_write8(padapter, SYS_CLKR, (val8 | 0xa0));
++		val8 = r8712_read8(adapter, SYS_CLKR);
++		r8712_write8(adapter, SYS_CLKR, (val8 | 0xa0));
+ 		/* Enable MAC clock */
+-		val8 = r8712_read8(padapter, SYS_CLKR + 1);
+-		r8712_write8(padapter, SYS_CLKR + 1, (val8 | 0x18));
++		val8 = r8712_read8(adapter, SYS_CLKR + 1);
++		r8712_write8(adapter, SYS_CLKR + 1, (val8 | 0x18));
+ 		/* Revised POS, */
+-		r8712_write8(padapter, PMC_FSM, 0x02);
++		r8712_write8(adapter, PMC_FSM, 0x02);
+ 		/* Enable Core digital and enable IOREG R/W */
+-		val8 = r8712_read8(padapter, SYS_FUNC_EN + 1);
+-		r8712_write8(padapter, SYS_FUNC_EN + 1, (val8 | 0x08));
++		val8 = r8712_read8(adapter, SYS_FUNC_EN + 1);
++		r8712_write8(adapter, SYS_FUNC_EN + 1, (val8 | 0x08));
+ 		/* Enable REG_EN */
+-		val8 = r8712_read8(padapter, SYS_FUNC_EN + 1);
+-		r8712_write8(padapter, SYS_FUNC_EN + 1, (val8 | 0x80));
++		val8 = r8712_read8(adapter, SYS_FUNC_EN + 1);
++		r8712_write8(adapter, SYS_FUNC_EN + 1, (val8 | 0x80));
+ 		/* Switch the control path to FW */
+-		val8 = r8712_read8(padapter, SYS_CLKR + 1);
+-		r8712_write8(padapter, SYS_CLKR + 1, (val8 | 0x80) & 0xBF);
+-		r8712_write8(padapter, CR, 0xFC);
+-		r8712_write8(padapter, CR + 1, 0x37);
++		val8 = r8712_read8(adapter, SYS_CLKR + 1);
++		r8712_write8(adapter, SYS_CLKR + 1, (val8 | 0x80) & 0xBF);
++		r8712_write8(adapter, CR, 0xFC);
++		r8712_write8(adapter, CR + 1, 0x37);
+ 		/* Fix the RX FIFO issue(usb error), 970410 */
+-		val8 = r8712_read8(padapter, 0x1025FE5c);
+-		r8712_write8(padapter, 0x1025FE5c, (val8 | BIT(7)));
++		val8 = r8712_read8(adapter, 0x1025FE5c);
++		r8712_write8(adapter, 0x1025FE5c, (val8 | BIT(7)));
+ 		/* For power save, used this in the bit file after 970621 */
+-		val8 = r8712_read8(padapter, SYS_CLKR);
+-		r8712_write8(padapter, SYS_CLKR, val8 & (~CPU_CLKSEL));
++		val8 = r8712_read8(adapter, SYS_CLKR);
++		r8712_write8(adapter, SYS_CLKR, val8 & (~CPU_CLKSEL));
+ 		/* Revised for 8051 ROM code wrong operation. */
+-		r8712_write8(padapter, 0x1025fe1c, 0x80);
++		r8712_write8(adapter, 0x1025fe1c, 0x80);
+ 		/* To make sure that TxDMA can ready to download FW.
+ 		 * We should reset TxDMA if IMEM RPT was not ready.
+ 		 */
+ 		do {
+-			val8 = r8712_read8(padapter, TCR);
++			val8 = r8712_read8(adapter, TCR);
+ 			if ((val8 & _TXDMA_INIT_VALUE) == _TXDMA_INIT_VALUE)
+ 				break;
+ 			udelay(5); /* PlatformStallExecution(5); */
+ 		} while (PollingCnt--);	/* Delay 1ms */
+ 
+ 		if (PollingCnt <= 0) {
+-			val8 = r8712_read8(padapter, CR);
+-			r8712_write8(padapter, CR, val8 & (~_TXDMA_EN));
++			val8 = r8712_read8(adapter, CR);
++			r8712_write8(adapter, CR, val8 & (~_TXDMA_EN));
+ 			udelay(2); /* PlatformStallExecution(2); */
+ 			/* Reset TxDMA */
+-			r8712_write8(padapter, CR, val8 | _TXDMA_EN);
++			r8712_write8(adapter, CR, val8 | _TXDMA_EN);
+ 		}
+ 	} else {
+ 		ret = _FAIL;
+@@ -280,28 +280,28 @@ u8 r8712_usb_hal_bus_init(struct _adapter *padapter)
+ 	return ret;
  }
  
--static u16 usb_read16(struct intf_hdl *pintfhdl, u32 addr)
-+static u16 usb_read16(struct intf_hdl *intfhdl, u32 addr)
+-unsigned int r8712_usb_inirp_init(struct _adapter *padapter)
++unsigned int r8712_usb_inirp_init(struct _adapter *adapter)
  {
- 	u8 request;
- 	u8 requesttype;
-@@ -50,19 +50,19 @@ static u16 usb_read16(struct intf_hdl *pintfhdl, u32 addr)
- 	u16 index;
- 	u16 len;
- 	__le32 data;
--	struct intf_priv *pintfpriv = pintfhdl->pintfpriv;
-+	struct intf_priv *intfpriv = intfhdl->pintfpriv;
+ 	u8 i;
+-	struct recv_buf *precvbuf;
+-	struct intf_hdl *pintfhdl = &padapter->pio_queue->intf;
+-	struct recv_priv *precvpriv = &(padapter->recvpriv);
++	struct recv_buf *recvbuf;
++	struct intf_hdl *intfhdl = &adapter->pio_queue->intf;
++	struct recv_priv *recvpriv = &(adapter->recvpriv);
  
- 	request = 0x05;
- 	requesttype = 0x01; /* read_in */
- 	index = 0;
- 	wvalue = (u16)(addr & 0x0000ffff);
- 	len = 2;
--	r8712_usbctrl_vendorreq(pintfpriv, request, wvalue, index, &data, len,
--			  requesttype);
-+	r8712_usbctrl_vendorreq(intfpriv, request, wvalue, index, &data, len,
-+				requesttype);
- 	return (u16)(le32_to_cpu(data) & 0xffff);
+-	precvpriv->ff_hwaddr = RTL8712_DMA_RX0FF; /* mapping rx fifo address */
++	recvpriv->ff_hwaddr = RTL8712_DMA_RX0FF; /* mapping rx fifo address */
+ 	/* issue Rx irp to receive data */
+-	precvbuf = (struct recv_buf *)precvpriv->precv_buf;
++	recvbuf = (struct recv_buf *)recvpriv->precv_buf;
+ 	for (i = 0; i < NR_RECVBUFF; i++) {
+-		if (r8712_usb_read_port(pintfhdl, precvpriv->ff_hwaddr, 0,
+-		   (unsigned char *)precvbuf) == false)
++		if (r8712_usb_read_port(intfhdl, recvpriv->ff_hwaddr, 0,
++					(unsigned char *)recvbuf) == false)
+ 			return _FAIL;
+-		precvbuf++;
+-		precvpriv->free_recv_buf_queue_cnt--;
++		recvbuf++;
++		recvpriv->free_recv_buf_queue_cnt--;
+ 	}
+ 	return _SUCCESS;
  }
  
--static u32 usb_read32(struct intf_hdl *pintfhdl, u32 addr)
-+static u32 usb_read32(struct intf_hdl *intfhdl, u32 addr)
+-unsigned int r8712_usb_inirp_deinit(struct _adapter *padapter)
++unsigned int r8712_usb_inirp_deinit(struct _adapter *adapter)
  {
- 	u8 request;
- 	u8 requesttype;
-@@ -70,19 +70,19 @@ static u32 usb_read32(struct intf_hdl *pintfhdl, u32 addr)
- 	u16 index;
- 	u16 len;
- 	__le32 data;
--	struct intf_priv *pintfpriv = pintfhdl->pintfpriv;
-+	struct intf_priv *intfpriv = intfhdl->pintfpriv;
- 
- 	request = 0x05;
- 	requesttype = 0x01; /* read_in */
- 	index = 0;
- 	wvalue = (u16)(addr & 0x0000ffff);
- 	len = 4;
--	r8712_usbctrl_vendorreq(pintfpriv, request, wvalue, index, &data, len,
--			  requesttype);
-+	r8712_usbctrl_vendorreq(intfpriv, request, wvalue, index, &data, len,
-+				requesttype);
- 	return le32_to_cpu(data);
- }
- 
--static void usb_write8(struct intf_hdl *pintfhdl, u32 addr, u8 val)
-+static void usb_write8(struct intf_hdl *intfhdl, u32 addr, u8 val)
- {
- 	u8 request;
- 	u8 requesttype;
-@@ -90,7 +90,7 @@ static void usb_write8(struct intf_hdl *pintfhdl, u32 addr, u8 val)
- 	u16 index;
- 	u16 len;
- 	__le32 data;
--	struct intf_priv *pintfpriv = pintfhdl->pintfpriv;
-+	struct intf_priv *intfpriv = intfhdl->pintfpriv;
- 
- 	request = 0x05;
- 	requesttype = 0x00; /* write_out */
-@@ -98,11 +98,11 @@ static void usb_write8(struct intf_hdl *pintfhdl, u32 addr, u8 val)
- 	wvalue = (u16)(addr & 0x0000ffff);
- 	len = 1;
- 	data = cpu_to_le32((u32)val & 0x000000ff);
--	r8712_usbctrl_vendorreq(pintfpriv, request, wvalue, index, &data, len,
--			  requesttype);
-+	r8712_usbctrl_vendorreq(intfpriv, request, wvalue, index, &data, len,
-+				requesttype);
- }
- 
--static void usb_write16(struct intf_hdl *pintfhdl, u32 addr, u16 val)
-+static void usb_write16(struct intf_hdl *intfhdl, u32 addr, u16 val)
- {
- 	u8 request;
- 	u8 requesttype;
-@@ -110,7 +110,7 @@ static void usb_write16(struct intf_hdl *pintfhdl, u32 addr, u16 val)
- 	u16 index;
- 	u16 len;
- 	__le32 data;
--	struct intf_priv *pintfpriv = pintfhdl->pintfpriv;
-+	struct intf_priv *intfpriv = intfhdl->pintfpriv;
- 
- 	request = 0x05;
- 	requesttype = 0x00; /* write_out */
-@@ -118,11 +118,11 @@ static void usb_write16(struct intf_hdl *pintfhdl, u32 addr, u16 val)
- 	wvalue = (u16)(addr & 0x0000ffff);
- 	len = 2;
- 	data = cpu_to_le32((u32)val & 0x0000ffff);
--	r8712_usbctrl_vendorreq(pintfpriv, request, wvalue, index, &data, len,
--			  requesttype);
-+	r8712_usbctrl_vendorreq(intfpriv, request, wvalue, index, &data, len,
-+				requesttype);
- }
- 
--static void usb_write32(struct intf_hdl *pintfhdl, u32 addr, u32 val)
-+static void usb_write32(struct intf_hdl *intfhdl, u32 addr, u32 val)
- {
- 	u8 request;
- 	u8 requesttype;
-@@ -130,7 +130,7 @@ static void usb_write32(struct intf_hdl *pintfhdl, u32 addr, u32 val)
- 	u16 index;
- 	u16 len;
- 	__le32 data;
--	struct intf_priv *pintfpriv = pintfhdl->pintfpriv;
-+	struct intf_priv *intfpriv = intfhdl->pintfpriv;
- 
- 	request = 0x05;
- 	requesttype = 0x00; /* write_out */
-@@ -138,13 +138,13 @@ static void usb_write32(struct intf_hdl *pintfhdl, u32 addr, u32 val)
- 	wvalue = (u16)(addr & 0x0000ffff);
- 	len = 4;
- 	data = cpu_to_le32(val);
--	r8712_usbctrl_vendorreq(pintfpriv, request, wvalue, index, &data, len,
--			  requesttype);
-+	r8712_usbctrl_vendorreq(intfpriv, request, wvalue, index, &data, len,
-+				requesttype);
- }
- 
--void r8712_usb_set_intf_option(u32 *poption)
-+void r8712_usb_set_intf_option(u32 *option)
- {
--	*poption = ((*poption) | _INTF_ASYNC_);
-+	*option = ((*option) | _INTF_ASYNC_);
- }
- 
- static void usb_intf_hdl_init(u8 *priv)
-@@ -163,24 +163,24 @@ static void usb_intf_hdl_close(u8 *priv)
- {
- }
- 
--void r8712_usb_set_intf_funs(struct intf_hdl *pintf_hdl)
-+void r8712_usb_set_intf_funs(struct intf_hdl *intfhdl)
- {
--	pintf_hdl->intf_hdl_init = usb_intf_hdl_init;
--	pintf_hdl->intf_hdl_unload = usb_intf_hdl_unload;
--	pintf_hdl->intf_hdl_open = usb_intf_hdl_open;
--	pintf_hdl->intf_hdl_close = usb_intf_hdl_close;
-+	intfhdl->intf_hdl_init = usb_intf_hdl_init;
-+	intfhdl->intf_hdl_unload = usb_intf_hdl_unload;
-+	intfhdl->intf_hdl_open = usb_intf_hdl_open;
-+	intfhdl->intf_hdl_close = usb_intf_hdl_close;
- }
- 
--void r8712_usb_set_intf_ops(struct _io_ops	*pops)
-+void r8712_usb_set_intf_ops(struct _io_ops *ops)
- {
--	memset((u8 *)pops, 0, sizeof(struct _io_ops));
--	pops->_read8 = usb_read8;
--	pops->_read16 = usb_read16;
--	pops->_read32 = usb_read32;
--	pops->_read_port = r8712_usb_read_port;
--	pops->_write8 = usb_write8;
--	pops->_write16 = usb_write16;
--	pops->_write32 = usb_write32;
--	pops->_write_mem = r8712_usb_write_mem;
--	pops->_write_port = r8712_usb_write_port;
-+	memset((u8 *)ops, 0, sizeof(struct _io_ops));
-+	ops->_read8 = usb_read8;
-+	ops->_read16 = usb_read16;
-+	ops->_read32 = usb_read32;
-+	ops->_read_port = r8712_usb_read_port;
-+	ops->_write8 = usb_write8;
-+	ops->_write16 = usb_write16;
-+	ops->_write32 = usb_write32;
-+	ops->_write_mem = r8712_usb_write_mem;
-+	ops->_write_port = r8712_usb_write_port;
+-	r8712_usb_read_port_cancel(padapter);
++	r8712_usb_read_port_cancel(adapter);
+ 	return _SUCCESS;
  }
 -- 
 2.19.1
