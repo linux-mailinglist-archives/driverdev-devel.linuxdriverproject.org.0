@@ -1,78 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 60EA7384BE
-	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Jun 2019 09:11:41 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8568F384C8
+	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Jun 2019 09:14:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0873D880F9;
-	Fri,  7 Jun 2019 07:11:40 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 49E6786435;
+	Fri,  7 Jun 2019 07:14:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oCHWfgsYchfE; Fri,  7 Jun 2019 07:11:39 +0000 (UTC)
+	with ESMTP id E4omP2ZBVYkM; Fri,  7 Jun 2019 07:14:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 71CE187EB5;
-	Fri,  7 Jun 2019 07:11:39 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A853186427;
+	Fri,  7 Jun 2019 07:14:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 15ACF1BF333
- for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 07:11:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E3F091BF333
+ for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 07:14:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 127BD8806D
- for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 07:11:37 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D4C6B8806D
+ for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 07:14:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5C0aKyjTaMwx for <devel@linuxdriverproject.org>;
- Fri,  7 Jun 2019 07:11:36 +0000 (UTC)
+ with ESMTP id 1q348IgEfcD6 for <devel@linuxdriverproject.org>;
+ Fri,  7 Jun 2019 07:14:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
- [209.85.214.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8C65087EB5
- for <devel@driverdev.osuosl.org>; Fri,  7 Jun 2019 07:11:36 +0000 (UTC)
-Received: by mail-pl1-f196.google.com with SMTP id p1so471636plo.2
- for <devel@driverdev.osuosl.org>; Fri, 07 Jun 2019 00:11:36 -0700 (PDT)
+Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
+ [209.85.210.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 6512B87EB5
+ for <devel@driverdev.osuosl.org>; Fri,  7 Jun 2019 07:14:23 +0000 (UTC)
+Received: by mail-pf1-f194.google.com with SMTP id m30so147690pff.8
+ for <devel@driverdev.osuosl.org>; Fri, 07 Jun 2019 00:14:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=Do1Qo6V2JFR310gLCbSRbPWz/dTlopxTv15lvqi6FEQ=;
- b=WeqpyBH41NwApLNKLsD2BZh26hbc4NBURMixCvyihP1LzD8qb98gJNGMxNDGVIbaF5
- B5zdf3V/HdWrPQWXBqyfRAa/VmNb4Y4NZ2cz7Oq6gql6FGb4TiRbms64BQZfWu3btCmZ
- b2g7AhuIV2Ar/t0/8IuGbAc7OmZAP6H0DBohHvo6hSkb1iR5tqoNtdldU/g9ErB2xQ5E
- yBF8OhF4XuT8qwZh+SvjUNjefjESjR6o9UAwT/lVEb2WgR6THJAqskDeydSASGXg/l99
- E4TJNyFyMMzYm7vMFN3YRlU+UCdHBoZBFtR1GHq9tuczY68/53xM0yBNAkiskL+RYgfT
- edCw==
+ bh=m1N60dkKX4zwd7lwIj/FjrRHBW5PAI5y0X7+s8TbdoI=;
+ b=erQ6VR95p78CQOVGqGCFCLXBWO5wbWGX4sCqVNRoM9fhbiWAoKbLe8i2uqDyp6Wf5W
+ Cn9JQlvqdVQGESR2dFUTCkvazUXSRC8F8RQVbgOsngjoqLIlTV0tlSf52HEVDLnoSwuD
+ xhbO+Pbi7tTDjAbQxmIKfZWjZs5LfJ3AGsTNY+pDc1uBZyk0dJ8utPT5K9MkEo47+7G/
+ iyTNNRmqAr77Q7FmHuNL8B7fujS7j9qCCU9JRwUMKzmNYaZAVxAkwOlQIaU72v5sz7oe
+ nDd4T5Cp8E3XcHUiXEINRvULt7ytQCaSLpKusIKy6in52G9YYYZCNgreoyR6bwIdhqtN
+ fznQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=Do1Qo6V2JFR310gLCbSRbPWz/dTlopxTv15lvqi6FEQ=;
- b=HfqgMGrTpsTQ/kimf9tfCAqVNjRpg7PXqysg2jGU4GzpFIILgOjxIKp6MMpPUVhkLB
- dYEc3qHfVhAW9vMx12VawXWb6dyrd07UKg80YugGP8EmPHIF8jKCwDpN4krRK4/SrdmQ
- 3uacgycBmivEzYd+ldaZGx2augbP4NljSjXhiT0mVjZHSImyH10BoUkPz3fUJyQBFSvP
- wOsydQhXq6x3oVKkVlfc9GygtwWkYQc3TYsBhsyOTXDovzzaMkyV9Wvl0uE4H+PfhZQw
- 5e2+pHRb/O2gjOlCf7oRWbJRMJd57/KHOiVlYSAGXUCDZqgXAgaOxU6AiUOyd9d4uJNZ
- GNMQ==
-X-Gm-Message-State: APjAAAUVYnY3RYwqZUzljwE4JygLb5rPVWwlsrQRrQ7T4IUO53Hafift
- XeB3CXTSbTtXe3csZnGyFBE=
-X-Google-Smtp-Source: APXvYqxby4r+nDLbndZ7yeDA+uIOOjaJUNlZ1yew/Iy0Q9YLzfjds/0YrgrCF+z21xRpwPaYFnZSeg==
-X-Received: by 2002:a17:902:a5ca:: with SMTP id
- t10mr50447160plq.98.1559891496143; 
- Fri, 07 Jun 2019 00:11:36 -0700 (PDT)
+ bh=m1N60dkKX4zwd7lwIj/FjrRHBW5PAI5y0X7+s8TbdoI=;
+ b=aMPKf78qi3xY0QTMBqxszImhGqsgszGEAbrP9kxHj8P4MExm2N97zMXQVnOAQLpLJL
+ FMTWho/hZCZ0UJRRfEmltrKEvdGBdt4D6o1SRpWu6PvnTTBLkz9fTiFHcHht/7TH1m1/
+ 9NlyYtSLclDCJBsVZaSf4wOXmVX8hNbE+5UAtXFT+nuv5d+myCGO5H3f6DsedAf1zaO+
+ FFyw268ui8tOJF7CVz4KblHVpjEMHVOR1Rxem2MZZajjZi48dt5Q6uu7XlEeGS1fQ0Th
+ sko1NxWWGBBrEBuzyTiye5BXRihQ1bzUfbnu8VhWM8I6HWRWKQN80X+3Or7LpC7qMrfT
+ omnw==
+X-Gm-Message-State: APjAAAXuFMfF+9bfnQUYtsDDOBOatKMh2VVxFoDxVcH75VxR2ZPx1HFP
+ ZpJic0Y6dBdHpOjUBdocVA10Pk3X
+X-Google-Smtp-Source: APXvYqwEvmeB0sHfmYATkVtSMaWZwV8PvRKnzPbbwuWLbHlEJVfOBQ1Os7I7FDb6SJbdb4R06W9faw==
+X-Received: by 2002:a63:4006:: with SMTP id n6mr1550975pga.424.1559891662985; 
+ Fri, 07 Jun 2019 00:14:22 -0700 (PDT)
 Received: from localhost.localdomain ([110.227.95.145])
- by smtp.gmail.com with ESMTPSA id i5sm1299667pfk.49.2019.06.07.00.11.32
+ by smtp.gmail.com with ESMTPSA id f11sm4295647pjg.1.2019.06.07.00.14.20
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Fri, 07 Jun 2019 00:11:35 -0700 (PDT)
+ Fri, 07 Jun 2019 00:14:22 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, straube.linux@gmail.com,
- benniciemanuel78@gmail.com, hardiksingh.k@gmail.com
-Subject: [PATCH] staging: rtl8723bs: core: rtw_mlme_ext.c: Remove unused
- variables
-Date: Fri,  7 Jun 2019 12:41:23 +0530
-Message-Id: <20190607071123.28193-1-nishkadg.linux@gmail.com>
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] staging: rtl8723bs: hal: rtl8723b_cmd.c: Remove variables
+Date: Fri,  7 Jun 2019 12:44:05 +0530
+Message-Id: <20190607071405.28310-1-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -93,46 +90,38 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove variables that are declared and assigned values but not otherwise
-used.
+Remove variables that are declared and initialised but never used.
 Issue found with Coccinelle.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 9 ---------
- 1 file changed, 9 deletions(-)
+ drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c | 6 ------
+ 1 file changed, 6 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index 65e8cba7feba..5f0b20038a28 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -6771,10 +6771,6 @@ int rtw_get_ch_setting_union(struct adapter *adapter, u8 *ch, u8 *bw, u8 *offset
+diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c b/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
+index fe3891106a6d..e001d302b34c 100644
+--- a/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
++++ b/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
+@@ -674,10 +674,6 @@ static void ConstructProbeReq(struct adapter *padapter, u8 *pframe, u32 *pLength
+ 	u32 pktlen;
+ 	unsigned char *mac;
+ 	unsigned char bssrate[NumRates];
+-	struct xmit_priv *pxmitpriv = &(padapter->xmitpriv);
+-	struct mlme_priv *pmlmepriv = &(padapter->mlmepriv);
+-	struct mlme_ext_priv *pmlmeext = &(padapter->mlmeextpriv);
+-	struct mlme_ext_info *pmlmeinfo = &(pmlmeext->mlmext_info);
+ 	int bssrate_len = 0;
+ 	u8 bc_addr[] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
+ 
+@@ -1288,8 +1284,6 @@ static void rtl8723b_set_FwAOACGlobalInfo_Cmd(struct adapter *padapter,  u8 grou
+ static void rtl8723b_set_FwScanOffloadInfo_cmd(struct adapter *padapter, PRSVDPAGE_LOC rsvdpageloc, u8 enable)
  {
- 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
- 	struct adapter *iface;
--	struct mlme_ext_priv *mlmeext;
--	u8 ch_ret = 0;
--	u8 bw_ret = CHANNEL_WIDTH_20;
--	u8 offset_ret = HAL_PRIME_CHNL_OFFSET_DONT_CARE;
+ 	u8 u1H2CScanOffloadInfoParm[H2C_SCAN_OFFLOAD_CTRL_LEN] = {0};
+-	u8 res = 0, count = 0;
+-	struct pwrctrl_priv *pwrpriv = adapter_to_pwrctl(padapter);
  
- 	if (ch)
- 		*ch = 0;
-@@ -6784,15 +6780,10 @@ int rtw_get_ch_setting_union(struct adapter *adapter, u8 *ch, u8 *bw, u8 *offset
- 		*offset = HAL_PRIME_CHNL_OFFSET_DONT_CARE;
- 
- 	iface = dvobj->padapters;
--	mlmeext = &iface->mlmeextpriv;
- 
- 	if (!check_fwstate(&iface->mlmepriv, _FW_LINKED|_FW_UNDER_LINKING))
- 		return 0;
- 
--	ch_ret = mlmeext->cur_channel;
--	bw_ret = mlmeext->cur_bwmode;
--	offset_ret = mlmeext->cur_ch_offset;
--
- 	return 1;
- }
- 
+ 	DBG_871X("%s: loc_probe_packet:%d, loc_scan_info: %d loc_ssid_info:%d\n",
+ 		__func__, rsvdpageloc->LocProbePacket, rsvdpageloc->LocScanInfo, rsvdpageloc->LocSSIDInfo);
 -- 
 2.19.1
 
