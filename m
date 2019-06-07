@@ -1,78 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8C7F2384D4
-	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Jun 2019 09:18:23 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A5FA2384DF
+	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Jun 2019 09:21:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8289D86BC9;
-	Fri,  7 Jun 2019 07:18:21 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BD98120513;
+	Fri,  7 Jun 2019 07:20:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Pv1N2P6Zf7Af; Fri,  7 Jun 2019 07:18:20 +0000 (UTC)
+	with ESMTP id MANmbaoeaWuI; Fri,  7 Jun 2019 07:20:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 311D68693D;
-	Fri,  7 Jun 2019 07:18:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B2F15204A4;
+	Fri,  7 Jun 2019 07:20:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5F1651BF333
- for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 07:18:17 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 3510A1BF333
+ for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 07:20:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5B8D18693D
- for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 07:18:17 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 1922A204A4
+ for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 07:20:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mgGRN3xfuGSQ for <devel@linuxdriverproject.org>;
- Fri,  7 Jun 2019 07:18:16 +0000 (UTC)
+ with ESMTP id eknnC7Pxcjm8 for <devel@linuxdriverproject.org>;
+ Fri,  7 Jun 2019 07:20:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
- [209.85.210.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 9A7378323C
- for <devel@driverdev.osuosl.org>; Fri,  7 Jun 2019 07:18:16 +0000 (UTC)
-Received: by mail-pf1-f194.google.com with SMTP id t16so653245pfe.11
- for <devel@driverdev.osuosl.org>; Fri, 07 Jun 2019 00:18:16 -0700 (PDT)
+Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
+ [209.85.215.194])
+ by silver.osuosl.org (Postfix) with ESMTPS id 6EA7F2037A
+ for <devel@driverdev.osuosl.org>; Fri,  7 Jun 2019 07:20:55 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id k187so192981pga.0
+ for <devel@driverdev.osuosl.org>; Fri, 07 Jun 2019 00:20:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=N3m8s+2059Fu//diNFBATOjWg3fyZfQ3e6DmQTqD6d8=;
- b=iOMVbhtnqeRZvvXsdXNBoe43Jqxfa+bhlO3TY5YwqJsr/f0immkDnHSix0UdxqBtga
- 4olOcewyVGr5YbODNCk/k1NHp4833YxSm6kYX2e8+yc3v/nOBj7XeVNLvdPBbdbx+vs4
- o7zG6ZlOzAlmPLX6qXi0PXe5mEHsyFZExAk3tbbZFpNe2767b2zJBYRJDvmSSD2oSZlP
- J+RIXGK1pO+srwmT40YPbCNxLPWFGZ4elNfTtmVzrWZhSGRgEnIoQvVVHBsye90IPMlD
- hj9A7yboMiuINF58nDdt/GIA+rr9wbvqxnGSqi0taB0xicmA3H0B991w4JfEiNQw39w/
- x4Bg==
+ bh=3s2Am2EXinIk1Cx3geFx3zyzkfhWkzc/aAXsSIIwy/4=;
+ b=Nnwr/JXeTJIWPKjDDIY3rYwgxaUZr+W6/fvuDCn6Tpqm+ukyw2q216RHi9d4qF4UpQ
+ fWu+QbfXKuo3xSPuUof/XqDURKl4WO97/XWFRwqPh6bGTbXXxr6v6RD2kdqrI0Rpmx3k
+ ZkrasFu1neX7DISxTjaKQS9I+tuiaCWNlAXyL5mss6mLaNOlLGKFjtuWUmkuouF3hc3B
+ gF75blTIvbgRB/LF33pbbXxl8ytOaLD/5HvTl2L7jf38jhwib226nN83t6sTPrncQXAl
+ XywcMmtrqmN4EzupIK3zqk9UG2Qh2QBBTqTprQU0o2dZjnk1Y0cvZzNycSAaNrYoPvHE
+ GCNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=N3m8s+2059Fu//diNFBATOjWg3fyZfQ3e6DmQTqD6d8=;
- b=lZrASTZZK4o+ON7bxA9Lch5PHfBEXwj+UxE7+D7GdHqif4dUBfdrQ5ukRWiJJfW3/x
- RJ5/wMk+UfYTxXBITUueC3JqCOB7VSPwF2JcsHAFnm6KbEVOzkfYQEoB307JEdt3jCom
- nyInDeF/KFxx/RqAZCJOfXxejUrzFfzpyh7nF8Did6iCjK8JWP5CpB52fKtpYaRbfTa2
- /Caei3aWTkys7ZwoIqKAz/IYNGfRhdCRPChmaWSyBGfTU8UccFREbWykv7V80OUnGNKq
- Lx/LKMNsT7BuxVs1VOsYWuqDIYn187xlr9VtLAiTrThnlFQWNe5HIuQNVpg9KwKg+oDo
- jh1A==
-X-Gm-Message-State: APjAAAXVUJX3zs/I+lh3Wf3R1R4QaoEVbkStb517u8qX0Cli+DKbpLb1
- O0Q6ovEEcimiH+vQO4vCi1Q=
-X-Google-Smtp-Source: APXvYqxpj7tRa6U0t++O/ryXNuCaMRHWHGvYKe55FI9ONfUDOjSC8O0y20Xo/7Mqp8fMYwICAjyQVw==
-X-Received: by 2002:a63:5d45:: with SMTP id o5mr1564440pgm.40.1559891896267;
- Fri, 07 Jun 2019 00:18:16 -0700 (PDT)
+ bh=3s2Am2EXinIk1Cx3geFx3zyzkfhWkzc/aAXsSIIwy/4=;
+ b=WilgmAbNapbe7FI1Lfl/FgEA1EcRgi6x4lvEfE4sU+kfditi0oFFEHPpNSEiVfmeZe
+ c6htS1SeTy5hxpxH9KyfaPMdD/pam22q5iqHoPWyFzoRHdv0ltDQVLG0H0lbLe/ia0V+
+ jQ5TEBKKbsP3KIBGBhqh1mszf1CqiaAJuA9nuPzydOXNW3uKQlRjSmq6fdIlp+PAdumr
+ eQiHT7hyMiqZ4xZlm+OXnAOHcbwSassE9tRI/f4Zh3mf6/9AhvKtABDXcw7E1/beHqP6
+ zP0j+hz1Ve4tKmTnRClhf+2QftVUGk49kD/X8ZBpGo+dgYZYpSSju9Rkle0AMAAIwFjG
+ ryXQ==
+X-Gm-Message-State: APjAAAW4kg8Dxq2UpfmgglwgKAe5zaO9r4vL7XN0ojQPbtR5eeQ1jETM
+ UXfsPz2YwVKilzSlMjK81v8=
+X-Google-Smtp-Source: APXvYqz4GA56O/vf+BShmfyDWKA++Cn5Rbi7jwTdvBjuCIhbipdUaQDpIT2JfB4Fiulm3lnYiGKjew==
+X-Received: by 2002:a17:90a:21ac:: with SMTP id
+ q41mr4029805pjc.31.1559892055103; 
+ Fri, 07 Jun 2019 00:20:55 -0700 (PDT)
 Received: from localhost.localdomain ([110.227.95.145])
- by smtp.gmail.com with ESMTPSA id e26sm1222390pfn.94.2019.06.07.00.18.11
+ by smtp.gmail.com with ESMTPSA id t24sm1178302pfh.113.2019.06.07.00.20.52
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Fri, 07 Jun 2019 00:18:15 -0700 (PDT)
+ Fri, 07 Jun 2019 00:20:54 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, colin.king@canonical.com,
- hdegoede@redhat.com, straube.linux@gmail.com, julia.lawall@lip6.fr,
- hardiksingh.k@gmail.com, pakki001@umn.edu, hariprasad.kelam@gmail.com,
- arnd@arndb.de
-Subject: [PATCH] staging: rtl8723bs: core: Remove variable priority
-Date: Fri,  7 Jun 2019 12:48:01 +0530
-Message-Id: <20190607071801.28420-1-nishkadg.linux@gmail.com>
+ linux-kernel@vger.kernel.org, hardiksingh.k@gmail.com
+Subject: [PATCH] staging: rtl8723bs: hal: hal_btcoex.c: Remove variable
+Date: Fri,  7 Jun 2019 12:50:44 +0530
+Message-Id: <20190607072044.28481-1-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -93,58 +91,36 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove local variable change_priority, as it takes the value of the
-argument priority; as both of these variables are of type u8, priority
-can be modified without changing the value of its copy at the call site.
+Remove variable and use the values directly.
 Issue found with Coccinelle.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_xmit.c | 10 ++++------
- 1 file changed, 4 insertions(+), 6 deletions(-)
+ drivers/staging/rtl8723bs/hal/hal_btcoex.c | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-index 53146ec62ae9..b5dcb78fb4f4 100644
---- a/drivers/staging/rtl8723bs/core/rtw_xmit.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-@@ -625,13 +625,11 @@ static s32 update_attrib_sec_info(struct adapter *padapter, struct pkt_attrib *p
+diff --git a/drivers/staging/rtl8723bs/hal/hal_btcoex.c b/drivers/staging/rtl8723bs/hal/hal_btcoex.c
+index 6caddd7834a1..aebe8b8977ad 100644
+--- a/drivers/staging/rtl8723bs/hal/hal_btcoex.c
++++ b/drivers/staging/rtl8723bs/hal/hal_btcoex.c
+@@ -362,15 +362,9 @@ static u32 halbtcoutsrc_GetBtPatchVer(PBTC_COEXIST pBtCoexist)
  
- u8 qos_acm(u8 acm_mask, u8 priority)
+ static s32 halbtcoutsrc_GetWifiRssi(struct adapter *padapter)
  {
--	u8 change_priority = priority;
+-	struct hal_com_data *pHalData;
+-	s32 UndecoratedSmoothedPWDB = 0;
 -
- 	switch (priority) {
- 	case 0:
- 	case 3:
- 		if (acm_mask & BIT(1))
--			change_priority = 1;
-+			priority = 1;
- 		break;
- 	case 1:
- 	case 2:
-@@ -639,19 +637,19 @@ u8 qos_acm(u8 acm_mask, u8 priority)
- 	case 4:
- 	case 5:
- 		if (acm_mask & BIT(2))
--			change_priority = 0;
-+			priority = 0;
- 		break;
- 	case 6:
- 	case 7:
- 		if (acm_mask & BIT(3))
--			change_priority = 5;
-+			priority = 5;
- 		break;
- 	default:
- 		DBG_871X("qos_acm(): invalid pattrib->priority: %d!!!\n", priority);
- 		break;
- 	}
+-
+-	pHalData = GET_HAL_DATA(padapter);
+-
+-	UndecoratedSmoothedPWDB = pHalData->dmpriv.EntryMinUndecoratedSmoothedPWDB;
++	struct hal_com_data *pHalData = GET_HAL_DATA(padapter);
  
--	return change_priority;
-+	return priority;
+-	return UndecoratedSmoothedPWDB;
++	return pHalData->dmpriv.EntryMinUndecoratedSmoothedPWDB;
  }
  
- static void set_qos(struct pkt_file *ppktfile, struct pkt_attrib *pattrib)
+ static u8 halbtcoutsrc_GetWifiScanAPNum(struct adapter *padapter)
 -- 
 2.19.1
 
