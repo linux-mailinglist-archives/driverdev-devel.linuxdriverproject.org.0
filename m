@@ -1,74 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 783A0383FC
-	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Jun 2019 08:01:02 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 11A9C3849A
+	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Jun 2019 08:51:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4E80F86BC9;
-	Fri,  7 Jun 2019 06:01:00 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 756D785D68;
+	Fri,  7 Jun 2019 06:51:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kNjL0ed1340t; Fri,  7 Jun 2019 06:00:59 +0000 (UTC)
+	with ESMTP id jHZ5loPAdtwj; Fri,  7 Jun 2019 06:51:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C756D869B4;
-	Fri,  7 Jun 2019 06:00:58 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0417A844A5;
+	Fri,  7 Jun 2019 06:51:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 43C411BF2C1
- for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 06:00:57 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 092331BF419
+ for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 06:50:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3BC83204A4
- for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 06:00:57 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 03E6886905
+ for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 06:50:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id W-Xg2st66DRG for <devel@linuxdriverproject.org>;
- Fri,  7 Jun 2019 06:00:53 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f196.google.com (mail-qt1-f196.google.com
- [209.85.160.196])
- by silver.osuosl.org (Postfix) with ESMTPS id 59B852035C
- for <devel@driverdev.osuosl.org>; Fri,  7 Jun 2019 06:00:49 +0000 (UTC)
-Received: by mail-qt1-f196.google.com with SMTP id x2so100596qtr.0
- for <devel@driverdev.osuosl.org>; Thu, 06 Jun 2019 23:00:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=dWh46ehTtF7XrRzrQS4UMj2mqF99ZWlKh15WhZd7opk=;
- b=VbtRyWfh0kvCsghw4vQkoSYYEJBJkt40e8F3tOl//OUPrA30px/R4n4WjhT78ROsUA
- RfCJm1xFS7KHaK1mntORy62MwR9gLl8grdBsBe5RP8LuwhaG+HIZn2khfCURtIO7AZxx
- cCs5A53qGsXNDKFkG3YP/o8ywR7izGCE+VyssZEct9M+fZT1mUlT4kQkiioRVFvt7uQv
- fUoNYVJPIClMm9wdHC4KYfsNYkVHqRKQyguBFf80v8ppKP1kUYsC8bT0o62Yzz91avTm
- wvluBd/3/FkBJ1D+ZpnQmXK/MLJ4DdSLBCrLaXjSIBQU5MLCMoOHMvZV6tK2bNZtdvPp
- tSig==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=dWh46ehTtF7XrRzrQS4UMj2mqF99ZWlKh15WhZd7opk=;
- b=kREQhuLLtPQBHdJ9Yt3w2KpZzPPk3aSw1LcTTPAU+hOGFgY64Q3Tzlr+pMSG00jaGp
- BaDKZgFR+ZC5h0zVSg6KRvHFFxvV+o3QVdWlEZ8xRHhxyfsdFs9TeZnGPwjZSrgi5zNH
- 3PZYuRMQurMMOh+KquguUjkcJwzQ5z1qOdpMRpSNxW3Oo2LAhGuBM13+mHXRWXPOjmGy
- EWTdeSdF2dNmbDKMAKLW56B4CUa2Jo4aY77XvuMGuTBpdWpAEa2LmZcqH0vZmvRPNpde
- EfwIFXKDbG8Eq9fP99zlHviHW+dhUsPlyIhiyqy/oINjDB8NV8VS/+KDVnKbbJf4Akwz
- GQBg==
-X-Gm-Message-State: APjAAAVIIAUpGkOMOO/2d36371cncPk9+CJEV2cm4LCaWHZ3ePw+Hq1t
- 3gxpA8bUp/Ezs0pGUSH22II=
-X-Google-Smtp-Source: APXvYqzzmpJUF9IoRPMUxjasE/Eq5+9Yg1niCvXE8klMRI1pm12EcDjmShlXCjNiKSzkC3RmZoPNvA==
-X-Received: by 2002:aed:3ed5:: with SMTP id o21mr42958105qtf.369.1559887248462; 
- Thu, 06 Jun 2019 23:00:48 -0700 (PDT)
-Received: from ROOT.localdomain (modemcable124.134-176-173.mc.videotron.ca.
- [173.176.134.124])
- by smtp.gmail.com with ESMTPSA id 39sm633787qtx.71.2019.06.06.23.00.47
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 06 Jun 2019 23:00:48 -0700 (PDT)
-From: Maxime Desroches <desroches.maxime@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] Staging: vc04_services : vchiq_core: Fix a brace issue
-Date: Fri,  7 Jun 2019 01:59:45 -0400
-Message-Id: <20190607055945.21769-1-desroches.maxime@gmail.com>
-X-Mailer: git-send-email 2.17.1
+ with ESMTP id UCpSFCWU6sqE for <devel@linuxdriverproject.org>;
+ Fri,  7 Jun 2019 06:50:54 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtp1.iitb.ac.in (smtp1.iitb.ac.in [103.21.127.13])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A80FD868F9
+ for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 06:50:54 +0000 (UTC)
+Received: from ldns2.iitb.ac.in (ldns2.iitb.ac.in [10.200.12.2])
+ by smtp1.iitb.ac.in (Postfix) with SMTP id ADC8A105BF2A
+ for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 12:01:43 +0530 (IST)
+Received: (qmail 29928 invoked by uid 510); 7 Jun 2019 12:01:34 +0530
+X-Qmail-Scanner-Diagnostics: from 10.200.1.25 by ldns2 (envelope-from
+ <rws@aero.iitb.ac.in>, uid 501) with qmail-scanner-2.11
+ spamassassin: 3.4.1. mhr: 1.0. {clamdscan: 0.100.0/25472} 
+ Clear:RC:1(10.200.1.25):SA:0(1.5/7.0):. Processed in 3.271093 secs;
+ 07 Jun 2019 12:01:34 +0530
+X-Spam-Pyzor: Reported 1 times.
+X-Envelope-From: rws@aero.iitb.ac.in
+X-Qmail-Scanner-Mime-Attachments: |
+X-Qmail-Scanner-Zip-Files: |
+Received: from unknown (HELO ldns2.iitb.ac.in) (10.200.1.25)
+ by ldns2.iitb.ac.in with SMTP; 7 Jun 2019 12:01:30 +0530
+Received: from vayu.aero.iitb.ac.in (vayu.aero.iitb.ac.in [10.101.1.1])
+ by ldns2.iitb.ac.in (Postfix) with ESMTP id 217AF3418E8;
+ Fri,  7 Jun 2019 12:01:17 +0530 (IST)
+Received: from localhost (localhost [127.0.0.1])
+ by vayu.aero.iitb.ac.in (Postfix) with ESMTP id A628E8902E54F;
+ Fri,  7 Jun 2019 12:01:16 +0530 (IST)
+Received: from vayu.aero.iitb.ac.in ([127.0.0.1])
+ by localhost (vayu.aero.iitb.ac.in [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id FrMFcNjrnfJP; Fri,  7 Jun 2019 12:01:16 +0530 (IST)
+Received: from localhost (localhost [127.0.0.1])
+ by vayu.aero.iitb.ac.in (Postfix) with ESMTP id B09E28902E52F;
+ Fri,  7 Jun 2019 12:01:13 +0530 (IST)
+X-Virus-Scanned: amavisd-new at aero.iitb.ac.in
+Received: from vayu.aero.iitb.ac.in ([127.0.0.1])
+ by localhost (vayu.aero.iitb.ac.in [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id nIOVfjAWuQBS; Fri,  7 Jun 2019 12:01:13 +0530 (IST)
+Received: from vayu.aero.iitb.ac.in (vayu.aero.iitb.ac.in [10.101.1.1])
+ by vayu.aero.iitb.ac.in (Postfix) with ESMTP id 0EEE684310111;
+ Fri,  7 Jun 2019 12:01:10 +0530 (IST)
+Date: Fri, 7 Jun 2019 12:01:09 +0530 (IST)
+From: Martins Henry <rws@aero.iitb.ac.in>
+Message-ID: <412557711.60336.1559889069980.JavaMail.zimbra@aero.iitb.ac.in>
+Subject: Thanks and I wait for your answer
+MIME-Version: 1.0
+X-Originating-IP: [10.101.1.5]
+X-Mailer: Zimbra 8.8.12_GA_3803 (ZimbraWebClient - FF11 (Win)/8.8.12_GA_3794)
+Thread-Index: SsslhYkcLNFU69da/wYft5cO9/ZYnA==
+Thread-Topic: Thanks and I wait for your answer
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,39 +86,37 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Maxime Desroches <desroches.maxime@gmail.com>,
- linux-kernel@vger.kernel.org
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove braces in a single line if statement in the vchiq_core.c file
+Hello,
 
-Signed-off-by: Maxime Desroches <desroches.maxime@gmail.com>
----
- drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+I am Martin Henry, An American Citizen; I am the personal secretary to
+Mr. Donald Railton, the controller of a Lottery Company. Please I am
+having big problem now, I have a 6yrs old daughter who has leukemia, a
+disease of the blood, and she needs a bone marrow transplant or she
+will die.
 
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-index 44f0eb64952a..0dca6e834ffa 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-@@ -3100,9 +3100,8 @@ VCHIQ_STATUS_T vchiq_bulk_transfer(VCHIQ_SERVICE_HANDLE_T handle,
- 			       QMFLAGS_IS_BLOCKING |
- 			       QMFLAGS_NO_MUTEX_LOCK |
- 			       QMFLAGS_NO_MUTEX_UNLOCK);
--	if (status != VCHIQ_SUCCESS) {
-+	if (status != VCHIQ_SUCCESS)
- 		goto unlock_both_error_exit;
--	}
- 
- 	queue->local_insert++;
- 
--- 
-2.17.1
+Please I am only asking for your help and you will benefit from it
+also. As an insider with Lottery Firm, working as the personal
+secretary to the controller, I want you to send me your name to play,
+I have some numbers that are going to win, stored in his secret data
+system in the office. The Lottery is an online entry with credit card
+anywhere with a name and address. All I want you to do is to send your
+name to play it and I will send confirmation to you.
 
+I will play with my card on your name and the Prize will be shared
+equally between us. Immediately the results are released they will
+contact you for payment as the oversea winner. The lotto can be played
+with 9.00 dollars, or 50 dollars but the prize will be Millions.
+Remember that I am playing on your name with my card; I just want to
+front you for this, because I need this money to save the life of my
+little daughter.
+
+Thanks and I wait for your answer
+Martin Henry.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
