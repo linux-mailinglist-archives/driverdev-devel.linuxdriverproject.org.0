@@ -2,67 +2,79 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E39A3819F
-	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Jun 2019 01:10:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6E53D3830A
+	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Jun 2019 05:11:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6D87D8823B;
-	Thu,  6 Jun 2019 23:10:57 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6298988263;
+	Fri,  7 Jun 2019 03:10:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OrA7-zuKlg1T; Thu,  6 Jun 2019 23:10:57 +0000 (UTC)
+	with ESMTP id Pe4+FG6Ko2t9; Fri,  7 Jun 2019 03:10:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E76E288173;
-	Thu,  6 Jun 2019 23:10:56 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0FF838827C;
+	Fri,  7 Jun 2019 03:10:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7870C1BF232
- for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 23:10:54 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 8DC2E1BF9B2
+ for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 03:10:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 754B188191
- for <devel@linuxdriverproject.org>; Thu,  6 Jun 2019 23:10:54 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 8996420523
+ for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 03:10:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pf9yZcJ2jWMc for <devel@linuxdriverproject.org>;
- Thu,  6 Jun 2019 23:10:52 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 881F388173
- for <devel@driverdev.osuosl.org>; Thu,  6 Jun 2019 23:10:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender
- :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=WrR8a0nd7OqHeGMYq59lvGgYOhTcXv05lY92PTWM2CQ=; b=oGpZKv7v1449BYsCbjNBM23I59
- AeS10K3WrsuNY4wsvrv1v35sohJrGMRvaGQEKNq3MdRM8lvHiWBOBBBoPxXt+FXCQN5Fnem47OjSY
- Qzwa3F1vokFNDVeBNOtxbdTgUvwUk7VOD/k/FinOC44l2cTTG0crQ1sWOAIpg3/Jiq9Y4yiW0I9Aw
- WGO/zPFTdSE6bCX6qM5sF9XMPGXawRE5EctHBBcCVoct1Leh53VSTvD20ebDJhUzjIzEeDd4v3a1q
- zUAlixJtXCC1UQp7bOmgCiTpB1DT/LPw8z15jOb8ERhJ/KtT9nqL0MQW22vuzZ1QlwiEUEPuabx4m
- BH/G2evQ==;
-Received: from static-50-53-52-16.bvtn.or.frontiernet.net ([50.53.52.16]
- helo=dragon.dunlab)
- by merlin.infradead.org with esmtpsa (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hZ1Wn-0007f1-Gj; Thu, 06 Jun 2019 23:10:37 +0000
-Subject: Re: [PATCH v2 2/3] media: imx7-media-csi: add i.MX6UL support
-To: =?UTF-8?Q?S=c3=a9bastien_Szymanski?= <sebastien.szymanski@armadeus.com>,
+ with ESMTP id yECqoIWBoiqV for <devel@linuxdriverproject.org>;
+ Fri,  7 Jun 2019 03:10:55 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
+ [209.85.214.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id D1952204DC
+ for <devel@driverdev.osuosl.org>; Fri,  7 Jun 2019 03:10:55 +0000 (UTC)
+Received: by mail-pl1-f196.google.com with SMTP id s24so242427plr.8
+ for <devel@driverdev.osuosl.org>; Thu, 06 Jun 2019 20:10:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=WDhw+eAgLM5AT/4N10m4uBp8IUkFKeIWWDX2t9FopMg=;
+ b=Rubne3a8bo3lLNZqXpWyu4eQr2bbgv90zhzbIpUjAxUN1EVS3NoIvHjzBlKjjXwSzg
+ BSBKKDMUIchhCCsdG/hkiwqUP9quQycwXSk486ZSMS8ZXTDoVjd2oZtKTqTB5QPM8eJy
+ Rh+8X6V0y/SRyIZDGNmsIhH3WuOcsi9uZBkBDxprxoUWmBlyhezwDirygMwQgovyDApV
+ 3MlRY682DOCihpGwkSWCVD7tudTch4AB2OxBgcTZfsjw6+gLPa85j0vHHoP+ZeQMLNl+
+ 99zkuY4Q2aXEwGqIZmdAp8BmZwhbSsCoDGxiEx6kknY9yWtR02/34FbcQ1ba+R1lqMaq
+ fsQQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=WDhw+eAgLM5AT/4N10m4uBp8IUkFKeIWWDX2t9FopMg=;
+ b=LYhGB+ONZQWowJbWykYsqrehqIN9q1GtyZU0tKyOuEe7P6/2x5yckEkULOhhiy+I9y
+ HvnUz2yduYHxKjaX90Xv0LvVSRoPTks29LRfjF0j84iNTJcE6HY8w0ElPI0Yi/NS0kbO
+ mLi1KfjUMhvmUTz1AsiAR2jYAveZqvU9FKxQ5+LRQuOrhZhBKcpUr1xeoK/g9PhtEcJm
+ h76YtmHHKmzDdxeUirjNF+tHZZ09scdvevik57BbQOiVmjT2IWw/0VnLS3gyOpONgSAI
+ WkO/6dcbAopbg9zNKACfnZGSsAaAjw0wPwOB3/SheOyTnZYsKlgS+YDf6098u9Dbuz9G
+ DPCA==
+X-Gm-Message-State: APjAAAWfoqr4yju/IzjKyUPBapm3UY8knFokSDEQVgDd7GVzVreDs1Z7
+ KS0nQotSLpR7dlQD4ndV8lI=
+X-Google-Smtp-Source: APXvYqxY9Lwp/AoQFktEEK2OZh5HhrarwcZh+km/uPOTNoEDEI0sI8RDcTlES8cNSuAW3WBJBOgB3w==
+X-Received: by 2002:a17:902:4906:: with SMTP id
+ u6mr54171843pld.220.1559877055239; 
+ Thu, 06 Jun 2019 20:10:55 -0700 (PDT)
+Received: from t-1000 (c-98-210-58-162.hsd1.ca.comcast.net. [98.210.58.162])
+ by smtp.gmail.com with ESMTPSA id k3sm403781pju.27.2019.06.06.20.10.53
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 06 Jun 2019 20:10:54 -0700 (PDT)
+Date: Thu, 6 Jun 2019 20:10:52 -0700
+From: Shobhit Kukreti <shobhitkukreti@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-media@vger.kernel.org, Shawn Guo <shawnguo@kernel.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>
-References: <20190606153825.8183-1-sebastien.szymanski@armadeus.com>
- <20190606153825.8183-2-sebastien.szymanski@armadeus.com>
-From: Randy Dunlap <rdunlap@infradead.org>
-Message-ID: <92ca6e6e-2ebd-cec4-4f75-2674fd2c3d99@infradead.org>
-Date: Thu, 6 Jun 2019 16:10:30 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+ Bastien Nocera <hadess@hadess.net>, Hans de Goede <hdegoede@redhat.com>,
+ Larry Finger <Larry.Finger@lwfinger.net>
+Subject: [PATCH] staging: rtl8723bs: Fix Unneeded variable: "ret". Return "0"
+Message-ID: <20190607031049.GA30138@t-1000>
 MIME-Version: 1.0
-In-Reply-To: <20190606153825.8183-2-sebastien.szymanski@armadeus.com>
-Content-Language: en-US
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,45 +87,77 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
- NXP Linux Team <linux-imx@nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Steve Longerbeam <slongerbeam@gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gNi82LzE5IDg6MzggQU0sIFPDqWJhc3RpZW4gU3p5bWFuc2tpIHdyb3RlOgo+IGkuTVg3IGFu
-ZCBpLk1YNlVML0wgaGF2ZSB0aGUgc2FtZSBDU0kgY29udHJvbGxlci4gU28gYWRkIGkuTVg2VUwv
-TCBzdXBwb3J0Cj4gdG8gaW14Ny1tZWRpYS1jc2kgZHJpdmVyLgo+IAo+IFNpZ25lZC1vZmYtYnk6
-IFPDqWJhc3RpZW4gU3p5bWFuc2tpIDxzZWJhc3RpZW4uc3p5bWFuc2tpQGFybWFkZXVzLmNvbT4K
-PiAtLS0KPiAKPiBDaGFuZ2VzIGZvciB2MjoKPiAgLSByZWJhc2Ugb24gdG9wIG9mIGxpbnV4dHYv
-bWFzdGVyCj4gIC0gbWVudGlvbiBpLk1YNlVML0wgaW4gaGVhZGVyIGFuZCBLY29uZmlnIGhlbHAg
-dGV4dAo+ICAtIHJlbmFtZSBjc2lfdHlwZSB0byBjc2lfc29jX2lkCj4gCj4gIGRyaXZlcnMvc3Rh
-Z2luZy9tZWRpYS9pbXgvS2NvbmZpZyAgICAgICAgICB8ICA0ICstCj4gIGRyaXZlcnMvc3RhZ2lu
-Zy9tZWRpYS9pbXgvaW14Ny1tZWRpYS1jc2kuYyB8IDYyICsrKysrKysrKysrKysrKystLS0tLS0K
-PiAgMiBmaWxlcyBjaGFuZ2VkLCA0OSBpbnNlcnRpb25zKCspLCAxNyBkZWxldGlvbnMoLSkKPiAK
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2lteC9LY29uZmlnIGIvZHJpdmVy
-cy9zdGFnaW5nL21lZGlhL2lteC9LY29uZmlnCj4gaW5kZXggYWQzZDdkZjZiYjNjLi44YjZkYzQy
-YzM5ZTAgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2lteC9LY29uZmlnCj4g
-KysrIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2lteC9LY29uZmlnCj4gQEAgLTIyLDExICsyMiwx
-MSBAQCBjb25maWcgVklERU9fSU1YX0NTSQo+ICAJICBBIHZpZGVvNGxpbnV4IGNhbWVyYSBzZW5z
-b3IgaW50ZXJmYWNlIGRyaXZlciBmb3IgaS5NWDUvNi4KPiAgCj4gIGNvbmZpZyBWSURFT19JTVg3
-X0NTSQo+IC0JdHJpc3RhdGUgImkuTVg3IENhbWVyYSBTZW5zb3IgSW50ZXJmYWNlIGRyaXZlciIK
-PiArCXRyaXN0YXRlICJpLk1YNlVML0wgLyBpLk1YNyBDYW1lcmEgU2Vuc29yIEludGVyZmFjZSBk
-cml2ZXIiCj4gIAlkZXBlbmRzIG9uIFZJREVPX0lNWF9NRURJQSAmJiBWSURFT19ERVYgJiYgSTJD
-Cj4gIAlkZWZhdWx0IHkKCkhpLApJIHJlYWxpemUgdGhhdCB0aGlzICJkZWZhdWx0IHkiIGlzIG5v
-dCBwYXJ0IG9mIHRoaXMgcGF0Y2ggc2V0LCBidXQgd2UgaGF2ZQpwcmV0dHkgc3Ryb25nIGd1aWRh
-bmNlIHRoYXQgYSBkcml2ZXIgc2hvdWxkIG5vdCBkZWZhdWx0IHRvICd5JyB1bmxlc3MgaXQgaXMK
-bmVlZGVkIGZvciBhIHN5c3RlbSB0byBib290LiAgSWYgdGhpcyBkcml2ZXIgaXMgb3B0aW9uYWws
-IHRoZW4gcGxlYXNlIGRyb3AKdGhlIDIgb2NjdXJyZW5jZXMgb2YgImRlZmF1bHQgeSIgaW4gdGhp
-cyBLY29uZmlnIGZpbGUuCgp0aGFua3MuCj4gIAloZWxwCj4gIAkgIEVuYWJsZSBzdXBwb3J0IGZv
-ciB2aWRlbzRsaW51eCBjYW1lcmEgc2Vuc29yIGludGVyZmFjZSBkcml2ZXIgZm9yCj4gLQkgIGku
-TVg3Lgo+ICsJICBpLk1YNlVML0wgb3IgaS5NWDcuCj4gIGVuZG1lbnUKPiAgZW5kaWYKCgotLSAK
-flJhbmR5Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRl
-dmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2
-ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1k
-ZXZlbAo=
+coccicheck reported Unneeded variable ret at rtl8723bs/core/rtw_ap.c:1400.
+Function "rtw_acl_remove_sta" always returns 0. Modified return type of the
+function to void.
+
+Signed-off-by: Shobhit Kukreti <shobhitkukreti@gmail.com>
+---
+ drivers/staging/rtl8723bs/core/rtw_ap.c        | 4 +---
+ drivers/staging/rtl8723bs/include/rtw_ap.h     | 2 +-
+ drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 3 ++-
+ 3 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/staging/rtl8723bs/core/rtw_ap.c b/drivers/staging/rtl8723bs/core/rtw_ap.c
+index 7bebb41..87b201a 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_ap.c
++++ b/drivers/staging/rtl8723bs/core/rtw_ap.c
+@@ -1394,10 +1394,9 @@ int rtw_acl_add_sta(struct adapter *padapter, u8 *addr)
+ 	return ret;
+ }
+ 
+-int rtw_acl_remove_sta(struct adapter *padapter, u8 *addr)
++void rtw_acl_remove_sta(struct adapter *padapter, u8 *addr)
+ {
+ 	struct list_head	*plist, *phead;
+-	int ret = 0;
+ 	struct rtw_wlan_acl_node *paclnode;
+ 	struct sta_priv *pstapriv = &padapter->stapriv;
+ 	struct wlan_acl_pool *pacl_list = &pstapriv->acl_list;
+@@ -1438,7 +1437,6 @@ int rtw_acl_remove_sta(struct adapter *padapter, u8 *addr)
+ 
+ 	DBG_871X("%s, acl_num =%d\n", __func__, pacl_list->num);
+ 
+-	return ret;
+ }
+ 
+ u8 rtw_ap_set_pairwise_key(struct adapter *padapter, struct sta_info *psta)
+diff --git a/drivers/staging/rtl8723bs/include/rtw_ap.h b/drivers/staging/rtl8723bs/include/rtw_ap.h
+index d6f3a3a..4a1ed9e 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_ap.h
++++ b/drivers/staging/rtl8723bs/include/rtw_ap.h
+@@ -19,7 +19,7 @@ int rtw_check_beacon_data(struct adapter *padapter, u8 *pbuf,  int len);
+ void rtw_ap_restore_network(struct adapter *padapter);
+ void rtw_set_macaddr_acl(struct adapter *padapter, int mode);
+ int rtw_acl_add_sta(struct adapter *padapter, u8 *addr);
+-int rtw_acl_remove_sta(struct adapter *padapter, u8 *addr);
++void rtw_acl_remove_sta(struct adapter *padapter, u8 *addr);
+ 
+ u8 rtw_ap_set_pairwise_key(struct adapter *padapter, struct sta_info *psta);
+ int rtw_ap_set_group_key(struct adapter *padapter, u8 *key, u8 alg, int keyid);
+diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+index 236a462..9da1fd2 100644
+--- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
++++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+@@ -4174,7 +4174,8 @@ static int rtw_ioctl_acl_remove_sta(struct net_device *dev, struct ieee_param *p
+ 		return -EINVAL;
+ 	}
+ 
+-	return rtw_acl_remove_sta(padapter, param->sta_addr);
++	rtw_acl_remove_sta(padapter, param->sta_addr);
++	return 0;
+ 
+ }
+ 
+-- 
+2.7.4
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
