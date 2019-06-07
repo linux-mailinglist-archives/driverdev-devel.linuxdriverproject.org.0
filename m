@@ -1,78 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 11A9C3849A
-	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Jun 2019 08:51:46 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 425E938474
+	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Jun 2019 08:37:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 756D785D68;
-	Fri,  7 Jun 2019 06:51:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D413C20513;
+	Fri,  7 Jun 2019 06:37:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jHZ5loPAdtwj; Fri,  7 Jun 2019 06:51:42 +0000 (UTC)
+	with ESMTP id D11xx-efukuq; Fri,  7 Jun 2019 06:37:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0417A844A5;
-	Fri,  7 Jun 2019 06:51:42 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id ED9DD204C0;
+	Fri,  7 Jun 2019 06:37:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 092331BF419
- for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 06:50:57 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5B73F1BF419
+ for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 06:37:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 03E6886905
- for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 06:50:57 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5765B87D28
+ for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 06:37:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UCpSFCWU6sqE for <devel@linuxdriverproject.org>;
- Fri,  7 Jun 2019 06:50:54 +0000 (UTC)
+ with ESMTP id b3nQ70mS43YI for <devel@linuxdriverproject.org>;
+ Fri,  7 Jun 2019 06:37:40 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtp1.iitb.ac.in (smtp1.iitb.ac.in [103.21.127.13])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A80FD868F9
- for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 06:50:54 +0000 (UTC)
-Received: from ldns2.iitb.ac.in (ldns2.iitb.ac.in [10.200.12.2])
- by smtp1.iitb.ac.in (Postfix) with SMTP id ADC8A105BF2A
- for <devel@linuxdriverproject.org>; Fri,  7 Jun 2019 12:01:43 +0530 (IST)
-Received: (qmail 29928 invoked by uid 510); 7 Jun 2019 12:01:34 +0530
-X-Qmail-Scanner-Diagnostics: from 10.200.1.25 by ldns2 (envelope-from
+Received: from smtp1.iitb.ac.in (smtp4.iitb.ac.in [103.21.127.18])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 02FB586D73
+ for <devel@driverdev.osuosl.org>; Fri,  7 Jun 2019 06:37:40 +0000 (UTC)
+Received: from ldns1.iitb.ac.in (ldns1.iitb.ac.in [10.200.12.1])
+ by smtp1.iitb.ac.in (Postfix) with SMTP id 830D5104172C
+ for <devel@driverdev.osuosl.org>; Fri,  7 Jun 2019 12:02:04 +0530 (IST)
+Received: (qmail 30091 invoked by uid 510); 7 Jun 2019 12:02:04 +0530
+X-Qmail-Scanner-Diagnostics: from 10.200.1.25 by ldns1 (envelope-from
  <rws@aero.iitb.ac.in>, uid 501) with qmail-scanner-2.11
  spamassassin: 3.4.1. mhr: 1.0. {clamdscan: 0.100.0/25472} 
- Clear:RC:1(10.200.1.25):SA:0(1.5/7.0):. Processed in 3.271093 secs;
- 07 Jun 2019 12:01:34 +0530
-X-Spam-Pyzor: Reported 1 times.
+ Clear:RC:1(10.200.1.25):SA:0(1.5/7.0):. Processed in 2.124005 secs;
+ 07 Jun 2019 12:02:04 +0530
+X-Spam-Pyzor: Reported 0 times.
 X-Envelope-From: rws@aero.iitb.ac.in
 X-Qmail-Scanner-Mime-Attachments: |
 X-Qmail-Scanner-Zip-Files: |
-Received: from unknown (HELO ldns2.iitb.ac.in) (10.200.1.25)
- by ldns2.iitb.ac.in with SMTP; 7 Jun 2019 12:01:30 +0530
+Received: from unknown (HELO ldns1.iitb.ac.in) (10.200.1.25)
+ by ldns1.iitb.ac.in with SMTP; 7 Jun 2019 12:02:02 +0530
 Received: from vayu.aero.iitb.ac.in (vayu.aero.iitb.ac.in [10.101.1.1])
- by ldns2.iitb.ac.in (Postfix) with ESMTP id 217AF3418E8;
- Fri,  7 Jun 2019 12:01:17 +0530 (IST)
+ by ldns1.iitb.ac.in (Postfix) with ESMTP id 794B2360035;
+ Fri,  7 Jun 2019 12:01:53 +0530 (IST)
 Received: from localhost (localhost [127.0.0.1])
- by vayu.aero.iitb.ac.in (Postfix) with ESMTP id A628E8902E54F;
- Fri,  7 Jun 2019 12:01:16 +0530 (IST)
+ by vayu.aero.iitb.ac.in (Postfix) with ESMTP id 0899F8902E550;
+ Fri,  7 Jun 2019 12:01:53 +0530 (IST)
 Received: from vayu.aero.iitb.ac.in ([127.0.0.1])
  by localhost (vayu.aero.iitb.ac.in [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id FrMFcNjrnfJP; Fri,  7 Jun 2019 12:01:16 +0530 (IST)
+ with ESMTP id 1j2JhqLuIhU1; Fri,  7 Jun 2019 12:01:51 +0530 (IST)
 Received: from localhost (localhost [127.0.0.1])
- by vayu.aero.iitb.ac.in (Postfix) with ESMTP id B09E28902E52F;
- Fri,  7 Jun 2019 12:01:13 +0530 (IST)
+ by vayu.aero.iitb.ac.in (Postfix) with ESMTP id A50FF8902E4F1;
+ Fri,  7 Jun 2019 12:01:51 +0530 (IST)
 X-Virus-Scanned: amavisd-new at aero.iitb.ac.in
 Received: from vayu.aero.iitb.ac.in ([127.0.0.1])
  by localhost (vayu.aero.iitb.ac.in [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id nIOVfjAWuQBS; Fri,  7 Jun 2019 12:01:13 +0530 (IST)
+ with ESMTP id 950xbMhak_AZ; Fri,  7 Jun 2019 12:01:51 +0530 (IST)
 Received: from vayu.aero.iitb.ac.in (vayu.aero.iitb.ac.in [10.101.1.1])
- by vayu.aero.iitb.ac.in (Postfix) with ESMTP id 0EEE684310111;
- Fri,  7 Jun 2019 12:01:10 +0530 (IST)
-Date: Fri, 7 Jun 2019 12:01:09 +0530 (IST)
+ by vayu.aero.iitb.ac.in (Postfix) with ESMTP id 752AD8902E537;
+ Fri,  7 Jun 2019 12:01:49 +0530 (IST)
+Date: Fri, 7 Jun 2019 12:01:49 +0530 (IST)
 From: Martins Henry <rws@aero.iitb.ac.in>
-Message-ID: <412557711.60336.1559889069980.JavaMail.zimbra@aero.iitb.ac.in>
+Message-ID: <630023291.60470.1559889109394.JavaMail.zimbra@aero.iitb.ac.in>
 Subject: Thanks and I wait for your answer
 MIME-Version: 1.0
 X-Originating-IP: [10.101.1.5]
 X-Mailer: Zimbra 8.8.12_GA_3803 (ZimbraWebClient - FF11 (Win)/8.8.12_GA_3794)
-Thread-Index: SsslhYkcLNFU69da/wYft5cO9/ZYnA==
+Thread-Index: Z4di5DXkV78PrTTCqXhStc9XBmMYjg==
 Thread-Topic: Thanks and I wait for your answer
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
