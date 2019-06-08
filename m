@@ -1,59 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3744A39D72
-	for <lists+driverdev-devel@lfdr.de>; Sat,  8 Jun 2019 13:42:46 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8B4F139E26
+	for <lists+driverdev-devel@lfdr.de>; Sat,  8 Jun 2019 13:46:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C8D25867F0;
-	Sat,  8 Jun 2019 11:42:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B4CC22152C;
+	Sat,  8 Jun 2019 11:46:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vH5BkWIxuOxj; Sat,  8 Jun 2019 11:42:44 +0000 (UTC)
+	with ESMTP id mktgevoAbHuB; Sat,  8 Jun 2019 11:46:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C1A3D8679A;
-	Sat,  8 Jun 2019 11:42:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3F4A121519;
+	Sat,  8 Jun 2019 11:46:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A48DE1BF389
- for <devel@linuxdriverproject.org>; Sat,  8 Jun 2019 11:42:41 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0107D1BF389
+ for <devel@linuxdriverproject.org>; Sat,  8 Jun 2019 11:46:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A1E2085E28
- for <devel@linuxdriverproject.org>; Sat,  8 Jun 2019 11:42:41 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id F22888675F
+ for <devel@linuxdriverproject.org>; Sat,  8 Jun 2019 11:46:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id n3Aq8rKOacqn for <devel@linuxdriverproject.org>;
- Sat,  8 Jun 2019 11:42:41 +0000 (UTC)
+ with ESMTP id EnwNFiLzDblR for <devel@linuxdriverproject.org>;
+ Sat,  8 Jun 2019 11:46:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B146085DC1
- for <devel@driverdev.osuosl.org>; Sat,  8 Jun 2019 11:42:40 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 698638608B
+ for <devel@driverdev.osuosl.org>; Sat,  8 Jun 2019 11:46:48 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id D23F9214AF;
- Sat,  8 Jun 2019 11:42:39 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 87F24214AF;
+ Sat,  8 Jun 2019 11:46:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1559994160;
- bh=eGNDqAJa/E66bEEcN/rpmHTQSm5GAoneW5h3cyB/T4E=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ro9l3a90cIgBCFH4EZjQwQtx9z8i/NJPprc33OtZvc+sZCgwYwnOna4u4udQTIC2m
- k9JLMBU26nwyekaHqpK2E6vfzPqtErgv+EU8OVlEtvRv4RIJyaT0J8IRoxskLlTDbL
- /N/13tCAmwi0URcIRpks1bXdye0EXKUNxc1ywZyM=
+ s=default; t=1559994408;
+ bh=SODLOIdn9sI8wnlrPYxT8P0mdlJbHUjtV6JnXpCdjGU=;
+ h=From:To:Cc:Subject:Date:From;
+ b=zJsJ4KfVeDuxRb+iCEQjwV2KK3hv/J9VOGhE2uQtN3nd6W8FSRGfVJSn4OBjuawgs
+ QzY0AC+h7ufZBBuMoDBPZSwP9ADqdxjNLvZtX6HcHjYnVTiRla0cYIKt9/+2DOTQhu
+ ZIfcaZWU2YZu1T8rlgOZVJe3/VlkuO5OanOsHvmI=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 03/49] Staging: vc04_services: Fix a couple error
+Subject: [PATCH AUTOSEL 4.14 01/31] Staging: vc04_services: Fix a couple error
  codes
-Date: Sat,  8 Jun 2019 07:41:44 -0400
-Message-Id: <20190608114232.8731-3-sashal@kernel.org>
+Date: Sat,  8 Jun 2019 07:46:12 -0400
+Message-Id: <20190608114646.9415-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190608114232.8731-1-sashal@kernel.org>
-References: <20190608114232.8731-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
@@ -94,10 +92,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/staging/vc04_services/bcm2835-camera/controls.c b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-index cff7b1e07153..b688ebc01740 100644
+index 77a5d6f4e1eb..8a242f609d3b 100644
 --- a/drivers/staging/vc04_services/bcm2835-camera/controls.c
 +++ b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-@@ -576,7 +576,7 @@ static int ctrl_set_image_effect(struct bm2835_mmal_dev *dev,
+@@ -579,7 +579,7 @@ static int ctrl_set_image_effect(struct bm2835_mmal_dev *dev,
  				dev->colourfx.enable ? "true" : "false",
  				dev->colourfx.u, dev->colourfx.v,
  				ret, (ret == 0 ? 0 : -EINVAL));
@@ -106,7 +104,7 @@ index cff7b1e07153..b688ebc01740 100644
  }
  
  static int ctrl_set_colfx(struct bm2835_mmal_dev *dev,
-@@ -600,7 +600,7 @@ static int ctrl_set_colfx(struct bm2835_mmal_dev *dev,
+@@ -603,7 +603,7 @@ static int ctrl_set_colfx(struct bm2835_mmal_dev *dev,
  		 "%s: After: mmal_ctrl:%p ctrl id:0x%x ctrl val:%d ret %d(%d)\n",
  			__func__, mmal_ctrl, ctrl->id, ctrl->val, ret,
  			(ret == 0 ? 0 : -EINVAL));
