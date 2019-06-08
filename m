@@ -1,75 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D18B639F9A
-	for <lists+driverdev-devel@lfdr.de>; Sat,  8 Jun 2019 14:11:53 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D23243A000
+	for <lists+driverdev-devel@lfdr.de>; Sat,  8 Jun 2019 15:45:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 62F898679A;
-	Sat,  8 Jun 2019 12:11:51 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7C82D878A5;
+	Sat,  8 Jun 2019 13:45:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DkEKXzEU8wvL; Sat,  8 Jun 2019 12:11:51 +0000 (UTC)
+	with ESMTP id h0jDmkTeR3+o; Sat,  8 Jun 2019 13:45:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E59548675F;
-	Sat,  8 Jun 2019 12:11:49 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0B6D586EB1;
+	Sat,  8 Jun 2019 13:45:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D172E1BF3CE
- for <devel@linuxdriverproject.org>; Sat,  8 Jun 2019 12:11:47 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8B7F91BF427
+ for <devel@linuxdriverproject.org>; Sat,  8 Jun 2019 13:45:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id CD39920498
- for <devel@linuxdriverproject.org>; Sat,  8 Jun 2019 12:11:47 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7D59886F5C
+ for <devel@linuxdriverproject.org>; Sat,  8 Jun 2019 13:45:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xYBPJh-eTaEH for <devel@linuxdriverproject.org>;
- Sat,  8 Jun 2019 12:11:46 +0000 (UTC)
+ with ESMTP id gfgrffA+TzO2 for <devel@linuxdriverproject.org>;
+ Sat,  8 Jun 2019 13:45:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic303-20.consmr.mail.ir2.yahoo.com
- (sonic303-20.consmr.mail.ir2.yahoo.com [77.238.178.201])
- by silver.osuosl.org (Postfix) with ESMTPS id F076720466
- for <devel@driverdev.osuosl.org>; Sat,  8 Jun 2019 12:11:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aol.com; s=a2048;
- t=1559995904; bh=KvReJB3bNC8VOtsMTPigIMkLct1KV+hCCuAue4hnO8c=;
- h=Subject:To:References:Cc:From:Date:In-Reply-To:From:Subject;
- b=bDMcOZIrahj+HBbU0JUUVnjtQSXN2ZHGV8PEzvyrcG49h/sOSRSMMdAFdrZYajF3hu1m39an1Va/bXXT/6hZwAw3X2ZVyyaFzdokvoG1klhiRAuxU7wFPB+nGlIbq5vUOVrrfLCzlxt2t4tFb8yhoomRaKOAq7IcnZmEg8EH/lO8hW5QVa8vBgbdz/yfk1h7Lx745OF5//F1rfCwwCWuMf9CNC9agw60HYGvaMIPth/IZYCc3QXiHsCpZ/pEo5YCwbE8aO4iy9L3Gu7DBjsQ7acKsuQysqzoG0xiwrCXood5cRwGCfsTE2MVe0XTdnSf6Wf/D94fMq1rfXS2+aBD0Q==
-X-YMail-OSG: X0VcEgsVM1kj6QP.grn7pZmdoJ9yh4I39ENaddveK7euHDhzLkOly_LHcHUH_Bu
- 52FySkfH1EhebGY_fu3o2vZUicdi99eDTrlieNDSJ4QQ6a2MZj33HaDsHzUabrD2lW1HPQR9JMa9
- FIZrwfkIJYtO5Qua5foxAHWxORV3bTCy6VKPdwVupw8UEJceEwomL59H70XyT6fRa81cEJ88plFY
- E2zT1CqyPYPY_Drc_h9LU2CnSZ64ruZ8tN5Fa4_hYhgpF_kusTOXIkCd.no05OckYdEWkjpC5CpU
- .w0HEuh_JP2djKtpz6fF2DGOnYhNtr_mMdBlDJ2RUH7maT7IrtWLYtGzZTf7CNj3s7aSq7RQedty
- z2xKwnUdQmZxkUFFy1KCBO1TB9fm6zeKnCATD7kJN5N7Ergt19T5Bl25A_UW0S5v2E6E1OG35Iad
- GnsaW_H.XDiZIXakBVIkYp6bNkE2lI0Rs1jEE9_iTlFVfn1bQvfQwU5JnYxSlexI_ZGVNx2R1FS2
- I3PTtnchEF0FOforb9HaqbWxafCdfL2.wernSWenqkk3NTH.I.WhrQqgOkZvKL8bXpr6fG_H8WMP
- l62dypNbqGqAEQaUOAidvLi4n.sJ3vhhYrwCfTXL0AIQJOqVN.GwS._c9v7zJ9Kz_8NTiYa90Lcp
- hYexQfy3qfgtzmbnrx87ohdP9wouoLypdY7G_Hs_smBU3tyUH6noIJkD2zoScHGCY8MAYJaX7jnW
- oCueO3DxAtdG00QJ8yHYTLFt7FQl_ttSrlRCWo5kwE3Jxa8bJeZlUnxNwoJ7HWLtVNSAUTdI234K
- QkbM.1JvSGNJfUlfGzTUdGz7_.J5k4PLz_QyRqQSncIUqHPn4rEpJkyf9Nzv9zoWiBDe8H5Jx3KT
- S41z3H7zoR8Js.zfLC.IspsGDq_4xruXJ_jf3b4o.1g0zgLvr7y55hS56P2pgT7_WXDE3JysYLfk
- SOdspW1bbAVL0p0NMIUhGZZ5ng9U8tz3zYjFpQYaPpAjhL4k4daPWqA2c5TyytXSRmyugsSpgLBZ
- VOePAQT1e2f3UBTw99XA6iWc0utDP.HAx3T05MUPKNSEUoopZHR63YIGswu6HOGiNjaMYMQp9rMK
- qGChP3eu.JVbr.ETsA5nGLIeQmVe0nkSm7_wnSRVOZHSFmA3w5GY8_RuS0gp24ejJZOJFsgZ7Rly
- Wa709w3kvUplTPyc.5MffCn20x4I4Vb6OMfTEeSE4F6A-
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic303.consmr.mail.ir2.yahoo.com with HTTP; Sat, 8 Jun 2019 12:11:44 +0000
-Received: from 125.120.226.196 (EHLO [192.168.0.101]) ([125.120.226.196])
- by smtp415.mail.ir2.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID
- aaa314d510ea14c03aa85b21185d2f79; 
- Sat, 08 Jun 2019 12:11:43 +0000 (UTC)
-Subject: Re: [PATCH] staging: erofs: make use of DBG_BUGON
-To: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-References: <20190608094918.GA11605@hari-Inspiron-1545>
-From: Gao Xiang <hsiangkao@aol.com>
-Message-ID: <0b6db3cd-25ec-49b2-93e0-31d0677507c1@aol.com>
-Date: Sat, 8 Jun 2019 20:11:36 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+Received: from mail-qk1-f194.google.com (mail-qk1-f194.google.com
+ [209.85.222.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 009CC86EB1
+ for <devel@driverdev.osuosl.org>; Sat,  8 Jun 2019 13:45:36 +0000 (UTC)
+Received: by mail-qk1-f194.google.com with SMTP id m14so3025306qka.10
+ for <devel@driverdev.osuosl.org>; Sat, 08 Jun 2019 06:45:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=MUPzmCJTf51J7FWBUyfukjZxItNopz4dEjvYkIcFsmw=;
+ b=Q2pkpTSh1sN3U8JV85bhk2nEzmUygYdBsraQ4g0HlG3alCSXucsczck0e33FeJTdWh
+ 9XOj8LtvUveWSagEvqU257mowxAolaPyE4Tfa0WzkOs2VJNbd9cAnyQ/I1oLCWJoykuq
+ t2OiqtWF51/6yhnwsOaImIfM7TCPufiXxfrgf5tQHtdC/OkoL9Fz1lmba+i6BjvjgQKa
+ 7k56dP/NuDsV6kLYgsASzfGz7hGa44Knslc4/+MKbEoCo1VtS4gSgB7cWa7AnYDIiDuY
+ 5iV4+Y45m6x+gOxvXcYAGOgDvJtRWlzqZ+AU+BiOQh8SWpwsYXPEUTeFnP9G57XRDjL2
+ +5Yg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=MUPzmCJTf51J7FWBUyfukjZxItNopz4dEjvYkIcFsmw=;
+ b=rcDzVdEMiWhwSRkGbRG6y9jZ0d229BWfIpQjI7y4AVHBWdXX70BFCeV5rsla1BAhjU
+ kitODMe9VsU7scrRu87/tx1QdZHwZq9RAauCwpuETHSzmJr+jcJCNML5HOjehBF12nka
+ +1qnHYXXEUrrmm6TMYLf+28AUtfWzwzy2O9yBcR1vfNn3v2Da75+BK1AgtzVePJ6nDU6
+ 161KYkh3BPaxziMylNxbIqWzJTFbxQ+Y1/UhKjMvwnIChmwBRIIcrPjVr8+AZOjLJU23
+ jmTD0Ij9WDe2xb8olw1aSrwH6kYN6uk2mdUiS0wZ+6d3RYYmwi+vkDcVfIsGGucSJMl0
+ jOUA==
+X-Gm-Message-State: APjAAAVurrMlsDWiaT9LTqtB/FVD9wMHWmG2IFYjc+z//5SwgjnAc0sb
+ QOANObzjtp8jDUud/qUDGPQ=
+X-Google-Smtp-Source: APXvYqy7bXDSwzqI7DavVnoWod/v6m7quPV7wq8QDArJeMYTrf7s3jVmLs4z11XCnh1WGiWiSQTX7A==
+X-Received: by 2002:a37:9c16:: with SMTP id f22mr48508568qke.261.1560001536036; 
+ Sat, 08 Jun 2019 06:45:36 -0700 (PDT)
+Received: from arch-01.home (c-73-132-202-198.hsd1.md.comcast.net.
+ [73.132.202.198])
+ by smtp.gmail.com with ESMTPSA id l94sm2427949qte.48.2019.06.08.06.45.34
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Sat, 08 Jun 2019 06:45:35 -0700 (PDT)
+Date: Sat, 8 Jun 2019 13:45:05 +0000
+From: Geordan Neukum <gneukum1@gmail.com>
+To: Hao Xu <haoxu.linuxkernel@gmail.com>
+Subject: Re: [PATCH 1/2] staging: kpc2000: kpc2000_i2c: void* -> void *
+Message-ID: <20190608134505.GA963@arch-01.home>
+References: <1559978867-3693-1-git-send-email-haoxu.linuxkernel@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20190608094918.GA11605@hari-Inspiron-1545>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <1559978867-3693-1-git-send-email-haoxu.linuxkernel@gmail.com>
+User-Agent: Mutt/1.12.0 (2019-05-25)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,63 +87,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Chao Yu <yuchao0@huawei.com>, linux-kernel@vger.kernel.org,
- linux-erofs@lists.ozlabs.org
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-
-
-On 2019/6/8 ??????5:49, Hariprasad Kelam wrote:
-> DBG_BUGON is introduced and it could only crash when EROFS_FS_DEBUG
-> (EROFS developping feature) is on.
-> replace BUG_ON with DBG_BUGON.
+On Sat, Jun 08, 2019 at 03:27:46PM +0800, Hao Xu wrote:
+> modify void* to void * for #define inb_p(a) readq((void*)a)
+> and #define outb_p(d,a) writeq(d,(void*)a)
 > 
-> Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-Reviewed-by: Gao Xiang <gaoxiang25@huawei.com>
-
-Thanks,
-Gao Xiang
-
+> Signed-off-by: Hao Xu <haoxu.linuxkernel@gmail.com>
 > ---
->  drivers/staging/erofs/unzip_vle.h | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+>  drivers/staging/kpc2000/kpc2000_i2c.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/staging/erofs/unzip_vle.h b/drivers/staging/erofs/unzip_vle.h
-> index 517e5ce..902e67d 100644
-> --- a/drivers/staging/erofs/unzip_vle.h
-> +++ b/drivers/staging/erofs/unzip_vle.h
-> @@ -147,7 +147,7 @@ static inline unsigned z_erofs_onlinepage_index(struct page *page)
->  {
->  	union z_erofs_onlinepage_converter u;
+> diff --git a/drivers/staging/kpc2000/kpc2000_i2c.c b/drivers/staging/kpc2000/kpc2000_i2c.c
+> index a434dd0..de3a0c8 100644
+> --- a/drivers/staging/kpc2000/kpc2000_i2c.c
+> +++ b/drivers/staging/kpc2000/kpc2000_i2c.c
+> @@ -124,9 +124,9 @@ struct i2c_device {
 >  
-> -	BUG_ON(!PagePrivate(page));
-> +	DBG_BUGON(!PagePrivate(page));
->  	u.v = &page_private(page);
->  
->  	return atomic_read(u.o) >> Z_EROFS_ONLINEPAGE_INDEX_SHIFT;
-> @@ -179,7 +179,7 @@ static inline void z_erofs_onlinepage_fixup(struct page *page,
->  		if (!index)
->  			return;
->  
-> -		BUG_ON(id != index);
-> +		DBG_BUGON(id != index);
->  	}
->  
->  	v = (index << Z_EROFS_ONLINEPAGE_INDEX_SHIFT) |
-> @@ -193,7 +193,7 @@ static inline void z_erofs_onlinepage_endio(struct page *page)
->  	union z_erofs_onlinepage_converter u;
->  	unsigned v;
->  
-> -	BUG_ON(!PagePrivate(page));
-> +	DBG_BUGON(!PagePrivate(page));
->  	u.v = &page_private(page);
->  
->  	v = atomic_dec_return(u.o);
-> 
+>  // FIXME!
+>  #undef inb_p
+> -#define inb_p(a) readq((void*)a)
+> +#define inb_p(a) readq((void *)a)
+>  #undef outb_p
+> -#define outb_p(d,a) writeq(d,(void*)a)
+> +#define outb_p(d,a) writeq(d,(void *)a)
+
+Alternatively to fixing up the style here, did you consider just
+removing these two macros altogether and calling [read|write]q
+directly throughout the kpc_i2c driver (per the '//FIXME' comment)?
+
+Unless, I'm misunderstanding something, these macros are shadowing the
+functions [in|out]b_p, which already exist in io.h. [in|out]b_p are for
+8-bit i/o transactions and [read|write]q are for 64-bit transactions, so
+shadowing the original [in|out]b_p with something that actually does
+64-bit transactions is probably potentially misleading here.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
