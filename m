@@ -2,75 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A95AC39C33
-	for <lists+driverdev-devel@lfdr.de>; Sat,  8 Jun 2019 11:39:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F85739C3C
+	for <lists+driverdev-devel@lfdr.de>; Sat,  8 Jun 2019 11:49:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C186986ED5;
-	Sat,  8 Jun 2019 09:39:45 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 955C186430;
+	Sat,  8 Jun 2019 09:49:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LNS43CvQYnx5; Sat,  8 Jun 2019 09:39:45 +0000 (UTC)
+	with ESMTP id N8RHJdiQbwkK; Sat,  8 Jun 2019 09:49:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6CFA185735;
-	Sat,  8 Jun 2019 09:39:44 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 362CD861E7;
+	Sat,  8 Jun 2019 09:49:26 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 96D261BF32E
- for <devel@linuxdriverproject.org>; Sat,  8 Jun 2019 09:39:42 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 562F21BF32E
+ for <devel@linuxdriverproject.org>; Sat,  8 Jun 2019 09:49:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 93C608582C
- for <devel@linuxdriverproject.org>; Sat,  8 Jun 2019 09:39:42 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4F41386311
+ for <devel@linuxdriverproject.org>; Sat,  8 Jun 2019 09:49:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QD863C8myw1v for <devel@linuxdriverproject.org>;
- Sat,  8 Jun 2019 09:39:42 +0000 (UTC)
+ with ESMTP id 1787OVNxp8ZC for <devel@linuxdriverproject.org>;
+ Sat,  8 Jun 2019 09:49:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
- [209.85.215.193])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1B80685735
- for <devel@driverdev.osuosl.org>; Sat,  8 Jun 2019 09:39:42 +0000 (UTC)
-Received: by mail-pg1-f193.google.com with SMTP id v11so2434322pgl.5
- for <devel@driverdev.osuosl.org>; Sat, 08 Jun 2019 02:39:42 -0700 (PDT)
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id BD5EE84138
+ for <devel@driverdev.osuosl.org>; Sat,  8 Jun 2019 09:49:23 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id a186so2546005pfa.5
+ for <devel@driverdev.osuosl.org>; Sat, 08 Jun 2019 02:49:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=zUjxWxq5BrI2FdDPrseDzMNtgvtMjERhQiQzZo7nm7E=;
- b=TAMq7WgCUSTJYkkb+calodVXAtvnqOeZde9ehQHvFCXrubzN4fWZzQgbwa8bHq6C1M
- AtlxxKBDISu2nzuZWa7xYljbMFCEcOW2kExJ03L/SfOpiQzq5Ai0mx5W/TmR98lz+mpe
- 88iVjnMKH+Xop89CHXoJOZv30UlNude7LIPzdm3mXq02qdVDII3LTCzxmihX2CGPZbSd
- hO4mazSLbrevzHNGJvMUtuImLT+94ajD0mJ7QdK3WORuMX0Pdm/aEDRWyHofxctadCmM
- 5nwENFnPVVc+BtTwLLLMehuDKltXUs6zVZdOlqPgBnVVXlVYUnMy9mOZNmql49weDNe6
- hhXg==
+ :user-agent; bh=ceB58BsT2jhuXKLvpsF6nc1EbvAVeMuXaSf+CtPNzlg=;
+ b=ZOHbvL/SIifcsBkKsIMBtCrqGGFpB9o8aoUYAqXaYK5rea2+tx1pKid0Xi8Vynev58
+ f4lILw2GUYXpeCcgNH6FgWHFCQaUtzuGBRUWW48lR3mLLdEZv9dsA1qa9AUccDBNi22I
+ FgsktcRehMLN1neRxc76Eny2dhNClfBg9lqgOzMnQoQykFEJW79rJ6r5sHMy70/8OX7y
+ 2sLhGA1S2c1im9T5w19fWhB6zgCHOChLxh+z3iWJNKNclF2wDv5mkWF/sxsNjI6OO3je
+ NO3scrCxGmlU6VWSp9bmE2IM6I/n0jD+PCx/zfE5FgHtmru881NJywKLdNRLfXXsSYdj
+ onpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=zUjxWxq5BrI2FdDPrseDzMNtgvtMjERhQiQzZo7nm7E=;
- b=joRGNzE7aNAGkHkvaj+5bBewk2WtMqGVaS/hGRPGFeC5T1IeAHLDWzdcxPXWK7Vr1f
- WEUNnXjoDQiXTXretpNW5sxuF75Wq4ElE+MGQaWOZgdpcOp89M5IYw458knW6tSyMSrQ
- +HaxZ6nU65Puxx+97PHBquTltDy8KewV3nHpAsE1HZTfaVpfo0+Gkinn/3GszxfgbxGA
- opyGZ0i1gE9Y+vkNPpU4fC1bD7hOK48bGln2pFK/Zzm+40F4chPy6QB6kuLcoyY6DceK
- p7hfhbqnOuDRxSnxOy7SarhMO3so4K4Xt5HWDkL5t9nYu5B8Sx7O5YB/5Pda9Id4DnOR
- yOMQ==
-X-Gm-Message-State: APjAAAVq8u/BzVNPuyuhbwf9k5v4PmBJLvSEbJak68kbBTzOu6NsstQU
- zrQV1bYtsxuh5JyKCt7uf8g=
-X-Google-Smtp-Source: APXvYqwiTuXWweBI9kCIpvuh3BS9bBAfUi5CdTkOsKqi9kmZQJOXNb+PRo+WIyuorc2QmIo1ixGesA==
-X-Received: by 2002:a62:4c5:: with SMTP id 188mr63276002pfe.19.1559986781709; 
- Sat, 08 Jun 2019 02:39:41 -0700 (PDT)
+ bh=ceB58BsT2jhuXKLvpsF6nc1EbvAVeMuXaSf+CtPNzlg=;
+ b=kCD617sGUAu0dcJnng4JSjmC99yuN8S7y2QrFfv+9McOiPGEUhxJarGCGxfTy22eXN
+ klk3t9E5pqGffQc4MCeXS9db3O3N6EQ4Gv8Raj4GMQ/QZ0fAs+/Cfl9vAi4NQrZd1D3G
+ S5FRgTOs/IxtgZGaTEQd+dNVQhJjPvBHcm9xIJ0wIvW9ulfQFJL8JbI2X4ESMc1+K3+N
+ pvzzrpwGlB+1xKzvuqp2yH5tGqToZMmfOj0N0jMDVqBHlLK6/NrVOwZrC95xgCA63g2w
+ bKQ5tNo1JFDIDz6j4QQ7TVr2y63U3FpXOPoiw53Lzso3o01BwqkQXrOEl52Sie4HPG7T
+ hvEg==
+X-Gm-Message-State: APjAAAVMcizMjQLf14p0ZR9f/KmCPnirUcQ3BS3VLKhVJegdJq2uOkQd
+ cWOFkAErEtXLZNkk/ES5wPg=
+X-Google-Smtp-Source: APXvYqynnyl6j4lWBQSS4y8CNh8+wxRD6csIB5VrA1DZZsD6AFefijgTYBS9fQJ9CefQtd5iIsDANQ==
+X-Received: by 2002:a62:65c7:: with SMTP id z190mr63825619pfb.73.1559987363342; 
+ Sat, 08 Jun 2019 02:49:23 -0700 (PDT)
 Received: from hari-Inspiron-1545 ([183.83.89.153])
- by smtp.gmail.com with ESMTPSA id 66sm4883523pfg.140.2019.06.08.02.39.39
+ by smtp.gmail.com with ESMTPSA id z11sm4017605pjq.13.2019.06.08.02.49.20
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 08 Jun 2019 02:39:41 -0700 (PDT)
-Date: Sat, 8 Jun 2019 15:09:37 +0530
+ Sat, 08 Jun 2019 02:49:22 -0700 (PDT)
+Date: Sat, 8 Jun 2019 15:19:18 +0530
 From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 To: Gao Xiang <gaoxiang25@huawei.com>, Chao Yu <yuchao0@huawei.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  linux-erofs@lists.ozlabs.org, devel@driverdev.osuosl.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: erofs: fix warning Comparison to bool
-Message-ID: <20190608093937.GA10461@hari-Inspiron-1545>
+Subject: [PATCH] staging: erofs: make use of DBG_BUGON
+Message-ID: <20190608094918.GA11605@hari-Inspiron-1545>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.5.24 (2015-08-30)
@@ -91,28 +91,46 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-fix below warnings reported by coccicheck
-
-drivers/staging/erofs/unzip_vle.c:332:11-18: WARNING: Comparison to bool
+DBG_BUGON is introduced and it could only crash when EROFS_FS_DEBUG
+(EROFS developping feature) is on.
+replace BUG_ON with DBG_BUGON.
 
 Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 ---
- drivers/staging/erofs/unzip_vle.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/erofs/unzip_vle.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/erofs/unzip_vle.c b/drivers/staging/erofs/unzip_vle.c
-index 9ecaa87..f3d0d2c 100644
---- a/drivers/staging/erofs/unzip_vle.c
-+++ b/drivers/staging/erofs/unzip_vle.c
-@@ -329,7 +329,7 @@ try_to_claim_workgroup(struct z_erofs_vle_workgroup *grp,
- 		       z_erofs_vle_owned_workgrp_t *owned_head,
- 		       bool *hosted)
+diff --git a/drivers/staging/erofs/unzip_vle.h b/drivers/staging/erofs/unzip_vle.h
+index 517e5ce..902e67d 100644
+--- a/drivers/staging/erofs/unzip_vle.h
++++ b/drivers/staging/erofs/unzip_vle.h
+@@ -147,7 +147,7 @@ static inline unsigned z_erofs_onlinepage_index(struct page *page)
  {
--	DBG_BUGON(*hosted == true);
-+	DBG_BUGON(*hosted);
+ 	union z_erofs_onlinepage_converter u;
  
- 	/* let's claim these following types of workgroup */
- retry:
+-	BUG_ON(!PagePrivate(page));
++	DBG_BUGON(!PagePrivate(page));
+ 	u.v = &page_private(page);
+ 
+ 	return atomic_read(u.o) >> Z_EROFS_ONLINEPAGE_INDEX_SHIFT;
+@@ -179,7 +179,7 @@ static inline void z_erofs_onlinepage_fixup(struct page *page,
+ 		if (!index)
+ 			return;
+ 
+-		BUG_ON(id != index);
++		DBG_BUGON(id != index);
+ 	}
+ 
+ 	v = (index << Z_EROFS_ONLINEPAGE_INDEX_SHIFT) |
+@@ -193,7 +193,7 @@ static inline void z_erofs_onlinepage_endio(struct page *page)
+ 	union z_erofs_onlinepage_converter u;
+ 	unsigned v;
+ 
+-	BUG_ON(!PagePrivate(page));
++	DBG_BUGON(!PagePrivate(page));
+ 	u.v = &page_private(page);
+ 
+ 	v = atomic_dec_return(u.o);
 -- 
 2.7.4
 
