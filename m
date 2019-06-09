@@ -1,69 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 189FF3A586
-	for <lists+driverdev-devel@lfdr.de>; Sun,  9 Jun 2019 14:50:05 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id F0DF53A58A
+	for <lists+driverdev-devel@lfdr.de>; Sun,  9 Jun 2019 14:51:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 48CE722179;
-	Sun,  9 Jun 2019 12:50:03 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E28CE87820;
+	Sun,  9 Jun 2019 12:51:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wSWGI1KwKhcw; Sun,  9 Jun 2019 12:50:02 +0000 (UTC)
+	with ESMTP id NXmsnP-X+Fsi; Sun,  9 Jun 2019 12:51:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 75C46220FB;
-	Sun,  9 Jun 2019 12:50:01 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5C0E2875B9;
+	Sun,  9 Jun 2019 12:51:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 499481BF41C
- for <devel@linuxdriverproject.org>; Sun,  9 Jun 2019 12:49:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 49BB31BF41C
+ for <devel@linuxdriverproject.org>; Sun,  9 Jun 2019 12:50:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 44E4585B8A
- for <devel@linuxdriverproject.org>; Sun,  9 Jun 2019 12:49:59 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 44A9685B8D
+ for <devel@linuxdriverproject.org>; Sun,  9 Jun 2019 12:50:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2EvY5ynKin1V for <devel@linuxdriverproject.org>;
- Sun,  9 Jun 2019 12:49:58 +0000 (UTC)
+ with ESMTP id LSlEd5TGcZKO for <devel@linuxdriverproject.org>;
+ Sun,  9 Jun 2019 12:50:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
- [209.85.210.196])
- by whitealder.osuosl.org (Postfix) with ESMTPS id AD41785A90
- for <devel@driverdev.osuosl.org>; Sun,  9 Jun 2019 12:49:58 +0000 (UTC)
-Received: by mail-pf1-f196.google.com with SMTP id t16so3707739pfe.11
- for <devel@driverdev.osuosl.org>; Sun, 09 Jun 2019 05:49:58 -0700 (PDT)
+Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
+ [209.85.210.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B1FCD85B8A
+ for <devel@driverdev.osuosl.org>; Sun,  9 Jun 2019 12:50:29 +0000 (UTC)
+Received: by mail-pf1-f193.google.com with SMTP id 19so2888059pfa.4
+ for <devel@driverdev.osuosl.org>; Sun, 09 Jun 2019 05:50:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=a65Rbdca0083owoGg7iWD7lhivLDkOuC9WnrhQtGEJc=;
- b=BX3SzvJ5cdsDVXL+rItDBEyW0Tpmbzj7feTHVeVTuksaufPLGXIFsW63cOPBlaX50Y
- OIaa6ZNcLD2kSiR0AcePieAGfrVaPDzKNaLSGDsywkGPyBIlbZqBji7+zMxwTjRk8O0/
- 8aw9qWidOVBeu01goDeDHUI9S2QUYtGZNZCJ3ZP16uCfPRajYFw6RbL0jf2vvtqlTnar
- V5HENWkvjK5yd8ivvOZU6tqTErndQNgmXUjVlzB3fWz21/CA1rU4nXNX5yek06QpUpNi
- v/rftibsXv5/CgH48/j3aBPIuZiWsYVR0/9o1iWDktTfbfvahuah1XGh40IQshui3fTA
- zFSQ==
+ :user-agent; bh=T5uT3cnHIyOhpdeq81GHrT25lmc9BY1BnvaqYtZbkNU=;
+ b=Oin1Rpl1FkG6enOWjr2FCLw3CaZCmMpI1FjhO74RP0K0L8rBaAImloF3IZ4j8w4FEP
+ MBq5b+JLYGwI2BenQC20tB5IN8uzapQzP8LJ031fzLRiSHQvwxIdEmoFeTG3lNRrQ31i
+ ujL+OzGFpH11AAB1p3ruqABcgmECI1QDJ/gWe1z/By7M2Zi4gCP2zHWu33coDuyitDpo
+ hJqzfdKEmC0WXLRjdz0taZHF4XHZiTs0oieRgsxp4x8sc1i/Nb2lyw6pdFlbXRc6UKtu
+ 4cmaEuDLCmqRCxGA1IvbpxknSGZN2t0BIwAItYvzusQ4XHiIh3Eh8U5Es+cdUhOkEq02
+ AZnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=a65Rbdca0083owoGg7iWD7lhivLDkOuC9WnrhQtGEJc=;
- b=KIjIyiH4h9cEArWL2oKz7iQoIszQ+U51oLHUCCkBD6JiJdklUhoSoTuS1C4nGitj98
- 5MbYFNA7Up1eeg+3ehqXPMNrwQBXyTZhXOlGuPf//bZxsxk9cSUPuOLhFftCBmqQBZ+U
- Zijciqpkt3dAmPNGyCrEaL6aY3WMccjWOzlO4yZVMHU7aBXlhQXNpLaHwOGfPuZ+nMlO
- 6B9+P7PNeZTYd3F95SAHaT4Jy1/4S3BO80i6pFUZfrSHVaKnktsO1Z8KQo8CDJP5OgEX
- B1orGlnyZFblOT23vtaD1bQkSFIXereDQwwzGiJMAY0ZW5yRwHBJ1o/RhsMn2ZED/Nmf
- 4cOw==
-X-Gm-Message-State: APjAAAURybXdtUKAFY4b7gpYh5kS0kc/8XtIYBrhEp2Oa6wcoZqupYOA
- bsx4jQlmGTV+JbjUbbknM+4=
-X-Google-Smtp-Source: APXvYqz/LJLVZAActCpPodVeN8hpGJWUhl0Nt6mFsviLHJ+iw2PE6HxfXZRvM6X0v8beFe+OPr8E0g==
-X-Received: by 2002:a62:e417:: with SMTP id r23mr37153334pfh.160.1560084598389; 
- Sun, 09 Jun 2019 05:49:58 -0700 (PDT)
+ bh=T5uT3cnHIyOhpdeq81GHrT25lmc9BY1BnvaqYtZbkNU=;
+ b=CFMIGqKFpsDGRVjQB7PAZ7jC4sI7+3ORH4ABI18xsIPhStd5ce6LDmwxSrSmbGPTqm
+ 3HOT3xnRm3cVhoVaupZQesC+gFc7KeQs+SmvZ8wnqEU/M5VDaUo8dY8myjTAzMGk8IgJ
+ v3TE7KjLW0UsU8NVuUmqc79D8MtdjzSTT2miWH/SIrY0qXPAxbSGg2nBuTGczXtFAalp
+ pipM3IScSRkuQiaw2OkVOG0416y0DDNqo8p9IUlEKXNQbtHrVb4CaIj+42EhrvblWnFG
+ 94C7q9kR7wvVqeFkGCHxVV+gStZypNrQWW02R1BK/OdVCfCPbYsHiSvF6DBFro3hOhSJ
+ eOgg==
+X-Gm-Message-State: APjAAAW9jtP6QSV/ISycQrkAIZ4tgZgd+pbsqCE7eeUtwT12RUPraPQx
+ /MApV15DWmNE8r7gcW1r1qE=
+X-Google-Smtp-Source: APXvYqxATSJZ1AbEWy9Yek5EDDUL0mcuATTKFKEvaeH3qS7QfYNS8u3aNwALA03o7jlCw26VyjAU2Q==
+X-Received: by 2002:a63:514:: with SMTP id 20mr11296213pgf.272.1560084629346; 
+ Sun, 09 Jun 2019 05:50:29 -0700 (PDT)
 Received: from hari-Inspiron-1545 ([183.83.89.153])
- by smtp.gmail.com with ESMTPSA id m5sm10582296pgc.84.2019.06.09.05.49.55
+ by smtp.gmail.com with ESMTPSA id n32sm7297159pji.29.2019.06.09.05.50.27
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sun, 09 Jun 2019 05:49:57 -0700 (PDT)
-Date: Sun, 9 Jun 2019 18:19:53 +0530
+ Sun, 09 Jun 2019 05:50:28 -0700 (PDT)
+Date: Sun, 9 Jun 2019 18:20:24 +0530
 From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Hariprasad Kelam <hariprasad.kelam@gmail.com>,
@@ -71,9 +71,8 @@ To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Michael Straube <straube.linux@gmail.com>,
  Arnd Bergmann <arnd@arndb.de>, devel@driverdev.osuosl.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH 2/3] staging: rtl8723bs: fix issue "Using comparison to true
- is error prone"
-Message-ID: <20190609124953.GA4071@hari-Inspiron-1545>
+Subject: [PATCH 3/3] staging: rtl8723bs: provide spaces around unary operators
+Message-ID: <20190609125024.GA4092@hari-Inspiron-1545>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.5.24 (2015-08-30)
@@ -94,29 +93,59 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-this patch fixes below issue reported by checkpatch
+This patch fixes below issues reported by checkpatch
 
-CHECK: Using comparison to true is error prone
-+                       if (res == true)
+CHECK: spaces preferred around that '-' (ctx:VxV)
++               skb_copy_bits(pfile->pkt, pfile->buf_len-pfile->pkt_len,
+rmem, len);
+
+CHECK: spaces preferred around that '*' (ctx:VxV)
++#define WMM_XMIT_THRESHOLD     (NR_XMITFRAME*2/5)
+                                             ^
+
+CHECK: spaces preferred around that '/' (ctx:VxV)
++#define WMM_XMIT_THRESHOLD     (NR_XMITFRAME*2/5)
+                                               ^
+CHECK: spaces preferred around that '/' (ctx:VxV)
++               if (pxmitpriv->free_xmitframe_cnt > (NR_XMITFRAME/4)) {
+                                                                 ^
 
 Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 ---
- drivers/staging/rtl8723bs/os_dep/xmit_linux.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rtl8723bs/os_dep/xmit_linux.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/staging/rtl8723bs/os_dep/xmit_linux.c b/drivers/staging/rtl8723bs/os_dep/xmit_linux.c
-index c125ac2..4da5617 100644
+index 4da5617..4e81bc1 100644
 --- a/drivers/staging/rtl8723bs/os_dep/xmit_linux.c
 +++ b/drivers/staging/rtl8723bs/os_dep/xmit_linux.c
-@@ -231,7 +231,7 @@ int _rtw_xmit_entry(_pkt *pkt, _nic_hdl pnetdev)
+@@ -32,7 +32,7 @@ uint _rtw_pktfile_read (struct pkt_file *pfile, u8 *rmem, uint rlen)
+ 	len = (rlen > len) ? len : rlen;
+ 
+ 	if (rmem)
+-		skb_copy_bits(pfile->pkt, pfile->buf_len-pfile->pkt_len, rmem, len);
++		skb_copy_bits(pfile->pkt, pfile->buf_len - pfile->pkt_len, rmem, len);
+ 
+ 	pfile->cur_addr += len;
+ 	pfile->pkt_len -= len;
+@@ -65,7 +65,7 @@ void rtw_os_xmit_resource_free(struct adapter *padapter, struct xmit_buf *pxmitb
+ 		kfree(pxmitbuf->pallocated_buf);
+ }
+ 
+-#define WMM_XMIT_THRESHOLD	(NR_XMITFRAME*2/5)
++#define WMM_XMIT_THRESHOLD	(NR_XMITFRAME * 2 / 5)
+ 
+ void rtw_os_pkt_complete(struct adapter *padapter, _pkt *pkt)
+ {
+@@ -229,7 +229,7 @@ int _rtw_xmit_entry(_pkt *pkt, _nic_hdl pnetdev)
+ 			#endif
+ 			)
  		&& padapter->registrypriv.wifi_spec == 0) {
- 		if (pxmitpriv->free_xmitframe_cnt > (NR_XMITFRAME/4)) {
+-		if (pxmitpriv->free_xmitframe_cnt > (NR_XMITFRAME/4)) {
++		if (pxmitpriv->free_xmitframe_cnt > (NR_XMITFRAME / 4)) {
  			res = rtw_mlcst2unicst(padapter, pkt);
--			if (res == true)
-+			if (res)
+ 			if (res)
  				goto exit;
- 		} else {
- 			/* DBG_871X("Stop M2U(%d, %d)! ", pxmitpriv->free_xmitframe_cnt, pxmitpriv->free_xmitbuf_cnt); */
 -- 
 2.7.4
 
