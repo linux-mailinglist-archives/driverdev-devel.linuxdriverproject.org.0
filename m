@@ -1,76 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0CDD63B35E
-	for <lists+driverdev-devel@lfdr.de>; Mon, 10 Jun 2019 12:38:46 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4F7DC3B53B
+	for <lists+driverdev-devel@lfdr.de>; Mon, 10 Jun 2019 14:51:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2E0FA865EE;
-	Mon, 10 Jun 2019 10:38:44 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 80ABC84DDD;
+	Mon, 10 Jun 2019 12:51:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id x0iVYX21sqbk; Mon, 10 Jun 2019 10:38:44 +0000 (UTC)
+	with ESMTP id hqX1oQ-VQ+lL; Mon, 10 Jun 2019 12:51:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 389FD86038;
-	Mon, 10 Jun 2019 10:38:41 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4D09681E80;
+	Mon, 10 Jun 2019 12:51:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E8D721BF3AA
- for <devel@linuxdriverproject.org>; Mon, 10 Jun 2019 10:38:39 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C415C1BF2F8
+ for <devel@linuxdriverproject.org>; Mon, 10 Jun 2019 12:51:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D9D711FE32
- for <devel@linuxdriverproject.org>; Mon, 10 Jun 2019 10:38:39 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 98BFF84F2B
+ for <devel@linuxdriverproject.org>; Mon, 10 Jun 2019 12:51:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3t5QOTjLm1Hy for <devel@linuxdriverproject.org>;
- Mon, 10 Jun 2019 10:38:39 +0000 (UTC)
+ with ESMTP id 4ZxGWsfu_eZw for <devel@linuxdriverproject.org>;
+ Mon, 10 Jun 2019 12:51:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
- [209.85.210.193])
- by silver.osuosl.org (Postfix) with ESMTPS id 221B920004
- for <devel@driverdev.osuosl.org>; Mon, 10 Jun 2019 10:38:39 +0000 (UTC)
-Received: by mail-pf1-f193.google.com with SMTP id d126so5076940pfd.2
- for <devel@driverdev.osuosl.org>; Mon, 10 Jun 2019 03:38:39 -0700 (PDT)
+Received: from mail-ot1-f65.google.com (mail-ot1-f65.google.com
+ [209.85.210.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D7B17855FE
+ for <devel@driverdev.osuosl.org>; Mon, 10 Jun 2019 12:51:22 +0000 (UTC)
+Received: by mail-ot1-f65.google.com with SMTP id x24so8149477otp.7
+ for <devel@driverdev.osuosl.org>; Mon, 10 Jun 2019 05:51:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=mpPScSwEUvGCrfFSzsPIPCGbvFV9XPrrj9L5Mq7ES2o=;
- b=Tc6RBG0z7+LuK3uLgyEbinWPqfxyBMhm12dlPYzpTzHReHHdD3yLFL8h17hrzxueg7
- qig4UDVs9F89wrRD8QEbjMnF3K16yUHWMDQHf8lTMWVzkAH2EIbQkzTNG/01cADfYMU0
- 8pjCY3miVG0yvYeljjpnEMrDD3nUzFno3PmZySlqzCh9E2FiK5blo+mREoPBF0EFUjX+
- 0IEC9UeEZoSBnS5b+lrqPLaTGw/hMqLlF93mq2YG5dcrIU3lGfJHIWq38HZHDgfVwatY
- pY2KayHBUvlArMNcseVykmzuPqYiO/AnPT+bpjdaxXXvEANsbJ5KkD8UmAkEW28drvj/
- KgUg==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=OGLWNA0OQOG5wWyxB9H8Hgmax5IuBsIxNtuEDQ1Ho3c=;
+ b=l7OQWdNRtoQUdMIL/J3aLdcLG7lwN1wQG3eVC8xnOnhEcL0e2LZzQQ9vk85dW/M4XI
+ QIUJNVgxJJse3crYXW4d4seEx+Piw6ZsqJgoGoM2XzXPkCgO/L2xCk/A+MRxS16nzjmz
+ rNsEDpVHpheCwZarHvmp4TlrTDIgnJILy+kJ02CeQINQhAuoCgiWEDJqHEYZf/ofC5qv
+ 6po8XTmOjPEPsMfDM1oH7UkapXaxsR0j7t3ROLJnGsHlyzgKA9XWVAB1BK3Fr2fzwgis
+ eSRwKU0jHp21zpJv0zl8z8XzTkhdRw4V9bVf7cpo9gk40+LDq80YRiVW/O9dXJxVZQ1V
+ +dBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=mpPScSwEUvGCrfFSzsPIPCGbvFV9XPrrj9L5Mq7ES2o=;
- b=H1Bx73WTGK2eF3SznVEPe7bFZVFmHWRfh2U9Xs1/ayXuibfbmyjvC2FI6ZsevyINE8
- RTHQw0ULTLuIQxiZguZ/SrsMM4fxBLoj7C6jDvgV5P0wpvpd8uD2Rm+VOPHWXZWstEHj
- A6Vs8d/0RkxSeG7gA03SUCBJfl10e6W1CrjhApZxT+nXJvOW9qbzQTQCca+tw2akjxfN
- K/ash5WmUtFDW++GxmU2rDZF3G+pDK2U9Su76qFsRgQIfJQX5EXS9rhun8ws0jDvNbBP
- N6OeAtv4JK9zT7e7AA8tLwZ2c1hsYLwEj0GZab4w8q6Brf11Rf9K/Xlen07yYhfV2kNc
- XwJw==
-X-Gm-Message-State: APjAAAVjkoQgC2h3dPO0xqkbvJYHQzooMTyC+/4w8zy7fHmkTl0YIC7c
- oxIR7NOf9DP6B82weJmQde4xCSwmFM8=
-X-Google-Smtp-Source: APXvYqwoF8NxU5GFTcruRD63cj7AzF075nfcFx3++9Qc63hWP7Czfbgxm7vJEkvKcIx/BeaKiESjNQ==
-X-Received: by 2002:a17:90a:a593:: with SMTP id
- b19mr947374pjq.31.1560163118455; 
- Mon, 10 Jun 2019 03:38:38 -0700 (PDT)
-Received: from localhost.localdomain
- ([2401:4900:2747:12e9:74e9:432c:7ca9:f9ed])
- by smtp.gmail.com with ESMTPSA id q7sm9512883pfb.32.2019.06.10.03.38.36
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 10 Jun 2019 03:38:38 -0700 (PDT)
-From: Merwin Trever Ferrao <merwintf@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH 16/16] Staging: wlan-ng: cfg80211: fixed alignment issue with
- open parenthesis line ending with (
-Date: Mon, 10 Jun 2019 16:08:25 +0530
-Message-Id: <20190610103825.19364-1-merwintf@gmail.com>
-X-Mailer: git-send-email 2.17.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=OGLWNA0OQOG5wWyxB9H8Hgmax5IuBsIxNtuEDQ1Ho3c=;
+ b=ShwqCtNQZq2+RfQJv7ccs+i6HTrSzfP7D48Hz58zs/JLq9m1H88JpHbESfNzCE8TO5
+ kR0h+t6EU2FFZKZzQKW2xDNoRbvJMDBLHp3vEMmGG7KUEJ7yQAL/Q+pApSHMXA/m1/3z
+ rsCDdIMj1yZNPNQ/msaKJCpsjtRfPCBx6eaUO9okAZmTHNL6HZQQQucEXE2fm8ISTX+4
+ LQQZNZkF9QgI4lTfyLLXRdkl2uQNJSd/oPCRH2jCMIGYk4+k2NlKU8PAnRcPSrgCidLw
+ QfxQkGzgLJCsG0THvXpiPbnFm6Qan+9W5I4UZbEIl7cZWWGsTikIJCwfX1pp9nmyXDzF
+ eIFg==
+X-Gm-Message-State: APjAAAVyTSVh4u/haWp/wgf9aWNqNX+4KCnNYA9AImX0PfHykvC368Pi
+ CB/Q4D8FaapA//meQr8mEsWbhnD7nuT8N10gTgg=
+X-Google-Smtp-Source: APXvYqyQXjuj4lGYmy/SumwwBHmFKbZv9SJe8lb9ySDF6TAZi1e1lsa3INyyrtPsmejesuC5xQVc4uw+QcBtPppyHf8=
+X-Received: by 2002:a9d:3bb4:: with SMTP id k49mr29303369otc.332.1560171081876; 
+ Mon, 10 Jun 2019 05:51:21 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAGngYiU=uFjJFEoiHFUr+ab73sJksaTBkfxvQwL1X6WJnhchqw@mail.gmail.com>
+ <20190528142912.13224-1-yuehaibing@huawei.com>
+ <CAGngYiW_hCDPRWao+389BfUH_2sP4S6pL+gteim=kDrnb9UDzQ@mail.gmail.com>
+ <3f4c1d4c-656b-8266-38c4-3f7c36a2bd7e@huawei.com>
+ <20190528155956.GA21964@kroah.com>
+ <CAGngYiW8Y3jt9ikb5e9LtfSkquZquLgB5iSRVXyka9fUXLrqYQ@mail.gmail.com>
+In-Reply-To: <CAGngYiW8Y3jt9ikb5e9LtfSkquZquLgB5iSRVXyka9fUXLrqYQ@mail.gmail.com>
+From: Sven Van Asbroeck <thesven73@gmail.com>
+Date: Mon, 10 Jun 2019 08:51:10 -0400
+Message-ID: <CAGngYiV9XsPL8Mk9_K9=0a-k6P6JN_waJvk5bDH+mDwGMAYbmw@mail.gmail.com>
+Subject: Re: [PATCH v2 -next] staging: fieldbus: Fix build error without
+ CONFIG_REGMAP_MMIO
+To: Greg KH <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,94 +85,24 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Merwin Trever Ferrao <merwintf@gmail.com>,
- linux-kernel@vger.kernel.org
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, YueHaibing <yuehaibing@huawei.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Merwin Trever Ferrao <Merwintf@gmail.com>
+Hello Greg, just a friendly ping regarding this patch. It got my Reviewed-by tag
+two weeks ago, no further feedback from anyone. Is there anything you would
+like us to do before queuing this?
 
-Fixed a coding style issue.
+Link to v2 that got the Reviewed-by:
+https://lkml.org/lkml/2019/5/28/609
 
-Signed-off-by: Merwin Trever Ferrao <merwintf@gmail.com>
----
- drivers/staging/wlan-ng/cfg80211.c | 32 ++++++++++++++----------------
- 1 file changed, 15 insertions(+), 17 deletions(-)
-
-diff --git a/drivers/staging/wlan-ng/cfg80211.c b/drivers/staging/wlan-ng/cfg80211.c
-index eee1998c4b18..5424e2682911 100644
---- a/drivers/staging/wlan-ng/cfg80211.c
-+++ b/drivers/staging/wlan-ng/cfg80211.c
-@@ -324,8 +324,7 @@ static int prism2_scan(struct wiphy *wiphy,
- 		(i < request->n_channels) && i < ARRAY_SIZE(prism2_channels);
- 		i++)
- 		msg1.channellist.data.data[i] =
--			ieee80211_frequency_to_channel(
--				request->channels[i]->center_freq);
-+			ieee80211_frequency_to_channel(request->channels[i]->center_freq);
- 	msg1.channellist.data.len = request->n_channels;
- 
- 	msg1.maxchanneltime.data = 250;
-@@ -359,15 +358,15 @@ static int prism2_scan(struct wiphy *wiphy,
- 		freq = ieee80211_channel_to_frequency(msg2.dschannel.data,
- 						      NL80211_BAND_2GHZ);
- 		bss = cfg80211_inform_bss(wiphy,
--			ieee80211_get_channel(wiphy, freq),
--			CFG80211_BSS_FTYPE_UNKNOWN,
--			(const u8 *)&msg2.bssid.data.data,
--			msg2.timestamp.data, msg2.capinfo.data,
--			msg2.beaconperiod.data,
--			ie_buf,
--			ie_len,
--			(msg2.signal.data - 65536) * 100, /* Conversion to signed type */
--			GFP_KERNEL
-+					  ieee80211_get_channel(wiphy, freq),
-+					  CFG80211_BSS_FTYPE_UNKNOWN,
-+					  (const u8 *)&msg2.bssid.data.data,
-+					  msg2.timestamp.data, msg2.capinfo.data,
-+					  msg2.beaconperiod.data,
-+					  ie_buf,
-+					  ie_len,
-+					  (msg2.signal.data - 65536) * 100, /* Conversion to signed type */
-+					  GFP_KERNEL
- 		);
- 
- 		if (!bss) {
-@@ -475,14 +474,13 @@ static int prism2_connect(struct wiphy *wiphy, struct net_device *dev,
- 			}
- 
- 			result = prism2_domibset_uint32(wlandev,
--				DIDMIB_DOT11SMT_PRIVACYTABLE_WEPDEFAULTKEYID,
--				sme->key_idx);
-+							DIDMIB_DOT11SMT_PRIVACYTABLE_WEPDEFAULTKEYID,
-+							sme->key_idx);
- 			if (result)
- 				goto exit;
- 
- 			/* send key to driver */
--			did = didmib_dot11smt_wepdefaultkeystable_key(
--					sme->key_idx + 1);
-+			did = didmib_dot11smt_wepdefaultkeystable_key(sme->key_idx + 1);
- 			result = prism2_domibset_pstr32(wlandev,
- 							did, sme->key_len,
- 							(u8 *)sme->key);
-@@ -588,8 +586,8 @@ static int prism2_set_tx_power(struct wiphy *wiphy, struct wireless_dev *wdev,
- 		data = MBM_TO_DBM(mbm);
- 
- 	result = prism2_domibset_uint32(wlandev,
--		DIDMIB_DOT11PHY_TXPOWERTABLE_CURRENTTXPOWERLEVEL,
--		data);
-+					DIDMIB_DOT11PHY_TXPOWERTABLE_CURRENTTXPOWERLEVEL,
-+					data);
- 
- 	if (result) {
- 		err = -EFAULT;
--- 
-2.17.1
-
+On Tue, May 28, 2019 at 1:31 PM Sven Van Asbroeck <thesven73@gmail.com> wrote:
+> For the v2 patch:
+> Reviewed-by: Sven Van Asbroeck <TheSven73@gmail.com>
+>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
