@@ -2,83 +2,63 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D19AD3AF6E
-	for <lists+driverdev-devel@lfdr.de>; Mon, 10 Jun 2019 09:20:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0E2A33AF97
+	for <lists+driverdev-devel@lfdr.de>; Mon, 10 Jun 2019 09:25:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 22C8285764;
-	Mon, 10 Jun 2019 07:20:19 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3C75D854DB;
+	Mon, 10 Jun 2019 07:25:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DDzrRQU-fuds; Mon, 10 Jun 2019 07:20:18 +0000 (UTC)
+	with ESMTP id oxZMaRSGaOz0; Mon, 10 Jun 2019 07:25:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F1B4185108;
-	Mon, 10 Jun 2019 07:20:17 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EE24D85108;
+	Mon, 10 Jun 2019 07:25:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CA7AF1BF410
- for <devel@linuxdriverproject.org>; Mon, 10 Jun 2019 07:20:15 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5E1C11BF410
+ for <devel@linuxdriverproject.org>; Mon, 10 Jun 2019 07:25:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C7DD9854C9
- for <devel@linuxdriverproject.org>; Mon, 10 Jun 2019 07:20:15 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 5ACE720111
+ for <devel@linuxdriverproject.org>; Mon, 10 Jun 2019 07:25:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FaXjt5GL8gUj for <devel@linuxdriverproject.org>;
- Mon, 10 Jun 2019 07:20:14 +0000 (UTC)
+ with ESMTP id QbLQHdHAm40c for <devel@linuxdriverproject.org>;
+ Mon, 10 Jun 2019 07:25:25 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lj1-f195.google.com (mail-lj1-f195.google.com
- [209.85.208.195])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 296D085108
- for <devel@driverdev.osuosl.org>; Mon, 10 Jun 2019 07:20:13 +0000 (UTC)
-Received: by mail-lj1-f195.google.com with SMTP id a21so6915561ljh.7
- for <devel@driverdev.osuosl.org>; Mon, 10 Jun 2019 00:20:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nikanor-nu.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to
- :user-agent; bh=QbPinONeSAhxrcz+ROsSQJ+J9qK6AUeYBThX16lOVD0=;
- b=sMMIZzwmKrUmXgEHG/Gl7m8V3sJQ7hD1fFxlCutQz7ydVzDczsd6kgR1lLZyhT+1Dr
- ePFyuwyeMeoqF4Q+bj1hLZlBkPgKl6z7YxtTN57zkBPxNtDWoLl9tfi8JD385eXVFJke
- qeI+g07ICtRv9z2HFoLec0ccMWpYXybUvoyt31T+D6uY+Bzrf+FpcuyFhs2K7SGY/rIW
- WXpobojMTjs/4FcT3dJ+eHHMq4naSvHTuzaYn91lo2h3n6yvIX3khpebwdoFGx9Lscwy
- v9bwlPUxeqt6a0dY0Fy8tiYkf5SnnfCimn6AXkZvwawEGzJR4v6vjPiPmeRk/7U0X80m
- 4A7w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to:user-agent;
- bh=QbPinONeSAhxrcz+ROsSQJ+J9qK6AUeYBThX16lOVD0=;
- b=Wq7OidHDiLi0lF2swpYF2gv6rAOabHDo9BAEGn2XUnK4j0SKrAagngmrr0z/IBYGpP
- n+vGFqjUgi5e6bpqr6+7maquAJmmDwYfONKs76d7QDPUfxxGCV5egdvE6sy4WEP1t/Nm
- IQFeLJ2qo3Ar5M6Dk2fxaWFSM32k/oF+XfbKHd+jP33fnQ0m9SNIajgcMLutBv5QIQnc
- wp1i+5jy/YG61HwLTE5LKLX1845qIdVg1ATavXgawtTXSIV/b1fCf+fgRIWA7zKFy/0/
- zE0NS0oV3gWJDSx9xflJfcBLYcn7hNcchtha/Wzk4rK3rTO+DIqgOedS+zXmfKIiN2rY
- 4VJA==
-X-Gm-Message-State: APjAAAVD6wpse47G5RM3pNFF3Txu+sndb0atRHa2dcBnWskzgjhZhANo
- s6xeaGrVhVa6jKGtoKe4psnfQA==
-X-Google-Smtp-Source: APXvYqxM53NwgY80Ho7rdzPBsz/YjknnZAPhNXJ3Ym+JtdWVnCyuO4S3WoSBq1sAarpMkjaiJmiZvw==
-X-Received: by 2002:a2e:6109:: with SMTP id v9mr35873723ljb.205.1560151211494; 
- Mon, 10 Jun 2019 00:20:11 -0700 (PDT)
-Received: from dev.nikanor.nu (78-72-133-4-no161.tbcn.telia.com. [78.72.133.4])
- by smtp.gmail.com with ESMTPSA id p27sm1842051lfo.16.2019.06.10.00.20.10
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Mon, 10 Jun 2019 00:20:10 -0700 (PDT)
-Date: Mon, 10 Jun 2019 09:20:09 +0200
-From: Simon =?utf-8?Q?Sandstr=C3=B6m?= <simon@nikanor.nu>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH 4/7] staging: kpc2000: use __func__ in debug messages in
- core.c
-Message-ID: <20190610072009.w5scsjb2aqcxm2l2@dev.nikanor.nu>
-References: <20190603222916.20698-1-simon@nikanor.nu>
- <20190603222916.20698-5-simon@nikanor.nu>
- <20190606125550.GA11929@kroah.com>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id 5D8772010E
+ for <devel@driverdev.osuosl.org>; Mon, 10 Jun 2019 07:25:25 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 997A7207E0;
+ Mon, 10 Jun 2019 07:25:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1560151525;
+ bh=wu4ufzhepp5a61PnVAmbtYOPDerdxY/PIVog+ksjNtg=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=ffnUIqbY5OY7dIM1A+KJOm1E+oFvKHKlywaEu+ZoAhlavVbft5swhILTYUxkhc41u
+ /j8ZodhhA7uRmIFiAN/tVJGsX9n93Dyo5JxKnlNcvojLViW1jU1KILJGB1Ogz/OBS6
+ R0bZelg/GdFwzPi8AzBaCiccVKgfQI3DmGszkaXY=
+Date: Mon, 10 Jun 2019 09:25:21 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Nishka Dasgupta <nishkadg.linux@gmail.com>
+Subject: Re: [PATCH] staging: rtl8723bs: core: rtw_mlme_ext.c: Remove unused
+ variables
+Message-ID: <20190610072521.GA20470@kroah.com>
+References: <20190607071123.28193-1-nishkadg.linux@gmail.com>
+ <20190609110206.GD30671@kroah.com>
+ <74fd5a83-0f60-baae-a65f-bbc0cd9f4ad0@gmail.com>
+ <20190610054927.GA13124@kroah.com>
+ <7554e171-360f-f0a8-5742-9a60e4a1cc2d@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190606125550.GA11929@kroah.com>
-User-Agent: NeoMutt/20180716
+In-Reply-To: <7554e171-360f-f0a8-5742-9a60e4a1cc2d@gmail.com>
+User-Agent: Mutt/1.12.0 (2019-05-25)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,23 +71,92 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, hardiksingh.k@gmail.com,
+ linux-kernel@vger.kernel.org, benniciemanuel78@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gMDYvMDYsIEdyZWcgS0ggd3JvdGU6Cj4gT24gVHVlLCBKdW4gMDQsIDIwMTkgYXQgMTI6Mjk6
-MTNBTSArMDIwMCwgU2ltb24gU2FuZHN0csO2bSB3cm90ZToKPiA+ICAKPiA+IC0JZGV2X2RiZygm
-cGRldi0+ZGV2LCAia3AyMDAwX3BjaWVfcHJvYmUocGRldiA9IFslcF0sIGlkID0gWyVwXSlcbiIs
-Cj4gPiAtCQlwZGV2LCBpZCk7Cj4gPiArCWRldl9kYmcoJnBkZXYtPmRldiwgIiVzKHBkZXYgPSBb
-JXBdLCBpZCA9IFslcF0pXG4iLAo+ID4gKwkJX19mdW5jX18sIHBkZXYsIGlkKTsKPiAKPiBkZWJ1
-Z2dpbmcgbGluZXMgdGhhdCBzYXkgImNhbGxlZCB0aGlzIGZ1bmN0aW9uISIgY2FuIGFsbCBiZSBy
-ZW1vdmVkLCBhcwo+IHdlIGhhdmUgZnRyYWNlIGluIHRoZSBrZXJuZWwgdHJlZSwgd2UgY2FuIHVz
-ZSB0aGF0IGluc3RlYWQuICBJJ2xsIHRha2UKPiB0aGlzLCBidXQgZmVlbCBmcmVlIHRvIGNsZWFu
-IHRoZW0gdXAgYXMgZm9sbG93LW9uIHBhdGNoZXMuCj4gCj4gdGhhbmtzLAo+IAo+IGdyZWcgay1o
-CgpDYW4gdGhleSBiZSByZW1vdmVkIGV2ZW4gaWYgdGhleSBwcmludCBmdW5jdGlvbiBhcmd1bWVu
-dHMgb3Igb3RoZXIKdmFyaWFibGVzPwoKLSBTaW1vbgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2
-ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+On Mon, Jun 10, 2019 at 12:44:05PM +0530, Nishka Dasgupta wrote:
+> On 10/06/19 11:19 AM, Greg KH wrote:
+> > On Mon, Jun 10, 2019 at 10:08:21AM +0530, Nishka Dasgupta wrote:
+> > > On 09/06/19 4:32 PM, Greg KH wrote:
+> > > > On Fri, Jun 07, 2019 at 12:41:23PM +0530, Nishka Dasgupta wrote:
+> > > > > Remove variables that are declared and assigned values but not otherwise
+> > > > > used.
+> > > > > Issue found with Coccinelle.
+> > > > > 
+> > > > > Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
+> > > > > ---
+> > > > >    drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 9 ---------
+> > > > >    1 file changed, 9 deletions(-)
+> > > > 
+> > > > You sent me 8 patches for this driver, yet only 2 were ordered in a
+> > > > series.  I have no idea what order to apply these in :(
+> > > > 
+> > > > Please resend them _all_ in a numbered patch series so I have a chance
+> > > > to get this correct.
+> > > 
+> > > Yes, I can do that. Who do I send the patch series to in that case? The
+> > > maintainers list is slightly different for each file, and most of the
+> > > patches in this driver are for different and unrelated files (except, I
+> > > think, the two that I did send as a patch series). Do I combine the
+> > > maintainers lists and send the entire patch series to everyone listed as a
+> > > maintainer for any one of the patches in it?
+> > 
+> > The maintainer and mailing list is the same for all of the files in a
+> > single driver.  If not, then something is wrong.
+> 
+> I'm using get_maintainers.pl with no arguments, and for rtl8723bs, I am
+> getting a lot of different mailing lists.
+> E.g
+> For core/rtw_ieee80211.c, I'm getting the following list:
+> Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> Michael Straube <straube.linux@gmail.com>
+> Andy Shevchenko <andy.shevchenko@gmail.com>
+> Hardik Singh Rathore <hardiksingh.k@gmail.com>
+> Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+> Nishka Dasgupta <nishkadg.linux@gmail.com>
+> devel@driverdev.osuosl.org (open list:STAGING SUBSYSTEM)
+> linux-kernel@vger.kernel.org (open list)
+> 
+> Which is not the same as for core/rtw_mlme_ext.c (the current patch).
+> 
+> > And yes, you can combine the list of people if you wish but be sure you
+> > are not just randomly including people who happened to touch the driver
+> > "last".
+> 
+> Okay, I'll combine then. But is there any metric I should be using to filter
+> the output of get_maintainer.pl? Currently I'm running it with no arguments
+> and just adding everyone.
+
+Look at the "role" that each person has.  Here is the output of
+get_maintainer.pl when I run it on the first file above:
+
+$ ./scripts/get_maintainer.pl --file drivers/staging/rtl8723bs/core/rtw_ieee80211.c
+Greg Kroah-Hartman <gregkh@linuxfoundation.org> (supporter:STAGING SUBSYSTEM,commit_signer:16/16=100%)
+Michael Straube <straube.linux@gmail.com> (commit_signer:14/16=88%,authored:14/16=88%,added_lines:43/59=73%,removed_lines:114/130=88%)
+Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com> (commit_signer:1/16=6%,authored:1/16=6%,added_lines:3/59=5%)
+Hardik Singh Rathore <hardiksingh.k@gmail.com> (commit_signer:1/16=6%,authored:1/16=6%,added_lines:13/59=22%,removed_lines:13/130=10%)
+Andy Shevchenko <andy.shevchenko@gmail.com> (commit_signer:1/16=6%)
+devel@driverdev.osuosl.org (open list:STAGING SUBSYSTEM)
+linux-kernel@vger.kernel.org (open list)
+
+
+That shows that "Greg Kroah-Hartman" is a reviewer for this subsystem,
+Michael and Payal and Hardik and Andy have all submitted patches
+"recently", and then devel@ is the mailing list for the patches to be
+sent to.
+
+So, just include the maintainer and the mailing list and you will be
+fine.  No need to bother lkml with staging patches, nor the people who
+last sent cleanup patches.
+
+hope this helps,
+
+greg k-h
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
