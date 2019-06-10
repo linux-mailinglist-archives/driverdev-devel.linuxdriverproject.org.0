@@ -1,77 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5DA3D3AFE0
-	for <lists+driverdev-devel@lfdr.de>; Mon, 10 Jun 2019 09:47:30 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 84D983AFE1
+	for <lists+driverdev-devel@lfdr.de>; Mon, 10 Jun 2019 09:47:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BEB62854DB;
-	Mon, 10 Jun 2019 07:47:28 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D14C785329;
+	Mon, 10 Jun 2019 07:47:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 98HIRXY2uH04; Mon, 10 Jun 2019 07:47:28 +0000 (UTC)
+	with ESMTP id 3VJKqSEhSwUx; Mon, 10 Jun 2019 07:47:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9330B85308;
-	Mon, 10 Jun 2019 07:47:27 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 809B98507B;
+	Mon, 10 Jun 2019 07:47:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id EFC611BF410
- for <devel@linuxdriverproject.org>; Mon, 10 Jun 2019 07:47:25 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id ABC141BF410
+ for <devel@linuxdriverproject.org>; Mon, 10 Jun 2019 07:47:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id ED46E85308
- for <devel@linuxdriverproject.org>; Mon, 10 Jun 2019 07:47:25 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id A6D4586E48
+ for <devel@linuxdriverproject.org>; Mon, 10 Jun 2019 07:47:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id intfxs2oZbho for <devel@linuxdriverproject.org>;
- Mon, 10 Jun 2019 07:47:25 +0000 (UTC)
+ with ESMTP id u+962ZjQ4IlP for <devel@linuxdriverproject.org>;
+ Mon, 10 Jun 2019 07:47:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
- [209.85.214.195])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 6A83285258
- for <devel@driverdev.osuosl.org>; Mon, 10 Jun 2019 07:47:25 +0000 (UTC)
-Received: by mail-pl1-f195.google.com with SMTP id bh12so3307134plb.4
- for <devel@driverdev.osuosl.org>; Mon, 10 Jun 2019 00:47:25 -0700 (PDT)
+Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
+ [209.85.214.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 36A8C870F6
+ for <devel@driverdev.osuosl.org>; Mon, 10 Jun 2019 07:47:27 +0000 (UTC)
+Received: by mail-pl1-f194.google.com with SMTP id s24so3299870plr.8
+ for <devel@driverdev.osuosl.org>; Mon, 10 Jun 2019 00:47:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=qYLC3k12H87sqyROomxEYSZqi3clFWpevzu3WjkHTP8=;
- b=kGzB4eJywtsuaLOc9PEZXILeAi/U0RQuQuVKZZBFXFkZ6z4u/ZHSUV0ol5LabZbmNV
- BsinEATJ9dtj1D+YZH+b/D2x7YDdB7fUmREfytu0z8OsuuWkvmWv6Yjsku/2Mx8nBros
- aOMvkznSAZsaIJypebBRu2bk44KSPk1uMXDJowiqgdmmpfiKIC3yYjKXAaAFdpCe8Yv/
- f6CCNU6J5rd84OoYD+byWUNXYi0vOINpQoD0OjWYvAG4TK+/bygrGNH0FIE8Mx7Fy0IA
- q768L9aoNZ0HiesZhMMTLwhWoUkPOcBxiuX8Q6XEZhiIiizuQagBLl4+P/LWp7BDFz3R
- +cdg==
+ bh=xnE1tlBu2kbYXLc95HkAjgT8yNbabZQrI1VSkDaFzEI=;
+ b=pYbLX/yo36ag7vFIZqcLkJ6OPG89CSf9iwbVnKumGI8GSMXpjRM0H5n0SR/Lb9Zp0g
+ h38lDl4uN46NOh9T4wUKVjXU52fJZvdujZo24nK4+cFBza5733whY4ZI06JQjecvcnUl
+ 39JcX0gKxuoeBM44S5YF6HxdMoGbnJqXb1rKYPVRf08iScPjZSMrdAw74qvqtUBrFTiZ
+ fQy1/i5+P8+nVoBUsnQJP8GlcnWDY/scs+unHfpSom9NBmflw6PxvD62IGBzwwOQJx8H
+ I2jUuL/AZz6MnJtPTdlOAaEx7ejv2i8tBEuy0Ed5YePuay7WO09ArZJFx85X1pSOQRP5
+ gqJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=qYLC3k12H87sqyROomxEYSZqi3clFWpevzu3WjkHTP8=;
- b=XQQ/Q8QqVWvlswxeb23YhOzDN5xzn8KUdonsy7pLXzDnqHnj/GPBE9KMysDqKJ69tF
- HHtNcJ8FTMtDblML2qIsrPashbiw8QyWgMywkBHu3KdOgdk018J1Slibvxdl2/fc3QHz
- 3vHwu0IRdovnMPetggK13C3Zke0U9JOWRU4wGMYq5XyxezIvkFztQZkL1UJOVlJFF5em
- MTBZpjNzyCr6h0hTCiUZnnE9d7Kje1azKs02ouBMPRx2+SHLKT3M0nRmMESXHEbf8FMf
- o9RndpfAiLyGcYxr0WgNV1jPxgLrNc2VuvER+6TDFbtBEuSXiCal3XxhMRrmwqTrRO+d
- 68wA==
-X-Gm-Message-State: APjAAAWJ12iqb9lKMArw/SuW30XRPBxxutfgXOkk2OTUSGo4IrhgfZG0
- MvbZZVqyV3lQIAVx2G76MPc=
-X-Google-Smtp-Source: APXvYqz5jN9L+CA/JQlwaBTAe2J7KI+2f2bMqasSo2yqAHvXTSWBmXHsaLHEyqkzMqUDdsXVgk55cQ==
-X-Received: by 2002:a17:902:ac82:: with SMTP id
- h2mr69747322plr.303.1560152845095; 
- Mon, 10 Jun 2019 00:47:25 -0700 (PDT)
+ bh=xnE1tlBu2kbYXLc95HkAjgT8yNbabZQrI1VSkDaFzEI=;
+ b=TQYzVVc51OmaM0IZHCdpZWcjqVdlAUZIzqkdCTiGw0vNSH39JwL/iOKiCIX833lu8x
+ LC6jClCN7ffkgMozSZ4lFYisAOQbIby41EjC/9DrzBOzlumkK9YwrG3K+pAPlvpgNXu7
+ hsJFEGV3mD6/Y9rW5I5YNUko0AQoTkumghxgEcbqi/NU24VizMgXU4ZWPK55cRPwcZ2C
+ wTU3KZrfYgyJWjPiFxARXZUYITP3Z7zypa2vCzjNF3OJZB9oPmvtZG6Lzzn016r8BntI
+ VCXsB0q9Nv2s+zonL63N4YaOvVnHWS87VI/8Hut+7IDkgPtcS5CJ1J9SbdM6rr1hatgk
+ m/Cg==
+X-Gm-Message-State: APjAAAVP2bmoW2NlFvn8M7pGzcBSFLsCXXOuQJMJJkT0o0JLevNMKQwk
+ SWqUKmX9vrsjwuZTceFlrVw=
+X-Google-Smtp-Source: APXvYqzs24gKNf5rDhjt6JGh5RPrZbV9WiY+D5HoSwM1GT6Zrky4sX5cH5k7oB9tbQgMRv7Wl3QLnQ==
+X-Received: by 2002:a17:902:542:: with SMTP id
+ 60mr47251658plf.68.1560152846902; 
+ Mon, 10 Jun 2019 00:47:26 -0700 (PDT)
 Received: from localhost.localdomain ([171.79.92.225])
- by smtp.gmail.com with ESMTPSA id f2sm8120965pgs.83.2019.06.10.00.47.23
+ by smtp.gmail.com with ESMTPSA id f2sm8120965pgs.83.2019.06.10.00.47.25
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Mon, 10 Jun 2019 00:47:24 -0700 (PDT)
+ Mon, 10 Jun 2019 00:47:26 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: gregkh@linuxfoundation.org,
 	devel@driverdev.osuosl.org
-Subject: [PATCH v2 02/10] staging: rtl8723bs: Change type of
- rtw_os_recvbuf_resource_free()
-Date: Mon, 10 Jun 2019 13:17:02 +0530
-Message-Id: <20190610074710.15677-2-nishkadg.linux@gmail.com>
+Subject: [PATCH v2 03/10] staging: rtl8723bs: os_dep: ioctl_linux.c: Remove
+ return variables
+Date: Mon, 10 Jun 2019 13:17:03 +0530
+Message-Id: <20190610074710.15677-3-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190610074710.15677-1-nishkadg.linux@gmail.com>
 References: <20190610074710.15677-1-nishkadg.linux@gmail.com>
@@ -94,53 +94,55 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change return type of function rtw_os_recvbuf_resource_free to void as
-its return value is never stored, checked or otherwise used.
+Remove return variables and in multiple functions and return the values
+directly, as the functions all return 0 in all cases.
+Issue found with Coccinelle.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
 Changes in v2:
 - Send as part of patch series.
 
- drivers/staging/rtl8723bs/include/recv_osdep.h | 2 +-
- drivers/staging/rtl8723bs/os_dep/recv_linux.c  | 6 +-----
- 2 files changed, 2 insertions(+), 6 deletions(-)
+ drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 12 +++---------
+ 1 file changed, 3 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/include/recv_osdep.h b/drivers/staging/rtl8723bs/include/recv_osdep.h
-index 0e1baf170cfb..1056f615d0f9 100644
---- a/drivers/staging/rtl8723bs/include/recv_osdep.h
-+++ b/drivers/staging/rtl8723bs/include/recv_osdep.h
-@@ -29,7 +29,7 @@ void rtw_os_recv_resource_free(struct recv_priv *precvpriv);
- void rtw_os_free_recvframe(union recv_frame *precvframe);
- 
- 
--int rtw_os_recvbuf_resource_free(struct adapter *padapter, struct recv_buf *precvbuf);
-+void rtw_os_recvbuf_resource_free(struct adapter *padapter, struct recv_buf *precvbuf);
- 
- _pkt *rtw_os_alloc_msdu_pkt(union recv_frame *prframe, u16 nSubframe_Length, u8 *pdata);
- void rtw_os_recv_indicate_pkt(struct adapter *padapter, _pkt *pkt, struct rx_pkt_attrib *pattrib);
-diff --git a/drivers/staging/rtl8723bs/os_dep/recv_linux.c b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-index 45145efa3f68..3fe9c2255edd 100644
---- a/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-+++ b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-@@ -46,16 +46,12 @@ void rtw_os_recv_resource_free(struct recv_priv *precvpriv)
- }
- 
- /* free os related resource in struct recv_buf */
--int rtw_os_recvbuf_resource_free(struct adapter *padapter, struct recv_buf *precvbuf)
-+void rtw_os_recvbuf_resource_free(struct adapter *padapter, struct recv_buf *precvbuf)
+diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+index fc3885d299d6..1d8f1907883f 100644
+--- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
++++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+@@ -2601,9 +2601,7 @@ static int rtw_p2p_set(struct net_device *dev,
+                                union iwreq_data *wrqu, char *extra)
  {
--	int ret = _SUCCESS;
+ 
+-	int ret = 0;
 -
- 	if (precvbuf->pskb)
- 	{
- 		dev_kfree_skb_any(precvbuf->pskb);
- 	}
 -	return ret;
--
++	return 0;
+ 
  }
  
- _pkt *rtw_os_alloc_msdu_pkt(union recv_frame *prframe, u16 nSubframe_Length, u8 *pdata)
+@@ -2612,9 +2610,7 @@ static int rtw_p2p_get(struct net_device *dev,
+                                union iwreq_data *wrqu, char *extra)
+ {
+ 
+-	int ret = 0;
+-
+-	return ret;
++	return 0;
+ 
+ }
+ 
+@@ -2623,9 +2619,7 @@ static int rtw_p2p_get2(struct net_device *dev,
+ 						union iwreq_data *wrqu, char *extra)
+ {
+ 
+-	int ret = 0;
+-
+-	return ret;
++	return 0;
+ 
+ }
+ 
 -- 
 2.19.1
 
