@@ -1,77 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 410143AFE3
-	for <lists+driverdev-devel@lfdr.de>; Mon, 10 Jun 2019 09:47:38 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 90CF73AFE2
+	for <lists+driverdev-devel@lfdr.de>; Mon, 10 Jun 2019 09:47:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 95B0C203B7;
+	by whitealder.osuosl.org (Postfix) with ESMTP id DD0088507B;
 	Mon, 10 Jun 2019 07:47:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bbrBq2qNrrSt; Mon, 10 Jun 2019 07:47:35 +0000 (UTC)
+	with ESMTP id J8adr6v-EsYP; Mon, 10 Jun 2019 07:47:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 72B61203CF;
-	Mon, 10 Jun 2019 07:47:32 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 663FD85218;
+	Mon, 10 Jun 2019 07:47:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 60DCD1BF410
- for <devel@linuxdriverproject.org>; Mon, 10 Jun 2019 07:47:29 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 380D91BF410
+ for <devel@linuxdriverproject.org>; Mon, 10 Jun 2019 07:47:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 5E22386EC0
- for <devel@linuxdriverproject.org>; Mon, 10 Jun 2019 07:47:29 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3389585313
+ for <devel@linuxdriverproject.org>; Mon, 10 Jun 2019 07:47:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IQZx+r0CgoDD for <devel@linuxdriverproject.org>;
- Mon, 10 Jun 2019 07:47:29 +0000 (UTC)
+ with ESMTP id kBKUesotcJ7n for <devel@linuxdriverproject.org>;
+ Mon, 10 Jun 2019 07:47:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
- [209.85.215.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id F07F686E48
- for <devel@driverdev.osuosl.org>; Mon, 10 Jun 2019 07:47:28 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id f25so4572185pgv.10
- for <devel@driverdev.osuosl.org>; Mon, 10 Jun 2019 00:47:28 -0700 (PDT)
+Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
+ [209.85.215.194])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C6E7E8502B
+ for <devel@driverdev.osuosl.org>; Mon, 10 Jun 2019 07:47:30 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id l19so1977463pgh.9
+ for <devel@driverdev.osuosl.org>; Mon, 10 Jun 2019 00:47:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=UTe9hY/3iBv9xCZ/7Vn6KCksfiacWA//uZ/qBAveG6Q=;
- b=OrI7NtSiK6RXyyV9rKcCVIh6bladyHWhYr5envWOS9QUE02IDN990wLRMJnuOJrox9
- Fzwka0mIN5YecTBP0co5RQvTH9WWZrgaUhCYuYf3LJTGgA1wnfFfSzh40rOxAOiFOgCN
- iNGHZKRwtRt0zvIrKve2QndRdV/ckAIDruRoV4i44VUcjntYpMQAvlR6ScI27y/qRnub
- lRJCOLKVubPKpHggenfA4PfCczkpWjM/sX9PN+M7MV88VObky93/SRL/F/KaHAaeapxW
- IhcfCKKvMvw2Vh3ggJ5UZLbZjNdJQdNxWtMMm9G+pmAWakze+LF99vIOTokSadxlfipK
- t/WQ==
+ bh=d/oneQ5DlC15Pj8AGmwAJ8QfqeY6w7PbALun/7Svg4w=;
+ b=tii8NOjX6fBUoRaMzCNGpm9ubcublVBfSAToo1KrVmPkt7aDBodJuGw8a6xT32kE4t
+ R7aHp1zUQVlDnR9sLHdTeIZZhuCu1Tb8AB6E8mqbOae5IAOyBY/TzYHoOo9kkf6iL0Wv
+ WMKI+PdNAgsA7co0MF1ZrUbY9Q+FfxTabom8LmLHsQyayTJV1GmzK3me0MUGNdpFKrmA
+ kUJOVNAflj10LxwCnC8Eve9pdblrijjEg7yiExq0SF+soXic0YV64+af4u+3x90KvQ6/
+ m370MwjTAeXHp1Zt3D2o9c8rNpxszokWJkm4EKuzBrmIlbH96pVRRbfSAHSvxob4z9qH
+ foZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=UTe9hY/3iBv9xCZ/7Vn6KCksfiacWA//uZ/qBAveG6Q=;
- b=B8CrC25VOPL0FN6XNpvTtTqXBZo6DchUlF+Uj5T9r89pZ92yuVpfa9ewBEppocMQlC
- KZCc+8osM8XFxM/plE8HUtKPMvfrf89+7rjGmE/LzZBLq6xtUAj21Qk0kegxRvgsH7ET
- TJLquuhefixmaQ8kEpApGaFtY1JOnwb0Ch3J7EnzhqoBCCC8TI69+Hq8K6exwIrgB2sB
- Uk9+DyiGeJtTQkYK7WMSs9j6Otjim/TsRdGSKjCii1qGIZK5WK+veWf2sPlLZVcYYUBc
- LmhLa7N/wRt6S9rIdZbDZ/Gn6otSbK8mrMwKw5Mvk4pmoPbBAu+pQJPZNTLvU4EXxUWT
- PxVg==
-X-Gm-Message-State: APjAAAVisIZEnynFZqmsHQZ8glTDygh/fNhbABeCSXXOpfGkvaao/z3b
- vZrdpu3+wWXfOzg870bgXvYW2cGs
-X-Google-Smtp-Source: APXvYqyK+CCo1ODBJfrYffI+3+h312CZ3ocxLczBpmPpajwi/lAU3lL/eLu7mh0c/2fCiUwvhFOk2w==
-X-Received: by 2002:a17:90a:ad83:: with SMTP id
- s3mr19926422pjq.43.1560152848672; 
- Mon, 10 Jun 2019 00:47:28 -0700 (PDT)
+ bh=d/oneQ5DlC15Pj8AGmwAJ8QfqeY6w7PbALun/7Svg4w=;
+ b=bARt3Jv9PYPPEJuqf6jHIeVZjO/18WAkcy1QnjZtDrtumHyM9Y23ItH/req0i2ttz3
+ VPjUxz0x/Oc8mNluD2K+ZgeqKBcSH1nnQjeFcxtm5usX7Vcvd/kVU5TTct3nHlO/najC
+ U1rYvhMgtRD1ZUFBVEF2JPcxOczNzjxayXQkx+IQ6USZhFeri1imUQJtfB3Wgyo7XULi
+ 7cjWuWbEVah60VPjI0Y7Ko1/8y3gveuviwGwnShwGj6QTstmXe5N9Tbf2AxiOjKt5h1V
+ wwsm7H8HtX22E7H4Bd89UfmyTbkaR0JqxnvOw6KFjUOnQZomzlGFxKnndH7JmvLSUxc1
+ +26Q==
+X-Gm-Message-State: APjAAAVFCPw/r+0hIqwETGYpd4fnaZgRb974gpVPna/NUrZDo9DjtnIW
+ CiLWKwtGh4ilFgWibKtpELwda6po
+X-Google-Smtp-Source: APXvYqxP4FhHic029eR2HP80by5VlGdAEr2JEtPSj5BNnZNfXwCdypnTxyC1P0j7MZaTcmUKb0HcTQ==
+X-Received: by 2002:a62:160b:: with SMTP id 11mr72950443pfw.30.1560152850439; 
+ Mon, 10 Jun 2019 00:47:30 -0700 (PDT)
 Received: from localhost.localdomain ([171.79.92.225])
- by smtp.gmail.com with ESMTPSA id f2sm8120965pgs.83.2019.06.10.00.47.27
+ by smtp.gmail.com with ESMTPSA id f2sm8120965pgs.83.2019.06.10.00.47.28
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Mon, 10 Jun 2019 00:47:28 -0700 (PDT)
+ Mon, 10 Jun 2019 00:47:30 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: gregkh@linuxfoundation.org,
 	devel@driverdev.osuosl.org
-Subject: [PATCH v2 04/10] staging: rtl8723bs: hal: sdio_halinit.c: Remove
+Subject: [PATCH v2 05/10] staging: rtl8723bs: hal: hal_btcoex.c: Remove
  variables
-Date: Mon, 10 Jun 2019 13:17:04 +0530
-Message-Id: <20190610074710.15677-4-nishkadg.linux@gmail.com>
+Date: Mon, 10 Jun 2019 13:17:05 +0530
+Message-Id: <20190610074710.15677-5-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190610074710.15677-1-nishkadg.linux@gmail.com>
 References: <20190610074710.15677-1-nishkadg.linux@gmail.com>
@@ -94,65 +93,39 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove the variables RegRATR and RegRRSR as they are never used after
-initialisation and assignment.
+Remove variables and use the values directly.
 Issue found with Coccinelle.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
 Changes in v2:
-- Send as part of patch series.
+- Send as part of a patch series.
 
- drivers/staging/rtl8723bs/hal/sdio_halinit.c | 11 -----------
- 1 file changed, 11 deletions(-)
+ drivers/staging/rtl8723bs/hal/hal_btcoex.c | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/sdio_halinit.c b/drivers/staging/rtl8723bs/hal/sdio_halinit.c
-index 3c65a9c02bbd..55d21aa52e62 100644
---- a/drivers/staging/rtl8723bs/hal/sdio_halinit.c
-+++ b/drivers/staging/rtl8723bs/hal/sdio_halinit.c
-@@ -614,7 +614,6 @@ static void _InitOperationMode(struct adapter *padapter)
- 	struct hal_com_data *pHalData;
- 	struct mlme_ext_priv *pmlmeext;
- 	u8 regBwOpMode = 0;
--	u32 regRATR = 0, regRRSR = 0;
+diff --git a/drivers/staging/rtl8723bs/hal/hal_btcoex.c b/drivers/staging/rtl8723bs/hal/hal_btcoex.c
+index 6caddd7834a1..aebe8b8977ad 100644
+--- a/drivers/staging/rtl8723bs/hal/hal_btcoex.c
++++ b/drivers/staging/rtl8723bs/hal/hal_btcoex.c
+@@ -362,15 +362,9 @@ static u32 halbtcoutsrc_GetBtPatchVer(PBTC_COEXIST pBtCoexist)
  
- 	pHalData = GET_HAL_DATA(padapter);
- 	pmlmeext = &padapter->mlmeextpriv;
-@@ -626,34 +625,24 @@ static void _InitOperationMode(struct adapter *padapter)
- 	switch (pmlmeext->cur_wireless_mode) {
- 	case WIRELESS_MODE_B:
- 		regBwOpMode = BW_OPMODE_20MHZ;
--		regRATR = RATE_ALL_CCK;
--		regRRSR = RATE_ALL_CCK;
- 		break;
- 	case WIRELESS_MODE_A:
- /* 			RT_ASSERT(false, ("Error wireless a mode\n")); */
- 		break;
- 	case WIRELESS_MODE_G:
- 		regBwOpMode = BW_OPMODE_20MHZ;
--		regRATR = RATE_ALL_CCK | RATE_ALL_OFDM_AG;
--		regRRSR = RATE_ALL_CCK | RATE_ALL_OFDM_AG;
- 		break;
- 	case WIRELESS_MODE_AUTO:
- 		regBwOpMode = BW_OPMODE_20MHZ;
--		regRATR = RATE_ALL_CCK | RATE_ALL_OFDM_AG | RATE_ALL_OFDM_1SS | RATE_ALL_OFDM_2SS;
--		regRRSR = RATE_ALL_CCK | RATE_ALL_OFDM_AG;
- 		break;
- 	case WIRELESS_MODE_N_24G:
- 		/*  It support CCK rate by default. */
- 		/*  CCK rate will be filtered out only when associated AP does not support it. */
- 		regBwOpMode = BW_OPMODE_20MHZ;
--		regRATR = RATE_ALL_CCK | RATE_ALL_OFDM_AG | RATE_ALL_OFDM_1SS | RATE_ALL_OFDM_2SS;
--		regRRSR = RATE_ALL_CCK | RATE_ALL_OFDM_AG;
- 		break;
- 	case WIRELESS_MODE_N_5G:
- /* 			RT_ASSERT(false, ("Error wireless mode")); */
- 		regBwOpMode = BW_OPMODE_5G;
--		regRATR = RATE_ALL_OFDM_AG | RATE_ALL_OFDM_1SS | RATE_ALL_OFDM_2SS;
--		regRRSR = RATE_ALL_OFDM_AG;
- 		break;
+ static s32 halbtcoutsrc_GetWifiRssi(struct adapter *padapter)
+ {
+-	struct hal_com_data *pHalData;
+-	s32 UndecoratedSmoothedPWDB = 0;
+-
+-
+-	pHalData = GET_HAL_DATA(padapter);
+-
+-	UndecoratedSmoothedPWDB = pHalData->dmpriv.EntryMinUndecoratedSmoothedPWDB;
++	struct hal_com_data *pHalData = GET_HAL_DATA(padapter);
  
- 	default: /* for MacOSX compiler warning. */
+-	return UndecoratedSmoothedPWDB;
++	return pHalData->dmpriv.EntryMinUndecoratedSmoothedPWDB;
+ }
+ 
+ static u8 halbtcoutsrc_GetWifiScanAPNum(struct adapter *padapter)
 -- 
 2.19.1
 
