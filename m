@@ -1,64 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 738F441960
-	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Jun 2019 02:17:00 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4CA108759A;
-	Wed, 12 Jun 2019 00:16:58 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 19eUZ-MDQIj9; Wed, 12 Jun 2019 00:16:57 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6655E86F92;
-	Wed, 12 Jun 2019 00:16:56 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E33C41BF980
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 12 Jun 2019 00:16:54 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id CBD3241922
+	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Jun 2019 01:48:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id DF74F20508
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 12 Jun 2019 00:16:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DCC2F20503;
+	Tue, 11 Jun 2019 23:48:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id g9UaDrFWZgCi; Tue, 11 Jun 2019 23:48:19 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id EE3AA20504;
+	Tue, 11 Jun 2019 23:48:17 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id AC14F1BF3AB
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 11 Jun 2019 23:48:16 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A488085C67
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 11 Jun 2019 23:48:16 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GYynhyN6X6Hr
+ with ESMTP id WIPHEKoiXa-7
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 12 Jun 2019 00:16:53 +0000 (UTC)
-X-Greylist: delayed 00:18:08 by SQLgrey-1.7.6
-Received: from NAM03-CO1-obe.outbound.protection.outlook.com
- (mail-eopbgr790044.outbound.protection.outlook.com [40.107.79.44])
- by silver.osuosl.org (Postfix) with ESMTPS id 587581FFFE
+ Tue, 11 Jun 2019 23:48:15 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from NAM02-SN1-obe.outbound.protection.outlook.com
+ (mail-eopbgr770051.outbound.protection.outlook.com [40.107.77.51])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 5D47F858C9
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 12 Jun 2019 00:16:53 +0000 (UTC)
+ Tue, 11 Jun 2019 23:48:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=daktronics.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=/s4tNdGmTQOkJX7L2MkFXly0hEmyzWpIRpAEnyhQLvA=;
- b=hmWWcBdofXnbZi/W7oBgGFgypQUWBRByUuozXfBpdXkqkYlaX65VAcOdJ0qox1PAdVJVi5txdSWQo+8ivjWYcmJsxJPdUFr+TNkmtUdtphkvsN8fSDxLFpxRfsmkZQrVoLuFFVk82HDmnM4fhjttbSNvn83dTMyejnY3NaGSNg8=
+ bh=V4x7LB5npbgu4mPFhZpQawxMO8Hiw87LyzneKTrm/3k=;
+ b=oQxWaF+NJJ/YiZh2qNmkEaS1CBQ9pDJcPzsCnYEbLcThYJ7ju4QBrTuuIM1WHr9Uib4wIEXL3V0uK+daK1FgBPNDaYBHQQfzthnWQ31N1WNTTzX7ypyv+q1Hw5UsDckASrnXUvhNjqY5EEt4JIp5joe8xINlYjp/APUyfF+3GdE=
 Received: from SN6PR02MB4016.namprd02.prod.outlook.com (52.135.69.145) by
- SN6PR02MB5149.namprd02.prod.outlook.com (52.135.99.154) with Microsoft SMTP
+ SN6PR02MB5693.namprd02.prod.outlook.com (20.177.252.17) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1965.17; Tue, 11 Jun 2019 23:43:19 +0000
+ 15.20.1965.15; Tue, 11 Jun 2019 23:48:13 +0000
 Received: from SN6PR02MB4016.namprd02.prod.outlook.com
  ([fe80::f551:3180:ba2d:7c1f]) by SN6PR02MB4016.namprd02.prod.outlook.com
  ([fe80::f551:3180:ba2d:7c1f%6]) with mapi id 15.20.1965.017; Tue, 11 Jun 2019
- 23:43:19 +0000
+ 23:48:12 +0000
 From: Matt Sickler <Matt.Sickler@daktronics.com>
 To: Jeremy Sowden <jeremy@azazel.net>, Linux Driver Project Developer List
  <driverdev-devel@linuxdriverproject.org>
-Subject: RE: [PATCH 0/6] staging: kpc2000_dma: fixes for AIO file-ops.
-Thread-Topic: [PATCH 0/6] staging: kpc2000_dma: fixes for AIO file-ops.
-Thread-Index: AQHVII8IHRUOyrPrvEeQ3eI5zKn33qaXEi4g
-Date: Tue, 11 Jun 2019 23:43:19 +0000
-Message-ID: <SN6PR02MB4016014FC72267C4C0C148DDEEED0@SN6PR02MB4016.namprd02.prod.outlook.com>
+Subject: RE: [PATCH 4/6] staging: kpc2000_dma: replaced aio_(read|write)
+ file-ops with (read|write)_iter ones.
+Thread-Topic: [PATCH 4/6] staging: kpc2000_dma: replaced aio_(read|write)
+ file-ops with (read|write)_iter ones.
+Thread-Index: AQHVII8H8yDdrR6ayU+DU3WJqUwK9qaXHhag
+Date: Tue, 11 Jun 2019 23:48:12 +0000
+Message-ID: <SN6PR02MB40166D1E2E4C8BBD76EA9AFCEEED0@SN6PR02MB4016.namprd02.prod.outlook.com>
 References: <20190611195104.4828-1-jeremy@azazel.net>
-In-Reply-To: <20190611195104.4828-1-jeremy@azazel.net>
+ <20190611195104.4828-5-jeremy@azazel.net>
+In-Reply-To: <20190611195104.4828-5-jeremy@azazel.net>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -67,32 +70,32 @@ authentication-results: spf=none (sender IP is )
  smtp.mailfrom=Matt.Sickler@daktronics.com; 
 x-originating-ip: [63.85.214.4]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 5c40fd97-541f-46c8-eaa8-08d6eec6952a
+x-ms-office365-filtering-correlation-id: 9d2c4497-64c6-4b42-b2b1-08d6eec74436
 x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(5600148)(711020)(4605104)(1401327)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7193020);
- SRVR:SN6PR02MB5149; 
-x-ms-traffictypediagnostic: SN6PR02MB5149:
-x-microsoft-antispam-prvs: <SN6PR02MB514904EF97DEF2CC18F7F626EEED0@SN6PR02MB5149.namprd02.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:10000;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(2017052603328)(7193020);
+ SRVR:SN6PR02MB5693; 
+x-ms-traffictypediagnostic: SN6PR02MB5693:
+x-microsoft-antispam-prvs: <SN6PR02MB5693CBACB38BAFCE9E0AAD90EEED0@SN6PR02MB5693.namprd02.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:8882;
 x-forefront-prvs: 006546F32A
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(39860400002)(396003)(376002)(346002)(366004)(136003)(189003)(199004)(13464003)(6506007)(99286004)(256004)(66066001)(14444005)(76176011)(86362001)(478600001)(53936002)(7696005)(6436002)(74316002)(55016002)(33656002)(71190400001)(305945005)(71200400001)(9686003)(72206003)(14454004)(7736002)(8936002)(5660300002)(66946007)(64756008)(66446008)(6116002)(6246003)(66476007)(316002)(486006)(3846002)(476003)(446003)(68736007)(52536014)(76116006)(73956011)(4326008)(11346002)(186003)(110136005)(229853002)(26005)(8676002)(81156014)(66556008)(2906002)(81166006)(102836004)(25786009);
- DIR:OUT; SFP:1101; SCL:1; SRVR:SN6PR02MB5149;
+ SFS:(10009020)(346002)(39860400002)(396003)(376002)(366004)(136003)(199004)(189003)(13464003)(71200400001)(66476007)(316002)(14454004)(476003)(64756008)(229853002)(76116006)(305945005)(73956011)(66446008)(102836004)(68736007)(66946007)(53936002)(66556008)(2906002)(6246003)(52536014)(5660300002)(7736002)(33656002)(71190400001)(4326008)(25786009)(6506007)(486006)(26005)(55016002)(446003)(6436002)(186003)(9686003)(256004)(99286004)(3846002)(81156014)(81166006)(72206003)(110136005)(7696005)(76176011)(74316002)(11346002)(86362001)(6116002)(8936002)(478600001)(8676002)(66066001);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:SN6PR02MB5693;
  H:SN6PR02MB4016.namprd02.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
+ PTR:InfoNoRecords; A:1; MX:1; 
 received-spf: None (protection.outlook.com: daktronics.com does not designate
  permitted sender hosts)
 x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: JjWJ8n4oq7b3gQFBoKn4jsh6nU4MJEYPDq3cHP8sx5ieqAQ2AAD8jjw13TotF0Tl+LKmYNUFoKnqTc85Z5z3PW6r2Ft1EvXFIcHdrkEpLcujDCG7KfFPu3P0femG4h958ENoc8rEK3HFLrkcee4cEoqofMUG7kbA46dTUKuGUtJogfdOAt4oCU/cq1w3MM751U0FdaUjDlbGc/ogL7dWfryEGfAkqKIYL5oaorNaRlQfYOvjeYlj3OLF2d+NAhkDmI//Vxk6vohJ/nkXW7glq3TAcHzuRGrGkcpZmdGAKuV0qyWSKW83vy19CZP0KP2g+iGGyHWiWZ9n4fZcF9RCZEBmnYLkqV6i/xqV6VtfKe7iTfe/vOw4kDbIz5qrRzE/VZGea/K4AUnBc3S16yq00RhFE4m00pjO8ngDkli0SEI=
+x-microsoft-antispam-message-info: A4JsLrDGAalNnHyCYGutxfFH4di8YwVeef+jAhsH3V1LP4vwGoOaUnHbPTCbECbOZCjBCy1GppnfjjlWgdY9NMyGv55A3NbV8pfH53nAOuwUgeT7ulfiYsLsJlqerlpgVMU0LNsQRBReJI9qD3HZtoUcbdMh8s1aT783t/b235zM+2J0xc0P5bAMIb3Hu6oNM83H6mVrHssVrlf4Hyi6rZ8LUq1/QbEcRRqXjDTHC09b2vJgzb7ecXYnQZBC6fqATHoL+SJXR27Jh/JqCONopDDLufjudQn+Du4oCAO1aa8geGiB4LHWrUP5wRK2N0z0HrwXFEPj0MrM0ONEAXHRBIOYZiB/hf3bawdzwcVUXLrdocJT2sdSGo/hm/hMDIGiWIacYJ1GAUW0AYfctxwC/FRBBOePD1902IYskNxpGxk=
 MIME-Version: 1.0
 X-OriginatorOrg: daktronics.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5c40fd97-541f-46c8-eaa8-08d6eec6952a
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Jun 2019 23:43:19.2047 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9d2c4497-64c6-4b42-b2b1-08d6eec74436
+X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Jun 2019 23:48:12.8672 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: be88af81-0945-42aa-a3d2-b122777351a2
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
 X-MS-Exchange-CrossTenant-userprincipalname: matt.sickler@daktronics.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR02MB5149
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR02MB5693
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,51 +116,55 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 >-----Original Message-----
 >From: Jeremy Sowden <jeremy@azazel.net>
->I've had a go at getting the DMA AIO working.  It compiles, but I don't
->have access to the hardware, so I have done no more testing than that.
-
-Honestly, it'd probably be better to just remove the AIO support entirely.  The
-one use case we had that could possibly have benefitted from AIO has been
-switched away from DMA entirely.  We switched because the DMA buffer was a
-couple hundred bytes and the overhead of setting up the DMA was killing
-throughput.  AIO *might* have been able to help there, but the userspace side
-of AIO is a PITA to work with.  IMO, if "AIO" for the kpc_dma driver were to
-make a come back, I think it would be better to use something like io_uring
-The other things that use DMA wouldn't benefit from AIO as they have to setup
-other parts of the hardware that can't coordinate with the DMA controllers
-(or at least not without a lot of work).
-
-TL;DR: it's probably better to just kill the AIO parts of the driver than to try to make them work.
-
->The fifth patch removes the cancel call-back because it is empty and so
->doesn't serve any purpose (AFAICS).  However, it doesn't appear to be
->too tricky to implement something that would abort the transfer in the
->same manner that kpc_dma_close() if this would be useful.
-
-It's empty because I didn't have time to figure out how to cancel the DMA
-operation on the hardware side.  Doing the same "reset the whole engine"
-type of cancel could work, but I'm not sure how well that would mesh with
-aio_cancel (the latter would kill *all* in-flight operations, the former
-is only killing the one).  As I said above, it's probably better to just
-remove all the AIO pieces.
-
->Jeremy Sowden (6):
->  staging: kpc2000_dma: added Kconfig to enable asynchronous I/O.
->  staging: kpc2000_dma: removed casts of void pointers.
->  staging: kpc2000_dma: formatting fixes for AIO functions.
->  staging: kpc2000_dma: replaced aio_(read|write) file-ops with
->    (read|write)_iter ones.
->  staging: kpc2000_dma: removed aio cancel call-back.
->  staging: kpc2000: updated TODO in light of DMA AIO fixes.
 >
-> drivers/staging/kpc2000/Kconfig           |  8 +++
-> drivers/staging/kpc2000/TODO              |  4 +-
-> drivers/staging/kpc2000/kpc_dma/fileops.c | 69 ++++++++++++-----------
-> 3 files changed, 44 insertions(+), 37 deletions(-)
->
->--
->2.20.1
 
+>The AIO API was implemented in terms of obsolete file-ops.  Replaced the
+>->aio_read and ->aio_write call-backs with ->read_iter and ->write_iter
+>ones.  Replaced the call to aio_complete with a call to the ki_complete
+>call-back of the kiocb object.
+>
+>Cc: Matt Sickler <matt.sickler@daktronics.com>
+>Signed-off-by: Jeremy Sowden <jeremy@azazel.net>
+>---
+> drivers/staging/kpc2000/kpc_dma/fileops.c | 40 +++++++++++++++--------
+> 1 file changed, 26 insertions(+), 14 deletions(-)
+>
+>diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c
+>b/drivers/staging/kpc2000/kpc_dma/fileops.c
+>index d74300f14dff..1e8f8c41f82a 100644
+>--- a/drivers/staging/kpc2000/kpc_dma/fileops.c
+>+++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
+>@@ -10,6 +10,7 @@
+> #include <linux/cdev.h>
+> #include <linux/uaccess.h>  /* copy_*_user */
+> #include <linux/aio.h>      /* aio stuff */
+>+#include <linux/uio.h>
+> #include <linux/highmem.h>
+> #include <linux/pagemap.h>
+> #include "kpc_dma_driver.h"
+>@@ -243,7 +244,7 @@ void  transfer_complete_cb(struct aio_cb_data *acd,
+>size_t xfr_count, u32 flags)
+>                }
+>        } else {
+> #ifdef CONFIG_KPC2000_DMA_AIO
+>-               aio_complete(acd->kcb, acd->len, acd->flags);
+>+               acd->kcb->ki_complete(acd->kcb, acd->len, acd->flags);
+> #endif
+>                kfree(acd);
+>        }
+>@@ -319,42 +320,54 @@ static int kpc_dma_aio_cancel(struct kiocb *kcb)
+>        return 0;
+> }
+
+This part was wrapped in the ifdef because aio_complete was removed some time
+after 3.16 and I didn't bother with figuring out the replacement for it since
+I figured the AIO functionality would be removed entirely.
+
+
+As for the read_iter/write_iter, my understanding is that's for allowing
+scatter-gather type buffers from userspace.  If so, that functionality could
+be removed entirely.  Our use cases have zero need for it, which is why it's
+not implemented right now.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
