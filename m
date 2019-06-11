@@ -2,53 +2,78 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EDE793C151
-	for <lists+driverdev-devel@lfdr.de>; Tue, 11 Jun 2019 04:43:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9AA513C164
+	for <lists+driverdev-devel@lfdr.de>; Tue, 11 Jun 2019 05:00:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D191587A4F;
-	Tue, 11 Jun 2019 02:43:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8D93F85C3A;
+	Tue, 11 Jun 2019 03:00:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Yon3cZADLPnY; Tue, 11 Jun 2019 02:43:22 +0000 (UTC)
+	with ESMTP id wQpxWwfIY-1R; Tue, 11 Jun 2019 03:00:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 67BC687A43;
-	Tue, 11 Jun 2019 02:43:21 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 63BDF8596F;
+	Tue, 11 Jun 2019 03:00:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4AB301BF40F
- for <devel@linuxdriverproject.org>; Tue, 11 Jun 2019 02:43:20 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id EDDCB1BF288
+ for <devel@linuxdriverproject.org>; Tue, 11 Jun 2019 02:59:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 459F285E47
- for <devel@linuxdriverproject.org>; Tue, 11 Jun 2019 02:43:20 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id EA2B220479
+ for <devel@linuxdriverproject.org>; Tue, 11 Jun 2019 02:59:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VXA5m-Nomje1 for <devel@linuxdriverproject.org>;
- Tue, 11 Jun 2019 02:43:19 +0000 (UTC)
+ with ESMTP id KD7a7MeQdYDD for <devel@linuxdriverproject.org>;
+ Tue, 11 Jun 2019 02:59:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id DE8CB85E35
- for <devel@driverdev.osuosl.org>; Tue, 11 Jun 2019 02:43:18 +0000 (UTC)
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 813E8A03BFD95E363468;
- Tue, 11 Jun 2019 10:43:15 +0800 (CST)
-Received: from architecture4.huawei.com (10.140.130.215) by smtp.huawei.com
- (10.3.19.212) with Microsoft SMTP Server (TLS) id 14.3.439.0; Tue, 11 Jun
- 2019 10:43:07 +0800
-From: Gao Xiang <gaoxiang25@huawei.com>
-To: Chao Yu <yuchao0@huawei.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, <devel@driverdev.osuosl.org>
-Subject: [PATCH v2 2/2] staging: erofs: rename data_mapping_mode to datamode
-Date: Tue, 11 Jun 2019 10:42:20 +0800
-Message-ID: <20190611024220.86121-2-gaoxiang25@huawei.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190611024220.86121-1-gaoxiang25@huawei.com>
-References: <20190611024220.86121-1-gaoxiang25@huawei.com>
+Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
+ [209.85.210.194])
+ by silver.osuosl.org (Postfix) with ESMTPS id 3D2F62046F
+ for <devel@driverdev.osuosl.org>; Tue, 11 Jun 2019 02:59:59 +0000 (UTC)
+Received: by mail-pf1-f194.google.com with SMTP id 81so6422468pfy.13
+ for <devel@driverdev.osuosl.org>; Mon, 10 Jun 2019 19:59:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=3RvF588gW/eOiodTO3ulTpUto6/HGBoQ0uLzQhVKiAY=;
+ b=UotuSMSg82fg5NGnIk39gGKWbzlAwata7Bb06GRioyYSpU+nYnazHpAMkxgj8rtdZ0
+ Pq0UM+60by3JiKK2U7gNQm0lY1yiV0wJ2D9F1D4nHak8aas5AgRPPWkdTExlqpYdGPVI
+ VmmGLMdeIuMNbQ7WeQiXPPhh7RdrjnpxXpNBunBf6yNCVZw01cZFTWcCBjeakyRjMSxn
+ PKycyTachHikK1CAb28KLBjxQL89DbUpfZmlYnXvkFuyDulipJjrChEV/7hYn5UOYLk9
+ pVU5bHcE3iT/82GcWhjaTxfFiYMPXEaQisMdf3o31XIXlyuYijhrxD6nhSA+nUZiUXXl
+ UuGQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=3RvF588gW/eOiodTO3ulTpUto6/HGBoQ0uLzQhVKiAY=;
+ b=TMOKxyimE5CflWt2C4riyQHtcpSspWDbKNuSWcbzQuR3Qy4UHH2P7oQ9/ldSkjr+GG
+ W5pFiET5DAgcq8RqBokOcuLavz8AP/nWQuA9GzI62msexWri2m+lGe7RR02vXcDGo+z2
+ tXzdnfD5v5HLXl90963PNjKBUHNH5Mkg069LM0AlOV13AE20QrPEp6AEMOe9gQYUDl+M
+ 0yKlyWZv8dWIT5ZOUeXY0/yYsHcv6GosgjAYQl4ddX1nt68ZMEEynkFfk+l0esJ0Ee/n
+ F4khTxbIi67NhHdjmuRk3qoqskRwcW/IofQI6iKSQIy/rX1EJ5I8fTnJjAtfFwXGMcl2
+ HTog==
+X-Gm-Message-State: APjAAAWzXDbYgdaXqZV19R4DdnflmWky2vMXt3Wg5LigzETSZAQHSi+s
+ DZyayhN1110yF1gqI6+K0FDW1JiN
+X-Google-Smtp-Source: APXvYqwAiYXXj0zgcOalF+oKh2682wSbp41Bmwzooikq9yRU4xC5SaJCr5gRZpvR/852/XAg8pbdEA==
+X-Received: by 2002:a17:90a:32ed:: with SMTP id
+ l100mr24199013pjb.11.1560221998813; 
+ Mon, 10 Jun 2019 19:59:58 -0700 (PDT)
+Received: from hari-Inspiron-1545 ([183.83.89.153])
+ by smtp.gmail.com with ESMTPSA id 133sm10861906pfa.92.2019.06.10.19.59.56
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 10 Jun 2019 19:59:58 -0700 (PDT)
+Date: Tue, 11 Jun 2019 08:29:53 +0530
+From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Hariprasad Kelam <hariprasad.kelam@gmail.com>,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: [PATCH 1/2] staging: rtl8723bs: fix issue Comparison to NULL
+Message-ID: <20190611025953.GA26041@hari-Inspiron-1545>
 MIME-Version: 1.0
-X-Originating-IP: [10.140.130.215]
-X-CFilter-Loop: Reflected
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,120 +86,125 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-erofs@lists.ozlabs.org, Chao Yu <chao@kernel.org>,
- LKML <linux-kernel@vger.kernel.org>, weidu.du@huawei.com,
- Fang Wei <fangwei1@huawei.com>, Miao Xie <miaoxie@huawei.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-data_mapping_mode is too long as a member name of erofs_vnode,
-datamode is straight-forward enough.
+This patch fixes below issues reported by checkpatch
 
-Reviewed-by: Chao Yu <yuchao0@huawei.com>
-Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
+CHECK: Comparison to NULL could be written "rtw_proc"
+CHECK: Comparison to NULL could be written "!rtw_proc"
+CHECK: Comparison to NULL could be written "!rtw_proc"
+
+Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 ---
- drivers/staging/erofs/inode.c    | 17 ++++++++---------
- drivers/staging/erofs/internal.h | 10 ++++------
- 2 files changed, 12 insertions(+), 15 deletions(-)
+ drivers/staging/rtl8723bs/os_dep/rtw_proc.c | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/staging/erofs/inode.c b/drivers/staging/erofs/inode.c
-index 9520419f746c..e51348f7e838 100644
---- a/drivers/staging/erofs/inode.c
-+++ b/drivers/staging/erofs/inode.c
-@@ -22,11 +22,11 @@ static int read_inode(struct inode *inode, void *data)
- 	const unsigned int advise = le16_to_cpu(v1->i_advise);
- 	erofs_blk_t nblks = 0;
+diff --git a/drivers/staging/rtl8723bs/os_dep/rtw_proc.c b/drivers/staging/rtl8723bs/os_dep/rtw_proc.c
+index d8e7ad1..d6862e8 100644
+--- a/drivers/staging/rtl8723bs/os_dep/rtw_proc.c
++++ b/drivers/staging/rtl8723bs/os_dep/rtw_proc.c
+@@ -122,14 +122,14 @@ int rtw_drv_proc_init(void)
+ 	ssize_t i;
+ 	struct proc_dir_entry *entry = NULL;
  
--	vi->data_mapping_mode = __inode_data_mapping(advise);
-+	vi->datamode = __inode_data_mapping(advise);
- 
--	if (unlikely(vi->data_mapping_mode >= EROFS_INODE_LAYOUT_MAX)) {
--		errln("unknown data mapping mode %u of nid %llu",
--		      vi->data_mapping_mode, vi->nid);
-+	if (unlikely(vi->datamode >= EROFS_INODE_LAYOUT_MAX)) {
-+		errln("unsupported data mapping %u of nid %llu",
-+		      vi->datamode, vi->nid);
- 		DBG_BUGON(1);
- 		return -EIO;
+-	if (rtw_proc != NULL) {
++	if (rtw_proc) {
+ 		rtw_warn_on(1);
+ 		goto exit;
  	}
-@@ -63,7 +63,7 @@ static int read_inode(struct inode *inode, void *data)
- 		inode->i_size = le64_to_cpu(v2->i_size);
  
- 		/* total blocks for compressed files */
--		if (vi->data_mapping_mode == EROFS_INODE_LAYOUT_COMPRESSION)
-+		if (is_inode_layout_compression(inode))
- 			nblks = le32_to_cpu(v2->i_u.compressed_blocks);
- 	} else if (__inode_version(advise) == EROFS_INODE_LAYOUT_V1) {
- 		struct erofs_sb_info *sbi = EROFS_SB(inode->i_sb);
-@@ -95,7 +95,7 @@ static int read_inode(struct inode *inode, void *data)
- 			sbi->build_time_nsec;
+ 	rtw_proc = rtw_proc_create_dir(RTW_PROC_NAME, get_proc_net, NULL);
  
- 		inode->i_size = le32_to_cpu(v1->i_size);
--		if (vi->data_mapping_mode == EROFS_INODE_LAYOUT_COMPRESSION)
-+		if (is_inode_layout_compression(inode))
- 			nblks = le32_to_cpu(v1->i_u.compressed_blocks);
- 	} else {
- 		errln("unsupported on-disk inode version %u of nid %llu",
-@@ -127,7 +127,7 @@ static int fill_inline_data(struct inode *inode, void *data,
+-	if (rtw_proc == NULL) {
++	if (!rtw_proc) {
+ 		rtw_warn_on(1);
+ 		goto exit;
+ 	}
+@@ -152,7 +152,7 @@ void rtw_drv_proc_deinit(void)
  {
- 	struct erofs_vnode *vi = EROFS_V(inode);
- 	struct erofs_sb_info *sbi = EROFS_I_SB(inode);
--	int mode = vi->data_mapping_mode;
-+	const int mode = vi->datamode;
+ 	int i;
  
- 	DBG_BUGON(mode >= EROFS_INODE_LAYOUT_MAX);
+-	if (rtw_proc == NULL)
++	if (!rtw_proc)
+ 		return;
  
-@@ -299,9 +299,8 @@ int erofs_getattr(const struct path *path, struct kstat *stat,
- 		  u32 request_mask, unsigned int query_flags)
- {
- 	struct inode *const inode = d_inode(path->dentry);
--	struct erofs_vnode *const vi = EROFS_V(inode);
+ 	for (i = 0; i < drv_proc_hdls_num; i++)
+@@ -637,18 +637,18 @@ static struct proc_dir_entry *rtw_odm_proc_init(struct net_device *dev)
+ 	struct adapter	*adapter = rtw_netdev_priv(dev);
+ 	ssize_t i;
  
--	if (vi->data_mapping_mode == EROFS_INODE_LAYOUT_COMPRESSION)
-+	if (is_inode_layout_compression(inode))
- 		stat->attributes |= STATX_ATTR_COMPRESSED;
+-	if (adapter->dir_dev == NULL) {
++	if (!adapter->dir_dev) {
+ 		rtw_warn_on(1);
+ 		goto exit;
+ 	}
  
- 	stat->attributes |= STATX_ATTR_IMMUTABLE;
-diff --git a/drivers/staging/erofs/internal.h b/drivers/staging/erofs/internal.h
-index 911333cdeef4..6a7eb04d29b4 100644
---- a/drivers/staging/erofs/internal.h
-+++ b/drivers/staging/erofs/internal.h
-@@ -347,8 +347,7 @@ struct erofs_vnode {
- 	/* atomic flags (including bitlocks) */
- 	unsigned long flags;
+-	if (adapter->dir_odm != NULL) {
++	if (adapter->dir_odm) {
+ 		rtw_warn_on(1);
+ 		goto exit;
+ 	}
  
--	unsigned char data_mapping_mode;
--	/* inline size in bytes */
-+	unsigned char datamode;
- 	unsigned char inode_isize;
- 	unsigned short xattr_isize;
+ 	dir_odm = rtw_proc_create_dir("odm", adapter->dir_dev, dev);
+-	if (dir_odm == NULL) {
++	if (!dir_odm) {
+ 		rtw_warn_on(1);
+ 		goto exit;
+ 	}
+@@ -674,7 +674,7 @@ static void rtw_odm_proc_deinit(struct adapter	*adapter)
  
-@@ -383,18 +382,17 @@ static inline unsigned long inode_datablocks(struct inode *inode)
+ 	dir_odm = adapter->dir_odm;
  
- static inline bool is_inode_layout_plain(struct inode *inode)
- {
--	return EROFS_V(inode)->data_mapping_mode == EROFS_INODE_LAYOUT_PLAIN;
-+	return EROFS_V(inode)->datamode == EROFS_INODE_LAYOUT_PLAIN;
- }
+-	if (dir_odm == NULL) {
++	if (!dir_odm) {
+ 		rtw_warn_on(1);
+ 		return;
+ 	}
+@@ -695,18 +695,18 @@ struct proc_dir_entry *rtw_adapter_proc_init(struct net_device *dev)
+ 	struct adapter *adapter = rtw_netdev_priv(dev);
+ 	ssize_t i;
  
- static inline bool is_inode_layout_compression(struct inode *inode)
- {
--	return EROFS_V(inode)->data_mapping_mode ==
--					EROFS_INODE_LAYOUT_COMPRESSION;
-+	return EROFS_V(inode)->datamode == EROFS_INODE_LAYOUT_COMPRESSION;
- }
+-	if (drv_proc == NULL) {
++	if (!drv_proc) {
+ 		rtw_warn_on(1);
+ 		goto exit;
+ 	}
  
- static inline bool is_inode_layout_inline(struct inode *inode)
- {
--	return EROFS_V(inode)->data_mapping_mode == EROFS_INODE_LAYOUT_INLINE;
-+	return EROFS_V(inode)->datamode == EROFS_INODE_LAYOUT_INLINE;
- }
+-	if (adapter->dir_dev != NULL) {
++	if (adapter->dir_dev) {
+ 		rtw_warn_on(1);
+ 		goto exit;
+ 	}
  
- extern const struct super_operations erofs_sops;
+ 	dir_dev = rtw_proc_create_dir(dev->name, drv_proc, dev);
+-	if (dir_dev == NULL) {
++	if (!dir_dev) {
+ 		rtw_warn_on(1);
+ 		goto exit;
+ 	}
+@@ -736,7 +736,7 @@ void rtw_adapter_proc_deinit(struct net_device *dev)
+ 
+ 	dir_dev = adapter->dir_dev;
+ 
+-	if (dir_dev == NULL) {
++	if (!dir_dev) {
+ 		rtw_warn_on(1);
+ 		return;
+ 	}
+@@ -760,7 +760,7 @@ void rtw_adapter_proc_replace(struct net_device *dev)
+ 
+ 	dir_dev = adapter->dir_dev;
+ 
+-	if (dir_dev == NULL) {
++	if (!dir_dev) {
+ 		rtw_warn_on(1);
+ 		return;
+ 	}
 -- 
-2.17.1
+2.7.4
 
 _______________________________________________
 devel mailing list
