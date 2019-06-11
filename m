@@ -1,57 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F6073C0FD
-	for <lists+driverdev-devel@lfdr.de>; Tue, 11 Jun 2019 03:41:29 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C824B3C108
+	for <lists+driverdev-devel@lfdr.de>; Tue, 11 Jun 2019 03:44:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 0166F20480;
-	Tue, 11 Jun 2019 01:41:28 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 97F6F86BDB;
+	Tue, 11 Jun 2019 01:43:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NxAmKMcpd6JW; Tue, 11 Jun 2019 01:41:27 +0000 (UTC)
+	with ESMTP id iqQx5BlgO7of; Tue, 11 Jun 2019 01:43:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C1F7120475;
-	Tue, 11 Jun 2019 01:41:26 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 504F586505;
+	Tue, 11 Jun 2019 01:43:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A51B71BF406
- for <devel@linuxdriverproject.org>; Tue, 11 Jun 2019 01:41:24 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id DE9CE1BF406
+ for <devel@linuxdriverproject.org>; Tue, 11 Jun 2019 01:43:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A251185E91
- for <devel@linuxdriverproject.org>; Tue, 11 Jun 2019 01:41:24 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id DAAFA20475
+ for <devel@linuxdriverproject.org>; Tue, 11 Jun 2019 01:43:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id p062ES-DVDum for <devel@linuxdriverproject.org>;
- Tue, 11 Jun 2019 01:41:24 +0000 (UTC)
+ with ESMTP id XzxrQJg-kIX7 for <devel@linuxdriverproject.org>;
+ Tue, 11 Jun 2019 01:43:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 295DC85E8C
- for <devel@driverdev.osuosl.org>; Tue, 11 Jun 2019 01:41:24 +0000 (UTC)
-Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 2BAAF7B73AFA17A6A68B;
- Tue, 11 Jun 2019 09:41:21 +0800 (CST)
-Received: from [10.134.22.195] (10.134.22.195) by smtp.huawei.com
- (10.3.19.214) with Microsoft SMTP Server (TLS) id 14.3.439.0; Tue, 11 Jun
- 2019 09:41:13 +0800
-Subject: Re: [PATCH] staging: erofs: make use of DBG_BUGON
-To: Hariprasad Kelam <hariprasad.kelam@gmail.com>, Gao Xiang
- <gaoxiang25@huawei.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- <linux-erofs@lists.ozlabs.org>, <devel@driverdev.osuosl.org>,
- <linux-kernel@vger.kernel.org>
-References: <20190608094918.GA11605@hari-Inspiron-1545>
-From: Chao Yu <yuchao0@huawei.com>
-Message-ID: <f35ac2bf-14e2-2fff-cb89-caca4f790298@huawei.com>
-Date: Tue, 11 Jun 2019 09:41:13 +0800
+ by silver.osuosl.org (Postfix) with ESMTPS id E3C1F203E2
+ for <devel@driverdev.osuosl.org>; Tue, 11 Jun 2019 01:43:52 +0000 (UTC)
+Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 78CCC6CE4E63A440A303;
+ Tue, 11 Jun 2019 09:43:49 +0800 (CST)
+Received: from [10.151.23.176] (10.151.23.176) by smtp.huawei.com
+ (10.3.19.213) with Microsoft SMTP Server (TLS) id 14.3.439.0; Tue, 11 Jun
+ 2019 09:43:41 +0800
+Subject: Re: [PATCH 1/2] staging: erofs: add requirements field in superblock
+To: Chao Yu <yuchao0@huawei.com>
+References: <20190610093640.96705-1-gaoxiang25@huawei.com>
+ <f4fbd407-7f0d-bbe3-2283-f7291a29026a@huawei.com>
+From: Gao Xiang <gaoxiang25@huawei.com>
+Message-ID: <6993c266-0c95-780f-56b2-97996ee3be73@huawei.com>
+Date: Tue, 11 Jun 2019 09:43:36 +0800
 User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <20190608094918.GA11605@hari-Inspiron-1545>
-Content-Language: en-US
-X-Originating-IP: [10.134.22.195]
+In-Reply-To: <f4fbd407-7f0d-bbe3-2283-f7291a29026a@huawei.com>
+X-Originating-IP: [10.151.23.176]
 X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -65,21 +62,108 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Chao Yu <chao@kernel.org>, linux-erofs@lists.ozlabs.org,
+ LKML <linux-kernel@vger.kernel.org>, stable@vger.kernel.org,
+ weidu.du@huawei.com, Fang Wei <fangwei1@huawei.com>,
+ Miao Xie <miaoxie@huawei.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 2019/6/8 17:49, Hariprasad Kelam wrote:
-> DBG_BUGON is introduced and it could only crash when EROFS_FS_DEBUG
-> (EROFS developping feature) is on.
-> replace BUG_ON with DBG_BUGON.
-> 
-> Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+Hi Chao,
 
-Reviewed-by: Chao Yu <yuchao0@huawei.com>
+On 2019/6/11 9:37, Chao Yu wrote:
+> On 2019/6/10 17:36, Gao Xiang wrote:
+>> There are some backward incompatible optimizations pending
+>> for months, mainly due to on-disk format expensions.
+>>
+>> However, we should ensure that it cannot be mounted with
+>> old kernels. Otherwise, it will causes unexpected behaviors.
+>>
+>> Fixes: ba2b77a82022 ("staging: erofs: add super block operations")
+>> Cc: <stable@vger.kernel.org> # 4.19+
+>> Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
+>> ---
+>>  drivers/staging/erofs/erofs_fs.h | 11 +++++++++--
+>>  drivers/staging/erofs/super.c    |  8 ++++++++
+>>  2 files changed, 17 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/drivers/staging/erofs/erofs_fs.h b/drivers/staging/erofs/erofs_fs.h
+>> index fa52898df006..531821757845 100644
+>> --- a/drivers/staging/erofs/erofs_fs.h
+>> +++ b/drivers/staging/erofs/erofs_fs.h
+>> @@ -17,10 +17,16 @@
+>>  #define EROFS_SUPER_MAGIC_V1    0xE0F5E1E2
+>>  #define EROFS_SUPER_OFFSET      1024
+>>  
+>> +/*
+>> + * Any bits that aren't in EROFS_ALL_REQUIREMENTS should be
+>> + * incompatible with this kernel version.
+>> + */
+>> +#define EROFS_ALL_REQUIREMENTS  0
+>> +
+>>  struct erofs_super_block {
+>>  /*  0 */__le32 magic;           /* in the little endian */
+>>  /*  4 */__le32 checksum;        /* crc32c(super_block) */
+>> -/*  8 */__le32 features;
+>> +/*  8 */__le32 features;        /* extra features for the image */
+>>  /* 12 */__u8 blkszbits;         /* support block_size == PAGE_SIZE only */
+>>  /* 13 */__u8 reserved;
+>>  
+>> @@ -34,8 +40,9 @@ struct erofs_super_block {
+>>  /* 44 */__le32 xattr_blkaddr;
+>>  /* 48 */__u8 uuid[16];          /* 128-bit uuid for volume */
+>>  /* 64 */__u8 volume_name[16];   /* volume name */
+>> +/* 80 */__le32 requirements;    /* all mandatory minimum requirements */
+>>  
+>> -/* 80 */__u8 reserved2[48];     /* 128 bytes */
+>> +/* 84 */__u8 reserved2[44];     /* 128 bytes */
+> 
+> Xiang,
+> 
+> It needs to update the comment behind reserved2, it's locating at 132 bytes.
+
+I don't get the point... the whole struct is totally 128bytes I think?
+
+> 
+>>  } __packed;
+>>  
+>>  /*
+>> diff --git a/drivers/staging/erofs/super.c b/drivers/staging/erofs/super.c
+>> index f580d4ef77a1..815e5825db59 100644
+>> --- a/drivers/staging/erofs/super.c
+>> +++ b/drivers/staging/erofs/super.c
+>> @@ -104,6 +104,14 @@ static int superblock_read(struct super_block *sb)
+>>  		goto out;
+>>  	}
+>>  
+>> +	/* check if the kernel meets all mandatory requirements */
+>> +	if (le32_to_cpu(layout->requirements) & (~EROFS_ALL_REQUIREMENTS)) {
+>> +		errln("too old to meet minimum requirements: %x supported: %x",
+> 
+> It will be better to give a suggestion to user to upgrade kernel version to
+> match the image with new layout, otherwise it's just a little confused about
+> above printed message.
+
+OK, I will refine the printed message :)
 
 Thanks,
+Gao Xiang
+
+> 
+> Thanks,
+> 
+>> +		      le32_to_cpu(layout->requirements),
+>> +		      EROFS_ALL_REQUIREMENTS);
+>> +		goto out;
+>> +	}
+>> +
+>>  	sbi->blocks = le32_to_cpu(layout->blocks);
+>>  	sbi->meta_blkaddr = le32_to_cpu(layout->meta_blkaddr);
+>>  #ifdef CONFIG_EROFS_FS_XATTR
+>>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
