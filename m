@@ -2,36 +2,36 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A09B83B9FD
-	for <lists+driverdev-devel@lfdr.de>; Mon, 10 Jun 2019 18:50:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id ED9B23B9FC
+	for <lists+driverdev-devel@lfdr.de>; Mon, 10 Jun 2019 18:50:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id DF7C32043B;
-	Mon, 10 Jun 2019 16:50:01 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DF5062043A;
+	Mon, 10 Jun 2019 16:49:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IulbX9H-vHHk; Mon, 10 Jun 2019 16:50:00 +0000 (UTC)
+	with ESMTP id s11v4vZI+Hto; Mon, 10 Jun 2019 16:49:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D178F20112;
-	Mon, 10 Jun 2019 16:49:59 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7ABE320417;
+	Mon, 10 Jun 2019 16:49:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7AB0C1BF3DB
- for <devel@linuxdriverproject.org>; Mon, 10 Jun 2019 16:49:57 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 14CE31BF3DB
+ for <devel@linuxdriverproject.org>; Mon, 10 Jun 2019 16:49:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 77F0F84627
- for <devel@linuxdriverproject.org>; Mon, 10 Jun 2019 16:49:57 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 0FCDE86834
+ for <devel@linuxdriverproject.org>; Mon, 10 Jun 2019 16:49:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id k1xN3oDomrJi for <devel@linuxdriverproject.org>;
- Mon, 10 Jun 2019 16:49:55 +0000 (UTC)
+ with ESMTP id R6exb4i8MTRA for <devel@linuxdriverproject.org>;
+ Mon, 10 Jun 2019 16:49:54 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from server.dellaadventure.com (142-4-0-84.unifiedlayer.com
  [142.4.0.84])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7D766844D4
- for <devel@linuxdriverproject.org>; Mon, 10 Jun 2019 16:49:55 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id DD32A86824
+ for <devel@driverdev.osuosl.org>; Mon, 10 Jun 2019 16:49:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=dellaadventure.com; s=default; h=Content-Transfer-Encoding:Content-Type:
  MIME-Version:Date:Subject:From:Reply-To:Sender:Message-ID:To:Cc:Content-ID:
@@ -56,7 +56,7 @@ X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-AntiAbuse: This header was added to track abuse,
  please include it with any abuse report
 X-AntiAbuse: Primary Hostname - server.dellaadventure.com
-X-AntiAbuse: Original Domain - linuxdriverproject.org
+X-AntiAbuse: Original Domain - driverdev.osuosl.org
 X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
 X-AntiAbuse: Sender Address Domain - gmail.com
 X-Get-Message-Sender-Via: server.dellaadventure.com: authenticated_id:
@@ -65,7 +65,7 @@ X-Authenticated-Sender: server.dellaadventure.com: mails@dellaadventure.com
 X-Source: 
 X-Source-Args: 
 X-Source-Dir: 
-Message-Id: <20190610164957.77F0F84627@fraxinus.osuosl.org>
+Message-Id: <20190610164955.0FCDE86834@whitealder.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
