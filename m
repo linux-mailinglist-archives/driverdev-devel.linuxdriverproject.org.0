@@ -1,76 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 62B6E432D3
-	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Jun 2019 07:42:21 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 82241432D4
+	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Jun 2019 07:42:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6406187E99;
-	Thu, 13 Jun 2019 05:42:19 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3A1038636D;
+	Thu, 13 Jun 2019 05:42:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RP7LesyCPegG; Thu, 13 Jun 2019 05:42:19 +0000 (UTC)
+	with ESMTP id 3gq0WF_9lIhv; Thu, 13 Jun 2019 05:42:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E21A387E5D;
-	Thu, 13 Jun 2019 05:42:18 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C45F886228;
+	Thu, 13 Jun 2019 05:42:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id F23A21BF3B1
- for <devel@linuxdriverproject.org>; Thu, 13 Jun 2019 05:42:16 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6BB141BF3B1
+ for <devel@linuxdriverproject.org>; Thu, 13 Jun 2019 05:42:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id EFF3987E99
- for <devel@linuxdriverproject.org>; Thu, 13 Jun 2019 05:42:16 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 67E14876C9
+ for <devel@linuxdriverproject.org>; Thu, 13 Jun 2019 05:42:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8tqTl5Q0Dw5U for <devel@linuxdriverproject.org>;
- Thu, 13 Jun 2019 05:42:15 +0000 (UTC)
+ with ESMTP id HW6PlXzP6tZa for <devel@linuxdriverproject.org>;
+ Thu, 13 Jun 2019 05:42:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
- [209.85.210.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D570187E5D
- for <devel@driverdev.osuosl.org>; Thu, 13 Jun 2019 05:42:15 +0000 (UTC)
-Received: by mail-pf1-f196.google.com with SMTP id q10so11065298pff.9
- for <devel@driverdev.osuosl.org>; Wed, 12 Jun 2019 22:42:15 -0700 (PDT)
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E72B386D6F
+ for <devel@driverdev.osuosl.org>; Thu, 13 Jun 2019 05:42:17 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id w34so10236678pga.12
+ for <devel@driverdev.osuosl.org>; Wed, 12 Jun 2019 22:42:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=RVn8TbcdTMdKwVP8cWPL+u9DSXOIccv/F3tbKKuIXO0=;
- b=u7GM2K/gQU5LqD/IHiDQKgPZHHm2JFpoUcamdqVcYGgL/SldV33va6jerJSScL1XJ2
- Lzb1iL1mkA7P3OquxmbmLdakt8JOAElDzCBwu7ikWM09iPXVsqY7nM0/vo/9kQ2oH8o+
- fbKZPOwnGlD8v50a1+cUleItv4+xmP943eWim5O3IdLl5AAisjjmIY3ath4lfQKwzVP/
- LafIdUxKOg5PfzTlcw5hzyxNURF+lzSBwsoNtsKlnUnwy+EvT7WLOJb0OB1SoPj/OL8l
- BrZRRF6loUJSV6UqLEgHlofZ7csXain6IWnrXc47VDw8p5e2127CHR+Hn/IxJDn7ImeA
- UpOQ==
+ bh=RRwbMt57YHtQ/U2+DEEYfQRLGuAhAy6XXQTzAlE1dCM=;
+ b=gNyQfFPdUltQezZ7sfcMAbw/D7MAZrhaCgC98O3f2dIlr+IqTNb0E/5tzoUA7/Mvcc
+ M4bPgQi+l/coS1gl+vnXJPx7EoTmwSdWaeDHlS+3wcfaAgHTYQC+4OaySHBhMgP1zdIY
+ P7xkoy37FsPwaO7bHCh0B4yhVOWvX1YKwlXurGytUXGMPw8YMRrlkdMN/C4RWUSEM3o7
+ gHv7GduO1epsSeT89zhzkSHwZhIvlQrK3rljFRj6XISh5Gwjit6DVTEhCGB1ZKlYrFFy
+ 3IznPsItozy7/5olHpfrBfqwDEb4V0GYYUipxu+1Faa0VluPGPPAJbmW+0Vk7c4Y5WfN
+ BBMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=RVn8TbcdTMdKwVP8cWPL+u9DSXOIccv/F3tbKKuIXO0=;
- b=V2ddP4BPPwM18CYgi4hWyO+04zrPRvvBhDxJ4qD1Xz6bF5syr0OTMN3lKAnLF4oBBp
- SXdLx28Fg2MubQNSSmSJGAB/GecnqlgiwAfNWprtJPX2mnDU/tkCLfsKMZEyTBVzwWC6
- 6GbHNWcdCPYoNQRx4wWkBobq/ch7HYsLYwAkx2wRpstyxxV0laycwpktmqpaKUwVRtVq
- xo2Vtg58Qb+ySTj/yjkk6aBDOTXnEf7Ipy+ebtNiAWIkkdkoG6LijgMJUudd9jOQU3a0
- kZ+HknpuSCjKfmk8oiKjnZ58KO/3clfaHuFl+hytT+Etwjd4LStwCDrB2tgaStSZYT56
- Ze4g==
-X-Gm-Message-State: APjAAAWN7g6XT/H5LvPkBhO0Z1WDH9PA2hFo53BoTbQcFDEwSGIb0k0u
- ZOxwSouBIvSfHysNe0dISryb5fyT
-X-Google-Smtp-Source: APXvYqyeEnx/xsUzlmjc084SyKKKpENDgD1fnjPteaUt6G80X4/nzL+lZ43E7QXW+ac4NSc9JVVH7Q==
-X-Received: by 2002:a63:6142:: with SMTP id v63mr29204168pgb.309.1560404535540; 
- Wed, 12 Jun 2019 22:42:15 -0700 (PDT)
+ bh=RRwbMt57YHtQ/U2+DEEYfQRLGuAhAy6XXQTzAlE1dCM=;
+ b=kJS6dwcjx56GYluc5Hxx69ej8Oa85E+3GePkE/UrobpHjawxDHpvYZM3tua38ZzxVA
+ B6SJIjP3DhX0gKBfNMPgpblFVKbjQx+RpHWz22T43yOBcG4D715fBVB2yhczklr7z3ts
+ tVXT5AgraqVwHolpHaNmridscht+oAzz00FTaX7Y9p6z7R1n/uK9KQSBuzxeGDhTUuQR
+ HMoeLPbdgLEiLu7VYGMuE0OKq2jeYiO4L9vNBoVGe/NtAwD5a7cUdSHJRQeH/llDBJeo
+ LONzdDLIiuCXXKjy2JGIgBR5wFWqOeohczOki86x+9bOOHziZxE/RbvzYPVJnhTSNzf7
+ uheg==
+X-Gm-Message-State: APjAAAXN+jakPeRBVBmX/0/VEufgncgVjaMAj5iWC017TZYyvfHmKTu4
+ aL1Z4v3oQbunPgj11AXdGcc=
+X-Google-Smtp-Source: APXvYqyN2uYYF5ATwvyfq6WytHulbaG5kt9rbZy98fqgxjn5Dyw5zPlTCUxxEGiqHeAoumLVYk60+Q==
+X-Received: by 2002:a17:90a:d582:: with SMTP id
+ v2mr3250069pju.22.1560404537607; 
+ Wed, 12 Jun 2019 22:42:17 -0700 (PDT)
 Received: from localhost.localdomain ([171.79.92.225])
- by smtp.gmail.com with ESMTPSA id v126sm1453425pfb.81.2019.06.12.22.42.13
+ by smtp.gmail.com with ESMTPSA id v126sm1453425pfb.81.2019.06.12.22.42.15
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Wed, 12 Jun 2019 22:42:15 -0700 (PDT)
+ Wed, 12 Jun 2019 22:42:17 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: gregkh@linuxfoundation.org,
 	devel@driverdev.osuosl.org
-Subject: [PATCH 05/11] staging: rtl8723bs: core: Remove function
- enable_rate_adaptive()
-Date: Wed, 12 Jun 2019 23:34:33 +0530
-Message-Id: <20190612180439.7101-5-nishkadg.linux@gmail.com>
+Subject: [PATCH 06/11] staging: rtl8723bs: core: Remove wrapper functions
+Date: Wed, 12 Jun 2019 23:34:34 +0530
+Message-Id: <20190612180439.7101-6-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190612180439.7101-1-nishkadg.linux@gmail.com>
 References: <20190612180439.7101-1-nishkadg.linux@gmail.com>
@@ -93,39 +93,69 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove function enable_rate_adaptive as all it does is call
-Update_RA_Entry.
-Modify the single callsite of enable_rate_adaptive to call
-Update_RA_Entry directly instead.
+Remove function power_saving_wk_hdl as all it does is call
+rtw_ps_processor. Edit call sites accordingly.
+Remove function reset_securitypriv_hdl as all it does is call
+rtw_reset_securitypriv. Modify call sites accordingly.
+Remove function free_assoc_resources_hdl as all it does is call
+rtw_free_assoc_resources with one extra constant argument, and the
+former is only called once.
 Issue found with Coccinelle.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_wlan_util.c | 8 +-------
- 1 file changed, 1 insertion(+), 7 deletions(-)
+ drivers/staging/rtl8723bs/core/rtw_cmd.c | 22 +++-------------------
+ 1 file changed, 3 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
-index d7103f73e281..93f4ea0ac433 100644
---- a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
-@@ -1615,16 +1615,10 @@ void Update_RA_Entry(struct adapter *padapter, struct sta_info *psta)
- 	rtw_hal_update_ra_mask(psta, 0);
+diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
+index fcd26e1c95d5..988e909a5124 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
++++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
+@@ -1660,22 +1660,6 @@ u8 rtw_dm_ra_mask_wk_cmd(struct adapter *padapter, u8 *psta)
+ 
  }
  
--void enable_rate_adaptive(struct adapter *padapter, struct sta_info *psta);
--void enable_rate_adaptive(struct adapter *padapter, struct sta_info *psta)
+-static void power_saving_wk_hdl(struct adapter *padapter)
 -{
--	Update_RA_Entry(padapter, psta);
+-	 rtw_ps_processor(padapter);
 -}
 -
- void set_sta_rate(struct adapter *padapter, struct sta_info *psta)
+-/* add for CONFIG_IEEE80211W, none 11w can use it */
+-static void reset_securitypriv_hdl(struct adapter *padapter)
+-{
+-	 rtw_reset_securitypriv(padapter);
+-}
+-
+-static void free_assoc_resources_hdl(struct adapter *padapter)
+-{
+-	 rtw_free_assoc_resources(padapter, 1);
+-}
+-
+ u8 rtw_ps_cmd(struct adapter *padapter)
  {
- 	/* rate adaptive */
--	enable_rate_adaptive(padapter, psta);
-+	Update_RA_Entry(padapter, psta);
- }
- 
- unsigned char check_assoc_AP(u8 *pframe, uint len)
+ 	struct cmd_obj		*ppscmd;
+@@ -1977,7 +1961,7 @@ u8 rtw_drvextra_cmd_hdl(struct adapter *padapter, unsigned char *pbuf)
+ 		dynamic_chk_wk_hdl(padapter);
+ 		break;
+ 	case POWER_SAVING_CTRL_WK_CID:
+-		power_saving_wk_hdl(padapter);
++		rtw_ps_processor(padapter);
+ 		break;
+ 	case LPS_CTRL_WK_CID:
+ 		lps_ctrl_wk_hdl(padapter, (u8)pdrvextra_cmd->type);
+@@ -1993,10 +1977,10 @@ u8 rtw_drvextra_cmd_hdl(struct adapter *padapter, unsigned char *pbuf)
+ 		break;
+ 	/* add for CONFIG_IEEE80211W, none 11w can use it */
+ 	case RESET_SECURITYPRIV:
+-		reset_securitypriv_hdl(padapter);
++		rtw_reset_securitypriv(padapter);
+ 		break;
+ 	case FREE_ASSOC_RESOURCES:
+-		free_assoc_resources_hdl(padapter);
++		rtw_free_assoc_resources(padapter, 1);
+ 		break;
+ 	case C2H_WK_CID:
+ 		rtw_hal_set_hwreg_with_buf(padapter, HW_VAR_C2H_HANDLE, pdrvextra_cmd->pbuf, pdrvextra_cmd->size);
 -- 
 2.19.1
 
