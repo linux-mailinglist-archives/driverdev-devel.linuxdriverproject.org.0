@@ -1,73 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6E39C430E0
-	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Jun 2019 22:15:06 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B559F43100
+	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Jun 2019 22:29:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EC3BB875EB;
-	Wed, 12 Jun 2019 20:15:04 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E2725880E0;
+	Wed, 12 Jun 2019 20:29:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UdIHtLyceYlq; Wed, 12 Jun 2019 20:15:04 +0000 (UTC)
+	with ESMTP id 1zTZ9dC9a+wM; Wed, 12 Jun 2019 20:29:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 01C2882BCE;
-	Wed, 12 Jun 2019 20:15:03 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 716B487FFB;
+	Wed, 12 Jun 2019 20:29:43 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 575C81BF3E5
- for <devel@linuxdriverproject.org>; Wed, 12 Jun 2019 20:15:01 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id BC1AD1BF3E5
+ for <devel@linuxdriverproject.org>; Wed, 12 Jun 2019 20:29:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 544DF8443D
- for <devel@linuxdriverproject.org>; Wed, 12 Jun 2019 20:15:01 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id B99AC87FFB
+ for <devel@linuxdriverproject.org>; Wed, 12 Jun 2019 20:29:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6-dCS0_QznAl for <devel@linuxdriverproject.org>;
- Wed, 12 Jun 2019 20:15:00 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f65.google.com (mail-lf1-f65.google.com
- [209.85.167.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 5429E8440D
- for <devel@driverdev.osuosl.org>; Wed, 12 Jun 2019 20:15:00 +0000 (UTC)
-Received: by mail-lf1-f65.google.com with SMTP id b11so13196255lfa.5
- for <devel@driverdev.osuosl.org>; Wed, 12 Jun 2019 13:15:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=jDFo2V+VQv8YSr2MsBJdK8CI0EENjzUBt5cXQyonQPw=;
- b=lfBF4crIW1RehF6GtknQbvLtDHRI5PJPmiQI871Piq9f/oa02U8ZKf0CfkW4e/Dawh
- sj20TLogAUOGKhgqmpjN6IVuF/89nzsT5WaSFHWpBJClDi+QZa2TVWCK8mv0E2mCxbmK
- ROAvHLaU1EF3eAkxNjh3IW+cPN1EJzrmJlItymljUUhgplNhQ8AIwBahyIZjE2sSihWG
- eBkzU+wMoFPo6tt7kvMlrd+bA10q/17esZh53VEXaB5FqR9qzyW5sefu8wJTaf2Ue5o9
- tZZRXJO7Hqlw+RdgkcpgPotI8GCUsHe7SJa4BWuO+QdPdAw3iLtZMhRDAEomAMUr2MML
- j/iA==
+ with ESMTP id 617ms9sH9Ykd for <devel@linuxdriverproject.org>;
+ Wed, 12 Jun 2019 20:29:41 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
+ [209.85.214.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 36C4E87FDE
+ for <devel@driverdev.osuosl.org>; Wed, 12 Jun 2019 20:29:41 +0000 (UTC)
+Received: by mail-pl1-f195.google.com with SMTP id t7so4479991plr.11
+ for <devel@driverdev.osuosl.org>; Wed, 12 Jun 2019 13:29:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=android.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ztsODx8FS4iqleQB6S5Sbaw6s2vQsWeNtbIf3Gi3ev8=;
+ b=tV0rKoo7aPIwJkeuB47jNZrom/4GFwVWKi8SGyHTggc/tcIopfSdYikE62up/2HeTh
+ dQcabzL9jPuFZsaUE4LdfoIA4QcGn8xhS+cI0jpf5X+pyP5jcDHjWlmuR8QPaH5+kTa5
+ +0ZMk/+0aEDq2Ypvj0edwR9ny5tFDUT0qbCdFJVvsfmmenMvuturIP8Y5nRKTF+mmrRT
+ sm+tuLhfqvE7uOdl1JDdB5JnaF6B+k6Dh7JqKloBbiR1bMyjaYQgQV/kMMTnUbnHowJS
+ Y++xPx3ckxFKqtKywpfU5k46nMdg7tDhlA6O2bF9f3URbcKvpA1J9LqwqDKl8HnxODlv
+ e0TQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=jDFo2V+VQv8YSr2MsBJdK8CI0EENjzUBt5cXQyonQPw=;
- b=bKKzQpKKXY6cxHR8U7c+znUtSUwDzPQZRc6AcXENTF01C0BBY+/nY9vMtm5GqpJAV6
- 0Q4cWfUHeDXprCIdsK2Z/aSAqhyADJ5ycn7zy4xnJZ4xyH7gpp4DfTZrgZX7xhGwIXnu
- 4+GVmgLbYv7xLwvGkX460txwJb0QNGTY8lsHTbsOLlrdv8ldXHEi/f/Q3VMsTNx7Z5q5
- 9BhMsw3xFeuWb1KFH4lLz+Jd5OGY+PSB/AzTSr55liV/XNAx5OpEgqixjVSHjVrTn7wr
- KlrP/wHH9Mi+bAYYcFRlo3uMaLkzzdwuE1AMmAqj1u+9JH9Q7BWRZaioDDDyyf7LKSqJ
- BYww==
-X-Gm-Message-State: APjAAAUwQ1yjq+7XetCvktZjeoqLWU0bAnWOaQMGMrOmkPoSdz3zbDB/
- 2c0E8JylNtjLhzUtwp0uKEVuxMamVEy12PnteaqHhQ==
-X-Google-Smtp-Source: APXvYqw0RiCKGAnbcRcwdry457QiSKvhC1ZzvUvAjtg/O2lGEeMnxASXbFeTamxAJwaO3i3B6T8x7H9PQCce8LQ51Nk=
-X-Received: by 2002:ac2:4a6e:: with SMTP id q14mr23975880lfp.154.1560370497585; 
- Wed, 12 Jun 2019 13:14:57 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ztsODx8FS4iqleQB6S5Sbaw6s2vQsWeNtbIf3Gi3ev8=;
+ b=dJtsIIjFT9tPaTvaxxH21aTAg0clxUCYvvGdiF4Hcf2ClG7WXSpFA/vjQp5LNYarVs
+ dvg394sm6mPaoY9HhnLZEGI+Q1QKp/T6SUtmYB2P8EB8L/u2PpuDtQOwV136F/7wnkcW
+ m9JkSlMRNpCB60Ve+HAvWcgD1KR72lVboVKjqtYY5cQnh5ErHfySZQJFOWfQidSe2fVg
+ olg4cHZ7lMKCf4RWkQrC135nnTKCN1vVon/JvGfhqAnWZEit/H6UAMIGe7S2XkpzemZQ
+ 8+Xse+WUAiUgZOmUUjLOscqenInolHLekTLz2CZzEjREbsuuGP26YYHqX8AQneL3z3Rp
+ oAMQ==
+X-Gm-Message-State: APjAAAUnbNmm+0CmFKw6uYmtJ7bGQ0TOZysqe03I0Du2ptkxCNnSY6ET
+ iG8OVP2v2glZqA0F/u9AddzCcQ==
+X-Google-Smtp-Source: APXvYqzFoHCFTQ/mild4RR3i5+q+a6dheIBjD2C9qCG5ZWSzZfpIq355jaWaTpdrY6e1E+n4lFpbIA==
+X-Received: by 2002:a17:902:d88e:: with SMTP id
+ b14mr31956181plz.153.1560371380872; 
+ Wed, 12 Jun 2019 13:29:40 -0700 (PDT)
+Received: from ava-linux2.mtv.corp.google.com
+ ([2620:0:1000:1601:6cc0:d41d:b970:fd7])
+ by smtp.googlemail.com with ESMTPSA id 3sm392555pfp.114.2019.06.12.13.29.39
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Wed, 12 Jun 2019 13:29:40 -0700 (PDT)
+From: Todd Kjos <tkjos@android.com>
+X-Google-Original-From: Todd Kjos <tkjos@google.com>
+To: tkjos@google.com, gregkh@linuxfoundation.org, arve@android.com,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, maco@google.com
+Subject: [PATCH] binder: fix possible UAF when freeing buffer
+Date: Wed, 12 Jun 2019 13:29:27 -0700
+Message-Id: <20190612202927.54518-1-tkjos@google.com>
+X-Mailer: git-send-email 2.22.0.rc2.383.gf4fbbf30c2-goog
 MIME-Version: 1.0
-References: <000000000000afe2c70589526668@google.com>
- <20190612192312.GF18795@gmail.com>
-In-Reply-To: <20190612192312.GF18795@gmail.com>
-From: Todd Kjos <tkjos@google.com>
-Date: Wed, 12 Jun 2019 13:14:46 -0700
-Message-ID: <CAHRSSEw52jBRVNbw-DxgrmfZKoo3sqBVHCQ+e3BJtPTfhZADbQ@mail.gmail.com>
-Subject: Re: WARNING in binder_transaction_buffer_release
-To: Eric Biggers <ebiggers@kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,109 +88,65 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- Todd Kjos <tkjos@android.com>,
- syzbot <syzbot+8b3c354d33c4ac78bfad@syzkaller.appspotmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- syzkaller-bugs <syzkaller-bugs@googlegroups.com>,
- LKML <linux-kernel@vger.kernel.org>,
- =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
- Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
- Christian Brauner <christian@brauner.io>
+Cc: joel@joelfernandes.org, kernel-team@android.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Jun 12, 2019 at 12:23 PM Eric Biggers <ebiggers@kernel.org> wrote:
->
-> On Mon, May 20, 2019 at 07:18:06AM -0700, syzbot wrote:
-> > Hello,
-> >
-> > syzbot found the following crash on:
-> >
-> > HEAD commit:    72cf0b07 Merge tag 'sound-fix-5.2-rc1' of git://git.kernel..
-> > git tree:       upstream
-> > console output: https://syzkaller.appspot.com/x/log.txt?x=17c7d4bca00000
-> > kernel config:  https://syzkaller.appspot.com/x/.config?x=d103f114f9010324
-> > dashboard link: https://syzkaller.appspot.com/bug?extid=8b3c354d33c4ac78bfad
-> > compiler:       gcc (GCC) 9.0.0 20181231 (experimental)
-> > userspace arch: i386
-> > syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=15b99b44a00000
-> >
-> > IMPORTANT: if you fix the bug, please add the following tag to the commit:
-> > Reported-by: syzbot+8b3c354d33c4ac78bfad@syzkaller.appspotmail.com
-> >
-> > WARNING: CPU: 1 PID: 8535 at drivers/android/binder.c:2368
-> > binder_transaction_buffer_release+0x673/0x8f0 drivers/android/binder.c:2368
-> > Kernel panic - not syncing: panic_on_warn set ...
-> > CPU: 1 PID: 8535 Comm: syz-executor.2 Not tainted 5.1.0+ #19
-> > Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS
-> > Google 01/01/2011
-> > Call Trace:
-> >  __dump_stack lib/dump_stack.c:77 [inline]
-> >  dump_stack+0x172/0x1f0 lib/dump_stack.c:113
-> >  panic+0x2cb/0x715 kernel/panic.c:214
-> >  __warn.cold+0x20/0x4c kernel/panic.c:571
-> >  report_bug+0x263/0x2b0 lib/bug.c:186
-> >  fixup_bug arch/x86/kernel/traps.c:179 [inline]
-> >  fixup_bug arch/x86/kernel/traps.c:174 [inline]
-> >  do_error_trap+0x11b/0x200 arch/x86/kernel/traps.c:272
-> >  do_invalid_op+0x37/0x50 arch/x86/kernel/traps.c:291
-> >  invalid_op+0x14/0x20 arch/x86/entry/entry_64.S:986
-> > RIP: 0010:binder_transaction_buffer_release+0x673/0x8f0
-> > drivers/android/binder.c:2368
-> > Code: 31 ff 41 89 c5 89 c6 e8 7b 04 1f fc 45 85 ed 0f 85 1f 41 01 00 49 8d
-> > 47 40 48 89 85 50 fe ff ff e9 9d fa ff ff e8 dd 02 1f fc <0f> 0b e9 7f fc ff
-> > ff e8 d1 02 1f fc 48 89 d8 45 31 c9 4c 89 fe 4c
-> > RSP: 0018:ffff88807b2775f0 EFLAGS: 00010293
-> > RAX: ffff888092b1e040 RBX: 0000000000000060 RCX: 1ffff11012563caa
-> > RDX: 0000000000000000 RSI: ffffffff85519e13 RDI: ffff888097a2d248
-> > RBP: ffff88807b2777d8 R08: ffff888092b1e040 R09: ffffed100f64eee3
-> > R10: ffffed100f64eee2 R11: ffff88807b277717 R12: ffff88808fd2c340
-> > R13: 0000000000000068 R14: ffff88807b2777b0 R15: ffff88809f7ea580
-> >  binder_transaction+0x153d/0x6620 drivers/android/binder.c:3484
-> >  binder_thread_write+0x87e/0x2820 drivers/android/binder.c:3792
-> >  binder_ioctl_write_read drivers/android/binder.c:4836 [inline]
-> >  binder_ioctl+0x102f/0x1833 drivers/android/binder.c:5013
-> >  __do_compat_sys_ioctl fs/compat_ioctl.c:1052 [inline]
-> >  __se_compat_sys_ioctl fs/compat_ioctl.c:998 [inline]
-> >  __ia32_compat_sys_ioctl+0x195/0x620 fs/compat_ioctl.c:998
-> >  do_syscall_32_irqs_on arch/x86/entry/common.c:337 [inline]
-> >  do_fast_syscall_32+0x27b/0xd7d arch/x86/entry/common.c:408
-> >  entry_SYSENTER_compat+0x70/0x7f arch/x86/entry/entry_64_compat.S:139
-> > RIP: 0023:0xf7f9e849
-> > Code: 85 d2 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 3c 24 c3 90 90
-> > 90 90 90 90 90 90 90 90 90 90 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90
-> > 90 90 eb 0d 90 90 90 90 90 90 90 90 90 90 90 90
-> > RSP: 002b:00000000f7f9a0cc EFLAGS: 00000296 ORIG_RAX: 0000000000000036
-> > RAX: ffffffffffffffda RBX: 0000000000000004 RCX: 00000000c0306201
-> > RDX: 0000000020000140 RSI: 0000000000000000 RDI: 0000000000000000
-> > RBP: 0000000000000000 R08: 0000000000000000 R09: 0000000000000000
-> > R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000000
-> > R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
-> > Kernel Offset: disabled
-> > Rebooting in 86400 seconds..
-> >
-> >
-> > ---
-> > This bug is generated by a bot. It may contain errors.
-> > See https://goo.gl/tpsmEJ for more information about syzbot.
-> > syzbot engineers can be reached at syzkaller@googlegroups.com.
-> >
-> > syzbot will keep track of this bug report. See:
-> > https://goo.gl/tpsmEJ#status for how to communicate with syzbot.
-> > syzbot can test patches for this bug, for details see:
-> > https://goo.gl/tpsmEJ#testing-patches
-> >
->
-> Are any of the binder maintainers planning to fix this?  This seems to be the
-> only open syzbot report for binder on the upstream kernel.
+There is a race between the binder driver cleaning
+up a completed transaction via binder_free_transaction()
+and a user calling binder_ioctl(BC_FREE_BUFFER) to
+release a buffer. It doesn't matter which is first but
+they need to be protected against running concurrently
+which can result in a UAF.
 
-Taking a look.
+Signed-off-by: Todd Kjos <tkjos@google.com>
+---
+ drivers/android/binder.c | 16 ++++++++++++++--
+ 1 file changed, 14 insertions(+), 2 deletions(-)
 
->
-> - Eric
+diff --git a/drivers/android/binder.c b/drivers/android/binder.c
+index 748ac489ef7eb..bc26b5511f0a9 100644
+--- a/drivers/android/binder.c
++++ b/drivers/android/binder.c
+@@ -1941,8 +1941,18 @@ static void binder_free_txn_fixups(struct binder_transaction *t)
+ 
+ static void binder_free_transaction(struct binder_transaction *t)
+ {
+-	if (t->buffer)
+-		t->buffer->transaction = NULL;
++	struct binder_proc *target_proc = t->to_proc;
++
++	if (target_proc) {
++		binder_inner_proc_lock(target_proc);
++		if (t->buffer)
++			t->buffer->transaction = NULL;
++		binder_inner_proc_unlock(target_proc);
++	}
++	/*
++	 * If the transaction has no target_proc, then
++	 * t->buffer->transaction has already been cleared.
++	 */
+ 	binder_free_txn_fixups(t);
+ 	kfree(t);
+ 	binder_stats_deleted(BINDER_STAT_TRANSACTION);
+@@ -3551,10 +3561,12 @@ static void binder_transaction(struct binder_proc *proc,
+ static void
+ binder_free_buf(struct binder_proc *proc, struct binder_buffer *buffer)
+ {
++	binder_inner_proc_lock(proc);
+ 	if (buffer->transaction) {
+ 		buffer->transaction->buffer = NULL;
+ 		buffer->transaction = NULL;
+ 	}
++	binder_inner_proc_unlock(proc);
+ 	if (buffer->async_transaction && buffer->target_node) {
+ 		struct binder_node *buf_node;
+ 		struct binder_work *w;
+-- 
+2.22.0.rc2.383.gf4fbbf30c2-goog
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
