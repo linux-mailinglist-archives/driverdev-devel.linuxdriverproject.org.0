@@ -1,71 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3482742286
-	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Jun 2019 12:32:20 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6B75042582
+	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Jun 2019 14:22:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0D8CD87FB2;
-	Wed, 12 Jun 2019 10:32:18 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 552EA8619E;
+	Wed, 12 Jun 2019 12:22:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WrP+K7txz6iz; Wed, 12 Jun 2019 10:32:17 +0000 (UTC)
+	with ESMTP id RCuGNpa5wSIN; Wed, 12 Jun 2019 12:22:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 944D887F5A;
-	Wed, 12 Jun 2019 10:32:17 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6A1F585FE4;
+	Wed, 12 Jun 2019 12:22:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8EC491BF2B6
- for <devel@linuxdriverproject.org>; Wed, 12 Jun 2019 10:32:16 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8CC961BF3AD
+ for <devel@linuxdriverproject.org>; Wed, 12 Jun 2019 12:22:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 8AF5A20354
- for <devel@linuxdriverproject.org>; Wed, 12 Jun 2019 10:32:16 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 8930A20371
+ for <devel@linuxdriverproject.org>; Wed, 12 Jun 2019 12:22:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3myBPaaXAqlK for <devel@linuxdriverproject.org>;
- Wed, 12 Jun 2019 10:32:15 +0000 (UTC)
-X-Greylist: delayed 00:06:28 by SQLgrey-1.7.6
-Received: from mail-wm1-f67.google.com (mail-wm1-f67.google.com
- [209.85.128.67])
- by silver.osuosl.org (Postfix) with ESMTPS id 1961220007
- for <devel@linuxdriverproject.org>; Wed, 12 Jun 2019 10:32:15 +0000 (UTC)
-Received: by mail-wm1-f67.google.com with SMTP id x15so6002554wmj.3
- for <devel@linuxdriverproject.org>; Wed, 12 Jun 2019 03:32:15 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
- :message-id:mime-version:content-transfer-encoding;
- bh=xuz7wl9JI/1izuO7h6cmpUujshUximjTTA0wiCF4sTg=;
- b=ciRTUXJVFbf1ojGt1Tra3LzUggOi7YkqEfiDb4XxB9utjvtlBE3GEFYXrgzqoNfWQg
- mcGkOaM1HfRnE/Bumsk1pZUwRRHyXzgpKKfX0yZJjsMMqgnh+NgQ8LZX1oZjAdHi+mIk
- 9k0ZlZRC5rut0XOmUkaXjIEodGHcaNLUFd8hYAr5kNBYSv+2ji7UWVxz4NLQM/ASDq+K
- OPPm7Hqr8810ms8g4shf9LCv75bWv8faGYZa38GG8fTJMxKwRgdq2AuXmeltjWW2/alm
- H4QOrB03z0Z/8Bhygdf8gVowRDza05qm/fgZZkVaYqxYsNnCZCTSMcwOB0kbjm7PpAhl
- yINQ==
-X-Gm-Message-State: APjAAAWDjrHy9RAf75ZF92DtzO7wt69DqTF/8LFKl+xSCKK6Rt85dysw
- 2Hrxa96Ki7g/T3/rAn7sWDNadA==
-X-Google-Smtp-Source: APXvYqyvXjwdxbX8PPfz/CW94/F08nXOpdTiba2085ImP1ZnWBDiUcxjjeVDZN0HlcN+tUZgfwgZfw==
-X-Received: by 2002:a05:600c:1008:: with SMTP id
- c8mr22199755wmc.133.1560335146039; 
- Wed, 12 Jun 2019 03:25:46 -0700 (PDT)
-Received: from vitty.brq.redhat.com (nat-pool-brq-t.redhat.com.
- [213.175.37.10])
- by smtp.gmail.com with ESMTPSA id f2sm13793660wru.31.2019.06.12.03.25.44
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Wed, 12 Jun 2019 03:25:45 -0700 (PDT)
-From: Vitaly Kuznetsov <vkuznets@redhat.com>
-To: Peter Zijlstra <peterz@infradead.org>, Dmitry Safonov <dima@arista.com>
-Subject: Re: [PATCH] x86/hyperv: Disable preemption while setting
- reenlightenment vector
-In-Reply-To: <20190612093506.GH3436@hirez.programming.kicks-ass.net>
-References: <20190611212003.26382-1-dima@arista.com>
- <20190612093506.GH3436@hirez.programming.kicks-ass.net>
-Date: Wed, 12 Jun 2019 12:25:44 +0200
-Message-ID: <87tvcvdrrr.fsf@vitty.brq.redhat.com>
+ with ESMTP id 9mB7L+drFPbP for <devel@linuxdriverproject.org>;
+ Wed, 12 Jun 2019 12:22:51 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by silver.osuosl.org (Postfix) with ESMTPS id 06E212035C
+ for <devel@driverdev.osuosl.org>; Wed, 12 Jun 2019 12:22:50 +0000 (UTC)
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 12 Jun 2019 05:22:50 -0700
+X-ExtLoop1: 1
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by fmsmga005.fm.intel.com with ESMTP; 12 Jun 2019 05:22:50 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1hb2HB-0009vD-B7; Wed, 12 Jun 2019 20:22:49 +0800
+Date: Wed, 12 Jun 2019 20:22:42 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [driver-core:debugfs_cleanup 77/85]
+ drivers/net/wireless/intel/iwlegacy/4965-rs.c:2779:49: sparse: sparse:
+ incorrect type in assignment (different base types)
+Message-ID: <201906122037.dIF2Czrv%lkp@intel.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+X-Patchwork-Hint: ignore
+User-Agent: Mutt/1.5.23 (2014-03-12)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,99 +66,69 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, linux-hyperv@vger.kernel.org,
- Stephen Hemminger <sthemmin@microsoft.com>, kvm@vger.kernel.org,
- Radim =?utf-8?B?S3LEjW3DocWZ?= <rkrcmar@redhat.com>,
- Haiyang Zhang <haiyangz@microsoft.com>, x86@kernel.org,
- linux-kernel@vger.kernel.org, devel@linuxdriverproject.org, "Michael
- Kelley \(EOSG\)" <Michael.H.Kelley@microsoft.com>,
- Prasanna Panchamukhi <panchamukhi@arista.com>, Ingo Molnar <mingo@redhat.com>,
- Borislav Petkov <bp@alien8.de>, Roman Kagan <rkagan@virtuozzo.com>,
- Andy Lutomirski <luto@kernel.org>, "H. Peter Anvin" <hpa@zytor.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Thomas Gleixner <tglx@linutronix.de>,
- Mohammed Gamal <mmorsy@redhat.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, kbuild-all@01.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-UGV0ZXIgWmlqbHN0cmEgPHBldGVyekBpbmZyYWRlYWQub3JnPiB3cml0ZXM6Cgo+IE9uIFR1ZSwg
-SnVuIDExLCAyMDE5IGF0IDEwOjIwOjAzUE0gKzAxMDAsIERtaXRyeSBTYWZvbm92IHdyb3RlOgo+
-PiBLVk0gc3VwcG9ydCBtYXkgYmUgY29tcGlsZWQgYXMgZHluYW1pYyBtb2R1bGUsIHdoaWNoIHRy
-aWdnZXJzIHRoZQo+PiBmb2xsb3dpbmcgc3BsYXQgb24gbW9kcHJvYmU6Cj4+IAo+PiAgS1ZNOiB2
-bXg6IHVzaW5nIEh5cGVyLVYgRW5saWdodGVuZWQgVk1DUwo+PiAgQlVHOiB1c2luZyBzbXBfcHJv
-Y2Vzc29yX2lkKCkgaW4gcHJlZW1wdGlibGUgWzAwMDAwMDAwXSBjb2RlOiBtb2Rwcm9iZS80NjYg
-Y2FsbGVyIGlzIGRlYnVnX3NtcF9wcm9jZXNzb3JfaWQrMHgxNy8weDE5Cj4+ICBDUFU6IDAgUElE
-OiA0NjYgQ29tbTogbW9kcHJvYmUgS2R1bXA6IGxvYWRlZCBOb3QgdGFpbnRlZCA0LjE5LjQzICMx
-Cj4+ICBIYXJkd2FyZSBuYW1lOiBNaWNyb3NvZnQgQ29ycG9yYXRpb24gVmlydHVhbCBNYWNoaW5l
-L1ZpcnR1YWwgTWFjaGluZSwgQklPUyAwOTAwMDcgIDA2LzAyLzIwMTcKPj4gIENhbGwgVHJhY2U6
-Cj4+ICAgZHVtcF9zdGFjaysweDYxLzB4N2UKPj4gICBjaGVja19wcmVlbXB0aW9uX2Rpc2FibGVk
-KzB4ZDQvMHhlNgo+PiAgIGRlYnVnX3NtcF9wcm9jZXNzb3JfaWQrMHgxNy8weDE5Cj4+ICAgc2V0
-X2h2X3RzY2NoYW5nZV9jYisweDFiLzB4ODkKPj4gICBrdm1fYXJjaF9pbml0KzB4MTRhLzB4MTYz
-IFtrdm1dCj4+ICAga3ZtX2luaXQrMHgzMC8weDI1OSBba3ZtXQo+PiAgIHZteF9pbml0KzB4ZWQv
-MHgzZGIgW2t2bV9pbnRlbF0KPj4gICBkb19vbmVfaW5pdGNhbGwrMHg4OS8weDFiYwo+PiAgIGRv
-X2luaXRfbW9kdWxlKzB4NWYvMHgyMDcKPj4gICBsb2FkX21vZHVsZSsweDFiMzQvMHgyMDliCj4+
-ICAgX19pYTMyX3N5c19pbml0X21vZHVsZSsweDE3LzB4MTkKPj4gICBkb19mYXN0X3N5c2NhbGxf
-MzIrMHgxMjEvMHgxZmEKPj4gICBlbnRyeV9TWVNFTlRFUl9jb21wYXQrMHg3Zi8weDkxCj4+IAo+
-PiBUaGUgZWFzaWVzdCBzb2x1dGlvbiBzZWVtcyB0byBiZSBkaXNhYmxpbmcgcHJlZW1wdGlvbiB3
-aGlsZSBzZXR0aW5nIHVwCj4+IHJlZW5saWdodG1lbnQgTVNScy4gV2hpbGUgYXQgaXQsIGZpeCBo
-dl9jcHVfKigpIGNhbGxiYWNrcy4KPj4gCj4+IEZpeGVzOiA5MzI4NjI2MWRlMWI0ICgieDg2L2h5
-cGVydjogUmVlbmxpZ2h0ZW5tZW50IG5vdGlmaWNhdGlvbnMKPj4gc3VwcG9ydCIpCj4+IAo+PiBD
-YzogQW5keSBMdXRvbWlyc2tpIDxsdXRvQGtlcm5lbC5vcmc+Cj4+IENjOiBCb3Jpc2xhdiBQZXRr
-b3YgPGJwQGFsaWVuOC5kZT4KPj4gQ2M6IENhdGh5IEF2ZXJ5IDxjYXZlcnlAcmVkaGF0LmNvbT4K
-Pj4gQ2M6IEhhaXlhbmcgWmhhbmcgPGhhaXlhbmd6QG1pY3Jvc29mdC5jb20+Cj4+IENjOiAiSC4g
-UGV0ZXIgQW52aW4iIDxocGFAenl0b3IuY29tPgo+PiBDYzogSW5nbyBNb2xuYXIgPG1pbmdvQHJl
-ZGhhdC5jb20+Cj4+IENjOiAiSy4gWS4gU3Jpbml2YXNhbiIgPGt5c0BtaWNyb3NvZnQuY29tPgo+
-PiBDYzogIk1pY2hhZWwgS2VsbGV5IChFT1NHKSIgPE1pY2hhZWwuSC5LZWxsZXlAbWljcm9zb2Z0
-LmNvbT4KPj4gQ2M6IE1vaGFtbWVkIEdhbWFsIDxtbW9yc3lAcmVkaGF0LmNvbT4KPj4gQ2M6IFBh
-b2xvIEJvbnppbmkgPHBib256aW5pQHJlZGhhdC5jb20+Cj4+IENjOiBSYWRpbSBLcsSNbcOhxZkg
-PHJrcmNtYXJAcmVkaGF0LmNvbT4KPj4gQ2M6IFJvbWFuIEthZ2FuIDxya2FnYW5AdmlydHVvenpv
-LmNvbT4KPj4gQ2M6IFNhc2hhIExldmluIDxzYXNoYWxAa2VybmVsLm9yZz4KPj4gQ2M6IFN0ZXBo
-ZW4gSGVtbWluZ2VyIDxzdGhlbW1pbkBtaWNyb3NvZnQuY29tPgo+PiBDYzogVGhvbWFzIEdsZWl4
-bmVyIDx0Z2x4QGxpbnV0cm9uaXguZGU+Cj4+IENjOiBWaXRhbHkgS3V6bmV0c292IDx2a3V6bmV0
-c0ByZWRoYXQuY29tPgo+PiAKPj4gQ2M6IGRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKPj4g
-Q2M6IGt2bUB2Z2VyLmtlcm5lbC5vcmcKPj4gQ2M6IGxpbnV4LWh5cGVydkB2Z2VyLmtlcm5lbC5v
-cmcKPj4gQ2M6IHg4NkBrZXJuZWwub3JnCj4+IFJlcG9ydGVkLWJ5OiBQcmFzYW5uYSBQYW5jaGFt
-dWtoaSA8cGFuY2hhbXVraGlAYXJpc3RhLmNvbT4KPj4gU2lnbmVkLW9mZi1ieTogRG1pdHJ5IFNh
-Zm9ub3YgPGRpbWFAYXJpc3RhLmNvbT4KPj4gLS0tCj4+ICBhcmNoL3g4Ni9oeXBlcnYvaHZfaW5p
-dC5jIHwgOSArKysrKystLS0KPj4gIDEgZmlsZSBjaGFuZ2VkLCA2IGluc2VydGlvbnMoKyksIDMg
-ZGVsZXRpb25zKC0pCj4+IAo+PiBkaWZmIC0tZ2l0IGEvYXJjaC94ODYvaHlwZXJ2L2h2X2luaXQu
-YyBiL2FyY2gveDg2L2h5cGVydi9odl9pbml0LmMKPj4gaW5kZXggMTYwODA1MGU5ZGY5Li4wYmRk
-NzllY2JmZjggMTAwNjQ0Cj4+IC0tLSBhL2FyY2gveDg2L2h5cGVydi9odl9pbml0LmMKPj4gKysr
-IGIvYXJjaC94ODYvaHlwZXJ2L2h2X2luaXQuYwo+PiBAQCAtOTEsNyArOTEsNyBAQCBFWFBPUlRf
-U1lNQk9MX0dQTChodl9tYXhfdnBfaW5kZXgpOwo+PiAgc3RhdGljIGludCBodl9jcHVfaW5pdCh1
-bnNpZ25lZCBpbnQgY3B1KQo+PiAgewo+PiAgCXU2NCBtc3JfdnBfaW5kZXg7Cj4+IC0Jc3RydWN0
-IGh2X3ZwX2Fzc2lzdF9wYWdlICoqaHZwID0gJmh2X3ZwX2Fzc2lzdF9wYWdlW3NtcF9wcm9jZXNz
-b3JfaWQoKV07Cj4+ICsJc3RydWN0IGh2X3ZwX2Fzc2lzdF9wYWdlICoqaHZwID0gJmh2X3ZwX2Fz
-c2lzdF9wYWdlW2NwdV07Cj4+ICAJdm9pZCAqKmlucHV0X2FyZzsKPj4gIAlzdHJ1Y3QgcGFnZSAq
-cGc7Cj4+ICAKPj4gQEAgLTEwMyw3ICsxMDMsNyBAQCBzdGF0aWMgaW50IGh2X2NwdV9pbml0KHVu
-c2lnbmVkIGludCBjcHUpCj4+ICAKPj4gIAlodl9nZXRfdnBfaW5kZXgobXNyX3ZwX2luZGV4KTsK
-Pj4gIAo+PiAtCWh2X3ZwX2luZGV4W3NtcF9wcm9jZXNzb3JfaWQoKV0gPSBtc3JfdnBfaW5kZXg7
-Cj4+ICsJaHZfdnBfaW5kZXhbY3B1XSA9IG1zcl92cF9pbmRleDsKPj4gIAo+PiAgCWlmIChtc3Jf
-dnBfaW5kZXggPiBodl9tYXhfdnBfaW5kZXgpCj4+ICAJCWh2X21heF92cF9pbmRleCA9IG1zcl92
-cF9pbmRleDsKPj4gQEAgLTE4Miw3ICsxODIsNiBAQCB2b2lkIHNldF9odl90c2NjaGFuZ2VfY2Io
-dm9pZCAoKmNiKSh2b2lkKSkKPj4gIAlzdHJ1Y3QgaHZfcmVlbmxpZ2h0ZW5tZW50X2NvbnRyb2wg
-cmVfY3RybCA9IHsKPj4gIAkJLnZlY3RvciA9IEhZUEVSVl9SRUVOTElHSFRFTk1FTlRfVkVDVE9S
-LAo+PiAgCQkuZW5hYmxlZCA9IDEsCj4+IC0JCS50YXJnZXRfdnAgPSBodl92cF9pbmRleFtzbXBf
-cHJvY2Vzc29yX2lkKCldCj4+ICAJfTsKPj4gIAlzdHJ1Y3QgaHZfdHNjX2VtdWxhdGlvbl9jb250
-cm9sIGVtdV9jdHJsID0gey5lbmFibGVkID0gMX07Cj4+ICAKPj4gQEAgLTE5Niw3ICsxOTUsMTEg
-QEAgdm9pZCBzZXRfaHZfdHNjY2hhbmdlX2NiKHZvaWQgKCpjYikodm9pZCkpCj4+ICAJLyogTWFr
-ZSBzdXJlIGNhbGxiYWNrIGlzIHJlZ2lzdGVyZWQgYmVmb3JlIHdlIHdyaXRlIHRvIE1TUnMgKi8K
-Pj4gIAl3bWIoKTsKPj4gIAo+PiArCXByZWVtcHRfZGlzYWJsZSgpOwo+PiArCXJlX2N0cmwudGFy
-Z2V0X3ZwID0gaHZfdnBfaW5kZXhbc21wX3Byb2Nlc3Nvcl9pZCgpXTsKPj4gIAl3cm1zcmwoSFZf
-WDY0X01TUl9SRUVOTElHSFRFTk1FTlRfQ09OVFJPTCwgKigodTY0ICopJnJlX2N0cmwpKTsKPj4g
-KwlwcmVlbXB0X2VuYWJsZSgpOwo+PiArCj4+ICAJd3Jtc3JsKEhWX1g2NF9NU1JfVFNDX0VNVUxB
-VElPTl9DT05UUk9MLCAqKCh1NjQgKikmZW11X2N0cmwpKTsKPj4gIH0KPj4gIEVYUE9SVF9TWU1C
-T0xfR1BMKHNldF9odl90c2NjaGFuZ2VfY2IpOwo+Cj4gVGhpcyBsb29rcyBib2d1cywgTVNScyBh
-cmUgYSBwZXItY3B1IHJlc291cmNlLCB5b3UgaGFkIGJldHRlciBrbm93IHdoYXQKPiBDUFVzIHlv
-dSdyZSBvbiBhbmQgYmUgc3R1Y2sgdG8gaXQgd2hlbiB5b3UgZG8gd3Jtc3IuIFRoaXMganVzdCBm
-dWRnZXMKPiB0aGUgY29kZSB0byBtYWtlIHRoZSB3YXJuaW5nIGdvIGF3YXkgYW5kIGRvZXNuJ3Qg
-Zml4IHRoZSBhY3R1YWwgcHJvYmxlbQo+IGFmYWljdC4KCkFjdHVhbGx5LCB3ZSBkb24ndCBjYXJl
-IHdoaWNoIENQVSB3aWxsIHJlY2VpdmUgdGhlIHJlZW5saWdodGVubWVudApub3RpZmljYXRpb24g
-YW5kIFRTQyBFbXVsYXRpb24gaW4gSHlwZXItViBpcywgb2YgY291cnNlLCBnbG9iYWwuIFdlIGhh
-dmUKY29kZSB3aGljaCByZS1hc3NpZ25lcyB0aGUgbm90aWZpY2F0aW9uIHRvIHNvbWUgb3RoZXIg
-Q1BVIGluIGNhc2UgdGhlCm9uZSBpdCdzIGN1cnJlbnRseSBhc3NpZ25lZCB0byBnb2VzIGF3YXkg
-KHNlZSBodl9jcHVfZGllKCkpLgoKLS0gClZpdGFseQpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2
-ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git debugfs_cleanup
+head:   38bfd17b38b31dfc13afabb1742a23d5741b16d2
+commit: 2cd2d7ff48151c0a5326606dbc48a00df3a4d596 [77/85] debugfs: remove return value of debugfs_create_u8()
+reproduce:
+        # apt-get install sparse
+        # sparse version: v0.6.1-rc1-7-g2b96cd8-dirty
+        git checkout 2cd2d7ff48151c0a5326606dbc48a00df3a4d596
+        make ARCH=x86_64 allmodconfig
+        make C=1 CF='-fdiagnostic-prefix -D__CHECK_ENDIAN__'
+
+If you fix the issue, kindly add following tag
+Reported-by: kbuild test robot <lkp@intel.com>
+
+
+sparse warnings: (new ones prefixed by >>)
+
+>> drivers/net/wireless/intel/iwlegacy/4965-rs.c:2779:49: sparse: sparse: incorrect type in assignment (different base types) @@    expected struct dentry *rs_sta_dbgfs_tx_agg_tid_en_file @@    got ry *rs_sta_dbgfs_tx_agg_tid_en_file @@
+>> drivers/net/wireless/intel/iwlegacy/4965-rs.c:2779:49: sparse:    expected struct dentry *rs_sta_dbgfs_tx_agg_tid_en_file
+>> drivers/net/wireless/intel/iwlegacy/4965-rs.c:2779:49: sparse:    got void
+--
+   drivers/net/wireless/intel/iwlwifi/dvm/..//fw/file.h:325:19: sparse: sparse: mixed bitwiseness
+   drivers/net/wireless/intel/iwlwifi/dvm/..//fw/file.h:470:19: sparse: sparse: mixed bitwiseness
+>> drivers/net/wireless/intel/iwlwifi/dvm/rs.c:3283:49: sparse: sparse: incorrect type in assignment (different base types) @@    expected struct dentry *rs_sta_dbgfs_tx_agg_tid_en_file @@    got ry *rs_sta_dbgfs_tx_agg_tid_en_file @@
+>> drivers/net/wireless/intel/iwlwifi/dvm/rs.c:3283:49: sparse:    expected struct dentry *rs_sta_dbgfs_tx_agg_tid_en_file
+>> drivers/net/wireless/intel/iwlwifi/dvm/rs.c:3283:49: sparse:    got void
+
+vim +2779 drivers/net/wireless/intel/iwlegacy/4965-rs.c
+
+be663ab6 drivers/net/wireless/iwlegacy/iwl-4965-rs.c   Wey-Yi Guy        2011-02-21  2765  
+e7392364 drivers/net/wireless/iwlegacy/4965-rs.c       Stanislaw Gruszka 2011-11-15  2766  static void
+e7392364 drivers/net/wireless/iwlegacy/4965-rs.c       Stanislaw Gruszka 2011-11-15  2767  il4965_rs_add_debugfs(void *il, void *il_sta, struct dentry *dir)
+be663ab6 drivers/net/wireless/iwlegacy/iwl-4965-rs.c   Wey-Yi Guy        2011-02-21  2768  {
+46bc8d4b drivers/net/wireless/iwlegacy/iwl-4965-rs.c   Stanislaw Gruszka 2011-10-24  2769  	struct il_lq_sta *lq_sta = il_sta;
+be663ab6 drivers/net/wireless/iwlegacy/iwl-4965-rs.c   Wey-Yi Guy        2011-02-21  2770  	lq_sta->rs_sta_dbgfs_scale_table_file =
+2ef00c53 drivers/net/wireless/intel/iwlegacy/4965-rs.c Joe Perches       2018-03-23  2771  	    debugfs_create_file("rate_scale_table", 0600, dir,
+be663ab6 drivers/net/wireless/iwlegacy/iwl-4965-rs.c   Wey-Yi Guy        2011-02-21  2772  				lq_sta, &rs_sta_dbgfs_scale_table_ops);
+be663ab6 drivers/net/wireless/iwlegacy/iwl-4965-rs.c   Wey-Yi Guy        2011-02-21  2773  	lq_sta->rs_sta_dbgfs_stats_table_file =
+2ef00c53 drivers/net/wireless/intel/iwlegacy/4965-rs.c Joe Perches       2018-03-23  2774  	    debugfs_create_file("rate_stats_table", 0400, dir, lq_sta,
+e7392364 drivers/net/wireless/iwlegacy/4965-rs.c       Stanislaw Gruszka 2011-11-15  2775  				&rs_sta_dbgfs_stats_table_ops);
+be663ab6 drivers/net/wireless/iwlegacy/iwl-4965-rs.c   Wey-Yi Guy        2011-02-21  2776  	lq_sta->rs_sta_dbgfs_rate_scale_data_file =
+2ef00c53 drivers/net/wireless/intel/iwlegacy/4965-rs.c Joe Perches       2018-03-23  2777  	    debugfs_create_file("rate_scale_data", 0400, dir, lq_sta,
+e7392364 drivers/net/wireless/iwlegacy/4965-rs.c       Stanislaw Gruszka 2011-11-15  2778  				&rs_sta_dbgfs_rate_scale_data_ops);
+be663ab6 drivers/net/wireless/iwlegacy/iwl-4965-rs.c   Wey-Yi Guy        2011-02-21 @2779  	lq_sta->rs_sta_dbgfs_tx_agg_tid_en_file =
+2ef00c53 drivers/net/wireless/intel/iwlegacy/4965-rs.c Joe Perches       2018-03-23  2780  	    debugfs_create_u8("tx_agg_tid_enable", 0600, dir,
+be663ab6 drivers/net/wireless/iwlegacy/iwl-4965-rs.c   Wey-Yi Guy        2011-02-21  2781  			      &lq_sta->tx_agg_tid_en);
+be663ab6 drivers/net/wireless/iwlegacy/iwl-4965-rs.c   Wey-Yi Guy        2011-02-21  2782  
+
+:::::: The code at line 2779 was first introduced by commit
+:::::: be663ab67077fac8e23eb8e231a8c1c94cb32e54 iwlwifi: split the drivers for agn and legacy devices 3945/4965
+
+:::::: TO: Wey-Yi Guy <wey-yi.w.guy@intel.com>
+:::::: CC: Wey-Yi Guy <wey-yi.w.guy@intel.com>
+
+---
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
