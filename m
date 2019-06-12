@@ -1,78 +1,92 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 752E641C9C
-	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Jun 2019 08:50:47 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3830641DDF
+	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Jun 2019 09:38:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A265E87586;
-	Wed, 12 Jun 2019 06:50:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8F3A886031;
+	Wed, 12 Jun 2019 07:38:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id m9DT6qg-2TRk; Wed, 12 Jun 2019 06:50:45 +0000 (UTC)
+	with ESMTP id 00rPfXbuhmdO; Wed, 12 Jun 2019 07:38:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 118C08759A;
-	Wed, 12 Jun 2019 06:50:44 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8B63D86044;
+	Wed, 12 Jun 2019 07:37:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 641671BF28D
- for <devel@linuxdriverproject.org>; Wed, 12 Jun 2019 06:50:18 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 542E91BF33D
+ for <devel@linuxdriverproject.org>; Wed, 12 Jun 2019 07:37:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D62442044C
- for <devel@linuxdriverproject.org>; Wed, 12 Jun 2019 06:50:18 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5144F87598
+ for <devel@linuxdriverproject.org>; Wed, 12 Jun 2019 07:37:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id q2-YEpEa+VZc for <devel@linuxdriverproject.org>;
- Wed, 12 Jun 2019 06:50:18 +0000 (UTC)
+ with ESMTP id 92BaALmkCM8S for <devel@linuxdriverproject.org>;
+ Wed, 12 Jun 2019 07:37:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f193.google.com (mail-pl1-f193.google.com
- [209.85.214.193])
- by silver.osuosl.org (Postfix) with ESMTPS id F11FF20354
- for <devel@driverdev.osuosl.org>; Wed, 12 Jun 2019 06:50:17 +0000 (UTC)
-Received: by mail-pl1-f193.google.com with SMTP id d21so6220278plr.3
- for <devel@driverdev.osuosl.org>; Tue, 11 Jun 2019 23:50:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=aEk4J/GiRcwQ05gtZHPM3bsN5f8rQHV12ZyPces84nk=;
- b=n3eI8XV5c26ENMg5NGuMnVYcOpr+WNMrXO8nt1pj5awGiYBTF9envWrP3IBSjzyc9Z
- NNPGelyUrYs7kaQZ5XAWZPvOpSyLmfYcc/yycwgM8o31K80U95d58nLMiY7hVs9BlbB2
- HQrfvG+J1XGXnwrcmpeKAnhFCdprPlDClH03FOzUHZzah/icBXLry1vHWSDW3puk1hs0
- bSK3pVEe0kaOEqSal3wGk6mXyzO5rM6khcCtupkAvg5Azkubv34NWo3GfkIJwgp6zQmc
- uM8a+/UfmoT42QOiHaZDZdrFZqInGz1cC4Z5/+ar0OeOhj8nBp/TAjQktjEtM2x6pOrr
- BTGw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=aEk4J/GiRcwQ05gtZHPM3bsN5f8rQHV12ZyPces84nk=;
- b=GUs2r0GQmD/nxNEWKVE//4vmYQwzOmDviLVhFEKvKS+hbcvoGaipgurp1aKuMJptBX
- OKp30Wzj9wm3IgBRQ8pNgmiGeqHXNMgkvK0y2E5pX5J/BBeSQSTzgNm6iEfiHiIvl+6A
- /b3JTPxqknn4qVNPBe8xfbL9Sa7YCK9JfaHM9a74TQjerBzXpE+kaMwX3Dkpx3Ekmurk
- 5lU+JB7UrCKkazbUtbzeyNruoBkkgyKcNNGEo3CjcGgcV9/MfEZTVD4ovIcIEQeBBkNa
- qjg1qgbmwRI45NSE9+nOn0qjN/gnTeS8Jb4EUGb6JesEqshgigJrQmU+FECtwhhKTFIn
- ld2Q==
-X-Gm-Message-State: APjAAAWDkaasED15wrk6qJ4PYNmF+3McjinnjWVjn+dzl/ZEL+UG66+r
- 0OhqJGjxpX8GmQi9kimctFA=
-X-Google-Smtp-Source: APXvYqwLUapfRbdDckxH/XHjJnatPiZDbwBPmBd2b5Q0DINBUH92LBbU+ehulrsfxMU13SkKnGp42w==
-X-Received: by 2002:a17:902:e582:: with SMTP id
- cl2mr65268775plb.60.1560322217564; 
- Tue, 11 Jun 2019 23:50:17 -0700 (PDT)
-Received: from localhost.localdomain ([171.79.92.225])
- by smtp.gmail.com with ESMTPSA id v23sm1356346pju.3.2019.06.11.23.50.15
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Tue, 11 Jun 2019 23:50:16 -0700 (PDT)
-From: Nishka Dasgupta <nishkadg.linux@gmail.com>
-To: larry.finger@lwfinger.net, gregkh@linuxfoundation.org,
- devel@driverdev.osuosl.org
-Subject: [PATCH] staging: rtl8188eu: Change type of rtw_get_sec_ie()
-Date: Wed, 12 Jun 2019 12:20:03 +0530
-Message-Id: <20190612065003.3786-1-nishkadg.linux@gmail.com>
-X-Mailer: git-send-email 2.19.1
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C6DD287568
+ for <devel@driverdev.osuosl.org>; Wed, 12 Jun 2019 07:37:53 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5C7XiM1083808;
+ Wed, 12 Jun 2019 07:37:51 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2018-07-02;
+ bh=4tPkRHhmyfsoxjEDnJhPeAMoClk5xrDMHALZ41AjO28=;
+ b=sPVU3UYpzPEKGCmVHw25Zy+0SudydQ2sgIpngUhhmegVQNhoAlQqpYvXox7NtEjUlPUc
+ 24Zu6WjWpprRX4+UeRRIQ7iGj0EwkqE9r5NwQBeq44OaUFFs9xnadRqPigcIadyCQwjn
+ ZpTuhkjYLs6UaCm8gKNu/QtDcbky1q/GqR4Cik48WA+wq8kC1FCe//LlqFUyYn0TrcOT
+ SvLvrVTULbFMjzzzgMrmn2NOgNFqghn7b3zluO0YdftKTv9/pNgKuW4HPr9/zDB+tjYG
+ ttKhtM/70Yy+ZwOO/xZvzeaMvFXibOU2RXOsnUNuc11vv2ylVN1iL1QCRisVy5uy8EFD ow== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by userp2130.oracle.com with ESMTP id 2t04etspkv-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 12 Jun 2019 07:37:51 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5C7bS6H165275;
+ Wed, 12 Jun 2019 07:37:50 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by aserp3030.oracle.com with ESMTP id 2t04hysm2c-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 12 Jun 2019 07:37:50 +0000
+Received: from abhmp0007.oracle.com (abhmp0007.oracle.com [141.146.116.13])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x5C7bkhs021287;
+ Wed, 12 Jun 2019 07:37:48 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Wed, 12 Jun 2019 00:37:46 -0700
+Date: Wed, 12 Jun 2019 10:37:39 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Simon =?iso-8859-1?Q?Sandstr=F6m?= <simon@nikanor.nu>
+Subject: Re: [PATCH 1/2] staging: kpc2000: improve label names in
+ kp2000_pcie_probe
+Message-ID: <20190612073739.GC1915@kadam>
+References: <20190610200535.31820-1-simon@nikanor.nu>
+ <20190610200535.31820-2-simon@nikanor.nu>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190610200535.31820-2-simon@nikanor.nu>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9285
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=2
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1810050000 definitions=main-1906120053
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9285
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=2 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
+ definitions=main-1906120052
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,62 +99,136 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Nishka Dasgupta <nishkadg.linux@gmail.com>
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change return type of function rtw_get_sec_ie from int to void and
-remove its return statement as the return value is never stored, checked
-or otherwise used.
+Thanks!
 
-Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
----
- drivers/staging/rtl8188eu/core/rtw_ieee80211.c | 4 +---
- drivers/staging/rtl8188eu/include/ieee80211.h  | 4 ++--
- 2 files changed, 3 insertions(+), 5 deletions(-)
+Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_ieee80211.c b/drivers/staging/rtl8188eu/core/rtw_ieee80211.c
-index 797ffa6e64d5..28b3cdd10397 100644
---- a/drivers/staging/rtl8188eu/core/rtw_ieee80211.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_ieee80211.c
-@@ -482,7 +482,7 @@ int rtw_parse_wpa2_ie(u8 *rsn_ie, int rsn_ie_len, int *group_cipher, int *pairwi
- 	return ret;
- }
- 
--int rtw_get_sec_ie(u8 *in_ie, uint in_len, u8 *rsn_ie, u16 *rsn_len, u8 *wpa_ie, u16 *wpa_len)
-+void rtw_get_sec_ie(u8 *in_ie, uint in_len, u8 *rsn_ie, u16 *rsn_len, u8 *wpa_ie, u16 *wpa_len)
- {
- 	u8 authmode, sec_idx, i;
- 	u8 wpa_oui[4] = {0x0, 0x50, 0xf2, 0x01};
-@@ -539,8 +539,6 @@ int rtw_get_sec_ie(u8 *in_ie, uint in_len, u8 *rsn_ie, u16 *rsn_len, u8 *wpa_ie,
- 			}
- 		}
- 	}
--
--	return *rsn_len + *wpa_len;
- }
- 
- u8 rtw_is_wps_ie(u8 *ie_ptr, uint *wps_ielen)
-diff --git a/drivers/staging/rtl8188eu/include/ieee80211.h b/drivers/staging/rtl8188eu/include/ieee80211.h
-index 42ee4ebe90eb..d569fe5ed8e6 100644
---- a/drivers/staging/rtl8188eu/include/ieee80211.h
-+++ b/drivers/staging/rtl8188eu/include/ieee80211.h
-@@ -743,8 +743,8 @@ int rtw_parse_wpa_ie(u8 *wpa_ie, int wpa_ie_len, int *group_cipher,
- int rtw_parse_wpa2_ie(u8 *wpa_ie, int wpa_ie_len, int *group_cipher,
- 		      int *pairwise_cipher, int *is_8021x);
- 
--int rtw_get_sec_ie(u8 *in_ie, uint in_len, u8 *rsn_ie, u16 *rsn_len,
--		   u8 *wpa_ie, u16 *wpa_len);
-+void rtw_get_sec_ie(u8 *in_ie, uint in_len, u8 *rsn_ie, u16 *rsn_len,
-+		    u8 *wpa_ie, u16 *wpa_len);
- 
- u8 rtw_is_wps_ie(u8 *ie_ptr, uint *wps_ielen);
- u8 *rtw_get_wps_ie(u8 *in_ie, uint in_len, u8 *wps_ie, uint *wps_ielen);
--- 
-2.19.1
+Not related to your patch (IOW ignore if you want to) the error handling
+is slightly more complicated than required:
 
+drivers/staging/kpc2000/kpc2000/core.c
+   356           * Step 4: Setup the Register BAR
+   357           */
+   358          reg_bar_phys_addr = pci_resource_start(pcard->pdev, REG_BAR);
+   359          reg_bar_phys_len = pci_resource_len(pcard->pdev, REG_BAR);
+   360  
+   361          pcard->regs_bar_base = ioremap_nocache(reg_bar_phys_addr, PAGE_SIZE);
+   362          if (!pcard->regs_bar_base) {
+   363                  dev_err(&pcard->pdev->dev,
+   364                          "probe: REG_BAR could not remap memory to virtual space\n");
+   365                  err = -ENODEV;
+   366                  goto err_disable_device;
+   367          }
+   368          dev_dbg(&pcard->pdev->dev,
+   369                  "probe: REG_BAR virt hardware address start [%p]\n",
+   370                  pcard->regs_bar_base);
+   371  
+   372          err = pci_request_region(pcard->pdev, REG_BAR, KP_DRIVER_NAME_KP2000);
+   373          if (err) {
+   374                  iounmap(pcard->regs_bar_base);
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+We could move this to the bottom of the function.  We would need to
+re-order it slightly to free things in the mirror of how they are
+allocated.  (Always just free the most recent allocation).
+
+   375                  dev_err(&pcard->pdev->dev,
+   376                          "probe: failed to acquire PCI region (%d)\n",
+   377                          err);
+   378                  err = -ENODEV;
+   379                  goto err_disable_device;
+   380          }
+   381  
+   382          pcard->regs_base_resource.start = reg_bar_phys_addr;
+   383          pcard->regs_base_resource.end   = reg_bar_phys_addr +
+   384                                            reg_bar_phys_len - 1;
+   385          pcard->regs_base_resource.flags = IORESOURCE_MEM;
+   386  
+   387          /*
+   388           * Step 5: Setup the DMA BAR
+   389           */
+   390          dma_bar_phys_addr = pci_resource_start(pcard->pdev, DMA_BAR);
+   391          dma_bar_phys_len = pci_resource_len(pcard->pdev, DMA_BAR);
+   392  
+   393          pcard->dma_bar_base = ioremap_nocache(dma_bar_phys_addr,
+   394                                                dma_bar_phys_len);
+   395          if (!pcard->dma_bar_base) {
+   396                  dev_err(&pcard->pdev->dev,
+   397                          "probe: DMA_BAR could not remap memory to virtual space\n");
+   398                  err = -ENODEV;
+   399                  goto err_unmap_regs;
+   400          }
+   401          dev_dbg(&pcard->pdev->dev,
+   402                  "probe: DMA_BAR virt hardware address start [%p]\n",
+   403                  pcard->dma_bar_base);
+   404  
+   405          pcard->dma_common_regs = pcard->dma_bar_base + KPC_DMA_COMMON_OFFSET;
+   406  
+   407          err = pci_request_region(pcard->pdev, DMA_BAR, "kp2000_pcie");
+   408          if (err) {
+   409                  iounmap(pcard->dma_bar_base);
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Same.
+
+   410                  dev_err(&pcard->pdev->dev,
+   411                          "probe: failed to acquire PCI region (%d)\n", err);
+   412                  err = -ENODEV;
+   413                  goto err_unmap_regs;
+   414          }
+   415  
+   416          pcard->dma_base_resource.start = dma_bar_phys_addr;
+
+[ snip ]
+
+   509          dev_dbg(&pcard->pdev->dev, "%s() complete!\n", __func__);
+   510          mutex_unlock(&pcard->sem);
+   511          return 0;
+   512  
+   513  err_remove_sysfs:
+   514          sysfs_remove_files(&pdev->dev.kobj, kp_attr_list);
+   515  err_free_irq:
+   516          free_irq(pcard->pdev->irq, pcard);
+   517  err_disable_msi:
+   518          pci_disable_msi(pcard->pdev);
+   519  err_unmap_dma:
+   520          iounmap(pcard->dma_bar_base);
+   521          pci_release_region(pdev, DMA_BAR);
+   522          pcard->dma_bar_base = NULL;
+   523  err_unmap_regs:
+   524          iounmap(pcard->regs_bar_base);
+   525          pci_release_region(pdev, REG_BAR);
+   526          pcard->regs_bar_base = NULL;
+
+err_release_dma:
+		pci_release_region(pdev, DMA_BAR);
+err_unmap_dma:
+		iounmap(pcard->dma_bar_base);
+err_release_reg:
+		pci_release_region(pdev, REG_BAR);
+err_unmap_reg:
+		iounmap(pcard->regs_bar_base);
+
+I moved swapped the pci_release_region() and the iounmap() order.  There
+is no need to set "pcard->regs_bar_base = NULL;" so just remove that.
+
+   527  err_disable_device:
+   528          pci_disable_device(pcard->pdev);
+   529  err_remove_ida:
+   530          mutex_unlock(&pcard->sem);
+   531          ida_simple_remove(&card_num_ida, pcard->card_num);
+   532  err_free_pcard:
+   533          kfree(pcard);
+   534          return err;
+   535  }
+
+regards,
+dan carpenter
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
