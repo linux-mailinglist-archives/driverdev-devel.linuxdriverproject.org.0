@@ -2,84 +2,64 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2619543436
-	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Jun 2019 10:39:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0BAF843463
+	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Jun 2019 10:52:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 599CA21515;
-	Thu, 13 Jun 2019 08:39:53 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4438322739;
+	Thu, 13 Jun 2019 08:52:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zDEwHTFi-cXa; Thu, 13 Jun 2019 08:39:52 +0000 (UTC)
+	with ESMTP id Kl1wkMBPVlPO; Thu, 13 Jun 2019 08:52:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E2B8C2150B;
-	Thu, 13 Jun 2019 08:39:51 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by silver.osuosl.org (Postfix) with ESMTP id 8BC8E2150B;
+	Thu, 13 Jun 2019 08:52:00 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2CBDE1BF575
- for <devel@linuxdriverproject.org>; Thu, 13 Jun 2019 08:39:50 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D069F1BF575
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 13 Jun 2019 08:51:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 29E7A84A0D
- for <devel@linuxdriverproject.org>; Thu, 13 Jun 2019 08:39:50 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id C73BC21507
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 13 Jun 2019 08:51:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id v22cM989_XTu for <devel@linuxdriverproject.org>;
- Thu, 13 Jun 2019 08:39:49 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
- [209.85.210.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A2808843FD
- for <devel@driverdev.osuosl.org>; Thu, 13 Jun 2019 08:39:49 +0000 (UTC)
-Received: by mail-pf1-f196.google.com with SMTP id q10so11369568pff.9
- for <devel@driverdev.osuosl.org>; Thu, 13 Jun 2019 01:39:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=G50Uc0MwhHhkVdkwH2IojupfIpHYrKcTHlZQabCLRII=;
- b=mFlmC0Mfk5fkrejlA6/maYyn86iz1aitv2cOswuvCyKAaH8rBy0rfsXUdIdyJ/WtJZ
- 1Xy5nRpJOllQoiae9WbxXIPOoLDwiLyH43bkGG3k0qq2EWPC8tSFgevDXV2z1y0rrKJ2
- NbDPt18QGyFk6XWejsF82Eak0JcxhwPbsf97UC+Wu3ES0reJtSs9yxgnu2lgH2NU76i/
- 0TOlHpotxHkd+EP6+hwzBGk4hicQK9s3M3LWDyelDT9XEb/D7V8fjgAX3L8jgSNZ9CyD
- QWeqIlwQ0+vkeZ7saOlob08FFEKVxTP/mRrHw8ivqsLpL0A3TW3QrDURSXduVf+Ln3DW
- XMBA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=G50Uc0MwhHhkVdkwH2IojupfIpHYrKcTHlZQabCLRII=;
- b=WlLK6HQOVUZTGpZ0ROh7xDCwBppqsTROHSKm9AHEH1xYozf+kN2WAcgj4/fzv8BT6m
- NVGDDtf952aPReN5zO5j2GJwJuvxkHpemfaBZnrik9jtkHVI2+SY+MA/T95C7hyfFN20
- jQvGkIjusRq+EMM8oNPoDjGuEf9wtw59d65FBb6/DgUBrduUaE7QyinOq3QIQ1kwdRXj
- rJtXJNW1URuJRcWqgxH8zyP6vI8mT4d6z0TxKujetPhBsQZgyacCKmLsZHob4idJ2ho6
- SBHFn//obhuX6b20wnYZCLr8K0PcYe0fxGA2rWqB6LHmcD4Z34W2tcixTqwgwCTF3XvU
- jZbw==
-X-Gm-Message-State: APjAAAW3+aUwL9JGCm8o5MmCvB+ZxkEthpEW6O35E6jPqRXA9KnPRe6s
- O3zYJzYfN4x2ndE8QwILZDs=
-X-Google-Smtp-Source: APXvYqw21oliJBHbATGqi4+W3rogn3QZ1jGM9Q3B7Vq55fRbKzuwg5QB1aXolqxaKum9N8ikp23VPg==
-X-Received: by 2002:a62:3605:: with SMTP id d5mr92289800pfa.28.1560415188879; 
- Thu, 13 Jun 2019 01:39:48 -0700 (PDT)
-Received: from [10.0.2.15] ([171.79.92.225])
- by smtp.gmail.com with ESMTPSA id u23sm3428113pfn.140.2019.06.13.01.39.46
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 13 Jun 2019 01:39:48 -0700 (PDT)
-Subject: Re: [PATCH 01/11] staging: rtl8723bs: core: Remove function
- eeprom_read_sz()
-To: Dan Carpenter <dan.carpenter@oracle.com>
-References: <20190612180439.7101-1-nishkadg.linux@gmail.com>
- <20190613064513.GA28930@kadam>
- <82013631-fb3e-ca52-a07d-91f50beb4263@gmail.com>
- <20190613083505.GA28859@kadam>
-From: Nishka Dasgupta <nishkadg.linux@gmail.com>
-Message-ID: <412ad702-5cb8-45b7-0d5b-af9d12a3cfb0@gmail.com>
-Date: Thu, 13 Jun 2019 14:09:44 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ with ESMTP id Gdc9BmH3B22P
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 13 Jun 2019 08:51:58 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id 38A5A203E2
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 13 Jun 2019 08:51:58 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 7B7C52147A;
+ Thu, 13 Jun 2019 08:51:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1560415918;
+ bh=oaSW4gd2xIdZJquueiGxTrS3JwQ0OF/UOAUYcWcU18E=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=MEv2DYS1S5jFpGKbl/u1Q45wisyvaOq/07rNMm4QrsvSdzbaSTZPnNqxsbiwz3mXC
+ uEzYhUQyaBoQey3Bz3JscVoddYGWc3ANhx376/5fOgdQZd3lqOuoDllQqSvxzlSqGY
+ Qn9/EsR6PI+xifS9ksJzw61oOdIdtjP21KW8my/Q=
+Date: Thu, 13 Jun 2019 10:45:31 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Jeremy Sowden <jeremy@azazel.net>
+Subject: Re: [PATCH 1/6] staging: kpc2000_dma: added Kconfig to enable
+ asynchronous I/O.
+Message-ID: <20190613084531.GA4630@kroah.com>
+References: <20190611195104.4828-1-jeremy@azazel.net>
+ <20190611195104.4828-2-jeremy@azazel.net>
 MIME-Version: 1.0
-In-Reply-To: <20190613083505.GA28859@kadam>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20190611195104.4828-2-jeremy@azazel.net>
+User-Agent: Mutt/1.12.0 (2019-05-25)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,48 +72,35 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org
+Cc: Linux Driver Project Developer List
+ <driverdev-devel@linuxdriverproject.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 13/06/19 2:05 PM, Dan Carpenter wrote:
-> On Thu, Jun 13, 2019 at 01:53:20PM +0530, Nishka Dasgupta wrote:
->> On 13/06/19 12:15 PM, Dan Carpenter wrote:
->>> On Wed, Jun 12, 2019 at 11:34:29PM +0530, Nishka Dasgupta wrote:
->>>> Remove unused function eeprom_read_sz.
->>>> Issue found with Coccinelle.
->>>>
->>>> Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
->>>
->>> This is great but you need to remove the declaration from the .h file
->>> as well.  I noticed some of the other patches have this problem as well
->>> so please check them and resend the whole set.
->>
->> I'm sorry, I couldn't find the declaration in any .h file for any of these
->> patches, even after fetch origin, rebase, and grep. Going to individual .h
->> files and searching for declarations does not seem to work either. Is there
->> any other way I can look for the declarations?
->>
+On Tue, Jun 11, 2019 at 08:50:59PM +0100, Jeremy Sowden wrote:
+> The DMA driver has call-backs for doing asynchronous I/O which are
+> protected by a CONFIG_ macro which is not defined.  Added a Kconfig
+> stanza to define it.
 > 
-> Oh...  Heh.  Sorry for the noise.  My bad.
-> 
-> I was looking at the wrong driver.  It's declared but not implemented in
-> rtl8188eu in drivers/staging/rtl8188eu/include/rtw_eeprom.h.  We should
-> delete those too, but it's unrelated to your patchset so don't worry
-> about it.
+> Cc: Matt Sickler <matt.sickler@daktronics.com>
+> Signed-off-by: Jeremy Sowden <jeremy@azazel.net>
+> ---
+>  drivers/staging/kpc2000/Kconfig           | 8 ++++++++
+>  drivers/staging/kpc2000/kpc_dma/fileops.c | 6 +++---
+>  2 files changed, 11 insertions(+), 3 deletions(-)
 
-Oh, okay. I was actually going to do rtl8188eu anyway so I'll keep this 
-in mind when I get round to it.
+This patch breaks the build if you enable the new build option.  So it
+probably should go _after_ you have fixed up the code.
 
-Thanking you,
-Nishka
+Please fix this series up and resend it.
+Also, is aio even wanted/needed for this driver?  If it's been disabled
+for so long, can't we just delete it if no one is using it?
 
-> regards,
-> dan carpenter
-> 
+thanks,
 
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
