@@ -1,59 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A6A4432CE
-	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Jun 2019 07:41:47 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 38E6B432FC
+	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Jun 2019 08:47:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 10AD7876D4;
-	Thu, 13 Jun 2019 05:41:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5D4CF86365;
+	Thu, 13 Jun 2019 06:47:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id c3SXSS0IkNuk; Thu, 13 Jun 2019 05:41:44 +0000 (UTC)
+	with ESMTP id qpPkwOgFTRTZ; Thu, 13 Jun 2019 06:47:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E9259876D1;
-	Thu, 13 Jun 2019 05:41:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 10C6D8631C;
+	Thu, 13 Jun 2019 06:47:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C96891BF3B1
- for <devel@linuxdriverproject.org>; Thu, 13 Jun 2019 05:41:40 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 078801BF23B
+ for <devel@linuxdriverproject.org>; Thu, 13 Jun 2019 06:47:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C3765876C9
- for <devel@linuxdriverproject.org>; Thu, 13 Jun 2019 05:41:40 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0008386302
+ for <devel@linuxdriverproject.org>; Thu, 13 Jun 2019 06:47:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id p-WYzaJ0+o+1 for <devel@linuxdriverproject.org>;
- Thu, 13 Jun 2019 05:41:40 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0913586D6F
- for <devel@driverdev.osuosl.org>; Thu, 13 Jun 2019 05:41:40 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 561782053B;
- Thu, 13 Jun 2019 05:41:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1560404499;
- bh=8Xh4IPVPSoQJv7GWld73+9V0oaBZe8Mpmmz/mKLN+rQ=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ByZS4yI0t6Lw+NdGjH9a07AeUUIjvk1cJGDzyfIrJViTGTIERIRZJL73c1qIokMUC
- kT69jwfWNhHdI09f8E0yIK0aUZ+KzXE4TbSXQvD9JCQDWMDp6umh59lH1N+nTQhdeL
- M/gOrFkfIXjo0IPpGalbyOsvg9YOy3Os1OrJnBOY=
-Date: Thu, 13 Jun 2019 07:41:36 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Todd Kjos <tkjos@android.com>
-Subject: Re: [PATCH] binder: fix possible UAF when freeing buffer
-Message-ID: <20190613054136.GA19717@kroah.com>
-References: <20190612202927.54518-1-tkjos@google.com>
+ with ESMTP id MLSlNp4oNX3n for <devel@linuxdriverproject.org>;
+ Thu, 13 Jun 2019 06:47:26 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from aserp2130.oracle.com (aserp2130.oracle.com [141.146.126.79])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 653AC862CA
+ for <devel@driverdev.osuosl.org>; Thu, 13 Jun 2019 06:47:26 +0000 (UTC)
+Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
+ by aserp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5D6iOnD022955;
+ Thu, 13 Jun 2019 06:47:23 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2018-07-02;
+ bh=Hwt2ERV6F8VJeKT6lNty41TE4vW4o/Fn3EEGhM2Dv4c=;
+ b=Jz5DNEF/SE0DdzamWU9ohi3HnB5JRzHnlrqcTQ04FpRQDf5BwObAREQGb0NA4iJrAyPs
+ e9XNkFGo1broXWT/28hs+cT7yEQfBMQecw2UkooyOJJKxFy0XqGs17H1lNx8KPNywsFS
+ X4nsrqKmI0rvSw4vGWVMF5H+U6/Y7402FU23RJFeyWZxPi8t4pIwhgdaDy4Mbel51+wN
+ t+FsZjNbUryak1paoOuOGPZrtQf+AWtsNeQFJTEHGbSB3Ne+Pjn/AjhK4IjWjeJu5iZs
+ wytoB7tiG9FixEkKRwinl5ZmA1JVG0Oig70gRPLGORuePp5H1fpa0IOw40t6o/RQXGVu SA== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by aserp2130.oracle.com with ESMTP id 2t02heyqrd-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 13 Jun 2019 06:47:23 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5D6iDU5182504;
+ Thu, 13 Jun 2019 06:45:23 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by aserp3020.oracle.com with ESMTP id 2t0p9s85r6-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 13 Jun 2019 06:45:23 +0000
+Received: from abhmp0010.oracle.com (abhmp0010.oracle.com [141.146.116.16])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x5D6jK3u031947;
+ Thu, 13 Jun 2019 06:45:22 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Wed, 12 Jun 2019 23:45:20 -0700
+Date: Thu, 13 Jun 2019 09:45:13 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Nishka Dasgupta <nishkadg.linux@gmail.com>
+Subject: Re: [PATCH 01/11] staging: rtl8723bs: core: Remove function
+ eeprom_read_sz()
+Message-ID: <20190613064513.GA28930@kadam>
+References: <20190612180439.7101-1-nishkadg.linux@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190612202927.54518-1-tkjos@google.com>
-User-Agent: Mutt/1.12.0 (2019-05-25)
+In-Reply-To: <20190612180439.7101-1-nishkadg.linux@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9286
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1810050000 definitions=main-1906130053
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9286
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
+ definitions=main-1906130054
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,32 +98,25 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, arve@android.com,
- maco@google.com, joel@joelfernandes.org, kernel-team@android.com,
- tkjos@google.com
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Jun 12, 2019 at 01:29:27PM -0700, Todd Kjos wrote:
-> There is a race between the binder driver cleaning
-> up a completed transaction via binder_free_transaction()
-> and a user calling binder_ioctl(BC_FREE_BUFFER) to
-> release a buffer. It doesn't matter which is first but
-> they need to be protected against running concurrently
-> which can result in a UAF.
+On Wed, Jun 12, 2019 at 11:34:29PM +0530, Nishka Dasgupta wrote:
+> Remove unused function eeprom_read_sz.
+> Issue found with Coccinelle.
 > 
-> Signed-off-by: Todd Kjos <tkjos@google.com>
-> ---
->  drivers/android/binder.c | 16 ++++++++++++++--
->  1 file changed, 14 insertions(+), 2 deletions(-)
+> Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 
-Does this also need to go to the stable kernels?
+This is great but you need to remove the declaration from the .h file
+as well.  I noticed some of the other patches have this problem as well
+so please check them and resend the whole set.
 
-thanks,
+regards,
+dan carpenter
 
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
