@@ -1,94 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 72C6843542
-	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Jun 2019 12:24:57 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 52BFE43653
+	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Jun 2019 15:15:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CF939877B3;
-	Thu, 13 Jun 2019 10:24:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 36093228BA;
+	Thu, 13 Jun 2019 13:15:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zk4D3TJmnvbJ; Thu, 13 Jun 2019 10:24:55 +0000 (UTC)
+	with ESMTP id FAGLtSt8l+Hz; Thu, 13 Jun 2019 13:15:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A61A78772C;
-	Thu, 13 Jun 2019 10:24:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B0F2C22836;
+	Thu, 13 Jun 2019 13:15:05 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E52E71BF3DC
- for <devel@linuxdriverproject.org>; Thu, 13 Jun 2019 10:24:51 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 21C681BF3C0
+ for <devel@linuxdriverproject.org>; Thu, 13 Jun 2019 13:15:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E21A6840E4
- for <devel@linuxdriverproject.org>; Thu, 13 Jun 2019 10:24:51 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 1E97F2261A
+ for <devel@linuxdriverproject.org>; Thu, 13 Jun 2019 13:15:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0sD5deBO6ajz for <devel@linuxdriverproject.org>;
- Thu, 13 Jun 2019 10:24:50 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B0096840BF
- for <devel@driverdev.osuosl.org>; Thu, 13 Jun 2019 10:24:50 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5DAEIYU188848;
- Thu, 13 Jun 2019 10:24:45 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2018-07-02;
- bh=FlLKK2CmsWq3FkbB9G88Bk5zDp2pwPWbamC0wr3NdLM=;
- b=aiWcOxJjJt/zIja22X4lJPuueJhmck61ySZcVqX99X/CRR8D6ODciS9GhgNr9PWWNfoA
- vSmEEJV6tYS65D38QSoXyQlu5o2NX90Wz//N9+Z/jQfE5IW13GmPbf+zt2abcNVDkf7g
- 0NOfDspdJjHIp4xD1GQb4u80VAa7VW1qLc2bx2BecELQ5cmRwBIbl/BFHKA2V0IgamGD
- Gvi7vbVBkSJ2HqkygWXd4SwKe0pxIy+xLruSUZdqvlmx8q5Wlb35houd8bjep1aMoW5n
- aYfYoR0daU0BGwoYKbs2mLWWupAwpI0p0ZkHNrYMJ7J1ZhWXPcH9LRY8WaMhYt4HLcYY kw== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by userp2120.oracle.com with ESMTP id 2t05nr0kbp-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 13 Jun 2019 10:24:45 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5DAMq9m153687;
- Thu, 13 Jun 2019 10:24:45 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by userp3020.oracle.com with ESMTP id 2t1jpjfpqq-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 13 Jun 2019 10:24:44 +0000
-Received: from abhmp0013.oracle.com (abhmp0013.oracle.com [141.146.116.19])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x5DAObQd008792;
- Thu, 13 Jun 2019 10:24:37 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 13 Jun 2019 03:24:36 -0700
-Date: Thu, 13 Jun 2019 13:24:25 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Ming Lei <ming.lei@redhat.com>
-Subject: Re: [PATCH V2 08/15] staging: unisys: visorhba: use sg helper to
- operate sgl
-Message-ID: <20190613102425.GB28859@kadam>
-References: <20190613071335.5679-1-ming.lei@redhat.com>
- <20190613071335.5679-9-ming.lei@redhat.com>
- <20190613095214.GA18796@kroah.com>
- <20190613100410.GA10829@ming.t460p>
+ with ESMTP id VnVP8fGeHPVZ for <devel@linuxdriverproject.org>;
+ Thu, 13 Jun 2019 13:15:02 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-lf1-f66.google.com (mail-lf1-f66.google.com
+ [209.85.167.66])
+ by silver.osuosl.org (Postfix) with ESMTPS id 353462154A
+ for <devel@driverdev.osuosl.org>; Thu, 13 Jun 2019 13:15:01 +0000 (UTC)
+Received: by mail-lf1-f66.google.com with SMTP id r15so15044072lfm.11
+ for <devel@driverdev.osuosl.org>; Thu, 13 Jun 2019 06:15:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nikanor-nu.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=IMHi2S1lxrVF5OO8+rdxLqeH/S1duFekzw5Tc0Z2mvY=;
+ b=N4m03+pCMbu9cIv2a7fZuxt+riwezXCHBQP6t+cS21Wl5evRWUUURynTOleWnNYOkE
+ dFh5/zk0/W1w5gUkw7QNUWfnuIG3VFrTzVuighoe0AliaSo/dojrdQiIGzIh4e8gMmA+
+ q1svNoPQueufLPULap69GDUh55Tvk1tsO7+7yDzwUyFvZ0zuUCdw8FPXPzWlBvDypzyB
+ 3mHRZQ0gfA06yeWGWX4/6ki5lBx4ckZWjJuATAz5D5bIf+R3SwP1XZSGztwOoZYBjQNf
+ lpWTthgmzLzVSEtDx3Zq73HzFBYtyVhmgtqZm0Q2b5h3a4TUHyaEVthAjKaqv1QIt0iX
+ JG2A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=IMHi2S1lxrVF5OO8+rdxLqeH/S1duFekzw5Tc0Z2mvY=;
+ b=MLo4vs4GRpMTHkhdxxwYaNDEH7IfmuWsTCDHIjGmsfs5w+ckD2K9lQbGTY1WyOkvCy
+ vqgOgwiMJa5B0h7Jhio/oy+mAu4Ikii9G4CGX16UBXrh+rnSGmUlEedMwZLl/zMDflAN
+ koIPMBzWQimwgqYfmdzw9gFOazSzct6hKf3do7hlHNcrwrZym4KU536Kh/h8yar21r0c
+ 98+xi3M3UpJO2kyvwHlgb6VZmKjHjNw9RzLcq9Ev6gQHTUPIbdJ55OV2vrzML9mY6Nwz
+ UBmOLbMhSU5epJSjrIg7VT0LZbc80x9w7389GW9wccfO+0LViQSIHt1KFd+bRyjThZXd
+ gd1g==
+X-Gm-Message-State: APjAAAXbWTCgaLWXnlfZM+Ggx0xLEiHmZaeHz2tmhackRWGFesm5fQ/T
+ qHe+zXuF7pQBi9dO7RfXhKsEmw==
+X-Google-Smtp-Source: APXvYqyUnN8Ootc1IkCIbrd0u7tOoLVkGMuoyGHMwUuFSr18enQTcXeLot9OSgv0O7hjR40xj2oipA==
+X-Received: by 2002:ac2:5212:: with SMTP id a18mr38106861lfl.50.1560431699446; 
+ Thu, 13 Jun 2019 06:14:59 -0700 (PDT)
+Received: from dev.nikanor.nu (78-72-133-4-no161.tbcn.telia.com. [78.72.133.4])
+ by smtp.gmail.com with ESMTPSA id q4sm124563lje.99.2019.06.13.06.14.57
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Thu, 13 Jun 2019 06:14:58 -0700 (PDT)
+From: =?UTF-8?q?Simon=20Sandstr=C3=B6m?= <simon@nikanor.nu>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: kpc2000: remove dead code in core.c
+Date: Thu, 13 Jun 2019 15:14:51 +0200
+Message-Id: <20190613131451.21661-1-simon@nikanor.nu>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190613100410.GA10829@ming.t460p>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9286
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=949
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1810050000 definitions=main-1906130081
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9286
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=995 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
- definitions=main-1906130081
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,46 +84,30 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Michael Schmitz <schmitzmic@gmail.com>, devel@driverdev.osuosl.org,
- Hannes Reinecke <hare@suse.com>, linux-scsi@vger.kernel.org,
- "Martin K . Petersen" <martin.petersen@oracle.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- James Smart <james.smart@broadcom.com>, "Ewan D . Milne" <emilne@redhat.com>,
- Jim Gill <jgill@vmware.com>,
- James Bottomley <James.Bottomley@hansenpartnership.com>,
- Brian King <brking@us.ibm.com>, Finn Thain <fthain@telegraphics.com.au>,
- "Juergen E . Fischer" <fischer@norbit.de>, Christoph Hellwig <hch@lst.de>,
- Bart Van Assche <bvanassche@acm.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ =?UTF-8?q?Simon=20Sandstr=C3=B6m?= <simon@nikanor.nu>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Jun 13, 2019 at 06:04:11PM +0800, Ming Lei wrote:
-> On Thu, Jun 13, 2019 at 11:52:14AM +0200, Greg Kroah-Hartman wrote:
-> > On Thu, Jun 13, 2019 at 03:13:28PM +0800, Ming Lei wrote:
-> > > The current way isn't safe for chained sgl, so use sg helper to
-> > > operate sgl.
-> > 
-> > I can not make any sense out of this changelog.
-> > 
-> > What "isn't safe"?  What is a "sgl"?
-> 
-> sgl is 'scatterlist' in kernel, and several linear sgl can be chained
-> together, so accessing the sgl in linear way may see a chained sg, which
-> is like a link pointer, then may cause trouble for driver.
-> 
-
-So from a user perspective it results in an Oops?  It would be really
-cool if you had the copy of the Oops btw so people could grep the git
-history for it.
-
-(You need to resend with the improved commit message).
-
-regards,
-dan carpenter
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+Rml4ZXMgY2hlY2twYXRjaCB3YXJuaW5nOiAiQ29uc2lkZXIgcmVtb3ZpbmcgdGhlIGNvZGUgZW5j
+bG9zZWQgYnkKdGhpcyAjaWYgMCBhbmQgaXRzICNlbmRpZiIuCgpTaWduZWQtb2ZmLWJ5OiBTaW1v
+biBTYW5kc3Ryw7ZtIDxzaW1vbkBuaWthbm9yLm51PgotLS0KIGRyaXZlcnMvc3RhZ2luZy9rcGMy
+MDAwL2twYzIwMDAvY29yZS5jIHwgNiAtLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCA2IGRlbGV0aW9u
+cygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9rcGMyMDAwL2twYzIwMDAvY29yZS5j
+IGIvZHJpdmVycy9zdGFnaW5nL2twYzIwMDAva3BjMjAwMC9jb3JlLmMKaW5kZXggNmE1OTk5ZThm
+ZjRlLi42MTBlYTU0OWQyNDAgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy9rcGMyMDAwL2tw
+YzIwMDAvY29yZS5jCisrKyBiL2RyaXZlcnMvc3RhZ2luZy9rcGMyMDAwL2twYzIwMDAvY29yZS5j
+CkBAIC0yMjMsMTUgKzIyMyw5IEBAIHN0YXRpYyB2b2lkIHdhaXRfYW5kX3JlYWRfc3NpZChzdHJ1
+Y3Qga3AyMDAwX2RldmljZSAqcGNhcmQpCiAKIAlkZXZfbm90aWNlKCZwY2FyZC0+cGRldi0+ZGV2
+LCAiU1NJRCBkaWRuJ3Qgc2hvdyB1cCFcbiIpOwogCi0jaWYgMAotCS8vIFRpbWVkIG91dCB3YWl0
+aW5nIGZvciB0aGUgU1NJRCB0byBzaG93IHVwLCBqdXN0IHVzZSB0aGUgREROQSBpbnN0ZWFkPwot
+CXJlYWRfdmFsID0gcmVhZHEocGNhcmQtPnN5c2luZm9fcmVnc19iYXNlICsgUkVHX0ZQR0FfRERO
+QSk7Ci0JcGNhcmQtPnNzaWQgPSByZWFkX3ZhbDsKLSNlbHNlCiAJLy8gVGltZWQgb3V0IHdhaXRp
+bmcgZm9yIHRoZSBTU0lEIHRvIHNob3cgdXAsIHN0aWNrIGFsbCB6ZXJvcyBpbiB0aGUKIAkvLyB2
+YWx1ZQogCXBjYXJkLT5zc2lkID0gMDsKLSNlbmRpZgogfQogCiBzdGF0aWMgaW50ICByZWFkX3N5
+c3RlbV9yZWdzKHN0cnVjdCBrcDIwMDBfZGV2aWNlICpwY2FyZCkKLS0gCjIuMjAuMQoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBs
+aXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRy
+aXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
