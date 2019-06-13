@@ -1,83 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BDCC343ACF
-	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Jun 2019 17:23:58 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 556A343DA8
+	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Jun 2019 17:44:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B5B658671C;
-	Thu, 13 Jun 2019 15:23:56 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 612D884F12;
+	Thu, 13 Jun 2019 15:44:17 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id dMstboUxOiV0; Thu, 13 Jun 2019 15:44:16 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id DA671860BF;
+	Thu, 13 Jun 2019 15:44:15 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id BEECC1BF28E
+ for <devel@linuxdriverproject.org>; Thu, 13 Jun 2019 15:44:13 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id BC007865DB
+ for <devel@linuxdriverproject.org>; Thu, 13 Jun 2019 15:44:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ym0-L4bANurp; Thu, 13 Jun 2019 15:23:55 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 526E78630F;
-	Thu, 13 Jun 2019 15:23:55 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 08BBE1BF28E
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 13 Jun 2019 15:23:54 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 056D821546
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 13 Jun 2019 15:23:54 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hjnq38TODjz5
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 13 Jun 2019 15:23:53 +0000 (UTC)
+ with ESMTP id t1MXZ_SWWS6Q for <devel@linuxdriverproject.org>;
+ Thu, 13 Jun 2019 15:44:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa3.microchip.iphmx.com (esa3.microchip.iphmx.com
- [68.232.153.233])
- by silver.osuosl.org (Postfix) with ESMTPS id 1FC302152A
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 13 Jun 2019 15:23:53 +0000 (UTC)
-Received-SPF: Pass (esa3.microchip.iphmx.com: domain of
- Christian.Gromm@microchip.com designates 198.175.253.82 as
- permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa3.microchip.iphmx.com;
- envelope-from="Christian.Gromm@microchip.com";
- x-sender="Christian.Gromm@microchip.com";
- x-conformance=spf_only; x-record-type="v=spf1";
- x-record-text="v=spf1 mx a:ushub1.microchip.com
- a:smtpout.microchip.com a:mx1.microchip.iphmx.com
- a:mx2.microchip.iphmx.com include:servers.mcsv.net
- include:mktomail.com include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa3.microchip.iphmx.com: no sender
- authenticity information available from domain of
- postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa3.microchip.iphmx.com;
- envelope-from="Christian.Gromm@microchip.com";
- x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa3.microchip.iphmx.com;
- dkim=none (message not signed) header.i=none;
- spf=Pass smtp.mailfrom=Christian.Gromm@microchip.com;
- spf=None smtp.helo=postmaster@email.microchip.com;
- dmarc=pass (p=none dis=none) d=microchip.com
-X-IronPort-AV: E=Sophos;i="5.63,369,1557212400"; d="scan'208";a="37396923"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa3.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 13 Jun 2019 08:23:50 -0700
-Received: from chn-vm-ex01.mchp-main.com (10.10.87.71) by
- chn-vm-ex02.mchp-main.com (10.10.87.72) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Thu, 13 Jun 2019 08:23:50 -0700
-Received: from kar-sv-agl01.mchp-main.com (10.10.85.251) by
- chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server id
- 15.1.1713.5 via Frontend Transport; Thu, 13 Jun 2019 08:23:48 -0700
-From: Christian Gromm <christian.gromm@microchip.com>
-To: <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: most: deregister net and video config subsystems
- with configFS
-Date: Thu, 13 Jun 2019 17:23:47 +0200
-Message-ID: <1560439427-27309-1-git-send-email-christian.gromm@microchip.com>
-X-Mailer: git-send-email 2.7.4
+Received: from mail-lj1-f195.google.com (mail-lj1-f195.google.com
+ [209.85.208.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 02CD586594
+ for <devel@driverdev.osuosl.org>; Thu, 13 Jun 2019 15:44:12 +0000 (UTC)
+Received: by mail-lj1-f195.google.com with SMTP id p17so11740780ljg.1
+ for <devel@driverdev.osuosl.org>; Thu, 13 Jun 2019 08:44:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=aeSaLtysUhVZqqrP3nPvYNbe4HwweI7WGntZ/Db3p8E=;
+ b=o8TYwCph8F6Zw0zSI173WRNNuJ9VYvLFHvYJ3//mpo0H++iwmfY4O2LBH2lWsQN179
+ Os7vZTzzwNQvWBBc27KDaZAohaC3tJm38YSYu0Z8Y8u6gLMCX9K2bfyn6R1RligqF4JX
+ HPZiWRLhTp6QmcPzvCzwqSezVsCqgzcz263KaaONbboEHDO3gxiBRLTGHvpmMVccYOkt
+ Bq9CWik3l9wbWWA+sRCC2Z38pCDN9xVh5iph80M/GqYS2G2b74rGK0Ap+4Kd9yerMe/E
+ y64uDJsHxCooI7j3kbYE/YFTxHA4wu/5vtRQmQhlhicwNk1ZE27eaJPzfZCTDnloN3wY
+ p4zg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=aeSaLtysUhVZqqrP3nPvYNbe4HwweI7WGntZ/Db3p8E=;
+ b=Q1Qf6LWPV4NkCdAfJteHa85pwiMcz8USa/P8RGtn0u5HNN2M+eH2V52PsljIc7DCHu
+ pYCJgGq+AfYhb5TQxxvhwj1fcFJe4+/nH76jNCQCnCAyqcCLJVJP5bHwdsFdblbY5OXK
+ cpMKiVhpkdC42S5/YKti7vUBMJA+Z/T7ColXqH+wDCBU0op20w7+QsNbOTFQKECtG/V2
+ k7JzGvXclNibxUekq9VVpdkuVfzroMEYuGi0VcsDFnbXtcbMgWj/UYRemb4RNBiwGRzN
+ S+0Hl7bYFj17sbES4FPVS80HMTC3VquCRi1N8tlbFPwJjN7VyaOkyfHoNsTNsYrZAWg4
+ m4Aw==
+X-Gm-Message-State: APjAAAWdZK8TJ4EA8H3ZZYA4WValhOR7pBBIhN1irNEGjYiWpgHL5tso
+ R8194EuswCjKLiRLXJX2nfBMPNeJdo/JEa1myGsshQ==
+X-Google-Smtp-Source: APXvYqzDl8aZ71rEDJAzz+at+3iJ0jmbSQCM57+PHRZzFNYODa5kE1RGaoSGllClbnSt3dnYLQWCwnvx3i9/f9IgeEk=
+X-Received: by 2002:a2e:9e4c:: with SMTP id g12mr22711728ljk.3.1560440650723; 
+ Thu, 13 Jun 2019 08:44:10 -0700 (PDT)
 MIME-Version: 1.0
+References: <20190612202927.54518-1-tkjos@google.com>
+ <20190613054136.GA19717@kroah.com>
+In-Reply-To: <20190613054136.GA19717@kroah.com>
+From: Todd Kjos <tkjos@google.com>
+Date: Thu, 13 Jun 2019 08:43:59 -0700
+Message-ID: <CAHRSSEwqg9dOddrPE1dUBwOqTbkR+tvzS41hQSpJD4o-f9YX4w@mail.gmail.com>
+Subject: Re: [PATCH] binder: fix possible UAF when freeing buffer
+To: Greg KH <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,49 +80,41 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Christian Gromm <christian.gromm@microchip.com>,
- driverdev-devel@linuxdriverproject.org
+Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
+ Todd Kjos <tkjos@android.com>, LKML <linux-kernel@vger.kernel.org>,
+ =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
+ Martijn Coenen <maco@google.com>,
+ "Joel Fernandes \(Google\)" <joel@joelfernandes.org>,
+ Android Kernel Team <kernel-team@android.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch makes the modules net and video deregister its config subsystems
-when the modules are removed from the kernel.
+On Wed, Jun 12, 2019 at 10:41 PM Greg KH <gregkh@linuxfoundation.org> wrote:
+>
+> On Wed, Jun 12, 2019 at 01:29:27PM -0700, Todd Kjos wrote:
+> > There is a race between the binder driver cleaning
+> > up a completed transaction via binder_free_transaction()
+> > and a user calling binder_ioctl(BC_FREE_BUFFER) to
+> > release a buffer. It doesn't matter which is first but
+> > they need to be protected against running concurrently
+> > which can result in a UAF.
+> >
+> > Signed-off-by: Todd Kjos <tkjos@google.com>
+> > ---
+> >  drivers/android/binder.c | 16 ++++++++++++++--
+> >  1 file changed, 14 insertions(+), 2 deletions(-)
+>
+> Does this also need to go to the stable kernels?
 
-Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
----
- drivers/staging/most/net/net.c     | 1 +
- drivers/staging/most/video/video.c | 1 +
- 2 files changed, 2 insertions(+)
+This patch won't apply cleanly to stable kernels so I'll submit a new
+patch directly to stable@ (4.14, 4.19) once this one lands.
 
-diff --git a/drivers/staging/most/net/net.c b/drivers/staging/most/net/net.c
-index 3fc80ad..aababdf 100644
---- a/drivers/staging/most/net/net.c
-+++ b/drivers/staging/most/net/net.c
-@@ -524,6 +524,7 @@ static int __init most_net_init(void)
- 
- static void __exit most_net_exit(void)
- {
-+	most_deregister_configfs_subsys(&comp);
- 	most_deregister_component(&comp);
- }
- 
-diff --git a/drivers/staging/most/video/video.c b/drivers/staging/most/video/video.c
-index 72622eb..19ae7c4 100644
---- a/drivers/staging/most/video/video.c
-+++ b/drivers/staging/most/video/video.c
-@@ -576,6 +576,7 @@ static void __exit comp_exit(void)
- 	}
- 	spin_unlock_irq(&list_lock);
- 
-+	most_deregister_configfs_subsys(&comp);
- 	most_deregister_component(&comp);
- 	BUG_ON(!list_empty(&video_devices));
- }
--- 
-2.7.4
-
+>
+> thanks,
+>
+> greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
