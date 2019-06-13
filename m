@@ -1,93 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BBFEF4342B
-	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Jun 2019 10:37:29 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id DC09622730;
-	Thu, 13 Jun 2019 08:37:27 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Pik1CqqON3Mo; Thu, 13 Jun 2019 08:37:26 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 02ED12150B;
-	Thu, 13 Jun 2019 08:37:26 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 62E121BF575
- for <devel@linuxdriverproject.org>; Thu, 13 Jun 2019 08:37:23 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4CEFD43428
+	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Jun 2019 10:36:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5F92887746
- for <devel@linuxdriverproject.org>; Thu, 13 Jun 2019 08:37:23 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B58BE87727;
+	Thu, 13 Jun 2019 08:36:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id nSWR4pYQGUbc; Thu, 13 Jun 2019 08:36:46 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id E705B87778;
+	Thu, 13 Jun 2019 08:36:44 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A1AE61BF575
+ for <devel@linuxdriverproject.org>; Thu, 13 Jun 2019 08:36:43 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9E59085C62
+ for <devel@linuxdriverproject.org>; Thu, 13 Jun 2019 08:36:43 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xoaH4UCAym51 for <devel@linuxdriverproject.org>;
- Thu, 13 Jun 2019 08:37:22 +0000 (UTC)
+ with ESMTP id jcrrxfxRsFAy for <devel@linuxdriverproject.org>;
+ Thu, 13 Jun 2019 08:36:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B849D87727
- for <devel@driverdev.osuosl.org>; Thu, 13 Jun 2019 08:37:22 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5D8T3Vm088523;
- Thu, 13 Jun 2019 08:37:21 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2018-07-02;
- bh=SsKfgl3JCtDv7WQVnvC0skVa8xOWteLtRtR24BTMv0M=;
- b=FMsG3yUNf2CQ5yogWo8Zduj6JaD6r4fGuSM4ULB05UJDytRTQU2HzWGSzcHE1QBvSk8S
- UChEDwspJjkksY3kQhP5ns/lWkhFPX1QhSSl9WUFNGNgmMXcihqtNtH5zbg67oyXzDox
- G5FghIyIOikHrAiu4cLDdU8uZ/ZUx+bFC7Eh+g/jAeB1pPqa0PR+W/4NTSsMBWlvitky
- 0DlyP01xb6JE6jra2EBL+0l0E1Gbtj166JX4zJXkjB/jUAUKO2ItNrnC+vmkb2ckAmVs
- uIBB0HGMd6PlLS+2oThBmg+L6T99mDR9wc9eUBe/RLqezRNBYRGjKKnQpQ7J0GdK3zWw rw== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by userp2130.oracle.com with ESMTP id 2t04eu04wv-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 13 Jun 2019 08:37:21 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5D8ZLVv043594;
- Thu, 13 Jun 2019 08:35:21 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by userp3030.oracle.com with ESMTP id 2t024vd262-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 13 Jun 2019 08:35:21 +0000
-Received: from abhmp0014.oracle.com (abhmp0014.oracle.com [141.146.116.20])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x5D8ZFSY009178;
- Thu, 13 Jun 2019 08:35:15 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 13 Jun 2019 01:35:15 -0700
-Date: Thu, 13 Jun 2019 11:35:06 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Nishka Dasgupta <nishkadg.linux@gmail.com>
-Subject: Re: [PATCH 01/11] staging: rtl8723bs: core: Remove function
- eeprom_read_sz()
-Message-ID: <20190613083505.GA28859@kadam>
-References: <20190612180439.7101-1-nishkadg.linux@gmail.com>
- <20190613064513.GA28930@kadam>
- <82013631-fb3e-ca52-a07d-91f50beb4263@gmail.com>
+Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 5AE0485B4A
+ for <devel@driverdev.osuosl.org>; Thu, 13 Jun 2019 08:36:40 +0000 (UTC)
+Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 127CF796C4587A3FE713;
+ Thu, 13 Jun 2019 16:36:36 +0800 (CST)
+Received: from architecture4.huawei.com (10.140.130.215) by smtp.huawei.com
+ (10.3.19.210) with Microsoft SMTP Server (TLS) id 14.3.439.0; Thu, 13 Jun
+ 2019 16:36:25 +0800
+From: Gao Xiang <gaoxiang25@huawei.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Chao Yu
+ <yuchao0@huawei.com>, <devel@driverdev.osuosl.org>
+Subject: [PATCH v3 1/2] staging: erofs: add requirements field in superblock
+Date: Thu, 13 Jun 2019 16:35:41 +0800
+Message-ID: <20190613083541.67091-1-gaoxiang25@huawei.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190611024220.86121-1-gaoxiang25@huawei.com>
+References: <20190611024220.86121-1-gaoxiang25@huawei.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <82013631-fb3e-ca52-a07d-91f50beb4263@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9286
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1810050000 definitions=main-1906130068
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9286
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
- definitions=main-1906130068
+X-Originating-IP: [10.140.130.215]
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,39 +61,124 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org
+Cc: linux-erofs@lists.ozlabs.org, Chao Yu <chao@kernel.org>,
+ LKML <linux-kernel@vger.kernel.org>, stable@vger.kernel.org,
+ weidu.du@huawei.com, Fang Wei <fangwei1@huawei.com>,
+ Miao Xie <miaoxie@huawei.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Jun 13, 2019 at 01:53:20PM +0530, Nishka Dasgupta wrote:
-> On 13/06/19 12:15 PM, Dan Carpenter wrote:
-> > On Wed, Jun 12, 2019 at 11:34:29PM +0530, Nishka Dasgupta wrote:
-> > > Remove unused function eeprom_read_sz.
-> > > Issue found with Coccinelle.
-> > > 
-> > > Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
-> > 
-> > This is great but you need to remove the declaration from the .h file
-> > as well.  I noticed some of the other patches have this problem as well
-> > so please check them and resend the whole set.
-> 
-> I'm sorry, I couldn't find the declaration in any .h file for any of these
-> patches, even after fetch origin, rebase, and grep. Going to individual .h
-> files and searching for declarations does not seem to work either. Is there
-> any other way I can look for the declarations?
-> 
+There are some backward incompatible features pending
+for months, mainly due to on-disk format expensions.
 
-Oh...  Heh.  Sorry for the noise.  My bad.
+However, we should ensure that it cannot be mounted with
+old kernels. Otherwise, it will causes unexpected behaviors.
 
-I was looking at the wrong driver.  It's declared but not implemented in
-rtl8188eu in drivers/staging/rtl8188eu/include/rtw_eeprom.h.  We should
-delete those too, but it's unrelated to your patchset so don't worry
-about it.
+Fixes: ba2b77a82022 ("staging: erofs: add super block operations")
+Cc: <stable@vger.kernel.org> # 4.19+
+Reviewed-by: Chao Yu <yuchao0@huawei.com>
+Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
+---
+change log v3:
+ - record requirements in erofs_sb_info for runtime use as well;
 
-regards,
-dan carpenter
+change log v2:
+ - update printed message
+
+ drivers/staging/erofs/erofs_fs.h | 13 ++++++++++---
+ drivers/staging/erofs/internal.h |  2 ++
+ drivers/staging/erofs/super.c    | 19 +++++++++++++++++++
+ 3 files changed, 31 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/erofs/erofs_fs.h b/drivers/staging/erofs/erofs_fs.h
+index fa52898df006..8ddb2b3e7d39 100644
+--- a/drivers/staging/erofs/erofs_fs.h
++++ b/drivers/staging/erofs/erofs_fs.h
+@@ -17,10 +17,16 @@
+ #define EROFS_SUPER_MAGIC_V1    0xE0F5E1E2
+ #define EROFS_SUPER_OFFSET      1024
+ 
++/*
++ * Any bits that aren't in EROFS_ALL_REQUIREMENTS should be
++ * incompatible with this kernel version.
++ */
++#define EROFS_ALL_REQUIREMENTS  0
++
+ struct erofs_super_block {
+ /*  0 */__le32 magic;           /* in the little endian */
+ /*  4 */__le32 checksum;        /* crc32c(super_block) */
+-/*  8 */__le32 features;
++/*  8 */__le32 features;        /* (aka. feature_compat) */
+ /* 12 */__u8 blkszbits;         /* support block_size == PAGE_SIZE only */
+ /* 13 */__u8 reserved;
+ 
+@@ -34,9 +40,10 @@ struct erofs_super_block {
+ /* 44 */__le32 xattr_blkaddr;
+ /* 48 */__u8 uuid[16];          /* 128-bit uuid for volume */
+ /* 64 */__u8 volume_name[16];   /* volume name */
++/* 80 */__le32 requirements;    /* (aka. feature_incompat) */
+ 
+-/* 80 */__u8 reserved2[48];     /* 128 bytes */
+-} __packed;
++/* 84 */__u8 reserved2[44];
++} __packed;                     /* 128 bytes */
+ 
+ /*
+  * erofs inode data mapping:
+diff --git a/drivers/staging/erofs/internal.h b/drivers/staging/erofs/internal.h
+index 911333cdeef4..fc732c86ecd8 100644
+--- a/drivers/staging/erofs/internal.h
++++ b/drivers/staging/erofs/internal.h
+@@ -115,6 +115,8 @@ struct erofs_sb_info {
+ 
+ 	u8 uuid[16];                    /* 128-bit uuid for volume */
+ 	u8 volume_name[16];             /* volume name */
++	u32 requirements;
++
+ 	char *dev_name;
+ 
+ 	unsigned int mount_opt;
+diff --git a/drivers/staging/erofs/super.c b/drivers/staging/erofs/super.c
+index f580d4ef77a1..cadbcc11702a 100644
+--- a/drivers/staging/erofs/super.c
++++ b/drivers/staging/erofs/super.c
+@@ -71,6 +71,22 @@ static void free_inode(struct inode *inode)
+ 	kmem_cache_free(erofs_inode_cachep, vi);
+ }
+ 
++static bool check_layout_compatibility(struct super_block *sb,
++				       struct erofs_super_block *layout)
++{
++	const unsigned int requirements = le32_to_cpu(layout->requirements);
++
++	EROFS_SB(sb)->requirements = requirements;
++
++	/* check if current kernel meets all mandatory requirements */
++	if (requirements & (~EROFS_ALL_REQUIREMENTS)) {
++		errln("unidentified requirements %x, please upgrade kernel version",
++		      requirements & ~EROFS_ALL_REQUIREMENTS);
++		return false;
++	}
++	return true;
++}
++
+ static int superblock_read(struct super_block *sb)
+ {
+ 	struct erofs_sb_info *sbi;
+@@ -104,6 +120,9 @@ static int superblock_read(struct super_block *sb)
+ 		goto out;
+ 	}
+ 
++	if (!check_layout_compatibility(sb, layout))
++		goto out;
++
+ 	sbi->blocks = le32_to_cpu(layout->blocks);
+ 	sbi->meta_blkaddr = le32_to_cpu(layout->meta_blkaddr);
+ #ifdef CONFIG_EROFS_FS_XATTR
+-- 
+2.17.1
 
 _______________________________________________
 devel mailing list
