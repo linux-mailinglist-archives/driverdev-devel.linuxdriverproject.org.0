@@ -1,65 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A42C744EC6
-	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Jun 2019 23:56:11 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7E9FC451CF
+	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Jun 2019 04:12:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 092A586868;
-	Thu, 13 Jun 2019 21:56:10 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D964821FF6;
+	Fri, 14 Jun 2019 02:12:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8EtnGBegHvfq; Thu, 13 Jun 2019 21:56:09 +0000 (UTC)
+	with ESMTP id PgUv8GRdPkxu; Fri, 14 Jun 2019 02:12:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 79376860F4;
-	Thu, 13 Jun 2019 21:56:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1815322053;
+	Fri, 14 Jun 2019 02:12:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 751061BF844
- for <devel@linuxdriverproject.org>; Thu, 13 Jun 2019 21:56:06 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id EC3751BF2F3
+ for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 02:12:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 720CA86197
- for <devel@linuxdriverproject.org>; Thu, 13 Jun 2019 21:56:06 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E91E488035
+ for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 02:12:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XUCwQKn-RVCx for <devel@linuxdriverproject.org>;
- Thu, 13 Jun 2019 21:56:06 +0000 (UTC)
+ with ESMTP id R1OikxpKafST for <devel@linuxdriverproject.org>;
+ Fri, 14 Jun 2019 02:12:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f72.google.com (mail-io1-f72.google.com
- [209.85.166.72])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E3318860F4
- for <devel@driverdev.osuosl.org>; Thu, 13 Jun 2019 21:56:05 +0000 (UTC)
-Received: by mail-io1-f72.google.com with SMTP id f22so258443ioh.22
- for <devel@driverdev.osuosl.org>; Thu, 13 Jun 2019 14:56:05 -0700 (PDT)
+Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
+ [209.85.214.196])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id E68F987E62
+ for <devel@driverdev.osuosl.org>; Fri, 14 Jun 2019 02:12:14 +0000 (UTC)
+Received: by mail-pl1-f196.google.com with SMTP id e5so303198pls.13
+ for <devel@driverdev.osuosl.org>; Thu, 13 Jun 2019 19:12:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=OMzQEEA4rvMSLIpJ0N3saoDnOderGwUWT5O2u6Z2qjw=;
+ b=E9Gy+3OaAtXdKxNiYQXDziTgIZXrz1/89oNJI7MJurAT5P0IQD2WjPC1TRAJXtLBmS
+ GNNd7y/ZrxNymi6wHz6pwpceMDTMP+PeZZjjEwZ8Do50UsisncAXzcxTBdT5WecATjK/
+ ++rCOnbcPHDh3aLuQHw9kTtmYufBkZsa82yK+uFNs8YL1QzuoAlp9+M1yn2zJrkvDk/X
+ moWXey7aPjsHQoFpk2669IHGs0ayR/uuZSBGgbQuZnok7ofA3Yni2+u0Z2OHJnMy7fMV
+ cHlqB653URmccf/AqaoJKCyDzr6oMpkwGnzIJScA/kcytGhavPwhMAsOdh2kKipCEQsH
+ CBgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:date:message-id:subject:from:to;
- bh=ydFXxI0znwbofCXLJ9CCbdYtdW7CJQT/GmF/kJrlloQ=;
- b=CC/pSlyws6hKsoGPjiyd22igUjWiWv9/4zhPB6rpkMLPEDXAVz2FjExdBJNcVC3Ys6
- KE/v5MHH5h6tUVVcj4VLDy5aPlLKMA4J8AH/+AdyY8Gifrw2tGiCe24W6qRroz47j/ic
- Klq9qVEMu7DVmeojn+q+f/A3zQYGNO9e9QGFlB+MxdEccSzhrgzpsr358oL6C5kgi9+V
- 1J+LovzUwa9uo5LipT4F1iQ0efbYHiPDcDGZ3/myqWWV8ss6yvKEw4Y8tXGiQ1Zew311
- 4HLOl1oHANBOSQao+GGSJlQKk6vC2oVnkDX7C2/wro68Fd/L0Eca+EkmUHr3BnP8oNbj
- AUEA==
-X-Gm-Message-State: APjAAAXkih4Ybx+oNB3/zM7eUD2ocCWGgHEPBlezZNbeSlSKyB3kMPvU
- xhgwmTlxy96lCHvsa8AJ/liOODt0Qzzxfc9rRw8tk/3Dlrxt
-X-Google-Smtp-Source: APXvYqzmnd/bESLoN/unmpNR/LTqQ9cjpPKHPfcD/kaNr1DUjqrCy4dA4fIZMBPCQo7Tm4BkaQSiXpFejZNzmJO24gBZ/Z0eORkN
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=OMzQEEA4rvMSLIpJ0N3saoDnOderGwUWT5O2u6Z2qjw=;
+ b=kKhjBk8cuAUAF5BILohu7h122kAGGMwv1Ijfx/s+qucXLJUVysp3R7+018dFkWDSyr
+ EZxDtn8BOj3u2c37lPNjotenwF8ObUpdeSYSdAV14N29f9n2c8HBK0kjlEdkXmvhQw8k
+ aY2Kq7c7uJgE/1Ij9iGeSP6fdfxxX8Y5WYf0jCymjGhF6decUSeUBilSrLnY1SYduxub
+ w5VSz0rPqNB5stRr5JeQQfZQ4XXuEgNwDi/ZU//WmlMRNe9uz2yilIB7KsAXNpz3qkXc
+ IVx+S8QasrOGj+LfX+aeXMrEibpzkxr1WXXP2DIK+csXx0Q5c6YqOxQlR3GC4kRfH1sj
+ 5HJg==
+X-Gm-Message-State: APjAAAWw0gV+X74e+QeWTv8AUKtpeC7n5ULc18zrZGThA2eL7OqAGMz5
+ zJtPJfG0RBE3WFv/t35podE=
+X-Google-Smtp-Source: APXvYqzEf8RT0RLuiqNiUXEFuiQjEaPGgCVkcyq++ePD1O8c9xA29xwm/wHBCiKXNOYcWfE3+eqsAw==
+X-Received: by 2002:a17:902:f087:: with SMTP id
+ go7mr64693138plb.330.1560478334249; 
+ Thu, 13 Jun 2019 19:12:14 -0700 (PDT)
+Received: from t-1000 (c-98-210-58-162.hsd1.ca.comcast.net. [98.210.58.162])
+ by smtp.gmail.com with ESMTPSA id w4sm924914pfw.97.2019.06.13.19.12.12
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 13 Jun 2019 19:12:13 -0700 (PDT)
+Date: Thu, 13 Jun 2019 19:12:10 -0700
+From: Shobhit Kukreti <shobhitkukreti@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Bastien Nocera <hadess@hadess.net>, Hans de Goede <hdegoede@redhat.com>,
+ Larry Finger <Larry.Finger@lwfinger.net>,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] staging: rtl8723bs: Resolve checkpatch error "that open
+ brace { should be on the previous line" in the rtl8723bs driver
+Message-ID: <20190614021206.GA895@t-1000>
 MIME-Version: 1.0
-X-Received: by 2002:a6b:2cc7:: with SMTP id s190mr54766893ios.29.1560462965302; 
- Thu, 13 Jun 2019 14:56:05 -0700 (PDT)
-Date: Thu, 13 Jun 2019 14:56:05 -0700
-X-Google-Appengine-App-Id: s~syzkaller
-X-Google-Appengine-App-Id-Alias: syzkaller
-Message-ID: <000000000000bb6d57058b3b98eb@google.com>
-Subject: memory leak in binder_transaction
-From: syzbot <syzbot+182ce46596c3f2e1eb24@syzkaller.appspotmail.com>
-To: arve@android.com, christian@brauner.io, devel@driverdev.osuosl.org, 
- gregkh@linuxfoundation.org, joel@joelfernandes.org, 
- linux-kernel@vger.kernel.org, maco@android.com, 
- syzkaller-bugs@googlegroups.com, tkjos@android.com
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,74 +88,427 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: shobhitkukreti@gmail.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"; DelSp="yes"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,
+Cleaned up the code from the following files to get rid of
+check patch error "that open brace { should be on the previous line"
 
-syzbot found the following crash on:
+drivers/staging/rtl8723bs/os_dep/mlme_linux.c
+drivers/staging/rtl8723bs/os_dep/recv_linux.c
+drivers/staging/rtl8723bs/os_dep/rtw_proc.c
+drivers/staging/rtl8723bs/os_dep/sdio_intf.c
+drivers/staging/rtl8723bs/os_dep/sdio_ops_linux.c
 
-HEAD commit:    d1fdb6d8 Linux 5.2-rc4
-git tree:       upstream
-console output: https://syzkaller.appspot.com/x/log.txt?x=15e5ce1ea00000
-kernel config:  https://syzkaller.appspot.com/x/.config?x=cb38d33cd06d8d48
-dashboard link: https://syzkaller.appspot.com/bug?extid=182ce46596c3f2e1eb24
-compiler:       gcc (GCC) 9.0.0 20181231 (experimental)
-syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=1181703ea00000
-C reproducer:   https://syzkaller.appspot.com/x/repro.c?x=14e14392a00000
-
-IMPORTANT: if you fix the bug, please add the following tag to the commit:
-Reported-by: syzbot+182ce46596c3f2e1eb24@syzkaller.appspotmail.com
-
--executor774" scontext=unconfined_u:system_r:insmod_t:s0-s0:c0.c1023  
-tcontext=unconfined_u:system_r:insmod_t:s0-s0:c0.c1023 tclass=binder  
-permissive=1
-BUG: memory leak
-unreferenced object 0xffff888123934800 (size 32):
-   comm "syz-executor774", pid 7083, jiffies 4294941834 (age 7.970s)
-   hex dump (first 32 bytes):
-     00 48 93 23 81 88 ff ff 00 48 93 23 81 88 ff ff  .H.#.....H.#....
-     02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
-   backtrace:
-     [<0000000038ba7202>] kmemleak_alloc_recursive  
-include/linux/kmemleak.h:43 [inline]
-     [<0000000038ba7202>] slab_post_alloc_hook mm/slab.h:439 [inline]
-     [<0000000038ba7202>] slab_alloc mm/slab.c:3326 [inline]
-     [<0000000038ba7202>] kmem_cache_alloc_trace+0x13d/0x280 mm/slab.c:3553
-     [<0000000004e63839>] kmalloc include/linux/slab.h:547 [inline]
-     [<0000000004e63839>] kzalloc include/linux/slab.h:742 [inline]
-     [<0000000004e63839>] binder_transaction+0x28b/0x2eb0  
-drivers/android/binder.c:3072
-     [<0000000050997ec4>] binder_thread_write+0x357/0x1430  
-drivers/android/binder.c:3794
-     [<00000000ab2de227>] binder_ioctl_write_read  
-drivers/android/binder.c:4827 [inline]
-     [<00000000ab2de227>] binder_ioctl+0x8bc/0xbb4  
-drivers/android/binder.c:5004
-     [<000000002eec2b63>] vfs_ioctl fs/ioctl.c:46 [inline]
-     [<000000002eec2b63>] file_ioctl fs/ioctl.c:509 [inline]
-     [<000000002eec2b63>] do_vfs_ioctl+0x62a/0x810 fs/ioctl.c:696
-     [<0000000048cfc9e6>] ksys_ioctl+0x86/0xb0 fs/ioctl.c:713
-     [<0000000030bf392d>] __do_sys_ioctl fs/ioctl.c:720 [inline]
-     [<0000000030bf392d>] __se_sys_ioctl fs/ioctl.c:718 [inline]
-     [<0000000030bf392d>] __x64_sys_ioctl+0x1e/0x30 fs/ioctl.c:718
-     [<000000007dec438c>] do_syscall_64+0x76/0x1a0  
-arch/x86/entry/common.c:301
-     [<00000000ae043c96>] entry_SYSCALL_64_after_hwframe+0x44/0xa9
-
-
-
+Signed-off-by: Shobhit Kukreti <shobhitkukreti@gmail.com>
 ---
-This bug is generated by a bot. It may contain errors.
-See https://goo.gl/tpsmEJ for more information about syzbot.
-syzbot engineers can be reached at syzkaller@googlegroups.com.
+ drivers/staging/rtl8723bs/os_dep/mlme_linux.c     | 14 ++---
+ drivers/staging/rtl8723bs/os_dep/recv_linux.c     | 76 ++++++++---------------
+ drivers/staging/rtl8723bs/os_dep/rtw_proc.c       |  6 +-
+ drivers/staging/rtl8723bs/os_dep/sdio_intf.c      | 15 ++---
+ drivers/staging/rtl8723bs/os_dep/sdio_ops_linux.c | 24 +++----
+ 5 files changed, 47 insertions(+), 88 deletions(-)
 
-syzbot will keep track of this bug report. See:
-https://goo.gl/tpsmEJ#status for how to communicate with syzbot.
-syzbot can test patches for this bug, for details see:
-https://goo.gl/tpsmEJ#testing-patches
+diff --git a/drivers/staging/rtl8723bs/os_dep/mlme_linux.c b/drivers/staging/rtl8723bs/os_dep/mlme_linux.c
+index aa2499f..6799ed4 100644
+--- a/drivers/staging/rtl8723bs/os_dep/mlme_linux.c
++++ b/drivers/staging/rtl8723bs/os_dep/mlme_linux.c
+@@ -46,8 +46,7 @@ void rtw_os_indicate_connect(struct adapter *adapter)
+ 	struct mlme_priv *pmlmepriv = &(adapter->mlmepriv);
+ 
+ 	if ((check_fwstate(pmlmepriv, WIFI_ADHOC_MASTER_STATE) == true) ||
+-		(check_fwstate(pmlmepriv, WIFI_ADHOC_STATE) == true))
+-	{
++		(check_fwstate(pmlmepriv, WIFI_ADHOC_STATE) == true)) {
+ 		rtw_cfg80211_ibss_indicate_connect(adapter);
+ 	}
+ 	else
+@@ -77,8 +76,8 @@ void rtw_reset_securitypriv(struct adapter *adapter)
+ 
+ 	spin_lock_bh(&adapter->security_key_mutex);
+ 
+-	if (adapter->securitypriv.dot11AuthAlgrthm == dot11AuthAlgrthm_8021X)/* 802.1x */
+-	{
++	if (adapter->securitypriv.dot11AuthAlgrthm == dot11AuthAlgrthm_8021X) { /* 802.1x */
++
+ 		/*  Added by Albert 2009/02/18 */
+ 		/*  We have to backup the PMK information for WiFi PMK Caching test item. */
+ 		/*  */
+@@ -106,8 +105,8 @@ void rtw_reset_securitypriv(struct adapter *adapter)
+ 		adapter->securitypriv.ndisencryptstatus = Ndis802_11WEPDisabled;
+ 
+ 	}
+-	else /* reset values in securitypriv */
+-	{
++	else { /* reset values in securitypriv */
++	
+ 		/* if (adapter->mlmepriv.fw_state & WIFI_STATION_STATE) */
+ 		/*  */
+ 		struct security_priv *psec_priv = &adapter->securitypriv;
+@@ -150,8 +149,7 @@ void rtw_report_sec_ie(struct adapter *adapter, u8 authmode, u8 *sec_ie)
+ 	RT_TRACE(_module_mlme_osdep_c_, _drv_info_, ("+rtw_report_sec_ie, authmode =%d\n", authmode));
+ 
+ 	buff = NULL;
+-	if (authmode == _WPA_IE_ID_)
+-	{
++	if (authmode == _WPA_IE_ID_) {
+ 		RT_TRACE(_module_mlme_osdep_c_, _drv_info_, ("rtw_report_sec_ie, authmode =%d\n", authmode));
+ 
+ 		buff = rtw_zmalloc(IW_CUSTOM_MAX);
+diff --git a/drivers/staging/rtl8723bs/os_dep/recv_linux.c b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
+index 3fe9c22..44a8920 100644
+--- a/drivers/staging/rtl8723bs/os_dep/recv_linux.c
++++ b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
+@@ -12,8 +12,7 @@
+ 
+ void rtw_os_free_recvframe(union recv_frame *precvframe)
+ {
+-	if (precvframe->u.hdr.pkt)
+-	{
++	if (precvframe->u.hdr.pkt) {
+ 		dev_kfree_skb_any(precvframe->u.hdr.pkt);/* free skb by driver */
+ 
+ 		precvframe->u.hdr.pkt = NULL;
+@@ -34,10 +33,8 @@ void rtw_os_recv_resource_free(struct recv_priv *precvpriv)
+ 
+ 	precvframe = (union recv_frame*) precvpriv->precv_frame_buf;
+ 
+-	for (i = 0; i < NR_RECVFRAME; i++)
+-	{
+-		if (precvframe->u.hdr.pkt)
+-		{
++	for (i = 0; i < NR_RECVFRAME; i++) {
++		if (precvframe->u.hdr.pkt) {
+ 			dev_kfree_skb_any(precvframe->u.hdr.pkt);/* free skb by driver */
+ 			precvframe->u.hdr.pkt = NULL;
+ 		}
+@@ -48,8 +45,7 @@ void rtw_os_recv_resource_free(struct recv_priv *precvpriv)
+ /* free os related resource in struct recv_buf */
+ void rtw_os_recvbuf_resource_free(struct adapter *padapter, struct recv_buf *precvbuf)
+ {
+-	if (precvbuf->pskb)
+-	{
++	if (precvbuf->pskb) {
+ 		dev_kfree_skb_any(precvbuf->pskb);
+ 	}
+ }
+@@ -63,22 +59,18 @@ _pkt *rtw_os_alloc_msdu_pkt(union recv_frame *prframe, u16 nSubframe_Length, u8
+ 	pattrib = &prframe->u.hdr.attrib;
+ 
+ 	sub_skb = rtw_skb_alloc(nSubframe_Length + 12);
+-	if (sub_skb)
+-	{
++	if (sub_skb) {
+ 		skb_reserve(sub_skb, 12);
+ 		skb_put_data(sub_skb, (pdata + ETH_HLEN), nSubframe_Length);
+ 	}
+-	else
+-	{
++	else {
+ 		sub_skb = rtw_skb_clone(prframe->u.hdr.pkt);
+-		if (sub_skb)
+-		{
++		if (sub_skb) {
+ 			sub_skb->data = pdata + ETH_HLEN;
+ 			sub_skb->len = nSubframe_Length;
+ 			skb_set_tail_pointer(sub_skb, nSubframe_Length);
+ 		}
+-		else
+-		{
++		else {
+ 			DBG_871X("%s(): rtw_skb_clone() Fail!!!\n", __func__);
+ 			return NULL;
+ 		}
+@@ -113,8 +105,7 @@ void rtw_os_recv_indicate_pkt(struct adapter *padapter, _pkt *pkt, struct rx_pkt
+ 
+ 	/* Indicat the packets to upper layer */
+ 	if (pkt) {
+-		if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == true)
+-		{
++		if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == true) {
+ 			_pkt *pskb2 = NULL;
+ 			struct sta_info *psta = NULL;
+ 			struct sta_priv *pstapriv = &padapter->stapriv;
+@@ -122,20 +113,17 @@ void rtw_os_recv_indicate_pkt(struct adapter *padapter, _pkt *pkt, struct rx_pkt
+ 
+ 			/* DBG_871X("bmcast =%d\n", bmcast); */
+ 
+-			if (memcmp(pattrib->dst, myid(&padapter->eeprompriv), ETH_ALEN))
+-			{
++			if (memcmp(pattrib->dst, myid(&padapter->eeprompriv), ETH_ALEN)) {
+ 				/* DBG_871X("not ap psta =%p, addr =%pM\n", psta, pattrib->dst); */
+ 
+-				if (bmcast)
+-				{
++				if (bmcast) {
+ 					psta = rtw_get_bcmc_stainfo(padapter);
+ 					pskb2 = rtw_skb_clone(pkt);
+ 				} else {
+ 					psta = rtw_get_stainfo(pstapriv, pattrib->dst);
+ 				}
+ 
+-				if (psta)
+-				{
++				if (psta) {
+ 					struct net_device *pnetdev = (struct net_device*)padapter->pnetdev;
+ 
+ 					/* DBG_871X("directly forwarding to the rtw_xmit_entry\n"); */
+@@ -155,8 +143,8 @@ void rtw_os_recv_indicate_pkt(struct adapter *padapter, _pkt *pkt, struct rx_pkt
+ 					}
+ 				}
+ 			}
+-			else/*  to APself */
+-			{
++			else { /*  to APself */
++			
+ 				/* DBG_871X("to APSelf\n"); */
+ 				DBG_COUNTER(padapter->rx_logs.os_indicate_ap_self);
+ 			}
+@@ -192,32 +180,26 @@ void rtw_handle_tkip_mic_err(struct adapter *padapter, u8 bgroup)
+ 	struct security_priv *psecuritypriv = &padapter->securitypriv;
+ 	unsigned long cur_time = 0;
+ 
+-	if (psecuritypriv->last_mic_err_time == 0)
+-	{
++	if (psecuritypriv->last_mic_err_time == 0) {
+ 		psecuritypriv->last_mic_err_time = jiffies;
+ 	}
+-	else
+-	{
++	else {
+ 		cur_time = jiffies;
+ 
+-		if (cur_time - psecuritypriv->last_mic_err_time < 60*HZ)
+-		{
++		if (cur_time - psecuritypriv->last_mic_err_time < 60*HZ) {
+ 			psecuritypriv->btkip_countermeasure = true;
+ 			psecuritypriv->last_mic_err_time = 0;
+ 			psecuritypriv->btkip_countermeasure_time = cur_time;
+ 		}
+-		else
+-		{
++		else {
+ 			psecuritypriv->last_mic_err_time = jiffies;
+ 		}
+ 	}
+ 
+-	if (bgroup)
+-	{
++	if (bgroup) {
+ 		key_type |= NL80211_KEYTYPE_GROUP;
+ 	}
+-	else
+-	{
++	else {
+ 		key_type |= NL80211_KEYTYPE_PAIRWISE;
+ 	}
+ 
+@@ -225,12 +207,10 @@ void rtw_handle_tkip_mic_err(struct adapter *padapter, u8 bgroup)
+ 		NULL, GFP_ATOMIC);
+ 
+ 	memset(&ev, 0x00, sizeof(ev));
+-	if (bgroup)
+-	{
++	if (bgroup) {
+ 	    ev.flags |= IW_MICFAILURE_GROUP;
+ 	}
+-	else
+-	{
++	else {
+ 	    ev.flags |= IW_MICFAILURE_PAIRWISE;
+ 	}
+ 
+@@ -250,8 +230,7 @@ static void rtw_os_ksocket_send(struct adapter *padapter, union recv_frame *prec
+ 
+ 	DBG_871X("eth rx: got eth_type = 0x%x\n", pattrib->eth_type);
+ 
+-	if (psta && psta->isrc && psta->pid>0)
+-	{
++	if (psta && psta->isrc && psta->pid>0) {
+ 		u16 rx_pid;
+ 
+ 		rx_pid = *(u16*)(skb->data+ETH_HLEN);
+@@ -259,8 +238,7 @@ static void rtw_os_ksocket_send(struct adapter *padapter, union recv_frame *prec
+ 		DBG_871X("eth rx(pid = 0x%x): sta("MAC_FMT") pid = 0x%x\n",
+ 			rx_pid, MAC_ARG(psta->hwaddr), psta->pid);
+ 
+-		if (rx_pid == psta->pid)
+-		{
++		if (rx_pid == psta->pid) {
+ 			int i;
+ 			u16 len = *(u16*)(skb->data+ETH_HLEN+2);
+ 			/* u16 ctrl_type = *(u16*)(skb->data+ETH_HLEN+4); */
+@@ -293,8 +271,7 @@ int rtw_recv_indicatepkt(struct adapter *padapter, union recv_frame *precv_frame
+ 	pfree_recv_queue = &(precvpriv->free_recv_queue);
+ 
+ 	skb = precv_frame->u.hdr.pkt;
+-	if (skb == NULL)
+-	{
++	if (skb == NULL) {
+ 		RT_TRACE(_module_recv_osdep_c_, _drv_err_, ("rtw_recv_indicatepkt():skb == NULL something wrong!!!!\n"));
+ 		goto _recv_indicatepkt_drop;
+ 	}
+@@ -312,8 +289,7 @@ int rtw_recv_indicatepkt(struct adapter *padapter, union recv_frame *precv_frame
+ 	RT_TRACE(_module_recv_osdep_c_, _drv_info_, ("\n skb->head =%p skb->data =%p skb->tail =%p skb->end =%p skb->len =%d\n", skb->head, skb->data, skb_tail_pointer(skb), skb_end_pointer(skb), skb->len));
+ 
+ #ifdef CONFIG_AUTO_AP_MODE
+-	if (0x8899 == pattrib->eth_type)
+-	{
++	if (0x8899 == pattrib->eth_type) {
+ 		rtw_os_ksocket_send(padapter, precv_frame);
+ 
+ 		/* goto _recv_indicatepkt_drop; */
+diff --git a/drivers/staging/rtl8723bs/os_dep/rtw_proc.c b/drivers/staging/rtl8723bs/os_dep/rtw_proc.c
+index d6862e8..5f950fd 100644
+--- a/drivers/staging/rtl8723bs/os_dep/rtw_proc.c
++++ b/drivers/staging/rtl8723bs/os_dep/rtw_proc.c
+@@ -63,8 +63,7 @@ static ssize_t proc_set_log_level(struct file *file, const char __user *buffer,
+ 
+ 	if (buffer && !copy_from_user(tmp, buffer, sizeof(tmp))) {
+ 		sscanf(tmp, "%d ", &log_level);
+-		if (log_level >= _drv_always_ && log_level <= _drv_debug_)
+-		{
++		if (log_level >= _drv_always_ && log_level <= _drv_debug_) {
+ 			GlobalDebugLevel = log_level;
+ 			printk("%d\n", GlobalDebugLevel);
+ 		}
+@@ -224,8 +223,7 @@ static ssize_t proc_set_linked_info_dump(struct file *file, const char __user *b
+ 		return -EFAULT;
+ 
+ 	if (buffer && !copy_from_user(tmp, buffer, sizeof(tmp))) {
+-		if (padapter)
+-		{
++		if (padapter) {
+ 			/* padapter->bLinkInfoDump = mode; */
+ 			/* DBG_871X("linked_info_dump =%s\n", (padapter->bLinkInfoDump)?"enable":"disable"); */
+ 			 linked_info_dump(padapter, mode);
+diff --git a/drivers/staging/rtl8723bs/os_dep/sdio_intf.c b/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
+index 101a22f..c60f13c 100644
+--- a/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
++++ b/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
+@@ -85,13 +85,11 @@ static int sdio_alloc_irq(struct dvobj_priv *dvobj)
+ 	sdio_claim_host(func);
+ 
+ 	err = sdio_claim_irq(func, &sd_sync_int_hdl);
+-	if (err)
+-	{
++	if (err) {
+ 		dvobj->drv_dbg.dbg_sdio_alloc_irq_error_cnt++;
+ 		printk(KERN_CRIT "%s: sdio_claim_irq FAIL(%d)!\n", __func__, err);
+ 	}
+-	else
+-	{
++	else {
+ 		dvobj->drv_dbg.dbg_sdio_alloc_irq_cnt++;
+ 		dvobj->irq_alloc = 1;
+ 	}
+@@ -114,8 +112,7 @@ static void sdio_free_irq(struct dvobj_priv *dvobj)
+         if (func) {
+             sdio_claim_host(func);
+             err = sdio_release_irq(func);
+-            if (err)
+-            {
++            if (err) {
+ 				dvobj->drv_dbg.dbg_sdio_free_irq_error_cnt++;
+ 				DBG_871X_LEVEL(_drv_err_,"%s: sdio_release_irq FAIL(%d)!\n", __func__, err);
+             }
+@@ -225,16 +222,14 @@ static void sdio_deinit(struct dvobj_priv *dvobj)
+ 	if (func) {
+ 		sdio_claim_host(func);
+ 		err = sdio_disable_func(func);
+-		if (err)
+-		{
++		if (err) {
+ 			dvobj->drv_dbg.dbg_sdio_deinit_error_cnt++;
+ 			DBG_8192C(KERN_ERR "%s: sdio_disable_func(%d)\n", __func__, err);
+ 		}
+ 
+ 		if (dvobj->irq_alloc) {
+ 			err = sdio_release_irq(func);
+-			if (err)
+-			{
++			if (err) {
+ 				dvobj->drv_dbg.dbg_sdio_free_irq_error_cnt++;
+ 				DBG_8192C(KERN_ERR "%s: sdio_release_irq(%d)\n", __func__, err);
+ 			}
+diff --git a/drivers/staging/rtl8723bs/os_dep/sdio_ops_linux.c b/drivers/staging/rtl8723bs/os_dep/sdio_ops_linux.c
+index 1787534..50b8934 100644
+--- a/drivers/staging/rtl8723bs/os_dep/sdio_ops_linux.c
++++ b/drivers/staging/rtl8723bs/os_dep/sdio_ops_linux.c
+@@ -257,15 +257,13 @@ u32 sd_read32(struct intf_hdl *pintfhdl, u32 addr, s32 *err)
+ 	if (claim_needed)
+ 		sdio_release_host(func);
+ 
+-	if (err && *err)
+-	{
++	if (err && *err) {
+ 		int i;
+ 
+ 		DBG_871X(KERN_ERR "%s: (%d) addr = 0x%05x, val = 0x%x\n", __func__, *err, addr, v);
+ 
+ 		*err = 0;
+-		for (i = 0; i < SD_IO_TRY_CNT; i++)
+-		{
++		for (i = 0; i < SD_IO_TRY_CNT; i++) {
+ 			if (claim_needed) sdio_claim_host(func);
+ 			v = sdio_readl(func, addr, err);
+ 			if (claim_needed) sdio_release_host(func);
+@@ -350,15 +348,13 @@ void sd_write32(struct intf_hdl *pintfhdl, u32 addr, u32 v, s32 *err)
+ 	if (claim_needed)
+ 		sdio_release_host(func);
+ 
+-	if (err && *err)
+-	{
++	if (err && *err) {
+ 		int i;
+ 
+ 		DBG_871X(KERN_ERR "%s: (%d) addr = 0x%05x val = 0x%08x\n", __func__, *err, addr, v);
+ 
+ 		*err = 0;
+-		for (i = 0; i < SD_IO_TRY_CNT; i++)
+-		{
++		for (i = 0; i < SD_IO_TRY_CNT; i++) {
+ 			if (claim_needed) sdio_claim_host(func);
+ 			sdio_writel(func, v, addr, err);
+ 			if (claim_needed) sdio_release_host(func);
+@@ -420,13 +416,11 @@ s32 _sd_read(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, void *pdata)
+ 
+ 	func = psdio->func;
+ 
+-	if (unlikely((cnt == 1) || (cnt == 2)))
+-	{
++	if (unlikely((cnt == 1) || (cnt == 2))) {
+ 		int i;
+ 		u8 *pbuf = pdata;
+ 
+-		for (i = 0; i < cnt; i++)
+-		{
++		for (i = 0; i < cnt; i++) {
+ 			*(pbuf+i) = sdio_readb(func, addr+i, &err);
+ 
+ 			if (err) {
+@@ -523,13 +517,11 @@ s32 _sd_write(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, void *pdata)
+ 	func = psdio->func;
+ /*	size = sdio_align_size(func, cnt); */
+ 
+-	if (unlikely((cnt == 1) || (cnt == 2)))
+-	{
++	if (unlikely((cnt == 1) || (cnt == 2))) {
+ 		int i;
+ 		u8 *pbuf = pdata;
+ 
+-		for (i = 0; i < cnt; i++)
+-		{
++		for (i = 0; i < cnt; i++) {
+ 			sdio_writeb(func, *(pbuf+i), addr+i, &err);
+ 			if (err) {
+ 				DBG_871X(KERN_ERR "%s: FAIL!(%d) addr = 0x%05x val = 0x%02x\n", __func__, err, addr, *(pbuf+i));
+-- 
+2.7.4
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
