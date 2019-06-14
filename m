@@ -1,54 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 094B746755
-	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Jun 2019 20:17:41 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B412E4683B
+	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Jun 2019 21:43:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 594832313B;
-	Fri, 14 Jun 2019 18:17:39 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6067386A84;
+	Fri, 14 Jun 2019 19:43:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id L1XFdCz4U2Zr; Fri, 14 Jun 2019 18:17:35 +0000 (UTC)
+	with ESMTP id BxXmmwnubnrM; Fri, 14 Jun 2019 19:43:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 1377423109;
-	Fri, 14 Jun 2019 18:17:30 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2AF29869DE;
+	Fri, 14 Jun 2019 19:43:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id F2B461BF83A
- for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 18:17:28 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8F3551BF33C
+ for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 19:43:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E1BF686A2F
- for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 18:17:28 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 884BC869F7
+ for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 19:43:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id unfxGAxhtWhv for <devel@linuxdriverproject.org>;
- Fri, 14 Jun 2019 18:17:27 +0000 (UTC)
+ with ESMTP id cYubPfQv0IEn for <devel@linuxdriverproject.org>;
+ Fri, 14 Jun 2019 19:43:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga05-in.huawei.com [45.249.212.191])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 05EDF86A33
- for <devel@driverdev.osuosl.org>; Fri, 14 Jun 2019 18:17:27 +0000 (UTC)
-Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 6C7A9E99CC26E4179A95;
- Sat, 15 Jun 2019 02:17:23 +0800 (CST)
-Received: from architecture4.huawei.com (10.140.130.215) by smtp.huawei.com
- (10.3.19.208) with Microsoft SMTP Server (TLS) id 14.3.439.0; Sat, 15 Jun
- 2019 02:17:14 +0800
-From: Gao Xiang <gaoxiang25@huawei.com>
-To: <chao@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- <devel@driverdev.osuosl.org>
-Subject: [RFC PATCH 8/8] staging: erofs: integrate decompression inplace
-Date: Sat, 15 Jun 2019 02:16:19 +0800
-Message-ID: <20190614181619.64905-9-gaoxiang25@huawei.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190614181619.64905-1-gaoxiang25@huawei.com>
-References: <20190614181619.64905-1-gaoxiang25@huawei.com>
+Received: from mail-qk1-f195.google.com (mail-qk1-f195.google.com
+ [209.85.222.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 014CA869DE
+ for <devel@driverdev.osuosl.org>; Fri, 14 Jun 2019 19:43:04 +0000 (UTC)
+Received: by mail-qk1-f195.google.com with SMTP id p144so2419930qke.11
+ for <devel@driverdev.osuosl.org>; Fri, 14 Jun 2019 12:43:04 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=Mp8xTO5oNN7LboeBKHyfl41RYppmWJR4foCIg2c5W1s=;
+ b=Qt3CZ3oaJTh9aXlnCQxH1bT4jCkc0jySYlk6Y1hfizCyl/rONfs3h/PDQiRuGSyVhm
+ flI0YoonOM1TXJUi7Ob+EGhLJBX/QcZ5spRyZ8bfcoRTuQu2eXoqBr6X1VMiUufdpf0U
+ 34blT4dUzj/ap/osw1LCUxDpvdTttn39p37z+V5+hw0GUG/FNlGkU0dx/ou9rIJarTHH
+ go1ViNBKtf5qCH2ob1oSWn2B/ttL0mVU568Zhpz26B+eAGiczxidYTnZSHYZ1cVHnzFr
+ rJbRnMtjsUlCMblZVwOQkIb5j1ESAqiKt6qP7JAX1VpQrceQVpmJbjisWgfr2iQ1kQj6
+ 0IXA==
+X-Gm-Message-State: APjAAAVlgRy99wNTbkDWtfa0oXvUW0dUT8ZGLXLAd7IErtMRUQ5uqANC
+ AiI4lBWBxMm6cS7GW9JQtw==
+X-Google-Smtp-Source: APXvYqz0aEx4FDJ3gg/LvUzydLqr7NaukJPecyN5OsnEwsUCU0LY+1pAYvSd5Ebr1tqcYxuiJF4DxA==
+X-Received: by 2002:ae9:c106:: with SMTP id z6mr57253623qki.285.1560541383979; 
+ Fri, 14 Jun 2019 12:43:03 -0700 (PDT)
+Received: from localhost ([64.188.179.243])
+ by smtp.gmail.com with ESMTPSA id j141sm2430766qke.28.2019.06.14.12.43.03
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Fri, 14 Jun 2019 12:43:03 -0700 (PDT)
+Date: Fri, 14 Jun 2019 13:43:02 -0600
+From: Rob Herring <robh@kernel.org>
+To: Renato Lui Geh <renatogeh@gmail.com>
+Subject: Re: [PATCH v2 1/2] dt-bindings: iio: adc: add adi, ad7780.yaml binding
+Message-ID: <20190614194302.GA18613@bogus>
+References: <cover.1558746978.git.renatogeh@gmail.com>
+ <2426649b2d8224ae72e7706bcb8c4f2c44c581d2.1558746978.git.renatogeh@gmail.com>
 MIME-Version: 1.0
-X-Originating-IP: [10.140.130.215]
-X-CFilter-Loop: Reflected
+Content-Disposition: inline
+In-Reply-To: <2426649b2d8224ae72e7706bcb8c4f2c44c581d2.1558746978.git.renatogeh@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,127 +77,36 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-erofs@lists.ozlabs.org, LKML <linux-kernel@vger.kernel.org>,
- weidu.du@huawei.com, Fang Wei <fangwei1@huawei.com>,
- linux-fsdevel@vger.kernel.org, Miao Xie <miaoxie@huawei.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: mark.rutland@arm.com, devel@driverdev.osuosl.org, lars@metafoo.de,
+ stefan.popa@analog.com, Michael.Hennerich@analog.com,
+ devicetree@vger.kernel.org, linux-iio@vger.kernel.org,
+ gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+ kernel-usp@googlegroups.com, robh+dt@kernel.org, pmeerw@pmeerw.net,
+ knaack.h@gmx.de, alexandru.Ardelean@analog.com, jic23@kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Decompressor needs to know whether it's a partial
-or full decompression since only full decompression
-can be decompressed in-place.
+On Fri, 24 May 2019 22:26:30 -0300, Renato Lui Geh wrote:
+> This patch adds a YAML binding for the Analog Devices AD7780/1 and
+> AD7170/1 analog-to-digital converters.
+> 
+> Signed-off-by: Renato Lui Geh <renatogeh@gmail.com>
+> ---
+> Changes in v2:
+>  - vref-supply to avdd-supply
+>  - remove avdd-supply from required list
+>  - include adc block in an spi block
+> 
+>  .../bindings/iio/adc/adi,ad7780.txt           | 48 ----------
+>  .../bindings/iio/adc/adi,ad7780.yaml          | 87 +++++++++++++++++++
+>  2 files changed, 87 insertions(+), 48 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/iio/adc/adi,ad7780.txt
+>  create mode 100644 Documentation/devicetree/bindings/iio/adc/adi,ad7780.yaml
+> 
 
-On kirin980 platform, sequential read is finally
-increased to 812MiB/s after decompression inplace
-is enabled.
-
-Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
----
- drivers/staging/erofs/internal.h  |  3 +++
- drivers/staging/erofs/unzip_vle.c | 15 +++++++++++----
- drivers/staging/erofs/unzip_vle.h |  1 +
- drivers/staging/erofs/zmap.c      |  1 +
- 4 files changed, 16 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/staging/erofs/internal.h b/drivers/staging/erofs/internal.h
-index dcbe6f7f5dae..190cd3879d7f 100644
---- a/drivers/staging/erofs/internal.h
-+++ b/drivers/staging/erofs/internal.h
-@@ -447,6 +447,7 @@ extern const struct address_space_operations z_erofs_vle_normalaccess_aops;
-  */
- enum {
- 	BH_Zipped = BH_PrivateStart,
-+	BH_FullMapped,
- };
- 
- /* Has a disk mapping */
-@@ -455,6 +456,8 @@ enum {
- #define EROFS_MAP_META		(1 << BH_Meta)
- /* The extent has been compressed */
- #define EROFS_MAP_ZIPPED	(1 << BH_Zipped)
-+/* The length of extent is full */
-+#define EROFS_MAP_FULL_MAPPED	(1 << BH_FullMapped)
- 
- struct erofs_map_blocks {
- 	erofs_off_t m_pa, m_la;
-diff --git a/drivers/staging/erofs/unzip_vle.c b/drivers/staging/erofs/unzip_vle.c
-index cb870b83f3c8..316382d33783 100644
---- a/drivers/staging/erofs/unzip_vle.c
-+++ b/drivers/staging/erofs/unzip_vle.c
-@@ -469,6 +469,9 @@ z_erofs_vle_work_register(const struct z_erofs_vle_work_finder *f,
- 				    Z_EROFS_VLE_WORKGRP_FMT_LZ4 :
- 				    Z_EROFS_VLE_WORKGRP_FMT_PLAIN);
- 
-+	if (map->m_flags & EROFS_MAP_FULL_MAPPED)
-+		grp->flags |= Z_EROFS_VLE_WORKGRP_FULL_LENGTH;
-+
- 	/* new workgrps have been claimed as type 1 */
- 	WRITE_ONCE(grp->next, *f->owned_head);
- 	/* primary and followed work for all new workgrps */
-@@ -901,7 +904,7 @@ static int z_erofs_vle_unzip(struct super_block *sb,
- 	unsigned int i, outputsize;
- 
- 	enum z_erofs_page_type page_type;
--	bool overlapped;
-+	bool overlapped, partial;
- 	struct z_erofs_vle_work *work;
- 	int err;
- 
-@@ -1009,10 +1012,13 @@ static int z_erofs_vle_unzip(struct super_block *sb,
- 	if (unlikely(err))
- 		goto out;
- 
--	if (nr_pages << PAGE_SHIFT >= work->pageofs + grp->llen)
-+	if (nr_pages << PAGE_SHIFT >= work->pageofs + grp->llen) {
- 		outputsize = grp->llen;
--	else
-+		partial = !(grp->flags & Z_EROFS_VLE_WORKGRP_FULL_LENGTH);
-+	} else {
- 		outputsize = (nr_pages << PAGE_SHIFT) - work->pageofs;
-+		partial = true;
-+	}
- 
- 	if (z_erofs_vle_workgrp_fmt(grp) == Z_EROFS_VLE_WORKGRP_FMT_PLAIN)
- 		algorithm = Z_EROFS_COMPRESSION_SHIFTED;
-@@ -1028,7 +1034,8 @@ static int z_erofs_vle_unzip(struct super_block *sb,
- 					.outputsize = outputsize,
- 					.alg = algorithm,
- 					.inplace_io = overlapped,
--					.partial_decoding = true }, page_pool);
-+					.partial_decoding = partial
-+				 }, page_pool);
- 
- out:
- 	/* must handle all compressed pages before endding pages */
-diff --git a/drivers/staging/erofs/unzip_vle.h b/drivers/staging/erofs/unzip_vle.h
-index 2abde53d09d7..9d05fc88f78b 100644
---- a/drivers/staging/erofs/unzip_vle.h
-+++ b/drivers/staging/erofs/unzip_vle.h
-@@ -44,6 +44,7 @@ struct z_erofs_vle_work {
- #define Z_EROFS_VLE_WORKGRP_FMT_PLAIN        0
- #define Z_EROFS_VLE_WORKGRP_FMT_LZ4          1
- #define Z_EROFS_VLE_WORKGRP_FMT_MASK         1
-+#define Z_EROFS_VLE_WORKGRP_FULL_LENGTH      2
- 
- typedef void *z_erofs_vle_owned_workgrp_t;
- 
-diff --git a/drivers/staging/erofs/zmap.c b/drivers/staging/erofs/zmap.c
-index fea3717bf605..70820e282323 100644
---- a/drivers/staging/erofs/zmap.c
-+++ b/drivers/staging/erofs/zmap.c
-@@ -423,6 +423,7 @@ int z_erofs_map_blocks_iter(struct inode *inode,
- 			goto unmap_out;
- 		}
- 		end = (m.lcn << lclusterbits) | m.clusterofs;
-+		map->m_flags |= EROFS_MAP_FULL_MAPPED;
- 		m.delta[0] = 1;
- 		/* fallthrough */
- 	case Z_EROFS_VLE_CLUSTER_TYPE_NONHEAD:
--- 
-2.17.1
-
+Reviewed-by: Rob Herring <robh@kernel.org>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
