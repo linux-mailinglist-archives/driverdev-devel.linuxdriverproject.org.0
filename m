@@ -1,52 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 321864620D
-	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Jun 2019 17:06:39 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E7A2846222
+	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Jun 2019 17:09:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3A42B23086;
-	Fri, 14 Jun 2019 15:06:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C89758619A;
+	Fri, 14 Jun 2019 15:09:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yANkfeub+27T; Fri, 14 Jun 2019 15:06:36 +0000 (UTC)
+	with ESMTP id VED-NxJzxUbW; Fri, 14 Jun 2019 15:09:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 1B35620365;
-	Fri, 14 Jun 2019 15:06:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 88F6484F27;
+	Fri, 14 Jun 2019 15:09:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A70601BF32C
- for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 15:06:29 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8EC5E1BF32C
+ for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 15:09:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9D32020461
- for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 15:06:29 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8AFDB86946
+ for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 15:09:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3YcuvYfBaIh8 for <devel@linuxdriverproject.org>;
- Fri, 14 Jun 2019 15:06:28 +0000 (UTC)
+ with ESMTP id SWNErTE6dQ35 for <devel@linuxdriverproject.org>;
+ Fri, 14 Jun 2019 15:08:58 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from newverein.lst.de (verein.lst.de [213.95.11.211])
- by silver.osuosl.org (Postfix) with ESMTPS id 61DD120365
- for <devel@driverdev.osuosl.org>; Fri, 14 Jun 2019 15:06:28 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 6AABA8626B
+ for <devel@driverdev.osuosl.org>; Fri, 14 Jun 2019 15:08:58 +0000 (UTC)
 Received: by newverein.lst.de (Postfix, from userid 2407)
- id 9BFFD68AFE; Fri, 14 Jun 2019 17:05:58 +0200 (CEST)
-Date: Fri, 14 Jun 2019 17:05:58 +0200
+ id EDC7268B05; Fri, 14 Jun 2019 17:08:27 +0200 (CEST)
+Date: Fri, 14 Jun 2019 17:08:27 +0200
 From: 'Christoph Hellwig' <hch@lst.de>
-To: David Laight <David.Laight@ACULAB.COM>
+To: Robin Murphy <robin.murphy@arm.com>
 Subject: Re: [PATCH 16/16] dma-mapping: use exact allocation in
  dma_alloc_contiguous
-Message-ID: <20190614150558.GA9402@lst.de>
+Message-ID: <20190614150827.GA9460@lst.de>
 References: <20190614134726.3827-1-hch@lst.de>
  <20190614134726.3827-17-hch@lst.de>
  <a90cf7ec5f1c4166b53c40e06d4d832a@AcuMS.aculab.com>
- <20190614145001.GB9088@lst.de>
- <d93fd4c2c1584d92a05dd641929f6d63@AcuMS.aculab.com>
+ <20190614145001.GB9088@lst.de> <4113cd5f-5c13-e9c7-bc5e-dcf0b60e7054@arm.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <d93fd4c2c1584d92a05dd641929f6d63@AcuMS.aculab.com>
+In-Reply-To: <4113cd5f-5c13-e9c7-bc5e-dcf0b60e7054@arm.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -79,19 +78,23 @@ Cc: Maxime Ripard <maxime.ripard@bootlin.com>,
  "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
  "iommu@lists.linux-foundation.org" <iommu@lists.linux-foundation.org>,
- Daniel Vetter <daniel@ffwll.ch>
+ David Laight <David.Laight@ACULAB.COM>, Daniel Vetter <daniel@ffwll.ch>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Jun 14, 2019 at 03:01:22PM +0000, David Laight wrote:
-> I'm pretty sure there is a lot of code out there that makes that assumption.
-> Without it many drivers will have to allocate almost double the
-> amount of memory they actually need in order to get the required alignment.
-> So instead of saving memory you'll actually make more be used.
+On Fri, Jun 14, 2019 at 04:05:33PM +0100, Robin Murphy wrote:
+> That said, I don't believe this particular patch should make any 
+> appreciable difference - alloc_pages_exact() is still going to give back 
+> the same base address as the rounded up over-allocation would, and 
+> PAGE_ALIGN()ing the size passed to get_order() already seemed to be 
+> pointless.
 
-That code would already be broken on a lot of Linux platforms.
+True, we actually do get the right alignment just about anywhere.
+Not 100% sure about the various static pool implementations, but we
+can make sure if any didn't we'll do that right thing once those
+get consolidated.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
