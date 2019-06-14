@@ -2,69 +2,69 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0002946436
-	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Jun 2019 18:32:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A61864643F
+	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Jun 2019 18:33:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 89360884EA;
-	Fri, 14 Jun 2019 16:32:34 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 561A0884EF;
+	Fri, 14 Jun 2019 16:33:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UIr0Uj2FIAeV; Fri, 14 Jun 2019 16:32:34 +0000 (UTC)
+	with ESMTP id SW1wbPxDug4L; Fri, 14 Jun 2019 16:33:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 06803884C9;
-	Fri, 14 Jun 2019 16:32:34 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E460088419;
+	Fri, 14 Jun 2019 16:33:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id BAE801BF59F
- for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 16:32:31 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C11E81BF59F
+ for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 16:33:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B80AE884C9
- for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 16:32:31 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id BE0B4884D2
+ for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 16:33:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HS+r2mvPsg0T for <devel@linuxdriverproject.org>;
- Fri, 14 Jun 2019 16:32:31 +0000 (UTC)
+ with ESMTP id wXCQt18Dfypt for <devel@linuxdriverproject.org>;
+ Fri, 14 Jun 2019 16:33:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
  [209.85.221.66])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 0BFA988419
- for <devel@driverdev.osuosl.org>; Fri, 14 Jun 2019 16:32:31 +0000 (UTC)
-Received: by mail-wr1-f66.google.com with SMTP id x17so3170997wrl.9
- for <devel@driverdev.osuosl.org>; Fri, 14 Jun 2019 09:32:30 -0700 (PDT)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8A06688419
+ for <devel@driverdev.osuosl.org>; Fri, 14 Jun 2019 16:33:03 +0000 (UTC)
+Received: by mail-wr1-f66.google.com with SMTP id n4so3215847wrs.3
+ for <devel@driverdev.osuosl.org>; Fri, 14 Jun 2019 09:33:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=Bk25I9bYJ1QkQE44oNBhQvDFUFwOGY+qKAFcfRif1YY=;
- b=u0OqxJ8w+zUXf1Wq56t/UtX2iY9Bnt5XmPJgxTE76bhzUIwdkWTp/aq3zzK03/kx3G
- dBfQWt76sNup1zwZxbZF4HN6BCuOrCg5ab+ng6DvY8Ec1l+7n3mNR4nQVWp/m2Rsnquh
- QoODp8H8okYFK9mawBvo7m9h4/AIajPEQO766drLGTyaCWQqnVmwMuYqNiishkrjoL3S
- fc+ZqTQVs5pw9P/1bk0qTZnK2u3slwLYu4BZouFS/B3JZNkloh1uvgDxjOd37MGXVXQ7
- XTwy8p01wNLRjcdPQiJjl//zitZjiGh3l+NUV7y3Uql76uRrJSGoaPJnyVH7Weg0pV7d
- M3IA==
+ bh=G8wdXxU4tFwUoWKvXvo7dS/CRtSW8huyMcBERdfUB8k=;
+ b=Yl+QfPgKpr+w0DEtuQQNPcyl2qeLjOBYDIKp7qPHRYTQ2Liqly1IWx6TPG9HZGj5C/
+ kzHtRmn3uQ8RfnpiHyhiBAvq9b+p5U01g64vn3NOHFIIWqC75V9gfDdJm+DsV7tRgM++
+ StaP/9lRzyvgwUGCHgDrTsvEWx1SHHg9+SD8y1LA5acWvJj+cTyGvZVtsPLw0ty78FTF
+ /GcJGyxhLkQLXyX/53RIz61bmYj3W6MSNaihi4DbW5RAG+UFGzcPaQjBct4quzL4fzgr
+ Qdj50s+hsQvSM9jXCyxoWxtLvyUSr6mhifh7cn9uxsJPJQ3CZ7IznZCSejysmb9FVAyS
+ 0Gtg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=Bk25I9bYJ1QkQE44oNBhQvDFUFwOGY+qKAFcfRif1YY=;
- b=Sp1RR0FoMFUgZUl3bV9pehUDdMsBHuQ4Rnr1Y7t5+MQioymZYX+R3OiAQIhPlfNoxt
- gsJ3WvB5jJDO2u0PLpZ8bGXqzEEBBvcE5WE6CfKlOf+rXsg3qQaYq46rN2NTNCdcRyKS
- 2u6fomXLOBlWsu30nNXS7lnhrW4CcGNetNVxwKHkTnrdgRj883nRvPOFZBU9tqRaaABW
- kNjVlPV9Mo/n7bjFIqJkKBE6Es2c5eqE3+5Z8OqOj8uM0RdNurYcGWL2k4H2AWbwpOdF
- dv9S3hAPc21T5QsYO2W81OngnClg+HCWHPX4wNQqrLwqdjpezexwoOJBpHE/y7EQY44J
- YDYA==
-X-Gm-Message-State: APjAAAUTeltukis8swTuDQQN2bSZy6dP2YkbTCPzutK9sKgHwVw7BGSx
- itOtznIslThq6l2VUIk1MT3MyqThsJo=
-X-Google-Smtp-Source: APXvYqwCqZPFUEltPB18dZHXPPr0GSGxTfJkT0oIbrSP8s/I7DkUQUrJKgTZImT1/eaVo9AJ0TapSg==
-X-Received: by 2002:a5d:620f:: with SMTP id y15mr8792301wru.262.1560529949634; 
- Fri, 14 Jun 2019 09:32:29 -0700 (PDT)
+ bh=G8wdXxU4tFwUoWKvXvo7dS/CRtSW8huyMcBERdfUB8k=;
+ b=nuJaxjSreNNehiCEO7hDzndJqjPUcmFZ78O4N0BL/140BE5eH4onGNjGYWpbjtiRIG
+ XLQeBBpCOW6WHmYP3KIHL2eM++VfvVoistg6GtuFglpAqPrMfnvkhJ/hJfjBQFbtwLiP
+ xzi8eLAIAqtL0g3PAixPn7EVpj7m0T+2GZnLcTah+2kQuQDyRfcUCo7U8ZJa8XpBGL2x
+ 41gsxB3qQCnfFOmYHFUlmrOj6IVpZEZ4gmJ/nXxdluFemWe4wlZ4q0JbUogQOI5la/HL
+ Ojk9X5tLogbMmhsTWCGN+IUK4hr5SiY8WVhl5/QF1I93J/k0vC+CGqpnuH28XQ7YbA8L
+ 0oPA==
+X-Gm-Message-State: APjAAAWDCwEO4NqSZWscNjikWeWDgDpnW3TcQ8K1dTF10RTlbRsSlqdb
+ NBuWLp1tkHGJhW/g7BBMVAQ=
+X-Google-Smtp-Source: APXvYqwgLGKA3ee1Gvw/tmD9xSuiS937SeFYyksGqPMuYPhYWpwerSjlNLOWmZxpMK+aJLOYh/ebOQ==
+X-Received: by 2002:a5d:5491:: with SMTP id h17mr6626926wrv.182.1560529982167; 
+ Fri, 14 Jun 2019 09:33:02 -0700 (PDT)
 Received: from smtp.gmail.com (1.77.115.89.rev.vodafone.pt. [89.115.77.1])
- by smtp.gmail.com with ESMTPSA id d17sm4880775wrx.9.2019.06.14.09.32.28
+ by smtp.gmail.com with ESMTPSA id d10sm5126806wrp.74.2019.06.14.09.33.00
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Fri, 14 Jun 2019 09:32:28 -0700 (PDT)
-Date: Fri, 14 Jun 2019 13:32:21 -0300
+ Fri, 14 Jun 2019 09:33:01 -0700 (PDT)
+Date: Fri, 14 Jun 2019 13:32:54 -0300
 From: Melissa Wen <melissa.srw@gmail.com>
 To: Lars-Peter Clausen <lars@metafoo.de>,
  Michael Hennerich <Michael.Hennerich@analog.com>,
@@ -73,8 +73,9 @@ To: Lars-Peter Clausen <lars@metafoo.de>,
  Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Barry Song <21cnbao@gmail.com>
-Subject: [PATCH v2 1/3] staging: iio: ad7150: use FIELD_GET and GENMASK
-Message-ID: <4f88fd66e478289006353645d84b7af1b5aa345c.1560529045.git.melissa.srw@gmail.com>
+Subject: [PATCH v2 2/3] staging: iio: ad7150: simplify i2c SMBus return
+ treatment
+Message-ID: <90e8a25eca0825878d55fe0a9e760906b4689035.1560529045.git.melissa.srw@gmail.com>
 References: <cover.1560529045.git.melissa.srw@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
@@ -99,46 +100,37 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Use the bitfield macro FIELD_GET, and GENMASK to do the shift and mask in
-one go. This makes the code more readable than explicit masking followed
-by a shift.
+Since i2c_smbus_write_byte_data returns no-positive value, this commit
+making the treatment of its return value less verbose.
 
 Signed-off-by: Melissa Wen <melissa.srw@gmail.com>
 ---
- drivers/staging/iio/cdc/ad7150.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ drivers/staging/iio/cdc/ad7150.c | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/staging/iio/cdc/ad7150.c b/drivers/staging/iio/cdc/ad7150.c
-index 8234da4b8c65..091aa33589d7 100644
+index 091aa33589d7..7d56f10a19ed 100644
 --- a/drivers/staging/iio/cdc/ad7150.c
 +++ b/drivers/staging/iio/cdc/ad7150.c
-@@ -5,6 +5,7 @@
-  * Copyright 2010-2011 Analog Devices Inc.
-  */
- 
-+#include <linux/bitfield.h>
- #include <linux/interrupt.h>
- #include <linux/device.h>
- #include <linux/kernel.h>
-@@ -45,6 +46,9 @@
- #define AD7150_SN0                 22
- #define AD7150_ID                  23
- 
-+/* AD7150 masks */
-+#define AD7150_THRESHTYPE_MSK			GENMASK(6, 5)
-+
- /**
-  * struct ad7150_chip_info - instance specific chip data
-  * @client: i2c client for this device
-@@ -137,7 +141,7 @@ static int ad7150_read_event_config(struct iio_dev *indio_dev,
- 	if (ret < 0)
+@@ -202,16 +202,11 @@ static int ad7150_write_event_params(struct iio_dev *indio_dev,
+ 	ret = i2c_smbus_write_byte_data(chip->client,
+ 					ad7150_addresses[chan][4],
+ 					sens);
+-	if (ret < 0)
++	if (ret)
  		return ret;
+-
+-	ret = i2c_smbus_write_byte_data(chip->client,
++	return i2c_smbus_write_byte_data(chip->client,
+ 					ad7150_addresses[chan][5],
+ 					timeout);
+-	if (ret < 0)
+-		return ret;
+-
+-	return 0;
+ }
  
--	threshtype = (ret >> 5) & 0x03;
-+	threshtype = FIELD_GET(AD7150_THRESHTYPE_MSK, ret);
- 	adaptive = !!(ret & 0x80);
- 
- 	switch (type) {
+ static int ad7150_write_event_config(struct iio_dev *indio_dev,
 -- 
 2.20.1
 
