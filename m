@@ -1,52 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6847A45EDA
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A801C45EDB
 	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Jun 2019 15:47:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5912787D25;
+	by silver.osuosl.org (Postfix) with ESMTP id 85FA122C31;
 	Fri, 14 Jun 2019 13:47:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id P6zG9+UJV7yO; Fri, 14 Jun 2019 13:47:49 +0000 (UTC)
+	with ESMTP id RG0zDrD8RUEy; Fri, 14 Jun 2019 13:47:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2C62787CCB;
-	Fri, 14 Jun 2019 13:47:49 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5BA8322D10;
+	Fri, 14 Jun 2019 13:47:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9417B1BF3A9
- for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 13:47:47 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 12C371BF3A9
+ for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 13:47:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9178787CDA
- for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 13:47:47 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 0FD3D88476
+ for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 13:47:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xWqMwBiJx5UK for <devel@linuxdriverproject.org>;
- Fri, 14 Jun 2019 13:47:45 +0000 (UTC)
+ with ESMTP id 8+JQf78O1Le2 for <devel@linuxdriverproject.org>;
+ Fri, 14 Jun 2019 13:47:43 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from bombadil.infradead.org (bombadil.infradead.org
  [198.137.202.133])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 9D01687CCB
- for <devel@driverdev.osuosl.org>; Fri, 14 Jun 2019 13:47:45 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 3C8F488494
+ for <devel@driverdev.osuosl.org>; Fri, 14 Jun 2019 13:47:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20170209; h=Content-Transfer-Encoding:
- MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=2klM0787YOypidTxFFKkFXrGCXrbMhQ5qreI3X9Vu1k=; b=Cj3+LM9vIrA6nltYCay8yBPba
- y6IkbYwpLx9JZh8kK5t2kLy0T8EhKYFLd4ni8FEoVyGRGa1u1i3grWUes4UAS9IJ9k3PGBxh0Ddkp
- +eH6rF5lBzxCwQMwke6G/c2TJda2p6rGBomPUsGZBfRc0dQxUxHgwIel6XPax0+lxmSXe9hnoqneL
- tM4WnvDTXZk0YQhKyEzCwXVDmrezpr/WzX/aQS4stZilw7GkSoqCXo2Zka98OqbC6gFV5/7OKNZNF
- BKEvRnmiaTr9rp4o4Y6qOWysCXUmGZc3uHBgRcuKZdrN51a9q9TVTZ/wz3VsIWst8b5uTNKZ6nDin
- VS2+DYitQ==;
+ MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
+ :Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From
+ :Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+ List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=8y6h8N73FB5NENGJmXuBWpySrRWBuNuuherB6ijj6q8=; b=O+TbJCIvZxITqhhJGk19PgKDVb
+ zP/cXr3k3gVNVyNuIZZ1EUainJIi7wVTUxXsQtP55j6fTBfcF7Sa+btFSjlOoBpdFax1u6ZazzUaz
+ FPx/YcvbrcmM0hj9iSxxr66wiPpIo2CQcbBfULKCswmUhdFlmoDtWAaHV5c6chhQgW7u9cc4uUrYi
+ +YgK5P2yi8DIc4PxIDTgNB0H2HMyfDDjSri1AD09oFbVupeMjadiOSOnAJwBO5Fva8F5W4du1//3V
+ PC6NEPWuGSXf3Iz9K+nbMDUlMTGN745meRSObE6d5NxDDUuRnYJGChXPFHVxfA6Pw0enVfuoGJDnu
+ q+P8IvBA==;
 Received: from 213-225-9-13.nat.highway.a1.net ([213.225.9.13] helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hbmYG-0004Xc-Jk; Fri, 14 Jun 2019 13:47:33 +0000
+ id 1hbmYJ-0004Xw-Il; Fri, 14 Jun 2019 13:47:36 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>,
@@ -55,10 +55,12 @@ To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
  Rodrigo Vivi <rodrigo.vivi@intel.com>, Ian Abbott <abbotti@mev.co.uk>,
  H Hartley Sweeten <hsweeten@visionengravers.com>
-Subject: use exact allocation for dma coherent memory
-Date: Fri, 14 Jun 2019 15:47:10 +0200
-Message-Id: <20190614134726.3827-1-hch@lst.de>
+Subject: [PATCH 01/16] media: videobuf-dma-contig: use dma_mmap_coherent
+Date: Fri, 14 Jun 2019 15:47:11 +0200
+Message-Id: <20190614134726.3827-2-hch@lst.de>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190614134726.3827-1-hch@lst.de>
+References: <20190614134726.3827-1-hch@lst.de>
 MIME-Version: 1.0
 X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
  bombadil.infradead.org. See http://www.infradead.org/rpr.html
@@ -87,20 +89,87 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi all,
+dma_alloc_coherent does not return a physical address, but a DMA
+address, which might be remapped or have an offset.  Passing this
+DMA address to vm_iomap_memory is completely bogus.  Use the proper
+dma_mmap_coherent helper instead, and stop passing __GFP_COMP
+to dma_alloc_coherent, as the memory management inside the DMA
+allocator is hidden from the callers.
 
-various architectures have used exact memory allocations for dma
-allocations for a long time, but x86 and thus the common code based
-on it kept using our normal power of two allocator, which tends to
-waste a lot of memory for certain allocations.
+Fixes: a8f3c203e19b ("[media] videobuf-dma-contig: add cache support")
+Signed-off-by: Christoph Hellwig <hch@lst.de>
+---
+ drivers/media/v4l2-core/videobuf-dma-contig.c | 23 +++++++------------
+ 1 file changed, 8 insertions(+), 15 deletions(-)
 
-Switching to a slightly cleaned up alloc_pages_exact is pretty easy,
-but it turns out that because we didn't filter valid gfp_t flags
-on the DMA allocator, a bunch of drivers were passing __GFP_COMP
-to it, which is rather bogus in too many ways to explain.  Arm has
-been filtering it for a while, but this series instead tries to fix
-the drivers and warn when __GFP_COMP is passed, which makes it much
-larger than just adding the functionality.
+diff --git a/drivers/media/v4l2-core/videobuf-dma-contig.c b/drivers/media/v4l2-core/videobuf-dma-contig.c
+index e1bf50df4c70..a5942ea38f1f 100644
+--- a/drivers/media/v4l2-core/videobuf-dma-contig.c
++++ b/drivers/media/v4l2-core/videobuf-dma-contig.c
+@@ -39,11 +39,11 @@ struct videobuf_dma_contig_memory {
+ 
+ static int __videobuf_dc_alloc(struct device *dev,
+ 			       struct videobuf_dma_contig_memory *mem,
+-			       unsigned long size, gfp_t flags)
++			       unsigned long size)
+ {
+ 	mem->size = size;
+-	mem->vaddr = dma_alloc_coherent(dev, mem->size,
+-					&mem->dma_handle, flags);
++	mem->vaddr = dma_alloc_coherent(dev, mem->size, &mem->dma_handle,
++			GFP_KERNEL);
+ 
+ 	if (!mem->vaddr) {
+ 		dev_err(dev, "memory alloc size %ld failed\n", mem->size);
+@@ -260,8 +260,7 @@ static int __videobuf_iolock(struct videobuf_queue *q,
+ 			return videobuf_dma_contig_user_get(mem, vb);
+ 
+ 		/* allocate memory for the read() method */
+-		if (__videobuf_dc_alloc(q->dev, mem, PAGE_ALIGN(vb->size),
+-					GFP_KERNEL))
++		if (__videobuf_dc_alloc(q->dev, mem, PAGE_ALIGN(vb->size)))
+ 			return -ENOMEM;
+ 		break;
+ 	case V4L2_MEMORY_OVERLAY:
+@@ -280,7 +279,6 @@ static int __videobuf_mmap_mapper(struct videobuf_queue *q,
+ 	struct videobuf_dma_contig_memory *mem;
+ 	struct videobuf_mapping *map;
+ 	int retval;
+-	unsigned long size;
+ 
+ 	dev_dbg(q->dev, "%s\n", __func__);
+ 
+@@ -298,23 +296,18 @@ static int __videobuf_mmap_mapper(struct videobuf_queue *q,
+ 	BUG_ON(!mem);
+ 	MAGIC_CHECK(mem->magic, MAGIC_DC_MEM);
+ 
+-	if (__videobuf_dc_alloc(q->dev, mem, PAGE_ALIGN(buf->bsize),
+-				GFP_KERNEL | __GFP_COMP))
++	if (__videobuf_dc_alloc(q->dev, mem, PAGE_ALIGN(buf->bsize)))
+ 		goto error;
+ 
+-	/* Try to remap memory */
+-	size = vma->vm_end - vma->vm_start;
+-	vma->vm_page_prot = pgprot_noncached(vma->vm_page_prot);
+-
+ 	/* the "vm_pgoff" is just used in v4l2 to find the
+ 	 * corresponding buffer data structure which is allocated
+ 	 * earlier and it does not mean the offset from the physical
+ 	 * buffer start address as usual. So set it to 0 to pass
+-	 * the sanity check in vm_iomap_memory().
++	 * the sanity check in dma_mmap_coherent().
+ 	 */
+ 	vma->vm_pgoff = 0;
+-
+-	retval = vm_iomap_memory(vma, mem->dma_handle, size);
++	retval = dma_mmap_coherent(q->dev, vma, mem->vaddr, mem->dma_handle,
++			vma->vm_end - vma->vm_start);
+ 	if (retval) {
+ 		dev_err(q->dev, "mmap: remap failed with error %d. ",
+ 			retval);
+-- 
+2.20.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
