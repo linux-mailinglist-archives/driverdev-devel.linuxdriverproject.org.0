@@ -1,52 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 086FD45EFD
-	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Jun 2019 15:48:22 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 28C7645F00
+	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Jun 2019 15:48:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2175F884D9;
-	Fri, 14 Jun 2019 13:48:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AC91623077;
+	Fri, 14 Jun 2019 13:48:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id srZR9etjT1Qg; Fri, 14 Jun 2019 13:48:19 +0000 (UTC)
+	with ESMTP id o9tp+A0J0hD0; Fri, 14 Jun 2019 13:48:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E049C884A7;
-	Fri, 14 Jun 2019 13:48:18 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 21BA522F22;
+	Fri, 14 Jun 2019 13:48:24 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 110F81BF3A9
- for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 13:48:16 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id EDE841BF3A9
+ for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 13:48:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0E7A288476
- for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 13:48:16 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E8CA1220EC
+ for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 13:48:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jVfptmEJzm9L for <devel@linuxdriverproject.org>;
- Fri, 14 Jun 2019 13:48:15 +0000 (UTC)
+ with ESMTP id ga4UNrffP3ov for <devel@linuxdriverproject.org>;
+ Fri, 14 Jun 2019 13:48:21 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from bombadil.infradead.org (bombadil.infradead.org
  [198.137.202.133])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 96414884A6
- for <devel@driverdev.osuosl.org>; Fri, 14 Jun 2019 13:48:14 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id E63C222920
+ for <devel@driverdev.osuosl.org>; Fri, 14 Jun 2019 13:48:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20170209; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From
  :Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
  List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=7ZdZ3kFG7vLtpGzKUifkfy5au7mGeecDZr7pOAa/mbQ=; b=fFAKLKpeX1UXm3FTcf0KpVo86s
- TAVWErFRg7UqZpj/joIjhsfplRvSdKGAbFeP6PmZqe8B9ErySOXGc93t2ofqJ0PfW5tVLu+2bO7c7
- tlkcsmUTpcJGdiZudPM+9H/J7qA++YYntqBAP5nQMfi/0VmsaFYiz8iIh+FqmdmOSIDCUkX2AxyUg
- 4+iPQe6FbA5imHkaPuPHdlmpbWkOZY2IPMBFcFQu5749gI0wQ18r1UkUghz38MdwIvcYqglGbv42Q
- OE9k8pQvOkUoTghcB7fXqj/U8J8TtUon4YKIlHWSSpbaJgmCuw3j4dq3Y7DAL3QyTY+SLK4x/iHsn
- p71d6N7w==;
+ bh=OBOS8iCVbCKavrjNtD9grYbIza6qqnOVd5RpWueyj/M=; b=ty9usQOn48ryjo/yA+LI46GxnP
+ KU+hV8DMp9K1AiYIp8CEWPCsYTVt0fa2fCx5FsgZtmFG+oZvda4iGOisvCu0KEUqYodtwwPbJHVPw
+ Db2/6G2kesXnDnAn6z45JeeW3RlmDj87Wy6HfqWc00nj35RFlVFkRRZqPO0HsFrH99HI5YZOdnRTJ
+ tHa9SDSKcyyo8FiIMQIwPBhvOKYxNIVJw/YdoAgm7jutOjnHItVUz1dXoVckleKMabuzqyEvJHykt
+ ISIIujsBNMPIb0GXNcbQX1pr9F5xfFC5uZwG+WNcNlp5UaVPCWtpvsAYlg/ngmgqOUWtijss40PJa
+ oxHQO6Tw==;
 Received: from 213-225-9-13.nat.highway.a1.net ([213.225.9.13] helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hbmYk-0005GV-78; Fri, 14 Jun 2019 13:48:02 +0000
+ id 1hbmYn-0005Ie-J2; Fri, 14 Jun 2019 13:48:06 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>,
@@ -55,10 +55,10 @@ To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
  Rodrigo Vivi <rodrigo.vivi@intel.com>, Ian Abbott <abbotti@mev.co.uk>,
  H Hartley Sweeten <hsweeten@visionengravers.com>
-Subject: [PATCH 09/16] cnic: stop passing bogus gfp flags arguments to
+Subject: [PATCH 10/16] iwlwifi: stop passing bogus gfp flags arguments to
  dma_alloc_coherent
-Date: Fri, 14 Jun 2019 15:47:19 +0200
-Message-Id: <20190614134726.3827-10-hch@lst.de>
+Date: Fri, 14 Jun 2019 15:47:20 +0200
+Message-Id: <20190614134726.3827-11-hch@lst.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190614134726.3827-1-hch@lst.de>
 References: <20190614134726.3827-1-hch@lst.de>
@@ -96,31 +96,38 @@ modifiers of __GFP_NORETRY or __GFP_NOWARN.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- drivers/net/ethernet/broadcom/cnic.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/net/wireless/intel/iwlwifi/fw/dbg.c     | 3 +--
+ drivers/net/wireless/intel/iwlwifi/pcie/trans.c | 3 +--
+ 2 files changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/ethernet/broadcom/cnic.c b/drivers/net/ethernet/broadcom/cnic.c
-index 57dc3cbff36e..bd1c993680e5 100644
---- a/drivers/net/ethernet/broadcom/cnic.c
-+++ b/drivers/net/ethernet/broadcom/cnic.c
-@@ -1028,7 +1028,7 @@ static int __cnic_alloc_uio_rings(struct cnic_uio_dev *udev, int pages)
- 	udev->l2_ring_size = pages * CNIC_PAGE_SIZE;
- 	udev->l2_ring = dma_alloc_coherent(&udev->pdev->dev, udev->l2_ring_size,
- 					   &udev->l2_ring_map,
--					   GFP_KERNEL | __GFP_COMP);
-+					   GFP_KERNEL);
- 	if (!udev->l2_ring)
- 		return -ENOMEM;
+diff --git a/drivers/net/wireless/intel/iwlwifi/fw/dbg.c b/drivers/net/wireless/intel/iwlwifi/fw/dbg.c
+index 5f52e40a2903..323dc5d5ee88 100644
+--- a/drivers/net/wireless/intel/iwlwifi/fw/dbg.c
++++ b/drivers/net/wireless/intel/iwlwifi/fw/dbg.c
+@@ -2361,8 +2361,7 @@ iwl_fw_dbg_buffer_allocation(struct iwl_fw_runtime *fwrt, u32 size)
  
-@@ -1036,7 +1036,7 @@ static int __cnic_alloc_uio_rings(struct cnic_uio_dev *udev, int pages)
- 	udev->l2_buf_size = CNIC_PAGE_ALIGN(udev->l2_buf_size);
- 	udev->l2_buf = dma_alloc_coherent(&udev->pdev->dev, udev->l2_buf_size,
- 					  &udev->l2_buf_map,
--					  GFP_KERNEL | __GFP_COMP);
-+					  GFP_KERNEL);
- 	if (!udev->l2_buf) {
- 		__cnic_free_uio_rings(udev);
- 		return -ENOMEM;
+ 	virtual_addr =
+ 		dma_alloc_coherent(fwrt->trans->dev, size, &phys_addr,
+-				   GFP_KERNEL | __GFP_NOWARN | __GFP_ZERO |
+-				   __GFP_COMP);
++				   GFP_KERNEL | __GFP_NOWARN);
+ 
+ 	/* TODO: alloc fragments if needed */
+ 	if (!virtual_addr)
+diff --git a/drivers/net/wireless/intel/iwlwifi/pcie/trans.c b/drivers/net/wireless/intel/iwlwifi/pcie/trans.c
+index 803fcbac4152..22a47f928dc8 100644
+--- a/drivers/net/wireless/intel/iwlwifi/pcie/trans.c
++++ b/drivers/net/wireless/intel/iwlwifi/pcie/trans.c
+@@ -210,8 +210,7 @@ static void iwl_pcie_alloc_fw_monitor_block(struct iwl_trans *trans,
+ 	for (power = max_power; power >= min_power; power--) {
+ 		size = BIT(power);
+ 		cpu_addr = dma_alloc_coherent(trans->dev, size, &phys,
+-					      GFP_KERNEL | __GFP_NOWARN |
+-					      __GFP_ZERO | __GFP_COMP);
++					      GFP_KERNEL | __GFP_NOWARN);
+ 		if (!cpu_addr)
+ 			continue;
+ 
 -- 
 2.20.1
 
