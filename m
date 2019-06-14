@@ -1,57 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 761AC45231
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id EDC0045232
 	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Jun 2019 04:54:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4947D228A0;
-	Fri, 14 Jun 2019 02:54:44 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vaH0lOAgB+on; Fri, 14 Jun 2019 02:54:42 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id B520521FFB;
-	Fri, 14 Jun 2019 02:54:41 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DD7051BF2F3
- for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 02:54:39 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id DA61384409
- for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 02:54:39 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9470A84497;
+	Fri, 14 Jun 2019 02:54:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id QF5-bSejxnpD; Fri, 14 Jun 2019 02:54:46 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 805E78443A;
+	Fri, 14 Jun 2019 02:54:45 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 75C081BF2F3
+ for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 02:54:42 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 72D2C88311
+ for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 02:54:42 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5S9hI3IVJ7im for <devel@linuxdriverproject.org>;
- Fri, 14 Jun 2019 02:54:39 +0000 (UTC)
+ with ESMTP id wjS7ASTsZ9zU for <devel@linuxdriverproject.org>;
+ Fri, 14 Jun 2019 02:54:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7CDA684408
- for <devel@driverdev.osuosl.org>; Fri, 14 Jun 2019 02:54:39 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0F0B38830F
+ for <devel@driverdev.osuosl.org>; Fri, 14 Jun 2019 02:54:42 +0000 (UTC)
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
  [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 002F237F46;
- Fri, 14 Jun 2019 02:54:39 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 8984483F3E;
+ Fri, 14 Jun 2019 02:54:41 +0000 (UTC)
 Received: from localhost (ovpn-8-21.pek2.redhat.com [10.72.8.21])
- by smtp.corp.redhat.com (Postfix) with ESMTP id AC1C46012E;
- Fri, 14 Jun 2019 02:54:35 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D0F396012E;
+ Fri, 14 Jun 2019 02:54:40 +0000 (UTC)
 From: Ming Lei <ming.lei@redhat.com>
 To: linux-scsi@vger.kernel.org,
  "Martin K . Petersen" <martin.petersen@oracle.com>
-Subject: [PATCH V3 13/15] scsi: ppa: use sg helper to operate scatterlist
-Date: Fri, 14 Jun 2019 10:53:14 +0800
-Message-Id: <20190614025316.7360-14-ming.lei@redhat.com>
+Subject: [PATCH V3 14/15] scsi: wd33c93: use sg helper to operate scatterlist
+Date: Fri, 14 Jun 2019 10:53:15 +0800
+Message-Id: <20190614025316.7360-15-ming.lei@redhat.com>
 In-Reply-To: <20190614025316.7360-1-ming.lei@redhat.com>
 References: <20190614025316.7360-1-ming.lei@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.29]); Fri, 14 Jun 2019 02:54:39 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.27]); Fri, 14 Jun 2019 02:54:41 +0000 (UTC)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,22 +88,22 @@ isn't enough for the whole request.
 
 Signed-off-by: Ming Lei <ming.lei@redhat.com>
 ---
- drivers/scsi/ppa.c | 2 +-
+ drivers/scsi/wd33c93.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/scsi/ppa.c b/drivers/scsi/ppa.c
-index 35213082e933..a406cc825426 100644
---- a/drivers/scsi/ppa.c
-+++ b/drivers/scsi/ppa.c
-@@ -590,7 +590,7 @@ static int ppa_completion(struct scsi_cmnd *cmd)
- 		if (cmd->SCp.buffer && !cmd->SCp.this_residual) {
- 			/* if scatter/gather, advance to the next segment */
- 			if (cmd->SCp.buffers_residual--) {
--				cmd->SCp.buffer++;
-+				cmd->SCp.buffer = sg_next(cmd->SCp.buffer);
- 				cmd->SCp.this_residual =
- 				    cmd->SCp.buffer->length;
- 				cmd->SCp.ptr = sg_virt(cmd->SCp.buffer);
+diff --git a/drivers/scsi/wd33c93.c b/drivers/scsi/wd33c93.c
+index 74be04f2357c..ae5935c0a149 100644
+--- a/drivers/scsi/wd33c93.c
++++ b/drivers/scsi/wd33c93.c
+@@ -744,7 +744,7 @@ transfer_bytes(const wd33c93_regs regs, struct scsi_cmnd *cmd,
+  * source or destination for THIS transfer.
+  */
+ 	if (!cmd->SCp.this_residual && cmd->SCp.buffers_residual) {
+-		++cmd->SCp.buffer;
++		cmd->SCp.buffer = sg_next(cmd->SCp.buffer);
+ 		--cmd->SCp.buffers_residual;
+ 		cmd->SCp.this_residual = cmd->SCp.buffer->length;
+ 		cmd->SCp.ptr = sg_virt(cmd->SCp.buffer);
 -- 
 2.20.1
 
