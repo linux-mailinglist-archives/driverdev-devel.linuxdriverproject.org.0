@@ -1,79 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4FFC54523B
-	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Jun 2019 04:55:28 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8F6354540C
+	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Jun 2019 07:35:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DF41C87A24;
-	Fri, 14 Jun 2019 02:55:26 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 81A0C868AF;
+	Fri, 14 Jun 2019 05:35:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eghtr3ApVDnk; Fri, 14 Jun 2019 02:55:26 +0000 (UTC)
+	with ESMTP id vPFYiSx1NbG2; Fri, 14 Jun 2019 05:35:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E984185CD0;
-	Fri, 14 Jun 2019 02:55:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8A2BC868A2;
+	Fri, 14 Jun 2019 05:35:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D04731BF2F3
- for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 02:55:23 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2871F1BF841
+ for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 05:35:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id CAC0E879AA
- for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 02:55:23 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 23D5587909
+ for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 05:35:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BoG66fJf2atN for <devel@linuxdriverproject.org>;
- Fri, 14 Jun 2019 02:55:23 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
- [209.85.210.196])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5E0AB85CD0
- for <devel@driverdev.osuosl.org>; Fri, 14 Jun 2019 02:55:23 +0000 (UTC)
-Received: by mail-pf1-f196.google.com with SMTP id r7so476505pfl.3
- for <devel@driverdev.osuosl.org>; Thu, 13 Jun 2019 19:55:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=SwSZeh81DBlOnvWVgHdXN91MkGQB7AkIc/s+fZav48I=;
- b=mZgMNuIICMJ535dfwlrSQzVmNFBy9rpWsCv0yaKH6iq4Xu5Bf8q89rii/7rBR/k/UP
- etYiSsEg72LzqI/pmcOInN6jpurv8Hl3O47tnPKU9n7bIYux4r9sXziHKCG4kGCR+/yi
- qSpquCRxpm6A7gSAdmv+tO+O3hcEX7vwILUwq0tcff6BDR7sG1TbEYM3Qw0iXXnhdJD7
- koP9HhsTWD8ZVFEEZvBo7vN5pf14q10DNGp4B1g/QYepd/OCWqRpqOXdcYzs/ZSr56Zh
- 58R98oqe2j5peb2me25tz2bxoEUptrgHrZhYnr5zl8R4m0CZyuiEMd4pc8vdj48HwQ6S
- uvtQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=SwSZeh81DBlOnvWVgHdXN91MkGQB7AkIc/s+fZav48I=;
- b=A0zREalMVWgCMEbqMr41nmtyE6tJQSVaKW4f2ESQeBzhKhRvA5MpsSi/1Pw9TtAI5m
- TCqm9QVgNAky314/fRlJwSBTIMkHtJnXWe2Twju2dSovOL74BulBhu9WZm5Qky3APC3X
- HtW1tXqvKLMQT1ujwE+/R/lw903dEZhWXJTMS73Wa6tRVEPAh1cyQy88W9WKE1/vzXCk
- XMq5QtjFanByeWofBg1qqsb93dL6gu07LjtDIChlgoN9xwudwVFwLpYE0xztzI1KtW/E
- nqDJA38e0nvUMxZCFwzWxGpaXklN4voO63JRvvPwH9CvBmTIyFf0vtbM9v+QxfyNIrqa
- rYmw==
-X-Gm-Message-State: APjAAAWTzi/D8q3z+aXEaCfdjmNx69qEBCMVQS+b4O1RESl3zWvg3b4D
- qOLJNTf820gKpXUpscF+5ahS/Ucd
-X-Google-Smtp-Source: APXvYqyeoz280H99Rzxd6MfOi9jtrF/1mnTPz4N8u9/1DhOIFjeclmoJh5RkhXKyeL22ggZMfoJhlA==
-X-Received: by 2002:a63:d458:: with SMTP id i24mr24164947pgj.171.1560480923027; 
- Thu, 13 Jun 2019 19:55:23 -0700 (PDT)
-Received: from hari-Inspiron-1545 ([183.83.89.153])
- by smtp.gmail.com with ESMTPSA id j2sm1033788pfb.157.2019.06.13.19.55.21
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 13 Jun 2019 19:55:22 -0700 (PDT)
-Date: Fri, 14 Jun 2019 08:25:19 +0530
-From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Hariprasad Kelam <hariprasad.kelam@gmail.com>,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [Patch v2 3/3] staging: rtl8723bs: hal: sdio_halinit: fix Comparison
- to NULL
-Message-ID: <20190614025519.GA3459@hari-Inspiron-1545>
+ with ESMTP id cJVfWceixgv5 for <devel@linuxdriverproject.org>;
+ Fri, 14 Jun 2019 05:35:18 +0000 (UTC)
+X-Greylist: delayed 00:07:47 by SQLgrey-1.7.6
+Received: from kvm5.telegraphics.com.au (kvm5.telegraphics.com.au
+ [98.124.60.144])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4C86687613
+ for <devel@driverdev.osuosl.org>; Fri, 14 Jun 2019 05:35:18 +0000 (UTC)
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by kvm5.telegraphics.com.au (Postfix) with ESMTP id 975A2293CA;
+ Fri, 14 Jun 2019 01:27:27 -0400 (EDT)
+Date: Fri, 14 Jun 2019 15:27:36 +1000 (AEST)
+From: Finn Thain <fthain@telegraphics.com.au>
+To: Ming Lei <ming.lei@redhat.com>, "Juergen E . Fischer" <fischer@norbit.de>
+Subject: Re: [PATCH V3 10/15] scsi: aha152x: use sg helper to operate
+ scatterlist
+In-Reply-To: <20190614025316.7360-11-ming.lei@redhat.com>
+Message-ID: <alpine.LNX.2.21.1906141404270.33@nippy.intranet>
+References: <20190614025316.7360-1-ming.lei@redhat.com>
+ <20190614025316.7360-11-ming.lei@redhat.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,49 +57,140 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: Michael Schmitz <schmitzmic@gmail.com>, devel@driverdev.osuosl.org,
+ Hannes Reinecke <hare@suse.com>, Benjamin Block <bblock@linux.ibm.com>,
+ linux-scsi@vger.kernel.org, "Martin K . Petersen" <martin.petersen@oracle.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ James Smart <james.smart@broadcom.com>, "Ewan D . Milne" <emilne@redhat.com>,
+ Jim Gill <jgill@vmware.com>,
+ James Bottomley <James.Bottomley@HansenPartnership.com>,
+ Brian King <brking@us.ibm.com>, Christoph Hellwig <hch@lst.de>,
+ Dan Carpenter <dan.carpenter@oracle.com>, Bart Van Assche <bvanassche@acm.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch fixes below issue reported by checkpatch
+Hi Ming,
 
-CHECK: Comparison to NULL could be written "psta"
-CHECK: Comparison to NULL could be written "psta"
+On Fri, 14 Jun 2019, Ming Lei wrote:
 
-Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
------
-changes in v2: Send proper patch with out corruption
-----
----
- drivers/staging/rtl8723bs/hal/sdio_halinit.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+> Use the scatterlist iterators and remove direct indexing of the
+> scatterlist array.
+> 
+> This way allows us to pre-allocate one small scatterlist, which can be
+> chained with one runtime allocated scatterlist if the pre-allocated one
+> isn't enough for the whole request.
+> 
+> Signed-off-by: Ming Lei <ming.lei@redhat.com>
+> ---
+>  drivers/scsi/aha152x.c | 29 +++++++++++++++++++----------
+>  1 file changed, 19 insertions(+), 10 deletions(-)
+> 
+> diff --git a/drivers/scsi/aha152x.c b/drivers/scsi/aha152x.c
+> index 97872838b983..bc9d12aa7880 100644
+> --- a/drivers/scsi/aha152x.c
+> +++ b/drivers/scsi/aha152x.c
+> @@ -2033,7 +2033,7 @@ static void datai_run(struct Scsi_Host *shpnt)
+>  				    CURRENT_SC->SCp.buffers_residual > 0) {
+>  					/* advance to next buffer */
+>  					CURRENT_SC->SCp.buffers_residual--;
+> -					CURRENT_SC->SCp.buffer++;
+> +					CURRENT_SC->SCp.buffer = sg_next(CURRENT_SC->SCp.buffer);
+>  					CURRENT_SC->SCp.ptr           = SG_ADDRESS(CURRENT_SC->SCp.buffer);
+>  					CURRENT_SC->SCp.this_residual = CURRENT_SC->SCp.buffer->length;
+>  				}
+> @@ -2139,7 +2139,7 @@ static void datao_run(struct Scsi_Host *shpnt)
+>  		if(CURRENT_SC->SCp.this_residual==0 && CURRENT_SC->SCp.buffers_residual>0) {
+>  			/* advance to next buffer */
+>  			CURRENT_SC->SCp.buffers_residual--;
+> -			CURRENT_SC->SCp.buffer++;
+> +			CURRENT_SC->SCp.buffer = sg_next(CURRENT_SC->SCp.buffer);
+>  			CURRENT_SC->SCp.ptr           = SG_ADDRESS(CURRENT_SC->SCp.buffer);
+>  			CURRENT_SC->SCp.this_residual = CURRENT_SC->SCp.buffer->length;
+>  		}
+> @@ -2160,20 +2160,29 @@ static void datao_end(struct Scsi_Host *shpnt)
+>  	if(TESTLO(DMASTAT, DFIFOEMP)) {
+>  		int data_count = (DATA_LEN - scsi_get_resid(CURRENT_SC)) -
+>  			GETSTCNT();
 
-diff --git a/drivers/staging/rtl8723bs/hal/sdio_halinit.c b/drivers/staging/rtl8723bs/hal/sdio_halinit.c
-index 5c7cff0..6f10349 100644
---- a/drivers/staging/rtl8723bs/hal/sdio_halinit.c
-+++ b/drivers/staging/rtl8723bs/hal/sdio_halinit.c
-@@ -1558,7 +1558,7 @@ static void SetHwReg8723BS(struct adapter *padapter, u8 variable, u8 *val)
- 			DBG_871X_LEVEL(_drv_always_, "WOWLAN_DISABLE\n");
- 
- 			psta = rtw_get_stainfo(&padapter->stapriv, get_bssid(pmlmepriv));
--			if (psta != NULL)
-+			if (psta)
- 				rtl8723b_set_FwMediaStatusRpt_cmd(padapter, RT_MEDIA_DISCONNECT, psta->mac_id);
- 			else
- 				DBG_871X("psta is null\n");
-@@ -1673,7 +1673,7 @@ static void SetHwReg8723BS(struct adapter *padapter, u8 variable, u8 *val)
- 				(pwrctl->wowlan_wake_reason != Rx_DeAuth)
- 			) {
- 				rtl8723b_set_FwJoinBssRpt_cmd(padapter, RT_MEDIA_CONNECT);
--				if (psta != NULL)
-+				if (psta)
- 					rtl8723b_set_FwMediaStatusRpt_cmd(padapter, RT_MEDIA_CONNECT, psta->mac_id);
- 			}
- #ifdef CONFIG_PNO_SUPPORT
+data_count appears to be the number of bytes remaining in the FIFO. (I 
+have to infer that much from the surrounding code. I don't have 
+documentation for this controller.)
+
+Some comments would be nice.
+
+> +		struct scatterlist *sg = scsi_sglist(CURRENT_SC);
+> +		int left, i = 0;
+>  
+>  		CMD_INC_RESID(CURRENT_SC, data_count);
+>  
+
+Apparently the aim is to increase the residual by the number of bytes that 
+will never leave the FIFO. Above we can see that increase performed by 
+scsi_set_resid() and now the same has to be done to the SCp struct.
+
+>  		data_count -= CURRENT_SC->SCp.ptr -
+>  			SG_ADDRESS(CURRENT_SC->SCp.buffer);
+
+Here, data_count effectively has SCp.this_residual subtracted from it.
+
+> -		while(data_count>0) {
+> -			CURRENT_SC->SCp.buffer--;
+> -			CURRENT_SC->SCp.buffers_residual++;
+> -			data_count -= CURRENT_SC->SCp.buffer->length;
+> -		}
+
+So far, so good.
+
+> -		CURRENT_SC->SCp.ptr = SG_ADDRESS(CURRENT_SC->SCp.buffer) -
+> -			data_count;
+> -		CURRENT_SC->SCp.this_residual = CURRENT_SC->SCp.buffer->length +
+> -			data_count;
+
+This is like saying ptr = buffer + residual, which is bogus. This must be 
+an old bug, but we never hit it because the FIFO is always empty when we 
+get a DISCONNECT message. Probably because every SG segment has a length 
+that is a multiple of 128 bytes. (Juergen?)
+
+> +
+> +		left = CURRENT_SC->transfersize - data_count;
+
+Are you sure about that? Perhaps you meant to write,
+		left = scsi_bufflen(CURRENT_SC) - scsi_get_resid(CURRENT_SC);
+
+Is there a better name for this variable? Maybe 'sent' or 'bytes_sent'?
+
+> +		for (i = 0; left > 0 && !sg_is_last(sg); i++, sg = sg_next(sg)) {
+> +			if (left < sg->length)
+> +				break;
+> +			left -= sg->length;
+> +		}
+> +
+> +		if (data_count > 0) {
+> +			CURRENT_SC->SCp.buffers_residual += i;
+
+Shouldn't that be,
+			CURRENT_SC->SCp.buffers_residual = i;
+
+> +			CURRENT_SC->SCp.buffer = sg;
+> +
+> +			CURRENT_SC->SCp.ptr = SG_ADDRESS(CURRENT_SC->SCp.buffer) + left;
+> +			CURRENT_SC->SCp.this_residual = CURRENT_SC->SCp.buffer->length -
+> +				left;
+> +		}
+>  	}
+>  
+>  	SETPORT(SXFRCTL0, CH1|CLRCH1|CLRSTCNT);
+> 
+
+BTW, datao_run() seems to guarantee that the FIFO will never contain more 
+than min(128, SCp.this_residual) so I suspect that this code can be 
+simplified. That's just BTW. I wouldn't attempt to optimize this branch as 
+it will only run when the FIFO is not empty, if ever. So I'd prefer 
+clarity. Besides, I don't have the hardware to test it on.
+
 -- 
-2.7.4
-
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
