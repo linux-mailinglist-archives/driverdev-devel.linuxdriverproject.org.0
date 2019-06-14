@@ -1,52 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 398AE45EF9
-	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Jun 2019 15:48:15 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2CFD145EFB
+	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Jun 2019 15:48:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CBDA987D2F;
-	Fri, 14 Jun 2019 13:48:13 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BF452869FD;
+	Fri, 14 Jun 2019 13:48:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id q-R1x66DR-5m; Fri, 14 Jun 2019 13:48:13 +0000 (UTC)
+	with ESMTP id mceyANoE4aWP; Fri, 14 Jun 2019 13:48:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2157887CE7;
-	Fri, 14 Jun 2019 13:48:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 24E9B869D9;
+	Fri, 14 Jun 2019 13:48:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id F23B61BF3A9
- for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 13:48:09 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B89881BF3A9
+ for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 13:48:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id EE0B187D13
- for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 13:48:09 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id B639222920
+ for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 13:48:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4odx136IK8kN for <devel@linuxdriverproject.org>;
- Fri, 14 Jun 2019 13:48:08 +0000 (UTC)
+ with ESMTP id hNJ5dVA5O0NJ for <devel@linuxdriverproject.org>;
+ Fri, 14 Jun 2019 13:48:13 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from bombadil.infradead.org (bombadil.infradead.org
  [198.137.202.133])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 529B187CE7
- for <devel@driverdev.osuosl.org>; Fri, 14 Jun 2019 13:48:05 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 105402302C
+ for <devel@driverdev.osuosl.org>; Fri, 14 Jun 2019 13:48:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20170209; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From
  :Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
  List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=GC9Gboqptsed7WVs/myU7Q6vnMi9vBxIwQ2uPA5D0pw=; b=UntrdW5G2+b49vgfbJaGUDLN0E
- 6yE3PpGKvsuDOwoXcyXIdlGC5PZ5Rx2/rsrnwuL8rTHEvIhh9QW1GU17v1tVNFho0ne9tn/Z4eT54
- OswJKEO4vsr1FvbWuovnG6n4mY8AwbgfvU32igpwJyhrRibTzRGYZ0pS+zdU9gFhrv4TTezoxvPTg
- hlLUh5YHvDGvTCdMXXQ7VhKjApYDYfxlL3VT+nNwtwNQkVPOAXwAW1qubfFu1o+AsbdCjGKbzv2rR
- p+QnqhNY4+X8ZCNtkVbeuJ4T0148xhaiU0PQmlP12f+mNEdx8mMY/AvPPLm2vvkGBNkm80UQVHowq
- 4Bj27y3g==;
+ bh=voUH/VESvtWj4I6HLsXBpYRJA1I9bz8V8FhWnyIglGY=; b=uRK7ZFAnjpL2rr/0CUfA2lvRvn
+ MMA/TT67HwvKwHALsH6Yi1bK/9hQpeF2Y9WNSQiuHCQZk3pGo5Iut8pm4tAYvEGrw/6WXYNTmPxKO
+ dAMk/oU/QBEx/xXpnJFg9G8wz5Fp9ysZOZxj3YySGlQxOS9aKURHvR4B3f1nS4JChwui9qEEY8i6X
+ bJlC9leC1vR0nEGsTg5/vqnuj4fdWff3QX72bE0zpkRJHcgzwvQf1m9HIJwDxhhdbqgBXTTX3ixSJ
+ 5oYDmNfDcKyAIPrOHNouEAsKLx5bVbDJIHGyKOFWk1kar/q9/gTj6w2JpvlWTWoobtck9JM+dFHSI
+ 3wLzosZw==;
 Received: from 213-225-9-13.nat.highway.a1.net ([213.225.9.13] helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hbmYa-0004vN-2H; Fri, 14 Jun 2019 13:47:52 +0000
+ id 1hbmYd-00054z-8V; Fri, 14 Jun 2019 13:47:56 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>,
@@ -55,10 +55,10 @@ To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
  Rodrigo Vivi <rodrigo.vivi@intel.com>, Ian Abbott <abbotti@mev.co.uk>,
  H Hartley Sweeten <hsweeten@visionengravers.com>
-Subject: [PATCH 06/16] drm: don't pass __GFP_COMP to dma_alloc_coherent in
- drm_pci_alloc
-Date: Fri, 14 Jun 2019 15:47:16 +0200
-Message-Id: <20190614134726.3827-7-hch@lst.de>
+Subject: [PATCH 07/16] IB/hfi1: stop passing bogus gfp flags arguments to
+ dma_alloc_coherent
+Date: Fri, 14 Jun 2019 15:47:17 +0200
+Message-Id: <20190614134726.3827-8-hch@lst.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190614134726.3827-1-hch@lst.de>
 References: <20190614134726.3827-1-hch@lst.de>
@@ -90,27 +90,76 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The memory returned from dma_alloc_coherent is opaqueue to the user,
-thus the exact way of page refcounting shall not matter either.
+dma_alloc_coherent is not just the page allocator.  The only valid
+arguments to pass are either GFP_ATOMIC or GFP_ATOMIC with possible
+modifiers of __GFP_NORETRY or __GFP_NOWARN.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- drivers/gpu/drm/drm_bufs.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/infiniband/hw/hfi1/init.c | 22 +++-------------------
+ 1 file changed, 3 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/gpu/drm/drm_bufs.c b/drivers/gpu/drm/drm_bufs.c
-index b640437ce90f..7a79a16a055c 100644
---- a/drivers/gpu/drm/drm_bufs.c
-+++ b/drivers/gpu/drm/drm_bufs.c
-@@ -70,7 +70,7 @@ drm_dma_handle_t *drm_pci_alloc(struct drm_device * dev, size_t size, size_t ali
- 	dmah->size = size;
- 	dmah->vaddr = dma_alloc_coherent(&dev->pdev->dev, size,
- 					 &dmah->busaddr,
--					 GFP_KERNEL | __GFP_COMP);
-+					 GFP_KERNEL);
+diff --git a/drivers/infiniband/hw/hfi1/init.c b/drivers/infiniband/hw/hfi1/init.c
+index 71cb9525c074..ff9d106ee784 100644
+--- a/drivers/infiniband/hw/hfi1/init.c
++++ b/drivers/infiniband/hw/hfi1/init.c
+@@ -1846,17 +1846,10 @@ int hfi1_create_rcvhdrq(struct hfi1_devdata *dd, struct hfi1_ctxtdata *rcd)
+ 	u64 reg;
  
- 	if (dmah->vaddr == NULL) {
- 		kfree(dmah);
+ 	if (!rcd->rcvhdrq) {
+-		gfp_t gfp_flags;
+-
+ 		amt = rcvhdrq_size(rcd);
+ 
+-		if (rcd->ctxt < dd->first_dyn_alloc_ctxt || rcd->is_vnic)
+-			gfp_flags = GFP_KERNEL;
+-		else
+-			gfp_flags = GFP_USER;
+ 		rcd->rcvhdrq = dma_alloc_coherent(&dd->pcidev->dev, amt,
+-						  &rcd->rcvhdrq_dma,
+-						  gfp_flags | __GFP_COMP);
++						  &rcd->rcvhdrq_dma, GFP_KERNEL);
+ 
+ 		if (!rcd->rcvhdrq) {
+ 			dd_dev_err(dd,
+@@ -1870,7 +1863,7 @@ int hfi1_create_rcvhdrq(struct hfi1_devdata *dd, struct hfi1_ctxtdata *rcd)
+ 			rcd->rcvhdrtail_kvaddr = dma_alloc_coherent(&dd->pcidev->dev,
+ 								    PAGE_SIZE,
+ 								    &rcd->rcvhdrqtailaddr_dma,
+-								    gfp_flags);
++								    GFP_KERNEL);
+ 			if (!rcd->rcvhdrtail_kvaddr)
+ 				goto bail_free;
+ 		}
+@@ -1926,19 +1919,10 @@ int hfi1_setup_eagerbufs(struct hfi1_ctxtdata *rcd)
+ {
+ 	struct hfi1_devdata *dd = rcd->dd;
+ 	u32 max_entries, egrtop, alloced_bytes = 0;
+-	gfp_t gfp_flags;
+ 	u16 order, idx = 0;
+ 	int ret = 0;
+ 	u16 round_mtu = roundup_pow_of_two(hfi1_max_mtu);
+ 
+-	/*
+-	 * GFP_USER, but without GFP_FS, so buffer cache can be
+-	 * coalesced (we hope); otherwise, even at order 4,
+-	 * heavy filesystem activity makes these fail, and we can
+-	 * use compound pages.
+-	 */
+-	gfp_flags = __GFP_RECLAIM | __GFP_IO | __GFP_COMP;
+-
+ 	/*
+ 	 * The minimum size of the eager buffers is a groups of MTU-sized
+ 	 * buffers.
+@@ -1969,7 +1953,7 @@ int hfi1_setup_eagerbufs(struct hfi1_ctxtdata *rcd)
+ 			dma_alloc_coherent(&dd->pcidev->dev,
+ 					   rcd->egrbufs.rcvtid_size,
+ 					   &rcd->egrbufs.buffers[idx].dma,
+-					   gfp_flags);
++					   GFP_KERNEL);
+ 		if (rcd->egrbufs.buffers[idx].addr) {
+ 			rcd->egrbufs.buffers[idx].len =
+ 				rcd->egrbufs.rcvtid_size;
 -- 
 2.20.1
 
