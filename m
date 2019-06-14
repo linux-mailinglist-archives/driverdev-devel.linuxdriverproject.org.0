@@ -1,66 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1BF5645777
-	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Jun 2019 10:28:27 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 38B858697D;
-	Fri, 14 Jun 2019 08:28:25 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EAVcU2ZSYUJI; Fri, 14 Jun 2019 08:28:24 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5C8DE86966;
-	Fri, 14 Jun 2019 08:28:23 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2D7D01BF3E9
- for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 08:28:21 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 24145459F8
+	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Jun 2019 12:08:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2A34E883B0
- for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 08:28:21 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 078BD8842E;
+	Fri, 14 Jun 2019 10:08:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id SS7FPxW4Y01V; Fri, 14 Jun 2019 10:08:08 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 75ECC8841F;
+	Fri, 14 Jun 2019 10:08:08 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1AA051BF3E8
+ for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 10:08:06 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 06A628697D
+ for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 10:08:06 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CFPFW3KqaJca for <devel@linuxdriverproject.org>;
- Fri, 14 Jun 2019 08:28:20 +0000 (UTC)
+ with ESMTP id 9H_YU6T-04BC for <devel@linuxdriverproject.org>;
+ Fri, 14 Jun 2019 10:08:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8C833883A8
- for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 08:28:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=nuJWzFaHmrWndyMr2eq2rxRkyBTd82Hnqew1N2lQ4hk=; b=yKg4SPafKQn1l+kcpnvawhhLS
- kVC7GI2yCKD3vYzywRoL2D6CD1wt/5NTbpWB1HkRIWnzWJ8cM0S1iX8wC0qZXntaUIsFTG716DZBp
- 9UORZw7pjo1XKw/o4dOwkqg5riOjx2o3dkOeUEt/ppFTOQXmPwNLP2+OXXsuZR/qYHqqkl93hbqZq
- DonXmBWOJWaUXodvzhMhRj4YCpp+GIceACsdt8T84z38JHzvl+XqIPQV/Yt6vucZf+x8YyVUN83Pd
- O4YGt8ac4UAZG0QPiDIb595DFrVkFkQnnCau7n2/ez6Th71ghD78qTwDHFYxLrX2LvIGyWrvqoc5Q
- lJpC6aD7Q==;
-Received: from j217100.upc-j.chello.nl ([24.132.217.100]
- helo=hirez.programming.kicks-ass.net)
- by merlin.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hbhZC-0005Bg-HI; Fri, 14 Jun 2019 08:28:10 +0000
-Received: by hirez.programming.kicks-ass.net (Postfix, from userid 1000)
- id 944F22013F74B; Fri, 14 Jun 2019 10:28:07 +0200 (CEST)
-Date: Fri, 14 Jun 2019 10:28:07 +0200
-From: Peter Zijlstra <peterz@infradead.org>
-To: Vitaly Kuznetsov <vkuznets@redhat.com>
+Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
+ [209.85.128.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7C400868BF
+ for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 10:08:04 +0000 (UTC)
+Received: by mail-wm1-f65.google.com with SMTP id g135so1708648wme.4
+ for <devel@linuxdriverproject.org>; Fri, 14 Jun 2019 03:08:04 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
+ :message-id:mime-version;
+ bh=rjUazryDHv7wuzJPfN35mvC+nqyi403EO56ab8UJ3vM=;
+ b=TUyRaA48YguqELutZZNWvXt1rxcG812TsDrEwTjU0rVT5NKjXphmcmIDl36Wosriwr
+ VqMM/pmiK6eBwU8664IIs2b/j2YJLAkPJUpWSa55VQg6vfhxy3Tkh54J5iCGbLiS1wwA
+ KZUhP2lglIPMRaTA63Q4VX4/2mn102sx9ctxLqdLs6JVOjzvVbJJvBHoz8lsThSYzfzl
+ mkKpG+jPVpkJovpedeAe3btbW/pJCSti4cQyfVx5269Gq0QY+RaFOQqYfHX/5fa1eTNA
+ /4EzzDe33yO6fBYS+4gaZmKE/w5Hsa0PgYXs/2NNpTDVZPyLvhjPxV9W/79YHXrBrZ4w
+ EyGg==
+X-Gm-Message-State: APjAAAUZZd2BL6xZuLp7ch3LjXzUNqkTG5luQqKOt/fXPMaPFakIZ9E6
+ /7bi0N8wBBrlAsagwAGgAow/Gg==
+X-Google-Smtp-Source: APXvYqzCWohsnjsTkpzB4opXNwIILIOK7t34ke5ERFVDtWha+QAnoaQQBbp73Yhj7uy5IC+qUKcSIQ==
+X-Received: by 2002:a1c:63d7:: with SMTP id x206mr7451274wmb.19.1560506882990; 
+ Fri, 14 Jun 2019 03:08:02 -0700 (PDT)
+Received: from vitty.brq.redhat.com (nat-pool-brq-t.redhat.com.
+ [213.175.37.10])
+ by smtp.gmail.com with ESMTPSA id t7sm1683230wrn.52.2019.06.14.03.08.01
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Fri, 14 Jun 2019 03:08:02 -0700 (PDT)
+From: Vitaly Kuznetsov <vkuznets@redhat.com>
+To: Peter Zijlstra <peterz@infradead.org>
 Subject: Re: [PATCH] x86/hyperv: Disable preemption while setting
  reenlightenment vector
-Message-ID: <20190614082807.GV3436@hirez.programming.kicks-ass.net>
+In-Reply-To: <20190614082807.GV3436@hirez.programming.kicks-ass.net>
 References: <20190611212003.26382-1-dima@arista.com>
  <8736kff6q3.fsf@vitty.brq.redhat.com>
+ <20190614082807.GV3436@hirez.programming.kicks-ass.net>
+Date: Fri, 14 Jun 2019 12:08:01 +0200
+Message-ID: <877e9o7a4e.fsf@vitty.brq.redhat.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <8736kff6q3.fsf@vitty.brq.redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,120 +94,29 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Jun 12, 2019 at 12:17:24PM +0200, Vitaly Kuznetsov wrote:
-> Dmitry Safonov <dima@arista.com> writes:
-> 
-> > KVM support may be compiled as dynamic module, which triggers the
-> > following splat on modprobe:
-> >
-> >  KVM: vmx: using Hyper-V Enlightened VMCS
-> >  BUG: using smp_processor_id() in preemptible [00000000] code: modprobe/466 caller is debug_smp_processor_id+0x17/0x19
-> >  CPU: 0 PID: 466 Comm: modprobe Kdump: loaded Not tainted 4.19.43 #1
-> >  Hardware name: Microsoft Corporation Virtual Machine/Virtual Machine, BIOS 090007  06/02/2017
-> >  Call Trace:
-> >   dump_stack+0x61/0x7e
-> >   check_preemption_disabled+0xd4/0xe6
-> >   debug_smp_processor_id+0x17/0x19
-> >   set_hv_tscchange_cb+0x1b/0x89
-> >   kvm_arch_init+0x14a/0x163 [kvm]
-> >   kvm_init+0x30/0x259 [kvm]
-> >   vmx_init+0xed/0x3db [kvm_intel]
-> >   do_one_initcall+0x89/0x1bc
-> >   do_init_module+0x5f/0x207
-> >   load_module+0x1b34/0x209b
-> >   __ia32_sys_init_module+0x17/0x19
-> >   do_fast_syscall_32+0x121/0x1fa
-> >   entry_SYSENTER_compat+0x7f/0x91
-> 
-> Hm, I never noticed this one, you probably need something like
-> CONFIG_PREEMPT enabled so see it.
+Peter Zijlstra <peterz@infradead.org> writes:
 
-CONFIG_DEBUG_PREEMPT
+> @@ -182,7 +182,7 @@ void set_hv_tscchange_cb(void (*cb)(void))
+>  	struct hv_reenlightenment_control re_ctrl = {
+>  		.vector = HYPERV_REENLIGHTENMENT_VECTOR,
+>  		.enabled = 1,
+> -		.target_vp = hv_vp_index[smp_processor_id()]
+> +		.target_vp = hv_vp_index[raw_smp_processor_id()]
+>  	};
+>  	struct hv_tsc_emulation_control emu_ctrl = {.enabled = 1};
+>  
 
-> > @@ -91,7 +91,7 @@ EXPORT_SYMBOL_GPL(hv_max_vp_index);
-> >  static int hv_cpu_init(unsigned int cpu)
-> >  {
-> >  	u64 msr_vp_index;
-> > -	struct hv_vp_assist_page **hvp = &hv_vp_assist_page[smp_processor_id()];
-> > +	struct hv_vp_assist_page **hvp = &hv_vp_assist_page[cpu];
-> >  	void **input_arg;
-> >  	struct page *pg;
-> >  
-> > @@ -103,7 +103,7 @@ static int hv_cpu_init(unsigned int cpu)
-> >  
-> >  	hv_get_vp_index(msr_vp_index);
-> >  
-> > -	hv_vp_index[smp_processor_id()] = msr_vp_index;
-> > +	hv_vp_index[cpu] = msr_vp_index;
-> >  
-> >  	if (msr_vp_index > hv_max_vp_index)
-> >  		hv_max_vp_index = msr_vp_index;
-> 
-> The above is unrelated cleanup (as cpu == smp_processor_id() for
-> CPUHP_AP_ONLINE_DYN callbacks), right? As I'm pretty sure these can'd be
-> preempted.
-
-Yeah, makes sense though.
-
-> > @@ -182,7 +182,6 @@ void set_hv_tscchange_cb(void (*cb)(void))
-> >  	struct hv_reenlightenment_control re_ctrl = {
-> >  		.vector = HYPERV_REENLIGHTENMENT_VECTOR,
-> >  		.enabled = 1,
-> > -		.target_vp = hv_vp_index[smp_processor_id()]
-> >  	};
-> >  	struct hv_tsc_emulation_control emu_ctrl = {.enabled = 1};
-> >  
-> > @@ -196,7 +195,11 @@ void set_hv_tscchange_cb(void (*cb)(void))
-> >  	/* Make sure callback is registered before we write to MSRs */
-> >  	wmb();
-> >  
-> > +	preempt_disable();
-> > +	re_ctrl.target_vp = hv_vp_index[smp_processor_id()];
-> >  	wrmsrl(HV_X64_MSR_REENLIGHTENMENT_CONTROL, *((u64 *)&re_ctrl));
-> > +	preempt_enable();
-> > +
-> 
-> My personal preference would be to do something like
->    int cpu = get_cpu();
-> 
->    ... set things up ...
-> 
->    put_cpu();
-
-If it doesn't matter, how about this then?
-
----
-diff --git a/arch/x86/hyperv/hv_init.c b/arch/x86/hyperv/hv_init.c
-index 1608050e9df9..e58c693a9fce 100644
---- a/arch/x86/hyperv/hv_init.c
-+++ b/arch/x86/hyperv/hv_init.c
-@@ -91,7 +91,7 @@ EXPORT_SYMBOL_GPL(hv_max_vp_index);
- static int hv_cpu_init(unsigned int cpu)
- {
- 	u64 msr_vp_index;
--	struct hv_vp_assist_page **hvp = &hv_vp_assist_page[smp_processor_id()];
-+	struct hv_vp_assist_page **hvp = &hv_vp_assist_page[cpu];
- 	void **input_arg;
- 	struct page *pg;
- 
-@@ -103,7 +103,7 @@ static int hv_cpu_init(unsigned int cpu)
- 
- 	hv_get_vp_index(msr_vp_index);
- 
--	hv_vp_index[smp_processor_id()] = msr_vp_index;
-+	hv_vp_index[cpu] = msr_vp_index;
- 
- 	if (msr_vp_index > hv_max_vp_index)
- 		hv_max_vp_index = msr_vp_index;
-@@ -182,7 +182,7 @@ void set_hv_tscchange_cb(void (*cb)(void))
- 	struct hv_reenlightenment_control re_ctrl = {
- 		.vector = HYPERV_REENLIGHTENMENT_VECTOR,
- 		.enabled = 1,
--		.target_vp = hv_vp_index[smp_processor_id()]
-+		.target_vp = hv_vp_index[raw_smp_processor_id()]
- 	};
- 	struct hv_tsc_emulation_control emu_ctrl = {.enabled = 1};
- 
+Yes, this should do, thanks! I'd also suggest to leave a comment like
+	/* 
+         * This function can get preemted and migrate to a different CPU
+	 * but this doesn't matter. We just need to assign
+	 * reenlightenment notification to some online CPU. In case this
+         * CPU goes offline, hv_cpu_die() will re-assign it to some
+ 	 * other online CPU.
+	 */
+  
+-- 
+Vitaly
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
