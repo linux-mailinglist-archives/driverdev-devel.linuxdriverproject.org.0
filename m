@@ -2,81 +2,48 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0F18B46E5C
-	for <lists+driverdev-devel@lfdr.de>; Sat, 15 Jun 2019 06:37:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 72F7B472A5
+	for <lists+driverdev-devel@lfdr.de>; Sun, 16 Jun 2019 02:45:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DC13586ADD;
-	Sat, 15 Jun 2019 04:37:05 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B43CB859AA;
+	Sun, 16 Jun 2019 00:45:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id o_nmySCEuutV; Sat, 15 Jun 2019 04:37:05 +0000 (UTC)
+	with ESMTP id bdW2yhamX6qs; Sun, 16 Jun 2019 00:45:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 644FE86AC9;
-	Sat, 15 Jun 2019 04:37:04 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2C51685701;
+	Sun, 16 Jun 2019 00:45:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BA76E1BF2F6
- for <devel@linuxdriverproject.org>; Sat, 15 Jun 2019 04:37:02 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C7A531BF2F4
+ for <devel@linuxdriverproject.org>; Sun, 16 Jun 2019 00:45:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B6E4387C5A
- for <devel@linuxdriverproject.org>; Sat, 15 Jun 2019 04:37:02 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id C1C35876D8
+ for <devel@linuxdriverproject.org>; Sun, 16 Jun 2019 00:45:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GKRUue8ueqdI for <devel@linuxdriverproject.org>;
- Sat, 15 Jun 2019 04:37:02 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
- [209.85.210.193])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 45D1F87849
- for <devel@driverdev.osuosl.org>; Sat, 15 Jun 2019 04:37:02 +0000 (UTC)
-Received: by mail-pf1-f193.google.com with SMTP id a186so2577559pfa.5
- for <devel@driverdev.osuosl.org>; Fri, 14 Jun 2019 21:37:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=q2r6AD+gcy9pQMyOS5hD54vNjbTsuyd4RCExb0fM2pY=;
- b=CTqzxIcQNSQePrhTuYqnWRyrJ3m7Y/n/1ylOQ3QfTCb0/ah4nKQiLgbJ213qp5K/dk
- CxPqQtEhgs6WJsuqkXI5BYZuNcfQbyOp5dFrpMjLFlCO+vwX6uahNpSPaal1KEnH06KP
- 03/2CllAoAnh9p66fCzCDDqBpYXkrWfMo6EYl5sSBRsBO8CBK6VOVmp05nrBEmwkAfsl
- WzUie4JQkZk8m3XYUpivkojVwfV7bJOjcbxWVmQ9SsQww/thllTsK9esN/kgnxUf0Wd4
- +QU1THQRcU2odjYFrIgoj3gEfAS27Sax4NtO+bVdnqsSp8iBvAXI8yrPhmTnEkFwyBL+
- /s4A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=q2r6AD+gcy9pQMyOS5hD54vNjbTsuyd4RCExb0fM2pY=;
- b=Uoc/vk2j9wDzLlNeFbYPbdPxx2ZUMZYwAekmWfFpF3Brux6nHzyJJj2AjwgCx/HgPM
- ZRy5IvPWi2UVxyc5MFvqjAlKi6/vTLuUnc16YPoDNGgOA9aEMzA9p8ohVz0bZbhHdee5
- bTzKhjH12n9ZRU8e3qs+2jao+XJ8lyAyS0+VIfiuJYXtdQjJzWh9XYwmZo+kkhEl0A9K
- mV9zA+Kwo0XrEBz+Ysy8JWZANL2pbrVjN7mv7EjWcKx5JJGXT4y0+jWY2sI/qojwoVBc
- k65K5DiGwTbUTzsjOAAjCL60VOskn6GQyfvtDbBa+RN/5K3ap6Fpk+cae66kjzAP/ucd
- cbcQ==
-X-Gm-Message-State: APjAAAUCG3qznM1Jj5eKyjLC/r8JbLo5An1Q9lKl+L9HVZZL9ideKhkP
- eUceA0J5x9kpFOCO6JJNZoQ=
-X-Google-Smtp-Source: APXvYqyqCLmnIvcGNvq4D9wJ4Ihu8wbmegQPVDYYNqCRFdPAClO5REXkPgECJcB9/VkQUlQxYgxVNw==
-X-Received: by 2002:a17:90a:de0e:: with SMTP id
- m14mr14514409pjv.36.1560573421918; 
- Fri, 14 Jun 2019 21:37:01 -0700 (PDT)
-Received: from hari-Inspiron-1545 ([183.83.89.153])
- by smtp.gmail.com with ESMTPSA id g19sm4918933pgb.26.2019.06.14.21.36.59
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 14 Jun 2019 21:37:01 -0700 (PDT)
-Date: Sat, 15 Jun 2019 10:06:57 +0530
-From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Hariprasad Kelam <hariprasad.kelam@gmail.com>,
- Himadri Pandya <himadri18.07@gmail.com>,
- YueHaibing <yuehaibing@huawei.com>, Arnd Bergmann <arnd@arndb.de>,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 2/2] staging: rtl8723bs: hal: spaces preferred around unary
- operator
-Message-ID: <20190615043657.GA12626@hari-Inspiron-1545>
+ with ESMTP id p6TcjrRWNthQ for <devel@linuxdriverproject.org>;
+ Sun, 16 Jun 2019 00:45:52 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from server.luggat.com (unknown [94.101.87.27])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C8AC2876C3
+ for <devel@driverdev.osuosl.org>; Sun, 16 Jun 2019 00:45:51 +0000 (UTC)
+Received: from [100.97.1.58] (host86-187-175-182.range86-187.btcentralplus.com
+ [86.187.175.182])
+ (using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by server.luggat.com (Postfix) with ESMTPSA id 3449210A722;
+ Sat, 15 Jun 2019 17:41:17 +0300 (+03)
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Description: Mail message body
+Subject: WINNING NOTIFCATION!!
+To: Recipients <info@luggat.com>
+From: "Mrs. Abby Robert" <info@luggat.com>
+Date: Sat, 15 Jun 2019 15:46:18 +0100
+Message-Id: <20190616004552.C1C35876D8@hemlock.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,57 +56,53 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: bmwlttrdepartment019@gmail.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch fixes below issues reported by checkpatch
+ATTENTION LUCKY WINNER!!
 
-CHECK: spaces preferred around that '-' (ctx:VxV)
-CHECK: spaces preferred around that '/' (ctx:VxV)
+This is to inform you that you have been selected for a prize of =A31,000,0=
+00.00[One Million Great British pounds Sterling] from the international bal=
+loting programs held on the 2nd section in the UNITED KINGDOM.
 
-Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
----
- drivers/staging/rtl8723bs/hal/rtl8723bs_xmit.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+The selection process was carried out through random selection in our
+computerized email selection system (ESS) from a database of over
+250,000 email addresses drawn from all the continents of the world
+which your email address was selected. However, no tickets were sold
+but all email addresses were assigned to different ticket numbers for
+representation and privacy.
 
-diff --git a/drivers/staging/rtl8723bs/hal/rtl8723bs_xmit.c b/drivers/staging/rtl8723bs/hal/rtl8723bs_xmit.c
-index 215335c..b44e902 100644
---- a/drivers/staging/rtl8723bs/hal/rtl8723bs_xmit.c
-+++ b/drivers/staging/rtl8723bs/hal/rtl8723bs_xmit.c
-@@ -284,7 +284,7 @@ static s32 xmit_xmitframes(struct adapter *padapter, struct xmit_priv *pxmitpriv
- 				txlen = txdesc_size + rtw_wlan_pkt_size(pxmitframe);
- 				if(	!pxmitbuf ||
- 					((_RND(pxmitbuf->len, 8) + txlen) > max_xmit_len) ||
--					(k >= (rtw_hal_sdio_max_txoqt_free_space(padapter)-1))
-+					(k >= (rtw_hal_sdio_max_txoqt_free_space(padapter) - 1))
- 				) {
- 					if (pxmitbuf) {
- 						/* pxmitbuf->priv_data will be NULL, and will crash here */
-@@ -355,8 +355,8 @@ static s32 xmit_xmitframes(struct adapter *padapter, struct xmit_priv *pxmitpriv
- 					rtw_count_tx_stats(padapter, pxmitframe, pxmitframe->attrib.last_txcmdsz);
- 
- 					txlen = txdesc_size + pxmitframe->attrib.last_txcmdsz;
--					pxmitframe->pg_num = (txlen + 127)/128;
--					pxmitbuf->pg_num += (txlen + 127)/128;
-+					pxmitframe->pg_num = (txlen + 127) / 128;
-+					pxmitbuf->pg_num += (txlen + 127) / 128;
- 				    /* if (k != 1) */
- 					/* 	((struct xmit_frame*)pxmitbuf->priv_data)->pg_num += pxmitframe->pg_num; */
- 					pxmitbuf->ptail += _RND(txlen, 8); /*  round to 8 bytes alignment */
-@@ -522,7 +522,7 @@ s32 rtl8723bs_mgnt_xmit(
- 	rtl8723b_update_txdesc(pmgntframe, pmgntframe->buf_addr);
- 
- 	pxmitbuf->len = txdesc_size + pattrib->last_txcmdsz;
--	pxmitbuf->pg_num = (pxmitbuf->len + 127)/128; /*  128 is tx page size */
-+	pxmitbuf->pg_num = (pxmitbuf->len + 127) / 128; /*  128 is tx page size */
- 	pxmitbuf->ptail = pmgntframe->buf_addr + pxmitbuf->len;
- 	pxmitbuf->ff_hwaddr = rtw_get_ff_hwaddr(pmgntframe);
- 
--- 
-2.7.4
+The BMW Lottery is approved by the United Kingdom Gaming Board and also
+Licensed by the International Association of Gaming Regulators (IAGR).
+To begin the processing of your prize you are to provide me with the
+under listed information as soon as possible:
 
+1. Name In Full :
+2. Residential Address :
+3. Nationality :
+4. Age :
+5. Sex
+6. Occupation :
+7. Direct Phone :
+8. Present Country :
+9. Email address :
+10.pin code Number BMW:201987HGDD0326
+
+Name: Mr. Ausbert Williams
+Email: bmwlttrdepartment019@gmail.com
+
+Contact him by providing him with your secret pin code Number BMW:
+201987HGDD0326. You are also advised to provide him with the under
+listed information as soon as possible.
+
+Congratulations again from all our staff and thank you for being part
+of our promotional program.
+
+Mrs. Abby Robert.
+THE DIRECTOR PROMOTION
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
