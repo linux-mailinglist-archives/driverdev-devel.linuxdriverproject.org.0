@@ -1,60 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 85BFB4759C
-	for <lists+driverdev-devel@lfdr.de>; Sun, 16 Jun 2019 17:46:00 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5904C475DB
+	for <lists+driverdev-devel@lfdr.de>; Sun, 16 Jun 2019 18:20:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C865385773;
-	Sun, 16 Jun 2019 15:45:58 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 604E2203AD;
+	Sun, 16 Jun 2019 16:20:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WmDTfM4HHmT5; Sun, 16 Jun 2019 15:45:58 +0000 (UTC)
+	with ESMTP id E0H-7SOiqw0I; Sun, 16 Jun 2019 16:20:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 78F5384E55;
-	Sun, 16 Jun 2019 15:45:57 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B7209203B4;
+	Sun, 16 Jun 2019 16:20:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8A8591BF488
- for <devel@linuxdriverproject.org>; Sun, 16 Jun 2019 15:45:55 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 742FC1BF316
+ for <devel@linuxdriverproject.org>; Sun, 16 Jun 2019 16:20:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 8628E87216
- for <devel@linuxdriverproject.org>; Sun, 16 Jun 2019 15:45:55 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 70EBD20372
+ for <devel@linuxdriverproject.org>; Sun, 16 Jun 2019 16:20:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ApSfG5Rb7bRj for <devel@linuxdriverproject.org>;
- Sun, 16 Jun 2019 15:45:55 +0000 (UTC)
+ with ESMTP id HzoBUcBmRWOw for <devel@linuxdriverproject.org>;
+ Sun, 16 Jun 2019 16:20:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1B886870C7
- for <devel@driverdev.osuosl.org>; Sun, 16 Jun 2019 15:45:55 +0000 (UTC)
-Received: from archlinux (cpc149474-cmbg20-2-0-cust94.5-4.cable.virginm.net
- [82.4.196.95])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id E55202063F;
- Sun, 16 Jun 2019 15:45:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1560699954;
- bh=FfgxTZ0FGxbj3xlmt5bwJEqweYKRnTtg8LNoSPRC0Lw=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=CvMSrzqOXMv2n8ac+ol7mLeNMxoosOicaYWKvMibcPR4JgFwQ362TG/bFkT1oeMrP
- 4E7QnDDS6SN4RM3FfYb4CM1m9ysh2LyqHSwO2NxtOX2IjKuGZEP8tnKOiQnv8dA0X6
- y25aIaYbp9Lp9Vy7Y9PSvPBtdrcw2chMEAoWdpKg=
-Date: Sun, 16 Jun 2019 16:45:48 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 1/2] dt-bindings: iio: adc: add adi,ad7780.yaml binding
-Message-ID: <20190616164548.01444b50@archlinux>
-In-Reply-To: <20190614194302.GA18613@bogus>
-References: <cover.1558746978.git.renatogeh@gmail.com>
- <2426649b2d8224ae72e7706bcb8c4f2c44c581d2.1558746978.git.renatogeh@gmail.com>
- <20190614194302.GA18613@bogus>
-X-Mailer: Claws Mail 3.17.3 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
-MIME-Version: 1.0
+Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
+ [209.85.215.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id AABA42026D
+ for <devel@driverdev.osuosl.org>; Sun, 16 Jun 2019 16:20:17 +0000 (UTC)
+Received: by mail-pg1-f195.google.com with SMTP id 83so4368447pgg.8
+ for <devel@driverdev.osuosl.org>; Sun, 16 Jun 2019 09:20:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=F7c4Ii2lIRg4WK3LnUHH3EukYlQjj7xEBu6zgZJFeNk=;
+ b=Kl49fisHXJsYiIBKU06XjHxEyTJHRp+V38FFaOPlaFMjG84Yo0oq8RqsbqMiIIN7XZ
+ ngPuYX9FsazrftHHyXrK1WSIuzykC8s+g4hUNkypGY9mgbY9RRnlZ9vFl2PvIYYjoKuU
+ BPF/GwrnvCiuc6vypLX/NswQCxARywR7xJgJKlP/PNgmnAK4WRcqGUSAHgxVAG8D8EbH
+ E7A1s2itc/S5969rHUhkTbi/0KYEQP1ZD8ih8crAqM/Npx65R9B+3HlK12GWW06AX563
+ Fl4DT9L4m+eNUu07oOl190IISweJCsO6oP9HJ4rlxZbfmrjj3A8nWv0zRfZZtzvOSbPS
+ jQcQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=F7c4Ii2lIRg4WK3LnUHH3EukYlQjj7xEBu6zgZJFeNk=;
+ b=l4NHbmT5FyBu1EJRgSGZEKMDeMXiPT7Qxs4a6sTVt2Fnz/B/JAwLx1k203GhF1FLjC
+ sxBI4mv0DXwQaMROJEyYKoyRFpaypmVLMcMkODDlWDsI5nsgqWTg/gTWeDtoHiCE+Gqe
+ 95dhQVHJHXbt+BD1w8H9twfDcVs/HMFL97gZR7T1SnPVme7pmTOlsN4qE8TNNs8S/nHE
+ lDkScu6DV3OxIiPqNUKQcVHG0oBl5nkF79MYa4gw2OXesdxjxf82ZE+2LimTYMwzMwtr
+ OpEl1/CFeT3jwgTkUrj6vsRxdI2sdsj4WiO72aF1Rtsb189sYBalrmu/iNhf6co23pD8
+ cERg==
+X-Gm-Message-State: APjAAAUpFsvvx2jtQ6usrHQMAge5xgGMo5x8np3q3Hc6xq8KC/aYk5g+
+ nGKztp38psj2QVWDMUhSxl4=
+X-Google-Smtp-Source: APXvYqw+6nLTcradR7JO8k4lVxHqCgfn1DsqASSPlvp5sfwnmu6BNo/Nn/SXUUNTnGziemLe1aHlLA==
+X-Received: by 2002:a63:eb56:: with SMTP id b22mr44191744pgk.81.1560702017175; 
+ Sun, 16 Jun 2019 09:20:17 -0700 (PDT)
+Received: from localhost.localdomain (c-98-210-58-162.hsd1.ca.comcast.net.
+ [98.210.58.162])
+ by smtp.gmail.com with ESMTPSA id 8sm1687908pgc.13.2019.06.16.09.20.16
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Sun, 16 Jun 2019 09:20:16 -0700 (PDT)
+From: Shobhit Kukreti <shobhitkukreti@gmail.com>
+To: Joe Perches <joe@perches.com>
+Subject: [PATCH v3 0/3] Resolve checkpatch if/else brace style errors
+Date: Sun, 16 Jun 2019 09:19:48 -0700
+Message-Id: <cover.1560701271.git.shobhitkukreti@gmail.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <20190616131145.GA30779@t-1000>
+References: <20190616131145.GA30779@t-1000>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,47 +84,55 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devel@driverdev.osuosl.org, lars@metafoo.de,
- stefan.popa@analog.com, Michael.Hennerich@analog.com,
- devicetree@vger.kernel.org, linux-iio@vger.kernel.org,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
- kernel-usp@googlegroups.com, robh+dt@kernel.org, pmeerw@pmeerw.net,
- knaack.h@gmx.de, Renato Lui Geh <renatogeh@gmail.com>,
- alexandru.Ardelean@analog.com
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, Hans de Goede <hdegoede@redhat.com>,
+ Bastien Nocera <hadess@hadess.net>, Shobhit Kukreti <shobhitkukreti@gmail.com>,
+ Larry Finger <Larry.Finger@lwfinger.net>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, 14 Jun 2019 13:43:02 -0600
-Rob Herring <robh@kernel.org> wrote:
+This patchset fixes the following errors reported by checkpatch in the 
+staging/rtl8723bs driver.
 
-> On Fri, 24 May 2019 22:26:30 -0300, Renato Lui Geh wrote:
-> > This patch adds a YAML binding for the Analog Devices AD7780/1 and
-> > AD7170/1 analog-to-digital converters.
-> > 
-> > Signed-off-by: Renato Lui Geh <renatogeh@gmail.com>
-> > ---
-> > Changes in v2:
-> >  - vref-supply to avdd-supply
-> >  - remove avdd-supply from required list
-> >  - include adc block in an spi block
-> > 
-> >  .../bindings/iio/adc/adi,ad7780.txt           | 48 ----------
-> >  .../bindings/iio/adc/adi,ad7780.yaml          | 87 +++++++++++++++++++
-> >  2 files changed, 87 insertions(+), 48 deletions(-)
-> >  delete mode 100644 Documentation/devicetree/bindings/iio/adc/adi,ad7780.txt
-> >  create mode 100644 Documentation/devicetree/bindings/iio/adc/adi,ad7780.yaml
-> >   
-> 
-> Reviewed-by: Rob Herring <robh@kernel.org>
+Patch[1/3]: Fix check patch error "that open brace { should be on the previous line"
 
-Thanks. As I'd not yet pushed out as togreg (rather than testing)
-I've rebased to add your RB.
+Patch[2/3]: Fix the error else should follow close brace '}' 
 
-Thanks,
+Patch[3/3]: Fix Indentation Error
 
-Jonathan
+version 3 changes:
+	- Converted the patch to a patchset
+	- Resolve checkpatch errors:
+		else should follow  close brace '}'
+		Fixed Indentation Error to use tabs
+	- Compiles and builds, untested on real hardware.
+
+	
+version 2 changes:
+	- Removed Trailing whitespace introduced in the previous patch
+        - Moved comments to a new line in the else statement
+
+Shobhit Kukreti (3):
+  staging: rtl8723bs: Resolve checkpatch error "that open brace { should
+    be on the previous line" in the rtl8723 driver
+  staging: rtl8723bs: Resolve the checkpatch error: else should follow  
+      close brace '}'
+  staging: rtl8723bs: Fix Indentation Error: code indent should use tabs
+        where possible
+
+ drivers/staging/rtl8723bs/os_dep/mlme_linux.c     | 19 ++---
+ drivers/staging/rtl8723bs/os_dep/recv_linux.c     | 90 ++++++++---------------
+ drivers/staging/rtl8723bs/os_dep/rtw_proc.c       |  6 +-
+ drivers/staging/rtl8723bs/os_dep/sdio_intf.c      | 54 ++++++--------
+ drivers/staging/rtl8723bs/os_dep/sdio_ops_linux.c | 24 ++----
+ 5 files changed, 71 insertions(+), 122 deletions(-)
+
+-- 
+2.7.4
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
