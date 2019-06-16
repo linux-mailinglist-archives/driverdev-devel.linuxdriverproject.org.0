@@ -2,90 +2,57 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DAF6047396
-	for <lists+driverdev-devel@lfdr.de>; Sun, 16 Jun 2019 09:17:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 684384739D
+	for <lists+driverdev-devel@lfdr.de>; Sun, 16 Jun 2019 09:21:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0CD2F878F0;
-	Sun, 16 Jun 2019 07:17:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 85BEE878E3;
+	Sun, 16 Jun 2019 07:21:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rOueuVjJGsEe; Sun, 16 Jun 2019 07:17:41 +0000 (UTC)
+	with ESMTP id Dx+YZfdcgYbT; Sun, 16 Jun 2019 07:21:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8253E87807;
-	Sun, 16 Jun 2019 07:17:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1539C8666D;
+	Sun, 16 Jun 2019 07:21:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 884941BF2FA
- for <devel@linuxdriverproject.org>; Sun, 16 Jun 2019 07:17:39 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 005C51BF2FA
+ for <devel@linuxdriverproject.org>; Sun, 16 Jun 2019 07:21:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 852ED87807
- for <devel@linuxdriverproject.org>; Sun, 16 Jun 2019 07:17:39 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id ED2E986193
+ for <devel@linuxdriverproject.org>; Sun, 16 Jun 2019 07:21:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tLiPF9RJOP4w for <devel@linuxdriverproject.org>;
- Sun, 16 Jun 2019 07:17:39 +0000 (UTC)
+ with ESMTP id LHjqM2GVtkiA for <devel@linuxdriverproject.org>;
+ Sun, 16 Jun 2019 07:21:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 14D7287804
- for <devel@driverdev.osuosl.org>; Sun, 16 Jun 2019 07:17:38 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5G7G136007380;
- Sun, 16 Jun 2019 07:17:38 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2018-07-02;
- bh=ZJ73kpbrHeloQJUvQyeOr5ZclVGIW1bQHglprF2krOA=;
- b=LfBi3iw0+y+4oMsKxIkJu47SN+x7kNaFUa5x0QPMv4EXR3JRk2QQ8m6TopfNTuia9Nwq
- 3n2VyngRvRspByxMmh1FKfbsjNOgyP7MLete8irNCKAHR96M1obAj9cG8ibDBjyXygqP
- 0etlt4szoKCZict6/j4Ie+Y5p6LDLUg1+ttQ4n2YXmqfesapdYH8xj9wn50uuAY3+7/z
- kac1gsttcZPu6aeVnnN7+VPiBa94mX2fUtnYBYwCNm9s9n83m1VePSJwR6NtREKWc+Up
- CRNTSDm1jC5C4m9fhTIgb1zGTHGsdceBxBYOKGmGZV6SsoWgQKzAsSYphU2kwzyNtikT kA== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by aserp2120.oracle.com with ESMTP id 2t4rmntasp-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Sun, 16 Jun 2019 07:17:37 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5G7F6UR093492;
- Sun, 16 Jun 2019 07:15:37 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by aserp3030.oracle.com with ESMTP id 2t5cpd1ws9-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Sun, 16 Jun 2019 07:15:37 +0000
-Received: from abhmp0015.oracle.com (abhmp0015.oracle.com [141.146.116.21])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x5G7Fatt023361;
- Sun, 16 Jun 2019 07:15:37 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Sun, 16 Jun 2019 00:15:36 -0700
-Date: Sun, 16 Jun 2019 10:15:22 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-Subject: Re: [PATCH] staging: rtl8723bs: os_dep: ioctl_linux:  Make use
- rtw_zmalloc
-Message-ID: <20190616071522.GE28859@kadam>
-References: <20190616053250.GA16116@hari-Inspiron-1545>
+Received: from huawei.com (szxga05-in.huawei.com [45.249.212.191])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4CCEA8614D
+ for <devel@driverdev.osuosl.org>; Sun, 16 Jun 2019 07:21:46 +0000 (UTC)
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 5A8BF53647C697CF2FA8;
+ Sun, 16 Jun 2019 15:21:38 +0800 (CST)
+Received: from [10.151.23.176] (10.151.23.176) by smtp.huawei.com
+ (10.3.19.203) with Microsoft SMTP Server (TLS) id 14.3.439.0; Sun, 16 Jun
+ 2019 15:21:32 +0800
+Subject: Re: [PATCH v3 1/2] staging: erofs: add requirements field in
+ superblock
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+References: <20190611024220.86121-1-gaoxiang25@huawei.com>
+ <20190613083541.67091-1-gaoxiang25@huawei.com>
+ <a4d587eb-c4f0-b9e5-7ece-1ac38c2735f3@huawei.com>
+ <20190616071439.GA11880@kroah.com>
+From: Gao Xiang <gaoxiang25@huawei.com>
+Message-ID: <b2608d35-1d9f-0747-ce3c-ddfd6273e865@huawei.com>
+Date: Sun, 16 Jun 2019 15:21:12 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190616053250.GA16116@hari-Inspiron-1545>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9289
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1810050000 definitions=main-1906160070
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9289
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
- definitions=main-1906160070
+In-Reply-To: <20190616071439.GA11880@kroah.com>
+X-Originating-IP: [10.151.23.176]
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,41 +65,43 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Puranjay Mohan <puranjay12@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Mamta Shukla <mamtashukla555@gmail.com>,
- Emanuel Bennici <benniciemanuel78@gmail.com>,
- Shobhit Kukreti <shobhitkukreti@gmail.com>
+Cc: devel@driverdev.osuosl.org, Chao Yu <yuchao0@huawei.com>,
+ Miao Xie <miaoxie@huawei.com>, Chao Yu <chao@kernel.org>,
+ LKML <linux-kernel@vger.kernel.org>, stable@vger.kernel.org,
+ weidu.du@huawei.com, Fang Wei <fangwei1@huawei.com>,
+ linux-erofs@lists.ozlabs.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Jun 16, 2019 at 11:02:50AM +0530, Hariprasad Kelam wrote:
-> rtw_malloc with memset can be replace with rtw_zmalloc.
+
+
+On 2019/6/16 15:14, Greg Kroah-Hartman wrote:
+> On Sun, Jun 16, 2019 at 03:00:38PM +0800, Gao Xiang wrote:
+>> Hi Greg,
+>>
+>> Sorry for annoying... Could you help merge these two fixes? Thanks in advance...
 > 
-> Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-> ---
->  drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 12 +++---------
->  1 file changed, 3 insertions(+), 9 deletions(-)
+> It was only 3 days, please give me at the very least, a week or so for
+> staging patches.
 > 
-> diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-> index fc3885d..c59e366 100644
-> --- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-> +++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-> @@ -478,14 +478,12 @@ static int wpa_set_encryption(struct net_device *dev, struct ieee_param *param,
->  		if (wep_key_len > 0) {
->  			wep_key_len = wep_key_len <= 5 ? 5 : 13;
->  			wep_total_len = wep_key_len + FIELD_OFFSET(struct ndis_802_11_wep, KeyMaterial);
-> -			pwep = rtw_malloc(wep_total_len);
-> +			pwep = rtw_zmalloc(wep_total_len);
+>> decompression inplace optimization needs these two patches and I will integrate
+>> erofs decompression inplace optimization later for linux-next 5.3, and try to start 
+>> making effort on moving to fs/ directory on kernel 5.4...
+> 
+> You can always send follow-on patches, I apply them in the correct
+> order.  I will get to these next week, thanks.
 
-We should not introduce new uses of rtw_malloc() or rtw_zmalloc().  They
-are buggy garbage.  Use normall kmalloc() and kzalloc().
+OK, I was actually just afraid of the appling order. I was thinking of merging
+these two patches in advance since the new series has the dependency on these patches.
 
-regards,
-dan carpenter
+Thanks,
+Gao Xiang
 
+> 
+> greg k-h
+> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
