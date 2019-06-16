@@ -1,81 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BBD9F472C6
-	for <lists+driverdev-devel@lfdr.de>; Sun, 16 Jun 2019 05:27:16 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3336A472C7
+	for <lists+driverdev-devel@lfdr.de>; Sun, 16 Jun 2019 05:35:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A2B85864B2;
-	Sun, 16 Jun 2019 03:27:14 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D55692040E;
+	Sun, 16 Jun 2019 03:35:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jNqIh2YiCnmO; Sun, 16 Jun 2019 03:27:14 +0000 (UTC)
+	with ESMTP id m1k-akcsEum1; Sun, 16 Jun 2019 03:35:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6AACE86322;
-	Sun, 16 Jun 2019 03:27:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6089220400;
+	Sun, 16 Jun 2019 03:35:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BA0CB1BF372
- for <devel@linuxdriverproject.org>; Sun, 16 Jun 2019 03:27:11 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A1DE61BF372
+ for <devel@linuxdriverproject.org>; Sun, 16 Jun 2019 03:35:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A5FBF86322
- for <devel@linuxdriverproject.org>; Sun, 16 Jun 2019 03:27:11 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8014A85B09
+ for <devel@linuxdriverproject.org>; Sun, 16 Jun 2019 03:35:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YMmyJYZ6rllq for <devel@linuxdriverproject.org>;
- Sun, 16 Jun 2019 03:27:11 +0000 (UTC)
+ with ESMTP id 4pO3k6E3wRI5 for <devel@linuxdriverproject.org>;
+ Sun, 16 Jun 2019 03:35:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
- [209.85.210.196])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0BB8084770
- for <devel@driverdev.osuosl.org>; Sun, 16 Jun 2019 03:27:11 +0000 (UTC)
-Received: by mail-pf1-f196.google.com with SMTP id p184so3752326pfp.7
- for <devel@driverdev.osuosl.org>; Sat, 15 Jun 2019 20:27:11 -0700 (PDT)
+Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
+ [209.85.215.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id F2DAC85AE4
+ for <devel@driverdev.osuosl.org>; Sun, 16 Jun 2019 03:35:33 +0000 (UTC)
+Received: by mail-pg1-f195.google.com with SMTP id s27so3852357pgl.2
+ for <devel@driverdev.osuosl.org>; Sat, 15 Jun 2019 20:35:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=468/RLQKpIqiti2//KMB81NPRyvxXX0VssP8ZgLdNtw=;
- b=etPgZwUYVMabvNDiHfuYDthpUixrKax2+vMU4U4qKFIZgDXih3zHnvdcziRLeDFBwE
- 3r02ZYAJ6PPrd/9EyK519Q4MaJM0LyY7ELMOhfmOpvHXiDDEZG5zMIpFeZUp91y1c1dZ
- KNdLhUSb0Be7TIcKPX05hh9pOUQWPrq12TN94NvoBEZIOMtF+R8sO6GrHJLzW64b5yWj
- YUljYcSIlSmYHDxt6TWxpl0O52wg2FBQJJ/TR34tO7HFL2YaNS+QBdPn/UINxqsAIYCb
- bFDkHnLd9QhcPS4og/ivqLTsmP+BGVwrln/7p90gQWRdlVttNjoNjEeRCp9T233Uwgfv
- GugA==
+ :user-agent; bh=P+dZfWhhczsv5TTRUbrSlNE3547rfcjOFelTNKUKczI=;
+ b=SJq9+4xUablqDSXRTAq0ercysLl4BrTt8Wr2v4V+ZitlX+vGwokkg1PBXq28Ib7C3F
+ 7jpzuvr2lhhWoruFFoSOKhrw08dLdumrTA0bEkKkIqRHT/OMx7bPHi2X40UryG+12fVM
+ 1O4CSlDx/MNDO0QZVaKHz0h17gc/NwMgvJF43I8bu3GWv3kxpcGUjM4f64Uv3uIrdnew
+ 5O9iao2Yi7etmG3zEYgrdLkyY2hlvodEQ1BRgUyxf4bR86kGSgYuWv0g1XlSX9wUTsVW
+ 5Afxt2Js165Qgx6FPJS2CW1Tb8k30p6bdklfqZ9iEnrYfcOU7ATHqkFcDg/XiG1HONnz
+ zDdw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=468/RLQKpIqiti2//KMB81NPRyvxXX0VssP8ZgLdNtw=;
- b=CvViH3qaLMWizof0fpbLzb3bGuOyhklQ9AoDei22N6XciuHLGWhpIxX9e7Wui0Myu+
- E9EeptFsFVU199SmLwtrvzHFJDcdnpweu8y8AdUIzaFV9RYo4aHLjtGiJvy2kU08ugOt
- aD6WEqGUK8Mh7lNU88UViu95b54H3hDIRNdGRFrMet4Bf4mTp27rWQiYgSI9fW/L3TZQ
- uA62HGUIHC/+G8kW1+zNv76FiTB9O91aA15Ynn3YO0WLWdiMf1VCEO2VDn4eJAGPqZlp
- LNB51Rluwme/G55H+wPJD4bwPXl6Z4XOETAgFcyRTtLeBp5Gqpbi549+NqyB85miTE9C
- 3xaw==
-X-Gm-Message-State: APjAAAXo65Bw1ysqmjDqJXqgSO+KRyKei7kGSqxRyfDJlKcFFwUmA/VT
- 0sjjasptIFk7E/Fb55xx0Mw=
-X-Google-Smtp-Source: APXvYqxLn4cvOpVNTUHm+i4dJj/N+ModuzP1/ExShNgEha1mvVOgElUNUZ0r/rFUVe5Ixd5nwKllJA==
-X-Received: by 2002:a17:90b:8d2:: with SMTP id
- ds18mr19685197pjb.132.1560655630682; 
- Sat, 15 Jun 2019 20:27:10 -0700 (PDT)
+ bh=P+dZfWhhczsv5TTRUbrSlNE3547rfcjOFelTNKUKczI=;
+ b=d2VwWrW0agnZQ+dHewaHwI79sW6TT5S7lOnWR8lmy/cLceoOEjJOknLQyORfjyxbGK
+ Jg9ihacBtp8XyyLuE/uyhIMucYO+fJN/9HTT3NxSwnYV5kAFOjhiQ8+k6fWTWp9q6qb6
+ MJzFIHxaKaEuUl5bZFkneIIzCb6S9FyK8RauEsAIsepD7w6rIkxBIKvJJLxKsfYXz2dW
+ /4DDjL5lzWj+zP2oOHVXzVSri6WuFfcUo5D2YxGx4DNhCb9w4ybxJdMICCvM1/i87Xc5
+ 2c6mop5aHx2Z1HCO3cGNa3V6L64wtHLpQ7kiO8/FTe7sQKkHU2BPqGNQKk6zPwBOVxoT
+ qNAg==
+X-Gm-Message-State: APjAAAXY9eZxZeMludvNC0f/AG419Ru5tRu39a8NZv3pKRlcu73R/zFJ
+ s4c/lvAqDPMNNaTh6a/aBjs=
+X-Google-Smtp-Source: APXvYqy4PejcM3KwVGxdZDCvOpg1et1o372+G1zs9MV0Ol4tYlbZHMG7CMmACiAtZO+Q/XdE/S7bww==
+X-Received: by 2002:a17:90a:480d:: with SMTP id
+ a13mr18548872pjh.40.1560656133623; 
+ Sat, 15 Jun 2019 20:35:33 -0700 (PDT)
 Received: from hari-Inspiron-1545 ([183.83.89.153])
- by smtp.gmail.com with ESMTPSA id 125sm4615801pfg.99.2019.06.15.20.27.07
+ by smtp.gmail.com with ESMTPSA id g6sm7318314pgh.64.2019.06.15.20.35.30
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 15 Jun 2019 20:27:10 -0700 (PDT)
-Date: Sun, 16 Jun 2019 08:57:05 +0530
+ Sat, 15 Jun 2019 20:35:32 -0700 (PDT)
+Date: Sun, 16 Jun 2019 09:05:27 +0530
 From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Hariprasad Kelam <hariprasad.kelam@gmail.com>,
+ Kimberly Brown <kimbrownkd@gmail.com>,
+ Shobhit Kukreti <shobhitkukreti@gmail.com>,
+ Bastien Nocera <hadess@hadess.net>,
+ Anirudh Rayabharam <anirudh.rayabharam@gmail.com>,
  Nishka Dasgupta <nishka.dasgupta@yahoo.com>,
- Emanuel Bennici <benniciemanuel78@gmail.com>,
- Jeeeun Evans <jeeeunevans@gmail.com>, Arnd Bergmann <arnd@arndb.de>,
  Hardik Singh Rathore <hardiksingh.k@gmail.com>,
- Colin Ian King <colin.king@canonical.com>,
- Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] staging/rtl8723bs/core: Remove redundant call to memset
-Message-ID: <20190616032705.GA13790@hari-Inspiron-1545>
+ Mamta Shukla <mamtashukla555@gmail.com>,
+ Puranjay Mohan <puranjay12@gmail.com>, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] staging/rtl8723bs/core/rtw_ap: Remove redundant call to memset
+Message-ID: <20190616033527.GA14062@hari-Inspiron-1545>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.5.24 (2015-08-30)
@@ -96,33 +99,27 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-rtw_zmalloc is doing memset . So there is no need to call memset again.
+rtw_zmalloc is internally doing memset . So there is no need to call memset
+again.
 
 Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_mlme.c | 2 --
+ drivers/staging/rtl8723bs/core/rtw_ap.c | 2 --
  1 file changed, 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-index d26d8cf..a8dab1a 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-@@ -2229,7 +2229,6 @@ sint rtw_set_auth(struct adapter *adapter, struct security_priv *psecuritypriv)
+diff --git a/drivers/staging/rtl8723bs/core/rtw_ap.c b/drivers/staging/rtl8723bs/core/rtw_ap.c
+index 87b201a..df055b8 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_ap.c
++++ b/drivers/staging/rtl8723bs/core/rtw_ap.c
+@@ -1502,8 +1502,6 @@ static int rtw_ap_set_key(
  		goto exit;
  	}
  
--	memset(psetauthparm, 0, sizeof(struct setauth_parm));
- 	psetauthparm->mode = (unsigned char)psecuritypriv->dot11AuthAlgrthm;
- 
- 	pcmd->cmdcode = _SetAuth_CMD_;
-@@ -2262,7 +2261,6 @@ sint rtw_set_key(struct adapter *adapter, struct security_priv *psecuritypriv, s
- 		res = _FAIL;
- 		goto exit;
- 	}
 -	memset(psetkeyparm, 0, sizeof(struct setkey_parm));
- 
- 	if (psecuritypriv->dot11AuthAlgrthm == dot11AuthAlgrthm_8021X) {
- 		psetkeyparm->algorithm = (unsigned char)psecuritypriv->dot118021XGrpPrivacy;
+-
+ 	psetkeyparm->keyid = (u8)keyid;
+ 	if (is_wep_enc(alg))
+ 		padapter->securitypriv.key_mask |= BIT(psetkeyparm->keyid);
 -- 
 2.7.4
 
