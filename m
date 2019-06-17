@@ -1,57 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3669B47B01
-	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Jun 2019 09:29:38 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0816447B00
+	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Jun 2019 09:29:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id C960820441;
-	Mon, 17 Jun 2019 07:29:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 740E180AD3;
+	Mon, 17 Jun 2019 07:29:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9EAWoWSn+C8H; Mon, 17 Jun 2019 07:29:35 +0000 (UTC)
+	with ESMTP id TvegW3mGNDO2; Mon, 17 Jun 2019 07:29:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 6756920436;
-	Mon, 17 Jun 2019 07:29:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 36E6A80EBD;
+	Mon, 17 Jun 2019 07:29:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BF7511BF3E3
- for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 07:29:05 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9E0DA1BF3E3
+ for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 07:29:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id BC6C781680
- for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 07:29:05 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9B609868F7
+ for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 07:29:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ObxbJrFuNh8r for <devel@linuxdriverproject.org>;
- Mon, 17 Jun 2019 07:29:05 +0000 (UTC)
+ with ESMTP id ArgksXEyW7SI for <devel@linuxdriverproject.org>;
+ Mon, 17 Jun 2019 07:29:24 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from slot0.nejknio.cf (slot0.nejknio.cf [89.32.41.233])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4815D815EA
- for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 07:29:05 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id F180C86632
+ for <devel@driverdev.osuosl.org>; Mon, 17 Jun 2019 07:29:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=nejknio.cf;
  h=Content-Type:MIME-Version:Content-Transfer-Encoding:Content-Description:Subject:To:From:Date:Reply-To:Message-ID;
  i=trade1@nejknio.cf; bh=73Xs4LxjK+lP+h5mKCyFyWTpkoQ=;
- b=fsRiH13wLtNXDm4cI9kgmS/Qk2+c9o+Kr7vcmYaJal0kIalDX2QBHceOeXJgbIzyulG2OJ5lNpAI
- eMzeXiihwHz8lUrI5SqUxXWP7Aqt1I9bOUN1xXj3nvVlwdboGW/VUuKE23rZDfbCusCWy6cYfWTy
- kgBybi79gKXEgOD4IHtFQquOQWhfOcStyFXrEyGedj2lDLPcQj03x7eEPnSsE4ui6j7CVEu1B80A
- WG99425zmjkoDvzj86qcX5roWlqN8+4sUAYChc98kcDmNHHgeYuR2B1ATAIb2ELSg+xm7bwi4lvP
- E/Udc5Zgk2re+MHZBVII7T6Xa8kbIwsbL0Yghg==
+ b=LD9EJj7vfMOLyVIaANFPUjprKBq8mZtfA99t+rUJqYCSGdbYzUp45oBhi/HQhidPQJORaAWepv8c
+ fBb9KCYsMfZhWSZ4ym8qaBYiTzxVBsqsJThgUsQKl2OrJ8pPlOv1YFxV+oDBh8REC2GF6TwUhq/S
+ eKJXX8LKlK66pkwFw0Qmx+GzqE2jvghz0fH+HjOigQQZJngpAS/8dhsfoCYoyQV5iL+HsSxjofEg
+ RLcMZ8wBIAyD6Z9MMLSz4dYr0/kwt8Jiaeh/QW5VhMAlTRRShCcy1oAoO+L7C204X2LjCSjzrvhY
+ /xOdUbig+ZWLjG84k4pvxPYVNIZfPF8T4ZPZGw==
 DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=nejknio.cf;
- b=du/5+bEKefuZMX6z3mJrXQCdExJFf4b4YYNOPG8cwkMgU7xrjUwhLLpfcEp6X12qgI2ePM9NABzO
- 8OvHp7QFiabg/4y6oJjarhg2SOrydiwP/ifCuueBXUj5Zw4lYR6wgB7zfc1sgyfWStOnL15Fh/Zx
- BZCyBHeDVENf6HSjMaKSF5dqCZMXO6eUbFbXVGPbYta5UlfEYtHonZ7A8aaGPkthrEAG4oijToJA
- tyqboeEfyOAIQHkn+al7yDV4OyAFLrhIpSsiJtK9/yG4qrLLo0KQUn5WL9HyLCiw4TujB4YqnMui
- LhWtWzHIEKohqVkaeJFYMpOlF8ZghzQTEBakXw==;
+ b=YCs/KsolSdVj+hLsAIF17HnvvRYu6b2jAHRYOoA5pbAvrirp/qGqruJm+t0UWCJ9p5/ENWFgkVsD
+ vk90pv+iO3Pk3n6q34syWO3SPMRGZ8QhI8Vt/XMoq3zJiPXzdzeSqTr0BxsMtxyai3zVoLkMb1uP
+ CynVJNJNWJoXFT5jMN64EJUYvSg8cEeXuO6MPSuxwGNVUh1zIN3/O4IojR568bBZ0ty8DJtLIif9
+ dNrLGN56myqdKu/Kzn6QeCQCc1ccgWbgljkd61M9dv93JMBOm512r1RCIDPIz0Kh2/hDL+HmtrUf
+ 7JYwjeaz/H0mGAMiKwxrj614gLo3hvn84pIiQg==;
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: PRODUCT INQUIRY FOR EXPORT SHIPMENT
 To: Recipients <trade1@nejknio.cf>
 From: "Mark Maths" <trade1@nejknio.cf >
-Date: Mon, 17 Jun 2019 10:08:54 +0300
-Message-ID: <0.0.1.A93.1D524DB7B3DD036.0@slot0.nejknio.cf>
+Date: Mon, 17 Jun 2019 10:09:14 +0300
+Message-ID: <0.0.1.893.1D524DB871139CA.0@slot0.nejknio.cf>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
