@@ -1,48 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DCC7F47C30
-	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Jun 2019 10:24:56 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 752A847C35
+	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Jun 2019 10:25:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B490787532;
-	Mon, 17 Jun 2019 08:24:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B7BE120444;
+	Mon, 17 Jun 2019 08:25:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id H19HKF+R6XFA; Mon, 17 Jun 2019 08:24:54 +0000 (UTC)
+	with ESMTP id G51OCCqlUnm0; Mon, 17 Jun 2019 08:25:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3C2BB8735C;
-	Mon, 17 Jun 2019 08:24:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7195F2011B;
+	Mon, 17 Jun 2019 08:25:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B4CC51BF403
- for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 08:24:52 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1FE7C1BF403
+ for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 08:25:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B1DE084456
- for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 08:24:52 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1983884B22
+ for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 08:25:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 82qyZTM_Pggp for <devel@linuxdriverproject.org>;
- Mon, 17 Jun 2019 08:24:52 +0000 (UTC)
+ with ESMTP id xWs24z+8RMRa for <devel@linuxdriverproject.org>;
+ Mon, 17 Jun 2019 08:25:20 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from newverein.lst.de (verein.lst.de [213.95.11.211])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 4776484076
- for <devel@driverdev.osuosl.org>; Mon, 17 Jun 2019 08:24:52 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 71DA384AAD
+ for <devel@driverdev.osuosl.org>; Mon, 17 Jun 2019 08:25:20 +0000 (UTC)
 Received: by newverein.lst.de (Postfix, from userid 2407)
- id 6DC6F68BFE; Mon, 17 Jun 2019 10:24:23 +0200 (CEST)
-Date: Mon, 17 Jun 2019 10:24:23 +0200
+ id 8243568C4E; Mon, 17 Jun 2019 10:24:51 +0200 (CEST)
+Date: Mon, 17 Jun 2019 10:24:51 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Ming Lei <ming.lei@redhat.com>
-Subject: Re: [PATCH V4 05/16] scsi: ipr: use sg helper to operate scatterlist
-Message-ID: <20190617082423.GE7455@lst.de>
+Subject: Re: [PATCH V4 06/16] scsi: pmcraid: use sg helper to operate
+ scatterlist
+Message-ID: <20190617082451.GF7455@lst.de>
 References: <20190617030349.26415-1-ming.lei@redhat.com>
- <20190617030349.26415-6-ming.lei@redhat.com>
+ <20190617030349.26415-7-ming.lei@redhat.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190617030349.26415-6-ming.lei@redhat.com>
+In-Reply-To: <20190617030349.26415-7-ming.lei@redhat.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -71,21 +72,10 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-> -	for (i = 0; i < (len / bsize_elem); i++, buffer += bsize_elem) {
-> -		struct page *page = sg_page(&scatterlist[i]);
-> +	for (i = 0; i < (len / bsize_elem); i++, sg = sg_next(sg), buffer += bsize_elem) {
+Same kmap issue here that will need addressing.  Otherwise looks
+good:
 
-Please split the overly long line.
-
-> +		struct page *page = sg_page(sg);
->  
->  		kaddr = kmap(page);
->  		memcpy(kaddr, buffer, bsize_elem);
->  		kunmap(page);
-
-Not new in this patch, but this is buggy as scatterlists could have
-offsets.  This should probably use the scatterlist.c copy helper
-eventually.
+Reviewed-by: Christoph Hellwig <hch@lst.de>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
