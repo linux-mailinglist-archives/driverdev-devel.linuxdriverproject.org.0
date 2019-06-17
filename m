@@ -1,50 +1,85 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3A4C0478B1
-	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Jun 2019 05:35:56 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A5A6478DC
+	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Jun 2019 05:57:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C23FB854A7;
-	Mon, 17 Jun 2019 03:35:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 21D4E20433;
+	Mon, 17 Jun 2019 03:57:44 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id HcQehDLAEb8m; Mon, 17 Jun 2019 03:57:43 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id EAC7C20423;
+	Mon, 17 Jun 2019 03:57:41 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9DE9F1BF48B
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 17 Jun 2019 03:57:39 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 9A8D0854C9
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 17 Jun 2019 03:57:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DRfL8VjF1b6U; Mon, 17 Jun 2019 03:35:53 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3635084A0B;
-	Mon, 17 Jun 2019 03:35:52 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 97A251BF48B
- for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 03:35:49 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id D9274856B7
- for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 03:35:48 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QSyRwltWvxcK for <devel@linuxdriverproject.org>;
- Mon, 17 Jun 2019 03:35:48 +0000 (UTC)
+ with ESMTP id VQfBQxwjbjtu
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 17 Jun 2019 03:57:38 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from kvm5.telegraphics.com.au (kvm5.telegraphics.com.au
- [98.124.60.144])
- by whitealder.osuosl.org (Postfix) with ESMTP id E80FC84D8E
- for <devel@driverdev.osuosl.org>; Mon, 17 Jun 2019 03:35:47 +0000 (UTC)
-Received: from localhost (localhost.localdomain [127.0.0.1])
- by kvm5.telegraphics.com.au (Postfix) with ESMTP id 2F7832931B;
- Sun, 16 Jun 2019 23:35:42 -0400 (EDT)
-Date: Mon, 17 Jun 2019 13:35:53 +1000 (AEST)
-From: Finn Thain <fthain@telegraphics.com.au>
-To: Ming Lei <ming.lei@redhat.com>
-Subject: Re: [PATCH V4 11/16] scsi: aha152x: use sg helper to operate
- scatterlist
-In-Reply-To: <20190617030349.26415-12-ming.lei@redhat.com>
-Message-ID: <alpine.LNX.2.21.1906171334330.168@nippy.intranet>
-References: <20190617030349.26415-1-ming.lei@redhat.com>
- <20190617030349.26415-12-ming.lei@redhat.com>
+Received: from icp-osb-irony-out3.external.iinet.net.au
+ (icp-osb-irony-out3.external.iinet.net.au [203.59.1.153])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8115584D41
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 17 Jun 2019 03:57:37 +0000 (UTC)
+X-IronPort-Anti-Spam-Filtered: true
+X-IronPort-Anti-Spam-Result: =?us-ascii?q?A2AIAABNDwdd/zXSMGcNWRkBAQEBAQE?=
+ =?us-ascii?q?BAQEBAQEHAQEBAQEBgVQBAQEBAQELAYJ6gSyEFpNFAQEGgQgtg2CFZQ6JdIU?=
+ =?us-ascii?q?xgWcJAQEBAQEBAQEBJxABAQGEPwKCbzcGDgEDAQEBBAEBAQEDAYEJhVcBAQE?=
+ =?us-ascii?q?CASMECwEFQQULCw0BDAIjAwICISURBgEMBgIBAYMeAYFqAwkFpUhxfjMahS2?=
+ =?us-ascii?q?CMg1egUAGgQwoAYFhihN4gQeBECiBbX4+ghqBdwELBwGDKYJYBItiiWyTTz4?=
+ =?us-ascii?q?JghKGSIkfg2UGG4InhwODdwOKDC2McIcigWmPZoEJcTMaCCgIgyeCGxeIYYV?=
+ =?us-ascii?q?RYIxcD4JDAQE?=
+X-IPAS-Result: =?us-ascii?q?A2AIAABNDwdd/zXSMGcNWRkBAQEBAQEBAQEBAQEHAQEBA?=
+ =?us-ascii?q?QEBgVQBAQEBAQELAYJ6gSyEFpNFAQEGgQgtg2CFZQ6JdIUxgWcJAQEBAQEBA?=
+ =?us-ascii?q?QEBJxABAQGEPwKCbzcGDgEDAQEBBAEBAQEDAYEJhVcBAQECASMECwEFQQULC?=
+ =?us-ascii?q?w0BDAIjAwICISURBgEMBgIBAYMeAYFqAwkFpUhxfjMahS2CMg1egUAGgQwoA?=
+ =?us-ascii?q?YFhihN4gQeBECiBbX4+ghqBdwELBwGDKYJYBItiiWyTTz4JghKGSIkfg2UGG?=
+ =?us-ascii?q?4InhwODdwOKDC2McIcigWmPZoEJcTMaCCgIgyeCGxeIYYVRYIxcD4JDAQE?=
+X-IronPort-AV: E=Sophos;i="5.63,384,1557158400"; d="scan'208";a="190992666"
+Received: from unknown (HELO [10.44.0.22]) ([103.48.210.53])
+ by icp-osb-irony-out3.iinet.net.au with ESMTP; 17 Jun 2019 11:57:24 +0800
+Subject: Re: staging: mt7621-pci: factor out 'mt7621_pcie_enable_port' function
+To: Brett Neumeier <bneumeier@gmail.com>,
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>
+References: <678a78fd-a7f4-5a1f-9819-51c5a0731877@kernel.org>
+ <CAMhs-H-x_O21iq=Xm6LDFTTR4xVS4NrN9ePiCLsLpnxVQXieKA@mail.gmail.com>
+ <2fb10b81-d0d4-b2bc-bd85-b5a64bd5df8e@kernel.org>
+ <CAMhs-H-tGp43kRzd43FARxvxGNihKoqE6fgHJfYZFVYryjs13w@mail.gmail.com>
+ <9cef602b-5446-b14e-e22a-cb6f23a26598@kernel.org>
+ <CAMhs-H_z-8mFrYHPVOPhRRn1P9OXvjSf0jssodqOLs8AQQE+AA@mail.gmail.com>
+ <8a54ad56-75c9-c4a4-805c-a246dabbb6ca@kernel.org>
+ <CAMhs-H_Zm4VCeJyniSCFgySXbJOOijYrxd-yJpkYjUdjMa+d5g@mail.gmail.com>
+ <95b0b5f4-18ff-1f92-b1ae-d9a625e6f013@kernel.org>
+ <CAMhs-H_cBOff=4MhAxgmSGV9bukZdoDhOcSwkaErrSvhuwLktA@mail.gmail.com>
+ <186a4fae-d66b-9a68-9d26-bff483c1b619@kernel.org>
+ <CAMhs-H8vSh2jNo1HZQV=NbOPpmByb+7u6sw2ULzjOrhLG5A7Sw@mail.gmail.com>
+ <CAMhs-H_LyPTpLdbhJ8Fj-VLrboAE6DXr=vHd9Tkbu184hkiPWA@mail.gmail.com>
+ <cf84e0e1-c83e-b496-89ce-ea89d73038ea@kernel.org>
+ <CAMhs-H9zmgOHOJT+-9rat9ehV9bROmDoagVubw7XEif08g5bkw@mail.gmail.com>
+ <CAGSetNsFiGZ_xCJFzYDhmZhPZPu90nTH7EDUHOQt1g-ZzxLw5A@mail.gmail.com>
+From: Greg Ungerer <gerg@kernel.org>
+Message-ID: <756385e8-55be-c5dc-a5d2-440cb1a5208c@kernel.org>
+Date: Mon, 17 Jun 2019 13:57:22 +1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
+In-Reply-To: <CAGSetNsFiGZ_xCJFzYDhmZhPZPu90nTH7EDUHOQt1g-ZzxLw5A@mail.gmail.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,146 +92,152 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Michael Schmitz <schmitzmic@gmail.com>, devel@driverdev.osuosl.org,
- Hannes Reinecke <hare@suse.com>, Benjamin Block <bblock@linux.ibm.com>,
- linux-scsi@vger.kernel.org, "Martin K . Petersen" <martin.petersen@oracle.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- James Smart <james.smart@broadcom.com>, "Ewan D . Milne" <emilne@redhat.com>,
- Jim Gill <jgill@vmware.com>,
- James Bottomley <James.Bottomley@HansenPartnership.com>,
- Brian King <brking@us.ibm.com>, "Juergen E . Fischer" <fischer@norbit.de>,
- Christoph Hellwig <hch@lst.de>, Dan Carpenter <dan.carpenter@oracle.com>,
- Bart Van Assche <bvanassche@acm.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: NeilBrown <neil@brown.name>, driverdev-devel@linuxdriverproject.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, 17 Jun 2019, Ming Lei wrote:
-
-> Use the scatterlist iterators and remove direct indexing of the
-> scatterlist array.
-> 
-> This way allows us to pre-allocate one small scatterlist, which can be
-> chained with one runtime allocated scatterlist if the pre-allocated one
-> isn't enough for the whole request.
-> 
-> Finn added the change to replace SCp.buffers_residual with sg_is_last()
-> for fixing updating it, and the similar change has been applied on
-> NCR5380.c
-> 
-> Cc: Finn Thain <fthain@telegraphics.com.au>
-> Signed-off-by: Ming Lei <ming.lei@redhat.com>
-
-Reviewed-by: Finn Thain <fthain@telegraphics.com.au>
-
--- 
-
-> ---
->  drivers/scsi/aha152x.c | 42 ++++++++++++++++++++----------------------
->  1 file changed, 20 insertions(+), 22 deletions(-)
-> 
-> diff --git a/drivers/scsi/aha152x.c b/drivers/scsi/aha152x.c
-> index 97872838b983..6d0518f616cb 100644
-> --- a/drivers/scsi/aha152x.c
-> +++ b/drivers/scsi/aha152x.c
-> @@ -948,7 +948,6 @@ static int aha152x_internal_queue(struct scsi_cmnd *SCpnt,
->  	   SCp.ptr              : buffer pointer
->  	   SCp.this_residual    : buffer length
->  	   SCp.buffer           : next buffer
-> -	   SCp.buffers_residual : left buffers in list
->  	   SCp.phase            : current state of the command */
->  
->  	if ((phase & resetting) || !scsi_sglist(SCpnt)) {
-> @@ -956,13 +955,11 @@ static int aha152x_internal_queue(struct scsi_cmnd *SCpnt,
->  		SCpnt->SCp.this_residual = 0;
->  		scsi_set_resid(SCpnt, 0);
->  		SCpnt->SCp.buffer           = NULL;
-> -		SCpnt->SCp.buffers_residual = 0;
->  	} else {
->  		scsi_set_resid(SCpnt, scsi_bufflen(SCpnt));
->  		SCpnt->SCp.buffer           = scsi_sglist(SCpnt);
->  		SCpnt->SCp.ptr              = SG_ADDRESS(SCpnt->SCp.buffer);
->  		SCpnt->SCp.this_residual    = SCpnt->SCp.buffer->length;
-> -		SCpnt->SCp.buffers_residual = scsi_sg_count(SCpnt) - 1;
->  	}
->  
->  	DO_LOCK(flags);
-> @@ -2030,10 +2027,9 @@ static void datai_run(struct Scsi_Host *shpnt)
->  				}
->  
->  				if (CURRENT_SC->SCp.this_residual == 0 &&
-> -				    CURRENT_SC->SCp.buffers_residual > 0) {
-> +				    !sg_is_last(CURRENT_SC->SCp.buffer)) {
->  					/* advance to next buffer */
-> -					CURRENT_SC->SCp.buffers_residual--;
-> -					CURRENT_SC->SCp.buffer++;
-> +					CURRENT_SC->SCp.buffer = sg_next(CURRENT_SC->SCp.buffer);
->  					CURRENT_SC->SCp.ptr           = SG_ADDRESS(CURRENT_SC->SCp.buffer);
->  					CURRENT_SC->SCp.this_residual = CURRENT_SC->SCp.buffer->length;
->  				}
-> @@ -2136,10 +2132,10 @@ static void datao_run(struct Scsi_Host *shpnt)
->  			CMD_INC_RESID(CURRENT_SC, -2 * data_count);
->  		}
->  
-> -		if(CURRENT_SC->SCp.this_residual==0 && CURRENT_SC->SCp.buffers_residual>0) {
-> +		if(CURRENT_SC->SCp.this_residual==0 &&
-> +		   !sg_is_last(CURRENT_SC->SCp.buffer)) {
->  			/* advance to next buffer */
-> -			CURRENT_SC->SCp.buffers_residual--;
-> -			CURRENT_SC->SCp.buffer++;
-> +			CURRENT_SC->SCp.buffer = sg_next(CURRENT_SC->SCp.buffer);
->  			CURRENT_SC->SCp.ptr           = SG_ADDRESS(CURRENT_SC->SCp.buffer);
->  			CURRENT_SC->SCp.this_residual = CURRENT_SC->SCp.buffer->length;
->  		}
-> @@ -2158,22 +2154,24 @@ static void datao_run(struct Scsi_Host *shpnt)
->  static void datao_end(struct Scsi_Host *shpnt)
->  {
->  	if(TESTLO(DMASTAT, DFIFOEMP)) {
-> -		int data_count = (DATA_LEN - scsi_get_resid(CURRENT_SC)) -
-> -			GETSTCNT();
-> +		int done = GETSTCNT();
-> +		int data_count = (DATA_LEN - scsi_get_resid(CURRENT_SC)) - done;
-> +		struct scatterlist *sg = scsi_sglist(CURRENT_SC);
->  
->  		CMD_INC_RESID(CURRENT_SC, data_count);
->  
-> -		data_count -= CURRENT_SC->SCp.ptr -
-> -			SG_ADDRESS(CURRENT_SC->SCp.buffer);
-> -		while(data_count>0) {
-> -			CURRENT_SC->SCp.buffer--;
-> -			CURRENT_SC->SCp.buffers_residual++;
-> -			data_count -= CURRENT_SC->SCp.buffer->length;
-> +		/* Locate the first SG entry not yet sent */
-> +		while (done > 0 && !sg_is_last(sg)) {
-> +			if (done < sg->length)
-> +				break;
-> +			done -= sg->length;
-> +			sg = sg_next(sg);
->  		}
-> -		CURRENT_SC->SCp.ptr = SG_ADDRESS(CURRENT_SC->SCp.buffer) -
-> -			data_count;
-> -		CURRENT_SC->SCp.this_residual = CURRENT_SC->SCp.buffer->length +
-> -			data_count;
-> +
-> +		CURRENT_SC->SCp.buffer = sg;
-> +		CURRENT_SC->SCp.ptr = SG_ADDRESS(CURRENT_SC->SCp.buffer) + done;
-> +		CURRENT_SC->SCp.this_residual = CURRENT_SC->SCp.buffer->length -
-> +			done;
->  	}
->  
->  	SETPORT(SXFRCTL0, CH1|CLRCH1|CLRSTCNT);
-> @@ -2501,7 +2499,7 @@ static void get_command(struct seq_file *m, struct scsi_cmnd * ptr)
->  
->  	seq_printf(m, "); resid=%d; residual=%d; buffers=%d; phase |",
->  		scsi_get_resid(ptr), ptr->SCp.this_residual,
-> -		ptr->SCp.buffers_residual);
-> +		sg_nents(ptr->SCp.buffer) - 1);
->  
->  	if (ptr->SCp.phase & not_issued)
->  		seq_puts(m, "not issued|");
-> 
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+SGkgQnJldHQsCgpPbiAxNS82LzE5IDExOjUzIHBtLCBCcmV0dCBOZXVtZWllciB3cm90ZToKW3Nu
+aXBdCj4gRm9yIHdoYXQgaXQncyB3b3J0aCAtLSBwb3NzaWJseSBub3RoaW5nPyAtLSBJIGdyYWJi
+ZWQgdGhlIG1vc3QgcmVjZW50IHNpeCB2ZXJzaW9ucyBvZiB0aGUgcGF0Y2ggZnJvbSB0aGlzIHRo
+cmVhZCwgaW5jbHVkaW5nIHRoZSBvbmUgaGVyZSwgYW5kIGRpZCB0ZXN0IGJvb3RzIG9mIGFsbCBv
+ZiB0aGVtIG9uIGJvdGggYSBHbnVCZWUgUEMxIGFuZCBQQzIgKGJhc2VkIG9uIDUuMS43KS4gVGhl
+cmUgd2VyZSBubyBwZXJmZWN0IHJlc3VsdHMsIHdoaWNoIGlzIHByb2JhYmx5IG5vdCBzdXJwcmlz
+aW5nLiBIZXJlIEknbSByZWZlcnJpbmcgdG8gZGlmZmVyZW50IHZlcnNpb25zIG9mIHRoZSBwYXRj
+aCBiYXNlZCBvbiB0aGUgZGF0ZSBvZiB0aGUgZW1haWwgd2hlcmUgaXQgd2FzIGF0dGFjaGVkLCBJ
+IGRvbid0IGtub3cgaWYgdGhlcmUncyBhIGJldHRlciBhcHByb2FjaC4KPiAKPiAyMDE5LTA1LTI5
+OiA5IHN1Y2Nlc3MsIDEgaGFuZwo+IDIwMTktMDUtMzE6IDggc3VjY2VzcywgMiBoYW5nCj4gMjAx
+OS0wNi0wMzogNyBzdWNjZXNzLCAzIGhhbmcKPiAyMDE5LTA2LTA0OiA4IHN1Y2Nlc3MsIDIgaGFu
+Zwo+IDIwMTktMDYtMDU6IDYgc3VjY2VzcywgNCBoYW5nCj4gMjAxOS0wNi0wNjogNyBzdWNjZXNz
+LCAzIGhhbmcKClRoYXQgaXMgdmFsdWFibGUgZmVlZGJhY2ssIHRoYW5rcyBmb3IgdGFraW5nIHRo
+ZSB0aW1lIHRvIHJ1bgp0aHJvdWdoIHRob3NlIHZhcmlhdGlvbnMuCgpZb3VyIHJlc3VsdHMgcHJl
+dHR5IG11Y2ggbWlycm9yIHdoYXQgSSBzZWUuIFZlcnkgaW5jb25zaXN0ZW50CmJvb3RpbmcgYmVo
+YXZpb3IuIFNvbWV0aW1lcyBib290cywgc29tZXRpbWVzIGRvZXNuJ3QuIFdoZW4gaXQKZG9lc24n
+dCBpdCBpcyBhbHdheXMgc29tZXdoZXJlIGluIHRoZSBQQ0kgc3RhcnR1cC4KClJlZ2FyZHMKR3Jl
+ZwoKCgo+IEkndmUgcHV0IGFsbCB0aGUgYm9vdCBtZXNzYWdlIGxvZ3MgKGZvciBib3RoIHN1Y2Nl
+c3NlcyBhbmQgaGFuZ3MpIGF0IGh0dHBzOi8vcmVwby5mcmVlc2Eub3JnL2dudWJlZS8gaW4gY2Fz
+ZSB0aGV5IGFyZSBpbnRlcmVzdGluZy4gVGhlcmUgYXJlIGEgZmV3IGRpZmZlcmVudCBjb21tb24g
+c2VxdWVuY2VzIG9mIGJvb3QgbWVzc2FnZXMgYmVmb3JlIHRoZSBoYW5ncyBvY2N1ciwgd2hpY2gg
+SSdsbCBzdW1tYXJpemUgaGVyZToKPiAKPiBUaGlzIGhhcHBlbmVkIDEwIHRpbWVzOgo+IAo+IFsg
+wqAgwqA5LjA1NjA2OV0gbXQ3NjIxLXBjaSAxZTE0MDAwMC5wY2llOiBFcnJvciBhcHBseWluZyBz
+ZXR0aW5nLCByZXZlcnNlIHRoaW5ncyBiYWNrCj4gWyDCoCAxMC4xODc2NzldIG10NzYyMS1wY2kt
+cGh5IDFlMTQ5MDAwLnBjaWUtcGh5OiBYdGFsIGlzIDQwTUh6Cj4gWyDCoCAxMC4xOTg3OTZdIG10
+NzYyMS1wY2kgMWUxNDAwMDAucGNpZTogUG9ydCA0NTQwNDM2NDggTl9GVFMgPSAwCj4gWyDCoCAx
+MC4zMjc2NjddIG10NzYyMS1wY2ktcGh5IDFlMTQ5MDAwLnBjaWUtcGh5OiBYdGFsIGlzIDQwTUh6
+Cj4gWyDCoCAxMC4zMzg3NzFdIG10NzYyMS1wY2kgMWUxNDAwMDAucGNpZTogUG9ydCA0NTQwNDM2
+NDggTl9GVFMgPSAxCj4gWyDCoCAxMC40Njc2NjhdIG10NzYyMS1wY2ktcGh5IDFlMTRhMDAwLnBj
+aWUtcGh5OiBYdGFsIGlzIDQwTUh6Cj4gWyDCoCAxMC40ODA5MDRdIG10NzYyMS1wY2kgMWUxNDAw
+MDAucGNpZTogUG9ydCA0NTQwNDM2NDggTl9GVFMgPSAyCj4gWyDCoCAxMS41NTYwNzNdIG10NzYy
+MS1wY2kgMWUxNDAwMDAucGNpZTogUENJRTAgZW5hYmxlZAo+IFsgwqAgMTEuNTY1Nzg0XSBtdDc2
+MjEtcGNpIDFlMTQwMDAwLnBjaWU6IFBDSUUwIGVuYWJsZWQKPiBbIMKgIDExLjU3NTQ5N10gbXQ3
+NjIxLXBjaSAxZTE0MDAwMC5wY2llOiBQQ0lFMCBlbmFibGVkCj4gWyDCoCAxMS41ODUyNDRdIG10
+NzYyMS1wY2kgMWUxNDAwMDAucGNpZTogUENJIGNvaGVyZW5jZSByZWdpb24gYmFzZTogMHg2MDAw
+MDAwMCwgbWFzay9zZXR0aW5nczogMHhmMDAwMDAwMgo+IFsgwqAgMTEuNjAzOTgyXSBtdDc2MjEt
+cGNpIDFlMTQwMDAwLnBjaWU6IFBDSSBob3N0IGJyaWRnZSB0byBidXMgMDAwMDowMAo+IFsgwqAg
+MTEuNjE2NjY0XSBwY2lfYnVzIDAwMDA6MDA6IHJvb3QgYnVzIHJlc291cmNlIFtpbyDCoDB4ZmZm
+ZmZmZmZdCj4gWyDCoCAxMS42Mjg0NTddIHBjaV9idXMgMDAwMDowMDogcm9vdCBidXMgcmVzb3Vy
+Y2UgW21lbSAweDYwMDAwMDAwLTB4NmZmZmZmZmZdCj4gWyDCoCAxMS42NDIxNTVdIHBjaV9idXMg
+MDAwMDowMDogcm9vdCBidXMgcmVzb3VyY2UgW2J1cyAwMC1mZl0KPiBbIMKgIDExLjY1NTI4Nl0g
+cGNpIDAwMDA6MDA6MDAuMDogYnJpZGdlIGNvbmZpZ3VyYXRpb24gaW52YWxpZCAoW2J1cyAwMC0w
+MF0pLCByZWNvbmZpZ3VyaW5nCj4gWyDCoCAxMS42NzEyNTldIHBjaSAwMDAwOjAwOjAxLjA6IGJy
+aWRnZSBjb25maWd1cmF0aW9uIGludmFsaWQgKFtidXMgMDAtMDBdKSwgcmVjb25maWd1cmluZwo+
+IFsgwqAgMTEuNjg3MjA2XSBwY2kgMDAwMDowMDowMi4wOiBicmlkZ2UgY29uZmlndXJhdGlvbiBp
+bnZhbGlkIChbYnVzIDAwLTAwXSksIHJlY29uZmlndXJpbmcKPiAKPiBUaGlzIGhhcHBlbmVkIDQg
+dGltZXMsIGJ1dCBvbmx5IHdoZW4gdXNpbmcgdGhlIDIwMTktMDYtMDQgYW5kIDIwMTktMDYtMDUg
+cGF0Y2hlczoKPiAKPiBbIMKgIMKgOS4wNzE4NTJdIG10NzYyMS1wY2kgMWUxNDAwMDAucGNpZTog
+RXJyb3IgYXBwbHlpbmcgc2V0dGluZywgcmV2ZXJzZSB0aGluZ3MgYmFjawo+IFsgwqAgMTAuMTk3
+MTM4XSBtdDc2MjEtcGNpLXBoeSAxZTE0OTAwMC5wY2llLXBoeTogWHRhbCBpcyA0ME1Iego+IFsg
+wqAgMTAuMjA4MjU0XSBtdDc2MjEtcGNpIDFlMTQwMDAwLnBjaWU6IFBvcnQgMCBOX0ZUUyA9IDFi
+MTAyODAwCj4gWyDCoCAxMC4zMzcxMjldIG10NzYyMS1wY2ktcGh5IDFlMTQ5MDAwLnBjaWUtcGh5
+OiBYdGFsIGlzIDQwTUh6Cj4gWyDCoCAxMC4zNDgyMzJdIG10NzYyMS1wY2kgMWUxNDAwMDAucGNp
+ZTogUG9ydCAxIE5fRlRTID0gMWIxMDI4MDAKPiBbIMKgIDEwLjQ3NzEyOV0gbXQ3NjIxLXBjaS1w
+aHkgMWUxNGEwMDAucGNpZS1waHk6IFh0YWwgaXMgNDBNSHoKPiBbIMKgIDEwLjQ5MDM2NV0gbXQ3
+NjIxLXBjaSAxZTE0MDAwMC5wY2llOiBQb3J0IDIgTl9GVFMgPSAxYjEwMjgwMAo+IFsgwqAgMTEu
+NTY1NTI1XSBtdDc2MjEtcGNpIDFlMTQwMDAwLnBjaWU6IHBjaWUwIG5vIGNhcmQsIGRpc2FibGUg
+aXQgKFJTVCAmIENMSykKPiBbIMKgIDExLjU3OTM5Ml0gbXQ3NjIxLXBjaSAxZTE0MDAwMC5wY2ll
+OiBQQ0lFMCBlbmFibGVkCj4gWyDCoCAxMS41ODkxMDVdIG10NzYyMS1wY2kgMWUxNDAwMDAucGNp
+ZTogUENJRTAgZW5hYmxlZAo+IFsgwqAgMTEuNTk4ODUzXSBtdDc2MjEtcGNpIDFlMTQwMDAwLnBj
+aWU6IFBDSSBjb2hlcmVuY2UgcmVnaW9uIGJhc2U6IDB4NjAwMDAwMDAsIG1hc2svc2V0dGluZ3M6
+IDB4ZjAwMDAwMDIKPiBbIMKgIDExLjYxNzU5MF0gbXQ3NjIxLXBjaSAxZTE0MDAwMC5wY2llOiBQ
+Q0kgaG9zdCBicmlkZ2UgdG8gYnVzIDAwMDA6MDAKPiBbIMKgIDExLjYzMDI2Nl0gcGNpX2J1cyAw
+MDAwOjAwOiByb290IGJ1cyByZXNvdXJjZSBbaW8gwqAweGZmZmZmZmZmXQo+IFsgwqAgMTEuNjQy
+MDU5XSBwY2lfYnVzIDAwMDA6MDA6IHJvb3QgYnVzIHJlc291cmNlIFttZW0gMHg2MDAwMDAwMC0w
+eDZmZmZmZmZmXQo+IFsgwqAgMTEuNjU1NzU3XSBwY2lfYnVzIDAwMDA6MDA6IHJvb3QgYnVzIHJl
+c291cmNlIFtidXMgMDAtZmZdCj4gWyDCoCAxMS42Njg0MzddIHBjaSAwMDAwOjAwOjAwLjA6IGJy
+aWRnZSBjb25maWd1cmF0aW9uIGludmFsaWQgKFtidXMgMDAtMDBdKSwgcmVjb25maWd1cmluZwo+
+IFsgwqAgMTEuNjg0NDAyXSBwY2kgMDAwMDowMDowMS4wOiBicmlkZ2UgY29uZmlndXJhdGlvbiBp
+bnZhbGlkIChbYnVzIDAwLTAwXSksIHJlY29uZmlndXJpbmcKPiBbIMKgIDExLjcwMDgwNV0gcGNp
+IDAwMDA6MDE6MDAuMDogMi4wMDAgR2IvcyBhdmFpbGFibGUgUENJZSBiYW5kd2lkdGgsIGxpbWl0
+ZWQgYnkgMi41IEdUL3MgeDEgbGluayBhdCAwMDAwOjAwOjAwLjAgKGNhcGFibGUgb2YgNC4wMDAK
+PiBHYi9zIHdpdGggNSBHVC9zIHgxIGxpbmspCj4gWyDCoCAxMS43MjkzNjJdIHBjaSAwMDAwOjAw
+OjAwLjA6IFBDSSBicmlkZ2UgdG8gW2J1cyAwMS1mZl0KPiBbIMKgIDExLjc0MDMyMF0gcGNpIDAw
+MDA6MDI6MDAuMDogMi4wMDAgR2IvcyBhdmFpbGFibGUgUENJZSBiYW5kd2lkdGgsIGxpbWl0ZWQg
+YnkgMi41IEdUL3MgeDEgbGluayBhdCAwMDAwOjAwOjAxLjAgKGNhcGFibGUgb2YgNC4wMDAKPiBH
+Yi9zIHdpdGggNSBHVC9zIHgxIGxpbmspCj4gWyDCoCAxMS43Njg4ODddIHBjaSAwMDAwOjAwOjAx
+LjA6IFBDSSBicmlkZ2UgdG8gW2J1cyAwMi1mZl0KPiBbIMKgIDExLjc3OTQxNF0gcGNpIDAwMDA6
+MDA6MDEuMDogQkFSIDA6IG5vIHNwYWNlIGZvciBbbWVtIHNpemUgMHg4MDAwMDAwMF0KPiBbIMKg
+IDExLjc5MjU4N10gcGNpIDAwMDA6MDA6MDEuMDogQkFSIDA6IGZhaWxlZCB0byBhc3NpZ24gW21l
+bSBzaXplIDB4ODAwMDAwMDBdCj4gWyDCoCAxMS44MDY0NjFdIHBjaSAwMDAwOjAwOjAwLjA6IEJB
+UiAwOiBhc3NpZ25lZCBbbWVtIDB4NjAwMDAwMDAtMHg2MWZmZmZmZl0KPiBbIMKgIDExLjgxOTk4
+OF0gcGNpIDAwMDA6MDA6MDAuMDogQkFSIDg6IGFzc2lnbmVkIFttZW0gMHg2MjAwMDAwMC0weDYy
+MGZmZmZmXQo+IFsgwqAgMTEuODMzNTE2XSBwY2kgMDAwMDowMDowMC4wOiBCQVIgOTogYXNzaWdu
+ZWQgW21lbSAweDYyMTAwMDAwLTB4NjIxZmZmZmYgcHJlZl0KPiBbIMKgIDExLjg0NzkwMl0gcGNp
+IDAwMDA6MDA6MDEuMDogQkFSIDg6IGFzc2lnbmVkIFttZW0gMHg2MjIwMDAwMC0weDYyMmZmZmZm
+XQo+IFsgwqAgMTEuODYxNDMxXSBwY2kgMDAwMDowMDowMS4wOiBCQVIgOTogYXNzaWduZWQgW21l
+bSAweDYyMzAwMDAwLTB4NjIzZmZmZmYgcHJlZl0KPiBbIMKgIDExLjg3NTgxOV0gcGNpIDAwMDA6
+MDA6MDAuMDogQkFSIDE6IGFzc2lnbmVkIFttZW0gMHg2MjQwMDAwMC0weDYyNDBmZmZmXQo+IFsg
+wqAgMTEuODg5MzUwXSBwY2kgMDAwMDowMDowMS4wOiBCQVIgMTogYXNzaWduZWQgW21lbSAweDYy
+NDEwMDAwLTB4NjI0MWZmZmZdCj4gWyDCoCAxMS45MDI4ODRdIHBjaSAwMDAwOjAwOjAwLjA6IEJB
+UiA3OiBubyBzcGFjZSBmb3IgW2lvIMKgc2l6ZSAweDEwMDBdCj4gWyDCoCAxMS45MTUzNjRdIHBj
+aSAwMDAwOjAwOjAwLjA6IEJBUiA3OiBmYWlsZWQgdG8gYXNzaWduIFtpbyDCoHNpemUgMHgxMDAw
+XQo+IFsgwqAgMTEuOTI4NTQxXSBwY2kgMDAwMDowMDowMS4wOiBCQVIgNzogbm8gc3BhY2UgZm9y
+IFtpbyDCoHNpemUgMHgxMDAwXQo+IFsgwqAgMTEuOTQxMDI2XSBwY2kgMDAwMDowMDowMS4wOiBC
+QVIgNzogZmFpbGVkIHRvIGFzc2lnbiBbaW8gwqBzaXplIDB4MTAwMF0KPiBbIMKgIDExLjk1NDIx
+MV0gcGNpIDAwMDA6MDE6MDAuMDogQkFSIDU6IGFzc2lnbmVkIFttZW0gMHg2MjAwMDAwMC0weDYy
+MDAwMWZmXQo+IFsgwqAgMTEuOTY3NzM3XSBwY2kgMDAwMDowMTowMC4wOiBCQVIgNDogbm8gc3Bh
+Y2UgZm9yIFtpbyDCoHNpemUgMHgwMDEwXQo+IFsgwqAgMTEuOTgwMjIyXSBwY2kgMDAwMDowMTow
+MC4wOiBCQVIgNDogZmFpbGVkIHRvIGFzc2lnbiBbaW8gwqBzaXplIDB4MDAxMF0KPiBbIMKgIDEx
+Ljk5MzM5NV0gcGNpIDAwMDA6MDE6MDAuMDogQkFSIDA6IG5vIHNwYWNlIGZvciBbaW8gwqBzaXpl
+IDB4MDAwOF0KPiBbIMKgIDEyLjAwNTg3OV0gcGNpIDAwMDA6MDE6MDAuMDogQkFSIDA6IGZhaWxl
+ZCB0byBhc3NpZ24gW2lvIMKgc2l6ZSAweDAwMDhdCj4gWyDCoCAxMi4wMTkwNTJdIHBjaSAwMDAw
+OjAxOjAwLjA6IEJBUiAyOiBubyBzcGFjZSBmb3IgW2lvIMKgc2l6ZSAweDAwMDhdCj4gWyDCoCAx
+Mi4wMzE1NDNdIHBjaSAwMDAwOjAxOjAwLjA6IEJBUiAyOiBmYWlsZWQgdG8gYXNzaWduIFtpbyDC
+oHNpemUgMHgwMDA4XQo+IFsgwqAgMTIuMDQ0NzE3XSBwY2kgMDAwMDowMTowMC4wOiBCQVIgMTog
+bm8gc3BhY2UgZm9yIFtpbyDCoHNpemUgMHgwMDA0XQo+IFsgwqAgMTIuMDU3MTk5XSBwY2kgMDAw
+MDowMTowMC4wOiBCQVIgMTogZmFpbGVkIHRvIGFzc2lnbiBbaW8gwqBzaXplIDB4MDAwNF0KPiBb
+IMKgIDEyLjA3MDM3OF0gcGNpIDAwMDA6MDE6MDAuMDogQkFSIDM6IG5vIHNwYWNlIGZvciBbaW8g
+wqBzaXplIDB4MDAwNF0KPiBbIMKgIDEyLjA4Mjg1OF0gcGNpIDAwMDA6MDE6MDAuMDogQkFSIDM6
+IGZhaWxlZCB0byBhc3NpZ24gW2lvIMKgc2l6ZSAweDAwMDRdCj4gWyDCoCAxMi4wOTYwMzZdIHBj
+aSAwMDAwOjAwOjAwLjA6IFBDSSBicmlkZ2UgdG8gW2J1cyAwMV0KPiBbIMKgIDEyLjEwNTkzMF0g
+cGNpIDAwMDA6MDA6MDAuMDogwqAgYnJpZGdlIHdpbmRvdyBbbWVtIDB4NjIwMDAwMDAtMHg2MjBm
+ZmZmZl0KPiBbIMKgIDEyLjExOTQ1Ml0gcGNpIDAwMDA6MDA6MDAuMDogwqAgYnJpZGdlIHdpbmRv
+dyBbbWVtIDB4NjIxMDAwMDAtMHg2MjFmZmZmZiBwcmVmXQo+IFsgwqAgMTIuMTMzODUwXSBwY2kg
+MDAwMDowMjowMC4wOiBCQVIgNTogYXNzaWduZWQgW21lbSAweDYyMjAwMDAwLTB4NjIyMDAxZmZd
+Cj4gWyDCoCAxMi4xNDczODFdIHBjaSAwMDAwOjAyOjAwLjA6IEJBUiA0OiBubyBzcGFjZSBmb3Ig
+W2lvIMKgc2l6ZSAweDAwMTBdCj4gWyDCoCAxMi4xNTk4NzJdIHBjaSAwMDAwOjAyOjAwLjA6IEJB
+UiA0OiBmYWlsZWQgdG8gYXNzaWduIFtpbyDCoHNpemUgMHgwMDEwXQo+IFsgwqAgMTIuMTczMDQ1
+XSBwY2kgMDAwMDowMjowMC4wOiBCQVIgMDogbm8gc3BhY2UgZm9yIFtpbyDCoHNpemUgMHgwMDA4
+XQo+IFsgwqAgMTIuMTg1NTI4XSBwY2kgMDAwMDowMjowMC4wOiBCQVIgMDogZmFpbGVkIHRvIGFz
+c2lnbiBbaW8gwqBzaXplIDB4MDAwOF0KPiBbIMKgIDEyLjE5ODcwMV0gcGNpIDAwMDA6MDI6MDAu
+MDogQkFSIDI6IG5vIHNwYWNlIGZvciBbaW8gwqBzaXplIDB4MDAwOF0KPiBbIMKgIDEyLjIxMTE4
+Nl0gcGNpIDAwMDA6MDI6MDAuMDogQkFSIDI6IGZhaWxlZCB0byBhc3NpZ24gW2lvIMKgc2l6ZSAw
+eDAwMDhdCj4gWyDCoCAxMi4yMjQzNTldIHBjaSAwMDAwOjAyOjAwLjA6IEJBUiAxOiBubyBzcGFj
+ZSBmb3IgW2lvIMKgc2l6ZSAweDAwMDRdCj4gWyDCoCAxMi4yMzY4NDRdIHBjaSAwMDAwOjAyOjAw
+LjA6IEJBUiAxOiBmYWlsZWQgdG8gYXNzaWduIFtpbyDCoHNpemUgMHgwMDA0XQo+IFsgwqAgMTIu
+MjUwMDE2XSBwY2kgMDAwMDowMjowMC4wOiBCQVIgMzogbm8gc3BhY2UgZm9yIFtpbyDCoHNpemUg
+MHgwMDA0XQo+IFsgwqAgMTIuMjYyNTAxXSBwY2kgMDAwMDowMjowMC4wOiBCQVIgMzogZmFpbGVk
+IHRvIGFzc2lnbiBbaW8gwqBzaXplIDB4MDAwNF0KPiBbIMKgIDEyLjI3NTY3NV0gcGNpIDAwMDA6
+MDA6MDEuMDogUENJIGJyaWRnZSB0byBbYnVzIDAyXQo+IFsgwqAgMTIuMjg1NTcwXSBwY2kgMDAw
+MDowMDowMS4wOiDCoCBicmlkZ2Ugd2luZG93IFttZW0gMHg2MjIwMDAwMC0weDYyMmZmZmZmXQo+
+IFsgwqAgMTIuMjk5MDk1XSBwY2kgMDAwMDowMDowMS4wOiDCoCBicmlkZ2Ugd2luZG93IFttZW0g
+MHg2MjMwMDAwMC0weDYyM2ZmZmZmIHByZWZdCj4gWyDCoCAxMi4zMTM4MzBdIHBjaSAwMDAwOjAw
+OjAwLjA6IGVuYWJsaW5nIGRldmljZSAoMDAwMCAtPiAwMDAyKQo+IFsgwqAgMTIuMzI1MTE2XSBh
+aGNpIDAwMDA6MDE6MDAuMDogZW5hYmxpbmcgZGV2aWNlICgwMDAwIC0+IDAwMDIpCj4gSSBoYXZl
+IG5vIGlkZWEgaG93IHRvIGRvIGFueSBkZWJ1Z2dpbmcgb2YgdGhpcyBzdHVmZiwgSSdtIGFmcmFp
+ZCwgYnV0IGlmIHRoZXJlIGlzIGFueXRoaW5nIGVsc2UgSSBjYW4gZG8gdG8gaGVscCBwbGVhc2Ug
+bGV0IG1lIGtub3chCj4gCj4gCj4gLS0gCj4gQnJldHQgTmV1bWVpZXIgKGJuZXVtZWllckBnbWFp
+bC5jb20gPG1haWx0bzpibmV1bWVpZXJAZ21haWwuY29tPikKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4
+ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3Jn
+L21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
