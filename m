@@ -1,48 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 98EFD47D03
-	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Jun 2019 10:29:32 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2E69F47D0D
+	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Jun 2019 10:29:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0BC9F85546;
-	Mon, 17 Jun 2019 08:29:31 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 23DD685BCC;
+	Mon, 17 Jun 2019 08:29:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5RhCwWx6SHon; Mon, 17 Jun 2019 08:29:27 +0000 (UTC)
+	with ESMTP id DORwUnFHZ9Yf; Mon, 17 Jun 2019 08:29:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E63578535F;
-	Mon, 17 Jun 2019 08:29:26 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 17D0385B71;
+	Mon, 17 Jun 2019 08:29:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 696971BF403
- for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 08:29:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E696D1BF403
+ for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 08:29:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6676287356
- for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 08:29:18 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E3D7D87364
+ for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 08:29:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id N8L6Qrak0mER for <devel@linuxdriverproject.org>;
- Mon, 17 Jun 2019 08:29:16 +0000 (UTC)
+ with ESMTP id dSQf-Tkgjh9z for <devel@linuxdriverproject.org>;
+ Mon, 17 Jun 2019 08:29:36 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from newverein.lst.de (verein.lst.de [213.95.11.211])
- by hemlock.osuosl.org (Postfix) with ESMTPS id AFE1C8734E
- for <devel@driverdev.osuosl.org>; Mon, 17 Jun 2019 08:29:16 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 568308734E
+ for <devel@driverdev.osuosl.org>; Mon, 17 Jun 2019 08:29:36 +0000 (UTC)
 Received: by newverein.lst.de (Postfix, from userid 2407)
- id C60EB68CFC; Mon, 17 Jun 2019 10:28:47 +0200 (CEST)
-Date: Mon, 17 Jun 2019 10:28:47 +0200
+ id 5E18368CFE; Mon, 17 Jun 2019 10:29:07 +0200 (CEST)
+Date: Mon, 17 Jun 2019 10:29:07 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Ming Lei <ming.lei@redhat.com>
-Subject: Re: [PATCH V4 12/16] scsi: imm: use sg helper to operate scatterlist
-Message-ID: <20190617082847.GL7455@lst.de>
+Subject: Re: [PATCH V4 13/16] scsi: pcmcia: nsp_cs: use sg helper to
+ operate scatterlist
+Message-ID: <20190617082907.GM7455@lst.de>
 References: <20190617030349.26415-1-ming.lei@redhat.com>
- <20190617030349.26415-13-ming.lei@redhat.com>
+ <20190617030349.26415-14-ming.lei@redhat.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190617030349.26415-13-ming.lei@redhat.com>
+In-Reply-To: <20190617030349.26415-14-ming.lei@redhat.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -71,7 +72,7 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Jun 17, 2019 at 11:03:45AM +0800, Ming Lei wrote:
+On Mon, Jun 17, 2019 at 11:03:46AM +0800, Ming Lei wrote:
 > Use the scatterlist iterators and remove direct indexing of the
 > scatterlist array.
 > 
