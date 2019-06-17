@@ -1,55 +1,90 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2BC5347B1D
-	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Jun 2019 09:37:14 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6242520443;
-	Mon, 17 Jun 2019 07:37:12 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dzfNDb8feq7c; Mon, 17 Jun 2019 07:37:12 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 2131B2042F;
-	Mon, 17 Jun 2019 07:37:11 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CBDD61BF3E3
- for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 07:37:08 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id D712147C10
+	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Jun 2019 10:22:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C3A0985899
- for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 07:37:08 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BD62E853F8;
+	Mon, 17 Jun 2019 08:22:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id V6Al675hTYkd; Mon, 17 Jun 2019 08:22:37 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0103985899;
+	Mon, 17 Jun 2019 08:22:36 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C21411BF403
+ for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 08:22:33 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id BEA5E8735C
+ for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 08:22:33 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QjMivWgzln+O for <devel@linuxdriverproject.org>;
- Mon, 17 Jun 2019 07:37:07 +0000 (UTC)
+ with ESMTP id HKEfFVsURcng for <devel@linuxdriverproject.org>;
+ Mon, 17 Jun 2019 08:22:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 9081081F23
- for <devel@driverdev.osuosl.org>; Mon, 17 Jun 2019 07:37:07 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 17 Jun 2019 00:37:06 -0700
-X-ExtLoop1: 1
-Received: from jnikula-mobl3.fi.intel.com (HELO localhost) ([10.237.66.150])
- by fmsmga001.fm.intel.com with ESMTP; 17 Jun 2019 00:36:57 -0700
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Alastair D'Silva <alastair@au1.ibm.com>, alastair@d-silva.org
-Subject: Re: [PATCH v3 4/7] lib/hexdump.c: Replace ascii bool in
- hex_dump_to_buffer with flags
-In-Reply-To: <20190617020430.8708-5-alastair@au1.ibm.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-References: <20190617020430.8708-1-alastair@au1.ibm.com>
- <20190617020430.8708-5-alastair@au1.ibm.com>
-Date: Mon, 17 Jun 2019 10:39:53 +0300
-Message-ID: <87imt4vewm.fsf@intel.com>
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id B174587356
+ for <devel@driverdev.osuosl.org>; Mon, 17 Jun 2019 08:22:30 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5H8EDPq036975;
+ Mon, 17 Jun 2019 08:22:24 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2018-07-02;
+ bh=FGXkU7eOmJXcfpTdOS3rFhVnp4//dWioBuU5JvbAozk=;
+ b=HoOGFZ6IDRsf/WaCfXo2ZTPgY5pwDJWXjo1xX+qTvLOMlZocWpKu1Sf00Bmkx3VFzyma
+ 10WCt0cIJkIFz7mHW+wD9GUOEQ0ivHG8jDJ0t4TRvpEWC+TsmSyquhiRY045QRVvKMqd
+ BIDabSi8xq4vX0L9MhRibAwTnUvf3DfPIk//8VY7MahBLoeLEZ2KraHUQ39ijiOHMNDT
+ 8ndBBvPX7iRqpB2l3z33gYX+RiPyyzfIf8yD1/MNNifpDFIZvAldxXl3FHTYVYXdGTMe
+ /6jx2aoi8UlUxIMQRg+jUh/JipGQ+5QpEWrsTOM8x9vyDm7cYa5WG5PQ0L40CVIPJPpn iA== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by userp2130.oracle.com with ESMTP id 2t4r3td2pj-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 17 Jun 2019 08:22:24 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5H8LV8W126648;
+ Mon, 17 Jun 2019 08:22:24 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by userp3030.oracle.com with ESMTP id 2t59gd3q66-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 17 Jun 2019 08:22:24 +0000
+Received: from abhmp0014.oracle.com (abhmp0014.oracle.com [141.146.116.20])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x5H8M5I4026605;
+ Mon, 17 Jun 2019 08:22:05 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Mon, 17 Jun 2019 01:22:05 -0700
+Date: Mon, 17 Jun 2019 11:21:48 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Christoph Hellwig <hch@lst.de>
+Subject: Re: use exact allocation for dma coherent memory
+Message-ID: <20190617082148.GF28859@kadam>
+References: <20190614134726.3827-1-hch@lst.de>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190614134726.3827-1-hch@lst.de>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9290
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=782
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1810050000 definitions=main-1906170078
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9290
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=820 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
+ definitions=main-1906170078
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,77 +97,54 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-fbdev@vger.kernel.org, Stanislaw Gruszka <sgruszka@redhat.com>,
- Petr Mladek <pmladek@suse.com>, David Airlie <airlied@linux.ie>,
+Cc: Maxime Ripard <maxime.ripard@bootlin.com>,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, devel@driverdev.osuosl.org,
- linux-scsi@vger.kernel.org, Jassi Brar <jassisinghbrar@gmail.com>,
- ath10k@lists.infradead.org, intel-gfx@lists.freedesktop.org,
- Dan Carpenter <dan.carpenter@oracle.com>, Jose Abreu <Jose.Abreu@synopsys.com>,
- Tom Lendacky <thomas.lendacky@amd.com>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- Steven Rostedt <rostedt@goodmis.org>, linux-fsdevel@vger.kernel.org,
- Alexander Viro <viro@zeniv.linux.org.uk>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, Benson Leung <bleung@chromium.org>,
- Kalle Valo <kvalo@codeaurora.org>, Karsten Keil <isdn@linux-pingi.de>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- Sergey Senozhatsky <sergey.senozhatsky@gmail.com>,
- David Laight <David.Laight@ACULAB.COM>, Daniel Vetter <daniel@ffwll.ch>,
- netdev@vger.kernel.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- "David S. Miller" <davem@davemloft.net>
+ dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
+ devel@driverdev.osuosl.org, linux-s390@vger.kernel.org,
+ linux-rdma@vger.kernel.org, David Airlie <airlied@linux.ie>,
+ linux-media@vger.kernel.org, Intel Linux Wireless <linuxwifi@intel.com>,
+ intel-gfx@lists.freedesktop.org,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>, Ian Abbott <abbotti@mev.co.uk>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Sean Paul <sean@poorly.run>,
+ "moderated list:ARM PORT" <linux-arm-kernel@lists.infradead.org>,
+ netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, iommu@lists.linux-foundation.org,
+ Daniel Vetter <daniel@ffwll.ch>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, 17 Jun 2019, "Alastair D'Silva" <alastair@au1.ibm.com> wrote:
-> From: Alastair D'Silva <alastair@d-silva.org>
->
-> In order to support additional features in hex_dump_to_buffer, replace
-> the ascii bool parameter with flags.
->
-> Signed-off-by: Alastair D'Silva <alastair@d-silva.org>
-> ---
->  drivers/gpu/drm/i915/intel_engine_cs.c            |  2 +-
->  drivers/isdn/hardware/mISDN/mISDNisar.c           |  6 ++++--
->  drivers/mailbox/mailbox-test.c                    |  2 +-
->  drivers/net/ethernet/amd/xgbe/xgbe-drv.c          |  2 +-
->  drivers/net/ethernet/synopsys/dwc-xlgmac-common.c |  2 +-
->  drivers/net/wireless/ath/ath10k/debug.c           |  3 ++-
->  drivers/net/wireless/intel/iwlegacy/3945-mac.c    |  2 +-
->  drivers/platform/chrome/wilco_ec/debugfs.c        |  2 +-
->  drivers/scsi/scsi_logging.c                       |  8 +++-----
->  drivers/staging/fbtft/fbtft-core.c                |  2 +-
->  fs/seq_file.c                                     |  3 ++-
->  include/linux/printk.h                            |  8 ++++----
->  lib/hexdump.c                                     | 15 ++++++++-------
->  lib/test_hexdump.c                                |  5 +++--
->  14 files changed, 33 insertions(+), 29 deletions(-)
->
-> diff --git a/drivers/gpu/drm/i915/intel_engine_cs.c b/drivers/gpu/drm/i915/intel_engine_cs.c
-> index eea9bec04f1b..5df5fffdb848 100644
-> --- a/drivers/gpu/drm/i915/intel_engine_cs.c
-> +++ b/drivers/gpu/drm/i915/intel_engine_cs.c
-> @@ -1340,7 +1340,7 @@ static void hexdump(struct drm_printer *m, const void *buf, size_t len)
->  		WARN_ON_ONCE(hex_dump_to_buffer(buf + pos, len - pos,
->  						rowsize, sizeof(u32),
->  						line, sizeof(line),
-> -						false) >= sizeof(line));
-> +						0) >= sizeof(line));
->  		drm_printf(m, "[%04zx] %s\n", pos, line);
->  
->  		prev = buf + pos;
+I once wrote a Smatch check based on a commit message that said we can't
+pass dma_alloc_coherent() pointers to virt_to_phys().  But then I never
+felt like I understood the rules enough to actually report the warnings
+as bugs.
 
-On i915,
+drivers/platform/x86/dcdbas.c:108 smi_data_buf_realloc() error: 'buf' came from dma_alloc_coherent() so we can't do virt_to_phys()
+drivers/net/caif/caif_virtio.c:414 cfv_create_genpool() error: 'cfv->alloc_addr' came from dma_alloc_coherent() so we can't do virt_to_phys()
+drivers/infiniband/hw/cxgb4/qp.c:135 alloc_host_sq() error: 'sq->queue' came from dma_alloc_coherent() so we can't do virt_to_phys()
+drivers/infiniband/hw/cxgb4/qp.c:272 create_qp() error: 'wq->rq.queue' came from dma_alloc_coherent() so we can't do virt_to_phys()
+drivers/infiniband/hw/cxgb4/qp.c:2628 alloc_srq_queue() error: 'wq->queue' came from dma_alloc_coherent() so we can't do virt_to_phys()
+drivers/infiniband/hw/ocrdma/ocrdma_verbs.c:494 ocrdma_alloc_ucontext() error: 'ctx->ah_tbl.va' came from dma_alloc_coherent() so we can't do virt_to_phys()
 
-Acked-by: Jani Nikula <jani.nikula@intel.com>
+drivers/infiniband/hw/cxgb4/qp.c
+   129  static int alloc_host_sq(struct c4iw_rdev *rdev, struct t4_sq *sq)
+   130  {
+   131          sq->queue = dma_alloc_coherent(&(rdev->lldi.pdev->dev), sq->memsize,
+   132                                         &(sq->dma_addr), GFP_KERNEL);
+   133          if (!sq->queue)
+   134                  return -ENOMEM;
+   135          sq->phys_addr = virt_to_phys(sq->queue);
+   136          dma_unmap_addr_set(sq, mapping, sq->dma_addr);
+   137          return 0;
+   138  }
 
+Is this a bug?
 
--- 
-Jani Nikula, Intel Open Source Graphics Center
+regards,
+dan carpenter
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
