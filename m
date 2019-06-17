@@ -1,57 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 27E304777C
-	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Jun 2019 02:34:34 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A0BDD4777F
+	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Jun 2019 02:45:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A79A487598;
-	Mon, 17 Jun 2019 00:34:31 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id EF7FF857CB;
+	Mon, 17 Jun 2019 00:45:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sFb4OCjDaMKD; Mon, 17 Jun 2019 00:34:30 +0000 (UTC)
+	with ESMTP id fsfoFxCxvZMu; Mon, 17 Jun 2019 00:45:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9B1BF87482;
-	Mon, 17 Jun 2019 00:34:26 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C337885404;
+	Mon, 17 Jun 2019 00:45:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DF7D01BF86D
- for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 00:34:23 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5F9C61BF340
+ for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 00:44:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id AA3E52041C
- for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 00:34:23 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 43D3B8749A
+ for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 00:44:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XbnDPuO299Zp for <devel@linuxdriverproject.org>;
- Mon, 17 Jun 2019 00:34:18 +0000 (UTC)
-X-Greylist: delayed 00:10:03 by SQLgrey-1.7.6
+ with ESMTP id PDhZttpfNRh7 for <devel@linuxdriverproject.org>;
+ Mon, 17 Jun 2019 00:44:55 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from slot0.nejknio.cf (unknown [89.32.41.233])
- by silver.osuosl.org (Postfix) with ESMTPS id 2DC862041B
- for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 00:34:12 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 556BB87482
+ for <devel@driverdev.osuosl.org>; Mon, 17 Jun 2019 00:44:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=nejknio.cf;
  h=Content-Type:MIME-Version:Subject:To:From:Date:Reply-To:Message-ID;
- i=purchasezone@nejknio.cf; bh=K0A+S5dZCIxFyx2MjWTMPUMa5pM=;
- b=TKczbHXiajY9zs4DsqaAzpu/KCzzlNwV9In/RXNobidLfYtAR/5imJLU8/j1EX04+yFhUWhDimQ9
- QWjrrmC3s7drR+i9uqhSIba+q+idgaOLZFihQyQBD9igEsAVW6cZrFlrpglQA8TZ90rLKzYdt6VO
- bKS41ESgrwXIMSM0ETR0PnkY+y17x8A6Q6Co1/IJPntWf741FEbjVHHI8A0wW7iYKkrC3Ny9dH1R
- FLnBC1O5+4bMdVUHbWtytxSsiJLef4XEW5DYL8Q6z+fCgFPVv9FNXEi+5JQiwBf0Qv0VJITWn0h9
- D1lDWEh8JmRo6/HNGJtCIJTgnTDn5Zx9ozOykw==
+ i=purchasezone@nejknio.cf; bh=n16QnP4XUoh/f0JM6195L5BpVvU=;
+ b=LrmmIiH3YWNM226vXlDy+cwmCWxkEWSI4RRn38GswzIA6LNphnlh2QjL370scIjwjsxYhBAkhGat
+ 5D4jggu1Zs9Af0lIgEPBywiEbVPxcnktnbi8abnH6z7syDk+KaMCzftGx9MV4aqqh/yB9wsofz34
+ XxDsaEiV74BGjvnbffP2MXDKjqRMwEN2r3WuvAbAXuH1i+2HvfgJ9rpmy4opTsa2bsT+/U7Ob7pP
+ N+w5Tj/aOdYLKlFTvCz/3nFLAd97LyyHaYXTDMoaiwiae3y/RDLT3txGDhjFaGHcgCYKSit6kH6G
+ ODv/ULX+ui+/dWzRmybO/kRliS49jbJyCKvHBg==
 DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=nejknio.cf;
- b=PAg73tQ5rMrcre335IRYyZKPKCYZLKcxaX8Fg29EhZ1PMIUyrAd74tayg5gjz2YdqVPOHI5vdPY9
- iOZsu4CMaLMmQcFoR61ENNQxSSRtFEDiYjveG76GUkakKCYwDKfXn/z4lLb/0JGH2hVRhzySZgzV
- 5mL5HTWENISUHhXgnTSxSsFZVOh1Mf3fNXR97vCKjJH+R4f97luuMSCvOsviljzbAQXanoP+do5N
- Di8egPR2wpaTL0NuHyQbEu/uZIIzOZUfvP3l+OmPGGEAYhATgrRZpIpKlX3Ll4IjsK4s52tiu5iQ
- r7FNVAlw+5PbC1MpPyQYqVjdvd/fJW2C2buToQ==;
-Content-Type: multipart/mixed; boundary="===============0118013362=="
+ b=ZBXiaCb/okJ0jUvR3e2snv0X8oohKhU0gk3Met9hcmFAGxrXwcit7z9rzvvlcEDwUOlPd/mHrzTb
+ i4+PL4k38qRqQj0akLqmhKgCBUoKnCwti7em07qGeTD02kePy1xbPZcDTMXSqSR6M6TzdxXnL636
+ 7jK2yWyguuOqb5icqMGMAeOurcC1Wp9xQryoiI35VeCHy3DOB/sIPkmagViBStBKuRoOBrH42RFv
+ 8fYQEjKwAGf7mWLZR68WE5kTaffNMarGWAx0Vj8snCmR0vSK2OLKV9hEIg7LSbULNEBb2TvPDIIU
+ 3+tVMHt7U4nikW3kVeCxkku81h1i3G1AGXoD4A==;
+Content-Type: multipart/mixed; boundary="===============0202703706=="
 MIME-Version: 1.0
 Subject: RE:Re:Re:Re: Payment Confirmation
 To: Recipients <purchasezone@nejknio.cf>
 From: "Julie Ltam" <purchasezone@nejknio.cf >
-Date: Mon, 17 Jun 2019 03:24:03 +0300
-Message-ID: <0.0.0.9BD.1D524A2ED225C46.0@slot0.nejknio.cf>
+Date: Mon, 17 Jun 2019 03:24:40 +0300
+Message-ID: <0.0.0.9CA.1D524A3030B639A.0@slot0.nejknio.cf>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,7 +69,7 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 You will not see this in a MIME-aware mail reader.
---===============0118013362==
+--===============0202703706==
 Content-Type: text/plain; charset="iso-8859-1"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
@@ -96,7 +96,7 @@ Infrastructure & Cities Sector
 Low and Medium Voltage Division
 +62 (21) 24555-453
 +62 (21) 24555-543
---===============0118013362==
+--===============0202703706==
 Content-Type: application/octet-stream
 MIME-Version: 1.0
 Content-Transfer-Encoding: base64
@@ -33445,7 +33445,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
---===============0118013362==
+--===============0202703706==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -33456,4 +33456,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---===============0118013362==--
+--===============0202703706==--
