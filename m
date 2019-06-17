@@ -1,48 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6358148333
-	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Jun 2019 14:55:45 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 553C848368
+	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Jun 2019 15:04:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 53F782045D;
-	Mon, 17 Jun 2019 12:55:43 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3941D83C12;
+	Mon, 17 Jun 2019 13:04:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GIFLNxeZGEJd; Mon, 17 Jun 2019 12:55:42 +0000 (UTC)
+	with ESMTP id 6TO+kx+Qt1il; Mon, 17 Jun 2019 13:04:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 24B4020367;
-	Mon, 17 Jun 2019 12:55:42 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 21FF981D83;
+	Mon, 17 Jun 2019 13:04:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8A0B01BF2A7
- for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 12:55:40 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id CDBDA1BF2A7
+ for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 13:04:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 8526020449
- for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 12:55:40 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id CB3F187111
+ for <devel@linuxdriverproject.org>; Mon, 17 Jun 2019 13:04:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lONkn6eMpgmK for <devel@linuxdriverproject.org>;
- Mon, 17 Jun 2019 12:55:40 +0000 (UTC)
+ with ESMTP id NbfHfTQxZsVb for <devel@linuxdriverproject.org>;
+ Mon, 17 Jun 2019 13:04:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from youngberry.canonical.com (youngberry.canonical.com
  [91.189.89.112])
- by silver.osuosl.org (Postfix) with ESMTPS id CAEAB20367
- for <devel@driverdev.osuosl.org>; Mon, 17 Jun 2019 12:55:39 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 438BF87089
+ for <devel@driverdev.osuosl.org>; Mon, 17 Jun 2019 13:04:03 +0000 (UTC)
 Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
  by youngberry.canonical.com with esmtpsa (TLS1.0:RSA_AES_256_CBC_SHA1:32)
  (Exim 4.76) (envelope-from <colin.king@canonical.com>)
- id 1hcrAX-0005Q0-EF; Mon, 17 Jun 2019 12:55:29 +0000
+ id 1hcrIk-0005t8-W9; Mon, 17 Jun 2019 13:03:59 +0000
 From: Colin King <colin.king@canonical.com>
-To: Gao Xiang <gaoxiang25@huawei.com>, Chao Yu <yuchao0@huawei.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-erofs@lists.ozlabs.org, devel@driverdev.osuosl.org
-Subject: [PATCH] staging: erofs: clean up initialization of pointer de
-Date: Mon, 17 Jun 2019 13:55:29 +0100
-Message-Id: <20190617125529.28327-1-colin.king@canonical.com>
+To: Ian Abbott <abbotti@mev.co.uk>,
+ H Hartley Sweeten <hsweeten@visionengravers.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org
+Subject: [PATCH][next] staging: comedi: usbdux: remove redundant
+ initialization of fx2delay
+Date: Mon, 17 Jun 2019 14:03:58 +0100
+Message-Id: <20190617130358.28749-1-colin.king@canonical.com>
 X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -65,32 +66,29 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 From: Colin Ian King <colin.king@canonical.com>
 
-Currently pointer de is being initialized with a value that is
-never read and a few statements later de is being re-assigned. Clean
-this up by ininitialzing de and removing the re-assignment.
+Variable fx2delay is being initialized to a value that is never read
+and is being re-assigned a few statements later. The initialization
+is redundant and can be removed.
 
 Addresses-Coverity: ("Unused value")
 Signed-off-by: Colin Ian King <colin.king@canonical.com>
 ---
- drivers/staging/erofs/dir.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/staging/comedi/drivers/usbdux.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/erofs/dir.c b/drivers/staging/erofs/dir.c
-index 9bbc68729c11..dbf6a151886c 100644
---- a/drivers/staging/erofs/dir.c
-+++ b/drivers/staging/erofs/dir.c
-@@ -42,10 +42,9 @@ static int erofs_fill_dentries(struct dir_context *ctx,
- 			       void *dentry_blk, unsigned int *ofs,
- 			       unsigned int nameoff, unsigned int maxsize)
+diff --git a/drivers/staging/comedi/drivers/usbdux.c b/drivers/staging/comedi/drivers/usbdux.c
+index b8f54b7fb34a..0350f303d557 100644
+--- a/drivers/staging/comedi/drivers/usbdux.c
++++ b/drivers/staging/comedi/drivers/usbdux.c
+@@ -1226,7 +1226,7 @@ static int usbdux_pwm_period(struct comedi_device *dev,
+ 			     unsigned int period)
  {
--	struct erofs_dirent *de = dentry_blk;
-+	struct erofs_dirent *de = dentry_blk + *ofs;
- 	const struct erofs_dirent *end = dentry_blk + nameoff;
+ 	struct usbdux_private *devpriv = dev->private;
+-	int fx2delay = 255;
++	int fx2delay;
  
--	de = dentry_blk + *ofs;
- 	while (de < end) {
- 		const char *de_name;
- 		unsigned int de_namelen;
+ 	if (period < MIN_PWM_PERIOD)
+ 		return -EAGAIN;
 -- 
 2.20.1
 
