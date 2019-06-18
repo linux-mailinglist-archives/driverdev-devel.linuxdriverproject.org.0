@@ -2,52 +2,52 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A89CB497D6
-	for <lists+driverdev-devel@lfdr.de>; Tue, 18 Jun 2019 05:49:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5FB24497D5
+	for <lists+driverdev-devel@lfdr.de>; Tue, 18 Jun 2019 05:49:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 58B8D857D8;
-	Tue, 18 Jun 2019 03:49:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 242F0857CB;
+	Tue, 18 Jun 2019 03:49:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3vwu57Z0ZNSK; Tue, 18 Jun 2019 03:49:30 +0000 (UTC)
+	with ESMTP id 6Y433F0OQnhJ; Tue, 18 Jun 2019 03:49:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0C4F3857C5;
-	Tue, 18 Jun 2019 03:49:30 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 238C8857D1;
+	Tue, 18 Jun 2019 03:49:03 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 90ABC1BF5AE
- for <devel@linuxdriverproject.org>; Tue, 18 Jun 2019 03:49:27 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E8D941BF5AE
+ for <devel@linuxdriverproject.org>; Tue, 18 Jun 2019 03:49:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 8CAF220350
- for <devel@linuxdriverproject.org>; Tue, 18 Jun 2019 03:49:27 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E144F81B78
+ for <devel@linuxdriverproject.org>; Tue, 18 Jun 2019 03:49:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id f3H42YEBIQ3V for <devel@linuxdriverproject.org>;
- Tue, 18 Jun 2019 03:49:26 +0000 (UTC)
+ with ESMTP id kmZEbKDaGV4t for <devel@linuxdriverproject.org>;
+ Tue, 18 Jun 2019 03:49:00 +0000 (UTC)
 X-Greylist: delayed 00:10:01 by SQLgrey-1.7.6
 Received: from ceilingterrace.icu (hjgxjhmz.ni.net.tr [89.252.166.170])
- by silver.osuosl.org (Postfix) with ESMTP id 8BFA120029
- for <devel@linuxdriverproject.org>; Tue, 18 Jun 2019 03:49:26 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2210F81B75
+ for <devel@driverdev.osuosl.org>; Tue, 18 Jun 2019 03:49:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail;
  d=ceilingterrace.icu; 
  h=From:Date:MIME-Version:To:Subject:Message-ID:Content-Type:Content-Transfer-Encoding;
- i=wair@ceilingterrace.icu; bh=eWoC2UXqREh0ZVD3tMabnnFB9k4=;
- b=LSsNPRX3yjip5ekOO+iYLRTm7X+1qu6Z9lYrSMTtu9KWzvxUr9A0UResiPIG7v4IUEbxkctsqOgL
- OmWkf4B7oKFa3N3zfKC2Tl/CKfZ8ucv24kRwvlQmahuGieBLPl2cfT0cghodJXT0bGq/wwUirEBx
- Hy96GM7Mh8tDhZWp5+w=
+ i=cox@ceilingterrace.icu; bh=Qk4cOBBWSSKx6z3ryaSJve9qvFc=;
+ b=RypNK8yRRZhQnO46m2wtXViBCBc+YFDT59/nJCcJ5ass7it+VPJDcS7KqHjtXwPNhZRUZ6s+DbAr
+ /6exRK9xBozJ8TOqeyAsO1BgSc4BipVANhZjGbr9xK5Zo3kT7XoUdocbY01AG85LJpAzHAko8Tuz
+ 9OkHl425bAm51j2uSwI=
 DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=ceilingterrace.icu; 
- b=rLGMUeMFAW7bmBChlU5GTZmcHwKwyTg2PVN3zGZVKXKdN7EHwqtt/3nrIL7ttjzZ6PMFFLOuIS/c
- J2HT3+GDMm+a7qdeTqC2+ZesWGxqX4piaWCEWtlZx0qpxOjuFGlREE/2YIF+rPmO5puiDREN9slk
- lb+Wvo6JuqRQ9oiOUh4=;
-From: " Deborah" <wair@ceilingterrace.icu>
-Date: Mon, 17 Jun 2019 22:33:51 -0500
+ b=G4Moj7/rD4eggNW9ufaBpZ+K4QQLKrdDumtDyyblV6oCXGRSAna1x6deJ4qjRLwHaXUUlKKYK808
+ TGxCTIbC765EcNDdDxvdaIfBh6CdpvKMUFY7v4skMByNRsIilWw5ykUmym9Fo0C6oB2aVb3EmjMs
+ 5ajdxMatwmuJc2NjOaw=;
+From: " Kerry" <cox@ceilingterrace.icu>
+Date: Mon, 17 Jun 2019 22:34:19 -0500
 MIME-Version: 1.0
-To: <devel@linuxdriverproject.org>
-Subject: Elephants in Sydney
-Message-ID: <h1EI9-O2OwLMThPSvIX-GO-KFPF07UQn5FtP-1hpKR4.s9wfvQWunG_mQGgO9RmX6MEajSQi0GRyBKnQJGwzJqg@ceilingterrace.icu>
+To: <devel@driverdev.osuosl.org>
+Subject: Elephants in Toronto
+Message-ID: <jG3Ijw6JBLVXwjylxxSzuSFtGFB1hpghwdCFhIPReok.esxMFHa0oSZB5MoenmjYFmV0SpBk1wW1U4iaugv7uic@ceilingterrace.icu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,16 +74,16 @@ to go to the gym or even eat healthy again.  =
 
 
 All women are starting to use it
-http://www.ceilingterrace.icu/kcrfqdj/lqz30629nhg/P_YV4wrwwCMpMt5SbMS4MdOiv=
-AxB7jBqLrHtYD1zYc4/S1uJKoZk711RnnGWXqe2gEKawDts0Wz9hbnSC9-CVzFGgNorzS_Mw3l0=
-B49Mx-WG_akHhhYNvzHDWCTHA5TBQ7AKXsSZB6B2lOq8Pirkrfk
+http://www.ceilingterrace.icu/ujdm/wujuhk30629gea/wqmQtxxrgFBPkGunNdixR5NBP=
+0KECwdZPooikbQ0sbA/svu8KoguyOWp1mMDECDjljw-jq6t-6oT1xLV7KcQcqOgoujHlZRkIy_x=
+eP0oVhg1jAXo_sLaXDjRY0WJzMvzNg
 
 BY THE END OF THE MONTH LOOK AMAZING
 
 Take a look
-http://www.ceilingterrace.icu/kcrfqdj/lqz30629nhg/P_YV4wrwwCMpMt5SbMS4MdOiv=
-AxB7jBqLrHtYD1zYc4/S1uJKoZk711RnnGWXqe2gEKawDts0Wz9hbnSC9-CVzFGgNorzS_Mw3l0=
-B49Mx-WG_akHhhYNvzHDWCTHA5TBQ7AKXsSZB6B2lOq8Pirkrfk
+http://www.ceilingterrace.icu/ujdm/wujuhk30629gea/wqmQtxxrgFBPkGunNdixR5NBP=
+0KECwdZPooikbQ0sbA/svu8KoguyOWp1mMDECDjljw-jq6t-6oT1xLV7KcQcqOgoujHlZRkIy_x=
+eP0oVhg1jAXo_sLaXDjRY0WJzMvzNg
 
 
 
@@ -94,18 +94,18 @@ B49Mx-WG_akHhhYNvzHDWCTHA5TBQ7AKXsSZB6B2lOq8Pirkrfk
 -This is an ad-coresspondance-
 
 go here to end
-http://www.ceilingterrace.icu/kcrfqdj/lqz16705nhg/P_YV4wrwwCMpMt5SbMS4MdOiv=
-AxB7jBqLrHtYD1zYc4/S1uJKoZk711RnnGWXqe2gEKawDts0Wz9hbnSC9-CVzFGgNorzS_Mw3l0=
-B49Mx-WG_akHhhYNvzHDWCTHA5TBQ7AKXsSZB6B2lOq8Pirkrfk
-721 North High Point Court Apex, NC 27502
+http://www.ceilingterrace.icu/ujdm/wujuhk16705gea/wqmQtxxrgFBPkGunNdixR5NBP=
+0KECwdZPooikbQ0sbA/svu8KoguyOWp1mMDECDjljw-jq6t-6oT1xLV7KcQcqOgoujHlZRkIy_x=
+eP0oVhg1jAXo_sLaXDjRY0WJzMvzNg
+594 N. Myrtle Drive Rockledge, FL 32955
 
 ---
 
 
 Cut out your email from our list by submitting your name right here
-http://www.ceilingterrace.icu/auls/kfrkriP8qOl2B6BZSsXKA7QBT5AHTCWDHzvNYhhH=
-ka_GW-xM94B0l3wM_SzroNgGFzVC-9CSnbh9zW0stDwaKEg2eqXWGnnR117kZoKJu1S.4cYz1DY=
-tHrLqBj7BxAviOdM4SMbS5tMpMCwwrw4VY_P
+http://www.ceilingterrace.icu/axnkbvyrrh/gNzvMzJW0YRjDXaLs_oXAj1ghVo0Pex_yI=
+kRZlHjuogOqcQcK7VLx1To6-t6qj-wjljDCEDMm1pWOyugoK8uvs.Abs0QbkiooPZdwCEK0PBN5=
+RxidNnuGkPBFgrxxtQmqw
 24 Blue Spring St. Portsmouth, VA 23703
 
 ^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=
