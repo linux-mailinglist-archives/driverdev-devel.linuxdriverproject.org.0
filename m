@@ -2,56 +2,56 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 56AF1496FB
-	for <lists+driverdev-devel@lfdr.de>; Tue, 18 Jun 2019 03:39:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 76EE049700
+	for <lists+driverdev-devel@lfdr.de>; Tue, 18 Jun 2019 03:39:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id F01F6204A9;
-	Tue, 18 Jun 2019 01:39:36 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0A5D62045E;
+	Tue, 18 Jun 2019 01:39:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 18v0WGfnlGlF; Tue, 18 Jun 2019 01:39:36 +0000 (UTC)
+	with ESMTP id oeq3-MXCRJ+1; Tue, 18 Jun 2019 01:39:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D96C5203F1;
-	Tue, 18 Jun 2019 01:39:35 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CA9D820499;
+	Tue, 18 Jun 2019 01:39:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B0FE41BF32A
- for <devel@linuxdriverproject.org>; Tue, 18 Jun 2019 01:39:32 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 44BF61BF32A
+ for <devel@linuxdriverproject.org>; Tue, 18 Jun 2019 01:39:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id ADFD180ED6
- for <devel@linuxdriverproject.org>; Tue, 18 Jun 2019 01:39:32 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4174C875F4
+ for <devel@linuxdriverproject.org>; Tue, 18 Jun 2019 01:39:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CiG0t-8QuIRe for <devel@linuxdriverproject.org>;
- Tue, 18 Jun 2019 01:39:32 +0000 (UTC)
+ with ESMTP id hARe94n0DOcU for <devel@linuxdriverproject.org>;
+ Tue, 18 Jun 2019 01:39:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 47B7880CDB
- for <devel@driverdev.osuosl.org>; Tue, 18 Jun 2019 01:39:32 +0000 (UTC)
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9A06787592
+ for <devel@driverdev.osuosl.org>; Tue, 18 Jun 2019 01:39:37 +0000 (UTC)
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id B91CB307D85A;
- Tue, 18 Jun 2019 01:39:31 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 268C03082E1E;
+ Tue, 18 Jun 2019 01:39:37 +0000 (UTC)
 Received: from localhost (ovpn-8-17.pek2.redhat.com [10.72.8.17])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BB41591F23;
- Tue, 18 Jun 2019 01:39:28 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 059948095E;
+ Tue, 18 Jun 2019 01:39:33 +0000 (UTC)
 From: Ming Lei <ming.lei@redhat.com>
 To: linux-scsi@vger.kernel.org,
  "Martin K . Petersen" <martin.petersen@oracle.com>
-Subject: [PATCH V5 14/16] scsi: ppa: use sg helper to operate scatterlist
-Date: Tue, 18 Jun 2019 09:37:55 +0800
-Message-Id: <20190618013757.22401-15-ming.lei@redhat.com>
+Subject: [PATCH V5 15/16] scsi: wd33c93: use sg helper to operate scatterlist
+Date: Tue, 18 Jun 2019 09:37:56 +0800
+Message-Id: <20190618013757.22401-16-ming.lei@redhat.com>
 In-Reply-To: <20190618013757.22401-1-ming.lei@redhat.com>
 References: <20190618013757.22401-1-ming.lei@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.48]); Tue, 18 Jun 2019 01:39:31 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.46]); Tue, 18 Jun 2019 01:39:37 +0000 (UTC)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,22 +90,22 @@ Reviewed-by: Christoph Hellwig <hch@lst.de>
 Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 Signed-off-by: Ming Lei <ming.lei@redhat.com>
 ---
- drivers/scsi/ppa.c | 2 +-
+ drivers/scsi/wd33c93.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/scsi/ppa.c b/drivers/scsi/ppa.c
-index 35213082e933..a406cc825426 100644
---- a/drivers/scsi/ppa.c
-+++ b/drivers/scsi/ppa.c
-@@ -590,7 +590,7 @@ static int ppa_completion(struct scsi_cmnd *cmd)
- 		if (cmd->SCp.buffer && !cmd->SCp.this_residual) {
- 			/* if scatter/gather, advance to the next segment */
- 			if (cmd->SCp.buffers_residual--) {
--				cmd->SCp.buffer++;
-+				cmd->SCp.buffer = sg_next(cmd->SCp.buffer);
- 				cmd->SCp.this_residual =
- 				    cmd->SCp.buffer->length;
- 				cmd->SCp.ptr = sg_virt(cmd->SCp.buffer);
+diff --git a/drivers/scsi/wd33c93.c b/drivers/scsi/wd33c93.c
+index 74be04f2357c..ae5935c0a149 100644
+--- a/drivers/scsi/wd33c93.c
++++ b/drivers/scsi/wd33c93.c
+@@ -744,7 +744,7 @@ transfer_bytes(const wd33c93_regs regs, struct scsi_cmnd *cmd,
+  * source or destination for THIS transfer.
+  */
+ 	if (!cmd->SCp.this_residual && cmd->SCp.buffers_residual) {
+-		++cmd->SCp.buffer;
++		cmd->SCp.buffer = sg_next(cmd->SCp.buffer);
+ 		--cmd->SCp.buffers_residual;
+ 		cmd->SCp.this_residual = cmd->SCp.buffer->length;
+ 		cmd->SCp.ptr = sg_virt(cmd->SCp.buffer);
 -- 
 2.20.1
 
