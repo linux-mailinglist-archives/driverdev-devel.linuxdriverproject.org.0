@@ -1,89 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C9F74496AC
-	for <lists+driverdev-devel@lfdr.de>; Tue, 18 Jun 2019 03:28:32 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3A5F4496CD
+	for <lists+driverdev-devel@lfdr.de>; Tue, 18 Jun 2019 03:38:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 676DE204A9;
-	Tue, 18 Jun 2019 01:28:30 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id EF6BD86100;
+	Tue, 18 Jun 2019 01:38:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id npRneLp4qCew; Tue, 18 Jun 2019 01:28:29 +0000 (UTC)
+	with ESMTP id fKkhh1m6q+yU; Tue, 18 Jun 2019 01:38:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 552E120243;
-	Tue, 18 Jun 2019 01:28:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CD1D185456;
+	Tue, 18 Jun 2019 01:38:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E8CBC1BF32A
- for <devel@linuxdriverproject.org>; Tue, 18 Jun 2019 01:28:26 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 61F301BF32A
+ for <devel@linuxdriverproject.org>; Tue, 18 Jun 2019 01:38:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id DC7632045E
- for <devel@linuxdriverproject.org>; Tue, 18 Jun 2019 01:28:26 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5EF5985755
+ for <devel@linuxdriverproject.org>; Tue, 18 Jun 2019 01:38:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id flLu4rSisaGt for <devel@linuxdriverproject.org>;
- Tue, 18 Jun 2019 01:28:26 +0000 (UTC)
+ with ESMTP id 4vjHGBIS8Zvd for <devel@linuxdriverproject.org>;
+ Tue, 18 Jun 2019 01:38:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
- [209.85.210.193])
- by silver.osuosl.org (Postfix) with ESMTPS id 0ACE220243
- for <devel@driverdev.osuosl.org>; Tue, 18 Jun 2019 01:28:26 +0000 (UTC)
-Received: by mail-pf1-f193.google.com with SMTP id a186so6622432pfa.5
- for <devel@driverdev.osuosl.org>; Mon, 17 Jun 2019 18:28:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=EhVn2VpMWMF3z6W4xlxwl8wypc2+4cPuZsN0Q8XyuuU=;
- b=QxQiLwooXqMRIkh11AjjQpzoWU1haTiRRfs3v/EaP87xSPpKa5JBxenQkYqUhXEx6h
- kpkbHAPqme66p1Q341yD7s78oKCSHZNbtW+zdGku+s0PPSEg/N6Qm03TgetlcHx4TVbm
- xYbt5LQ9uNSfw7VHrymOZwu7PAirRKyhzC1CJLfiA5gaPz+PzM205K7+UjJt9CREqGLi
- ae96RwBqoMwWiMtBVkevOr02W/5NRlj9qAQsr2K1562c0CKuUfGB3UWJAQzknBqI/X0k
- O7NEMWsFgncoYbAlTl0F6/bux/7NUyVv3bT+YZkmsVAJkZdQhZA9809soAHcBiPWrxYB
- zUBw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=EhVn2VpMWMF3z6W4xlxwl8wypc2+4cPuZsN0Q8XyuuU=;
- b=TD44wJ4saYfSYCoBMJprzSXw7TQL20wiB+o9RaQS3l+Zv+I55GxdKDhvBHuDrNf4j8
- UKYBc7+/9fHU5xbHiAigIxRk1VKl5f/wyapSNScSSbzmmJyQI4tlKTngy5lTlEDTy4bB
- 8u49CBk7WAjFV6FXpD8ukyN6DCsNBUfHWd0LuetVKb321mPegBajXZKRey1y4k7S40Wq
- 5MkzQ0n12U0ATXnQJMMktjLI3bRF21z+Ibp7Vx5cb8f5qB4fmbjsLd94tD5K9j9UUCcW
- FuYhWBwQY8K447qGKG5z2AfYCmsGuOOO1WSK95RXpSrZEQB4W0uGPHQLTOuPA33mF/Dm
- G/jQ==
-X-Gm-Message-State: APjAAAXV1W9Gh8+umeWEdGP1zuGAIW7aeyF0Ep57iNNffKaeMvrf/G8T
- cl6JEcrB1cZ42oWM7i8wi5s=
-X-Google-Smtp-Source: APXvYqzwqhVNBJpFvgKBoGS/o0RnWQY7px1RA77j748IdScaUq3udhxsYRuSfDF2Jy9SBRk7xBSF7A==
-X-Received: by 2002:a62:2643:: with SMTP id m64mr113828678pfm.46.1560821305718; 
- Mon, 17 Jun 2019 18:28:25 -0700 (PDT)
-Received: from hari-Inspiron-1545 ([183.83.92.187])
- by smtp.gmail.com with ESMTPSA id k4sm3153187pfk.42.2019.06.17.18.28.22
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 17 Jun 2019 18:28:25 -0700 (PDT)
-Date: Tue, 18 Jun 2019 06:58:20 +0530
-From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Michael Straube <straube.linux@gmail.com>,
- Nishka Dasgupta <nishkadg.linux@gmail.com>,
- Mamta Shukla <mamtashukla555@gmail.com>,
- Emanuel Bennici <benniciemanuel78@gmail.com>,
- Shobhit Kukreti <shobhitkukreti@gmail.com>,
- Puranjay Mohan <puranjay12@gmail.com>, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: rtl8723bs: os_dep: ioctl_linux:  Make use
- rtw_zmalloc
-Message-ID: <20190618012819.GA7963@hari-Inspiron-1545>
-References: <20190616053250.GA16116@hari-Inspiron-1545>
- <20190616071522.GE28859@kadam>
+Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 16A388563A
+ for <devel@driverdev.osuosl.org>; Tue, 18 Jun 2019 01:38:20 +0000 (UTC)
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id C857EC056899;
+ Tue, 18 Jun 2019 01:38:12 +0000 (UTC)
+Received: from localhost (ovpn-8-17.pek2.redhat.com [10.72.8.17])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id BE3687848C;
+ Tue, 18 Jun 2019 01:38:02 +0000 (UTC)
+From: Ming Lei <ming.lei@redhat.com>
+To: linux-scsi@vger.kernel.org,
+ "Martin K . Petersen" <martin.petersen@oracle.com>
+Subject: [PATCH V5 00/16] use sg helper to operate scatterlist
+Date: Tue, 18 Jun 2019 09:37:41 +0800
+Message-Id: <20190618013757.22401-1-ming.lei@redhat.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190616071522.GE28859@kadam>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.32]); Tue, 18 Jun 2019 01:38:19 +0000 (UTC)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,44 +62,196 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: Michael Schmitz <schmitzmic@gmail.com>, devel@driverdev.osuosl.org,
+ Hannes Reinecke <hare@suse.com>, Benjamin Block <bblock@linux.ibm.com>,
+ Bart Van Assche <bvanassche@acm.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ James Smart <james.smart@broadcom.com>, "Ewan D . Milne" <emilne@redhat.com>,
+ Jim Gill <jgill@vmware.com>,
+ James Bottomley <James.Bottomley@HansenPartnership.com>,
+ Brian King <brking@us.ibm.com>, Finn Thain <fthain@telegraphics.com.au>,
+ "Juergen E . Fischer" <fischer@norbit.de>, Ming Lei <ming.lei@redhat.com>,
+ Christoph Hellwig <hch@lst.de>, Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Jun 16, 2019 at 10:15:22AM +0300, Dan Carpenter wrote:
-> On Sun, Jun 16, 2019 at 11:02:50AM +0530, Hariprasad Kelam wrote:
-> > rtw_malloc with memset can be replace with rtw_zmalloc.
-> > 
-> > Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-> > ---
-> >  drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 12 +++---------
-> >  1 file changed, 3 insertions(+), 9 deletions(-)
-> > 
-> > diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-> > index fc3885d..c59e366 100644
-> > --- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-> > +++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-> > @@ -478,14 +478,12 @@ static int wpa_set_encryption(struct net_device *dev, struct ieee_param *param,
-> >  		if (wep_key_len > 0) {
-> >  			wep_key_len = wep_key_len <= 5 ? 5 : 13;
-> >  			wep_total_len = wep_key_len + FIELD_OFFSET(struct ndis_802_11_wep, KeyMaterial);
-> > -			pwep = rtw_malloc(wep_total_len);
-> > +			pwep = rtw_zmalloc(wep_total_len);
-> 
-> We should not introduce new uses of rtw_malloc() or rtw_zmalloc().  They
-> are buggy garbage.  Use normall kmalloc() and kzalloc().
-Hi Dan Carpenter,
+Hi,
 
-Sure , will  resend this patch with suggested changes.
+Scsi MQ makes a large static allocation for the first scatter gather
+list chunk for the driver to use.  This is a performance headache we'd
+like to fix by reducing the size of the allocation to a 2 element
+array.  Doing this will break the current guarantee that any driver
+using SG_ALL doesn't need to use the scatterlist iterators and can get
+away with directly dereferencing the array.  Thus we need to update all
+drivers to use the scatterlist iterators and remove direct indexing of
+the scatterlist array before reducing the initial scatterlist
+allocation size in SCSI.
 
-Thanks,
-Hariprasad k
+So convert drivers to use scatterlist helper.
 
-> 
-> regards,
-> dan carpenter
- 
+There are two types of direct access on scatterlist in SCSI drivers:
+
+1) operate on the scatterlist via scsi_sglist(scmd) directly, then one
+local variable of 'struct scatterlist *' is involved.
+
+2) scsi_sglist(scmd) is stored to cmd->SCp.buffer and the scatterlist is
+used via cmd->SCp.buffer.
+
+The following coccinelle semantic patch is developed for finding the
+above two types of direct scatterlist uses:
+
+	@@ struct scatterlist *p; @@
+	(
+	- ++p
+	+ p = sg_next(p)
+	|
+	- p++
+	+ p = sg_next(p)
+	|
+	- p = p + 1
+	+ p = sg_next(p)
+	|
+	- p += 1
+	+ p = sg_next(p)
+	|
+	- --p
+	+ p = sg_non_exist_prev(p)
+	|
+	- p--
+	+ p = sg_non_exist_prev(p)
+	|
+	- p = p - 1
+	+ p = sg_non_exist_prev(p)
+	|
+	- p -= 1
+	+ p = sg_non_exist_prev(p)
+	)
+	
+	@@
+	struct scatterlist *p;
+	expression data != 0;
+	@@
+	- p[data]
+	+ '!!!!!!use sg iterator helper!!!!!!'
+	
+	@@
+	struct scatterlist[] p;
+	expression data != 0;
+	@@
+	- p[data]
+	+ '!!!!!!use sg iterator helper!!!!!!'
+	
+	
+	@@ struct scsi_cmnd *scmd; @@
+	(
+	-	scmd->SCp.buffer++
+	+	scmd->SCp.buffer = sg_next(scmd->SCp.buffer)
+	|
+	-	++scmd->SCp.buffer
+	+	scmd->SCp.buffer = sg_next(scmd->SCp.buffer)
+	|
+	-	scmd->SCp.buffer += 1
+	+	scmd->SCp.buffer = sg_next(scmd->SCp.buffer)
+	|
+	-	scmd->SCp.buffer = scmd->SCp.buffer + 1
+	+	scmd->SCp.buffer = sg_next(scmd->SCp.buffer)
+	|
+	-	scmd->SCp.buffer--
+	+	scmd->SCp.buffer = sg_no_exit_prev(scmd->SCp.buffer)
+	|
+	-	--scmd->SCp.buffer
+	+	scmd->SCp.buffer = sg_no_exit_prev(scmd->SCp.buffer)
+	|
+	-	scmd->SCp.buffer -= 1
+	+	scmd->SCp.buffer = sg_no_exit_prev(scmd->SCp.buffer)
+	|
+	-	scmd->SCp.buffer = scmd->SCp.buffer - 1
+	+	scmd->SCp.buffer = sg_no_exit_prev(scmd->SCp.buffer)
+	)
+	
+	@@
+	struct scsi_cmnd *scmd;
+	expression data != 0;
+	@@
+	- scmd->SCp.buffer[data]
+	+ '!!!!!!use sg iterator helper!!!!!!'
+
+
+The 1st 10 patches are for handling type #1, and the other 6 patches
+for handling type #2, and all the 16 are found by the above coccinelle
+semantic patch.
+
+V5:
+	- one patch style fix in 5/11
+	- re-write convertion for 'staging: rtsx' as suggested by Christoph
+	- fix another issue in aha152x by Finn, and change the author to
+	  Finn now
+	- add reviewed-by tag
+
+V4:
+	- fix building failure on pmcraid's conversion 
+	- improve the coccinelle semantic patch to cover both two types of
+	scatterlist direct use
+	- driver 'staging: rtsx' is covered
+
+V3:
+	- update commit log and cover letter, most of words are from
+	James Bottomley	
+
+V2:
+	- use coccinelle semantic patch for finding direct sgl uses from
+	scsi command(9 drivers found)
+	- run 'git grep -E "SCp.buffer"' to find direct sgl uses
+	from SCp.buffer(6 drivers are found)
+
+
+
+Finn Thain (2):
+  scsi: aha152x: use sg helper to operate scatterlist
+  NCR5380: Support chained sg lists
+
+Ming Lei (14):
+  scsi: vmw_pscsi: use sg helper to operate scatterlist
+  scsi: advansys: use sg helper to operate scatterlist
+  scsi: lpfc: use sg helper to operate scatterlist
+  scsi: mvumi: use sg helper to operate scatterlist
+  scsi: ipr: use sg helper to operate scatterlist
+  scsi: pmcraid: use sg helper to operate scatterlist
+  usb: image: microtek: use sg helper to operate scatterlist
+  staging: unisys: visorhba: use sg helper to operate scatterlist
+  staging: rtsx: use sg helper to operate scatterlist
+  s390: zfcp_fc: use sg helper to operate scatterlist
+  scsi: imm: use sg helper to operate scatterlist
+  scsi: pcmcia: nsp_cs: use sg helper to operate scatterlist
+  scsi: ppa: use sg helper to operate scatterlist
+  scsi: wd33c93: use sg helper to operate scatterlist
+
+ drivers/s390/scsi/zfcp_fc.c                   |  4 +-
+ drivers/scsi/NCR5380.c                        | 41 ++++++++---------
+ drivers/scsi/advansys.c                       |  2 +-
+ drivers/scsi/aha152x.c                        | 46 +++++++++----------
+ drivers/scsi/imm.c                            |  2 +-
+ drivers/scsi/ipr.c                            | 29 ++++++------
+ drivers/scsi/lpfc/lpfc_nvmet.c                |  3 +-
+ drivers/scsi/mvumi.c                          |  9 ++--
+ drivers/scsi/pcmcia/nsp_cs.c                  |  4 +-
+ drivers/scsi/pmcraid.c                        | 14 +++---
+ drivers/scsi/ppa.c                            |  2 +-
+ drivers/scsi/vmw_pvscsi.c                     |  2 +-
+ drivers/scsi/wd33c93.c                        |  2 +-
+ drivers/staging/rts5208/rtsx_transport.c      | 32 ++++++-------
+ drivers/staging/rts5208/rtsx_transport.h      |  2 +-
+ drivers/staging/rts5208/spi.c                 | 14 +++---
+ .../staging/unisys/visorhba/visorhba_main.c   |  9 ++--
+ drivers/usb/image/microtek.c                  | 20 ++++----
+ drivers/usb/image/microtek.h                  |  2 +-
+ 19 files changed, 115 insertions(+), 124 deletions(-)
+
+-- 
+2.20.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
