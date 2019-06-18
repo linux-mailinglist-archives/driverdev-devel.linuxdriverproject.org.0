@@ -1,61 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A4CBA49A21
-	for <lists+driverdev-devel@lfdr.de>; Tue, 18 Jun 2019 09:14:17 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8CDC849C72
+	for <lists+driverdev-devel@lfdr.de>; Tue, 18 Jun 2019 10:56:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id CFDB0204AF;
-	Tue, 18 Jun 2019 07:14:15 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8874C878F7;
+	Tue, 18 Jun 2019 08:56:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id W-mnJWneUL1G; Tue, 18 Jun 2019 07:14:15 +0000 (UTC)
+	with ESMTP id a7ynAGQH21b0; Tue, 18 Jun 2019 08:56:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 383EA204A8;
-	Tue, 18 Jun 2019 07:14:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8E6D1875F4;
+	Tue, 18 Jun 2019 08:56:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CA1BF1BF2C6
- for <devel@linuxdriverproject.org>; Tue, 18 Jun 2019 07:14:11 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 051F71BF2C3
+ for <devel@linuxdriverproject.org>; Tue, 18 Jun 2019 08:56:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C694781D92
- for <devel@linuxdriverproject.org>; Tue, 18 Jun 2019 07:14:11 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0231584922
+ for <devel@linuxdriverproject.org>; Tue, 18 Jun 2019 08:56:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id opn2snR7R0m2 for <devel@linuxdriverproject.org>;
- Tue, 18 Jun 2019 07:14:10 +0000 (UTC)
+ with ESMTP id 7V-bndQ8GcuU for <devel@linuxdriverproject.org>;
+ Tue, 18 Jun 2019 08:56:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5F973811D9
- for <devel@driverdev.osuosl.org>; Tue, 18 Jun 2019 07:14:10 +0000 (UTC)
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 57A751F306E6E079F216;
- Tue, 18 Jun 2019 15:14:06 +0800 (CST)
-Received: from [10.151.23.176] (10.151.23.176) by smtp.huawei.com
- (10.3.19.206) with Microsoft SMTP Server (TLS) id 14.3.439.0; Tue, 18 Jun
- 2019 15:13:58 +0800
-Subject: Re: [RFC PATCH 0/8] staging: erofs: decompression inplace approach
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-References: <20190614181619.64905-1-gaoxiang25@huawei.com>
- <20190617203609.GA22034@kroah.com>
- <c86d3fc0-8b4a-6583-4309-911960fbe862@huawei.com>
- <20190618054709.GA4271@kroah.com>
- <df18d7f9-f65a-5697-c7c4-edb1ad846c3e@huawei.com>
- <20190618064523.GA6015@kroah.com>
- <2a6abbf9-20a9-c1dd-0091-d8e3009037eb@huawei.com>
- <20190618070503.GB9160@kroah.com>
-From: Gao Xiang <gaoxiang25@huawei.com>
-Message-ID: <08079e72-3ab5-fc9e-d229-13540badf199@huawei.com>
-Date: Tue, 18 Jun 2019 15:13:51 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 71FB3845D2
+ for <devel@driverdev.osuosl.org>; Tue, 18 Jun 2019 08:56:05 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5I8rYYH121174;
+ Tue, 18 Jun 2019 08:56:04 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2018-07-02;
+ bh=N4RH0cwrpdeDoVRKfcDnUfAwZ5Y7e3pZpXdIwgGwtyU=;
+ b=Aa+6dcAvpXYCHQ2ip/cIcsjE1eSzhw68hyzP7HfX0GAt8MTw8OULBP9Db7LXMIC3o6a6
+ edkbZfV42yhIICie3nEWGFUVUdagWZvQPSPgYdw57gZ+poPDx2AJdntcYAmC9Ln0Kngm
+ n8O8lAL/F7pYKuM6Cf+ui53H33JQXlBNrHmmnbKimfiDSUm3TMqsenphR1bg5E8oPvPx
+ wCqglANR1zLar5iqQNaFsyWXmZb8yK+ikN9zRw/uDsYxu9Etl/c3eMmZcyRJe3KQmhf8
+ rs4feYkfX4lo/15AC6AgkobUcIraMlA4j0h7kDCSZEfANNQdxGwA72oihUM8IGTog1kq ZQ== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by aserp2120.oracle.com with ESMTP id 2t4rmp32w2-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 18 Jun 2019 08:56:04 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5I8tYPb146055;
+ Tue, 18 Jun 2019 08:56:03 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3030.oracle.com with ESMTP id 2t59gdq7ua-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 18 Jun 2019 08:56:03 +0000
+Received: from abhmp0007.oracle.com (abhmp0007.oracle.com [141.146.116.13])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x5I8u0ba002118;
+ Tue, 18 Jun 2019 08:56:01 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 18 Jun 2019 01:56:00 -0700
+Date: Tue, 18 Jun 2019 11:55:24 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+Subject: Re: [Patch v2] staging: rtl8723bs: os_dep: ioctl_linux: make use of
+ kzalloc
+Message-ID: <20190618085524.GJ28859@kadam>
+References: <20190618014410.GA8505@hari-Inspiron-1545>
 MIME-Version: 1.0
-In-Reply-To: <20190618070503.GB9160@kroah.com>
-X-Originating-IP: [10.151.23.176]
-X-CFilter-Loop: Reflected
+Content-Disposition: inline
+In-Reply-To: <20190618014410.GA8505@hari-Inspiron-1545>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9291
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=605
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1810050000 definitions=main-1906180075
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9291
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=654 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
+ definitions=main-1906180075
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,93 +98,43 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Miao Xie <miaoxie@huawei.com>, chao@kernel.org,
- LKML <linux-kernel@vger.kernel.org>, weidu.du@huawei.com,
- Fang Wei <fangwei1@huawei.com>, linux-fsdevel@vger.kernel.org,
- linux-erofs@lists.ozlabs.org
+Cc: devel@driverdev.osuosl.org, Puranjay Mohan <puranjay12@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Mamta Shukla <mamtashukla555@gmail.com>,
+ Nishka Dasgupta <nishkadg.linux@gmail.com>,
+ Emanuel Bennici <benniciemanuel78@gmail.com>,
+ Shobhit Kukreti <shobhitkukreti@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-
-
-On 2019/6/18 15:05, Greg Kroah-Hartman wrote:
-> On Tue, Jun 18, 2019 at 02:52:21PM +0800, Gao Xiang wrote:
->>
->>
->> On 2019/6/18 14:45, Greg Kroah-Hartman wrote:
->>> On Tue, Jun 18, 2019 at 02:18:00PM +0800, Gao Xiang wrote:
->>>>
->>>>
->>>> On 2019/6/18 13:47, Greg Kroah-Hartman wrote:
->>>>> On Tue, Jun 18, 2019 at 09:47:08AM +0800, Gao Xiang wrote:
->>>>>>
->>>>>>
->>>>>> On 2019/6/18 4:36, Greg Kroah-Hartman wrote:
->>>>>>> On Sat, Jun 15, 2019 at 02:16:11AM +0800, Gao Xiang wrote:
->>>>>>>> At last, this is RFC patch v1, which means it is not suitable for
->>>>>>>> merging soon... I'm still working on it, testing its stability
->>>>>>>> these days and hope these patches get merged for 5.3 LTS
->>>>>>>> (if 5.3 is a LTS version).
->>>>>>>
->>>>>>> Why would 5.3 be a LTS kernel?
->>>>>>>
->>>>>>> curious as to how you came up with that :)
->>>>>>
->>>>>> My personal thought is about one LTS kernel one year...
->>>>>> Usually 5 versions after the previous kernel...(4.4 -> 4.9 -> 4.14 -> 4.19),
->>>>>> which is not suitable for all historical LTSs...just prepare for 5.3...
->>>>>
->>>>> I try to pick the "last" kernel that is released each year, which
->>>>> sometimes is 5 kernels, sometimes 4, sometimes 6, depending on the
->>>>> release cycle.
->>>>>
->>>>> So odds are it will be 5.4 for the next LTS kernel, but we will not know
->>>>> more until it gets closer to release time.
->>>>
->>>> Thanks for kindly explanation :)
->>>>
->>>> Anyway, I will test these patches, land to our commerical products and try the best
->>>> efforts on making it more stable for Linux upstream to merge.
->>>
->>> Sounds great.
->>>
->>> But why do you need to add compression to get this code out of staging?
->>> Why not move it out now and then add compression and other new features
->>> to it then?
->>
->> Move out of staging could be over several linux versions since I'd like to get
->> majority fs people agreed to this.
+On Tue, Jun 18, 2019 at 07:14:10AM +0530, Hariprasad Kelam wrote:
+> kmalloc with memset can be replaced with kzalloc.
 > 
-> You never know until you try :)
+> Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+> -----
+> changes in v2: Replace rtw_zmalloc with kzalloc
+> ---
+> ---
 
-Thanks for your encouragement :)
-Actually, I personally gave a brief talk on this year LSF/MM 2019 but since I cannot speak
-English well so the entire effect is not good enough :(...
 
-I will personally contact with important people ... to get their agreements on this file
-system soon.
+The changelog should say something like:
 
-> 
->> Decompression inplace is an important part of erofs to show its performance
->> benefits over existed compress filesystems and I tend to merge it in advance.
-> 
-> There is no requirement to show benefits over other filesystems in order
-> to get it merged, but I understand the feeling.  That's fine, we can
-> wait, we are not going anywhere...
+    This patch is a cleanup which replaces rtw_malloc(wep_total_len)
+    with kzalloc() and removes the memset().
 
-Thanks again. I am just proving that the erofs solution may be one of the best compression
-solutions in performance first scenerio :)
+    The rtw_malloc() does GFP_ATOMIC allocations when in_atomic() is true.
+    But as the comments for in_atomic() describe, the in_atomic() check
+    should not be used in driver code.  The in_atomic() check is not
+    accurate when preempt is disabled.
 
-Thanks,
-Gao Xiang
+    In this code we are not in IRQ context and we are not holding any
+    spin_locks so GFP_KERNEL is safe.
 
-> 
-> thanks,
-> 
-> greg k-h
-> 
+regards,
+dan carpenter
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
