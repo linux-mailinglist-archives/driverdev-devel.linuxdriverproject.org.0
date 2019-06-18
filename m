@@ -2,52 +2,52 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8EC6B497B8
-	for <lists+driverdev-devel@lfdr.de>; Tue, 18 Jun 2019 05:17:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A89CB497D6
+	for <lists+driverdev-devel@lfdr.de>; Tue, 18 Jun 2019 05:49:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 349C5854CC;
-	Tue, 18 Jun 2019 03:17:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 58B8D857D8;
+	Tue, 18 Jun 2019 03:49:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LLZjlBqDyt3z; Tue, 18 Jun 2019 03:17:35 +0000 (UTC)
+	with ESMTP id 3vwu57Z0ZNSK; Tue, 18 Jun 2019 03:49:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BAA1A85198;
-	Tue, 18 Jun 2019 03:17:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0C4F3857C5;
+	Tue, 18 Jun 2019 03:49:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B63211BF980
- for <devel@linuxdriverproject.org>; Tue, 18 Jun 2019 03:17:32 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 90ABC1BF5AE
+ for <devel@linuxdriverproject.org>; Tue, 18 Jun 2019 03:49:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id AF0CD85198
- for <devel@linuxdriverproject.org>; Tue, 18 Jun 2019 03:17:32 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 8CAF220350
+ for <devel@linuxdriverproject.org>; Tue, 18 Jun 2019 03:49:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NoV2amcEfTFQ for <devel@linuxdriverproject.org>;
- Tue, 18 Jun 2019 03:17:31 +0000 (UTC)
+ with ESMTP id f3H42YEBIQ3V for <devel@linuxdriverproject.org>;
+ Tue, 18 Jun 2019 03:49:26 +0000 (UTC)
 X-Greylist: delayed 00:10:01 by SQLgrey-1.7.6
-Received: from thoughtglasses.icu (j4mxlhmi.ni.net.tr [89.252.166.169])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8084A84491
- for <devel@linuxdriverproject.org>; Tue, 18 Jun 2019 03:17:31 +0000 (UTC)
+Received: from ceilingterrace.icu (hjgxjhmz.ni.net.tr [89.252.166.170])
+ by silver.osuosl.org (Postfix) with ESMTP id 8BFA120029
+ for <devel@linuxdriverproject.org>; Tue, 18 Jun 2019 03:49:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail;
- d=thoughtglasses.icu; 
+ d=ceilingterrace.icu; 
  h=From:Date:MIME-Version:To:Subject:Message-ID:Content-Type:Content-Transfer-Encoding;
- i=apo@thoughtglasses.icu; bh=pqvYyhFKzyj//XUEe1DW2sdxl0I=;
- b=FDkIoXjn++zHjgmnYPvooDM9gnWLP9Vr6AGKhSlvs9vbzyLcKeEFea1OYmpw6DravjgieMB0/WDW
- JtYkDfnWVcnzuhWQKYE+C+vsNH3xZipGPtDpl3dMBQapccgxP2Y+4PZiYB82xPcDekGWtcRF6tYv
- udmQJh1k6W2SiafFZ+8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=thoughtglasses.icu; 
- b=CZhgeJ2XYykApIEYox8IIdNdCBEqtpwhk8U75286TFfe3vYqhAWlTg5e4tNkXccDO++8hMGA7W5L
- V25P7AWv6XSyADGioQiAJgh8i1dZrcuuc2EH9kf7x8cfw0spgSO4m1/TUkmeaEr2A0hGJYyueYCq
- h/UzAhu6EkuTJdgamCA=;
-From: " William Price" <apo@thoughtglasses.icu>
-Date: Mon, 17 Jun 2019 22:05:03 -0500
+ i=wair@ceilingterrace.icu; bh=eWoC2UXqREh0ZVD3tMabnnFB9k4=;
+ b=LSsNPRX3yjip5ekOO+iYLRTm7X+1qu6Z9lYrSMTtu9KWzvxUr9A0UResiPIG7v4IUEbxkctsqOgL
+ OmWkf4B7oKFa3N3zfKC2Tl/CKfZ8ucv24kRwvlQmahuGieBLPl2cfT0cghodJXT0bGq/wwUirEBx
+ Hy96GM7Mh8tDhZWp5+w=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=ceilingterrace.icu; 
+ b=rLGMUeMFAW7bmBChlU5GTZmcHwKwyTg2PVN3zGZVKXKdN7EHwqtt/3nrIL7ttjzZ6PMFFLOuIS/c
+ J2HT3+GDMm+a7qdeTqC2+ZesWGxqX4piaWCEWtlZx0qpxOjuFGlREE/2YIF+rPmO5puiDREN9slk
+ lb+Wvo6JuqRQ9oiOUh4=;
+From: " Deborah" <wair@ceilingterrace.icu>
+Date: Mon, 17 Jun 2019 22:33:51 -0500
 MIME-Version: 1.0
 To: <devel@linuxdriverproject.org>
-Subject: Boost your IQ by 20 points by taking this
-Message-ID: <Py5R-M797Ic1L6J9g7Gy3-RkXIPGZTnkjMzuaWuOAeM.7tnhDFRkzsloETxztGF9PKfsQEhc2Bprp0cbEmYufN4@thoughtglasses.icu>
+Subject: Elephants in Sydney
+Message-ID: <h1EI9-O2OwLMThPSvIX-GO-KFPF07UQn5FtP-1hpKR4.s9wfvQWunG_mQGgO9RmX6MEajSQi0GRyBKnQJGwzJqg@ceilingterrace.icu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,58 +65,72 @@ Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-=E2=80=A2__ ABC MORNING REPORT __=E2=80=A2    || Friday, May 31, 2019 ||
-	   By   -
+Shrink Your Waist And Melt Your Flabby Tummy This Year
+You will liternally see results overnight =
 
 
-New Product Receives Record Funding From Facebook and Microsoft
-=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=
-=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=
-=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=
-=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=
-=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=A6=E2=80=
-=A6
+Sit on the sofa and watch TV while taking off 30+lbs.  You will never need =
+to go to the gym or even eat healthy again.  =
 
 
+All women are starting to use it
+http://www.ceilingterrace.icu/kcrfqdj/lqz30629nhg/P_YV4wrwwCMpMt5SbMS4MdOiv=
+AxB7jBqLrHtYD1zYc4/S1uJKoZk711RnnGWXqe2gEKawDts0Wz9hbnSC9-CVzFGgNorzS_Mw3l0=
+B49Mx-WG_akHhhYNvzHDWCTHA5TBQ7AKXsSZB6B2lOq8Pirkrfk
 
-On Shark Tank last night they all go in with large amounts to acqire the mo=
-st incredible product that actually increases your IQ over 150 in just a ma=
-tter of seconds
+BY THE END OF THE MONTH LOOK AMAZING
 
-
-"I have never seen anything like this. . .  Adds Bill Gates.  I even starte=
-d taking this myself"
-http://www.thoughtglasses.icu/uznzwqti/gfeiwbt30628inwqljy/audVxH3tCLro_pmE=
-wVrsshYWddlZRUoU7g-YAxNgaMc/yQvCqfdTKBOSm_NA3BxXdSCZAYlVx__4j5spVVcB9EEgWM0=
-IAjzD02nInI131YZUqMYPrrUmumHgHXsxHBSBoa6SWnP2CORSh_cr0kFO7DCkVYUZPndk__tr5D=
-MF40bE
-
-Tuesday: Full Report
-http://www.thoughtglasses.icu/uznzwqti/gfeiwbt30628inwqljy/audVxH3tCLro_pmE=
-wVrsshYWddlZRUoU7g-YAxNgaMc/yQvCqfdTKBOSm_NA3BxXdSCZAYlVx__4j5spVVcB9EEgWM0=
-IAjzD02nInI131YZUqMYPrrUmumHgHXsxHBSBoa6SWnP2CORSh_cr0kFO7DCkVYUZPndk__tr5D=
-MF40bE
+Take a look
+http://www.ceilingterrace.icu/kcrfqdj/lqz30629nhg/P_YV4wrwwCMpMt5SbMS4MdOiv=
+AxB7jBqLrHtYD1zYc4/S1uJKoZk711RnnGWXqe2gEKawDts0Wz9hbnSC9-CVzFGgNorzS_Mw3l0=
+B49Mx-WG_akHhhYNvzHDWCTHA5TBQ7AKXsSZB6B2lOq8Pirkrfk
 
 
 
 
 
-=E2=80=A2=E2=80=A2=E2=80=A2=E2=80=A2=E2=80=A2=E2=80=A2=E2=80=A2=E2=80=A2=E2=
-=80=A2_
-
-
-
-
-
-
-This is an ad-coresspondance
-
+^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=
+=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80
+-This is an ad-coresspondance-
 
 go here to end
-http://www.thoughtglasses.icu/slravym/Eb04FMD5rt__kdnPZUYVkCD7OFk0rc_hSROC2=
-PnWS6aoBSBHxsXHgHmumUrrPYMqUZY131InIn20DzjAI0MWgEE9BcVVps5j4__xVlYAZCSdXxB3=
-AN_mSOBKTdfqCvQy.cMagNxAY-g7UoURZlddWYhssrVwEmp_orLCt3HxVdua
-9773 Brandywine Drive Phillipsburg, NJ 08865
+http://www.ceilingterrace.icu/kcrfqdj/lqz16705nhg/P_YV4wrwwCMpMt5SbMS4MdOiv=
+AxB7jBqLrHtYD1zYc4/S1uJKoZk711RnnGWXqe2gEKawDts0Wz9hbnSC9-CVzFGgNorzS_Mw3l0=
+B49Mx-WG_akHhhYNvzHDWCTHA5TBQ7AKXsSZB6B2lOq8Pirkrfk
+721 North High Point Court Apex, NC 27502
+
+---
+
+
+Cut out your email from our list by submitting your name right here
+http://www.ceilingterrace.icu/auls/kfrkriP8qOl2B6BZSsXKA7QBT5AHTCWDHzvNYhhH=
+ka_GW-xM94B0l3wM_SzroNgGFzVC-9CSnbh9zW0stDwaKEg2eqXWGnnR117kZoKJu1S.4cYz1DY=
+tHrLqBj7BxAviOdM4SMbS5tMpMCwwrw4VY_P
+24 Blue Spring St. Portsmouth, VA 23703
+
+^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=
+=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80^=CF=80
+
+hould be its Parliamentary leader, and who therefore should be its Premier.=
+ The sovereign must now accept that recognised leader; and if the choice we=
+re directly made by the House of Commons, the House must also choose him; i=
+ts supreme section, acting compactly and harmoniously, would sway its decis=
+ions without substantial resistance, and perhaps without even apparent comp=
+etition. A
+
+uch if we divide it into three parts. The whole course of a representative =
+Government has three stages=E2=80=94first, when a Ministry is appointed; ne=
+xt, during its continuance; last, when it ends. Let us consider what is the=
+ exact use of the Queen at each of these stages, and how our present form o=
+f government differs in each, whether for good or for evil from that simple=
+r form of Cabinet g
+
+pleasure of Parliament. Mutatis mutandis, subject to the differences now to=
+ be investigated, what goes on now would go on then. The Premier then, as n=
+ow, must resign upon a vote of want of confidence, but the volition of Parl=
+iament would then be the overt and single force in the selection of a succe=
+ssor, whereas it is now the predominant though latent force. It will help t=
+he discussion very m
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
