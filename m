@@ -1,91 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E99344B26E
-	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Jun 2019 08:54:36 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0CBB94B31C
+	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Jun 2019 09:32:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D3C788527D;
-	Wed, 19 Jun 2019 06:54:34 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E7EF8875F4;
+	Wed, 19 Jun 2019 07:32:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SSooA0Gp2oqo; Wed, 19 Jun 2019 06:54:34 +0000 (UTC)
+	with ESMTP id KqCjckDw-YEx; Wed, 19 Jun 2019 07:32:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9651881E2B;
-	Wed, 19 Jun 2019 06:54:33 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7278086D41;
+	Wed, 19 Jun 2019 07:32:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6F5421BF577
- for <devel@linuxdriverproject.org>; Wed, 19 Jun 2019 06:54:31 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 790641BF23C
+ for <devel@linuxdriverproject.org>; Wed, 19 Jun 2019 07:32:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 6AB7B81E2B
- for <devel@linuxdriverproject.org>; Wed, 19 Jun 2019 06:54:31 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 7220E20526
+ for <devel@linuxdriverproject.org>; Wed, 19 Jun 2019 07:32:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id s3mXbvzgQqHq for <devel@linuxdriverproject.org>;
- Wed, 19 Jun 2019 06:54:30 +0000 (UTC)
+ with ESMTP id VIGvsAJIBu6t for <devel@linuxdriverproject.org>;
+ Wed, 19 Jun 2019 07:32:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A581983885
- for <devel@driverdev.osuosl.org>; Wed, 19 Jun 2019 06:54:30 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5J6s3o1049267;
- Wed, 19 Jun 2019 06:54:29 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- content-transfer-encoding : in-reply-to; s=corp-2018-07-02;
- bh=DlKNJuvcASeK8pBRu937XHctNTJ0nqeBGOzXI0KJiZk=;
- b=Ohai5YMfgkYyE2gW6+kp0v734uX79EDWBfm+7mUeaNCOClTgeZ2ukG9aq4oELB8q0yMo
- spxgW5BVidnS0ZPC6wmMMiD1Dtps13S7Fvo2+UHg1vam2zH8M4+ww/UHzuE86B3L4xST
- u5wy3RpL3WfMBntDZdBJxSt9UEYtb8a5PIeX6W0YqsMsPSdM7F/Drk9BSzr4c857tGHy
- HGrfpQoSqgqlkaJ+APUPXp2mxXakX1JKcCVGI5u57hJ6gm53pZsLbifhuSZftxUucz0e
- 1oENivX1K58BRP22PcgIK+Li9ZAKOmuwHu2xsWzut02YyTMXoKSMpkLZNUYwsbk14eZH +w== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by userp2120.oracle.com with ESMTP id 2t78099fe0-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 19 Jun 2019 06:54:29 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5J6rAwt042359;
- Wed, 19 Jun 2019 06:54:29 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by userp3020.oracle.com with ESMTP id 2t77ymwbjk-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 19 Jun 2019 06:54:29 +0000
-Received: from abhmp0019.oracle.com (abhmp0019.oracle.com [141.146.116.25])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x5J6rD9O024098;
- Wed, 19 Jun 2019 06:53:14 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 18 Jun 2019 23:53:12 -0700
-Date: Wed, 19 Jun 2019 09:53:06 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Simon =?iso-8859-1?Q?Sandstr=F6m?= <simon@nikanor.nu>
-Subject: Re: [PATCH] staging: kpc2000: simplify error handling in
- kp2000_pcie_probe
-Message-ID: <20190619065306.GN28859@kadam>
-References: <20190619063607.20722-1-simon@nikanor.nu>
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9F7A020360
+ for <devel@driverdev.osuosl.org>; Wed, 19 Jun 2019 07:32:13 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id c85so9218757pfc.1
+ for <devel@driverdev.osuosl.org>; Wed, 19 Jun 2019 00:32:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=I1vn1T/sZpgbsHfD8yKybfXwvQoLbK/moLO5lsYagXE=;
+ b=WdXYi45tocQzs6aAQ+UsLJyIve42v/VSvGsvCSx2hOZqSMbDFFu1gFs5XTJ2RuF3fv
+ b60XiBXdxBRTl89W246oafzlsxVRmXUmaLQTfAxSeznOa98hlntnGER6mMjLk+X7tym4
+ ekWfEM3HAC7BnunAfcbxLxFC3BCKuA2Dk3MnqDODB08SwzuqrdAP0ZcGSDPlBcmq2kvR
+ 4gr/keG8ntEmNCVTgATzbIln4d9cQITngMBb1gMAgTJtafa99cvs38yVOBgKRp0WsbGj
+ SIoR7JROcREERwE4lGqN8j0SMmBTqnOb3NBTKJFmlalMGPX2Und8i1w+vC5bZEKXxpSo
+ O25g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=I1vn1T/sZpgbsHfD8yKybfXwvQoLbK/moLO5lsYagXE=;
+ b=WZXvV0EAAeW5fyLSChPt8C1UXKipiZsKp8sR04azwI2LPYz2Ot/bGySrYNOlYW7VjR
+ aY24Kyi//V8VoRPQ10gEzU/fi3elKlA0U315FlS0v7T9JQnHEi1uTPi0Pd0yhw7ZXoAA
+ t3d42EsMqRgOm7w7W9VYUZCILsE+ZoQAjg6ADtYOtv8jFIIrgQlpw3r1ZClmU3cXsSZy
+ kkDpIRdjxsQpE6J8GG1EkslQGN6Jvx3W4jQGIr9y6AVCGvTayMMr2gsVUnAMdrpbIcSX
+ m4IvNqg53DNYqPGIdHjIMW962oH9E1wV0rG1sjQRLU+nvMKfjsE7R2WzfCEPvd3/7yLK
+ Gu4w==
+X-Gm-Message-State: APjAAAX/KLvDoLIE7/BAVU+wdhDdPrxG6ZKl+mhvXPZR1EV/TGSjt1Z7
+ 5f1UEF5AYwyEVYNPRnS2AsM=
+X-Google-Smtp-Source: APXvYqw6sIDYRxACN10/uB/1SYsIE3dZNaFOKev6V7wdjrT4JAzQIQzHCvpCZChp3O1pTk/XFraZcw==
+X-Received: by 2002:a62:1d11:: with SMTP id d17mr32753679pfd.249.1560929533311; 
+ Wed, 19 Jun 2019 00:32:13 -0700 (PDT)
+Received: from localhost.localdomain ([122.163.71.137])
+ by smtp.gmail.com with ESMTPSA id q10sm13628891pgg.35.2019.06.19.00.32.11
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Wed, 19 Jun 2019 00:32:12 -0700 (PDT)
+From: Nishka Dasgupta <nishkadg.linux@gmail.com>
+To: gregkh@linuxfoundation.org,
+	devel@driverdev.osuosl.org
+Subject: [PATCH] staging: rts5208: Remove function soft_reset_sd_card()
+Date: Wed, 19 Jun 2019 13:02:01 +0530
+Message-Id: <20190619073201.18006-1-nishkadg.linux@gmail.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190619063607.20722-1-simon@nikanor.nu>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9292
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1810050000 definitions=main-1906190057
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9292
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
- definitions=main-1906190057
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,43 +84,61 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: Nishka Dasgupta <nishkadg.linux@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Jun 19, 2019 at 08:36:07AM +0200, Simon Sandstr=F6m wrote:
-> We can get rid of a few iounmaps in the middle of the function by
-> re-ordering the error handling labels and adding two new labels.
-> =
+Remove function soft_reset_sd_card, as all it does is call reset_sd.
+Modify call sites of the former to call the latter instead.
+Issue found with Coccinelle.
 
-> Signed-off-by: Simon Sandstr=F6m <simon@nikanor.nu>
-> ---
-> =
+Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
+---
+ drivers/staging/rts5208/sd.c | 7 +------
+ drivers/staging/rts5208/sd.h | 1 -
+ 2 files changed, 1 insertion(+), 7 deletions(-)
 
-> This change has not been tested besides by compiling. It might be good
-> took take an extra look to make sure that I got everything right.
-> =
-
-
-You have the right instincts that when something looks really
-complicated that's probably for a reason.  That attitude will serve you
-well in the future!  But in this case it's staging code so the original
-code is just strange.
-
-Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
-
-> Also, this change was proposed by Dan Carpenter. Should I add anything
-> in the commit message to show this?
-
-There is a Suggested-by: tag for this, but don't resend because I don't
-care and I've already reviewed this version so I don't want to review
-the patch again.
-
-regards,
-dan carpenter
+diff --git a/drivers/staging/rts5208/sd.c b/drivers/staging/rts5208/sd.c
+index c256a2398651..b3f829ed1019 100644
+--- a/drivers/staging/rts5208/sd.c
++++ b/drivers/staging/rts5208/sd.c
+@@ -3580,11 +3580,6 @@ int sd_rw(struct scsi_cmnd *srb, struct rtsx_chip *chip, u32 start_sector,
+ }
+ 
+ #ifdef SUPPORT_CPRM
+-int soft_reset_sd_card(struct rtsx_chip *chip)
+-{
+-	return reset_sd(chip);
+-}
+-
+ int ext_sd_send_cmd_get_rsp(struct rtsx_chip *chip, u8 cmd_idx, u32 arg,
+ 			    u8 rsp_type, u8 *rsp, int rsp_len,
+ 			    bool special_check)
+@@ -4639,7 +4634,7 @@ int sd_hw_rst(struct scsi_cmnd *srb, struct rtsx_chip *chip)
+ 		break;
+ 
+ 	case 1:
+-		retval = soft_reset_sd_card(chip);
++		retval = reset_sd(chip);
+ 		if (retval != STATUS_SUCCESS) {
+ 			set_sense_type(chip, lun, SENSE_TYPE_MEDIA_NOT_PRESENT);
+ 			sd_card->pre_cmd_err = 1;
+diff --git a/drivers/staging/rts5208/sd.h b/drivers/staging/rts5208/sd.h
+index e124526360b2..dc9e8cad7a74 100644
+--- a/drivers/staging/rts5208/sd.h
++++ b/drivers/staging/rts5208/sd.h
+@@ -273,7 +273,6 @@ void sd_cleanup_work(struct rtsx_chip *chip);
+ int sd_power_off_card3v3(struct rtsx_chip *chip);
+ int release_sd_card(struct rtsx_chip *chip);
+ #ifdef SUPPORT_CPRM
+-int soft_reset_sd_card(struct rtsx_chip *chip);
+ int ext_sd_send_cmd_get_rsp(struct rtsx_chip *chip, u8 cmd_idx,
+ 			    u32 arg, u8 rsp_type, u8 *rsp, int rsp_len,
+ 			    bool special_check);
+-- 
+2.19.1
 
 _______________________________________________
 devel mailing list
