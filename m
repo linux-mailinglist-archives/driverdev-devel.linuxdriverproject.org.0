@@ -1,49 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 78A474BD47
-	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Jun 2019 17:54:09 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 668624BD4B
+	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Jun 2019 17:54:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A333A207B0;
-	Wed, 19 Jun 2019 15:54:07 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E6DAD867CC;
+	Wed, 19 Jun 2019 15:54:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OKT-OYsB5U1b; Wed, 19 Jun 2019 15:54:07 +0000 (UTC)
+	with ESMTP id upHP2vHy3zst; Wed, 19 Jun 2019 15:54:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 5865D20797;
-	Wed, 19 Jun 2019 15:54:06 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6481E81AE2;
+	Wed, 19 Jun 2019 15:54:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 884B01BF5F5
- for <devel@linuxdriverproject.org>; Wed, 19 Jun 2019 15:54:04 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1E4A51BF9AF
+ for <devel@linuxdriverproject.org>; Wed, 19 Jun 2019 15:54:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 853AB87B5D
- for <devel@linuxdriverproject.org>; Wed, 19 Jun 2019 15:54:04 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1BCEE832C6
+ for <devel@linuxdriverproject.org>; Wed, 19 Jun 2019 15:54:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Mj2XPe3xXZ+Z for <devel@linuxdriverproject.org>;
+ with ESMTP id 6y3KmDHtxiSl for <devel@linuxdriverproject.org>;
  Wed, 19 Jun 2019 15:54:03 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from faui03.informatik.uni-erlangen.de
  (faui03.informatik.uni-erlangen.de [131.188.30.103])
- by hemlock.osuosl.org (Postfix) with ESMTPS id E6F1287B4D
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id F2ABD85E5D
  for <devel@driverdev.osuosl.org>; Wed, 19 Jun 2019 15:54:02 +0000 (UTC)
 Received: from faui06c.informatik.uni-erlangen.de
  (faui06c.informatik.uni-erlangen.de [IPv6:2001:638:a000:4130:131:188:30:202])
- by faui03.informatik.uni-erlangen.de (Postfix) with ESMTP id 80D532412DB;
- Wed, 19 Jun 2019 17:46:57 +0200 (CEST)
+ by faui03.informatik.uni-erlangen.de (Postfix) with ESMTP id 0F3BC2412F1;
+ Wed, 19 Jun 2019 17:46:58 +0200 (CEST)
 Received: by faui06c.informatik.uni-erlangen.de (Postfix, from userid 30063)
- id 7094EB00B74; Wed, 19 Jun 2019 17:46:57 +0200 (CEST)
+ id F2FC7B00B8E; Wed, 19 Jun 2019 17:46:57 +0200 (CEST)
 From: Lukas Schneider <lukas.s.schneider@fau.de>
 To: kim.jamie.bradley@gmail.com, pakki001@umn.edu, colin.king@canonical.com,
  devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 3/4] rts5208: Fix usleep_range is preferred over udelay
-Date: Wed, 19 Jun 2019 17:46:47 +0200
-Message-Id: <20190619154648.13840-3-lukas.s.schneider@fau.de>
+Subject: [PATCH 4/4] rts5208: Fix usleep range is preferred over udelay
+Date: Wed, 19 Jun 2019 17:46:48 +0200
+Message-Id: <20190619154648.13840-4-lukas.s.schneider@fau.de>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190619154648.13840-1-lukas.s.schneider@fau.de>
 References: <20190619154648.13840-1-lukas.s.schneider@fau.de>
@@ -70,7 +70,7 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 This patch fixes the issue reported by checkpatch:
 
 CHECK: usleep_range is preferred over udelay;
-see Documentation/timers/timers-howto.txt
+see Doucmentation/timers/timers-howto.txt
 
 It's save to sleep here instead of using busy waiting,
 because we are not in an atomic context.
@@ -79,22 +79,57 @@ Signed-off-by: Lukas Schneider <lukas.s.schneider@fau.de>
 Signed-off-by: Jannik Moritz <jannik.moritz@fau.de>
 Cc: <linux-kernel@i4.cs.fau.de>
 ---
- drivers/staging/rts5208/rtsx_chip.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rts5208/sd.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/staging/rts5208/rtsx_chip.c b/drivers/staging/rts5208/rtsx_chip.c
-index 76c35f3c0208..8cddfe542d56 100644
---- a/drivers/staging/rts5208/rtsx_chip.c
-+++ b/drivers/staging/rts5208/rtsx_chip.c
-@@ -1803,7 +1803,7 @@ void rtsx_exit_ss(struct rtsx_chip *chip)
+diff --git a/drivers/staging/rts5208/sd.c b/drivers/staging/rts5208/sd.c
+index c256a2398651..23a3499096ce 100644
+--- a/drivers/staging/rts5208/sd.c
++++ b/drivers/staging/rts5208/sd.c
+@@ -865,7 +865,7 @@ static int sd_change_phase(struct rtsx_chip *chip, u8 sample_point, u8 tune_dir)
+ 						     PHASE_CHANGE);
+ 			if (retval)
+ 				return retval;
+-			udelay(50);
++			usleep_range(50, 60);
+ 			retval = rtsx_write_register(chip, SD_VP_CTL, 0xFF,
+ 						     PHASE_CHANGE |
+ 						     PHASE_NOT_RESET |
+@@ -877,14 +877,14 @@ static int sd_change_phase(struct rtsx_chip *chip, u8 sample_point, u8 tune_dir)
+ 						     CHANGE_CLK, CHANGE_CLK);
+ 			if (retval)
+ 				return retval;
+-			udelay(50);
++			usleep_range(50, 60);
+ 			retval = rtsx_write_register(chip, SD_VP_CTL, 0xFF,
+ 						     PHASE_NOT_RESET |
+ 						     sample_point);
+ 			if (retval)
+ 				return retval;
+ 		}
+-		udelay(100);
++		usleep_range(100, 110);
  
- 	if (chip->power_down_in_ss) {
- 		rtsx_force_power_on(chip, SSC_PDCTL | OC_PDCTL);
--		udelay(1000);
-+		usleep_range(1000, 1010);
+ 		rtsx_init_cmd(chip);
+ 		rtsx_add_cmd(chip, WRITE_REG_CMD, SD_DCMPS_CTL, DCMPS_CHANGE,
+@@ -918,7 +918,7 @@ static int sd_change_phase(struct rtsx_chip *chip, u8 sample_point, u8 tune_dir)
+ 				return retval;
+ 		}
+ 
+-		udelay(50);
++		usleep_range(50, 60);
  	}
  
- 	if (RTSX_TST_DELINK(chip)) {
+ 	retval = rtsx_write_register(chip, SD_CFG1, SD_ASYNC_FIFO_NOT_RST, 0);
+@@ -1416,7 +1416,7 @@ static int sd_wait_data_idle(struct rtsx_chip *chip)
+ 			retval = STATUS_SUCCESS;
+ 			break;
+ 		}
+-		udelay(100);
++		usleep_range(100, 110);
+ 	}
+ 	dev_dbg(rtsx_dev(chip), "SD_DATA_STATE: 0x%02x\n", val);
+ 
 -- 
 2.19.1
 
