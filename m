@@ -1,83 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EAAF14AFC4
-	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Jun 2019 03:57:56 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A037A8598A;
-	Wed, 19 Jun 2019 01:57:54 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2fFAvxkwKu2T; Wed, 19 Jun 2019 01:57:53 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6CAC785AA1;
-	Wed, 19 Jun 2019 01:57:52 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 416771BF276
- for <devel@linuxdriverproject.org>; Wed, 19 Jun 2019 01:57:50 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id F37EF4B007
+	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Jun 2019 04:30:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 397D387A5E
- for <devel@linuxdriverproject.org>; Wed, 19 Jun 2019 01:57:50 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 39F7787AFE;
+	Wed, 19 Jun 2019 02:30:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id qohiu8zWujH4; Wed, 19 Jun 2019 02:30:19 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id BC92987A72;
+	Wed, 19 Jun 2019 02:30:18 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 431DD1BF357
+ for <devel@linuxdriverproject.org>; Wed, 19 Jun 2019 02:30:17 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3B3D78620B
+ for <devel@linuxdriverproject.org>; Wed, 19 Jun 2019 02:30:17 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6IxxpNrTtVp5 for <devel@linuxdriverproject.org>;
- Wed, 19 Jun 2019 01:57:49 +0000 (UTC)
+ with ESMTP id sR0Po0nLap2F for <devel@linuxdriverproject.org>;
+ Wed, 19 Jun 2019 02:30:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
- [209.85.214.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 9866B87A34
- for <devel@driverdev.osuosl.org>; Wed, 19 Jun 2019 01:57:49 +0000 (UTC)
-Received: by mail-pl1-f196.google.com with SMTP id k8so5510313plt.3
- for <devel@driverdev.osuosl.org>; Tue, 18 Jun 2019 18:57:49 -0700 (PDT)
+Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
+ [209.85.214.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E26AE84BA5
+ for <devel@driverdev.osuosl.org>; Wed, 19 Jun 2019 02:30:15 +0000 (UTC)
+Received: by mail-pl1-f195.google.com with SMTP id p1so6521861plo.2
+ for <devel@driverdev.osuosl.org>; Tue, 18 Jun 2019 19:30:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=DtzpsEMmA6y/VxThJKdgqPMw4atSdDvUpiSanqf0lPA=;
- b=BaZDV+wO6ImusZDj4cQOtLE/OFaK6teBN6YPViixSjyaqIfOfVDmWt4qSgmzzhO+4l
- rNjno/gyW56AzTXhsLEU2m80JQu5u3gt0iyt5S4gcCBEeJOPd73ZmQU9quFH24SI34JH
- 7WoKEt/tJYcpT7wPqtAlho2FcVvDYTAWp35Ceug20SqujuXlyrPHvtcfWKKrvQmJ0tFM
- BzRDlhCHPWigZsI6exq4gGrgvxlaK5Oww/q5T9nIReszwzKWtRLtkhR3jyPmLz7FDJHN
- sQQn9lqef32jdMlxDCVKz/4FoBQfawT+KNALwX4w7UqNsCT2KwdIQli5YuPEMO424jF2
- 3AVA==
+ :user-agent; bh=Hp7DHtibmJwvDlg9A4mEprONZytCRnxVVBzTxg8OHYo=;
+ b=czkRtXS/k/PIDvk0gtpQpNB5VZxZherTZ9PRlTPnBwnjA/igg0LR2lOuUP5WT/rYgs
+ Gp1so9Gfkp3mc6xC98nyHT6g4S+KnaR7bsDuxWN8+Y+rTzjObM+F9BgKArgSmZR13TGs
+ uWGbx0LO/wo7UOWRlkSEaVcqH+1lKM7fG8tFV4gPNhPJJcpUbqzMQl0OxxSPfQOc7CbG
+ rmrD0WP57rpXBIK62Gkq9J4Zc2r8rNgBuf/x9v93yHfJrFcNTCyxrcDzyidZa41Sa5n8
+ nga8JQ9Pij0H46ixiXryHy8D2VI1/UK6brZpGaUe+ykruxDtpM0RGm+HhWkhVpVQqmkn
+ ffmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=DtzpsEMmA6y/VxThJKdgqPMw4atSdDvUpiSanqf0lPA=;
- b=lPgz5piVE0IHy7pCxt3F6A/zLb571XZrA2MD2BQtZbVHpwhbCRk2npftXXLG9T5OT+
- d19W1I915QzeOO5Jums+4X3bqQy7IT+J1gMbXUeAStyo8p71tm40Fj6fOAoLmn/O1Whh
- HrdU/77Pvj2+1tTizfDaZ+Y0KlREPC72P7HTt9i8qkQERTY0sZ2KhdPM+yfQYEx63qnt
- mynM2GGjHPNY8pYNL4aZ9vnKRA2/Jhpd0T03bOpIsqUdcXY8WNfjYU3IMdfeLaotEyLr
- lqGjksQP6XRXO/9Bln7YTXqn+DXvsnhe71aMZzqE24IwxWsW0gKV0vOhD+trAeqOS254
- gPnw==
-X-Gm-Message-State: APjAAAXv0jHE9GHFdllONy5R9ZODxAxg5ylmleDezqLjxW1N5kLVcSWl
- rNMtJjb/JSNezgw9pZ94BxA8jaYA
-X-Google-Smtp-Source: APXvYqzTSbLGX2f1sPruiEJLHqdG195QU1uWlsCYUFCHOYHVqgjZtiO1bcEion3Xsh87njq+2dMDlQ==
-X-Received: by 2002:a17:902:a5c5:: with SMTP id
- t5mr118819238plq.288.1560909469154; 
- Tue, 18 Jun 2019 18:57:49 -0700 (PDT)
+ bh=Hp7DHtibmJwvDlg9A4mEprONZytCRnxVVBzTxg8OHYo=;
+ b=okmbgOwbhTghfolcv7aMR9EBMyI+qfYn5mf02NFGLYjj8zjKzEiULCFjb2hL63WYD2
+ MSqex73tVFBlXNTqrFbHoLSbmKfnkuperRlmWQRzgqXiB6IHgZpAZg9gBu7wLEjuIJbG
+ K3Wcf+ja/+z+qcVATF5RzM9yGf2kEieGmWylKSuDBh5PcZloS3OoYh040j4gdEti7TBC
+ 9wBdgiDiknRHMLb7BCEId58RZ5u1BYiZlPQ193waOKdACbLzgxFlj+dsDDiSpRTRYeIS
+ B2I/jLt7trHmW+7TJXfC0UbrCNpkHvK2IuDL1k1OylzKUTBCqDZ1RRYlaZG56SCMdE2h
+ AGCQ==
+X-Gm-Message-State: APjAAAUHKgdeeNPGP0Jw5t0c/JCzbazSR5zGZbNC8U0utTZoymUdstQq
+ prcFRktIWe6KKgduMglVP0A=
+X-Google-Smtp-Source: APXvYqyHuCR/eXIW2UITGM18yxwMTR+iDtanNqySjG6vDTWCzZqFLXXb4U4Pay9MxueOrk3QofwtBg==
+X-Received: by 2002:a17:902:bd0a:: with SMTP id
+ p10mr41544490pls.134.1560911415555; 
+ Tue, 18 Jun 2019 19:30:15 -0700 (PDT)
 Received: from hari-Inspiron-1545 ([183.83.92.187])
- by smtp.gmail.com with ESMTPSA id x26sm14327540pfq.69.2019.06.18.18.57.45
+ by smtp.gmail.com with ESMTPSA id f186sm21041254pfb.5.2019.06.18.19.30.13
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 18 Jun 2019 18:57:48 -0700 (PDT)
-Date: Wed, 19 Jun 2019 07:27:43 +0530
+ Tue, 18 Jun 2019 19:30:14 -0700 (PDT)
+Date: Wed, 19 Jun 2019 08:00:10 +0530
 From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Michael Straube <straube.linux@gmail.com>,
- Mamta Shukla <mamtashukla555@gmail.com>,
  Hariprasad Kelam <hariprasad.kelam@gmail.com>,
- Nishka Dasgupta <nishkadg.linux@gmail.com>,
- Emanuel Bennici <benniciemanuel78@gmail.com>,
- Puranjay Mohan <puranjay12@gmail.com>,
- Shobhit Kukreti <shobhitkukreti@gmail.com>,
  devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [Patch v3] staging: rtl8723bs: os_dep: ioctl_linux: make use of
- kzalloc
-Message-ID: <20190619015742.GA19278@hari-Inspiron-1545>
+Subject: [PATCH] staging: rtl8723bs: hal: odm_RegConfig8723B: fix Lines
+ should not end with a '('
+Message-ID: <20190619023010.GA21587@hari-Inspiron-1545>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.5.24 (2015-08-30)
@@ -98,76 +92,100 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch is a cleanup which replaces rtw_malloc(wep_total_len) with
-kzalloc() and removes the memset().
+this patch fixes below issue reported by checkpatch.pl
 
-The rtw_malloc() does GFP_ATOMIC allocations when in_atomic() is true.
-But as the comments for in_atomic() describe, the in_atomic() check
-should not be used in driver code.  The in_atomic() check is not
-accurate when preempt is disabled.
-
-In this code we are not in IRQ context and we are not holding any
-spin_locks so GFP_KERNEL is safe.
+CHECK: Lines should not end with a '('
+CHECK: Lines should not end with a '('
 
 Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-----
-changes in v2: Replace rtw_zmalloc with kzalloc
-changes in v3: Add proper changelog
 ---
----
- drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 12 +++---------
- 1 file changed, 3 insertions(+), 9 deletions(-)
+ drivers/staging/rtl8723bs/hal/odm_RegConfig8723B.h | 61 ++++++++++------------
+ 1 file changed, 28 insertions(+), 33 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-index ea50ec424..e050f20 100644
---- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-+++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-@@ -477,14 +477,12 @@ static int wpa_set_encryption(struct net_device *dev, struct ieee_param *param,
- 		if (wep_key_len > 0) {
- 			wep_key_len = wep_key_len <= 5 ? 5 : 13;
- 			wep_total_len = wep_key_len + FIELD_OFFSET(struct ndis_802_11_wep, KeyMaterial);
--			pwep = rtw_malloc(wep_total_len);
-+			pwep = kzalloc(wep_total_len, GFP_KERNEL);
- 			if (pwep == NULL) {
- 				RT_TRACE(_module_rtl871x_ioctl_os_c, _drv_err_, (" wpa_set_encryption: pwep allocate fail !!!\n"));
- 				goto exit;
- 			}
+diff --git a/drivers/staging/rtl8723bs/hal/odm_RegConfig8723B.h b/drivers/staging/rtl8723bs/hal/odm_RegConfig8723B.h
+index 12dfc58..07b5859 100644
+--- a/drivers/staging/rtl8723bs/hal/odm_RegConfig8723B.h
++++ b/drivers/staging/rtl8723bs/hal/odm_RegConfig8723B.h
+@@ -7,51 +7,46 @@
+ #ifndef __INC_ODM_REGCONFIG_H_8723B
+ #define __INC_ODM_REGCONFIG_H_8723B
  
--			memset(pwep, 0, wep_total_len);
--
- 			pwep->KeyLength = wep_key_len;
- 			pwep->Length = wep_total_len;
+-void odm_ConfigRFReg_8723B(
+-	PDM_ODM_T pDM_Odm,
+-	u32 Addr,
+-	u32 Data,
+-	ODM_RF_RADIO_PATH_E RF_PATH,
+-	u32 RegAddr
++void odm_ConfigRFReg_8723B(PDM_ODM_T pDM_Odm,
++			   u32 Addr,
++			   u32 Data,
++			   ODM_RF_RADIO_PATH_E RF_PATH,
++			   u32 RegAddr
+ );
  
-@@ -2142,12 +2140,10 @@ static int rtw_wx_set_enc_ext(struct net_device *dev,
- 	int ret = 0;
+ void odm_ConfigRF_RadioA_8723B(PDM_ODM_T pDM_Odm, u32 Addr, u32 Data);
  
- 	param_len = sizeof(struct ieee_param) + pext->key_len;
--	param = rtw_malloc(param_len);
-+	param = kzalloc(param_len, GFP_KERNEL);
- 	if (param == NULL)
- 		return -1;
+ void odm_ConfigMAC_8723B(PDM_ODM_T pDM_Odm, u32 Addr, u8 Data);
  
--	memset(param, 0, param_len);
--
- 	param->cmd = IEEE_CMD_SET_ENCRYPTION;
- 	memset(param->sta_addr, 0xff, ETH_ALEN);
+-void odm_ConfigBB_AGC_8723B(
+-	PDM_ODM_T pDM_Odm,
+-	u32 Addr,
+-	u32 Bitmask,
+-	u32 Data
++void odm_ConfigBB_AGC_8723B(PDM_ODM_T pDM_Odm,
++			    u32 Addr,
++			    u32 Bitmask,
++			    u32 Data
+ );
  
-@@ -3513,14 +3509,12 @@ static int rtw_set_encryption(struct net_device *dev, struct ieee_param *param,
- 		if (wep_key_len > 0) {
- 			wep_key_len = wep_key_len <= 5 ? 5 : 13;
- 			wep_total_len = wep_key_len + FIELD_OFFSET(struct ndis_802_11_wep, KeyMaterial);
--			pwep = rtw_malloc(wep_total_len);
-+			pwep = kzalloc(wep_total_len, GFP_KERNEL);
- 			if (pwep == NULL) {
- 				DBG_871X(" r871x_set_encryption: pwep allocate fail !!!\n");
- 				goto exit;
- 			}
+-void odm_ConfigBB_PHY_REG_PG_8723B(
+-	PDM_ODM_T pDM_Odm,
+-	u32 Band,
+-	u32 RfPath,
+-	u32 TxNum,
+-	u32 Addr,
+-	u32 Bitmask,
+-	u32 Data
++void odm_ConfigBB_PHY_REG_PG_8723B(PDM_ODM_T pDM_Odm,
++				   u32 Band,
++				   u32 RfPath,
++				   u32 TxNum,
++				   u32 Addr,
++				   u32 Bitmask,
++				   u32 Data
+ );
  
--			memset(pwep, 0, wep_total_len);
--
- 			pwep->KeyLength = wep_key_len;
- 			pwep->Length = wep_total_len;
+-void odm_ConfigBB_PHY_8723B(
+-	PDM_ODM_T pDM_Odm,
+-	u32 Addr,
+-	u32 Bitmask,
+-	u32 Data
++void odm_ConfigBB_PHY_8723B(PDM_ODM_T pDM_Odm,
++			    u32 Addr,
++			    u32 Bitmask,
++			    u32 Data
+ );
  
+-void odm_ConfigBB_TXPWR_LMT_8723B(
+-	PDM_ODM_T pDM_Odm,
+-	u8 *Regulation,
+-	u8 *Band,
+-	u8 *Bandwidth,
+-	u8 *RateSection,
+-	u8 *RfPath,
+-	u8 *Channel,
+-	u8 *PowerLimit
++void odm_ConfigBB_TXPWR_LMT_8723B(PDM_ODM_T pDM_Odm,
++				  u8 *Regulation,
++				  u8 *Band,
++				  u8 *Bandwidth,
++				  u8 *RateSection,
++				  u8 *RfPath,
++				  u8 *Channel,
++				  u8 *PowerLimit
+ );
+ 
+ #endif
 -- 
 2.7.4
 
