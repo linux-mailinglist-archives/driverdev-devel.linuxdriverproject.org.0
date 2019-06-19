@@ -2,81 +2,82 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CBBA84B340
-	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Jun 2019 09:45:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B005F4B342
+	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Jun 2019 09:45:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E484186FC3;
-	Wed, 19 Jun 2019 07:45:04 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6157E879FC;
+	Wed, 19 Jun 2019 07:45:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fzproRVCb1GC; Wed, 19 Jun 2019 07:45:04 +0000 (UTC)
+	with ESMTP id Z5S+lhDLAuH6; Wed, 19 Jun 2019 07:45:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 74BB086D52;
-	Wed, 19 Jun 2019 07:45:04 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6771E86DD3;
+	Wed, 19 Jun 2019 07:45:07 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id ED2771BF23C
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 039611BF23C
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 19 Jun 2019 07:45:02 +0000 (UTC)
+ Wed, 19 Jun 2019 07:45:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id EA1EB86416
+ by silver.osuosl.org (Postfix) with ESMTP id F2E2E20522
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 19 Jun 2019 07:45:02 +0000 (UTC)
+ Wed, 19 Jun 2019 07:45:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fvi0nr2lNMqF
+ with ESMTP id qeKEQb8sGEUa
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 19 Jun 2019 07:45:02 +0000 (UTC)
+ Wed, 19 Jun 2019 07:45:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
- [209.85.128.68])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3619C85D00
+Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
+ [209.85.221.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id E94A22051C
  for <driverdev-devel@linuxdriverproject.org>;
  Wed, 19 Jun 2019 07:45:02 +0000 (UTC)
-Received: by mail-wm1-f68.google.com with SMTP id h19so3980783wme.0
+Received: by mail-wr1-f65.google.com with SMTP id m3so2220341wrv.2
  for <driverdev-devel@linuxdriverproject.org>;
  Wed, 19 Jun 2019 00:45:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=1/uwGKh35dveTIDkVXQH3sBhs/f0Gm8Af8TdFdiFUXk=;
- b=ZhCY3K0ko4Heh98hr6dK0zr8pr/Nu4IfNuZII1qjUR640p29M05Od7LxNyre/daeZg
- p2nWkt9Onlx8oMqewC+A53E9o2xbXzKxfEPmffRpb2AsJ1CC5AlrRjXoALFrZ10PybA0
- 3mdPb5n9jHhRHuA10FheAn11ew0NSI4eR5jZT7gQZiXOma0exCChvXUpgUodKBU58uS7
- I7LlLIjo+AtUVLQh1qoPsLRq7Vnz7oi+2x7jX6tGaPL83W3GJcp0Ldhdd7Ed6aFuRElb
- taI6xqaH2aNzvPpMd94GZel4gxbWjVlsHmBr0fAToD8ZAliS8yNtx+vMp6d114uv3ob2
- 0DRA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=hQZJksuDzXbUdjx8v/OdlVieEY0F4jBFtoB6PsclJuw=;
+ b=CdBLzMwQRXeh1Hop0yfJy3PLaK1KRqyS/BmylaSguWRDzo+b98cOjzeTMGtFw58/VD
+ fiHYEpL49xaq3fy5uwQl/JxZ4AQ/yPbrUEocBoqXk1obJzDY+LB3P2ukKZvCIudJH6pr
+ TpTjinhD5iPRyFbDjQmWs4ko+NOZ/BHDvVmdJxVYz2WUyYwwpInM2mbaWIGgHo2gkPdc
+ 2NEpeF0HOXKxrSyJ/NziQqtiUMZ/AlS84iSrxkd3fSP1COuBYiza4no3K1srPx0gPECr
+ QVxlqdkZDH1AAtqKP5jhkbT4rShllrm2GlPHgMSo0VXvbJcohPR/7JMcj96y326MyOxb
+ KAMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=1/uwGKh35dveTIDkVXQH3sBhs/f0Gm8Af8TdFdiFUXk=;
- b=kh0IYimmp96cDu1CWHAfzZRiMRfte8mcUAzzCCYLgQSCzHw33MHZ3G2L0UL8xWCErl
- Kn3KmxtveVrkM54nySoBCzNeQ1S1QdIS/eEkB85tkxClWD2DJRS4NskjzcbA6R1JOfQi
- oLmRaIkOU6+Q23qRGEnVRKCjcq9m7WBUXg8hvq60yoIABGPjx7WbTFHiBCxbLAwTqA6x
- 5UZHkk5+0RGBqPrXdLnZprm0lcbTDCz0i7JcZCmaeg3Owq9WvF37UwUgU+P9sCOsLZnE
- XUFHJ5xge2dstmetWrNxqKRjYXc6ehniNa2toB413IE88kfZc1tL9O/zR++UIG1TBHls
- k14A==
-X-Gm-Message-State: APjAAAU/9n8UOxJqJu8C+kK8tTG9X/lpedJa4U/2PZkpGrrpirgsGEro
- ajhwB4WdFEho5C4rHXGwav8=
-X-Google-Smtp-Source: APXvYqxtMBBkXwKQeNq8uJB6p24cPN0knBUW4FWp8zVe85B23Cb9J/Lh+ZkZGOkz1NYM+ThDwmA5rA==
-X-Received: by 2002:a1c:18a:: with SMTP id 132mr1238075wmb.101.1560930300742; 
- Wed, 19 Jun 2019 00:45:00 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=hQZJksuDzXbUdjx8v/OdlVieEY0F4jBFtoB6PsclJuw=;
+ b=sSBK/WkTlV+tVjZthFz4wF09wF21cjbODQSZLMhqp8+0CxVNMuy4rS7lybYFz5g6nr
+ OVn01kChclF2X7xSFueFgJu09vciP24shypgZd9KnUqvkmyWk7UuKH1Znk0gXCfY222B
+ BD8o+8rGikZkEYkM1XLytYOktLTX7aZWbVgtAsCCeswB8qGC5LibkeXSXQgl/cX8H/aL
+ pDhUKQO6UKnn7fCOSld9usLQXxfh3R9dG/s5UlOKYROhERwUb1j7UpwiPwBZe01++rvU
+ YMgtf8mWa8eOwaIUKsJZxdq5XLi694M8SdyBe0Zch2ApILgl07IAe+DsPeCYhpU3EnpD
+ IN/g==
+X-Gm-Message-State: APjAAAUMkfYQnlCZfMbPcnKyBAOd8Eyexm0bFDgJOGchnSnPq8hbqJqS
+ HhfNUB4Rc+F/0dE/5c3jfsQ=
+X-Google-Smtp-Source: APXvYqyE0GeRJjdeeIks1SudiRc/j7ieCF0qxIQomNnKHdAqv7+YET8irFVnLKk6c56UWFnNV+4Z5w==
+X-Received: by 2002:adf:e7ca:: with SMTP id e10mr24967666wrn.281.1560930301600; 
+ Wed, 19 Jun 2019 00:45:01 -0700 (PDT)
 Received: from localhost.localdomain (34.red-88-0-78.dynamicip.rima-tde.net.
  [88.0.78.34])
- by smtp.gmail.com with ESMTPSA id j7sm17925440wru.54.2019.06.19.00.44.59
+ by smtp.gmail.com with ESMTPSA id j7sm17925440wru.54.2019.06.19.00.45.00
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Wed, 19 Jun 2019 00:45:00 -0700 (PDT)
+ Wed, 19 Jun 2019 00:45:01 -0700 (PDT)
 From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 0/4] staging: mt7621-pci: Use gpio perst instead builtin
- behaviour
-Date: Wed, 19 Jun 2019 09:44:54 +0200
-Message-Id: <20190619074458.31112-1-sergio.paracuellos@gmail.com>
+Subject: [PATCH 1/4] staging: mt7621-pci: fix two messages in driver code
+Date: Wed, 19 Jun 2019 09:44:55 +0200
+Message-Id: <20190619074458.31112-2-sergio.paracuellos@gmail.com>
 X-Mailer: git-send-email 2.19.1
+In-Reply-To: <20190619074458.31112-1-sergio.paracuellos@gmail.com>
+References: <20190619074458.31112-1-sergio.paracuellos@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -96,32 +97,36 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Some boards seems to ignore builtin perst configuration and use gpio
-instead. This approach seems to be more common. Hence, update the driver
-to properly use gpio perst via gpio descriptor's API.
+There are two messages in driver code which are not correct.
+Fix both of them to clarify boot runs.
 
-For more information refer to [1].
+Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+---
+ drivers/staging/mt7621-pci/pci-mt7621.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Even with this set of patches applied, there still seems to have some issues
-with a non stable pci link through the boot process. This will be resolved
-in nest patch series when the problem is find.
-
-Patches are only compile-tested. It would be good to test them before being 
-applied.
-
-[1]: http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/2019-June/134947.html
-
-Sergio Paracuellos (4):
-  staging: mt7621-pci: fix two messages in driver code
-  staging: mt7621-pci: use gpio perst instead of builtin behaviour
-  staging: mt7621-dts: add gpio perst to pcie bindings node
-  staging: mt7621-pci: dt-bindings: add perst-gpio to sample bindings
-
- drivers/staging/mt7621-dts/mt7621.dtsi        |   2 +
- .../mt7621-pci/mediatek,mt7621-pci.txt        |   2 +
- drivers/staging/mt7621-pci/pci-mt7621.c       | 108 ++++++++++--------
- 3 files changed, 63 insertions(+), 49 deletions(-)
-
+diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt7621-pci/pci-mt7621.c
+index 03d919a94552..7ba6ec93ac0f 100644
+--- a/drivers/staging/mt7621-pci/pci-mt7621.c
++++ b/drivers/staging/mt7621-pci/pci-mt7621.c
+@@ -394,7 +394,7 @@ static int mt7621_pcie_init_port(struct mt7621_pcie_port *port)
+ 	mt7621_reset_port(port);
+ 
+ 	val = read_config(pcie, slot, PCIE_FTS_NUM);
+-	dev_info(dev, "Port %d N_FTS = %x\n", (unsigned int)val, slot);
++	dev_info(dev, "Port %d N_FTS = %x\n", slot, (unsigned int)val);
+ 
+ 	err = phy_init(port->phy);
+ 	if (err) {
+@@ -511,7 +511,7 @@ static void mt7621_pcie_enable_ports(struct mt7621_pcie *pcie)
+ 					port->slot);
+ 				continue;
+ 			}
+-			dev_info(dev, "PCIE%d enabled\n", slot);
++			dev_info(dev, "PCIE%d enabled\n", num_slots_enabled);
+ 			num_slots_enabled++;
+ 		}
+ 	}
 -- 
 2.19.1
 
