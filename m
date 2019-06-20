@@ -2,74 +2,58 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2B1FD4CB48
-	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Jun 2019 11:46:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 505534CC36
+	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Jun 2019 12:47:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 901682152F;
-	Thu, 20 Jun 2019 09:46:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AA6E721F65;
+	Thu, 20 Jun 2019 10:47:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1xdI7HU+NttD; Thu, 20 Jun 2019 09:46:06 +0000 (UTC)
+	with ESMTP id m3RovM-9M4uT; Thu, 20 Jun 2019 10:47:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id CC30521FAC;
-	Thu, 20 Jun 2019 09:46:01 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C7ADA21561;
+	Thu, 20 Jun 2019 10:47:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2115D1BF31F
- for <devel@linuxdriverproject.org>; Thu, 20 Jun 2019 09:45:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 708791BF964
+ for <devel@linuxdriverproject.org>; Thu, 20 Jun 2019 10:47:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 1D6C885FA8
- for <devel@linuxdriverproject.org>; Thu, 20 Jun 2019 09:45:59 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6D43882DDF
+ for <devel@linuxdriverproject.org>; Thu, 20 Jun 2019 10:47:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FZYFoHiWmvUN for <devel@linuxdriverproject.org>;
- Thu, 20 Jun 2019 09:45:58 +0000 (UTC)
+ with ESMTP id zi66HaxOz10e for <devel@linuxdriverproject.org>;
+ Thu, 20 Jun 2019 10:47:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.web.de (mout.web.de [212.227.17.12])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 9DF1785EC4
- for <devel@driverdev.osuosl.org>; Thu, 20 Jun 2019 09:45:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
- s=dbaedf251592; t=1561023944;
- bh=FfGf44qHU3BH2AwzhdjXWKQdu8i+SnZZ4/bXILyBf5Y=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=mh/lj1sl1TvZzKv4U32A4ZOw9THZMtJmyCHQNlS4Xb1bnSbAn7aC69HXnvSlYXk1M
- v7KYJ39B56LHD2H8SONjshS/ZYQNjDtwIw3bSYFuyf1fYY3QS3FBTXm8JFm10hpENf
- WWrIfB9mtjg3CPz+kSTs5yAlAk3LSGCPbN1YjUwE=
-X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
-Received: from lab-pc08.sra.uni-hannover.de ([130.75.33.87]) by smtp.web.de
- (mrweb102 [213.165.67.124]) with ESMTPSA (Nemesis) id
- 0Lo0ZA-1iFQFU1AQi-00fxuz; Thu, 20 Jun 2019 11:45:44 +0200
-From: =?UTF-8?q?Christian=20M=C3=BCller?= <muellerch-privat@web.de>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH 1/1] drivers/staging/rtl8129u: adjust block comments
-Date: Thu, 20 Jun 2019 11:45:34 +0200
-Message-Id: <20190620094534.5658-2-muellerch-privat@web.de>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190620094534.5658-1-muellerch-privat@web.de>
-References: <20190620094534.5658-1-muellerch-privat@web.de>
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 75383823FA
+ for <devel@driverdev.osuosl.org>; Thu, 20 Jun 2019 10:47:50 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 20 Jun 2019 03:47:49 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.63,396,1557212400"; d="scan'208";a="181838324"
+Received: from jnikula-mobl3.fi.intel.com (HELO localhost) ([10.237.66.150])
+ by fmsmga001.fm.intel.com with ESMTP; 20 Jun 2019 03:47:41 -0700
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: Joe Perches <joe@perches.com>, Alastair D'Silva <alastair@d-silva.org>
+Subject: Re: [PATCH v3 0/7] Hexdump Enhancements
+In-Reply-To: <fcf57339aea60fb1744cea2a2593656c728c4ec4.camel@perches.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <20190617020430.8708-1-alastair@au1.ibm.com>
+ <9a000734375c0801fc16b71f4be1235f9b857772.camel@perches.com>
+ <c68cb819257f251cbb66f8998a95c31cebe2d72e.camel@d-silva.org>
+ <d8316be322f33ea67640ff83f2248fe433078407.camel@perches.com>
+ <9456ca2a4ae827635bb6d864e5095a9e51f2ac45.camel@d-silva.org>
+ <fcf57339aea60fb1744cea2a2593656c728c4ec4.camel@perches.com>
+Date: Thu, 20 Jun 2019 13:50:33 +0300
+Message-ID: <87sgs4sf7q.fsf@intel.com>
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:+Aun4IcBIEiZXEOeJrPLIWmsjP92Wgc8SynPzkQCeY0uw//XjUf
- 7rnarpX8nue/WR/ps9gjRJ6/gynNGqmseiWOGTIFvftMX5qdd6vwlasOcxhGNYMv29Av4A3
- zFS5h01DlhFL8S5FFv+5NbEYLjiL+p4EkGPNIAJzdEKWI2XoSfxdrM4o2Fie+Dr6PKdfGBq
- qqYQAVvmkpAwBtoftxeQQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:r9IqM3e2VM8=:520iQFl3zMf7H2fDf5Ibte
- mxSM9stKNs+YtUbhAWHUNmOI+kS1bnCDhnFURD0xVeaBieR0LbGITzh1+AFoG0hTmL/VhCXkc
- 2r/kf7KpqO7NXGC3bCuQ9ztWw9CJN3EERvrAgu4chIweDyGW21zJbn6Bj6j17MYWdA2mVfc4e
- EuA8V9LMpw7ZtjCHxYvr2ez1WsgDtKtuY5MAvyZvzLmMqobCHLg9zGtoHgyT5ICZX9/kNZg/A
- ay2tw9L6Q4jctAaVijyiYOIZtx+3PRpxVI1BhkFDNI28AyLNwTTnUjOifEMKYFvpdqtI0jDuz
- QWU3ecZPkOYFePEYJPKEA2Lov/yyImoIgL7cYpXq7NXsgzOBD3pe+TAXEX2GD/Oz4EdksJscp
- ykj5DyKO0JlDVKNzOsyEyO1upl/anFUh37K7GWsuUNDCkXZ59bG8xrLCg8ck5YMU8+PtJj0dK
- 8bb/VAv4sf/EpKgQwekpsWU5M6owtzaXWdBo2uZRkwZ10/lfsyqgW/gry1mK61kfFlv0lzYpQ
- lARLr1AKlJioMjVsze/5dw6nYLjhHYfu17Xyx7eAWsgbOOR8Ddj2kZem1xnQ/9ki7lQ69MQqf
- ZXbouudMFsecZ5HvTUY4rIRuTZoAyim8qrZiTXwhXTXcwIYw29E2UE+sO26aDqtmg4rkFKSRq
- nvpi1kZH3pwZT9UM/YsYiwh0jetixX3oFS6j2QQ1Zs0yfUAjom81sXAsjB1oinlHs61LiY+RV
- Ak62Oavcy0gVN0dkoFpvOKgUaFluxiepdjS8tf2DDSZDDfWPIrl981FFJaONjsF8IbuLm3K2M
- GtJA7O6q6mQQuhrJvcGJZ3pT+Ar8EghFwZRQIxAEXql/jW4rsQMItn6V4dUbkoKAfJWXqEnQQ
- 3jJqYy1aItz50ebzas7ahjz8yiq7mtd5+0l7Ccgz6r3mOhnY1FaXHtIp/u2mUMKYuzK/+9rMn
- beKNSRAufOddM3OFu3bBABNexpIVuy4UQEXNSMJh6zNHXQ1ZioQA1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,110 +66,117 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, felix.trommer@hotmail.de,
- linux-kernel@i4.cs.fau.de, linux-kernel@vger.kernel.org,
- johnfwhitmore@gmail.com,
- =?UTF-8?q?Christian=20M=C3=BCller?= <muellerch-privat@web.de>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-fbdev@vger.kernel.org, Stanislaw Gruszka <sgruszka@redhat.com>,
+ Petr Mladek <pmladek@suse.com>, David Airlie <airlied@linux.ie>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, devel@driverdev.osuosl.org,
+ linux-scsi@vger.kernel.org, Jassi Brar <jassisinghbrar@gmail.com>,
+ ath10k@lists.infradead.org, intel-gfx@lists.freedesktop.org,
+ Dan Carpenter <dan.carpenter@oracle.com>, Jose Abreu <Jose.Abreu@synopsys.com>,
+ Tom Lendacky <thomas.lendacky@amd.com>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ Steven Rostedt <rostedt@goodmis.org>, linux-fsdevel@vger.kernel.org,
+ Alexander Viro <viro@zeniv.linux.org.uk>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Benson Leung <bleung@chromium.org>,
+ Kalle Valo <kvalo@codeaurora.org>, Karsten Keil <isdn@linux-pingi.de>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Sergey Senozhatsky <sergey.senozhatsky@gmail.com>,
+ David Laight <David.Laight@ACULAB.COM>, Daniel Vetter <daniel@ffwll.ch>,
+ netdev@vger.kernel.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-QXMgc3RhdGVkIGluIGNvZGluZy1zdHlsZXMucnN0IG11bHRpbGluZSBjb21tZW50cyBzaG91bGQg
-YmUgc3RydWN0dXJlZCBpbiBhIHdheSwKdGhhdCB0aGUgYWN0dWFsIGNvbW1lbnQgc3RhcnRzIG9u
-IHRoZSBzZWNvbmQgbGluZSBvZiB0aGUgY29tbWVudGVkIHBvcnRpb24uIEUuZzoKCi8qCiAqIE11
-bHRpbGluZSBjb21tZW50cwogKiBzaG91bGQgbG9vayBsaWtlCiAqIHRoaXMuCiAqLwoKVGhlIGNv
-bW1lbnRzIGluIHRoaXMgZmlsZSB3ZXJlIG9mIGEgZm9ybWF0LCB0aGF0IGxvb2tlZCBsaWtlIHRo
-aXM6CgovKiBNdWx0aWxpbmUgY29tbWVudHMgcHJldmlvdXMKICogdG8gdGhpcyBwYXRjaAogKiBs
-b29rZWQgbGlrZSB0aGlzLgogKi8KClRoZXJlIGlzIGFuIGV4Y2VwdGlvbiB0byBmaWxlcyBpbiAv
-bmV0IGFuZCBkcml2ZXJzL25ldCwKd2hlcmUgbXVsdGlsaW5lIGNvbW1lbnRzIGFyZSBwcmVmZXJy
-ZWQgdG8gbG9vayBsaWtlIHRoZSBzZWNvbmQgZXhhbXBsZSBhYm92ZSwKYnV0IHNpbmNlIHRoaXMg
-ZmlsZSByZXNpZGVzIGluIGEgZGlmZmVyZW50IGRpcmVjdG9yeSwKdGhpcyBwYXRjaCBjaGFuZ2Vz
-IHRoZSBzdHlsZSB0byBtYXRjaCB0aGUgcHJlZmVycmVkIHN0eWxlLgoKU2lnbmVkLW9mZi1ieTog
-Q2hyaXN0aWFuIE3DvGxsZXIgPG11ZWxsZXJjaC1wcml2YXRAd2ViLmRlPgpTaWduZWQtb2ZmLWJ5
-OiBGZWxpeCBUcm9tbWVyIDxmZWxpeC50cm9tbWVyQGhvdG1haWwuZGU+Ci0tLQogZHJpdmVycy9z
-dGFnaW5nL3J0bDgxOTJ1L3I4MTl4VV9waHkuYyB8IDM5ICsrKysrKysrKysrKysrKysrKy0tLS0t
-LS0tLQogMSBmaWxlIGNoYW5nZWQsIDI2IGluc2VydGlvbnMoKyksIDEzIGRlbGV0aW9ucygtKQoK
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9ydGw4MTkydS9yODE5eFVfcGh5LmMgYi9kcml2
-ZXJzL3N0YWdpbmcvcnRsODE5MnUvcjgxOXhVX3BoeS5jCmluZGV4IDVmMDRhZmU1M2Q2OS4uYTUx
-ZWQxMGJlNDMxIDEwMDY0NAotLS0gYS9kcml2ZXJzL3N0YWdpbmcvcnRsODE5MnUvcjgxOXhVX3Bo
-eS5jCisrKyBiL2RyaXZlcnMvc3RhZ2luZy9ydGw4MTkydS9yODE5eFVfcGh5LmMKQEAgLTM2Myw3
-ICszNjMsOCBAQCBzdGF0aWMgdTMyIHBoeV9Gd1JGU2VyaWFsUmVhZChzdHJ1Y3QgbmV0X2Rldmlj
-ZSAqZGV2LAogCXU4CQl0aW1lID0gMDsKIAl1MzIJCXRtcDsKCi0JLyogRmlybXdhcmUgUkYgV3Jp
-dGUgY29udHJvbC4KKwkvKgorCSAqIEZpcm13YXJlIFJGIFdyaXRlIGNvbnRyb2wuCiAJICogV2Ug
-Y2FuIG5vdCBleGVjdXRlIHRoZSBzY2hlbWUgaW4gdGhlIGluaXRpYWwgc3RlcC4KIAkgKiBPdGhl
-cndpc2UsIFJGLVIvVyB3aWxsIHdhc3RlIG11Y2ggdGltZS4KIAkgKiBUaGlzIGlzIG9ubHkgZm9y
-IHNpdGUgc3VydmV5LgpAQCAtMzc5LDcgKzM4MCw4IEBAIHN0YXRpYyB1MzIgcGh5X0Z3UkZTZXJp
-YWxSZWFkKHN0cnVjdCBuZXRfZGV2aWNlICpkZXYsCiAJLyogNi4gV2UgY2FuIG5vdCBleGVjdXRl
-IHJlYWQgb3BlcmF0aW9uIGlmIGJpdCAzMSBpcyAxLiAqLwogCXJlYWRfbmljX2R3b3JkKGRldiwg
-UVBOUiwgJnRtcCk7CiAJd2hpbGUgKHRtcCAmIDB4ODAwMDAwMDApIHsKLQkJLyogSWYgRlcgY2Fu
-IG5vdCBmaW5pc2ggUkYtUi9XIGZvciBtb3JlIHRoYW4gPz8gdGltZXMuCisJCS8qCisJCSAqIElm
-IEZXIGNhbiBub3QgZmluaXNoIFJGLVIvVyBmb3IgbW9yZSB0aGFuID8/IHRpbWVzLgogCQkgKiBX
-ZSBtdXN0IHJlc2V0IEZXLgogCQkgKi8KIAkJaWYgKHRpbWUrKyA8IDEwMCkgewpAQCAtMzk0LDcg
-KzM5Niw4IEBAIHN0YXRpYyB1MzIgcGh5X0Z3UkZTZXJpYWxSZWFkKHN0cnVjdCBuZXRfZGV2aWNl
-ICpkZXYsCiAJLyogOC4gQ2hlY2sgaWYgZmlybXdhcmUgc2VuZCBiYWNrIFJGIGNvbnRlbnQuICov
-CiAJcmVhZF9uaWNfZHdvcmQoZGV2LCBRUE5SLCAmdG1wKTsKIAl3aGlsZSAodG1wICYgMHg4MDAw
-MDAwMCkgewotCQkvKiBJZiBGVyBjYW4gbm90IGZpbmlzaCBSRi1SL1cgZm9yIG1vcmUgdGhhbiA/
-PyB0aW1lcy4KKwkJLyoKKwkJICogSWYgRlcgY2FuIG5vdCBmaW5pc2ggUkYtUi9XIGZvciBtb3Jl
-IHRoYW4gPz8gdGltZXMuCiAJCSAqIFdlIG11c3QgcmVzZXQgRlcuCiAJCSAqLwogCQlpZiAodGlt
-ZSsrIDwgMTAwKSB7CkBAIC00MjYsNyArNDI5LDggQEAgc3RhdGljIHZvaWQgcGh5X0Z3UkZTZXJp
-YWxXcml0ZShzdHJ1Y3QgbmV0X2RldmljZSAqZGV2LAogCXU4CXRpbWUgPSAwOwogCXUzMgl0bXA7
-CgotCS8qIEZpcm13YXJlIFJGIFdyaXRlIGNvbnRyb2wuCisJLyoKKwkgKiBGaXJtd2FyZSBSRiBX
-cml0ZSBjb250cm9sLgogCSAqIFdlIGNhbiBub3QgZXhlY3V0ZSB0aGUgc2NoZW1lIGluIHRoZSBp
-bml0aWFsIHN0ZXAuCiAJICogT3RoZXJ3aXNlLCBSRi1SL1cgd2lsbCB3YXN0ZSBtdWNoIHRpbWUu
-CiAJICogVGhpcyBpcyBvbmx5IGZvciBzaXRlIHN1cnZleS4KQEAgLTQ0NSw3ICs0NDksOCBAQCBz
-dGF0aWMgdm9pZCBwaHlfRndSRlNlcmlhbFdyaXRlKHN0cnVjdCBuZXRfZGV2aWNlICpkZXYsCiAJ
-LyogNi4gV3JpdGUgb3BlcmF0aW9uLiBXZSBjYW4gbm90IHdyaXRlIGlmIGJpdCAzMSBpcyAxLiAq
-LwogCXJlYWRfbmljX2R3b3JkKGRldiwgUVBOUiwgJnRtcCk7CiAJd2hpbGUgKHRtcCAmIDB4ODAw
-MDAwMDApIHsKLQkJLyogSWYgRlcgY2FuIG5vdCBmaW5pc2ggUkYtUi9XIGZvciBtb3JlIHRoYW4g
-Pz8gdGltZXMuCisJCS8qCisJCSAqIElmIEZXIGNhbiBub3QgZmluaXNoIFJGLVIvVyBmb3IgbW9y
-ZSB0aGFuID8/IHRpbWVzLgogCQkgKiBXZSBtdXN0IHJlc2V0IEZXLgogCQkgKi8KIAkJaWYgKHRp
-bWUrKyA8IDEwMCkgewpAQCAtNDU1LDExICs0NjAsMTMgQEAgc3RhdGljIHZvaWQgcGh5X0Z3UkZT
-ZXJpYWxXcml0ZShzdHJ1Y3QgbmV0X2RldmljZSAqZGV2LAogCQkJYnJlYWs7CiAJCX0KIAl9Ci0J
-LyogNy4gTm8gbWF0dGVyIGNoZWNrIGJpdC4gV2UgYWx3YXlzIGZvcmNlIHRoZSB3cml0ZS4KKwkv
-KgorCSAqIDcuIE5vIG1hdHRlciBjaGVjayBiaXQuIFdlIGFsd2F5cyBmb3JjZSB0aGUgd3JpdGUu
-CiAJICogQmVjYXVzZSBGVyB3aWxsIG5vdCBhY2NlcHQgdGhlIGNvbW1hbmQuCiAJICovCiAJd3Jp
-dGVfbmljX2R3b3JkKGRldiwgUVBOUiwgZGF0YSk7Ci0JLyogQWNjb3JkaW5nIHRvIHRlc3QsIHdl
-IG11c3QgZGVsYXkgMjB1cyB0byB3YWl0IGZpcm13YXJlCisJLyoKKwkgKiBBY2NvcmRpbmcgdG8g
-dGVzdCwgd2UgbXVzdCBkZWxheSAyMHVzIHRvIHdhaXQgZmlybXdhcmUKIAkgKiB0byBmaW5pc2gg
-UkYgd3JpdGUgb3BlcmF0aW9uLgogCSAqLwogCS8qIFdlIHN1cHBvcnQgZGVsYXkgaW4gZmlybXdh
-cmUgc2lkZSBub3cuICovCkBAIC04MjgsNyArODM1LDggQEAgc3RhdGljIHZvaWQgcnRsODE5Ml9C
-Ql9Db25maWdfUGFyYUZpbGUoc3RydWN0IG5ldF9kZXZpY2UgKmRldikKIAkJCQkgcmVnX3UzMik7
-CiAJfQoKLQkvKiBDaGVjayBpZiB0aGUgQ0NLIEhpZ2hQb3dlciBpcyB0dXJuZWQgT04uCisJLyoK
-KwkgKiBDaGVjayBpZiB0aGUgQ0NLIEhpZ2hQb3dlciBpcyB0dXJuZWQgT04uCiAJICogVGhpcyBp
-cyB1c2VkIHRvIGNhbGN1bGF0ZSBQV0RCLgogCSAqLwogCXByaXYtPmJDY2tIaWdoUG93ZXIgPSAo
-dTgpcnRsODE5Ml9RdWVyeUJCUmVnKGRldiwKQEAgLTg0Nyw3ICs4NTUsOCBAQCBzdGF0aWMgdm9p
-ZCBydGw4MTkyX0JCX0NvbmZpZ19QYXJhRmlsZShzdHJ1Y3QgbmV0X2RldmljZSAqZGV2KQogdm9p
-ZCBydGw4MTkyX0JCQ29uZmlnKHN0cnVjdCBuZXRfZGV2aWNlICpkZXYpCiB7CiAJcnRsODE5Ml9J
-bml0QkJSRlJlZ0RlZihkZXYpOwotCS8qIGNvbmZpZyBCQiZSRi4gQXMgaGFyZENvZGUgYmFzZWQg
-aW5pdGlhbGl6YXRpb24gaGFzIG5vdCBiZWVuIHdlbGwKKwkvKgorCSAqIGNvbmZpZyBCQiZSRi4g
-QXMgaGFyZENvZGUgYmFzZWQgaW5pdGlhbGl6YXRpb24gaGFzIG5vdCBiZWVuIHdlbGwKIAkgKiBp
-bXBsZW1lbnRlZCwgc28gdXNlIGZpbGUgZmlyc3QuCiAJICogRklYTUU6IHNob3VsZCBpbXBsZW1l
-bnQgaXQgZm9yIGhhcmRjb2RlPwogCSAqLwpAQCAtMTE2OCw3ICsxMTc3LDggQEAgYm9vbCBydGw4
-MTkyX1NldFJGUG93ZXJTdGF0ZShzdHJ1Y3QgbmV0X2RldmljZSAqZGV2LAogCQljYXNlIFJGXzgy
-NTY6CiAJCQlzd2l0Y2ggKHBIYWxEYXRhLT5lUkZQb3dlclN0YXRlKSB7CiAJCQljYXNlIGVSZk9m
-ZjoKLQkJCQkvKiBJZiBSZiBvZmYgcmVhc29uIGlzIGZyb20gSVBTLAorCQkJCS8qCisJCQkJICog
-SWYgUmYgb2ZmIHJlYXNvbiBpcyBmcm9tIElQUywKIAkJCQkgKiBMRUQgc2hvdWxkIGJsaW5rIHdp
-dGggbm8gbGluawogCQkJCSAqLwogCQkJCWlmIChwTWdudEluZm8tPlJmT2ZmUmVhc29uID09IFJG
-X0NIQU5HRV9CWV9JUFMpCkBAIC0xMTc5LDcgKzExODksOCBAQCBib29sIHJ0bDgxOTJfU2V0UkZQ
-b3dlclN0YXRlKHN0cnVjdCBuZXRfZGV2aWNlICpkZXYsCiAJCQkJYnJlYWs7CgogCQkJY2FzZSBl
-UmZPbjoKLQkJCQkvKiBUdXJuIG9uIFJGIHdlIGFyZSBzdGlsbCBsaW5rZWQsIHdoaWNoIG1pZ2h0
-CisJCQkJLyoKKwkJCQkgKiBUdXJuIG9uIFJGIHdlIGFyZSBzdGlsbCBsaW5rZWQsIHdoaWNoIG1p
-Z2h0CiAJCQkJICogaGFwcGVuIHdoZW4gd2UgcXVpY2tseSB0dXJuIG9mZiBhbmQgb24gSFcgUkYu
-CiAJCQkJICovCiAJCQkJaWYgKHBNZ250SW5mby0+Yk1lZGlhQ29ubmVjdCkKQEAgLTEyNzQsNyAr
-MTI4NSw4IEBAIHN0YXRpYyB1OCBydGw4MTkyX3BoeV9Td0NobmxTdGVwQnlTdGVwKHN0cnVjdCBu
-ZXRfZGV2aWNlICpkZXYsIHU4IGNoYW5uZWwsCiAJCSBfX2Z1bmNfXywgKnN0YWdlLCAqc3RlcCwg
-Y2hhbm5lbCk7CiAJaWYgKCFpc19sZWdhbF9jaGFubmVsKHByaXYtPmllZWU4MDIxMSwgY2hhbm5l
-bCkpIHsKIAkJUlRfVFJBQ0UoQ09NUF9FUlIsICJzZXQgdG8gaWxsZWdhbCBjaGFubmVsOiAlZFxu
-IiwgY2hhbm5lbCk7Ci0JCS8qIHJldHVybiB0cnVlIHRvIHRlbGwgdXBwZXIgY2FsbGVyIGZ1bmN0
-aW9uIHRoaXMgY2hhbm5lbAorCQkvKgorCQkgKiByZXR1cm4gdHJ1ZSB0byB0ZWxsIHVwcGVyIGNh
-bGxlciBmdW5jdGlvbiB0aGlzIGNoYW5uZWwKIAkJICogc2V0dGluZyBpcyBmaW5pc2hlZCEgT3Ig
-aXQgd2lsbCBpbiB3aGlsZSBsb29wLgogCQkgKi8KIAkJcmV0dXJuIHRydWU7CkBAIC0xNjIxLDcg
-KzE2MzMsOCBAQCB2b2lkIHJ0bDgxOTJfU2V0QldNb2RlV29ya0l0ZW0oc3RydWN0IG5ldF9kZXZp
-Y2UgKmRldikKIAkJYnJlYWs7CgogCX0KLQkvKiBTa2lwIG92ZXIgc2V0dGluZyBvZiBKLW1vZGUg
-aW4gQkIgcmVnaXN0ZXIgaGVyZS4KKwkvKgorCSAqIFNraXAgb3ZlciBzZXR0aW5nIG9mIEotbW9k
-ZSBpbiBCQiByZWdpc3RlciBoZXJlLgogCSAqIERlZmF1bHQgdmFsdWUgaXMgIk5vbmUgSiBtb2Rl
-Ii4KIAkgKi8KCi0tCjIuMTcuMQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5v
-cmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGlu
-Zm8vZHJpdmVyZGV2LWRldmVsCg==
+On Wed, 19 Jun 2019, Joe Perches <joe@perches.com> wrote:
+> On Thu, 2019-06-20 at 11:14 +1000, Alastair D'Silva wrote:
+>> On Wed, 2019-06-19 at 17:35 -0700, Joe Perches wrote:
+>> > On Thu, 2019-06-20 at 09:15 +1000, Alastair D'Silva wrote:
+>> > > On Wed, 2019-06-19 at 09:31 -0700, Joe Perches wrote:
+>> > > > On Mon, 2019-06-17 at 12:04 +1000, Alastair D'Silva wrote:
+>> > > > > From: Alastair D'Silva <alastair@d-silva.org>
+>> > > > > 
+>> > > > > Apologies for the large CC list, it's a heads up for those
+>> > > > > responsible
+>> > > > > for subsystems where a prototype change in generic code causes
+>> > > > > a
+>> > > > > change
+>> > > > > in those subsystems.
+>> > > > > 
+>> > > > > This series enhances hexdump.
+>> > > > 
+>> > > > Still not a fan of these patches.
+>> > > 
+>> > > I'm afraid there's not too much action I can take on that, I'm
+>> > > happy to
+>> > > address specific issues though.
+>> > > 
+>> > > > > These improve the readability of the dumped data in certain
+>> > > > > situations
+>> > > > > (eg. wide terminals are available, many lines of empty bytes
+>> > > > > exist,
+>> > > > > etc).
+>> > 
+>> > I think it's generally overkill for the desired uses.
+>> 
+>> I understand where you're coming from, however, these patches make it a
+>> lot easier to work with large chucks of binary data. I think it makes
+>> more sense to have these patches upstream, even though committed code
+>> may not necessarily have all the features enabled, as it means that
+>> devs won't have to apply out-of-tree patches during development to make
+>> larger dumps manageable.
+>> 
+>> > > > Changing hexdump's last argument from bool to int is odd.
+>> > > > 
+>> > > 
+>> > > Think of it as replacing a single boolean with many booleans.
+>> > 
+>> > I understand it.  It's odd.
+>> > 
+>> > I would rather not have a mixture of true, false, and apparently
+>> > random collections of bitfields like 0xd or 0b1011 or their
+>> > equivalent or'd defines.
+>> > 
+>> 
+>> Where's the mixture? What would you propose instead?
+>
+> create a hex_dump_to_buffer_ext with a new argument
+> and a new static inline for the old hex_dump_to_buffer
+> without modifying the argument list that calls
+> hex_dump_to_buffer with whatever added argument content
+> you need.
+>
+> Something like:
+>
+> static inline
+> int hex_dump_to_buffer(const void *buf, size_t len, int rowsize,
+> 		       int groupsize, char *linebuf, size_t linebuflen,
+> 		       bool ascii)
+> {
+> 	return hex_dump_to_buffer_ext(buf, len, rowsize, groupsize,
+> 				      linebuf, linebuflen, ascii, 0);
+> }
+>
+> and remove EXPORT_SYMBOL(hex_dump_to_buffer)
+
+If you decide to do something like this, I'd actually suggest you drop
+the bool ascii parameter from hex_dump_to_buffer() altogether, and
+replace the callers that do require ascii with
+hex_dump_to_buffer_ext(..., HEXDUMP_ASCII). Even if that also requires
+touching all callers.
+
+But no strong opinions, really.
+
+BR,
+Jani.
+
+-- 
+Jani Nikula, Intel Open Source Graphics Center
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
