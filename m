@@ -1,64 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 920404C492
-	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Jun 2019 02:42:17 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7480E4C48F
+	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Jun 2019 02:40:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AFED387D11;
-	Thu, 20 Jun 2019 00:42:15 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 71927869BF;
+	Thu, 20 Jun 2019 00:40:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yPrTcHEh8MDY; Thu, 20 Jun 2019 00:42:15 +0000 (UTC)
+	with ESMTP id TnoJJREXzNae; Thu, 20 Jun 2019 00:40:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3FF7A87CD6;
-	Thu, 20 Jun 2019 00:42:15 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2F4FA816DE;
+	Thu, 20 Jun 2019 00:40:43 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B7D171BF9B2
- for <devel@linuxdriverproject.org>; Thu, 20 Jun 2019 00:42:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7C7E51BF9B2
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 20 Jun 2019 00:40:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id B34AA21507
- for <devel@linuxdriverproject.org>; Thu, 20 Jun 2019 00:42:12 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 7381B2107F
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 20 Jun 2019 00:40:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iE0czrrOrQdW for <devel@linuxdriverproject.org>;
- Thu, 20 Jun 2019 00:42:11 +0000 (UTC)
+ with ESMTP id JGktAryPWJPr
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 20 Jun 2019 00:40:39 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0109.hostedemail.com
- [216.40.44.109])
- by silver.osuosl.org (Postfix) with ESMTPS id 730902151E
- for <devel@driverdev.osuosl.org>; Thu, 20 Jun 2019 00:42:11 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave04.hostedemail.com (Postfix) with ESMTP id 173781801DFD0
- for <devel@driverdev.osuosl.org>; Thu, 20 Jun 2019 00:35:22 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay05.hostedemail.com (Postfix) with ESMTP id 4743D18032D42;
- Thu, 20 Jun 2019 00:35:19 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 
-X-HE-Tag: slope21_83935d3c81a36
-X-Filterd-Recvd-Size: 3615
-Received: from XPS-9350 (cpe-23-242-196-136.socal.res.rr.com [23.242.196.136])
- (Authenticated sender: joe@perches.com)
- by omf12.hostedemail.com (Postfix) with ESMTPA;
- Thu, 20 Jun 2019 00:35:03 +0000 (UTC)
-Message-ID: <d8316be322f33ea67640ff83f2248fe433078407.camel@perches.com>
-Subject: Re: [PATCH v3 0/7] Hexdump Enhancements
-From: Joe Perches <joe@perches.com>
-To: Alastair D'Silva <alastair@d-silva.org>
-Date: Wed, 19 Jun 2019 17:35:01 -0700
-In-Reply-To: <c68cb819257f251cbb66f8998a95c31cebe2d72e.camel@d-silva.org>
-References: <20190617020430.8708-1-alastair@au1.ibm.com>
- <9a000734375c0801fc16b71f4be1235f9b857772.camel@perches.com>
- <c68cb819257f251cbb66f8998a95c31cebe2d72e.camel@d-silva.org>
-User-Agent: Evolution 3.30.5-0ubuntu0.18.10.1 
+Received: from icp-osb-irony-out3.external.iinet.net.au
+ (icp-osb-irony-out3.external.iinet.net.au [203.59.1.153])
+ by silver.osuosl.org (Postfix) with ESMTP id EA2F42039E
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 20 Jun 2019 00:40:38 +0000 (UTC)
+X-IronPort-Anti-Spam-Filtered: true
+X-IronPort-Anti-Spam-Result: =?us-ascii?q?A2AbAAAG1Qpd/zXSMGcNWRkBAQEBAQE?=
+ =?us-ascii?q?BAQEBAQEHAQEBAQEBgWeBbYEUgSyEFpNAAQEBAQEBBoEQJYNghXOOLIJgCQE?=
+ =?us-ascii?q?BAQEBAQEBAS0KAQEBhD8Cgns4EwEDAQEBBAEBAQEEAYskhVcBAQEDIxVBEAs?=
+ =?us-ascii?q?NCwICJgICVwYBDAgBAYMeAYF2I6xdcYExGoQYAYEUgyWBRoEMKIFiihN4gQe?=
+ =?us-ascii?q?BOAyCXz6CYQOEaoJYBJQtlTgJghOGSI0FBhuCJ2mKFAOKDY0dgSyFeJFSgXk?=
+ =?us-ascii?q?zGggoCEgOglEJg10BCIdWhVFgAY9GAQE?=
+X-IPAS-Result: =?us-ascii?q?A2AbAAAG1Qpd/zXSMGcNWRkBAQEBAQEBAQEBAQEHAQEBA?=
+ =?us-ascii?q?QEBgWeBbYEUgSyEFpNAAQEBAQEBBoEQJYNghXOOLIJgCQEBAQEBAQEBAS0KA?=
+ =?us-ascii?q?QEBhD8Cgns4EwEDAQEBBAEBAQEEAYskhVcBAQEDIxVBEAsNCwICJgICVwYBD?=
+ =?us-ascii?q?AgBAYMeAYF2I6xdcYExGoQYAYEUgyWBRoEMKIFiihN4gQeBOAyCXz6CYQOEa?=
+ =?us-ascii?q?oJYBJQtlTgJghOGSI0FBhuCJ2mKFAOKDY0dgSyFeJFSgXkzGggoCEgOglEJg?=
+ =?us-ascii?q?10BCIdWhVFgAY9GAQE?=
+X-IronPort-AV: E=Sophos;i="5.63,394,1557158400"; d="scan'208";a="191722289"
+Received: from unknown (HELO [10.44.0.22]) ([103.48.210.53])
+ by icp-osb-irony-out3.iinet.net.au with ESMTP; 20 Jun 2019 08:40:34 +0800
+Subject: Re: [PATCH 0/4] staging: mt7621-pci: Use gpio perst instead builtin
+ behaviour
+To: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ gregkh@linuxfoundation.org
+References: <20190619074458.31112-1-sergio.paracuellos@gmail.com>
+From: Greg Ungerer <gerg@kernel.org>
+Message-ID: <0bedcd6b-4781-ffd2-b59c-76cd555912a7@kernel.org>
+Date: Thu, 20 Jun 2019 10:40:33 +1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
+In-Reply-To: <20190619074458.31112-1-sergio.paracuellos@gmail.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,74 +77,58 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-fbdev@vger.kernel.org, Stanislaw Gruszka <sgruszka@redhat.com>,
- Petr Mladek <pmladek@suse.com>, David Airlie <airlied@linux.ie>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, devel@driverdev.osuosl.org,
- linux-scsi@vger.kernel.org, Jassi Brar <jassisinghbrar@gmail.com>,
- ath10k@lists.infradead.org, intel-gfx@lists.freedesktop.org,
- Dan Carpenter <dan.carpenter@oracle.com>, Jose Abreu <Jose.Abreu@synopsys.com>,
- Tom Lendacky <thomas.lendacky@amd.com>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- Jani Nikula <jani.nikula@linux.intel.com>, linux-fsdevel@vger.kernel.org,
- Steven Rostedt <rostedt@goodmis.org>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Benson Leung <bleung@chromium.org>, Kalle Valo <kvalo@codeaurora.org>,
- Karsten Keil <isdn@linux-pingi.de>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- Sergey Senozhatsky <sergey.senozhatsky@gmail.com>,
- David Laight <David.Laight@ACULAB.COM>, Daniel Vetter <daniel@ffwll.ch>,
- netdev@vger.kernel.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- "David S. Miller" <davem@davemloft.net>,
- Alexander Viro <viro@zeniv.linux.org.uk>
-Content-Type: text/plain; charset="us-ascii"
+Cc: neil@brown.name, driverdev-devel@linuxdriverproject.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, 2019-06-20 at 09:15 +1000, Alastair D'Silva wrote:
-> On Wed, 2019-06-19 at 09:31 -0700, Joe Perches wrote:
-> > On Mon, 2019-06-17 at 12:04 +1000, Alastair D'Silva wrote:
-> > > From: Alastair D'Silva <alastair@d-silva.org>
-> > > 
-> > > Apologies for the large CC list, it's a heads up for those
-> > > responsible
-> > > for subsystems where a prototype change in generic code causes a
-> > > change
-> > > in those subsystems.
-> > > 
-> > > This series enhances hexdump.
-> > 
-> > Still not a fan of these patches.
+Hi Sergio,
+
+On 19/6/19 5:44 pm, Sergio Paracuellos wrote:
+> Some boards seems to ignore builtin perst configuration and use gpio
+> instead. This approach seems to be more common. Hence, update the driver
+> to properly use gpio perst via gpio descriptor's API.
 > 
-> I'm afraid there's not too much action I can take on that, I'm happy to
-> address specific issues though.
+> For more information refer to [1].
 > 
-> > > These improve the readability of the dumped data in certain
-> > > situations
-> > > (eg. wide terminals are available, many lines of empty bytes exist,
-> > > etc).
-
-I think it's generally overkill for the desired uses.
-
-> > Changing hexdump's last argument from bool to int is odd.
-> > 
+> Even with this set of patches applied, there still seems to have some issues
+> with a non stable pci link through the boot process. This will be resolved
+> in nest patch series when the problem is find.
 > 
-> Think of it as replacing a single boolean with many booleans.
+> Patches are only compile-tested. It would be good to test them before being
+> applied.
+> 
+> [1]: http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/2019-June/134947.html
+> 
+> Sergio Paracuellos (4):
+>    staging: mt7621-pci: fix two messages in driver code
+>    staging: mt7621-pci: use gpio perst instead of builtin behaviour
+>    staging: mt7621-dts: add gpio perst to pcie bindings node
+>    staging: mt7621-pci: dt-bindings: add perst-gpio to sample bindings
+> 
+>   drivers/staging/mt7621-dts/mt7621.dtsi        |   2 +
+>   .../mt7621-pci/mediatek,mt7621-pci.txt        |   2 +
+>   drivers/staging/mt7621-pci/pci-mt7621.c       | 108 ++++++++++--------
+>   3 files changed, 63 insertions(+), 49 deletions(-)
 
-I understand it.  It's odd.
+Thanks for putting this together.
 
-I would rather not have a mixture of true, false, and apparently
-random collections of bitfields like 0xd or 0b1011 or their
-equivalent or'd defines.
+I tried a quick test, applying this onto a linux-5.2.0-rc5 kernel and
+saw this in the boot trace:
 
+   ...
+   rt2880-pinmux pinctrl: pcie is already enabled
+   mt7621-pci 1e140000.pcie: Error applying setting, reverse things back
+   ...
 
-> There's only a handful of consumers, I don't think there is a value-add 
-> in creating more wrappers vs updating the existing callers.
+The system went on to boot successfully, with PCI working.
 
-Perhaps more reason not to modify the existing api.
+Testing across multiple boots, it sometimes hangs - but we know about that
+and it is what we are still looking into.
+
+Regards
+Greg
 
 
 _______________________________________________
