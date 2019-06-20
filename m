@@ -1,83 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 836AE4C56B
-	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Jun 2019 04:27:39 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 107974C6BF
+	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Jun 2019 07:21:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D2DC787C9F;
-	Thu, 20 Jun 2019 02:27:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1209985F81;
+	Thu, 20 Jun 2019 05:21:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DbhkFSEcahnG; Thu, 20 Jun 2019 02:27:36 +0000 (UTC)
+	with ESMTP id kDM5aiRCh3nf; Thu, 20 Jun 2019 05:21:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3C88987C91;
-	Thu, 20 Jun 2019 02:27:36 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 89E6384E55;
+	Thu, 20 Jun 2019 05:21:08 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CEAA21BF57F
- for <devel@linuxdriverproject.org>; Thu, 20 Jun 2019 02:27:33 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E20341BF322
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 20 Jun 2019 05:21:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id CB92F85EC0
- for <devel@linuxdriverproject.org>; Thu, 20 Jun 2019 02:27:33 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id DC76284E55
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 20 Jun 2019 05:21:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id X-ntTtrh7xCs for <devel@linuxdriverproject.org>;
- Thu, 20 Jun 2019 02:27:33 +0000 (UTC)
+ with ESMTP id 5UB3J5NEySsx
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 20 Jun 2019 05:21:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
- [209.85.214.195])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 59E9E85EA5
- for <devel@driverdev.osuosl.org>; Thu, 20 Jun 2019 02:27:33 +0000 (UTC)
-Received: by mail-pl1-f195.google.com with SMTP id k8so721939plt.3
- for <devel@driverdev.osuosl.org>; Wed, 19 Jun 2019 19:27:33 -0700 (PDT)
+Received: from mail-ot1-f67.google.com (mail-ot1-f67.google.com
+ [209.85.210.67])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3F85984DD4
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 20 Jun 2019 05:21:05 +0000 (UTC)
+Received: by mail-ot1-f67.google.com with SMTP id z23so1457235ote.13
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 19 Jun 2019 22:21:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=rZe0jF1fnIyGnpK652ETkNOA+XkaYNF8CGCQ/FTB5oc=;
- b=O7xnBGcEjc+6HH9FPNRtdKx7U6xpjrgMFnsvTc1id4kCZt6Tdakw3afMiCRoGQ8T76
- HwaIAqNap8G42JmxPCjEWZMkl5dI9TLfvF7oq/gMZpYbEUZ70h0OvOREWZ2skn3uEivp
- BgqGQUhlmKRqeP6dUMPwJXsIonQYHXK/HW+GkGTqL2ZookJlYmxeWxrjzMBdWUVoLdxa
- WtwQBnSWqIWqPa0eIx12RLE2ANaxvFiAy0Gc7We5ixKqnbppoaagD0GUjmh8OB/37Gb+
- m3bm8B6epxzr+EGyPuVn3FUjNI/1MU6usEcP8PzVOQQSAw2+4Od+kP2AwgV3dIN4QvQa
- FS8w==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=HC67PfcJ5vMkUGuujT8Y4AnRCHs64RfYdEUMagc2Pic=;
+ b=tlPUzJfnE8pTxKxvrdteeiwTUfndXm6wMghwtnn5gVo0ir/SXKH+XXNRh4XP6hIm68
+ QLNkUGohPYRTP+sO0yuyM62VK83aDcTJX19pPvIIoCvkG1Z8ecKDrVWzM0IRlLxhUZY+
+ xYYHoyeFF9aXwMjZNG8CoiCJutGy9SRX4xLtCz+eiFI75NfbH5baSvR2HnLuLrGvEl5Z
+ 5pjOiet12UFslNv+4OB5prAhRPeaD63XhjWj6gEzsicrybaihL0dxgpanLghOiywBQfG
+ itRQ6C35xtFkZ3h6VHiSBEB0rAg0huz8of913YZ3AVmh8haH6WRgtMvDI0xpHO5ohKpy
+ Elww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=rZe0jF1fnIyGnpK652ETkNOA+XkaYNF8CGCQ/FTB5oc=;
- b=ok4kto8bUV5w4ai73t23vbLVv3uIm/ljD6TrUYxqeAdF6MmHR2ZSn7/hS4v4/+WyXd
- Ytb6OXyaFGNjPfL5g530XxQLIIgVTsPKe5oTk1qSw2seT0kWKyRub8Dh4r0GBwTJYWUk
- yhIP9Eud43emkkf1ZB1X3wyPZXnvTp7sFFmnoOma9nX3DjWylpZ5agotRzqp35wBA3fZ
- vT0vy85q3C+hPhCCTntUOJt21VWL/shaMD0hyDvLa0LS6HhYNtFlibNoKb45wOup9kml
- l2MKTXRyXdOGcnPr1SKsiIO5HCTM6v4Q7uZMn5UddzOoVW6yiZ+6dwVxmp/M/+BHxrgz
- HIyw==
-X-Gm-Message-State: APjAAAX5JKeW69zWvuPURCqJGEY5XlDmzsDuEY6heji2SzxV5961BIph
- pySrujMIfvBeik4rBaa7dNY=
-X-Google-Smtp-Source: APXvYqwdAtGhD5XNJZSHPBwAYoQpJBoDZXZhetbZbQvr4LcPPT8qyQDrJZfAyLiJLcX0ILcYbSi3pw==
-X-Received: by 2002:a17:902:e58b:: with SMTP id
- cl11mr100882004plb.24.1560997653013; 
- Wed, 19 Jun 2019 19:27:33 -0700 (PDT)
-Received: from hari-Inspiron-1545 ([183.83.92.187])
- by smtp.gmail.com with ESMTPSA id j23sm19200394pff.90.2019.06.19.19.27.29
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 19 Jun 2019 19:27:31 -0700 (PDT)
-Date: Thu, 20 Jun 2019 07:57:26 +0530
-From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Nishka Dasgupta <nishkadg.linux@gmail.com>,
- Himadri Pandya <himadri18.07@gmail.com>,
- Hardik Singh Rathore <hardiksingh.k@gmail.com>,
- Hariprasad Kelam <hariprasad.kelam@gmail.com>,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: rtl8723bs: hal: hal_btcoex: Remove variables
- pHalData and pU1Tmp
-Message-ID: <20190620022726.GA19556@hari-Inspiron-1545>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=HC67PfcJ5vMkUGuujT8Y4AnRCHs64RfYdEUMagc2Pic=;
+ b=ITWtuyuzLjC/j5qtNDqHEwcWtjpqWqsdThhXV6DmQtINLvoNcshSPgt7AUl13+6uKb
+ UYlUr50KBw5+wpJDgW7ifdtxgdJCrjt+V7B743AMweiNLUgtsu8Da5r0t52J8Tpu07At
+ aWz3R0Rfw3+yP5TwwEffMy+1lX3/Za4aFIhTq6GD0s4AyxbSfraF/prsthmu6MxtrPks
+ tBFt5e3cQMPOLkY8AMEQl8pVRkHX0aFUIPSnq9snV4dzCDK7i8Jyox+K0BnLI3m/bb8g
+ RV5Wk+nM16QPLio+DClQEyWzCoNPW2KJP1UvrGXynTRRmNtkTCxv4g6pKHrxMc19uNbn
+ xiEw==
+X-Gm-Message-State: APjAAAXDau716+DUPXFz+hBRPPUiMGeXui+dpTjqHJ37nYlXM0ri0HaN
+ 4ZZ7w8e+WB+ZnOKCTJj1J4OWFxcn0rcV8MXChm4=
+X-Google-Smtp-Source: APXvYqy14cIIXCM/ARaPqyavwXiovc3Gy5lOYREWnDkFRRRXUJwdrdtXXfP/fX2/CLhSvWom2B1HgL2KFximol8Nm7E=
+X-Received: by 2002:a9d:12a7:: with SMTP id g36mr26241068otg.310.1561008064471; 
+ Wed, 19 Jun 2019 22:21:04 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+References: <20190619074458.31112-1-sergio.paracuellos@gmail.com>
+ <0bedcd6b-4781-ffd2-b59c-76cd555912a7@kernel.org>
+In-Reply-To: <0bedcd6b-4781-ffd2-b59c-76cd555912a7@kernel.org>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Thu, 20 Jun 2019 07:20:52 +0200
+Message-ID: <CAMhs-H-Qn2aBkCHCCuJhFEGG=CvUix6UHsRZRzm5QhNd8S9BMA@mail.gmail.com>
+Subject: Re: [PATCH 0/4] staging: mt7621-pci: Use gpio perst instead builtin
+ behaviour
+To: Greg Ungerer <gerg@kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,78 +86,74 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: NeilBrown <neil@brown.name>, Greg KH <gregkh@linuxfoundation.org>,
+ driverdev-devel@linuxdriverproject.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove pHalData variable as it is set but unused in function.
-Remove pU1Tmp and replace this with pu8
+Hi Greg,
 
-Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
----
- drivers/staging/rtl8723bs/hal/hal_btcoex.c | 14 +++++---------
- 1 file changed, 5 insertions(+), 9 deletions(-)
+On Thu, Jun 20, 2019 at 2:40 AM Greg Ungerer <gerg@kernel.org> wrote:
+>
+> Hi Sergio,
+>
+> On 19/6/19 5:44 pm, Sergio Paracuellos wrote:
+> > Some boards seems to ignore builtin perst configuration and use gpio
+> > instead. This approach seems to be more common. Hence, update the driver
+> > to properly use gpio perst via gpio descriptor's API.
+> >
+> > For more information refer to [1].
+> >
+> > Even with this set of patches applied, there still seems to have some issues
+> > with a non stable pci link through the boot process. This will be resolved
+> > in nest patch series when the problem is find.
+> >
+> > Patches are only compile-tested. It would be good to test them before being
+> > applied.
+> >
+> > [1]: http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/2019-June/134947.html
+> >
+> > Sergio Paracuellos (4):
+> >    staging: mt7621-pci: fix two messages in driver code
+> >    staging: mt7621-pci: use gpio perst instead of builtin behaviour
+> >    staging: mt7621-dts: add gpio perst to pcie bindings node
+> >    staging: mt7621-pci: dt-bindings: add perst-gpio to sample bindings
+> >
+> >   drivers/staging/mt7621-dts/mt7621.dtsi        |   2 +
+> >   .../mt7621-pci/mediatek,mt7621-pci.txt        |   2 +
+> >   drivers/staging/mt7621-pci/pci-mt7621.c       | 108 ++++++++++--------
+> >   3 files changed, 63 insertions(+), 49 deletions(-)
+>
+> Thanks for putting this together.
+>
+> I tried a quick test, applying this onto a linux-5.2.0-rc5 kernel and
+> saw this in the boot trace:
+>
+>    ...
+>    rt2880-pinmux pinctrl: pcie is already enabled
+>    mt7621-pci 1e140000.pcie: Error applying setting, reverse things back
+>    ...
+>
+> The system went on to boot successfully, with PCI working.
+>
+> Testing across multiple boots, it sometimes hangs - but we know about that
+> and it is what we are still looking into.
 
-diff --git a/drivers/staging/rtl8723bs/hal/hal_btcoex.c b/drivers/staging/rtl8723bs/hal/hal_btcoex.c
-index fd0be52..e673319 100644
---- a/drivers/staging/rtl8723bs/hal/hal_btcoex.c
-+++ b/drivers/staging/rtl8723bs/hal/hal_btcoex.c
-@@ -560,18 +560,14 @@ static u8 halbtcoutsrc_Set(void *pBtcContext, u8 setType, void *pInBuf)
- {
- 	PBTC_COEXIST pBtCoexist;
- 	struct adapter *padapter;
--	struct hal_com_data *pHalData;
- 	u8 *pu8;
--	u8 *pU1Tmp;
- 	u32 *pU4Tmp;
- 	u8 ret;
- 
- 
- 	pBtCoexist = (PBTC_COEXIST)pBtcContext;
- 	padapter = pBtCoexist->Adapter;
--	pHalData = GET_HAL_DATA(padapter);
- 	pu8 = pInBuf;
--	pU1Tmp = pInBuf;
- 	pU4Tmp = pInBuf;
- 	ret = true;
- 
-@@ -614,11 +610,11 @@ static u8 halbtcoutsrc_Set(void *pBtcContext, u8 setType, void *pInBuf)
- 
- 	/*  set some u8 type variables. */
- 	case BTC_SET_U1_RSSI_ADJ_VAL_FOR_AGC_TABLE_ON:
--		pBtCoexist->btInfo.rssiAdjustForAgcTableOn = *pU1Tmp;
-+		pBtCoexist->btInfo.rssiAdjustForAgcTableOn = *pu8;
- 		break;
- 
- 	case BTC_SET_U1_AGG_BUF_SIZE:
--		pBtCoexist->btInfo.aggBufSize = *pU1Tmp;
-+		pBtCoexist->btInfo.aggBufSize = *pu8;
- 		break;
- 
- 	/*  the following are some action which will be triggered */
-@@ -633,15 +629,15 @@ static u8 halbtcoutsrc_Set(void *pBtcContext, u8 setType, void *pInBuf)
- 	/* 1Ant =========== */
- 	/*  set some u8 type variables. */
- 	case BTC_SET_U1_RSSI_ADJ_VAL_FOR_1ANT_COEX_TYPE:
--		pBtCoexist->btInfo.rssiAdjustFor1AntCoexType = *pU1Tmp;
-+		pBtCoexist->btInfo.rssiAdjustFor1AntCoexType = *pu8;
- 		break;
- 
- 	case BTC_SET_U1_LPS_VAL:
--		pBtCoexist->btInfo.lpsVal = *pU1Tmp;
-+		pBtCoexist->btInfo.lpsVal = *pu8;
- 		break;
- 
- 	case BTC_SET_U1_RPWM_VAL:
--		pBtCoexist->btInfo.rpwmVal = *pU1Tmp;
-+		pBtCoexist->btInfo.rpwmVal = *pu8;
- 		break;
- 
- 	/*  the following are some action which will be triggered */
--- 
-2.7.4
+Ok, thanks for testing this. Let's apply this patch series first.
 
+GregKH, can we also apply this for linux-stable? kernel 5.1. Should I
+sent anything else for that?
+
+>
+> Regards
+> Greg
+
+Best regards,
+    Sergio Paracuellos
+>
+>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
