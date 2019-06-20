@@ -1,73 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B6504C40A
-	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Jun 2019 01:16:58 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D0B6D85F56;
-	Wed, 19 Jun 2019 23:16:56 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Tl48sHUyMmvB; Wed, 19 Jun 2019 23:16:56 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4910E85F3A;
-	Wed, 19 Jun 2019 23:16:55 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E4CE51BF29D
- for <devel@linuxdriverproject.org>; Wed, 19 Jun 2019 23:16:29 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 920404C492
+	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Jun 2019 02:42:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E1593834C2
- for <devel@linuxdriverproject.org>; Wed, 19 Jun 2019 23:16:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AFED387D11;
+	Thu, 20 Jun 2019 00:42:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id yPrTcHEh8MDY; Thu, 20 Jun 2019 00:42:15 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3FF7A87CD6;
+	Thu, 20 Jun 2019 00:42:15 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B7D171BF9B2
+ for <devel@linuxdriverproject.org>; Thu, 20 Jun 2019 00:42:12 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id B34AA21507
+ for <devel@linuxdriverproject.org>; Thu, 20 Jun 2019 00:42:12 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wtl2j2IyRlao for <devel@linuxdriverproject.org>;
- Wed, 19 Jun 2019 23:16:29 +0000 (UTC)
+ with ESMTP id iE0czrrOrQdW for <devel@linuxdriverproject.org>;
+ Thu, 20 Jun 2019 00:42:11 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from ushosting.nmnhosting.com (ushosting.nmnhosting.com
- [66.55.73.32])
- by hemlock.osuosl.org (Postfix) with ESMTP id 4041483070
- for <devel@driverdev.osuosl.org>; Wed, 19 Jun 2019 23:16:29 +0000 (UTC)
-Received: from mail2.nmnhosting.com (unknown [202.169.106.97])
- by ushosting.nmnhosting.com (Postfix) with ESMTPS id 5F37E2DC005B;
- Wed, 19 Jun 2019 19:16:28 -0400 (EDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=d-silva.org;
- s=201810a; t=1560986188;
- bh=P+nFrCYIAy9nbAT3inDjyh5Nu1AGlpkuYDjYYSTo8SU=;
- h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
- b=UMKHysbwL4zdfy50KqutmgBEIg3sB7A1AG+8ItwZQtNEjbw3/kefwvZoa3HJ/qPue
- FtHy3iQpmn+NaSFA3Mu2gOfCMETJuOCnHShThOrTrRi0524godGZCgjbLwEXdIrujV
- xDt+bXPG551xLU30DowKCzCX4sh2ZLCYlpwKny3nSfu6TdTO04XxEEAerz4PtGaObB
- mK5WkSsuK3ES4PAPxgZb+pSYtoFroMpH18T3PLybvLGSjfjyn/CtIMs+blM8XYmdPJ
- TvkZW6Ca8pzYT9RsBfJRAJWjf4qfNG6J0j+xJvEaD7SP/MIMGo1VZ5d/zw4b3FdeYt
- JetXAd65Zd6yavahdde3VtkKoryPECl8+glQZ+N2eRG9ycQ1RafCdpTqdv72F0hGkL
- 4apz6zp0SeF0J1KA9qT4u68PJKa7dlMEnKXEomd5VE+2hLj+H2XT6HltLJdB5+pK9G
- cMe1+bLK+ayAWxIXuyZ1/r/oJ5pzAFraInvomTVKBkCfLFy8CdlSIihUmPfej/4psJ
- 72/lVeYRJl+IifxxJ9hEA9A+QWlY8W986ROsAQ5xOTxmaRzXMnnZRdFLVPZt5axFGD
- EQ+IOd3b5ZUWjk3U7T3wAvcchJQaqLNw/Njxg2yMVkYsKSYnAMuX4DYn+A7LJX3oLF
- sv3nSS3HZsRxp6mS1j36fWkI=
-Received: from adsilva.ozlabs.ibm.com (static-82-10.transact.net.au
- [122.99.82.10] (may be forged)) (authenticated bits=0)
- by mail2.nmnhosting.com (8.15.2/8.15.2) with ESMTPSA id x5JNFxcT078663
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NO);
- Thu, 20 Jun 2019 09:16:14 +1000 (AEST)
- (envelope-from alastair@d-silva.org)
-Message-ID: <c68cb819257f251cbb66f8998a95c31cebe2d72e.camel@d-silva.org>
+Received: from smtprelay.hostedemail.com (smtprelay0109.hostedemail.com
+ [216.40.44.109])
+ by silver.osuosl.org (Postfix) with ESMTPS id 730902151E
+ for <devel@driverdev.osuosl.org>; Thu, 20 Jun 2019 00:42:11 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave04.hostedemail.com (Postfix) with ESMTP id 173781801DFD0
+ for <devel@driverdev.osuosl.org>; Thu, 20 Jun 2019 00:35:22 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay05.hostedemail.com (Postfix) with ESMTP id 4743D18032D42;
+ Thu, 20 Jun 2019 00:35:19 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 
+X-HE-Tag: slope21_83935d3c81a36
+X-Filterd-Recvd-Size: 3615
+Received: from XPS-9350 (cpe-23-242-196-136.socal.res.rr.com [23.242.196.136])
+ (Authenticated sender: joe@perches.com)
+ by omf12.hostedemail.com (Postfix) with ESMTPA;
+ Thu, 20 Jun 2019 00:35:03 +0000 (UTC)
+Message-ID: <d8316be322f33ea67640ff83f2248fe433078407.camel@perches.com>
 Subject: Re: [PATCH v3 0/7] Hexdump Enhancements
-From: "Alastair D'Silva" <alastair@d-silva.org>
-To: Joe Perches <joe@perches.com>
-Date: Thu, 20 Jun 2019 09:15:58 +1000
-In-Reply-To: <9a000734375c0801fc16b71f4be1235f9b857772.camel@perches.com>
+From: Joe Perches <joe@perches.com>
+To: Alastair D'Silva <alastair@d-silva.org>
+Date: Wed, 19 Jun 2019 17:35:01 -0700
+In-Reply-To: <c68cb819257f251cbb66f8998a95c31cebe2d72e.camel@d-silva.org>
 References: <20190617020430.8708-1-alastair@au1.ibm.com>
  <9a000734375c0801fc16b71f4be1235f9b857772.camel@perches.com>
-User-Agent: Evolution 3.32.2 (3.32.2-1.fc30) 
+ <c68cb819257f251cbb66f8998a95c31cebe2d72e.camel@d-silva.org>
+User-Agent: Evolution 3.30.5-0ubuntu0.18.10.1 
 MIME-Version: 1.0
-X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.6.2
- (mail2.nmnhosting.com [10.0.1.20]); Thu, 20 Jun 2019 09:16:24 +1000 (AEST)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,46 +98,47 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, 2019-06-19 at 09:31 -0700, Joe Perches wrote:
-> On Mon, 2019-06-17 at 12:04 +1000, Alastair D'Silva wrote:
-> > From: Alastair D'Silva <alastair@d-silva.org>
+On Thu, 2019-06-20 at 09:15 +1000, Alastair D'Silva wrote:
+> On Wed, 2019-06-19 at 09:31 -0700, Joe Perches wrote:
+> > On Mon, 2019-06-17 at 12:04 +1000, Alastair D'Silva wrote:
+> > > From: Alastair D'Silva <alastair@d-silva.org>
+> > > 
+> > > Apologies for the large CC list, it's a heads up for those
+> > > responsible
+> > > for subsystems where a prototype change in generic code causes a
+> > > change
+> > > in those subsystems.
+> > > 
+> > > This series enhances hexdump.
 > > 
-> > Apologies for the large CC list, it's a heads up for those
-> > responsible
-> > for subsystems where a prototype change in generic code causes a
-> > change
-> > in those subsystems.
+> > Still not a fan of these patches.
+> 
+> I'm afraid there's not too much action I can take on that, I'm happy to
+> address specific issues though.
+> 
+> > > These improve the readability of the dumped data in certain
+> > > situations
+> > > (eg. wide terminals are available, many lines of empty bytes exist,
+> > > etc).
+
+I think it's generally overkill for the desired uses.
+
+> > Changing hexdump's last argument from bool to int is odd.
 > > 
-> > This series enhances hexdump.
 > 
-> Still not a fan of these patches.
+> Think of it as replacing a single boolean with many booleans.
 
-I'm afraid there's not too much action I can take on that, I'm happy to
-address specific issues though.
+I understand it.  It's odd.
 
-> 
-> > These improve the readability of the dumped data in certain
-> > situations
-> > (eg. wide terminals are available, many lines of empty bytes exist,
-> > etc).
-> 
-> Changing hexdump's last argument from bool to int is odd.
-> 
+I would rather not have a mixture of true, false, and apparently
+random collections of bitfields like 0xd or 0b1011 or their
+equivalent or'd defines.
 
-Think of it as replacing a single boolean with many booleans.
 
-> Perhaps a new function should be added instead of changing
-> the existing hexdump.
-> 
+> There's only a handful of consumers, I don't think there is a value-add 
+> in creating more wrappers vs updating the existing callers.
 
-There's only a handful of consumers, I don't think there is a value-add 
-in creating more wrappers vs updating the existing callers.
-
--- 
-Alastair D'Silva           mob: 0423 762 819
-skype: alastair_dsilva    
-Twitter: @EvilDeece
-blog: http://alastair.d-silva.org
+Perhaps more reason not to modify the existing api.
 
 
 _______________________________________________
