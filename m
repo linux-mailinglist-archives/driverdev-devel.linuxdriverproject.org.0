@@ -1,76 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C65D04CD34
-	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Jun 2019 13:53:41 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4C7104CD35
+	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Jun 2019 13:53:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3E1E387E56;
-	Thu, 20 Jun 2019 11:53:40 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CC00D86BC6;
+	Thu, 20 Jun 2019 11:53:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZPBaODQ8Dq8Q; Thu, 20 Jun 2019 11:53:40 +0000 (UTC)
+	with ESMTP id I2Vv3kEiIaZy; Thu, 20 Jun 2019 11:53:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CB93687E40;
-	Thu, 20 Jun 2019 11:53:39 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B95E9869BF;
+	Thu, 20 Jun 2019 11:53:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DA9651BF578
- for <devel@linuxdriverproject.org>; Thu, 20 Jun 2019 11:53:34 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id F18321BF578
+ for <devel@linuxdriverproject.org>; Thu, 20 Jun 2019 11:53:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D6ABA87E40
- for <devel@linuxdriverproject.org>; Thu, 20 Jun 2019 11:53:34 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id D0783869BF
+ for <devel@linuxdriverproject.org>; Thu, 20 Jun 2019 11:53:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Zp06dMMFNL4i for <devel@linuxdriverproject.org>;
- Thu, 20 Jun 2019 11:53:34 +0000 (UTC)
+ with ESMTP id YKcgscPuwxjt for <devel@linuxdriverproject.org>;
+ Thu, 20 Jun 2019 11:53:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
- [209.85.214.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3364387E09
- for <devel@driverdev.osuosl.org>; Thu, 20 Jun 2019 11:53:33 +0000 (UTC)
-Received: by mail-pl1-f194.google.com with SMTP id bi6so1293847plb.12
- for <devel@driverdev.osuosl.org>; Thu, 20 Jun 2019 04:53:33 -0700 (PDT)
+Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
+ [209.85.214.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A582A86BB7
+ for <devel@driverdev.osuosl.org>; Thu, 20 Jun 2019 11:53:35 +0000 (UTC)
+Received: by mail-pl1-f195.google.com with SMTP id i2so1318634plt.1
+ for <devel@driverdev.osuosl.org>; Thu, 20 Jun 2019 04:53:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=8CbIyJB2BqSl1sumTg4HRrHOqh5HrTlvunIDnYmSkhA=;
- b=A8yJ1WhPUqVkAiIfbPrtKhGTyuxqg5ynLajCyTVTV3aJszIpWKODofnaRYGBBcXuoz
- uApGJ0vWI6OpuKrrnoutRpljzuv0p9eAbgeDHuVNIElNBAMyUzS6ARJKro0j5YkdCoXc
- 9xzD1kstWksWg+wOiSxOf8+6h/GqnEhN/7As91T7MF8JVFqShQzYqPa8IHd2gQ7ap8hL
- 1y2Z1c2N9PBMewKyLq/K2AQwozHcNIUzf2+x6mnvr3uSWmfTLdCcCj+GKeCrvjoT1Fbg
- PPUTpxwJnYYd22R92zLKmjko3z8yHSKwSYEzYkfZkS4Fw0kOnppORKoLs1h8TY9tn0ne
- mgYg==
+ bh=ra2iucWEYIKOvju/7xo2uhOqzjo3EYhOX2pbnjejl20=;
+ b=nDm0d/6NDAKoIdf01nORzmaw9ohJd9yhib2+uqDFnGXrJxzOj+zuuv5K7kDIXqGg3A
+ S4MRJzBYECA8iTll3P6Pwcp411GV3bL93gNX9KgacuDDWu57YsxGPSzA66jpzqDj5lbS
+ taj7Up91RxWF8ke1Qf70CHxTeHl2nPSG2/HSsUnMUvLoPjxevNDMvBnOu6yYS1z4Khvi
+ mwTycL9a25ABoBbjdROhyJ6OcLUtRntx2WtHPWlnapG0kl14KtfDzB5lQ8ZmZMRbiQ5L
+ arVfe67xi0mEMNdwGqO2ya/Gw52LYDtEOhmJFm2iT8uBCWaHLhw0Dr4ajanwrtANzjmF
+ sQmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=8CbIyJB2BqSl1sumTg4HRrHOqh5HrTlvunIDnYmSkhA=;
- b=U/ujcNrhFuGeRZJ0YxK8pVKaDbL6HAZxlV3GPYCtnuE23il8QQl++Y9PegXRvQ/qyY
- c8LFmAycSF1iixb3GXNxzXUN2tlhf/VoX2lNEFFhU8xf1kRvlmW+JkaJJuNJvx/djzED
- a3kuvK8QCh2IA6xzIB0gOG4uBxSCNFwCsd3BP6mmtSLSZrTjEIyn/F6HukcoTOEwEy4D
- FgrK9DRaQg+fKbDmMNj8koIs2T9P3nbQdCUrcrb79aLglVfSBA/Y+tU/h5rgRvPtRa9G
- txM4sTP1Zr9L6+bytSsPycrQBbTIQGdpV5cMwDdTFkeI+ldQrL/2GP1SiN7EbLnB3vNW
- NMhg==
-X-Gm-Message-State: APjAAAX4e0E+nOlxHW88v8Y16Dgp6s24XLIsUqg5OvfKtvaRMT3p+GPu
- QD88C5wTH/in1y7P9WmsKaA=
-X-Google-Smtp-Source: APXvYqwH025G2BoUTO523QUr/rA40/WKPjnpFPalwtvvwopSVZBM4vTFvmHe8LhV/CCvpLoJtDNrEA==
-X-Received: by 2002:a17:902:a986:: with SMTP id
- bh6mr123303164plb.100.1561031612865; 
- Thu, 20 Jun 2019 04:53:32 -0700 (PDT)
+ bh=ra2iucWEYIKOvju/7xo2uhOqzjo3EYhOX2pbnjejl20=;
+ b=K7zjycESoHQ8I50EEyZ2mUQMIlvly0Loc0pSXp2TXU+bT8cz9/I3JsunQgs8pUnlDO
+ LfLpLpabWMomA6/RVa/8lzhy54yTDQJ+vyfizR+h3kcGK4sRCi8F6qeBMm2a9SFtMD1/
+ 83IrIUnicCRnkYYGNc8IT0p0hCbSUshYpG3zkVxzpHQrurPz4I04eUCSTWcFmcub7fw+
+ wqqsTkqzN5XNhJrigk2ZDBfi9Cii4j2Fa3ojoNhtt3CF7A9MrDSwOdMi1IgEY+rkGftO
+ N00f6KCvI6FKeYD+ot7BYkZR5W3pFOMoeeuzbQa4NLvwRi3oMAWLJq31HJirFIhgYN8w
+ ODgg==
+X-Gm-Message-State: APjAAAUc+FkmPurWbu7iO9IN8XwZUOVVMQ/ODtGb7uP1GPdlDnljeb2I
+ TpMTZFxLc6rQUw6HuxSEXPg=
+X-Google-Smtp-Source: APXvYqwFSYJjrBZc0kbZgVZwkWm/+7ygurytz1A0TQj8HteiN/Upu7Rmy1VngkPVO+4jyu6+O6aegA==
+X-Received: by 2002:a17:902:f81:: with SMTP id 1mr1512518plz.191.1561031615364; 
+ Thu, 20 Jun 2019 04:53:35 -0700 (PDT)
 Received: from localhost.localdomain ([122.163.71.137])
- by smtp.gmail.com with ESMTPSA id c124sm21738079pfa.115.2019.06.20.04.53.30
+ by smtp.gmail.com with ESMTPSA id c124sm21738079pfa.115.2019.06.20.04.53.33
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Thu, 20 Jun 2019 04:53:32 -0700 (PDT)
+ Thu, 20 Jun 2019 04:53:35 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: larry.finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
  gregkh@linuxfoundation.org, devel@driverdev.osuosl.org
-Subject: [PATCH 05/10] staging: rtl8712: Change (r8712)_enqueue_cmd to void
-Date: Thu, 20 Jun 2019 17:22:59 +0530
-Message-Id: <20190620115304.3210-5-nishkadg.linux@gmail.com>
+Subject: [PATCH 06/10] staging: rtl8712: r8712_set_chplan_cmd(): Change return
+ type
+Date: Thu, 20 Jun 2019 17:23:00 +0530
+Message-Id: <20190620115304.3210-6-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190620115304.3210-1-nishkadg.linux@gmail.com>
 References: <20190620115304.3210-1-nishkadg.linux@gmail.com>
@@ -93,74 +93,62 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change the return types of r8712_enqueue_cmd to void as the return value
-of r8712_enqueue_cmd is never stored, checked, or otherwise used.
-Also change the return type of _enqueue_cmd to void as it is only called
-by r8712_enqueue_cmd which does not do anything with the return value
-except return it itself.
-Modify return statements in both functions accordingly.
+Change return type of function r8712_set_chplan_cmd from u8 to void as
+its return value is never stored, checked or otherwise used. Change the
+return statements accordingly.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/rtl8712/rtl871x_cmd.c | 14 +++++---------
- drivers/staging/rtl8712/rtl871x_cmd.h |  2 +-
- 2 files changed, 6 insertions(+), 10 deletions(-)
+ drivers/staging/rtl8712/rtl871x_cmd.c | 7 +++----
+ drivers/staging/rtl8712/rtl871x_cmd.h | 2 +-
+ 2 files changed, 4 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/staging/rtl8712/rtl871x_cmd.c b/drivers/staging/rtl8712/rtl871x_cmd.c
-index 9cc6a370102b..74a351788c2a 100644
+index 74a351788c2a..a17a35537a3b 100644
 --- a/drivers/staging/rtl8712/rtl871x_cmd.c
 +++ b/drivers/staging/rtl8712/rtl871x_cmd.c
-@@ -110,16 +110,15 @@ static void _free_cmd_priv(struct cmd_priv *pcmdpriv)
-  *
-  */
+@@ -260,7 +260,7 @@ int r8712_setdatarate_cmd(struct _adapter *padapter, u8 *rateset)
+ 	return 0;
+ }
  
--static sint _enqueue_cmd(struct  __queue *queue, struct cmd_obj *obj)
-+static void _enqueue_cmd(struct  __queue *queue, struct cmd_obj *obj)
+-u8 r8712_set_chplan_cmd(struct _adapter *padapter, int chplan)
++void r8712_set_chplan_cmd(struct _adapter *padapter, int chplan)
  {
- 	unsigned long irqL;
+ 	struct cmd_obj *ph2c;
+ 	struct SetChannelPlan_param *psetchplanpara;
+@@ -268,17 +268,16 @@ u8 r8712_set_chplan_cmd(struct _adapter *padapter, int chplan)
  
- 	if (!obj)
--		return _SUCCESS;
+ 	ph2c = kmalloc(sizeof(*ph2c), GFP_ATOMIC);
+ 	if (!ph2c)
+-		return _FAIL;
 +		return;
- 	spin_lock_irqsave(&queue->lock, irqL);
- 	list_add_tail(&obj->list, &queue->queue);
- 	spin_unlock_irqrestore(&queue->lock, irqL);
+ 	psetchplanpara = kmalloc(sizeof(*psetchplanpara), GFP_ATOMIC);
+ 	if (!psetchplanpara) {
+ 		kfree(ph2c);
+-		return _FAIL;
++		return;
+ 	}
+ 	init_h2fwcmd_w_parm_no_rsp(ph2c, psetchplanpara,
+ 				GEN_CMD_CODE(_SetChannelPlan));
+ 	psetchplanpara->ChannelPlan = chplan;
+ 	r8712_enqueue_cmd(pcmdpriv, ph2c);
 -	return _SUCCESS;
  }
  
- static struct cmd_obj *_dequeue_cmd(struct  __queue *queue)
-@@ -156,15 +155,12 @@ void r8712_free_cmd_priv(struct cmd_priv *pcmdpriv)
- 	_free_cmd_priv(pcmdpriv);
- }
- 
--u32 r8712_enqueue_cmd(struct cmd_priv *pcmdpriv, struct cmd_obj *obj)
-+void r8712_enqueue_cmd(struct cmd_priv *pcmdpriv, struct cmd_obj *obj)
- {
--	int res;
--
- 	if (pcmdpriv->padapter->eeprompriv.bautoload_fail_flag)
--		return _FAIL;
--	res = _enqueue_cmd(&pcmdpriv->cmd_queue, obj);
-+		return;
-+	_enqueue_cmd(&pcmdpriv->cmd_queue, obj);
- 	complete(&pcmdpriv->cmd_queue_comp);
--	return res;
- }
- 
- u32 r8712_enqueue_cmd_ex(struct cmd_priv *pcmdpriv, struct cmd_obj *obj)
+ u8 r8712_setbasicrate_cmd(struct _adapter *padapter, u8 *rateset)
 diff --git a/drivers/staging/rtl8712/rtl871x_cmd.h b/drivers/staging/rtl8712/rtl871x_cmd.h
-index 7d4da8ea95ec..2e30c359e0a2 100644
+index 2e30c359e0a2..44594022ec4b 100644
 --- a/drivers/staging/rtl8712/rtl871x_cmd.h
 +++ b/drivers/staging/rtl8712/rtl871x_cmd.h
-@@ -79,7 +79,7 @@ do {\
- 	pcmd->rspsz = 0;\
- } while (0)
- 
--u32 r8712_enqueue_cmd(struct cmd_priv *pcmdpriv, struct cmd_obj *obj);
-+void r8712_enqueue_cmd(struct cmd_priv *pcmdpriv, struct cmd_obj *obj);
- u32 r8712_enqueue_cmd_ex(struct cmd_priv *pcmdpriv, struct cmd_obj *obj);
- struct cmd_obj *r8712_dequeue_cmd(struct  __queue *queue);
- void r8712_free_cmd_obj(struct cmd_obj *pcmd);
+@@ -720,7 +720,7 @@ u8 r8712_disassoc_cmd(struct _adapter *padapter);
+ u8 r8712_setopmode_cmd(struct _adapter *padapter,
+ 		 enum NDIS_802_11_NETWORK_INFRASTRUCTURE networktype);
+ int r8712_setdatarate_cmd(struct _adapter *padapter, u8 *rateset);
+-u8 r8712_set_chplan_cmd(struct _adapter  *padapter, int chplan);
++void r8712_set_chplan_cmd(struct _adapter  *padapter, int chplan);
+ u8 r8712_setbasicrate_cmd(struct _adapter *padapter, u8 *rateset);
+ u8 r8712_getrfreg_cmd(struct _adapter *padapter, u8 offset, u8 *pval);
+ u8 r8712_setrfintfs_cmd(struct _adapter *padapter, u8 mode);
 -- 
 2.19.1
 
