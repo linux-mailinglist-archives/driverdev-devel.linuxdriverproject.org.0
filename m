@@ -1,77 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 70AFC4CD32
-	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Jun 2019 13:53:40 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C65D04CD34
+	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Jun 2019 13:53:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0BBC286027;
-	Thu, 20 Jun 2019 11:53:39 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3E1E387E56;
+	Thu, 20 Jun 2019 11:53:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3PcVnMAw0uD2; Thu, 20 Jun 2019 11:53:37 +0000 (UTC)
+	with ESMTP id ZPBaODQ8Dq8Q; Thu, 20 Jun 2019 11:53:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EA33585FAA;
-	Thu, 20 Jun 2019 11:53:36 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CB93687E40;
+	Thu, 20 Jun 2019 11:53:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0CAC41BF578
- for <devel@linuxdriverproject.org>; Thu, 20 Jun 2019 11:53:33 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DA9651BF578
+ for <devel@linuxdriverproject.org>; Thu, 20 Jun 2019 11:53:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C5E1585FF3
- for <devel@linuxdriverproject.org>; Thu, 20 Jun 2019 11:53:32 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D6ABA87E40
+ for <devel@linuxdriverproject.org>; Thu, 20 Jun 2019 11:53:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5P68IJkJQyLL for <devel@linuxdriverproject.org>;
- Thu, 20 Jun 2019 11:53:31 +0000 (UTC)
+ with ESMTP id Zp06dMMFNL4i for <devel@linuxdriverproject.org>;
+ Thu, 20 Jun 2019 11:53:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
- [209.85.210.195])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E180C85FB2
- for <devel@driverdev.osuosl.org>; Thu, 20 Jun 2019 11:53:30 +0000 (UTC)
-Received: by mail-pf1-f195.google.com with SMTP id 81so1525106pfy.13
- for <devel@driverdev.osuosl.org>; Thu, 20 Jun 2019 04:53:30 -0700 (PDT)
+Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
+ [209.85.214.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 3364387E09
+ for <devel@driverdev.osuosl.org>; Thu, 20 Jun 2019 11:53:33 +0000 (UTC)
+Received: by mail-pl1-f194.google.com with SMTP id bi6so1293847plb.12
+ for <devel@driverdev.osuosl.org>; Thu, 20 Jun 2019 04:53:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=cUntAQYe+wfYggukV2RCh/FIcUiSmjEU8qT0jYze2OI=;
- b=gO8feUPiVQGviUPkcXRL0eBAzzIiiRU5/Rehtmm0uvvPgTJtTiiPY/VfvGKnE0ODZ9
- 9JHzbKYkRnUziGmdLcIxo+itak7RnlwUOq4gUw88ybvw1AwbnsxOPAoIVvfz9TKuj41J
- fzny34kcoU6hFsaWSKtSwsWu+/pDYmLwpfEeznnUWf5T1b9iWvcBLTv9lsXjCQhNJXjE
- 29xjdETf47GoBgeaa8A1Y6BoadqDB8oxbVCj7zckOyfwHHyBvuDkmtj4AJodRE4Ovupg
- K1xqzPhfXmN50v9PQYhYYpdbDURDXzgeJuC29cysFbacG8li7JFyb3RiCaHwEBD/GVXj
- KxFQ==
+ bh=8CbIyJB2BqSl1sumTg4HRrHOqh5HrTlvunIDnYmSkhA=;
+ b=A8yJ1WhPUqVkAiIfbPrtKhGTyuxqg5ynLajCyTVTV3aJszIpWKODofnaRYGBBcXuoz
+ uApGJ0vWI6OpuKrrnoutRpljzuv0p9eAbgeDHuVNIElNBAMyUzS6ARJKro0j5YkdCoXc
+ 9xzD1kstWksWg+wOiSxOf8+6h/GqnEhN/7As91T7MF8JVFqShQzYqPa8IHd2gQ7ap8hL
+ 1y2Z1c2N9PBMewKyLq/K2AQwozHcNIUzf2+x6mnvr3uSWmfTLdCcCj+GKeCrvjoT1Fbg
+ PPUTpxwJnYYd22R92zLKmjko3z8yHSKwSYEzYkfZkS4Fw0kOnppORKoLs1h8TY9tn0ne
+ mgYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=cUntAQYe+wfYggukV2RCh/FIcUiSmjEU8qT0jYze2OI=;
- b=htDAolwk4yYDoODJy0U+pHWYNIPxMx+7rF+spXo3xyVZpQMeJqutl1Kx5L7Cdl+jXu
- LN8k1NsGuTSBGmzc9qI6gxCIOuCSaOb+NdpcukTJiOFMf8HPiaVao9ONgr7wCyYyBnMD
- jiCTFAgNUrp6mwMtPgtYNYBIg4W62n/Nmpx8OvpeJXfjs4ABCTzFGgCr1cubgKRZUN7v
- /PQJ52XbVItSWN5a47f/UrWXHa5C4c9HF4YMellABoQdOmr6zCN21nwIHtv24zyDyq4m
- Z4rbq9tZBafWeWBvCQIoqcabOE2a2bNTJOoa3zaSa4e8pWenhprqSZhyhi5JNJUnbnuj
- T+gw==
-X-Gm-Message-State: APjAAAUvnCU695QSMCZCv7/hLPur1corPRdOCnWPnuvE5ie1+//vY976
- /WGc96RhzzIK8P+dF2vvdgo=
-X-Google-Smtp-Source: APXvYqxYiqX2uHLgD+rryePgrJrIhL+awHH+NS3SnAzaEXVDEnZOrcOSQQ2Y04gy3XpVm1eLf9a5Fw==
-X-Received: by 2002:a17:90a:ae12:: with SMTP id
- t18mr2788735pjq.32.1561031610369; 
- Thu, 20 Jun 2019 04:53:30 -0700 (PDT)
+ bh=8CbIyJB2BqSl1sumTg4HRrHOqh5HrTlvunIDnYmSkhA=;
+ b=U/ujcNrhFuGeRZJ0YxK8pVKaDbL6HAZxlV3GPYCtnuE23il8QQl++Y9PegXRvQ/qyY
+ c8LFmAycSF1iixb3GXNxzXUN2tlhf/VoX2lNEFFhU8xf1kRvlmW+JkaJJuNJvx/djzED
+ a3kuvK8QCh2IA6xzIB0gOG4uBxSCNFwCsd3BP6mmtSLSZrTjEIyn/F6HukcoTOEwEy4D
+ FgrK9DRaQg+fKbDmMNj8koIs2T9P3nbQdCUrcrb79aLglVfSBA/Y+tU/h5rgRvPtRa9G
+ txM4sTP1Zr9L6+bytSsPycrQBbTIQGdpV5cMwDdTFkeI+ldQrL/2GP1SiN7EbLnB3vNW
+ NMhg==
+X-Gm-Message-State: APjAAAX4e0E+nOlxHW88v8Y16Dgp6s24XLIsUqg5OvfKtvaRMT3p+GPu
+ QD88C5wTH/in1y7P9WmsKaA=
+X-Google-Smtp-Source: APXvYqwH025G2BoUTO523QUr/rA40/WKPjnpFPalwtvvwopSVZBM4vTFvmHe8LhV/CCvpLoJtDNrEA==
+X-Received: by 2002:a17:902:a986:: with SMTP id
+ bh6mr123303164plb.100.1561031612865; 
+ Thu, 20 Jun 2019 04:53:32 -0700 (PDT)
 Received: from localhost.localdomain ([122.163.71.137])
- by smtp.gmail.com with ESMTPSA id c124sm21738079pfa.115.2019.06.20.04.53.28
+ by smtp.gmail.com with ESMTPSA id c124sm21738079pfa.115.2019.06.20.04.53.30
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Thu, 20 Jun 2019 04:53:30 -0700 (PDT)
+ Thu, 20 Jun 2019 04:53:32 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: larry.finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
  gregkh@linuxfoundation.org, devel@driverdev.osuosl.org
-Subject: [PATCH 04/10] staging: rtl8712: r8712_joinbss_cmd(): Change return
- values and type
-Date: Thu, 20 Jun 2019 17:22:58 +0530
-Message-Id: <20190620115304.3210-4-nishkadg.linux@gmail.com>
+Subject: [PATCH 05/10] staging: rtl8712: Change (r8712)_enqueue_cmd to void
+Date: Thu, 20 Jun 2019 17:22:59 +0530
+Message-Id: <20190620115304.3210-5-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190620115304.3210-1-nishkadg.linux@gmail.com>
 References: <20190620115304.3210-1-nishkadg.linux@gmail.com>
@@ -94,135 +93,74 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change return values of function r8712_joinbss_cmd from _SUCCESS/_FAIL
-to 0/-ENOMEM respectively.
-Change return type from u8 to int to accommodate return of -ENOMEM.
-
-Similarly, change the return values (_SUCCESS to 0 and _FAIL to -ENOMEM
-or -EINVAL) and type (sint to int) of the call site of r8712_joinbss_cmd,
-r8712_select_and_join_from_scan, as one of the branches of
-r8712_select_and_join_from_scan directly returns the return value of
-r8712_joinbss_cmd.
-
-Modify the call sites of r8712_select_and_join_from_scan to check for
-0 instead of _SUCCESS.
-
-Issue found with Coccinelle.
+Change the return types of r8712_enqueue_cmd to void as the return value
+of r8712_enqueue_cmd is never stored, checked, or otherwise used.
+Also change the return type of _enqueue_cmd to void as it is only called
+by r8712_enqueue_cmd which does not do anything with the return value
+except return it itself.
+Modify return statements in both functions accordingly.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/rtl8712/rtl871x_cmd.c       | 6 +++---
- drivers/staging/rtl8712/rtl871x_cmd.h       | 4 ++--
- drivers/staging/rtl8712/rtl871x_ioctl_set.c | 2 +-
- drivers/staging/rtl8712/rtl871x_mlme.c      | 8 +++-----
- drivers/staging/rtl8712/rtl871x_mlme.h      | 2 +-
- 5 files changed, 10 insertions(+), 12 deletions(-)
+ drivers/staging/rtl8712/rtl871x_cmd.c | 14 +++++---------
+ drivers/staging/rtl8712/rtl871x_cmd.h |  2 +-
+ 2 files changed, 6 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/staging/rtl8712/rtl871x_cmd.c b/drivers/staging/rtl8712/rtl871x_cmd.c
-index 01146d9c3a9b..9cc6a370102b 100644
+index 9cc6a370102b..74a351788c2a 100644
 --- a/drivers/staging/rtl8712/rtl871x_cmd.c
 +++ b/drivers/staging/rtl8712/rtl871x_cmd.c
-@@ -434,7 +434,7 @@ int r8712_createbss_cmd(struct _adapter *padapter)
- 	return 0;
- }
+@@ -110,16 +110,15 @@ static void _free_cmd_priv(struct cmd_priv *pcmdpriv)
+  *
+  */
  
--u8 r8712_joinbss_cmd(struct _adapter  *padapter, struct wlan_network *pnetwork)
-+int r8712_joinbss_cmd(struct _adapter  *padapter, struct wlan_network *pnetwork)
+-static sint _enqueue_cmd(struct  __queue *queue, struct cmd_obj *obj)
++static void _enqueue_cmd(struct  __queue *queue, struct cmd_obj *obj)
  {
- 	struct wlan_bssid_ex *psecnetwork;
- 	struct cmd_obj		*pcmd;
-@@ -449,7 +449,7 @@ u8 r8712_joinbss_cmd(struct _adapter  *padapter, struct wlan_network *pnetwork)
- 	padapter->ledpriv.LedControlHandler(padapter, LED_CTL_START_TO_LINK);
- 	pcmd = kmalloc(sizeof(*pcmd), GFP_ATOMIC);
- 	if (!pcmd)
--		return _FAIL;
-+		return -ENOMEM;
+ 	unsigned long irqL;
  
- 	/* for hidden ap to set fw_state here */
- 	if (check_fwstate(pmlmepriv, WIFI_STATION_STATE | WIFI_ADHOC_STATE) !=
-@@ -566,7 +566,7 @@ u8 r8712_joinbss_cmd(struct _adapter  *padapter, struct wlan_network *pnetwork)
- 	pcmd->rsp = NULL;
- 	pcmd->rspsz = 0;
- 	r8712_enqueue_cmd(pcmdpriv, pcmd);
+ 	if (!obj)
+-		return _SUCCESS;
++		return;
+ 	spin_lock_irqsave(&queue->lock, irqL);
+ 	list_add_tail(&obj->list, &queue->queue);
+ 	spin_unlock_irqrestore(&queue->lock, irqL);
 -	return _SUCCESS;
-+	return 0;
  }
  
- u8 r8712_disassoc_cmd(struct _adapter *padapter) /* for sta_mode */
+ static struct cmd_obj *_dequeue_cmd(struct  __queue *queue)
+@@ -156,15 +155,12 @@ void r8712_free_cmd_priv(struct cmd_priv *pcmdpriv)
+ 	_free_cmd_priv(pcmdpriv);
+ }
+ 
+-u32 r8712_enqueue_cmd(struct cmd_priv *pcmdpriv, struct cmd_obj *obj)
++void r8712_enqueue_cmd(struct cmd_priv *pcmdpriv, struct cmd_obj *obj)
+ {
+-	int res;
+-
+ 	if (pcmdpriv->padapter->eeprompriv.bautoload_fail_flag)
+-		return _FAIL;
+-	res = _enqueue_cmd(&pcmdpriv->cmd_queue, obj);
++		return;
++	_enqueue_cmd(&pcmdpriv->cmd_queue, obj);
+ 	complete(&pcmdpriv->cmd_queue_comp);
+-	return res;
+ }
+ 
+ u32 r8712_enqueue_cmd_ex(struct cmd_priv *pcmdpriv, struct cmd_obj *obj)
 diff --git a/drivers/staging/rtl8712/rtl871x_cmd.h b/drivers/staging/rtl8712/rtl871x_cmd.h
-index 6ea1bafd8acc..7d4da8ea95ec 100644
+index 7d4da8ea95ec..2e30c359e0a2 100644
 --- a/drivers/staging/rtl8712/rtl871x_cmd.h
 +++ b/drivers/staging/rtl8712/rtl871x_cmd.h
-@@ -714,8 +714,8 @@ u8 r8712_sitesurvey_cmd(struct _adapter *padapter,
- 			struct ndis_802_11_ssid *pssid);
- int r8712_createbss_cmd(struct _adapter *padapter);
- u8 r8712_setstakey_cmd(struct _adapter *padapter, u8 *psta, u8 unicast_key);
--u8 r8712_joinbss_cmd(struct _adapter *padapter,
--		     struct wlan_network *pnetwork);
-+int r8712_joinbss_cmd(struct _adapter *padapter,
-+		      struct wlan_network *pnetwork);
- u8 r8712_disassoc_cmd(struct _adapter *padapter);
- u8 r8712_setopmode_cmd(struct _adapter *padapter,
- 		 enum NDIS_802_11_NETWORK_INFRASTRUCTURE networktype);
-diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_set.c b/drivers/staging/rtl8712/rtl871x_ioctl_set.c
-index d0274c65d17e..f3c0a9348f56 100644
---- a/drivers/staging/rtl8712/rtl871x_ioctl_set.c
-+++ b/drivers/staging/rtl8712/rtl871x_ioctl_set.c
-@@ -66,7 +66,7 @@ static u8 do_join(struct _adapter *padapter)
- 	}
+@@ -79,7 +79,7 @@ do {\
+ 	pcmd->rspsz = 0;\
+ } while (0)
  
- 	ret = r8712_select_and_join_from_scan(pmlmepriv);
--	if (ret == _SUCCESS) {
-+	if (!ret) {
- 		mod_timer(&pmlmepriv->assoc_timer,
- 			  jiffies + msecs_to_jiffies(MAX_JOIN_TIMEOUT));
- 	} else {
-diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl8712/rtl871x_mlme.c
-index f6ba3e865a30..b260c29ea4bd 100644
---- a/drivers/staging/rtl8712/rtl871x_mlme.c
-+++ b/drivers/staging/rtl8712/rtl871x_mlme.c
-@@ -548,8 +548,7 @@ void r8712_surveydone_event_callback(struct _adapter *adapter, u8 *pbuf)
- 			if (!check_fwstate(pmlmepriv, _FW_LINKED)) {
- 				set_fwstate(pmlmepriv, _FW_UNDER_LINKING);
- 
--				if (r8712_select_and_join_from_scan(pmlmepriv)
--				    == _SUCCESS) {
-+				if (!r8712_select_and_join_from_scan(pmlmepriv)) {
- 					mod_timer(&pmlmepriv->assoc_timer, jiffies +
- 						  msecs_to_jiffies(MAX_JOIN_TIMEOUT));
- 				} else {
-@@ -574,8 +573,7 @@ void r8712_surveydone_event_callback(struct _adapter *adapter, u8 *pbuf)
- 		} else {
- 			pmlmepriv->to_join = false;
- 			set_fwstate(pmlmepriv, _FW_UNDER_LINKING);
--			if (r8712_select_and_join_from_scan(pmlmepriv) ==
--			    _SUCCESS)
-+			if (!r8712_select_and_join_from_scan(pmlmepriv))
- 				mod_timer(&pmlmepriv->assoc_timer, jiffies +
- 					  msecs_to_jiffies(MAX_JOIN_TIMEOUT));
- 			else
-@@ -1106,7 +1104,7 @@ int r8712_select_and_join_from_scan(struct mlme_priv *pmlmepriv)
- 				pnetwork = pnetwork_max_rssi;
- 				goto ask_for_joinbss;
- 			}
--			return _FAIL;
-+			return -EINVAL;
- 		}
- 		pnetwork = container_of(pmlmepriv->pscanned,
- 					struct wlan_network, list);
-diff --git a/drivers/staging/rtl8712/rtl871x_mlme.h b/drivers/staging/rtl8712/rtl871x_mlme.h
-index 8a54181f4816..9e8343139414 100644
---- a/drivers/staging/rtl8712/rtl871x_mlme.h
-+++ b/drivers/staging/rtl8712/rtl871x_mlme.h
-@@ -172,7 +172,7 @@ void r8712_wpspbc_event_callback(struct _adapter *adapter, u8 *pbuf);
- void r8712_free_network_queue(struct _adapter *adapter);
- int r8712_init_mlme_priv(struct _adapter *adapter);
- void r8712_free_mlme_priv(struct mlme_priv *pmlmepriv);
--sint r8712_select_and_join_from_scan(struct mlme_priv *pmlmepriv);
-+int r8712_select_and_join_from_scan(struct mlme_priv *pmlmepriv);
- sint r8712_set_key(struct _adapter *adapter,
- 		   struct security_priv *psecuritypriv, sint keyid);
- sint r8712_set_auth(struct _adapter *adapter,
+-u32 r8712_enqueue_cmd(struct cmd_priv *pcmdpriv, struct cmd_obj *obj);
++void r8712_enqueue_cmd(struct cmd_priv *pcmdpriv, struct cmd_obj *obj);
+ u32 r8712_enqueue_cmd_ex(struct cmd_priv *pcmdpriv, struct cmd_obj *obj);
+ struct cmd_obj *r8712_dequeue_cmd(struct  __queue *queue);
+ void r8712_free_cmd_obj(struct cmd_obj *pcmd);
 -- 
 2.19.1
 
