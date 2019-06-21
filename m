@@ -1,81 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7C9B54F145
-	for <lists+driverdev-devel@lfdr.de>; Sat, 22 Jun 2019 01:45:43 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 319454F31A
+	for <lists+driverdev-devel@lfdr.de>; Sat, 22 Jun 2019 03:31:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EF317875A1;
-	Fri, 21 Jun 2019 23:45:40 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 645E48816B;
+	Sat, 22 Jun 2019 01:31:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fSe-QYRJrHqO; Fri, 21 Jun 2019 23:45:40 +0000 (UTC)
+	with ESMTP id YU7VsuF-1qzS; Sat, 22 Jun 2019 01:31:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B8B76875AE;
-	Fri, 21 Jun 2019 23:45:37 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D934388127;
+	Sat, 22 Jun 2019 01:31:54 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8A6CD1BF3F4
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 7D6DD1BF5DC
  for <driverdev-devel@linuxdriverproject.org>;
- Fri, 21 Jun 2019 23:45:35 +0000 (UTC)
+ Sat, 22 Jun 2019 01:31:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 786FE862C7
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7983687277
  for <driverdev-devel@linuxdriverproject.org>;
- Fri, 21 Jun 2019 23:45:35 +0000 (UTC)
+ Sat, 22 Jun 2019 01:31:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Gs75Tore9_SS
+ with ESMTP id sW-Xk4AbvGB8
  for <driverdev-devel@linuxdriverproject.org>;
- Fri, 21 Jun 2019 23:45:33 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from APC01-PU1-obe.outbound.protection.outlook.com
- (mail-eopbgr1320120.outbound.protection.outlook.com [40.107.132.120])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 330958629C
+ Sat, 22 Jun 2019 01:31:51 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from NAM03-BY2-obe.outbound.protection.outlook.com
+ (mail-eopbgr780113.outbound.protection.outlook.com [40.107.78.113])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 2C2B7870B3
  for <driverdev-devel@linuxdriverproject.org>;
- Fri, 21 Jun 2019 23:45:33 +0000 (UTC)
+ Sat, 22 Jun 2019 01:31:51 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=IjwrGg2s9Xkh6InlTVThd/VKU38hHLaw7JqrO9XGd2VMhHDrN2wWWkDELFdAxvzTio4SM8jg0rDrQ+2SQL0KT9mwK6nknY7oO/IGokm0P1Wr/d+7lzRwaF1kxn4dW3HOwEYY6B3ifVTSe0scsvzFzqYRbTkrUd/b6xj8V1CWOha4Eej8e4dW6qF/uCNAzyr2S5uQU4p4fy2VqWsjT7fbMEixR6ApyQkXRbVn2ODie5zoCoGNCSpxexj8+Zg81jEzLO9B1orXidS+NYX82ypMSAHD/5F9vOePJzCLP4ibKX+zm8373LrMK64ahe0BSPs3QYLo3pRxvycM6AFHxxsrLQ==
+ b=GVRurj1VE6bIlEYKh/9YUDDWUcO2xQO4XP13I1T0FXb4T/8f89xZpobD31PxZK9FeCsMGlNi0PMfE9Lgy0sOccXo0kvFxpxC18mY97HKnOItenEm7SBQScSJQywAR/aAk8rhizi6GCsZF9823n50FM7+wlGJYTTsrW67cAX/7spwRGNWVT+/Dty5XvQ+rMQ1K4bu0CvW/tixTn2ukfrl8xGHFTWL6g2CGrLmrtttIqalpDCeVX9Umn2S9xoOrsKtxkR37EBa6C2PndKq+jrcYTcnENrq8N7Ug6AxEp7hqMmntEWP5RDPt6Rd9KuNBuO/bxKbyU6PaFIO7jM4BXxwhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=V8CWWd7MC4BsydFkUj2lYF9hVLNH28nJybcBiGbdv2g=;
- b=lBhGWiXCVqVMB/wDU+6hY3D+zoCDVQuQ7E86CL3DC9VJhlea7NnsEbKOSt2uo5RBidFTkCwd9psE8OKQevpM4iLv7HZNHChxeVpZ3nUXWXD91FdJMwIJyR+IPmJy0Qk0bPxE/p/PTtahqC2CaeFfOtSRDCOatfIhqg8WfoAmlMeK8+Z0u4h7tZHxtTvS9m4AlMkDxWScnEqes2xrArEWEQaOhDPexslu2PlnFGpHBNrVduVSuVwKFnpyKpxpKMQ8rcAyrHZ9Xeq3rHQvA7eKH5SFuYUwHbCJbgMuyrlcR7JzLGFKKh7DqK2HGqgipLYddZnZzGe39zhs+3K9ZAncKQ==
+ bh=ixRMS1d82hbBKPn8wCLKDfizqvxiFmMGfWx1FYWcbzI=;
+ b=awXKCOKEHymMW46QqNnauLijq1vF++aoqwvoIRkYzbjhG8CKNcuSrJk//PFtf9tvnwOlTaShB8B6Elocd4HgPl3Z7sYON+n244pyiF/mJS45qDDypPpob+5OIogoHgXXWI3lJwxEPUuH62bLkzu1xH4ACObJl5YiuR/6ehMfRTLB5s4TzqudKVRWz3awT5Sj6folMK0r+zdP/JKQt6ITEGf5dO4eDTOTw7cOIif1sGc3bKnDj4KBhIz483S7H5yKgaorbZAtdfwoX29vxzrOCNr1BBxPUus4Gvyi50Viu/avrHVCPJostfWY8fHokA6i6TZ38LAaKBeupZxaDQOf6Q==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1;spf=pass
  smtp.mailfrom=microsoft.com;dmarc=pass action=none
  header.from=microsoft.com;dkim=pass header.d=microsoft.com;arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=V8CWWd7MC4BsydFkUj2lYF9hVLNH28nJybcBiGbdv2g=;
- b=dq4amyJMp9vVvWx2h3eaFGrl+9RWmIY/mHkm1uVxSfbjz23EjgwD85CwWjFDRboqeie35v2DBcn+XaC9kxpuRXPsWyxw459tcSnBYNqeHKeVsqWan2XLg/czJWMpu7VvLOCpKT/NvVEWObYKZHmr1xoJcGb4RHbIPW+ne2M7IZc=
-Received: from PU1P153MB0169.APCP153.PROD.OUTLOOK.COM (10.170.189.13) by
- PU1P153MB0154.APCP153.PROD.OUTLOOK.COM (10.170.189.10) with Microsoft SMTP
+ bh=ixRMS1d82hbBKPn8wCLKDfizqvxiFmMGfWx1FYWcbzI=;
+ b=WZgxs52NQtEVdmKbHBbvHSgHmdC1ccs+RU2g6owNxlj44VH87deg60ZZ4mQgKvIb7+DwSgH6jA7EftqqdWnds5WjxFq3LbivijZRvkwAO4ilg5uPOwsUf0wk2e9T8P4kH3cZysaPmUaRp0bv3LTKGgIpm0065DbZUT6RO5VKUdE=
+Received: from BYAPR21MB1352.namprd21.prod.outlook.com (20.179.60.214) by
+ BYAPR21MB1208.namprd21.prod.outlook.com (20.179.57.18) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2032.7; Fri, 21 Jun 2019 23:45:24 +0000
-Received: from PU1P153MB0169.APCP153.PROD.OUTLOOK.COM
- ([fe80::19b8:f479:a623:509b]) by PU1P153MB0169.APCP153.PROD.OUTLOOK.COM
- ([fe80::19b8:f479:a623:509b%5]) with mapi id 15.20.2032.008; Fri, 21 Jun 2019
- 23:45:24 +0000
-From: Dexuan Cui <decui@microsoft.com>
-To: "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, Lorenzo Pieralisi
- <lorenzo.pieralisi@arm.com>, "bhelgaas@google.com" <bhelgaas@google.com>, 
- Haiyang Zhang <haiyangz@microsoft.com>, KY Srinivasan <kys@microsoft.com>, 
- Stephen Hemminger <sthemmin@microsoft.com>, Sasha Levin
+ 15.20.2032.6; Fri, 21 Jun 2019 23:58:27 +0000
+Received: from BYAPR21MB1352.namprd21.prod.outlook.com
+ ([fe80::b52f:faf3:6bc6:32de]) by BYAPR21MB1352.namprd21.prod.outlook.com
+ ([fe80::b52f:faf3:6bc6:32de%5]) with mapi id 15.20.2032.005; Fri, 21 Jun 2019
+ 23:58:27 +0000
+From: Michael Kelley <mikelley@microsoft.com>
+To: Dexuan Cui <decui@microsoft.com>, "linux-pci@vger.kernel.org"
+ <linux-pci@vger.kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ "bhelgaas@google.com" <bhelgaas@google.com>, Haiyang Zhang
+ <haiyangz@microsoft.com>, KY Srinivasan <kys@microsoft.com>, Stephen
+ Hemminger <sthemmin@microsoft.com>, Sasha Levin
  <Alexander.Levin@microsoft.com>, "linux-hyperv@vger.kernel.org"
  <linux-hyperv@vger.kernel.org>, "olaf@aepfle.de" <olaf@aepfle.de>,
  "apw@canonical.com" <apw@canonical.com>, "jasowang@redhat.com"
  <jasowang@redhat.com>, vkuznets <vkuznets@redhat.com>,
- "marcelo.cerri@canonical.com" <marcelo.cerri@canonical.com>, Michael Kelley
- <mikelley@microsoft.com>
-Subject: [PATCH v2] PCI: hv: Fix a use-after-free bug in hv_eject_device_work()
+ "marcelo.cerri@canonical.com" <marcelo.cerri@canonical.com>
+Subject: RE: [PATCH v2] PCI: hv: Fix a use-after-free bug in
+ hv_eject_device_work()
 Thread-Topic: [PATCH v2] PCI: hv: Fix a use-after-free bug in
  hv_eject_device_work()
-Thread-Index: AdUoio+jbgfPCntMRSGnwgYrj5f2ww==
-Date: Fri, 21 Jun 2019 23:45:23 +0000
-Message-ID: <PU1P153MB0169D420EAB61757DF4B337FBFE70@PU1P153MB0169.APCP153.PROD.OUTLOOK.COM>
+Thread-Index: AdUoio+jbgfPCntMRSGnwgYrj5f2wwAAnXww
+Date: Fri, 21 Jun 2019 23:58:26 +0000
+Message-ID: <BYAPR21MB1352C5D60C33D9AAD204554FD7E70@BYAPR21MB1352.namprd21.prod.outlook.com>
+References: <PU1P153MB0169D420EAB61757DF4B337FBFE70@PU1P153MB0169.APCP153.PROD.OUTLOOK.COM>
+In-Reply-To: <PU1P153MB0169D420EAB61757DF4B337FBFE70@PU1P153MB0169.APCP153.PROD.OUTLOOK.COM>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -90,37 +93,37 @@ msip_labels: MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Enabled=True;
  MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_ActionId=19ebd965-88c8-4bcc-b3cf-e659d74e2b95;
  MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Extended_MSFT_Method=Automatic
 authentication-results: spf=none (sender IP is )
- smtp.mailfrom=decui@microsoft.com; 
-x-originating-ip: [2001:4898:80e8:1:3a2e:2bcf:5c00:8eef]
+ smtp.mailfrom=mikelley@microsoft.com; 
+x-originating-ip: [24.22.167.197]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: c0b9959c-c694-4013-b877-08d6f6a287a5
+x-ms-office365-filtering-correlation-id: 8ebb80ce-97d0-455c-c7e2-08d6f6a45a53
 x-ms-office365-filtering-ht: Tenant
 x-microsoft-antispam: BCL:0; PCL:0;
  RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:PU1P153MB0154; 
-x-ms-traffictypediagnostic: PU1P153MB0154:
+ SRVR:BYAPR21MB1208; 
+x-ms-traffictypediagnostic: BYAPR21MB1208:
 x-ld-processed: 72f988bf-86f1-41af-91ab-2d7cd011db47,ExtAddr
-x-microsoft-antispam-prvs: <PU1P153MB01540E3EA920FB20015859B7BFE70@PU1P153MB0154.APCP153.PROD.OUTLOOK.COM>
+x-microsoft-antispam-prvs: <BYAPR21MB1208B0DE7E93D98FCC908AF6D7E70@BYAPR21MB1208.namprd21.prod.outlook.com>
 x-ms-oob-tlc-oobclassifiers: OLM:813;
 x-forefront-prvs: 0075CB064E
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(376002)(346002)(396003)(136003)(366004)(39860400002)(189003)(199004)(66476007)(10090500001)(4326008)(76116006)(486006)(6436002)(9686003)(8990500004)(256004)(1511001)(186003)(55016002)(2906002)(33656002)(2501003)(102836004)(14444005)(6506007)(66556008)(86362001)(476003)(2201001)(64756008)(46003)(73956011)(66446008)(10290500003)(71190400001)(71200400001)(99286004)(25786009)(7696005)(66946007)(53936002)(81166006)(7416002)(8676002)(7736002)(81156014)(8936002)(110136005)(22452003)(74316002)(54906003)(316002)(6116002)(52536014)(14454004)(305945005)(5660300002)(478600001)(6636002)(68736007)(921003)(1121003);
- DIR:OUT; SFP:1102; SCL:1; SRVR:PU1P153MB0154;
- H:PU1P153MB0169.APCP153.PROD.OUTLOOK.COM; FPR:; SPF:None; LANG:en;
+ SFS:(10019020)(136003)(366004)(346002)(396003)(376002)(39860400002)(189003)(199004)(8936002)(6436002)(53936002)(74316002)(4326008)(229853002)(6506007)(14454004)(55016002)(22452003)(478600001)(71190400001)(186003)(7736002)(71200400001)(81166006)(33656002)(8676002)(110136005)(2201001)(316002)(5660300002)(81156014)(54906003)(9686003)(7696005)(68736007)(8990500004)(86362001)(10290500003)(10090500001)(99286004)(76176011)(64756008)(476003)(66476007)(25786009)(6246003)(66946007)(486006)(26005)(102836004)(6116002)(76116006)(305945005)(11346002)(2906002)(66446008)(3846002)(73956011)(66556008)(1511001)(14444005)(2501003)(446003)(256004)(7416002)(52536014)(66066001)(921003)(1121003);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR21MB1208;
+ H:BYAPR21MB1352.namprd21.prod.outlook.com; FPR:; SPF:None; LANG:en;
  PTR:InfoNoRecords; MX:1; A:1; 
 received-spf: None (protection.outlook.com: microsoft.com does not designate
  permitted sender hosts)
 x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: AJfZrJWfaXGjG0pGAE4ARG/bnVS5B7bBQT6YyVNNjyZO7chHKRYP50v1CkhFZohxeNUe9RNkibYyiGIQDB7Jut6HoDcxLp2ZvkZ9JO4U507biwU0bqSgNWGo/WwZX3ghHquTwND+rNmb8oprcm2Eej1ofnIfBDnx6J+1LiofU9lp6xsmEnro7V/HwS/2wDHeC0n/CGimSDwoCaWnvFPa/FqQbapPXXOWiJ3yt1QhvK7Hc1EF03R8cj24elmWs7b0wjWQsLbeFa9BYvksvRIBv+lYNoPIeJZvesQAyPuDyqb8oQWKop8b1+KKgxOn/caPvmh2lbNWeMc/ZT6+bYKEHy7T24MeH+892e17BvFWyPCCygD83FtZtUCfCIKgPI/ymTjvMsLl9nkdIVB+MVQmiWZXCwxS5/t2fSKYRiB1KEw=
+x-microsoft-antispam-message-info: FQmnkOIYPTE1kj3T23KQoq8en1tYA1HPuWcshfzf1yOrXuFZuXSiNmLSeTUUesl2FhkPTKKn6GZifwYbSPmgWK05n5vaQigJgInih1lEv66DjyvQ/357PFRrvbCSWX8g5ODPibhb745c0SgYtEvttUGzJqb2SBaSnXTDtGNCYcVci+Ugc2Kr5DlzeC0cTCvbv4afgUfF0m8Cp3WHioh22lQ6vijrTfI9H48Y9swm9X9cZS7f3geFXMIUTkG7zvkBVJDno6trZJ0veheeXaQCgd8tGmlCoB9h/EK9pdJEjC26hPyLLCk1wGu3WiVl5GGAN1CoT9RMHhJ3g9y2gV/Ir1QTgtCWRvU25smR37cHVOjJDdXACE2I93CZX4tZvecagD05XwCh9W0qs4/35mBiUZumZ/vvdESQkwROfh+GmQo=
 MIME-Version: 1.0
 X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c0b9959c-c694-4013-b877-08d6f6a287a5
-X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Jun 2019 23:45:23.5656 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8ebb80ce-97d0-455c-c7e2-08d6f6a45a53
+X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Jun 2019 23:58:26.8892 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: decui@microsoft.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PU1P153MB0154
+X-MS-Exchange-CrossTenant-userprincipalname: mikelley@ntdev.microsoft.com
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR21MB1208
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -142,87 +145,92 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+From: Dexuan Cui <decui@microsoft.com> Sent: Friday, June 21, 2019 4:45 PM
+> 
+> The commit 05f151a73ec2 itself is correct, but it exposes this
+> use-after-free bug, which is caught by some memory debug options.
+> 
+> Add a Fixes tag to indicate the dependency.
+> 
+> Fixes: 05f151a73ec2 ("PCI: hv: Fix a memory leak in hv_eject_device_work()")
+> Signed-off-by: Dexuan Cui <decui@microsoft.com>
+> Cc: stable@vger.kernel.org
+> ---
+> 
+> In v2:
+> Replaced "hpdev->hbus" with "hbus", since we have the new "hbus" variable. [Michael
+> Kelley]
+> 
+>  drivers/pci/controller/pci-hyperv.c | 15 +++++++++------
+>  1 file changed, 9 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/pci/controller/pci-hyperv.c b/drivers/pci/controller/pci-hyperv.c
+> index 808a182830e5..5dadc964ad3b 100644
+> --- a/drivers/pci/controller/pci-hyperv.c
+> +++ b/drivers/pci/controller/pci-hyperv.c
+> @@ -1880,6 +1880,7 @@ static void hv_pci_devices_present(struct hv_pcibus_device
+> *hbus,
+>  static void hv_eject_device_work(struct work_struct *work)
+>  {
+>  	struct pci_eject_response *ejct_pkt;
+> +	struct hv_pcibus_device *hbus;
+>  	struct hv_pci_dev *hpdev;
+>  	struct pci_dev *pdev;
+>  	unsigned long flags;
+> @@ -1890,6 +1891,7 @@ static void hv_eject_device_work(struct work_struct *work)
+>  	} ctxt;
+> 
+>  	hpdev = container_of(work, struct hv_pci_dev, wrk);
+> +	hbus = hpdev->hbus;
+> 
+>  	WARN_ON(hpdev->state != hv_pcichild_ejecting);
+> 
+> @@ -1900,8 +1902,7 @@ static void hv_eject_device_work(struct work_struct *work)
+>  	 * because hbus->pci_bus may not exist yet.
+>  	 */
+>  	wslot = wslot_to_devfn(hpdev->desc.win_slot.slot);
+> -	pdev = pci_get_domain_bus_and_slot(hpdev->hbus->sysdata.domain, 0,
+> -					   wslot);
+> +	pdev = pci_get_domain_bus_and_slot(hbus->sysdata.domain, 0, wslot);
+>  	if (pdev) {
+>  		pci_lock_rescan_remove();
+>  		pci_stop_and_remove_bus_device(pdev);
+> @@ -1909,9 +1910,9 @@ static void hv_eject_device_work(struct work_struct *work)
+>  		pci_unlock_rescan_remove();
+>  	}
+> 
+> -	spin_lock_irqsave(&hpdev->hbus->device_list_lock, flags);
+> +	spin_lock_irqsave(&hbus->device_list_lock, flags);
+>  	list_del(&hpdev->list_entry);
+> -	spin_unlock_irqrestore(&hpdev->hbus->device_list_lock, flags);
+> +	spin_unlock_irqrestore(&hbus->device_list_lock, flags);
+> 
+>  	if (hpdev->pci_slot)
+>  		pci_destroy_slot(hpdev->pci_slot);
+> @@ -1920,7 +1921,7 @@ static void hv_eject_device_work(struct work_struct *work)
+>  	ejct_pkt = (struct pci_eject_response *)&ctxt.pkt.message;
+>  	ejct_pkt->message_type.type = PCI_EJECTION_COMPLETE;
+>  	ejct_pkt->wslot.slot = hpdev->desc.win_slot.slot;
+> -	vmbus_sendpacket(hpdev->hbus->hdev->channel, ejct_pkt,
+> +	vmbus_sendpacket(hbus->hdev->channel, ejct_pkt,
+>  			 sizeof(*ejct_pkt), (unsigned long)&ctxt.pkt,
+>  			 VM_PKT_DATA_INBAND, 0);
+> 
+> @@ -1929,7 +1930,9 @@ static void hv_eject_device_work(struct work_struct *work)
+>  	/* For the two refs got in new_pcichild_device() */
+>  	put_pcichild(hpdev);
+>  	put_pcichild(hpdev);
+> -	put_hvpcibus(hpdev->hbus);
+> +	/* hpdev has been freed. Do not use it any more. */
+> +
+> +	put_hvpcibus(hbus);
+>  }
+> 
+>  /**
+> --
+> 2.17.1
 
-The commit 05f151a73ec2 itself is correct, but it exposes this
-use-after-free bug, which is caught by some memory debug options.
-
-Add a Fixes tag to indicate the dependency.
-
-Fixes: 05f151a73ec2 ("PCI: hv: Fix a memory leak in hv_eject_device_work()")
-Signed-off-by: Dexuan Cui <decui@microsoft.com>
-Cc: stable@vger.kernel.org
----
-
-In v2:
-Replaced "hpdev->hbus" with "hbus", since we have the new "hbus" variable. [Michael Kelley]
-
- drivers/pci/controller/pci-hyperv.c | 15 +++++++++------
- 1 file changed, 9 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/pci/controller/pci-hyperv.c b/drivers/pci/controller/pci-hyperv.c
-index 808a182830e5..5dadc964ad3b 100644
---- a/drivers/pci/controller/pci-hyperv.c
-+++ b/drivers/pci/controller/pci-hyperv.c
-@@ -1880,6 +1880,7 @@ static void hv_pci_devices_present(struct hv_pcibus_device *hbus,
- static void hv_eject_device_work(struct work_struct *work)
- {
- 	struct pci_eject_response *ejct_pkt;
-+	struct hv_pcibus_device *hbus;
- 	struct hv_pci_dev *hpdev;
- 	struct pci_dev *pdev;
- 	unsigned long flags;
-@@ -1890,6 +1891,7 @@ static void hv_eject_device_work(struct work_struct *work)
- 	} ctxt;
- 
- 	hpdev = container_of(work, struct hv_pci_dev, wrk);
-+	hbus = hpdev->hbus;
- 
- 	WARN_ON(hpdev->state != hv_pcichild_ejecting);
- 
-@@ -1900,8 +1902,7 @@ static void hv_eject_device_work(struct work_struct *work)
- 	 * because hbus->pci_bus may not exist yet.
- 	 */
- 	wslot = wslot_to_devfn(hpdev->desc.win_slot.slot);
--	pdev = pci_get_domain_bus_and_slot(hpdev->hbus->sysdata.domain, 0,
--					   wslot);
-+	pdev = pci_get_domain_bus_and_slot(hbus->sysdata.domain, 0, wslot);
- 	if (pdev) {
- 		pci_lock_rescan_remove();
- 		pci_stop_and_remove_bus_device(pdev);
-@@ -1909,9 +1910,9 @@ static void hv_eject_device_work(struct work_struct *work)
- 		pci_unlock_rescan_remove();
- 	}
- 
--	spin_lock_irqsave(&hpdev->hbus->device_list_lock, flags);
-+	spin_lock_irqsave(&hbus->device_list_lock, flags);
- 	list_del(&hpdev->list_entry);
--	spin_unlock_irqrestore(&hpdev->hbus->device_list_lock, flags);
-+	spin_unlock_irqrestore(&hbus->device_list_lock, flags);
- 
- 	if (hpdev->pci_slot)
- 		pci_destroy_slot(hpdev->pci_slot);
-@@ -1920,7 +1921,7 @@ static void hv_eject_device_work(struct work_struct *work)
- 	ejct_pkt = (struct pci_eject_response *)&ctxt.pkt.message;
- 	ejct_pkt->message_type.type = PCI_EJECTION_COMPLETE;
- 	ejct_pkt->wslot.slot = hpdev->desc.win_slot.slot;
--	vmbus_sendpacket(hpdev->hbus->hdev->channel, ejct_pkt,
-+	vmbus_sendpacket(hbus->hdev->channel, ejct_pkt,
- 			 sizeof(*ejct_pkt), (unsigned long)&ctxt.pkt,
- 			 VM_PKT_DATA_INBAND, 0);
- 
-@@ -1929,7 +1930,9 @@ static void hv_eject_device_work(struct work_struct *work)
- 	/* For the two refs got in new_pcichild_device() */
- 	put_pcichild(hpdev);
- 	put_pcichild(hpdev);
--	put_hvpcibus(hpdev->hbus);
-+	/* hpdev has been freed. Do not use it any more. */
-+
-+	put_hvpcibus(hbus);
- }
- 
- /**
--- 
-2.17.1
+Reviewed-by: Michael Kelley <mikelley@microsoft.com>
 
 _______________________________________________
 devel mailing list
