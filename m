@@ -1,78 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B9AD74E090
-	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Jun 2019 08:40:13 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id F32F44E0B8
+	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Jun 2019 09:00:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DA4E987F44;
-	Fri, 21 Jun 2019 06:40:11 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B671486E69;
+	Fri, 21 Jun 2019 07:00:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qKsZbfXpefqZ; Fri, 21 Jun 2019 06:40:11 +0000 (UTC)
+	with ESMTP id HXsBDlUm4vRx; Fri, 21 Jun 2019 07:00:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 68E9787EC4;
-	Fri, 21 Jun 2019 06:40:11 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 817E586E32;
+	Fri, 21 Jun 2019 07:00:43 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id BE2E61BF2C8
- for <devel@linuxdriverproject.org>; Fri, 21 Jun 2019 06:40:08 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8C9AA1BF2C8
+ for <devel@linuxdriverproject.org>; Fri, 21 Jun 2019 07:00:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BBC4087EC5
- for <devel@linuxdriverproject.org>; Fri, 21 Jun 2019 06:40:08 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 89C2C87ED0
+ for <devel@linuxdriverproject.org>; Fri, 21 Jun 2019 07:00:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wjPpXFnqtTBk for <devel@linuxdriverproject.org>;
- Fri, 21 Jun 2019 06:40:08 +0000 (UTC)
+ with ESMTP id cxg+anZcUA13 for <devel@linuxdriverproject.org>;
+ Fri, 21 Jun 2019 07:00:41 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
- [209.85.214.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4DD9787EC4
- for <devel@driverdev.osuosl.org>; Fri, 21 Jun 2019 06:40:08 +0000 (UTC)
-Received: by mail-pl1-f195.google.com with SMTP id e5so2484955pls.13
- for <devel@driverdev.osuosl.org>; Thu, 20 Jun 2019 23:40:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=/1SimtDPI1dJLadUf0NpQzlpwGxTOlWps829IULnfiw=;
- b=gh0qaAbzRY/dSltwDrlfc4KjwgwWVj4oqeHdjR0QjJP+qpJToPmMTJ7rBjpE5VGlJL
- 3gRZ8QrYDD2Tq3ssQbW5WY0ahTD1jn9mpmjiXTuavJbRHE7KICsc7Kfz/LT88Q7Y5HKn
- pHdE4urJbTGNpIzTCUY/EvrDGFqy/VEW/q5KyxW6j3ykgMGBeix8gqTypDMIM7A3SDJH
- CfKFFS/yl7VpvqtZwLZF+SvUS2uvQOoSaCswXtlifuK9c1GQBsrHPrspOYb45gn18+jg
- xOVeWKpXyM5TBypadtLcU/xofUVWjC78/8PXe9iliOMih8bwqwMs13ctNGCmeZV2I0cv
- PYKg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=/1SimtDPI1dJLadUf0NpQzlpwGxTOlWps829IULnfiw=;
- b=XFXom4W/RnO+6SRBkPqG0SOzr1HEpViMj639jgoY7XnntOF+cN+F1afobdv9yqUnvM
- /E1euHhtim+e6ORKAFgO51B05Gv5cTTuXown5ID8GWv57F//Q8tye5s7sdv7eHFr76AQ
- nsbuaKVR2RGhbS+0j9ZWVaRvEd/fL6y3cTSPeZ0bs57QaPgabVWUHanMZ9h6IN362MKz
- PvKMklAr2f9NhpuvcurvQKwmj0YpYiLtHX66j1gDaCF4bpvqtba3VxYoOipgoUFhEpVs
- SM+70Ibw6jA/Shdm05x29ndsAyvrBAsgLgOSpF2ZD5FKdUtHRQxaLyDGCKClDsn7QzWL
- bNPg==
-X-Gm-Message-State: APjAAAV6PcCdt5Wz59DxEkCCrc5JJQNlGO3Iv1GXu/pyqt3KOd0R6Vbx
- pTJV5zuRWBEs+64uehX1AXey0KOWFUACOw==
-X-Google-Smtp-Source: APXvYqxnim4Yjzcfqh8Yo9BHZVI7KFkWIx8u0OHYiZ4zLF0NCdI1SdEhz8/HUcCKMjYManxzIWjICg==
-X-Received: by 2002:a17:902:8546:: with SMTP id
- d6mr118697326plo.207.1561099207849; 
- Thu, 20 Jun 2019 23:40:07 -0700 (PDT)
-Received: from AHMCPU1978.einfochips.com ([219.65.62.52])
- by smtp.gmail.com with ESMTPSA id i14sm2327103pfk.0.2019.06.20.23.40.04
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Thu, 20 Jun 2019 23:40:07 -0700 (PDT)
-From: Aliasgar Surti <aliasgar.surti500@gmail.com>
-X-Google-Original-From: Aliasgar Surti
-To: mchehab@kernel.org, gregkh@linuxfoundation.org,
- sakari.ailus@linux.intel.com, hverkuil-cisco@xs4all.nl,
- linux-media@vger.kernel.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH 1/1] staging: media: fix style problem
-Date: Fri, 21 Jun 2019 12:09:52 +0530
-Message-Id: <1561099192-19638-1-git-send-email-aliasgar.surti500@gmail.com>
-X-Mailer: git-send-email 2.7.4
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 30A6287D9C
+ for <devel@driverdev.osuosl.org>; Fri, 21 Jun 2019 07:00:41 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 83D682083B;
+ Fri, 21 Jun 2019 07:00:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1561100441;
+ bh=zClx4AqHl0gMIQrc/v1hyIHp40/LhtEQJ7h/y0NBjzw=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=wcmgNr6TnwvVuGRCXjGPEUoRO/6QLS6GBHc9NchMjTxgY6Ribxum5iIMRDNOVuBd0
+ SeB9SdOdletFA5JbexgMIdmgP6KG1ANWR16iMEQAgDNEP6RQdWMZhscBYUqsZV/4nu
+ sL+KjsZTxxeoMzDFX+PyacDvswzBQMb0TdTckrCg=
+Date: Fri, 21 Jun 2019 09:00:38 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: YueHaibing <yuehaibing@huawei.com>
+Subject: Re: [PATCH] staging: ks7010: Fix build error
+Message-ID: <20190621070038.GA3029@kroah.com>
+References: <20190621034221.36708-1-yuehaibing@huawei.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190621034221.36708-1-yuehaibing@huawei.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,50 +66,48 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Aliasgar Surti <aliasgar.surti500@gmail.com>
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Aliasgar Surti <aliasgar.surti500@gmail.com>
+On Fri, Jun 21, 2019 at 11:42:21AM +0800, YueHaibing wrote:
+> when CRYPTO is m and KS7010 is y, building fails:
+> 
+> drivers/staging/ks7010/ks_hostif.o: In function `michael_mic.constprop.13':
+> ks_hostif.c:(.text+0x560): undefined reference to `crypto_alloc_shash'
+> ks_hostif.c:(.text+0x580): undefined reference to `crypto_shash_setkey'
+> ks_hostif.c:(.text+0x5e0): undefined reference to `crypto_destroy_tfm'
+> ks_hostif.c:(.text+0x614): undefined reference to `crypto_shash_update'
+> ks_hostif.c:(.text+0x62c): undefined reference to `crypto_shash_update'
+> ks_hostif.c:(.text+0x648): undefined reference to `crypto_shash_finup'
+> 
+> select CRYPTO and CRYPTO_HASH to fix this.
+> 
+> Reported-by: Hulk Robot <hulkci@huawei.com>
+> Fixes: 8b523f20417d ("staging: ks7010: removed custom Michael MIC implementation.")
+> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+> ---
+>  drivers/staging/ks7010/Kconfig | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/drivers/staging/ks7010/Kconfig b/drivers/staging/ks7010/Kconfig
+> index 0987fdc..6a20e64 100644
+> --- a/drivers/staging/ks7010/Kconfig
+> +++ b/drivers/staging/ks7010/Kconfig
+> @@ -5,6 +5,8 @@ config KS7010
+>  	select WIRELESS_EXT
+>  	select WEXT_PRIV
+>  	select FW_LOADER
+> +	select CRYPTO
+> +	select CRYPTO_HASH
 
-checkpatch reported "WARNING: line over 80 characters".
-This patch fixes the warning for file soc_camera/soc_ov5642.c
+selects are horrible.  can we do a depends on instead?
 
-Signed-off-by: Aliasgar Surti <aliasgar.surti500@gmail.com>
----
- drivers/staging/media/soc_camera/soc_ov5642.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+thanks,
 
-diff --git a/drivers/staging/media/soc_camera/soc_ov5642.c b/drivers/staging/media/soc_camera/soc_ov5642.c
-index 94696d7..39ae24dc 100644
---- a/drivers/staging/media/soc_camera/soc_ov5642.c
-+++ b/drivers/staging/media/soc_camera/soc_ov5642.c
-@@ -687,7 +687,8 @@ static int reg_write16(struct i2c_client *client, u16 reg, u16 val16)
- }
- 
- #ifdef CONFIG_VIDEO_ADV_DEBUG
--static int ov5642_get_register(struct v4l2_subdev *sd, struct v4l2_dbg_register *reg)
-+static int ov5642_get_register(struct v4l2_subdev *sd,
-+			       struct v4l2_dbg_register *reg)
- {
- 	struct i2c_client *client = v4l2_get_subdevdata(sd);
- 	int ret;
-@@ -705,7 +706,8 @@ static int ov5642_get_register(struct v4l2_subdev *sd, struct v4l2_dbg_register
- 	return ret;
- }
- 
--static int ov5642_set_register(struct v4l2_subdev *sd, const struct v4l2_dbg_register *reg)
-+static int ov5642_set_register(struct v4l2_subdev *sd,
-+			       const struct v4l2_dbg_register *reg)
- {
- 	struct i2c_client *client = v4l2_get_subdevdata(sd);
- 
--- 
-2.7.4
-
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
