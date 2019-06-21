@@ -1,55 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5641B4E174
-	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Jun 2019 09:57:42 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 81B9D4E192
+	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Jun 2019 10:05:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2B729204BC;
-	Fri, 21 Jun 2019 07:57:40 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BFCDA87F5D;
+	Fri, 21 Jun 2019 08:05:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UT1+lLA7yJ0E; Fri, 21 Jun 2019 07:57:39 +0000 (UTC)
+	with ESMTP id T7A60A24uuzy; Fri, 21 Jun 2019 08:05:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 6867A2049D;
-	Fri, 21 Jun 2019 07:57:38 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2A9A684F76;
+	Fri, 21 Jun 2019 08:05:05 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 91ADC1BF41A
- for <devel@linuxdriverproject.org>; Fri, 21 Jun 2019 07:57:36 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id F334B1BF5DF
+ for <devel@linuxdriverproject.org>; Fri, 21 Jun 2019 08:05:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8ED34866BD
- for <devel@linuxdriverproject.org>; Fri, 21 Jun 2019 07:57:36 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id DBFA58362C
+ for <devel@linuxdriverproject.org>; Fri, 21 Jun 2019 08:05:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EiOyUpuwATBv for <devel@linuxdriverproject.org>;
- Fri, 21 Jun 2019 07:57:35 +0000 (UTC)
+ with ESMTP id wQmPbjYbwzeR for <devel@linuxdriverproject.org>;
+ Fri, 21 Jun 2019 08:05:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
- by whitealder.osuosl.org (Postfix) with ESMTPS id AE1F68669A
- for <devel@driverdev.osuosl.org>; Fri, 21 Jun 2019 07:57:35 +0000 (UTC)
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 0A874EE5D04EAB5D6FD2;
- Fri, 21 Jun 2019 15:57:32 +0800 (CST)
+Received: from huawei.com (szxga05-in.huawei.com [45.249.212.191])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id BAA79835C4
+ for <devel@driverdev.osuosl.org>; Fri, 21 Jun 2019 08:05:00 +0000 (UTC)
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 2D1A0B333FA117BA7165;
+ Fri, 21 Jun 2019 16:04:57 +0800 (CST)
 Received: from [10.134.22.195] (10.134.22.195) by smtp.huawei.com
- (10.3.19.203) with Microsoft SMTP Server (TLS) id 14.3.439.0; Fri, 21 Jun
- 2019 15:57:25 +0800
-Subject: Re: [PATCH v2 3/8] staging: erofs: move per-CPU buffers
- implementation to utils.c
+ (10.3.19.209) with Microsoft SMTP Server (TLS) id 14.3.439.0; Fri, 21 Jun
+ 2019 16:04:48 +0800
+Subject: Re: [PATCH v2 4/8] staging: erofs: move stagingpage operations to
+ compress.h
 To: Gao Xiang <gaoxiang25@huawei.com>, Greg Kroah-Hartman
  <gregkh@linuxfoundation.org>
 References: <20190620160719.240682-1-gaoxiang25@huawei.com>
- <20190620160719.240682-4-gaoxiang25@huawei.com>
+ <20190620160719.240682-5-gaoxiang25@huawei.com>
 From: Chao Yu <yuchao0@huawei.com>
-Message-ID: <1d296b86-69e2-4888-2ac9-1d77f38ac3e3@huawei.com>
-Date: Fri, 21 Jun 2019 15:57:23 +0800
+Message-ID: <b1e06903-98de-42a8-8736-bd20293fce5a@huawei.com>
+Date: Fri, 21 Jun 2019 16:04:47 +0800
 User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
  Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20190620160719.240682-4-gaoxiang25@huawei.com>
+In-Reply-To: <20190620160719.240682-5-gaoxiang25@huawei.com>
 Content-Language: en-US
 X-Originating-IP: [10.134.22.195]
 X-CFilter-Loop: Reflected
@@ -75,17 +75,13 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 On 2019/6/21 0:07, Gao Xiang wrote:
-> +static inline void *erofs_get_pcpubuf(unsigned int pagenr)
-> +{
-> +	return ERR_PTR(-ENOTSUPP);
-> +}
+> stagingpages are behaved as bounce pages for temporary use.
+> Move to compress.h since the upcoming decompressor will
+> allocate stagingpages as well.
+> 
+> Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
 
-[snip]
-
-> +	percpu_data = erofs_get_pcpubuf(0);
-
-If erofs_get_pcpubuf may return error once EROFS_PCPUBUF_NR_PAGES equals to
-zero, we'd better to check the error number here.
+Reviewed-by: Chao Yu <yuchao0@huawei.com>
 
 Thanks,
 _______________________________________________
