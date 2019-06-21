@@ -1,77 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7B7BF4E048
-	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Jun 2019 08:08:49 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C54E54E049
+	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Jun 2019 08:08:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7A28387F34;
-	Fri, 21 Jun 2019 06:08:47 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7392E82146;
+	Fri, 21 Jun 2019 06:08:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VflseSWpcaxy; Fri, 21 Jun 2019 06:08:47 +0000 (UTC)
+	with ESMTP id YjQ29odp5PBU; Fri, 21 Jun 2019 06:08:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 89ED587ED1;
-	Fri, 21 Jun 2019 06:08:42 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2D8CF80114;
+	Fri, 21 Jun 2019 06:08:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D553F1BF2C8
- for <devel@linuxdriverproject.org>; Fri, 21 Jun 2019 06:08:38 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6D3451BF2C8
+ for <devel@linuxdriverproject.org>; Fri, 21 Jun 2019 06:08:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id CDC1B86151
- for <devel@linuxdriverproject.org>; Fri, 21 Jun 2019 06:08:38 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 6A93787ED2
+ for <devel@linuxdriverproject.org>; Fri, 21 Jun 2019 06:08:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bK5IQjm5Ukc4 for <devel@linuxdriverproject.org>;
- Fri, 21 Jun 2019 06:08:37 +0000 (UTC)
+ with ESMTP id lefX7tNHxCya for <devel@linuxdriverproject.org>;
+ Fri, 21 Jun 2019 06:08:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
- [209.85.214.194])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 89F2386148
- for <devel@driverdev.osuosl.org>; Fri, 21 Jun 2019 06:08:37 +0000 (UTC)
-Received: by mail-pl1-f194.google.com with SMTP id b7so2465505pls.6
- for <devel@driverdev.osuosl.org>; Thu, 20 Jun 2019 23:08:37 -0700 (PDT)
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8A91F87EAD
+ for <devel@driverdev.osuosl.org>; Fri, 21 Jun 2019 06:08:40 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id p184so3012404pfp.7
+ for <devel@driverdev.osuosl.org>; Thu, 20 Jun 2019 23:08:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=z/5Hq2C+qJ8Iy2G1z0rl7YBrU6gZQuvrY8fl3v7k9XE=;
- b=fg49JHIsJG8PmI5wjnXO2+UR5zn5vZZeY2pPrSGGy8rwvGvD/TPsAYm9829ibIM2aW
- wSeRP2U8DjMMVeD6vkcVyivcvyA68wak0zb3zHM2w9HyilS946bYOZPpa542lewhXtPq
- IjXffLTLaEEIAvf5ubyVEUOxdOg1oFoZGjIjxQHp8eqyFAil0p9QvOtruxsRFEOZWy+f
- 0sT6xwo6iSDoY6/l1743ZZfU3shZxDMVI2xoK+zNH7qckurn/rRLWSFqdHTLx8xXLdSi
- dp6ZpQr7kib1ufTw7jiZbzLKKfoFA1C5tBn5+N9sJNADL8SEmrM+oqXyQhBj1hrzJUv5
- 05gg==
+ bh=bZtV6XZfiVsLVpk3oSLcq30cx9sr60/BQNlAHNorGdA=;
+ b=JGHisjf8NoMJgjx3SeAHbhNCxnB9267a/7ZuGgY4AqzCyr7Hbz7E7zwDepRWeleYH4
+ KecdtjQPMJKEtC7oiRXi8hv+3ssDSc/PHSoPFFH0Dig13dcXS3efaOWu6PNUsqJtoHX9
+ eUysOKqAWLLBbfxfbqOXF4pyrpJMR6q1cPn99YfrDybgEZO7qEs8fp3zVnZD7LQpND0z
+ kHP2fnFBK9JNI0yGiLqp4B+aLuGjjOKlHDGnwgZRoKme2ZskdvnylQfvwgFQmUqLM4rE
+ eEvSOGw7U0d5Omfgp2QC58zJ+/LULVIR8w+QXBChYK6hA1zpL3MmKswuckNfLcrJw1hl
+ zZFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=z/5Hq2C+qJ8Iy2G1z0rl7YBrU6gZQuvrY8fl3v7k9XE=;
- b=ud/61zHMipbZILS8UvcCpBOE/YCgLwZveUB1SgqZx2AqlkaBZJVbwyzDwwO/ckXX+l
- aTMaHJwMkDmbZrIEh/6N2qmy6LEla5Sbj5+YL5lMDGsuGGGJv3F0lalmEk6SJc8ObeAS
- Qc/u2IFbGf9cUpUmARbq+oOVC8ZUmoG8uSwg0maeZXZS1RBXbVfJV+Df624LssA1Bzzv
- ntVEKJXGII7R+oJB5T4oUMnn55SjeRmdhaNnPYAC3pWRU9Ng5eD4/Ygcw+BgHXoTDTBt
- /TjVsajLS3gi3kRrhGpWfKbUKwm+L1tITinrt6xZsThrFtlktGsM96mG5jg5nGu7Va6K
- dxVQ==
-X-Gm-Message-State: APjAAAWPPrH7GoWSONc6Ml/L4fPyZtsMBVef2ZSr8LRVYoLZ3cguIymj
- gOyoQVEmP4KrmLmzgthmTYM=
-X-Google-Smtp-Source: APXvYqxB7wsZfX6SN7MsECuyJ7V4xYgPxZ0WGpGuWVIKs6dYPUcnRQVITuPTVeLascPxSbg87Wt3Bw==
-X-Received: by 2002:a17:902:2868:: with SMTP id
- e95mr13687110plb.319.1561097317257; 
- Thu, 20 Jun 2019 23:08:37 -0700 (PDT)
+ bh=bZtV6XZfiVsLVpk3oSLcq30cx9sr60/BQNlAHNorGdA=;
+ b=fo4iZxry3B1Xha/gZddytZAB4MdydIYLgCygpuFvlPa+cw+c5LW5uO0c2fUHzSTZQN
+ XJAfmuOOiraLZZS69+qtmlDBw5pg7hWvGmXoteby+RFjf54eq9KS76VDbu6Nl3nXLz3d
+ juNZoxpg3126rnJkARKPBwPA/cfT/ib21/37pJx91wnT2gGqDj9Kf0OxjpWQU3FLjrwk
+ qzCeEQ585rO8zmc0QFUx0nHvncCxxPyF8pchPQIfHYgY6alHnVPu61nB9WUiqnCMA+j4
+ pqTioIPnoCvw0lvv6HgykrapRAEK1YQ/83tzsPHcFZKF3V5XOu0gUuUIKN5fbi8U8QvQ
+ gurg==
+X-Gm-Message-State: APjAAAXXtkr2zzi1KCu5IXF8zZoh1HP06m4usUk9cgcNZ2Q7q6X3AnER
+ uSRXhH3cecCiA/uWU8rIiJ4=
+X-Google-Smtp-Source: APXvYqyrjb3cqFWXs58ipmYig3qrbv5/z5ky1e/puU3nTxTxvfbE4flzjgZKy1Ru2XfOPlyrbZd07w==
+X-Received: by 2002:a63:490b:: with SMTP id w11mr16562563pga.127.1561097320167; 
+ Thu, 20 Jun 2019 23:08:40 -0700 (PDT)
 Received: from localhost.localdomain ([122.163.71.137])
- by smtp.gmail.com with ESMTPSA id j23sm1479203pgb.63.2019.06.20.23.08.35
+ by smtp.gmail.com with ESMTPSA id j23sm1479203pgb.63.2019.06.20.23.08.38
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Thu, 20 Jun 2019 23:08:36 -0700 (PDT)
+ Thu, 20 Jun 2019 23:08:39 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: larry.finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
  gregkh@linuxfoundation.org, devel@driverdev.osuosl.org
-Subject: [PATCH 02/10] staging: rtl8712: r8712_disconnectCtrlEx_cmd(): Change
- return type
-Date: Fri, 21 Jun 2019 11:38:08 +0530
-Message-Id: <20190621060816.2030-2-nishkadg.linux@gmail.com>
+Subject: [PATCH 03/10] staging: rtl8712: r8712_wdg_wk_cmd(): Change return type
+Date: Fri, 21 Jun 2019 11:38:09 +0530
+Message-Id: <20190621060816.2030-3-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190621060816.2030-1-nishkadg.linux@gmail.com>
 References: <20190621060816.2030-1-nishkadg.linux@gmail.com>
@@ -94,9 +92,9 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change return type of function r8712_disconnectCtrlEx_cmd from u8 to
-void as its return value is never stored, checked or otherwise used.
-Modify its return statements accordingly.
+Change return type of function r8712_wdg_wk_cmd from u8 to void as its
+return value is never stored, checked or otherwise used. Modify its
+return statements accordingly.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
@@ -105,51 +103,52 @@ Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
  2 files changed, 4 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/staging/rtl8712/rtl871x_cmd.c b/drivers/staging/rtl8712/rtl871x_cmd.c
-index 8d110cc23b9a..516047a074d6 100644
+index 516047a074d6..163eadba789c 100644
 --- a/drivers/staging/rtl8712/rtl871x_cmd.c
 +++ b/drivers/staging/rtl8712/rtl871x_cmd.c
-@@ -935,7 +935,7 @@ void r8712_setassocsta_cmdrsp_callback(struct _adapter *padapter,
- 	r8712_free_cmd_obj(pcmd);
+@@ -759,7 +759,7 @@ void r8712_addbareq_cmd(struct _adapter *padapter, u8 tid)
+ 	r8712_enqueue_cmd_ex(pcmdpriv, ph2c);
  }
  
--u8 r8712_disconnectCtrlEx_cmd(struct _adapter *adapter, u32 enableDrvCtrl,
-+void r8712_disconnectCtrlEx_cmd(struct _adapter *adapter, u32 enableDrvCtrl,
- 			u32 tryPktCnt, u32 tryPktInterval, u32 firstStageTO)
+-u8 r8712_wdg_wk_cmd(struct _adapter *padapter)
++void r8712_wdg_wk_cmd(struct _adapter *padapter)
  {
  	struct cmd_obj *ph2c;
-@@ -944,11 +944,11 @@ u8 r8712_disconnectCtrlEx_cmd(struct _adapter *adapter, u32 enableDrvCtrl,
+ 	struct drvint_cmd_parm  *pdrvintcmd_param;
+@@ -767,18 +767,17 @@ u8 r8712_wdg_wk_cmd(struct _adapter *padapter)
  
  	ph2c = kmalloc(sizeof(*ph2c), GFP_ATOMIC);
  	if (!ph2c)
 -		return _FAIL;
 +		return;
- 	param = kzalloc(sizeof(*param), GFP_ATOMIC);
- 	if (!param) {
+ 	pdrvintcmd_param = kmalloc(sizeof(*pdrvintcmd_param), GFP_ATOMIC);
+ 	if (!pdrvintcmd_param) {
  		kfree(ph2c);
 -		return _FAIL;
 +		return;
  	}
- 
- 	param->EnableDrvCtrl = (unsigned char)enableDrvCtrl;
-@@ -959,5 +959,4 @@ u8 r8712_disconnectCtrlEx_cmd(struct _adapter *adapter, u32 enableDrvCtrl,
- 	init_h2fwcmd_w_parm_no_rsp(ph2c, param,
- 				GEN_CMD_CODE(_DisconnectCtrlEx));
- 	r8712_enqueue_cmd(pcmdpriv, ph2c);
+ 	pdrvintcmd_param->i_cid = WDG_WK_CID;
+ 	pdrvintcmd_param->sz = 0;
+ 	pdrvintcmd_param->pbuf = NULL;
+ 	init_h2fwcmd_w_parm_no_rsp(ph2c, pdrvintcmd_param, _DRV_INT_CMD_);
+ 	r8712_enqueue_cmd_ex(pcmdpriv, ph2c);
 -	return _SUCCESS;
  }
+ 
+ void r8712_survey_cmd_callback(struct _adapter *padapter, struct cmd_obj *pcmd)
 diff --git a/drivers/staging/rtl8712/rtl871x_cmd.h b/drivers/staging/rtl8712/rtl871x_cmd.h
-index 8448dd05fa4c..2aa50e6f1297 100644
+index 2aa50e6f1297..5d0a8568003f 100644
 --- a/drivers/staging/rtl8712/rtl871x_cmd.h
 +++ b/drivers/staging/rtl8712/rtl871x_cmd.h
-@@ -747,7 +747,7 @@ void r8712_setstaKey_cmdrsp_callback(struct _adapter  *padapter,
- 				     struct cmd_obj *pcmd);
- void r8712_setassocsta_cmdrsp_callback(struct _adapter  *padapter,
- 				       struct cmd_obj *pcmd);
--u8 r8712_disconnectCtrlEx_cmd(struct _adapter *adapter, u32 enableDrvCtrl,
-+void r8712_disconnectCtrlEx_cmd(struct _adapter *adapter, u32 enableDrvCtrl,
- 			u32 tryPktCnt, u32 tryPktInterval, u32 firstStageTO);
- 
- struct _cmd_callback {
+@@ -730,7 +730,7 @@ u8 r8712_setrttbl_cmd(struct _adapter  *padapter,
+ u8 r8712_setfwdig_cmd(struct _adapter *padapter, u8 type);
+ u8 r8712_setfwra_cmd(struct _adapter *padapter, u8 type);
+ void r8712_addbareq_cmd(struct _adapter *padapter, u8 tid);
+-u8 r8712_wdg_wk_cmd(struct _adapter *padapter);
++void r8712_wdg_wk_cmd(struct _adapter *padapter);
+ void r8712_survey_cmd_callback(struct _adapter  *padapter,
+ 			       struct cmd_obj *pcmd);
+ void r8712_disassoc_cmd_callback(struct _adapter  *padapter,
 -- 
 2.19.1
 
