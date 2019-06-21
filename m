@@ -1,51 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1C65E4DF58
-	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Jun 2019 05:42:46 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 69ED94E046
+	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Jun 2019 08:08:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 15EDD87EE6;
-	Fri, 21 Jun 2019 03:42:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 54951203EE;
+	Fri, 21 Jun 2019 06:08:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ofhfmKzb-4Jz; Fri, 21 Jun 2019 03:42:43 +0000 (UTC)
+	with ESMTP id p1bHnMqRC3K7; Fri, 21 Jun 2019 06:08:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 94F2487EB5;
-	Fri, 21 Jun 2019 03:42:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B86F920032;
+	Fri, 21 Jun 2019 06:08:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 985D81BF2CA
- for <devel@linuxdriverproject.org>; Fri, 21 Jun 2019 03:42:41 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B60751BF2C8
+ for <devel@linuxdriverproject.org>; Fri, 21 Jun 2019 06:08:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9321987EB5
- for <devel@linuxdriverproject.org>; Fri, 21 Jun 2019 03:42:41 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id AB6072010E
+ for <devel@linuxdriverproject.org>; Fri, 21 Jun 2019 06:08:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dOFmXEa6m9eJ for <devel@linuxdriverproject.org>;
- Fri, 21 Jun 2019 03:42:40 +0000 (UTC)
+ with ESMTP id WfEfrslFlJHh for <devel@linuxdriverproject.org>;
+ Fri, 21 Jun 2019 06:08:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 26A8687EAE
- for <devel@driverdev.osuosl.org>; Fri, 21 Jun 2019 03:42:39 +0000 (UTC)
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 851351D891CC0D8F197D;
- Fri, 21 Jun 2019 11:42:36 +0800 (CST)
-Received: from localhost (10.133.213.239) by DGGEMS402-HUB.china.huawei.com
- (10.3.19.202) with Microsoft SMTP Server id 14.3.439.0; Fri, 21 Jun 2019
- 11:42:28 +0800
-From: YueHaibing <yuehaibing@huawei.com>
-To: <gregkh@linuxfoundation.org>, <jeremy@azazel.net>
-Subject: [PATCH] staging: ks7010: Fix build error
-Date: Fri, 21 Jun 2019 11:42:21 +0800
-Message-ID: <20190621034221.36708-1-yuehaibing@huawei.com>
-X-Mailer: git-send-email 2.10.2.windows.1
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id 1170520032
+ for <devel@driverdev.osuosl.org>; Fri, 21 Jun 2019 06:08:35 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id d126so3025189pfd.2
+ for <devel@driverdev.osuosl.org>; Thu, 20 Jun 2019 23:08:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=cADPe0NdTA8WbGNwc+sX4mFLPWUXdJzCnFbydowBDzE=;
+ b=lBFD173AVISi2nxULHlPtkt3kIotMk6EX9F044amybxBqzf5V1bP/2vvl0Hlnq4Lu8
+ v637R8N0NrHd2XpgVojgDQgBHY9uwMxTk9CfHOrGwgTuodF0VZzoVzYVE1VN7zgw2pHj
+ JLDFnbHCd10iJc9LeoCR5Te8lus5e38XPyJogpQ74Zz2JBtlTz5WSP0LUfodSwfeSpJS
+ i+7IeqrJGMGDCqBvBZSuOhY3uYETeU8KyzD6wU53OWBLekCP5NHTdzeTSfjtLy4g0v2v
+ G+NN8ENiRCFi2m5T1GD4s2y7h2szy5cSYueZObNmNK9qv5gx99U2Vfvw7KiTW9XNBxmZ
+ BFPQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=cADPe0NdTA8WbGNwc+sX4mFLPWUXdJzCnFbydowBDzE=;
+ b=VFwv/+srMy7I6MrCd8Yaig9agX2iHdKbSkrZTZZHql9EEx6ioOIdhHcZjM14b1wYqq
+ 4wOegF+Sraiu8RcN4RuAgXOGT4ShCoNO+ma0ZdW1Oo4xzGPajZUZZF+3r0hGwxE4Xsau
+ U6s40u4V28EYEeISpkYr7ZA0+vN5DcMJuZjtg1gGM1Ns6Lm1Xk+jyPHxNQMZdiML/AD4
+ 7OmXWvExD9VA8FX/neYo625bX9KdisW4KHhxG+rcCPvo+uejLMnokpC3HN1HMk/7mMjh
+ dXCF2VBlm+kSvYShsoQ3mDgupUZdRl9JosZcknvNKNeDdA3CLp3a2sYpM5oBYyJCAw63
+ sDHQ==
+X-Gm-Message-State: APjAAAWBP/3v9+gy5xL1izpuVTL5fF1ka8evfwolkgbTDX7T/TViIwZ0
+ nImVQJmJreKlkgpu2EuuowQ=
+X-Google-Smtp-Source: APXvYqwDgqqEuz6UaLQxB0PkVHsVwE3PPbJuTMdUC4RmFLKO+4J+FFaHGAwlpLbHDs6QFbk+TefRoQ==
+X-Received: by 2002:a17:90a:8a91:: with SMTP id
+ x17mr4260265pjn.95.1561097314651; 
+ Thu, 20 Jun 2019 23:08:34 -0700 (PDT)
+Received: from localhost.localdomain ([122.163.71.137])
+ by smtp.gmail.com with ESMTPSA id j23sm1479203pgb.63.2019.06.20.23.08.32
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Thu, 20 Jun 2019 23:08:34 -0700 (PDT)
+From: Nishka Dasgupta <nishkadg.linux@gmail.com>
+To: larry.finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
+ gregkh@linuxfoundation.org, devel@driverdev.osuosl.org
+Subject: [PATCH 01/10] staging: rtl8712: r8712_addbareq_cmd(): Change return
+ type
+Date: Fri, 21 Jun 2019 11:38:07 +0530
+Message-Id: <20190621060816.2030-1-nishkadg.linux@gmail.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-X-Originating-IP: [10.133.213.239]
-X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,48 +86,70 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, YueHaibing <yuehaibing@huawei.com>,
- linux-kernel@vger.kernel.org
+Cc: Nishka Dasgupta <nishkadg.linux@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-when CRYPTO is m and KS7010 is y, building fails:
+Change return type of the function r8712_addbareq_cmd from u8 to void as
+its return value is not stored, checked or otherwise used. Also modify
+its return statements accordingly.
 
-drivers/staging/ks7010/ks_hostif.o: In function `michael_mic.constprop.13':
-ks_hostif.c:(.text+0x560): undefined reference to `crypto_alloc_shash'
-ks_hostif.c:(.text+0x580): undefined reference to `crypto_shash_setkey'
-ks_hostif.c:(.text+0x5e0): undefined reference to `crypto_destroy_tfm'
-ks_hostif.c:(.text+0x614): undefined reference to `crypto_shash_update'
-ks_hostif.c:(.text+0x62c): undefined reference to `crypto_shash_update'
-ks_hostif.c:(.text+0x648): undefined reference to `crypto_shash_finup'
-
-select CRYPTO and CRYPTO_HASH to fix this.
-
-Reported-by: Hulk Robot <hulkci@huawei.com>
-Fixes: 8b523f20417d ("staging: ks7010: removed custom Michael MIC implementation.")
-Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/ks7010/Kconfig | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/staging/rtl8712/rtl871x_cmd.c | 7 +++----
+ drivers/staging/rtl8712/rtl871x_cmd.h | 2 +-
+ 2 files changed, 4 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/staging/ks7010/Kconfig b/drivers/staging/ks7010/Kconfig
-index 0987fdc..6a20e64 100644
---- a/drivers/staging/ks7010/Kconfig
-+++ b/drivers/staging/ks7010/Kconfig
-@@ -5,6 +5,8 @@ config KS7010
- 	select WIRELESS_EXT
- 	select WEXT_PRIV
- 	select FW_LOADER
-+	select CRYPTO
-+	select CRYPTO_HASH
- 	help
- 	  This is a driver for KeyStream KS7010 based SDIO WIFI cards. It is
- 	  found on at least later Spectec SDW-821 (FCC-ID "S2Y-WLAN-11G-K" only,
+diff --git a/drivers/staging/rtl8712/rtl871x_cmd.c b/drivers/staging/rtl8712/rtl871x_cmd.c
+index cc55fa5bd494..8d110cc23b9a 100644
+--- a/drivers/staging/rtl8712/rtl871x_cmd.c
++++ b/drivers/staging/rtl8712/rtl871x_cmd.c
+@@ -739,7 +739,7 @@ u8 r8712_setassocsta_cmd(struct _adapter *padapter, u8 *mac_addr)
+ 	return _SUCCESS;
+ }
+ 
+-u8 r8712_addbareq_cmd(struct _adapter *padapter, u8 tid)
++void r8712_addbareq_cmd(struct _adapter *padapter, u8 tid)
+ {
+ 	struct cmd_priv		*pcmdpriv = &padapter->cmdpriv;
+ 	struct cmd_obj		*ph2c;
+@@ -747,17 +747,16 @@ u8 r8712_addbareq_cmd(struct _adapter *padapter, u8 tid)
+ 
+ 	ph2c = kmalloc(sizeof(*ph2c), GFP_ATOMIC);
+ 	if (!ph2c)
+-		return _FAIL;
++		return;
+ 	paddbareq_parm = kmalloc(sizeof(*paddbareq_parm), GFP_ATOMIC);
+ 	if (!paddbareq_parm) {
+ 		kfree(ph2c);
+-		return _FAIL;
++		return;
+ 	}
+ 	paddbareq_parm->tid = tid;
+ 	init_h2fwcmd_w_parm_no_rsp(ph2c, paddbareq_parm,
+ 				   GEN_CMD_CODE(_AddBAReq));
+ 	r8712_enqueue_cmd_ex(pcmdpriv, ph2c);
+-	return _SUCCESS;
+ }
+ 
+ u8 r8712_wdg_wk_cmd(struct _adapter *padapter)
+diff --git a/drivers/staging/rtl8712/rtl871x_cmd.h b/drivers/staging/rtl8712/rtl871x_cmd.h
+index d9aab41c0299..8448dd05fa4c 100644
+--- a/drivers/staging/rtl8712/rtl871x_cmd.h
++++ b/drivers/staging/rtl8712/rtl871x_cmd.h
+@@ -729,7 +729,7 @@ u8 r8712_setrttbl_cmd(struct _adapter  *padapter,
+ 		      struct setratable_parm *prate_table);
+ u8 r8712_setfwdig_cmd(struct _adapter *padapter, u8 type);
+ u8 r8712_setfwra_cmd(struct _adapter *padapter, u8 type);
+-u8 r8712_addbareq_cmd(struct _adapter *padapter, u8 tid);
++void r8712_addbareq_cmd(struct _adapter *padapter, u8 tid);
+ u8 r8712_wdg_wk_cmd(struct _adapter *padapter);
+ void r8712_survey_cmd_callback(struct _adapter  *padapter,
+ 			       struct cmd_obj *pcmd);
 -- 
-2.7.4
-
+2.19.1
 
 _______________________________________________
 devel mailing list
