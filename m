@@ -1,51 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED0DE4F3D5
-	for <lists+driverdev-devel@lfdr.de>; Sat, 22 Jun 2019 07:17:25 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0B31E4F3D6
+	for <lists+driverdev-devel@lfdr.de>; Sat, 22 Jun 2019 07:17:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id B0575226D0;
-	Sat, 22 Jun 2019 05:17:23 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DA63E875CD;
+	Sat, 22 Jun 2019 05:17:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZQoyISlmWB0F; Sat, 22 Jun 2019 05:17:23 +0000 (UTC)
+	with ESMTP id FgLJ-6qOXaHX; Sat, 22 Jun 2019 05:17:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 96BFF20420;
-	Sat, 22 Jun 2019 05:17:22 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 75026875BA;
+	Sat, 22 Jun 2019 05:17:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 936021BF5B4
- for <devel@linuxdriverproject.org>; Sat, 22 Jun 2019 05:17:20 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id CA9711BF5B4
+ for <devel@linuxdriverproject.org>; Sat, 22 Jun 2019 05:17:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 8E63488035
- for <devel@linuxdriverproject.org>; Sat, 22 Jun 2019 05:17:20 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C5197875BA
+ for <devel@linuxdriverproject.org>; Sat, 22 Jun 2019 05:17:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oH3si5zpjIF3 for <devel@linuxdriverproject.org>;
- Sat, 22 Jun 2019 05:17:17 +0000 (UTC)
+ with ESMTP id zOUN8Qjza6Sn for <devel@linuxdriverproject.org>;
+ Sat, 22 Jun 2019 05:17:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from EX13-EDG-OU-002.vmware.com (ex13-edg-ou-002.vmware.com
  [208.91.0.190])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 354E787B41
- for <devel@driverdev.osuosl.org>; Sat, 22 Jun 2019 05:17:17 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3DAFD875B6
+ for <devel@driverdev.osuosl.org>; Sat, 22 Jun 2019 05:17:37 +0000 (UTC)
 Received: from sc9-mailhost3.vmware.com (10.113.161.73) by
  EX13-EDG-OU-002.vmware.com (10.113.208.156) with Microsoft SMTP Server id
- 15.0.1156.6; Fri, 21 Jun 2019 22:02:11 -0700
+ 15.0.1156.6; Fri, 21 Jun 2019 22:02:27 -0700
 Received: from akaher-lnx-dev.eng.vmware.com (unknown [10.110.19.203])
- by sc9-mailhost3.vmware.com (Postfix) with ESMTP id 07D5C416DE;
- Fri, 21 Jun 2019 22:02:08 -0700 (PDT)
+ by sc9-mailhost3.vmware.com (Postfix) with ESMTP id 3C55341723;
+ Fri, 21 Jun 2019 22:02:25 -0700 (PDT)
 From: Ajay Kaher <akaher@vmware.com>
 To: <aarcange@redhat.com>, <jannh@google.com>, <oleg@redhat.com>,
  <peterx@redhat.com>, <rppt@linux.ibm.com>, <jgg@mellanox.com>,
  <mhocko@suse.com>
-Subject: [PATCH v3 2/2][v4.9.y] coredump: fix race condition between
+Subject: [PATCH v3 0/2] [v4.9.y] coredump: fix race condition between
  mmget_not_zero()/get_task_mm() and core dumping
-Date: Sat, 22 Jun 2019 18:32:18 +0530
-Message-ID: <1561208539-29682-2-git-send-email-akaher@vmware.com>
+Date: Sat, 22 Jun 2019 18:32:19 +0530
+Message-ID: <1561208539-29682-3-git-send-email-akaher@vmware.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1561208539-29682-1-git-send-email-akaher@vmware.com>
 References: <1561208539-29682-1-git-send-email-akaher@vmware.com>
@@ -77,67 +77,20 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch is the extension of following upstream commit to fix
-the race condition between get_task_mm() and core dumping
-for IB->mlx4 and IB->mlx5 drivers:
+coredump: fix race condition between mmget_not_zero()/get_task_mm()
+and core dumping
 
-commit 04f5866e41fb ("coredump: fix race condition between
-mmget_not_zero()/get_task_mm() and core dumping")'
+[PATCH v3 1/2]:
+Backporting of commit 04f5866e41fb70690e28397487d8bd8eea7d712a upstream.
 
-Thanks to Jason for pointing this.
+[PATCH v3 2/2]:
+Extension of commit 04f5866e41fb to fix the race condition between
+get_task_mm() and core dumping for IB->mlx4 and IB->mlx5 drivers.
 
-Signed-off-by: Ajay Kaher <akaher@vmware.com>
----
- drivers/infiniband/hw/mlx4/main.c | 4 +++-
- drivers/infiniband/hw/mlx5/main.c | 3 +++
- 2 files changed, 6 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/infiniband/hw/mlx4/main.c b/drivers/infiniband/hw/mlx4/main.c
-index 8d59a59..7ccf722 100644
---- a/drivers/infiniband/hw/mlx4/main.c
-+++ b/drivers/infiniband/hw/mlx4/main.c
-@@ -1172,6 +1172,8 @@ static void mlx4_ib_disassociate_ucontext(struct ib_ucontext *ibcontext)
- 	 * mlx4_ib_vma_close().
- 	 */
- 	down_write(&owning_mm->mmap_sem);
-+	if (!mmget_still_valid(owning_mm))
-+		goto skip_mm;
- 	for (i = 0; i < HW_BAR_COUNT; i++) {
- 		vma = context->hw_bar_info[i].vma;
- 		if (!vma)
-@@ -1190,7 +1192,7 @@ static void mlx4_ib_disassociate_ucontext(struct ib_ucontext *ibcontext)
- 		/* context going to be destroyed, should not access ops any more */
- 		context->hw_bar_info[i].vma->vm_ops = NULL;
- 	}
--
-+skip_mm:
- 	up_write(&owning_mm->mmap_sem);
- 	mmput(owning_mm);
- 	put_task_struct(owning_process);
-diff --git a/drivers/infiniband/hw/mlx5/main.c b/drivers/infiniband/hw/mlx5/main.c
-index b1daf5c..f94df0e 100644
---- a/drivers/infiniband/hw/mlx5/main.c
-+++ b/drivers/infiniband/hw/mlx5/main.c
-@@ -1307,6 +1307,8 @@ static void mlx5_ib_disassociate_ucontext(struct ib_ucontext *ibcontext)
- 	 * mlx5_ib_vma_close.
- 	 */
- 	down_write(&owning_mm->mmap_sem);
-+	if (!mmget_still_valid(owning_mm))
-+		goto skip_mm;
- 	list_for_each_entry_safe(vma_private, n, &context->vma_private_list,
- 				 list) {
- 		vma = vma_private->vma;
-@@ -1321,6 +1323,7 @@ static void mlx5_ib_disassociate_ucontext(struct ib_ucontext *ibcontext)
- 		list_del(&vma_private->list);
- 		kfree(vma_private);
- 	}
-+skip_mm:
- 	up_write(&owning_mm->mmap_sem);
- 	mmput(owning_mm);
- 	put_task_struct(owning_process);
--- 
-2.7.4
-
+[diff from v2]:
+- moved mmget_still_valid to mm.h in [PATCH v3 1/2]
+- added binder.c changes in [PATCH v3 1/2]
+- added [PATCH v3 2/2]
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
