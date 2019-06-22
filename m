@@ -1,77 +1,86 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BA5A54F71C
-	for <lists+driverdev-devel@lfdr.de>; Sat, 22 Jun 2019 18:41:13 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 39FB54F720
+	for <lists+driverdev-devel@lfdr.de>; Sat, 22 Jun 2019 18:41:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F0A3D85E43;
-	Sat, 22 Jun 2019 16:41:11 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 13EF5203AF;
+	Sat, 22 Jun 2019 16:41:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+X-Amavis-Alert: BAD HEADER SECTION, Duplicate header field: "References"
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id a_1BDVlCMI86; Sat, 22 Jun 2019 16:41:11 +0000 (UTC)
+	with ESMTP id GGRMfY1KygZB; Sat, 22 Jun 2019 16:41:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 90A2385A5A;
-	Sat, 22 Jun 2019 16:41:10 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7CA6320351;
+	Sat, 22 Jun 2019 16:41:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 826911BF2FF
- for <devel@linuxdriverproject.org>; Sat, 22 Jun 2019 16:41:08 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id CA98A1BF2FF
+ for <devel@linuxdriverproject.org>; Sat, 22 Jun 2019 16:41:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7F62885B0A
- for <devel@linuxdriverproject.org>; Sat, 22 Jun 2019 16:41:08 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C02D685582
+ for <devel@linuxdriverproject.org>; Sat, 22 Jun 2019 16:41:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+X-Amavis-Alert: BAD HEADER SECTION, Duplicate header field: "References"
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7FisatvLWzWO for <devel@linuxdriverproject.org>;
- Sat, 22 Jun 2019 16:41:08 +0000 (UTC)
+ with ESMTP id PQHs8JaDF+q0 for <devel@linuxdriverproject.org>;
+ Sat, 22 Jun 2019 16:41:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
- [209.85.210.195])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 0392385A5A
- for <devel@driverdev.osuosl.org>; Sat, 22 Jun 2019 16:41:08 +0000 (UTC)
-Received: by mail-pf1-f195.google.com with SMTP id t16so5118476pfe.11
- for <devel@driverdev.osuosl.org>; Sat, 22 Jun 2019 09:41:07 -0700 (PDT)
+Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
+ [209.85.215.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 26AC685514
+ for <devel@driverdev.osuosl.org>; Sat, 22 Jun 2019 16:41:13 +0000 (UTC)
+Received: by mail-pg1-f195.google.com with SMTP id n2so4814825pgp.11
+ for <devel@driverdev.osuosl.org>; Sat, 22 Jun 2019 09:41:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=lJepOsaA8mamkEWBgZFhhdkuq2on+kd/GU1u/vUh49o=;
- b=mu6JU6JFyAZ+TREz1RN+V2t/T29Se0Wd3A1zzBwUuz58G1ldV8WJwhZfVlHdinhcaO
- UDBvQ1ffTp03sRnblV0fkphEGljhoxjU6FZ0FCHAjvDMpEVzgNX+w8fRNU40z9CCScP5
- Iew8fyLOpawIpuYh3MxDJ5Klk++x7BxbTSaTe0zKXtIu9vrPR8yhiU/dmnz5JPIvP3lH
- pou0yILYMCKlaa3ARWYNDTQXmp6zcEi4mR2jAftIG5KR9z0OgARdbBTR/hk8l1Zjd+Nj
- fWYCMRQoiLOSJn0ooyT4h/W+63z2xHsqjSfMvxQocd7QkDuCQJsssmvhVQkntK63iKFX
- qA5Q==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :in-reply-to:references;
+ bh=N2gUTBH2OR+uI9TRPkHXeFtmpRrFd2HrYT6sxFxzjjQ=;
+ b=bfB7oRUFXtZsHa5PVNf3HNIRwgW8jty71EWcLeS4wmGBsIloCzimZQWFxSVP7XpWbG
+ 8fGLftWFbl5uLX4FmfAysjw4TDPnLN7PYR0IeAaou29nmXXDKeXd6iC4kIktuiOjTfL9
+ iWjDMZsc3h0npHOHyvAdgsd+q3uLLLSDgtWbLa5nj1Zwfzo8BYfi0iqTozfB/KR/uqqH
+ GH+fcbDgtl3McGk17FSSBNlbCoJcJjs4yLKLb5cQGIZaduZ0LGGwGjfZoC4M+H4rVfQa
+ oSsY8vMNB88HyieTPGlyvvun/WjOJGfuzzZ7pi0xaiFLAsjqQvZTXP/17WTb1Dqm+6yy
+ n/6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=lJepOsaA8mamkEWBgZFhhdkuq2on+kd/GU1u/vUh49o=;
- b=UmVITteI7k57V3AKGnnKnQwYd7tEjZKR4ViQocV7o+m4G6yJGzResbkdj4loNq/081
- dAYscCoatpTaJytQ4LzP4IpK4aPLVRkfJ0WNsMR5xmYC54n5NgPxZ6109s09yDq7Oi86
- tvAVY1eDZNRc2KpE8p2JOMeSQX1MWRzJoTVlwA5MqS53dsR1ZrBkS/3dtF/WJngwTJkD
- Z9yXHNJsdiInF/SJsWDa08JPzRwbLZwwpigcVTwm66vlpIhRJ7kOFF9hBA4xGcsCKgya
- wpioys5ZV67JjtVa5XD/a50d2SImbN99lzrXNpizLBcCIQykmr9PDlotKNlrB+DaNH4L
- rNxw==
-X-Gm-Message-State: APjAAAWTq9d3/eAesfPNDV62ORhf9DVMOogpi2vglXrSGktketfpEGBC
- Eq7y0Cd92LwE0SG55wMXEPA=
-X-Google-Smtp-Source: APXvYqxY6WZ9J1wmcavq39bA3G5zySVTK0kZEz5Lo/CRKStdyZfu7ty3tpwEmnhUkzQWpy5LBlFE1g==
-X-Received: by 2002:a17:90a:21ac:: with SMTP id
- q41mr14205717pjc.31.1561221667593; 
- Sat, 22 Jun 2019 09:41:07 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:in-reply-to:references;
+ bh=N2gUTBH2OR+uI9TRPkHXeFtmpRrFd2HrYT6sxFxzjjQ=;
+ b=CyP5XhxhwI+HNPmO9jajc3d9DMyKTUXitau5tU+DN9s+gdAPLrUyYfKY3QRvi3Ex1M
+ 3gRyQYqLAEvgbH9O8cvVKVCGG4xEMIj1NFIOqQDHnVzZYl5PbTuZf9blw72V/ZqWHxO6
+ 1eI5bCIU/SHyHBroQ5bsiC/Vt7dP3RXwlb8owNgVx6rzk9u7Q0wEnoHeD+CK7jIRT9gw
+ IoLo1sNh4DkcIGvnF0bX+FonPvDuYmmrcP04JBq7rIcu/F7dDREbvaa4CMIrq3AkTc/N
+ UMMEb8x/Yo5S+KddupaQj3B6jyswBn+4A8Sc/8t0t3m7Zzi6g+TLXfwJ4FY7dD7CPzUq
+ btMQ==
+X-Gm-Message-State: APjAAAVWFI47bgY+GWIpldYgyJvhn56OV3pF3TUSe4nAr6MKPs4srejV
+ 65TJEMFmlpz79jYCrQ1JgXQ=
+X-Google-Smtp-Source: APXvYqwVOhx+YvbiAK8mJ4RJDN1YY63VDT6GCjyE4W2X2ICbbF9g70cPpKWyfOQdMw7w4OEjQv1FNg==
+X-Received: by 2002:a17:90a:ac13:: with SMTP id
+ o19mr13914783pjq.143.1561221672736; 
+ Sat, 22 Jun 2019 09:41:12 -0700 (PDT)
 Received: from localhost.localdomain (c-98-210-58-162.hsd1.ca.comcast.net.
  [98.210.58.162])
- by smtp.gmail.com with ESMTPSA id u5sm5809161pgp.19.2019.06.22.09.41.06
+ by smtp.gmail.com with ESMTPSA id u5sm5809161pgp.19.2019.06.22.09.41.11
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Sat, 22 Jun 2019 09:41:06 -0700 (PDT)
+ Sat, 22 Jun 2019 09:41:12 -0700 (PDT)
 From: Shobhit Kukreti <shobhitkukreti@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Bastien Nocera <hadess@hadess.net>, Hans de Goede <hdegoede@redhat.com>,
  Larry Finger <Larry.Finger@lwfinger.net>
-Subject: [PATCH 0/3] Change function return type to void
-Date: Sat, 22 Jun 2019 09:40:39 -0700
-Message-Id: <cover.1561220637.git.shobhitkukreti@gmail.com>
+Subject: [PATCH 1/3] staging: rtl8723bs: os_dep: Change return type of
+ function rtw_suspend_normal() to void
+Date: Sat, 22 Jun 2019 09:40:40 -0700
+Message-Id: <f7486ee2092699ffb20a7cee298050e41bb7b5f6.1561220637.git.shobhitkukreti@gmail.com>
 X-Mailer: git-send-email 2.7.4
+In-Reply-To: <cover.1561220637.git.shobhitkukreti@gmail.com>
+References: <cover.1561220637.git.shobhitkukreti@gmail.com>
+In-Reply-To: <cover.1561220637.git.shobhitkukreti@gmail.com>
+References: <cover.1561220637.git.shobhitkukreti@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,33 +101,40 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patchset modifies function return types to void.
-The return values of the function are never checked and 
-they always return success.
-This resolves coccicheck Unneeded variable warnings.
+Coccicheck issues Unneeded variable "ret" warning.
+The return value of function rtw_suspend_normal() is set to _SUCCESS.
+The return value is never never checked by the calling function.
+Modified return type to void to remove the coccicheck warning..
 
-PATCH[1/3]: This patch changes return type of rtw_suspend_normal() to 
-void
+Signed-off-by: Shobhit Kukreti <shobhitkukreti@gmail.com>
+---
+ drivers/staging/rtl8723bs/os_dep/os_intfs.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-PATCH[2/3]: This patch changes return type of rtw_suspend_wow() to 
-void 
-
-PATCH[3/3]: This patch changes return type of rtw_init_default_value to 
-void
-
-
-Shobhit Kukreti (3):
-  staging: rtl8723bs: os_dep: Change return type of function    
-    rtw_suspend_normal() to void
-  staging: rtl8723bs: os_dep: modified return type of function    
-    rtw_suspend_wow() to void
-  staging: rtl8723bs: os_dep: Change return type of    
-    rtw_init_default_value() to void
-
- drivers/staging/rtl8723bs/include/drv_types.h |  2 +-
- drivers/staging/rtl8723bs/os_dep/os_intfs.c   | 14 ++++----------
- 2 files changed, 5 insertions(+), 11 deletions(-)
-
+diff --git a/drivers/staging/rtl8723bs/os_dep/os_intfs.c b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
+index 8a9d838..e1e871e 100644
+--- a/drivers/staging/rtl8723bs/os_dep/os_intfs.c
++++ b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
+@@ -1422,10 +1422,9 @@ int rtw_suspend_ap_wow(struct adapter *padapter)
+ #endif /* ifdef CONFIG_AP_WOWLAN */
+ 
+ 
+-static int rtw_suspend_normal(struct adapter *padapter)
++static void rtw_suspend_normal(struct adapter *padapter)
+ {
+ 	struct net_device *pnetdev = padapter->pnetdev;
+-	int ret = _SUCCESS;
+ 
+ 	DBG_871X("==> " FUNC_ADPT_FMT " entry....\n", FUNC_ADPT_ARG(padapter));
+ 	if (pnetdev) {
+@@ -1447,7 +1446,6 @@ static int rtw_suspend_normal(struct adapter *padapter)
+ 		padapter->intf_deinit(adapter_to_dvobj(padapter));
+ 
+ 	DBG_871X("<== " FUNC_ADPT_FMT " exit....\n", FUNC_ADPT_ARG(padapter));
+-	return ret;
+ }
+ 
+ int rtw_suspend_common(struct adapter *padapter)
 -- 
 2.7.4
 
