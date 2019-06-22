@@ -1,76 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BEBBB4F66C
-	for <lists+driverdev-devel@lfdr.de>; Sat, 22 Jun 2019 17:15:03 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 11C774F66D
+	for <lists+driverdev-devel@lfdr.de>; Sat, 22 Jun 2019 17:15:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 75F2B84C78;
-	Sat, 22 Jun 2019 15:15:01 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 23AE98768C;
+	Sat, 22 Jun 2019 15:15:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0moZwEXVDXHX; Sat, 22 Jun 2019 15:15:00 +0000 (UTC)
+	with ESMTP id HPTY3s5VszES; Sat, 22 Jun 2019 15:15:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F05F683F31;
-	Sat, 22 Jun 2019 15:14:59 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D17DA875DC;
+	Sat, 22 Jun 2019 15:15:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EE9FF1BF301
- for <devel@linuxdriverproject.org>; Sat, 22 Jun 2019 15:14:58 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B2B7B1BF301
+ for <devel@linuxdriverproject.org>; Sat, 22 Jun 2019 15:14:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id EB9D487A2F
- for <devel@linuxdriverproject.org>; Sat, 22 Jun 2019 15:14:58 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id AF8E087A2F
+ for <devel@linuxdriverproject.org>; Sat, 22 Jun 2019 15:14:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0r0DxaxfO844 for <devel@linuxdriverproject.org>;
- Sat, 22 Jun 2019 15:14:58 +0000 (UTC)
+ with ESMTP id xbLNRAW6xQj1 for <devel@linuxdriverproject.org>;
+ Sat, 22 Jun 2019 15:14:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
- [209.85.221.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3689387924
- for <devel@driverdev.osuosl.org>; Sat, 22 Jun 2019 15:14:58 +0000 (UTC)
-Received: by mail-wr1-f65.google.com with SMTP id r16so9301442wrl.11
- for <devel@driverdev.osuosl.org>; Sat, 22 Jun 2019 08:14:58 -0700 (PDT)
+Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
+ [209.85.221.66])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 170A787924
+ for <devel@driverdev.osuosl.org>; Sat, 22 Jun 2019 15:14:59 +0000 (UTC)
+Received: by mail-wr1-f66.google.com with SMTP id k11so9368144wrl.1
+ for <devel@driverdev.osuosl.org>; Sat, 22 Jun 2019 08:14:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Hlltdd819Z4HVUHqJ9lASsafkzr+pdN9swCMNOEn+uU=;
- b=JMEp6RRyKVagF6YXQZtgcQqe5WLVUPYmZKfxBDy7DjIJNeBtOObNnyV0oBEXlqHu6o
- QsGdEHWuaBJKvinbLbjtPLrUOXOKRFb3lJevOZJwrGsr2qNDtu4COpgoFgv7fkoXvOS7
- +673At4K8ULUXLPGShuwQ6r3WthiNsI+pFHMY+sFsQOiDBmYbaMSTpqF1hm6DTKDgnPF
- 1POuuMt9khERXny3SG6T12YOMr/0O8Uv/5e30Kn/8KgBDgrUn7Zj9hGSn5IcOw3DH1+k
- zga+aKy6L5VEPcWuUPJL0KMu+qCLtBejxA67hsgamLfLmayrrKjfwkJEeO/HSQaMn6NW
- fKCA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=GfBi8EfFM0kdy6LN/pUSdo1EwlShROfv4a9we6saYeo=;
+ b=X0sidvWUWWQqRq0eSjJL99cNcG56y3R9742cvNj5qWJl6QdEDtLUBPOtYWw02i3i19
+ NBiupLMrC/Kn0RZJmheBZ2UmdGfwbMLPQ2VVhsiLW/XZAtOqYBGyxTvGAJ7Od7KhJeqH
+ jcDGcWJf1sw8Z9SqiSDb1bbS1ZoYKQfZ0X+bDfJ15zBofdWbCoKFyL5Gbn/S1p+cc9g5
+ 6lucuUvjEGcpZ1XZS36PN+DqaCGFcE60ZLfJeicoGtf9UIZq05MUWS0mE59P22Xstgnu
+ ShedeaUFMvxgyRXOF2PwxNIp7rGGAX+kBcJGOQ/hTvZk8k3q98CBsxb4BcUwlHSSB1Us
+ sS5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Hlltdd819Z4HVUHqJ9lASsafkzr+pdN9swCMNOEn+uU=;
- b=QXnzcSObap+ZOGL+UeuiEWp6ndNI+8zEq5Y6Rj7INZQQAOLaPF0/GG9LHoSg9Txd2k
- NpfYOwmdaXGr8/u/wmNXAR4yhhMFOLBTuyW6jq9E+jULeI8d2thYbGIcN+Z5p/sy1vQk
- kXhA365xgt1hwRqwUyqNhdwmuIYTYNYeqtO9G0xl+uqdr8OXvK7o1elUF1a+SD35T1tt
- LucqTMXx2cPD++hJ8z5XU5D7tbUyt3zRJzQxFygFIMkJcborBLee9QkgVvdhzr9P9ag1
- p4wTXJ8VfyYm2dHCLQJTparZC7rHRXbRcRVNITntSNEQ6ZN6t28iwT6a8cxykGVHxwHP
- VrCQ==
-X-Gm-Message-State: APjAAAU4MddhGzTolMKIiNxX98es48lW5yG6LPV5S8Op/PDpkcJ1Kn2h
- fRkiVCxYyLquBX0/uDWHxRk=
-X-Google-Smtp-Source: APXvYqzrBDzoHXcM0oue9IFG8oz5bocZlC3fvcptI5/FtWs3NAX2vXEJGq8oICuh/k0KOoO8+7LJzA==
-X-Received: by 2002:adf:de8e:: with SMTP id w14mr25259242wrl.130.1561216496722; 
- Sat, 22 Jun 2019 08:14:56 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=GfBi8EfFM0kdy6LN/pUSdo1EwlShROfv4a9we6saYeo=;
+ b=JoOyMqLbG1azwptiVL1442S2duvRaWunnrgSmLLcMy3/db8bwyT+W1hvBm5DuDH/1v
+ DdAqkyh8JfFhDwFA+maMOmDB3pGmtihH+BR6bFuG1+CqmMfEiivxSn5vmHOAcDgjTR3m
+ djh1qXN1IcLse5iTVriAd0FduYRTTA5wvBv3HxoXoYLjRzYq2ELL1XtAOzKloBRW6mEW
+ 6b71My2SmofPrgtpe3WS9/QYOtnbYZtxOZ8WBQni1tHOud6S5d6bkpFaQgneR2SoMEeT
+ J0qVr6AdoiOKxowBJxLZHsatbf0pg2l5KH+Fy1pvW4XlLzz9dw+fQnWYz5WKZxXzJQEo
+ zh+w==
+X-Gm-Message-State: APjAAAWXRZad2qcmlKT0n35LNHQ7i/0rFEKfmyjBIK3n/IUcj6d0HTha
+ aBJX7V3HncQiiXErw4CBe2E=
+X-Google-Smtp-Source: APXvYqwTD9bh2HXTD+nm7yp3Im0xb+/Nc4c+Wkr0M5w5PgHnM0k/EqVCFiybiLEgRoql9EQ04KOvCw==
+X-Received: by 2002:a05:6000:11cc:: with SMTP id
+ i12mr3600173wrx.243.1561216497768; 
+ Sat, 22 Jun 2019 08:14:57 -0700 (PDT)
 Received: from localhost.localdomain
  ([2a02:8108:96bf:e0ab:2b68:5d76:a12a:e6ba])
- by smtp.gmail.com with ESMTPSA id o126sm7099847wmo.1.2019.06.22.08.14.55
+ by smtp.gmail.com with ESMTPSA id o126sm7099847wmo.1.2019.06.22.08.14.56
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Sat, 22 Jun 2019 08:14:56 -0700 (PDT)
+ Sat, 22 Jun 2019 08:14:57 -0700 (PDT)
 From: Michael Straube <straube.linux@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 1/2] staging: rtl8188eu: cleanup lines ending with a '('
-Date: Sat, 22 Jun 2019 17:14:48 +0200
-Message-Id: <20190622151449.32095-1-straube.linux@gmail.com>
+Subject: [PATCH 2/2] staging: rtl8188eu: remove hal_init_macaddr()
+Date: Sat, 22 Jun 2019 17:14:49 +0200
+Message-Id: <20190622151449.32095-2-straube.linux@gmail.com>
 X-Mailer: git-send-email 2.22.0
+In-Reply-To: <20190622151449.32095-1-straube.linux@gmail.com>
+References: <20190622151449.32095-1-straube.linux@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -91,67 +94,54 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Cleanup checkpatch issues in usb_halinit.c.
-CHECK: Lines should not end with a '('
+Function hal_init_macaddr() just calls rtw_hal_set_hwreg().
+Use rtw_hal_set_hwreg() directly and remove hal_init_macaddr().
 
 Signed-off-by: Michael Straube <straube.linux@gmail.com>
 ---
- drivers/staging/rtl8188eu/hal/usb_halinit.c | 21 +++++----------------
- 1 file changed, 5 insertions(+), 16 deletions(-)
+ drivers/staging/rtl8188eu/hal/hal_com.c     | 6 ------
+ drivers/staging/rtl8188eu/hal/usb_halinit.c | 3 ++-
+ drivers/staging/rtl8188eu/include/hal_com.h | 1 -
+ 3 files changed, 2 insertions(+), 8 deletions(-)
 
+diff --git a/drivers/staging/rtl8188eu/hal/hal_com.c b/drivers/staging/rtl8188eu/hal/hal_com.c
+index ff481fbd074c..95f1b1431373 100644
+--- a/drivers/staging/rtl8188eu/hal/hal_com.c
++++ b/drivers/staging/rtl8188eu/hal/hal_com.c
+@@ -283,9 +283,3 @@ bool hal_mapping_out_pipe(struct adapter *adapter, u8 numoutpipe)
+ 	}
+ 	return result;
+ }
+-
+-void hal_init_macaddr(struct adapter *adapter)
+-{
+-	rtw_hal_set_hwreg(adapter, HW_VAR_MAC_ADDR,
+-			  adapter->eeprompriv.mac_addr);
+-}
 diff --git a/drivers/staging/rtl8188eu/hal/usb_halinit.c b/drivers/staging/rtl8188eu/hal/usb_halinit.c
-index 70c02c49b177..69008accb015 100644
+index 69008accb015..ac5552050752 100644
 --- a/drivers/staging/rtl8188eu/hal/usb_halinit.c
 +++ b/drivers/staging/rtl8188eu/hal/usb_halinit.c
-@@ -469,10 +469,7 @@ static void usb_AggSettingTxUpdate(struct adapter *Adapter)
-  *
-  *---------------------------------------------------------------------------
-  */
--static void
--usb_AggSettingRxUpdate(
--		struct adapter *Adapter
--	)
-+static void usb_AggSettingRxUpdate(struct adapter *Adapter)
- {
- 	struct hal_data_8188e *haldata = Adapter->HalData;
- 	u8 valueDMA;
-@@ -1044,10 +1041,7 @@ static void Hal_EfuseParseMACAddr_8188EU(struct adapter *adapt, u8 *hwinfo, bool
- 		 eeprom->mac_addr));
- }
+@@ -746,7 +746,8 @@ u32 rtl8188eu_hal_init(struct adapter *Adapter)
+ 	_InitDriverInfoSize(Adapter, DRVINFO_SZ);
  
--static void
--readAdapterInfo_8188EU(
--		struct adapter *adapt
--	)
-+static void readAdapterInfo_8188EU(struct adapter *adapt)
- {
- 	struct eeprom_priv *eeprom = GET_EEPROM_EFUSE_PRIV(adapt);
+ 	_InitInterrupt(Adapter);
+-	hal_init_macaddr(Adapter);/* set mac_address */
++	rtw_hal_set_hwreg(Adapter, HW_VAR_MAC_ADDR,
++			  Adapter->eeprompriv.mac_addr);
+ 	_InitNetworkType(Adapter);/* set msr */
+ 	_InitWMACSetting(Adapter);
+ 	_InitAdaptiveCtrl(Adapter);
+diff --git a/drivers/staging/rtl8188eu/include/hal_com.h b/drivers/staging/rtl8188eu/include/hal_com.h
+index 2f7bdade40a5..93cbbe7ba1fd 100644
+--- a/drivers/staging/rtl8188eu/include/hal_com.h
++++ b/drivers/staging/rtl8188eu/include/hal_com.h
+@@ -148,5 +148,4 @@ void hal_set_brate_cfg(u8 *brates, u16 *rate_cfg);
  
-@@ -1067,9 +1061,7 @@ readAdapterInfo_8188EU(
- 	Hal_ReadThermalMeter_88E(adapt, eeprom->efuse_eeprom_data, eeprom->bautoload_fail_flag);
- }
+ bool hal_mapping_out_pipe(struct adapter *adapter, u8 numoutpipe);
  
--static void _ReadPROMContent(
--	struct adapter *Adapter
--	)
-+static void _ReadPROMContent(struct adapter *Adapter)
- {
- 	struct eeprom_priv *eeprom = GET_EEPROM_EFUSE_PRIV(Adapter);
- 	u8 eeValue;
-@@ -1782,11 +1774,8 @@ void rtw_hal_get_hwreg(struct adapter *Adapter, u8 variable, u8 *val)
- /*	Description: */
- /*		Query setting of specified variable. */
- /*  */
--u8 rtw_hal_get_def_var(
--		struct adapter *Adapter,
--		enum hal_def_variable eVariable,
--		void *pValue
--	)
-+u8 rtw_hal_get_def_var(struct adapter *Adapter, enum hal_def_variable eVariable,
-+		       void *pValue)
- {
- 	struct hal_data_8188e *haldata = Adapter->HalData;
- 	u8 bResult = _SUCCESS;
+-void hal_init_macaddr(struct adapter *adapter);
+ #endif /* __HAL_COMMON_H__ */
 -- 
 2.22.0
 
