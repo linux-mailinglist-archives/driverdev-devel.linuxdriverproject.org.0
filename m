@@ -1,73 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AA6864F564
-	for <lists+driverdev-devel@lfdr.de>; Sat, 22 Jun 2019 12:51:38 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2EF404F56E
+	for <lists+driverdev-devel@lfdr.de>; Sat, 22 Jun 2019 12:59:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 61366861F2;
-	Sat, 22 Jun 2019 10:51:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BB50381FA0;
+	Sat, 22 Jun 2019 10:59:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9lRIXkRO5iyW; Sat, 22 Jun 2019 10:51:35 +0000 (UTC)
+	with ESMTP id wSTUgkvqzgzP; Sat, 22 Jun 2019 10:59:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CE621859D6;
-	Sat, 22 Jun 2019 10:51:34 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 76D1881D87;
+	Sat, 22 Jun 2019 10:59:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1315C1BF5A7
- for <devel@linuxdriverproject.org>; Sat, 22 Jun 2019 10:51:22 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DE7251BF20D
+ for <devel@linuxdriverproject.org>; Sat, 22 Jun 2019 10:59:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 10178862F4
- for <devel@linuxdriverproject.org>; Sat, 22 Jun 2019 10:51:22 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id DB19281B87
+ for <devel@linuxdriverproject.org>; Sat, 22 Jun 2019 10:59:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id y204UylJKEMa for <devel@linuxdriverproject.org>;
- Sat, 22 Jun 2019 10:51:21 +0000 (UTC)
+ with ESMTP id B1K4fAdeUaFX for <devel@linuxdriverproject.org>;
+ Sat, 22 Jun 2019 10:59:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ed1-f66.google.com (mail-ed1-f66.google.com
- [209.85.208.66])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 30CA0862E8
- for <devel@driverdev.osuosl.org>; Sat, 22 Jun 2019 10:51:21 +0000 (UTC)
-Received: by mail-ed1-f66.google.com with SMTP id i11so14042429edq.0
- for <devel@driverdev.osuosl.org>; Sat, 22 Jun 2019 03:51:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=Un5Ke0Ru3iTFXv9DrHEizflVlYGBaDhARoB+8+C5nXM=;
- b=XsfKpD70QwVwRaUkYwkjxXmEDdjuyGd2pLZzbMwSVjcw16p6t9h6u6IgmHpS9u8dsY
- baq6O4r2PA098rlnxyFD6o5f1NReE9U+dMeCastal8rZuoqEaKCupeJ4L1NQZ4ZjQoX7
- ZBzUUtm1v2U7UeDXYeiIlbfg2WAkO+f3nNyFjKnDTvKGXDGanbVpJ+0ZCu3jeUfvmOQd
- kILymMxcfWgfJfVroy8uKSfv5yT4POP0Y7Qhmhf3DG+A8EUN3z6j2zgFgtbPnlIb1nV/
- T+6+D80OQwAYacgGC4FPWcyZbx53X2ECGptovXaH16w7+KE3OEQdf+ajJ6QT0IHxc/Yz
- 3VIw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=Un5Ke0Ru3iTFXv9DrHEizflVlYGBaDhARoB+8+C5nXM=;
- b=tJt74McFrdxq9KVqnXuI+v6OI341jdMy/axaB09iJhrOEDO88LwcKIVJn2VSip/Mo1
- rUiBVbOno9INyNSfTKExTrlu+6iVwpUlD2aucKXRkKh4n9xkH7m3Gp2HgFxo2Xz1mLyX
- jZ8evm9uh0GD695kdoSzGR20WMoW9agi8XLA2nQpsIbH/xSX89EZsRjimQHVQ8el0qAK
- lPM15ap2l1S86AdMbRf1An2RP9LB3i/amkr4Kunf4XlIsjXlzrjmW9vWOUI6CpoITG5p
- oMGU9DTcShY0Zu/y8EupTVRSb3e9fg0MZc+qRFqagPnqIzZfBgrXxuBzh/QiSuA56hnC
- Ve0A==
-X-Gm-Message-State: APjAAAVVWbx42z7+wZ/9d7vxNbw1mlPOes9yt2NwQmH6Rbv6D4kNjM5/
- ZDP6M7iG1f+jb8Rjrows+a2rKfKCUhzddha3DFM=
-X-Google-Smtp-Source: APXvYqyvi9Y+Qiu/TatbF3pfRDqR4BSguKLmEvf4JVGX3B2varSHuXro/aH3zx+wRivfcncLnIAzthtq3Mfbn0/8KMU=
-X-Received: by 2002:a50:b3fb:: with SMTP id
- t56mr100401076edd.303.1561200679641; 
- Sat, 22 Jun 2019 03:51:19 -0700 (PDT)
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3B2F681B72
+ for <devel@driverdev.osuosl.org>; Sat, 22 Jun 2019 10:59:04 +0000 (UTC)
+Received: from archlinux (cpc149474-cmbg20-2-0-cust94.5-4.cable.virginm.net
+ [82.4.196.95])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 90F2E2070B;
+ Sat, 22 Jun 2019 10:59:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1561201144;
+ bh=xCov3n+vVgxiEJrOvTFgrxXtp1jxZHWTifXs1Kued78=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=JflgTq93DHvJsBs9KZsE4pfr6HhNO5f5igz5LyQ9l83Ad+iYEKNHNWkA56EYQkSxy
+ XnK7Ud++qZ3+eHf+5ehYJ5m2ph4BkeOLwqG4lYnipWQaOAVFIzePGg7bNSdAYsZ28b
+ W/cKvQq72CDGjwZPGvhL5oJVCaHsuK/YNYE0l41g=
+Date: Sat, 22 Jun 2019 11:58:58 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [PATCH] staging: iio: ad7150: use ternary operating to ensure
+ 0/1 value
+Message-ID: <20190622115858.21ceef2d@archlinux>
+In-Reply-To: <20190617084033.GG28859@kadam>
+References: <20190614165059.7bifufvhxofy6ybu@smtp.gmail.com>
+ <20190616111516.1af0d41b@archlinux> <20190617084033.GG28859@kadam>
+X-Mailer: Claws Mail 3.17.3 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Received: by 2002:a17:906:640a:0:0:0:0 with HTTP; Sat, 22 Jun 2019 03:51:19
- -0700 (PDT)
-From: "Miss.Fatima Yusuf" <miss.fatimayusuf@gmail.com>
-Date: Sat, 22 Jun 2019 10:51:19 +0000
-Message-ID: <CAC8N3VQg3EL8DNXo6GcBg5v1rFm=vyEU70E1zyKnyL5d1EMyqg@mail.gmail.com>
-Subject: From:Miss: Fatima Yusuf.
-To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,50 +67,64 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: miss.fatimayusuf11@gmail.com
+Cc: devel@driverdev.osuosl.org, Lars-Peter Clausen <lars@metafoo.de>,
+ Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+ Michael Hennerich <Michael.Hennerich@analog.com>, linux-iio@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Barry Song <21cnbao@gmail.com>, linux-kernel@vger.kernel.org,
+ kernel-usp@googlegroups.com, Melissa Wen <melissa.srw@gmail.com>,
+ Stefan Popa <stefan.popa@analog.com>, Hartmut Knaack <knaack.h@gmx.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From:Miss: Fatima Yusuf.
+On Mon, 17 Jun 2019 11:40:34 +0300
+Dan Carpenter <dan.carpenter@oracle.com> wrote:
 
-For sure this mail would definitely come to you as a surprise, but do
-take your good time to go through it, My name is Ms. Fatima Yusuf,i am
-from Ivory Coast.
+> On Sun, Jun 16, 2019 at 11:15:16AM +0100, Jonathan Cameron wrote:
+> > On Fri, 14 Jun 2019 13:50:59 -0300
+> > Melissa Wen <melissa.srw@gmail.com> wrote:
+> >   
+> > > Remove idiom and use ternary operator for consistently trigger 0/1 value
+> > > on variable declaration.
+> > > 
+> > > Signed-off-by: Melissa Wen <melissa.srw@gmail.com>  
+> > Hi Melissa,
+> > 
+> > In general I would consider this unnecessary churn as, whilst
+> > it's no longer a favoured idiom, it is extremely common in the
+> > kernel.  
+> 
+> It's still my favourite...  Why wouldn't people like it?  It feels like
+> last week I just saw someone send a bunch of:
+> 
+> -	foo = (bar == baz) ? 1 : 0;
+> +	foo = (bar == baz);
+> 
+> patches and I thought it was an improvement at the time...
 
-I lost my parents a year and couple of months ago. My father was a
-serving director of the Agro-exporting board until his death. He was
-assassinated by his business partners.Before his death, he made a
-deposit of US$9.7 Million Dollars here in Cote d'ivoire which was for
-the purchase of cocoa processing machine and development of another
-factory before his untimely death.
+That one is nice enough, it's the !! that Linus came out fairly
+strongly against though not sure I can find the particular email. 
+That one is a fairly kernel specific idiom that I'll be honest I've
+rarely seen elsewhere ;)  I remember wincing at the thread
+on this as it was an idiom I personally rather liked.
 
-Being that this part of the world experiences political and crises
-time without number, there is no guarantee of lives and properties. I
-cannot invest this money here any long, despite the fact it had been
-my late father's industrial plans.
+In cases where it doesn't matter because foo doesn't need to 1 or
+0 then what you have is nice and clean.
 
-I want you to do me a favor to receive this funds into your country or
-any safer place as the beneficiary, I have plans to invest this money
-in continuation with the investment vision of my late father, but not
-in this place again rather in your country. I have the vision of going
-into real estate and industrial production or any profitable business
-venture.
+I can't say it's one I care that much about, but I am happy if code
+that happens to be under cleanup anyway has this little bit made
+the 'preferred style'.  There is something to said for consistency.
 
-I will be ready to compensate you with 20% of the total Amount, now
-all my hope is banked on you and i really wants to invest this money
-in your country, where there is stability of Government, political and
-economic welfare.
+Jonathan
 
-My greatest worry now is how to move out of this country because my
-uncle is threatening to kill me as he killed my father,Please do not
-let anybody hear about this, it is between me and you alone because of
-my security reason.
 
-I am waiting to hear from you.
-Yours Sincerely,
-Miss.Fatima Yusuf.
+> 
+> regards,
+> dan carpenter
+> 
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
