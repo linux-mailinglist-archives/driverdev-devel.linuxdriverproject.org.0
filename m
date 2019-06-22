@@ -1,129 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 319454F31A
-	for <lists+driverdev-devel@lfdr.de>; Sat, 22 Jun 2019 03:31:57 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 645E48816B;
-	Sat, 22 Jun 2019 01:31:55 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YU7VsuF-1qzS; Sat, 22 Jun 2019 01:31:55 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D934388127;
-	Sat, 22 Jun 2019 01:31:54 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7D6DD1BF5DC
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 22 Jun 2019 01:31:52 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id DDB264F3E1
+	for <lists+driverdev-devel@lfdr.de>; Sat, 22 Jun 2019 07:35:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 7983687277
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 22 Jun 2019 01:31:52 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B806887196;
+	Sat, 22 Jun 2019 05:35:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hYNPhdeVgyDS; Sat, 22 Jun 2019 05:35:48 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 005CC873B8;
+	Sat, 22 Jun 2019 05:35:46 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 541201BF5B4
+ for <devel@linuxdriverproject.org>; Sat, 22 Jun 2019 05:35:45 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5011A863AC
+ for <devel@linuxdriverproject.org>; Sat, 22 Jun 2019 05:35:45 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sW-Xk4AbvGB8
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 22 Jun 2019 01:31:51 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM03-BY2-obe.outbound.protection.outlook.com
- (mail-eopbgr780113.outbound.protection.outlook.com [40.107.78.113])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2C2B7870B3
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 22 Jun 2019 01:31:51 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=GVRurj1VE6bIlEYKh/9YUDDWUcO2xQO4XP13I1T0FXb4T/8f89xZpobD31PxZK9FeCsMGlNi0PMfE9Lgy0sOccXo0kvFxpxC18mY97HKnOItenEm7SBQScSJQywAR/aAk8rhizi6GCsZF9823n50FM7+wlGJYTTsrW67cAX/7spwRGNWVT+/Dty5XvQ+rMQ1K4bu0CvW/tixTn2ukfrl8xGHFTWL6g2CGrLmrtttIqalpDCeVX9Umn2S9xoOrsKtxkR37EBa6C2PndKq+jrcYTcnENrq8N7Ug6AxEp7hqMmntEWP5RDPt6Rd9KuNBuO/bxKbyU6PaFIO7jM4BXxwhg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ixRMS1d82hbBKPn8wCLKDfizqvxiFmMGfWx1FYWcbzI=;
- b=awXKCOKEHymMW46QqNnauLijq1vF++aoqwvoIRkYzbjhG8CKNcuSrJk//PFtf9tvnwOlTaShB8B6Elocd4HgPl3Z7sYON+n244pyiF/mJS45qDDypPpob+5OIogoHgXXWI3lJwxEPUuH62bLkzu1xH4ACObJl5YiuR/6ehMfRTLB5s4TzqudKVRWz3awT5Sj6folMK0r+zdP/JKQt6ITEGf5dO4eDTOTw7cOIif1sGc3bKnDj4KBhIz483S7H5yKgaorbZAtdfwoX29vxzrOCNr1BBxPUus4Gvyi50Viu/avrHVCPJostfWY8fHokA6i6TZ38LAaKBeupZxaDQOf6Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1;spf=pass
- smtp.mailfrom=microsoft.com;dmarc=pass action=none
- header.from=microsoft.com;dkim=pass header.d=microsoft.com;arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ixRMS1d82hbBKPn8wCLKDfizqvxiFmMGfWx1FYWcbzI=;
- b=WZgxs52NQtEVdmKbHBbvHSgHmdC1ccs+RU2g6owNxlj44VH87deg60ZZ4mQgKvIb7+DwSgH6jA7EftqqdWnds5WjxFq3LbivijZRvkwAO4ilg5uPOwsUf0wk2e9T8P4kH3cZysaPmUaRp0bv3LTKGgIpm0065DbZUT6RO5VKUdE=
-Received: from BYAPR21MB1352.namprd21.prod.outlook.com (20.179.60.214) by
- BYAPR21MB1208.namprd21.prod.outlook.com (20.179.57.18) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2032.6; Fri, 21 Jun 2019 23:58:27 +0000
-Received: from BYAPR21MB1352.namprd21.prod.outlook.com
- ([fe80::b52f:faf3:6bc6:32de]) by BYAPR21MB1352.namprd21.prod.outlook.com
- ([fe80::b52f:faf3:6bc6:32de%5]) with mapi id 15.20.2032.005; Fri, 21 Jun 2019
- 23:58:27 +0000
-From: Michael Kelley <mikelley@microsoft.com>
-To: Dexuan Cui <decui@microsoft.com>, "linux-pci@vger.kernel.org"
- <linux-pci@vger.kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- "bhelgaas@google.com" <bhelgaas@google.com>, Haiyang Zhang
- <haiyangz@microsoft.com>, KY Srinivasan <kys@microsoft.com>, Stephen
- Hemminger <sthemmin@microsoft.com>, Sasha Levin
- <Alexander.Levin@microsoft.com>, "linux-hyperv@vger.kernel.org"
- <linux-hyperv@vger.kernel.org>, "olaf@aepfle.de" <olaf@aepfle.de>,
- "apw@canonical.com" <apw@canonical.com>, "jasowang@redhat.com"
- <jasowang@redhat.com>, vkuznets <vkuznets@redhat.com>,
- "marcelo.cerri@canonical.com" <marcelo.cerri@canonical.com>
-Subject: RE: [PATCH v2] PCI: hv: Fix a use-after-free bug in
- hv_eject_device_work()
-Thread-Topic: [PATCH v2] PCI: hv: Fix a use-after-free bug in
- hv_eject_device_work()
-Thread-Index: AdUoio+jbgfPCntMRSGnwgYrj5f2wwAAnXww
-Date: Fri, 21 Jun 2019 23:58:26 +0000
-Message-ID: <BYAPR21MB1352C5D60C33D9AAD204554FD7E70@BYAPR21MB1352.namprd21.prod.outlook.com>
-References: <PU1P153MB0169D420EAB61757DF4B337FBFE70@PU1P153MB0169.APCP153.PROD.OUTLOOK.COM>
-In-Reply-To: <PU1P153MB0169D420EAB61757DF4B337FBFE70@PU1P153MB0169.APCP153.PROD.OUTLOOK.COM>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Enabled=True;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SiteId=72f988bf-86f1-41af-91ab-2d7cd011db47;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Owner=decui@microsoft.com;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SetDate=2019-06-21T23:45:19.8774766Z;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Name=General;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Application=Microsoft Azure
- Information Protection;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_ActionId=19ebd965-88c8-4bcc-b3cf-e659d74e2b95;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Extended_MSFT_Method=Automatic
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=mikelley@microsoft.com; 
-x-originating-ip: [24.22.167.197]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 8ebb80ce-97d0-455c-c7e2-08d6f6a45a53
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:BYAPR21MB1208; 
-x-ms-traffictypediagnostic: BYAPR21MB1208:
-x-ld-processed: 72f988bf-86f1-41af-91ab-2d7cd011db47,ExtAddr
-x-microsoft-antispam-prvs: <BYAPR21MB1208B0DE7E93D98FCC908AF6D7E70@BYAPR21MB1208.namprd21.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:813;
-x-forefront-prvs: 0075CB064E
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(136003)(366004)(346002)(396003)(376002)(39860400002)(189003)(199004)(8936002)(6436002)(53936002)(74316002)(4326008)(229853002)(6506007)(14454004)(55016002)(22452003)(478600001)(71190400001)(186003)(7736002)(71200400001)(81166006)(33656002)(8676002)(110136005)(2201001)(316002)(5660300002)(81156014)(54906003)(9686003)(7696005)(68736007)(8990500004)(86362001)(10290500003)(10090500001)(99286004)(76176011)(64756008)(476003)(66476007)(25786009)(6246003)(66946007)(486006)(26005)(102836004)(6116002)(76116006)(305945005)(11346002)(2906002)(66446008)(3846002)(73956011)(66556008)(1511001)(14444005)(2501003)(446003)(256004)(7416002)(52536014)(66066001)(921003)(1121003);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR21MB1208;
- H:BYAPR21MB1352.namprd21.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: microsoft.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: FQmnkOIYPTE1kj3T23KQoq8en1tYA1HPuWcshfzf1yOrXuFZuXSiNmLSeTUUesl2FhkPTKKn6GZifwYbSPmgWK05n5vaQigJgInih1lEv66DjyvQ/357PFRrvbCSWX8g5ODPibhb745c0SgYtEvttUGzJqb2SBaSnXTDtGNCYcVci+Ugc2Kr5DlzeC0cTCvbv4afgUfF0m8Cp3WHioh22lQ6vijrTfI9H48Y9swm9X9cZS7f3geFXMIUTkG7zvkBVJDno6trZJ0veheeXaQCgd8tGmlCoB9h/EK9pdJEjC26hPyLLCk1wGu3WiVl5GGAN1CoT9RMHhJ3g9y2gV/Ir1QTgtCWRvU25smR37cHVOjJDdXACE2I93CZX4tZvecagD05XwCh9W0qs4/35mBiUZumZ/vvdESQkwROfh+GmQo=
+ with ESMTP id aFNs_05bY6if for <devel@linuxdriverproject.org>;
+ Sat, 22 Jun 2019 05:35:44 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C764486388
+ for <devel@driverdev.osuosl.org>; Sat, 22 Jun 2019 05:35:44 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id CD17F2075E;
+ Sat, 22 Jun 2019 05:35:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1561181744;
+ bh=o2+bZapV1eflW9DPzro37eAdhaGW7cNgMP0IIvjvuxE=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=DSIbQbtYKwzyjoaGqfccftMEc8otHbG4ZOeZSLGWnTQIuqGSz1svHYAfM540+0FP3
+ fNpHu2oCebH1+AVJhsu/+f5xBWkcTcat0tyuvMmMNe160Ta93vUu5mElExbXBcfw5h
+ /nnYi4jgmwkNBdBVl97S0X/9eUKme0Ll02W5hUsM=
+Date: Sat, 22 Jun 2019 07:34:53 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: kbuild test robot <lkp@intel.com>
+Subject: Re: [PATCH] staging: kpc2000: Fix: fix platform_no_drv_owner.cocci
+ warnings
+Message-ID: <20190622053453.GB16793@kroah.com>
+References: <201906220357.jo7Q9YJT%lkp@intel.com>
+ <20190621190408.GA17920@lkp-kbuild07>
 MIME-Version: 1.0
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8ebb80ce-97d0-455c-c7e2-08d6f6a45a53
-X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Jun 2019 23:58:26.8892 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: mikelley@ntdev.microsoft.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR21MB1208
+Content-Disposition: inline
+In-Reply-To: <20190621190408.GA17920@lkp-kbuild07>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -136,102 +68,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "driverdev-devel@linuxdriverproject.org"
- <driverdev-devel@linuxdriverproject.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "Lili Deng \(Wicresoft North America Ltd\)" <v-lide@microsoft.com>
+Cc: devel@driverdev.osuosl.org, Vandana BN <bnvandana@gmail.com>,
+ linux-kernel@vger.kernel.org, Rishiraj Manwatkar <manwatkar@outlook.com>,
+ kbuild-all@01.org, Simon =?iso-8859-1?Q?Sandstr=F6m?= <simon@nikanor.nu>,
+ Valerio Genovese <valerio.click@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Dexuan Cui <decui@microsoft.com> Sent: Friday, June 21, 2019 4:45 PM
+On Sat, Jun 22, 2019 at 03:04:08AM +0800, kbuild test robot wrote:
+> From: kbuild test robot <lkp@intel.com>
 > 
-> The commit 05f151a73ec2 itself is correct, but it exposes this
-> use-after-free bug, which is caught by some memory debug options.
+> drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c:200:3-8: No need to set .owner here. The core will do it.
 > 
-> Add a Fixes tag to indicate the dependency.
+>  Remove .owner field if calls are used which set it automatically
 > 
-> Fixes: 05f151a73ec2 ("PCI: hv: Fix a memory leak in hv_eject_device_work()")
-> Signed-off-by: Dexuan Cui <decui@microsoft.com>
-> Cc: stable@vger.kernel.org
+> Generated by: scripts/coccinelle/api/platform_no_drv_owner.cocci
+> 
+> Fixes: abddd78ef465 ("staging: kpc2000: Fix: 'kpc_dma_del_device' and other symbols were not declared")
+> CC: Rishiraj Manwatkar <manwatkar@outlook.com>
+> Signed-off-by: kbuild test robot <lkp@intel.com>
 > ---
 > 
-> In v2:
-> Replaced "hpdev->hbus" with "hbus", since we have the new "hbus" variable. [Michael
-> Kelley]
+> tree:   https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
+> head:   e2d28c40292bdc35553d599e5bbbeaefbab49416
+> commit: abddd78ef465b86fc89a3d9750bb76a138bc0859 [5641/8196] staging: kpc2000: Fix: 'kpc_dma_del_device' and other symbols were not declared
 > 
->  drivers/pci/controller/pci-hyperv.c | 15 +++++++++------
->  1 file changed, 9 insertions(+), 6 deletions(-)
+>  kpc_dma_driver.c |    1 -
+>  1 file changed, 1 deletion(-)
 > 
-> diff --git a/drivers/pci/controller/pci-hyperv.c b/drivers/pci/controller/pci-hyperv.c
-> index 808a182830e5..5dadc964ad3b 100644
-> --- a/drivers/pci/controller/pci-hyperv.c
-> +++ b/drivers/pci/controller/pci-hyperv.c
-> @@ -1880,6 +1880,7 @@ static void hv_pci_devices_present(struct hv_pcibus_device
-> *hbus,
->  static void hv_eject_device_work(struct work_struct *work)
->  {
->  	struct pci_eject_response *ejct_pkt;
-> +	struct hv_pcibus_device *hbus;
->  	struct hv_pci_dev *hpdev;
->  	struct pci_dev *pdev;
->  	unsigned long flags;
-> @@ -1890,6 +1891,7 @@ static void hv_eject_device_work(struct work_struct *work)
->  	} ctxt;
-> 
->  	hpdev = container_of(work, struct hv_pci_dev, wrk);
-> +	hbus = hpdev->hbus;
-> 
->  	WARN_ON(hpdev->state != hv_pcichild_ejecting);
-> 
-> @@ -1900,8 +1902,7 @@ static void hv_eject_device_work(struct work_struct *work)
->  	 * because hbus->pci_bus may not exist yet.
->  	 */
->  	wslot = wslot_to_devfn(hpdev->desc.win_slot.slot);
-> -	pdev = pci_get_domain_bus_and_slot(hpdev->hbus->sysdata.domain, 0,
-> -					   wslot);
-> +	pdev = pci_get_domain_bus_and_slot(hbus->sysdata.domain, 0, wslot);
->  	if (pdev) {
->  		pci_lock_rescan_remove();
->  		pci_stop_and_remove_bus_device(pdev);
-> @@ -1909,9 +1910,9 @@ static void hv_eject_device_work(struct work_struct *work)
->  		pci_unlock_rescan_remove();
->  	}
-> 
-> -	spin_lock_irqsave(&hpdev->hbus->device_list_lock, flags);
-> +	spin_lock_irqsave(&hbus->device_list_lock, flags);
->  	list_del(&hpdev->list_entry);
-> -	spin_unlock_irqrestore(&hpdev->hbus->device_list_lock, flags);
-> +	spin_unlock_irqrestore(&hbus->device_list_lock, flags);
-> 
->  	if (hpdev->pci_slot)
->  		pci_destroy_slot(hpdev->pci_slot);
-> @@ -1920,7 +1921,7 @@ static void hv_eject_device_work(struct work_struct *work)
->  	ejct_pkt = (struct pci_eject_response *)&ctxt.pkt.message;
->  	ejct_pkt->message_type.type = PCI_EJECTION_COMPLETE;
->  	ejct_pkt->wslot.slot = hpdev->desc.win_slot.slot;
-> -	vmbus_sendpacket(hpdev->hbus->hdev->channel, ejct_pkt,
-> +	vmbus_sendpacket(hbus->hdev->channel, ejct_pkt,
->  			 sizeof(*ejct_pkt), (unsigned long)&ctxt.pkt,
->  			 VM_PKT_DATA_INBAND, 0);
-> 
-> @@ -1929,7 +1930,9 @@ static void hv_eject_device_work(struct work_struct *work)
->  	/* For the two refs got in new_pcichild_device() */
->  	put_pcichild(hpdev);
->  	put_pcichild(hpdev);
-> -	put_hvpcibus(hpdev->hbus);
-> +	/* hpdev has been freed. Do not use it any more. */
-> +
-> +	put_hvpcibus(hbus);
->  }
-> 
->  /**
-> --
-> 2.17.1
+> --- a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
+> +++ b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
+> @@ -197,7 +197,6 @@ static struct platform_driver kpc_dma_pl
+>  	.remove       = kpc_dma_remove,
+>  	.driver = {
+>  		.name   = KP_DRIVER_NAME_DMA_CONTROLLER,
+> -		.owner  = THIS_MODULE,
+>  	},
+>  };
 
-Reviewed-by: Michael Kelley <mikelley@microsoft.com>
+Already in my tree, I think you are a bit behind :)
 
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
