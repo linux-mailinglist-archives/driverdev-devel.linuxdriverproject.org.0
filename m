@@ -2,77 +2,77 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9638A4FD29
-	for <lists+driverdev-devel@lfdr.de>; Sun, 23 Jun 2019 19:08:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F5FD4FD2F
+	for <lists+driverdev-devel@lfdr.de>; Sun, 23 Jun 2019 19:08:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2122B203D9;
-	Sun, 23 Jun 2019 17:08:39 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2F99D20467;
+	Sun, 23 Jun 2019 17:08:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xpg7wSbQnKti; Sun, 23 Jun 2019 17:08:29 +0000 (UTC)
+	with ESMTP id xe0V8K+43NsI; Sun, 23 Jun 2019 17:08:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 36ACB203C4;
-	Sun, 23 Jun 2019 17:08:25 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1B7DC203D1;
+	Sun, 23 Jun 2019 17:08:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id ECBED1BF47A
- for <devel@linuxdriverproject.org>; Sun, 23 Jun 2019 17:08:23 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id ED12D1BF47A
+ for <devel@linuxdriverproject.org>; Sun, 23 Jun 2019 17:08:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id DB5CE8715D
- for <devel@linuxdriverproject.org>; Sun, 23 Jun 2019 17:08:23 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E926820462
+ for <devel@linuxdriverproject.org>; Sun, 23 Jun 2019 17:08:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LcCJOxNdr7Eq for <devel@linuxdriverproject.org>;
- Sun, 23 Jun 2019 17:08:19 +0000 (UTC)
+ with ESMTP id 2aFcyxyikurK for <devel@linuxdriverproject.org>;
+ Sun, 23 Jun 2019 17:08:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f193.google.com (mail-qt1-f193.google.com
- [209.85.160.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 21430870A1
- for <devel@driverdev.osuosl.org>; Sun, 23 Jun 2019 17:08:19 +0000 (UTC)
-Received: by mail-qt1-f193.google.com with SMTP id a15so12105177qtn.7
- for <devel@driverdev.osuosl.org>; Sun, 23 Jun 2019 10:08:19 -0700 (PDT)
+Received: from mail-qt1-f195.google.com (mail-qt1-f195.google.com
+ [209.85.160.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id 6F261203C4
+ for <devel@driverdev.osuosl.org>; Sun, 23 Jun 2019 17:08:21 +0000 (UTC)
+Received: by mail-qt1-f195.google.com with SMTP id d17so12072218qtj.8
+ for <devel@driverdev.osuosl.org>; Sun, 23 Jun 2019 10:08:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=RdHUBjzECRux4Cyv9bhvl2y5oTWkTNKfH37Rny3oJM0=;
- b=D5iByDcT2ElU/S1pAY+bgZCb9w4ALCgosxQpO3wdryMiMYRbCm4KXpMYOoFOEgxbNU
- Be/hc/s5TCm4pML6yV6YgijzzEiyKqviD6uzswHiSZh6du2g1hj18ZfdmKVC3lg7CDQE
- u/wcXI1HGqhmStIy+hc9/zLtFnI7LeXVInheMUUhPeZYm1qpg+KyNPL5gcz6YoiGj+BN
- /4ktearIIzTNK/P166EkOn9ZqBbS8AEBkEAqJBOizKYIa+3R383S4IJx5tW2AvETdeL/
- aDDYRTC1hLi1kNoXD4PTQQjsguAbs4HAGBTatBy91OtnwVd08+6k/SwzHHhgvR45KlDn
- uvKw==
+ bh=BxeRsqKNwYqlRREwIOwBo++IiQKHNU3q4TkcYtlJ3Ig=;
+ b=XJzAOJ0CTRrXqLkoByzYlJceTRp+YaaLypt+E01yLDji/9k3mT7a+sWiPwHGNTnagO
+ +FOogkNOjHRVch8MLxnRECJVpdZGfb0pvJ3n3qEe6Aw6WwCUm7ASlIQB0UzQShJvvEh1
+ K/T9QF3i2BivodmuMr6Hbz8GbCFp+XSFgbAeNHOvdFp58YGQBU6NgD4TVMoVghc2CSqx
+ ULkg0bgwKBHhJja9YHjDTfuhi03DKhZiYjzz5xvuEF7912taZVXfKGOicw5nO6PSQX6h
+ 7Ck5EoRHFjWoYppGaBsTMNwQLHvFthj9gWXgyLhhO5kVZekZV/6HXr3NhEe6u2HgQ0/R
+ gcrw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=RdHUBjzECRux4Cyv9bhvl2y5oTWkTNKfH37Rny3oJM0=;
- b=nsEoFGZcCFHwaWdykNYdUo03ZItGwZIGcHzk+NjFJM/rBPIk8ePuVASigcoeUZA/Qy
- Qjv7qShh1h4xsBLJE6dELaqcvTqkBW8ZG29M0xCMjOMTRPguhJ/+LxgWmIvrzoe+FP5s
- noqs5pqUXbArrZaogPCtbLNXoNVXY7CikucGMsexfuBmyopSes7A8DOfX61oWw5bR4OF
- IvsyHP6oHZ77dx1k7CYx+hq6BA3pRRqR08kR8h8TRPvNrR9YMIZHD8Ngd7MhRlvQ71q8
- L8+l6DMVCdm6wwhU4rXHi29kSSQHCyuYWfzwdlehmaoJByznIhu4uoNEDKqszZhQ2vPx
- 9aFw==
-X-Gm-Message-State: APjAAAW8lQaIPocD9TICJQTyhK50KkyNJ0mUY+WlWQyigYxLMSL9+Li7
- m58BdOU1Rwza1mAueY87OBc=
-X-Google-Smtp-Source: APXvYqw02xXc3F16A2Bhaqq8Xi2JedYX9liKCBm1a567oZ2s0uh6/yaWv8cI2wpRTxM+a4BKQAeA2w==
-X-Received: by 2002:a0c:b5c5:: with SMTP id o5mr54462903qvf.6.1561309698003;
- Sun, 23 Jun 2019 10:08:18 -0700 (PDT)
+ bh=BxeRsqKNwYqlRREwIOwBo++IiQKHNU3q4TkcYtlJ3Ig=;
+ b=R6wBYPg3/P5TjtgVQbYnYwxqAFL6ZaVRU/5B8OmR/3kn+hsvvcd/oSpGItmFG9fNCC
+ MU1M1D509mkM5JVvvHDD1y7B44/GVHoRGGN8ANzL1dnWNinjSjc4UFCut+C0IFUTvcsA
+ JjPk3VAfKjaWfyW7QqLxpQMlfsaHanuBgGLLwakvzYJ1ryVfKHg3EVHo1IOS/SS7eWVS
+ l/b+QzMUfiWjLChvprPTSYl9tsOxJnX5iYTfNzobWjCKOcQQA4B1IEC4L6Zor9SzHORs
+ ek9aSCDiWaI2tLhOf91oQ2Z1lBTFowM4r2fTR718sLc5WHJG66CPZMF8Tij8qnv4nma0
+ ZAUQ==
+X-Gm-Message-State: APjAAAVSy2F7/RajCxse5w9tQGPX9jYlFtgoU/H3sK1U1XKomGbg5cha
+ +uS9vPYw8/5eAVmXnq4R81U=
+X-Google-Smtp-Source: APXvYqykgkoeZBs8whZ/9m16jexoM7gfMaH6/bUECYZDcusbe3JkBi+tzru22eqQiatV0Y1WHE1IEQ==
+X-Received: by 2002:a0c:eecd:: with SMTP id h13mr53876899qvs.46.1561309700325; 
+ Sun, 23 Jun 2019 10:08:20 -0700 (PDT)
 Received: from localhost.localdomain (ppp91-79-162-197.pppoe.mtu-net.ru.
  [91.79.162.197])
- by smtp.gmail.com with ESMTPSA id o54sm5790756qtb.63.2019.06.23.10.08.15
+ by smtp.gmail.com with ESMTPSA id o54sm5790756qtb.63.2019.06.23.10.08.18
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sun, 23 Jun 2019 10:08:17 -0700 (PDT)
+ Sun, 23 Jun 2019 10:08:19 -0700 (PDT)
 From: Dmitry Osipenko <digetx@gmail.com>
 To: Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
  Hans Verkuil <hverkuil@xs4all.nl>, Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v3 3/4] staging: media: tegra-vde: Add IOMMU support
-Date: Sun, 23 Jun 2019 20:07:29 +0300
-Message-Id: <20190623170730.5095-7-digetx@gmail.com>
+Subject: [PATCH v3 4/4] staging: media: tegra-vde: Defer dmabuf's unmapping
+Date: Sun, 23 Jun 2019 20:07:30 +0300
+Message-Id: <20190623170730.5095-8-digetx@gmail.com>
 X-Mailer: git-send-email 2.22.0
 In-Reply-To: <20190623170730.5095-1-digetx@gmail.com>
 References: <20190623170730.5095-1-digetx@gmail.com>
@@ -97,51 +97,38 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-All Tegra's could provide memory isolation for the video decoder
-hardware using IOMMU, it is also required for Tegra30+ in order
-to handle sparse dmabuf's which GPU exports in a default kernel
-configuration.
+Frequent IOMMU remappings take about 50% of CPU usage because there is
+quite a lot to remap. Defer dmabuf's unmapping by 5 seconds in order to
+mitigate the mapping overhead which goes away completely and driver works
+as fast as in a case of a disabled IOMMU. The case of a disabled IOMMU
+should also benefit a tad from the caching since CPU cache maintenance
+that happens on dmabuf's attaching takes some resources.
 
-Inspired-by: Thierry Reding <thierry.reding@gmail.com>
 Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
 ---
- drivers/staging/media/tegra-vde/Kconfig       |   1 +
- drivers/staging/media/tegra-vde/Makefile      |   1 +
- drivers/staging/media/tegra-vde/iommu.c       | 159 +++++++++++++++
- drivers/staging/media/tegra-vde/trace.h       |   2 +
- .../media/tegra-vde/{tegra-vde.c => vde.c}    | 188 +++++++++---------
- drivers/staging/media/tegra-vde/vde.h         |  91 +++++++++
- 6 files changed, 349 insertions(+), 93 deletions(-)
- create mode 100644 drivers/staging/media/tegra-vde/iommu.c
- rename drivers/staging/media/tegra-vde/{tegra-vde.c => vde.c} (91%)
- create mode 100644 drivers/staging/media/tegra-vde/vde.h
+ drivers/staging/media/tegra-vde/Makefile      |   2 +-
+ .../staging/media/tegra-vde/dmabuf-cache.c    | 226 ++++++++++++++++++
+ drivers/staging/media/tegra-vde/iommu.c       |   2 -
+ drivers/staging/media/tegra-vde/vde.c         | 143 +++--------
+ drivers/staging/media/tegra-vde/vde.h         |  18 +-
+ 5 files changed, 276 insertions(+), 115 deletions(-)
+ create mode 100644 drivers/staging/media/tegra-vde/dmabuf-cache.c
 
-diff --git a/drivers/staging/media/tegra-vde/Kconfig b/drivers/staging/media/tegra-vde/Kconfig
-index ff8e846cd15d..2e7f644ae591 100644
---- a/drivers/staging/media/tegra-vde/Kconfig
-+++ b/drivers/staging/media/tegra-vde/Kconfig
-@@ -3,6 +3,7 @@ config TEGRA_VDE
- 	tristate "NVIDIA Tegra Video Decoder Engine driver"
- 	depends on ARCH_TEGRA || COMPILE_TEST
- 	select DMA_SHARED_BUFFER
-+	select IOMMU_IOVA if IOMMU_SUPPORT
- 	select SRAM
- 	help
- 	    Say Y here to enable support for the NVIDIA Tegra video decoder
 diff --git a/drivers/staging/media/tegra-vde/Makefile b/drivers/staging/media/tegra-vde/Makefile
-index 7f9020e634f3..c11867e28233 100644
+index c11867e28233..2827f7601de8 100644
 --- a/drivers/staging/media/tegra-vde/Makefile
 +++ b/drivers/staging/media/tegra-vde/Makefile
-@@ -1,2 +1,3 @@
+@@ -1,3 +1,3 @@
  # SPDX-License-Identifier: GPL-2.0
-+tegra-vde-y := vde.o iommu.o
+-tegra-vde-y := vde.o iommu.o
++tegra-vde-y := vde.o iommu.o dmabuf-cache.o
  obj-$(CONFIG_TEGRA_VDE)	+= tegra-vde.o
-diff --git a/drivers/staging/media/tegra-vde/iommu.c b/drivers/staging/media/tegra-vde/iommu.c
+diff --git a/drivers/staging/media/tegra-vde/dmabuf-cache.c b/drivers/staging/media/tegra-vde/dmabuf-cache.c
 new file mode 100644
-index 000000000000..f42f5c80c6c1
+index 000000000000..a93b317885bf
 --- /dev/null
-+++ b/drivers/staging/media/tegra-vde/iommu.c
-@@ -0,0 +1,159 @@
++++ b/drivers/staging/media/tegra-vde/dmabuf-cache.c
+@@ -0,0 +1,226 @@
 +// SPDX-License-Identifier: GPL-2.0+
 +/*
 + * NVIDIA Tegra Video decoder driver
@@ -149,646 +136,599 @@ index 000000000000..f42f5c80c6c1
 + * Copyright (C) 2016-2019 GRATE-DRIVER project
 + */
 +
-+#include <linux/iommu.h>
++#include <linux/dma-buf.h>
 +#include <linux/iova.h>
 +#include <linux/kernel.h>
-+#include <linux/platform_device.h>
-+
-+#if IS_ENABLED(CONFIG_ARM_DMA_USE_IOMMU)
-+#include <asm/dma-iommu.h>
-+#endif
++#include <linux/list.h>
++#include <linux/sched.h>
++#include <linux/slab.h>
++#include <linux/workqueue.h>
 +
 +#include "vde.h"
 +
-+int tegra_vde_iommu_map(struct tegra_vde *vde,
-+			struct sg_table *sgt,
-+			struct iova **iovap,
-+			dma_addr_t *addrp,
-+			size_t size)
-+{
++struct tegra_vde_cache_entry {
++	enum dma_data_direction dma_dir;
++	struct dma_buf_attachment *a;
++	struct delayed_work dwork;
++	struct tegra_vde *vde;
++	struct list_head list;
++	struct sg_table *sgt;
 +	struct iova *iova;
-+	unsigned long shift;
-+	unsigned long end;
-+	dma_addr_t addr;
++	unsigned int refcnt;
++};
 +
-+	end = vde->domain->geometry.aperture_end;
-+	size = iova_align(&vde->iova, size);
-+	shift = iova_shift(&vde->iova);
-+
-+	iova = alloc_iova(&vde->iova, size >> shift, end >> shift, true);
-+	if (!iova)
-+		return -ENOMEM;
-+
-+	addr = iova_dma_addr(&vde->iova, iova);
-+
-+	size = iommu_map_sg(vde->domain, addr, sgt->sgl, sgt->nents,
-+			    IOMMU_READ | IOMMU_WRITE);
-+	if (!size) {
-+		__free_iova(&vde->iova, iova);
-+		return -ENXIO;
-+	}
-+
-+	*iovap = iova;
-+	*addrp = addr;
-+
-+	return 0;
-+}
-+
-+void tegra_vde_iommu_unmap(struct tegra_vde *vde, struct iova *iova)
++static void tegra_vde_release_entry(struct tegra_vde_cache_entry *entry)
 +{
-+	unsigned long shift = iova_shift(&vde->iova);
-+	unsigned long size = iova_size(iova) << shift;
-+	dma_addr_t addr = iova_dma_addr(&vde->iova, iova);
++	struct dma_buf *dmabuf = entry->a->dmabuf;
 +
-+	iommu_unmap(vde->domain, addr, size);
-+	__free_iova(&vde->iova, iova);
++	WARN_ON_ONCE(entry->refcnt);
++
++	if (entry->vde->domain)
++		tegra_vde_iommu_unmap(entry->vde, entry->iova);
++
++	dma_buf_unmap_attachment(entry->a, entry->sgt, entry->dma_dir);
++	dma_buf_detach(dmabuf, entry->a);
++	dma_buf_put(dmabuf);
++
++	list_del(&entry->list);
++	kfree(entry);
 +}
 +
-+int tegra_vde_iommu_init(struct tegra_vde *vde)
++static void tegra_vde_delayed_unmap(struct work_struct *work)
++{
++	struct tegra_vde_cache_entry *entry;
++	struct tegra_vde *vde;
++
++	entry = container_of(work, struct tegra_vde_cache_entry,
++			     dwork.work);
++	vde = entry->vde;
++
++	mutex_lock(&vde->map_lock);
++	tegra_vde_release_entry(entry);
++	mutex_unlock(&vde->map_lock);
++}
++
++int tegra_vde_dmabuf_cache_map(struct tegra_vde *vde,
++			       struct dma_buf *dmabuf,
++			       enum dma_data_direction dma_dir,
++			       struct dma_buf_attachment **ap,
++			       dma_addr_t *addrp)
 +{
 +	struct device *dev = vde->miscdev.parent;
++	struct dma_buf_attachment *attachment;
++	struct tegra_vde_cache_entry *entry;
++	struct sg_table *sgt;
 +	struct iova *iova;
-+	unsigned long order;
-+	unsigned long shift;
 +	int err;
 +
-+	vde->group = iommu_group_get(dev);
-+	if (!vde->group)
-+		return 0;
++	mutex_lock(&vde->map_lock);
 +
-+#if IS_ENABLED(CONFIG_ARM_DMA_USE_IOMMU)
-+	if (dev->archdata.mapping) {
-+		struct dma_iommu_mapping *mapping = to_dma_iommu_mapping(dev);
++	list_for_each_entry(entry, &vde->map_list, list) {
++		if (entry->a->dmabuf != dmabuf)
++			continue;
 +
-+		arm_iommu_detach_device(dev);
-+		arm_iommu_release_mapping(mapping);
++		if (!cancel_delayed_work(&entry->dwork))
++			continue;
++
++		if (entry->dma_dir != dma_dir)
++			entry->dma_dir = DMA_BIDIRECTIONAL;
++
++		dma_buf_put(dmabuf);
++
++		if (vde->domain)
++			*addrp = iova_dma_addr(&vde->iova, entry->iova);
++		else
++			*addrp = sg_dma_address(entry->sgt->sgl);
++
++		goto ref;
 +	}
-+#endif
-+	vde->domain = iommu_domain_alloc(&platform_bus_type);
-+	if (!vde->domain) {
++
++	attachment = dma_buf_attach(dmabuf, dev);
++	if (IS_ERR(attachment)) {
++		dev_err(dev, "Failed to attach dmabuf\n");
++		err = PTR_ERR(attachment);
++		goto err_unlock;
++	}
++
++	sgt = dma_buf_map_attachment(attachment, dma_dir);
++	if (IS_ERR(sgt)) {
++		dev_err(dev, "Failed to get dmabufs sg_table\n");
++		err = PTR_ERR(sgt);
++		goto err_detach;
++	}
++
++	if (!vde->domain && sgt->nents > 1) {
++		dev_err(dev, "Sparse DMA region is unsupported, please enable IOMMU\n");
++		err = -EINVAL;
++		goto err_unmap;
++	}
++
++	entry = kzalloc(sizeof(*entry), GFP_KERNEL);
++	if (!entry) {
 +		err = -ENOMEM;
-+		goto put_group;
++		goto err_unmap;
 +	}
 +
-+	err = iova_cache_get();
-+	if (err)
-+		goto free_domain;
++	if (vde->domain) {
++		err = tegra_vde_iommu_map(vde, sgt, &iova, dmabuf->size);
++		if (err)
++			goto err_free;
 +
-+	order = __ffs(vde->domain->pgsize_bitmap);
-+	init_iova_domain(&vde->iova, 1UL << order, 0);
-+
-+	err = iommu_attach_group(vde->domain, vde->group);
-+	if (err)
-+		goto put_iova;
-+
-+	/*
-+	 * We're using some static addresses that are not accessible by VDE
-+	 * to trap invalid memory accesses.
-+	 */
-+	shift = iova_shift(&vde->iova);
-+	iova = reserve_iova(&vde->iova, 0x60000000 >> shift,
-+			    0x70000000 >> shift);
-+	if (!iova) {
-+		err = -ENOMEM;
-+		goto detach_group;
++		*addrp = iova_dma_addr(&vde->iova, iova);
++	} else {
++		*addrp = sg_dma_address(sgt->sgl);
++		iova = NULL;
 +	}
 +
-+	vde->iova_resv_static_addresses = iova;
++	INIT_DELAYED_WORK(&entry->dwork, tegra_vde_delayed_unmap);
++	list_add(&entry->list, &vde->map_list);
 +
-+	/*
-+	 * BSEV's end-address wraps around due to integer overflow during
-+	 * of hardware context preparation if IOVA is allocated at the end
-+	 * of address space and VDE can't handle that. Hence simply reserve
-+	 * the last page to avoid the problem.
-+	 */
-+	iova = reserve_iova(&vde->iova, 0xffffffff >> shift,
-+			    (0xffffffff >> shift) + 1);
-+	if (!iova) {
-+		err = -ENOMEM;
-+		goto unreserve_iova;
-+	}
++	entry->dma_dir = dma_dir;
++	entry->iova = iova;
++	entry->vde = vde;
++	entry->sgt = sgt;
++	entry->a = attachment;
++ref:
++	entry->refcnt++;
 +
-+	vde->iova_resv_last_page = iova;
++	*ap = entry->a;
++
++	mutex_unlock(&vde->map_lock);
 +
 +	return 0;
 +
-+unreserve_iova:
-+	__free_iova(&vde->iova, vde->iova_resv_static_addresses);
-+detach_group:
-+	iommu_detach_group(vde->domain, vde->group);
-+put_iova:
-+	put_iova_domain(&vde->iova);
-+	iova_cache_put();
-+free_domain:
-+	iommu_domain_free(vde->domain);
-+put_group:
-+	iommu_group_put(vde->group);
++err_free:
++	kfree(entry);
++err_unmap:
++	dma_buf_unmap_attachment(attachment, sgt, dma_dir);
++err_detach:
++	dma_buf_detach(dmabuf, attachment);
++err_unlock:
++	mutex_unlock(&vde->map_lock);
 +
 +	return err;
 +}
 +
-+void tegra_vde_iommu_deinit(struct tegra_vde *vde)
++void tegra_vde_dmabuf_cache_unmap(struct tegra_vde *vde,
++				  struct dma_buf_attachment *a,
++				  bool release)
 +{
-+	if (vde->domain) {
-+		__free_iova(&vde->iova, vde->iova_resv_last_page);
-+		__free_iova(&vde->iova, vde->iova_resv_static_addresses);
-+		iommu_detach_group(vde->domain, vde->group);
-+		put_iova_domain(&vde->iova);
-+		iova_cache_put();
-+		iommu_domain_free(vde->domain);
-+		iommu_group_put(vde->group);
++	struct tegra_vde_cache_entry *entry;
 +
-+		vde->domain = NULL;
++	mutex_lock(&vde->map_lock);
++
++	list_for_each_entry(entry, &vde->map_list, list) {
++		if (entry->a != a)
++			continue;
++
++		WARN_ON_ONCE(!entry->refcnt);
++
++		if (--entry->refcnt == 0) {
++			if (release)
++				tegra_vde_release_entry(entry);
++			else
++				schedule_delayed_work(&entry->dwork, 5 * HZ);
++		}
++		break;
 +	}
++
++	mutex_unlock(&vde->map_lock);
 +}
-diff --git a/drivers/staging/media/tegra-vde/trace.h b/drivers/staging/media/tegra-vde/trace.h
-index 85e2f7e2d4d0..e5714107db58 100644
---- a/drivers/staging/media/tegra-vde/trace.h
-+++ b/drivers/staging/media/tegra-vde/trace.h
-@@ -8,6 +8,8 @@
- 
- #include <linux/tracepoint.h>
- 
-+#include "vde.h"
 +
- DECLARE_EVENT_CLASS(register_access,
- 	TP_PROTO(struct tegra_vde *vde, void __iomem *base,
- 		 u32 offset, u32 value),
-diff --git a/drivers/staging/media/tegra-vde/tegra-vde.c b/drivers/staging/media/tegra-vde/vde.c
-similarity index 91%
-rename from drivers/staging/media/tegra-vde/tegra-vde.c
-rename to drivers/staging/media/tegra-vde/vde.c
-index cc4244da2705..cbcdbfef072d 100644
---- a/drivers/staging/media/tegra-vde/tegra-vde.c
++void tegra_vde_dmabuf_cache_unmap_sync(struct tegra_vde *vde)
++{
++	struct tegra_vde_cache_entry *entry, *tmp;
++
++	mutex_lock(&vde->map_lock);
++
++	list_for_each_entry_safe(entry, tmp, &vde->map_list, list) {
++		if (entry->refcnt)
++			continue;
++
++		if (!cancel_delayed_work(&entry->dwork))
++			continue;
++
++		tegra_vde_release_entry(entry);
++	}
++
++	mutex_unlock(&vde->map_lock);
++}
++
++void tegra_vde_dmabuf_cache_unmap_all(struct tegra_vde *vde)
++{
++	struct tegra_vde_cache_entry *entry, *tmp;
++
++	mutex_lock(&vde->map_lock);
++
++	while (!list_empty(&vde->map_list)) {
++		list_for_each_entry_safe(entry, tmp, &vde->map_list, list) {
++			if (!cancel_delayed_work(&entry->dwork))
++				continue;
++
++			tegra_vde_release_entry(entry);
++		}
++
++		mutex_unlock(&vde->map_lock);
++		schedule();
++		mutex_lock(&vde->map_lock);
++	}
++
++	mutex_unlock(&vde->map_lock);
++}
+diff --git a/drivers/staging/media/tegra-vde/iommu.c b/drivers/staging/media/tegra-vde/iommu.c
+index f42f5c80c6c1..6af863d92123 100644
+--- a/drivers/staging/media/tegra-vde/iommu.c
++++ b/drivers/staging/media/tegra-vde/iommu.c
+@@ -19,7 +19,6 @@
+ int tegra_vde_iommu_map(struct tegra_vde *vde,
+ 			struct sg_table *sgt,
+ 			struct iova **iovap,
+-			dma_addr_t *addrp,
+ 			size_t size)
+ {
+ 	struct iova *iova;
+@@ -45,7 +44,6 @@ int tegra_vde_iommu_map(struct tegra_vde *vde,
+ 	}
+ 
+ 	*iovap = iova;
+-	*addrp = addr;
+ 
+ 	return 0;
+ }
+diff --git a/drivers/staging/media/tegra-vde/vde.c b/drivers/staging/media/tegra-vde/vde.c
+index cbcdbfef072d..3466daddf663 100644
+--- a/drivers/staging/media/tegra-vde/vde.c
 +++ b/drivers/staging/media/tegra-vde/vde.c
-@@ -22,6 +22,10 @@
- #include <soc/tegra/pmc.h>
- 
- #include "uapi.h"
-+#include "vde.h"
-+
-+#define CREATE_TRACE_POINTS
-+#include "trace.h"
- 
- #define ICMDQUE_WR		0x00
- #define CMDQUE_CONTROL		0x08
-@@ -33,6 +37,10 @@
+@@ -11,6 +11,7 @@
+ #include <linux/genalloc.h>
+ #include <linux/interrupt.h>
+ #include <linux/iopoll.h>
++#include <linux/list.h>
+ #include <linux/miscdevice.h>
+ #include <linux/module.h>
+ #include <linux/of_device.h>
+@@ -37,18 +38,10 @@
  #define BSE_DMA_BUSY		BIT(23)
  
  struct video_frame {
-+	struct iova *y_iova;
-+	struct iova *cb_iova;
-+	struct iova *cr_iova;
-+	struct iova *aux_iova;
+-	struct iova *y_iova;
+-	struct iova *cb_iova;
+-	struct iova *cr_iova;
+-	struct iova *aux_iova;
  	struct dma_buf_attachment *y_dmabuf_attachment;
  	struct dma_buf_attachment *cb_dmabuf_attachment;
  	struct dma_buf_attachment *cr_dmabuf_attachment;
-@@ -49,63 +57,6 @@ struct video_frame {
- 	u32 flags;
- };
- 
--struct tegra_vde {
--	void __iomem *sxe;
--	void __iomem *bsev;
--	void __iomem *mbe;
--	void __iomem *ppe;
--	void __iomem *mce;
--	void __iomem *tfe;
--	void __iomem *ppb;
--	void __iomem *vdma;
--	void __iomem *frameid;
--	struct mutex lock;
--	struct miscdevice miscdev;
--	struct reset_control *rst;
--	struct reset_control *rst_mc;
--	struct gen_pool *iram_pool;
--	struct completion decode_completion;
--	struct clk *clk;
--	dma_addr_t iram_lists_addr;
--	u32 *iram;
--};
--
--static __maybe_unused char const *
--tegra_vde_reg_base_name(struct tegra_vde *vde, void __iomem *base)
--{
--	if (vde->sxe == base)
--		return "SXE";
--
--	if (vde->bsev == base)
--		return "BSEV";
--
--	if (vde->mbe == base)
--		return "MBE";
--
--	if (vde->ppe == base)
--		return "PPE";
--
--	if (vde->mce == base)
--		return "MCE";
--
--	if (vde->tfe == base)
--		return "TFE";
--
--	if (vde->ppb == base)
--		return "PPB";
--
--	if (vde->vdma == base)
--		return "VDMA";
--
--	if (vde->frameid == base)
--		return "FRAMEID";
--
--	return "???";
--}
--
--#define CREATE_TRACE_POINTS
--#include "trace.h"
--
- static void tegra_vde_writel(struct tegra_vde *vde,
- 			     u32 value, void __iomem *base, u32 offset)
- {
-@@ -543,28 +494,35 @@ static void tegra_vde_decode_frame(struct tegra_vde *vde,
+ 	struct dma_buf_attachment *aux_dmabuf_attachment;
+-	struct sg_table *y_sgt;
+-	struct sg_table *cb_sgt;
+-	struct sg_table *cr_sgt;
+-	struct sg_table *aux_sgt;
+ 	dma_addr_t y_addr;
+ 	dma_addr_t cb_addr;
+ 	dma_addr_t cr_addr;
+@@ -494,22 +487,6 @@ static void tegra_vde_decode_frame(struct tegra_vde *vde,
  			 vde->sxe, 0x00);
  }
  
--static void tegra_vde_detach_and_put_dmabuf(struct dma_buf_attachment *a,
-+static void tegra_vde_detach_and_put_dmabuf(struct tegra_vde *vde,
-+					    enum dma_data_direction dma_dir,
-+					    struct dma_buf_attachment *a,
- 					    struct sg_table *sgt,
--					    enum dma_data_direction dma_dir)
-+					    struct iova *iova)
- {
- 	struct dma_buf *dmabuf = a->dmabuf;
- 
-+	if (vde->domain)
-+		tegra_vde_iommu_unmap(vde, iova);
-+
- 	dma_buf_unmap_attachment(a, sgt, dma_dir);
- 	dma_buf_detach(dmabuf, a);
- 	dma_buf_put(dmabuf);
- }
- 
--static int tegra_vde_attach_dmabuf(struct device *dev,
-+static int tegra_vde_attach_dmabuf(struct tegra_vde *vde,
+-static void tegra_vde_detach_and_put_dmabuf(struct tegra_vde *vde,
+-					    enum dma_data_direction dma_dir,
+-					    struct dma_buf_attachment *a,
+-					    struct sg_table *sgt,
+-					    struct iova *iova)
+-{
+-	struct dma_buf *dmabuf = a->dmabuf;
+-
+-	if (vde->domain)
+-		tegra_vde_iommu_unmap(vde, iova);
+-
+-	dma_buf_unmap_attachment(a, sgt, dma_dir);
+-	dma_buf_detach(dmabuf, a);
+-	dma_buf_put(dmabuf);
+-}
+-
+ static int tegra_vde_attach_dmabuf(struct tegra_vde *vde,
  				   int fd,
  				   unsigned long offset,
- 				   size_t min_size,
+@@ -517,15 +494,11 @@ static int tegra_vde_attach_dmabuf(struct tegra_vde *vde,
  				   size_t align_size,
  				   struct dma_buf_attachment **a,
--				   dma_addr_t *addr,
-+				   dma_addr_t *addrp,
- 				   struct sg_table **s,
-+				   struct iova **iovap,
+ 				   dma_addr_t *addrp,
+-				   struct sg_table **s,
+-				   struct iova **iovap,
  				   size_t *size,
  				   enum dma_data_direction dma_dir)
  {
-+	struct device *dev = vde->miscdev.parent;
- 	struct dma_buf_attachment *attachment;
+ 	struct device *dev = vde->miscdev.parent;
+-	struct dma_buf_attachment *attachment;
  	struct dma_buf *dmabuf;
- 	struct sg_table *sgt;
-@@ -602,13 +560,23 @@ static int tegra_vde_attach_dmabuf(struct device *dev,
- 		goto err_detach;
- 	}
- 
--	if (sgt->nents != 1) {
--		dev_err(dev, "Sparse DMA region is unsupported\n");
-+	if (!vde->domain && sgt->nents > 1) {
-+		dev_err(dev, "Sparse DMA region is unsupported, please enable IOMMU\n");
- 		err = -EINVAL;
- 		goto err_unmap;
- 	}
- 
--	*addr = sg_dma_address(sgt->sgl) + offset;
-+	if (vde->domain) {
-+		err = tegra_vde_iommu_map(vde, sgt, iovap, addrp, dmabuf->size);
-+		if (err) {
-+			dev_err(dev, "IOMMU mapping failed: %d\n", err);
-+			goto err_unmap;
-+		}
-+	} else {
-+		*addrp = sg_dma_address(sgt->sgl);
-+	}
-+
-+	*addrp = *addrp + offset;
- 	*a = attachment;
- 	*s = sgt;
- 
-@@ -627,7 +595,7 @@ static int tegra_vde_attach_dmabuf(struct device *dev,
- 	return err;
- }
- 
--static int tegra_vde_attach_dmabufs_to_frame(struct device *dev,
-+static int tegra_vde_attach_dmabufs_to_frame(struct tegra_vde *vde,
- 					     struct video_frame *frame,
- 					     struct tegra_vde_h264_frame *src,
- 					     enum dma_data_direction dma_dir,
-@@ -636,29 +604,32 @@ static int tegra_vde_attach_dmabufs_to_frame(struct device *dev,
- {
+-	struct sg_table *sgt;
  	int err;
  
--	err = tegra_vde_attach_dmabuf(dev, src->y_fd,
-+	err = tegra_vde_attach_dmabuf(vde, src->y_fd,
+ 	dmabuf = dma_buf_get(fd);
+@@ -546,49 +519,17 @@ static int tegra_vde_attach_dmabuf(struct tegra_vde *vde,
+ 		return -EINVAL;
+ 	}
+ 
+-	attachment = dma_buf_attach(dmabuf, dev);
+-	if (IS_ERR(attachment)) {
+-		dev_err(dev, "Failed to attach dmabuf\n");
+-		err = PTR_ERR(attachment);
++	err = tegra_vde_dmabuf_cache_map(vde, dmabuf, dma_dir, a, addrp);
++	if (err)
+ 		goto err_put;
+-	}
+-
+-	sgt = dma_buf_map_attachment(attachment, dma_dir);
+-	if (IS_ERR(sgt)) {
+-		dev_err(dev, "Failed to get dmabufs sg_table\n");
+-		err = PTR_ERR(sgt);
+-		goto err_detach;
+-	}
+-
+-	if (!vde->domain && sgt->nents > 1) {
+-		dev_err(dev, "Sparse DMA region is unsupported, please enable IOMMU\n");
+-		err = -EINVAL;
+-		goto err_unmap;
+-	}
+-
+-	if (vde->domain) {
+-		err = tegra_vde_iommu_map(vde, sgt, iovap, addrp, dmabuf->size);
+-		if (err) {
+-			dev_err(dev, "IOMMU mapping failed: %d\n", err);
+-			goto err_unmap;
+-		}
+-	} else {
+-		*addrp = sg_dma_address(sgt->sgl);
+-	}
+ 
+ 	*addrp = *addrp + offset;
+-	*a = attachment;
+-	*s = sgt;
+ 
+ 	if (size)
+ 		*size = dmabuf->size - offset;
+ 
+ 	return 0;
+ 
+-err_unmap:
+-	dma_buf_unmap_attachment(attachment, sgt, dma_dir);
+-err_detach:
+-	dma_buf_detach(dmabuf, attachment);
+ err_put:
+ 	dma_buf_put(dmabuf);
+ 
+@@ -608,8 +549,6 @@ static int tegra_vde_attach_dmabufs_to_frame(struct tegra_vde *vde,
  				      src->y_offset, lsize, SZ_256,
  				      &frame->y_dmabuf_attachment,
  				      &frame->y_addr,
- 				      &frame->y_sgt,
-+				      &frame->y_iova,
+-				      &frame->y_sgt,
+-				      &frame->y_iova,
  				      NULL, dma_dir);
  	if (err)
  		return err;
- 
--	err = tegra_vde_attach_dmabuf(dev, src->cb_fd,
-+	err = tegra_vde_attach_dmabuf(vde, src->cb_fd,
+@@ -618,8 +557,6 @@ static int tegra_vde_attach_dmabufs_to_frame(struct tegra_vde *vde,
  				      src->cb_offset, csize, SZ_256,
  				      &frame->cb_dmabuf_attachment,
  				      &frame->cb_addr,
- 				      &frame->cb_sgt,
-+				      &frame->cb_iova,
+-				      &frame->cb_sgt,
+-				      &frame->cb_iova,
  				      NULL, dma_dir);
  	if (err)
  		goto err_release_y;
- 
--	err = tegra_vde_attach_dmabuf(dev, src->cr_fd,
-+	err = tegra_vde_attach_dmabuf(vde, src->cr_fd,
+@@ -628,8 +565,6 @@ static int tegra_vde_attach_dmabufs_to_frame(struct tegra_vde *vde,
  				      src->cr_offset, csize, SZ_256,
  				      &frame->cr_dmabuf_attachment,
  				      &frame->cr_addr,
- 				      &frame->cr_sgt,
-+				      &frame->cr_iova,
+-				      &frame->cr_sgt,
+-				      &frame->cr_iova,
  				      NULL, dma_dir);
  	if (err)
  		goto err_release_cb;
-@@ -668,11 +639,12 @@ static int tegra_vde_attach_dmabufs_to_frame(struct device *dev,
- 		return 0;
- 	}
- 
--	err = tegra_vde_attach_dmabuf(dev, src->aux_fd,
-+	err = tegra_vde_attach_dmabuf(vde, src->aux_fd,
+@@ -643,8 +578,6 @@ static int tegra_vde_attach_dmabufs_to_frame(struct tegra_vde *vde,
  				      src->aux_offset, csize, SZ_256,
  				      &frame->aux_dmabuf_attachment,
  				      &frame->aux_addr,
- 				      &frame->aux_sgt,
-+				      &frame->aux_iova,
+-				      &frame->aux_sgt,
+-				      &frame->aux_iova,
  				      NULL, dma_dir);
  	if (err)
  		goto err_release_cr;
-@@ -680,34 +652,49 @@ static int tegra_vde_attach_dmabufs_to_frame(struct device *dev,
+@@ -652,20 +585,11 @@ static int tegra_vde_attach_dmabufs_to_frame(struct tegra_vde *vde,
  	return 0;
  
  err_release_cr:
--	tegra_vde_detach_and_put_dmabuf(frame->cr_dmabuf_attachment,
--					frame->cr_sgt, dma_dir);
-+	tegra_vde_detach_and_put_dmabuf(vde, dma_dir,
-+					frame->cr_dmabuf_attachment,
-+					frame->cr_sgt,
-+					frame->cr_iova);
+-	tegra_vde_detach_and_put_dmabuf(vde, dma_dir,
+-					frame->cr_dmabuf_attachment,
+-					frame->cr_sgt,
+-					frame->cr_iova);
++	tegra_vde_dmabuf_cache_unmap(vde, frame->cr_dmabuf_attachment, true);
  err_release_cb:
--	tegra_vde_detach_and_put_dmabuf(frame->cb_dmabuf_attachment,
--					frame->cb_sgt, dma_dir);
-+	tegra_vde_detach_and_put_dmabuf(vde, dma_dir,
-+					frame->cb_dmabuf_attachment,
-+					frame->cb_sgt,
-+					frame->cb_iova);
+-	tegra_vde_detach_and_put_dmabuf(vde, dma_dir,
+-					frame->cb_dmabuf_attachment,
+-					frame->cb_sgt,
+-					frame->cb_iova);
++	tegra_vde_dmabuf_cache_unmap(vde, frame->cb_dmabuf_attachment, true);
  err_release_y:
--	tegra_vde_detach_and_put_dmabuf(frame->y_dmabuf_attachment,
--					frame->y_sgt, dma_dir);
-+	tegra_vde_detach_and_put_dmabuf(vde, dma_dir,
-+					frame->y_dmabuf_attachment,
-+					frame->y_sgt,
-+					frame->y_iova);
+-	tegra_vde_detach_and_put_dmabuf(vde, dma_dir,
+-					frame->y_dmabuf_attachment,
+-					frame->y_sgt,
+-					frame->y_iova);
++	tegra_vde_dmabuf_cache_unmap(vde, frame->y_dmabuf_attachment, true);
  
  	return err;
  }
- 
--static void tegra_vde_release_frame_dmabufs(struct video_frame *frame,
-+static void tegra_vde_release_frame_dmabufs(struct tegra_vde *vde,
-+					    struct video_frame *frame,
+@@ -673,28 +597,16 @@ static int tegra_vde_attach_dmabufs_to_frame(struct tegra_vde *vde,
+ static void tegra_vde_release_frame_dmabufs(struct tegra_vde *vde,
+ 					    struct video_frame *frame,
  					    enum dma_data_direction dma_dir,
- 					    bool baseline_profile)
+-					    bool baseline_profile)
++					    bool baseline_profile,
++					    bool release)
  {
  	if (!baseline_profile)
--		tegra_vde_detach_and_put_dmabuf(frame->aux_dmabuf_attachment,
--						frame->aux_sgt, dma_dir);
+-		tegra_vde_detach_and_put_dmabuf(vde, dma_dir,
+-						frame->aux_dmabuf_attachment,
+-						frame->aux_sgt,
+-						frame->aux_iova);
 -
--	tegra_vde_detach_and_put_dmabuf(frame->cr_dmabuf_attachment,
--					frame->cr_sgt, dma_dir);
+-	tegra_vde_detach_and_put_dmabuf(vde, dma_dir,
+-					frame->cr_dmabuf_attachment,
+-					frame->cr_sgt,
+-					frame->cr_iova);
 -
--	tegra_vde_detach_and_put_dmabuf(frame->cb_dmabuf_attachment,
--					frame->cb_sgt, dma_dir);
+-	tegra_vde_detach_and_put_dmabuf(vde, dma_dir,
+-					frame->cb_dmabuf_attachment,
+-					frame->cb_sgt,
+-					frame->cb_iova);
 -
--	tegra_vde_detach_and_put_dmabuf(frame->y_dmabuf_attachment,
--					frame->y_sgt, dma_dir);
-+		tegra_vde_detach_and_put_dmabuf(vde, dma_dir,
-+						frame->aux_dmabuf_attachment,
-+						frame->aux_sgt,
-+						frame->aux_iova);
+-	tegra_vde_detach_and_put_dmabuf(vde, dma_dir,
+-					frame->y_dmabuf_attachment,
+-					frame->y_sgt,
+-					frame->y_iova);
++		tegra_vde_dmabuf_cache_unmap(vde, frame->aux_dmabuf_attachment,
++					     release);
 +
-+	tegra_vde_detach_and_put_dmabuf(vde, dma_dir,
-+					frame->cr_dmabuf_attachment,
-+					frame->cr_sgt,
-+					frame->cr_iova);
-+
-+	tegra_vde_detach_and_put_dmabuf(vde, dma_dir,
-+					frame->cb_dmabuf_attachment,
-+					frame->cb_sgt,
-+					frame->cb_iova);
-+
-+	tegra_vde_detach_and_put_dmabuf(vde, dma_dir,
-+					frame->y_dmabuf_attachment,
-+					frame->y_sgt,
-+					frame->y_iova);
++	tegra_vde_dmabuf_cache_unmap(vde, frame->cr_dmabuf_attachment, release);
++	tegra_vde_dmabuf_cache_unmap(vde, frame->cb_dmabuf_attachment, release);
++	tegra_vde_dmabuf_cache_unmap(vde, frame->y_dmabuf_attachment, release);
  }
  
  static int tegra_vde_validate_frame(struct device *dev,
-@@ -800,6 +787,7 @@ static int tegra_vde_ioctl_decode_h264(struct tegra_vde *vde,
+@@ -786,8 +698,6 @@ static int tegra_vde_ioctl_decode_h264(struct tegra_vde *vde,
+ 	struct tegra_vde_h264_frame __user *frames_user;
  	struct video_frame *dpb_frames;
  	struct dma_buf_attachment *bitstream_data_dmabuf_attachment;
- 	struct sg_table *bitstream_sgt;
-+	struct iova *bitstream_iova;
+-	struct sg_table *bitstream_sgt;
+-	struct iova *bitstream_iova;
  	enum dma_data_direction dma_dir;
  	dma_addr_t bitstream_data_addr;
  	dma_addr_t bsev_ptr;
-@@ -819,12 +807,13 @@ static int tegra_vde_ioctl_decode_h264(struct tegra_vde *vde,
- 	if (ret)
- 		return ret;
- 
--	ret = tegra_vde_attach_dmabuf(dev, ctx.bitstream_data_fd,
-+	ret = tegra_vde_attach_dmabuf(vde, ctx.bitstream_data_fd,
- 				      ctx.bitstream_data_offset,
+@@ -812,8 +722,6 @@ static int tegra_vde_ioctl_decode_h264(struct tegra_vde *vde,
  				      SZ_16K, SZ_16K,
  				      &bitstream_data_dmabuf_attachment,
  				      &bitstream_data_addr,
- 				      &bitstream_sgt,
-+				      &bitstream_iova,
+-				      &bitstream_sgt,
+-				      &bitstream_iova,
  				      &bitstream_data_size,
  				      DMA_TO_DEVICE);
  	if (ret)
-@@ -866,7 +855,7 @@ static int tegra_vde_ioctl_decode_h264(struct tegra_vde *vde,
- 
+@@ -944,7 +852,7 @@ static int tegra_vde_ioctl_decode_h264(struct tegra_vde *vde,
  		dma_dir = (i == 0) ? DMA_FROM_DEVICE : DMA_TO_DEVICE;
  
--		ret = tegra_vde_attach_dmabufs_to_frame(dev, &dpb_frames[i],
-+		ret = tegra_vde_attach_dmabufs_to_frame(vde, &dpb_frames[i],
- 							&frames[i], dma_dir,
- 							ctx.baseline_profile,
- 							lsize, csize);
-@@ -954,7 +943,7 @@ static int tegra_vde_ioctl_decode_h264(struct tegra_vde *vde,
- 	while (i--) {
- 		dma_dir = (i == 0) ? DMA_FROM_DEVICE : DMA_TO_DEVICE;
- 
--		tegra_vde_release_frame_dmabufs(&dpb_frames[i], dma_dir,
-+		tegra_vde_release_frame_dmabufs(vde, &dpb_frames[i], dma_dir,
- 						ctx.baseline_profile);
+ 		tegra_vde_release_frame_dmabufs(vde, &dpb_frames[i], dma_dir,
+-						ctx.baseline_profile);
++						ctx.baseline_profile, ret != 0);
  	}
  
-@@ -965,8 +954,10 @@ static int tegra_vde_ioctl_decode_h264(struct tegra_vde *vde,
+ free_dpb_frames:
+@@ -954,10 +862,8 @@ static int tegra_vde_ioctl_decode_h264(struct tegra_vde *vde,
  	kfree(frames);
  
  release_bitstream_dmabuf:
--	tegra_vde_detach_and_put_dmabuf(bitstream_data_dmabuf_attachment,
--					bitstream_sgt, DMA_TO_DEVICE);
-+	tegra_vde_detach_and_put_dmabuf(vde, DMA_TO_DEVICE,
-+					bitstream_data_dmabuf_attachment,
-+					bitstream_sgt,
-+					bitstream_iova);
+-	tegra_vde_detach_and_put_dmabuf(vde, DMA_TO_DEVICE,
+-					bitstream_data_dmabuf_attachment,
+-					bitstream_sgt,
+-					bitstream_iova);
++	tegra_vde_dmabuf_cache_unmap(vde, bitstream_data_dmabuf_attachment,
++				     ret != 0);
  
  	return ret;
  }
-@@ -1176,10 +1167,16 @@ static int tegra_vde_probe(struct platform_device *pdev)
- 	vde->miscdev.fops = &tegra_vde_fops;
- 	vde->miscdev.parent = dev;
+@@ -979,9 +885,21 @@ static long tegra_vde_unlocked_ioctl(struct file *filp,
+ 	return -ENOTTY;
+ }
  
-+	err = tegra_vde_iommu_init(vde);
-+	if (err) {
-+		dev_err(dev, "Failed to initialize IOMMU: %d\n", err);
-+		goto err_gen_free;
-+	}
-+
- 	err = misc_register(&vde->miscdev);
- 	if (err) {
- 		dev_err(dev, "Failed to register misc device: %d\n", err);
--		goto err_gen_free;
-+		goto err_deinit_iommu;
- 	}
- 
- 	pm_runtime_enable(dev);
-@@ -1197,6 +1194,9 @@ static int tegra_vde_probe(struct platform_device *pdev)
- err_misc_unreg:
- 	misc_deregister(&vde->miscdev);
- 
-+err_deinit_iommu:
-+	tegra_vde_iommu_deinit(vde);
-+
- err_gen_free:
- 	gen_pool_free(vde->iram_pool, (unsigned long)vde->iram,
- 		      gen_pool_size(vde->iram_pool));
-@@ -1221,6 +1221,8 @@ static int tegra_vde_remove(struct platform_device *pdev)
- 
- 	misc_deregister(&vde->miscdev);
- 
-+	tegra_vde_iommu_deinit(vde);
-+
- 	gen_pool_free(vde->iram_pool, (unsigned long)vde->iram,
- 		      gen_pool_size(vde->iram_pool));
- 
-diff --git a/drivers/staging/media/tegra-vde/vde.h b/drivers/staging/media/tegra-vde/vde.h
-new file mode 100644
-index 000000000000..a4ac466cf9e2
---- /dev/null
-+++ b/drivers/staging/media/tegra-vde/vde.h
-@@ -0,0 +1,91 @@
-+/* SPDX-License-Identifier: GPL-2.0+ */
-+/*
-+ * NVIDIA Tegra Video decoder driver
-+ *
-+ * Copyright (C) 2016-2019 GRATE-DRIVER project
-+ */
-+
-+#ifndef TEGRA_VDE_H
-+#define TEGRA_VDE_H
-+
-+#include <linux/completion.h>
-+#include <linux/miscdevice.h>
-+#include <linux/mutex.h>
-+#include <linux/types.h>
-+#include <linux/iova.h>
-+
-+struct clk;
-+struct gen_pool;
-+struct iommu_group;
-+struct iommu_domain;
-+struct reset_control;
-+
-+struct tegra_vde {
-+	void __iomem *sxe;
-+	void __iomem *bsev;
-+	void __iomem *mbe;
-+	void __iomem *ppe;
-+	void __iomem *mce;
-+	void __iomem *tfe;
-+	void __iomem *ppb;
-+	void __iomem *vdma;
-+	void __iomem *frameid;
-+	struct mutex lock;
-+	struct miscdevice miscdev;
-+	struct reset_control *rst;
-+	struct reset_control *rst_mc;
-+	struct gen_pool *iram_pool;
-+	struct completion decode_completion;
-+	struct clk *clk;
-+	struct iommu_domain *domain;
-+	struct iommu_group *group;
-+	struct iova_domain iova;
-+	struct iova *iova_resv_static_addresses;
-+	struct iova *iova_resv_last_page;
-+	dma_addr_t iram_lists_addr;
-+	u32 *iram;
-+};
-+
-+int tegra_vde_iommu_init(struct tegra_vde *vde);
-+void tegra_vde_iommu_deinit(struct tegra_vde *vde);
-+int tegra_vde_iommu_map(struct tegra_vde *vde,
-+			struct sg_table *sgt,
-+			struct iova **iovap,
-+			dma_addr_t *addrp,
-+			size_t size);
-+void tegra_vde_iommu_unmap(struct tegra_vde *vde, struct iova *iova);
-+
-+static __maybe_unused char const *
-+tegra_vde_reg_base_name(struct tegra_vde *vde, void __iomem *base)
++static int tegra_vde_release_file(struct inode *inode, struct file *filp)
 +{
-+	if (vde->sxe == base)
-+		return "SXE";
++	struct miscdevice *miscdev = filp->private_data;
++	struct tegra_vde *vde = container_of(miscdev, struct tegra_vde,
++					     miscdev);
 +
-+	if (vde->bsev == base)
-+		return "BSEV";
++	tegra_vde_dmabuf_cache_unmap_sync(vde);
 +
-+	if (vde->mbe == base)
-+		return "MBE";
-+
-+	if (vde->ppe == base)
-+		return "PPE";
-+
-+	if (vde->mce == base)
-+		return "MCE";
-+
-+	if (vde->tfe == base)
-+		return "TFE";
-+
-+	if (vde->ppb == base)
-+		return "PPB";
-+
-+	if (vde->vdma == base)
-+		return "VDMA";
-+
-+	if (vde->frameid == base)
-+		return "FRAMEID";
-+
-+	return "???";
++	return 0;
 +}
 +
-+#endif /* TEGRA_VDE_H */
+ static const struct file_operations tegra_vde_fops = {
+ 	.owner		= THIS_MODULE,
+ 	.unlocked_ioctl	= tegra_vde_unlocked_ioctl,
++	.release	= tegra_vde_release_file,
+ };
+ 
+ static irqreturn_t tegra_vde_isr(int irq, void *data)
+@@ -1159,6 +1077,8 @@ static int tegra_vde_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 	}
+ 
++	INIT_LIST_HEAD(&vde->map_list);
++	mutex_init(&vde->map_lock);
+ 	mutex_init(&vde->lock);
+ 	init_completion(&vde->decode_completion);
+ 
+@@ -1221,6 +1141,7 @@ static int tegra_vde_remove(struct platform_device *pdev)
+ 
+ 	misc_deregister(&vde->miscdev);
+ 
++	tegra_vde_dmabuf_cache_unmap_all(vde);
+ 	tegra_vde_iommu_deinit(vde);
+ 
+ 	gen_pool_free(vde->iram_pool, (unsigned long)vde->iram,
+diff --git a/drivers/staging/media/tegra-vde/vde.h b/drivers/staging/media/tegra-vde/vde.h
+index a4ac466cf9e2..d369f1466bc7 100644
+--- a/drivers/staging/media/tegra-vde/vde.h
++++ b/drivers/staging/media/tegra-vde/vde.h
+@@ -9,16 +9,20 @@
+ #define TEGRA_VDE_H
+ 
+ #include <linux/completion.h>
++#include <linux/dma-direction.h>
++#include <linux/list.h>
+ #include <linux/miscdevice.h>
+ #include <linux/mutex.h>
+ #include <linux/types.h>
+ #include <linux/iova.h>
+ 
+ struct clk;
++struct dma_buf;
+ struct gen_pool;
+ struct iommu_group;
+ struct iommu_domain;
+ struct reset_control;
++struct dma_buf_attachment;
+ 
+ struct tegra_vde {
+ 	void __iomem *sxe;
+@@ -31,6 +35,8 @@ struct tegra_vde {
+ 	void __iomem *vdma;
+ 	void __iomem *frameid;
+ 	struct mutex lock;
++	struct mutex map_lock;
++	struct list_head map_list;
+ 	struct miscdevice miscdev;
+ 	struct reset_control *rst;
+ 	struct reset_control *rst_mc;
+@@ -51,10 +57,20 @@ void tegra_vde_iommu_deinit(struct tegra_vde *vde);
+ int tegra_vde_iommu_map(struct tegra_vde *vde,
+ 			struct sg_table *sgt,
+ 			struct iova **iovap,
+-			dma_addr_t *addrp,
+ 			size_t size);
+ void tegra_vde_iommu_unmap(struct tegra_vde *vde, struct iova *iova);
+ 
++int tegra_vde_dmabuf_cache_map(struct tegra_vde *vde,
++			       struct dma_buf *dmabuf,
++			       enum dma_data_direction dma_dir,
++			       struct dma_buf_attachment **ap,
++			       dma_addr_t *addrp);
++void tegra_vde_dmabuf_cache_unmap(struct tegra_vde *vde,
++				  struct dma_buf_attachment *a,
++				  bool release);
++void tegra_vde_dmabuf_cache_unmap_sync(struct tegra_vde *vde);
++void tegra_vde_dmabuf_cache_unmap_all(struct tegra_vde *vde);
++
+ static __maybe_unused char const *
+ tegra_vde_reg_base_name(struct tegra_vde *vde, void __iomem *base)
+ {
 -- 
 2.22.0
 
