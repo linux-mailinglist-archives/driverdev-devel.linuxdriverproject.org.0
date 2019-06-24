@@ -1,77 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 01E3050175
-	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Jun 2019 07:49:26 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 006CA85462;
-	Mon, 24 Jun 2019 05:49:24 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hVen4AkvcvnU; Mon, 24 Jun 2019 05:49:23 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0AB71854E7;
-	Mon, 24 Jun 2019 05:49:22 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DAB8C1BF470
- for <devel@linuxdriverproject.org>; Mon, 24 Jun 2019 05:49:19 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id CCA8350176
+	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Jun 2019 07:49:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D7B3F86F8D
- for <devel@linuxdriverproject.org>; Mon, 24 Jun 2019 05:49:19 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AFA92870D7;
+	Mon, 24 Jun 2019 05:49:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id T+leSD-ydIZg; Mon, 24 Jun 2019 05:49:26 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id F325086FE7;
+	Mon, 24 Jun 2019 05:49:24 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5A7E21BF470
+ for <devel@linuxdriverproject.org>; Mon, 24 Jun 2019 05:49:23 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4CB0885507
+ for <devel@linuxdriverproject.org>; Mon, 24 Jun 2019 05:49:23 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vO6Z6-8Y9V1I for <devel@linuxdriverproject.org>;
- Mon, 24 Jun 2019 05:49:19 +0000 (UTC)
+ with ESMTP id c-3SvWtFhBnD for <devel@linuxdriverproject.org>;
+ Mon, 24 Jun 2019 05:49:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
- [209.85.215.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 57C1186EC0
- for <devel@driverdev.osuosl.org>; Mon, 24 Jun 2019 05:49:19 +0000 (UTC)
-Received: by mail-pg1-f195.google.com with SMTP id v9so6466286pgr.13
- for <devel@driverdev.osuosl.org>; Sun, 23 Jun 2019 22:49:19 -0700 (PDT)
+Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
+ [209.85.214.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id EBB3E854C9
+ for <devel@driverdev.osuosl.org>; Mon, 24 Jun 2019 05:49:21 +0000 (UTC)
+Received: by mail-pl1-f195.google.com with SMTP id cl9so6216666plb.10
+ for <devel@driverdev.osuosl.org>; Sun, 23 Jun 2019 22:49:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=I+U+TqvFI5BLpsVp2wI2BsXk4imVMuhF1vByBGFqPy0=;
- b=oWGJrRA3x3C0rjXX9K3uVFkJmNc4WOI20xsezgxRsfV3VPY0E4MzU6GWY2YXP8WDF3
- YmmQmzT58wQhAoLYhzsKE7VLFhvFdhU7Vi3+bJxqA38goA1YiW67E3hxThF0MyijxGmM
- 5sHt9RC/9nszUjptOMtonpZG380h3nC8jjSYF1T0GQItejjujxWgBtnXrnn9l8lSm1rv
- 6sbrkRDixS+Zlqe6szAB0V/PltUvtynM+QB7ior40BTl8D4VpaM6akp9u3/+yMBuZKKx
- +LZr9R4yxzZwZlq38PlVFuiFBzLkHAzTEIexOPKGk5Tc58syVjK2gjgW4jUlQNFdy9iN
- 60iQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=T3yTGBblTS4c64HK8xXkYWtyShfHDLEszEIdDwn6Qi0=;
+ b=F9V5cseKeQTpASllhyJ7Aw+bE/BwvZCww5kqq/80mjF7I2voYfFOIFB3zgYi5QslBr
+ aXNPUdqA1F6xceVLf8bbrkHDMewH61+oU1lzRqYQKe9fPnsq0ZX6qdlSPi5hVTqhPwFg
+ Tcj/LNBxTOw6BtsimxZZUQgxlepbsBi0zYzDCt5qtoLxu/cm3A0cFzG3vRxXI+KBgfu4
+ CwoNO1Fz/mcItsJnJuoCBbFZXu0uaxWIIwcyCf90NFOexnuC8Wh8HymnBxfnzAUBoR0R
+ ai6Akz1haA2lpqMbc3I0Y3NkRGZIsXbW1VEWDKqFuM+iYpdjgiPGYrlQGezY2dqVxu3K
+ GPkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=I+U+TqvFI5BLpsVp2wI2BsXk4imVMuhF1vByBGFqPy0=;
- b=U51vA0rLviNtgCqfenPzWjhKt3LJPKqcoGjPuqcewzeswNt+vmHzr30LG6L5KQkhZo
- gS49X+oeI/2gNh9PCxLMvpA2BKDO8RjMjcv4RfDcupQ+FTUY6QT4UVyjYOOljvh49gTv
- 0YjuwzlmWgV72E0hEA66L84dwqC0NmRt4diWzRP/TmdIcUIBlkwMjgC39q1JhX+Ayzs5
- 5IqNJOPZ1mVkZWPRzvYAE7ny8LLRs3dwF2pxRVDQzO0HB5hU++THXFHtR+PP7zfto4av
- +NrI2K75st0N8fT45GNtLPkKRi4RjXpY/De0UrW/swsxjqXQFmQ1Z2k6fAAaOV3kfeEO
- Cosw==
-X-Gm-Message-State: APjAAAUOO11HMZWaBJJEnXPDswM3IrVt3cBUJQlbAjgoZx/Pe57cOtMr
- mehaTeZxEb27Col84rMU3jM=
-X-Google-Smtp-Source: APXvYqwu3qdYUeXq+9WdICJUp37Zkga41Q4dMykyCM0MSPxp2IM/3l+Ocz5sg0ABbKnua4yUG+YcOQ==
-X-Received: by 2002:a63:511b:: with SMTP id f27mr30686473pgb.135.1561355358889; 
- Sun, 23 Jun 2019 22:49:18 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=T3yTGBblTS4c64HK8xXkYWtyShfHDLEszEIdDwn6Qi0=;
+ b=lSvvnGa+TPOd33r8G6/f+Cg2hj3NTKh+ONu1RzQzL2ykqJq8Ng9e1gVmBBwC8IymuA
+ wDaMjglqfC1vkxWCjZQKA5bzh+xH/jHoAp006r+vWJAP/lLBt1e6lJ1aY5Y3smMfc5XT
+ 2k7vIP2hgvrFVXyp7zyZIwh0VHgSSU1t8cG4ezlKT5kPthQSE/jNzHrnjzSnkRcYi76Q
+ JxWglsOVuVRjSQi6veKRyX5lpMQN/9p7qtJi/nchqeO67amVhC0qHN12ZEdT/830MhR5
+ jRey4a4ZtHNCTKxgu8CeV51hYZcHkSLdtmLmAGnvIve1IAUT53h7bybZ2wE1Epmc9bJv
+ /geQ==
+X-Gm-Message-State: APjAAAVNzwqDE0zmECg1qu8MyrHI8wsqDFmGL83E9ClBBPT1Xy+GDVGL
+ kvcflyPlW5bbl9jg6Hx0lMc=
+X-Google-Smtp-Source: APXvYqwQKjALa7tLacLtLZWYxjdkyQoKV8VGQNuQOYnqU/hk2Zymw11nNLrUUWgFHgDgz0qrfg8QAw==
+X-Received: by 2002:a17:902:74c7:: with SMTP id
+ f7mr10463040plt.329.1561355361612; 
+ Sun, 23 Jun 2019 22:49:21 -0700 (PDT)
 Received: from localhost.localdomain ([122.163.71.137])
- by smtp.gmail.com with ESMTPSA id s43sm11908182pjb.10.2019.06.23.22.49.16
+ by smtp.gmail.com with ESMTPSA id s43sm11908182pjb.10.2019.06.23.22.49.19
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Sun, 23 Jun 2019 22:49:18 -0700 (PDT)
+ Sun, 23 Jun 2019 22:49:21 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
  larry.finger@lwfinger.net, florian.c.schilhabel@googlemail.com
-Subject: [PATCH 01/10] staging: rtl8712: Change return values in
- r8712_init_cmd_priv()
-Date: Mon, 24 Jun 2019 11:18:54 +0530
-Message-Id: <20190624054903.2673-1-nishkadg.linux@gmail.com>
+Subject: [PATCH 02/10] staging: rtl8712: Replace function r8712_init_evt_priv()
+Date: Mon, 24 Jun 2019 11:18:55 +0530
+Message-Id: <20190624054903.2673-2-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
+In-Reply-To: <20190624054903.2673-1-nishkadg.linux@gmail.com>
+References: <20190624054903.2673-1-nishkadg.linux@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -91,58 +93,59 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change return values in r8712_init_cmd_priv from _SUCCESS/_FAIL to
-0/-ENOMEM. Modify call site accordingly.
+Remove function r8712_init_evt_priv as all it does is call
+_init_evt_priv.
+Rename _init_evt_priv to r8712_init_evt_priv to maintain compatibility
+with call sites.
+Change type of new r8712_init_evt_priv from static to non-static as
+original r8712_init_evt_priv was non-static.
+Change return type of new r8712_init_evt_priv to int as original had
+return type u32 but new (formerly _init_evt_priv) had return type sint.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/rtl8712/os_intfs.c    | 2 +-
- drivers/staging/rtl8712/rtl871x_cmd.c | 6 +++---
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ drivers/staging/rtl8712/rtl871x_cmd.c | 7 +------
+ drivers/staging/rtl8712/rtl871x_cmd.h | 2 +-
+ 2 files changed, 2 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/os_intfs.c b/drivers/staging/rtl8712/os_intfs.c
-index 1653b36c4bfd..ef9e9634b298 100644
---- a/drivers/staging/rtl8712/os_intfs.c
-+++ b/drivers/staging/rtl8712/os_intfs.c
-@@ -297,7 +297,7 @@ static u8 init_default_value(struct _adapter *padapter)
- 
- u8 r8712_init_drv_sw(struct _adapter *padapter)
- {
--	if ((r8712_init_cmd_priv(&padapter->cmdpriv)) == _FAIL)
-+	if (r8712_init_cmd_priv(&padapter->cmdpriv))
- 		return _FAIL;
- 	padapter->cmdpriv.padapter = padapter;
- 	if ((r8712_init_evt_priv(&padapter->evtpriv)) == _FAIL)
 diff --git a/drivers/staging/rtl8712/rtl871x_cmd.c b/drivers/staging/rtl8712/rtl871x_cmd.c
-index c6643c371271..68efba177ab4 100644
+index 68efba177ab4..baceb5dbf328 100644
 --- a/drivers/staging/rtl8712/rtl871x_cmd.c
 +++ b/drivers/staging/rtl8712/rtl871x_cmd.c
-@@ -55,7 +55,7 @@ int r8712_init_cmd_priv(struct cmd_priv *pcmdpriv)
- 	pcmdpriv->cmd_allocated_buf = kmalloc(MAX_CMDSZ + CMDBUFF_ALIGN_SZ,
- 					      GFP_ATOMIC);
- 	if (!pcmdpriv->cmd_allocated_buf)
--		return _FAIL;
-+		return -ENOMEM;
- 	pcmdpriv->cmd_buf = pcmdpriv->cmd_allocated_buf  +  CMDBUFF_ALIGN_SZ -
- 			    ((addr_t)(pcmdpriv->cmd_allocated_buf) &
- 			    (CMDBUFF_ALIGN_SZ - 1));
-@@ -63,14 +63,14 @@ int r8712_init_cmd_priv(struct cmd_priv *pcmdpriv)
- 	if (!pcmdpriv->rsp_allocated_buf) {
- 		kfree(pcmdpriv->cmd_allocated_buf);
- 		pcmdpriv->cmd_allocated_buf = NULL;
--		return _FAIL;
-+		return -ENOMEM;
- 	}
- 	pcmdpriv->rsp_buf = pcmdpriv->rsp_allocated_buf  +  4 -
- 			    ((addr_t)(pcmdpriv->rsp_allocated_buf) & 3);
- 	pcmdpriv->cmd_issued_cnt = 0;
- 	pcmdpriv->cmd_done_cnt = 0;
- 	pcmdpriv->rsp_cnt = 0;
--	return _SUCCESS;
-+	return 0;
+@@ -73,7 +73,7 @@ int r8712_init_cmd_priv(struct cmd_priv *pcmdpriv)
+ 	return 0;
  }
  
- static sint _init_evt_priv(struct evt_priv *pevtpriv)
+-static sint _init_evt_priv(struct evt_priv *pevtpriv)
++int r8712_init_evt_priv(struct evt_priv *pevtpriv)
+ {
+ 	/* allocate DMA-able/Non-Page memory for cmd_buf and rsp_buf */
+ 	pevtpriv->event_seq = 0;
+@@ -135,11 +135,6 @@ static struct cmd_obj *_dequeue_cmd(struct  __queue *queue)
+ 	return obj;
+ }
+ 
+-u32 r8712_init_evt_priv(struct evt_priv *pevtpriv)
+-{
+-	return _init_evt_priv(pevtpriv);
+-}
+-
+ void r8712_free_evt_priv(struct evt_priv *pevtpriv)
+ {
+ 	_free_evt_priv(pevtpriv);
+diff --git a/drivers/staging/rtl8712/rtl871x_cmd.h b/drivers/staging/rtl8712/rtl871x_cmd.h
+index 0203037adb7f..4ccd329ae7d5 100644
+--- a/drivers/staging/rtl8712/rtl871x_cmd.h
++++ b/drivers/staging/rtl8712/rtl871x_cmd.h
+@@ -86,7 +86,7 @@ void r8712_free_cmd_obj(struct cmd_obj *pcmd);
+ int r8712_cmd_thread(void *context);
+ int r8712_init_cmd_priv(struct cmd_priv *pcmdpriv);
+ void r8712_free_cmd_priv(struct cmd_priv *pcmdpriv);
+-u32 r8712_init_evt_priv(struct evt_priv *pevtpriv);
++int r8712_init_evt_priv(struct evt_priv *pevtpriv);
+ void r8712_free_evt_priv(struct evt_priv *pevtpriv);
+ 
+ enum rtl871x_drvint_cid {
 -- 
 2.19.1
 
