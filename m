@@ -1,59 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 114FE503C2
-	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Jun 2019 09:39:58 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1C9C55045A
+	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Jun 2019 10:20:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6EC52840BF;
-	Mon, 24 Jun 2019 07:39:56 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AD85387368;
+	Mon, 24 Jun 2019 08:20:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bctVjM3TboAx; Mon, 24 Jun 2019 07:39:55 +0000 (UTC)
+	with ESMTP id BlXHR-lvVRzM; Mon, 24 Jun 2019 08:20:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 395B9840D2;
-	Mon, 24 Jun 2019 07:39:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C6FA58715D;
+	Mon, 24 Jun 2019 08:20:03 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5BFB81BF20F
- for <devel@linuxdriverproject.org>; Mon, 24 Jun 2019 07:39:51 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 28DE41BF37F
+ for <devel@linuxdriverproject.org>; Mon, 24 Jun 2019 08:20:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5951A83F31
- for <devel@linuxdriverproject.org>; Mon, 24 Jun 2019 07:39:51 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 24B7520108
+ for <devel@linuxdriverproject.org>; Mon, 24 Jun 2019 08:20:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PPq4-1dc7Qvd for <devel@linuxdriverproject.org>;
- Mon, 24 Jun 2019 07:39:49 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 64AA3835D2
- for <devel@driverdev.osuosl.org>; Mon, 24 Jun 2019 07:39:49 +0000 (UTC)
-Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 2EEB02B3136D2B09CB17;
- Mon, 24 Jun 2019 15:39:45 +0800 (CST)
-Received: from [10.134.22.195] (10.134.22.195) by smtp.huawei.com
- (10.3.19.213) with Microsoft SMTP Server (TLS) id 14.3.439.0; Mon, 24 Jun
- 2019 15:39:39 +0800
-Subject: Re: [PATCH v2 5/8] staging: erofs: introduce generic decompression
- backend
-To: Gao Xiang <gaoxiang25@huawei.com>
-References: <20190620160719.240682-1-gaoxiang25@huawei.com>
- <20190620160719.240682-6-gaoxiang25@huawei.com>
- <4e3a822e-1c18-122e-9eb1-c4eaf0204e63@huawei.com>
- <348e6203-b1be-1579-dbe9-cbf1a906af6f@huawei.com>
-From: Chao Yu <yuchao0@huawei.com>
-Message-ID: <3414cc67-fd03-7896-7075-ee7beaae66e7@huawei.com>
-Date: Mon, 24 Jun 2019 15:39:37 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
+ with ESMTP id YQbFvbj96sCz for <devel@linuxdriverproject.org>;
+ Mon, 24 Jun 2019 08:20:01 +0000 (UTC)
+X-Greylist: delayed 00:05:32 by SQLgrey-1.7.6
+Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.135])
+ by silver.osuosl.org (Postfix) with ESMTPS id B58E720001
+ for <devel@driverdev.osuosl.org>; Mon, 24 Jun 2019 08:20:00 +0000 (UTC)
+Received: from [192.168.178.70] ([109.104.35.135]) by mrelayeu.kundenserver.de
+ (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
+ 1MYvoW-1i1RTc0Q4G-00UvOE; Mon, 24 Jun 2019 10:13:52 +0200
+Subject: Re: [PATCH] staging: bcm2835-camera: Avoid apotential sleep while
+ holding a spin_lock
+To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>, eric@anholt.net,
+ gregkh@linuxfoundation.org, f.fainelli@gmail.com, rjui@broadcom.com,
+ sbranden@broadcom.com, bcm-kernel-feedback-list@broadcom.com,
+ tuomas.tynkkynen@iki.fi, inf.braun@fau.de, tobias.buettner@fau.de,
+ hofrat@osadl.org
+References: <20190624053351.5217-1-christophe.jaillet@wanadoo.fr>
+From: Stefan Wahren <stefan.wahren@i2se.com>
+Message-ID: <c8e5abba-7441-b201-1618-c92dfdfc7b1c@i2se.com>
+Date: Mon, 24 Jun 2019 10:13:48 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <348e6203-b1be-1579-dbe9-cbf1a906af6f@huawei.com>
-Content-Language: en-US
-X-Originating-IP: [10.134.22.195]
-X-CFilter-Loop: Reflected
+In-Reply-To: <20190624053351.5217-1-christophe.jaillet@wanadoo.fr>
+Content-Language: de-DE
+X-Provags-ID: V03:K1:vvqf8FlBVKwdp6cZb6vSQAVE2D3lZnSKipS/eVDH9d3PZ020dMo
+ 6h2/VXzfCkh/Uy/E/8fUwSV+PQovkrLoOjpeR2r0WXSiFkznkl+e5kwkp5t5uY2iezT6+sG
+ D7gejc2XKkjPlW39HneI77Jx0GRdY8YdR4PHlOiCfTyoujJbgK7Y0nokIBuUL9a8xnyltUx
+ WJ4knFYuNX4FHuFqyq9Kg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:/9eq3i4feL0=:eRzDrEsGUPQ//Q/SZVuBSk
+ omWyDO7g3hYIrnQmyIKg9NcUAsEJ5AuAOxdbo+6yMY/CQKpjfj+eknI1a7QfY2t20Smcqerl1
+ 5AulvqbK/E6S45ZISk5S7o3sACs+y4GWJpHqXdoZKsr8/PAvWFrmLL05On2JLeRfrF62yaP2Q
+ HQUC0DmSEuByXAw1ka00cdaqE1ZCGDUsiky9AToDmNGi/igWw3yhgGJJCKTWgnKHffe2FKzQF
+ XUs4bRzFtwxhIWtNYDCSQPcyUpU3bfpaiEQYXdUA65HF2PHQbWS9phuWyK5gJ0VNUA3HskgVG
+ pFcjR3JVVs1Efig5bOFvlyUfjhYMoN3Pey4PVYJvJbkcDewIKS35I/U6P+HLw40U5bonjz6M8
+ D487mizqrNgcGj1VRtUBQxlJ2/03It/OkwUwiqc39LlwImOKo37CJQDVdY71o35qsKKnP+UrM
+ FtXAEkKVZm2ppxJdiR6FYiB7PQYnab3oFA0JofHbL6idpUwV2QyHd356fgeiSV5KH8aUMphj0
+ zLCVLzve4dDZ/VvcHYJ58YuTG2zRpGl+Y1oA+et9QJlt/r8mQ/H5ITvlwUQfu0zzwNoOG7eJI
+ PD4QolsK1OsKYheOS6d/9v73rd6Cvognh7CBF+EnwbrfOcB7AYQ4LNJxhICYoh3lwPFJkEJ/Z
+ SmOLecKZpQ2T9kIAOUSiClWLdVgS/EUEGivn0bgIlf+vWKwBte3bF3LG9TPb/L98i77x9o8A5
+ bOjEWc5Kq46Y8WraTNLIfuWF+l6Ts/y1Vw9Lc4Q6cLkZNe5oCrXEN/MBDaQ=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,431 +78,32 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Miao Xie <miaoxie@huawei.com>, Chao Yu <chao@kernel.org>,
- LKML <linux-kernel@vger.kernel.org>, Du Wei <weidu.du@huawei.com>,
- Fang Wei <fangwei1@huawei.com>, linux-fsdevel@vger.kernel.org,
- linux-erofs@lists.ozlabs.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: devel@driverdev.osuosl.org, kernel-janitors@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rpi-kernel@lists.infradead.org,
+ Dave Stevenson <dave.stevenson@raspberrypi.org>,
+ linux-arm-kernel@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 2019/6/21 18:42, Gao Xiang wrote:
-> Hi Chao,
-> 
-> On 2019/6/21 17:46, Chao Yu wrote:
->> On 2019/6/21 0:07, Gao Xiang wrote:
->>> This patch adds a new generic decompression framework
->>> in order to replace the old LZ4-specific decompression code.
->>>
->>> Even though LZ4 is still the only supported algorithm, yet
->>> it is more cleaner and easy to integrate new algorithm than
->>> the old almost hard-coded decompression backend.
->>>
->>> Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
->>> ---
->>>  drivers/staging/erofs/Makefile       |   2 +-
->>>  drivers/staging/erofs/compress.h     |  21 ++
->>>  drivers/staging/erofs/decompressor.c | 307 +++++++++++++++++++++++++++
->>>  3 files changed, 329 insertions(+), 1 deletion(-)
->>>  create mode 100644 drivers/staging/erofs/decompressor.c
->>>
->>> diff --git a/drivers/staging/erofs/Makefile b/drivers/staging/erofs/Makefile
->>> index 84b412c7a991..adeb5d6e2668 100644
->>> --- a/drivers/staging/erofs/Makefile
->>> +++ b/drivers/staging/erofs/Makefile
->>> @@ -9,5 +9,5 @@ obj-$(CONFIG_EROFS_FS) += erofs.o
->>>  ccflags-y += -I $(srctree)/$(src)/include
->>>  erofs-objs := super.o inode.o data.o namei.o dir.o utils.o
->>>  erofs-$(CONFIG_EROFS_FS_XATTR) += xattr.o
->>> -erofs-$(CONFIG_EROFS_FS_ZIP) += unzip_vle.o unzip_vle_lz4.o zmap.o
->>> +erofs-$(CONFIG_EROFS_FS_ZIP) += unzip_vle.o unzip_vle_lz4.o zmap.o decompressor.o
->>>  
->>> diff --git a/drivers/staging/erofs/compress.h b/drivers/staging/erofs/compress.h
->>> index 1dcfc3b35118..ebeccb1f4eae 100644
->>> --- a/drivers/staging/erofs/compress.h
->>> +++ b/drivers/staging/erofs/compress.h
->>> @@ -9,6 +9,24 @@
->>>  #ifndef __EROFS_FS_COMPRESS_H
->>>  #define __EROFS_FS_COMPRESS_H
->>>  
->>> +#include "internal.h"
->>> +
->>> +enum {
->>> +	Z_EROFS_COMPRESSION_SHIFTED = Z_EROFS_COMPRESSION_MAX,
->>> +	Z_EROFS_COMPRESSION_RUNTIME_MAX
->>> +};
->>> +
->>> +struct z_erofs_decompress_req {
->>> +	struct page **in, **out;
->>> +
->>> +	unsigned short pageofs_out;
->>> +	unsigned int inputsize, outputsize;
->>> +
->>> +	/* indicate the algorithm will be used for decompression */
->>> +	unsigned int alg;
->>> +	bool inplace_io, partial_decoding;
->>> +};
->>> +
->>>  /*
->>>   * - 0x5A110C8D ('sallocated', Z_EROFS_MAPPING_STAGING) -
->>>   * used to mark temporary allocated pages from other
->>> @@ -36,5 +54,8 @@ static inline bool z_erofs_put_stagingpage(struct list_head *pagepool,
->>>  	return true;
->>>  }
->>>  
->>> +int z_erofs_decompress(struct z_erofs_decompress_req *rq,
->>> +		       struct list_head *pagepool);
->>> +
->>>  #endif
->>>  
->>> diff --git a/drivers/staging/erofs/decompressor.c b/drivers/staging/erofs/decompressor.c
->>> new file mode 100644
->>> index 000000000000..c68d17b579e0
->>> --- /dev/null
->>> +++ b/drivers/staging/erofs/decompressor.c
->>> @@ -0,0 +1,307 @@
->>> +// SPDX-License-Identifier: GPL-2.0
->>> +/*
->>> + * linux/drivers/staging/erofs/decompressor.c
->>> + *
->>> + * Copyright (C) 2019 HUAWEI, Inc.
->>> + *             http://www.huawei.com/
->>> + * Created by Gao Xiang <gaoxiang25@huawei.com>
->>> + */
->>> +#include "compress.h"
->>> +#include <linux/lz4.h>
->>> +
->>> +#ifndef LZ4_DISTANCE_MAX	/* history window size */
->>> +#define LZ4_DISTANCE_MAX 65535	/* set to maximum value by default */
->>> +#endif
->>> +
->>> +#define LZ4_MAX_DISTANCE_PAGES	DIV_ROUND_UP(LZ4_DISTANCE_MAX, PAGE_SIZE)
->>> +
->>> +struct z_erofs_decompressor {
->>> +	/*
->>> +	 * if destpages have sparsed pages, fill them with bounce pages.
->>> +	 * it also check whether destpages indicate continuous physical memory.
->>> +	 */
->>> +	int (*prepare_destpages)(struct z_erofs_decompress_req *rq,
->>> +				 struct list_head *pagepool);
->>> +	int (*decompress)(struct z_erofs_decompress_req *rq, u8 *out);
->>> +	char *name;
->>> +};
->>> +
->>> +static int lz4_prepare_destpages(struct z_erofs_decompress_req *rq,
->>> +				 struct list_head *pagepool)
->>> +{
->>> +	const unsigned int nr =
->>> +		PAGE_ALIGN(rq->pageofs_out + rq->outputsize) >> PAGE_SHIFT;
->>> +	struct page *availables[LZ4_MAX_DISTANCE_PAGES] = { NULL };
->>> +	unsigned long unused[DIV_ROUND_UP(LZ4_MAX_DISTANCE_PAGES,
->>> +					  BITS_PER_LONG)] = { 0 };
->>> +	void *kaddr = NULL;
->>> +	unsigned int i, j, k;
->>> +
->>> +	for (i = 0; i < nr; ++i) {
->>> +		struct page *const page = rq->out[i];
->>> +
->>> +		j = i & (LZ4_MAX_DISTANCE_PAGES - 1);
->>> +		if (availables[j])
->>> +			__set_bit(j, unused);
->>> +
->>> +		if (page) {
->>> +			if (kaddr) {
->>> +				if (kaddr + PAGE_SIZE == page_address(page))
->>> +					kaddr += PAGE_SIZE;
->>> +				else
->>> +					kaddr = NULL;
->>> +			} else if (!i) {
->>> +				kaddr = page_address(page);
->>> +			}
->>> +			continue;
->>> +		}
->>> +		kaddr = NULL;
->>> +
->>> +		k = find_first_bit(unused, LZ4_MAX_DISTANCE_PAGES);
->>> +		if (k < LZ4_MAX_DISTANCE_PAGES) {
->>> +			j = k;
->>> +			get_page(availables[j]);
->>> +		} else {
->>> +			DBG_BUGON(availables[j]);
->>> +
->>> +			if (!list_empty(pagepool)) {
->>> +				availables[j] = lru_to_page(pagepool);
->>> +				list_del(&availables[j]->lru);
->>> +				DBG_BUGON(page_ref_count(availables[j]) != 1);
->>> +			} else {
->>> +				availables[j] = alloc_pages(GFP_KERNEL, 0);
->>> +				if (!availables[j])
->>> +					return -ENOMEM;
->>> +			}
->>> +			availables[j]->mapping = Z_EROFS_MAPPING_STAGING;
->>
->> Could we use __stagingpage_alloc() instead opened codes, there is something
->> different in between them though.
-> 
-> It was written "on propose" since the problem is that currently __stagingpage_alloc()
-> will allocate all pages in GFP_NOFAIL case, but memory allocation failure is accepted
-> here, therefore I open code to aim at introducing new decompression backend.
-> 
-> I will submit another patch after this series to clean up all staging page allocation
-> cases later, which was already on my scheduling list. :)
+Hi Christophe,
 
-Hi Xiang,
+Am 24.06.2019 um 07:33 schrieb Christophe JAILLET:
+> Do not allocate memory with GFP_KERNEL when holding a spin_lock, it may
+> sleep. Use GFP_NOWAIT instead.
+>
+> Fixes: 950fd867c635 ("staging: bcm2835-camera: Replace open-coded idr with a struct idr.")
+> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 
-Yes, I noticed that there is something different in between __stagingpage_alloc
-and opened codes, I think we can change __stagingpage_alloc to accept extra
-parameters for different requirement.
+there has been a fix for this, which isn't upstreamed yet. The preferred 
+solution is to replace the spin_lock with a mutex. Since i'm currently 
+working on this i would take care of this.
 
-But, anyway, I agreed with you that we can clean up with additional patch later. :)
+Sorry about this.
 
-Thanks,
+Stefan
 
-> 
-> Thanks,
-> Gao Xiang
-> 
->>
->> Reviewed-by: Chao Yu <yuchao0@huawei.com>
->>
->> Thanks,
->>
->>> +		}
->>> +		rq->out[i] = availables[j];
->>> +		__clear_bit(j, unused);
->>> +	}
->>> +	return kaddr ? 1 : 0;
->>> +}
->>> +
->>> +static void *generic_copy_inplace_data(struct z_erofs_decompress_req *rq,
->>> +				       u8 *src, unsigned int pageofs_in)
->>> +{
->>> +	/*
->>> +	 * if in-place decompression is ongoing, those decompressed
->>> +	 * pages should be copied in order to avoid being overlapped.
->>> +	 */
->>> +	struct page **in = rq->in;
->>> +	u8 *const tmp = erofs_get_pcpubuf(0);
->>> +	u8 *tmpp = tmp;
->>> +	unsigned int inlen = rq->inputsize - pageofs_in;
->>> +	unsigned int count = min_t(uint, inlen, PAGE_SIZE - pageofs_in);
->>> +
->>> +	while (tmpp < tmp + inlen) {
->>> +		if (!src)
->>> +			src = kmap_atomic(*in);
->>> +		memcpy(tmpp, src + pageofs_in, count);
->>> +		kunmap_atomic(src);
->>> +		src = NULL;
->>> +		tmpp += count;
->>> +		pageofs_in = 0;
->>> +		count = PAGE_SIZE;
->>> +		++in;
->>> +	}
->>> +	return tmp;
->>> +}
->>> +
->>> +static int lz4_decompress(struct z_erofs_decompress_req *rq, u8 *out)
->>> +{
->>> +	unsigned int inputmargin, inlen;
->>> +	u8 *src;
->>> +	bool copied;
->>> +	int ret;
->>> +
->>> +	if (rq->inputsize > PAGE_SIZE)
->>> +		return -ENOTSUPP;
->>> +
->>> +	src = kmap_atomic(*rq->in);
->>> +	inputmargin = 0;
->>> +	while (!src[inputmargin & ~PAGE_MASK])
->>> +		if (!(++inputmargin & ~PAGE_MASK))
->>> +			break;
->>> +
->>> +	if (inputmargin >= rq->inputsize) {
->>> +		kunmap_atomic(src);
->>> +		return -EIO;
->>> +	}
->>> +
->>> +	copied = false;
->>> +	inlen = rq->inputsize - inputmargin;
->>> +	if (rq->inplace_io) {
->>> +		src = generic_copy_inplace_data(rq, src, inputmargin);
->>> +		inputmargin = 0;
->>> +		copied = true;
->>> +	}
->>> +
->>> +	ret = LZ4_decompress_safe_partial(src + inputmargin, out,
->>> +					  inlen, rq->outputsize,
->>> +					  rq->outputsize);
->>> +	if (ret < 0) {
->>> +		errln("%s, failed to decompress, in[%p, %u, %u] out[%p, %u]",
->>> +		      __func__, src + inputmargin, inlen, inputmargin,
->>> +		      out, rq->outputsize);
->>> +		WARN_ON(1);
->>> +		print_hex_dump(KERN_DEBUG, "[ in]: ", DUMP_PREFIX_OFFSET,
->>> +			       16, 1, src + inputmargin, inlen, true);
->>> +		print_hex_dump(KERN_DEBUG, "[out]: ", DUMP_PREFIX_OFFSET,
->>> +			       16, 1, out, rq->outputsize, true);
->>> +		ret = -EIO;
->>> +	}
->>> +
->>> +	if (copied)
->>> +		erofs_put_pcpubuf(src);
->>> +	else
->>> +		kunmap_atomic(src);
->>> +	return ret;
->>> +}
->>> +
->>> +static struct z_erofs_decompressor decompressors[] = {
->>> +	[Z_EROFS_COMPRESSION_SHIFTED] = {
->>> +		.name = "shifted"
->>> +	},
->>> +	[Z_EROFS_COMPRESSION_LZ4] = {
->>> +		.prepare_destpages = lz4_prepare_destpages,
->>> +		.decompress = lz4_decompress,
->>> +		.name = "lz4"
->>> +	},
->>> +};
->>> +
->>> +static void copy_from_pcpubuf(struct page **out, const char *dst,
->>> +			      unsigned short pageofs_out,
->>> +			      unsigned int outputsize)
->>> +{
->>> +	const char *end = dst + outputsize;
->>> +	const unsigned int righthalf = PAGE_SIZE - pageofs_out;
->>> +	const char *cur = dst - pageofs_out;
->>> +
->>> +	while (cur < end) {
->>> +		struct page *const page = *out++;
->>> +
->>> +		if (page) {
->>> +			char *buf = kmap_atomic(page);
->>> +
->>> +			if (cur >= dst) {
->>> +				memcpy(buf, cur, min_t(uint, PAGE_SIZE,
->>> +						       end - cur));
->>> +			} else {
->>> +				memcpy(buf + pageofs_out, cur + pageofs_out,
->>> +				       min_t(uint, righthalf, end - cur));
->>> +			}
->>> +			kunmap_atomic(buf);
->>> +		}
->>> +		cur += PAGE_SIZE;
->>> +	}
->>> +}
->>> +
->>> +static int decompress_generic(struct z_erofs_decompress_req *rq,
->>> +			      struct list_head *pagepool)
->>> +{
->>> +	const unsigned int nrpages_out =
->>> +		PAGE_ALIGN(rq->pageofs_out + rq->outputsize) >> PAGE_SHIFT;
->>> +	const struct z_erofs_decompressor *alg = decompressors + rq->alg;
->>> +	unsigned int dst_maptype;
->>> +	void *dst;
->>> +	int ret;
->>> +
->>> +	if (nrpages_out == 1 && !rq->inplace_io) {
->>> +		DBG_BUGON(!*rq->out);
->>> +		dst = kmap_atomic(*rq->out);
->>> +		dst_maptype = 0;
->>> +		goto dstmap_out;
->>> +	}
->>> +
->>> +	/*
->>> +	 * For the case of small output size (especially much less
->>> +	 * than PAGE_SIZE), memcpy the decompressed data rather than
->>> +	 * compressed data is preferred.
->>> +	 */
->>> +	if (rq->outputsize <= PAGE_SIZE * 7 / 8) {
->>> +		dst = erofs_get_pcpubuf(0);
->>> +
->>> +		rq->inplace_io = false;
->>> +		ret = alg->decompress(rq, dst);
->>> +		if (!ret)
->>> +			copy_from_pcpubuf(rq->out, dst, rq->pageofs_out,
->>> +					  rq->outputsize);
->>> +
->>> +		erofs_put_pcpubuf(dst);
->>> +		return ret;
->>> +	}
->>> +
->>> +	ret = alg->prepare_destpages(rq, pagepool);
->>> +	if (ret < 0) {
->>> +		return ret;
->>> +	} else if (ret) {
->>> +		dst = page_address(*rq->out);
->>> +		dst_maptype = 1;
->>> +		goto dstmap_out;
->>> +	}
->>> +
->>> +	dst = erofs_vmap(rq->out, nrpages_out);
->>> +	if (!dst)
->>> +		return -ENOMEM;
->>> +	dst_maptype = 2;
->>> +
->>> +dstmap_out:
->>> +	ret = alg->decompress(rq, dst + rq->pageofs_out);
->>> +
->>> +	if (!dst_maptype)
->>> +		kunmap_atomic(dst);
->>> +	else if (dst_maptype == 2)
->>> +		erofs_vunmap(dst, nrpages_out);
->>> +	return ret;
->>> +}
->>> +
->>> +static int shifted_decompress(const struct z_erofs_decompress_req *rq,
->>> +			      struct list_head *pagepool)
->>> +{
->>> +	const unsigned int nrpages_out =
->>> +		PAGE_ALIGN(rq->pageofs_out + rq->outputsize) >> PAGE_SHIFT;
->>> +	const unsigned int righthalf = PAGE_SIZE - rq->pageofs_out;
->>> +	unsigned char *src, *dst;
->>> +
->>> +	if (nrpages_out > 2) {
->>> +		DBG_BUGON(1);
->>> +		return -EIO;
->>> +	}
->>> +
->>> +	if (rq->out[0] == *rq->in) {
->>> +		DBG_BUGON(nrpages_out != 1);
->>> +		return 0;
->>> +	}
->>> +
->>> +	src = kmap_atomic(*rq->in);
->>> +	if (!rq->out[0]) {
->>> +		dst = NULL;
->>> +	} else {
->>> +		dst = kmap_atomic(rq->out[0]);
->>> +		memcpy(dst + rq->pageofs_out, src, righthalf);
->>> +	}
->>> +
->>> +	if (rq->out[1] == *rq->in) {
->>> +		memmove(src, src + righthalf, rq->pageofs_out);
->>> +	} else if (nrpages_out == 2) {
->>> +		if (dst)
->>> +			kunmap_atomic(dst);
->>> +		DBG_BUGON(!rq->out[1]);
->>> +		dst = kmap_atomic(rq->out[1]);
->>> +		memcpy(dst, src + righthalf, rq->pageofs_out);
->>> +	}
->>> +	if (dst)
->>> +		kunmap_atomic(dst);
->>> +	kunmap_atomic(src);
->>> +	return 0;
->>> +}
->>> +
->>> +int z_erofs_decompress(struct z_erofs_decompress_req *rq,
->>> +		       struct list_head *pagepool)
->>> +{
->>> +	if (rq->alg == Z_EROFS_COMPRESSION_SHIFTED)
->>> +		return shifted_decompress(rq, pagepool);
->>> +	return decompress_generic(rq, pagepool);
->>> +}
->>> +
->>>
-> .
-> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
