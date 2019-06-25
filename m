@@ -1,66 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3539C522CD
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Jun 2019 07:27:19 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 312FA855D2;
-	Tue, 25 Jun 2019 05:27:17 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dkfm3c+wnPcq; Tue, 25 Jun 2019 05:27:16 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C155D84F57;
-	Tue, 25 Jun 2019 05:27:15 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DDF511BF342
- for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 05:27:10 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id C40E2522BC
+	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Jun 2019 07:18:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id DAA5220501
- for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 05:27:10 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 290062048E;
+	Tue, 25 Jun 2019 05:18:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 9mNYGG0GwbvD; Tue, 25 Jun 2019 05:18:42 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 7E347204FF;
+	Tue, 25 Jun 2019 05:18:39 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1B3E71BF342
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 25 Jun 2019 05:18:36 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0B40985C4A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 25 Jun 2019 05:18:36 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fjUpL9M2Qsme for <devel@linuxdriverproject.org>;
- Tue, 25 Jun 2019 05:27:07 +0000 (UTC)
-X-Greylist: delayed 00:19:23 by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0028.hostedemail.com
- [216.40.44.28])
- by silver.osuosl.org (Postfix) with ESMTPS id 0A89D203A9
- for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 05:27:06 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave02.hostedemail.com (Postfix) with ESMTP id 2D2401800FB73
- for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 05:17:51 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay03.hostedemail.com (Postfix) with ESMTP id 9E83B837F24C;
- Tue, 25 Jun 2019 05:17:48 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 
-X-HE-Tag: spade50_7d8321185044f
-X-Filterd-Recvd-Size: 3418
-Received: from XPS-9350 (cpe-23-242-196-136.socal.res.rr.com [23.242.196.136])
- (Authenticated sender: joe@perches.com)
- by omf16.hostedemail.com (Postfix) with ESMTPA;
- Tue, 25 Jun 2019 05:17:42 +0000 (UTC)
-Message-ID: <45177fdaff2bf2a2538e34dab175488d2ba9a46c.camel@perches.com>
-Subject: Re: [PATCH v4 4/7] lib/hexdump.c: Replace ascii bool in
- hex_dump_to_buffer with flags
-From: Joe Perches <joe@perches.com>
-To: Alastair D'Silva <alastair@d-silva.org>
-Date: Mon, 24 Jun 2019 22:17:40 -0700
-In-Reply-To: <746098160c4ff6527d573d2af23c403b6d4e5b80.camel@d-silva.org>
-References: <20190625031726.12173-1-alastair@au1.ibm.com>
- <20190625031726.12173-5-alastair@au1.ibm.com>
- <3340b520a57e00a483eae170be97316c8d18c22c.camel@perches.com>
- <746098160c4ff6527d573d2af23c403b6d4e5b80.camel@d-silva.org>
-User-Agent: Evolution 3.30.5-0ubuntu0.18.10.1 
+ with ESMTP id dwURHSXgWfVH
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 25 Jun 2019 05:18:34 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ot1-f66.google.com (mail-ot1-f66.google.com
+ [209.85.210.66])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 6641885C47
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 25 Jun 2019 05:18:34 +0000 (UTC)
+Received: by mail-ot1-f66.google.com with SMTP id i8so8828631oth.10
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 24 Jun 2019 22:18:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=JcoYUegS2sB2/g92kOqdOJHrSHMMM9x6C+lFE7yWllk=;
+ b=kkuzvWQ+Exzb3TvfdsVhS1OiXw7w9gygy77XH6qWA5wtcriU8UD+IjbLpRr9DhczxR
+ ZUQXrG8RN8Gp1RMmlgTiBbRE2yPZQJ/y5a3/esfGbrqdKHTCpWpUsE+Nk4l+LSrFiBOu
+ MoPRMaRNfMvdbNhI/XnzrNIUYKSefRHtDpmuK+hAUcTZB3l2oFggPNwdB0Dc0qZQOuIR
+ +ZgJQ8/unKZ/NDFfxOBvS9l7H7gbFamCy7SZY4Dtv2+hLOJPaAFhgh4I03vLFFeePLuQ
+ dH9p4HPeflJhlo0Ms5XC+A+w4Op+vvgzQ5h5+d11Fnlie4TcyrZq17tAGpWlLcukHUiU
+ II3A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=JcoYUegS2sB2/g92kOqdOJHrSHMMM9x6C+lFE7yWllk=;
+ b=eR77FSAswRi19gwbLUhvfBIVokfvR7l9eMK/c2357UkeaHOVz6Nv0mbk7BX+KGokzW
+ x62koyunbYQae0njICh48llWLlVjXv+esHu7RoWGSULeEPTqSvr27o4cgbDv1rnHFkzD
+ d99ShjfaR3UCs/NIRnXBulgvlo+1l4jx6vfpw+PNB8+cQIeMh6L+Cf2rjTLUbKpz//bw
+ JWUFqkZqp1oXmMxEk2xUu7iXFUTmqoFtWSl3OtxI57hrZjJh+3QkWhqCWsO4jhXeqfnC
+ TLicHHpV5wro9V0fIZhfC75l/hvpYhmDLDS/hcwqeP1iQd6lUUi89Z6rHV57ygvqzJyc
+ 8yKA==
+X-Gm-Message-State: APjAAAVLHEmRPITxXCI/ZZ7rirB2Yi6sWCIlR2CdoRD00z6g5S7DLCX4
+ oTCCqbha+arBwG4EHhXL0IQGU675jkiBZhLHClq8Qg==
+X-Google-Smtp-Source: APXvYqyH3h8pTTyTmwvFMP1NuJm93JaDDEVmgTJmkZyyaLg9KlxlnncQWj2geouFY6Bd9lF/Zz6a9RL5p9TiX5+QqBU=
+X-Received: by 2002:a9d:7c83:: with SMTP id q3mr24327161otn.273.1561439913539; 
+ Mon, 24 Jun 2019 22:18:33 -0700 (PDT)
 MIME-Version: 1.0
+References: <20190621061517.24089-1-sergio.paracuellos@gmail.com>
+ <a512ac38-e30f-5011-0764-3029d320f10c@kernel.org>
+ <CAGSetNtcJkjnjO1Ftc01ueMuFMmJEv7HPpmQeSf313Rrbe2O5w@mail.gmail.com>
+ <CAMhs-H_c8sq=mX-rPRDHtkqyRj1fQcSNY_8M7Y5ZGU2FV9_zSA@mail.gmail.com>
+ <24106212-9bf9-867c-fed8-8ad828431cd7@kernel.org>
+In-Reply-To: <24106212-9bf9-867c-fed8-8ad828431cd7@kernel.org>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Tue, 25 Jun 2019 07:18:22 +0200
+Message-ID: <CAMhs-H-0YcipUZ2xWxRTijUDL1F8NMb-gh5WoPcj-jHabbHZJw@mail.gmail.com>
+Subject: Re: [PATCH 0/4] staging: mt7621-pci: Handle minor issues
+To: Greg Ungerer <gerg@kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,68 +88,323 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-fbdev@vger.kernel.org, Stanislaw Gruszka <sgruszka@redhat.com>,
- Petr Mladek <pmladek@suse.com>, David Airlie <airlied@linux.ie>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, devel@driverdev.osuosl.org,
- linux-scsi@vger.kernel.org, Jassi Brar <jassisinghbrar@gmail.com>,
- ath10k@lists.infradead.org, intel-gfx@lists.freedesktop.org,
- Dan Carpenter <dan.carpenter@oracle.com>, Jose Abreu <Jose.Abreu@synopsys.com>,
- Tom Lendacky <thomas.lendacky@amd.com>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- Jani Nikula <jani.nikula@linux.intel.com>, linux-fsdevel@vger.kernel.org,
- Steven Rostedt <rostedt@goodmis.org>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Benson Leung <bleung@chromium.org>, Kalle Valo <kvalo@codeaurora.org>,
- Karsten Keil <isdn@linux-pingi.de>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- Sergey Senozhatsky <sergey.senozhatsky@gmail.com>,
- David Laight <David.Laight@ACULAB.COM>, Daniel Vetter <daniel@ffwll.ch>,
- netdev@vger.kernel.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- "David S. Miller" <davem@davemloft.net>,
- Alexander Viro <viro@zeniv.linux.org.uk>
+Cc: Greg KH <gregkh@linuxfoundation.org>,
+ driverdev-devel@linuxdriverproject.org, Neil Brown <neil@brown.name>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, 2019-06-25 at 15:06 +1000, Alastair D'Silva wrote:
-> On Mon, 2019-06-24 at 22:01 -0700, Joe Perches wrote:
-> > On Tue, 2019-06-25 at 13:17 +1000, Alastair D'Silva wrote:
-> > > From: Alastair D'Silva <alastair@d-silva.org>
-> > > 
-> > > In order to support additional features, rename hex_dump_to_buffer
-> > > to
-> > > hex_dump_to_buffer_ext, and replace the ascii bool parameter with
-> > > flags.
-> > []
-> > > diff --git a/drivers/gpu/drm/i915/intel_engine_cs.c
-> > > b/drivers/gpu/drm/i915/intel_engine_cs.c
-> > []
-> > > @@ -1338,9 +1338,8 @@ static void hexdump(struct drm_printer *m,
-> > > const void *buf, size_t len)
-> > >  		}
-> > >  
-> > >  		WARN_ON_ONCE(hex_dump_to_buffer(buf + pos, len - pos,
-> > > -						rowsize, sizeof(u32),
-> > > -						line, sizeof(line),
-> > > -						false) >=
-> > > sizeof(line));
-> > > +						rowsize, sizeof(u32),
-> > > line,
-> > > +						sizeof(line)) >=
-> > > sizeof(line));
-> > 
-> > Huh?  Why do this?
-[]
-> The change actions Jani's suggestion:
-> https://lkml.org/lkml/2019/6/20/343
+Hi Greg,
 
-I think you need to read this change again.
+On Tue, Jun 25, 2019 at 7:10 AM Greg Ungerer <gerg@kernel.org> wrote:
+>
+> Hi Sergio,
+>
+> On 23/6/19 3:58 pm, Sergio Paracuellos wrote:
+> > On Sun, Jun 23, 2019 at 4:15 AM Brett Neumeier <bneumeier@gmail.com> wrote:
+> >> On Fri, Jun 21, 2019 at 7:35 AM Greg Ungerer <gerg@kernel.org> wrote:
+> >>> On 21/6/19 4:15 pm, Sergio Paracuellos wrote:
+> >>>> This patch series properly handle minor issues in this driver. These are:
+> >>>> * Disable pcie port clock on pci dirver instead of doing it in the phy
+> >>>>     driver. The pci driver is the correct place to do this.
+> >>>> * Add a missing call to phy_exit function to properly handle the function
+> >>>>     'mt7621_pcie_init_port' error path.
+> >>>> * Move driver to init in a later stage using 'module_init' instead of using
+> >>>>     'arch_initcall'.
+> >>>>
+> >>>> Patches are only compile-tested. It would be awasome to be tested before applied
+> >>>> them (mainly the change to 'module_init' stuff).
+> >>
+> >> I have similar results to Greg -- on GnuBee PC1 and PC2, six boot
+> >> attempts each on a kernel built from staging-next, I have four hangs
+> >> and eight successful boots. The hanging patterns are similar to
+> >> previous results. If the full boot logs would be helpful let me know,
+> >> I can provide them.
+> >
+> > Thanks for letting me know. One thing we can try is check init order
+> > in v4.20 kernel. Can you please try to compile pci driver for the
+> > kernel v4.20 tag changing
+> > driver's last line 'arch_initcall' into 'module_init'? Just to know if
+> > at that working driver putting all the stuff in a later stage stills
+> > work as expected.
+> >
+> > Full dmesg's of this v4.20 wih the change would be helpful.
+>
+> Not exactly what you asked for, but just as useful I think.
+> I have a linux-5.1.14 kernel with the linux-4.20 pci-mt7621.c
+> driver in place. That works great, never hangs, always probes
+> PCI and works.
+>
+> If I change the pci-mt7621.c arch_initcall() to module_init(),
+> then I see the PCI probe happen much latter in boot. Running this
+> I have booted about 15 times, no hangs, PCI bus probed and working
+> on every boot.
 
+Perfect. That is exactly what I wanted to know. Thanks for testing this.
 
+>
+> Boot log below.
+>
+> Regards
+> Greg
+
+Best regards,
+    Sergio Paracuellos
+
+>
+>
+>
+> Linux version 5.1.14 (gerg@goober) (gcc version 5.4.0 (GCC)) #2 SMP Tue Jun 25 14:34:27 AEST 2019
+> SoC Type: MediaTek MT7621 ver:1 eco:3
+> printk: bootconsole [early0] enabled
+> CPU0 revision is: 0001992f (MIPS 1004Kc)
+> OF: fdt: No chosen node found, continuing without
+> MIPS: machine is Digi EX15
+> Determined physical RAM map:
+>   memory: 10000000 @ 00000000 (usable)
+> Initrd not found or empty - disabling initrd
+> VPE topology {2,2} total 4
+> Primary instruction cache 32kB, VIPT, 4-way, linesize 32 bytes.
+> Primary data cache 32kB, 4-way, PIPT, no aliases, linesize 32 bytes
+> MIPS secondary cache 256kB, 8-way, linesize 32 bytes.
+> Zone ranges:
+>    Normal   [mem 0x0000000000000000-0x000000000fffffff]
+> Movable zone start for each node
+> Early memory node ranges
+>    node   0: [mem 0x0000000000000000-0x000000000fffffff]
+> Initmem setup node 0 [mem 0x0000000000000000-0x000000000fffffff]
+> random: get_random_bytes called from start_kernel+0xb0/0x51c with crng_init=0
+> percpu: Embedded 15 pages/cpu s30144 r8192 d23104 u61440
+> Built 1 zonelists, mobility grouping on.  Total pages: 65024
+> Kernel command line:  console=ttyS0,115200 ubi.mtd=3 root=/dev/mtdblock5 bootpart=a
+> Dentry cache hash table entries: 32768 (order: 5, 131072 bytes)
+> Inode-cache hash table entries: 16384 (order: 4, 65536 bytes)
+> Writing ErrCtl register=00030517
+> Readback ErrCtl register=00030517
+> Memory: 251176K/262144K available (6464K kernel code, 243K rwdata, 1200K rodata, 272K init, 228K bss, 10968K reserved, 0K cma-reserved)
+> SLUB: HWalign=32, Order=0-3, MinObjects=0, CPUs=4, Nodes=1
+> rcu: Hierarchical RCU implementation.
+> rcu: RCU calculated value of scheduler-enlistment delay is 10 jiffies.
+> NR_IRQS: 256
+> clocksource: GIC: mask: 0xffffffffffffffff max_cycles: 0xcaf478abb4, max_idle_ns: 440795247997 ns
+> sched_clock: 32 bits at 100 Hz, resolution 10000000ns, wraps every 21474836475000000ns
+> Calibrating delay loop... 586.13 BogoMIPS (lpj=2930688)
+> pid_max: default: 32768 minimum: 301
+> Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+> Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+> rcu: Hierarchical SRCU implementation.
+> smp: Bringing up secondary CPUs ...
+> Primary instruction cache 32kB, VIPT, 4-way, linesize 32 bytes.
+> Primary data cache 32kB, 4-way, PIPT, no aliases, linesize 32 bytes
+> MIPS secondary cache 256kB, 8-way, linesize 32 bytes.
+> CPU1 revision is: 0001992f (MIPS 1004Kc)
+> Synchronize counters for CPU 1: done.
+> Primary instruction cache 32kB, VIPT, 4-way, linesize 32 bytes.
+> Primary data cache 32kB, 4-way, PIPT, no aliases, linesize 32 bytes
+> MIPS secondary cache 256kB, 8-way, linesize 32 bytes.
+> CPU2 revision is: 0001992f (MIPS 1004Kc)
+> Synchronize counters for CPU 2: done.
+> Primary instruction cache 32kB, VIPT, 4-way, linesize 32 bytes.
+> Primary data cache 32kB, 4-way, PIPT, no aliases, linesize 32 bytes
+> MIPS secondary cache 256kB, 8-way, linesize 32 bytes.
+> CPU3 revision is: 0001992f (MIPS 1004Kc)
+> Synchronize counters for CPU 3: done.
+> smp: Brought up 1 node, 4 CPUs
+> devtmpfs: initialized
+> clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+> futex hash table entries: 1024 (order: 3, 32768 bytes)
+> pinctrl core: initialized pinctrl subsystem
+> NET: Registered protocol family 16
+> SCSI subsystem initialized
+> usbcore: registered new interface driver usbfs
+> usbcore: registered new interface driver hub
+> usbcore: registered new device driver usb
+> pcf857x 0-0026: probed
+> i2c-mt7621 1e000900.i2c: clock 400KHz, re-start not support
+> clocksource: Switched to clocksource GIC
+> NET: Registered protocol family 2
+> tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 6144 bytes)
+> TCP established hash table entries: 2048 (order: 1, 8192 bytes)
+> TCP bind hash table entries: 2048 (order: 2, 16384 bytes)
+> TCP: Hash tables configured (established 2048 bind 2048)
+> UDP hash table entries: 256 (order: 1, 8192 bytes)
+> UDP-Lite hash table entries: 256 (order: 1, 8192 bytes)
+> NET: Registered protocol family 1
+> workingset: timestamp_bits=30 max_order=16 bucket_order=0
+> squashfs: version 4.0 (2009/01/31) Phillip Lougher
+> random: fast init done
+> Block layer SCSI generic (bsg) driver version 0.4 loaded (major 252)
+> mt7621_gpio 1e000600.gpio: registering 32 gpios
+> mt7621_gpio 1e000600.gpio: registering 32 gpios
+> mt7621_gpio 1e000600.gpio: registering 32 gpios
+> Serial: 8250/16550 driver, 3 ports, IRQ sharing disabled
+> printk: console [ttyS0] disabled
+> 1e000c00.uartlite: ttyS0 at MMIO 0x1e000c00 (irq = 18, base_baud = 3125000) is a 16550A
+> printk: console [ttyS0] enabled
+> printk: console [ttyS0] enabled
+> printk: bootconsole [early0] disabled
+> printk: bootconsole [early0] disabled
+> 1e000d00.uartlite: ttyS1 at MMIO 0x1e000d00 (irq = 19, base_baud = 3125000) is a 16550A
+> cacheinfo: Failed to find cpu0 device node
+> cacheinfo: Unable to detect cache hierarchy for CPU 0
+> brd: module loaded
+> mt7621-nand: NAND register bank at 0xbe003000
+> mt7621-nand: NAND ECC register bank at 0xbe003800
+> nand: device found, Manufacturer ID: 0x2c, Chip ID: 0xdc
+> nand: Micron NAND 512MiB 3,3V 8-bit
+> nand: 512 MiB, SLC, erase size: 128 KiB, page size: 2048, OOB size: 64
+> nand: ecc bit: 4, spare_per_sector: 16
+> Bad block table found at page 262080, version 0x01
+> Bad block table found at page 262016, version 0x01
+> 5 fixed-partitions partitions found on MTD device MT7621-NAND
+> Creating 5 MTD partitions on "MT7621-NAND":
+> 0x000000000000-0x000000200000 : "u-boot"
+> 0x000000200000-0x000000300000 : "u-boot-env"
+> 0x000000300000-0x000000500000 : "log"
+> 0x000000500000-0x000020000000 : "flash"
+> 0x000000000000-0x000020000000 : "all"
+> libphy: Fixed MDIO Bus: probed
+> tun: Universal TUN/TAP device driver, 1.6
+> libphy: mdio: probed
+> mtk_soc_eth 1e100000.ethernet: generated random MAC address c6:f5:21:ba:39:d3
+> mtk_soc_eth 1e100000.ethernet: connected mac 0 to PHY at fixed-0:00 [uid=00000000, driver=Generic PHY]
+> mtk_soc_eth 1e100000.ethernet eth0: mediatek frame engine at 0xbe100000, irq 21
+> PPP generic driver version 2.4.2
+> PPP BSD Compression module registered
+> PPP Deflate Compression module registered
+> PPP MPPE Compression module registered
+> NET: Registered protocol family 24
+> SLIP: version 0.8.4-NET3.019-NEWTTY (dynamic channels, max=256).
+> CSLIP: code copyright 1989 Regents of the University of California.
+> usbcore: registered new interface driver asix
+> usbcore: registered new interface driver ax88179_178a
+> usbcore: registered new interface driver cdc_ether
+> usbcore: registered new interface driver cdc_eem
+> usbcore: registered new interface driver rndis_host
+> usbcore: registered new interface driver cdc_subset
+> usbcore: registered new interface driver cdc_ncm
+> usbcore: registered new interface driver qmi_wwan
+> usbcore: registered new interface driver cdc_mbim
+> ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+> ehci-pci: EHCI PCI platform driver
+> ehci-platform: EHCI generic platform driver
+> ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+> ohci-pci: OHCI PCI platform driver
+> xhci-mtk 1e1c0000.xhci: xHCI Host Controller
+> xhci-mtk 1e1c0000.xhci: new USB bus registered, assigned bus number 1
+> xhci-mtk 1e1c0000.xhci: hcc params 0x01401198 hci version 0x96 quirks 0x0000000000210010
+> xhci-mtk 1e1c0000.xhci: irq 20, io mem 0x1e1c0000
+> usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 5.01
+> usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+> usb usb1: Product: xHCI Host Controller
+> usb usb1: Manufacturer: Linux 5.1.14-ac0 xhci-hcd
+> usb usb1: SerialNumber: 1e1c0000.xhci
+> hub 1-0:1.0: USB hub found
+> hub 1-0:1.0: 2 ports detected
+> xhci-mtk 1e1c0000.xhci: xHCI Host Controller
+> xhci-mtk 1e1c0000.xhci: new USB bus registered, assigned bus number 2
+> xhci-mtk 1e1c0000.xhci: Host supports USB 3.0  SuperSpeed
+> usb usb2: We don't know the algorithms for LPM for this host, disabling LPM.
+> usb usb2: New USB device found, idVendor=1d6b, idProduct=0003, bcdDevice= 5.01
+> usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+> usb usb2: Product: xHCI Host Controller
+> usb usb2: Manufacturer: Linux 5.1.14-ac0 xhci-hcd
+> usb usb2: SerialNumber: 1e1c0000.xhci
+> hub 2-0:1.0: USB hub found
+> hub 2-0:1.0: 1 port detected
+> usbcore: registered new interface driver cdc_acm
+> cdc_acm: USB Abstract Control Model driver for USB modems and ISDN adapters
+> usbcore: registered new interface driver cdc_wdm
+> usbcore: registered new interface driver usb-storage
+> usbcore: registered new interface driver usbserial_generic
+> usbserial: USB Serial support registered for generic
+> usbcore: registered new interface driver ipw
+> usbserial: USB Serial support registered for IPWireless converter
+> usbcore: registered new interface driver option
+> usbserial: USB Serial support registered for GSM modem (1-port)
+> usbcore: registered new interface driver qcaux
+> usbserial: USB Serial support registered for qcaux
+> usbcore: registered new interface driver qcserial
+> usbserial: USB Serial support registered for Qualcomm USB modem
+> usbcore: registered new interface driver quatech2
+> usbserial: USB Serial support registered for Quatech 2nd gen USB to Serial Driver
+> usbcore: registered new interface driver usb_serial_simple
+> usbserial: USB Serial support registered for carelink
+> usbserial: USB Serial support registered for zio
+> usbserial: USB Serial support registered for funsoft
+> usbserial: USB Serial support registered for flashloader
+> usbserial: USB Serial support registered for google
+> usbserial: USB Serial support registered for libtransistor
+> usbserial: USB Serial support registered for vivopay
+> usbserial: USB Serial support registered for moto_modem
+> usbserial: USB Serial support registered for motorola_tetra
+> usbserial: USB Serial support registered for novatel_gps
+> usbserial: USB Serial support registered for hp4x
+> usbserial: USB Serial support registered for suunto
+> usbserial: USB Serial support registered for siemens_mpi
+> ***** Xtal 40MHz *****
+> PCIE1 no card, disable it(RST&CLK)
+> PCIE2 no card, disable it(RST&CLK)
+> PCIE0 enabled
+> PCI coherence region base: 0x60000000, mask/settings: 0xf0000002
+> mt7621-pci 1e140000.pcie: PCI host bridge to bus 0000:00
+> pci_bus 0000:00: root bus resource [io  0xffffffff]
+> pci_bus 0000:00: root bus resource [mem 0x60000000-0x6fffffff]
+> pci_bus 0000:00: root bus resource [bus 00-ff]
+> pci 0000:00:00.0: bridge configuration invalid ([bus 00-00]), reconfiguring
+> pci 0000:00:00.0: PCI bridge to [bus 01-ff]
+> pci 0000:00:00.0: BAR 0: no space for [mem size 0x80000000]
+> pci 0000:00:00.0: BAR 0: failed to assign [mem size 0x80000000]
+> pci 0000:00:00.0: BAR 8: assigned [mem 0x60000000-0x601fffff]
+> pci 0000:00:00.0: BAR 9: assigned [mem 0x60200000-0x602fffff pref]
+> pci 0000:00:00.0: BAR 1: assigned [mem 0x60300000-0x6030ffff]
+> pci 0000:00:00.0: BAR 7: no space for [io  size 0x1000]
+> pci 0000:00:00.0: BAR 7: failed to assign [io  size 0x1000]
+> pci 0000:01:00.0: BAR 0: assigned [mem 0x60000000-0x601fffff 64bit]
+> pci 0000:01:00.0: BAR 6: assigned [mem 0x60200000-0x6020ffff pref]
+> pci 0000:00:00.0: PCI bridge to [bus 01]
+> pci 0000:00:00.0:   bridge window [mem 0x60000000-0x601fffff]
+> pci 0000:00:00.0:   bridge window [mem 0x60200000-0x602fffff pref]
+> pcieport 0000:00:00.0: of_irq_parse_pci: failed with rc=-22
+> pcieport 0000:00:00.0: enabling device (0004 -> 0006)
+> u32 classifier
+>      input device check on
+> ipip: IPv4 and MPLS over IPv4 tunneling driver
+> gre: GRE over IPv4 demultiplexor driver
+> ip_gre: GRE over IPv4 tunneling driver
+> Initializing XFRM netlink socket
+> NET: Registered protocol family 10
+> Segment Routing with IPv6
+> sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+> NET: Registered protocol family 17
+> NET: Registered protocol family 15
+> 8021q: 802.1Q VLAN Support v1.8
+> libphy: dsa slave smi: probed
+> mt7530 mdio-bus:00 lan (uninitialized): PHY [dsa-0.0:00] driver [Generic PHY]
+> mt7530 mdio-bus:00 wan (uninitialized): PHY [dsa-0.0:01] driver [Generic PHY]
+> DSA: tree 0 setup
+> ubi0: attaching mtd3
+> ubi0: scanning is finished
+> ubi0: attached mtd3 (name "flash", size 507 MiB)
+> ubi0: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+> ubi0: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+> ubi0: VID header offset: 2048 (aligned 2048), data offset: 4096
+> ubi0: good PEBs: 4052, bad PEBs: 4, corrupted PEBs: 0
+> ubi0: user volume: 4, internal volumes: 1, max. volumes count: 128
+> ubi0: max/mean erase counter: 9/4, WL threshold: 4096, image sequence number: 1236486005
+> ubi0: available PEBs: 0, total reserved PEBs: 4052, PEBs reserved for bad PEB handling: 76
+> ubi0: background thread "ubi_bgt0d" started, PID 112
+> hctosys: unable to open rtc device (rtc0)
+> VFS: Mounted root (squashfs filesystem) readonly on device 31:5.
+> devtmpfs: mounted
+> Freeing unused kernel memory: 272K
+> This architecture does not have kernel memory protection.
+> Run /sbin/init as init process
+> Run /etc/init as init process
+> Run /bin/init as init process
+>
+>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
