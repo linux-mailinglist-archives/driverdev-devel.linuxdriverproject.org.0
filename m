@@ -1,59 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 104205280B
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Jun 2019 11:27:10 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id F3E9C526E7
+	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Jun 2019 10:41:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6B7422052B;
-	Tue, 25 Jun 2019 09:27:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A362C8798D;
+	Tue, 25 Jun 2019 08:41:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id homlMNIQY3w3; Tue, 25 Jun 2019 09:27:07 +0000 (UTC)
+	with ESMTP id IfObQxe2iuOq; Tue, 25 Jun 2019 08:41:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id B9858203FE;
-	Tue, 25 Jun 2019 09:27:05 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 328DE86887;
+	Tue, 25 Jun 2019 08:41:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B11C61BF2F1
- for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 09:27:03 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7F7621BF319
+ for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 08:41:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id ABD3F84AE7
- for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 09:27:03 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7B54A86174
+ for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 08:41:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MfEfmb2smpuW for <devel@linuxdriverproject.org>;
- Tue, 25 Jun 2019 09:27:01 +0000 (UTC)
+ with ESMTP id 3+WCm2mNiCek for <devel@linuxdriverproject.org>;
+ Tue, 25 Jun 2019 08:41:36 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.portoaguas.gob.ec (unknown [186.42.226.114])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E29A58473A
- for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 09:27:00 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.portoaguas.gob.ec (Postfix) with ESMTP id B3DD48EEF6D31;
- Tue, 25 Jun 2019 03:27:24 -0500 (-05)
-Received: from mail.portoaguas.gob.ec ([127.0.0.1])
- by localhost (mail.portoaguas.gob.ec [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id lA9s3noV_W2z; Tue, 25 Jun 2019 03:27:24 -0500 (-05)
-Received: from localhost (localhost [127.0.0.1])
- by mail.portoaguas.gob.ec (Postfix) with ESMTP id 51F8D8EEF6D2F;
- Tue, 25 Jun 2019 03:27:24 -0500 (-05)
-X-Virus-Scanned: amavisd-new at epmapap.gob.ec
-Received: from mail.portoaguas.gob.ec ([127.0.0.1])
- by localhost (mail.portoaguas.gob.ec [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id CwxnJWqOTgYS; Tue, 25 Jun 2019 03:27:24 -0500 (-05)
-Received: from [192.168.0.110] (unknown [164.160.95.110])
- by mail.portoaguas.gob.ec (Postfix) with ESMTPSA id 05E2A8EEF0FBC;
- Tue, 25 Jun 2019 03:27:15 -0500 (-05)
+Received: from mail-lj1-f180.google.com (mail-lj1-f180.google.com
+ [209.85.208.180])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 5D841849A6
+ for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 08:41:36 +0000 (UTC)
+Received: by mail-lj1-f180.google.com with SMTP id p17so15414254ljg.1
+ for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 01:41:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nikanor-nu.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=mjgwcyJ55IU5CCabgiaO1OsncTqE3O0eNT0VvDy1+GQ=;
+ b=M2hQ4mXh+4jE5DXo+Q21Be/cCzrAQDjHugIax3ds73ekaqhpev2mI6qQKiTsDafOq/
+ 7F9FrubHdDAGmfl5JwkVhvEksyy/N3UTi+YD1on3V5ZU/yU3RPuYuLxU/28OR3x3N2u4
+ Ax1MVgGHv5UJyO6TE23YTw58j5OYNnQTN61st9LBqJqXRzCNYRFrjaaMHaOXqwuIC3DY
+ BkUH9iPvTuk9b5dYdEw1lifvRllOZ+TtqR92LHYxy3j20FQapAom9YvNQGIRL/6h6O12
+ n8SOdWo2fSvZN9vafdiD6b2G2p2qhLSmuRLsIsedi51B3i6w++f+mxL22ryZ7HzCl0bt
+ p0jQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=mjgwcyJ55IU5CCabgiaO1OsncTqE3O0eNT0VvDy1+GQ=;
+ b=c384+zwTkXyOadOxULj0p71FN7cdeG2mCHEBO7r31amXiFBIK3nzvbdkWgsDNeHpTD
+ lpNjH5gmVE9Ziz+sGyLx7RDR6yTwB+xiC6RMeCGyy4wDOggjnqhZK+jwVUv4WjRYrE1c
+ 0cn7NS8txpjuoD8hDZJAWz39BK/VVyPVLtuo3OIYJWAfpotYvhIqBpcbIvdRtU8ehtU8
+ PaLQYi5m5RzZ9i/HxQiECbGVgDdM432NNUug1f/JOCamJFKJE9UG/a9CbxqTFgFn1Dao
+ 8yyKsPl0Mp1vK8aKxyX5Eul0+gjD5ipGnLhTGp/vg8kJ6ABOUuTHDwnoDNhekx82cpm9
+ MWNQ==
+X-Gm-Message-State: APjAAAW1Vy8f9EclbGXRrxpxAcfpFmynK/PQDVe7qJ344BG6WXuAbvPz
+ MtNZaqW+I3QkTbvvo4huMVM+NQ==
+X-Google-Smtp-Source: APXvYqzyGcO4jNOkWAE+BhdGm3BGzMd6xcusm2A/UD2H84B2HiI8UCVcCgR8Xt2+j9HH985V/P7NkQ==
+X-Received: by 2002:a2e:8181:: with SMTP id e1mr1405423ljg.226.1561452094275; 
+ Tue, 25 Jun 2019 01:41:34 -0700 (PDT)
+Received: from dev.nikanor.nu (78-72-133-4-no161.tbcn.telia.com. [78.72.133.4])
+ by smtp.gmail.com with ESMTPSA id h78sm341564ljf.88.2019.06.25.01.41.33
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Tue, 25 Jun 2019 01:41:33 -0700 (PDT)
+From: =?UTF-8?q?Simon=20Sandstr=C3=B6m?= <simon@nikanor.nu>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH 0/4] Minor style issue fixes for staging/kpc2000
+Date: Tue, 25 Jun 2019 10:41:26 +0200
+Message-Id: <20190625084130.1107-1-simon@nikanor.nu>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Financial Help Available
-To: Recipients <>
-From: Robert Financial Home<>
-Date: Tue, 25 Jun 2019 10:29:16 +0200
-Message-Id: <20190625082716.05E2A8EEF0FBC@mail.portoaguas.gob.ec>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,14 +84,24 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: robertyrfinance@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, gneukum1@gmail.com,
+ linux-kernel@vger.kernel.org,
+ =?UTF-8?q?Simon=20Sandstr=C3=B6m?= <simon@nikanor.nu>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Do You Need A Loan To Pay Off Your Bills Asap, If Yes Do Contact Us For More Information Via Email: robertyrfinance@gmail.com or WhatsApp us on: +1-(365)-300-3916 
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+SGksCgpIZXJlIGFyZSBzb21lIGZpeGVzIGZvciBtaW5vciBzcGFjZSwgcGFyZW50aGVzZSBhbmQg
+YnJhY2UgaXNzdWVzIGluCmtwYzIwMDAgcmVwb3J0ZWQgYnkgY2hlY2twYXRjaC5wbC4KCi0gU2lt
+b24KClNpbW9uIFNhbmRzdHLDtm0gKDQpOgogIHN0YWdpbmc6IGtwYzIwMDA6IGFkZCBtaXNzaW5n
+IHNwYWNlcyBpbiBrcGMyMDAwX2kyYy5jCiAgc3RhZ2luZzoga3BjMjAwMDogYWRkIG1pc3Npbmcg
+c3BhY2VzIGluIGtwYzIwMDBfc3BpLmMKICBzdGFnaW5nOiBrcGMyMDAwOiByZW1vdmUgdW5uZWNl
+c3NhcnkgcGFyZW50aGVzZXMgaW4ga3BjMjAwMF9zcGkuYwogIHN0YWdpbmc6IGtwYzIwMDA6IGZp
+eCBicmFjZSBpc3N1ZXMgaW4ga3BjMjAwMF9zcGkuYwoKIGRyaXZlcnMvc3RhZ2luZy9rcGMyMDAw
+L2twYzIwMDBfaTJjLmMgfCAgNiArKystLS0KIGRyaXZlcnMvc3RhZ2luZy9rcGMyMDAwL2twYzIw
+MDBfc3BpLmMgfCAxOCArKysrKysrKy0tLS0tLS0tLS0KIDIgZmlsZXMgY2hhbmdlZCwgMTEgaW5z
+ZXJ0aW9ucygrKSwgMTMgZGVsZXRpb25zKC0pCgotLSAKMi4yMC4xCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxA
+bGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVj
+dC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
