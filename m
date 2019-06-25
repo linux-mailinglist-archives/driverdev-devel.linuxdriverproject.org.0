@@ -1,93 +1,92 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F29AA520FB
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Jun 2019 05:19:40 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2B0B6520FF
+	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Jun 2019 05:19:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3F978878B0;
-	Tue, 25 Jun 2019 03:19:39 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5BC01860ED;
+	Tue, 25 Jun 2019 03:19:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6rg3o8yZQ5vV; Tue, 25 Jun 2019 03:19:39 +0000 (UTC)
+	with ESMTP id F0cupeYEiKd3; Tue, 25 Jun 2019 03:19:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B852886DF0;
-	Tue, 25 Jun 2019 03:19:38 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 25B768475F;
+	Tue, 25 Jun 2019 03:19:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B0AC01BF989
+ by ash.osuosl.org (Postfix) with ESMTP id 09EA81BF989
  for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 03:19:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id ABBA685BD5
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 06A9985BD5
  for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 03:19:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tUr7qWdA9aEi for <devel@linuxdriverproject.org>;
- Tue, 25 Jun 2019 03:19:35 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mx0a-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
- [148.163.158.5])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 0BFC485A9E
+ with ESMTP id uR7_iYHN8gaH for <devel@linuxdriverproject.org>;
+ Tue, 25 Jun 2019 03:19:34 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
+ [148.163.156.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 4F63585A9E
  for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 03:19:34 +0000 (UTC)
-Received: from pps.filterd (m0098421.ppops.net [127.0.0.1])
+Received: from pps.filterd (m0098404.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- x5P36jWU072966
- for <devel@driverdev.osuosl.org>; Mon, 24 Jun 2019 23:19:34 -0400
-Received: from e06smtp02.uk.ibm.com (e06smtp02.uk.ibm.com [195.75.94.98])
- by mx0a-001b2d01.pphosted.com with ESMTP id 2tb9pyc0bf-1
+ x5P36iHW098807
+ for <devel@driverdev.osuosl.org>; Mon, 24 Jun 2019 23:19:33 -0400
+Received: from e06smtp04.uk.ibm.com (e06smtp04.uk.ibm.com [195.75.94.100])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 2tbagtj7r6-1
  (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
  for <devel@driverdev.osuosl.org>; Mon, 24 Jun 2019 23:19:33 -0400
 Received: from localhost
- by e06smtp02.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+ by e06smtp04.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
  Violators will be prosecuted
  for <devel@driverdev.osuosl.org> from <alastair@au1.ibm.com>;
  Tue, 25 Jun 2019 04:19:31 +0100
-Received: from b06cxnps3075.portsmouth.uk.ibm.com (9.149.109.195)
- by e06smtp02.uk.ibm.com (192.168.101.132) with IBM ESMTP SMTP Gateway:
+Received: from b06avi18878370.portsmouth.uk.ibm.com (9.149.26.194)
+ by e06smtp04.uk.ibm.com (192.168.101.134) with IBM ESMTP SMTP Gateway:
  Authorized Use Only! Violators will be prosecuted; 
  (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
  Tue, 25 Jun 2019 04:19:22 +0100
-Received: from d06av26.portsmouth.uk.ibm.com (d06av26.portsmouth.uk.ibm.com
- [9.149.105.62])
- by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- x5P3JLkE57212948
+Received: from d06av21.portsmouth.uk.ibm.com (d06av21.portsmouth.uk.ibm.com
+ [9.149.105.232])
+ by b06avi18878370.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
+ id x5P3JLsx37486936
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
  Tue, 25 Jun 2019 03:19:21 GMT
-Received: from d06av26.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 2310FAE057;
+Received: from d06av21.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 14F5D52052;
  Tue, 25 Jun 2019 03:19:21 +0000 (GMT)
-Received: from d06av26.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 76678AE056;
- Tue, 25 Jun 2019 03:19:20 +0000 (GMT)
 Received: from ozlabs.au.ibm.com (unknown [9.192.253.14])
- by d06av26.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+ by d06av21.portsmouth.uk.ibm.com (Postfix) with ESMTP id 6C31F5204F;
  Tue, 25 Jun 2019 03:19:20 +0000 (GMT)
 Received: from adsilva.ozlabs.ibm.com (haven.au.ibm.com [9.192.254.114])
  (using TLSv1.2 with cipher DHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ozlabs.au.ibm.com (Postfix) with ESMTPSA id 1790BA01B9;
+ by ozlabs.au.ibm.com (Postfix) with ESMTPSA id 25523A021C;
  Tue, 25 Jun 2019 13:19:19 +1000 (AEST)
 From: "Alastair D'Silva" <alastair@au1.ibm.com>
 To: alastair@d-silva.org
-Subject: [PATCH v4 0/7] Hexdump Enhancements
-Date: Tue, 25 Jun 2019 13:17:19 +1000
+Subject: [PATCH v4 1/7] lib/hexdump.c: Fix selftests
+Date: Tue, 25 Jun 2019 13:17:20 +1000
 X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20190625031726.12173-1-alastair@au1.ibm.com>
+References: <20190625031726.12173-1-alastair@au1.ibm.com>
 MIME-Version: 1.0
 X-TM-AS-GCONF: 00
-x-cbid: 19062503-0008-0000-0000-000002F6B5BD
+x-cbid: 19062503-0016-0000-0000-0000028C0D9B
 X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 19062503-0009-0000-0000-00002263E424
-Message-Id: <20190625031726.12173-1-alastair@au1.ibm.com>
+x-cbparentid: 19062503-0017-0000-0000-000032E97D2E
+Message-Id: <20190625031726.12173-2-alastair@au1.ibm.com>
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
  definitions=2019-06-25_02:, , signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
  priorityscore=1501
  malwarescore=0 suspectscore=1 phishscore=0 bulkscore=0 spamscore=0
  clxscore=1015 lowpriorityscore=0 mlxscore=0 impostorscore=0
- mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
+ mlxlogscore=926 adultscore=0 classifier=spam adjust=0 reason=mlx
  scancount=1 engine=8.0.1-1810050000 definitions=main-1906250024
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -130,71 +129,97 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 From: Alastair D'Silva <alastair@d-silva.org>
 
-Apologies for the large CC list, it's a heads up for those responsible
-for subsystems where a prototype change in generic code causes a change
-in those subsystems.
+The overflow tests did not account for the situation where no
+overflow occurs and len < rowsize.
 
-This series enhances hexdump.
+This patch renames the cryptic variables and accounts for the
+above case.
 
-These improve the readability of the dumped data in certain situations
-(eg. wide terminals are available, many lines of empty bytes exist, etc).
+The selftests now pass.
 
-The default behaviour of hexdump is unchanged, however, the prototype
-for hex_dump_to_buffer() has changed, and print_hex_dump() has been
-renamed to print_hex_dump_ext(), with a wrapper replacing it for
-compatibility with existing code, which would have been too invasive to
-change.
+Signed-off-by: Alastair D'Silva <alastair@d-silva.org>
+---
+ lib/test_hexdump.c | 48 +++++++++++++++++++++++++++-------------------
+ 1 file changed, 28 insertions(+), 20 deletions(-)
 
-Hexdump selftests have be run & confirmed passed.
-
-Changelog:
-V4:
- - Add missing header (linux/bits.h)
- - Fix comment formatting
- - Create hex_dump_to_buffer_ext & make hex_dump_to_buffer a wrapper
-V3:
- - Fix inline documention
- - use BIT macros
- - use u32 rather than u64 for flags
-V2:
- - Fix failing selftests
- - Fix precedence bug in 'Replace ascii bool in hex_dump_to_buffer...'
- - Remove hardcoded new lengths & instead relax the checks in
-   hex_dump_to_buffer, allocating the buffer from the heap instead of the
-   stack.
- - Replace the skipping of lines of 0x00/0xff with skipping lines of
-   repeated characters, announcing what has been skipped.
- - Add spaces as an optional N-group separator
- - Allow byte ordering to be maintained when HEXDUMP_RETAIN_BYTE_ORDERING
-   is set.
- - Updated selftests to cover 'Relax rowsize checks' &
-   'Optionally retain byte ordering'
-
-Alastair D'Silva (7):
-  lib/hexdump.c: Fix selftests
-  lib/hexdump.c: Relax rowsize checks in hex_dump_to_buffer
-  lib/hexdump.c: Optionally suppress lines of repeated bytes
-  lib/hexdump.c: Replace ascii bool in hex_dump_to_buffer with flags
-  lib/hexdump.c: Allow multiple groups to be separated by lines '|'
-  lib/hexdump.c: Allow multiple groups to be separated by spaces
-  lib/hexdump.c: Optionally retain byte ordering
-
- drivers/gpu/drm/i915/intel_engine_cs.c        |   5 +-
- drivers/isdn/hardware/mISDN/mISDNisar.c       |  10 +-
- drivers/mailbox/mailbox-test.c                |   8 +-
- drivers/net/ethernet/amd/xgbe/xgbe-drv.c      |   2 +-
- .../net/ethernet/synopsys/dwc-xlgmac-common.c |   2 +-
- drivers/net/wireless/ath/ath10k/debug.c       |   7 +-
- .../net/wireless/intel/iwlegacy/3945-mac.c    |   4 +-
- drivers/platform/chrome/wilco_ec/debugfs.c    |  10 +-
- drivers/scsi/scsi_logging.c                   |   8 +-
- drivers/staging/fbtft/fbtft-core.c            |   2 +-
- fs/seq_file.c                                 |   6 +-
- include/linux/printk.h                        |  75 ++++-
- lib/hexdump.c                                 | 267 +++++++++++++++---
- lib/test_hexdump.c                            | 154 +++++++---
- 14 files changed, 438 insertions(+), 122 deletions(-)
-
+diff --git a/lib/test_hexdump.c b/lib/test_hexdump.c
+index 5144899d3c6b..bef97a964582 100644
+--- a/lib/test_hexdump.c
++++ b/lib/test_hexdump.c
+@@ -163,45 +163,53 @@ static void __init test_hexdump_overflow(size_t buflen, size_t len,
+ {
+ 	char test[TEST_HEXDUMP_BUF_SIZE];
+ 	char buf[TEST_HEXDUMP_BUF_SIZE];
+-	int rs = rowsize, gs = groupsize;
+-	int ae, he, e, f, r;
+-	bool a;
++	int ascii_len, hex_len, expected_len, fill_point, ngroups, rc;
++	bool match;
+ 
+ 	total_tests++;
+ 
+ 	memset(buf, FILL_CHAR, sizeof(buf));
+ 
+-	r = hex_dump_to_buffer(data_b, len, rs, gs, buf, buflen, ascii);
++	rc = hex_dump_to_buffer(data_b, len, rowsize, groupsize, buf, buflen,
++				ascii);
+ 
+ 	/*
+ 	 * Caller must provide the data length multiple of groupsize. The
+ 	 * calculations below are made with that assumption in mind.
+ 	 */
+-	ae = rs * 2 /* hex */ + rs / gs /* spaces */ + 1 /* space */ + len /* ascii */;
+-	he = (gs * 2 /* hex */ + 1 /* space */) * len / gs - 1 /* no trailing space */;
++	ngroups = rowsize / groupsize;
++	hex_len = (groupsize * 2 /* hex */ + 1 /* spaces */) * ngroups
++		  - 1 /* no trailing space */;
++	ascii_len = hex_len + 2 /* space */ + len /* ascii */;
++
++	if (len < rowsize) {
++		ngroups = len / groupsize;
++		hex_len = (groupsize * 2 /* hex */ + 1 /* spaces */) * ngroups
++		  - 1 /* no trailing space */;
++	}
+ 
+-	if (ascii)
+-		e = ae;
+-	else
+-		e = he;
++	expected_len = (ascii) ? ascii_len : hex_len;
+ 
+-	f = min_t(int, e + 1, buflen);
++	fill_point = min_t(int, expected_len + 1, buflen);
+ 	if (buflen) {
+-		test_hexdump_prepare_test(len, rs, gs, test, sizeof(test), ascii);
+-		test[f - 1] = '\0';
++		test_hexdump_prepare_test(len, rowsize, groupsize, test,
++					  sizeof(test), ascii);
++		test[fill_point - 1] = '\0';
+ 	}
+-	memset(test + f, FILL_CHAR, sizeof(test) - f);
++	memset(test + fill_point, FILL_CHAR, sizeof(test) - fill_point);
+ 
+-	a = r == e && !memcmp(test, buf, TEST_HEXDUMP_BUF_SIZE);
++	match = rc == expected_len && !memcmp(test, buf, TEST_HEXDUMP_BUF_SIZE);
+ 
+ 	buf[sizeof(buf) - 1] = '\0';
+ 
+-	if (!a) {
+-		pr_err("Len: %zu buflen: %zu strlen: %zu\n",
+-			len, buflen, strnlen(buf, sizeof(buf)));
+-		pr_err("Result: %d '%s'\n", r, buf);
+-		pr_err("Expect: %d '%s'\n", e, test);
++	if (!match) {
++		pr_err("rowsize: %u groupsize: %u ascii: %d Len: %zu buflen: %zu strlen: %zu\n",
++			rowsize, groupsize, ascii, len, buflen,
++			strnlen(buf, sizeof(buf)));
++		pr_err("Result: %d '%-.*s'\n", rc, (int)buflen, buf);
++		pr_err("Expect: %d '%-.*s'\n", expected_len, (int)buflen, test);
+ 		failed_tests++;
++
+ 	}
+ }
+ 
 -- 
 2.21.0
 
