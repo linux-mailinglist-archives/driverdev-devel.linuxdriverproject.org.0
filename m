@@ -1,75 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0806B54DBC
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Jun 2019 13:35:10 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9746254DF0
+	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Jun 2019 13:49:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 66C4681D3C;
-	Tue, 25 Jun 2019 11:35:07 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0E8DF85F15;
+	Tue, 25 Jun 2019 11:49:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id s5XR36BtJQfn; Tue, 25 Jun 2019 11:35:06 +0000 (UTC)
+	with ESMTP id YDavjwEusx5L; Tue, 25 Jun 2019 11:49:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 69A0382383;
-	Tue, 25 Jun 2019 11:35:05 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7D07A85E99;
+	Tue, 25 Jun 2019 11:49:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 39C2A1BF20B
- for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 11:35:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8564A1BF20B
+ for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 11:49:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3743785E99
- for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 11:35:01 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8249C85EBE
+ for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 11:49:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id umq7bI-zhanM for <devel@linuxdriverproject.org>;
- Tue, 25 Jun 2019 11:34:59 +0000 (UTC)
+ with ESMTP id JfHn1jiHB_b5 for <devel@linuxdriverproject.org>;
+ Tue, 25 Jun 2019 11:49:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx-rz-1.rrze.uni-erlangen.de (mx-rz-1.rrze.uni-erlangen.de
- [131.188.11.20])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1F34285540
- for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 11:34:59 +0000 (UTC)
-Received: from mx-exchlnx-1.rrze.uni-erlangen.de
- (mx-exchlnx-1.rrze.uni-erlangen.de [IPv6:2001:638:a000:1025::37])
- by mx-rz-1.rrze.uni-erlangen.de (Postfix) with ESMTP id 45Y3pD0YVSz8vFq;
- Tue, 25 Jun 2019 13:29:08 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fau.de; s=fau-2013;
- t=1561462148; bh=vFj2pVZ/HOC1MKUbfynpfE4dgH7Iemsw5b/nvKkMoDo=;
- h=From:To:CC:Subject:Date:In-Reply-To:References:From:To:CC:
- Subject;
- b=Wbkoi/6os6nyxFc/7Al5oU8p7uVfwk2HoT1b3GKrwREv6j3HCZXvwNCxyIa0m1Xqu
- OgUIhObhTzDwAs5jm34lnRPCE0q+Em4k+BgAAUkBKS9JgLkG5Vumqxx1HPB/7AqgNu
- ayn9BoLStR11ZS0EIbVw1/4dGELstT/z8GZV+yaPPuarvdXPkhSpTLhvepRP7mUzpE
- Cw3zBd9xJW0jJzNe0i8VvuaUKwTYULF5aDc/+tUJuS8seFOHTeAL5XIiWJBLWEuAt5
- mY0WKgELSDRWr66E+6Dt6NbnvTe8hYcIOtUm9BXP4yJBIspBnjgZeHaI+Hwnw2FBoC
- UdGrWn4H08v9g==
-X-Virus-Scanned: amavisd-new at boeck5.rrze.uni-erlangen.de (RRZE)
-X-RRZE-Flag: Not-Spam
-Received: from hbt1.exch.fau.de (hbt1.exch.fau.de [10.15.8.13])
- by mx-exchlnx-1.rrze.uni-erlangen.de (Postfix) with ESMTP id 45Y3p96QJFz8vVF; 
- Tue, 25 Jun 2019 13:29:05 +0200 (CEST)
-Received: from MBX3.exch.uni-erlangen.de (10.15.8.45) by hbt1.exch.fau.de
- (10.15.8.13) with Microsoft SMTP Server (TLS) id 14.3.439.0; Tue, 25 Jun 2019
- 13:28:36 +0200
-Received: from TroubleWorld.pool.uni-erlangen.de (10.21.22.37) by
- MBX3.exch.uni-erlangen.de (10.15.8.45) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1591.10; Tue, 25 Jun 2019 13:28:34 +0200
-From: Fabian Krueger <fabian.krueger@fau.de>
-To: 
-Subject: [PATCH 8/8] staging: kpc2000: remove needless 'break'
-Date: Tue, 25 Jun 2019 13:27:19 +0200
-Message-ID: <20190625112725.10154-9-fabian.krueger@fau.de>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190625112725.10154-1-fabian.krueger@fau.de>
-References: <20190625112725.10154-1-fabian.krueger@fau.de>
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 59B5F85E99
+ for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 11:49:14 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5PBiFa7023814;
+ Tue, 25 Jun 2019 11:49:13 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2018-07-02;
+ bh=RjXvwXwiK8oNcaMDX+TKVS4HTCF0lBMLgFaDA9RxUNc=;
+ b=PzWoxPqTv2OzBkzG3UhCFsH0V14ueOaL6KFOwaMjDfqqsfgZXsiNGdsSSK1F67tDHq01
+ 6wvNbIMDlTKQlI6U8Z6RgaA/SWD8QtBXSyZ9x2gfgZNSpENlCniMjKtZQ/sN5B77FFhK
+ xv8HS7eCJ+PHci6Kzxp+UOrjk07qXkhr8Kd6p8K8bYRBHFDkM0q7iHRz9Sz8EicZErSt
+ xzVWqizwBdlqZEIBt0OYHtSbbfR8aqpwTjq+15NaFMB5kD7RimC9sQ6vGufAlHgDkKky
+ 1Hp1jyNscDJrQNmKkAhhZujpEp3veRD6K22PEAzNl3LXTIBOi6y9LBYCsRfesjkmO8Gl oA== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by userp2120.oracle.com with ESMTP id 2t9cyqbsy7-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 25 Jun 2019 11:49:13 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5PBkiG8106256;
+ Tue, 25 Jun 2019 11:47:12 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by aserp3020.oracle.com with ESMTP id 2t9p6u4vh7-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 25 Jun 2019 11:47:12 +0000
+Received: from abhmp0014.oracle.com (abhmp0014.oracle.com [141.146.116.20])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x5PBl9DC004578;
+ Tue, 25 Jun 2019 11:47:10 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 25 Jun 2019 04:47:09 -0700
+Date: Tue, 25 Jun 2019 14:47:00 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Ian Abbott <abbotti@mev.co.uk>
+Subject: Re: [PATCH] staging: comedi: use dma_mmap_coherent for DMA-able
+ buffer mmap
+Message-ID: <20190625114700.GZ28859@kadam>
+References: <20190625112659.13016-1-abbotti@mev.co.uk>
 MIME-Version: 1.0
-X-Originating-IP: [10.21.22.37]
-X-ClientProxiedBy: MBX3.exch.uni-erlangen.de (10.15.8.45) To
- MBX3.exch.uni-erlangen.de (10.15.8.45)
+Content-Disposition: inline
+In-Reply-To: <20190625112659.13016-1-abbotti@mev.co.uk>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9298
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=2
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=838
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1810050000 definitions=main-1906250094
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9298
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=2 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=891 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
+ definitions=main-1906250095
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,37 +98,64 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: fabian.krueger@fau.de, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Michael Scheiderer <michael.scheiderer@fau.de>
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The unconditioned jump will prohibit to ever reach the break-statement.
-Deleting this needless statement, the code becomes more understandable.
+On Tue, Jun 25, 2019 at 12:26:59PM +0100, Ian Abbott wrote:
+>  drivers/staging/comedi/comedi_buf.c  | 150 ++++++++++++++++++---------
+>  drivers/staging/comedi/comedi_fops.c |  39 ++++---
+>  2 files changed, 125 insertions(+), 64 deletions(-)
+> 
+> diff --git a/drivers/staging/comedi/comedi_buf.c b/drivers/staging/comedi/comedi_buf.c
+> index d2c8cc72a99d..3ef3ddabf139 100644
+> --- a/drivers/staging/comedi/comedi_buf.c
+> +++ b/drivers/staging/comedi/comedi_buf.c
+> @@ -27,18 +27,19 @@ static void comedi_buf_map_kref_release(struct kref *kref)
+>  	unsigned int i;
+>  
+>  	if (bm->page_list) {
+> -		for (i = 0; i < bm->n_pages; i++) {
+> -			buf = &bm->page_list[i];
+> -			clear_bit(PG_reserved,
+> -				  &(virt_to_page(buf->virt_addr)->flags));
+> -			if (bm->dma_dir != DMA_NONE) {
+> -#ifdef CONFIG_HAS_DMA
+> -				dma_free_coherent(bm->dma_hw_dev,
+> -						  PAGE_SIZE,
+> -						  buf->virt_addr,
+> -						  buf->dma_addr);
+> -#endif
+> -			} else {
+> +		if (bm->dma_dir != DMA_NONE) {
+> +			/*
+> +			 * DMA buffer was allocated as a single block.
+> +			 * Address is in page_list[0].
+> +			 */
+> +			buf = &bm->page_list[0];
+> +			dma_free_coherent(bm->dma_hw_dev,
+> +					  PAGE_SIZE * bm->n_pages,
+> +					  buf->virt_addr, buf->dma_addr);
+> +		} else {
+> +			for (i = 0; i < bm->n_pages; i++) {
+> +				buf = &bm->page_list[i];
+> +				ClearPageReserved(virt_to_page(buf->virt_addr));
 
-Signed-off-by: Fabian Krueger <fabian.krueger@fau.de>
-Signed-off-by: Michael Scheiderer <michael.scheiderer@fau.de>
----
- drivers/staging/kpc2000/kpc2000_spi.c | 1 -
- 1 file changed, 1 deletion(-)
+I think we need a NULL check here:
 
-diff --git a/drivers/staging/kpc2000/kpc2000_spi.c b/drivers/staging/kpc2000/kpc2000_spi.c
-index f258f369e065..e65f0c34db50 100644
---- a/drivers/staging/kpc2000/kpc2000_spi.c
-+++ b/drivers/staging/kpc2000/kpc2000_spi.c
-@@ -515,7 +515,6 @@ kp_spi_probe(struct platform_device *pldev)
- 	default:
- 		dev_err(&pldev->dev, "Unknown hardware, cant know what partition table to use!\n");
- 		goto free_master;
--		break;
- 	}
- 
- 	return status;
--- 
-2.17.1
+	if (!buf->virt_addr)
+		continue;
+
+>  				free_page((unsigned long)buf->virt_addr);
+>  			}
+>  		}
+> @@ -57,7 +58,8 @@ static void __comedi_buf_free(struct comedi_device *dev,
+
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
