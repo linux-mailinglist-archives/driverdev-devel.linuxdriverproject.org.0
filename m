@@ -1,60 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7DACD522B2
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Jun 2019 07:17:50 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id EDBDF5236A
+	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Jun 2019 08:18:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 62C3985736;
-	Tue, 25 Jun 2019 05:17:48 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B97FB2051A;
+	Tue, 25 Jun 2019 06:18:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IqhyndJS1ule; Tue, 25 Jun 2019 05:17:47 +0000 (UTC)
+	with ESMTP id lzOhcjg3S9Xx; Tue, 25 Jun 2019 06:18:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EED46814CA;
-	Tue, 25 Jun 2019 05:17:46 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 456D420032;
+	Tue, 25 Jun 2019 06:18:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6B70B1BF342
- for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 05:17:44 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id AEAF11BF324
+ for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 06:18:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 66B8B84E66
- for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 05:17:44 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A938F2010E
+ for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 06:18:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id r-d157i+FXRc for <devel@linuxdriverproject.org>;
- Tue, 25 Jun 2019 05:17:43 +0000 (UTC)
-X-Greylist: delayed 00:16:02 by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0253.hostedemail.com
- [216.40.44.253])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 70F2E814CA
- for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 05:17:43 +0000 (UTC)
+ with ESMTP id PyWqQSxd-AHX for <devel@linuxdriverproject.org>;
+ Tue, 25 Jun 2019 06:18:06 +0000 (UTC)
+X-Greylist: delayed 01:16:27 by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0095.hostedemail.com
+ [216.40.44.95])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9DA2220032
+ for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 06:18:06 +0000 (UTC)
 Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
  [10.5.19.251])
- by smtpgrave04.hostedemail.com (Postfix) with ESMTP id 17AB218008647
- for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 05:01:40 +0000 (UTC)
+ by smtpgrave03.hostedemail.com (Postfix) with ESMTP id 2F2511801685A
+ for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 05:01:49 +0000 (UTC)
 Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
  [216.40.38.60])
- by smtprelay02.hostedemail.com (Postfix) with ESMTP id 443B3C1DC84;
- Tue, 25 Jun 2019 05:01:37 +0000 (UTC)
+ by smtprelay05.hostedemail.com (Postfix) with ESMTP id 8D503180295A0;
+ Tue, 25 Jun 2019 05:01:46 +0000 (UTC)
 X-Session-Marker: 6A6F6540706572636865732E636F6D
 X-Spam-Summary: 
-X-HE-Tag: sock17_81d375461e95b
-X-Filterd-Recvd-Size: 2811
+X-HE-Tag: line56_832b716e87755
+X-Filterd-Recvd-Size: 3467
 Received: from XPS-9350.home (cpe-23-242-196-136.socal.res.rr.com
  [23.242.196.136]) (Authenticated sender: joe@perches.com)
- by omf20.hostedemail.com (Postfix) with ESMTPA;
- Tue, 25 Jun 2019 05:01:32 +0000 (UTC)
-Message-ID: <3ae4c1a4a72f8ee6b75c45adfbe543fc0a7b5da1.camel@perches.com>
-Subject: Re: [PATCH v4 0/7] Hexdump Enhancements
+ by omf09.hostedemail.com (Postfix) with ESMTPA;
+ Tue, 25 Jun 2019 05:01:41 +0000 (UTC)
+Message-ID: <3340b520a57e00a483eae170be97316c8d18c22c.camel@perches.com>
+Subject: Re: [PATCH v4 4/7] lib/hexdump.c: Replace ascii bool in
+ hex_dump_to_buffer with flags
 From: Joe Perches <joe@perches.com>
 To: Alastair D'Silva <alastair@au1.ibm.com>, alastair@d-silva.org
-Date: Mon, 24 Jun 2019 22:01:30 -0700
-In-Reply-To: <20190625031726.12173-1-alastair@au1.ibm.com>
+Date: Mon, 24 Jun 2019 22:01:40 -0700
+In-Reply-To: <20190625031726.12173-5-alastair@au1.ibm.com>
 References: <20190625031726.12173-1-alastair@au1.ibm.com>
+ <20190625031726.12173-5-alastair@au1.ibm.com>
 User-Agent: Evolution 3.30.5-0ubuntu0.18.10.1 
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -99,21 +101,38 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 On Tue, 2019-06-25 at 13:17 +1000, Alastair D'Silva wrote:
 > From: Alastair D'Silva <alastair@d-silva.org>
 > 
-> Apologies for the large CC list, it's a heads up for those responsible
-> for subsystems where a prototype change in generic code causes a change
-> in those subsystems.
+> In order to support additional features, rename hex_dump_to_buffer to
+> hex_dump_to_buffer_ext, and replace the ascii bool parameter with flags.
 []
-> The default behaviour of hexdump is unchanged, however, the prototype
-> for hex_dump_to_buffer() has changed, and print_hex_dump() has been
-> renamed to print_hex_dump_ext(), with a wrapper replacing it for
-> compatibility with existing code, which would have been too invasive to
-> change.
+> diff --git a/drivers/gpu/drm/i915/intel_engine_cs.c b/drivers/gpu/drm/i915/intel_engine_cs.c
+[]
+> @@ -1338,9 +1338,8 @@ static void hexdump(struct drm_printer *m, const void *buf, size_t len)
+>  		}
+>  
+>  		WARN_ON_ONCE(hex_dump_to_buffer(buf + pos, len - pos,
+> -						rowsize, sizeof(u32),
+> -						line, sizeof(line),
+> -						false) >= sizeof(line));
+> +						rowsize, sizeof(u32), line,
+> +						sizeof(line)) >= sizeof(line));
 
-I believe this cover letter is misleading.
+Huh?  Why do this?
 
-The point of the wrapper is to avoid unnecessary changes
-in existing
-code.
+> diff --git a/drivers/isdn/hardware/mISDN/mISDNisar.c b/drivers/isdn/hardware/mISDN/mISDNisar.c
+[]
+> @@ -70,8 +70,9 @@ send_mbox(struct isar_hw *isar, u8 his, u8 creg, u8 len, u8 *msg)
+>  			int l = 0;
+>  
+>  			while (l < (int)len) {
+> -				hex_dump_to_buffer(msg + l, len - l, 32, 1,
+> -						   isar->log, 256, 1);
+> +				hex_dump_to_buffer_ext(msg + l, len - l, 32, 1,
+> +						       isar->log, 256,
+> +						       HEXDUMP_ASCII);
+
+Again, why do any of these?
+
+The point of the wrapper is to avoid changing these.
 
 
 _______________________________________________
