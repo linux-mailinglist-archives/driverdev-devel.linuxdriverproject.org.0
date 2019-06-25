@@ -1,66 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5DF8A5504E
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Jun 2019 15:26:57 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C13DF5506E
+	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Jun 2019 15:32:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 11E6F87A72;
-	Tue, 25 Jun 2019 13:26:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 68D001FD16;
+	Tue, 25 Jun 2019 13:32:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DKLuT8c8D24l; Tue, 25 Jun 2019 13:26:55 +0000 (UTC)
+	with ESMTP id v3Uhy3vgpPD3; Tue, 25 Jun 2019 13:32:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3180487A43;
-	Tue, 25 Jun 2019 13:26:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 330032052A;
+	Tue, 25 Jun 2019 13:32:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 879291BF417
- for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 13:26:52 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 0B53F1BF417
+ for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 13:32:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 826A4864B2
- for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 13:26:52 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 07D3820505
+ for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 13:32:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FjMlicyLyAPO for <devel@linuxdriverproject.org>;
- Tue, 25 Jun 2019 13:26:51 +0000 (UTC)
-X-Greylist: delayed 00:05:07 by SQLgrey-1.7.6
-Received: from smtp123.iad3a.emailsrvr.com (smtp123.iad3a.emailsrvr.com
- [173.203.187.123])
- by whitealder.osuosl.org (Postfix) with ESMTPS id C186E84332
- for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 13:26:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
- s=20190130-41we5z8j; t=1561468903;
- bh=e03UopFZ/Dhfd62ps66uuvcgridhOzozY2ozKla/GZo=;
- h=Subject:To:From:Date:From;
- b=H+A95YXq+e5v9lSt/sl0BYpdsylBM1bpU6TRYm4Deu4NPxbhUFE7IL2aAQOWhhVgd
- u5MNbzJiN02V8sMiH9w0y8B1vTaX9V8QryJunoeTHTtNMjMMAVk92Aw5SNEZ4imX7f
- XPABbIdianzfh95IMGArmvZT4Yjs+1qWTrLxeHHI=
-X-Auth-ID: abbotti@mev.co.uk
-Received: by smtp8.relay.iad3a.emailsrvr.com (Authenticated sender:
- abbotti-AT-mev.co.uk) with ESMTPSA id E10A351A5; 
- Tue, 25 Jun 2019 09:21:42 -0400 (EDT)
-X-Sender-Id: abbotti@mev.co.uk
-Received: from [10.0.0.62] (remote.quintadena.com [81.133.34.160])
- (using TLSv1.2 with cipher AES128-SHA) by 0.0.0.0:465 (trex/5.7.12);
- Tue, 25 Jun 2019 09:21:43 -0400
-Subject: Re: [PATCH] staging: comedi: use dma_mmap_coherent for DMA-able
- buffer mmap
-To: Dan Carpenter <dan.carpenter@oracle.com>
-References: <20190625112659.13016-1-abbotti@mev.co.uk>
- <20190625114700.GZ28859@kadam>
-From: Ian Abbott <abbotti@mev.co.uk>
-Organization: MEV Ltd.
-Message-ID: <a68e3315-87ac-f201-2b33-6c1acd9777ff@mev.co.uk>
-Date: Tue, 25 Jun 2019 14:21:41 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.1
+ with ESMTP id dV00+paJCqBj for <devel@linuxdriverproject.org>;
+ Tue, 25 Jun 2019 13:32:30 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0060.hostedemail.com
+ [216.40.44.60])
+ by silver.osuosl.org (Postfix) with ESMTPS id 10A9B1FD16
+ for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 13:32:29 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave05.hostedemail.com (Postfix) with ESMTP id EEB981828B31A
+ for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 13:22:32 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay01.hostedemail.com (Postfix) with ESMTP id 11F8D100E86CB;
+ Tue, 25 Jun 2019 13:22:30 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, :::::::::::::::,
+ RULES_HIT:41:355:379:599:800:960:973:988:989:1260:1277:1311:1313:1314:1345:1359:1381:1431:1437:1515:1516:1518:1534:1539:1568:1593:1594:1711:1714:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3622:3865:3868:3872:4321:5007:7514:7576:10004:10400:10848:11232:11658:11914:12043:12048:12297:12740:12760:12895:13069:13161:13229:13311:13357:13439:14181:14659:14721:21080:21451:21627:21774:30054:30091,
+ 0,
+ RBL:23.242.196.136:@perches.com:.lbl8.mailshell.net-62.14.0.180 64.201.201.201,
+ CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none, DomainCache:0,
+ MSF:not bulk, SPF:fn, MSBL:0, DNSBL:none, Custom_rules:0:0:0, LFtime:26,
+ LUA_SUMMARY:none
+X-HE-Tag: wood78_8a0682b7adc37
+X-Filterd-Recvd-Size: 1694
+Received: from XPS-9350 (cpe-23-242-196-136.socal.res.rr.com [23.242.196.136])
+ (Authenticated sender: joe@perches.com)
+ by omf04.hostedemail.com (Postfix) with ESMTPA;
+ Tue, 25 Jun 2019 13:22:28 +0000 (UTC)
+Message-ID: <56190c099e31dd0c9f56296186fdb6296afbe630.camel@perches.com>
+Subject: Re: [PATCH 1/1] staging: media: fix style problem
+From: Joe Perches <joe@perches.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Aliasgar Surti
+ <aliasgar.surti500@gmail.com>, mchehab@kernel.org,
+ gregkh@linuxfoundation.org,  sakari.ailus@linux.intel.com,
+ linux-media@vger.kernel.org,  devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Date: Tue, 25 Jun 2019 06:22:26 -0700
+In-Reply-To: <6536b57d-fea2-e16d-2092-e9e27c51c0f1@xs4all.nl>
+References: <1561099192-19638-1-git-send-email-aliasgar.surti500@gmail.com>
+ <6536b57d-fea2-e16d-2092-e9e27c51c0f1@xs4all.nl>
+User-Agent: Evolution 3.30.5-0ubuntu0.18.10.1 
 MIME-Version: 1.0
-In-Reply-To: <20190625114700.GZ28859@kadam>
-Content-Language: en-GB
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,93 +80,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Christoph Hellwig <hch@lst.de>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 25/06/2019 12:47, Dan Carpenter wrote:
-> On Tue, Jun 25, 2019 at 12:26:59PM +0100, Ian Abbott wrote:
->>   drivers/staging/comedi/comedi_buf.c  | 150 ++++++++++++++++++---------
->>   drivers/staging/comedi/comedi_fops.c |  39 ++++---
->>   2 files changed, 125 insertions(+), 64 deletions(-)
->>
->> diff --git a/drivers/staging/comedi/comedi_buf.c b/drivers/staging/comedi/comedi_buf.c
->> index d2c8cc72a99d..3ef3ddabf139 100644
->> --- a/drivers/staging/comedi/comedi_buf.c
->> +++ b/drivers/staging/comedi/comedi_buf.c
->> @@ -27,18 +27,19 @@ static void comedi_buf_map_kref_release(struct kref *kref)
->>   	unsigned int i;
->>   
->>   	if (bm->page_list) {
->> -		for (i = 0; i < bm->n_pages; i++) {
->> -			buf = &bm->page_list[i];
->> -			clear_bit(PG_reserved,
->> -				  &(virt_to_page(buf->virt_addr)->flags));
->> -			if (bm->dma_dir != DMA_NONE) {
->> -#ifdef CONFIG_HAS_DMA
->> -				dma_free_coherent(bm->dma_hw_dev,
->> -						  PAGE_SIZE,
->> -						  buf->virt_addr,
->> -						  buf->dma_addr);
->> -#endif
->> -			} else {
->> +		if (bm->dma_dir != DMA_NONE) {
->> +			/*
->> +			 * DMA buffer was allocated as a single block.
->> +			 * Address is in page_list[0].
->> +			 */
->> +			buf = &bm->page_list[0];
->> +			dma_free_coherent(bm->dma_hw_dev,
->> +					  PAGE_SIZE * bm->n_pages,
->> +					  buf->virt_addr, buf->dma_addr);
->> +		} else {
->> +			for (i = 0; i < bm->n_pages; i++) {
->> +				buf = &bm->page_list[i];
->> +				ClearPageReserved(virt_to_page(buf->virt_addr));
+On Tue, 2019-06-25 at 09:17 +0200, Hans Verkuil wrote:
+> On 6/21/19 8:39 AM, Aliasgar Surti wrote:
+> > From: Aliasgar Surti <aliasgar.surti500@gmail.com>
+> > 
+> > checkpatch reported "WARNING: line over 80 characters".
+> > This patch fixes the warning for file soc_camera/soc_ov5642.c
 > 
-> I think we need a NULL check here:
-> 
-> 	if (!buf->virt_addr)
-> 		continue;
-> 
->>   				free_page((unsigned long)buf->virt_addr);
->>   			}
->>   		}
+> FYI: we're not accepting patches for staging/media/soc_camera: these
+> are obsolete and broken drivers.
 
-Hi Dan, I don't think that is strictly required because bm->n_pages gets 
-set to the number of successfully allocated pages (not the number of 
-required pages) by comedi_buf_map_alloc():
+Then mark the MAINTAINERS entry as Orphan / Obsolete
 
- > +		for (i = 0; i < n_pages; i++) {
- > +			buf = &bm->page_list[i];
- > +			buf->virt_addr = (void *)get_zeroed_page(GFP_KERNEL);
- > +			if (!buf->virt_addr)
- > +				break;
- > +
- > +			SetPageReserved(virt_to_page(buf->virt_addr));
- > +		}
- > +
- > +		bm->n_pages = i;
+It's currently:
 
-Here!           ^
-
- > +		if (i < n_pages)
- > +			goto err;
-
- > +err:
- > +	comedi_buf_map_put(bm);
- > +	return NULL;
+SOC-CAMERA V4L2 SUBSYSTEM
+L:	linux-media@vger.kernel.org
+T:	git git://linuxtv.org/media_tree.git
+S:	Orphan
+F:	include/media/soc_camera.h
+F:	drivers/staging/media/soc_camera/
 
 
-
--- 
--=( Ian Abbott <abbotti@mev.co.uk> || Web: www.mev.co.uk )=-
--=( MEV Ltd. is a company registered in England & Wales. )=-
--=( Registered number: 02862268.  Registered address:    )=-
--=( 15 West Park Road, Bramhall, STOCKPORT, SK7 3JZ, UK. )=-
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
