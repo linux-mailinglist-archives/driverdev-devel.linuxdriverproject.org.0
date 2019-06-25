@@ -1,76 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F0C8556E1
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Jun 2019 20:17:38 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6DD6D556E2
+	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Jun 2019 20:17:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7970085F89;
-	Tue, 25 Jun 2019 18:17:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 86FC2865FC;
+	Tue, 25 Jun 2019 18:17:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jDJlehpdmRnq; Tue, 25 Jun 2019 18:17:35 +0000 (UTC)
+	with ESMTP id 9lgNUON20IFz; Tue, 25 Jun 2019 18:17:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 84EF185D40;
-	Tue, 25 Jun 2019 18:17:34 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CE20C865CF;
+	Tue, 25 Jun 2019 18:17:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8221C1BF3CE
- for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 18:17:32 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B48001BF3CE
+ for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 18:17:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7F43385D40
- for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 18:17:32 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id B1F9087B08
+ for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 18:17:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kK8iCDR3WZ4A for <devel@linuxdriverproject.org>;
- Tue, 25 Jun 2019 18:17:31 +0000 (UTC)
+ with ESMTP id iZJE9g+++Ekm for <devel@linuxdriverproject.org>;
+ Tue, 25 Jun 2019 18:17:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
- [209.85.214.194])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D98C185AA1
- for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 18:17:31 +0000 (UTC)
-Received: by mail-pl1-f194.google.com with SMTP id e5so9254744pls.13
- for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 11:17:31 -0700 (PDT)
+Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
+ [209.85.215.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1D0E887A5A
+ for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 18:17:35 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id f25so9352449pgv.10
+ for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 11:17:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=w7IdLoqaM/pkAnJ/BoKl0kc6qgBZS1ZrZeCfsR3YYF8=;
- b=Se0IbeO6vIvQd+5CJ7kukmA7+d+F4c6uMSZok0m6C/Fs6dAdUTho0JvHEQoy4AgBmP
- mlIQXJWmHXMQBFumYr9HhsRsrP412uAZLK50N/Z4xvpmwrJokY9+63+h3ZO7WB0hASJu
- rtVfDXvLDDBbirz6RivBrEWdkV1ancCKQcZTGQHuOqSJBc0fsMCrq9MnzrXCJ/OTjsE+
- ZOOZUPHPN8nSxCyneH5TcyF7nCOV8NDfhtRdrLKARe8KhGvzrvqXRpApAIhcB6JRBQNR
- rjiSVly6Ao8EBbcnLCe+5uqQBLUmS32NRsFyome56XCpodUkiOP3taRNezEzb+lrBjnH
- oXKQ==
+ bh=4zbgv1pM7bI2m8GxF16hew58WU7DUKWqaBruIQtO3DI=;
+ b=VQyg9TcdelCeyiI1djapCGLalyj5yASTmGId7fjqOx1QPMlkGJnrfZejEUD0c0pVV8
+ VSW0684Ej6upzAFlRLe9nuzxGK9V1kIFasWuOsS7yjI3wX/uGyqrVI1TemKfYEzuEmyJ
+ TxYCnlK0dPd0G3hVc57zF2Fo0eJqxWyHTOdQENn8BoXsOopdQoUOeFZAG/7gzKX79iMJ
+ 2BbAUpM81Cw8YrHcLeQEv6mNSzdKrY1BxlJU6+wrtNOJl6fhr1A2fyfQaKBzW246EbRz
+ DCzXnyQeSIp2q7YOwlhqRsp8vf+RvGaKUjbKSW051MuhjxZc2YUm53kc9TSRh0sh3Jab
+ NzOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=w7IdLoqaM/pkAnJ/BoKl0kc6qgBZS1ZrZeCfsR3YYF8=;
- b=I0QTjL1nNmHQB4AfCgnDFpUmwgPcpsueLxRqF92Cd5HX6dL8XoQsijfzuyMUJfQVYO
- oVtGN7mMW+tSRnZto0NpjVQJhSHyPlzCsuG+V7gDit79IYFtSoLqM+PiTF/rIMAiowLh
- u3TwYDKAk2x+BqXJtEqHRy1i41dXNJgLcX2EvfOoUUzvoHVoTo2tDgZ8U33/AZrGMx16
- MZiqQ7L9n8b0YrSXRRhCVLGPJJ03aQDCOifb0ynFDL44cKqyD30DrKlnCWtXZyB5jM5E
- 3grFqKrmaWx+CDRLxjJqYKiVT8UnYPv/GDjNxJ0RwXIDDTiQ9+ivx6qfKDJn9jOJBkH+
- 26ZQ==
-X-Gm-Message-State: APjAAAX+SMvfSbEqJTG+WxUGXPeVKWI94WHwvmPf8nIYj2uawweWQjl3
- pdl1hsI9lxqOGMOpXdXS+8bgCE66V60=
-X-Google-Smtp-Source: APXvYqy4KthWZsAd+dDOYC4XRNhbd4yRpUArFvVQ5rtlvqQuCpnjsLEHIegsA7UtNb4N/3C2s2J4oQ==
-X-Received: by 2002:a17:902:4c88:: with SMTP id b8mr43145ple.29.1561486651582; 
- Tue, 25 Jun 2019 11:17:31 -0700 (PDT)
+ bh=4zbgv1pM7bI2m8GxF16hew58WU7DUKWqaBruIQtO3DI=;
+ b=EpR3YBfupeQre0xO2v+isRBKEpWA7OPafpkNDLSa4HpIl4l7QT8h+sijXWNVt1UiJd
+ dyI1trAUiAIiqCXtdwp/k0uPtS2VCQh/hZa8jBrtwVh3up9EhNILFfT6qbdDLqaw8eQ0
+ s4tEWiVQkzXtsgdMXRWHmYXJekqYKWeY67VKJn83oiarMUOIeeL7ZayDANnOtRpioqNT
+ vT9LYtDDV03moTwV5Sf+HN+g3HZZaQzXv0bdbsAfpLCOPX6BvE4lEavAcOvaAJ4AGgzJ
+ MwftwX6dzWXazS7Hc241gQo6yYeOjqOHs5q5/xEy5c2DQKze2XD/EZR3XSkH5OQ0/U3p
+ AFEA==
+X-Gm-Message-State: APjAAAWpWW4n+e74OFs61o8923Xwlp0vHtLwKAlA6FoR4A2eIEzji49r
+ EW9s+oxgX6hS+ZTMIP0o/UQ=
+X-Google-Smtp-Source: APXvYqzuGtrSRpXvN1EfFPGsLNzynnPpRFeOY7mm9/vTss2CahrlmDd9kan7wMnjSVb4D4VK/MOGGw==
+X-Received: by 2002:a17:90a:cb12:: with SMTP id
+ z18mr191644pjt.82.1561486654799; 
+ Tue, 25 Jun 2019 11:17:34 -0700 (PDT)
 Received: from localhost.localdomain ([122.163.71.137])
- by smtp.gmail.com with ESMTPSA id w7sm14042959pfb.117.2019.06.25.11.17.28
+ by smtp.gmail.com with ESMTPSA id w7sm14042959pfb.117.2019.06.25.11.17.31
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Tue, 25 Jun 2019 11:17:31 -0700 (PDT)
+ Tue, 25 Jun 2019 11:17:34 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: eric@anholt.net, wahrenst@gmx.net, gregkh@linuxfoundation.org,
  linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  devel@driverdev.osuosl.org
-Subject: [PATCH 3/9] staging: vc04_services: Remove vchiq_arm_force_suspend()
-Date: Tue, 25 Jun 2019 23:47:03 +0530
-Message-Id: <20190625181710.2267-3-nishkadg.linux@gmail.com>
+Subject: [PATCH 4/9] staging: vc04_services: Remove vchiq_pause_internal()
+Date: Tue, 25 Jun 2019 23:47:04 +0530
+Message-Id: <20190625181710.2267-4-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190625181710.2267-1-nishkadg.linux@gmail.com>
 References: <20190625181710.2267-1-nishkadg.linux@gmail.com>
@@ -93,159 +94,62 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove unused function vchiq_arm_force_suspend.
+Remove unused function vchiq_pause_internal.
 Issue found with Coccinelle.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- .../interface/vchiq_arm/vchiq_arm.c           | 120 ------------------
- .../interface/vchiq_arm/vchiq_arm.h           |   3 -
- 2 files changed, 123 deletions(-)
+ .../interface/vchiq_arm/vchiq_core.c          | 23 -------------------
+ .../interface/vchiq_arm/vchiq_core.h          |  3 ---
+ 2 files changed, 26 deletions(-)
 
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-index bf7c1e2bce67..6e59470d44ab 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-@@ -2741,126 +2741,6 @@ output_timeout_error(struct vchiq_state *state)
- 
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+index 0dca6e834ffa..7f093b2679ae 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+@@ -2830,29 +2830,6 @@ vchiq_shutdown_internal(struct vchiq_state *state, VCHIQ_INSTANCE_T instance)
+ 	return VCHIQ_SUCCESS;
  }
  
--/* Try to get videocore into suspended state, regardless of autosuspend state.
--** We don't actually force suspend, since videocore may get into a bad state
--** if we force suspend at a bad time.  Instead, we wait for autosuspend to
--** determine a good point to suspend.  If this doesn't happen within 100ms we
--** report failure.
--**
--** Returns VCHIQ_SUCCESS if videocore suspended successfully, VCHIQ_RETRY if
--** videocore failed to suspend in time or VCHIQ_ERROR if interrupted.
--*/
 -VCHIQ_STATUS_T
--vchiq_arm_force_suspend(struct vchiq_state *state)
+-vchiq_pause_internal(struct vchiq_state *state)
 -{
--	struct vchiq_arm_state *arm_state = vchiq_platform_get_arm_state(state);
--	VCHIQ_STATUS_T status = VCHIQ_ERROR;
--	long rc = 0;
--	int repeat = -1;
+-	VCHIQ_STATUS_T status = VCHIQ_SUCCESS;
 -
--	if (!arm_state)
--		goto out;
--
--	vchiq_log_trace(vchiq_susp_log_level, "%s", __func__);
--
--	write_lock_bh(&arm_state->susp_res_lock);
--
--	status = block_resume(arm_state);
--	if (status != VCHIQ_SUCCESS)
--		goto unlock;
--	if (arm_state->vc_suspend_state == VC_SUSPEND_SUSPENDED) {
--		/* Already suspended - just block resume and exit */
--		vchiq_log_info(vchiq_susp_log_level, "%s already suspended",
--			__func__);
--		status = VCHIQ_SUCCESS;
--		goto unlock;
--	} else if (arm_state->vc_suspend_state <= VC_SUSPEND_IDLE) {
--		/* initiate suspend immediately in the case that we're waiting
--		 * for the timeout */
--		stop_suspend_timer(arm_state);
--		if (!vchiq_videocore_wanted(state)) {
--			vchiq_log_info(vchiq_susp_log_level, "%s videocore "
--				"idle, initiating suspend", __func__);
--			status = vchiq_arm_vcsuspend(state);
--		} else if (arm_state->autosuspend_override <
--						FORCE_SUSPEND_FAIL_MAX) {
--			vchiq_log_info(vchiq_susp_log_level, "%s letting "
--				"videocore go idle", __func__);
--			status = VCHIQ_SUCCESS;
--		} else {
--			vchiq_log_warning(vchiq_susp_log_level, "%s failed too "
--				"many times - attempting suspend", __func__);
--			status = vchiq_arm_vcsuspend(state);
--		}
--	} else {
--		vchiq_log_info(vchiq_susp_log_level, "%s videocore suspend "
--			"in progress - wait for completion", __func__);
--		status = VCHIQ_SUCCESS;
+-	switch (state->conn_state) {
+-	case VCHIQ_CONNSTATE_CONNECTED:
+-		/* Request a pause */
+-		vchiq_set_conn_state(state, VCHIQ_CONNSTATE_PAUSING);
+-		request_poll(state, NULL, 0);
+-		break;
+-	default:
+-		vchiq_log_error(vchiq_core_log_level,
+-			"%s in state %s\n",
+-			__func__, conn_state_names[state->conn_state]);
+-		status = VCHIQ_ERROR;
+-		VCHIQ_STATS_INC(state, error_count);
+-		break;
 -	}
 -
--	/* Wait for suspend to happen due to system idle (not forced..) */
--	if (status != VCHIQ_SUCCESS)
--		goto unblock_resume;
--
--	do {
--		write_unlock_bh(&arm_state->susp_res_lock);
--
--		rc = wait_for_completion_interruptible_timeout(
--				&arm_state->vc_suspend_complete,
--				msecs_to_jiffies(FORCE_SUSPEND_TIMEOUT_MS));
--
--		write_lock_bh(&arm_state->susp_res_lock);
--		if (rc < 0) {
--			vchiq_log_warning(vchiq_susp_log_level, "%s "
--				"interrupted waiting for suspend", __func__);
--			status = VCHIQ_ERROR;
--			goto unblock_resume;
--		} else if (rc == 0) {
--			if (arm_state->vc_suspend_state > VC_SUSPEND_IDLE) {
--				/* Repeat timeout once if in progress */
--				if (repeat < 0) {
--					repeat = 1;
--					continue;
--				}
--			}
--			arm_state->autosuspend_override++;
--			output_timeout_error(state);
--
--			status = VCHIQ_RETRY;
--			goto unblock_resume;
--		}
--	} while (0 < (repeat--));
--
--	/* Check and report state in case we need to abort ARM suspend */
--	if (arm_state->vc_suspend_state != VC_SUSPEND_SUSPENDED) {
--		status = VCHIQ_RETRY;
--		vchiq_log_error(vchiq_susp_log_level,
--			"%s videocore suspend failed (state %s)", __func__,
--			suspend_state_names[arm_state->vc_suspend_state +
--						VC_SUSPEND_NUM_OFFSET]);
--		/* Reset the state only if it's still in an error state.
--		 * Something could have already initiated another suspend. */
--		if (arm_state->vc_suspend_state < VC_SUSPEND_IDLE)
--			set_suspend_state(arm_state, VC_SUSPEND_IDLE);
--
--		goto unblock_resume;
--	}
--
--	/* successfully suspended - unlock and exit */
--	goto unlock;
--
--unblock_resume:
--	/* all error states need to unblock resume before exit */
--	unblock_resume(arm_state);
--
--unlock:
--	write_unlock_bh(&arm_state->susp_res_lock);
--
--out:
--	vchiq_log_trace(vchiq_susp_log_level, "%s exit %d", __func__, status);
 -	return status;
 -}
 -
- void
- vchiq_check_suspend(struct vchiq_state *state)
+ VCHIQ_STATUS_T
+ vchiq_resume_internal(struct vchiq_state *state)
  {
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.h b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.h
-index 61b15278c999..b424323e9613 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.h
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.h
-@@ -112,9 +112,6 @@ vchiq_get_state(void);
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.h b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.h
+index aee2d362e88d..b319031145ed 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.h
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.h
+@@ -518,9 +518,6 @@ vchiq_free_service_internal(struct vchiq_service *service);
  extern VCHIQ_STATUS_T
- vchiq_arm_vcsuspend(struct vchiq_state *state);
+ vchiq_shutdown_internal(struct vchiq_state *state, VCHIQ_INSTANCE_T instance);
  
 -extern VCHIQ_STATUS_T
--vchiq_arm_force_suspend(struct vchiq_state *state);
+-vchiq_pause_internal(struct vchiq_state *state);
 -
  extern VCHIQ_STATUS_T
- vchiq_arm_vcresume(struct vchiq_state *state);
+ vchiq_resume_internal(struct vchiq_state *state);
  
 -- 
 2.19.1
