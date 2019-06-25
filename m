@@ -1,77 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6DD6D556E2
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Jun 2019 20:17:41 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id F2449556E3
+	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Jun 2019 20:17:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 86FC2865FC;
-	Tue, 25 Jun 2019 18:17:39 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A499120797;
+	Tue, 25 Jun 2019 18:17:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9lgNUON20IFz; Tue, 25 Jun 2019 18:17:39 +0000 (UTC)
+	with ESMTP id UeIElIlEDQri; Tue, 25 Jun 2019 18:17:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CE20C865CF;
-	Tue, 25 Jun 2019 18:17:37 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D12B320781;
+	Tue, 25 Jun 2019 18:17:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B48001BF3CE
- for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 18:17:35 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id F3BEE1BF3CE
+ for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 18:17:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B1F9087B08
- for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 18:17:35 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id F0E4485F33
+ for <devel@linuxdriverproject.org>; Tue, 25 Jun 2019 18:17:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iZJE9g+++Ekm for <devel@linuxdriverproject.org>;
- Tue, 25 Jun 2019 18:17:35 +0000 (UTC)
+ with ESMTP id EfhpFF14VFqb for <devel@linuxdriverproject.org>;
+ Tue, 25 Jun 2019 18:17:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1D0E887A5A
- for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 18:17:35 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id f25so9352449pgv.10
- for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 11:17:35 -0700 (PDT)
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 73B6985D40
+ for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 18:17:38 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id v9so9326642pgr.13
+ for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 11:17:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=4zbgv1pM7bI2m8GxF16hew58WU7DUKWqaBruIQtO3DI=;
- b=VQyg9TcdelCeyiI1djapCGLalyj5yASTmGId7fjqOx1QPMlkGJnrfZejEUD0c0pVV8
- VSW0684Ej6upzAFlRLe9nuzxGK9V1kIFasWuOsS7yjI3wX/uGyqrVI1TemKfYEzuEmyJ
- TxYCnlK0dPd0G3hVc57zF2Fo0eJqxWyHTOdQENn8BoXsOopdQoUOeFZAG/7gzKX79iMJ
- 2BbAUpM81Cw8YrHcLeQEv6mNSzdKrY1BxlJU6+wrtNOJl6fhr1A2fyfQaKBzW246EbRz
- DCzXnyQeSIp2q7YOwlhqRsp8vf+RvGaKUjbKSW051MuhjxZc2YUm53kc9TSRh0sh3Jab
- NzOA==
+ bh=TPd8ferAVo0HvYrCWk5KrEQ9AnVSJ83ueSCdzT8Hy3Y=;
+ b=Glm2fnCH5Knprr1c5OUlWUeOYPwxM5GitpTmCM+Oo4HEF38UyXNm4b01UYCaefch6v
+ Um9Sj6ISGiadSFIt+UAN1pZmZd+yvXAyt6hG9duvXdOhlmjM5IHuUNEfR0JBLZ8OZEk/
+ 0vG4txuXrHSM2JvHWkkm+OuZCppMbOgaNlRq0hjz+XM/aGRfqbYwyYefLFleuTy1A90K
+ PDUf6kvEnHf1v6IuU+z2+UldEbFIhdIQYHOn6faMiuYKubtIs9dC3uP9BF0XLy4jVuuf
+ RH6WFUBYdIFWI1iZmPNQeDATEUsED5wuTndl6DQEsZrlI6mDJ+BRQ6svewQBpB9UP9B9
+ qVZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=4zbgv1pM7bI2m8GxF16hew58WU7DUKWqaBruIQtO3DI=;
- b=EpR3YBfupeQre0xO2v+isRBKEpWA7OPafpkNDLSa4HpIl4l7QT8h+sijXWNVt1UiJd
- dyI1trAUiAIiqCXtdwp/k0uPtS2VCQh/hZa8jBrtwVh3up9EhNILFfT6qbdDLqaw8eQ0
- s4tEWiVQkzXtsgdMXRWHmYXJekqYKWeY67VKJn83oiarMUOIeeL7ZayDANnOtRpioqNT
- vT9LYtDDV03moTwV5Sf+HN+g3HZZaQzXv0bdbsAfpLCOPX6BvE4lEavAcOvaAJ4AGgzJ
- MwftwX6dzWXazS7Hc241gQo6yYeOjqOHs5q5/xEy5c2DQKze2XD/EZR3XSkH5OQ0/U3p
- AFEA==
-X-Gm-Message-State: APjAAAWpWW4n+e74OFs61o8923Xwlp0vHtLwKAlA6FoR4A2eIEzji49r
- EW9s+oxgX6hS+ZTMIP0o/UQ=
-X-Google-Smtp-Source: APXvYqzuGtrSRpXvN1EfFPGsLNzynnPpRFeOY7mm9/vTss2CahrlmDd9kan7wMnjSVb4D4VK/MOGGw==
-X-Received: by 2002:a17:90a:cb12:: with SMTP id
- z18mr191644pjt.82.1561486654799; 
- Tue, 25 Jun 2019 11:17:34 -0700 (PDT)
+ bh=TPd8ferAVo0HvYrCWk5KrEQ9AnVSJ83ueSCdzT8Hy3Y=;
+ b=lZzUh5n3JMabGI7pDq5tKwvx9fmF3Gv+p1UsLh6ALYKV/r6QAQo3+sOdAFki+Nj4+8
+ 7lxpsf0Yv8yyfa6JYdErOkrupQUnR8eeuYHvO2UMlZcj9O+4zKtlV7g8wZFZAnmFGl/r
+ wK1ByV2NGYUOHjU0HJ6HL5qJgWiOb4JmkM50p55dFv9SlSCNtIx6cOHYTl8Zt3o5ldwv
+ y3gXMcg2z2jwLl0x1GHmlMmO7fS+4h1bJ8xVoxiELmdTa7QLLAXS8hXm6GTVez0IsvUs
+ r+UuWFn7/h5bqi6UI8BTPzDspBVgw6sSjetHsT8VhhMR9mgolL3713bcS7gWKuDD53X6
+ gQHw==
+X-Gm-Message-State: APjAAAXBeOsCeOQVb7Fuq+zJdxgT0k1Vh3COGTphSO4UiiGVXQnNWdVO
+ eyWdRZm61NpaPbfd1jW4UZw=
+X-Google-Smtp-Source: APXvYqzq3ns3IcREp9Pgz/jP+aV8t5Ma8TdnTIJ79KzabdlwjSRqsHg7+tNbvorfmyAB0jV5TX/SCQ==
+X-Received: by 2002:a17:90a:dc86:: with SMTP id
+ j6mr126154pjv.141.1561486658147; 
+ Tue, 25 Jun 2019 11:17:38 -0700 (PDT)
 Received: from localhost.localdomain ([122.163.71.137])
- by smtp.gmail.com with ESMTPSA id w7sm14042959pfb.117.2019.06.25.11.17.31
+ by smtp.gmail.com with ESMTPSA id w7sm14042959pfb.117.2019.06.25.11.17.35
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Tue, 25 Jun 2019 11:17:34 -0700 (PDT)
+ Tue, 25 Jun 2019 11:17:37 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: eric@anholt.net, wahrenst@gmx.net, gregkh@linuxfoundation.org,
  linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  devel@driverdev.osuosl.org
-Subject: [PATCH 4/9] staging: vc04_services: Remove vchiq_pause_internal()
-Date: Tue, 25 Jun 2019 23:47:04 +0530
-Message-Id: <20190625181710.2267-4-nishkadg.linux@gmail.com>
+Subject: [PATCH 5/9] staging: vc04_services: Remove vchiq_resume_internal()
+Date: Tue, 25 Jun 2019 23:47:05 +0530
+Message-Id: <20190625181710.2267-5-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190625181710.2267-1-nishkadg.linux@gmail.com>
 References: <20190625181710.2267-1-nishkadg.linux@gmail.com>
@@ -94,51 +94,44 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove unused function vchiq_pause_internal.
+Remove unused function vchiq_resume_internal.
 Issue found with Coccinelle.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- .../interface/vchiq_arm/vchiq_core.c          | 23 -------------------
- .../interface/vchiq_arm/vchiq_core.h          |  3 ---
- 2 files changed, 26 deletions(-)
+ .../interface/vchiq_arm/vchiq_core.c             | 16 ----------------
+ .../interface/vchiq_arm/vchiq_core.h             |  3 ---
+ 2 files changed, 19 deletions(-)
 
 diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-index 0dca6e834ffa..7f093b2679ae 100644
+index 7f093b2679ae..5e231cc5c87d 100644
 --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
 +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-@@ -2830,29 +2830,6 @@ vchiq_shutdown_internal(struct vchiq_state *state, VCHIQ_INSTANCE_T instance)
+@@ -2830,22 +2830,6 @@ vchiq_shutdown_internal(struct vchiq_state *state, VCHIQ_INSTANCE_T instance)
  	return VCHIQ_SUCCESS;
  }
  
 -VCHIQ_STATUS_T
--vchiq_pause_internal(struct vchiq_state *state)
+-vchiq_resume_internal(struct vchiq_state *state)
 -{
 -	VCHIQ_STATUS_T status = VCHIQ_SUCCESS;
 -
--	switch (state->conn_state) {
--	case VCHIQ_CONNSTATE_CONNECTED:
--		/* Request a pause */
--		vchiq_set_conn_state(state, VCHIQ_CONNSTATE_PAUSING);
+-	if (state->conn_state == VCHIQ_CONNSTATE_PAUSED) {
+-		vchiq_set_conn_state(state, VCHIQ_CONNSTATE_RESUMING);
 -		request_poll(state, NULL, 0);
--		break;
--	default:
--		vchiq_log_error(vchiq_core_log_level,
--			"%s in state %s\n",
--			__func__, conn_state_names[state->conn_state]);
+-	} else {
 -		status = VCHIQ_ERROR;
 -		VCHIQ_STATS_INC(state, error_count);
--		break;
 -	}
 -
 -	return status;
 -}
 -
  VCHIQ_STATUS_T
- vchiq_resume_internal(struct vchiq_state *state)
+ vchiq_close_service(VCHIQ_SERVICE_HANDLE_T handle)
  {
 diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.h b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.h
-index aee2d362e88d..b319031145ed 100644
+index b319031145ed..b5e09d52b202 100644
 --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.h
 +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.h
 @@ -518,9 +518,6 @@ vchiq_free_service_internal(struct vchiq_service *service);
@@ -146,10 +139,10 @@ index aee2d362e88d..b319031145ed 100644
  vchiq_shutdown_internal(struct vchiq_state *state, VCHIQ_INSTANCE_T instance);
  
 -extern VCHIQ_STATUS_T
--vchiq_pause_internal(struct vchiq_state *state);
+-vchiq_resume_internal(struct vchiq_state *state);
 -
- extern VCHIQ_STATUS_T
- vchiq_resume_internal(struct vchiq_state *state);
+ extern void
+ remote_event_pollall(struct vchiq_state *state);
  
 -- 
 2.19.1
