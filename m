@@ -2,91 +2,76 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D565D56CF9
-	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 16:57:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C7C4456E07
+	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 17:49:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3EB9921FA8;
-	Wed, 26 Jun 2019 14:57:15 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CDECB21FA8;
+	Wed, 26 Jun 2019 15:49:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Igf-uMEKfCeb; Wed, 26 Jun 2019 14:57:14 +0000 (UTC)
+	with ESMTP id w+aa04I12epV; Wed, 26 Jun 2019 15:49:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C87601FEDF;
-	Wed, 26 Jun 2019 14:57:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 50BC121574;
+	Wed, 26 Jun 2019 15:49:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 73B9A1BF97D
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 14:57:11 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 243881BF2F0
+ for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 15:48:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 702518625C
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 14:57:11 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 19C618608D
+ for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 15:48:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LUYEibmqRake for <devel@linuxdriverproject.org>;
- Wed, 26 Jun 2019 14:57:09 +0000 (UTC)
+ with ESMTP id Ei9pTdXCe_9B for <devel@linuxdriverproject.org>;
+ Wed, 26 Jun 2019 15:48:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A5A9986A07
- for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 14:57:09 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5QEsBPp120867;
- Wed, 26 Jun 2019 14:57:07 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- content-transfer-encoding : in-reply-to; s=corp-2018-07-02;
- bh=8doc8T026Qgzuel0n4TKmmc52HYkNsZ8TF7JIVqwUFg=;
- b=ryl8/PdeUbI/B9eSS4S6nDmMCIqINo/1uxF5TiHQiv+WXs1GrX1Wum7t4Xme2DAwBW/W
- SFNxoE+csDzrSvk2PeLXRLFt+3kXaSJPoaq3QpDPlAmte0vkBWmNtN5hS6YcyZF/i1Rz
- wIAkyLtbYtM34lfknPjRv9ukNn0MbIK0MRGWV3wCb4tphVrc9Fk7ONa3PaQVAABeoCOn
- zfd3uGfTSLNKbiOyIPDtzm0Po8uJdhVeQhDkZKCWLo6wzA/eePTqPrS2HTDo9zzDtU0f
- VEaAi6wjW0sN/wMUukqXvsSTAqCPmOh3YlXQ66HwfmCgJLeNuXQg14nc/0n+kecAawW7 2Q== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2120.oracle.com with ESMTP id 2t9cyqjt1v-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 26 Jun 2019 14:57:07 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5QEtVW7064320;
- Wed, 26 Jun 2019 14:57:07 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3030.oracle.com with ESMTP id 2t9accr86d-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 26 Jun 2019 14:57:06 +0000
-Received: from abhmp0003.oracle.com (abhmp0003.oracle.com [141.146.116.9])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x5QEutnF007543;
- Wed, 26 Jun 2019 14:56:55 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 26 Jun 2019 07:56:55 -0700
-Date: Wed, 26 Jun 2019 17:56:36 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Tobias =?iso-8859-1?Q?Nie=DFen?= <tobias.niessen@stud.uni-hannover.de>
-Subject: Re: [PATCH 1/2] staging: rts5208: Rewrite redundant if statement to
- improve code style
-Message-ID: <20190626145636.GG28859@kadam>
-References: <20190626142857.30155-1-tobias.niessen@stud.uni-hannover.de>
- <20190626142857.30155-2-tobias.niessen@stud.uni-hannover.de>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190626142857.30155-2-tobias.niessen@stud.uni-hannover.de>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9299
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=784
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1810050000 definitions=main-1906260176
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9299
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=837 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
- definitions=main-1906260176
+Received: from mout.gmx.net (mout.gmx.net [212.227.17.20])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B990386088
+ for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 15:48:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1561564113;
+ bh=mWLTbdtxGfwZ13vnfxlQDfv6DzwTGycBEng3zNk/XaE=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
+ b=KYHDR8XZmzxft+7qC8J8cyQ71BSi6JkTsAhWvd+vK2f+YjWqjT42uTfrjNGCcQfdV
+ Z9gkAVPhUJWqXcu/GipMjVfx/QmxN65eJI1oHCOZ/vhkhzCqY9CuiJjHWnxF6jmydK
+ 5QSqYnKAOWM3NXmd6pWkd6wlKwIFV9zX8+x8R0gE=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from localhost.localdomain ([37.4.249.111]) by mail.gmx.com
+ (mrgmx102 [212.227.17.168]) with ESMTPSA (Nemesis) id
+ 0LyS5K-1ibrK32soI-015u60; Wed, 26 Jun 2019 17:48:33 +0200
+From: Stefan Wahren <wahrenst@gmx.net>
+To: Eric Anholt <eric@anholt.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Subject: [PATCH V2] staging: bcm2835-camera: Restore return behavior of
+ ctrl_set_bitrate()
+Date: Wed, 26 Jun 2019 17:48:11 +0200
+Message-Id: <1561564091-14248-1-git-send-email-wahrenst@gmx.net>
+X-Mailer: git-send-email 2.7.4
+X-Provags-ID: V03:K1:oGZaaF0VyX9aU1B2KlshIgSdbA6j0aZLN7PhhBatNb+3vHD/bim
+ IAE1eOdpYqQunHD6Pg0lTq7WJELowblFluMBHzPg8LdD02e6QUAOnsxpP9+ZsegmN4310bJ
+ qbWyOk73ZUf0L+ErExAilg9x9ygGjCdTujEDRrk0vloZc12lmdHMEA8VQs/4HDu6WGeOoac
+ M59q+7daHAsSTIgJrRUuA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:+5QZJxEbxD4=:fxpwesVoxYf61efHxmcTKK
+ BddiAtw8+v4csO9cTNV4qSFAebPmgWlPv8KyLXPbOQdcjOl72FUcevKvhsznxi/uv5leFw9uX
+ Sr99W78EPj3EmJmQT1KZ8GMPWcB/hQa1h/t4bhjHByFu4VQ2xaIdpsJfZlFcR2poK1E6dEFT6
+ jHlzWYjt2kP7anvsjMJvdSVILf9+ei6ysWz1aaMCKFLhxNUNmXH9onDdO8WOanGVr15zb+cVv
+ N4ecxzj0SonMoADsz1UJqgwb8Pi5/me809KQd8pQ/GhKDeLPNwQPXJMMhRbyPgmg5bJVCRUgp
+ MaMwDNiIn3qPl6t4jPx9uiSL5n47PAyt6vVlyufqp1lOr4EqgQFWp+2hknWJYJ8hzkBLgXrdZ
+ gfNGAtlqG9MdHsJds/KNtpjNvF3iCuOWcIyBEGAYKZL78LQggOcIFSlHn+KZ9JU2t9jGJHKF7
+ 0E7pkZuWJIQjaWnt7WTAiO/Pv3tNhKukGVQXG7OTxkwS3+BsXI+vBB+xtOP+syI1QFkP3h+5c
+ 9HVQLB7CA73bkyul1AwmrHNV+OqITaTatTPFXsDojt54X59pz2G3SkQI5z8JZ2aq40Z3vwI6u
+ lyMT+gPPFDx2aNm460FX8Gm+2BisA5xrkpjxb4KIDZvTRDCexntK3cadXRyX7GZQWc6poIcVf
+ atWNWiKYv6KN6vA+lc2Ffl5FM8p7BFtkX4GA0GZ/XhMTvCqDtgxBdQ4sevKJ4riNMAvRuswrM
+ BUrlhaRg3ElFPF3x+S73QaRmNmtv34L7puWW57WxrkKKSJS7Td0oZd1ktx6eAW1CA+I8RmOn3
+ A+rcm/ZfBf00TXqxsq3/t9h4mL3cP4KhBAxtyYg4z4yjuWt8AmXR6GfvTwCxk+qioygsV6KyY
+ 6yh532oUizARrL8gUwZBauRwgH5rk7e2BWINY86y8vr3nSBzocuIFAekTK42reIsJ+qq9OSD5
+ IcQroenV1LixMtStvb6CiyHMHMqpxb+Buu+0bdl5qjKcUB4JxBA6KWMPC6Orj+Yf/GKaQlk+k
+ VsgZBuZAUHsZFuULBdIsUg//MyQJ0q/13WL31BSqJX9SAMgHFgsGeDo4yAg4YSF2Mbh1EgZu7
+ a3+bklRX7SG3Ts=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,52 +84,80 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- Sabrina Gaube <sabrina-gaube@web.de>, linux-kernel@vger.kernel.org,
- linux-kernel@i4.cs.fau.de
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: devel@driverdev.osuosl.org, Stefan Wahren <wahrenst@gmx.net>,
+ Dave Stevenson <dave.stevenson@raspberrypi.org>,
+ Dan Carpenter <dan.carpenter@oracle.com>, linux-arm-kernel@lists.infradead.org,
+ linux-rpi-kernel@lists.infradead.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Both these patches seem fine.
+The commit 52c4dfcead49 ("Staging: vc04_services: Cleanup in
+ctrl_set_bitrate()") changed the return behavior of ctrl_set_bitrate().
+We cannot do this because of a bug in the firmware, which breaks probing
+of bcm2835-camera:
 
-On Wed, Jun 26, 2019 at 04:28:56PM +0200, Tobias Nie=DFen wrote:
-> This commit uses the fact that
-> =
+    bcm2835-v4l2: mmal_init: failed to set all camera controls: -3
+    Cleanup: Destroy video encoder
+    Cleanup: Destroy image encoder
+    Cleanup: Destroy video render
+    Cleanup: Destroy camera
+    bcm2835-v4l2: bcm2835_mmal_probe: mmal init failed: -3
+    bcm2835-camera: probe of bcm2835-camera failed with error -3
 
->     if (a) {
->             if (b) {
->                     ...
->             }
->     }
-> =
+So restore the old behavior, add an explaining comment and a debug message
+to verify that the bug has been fixed in firmware.
 
-> can instead be written as
-> =
+Fixes: 52c4dfcead49 ("Staging: vc04_services: Cleanup in ctrl_set_bitrate()")
+Signed-off-by: Stefan Wahren <wahrenst@gmx.net>
+---
+ .../staging/vc04_services/bcm2835-camera/controls.c   | 19 ++++++++++++++++---
+ 1 file changed, 16 insertions(+), 3 deletions(-)
 
->     if (a && b) {
->             ...
->     }
-> =
+Changes in V2:
+- add an explaining comment as suggest by Dan and Dave
+- add a debug message to verify the firmware behavior
 
-> without any change in behavior, allowing to decrease the indentation
-> of the contained code block and thus reducing the average line length.
-> =
+diff --git a/drivers/staging/vc04_services/bcm2835-camera/controls.c b/drivers/staging/vc04_services/bcm2835-camera/controls.c
+index d60e378..c251164 100644
+--- a/drivers/staging/vc04_services/bcm2835-camera/controls.c
++++ b/drivers/staging/vc04_services/bcm2835-camera/controls.c
+@@ -604,15 +604,28 @@ static int ctrl_set_bitrate(struct bm2835_mmal_dev *dev,
+ 			    struct v4l2_ctrl *ctrl,
+ 			    const struct bm2835_mmal_v4l2_ctrl *mmal_ctrl)
+ {
++	int ret;
+ 	struct vchiq_mmal_port *encoder_out;
 
-> Signed-off-by: Tobias Nie=DFen <tobias.niessen@stud.uni-hannover.de>
-> Signed-off-by: Sabrina Gaube <sabrina-gaube@web.de>
+ 	dev->capture.encode_bitrate = ctrl->val;
 
-Signed-off-by is like signing a legal document that you didn't put any
-of SCO's secret UNIXWARE source code into your patch or do other illegal
-activities.  Everyone who handles a patch is supposed to Sign it.
+ 	encoder_out = &dev->component[MMAL_COMPONENT_VIDEO_ENCODE]->output[0];
 
-It's weird to see Sabrina randomly signing your patches.  Probably there
-is a more appropriate kind of tag to use as well or instead such as
-Co-Developed-by, Reviewed-by or Suggested-by.
+-	return vchiq_mmal_port_parameter_set(dev->instance, encoder_out,
+-					     mmal_ctrl->mmal_id, &ctrl->val,
+-					     sizeof(ctrl->val));
++	ret = vchiq_mmal_port_parameter_set(dev->instance, encoder_out,
++					    mmal_ctrl->mmal_id, &ctrl->val,
++					    sizeof(ctrl->val));
++
++	v4l2_dbg(1, bcm2835_v4l2_debug, &dev->v4l2_dev,
++		 "%s: After: mmal_ctrl:%p ctrl id:0x%x ctrl val:%d ret %d(%d)\n",
++		 __func__, mmal_ctrl, ctrl->id, ctrl->val, ret,
++		 (ret == 0 ? 0 : -EINVAL));
++
++	/*
++	 * Older firmware versions (pre July 2019) have a bug in handling
++	 * MMAL_PARAMETER_VIDEO_BIT_RATE that result in the call
++	 * returning -MMAL_MSG_STATUS_EINVAL. So ignore errors from this call.
++	 */
++	return 0;
+ }
 
-regards,
-dan carpenter
+ static int ctrl_set_bitrate_mode(struct bm2835_mmal_dev *dev,
+--
+2.7.4
 
 _______________________________________________
 devel mailing list
