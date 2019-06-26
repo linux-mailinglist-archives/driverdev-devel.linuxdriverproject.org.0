@@ -1,70 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9120C55F25
-	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 04:42:05 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3F06C55F27
+	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 04:42:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A3EAD21514;
-	Wed, 26 Jun 2019 02:42:03 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 73D40867C5;
+	Wed, 26 Jun 2019 02:42:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PpibxiFCQB6X; Wed, 26 Jun 2019 02:42:03 +0000 (UTC)
+	with ESMTP id 17rfLadLLTOG; Wed, 26 Jun 2019 02:42:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 26634214EB;
-	Wed, 26 Jun 2019 02:42:02 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 376E9867AC;
+	Wed, 26 Jun 2019 02:42:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 56E211BF3DE
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 02:41:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8064D1BF3DE
+ for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 02:42:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 4AEF6867AC
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 02:41:59 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7B738867AC
+ for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 02:42:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NTKRj0irXF8G for <devel@linuxdriverproject.org>;
- Wed, 26 Jun 2019 02:41:57 +0000 (UTC)
+ with ESMTP id OzjDbOnEP942 for <devel@linuxdriverproject.org>;
+ Wed, 26 Jun 2019 02:42:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f193.google.com (mail-pl1-f193.google.com
- [209.85.214.193])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 9A33F86767
- for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 02:41:57 +0000 (UTC)
-Received: by mail-pl1-f193.google.com with SMTP id ay6so513791plb.9
- for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 19:41:57 -0700 (PDT)
+Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
+ [209.85.214.196])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 0D2DB86767
+ for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 02:42:25 +0000 (UTC)
+Received: by mail-pl1-f196.google.com with SMTP id bh12so533906plb.4
+ for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 19:42:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=8iHzMdYOI0Vlz5bJjh+l/GqT6c2o8S7w8UKOoSsz21M=;
- b=tU729ZIcVWFphWxnLy+Qzf/7C+Pg665dgPb9pkCJxU191+cawtSZxnuBnGImiZAhSy
- MaS+0Q9yPKkib9YynRiw00DVQWBUGlAJoEFCuvT5ENdY+mcpWSugy/Nh0fPRRh2LpXIw
- aqyDUMRpY+y8zvovpOsWdi9vaPuURaBKr/vio5A/dbFmJ7OoM8Z57hqsjJC+/cZdVGRA
- yI5oCGCkYCnK+1pDRoZUSWg9gy6f1DR9d4x1rcPuas8+7a0ZD4p373BZPJfrEU0eJmBR
- GiC42MKtmk9LeranEvRWCUwWlsdyuUkDmItOw+gL6zl8g54vdEcpFXWhjwd/cbDjLwCZ
- FUqw==
+ :user-agent; bh=TgGo/bYiWps+k76eI/kRcNwlMNadlMcwHKR/CkWVaSY=;
+ b=KkeqqqqW0H0KOwBu/UKfqUQpMzCwsR5/X8t3ZCZSLkbxtXvUHCx+0vdN30Bb3ebWVa
+ CNF69Nrz1103guRIHT7UKCJOsNwXfrDLm5m5amiWAnYWh90stJRD5PbRSbwUmc0tb+5G
+ dj8OHZG3nIDdGEhqMF69a48GSuDKUR9CDBbaVDyw/aDdWQRH7lQwinbVRfuZjlrAVbuA
+ Sk1YEvSWeIkm39saY9XN/7gh9J0Fr9wRXYH70moPToY+4ccLi9Btw8oJk6rCNb+MZiql
+ ocJztIHDVdRXRwODqAYVIlSfcA85ZqNFztW7JIpwv9MvjnDXhw0RoWLrlZtYv+PZSn7h
+ skEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=8iHzMdYOI0Vlz5bJjh+l/GqT6c2o8S7w8UKOoSsz21M=;
- b=caTHvAA4Ts2vSSRLqjBHRe2Y4NSYeabW/YXXXpyulEXyLh5ZjNyFuSR90oiCBeUms5
- Mtho5t0njowkH4/IVAqSS65j85J//vTao3Y2KlxQFaBU1NWZFFuifa6DT6CbBFVDKxJg
- RcTvLL/SOVsYlqCkkEAYT5scgK5jFzwUZ3r5HO8dnPdrvDVPoLe6ZPSXrP5Kc1occzxq
- OVFreRKEK1RlwILSl+fepwHS9nf3hk10y+HobQxjB5o47N1aSsAsZAB98giyc1h0ZM/O
- UZEqUDogirftzC8wTz6kjngYMeOlpcAVSWRmhwunpxwVyNfsPDjRnpbmKnxzD0tv8Me5
- Sa1w==
-X-Gm-Message-State: APjAAAXy/c5rK7GxeMyR11yVERb4JEVJ7Opj0rHRtbbiSnxTmeeR9lv7
- deeSgJszLmsT0017M4JjeW8=
-X-Google-Smtp-Source: APXvYqwBeGWcBBnwXnUoND1FgWqFavn2cFbMxnlePbuOpNbGPbDp4WYJuqmnvKCYcdFbtfloIDZiqA==
-X-Received: by 2002:a17:902:6848:: with SMTP id
- f8mr2252796pln.102.1561516917272; 
- Tue, 25 Jun 2019 19:41:57 -0700 (PDT)
+ bh=TgGo/bYiWps+k76eI/kRcNwlMNadlMcwHKR/CkWVaSY=;
+ b=SNfuCMg9xTdAewyzEc9azEy28ak4FtUSQsbzW0CeneyrBGdd/Se0ZSs9f9tYQnIDc7
+ BGzItOyVe5rBG7YESEew4w7JStLXyKJGpCyp6mzshEdKO9je0XY5o780JBDYU01fREjj
+ beaffJ+IVwc1cQAkIPerGf7nTMGZKaYb6WhiK2ngRa4fHbH4CtNXRM+3lN2diDhiIDJN
+ ctZ/1JrOwPd+lUhxgMD7twS/I+8gevX6ME/+we+VV9yXv43w6XE/En/3TQxM13TvNyMG
+ cU1FGUgIYsnuGi9Dqdhq7jsZw6gDpRjej7+9Jf8J7rK6yVa1r0wLc8d5hJevjCTedCeu
+ Mi3g==
+X-Gm-Message-State: APjAAAUqKpTZXbFaW1+H/tJ7M3ZHNLTKN/z2LkRQapPx6msRue03+Ayl
+ auy9FMxvMcIr+bUZMb4fdv8=
+X-Google-Smtp-Source: APXvYqxs0jT22c/pi9/nuiq/FfIip7+FvBcoAH65a9//pdyQ/YYOfUFlslne5NqcT380Wfh1GmeQIQ==
+X-Received: by 2002:a17:902:bd94:: with SMTP id
+ q20mr2198045pls.307.1561516944732; 
+ Tue, 25 Jun 2019 19:42:24 -0700 (PDT)
 Received: from hari-Inspiron-1545 ([183.83.92.187])
- by smtp.gmail.com with ESMTPSA id 5sm15489580pfh.109.2019.06.25.19.41.54
+ by smtp.gmail.com with ESMTPSA id u75sm134659pgb.92.2019.06.25.19.42.22
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 25 Jun 2019 19:41:56 -0700 (PDT)
-Date: Wed, 26 Jun 2019 08:11:51 +0530
+ Tue, 25 Jun 2019 19:42:24 -0700 (PDT)
+Date: Wed, 26 Jun 2019 08:12:20 +0530
 From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Hariprasad Kelam <hariprasad.kelam@gmail.com>,
@@ -73,9 +73,9 @@ To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Hardik Singh Rathore <hardiksingh.k@gmail.com>,
  Shobhit Kukreti <shobhitkukreti@gmail.com>,
  devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 1/2] staging: rtl8723bs: hal: hal_btcoex: Using comparison to
- true is error prone
-Message-ID: <20190626024151.GA6035@hari-Inspiron-1545>
+Subject: [PATCH 2/2] staging: rtl8723bs: hal: hal_btcoex: Remove unneeded
+ variable PHalData
+Message-ID: <20190626024219.GA6052@hari-Inspiron-1545>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.5.24 (2015-08-30)
@@ -96,62 +96,34 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-fix below issues reported by checkpatch
-
-CHECK: Using comparison to true is error prone
-CHECK: Using comparison to false is error prone
+pHalData is not being used in halbtcoutsrc_LeaveLowPower. So remove the
+same.
 
 Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 ---
- drivers/staging/rtl8723bs/hal/hal_btcoex.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/rtl8723bs/hal/hal_btcoex.c | 2 --
+ 1 file changed, 2 deletions(-)
 
 diff --git a/drivers/staging/rtl8723bs/hal/hal_btcoex.c b/drivers/staging/rtl8723bs/hal/hal_btcoex.c
-index 66caf34..99e0b91 100644
+index 99e0b91..0c2a754 100644
 --- a/drivers/staging/rtl8723bs/hal/hal_btcoex.c
 +++ b/drivers/staging/rtl8723bs/hal/hal_btcoex.c
-@@ -290,7 +290,7 @@ static u8 halbtcoutsrc_IsWifiBusy(struct adapter *padapter)
- 	if (check_fwstate(pmlmepriv, WIFI_ASOC_STATE) == true) {
- 		if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == true)
- 			return true;
--		if (true == pmlmepriv->LinkDetectInfo.bBusyTraffic)
-+		if (pmlmepriv->LinkDetectInfo.bBusyTraffic)
- 			return true;
- 	}
- 
-@@ -310,12 +310,12 @@ static u32 _halbtcoutsrc_GetWifiLinkStatus(struct adapter *padapter)
- 
- 	if (check_fwstate(pmlmepriv, WIFI_ASOC_STATE) == true) {
- 		if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == true) {
--			if (true == bp2p)
-+			if (bp2p)
- 				portConnectedStatus |= WIFI_P2P_GO_CONNECTED;
- 			else
- 				portConnectedStatus |= WIFI_AP_CONNECTED;
- 		} else {
--			if (true == bp2p)
-+			if (bp2p)
- 				portConnectedStatus |= WIFI_P2P_GC_CONNECTED;
- 			else
- 				portConnectedStatus |= WIFI_STA_CONNECTED;
-@@ -372,7 +372,7 @@ static u8 halbtcoutsrc_GetWifiScanAPNum(struct adapter *padapter)
- 
- 	pmlmeext = &padapter->mlmeextpriv;
- 
--	if (GLBtcWiFiInScanState == false) {
-+	if (!GLBtcWiFiInScanState) {
- 		if (pmlmeext->sitesurvey_res.bss_cnt > 0xFF)
- 			scan_AP_num = 0xFF;
- 		else
-@@ -1444,7 +1444,7 @@ void hal_btcoex_IQKNotify(struct adapter *padapter, u8 state)
- 
- void hal_btcoex_BtInfoNotify(struct adapter *padapter, u8 length, u8 *tmpBuf)
+@@ -195,7 +195,6 @@ static void halbtcoutsrc_NormalLps(PBTC_COEXIST pBtCoexist)
+ static void halbtcoutsrc_LeaveLowPower(PBTC_COEXIST pBtCoexist)
  {
--	if (GLBtcWiFiInIQKState == true)
-+	if (GLBtcWiFiInIQKState)
- 		return;
+ 	struct adapter *padapter;
+-	struct hal_com_data *pHalData;
+ 	s32 ready;
+ 	unsigned long stime;
+ 	unsigned long utime;
+@@ -203,7 +202,6 @@ static void halbtcoutsrc_LeaveLowPower(PBTC_COEXIST pBtCoexist)
  
- 	EXhalbtcoutsrc_BtInfoNotify(&GLBtCoexist, tmpBuf, length);
+ 
+ 	padapter = pBtCoexist->Adapter;
+-	pHalData = GET_HAL_DATA(padapter);
+ 	ready = _FAIL;
+ #ifdef LPS_RPWM_WAIT_MS
+ 	timeout = LPS_RPWM_WAIT_MS;
 -- 
 2.7.4
 
