@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9379C56289
-	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 08:45:10 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9FDBB56290
+	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 08:48:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id AD527867C0;
-	Wed, 26 Jun 2019 06:45:08 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8346E87B62;
+	Wed, 26 Jun 2019 06:48:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KXoZQ-sNM6Qh; Wed, 26 Jun 2019 06:45:08 +0000 (UTC)
+	with ESMTP id mgn7FjPp1Q4o; Wed, 26 Jun 2019 06:48:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1CCF881FAA;
-	Wed, 26 Jun 2019 06:45:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 87D4087B08;
+	Wed, 26 Jun 2019 06:48:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C22901BF3CC
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 06:45:03 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 596491BF3CC
+ for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 06:48:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id BF6D985FFD
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 06:45:03 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 56E5285FFD
+ for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 06:48:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qjiaP8yNd0Zm for <devel@linuxdriverproject.org>;
- Wed, 26 Jun 2019 06:45:02 +0000 (UTC)
+ with ESMTP id UwuBb94tL6ka for <devel@linuxdriverproject.org>;
+ Wed, 26 Jun 2019 06:48:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
- [209.85.214.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 9EF3285FEB
- for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 06:45:02 +0000 (UTC)
-Received: by mail-pl1-f196.google.com with SMTP id g4so866659plb.5
- for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 23:45:02 -0700 (PDT)
+Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
+ [209.85.215.193])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id DA3B785FEB
+ for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 06:48:10 +0000 (UTC)
+Received: by mail-pg1-f193.google.com with SMTP id k13so714884pgq.9
+ for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 23:48:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=ZaPptmReQuzo4siTdAbVNE+klhm52Cm2tM2YAZ7O52s=;
- b=SsI+aRda2h/9Mes0YDcV7JVbiOJgLvzJosl3nMcYzStKWK7BIWfAzsQrqzpynctRvk
- wPZ/EdTGMs/+NVFAbizHN4FEZd9aMWvPZ/Md6fW/gKRsSw+fWk+Tkfg43yQZoSdm7av0
- 7pZzDqoZazDu/bxcjTJ7094qE0ebgXBIy0XBCQ0NzI0OIjFzIHMUu9XvJEdmexeMPHLJ
- ORVHpHSle9a4DOgAppREGc66WVi0KxzPiJj2jIBEYyFI13DpATxT2Z1iaKhbZJ3PA635
- hE2E24PWnsLzyd+STLzVwBCZC8sIlpQUb5dSNF1adYnGQcsPGnl1yXLJ08J/G2fhC0hF
- gGcQ==
+ bh=M658MrNADCrnrRj3uIjrd1YTXI9VBSOlqqpYyKx0SR4=;
+ b=LvscHvaptVYukmSY67Bv80s9y2yCdms+NFJLTnlsD3QKLdEiHiYAffBw0SeN46snp3
+ QxLCv7y6ME3ebG3QPzLQxpfTrKFZa0HTrgrxftmCUJDxIGPB/NjCqBfI/E81deKgBSza
+ xrnEIpF8Ccb56GE8QffamCwVuDaPOmiVAQzBK+ayQmGutdbyROJAkmiKZ4uCKW+0gtG/
+ EFW67qVuSov+0snhVs8G/WpY1i7pU9B1JJfL4U6CvlCXgUgppUFpjDViwnkJeN+zHjbS
+ 4Dur6Is8p9RGNgNr7EvGHxJdESbKmhW0FvYBfNC+2ORVJL96N2pB3qZoKFr1nKJSNXII
+ YCFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=ZaPptmReQuzo4siTdAbVNE+klhm52Cm2tM2YAZ7O52s=;
- b=rItj82dvGNt381ukQruqkGgxBl6HGuge0ycxI1Ev8kIgyj0f4X2uxgh1EIBr5UfGLQ
- LAmXT+BsfVepF2qPt6YMmnTS9W8vAYTA8l691LOlBuSFxTmpkb0Qout5Lwx2ViAzqQ3J
- OumJm28v0mYJvuDwnN3UROqaT2VQYOfFFwt0HedcEzkJAkppj96ZL/KhKSBB47F+GUa5
- H+9YCEUczdyZ3ARHSPhtXzo3XFulnjT//cNJETke+jdpwRknJCcbPU6t5Tb+ij/chiSX
- d8/Ju5LGoNY5Y+5KnU/KQwjYaib8sqgRzb2FkBQuQjwUw3zZlMr5kEjMN+HlVzHh+Bwp
- 9K/w==
-X-Gm-Message-State: APjAAAVubdKlGDxeyLXNrk6BKZNeJzNneonRYuJ15+wjQ97GVVDT9aq3
- Vi/7X+yPVIYNTMfZ8tlyov8=
-X-Google-Smtp-Source: APXvYqwiIk+6bkJjgOnNTjcJ7DXQLqws0hwPhj1sYHi8ZlHcXWKX0YSttzea+pxUDC/xPYl1JZfcbw==
-X-Received: by 2002:a17:902:24c:: with SMTP id 70mr3526708plc.2.1561531502380; 
- Tue, 25 Jun 2019 23:45:02 -0700 (PDT)
+ bh=M658MrNADCrnrRj3uIjrd1YTXI9VBSOlqqpYyKx0SR4=;
+ b=Xcfr7Dvk+Ont1kYTwsD7JjQ2HD7JmwKXY/85XhL1+IDRXixwrwNlLV8C8F7daC3Mvv
+ dI2YaRO+3GVikUsoLg0MOjrcwD4dIyBTlYjWvjhg2K5+sK8v2GZmkJ1VLrH8AjKQlV8u
+ bfcmSXAPuokG0bjZeHJh9WXlMvHHNIjnRfdnv5cmwYE7xcuwiEUdJlW5MAE4WHGN6mxr
+ 2D9+orVyUhc5rUdLTqxe+uRsYP8cYNvUBX8eCwaQOZeOmIY4w70+R0YOe9fP8EVTq81M
+ nu7DqOdfMcp2YoUf+V6DH+NbXoZqwFMNz+jcxAo5IRTUcHM4TKI0Y4tTjhh2iMqXT5+3
+ mvtg==
+X-Gm-Message-State: APjAAAV1f6MsPz7NBl34gMZaG/PPJ4VUhVDyjg9MToNuhIHlPnbv0YSO
+ +7xOCS08bZy0Is/qEKYbpBI=
+X-Google-Smtp-Source: APXvYqzUfq3wo04UBVbSPsq1pdOhCYQoYN73oB6Btdw4SFwe3/E/T7l9kPb7OyC9ju9zNJYC+nETyQ==
+X-Received: by 2002:a63:fb17:: with SMTP id o23mr1363908pgh.362.1561531690493; 
+ Tue, 25 Jun 2019 23:48:10 -0700 (PDT)
 Received: from localhost.localdomain ([110.227.94.173])
- by smtp.gmail.com with ESMTPSA id m6sm2378063pjl.18.2019.06.25.23.44.59
+ by smtp.gmail.com with ESMTPSA id i123sm2765678pfe.147.2019.06.25.23.48.08
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Tue, 25 Jun 2019 23:45:01 -0700 (PDT)
+ Tue, 25 Jun 2019 23:48:10 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
-To: johan@kernel.org, elder@kernel.org, gregkh@linuxfoundation.org,
- greybus-dev@lists.linaro.org, devel@driverdev.osuosl.org
-Subject: [PATCH] staging: greybus: tools: Remove function log_csv_error()
-Date: Wed, 26 Jun 2019 12:14:50 +0530
-Message-Id: <20190626064450.3062-1-nishkadg.linux@gmail.com>
+To: gregkh@linuxfoundation.org,
+	devel@driverdev.osuosl.org
+Subject: [PATCH 1/2] staging: rtl8192u: Change type of rtl8192_rx_initiate()
+Date: Wed, 26 Jun 2019 12:17:58 +0530
+Message-Id: <20190626064759.3190-1-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -90,31 +90,36 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove unused function log_csv_error.
-Issue found with Coccinelle.
+Change type of function rtl8192_rx_initiate from int to void as it
+always returns 0 and this value is never used.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/greybus/tools/loopback_test.c | 6 ------
- 1 file changed, 6 deletions(-)
+ drivers/staging/rtl8192u/r8192U_core.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/staging/greybus/tools/loopback_test.c b/drivers/staging/greybus/tools/loopback_test.c
-index 2fa88092514d..cebc1d90a180 100644
---- a/drivers/staging/greybus/tools/loopback_test.c
-+++ b/drivers/staging/greybus/tools/loopback_test.c
-@@ -414,12 +414,6 @@ static int get_results(struct loopback_test *t)
- 	return 0;
+diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
+index 4065a4710142..e78806fef79f 100644
+--- a/drivers/staging/rtl8192u/r8192U_core.c
++++ b/drivers/staging/rtl8192u/r8192U_core.c
+@@ -713,7 +713,7 @@ static u32 get_rxpacket_shiftbytes_819xusb(struct ieee80211_rx_stats *pstats)
+ 		+ pstats->RxBufShift);
  }
  
--void log_csv_error(int len, int err)
--{
--	fprintf(stderr, "unable to write %d bytes to csv %s\n", len,
--		strerror(err));
--}
+-static int rtl8192_rx_initiate(struct net_device *dev)
++static void rtl8192_rx_initiate(struct net_device *dev)
+ {
+ 	struct r8192_priv *priv = (struct r8192_priv *)ieee80211_priv(dev);
+ 	struct urb *entry;
+@@ -763,8 +763,6 @@ static int rtl8192_rx_initiate(struct net_device *dev)
+ 		skb_queue_tail(&priv->rx_queue, skb);
+ 		usb_submit_urb(entry, GFP_KERNEL);
+ 	}
 -
- int format_output(struct loopback_test *t,
- 		  struct loopback_results *r,
- 		  const char *dev_name,
+-	return 0;
+ }
+ 
+ void rtl8192_set_rxconf(struct net_device *dev)
 -- 
 2.19.1
 
