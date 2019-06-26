@@ -2,75 +2,76 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4BF5556218
-	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 08:11:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 984ED5621B
+	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 08:11:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1FB388683F;
-	Wed, 26 Jun 2019 06:11:43 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3A01D86838;
+	Wed, 26 Jun 2019 06:11:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xO+HyBDxg-QG; Wed, 26 Jun 2019 06:11:41 +0000 (UTC)
+	with ESMTP id vxYv6q5aylTT; Wed, 26 Jun 2019 06:11:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 714B786834;
-	Wed, 26 Jun 2019 06:11:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4CA1186745;
+	Wed, 26 Jun 2019 06:11:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A02F41BF3CC
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 06:10:06 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4C3FE1BF3CC
+ for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 06:10:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9D4F221514
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 06:10:06 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 8E93C84F98
+ for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 06:10:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4-2kbyNy6zjx for <devel@linuxdriverproject.org>;
- Wed, 26 Jun 2019 06:10:06 +0000 (UTC)
+ with ESMTP id b3Njn7LEmUoY for <devel@linuxdriverproject.org>;
+ Wed, 26 Jun 2019 06:10:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
- [209.85.210.193])
- by silver.osuosl.org (Postfix) with ESMTPS id 3BC3420489
- for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 06:10:06 +0000 (UTC)
-Received: by mail-pf1-f193.google.com with SMTP id c85so761482pfc.1
- for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 23:10:06 -0700 (PDT)
+Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
+ [209.85.214.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 133D584ED0
+ for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 06:10:09 +0000 (UTC)
+Received: by mail-pl1-f195.google.com with SMTP id g4so815894plb.5
+ for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 23:10:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=+Ik6GXJX+mrmwEp9PJ0cASsKpZEkdS7oSDcm6toDT9I=;
- b=S9NS3ntzg5+FEpv76OTttLoADdAgvYR+Z/UEQ3Sz1IIku1rdQYYnMA3RvyoX9taFjy
- 4KkKpcsvKgwRtd15wOCIPEQ2ePVptD35R/xfuqsoejeuNwDBZxontpuKpwAEL4mMST25
- jlyOIiTUO9ayKm0Veoj74vKzEone9j9MJusOng6eZgxLI76JluvEMu4rhuZDnPZqAxne
- tqWrd2dMk1hgfmdQP2fU5ZMPzxWI6DiUMPgiX2qbwbJ0a1n0CzCxocBV2J2gjX9w9BLm
- /nbP1a/wxxSGPmem1/+KsJIbM/ModDw0dMHsvb6jz6xhGhVySkuZe/G9FJAvAZcw2mss
- xrZg==
+ bh=tLpVN7LzYPcMJR829rSf7/2IndE2IPdyXytBvNV9xKo=;
+ b=f7C4Z452VxLZRizSVHJK+0zUJGdGq3aumuv9VbgvdrneKoM70O+TwnvA0FLYjnctlW
+ vlfIPi5NN0xAPdmZxVL/rmD5gSECgp3fCtaK4xuaGoOKIwisUY0Dlauyb5k6cBNfUbj3
+ ci9uynqyNnRRe3sPh3k5NAq0neUBUs6jiFgO03Igq0ZFw/j9JkXV4ptTXQjxH1sKZbAH
+ NXv1Q1KGM/M51C6JOp3nHef/XdBklWWUW7/uwP9752+yosMr27AQMeW6bLXF4Y34p8iS
+ 3OlxtRXTx8cmmcFoTMZRtrExyQEC7HRHF0XM3Zh7oMBYyZGxM4WoO9i1e152O48EpFSA
+ x6jQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=+Ik6GXJX+mrmwEp9PJ0cASsKpZEkdS7oSDcm6toDT9I=;
- b=PIPg7/B3UjBo8zKXsfJIJXHKUviL1uYeERQb1oxYsWhiaQr+qYNjd3lgP/9TKi/fw7
- onL7kHpoMRXy3mTAmfzjm8V9mbB5cmEK4aVD9QmgSPXqM/LTosMise3XnG1yYykK+/L3
- kKTV8stHpvohncwaa1lXci+ioJeucgCbWTAOUS+z79ymqs2d6q4PRFcd7q0RZ5kQNgfB
- 2Dv49PG+65fe75/N5ercdkFzQWcSEzCq4OnszVOcZEdSbdnmdt8hR3zJjRijpmR30atl
- GTImGAd84VbFuH0/x3k03sOE+iZEjwKYOsgeMN8xGDujvg9s3kwFIUAjJi+nmcK31h9w
- luLw==
-X-Gm-Message-State: APjAAAU4cxHz2JkjJz+pwql1nScHbcjbfQ2ywZFz5filcybkwlZ29rRT
- NE/7lb2nMCe87CKE/r9hoxuLUgn7
-X-Google-Smtp-Source: APXvYqxKV4zQtE/Oy/8KrZ1pwRTXJhozR+pQOKPSjNy0PzG/r1f9TZaN67AdUdstVB04wrnUlkLtEw==
-X-Received: by 2002:a17:90a:372a:: with SMTP id
- u39mr2626466pjb.2.1561529405954; 
- Tue, 25 Jun 2019 23:10:05 -0700 (PDT)
+ bh=tLpVN7LzYPcMJR829rSf7/2IndE2IPdyXytBvNV9xKo=;
+ b=mDnnQo6s5YgQwDJaP6iRBMjmUMqUfpaV9B21acL7DXE+rBSjG88TO+VxxAqJxs5fIg
+ OfxU7FXWVmSKdq4dLAT4m6y5ZIIF8Tu7vbeV9E8UwcmIz99niWrDLts0v9aS+QEjUMv9
+ rVDJ+nOrK6QM02zlD4b9UaR7J3xjd1u/RrbeyCYSFvYjpyurmWtweVhNlMSJQeDuh7hO
+ Rr2kNwTxxExfOJxD9IrpEpfbBsj3nsTBHmzIitTkPhKyYGODkpt2kNH29w7nQ4GV+CkZ
+ Ngu9oqBR2D1dzmW/7B/L3wHVuV7rfUhNt0/9fw4iURTOWeawatZTukConTzXLFVtMChr
+ IYFg==
+X-Gm-Message-State: APjAAAWKmnnhHLdPjRj/FTKrhlWEfaiSeJDq+GX16zdsssIvFo1i0BXw
+ MLAvX3BbMu6lcVWxRB4KwsM=
+X-Google-Smtp-Source: APXvYqzaFE5CVjzRPCrRBqakRsn7FAUaGsouAvvaS83qq+nKZvn5Sih6ZHr/Gon3BBaAkbHUPFoR/g==
+X-Received: by 2002:a17:902:704c:: with SMTP id
+ h12mr3372272plt.214.1561529408780; 
+ Tue, 25 Jun 2019 23:10:08 -0700 (PDT)
 Received: from localhost.localdomain ([110.227.94.173])
- by smtp.gmail.com with ESMTPSA id v13sm17613407pfe.105.2019.06.25.23.10.03
+ by smtp.gmail.com with ESMTPSA id v13sm17613407pfe.105.2019.06.25.23.10.06
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Tue, 25 Jun 2019 23:10:05 -0700 (PDT)
+ Tue, 25 Jun 2019 23:10:08 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: gregkh@linuxfoundation.org, larry.finger@lwfinger.net,
  florian.c.schilhabel@googlemail.com, devel@driverdev.osuosl.org
-Subject: [PATCH 4/9] staging: rtl8712: mp_start_test(): Change return values
-Date: Wed, 26 Jun 2019 11:39:36 +0530
-Message-Id: <20190626060941.2441-4-nishkadg.linux@gmail.com>
+Subject: [PATCH 5/9] staging: rtl8712: _r8712_free_sta_priv(): Change return
+ type
+Date: Wed, 26 Jun 2019 11:39:37 +0530
+Message-Id: <20190626060941.2441-5-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190626060941.2441-1-nishkadg.linux@gmail.com>
 References: <20190626060941.2441-1-nishkadg.linux@gmail.com>
@@ -93,45 +94,48 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change return values of function mp_start_test() from _SUCCESS/_FAIL to
-0/-ENOMEM and modify call sites accordingly.
+Change return type of function _r8712_free_sta_priv from u32 to void as
+it always returns _SUCCESS and this return value is never used.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/rtl8712/rtl871x_mp_ioctl.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/rtl8712/rtl871x_sta_mgt.c | 3 +--
+ drivers/staging/rtl8712/sta_info.h        | 2 +-
+ 2 files changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/rtl871x_mp_ioctl.c b/drivers/staging/rtl8712/rtl871x_mp_ioctl.c
-index 64fde5325a8e..aa8f8500cbb2 100644
---- a/drivers/staging/rtl8712/rtl871x_mp_ioctl.c
-+++ b/drivers/staging/rtl8712/rtl871x_mp_ioctl.c
-@@ -153,7 +153,7 @@ static int mp_start_test(struct _adapter *padapter)
- 	struct sta_info *psta;
- 	unsigned long length;
- 	unsigned long irqL;
--	int res = _SUCCESS;
-+	int res = 0;
+diff --git a/drivers/staging/rtl8712/rtl871x_sta_mgt.c b/drivers/staging/rtl8712/rtl871x_sta_mgt.c
+index 7c30b9e68e70..b549ab37f2dc 100644
+--- a/drivers/staging/rtl8712/rtl871x_sta_mgt.c
++++ b/drivers/staging/rtl8712/rtl871x_sta_mgt.c
+@@ -77,14 +77,13 @@ static void mfree_all_stainfo(struct sta_priv *pstapriv)
+ 	spin_unlock_irqrestore(&pstapriv->sta_hash_lock, irqL);
+ }
  
- 	/* 3 1. initialize a new struct wlan_bssid_ex */
- 	memcpy(bssid.MacAddress, pmppriv->network_macaddr, ETH_ALEN);
-@@ -187,7 +187,7 @@ static int mp_start_test(struct _adapter *padapter)
- 		r8712_free_stainfo(padapter, psta);
- 	psta = r8712_alloc_stainfo(&padapter->stapriv, bssid.MacAddress);
- 	if (psta == NULL) {
--		res = _FAIL;
-+		res = -ENOMEM;
- 		goto end_of_mp_start_test;
+-u32 _r8712_free_sta_priv(struct sta_priv *pstapriv)
++void _r8712_free_sta_priv(struct sta_priv *pstapriv)
+ {
+ 	if (pstapriv) {
+ 		/* be done before free sta_hash_lock */
+ 		mfree_all_stainfo(pstapriv);
+ 		kfree(pstapriv->pallocated_stainfo_buf);
  	}
- 	/* 3 3. join pseudo AdHoc */
-@@ -262,7 +262,7 @@ uint oid_rt_pro_start_test_hdl(struct oid_par_priv *poid_par_priv)
- 		return  RNDIS_STATUS_NOT_ACCEPTED;
- 	mode = *((u32 *)poid_par_priv->information_buf);
- 	Adapter->mppriv.mode = mode;/* 1 for loopback*/
--	if (mp_start_test(Adapter) == _FAIL)
-+	if (mp_start_test(Adapter))
- 		status = RNDIS_STATUS_NOT_ACCEPTED;
- 	r8712_write8(Adapter, MSR, 1); /* Link in ad hoc network, 0x1025004C */
- 	r8712_write8(Adapter, RCR, 0); /* RCR : disable all pkt, 0x10250048 */
+-	return _SUCCESS;
+ }
+ 
+ struct sta_info *r8712_alloc_stainfo(struct sta_priv *pstapriv, u8 *hwaddr)
+diff --git a/drivers/staging/rtl8712/sta_info.h b/drivers/staging/rtl8712/sta_info.h
+index 45dbed10295f..fc32dc0bed00 100644
+--- a/drivers/staging/rtl8712/sta_info.h
++++ b/drivers/staging/rtl8712/sta_info.h
+@@ -120,7 +120,7 @@ static inline u32 wifi_mac_hash(u8 *mac)
+ }
+ 
+ u32 _r8712_init_sta_priv(struct sta_priv *pstapriv);
+-u32 _r8712_free_sta_priv(struct sta_priv *pstapriv);
++void _r8712_free_sta_priv(struct sta_priv *pstapriv);
+ struct sta_info *r8712_alloc_stainfo(struct sta_priv *pstapriv,
+ 				     u8 *hwaddr);
+ void r8712_free_stainfo(struct _adapter *padapter, struct sta_info *psta);
 -- 
 2.19.1
 
