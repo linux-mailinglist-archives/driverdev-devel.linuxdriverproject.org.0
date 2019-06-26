@@ -2,72 +2,61 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8C28B55D2A
-	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 03:03:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id AEA6A55D52
+	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 03:22:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id EFDB421080;
-	Wed, 26 Jun 2019 01:03:04 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 13642214D2;
+	Wed, 26 Jun 2019 01:22:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id I7N2LbDSyS3A; Wed, 26 Jun 2019 01:03:04 +0000 (UTC)
+	with ESMTP id A4PbM28kHTER; Wed, 26 Jun 2019 01:22:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0C7B620553;
-	Wed, 26 Jun 2019 01:03:03 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3FF0320770;
+	Wed, 26 Jun 2019 01:22:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0D3FF1BF408
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 01:03:00 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7CDF41BF2C1
+ for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 01:22:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 08701204E3
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 01:03:00 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7327485FAE
+ for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 01:22:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LJrLGXUDPjDM for <devel@linuxdriverproject.org>;
- Wed, 26 Jun 2019 01:02:58 +0000 (UTC)
+ with ESMTP id y2UAL6uINmNi for <devel@linuxdriverproject.org>;
+ Wed, 26 Jun 2019 01:22:42 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from ushosting.nmnhosting.com (ushosting.nmnhosting.com
- [66.55.73.32])
- by silver.osuosl.org (Postfix) with ESMTP id CABC120106
- for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 01:02:58 +0000 (UTC)
-Received: from mail2.nmnhosting.com (unknown [202.169.106.97])
- by ushosting.nmnhosting.com (Postfix) with ESMTPS id E27A72DC0076;
- Tue, 25 Jun 2019 21:02:57 -0400 (EDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=d-silva.org;
- s=201810a; t=1561510978;
- bh=alTGTolfSOaJib81/HV1xk13UMDoyRYklK/SpUrmd7w=;
- h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
- b=NoxHUcByzLTCusX5pVe1lsXlBMGElTVDnI/XfJAy1Nl2CPCT+1tOht6i2EK/ciNkm
- K9KG5Y432fz/6LApPs3O84qtWA9SlyMmA/wuAdUcSD4rSsw1vczNmq2IadH3d8Yjjj
- 5s/aRpOn+J8LZ+0EdQegjtRsGUm+NIxhK/RJ9SV1bF1UePOw1rCMB/TgxdowIewNFZ
- Ra5cgiPNVLsA+gWt+IwCMHonGdcRTTyshPS7dwjlm4RdNgxtOKDy+eQbfRQfotbzjs
- B5QQnvu0X2cSsH+yxVwnjSR18+Dt0Tt9kbJq7vhB7kczzOGw3vGeE9Nsk1oow8i/1I
- 3EN2KiSeiTlphcIF4jujWhyKJYRq8hKZqgXXkbYQ8cniR0sy1e4f3msouuG7u7FAGN
- 4N62OPQDxWHpA6QCR2bkcmJBVH1Jb6OE2kFfBG7EgyAY7YE5RDCG3qHf3x06F/DOxs
- QIPziAUS4TwpT/g1pYu4AH2VTerslwlrRiUj0wkS6makKQ6LJI017iD3ClsF1dCjvw
- 9OKcxJoGQDOPUyeiE1V2QvnozdCZZJ0tZIwv2ngVO0Y5g38kYMSlrgiQm08cGPPyV1
- 1vTrS9K7ZJD22fxteol1WonkF1zHEWTT8Eu6rNYpH6cAVTxvZ5Uw16GXOQ+goHTzVz
- m6Ftvv6Q+FYsWPnR2eqrJFq0=
-Received: from adsilva.ozlabs.ibm.com (static-82-10.transact.net.au
- [122.99.82.10] (may be forged)) (authenticated bits=0)
- by mail2.nmnhosting.com (8.15.2/8.15.2) with ESMTPSA id x5Q12T29029544
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 26 Jun 2019 11:02:45 +1000 (AEST)
- (envelope-from alastair@d-silva.org)
-Message-ID: <e16caf5b98aafea4033bfc0e49845ef987c02678.camel@d-silva.org>
-Subject: Re: [PATCH v4 0/7] Hexdump Enhancements
-From: "Alastair D'Silva" <alastair@d-silva.org>
-To: Joe Perches <joe@perches.com>
-Date: Wed, 26 Jun 2019 11:02:29 +1000
-In-Reply-To: <3ae4c1a4a72f8ee6b75c45adfbe543fc0a7b5da1.camel@perches.com>
-References: <20190625031726.12173-1-alastair@au1.ibm.com>
- <3ae4c1a4a72f8ee6b75c45adfbe543fc0a7b5da1.camel@perches.com>
-User-Agent: Evolution 3.32.2 (3.32.2-1.fc30) 
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3EA7985FA5
+ for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 01:22:42 +0000 (UTC)
+Received: from localhost (li1825-44.members.linode.com [172.104.248.44])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id ABB222133F;
+ Wed, 26 Jun 2019 01:22:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1561512162;
+ bh=lQ3QirntIBBIxblQl/eiiTbgEgPdp+9sfbMAibfYtPw=;
+ h=Date:From:To:Subject:References:In-Reply-To:From;
+ b=EQnz0cduhQGE1xz/XKj70Os784Gw30aRbhS6GDZ55WMVHJHu50+2gAVcnZ5MaWA+F
+ PIHAVDRrDhudJ3OTH+dtg8vgtb8GaKGhbRzhxg2B6t4SvR9zW1SECSFGhunYeHnVHs
+ N/iqJXClJy9x5e279CKCFKPTrOg7rYpO80L8ZvhY=
+Date: Wed, 26 Jun 2019 09:22:18 +0800
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: kbuild test robot <lkp@intel.com>,
+ Suzuki K Poulose <suzuki.poulose@arm.com>,
+ devel@driverdev.osuosl.org, kbuild-all@01.org
+Subject: Re: [driver-core:driver-core-testing 84/85]
+ drivers/s390/cio/device.c:1660:9: warning: assignment discards 'const'
+ qualifier from pointer target type
+Message-ID: <20190626012218.GB24105@kroah.com>
+References: <201906252228.SQ5Vvv4y%lkp@intel.com>
 MIME-Version: 1.0
-X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.6.2
- (mail2.nmnhosting.com [10.0.1.20]); Wed, 26 Jun 2019 11:02:53 +1000 (AEST)
+Content-Disposition: inline
+In-Reply-To: <201906252228.SQ5Vvv4y%lkp@intel.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,71 +69,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-fbdev@vger.kernel.org, Stanislaw Gruszka <sgruszka@redhat.com>,
- Petr Mladek <pmladek@suse.com>, David Airlie <airlied@linux.ie>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, devel@driverdev.osuosl.org,
- linux-scsi@vger.kernel.org, Jassi Brar <jassisinghbrar@gmail.com>,
- ath10k@lists.infradead.org, intel-gfx@lists.freedesktop.org,
- Dan Carpenter <dan.carpenter@oracle.com>, Jose Abreu <Jose.Abreu@synopsys.com>,
- Tom Lendacky <thomas.lendacky@amd.com>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- Jani Nikula <jani.nikula@linux.intel.com>, linux-fsdevel@vger.kernel.org,
- Steven Rostedt <rostedt@goodmis.org>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Benson Leung <bleung@chromium.org>, Kalle Valo <kvalo@codeaurora.org>,
- Karsten Keil <isdn@linux-pingi.de>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- Sergey Senozhatsky <sergey.senozhatsky@gmail.com>,
- David Laight <David.Laight@ACULAB.COM>, Daniel Vetter <daniel@ffwll.ch>,
- netdev@vger.kernel.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- "David S. Miller" <davem@davemloft.net>,
- Alexander Viro <viro@zeniv.linux.org.uk>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, 2019-06-24 at 22:01 -0700, Joe Perches wrote:
-> On Tue, 2019-06-25 at 13:17 +1000, Alastair D'Silva wrote:
-> > From: Alastair D'Silva <alastair@d-silva.org>
-> > 
-> > Apologies for the large CC list, it's a heads up for those
-> > responsible
-> > for subsystems where a prototype change in generic code causes a
-> > change
-> > in those subsystems.
-> []
-> > The default behaviour of hexdump is unchanged, however, the
-> > prototype
-> > for hex_dump_to_buffer() has changed, and print_hex_dump() has been
-> > renamed to print_hex_dump_ext(), with a wrapper replacing it for
-> > compatibility with existing code, which would have been too
-> > invasive to
-> > change.
+On Tue, Jun 25, 2019 at 10:28:55PM +0800, kbuild test robot wrote:
+> tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-testing
+> head:   65b66682344a15ba2069d4dd8d0cc39cc3aed7e9
+> commit: 92ce7e83b4e5c86687d748ba53cb755acdce1256 [84/85] driver_find_device: Unify the match function with class_find_device()
+> config: s390-debug_defconfig (attached as .config)
+> compiler: s390-linux-gcc (GCC) 7.4.0
+> reproduce:
+>         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+>         chmod +x ~/bin/make.cross
+>         git checkout 92ce7e83b4e5c86687d748ba53cb755acdce1256
+>         # save the attached .config to linux build tree
+>         GCC_VERSION=7.4.0 make.cross ARCH=s390 
 > 
-> I believe this cover letter is misleading.
+> If you fix the issue, kindly add following tag
+> Reported-by: kbuild test robot <lkp@intel.com>
 > 
-> The point of the wrapper is to avoid unnecessary changes
-> in existing
-> code.
+> All warnings (new ones prefixed by >>):
 > 
-> 
+>    drivers/s390/cio/device.c: In function '__ccwdev_check_busid':
+> >> drivers/s390/cio/device.c:1660:9: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+>      bus_id = id;
+>             ^
+> --
+>    drivers/s390/cio/ccwgroup.c: In function '__ccwgroupdev_check_busid':
+> >> drivers/s390/cio/ccwgroup.c:613:17: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+>      char *bus_id = id;
+>                     ^~
 
-The wrapper is for print_hex_dump(), which has many callers.
+Suzuki, can you send me a fix for this please?
 
-The changes to existing code are for hex_dump_to_buffer(), which is
-called in relatively few places.
+thanks,
 
--- 
-Alastair D'Silva           mob: 0423 762 819
-skype: alastair_dsilva    
-Twitter: @EvilDeece
-blog: http://alastair.d-silva.org
-
-
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
