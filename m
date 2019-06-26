@@ -1,60 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E03AF55E17
-	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 04:03:37 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F4EE55F0A
+	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 04:37:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7894E21080;
-	Wed, 26 Jun 2019 02:03:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 61B668607A;
+	Wed, 26 Jun 2019 02:37:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uaMDB3WmCPcf; Wed, 26 Jun 2019 02:03:35 +0000 (UTC)
+	with ESMTP id nK2px079pTh3; Wed, 26 Jun 2019 02:37:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 67F2D20BF9;
-	Wed, 26 Jun 2019 02:03:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2524B86008;
+	Wed, 26 Jun 2019 02:37:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E09FA1BF2C1
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 02:03:31 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 50F481BF3DE
+ for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 02:37:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D93AB2107D
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 02:03:31 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4BB8F87AB5
+ for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 02:37:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BpYmTPKQrzYJ for <devel@linuxdriverproject.org>;
- Wed, 26 Jun 2019 02:03:30 +0000 (UTC)
+ with ESMTP id wReThi0eigr8 for <devel@linuxdriverproject.org>;
+ Wed, 26 Jun 2019 02:37:48 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id B4EE420BF9
- for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 02:03:30 +0000 (UTC)
-Received: from localhost (li1825-44.members.linode.com [172.104.248.44])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id EA084205C9;
- Wed, 26 Jun 2019 02:03:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1561514610;
- bh=62LoSwtXHpbnbCH3C/+D4GuQrQ/r6+lINTf9IHhDVnM=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=sr8P26hcL0mrsOSIY0mf890uVjyghZvny3f090YK7szhXZlagCeOLKvIC7BI4g7jR
- QXaWTARPZX5eE28hPdMWtULJgLCVIt6DmZDEwQg/32U7uiUVJdfgrNVNFWxUk6jgWO
- /84SYo0QztGQ6Mqh98fQUdpCDzzi6PaYLNbw+lNA=
-Date: Wed, 26 Jun 2019 09:56:22 +0800
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Simon =?iso-8859-1?Q?Sandstr=F6m?= <simon@nikanor.nu>
-Subject: Re: [PATCH 3/4] staging: kpc2000: remove unnecessary parentheses in
- kpc2000_spi.c
-Message-ID: <20190626015622.GC30966@kroah.com>
-References: <20190625084130.1107-1-simon@nikanor.nu>
- <20190625084130.1107-4-simon@nikanor.nu>
+Received: from mail.marytour.ru (unknown [46.36.217.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9D27F87A5E
+ for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 02:37:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=marytour.ru;
+ s=dkim; 
+ h=Reply-To:Date:From:To:Subject:Content-Description:Content-Transfer-Encoding:MIME-Version:Content-Type:Message-Id;
+ bh=/QpMYeEVmwBXtBEwZXJ1qjSK1HZ84L/7VFQ3xxsPj7s=; 
+ b=xt3qpfY05l1sEVcR7Foddn6SgiwCRzbcokr4mwYhhBNA/n0zTaLj+mErbJDcOZ8JmV9ak3vDKBqzrVSG866WcJGYoAoWrlvPbGrhJfcb5xLug0S0PzxRiks5fr0IumhfTmR9Lttdcneec+zrzZkCz2fWOP5xlo5Nlr9pgGjntko=;
+Received: from mx1.shclick.com ([37.49.224.119])
+ by mail.marytour.ru with esmtpsa (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.72) (envelope-from <send@marytour.ru>)
+ id 1hfxoJ-0001GJ-TY; Wed, 26 Jun 2019 05:37:23 +0300
+Message-Id: <E1hfxoJ-0001GJ-TY@mail.marytour.ru>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190625084130.1107-4-simon@nikanor.nu>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+Content-Description: Mail message body
+Subject: Call For Confirmation.
+To: Recipients <send@marytour.ru>
+From: Charlotte De Vries <send@marytour.ru>
+Date: Tue, 25 Jun 2019 19:37:19 -0700
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,43 +59,37 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gneukum1@gmail.com,
- linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Reply-To: charterdfinnl@aol.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Jun 25, 2019 at 10:41:29AM +0200, Simon Sandstr=F6m wrote:
-> Fixes checkpatch "CHECK: Unnecessary parentheses around '...'".
-> =
+Dear winner,
 
-> Signed-off-by: Simon Sandstr=F6m <simon@nikanor.nu>
-> ---
->  drivers/staging/kpc2000/kpc2000_spi.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> =
+Your email address has won you One Million Euro, from Online Lotto, all the
+E-mail addresses were selected from a data base of internet e-mail users,
+from which your e-mail address came out as the winning coupon. 
 
-> diff --git a/drivers/staging/kpc2000/kpc2000_spi.c b/drivers/staging/kpc2=
-000/kpc2000_spi.c
-> index 98484fbb9d2e..68b049f9ad69 100644
-> --- a/drivers/staging/kpc2000/kpc2000_spi.c
-> +++ b/drivers/staging/kpc2000/kpc2000_spi.c
-> @@ -164,7 +164,7 @@ kp_spi_read_reg(struct kp_spi_controller_state *cs, i=
-nt idx)
->  	u64 val;
->  =
+Winning expiring date 31st of July , 2019. Contact our fiduciary Agent below
+with your winning number: OL/456/050/006.
 
->  	addr +=3D idx;
-> -	if ((idx =3D=3D KP_SPI_REG_CONFIG) && (cs->conf_cache >=3D 0)) {
-> +	if (idx =3D=3D KP_SPI_REG_CONFIG && cs->conf_cache >=3D 0) {
+For immediate release of your cash prize to you, please kindly contact  
+( Charterd Finance B.V.Netherlands).
 
-Ick, no.  I don't want to have to remember the priority order of
-operations.  Leave this as-is, I HATE this checkpatch message.
+Send them the following:
+(i). Your names, 
+(ii) Contact telephone and fax numbers 
+(iii) Contact  Address 
+(iv) your winning numbers 
+(v) Quote amount won.
+ 
 
-thanks,
-
-greg k-h
+Online Lotto Agency. 
+Mrs. Charlotte De Vries. 
+Director of winning claim department.
+TEL: +31 612 993 300
+E-MAIL:charterdfinnl@aol.com
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
