@@ -1,77 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 87C2655D67
-	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 03:28:36 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0540E55D6F
+	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 03:28:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A29CA214E9;
-	Wed, 26 Jun 2019 01:28:34 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A95D78677E;
+	Wed, 26 Jun 2019 01:28:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id B6QKFgLrBbaY; Wed, 26 Jun 2019 01:28:34 +0000 (UTC)
+	with ESMTP id ks6EGb3MwVsQ; Wed, 26 Jun 2019 01:28:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 554E42083F;
-	Wed, 26 Jun 2019 01:28:33 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A956886747;
+	Wed, 26 Jun 2019 01:28:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 887D41BF2C1
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 01:28:30 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1B5841BF2C1
+ for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 01:28:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 82D4A85FAE
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 01:28:30 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 16E588670F
+ for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 01:28:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eCjdLa4CyB9L for <devel@linuxdriverproject.org>;
- Wed, 26 Jun 2019 01:28:29 +0000 (UTC)
+ with ESMTP id 43gJo-DN2CDk for <devel@linuxdriverproject.org>;
+ Wed, 26 Jun 2019 01:28:44 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from ushosting.nmnhosting.com (ushosting.nmnhosting.com
  [66.55.73.32])
- by fraxinus.osuosl.org (Postfix) with ESMTP id CB0FC85FA5
- for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 01:28:29 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 65CFC86704
+ for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 01:28:44 +0000 (UTC)
 Received: from mail2.nmnhosting.com (unknown [202.169.106.97])
- by ushosting.nmnhosting.com (Postfix) with ESMTPS id 1D8A72DC731F;
- Tue, 25 Jun 2019 21:28:28 -0400 (EDT)
+ by ushosting.nmnhosting.com (Postfix) with ESMTPS id E68172DC0076;
+ Tue, 25 Jun 2019 21:28:43 -0400 (EDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=d-silva.org;
- s=201810a; t=1561512509;
- bh=53CwIRf7Bgu2C3nB/E/dYkm1SUmyHI16H7Vrw6tYZw0=;
+ s=201810a; t=1561512524;
+ bh=8vdGphBYIKXv89awGOAQ/cgWRG22AyeDg2eeDYLZ3zI=;
  h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
- b=XYXgZQwV/JVmjvrmmpsEfrzhsSdzQz90TZ3u4A5LuvxvOBf47Fp2ZRE6sw/yQxU8X
- TpjMqn9q/O2CpE5gTKB+jX8JuW3ZvjWwRjKNgYyQtDeLqC3AOTxGIo14uCtoknu1Ie
- FG22iYtvXLRXXqfNrSrJa+rVjda1vgisi7GOJbC+jBgTu/RViRQay4OWXhgCn3Nczb
- R37TlMkpZX8Y+mP/etyzy+OqhHUjAKgompFg31JlAIqUoS4aI+1LPHijcYXXJoVYTq
- Ygr7XlPyBBKYZb2Gi7aXZQsO2+StG1sjXOx+KdwCdKzCFyEWfWEKY/tQLkurs+ph9A
- MUUYKoT1SLivN87ZIKD5usJUxI6X9VbGAq0Giu0wTPvBE4irR3Jbh5NIjNdxwD4tWj
- TuNlZSN8qLv9Snh5uGeZMKYFnfUm7WdcPupOF8k4TJ+2MhVD7L9GTL2CGk9Qoaw7Tt
- MaiNteFekcRUw59fQrYPbrAIf7xqCZ3+cibIiO+j7YlstTAk+6ESZJ9WDAtwep+vAH
- niADVBPNIHpavAj51iob25f8WoSUtiKoWtXOYdL4L28EGQ9w2ayhlYobW1Jykne0xY
- 8hbzBb2ugqf6wp6vG7XdsVpanY8BP7CyvaQOvuPAyHTsyukMlhVI18R5nWD5Fmf0gP
- U/5V+IOscL3fg+gbEE7NrBI8=
+ b=alSxZcqu57hfIi9j9AhbXS8R6Sp8P9EIyLX38MQJ9PvxVXzIuDLw+GMwM5K31tSbM
+ gzdS9k+A1COhdwdvmxUTT7neeouLyzPVXBbbQIUqbYpng9jjLKSTVkUtfCzbM2traV
+ 66aBsJesrmb2pquAr+ikAnlFtIz2MX8COw6xImMdDzX7cORTSmL/7suBd2fWgHGcSa
+ CSgtsbZsT6q7z1xworHDg8t0cQqtep34bRKMyEiFivuEsvS7KvfT0XDE+ir1QbaFpe
+ qNJCJvTwUWvEm1B+kFjLaSMS3n+SpewSyAwVWdMioky2aZjNRxFrSlIwEMfnHy7fKu
+ 37248Myte0LZ3cwEfXQtWD4I3ropVT1011THvyQlNqoj5HYjPxJXzQS6TEePLg55il
+ d1e10RdRKAs0H649v7SEHnGTaG5XhEUbgoBfaN+rXX2kxC+uvk3GCCKHYYkcJZAAgv
+ 0NREGULbA9C+5QStsPe8IqzAuUhhWmKLguptMEYpWMMi4DrZ/q7woDAkIOBtw70S9z
+ xBmgxWDEVL3pwhhtGcpR0yZETTuHII506PHFURlIBdSloaX9GFdyV5O/4o4dYbggD2
+ FPLHvHF+9fk1N7j7sdJKzKIP2EWISpMCfTv7hDzkRR1480DJuZxLGr/YfvYJtT2cBa
+ aQ8Wmv3nDA7FqMwj0k32Ebg8=
 Received: from adsilva.ozlabs.ibm.com (static-82-10.transact.net.au
  [122.99.82.10] (may be forged)) (authenticated bits=0)
- by mail2.nmnhosting.com (8.15.2/8.15.2) with ESMTPSA id x5Q1S75T029659
+ by mail2.nmnhosting.com (8.15.2/8.15.2) with ESMTPSA id x5Q1SOP1029666
  (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 26 Jun 2019 11:28:23 +1000 (AEST)
+ Wed, 26 Jun 2019 11:28:39 +1000 (AEST)
  (envelope-from alastair@d-silva.org)
-Message-ID: <e1b3d172f07f681fed9c311dec67cfb695408f5c.camel@d-silva.org>
-Subject: Re: [PATCH v4 4/7] lib/hexdump.c: Replace ascii bool in
- hex_dump_to_buffer with flags
+Message-ID: <ef3aac0cb37fd7bb421db313e839809fd7649d05.camel@d-silva.org>
+Subject: Re: [PATCH v4 5/7] lib/hexdump.c: Allow multiple groups to be
+ separated by lines '|'
 From: "Alastair D'Silva" <alastair@d-silva.org>
 To: Joe Perches <joe@perches.com>
-Date: Wed, 26 Jun 2019 11:27:53 +1000
-In-Reply-To: <4ba3b835fb3675ea685390903a082bf8b7f9e955.camel@perches.com>
+Date: Wed, 26 Jun 2019 11:28:01 +1000
+In-Reply-To: <c364c36338d385eba60c523828ad8995c792ae4d.camel@perches.com>
 References: <20190625031726.12173-1-alastair@au1.ibm.com>
- <20190625031726.12173-5-alastair@au1.ibm.com>
- <3340b520a57e00a483eae170be97316c8d18c22c.camel@perches.com>
- <746098160c4ff6527d573d2af23c403b6d4e5b80.camel@d-silva.org>
- <4ba3b835fb3675ea685390903a082bf8b7f9e955.camel@perches.com>
+ <20190625031726.12173-6-alastair@au1.ibm.com>
+ <c364c36338d385eba60c523828ad8995c792ae4d.camel@perches.com>
 User-Agent: Evolution 3.32.2 (3.32.2-1.fc30) 
 MIME-Version: 1.0
 X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.6.2
- (mail2.nmnhosting.com [10.0.1.20]); Wed, 26 Jun 2019 11:28:23 +1000 (AEST)
+ (mail2.nmnhosting.com [10.0.1.20]); Wed, 26 Jun 2019 11:28:40 +1000 (AEST)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -111,20 +109,63 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, 2019-06-24 at 22:19 -0700, Joe Perches wrote:
-> On Tue, 2019-06-25 at 15:06 +1000, Alastair D'Silva wrote:
-> > The change actions Jani's suggestion:
-> > https://lkml.org/lkml/2019/6/20/343
+On Mon, 2019-06-24 at 22:37 -0700, Joe Perches wrote:
+> On Tue, 2019-06-25 at 13:17 +1000, Alastair D'Silva wrote:
+> > From: Alastair D'Silva <alastair@d-silva.org>
+> > 
+> > With the wider display format, it can become hard to identify how
+> > many
+> > bytes into the line you are looking at.
+> > 
+> > The patch adds new flags to hex_dump_to_buffer() and
+> > print_hex_dump() to
+> > print vertical lines to separate every N groups of bytes.
+> > 
+> > eg.
+> > buf:00000000: 454d414e 43415053|4e495f45
+> > 00584544  NAMESPAC|E_INDEX.
+> > buf:00000010: 00000000 00000002|00000000
+> > 00000000  ........|........
+> > 
+> > Signed-off-by: Alastair D'Silva <alastair@d-silva.org>
+> > ---
+> >  include/linux/printk.h |  3 +++
+> >  lib/hexdump.c          | 59 ++++++++++++++++++++++++++++++++++++
+> > ------
+> >  2 files changed, 54 insertions(+), 8 deletions(-)
+> > 
+> > diff --git a/include/linux/printk.h b/include/linux/printk.h
+> []
+> > @@ -485,6 +485,9 @@ enum {
+> >  
+> >  #define HEXDUMP_ASCII			BIT(0)
+> >  #define HEXDUMP_SUPPRESS_REPEATED	BIT(1)
+> > +#define HEXDUMP_2_GRP_LINES		BIT(2)
+> > +#define HEXDUMP_4_GRP_LINES		BIT(3)
+> > +#define HEXDUMP_8_GRP_LINES		BIT(4)
 > 
-> I suggest not changing any of the existing uses of
-> hex_dump_to_buffer and only use hex_dump_to_buffer_ext
-> when necessary for your extended use cases.
+> These aren't really bits as only one value should be set
+> as 8 overrides 4 and 4 overrides 2.
+
+This should be the other way around, as we should be emitting alternate
+seperators based on the smallest grouping (2 implies 4 and 8, and 4
+implies 8). I'll fix the logic.
+
+I can't come up with a better way to represent these without making the
+API more complex, if you have a suggestion, I'm happy to hear it.
+
 > 
+> I would also expect this to be a value of 2 in your above
+> example, rather than 8.  It's described as groups not bytes.
+> 
+> The example is showing a what would normally be a space ' '
+> separator as a vertical bar '|' every 2nd grouping.
 > 
 
-I disagree, adding a wrapper for the benefit of avoiding touching a
-handful of call sites that are easily amended would be adding technical
-debt.
+The above example shows a group size of 4 bytes, and
+HEXDUMP_2_GRP_LINES set, with 2 groups being 8 bytes.
+
+I'll make that clearer in the commit message.
 
 -- 
 Alastair D'Silva           mob: 0423 762 819
