@@ -1,58 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4481F56A34
-	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 15:18:05 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1B0C256A38
+	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 15:18:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id F2C9687C9A;
-	Wed, 26 Jun 2019 13:18:03 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1AF49868F4;
+	Wed, 26 Jun 2019 13:18:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id U94Zmv8YvMll; Wed, 26 Jun 2019 13:18:03 +0000 (UTC)
+	with ESMTP id Ryn7VdV+lLUs; Wed, 26 Jun 2019 13:18:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8BBAB87C17;
-	Wed, 26 Jun 2019 13:18:03 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7423B8687B;
+	Wed, 26 Jun 2019 13:18:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B84B61BF3C8
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 13:18:01 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A1F9F1BF3C8
+ for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 13:18:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id AD5082155C
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 13:18:01 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9EE4E87C3F
+ for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 13:18:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3OmzfdMk46Px for <devel@linuxdriverproject.org>;
- Wed, 26 Jun 2019 13:18:00 +0000 (UTC)
+ with ESMTP id wZ4Wi7aMLOM2 for <devel@linuxdriverproject.org>;
+ Wed, 26 Jun 2019 13:18:13 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtp89.ord1c.emailsrvr.com (smtp89.ord1c.emailsrvr.com
- [108.166.43.89])
- by silver.osuosl.org (Postfix) with ESMTPS id 5881B21563
- for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 13:17:49 +0000 (UTC)
+Received: from smtp97.ord1c.emailsrvr.com (smtp97.ord1c.emailsrvr.com
+ [108.166.43.97])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id B6EC587C11
+ for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 13:18:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
- s=20190130-41we5z8j; t=1561555068;
- bh=p8NBrC7TcB3r94Ss7ixIGRBlzw0oSkFVKI7xMPI0ZBY=;
+ s=20190130-41we5z8j; t=1561555092;
+ bh=uILIgeTCaMZi0ztFfJUtA14tW+iy/tHbUv33HBIXIA4=;
  h=From:To:Subject:Date:From;
- b=NCPMkYM8lPgmjLBc7sD3P4+NsovJcXautuM69pPOrEJiZQk5BLw+xA6TlRDR4M0SF
- II/ECIPigrMr1Vfb45A0khHeJf6/374zXPOlLVQg8KVqlLd602Cv99hE0nf9k3CDKS
- syfwezCuawVDLMxZ74HkUFtV/Kpoo5DX+nADs0MQ=
+ b=NTBdKLnv1rZCnWxqHj9gWXofaRGarvsUVgtFEEkTpI4UWGgWkUVlaP6Q2qWBzph7c
+ 07Lxma7mLxE0n6kadE1OBnMukXWS9IraTsjdJD+fc4CT33OY+FsVPgpVcy1+XOJxNg
+ +xOBE1Qm50OMqWMRgCuC1qhcWXQsDFnKDsi/sk8E=
 X-Auth-ID: abbotti@mev.co.uk
-Received: by smtp28.relay.ord1c.emailsrvr.com (Authenticated sender:
- abbotti-AT-mev.co.uk) with ESMTPSA id C642340148; 
- Wed, 26 Jun 2019 09:17:47 -0400 (EDT)
+Received: by smtp21.relay.ord1c.emailsrvr.com (Authenticated sender:
+ abbotti-AT-mev.co.uk) with ESMTPSA id 5D1B6C0257; 
+ Wed, 26 Jun 2019 09:18:11 -0400 (EDT)
 X-Sender-Id: abbotti@mev.co.uk
 Received: from ian-deb.inside.mev.co.uk (remote.quintadena.com [81.133.34.160])
  (using TLSv1.2 with cipher DHE-RSA-AES128-GCM-SHA256)
- by 0.0.0.0:465 (trex/5.7.12); Wed, 26 Jun 2019 09:17:48 -0400
+ by 0.0.0.0:465 (trex/5.7.12); Wed, 26 Jun 2019 09:18:12 -0400
 From: Ian Abbott <abbotti@mev.co.uk>
 To: devel@driverdev.osuosl.org
-Subject: [PATCH] staging: comedi: amplc_pci230: fix null pointer deref on
- interrupt
-Date: Wed, 26 Jun 2019 14:17:39 +0100
-Message-Id: <20190626131739.26022-1-abbotti@mev.co.uk>
+Subject: [PATCH] staging: comedi: dt282x: fix a null pointer deref on interrupt
+Date: Wed, 26 Jun 2019 14:18:04 +0100
+Message-Id: <20190626131804.26215-1-abbotti@mev.co.uk>
 X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -74,42 +73,50 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The interrupt handler `pci230_interrupt()` causes a null pointer
-dereference for a PCI260 card.  There is no analog output subdevice for
-a PCI260.  The `dev->write_subdev` subdevice pointer and therefore the
-`s_ao` subdevice pointer variable will be `NULL` for a PCI260.  The
-following call near the end of the interrupt handler results in the null
-pointer dereference for a PCI260:
+The interrupt handler `dt282x_interrupt()` causes a null pointer
+dereference for those supported boards that have no analog output
+support.  For these boards, `dev->write_subdev` will be `NULL` and
+therefore the `s_ao` subdevice pointer variable will be `NULL`.  In that
+case, the following call near the end of the interrupt handler results
+in a null pointer dereference:
 
 	comedi_handle_events(dev, s_ao);
 
 Fix it by only calling the above function if `s_ao` is valid.
 
-Note that the other uses of `s_ao` in the calls
-`pci230_handle_ao_nofifo(dev, s_ao);` and `pci230_handle_ao_fifo(dev,
-s_ao);` will never be reached for a PCI260, so they are safe.
+(There are other uses of `s_ao` by the interrupt handler that may or may
+not be reached depending on values of hardware registers.  Trust that
+they are reliable for now.)
 
-Fixes: 39064f23284c ("staging: comedi: amplc_pci230: use comedi_handle_events()")
+Note:
+commit 4f6f009b204f ("staging: comedi: dt282x: use comedi_handle_events()")
+propagates an earlier error from
+commit f21c74fa4cfe ("staging: comedi: dt282x: use cfc_handle_events()").
+
+Fixes: 4f6f009b204f ("staging: comedi: dt282x: use comedi_handle_events()")
 Cc: <stable@vger.kernel.org> # v3.19+
 Signed-off-by: Ian Abbott <abbotti@mev.co.uk>
 ---
- drivers/staging/comedi/drivers/amplc_pci230.c | 3 ++-
+Note: A similar patch will be required for stable v3.16.x, but that
+calls cfc_handle_events() instead of comedi_handle_events().
+---
+ drivers/staging/comedi/drivers/dt282x.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/comedi/drivers/amplc_pci230.c b/drivers/staging/comedi/drivers/amplc_pci230.c
-index 65f60c2b702a..f7e673121864 100644
---- a/drivers/staging/comedi/drivers/amplc_pci230.c
-+++ b/drivers/staging/comedi/drivers/amplc_pci230.c
-@@ -2330,7 +2330,8 @@ static irqreturn_t pci230_interrupt(int irq, void *d)
- 	devpriv->intr_running = false;
- 	spin_unlock_irqrestore(&devpriv->isr_spinlock, irqflags);
- 
+diff --git a/drivers/staging/comedi/drivers/dt282x.c b/drivers/staging/comedi/drivers/dt282x.c
+index 3be927f1d3a9..e15e33ed94ae 100644
+--- a/drivers/staging/comedi/drivers/dt282x.c
++++ b/drivers/staging/comedi/drivers/dt282x.c
+@@ -557,7 +557,8 @@ static irqreturn_t dt282x_interrupt(int irq, void *d)
+ 	}
+ #endif
+ 	comedi_handle_events(dev, s);
 -	comedi_handle_events(dev, s_ao);
 +	if (s_ao)
 +		comedi_handle_events(dev, s_ao);
- 	comedi_handle_events(dev, s_ai);
  
- 	return IRQ_HANDLED;
+ 	return IRQ_RETVAL(handled);
+ }
 -- 
 2.20.1
 
