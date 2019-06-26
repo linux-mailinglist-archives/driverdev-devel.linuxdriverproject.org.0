@@ -1,56 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5DAC95650E
-	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 11:03:46 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 06C7021539;
-	Wed, 26 Jun 2019 09:03:45 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id p2LnbgQBXiFM; Wed, 26 Jun 2019 09:03:44 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C22F121507;
-	Wed, 26 Jun 2019 09:03:43 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 81B411BF3FF
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 09:03:41 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 35803565AE
+	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 11:32:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 7E3F286802
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 09:03:41 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 76B7D86838;
+	Wed, 26 Jun 2019 09:32:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ehL4+8yz9bdV; Wed, 26 Jun 2019 09:32:48 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1AF7D8680D;
+	Wed, 26 Jun 2019 09:32:47 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1FA911BF3EE
+ for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 09:32:45 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1B8C780EC1
+ for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 09:32:45 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xw7471T7-J7t for <devel@linuxdriverproject.org>;
- Wed, 26 Jun 2019 09:03:40 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 25689862BC
- for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 09:03:39 +0000 (UTC)
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 51FC098D895276A11E5E;
- Wed, 26 Jun 2019 17:03:36 +0800 (CST)
-Received: from [10.151.23.176] (10.151.23.176) by smtp.huawei.com
- (10.3.19.212) with Microsoft SMTP Server (TLS) id 14.3.439.0; Wed, 26 Jun
- 2019 17:02:57 +0800
-Subject: Re: [PATCH RESEND] staging: erofs: return the error value if
- fill_inline_data() fails
-To: Yue Hu <zbestahu@gmail.com>, <yuchao0@huawei.com>,
- <gregkh@linuxfoundation.org>
-References: <20190626033038.9456-1-zbestahu@gmail.com>
-From: Gao Xiang <gaoxiang25@huawei.com>
-Message-ID: <a503962c-0d06-d186-3230-b208410939b0@huawei.com>
-Date: Wed, 26 Jun 2019 17:02:48 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+ with ESMTP id Bh1dK32j16ES for <devel@linuxdriverproject.org>;
+ Wed, 26 Jun 2019 09:32:44 +0000 (UTC)
+X-Greylist: delayed 00:07:17 by SQLgrey-1.7.6
+Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
+ [209.85.221.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E2A8985EC2
+ for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 09:32:43 +0000 (UTC)
+Received: by mail-wr1-f65.google.com with SMTP id n4so1896366wrs.3
+ for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 02:32:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nexus-software-ie.20150623.gappssmtp.com; s=20150623;
+ h=subject:to:references:from:message-id:date:user-agent:mime-version
+ :in-reply-to:content-language:content-transfer-encoding;
+ bh=1lUn5ft83BAiAxv4CryexhWiQO7AlexlX23v5PRXdY4=;
+ b=MSzc0ZrENMmkE1CMrgeVMA5qZSe9Itz2wU8hCZvp7sl6amX19nvIGJKeOmrqgQa1Db
+ qeZNdRusAYgZaY4ftKSU7SyzJJKdDzCXoqOmnOjoQSIZs5+m+JmDU87DtFd9m6c7j2AJ
+ ehb5L2c8aQcAyiJlrBvSSuvbtroOGVdnY9Kyp5LZHS27j2cNJrVIQy2WfoZjoglOUF6y
+ vaAlvDNanEQpTAZvbiZtLzRGUQiAlmq1Z7i7uTTc4y8DqLFqzmDLwVz4siw+czdq87mT
+ vIgeeNW82/NwEX9rJPGajrrwx9iwqhiNcNvLq/FooEPZLtppz4iAcryDKh+ZouiRVr77
+ 8oag==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=1lUn5ft83BAiAxv4CryexhWiQO7AlexlX23v5PRXdY4=;
+ b=LJ4fjU4OB/AQOmyL3eh8kI6dlr1rOXbzWObym6YyZzU6XpJ1KcjcN58ZTm83MFoLCi
+ WevS0456Tk+A+o9D8gpeAfa4b3zcE+5cy8coqe1IJy6CI2x3Vm9rQ5dNTDT9bC4xYho2
+ 6hLLaK7HfR2AU+ZJF3o+GgcBbHgFxPIntnySrn80ZGttWsl5ba9jMHlIFgKPSGVrGpcd
+ z1dMszLTW/9a3TdeZ/ZFveeosVP1YtbNPMWv4zBbxbdwllOaXoiLv4yVtv5MmHF5KbZQ
+ gzfTRvfTIczyg2o4JEYT+KZhnlYfS6NKnnpBUKWEgviECsBLnOGPH1BIYUt5eZvxBXHg
+ 9LxA==
+X-Gm-Message-State: APjAAAUd/63sI4W2CA3Esvff/i2GbTfjgAF/HDkPgDsBeSrDO+MZ5Zyb
+ IF0WpgV/wsCb/W0fAwAnuG3/z0zlclOp4Q==
+X-Google-Smtp-Source: APXvYqytFI9o3PcU6pLD019cLftlgKkP5Q8TtppfwaUu8FnevX/7lYIm9kSyU449s6bZhJPHwzpplw==
+X-Received: by 2002:adf:9d4c:: with SMTP id o12mr2831579wre.340.1561541124486; 
+ Wed, 26 Jun 2019 02:25:24 -0700 (PDT)
+Received: from [172.27.250.178] ([212.187.182.164])
+ by smtp.gmail.com with ESMTPSA id x20sm28658674wrg.52.2019.06.26.02.25.22
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Wed, 26 Jun 2019 02:25:23 -0700 (PDT)
+Subject: Re: [PATCH] staging: greybus: tools: Remove function log_csv_error()
+To: Nishka Dasgupta <nishkadg.linux@gmail.com>, johan@kernel.org,
+ elder@kernel.org, gregkh@linuxfoundation.org, greybus-dev@lists.linaro.org,
+ devel@driverdev.osuosl.org
+References: <20190626064450.3062-1-nishkadg.linux@gmail.com>
+From: Bryan O'Donoghue <pure.logic@nexus-software.ie>
+Message-ID: <b9de5aca-6c5f-fbd2-bd64-f4b2fff1f047@nexus-software.ie>
+Date: Wed, 26 Jun 2019 10:25:22 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <20190626033038.9456-1-zbestahu@gmail.com>
-X-Originating-IP: [10.151.23.176]
-X-CFilter-Loop: Reflected
+In-Reply-To: <20190626064450.3062-1-nishkadg.linux@gmail.com>
+Content-Language: en-US-large
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,57 +91,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Miao Xie <miaoxie@huawei.com>,
- huyue2@yulong.com, linux-erofs@lists.ozlabs.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Yue,
-
-On 2019/6/26 11:30, Yue Hu wrote:
-> From: Yue Hu <huyue2@yulong.com>
+On 26/06/2019 07:44, Nishka Dasgupta wrote:
+> Remove unused function log_csv_error.
+> Issue found with Coccinelle.
 > 
-> We should consider the error returned by fill_inline_data() when filling
-> last page in fill_inode(). If not getting inode will be successful even
-> though last page is bad. That is illogical. Also change -EAGAIN to 0 in
-> fill_inline_data() to stand for successful filling.
-> 
-> Signed-off-by: Yue Hu <huyue2@yulong.com>
-
-ditto, add the tags from other guyes.
-
-Thanks,
-Gao Xiang
-
+> Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 > ---
->  drivers/staging/erofs/inode.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>   drivers/staging/greybus/tools/loopback_test.c | 6 ------
+>   1 file changed, 6 deletions(-)
 > 
-> diff --git a/drivers/staging/erofs/inode.c b/drivers/staging/erofs/inode.c
-> index d6e1e16..1433f25 100644
-> --- a/drivers/staging/erofs/inode.c
-> +++ b/drivers/staging/erofs/inode.c
-> @@ -156,7 +156,7 @@ static int fill_inline_data(struct inode *inode, void *data,
->  		inode->i_link = lnk;
->  		set_inode_fast_symlink(inode);
->  	}
-> -	return -EAGAIN;
-> +	return 0;
->  }
->  
->  static int fill_inode(struct inode *inode, int isdir)
-> @@ -223,7 +223,7 @@ static int fill_inode(struct inode *inode, int isdir)
->  		inode->i_mapping->a_ops = &erofs_raw_access_aops;
->  
->  		/* fill last page if inline data is available */
-> -		fill_inline_data(inode, data, ofs);
-> +		err = fill_inline_data(inode, data, ofs);
->  	}
->  
->  out_unlock:
+> diff --git a/drivers/staging/greybus/tools/loopback_test.c b/drivers/staging/greybus/tools/loopback_test.c
+> index 2fa88092514d..cebc1d90a180 100644
+> --- a/drivers/staging/greybus/tools/loopback_test.c
+> +++ b/drivers/staging/greybus/tools/loopback_test.c
+> @@ -414,12 +414,6 @@ static int get_results(struct loopback_test *t)
+>   	return 0;
+>   }
+>   
+> -void log_csv_error(int len, int err)
+> -{
+> -	fprintf(stderr, "unable to write %d bytes to csv %s\n", len,
+> -		strerror(err));
+> -}
+> -
+>   int format_output(struct loopback_test *t,
+>   		  struct loopback_results *r,
+>   		  const char *dev_name,
 > 
+
+Reviewed-by: Bryan O'Donoghue <pure.logic@nexus-software.ie>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
