@@ -1,51 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 00804564F0
-	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 10:55:41 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id F335256509
+	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 11:02:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1BB5785FF3;
-	Wed, 26 Jun 2019 08:55:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2485221549;
+	Wed, 26 Jun 2019 09:02:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fty2s2AhEXvD; Wed, 26 Jun 2019 08:55:39 +0000 (UTC)
+	with ESMTP id 3wYOMxnL1lFc; Wed, 26 Jun 2019 09:02:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A090F84D5E;
-	Wed, 26 Jun 2019 08:55:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8BF4321532;
+	Wed, 26 Jun 2019 09:02:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 62D141BF423
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 08:55:36 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B2BBA1BF3FF
+ for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 09:02:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5CF2B82358
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 08:55:36 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id AEAAE85FE4
+ for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 09:02:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WeK37gXWDFgT for <devel@linuxdriverproject.org>;
- Wed, 26 Jun 2019 08:55:35 +0000 (UTC)
-X-Greylist: delayed 00:08:32 by SQLgrey-1.7.6
-Received: from foss.arm.com (foss.arm.com [217.140.110.172])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3CF868200D
- for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 08:55:35 +0000 (UTC)
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id BA2F92B;
- Wed, 26 Jun 2019 01:47:02 -0700 (PDT)
-Received: from en101.cambridge.arm.com (en101.cambridge.arm.com [10.1.196.93])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id
- 092603F71E; Wed, 26 Jun 2019 01:47:01 -0700 (PDT)
-From: Suzuki K Poulose <suzuki.poulose@arm.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] drivers: s390/cio: Fix compilation warning about const
- qualifiers
-Date: Wed, 26 Jun 2019 09:46:53 +0100
-Message-Id: <1561538813-19807-1-git-send-email-suzuki.poulose@arm.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <20190626012218.GB24105@kroah.com>
-References: <20190626012218.GB24105@kroah.com>
+ with ESMTP id dL1uMSs8oDva for <devel@linuxdriverproject.org>;
+ Wed, 26 Jun 2019 09:02:27 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 8995885FD0
+ for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 09:02:27 +0000 (UTC)
+Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 0E69C55CB5DA6BC2821E;
+ Wed, 26 Jun 2019 17:02:23 +0800 (CST)
+Received: from [10.151.23.176] (10.151.23.176) by smtp.huawei.com
+ (10.3.19.208) with Microsoft SMTP Server (TLS) id 14.3.439.0; Wed, 26 Jun
+ 2019 17:02:17 +0800
+Subject: Re: [PATCH RESEND] staging: erofs: remove unsupported ->datamode
+ check in fill_inline_data()
+To: Yue Hu <zbestahu@gmail.com>
+References: <20190626032831.7252-1-zbestahu@gmail.com>
+From: Gao Xiang <gaoxiang25@huawei.com>
+Message-ID: <038b00d7-fa67-fa86-1b74-b3f58a3788f6@huawei.com>
+Date: Wed, 26 Jun 2019 17:02:08 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
+MIME-Version: 1.0
+In-Reply-To: <20190626032831.7252-1-zbestahu@gmail.com>
+X-Originating-IP: [10.151.23.176]
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,57 +62,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- suzuki.poulose@arm.com
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org, yuchao0@huawei.com,
+ linux-kernel@vger.kernel.org, huyue2@yulong.com, linux-erofs@lists.ozlabs.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Update __ccwdev_check_busid() and __ccwgroupdev_check_busid() to use
-"const" qualifiers to fix the compiler warning.
+Hi Yue,
 
-Reported-by: kbuild test robot <lkp@intel.com>
-Cc: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org
-Signed-off-by: Suzuki K Poulose <suzuki.poulose@arm.com>
----
- drivers/s390/cio/ccwgroup.c | 2 +-
- drivers/s390/cio/device.c   | 4 +---
- 2 files changed, 2 insertions(+), 4 deletions(-)
+On 2019/6/26 11:28, Yue Hu wrote:
+> From: Yue Hu <huyue2@yulong.com>
+> 
+> Already check if ->datamode is supported in read_inode(), no need to check
+> again in the next fill_inline_data() only called by fill_inode().
+> 
+> Signed-off-by: Yue Hu <huyue2@yulong.com>
 
-diff --git a/drivers/s390/cio/ccwgroup.c b/drivers/s390/cio/ccwgroup.c
-index ea176157..c522e93 100644
---- a/drivers/s390/cio/ccwgroup.c
-+++ b/drivers/s390/cio/ccwgroup.c
-@@ -610,7 +610,7 @@ EXPORT_SYMBOL(ccwgroup_driver_unregister);
- 
- static int __ccwgroupdev_check_busid(struct device *dev, const void *id)
- {
--	char *bus_id = id;
-+	const char *bus_id = id;
- 
- 	return (strcmp(bus_id, dev_name(dev)) == 0);
- }
-diff --git a/drivers/s390/cio/device.c b/drivers/s390/cio/device.c
-index f27536b..1132482 100644
---- a/drivers/s390/cio/device.c
-+++ b/drivers/s390/cio/device.c
-@@ -1655,9 +1655,7 @@ EXPORT_SYMBOL_GPL(ccw_device_force_console);
- static int
- __ccwdev_check_busid(struct device *dev, const void *id)
- {
--	char *bus_id;
--
--	bus_id = id;
-+	const char *bus_id = id;
- 
- 	return (strcmp(bus_id, dev_name(dev)) == 0);
- }
--- 
-2.7.4
+You should add all the 'Reviewed-by' / 'Acked-by' / ... tags from other guyes
+to the following versions when you resend your patches.
 
+Thanks,
+Gao Xiang
+
+> ---
+>  drivers/staging/erofs/inode.c | 2 --
+>  1 file changed, 2 deletions(-)
+> 
+> diff --git a/drivers/staging/erofs/inode.c b/drivers/staging/erofs/inode.c
+> index e51348f..d6e1e16 100644
+> --- a/drivers/staging/erofs/inode.c
+> +++ b/drivers/staging/erofs/inode.c
+> @@ -129,8 +129,6 @@ static int fill_inline_data(struct inode *inode, void *data,
+>  	struct erofs_sb_info *sbi = EROFS_I_SB(inode);
+>  	const int mode = vi->datamode;
+>  
+> -	DBG_BUGON(mode >= EROFS_INODE_LAYOUT_MAX);
+> -
+>  	/* should be inode inline C */
+>  	if (mode != EROFS_INODE_LAYOUT_INLINE)
+>  		return 0;
+> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
