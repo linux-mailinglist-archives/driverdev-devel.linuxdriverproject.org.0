@@ -2,77 +2,78 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B49556F60
-	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 19:13:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D583356F82
+	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 19:30:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 01D1087D7F;
-	Wed, 26 Jun 2019 17:13:48 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 19DB387DA2;
+	Wed, 26 Jun 2019 17:30:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fptxP28XAKud; Wed, 26 Jun 2019 17:13:47 +0000 (UTC)
+	with ESMTP id BObsSiLD-DQy; Wed, 26 Jun 2019 17:30:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8283D87C09;
-	Wed, 26 Jun 2019 17:13:47 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9FD9887CDE;
+	Wed, 26 Jun 2019 17:30:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1B08D1BF326
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 17:13:44 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8384F1BF326
+ for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 17:30:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0CB25860C8
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 17:13:44 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8038382108
+ for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 17:30:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id m-spt48Wh-Wg for <devel@linuxdriverproject.org>;
- Wed, 26 Jun 2019 17:13:43 +0000 (UTC)
+ with ESMTP id Y4EbFEawkQra for <devel@linuxdriverproject.org>;
+ Wed, 26 Jun 2019 17:29:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
- [209.85.210.195])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 39211860C6
- for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 17:13:43 +0000 (UTC)
-Received: by mail-pf1-f195.google.com with SMTP id i189so1678683pfg.10
- for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 10:13:43 -0700 (PDT)
+Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
+ [209.85.215.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id CE39F81F2C
+ for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 17:29:56 +0000 (UTC)
+Received: by mail-pg1-f195.google.com with SMTP id f25so1519820pgv.10
+ for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 10:29:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=CsaoBvUbxc4mMIWtj7F1FJyHfEKhGjA3BcDoeeu3Mi0=;
- b=KAkMWvinYM3WCFHMk5qD8sTYuPiJ3/ha66J2WkO+zyCEeGVcyyAaWZD+rTZsiZGU6W
- EPjWJzzObfouO3IGkNT3FeUOfWqU1H+1sWaFZvTx6Pqtfi9rQ9MD/sk/8wnPeGhLr2LS
- u7zyOVNZkIgfVbPMK4K1LtS54PXSYzMpflGC5tU1uBK8a8y5vfNra/yCMeCDSBIPHwFE
- 31S2zy2gXEwJ4CDdANZ/pSK//T2CG2KyUA/MUdp55o4txqCWwzAvPOUPShqLvUR3xeuu
- r0iusCKOBhzgPn/h78UI96oVwout/9MtuQ3xKmQOjtLSdqqPIo+kpQfsDSrqVbsnjhjB
- VIUQ==
+ :user-agent; bh=5T6JwdKRjR0/RiG3X8PeL3Pv8Cc3TnWD4IRh13Xy5ag=;
+ b=My7eCbBlW0B5mb2GiL0BF8ubkmwJqvdlp2tjJodqd30zEwBuyaywestOcC28RB/fHl
+ eWqpPYluiFgdQJnQ5cdPaifnUof2fwhquXW/5BbSuJrUrZvfU+F1QWXW7N8qvQRvepYz
+ YuJkQJDQMoSFtGQ7zJtLkvhFrQ6V83tu+W1ALYoHtIHZBew3gtEM2P3hp4tnurJlS/vg
+ CE+jLYwkZgBpNtUXa3L5ysct7ElmiI7l4Hb0u+LZVma+wMG6OLTrCEVuKDZJiJVaIFhe
+ WHzIOALIYKaNa/uV0Ozs1qjve+pxiZpKu8Pa1KXzjfrqyRZkJ69xxlc5+Sf7y1oICyPd
+ SY5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=CsaoBvUbxc4mMIWtj7F1FJyHfEKhGjA3BcDoeeu3Mi0=;
- b=hxfGSWkAPdfgf4hkbXpbv5drKFvmrZmTqCX8H/unBv75XkjQKLcmeQo/jisbNZ9U5U
- VCTzf3vEYw09Q2Jau+wNg1Kagl6BtUueTzrY52/xqF6p2kPCTNfHy1a1tSVCqO9akT/D
- 5k6ubFGHw2CnWQtZi6Zp2A1cDjZcCmjlRp28rt3/wWrdWgF78GiaE3hURHM7+ocJcwun
- 4QH/ISmzONyrrKgePdxhWDARq4s1Lf+wPVQee8/z6ZpBGM1IfQH/KlSWhGkQt/hSCWld
- 7CVhl2bTz2CisgY7noz9cR9yNXTtzSEPgXco+6g5AagvCSIMoxjvqDA83F/MxHDnmGWU
- ycFQ==
-X-Gm-Message-State: APjAAAVifJ84Av7zndT135Lx06ej8WPsq9POHIYodOvbPkShS87ZKEk1
- jiR3Mn9lpozNfXxsBDPOuYI=
-X-Google-Smtp-Source: APXvYqxBT+vxW7Vr9Ioed3EaYFrEGIu6rhm47wEvrFmZ1H9U8/Ee9r2s2rKeZ8U+uY1J56ij5tPRkg==
-X-Received: by 2002:a63:f817:: with SMTP id n23mr3997244pgh.35.1561569222723; 
- Wed, 26 Jun 2019 10:13:42 -0700 (PDT)
+ bh=5T6JwdKRjR0/RiG3X8PeL3Pv8Cc3TnWD4IRh13Xy5ag=;
+ b=Ay22Tlb4eLUtKA+NPlOv09lWRbsmwFywF8DqITwG4WzXlrDrHyt/pEOf0Sq4nHilXa
+ 4GcpA2KNErXvcN7ShFRfujkTg9fTOAxsHZQj1+2IAHf4Eq3YZigo8WzyKa2HDR2BvGAW
+ hV3GTrfS3RWNFYVv7p2MfyxBjIOJFEfng2fH+CgUZz0DW+g9gGmkFtg4bHYSBLSUOJml
+ F2WQJyS/uY+ZYnPKWtD5QjKIrKCiGFSrpMShKnFcX0RgTJ4omvf496Iq9sN63uSqLf2o
+ ANYrSjisHFAmS/ULVyEyO9F4BlnX/5BEoU2dUfWZpsWRzUA6NUT4k0ujY2hI8VTfEDNd
+ +zDg==
+X-Gm-Message-State: APjAAAUDIQKCIuzA2ktEh7gzvAKgL+hcp4jWaa/11KQCpqEIKOgzOdE6
+ FrSfddj6K835zJ4dJpHo398=
+X-Google-Smtp-Source: APXvYqzqQLv6YPA7wFT/1bH52+5xuqCsBHVv8kbrO5obSZEqzQEy5t8+odJ4iW8Nb9Gh6c2C+g2dmw==
+X-Received: by 2002:a17:90a:be08:: with SMTP id a8mr190221pjs.69.1561570196512; 
+ Wed, 26 Jun 2019 10:29:56 -0700 (PDT)
 Received: from hari-Inspiron-1545 ([183.83.92.187])
- by smtp.gmail.com with ESMTPSA id 85sm24709590pfv.130.2019.06.26.10.13.40
+ by smtp.gmail.com with ESMTPSA id 11sm30296257pfw.33.2019.06.26.10.29.53
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 26 Jun 2019 10:13:41 -0700 (PDT)
-Date: Wed, 26 Jun 2019 22:43:37 +0530
+ Wed, 26 Jun 2019 10:29:55 -0700 (PDT)
+Date: Wed, 26 Jun 2019 22:59:51 +0530
 From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Hariprasad Kelam <hariprasad.kelam@gmail.com>,
- Nishka Dasgupta <nishkadg.linux@gmail.com>,
+ Arnd Bergmann <arnd@arndb.de>, Hans de Goede <hdegoede@redhat.com>,
+ Nathan Chancellor <natechancellor@gmail.com>,
  Himadri Pandya <himadri18.07@gmail.com>, devel@driverdev.osuosl.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: rtl8723bs: hal: rtl8723b_cmd: remove set but unused
- variable
-Message-ID: <20190626171337.GA6080@hari-Inspiron-1545>
+Subject: [PATCH] staging: rtl8723bs: hal: rtl8723b_hal_init: remove set but
+ unused variable pHalData
+Message-ID: <20190626172951.GA7521@hari-Inspiron-1545>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.5.24 (2015-08-30)
@@ -93,34 +94,33 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove set but unsed variable pHalData in rtl8723b_set_FwRsvdPagePkt
+Remove set but unsed variable pHalData in hw_var_set_mlme_join
 function
 
 Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 ---
- drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c | 2 --
+ drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c | 2 --
  1 file changed, 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c b/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
-index 48efbfd..1bd5f5f 100644
---- a/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
-+++ b/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
-@@ -1434,7 +1434,6 @@ static void rtl8723b_set_FwRsvdPagePkt(
- 	struct adapter *padapter, bool bDLFinished
- )
- {
+diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
+index 6cfd240..8ca6249 100644
+--- a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
++++ b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
+@@ -3579,14 +3579,12 @@ static void hw_var_set_mlme_join(struct adapter *padapter, u8 variable, u8 *val)
+ 	u32 val32;
+ 	u8 RetryLimit;
+ 	u8 type;
 -	struct hal_com_data *pHalData;
- 	struct xmit_frame *pcmdframe;
- 	struct pkt_attrib *pattrib;
- 	struct xmit_priv *pxmitpriv;
-@@ -1464,7 +1463,6 @@ static void rtl8723b_set_FwRsvdPagePkt(
+ 	struct mlme_priv *pmlmepriv;
+ 	struct eeprom_priv *pEEPROM;
  
- 	/* DBG_871X("%s---->\n", __func__); */
  
+ 	RetryLimit = 0x30;
+ 	type = *(u8 *)val;
 -	pHalData = GET_HAL_DATA(padapter);
- 	pxmitpriv = &padapter->xmitpriv;
- 	pmlmeext = &padapter->mlmeextpriv;
- 	pmlmeinfo = &pmlmeext->mlmext_info;
+ 	pmlmepriv = &padapter->mlmepriv;
+ 	pEEPROM = GET_EEPROM_EFUSE_PRIV(padapter);
+ 
 -- 
 2.7.4
 
