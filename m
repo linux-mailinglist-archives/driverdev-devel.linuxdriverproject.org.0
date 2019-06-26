@@ -1,79 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 70F29562A6
-	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 08:51:47 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E65E9562AE
+	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 08:54:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 07FA3834D6;
-	Wed, 26 Jun 2019 06:51:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0ECAD87B82;
+	Wed, 26 Jun 2019 06:54:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GOZyrdBizm3P; Wed, 26 Jun 2019 06:51:45 +0000 (UTC)
+	with ESMTP id UQnvIAi6ecAA; Wed, 26 Jun 2019 06:54:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5E31D85FA5;
-	Wed, 26 Jun 2019 06:51:44 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 84710865D5;
+	Wed, 26 Jun 2019 06:54:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D60581BF3CC
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 06:51:41 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 863E71BF3CC
+ for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 06:54:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id BA99785D30
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 06:51:41 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 83277865D5
+ for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 06:54:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id l8KE_tySB7AG for <devel@linuxdriverproject.org>;
- Wed, 26 Jun 2019 06:51:38 +0000 (UTC)
+ with ESMTP id 4BBNnf4DLFVE for <devel@linuxdriverproject.org>;
+ Wed, 26 Jun 2019 06:54:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
- [209.85.210.193])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 985CF85FA5
- for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 06:51:17 +0000 (UTC)
-Received: by mail-pf1-f193.google.com with SMTP id p184so804685pfp.7
- for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 23:51:17 -0700 (PDT)
+Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
+ [209.85.215.193])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9A4E2824BF
+ for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 06:54:16 +0000 (UTC)
+Received: by mail-pg1-f193.google.com with SMTP id v9so713411pgr.13
+ for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2019 23:54:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=q6RrVKtbfArMAyqJEAqT5JmHv57Xb0IySP0Gfjx7Otg=;
- b=d2+o0fK1AhFHmfZcWi3d5nvtn/DMUroVvjkjUlLgcFIe2YTVHVdFMXZwr6vuraHQIU
- L+s4YKHu3OozroOSdn15cuB9VTCPFVNw44i8HW9WcVYISzzD6KYOBxqS0/EpLMLuSmmn
- sevmcD7AzE3D2VdG0glw8W8yuueCfLZ0cg5+nNsvlpbIY9ar/LWyX2sHZmxut6/OsLOm
- wHsbpQDPkWfNurFOCkwPwoga+KAVHLOnTgVoZ8Iiu2RXZkr8i+qAR9aB5aKvPIRFkU4Y
- VuKWPe14O2AL/aYX81ovxpWOCbdWfdPpM/m+Z9JHfx2bCpYd5r0TiqhelnerUGTuyj0t
- varA==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=+XyQGs+fcH7t2rySD/mXQN8KxbxTwLmPOxv5TeIznIw=;
+ b=KN6TzgG0LlGsH8d61jl/VtCW+gKVnVREo37+DdWqCT3pS0qhMSKXnaoHOoDaCgG0e7
+ Rn90en+3ucxrrRzFIsGAxQS4EUI5Z4AYhQ4vnazNKKORoYRBisgsq1qQWBE8S3y5cKnx
+ BLh2/r0hHyUpijc3IDer9t8zkt6TmR+4O2N9LlmQ/ygf2ECZEJFSkgXfZ+sgZalpLqnO
+ QOKBU//tMo11Dm+Ht04+Ok99Wp9dMcY7Aup9tG7L0lWEfi+3C6nKaQPyPmu9xN8BdxRS
+ CZnEJpG6+4ImbqXx6G3LI5FAeMJRrGQ0ASTLXAbg3vJ+HcyVcv0gCxE+SzO8MkQ0qWFV
+ APWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=q6RrVKtbfArMAyqJEAqT5JmHv57Xb0IySP0Gfjx7Otg=;
- b=Gnlmi6I+ARzI5ItDXsuZuYS8+KIhQ6wb7wUB5v+M0Nd86oV49ZFDqI0mkChqI+Vgd5
- XJyBDfZYIRx2A6UMicf+g0hiPCDrpVoOtE73wklsryo73K//qFy1PebqOm1rymP2+Svb
- tD0s+RCUfjQpIFC38TGe/7V1y1lk6699jH/BNsm4m38AECG2zj+BmnQFTaZEMgw8Z44c
- ep9vCyhjeV0VSV5uGRwBcuLu9pFsJrPATuc2Aq2QkdDwe81lPb1NHOdvUozb8ZyjdoFJ
- Hg1bEQRetKpJS8PZ27iFNMQWKVf30Kal/1WNVC2fadqApPhomifxsd+c1wWWEENVR+vu
- NLow==
-X-Gm-Message-State: APjAAAXRjktk6W2138pA+7zZ3d0ihsdgF+wMlqL+6D3QJcKYBSDWeHKr
- EF3Bzsh65sgjwLHemoMJH9U=
-X-Google-Smtp-Source: APXvYqw5aCebOaL1lw2rKRmQ2IvYUIPn9h0+p1GQucmhJmYd8wCjSp6lm9tUSjl4R1K+Jssw5FHplQ==
-X-Received: by 2002:a65:4342:: with SMTP id k2mr1401840pgq.218.1561531877241; 
- Tue, 25 Jun 2019 23:51:17 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=+XyQGs+fcH7t2rySD/mXQN8KxbxTwLmPOxv5TeIznIw=;
+ b=FbAXcGnD6mvQ1wsORVLj0ErlzFcpYNE/k2PCvcfyWWvr+7eu6gcoOUeuCmrzA9AIhS
+ VdWu0aVkA7FBR/T0mHptQe2hg5DJOdqoc1w80K9lj94l394ANbiqNYasCqxpUqKdGhmI
+ DPHqIw/yr42RfPg1lAwYI6T6ot8saIzT/L6+3sYHG9gPcousT8+zlYpOHDJaoJdERenW
+ T7pu8K2fQUULco+WgvNTLhIDxmHW8dLC+1Gy5O6FIGt4CPiPUwpphYisskEec6LCBWFy
+ RpxHSEZs0LyY/3Hg0yJ9fjzeFs2t7DMqcgD9gaMl7N8cZTmIR2+HwVGs3ezwz67SlybY
+ +izw==
+X-Gm-Message-State: APjAAAVAl7/7E+bP3Ed0N7gqadqSXyC+KSkpV7JXxv4QNyt91A8ctzb9
+ 6XhZwscJ0+KsUHGkzoZsyC0=
+X-Google-Smtp-Source: APXvYqxb6YoofzgHlBgRh7bq3NPfAIvMMyGASJdEoxw/2GdI3EZgzrA5NGQ76lmIiIhS0z65Zt4g2Q==
+X-Received: by 2002:a63:3d8d:: with SMTP id k135mr1422292pga.23.1561532056300; 
+ Tue, 25 Jun 2019 23:54:16 -0700 (PDT)
 Received: from localhost.localdomain ([110.227.94.173])
- by smtp.gmail.com with ESMTPSA id y23sm21734625pfo.106.2019.06.25.23.51.15
+ by smtp.gmail.com with ESMTPSA id z11sm970605pjn.2.2019.06.25.23.54.13
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Tue, 25 Jun 2019 23:51:16 -0700 (PDT)
+ Tue, 25 Jun 2019 23:54:15 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
-To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
- larry.finger@lwfinger.net
-Subject: [PATCH 4/4] staging: rtl8188eu: Remove declarations of unused
- functions
-Date: Wed, 26 Jun 2019 12:20:57 +0530
-Message-Id: <20190626065057.3252-4-nishkadg.linux@gmail.com>
+To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org, abboti@mev.co.uk,
+ hsweeten@visionengravers.com
+Subject: [PATCH 1/3] staging: comedi: Remove function clk_sce()
+Date: Wed, 26 Jun 2019 12:24:02 +0530
+Message-Id: <20190626065404.3330-1-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20190626065057.3252-1-nishkadg.linux@gmail.com>
-References: <20190626065057.3252-1-nishkadg.linux@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -93,34 +90,41 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove the declarations of the following unused functions from
-rtw_eeprom.h:
-- eeprom_write16
-- eeprom_read16
-- eeprom_read_sz
-- read_eeprom_content
-- read_eeprom_content_by_attrib.
+Remove function clk_sce as all it does is call clk_gat_sce.
+Modify call site of clk_sce to call clk_gat_sce instead.
+Issue found with Coccinelle.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/rtl8188eu/include/rtw_eeprom.h | 6 ------
- 1 file changed, 6 deletions(-)
+ drivers/staging/comedi/drivers/amplc_dio200_common.c | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/include/rtw_eeprom.h b/drivers/staging/rtl8188eu/include/rtw_eeprom.h
-index db25eb580c98..10525493129b 100644
---- a/drivers/staging/rtl8188eu/include/rtw_eeprom.h
-+++ b/drivers/staging/rtl8188eu/include/rtw_eeprom.h
-@@ -111,10 +111,4 @@ struct eeprom_priv {
- 	u8		efuse_eeprom_data[HWSET_MAX_SIZE_512];
- };
+diff --git a/drivers/staging/comedi/drivers/amplc_dio200_common.c b/drivers/staging/comedi/drivers/amplc_dio200_common.c
+index 8697dc02ffb4..efd7428c3cee 100644
+--- a/drivers/staging/comedi/drivers/amplc_dio200_common.c
++++ b/drivers/staging/comedi/drivers/amplc_dio200_common.c
+@@ -46,12 +46,6 @@ static unsigned char clk_gat_sce(unsigned int which, unsigned int chan,
+ 	       ((source & 030) << 3) | (source & 007);
+ }
  
--void eeprom_write16(struct adapter *padapter, u16 reg, u16 data);
--u16 eeprom_read16(struct adapter *padapter, u16 reg);
--void read_eeprom_content(struct adapter *padapter);
--void eeprom_read_sz(struct adapter *adapt, u16 reg, u8 *data, u32 sz);
--void read_eeprom_content_by_attrib(struct adapter *padapter);
+-static unsigned char clk_sce(unsigned int which, unsigned int chan,
+-			     unsigned int source)
+-{
+-	return clk_gat_sce(which, chan, source);
+-}
 -
- #endif  /* __RTL871X_EEPROM_H__ */
+ static unsigned char gat_sce(unsigned int which, unsigned int chan,
+ 			     unsigned int source)
+ {
+@@ -500,7 +494,7 @@ static void dio200_subdev_8254_set_clock_src(struct comedi_device *dev,
+ 	unsigned int offset = dio200_subdev_8254_offset(dev, s);
+ 
+ 	dio200_write8(dev, DIO200_CLK_SCE(offset >> 3),
+-		      clk_sce((offset >> 2) & 1, chan, src));
++		      clk_gat_sce((offset >> 2) & 1, chan, src));
+ }
+ 
+ static int dio200_subdev_8254_config(struct comedi_device *dev,
 -- 
 2.19.1
 
