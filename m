@@ -1,81 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E388A58C80
-	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Jun 2019 23:10:21 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 65FF758E39
+	for <lists+driverdev-devel@lfdr.de>; Fri, 28 Jun 2019 01:00:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DB2F787D0E;
-	Thu, 27 Jun 2019 21:10:19 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 46679226D4;
+	Thu, 27 Jun 2019 23:00:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wbbWhtDiuTzI; Thu, 27 Jun 2019 21:10:19 +0000 (UTC)
+	with ESMTP id AIldL+V1pQ9R; Thu, 27 Jun 2019 23:00:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5CA7B85945;
-	Thu, 27 Jun 2019 21:10:19 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A9346226AF;
+	Thu, 27 Jun 2019 23:00:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8249F1BF399
- for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 21:10:14 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 962D81BF3DB
+ for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 23:00:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7FAA285DD1
- for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 21:10:14 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 92D4887EB8
+ for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 23:00:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KpCnlJuRpp47 for <devel@linuxdriverproject.org>;
- Thu, 27 Jun 2019 21:10:14 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.15.15])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 88A3E84EC1
- for <devel@driverdev.osuosl.org>; Thu, 27 Jun 2019 21:10:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1561669792;
- bh=ttpEs1jpLEZYuVPaNhB5NUXKeu5GWnJTmxgKtFVsZ/E=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=gMEVQ0kdpgS4z/iWG9q+I1R0jN91fex3/I9NMhsIyLNA4DvAPg18uQHUmWA6lGMOU
- s1MuiUBiTtUHUm0epHAeNhyjQYbIoexjIsPugFdUieD3eF3YEO4RASFj191wx24Emx
- yH9hcc2lChBPMTOASr1FlgTOwrrczltPTsc9S+IA=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from localhost.localdomain ([37.4.249.111]) by mail.gmx.com
- (mrgmx004 [212.227.17.190]) with ESMTPSA (Nemesis) id
- 1MzyuS-1iSeG93GZq-00x4FN; Thu, 27 Jun 2019 23:09:51 +0200
-From: Stefan Wahren <wahrenst@gmx.net>
-To: Eric Anholt <eric@anholt.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Dave Stevenson <dave.stevenson@raspberrypi.org>,
- Hans Verkuil <hverkuil@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>
-Subject: [PATCH 31/31] staging: bcm2835-camera: Correct ctrl min/max/step/def
- to 64bit
-Date: Thu, 27 Jun 2019 23:09:29 +0200
-Message-Id: <1561669769-2498-5-git-send-email-wahrenst@gmx.net>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1561669769-2498-1-git-send-email-wahrenst@gmx.net>
-References: <1561669769-2498-1-git-send-email-wahrenst@gmx.net>
-X-Provags-ID: V03:K1:r8Us6r3bVX5kevDTW9x6AqdZPb7soLP6SbFXLB/ALq4FGi16Z0q
- BLCqJ4aT6jj1Sc8pIg5fyywuHv53mbTvxkAV2npWu3TUECFUaIV9TKLny43YDpefXb7be9f
- X1wG6PmPL6UmMQWGqyOYwEiiphuxZQY1eIkEmvrgoS7pTp2x/aEZ/yZRKY6EsLz+5swW4Z9
- aq5gQcacPy3aT1BuWwRzg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:thW8iTalx6U=:uzQ9Jy4TB1gBUkNwErgS5W
- cwJdOoSd4G5duDcnifUJPU2BNYupQQCBlw/PuXukgk+aJBjFtW+4JwbrfX4w24d+NeHt2XcAq
- at/9WbfLsnsPrI1eIy3unyLpGZYCW1qBzO6fC+rj4HchNYCz5V/IzCdV6m50D01KctS/sLOrU
- DLWlmFUKgT7b42kQpv8xhWqUsjIJZgALT3p8an15C1fLUmmxCwTDH8sYzgMWULCCTfxDHyxIb
- 7BhT5sNquvvFFIPNP1tKPTfBsC/0NwmOSl9v/Ng+B3pUxJqY8EzTjBQfEO4D8CqpzGDjUDQcP
- z2oodm5POxmwSt7zrw0DlFT2KXe/1aUAD9Tw/xktmbroPwYy892Vj1zITsggBFh1YZUJAejTX
- 5yOcXSTVJ30iNiqYsIqzgEsBp6FUSg/Us5SGbafzAcE2LAnXVN6/ZDQBd/QR0qNtwlhd6+RmS
- k9mbHjpWlHFlR5NRiL61JY/7Z1Tuh1mYjOkW/RTasYXeB23e/kMIcgu8A/aicjPnYES40R0sa
- PJzie+8QyS3Gk9CVXxKCjDa7AFFhWHEAIM8hdYTPK+9bX9gUQd3B6oLhGsrVDPL/O+kw1XUUA
- Y1aMEGSr4uup9z0WQFG9CF9pvdjE0D+4xqv7zbAIfiFNm84UGk97e2q1P29u7Tbc8yD4zOER9
- ZJWyyF1VwyJxQkzdsFXJ0xuy2vaxPRExlEzIUXZzV8yCSvoYszPzYRgLWOJ0Dm6WGJt0Hky+R
- UmCrKLZhlOhGviqoAQ7yopCmfe3IgXNiQQ84Mi55uwq7YfLr3+XLv78XbgvnL8OMbQbFa5jcG
- btDad1pIjyE9RA13JKAzWkrmrfTUvaZTmEQR7SbZFn0DeiYC514ij7qNXsMnmmkjqc3BR6KUw
- SqyQSvHOf5sxmOe45pXJu5Q3Yo6MUD6NbNN/h6fO2QBVly++S/97pgazpwwQi6w6k8GyvFnwn
- B3KwSrEiWCbaUiGxPS//Aeh6wpTdB44N+3MEddgpGCXuJQGTcTa+/S5/bAi40Y6IaELDIfxJu
- LxqgQkWrZBlNqd9QX+eCJauRUV+VUEPrwlicjZe+wNOSqoIog+qSTrNZM61yn2LZ9vFQwCt9Q
- Oi2ZGXaFIKxYwc=
+ with ESMTP id BVZDHUwXzrdO for <devel@linuxdriverproject.org>;
+ Thu, 27 Jun 2019 23:00:34 +0000 (UTC)
+X-Greylist: delayed 00:20:50 by SQLgrey-1.7.6
+Received: from Galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 3E3E786981
+ for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 23:00:34 +0000 (UTC)
+Received: from p5b06daab.dip0.t-ipconnect.de ([91.6.218.171] helo=nanos)
+ by Galois.linutronix.de with esmtpsa (TLS1.2:DHE_RSA_AES_256_CBC_SHA256:256)
+ (Exim 4.80) (envelope-from <tglx@linutronix.de>)
+ id 1hgd3D-0001yR-93; Fri, 28 Jun 2019 00:39:31 +0200
+Date: Fri, 28 Jun 2019 00:39:30 +0200 (CEST)
+From: Thomas Gleixner <tglx@linutronix.de>
+To: Dmitry Safonov <dima@arista.com>
+Subject: Re: [PATCHv2] x86/hyperv: Hold cpus_read_lock() on assigning
+ reenlightenment vector
+In-Reply-To: <20190617163955.25659-1-dima@arista.com>
+Message-ID: <alpine.DEB.2.21.1906280033510.32342@nanos.tec.linutronix.de>
+References: <20190617163955.25659-1-dima@arista.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+X-Linutronix-Spam-Score: -1.0
+X-Linutronix-Spam-Level: -
+X-Linutronix-Spam-Status: No , -1.0 points, 5.0 required, ALL_TRUSTED=-1,
+ SHORTCIRCUIT=-0.0001
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,73 +61,59 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-rpi-kernel@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-MIME-Version: 1.0
+Cc: linux-hyperv@vger.kernel.org, kvm@vger.kernel.org,
+ =?ISO-8859-2?Q?Radim_Kr=E8m=E1=F8?= <rkrcmar@redhat.com>,
+ Peter Zijlstra <peterz@infradead.org>, Dmitry Safonov <0x7f454c46@gmail.com>,
+ Prasanna Panchamukhi <panchamukhi@arista.com>,
+ "H. Peter Anvin" <hpa@zytor.com>, Sasha Levin <sashal@kernel.org>,
+ Stephen Hemminger <sthemmin@microsoft.com>, x86@kernel.org,
+ "Michael Kelley \(EOSG\)" <Michael.H.Kelley@microsoft.com>,
+ Ingo Molnar <mingo@redhat.com>, Roman Kagan <rkagan@virtuozzo.com>,
+ Mohammed Gamal <mmorsy@redhat.com>, Haiyang Zhang <haiyangz@microsoft.com>,
+ Borislav Petkov <bp@alien8.de>, Andy Lutomirski <luto@kernel.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, linux-kernel@vger.kernel.org,
+ devel@linuxdriverproject.org, Vitaly Kuznetsov <vkuznets@redhat.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Dave Stevenson <dave.stevenson@raspberrypi.org>
+On Mon, 17 Jun 2019, Dmitry Safonov wrote:
+> @@ -196,7 +196,16 @@ void set_hv_tscchange_cb(void (*cb)(void))
+>  	/* Make sure callback is registered before we write to MSRs */
+>  	wmb();
+>  
+> +	/*
+> +	 * As reenlightenment vector is global, there is no difference which
+> +	 * CPU will register MSR, though it should be an online CPU.
+> +	 * hv_cpu_die() callback guarantees that on CPU teardown
+> +	 * another CPU will re-register MSR back.
+> +	 */
+> +	cpus_read_lock();
+> +	re_ctrl.target_vp = hv_vp_index[raw_smp_processor_id()];
+>  	wrmsrl(HV_X64_MSR_REENLIGHTENMENT_CONTROL, *((u64 *)&re_ctrl));
+> +	cpus_read_unlock();
 
-The V4L2 control API was expanded to take 64 bit values in commit
-0ba2aeb6dab (Apr 16 2014), but as this driver wasn't in the mainline
-kernel at that point this was overlooked.
+Should work
 
-Update to use 64 bit values. This also fixes a couple of warnings
-in 64 bit builds.
+>  	wrmsrl(HV_X64_MSR_TSC_EMULATION_CONTROL, *((u64 *)&emu_ctrl));
+>  }
+>  EXPORT_SYMBOL_GPL(set_hv_tscchange_cb);
+> @@ -239,6 +248,7 @@ static int hv_cpu_die(unsigned int cpu)
+>  
+>  	rdmsrl(HV_X64_MSR_REENLIGHTENMENT_CONTROL, *((u64 *)&re_ctrl));
+>  	if (re_ctrl.target_vp == hv_vp_index[cpu]) {
+> +		lockdep_assert_cpus_held();
 
-Signed-off-by: Dave Stevenson <dave.stevenson@raspberrypi.org>
----
- drivers/staging/vc04_services/bcm2835-camera/controls.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+So you're not trusting the hotplug core code to hold the lock when it
+brings a CPU down and invokes that callback? Come on
 
-diff --git a/drivers/staging/vc04_services/bcm2835-camera/controls.c b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-index 848b14a..89786c2 100644
---- a/drivers/staging/vc04_services/bcm2835-camera/controls.c
-+++ b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-@@ -78,10 +78,10 @@ struct bm2835_mmal_v4l2_ctrl {
- 	/* control minimum value or
- 	 * mask for MMAL_CONTROL_TYPE_STD_MENU
- 	 */
--	s32 min;
--	s32 max; /* maximum value of control */
--	s32 def;  /* default value of control */
--	s32 step; /* step size of the control */
-+	s64 min;
-+	s64 max; /* maximum value of control */
-+	s64 def;  /* default value of control */
-+	u64 step; /* step size of the control */
- 	const s64 *imenu; /* integer menu array */
- 	u32 mmal_id; /* mmal parameter id */
- 	bm2835_mmal_v4l2_ctrl_cb *setter;
-@@ -1250,7 +1250,7 @@ int bm2835_mmal_init_controls(struct bm2835_mmal_dev *dev,
+>  		/* Reassign to some other online CPU */
+>  		new_cpu = cpumask_any_but(cpu_online_mask, cpu);
 
- 		case MMAL_CONTROL_TYPE_STD_MENU:
- 		{
--			int mask = ctrl->min;
-+			u64 mask = ctrl->min;
+Thanks,
 
- 			if (ctrl->id == V4L2_CID_SCENE_MODE) {
- 				/* Special handling to work out the mask
-@@ -1260,11 +1260,11 @@ int bm2835_mmal_init_controls(struct bm2835_mmal_dev *dev,
- 				 */
- 				int i;
-
--				mask = 1 << V4L2_SCENE_MODE_NONE;
-+				mask = BIT(V4L2_SCENE_MODE_NONE);
- 				for (i = 0;
- 				     i < ARRAY_SIZE(scene_configs);
- 				     i++) {
--					mask |= 1 << scene_configs[i].v4l2_scene;
-+					mask |= BIT(scene_configs[i].v4l2_scene);
- 				}
- 				mask = ~mask;
- 			}
---
-2.7.4
-
+	tglx
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
