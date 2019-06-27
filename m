@@ -2,80 +2,79 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B503458A69
-	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Jun 2019 20:57:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7C2DB58A6C
+	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Jun 2019 20:57:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5CF512262F;
-	Thu, 27 Jun 2019 18:57:46 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1CAF82262B;
+	Thu, 27 Jun 2019 18:57:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 614wpepNdlOc; Thu, 27 Jun 2019 18:57:46 +0000 (UTC)
+	with ESMTP id q9lHtuRaWsmO; Thu, 27 Jun 2019 18:57:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 49790221FF;
-	Thu, 27 Jun 2019 18:57:29 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8599320434;
+	Thu, 27 Jun 2019 18:57:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E9EFE1BF2F8
- for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 18:57:19 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 673831BF2F8
+ for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 18:57:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E151987582
- for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 18:57:19 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 61F96203F3
+ for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 18:57:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IDdiyvS93uGr for <devel@linuxdriverproject.org>;
- Thu, 27 Jun 2019 18:57:18 +0000 (UTC)
+ with ESMTP id YMLYTc1ZEY6X for <devel@linuxdriverproject.org>;
+ Thu, 27 Jun 2019 18:57:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.15.19])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 6B8BB874A7
- for <devel@driverdev.osuosl.org>; Thu, 27 Jun 2019 18:57:17 +0000 (UTC)
+Received: from mout.gmx.net (mout.gmx.net [212.227.15.18])
+ by silver.osuosl.org (Postfix) with ESMTPS id 035B420106
+ for <devel@driverdev.osuosl.org>; Thu, 27 Jun 2019 18:57:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1561661811;
- bh=k2UEBdPcXThZbOhK5It7fEganG4Iv+M4JDEYExz4Arc=;
+ s=badeba3b8450; t=1561661812;
+ bh=+Xoux4+s4j5YfHj784XnN033ix9y/7uzXcLlI87QcTo=;
  h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=OGx4Tbw/y43jBB3SXYzKOgCdXi7TgB8QtK4qlHpS0lBu8/cGVzg3feaiLShLOcKxn
- RjdePa1kfltlkFL1KNkQHViViOstm8fZs+l/ITP/lZrCxdODnFPrj3SFDac3/L8Jsy
- W/5gnZYa2kOWPKk/pg/ryO8mqztXqQdI28eiGrA8=
+ b=LH7hBHfikip12OU8QBcgEgaszTr76HWc/YfwfJTo8NpxtrAXcKFLBLVxtzAyrvLaP
+ OAdtZzE3UOjwcNADnR/l/mXCDFhM9yBahX8IqFab1cG7lPsDMjPijDaHbjsGBdUQXV
+ ERSq1NiGDWfsA9Yid2SRHOS22zyz8CEfGHOHIy7c=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
 Received: from localhost.localdomain ([37.4.249.111]) by mail.gmx.com
  (mrgmx002 [212.227.17.190]) with ESMTPSA (Nemesis) id
- 0LgZdt-1iIxBW14Zp-00nxIE; Thu, 27 Jun 2019 20:56:51 +0200
+ 0M7pI0-1iT9ut2oPA-00vPw3; Thu, 27 Jun 2019 20:56:51 +0200
 From: Stefan Wahren <wahrenst@gmx.net>
 To: Eric Anholt <eric@anholt.net>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Dave Stevenson <dave.stevenson@raspberrypi.org>,
  Hans Verkuil <hverkuil@xs4all.nl>,
  Mauro Carvalho Chehab <mchehab@kernel.org>
-Subject: [PATCH 07/31] staging: bcm2835-camera: Remove dead email addresses
-Date: Thu, 27 Jun 2019 20:56:04 +0200
-Message-Id: <1561661788-22744-8-git-send-email-wahrenst@gmx.net>
+Subject: [PATCH 08/31] staging: bcm2835-camera: Fix comment style violations.
+Date: Thu, 27 Jun 2019 20:56:05 +0200
+Message-Id: <1561661788-22744-9-git-send-email-wahrenst@gmx.net>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1561661788-22744-1-git-send-email-wahrenst@gmx.net>
 References: <1561661788-22744-1-git-send-email-wahrenst@gmx.net>
-MIME-Version: 1.0
-X-Provags-ID: V03:K1:G+kKgfFVzVlhR+oT6IRybHEGpRj6R6swZgtBkCia+xNyzsUjV39
- c6pALomWDH7aFBtGuFnr9OIC7Or25hpKL2Qtg+na7RcQCxtw4YUtCD4MnZlWjV3coW1ZSQ6
- S+A9OV/QP6vrZF0XVCIz4jLQlJsoHo8ZtLNgoRFzcV7o3UpBhx4ucdjmIKXf/MMQps5AIwX
- G70qd76F8vIFtfvqw6nFQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:qQYJ98g6oYc=:d1q1GINSU4Wm++VBLDNd/i
- eorzI/ywX3fbqWU9ak99N+986WjUXalUERehv8eNow5Q0rJyOuLeQDNs28kiLgxu6YaP1hO37
- V/AWnXCTLSC2rQPCUsZssib/Oxu8FXZK3gX1zMxGWl+ttweaHcS2Y5W91LFhWkSLQ29qTjTkV
- pZUbesPWPj098WQfBlfsxB5HowmGx/pJcWiCkZOKvOxW9TsOUY5HEuiTMOphjQthNyC3b1+o6
- 6xC6Zvvm32l9nol7ntcyQyehYtXvizMSssD+uiwe3E2kqiYPdLCkpfDrj/W8CBu/1dzzKO7wb
- SporIm+zefFvj652QuvvF3oeLWj7fDDh+F1bQjHrUX2a0PO+sWYyoRH//1pLs/eNbiy+EBSpC
- VppFRRqzZAF97lOhzVor8iTdOOpJ35zOFWrRz1O8PBkjhZ5t2XuzzUrGK9mO3zN6s1k3jNKzT
- V6Vo3UBAJ7tVtR4DQCtT6F/lTaxfwyVzU3dcmBF4JtpR1WQaoaNUTMlx1qVWDVrMCj2BuZx2i
- OuTzvilyZ5P/dfLFeFYWTu2wpSK6ksoM37Pe4cV7QdwKBkZL603Oitk8B7SffFSfwHXw7Mbvd
- 7mzMv6GgJyB1uT6DRmsKKZWu5eAH63oXFKCDLsBUprAXSoV3B15Ak9B3GoXvi5fjvE9pIiYfE
- QDj33eaf+o94VJmXPMkZltFSHT9va84zCv9AsW9PCVrUln9F20hf/ohdUqVZcSmoh35tdw0v/
- IQWhhRVv3fFMpk/XDnRhAN91fENosU6/ArIx5y6hEzrBwh7PJGUN0khAjZ8mF6FJf6DrSRTd+
- UK3QU/DNcEZW7+oplCReDT5aH5eVHdxEDdrj3ZnRYviCFYrOQrbpuum+ZFKDoq43qVYyM6EEz
- 2Oruy5u3VnMyo9ez+n9Q9oCo9pDScoBBZoXHIGXUD2EaKQPuYitGLD+CskXPVyiBfEHp/WzVN
- OkAjGFPzFIOSzmN9420Gi9NA02c4bKUxzXnOcq79s+o+gFtS7votB7j0VmPrQ8KgYnFBK0PJk
- /IIw8tR1iuGpr6FwLvEOIg5fARHtjVu3krA1+WnOUd0EO84GeRxFFDVIzZgmd9lb1Zp4pKts9
- DzyF+kERUFLGfc=
+X-Provags-ID: V03:K1:HEIL2nbb9HRBO7L+QEOZBb9r1MTTwvhZ8lsCOlo/UHeE06nJqom
+ /84bxrXMVRe7icOufelWDT1CGontoXgBUUkj/1v4jai6X3z0VMoosMkMd+Okz9p2W/dJkt3
+ wz530L++YdwuiIZlUE50dGKSYjtG++VyjcHI+ZYHejc3MFyQtwBP88eRpMlwbhYla2lmUcz
+ YZ+O6p3GaKjWKKkME9AVg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:pCyntWeZ/Rs=:bD1ZYN2h0bkABXGfLFMfL5
+ bn5OwUMgv+Jb8BOYLmM+e1Op5C7q8oiqP5Pgb0JDDN2m8FJ8bexYqTtiAOqDAr7NREha8C05T
+ I+2T68F7m0xYpqkQxGwo0rhstC7fofKnTP5V9iA68UIOWnqmMAKdIUlS7pF2d7yk+0UpQPWrm
+ q3XpTK/ro7sbR7b3G1GSHIVZuBpu9HLEdZLwqa0KBGIlm95j8AHSmFzBI7dfA0OvHrd0OMPxF
+ iGtkm7uWkjCGJHUjprT6TS5jdzzXGi9w1BvY1K5t/c2UF02GunccdAQSGzFDuLxBWZHIKdNL9
+ n6Np7kcsPTz91OfHkXqblRIwbobFcslDHayisWo+SPkslxL4YoflGtsDtXr7f+3CjPFaLC0a3
+ licLyi63RoMUIWYrIbhgM9XaVaKQ/DdKAzWqLLuZRO9Davii+GO3ucZCoMXGJ6PBY4/uSPV0b
+ PRRKsmreOxx23EOylCP/HJwd2nd5M998EaRyS52trSqVfmq8TdDO5cO4K2355FVFAyhTOpMjy
+ JwOiCv8eIsrt07sF4Ev3mElQ+bkPU6t0AX/l3fEWcaUqyvcaDT5Ghggtuquz4+C7XuVDIiQmQ
+ 1OWxU64525L33D1675ZupypOi07FvrT1bVHRCoUmVXPCtjI8fFoYuSJsw1isDD6vPNahnc8DK
+ nUmT315NYdidWo2T5sxhc+4BcpVm0YkCuT2iBq+laBDXzSMOT3I3jdHN0CiWaog3U1X+Nh6YU
+ 741nEqABhg4xRc8d/KD8c+DFof8fvst7dKUHsdrLgdYiazGbeAraIjfIhQX3ohurNZ5XlTR45
+ DMmO1m8Y3RH6AQdCIbUzanbNOjIIuPpgajG0nPyTNRV6h3ELQWIiJejMZJe6H6DzkbR5q6jJu
+ wXvWCWbMZAEJTy8Y3pxPdK9seyOd0HoKmsagFQ/7YnqiImz8VFkszwfZGHXqCSTvYaJ9GKm8j
+ TwgDjGjaWWoC9p2TPmzuoIhh9qtKMNwWLRjrTfc0tlYa73ww6J+LYPZ3Ps7ve/c/kPEwytUnA
+ l+t3G/v7lvpMH6dZGTe2E6ursYnSer+7iIyo72cDceGKk6vjD4awTLwsK7mpd9R56hlumIeHC
+ +kBohx6MgWMbrs=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,206 +89,639 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, linux-rpi-kernel@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RnJvbTogRGF2ZSBTdGV2ZW5zb24gPGRhdmUuc3RldmVuc29uQHJhc3BiZXJyeXBpLm9yZz4KCk5v
-bmUgb2YgdGhlIGxpc3RlZCBhdXRob3IgZW1haWwgYWRkcmVzc2VzIHdlcmUgdmFsaWQuCktlZXAg
-bGlzdCBvZiBhdXRob3JzIGFuZCB0aGUgY29tcGFuaWVzIHRoZXkgcmVwcmVzZW50ZWQuClVwZGF0
-ZSBteSBlbWFpbCBhZGRyZXNzLgoKU2lnbmVkLW9mZi1ieTogRGF2ZSBTdGV2ZW5zb24gPGRhdmUu
-c3RldmVuc29uQHJhc3BiZXJyeXBpLm9yZz4KLS0tCiBkcml2ZXJzL3N0YWdpbmcvdmMwNF9zZXJ2
-aWNlcy9iY20yODM1LWNhbWVyYS9iY20yODM1LWNhbWVyYS5jICB8IDkgKysrKystLS0tCiBkcml2
-ZXJzL3N0YWdpbmcvdmMwNF9zZXJ2aWNlcy9iY20yODM1LWNhbWVyYS9iY20yODM1LWNhbWVyYS5o
-ICB8IDkgKysrKystLS0tCiBkcml2ZXJzL3N0YWdpbmcvdmMwNF9zZXJ2aWNlcy9iY20yODM1LWNh
-bWVyYS9jb250cm9scy5jICAgICAgICB8IDkgKysrKystLS0tCiBkcml2ZXJzL3N0YWdpbmcvdmMw
-NF9zZXJ2aWNlcy9iY20yODM1LWNhbWVyYS9tbWFsLWNvbW1vbi5oICAgICB8IDkgKysrKystLS0t
-CiBkcml2ZXJzL3N0YWdpbmcvdmMwNF9zZXJ2aWNlcy9iY20yODM1LWNhbWVyYS9tbWFsLWVuY29k
-aW5ncy5oICB8IDkgKysrKystLS0tCiBkcml2ZXJzL3N0YWdpbmcvdmMwNF9zZXJ2aWNlcy9iY20y
-ODM1LWNhbWVyYS9tbWFsLW1zZy1jb21tb24uaCB8IDkgKysrKystLS0tCiBkcml2ZXJzL3N0YWdp
-bmcvdmMwNF9zZXJ2aWNlcy9iY20yODM1LWNhbWVyYS9tbWFsLW1zZy1mb3JtYXQuaCB8IDkgKysr
-KystLS0tCiBkcml2ZXJzL3N0YWdpbmcvdmMwNF9zZXJ2aWNlcy9iY20yODM1LWNhbWVyYS9tbWFs
-LW1zZy1wb3J0LmggICB8IDkgKysrKystLS0tCiBkcml2ZXJzL3N0YWdpbmcvdmMwNF9zZXJ2aWNl
-cy9iY20yODM1LWNhbWVyYS9tbWFsLW1zZy5oICAgICAgICB8IDkgKysrKystLS0tCiBkcml2ZXJz
-L3N0YWdpbmcvdmMwNF9zZXJ2aWNlcy9iY20yODM1LWNhbWVyYS9tbWFsLXBhcmFtZXRlcnMuaCB8
-IDkgKysrKystLS0tCiBkcml2ZXJzL3N0YWdpbmcvdmMwNF9zZXJ2aWNlcy9iY20yODM1LWNhbWVy
-YS9tbWFsLXZjaGlxLmMgICAgICB8IDkgKysrKystLS0tCiBkcml2ZXJzL3N0YWdpbmcvdmMwNF9z
-ZXJ2aWNlcy9iY20yODM1LWNhbWVyYS9tbWFsLXZjaGlxLmggICAgICB8IDkgKysrKystLS0tCiAx
-MiBmaWxlcyBjaGFuZ2VkLCA2MCBpbnNlcnRpb25zKCspLCA0OCBkZWxldGlvbnMoLSkKCmRpZmYg
-LS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvdmMwNF9zZXJ2aWNlcy9iY20yODM1LWNhbWVyYS9iY20y
-ODM1LWNhbWVyYS5jIGIvZHJpdmVycy9zdGFnaW5nL3ZjMDRfc2VydmljZXMvYmNtMjgzNS1jYW1l
-cmEvYmNtMjgzNS1jYW1lcmEuYwppbmRleCBiNTk3NDc1Li44MTRkZWVlIDEwMDY0NAotLS0gYS9k
-cml2ZXJzL3N0YWdpbmcvdmMwNF9zZXJ2aWNlcy9iY20yODM1LWNhbWVyYS9iY20yODM1LWNhbWVy
-YS5jCisrKyBiL2RyaXZlcnMvc3RhZ2luZy92YzA0X3NlcnZpY2VzL2JjbTI4MzUtY2FtZXJhL2Jj
-bTI4MzUtY2FtZXJhLmMKQEAgLTQsMTAgKzQsMTEgQEAKICAqCiAgKiBDb3B5cmlnaHQgwqkgMjAx
-MyBSYXNwYmVycnkgUGkgKFRyYWRpbmcpIEx0ZC4KICAqCi0gKiBBdXRob3JzOiBWaW5jZW50IFNh
-bmRlcnMgPHZpbmNlbnQuc2FuZGVyc0Bjb2xsYWJvcmEuY28udWs+Ci0gKiAgICAgICAgICBEYXZl
-IFN0ZXZlbnNvbiA8ZHN0ZXZlQGJyb2FkY29tLmNvbT4KLSAqICAgICAgICAgIFNpbW9uIE1lbGxv
-ciA8c2ltZWxsb3JAYnJvYWRjb20uY29tPgotICogICAgICAgICAgTHVrZSBEaWFtYW5kIDxsdWtl
-ZEBicm9hZGNvbS5jb20+CisgKiBBdXRob3JzOiBWaW5jZW50IFNhbmRlcnMgQCBDb2xsYWJvcmEK
-KyAqICAgICAgICAgIERhdmUgU3RldmVuc29uIEAgQnJvYWRjb20KKyAqCQkobm93IGRhdmUuc3Rl
-dmVuc29uQHJhc3BiZXJyeXBpLm9yZykKKyAqICAgICAgICAgIFNpbW9uIE1lbGxvciBAIEJyb2Fk
-Y29tCisgKiAgICAgICAgICBMdWtlIERpYW1hbmQgQCBCcm9hZGNvbQogICovCgogI2luY2x1ZGUg
-PGxpbnV4L2Vycm5vLmg+CmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvdmMwNF9zZXJ2aWNl
-cy9iY20yODM1LWNhbWVyYS9iY20yODM1LWNhbWVyYS5oIGIvZHJpdmVycy9zdGFnaW5nL3ZjMDRf
-c2VydmljZXMvYmNtMjgzNS1jYW1lcmEvYmNtMjgzNS1jYW1lcmEuaAppbmRleCAwOTI3M2IwLi45
-ODMzODI4IDEwMDY0NAotLS0gYS9kcml2ZXJzL3N0YWdpbmcvdmMwNF9zZXJ2aWNlcy9iY20yODM1
-LWNhbWVyYS9iY20yODM1LWNhbWVyYS5oCisrKyBiL2RyaXZlcnMvc3RhZ2luZy92YzA0X3NlcnZp
-Y2VzL2JjbTI4MzUtY2FtZXJhL2JjbTI4MzUtY2FtZXJhLmgKQEAgLTQsMTAgKzQsMTEgQEAKICAq
-CiAgKiBDb3B5cmlnaHQgwqkgMjAxMyBSYXNwYmVycnkgUGkgKFRyYWRpbmcpIEx0ZC4KICAqCi0g
-KiBBdXRob3JzOiBWaW5jZW50IFNhbmRlcnMgPHZpbmNlbnQuc2FuZGVyc0Bjb2xsYWJvcmEuY28u
-dWs+Ci0gKiAgICAgICAgICBEYXZlIFN0ZXZlbnNvbiA8ZHN0ZXZlQGJyb2FkY29tLmNvbT4KLSAq
-ICAgICAgICAgIFNpbW9uIE1lbGxvciA8c2ltZWxsb3JAYnJvYWRjb20uY29tPgotICogICAgICAg
-ICAgTHVrZSBEaWFtYW5kIDxsdWtlZEBicm9hZGNvbS5jb20+CisgKiBBdXRob3JzOiBWaW5jZW50
-IFNhbmRlcnMgQCBDb2xsYWJvcmEKKyAqICAgICAgICAgIERhdmUgU3RldmVuc29uIEAgQnJvYWRj
-b20KKyAqCQkobm93IGRhdmUuc3RldmVuc29uQHJhc3BiZXJyeXBpLm9yZykKKyAqICAgICAgICAg
-IFNpbW9uIE1lbGxvciBAIEJyb2FkY29tCisgKiAgICAgICAgICBMdWtlIERpYW1hbmQgQCBCcm9h
-ZGNvbQogICoKICAqIGNvcmUgZHJpdmVyIGRldmljZQogICovCmRpZmYgLS1naXQgYS9kcml2ZXJz
-L3N0YWdpbmcvdmMwNF9zZXJ2aWNlcy9iY20yODM1LWNhbWVyYS9jb250cm9scy5jIGIvZHJpdmVy
-cy9zdGFnaW5nL3ZjMDRfc2VydmljZXMvYmNtMjgzNS1jYW1lcmEvY29udHJvbHMuYwppbmRleCAx
-MzNhYTZlLi5iMTQyMTMwIDEwMDY0NAotLS0gYS9kcml2ZXJzL3N0YWdpbmcvdmMwNF9zZXJ2aWNl
-cy9iY20yODM1LWNhbWVyYS9jb250cm9scy5jCisrKyBiL2RyaXZlcnMvc3RhZ2luZy92YzA0X3Nl
-cnZpY2VzL2JjbTI4MzUtY2FtZXJhL2NvbnRyb2xzLmMKQEAgLTQsMTAgKzQsMTEgQEAKICAqCiAg
-KiBDb3B5cmlnaHQgwqkgMjAxMyBSYXNwYmVycnkgUGkgKFRyYWRpbmcpIEx0ZC4KICAqCi0gKiBB
-dXRob3JzOiBWaW5jZW50IFNhbmRlcnMgPHZpbmNlbnQuc2FuZGVyc0Bjb2xsYWJvcmEuY28udWs+
-Ci0gKiAgICAgICAgICBEYXZlIFN0ZXZlbnNvbiA8ZHN0ZXZlQGJyb2FkY29tLmNvbT4KLSAqICAg
-ICAgICAgIFNpbW9uIE1lbGxvciA8c2ltZWxsb3JAYnJvYWRjb20uY29tPgotICogICAgICAgICAg
-THVrZSBEaWFtYW5kIDxsdWtlZEBicm9hZGNvbS5jb20+CisgKiBBdXRob3JzOiBWaW5jZW50IFNh
-bmRlcnMgQCBDb2xsYWJvcmEKKyAqICAgICAgICAgIERhdmUgU3RldmVuc29uIEAgQnJvYWRjb20K
-KyAqCQkobm93IGRhdmUuc3RldmVuc29uQHJhc3BiZXJyeXBpLm9yZykKKyAqICAgICAgICAgIFNp
-bW9uIE1lbGxvciBAIEJyb2FkY29tCisgKiAgICAgICAgICBMdWtlIERpYW1hbmQgQCBCcm9hZGNv
-bQogICovCgogI2luY2x1ZGUgPGxpbnV4L2Vycm5vLmg+CmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0
-YWdpbmcvdmMwNF9zZXJ2aWNlcy9iY20yODM1LWNhbWVyYS9tbWFsLWNvbW1vbi5oIGIvZHJpdmVy
-cy9zdGFnaW5nL3ZjMDRfc2VydmljZXMvYmNtMjgzNS1jYW1lcmEvbW1hbC1jb21tb24uaAppbmRl
-eCBhMjBiZjI3Li44NThiZGNkIDEwMDY0NAotLS0gYS9kcml2ZXJzL3N0YWdpbmcvdmMwNF9zZXJ2
-aWNlcy9iY20yODM1LWNhbWVyYS9tbWFsLWNvbW1vbi5oCisrKyBiL2RyaXZlcnMvc3RhZ2luZy92
-YzA0X3NlcnZpY2VzL2JjbTI4MzUtY2FtZXJhL21tYWwtY29tbW9uLmgKQEAgLTQsMTAgKzQsMTEg
-QEAKICAqCiAgKiBDb3B5cmlnaHQgwqkgMjAxMyBSYXNwYmVycnkgUGkgKFRyYWRpbmcpIEx0ZC4K
-ICAqCi0gKiBBdXRob3JzOiBWaW5jZW50IFNhbmRlcnMgPHZpbmNlbnQuc2FuZGVyc0Bjb2xsYWJv
-cmEuY28udWs+Ci0gKiAgICAgICAgICBEYXZlIFN0ZXZlbnNvbiA8ZHN0ZXZlQGJyb2FkY29tLmNv
-bT4KLSAqICAgICAgICAgIFNpbW9uIE1lbGxvciA8c2ltZWxsb3JAYnJvYWRjb20uY29tPgotICog
-ICAgICAgICAgTHVrZSBEaWFtYW5kIDxsdWtlZEBicm9hZGNvbS5jb20+CisgKiBBdXRob3JzOiBW
-aW5jZW50IFNhbmRlcnMgQCBDb2xsYWJvcmEKKyAqICAgICAgICAgIERhdmUgU3RldmVuc29uIEAg
-QnJvYWRjb20KKyAqCQkobm93IGRhdmUuc3RldmVuc29uQHJhc3BiZXJyeXBpLm9yZykKKyAqICAg
-ICAgICAgIFNpbW9uIE1lbGxvciBAIEJyb2FkY29tCisgKiAgICAgICAgICBMdWtlIERpYW1hbmQg
-QCBCcm9hZGNvbQogICoKICAqIE1NQUwgc3RydWN0dXJlcwogICoKZGlmZiAtLWdpdCBhL2RyaXZl
-cnMvc3RhZ2luZy92YzA0X3NlcnZpY2VzL2JjbTI4MzUtY2FtZXJhL21tYWwtZW5jb2RpbmdzLmgg
-Yi9kcml2ZXJzL3N0YWdpbmcvdmMwNF9zZXJ2aWNlcy9iY20yODM1LWNhbWVyYS9tbWFsLWVuY29k
-aW5ncy5oCmluZGV4IDEyOTIwMzUuLjJiZTk5NDEgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2lu
-Zy92YzA0X3NlcnZpY2VzL2JjbTI4MzUtY2FtZXJhL21tYWwtZW5jb2RpbmdzLmgKKysrIGIvZHJp
-dmVycy9zdGFnaW5nL3ZjMDRfc2VydmljZXMvYmNtMjgzNS1jYW1lcmEvbW1hbC1lbmNvZGluZ3Mu
-aApAQCAtNCwxMCArNCwxMSBAQAogICoKICAqIENvcHlyaWdodCDCqSAyMDEzIFJhc3BiZXJyeSBQ
-aSAoVHJhZGluZykgTHRkLgogICoKLSAqIEF1dGhvcnM6IFZpbmNlbnQgU2FuZGVycyA8dmluY2Vu
-dC5zYW5kZXJzQGNvbGxhYm9yYS5jby51az4KLSAqICAgICAgICAgIERhdmUgU3RldmVuc29uIDxk
-c3RldmVAYnJvYWRjb20uY29tPgotICogICAgICAgICAgU2ltb24gTWVsbG9yIDxzaW1lbGxvckBi
-cm9hZGNvbS5jb20+Ci0gKiAgICAgICAgICBMdWtlIERpYW1hbmQgPGx1a2VkQGJyb2FkY29tLmNv
-bT4KKyAqIEF1dGhvcnM6IFZpbmNlbnQgU2FuZGVycyBAIENvbGxhYm9yYQorICogICAgICAgICAg
-RGF2ZSBTdGV2ZW5zb24gQCBCcm9hZGNvbQorICoJCShub3cgZGF2ZS5zdGV2ZW5zb25AcmFzcGJl
-cnJ5cGkub3JnKQorICogICAgICAgICAgU2ltb24gTWVsbG9yIEAgQnJvYWRjb20KKyAqICAgICAg
-ICAgIEx1a2UgRGlhbWFuZCBAIEJyb2FkY29tCiAgKi8KICNpZm5kZWYgTU1BTF9FTkNPRElOR1Nf
-SAogI2RlZmluZSBNTUFMX0VOQ09ESU5HU19ICmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcv
-dmMwNF9zZXJ2aWNlcy9iY20yODM1LWNhbWVyYS9tbWFsLW1zZy1jb21tb24uaCBiL2RyaXZlcnMv
-c3RhZ2luZy92YzA0X3NlcnZpY2VzL2JjbTI4MzUtY2FtZXJhL21tYWwtbXNnLWNvbW1vbi5oCmlu
-ZGV4IGVjODQ1NTYuLjM0MmM5YjYgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy92YzA0X3Nl
-cnZpY2VzL2JjbTI4MzUtY2FtZXJhL21tYWwtbXNnLWNvbW1vbi5oCisrKyBiL2RyaXZlcnMvc3Rh
-Z2luZy92YzA0X3NlcnZpY2VzL2JjbTI4MzUtY2FtZXJhL21tYWwtbXNnLWNvbW1vbi5oCkBAIC00
-LDEwICs0LDExIEBACiAgKgogICogQ29weXJpZ2h0IMKpIDIwMTMgUmFzcGJlcnJ5IFBpIChUcmFk
-aW5nKSBMdGQuCiAgKgotICogQXV0aG9yczogVmluY2VudCBTYW5kZXJzIDx2aW5jZW50LnNhbmRl
-cnNAY29sbGFib3JhLmNvLnVrPgotICogICAgICAgICAgRGF2ZSBTdGV2ZW5zb24gPGRzdGV2ZUBi
-cm9hZGNvbS5jb20+Ci0gKiAgICAgICAgICBTaW1vbiBNZWxsb3IgPHNpbWVsbG9yQGJyb2FkY29t
-LmNvbT4KLSAqICAgICAgICAgIEx1a2UgRGlhbWFuZCA8bHVrZWRAYnJvYWRjb20uY29tPgorICog
-QXV0aG9yczogVmluY2VudCBTYW5kZXJzIEAgQ29sbGFib3JhCisgKiAgICAgICAgICBEYXZlIFN0
-ZXZlbnNvbiBAIEJyb2FkY29tCisgKgkJKG5vdyBkYXZlLnN0ZXZlbnNvbkByYXNwYmVycnlwaS5v
-cmcpCisgKiAgICAgICAgICBTaW1vbiBNZWxsb3IgQCBCcm9hZGNvbQorICogICAgICAgICAgTHVr
-ZSBEaWFtYW5kIEAgQnJvYWRjb20KICAqLwoKICNpZm5kZWYgTU1BTF9NU0dfQ09NTU9OX0gKZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy92YzA0X3NlcnZpY2VzL2JjbTI4MzUtY2FtZXJhL21t
-YWwtbXNnLWZvcm1hdC5oIGIvZHJpdmVycy9zdGFnaW5nL3ZjMDRfc2VydmljZXMvYmNtMjgzNS1j
-YW1lcmEvbW1hbC1tc2ctZm9ybWF0LmgKaW5kZXggYzlkNmZiZS4uNWVhMWExYiAxMDA2NDQKLS0t
-IGEvZHJpdmVycy9zdGFnaW5nL3ZjMDRfc2VydmljZXMvYmNtMjgzNS1jYW1lcmEvbW1hbC1tc2ct
-Zm9ybWF0LmgKKysrIGIvZHJpdmVycy9zdGFnaW5nL3ZjMDRfc2VydmljZXMvYmNtMjgzNS1jYW1l
-cmEvbW1hbC1tc2ctZm9ybWF0LmgKQEAgLTQsMTAgKzQsMTEgQEAKICAqCiAgKiBDb3B5cmlnaHQg
-wqkgMjAxMyBSYXNwYmVycnkgUGkgKFRyYWRpbmcpIEx0ZC4KICAqCi0gKiBBdXRob3JzOiBWaW5j
-ZW50IFNhbmRlcnMgPHZpbmNlbnQuc2FuZGVyc0Bjb2xsYWJvcmEuY28udWs+Ci0gKiAgICAgICAg
-ICBEYXZlIFN0ZXZlbnNvbiA8ZHN0ZXZlQGJyb2FkY29tLmNvbT4KLSAqICAgICAgICAgIFNpbW9u
-IE1lbGxvciA8c2ltZWxsb3JAYnJvYWRjb20uY29tPgotICogICAgICAgICAgTHVrZSBEaWFtYW5k
-IDxsdWtlZEBicm9hZGNvbS5jb20+CisgKiBBdXRob3JzOiBWaW5jZW50IFNhbmRlcnMgQCBDb2xs
-YWJvcmEKKyAqICAgICAgICAgIERhdmUgU3RldmVuc29uIEAgQnJvYWRjb20KKyAqCQkobm93IGRh
-dmUuc3RldmVuc29uQHJhc3BiZXJyeXBpLm9yZykKKyAqICAgICAgICAgIFNpbW9uIE1lbGxvciBA
-IEJyb2FkY29tCisgKiAgICAgICAgICBMdWtlIERpYW1hbmQgQCBCcm9hZGNvbQogICovCgogI2lm
-bmRlZiBNTUFMX01TR19GT1JNQVRfSApkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL3ZjMDRf
-c2VydmljZXMvYmNtMjgzNS1jYW1lcmEvbW1hbC1tc2ctcG9ydC5oIGIvZHJpdmVycy9zdGFnaW5n
-L3ZjMDRfc2VydmljZXMvYmNtMjgzNS1jYW1lcmEvbW1hbC1tc2ctcG9ydC5oCmluZGV4IDNiM2Vk
-NzkuLmZlNTc2OGQgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy92YzA0X3NlcnZpY2VzL2Jj
-bTI4MzUtY2FtZXJhL21tYWwtbXNnLXBvcnQuaAorKysgYi9kcml2ZXJzL3N0YWdpbmcvdmMwNF9z
-ZXJ2aWNlcy9iY20yODM1LWNhbWVyYS9tbWFsLW1zZy1wb3J0LmgKQEAgLTQsMTAgKzQsMTEgQEAK
-ICAqCiAgKiBDb3B5cmlnaHQgwqkgMjAxMyBSYXNwYmVycnkgUGkgKFRyYWRpbmcpIEx0ZC4KICAq
-Ci0gKiBBdXRob3JzOiBWaW5jZW50IFNhbmRlcnMgPHZpbmNlbnQuc2FuZGVyc0Bjb2xsYWJvcmEu
-Y28udWs+Ci0gKiAgICAgICAgICBEYXZlIFN0ZXZlbnNvbiA8ZHN0ZXZlQGJyb2FkY29tLmNvbT4K
-LSAqICAgICAgICAgIFNpbW9uIE1lbGxvciA8c2ltZWxsb3JAYnJvYWRjb20uY29tPgotICogICAg
-ICAgICAgTHVrZSBEaWFtYW5kIDxsdWtlZEBicm9hZGNvbS5jb20+CisgKiBBdXRob3JzOiBWaW5j
-ZW50IFNhbmRlcnMgQCBDb2xsYWJvcmEKKyAqICAgICAgICAgIERhdmUgU3RldmVuc29uIEAgQnJv
-YWRjb20KKyAqCQkobm93IGRhdmUuc3RldmVuc29uQHJhc3BiZXJyeXBpLm9yZykKKyAqICAgICAg
-ICAgIFNpbW9uIE1lbGxvciBAIEJyb2FkY29tCisgKiAgICAgICAgICBMdWtlIERpYW1hbmQgQCBC
-cm9hZGNvbQogICovCgogLyogTU1BTF9QT1JUX1RZUEVfVCAqLwpkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9zdGFnaW5nL3ZjMDRfc2VydmljZXMvYmNtMjgzNS1jYW1lcmEvbW1hbC1tc2cuaCBiL2RyaXZl
-cnMvc3RhZ2luZy92YzA0X3NlcnZpY2VzL2JjbTI4MzUtY2FtZXJhL21tYWwtbXNnLmgKaW5kZXgg
-OTA3OTNjOS4uMzMyZGU1NyAxMDA2NDQKLS0tIGEvZHJpdmVycy9zdGFnaW5nL3ZjMDRfc2Vydmlj
-ZXMvYmNtMjgzNS1jYW1lcmEvbW1hbC1tc2cuaAorKysgYi9kcml2ZXJzL3N0YWdpbmcvdmMwNF9z
-ZXJ2aWNlcy9iY20yODM1LWNhbWVyYS9tbWFsLW1zZy5oCkBAIC00LDEwICs0LDExIEBACiAgKgog
-ICogQ29weXJpZ2h0IMKpIDIwMTMgUmFzcGJlcnJ5IFBpIChUcmFkaW5nKSBMdGQuCiAgKgotICog
-QXV0aG9yczogVmluY2VudCBTYW5kZXJzIDx2aW5jZW50LnNhbmRlcnNAY29sbGFib3JhLmNvLnVr
-PgotICogICAgICAgICAgRGF2ZSBTdGV2ZW5zb24gPGRzdGV2ZUBicm9hZGNvbS5jb20+Ci0gKiAg
-ICAgICAgICBTaW1vbiBNZWxsb3IgPHNpbWVsbG9yQGJyb2FkY29tLmNvbT4KLSAqICAgICAgICAg
-IEx1a2UgRGlhbWFuZCA8bHVrZWRAYnJvYWRjb20uY29tPgorICogQXV0aG9yczogVmluY2VudCBT
-YW5kZXJzIEAgQ29sbGFib3JhCisgKiAgICAgICAgICBEYXZlIFN0ZXZlbnNvbiBAIEJyb2FkY29t
-CisgKgkJKG5vdyBkYXZlLnN0ZXZlbnNvbkByYXNwYmVycnlwaS5vcmcpCisgKiAgICAgICAgICBT
-aW1vbiBNZWxsb3IgQCBCcm9hZGNvbQorICogICAgICAgICAgTHVrZSBEaWFtYW5kIEAgQnJvYWRj
-b20KICAqLwoKIC8qIGFsbCB0aGUgZGF0YSBzdHJ1Y3R1cmVzIHdoaWNoIHNlcmlhbGlzZSB0aGUg
-TU1BTCBwcm90b2NvbC4gbm90ZQpkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL3ZjMDRfc2Vy
-dmljZXMvYmNtMjgzNS1jYW1lcmEvbW1hbC1wYXJhbWV0ZXJzLmggYi9kcml2ZXJzL3N0YWdpbmcv
-dmMwNF9zZXJ2aWNlcy9iY20yODM1LWNhbWVyYS9tbWFsLXBhcmFtZXRlcnMuaAppbmRleCAxODQw
-MjRkLi45NmU5ODdkIDEwMDY0NAotLS0gYS9kcml2ZXJzL3N0YWdpbmcvdmMwNF9zZXJ2aWNlcy9i
-Y20yODM1LWNhbWVyYS9tbWFsLXBhcmFtZXRlcnMuaAorKysgYi9kcml2ZXJzL3N0YWdpbmcvdmMw
-NF9zZXJ2aWNlcy9iY20yODM1LWNhbWVyYS9tbWFsLXBhcmFtZXRlcnMuaApAQCAtNCwxMCArNCwx
-MSBAQAogICoKICAqIENvcHlyaWdodCDCqSAyMDEzIFJhc3BiZXJyeSBQaSAoVHJhZGluZykgTHRk
-LgogICoKLSAqIEF1dGhvcnM6IFZpbmNlbnQgU2FuZGVycyA8dmluY2VudC5zYW5kZXJzQGNvbGxh
-Ym9yYS5jby51az4KLSAqICAgICAgICAgIERhdmUgU3RldmVuc29uIDxkc3RldmVAYnJvYWRjb20u
-Y29tPgotICogICAgICAgICAgU2ltb24gTWVsbG9yIDxzaW1lbGxvckBicm9hZGNvbS5jb20+Ci0g
-KiAgICAgICAgICBMdWtlIERpYW1hbmQgPGx1a2VkQGJyb2FkY29tLmNvbT4KKyAqIEF1dGhvcnM6
-IFZpbmNlbnQgU2FuZGVycyBAIENvbGxhYm9yYQorICogICAgICAgICAgRGF2ZSBTdGV2ZW5zb24g
-QCBCcm9hZGNvbQorICoJCShub3cgZGF2ZS5zdGV2ZW5zb25AcmFzcGJlcnJ5cGkub3JnKQorICog
-ICAgICAgICAgU2ltb24gTWVsbG9yIEAgQnJvYWRjb20KKyAqICAgICAgICAgIEx1a2UgRGlhbWFu
-ZCBAIEJyb2FkY29tCiAgKi8KCiAvKiBjb21tb24gcGFyYW1ldGVycyAqLwpkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9zdGFnaW5nL3ZjMDRfc2VydmljZXMvYmNtMjgzNS1jYW1lcmEvbW1hbC12Y2hpcS5j
-IGIvZHJpdmVycy9zdGFnaW5nL3ZjMDRfc2VydmljZXMvYmNtMjgzNS1jYW1lcmEvbW1hbC12Y2hp
-cS5jCmluZGV4IDFhMzQzZDguLjUxNzVlMmMgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy92
-YzA0X3NlcnZpY2VzL2JjbTI4MzUtY2FtZXJhL21tYWwtdmNoaXEuYworKysgYi9kcml2ZXJzL3N0
-YWdpbmcvdmMwNF9zZXJ2aWNlcy9iY20yODM1LWNhbWVyYS9tbWFsLXZjaGlxLmMKQEAgLTQsMTAg
-KzQsMTEgQEAKICAqCiAgKiBDb3B5cmlnaHQgwqkgMjAxMyBSYXNwYmVycnkgUGkgKFRyYWRpbmcp
-IEx0ZC4KICAqCi0gKiBBdXRob3JzOiBWaW5jZW50IFNhbmRlcnMgPHZpbmNlbnQuc2FuZGVyc0Bj
-b2xsYWJvcmEuY28udWs+Ci0gKiAgICAgICAgICBEYXZlIFN0ZXZlbnNvbiA8ZHN0ZXZlQGJyb2Fk
-Y29tLmNvbT4KLSAqICAgICAgICAgIFNpbW9uIE1lbGxvciA8c2ltZWxsb3JAYnJvYWRjb20uY29t
-PgotICogICAgICAgICAgTHVrZSBEaWFtYW5kIDxsdWtlZEBicm9hZGNvbS5jb20+CisgKiBBdXRo
-b3JzOiBWaW5jZW50IFNhbmRlcnMgQCBDb2xsYWJvcmEKKyAqICAgICAgICAgIERhdmUgU3RldmVu
-c29uIEAgQnJvYWRjb20KKyAqCQkobm93IGRhdmUuc3RldmVuc29uQHJhc3BiZXJyeXBpLm9yZykK
-KyAqICAgICAgICAgIFNpbW9uIE1lbGxvciBAIEJyb2FkY29tCisgKiAgICAgICAgICBMdWtlIERp
-YW1hbmQgQCBCcm9hZGNvbQogICoKICAqIFY0TDIgZHJpdmVyIE1NQUwgdmNoaXEgaW50ZXJmYWNl
-IGNvZGUKICAqLwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL3ZjMDRfc2VydmljZXMvYmNt
-MjgzNS1jYW1lcmEvbW1hbC12Y2hpcS5oIGIvZHJpdmVycy9zdGFnaW5nL3ZjMDRfc2VydmljZXMv
-YmNtMjgzNS1jYW1lcmEvbW1hbC12Y2hpcS5oCmluZGV4IDIyYjgzOWUuLjBlNWE4MWIgMTAwNjQ0
-Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy92YzA0X3NlcnZpY2VzL2JjbTI4MzUtY2FtZXJhL21tYWwt
-dmNoaXEuaAorKysgYi9kcml2ZXJzL3N0YWdpbmcvdmMwNF9zZXJ2aWNlcy9iY20yODM1LWNhbWVy
-YS9tbWFsLXZjaGlxLmgKQEAgLTQsMTAgKzQsMTEgQEAKICAqCiAgKiBDb3B5cmlnaHQgwqkgMjAx
-MyBSYXNwYmVycnkgUGkgKFRyYWRpbmcpIEx0ZC4KICAqCi0gKiBBdXRob3JzOiBWaW5jZW50IFNh
-bmRlcnMgPHZpbmNlbnQuc2FuZGVyc0Bjb2xsYWJvcmEuY28udWs+Ci0gKiAgICAgICAgICBEYXZl
-IFN0ZXZlbnNvbiA8ZHN0ZXZlQGJyb2FkY29tLmNvbT4KLSAqICAgICAgICAgIFNpbW9uIE1lbGxv
-ciA8c2ltZWxsb3JAYnJvYWRjb20uY29tPgotICogICAgICAgICAgTHVrZSBEaWFtYW5kIDxsdWtl
-ZEBicm9hZGNvbS5jb20+CisgKiBBdXRob3JzOiBWaW5jZW50IFNhbmRlcnMgQCBDb2xsYWJvcmEK
-KyAqICAgICAgICAgIERhdmUgU3RldmVuc29uIEAgQnJvYWRjb20KKyAqCQkobm93IGRhdmUuc3Rl
-dmVuc29uQHJhc3BiZXJyeXBpLm9yZykKKyAqICAgICAgICAgIFNpbW9uIE1lbGxvciBAIEJyb2Fk
-Y29tCisgKiAgICAgICAgICBMdWtlIERpYW1hbmQgQCBCcm9hZGNvbQogICoKICAqIE1NQUwgaW50
-ZXJmYWNlIHRvIFZDSElRIG1lc3NhZ2UgcGFzc2luZwogICovCi0tCjIuNy40CgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QK
-ZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVy
-cHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+From: Dave Stevenson <dave.stevenson@raspberrypi.org>
+
+Fix comment style violations in the header files.
+
+Signed-off-by: Dave Stevenson <dave.stevenson@raspberrypi.org>
+---
+ .../vc04_services/bcm2835-camera/mmal-msg-format.h |  95 ++++++++-------
+ .../vc04_services/bcm2835-camera/mmal-msg-port.h   | 124 +++++++++----------
+ .../vc04_services/bcm2835-camera/mmal-msg.h        | 135 +++++++++++----------
+ 3 files changed, 185 insertions(+), 169 deletions(-)
+
+diff --git a/drivers/staging/vc04_services/bcm2835-camera/mmal-msg-format.h b/drivers/staging/vc04_services/bcm2835-camera/mmal-msg-format.h
+index 5ea1a1b..a118efd 100644
+--- a/drivers/staging/vc04_services/bcm2835-camera/mmal-msg-format.h
++++ b/drivers/staging/vc04_services/bcm2835-camera/mmal-msg-format.h
+@@ -19,22 +19,23 @@
+ /* MMAL_ES_FORMAT_T */
+
+ struct mmal_audio_format {
+-	u32 channels;           /**< Number of audio channels */
+-	u32 sample_rate;        /**< Sample rate */
++	u32 channels;		/* Number of audio channels */
++	u32 sample_rate;	/* Sample rate */
+
+-	u32 bits_per_sample;    /**< Bits per sample */
+-	u32 block_align;        /**< Size of a block of data */
++	u32 bits_per_sample;	/* Bits per sample */
++	u32 block_align;	/* Size of a block of data */
+ };
+
+ struct mmal_video_format {
+-	u32 width;        /**< Width of frame in pixels */
+-	u32 height;       /**< Height of frame in rows of pixels */
+-	struct mmal_rect crop;         /**< Visible region of the frame */
+-	struct mmal_rational frame_rate;   /**< Frame rate */
+-	struct mmal_rational par;          /**< Pixel aspect ratio */
+-
+-	/* FourCC specifying the color space of the video stream. See the
+-	 * \ref MmalColorSpace "pre-defined color spaces" for some examples.
++	u32 width;		/* Width of frame in pixels */
++	u32 height;		/* Height of frame in rows of pixels */
++	struct mmal_rect crop;	/* Visible region of the frame */
++	struct mmal_rational frame_rate;	/* Frame rate */
++	struct mmal_rational par;		/* Pixel aspect ratio */
++
++	/*
++	 * FourCC specifying the color space of the video stream. See the
++	 * MmalColorSpace "pre-defined color spaces" for some examples.
+ 	 */
+ 	u32 color_space;
+ };
+@@ -50,48 +51,56 @@ union mmal_es_specific_format {
+ 	struct mmal_subpicture_format subpicture;
+ };
+
+-/** Definition of an elementary stream format (MMAL_ES_FORMAT_T) */
++/* Definition of an elementary stream format (MMAL_ES_FORMAT_T) */
+ struct mmal_es_format_local {
+-	u32 type;      /* enum mmal_es_type */
+-
+-	u32 encoding;  /* FourCC specifying encoding of the elementary stream.*/
+-	u32 encoding_variant; /* FourCC specifying the specific
+-			       * encoding variant of the elementary
+-			       * stream.
+-			       */
+-
+-	union mmal_es_specific_format *es;  /* Type specific
+-					     * information for the
+-					     * elementary stream
+-					     */
+-
+-	u32 bitrate;        /**< Bitrate in bits per second */
+-	u32 flags; /**< Flags describing properties of the elementary stream. */
+-
+-	u32 extradata_size;       /**< Size of the codec specific data */
+-	u8  *extradata;           /**< Codec specific data */
++	u32 type;	/* enum mmal_es_type */
++
++	u32 encoding;	/* FourCC specifying encoding of the elementary
++			 * stream.
++			 */
++	u32 encoding_variant;	/* FourCC specifying the specific
++				 * encoding variant of the elementary
++				 * stream.
++				 */
++
++	union mmal_es_specific_format *es;	/* Type specific
++						 * information for the
++						 * elementary stream
++						 */
++
++	u32 bitrate;	/* Bitrate in bits per second */
++	u32 flags;	/* Flags describing properties of the elementary
++			 * stream.
++			 */
++
++	u32 extradata_size;	/* Size of the codec specific data */
++	u8  *extradata;		/* Codec specific data */
+ };
+
+-/** Remote definition of an elementary stream format (MMAL_ES_FORMAT_T) */
++/* Remote definition of an elementary stream format (MMAL_ES_FORMAT_T) */
+ struct mmal_es_format {
+-	u32 type;      /* enum mmal_es_type */
++	u32 type;	/* enum mmal_es_type */
+
+-	u32 encoding;  /* FourCC specifying encoding of the elementary stream.*/
+-	u32 encoding_variant; /* FourCC specifying the specific
+-			       * encoding variant of the elementary
+-			       * stream.
+-			       */
++	u32 encoding;	/* FourCC specifying encoding of the elementary
++			 * stream.
++			 */
++	u32 encoding_variant;	/* FourCC specifying the specific
++				 * encoding variant of the elementary
++				 * stream.
++				 */
+
+-	u32 es; /* Type specific
++	u32 es;	/* Type specific
+ 		 * information for the
+ 		 * elementary stream
+ 		 */
+
+-	u32 bitrate;        /**< Bitrate in bits per second */
+-	u32 flags; /**< Flags describing properties of the elementary stream. */
++	u32 bitrate;	/* Bitrate in bits per second */
++	u32 flags;	/* Flags describing properties of the elementary
++			 * stream.
++			 */
+
+-	u32 extradata_size;       /**< Size of the codec specific data */
+-	u32 extradata;           /**< Codec specific data */
++	u32 extradata_size;	/* Size of the codec specific data */
++	u32 extradata;		/* Codec specific data */
+ };
+
+ #endif /* MMAL_MSG_FORMAT_H */
+diff --git a/drivers/staging/vc04_services/bcm2835-camera/mmal-msg-port.h b/drivers/staging/vc04_services/bcm2835-camera/mmal-msg-port.h
+index fe5768d..3fa3f2a 100644
+--- a/drivers/staging/vc04_services/bcm2835-camera/mmal-msg-port.h
++++ b/drivers/staging/vc04_services/bcm2835-camera/mmal-msg-port.h
+@@ -13,28 +13,31 @@
+
+ /* MMAL_PORT_TYPE_T */
+ enum mmal_port_type {
+-	MMAL_PORT_TYPE_UNKNOWN = 0,  /**< Unknown port type */
+-	MMAL_PORT_TYPE_CONTROL,      /**< Control port */
+-	MMAL_PORT_TYPE_INPUT,        /**< Input port */
+-	MMAL_PORT_TYPE_OUTPUT,       /**< Output port */
+-	MMAL_PORT_TYPE_CLOCK,        /**< Clock port */
++	MMAL_PORT_TYPE_UNKNOWN = 0,	/* Unknown port type */
++	MMAL_PORT_TYPE_CONTROL,		/* Control port */
++	MMAL_PORT_TYPE_INPUT,		/* Input port */
++	MMAL_PORT_TYPE_OUTPUT,		/* Output port */
++	MMAL_PORT_TYPE_CLOCK,		/* Clock port */
+ };
+
+-/** The port is pass-through and doesn't need buffer headers allocated */
++/* The port is pass-through and doesn't need buffer headers allocated */
+ #define MMAL_PORT_CAPABILITY_PASSTHROUGH                       0x01
+-/** The port wants to allocate the buffer payloads.
++/*
++ *The port wants to allocate the buffer payloads.
+  * This signals a preference that payload allocation should be done
+  * on this port for efficiency reasons.
+  */
+ #define MMAL_PORT_CAPABILITY_ALLOCATION                        0x02
+-/** The port supports format change events.
++/*
++ * The port supports format change events.
+  * This applies to input ports and is used to let the client know
+  * whether the port supports being reconfigured via a format
+  * change event (i.e. without having to disable the port).
+  */
+ #define MMAL_PORT_CAPABILITY_SUPPORTS_EVENT_FORMAT_CHANGE      0x04
+
+-/* mmal port structure (MMAL_PORT_T)
++/*
++ * mmal port structure (MMAL_PORT_T)
+  *
+  * most elements are informational only, the pointer values for
+  * interogation messages are generally provided as additional
+@@ -42,50 +45,50 @@ enum mmal_port_type {
+  * buffer_num, buffer_size and userdata parameters are writable.
+  */
+ struct mmal_port {
+-	u32 priv; /* Private member used by the framework */
+-	u32 name; /* Port name. Used for debugging purposes (RO) */
+-
+-	u32 type;      /* Type of the port (RO) enum mmal_port_type */
+-	u16 index;     /* Index of the port in its type list (RO) */
+-	u16 index_all; /* Index of the port in the list of all ports (RO) */
+-
+-	u32 is_enabled; /* Indicates whether the port is enabled or not (RO) */
+-	u32 format; /* Format of the elementary stream */
+-
+-	u32 buffer_num_min; /* Minimum number of buffers the port
+-			     *   requires (RO).  This is set by the
+-			     *   component.
+-			     */
+-
+-	u32 buffer_size_min; /* Minimum size of buffers the port
+-			      * requires (RO).  This is set by the
+-			      * component.
+-			      */
+-
+-	u32 buffer_alignment_min; /* Minimum alignment requirement for
+-				   * the buffers (RO).  A value of
+-				   * zero means no special alignment
+-				   * requirements.  This is set by the
+-				   * component.
+-				   */
+-
+-	u32 buffer_num_recommended;  /* Number of buffers the port
+-				      * recommends for optimal
+-				      * performance (RO).  A value of
+-				      * zero means no special
+-				      * recommendation.  This is set
+-				      * by the component.
+-				      */
+-
+-	u32 buffer_size_recommended; /* Size of buffers the port
+-				      * recommends for optimal
+-				      * performance (RO).  A value of
+-				      * zero means no special
+-				      * recommendation.  This is set
+-				      * by the component.
+-				      */
+-
+-	u32 buffer_num; /* Actual number of buffers the port will use.
++	u32 priv;	/* Private member used by the framework */
++	u32 name;	/* Port name. Used for debugging purposes (RO) */
++
++	u32 type;	/* Type of the port (RO) enum mmal_port_type */
++	u16 index;	/* Index of the port in its type list (RO) */
++	u16 index_all;	/* Index of the port in the list of all ports (RO) */
++
++	u32 is_enabled;	/* Indicates whether the port is enabled or not (RO) */
++	u32 format;	/* Format of the elementary stream */
++
++	u32 buffer_num_min;	/* Minimum number of buffers the port
++				 *   requires (RO).  This is set by the
++				 *   component.
++				 */
++
++	u32 buffer_size_min;	/* Minimum size of buffers the port
++				 * requires (RO).  This is set by the
++				 * component.
++				 */
++
++	u32 buffer_alignment_min;/* Minimum alignment requirement for
++				  * the buffers (RO).  A value of
++				  * zero means no special alignment
++				  * requirements.  This is set by the
++				  * component.
++				  */
++
++	u32 buffer_num_recommended;	/* Number of buffers the port
++					 * recommends for optimal
++					 * performance (RO).  A value of
++					 * zero means no special
++					 * recommendation.  This is set
++					 * by the component.
++					 */
++
++	u32 buffer_size_recommended;	/* Size of buffers the port
++					 * recommends for optimal
++					 * performance (RO).  A value of
++					 * zero means no special
++					 * recommendation.  This is set
++					 * by the component.
++					 */
++
++	u32 buffer_num;	/* Actual number of buffers the port will use.
+ 			 * This is set by the client.
+ 			 */
+
+@@ -94,14 +97,13 @@ struct mmal_port {
+ 			  * the client.
+ 			  */
+
+-	u32 component; /* Component this port belongs to (Read Only) */
+-
+-	u32 userdata; /* Field reserved for use by the client */
++	u32 component;	/* Component this port belongs to (Read Only) */
+
+-	u32 capabilities; /* Flags describing the capabilities of a
+-			   * port (RO).  Bitwise combination of \ref
+-			   * portcapabilities "Port capabilities"
+-			   * values.
+-			   */
++	u32 userdata;	/* Field reserved for use by the client */
+
++	u32 capabilities;	/* Flags describing the capabilities of a
++				 * port (RO).  Bitwise combination of \ref
++				 * portcapabilities "Port capabilities"
++				 * values.
++				 */
+ };
+diff --git a/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h b/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h
+index 332de57..f165ddf 100644
+--- a/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h
++++ b/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h
+@@ -11,7 +11,8 @@
+  *          Luke Diamand @ Broadcom
+  */
+
+-/* all the data structures which serialise the MMAL protocol. note
++/*
++ * all the data structures which serialise the MMAL protocol. note
+  * these are directly mapped onto the recived message data.
+  *
+  * BEWARE: They seem to *assume* pointers are u32 and that there is no
+@@ -41,51 +42,51 @@ enum mmal_msg_type {
+ 	MMAL_MSG_TYPE_SERVICE_CLOSED,
+ 	MMAL_MSG_TYPE_GET_VERSION,
+ 	MMAL_MSG_TYPE_COMPONENT_CREATE,
+-	MMAL_MSG_TYPE_COMPONENT_DESTROY, /* 5 */
++	MMAL_MSG_TYPE_COMPONENT_DESTROY,	/* 5 */
+ 	MMAL_MSG_TYPE_COMPONENT_ENABLE,
+ 	MMAL_MSG_TYPE_COMPONENT_DISABLE,
+ 	MMAL_MSG_TYPE_PORT_INFO_GET,
+ 	MMAL_MSG_TYPE_PORT_INFO_SET,
+-	MMAL_MSG_TYPE_PORT_ACTION, /* 10 */
++	MMAL_MSG_TYPE_PORT_ACTION,		/* 10 */
+ 	MMAL_MSG_TYPE_BUFFER_FROM_HOST,
+ 	MMAL_MSG_TYPE_BUFFER_TO_HOST,
+ 	MMAL_MSG_TYPE_GET_STATS,
+ 	MMAL_MSG_TYPE_PORT_PARAMETER_SET,
+-	MMAL_MSG_TYPE_PORT_PARAMETER_GET, /* 15 */
++	MMAL_MSG_TYPE_PORT_PARAMETER_GET,	/* 15 */
+ 	MMAL_MSG_TYPE_EVENT_TO_HOST,
+ 	MMAL_MSG_TYPE_GET_CORE_STATS_FOR_PORT,
+ 	MMAL_MSG_TYPE_OPAQUE_ALLOCATOR,
+ 	MMAL_MSG_TYPE_CONSUME_MEM,
+-	MMAL_MSG_TYPE_LMK, /* 20 */
++	MMAL_MSG_TYPE_LMK,			/* 20 */
+ 	MMAL_MSG_TYPE_OPAQUE_ALLOCATOR_DESC,
+ 	MMAL_MSG_TYPE_DRM_GET_LHS32,
+ 	MMAL_MSG_TYPE_DRM_GET_TIME,
+ 	MMAL_MSG_TYPE_BUFFER_FROM_HOST_ZEROLEN,
+-	MMAL_MSG_TYPE_PORT_FLUSH, /* 25 */
++	MMAL_MSG_TYPE_PORT_FLUSH,		/* 25 */
+ 	MMAL_MSG_TYPE_HOST_LOG,
+ 	MMAL_MSG_TYPE_MSG_LAST
+ };
+
+ /* port action request messages differ depending on the action type */
+ enum mmal_msg_port_action_type {
+-	MMAL_MSG_PORT_ACTION_TYPE_UNKNOWN = 0,      /* Unknown action */
+-	MMAL_MSG_PORT_ACTION_TYPE_ENABLE,           /* Enable a port */
+-	MMAL_MSG_PORT_ACTION_TYPE_DISABLE,          /* Disable a port */
+-	MMAL_MSG_PORT_ACTION_TYPE_FLUSH,            /* Flush a port */
+-	MMAL_MSG_PORT_ACTION_TYPE_CONNECT,          /* Connect ports */
+-	MMAL_MSG_PORT_ACTION_TYPE_DISCONNECT,       /* Disconnect ports */
++	MMAL_MSG_PORT_ACTION_TYPE_UNKNOWN = 0,	/* Unknown action */
++	MMAL_MSG_PORT_ACTION_TYPE_ENABLE,	/* Enable a port */
++	MMAL_MSG_PORT_ACTION_TYPE_DISABLE,	/* Disable a port */
++	MMAL_MSG_PORT_ACTION_TYPE_FLUSH,	/* Flush a port */
++	MMAL_MSG_PORT_ACTION_TYPE_CONNECT,	/* Connect ports */
++	MMAL_MSG_PORT_ACTION_TYPE_DISCONNECT,	/* Disconnect ports */
+ 	MMAL_MSG_PORT_ACTION_TYPE_SET_REQUIREMENTS, /* Set buffer requirements*/
+ };
+
+ struct mmal_msg_header {
+ 	u32 magic;
+-	u32 type; /** enum mmal_msg_type */
++	u32 type;	/* enum mmal_msg_type */
+
+ 	/* Opaque handle to the control service */
+ 	u32 control_service;
+
+-	u32 context; /** a u32 per message context */
+-	u32 status; /** The status of the vchiq operation */
++	u32 context;	/* a u32 per message context */
++	u32 status;	/* The status of the vchiq operation */
+ 	u32 padding;
+ };
+
+@@ -99,9 +100,9 @@ struct mmal_msg_version {
+
+ /* request to VC to create component */
+ struct mmal_msg_component_create {
+-	u32 client_component; /* component context */
++	u32 client_component;	/* component context */
+ 	char name[128];
+-	u32 pid;                /* For debug */
++	u32 pid;		/* For debug */
+ };
+
+ /* reply from VC to component creation request */
+@@ -121,7 +122,7 @@ struct mmal_msg_component_destroy {
+ };
+
+ struct mmal_msg_component_destroy_reply {
+-	u32 status; /** The component destruction status */
++	u32 status; /* The component destruction status */
+ };
+
+ /* request and reply to VC to enable a component */
+@@ -130,7 +131,7 @@ struct mmal_msg_component_enable {
+ };
+
+ struct mmal_msg_component_enable_reply {
+-	u32 status; /** The component enable status */
++	u32 status; /* The component enable status */
+ };
+
+ /* request and reply to VC to disable a component */
+@@ -139,7 +140,7 @@ struct mmal_msg_component_disable {
+ };
+
+ struct mmal_msg_component_disable_reply {
+-	u32 status; /** The component disable status */
++	u32 status; /* The component disable status */
+ };
+
+ /* request to VC to get port information */
+@@ -151,12 +152,12 @@ struct mmal_msg_port_info_get {
+
+ /* reply from VC to get port info request */
+ struct mmal_msg_port_info_get_reply {
+-	u32 status; /** enum mmal_msg_status */
+-	u32 component_handle;  /* component handle port is associated with */
+-	u32 port_type;         /* enum mmal_msg_port_type */
+-	u32 port_index;        /* port indexed in query */
+-	s32 found;             /* unused */
+-	u32 port_handle;               /**< Handle to use for this port */
++	u32 status;		/* enum mmal_msg_status */
++	u32 component_handle;	/* component handle port is associated with */
++	u32 port_type;		/* enum mmal_msg_port_type */
++	u32 port_index;		/* port indexed in query */
++	s32 found;		/* unused */
++	u32 port_handle;	/* Handle to use for this port */
+ 	struct mmal_port port;
+ 	struct mmal_es_format format; /* elementary stream format */
+ 	union mmal_es_specific_format es; /* es type specific data */
+@@ -166,8 +167,8 @@ struct mmal_msg_port_info_get_reply {
+ /* request to VC to set port information */
+ struct mmal_msg_port_info_set {
+ 	u32 component_handle;
+-	u32 port_type;         /* enum mmal_msg_port_type */
+-	u32 port_index;           /* port indexed in query */
++	u32 port_type;		/* enum mmal_msg_port_type */
++	u32 port_index;		/* port indexed in query */
+ 	struct mmal_port port;
+ 	struct mmal_es_format format;
+ 	union mmal_es_specific_format es;
+@@ -177,11 +178,11 @@ struct mmal_msg_port_info_set {
+ /* reply from VC to port info set request */
+ struct mmal_msg_port_info_set_reply {
+ 	u32 status;
+-	u32 component_handle;  /* component handle port is associated with */
+-	u32 port_type;         /* enum mmal_msg_port_type */
+-	u32 index;             /* port indexed in query */
+-	s32 found;             /* unused */
+-	u32 port_handle;               /**< Handle to use for this port */
++	u32 component_handle;	/* component handle port is associated with */
++	u32 port_type;		/* enum mmal_msg_port_type */
++	u32 index;		/* port indexed in query */
++	s32 found;		/* unused */
++	u32 port_handle;	/* Handle to use for this port */
+ 	struct mmal_port port;
+ 	struct mmal_es_format format;
+ 	union mmal_es_specific_format es;
+@@ -192,7 +193,7 @@ struct mmal_msg_port_info_set_reply {
+ struct mmal_msg_port_action_port {
+ 	u32 component_handle;
+ 	u32 port_handle;
+-	u32 action; /* enum mmal_msg_port_action_type */
++	u32 action;		/* enum mmal_msg_port_action_type */
+ 	struct mmal_port port;
+ };
+
+@@ -200,50 +201,53 @@ struct mmal_msg_port_action_port {
+ struct mmal_msg_port_action_handle {
+ 	u32 component_handle;
+ 	u32 port_handle;
+-	u32 action; /* enum mmal_msg_port_action_type */
++	u32 action;		/* enum mmal_msg_port_action_type */
+ 	u32 connect_component_handle;
+ 	u32 connect_port_handle;
+ };
+
+ struct mmal_msg_port_action_reply {
+-	u32 status; /** The port action operation status */
++	u32 status;	/* The port action operation status */
+ };
+
+ /* MMAL buffer transfer */
+
+-/** Size of space reserved in a buffer message for short messages. */
++/* Size of space reserved in a buffer message for short messages. */
+ #define MMAL_VC_SHORT_DATA 128
+
+-/** Signals that the current payload is the end of the stream of data */
++/* Signals that the current payload is the end of the stream of data */
+ #define MMAL_BUFFER_HEADER_FLAG_EOS                    BIT(0)
+-/** Signals that the start of the current payload starts a frame */
++/* Signals that the start of the current payload starts a frame */
+ #define MMAL_BUFFER_HEADER_FLAG_FRAME_START            BIT(1)
+-/** Signals that the end of the current payload ends a frame */
++/* Signals that the end of the current payload ends a frame */
+ #define MMAL_BUFFER_HEADER_FLAG_FRAME_END              BIT(2)
+-/** Signals that the current payload contains only complete frames (>1) */
++/* Signals that the current payload contains only complete frames (>1) */
+ #define MMAL_BUFFER_HEADER_FLAG_FRAME                  \
+ 	(MMAL_BUFFER_HEADER_FLAG_FRAME_START|MMAL_BUFFER_HEADER_FLAG_FRAME_END)
+-/** Signals that the current payload is a keyframe (i.e. self decodable) */
++/* Signals that the current payload is a keyframe (i.e. self decodable) */
+ #define MMAL_BUFFER_HEADER_FLAG_KEYFRAME               BIT(3)
+-/** Signals a discontinuity in the stream of data (e.g. after a seek).
++/*
++ * Signals a discontinuity in the stream of data (e.g. after a seek).
+  * Can be used for instance by a decoder to reset its state
+  */
+ #define MMAL_BUFFER_HEADER_FLAG_DISCONTINUITY          BIT(4)
+-/** Signals a buffer containing some kind of config data for the component
++/*
++ * Signals a buffer containing some kind of config data for the component
+  * (e.g. codec config data)
+  */
+ #define MMAL_BUFFER_HEADER_FLAG_CONFIG                 BIT(5)
+-/** Signals an encrypted payload */
++/* Signals an encrypted payload */
+ #define MMAL_BUFFER_HEADER_FLAG_ENCRYPTED              BIT(6)
+-/** Signals a buffer containing side information */
++/* Signals a buffer containing side information */
+ #define MMAL_BUFFER_HEADER_FLAG_CODECSIDEINFO          BIT(7)
+-/** Signals a buffer which is the snapshot/postview image from a stills
++/*
++ * Signals a buffer which is the snapshot/postview image from a stills
+  * capture
+  */
+ #define MMAL_BUFFER_HEADER_FLAGS_SNAPSHOT              BIT(8)
+-/** Signals a buffer which contains data known to be corrupted */
++/* Signals a buffer which contains data known to be corrupted */
+ #define MMAL_BUFFER_HEADER_FLAG_CORRUPTED              BIT(9)
+-/** Signals that a buffer failed to be transmitted */
++/* Signals that a buffer failed to be transmitted */
+ #define MMAL_BUFFER_HEADER_FLAG_TRANSMISSION_FAILED    BIT(10)
+
+ struct mmal_driver_buffer {
+@@ -255,8 +259,8 @@ struct mmal_driver_buffer {
+
+ /* buffer header */
+ struct mmal_buffer_header {
+-	u32 next; /* next header */
+-	u32 priv; /* framework private data */
++	u32 next;	/* next header */
++	u32 priv;	/* framework private data */
+ 	u32 cmd;
+ 	u32 data;
+ 	u32 alloc_size;
+@@ -281,7 +285,8 @@ struct mmal_buffer_header_type_specific {
+ };
+
+ struct mmal_msg_buffer_from_host {
+-	/* The front 32 bytes of the buffer header are copied
++	/*
++	 *The front 32 bytes of the buffer header are copied
+ 	 * back to us in the reply to allow for context. This
+ 	 * area is used to store two mmal_driver_buffer structures to
+ 	 * allow for multiple concurrent service users.
+@@ -296,7 +301,7 @@ struct mmal_msg_buffer_from_host {
+ 	s32 is_zero_copy;
+ 	s32 has_reference;
+
+-	/** allows short data to be xfered in control message */
++	/* allows short data to be xfered in control message */
+ 	u32 payload_in_message;
+ 	u8 short_data[MMAL_VC_SHORT_DATA];
+ };
+@@ -306,10 +311,10 @@ struct mmal_msg_buffer_from_host {
+ #define MMAL_WORKER_PORT_PARAMETER_SPACE      96
+
+ struct mmal_msg_port_parameter_set {
+-	u32 component_handle; /* component */
+-	u32 port_handle;      /* port */
+-	u32 id;     /* Parameter ID  */
+-	u32 size;      /* Parameter size */
++	u32 component_handle;	/* component */
++	u32 port_handle;	/* port */
++	u32 id;			/* Parameter ID  */
++	u32 size;		/* Parameter size */
+ 	u32 value[MMAL_WORKER_PORT_PARAMETER_SPACE];
+ };
+
+@@ -322,16 +327,16 @@ struct mmal_msg_port_parameter_set_reply {
+ /* port parameter getting */
+
+ struct mmal_msg_port_parameter_get {
+-	u32 component_handle; /* component */
+-	u32 port_handle;      /* port */
+-	u32 id;     /* Parameter ID  */
+-	u32 size;      /* Parameter size */
++	u32 component_handle;	/* component */
++	u32 port_handle;	/* port */
++	u32 id;			/* Parameter ID  */
++	u32 size;		/* Parameter size */
+ };
+
+ struct mmal_msg_port_parameter_get_reply {
+-	u32 status;           /* Status of mmal_port_parameter_get call */
+-	u32 id;     /* Parameter ID  */
+-	u32 size;      /* Parameter size */
++	u32 status;		/* Status of mmal_port_parameter_get call */
++	u32 id;			/* Parameter ID  */
++	u32 size;		/* Parameter size */
+ 	u32 value[MMAL_WORKER_PORT_PARAMETER_SPACE];
+ };
+
+@@ -339,7 +344,7 @@ struct mmal_msg_port_parameter_get_reply {
+ #define MMAL_WORKER_EVENT_SPACE 256
+
+ struct mmal_msg_event_to_host {
+-	u32 client_component; /* component context */
++	u32 client_component;	/* component context */
+
+ 	u32 port_type;
+ 	u32 port_num;
+--
+2.7.4
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
