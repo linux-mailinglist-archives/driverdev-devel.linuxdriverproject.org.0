@@ -1,74 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 48D94588E1
-	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Jun 2019 19:42:35 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A0F855896D
+	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Jun 2019 20:03:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id EC7BB22246;
-	Thu, 27 Jun 2019 17:42:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D2D0D862EC;
+	Thu, 27 Jun 2019 18:03:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id J1AlZKqVU4PR; Thu, 27 Jun 2019 17:42:32 +0000 (UTC)
+	with ESMTP id KTfNsbg_ozbB; Thu, 27 Jun 2019 18:03:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 942932221C;
-	Thu, 27 Jun 2019 17:42:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A071E862C9;
+	Thu, 27 Jun 2019 18:03:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6AEFF1BF3F9
- for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 17:42:29 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 236B71BF3F9
+ for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 18:03:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 66D0087FFF
- for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 17:42:29 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2098687FD2
+ for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 18:03:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BB1wNFcbTBVE for <devel@linuxdriverproject.org>;
- Thu, 27 Jun 2019 17:42:29 +0000 (UTC)
+ with ESMTP id sx8XmjGZaaMq for <devel@linuxdriverproject.org>;
+ Thu, 27 Jun 2019 18:03:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
- [209.85.214.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1204488002
- for <devel@driverdev.osuosl.org>; Thu, 27 Jun 2019 17:42:29 +0000 (UTC)
-Received: by mail-pl1-f195.google.com with SMTP id c14so1691376plo.0
- for <devel@driverdev.osuosl.org>; Thu, 27 Jun 2019 10:42:29 -0700 (PDT)
+Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
+ [209.85.215.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4CACF87EDB
+ for <devel@driverdev.osuosl.org>; Thu, 27 Jun 2019 18:03:08 +0000 (UTC)
+Received: by mail-pg1-f195.google.com with SMTP id 25so1370053pgy.4
+ for <devel@driverdev.osuosl.org>; Thu, 27 Jun 2019 11:03:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=Kp4iDZgoItQSuXm+UYx3os3MRNcj7Hprz4VyxWNkTks=;
- b=dZsxusE9+/V+r1ZJwK0LgfWe5snVirwKO7sLCaI+btbDC58sFqi2fJzLJunylRln1V
- FTQwSyX7xFWpOdCy6BykN8AzNiGcjJJXvit1vNJaV4ozeX+VxP2Dr5vN0/DxdpfFPNXg
- 7RmpXLWHzS5esi2a1xCHDIFe05LZ/rX+VksFM7JvkQwOqbwwN4QVU+oi8WuDMTZBVRbx
- z+Ok1HpJyOegsf/l+/AQZ2RFBKxLMzJOQO1Hg7m2yypfxYKlKCuTU9iMTdfL2K+/2yeK
- hY4nGvOoG5uHZwgb+IYwWRDVb7V1yjHIvVppPf+tYUNbYp29Y+y0I6WHnhthUCQOYvLq
- KQWw==
+ h=date:from:to:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=1mhPYTvcTMkLr+r7i1/bipLacTCuZ27SECVhqtgV4Ww=;
+ b=fajK3tVfVu0hc2KnwP+O/QcY4Esv2sFB6mxeSNSyrq1qttpTpId4y06ovuQhh1c8Ek
+ vaoUQeJzAcss7zi7buBf6vBH87225tPeYsOTq66E1iGyM6LQLKfcsCEmWRuU3nYHMydO
+ Y6ogyZtXa4D1dMoDU+WBwRkjXAmwD3jTIWDdtlkWiBllJxxWe4sLLXrHiKJJ8piel4oN
+ 0TZKzPdrr21D84oo1SGZNAxz4TWDRK36DBKi4XfRE5Jwob+0y9vRIew6xpNQunVjnr/A
+ RNki7tINVGnT3su0GXUs+gmUF9FvKiK1qXEedpGoY0ieaEPZdm7I6yoXJP2d4HWtJahz
+ z+JA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=Kp4iDZgoItQSuXm+UYx3os3MRNcj7Hprz4VyxWNkTks=;
- b=galm+tzoE8NoBSY7+VHlOX0Z3C4/fg2f6d9/c1u5unjY9y1JOZhg2OwHew4ios+mwF
- k8aXicaWe2mw/XSiPkrXpMtcglPotf+oi/C7/ioAWXKNj2RkMRS+HkylvMWaEZIHjvTp
- +y2kUqQNrH6rWqoK396bVN0YCfHHrcZqKXzrDx/rRhSOv4ztd7o+cuS04+tOQ0J3cSRD
- k1JdP8GxdgIR99PJP8X5GEQ8sl0cizmZ/t8UHw/BoZCJfAkhcq7CCzqOZ9IDKTXXZsEe
- JQenOI5W532HG8qato68DdPXFeBijgcpkEZlPZKRflulw8bgrslI4vusQB/FHofTdTGn
- 5LuQ==
-X-Gm-Message-State: APjAAAW74t2qMVhm5N+6oze8b5mswyKN2Z7YRF4VfMAex/AWeORCugTd
- HUm2rdYHRdPSZPsKd1sq66I=
-X-Google-Smtp-Source: APXvYqwTsq0jFBSQJqHgX90OSkCYA2IUp8QIZmtStEdGpluVmULNUikp8RDrNT98JfPvW5rznbZPWg==
-X-Received: by 2002:a17:902:f81:: with SMTP id 1mr5931859plz.191.1561657348772; 
- Thu, 27 Jun 2019 10:42:28 -0700 (PDT)
-Received: from hfq-skylake.ipads-lab.se.sjtu.edu.cn ([202.120.40.82])
- by smtp.googlemail.com with ESMTPSA id f64sm3557445pfa.115.2019.06.27.10.42.26
+ h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=1mhPYTvcTMkLr+r7i1/bipLacTCuZ27SECVhqtgV4Ww=;
+ b=s3acpR1CEwqrm7aVfKYpBr0zCphnLPgP0cz8MwueTo6PGvPNRjqPqnzkeWrTOhIZTC
+ UjHCYZQ43fWiTFiMxmGtDmoxbqXtH89iPTE8jlrgVeqG8sSaDY2xwgU2AdvPE4g/5Xzc
+ +yYK49SQJ8/61t4PwC7BLrAEwEfReMwHhnH25LrerhyITZdR5sWVQwR+SQNCpek6ik1u
+ OsSESoM5mZtZnS9xfv2ourv1x92Brq9jDgMGV6JBTqEAicfs7Eh64Q3mR3gjMU5C9Y1q
+ wZBP3VXYlrvkj6mF6k7SD4uyArcDXv6nnsLEE2N6Ks4N3YvssHg8ZyrJFD1XhuSbPmka
+ CX2g==
+X-Gm-Message-State: APjAAAVRqCHPgGZ3s0kZqVnx0YJh/sF3cWx5lreE9YzRekFz4L7YZk6F
+ giWGeiRzo1pzMA+A2JpxsPw=
+X-Google-Smtp-Source: APXvYqwkmG4Fnb/yeONev9B1/STo5fOP7Mn3YGfEssUkBeNvLaiz9N1RzrSaJixFX2ShvAT0E5/Jpw==
+X-Received: by 2002:a63:4e58:: with SMTP id o24mr4861689pgl.366.1561658587793; 
+ Thu, 27 Jun 2019 11:03:07 -0700 (PDT)
+Received: from hari-Inspiron-1545 ([183.83.92.187])
+ by smtp.gmail.com with ESMTPSA id l1sm2548655pgi.91.2019.06.27.11.03.05
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 27 Jun 2019 10:42:28 -0700 (PDT)
-From: Fuqian Huang <huangfq.daxian@gmail.com>
-To: 
-Subject: [PATCH 51/87] rtl8188eu: os_dep: replace rtw_malloc and memset with
- rtw_zmalloc
-Date: Fri, 28 Jun 2019 01:42:21 +0800
-Message-Id: <20190627174223.4670-1-huangfq.daxian@gmail.com>
-X-Mailer: git-send-email 2.11.0
+ Thu, 27 Jun 2019 11:03:06 -0700 (PDT)
+Date: Thu, 27 Jun 2019 23:33:02 +0530
+From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Hariprasad Kelam <hariprasad.kelam@gmail.com>,
+ Nishka Dasgupta <nishkadg.linux@gmail.com>,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: [Patch v2] staging: rtl8723bs: hal: sdio_halinit: Remove set but
+ unused varilable pHalData
+Message-ID: <20190627180302.GA3186@hari-Inspiron-1545>
+MIME-Version: 1.0
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,40 +87,54 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org, Fuqian Huang <huangfq.daxian@gmail.com>,
- Larry Finger <Larry.Finger@lwfinger.net>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-rtw_malloc + memset(0) -> rtw_zmalloc
+Remove set but unsed variable pHalData in below functions
+_InitOperationMode, SetHwReg8723BS.
 
-Signed-off-by: Fuqian Huang <huangfq.daxian@gmail.com>
+Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 ---
- drivers/staging/rtl8188eu/os_dep/mlme_linux.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/staging/rtl8723bs/hal/sdio_halinit.c | 5 -----
+ 1 file changed, 5 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/os_dep/mlme_linux.c b/drivers/staging/rtl8188eu/os_dep/mlme_linux.c
-index 9db11b16cb93..250acb01d1a9 100644
---- a/drivers/staging/rtl8188eu/os_dep/mlme_linux.c
-+++ b/drivers/staging/rtl8188eu/os_dep/mlme_linux.c
-@@ -98,10 +98,9 @@ void rtw_report_sec_ie(struct adapter *adapter, u8 authmode, u8 *sec_ie)
- 	if (authmode == _WPA_IE_ID_) {
- 		RT_TRACE(_module_mlme_osdep_c_, _drv_info_,
- 			 ("rtw_report_sec_ie, authmode=%d\n", authmode));
--		buff = rtw_malloc(IW_CUSTOM_MAX);
-+		buff = rtw_zmalloc(IW_CUSTOM_MAX);
- 		if (!buff)
- 			return;
--		memset(buff, 0, IW_CUSTOM_MAX);
- 		p = buff;
- 		p += sprintf(p, "ASSOCINFO(ReqIEs =");
- 		len = sec_ie[1] + 2;
+diff --git a/drivers/staging/rtl8723bs/hal/sdio_halinit.c b/drivers/staging/rtl8723bs/hal/sdio_halinit.c
+index 4d06ab7..5b72d61 100644
+--- a/drivers/staging/rtl8723bs/hal/sdio_halinit.c
++++ b/drivers/staging/rtl8723bs/hal/sdio_halinit.c
+@@ -606,11 +606,9 @@ static void _initSdioAggregationSetting(struct adapter *padapter)
+ 
+ static void _InitOperationMode(struct adapter *padapter)
+ {
+-	struct hal_com_data *pHalData;
+ 	struct mlme_ext_priv *pmlmeext;
+ 	u8 regBwOpMode = 0;
+ 
+-	pHalData = GET_HAL_DATA(padapter);
+ 	pmlmeext = &padapter->mlmeextpriv;
+ 
+ 	/* 1 This part need to modified according to the rate set we filtered!! */
+@@ -1413,7 +1411,6 @@ static void ReadAdapterInfo8723BS(struct adapter *padapter)
+  */
+ static void SetHwReg8723BS(struct adapter *padapter, u8 variable, u8 *val)
+ {
+-	struct hal_com_data *pHalData;
+ 	u8 val8;
+ 
+ #if defined(CONFIG_WOWLAN) || defined(CONFIG_AP_WOWLAN)
+@@ -1433,8 +1430,6 @@ static void SetHwReg8723BS(struct adapter *padapter, u8 variable, u8 *val)
+ #endif
+ #endif
+ 
+-	pHalData = GET_HAL_DATA(padapter);
+-
+ 	switch (variable) {
+ 	case HW_VAR_SET_RPWM:
+ 		/*  rpwm value only use BIT0(clock bit) , BIT6(Ack bit), and BIT7(Toggle bit) */
 -- 
-2.11.0
+2.7.4
 
 _______________________________________________
 devel mailing list
