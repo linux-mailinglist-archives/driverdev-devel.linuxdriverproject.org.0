@@ -2,57 +2,57 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 922E957615
-	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Jun 2019 02:36:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8B1575767C
+	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Jun 2019 02:39:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D0DB787E24;
-	Thu, 27 Jun 2019 00:36:48 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CB5F287E19;
+	Thu, 27 Jun 2019 00:39:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mafnnMQQEeNc; Thu, 27 Jun 2019 00:36:48 +0000 (UTC)
+	with ESMTP id XYncRd156R4R; Thu, 27 Jun 2019 00:39:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 59B5887DBA;
-	Thu, 27 Jun 2019 00:36:48 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6DAE887DBB;
+	Thu, 27 Jun 2019 00:39:43 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 655261BF378
- for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 00:36:46 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 920781BF378
+ for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 00:39:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 607DD20401
- for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 00:36:46 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8CF31869F2
+ for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 00:39:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ls9owwLh38rP for <devel@linuxdriverproject.org>;
- Thu, 27 Jun 2019 00:36:45 +0000 (UTC)
+ with ESMTP id 4VA3TKOAeiA2 for <devel@linuxdriverproject.org>;
+ Thu, 27 Jun 2019 00:39:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 98B77203DA
- for <devel@driverdev.osuosl.org>; Thu, 27 Jun 2019 00:36:45 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E2BD7869F8
+ for <devel@driverdev.osuosl.org>; Thu, 27 Jun 2019 00:39:40 +0000 (UTC)
 Received: from sasha-vm.mshome.net (unknown [107.242.116.147])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 5EED921851;
- Thu, 27 Jun 2019 00:36:43 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8ADD621852;
+ Thu, 27 Jun 2019 00:39:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1561595805;
- bh=kI6ys9AICQLvmhzh38MKZn8xjDXYUZV2gWUfr5ffmTk=;
+ s=default; t=1561595980;
+ bh=ASAyQwDJn9ijxd0J2ft20g97IVewi6vMKx3OIQ4Trrw=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=BpykYZiRu6UX7Szh2hzZVjedmWuPQ6dN87GKfmwXUyPQEf7qrDNMlqpE65yaRJgnz
- MTcZ47AomJ8+blzL47snjRa9L4q7h0jMtxmvrMga4XoRXDAi/CXB4XwsFlfW+nEgIS
- kle4E3jNCQG/3mnPYTCrLnHE/9GCW+F7DxdqC3kk=
+ b=z4bufO8dfzpP3oMeFpCNTLdtc737GcqYMpef47nPbHC5c8Y7BDk7IahaQ5qyHu9Qn
+ g3sonQuMw0M8jE280GId1/mtahzXFhG7PlEMhjgFHYiry57xgE4h5crxxPQ1foeZ2I
+ 6hziOtDe/+Ss6ncZz08LYMKncKQc4F9Cz9SRv4YY=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 09/60] staging:iio:ad7150: fix threshold mode
+Subject: [PATCH AUTOSEL 4.14 04/35] staging:iio:ad7150: fix threshold mode
  config bit
-Date: Wed, 26 Jun 2019 20:35:24 -0400
-Message-Id: <20190627003616.20767-9-sashal@kernel.org>
+Date: Wed, 26 Jun 2019 20:38:52 -0400
+Message-Id: <20190627003925.21330-4-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190627003616.20767-1-sashal@kernel.org>
-References: <20190627003616.20767-1-sashal@kernel.org>
+In-Reply-To: <20190627003925.21330-1-sashal@kernel.org>
+References: <20190627003925.21330-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
@@ -97,7 +97,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 11 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/staging/iio/cdc/ad7150.c b/drivers/staging/iio/cdc/ad7150.c
-index d16084d7068c..a354ce6b2b7b 100644
+index a6f249e9c1e1..4d218d554878 100644
 --- a/drivers/staging/iio/cdc/ad7150.c
 +++ b/drivers/staging/iio/cdc/ad7150.c
 @@ -6,6 +6,7 @@
@@ -108,7 +108,7 @@ index d16084d7068c..a354ce6b2b7b 100644
  #include <linux/interrupt.h>
  #include <linux/device.h>
  #include <linux/kernel.h>
-@@ -130,7 +131,7 @@ static int ad7150_read_event_config(struct iio_dev *indio_dev,
+@@ -129,7 +130,7 @@ static int ad7150_read_event_config(struct iio_dev *indio_dev,
  {
  	int ret;
  	u8 threshtype;
@@ -117,7 +117,7 @@ index d16084d7068c..a354ce6b2b7b 100644
  	struct ad7150_chip_info *chip = iio_priv(indio_dev);
  
  	ret = i2c_smbus_read_byte_data(chip->client, AD7150_CFG);
-@@ -138,21 +139,23 @@ static int ad7150_read_event_config(struct iio_dev *indio_dev,
+@@ -137,21 +138,23 @@ static int ad7150_read_event_config(struct iio_dev *indio_dev,
  		return ret;
  
  	threshtype = (ret >> 5) & 0x03;
