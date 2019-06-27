@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8B1575767C
-	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Jun 2019 02:39:45 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 731015767F
+	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Jun 2019 02:41:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CB5F287E19;
-	Thu, 27 Jun 2019 00:39:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C1A33220C4;
+	Thu, 27 Jun 2019 00:41:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XYncRd156R4R; Thu, 27 Jun 2019 00:39:43 +0000 (UTC)
+	with ESMTP id joOK-IgLa+lb; Thu, 27 Jun 2019 00:41:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6DAE887DBB;
-	Thu, 27 Jun 2019 00:39:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8694D20412;
+	Thu, 27 Jun 2019 00:41:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 920781BF378
- for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 00:39:41 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C1AB61BF378
+ for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 00:41:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8CF31869F2
- for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 00:39:41 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id BB979203E4
+ for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 00:41:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4VA3TKOAeiA2 for <devel@linuxdriverproject.org>;
- Thu, 27 Jun 2019 00:39:40 +0000 (UTC)
+ with ESMTP id gkEyeDkgZ9Mp for <devel@linuxdriverproject.org>;
+ Thu, 27 Jun 2019 00:41:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E2BD7869F8
- for <devel@driverdev.osuosl.org>; Thu, 27 Jun 2019 00:39:40 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 49282203DA
+ for <devel@driverdev.osuosl.org>; Thu, 27 Jun 2019 00:41:35 +0000 (UTC)
 Received: from sasha-vm.mshome.net (unknown [107.242.116.147])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 8ADD621852;
- Thu, 27 Jun 2019 00:39:38 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id E7F18205ED;
+ Thu, 27 Jun 2019 00:41:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1561595980;
- bh=ASAyQwDJn9ijxd0J2ft20g97IVewi6vMKx3OIQ4Trrw=;
+ s=default; t=1561596095;
+ bh=VsJkr3EEXuQFoL6/yfyS1qSeCsV8OtZ4xaSs7kkoeF8=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=z4bufO8dfzpP3oMeFpCNTLdtc737GcqYMpef47nPbHC5c8Y7BDk7IahaQ5qyHu9Qn
- g3sonQuMw0M8jE280GId1/mtahzXFhG7PlEMhjgFHYiry57xgE4h5crxxPQ1foeZ2I
- 6hziOtDe/+Ss6ncZz08LYMKncKQc4F9Cz9SRv4YY=
+ b=IemOrleWVxw6e2s8I/XTD2l5uTuefyQSg+NWYpxNIjBv/ajh4vuj9UPEFKbZDREBc
+ Uuh7j6YdYb4yoeYj4C/gO+Z+OOOjyk/ZNUnEav4TQgszaQkmHmT8jkfhgl0ejT+2WB
+ HJc8SFCAfh13mZOzySlweDXKdUgILATSQc9RSXnE=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.14 04/35] staging:iio:ad7150: fix threshold mode
+Subject: [PATCH AUTOSEL 4.9 03/21] staging:iio:ad7150: fix threshold mode
  config bit
-Date: Wed, 26 Jun 2019 20:38:52 -0400
-Message-Id: <20190627003925.21330-4-sashal@kernel.org>
+Date: Wed, 26 Jun 2019 20:41:03 -0400
+Message-Id: <20190627004122.21671-3-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190627003925.21330-1-sashal@kernel.org>
-References: <20190627003925.21330-1-sashal@kernel.org>
+In-Reply-To: <20190627004122.21671-1-sashal@kernel.org>
+References: <20190627004122.21671-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
@@ -97,7 +97,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 11 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/staging/iio/cdc/ad7150.c b/drivers/staging/iio/cdc/ad7150.c
-index a6f249e9c1e1..4d218d554878 100644
+index 50a5b0c2cc7b..7ab95efcf1dc 100644
 --- a/drivers/staging/iio/cdc/ad7150.c
 +++ b/drivers/staging/iio/cdc/ad7150.c
 @@ -6,6 +6,7 @@
