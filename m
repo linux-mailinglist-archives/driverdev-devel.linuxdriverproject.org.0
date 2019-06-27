@@ -1,75 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D06E257109
-	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Jun 2019 20:52:38 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id F31065759D
+	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Jun 2019 02:31:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2A0DE860D2;
-	Wed, 26 Jun 2019 18:52:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8063F86B17;
+	Thu, 27 Jun 2019 00:31:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4EP9RiieOLau; Wed, 26 Jun 2019 18:52:36 +0000 (UTC)
+	with ESMTP id do0AwUT7X6pk; Thu, 27 Jun 2019 00:31:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DFE898459A;
-	Wed, 26 Jun 2019 18:52:35 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0277A86AD9;
+	Thu, 27 Jun 2019 00:31:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3876A1BF41C
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 18:52:34 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 1C7B21BF378
+ for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 00:31:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 359ED8459A
- for <devel@linuxdriverproject.org>; Wed, 26 Jun 2019 18:52:34 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 16389203AD
+ for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 00:31:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ry0XYDaMBf9k for <devel@linuxdriverproject.org>;
- Wed, 26 Jun 2019 18:52:33 +0000 (UTC)
+ with ESMTP id GbcwtXWJPzDG for <devel@linuxdriverproject.org>;
+ Thu, 27 Jun 2019 00:31:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
- [209.85.214.194])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A9E5584589
- for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 18:52:33 +0000 (UTC)
-Received: by mail-pl1-f194.google.com with SMTP id cl9so1909550plb.10
- for <devel@driverdev.osuosl.org>; Wed, 26 Jun 2019 11:52:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=jFUQd1a4KGSPHNAxPDeMNjxKEsd1P+Yd6RvsJx/5uQc=;
- b=HOxVhJOTySx9Jybho1j8q1uMX5VGq6y0o6AXMcSjfoJ4/KBSXdAUO16s5x0IuDodcO
- grpU9pElitmixZ3CWDWnBW34hExdqbMGOIBmLULt8SxkdS7SHtwoeMrvIIsirzIJQL+M
- MVjzeShwpTCRnidbpUMiW37SwtuG3qMzyJTVzVBvdyLnMAzoox8jwmGyhUYkU0iLci5f
- f9bOC2N6QrgG+yce5wqxaj9+uFqgB5PgfkKSkWlgHFNuunEPchYWVrNOdNoiK+43MdJQ
- McYZFt03ftsZVRUmw9XVX2hQrWE+GZdrkeKSVoXr693OkHZAo/VQdoau2YyfuPBgtseg
- 2fpg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=jFUQd1a4KGSPHNAxPDeMNjxKEsd1P+Yd6RvsJx/5uQc=;
- b=t16SxRNiXJSFVg9jFXRUcFXgpSNyUuIMYOoeB/RS5CO4vaiHgq3yff062uc/5P2rqc
- sj5Qf/7Wl7EyWnnQlX14cSB4bRRqqTAX4fqLPMDZGb2cTwP+csbrhd1Rn9pmBc5RlUxP
- hwCfgfZzLfIRq+7gICr32Gna8zJkDDwmrDftAQPWFGHA2P9P3OOswqIQA0Lsa+CDIGQB
- 2gOO0v2iutae5uAMI2QAvXiyCHff1/5GgVCmvqeBU6CTt2tXAC2m7Cr19gzHpGzI6tlp
- BaOVmy/u3tbdMIx3MDKWXNhs/JOVMICPJfnCJNsxxzWOx+6UJq/xI4dbKZ6wDIGT1r0i
- Mukg==
-X-Gm-Message-State: APjAAAXI4WaisfSQVr40nCK9CDyGd7WG/itXBEMHXLcKE0E2CFQ338rC
- ZpRppzHYlJYgj+hh7UjxBkM=
-X-Google-Smtp-Source: APXvYqx8xcuzPF+3Q1H4Ucd6o7WTHj8KA2X/LjdtxpnaqkwN20/DS8zjhdwPiDFcZDkNITcE2JX/jg==
-X-Received: by 2002:a17:902:934a:: with SMTP id
- g10mr7349836plp.18.1561575153144; 
- Wed, 26 Jun 2019 11:52:33 -0700 (PDT)
-Received: from majic.sklembedded.com (c-73-202-231-77.hsd1.ca.comcast.net.
- [73.202.231.77])
- by smtp.googlemail.com with ESMTPSA id y16sm24891832pff.89.2019.06.26.11.52.31
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Wed, 26 Jun 2019 11:52:32 -0700 (PDT)
-From: Steve Longerbeam <slongerbeam@gmail.com>
-To: linux-media@vger.kernel.org
-Subject: [PATCH] media: staging/imx: Fix NULL deref in find_pipeline_entity()
-Date: Wed, 26 Jun 2019 11:52:25 -0700
-Message-Id: <20190626185225.11992-1-slongerbeam@gmail.com>
-X-Mailer: git-send-email 2.17.1
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id 5C95E2037C
+ for <devel@driverdev.osuosl.org>; Thu, 27 Jun 2019 00:31:13 +0000 (UTC)
+Received: from sasha-vm.mshome.net (unknown [107.242.116.147])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 46C7A2083B;
+ Thu, 27 Jun 2019 00:31:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1561595473;
+ bh=rRmk4vQCs0ryL3VDEzKs8V5C/4jSw57lrGEjsl2sxgU=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=bhrShYD+xeCIXo/CTNovEiO1MgdW066hH7tjpLMtQzWiEcHn9hijNJEA6crfhvbHc
+ 0/9aXRhaP6lO5W1mK1QNzs22uI3cc6wxlGNDELZCoacArNFceL0M4PAvzKNUsCetTM
+ r6jn4A3oBzw9rx+G9+xYo6YLOwB0vMVz5upu7/qM=
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH AUTOSEL 5.1 16/95] staging:iio:ad7150: fix threshold mode
+ config bit
+Date: Wed, 26 Jun 2019 20:29:01 -0400
+Message-Id: <20190627003021.19867-16-sashal@kernel.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190627003021.19867-1-sashal@kernel.org>
+References: <20190627003021.19867-1-sashal@kernel.org>
+MIME-Version: 1.0
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,50 +68,88 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- open list <linux-kernel@vger.kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Steve Longerbeam <slongerbeam@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>
-MIME-Version: 1.0
+Cc: Melissa Wen <melissa.srw@gmail.com>, Sasha Levin <sashal@kernel.org>,
+ devel@driverdev.osuosl.org, linux-iio@vger.kernel.org,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix a cut&paste error in find_pipeline_entity(). The start entity must be
-passed to media_entity_to_video_device() in find_pipeline_entity(), not
-pad->entity. The pad is only put to use later, after determining the start
-entity is not the entity being searched for.
+From: Melissa Wen <melissa.srw@gmail.com>
 
-Fixes: 3ef46bc97ca2 ("media: staging/imx: Improve pipeline searching")
+[ Upstream commit df4d737ee4d7205aaa6275158aeebff87fd14488 ]
 
-Reported-by: Colin Ian King <colin.king@canonical.com>
-Signed-off-by: Steve Longerbeam <slongerbeam@gmail.com>
+According to the AD7150 configuration register description, bit 7 assumes
+value 1 when the threshold mode is fixed and 0 when it is adaptive,
+however, the operation that identifies this mode was considering the
+opposite values.
+
+This patch renames the boolean variable to describe it correctly and
+properly replaces it in the places where it is used.
+
+Fixes: 531efd6aa0991 ("staging:iio:adc:ad7150: chan_spec conv + i2c_smbus commands + drop unused poweroff timeout control.")
+Signed-off-by: Melissa Wen <melissa.srw@gmail.com>
+Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/staging/media/imx/imx-media-utils.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/iio/cdc/ad7150.c | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/staging/media/imx/imx-media-utils.c b/drivers/staging/media/imx/imx-media-utils.c
-index b5b8a3b7730a..6fb88c22ee27 100644
---- a/drivers/staging/media/imx/imx-media-utils.c
-+++ b/drivers/staging/media/imx/imx-media-utils.c
-@@ -842,7 +842,7 @@ find_pipeline_entity(struct media_entity *start, u32 grp_id,
- 		if (sd->grp_id & grp_id)
- 			return &sd->entity;
- 	} else if (buftype && is_media_entity_v4l2_video_device(start)) {
--		vfd = media_entity_to_video_device(pad->entity);
-+		vfd = media_entity_to_video_device(start);
- 		if (buftype == vfd->queue->type)
- 			return &vfd->entity;
+diff --git a/drivers/staging/iio/cdc/ad7150.c b/drivers/staging/iio/cdc/ad7150.c
+index 24f74ce60f80..14596aa7eaf1 100644
+--- a/drivers/staging/iio/cdc/ad7150.c
++++ b/drivers/staging/iio/cdc/ad7150.c
+@@ -6,6 +6,7 @@
+  * Licensed under the GPL-2 or later.
+  */
+ 
++#include <linux/bitfield.h>
+ #include <linux/interrupt.h>
+ #include <linux/device.h>
+ #include <linux/kernel.h>
+@@ -131,7 +132,7 @@ static int ad7150_read_event_config(struct iio_dev *indio_dev,
+ {
+ 	int ret;
+ 	u8 threshtype;
+-	bool adaptive;
++	bool thrfixed;
+ 	struct ad7150_chip_info *chip = iio_priv(indio_dev);
+ 
+ 	ret = i2c_smbus_read_byte_data(chip->client, AD7150_CFG);
+@@ -139,21 +140,23 @@ static int ad7150_read_event_config(struct iio_dev *indio_dev,
+ 		return ret;
+ 
+ 	threshtype = (ret >> 5) & 0x03;
+-	adaptive = !!(ret & 0x80);
++
++	/*check if threshold mode is fixed or adaptive*/
++	thrfixed = FIELD_GET(AD7150_CFG_FIX, ret);
+ 
+ 	switch (type) {
+ 	case IIO_EV_TYPE_MAG_ADAPTIVE:
+ 		if (dir == IIO_EV_DIR_RISING)
+-			return adaptive && (threshtype == 0x1);
+-		return adaptive && (threshtype == 0x0);
++			return !thrfixed && (threshtype == 0x1);
++		return !thrfixed && (threshtype == 0x0);
+ 	case IIO_EV_TYPE_THRESH_ADAPTIVE:
+ 		if (dir == IIO_EV_DIR_RISING)
+-			return adaptive && (threshtype == 0x3);
+-		return adaptive && (threshtype == 0x2);
++			return !thrfixed && (threshtype == 0x3);
++		return !thrfixed && (threshtype == 0x2);
+ 	case IIO_EV_TYPE_THRESH:
+ 		if (dir == IIO_EV_DIR_RISING)
+-			return !adaptive && (threshtype == 0x1);
+-		return !adaptive && (threshtype == 0x0);
++			return thrfixed && (threshtype == 0x1);
++		return thrfixed && (threshtype == 0x0);
+ 	default:
+ 		break;
  	}
 -- 
-2.17.1
+2.20.1
 
 _______________________________________________
 devel mailing list
