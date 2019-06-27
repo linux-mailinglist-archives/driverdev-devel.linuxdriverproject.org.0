@@ -1,80 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB7E958A61
-	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Jun 2019 20:57:29 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id DE04858A59
+	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Jun 2019 20:57:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3B2FC87587;
-	Thu, 27 Jun 2019 18:57:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1564688072;
+	Thu, 27 Jun 2019 18:57:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8En6Aa-cyQoG; Thu, 27 Jun 2019 18:57:27 +0000 (UTC)
+	with ESMTP id v5E9OE5kUVJP; Thu, 27 Jun 2019 18:57:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id AE8E2874E9;
-	Thu, 27 Jun 2019 18:57:23 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A8A6487FCF;
+	Thu, 27 Jun 2019 18:57:15 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 369F61BF9B7
- for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 18:57:16 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3E8DD1BF2F8
+ for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 18:57:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3106C86364
- for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 18:57:16 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3BCEC85DDC
+ for <devel@linuxdriverproject.org>; Thu, 27 Jun 2019 18:57:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nDuAdju26qRO for <devel@linuxdriverproject.org>;
- Thu, 27 Jun 2019 18:57:15 +0000 (UTC)
+ with ESMTP id SDVNcC8ILNvF for <devel@linuxdriverproject.org>;
+ Thu, 27 Jun 2019 18:57:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.15.15])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D571C86356
- for <devel@driverdev.osuosl.org>; Thu, 27 Jun 2019 18:57:14 +0000 (UTC)
+Received: from mout.gmx.net (mout.gmx.net [212.227.15.19])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7509086311
+ for <devel@driverdev.osuosl.org>; Thu, 27 Jun 2019 18:57:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
  s=badeba3b8450; t=1561661813;
- bh=y9U91GGxjVzyJQpb1plbYIEJEQmZ+InsHm6KQ2qTC64=;
+ bh=mXNl+XXx/SsyPzhdlqC9YK8bVtXP03p3JkGORVWAcMU=;
  h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=OfiHhM+ZsYHf1e67o0JonceiUwMajz6I1biGNnKCIzTUWlhpKtvFAbS0jL7jMIeEC
- kdMGRk2dXpquInZbyq6Op51eFzFPpy37nIaUcUQoCDSVNKFyyBIYeQcS3/EPAFxGBT
- o98cKSygwS9c4BHXO3TEOOF/cjRurA0wz/Qf1Cy8=
+ b=F1G90QyPe2SlNW9KATuDq78b4ejdA75HEYki9j29jVwkYnk7mM7YpNZSPUNWjgKQf
+ XU7X1Cm8A2oKhufAy2VTzLCbJkkE+PIa5OSDmOB+uDMkOjWHYUrLPUbQiUvp2DnoG0
+ yanTaZx2+SbpGjN1KRs1Q4x4LEaahMi6yCzagEus=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
 Received: from localhost.localdomain ([37.4.249.111]) by mail.gmx.com
  (mrgmx002 [212.227.17.190]) with ESMTPSA (Nemesis) id
- 0M1msU-1iaKvX1H6Q-00tm2j; Thu, 27 Jun 2019 20:56:53 +0200
+ 0M23zf-1ia3oM2tX1-00u39s; Thu, 27 Jun 2019 20:56:53 +0200
 From: Stefan Wahren <wahrenst@gmx.net>
 To: Eric Anholt <eric@anholt.net>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Dave Stevenson <dave.stevenson@raspberrypi.org>,
  Hans Verkuil <hverkuil@xs4all.nl>,
  Mauro Carvalho Chehab <mchehab@kernel.org>
-Subject: [PATCH 12/31] staging: bcm2835-camera: Fix brace style issues.
-Date: Thu, 27 Jun 2019 20:56:09 +0200
-Message-Id: <1561661788-22744-13-git-send-email-wahrenst@gmx.net>
+Subject: [PATCH 13/31] staging: bcm2835-camera: Fix missing lines between items
+Date: Thu, 27 Jun 2019 20:56:10 +0200
+Message-Id: <1561661788-22744-14-git-send-email-wahrenst@gmx.net>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1561661788-22744-1-git-send-email-wahrenst@gmx.net>
 References: <1561661788-22744-1-git-send-email-wahrenst@gmx.net>
-X-Provags-ID: V03:K1:qVIKql/T/zw8kAu25TQYjRoKyLK87blKkEMQxwagdJRaqd3HSNg
- nnBxoYrPsVk+jLPDEdhmy+rNpT9ASf7hytS4IN8naiT4ma0wSIOLg0851yvLvoGvkEdJtlW
- oNAI6pBO2Jn10Hh0YCRGjyKwmLgX5Ncb4Zsm5ob3Tg4d+jo8kWpq/xfgZcXATzcm1K+p3EO
- L0TthjF9lznuR17YGuEYA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:YI/u3WTu1tU=:KE6ESASlgMx3wbH0VlbqbU
- pI4QSiGkGMmyL4rGdwxG9C9nl03vnI60JEeXXaFFvUiot6U4cl6yzgegf25+05osESNv0qZDj
- PJtIbOu9GykDcvDyzIy5vTy1mHbrazirRPRndDdLaKxws9GM1S9svKDQ8gtynd+Lt4/itEf4F
- 9iQmf85+j9NyVi6pCHGCxnlLe3TPRjRCvWh5AyCfYUj+1O4nTXaZwbm0g40Niz9ASStGSzljc
- dlaFPYG63IHNSJ7Qn3iLE7YvnoFVWWOJ3TDYA0RbZUNYKOYNri2i5xGYp9EoRfKi2lg0OS9q7
- P09fH+XSiqpu/H6GDJzQUwA9qS8Dj0m0eedW72TvAsmeU0YiCjWhSmshY0lGhax+pkhtngin+
- be2MVOMMda4obbkRuNeuoyfcFB6qbuQWDDceuJ9PHtpMfFCmkRIEiSEYg5JRAS0xOj4npA00V
- iRp3YpmMqien3Hk9PECAeBazpYNvhLGNMrzJBx/YhDWfwt/aKUj7L4d7k0vy7Hq87aGusUSfX
- rXGNsC7xOukSFPwyML/kvPForYajCkEIXLz6CkUYm1RKBfKy0dUDLp1gq14DpnKTtUDV8Wqtg
- mUVOBmrN5t5fSPVaV9S44rBENi/lJ103GWwNb4sMTDWbGgDdOUsBYCE1KoGxrXfxWwpmacYmT
- SuuXLg27Hw9zMne/WVYo5GtYoZiE96De0dXZyKQGzWP1qhCsIQYAUGjrSZOAYBcWzqzCRIguF
- 23XvTPcI3087KAJQRqud4J24HhUF6kPSRfqj0uSwRVhmNhJUWBtX/1Ua1ZyxKTL4Saul85D/A
- BnPV4eWx00K+sOGoeXPbYfDnIuSEguM5eoD160GKoxDc2sB4bWVe5DxWeKrt5++IQ2Vfbtj/J
- zi1dKZzFhXn9lCQYJnwonJtVsIUhV8sP5xf6c8RS32G0TNEC95rDLJkkIM4Tfx2BV4mAUMfWK
- gQPLjH4ReDT+/cJQ+2T/BYg91IemiTyBUZkdLOmvsRsQLdYYID6IxayR41UrjaJI9TgqsQBU8
- 2OBVhAid9BQapWdOUAE3WXbO/P1DNLki/5Kl7cUOX0iWffsAkYVBiTgpCTnu8wiydNoTIoaLW
- 5ZfB964EfOUYrQ=
+X-Provags-ID: V03:K1:uTPgukxSV32JLw6V83fULGu7PQ5Wfy7OdHFGDQDF8sVHhzCMHkV
+ 7+/C3Bu7dmc/gSJ5AzgFDPXPceKNKWICryuJj8h3QoRiHKt92p0pxnAAW+2WZJzbrLHcmRx
+ YI1aildOO5SRfw21/ln58U1I39yUN82+xpx8kzqWdNCr7gOJ4fUZSGmamLn4I5IS0+7YaZS
+ 0jTYHyU5AHee8t8czJoAQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:k88a5ZznIWI=:3xAviE5pDVLgLsTht3p8Pm
+ UXuv8KLqXQ1NlQGuoMoGEEzmoSLRmAlV0sjt+aytKWYfPnm+Ws/PMfUCnDIgSPO8Y4IBdyM7Q
+ v7XFDGOohM9FTMXFcLH4pZKIcVGPotXoiI2IrG3iiu3bACBfTAq/Q/TM9A8UwSY16YwQfuQqn
+ eTB6ZFd3gvARF2iALvS6pA2gBBAq3lPVXxpYQ44w/Ic/rcxctrqkUyrLriV+Z4rqG20KDlyAO
+ VkX9uFXmaTtxb34tjNEgcgubB2wleAFZ4Pw/5+lNQe1Q4CqBX5CVMS0Ubcz2hqfJxYD1ilqRO
+ E8cEBrqxRbjeHMKc5Qdgz7SfFZcldpHgnghmDNjaIX6j6lrh3cs7xLj6qzXkU/rFFUns+xeGn
+ 0zKZDEq/1vf4GdD3EG7yVytVlJZsuyu/TUrr8Fkp/OWf3u6+SLyr10HTo4aPjC+UPNwu5MKOe
+ LeoWrpwuNsBFM3QheCdHCPQdppHf22HGg73a1bcRvJ7qNU6BaR5UzcKw+qOqYZHt9xb9w5k6w
+ CRwY4eoPZLYrK3cCc30iKpo10c6LHi3LR3SnLx5gMxpkRRN4I0AwA3oGaD4HeyUZy3ZkuJ85Z
+ yaGeCoFbBXnmVda/4DcNnyFi0hwLFf8diTbCUT6WrK1FnxLINzD4OqB2qEcIh4xekyvlAQIqk
+ rc+rsFz+zpkoVwKYE8OfQVDXLH0uhlWe6IgHeJ5mMqo/8NUx+263Nlp9X3JM5yO8B5F7dmpM1
+ OzZFhPhqLsg85SOyAGFzEIxcqSoZPb9uHJyL8t3cbUV/QLp1glfKNZzvzi5rWX+2EQvxDipOA
+ 0+mZw6G3Q4sSgyj8euMDHETO4kxkVNHmJB7fLm/prZRL8FCt2ISHoCaeSdELiy74/oNZqiBMg
+ oxkRdszjMyPgpKH0njzfEmT5T+32qpGz01STdOK8/TfT7owaWqG4SyoFhqzx0aI0lYUWMgqnU
+ R99WeTJmQpUJckwiaesZYY2Djd3qhZxvHWi8G2W15QouwH5KLhgDLQNvYbyU1s2Be0Qn4kKiz
+ nMhRnAM/7Z6JEXrrbp221DjRUT2Xuk5Ifnv7vrJ7RTORIyX0dzQsL+n2vWu8+BJhvymgNygN2
+ oLh7kJAVzFTkd0=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,63 +97,26 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 From: Dave Stevenson <dave.stevenson@raspberrypi.org>
 
-Fix mismatched or missing brace issues flagged by checkpatch.
+Fix checkpatch errors for missing blank lines after variable
+or structure declarations.
 
 Signed-off-by: Dave Stevenson <dave.stevenson@raspberrypi.org>
 ---
- drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c | 3 ++-
- drivers/staging/vc04_services/bcm2835-camera/controls.c       | 3 ++-
- drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c     | 3 ++-
- 3 files changed, 6 insertions(+), 3 deletions(-)
+ drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-index bde3548..c1f6141 100644
---- a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-+++ b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-@@ -553,10 +553,11 @@ static int start_streaming(struct vb2_queue *vq, unsigned int count)
-
- 		/* Flag to indicate just to rely on kernel timestamps */
- 		dev->capture.vc_start_timestamp = -1;
--	} else
-+	} else {
- 		v4l2_dbg(1, bcm2835_v4l2_debug, &dev->v4l2_dev,
- 			 "Start time %lld size %d\n",
- 			 dev->capture.vc_start_timestamp, parameter_size);
-+	}
-
- 	dev->capture.kernel_start_ts = ktime_get();
- 	dev->capture.last_timestamp = 0;
-diff --git a/drivers/staging/vc04_services/bcm2835-camera/controls.c b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-index b3d7029..1a7588d 100644
---- a/drivers/staging/vc04_services/bcm2835-camera/controls.c
-+++ b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-@@ -407,8 +407,9 @@ static int ctrl_set_metering_mode(struct bm2835_mmal_dev *dev,
- 		return vchiq_mmal_port_parameter_set(dev->instance, control,
- 					     mmal_ctrl->mmal_id,
- 					     &u32_value, sizeof(u32_value));
--	} else
-+	} else {
- 		return 0;
-+	}
+diff --git a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.h b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.h
+index b8a466e..bbfe8fe 100644
+--- a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.h
++++ b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.h
+@@ -130,6 +130,7 @@ int set_framerate_params(struct bm2835_mmal_dev *dev);
+ 		(pix_fmt)->pixelformat, (pix_fmt)->bytesperline,	\
+ 		(pix_fmt)->sizeimage, (pix_fmt)->colorspace, (pix_fmt)->priv); \
  }
-
- static int ctrl_set_flicker_avoidance(struct bm2835_mmal_dev *dev,
-diff --git a/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c b/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c
-index 5175e2c..73cb295 100644
---- a/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c
-+++ b/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c
-@@ -1262,9 +1262,10 @@ static int port_parameter_get(struct vchiq_mmal_instance *instance,
- 		memcpy(value, &rmsg->u.port_parameter_get_reply.value,
- 		       *value_size);
- 		*value_size = rmsg->u.port_parameter_get_reply.size;
--	} else
-+	} else {
- 		memcpy(value, &rmsg->u.port_parameter_get_reply.value,
- 		       rmsg->u.port_parameter_get_reply.size);
-+	}
-
- 	pr_debug("%s:result:%d component:0x%x port:%d parameter:%d\n", __func__,
- 		 ret, port->component->handle, port->handle, parameter_id);
++
+ #define v4l2_dump_win_format(level, debug, dev, win_fmt, desc)	\
+ {	\
+ 	v4l2_dbg(level, debug, dev,	\
 --
 2.7.4
 
