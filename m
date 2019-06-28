@@ -1,84 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4849C59D6B
-	for <lists+driverdev-devel@lfdr.de>; Fri, 28 Jun 2019 16:00:27 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1362C59D7F
+	for <lists+driverdev-devel@lfdr.de>; Fri, 28 Jun 2019 16:08:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2F70A84EA7;
-	Fri, 28 Jun 2019 14:00:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3A23E881EC;
+	Fri, 28 Jun 2019 14:08:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 52y1Oeuv4Zw0; Fri, 28 Jun 2019 14:00:23 +0000 (UTC)
+	with ESMTP id 913v0yBKqbx7; Fri, 28 Jun 2019 14:08:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B9648849BE;
-	Fri, 28 Jun 2019 14:00:21 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9C430881CC;
+	Fri, 28 Jun 2019 14:08:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id ACAB01BF84C
- for <devel@linuxdriverproject.org>; Fri, 28 Jun 2019 14:00:19 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0A9701BF29C
+ for <devel@linuxdriverproject.org>; Fri, 28 Jun 2019 14:08:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id A9EB520243
- for <devel@linuxdriverproject.org>; Fri, 28 Jun 2019 14:00:19 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 06B4F20459
+ for <devel@linuxdriverproject.org>; Fri, 28 Jun 2019 14:08:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cF-j6FuuUA+3 for <devel@linuxdriverproject.org>;
- Fri, 28 Jun 2019 14:00:16 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qk1-f195.google.com (mail-qk1-f195.google.com
- [209.85.222.195])
- by silver.osuosl.org (Postfix) with ESMTPS id B662820112
- for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 14:00:16 +0000 (UTC)
-Received: by mail-qk1-f195.google.com with SMTP id d15so4864579qkl.4
- for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 07:00:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ndufresne-ca.20150623.gappssmtp.com; s=20150623;
- h=message-id:subject:from:to:cc:date:in-reply-to:references
- :user-agent:mime-version;
- bh=/ObR3zRt+LL7cSozUPg9nxYsncYVeE++8B8BB5FGnig=;
- b=KSenq5dT4kNbFTSgiDE2z7SRCEjF3JO2jsoVwkb8aHiqNSZ0aMZpj8nLp/l/Wbthq0
- uQgakohmcREgywd7L7nhVa1+qvfnpVHliVQz9Te1xwllB7njlgY33UYku4BYa/MDcsN1
- oSFpy8PxluiEjB3JbXsYmgcjl56lhaLUJu7gboN/WmPSnB5CO8peVL+GowJC4as2oQ0a
- LU89J2tfWJGnR7ItWyTNkvCNg1WNhllDPjgOEckQw0H7z+7E1qS5JewyfbMG2t7Yo2NM
- MIFIg6JRirEuWHiDsuCkmnG+RYxv7y+BXU8urJcoEA0GG6xz64553nutCGI6WEQpYAH2
- k/8Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
- :references:user-agent:mime-version;
- bh=/ObR3zRt+LL7cSozUPg9nxYsncYVeE++8B8BB5FGnig=;
- b=GAHjEtORQguEgpSgI1onl3bg6oexfqr6PpehaAV+zzMyVXqMRB5Cmjv1EOuuY4bDUi
- ydeji9LVXLwiyozyXYmEepkyqKn0tOaKSzIyO7qlGtbygEtUhWF5qLgpVZcsV2D9pJ0W
- WfcONRMcGo0/fh+AgkXmEM+kXYVTOYSleFdMWVXF/5tdBBbFyxqOqOisnB7pVUOCcWi3
- MuMJNPd6ZnSlQoDX5AgAqBmZseZhS7TqpfXU7LGGILgIP5sN8Ki+Wsp4t50nJWPVU/Lj
- e0dewYdnuWEYI0hOdkNZv0smo6CeWZxScOmwsWuGYXWBXyZvY0T9OwueihPyCQ3NEoFY
- en3w==
-X-Gm-Message-State: APjAAAU8F8To3TDM2NVpoxcvYa/lRqYPkCwQRQM4Veu5hVXFHNdfRa01
- +GI+Fs753h5fNRFn6WLI0V2KCw==
-X-Google-Smtp-Source: APXvYqxfl8fxH5/CoSWieWbccCSWrr9zL0RQUPIKNag0RTVNlRSyXa97/XWHEBYnqtJPTpynMga2lQ==
-X-Received: by 2002:a37:a7d2:: with SMTP id q201mr8564626qke.150.1561730415786; 
- Fri, 28 Jun 2019 07:00:15 -0700 (PDT)
-Received: from tpx230-nicolas.collaboramtl
- (modemcable154.55-37-24.static.videotron.ca. [24.37.55.154])
- by smtp.gmail.com with ESMTPSA id s44sm1257171qtc.8.2019.06.28.07.00.13
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Fri, 28 Jun 2019 07:00:14 -0700 (PDT)
-Message-ID: <54088ebc2fcbcc3a202ab0fd4d32f9ad8c1e9b82.camel@ndufresne.ca>
+ with ESMTP id G09PqfSedD-l for <devel@linuxdriverproject.org>;
+ Fri, 28 Jun 2019 14:08:49 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from lb1-smtp-cloud9.xs4all.net (lb1-smtp-cloud9.xs4all.net
+ [194.109.24.22])
+ by silver.osuosl.org (Postfix) with ESMTPS id 5E79420407
+ for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 14:08:49 +0000 (UTC)
+Received: from [192.168.2.10] ([46.9.252.75])
+ by smtp-cloud9.xs4all.net with ESMTPA
+ id grYRhmatqSfvXgrYVhSH9J; Fri, 28 Jun 2019 16:08:47 +0200
 Subject: Re: [PATCH 01/31] staging: bcm2835-camera: Ensure H264 header bytes
  get a sensible timestamp
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Dave Stevenson <dave.stevenson@raspberrypi.org>
-Date: Fri, 28 Jun 2019 10:00:12 -0400
-In-Reply-To: <CAAoAYcOvnF55U0kPMFE4cOd=nUqjoidirbGP6AWN=5Rqp0RhbQ@mail.gmail.com>
+To: Nicolas Dufresne <nicolas@ndufresne.ca>,
+ Dave Stevenson <dave.stevenson@raspberrypi.org>
 References: <1561661788-22744-1-git-send-email-wahrenst@gmx.net>
  <1561661788-22744-2-git-send-email-wahrenst@gmx.net>
  <5e20b1d04b3c2f64173631ec2f0261a8a9597f0c.camel@ndufresne.ca>
  <CAAoAYcOvnF55U0kPMFE4cOd=nUqjoidirbGP6AWN=5Rqp0RhbQ@mail.gmail.com>
-User-Agent: Evolution 3.32.2 (3.32.2-1.fc30) 
+ <54088ebc2fcbcc3a202ab0fd4d32f9ad8c1e9b82.camel@ndufresne.ca>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <df6c4e8e-9182-f629-2bd7-a36b5697f382@xs4all.nl>
+Date: Fri, 28 Jun 2019 16:08:43 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
+In-Reply-To: <54088ebc2fcbcc3a202ab0fd4d32f9ad8c1e9b82.camel@ndufresne.ca>
+Content-Language: en-US
+X-CMAE-Envelope: MS4wfAFVr8kH07cqrycMoPg0UKoxLhH4ZEyplXokG0GMZIGrINjoHgRTsy1BaOcnzWmK6oLyxeL3/noA1gwtMP/gwqCLEH+BOikyuE9OqYvyR+mUcTmx3L/k
+ 7BV/S1j2Ybk/J4mrhBrH9jZ8GL470m3J7CPvCl9cYWrt07Djb5RcoIbBx1G1UWm8k+pyEtgwJJzApxM3wOhhiIihbBMIV4RlSunb5Z8+kYbKcTJiR1R/P+dB
+ RumRySCmILVB2VH0PhrTEauSp9Bl7xmk+3pdx1YUyBzdURFJ+H+GnRmJIjnVEfME7yX13RdMry7O31VPTlanBi9LqsfZ97ISg2Crs+Wjz25XnScTc0SaDkNt
+ 5Ch6kIvugMGuP+ToOrL+w78VGNWWyiXogFOlR/+ev/HPsDUtNSgvub0at6jzrn5KSwfk1Oh7+4FbMLxfXC3fx+N+1yKjzVQrPKsnqxT1v9IwM3EZy5MbozJu
+ DfEJgSFooPOFVj57cHFp5q8KyRBTzgeHWvxmBJF8Wwu9k1DDff55gp0q75Q=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,224 +70,167 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- LMML <linux-media@vger.kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>,
- Eric Anholt <eric@anholt.net>,
+ LMML <linux-media@vger.kernel.org>, Eric Anholt <eric@anholt.net>,
  "moderated list:BROADCOM BCM2835 ARM ARCHITECTURE"
  <linux-rpi-kernel@lists.infradead.org>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
  linux-arm-kernel@lists.infradead.org, Stefan Wahren <wahrenst@gmx.net>
-Content-Type: multipart/mixed; boundary="===============5085693836597228790=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-
---===============5085693836597228790==
-Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
-	boundary="=-9zNGfIk5+814WxwZsJuh"
-
-
---=-9zNGfIk5+814WxwZsJuh
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Le vendredi 28 juin 2019 =C3=A0 11:10 +0100, Dave Stevenson a =C3=A9crit :
-> Hi Nicolas
->=20
-> On Thu, 27 Jun 2019 at 20:55, Nicolas Dufresne <nicolas@ndufresne.ca> wro=
-te:
-> > Hi Dave,
-> >=20
-> > Le jeudi 27 juin 2019 =C3=A0 20:55 +0200, Stefan Wahren a =C3=A9crit :
-> > > From: Dave Stevenson <dave.stevenson@raspberrypi.org>
-> > >=20
-> > > H264 header come from VC with 0 timestamps, which means they get a
-> > > strange timestamp when processed with VC/kernel start times,
-> > > particularly if used with the inline header option.
-> > > Remember the last frame timestamp and use that if set, or otherwise
-> > > use the kernel start time.
-> >=20
-> > Normally H264 headers are considered to be part of the following frame.
-> > Giving it the timestamp of the previous frame will likely confuse some
-> > userspace and cause an off-by-one in timestamp. I understand this is a
-> > workaround, but am wondering if this can be improved.
->=20
-> Sorry, slight ambiguity in how I'm reading your comment.
->=20
-> Are you saying that the header bytes want to be in the same buffer as
-> the following frame?
-> I thought this had also been discussed in the V4L2 stateful codec API
-> threads along with how many encoded frames were allowed in a single
-> V4L2 buffer. I certainly hadn't seen a statement about the header
-> bytes being combined with the next frame.
-> If the behaviour required by V4L2 is that header bytes and following
-> frame are in the same buffer, then that is relatively easy to achieve
-> in the firmware. This workaround can remain for older firmware as it
-> will never trigger if the firmware has combined the frames.
-
-The frame alignment is a requirement specific to the stateful codec
-API. Stateful codec must interpret _H264 format as being one full frame
-per buffer (1 AU in progressive, and 1 to 2 AU in interlaced), the
-first frame should include SPS/PPS and any other prefix NALs. You may
-follow this rule in your capture driver if you want to make it possible
-to zero-copy the encoded frames from the capture to the decoder.
-Though, userspace will still have to parse as there is no indication
-for capture devices of the H264 alignment being used (that imply 1
-frame latency). Boris is working on a control for stateless CODEC to
-control if we are running in full-frame or per slices. I do hope this
-control will be extended later to allow cameras and decoders to signal
-their alignment, or simply to allow enabling low-latency modes
-supported by CODA and ZynMP firmwares.
-
->=20
-> Or are you saying that the header bytes remain in their own buffer,
-> but the timestamp wants to be the same as the next frame? That is
-> harder to achieve in the firmware, but could probably be done in the
-> kernel driver by holding on to the header bytes frame until the next
-> buffer had been received, at which point the timestamp can be copied
-> across. Possible, but just needs slightly careful handling to ensure
-> we don't lose buffers accidentally.
-
-So this isn't specified by V4L2 itself. So instead I rely on H264 and
-MPEG TS specification to advance this. This is also the interpretation
-we have of timestamp in GStreamer (ffmpeg uses out-of-band headers with
-full frame AVC, so this does not apply).
-
-So H264 AUD, SPS, PPS, SEI and other prefix NAL are considered to be
-the start of a frame. With this interpretation in mind, accumulating
-them is considered zero-latency. This basically means that if they are
-to have a timestamp, they would share that timestamp with all the
-slices of the same frame. In GStreamer, we have the notion of no
-timestamp, so in such a case we'd leave the timestamp empty and our
-parsers would pick the first valid timestamp that formed the full frame
-as being the frame timestamp (it's a bit buggier then that, but that's
-what it's suppose to do).
-
-On top of that, if you don't have any meaningful alignment in your H264
-stream, the MPEG TS format states that the timestamp of a buffer should
-be the timestamp of the first NAL starting within this buffer, or the
-timestamp of the current NAL if there is not NAL start.
-
-By respecting these standards you ensure that latency aware application
-can work with your driver without causing delays, or worst, having to
-deal with artificially late frames.
-
-I hope this clarify and helps understand my request for "unhacking" the
-headers timestamps. I had assumed the timestamp came from the driver
-(instead of from the firmware), sorry if that caused confusion. If
-merging full frames is easier, I think I would opt for that as it's
-beneficial to performance when combined with other full frame APIs.
-
-Nicolas
-
->=20
->   Dave
->=20
-> > > Link: https://github.com/raspberrypi/linux/issues/1836
-> > > Signed-off-by: Dave Stevenson <dave.stevenson@raspberrypi.org>
-> > > ---
-> > >  .../staging/vc04_services/bcm2835-camera/bcm2835-camera.c  | 14 ++++=
-++++++++--
-> > >  .../staging/vc04_services/bcm2835-camera/bcm2835-camera.h  |  2 ++
-> > >  2 files changed, 14 insertions(+), 2 deletions(-)
-> > >=20
-> > > diff --git a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-cam=
-era.c b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-> > > index dce6e6d..0c04815 100644
-> > > --- a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-> > > +++ b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-> > > @@ -359,7 +359,9 @@ static void buffer_cb(struct vchiq_mmal_instance =
-*instance,
-> > >               }
-> > >       } else {
-> > >               if (dev->capture.frame_count) {
-> > > -                     if (dev->capture.vc_start_timestamp !=3D -1 && =
-pts) {
-> > > +                     if (dev->capture.vc_start_timestamp !=3D -1) {
-> > > +                             buf->vb.vb2_buf.timestamp =3D ktime_get=
-_ns();
-> > > +                     } else if (pts) {
-> > >                               ktime_t timestamp;
-> > >                               s64 runtime_us =3D pts -
-> > >                                   dev->capture.vc_start_timestamp;
-> > > @@ -372,8 +374,15 @@ static void buffer_cb(struct vchiq_mmal_instance=
- *instance,
-> > >                                        ktime_to_ns(timestamp));
-> > >                               buf->vb.vb2_buf.timestamp =3D ktime_to_=
-ns(timestamp);
-> > >                       } else {
-> > > -                             buf->vb.vb2_buf.timestamp =3D ktime_get=
-_ns();
-> > > +                             if (dev->capture.last_timestamp) {
-> > > +                                     buf->vb.vb2_buf.timestamp =3D
-> > > +                                             dev->capture.last_times=
-tamp;
-> > > +                             } else {
-> > > +                                     buf->vb.vb2_buf.timestamp =3D
-> > > +                                             ktime_to_ns(dev->captur=
-e.kernel_start_ts);
-> > > +                             }
-> > >                       }
-> > > +                     dev->capture.last_timestamp =3D buf->vb.vb2_buf=
-.timestamp;
-> > >=20
-> > >                       vb2_set_plane_payload(&buf->vb.vb2_buf, 0, leng=
-th);
-> > >                       vb2_buffer_done(&buf->vb.vb2_buf, VB2_BUF_STATE=
-_DONE);
-> > > @@ -541,6 +550,7 @@ static int start_streaming(struct vb2_queue *vq, =
-unsigned int count)
-> > >                        dev->capture.vc_start_timestamp, parameter_siz=
-e);
-> > >=20
-> > >       dev->capture.kernel_start_ts =3D ktime_get();
-> > > +     dev->capture.last_timestamp =3D 0;
-> > >=20
-> > >       /* enable the camera port */
-> > >       dev->capture.port->cb_ctx =3D dev;
-> > > diff --git a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-cam=
-era.h b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.h
-> > > index 2b5679e..09273b0 100644
-> > > --- a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.h
-> > > +++ b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.h
-> > > @@ -90,6 +90,8 @@ struct bm2835_mmal_dev {
-> > >               s64         vc_start_timestamp;
-> > >               /* Kernel start timestamp for streaming */
-> > >               ktime_t kernel_start_ts;
-> > > +             /* Timestamp of last frame */
-> > > +             u64             last_timestamp;
-> > >=20
-> > >               struct vchiq_mmal_port  *port; /* port being used for c=
-apture */
-> > >               /* camera port being used for capture */
-> > > --
-> > > 2.7.4
-> > >=20
-
---=-9zNGfIk5+814WxwZsJuh
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCXRYdbAAKCRBxUwItrAao
-HL+LAJ44dquMC3ahU1braDb8t+6gILF6dgCffJk6UGKu6CPlOB9YXRq8fan29SU=
-=Fhnr
------END PGP SIGNATURE-----
-
---=-9zNGfIk5+814WxwZsJuh--
-
-
---===============5085693836597228790==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============5085693836597228790==--
-
+T24gNi8yOC8xOSA0OjAwIFBNLCBOaWNvbGFzIER1ZnJlc25lIHdyb3RlOgo+IExlIHZlbmRyZWRp
+IDI4IGp1aW4gMjAxOSDDoCAxMToxMCArMDEwMCwgRGF2ZSBTdGV2ZW5zb24gYSDDqWNyaXQgOgo+
+PiBIaSBOaWNvbGFzCj4+Cj4+IE9uIFRodSwgMjcgSnVuIDIwMTkgYXQgMjA6NTUsIE5pY29sYXMg
+RHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPiB3cm90ZToKPj4+IEhpIERhdmUsCj4+Pgo+
+Pj4gTGUgamV1ZGkgMjcganVpbiAyMDE5IMOgIDIwOjU1ICswMjAwLCBTdGVmYW4gV2FocmVuIGEg
+w6ljcml0IDoKPj4+PiBGcm9tOiBEYXZlIFN0ZXZlbnNvbiA8ZGF2ZS5zdGV2ZW5zb25AcmFzcGJl
+cnJ5cGkub3JnPgo+Pj4+Cj4+Pj4gSDI2NCBoZWFkZXIgY29tZSBmcm9tIFZDIHdpdGggMCB0aW1l
+c3RhbXBzLCB3aGljaCBtZWFucyB0aGV5IGdldCBhCj4+Pj4gc3RyYW5nZSB0aW1lc3RhbXAgd2hl
+biBwcm9jZXNzZWQgd2l0aCBWQy9rZXJuZWwgc3RhcnQgdGltZXMsCj4+Pj4gcGFydGljdWxhcmx5
+IGlmIHVzZWQgd2l0aCB0aGUgaW5saW5lIGhlYWRlciBvcHRpb24uCj4+Pj4gUmVtZW1iZXIgdGhl
+IGxhc3QgZnJhbWUgdGltZXN0YW1wIGFuZCB1c2UgdGhhdCBpZiBzZXQsIG9yIG90aGVyd2lzZQo+
+Pj4+IHVzZSB0aGUga2VybmVsIHN0YXJ0IHRpbWUuCj4+Pgo+Pj4gTm9ybWFsbHkgSDI2NCBoZWFk
+ZXJzIGFyZSBjb25zaWRlcmVkIHRvIGJlIHBhcnQgb2YgdGhlIGZvbGxvd2luZyBmcmFtZS4KPj4+
+IEdpdmluZyBpdCB0aGUgdGltZXN0YW1wIG9mIHRoZSBwcmV2aW91cyBmcmFtZSB3aWxsIGxpa2Vs
+eSBjb25mdXNlIHNvbWUKPj4+IHVzZXJzcGFjZSBhbmQgY2F1c2UgYW4gb2ZmLWJ5LW9uZSBpbiB0
+aW1lc3RhbXAuIEkgdW5kZXJzdGFuZCB0aGlzIGlzIGEKPj4+IHdvcmthcm91bmQsIGJ1dCBhbSB3
+b25kZXJpbmcgaWYgdGhpcyBjYW4gYmUgaW1wcm92ZWQuCj4+Cj4+IFNvcnJ5LCBzbGlnaHQgYW1i
+aWd1aXR5IGluIGhvdyBJJ20gcmVhZGluZyB5b3VyIGNvbW1lbnQuCj4+Cj4+IEFyZSB5b3Ugc2F5
+aW5nIHRoYXQgdGhlIGhlYWRlciBieXRlcyB3YW50IHRvIGJlIGluIHRoZSBzYW1lIGJ1ZmZlciBh
+cwo+PiB0aGUgZm9sbG93aW5nIGZyYW1lPwo+PiBJIHRob3VnaHQgdGhpcyBoYWQgYWxzbyBiZWVu
+IGRpc2N1c3NlZCBpbiB0aGUgVjRMMiBzdGF0ZWZ1bCBjb2RlYyBBUEkKPj4gdGhyZWFkcyBhbG9u
+ZyB3aXRoIGhvdyBtYW55IGVuY29kZWQgZnJhbWVzIHdlcmUgYWxsb3dlZCBpbiBhIHNpbmdsZQo+
+PiBWNEwyIGJ1ZmZlci4gSSBjZXJ0YWlubHkgaGFkbid0IHNlZW4gYSBzdGF0ZW1lbnQgYWJvdXQg
+dGhlIGhlYWRlcgo+PiBieXRlcyBiZWluZyBjb21iaW5lZCB3aXRoIHRoZSBuZXh0IGZyYW1lLgo+
+PiBJZiB0aGUgYmVoYXZpb3VyIHJlcXVpcmVkIGJ5IFY0TDIgaXMgdGhhdCBoZWFkZXIgYnl0ZXMg
+YW5kIGZvbGxvd2luZwo+PiBmcmFtZSBhcmUgaW4gdGhlIHNhbWUgYnVmZmVyLCB0aGVuIHRoYXQg
+aXMgcmVsYXRpdmVseSBlYXN5IHRvIGFjaGlldmUKPj4gaW4gdGhlIGZpcm13YXJlLiBUaGlzIHdv
+cmthcm91bmQgY2FuIHJlbWFpbiBmb3Igb2xkZXIgZmlybXdhcmUgYXMgaXQKPj4gd2lsbCBuZXZl
+ciB0cmlnZ2VyIGlmIHRoZSBmaXJtd2FyZSBoYXMgY29tYmluZWQgdGhlIGZyYW1lcy4KPiAKPiBU
+aGUgZnJhbWUgYWxpZ25tZW50IGlzIGEgcmVxdWlyZW1lbnQgc3BlY2lmaWMgdG8gdGhlIHN0YXRl
+ZnVsIGNvZGVjCj4gQVBJLgoKSXMgaXQ/IEkgZG9uJ3QgcmVtZW1iZXIgaXQgYmVpbmcgc3BlY2lm
+aWVkIGFueXdoZXJlIGV4cGxpY2l0bHkuCkhlcmUgaXMgdGhlIGxhdGVzdCB0ZXh0OgoKaHR0cHM6
+Ly9odmVya3VpbC5ob21lLnhzNGFsbC5ubC9jb2RlYy1hcGkvdWFwaS92NGwvZGV2LWVuY29kZXIu
+aHRtbAoKSSdsbCBzdGFydCBhIG5ldyB0aHJlYWQgYWJvdXQgdGhpcywgc2luY2UgdGhpcyByZWFs
+bHkgbmVlZHMgdG8gYmUKY2xhcmlmaWVkLgoKUmVnYXJkcywKCglIYW5zCgogU3RhdGVmdWwgY29k
+ZWMgbXVzdCBpbnRlcnByZXQgX0gyNjQgZm9ybWF0IGFzIGJlaW5nIG9uZSBmdWxsIGZyYW1lCj4g
+cGVyIGJ1ZmZlciAoMSBBVSBpbiBwcm9ncmVzc2l2ZSwgYW5kIDEgdG8gMiBBVSBpbiBpbnRlcmxh
+Y2VkKSwgdGhlCj4gZmlyc3QgZnJhbWUgc2hvdWxkIGluY2x1ZGUgU1BTL1BQUyBhbmQgYW55IG90
+aGVyIHByZWZpeCBOQUxzLiBZb3UgbWF5Cj4gZm9sbG93IHRoaXMgcnVsZSBpbiB5b3VyIGNhcHR1
+cmUgZHJpdmVyIGlmIHlvdSB3YW50IHRvIG1ha2UgaXQgcG9zc2libGUKPiB0byB6ZXJvLWNvcHkg
+dGhlIGVuY29kZWQgZnJhbWVzIGZyb20gdGhlIGNhcHR1cmUgdG8gdGhlIGRlY29kZXIuCj4gVGhv
+dWdoLCB1c2Vyc3BhY2Ugd2lsbCBzdGlsbCBoYXZlIHRvIHBhcnNlIGFzIHRoZXJlIGlzIG5vIGlu
+ZGljYXRpb24KPiBmb3IgY2FwdHVyZSBkZXZpY2VzIG9mIHRoZSBIMjY0IGFsaWdubWVudCBiZWlu
+ZyB1c2VkICh0aGF0IGltcGx5IDEKPiBmcmFtZSBsYXRlbmN5KS4gQm9yaXMgaXMgd29ya2luZyBv
+biBhIGNvbnRyb2wgZm9yIHN0YXRlbGVzcyBDT0RFQyB0bwo+IGNvbnRyb2wgaWYgd2UgYXJlIHJ1
+bm5pbmcgaW4gZnVsbC1mcmFtZSBvciBwZXIgc2xpY2VzLiBJIGRvIGhvcGUgdGhpcwo+IGNvbnRy
+b2wgd2lsbCBiZSBleHRlbmRlZCBsYXRlciB0byBhbGxvdyBjYW1lcmFzIGFuZCBkZWNvZGVycyB0
+byBzaWduYWwKPiB0aGVpciBhbGlnbm1lbnQsIG9yIHNpbXBseSB0byBhbGxvdyBlbmFibGluZyBs
+b3ctbGF0ZW5jeSBtb2Rlcwo+IHN1cHBvcnRlZCBieSBDT0RBIGFuZCBaeW5NUCBmaXJtd2FyZXMu
+Cj4gCj4+Cj4+IE9yIGFyZSB5b3Ugc2F5aW5nIHRoYXQgdGhlIGhlYWRlciBieXRlcyByZW1haW4g
+aW4gdGhlaXIgb3duIGJ1ZmZlciwKPj4gYnV0IHRoZSB0aW1lc3RhbXAgd2FudHMgdG8gYmUgdGhl
+IHNhbWUgYXMgdGhlIG5leHQgZnJhbWU/IFRoYXQgaXMKPj4gaGFyZGVyIHRvIGFjaGlldmUgaW4g
+dGhlIGZpcm13YXJlLCBidXQgY291bGQgcHJvYmFibHkgYmUgZG9uZSBpbiB0aGUKPj4ga2VybmVs
+IGRyaXZlciBieSBob2xkaW5nIG9uIHRvIHRoZSBoZWFkZXIgYnl0ZXMgZnJhbWUgdW50aWwgdGhl
+IG5leHQKPj4gYnVmZmVyIGhhZCBiZWVuIHJlY2VpdmVkLCBhdCB3aGljaCBwb2ludCB0aGUgdGlt
+ZXN0YW1wIGNhbiBiZSBjb3BpZWQKPj4gYWNyb3NzLiBQb3NzaWJsZSwgYnV0IGp1c3QgbmVlZHMg
+c2xpZ2h0bHkgY2FyZWZ1bCBoYW5kbGluZyB0byBlbnN1cmUKPj4gd2UgZG9uJ3QgbG9zZSBidWZm
+ZXJzIGFjY2lkZW50YWxseS4KPiAKPiBTbyB0aGlzIGlzbid0IHNwZWNpZmllZCBieSBWNEwyIGl0
+c2VsZi4gU28gaW5zdGVhZCBJIHJlbHkgb24gSDI2NCBhbmQKPiBNUEVHIFRTIHNwZWNpZmljYXRp
+b24gdG8gYWR2YW5jZSB0aGlzLiBUaGlzIGlzIGFsc28gdGhlIGludGVycHJldGF0aW9uCj4gd2Ug
+aGF2ZSBvZiB0aW1lc3RhbXAgaW4gR1N0cmVhbWVyIChmZm1wZWcgdXNlcyBvdXQtb2YtYmFuZCBo
+ZWFkZXJzIHdpdGgKPiBmdWxsIGZyYW1lIEFWQywgc28gdGhpcyBkb2VzIG5vdCBhcHBseSkuCj4g
+Cj4gU28gSDI2NCBBVUQsIFNQUywgUFBTLCBTRUkgYW5kIG90aGVyIHByZWZpeCBOQUwgYXJlIGNv
+bnNpZGVyZWQgdG8gYmUKPiB0aGUgc3RhcnQgb2YgYSBmcmFtZS4gV2l0aCB0aGlzIGludGVycHJl
+dGF0aW9uIGluIG1pbmQsIGFjY3VtdWxhdGluZwo+IHRoZW0gaXMgY29uc2lkZXJlZCB6ZXJvLWxh
+dGVuY3kuIFRoaXMgYmFzaWNhbGx5IG1lYW5zIHRoYXQgaWYgdGhleSBhcmUKPiB0byBoYXZlIGEg
+dGltZXN0YW1wLCB0aGV5IHdvdWxkIHNoYXJlIHRoYXQgdGltZXN0YW1wIHdpdGggYWxsIHRoZQo+
+IHNsaWNlcyBvZiB0aGUgc2FtZSBmcmFtZS4gSW4gR1N0cmVhbWVyLCB3ZSBoYXZlIHRoZSBub3Rp
+b24gb2Ygbm8KPiB0aW1lc3RhbXAsIHNvIGluIHN1Y2ggYSBjYXNlIHdlJ2QgbGVhdmUgdGhlIHRp
+bWVzdGFtcCBlbXB0eSBhbmQgb3VyCj4gcGFyc2VycyB3b3VsZCBwaWNrIHRoZSBmaXJzdCB2YWxp
+ZCB0aW1lc3RhbXAgdGhhdCBmb3JtZWQgdGhlIGZ1bGwgZnJhbWUKPiBhcyBiZWluZyB0aGUgZnJh
+bWUgdGltZXN0YW1wIChpdCdzIGEgYml0IGJ1Z2dpZXIgdGhlbiB0aGF0LCBidXQgdGhhdCdzCj4g
+d2hhdCBpdCdzIHN1cHBvc2UgdG8gZG8pLgo+IAo+IE9uIHRvcCBvZiB0aGF0LCBpZiB5b3UgZG9u
+J3QgaGF2ZSBhbnkgbWVhbmluZ2Z1bCBhbGlnbm1lbnQgaW4geW91ciBIMjY0Cj4gc3RyZWFtLCB0
+aGUgTVBFRyBUUyBmb3JtYXQgc3RhdGVzIHRoYXQgdGhlIHRpbWVzdGFtcCBvZiBhIGJ1ZmZlciBz
+aG91bGQKPiBiZSB0aGUgdGltZXN0YW1wIG9mIHRoZSBmaXJzdCBOQUwgc3RhcnRpbmcgd2l0aGlu
+IHRoaXMgYnVmZmVyLCBvciB0aGUKPiB0aW1lc3RhbXAgb2YgdGhlIGN1cnJlbnQgTkFMIGlmIHRo
+ZXJlIGlzIG5vdCBOQUwgc3RhcnQuCj4gCj4gQnkgcmVzcGVjdGluZyB0aGVzZSBzdGFuZGFyZHMg
+eW91IGVuc3VyZSB0aGF0IGxhdGVuY3kgYXdhcmUgYXBwbGljYXRpb24KPiBjYW4gd29yayB3aXRo
+IHlvdXIgZHJpdmVyIHdpdGhvdXQgY2F1c2luZyBkZWxheXMsIG9yIHdvcnN0LCBoYXZpbmcgdG8K
+PiBkZWFsIHdpdGggYXJ0aWZpY2lhbGx5IGxhdGUgZnJhbWVzLgo+IAo+IEkgaG9wZSB0aGlzIGNs
+YXJpZnkgYW5kIGhlbHBzIHVuZGVyc3RhbmQgbXkgcmVxdWVzdCBmb3IgInVuaGFja2luZyIgdGhl
+Cj4gaGVhZGVycyB0aW1lc3RhbXBzLiBJIGhhZCBhc3N1bWVkIHRoZSB0aW1lc3RhbXAgY2FtZSBm
+cm9tIHRoZSBkcml2ZXIKPiAoaW5zdGVhZCBvZiBmcm9tIHRoZSBmaXJtd2FyZSksIHNvcnJ5IGlm
+IHRoYXQgY2F1c2VkIGNvbmZ1c2lvbi4gSWYKPiBtZXJnaW5nIGZ1bGwgZnJhbWVzIGlzIGVhc2ll
+ciwgSSB0aGluayBJIHdvdWxkIG9wdCBmb3IgdGhhdCBhcyBpdCdzCj4gYmVuZWZpY2lhbCB0byBw
+ZXJmb3JtYW5jZSB3aGVuIGNvbWJpbmVkIHdpdGggb3RoZXIgZnVsbCBmcmFtZSBBUElzLgo+IAo+
+IE5pY29sYXMKPiAKPj4KPj4gICBEYXZlCj4+Cj4+Pj4gTGluazogaHR0cHM6Ly9naXRodWIuY29t
+L3Jhc3BiZXJyeXBpL2xpbnV4L2lzc3Vlcy8xODM2Cj4+Pj4gU2lnbmVkLW9mZi1ieTogRGF2ZSBT
+dGV2ZW5zb24gPGRhdmUuc3RldmVuc29uQHJhc3BiZXJyeXBpLm9yZz4KPj4+PiAtLS0KPj4+PiAg
+Li4uL3N0YWdpbmcvdmMwNF9zZXJ2aWNlcy9iY20yODM1LWNhbWVyYS9iY20yODM1LWNhbWVyYS5j
+ICB8IDE0ICsrKysrKysrKysrKy0tCj4+Pj4gIC4uLi9zdGFnaW5nL3ZjMDRfc2VydmljZXMvYmNt
+MjgzNS1jYW1lcmEvYmNtMjgzNS1jYW1lcmEuaCAgfCAgMiArKwo+Pj4+ICAyIGZpbGVzIGNoYW5n
+ZWQsIDE0IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCj4+Pj4KPj4+PiBkaWZmIC0tZ2l0
+IGEvZHJpdmVycy9zdGFnaW5nL3ZjMDRfc2VydmljZXMvYmNtMjgzNS1jYW1lcmEvYmNtMjgzNS1j
+YW1lcmEuYyBiL2RyaXZlcnMvc3RhZ2luZy92YzA0X3NlcnZpY2VzL2JjbTI4MzUtY2FtZXJhL2Jj
+bTI4MzUtY2FtZXJhLmMKPj4+PiBpbmRleCBkY2U2ZTZkLi4wYzA0ODE1IDEwMDY0NAo+Pj4+IC0t
+LSBhL2RyaXZlcnMvc3RhZ2luZy92YzA0X3NlcnZpY2VzL2JjbTI4MzUtY2FtZXJhL2JjbTI4MzUt
+Y2FtZXJhLmMKPj4+PiArKysgYi9kcml2ZXJzL3N0YWdpbmcvdmMwNF9zZXJ2aWNlcy9iY20yODM1
+LWNhbWVyYS9iY20yODM1LWNhbWVyYS5jCj4+Pj4gQEAgLTM1OSw3ICszNTksOSBAQCBzdGF0aWMg
+dm9pZCBidWZmZXJfY2Ioc3RydWN0IHZjaGlxX21tYWxfaW5zdGFuY2UgKmluc3RhbmNlLAo+Pj4+
+ICAgICAgICAgICAgICAgfQo+Pj4+ICAgICAgIH0gZWxzZSB7Cj4+Pj4gICAgICAgICAgICAgICBp
+ZiAoZGV2LT5jYXB0dXJlLmZyYW1lX2NvdW50KSB7Cj4+Pj4gLSAgICAgICAgICAgICAgICAgICAg
+IGlmIChkZXYtPmNhcHR1cmUudmNfc3RhcnRfdGltZXN0YW1wICE9IC0xICYmIHB0cykgewo+Pj4+
+ICsgICAgICAgICAgICAgICAgICAgICBpZiAoZGV2LT5jYXB0dXJlLnZjX3N0YXJ0X3RpbWVzdGFt
+cCAhPSAtMSkgewo+Pj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGJ1Zi0+dmIudmIy
+X2J1Zi50aW1lc3RhbXAgPSBrdGltZV9nZXRfbnMoKTsKPj4+PiArICAgICAgICAgICAgICAgICAg
+ICAgfSBlbHNlIGlmIChwdHMpIHsKPj4+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBr
+dGltZV90IHRpbWVzdGFtcDsKPj4+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzNjQg
+cnVudGltZV91cyA9IHB0cyAtCj4+Pj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IGRldi0+Y2FwdHVyZS52Y19zdGFydF90aW1lc3RhbXA7Cj4+Pj4gQEAgLTM3Miw4ICszNzQsMTUg
+QEAgc3RhdGljIHZvaWQgYnVmZmVyX2NiKHN0cnVjdCB2Y2hpcV9tbWFsX2luc3RhbmNlICppbnN0
+YW5jZSwKPj4+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrdGltZV90
+b19ucyh0aW1lc3RhbXApKTsKPj4+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBidWYt
+PnZiLnZiMl9idWYudGltZXN0YW1wID0ga3RpbWVfdG9fbnModGltZXN0YW1wKTsKPj4+PiAgICAg
+ICAgICAgICAgICAgICAgICAgfSBlbHNlIHsKPj4+PiAtICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICBidWYtPnZiLnZiMl9idWYudGltZXN0YW1wID0ga3RpbWVfZ2V0X25zKCk7Cj4+Pj4gKyAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgaWYgKGRldi0+Y2FwdHVyZS5sYXN0X3RpbWVzdGFt
+cCkgewo+Pj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYnVmLT52Yi52
+YjJfYnVmLnRpbWVzdGFtcCA9Cj4+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIGRldi0+Y2FwdHVyZS5sYXN0X3RpbWVzdGFtcDsKPj4+PiArICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICB9IGVsc2Ugewo+Pj4+ICsgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgYnVmLT52Yi52YjJfYnVmLnRpbWVzdGFtcCA9Cj4+Pj4gKyAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGt0aW1lX3RvX25zKGRldi0+Y2Fw
+dHVyZS5rZXJuZWxfc3RhcnRfdHMpOwo+Pj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IH0KPj4+PiAgICAgICAgICAgICAgICAgICAgICAgfQo+Pj4+ICsgICAgICAgICAgICAgICAgICAg
+ICBkZXYtPmNhcHR1cmUubGFzdF90aW1lc3RhbXAgPSBidWYtPnZiLnZiMl9idWYudGltZXN0YW1w
+Owo+Pj4+Cj4+Pj4gICAgICAgICAgICAgICAgICAgICAgIHZiMl9zZXRfcGxhbmVfcGF5bG9hZCgm
+YnVmLT52Yi52YjJfYnVmLCAwLCBsZW5ndGgpOwo+Pj4+ICAgICAgICAgICAgICAgICAgICAgICB2
+YjJfYnVmZmVyX2RvbmUoJmJ1Zi0+dmIudmIyX2J1ZiwgVkIyX0JVRl9TVEFURV9ET05FKTsKPj4+
+PiBAQCAtNTQxLDYgKzU1MCw3IEBAIHN0YXRpYyBpbnQgc3RhcnRfc3RyZWFtaW5nKHN0cnVjdCB2
+YjJfcXVldWUgKnZxLCB1bnNpZ25lZCBpbnQgY291bnQpCj4+Pj4gICAgICAgICAgICAgICAgICAg
+ICAgICBkZXYtPmNhcHR1cmUudmNfc3RhcnRfdGltZXN0YW1wLCBwYXJhbWV0ZXJfc2l6ZSk7Cj4+
+Pj4KPj4+PiAgICAgICBkZXYtPmNhcHR1cmUua2VybmVsX3N0YXJ0X3RzID0ga3RpbWVfZ2V0KCk7
+Cj4+Pj4gKyAgICAgZGV2LT5jYXB0dXJlLmxhc3RfdGltZXN0YW1wID0gMDsKPj4+Pgo+Pj4+ICAg
+ICAgIC8qIGVuYWJsZSB0aGUgY2FtZXJhIHBvcnQgKi8KPj4+PiAgICAgICBkZXYtPmNhcHR1cmUu
+cG9ydC0+Y2JfY3R4ID0gZGV2Owo+Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvdmMw
+NF9zZXJ2aWNlcy9iY20yODM1LWNhbWVyYS9iY20yODM1LWNhbWVyYS5oIGIvZHJpdmVycy9zdGFn
+aW5nL3ZjMDRfc2VydmljZXMvYmNtMjgzNS1jYW1lcmEvYmNtMjgzNS1jYW1lcmEuaAo+Pj4+IGlu
+ZGV4IDJiNTY3OWUuLjA5MjczYjAgMTAwNjQ0Cj4+Pj4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL3Zj
+MDRfc2VydmljZXMvYmNtMjgzNS1jYW1lcmEvYmNtMjgzNS1jYW1lcmEuaAo+Pj4+ICsrKyBiL2Ry
+aXZlcnMvc3RhZ2luZy92YzA0X3NlcnZpY2VzL2JjbTI4MzUtY2FtZXJhL2JjbTI4MzUtY2FtZXJh
+LmgKPj4+PiBAQCAtOTAsNiArOTAsOCBAQCBzdHJ1Y3QgYm0yODM1X21tYWxfZGV2IHsKPj4+PiAg
+ICAgICAgICAgICAgIHM2NCAgICAgICAgIHZjX3N0YXJ0X3RpbWVzdGFtcDsKPj4+PiAgICAgICAg
+ICAgICAgIC8qIEtlcm5lbCBzdGFydCB0aW1lc3RhbXAgZm9yIHN0cmVhbWluZyAqLwo+Pj4+ICAg
+ICAgICAgICAgICAga3RpbWVfdCBrZXJuZWxfc3RhcnRfdHM7Cj4+Pj4gKyAgICAgICAgICAgICAv
+KiBUaW1lc3RhbXAgb2YgbGFzdCBmcmFtZSAqLwo+Pj4+ICsgICAgICAgICAgICAgdTY0ICAgICAg
+ICAgICAgIGxhc3RfdGltZXN0YW1wOwo+Pj4+Cj4+Pj4gICAgICAgICAgICAgICBzdHJ1Y3QgdmNo
+aXFfbW1hbF9wb3J0ICAqcG9ydDsgLyogcG9ydCBiZWluZyB1c2VkIGZvciBjYXB0dXJlICovCj4+
+Pj4gICAgICAgICAgICAgICAvKiBjYW1lcmEgcG9ydCBiZWluZyB1c2VkIGZvciBjYXB0dXJlICov
+Cj4+Pj4gLS0KPj4+PiAyLjcuNAo+Pj4+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9q
+ZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
