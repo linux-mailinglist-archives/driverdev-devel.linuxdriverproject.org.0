@@ -1,87 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0A1A159DD7
-	for <lists+driverdev-devel@lfdr.de>; Fri, 28 Jun 2019 16:35:46 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 94A0E59E70
+	for <lists+driverdev-devel@lfdr.de>; Fri, 28 Jun 2019 17:09:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2C05585932;
-	Fri, 28 Jun 2019 14:35:44 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4AEEB87672;
+	Fri, 28 Jun 2019 15:09:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WOQFCbxhCqe1; Fri, 28 Jun 2019 14:35:42 +0000 (UTC)
+	with ESMTP id x7vz8knxJUXv; Fri, 28 Jun 2019 15:09:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 29120864AD;
-	Fri, 28 Jun 2019 14:35:41 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5FA1087653;
+	Fri, 28 Jun 2019 15:09:04 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 510D31BF29C
- for <devel@linuxdriverproject.org>; Fri, 28 Jun 2019 14:35:38 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id F23171BF35C
+ for <devel@linuxdriverproject.org>; Fri, 28 Jun 2019 15:09:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 4DFD0881E2
- for <devel@linuxdriverproject.org>; Fri, 28 Jun 2019 14:35:38 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id ED3028763C
+ for <devel@linuxdriverproject.org>; Fri, 28 Jun 2019 15:09:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QuvrXoJ9NR-7 for <devel@linuxdriverproject.org>;
- Fri, 28 Jun 2019 14:35:37 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qk1-f195.google.com (mail-qk1-f195.google.com
- [209.85.222.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 47C17881DC
- for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 14:35:37 +0000 (UTC)
-Received: by mail-qk1-f195.google.com with SMTP id s22so4965127qkj.12
- for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 07:35:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ndufresne-ca.20150623.gappssmtp.com; s=20150623;
- h=message-id:subject:from:to:cc:date:in-reply-to:references
- :user-agent:mime-version;
- bh=8l9O3yIPDW1K3Y+vUSQBC9BFnuSLH2qrq70Oyl3bqTM=;
- b=KQ01y8hjWbjRfeFxqffEnFGag2BbqSatG4UQOlbpJqY27U9FTSc4GMXdQBRtnVecS0
- mQmtlGvhrpiIREXh4QXivxvzFd2adq+ovO8dvoTuIJwgEiLfApK+1ac2lunBxICC+6sw
- TVXHe25BvGxi+mE1be7qOgO4wIIp2tAIipxHXvxDeCr5yFM4OnoqPUzQwMfdMddGM7nS
- fgagoIjxvjotdTu5Gzm6uylSR7ImKyZefrIUopAxQ2KOPxXe5JSgNLgdkgcN0P2rsqqy
- sJPvPPz7beiyziEr8Lziaqt45JEssrm/AuB3mz4nbZnbK81HbrtyevqS/GZIasA04UOA
- 8Iow==
+ with ESMTP id bqh6dUfOuKsp for <devel@linuxdriverproject.org>;
+ Fri, 28 Jun 2019 15:09:01 +0000 (UTC)
+X-Greylist: delayed 00:15:10 by SQLgrey-1.7.6
+Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
+ [209.85.215.194])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 1F54D84BC1
+ for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 15:09:01 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id s27so2722088pgl.2
+ for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 08:09:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=4+9BQ/9qN/HEB5jYhHOcTVXcrlmUmZtAOZVfYv7/QOA=;
+ b=ofGc0v9hZZwUxfhb5r0SX5BCHeOcj3Ym+G17847226BPeApHLQt5lHVJGZPjPCl6mJ
+ R9yEA1WaiRHbrYKbycxmjkd9zcIuG73DJH0UQtlrraeon+eWgyD9ND/T5MTW0MQaCyTR
+ T/8ILMD0OYRqTF/FvjRgFsB3BtZtKPQ5aqUdQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
- :references:user-agent:mime-version;
- bh=8l9O3yIPDW1K3Y+vUSQBC9BFnuSLH2qrq70Oyl3bqTM=;
- b=rfLbbZaAp6OVWaaLdhH1NJK6DFYptAoch4/Ux7DBSm93IfMTk6QeOatF6YcJlbwy0f
- o2lJyateKCPDkg4dzBSszXBReyN5z30TRqcIIikYqhzHx/lcdy6DJHvoGnf89QWfQJGO
- qKi1vq2grMnDh3faD/C85ojEJXfbHLHrsN/syflw0XT7uy/5G2aCGvkoITbEhPAYwtLs
- 06l4/CvtBjsCWMkKXHpZk7GxF2fiNb8zbdAwhju+if6/YHjh8pgAlr9iIOEEOg+Xqes8
- fAmXGxRPlXKkbHNnoQhAPWvVoevfwJho7ru8o53mBHRCpFtBsSXgqFHIf3EFs2jyHKJF
- hWKA==
-X-Gm-Message-State: APjAAAVTqIrxZ2OOYJeEhwPqUEUEyhqZnaZIk52J4nDpZ7l0QnkDX/fx
- y+WPu4t/Dw4b/a482E6pQn1MFw==
-X-Google-Smtp-Source: APXvYqyCAi6NifW9nZd5H0Tj9993kIrWJTjVPadE7sIjFfB26fk4H20YZ/DTc5DV2O2hLeMeg1aVZA==
-X-Received: by 2002:a37:dd4:: with SMTP id 203mr9253753qkn.326.1561732536308; 
- Fri, 28 Jun 2019 07:35:36 -0700 (PDT)
-Received: from tpx230-nicolas.collaboramtl
- (modemcable154.55-37-24.static.videotron.ca. [24.37.55.154])
- by smtp.gmail.com with ESMTPSA id g2sm1116350qkb.80.2019.06.28.07.35.34
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Fri, 28 Jun 2019 07:35:35 -0700 (PDT)
-Message-ID: <a26691644df987aa93523be388646f89d9f468da.camel@ndufresne.ca>
-Subject: Re: [PATCH 01/31] staging: bcm2835-camera: Ensure H264 header bytes
- get a sensible timestamp
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Hans Verkuil <hverkuil@xs4all.nl>, Dave Stevenson
- <dave.stevenson@raspberrypi.org>
-Date: Fri, 28 Jun 2019 10:35:33 -0400
-In-Reply-To: <df6c4e8e-9182-f629-2bd7-a36b5697f382@xs4all.nl>
-References: <1561661788-22744-1-git-send-email-wahrenst@gmx.net>
- <1561661788-22744-2-git-send-email-wahrenst@gmx.net>
- <5e20b1d04b3c2f64173631ec2f0261a8a9597f0c.camel@ndufresne.ca>
- <CAAoAYcOvnF55U0kPMFE4cOd=nUqjoidirbGP6AWN=5Rqp0RhbQ@mail.gmail.com>
- <54088ebc2fcbcc3a202ab0fd4d32f9ad8c1e9b82.camel@ndufresne.ca>
- <df6c4e8e-9182-f629-2bd7-a36b5697f382@xs4all.nl>
-User-Agent: Evolution 3.32.2 (3.32.2-1.fc30) 
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=4+9BQ/9qN/HEB5jYhHOcTVXcrlmUmZtAOZVfYv7/QOA=;
+ b=t7rILgws6op870hs7RE1xwWFDPiES+Hr5S0JsOTnqsI97PXkRNMHUgTbrODyU8cQjM
+ mMG0WNZxTbohm7kUwpXbigeiPq4VPTBl1ONME2gRk6upFS3ZmkU8g/r/SKY+/f692gRF
+ jUdOtkhM+3jKkkJ0lRldCmp9Ezm6by42NjNnqVd0dXowX0gPaCeZAbnbklDe3le8mviI
+ hj1ZEgmqd2E8jcaFmjCDsd4wDC0tw9nrCGJstLgure4C/uOMHUBYcknsc10kiz95/igM
+ 16O6fQjKg10SYLV8tELv1PXXTwfi1u9vWMdRXT5orZ43zsmS9o6dpfFiJddB60TwMdki
+ W0uw==
+X-Gm-Message-State: APjAAAX+yx2jh1tCbzji0D+4NbrJ8QOhk6Q+kDVThaPMgq9iqend6KqF
+ 21yMN+sGuXQ1g89LsTSx3fD27MipvIU=
+X-Google-Smtp-Source: APXvYqxuLReGYT1J6pyZqWFjFn4v/IkeCqcW7PORteWScBzJ7GtXkI24Q14wzzAy1SnCsExLh59UaA==
+X-Received: by 2002:a17:90a:29c5:: with SMTP id
+ h63mr13123809pjd.83.1561733315036; 
+ Fri, 28 Jun 2019 07:48:35 -0700 (PDT)
+Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
+ by smtp.gmail.com with ESMTPSA id b11sm2896176pfd.18.2019.06.28.07.48.33
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Fri, 28 Jun 2019 07:48:33 -0700 (PDT)
+Date: Fri, 28 Jun 2019 07:48:33 -0700
+From: Kees Cook <keescook@chromium.org>
+To: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [PATCH 1/4] [v2] structleak: disable STRUCTLEAK_BYREF in
+ combination with KASAN_STACK
+Message-ID: <201906280748.910641F1DD@keescook>
+References: <20190628123819.2785504-1-arnd@arndb.de>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190628123819.2785504-1-arnd@arndb.de>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,259 +84,122 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- LMML <linux-media@vger.kernel.org>, Eric Anholt <eric@anholt.net>,
- "moderated list:BROADCOM BCM2835 ARM ARCHITECTURE"
- <linux-rpi-kernel@lists.infradead.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-arm-kernel@lists.infradead.org, Stefan Wahren <wahrenst@gmx.net>
-Content-Type: multipart/mixed; boundary="===============9033220464001715884=="
+Cc: James Morris <jmorris@namei.org>, Michal Hocko <mhocko@suse.cz>,
+ Masahiro Yamada <yamada.masahiro@socionext.com>,
+ Alexander Potapenko <glider@google.com>, devel@driverdev.osuosl.org,
+ linux-scsi@vger.kernel.org, James Smart <james.smart@broadcom.com>,
+ lvs-devel@vger.kernel.org, Julian Anastasov <ja@ssi.bg>,
+ coreteam@netfilter.org, Pablo Neira Ayuso <pablo@netfilter.org>,
+ Wensong Zhang <wensong@linux-vs.org>, Dick Kennedy <dick.kennedy@broadcom.com>,
+ "James E . J . Bottomley" <jejb@linux.ibm.com>,
+ Simon Horman <horms@verge.net.au>, Thomas Gleixner <tglx@linutronix.de>,
+ Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
+ "Martin K . Petersen" <martin.petersen@oracle.com>,
+ Ard Biesheuvel <ard.biesheuvel@linaro.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ linux-security-module@vger.kernel.org, netfilter-devel@vger.kernel.org,
+ netdev@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>,
+ "David S . Miller" <davem@davemloft.net>,
+ Larry Finger <Larry.Finger@lwfinger.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Fri, Jun 28, 2019 at 02:37:46PM +0200, Arnd Bergmann wrote:
+> The combination of KASAN_STACK and GCC_PLUGIN_STRUCTLEAK_BYREF
+> leads to much larger kernel stack usage, as seen from the warnings
+> about functions that now exceed the 2048 byte limit:
+> 
+> drivers/media/i2c/tvp5150.c:253:1: error: the frame size of 3936 bytes is larger than 2048 bytes
+> drivers/media/tuners/r820t.c:1327:1: error: the frame size of 2816 bytes is larger than 2048 bytes
+> drivers/net/wireless/broadcom/brcm80211/brcmsmac/phy/phy_n.c:16552:1: error: the frame size of 3144 bytes is larger than 2048 bytes [-Werror=frame-larger-than=]
+> fs/ocfs2/aops.c:1892:1: error: the frame size of 2088 bytes is larger than 2048 bytes
+> fs/ocfs2/dlm/dlmrecovery.c:737:1: error: the frame size of 2088 bytes is larger than 2048 bytes
+> fs/ocfs2/namei.c:1677:1: error: the frame size of 2584 bytes is larger than 2048 bytes
+> fs/ocfs2/super.c:1186:1: error: the frame size of 2640 bytes is larger than 2048 bytes
+> fs/ocfs2/xattr.c:3678:1: error: the frame size of 2176 bytes is larger than 2048 bytes
+> net/bluetooth/l2cap_core.c:7056:1: error: the frame size of 2144 bytes is larger than 2048 bytes [-Werror=frame-larger-than=]
+> net/bluetooth/l2cap_core.c: In function 'l2cap_recv_frame':
+> net/bridge/br_netlink.c:1505:1: error: the frame size of 2448 bytes is larger than 2048 bytes
+> net/ieee802154/nl802154.c:548:1: error: the frame size of 2232 bytes is larger than 2048 bytes
+> net/wireless/nl80211.c:1726:1: error: the frame size of 2224 bytes is larger than 2048 bytes
+> net/wireless/nl80211.c:2357:1: error: the frame size of 4584 bytes is larger than 2048 bytes
+> net/wireless/nl80211.c:5108:1: error: the frame size of 2760 bytes is larger than 2048 bytes
+> net/wireless/nl80211.c:6472:1: error: the frame size of 2112 bytes is larger than 2048 bytes
+> 
+> The structleak plugin was previously disabled for CONFIG_COMPILE_TEST,
+> but meant we missed some bugs, so this time we should address them.
+> 
+> The frame size warnings are distracting, and risking a kernel stack
+> overflow is generally not beneficial to performance, so it may be best
+> to disallow that particular combination. This can be done by turning
+> off either one. I picked the dependency in GCC_PLUGIN_STRUCTLEAK_BYREF
+> and GCC_PLUGIN_STRUCTLEAK_BYREF_ALL, as this option is designed to
+> make uninitialized stack usage less harmful when enabled on its own,
+> but it also prevents KASAN from detecting those cases in which it was
+> in fact needed.
+> 
+> KASAN_STACK is currently implied by KASAN on gcc, but could be made a
+> user selectable option if we want to allow combining (non-stack) KASAN
+> with GCC_PLUGIN_STRUCTLEAK_BYREF.
+> 
+> Note that it would be possible to specifically address the files that
+> print the warning, but presumably the overall stack usage is still
+> significantly higher than in other configurations, so this would not
+> address the full problem.
+> 
+> I could not test this with CONFIG_INIT_STACK_ALL, which may or may not
+> suffer from a similar problem.
+> 
+> Fixes: 81a56f6dcd20 ("gcc-plugins: structleak: Generalize to all variable types")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 
---===============9033220464001715884==
-Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
-	boundary="=-3Fdc3agw+15zg51DLGrO"
+Acked-by: Kees Cook <keescook@chromium.org>
 
+-Kees
 
---=-3Fdc3agw+15zg51DLGrO
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+> ---
+> [v2] do it for both GCC_PLUGIN_STRUCTLEAK_BYREF and GCC_PLUGIN_STRUCTLEAK_BYREF_ALL.
+> ---
+>  security/Kconfig.hardening | 7 +++++++
+>  1 file changed, 7 insertions(+)
+> 
+> diff --git a/security/Kconfig.hardening b/security/Kconfig.hardening
+> index a1ffe2eb4d5f..af4c979b38ee 100644
+> --- a/security/Kconfig.hardening
+> +++ b/security/Kconfig.hardening
+> @@ -61,6 +61,7 @@ choice
+>  	config GCC_PLUGIN_STRUCTLEAK_BYREF
+>  		bool "zero-init structs passed by reference (strong)"
+>  		depends on GCC_PLUGINS
+> +		depends on !(KASAN && KASAN_STACK=1)
+>  		select GCC_PLUGIN_STRUCTLEAK
+>  		help
+>  		  Zero-initialize any structures on the stack that may
+> @@ -70,9 +71,15 @@ choice
+>  		  exposures, like CVE-2017-1000410:
+>  		  https://git.kernel.org/linus/06e7e776ca4d3654
+>  
+> +		  As a side-effect, this keeps a lot of variables on the
+> +		  stack that can otherwise be optimized out, so combining
+> +		  this with CONFIG_KASAN_STACK can lead to a stack overflow
+> +		  and is disallowed.
+> +
+>  	config GCC_PLUGIN_STRUCTLEAK_BYREF_ALL
+>  		bool "zero-init anything passed by reference (very strong)"
+>  		depends on GCC_PLUGINS
+> +		depends on !(KASAN && KASAN_STACK=1)
+>  		select GCC_PLUGIN_STRUCTLEAK
+>  		help
+>  		  Zero-initialize any stack variables that may be passed
+> -- 
+> 2.20.0
+> 
 
-Le vendredi 28 juin 2019 =C3=A0 16:08 +0200, Hans Verkuil a =C3=A9crit :
-> On 6/28/19 4:00 PM, Nicolas Dufresne wrote:
-> > Le vendredi 28 juin 2019 =C3=A0 11:10 +0100, Dave Stevenson a =C3=A9cri=
-t :
-> > > Hi Nicolas
-> > >=20
-> > > On Thu, 27 Jun 2019 at 20:55, Nicolas Dufresne <nicolas@ndufresne.ca>=
- wrote:
-> > > > Hi Dave,
-> > > >=20
-> > > > Le jeudi 27 juin 2019 =C3=A0 20:55 +0200, Stefan Wahren a =C3=A9cri=
-t :
-> > > > > From: Dave Stevenson <dave.stevenson@raspberrypi.org>
-> > > > >=20
-> > > > > H264 header come from VC with 0 timestamps, which means they get =
-a
-> > > > > strange timestamp when processed with VC/kernel start times,
-> > > > > particularly if used with the inline header option.
-> > > > > Remember the last frame timestamp and use that if set, or otherwi=
-se
-> > > > > use the kernel start time.
-> > > >=20
-> > > > Normally H264 headers are considered to be part of the following fr=
-ame.
-> > > > Giving it the timestamp of the previous frame will likely confuse s=
-ome
-> > > > userspace and cause an off-by-one in timestamp. I understand this i=
-s a
-> > > > workaround, but am wondering if this can be improved.
-> > >=20
-> > > Sorry, slight ambiguity in how I'm reading your comment.
-> > >=20
-> > > Are you saying that the header bytes want to be in the same buffer as
-> > > the following frame?
-> > > I thought this had also been discussed in the V4L2 stateful codec API
-> > > threads along with how many encoded frames were allowed in a single
-> > > V4L2 buffer. I certainly hadn't seen a statement about the header
-> > > bytes being combined with the next frame.
-> > > If the behaviour required by V4L2 is that header bytes and following
-> > > frame are in the same buffer, then that is relatively easy to achieve
-> > > in the firmware. This workaround can remain for older firmware as it
-> > > will never trigger if the firmware has combined the frames.
-> >=20
-> > The frame alignment is a requirement specific to the stateful codec
-> > API.
->=20
-> Is it? I don't remember it being specified anywhere explicitly.
-> Here is the latest text:
->=20
-> https://hverkuil.home.xs4all.nl/codec-api/uapi/v4l/dev-encoder.html
->=20
-> I'll start a new thread about this, since this really needs to be
-> clarified.
-
-Ok, let's clarify this, but before we start, a quick reminder that this
-is what userspace assumes already, so breaking this will cause
-regressions all over.
-
->=20
-> Regards,
->=20
-> 	Hans
->=20
->  Stateful codec must interpret _H264 format as being one full frame
-> > per buffer (1 AU in progressive, and 1 to 2 AU in interlaced), the
-> > first frame should include SPS/PPS and any other prefix NALs. You may
-> > follow this rule in your capture driver if you want to make it possible
-> > to zero-copy the encoded frames from the capture to the decoder.
-> > Though, userspace will still have to parse as there is no indication
-> > for capture devices of the H264 alignment being used (that imply 1
-> > frame latency). Boris is working on a control for stateless CODEC to
-> > control if we are running in full-frame or per slices. I do hope this
-> > control will be extended later to allow cameras and decoders to signal
-> > their alignment, or simply to allow enabling low-latency modes
-> > supported by CODA and ZynMP firmwares.
-> >=20
-> > > Or are you saying that the header bytes remain in their own buffer,
-> > > but the timestamp wants to be the same as the next frame? That is
-> > > harder to achieve in the firmware, but could probably be done in the
-> > > kernel driver by holding on to the header bytes frame until the next
-> > > buffer had been received, at which point the timestamp can be copied
-> > > across. Possible, but just needs slightly careful handling to ensure
-> > > we don't lose buffers accidentally.
-> >=20
-> > So this isn't specified by V4L2 itself. So instead I rely on H264 and
-> > MPEG TS specification to advance this. This is also the interpretation
-> > we have of timestamp in GStreamer (ffmpeg uses out-of-band headers with
-> > full frame AVC, so this does not apply).
-> >=20
-> > So H264 AUD, SPS, PPS, SEI and other prefix NAL are considered to be
-> > the start of a frame. With this interpretation in mind, accumulating
-> > them is considered zero-latency. This basically means that if they are
-> > to have a timestamp, they would share that timestamp with all the
-> > slices of the same frame. In GStreamer, we have the notion of no
-> > timestamp, so in such a case we'd leave the timestamp empty and our
-> > parsers would pick the first valid timestamp that formed the full frame
-> > as being the frame timestamp (it's a bit buggier then that, but that's
-> > what it's suppose to do).
-> >=20
-> > On top of that, if you don't have any meaningful alignment in your H264
-> > stream, the MPEG TS format states that the timestamp of a buffer should
-> > be the timestamp of the first NAL starting within this buffer, or the
-> > timestamp of the current NAL if there is not NAL start.
-> >=20
-> > By respecting these standards you ensure that latency aware application
-> > can work with your driver without causing delays, or worst, having to
-> > deal with artificially late frames.
-> >=20
-> > I hope this clarify and helps understand my request for "unhacking" the
-> > headers timestamps. I had assumed the timestamp came from the driver
-> > (instead of from the firmware), sorry if that caused confusion. If
-> > merging full frames is easier, I think I would opt for that as it's
-> > beneficial to performance when combined with other full frame APIs.
-> >=20
-> > Nicolas
-> >=20
-> > >   Dave
-> > >=20
-> > > > > Link: https://github.com/raspberrypi/linux/issues/1836
-> > > > > Signed-off-by: Dave Stevenson <dave.stevenson@raspberrypi.org>
-> > > > > ---
-> > > > >  .../staging/vc04_services/bcm2835-camera/bcm2835-camera.c  | 14 =
-++++++++++++--
-> > > > >  .../staging/vc04_services/bcm2835-camera/bcm2835-camera.h  |  2 =
-++
-> > > > >  2 files changed, 14 insertions(+), 2 deletions(-)
-> > > > >=20
-> > > > > diff --git a/drivers/staging/vc04_services/bcm2835-camera/bcm2835=
--camera.c b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-> > > > > index dce6e6d..0c04815 100644
-> > > > > --- a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera=
-.c
-> > > > > +++ b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera=
-.c
-> > > > > @@ -359,7 +359,9 @@ static void buffer_cb(struct vchiq_mmal_insta=
-nce *instance,
-> > > > >               }
-> > > > >       } else {
-> > > > >               if (dev->capture.frame_count) {
-> > > > > -                     if (dev->capture.vc_start_timestamp !=3D -1=
- && pts) {
-> > > > > +                     if (dev->capture.vc_start_timestamp !=3D -1=
-) {
-> > > > > +                             buf->vb.vb2_buf.timestamp =3D ktime=
-_get_ns();
-> > > > > +                     } else if (pts) {
-> > > > >                               ktime_t timestamp;
-> > > > >                               s64 runtime_us =3D pts -
-> > > > >                                   dev->capture.vc_start_timestamp=
-;
-> > > > > @@ -372,8 +374,15 @@ static void buffer_cb(struct vchiq_mmal_inst=
-ance *instance,
-> > > > >                                        ktime_to_ns(timestamp));
-> > > > >                               buf->vb.vb2_buf.timestamp =3D ktime=
-_to_ns(timestamp);
-> > > > >                       } else {
-> > > > > -                             buf->vb.vb2_buf.timestamp =3D ktime=
-_get_ns();
-> > > > > +                             if (dev->capture.last_timestamp) {
-> > > > > +                                     buf->vb.vb2_buf.timestamp =
-=3D
-> > > > > +                                             dev->capture.last_t=
-imestamp;
-> > > > > +                             } else {
-> > > > > +                                     buf->vb.vb2_buf.timestamp =
-=3D
-> > > > > +                                             ktime_to_ns(dev->ca=
-pture.kernel_start_ts);
-> > > > > +                             }
-> > > > >                       }
-> > > > > +                     dev->capture.last_timestamp =3D buf->vb.vb2=
-_buf.timestamp;
-> > > > >=20
-> > > > >                       vb2_set_plane_payload(&buf->vb.vb2_buf, 0, =
-length);
-> > > > >                       vb2_buffer_done(&buf->vb.vb2_buf, VB2_BUF_S=
-TATE_DONE);
-> > > > > @@ -541,6 +550,7 @@ static int start_streaming(struct vb2_queue *=
-vq, unsigned int count)
-> > > > >                        dev->capture.vc_start_timestamp, parameter=
-_size);
-> > > > >=20
-> > > > >       dev->capture.kernel_start_ts =3D ktime_get();
-> > > > > +     dev->capture.last_timestamp =3D 0;
-> > > > >=20
-> > > > >       /* enable the camera port */
-> > > > >       dev->capture.port->cb_ctx =3D dev;
-> > > > > diff --git a/drivers/staging/vc04_services/bcm2835-camera/bcm2835=
--camera.h b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.h
-> > > > > index 2b5679e..09273b0 100644
-> > > > > --- a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera=
-.h
-> > > > > +++ b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera=
-.h
-> > > > > @@ -90,6 +90,8 @@ struct bm2835_mmal_dev {
-> > > > >               s64         vc_start_timestamp;
-> > > > >               /* Kernel start timestamp for streaming */
-> > > > >               ktime_t kernel_start_ts;
-> > > > > +             /* Timestamp of last frame */
-> > > > > +             u64             last_timestamp;
-> > > > >=20
-> > > > >               struct vchiq_mmal_port  *port; /* port being used f=
-or capture */
-> > > > >               /* camera port being used for capture */
-> > > > > --
-> > > > > 2.7.4
-> > > > >=20
-
---=-3Fdc3agw+15zg51DLGrO
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCXRYltQAKCRBxUwItrAao
-HBaZAJ9R2y+IPJr5GvAJ0pMTyQPIPwsQJQCdFNDBuauOrD6ZN49s0kQ/lvpt9K8=
-=uvxS
------END PGP SIGNATURE-----
-
---=-3Fdc3agw+15zg51DLGrO--
-
-
---===============9033220464001715884==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+-- 
+Kees Cook
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============9033220464001715884==--
-
