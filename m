@@ -1,75 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 500265A1A0
-	for <lists+driverdev-devel@lfdr.de>; Fri, 28 Jun 2019 19:01:24 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 756485A1A2
+	for <lists+driverdev-devel@lfdr.de>; Fri, 28 Jun 2019 19:01:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7096022846;
-	Fri, 28 Jun 2019 17:01:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0ACA28829A;
+	Fri, 28 Jun 2019 17:01:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YxhkoIMscaqM; Fri, 28 Jun 2019 17:01:21 +0000 (UTC)
+	with ESMTP id SZI+06RLulbF; Fri, 28 Jun 2019 17:01:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id CD55E2043F;
-	Fri, 28 Jun 2019 17:01:19 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 949F282476;
+	Fri, 28 Jun 2019 17:01:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A8A741BF36D
- for <devel@linuxdriverproject.org>; Fri, 28 Jun 2019 17:01:18 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A70A21BF36D
+ for <devel@linuxdriverproject.org>; Fri, 28 Jun 2019 17:01:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id A5D61203EA
- for <devel@linuxdriverproject.org>; Fri, 28 Jun 2019 17:01:18 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id A3EF387E6D
+ for <devel@linuxdriverproject.org>; Fri, 28 Jun 2019 17:01:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TUl5IERzJy0Z for <devel@linuxdriverproject.org>;
- Fri, 28 Jun 2019 17:01:18 +0000 (UTC)
+ with ESMTP id xohfdNXtPxTG for <devel@linuxdriverproject.org>;
+ Fri, 28 Jun 2019 17:01:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
  [209.85.215.196])
- by silver.osuosl.org (Postfix) with ESMTPS id 5ADD6203E9
- for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 17:01:18 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id q4so1368993pgj.8
- for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 10:01:18 -0700 (PDT)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 50DF982476
+ for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 17:01:27 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id n2so2838538pgp.11
+ for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 10:01:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:subject:date:message-id;
- bh=wch5MM+H0l/uILtdINMEnnNWEA6lOEztjug6TCu857U=;
- b=FQY+R2DnA3Qf3YvRtJPhTAvekIg9gvZOFGlpJExkD5LxnLSrXBzEuxr01irHMHsEfH
- gi07+jeixj+LHqVKz+xjfHl47lq41f5YWph/T3yUwal4Xml8yNhUt0d0rVeVtedrHS6k
- qNB5XDjFFZxw/veugJ/wdJW3i65YVvhwn0auowed2KkDPGqQrnhE16P5NJ2qFKgSsWR7
- GNBwAiqheof/QJf+Ezyj5b5nqsHMsw2KHCktTosyELCZJT41T/xXDav6ZOTj8Jb7OMAU
- 8oMACAFrLCMAIrMMFJCAMVON6f+NVFmowhCdi59kZ9qNCnGlGkINQWXymc1a3kAjJaPg
- ikFA==
+ h=from:to:subject:date:message-id:in-reply-to:references;
+ bh=J2qU6wxItaN+5UOKiNyRuRQUOCoMmYGGmRV9X2UEAB0=;
+ b=oyjcbN2lX1WBUwPMzm3jTHw1zIbFhqHIXzZCu18PpVhGMNLZPYKzd2T7h4Olcs5F8h
+ OE2N+ycy0wVbbv2X9ysNoTR0+7uSlD+dJlqvLK0GI/mCoT4v5f5uO/7hQxAFRSLclecH
+ nEfrVMtwdKtfLnrFT09wf4QAOCaAVPE3p8UobEQ7dG0Rh1F/KLjRDu1SSHucmiw+52i1
+ D0SFzEJXe6TqExYmTgVPxxcLn8XKi8ctXt3sWCgxPHcymet84VENF4LOaC8/piXu2j1U
+ NUT1Z1x8tvy3/vLS90LXigOiHo9xFU1Y9csh/fNie4Pe18jSgyXtGSQGLU0pFHGv9Pts
+ OI2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id;
- bh=wch5MM+H0l/uILtdINMEnnNWEA6lOEztjug6TCu857U=;
- b=EnhZjiC5FCx03EC6U1giqKK5fHDjdNqilj5DGy0uKDKa6Z4F/aPMZe93Cw4J9nvsir
- 8CwFSZ6j5R+83ORSj24XW6TbRe+i7BW0R+7EKoWFuQCh9cdgj0p1HOjNge9ktBP2OnU4
- j5UjLduBZvM2yk3e1M5ap+x8+PJCRarRWBpzQCfYqwqXw3fGtprsrWJWI4wGh6+hEvfb
- DmaB84ovO4PXlDkNF/TMaPuoKGNvRUT9BE0c7c90rxslH7EjG/jezYYFykykgJ514CJE
- tE0znFsZO0WS8DJdNYxawMNTOmvpqVjrFnCU87I8jXE44VlQOpqgz6GkV7HGn19eR4VA
- +RgQ==
-X-Gm-Message-State: APjAAAU2SLMfIHcVq75ykCwc38pxq7vep0QuEloWBBXVnm7H6dG6CI5g
- IRvJ+vJ89taKYkLee29+JsI=
-X-Google-Smtp-Source: APXvYqxFlvZtf4xwVnsKaTpIGlUpTSe66C+iBAc4DMzGG/Evt4ErEBLnBIt7TO2IRbDP5ugqx5opMg==
-X-Received: by 2002:a63:c607:: with SMTP id w7mr10125845pgg.379.1561741277725; 
- Fri, 28 Jun 2019 10:01:17 -0700 (PDT)
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references;
+ bh=J2qU6wxItaN+5UOKiNyRuRQUOCoMmYGGmRV9X2UEAB0=;
+ b=NHH3cmNE8HCRIVinvEP95XS7S+7Tib7bMtttcHPFvfO6qzP678LufBglpS+FGR/aZC
+ AexNbrXtRwkhOZf2qs4YSocUonFGx5hiTf4yl4RONa/M0BVCwu0vl345shitjMRNZrm1
+ GaYl9NtHce+n1fOcGNaSoWi4wKNri3ui62swvZNiJ4iVPRaORDX1m2im+O7Ov9OaGjVB
+ a7RCdMhAYSUhq79o1ovKwqrBGnurTL6hcMHkgR79iAjcMwHcwohRf8uh0MW1/KvNTZNh
+ SYcpM0APN8rlgF+ZDhmhTm74s2voJAd/CDqZ1PwK8R5EHkRobbpZ34INw8SoAiYTq5hR
+ NyOQ==
+X-Gm-Message-State: APjAAAWzZ5M9voIZo7yqQaM6pxieet8+TOKkZsLLLvKI/NcI+0g4HHt4
+ l+bKlYWSN8sNc0n0buL8Qss=
+X-Google-Smtp-Source: APXvYqx7NUoJjLJ7Ej3UT9NKouWUfnRQFNGJrRhWyW8A2GnpAkqx3LbI9H1vYjMcj1/6UC7Ez2lbBw==
+X-Received: by 2002:a17:90a:6097:: with SMTP id
+ z23mr14446976pji.75.1561741286876; 
+ Fri, 28 Jun 2019 10:01:26 -0700 (PDT)
 Received: from localhost.localdomain ([183.83.73.90])
- by smtp.gmail.com with ESMTPSA id 30sm2971033pjk.17.2019.06.28.10.01.14
+ by smtp.gmail.com with ESMTPSA id 30sm2971033pjk.17.2019.06.28.10.01.24
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 28 Jun 2019 10:01:17 -0700 (PDT)
+ Fri, 28 Jun 2019 10:01:26 -0700 (PDT)
 From: Harsh Jain <harshjain32@gmail.com>
 To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
  linux-kernel@vger.kernel.org, harshjain32@gmail.com,
  harshjain.prof@gmail.com
-Subject: [PATCH 0/2] staging:kpc2000:Fix integer as null pointer warning
-Date: Fri, 28 Jun 2019 22:30:44 +0530
-Message-Id: <20190628170046.3219-1-harshjain32@gmail.com>
+Subject: [PATCH 1/2] staging:kpc2000:Fix symbol not declared warning
+Date: Fri, 28 Jun 2019 22:30:45 +0530
+Message-Id: <20190628170046.3219-2-harshjain32@gmail.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190628170046.3219-1-harshjain32@gmail.com>
+References: <20190628170046.3219-1-harshjain32@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,15 +94,36 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 From: root <harshjain32@gmail.com>
 
-It fixes sparse warning in kpc2000 driver.
+It fixes "symbol was not declared. Should it be static?"
+sparse warning.
 
-Harsh Jain (2):
-  staging:kpc2000:Fix symbol not declared warning
-  staging:kpc2000:Fix integer as null pointer warning
+Signed-off-by: Harsh Jain <harshjain32@gmail.com>
+---
+ drivers/staging/kpc2000/kpc_i2c/i2c_driver.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
- drivers/staging/kpc2000/kpc_i2c/i2c_driver.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
+diff --git a/drivers/staging/kpc2000/kpc_i2c/i2c_driver.c b/drivers/staging/kpc2000/kpc_i2c/i2c_driver.c
+index 0fb068b2408d..204f33d0dc69 100644
+--- a/drivers/staging/kpc2000/kpc_i2c/i2c_driver.c
++++ b/drivers/staging/kpc2000/kpc_i2c/i2c_driver.c
+@@ -614,7 +614,7 @@ static const struct i2c_algorithm smbus_algorithm = {
+ /********************************
+  *** Part 2 - Driver Handlers ***
+  ********************************/
+-int pi2c_probe(struct platform_device *pldev)
++static int pi2c_probe(struct platform_device *pldev)
+ {
+     int err;
+     struct i2c_device *priv;
+@@ -664,7 +664,7 @@ int pi2c_probe(struct platform_device *pldev)
+     return 0;
+ }
+ 
+-int pi2c_remove(struct platform_device *pldev)
++static int pi2c_remove(struct platform_device *pldev)
+ {
+     struct i2c_device *lddev;
+     dev_dbg(&pldev->dev, "pi2c_remove(pldev = %p '%s')\n", pldev, pldev->name);
 -- 
 2.17.1
 
