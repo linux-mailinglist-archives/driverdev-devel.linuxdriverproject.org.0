@@ -2,76 +2,80 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 94A0E59E70
-	for <lists+driverdev-devel@lfdr.de>; Fri, 28 Jun 2019 17:09:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7C5DE5A21B
+	for <lists+driverdev-devel@lfdr.de>; Fri, 28 Jun 2019 19:18:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4AEEB87672;
-	Fri, 28 Jun 2019 15:09:06 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A0328876A4;
+	Fri, 28 Jun 2019 17:18:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id x7vz8knxJUXv; Fri, 28 Jun 2019 15:09:05 +0000 (UTC)
+	with ESMTP id 2V5QiAiSKeFa; Fri, 28 Jun 2019 17:18:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5FA1087653;
-	Fri, 28 Jun 2019 15:09:04 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 20DE587691;
+	Fri, 28 Jun 2019 17:18:04 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id F23171BF35C
- for <devel@linuxdriverproject.org>; Fri, 28 Jun 2019 15:09:01 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 2E1DB1BF844
+ for <devel@linuxdriverproject.org>; Fri, 28 Jun 2019 17:18:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id ED3028763C
- for <devel@linuxdriverproject.org>; Fri, 28 Jun 2019 15:09:01 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 2748E20407
+ for <devel@linuxdriverproject.org>; Fri, 28 Jun 2019 17:18:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bqh6dUfOuKsp for <devel@linuxdriverproject.org>;
- Fri, 28 Jun 2019 15:09:01 +0000 (UTC)
-X-Greylist: delayed 00:15:10 by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1F54D84BC1
- for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 15:09:01 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id s27so2722088pgl.2
- for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 08:09:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=4+9BQ/9qN/HEB5jYhHOcTVXcrlmUmZtAOZVfYv7/QOA=;
- b=ofGc0v9hZZwUxfhb5r0SX5BCHeOcj3Ym+G17847226BPeApHLQt5lHVJGZPjPCl6mJ
- R9yEA1WaiRHbrYKbycxmjkd9zcIuG73DJH0UQtlrraeon+eWgyD9ND/T5MTW0MQaCyTR
- T/8ILMD0OYRqTF/FvjRgFsB3BtZtKPQ5aqUdQ=
+ with ESMTP id tsQw1OVEp8ry for <devel@linuxdriverproject.org>;
+ Fri, 28 Jun 2019 17:18:00 +0000 (UTC)
+X-Greylist: delayed 00:19:32 by SQLgrey-1.7.6
+Received: from mail-oi1-f195.google.com (mail-oi1-f195.google.com
+ [209.85.167.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id 164D3203EA
+ for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 17:18:00 +0000 (UTC)
+Received: by mail-oi1-f195.google.com with SMTP id 65so4772458oid.13
+ for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 10:18:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=android.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=PyMZA7LTU3YwuPZ9HL93kOMjaNYFWigetQuCQt+Cqeg=;
+ b=biCHnLOxxn11gtPzWstm+TOkw05E3FSxRdvr/cI3M2HZFqnnwzjolid7uXE1pHuG9U
+ +/83AjHB4qxTNerJWqJabo0EyPz1QABCBuYstHbwTRj5X5THHfLma2tVBBbdypURbQFI
+ i+Y4mYhG7RZ6hEAMCLB3+ERtDRxlav76ebRX0pdpDGRRnn62mtIOtQh6pxzk3zUJmTja
+ AmUdpfKnwFbns23NyUxebyU2n912IvTqwUID6bj0R32HULa6BOhyQugU1fYXcvpo1RkA
+ iiqKjyWugWlB0iYzzlJMm1v73Wx0CpC22v4b1Lngln0XjymODa3m1uJS7S4NX9X82F6N
+ BFZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=4+9BQ/9qN/HEB5jYhHOcTVXcrlmUmZtAOZVfYv7/QOA=;
- b=t7rILgws6op870hs7RE1xwWFDPiES+Hr5S0JsOTnqsI97PXkRNMHUgTbrODyU8cQjM
- mMG0WNZxTbohm7kUwpXbigeiPq4VPTBl1ONME2gRk6upFS3ZmkU8g/r/SKY+/f692gRF
- jUdOtkhM+3jKkkJ0lRldCmp9Ezm6by42NjNnqVd0dXowX0gPaCeZAbnbklDe3le8mviI
- hj1ZEgmqd2E8jcaFmjCDsd4wDC0tw9nrCGJstLgure4C/uOMHUBYcknsc10kiz95/igM
- 16O6fQjKg10SYLV8tELv1PXXTwfi1u9vWMdRXT5orZ43zsmS9o6dpfFiJddB60TwMdki
- W0uw==
-X-Gm-Message-State: APjAAAX+yx2jh1tCbzji0D+4NbrJ8QOhk6Q+kDVThaPMgq9iqend6KqF
- 21yMN+sGuXQ1g89LsTSx3fD27MipvIU=
-X-Google-Smtp-Source: APXvYqxuLReGYT1J6pyZqWFjFn4v/IkeCqcW7PORteWScBzJ7GtXkI24Q14wzzAy1SnCsExLh59UaA==
-X-Received: by 2002:a17:90a:29c5:: with SMTP id
- h63mr13123809pjd.83.1561733315036; 
- Fri, 28 Jun 2019 07:48:35 -0700 (PDT)
-Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
- by smtp.gmail.com with ESMTPSA id b11sm2896176pfd.18.2019.06.28.07.48.33
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Fri, 28 Jun 2019 07:48:33 -0700 (PDT)
-Date: Fri, 28 Jun 2019 07:48:33 -0700
-From: Kees Cook <keescook@chromium.org>
-To: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [PATCH 1/4] [v2] structleak: disable STRUCTLEAK_BYREF in
- combination with KASAN_STACK
-Message-ID: <201906280748.910641F1DD@keescook>
-References: <20190628123819.2785504-1-arnd@arndb.de>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=PyMZA7LTU3YwuPZ9HL93kOMjaNYFWigetQuCQt+Cqeg=;
+ b=MPlgAcB+PoBtuJ+m+Qkn+JC3TlhbXD9ZWQ2okOXk01IIn44rZJAfybHklYNJlpcDq7
+ 9mw0MIthLOTbht9MH1pv119YBbijwp2EveMikAcYJhpzbwKpcFl4E3nAEidSqQmwqBCC
+ +t6CQbBb8Wm4LLoaDxZV8lvc0QLZAvKaywduWp9lCEyvdY7vJtDI5LKQ8OXJXb841USI
+ f77fNX6ryP1Cqy2WkvDUWa3y6zgDe/vjByyzflpy8BNat4y+5+fe6AIxmMOTr16TZlHE
+ BfD8QGEG0F9x4CfIIYuQkgyrM4MW8833tazZlDeiF4wBinPE+u0ayoWeMI2WDKHc8gbO
+ zc/g==
+X-Gm-Message-State: APjAAAXRVjiLSNWNfXVlaD21ILEfMdG40TW3R5DfRelRwV/ydHD0eVFc
+ e+C2DXUwFqpYazGIQzbOqrd35LvZtevvdw==
+X-Google-Smtp-Source: APXvYqxr1ynSrDmpl/BIWH1F0WuwHJLd4jnNJLCS0Y/IZLxw6W8XC47jFs0KMYMHkPITs7DuSnO0HA==
+X-Received: by 2002:a63:6089:: with SMTP id
+ u131mr10533192pgb.314.1561740627387; 
+ Fri, 28 Jun 2019 09:50:27 -0700 (PDT)
+Received: from ava-linux2.mtv.corp.google.com
+ ([2620:0:1000:1601:6cc0:d41d:b970:fd7])
+ by smtp.googlemail.com with ESMTPSA id h6sm9382535pjs.2.2019.06.28.09.50.26
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Fri, 28 Jun 2019 09:50:26 -0700 (PDT)
+From: Todd Kjos <tkjos@android.com>
+X-Google-Original-From: Todd Kjos <tkjos@google.com>
+To: tkjos@google.com, gregkh@linuxfoundation.org, arve@android.com,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, maco@google.com
+Subject: [PATCH] binder: return errors from buffer copy functions
+Date: Fri, 28 Jun 2019 09:50:12 -0700
+Message-Id: <20190628165012.4841-1-tkjos@google.com>
+X-Mailer: git-send-email 2.22.0.410.gd8fdbe21b5-goog
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190628123819.2785504-1-arnd@arndb.de>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,121 +88,434 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: James Morris <jmorris@namei.org>, Michal Hocko <mhocko@suse.cz>,
- Masahiro Yamada <yamada.masahiro@socionext.com>,
- Alexander Potapenko <glider@google.com>, devel@driverdev.osuosl.org,
- linux-scsi@vger.kernel.org, James Smart <james.smart@broadcom.com>,
- lvs-devel@vger.kernel.org, Julian Anastasov <ja@ssi.bg>,
- coreteam@netfilter.org, Pablo Neira Ayuso <pablo@netfilter.org>,
- Wensong Zhang <wensong@linux-vs.org>, Dick Kennedy <dick.kennedy@broadcom.com>,
- "James E . J . Bottomley" <jejb@linux.ibm.com>,
- Simon Horman <horms@verge.net.au>, Thomas Gleixner <tglx@linutronix.de>,
- Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
- "Martin K . Petersen" <martin.petersen@oracle.com>,
- Ard Biesheuvel <ard.biesheuvel@linaro.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- linux-security-module@vger.kernel.org, netfilter-devel@vger.kernel.org,
- netdev@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>,
- "David S . Miller" <davem@davemloft.net>,
- Larry Finger <Larry.Finger@lwfinger.net>
+Cc: joel@joelfernandes.org, Martijn Coenen <maco@android.com>,
+ syzbot+3ae18325f96190606754@syzkaller.appspotmail.com, kernel-team@android.com,
+ Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Jun 28, 2019 at 02:37:46PM +0200, Arnd Bergmann wrote:
-> The combination of KASAN_STACK and GCC_PLUGIN_STRUCTLEAK_BYREF
-> leads to much larger kernel stack usage, as seen from the warnings
-> about functions that now exceed the 2048 byte limit:
-> 
-> drivers/media/i2c/tvp5150.c:253:1: error: the frame size of 3936 bytes is larger than 2048 bytes
-> drivers/media/tuners/r820t.c:1327:1: error: the frame size of 2816 bytes is larger than 2048 bytes
-> drivers/net/wireless/broadcom/brcm80211/brcmsmac/phy/phy_n.c:16552:1: error: the frame size of 3144 bytes is larger than 2048 bytes [-Werror=frame-larger-than=]
-> fs/ocfs2/aops.c:1892:1: error: the frame size of 2088 bytes is larger than 2048 bytes
-> fs/ocfs2/dlm/dlmrecovery.c:737:1: error: the frame size of 2088 bytes is larger than 2048 bytes
-> fs/ocfs2/namei.c:1677:1: error: the frame size of 2584 bytes is larger than 2048 bytes
-> fs/ocfs2/super.c:1186:1: error: the frame size of 2640 bytes is larger than 2048 bytes
-> fs/ocfs2/xattr.c:3678:1: error: the frame size of 2176 bytes is larger than 2048 bytes
-> net/bluetooth/l2cap_core.c:7056:1: error: the frame size of 2144 bytes is larger than 2048 bytes [-Werror=frame-larger-than=]
-> net/bluetooth/l2cap_core.c: In function 'l2cap_recv_frame':
-> net/bridge/br_netlink.c:1505:1: error: the frame size of 2448 bytes is larger than 2048 bytes
-> net/ieee802154/nl802154.c:548:1: error: the frame size of 2232 bytes is larger than 2048 bytes
-> net/wireless/nl80211.c:1726:1: error: the frame size of 2224 bytes is larger than 2048 bytes
-> net/wireless/nl80211.c:2357:1: error: the frame size of 4584 bytes is larger than 2048 bytes
-> net/wireless/nl80211.c:5108:1: error: the frame size of 2760 bytes is larger than 2048 bytes
-> net/wireless/nl80211.c:6472:1: error: the frame size of 2112 bytes is larger than 2048 bytes
-> 
-> The structleak plugin was previously disabled for CONFIG_COMPILE_TEST,
-> but meant we missed some bugs, so this time we should address them.
-> 
-> The frame size warnings are distracting, and risking a kernel stack
-> overflow is generally not beneficial to performance, so it may be best
-> to disallow that particular combination. This can be done by turning
-> off either one. I picked the dependency in GCC_PLUGIN_STRUCTLEAK_BYREF
-> and GCC_PLUGIN_STRUCTLEAK_BYREF_ALL, as this option is designed to
-> make uninitialized stack usage less harmful when enabled on its own,
-> but it also prevents KASAN from detecting those cases in which it was
-> in fact needed.
-> 
-> KASAN_STACK is currently implied by KASAN on gcc, but could be made a
-> user selectable option if we want to allow combining (non-stack) KASAN
-> with GCC_PLUGIN_STRUCTLEAK_BYREF.
-> 
-> Note that it would be possible to specifically address the files that
-> print the warning, but presumably the overall stack usage is still
-> significantly higher than in other configurations, so this would not
-> address the full problem.
-> 
-> I could not test this with CONFIG_INIT_STACK_ALL, which may or may not
-> suffer from a similar problem.
-> 
-> Fixes: 81a56f6dcd20 ("gcc-plugins: structleak: Generalize to all variable types")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+The buffer copy functions assumed the caller would ensure
+correct alignment and that the memory to be copied was
+completely within the binder buffer. There have been
+a few cases discovered by syzkallar where a malformed
+transaction created by a user could violated the
+assumptions and resulted in a BUG_ON.
 
-Acked-by: Kees Cook <keescook@chromium.org>
+The fix is to remove the BUG_ON and always return the
+error to be handled appropriately by the caller.
 
--Kees
+Acked-by: Martijn Coenen <maco@android.com>
+Reported-by: syzbot+3ae18325f96190606754@syzkaller.appspotmail.com
+Fixes: bde4a19fc04f ("binder: use userspace pointer as base of buffer space")
+Suggested-by: Dan Carpenter <dan.carpenter@oracle.com>
+Signed-off-by: Todd Kjos <tkjos@google.com>
+---
+ drivers/android/binder.c       | 153 ++++++++++++++++++++-------------
+ drivers/android/binder_alloc.c |  44 +++++-----
+ drivers/android/binder_alloc.h |  22 ++---
+ 3 files changed, 126 insertions(+), 93 deletions(-)
 
-> ---
-> [v2] do it for both GCC_PLUGIN_STRUCTLEAK_BYREF and GCC_PLUGIN_STRUCTLEAK_BYREF_ALL.
-> ---
->  security/Kconfig.hardening | 7 +++++++
->  1 file changed, 7 insertions(+)
-> 
-> diff --git a/security/Kconfig.hardening b/security/Kconfig.hardening
-> index a1ffe2eb4d5f..af4c979b38ee 100644
-> --- a/security/Kconfig.hardening
-> +++ b/security/Kconfig.hardening
-> @@ -61,6 +61,7 @@ choice
->  	config GCC_PLUGIN_STRUCTLEAK_BYREF
->  		bool "zero-init structs passed by reference (strong)"
->  		depends on GCC_PLUGINS
-> +		depends on !(KASAN && KASAN_STACK=1)
->  		select GCC_PLUGIN_STRUCTLEAK
->  		help
->  		  Zero-initialize any structures on the stack that may
-> @@ -70,9 +71,15 @@ choice
->  		  exposures, like CVE-2017-1000410:
->  		  https://git.kernel.org/linus/06e7e776ca4d3654
->  
-> +		  As a side-effect, this keeps a lot of variables on the
-> +		  stack that can otherwise be optimized out, so combining
-> +		  this with CONFIG_KASAN_STACK can lead to a stack overflow
-> +		  and is disallowed.
-> +
->  	config GCC_PLUGIN_STRUCTLEAK_BYREF_ALL
->  		bool "zero-init anything passed by reference (very strong)"
->  		depends on GCC_PLUGINS
-> +		depends on !(KASAN && KASAN_STACK=1)
->  		select GCC_PLUGIN_STRUCTLEAK
->  		help
->  		  Zero-initialize any stack variables that may be passed
-> -- 
-> 2.20.0
-> 
-
+diff --git a/drivers/android/binder.c b/drivers/android/binder.c
+index bc26b5511f0a9..414492c136ddf 100644
+--- a/drivers/android/binder.c
++++ b/drivers/android/binder.c
+@@ -2059,10 +2059,9 @@ static size_t binder_get_object(struct binder_proc *proc,
+ 
+ 	read_size = min_t(size_t, sizeof(*object), buffer->data_size - offset);
+ 	if (offset > buffer->data_size || read_size < sizeof(*hdr) ||
+-	    !IS_ALIGNED(offset, sizeof(u32)))
++	    binder_alloc_copy_from_buffer(&proc->alloc, object, buffer,
++					  offset, read_size))
+ 		return 0;
+-	binder_alloc_copy_from_buffer(&proc->alloc, object, buffer,
+-				      offset, read_size);
+ 
+ 	/* Ok, now see if we read a complete object. */
+ 	hdr = &object->hdr;
+@@ -2131,8 +2130,10 @@ static struct binder_buffer_object *binder_validate_ptr(
+ 		return NULL;
+ 
+ 	buffer_offset = start_offset + sizeof(binder_size_t) * index;
+-	binder_alloc_copy_from_buffer(&proc->alloc, &object_offset,
+-				      b, buffer_offset, sizeof(object_offset));
++	if (binder_alloc_copy_from_buffer(&proc->alloc, &object_offset,
++					  b, buffer_offset,
++					  sizeof(object_offset)))
++		return NULL;
+ 	object_size = binder_get_object(proc, b, object_offset, object);
+ 	if (!object_size || object->hdr.type != BINDER_TYPE_PTR)
+ 		return NULL;
+@@ -2212,10 +2213,12 @@ static bool binder_validate_fixup(struct binder_proc *proc,
+ 			return false;
+ 		last_min_offset = last_bbo->parent_offset + sizeof(uintptr_t);
+ 		buffer_offset = objects_start_offset +
+-			sizeof(binder_size_t) * last_bbo->parent,
+-		binder_alloc_copy_from_buffer(&proc->alloc, &last_obj_offset,
+-					      b, buffer_offset,
+-					      sizeof(last_obj_offset));
++			sizeof(binder_size_t) * last_bbo->parent;
++		if (binder_alloc_copy_from_buffer(&proc->alloc,
++						  &last_obj_offset,
++						  b, buffer_offset,
++						  sizeof(last_obj_offset)))
++			return false;
+ 	}
+ 	return (fixup_offset >= last_min_offset);
+ }
+@@ -2301,15 +2304,15 @@ static void binder_transaction_buffer_release(struct binder_proc *proc,
+ 	for (buffer_offset = off_start_offset; buffer_offset < off_end_offset;
+ 	     buffer_offset += sizeof(binder_size_t)) {
+ 		struct binder_object_header *hdr;
+-		size_t object_size;
++		size_t object_size = 0;
+ 		struct binder_object object;
+ 		binder_size_t object_offset;
+ 
+-		binder_alloc_copy_from_buffer(&proc->alloc, &object_offset,
+-					      buffer, buffer_offset,
+-					      sizeof(object_offset));
+-		object_size = binder_get_object(proc, buffer,
+-						object_offset, &object);
++		if (!binder_alloc_copy_from_buffer(&proc->alloc, &object_offset,
++						   buffer, buffer_offset,
++						   sizeof(object_offset)))
++			object_size = binder_get_object(proc, buffer,
++							object_offset, &object);
+ 		if (object_size == 0) {
+ 			pr_err("transaction release %d bad object at offset %lld, size %zd\n",
+ 			       debug_id, (u64)object_offset, buffer->data_size);
+@@ -2432,15 +2435,16 @@ static void binder_transaction_buffer_release(struct binder_proc *proc,
+ 			for (fd_index = 0; fd_index < fda->num_fds;
+ 			     fd_index++) {
+ 				u32 fd;
++				int err;
+ 				binder_size_t offset = fda_offset +
+ 					fd_index * sizeof(fd);
+ 
+-				binder_alloc_copy_from_buffer(&proc->alloc,
+-							      &fd,
+-							      buffer,
+-							      offset,
+-							      sizeof(fd));
+-				binder_deferred_fd_close(fd);
++				err = binder_alloc_copy_from_buffer(
++						&proc->alloc, &fd, buffer,
++						offset, sizeof(fd));
++				WARN_ON(err);
++				if (!err)
++					binder_deferred_fd_close(fd);
+ 			}
+ 		} break;
+ 		default:
+@@ -2683,11 +2687,12 @@ static int binder_translate_fd_array(struct binder_fd_array_object *fda,
+ 		int ret;
+ 		binder_size_t offset = fda_offset + fdi * sizeof(fd);
+ 
+-		binder_alloc_copy_from_buffer(&target_proc->alloc,
+-					      &fd, t->buffer,
+-					      offset, sizeof(fd));
+-		ret = binder_translate_fd(fd, offset, t, thread,
+-					  in_reply_to);
++		ret = binder_alloc_copy_from_buffer(&target_proc->alloc,
++						    &fd, t->buffer,
++						    offset, sizeof(fd));
++		if (!ret)
++			ret = binder_translate_fd(fd, offset, t, thread,
++						  in_reply_to);
+ 		if (ret < 0)
+ 			return ret;
+ 	}
+@@ -2740,8 +2745,12 @@ static int binder_fixup_parent(struct binder_transaction *t,
+ 	}
+ 	buffer_offset = bp->parent_offset +
+ 			(uintptr_t)parent->buffer - (uintptr_t)b->user_data;
+-	binder_alloc_copy_to_buffer(&target_proc->alloc, b, buffer_offset,
+-				    &bp->buffer, sizeof(bp->buffer));
++	if (binder_alloc_copy_to_buffer(&target_proc->alloc, b, buffer_offset,
++					&bp->buffer, sizeof(bp->buffer))) {
++		binder_user_error("%d:%d got transaction with invalid parent offset\n",
++				  proc->pid, thread->pid);
++		return -EINVAL;
++	}
+ 
+ 	return 0;
+ }
+@@ -3160,15 +3169,20 @@ static void binder_transaction(struct binder_proc *proc,
+ 		goto err_binder_alloc_buf_failed;
+ 	}
+ 	if (secctx) {
++		int err;
+ 		size_t buf_offset = ALIGN(tr->data_size, sizeof(void *)) +
+ 				    ALIGN(tr->offsets_size, sizeof(void *)) +
+ 				    ALIGN(extra_buffers_size, sizeof(void *)) -
+ 				    ALIGN(secctx_sz, sizeof(u64));
+ 
+ 		t->security_ctx = (uintptr_t)t->buffer->user_data + buf_offset;
+-		binder_alloc_copy_to_buffer(&target_proc->alloc,
+-					    t->buffer, buf_offset,
+-					    secctx, secctx_sz);
++		err = binder_alloc_copy_to_buffer(&target_proc->alloc,
++						  t->buffer, buf_offset,
++						  secctx, secctx_sz);
++		if (err) {
++			t->security_ctx = 0;
++			WARN_ON(1);
++		}
+ 		security_release_secctx(secctx, secctx_sz);
+ 		secctx = NULL;
+ 	}
+@@ -3234,11 +3248,16 @@ static void binder_transaction(struct binder_proc *proc,
+ 		struct binder_object object;
+ 		binder_size_t object_offset;
+ 
+-		binder_alloc_copy_from_buffer(&target_proc->alloc,
+-					      &object_offset,
+-					      t->buffer,
+-					      buffer_offset,
+-					      sizeof(object_offset));
++		if (binder_alloc_copy_from_buffer(&target_proc->alloc,
++						  &object_offset,
++						  t->buffer,
++						  buffer_offset,
++						  sizeof(object_offset))) {
++			return_error = BR_FAILED_REPLY;
++			return_error_param = -EINVAL;
++			return_error_line = __LINE__;
++			goto err_bad_offset;
++		}
+ 		object_size = binder_get_object(target_proc, t->buffer,
+ 						object_offset, &object);
+ 		if (object_size == 0 || object_offset < off_min) {
+@@ -3262,15 +3281,17 @@ static void binder_transaction(struct binder_proc *proc,
+ 
+ 			fp = to_flat_binder_object(hdr);
+ 			ret = binder_translate_binder(fp, t, thread);
+-			if (ret < 0) {
++
++			if (ret < 0 ||
++			    binder_alloc_copy_to_buffer(&target_proc->alloc,
++							t->buffer,
++							object_offset,
++							fp, sizeof(*fp))) {
+ 				return_error = BR_FAILED_REPLY;
+ 				return_error_param = ret;
+ 				return_error_line = __LINE__;
+ 				goto err_translate_failed;
+ 			}
+-			binder_alloc_copy_to_buffer(&target_proc->alloc,
+-						    t->buffer, object_offset,
+-						    fp, sizeof(*fp));
+ 		} break;
+ 		case BINDER_TYPE_HANDLE:
+ 		case BINDER_TYPE_WEAK_HANDLE: {
+@@ -3278,15 +3299,16 @@ static void binder_transaction(struct binder_proc *proc,
+ 
+ 			fp = to_flat_binder_object(hdr);
+ 			ret = binder_translate_handle(fp, t, thread);
+-			if (ret < 0) {
++			if (ret < 0 ||
++			    binder_alloc_copy_to_buffer(&target_proc->alloc,
++							t->buffer,
++							object_offset,
++							fp, sizeof(*fp))) {
+ 				return_error = BR_FAILED_REPLY;
+ 				return_error_param = ret;
+ 				return_error_line = __LINE__;
+ 				goto err_translate_failed;
+ 			}
+-			binder_alloc_copy_to_buffer(&target_proc->alloc,
+-						    t->buffer, object_offset,
+-						    fp, sizeof(*fp));
+ 		} break;
+ 
+ 		case BINDER_TYPE_FD: {
+@@ -3296,16 +3318,17 @@ static void binder_transaction(struct binder_proc *proc,
+ 			int ret = binder_translate_fd(fp->fd, fd_offset, t,
+ 						      thread, in_reply_to);
+ 
+-			if (ret < 0) {
++			fp->pad_binder = 0;
++			if (ret < 0 ||
++			    binder_alloc_copy_to_buffer(&target_proc->alloc,
++							t->buffer,
++							object_offset,
++							fp, sizeof(*fp))) {
+ 				return_error = BR_FAILED_REPLY;
+ 				return_error_param = ret;
+ 				return_error_line = __LINE__;
+ 				goto err_translate_failed;
+ 			}
+-			fp->pad_binder = 0;
+-			binder_alloc_copy_to_buffer(&target_proc->alloc,
+-						    t->buffer, object_offset,
+-						    fp, sizeof(*fp));
+ 		} break;
+ 		case BINDER_TYPE_FDA: {
+ 			struct binder_object ptr_object;
+@@ -3393,15 +3416,16 @@ static void binder_transaction(struct binder_proc *proc,
+ 						  num_valid,
+ 						  last_fixup_obj_off,
+ 						  last_fixup_min_off);
+-			if (ret < 0) {
++			if (ret < 0 ||
++			    binder_alloc_copy_to_buffer(&target_proc->alloc,
++							t->buffer,
++							object_offset,
++							bp, sizeof(*bp))) {
+ 				return_error = BR_FAILED_REPLY;
+ 				return_error_param = ret;
+ 				return_error_line = __LINE__;
+ 				goto err_translate_failed;
+ 			}
+-			binder_alloc_copy_to_buffer(&target_proc->alloc,
+-						    t->buffer, object_offset,
+-						    bp, sizeof(*bp));
+ 			last_fixup_obj_off = object_offset;
+ 			last_fixup_min_off = 0;
+ 		} break;
+@@ -4140,20 +4164,27 @@ static int binder_apply_fd_fixups(struct binder_proc *proc,
+ 		trace_binder_transaction_fd_recv(t, fd, fixup->offset);
+ 		fd_install(fd, fixup->file);
+ 		fixup->file = NULL;
+-		binder_alloc_copy_to_buffer(&proc->alloc, t->buffer,
+-					    fixup->offset, &fd,
+-					    sizeof(u32));
++		if (binder_alloc_copy_to_buffer(&proc->alloc, t->buffer,
++						fixup->offset, &fd,
++						sizeof(u32))) {
++			ret = -EINVAL;
++			break;
++		}
+ 	}
+ 	list_for_each_entry_safe(fixup, tmp, &t->fd_fixups, fixup_entry) {
+ 		if (fixup->file) {
+ 			fput(fixup->file);
+ 		} else if (ret) {
+ 			u32 fd;
+-
+-			binder_alloc_copy_from_buffer(&proc->alloc, &fd,
+-						      t->buffer, fixup->offset,
+-						      sizeof(fd));
+-			binder_deferred_fd_close(fd);
++			int err;
++
++			err = binder_alloc_copy_from_buffer(&proc->alloc, &fd,
++							    t->buffer,
++							    fixup->offset,
++							    sizeof(fd));
++			WARN_ON(err);
++			if (!err)
++				binder_deferred_fd_close(fd);
+ 		}
+ 		list_del(&fixup->fixup_entry);
+ 		kfree(fixup);
+diff --git a/drivers/android/binder_alloc.c b/drivers/android/binder_alloc.c
+index ce5603c2291c6..6d79a1b0d4463 100644
+--- a/drivers/android/binder_alloc.c
++++ b/drivers/android/binder_alloc.c
+@@ -1119,15 +1119,16 @@ binder_alloc_copy_user_to_buffer(struct binder_alloc *alloc,
+ 	return 0;
+ }
+ 
+-static void binder_alloc_do_buffer_copy(struct binder_alloc *alloc,
+-					bool to_buffer,
+-					struct binder_buffer *buffer,
+-					binder_size_t buffer_offset,
+-					void *ptr,
+-					size_t bytes)
++static int binder_alloc_do_buffer_copy(struct binder_alloc *alloc,
++				       bool to_buffer,
++				       struct binder_buffer *buffer,
++				       binder_size_t buffer_offset,
++				       void *ptr,
++				       size_t bytes)
+ {
+ 	/* All copies must be 32-bit aligned and 32-bit size */
+-	BUG_ON(!check_buffer(alloc, buffer, buffer_offset, bytes));
++	if (!check_buffer(alloc, buffer, buffer_offset, bytes))
++		return -EINVAL;
+ 
+ 	while (bytes) {
+ 		unsigned long size;
+@@ -1155,25 +1156,26 @@ static void binder_alloc_do_buffer_copy(struct binder_alloc *alloc,
+ 		ptr = ptr + size;
+ 		buffer_offset += size;
+ 	}
++	return 0;
+ }
+ 
+-void binder_alloc_copy_to_buffer(struct binder_alloc *alloc,
+-				 struct binder_buffer *buffer,
+-				 binder_size_t buffer_offset,
+-				 void *src,
+-				 size_t bytes)
++int binder_alloc_copy_to_buffer(struct binder_alloc *alloc,
++				struct binder_buffer *buffer,
++				binder_size_t buffer_offset,
++				void *src,
++				size_t bytes)
+ {
+-	binder_alloc_do_buffer_copy(alloc, true, buffer, buffer_offset,
+-				    src, bytes);
++	return binder_alloc_do_buffer_copy(alloc, true, buffer, buffer_offset,
++					   src, bytes);
+ }
+ 
+-void binder_alloc_copy_from_buffer(struct binder_alloc *alloc,
+-				   void *dest,
+-				   struct binder_buffer *buffer,
+-				   binder_size_t buffer_offset,
+-				   size_t bytes)
++int binder_alloc_copy_from_buffer(struct binder_alloc *alloc,
++				  void *dest,
++				  struct binder_buffer *buffer,
++				  binder_size_t buffer_offset,
++				  size_t bytes)
+ {
+-	binder_alloc_do_buffer_copy(alloc, false, buffer, buffer_offset,
+-				    dest, bytes);
++	return binder_alloc_do_buffer_copy(alloc, false, buffer, buffer_offset,
++					   dest, bytes);
+ }
+ 
+diff --git a/drivers/android/binder_alloc.h b/drivers/android/binder_alloc.h
+index 71bfa95f8e09b..db9c1b984695d 100644
+--- a/drivers/android/binder_alloc.h
++++ b/drivers/android/binder_alloc.h
+@@ -159,17 +159,17 @@ binder_alloc_copy_user_to_buffer(struct binder_alloc *alloc,
+ 				 const void __user *from,
+ 				 size_t bytes);
+ 
+-void binder_alloc_copy_to_buffer(struct binder_alloc *alloc,
+-				 struct binder_buffer *buffer,
+-				 binder_size_t buffer_offset,
+-				 void *src,
+-				 size_t bytes);
+-
+-void binder_alloc_copy_from_buffer(struct binder_alloc *alloc,
+-				   void *dest,
+-				   struct binder_buffer *buffer,
+-				   binder_size_t buffer_offset,
+-				   size_t bytes);
++int binder_alloc_copy_to_buffer(struct binder_alloc *alloc,
++				struct binder_buffer *buffer,
++				binder_size_t buffer_offset,
++				void *src,
++				size_t bytes);
++
++int binder_alloc_copy_from_buffer(struct binder_alloc *alloc,
++				  void *dest,
++				  struct binder_buffer *buffer,
++				  binder_size_t buffer_offset,
++				  size_t bytes);
+ 
+ #endif /* _LINUX_BINDER_ALLOC_H */
+ 
 -- 
-Kees Cook
+2.22.0.410.gd8fdbe21b5-goog
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
