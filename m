@@ -1,101 +1,95 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B1D8A59830
-	for <lists+driverdev-devel@lfdr.de>; Fri, 28 Jun 2019 12:10:41 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C1E2D5988F
+	for <lists+driverdev-devel@lfdr.de>; Fri, 28 Jun 2019 12:39:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 95C38875C7;
-	Fri, 28 Jun 2019 10:10:39 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0F2EC226E5;
+	Fri, 28 Jun 2019 10:39:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5ybnhO+k0myu; Fri, 28 Jun 2019 10:10:39 +0000 (UTC)
+	with ESMTP id 6PywjuKTYPtO; Fri, 28 Jun 2019 10:39:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 541DC8701E;
-	Fri, 28 Jun 2019 10:10:37 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3DE1B1FE0A;
+	Fri, 28 Jun 2019 10:39:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2AEAF1BF407
- for <devel@linuxdriverproject.org>; Fri, 28 Jun 2019 10:10:34 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 51C501BF407
+ for <devel@linuxdriverproject.org>; Fri, 28 Jun 2019 10:39:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 2184585BC4
- for <devel@linuxdriverproject.org>; Fri, 28 Jun 2019 10:10:34 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 4EC01226E5
+ for <devel@linuxdriverproject.org>; Fri, 28 Jun 2019 10:39:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wT-hVPiU86wU for <devel@linuxdriverproject.org>;
- Fri, 28 Jun 2019 10:10:31 +0000 (UTC)
+ with ESMTP id vf2uJHDfn-8N for <devel@linuxdriverproject.org>;
+ Fri, 28 Jun 2019 10:39:38 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mx08-00252a01.pphosted.com (mx08-00252a01.pphosted.com
  [91.207.212.211])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 6918F85BB8
- for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 10:10:31 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 4618E20457
+ for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 10:39:38 +0000 (UTC)
 Received: from pps.filterd (m0102629.ppops.net [127.0.0.1])
  by mx08-00252a01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- x5SA7n83015956
- for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 11:10:29 +0100
+ x5SAda8K005164
+ for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 11:39:36 +0100
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=raspberrypi.org;
  h=mime-version :
  references : in-reply-to : from : date : message-id : subject : to : cc :
- content-type : content-transfer-encoding; s=pp;
- bh=TDIgDFZYckSDRxESTmMyi7W5fZyMRfxZe7Gx+vhjabg=;
- b=IQo53t+yjWUCv3doZWHJZCeK3izg0lwHGOlK8P33mQRL8s+q/ny/2UEh1D9woQw6Yvr5
- tt1SEfnhypFuAtrsMZ6lzb4xLHqHLJxl6kPh0PhHmJoRJ1MICezIQl6p7x4jSD8FIEH0
- KLYX+emoKcpJJB0uIVKzfUybu95zhnyWEuV2hpKjOkp5CTOnlv1Hyr/zaGuOzIwGjDsJ
- pW24zLIxamcqCgbQy92oE9AmQXIuv+bHxqc8VAHUfQHH6ysi61/fSvBpY48p7Oy0JdEK
- 4SV7K+W/tJZDuwStTr+0Lc15t8NxPeohbW01fthgDwU0aUuM6zL1IfNEyPj+sOOH+t3R rw== 
-Received: from mail-pg1-f197.google.com (mail-pg1-f197.google.com
- [209.85.215.197])
- by mx08-00252a01.pphosted.com with ESMTP id 2t9exhk1rc-1
+ content-type; s=pp; bh=MgvxS7rVwy/049YflKjnKGTKQ+HL2aJJ079s/pHhqUs=;
+ b=hpy5Hahv7e6rq0h0AOZ3GoHHWIGAfbzxmIyMcZ+Yitlks0cbCM3zhnAYd12jLID4rJXl
+ 3uFWlo43taSWyUodBTdRoiiG/wJnOEJSx7tLpMgBikXnkXp9Gx93hRc1Fzlp68LwfVMh
+ we9rUBRSGNKET9E5CXoziTNrXn9jIW0oARGXGyCa82rUIFSyXiy3LGHw6u2PuTZWI0Hr
+ nwYpGnlaSL46weTOip9h6kEZdxa4mGOcltsMcekMdCOpr+V0G7Ku2P0BXyC9o2TTyYLH
+ 3aSPFcisbQWyaNYRDUQHK/xM0FdqoMX0c2IjpGDFAqjr+EAH6y3yDAu17plLHDTTNFKc wA== 
+Received: from mail-pg1-f199.google.com (mail-pg1-f199.google.com
+ [209.85.215.199])
+ by mx08-00252a01.pphosted.com with ESMTP id 2t9exhk23w-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=OK)
- for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 11:10:29 +0100
-Received: by mail-pg1-f197.google.com with SMTP id a13so2951393pgw.19
- for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 03:10:29 -0700 (PDT)
+ for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 11:39:36 +0100
+Received: by mail-pg1-f199.google.com with SMTP id s4so3008739pgr.3
+ for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 03:39:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=raspberrypi.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=TDIgDFZYckSDRxESTmMyi7W5fZyMRfxZe7Gx+vhjabg=;
- b=HudN4HAHZcs4n+TjXAVpvaFmaWUaeWvgdeEaD5uPP2pctk8+jyvr9RzUT29zh1gaXe
- UOF4fmSp795KpnHjMUQnzhG0Re2Ji1DcaVfWw2kYfnoEROQ0vzXytKKmaJOkGv8//6sX
- 1MAyofMKiUctDEYamTmlO9kVUEkRf6BuB42bKrHxRm3m3GgN72NOusNMroRISHbl0ESQ
- UTa58slZscEURFsRjzYrzLtbr9CT6204iqCYyMuDGuFUtjSBMKKmpqn38ptKhm9r0nhw
- 5p6j99Ta4NSMegugPG7vDfZQW4ZEfPkjioSg/l075jTUAuw8d242bXWK19HhlOwWeSmC
- MQPA==
+ :cc; bh=MgvxS7rVwy/049YflKjnKGTKQ+HL2aJJ079s/pHhqUs=;
+ b=QP3bpBBqfTQcuIPIL35AL6V59Bly7/8OOBFN3vei2qCmLvwQX/x5dUpyUeJwcnJ/G8
+ 5PWgIWQnOQUBbgBaRnAnIKGk+fYVKlGMfk3Hz7QQyQO7PBnHugGnlWW1JHPuIAeYveD7
+ d+cQ8d2Fn/aju88j02cuciMojKrByqcz6LAIANh9q571GMfShmWfaYBaTWP5WeR90Qyo
+ wLkNfMfvErt91FUfFv/BG6UDPm3x8wSBpv2zU3ar1kAzoYvF8+4L4l5IQ1+/LDJfUiNB
+ JO7PnO+e3WcIgptvxpamCvYXTPq7znnTIVLZYwGvUSqCkpaZWM6HKvKF/r/HEclve2Aw
+ Z64g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=TDIgDFZYckSDRxESTmMyi7W5fZyMRfxZe7Gx+vhjabg=;
- b=huvnFmUcc3fhdQgu6fpHndI1EYo709zQcX33UU9VifCh2BdIwNu4kNohVDO8Uz/IKh
- bcXZ+6ZzWyK9lt0ev+qvFomCpHaHZFL8w0cBqGsa+r+Z3+kbNebrouhdkcZIMy4RBAI9
- TaPA7YbutK8PQp7UQTTllaRw4FICXn19Ky1u89DoeRvUyKb2txZOVPZS7qdtQKrRbYvR
- Hkm7K1HUoQ0PVelvs3aLRF70+BFubpIhWhS5RNIhAmf4tpYBa+4vtfpTT4CeIpKa1RoH
- aozmLF0ox7dHZfoo6Y6LV7ldd/38QO23kJ7MeGAgerXUNquDDT3dsefuooLqa0v9VlZc
- VfKQ==
-X-Gm-Message-State: APjAAAUfwgB9gybhDsc+z0AS3tEJuz+TXWVxaQDS7SgxsyC9Zws8qLPq
- sPr/nXZMpNVpLeQfJTkFAidnnpim1B7iNYW8dBWBTIhpf0gGWvqZ8DzgfNRTWJLKraer2umeOq2
- eVIXaZu7qP8NQU/+yQzX8h64EnvYCk5naMk6l
-X-Received: by 2002:a17:90a:17c4:: with SMTP id
- q62mr12393444pja.104.1561716627075; 
- Fri, 28 Jun 2019 03:10:27 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwEreDZiFkAwV+0cUZgFrczBqG3Z5CPzr28vUCwFKMAVXeCeEB1P8eVW2rvYmKKjCeaDkR2QMfiT3p9cEbAMu8=
-X-Received: by 2002:a17:90a:17c4:: with SMTP id
- q62mr12393404pja.104.1561716626804; 
- Fri, 28 Jun 2019 03:10:26 -0700 (PDT)
+ :message-id:subject:to:cc;
+ bh=MgvxS7rVwy/049YflKjnKGTKQ+HL2aJJ079s/pHhqUs=;
+ b=RqXuX5fWGdIB8dpJFsn23hY3qEcdnwDtshuNYcr8Et4X7I+Ajnvo0xcJWK9sNrN3l1
+ 09Co61HLhaU5ZmSaPSkw3HTlMUsAoRcckP9xshj0dB1y9VR5pJdAPaGJm1XvGyweEFDi
+ fWgcXWOG9n6qKMzh3O0KmVYgH9ApbTjz2LgRCjMAQJfxvignLqhwKIA0M9NIgG3wtbdp
+ vujfei1hg1kI+wAyxsKETewYbLac2tXAyhzFMQtY1/FB1Lqye77bL5+k9SejTGsHtZBk
+ dENy7+YK1Mn6i8vdc1X6pc260eBFz485f7jHHFg/bWgWssI+L8ji01zyhASNSZVqdRdh
+ Aweg==
+X-Gm-Message-State: APjAAAUDYDCeNisJLS6aCwTeUzLyB/SbAut6FB8ylmw+rN687YXL0Mq6
+ e4LZEDc/wFaRlPUGKM8H20lShkQbY1+0yYuFvqm3uElI7Uz6uSMaNsvZxajjIbD5RmF/RxVf94S
+ 4g6V8yfqZxMXoiqoqoGqF/S2uB/J7c+NHjv6e
+X-Received: by 2002:a63:360d:: with SMTP id d13mr8663278pga.80.1561718373363; 
+ Fri, 28 Jun 2019 03:39:33 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzYUiO45rSRH0WJ6NDrEAeD1snwBUde7nzBvYLWt2tIOkSofz2vvGr8F/fz5p4u5n/tfNWRReppS1ngXIFCH/s=
+X-Received: by 2002:a63:360d:: with SMTP id d13mr8663231pga.80.1561718372896; 
+ Fri, 28 Jun 2019 03:39:32 -0700 (PDT)
 MIME-Version: 1.0
 References: <1561661788-22744-1-git-send-email-wahrenst@gmx.net>
- <1561661788-22744-2-git-send-email-wahrenst@gmx.net>
- <5e20b1d04b3c2f64173631ec2f0261a8a9597f0c.camel@ndufresne.ca>
-In-Reply-To: <5e20b1d04b3c2f64173631ec2f0261a8a9597f0c.camel@ndufresne.ca>
+ <f4492041-2587-eedb-8ae5-ae610e90fde2@xs4all.nl>
+In-Reply-To: <f4492041-2587-eedb-8ae5-ae610e90fde2@xs4all.nl>
 From: Dave Stevenson <dave.stevenson@raspberrypi.org>
-Date: Fri, 28 Jun 2019 11:10:13 +0100
-Message-ID: <CAAoAYcOvnF55U0kPMFE4cOd=nUqjoidirbGP6AWN=5Rqp0RhbQ@mail.gmail.com>
-Subject: Re: [PATCH 01/31] staging: bcm2835-camera: Ensure H264 header bytes
- get a sensible timestamp
-To: Nicolas Dufresne <nicolas@ndufresne.ca>
+Date: Fri, 28 Jun 2019 11:39:19 +0100
+Message-ID: <CAAoAYcMxqNiHLVB=9PyiU1QmLNkzqBEVabdO35-ZTBB5ijSwxA@mail.gmail.com>
+Subject: Re: [PATCH 00/31] staging: bcm2835-camera: Improvements
+To: Hans Verkuil <hverkuil@xs4all.nl>
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:5.22.84,1.0.8
  definitions=2019-06-28_04:2019-06-25,2019-06-28 signatures=0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -111,113 +105,243 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- LMML <linux-media@vger.kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>,
- Eric Anholt <eric@anholt.net>,
+ LMML <linux-media@vger.kernel.org>, Eric Anholt <eric@anholt.net>,
  "moderated list:BROADCOM BCM2835 ARM ARCHITECTURE"
  <linux-rpi-kernel@lists.infradead.org>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
  linux-arm-kernel@lists.infradead.org, Stefan Wahren <wahrenst@gmx.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SGkgTmljb2xhcwoKT24gVGh1LCAyNyBKdW4gMjAxOSBhdCAyMDo1NSwgTmljb2xhcyBEdWZyZXNu
-ZSA8bmljb2xhc0BuZHVmcmVzbmUuY2E+IHdyb3RlOgo+Cj4gSGkgRGF2ZSwKPgo+IExlIGpldWRp
-IDI3IGp1aW4gMjAxOSDDoCAyMDo1NSArMDIwMCwgU3RlZmFuIFdhaHJlbiBhIMOpY3JpdCA6Cj4g
-PiBGcm9tOiBEYXZlIFN0ZXZlbnNvbiA8ZGF2ZS5zdGV2ZW5zb25AcmFzcGJlcnJ5cGkub3JnPgo+
-ID4KPiA+IEgyNjQgaGVhZGVyIGNvbWUgZnJvbSBWQyB3aXRoIDAgdGltZXN0YW1wcywgd2hpY2gg
-bWVhbnMgdGhleSBnZXQgYQo+ID4gc3RyYW5nZSB0aW1lc3RhbXAgd2hlbiBwcm9jZXNzZWQgd2l0
-aCBWQy9rZXJuZWwgc3RhcnQgdGltZXMsCj4gPiBwYXJ0aWN1bGFybHkgaWYgdXNlZCB3aXRoIHRo
-ZSBpbmxpbmUgaGVhZGVyIG9wdGlvbi4KPiA+IFJlbWVtYmVyIHRoZSBsYXN0IGZyYW1lIHRpbWVz
-dGFtcCBhbmQgdXNlIHRoYXQgaWYgc2V0LCBvciBvdGhlcndpc2UKPiA+IHVzZSB0aGUga2VybmVs
-IHN0YXJ0IHRpbWUuCj4KPiBOb3JtYWxseSBIMjY0IGhlYWRlcnMgYXJlIGNvbnNpZGVyZWQgdG8g
-YmUgcGFydCBvZiB0aGUgZm9sbG93aW5nIGZyYW1lLgo+IEdpdmluZyBpdCB0aGUgdGltZXN0YW1w
-IG9mIHRoZSBwcmV2aW91cyBmcmFtZSB3aWxsIGxpa2VseSBjb25mdXNlIHNvbWUKPiB1c2Vyc3Bh
-Y2UgYW5kIGNhdXNlIGFuIG9mZi1ieS1vbmUgaW4gdGltZXN0YW1wLiBJIHVuZGVyc3RhbmQgdGhp
-cyBpcyBhCj4gd29ya2Fyb3VuZCwgYnV0IGFtIHdvbmRlcmluZyBpZiB0aGlzIGNhbiBiZSBpbXBy
-b3ZlZC4KClNvcnJ5LCBzbGlnaHQgYW1iaWd1aXR5IGluIGhvdyBJJ20gcmVhZGluZyB5b3VyIGNv
-bW1lbnQuCgpBcmUgeW91IHNheWluZyB0aGF0IHRoZSBoZWFkZXIgYnl0ZXMgd2FudCB0byBiZSBp
-biB0aGUgc2FtZSBidWZmZXIgYXMKdGhlIGZvbGxvd2luZyBmcmFtZT8KSSB0aG91Z2h0IHRoaXMg
-aGFkIGFsc28gYmVlbiBkaXNjdXNzZWQgaW4gdGhlIFY0TDIgc3RhdGVmdWwgY29kZWMgQVBJCnRo
-cmVhZHMgYWxvbmcgd2l0aCBob3cgbWFueSBlbmNvZGVkIGZyYW1lcyB3ZXJlIGFsbG93ZWQgaW4g
-YSBzaW5nbGUKVjRMMiBidWZmZXIuIEkgY2VydGFpbmx5IGhhZG4ndCBzZWVuIGEgc3RhdGVtZW50
-IGFib3V0IHRoZSBoZWFkZXIKYnl0ZXMgYmVpbmcgY29tYmluZWQgd2l0aCB0aGUgbmV4dCBmcmFt
-ZS4KSWYgdGhlIGJlaGF2aW91ciByZXF1aXJlZCBieSBWNEwyIGlzIHRoYXQgaGVhZGVyIGJ5dGVz
-IGFuZCBmb2xsb3dpbmcKZnJhbWUgYXJlIGluIHRoZSBzYW1lIGJ1ZmZlciwgdGhlbiB0aGF0IGlz
-IHJlbGF0aXZlbHkgZWFzeSB0byBhY2hpZXZlCmluIHRoZSBmaXJtd2FyZS4gVGhpcyB3b3JrYXJv
-dW5kIGNhbiByZW1haW4gZm9yIG9sZGVyIGZpcm13YXJlIGFzIGl0CndpbGwgbmV2ZXIgdHJpZ2dl
-ciBpZiB0aGUgZmlybXdhcmUgaGFzIGNvbWJpbmVkIHRoZSBmcmFtZXMuCgoKT3IgYXJlIHlvdSBz
-YXlpbmcgdGhhdCB0aGUgaGVhZGVyIGJ5dGVzIHJlbWFpbiBpbiB0aGVpciBvd24gYnVmZmVyLApi
-dXQgdGhlIHRpbWVzdGFtcCB3YW50cyB0byBiZSB0aGUgc2FtZSBhcyB0aGUgbmV4dCBmcmFtZT8g
-VGhhdCBpcwpoYXJkZXIgdG8gYWNoaWV2ZSBpbiB0aGUgZmlybXdhcmUsIGJ1dCBjb3VsZCBwcm9i
-YWJseSBiZSBkb25lIGluIHRoZQprZXJuZWwgZHJpdmVyIGJ5IGhvbGRpbmcgb24gdG8gdGhlIGhl
-YWRlciBieXRlcyBmcmFtZSB1bnRpbCB0aGUgbmV4dApidWZmZXIgaGFkIGJlZW4gcmVjZWl2ZWQs
-IGF0IHdoaWNoIHBvaW50IHRoZSB0aW1lc3RhbXAgY2FuIGJlIGNvcGllZAphY3Jvc3MuIFBvc3Np
-YmxlLCBidXQganVzdCBuZWVkcyBzbGlnaHRseSBjYXJlZnVsIGhhbmRsaW5nIHRvIGVuc3VyZQp3
-ZSBkb24ndCBsb3NlIGJ1ZmZlcnMgYWNjaWRlbnRhbGx5LgoKICBEYXZlCgo+ID4KPiA+IExpbms6
-IGh0dHBzOi8vZ2l0aHViLmNvbS9yYXNwYmVycnlwaS9saW51eC9pc3N1ZXMvMTgzNgo+ID4gU2ln
-bmVkLW9mZi1ieTogRGF2ZSBTdGV2ZW5zb24gPGRhdmUuc3RldmVuc29uQHJhc3BiZXJyeXBpLm9y
-Zz4KPiA+IC0tLQo+ID4gIC4uLi9zdGFnaW5nL3ZjMDRfc2VydmljZXMvYmNtMjgzNS1jYW1lcmEv
-YmNtMjgzNS1jYW1lcmEuYyAgfCAxNCArKysrKysrKysrKystLQo+ID4gIC4uLi9zdGFnaW5nL3Zj
-MDRfc2VydmljZXMvYmNtMjgzNS1jYW1lcmEvYmNtMjgzNS1jYW1lcmEuaCAgfCAgMiArKwo+ID4g
-IDIgZmlsZXMgY2hhbmdlZCwgMTQgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKPiA+Cj4g
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL3ZjMDRfc2VydmljZXMvYmNtMjgzNS1jYW1l
-cmEvYmNtMjgzNS1jYW1lcmEuYyBiL2RyaXZlcnMvc3RhZ2luZy92YzA0X3NlcnZpY2VzL2JjbTI4
-MzUtY2FtZXJhL2JjbTI4MzUtY2FtZXJhLmMKPiA+IGluZGV4IGRjZTZlNmQuLjBjMDQ4MTUgMTAw
-NjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL3N0YWdpbmcvdmMwNF9zZXJ2aWNlcy9iY20yODM1LWNhbWVy
-YS9iY20yODM1LWNhbWVyYS5jCj4gPiArKysgYi9kcml2ZXJzL3N0YWdpbmcvdmMwNF9zZXJ2aWNl
-cy9iY20yODM1LWNhbWVyYS9iY20yODM1LWNhbWVyYS5jCj4gPiBAQCAtMzU5LDcgKzM1OSw5IEBA
-IHN0YXRpYyB2b2lkIGJ1ZmZlcl9jYihzdHJ1Y3QgdmNoaXFfbW1hbF9pbnN0YW5jZSAqaW5zdGFu
-Y2UsCj4gPiAgICAgICAgICAgICAgIH0KPiA+ICAgICAgIH0gZWxzZSB7Cj4gPiAgICAgICAgICAg
-ICAgIGlmIChkZXYtPmNhcHR1cmUuZnJhbWVfY291bnQpIHsKPiA+IC0gICAgICAgICAgICAgICAg
-ICAgICBpZiAoZGV2LT5jYXB0dXJlLnZjX3N0YXJ0X3RpbWVzdGFtcCAhPSAtMSAmJiBwdHMpIHsK
-PiA+ICsgICAgICAgICAgICAgICAgICAgICBpZiAoZGV2LT5jYXB0dXJlLnZjX3N0YXJ0X3RpbWVz
-dGFtcCAhPSAtMSkgewo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYnVmLT52Yi52
-YjJfYnVmLnRpbWVzdGFtcCA9IGt0aW1lX2dldF9ucygpOwo+ID4gKyAgICAgICAgICAgICAgICAg
-ICAgIH0gZWxzZSBpZiAocHRzKSB7Cj4gPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBr
-dGltZV90IHRpbWVzdGFtcDsKPiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHM2NCBy
-dW50aW1lX3VzID0gcHRzIC0KPiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBk
-ZXYtPmNhcHR1cmUudmNfc3RhcnRfdGltZXN0YW1wOwo+ID4gQEAgLTM3Miw4ICszNzQsMTUgQEAg
-c3RhdGljIHZvaWQgYnVmZmVyX2NiKHN0cnVjdCB2Y2hpcV9tbWFsX2luc3RhbmNlICppbnN0YW5j
-ZSwKPiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGt0aW1lX3RvX25z
-KHRpbWVzdGFtcCkpOwo+ID4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYnVmLT52Yi52
-YjJfYnVmLnRpbWVzdGFtcCA9IGt0aW1lX3RvX25zKHRpbWVzdGFtcCk7Cj4gPiAgICAgICAgICAg
-ICAgICAgICAgICAgfSBlbHNlIHsKPiA+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgIGJ1
-Zi0+dmIudmIyX2J1Zi50aW1lc3RhbXAgPSBrdGltZV9nZXRfbnMoKTsKPiA+ICsgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgIGlmIChkZXYtPmNhcHR1cmUubGFzdF90aW1lc3RhbXApIHsKPiA+
-ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYnVmLT52Yi52YjJfYnVmLnRp
-bWVzdGFtcCA9Cj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgZGV2LT5jYXB0dXJlLmxhc3RfdGltZXN0YW1wOwo+ID4gKyAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgfSBlbHNlIHsKPiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgYnVmLT52Yi52YjJfYnVmLnRpbWVzdGFtcCA9Cj4gPiArICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAga3RpbWVfdG9fbnMoZGV2LT5jYXB0dXJlLmtlcm5lbF9z
-dGFydF90cyk7Cj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9Cj4gPiAgICAgICAg
-ICAgICAgICAgICAgICAgfQo+ID4gKyAgICAgICAgICAgICAgICAgICAgIGRldi0+Y2FwdHVyZS5s
-YXN0X3RpbWVzdGFtcCA9IGJ1Zi0+dmIudmIyX2J1Zi50aW1lc3RhbXA7Cj4gPgo+ID4gICAgICAg
-ICAgICAgICAgICAgICAgIHZiMl9zZXRfcGxhbmVfcGF5bG9hZCgmYnVmLT52Yi52YjJfYnVmLCAw
-LCBsZW5ndGgpOwo+ID4gICAgICAgICAgICAgICAgICAgICAgIHZiMl9idWZmZXJfZG9uZSgmYnVm
-LT52Yi52YjJfYnVmLCBWQjJfQlVGX1NUQVRFX0RPTkUpOwo+ID4gQEAgLTU0MSw2ICs1NTAsNyBA
-QCBzdGF0aWMgaW50IHN0YXJ0X3N0cmVhbWluZyhzdHJ1Y3QgdmIyX3F1ZXVlICp2cSwgdW5zaWdu
-ZWQgaW50IGNvdW50KQo+ID4gICAgICAgICAgICAgICAgICAgICAgICBkZXYtPmNhcHR1cmUudmNf
-c3RhcnRfdGltZXN0YW1wLCBwYXJhbWV0ZXJfc2l6ZSk7Cj4gPgo+ID4gICAgICAgZGV2LT5jYXB0
-dXJlLmtlcm5lbF9zdGFydF90cyA9IGt0aW1lX2dldCgpOwo+ID4gKyAgICAgZGV2LT5jYXB0dXJl
-Lmxhc3RfdGltZXN0YW1wID0gMDsKPiA+Cj4gPiAgICAgICAvKiBlbmFibGUgdGhlIGNhbWVyYSBw
-b3J0ICovCj4gPiAgICAgICBkZXYtPmNhcHR1cmUucG9ydC0+Y2JfY3R4ID0gZGV2Owo+ID4gZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy92YzA0X3NlcnZpY2VzL2JjbTI4MzUtY2FtZXJhL2Jj
-bTI4MzUtY2FtZXJhLmggYi9kcml2ZXJzL3N0YWdpbmcvdmMwNF9zZXJ2aWNlcy9iY20yODM1LWNh
-bWVyYS9iY20yODM1LWNhbWVyYS5oCj4gPiBpbmRleCAyYjU2NzllLi4wOTI3M2IwIDEwMDY0NAo+
-ID4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL3ZjMDRfc2VydmljZXMvYmNtMjgzNS1jYW1lcmEvYmNt
-MjgzNS1jYW1lcmEuaAo+ID4gKysrIGIvZHJpdmVycy9zdGFnaW5nL3ZjMDRfc2VydmljZXMvYmNt
-MjgzNS1jYW1lcmEvYmNtMjgzNS1jYW1lcmEuaAo+ID4gQEAgLTkwLDYgKzkwLDggQEAgc3RydWN0
-IGJtMjgzNV9tbWFsX2RldiB7Cj4gPiAgICAgICAgICAgICAgIHM2NCAgICAgICAgIHZjX3N0YXJ0
-X3RpbWVzdGFtcDsKPiA+ICAgICAgICAgICAgICAgLyogS2VybmVsIHN0YXJ0IHRpbWVzdGFtcCBm
-b3Igc3RyZWFtaW5nICovCj4gPiAgICAgICAgICAgICAgIGt0aW1lX3Qga2VybmVsX3N0YXJ0X3Rz
-Owo+ID4gKyAgICAgICAgICAgICAvKiBUaW1lc3RhbXAgb2YgbGFzdCBmcmFtZSAqLwo+ID4gKyAg
-ICAgICAgICAgICB1NjQgICAgICAgICAgICAgbGFzdF90aW1lc3RhbXA7Cj4gPgo+ID4gICAgICAg
-ICAgICAgICBzdHJ1Y3QgdmNoaXFfbW1hbF9wb3J0ICAqcG9ydDsgLyogcG9ydCBiZWluZyB1c2Vk
-IGZvciBjYXB0dXJlICovCj4gPiAgICAgICAgICAgICAgIC8qIGNhbWVyYSBwb3J0IGJlaW5nIHVz
-ZWQgZm9yIGNhcHR1cmUgKi8KPiA+IC0tCj4gPiAyLjcuNAo+ID4KX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxp
-bnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qu
-b3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+Hi Stefan
+
+Firstly a huge thank you for picking this up - it's been on my to-do
+list for ages, and just hasn't made it to the top.
+
+On Fri, 28 Jun 2019 at 09:06, Hans Verkuil <hverkuil@xs4all.nl> wrote:
+>
+> Hi Stefan,
+>
+> On 6/27/19 8:55 PM, Stefan Wahren wrote:
+> > This is an attempt to help Dave Stevenson to get all the fixes and
+> > improvements of the bcm2835-camera driver into mainline.
+> >
+> > Mostly i only polished the commit logs for upstream.
+> >
+> > The series based on the latest bugfix V2 of staging: bcm2835-camera: Resto=
+> > re
+> > return behavior of ctrl_set_bitrate().
+>
+> Thank you for working on this.
+>
+> Three high-level questions:
+>
+> 1) Can you post the output of 'v4l2-compliance -s' using the latest v4l2-compliance
+>    from https://git.linuxtv.org/v4l-utils.git ?  I'm interested to see what the
+>    status is of this driver w.r.t. the compliance tests.
+
+Hi Hans.
+
+Running it against the downstream driver (which should be nearly
+identical based on this set of patches), 4.19, on a Pi4 I get
+pi@raspberrypi:~/v4l-utils/utils/v4l2-compliance $ ./v4l2-compliance -s
+v4l2-compliance SHA: b16f9e945d74aa552abdd6f873821cb77faaf13a, 32 bits
+
+Compliance test for bm2835 mmal device /dev/video0:
+
+Driver Info:
+    Driver name      : bm2835 mmal
+    Card type        : mmal service 16.1
+    Bus info         : platform:bcm2835-v4l2
+    Driver version   : 4.19.56
+    Capabilities     : 0x85200005
+        Video Capture
+        Video Overlay
+        Read/Write
+        Streaming
+        Extended Pix Format
+        Device Capabilities
+    Device Caps      : 0x05200005
+        Video Capture
+        Video Overlay
+        Read/Write
+        Streaming
+        Extended Pix Format
+
+Required ioctls:
+    test VIDIOC_QUERYCAP: OK
+
+Allow for multiple opens:
+    test second /dev/video0 open: OK
+    test VIDIOC_QUERYCAP: OK
+    test VIDIOC_G/S_PRIORITY: OK
+    test for unlimited opens: OK
+
+Debug ioctls:
+    test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
+    test VIDIOC_LOG_STATUS: OK
+
+Input ioctls:
+    test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+    test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+    test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+    test VIDIOC_ENUMAUDIO: OK (Not Supported)
+    test VIDIOC_G/S/ENUMINPUT: OK
+    test VIDIOC_G/S_AUDIO: OK (Not Supported)
+    Inputs: 1 Audio Inputs: 0 Tuners: 0
+
+Output ioctls:
+    test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+    test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+    test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+    test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+    test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+    Outputs: 0 Audio Outputs: 0 Modulators: 0
+
+Input/Output configuration ioctls:
+    test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+    test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+    test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+    test VIDIOC_G/S_EDID: OK (Not Supported)
+
+Control ioctls (Input 0):
+    test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
+    test VIDIOC_QUERYCTRL: OK
+    test VIDIOC_G/S_CTRL: OK
+    test VIDIOC_G/S/TRY_EXT_CTRLS: OK
+    test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
+    test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+    Standard Controls: 33 Private Controls: 0
+
+Format ioctls (Input 0):
+    test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+    test VIDIOC_G/S_PARM: OK
+    test VIDIOC_G_FBUF: OK
+    test VIDIOC_G_FMT: OK
+    test VIDIOC_TRY_FMT: OK
+    test VIDIOC_S_FMT: OK
+    test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+    test Cropping: OK (Not Supported)
+    test Composing: OK (Not Supported)
+    test Scaling: OK
+
+Codec ioctls (Input 0):
+    test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+    test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+    test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+
+Buffer ioctls (Input 0):
+    test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+    test VIDIOC_EXPBUF: OK (Not Supported)
+    test Requests: OK (Not Supported)
+
+Test input 0:
+
+Streaming ioctls:
+    test read/write: OK
+    test blocking wait: OK
+            warn: v4l2-test-buffers.cpp(1429): Can free buffers even
+if still mmap()ed
+    test MMAP (no poll): OK
+            warn: v4l2-test-buffers.cpp(1429): Can free buffers even
+if still mmap()ed
+    test MMAP (select): OK
+            warn: v4l2-test-buffers.cpp(1429): Can free buffers even
+if still mmap()ed
+    test MMAP (epoll): OK
+    test USERPTR (no poll): OK
+    test USERPTR (select): OK
+    test DMABUF (no poll): OK (Not Supported)
+    test DMABUF (select): OK (Not Supported)
+
+Total for bm2835 mmal device /dev/video0: 53, Succeeded: 53, Failed:
+0, Warnings: 3
+
+The warnings are because downstream we have an early version of
+"media: vb2: Allow reqbufs(0) with "in use" MMAP buffers" that doesn't
+set the flag to userspace. I need to revert that and apply the
+accepted one (it's not a clean cherrypick though).
+
+I do try and run compliance every few months because I'm aware that
+you frequently add extra tests.
+
+> 2) What is the status of this driver from your point of view? What is needed to
+>    get it out of staging?
+
+I think the main issue is the dependency on vchiq. I'm hoping that the
+V4L2 side of this is now relatively clean, but it probably wants a
+full review when someone has the time.
+
+> 3) Out of curiosity: is this driver still valid for RPi4?
+
+Yes, it is still valid. The imaging side hasn't changed significantly,
+it just runs a bit faster.
+
+  Dave
+
+> Regards,
+>
+>         Hans
+>
+> >
+> > Dave Stevenson (31):
+> >   staging: bcm2835-camera: Ensure H264 header bytes get a sensible
+> >     timestamp
+> >   staging: bcm2835-camera: Check the error for REPEAT_SEQ_HEADER
+> >   staging: bcm2835-camera: Replace spinlock protecting context_map with
+> >     mutex
+> >   staging: bcm2835-camera: Do not bulk receive from service thread
+> >   staging: bcm2835-camera: Correctly denote key frames in encoded data
+> >   staging: bcm2835-camera: Return early on errors
+> >   staging: bcm2835-camera: Remove dead email addresses
+> >   staging: bcm2835-camera: Fix comment style violations.
+> >   staging: bcm2835-camera: Fix spacing around operators
+> >   staging: bcm2835-camera: Reduce length of enum names
+> >   staging: bcm2835-camera: Fix multiple line dereference errors
+> >   staging: bcm2835-camera: Fix brace style issues.
+> >   staging: bcm2835-camera: Fix missing lines between items
+> >   staging: bcm2835-camera: Fix open parenthesis alignment
+> >   staging: bcm2835-camera: Ensure all buffers are returned on disable
+> >   staging: bcm2835-camera: Remove check of the number of buffers
+> >     supplied
+> >   staging: bcm2835-camera: Handle empty EOS buffers whilst streaming
+> >   staging: bcm2835-camera: Set sequence number correctly
+> >   staging: bcm2835-camera: Ensure timestamps never go backwards.
+> >   staging: bcm2835-camera: Add multiple inclusion protection to headers
+> >   staging: bcm2835-camera: Unify header inclusion defines
+> >   staging: bcm2835-camera: Fix multiple assignments should be avoided
+> >   staging: bcm2835-camera: Fix up mmal-parameters.h
+> >   staging: bcm2835-camera: Use enums for max value in controls
+> >   staging: bcm2835-camera: Correct V4L2_CID_COLORFX_CBCR behaviour
+> >   staging: bcm2835-camera: Remove/amend some obsolete comments
+> >   staging: mmal-vchiq: Avoid use of bool in structures
+> >   staging: bcm2835-camera: Fix stride on RGB3/BGR3 formats
+> >   staging: bcm2835-camera: Add sanity checks for queue_setup/CREATE_BUFS
+> >   staging: bcm2835-camera: Set the field value within ach buffer
+> >   staging: bcm2835-camera: Correct ctrl min/max/step/def to 64bit
+> >
+> >  .../vc04_services/bcm2835-camera/bcm2835-camera.c  | 378 ++++++++++++----=
+> > -----
+> >  .../vc04_services/bcm2835-camera/bcm2835-camera.h  |  34 +-
+> >  .../vc04_services/bcm2835-camera/controls.c        | 184 +++++-----
+> >  .../vc04_services/bcm2835-camera/mmal-common.h     |  12 +-
+> >  .../vc04_services/bcm2835-camera/mmal-encodings.h  |   9 +-
+> >  .../vc04_services/bcm2835-camera/mmal-msg-common.h |   9 +-
+> >  .../vc04_services/bcm2835-camera/mmal-msg-format.h | 104 +++---
+> >  .../vc04_services/bcm2835-camera/mmal-msg-port.h   | 133 ++++----
+> >  .../vc04_services/bcm2835-camera/mmal-msg.h        | 150 ++++----
+> >  .../vc04_services/bcm2835-camera/mmal-parameters.h | 286 +++++++++-------
+> >  .../vc04_services/bcm2835-camera/mmal-vchiq.c      | 159 +++++----
+> >  .../vc04_services/bcm2835-camera/mmal-vchiq.h      |  22 +-
+> >  12 files changed, 826 insertions(+), 654 deletions(-)
+> >
+> > =2D-
+> > 2.7.4
+> >
+>
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
