@@ -1,74 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5026B591A7
-	for <lists+driverdev-devel@lfdr.de>; Fri, 28 Jun 2019 04:49:53 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6A66283C00;
-	Fri, 28 Jun 2019 02:49:51 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TFvS5NMZhGEf; Fri, 28 Jun 2019 02:49:50 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 43879814A3;
-	Fri, 28 Jun 2019 02:49:49 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3C81D1BF418
- for <devel@linuxdriverproject.org>; Fri, 28 Jun 2019 02:49:47 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id A5731591A9
+	for <lists+driverdev-devel@lfdr.de>; Fri, 28 Jun 2019 04:50:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 36FDE86132
- for <devel@linuxdriverproject.org>; Fri, 28 Jun 2019 02:49:47 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 17A9E86502;
+	Fri, 28 Jun 2019 02:50:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ukq58nDqeYFY; Fri, 28 Jun 2019 02:50:04 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0FCE6864EE;
+	Fri, 28 Jun 2019 02:50:03 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id F14CB1BF418
+ for <devel@linuxdriverproject.org>; Fri, 28 Jun 2019 02:50:00 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id EACE3203D6
+ for <devel@linuxdriverproject.org>; Fri, 28 Jun 2019 02:50:00 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2YRWAojEeUFh for <devel@linuxdriverproject.org>;
- Fri, 28 Jun 2019 02:49:46 +0000 (UTC)
+ with ESMTP id lKGvycvMVuVW for <devel@linuxdriverproject.org>;
+ Fri, 28 Jun 2019 02:49:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
  [209.85.215.195])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 041168610E
- for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 02:49:46 +0000 (UTC)
-Received: by mail-pg1-f195.google.com with SMTP id k13so1892813pgq.9
- for <devel@driverdev.osuosl.org>; Thu, 27 Jun 2019 19:49:46 -0700 (PDT)
+ by silver.osuosl.org (Postfix) with ESMTPS id D440220351
+ for <devel@driverdev.osuosl.org>; Fri, 28 Jun 2019 02:49:59 +0000 (UTC)
+Received: by mail-pg1-f195.google.com with SMTP id z19so1889525pgl.12
+ for <devel@driverdev.osuosl.org>; Thu, 27 Jun 2019 19:49:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id;
- bh=BjZs4QmT9Rq6xJfvVoRrPidd5HcnRoBaVWi/hg75COg=;
- b=XUmdL4kUPfZgTYfBdqlqn0WkAet+SkaoA+caF+woKXYmNDKQ9vsgqvdsOThS+Va4J9
- 84qyPrmEHSvP0yh8znX08527pWn/XH1bntADASOLRGw8DOqzGjwK+cJQk5wpuGKjv9GG
- AJHFf3fjm2bLMrLnOgBtPw9bnZ13jflSB1h388xemN3Ad59kR5Q6MmSCQWM3Urk5WaOT
- EnDTeFN5/A5rtqNkwsGOLP7XWtnLPK01XW0Fx+L/kx7/7QGbYGNzr8vA+Huqln5QbatT
- Hns6EW28DT5Vzva24YZH5PEMvq7RfKe7IYMc/T4jzwIQ5xRbWn0qm9H1fbcA9yzQeFu+
- yJHQ==
+ bh=ntiJ5C/OBL6UdCz4Q7ktczZqFeLJZaqGoBR+VZeaVcQ=;
+ b=hy72Cf3q1oJ7rFjw+u0OTSaQNnxUaiSNepNt+DvajIwO5FZgf1H5nma5H/nNKqU05/
+ rFIH8E61qyP2qWOWDRONVJtLPbXXei+mScXn2kC9zYL/IA3Lumiw7u3yf9x0WEtqTbhG
+ CZjJw2dCkgWhxrZBhv/+vYrIuYSoTFeP60qN27F0QvZAs7aFE74nEpSjjbSxuWgCXEa8
+ O4zaJAge4tk1FYgD4JVVKcNFn+WzFceVq0L365itBFLjU8J9EyrAY2f+wt2JFhIlI2UF
+ mjlnvLII0cx6Ds+cYsJGlgPIPGGApcc/u4vEy/crPJR915gSSstqTrAAImol1chwQZyf
+ G9sg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=BjZs4QmT9Rq6xJfvVoRrPidd5HcnRoBaVWi/hg75COg=;
- b=s7p0OhICoIDn7CJGPOjaP/xCUzJ5B8Y2RJZFj1625xjmbNyy9vuY58Um3kS5RT3tBV
- 9J7A2pEZSHOwiYMAG+W4TnCPyAKihuHX6O8kW+BIInBQA7dN4iMEPCboRiKzXdaDi2PI
- QhLw351gSnMuRWhnLxiiPbBmkgcknHSSrPEXocQUpERR0nCu3Clh+XVwAumA9td4Q1RQ
- 2lj5DF+wQFHiX3DtG+9D/wEE/NqT7evs+59dZFsJwwqeWKv6s5Ve57WIdFcqwEmJIVcb
- LMUT/WPHJ6YNiySSvzCFyLvVYxoFWpznJHyjDuEI6wF/NvP8dtsXbyZqw2/x4oZJmYZM
- KeUg==
-X-Gm-Message-State: APjAAAVtfuXPDJr9QJs9In476Z4Edgvn0Y9XGJERvaKpThkVANJlapGJ
- UEfQckn+eq30wG6s/PAf/to=
-X-Google-Smtp-Source: APXvYqz9mlzjLxYpAkSvC41BFQNvhTAPafuvUKQKdp9gxiY2E2Kb/qDNS3oWbbgVTV/qawHxw911pw==
-X-Received: by 2002:a17:90a:cd04:: with SMTP id
- d4mr10368889pju.128.1561690185607; 
- Thu, 27 Jun 2019 19:49:45 -0700 (PDT)
+ bh=ntiJ5C/OBL6UdCz4Q7ktczZqFeLJZaqGoBR+VZeaVcQ=;
+ b=GJRFN6BvX+mMuAAqbntK5enNyvmM5NixtLqRMmrVXJw1n3LMoJa46I41aYBPh5dC7n
+ YtGzMpzhmpUwGLE37QzGpFx1B7XfVOGHcdduW/kBD5nqNkE+weyKiIYJs9qG40gcHPJg
+ un+QB/IQTtVNxOHvXQoUhquqxKhWfnggx8lji2zLENjRQsWqr8F4Af1bh8HCd3BVInYg
+ x/JBBESZc5itJ3mzz36Ri9Pm+Ky4iWmynmzMefz0jOQIP6NQAOi4cVYawNeNnMltnsHn
+ 4H5iqVKEYz77LazXKJiePab0YaKXJt1b7D8Ti76h91LAi4nALXe/0aXWRDxFjJUDgw2t
+ zeVw==
+X-Gm-Message-State: APjAAAXTfd14jKCT1jagasxzD6KAKhuUgw3SG3QEYKq+APbu8sPX8HS+
+ PmWurK3cVmCDSuggj7FwE0Q=
+X-Google-Smtp-Source: APXvYqyfn2rh8ilKv0L32NiNdkcC+i8x5BeMbUQYHSIRKS7tjyeJfoqsLpWyRcsX7ElJnZS6K2irOA==
+X-Received: by 2002:a17:90a:1b48:: with SMTP id
+ q66mr9678386pjq.83.1561690199548; 
+ Thu, 27 Jun 2019 19:49:59 -0700 (PDT)
 Received: from hfq-skylake.ipads-lab.se.sjtu.edu.cn ([202.120.40.82])
- by smtp.googlemail.com with ESMTPSA id w1sm562908pjt.30.2019.06.27.19.49.39
+ by smtp.googlemail.com with ESMTPSA id b135sm454729pfb.44.2019.06.27.19.49.55
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 27 Jun 2019 19:49:45 -0700 (PDT)
+ Thu, 27 Jun 2019 19:49:59 -0700 (PDT)
 From: Fuqian Huang <huangfq.daxian@gmail.com>
 To: 
-Subject: [PATCH v2 19/27] staging: rtl8*: use zeroing allocator rather than
- allocator followed with memset 0
-Date: Fri, 28 Jun 2019 10:49:29 +0800
-Message-Id: <20190628024935.15806-1-huangfq.daxian@gmail.com>
+Subject: [PATCH v2 20/27] staging: rtl8723bs: remove unneeded memset
+Date: Fri, 28 Jun 2019 10:49:49 +0800
+Message-Id: <20190628024952.15866-1-huangfq.daxian@gmail.com>
 X-Mailer: git-send-email 2.11.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -82,152 +81,65 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
- devel@driverdev.osuosl.org, Arnd Bergmann <arnd@arndb.de>,
+Cc: devel@driverdev.osuosl.org, Arnd Bergmann <arnd@arndb.de>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Dafna Hirschfeld <dafna3@gmail.com>, linux-kernel@vger.kernel.org,
- Omer Efrat <omer.efrat@tandemg.com>, Julia Lawall <julia.lawall@lip6.fr>,
- Jia-Ju Bai <baijiaju1990@gmail.com>, Mamta Shukla <mamtashukla555@gmail.com>,
+ Anirudh Rayabharam <anirudh.rayabharam@gmail.com>,
+ linux-kernel@vger.kernel.org, Mamta Shukla <mamtashukla555@gmail.com>,
+ Hardik Singh Rathore <hardiksingh.k@gmail.com>,
+ Hans de Goede <hdegoede@redhat.com>,
  Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>,
  Emanuel Bennici <benniciemanuel78@gmail.com>,
- Fuqian Huang <huangfq.daxian@gmail.com>, Quytelda Kahja <quytelda@tamalin.org>,
- Wen Yang <wen.yang99@zte.com.cn>, Larry Finger <Larry.Finger@lwfinger.net>
+ Fuqian Huang <huangfq.daxian@gmail.com>,
+ Nishka Dasgupta <nishka.dasgupta@yahoo.com>,
+ Murray McAllister <murray.mcallister@insomniasec.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Use zeroing allocator rather than allocator followed with memset 0.
+rtw_zmalloc already zeroes the memory,
+so memset is unneeded.
 
 Signed-off-by: Fuqian Huang <huangfq.daxian@gmail.com>
 ---
- drivers/staging/rtl8188eu/os_dep/mlme_linux.c     |  3 +--
- drivers/staging/rtl8712/rtl871x_io.c              |  4 +---
- drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c |  8 ++------
- drivers/staging/rtl8723bs/os_dep/ioctl_linux.c    | 12 +++---------
- 4 files changed, 7 insertions(+), 20 deletions(-)
+ drivers/staging/rtl8723bs/core/rtw_ap.c   | 2 --
+ drivers/staging/rtl8723bs/core/rtw_mlme.c | 2 --
+ 2 files changed, 4 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/os_dep/mlme_linux.c b/drivers/staging/rtl8188eu/os_dep/mlme_linux.c
-index 9db11b16cb93..250acb01d1a9 100644
---- a/drivers/staging/rtl8188eu/os_dep/mlme_linux.c
-+++ b/drivers/staging/rtl8188eu/os_dep/mlme_linux.c
-@@ -98,10 +98,9 @@ void rtw_report_sec_ie(struct adapter *adapter, u8 authmode, u8 *sec_ie)
- 	if (authmode == _WPA_IE_ID_) {
- 		RT_TRACE(_module_mlme_osdep_c_, _drv_info_,
- 			 ("rtw_report_sec_ie, authmode=%d\n", authmode));
--		buff = rtw_malloc(IW_CUSTOM_MAX);
-+		buff = rtw_zmalloc(IW_CUSTOM_MAX);
- 		if (!buff)
- 			return;
--		memset(buff, 0, IW_CUSTOM_MAX);
- 		p = buff;
- 		p += sprintf(p, "ASSOCINFO(ReqIEs =");
- 		len = sec_ie[1] + 2;
-diff --git a/drivers/staging/rtl8712/rtl871x_io.c b/drivers/staging/rtl8712/rtl871x_io.c
-index 17dafeffd6f4..87024d6a465e 100644
---- a/drivers/staging/rtl8712/rtl871x_io.c
-+++ b/drivers/staging/rtl8712/rtl871x_io.c
-@@ -107,13 +107,11 @@ uint r8712_alloc_io_queue(struct _adapter *adapter)
- 	INIT_LIST_HEAD(&pio_queue->processing);
- 	INIT_LIST_HEAD(&pio_queue->pending);
- 	spin_lock_init(&pio_queue->lock);
--	pio_queue->pallocated_free_ioreqs_buf = kmalloc(NUM_IOREQ *
-+	pio_queue->pallocated_free_ioreqs_buf = kzalloc(NUM_IOREQ *
- 						(sizeof(struct io_req)) + 4,
- 						GFP_ATOMIC);
- 	if ((pio_queue->pallocated_free_ioreqs_buf) == NULL)
- 		goto alloc_io_queue_fail;
--	memset(pio_queue->pallocated_free_ioreqs_buf, 0,
--			(NUM_IOREQ * (sizeof(struct io_req)) + 4));
- 	pio_queue->free_ioreqs_buf = pio_queue->pallocated_free_ioreqs_buf + 4
- 			- ((addr_t)(pio_queue->pallocated_free_ioreqs_buf)
- 			& 3);
-diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
-index db553f2e4c0b..f8e0723f5d1f 100644
---- a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
-+++ b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
-@@ -1078,12 +1078,10 @@ static int cfg80211_rtw_add_key(struct wiphy *wiphy, struct net_device *ndev,
- 	DBG_871X("pairwise =%d\n", pairwise);
+diff --git a/drivers/staging/rtl8723bs/core/rtw_ap.c b/drivers/staging/rtl8723bs/core/rtw_ap.c
+index bc0230672457..dc1da5626ce1 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_ap.c
++++ b/drivers/staging/rtl8723bs/core/rtw_ap.c
+@@ -1504,8 +1504,6 @@ static int rtw_ap_set_key(
+ 		goto exit;
+ 	}
  
- 	param_len = sizeof(struct ieee_param) + params->key_len;
--	param = rtw_malloc(param_len);
-+	param = rtw_zmalloc(param_len);
- 	if (param == NULL)
- 		return -1;
- 
--	memset(param, 0, param_len);
+-	memset(psetkeyparm, 0, sizeof(struct setkey_parm));
 -
- 	param->cmd = IEEE_CMD_SET_ENCRYPTION;
- 	memset(param->sta_addr, 0xff, ETH_ALEN);
+ 	psetkeyparm->keyid = (u8)keyid;
+ 	if (is_wep_enc(alg))
+ 		padapter->securitypriv.key_mask |= BIT(psetkeyparm->keyid);
+diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
+index 5f78f1eaa7aa..3586da79af5a 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
++++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
+@@ -2229,7 +2229,6 @@ sint rtw_set_auth(struct adapter *adapter, struct security_priv *psecuritypriv)
+ 		goto exit;
+ 	}
  
-@@ -2167,15 +2165,13 @@ static int cfg80211_rtw_connect(struct wiphy *wiphy, struct net_device *ndev,
- 		{
- 			wep_key_len = wep_key_len <= 5 ? 5 : 13;
- 			wep_total_len = wep_key_len + FIELD_OFFSET(struct ndis_802_11_wep, KeyMaterial);
--			pwep = rtw_malloc(wep_total_len);
-+			pwep = rtw_zmalloc(wep_total_len);
- 			if (pwep == NULL) {
- 				DBG_871X(" wpa_set_encryption: pwep allocate fail !!!\n");
- 				ret = -ENOMEM;
- 				goto exit;
- 			}
+-	memset(psetauthparm, 0, sizeof(struct setauth_parm));
+ 	psetauthparm->mode = (unsigned char)psecuritypriv->dot11AuthAlgrthm;
  
--			memset(pwep, 0, wep_total_len);
--
- 			pwep->KeyLength = wep_key_len;
- 			pwep->Length = wep_total_len;
+ 	pcmd->cmdcode = _SetAuth_CMD_;
+@@ -2262,7 +2261,6 @@ sint rtw_set_key(struct adapter *adapter, struct security_priv *psecuritypriv, s
+ 		res = _FAIL;
+ 		goto exit;
+ 	}
+-	memset(psetkeyparm, 0, sizeof(struct setkey_parm));
  
-diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-index e3d356952875..1491d420929c 100644
---- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-+++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-@@ -478,14 +478,12 @@ static int wpa_set_encryption(struct net_device *dev, struct ieee_param *param,
- 		if (wep_key_len > 0) {
- 			wep_key_len = wep_key_len <= 5 ? 5 : 13;
- 			wep_total_len = wep_key_len + FIELD_OFFSET(struct ndis_802_11_wep, KeyMaterial);
--			pwep = rtw_malloc(wep_total_len);
-+			pwep = rtw_zmalloc(wep_total_len);
- 			if (pwep == NULL) {
- 				RT_TRACE(_module_rtl871x_ioctl_os_c, _drv_err_, (" wpa_set_encryption: pwep allocate fail !!!\n"));
- 				goto exit;
- 			}
- 
--			memset(pwep, 0, wep_total_len);
--
- 			pwep->KeyLength = wep_key_len;
- 			pwep->Length = wep_total_len;
- 
-@@ -2144,12 +2142,10 @@ static int rtw_wx_set_enc_ext(struct net_device *dev,
- 	int ret = 0;
- 
- 	param_len = sizeof(struct ieee_param) + pext->key_len;
--	param = rtw_malloc(param_len);
-+	param = rtw_zmalloc(param_len);
- 	if (param == NULL)
- 		return -1;
- 
--	memset(param, 0, param_len);
--
- 	param->cmd = IEEE_CMD_SET_ENCRYPTION;
- 	memset(param->sta_addr, 0xff, ETH_ALEN);
- 
-@@ -3522,14 +3518,12 @@ static int rtw_set_encryption(struct net_device *dev, struct ieee_param *param,
- 		if (wep_key_len > 0) {
- 			wep_key_len = wep_key_len <= 5 ? 5 : 13;
- 			wep_total_len = wep_key_len + FIELD_OFFSET(struct ndis_802_11_wep, KeyMaterial);
--			pwep = rtw_malloc(wep_total_len);
-+			pwep = rtw_zmalloc(wep_total_len);
- 			if (pwep == NULL) {
- 				DBG_871X(" r871x_set_encryption: pwep allocate fail !!!\n");
- 				goto exit;
- 			}
- 
--			memset(pwep, 0, wep_total_len);
--
- 			pwep->KeyLength = wep_key_len;
- 			pwep->Length = wep_total_len;
- 
+ 	if (psecuritypriv->dot11AuthAlgrthm == dot11AuthAlgrthm_8021X) {
+ 		psetkeyparm->algorithm = (unsigned char)psecuritypriv->dot118021XGrpPrivacy;
 -- 
 2.11.0
 
