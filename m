@@ -1,81 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BCBB65AB14
-	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Jun 2019 14:49:35 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D8FF65AB0D
+	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Jun 2019 14:49:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 940AD86433;
-	Sat, 29 Jun 2019 12:49:33 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8A811204B9;
+	Sat, 29 Jun 2019 12:49:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cieVUwvANC5k; Sat, 29 Jun 2019 12:49:31 +0000 (UTC)
+	with ESMTP id IUU4yiwgNA+g; Sat, 29 Jun 2019 12:49:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CCB8685625;
-	Sat, 29 Jun 2019 12:49:30 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E2A9A204A4;
+	Sat, 29 Jun 2019 12:49:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 793FB1BF28D
- for <devel@linuxdriverproject.org>; Sat, 29 Jun 2019 12:49:23 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 75C511BF28D
+ for <devel@linuxdriverproject.org>; Sat, 29 Jun 2019 12:49:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7694A87941
- for <devel@linuxdriverproject.org>; Sat, 29 Jun 2019 12:49:23 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6B304869F2
+ for <devel@linuxdriverproject.org>; Sat, 29 Jun 2019 12:49:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AW8x1lVL4UoD for <devel@linuxdriverproject.org>;
- Sat, 29 Jun 2019 12:49:22 +0000 (UTC)
+ with ESMTP id dUR1ENkvbCOB for <devel@linuxdriverproject.org>;
+ Sat, 29 Jun 2019 12:49:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.17.20])
- by hemlock.osuosl.org (Postfix) with ESMTPS id DA36987A60
- for <devel@driverdev.osuosl.org>; Sat, 29 Jun 2019 12:49:21 +0000 (UTC)
+Received: from mout.gmx.net (mout.gmx.net [212.227.17.22])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 2FEF184580
+ for <devel@driverdev.osuosl.org>; Sat, 29 Jun 2019 12:49:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1561812540;
- bh=y9m97Wf190flRY/FkjssAEHMINPsT0DgpJSYt7gV5jk=;
+ s=badeba3b8450; t=1561812541;
+ bh=W1MflUE2ESPxzCVc2ksRkn/5LFLvGtrfoI18ODdqjTU=;
  h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=SBVowYsxUrIPB3LmgQtaC4QKvIlrowGhIoEbXoPWy6xP+XFd9FkyxztiE5HZqWsQf
- IyC9TfMSrOEzzMbhYlwrgMcLx5oROxhYByeFO9D83eHK4/4onMwzSKQmmBk+VRSKhR
- ofnEcQ1r5bPDNYQKYIEIjKsR/j3LB0HjeOMmOJSI=
+ b=j6oHip4fDJxBz4Cfpw3TvDorry3ot9uutoAWePjvLqne/Q/XfPndUoruMHLeZgphA
+ OaXauETJlOv9mL65Sd/tiBQyZxD+da9k0/OK33IreOBV3JMJeQfh2jlWg1ODepnuAW
+ z0Isu+uh2s5BFf3sD8GJG0QrVznd/cPUgWBzTszk=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
 Received: from localhost.localdomain ([37.4.249.111]) by mail.gmx.com
  (mrgmx105 [212.227.17.168]) with ESMTPSA (Nemesis) id
- 1MYNNy-1i2bHC2lRy-00VRcW; Sat, 29 Jun 2019 14:49:00 +0200
+ 1N1fmq-1ij6290GNM-01209a; Sat, 29 Jun 2019 14:49:01 +0200
 From: Stefan Wahren <wahrenst@gmx.net>
 To: Eric Anholt <eric@anholt.net>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Dave Stevenson <dave.stevenson@raspberrypi.org>,
  Hans Verkuil <hverkuil@xs4all.nl>,
  Mauro Carvalho Chehab <mchehab@kernel.org>
-Subject: [PATCH V2 22/29] staging: bcm2835-camera: Use enums for max value in
- controls
-Date: Sat, 29 Jun 2019 14:48:29 +0200
-Message-Id: <1561812516-9087-7-git-send-email-wahrenst@gmx.net>
+Subject: [PATCH V2 23/29] staging: bcm2835-camera: Correct
+ V4L2_CID_COLORFX_CBCR behaviour
+Date: Sat, 29 Jun 2019 14:48:30 +0200
+Message-Id: <1561812516-9087-8-git-send-email-wahrenst@gmx.net>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1561812516-9087-1-git-send-email-wahrenst@gmx.net>
 References: <1561812516-9087-1-git-send-email-wahrenst@gmx.net>
-X-Provags-ID: V03:K1:xAm5i4guJHEE2OzWyqtVW+g+GY6h9CQ5fCfoYk7BWskckUgggKA
- 1gd/Z1LbxBlTvCDkpeF6xhQPAlQ1P7AqRcK48LHPZQHWlFDjnwdvNLZAUwKuAfjxHn3/MTl
- +vpkibuOvRWp23BvxnmSzB1+07VJWyGfF0t2sv1XG/U5XyN1/Hi1hSCrCvPRkvAT2anI77O
- 3fy0Gn5aij+7gRm47P5hQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:nlycN+a7BJ4=:flC5BhW5HIdydHoAOBxPCx
- dQBMzEVxz8+He0UUfVqO+C+jpjxqwIjtUX9eZrOywqBteseMHyK5Af6APhFWDx15Z8nDYdT99
- t4lj45U7ihpK3LqtHpJNeND76uU0WebYrzs+xbbQnpqs4VJ+aMe5lznzlbfmLcksdMziEXauQ
- zMzapiyIy5y4IELHMQBpTvKK0d3nGK2+3agUD/72qBkAC123tdYBht8FzMOAxQt0ZgZNsdPnO
- q16KGStT8zfJv/wumfM/9bYwTGS4nKWTfReEKORFCJu6z8fqn/gLZUd5XOTBoajtd0NpVIbcJ
- uN9ON0/wCqsLfwmtTidPLoJoUl7XtVFJty52MSmneYGlmC2o0NuU+WH77y2lC+PN29yd9Ftfb
- W4vzCVJY7URVnbWr1pypRbegj5IOz/cx+NGMOHvAIDKcxPSXywSxvLbrD1l4TcfoyJJWd6cn8
- 7sUnJAEguAxsrK1Kx3b6UJIXP5Rs+OFMf1uENbJdpv9zOvWUPG8NQx9nUFJIIVfEXKHsaKwdV
- cU0dTcWcNhk7qC/xLOs4Cmys0T47kbyyZMK2i7dOsyh3DfpOl3gKWUencvM5WDJA5krSNydGJ
- 2XCfXpTXg8KKan9ZJlNbZeeb+EWlIkmG1f87pGPlBnVp9vGcYR4IJaEuREVg3CV9P+ihF2YQu
- WzPC9OlDgRaNpznPwOyYE/QPv+xUh+V9ZUOjIIldMTPg4KDlEc1depMRf1p6bAwUeaNsQbd3r
- FA2iFSMPKby/6r65KVe5oZFnFUmh4wejxB3MjLCXhyYuur6IC6U/WOEfSWn3MGWl5nsuEq/Vo
- zGkHHSql3LncDosGvAmqMdpqiemAeUOs/N3gL8T7RH56SYq3haUQ6DKQYZiD+cabMhj+tVhyR
- H5zKLX8qxNojG5H2QsmA9gmEivlR+OPk6wmxepGKWiCclIa8cUxddznBYHrMBbRv70Xs3zOfI
- Fnc2xzkutT3WRq21T2d5hkZnmx4bn5hpTRsNRrf4Rt51sHYQ4/lK6XYUJfzM58ulNi+FGYFqE
- n1cOTUN8R3JY45+6FfRfIfCg18LcMwPN7UFaRYS4IgbenYh7E3VIPx0nvP+TbeAhdnZtyKdB4
- AiJY+ypyhvJEnA=
+X-Provags-ID: V03:K1:786ToepF2m7Wy+UE0Lf7666a3lS0jC3ZKnna1dUe0y4fdCrlQU0
+ 5SPltxnSJxpfd2z0Y4tOUB2PB+Bt/VEgVS93iChIKA0VkG5yirU4w32cA6xUIMfZxK/NX/R
+ m9S6pVh0mb+ikIcBj6lreOmTV17Tz9z43fyjuIdiUPOHWs130kxoXX5JgcQKDcV8Gm0mNXs
+ SihOaMzeeLTvkwLkUoXSw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:OJTqm4YfpBo=:kqfHQShJPKdNq1tMGD/PX1
+ ZZRgdMZ1xLlhAD9cMAGiJDLcaeRqpjMjtVqDCjBDwN51rvz0l3/RXw52SWI4dZmJoSH69mLUD
+ a8EBqGDJSn6fXrgnphZ7IeVa1ZGHSB6KnYNA7vnu9Mf3UNh1BB4p73LjbdbiwubZ9v3/8nNT5
+ a6pRpCxh6ws/m7mRM6Kv9GSiEJqrfQWak58VHmIl6FfcHbAh5QwH99SORV6WW3sNT24wwhShe
+ CmDx79aqLF79kPcBSqPxhQSdsvSzykHDxtzLrAEqCfyKihkkJd6EoBvrxTIOTYHvcY6Bci+GP
+ 6eXyMYBb3LBrMwkDydN5/M8vBXdUl/tdCJgBreuDwwjdowSJbBee3PeHK17axvkHUfgNipVRt
+ +aNEu+50770t6+c3eKb9rAfqmhQSS12sOu70A4pqYPBU2znBh6f1Xq+05doLZTtOf5TZRib6n
+ D4K5Y8z4iitnI1L1y3wqlMia7ZZsjcguiyoCBGG9CY7R367aU3upIWY+NxuMM72IJtiKDPhiO
+ fHgrp6GYiAu3tbRQ4vnDBdESwNJWmblKEBs6IobMkW4lVcJBBbXwL8vWo4pXCMUbWl5r8ngIf
+ EJwI0PaDnf47eUjJJ60O5wcM+yODk3FrNQbgGxj7FGhinEJgo5zwAfZt+Y7I0slcxID35Zvhj
+ bjIc+iS+If7zsmKXL7aOlQtak7x9b2Si6sWQ+oqZYAR2ifJYvFsDBuTN6gj1Ggo4a4IWI+loU
+ vptYDt1Pc6j8WV1tZh4VkvUCQuDZQrHDgrsuyEa8Iz8RJ/jX4TucX1cWsrtcXr9PAIDoR7jGF
+ xkoqnOSxNO/hri1O//nyi4Z2jLGEiYuuSyiwUcl7qeeTJ2XLZqs2CUWR5E5JK+RKUeceIGhq5
+ H3+JMcdqNgSGlOSIBuLVY7ZYaDffsPgw4FzjUY7x2d/Nx8vSntZwTLdfx1T8dkwlUoOjW0ChV
+ 6DxMxPqdMFD0I9jQ8E/B8VEDoqLxeGHMvthM8Snrra9XygsD5qrTiSCv4GD1G06LERyv6Qorn
+ pPQoWFfJ/lRyXAUlbEf1847Mhm08QDEUpDab2+Hx8yfZqntdd1XT7b4Iy4dlc9264Qm9jcFo8
+ Ic2ehgeFe8UGC0=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,117 +99,39 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 From: Dave Stevenson <dave.stevenson@raspberrypi.org>
 
-Controls of type MMAL_CONTROL_TYPE_STD_MENU call v4l2_ctrl_new_std_menu
-with a max value and a mask. The max value is one of the defined
-values for the control, however in the config array there are several
-entries where raw numbers have been used instead. Replace these
-with the appropriate enum.
+With V4L2_CID_COLORFX_CBCR calling ctrl_set_colfx it was incorrectly
+assigning the colour values to the enable field of dev->colourfx
+instead of the u and v fields.
 
+Correct the assignments.
+
+Reported as a Coverity issue
+Detected by CoverityScan CID#1419711 ("Unused value")
+
+Reported-by: Colin Ian King <colin.king@canonical.com>
 Signed-off-by: Dave Stevenson <dave.stevenson@raspberrypi.org>
 Signed-off-by: Stefan Wahren <wahrenst@gmx.net>
 Acked-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
 Acked-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
 ---
- .../vc04_services/bcm2835-camera/controls.c        | 37 ++++++++--------------
- 1 file changed, 13 insertions(+), 24 deletions(-)
+ drivers/staging/vc04_services/bcm2835-camera/controls.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/staging/vc04_services/bcm2835-camera/controls.c b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-index bc2f3f4..038b9b9 100644
+index 038b9b9..b8aaedd 100644
 --- a/drivers/staging/vc04_services/bcm2835-camera/controls.c
 +++ b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-@@ -58,19 +58,6 @@ static const u32 iso_values[] = {
- 	0, 100, 200, 400, 800,
- };
+@@ -574,8 +574,8 @@ static int ctrl_set_colfx(struct bm2835_mmal_dev *dev,
 
--static const s64 mains_freq_qmenu[] = {
--	V4L2_CID_POWER_LINE_FREQUENCY_DISABLED,
--	V4L2_CID_POWER_LINE_FREQUENCY_50HZ,
--	V4L2_CID_POWER_LINE_FREQUENCY_60HZ,
--	V4L2_CID_POWER_LINE_FREQUENCY_AUTO
--};
--
--/* Supported video encode modes */
--static const s64 bitrate_mode_qmenu[] = {
--	(s64)V4L2_MPEG_VIDEO_BITRATE_MODE_VBR,
--	(s64)V4L2_MPEG_VIDEO_BITRATE_MODE_CBR,
--};
--
- enum bm2835_mmal_ctrl_type {
- 	MMAL_CONTROL_TYPE_STD,
- 	MMAL_CONTROL_TYPE_STD_MENU,
-@@ -972,8 +959,8 @@ static const struct bm2835_mmal_v4l2_ctrl v4l2_ctrls[V4L2_CTRL_COUNT] = {
- 	},
- 	{
- 		V4L2_CID_ISO_SENSITIVITY_AUTO, MMAL_CONTROL_TYPE_STD_MENU,
--		0, 1, V4L2_ISO_SENSITIVITY_AUTO, 1, NULL,
--		MMAL_PARAMETER_ISO,
-+		0, V4L2_ISO_SENSITIVITY_AUTO, V4L2_ISO_SENSITIVITY_AUTO, 1,
-+		NULL, MMAL_PARAMETER_ISO,
- 		ctrl_set_iso,
- 		false
- 	},
-@@ -990,8 +977,8 @@ static const struct bm2835_mmal_v4l2_ctrl v4l2_ctrls[V4L2_CTRL_COUNT] = {
-  */
- 	{
- 		V4L2_CID_EXPOSURE_AUTO, MMAL_CONTROL_TYPE_STD_MENU,
--		~0x03, 3, V4L2_EXPOSURE_AUTO, 0, NULL,
--		MMAL_PARAMETER_EXPOSURE_MODE,
-+		~0x03, V4L2_EXPOSURE_APERTURE_PRIORITY, V4L2_EXPOSURE_AUTO, 0,
-+		NULL, MMAL_PARAMETER_EXPOSURE_MODE,
- 		ctrl_set_exposure,
- 		false
- 	},
-@@ -1027,7 +1014,8 @@ static const struct bm2835_mmal_v4l2_ctrl v4l2_ctrls[V4L2_CTRL_COUNT] = {
- 	{
- 		V4L2_CID_EXPOSURE_METERING,
- 		MMAL_CONTROL_TYPE_STD_MENU,
--		~0x7, 2, V4L2_EXPOSURE_METERING_AVERAGE, 0, NULL,
-+		~0x7, V4L2_EXPOSURE_METERING_SPOT,
-+		V4L2_EXPOSURE_METERING_AVERAGE, 0, NULL,
- 		MMAL_PARAMETER_EXP_METERING_MODE,
- 		ctrl_set_metering_mode,
- 		false
-@@ -1035,7 +1023,8 @@ static const struct bm2835_mmal_v4l2_ctrl v4l2_ctrls[V4L2_CTRL_COUNT] = {
- 	{
- 		V4L2_CID_AUTO_N_PRESET_WHITE_BALANCE,
- 		MMAL_CONTROL_TYPE_STD_MENU,
--		~0x3ff, 9, V4L2_WHITE_BALANCE_AUTO, 0, NULL,
-+		~0x3ff, V4L2_WHITE_BALANCE_SHADE, V4L2_WHITE_BALANCE_AUTO, 0,
-+		NULL,
- 		MMAL_PARAMETER_AWB_MODE,
- 		ctrl_set_awb_mode,
- 		false
-@@ -1056,7 +1045,7 @@ static const struct bm2835_mmal_v4l2_ctrl v4l2_ctrls[V4L2_CTRL_COUNT] = {
- 	},
- 	{
- 		V4L2_CID_COLORFX, MMAL_CONTROL_TYPE_STD_MENU,
--		0, 15, V4L2_COLORFX_NONE, 0, NULL,
-+		0, V4L2_COLORFX_SET_CBCR, V4L2_COLORFX_NONE, 0, NULL,
- 		MMAL_PARAMETER_IMAGE_EFFECT,
- 		ctrl_set_image_effect,
- 		false
-@@ -1091,8 +1080,8 @@ static const struct bm2835_mmal_v4l2_ctrl v4l2_ctrls[V4L2_CTRL_COUNT] = {
- 	},
- 	{
- 		V4L2_CID_MPEG_VIDEO_BITRATE_MODE, MMAL_CONTROL_TYPE_STD_MENU,
--		0, ARRAY_SIZE(bitrate_mode_qmenu) - 1,
--		0, 0, bitrate_mode_qmenu,
-+		0, V4L2_MPEG_VIDEO_BITRATE_MODE_CBR,
-+		0, 0, NULL,
- 		MMAL_PARAMETER_RATECONTROL,
- 		ctrl_set_bitrate_mode,
- 		false
-@@ -1114,8 +1103,8 @@ static const struct bm2835_mmal_v4l2_ctrl v4l2_ctrls[V4L2_CTRL_COUNT] = {
- 	},
- 	{
- 		V4L2_CID_POWER_LINE_FREQUENCY, MMAL_CONTROL_TYPE_STD_MENU,
--		0, ARRAY_SIZE(mains_freq_qmenu) - 1,
--		1, 1, mains_freq_qmenu,
-+		0, V4L2_CID_POWER_LINE_FREQUENCY_AUTO,
-+		1, 1, NULL,
- 		MMAL_PARAMETER_FLICKER_AVOID,
- 		ctrl_set_flicker_avoidance,
- 		false
+ 	control = &dev->component[COMP_CAMERA]->control;
+
+-	dev->colourfx.enable = (ctrl->val & 0xff00) >> 8;
+-	dev->colourfx.enable = ctrl->val & 0xff;
++	dev->colourfx.u = (ctrl->val & 0xff00) >> 8;
++	dev->colourfx.v = ctrl->val & 0xff;
+
+ 	ret = vchiq_mmal_port_parameter_set(dev->instance, control,
+ 					    MMAL_PARAMETER_COLOUR_EFFECT,
 --
 2.7.4
 
