@@ -1,48 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF3055AD43
-	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Jun 2019 22:03:52 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1033C5AD54
+	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Jun 2019 22:12:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3E94A85BE4;
-	Sat, 29 Jun 2019 20:03:50 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 517A186BAD;
+	Sat, 29 Jun 2019 20:12:22 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Zv7fR3m71yb5; Sat, 29 Jun 2019 20:12:21 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3428B86B19;
+	Sat, 29 Jun 2019 20:12:21 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E14BE1BF334
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 29 Jun 2019 20:12:18 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id DE4BD85BE4
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 29 Jun 2019 20:12:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PoKrdRnxV-Fx; Sat, 29 Jun 2019 20:03:49 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BC516859EF;
-	Sat, 29 Jun 2019 20:03:48 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A5BA81BF339
- for <devel@linuxdriverproject.org>; Sat, 29 Jun 2019 20:03:43 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A07E387B21
- for <devel@linuxdriverproject.org>; Sat, 29 Jun 2019 20:03:43 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oNtrio7jURAJ for <devel@linuxdriverproject.org>;
- Sat, 29 Jun 2019 20:03:42 +0000 (UTC)
+ with ESMTP id VB1_-Fo-YdF0
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 29 Jun 2019 20:12:18 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from digitalize.info (digitalize.info [133.242.157.169])
- by hemlock.osuosl.org (Postfix) with ESMTP id 75D3787935
- for <devel@driverdev.osuosl.org>; Sat, 29 Jun 2019 20:03:42 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3CD5585BC6
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 29 Jun 2019 20:12:18 +0000 (UTC)
 Received: from User (249.red-2-138-242.dynamicip.rima-tde.net [2.138.242.249])
- by digitalize.info (Postfix) with ESMTPA id BA09D2D709F;
- Sun, 30 Jun 2019 02:11:05 +0900 (JST)
+ by digitalize.info (Postfix) with ESMTPA id 5AECF2CC895;
+ Sun, 30 Jun 2019 02:20:17 +0900 (JST)
 From: "Raymond Chien Kuo Fung"<chienkraymond@gmail.com>
 Subject: good day
-Date: Sat, 29 Jun 2019 18:11:21 +0100
+Date: Sat, 29 Jun 2019 18:20:32 +0100
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20190629200343.A07E387B21@hemlock.osuosl.org>
+Message-Id: <20190629201218.DE4BD85BE4@fraxinus.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
