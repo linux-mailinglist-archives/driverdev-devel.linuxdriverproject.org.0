@@ -1,77 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42A235AA1F
-	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Jun 2019 12:26:26 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C1F695AA22
+	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Jun 2019 12:27:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id BF081204A6;
-	Sat, 29 Jun 2019 10:26:24 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C5FB686126;
+	Sat, 29 Jun 2019 10:27:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id y07k986yF0Zd; Sat, 29 Jun 2019 10:26:23 +0000 (UTC)
+	with ESMTP id 1ymj4LXlkdK7; Sat, 29 Jun 2019 10:27:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 8BD5C20499;
-	Sat, 29 Jun 2019 10:26:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8105E85DFD;
+	Sat, 29 Jun 2019 10:27:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C41AF1BF405
- for <devel@linuxdriverproject.org>; Sat, 29 Jun 2019 10:26:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6AE021BF405
+ for <devel@linuxdriverproject.org>; Sat, 29 Jun 2019 10:27:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id BF8D187646
- for <devel@linuxdriverproject.org>; Sat, 29 Jun 2019 10:26:18 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 67AA687631
+ for <devel@linuxdriverproject.org>; Sat, 29 Jun 2019 10:27:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tE0iNWtNgESn for <devel@linuxdriverproject.org>;
- Sat, 29 Jun 2019 10:26:18 +0000 (UTC)
+ with ESMTP id JigTa-jwpc3x for <devel@linuxdriverproject.org>;
+ Sat, 29 Jun 2019 10:27:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
- [209.85.215.193])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 57CA786E3A
- for <devel@driverdev.osuosl.org>; Sat, 29 Jun 2019 10:26:18 +0000 (UTC)
-Received: by mail-pg1-f193.google.com with SMTP id w10so3716422pgj.7
- for <devel@driverdev.osuosl.org>; Sat, 29 Jun 2019 03:26:18 -0700 (PDT)
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4D1FC860ED
+ for <devel@driverdev.osuosl.org>; Sat, 29 Jun 2019 10:27:27 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id p184so4206365pfp.7
+ for <devel@driverdev.osuosl.org>; Sat, 29 Jun 2019 03:27:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:subject:message-id:mime-version:content-disposition
  :user-agent; bh=ufreqsCqUEbtwakQjfPG4/XQRKe+4sPPeMiA/RmTprM=;
- b=Dho7eNQ35SIyPNTS5qQQ9O587OsHxdkVAYouk63JcVIwNEL9lPwUKJExKokYaLWNX1
- DZIlbYQghqtSNwrxpE6B5pAfwL5WOST9YHz6/WlIcI/ShbF32WL0kQ8Yi1nXihz0uBk1
- z18GmAc9Fl0xS57Jk9kN0X8jBwtu/bI1k7U4+PZHh6DOlKVZC2Ga+3C93TNvlUe+c17E
- 9DChqt+1QCSJwtCQjR1vL9KaxvywQHt5CTQuky1vE5BYfe2XsX/zl3UyaVkK05i4HLED
- Aw0Mh5XjZqZzITiksUK49sZ04c0m1JrF8WEE+8etK9Y8jjIojdOXfumlOlcE16p9T+wl
- 5eiQ==
+ b=cKdmZG2fv2FHyq/gn/WOY2fDnZNUuTcUVfnB4nLqEAMAuWtVkSOgN0EBoQFxbmI2sC
+ kLg51yMJLQdyZoqoQJLsLVglMD8dhONK+dIblCpriafBpJAN3lDXcHADZsw6rXN1cIOV
+ tJJi6JKUh4ybqBp8oi2KqNO4EyxOOB6aSRWsX7p9l6kqGVjz5+FjYCcUC9y0gwPM1JhE
+ GrEISObJScRohTISa26+gFXHGtL4m8XVNm9sqtHvJH8gNU0bKCu7oomgNIeZjUDmMsjS
+ cAHQUQMOxe4t8kJ+ZpPwTC+0hngYLr1hIlylIssQRwK7wpBMonPTgbhNija94oDUK/ST
+ x71w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:subject:message-id:mime-version
  :content-disposition:user-agent;
  bh=ufreqsCqUEbtwakQjfPG4/XQRKe+4sPPeMiA/RmTprM=;
- b=UGuU7WUe0xwr8qYfdlhgPTh/1BovqgEnu9lHS4pXL/UMLjiCaq4Xg2zRSNs/lPB5kf
- ibfcRFn7p7/Zmq+Q+jDrqxCilLEJQwQGqLkvl39E9LXGfA3NBpUOLUawA0MUsp3pmZEp
- 9cfsqcAZbaCkSQOUa75wxsjv6znDvt1o0cYeGc7JpFBxZBCYMQ6L9pfWSpTnwmotpbZ4
- zC+l8vSCXur97qzXpdkd3lYfefnSJL34iZ1I9BvFkFWlI9k8wuWK2eOw4xheqwKgaU/8
- aAiHybk0xBmji2+x1wFK2pO2l5m1G+GW0nEneCYgtfsGnVvwAvMXzvW8RBTDC10Romzv
- 2t1g==
-X-Gm-Message-State: APjAAAXL9NWwI76IB3vpA0v8l2RqDHPKxR/5xhxeT6u82apACTQbEHfA
- mGNGxQVDJUuJ5GnVCrwknqFP6ISQ
-X-Google-Smtp-Source: APXvYqwBKGNKE3vZ+Zq3TlQ7LCTTVgLrGQhenDVitR7CKr7vXXkcOv+Od0d+XRptoBRec8S7tS0MVw==
-X-Received: by 2002:a17:90a:30cf:: with SMTP id
- h73mr18934769pjb.42.1561803978031; 
- Sat, 29 Jun 2019 03:26:18 -0700 (PDT)
+ b=J1pDR6l2R7DqDzbeMqJMWYldj1G+XIhttRmtBWMBP3kISYa6Vv7iAPGtPnJhlAjTx9
+ FXLsvEPRYncr2yBGCNQg8Qxd7ov9xq2oqZzKcpQwLomUI8Bp0PCPRkHr46X02Ui8PjQQ
+ y3YYbEp7ctgxoDH4mKlDpw3CNyB0l4K4SWa9yDiB6PE25IbwLIjI8/mnDqOT2rPkWZHa
+ F+ugGEEsXZoIVve3W4mxtBl1i6V2NOTkAQobE1DKpTpNayAi8fkoGF7HmbVuz2DopySy
+ BhgO3oxBNIvDkGaS359PFLnbC8ag+NUmL9xVmN9OgmJXCL9nSlaTwJL4hbxm9UdykcTc
+ 3JGA==
+X-Gm-Message-State: APjAAAVsSO/zHTyfpUGzsvg4PZfJn8PDP2Gv288dVklFlemsGKiTBK+F
+ rDuddOxdNXbutuq588Aol2896AcN
+X-Google-Smtp-Source: APXvYqwaG/2Dn1EssqX0/2D6nzUNtjJIVIVQ/SdduLespqMNDIkEbPkRWjTzg5DrjWSFmxl9BTJqTA==
+X-Received: by 2002:a63:231c:: with SMTP id j28mr13633480pgj.430.1561804046903; 
+ Sat, 29 Jun 2019 03:27:26 -0700 (PDT)
 Received: from hari-Inspiron-1545 ([183.83.92.187])
- by smtp.gmail.com with ESMTPSA id x128sm13085346pfd.17.2019.06.29.03.26.16
+ by smtp.gmail.com with ESMTPSA id b29sm11633100pfr.159.2019.06.29.03.27.25
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 29 Jun 2019 03:26:17 -0700 (PDT)
-Date: Sat, 29 Jun 2019 15:56:14 +0530
+ Sat, 29 Jun 2019 03:27:26 -0700 (PDT)
+Date: Sat, 29 Jun 2019 15:57:22 +0530
 From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Hariprasad Kelam <hariprasad.kelam@gmail.com>,
  devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Subject: [PATCH 07/10] staging/rtl8723bs/hal: fix comparison to true/false is
  error prone
-Message-ID: <20190629102614.GA15248@hari-Inspiron-1545>
+Message-ID: <20190629102722.GA15300@hari-Inspiron-1545>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.5.24 (2015-08-30)
