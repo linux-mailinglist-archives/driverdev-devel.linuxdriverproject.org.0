@@ -1,91 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5846E5AA2D
-	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Jun 2019 12:32:44 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 89392876BB;
-	Sat, 29 Jun 2019 10:32:42 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SenuX4L0-td8; Sat, 29 Jun 2019 10:32:41 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A4E0F87695;
-	Sat, 29 Jun 2019 10:32:40 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0C7491BF405
- for <devel@linuxdriverproject.org>; Sat, 29 Jun 2019 10:32:39 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8F6875AA30
+	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Jun 2019 12:36:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0264820496
- for <devel@linuxdriverproject.org>; Sat, 29 Jun 2019 10:32:39 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 68BA9204B1;
+	Sat, 29 Jun 2019 10:36:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id a9E-XncP5Esz; Sat, 29 Jun 2019 10:36:10 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id B48EE203AF;
+	Sat, 29 Jun 2019 10:36:09 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7131C1BF405
+ for <devel@linuxdriverproject.org>; Sat, 29 Jun 2019 10:36:08 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6DE9185C47
+ for <devel@linuxdriverproject.org>; Sat, 29 Jun 2019 10:36:08 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id S2QHHiCJ+AoM for <devel@linuxdriverproject.org>;
- Sat, 29 Jun 2019 10:32:37 +0000 (UTC)
+ with ESMTP id G7AZsu23JTf9 for <devel@linuxdriverproject.org>;
+ Sat, 29 Jun 2019 10:36:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by silver.osuosl.org (Postfix) with ESMTPS id 9B6BE203AF
- for <devel@driverdev.osuosl.org>; Sat, 29 Jun 2019 10:32:37 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5TASv4t078874;
- Sat, 29 Jun 2019 10:32:36 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2018-07-02;
- bh=2oU+baNnGYXLU4uPl5XcwjOYu5QeXXsmvgarRO4YJus=;
- b=lZW1QkFJN6GpNXLAAUB/sWg4pjVBfdAQ5bNF5+MI4ots4E+FR7Y+NDgtogqXEQFmEvzP
- gG3gkxPzht/ACgvfxfDpbfGhUid1LdGAyucfbaSh8t1qPoTywZT98zATH4bqnqz5Pyon
- Uc0Fy5JI9hkGq9HPigW988LJ8cjXt7bxXODtuTF22Z3xQx3ERTE2dcComsZT4aa/Njjr
- p9ySP6TbPuh7fVPe5hCoo0WOKXTpn8TgkAXQG0wFt/PCDRzjiuYBWEmdKJ+V6LGejJD2
- bh6ewWZd7NMjuRSbV8hm14QiEbajwFZfih0Ra14TuzAqU6VJCys0/TQtz2IT3QEhZMkV 3g== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2120.oracle.com with ESMTP id 2te61pg0mu-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Sat, 29 Jun 2019 10:32:36 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5TAW0ON085529;
- Sat, 29 Jun 2019 10:32:35 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3030.oracle.com with ESMTP id 2tdx1a3kda-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Sat, 29 Jun 2019 10:32:35 +0000
-Received: from abhmp0004.oracle.com (abhmp0004.oracle.com [141.146.116.10])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x5TAWYBw028039;
- Sat, 29 Jun 2019 10:32:34 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Sat, 29 Jun 2019 03:32:33 -0700
-Date: Sat, 29 Jun 2019 13:32:24 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-Subject: Re: [PATCH 01/10] staging/rtl8723bs/hal: fix comparison to
- true/false is error prone
-Message-ID: <20190629103222.GH19015@kadam>
-References: <20190629101909.GA14880@hari-Inspiron-1545>
+Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
+ [209.85.214.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C56F985C00
+ for <devel@driverdev.osuosl.org>; Sat, 29 Jun 2019 10:36:07 +0000 (UTC)
+Received: by mail-pl1-f196.google.com with SMTP id t7so4643989plr.11
+ for <devel@driverdev.osuosl.org>; Sat, 29 Jun 2019 03:36:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=5LHkBJhseA7dswWKyXE2Jck+WxMFtGP/bseyhBGdc+o=;
+ b=kdBm/5W3nCQHYCHkDl3RPvqQ77+P01XIG8cKg5dIOThq36njd2kH8bzO+dXt+6jtff
+ u1nwN19fXhEiJbSxCG0+vEJPA6hJR2zNl3faM/igk2C7iQY+LRcjvcfk8YvvEAkICQMc
+ /01P08NoKF03qF4lRmC04VieWwaFWLGP5uOXlzIhoxT6+PfhRch2N/95Fe3UBL/tQ5bq
+ DBDn3pbIY71TMv6kOhh3hLg3pUPInqG1Ab9SpuScRbrVwKch0GoZm2FMO95KeERn7J1O
+ +RBrjYE414hSyrmtS8b9uitql24/WZLc8SQ/ubTYibLQH7XmopfJ8cbT4F3kH6XiTvl8
+ UJ0w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=5LHkBJhseA7dswWKyXE2Jck+WxMFtGP/bseyhBGdc+o=;
+ b=jOJC8y+8OUWS93rxfLrSy8jtUCFU6g+gzXOH8yZMKExwHXz5dY86R2PFrAiPrUZv0q
+ hPRLlIruXZAZBtDAuoimw7KmEPx6yWysyJePQJaBQ8ZBi/Xms89NUnlwbNIAILrfkyWx
+ MozxUTS+hs7NSLw0DZMkCpA5Hez8Ex9K2K0AXH9OZImvrV1vM1xsmUjiytnXjPMB5pH+
+ ZI6rNr2XJfz7COEY/KN4FBMoPdtx+VQXW7erA2RtGDPrHCWiNtuWquPkgJs3bYBMZcri
+ 2OyUWpzNDfCMtjrIhBhohGnaO/ShGeI5OsRY4ysdxg4NA92iTybcakpCmGOl7r/jOAC/
+ nOHA==
+X-Gm-Message-State: APjAAAUAZrGxhCE0Jggvc03GEfwXdqNdoxfkLTI+By6xqZQsDweGvnNP
+ GVp0CXWvCufogmRTYAVMk4cGncqU
+X-Google-Smtp-Source: APXvYqwMrWBD5H8o3UVSrF+L8X2bCKm5bqMVp9I6iEetozmgmMMea+YSQpZIG2AbN7yNfHV5ShX6Qw==
+X-Received: by 2002:a17:902:7c8e:: with SMTP id
+ y14mr15913012pll.298.1561804567526; 
+ Sat, 29 Jun 2019 03:36:07 -0700 (PDT)
+Received: from hari-Inspiron-1545 ([183.83.92.187])
+ by smtp.gmail.com with ESMTPSA id 65sm4306022pgf.30.2019.06.29.03.36.05
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Sat, 29 Jun 2019 03:36:07 -0700 (PDT)
+Date: Sat, 29 Jun 2019 16:06:03 +0530
+From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Hariprasad Kelam <hariprasad.kelam@gmail.com>,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: [PATCH 08/10] staging/rtl8723bs/hal: fix comparison to true/false is
+ error prone
+Message-ID: <20190629103603.GA15524@hari-Inspiron-1545>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190629101909.GA14880@hari-Inspiron-1545>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9302
- signatures=668688
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1810050000 definitions=main-1906290132
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9302
- signatures=668688
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
- definitions=main-1906290132
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,21 +87,48 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-You sent 10 patches with the same subject.
+fix below issues reported by checkpatch
 
-Btw, I can't recall ever seeing a bug caused by a true false comparison.
-I agree on style principles with the checkpatch warning, but I do
-think it over states the risk (which is as far as I can see is zero).
+CHECK: Using comparison to false is error prone
+CHECK: Using comparison to true is error prone
 
-regards,
-dan carpenter
+Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+---
+ drivers/staging/rtl8723bs/hal/hal_phy.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/rtl8723bs/hal/hal_phy.c b/drivers/staging/rtl8723bs/hal/hal_phy.c
+index ebaefca..520f860 100644
+--- a/drivers/staging/rtl8723bs/hal/hal_phy.c
++++ b/drivers/staging/rtl8723bs/hal/hal_phy.c
+@@ -81,7 +81,7 @@ bool PHY_RFShadowCompare(IN PADAPTER Adapter, IN u8 eRFPath, IN u32 Offset)
+ {
+ 	u32 reg;
+ 	/*  Check if we need to check the register */
+-	if (RF_Shadow[eRFPath][Offset].Compare == true) {
++	if (RF_Shadow[eRFPath][Offset].Compare) {
+ 		reg = rtw_hal_read_rfreg(Adapter, eRFPath, Offset, bRFRegOffsetMask);
+ 		/*  Compare shadow and real rf register for 20bits!! */
+ 		if (RF_Shadow[eRFPath][Offset].Value != reg) {
+@@ -100,9 +100,9 @@ bool PHY_RFShadowCompare(IN PADAPTER Adapter, IN u8 eRFPath, IN u32 Offset)
+ void PHY_RFShadowRecorver(IN PADAPTER Adapter, IN u8 eRFPath, IN u32 Offset)
+ {
+ 	/*  Check if the address is error */
+-	if (RF_Shadow[eRFPath][Offset].ErrorOrNot == true) {
++	if (RF_Shadow[eRFPath][Offset].ErrorOrNot) {
+ 		/*  Check if we need to recorver the register. */
+-		if (RF_Shadow[eRFPath][Offset].Recorver == true) {
++		if (RF_Shadow[eRFPath][Offset].Recorver) {
+ 			rtw_hal_write_rfreg(Adapter, eRFPath, Offset, bRFRegOffsetMask,
+ 							RF_Shadow[eRFPath][Offset].Value);
+ 			/* RT_TRACE(COMP_INIT, DBG_LOUD, */
+-- 
+2.7.4
 
 _______________________________________________
 devel mailing list
