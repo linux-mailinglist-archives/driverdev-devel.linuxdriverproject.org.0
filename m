@@ -2,79 +2,81 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2AA7C5AA3B
-	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Jun 2019 12:37:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 819DD5AA40
+	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Jun 2019 12:38:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3DFC1881E2;
-	Sat, 29 Jun 2019 10:37:02 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 34143881E2;
+	Sat, 29 Jun 2019 10:38:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Fs4K7YTMbKNA; Sat, 29 Jun 2019 10:37:02 +0000 (UTC)
+	with ESMTP id ltj2kzedaz-B; Sat, 29 Jun 2019 10:38:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B70A4881D9;
-	Sat, 29 Jun 2019 10:37:01 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B155E8820C;
+	Sat, 29 Jun 2019 10:37:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 712191BF405
- for <devel@linuxdriverproject.org>; Sat, 29 Jun 2019 10:37:00 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9242B1BF405
+ for <devel@linuxdriverproject.org>; Sat, 29 Jun 2019 10:37:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6E970881D9
- for <devel@linuxdriverproject.org>; Sat, 29 Jun 2019 10:37:00 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8B55D876A2
+ for <devel@linuxdriverproject.org>; Sat, 29 Jun 2019 10:37:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xMo+q22JpLYr for <devel@linuxdriverproject.org>;
- Sat, 29 Jun 2019 10:36:59 +0000 (UTC)
+ with ESMTP id Zc3WLym6TrRN for <devel@linuxdriverproject.org>;
+ Sat, 29 Jun 2019 10:37:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
  [209.85.215.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id EA38A881CC
- for <devel@driverdev.osuosl.org>; Sat, 29 Jun 2019 10:36:59 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id f25so3723048pgv.10
- for <devel@driverdev.osuosl.org>; Sat, 29 Jun 2019 03:36:59 -0700 (PDT)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C00AA8769E
+ for <devel@driverdev.osuosl.org>; Sat, 29 Jun 2019 10:37:56 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id z75so3733079pgz.5
+ for <devel@driverdev.osuosl.org>; Sat, 29 Jun 2019 03:37:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=9mH2XccuZeODfxZbBcYEVAm/fyB1IljuBm5N/klAdV0=;
- b=vZQWoed5/6nx3bfawcj951wiGTtCCPQtMTXJMr6fDiwrBnAWwz6KKXR/9l4nkzd70Z
- VA6Bjw0K9xF87awHmDkarSSkRLSKLu5snbe4CdFZg+fI5kU9fIoDUtsC2XJrXR2ooONa
- UDuFnLjLEmraTlueTcZPECMeY4rx6dfdOkDqIsqrcK3VTaPMxxzvAupGNlLYhNS9FWJm
- A2RHauruG9OVU49OzYa3F9HsiSHp3h+TOPF0RAmgmLxELvokE5jGKhL8Rx4QcrrZhcGr
- n1Hjgz5d/dd9tGS56PM8W3osOFT+e/6i17Pe9kz09J7O9+H/c8m/HNErKVMNuVqMtpV1
- Xn8Q==
+ :user-agent; bh=yoei6OKyQ32Hktc4WD0L2ybo+pYYJb/gMNDeW+rSA+k=;
+ b=nyAAedilz8ZuPvbjrF4k/MssId+dVX8zigThjC6ez/Brb1UluWi/wnReWSOuu+CYp3
+ byrAGIynauAw66ZxxePBZuVF2h6FR5wTS98mfr+kf1f7P2qDvx3TPFLUDKUrFXp74laO
+ 5413Xo9aK32KGU2aGZ8ZaSU/b8Bwv8GvQk75DkW4kd/ATz0rmElcsZut6fw6YsBih9Sz
+ fOImWiJuQH6Qt8hrLYOxcbTEMfy+7Mctlau2M18GV9gtfk7oR34mceA0thuT8Vw5DB6L
+ fpNYB7skxFGZ86gMEuBck8QzPPAMmItNhNCrk8qZahlZYvk9LSp67ErvtJaX2ERJCo0T
+ o62w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=9mH2XccuZeODfxZbBcYEVAm/fyB1IljuBm5N/klAdV0=;
- b=TYqyRnL2vU7UgEb0LKrKS9J82MQNQRWC7hH274zOnEcJAGr4Ius1RR943Eqo6MIFXy
- +Nl2qMMUbDegG32GjVNUnn+AHg3spD+Qie/nW6PcxzTBHRGP3DgG6C/G/3L6dPyJrHT3
- IPIvpfFm39Quu4y4LkEB/fDPNPyAaI8CTBZnsjCjc3+gccpImF5iIHBnhuZhjp86S/jZ
- d9XWMRH+SU2MFEXWJm27GTUq3640j8t4fXmaloY49OqBgNa58JWrdHzsEjkFS02MtoSO
- u2y6vbhjsadLG9u70dLvFoA6UFTkRheHz1U9wNAw5KrXiPo9EGbOmhNDECl+wBfDgRRX
- vilw==
-X-Gm-Message-State: APjAAAXBHZhvMLaV6bLwuobRNmQqOUu+GQchDPUeXdiVQCTjfDl8FXEi
- 39yO0PYU3+KhVZTnm9wYM6U=
-X-Google-Smtp-Source: APXvYqyFJ1ddt4Ke79mZkiwYHtw/sfjAsdAF2EVubRYaC1xaRMEHJi/B/IFd5JKTq9jouIoZ1WsRvg==
-X-Received: by 2002:a63:4006:: with SMTP id n6mr13228072pga.403.1561804619567; 
- Sat, 29 Jun 2019 03:36:59 -0700 (PDT)
+ bh=yoei6OKyQ32Hktc4WD0L2ybo+pYYJb/gMNDeW+rSA+k=;
+ b=mxOwx5xRl4TOwaNjEZUvhiC9hV2iqL+viUAkwkT9e6VjRw81Q7wsIUFwPCGug52pX7
+ Le0mRfLPorFai0s/xlj4v1GH7E4OR1vAocLoiRa4TEtBXgysXuv/fXReuGbyEQW1FSde
+ rQ6HLpE2+2mrWlTGw8ntm1zXZdYdR1pGNE7y/n4hy9nGmIGBaCYq76jMKKe0UaIqA2bE
+ kmgaXay6rmzx0La3Us+KX7Nd2b//Eyc1hKmJrBCOtmD2RQloTemIoK2d1HLUII5EI5Ex
+ V8Uz7OKuF4TxzoCtiQ9oHZrkC3sq+ynD9H3r9tcCNXN+wE5V4rPpGv7GpYMyA8kWtU7d
+ tM/Q==
+X-Gm-Message-State: APjAAAWq9MCwAzh925J7GhZb3Ds3wTyqzLnZyXTpeaB2FUp8TkYkGrET
+ yUtvp81KYo9DjRo51PX7jt0=
+X-Google-Smtp-Source: APXvYqyRcYwh9MdNCoo4/AH7YAApEf4gE7xMCCJfQoiTzZp0CZe6hLNb6wn/nRQ6w8AAfJudQfrV3g==
+X-Received: by 2002:a17:90a:b115:: with SMTP id
+ z21mr18830524pjq.64.1561804676426; 
+ Sat, 29 Jun 2019 03:37:56 -0700 (PDT)
 Received: from hari-Inspiron-1545 ([183.83.92.187])
- by smtp.gmail.com with ESMTPSA id k3sm4566600pgo.81.2019.06.29.03.36.57
+ by smtp.gmail.com with ESMTPSA id 201sm5880808pfz.24.2019.06.29.03.37.53
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 29 Jun 2019 03:36:59 -0700 (PDT)
-Date: Sat, 29 Jun 2019 16:06:54 +0530
+ Sat, 29 Jun 2019 03:37:55 -0700 (PDT)
+Date: Sat, 29 Jun 2019 16:07:51 +0530
 From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>,
- Hariprasad Kelam <hariprasad.kelam@gmail.com>,
+ Nishka Dasgupta <nishkadg.linux@gmail.com>,
  Himadri Pandya <himadri18.07@gmail.com>,
- Puranjay Mohan <puranjay12@gmail.com>,
- Colin Ian King <colin.king@canonical.com>,
+ Hariprasad Kelam <hariprasad.kelam@gmail.com>,
+ Dan Carpenter <dan.carpenter@oracle.com>,
+ Hardik Singh Rathore <hardiksingh.k@gmail.com>,
+ Shobhit Kukreti <shobhitkukreti@gmail.com>,
  devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 09/10] staging/rtl8723bs/hal: fix comparison to true/false is
+Subject: [PATCH 10/10] staging/rtl8723bs/hal: fix comparison to true/false is
  error prone
-Message-ID: <20190629103654.GA15592@hari-Inspiron-1545>
+Message-ID: <20190629103751.GA15649@hari-Inspiron-1545>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.5.24 (2015-08-30)
@@ -102,22 +104,55 @@ CHECK: Using comparison to true is error prone
 
 Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 ---
- drivers/staging/rtl8723bs/hal/hal_com.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rtl8723bs/hal/hal_btcoex.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/hal_com.c b/drivers/staging/rtl8723bs/hal/hal_com.c
-index 2763479..d3025ca 100644
---- a/drivers/staging/rtl8723bs/hal/hal_com.c
-+++ b/drivers/staging/rtl8723bs/hal/hal_com.c
-@@ -140,7 +140,7 @@ u8 hal_com_config_channel_plan(
+diff --git a/drivers/staging/rtl8723bs/hal/hal_btcoex.c b/drivers/staging/rtl8723bs/hal/hal_btcoex.c
+index 66caf34..99e0b91 100644
+--- a/drivers/staging/rtl8723bs/hal/hal_btcoex.c
++++ b/drivers/staging/rtl8723bs/hal/hal_btcoex.c
+@@ -290,7 +290,7 @@ static u8 halbtcoutsrc_IsWifiBusy(struct adapter *padapter)
+ 	if (check_fwstate(pmlmepriv, WIFI_ASOC_STATE) == true) {
+ 		if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == true)
+ 			return true;
+-		if (true == pmlmepriv->LinkDetectInfo.bBusyTraffic)
++		if (pmlmepriv->LinkDetectInfo.bBusyTraffic)
+ 			return true;
  	}
  
- 	if (
--		(false == pHalData->bDisableSWChannelPlan) &&
-+		(!pHalData->bDisableSWChannelPlan) &&
- 		rtw_is_channel_plan_valid(sw_channel_plan)
- 	)
- 		chnlPlan = sw_channel_plan;
+@@ -310,12 +310,12 @@ static u32 _halbtcoutsrc_GetWifiLinkStatus(struct adapter *padapter)
+ 
+ 	if (check_fwstate(pmlmepriv, WIFI_ASOC_STATE) == true) {
+ 		if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == true) {
+-			if (true == bp2p)
++			if (bp2p)
+ 				portConnectedStatus |= WIFI_P2P_GO_CONNECTED;
+ 			else
+ 				portConnectedStatus |= WIFI_AP_CONNECTED;
+ 		} else {
+-			if (true == bp2p)
++			if (bp2p)
+ 				portConnectedStatus |= WIFI_P2P_GC_CONNECTED;
+ 			else
+ 				portConnectedStatus |= WIFI_STA_CONNECTED;
+@@ -372,7 +372,7 @@ static u8 halbtcoutsrc_GetWifiScanAPNum(struct adapter *padapter)
+ 
+ 	pmlmeext = &padapter->mlmeextpriv;
+ 
+-	if (GLBtcWiFiInScanState == false) {
++	if (!GLBtcWiFiInScanState) {
+ 		if (pmlmeext->sitesurvey_res.bss_cnt > 0xFF)
+ 			scan_AP_num = 0xFF;
+ 		else
+@@ -1444,7 +1444,7 @@ void hal_btcoex_IQKNotify(struct adapter *padapter, u8 state)
+ 
+ void hal_btcoex_BtInfoNotify(struct adapter *padapter, u8 length, u8 *tmpBuf)
+ {
+-	if (GLBtcWiFiInIQKState == true)
++	if (GLBtcWiFiInIQKState)
+ 		return;
+ 
+ 	EXhalbtcoutsrc_BtInfoNotify(&GLBtCoexist, tmpBuf, length);
 -- 
 2.7.4
 
