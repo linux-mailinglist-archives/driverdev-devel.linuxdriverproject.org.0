@@ -2,77 +2,76 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB81D5AA1D
-	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Jun 2019 12:25:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 42A235AA1F
+	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Jun 2019 12:26:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A408420495;
-	Sat, 29 Jun 2019 10:25:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BF081204A6;
+	Sat, 29 Jun 2019 10:26:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uwgVn4J+u-8E; Sat, 29 Jun 2019 10:25:22 +0000 (UTC)
+	with ESMTP id y07k986yF0Zd; Sat, 29 Jun 2019 10:26:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 57F0F20499;
-	Sat, 29 Jun 2019 10:25:21 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8BD5C20499;
+	Sat, 29 Jun 2019 10:26:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7AB471BF405
- for <devel@linuxdriverproject.org>; Sat, 29 Jun 2019 10:25:19 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C41AF1BF405
+ for <devel@linuxdriverproject.org>; Sat, 29 Jun 2019 10:26:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7794085C20
- for <devel@linuxdriverproject.org>; Sat, 29 Jun 2019 10:25:19 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id BF8D187646
+ for <devel@linuxdriverproject.org>; Sat, 29 Jun 2019 10:26:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1PWa3hPsnf8d for <devel@linuxdriverproject.org>;
- Sat, 29 Jun 2019 10:25:19 +0000 (UTC)
+ with ESMTP id tE0iNWtNgESn for <devel@linuxdriverproject.org>;
+ Sat, 29 Jun 2019 10:26:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
- [209.85.210.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id ECEF585BB1
- for <devel@driverdev.osuosl.org>; Sat, 29 Jun 2019 10:25:18 +0000 (UTC)
-Received: by mail-pf1-f194.google.com with SMTP id c85so4220728pfc.1
- for <devel@driverdev.osuosl.org>; Sat, 29 Jun 2019 03:25:18 -0700 (PDT)
+Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
+ [209.85.215.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 57CA786E3A
+ for <devel@driverdev.osuosl.org>; Sat, 29 Jun 2019 10:26:18 +0000 (UTC)
+Received: by mail-pg1-f193.google.com with SMTP id w10so3716422pgj.7
+ for <devel@driverdev.osuosl.org>; Sat, 29 Jun 2019 03:26:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=CxypI43ytN5Ipwu2eJZ9WP6oEc0mtS7rDBKUGQ2NaIQ=;
- b=IglXVzc9+65oiSs+QIqDDdQJA4wtPHj4OWUpcEffOBeVIQExouQzLhoPfNW0Rtpp3J
- PmhRSZyEsp1Jd2//XWqZDRbf2TZxZNlCQZc3vRnmlzTkM+RsH2RhJWDaw+rdoY///qk1
- L6OslWHFZN3G08Hs+8KieXGxS9s3QT97W/Luq5WS9MMO4q5QeG2GPNXCAGFnm9u/FJ+1
- qC7aFDr9bAgbX9TCmS6NcYTn5HkKbMs2kTmXH8VnUa5PmjE3ISysbUWSdyu+WtjwzDKW
- eXgCmdIjBu8me25aQrPSS/dGWT4FeztP+hoHQq8OJconr6neNa+hoHWSPQzDEunhOC5j
- t7hQ==
+ :user-agent; bh=ufreqsCqUEbtwakQjfPG4/XQRKe+4sPPeMiA/RmTprM=;
+ b=Dho7eNQ35SIyPNTS5qQQ9O587OsHxdkVAYouk63JcVIwNEL9lPwUKJExKokYaLWNX1
+ DZIlbYQghqtSNwrxpE6B5pAfwL5WOST9YHz6/WlIcI/ShbF32WL0kQ8Yi1nXihz0uBk1
+ z18GmAc9Fl0xS57Jk9kN0X8jBwtu/bI1k7U4+PZHh6DOlKVZC2Ga+3C93TNvlUe+c17E
+ 9DChqt+1QCSJwtCQjR1vL9KaxvywQHt5CTQuky1vE5BYfe2XsX/zl3UyaVkK05i4HLED
+ Aw0Mh5XjZqZzITiksUK49sZ04c0m1JrF8WEE+8etK9Y8jjIojdOXfumlOlcE16p9T+wl
+ 5eiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=CxypI43ytN5Ipwu2eJZ9WP6oEc0mtS7rDBKUGQ2NaIQ=;
- b=gBNerK1OLFxDPtIdJlDXM7LZlBXVBV1AQYw/XLvbnJxqqFxyyE0J9iQetuOWWG4zTP
- Qd4U/knWiVF7rIXIG1uj5O14zjTg1g0dLKCv1geUqg7o1v83s1LOJE0OVVetmdy2EPPN
- y+beMCvD7b6UzGjLEN/0+A9q6NDiE4JwXMOHmsdSmjuYRsPQujz+vxCgiv0GutHGKjDQ
- 1J9yJLqzPH/icn6psI7r/Ut66Sa2n4ZgJwrPKrj9x46x6bmyh9/8jplJla2LDcFG82G5
- 6d3myTSGhYjJhwD0nY0qI6SEXMLU89DxRuNUkOE21pKSE74emkgyCsT3LbTUnM68fv5k
- 70gg==
-X-Gm-Message-State: APjAAAUrHGhXJ6vLnJk5qwIEEvvVTSpXkJLK9Rqw6LDUu734pFOL4QvD
- T98K79jUQDwuO6RGuBLfNeE=
-X-Google-Smtp-Source: APXvYqzsO6ZZ4yrDO5RiEb7WhYzA6reScVpUYT/VG+itFRvT/f5pne9ZmAj+dob2oajhm6V/9GeFrA==
-X-Received: by 2002:a17:90a:9905:: with SMTP id
- b5mr19086055pjp.70.1561803918651; 
- Sat, 29 Jun 2019 03:25:18 -0700 (PDT)
+ bh=ufreqsCqUEbtwakQjfPG4/XQRKe+4sPPeMiA/RmTprM=;
+ b=UGuU7WUe0xwr8qYfdlhgPTh/1BovqgEnu9lHS4pXL/UMLjiCaq4Xg2zRSNs/lPB5kf
+ ibfcRFn7p7/Zmq+Q+jDrqxCilLEJQwQGqLkvl39E9LXGfA3NBpUOLUawA0MUsp3pmZEp
+ 9cfsqcAZbaCkSQOUa75wxsjv6znDvt1o0cYeGc7JpFBxZBCYMQ6L9pfWSpTnwmotpbZ4
+ zC+l8vSCXur97qzXpdkd3lYfefnSJL34iZ1I9BvFkFWlI9k8wuWK2eOw4xheqwKgaU/8
+ aAiHybk0xBmji2+x1wFK2pO2l5m1G+GW0nEneCYgtfsGnVvwAvMXzvW8RBTDC10Romzv
+ 2t1g==
+X-Gm-Message-State: APjAAAXL9NWwI76IB3vpA0v8l2RqDHPKxR/5xhxeT6u82apACTQbEHfA
+ mGNGxQVDJUuJ5GnVCrwknqFP6ISQ
+X-Google-Smtp-Source: APXvYqwBKGNKE3vZ+Zq3TlQ7LCTTVgLrGQhenDVitR7CKr7vXXkcOv+Od0d+XRptoBRec8S7tS0MVw==
+X-Received: by 2002:a17:90a:30cf:: with SMTP id
+ h73mr18934769pjb.42.1561803978031; 
+ Sat, 29 Jun 2019 03:26:18 -0700 (PDT)
 Received: from hari-Inspiron-1545 ([183.83.92.187])
- by smtp.gmail.com with ESMTPSA id x5sm9859134pjp.21.2019.06.29.03.25.16
+ by smtp.gmail.com with ESMTPSA id x128sm13085346pfd.17.2019.06.29.03.26.16
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 29 Jun 2019 03:25:18 -0700 (PDT)
-Date: Sat, 29 Jun 2019 15:55:14 +0530
+ Sat, 29 Jun 2019 03:26:17 -0700 (PDT)
+Date: Sat, 29 Jun 2019 15:56:14 +0530
 From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Hariprasad Kelam <hariprasad.kelam@gmail.com>,
- Himadri Pandya <himadri18.07@gmail.com>, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH 06/10] staging/rtl8723bs/hal: fix comparison to true/false is
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: [PATCH 07/10] staging/rtl8723bs/hal: fix comparison to true/false is
  error prone
-Message-ID: <20190629102514.GA15194@hari-Inspiron-1545>
+Message-ID: <20190629102614.GA15248@hari-Inspiron-1545>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.5.24 (2015-08-30)
@@ -100,57 +99,22 @@ CHECK: Using comparison to true is error prone
 
 Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 ---
- drivers/staging/rtl8723bs/hal/rtl8723b_dm.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/rtl8723bs/hal/odm_CfoTracking.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c b/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c
-index 6578147..e6ddce3 100644
---- a/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c
-+++ b/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c
-@@ -152,14 +152,14 @@ void rtl8723b_HalDmWatchDog(struct adapter *Adapter)
+diff --git a/drivers/staging/rtl8723bs/hal/odm_CfoTracking.c b/drivers/staging/rtl8723bs/hal/odm_CfoTracking.c
+index a733046..7883b26 100644
+--- a/drivers/staging/rtl8723bs/hal/odm_CfoTracking.c
++++ b/drivers/staging/rtl8723bs/hal/odm_CfoTracking.c
+@@ -221,7 +221,7 @@ void ODM_CfoTracking(void *pDM_VOID)
+ 		pCfoTrack->CFO_ave_pre = CFO_ave;
  
- 	hw_init_completed = Adapter->hw_init_completed;
- 
--	if (hw_init_completed == false)
-+	if (!hw_init_completed)
- 		goto skip_dm;
- 
- 	bFwCurrentInPSMode = adapter_to_pwrctl(Adapter)->bFwCurrentInPSMode;
- 	rtw_hal_get_hwreg(Adapter, HW_VAR_FWLPS_RF_ON, (u8 *)(&bFwPSAwake));
- 
- 	if (
--		(hw_init_completed == true) &&
-+		(hw_init_completed) &&
- 		((!bFwCurrentInPSMode) && bFwPSAwake)
- 	) {
- 		/*  */
-@@ -170,7 +170,7 @@ void rtl8723b_HalDmWatchDog(struct adapter *Adapter)
- 	}
- 
- 	/* ODM */
--	if (hw_init_completed == true) {
-+	if (hw_init_completed) {
- 		u8 bLinked = false;
- 		u8 bsta_state = false;
- 		u8 bBtDisabled = true;
-@@ -233,7 +233,7 @@ void rtl8723b_HalDmWatchDog_in_LPS(struct adapter *Adapter)
- 	struct sta_priv *pstapriv = &Adapter->stapriv;
- 	struct sta_info *psta = NULL;
- 
--	if (Adapter->hw_init_completed == false)
-+	if (!Adapter->hw_init_completed)
- 		goto skip_lps_dm;
- 
- 
-@@ -242,7 +242,7 @@ void rtl8723b_HalDmWatchDog_in_LPS(struct adapter *Adapter)
- 
- 	ODM_CmnInfoUpdate(&pHalData->odmpriv, ODM_CMNINFO_LINK, bLinked);
- 
--	if (bLinked == false)
-+	if (!bLinked)
- 		goto skip_lps_dm;
- 
- 	if (!(pDM_Odm->SupportAbility & ODM_BB_RSSI_MONITOR))
+ 		/* 4 1.4 Dynamic Xtal threshold */
+-		if (pCfoTrack->bAdjust == false) {
++		if (!pCfoTrack->bAdjust) {
+ 			if (CFO_ave > CFO_TH_XTAL_HIGH || CFO_ave < (-CFO_TH_XTAL_HIGH))
+ 				pCfoTrack->bAdjust = true;
+ 		} else {
 -- 
 2.7.4
 
