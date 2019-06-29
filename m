@@ -1,81 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B7E55AD20
-	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Jun 2019 21:33:27 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B72605AD1D
+	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Jun 2019 21:33:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9ED96204BF;
-	Sat, 29 Jun 2019 19:33:24 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6771C86084;
+	Sat, 29 Jun 2019 19:33:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id N5brQEUfZHb0; Sat, 29 Jun 2019 19:33:23 +0000 (UTC)
+	with ESMTP id yUdnyi-bCYks; Sat, 29 Jun 2019 19:33:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 3457020402;
-	Sat, 29 Jun 2019 19:33:13 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CE72985A37;
+	Sat, 29 Jun 2019 19:33:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 556AD1BF8B4
+ by ash.osuosl.org (Postfix) with ESMTP id 3EE3F1BF339
  for <devel@linuxdriverproject.org>; Sat, 29 Jun 2019 19:33:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 52E342001A
+ by silver.osuosl.org (Postfix) with ESMTP id 3B0062001A
  for <devel@linuxdriverproject.org>; Sat, 29 Jun 2019 19:33:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CA9mHoK8c1-H for <devel@linuxdriverproject.org>;
+ with ESMTP id kCe-MksTRVMs for <devel@linuxdriverproject.org>;
  Sat, 29 Jun 2019 19:33:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mout.gmx.net (mout.gmx.net [212.227.15.15])
- by silver.osuosl.org (Postfix) with ESMTPS id DE9DD20384
+ by silver.osuosl.org (Postfix) with ESMTPS id C173820383
  for <devel@driverdev.osuosl.org>; Sat, 29 Jun 2019 19:33:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1561836762;
- bh=EseqlfgzCuf/2Cl1h+E1XvwMILq15RJLvE3ijWYQ0lI=;
+ s=badeba3b8450; t=1561836763;
+ bh=rK8rvK0E2D7ZbAe4zS7pHvQrYn5x7ohLrrBKZLknkUU=;
  h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=FrJzy+5QBjbS3NLcmnI7cYCPjjhIKL0hWeZZ7tToTp1vlJ9zwD5t7XnaVVr9F2Nbi
- SBb1VZI7azq0qiE7jiQUNbPYbBWx6sueV4Mkxwf5b7wn8NDcEgajVSIex2qzqULDPo
- PD4JDSKI+5jqPcAh8mxQW7iKvtXAEqHCW9Z+r0t0=
+ b=ZsSBlnTDSZMEPKIUQfRD9f8auVzzQnnbvPImq8j0bJvhsuV5RyblYgAsmmpPW5k7+
+ +ZGkxNj5aVGN+PveqUip6qftjkiMLIzsFDyYNoTqzu0MBsdrSLWRZ9IzRH6dfAWhuT
+ d2Y+rnvlPP6kAO0/3w5fFlRKYakv7x1MQ2Yw2N5U=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
 Received: from localhost.localdomain ([37.4.249.111]) by mail.gmx.com
  (mrgmx003 [212.227.17.190]) with ESMTPSA (Nemesis) id
- 0MLfLH-1hgU8n1SuB-000x6C; Sat, 29 Jun 2019 21:32:42 +0200
+ 0MLOMM-1hgl7g3DrG-000fz3; Sat, 29 Jun 2019 21:32:42 +0200
 From: Stefan Wahren <wahrenst@gmx.net>
 To: Eric Anholt <eric@anholt.net>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Dave Stevenson <dave.stevenson@raspberrypi.org>,
  Hans Verkuil <hverkuil@xs4all.nl>,
  Mauro Carvalho Chehab <mchehab@kernel.org>
-Subject: [PATCH V2 26/29] staging: bcm2835-camera: Fix stride on RGB3/BGR3
- formats
-Date: Sat, 29 Jun 2019 21:31:40 +0200
-Message-Id: <1561836703-2528-2-git-send-email-wahrenst@gmx.net>
+Subject: [PATCH V2 27/29] staging: bcm2835-camera: Add sanity checks for
+ queue_setup/CREATE_BUFS
+Date: Sat, 29 Jun 2019 21:31:41 +0200
+Message-Id: <1561836703-2528-3-git-send-email-wahrenst@gmx.net>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1561836703-2528-1-git-send-email-wahrenst@gmx.net>
 References: <1561836703-2528-1-git-send-email-wahrenst@gmx.net>
-X-Provags-ID: V03:K1:TYN5LMuAfpARE6vm8oAc8tSbskTP/sKRht8r6aUhwmgX2tUX6c1
- kfyokFTyrx6gBhZ7CbbZ2IcA8S4pFgWx/f4VAI+k9C0KB2GeZTGMgnk32f/G7Gm8mtFd6x7
- J1/SIis+6+YDvfNOWf4a7J/+nwUm9CmWf9UqCj3o33y0EGGfB+m7JRxErn2xP079uqLRMgI
- z4vtQQavPspjw5KNZphZw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:52dxJ0fYAuI=:bSuUagRayxJ0o+uKxC1jME
- 0HU9BtwjJCXXO4BM6AtbYFqDaMi6V09fDjcO1s/JYaD2zitKu9csOegGZwqeMCZTbhmE2M/19
- tYUK0WglmxI7b0PJRyEHaI2jCloQQd0hlW86IhMcs/alSlQrQar6W5G63KydQCJ9SWrP1oXNr
- k9B/l1Z3xd/d1RTFfyxrjZC1GD2ZVcmPvynZlrqcElCptg2RFSJM+dTHvMjjeLbAi9b2buOvv
- XMcdIwEJ+hEFw+drq10Q2bpfDDbf/Q99I5jCtWJF9vmLhcntTQrRNqZeN5cV+QOAWtTjkS/gU
- B+xZFkFIIp8KaxJW9Z+cWm7GJxHuI6j8tDUWjkv/NEGSUmZGbM8oDAzMtj0cjgrqUaTEak/Fj
- d5JVT1Xnft2U0KsTp8BQ/dg3KS8hlewh3oNaU2zIP4ooZFMsxbmkLXpnbk2xrGScyU+GG+9AK
- /CjRFptToH5ZaVyi2srGVzjmucAG0BkltfGSNl97KODjht4Vjet2/TIA5rgDhcd4it5pEaTG3
- rrbh2P8U6VcF1EZZo0gv5cpu69InMkhbT7DBWMoDVOoqc52urMju+rRXnFgU+Chdk+ymzF5B5
- fynDK4Yj0HkFVBTBBRrjs1pHMLL5p60uHWi18eLAFi3Y5bb2Si2OE1rI1tj3mQJdKepiTC1g9
- YtDhE+8Ob5XVZPn64r8K3PiGpFejwfAk3BK/RwzG8820zk1oeOx3B3O85DZ+K8B+bZokgA99b
- 017NvElpjIuPDk1A9dUSrT3Y10WMZ4ZQFSZGEIYq4qvXHEuDUO2D18nqYlE7rJrfRYkkVk0od
- dKhvohD09LtSVkoBMkdUmqSI0WlfRgJOo9HL7uwg+a8Ge+9ZwIHwmsn/Jz+lsO8Xn2n+itnFB
- LfiXSZ1JvopsXBz68gQnkXnulippL5MmnocXlsY9L8JYP7FZhKMcHSxbnCPaM/lynZnMEXOtP
- Tb9NGyLEPkTNsWuUFrIexdtar3lIfyEiSBxwpS4tNtberAAkkoEVAvNb7126iilzDDj7SqdH0
- qJ/fJb7UOKyMJJjG2XlQgT1T3GN24GjxUa73yn2WMTL3YK1sEZg8sXacpwkO1TptXYyXhVxDT
- WaWxnxZgxt5kpE=
+X-Provags-ID: V03:K1:sDOOOORNsaWE+WMzRK4FSnZQ1bYVt3B2/9OPCk1Nghqhx6Vg08C
+ whJM09RSK77gyrEeJlCWCiqRQyKzXNEmEVCKKQB9emDR/jrRSNXjUo/R/2dEHlyvnOflWFI
+ wrnSRvFYi2nRBRjdTaa8OTpe25ngXRbpFcCSb6vEaDY0p/4jGsQ5AeSdpOQgou1rp3L6S6d
+ ilZ9Ie2P9fKd5/JdxxBdA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:OBdmlzNyHJE=:V4tpvH6KCtlRVIuQuCx7N4
+ uIP4XdWgNZVSM5w4NnwMRBWObJBBy4wA8taWEJTf/rFK/0zPusAOuRT1YHCHQ9WaymbfQPHP1
+ dTBYbt8YxklwJYee53uOc5GHTVDExnfhOYSpjNWVnIl3KdgTzQhogP1iummvVnFx7Mw+ssucC
+ L4tlohDr83gk5JLPDCoteeJuN18NWBRTZcy54qxKnuKCNkzXgS7XPxU6E810k+KQENeKlDDfd
+ j25IgSeBMwC1Bhp0Q//PfSntR/wAzd6ohieB75X9baidQG82LqMNVhUo61P3jCm3gVd3UMncw
+ 7QgtXgArVmnnXe0BrP3fBtC/oX1XI12QLbZIUGQ6wF7UB7MzT9J0Hsj78IJUazjj1Mxrq2QUW
+ rNeSNdlmwMJANCgnMPj1VOLme08DN8LQP4AHyBW6s1m/G/YDB6X+CNAUchEb37iOhjRTdE9gQ
+ CpgVha+1npK+WnF27wR8pjuvrG0fX50/E3XwTsA0RI4SnG4ZflfPr13atf4ekraC/IGl51Yxr
+ f1qylPOTjfUj3tg7CI3bR3qBWNilmxg5RjdGymRikKseH3iT0QUmcMJuS3GPavBxJQXVLKC6T
+ 1uazOi/q6fMTsj1OxYqo1f/d7FGK1wYOPkiS7b845pN1OimL+onTEv4nIaDteajuiNgHBlaqD
+ Rtl8Ecpyk8gz6zEfxBQMf+1cQSoZTG1i3HhsfQE/g9mNavBiPEaALgvbzIUXazMEht11KNUpd
+ Nh7LBHq1iHbdtBBjV1BsqIddHJRA2NnxWOA7kQPM3HRqehQEUPzb+t47mmK00cAbY5ASGPioe
+ K/Yvyzf32tvkRpKnrSOfSNS0wd0UgcWOxhUfhTNJgbkgD5zMDgJaoqEW3fOzHljOkCdr2aEaI
+ 7yLNbZciqNTDAbaCkTGgPqWW+jfMmCPNybpWhkC2HJvwDveP9d+XLcVhPl/HgfJ4y6b4pLbqH
+ 9XuPmcqi7jd+7mL4jT1rbhhvKW7VUg06BA+VBZE2BzVerzSmFMaHRA2eFg4Iv6KU/EAalN8m4
+ ZwbCKOLaTpe4zLkRXOAxZ0hEYaAZQmrwjD59kOx/wam+hg5M5Mdki4ESsvYj7TcB75pMmbKML
+ 6bYYQ3HS7627i8=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,58 +99,49 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 From: Dave Stevenson <dave.stevenson@raspberrypi.org>
 
-RGB3/BGR3 end up being 3 bytes per pixel, which meant that
-the alignment code ended up trying to align using bitmasking
-with a mask of 96.
-That doesn't work, so switch to an arithmetic alignment for
-those formats.
+Fixes a v4l2-compliance failure when passed a buffer that is
+too small.
+queue_setup wasn't handling the case where *nplanes != 0, as
+used from CREATE_BUFS and requiring the driver to sanity
+check the provided buffer parameters. It was assuming that
+it was always being used in the REQBUFS case where it provides
+the buffer properties.
 
 Signed-off-by: Dave Stevenson <dave.stevenson@raspberrypi.org>
 Signed-off-by: Stefan Wahren <wahrenst@gmx.net>
 Acked-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
 Acked-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
 ---
- .../vc04_services/bcm2835-camera/bcm2835-camera.c  | 26 +++++++++++++++++-----
- 1 file changed, 20 insertions(+), 6 deletions(-)
+ .../vc04_services/bcm2835-camera/bcm2835-camera.c        | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
 diff --git a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-index 1aaae57..1ad65dd 100644
+index 1ad65dd..9c90d9b 100644
 --- a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
 +++ b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-@@ -960,13 +960,27 @@ static int vidioc_try_fmt_vid_cap(struct file *file, void *priv,
- 			      1, 0);
- 	f->fmt.pix.bytesperline = f->fmt.pix.width * mfmt->ybbp;
- 	if (!mfmt->remove_padding) {
--		int align_mask = ((32 * mfmt->depth) >> 3) - 1;
--		/* GPU isn't removing padding, so stride is aligned to 32 */
--		f->fmt.pix.bytesperline =
--			(f->fmt.pix.bytesperline + align_mask) & ~align_mask;
-+		if (mfmt->depth == 24) {
-+			/*
-+			 * 24bpp is a pain as we can't use simple masking.
-+			 * Min stride is width aligned to 16, times 24bpp.
-+			 */
-+			f->fmt.pix.bytesperline =
-+				((f->fmt.pix.width + 15) & ~15) * 3;
-+		} else {
-+			/*
-+			 * GPU isn't removing padding, so stride is aligned to
-+			 * 32
-+			 */
-+			int align_mask = ((32 * mfmt->depth) >> 3) - 1;
-+
-+			f->fmt.pix.bytesperline =
-+				(f->fmt.pix.bytesperline + align_mask) &
-+							~align_mask;
-+		}
- 		v4l2_dbg(1, bcm2835_v4l2_debug, &dev->v4l2_dev,
--			 "Not removing padding, so bytes/line = %d, (align_mask %d)\n",
--			 f->fmt.pix.bytesperline, align_mask);
-+			 "Not removing padding, so bytes/line = %d\n",
-+			 f->fmt.pix.bytesperline);
+@@ -236,6 +236,22 @@ static int queue_setup(struct vb2_queue *vq,
+ 		return -EINVAL;
  	}
 
- 	/* Image buffer has to be padded to allow for alignment, even though
++	/* Handle CREATE_BUFS situation - *nplanes != 0 */
++	if (*nplanes) {
++		if (*nplanes != 1 ||
++		    sizes[0] < dev->capture.port->current_buffer.size) {
++			v4l2_dbg(1, bcm2835_v4l2_debug, &dev->v4l2_dev,
++				 "%s: dev:%p Invalid buffer request from CREATE_BUFS, size %u < %u, nplanes %u != 1\n",
++				 __func__, dev, sizes[0],
++				 dev->capture.port->current_buffer.size,
++				 *nplanes);
++			return -EINVAL;
++		} else {
++			return 0;
++		}
++	}
++
++	/* Handle REQBUFS situation */
+ 	size = dev->capture.port->current_buffer.size;
+ 	if (size == 0) {
+ 		v4l2_err(&dev->v4l2_dev,
 --
 2.7.4
 
