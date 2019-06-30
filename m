@@ -1,71 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6897D5B15E
-	for <lists+driverdev-devel@lfdr.de>; Sun, 30 Jun 2019 20:59:24 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 58E025B197
+	for <lists+driverdev-devel@lfdr.de>; Sun, 30 Jun 2019 22:42:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 858BD875F9;
-	Sun, 30 Jun 2019 18:59:21 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D781886132;
+	Sun, 30 Jun 2019 20:42:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gUlueOwF0QRY; Sun, 30 Jun 2019 18:59:21 +0000 (UTC)
+	with ESMTP id Sgux2v6naBsJ; Sun, 30 Jun 2019 20:42:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 980088759E;
-	Sun, 30 Jun 2019 18:59:20 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id F2CC485DB1;
+	Sun, 30 Jun 2019 20:42:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4D6991BF20B
- for <devel@linuxdriverproject.org>; Sun, 30 Jun 2019 18:59:18 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id EFF6A1BF308
+ for <devel@linuxdriverproject.org>; Sun, 30 Jun 2019 20:42:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 49CBF87532
- for <devel@linuxdriverproject.org>; Sun, 30 Jun 2019 18:59:18 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id EB66220388
+ for <devel@linuxdriverproject.org>; Sun, 30 Jun 2019 20:42:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id W-iOfuYHnWZu for <devel@linuxdriverproject.org>;
- Sun, 30 Jun 2019 18:59:16 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic308-55.consmr.mail.gq1.yahoo.com
- (sonic308-55.consmr.mail.gq1.yahoo.com [98.137.68.31])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5171D856FE
- for <devel@driverdev.osuosl.org>; Sun, 30 Jun 2019 18:59:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aol.com; s=a2048;
- t=1561921156; bh=qvS6AX1nqTURIJxkra+F23NzHGUKeOF9WJqZLfkSZ3I=;
- h=From:To:Cc:Subject:Date:From:Subject;
- b=CW+oGbzaBWtkvpId2t7MjFmW3VQ1LGlDqhON0VM2t/0CxgH2BBjkyQKOquW/AXGsvZil2x/axn8pSyW5zDy1VgTvJjBFBtkNthJOhDImFuF9ydc+dvHHVRRcE0rkUlQxUcXrTJk/k6aHK5PNclXNyfOVT3eQnF+X9faLTBnE+YP84nMeMkcH4Usw/F1pqIeYhoX4u9SeNE5aPjZjITBTSfMQ9kN+jlbTPan4bkjbq76Q3Pjy93GrOgyXcxd4zvCbqbzQYQdZdg05r3KviubxLLiIRpXcMvhGeC6oRI+66uIlMvMFxUPjbHuAzfFNPnm+y1qEBC6R9RkUwq1zvVcPlw==
-X-YMail-OSG: _MUMI6UVM1kHv.o_3n8h5.C86RBWmC5Ch5VWinQzlhBgdFfZyAkqN9w.q0VDv8O
- Bq9_fJ0niS4mJdEJX41zaNPoEBzdm.tTw3mfdOMbcWRGuxtZRygQcbDSILjfbJYHHb7WJQJ2M6B_
- 8HQCd7dMN4viBzEBufJeYgzPtIcEY0NBEZVKsWTDHUvQ_ukCnhSix81RWjSMp1rv4shCKr.j3P5P
- QWHZ4.o_ehIKIZhBNBKQR9vKDsAL.H7rClKvw1h0elZEWGMrFbcD1J6hL4qjiW9l8qzkIFRp2zHU
- 9CTcnEpcqKaQD0GIkoPoi..vWvUsWBUSp08LXnT0bmj32AewdLZ4ZWnJS5PvJoBGRr_6egNFCl4M
- _ZQuGUpSsZKWLgqwmk2FvbfEqxneyW9rLUA12kcSgUi4a84KBAIqs7K59cq1j_Zck5FBomu.tjFY
- dBxgANcpbre88L.WWoGP_RKI694ntxZMgcSPo82XRl0iMrEQmdt6hCmlDWRANLXlWiVJCsISd8ZO
- KxedfV_HVtTwvCJYzUwc0QlUloGcBRtY0PF13_047K1m7pg1mp4NC7VtEGp2k035dF3LW2miBjob
- C.ubNzB4a2Uo_NnlK5noM27sGWWsBEPvnpnuXC3CJbrDSW9ywmaqwKPqJaS4Cxbkn6czw_ET.Luq
- 9LtQIHA5sMYC8zLgD0CIU0uA2OFTYlE.LqPu8ZVGhoDbYTzeYSrPoYP08xD5Ao4AyxPuSEFH9emA
- ZvgTcx1A8msiqfMcM8EUyLMV.p0M7tO.w6SsGk3JRjcAFjUS0M0ls7eBKI1aE_HqQgLNQlwUp4O5
- Y5lcAA0cwNjR4tpgfHWYkOsxnNFzQ.3Jw_OEC6UIqX5QD2kUOQXN.UH0XyEF8BbdktSzuAC.NF1A
- KXmB9ORyvvv_O8inwLQ1N5EtinF8ThdmTEfjinP7ThaF7zE2z3zPuxhWziHVE45e.kttoRyFhjJR
- 82r6PmUl8sFRyGXDWe4YhDxcS7TQhpyA1OfmjOaHggE8PrqX_mi9CYc0qtpLXuOrdFwBNCsn7yau
- ErZ5xWgKVFfHFHDW5r7nwzI2N2U94_Yux6TMx9TZB5Ed_TunUSAgUyz_VN8lqYvttnh3K8DONMVL
- 39OrpEG4EbCILlzmT.oZ86fgtQ4svSTqUp9aZ2ktxhUOxXI5dRr6xrAxVp4qahdXNFEGNGsrtNEr
- 5okIlXlIeW8H5N2BzOdG1w9Mht7wdD0OUIUEWNJHd_LdcpFBab5_Igyd_Avg-
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic308.consmr.mail.gq1.yahoo.com with HTTP; Sun, 30 Jun 2019 18:59:16 +0000
-Received: from 115.192.39.149 (EHLO localhost.localdomain) ([115.192.39.149])
- by smtp430.mail.gq1.yahoo.com (Oath Hermes SMTP Server) with ESMTPA
- ID 4f455e50a02bda45690c67a6db1d1f3b; 
- Sun, 30 Jun 2019 18:59:13 +0000 (UTC)
-From: Gao Xiang <hsiangkao@aol.com>
-To: Chao Yu <yuchao0@huawei.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: erofs: fix LZ4 limited bounced page mis-reuse
-Date: Mon,  1 Jul 2019 02:58:46 +0800
-Message-Id: <20190630185846.16624-1-hsiangkao@aol.com>
-X-Mailer: git-send-email 2.17.1
+ with ESMTP id dtdbOjZmTVnJ for <devel@linuxdriverproject.org>;
+ Sun, 30 Jun 2019 20:42:22 +0000 (UTC)
+X-Greylist: delayed 00:05:07 by SQLgrey-1.7.6
+Received: from ja.ssi.bg (unknown [178.16.129.10])
+ by silver.osuosl.org (Postfix) with ESMTPS id 260F720376
+ for <devel@driverdev.osuosl.org>; Sun, 30 Jun 2019 20:42:18 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+ by ja.ssi.bg (8.15.2/8.15.2) with ESMTP id x5UKafTT007280;
+ Sun, 30 Jun 2019 23:36:41 +0300
+Date: Sun, 30 Jun 2019 23:36:41 +0300 (EEST)
+From: Julian Anastasov <ja@ssi.bg>
+To: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [PATCH 4/4] ipvs: reduce kernel stack usage
+In-Reply-To: <20190628123819.2785504-4-arnd@arndb.de>
+Message-ID: <alpine.LFD.2.21.1906302308280.3788@ja.home.ssi.bg>
+References: <20190628123819.2785504-1-arnd@arndb.de>
+ <20190628123819.2785504-4-arnd@arndb.de>
+User-Agent: Alpine 2.21 (LFD 202 2017-01-01)
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,137 +56,122 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-erofs@lists.ozlabs.org,
- LKML <linux-kernel@vger.kernel.org>, Du Wei <weidu.du@huawei.com>,
- Fang Wei <fangwei1@huawei.com>, Miao Xie <miaoxie@huawei.com>
-MIME-Version: 1.0
+Cc: James Morris <jmorris@namei.org>, devel@driverdev.osuosl.org,
+ linux-scsi@vger.kernel.org, James Smart <james.smart@broadcom.com>,
+ Jozsef Kadlecsik <kadlec@netfilter.org>, lvs-devel@vger.kernel.org,
+ coreteam@netfilter.org, Alexey Kuznetsov <kuznet@ms2.inr.ac.ru>,
+ Pablo Neira Ayuso <pablo@netfilter.org>, Wensong Zhang <wensong@linux-vs.org>,
+ Dick Kennedy <dick.kennedy@broadcom.com>, Kees Cook <keescook@chromium.org>,
+ "James E . J . Bottomley" <jejb@linux.ibm.com>,
+ Simon Horman <horms@verge.net.au>,
+ Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
+ "Martin K . Petersen" <martin.petersen@oracle.com>,
+ Ard Biesheuvel <ard.biesheuvel@linaro.org>,
+ Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Florian Westphal <fw@strlen.de>, linux-kernel@vger.kernel.org,
+ netfilter-devel@vger.kernel.org, netdev@vger.kernel.org,
+ "David S. Miller" <davem@davemloft.net>,
+ Larry Finger <Larry.Finger@lwfinger.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Gao Xiang <gaoxiang25@huawei.com>
 
-Like all lz77-based algrithms, lz4 has a dynamically populated
-("sliding window") dictionary and the maximum lookback distance
-is 65535. Therefore the number of bounced pages could be limited
-by erofs based on this property.
+	Hello,
 
-However, just now we observed some lz4 sequences in the extreme
-case cannot be decompressed correctly after this feature is enabled,
-the root causes after analysis are clear as follows:
-1) max bounced pages should be 17 rather than 16 pages;
-2) considering the following case, the broken implementation
-   could reuse unsafely in advance (in other words, reuse it
-   less than a safe distance),
-   0 1 2 ... 16 17 18 ... 33 34
-   b             p  b         b
-   note that the bounce page that we are concerned was allocated
-   at 0, and it reused at 18 since page 17 exists, but it mis-reused
-   at 34 in advance again, which causes decompress failure.
+On Fri, 28 Jun 2019, Arnd Bergmann wrote:
 
-This patch resolves the issue by introducing a bitmap to mark
-whether the page in the same position of last round is a bounced
-page or not, and a micro stack data structure to store all
-available bounced pages.
+> With the new CONFIG_GCC_PLUGIN_STRUCTLEAK_BYREF_ALL option, the stack
+> usage in the ipvs debug output grows because each instance of
+> IP_VS_DBG_BUF() now has its own buffer of 160 bytes that add up
+> rather than reusing the stack slots:
+> 
+> net/netfilter/ipvs/ip_vs_core.c: In function 'ip_vs_sched_persist':
+> net/netfilter/ipvs/ip_vs_core.c:427:1: error: the frame size of 1052 bytes is larger than 1024 bytes [-Werror=frame-larger-than=]
+> net/netfilter/ipvs/ip_vs_core.c: In function 'ip_vs_new_conn_out':
+> net/netfilter/ipvs/ip_vs_core.c:1231:1: error: the frame size of 1048 bytes is larger than 1024 bytes [-Werror=frame-larger-than=]
+> net/netfilter/ipvs/ip_vs_ftp.c: In function 'ip_vs_ftp_out':
+> net/netfilter/ipvs/ip_vs_ftp.c:397:1: error: the frame size of 1104 bytes is larger than 1024 bytes [-Werror=frame-larger-than=]
+> net/netfilter/ipvs/ip_vs_ftp.c: In function 'ip_vs_ftp_in':
+> net/netfilter/ipvs/ip_vs_ftp.c:555:1: error: the frame size of 1200 bytes is larger than 1024 bytes [-Werror=frame-larger-than=]
+> 
+> Since printk() already has a way to print IPv4/IPv6 addresses using
+> the %pIS format string, use that instead, combined with a macro that
+> creates a local sockaddr structure on the stack. These will still
+> add up, but the stack frames are now under 200 bytes.
+> 
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> ---
+> I'm not sure this actually does what I think it does. Someone
+> needs to verify that we correctly print the addresses here.
+> I've also only added three files that caused the warning messages
+> to be reported. There are still a lot of other instances of
+> IP_VS_DBG_BUF() that could be converted the same way after the
+> basic idea is confirmed.
+> ---
+>  include/net/ip_vs.h             | 71 +++++++++++++++++++--------------
+>  net/netfilter/ipvs/ip_vs_core.c | 44 ++++++++++----------
+>  net/netfilter/ipvs/ip_vs_ftp.c  | 20 +++++-----
+>  3 files changed, 72 insertions(+), 63 deletions(-)
+> 
+> diff --git a/include/net/ip_vs.h b/include/net/ip_vs.h
+> index 3759167f91f5..3dfbeef67be6 100644
+> --- a/include/net/ip_vs.h
+> +++ b/include/net/ip_vs.h
+> @@ -227,6 +227,16 @@ static inline const char *ip_vs_dbg_addr(int af, char *buf, size_t buf_len,
+>  		       sizeof(ip_vs_dbg_buf), addr,			\
+>  		       &ip_vs_dbg_idx)
+>  
+> +#define IP_VS_DBG_SOCKADDR4(fam, addr, port)				\
+> +	(struct sockaddr*)&(struct sockaddr_in)				\
+> +	{ .sin_family = (fam), .sin_addr = (addr)->in, .sin_port = (port) }
+> +#define IP_VS_DBG_SOCKADDR6(fam, addr, port)				\
+> +	(struct sockaddr*)&(struct sockaddr_in6) \
+> +	{ .sin6_family = (fam), .sin6_addr = (addr)->in6, .sin6_port = (port) }
+> +#define IP_VS_DBG_SOCKADDR(fam, addr, port) (fam == AF_INET ?		\
+> +			IP_VS_DBG_SOCKADDR4(fam, addr, port) :		\
+> +			IP_VS_DBG_SOCKADDR6(fam, addr, port))
+> +
+>  #define IP_VS_DBG(level, msg, ...)					\
+>  	do {								\
+>  		if (level <= ip_vs_get_debug_level())			\
+> @@ -251,6 +261,7 @@ static inline const char *ip_vs_dbg_addr(int af, char *buf, size_t buf_len,
+>  #else	/* NO DEBUGGING at ALL */
+>  #define IP_VS_DBG_BUF(level, msg...)  do {} while (0)
+>  #define IP_VS_ERR_BUF(msg...)  do {} while (0)
+> +#define IP_VS_DBG_SOCKADDR(fam, addr, port) NULL
+>  #define IP_VS_DBG(level, msg...)  do {} while (0)
+>  #define IP_VS_DBG_RL(msg...)  do {} while (0)
+>  #define IP_VS_DBG_PKT(level, af, pp, skb, ofs, msg)	do {} while (0)
+> @@ -1244,31 +1255,31 @@ static inline void ip_vs_control_del(struct ip_vs_conn *cp)
+>  {
+>  	struct ip_vs_conn *ctl_cp = cp->control;
+>  	if (!ctl_cp) {
+> -		IP_VS_ERR_BUF("request control DEL for uncontrolled: "
+> -			      "%s:%d to %s:%d\n",
+> -			      IP_VS_DBG_ADDR(cp->af, &cp->caddr),
+> -			      ntohs(cp->cport),
+> -			      IP_VS_DBG_ADDR(cp->af, &cp->vaddr),
+> -			      ntohs(cp->vport));
+> +		pr_err("request control DEL for uncontrolled: "
+> +		       "%pISp to %pISp\n",
 
-Fixes: 7fc45dbc938a ("staging: erofs: introduce generic decompression backend")
-Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
----
- drivers/staging/erofs/decompressor.c | 50 ++++++++++++++++------------
- 1 file changed, 28 insertions(+), 22 deletions(-)
+	ip_vs_dbg_addr() used compact form (%pI6c), so it would be
+better to use %pISc and %pISpc everywhere in IPVS...
 
-diff --git a/drivers/staging/erofs/decompressor.c b/drivers/staging/erofs/decompressor.c
-index 80f1f39719ba..1fb0abb98dff 100644
---- a/drivers/staging/erofs/decompressor.c
-+++ b/drivers/staging/erofs/decompressor.c
-@@ -13,7 +13,7 @@
- #define LZ4_DISTANCE_MAX 65535	/* set to maximum value by default */
- #endif
- 
--#define LZ4_MAX_DISTANCE_PAGES	DIV_ROUND_UP(LZ4_DISTANCE_MAX, PAGE_SIZE)
-+#define LZ4_MAX_DISTANCE_PAGES	(DIV_ROUND_UP(LZ4_DISTANCE_MAX, PAGE_SIZE) + 1)
- #ifndef LZ4_DECOMPRESS_INPLACE_MARGIN
- #define LZ4_DECOMPRESS_INPLACE_MARGIN(srcsize)  (((srcsize) >> 8) + 32)
- #endif
-@@ -35,19 +35,28 @@ static int lz4_prepare_destpages(struct z_erofs_decompress_req *rq,
- 	const unsigned int nr =
- 		PAGE_ALIGN(rq->pageofs_out + rq->outputsize) >> PAGE_SHIFT;
- 	struct page *availables[LZ4_MAX_DISTANCE_PAGES] = { NULL };
--	unsigned long unused[DIV_ROUND_UP(LZ4_MAX_DISTANCE_PAGES,
--					  BITS_PER_LONG)] = { 0 };
-+	unsigned long bounced[DIV_ROUND_UP(LZ4_MAX_DISTANCE_PAGES,
-+					   BITS_PER_LONG)] = { 0 };
- 	void *kaddr = NULL;
--	unsigned int i, j, k;
-+	unsigned int i, j, top;
- 
--	for (i = 0; i < nr; ++i) {
-+	top = 0;
-+	for (i = j = 0; i < nr; ++i, ++j) {
- 		struct page *const page = rq->out[i];
-+		struct page *victim;
- 
--		j = i & (LZ4_MAX_DISTANCE_PAGES - 1);
--		if (availables[j])
--			__set_bit(j, unused);
-+		if (j >= LZ4_MAX_DISTANCE_PAGES)
-+			j = 0;
-+
-+		/* 'valid' bounced can only be tested after a complete round */
-+		if (test_bit(j, bounced)) {
-+			DBG_BUGON(i < LZ4_MAX_DISTANCE_PAGES);
-+			DBG_BUGON(top >= LZ4_MAX_DISTANCE_PAGES);
-+			availables[top++] = rq->out[i - LZ4_MAX_DISTANCE_PAGES];
-+		}
- 
- 		if (page) {
-+			__clear_bit(j, bounced);
- 			if (kaddr) {
- 				if (kaddr + PAGE_SIZE == page_address(page))
- 					kaddr += PAGE_SIZE;
-@@ -59,27 +68,24 @@ static int lz4_prepare_destpages(struct z_erofs_decompress_req *rq,
- 			continue;
- 		}
- 		kaddr = NULL;
-+		__set_bit(j, bounced);
- 
--		k = find_first_bit(unused, LZ4_MAX_DISTANCE_PAGES);
--		if (k < LZ4_MAX_DISTANCE_PAGES) {
--			j = k;
--			get_page(availables[j]);
-+		if (top) {
-+			victim = availables[--top];
-+			get_page(victim);
- 		} else {
--			DBG_BUGON(availables[j]);
--
- 			if (!list_empty(pagepool)) {
--				availables[j] = lru_to_page(pagepool);
--				list_del(&availables[j]->lru);
--				DBG_BUGON(page_ref_count(availables[j]) != 1);
-+				victim = lru_to_page(pagepool);
-+				list_del(&victim->lru);
-+				DBG_BUGON(page_ref_count(victim) != 1);
- 			} else {
--				availables[j] = alloc_pages(GFP_KERNEL, 0);
--				if (!availables[j])
-+				victim = alloc_pages(GFP_KERNEL, 0);
-+				if (!victim)
- 					return -ENOMEM;
- 			}
--			availables[j]->mapping = Z_EROFS_MAPPING_STAGING;
-+			victim->mapping = Z_EROFS_MAPPING_STAGING;
- 		}
--		rq->out[i] = availables[j];
--		__clear_bit(j, unused);
-+		rq->out[i] = victim;
- 	}
- 	return kaddr ? 1 : 0;
- }
--- 
-2.17.1
+	Also, note that before now port was printed with %d and
+ntohs() was used, now port should be in network order, so:
 
+- ntohs() should be removed
+- htons() should be added, if missing. At first look, this case
+is not present in IPVS, we have only ntohs() usage
+
+Regards
+
+--
+Julian Anastasov <ja@ssi.bg>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
