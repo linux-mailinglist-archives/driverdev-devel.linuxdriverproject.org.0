@@ -1,47 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0A80D5B280
-	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Jul 2019 02:53:54 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 754365B399
+	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Jul 2019 06:28:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E6C96856E9;
-	Mon,  1 Jul 2019 00:53:51 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BA135875CB;
+	Mon,  1 Jul 2019 04:28:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rXAQh_HMsrrr; Mon,  1 Jul 2019 00:53:51 +0000 (UTC)
+	with ESMTP id csuT2K8PCArP; Mon,  1 Jul 2019 04:28:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 56D2485108;
-	Mon,  1 Jul 2019 00:53:50 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 358C6872A6;
+	Mon,  1 Jul 2019 04:28:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B51691BF2C2
- for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 00:53:47 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 78BB71BF2F9
+ for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 04:28:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B041E8511C
- for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 00:53:47 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 765C1203D7
+ for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 04:28:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qP1PTs2KgnkZ for <devel@linuxdriverproject.org>;
- Mon,  1 Jul 2019 00:53:47 +0000 (UTC)
-X-Greylist: delayed 00:10:10 by SQLgrey-1.7.6
-Received: from mx1.suse.de (mx2.suse.de [195.135.220.15])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E54F385108
- for <devel@driverdev.osuosl.org>; Mon,  1 Jul 2019 00:53:46 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id F1F4CADE6;
- Mon,  1 Jul 2019 00:43:31 +0000 (UTC)
-From: NeilBrown <neil@brown.name>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Date: Mon, 01 Jul 2019 10:43:07 +1000
-Subject: [PATCH 0/2] staging: update mt7621 dts for some recent driver changes
-Message-ID: <156194175140.1430.2478988354194078582.stgit@noble.brown>
-User-Agent: StGit/0.17.1-dirty
+ with ESMTP id bArrRP+x-zIe for <devel@linuxdriverproject.org>;
+ Mon,  1 Jul 2019 04:28:37 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from pheidi.thor.com (pheidi.thor.com [212.144.116.77])
+ by silver.osuosl.org (Postfix) with ESMTPS id E7EC420198
+ for <devel@driverdev.osuosl.org>; Mon,  1 Jul 2019 04:28:36 +0000 (UTC)
+Received: from User (unknown [37.49.225.216])
+ by pheidi.thor.com (Postfix) with ESMTPA id 1EED81333867;
+ Mon,  1 Jul 2019 04:34:16 +0200 (CEST)
+From: "Mr FU LAN"<office@bau-konzepte.eu>
+Subject: Lieber Freund
+Date: Sun, 30 Jun 2019 19:34:10 -0700
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20190701042838.765C1203D7@silver.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,45 +55,16 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, lkml <linux-kernel@vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: fcheng652@gmail.com
+Content-Type: text/plain; charset="cp1251"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The mt7621 MMC driver was recently removed from staging due to
-copyright concerns.  Since then drivers/mmc/host/mtk-sd.c has been
-enhanced to work with the mt7621 IP.  The first patch updates
-the dts file to match this driver.
-
-Earlier, the drivers/net/ethernet/mediatek/ driver was enhanced
-to work with mt7621 hardware and the mt7621-eth driver was removed
-from staging.  The second patch enhances the mt7621.dtsi to better
-support this driver and particularly to allow the second network port
-to be used in at least one of its possible configurations.
-
-Thanks,
-NeilBrown
-
----
-
-NeilBrown (2):
-      staging: mt7621-dts: update sdhci config.
-      staging: mt7621-dts: add support for second network interface
-
-
- drivers/staging/mt7621-dts/Kconfig     |    7 ++++
- drivers/staging/mt7621-dts/Makefile    |    1 +
- drivers/staging/mt7621-dts/gbpc1.dts   |    2 +
- drivers/staging/mt7621-dts/gbpc2.dts   |   21 +++++++++++++
- drivers/staging/mt7621-dts/mt7621.dtsi |   53 +++++++++++++++++++++++++++++---
- 5 files changed, 77 insertions(+), 7 deletions(-)
- create mode 100644 drivers/staging/mt7621-dts/gbpc2.dts
-
---
-Signature
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+TGllYmVyIEZyZXVuZApJY2ggaGFiZSBlaW5lbiBsdWtyYXRpdmVuIEdlc2No5GZ0c3ZvcnNjaGxh
+ZywgZGVuIGljaCBJaG5lbiBtaXR0ZWlsZW4gbfZjaHRlLgpJY2ggZnJldWUgbWljaCD8YmVyIElo
+cmUgc2NobmVsbGUgQW50d29ydApFbWFpbDsgZmNoZW5nNjUyQGdtYWlsLmNvbQpHcvzfZQpGVSBD
+SEVORwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZl
+bCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVy
+ZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2
+ZWwK
