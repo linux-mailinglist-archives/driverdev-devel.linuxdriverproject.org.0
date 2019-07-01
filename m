@@ -1,60 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 406C15B6FF
-	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Jul 2019 10:41:36 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3E06887866;
-	Mon,  1 Jul 2019 08:41:34 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9p3kZU8vFuiG; Mon,  1 Jul 2019 08:41:34 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BBA1F875BC;
-	Mon,  1 Jul 2019 08:41:33 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 94C921BF2A6
- for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 08:41:31 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C0865B709
+	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Jul 2019 10:42:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8D00A85BB8
- for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 08:41:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EF61585D68;
+	Mon,  1 Jul 2019 08:42:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RD1XqsMsoMfk; Mon,  1 Jul 2019 08:42:45 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B1B2B85C54;
+	Mon,  1 Jul 2019 08:42:44 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 647A01BF2A6
+ for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 08:42:43 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 619A987861
+ for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 08:42:43 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EnCqZgvi0V0j for <devel@linuxdriverproject.org>;
- Mon,  1 Jul 2019 08:41:31 +0000 (UTC)
+ with ESMTP id lMb2D0iAqPqP for <devel@linuxdriverproject.org>;
+ Mon,  1 Jul 2019 08:42:42 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 2392B85B9A
- for <devel@driverdev.osuosl.org>; Mon,  1 Jul 2019 08:41:31 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8CEAB875BC
+ for <devel@driverdev.osuosl.org>; Mon,  1 Jul 2019 08:42:42 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 638D620881;
- Mon,  1 Jul 2019 08:41:30 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id DD16620881;
+ Mon,  1 Jul 2019 08:42:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1561970490;
- bh=X9qC6JvprazpQj5bEN/NbXMtwRJ3QeHdrwnmEsreX5Q=;
+ s=default; t=1561970562;
+ bh=bxRp0wzioxPO5LSZMl5y6eVW5avDuj3NK25QSOZQ8Uk=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=avYhySKzVMYW2U++1T6pNY8C/CL2joBJz3nfLC3kdnkCYpDvaPoVi52/26J+5OS8g
- mJk+If8jemvz5EYgp2rFE/oP2CIHNiRFzgLt11FDZWe9le76a7P000XsM2TNO0yJQl
- /Zt6zos3tAeyXs64DhDBRqAUSzrph4JB4/e45Rok=
-Date: Mon, 1 Jul 2019 10:41:27 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Fabian Krueger <fabian.krueger@fau.de>
-Subject: Re: [PATCH 1/8] staging: kpc2000: add line breaks
-Message-ID: <20190701084127.GA20457@kroah.com>
-References: <20190625115251.GA28859@kadam>
- <20190626073531.8946-1-fabian.krueger@fau.de>
- <20190626073531.8946-2-fabian.krueger@fau.de>
+ b=lq+qL62AE7ambKrarLmAT5KQ+YPxVtSGXMrqUAfisU18Vt5iwjNsHthJFBIiT5k7e
+ 8GuCnThOV/MzC0mNYw5XqaMN+GyPLB+gTwXMDSDj6uVm6O8Lck6taA8G0V4b8G4H5M
+ rZKmNW1rXKzNuE8cvzUIJ0BuwXjWohfGIlHiPdjc=
+Date: Mon, 1 Jul 2019 10:42:39 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Simon =?iso-8859-1?Q?Sandstr=F6m?= <simon@nikanor.nu>
+Subject: Re: [PATCH] staging: kpc2000: fix brace issues in kpc2000_spi.c
+Message-ID: <20190701084239.GA20886@kroah.com>
+References: <20190627195323.28913-1-simon@nikanor.nu>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190626073531.8946-2-fabian.krueger@fau.de>
+In-Reply-To: <20190627195323.28913-1-simon@nikanor.nu>
 User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -68,29 +66,29 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Michael Scheiderer <michael.scheiderer@fau.de>,
- linux-kernel@vger.kernel.org, linux-kernel@i4.cs.fau.de
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, gneukum1@gmail.com,
+ linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Jun 26, 2019 at 09:35:19AM +0200, Fabian Krueger wrote:
-> To fix some checkpatch-warnings some lines of this module had to be
-> shortened so that they do not exceed 80 characters per line.
-> This refactoring makes the code more readable.
-> 
-> Signed-off-by: Fabian Krueger <fabian.krueger@fau.de>
-> Signed-off-by: Michael Scheiderer <michael.scheiderer@fau.de>
-> Cc: <linux-kernel@i4.cs.fau.de>
-> Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
-> ---
->  drivers/staging/kpc2000/kpc2000_spi.c | 34 +++++++++++++++++----------
->  1 file changed, 22 insertions(+), 12 deletions(-)
+On Thu, Jun 27, 2019 at 09:53:23PM +0200, Simon Sandstr=F6m wrote:
+> Fixes issues found by checkpatch:
+> =
 
-Not all of these patches applied to my tree.  Please be sure to always
-work against linux-next in order to create things that can actually be
-applied.
+> - "WARNING: braces {} are not necessary for single statement blocks"
+> - "WARNING: braces {} are not necessary for any arm of this statement"
+> =
+
+> Signed-off-by: Simon Sandstr=F6m <simon@nikanor.nu>
+> ---
+>  drivers/staging/kpc2000/kpc2000_spi.c | 39 ++++++++++-----------------
+>  1 file changed, 14 insertions(+), 25 deletions(-)
+
+Patch does not apply to my tree :(
+
+Please rebase it and resend.
 
 thanks,
 
