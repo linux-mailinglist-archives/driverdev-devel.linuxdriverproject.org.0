@@ -2,53 +2,58 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B13735B721
-	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Jul 2019 10:48:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4FDD75B724
+	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Jul 2019 10:48:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A6FDD87884;
-	Mon,  1 Jul 2019 08:48:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 926AE87A0A;
+	Mon,  1 Jul 2019 08:48:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zYg9EnXhVTv2; Mon,  1 Jul 2019 08:48:41 +0000 (UTC)
+	with ESMTP id VcKTYpuDVNeb; Mon,  1 Jul 2019 08:48:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 10ACB87889;
-	Mon,  1 Jul 2019 08:48:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3236387889;
+	Mon,  1 Jul 2019 08:48:43 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3DD431BF859
- for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 08:48:39 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3E4841BF859
+ for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 08:48:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3AFAE20489
- for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 08:48:39 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 38ECF85BAE
+ for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 08:48:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TYMPNzfXfFf3 for <devel@linuxdriverproject.org>;
- Mon,  1 Jul 2019 08:48:38 +0000 (UTC)
+ with ESMTP id 1cBy0M-V5hk7 for <devel@linuxdriverproject.org>;
+ Mon,  1 Jul 2019 08:48:40 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from verein.lst.de (verein.lst.de [213.95.11.211])
- by silver.osuosl.org (Postfix) with ESMTPS id D81F02001B
- for <devel@driverdev.osuosl.org>; Mon,  1 Jul 2019 08:48:37 +0000 (UTC)
-Received: by verein.lst.de (Postfix, from userid 2407)
- id AC3E268B20; Mon,  1 Jul 2019 10:48:33 +0200 (CEST)
-Date: Mon, 1 Jul 2019 10:48:33 +0200
-From: Christoph Hellwig <hch@lst.de>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <maxime.ripard@bootlin.com>,
- Sean Paul <sean@poorly.run>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, Ian Abbott <abbotti@mev.co.uk>,
- H Hartley Sweeten <hsweeten@visionengravers.com>
-Subject: Re: use exact allocation for dma coherent memory
-Message-ID: <20190701084833.GA22927@lst.de>
-References: <20190614134726.3827-1-hch@lst.de>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 4DBA985B94
+ for <devel@driverdev.osuosl.org>; Mon,  1 Jul 2019 08:48:40 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 831C02089C;
+ Mon,  1 Jul 2019 08:48:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1561970920;
+ bh=F1WgnDLUK/r8Oj00Y523URg3kDsO2ODJzYHBN8bnDDE=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=sahkA7IsBV40FWesiBhlbFIlN2jyzCr+qXf4805Attevww01U2LVh7F/2kECBNLuI
+ 3Q/d37qPemAgzAzVbdeCwSOd3vGeSTSXxrwtMf621cGjHJXe/wear1uQO9ioZsTQmC
+ lS1sl+nXNgHXgTzgBbtsKQ679vfRnBGdCuI4zCy4=
+Date: Mon, 1 Jul 2019 10:48:37 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Nishka Dasgupta <nishkadg.linux@gmail.com>
+Subject: Re: [PATCH] staging: rtl8192u: Replace function rtl8192_rx_enable()
+Message-ID: <20190701084837.GA2285@kroah.com>
+References: <20190701061902.2371-1-nishkadg.linux@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190614134726.3827-1-hch@lst.de>
-User-Agent: Mutt/1.5.17 (2007-11-01)
+In-Reply-To: <20190701061902.2371-1-nishkadg.linux@gmail.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,33 +66,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-s390@vger.kernel.org,
- Intel Linux Wireless <linuxwifi@intel.com>, linux-rdma@vger.kernel.org,
- netdev@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
- iommu@lists.linux-foundation.org,
- "moderated list:ARM PORT" <linux-arm-kernel@lists.infradead.org>,
- linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Jun 14, 2019 at 03:47:10PM +0200, Christoph Hellwig wrote:
-> Switching to a slightly cleaned up alloc_pages_exact is pretty easy,
-> but it turns out that because we didn't filter valid gfp_t flags
-> on the DMA allocator, a bunch of drivers were passing __GFP_COMP
-> to it, which is rather bogus in too many ways to explain.  Arm has
-> been filtering it for a while, but this series instead tries to fix
-> the drivers and warn when __GFP_COMP is passed, which makes it much
-> larger than just adding the functionality.
+On Mon, Jul 01, 2019 at 11:49:02AM +0530, Nishka Dasgupta wrote:
+> Remove function rtl8192_rx_enable as all it does is call
+> rtl8192_rx_initiate.
+> Rename rtl8192_rx_initiate to rtl8192_rx_enable and change its type from
+> static to non-static to maintain compatibility with call sites of
+> rtl8192_rx_enable.
+> Issue found with Coccinelle.
+> 
+> Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
+> ---
+>  drivers/staging/rtl8192u/r8192U_core.c | 9 ++-------
+>  1 file changed, 2 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
+> index e78806fef79f..9125c490bb37 100644
+> --- a/drivers/staging/rtl8192u/r8192U_core.c
+> +++ b/drivers/staging/rtl8192u/r8192U_core.c
+> @@ -713,7 +713,8 @@ static u32 get_rxpacket_shiftbytes_819xusb(struct ieee80211_rx_stats *pstats)
+>  		+ pstats->RxBufShift);
+>  }
+>  
+> -static void rtl8192_rx_initiate(struct net_device *dev)
+> +/* wait to be removed */
 
-Dear driver maintainers,
+I don't think the comment is needed anymore, as you just removed the
+original function that had this :)
 
-can you look over the patches touching your drivers, please?  I'd
-like to get as much as possible of the driver patches into this
-merge window, so that it can you through your maintainer trees.
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
