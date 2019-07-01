@@ -1,58 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3C0865B709
-	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Jul 2019 10:42:48 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id F40435B70E
+	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Jul 2019 10:43:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EF61585D68;
-	Mon,  1 Jul 2019 08:42:45 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3CBC7204EC;
+	Mon,  1 Jul 2019 08:43:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RD1XqsMsoMfk; Mon,  1 Jul 2019 08:42:45 +0000 (UTC)
+	with ESMTP id PiqlCY53Bi2h; Mon,  1 Jul 2019 08:43:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B1B2B85C54;
-	Mon,  1 Jul 2019 08:42:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B4775204F2;
+	Mon,  1 Jul 2019 08:43:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 647A01BF2A6
- for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 08:42:43 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 3E5C71BF2A6
+ for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 08:43:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 619A987861
- for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 08:42:43 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 38C9D204EC
+ for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 08:43:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lMb2D0iAqPqP for <devel@linuxdriverproject.org>;
- Mon,  1 Jul 2019 08:42:42 +0000 (UTC)
+ with ESMTP id D6mUY6+z-s72 for <devel@linuxdriverproject.org>;
+ Mon,  1 Jul 2019 08:43:26 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8CEAB875BC
- for <devel@driverdev.osuosl.org>; Mon,  1 Jul 2019 08:42:42 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 9D78420489
+ for <devel@driverdev.osuosl.org>; Mon,  1 Jul 2019 08:43:26 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id DD16620881;
- Mon,  1 Jul 2019 08:42:41 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id EE7DF208E4;
+ Mon,  1 Jul 2019 08:43:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1561970562;
- bh=bxRp0wzioxPO5LSZMl5y6eVW5avDuj3NK25QSOZQ8Uk=;
+ s=default; t=1561970606;
+ bh=0NA1/7KLb+cyKHN4XxT0JUUlB2v/LMeQRKGWYY+tSL8=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=lq+qL62AE7ambKrarLmAT5KQ+YPxVtSGXMrqUAfisU18Vt5iwjNsHthJFBIiT5k7e
- 8GuCnThOV/MzC0mNYw5XqaMN+GyPLB+gTwXMDSDj6uVm6O8Lck6taA8G0V4b8G4H5M
- rZKmNW1rXKzNuE8cvzUIJ0BuwXjWohfGIlHiPdjc=
-Date: Mon, 1 Jul 2019 10:42:39 +0200
+ b=s/qgc/htOo3Uv83ZbeoSEyiDWw0kpslcG6HW8GNh3kma9esMgLz5Qg9a7e/l/Jkvq
+ +W+7VwpCQbvjIw33Fnjh3RuMA9HW24/6CuW4cj1vxubvrRubsxlphXX/ffxsmPLLS6
+ vYWHlsxUiWXgyYYNbKVpsGb3EQWuHTu4JGzyT3kI=
+Date: Mon, 1 Jul 2019 10:43:23 +0200
 From: Greg KH <gregkh@linuxfoundation.org>
-To: Simon =?iso-8859-1?Q?Sandstr=F6m?= <simon@nikanor.nu>
-Subject: Re: [PATCH] staging: kpc2000: fix brace issues in kpc2000_spi.c
-Message-ID: <20190701084239.GA20886@kroah.com>
-References: <20190627195323.28913-1-simon@nikanor.nu>
+To: Harsh Jain <harshjain32@gmail.com>
+Subject: Re: [PATCH 1/2] staging:kpc2000:Fix symbol not declared warning
+Message-ID: <20190701084323.GA21007@kroah.com>
+References: <20190628172724.2689-1-harshjain32@gmail.com>
+ <20190628172724.2689-2-harshjain32@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190627195323.28913-1-simon@nikanor.nu>
+In-Reply-To: <20190628172724.2689-2-harshjain32@gmail.com>
 User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -66,29 +67,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gneukum1@gmail.com,
- linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ harshjain.prof@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Jun 27, 2019 at 09:53:23PM +0200, Simon Sandstr=F6m wrote:
-> Fixes issues found by checkpatch:
-> =
-
-> - "WARNING: braces {} are not necessary for single statement blocks"
-> - "WARNING: braces {} are not necessary for any arm of this statement"
-> =
-
-> Signed-off-by: Simon Sandstr=F6m <simon@nikanor.nu>
+On Fri, Jun 28, 2019 at 10:57:23PM +0530, Harsh Jain wrote:
+> It fixes "symbol was not declared. Should it be static?"
+> sparse warning.
+> 
+> Signed-off-by: Harsh Jain <harshjain32@gmail.com>
 > ---
->  drivers/staging/kpc2000/kpc2000_spi.c | 39 ++++++++++-----------------
->  1 file changed, 14 insertions(+), 25 deletions(-)
+>  drivers/staging/kpc2000/kpc_i2c/i2c_driver.c | 4 ++--
 
-Patch does not apply to my tree :(
+This file isn't even in the linux-next tree at all, it has moved weeks
+ago.
 
-Please rebase it and resend.
+Always be sure to work against linux-next so that you do not create
+things that are not able to be accepted.
 
 thanks,
 
