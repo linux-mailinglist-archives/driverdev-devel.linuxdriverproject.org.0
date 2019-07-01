@@ -1,60 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4D4605B670
-	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Jul 2019 10:11:21 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9580A5B661
+	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Jul 2019 10:10:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BC27A879F5;
-	Mon,  1 Jul 2019 08:11:18 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6D1DA86554;
+	Mon,  1 Jul 2019 08:10:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9GTONEqipcPC; Mon,  1 Jul 2019 08:11:18 +0000 (UTC)
+	with ESMTP id NWAG-5+nAiBu; Mon,  1 Jul 2019 08:10:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7AABC87A0A;
-	Mon,  1 Jul 2019 08:11:15 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0AF92864FB;
+	Mon,  1 Jul 2019 08:10:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 42C7F1BF5A0
- for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 06:53:47 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 964CE1BF5A0
+ for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 07:00:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3CDDE204F9
- for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 06:53:47 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 92D3385C67
+ for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 07:00:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qIBomC-kVTx4 for <devel@linuxdriverproject.org>;
- Mon,  1 Jul 2019 06:53:44 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 53716204F6
- for <devel@driverdev.osuosl.org>; Mon,  1 Jul 2019 06:53:44 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B506620663;
- Mon,  1 Jul 2019 06:53:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1561964024;
- bh=odWFKN/v6uhJ1wZgS3JZoIz8uAE4V7d8K7ikdqDiizc=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=bDDq4nK31Qe0QMmIlQI0ShcHdCjqdzm2mx4JIVE/ppBqGuyh9NzvE56GHJhk7KJqp
- t//eppnFnh4OXVqSzagqK33KHVX4SthEFLRyAjwQIYLIfUmzhFZN9Rta3qB+SV+Zoh
- RPcO8tIzb7NafFAFQr53YaL1bcJ/14X/QnLmBLGY=
-Date: Mon, 1 Jul 2019 08:53:41 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-Subject: Re: [PATCH 01/10] staging/rtl8723bs/hal: fix comparison to
- true/false is error prone
-Message-ID: <20190701065341.GA2481@kroah.com>
-References: <20190629101909.GA14880@hari-Inspiron-1545>
+ with ESMTP id jgLjiUNn-MvY for <devel@linuxdriverproject.org>;
+ Mon,  1 Jul 2019 07:00:38 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
+ [209.85.210.193])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 572D785C52
+ for <devel@driverdev.osuosl.org>; Mon,  1 Jul 2019 07:00:38 +0000 (UTC)
+Received: by mail-pf1-f193.google.com with SMTP id 19so6084243pfa.4
+ for <devel@driverdev.osuosl.org>; Mon, 01 Jul 2019 00:00:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=N79kWBt4yPVHh09N6YfmaUPmmbkdOP84y8Y1pNUXFw0=;
+ b=B+5Lf52ofOK4GSD6g6xFs6nxym+G1PtBj23JoyEKZOd/HQW6m9lwoLklLjno/RS2SC
+ Ni8p75rkMFckqDU6dG6nM8gw9qqCkw+NFtgk2XmrA47ZpyyAZa+UNPe/9p8IEJrDU/bb
+ mDADGF2VKGmNC0+I2SY8KkJIJH9fFUsFtNMYCh4GGGcLdE6+UmJtyneSDWVn11dE6rH5
+ +/teaTtugHzq9vkoXGYvl4iIpIycGbR4iOQr54jP3moLPClGv40V2xo+DIK2s84Qkmdv
+ zijHE83s5J9fkEpu6C0N5rf0eofGUGqUXp/iGYAIPpHOVSDbkxNtV7bVc1OqucdoD483
+ sCbQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=N79kWBt4yPVHh09N6YfmaUPmmbkdOP84y8Y1pNUXFw0=;
+ b=V7piVMlvRUigqYqgE/O2rYNNBAbfCqCSTpZ2XfNdFXUOqtkJSgcr7yLtz6i0VWc1Ee
+ MdMuNm0oG+gNGy1PQzB1yu7pb1ss1BdKgLS7sJpry3UG1IVbK27EKjeBgmojWtsi5dbk
+ 9UgMals/DrA9+OJgfs+aYOSTElHs8ZUNrEqL9EMByAu59iKEA0wapAmW3bqTZu5hFv5A
+ tRwm3qxGo97okfefPVaBhpbm/HnnohlImUgfLbSlpLP03xiFr3ab1Z8W/pTrQHL+xsjY
+ P022bU1SElyRydgvejGSjuz7iF0GIni3eMoVMLGXpb3uDwICRNLAYDoBNNuurP4u/36R
+ s9xw==
+X-Gm-Message-State: APjAAAXolGyE/4v984bm0ciMShpAUTzF3INUDb6yqesl/9LQ7TYq6M0R
+ IQKsvSQ18sDqtSluJ8ww6tk=
+X-Google-Smtp-Source: APXvYqw1nMMB+vGNMnbd+fqYDBvtXYeNFHFBsVmlZZMVzudWR2wIFG3+Sd+0nlsbe2hwd1CYx19h6Q==
+X-Received: by 2002:a17:90a:fa18:: with SMTP id
+ cm24mr28583108pjb.120.1561964438036; 
+ Mon, 01 Jul 2019 00:00:38 -0700 (PDT)
+Received: from localhost.localdomain ([122.163.64.117])
+ by smtp.gmail.com with ESMTPSA id g2sm14880583pfb.95.2019.07.01.00.00.35
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Mon, 01 Jul 2019 00:00:37 -0700 (PDT)
+From: Nishka Dasgupta <nishkadg.linux@gmail.com>
+To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org, abbotti@mev.co.uk,
+ hsweeten@visionengravers.com
+Subject: [PATCH v2 1/3] staging: comedi: amplc_dio200: Remove function
+ clk_sce()
+Date: Mon,  1 Jul 2019 12:30:23 +0530
+Message-Id: <20190701070025.3838-1-nishkadg.linux@gmail.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190629101909.GA14880@hari-Inspiron-1545>
-User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,33 +86,53 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: Nishka Dasgupta <nishkadg.linux@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, Jun 29, 2019 at 03:49:09PM +0530, Hariprasad Kelam wrote:
-> fix below issues reported by checkpatch
-> 
-> CHECK: Using comparison to false is error prone
-> CHECK: Using comparison to true is error prone
-> 
-> Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-> ---
->  drivers/staging/rtl8723bs/hal/hal_intf.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+Remove function clk_sce as all it does is call clk_gat_sce.
+Modify call site of clk_sce to call clk_gat_sce instead.
+Issue found with Coccinelle.
 
-As Dan said, you sent 10 patches with the same subject, so I can't take
-these.
+Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
+---
+Changes in v2:
+- Edit subject line to include driver name.
 
-Also, please properly "thread" the patches so they show up linked to
-each other.  git send-email will do this automatically for you if you
-use it (and you should) for multiple emails.
+ drivers/staging/comedi/drivers/amplc_dio200_common.c | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
 
-thanks,
+diff --git a/drivers/staging/comedi/drivers/amplc_dio200_common.c b/drivers/staging/comedi/drivers/amplc_dio200_common.c
+index 8697dc02ffb4..efd7428c3cee 100644
+--- a/drivers/staging/comedi/drivers/amplc_dio200_common.c
++++ b/drivers/staging/comedi/drivers/amplc_dio200_common.c
+@@ -46,12 +46,6 @@ static unsigned char clk_gat_sce(unsigned int which, unsigned int chan,
+ 	       ((source & 030) << 3) | (source & 007);
+ }
+ 
+-static unsigned char clk_sce(unsigned int which, unsigned int chan,
+-			     unsigned int source)
+-{
+-	return clk_gat_sce(which, chan, source);
+-}
+-
+ static unsigned char gat_sce(unsigned int which, unsigned int chan,
+ 			     unsigned int source)
+ {
+@@ -500,7 +494,7 @@ static void dio200_subdev_8254_set_clock_src(struct comedi_device *dev,
+ 	unsigned int offset = dio200_subdev_8254_offset(dev, s);
+ 
+ 	dio200_write8(dev, DIO200_CLK_SCE(offset >> 3),
+-		      clk_sce((offset >> 2) & 1, chan, src));
++		      clk_gat_sce((offset >> 2) & 1, chan, src));
+ }
+ 
+ static int dio200_subdev_8254_config(struct comedi_device *dev,
+-- 
+2.19.1
 
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
