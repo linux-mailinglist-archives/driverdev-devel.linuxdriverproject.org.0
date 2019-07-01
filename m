@@ -1,78 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5BAAC5B6CF
-	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Jul 2019 10:27:33 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 406C15B6FF
+	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Jul 2019 10:41:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 58BC085D45;
-	Mon,  1 Jul 2019 08:27:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3E06887866;
+	Mon,  1 Jul 2019 08:41:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0wY9eLh4qBgp; Mon,  1 Jul 2019 08:27:30 +0000 (UTC)
+	with ESMTP id 9p3kZU8vFuiG; Mon,  1 Jul 2019 08:41:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6C7BB85C54;
-	Mon,  1 Jul 2019 08:27:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BBA1F875BC;
+	Mon,  1 Jul 2019 08:41:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 74D3C1BF2A6
- for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 08:27:27 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 94C921BF2A6
+ for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 08:41:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7220884AE1
- for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 08:27:27 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8D00A85BB8
+ for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 08:41:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PzQWNacCFKGU for <devel@linuxdriverproject.org>;
- Mon,  1 Jul 2019 08:27:26 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.web.de (mout.web.de [212.227.17.11])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 65E6785B4A
- for <devel@driverdev.osuosl.org>; Mon,  1 Jul 2019 08:27:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
- s=dbaedf251592; t=1561969633;
- bh=02cuFpCQqZnFO1LrXaoGg36v+QDasiq3YaR4M1tOKAc=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=IkYFfVuSgHf3f5R1hNFLMQ6kymi8AWiBB5fVjTRnnGep52j9uoW6F+im+4bwWuXSf
- aV3y0Yd/Bhyh9BGRwLF5uRzQyYpoEwCRryZSAJdagvPMqcj3j2Xpu9gSOWmHPNoMQm
- 7wUibUAaZ7Z50VtprH3r3q+8Dwn3SFZJgXJmupik=
-X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
-Received: from lab-pc08.sra.uni-hannover.de ([130.75.33.87]) by smtp.web.de
- (mrweb101 [213.165.67.124]) with ESMTPSA (Nemesis) id
- 0M6mL2-1iVAxR13Js-00wUE7; Mon, 01 Jul 2019 10:27:13 +0200
-From: =?UTF-8?q?Christian=20M=C3=BCller?= <muellerch-privat@web.de>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH v3 2/2] drivers/staging/rtl8192u: style nonstyled comments
-Date: Mon,  1 Jul 2019 10:27:07 +0200
-Message-Id: <20190701082707.25198-2-muellerch-privat@web.de>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190701082707.25198-1-muellerch-privat@web.de>
-References: <20190627164530.GD9692@kroah.com>
- <20190701082707.25198-1-muellerch-privat@web.de>
+ with ESMTP id EnCqZgvi0V0j for <devel@linuxdriverproject.org>;
+ Mon,  1 Jul 2019 08:41:31 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2392B85B9A
+ for <devel@driverdev.osuosl.org>; Mon,  1 Jul 2019 08:41:31 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 638D620881;
+ Mon,  1 Jul 2019 08:41:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1561970490;
+ bh=X9qC6JvprazpQj5bEN/NbXMtwRJ3QeHdrwnmEsreX5Q=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=avYhySKzVMYW2U++1T6pNY8C/CL2joBJz3nfLC3kdnkCYpDvaPoVi52/26J+5OS8g
+ mJk+If8jemvz5EYgp2rFE/oP2CIHNiRFzgLt11FDZWe9le76a7P000XsM2TNO0yJQl
+ /Zt6zos3tAeyXs64DhDBRqAUSzrph4JB4/e45Rok=
+Date: Mon, 1 Jul 2019 10:41:27 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Fabian Krueger <fabian.krueger@fau.de>
+Subject: Re: [PATCH 1/8] staging: kpc2000: add line breaks
+Message-ID: <20190701084127.GA20457@kroah.com>
+References: <20190625115251.GA28859@kadam>
+ <20190626073531.8946-1-fabian.krueger@fau.de>
+ <20190626073531.8946-2-fabian.krueger@fau.de>
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:GS8N31xETnh19spqSJeYpK/W89WSeY77iIz8Fp4ayC05f0uFVnI
- VF0KayJKwYigiceBsJYTA3tAlNkYl/BrhMSSCUP5E2algFAUoP0cLYso4jG+0EBYdXF2Ium
- 8CWXI8yGSOW6ElrJzYN7nIwpOur5O0ZwpbdTAjS4xeGygHDnmOREchYz5lrw+dJlSwiv5CP
- yy5294GPbomEj1a5CQYrA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:VpR4Xls1mio=:NFJdhI9qDSl0bbH5/DjfE8
- hHbpKkQ5W3Av3nAmwgdPtRsWk9VZAnlyWsHJGG3zRc0DoTnQVIx27rtUP7Oyc0hKSLOah/6v+
- NeXJxXGraM80qbSkGE3N9JbwGR6T8F6QsB4oPbIzMs9192YGlIrvXs3I1cSM9yzD5fmESQpC6
- OVjS1B4j9cg7qiNofdElFRG72M4lsXrS/HvuuElz7/vTR1NHO9IFAlwH48mkcRjs4CtsTDgtF
- ACr8T40gyRhDkR/gpq+3k+xAmYckXKgrXr+ho4rLASnjXv4R/KmtF/a2BQMT6w/3h7Rl9tulo
- Sj4602y0OaGS0//vSfJ7oV/LaNwxVubaag5IdwyzYV/bmjFgtp9jh8GW645315IJrs3vrapqx
- Dqk5Qxp96KQlbLd7Pnnb1gkdbtKe54MBGIYyXfa/8BRT/56yjIuBxT5641vI5VcXDjSMAYgI6
- jI0IadKlIIZ5q4EtVmY3l2pjHGeWDlRvmSFxkA0z6U4OsFtwSHZNzWylX0Drvdqb6zpDtHMK3
- Rxo1jxdUGRt1OoVKNa7aJX4ME4qsyDnMonYS9y3XEzbvHDr7YD4D0w2KulxDtjgONfLSDaiJk
- +35Bkm1oxsZ0UXBz/9wovkeKYMp8qrAGEGJtwUf2qYnNsEETuDGnV4hppnf0O0uKJf30WHwL1
- vdn+b3xfQEVJIHfbj0SU6hOF53DdoZ4uHDvuOEEiQeqNufn0MRuPW/ebX6ovXtOvz5A9gwXMd
- 2t48zk8AHXmmk+YJrEVruKY2XCFEUo30XuIFkLzVFQWabViT+3ZjHvcoP2k4OHLuu5HN9cys4
- xf+5gMYluxFQDaqhvdJCI+6Xge40P/afmFO/eaXipk2uxmp22jExE09OVJQ5HK54LTNPLpXmR
- kZKTKL4HLzpr4V8wijc6CQ+q21aEuKOZeboQQ1m2ga9vbNDCdBvc5CwBVw3D8CktWMMEMQ5zC
- OJTOOWWlmqoKLbwuyAB+0LhUbEVF9EvNxlej7nWwZAJNtpkblZIT1s8NYGhaeEmevxvJjXvf3
- Fg+Scbqb4gBiYmHygprNm+/uytexwi8HMNHeFwvRYsHqH8XY7hQgbbjyX0ai0QnJRFbKFBfSX
- HMSJiHf6Ec6VginDQg17uDr1Aa0/KEfHD8T
+Content-Disposition: inline
+In-Reply-To: <20190626073531.8946-2-fabian.krueger@fau.de>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,84 +68,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Felix Trommer <felix.trommer@hotmail.de>,
- linux-kernel@i4.cs.fau.de, linux-kernel@vger.kernel.org,
- johnfwhitmore@gmail.com,
- =?UTF-8?q?Christian=20M=C3=BCller?= <muellerch-privat@web.de>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, Michael Scheiderer <michael.scheiderer@fau.de>,
+ linux-kernel@vger.kernel.org, linux-kernel@i4.cs.fau.de
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-VGhlIGNvZGluZy1zdHlsZXMucnN0IHN0YXRlcywgdGhhdCBtdWx0aWxpbmUgY29tbWVudHMgc2hv
-dWxkCmFsbHdheXMgY29udGFpbiBhIGxlYWRpbmcgIioiIGluIGVhY2ggbGluZS4KRm9yIG11bHRp
-bGluZSBjb21tZW50cyBpbiBnZW5lcmFsIHRoZXkKCi8qCiAqIHNob3VsZCBsb29rCiAqIGxpa2Ug
-dGhpcy4KICovCgpGb3IgbXVsdGlsaW5lIGNvbW1lbnRzIGluIGVpdGhlciBuZXQvIG9yIGRyaXZl
-cnMvbmV0LyBob3dldmVyLAp0aGV5IHNob3VsZAoKLyogb21pdAogKiB0aGUgZmlyc3QKICogZW1w
-dHkgbGluZS4KICovCgpTaW5jZSB0aGlzIGZpbGUgaXMgcGFydCBvZiBhIG5ldHdvcmtpbmcgZHJp
-dmVyLCB0aGUgZ29hbCBmb3IgaXQgd291bGQKYmUgdG8gcmVzaWRlIGluIGRyaXZlcnMvbmV0LyBv
-bmUgZGF5LgoKVGhpcyBwYXRjaCBjaGFuZ2VzIGNvbW1lbnRzLCB0aGF0IHdlcmUgaW4gbmVpdGhl
-ciBmb3JtIG9mIHRoZSB0d28gbGlzdGVkCmFib3ZlLCB0byBoYXZlIHRoZSBzdHlsZSB0aGF0IGlz
-IHNwZWNpZmllZCBmb3IgZHJpdmVycy9uZXQvLgoKU2lnbmVkLW9mZi1ieTogQ2hyaXN0aWFuIE3D
-vGxsZXIgPG11ZWxsZXJjaC1wcml2YXRAd2ViLmRlPgpTaWduZWQtb2ZmLWJ5OiBGZWxpeCBUcm9t
-bWVyIDxmZWxpeC50cm9tbWVyQGhvdG1haWwuZGU+Ci0tLQogdjEgY29udGFpbnMgdGhlIGluaXRp
-YWwgcGF0Y2guCgogdjIgY29udGFpbnMgdGhlIHNhbWUgcGF0Y2gsIGJ1dCB3aXRoIGEgZGlmZmVy
-ZW50IHN1YmplY3QgdG8gYmV0dGVyIGRpc3Rpbmd1aXNoCiAgICB0aGlzIHBhdGNoIGZyb20gdGhl
-IG90aGVyIG9uZSBpbiB0aGlzIHBhdGNoIHNlcmllcy4KCiB2MyBjb250YWlucyB0aGUgc2FtZSBw
-YXRjaCBhZ2FpbiwgYnV0IHRoaXMgdGltZSB3aXRoIHRoaXMgY2hhbmdlbG9nIGFwcGVuZGVkLgoK
-IGRyaXZlcnMvc3RhZ2luZy9ydGw4MTkydS9yODE5MlVfZG0uYyB8IDI4ICsrKysrKysrKysrKysr
-KystLS0tLS0tLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCAxNiBpbnNlcnRpb25zKCspLCAxMiBkZWxl
-dGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvcnRsODE5MnUvcjgxOTJVX2Rt
-LmMgYi9kcml2ZXJzL3N0YWdpbmcvcnRsODE5MnUvcjgxOTJVX2RtLmMKaW5kZXggODYyMTVmZWU4
-ZjBiLi5jYjZjNjUzZTYyNGQgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy9ydGw4MTkydS9y
-ODE5MlVfZG0uYworKysgYi9kcml2ZXJzL3N0YWdpbmcvcnRsODE5MnUvcjgxOTJVX2RtLmMKQEAg
-LTMzMiw5ICszMzIsMTAgQEAgc3RhdGljIHZvaWQgZG1fY2hlY2tfcmF0ZV9hZGFwdGl2ZShzdHJ1
-Y3QgbmV0X2RldmljZSAqZGV2KQogCQkJCSgoYnNob3J0X2dpX2VuYWJsZWQpID8gQklUKDMxKSA6
-IDApOwoKIAkJLyogMjAwNy8xMC8wOCBNSCBXZSBzdXBwb3J0IFJBIHNtb290aCBzY2hlbWUgbm93
-LiBXaGVuIGl0IGlzIHRoZSBmaXJzdAotCQkgICB0aW1lIHRvIGxpbmsgd2l0aCBBUC4gV2Ugd2ls
-bCBub3QgY2hhbmdlIHVwcGVyL2xvd2VyIHRocmVzaG9sZC4gSWYKLQkJICAgU1RBIHN0YXkgaW4g
-aGlnaCBvciBsb3cgbGV2ZWwsIHdlIG11c3QgY2hhbmdlIHR3byBkaWZmZXJlbnQgdGhyZXNob2xk
-Ci0JCSAgIHRvIHByZXZlbnQganVtcGluZyBmcmVxdWVudGx5LiAqLworCQkgKiB0aW1lIHRvIGxp
-bmsgd2l0aCBBUC4gV2Ugd2lsbCBub3QgY2hhbmdlIHVwcGVyL2xvd2VyIHRocmVzaG9sZC4gSWYK
-KwkJICogU1RBIHN0YXkgaW4gaGlnaCBvciBsb3cgbGV2ZWwsIHdlIG11c3QgY2hhbmdlIHR3byBk
-aWZmZXJlbnQgdGhyZXNob2xkCisJCSAqIHRvIHByZXZlbnQganVtcGluZyBmcmVxdWVudGx5Lgor
-CQkgKi8KIAkJaWYgKHByYS0+cmF0cl9zdGF0ZSA9PSBETV9SQVRSX1NUQV9ISUdIKSB7CiAJCQlI
-aWdoUlNTSVRocmVzaEZvclJBCT0gcHJhLT5oaWdoMmxvd19yc3NpX3RocmVzaF9mb3JfcmE7CiAJ
-CQlMb3dSU1NJVGhyZXNoRm9yUkEJPSAocHJpdi0+Q3VycmVudENoYW5uZWxCVyAhPSBIVF9DSEFO
-TkVMX1dJRFRIXzIwKSA/CkBAIC0xNzM4LDEwICsxNzM5LDEyIEBAIHN0YXRpYyB2b2lkIGRtX2N0
-cmxfaW5pdGdhaW5fYnlyc3NpX2J5X2Z3ZmFsc2VfYWxhcm0oCiAJcEhhbERhdGEtPlVuZGVjb3Jh
-dGVkU21vb3RoZWRQV0RCLCBETV9EaWdUYWJsZS5Sc3NpTG93VGhyZXNoLAogCURNX0RpZ1RhYmxl
-LlJzc2lIaWdoVGhyZXNoLCBETV9EaWdUYWJsZS5EaWdfU3RhdGUpOyovCiAJLyogMS4gV2hlbiBS
-U1NJIGRlY3JlYXNlLCBXZSBoYXZlIHRvIGp1ZGdlIGlmIGl0IGlzIHNtYWxsZXIgdGhhbiBhIHRo
-cmVzaG9sZAotCQkgIGFuZCB0aGVuIGV4ZWN1dGUgdGhlIHN0ZXAgYmVsb3cuICovCisJICogYW5k
-IHRoZW4gZXhlY3V0ZSB0aGUgc3RlcCBiZWxvdy4KKwkgKi8KIAlpZiAocHJpdi0+dW5kZWNvcmF0
-ZWRfc21vb3RoZWRfcHdkYiA8PSBkbV9kaWd0YWJsZS5yc3NpX2xvd190aHJlc2gpIHsKIAkJLyog
-MjAwOC8wMi8wNSBNSCBXaGVuIHdlIGV4ZWN1dGUgc2lsZW50IHJlc2V0LCB0aGUgRElHIFBIWSBw
-YXJhbWV0ZXJzCi0JCSAgIHdpbGwgYmUgcmVzZXQgdG8gaW5pdCB2YWx1ZS4gV2UgbXVzdCBwcmV2
-ZW50IHRoZSBjb25kaXRpb24uICovCisJCSAqIHdpbGwgYmUgcmVzZXQgdG8gaW5pdCB2YWx1ZS4g
-V2UgbXVzdCBwcmV2ZW50IHRoZSBjb25kaXRpb24uCisJCSAqLwogCQlpZiAoZG1fZGlndGFibGUu
-ZGlnX3N0YXRlID09IERNX1NUQV9ESUdfT0ZGICYmCiAJCSAgICAocHJpdi0+cmVzZXRfY291bnQg
-PT0gcmVzZXRfY250KSkgewogCQkJcmV0dXJuOwpAQCAtMTc4Niw3ICsxNzg5LDggQEAgc3RhdGlj
-IHZvaWQgZG1fY3RybF9pbml0Z2Fpbl9ieXJzc2lfYnlfZndmYWxzZV9hbGFybSgKIAl9CgogCS8q
-IDIuIFdoZW4gUlNTSSBpbmNyZWFzZSwgV2UgaGF2ZSB0byBqdWRnZSBpZiBpdCBpcyBsYXJnZXIg
-dGhhbiBhIHRocmVzaG9sZAotCQkgIGFuZCB0aGVuIGV4ZWN1dGUgdGhlIHN0ZXAgYmVsb3cuICAq
-LworCSAqIGFuZCB0aGVuIGV4ZWN1dGUgdGhlIHN0ZXAgYmVsb3cuCisJICovCiAJaWYgKHByaXYt
-PnVuZGVjb3JhdGVkX3Ntb290aGVkX3B3ZGIgPj0gZG1fZGlndGFibGUucnNzaV9oaWdoX3RocmVz
-aCkgewogCQl1OCByZXNldF9mbGFnID0gMDsKCkBAIC0yMjUyLDExICsyMjU2LDEwIEBAIHN0YXRp
-YyB2b2lkIGRtX2N0c3Rvc2VsZihzdHJ1Y3QgbmV0X2RldmljZSAqZGV2KQogCQlwSFRJbmZvLT5J
-T1RBY3Rpb24gJj0gfkhUX0lPVF9BQ1RfRk9SQ0VEX0NUUzJTRUxGOwogCQlyZXR1cm47CiAJfQot
-CS8qCi0JMS4gVXBsaW5rCi0JMi4gTGlua3N5czM1MC9MaW5rc3lzMzAwTgotCTMuIDw1MCBkaXNh
-YmxlLCA+NTUgZW5hYmxlCi0JKi8KKwkvKiAxLiBVcGxpbmsKKwkgKiAyLiBMaW5rc3lzMzUwL0xp
-bmtzeXMzMDBOCisJICogMy4gPDUwIGRpc2FibGUsID41NSBlbmFibGUKKwkgKi8KCiAJaWYgKHBI
-VEluZm8tPklPVFBlZXIgPT0gSFRfSU9UX1BFRVJfQlJPQURDT00pIHsKIAkJY3VyVHhPa0NudCA9
-IHByaXYtPnN0YXRzLnR4Ynl0ZXN1bmljYXN0IC0gbGFzdFR4T2tDbnQ7CkBAIC0yMzMzLDcgKzIz
-MzYsOCBAQCB2b2lkIGRtX3JmX3BhdGhjaGVja193b3JraXRlbWNhbGxiYWNrKHN0cnVjdCB3b3Jr
-X3N0cnVjdCAqd29yaykKIAl1OCByZnBhdGggPSAwLCBpOwoKIAkvKiAyMDA4LzAxLzMwIE1IIEFm
-dGVyIGRpc2N1c3Npbmcgd2l0aCBTRDMgSmVycnksIDB4YzA0LzB4ZDA0IHJlZ2lzdGVyIHdpbGwK
-LQkgICBhbHdheXMgYmUgdGhlIHNhbWUuIFdlIG9ubHkgcmVhZCAweGMwNCBub3cuICovCisJICog
-YWx3YXlzIGJlIHRoZSBzYW1lLiBXZSBvbmx5IHJlYWQgMHhjMDQgbm93LgorCSAqLwogCXJlYWRf
-bmljX2J5dGUoZGV2LCAweGMwNCwgJnJmcGF0aCk7CgogCS8qIENoZWNrIEJpdCAwLTMsIGl0IG1l
-YW5zIGlmIFJGIEEtRCBpcyBlbmFibGVkLiAqLwotLQoyLjE3LjEKCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBs
-aW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+On Wed, Jun 26, 2019 at 09:35:19AM +0200, Fabian Krueger wrote:
+> To fix some checkpatch-warnings some lines of this module had to be
+> shortened so that they do not exceed 80 characters per line.
+> This refactoring makes the code more readable.
+> 
+> Signed-off-by: Fabian Krueger <fabian.krueger@fau.de>
+> Signed-off-by: Michael Scheiderer <michael.scheiderer@fau.de>
+> Cc: <linux-kernel@i4.cs.fau.de>
+> Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
+> ---
+>  drivers/staging/kpc2000/kpc2000_spi.c | 34 +++++++++++++++++----------
+>  1 file changed, 22 insertions(+), 12 deletions(-)
+
+Not all of these patches applied to my tree.  Please be sure to always
+work against linux-next in order to create things that can actually be
+applied.
+
+thanks,
+
+greg k-h
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
