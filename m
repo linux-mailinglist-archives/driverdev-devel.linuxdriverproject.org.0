@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A2B0B5B7D5
-	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Jul 2019 11:18:39 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id DBA165B7D6
+	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Jul 2019 11:18:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id C17EF204E3;
-	Mon,  1 Jul 2019 09:18:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A4A7D86566;
+	Mon,  1 Jul 2019 09:18:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FrNt-v0173dk; Mon,  1 Jul 2019 09:18:37 +0000 (UTC)
+	with ESMTP id TXIDojmw9gQF; Mon,  1 Jul 2019 09:18:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 08090203C6;
-	Mon,  1 Jul 2019 09:18:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 23BAE86505;
+	Mon,  1 Jul 2019 09:18:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D86BE1BF59F
- for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 09:18:32 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 070B71BF59F
+ for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 09:18:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D007187985
- for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 09:18:32 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E80C886505
+ for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 09:18:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id z+eXqK+K2-VJ for <devel@linuxdriverproject.org>;
- Mon,  1 Jul 2019 09:18:32 +0000 (UTC)
+ with ESMTP id 7QHxy5dcTsGj for <devel@linuxdriverproject.org>;
+ Mon,  1 Jul 2019 09:18:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 052E587924
- for <devel@driverdev.osuosl.org>; Mon,  1 Jul 2019 09:18:32 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id p10so5753007pgn.1
- for <devel@driverdev.osuosl.org>; Mon, 01 Jul 2019 02:18:32 -0700 (PDT)
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 41D03864F3
+ for <devel@driverdev.osuosl.org>; Mon,  1 Jul 2019 09:18:34 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id m30so6254839pff.8
+ for <devel@driverdev.osuosl.org>; Mon, 01 Jul 2019 02:18:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=fzvP8HsexBXafGTy8wYw3ZPgPbTPPLi6YA9iEipFdG0=;
- b=pfvvln4v3NXuWrPZLDnR04sWAgfgWmbfynPRnS/C+j00WgOnSyh+RVuoL2h0LUgvak
- BFVj/rSK0Ys62KJK2vgsDgfBtg8MUoCee0XldlhoVwcxxy3EVMVxqOKGAVmQweAR3Pxb
- dBZDjfYAWUkLeRFQuCB8eU9vIRxCtZVVf4YDHctrCv8s/DZjK1yPbyZ2EeaLR+Mfhgam
- tCqUYnGDRoAMOwZwKZYbBEljuOpvc0eRKn86H6wJ7tQ5ir3stf7NbsfDN/5FytHcmFv7
- kX+/wvSiuJ2Em18VcPito0oFWI1jxMy5HiaQ+uiOAUEX5hHEAmvx+9r71vBBxJhvvT61
- axUA==
+ bh=EqZ6Ci2UTtPDaof0NZqFpNnhjk+xwPWVVNMzQH3xYck=;
+ b=WoAett1Q3bnzf/U4ADYG/GaDTUscZAE0AszZ4iFN53TACaHC5NrSX84OWSpINT8Bv5
+ Ey6WWC+c3knrIQKVBMo4eaXwY0xF66udKRdN5NEliceQ6CajMdQt9KY705y/iW05/uog
+ 3xnUSesIcbz1ZP2HAHUt5ziUlPyqLu+QZP9mNqfFI1flOeXb21ifVKG0zZ3xsGCSkivf
+ HlQLp40YOEwsbzpMqFAtlUwugFzOQ/nDrKa55EydUyvt2ekAWG8S/eC/tSWQH5MFmoR0
+ aOjABZ8Xtl5k5Pdz7Bq2Ng3dFUzm7riwJQjAztlLzy3s2/C5VJs7gUMqzpdW2BkVURQy
+ riSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=fzvP8HsexBXafGTy8wYw3ZPgPbTPPLi6YA9iEipFdG0=;
- b=C7qK31oXL8JrgR8Lc5FdIYjWymTgUn2lmhcFaFSbf3h2l1G3GeZyROP37CtIjQx7LS
- GzMqgSNC2uAyHrQm5ZAnayWX1q2FwusJ+3ZPFTDrlua7yu9msPrINwcTr25evc2zFGNs
- bWrBVpry1KgnjKDeE/8/hgc47QCX3HQxaOkXN30H4yBpxciDXyJoCDzFzWy4r8v4Ptov
- LXCA8EvhxbO/M4vxTtokBk90QLZhC+da9LkjCRXegPrCZl3QfUNIMxcJPdub/ZUn5Mmk
- +sq7vR0t8fUDk1vLnotHMOsm3ntL9drFZr95oBSSIr/ulWeHSEBawxnAELaJzy9O3Hgp
- eGog==
-X-Gm-Message-State: APjAAAV9Cf14SmV+crQGgF2As7kIL6pb/bjZXo+J7KuaFYSmd6Rul8/d
- 5Q987SMjn1sC9TKhHrJo/gg=
-X-Google-Smtp-Source: APXvYqxk85B6ixl64/REo8y9tjfbvH/yhQRsVGekK1rkcgkKTLYAmKofI7NGNi9wjiX31kd89gZVMw==
-X-Received: by 2002:a63:3d02:: with SMTP id k2mr23313896pga.36.1561972711611; 
- Mon, 01 Jul 2019 02:18:31 -0700 (PDT)
+ bh=EqZ6Ci2UTtPDaof0NZqFpNnhjk+xwPWVVNMzQH3xYck=;
+ b=aqpj3y4xKAJo34VafiLEGygKjkJyTXRJUnGa7ByuVn5zCRy7nDJawjsUyFaV+IGqPA
+ Nv/s+3bOU7r9XRjQlPY65pSMJu6d2wR25tqhRogoZfcMAQ4jSIrLT+uouBKUPQ9oKS/n
+ B7ltN+MQRs6LzBnGNAqPisZPm9WgUeB/lHxH4vte7bwz48eL/VsccONbu+Z3RvfP6mQz
+ MwEOsdk9GQOSvE4gvhoO9MqGjddA20JKaOUsE0sKqczarHG7C6XEhvtrFSfhFHPbRXo/
+ vGKG0l22sAJ2M6enyBuONT8t3Efk6b5WMJavdcC96CttzoD4WVdcSp/8T8l2OHCt8bmB
+ 9Bcg==
+X-Gm-Message-State: APjAAAV6IgL2U1W1KB2BIu5SzqywE3VmrD8H49cJJolmeYV2f+UOSyfq
+ 317KFwgTRulmbFxHais+Y4Y=
+X-Google-Smtp-Source: APXvYqxnZJVwIMuPWSEHBzOz83g1T8ptv9QKFoHtwMMvgWpuUbjoHOWS+0Zz6UCQXDlQCv9thvcKqg==
+X-Received: by 2002:a63:a02:: with SMTP id 2mr24353920pgk.315.1561972713873;
+ Mon, 01 Jul 2019 02:18:33 -0700 (PDT)
 Received: from localhost.localdomain ([122.163.64.117])
- by smtp.gmail.com with ESMTPSA id 25sm10137911pfp.76.2019.07.01.02.18.29
+ by smtp.gmail.com with ESMTPSA id 25sm10137911pfp.76.2019.07.01.02.18.31
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Mon, 01 Jul 2019 02:18:31 -0700 (PDT)
+ Mon, 01 Jul 2019 02:18:33 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: gregkh@linuxfoundation.org,
 	devel@driverdev.osuosl.org
-Subject: [PATCH 02/10] staging: rtl8723bs: Remove rtw_btcoex_RecordPwrMode()
-Date: Mon,  1 Jul 2019 14:48:09 +0530
-Message-Id: <20190701091817.12759-2-nishkadg.linux@gmail.com>
+Subject: [PATCH 03/10] staging: rtl8723bs: Remove rtw_btcoex_LpsVal()
+Date: Mon,  1 Jul 2019 14:48:10 +0530
+Message-Id: <20190701091817.12759-3-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190701091817.12759-1-nishkadg.linux@gmail.com>
 References: <20190701091817.12759-1-nishkadg.linux@gmail.com>
@@ -92,59 +92,109 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove function rtw_btcoex_RecordPwrMode as all it does is call
-hal_btcoex_RecordPwrMode.
+Remove function rtw_btcoex_LpsVal as all it does is call
+hal_btcoex_LpsVal.
 Modify call sites accordingly.
 Issue found with Coccinelle.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_btcoex.c    | 5 -----
+ drivers/staging/rtl8723bs/core/rtw_btcoex.c    | 7 +------
+ drivers/staging/rtl8723bs/core/rtw_pwrctrl.c   | 8 ++++----
  drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c   | 2 +-
  drivers/staging/rtl8723bs/include/rtw_btcoex.h | 1 -
- 3 files changed, 1 insertion(+), 7 deletions(-)
+ 4 files changed, 6 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/staging/rtl8723bs/core/rtw_btcoex.c b/drivers/staging/rtl8723bs/core/rtw_btcoex.c
-index fcdb6c1aa81c..4ff3a2742a50 100644
+index 4ff3a2742a50..d1da058fb4c9 100644
 --- a/drivers/staging/rtl8723bs/core/rtw_btcoex.c
 +++ b/drivers/staging/rtl8723bs/core/rtw_btcoex.c
-@@ -107,11 +107,6 @@ u32 rtw_btcoex_GetRaMask(struct adapter *padapter)
- 	return hal_btcoex_GetRaMask(padapter);
+@@ -77,11 +77,6 @@ u8 rtw_btcoex_IsBtControlLps(struct adapter *padapter)
+ 	return hal_btcoex_IsBtControlLps(padapter);
  }
  
--void rtw_btcoex_RecordPwrMode(struct adapter *padapter, u8 *pCmdBuf, u8 cmdLen)
+-u8 rtw_btcoex_LpsVal(struct adapter *padapter)
 -{
--	hal_btcoex_RecordPwrMode(padapter, pCmdBuf, cmdLen);
+-	return hal_btcoex_LpsVal(padapter);
 -}
 -
- void rtw_btcoex_DisplayBtCoexInfo(struct adapter *padapter, u8 *pbuf, u32 bufsize)
+ void rtw_btcoex_SetBTCoexist(struct adapter *padapter, u8 bBtExist)
  {
- 	hal_btcoex_DisplayBtCoexInfo(padapter, pbuf, bufsize);
+ 	hal_btcoex_SetBTCoexist(padapter, bBtExist);
+@@ -151,7 +146,7 @@ void rtw_btcoex_LPS_Enter(struct adapter *padapter)
+ 	pwrpriv = adapter_to_pwrctl(padapter);
+ 
+ 	pwrpriv->bpower_saving = true;
+-	lpsVal = rtw_btcoex_LpsVal(padapter);
++	lpsVal = hal_btcoex_LpsVal(padapter);
+ 	rtw_set_ps_mode(padapter, PS_MODE_MIN, 0, lpsVal, "BTCOEX");
+ }
+ 
+diff --git a/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c b/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
+index 01bce255c8ca..09e064f1211b 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
++++ b/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
+@@ -485,7 +485,7 @@ void rtw_set_ps_mode(struct adapter *padapter, u8 ps_mode, u8 smart_ps, u8 bcn_a
+ 				&& (rtw_btcoex_IsBtControlLps(padapter) == true)) {
+ 				u8 val8;
+ 
+-				val8 = rtw_btcoex_LpsVal(padapter);
++				val8 = hal_btcoex_LpsVal(padapter);
+ 				if (val8 & BIT(4))
+ 					pslv = PS_STATE_S2;
+ 			}
+@@ -914,7 +914,7 @@ void rtw_unregister_task_alive(struct adapter *padapter, u32 task)
+ 		&& (rtw_btcoex_IsBtControlLps(padapter) == true)) {
+ 		u8 val8;
+ 
+-		val8 = rtw_btcoex_LpsVal(padapter);
++		val8 = hal_btcoex_LpsVal(padapter);
+ 		if (val8 & BIT(4))
+ 			pslv = PS_STATE_S2;
+ 	}
+@@ -1055,7 +1055,7 @@ void rtw_unregister_tx_alive(struct adapter *padapter)
+ 		&& (rtw_btcoex_IsBtControlLps(padapter) == true)) {
+ 		u8 val8;
+ 
+-		val8 = rtw_btcoex_LpsVal(padapter);
++		val8 = hal_btcoex_LpsVal(padapter);
+ 		if (val8 & BIT(4))
+ 			pslv = PS_STATE_S2;
+ 	}
+@@ -1097,7 +1097,7 @@ void rtw_unregister_cmd_alive(struct adapter *padapter)
+ 		&& (rtw_btcoex_IsBtControlLps(padapter) == true)) {
+ 		u8 val8;
+ 
+-		val8 = rtw_btcoex_LpsVal(padapter);
++		val8 = hal_btcoex_LpsVal(padapter);
+ 		if (val8 & BIT(4))
+ 			pslv = PS_STATE_S2;
+ 	}
 diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c b/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
-index 16ff688947cb..177261c79e94 100644
+index 177261c79e94..87e85968d2e1 100644
 --- a/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
 +++ b/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
-@@ -1133,7 +1133,7 @@ void rtl8723b_set_FwPwrMode_cmd(struct adapter *padapter, u8 psmode)
+@@ -1046,7 +1046,7 @@ void rtl8723b_set_FwPwrMode_cmd(struct adapter *padapter, u8 psmode)
+ 	if (psmode > 0) {
+ 		if (rtw_btcoex_IsBtControlLps(padapter) == true) {
+ 			PowerState = hal_btcoex_RpwmVal(padapter);
+-			byte5 = rtw_btcoex_LpsVal(padapter);
++			byte5 = hal_btcoex_LpsVal(padapter);
  
- 	}
- 
--	rtw_btcoex_RecordPwrMode(padapter, u1H2CPwrModeParm, H2C_PWRMODE_LEN);
-+	hal_btcoex_RecordPwrMode(padapter, u1H2CPwrModeParm, H2C_PWRMODE_LEN);
- 
- 	RT_PRINT_DATA(_module_hal_init_c_, _drv_always_, "u1H2CPwrModeParm:", u1H2CPwrModeParm, H2C_PWRMODE_LEN);
- 
+ 			if ((rlbm == 2) && (byte5 & BIT(4))) {
+ 				/*  Keep awake interval to 1 to prevent from */
 diff --git a/drivers/staging/rtl8723bs/include/rtw_btcoex.h b/drivers/staging/rtl8723bs/include/rtw_btcoex.h
-index d8897a7ddfd4..db987a0cf951 100644
+index db987a0cf951..903940cc0b16 100644
 --- a/drivers/staging/rtl8723bs/include/rtw_btcoex.h
 +++ b/drivers/staging/rtl8723bs/include/rtw_btcoex.h
-@@ -30,7 +30,6 @@ void rtw_btcoex_SetChipType(struct adapter *, u8 chipType);
+@@ -24,7 +24,6 @@ u8 rtw_btcoex_IsBtDisabled(struct adapter *);
+ void rtw_btcoex_Handler(struct adapter *);
+ s32 rtw_btcoex_IsBTCoexCtrlAMPDUSize(struct adapter *);
+ u8 rtw_btcoex_IsBtControlLps(struct adapter *);
+-u8 rtw_btcoex_LpsVal(struct adapter *);
+ void rtw_btcoex_SetBTCoexist(struct adapter *, u8 bBtExist);
+ void rtw_btcoex_SetChipType(struct adapter *, u8 chipType);
  void rtw_btcoex_SetPGAntNum(struct adapter *, u8 antNum);
- void rtw_btcoex_SetSingleAntPath(struct adapter *padapter, u8 singleAntPath);
- u32 rtw_btcoex_GetRaMask(struct adapter *);
--void rtw_btcoex_RecordPwrMode(struct adapter *, u8 *pCmdBuf, u8 cmdLen);
- void rtw_btcoex_DisplayBtCoexInfo(struct adapter *, u8 *pbuf, u32 bufsize);
- void rtw_btcoex_SetDBG(struct adapter *, u32 *pDbgModule);
- u32 rtw_btcoex_GetDBG(struct adapter *, u8 *pStrBuf, u32 bufSize);
 -- 
 2.19.1
 
