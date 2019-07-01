@@ -1,76 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B7EB45B667
-	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Jul 2019 10:11:14 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 740FC5B66D
+	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Jul 2019 10:11:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DBCC887A30;
-	Mon,  1 Jul 2019 08:11:12 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C33B886651;
+	Mon,  1 Jul 2019 08:11:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6st-Xy30Q+sR; Mon,  1 Jul 2019 08:11:12 +0000 (UTC)
+	with ESMTP id SPygcKna0LjF; Mon,  1 Jul 2019 08:11:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 68AFE879A7;
-	Mon,  1 Jul 2019 08:11:12 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 28115864A4;
+	Mon,  1 Jul 2019 08:11:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 165F61BF5A0
- for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 06:23:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0F5B91BF5A0
+ for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 06:23:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 13FB7875F4
- for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 06:23:40 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 0C762875F4
+ for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 06:23:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SzpvxsgvsRiM for <devel@linuxdriverproject.org>;
- Mon,  1 Jul 2019 06:23:34 +0000 (UTC)
+ with ESMTP id s82cful9qcb8 for <devel@linuxdriverproject.org>;
+ Mon,  1 Jul 2019 06:23:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
- [209.85.215.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 06959875BE
- for <devel@driverdev.osuosl.org>; Mon,  1 Jul 2019 06:23:34 +0000 (UTC)
-Received: by mail-pg1-f193.google.com with SMTP id c13so5497636pgg.3
- for <devel@driverdev.osuosl.org>; Sun, 30 Jun 2019 23:23:34 -0700 (PDT)
+Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
+ [209.85.215.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id E89EE875D8
+ for <devel@driverdev.osuosl.org>; Mon,  1 Jul 2019 06:23:35 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id z75so5504989pgz.5
+ for <devel@driverdev.osuosl.org>; Sun, 30 Jun 2019 23:23:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=8qgFghFCAK2yubub04OeDth0g+EzZYG1iBptoC2JFFw=;
- b=It//OwRq1rF0aljOik8fbhqW6OaZlVaPJOlMXeup70FefAYAfUGYedMSyt1MVhxg0d
- uviRrPi21U3sEt7KpuT2TIr4hS6fwj5vYgUPo/Gfwq7VbBhU1vS8Jj6C6DrHQsnM2YmO
- 6B+7rwaiCjs9vOKuUrZF4A0w4N2gUJSTHnPYB52EElWw/7LJbPsEdhWcYaPFJwHPRw2e
- FyJ8sgsWeSV+8N0kAOqTtbOU7xGZgT7iUoBkE1BqNz0yzfRhVvVu9xQ40hc2ioO1lfgl
- gzpDvyfxV5wLQAiY5wjesx4I1EGQ51y/5GHzyJ5122bebe5BKeUu+STPugSxtIcpNoP4
- VnmQ==
+ bh=goNYPDLepn+WXofQGikGfE7Is4auAwCSPonviif5qlw=;
+ b=HWwQlWxeeJgNyiUAaQK86plI2HsGDW4KMo8O5wpGHDGpnspbkIUMjo9raD5woUyAzE
+ nAXjipgVOD/U/QfTzy2rs7beteuwGqj0ZV371V4whZTo58agNl+xyO13ZSoDbG0B3WCM
+ adabHfHM2A+uUIE/RUt6PLaevnPgeW1GRTibsss9w4QZPC4LjGceZ8zLupvEqzRMIzvD
+ Hq88T8Lv6aHBXRdd7T2Gsy1wL3N/uMrrtwZxFXElcGrLOrjSb46gpE0WRiBhaOS5SbfB
+ umtZex97YPHOi6YdUeWfVfEtKzevtQFdLEdYUzlgDCk8Dq5uO+LuWoPzZP+4lsweIXuq
+ zMVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=8qgFghFCAK2yubub04OeDth0g+EzZYG1iBptoC2JFFw=;
- b=JcaAFgaRsmhjhHC9QZy09Wjb3BxRDo6GAVchYrqF9D0yU9cUZRL2W8o14fOxuagQOQ
- cNfXWB7Z9z3yk882SyZq2EpyThG36WW7sTOyW9wmp4F6Q0Cnmm3ku3h/nF31AaIhM80C
- ghL/MRdXVxYjoTm/bZxjti9sD8HyALuRp1R3ZfLeytdUxPOVJ6g+xgetcLKENEmAyk5a
- f+qp03MBqmnLMmEP+G+y12xNKElSF5BpL0gBnKyF6hYSRpV9WJoctgWLncZ+6w+NF6RC
- Q7b+i9fkw6auarp2ZCByWfWqCGHJcCNSUeBj2JX1vdtIpdXX7RnQ8wufS9g8r78KoblF
- zyXw==
-X-Gm-Message-State: APjAAAU1M2Gno7BfvkbvDMHtWS+rcGXBPL5kdmuFhtX1ru/V8qD8Pv6k
- MBVRPIhNGtkZLSmRtv5IyApAjZwW
-X-Google-Smtp-Source: APXvYqz5/0ffAvKTYKtI3zZxBFZNmq2djmSFlLJ3JMbIlvwBanik2tZo5SM/eQwwTOudTyW7cI5DBg==
-X-Received: by 2002:a17:90a:19d:: with SMTP id
- 29mr29793448pjc.71.1561962213727; 
- Sun, 30 Jun 2019 23:23:33 -0700 (PDT)
+ bh=goNYPDLepn+WXofQGikGfE7Is4auAwCSPonviif5qlw=;
+ b=S6TLz6nRHoohDuI62MTMDa6P1S6ejkT07BFo9v6mBdZt8MvLugdbhR+ig4BvQRHgSZ
+ ZXRrDKerpFs0AzCuGWlANHL0imToNbnCQUWvrspt0oiK4hYSduSoX1SOorNjjcf2ATNz
+ +DJkoa6sLRU7gu9X9laAJOh1stnr99gowxgcBGLXos0/by/4Nt7re1LB7ex50UZyMk7T
+ 6OMlPFW6BQc+5ddkzFMuKg+81zrVq1w99LOJ63JhC6xc/KEguZU+odvdsOVUTumZcdaQ
+ /VdwaCFbQx54uwGM33uLiwz2s1+tiHD13VCswFhNdtHAydanz7HbKe72MPw0xARo0lfU
+ WJXA==
+X-Gm-Message-State: APjAAAW4CEQoqVJCeaRSKn5gHHQ1XbWytYuxkfE3V1DLSStx1CexonN9
+ SvFhzfQEuRU/s7wI5xvGq6M=
+X-Google-Smtp-Source: APXvYqzJqQgCnmRXm/NN+dP8+72mi+lHQcNphccIoYybChY6W1Q/MZRZ/klhHECH7MOwFd/pPnVEJQ==
+X-Received: by 2002:a17:90a:80c4:: with SMTP id
+ k4mr29472349pjw.74.1561962215655; 
+ Sun, 30 Jun 2019 23:23:35 -0700 (PDT)
 Received: from localhost.localdomain ([122.163.64.117])
- by smtp.gmail.com with ESMTPSA id f3sm11998191pfg.165.2019.06.30.23.23.32
+ by smtp.gmail.com with ESMTPSA id f3sm11998191pfg.165.2019.06.30.23.23.33
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Sun, 30 Jun 2019 23:23:33 -0700 (PDT)
+ Sun, 30 Jun 2019 23:23:35 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: gregkh@linuxfoundation.org,
 	devel@driverdev.osuosl.org
-Subject: [PATCH 09/10] staging: rtl8723bs: Remove rtw_btcoex_SuspendNotify()
-Date: Mon,  1 Jul 2019 11:53:03 +0530
-Message-Id: <20190701062304.2440-9-nishkadg.linux@gmail.com>
+Subject: [PATCH 10/10] staging: rtl8723bs: Remove rtw_btcoex_IsLpsOn()
+Date: Mon,  1 Jul 2019 11:53:04 +0530
+Message-Id: <20190701062304.2440-10-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190701062304.2440-1-nishkadg.linux@gmail.com>
 References: <20190701062304.2440-1-nishkadg.linux@gmail.com>
@@ -93,72 +93,68 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove function rtw_btcoex_SuspendNotify as all it does is call
-hal_btcoex_SuspendNotify.
+Remove function rtw_btcoex_IsLpsOn as all it does is call
+hal_btcoex_IsLpsOn.
 Modify call sites accordingly.
 Issue found with Coccinelle.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
  drivers/staging/rtl8723bs/core/rtw_btcoex.c    | 5 -----
+ drivers/staging/rtl8723bs/core/rtw_pwrctrl.c   | 4 ++--
  drivers/staging/rtl8723bs/include/rtw_btcoex.h | 1 -
- drivers/staging/rtl8723bs/os_dep/os_intfs.c    | 6 +++---
- 3 files changed, 3 insertions(+), 9 deletions(-)
+ 3 files changed, 2 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/staging/rtl8723bs/core/rtw_btcoex.c b/drivers/staging/rtl8723bs/core/rtw_btcoex.c
-index dd0aee1fa663..ab796ee12694 100644
+index ab796ee12694..e747bfa4fa8c 100644
 --- a/drivers/staging/rtl8723bs/core/rtw_btcoex.c
 +++ b/drivers/staging/rtl8723bs/core/rtw_btcoex.c
-@@ -34,11 +34,6 @@ void rtw_btcoex_BtInfoNotify(struct adapter *padapter, u8 length, u8 *tmpBuf)
- 	hal_btcoex_BtInfoNotify(padapter, length, tmpBuf);
+@@ -77,11 +77,6 @@ u8 rtw_btcoex_IsBtControlLps(struct adapter *padapter)
+ 	return hal_btcoex_IsBtControlLps(padapter);
  }
  
--void rtw_btcoex_SuspendNotify(struct adapter *padapter, u8 state)
+-u8 rtw_btcoex_IsLpsOn(struct adapter *padapter)
 -{
--	hal_btcoex_SuspendNotify(padapter, state);
+-	return hal_btcoex_IsLpsOn(padapter);
 -}
 -
- void rtw_btcoex_HaltNotify(struct adapter *padapter)
+ u8 rtw_btcoex_RpwmVal(struct adapter *padapter)
  {
- 	if (!padapter->bup) {
+ 	return hal_btcoex_RpwmVal(padapter);
+diff --git a/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c b/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
+index a4c99265bc22..01bce255c8ca 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
++++ b/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
+@@ -421,7 +421,7 @@ void rtw_set_ps_mode(struct adapter *padapter, u8 ps_mode, u8 smart_ps, u8 bcn_a
+ 			&& (((rtw_btcoex_IsBtControlLps(padapter) == false)
+ 					)
+ 				|| ((rtw_btcoex_IsBtControlLps(padapter) == true)
+-					&& (rtw_btcoex_IsLpsOn(padapter) == false))
++					&& (hal_btcoex_IsLpsOn(padapter) == false))
+ 				)
+ 			) {
+ 			DBG_871X(FUNC_ADPT_FMT" Leave 802.11 power save - %s\n",
+@@ -462,7 +462,7 @@ void rtw_set_ps_mode(struct adapter *padapter, u8 ps_mode, u8 smart_ps, u8 bcn_a
+ 	} else {
+ 		if ((PS_RDY_CHECK(padapter) && check_fwstate(&padapter->mlmepriv, WIFI_ASOC_STATE))
+ 			|| ((rtw_btcoex_IsBtControlLps(padapter) == true)
+-				&& (rtw_btcoex_IsLpsOn(padapter) == true))
++				&& (hal_btcoex_IsLpsOn(padapter) == true))
+ 			) {
+ 			u8 pslv;
+ 
 diff --git a/drivers/staging/rtl8723bs/include/rtw_btcoex.h b/drivers/staging/rtl8723bs/include/rtw_btcoex.h
-index 179f96897855..aebbed4f3a54 100644
+index aebbed4f3a54..9a020bdc5be3 100644
 --- a/drivers/staging/rtl8723bs/include/rtw_btcoex.h
 +++ b/drivers/staging/rtl8723bs/include/rtw_btcoex.h
-@@ -19,7 +19,6 @@ void rtw_btcoex_ScanNotify(struct adapter *, u8 type);
- void rtw_btcoex_ConnectNotify(struct adapter *, u8 action);
- void rtw_btcoex_MediaStatusNotify(struct adapter *, u8 mediaStatus);
- void rtw_btcoex_BtInfoNotify(struct adapter *, u8 length, u8 *tmpBuf);
--void rtw_btcoex_SuspendNotify(struct adapter *, u8 state);
- void rtw_btcoex_HaltNotify(struct adapter *);
- u8 rtw_btcoex_IsBtDisabled(struct adapter *);
+@@ -24,7 +24,6 @@ u8 rtw_btcoex_IsBtDisabled(struct adapter *);
  void rtw_btcoex_Handler(struct adapter *);
-diff --git a/drivers/staging/rtl8723bs/os_dep/os_intfs.c b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
-index d505ccebad40..544e799d0a03 100644
---- a/drivers/staging/rtl8723bs/os_dep/os_intfs.c
-+++ b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
-@@ -1475,10 +1475,10 @@ int rtw_suspend_common(struct adapter *padapter)
- 
- 	/*  wait for the latest FW to remove this condition. */
- 	if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == true) {
--		rtw_btcoex_SuspendNotify(padapter, 0);
-+		hal_btcoex_SuspendNotify(padapter, 0);
- 		DBG_871X("WIFI_AP_STATE\n");
- 	} else if (check_fwstate(pmlmepriv, WIFI_STATION_STATE) == true) {
--		rtw_btcoex_SuspendNotify(padapter, 1);
-+		hal_btcoex_SuspendNotify(padapter, 1);
- 		DBG_871X("STATION\n");
- 	}
- 
-@@ -1829,7 +1829,7 @@ int rtw_resume_common(struct adapter *padapter)
- 		rtw_resume_process_normal(padapter);
- 	}
- 
--	rtw_btcoex_SuspendNotify(padapter, 0);
-+	hal_btcoex_SuspendNotify(padapter, 0);
- 
- 	if (pwrpriv) {
- 		pwrpriv->bInSuspend = false;
+ s32 rtw_btcoex_IsBTCoexCtrlAMPDUSize(struct adapter *);
+ u8 rtw_btcoex_IsBtControlLps(struct adapter *);
+-u8 rtw_btcoex_IsLpsOn(struct adapter *);
+ u8 rtw_btcoex_RpwmVal(struct adapter *);
+ u8 rtw_btcoex_LpsVal(struct adapter *);
+ void rtw_btcoex_SetBTCoexist(struct adapter *, u8 bBtExist);
 -- 
 2.19.1
 
