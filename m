@@ -2,99 +2,84 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3DEC35CCAA
-	for <lists+driverdev-devel@lfdr.de>; Tue,  2 Jul 2019 11:30:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2A9915CD0C
+	for <lists+driverdev-devel@lfdr.de>; Tue,  2 Jul 2019 11:56:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C974886D7A;
-	Tue,  2 Jul 2019 09:30:21 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2CFE187AFF;
+	Tue,  2 Jul 2019 09:56:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Phnu3xlyQ5oI; Tue,  2 Jul 2019 09:30:21 +0000 (UTC)
+	with ESMTP id Nb-U0vk8kZLw; Tue,  2 Jul 2019 09:56:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DD1EE85F4B;
-	Tue,  2 Jul 2019 09:30:17 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8B77987A39;
+	Tue,  2 Jul 2019 09:56:39 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CCE5C1BF302
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  2 Jul 2019 09:30:15 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 3FB6E1BF85D
+ for <devel@linuxdriverproject.org>; Tue,  2 Jul 2019 09:56:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C99C2848ED
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  2 Jul 2019 09:30:15 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3C7CF8790F
+ for <devel@linuxdriverproject.org>; Tue,  2 Jul 2019 09:56:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sFzx0Wj5wTtA
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  2 Jul 2019 09:29:58 +0000 (UTC)
-X-Greylist: delayed 03:01:00 by SQLgrey-1.7.6
-Received: from APC01-HK2-obe.outbound.protection.outlook.com
- (mail-eopbgr1300054.outbound.protection.outlook.com [40.107.130.54])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7223885008
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  2 Jul 2019 09:29:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=teoenmingcorp.onmicrosoft.com; s=selector1-teoenmingcorp-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=oDQ56oU+xsiXcPyh2B04xJC6NaFEV4Y+Cy8t7xKGj5U=;
- b=Dci040FKdXkleg7tPl+cHCIk1EkvfWYHCH89lTm1jgdWG02r6Fyjy2Y5hyE6qpjvy9cQCOn0cEykC0qnUF1/BAIhnz63qiV6hY4/NGPOC4xeUPLFEnQUlKTPx0QDHzxSBBCVjCxfgCYYfBk9OHQS4gnSlih772zJS+EKEbDwvDo=
-Received: from SG2PR01MB2141.apcprd01.prod.exchangelabs.com (10.170.143.19) by
- SG2PR01MB3470.apcprd01.prod.exchangelabs.com (52.132.232.146) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2032.18; Tue, 2 Jul 2019 09:29:48 +0000
-Received: from SG2PR01MB2141.apcprd01.prod.exchangelabs.com
- ([fe80::d503:3d71:ce06:19d2]) by SG2PR01MB2141.apcprd01.prod.exchangelabs.com
- ([fe80::d503:3d71:ce06:19d2%6]) with mapi id 15.20.2032.019; Tue, 2 Jul 2019
- 09:29:48 +0000
-From: Turritopsis Dohrnii Teo En Ming <ceo@teo-en-ming-corp.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: RE: What device drivers for Linux does this project develop?
-Thread-Topic: What device drivers for Linux does this project develop?
-Thread-Index: AdUwskSbGSpl0JkuQB2Vy0K/ZYhNrQABdNGAAAAJ5nA=
-Date: Tue, 2 Jul 2019 09:29:47 +0000
-Message-ID: <SG2PR01MB2141BC4ACDA0472CF4B5FBAE87F80@SG2PR01MB2141.apcprd01.prod.exchangelabs.com>
-References: <SG2PR01MB2141506D87714AA856B0DE1587F80@SG2PR01MB2141.apcprd01.prod.exchangelabs.com>
- <20190702092531.GA10692@kroah.com>
-In-Reply-To: <20190702092531.GA10692@kroah.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=ceo@teo-en-ming-corp.com; 
-x-originating-ip: [118.189.211.120]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 000d910d-5cd2-4a2d-5449-08d6fecfd392
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(7021145)(8989299)(4534185)(7022145)(4603075)(4627221)(201702281549075)(8990200)(7048125)(7024125)(7027125)(7023125)(5600148)(711020)(4605104)(1401327)(2017052603328)(7193020);
- SRVR:SG2PR01MB3470; 
-x-ms-traffictypediagnostic: SG2PR01MB3470:
-x-ms-exchange-purlcount: 4
-x-microsoft-antispam-prvs: <SG2PR01MB347080D626B6CCA0EEB6ED7A87F80@SG2PR01MB3470.apcprd01.prod.exchangelabs.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1417;
-x-forefront-prvs: 008663486A
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(396003)(366004)(136003)(39830400003)(346002)(376002)(13464003)(189003)(199004)(54906003)(25786009)(305945005)(86362001)(5660300002)(74316002)(68736007)(316002)(52536014)(6916009)(256004)(64756008)(66476007)(66556008)(7736002)(66446008)(66946007)(73956011)(508600001)(76116006)(14454004)(966005)(4326008)(486006)(53546011)(6506007)(71190400001)(71200400001)(53936002)(9686003)(6116002)(8676002)(7696005)(81166006)(81156014)(3846002)(229853002)(186003)(6306002)(102836004)(55016002)(476003)(99286004)(6436002)(6246003)(2906002)(76176011)(66066001)(107886003)(26005)(8936002)(446003)(11346002)(33656002);
- DIR:OUT; SFP:1101; SCL:1; SRVR:SG2PR01MB3470;
- H:SG2PR01MB2141.apcprd01.prod.exchangelabs.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: teo-en-ming-corp.com does not
- designate permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: 20J11TdobuU9N+UNU5hEw2MjYZZ3J+qNeL+uOmf+s5xpUxhSkybHkr9sgka3YYS2FGNQhW/EKXoUaOzG3Pi7drE/r10cJwAJ7qhamZvjOMgzY8mHzry9FGlu6GYncy1Q9r6X6w8mlWj8MvRRj6uEI56kC4SfJlzmZ+nhju/dIUFkg+lZ/yT9I3aMMFtGRkZVEkIBc/sCsar7CWCarOiU0cn0/b9Ov1nn2+UUMvu44Hl8ReuC/tgxp9eCw2tqqFesWFq4E96zmBjTZ+HTWFeL4STuuSNlQdGTviVuHHOB8J7Vs3Qwc6p224DHXVqNnpSUQocUhCA2eTWNvOkB5AzjUquglTKTbR9snr8HF/VD9KEzxGbTqjc7Th7EvjJTtVlOCmlOASnFJTPvLV7w9ldMGaOsN5QtbpSG0McDzbz3YKQ=
+ with ESMTP id 4vKxvK93WRdn for <devel@linuxdriverproject.org>;
+ Tue,  2 Jul 2019 09:56:34 +0000 (UTC)
+X-Greylist: delayed 00:07:45 by SQLgrey-1.7.6
+Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
+ [209.85.221.67])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 94551878D7
+ for <devel@driverdev.osuosl.org>; Tue,  2 Jul 2019 09:56:34 +0000 (UTC)
+Received: by mail-wr1-f67.google.com with SMTP id v14so17041124wrr.4
+ for <devel@driverdev.osuosl.org>; Tue, 02 Jul 2019 02:56:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=UdYCIZGQ7tAt7A88vWqWA422Qpx5IuQReKn9P3m3xX8=;
+ b=PZuM9EJbQb3YhMp+qaw+VF6BwkhSSyYMquhljCcVZSO+tjIcy06ofVIGPbwYNmREXi
+ pRcuGFWqgU+nSlEobDVIi97m26fD20LGHZVCL/m/+eGewb0yAO7NlvlF/9gBYN5Rgy0B
+ UVcUnIeulg2Ui8pzjNF76wVB55J/p/3pN/YrI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=UdYCIZGQ7tAt7A88vWqWA422Qpx5IuQReKn9P3m3xX8=;
+ b=hoXSFW4T8y1DF/q9HAV0u5M+Yr6c+1R7DtVXk3rC1LromJezEOYaDrOfD6PWPVFNMY
+ qCBHqtXKLwylsYNgRTq+gfY3TB+iQ29X8gp6lMCAoN9HFWJMrkXh54EPFUgtH+ayTkSC
+ bV2u/EzkNx/IBN7tb9/9g1JJRz2E9ALyFVirXaetkM7o9iVkoFcRV96XqaBDwJqCzWV+
+ pRybE/+6T0xTC55FPRdi3ufiwcOKF98CgIiygDGpicvy4i9kxb17wTiQcraU20PZjOB3
+ djlXbOYhr2PCEKvTpij/AyAjf64D7kqQheCnHNRJbg6iz8qp0FI2twVvIZg33Itb1UxR
+ uTww==
+X-Gm-Message-State: APjAAAWSECgrewS9kWzJ/sSeFhAa8RfW8fstWpWcs3PAqgpoyeyh+Y+7
+ dR8MCLEPl+cWd/Fv0CpQTfio3/kOvKeHqQ==
+X-Google-Smtp-Source: APXvYqw+cs3wphtlInYiqa/iYYLL5YBkbuaWsrCFwdpkqDK8kfUrPvl8YI8TNOvUo+26MvPNs1E1Ng==
+X-Received: by 2002:adf:9487:: with SMTP id 7mr9588274wrr.114.1562060928176;
+ Tue, 02 Jul 2019 02:48:48 -0700 (PDT)
+Received: from [10.176.68.244] ([192.19.248.250])
+ by smtp.gmail.com with ESMTPSA id l124sm2421987wmf.36.2019.07.02.02.48.46
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 02 Jul 2019 02:48:47 -0700 (PDT)
+Subject: Re: use exact allocation for dma coherent memory
+To: Christoph Hellwig <hch@lst.de>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Ian Abbott <abbotti@mev.co.uk>,
+ H Hartley Sweeten <hsweeten@visionengravers.com>
+References: <20190614134726.3827-1-hch@lst.de> <20190701084833.GA22927@lst.de>
+From: Arend Van Spriel <arend.vanspriel@broadcom.com>
+Message-ID: <74eb9d99-6aa6-d1ad-e66d-6cc9c496b2f3@broadcom.com>
+Date: Tue, 2 Jul 2019 11:48:44 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
 MIME-Version: 1.0
-X-OriginatorOrg: teo-en-ming-corp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 000d910d-5cd2-4a2d-5449-08d6fecfd392
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Jul 2019 09:29:47.8862 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 23b3f6ae-c453-4b93-aec9-f17508e5885c
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: ceo@teo-en-ming-corp.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SG2PR01MB3470
+In-Reply-To: <20190701084833.GA22927@lst.de>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,55 +92,54 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "driverdev-devel@linuxdriverproject.org"
- <driverdev-devel@linuxdriverproject.org>
-Content-Type: text/plain; charset="us-ascii"
+Cc: devel@driverdev.osuosl.org, linux-s390@vger.kernel.org,
+ Intel Linux Wireless <linuxwifi@intel.com>, linux-rdma@vger.kernel.org,
+ netdev@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
+ iommu@lists.linux-foundation.org,
+ "moderated list:ARM PORT" <linux-arm-kernel@lists.infradead.org>,
+ linux-media@vger.kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Greg KH,
-
-My Hauppauge WinTV-HVR-935 HD Tri-Mode TV Stick DVB-T2 TV Tuner in Singapore is currently not supported by Linux.
 
 
------Original Message-----
-From: Greg KH <gregkh@linuxfoundation.org> 
-Sent: Tuesday, 2 July 2019 5:26 PM
-To: Turritopsis Dohrnii Teo En Ming <ceo@teo-en-ming-corp.com>
-Cc: driverdev-devel@linuxdriverproject.org
-Subject: Re: What device drivers for Linux does this project develop?
-
-On Tue, Jul 02, 2019 at 08:44:14AM +0000, Turritopsis Dohrnii Teo En Ming wrote:
-> Good afternoon from Singapore,
+On 7/1/2019 10:48 AM, Christoph Hellwig wrote:
+> On Fri, Jun 14, 2019 at 03:47:10PM +0200, Christoph Hellwig wrote:
+>> Switching to a slightly cleaned up alloc_pages_exact is pretty easy,
+>> but it turns out that because we didn't filter valid gfp_t flags
+>> on the DMA allocator, a bunch of drivers were passing __GFP_COMP
+>> to it, which is rather bogus in too many ways to explain.  Arm has
+>> been filtering it for a while, but this series instead tries to fix
+>> the drivers and warn when __GFP_COMP is passed, which makes it much
+>> larger than just adding the functionality.
 > 
-> What device drivers for Linux does this project develop?
+> Dear driver maintainers,
+> 
+> can you look over the patches touching your drivers, please?  I'd
+> like to get as much as possible of the driver patches into this
+> merge window, so that it can you through your maintainer trees.
 
-All taht is needed.  What type of device do you have that Linux currently does not support?
+You made me look ;-) Actually not touching my drivers so I'm off the 
+hook. However, I was wondering if drivers could know so I decided to 
+look into the DMA-API.txt documentation which currently states:
 
-greg k-h
+"""
+The flag parameter (dma_alloc_coherent() only) allows the caller to
+specify the ``GFP_`` flags (see kmalloc()) for the allocation (the
+implementation may choose to ignore flags that affect the location of
+the returned memory, like GFP_DMA).
+"""
 
------BEGIN EMAIL SIGNATURE-----
+I do expect you are going to change that description as well now that 
+you are going to issue a warning on __GFP_COMP. Maybe include that in 
+patch 15/16 where you introduce that warning.
 
-The Gospel for all Targeted Individuals (TIs):
-
-[The New York Times] Microwave Weapons Are Prime Suspect in Ills of
-U.S. Embassy Workers
-
-Link: https://www.nytimes.com/2018/09/01/science/sonic-attack-cuba-microwave.html
-
-********************************************************************************************
-
-Singaporean Mr. Turritopsis Dohrnii Teo En Ming's Academic
-Qualifications as at 14 Feb 2019
-
-[1] https://tdtemcerts.wordpress.com/
-
-[2] https://tdtemcerts.blogspot.sg/
-
-[3] https://www.scribd.com/user/270125049/Teo-En-Ming
-
------END EMAIL SIGNATURE-----
+Regards,
+Arend
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
