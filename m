@@ -2,59 +2,76 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6AAC45C226
-	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Jul 2019 19:41:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EEDEE5C783
+	for <lists+driverdev-devel@lfdr.de>; Tue,  2 Jul 2019 04:58:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D1ECD85EBE;
-	Mon,  1 Jul 2019 17:41:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 15A0385DF8;
+	Tue,  2 Jul 2019 02:58:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id x4P04UeW_xw2; Mon,  1 Jul 2019 17:41:45 +0000 (UTC)
+	with ESMTP id U69aySSJkA1U; Tue,  2 Jul 2019 02:58:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CDFF485B0D;
-	Mon,  1 Jul 2019 17:41:43 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 75C63849BE;
+	Tue,  2 Jul 2019 02:58:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id AAA9D1BF309
- for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 17:41:40 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4A3AF1BF3BC
+ for <devel@linuxdriverproject.org>; Tue,  2 Jul 2019 02:58:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id A78292040F
- for <devel@linuxdriverproject.org>; Mon,  1 Jul 2019 17:41:40 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id BF5DF878EA
+ for <devel@linuxdriverproject.org>; Tue,  2 Jul 2019 02:58:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OtAPvG9eDGSh for <devel@linuxdriverproject.org>;
- Mon,  1 Jul 2019 17:41:40 +0000 (UTC)
+ with ESMTP id 5njHQihJoomo for <devel@linuxdriverproject.org>;
+ Tue,  2 Jul 2019 02:58:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by silver.osuosl.org (Postfix) with ESMTPS id D0C02203A2
- for <devel@driverdev.osuosl.org>; Mon,  1 Jul 2019 17:41:39 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 01 Jul 2019 10:41:38 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,440,1557212400"; d="scan'208";a="246988339"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga001.jf.intel.com with ESMTP; 01 Jul 2019 10:41:37 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1hi0J6-0009f4-Fc; Tue, 02 Jul 2019 01:41:36 +0800
-Date: Tue, 2 Jul 2019 01:40:50 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Gabriel Beauchamp <beauchampgabriel@gmail.com>
-Subject: Re: [PATCH v3] Staging: most: fix coding style issues
-Message-ID: <201907020151.4hvM1eTo%lkp@intel.com>
-References: <20190630165604.2452-1-beauchampgabriel@gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190630165604.2452-1-beauchampgabriel@gmail.com>
-X-Patchwork-Hint: ignore
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 85E7D8763F
+ for <devel@driverdev.osuosl.org>; Tue,  2 Jul 2019 02:58:45 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id 19so7517357pfa.4
+ for <devel@driverdev.osuosl.org>; Mon, 01 Jul 2019 19:58:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=/7tczepEzqTlmdybJcXMyIiLXAAIYH2wxpVMMpPnygI=;
+ b=YeKCuuufxt1rPwf9tFm3JoYgmAoX8/7P77uCZJXLc34ku8ooPUW6fm90JBYOr7fonU
+ Ec9Th7cAjR+DQOigpd7hJnJmSLu0cOtx1uyOAuNSPE/JBg0hDPhlena8qQNlhW0TW+cf
+ jV0gQMltaEN3EWijsKA5MjLkCYgimin7zrHkZN7HipFBIKEQ4mZW7pvVbdTOcf/q4Zcy
+ +8zftBaFi4ny41YIfIp7UGh1JQVwoGDoxA3fyhln1QGOlx+2NFWYYuGKFCwdV8m+e/ZR
+ b9pPgJIHL86/YaD5/NNB42cjlsBPYnTfenXY+14o15yMX4F8QW1FwEjn/6cKy0UdB5M7
+ E5yg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=/7tczepEzqTlmdybJcXMyIiLXAAIYH2wxpVMMpPnygI=;
+ b=lI74AqHLrXgBLJXYWYd7lJMcHAOfBlz6OPGw4dTNBgiS7r8q8xgdAhSOaeiO+N1mhM
+ WEZx8oeXUI9gZQsC/lcfAM64XBCoJNA1WPVbZ/usfFEElTKATLGwXc4TGruIqh+wgusX
+ tEJooKUkgLBxRbJ8cHxud5Cc+HXyfYVAHop8tNRKTN8cSobzqXhuLi1txP7jcFymt/oZ
+ ntwS3EPqtxq9wrYjeFYQeBU/94G6sSHmwJlhLA+C79FQlNK4wbOPabxUCNOTazOwkLWL
+ 1SZ4Erzh2JbJLgE2Pb01l6Ncb0o4ij8mberWItD1hZzZN3RfL3b4JxQqwuo/IdMD4+42
+ JE6g==
+X-Gm-Message-State: APjAAAU0T+0pI71LbKVWDkCxBl38DzZGzx2O2F0s4bK1P3fiw/CnVdW1
+ sOIV/KWbECittWX7Qj9Rv88=
+X-Google-Smtp-Source: APXvYqxwIeo9k12FDWXw1KWHtI7qKb4pB//KHdHVifTgoV2Vgw9mYCBFEQh08tMtoqU0COrGYsUgzw==
+X-Received: by 2002:a63:6fcf:: with SMTP id
+ k198mr15007946pgc.276.1562036325159; 
+ Mon, 01 Jul 2019 19:58:45 -0700 (PDT)
+Received: from huyue2.ccdomain.com ([218.189.10.173])
+ by smtp.gmail.com with ESMTPSA id r198sm14506893pfc.149.2019.07.01.19.58.41
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 01 Jul 2019 19:58:44 -0700 (PDT)
+From: Yue Hu <zbestahu@gmail.com>
+To: gaoxiang25@huawei.com,
+	yuchao0@huawei.com,
+	gregkh@linuxfoundation.org
+Subject: [PATCH RESEND v3] staging: erofs: remove unsupported ->datamode check
+ in fill_inline_data()
+Date: Tue,  2 Jul 2019 10:56:01 +0800
+Message-Id: <20190702025601.7976-1-zbestahu@gmail.com>
+X-Mailer: git-send-email 2.17.1.windows.2
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,62 +84,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gustavo@embeddedor.com,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
- Gabriel Beauchamp <beauchampgabriel@gmail.com>, kbuild-all@01.org,
- christian.gromm@microchip.com, joe@perches.com, colin.king@canonical.com
+Cc: devel@driverdev.osuosl.org, huyue2@yulong.com, linux-erofs@lists.ozlabs.org,
+ linux-kernel@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Gabriel,
+From: Yue Hu <huyue2@yulong.com>
 
-Thank you for the patch! Perhaps something to improve:
+Already check if ->datamode is supported in read_inode(), no need to check
+again in the next fill_inline_data() only called by fill_inode().
 
-[auto build test WARNING on staging/staging-testing]
-[also build test WARNING on v5.2-rc6 next-20190625]
-[if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
-
-url:    https://github.com/0day-ci/linux/commits/Gabriel-Beauchamp/Staging-most-fix-coding-style-issues/20190701-203804
-reproduce:
-        # apt-get install sparse
-        # sparse version: v0.6.1-rc1-7-g2b96cd8-dirty
-        make ARCH=x86_64 allmodconfig
-        make C=1 CF='-fdiagnostic-prefix -D__CHECK_ENDIAN__'
-
-If you fix the issue, kindly add following tag
-Reported-by: kbuild test robot <lkp@intel.com>
-
-
-sparse warnings: (new ones prefixed by >>)
-
-
-vim +308 drivers/staging/most/core.c
-
-   296	
-   297	static ssize_t set_datatype_show(struct device *dev,
-   298					 struct device_attribute *attr,
-   299					 char *buf)
-   300	{
-   301		int i;
-   302		char *type = "unconfigured\n";
-   303	
-   304		struct most_channel *c = to_channel(dev);
-   305	
-   306		for (i = 0; i < ARRAY_SIZE(ch_data_type); i++) {
-   307			if (c->cfg.data_type & ch_data_type[i].most_ch_data_type) {
- > 308				type = ch_data_type[i].name;
-   309				break;
-   310			}
-   311		}
-   312		return snprintf(buf, PAGE_SIZE, "%s", type);
-   313	}
-   314	
-
+Signed-off-by: Yue Hu <huyue2@yulong.com>
+Reviewed-by: Gao Xiang <gaoxiang25@huawei.com>
+Reviewed-by: Chao Yu <yuchao0@huawei.com>
 ---
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+no change
+
+ drivers/staging/erofs/inode.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/drivers/staging/erofs/inode.c b/drivers/staging/erofs/inode.c
+index e51348f..d6e1e16 100644
+--- a/drivers/staging/erofs/inode.c
++++ b/drivers/staging/erofs/inode.c
+@@ -129,8 +129,6 @@ static int fill_inline_data(struct inode *inode, void *data,
+ 	struct erofs_sb_info *sbi = EROFS_I_SB(inode);
+ 	const int mode = vi->datamode;
+ 
+-	DBG_BUGON(mode >= EROFS_INODE_LAYOUT_MAX);
+-
+ 	/* should be inode inline C */
+ 	if (mode != EROFS_INODE_LAYOUT_INLINE)
+ 		return 0;
+-- 
+1.9.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
