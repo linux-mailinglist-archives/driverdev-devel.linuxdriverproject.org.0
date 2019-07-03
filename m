@@ -1,48 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 27BA95DD32
-	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Jul 2019 06:00:19 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0D2B98443D;
-	Wed,  3 Jul 2019 04:00:16 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2oxw5snMiMhN; Wed,  3 Jul 2019 04:00:15 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E0A8281E9F;
-	Wed,  3 Jul 2019 04:00:13 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8E0C61BF867
- for <devel@linuxdriverproject.org>; Wed,  3 Jul 2019 04:00:11 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1CA7E5DDA4
+	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Jul 2019 07:02:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 8AD6785AE2
- for <devel@linuxdriverproject.org>; Wed,  3 Jul 2019 04:00:11 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7041287BD7;
+	Wed,  3 Jul 2019 05:02:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Rnj0s1hcZE+j; Wed,  3 Jul 2019 05:02:34 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 185B38744A;
+	Wed,  3 Jul 2019 05:02:34 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 295A21BF5B3
+ for <devel@linuxdriverproject.org>; Wed,  3 Jul 2019 05:02:32 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 265EA2045C
+ for <devel@linuxdriverproject.org>; Wed,  3 Jul 2019 05:02:32 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jhzNsz1OZlE0 for <devel@linuxdriverproject.org>;
- Wed,  3 Jul 2019 04:00:10 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from exchange.hr-taiwan.com (exchange.hr-taiwan.com [220.128.142.5])
- by hemlock.osuosl.org (Postfix) with ESMTP id E6D2085A2E
- for <devel@driverdev.osuosl.org>; Wed,  3 Jul 2019 04:00:09 +0000 (UTC)
-Received: from [192.168.4.23] ([144.202.198.5] RDNS failed) by
- exchange.hr-taiwan.com with Microsoft SMTPSVC(6.0.3790.4675); 
- Wed, 3 Jul 2019 11:46:01 +0800
+ with ESMTP id hufWLP4alAax for <devel@linuxdriverproject.org>;
+ Wed,  3 Jul 2019 05:02:31 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7646820361
+ for <devel@driverdev.osuosl.org>; Wed,  3 Jul 2019 05:02:31 +0000 (UTC)
+Received: from sol.localdomain (c-24-5-143-220.hsd1.ca.comcast.net
+ [24.5.143.220])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id E00BD20989;
+ Wed,  3 Jul 2019 05:02:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1562130151;
+ bh=hPTJr/4Fckifjcsd2u8POjGCFLOUJufQKl8YwN15Dp4=;
+ h=Date:From:To:Cc:Subject:From;
+ b=gccmNSbBIeCgwTzD3fj8WdT0xTR1/6Uw6PZu7sk91BTtsMbL0o+9zuTLnyFaFGWNY
+ NLLVrgFxp01FQhfZrHfqB5h/Fsgu+heOXYe0k0vH2m9+NuYLll75ZWocmUGiBg2WSz
+ pXVU/FaxkcT3DbjwzduAu+a+HjhHOQyydG/pQM2Q=
+Date: Tue, 2 Jul 2019 22:02:29 -0700
+From: Eric Biggers <ebiggers@kernel.org>
+To: devel@driverdev.osuosl.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
+ Todd Kjos <tkjos@android.com>, Martijn Coenen <maco@android.com>,
+ Joel Fernandes <joel@joelfernandes.org>,
+ Christian Brauner <christian@brauner.io>
+Subject: Reminder: 3 open syzbot bugs in "android/binder" subsystem
+Message-ID: <20190703050229.GC633@sol.localdomain>
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Charitable Funds Donation
-To: Recipients <procurement@hr-taiwan.com>
-From: "Ms Qing"<procurement@hr-taiwan.com>
-Date: Wed, 03 Jul 2019 05:46:29 +0200
-Message-ID: <EXCHANGErh0xEKNPsk200003b46@exchange.hr-taiwan.com>
-X-OriginalArrivalTime: 03 Jul 2019 03:46:01.0158 (UTC)
- FILETIME=[D4EAFE60:01D53151]
+Content-Disposition: inline
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,31 +69,129 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: morrisherb@consultant.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: syzkaller-bugs@googlegroups.com, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Firstly, I must solicit your confidence in this project; Is obvious we have not met each other,
+[This email was generated by a script.  Let me know if you have any suggest=
+ions
+to make it better, or if you want it re-generated with the latest status.]
 
-Meeting new people in our daily lives is not an-ending circle and my apology for sending you this information by e-mail instead of Post-mail.
+Of the currently open syzbot reports against the upstream kernel, I've manu=
+ally
+marked 3 of them as possibly being bugs in the "android/binder" subsystem. =
+ I've
+listed these reports below, sorted by an algorithm that tries to list first=
+ the
+reports most likely to be still valid, important, and actionable.
 
-I decided to contact you for assistance and distribution of my inheritance after going through your profile.
+Of these 3 bugs, 1 was seen in mainline in the last week.
 
-I am Mrs D.Maria, an Australian by birth. My Husband was an American citizen who died years ago and we had no child,
+Of these 3 bugs, 1 was bisected to a commit from the following person:
 
-I am sick and Dyeing at the moment and i will be going in for an operation soon at Albert Schweitzer Ziekenhuis, Dordrecht,South Holland,in the Netherlands.
+	Todd Kjos <tkjos@android.com>
 
-At this critical time, I want you to use my funds for the homeless and charity.
+If you believe a bug is no longer valid, please close the syzbot report by
+sending a '#syz fix', '#syz dup', or '#syz invalid' command in reply to the
+original thread, as explained at https://goo.gl/tpsmEJ#status
 
-This is based on my wish for charity as i have decided to WILL my funds to you and my Attorney has been notified.
+If you believe I misattributed a bug to the "android/binder" subsystem, ple=
+ase
+let me know, and if possible forward the report to the correct people or ma=
+iling
+list.
 
-Please I hope you understand the nature of this transaction, which has made me frugal. Assure me that you will act on humanitarian motives.
+Here are the bugs:
 
-Contact My Lawyer,
-Barrister. Morris for guidance: morrisherb@consultant.com
-Mrs D.Maria
+---------------------------------------------------------------------------=
+-----
+Title:              kernel BUG at drivers/android/binder_alloc.c:LINE! (4)
+Last occurred:      6 days ago
+Reported:           14 days ago
+Branches:           Mainline and others
+Dashboard link:     https://syzkaller.appspot.com/bug?id=3Dbbf40136a49ffaa8=
+ac60906edcbe77f825b2c406
+Original thread:    https://lkml.kernel.org/lkml/000000000000b6b25b058b96d5=
+c3@google.com/T/#u
+
+This bug has a C reproducer.
+
+This bug was bisected to:
+
+	commit bde4a19fc04f5f46298c86b1acb7a4af1d5f138d
+	Author: Todd Kjos <tkjos@android.com>
+	Date:   Fri Feb 8 18:35:20 2019 +0000
+
+	=A0=A0binder: use userspace pointer as base of buffer space
+
+The original thread for this bug has received 3 replies; the last was 4 days
+ago.
+
+If you fix this bug, please add the following tag to the commit:
+    Reported-by: syzbot+3ae18325f96190606754@syzkaller.appspotmail.com
+
+If you send any email or patch for this bug, please reply to the original
+thread, which had activity only 4 days ago.  For the git send-email command=
+ to
+use, or tips on how to reply if the thread isn't in your mailbox, see the "=
+Reply
+instructions" at https://lkml.kernel.org/r/000000000000b6b25b058b96d5c3@goo=
+gle.com
+
+---------------------------------------------------------------------------=
+-----
+Title:              WARNING in binder_transaction_buffer_release
+Last occurred:      0 days ago
+Reported:           43 days ago
+Branches:           Mainline and others
+Dashboard link:     https://syzkaller.appspot.com/bug?id=3D4e0a6a529aef923a=
+8d61c5d20b8fc0605c730138
+Original thread:    https://lkml.kernel.org/lkml/000000000000afe2c705895266=
+68@google.com/T/#u
+
+This bug has a syzkaller reproducer only.
+
+The original thread for this bug has received 2 replies; the last was 20 da=
+ys
+ago.
+
+If you fix this bug, please add the following tag to the commit:
+    Reported-by: syzbot+8b3c354d33c4ac78bfad@syzkaller.appspotmail.com
+
+If you send any email or patch for this bug, please consider replying to the
+original thread.  For the git send-email command to use, or tips on how to =
+reply
+if the thread isn't in your mailbox, see the "Reply instructions" at
+https://lkml.kernel.org/r/000000000000afe2c70589526668@google.com
+
+---------------------------------------------------------------------------=
+-----
+Title:              possible deadlock in uprobe_clear_state
+Last occurred:      165 days ago
+Reported:           202 days ago
+Branches:           Mainline
+Dashboard link:     https://syzkaller.appspot.com/bug?id=3Da1ce9b3da349209c=
+5085bb8c4fee753d68c3697f
+Original thread:    https://lkml.kernel.org/lkml/00000000000010a9fb057cd141=
+74@google.com/T/#u
+
+Unfortunately, this bug does not have a reproducer.
+
+[Note: the uprobe developers think this is a bug in binder, not uprobes.
+ See https://marc.info/?l=3Dlinux-kernel&m=3D155119805728815&w=3D2
+ for a suggested fix for this bug.]
+
+If you fix this bug, please add the following tag to the commit:
+    Reported-by: syzbot+1068f09c44d151250c33@syzkaller.appspotmail.com
+
+If you send any email or patch for this bug, please consider replying to the
+original thread.  For the git send-email command to use, or tips on how to =
+reply
+if the thread isn't in your mailbox, see the "Reply instructions" at
+https://lkml.kernel.org/r/00000000000010a9fb057cd14174@google.com
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
