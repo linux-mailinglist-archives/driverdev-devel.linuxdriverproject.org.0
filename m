@@ -1,59 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 860EC5DE6A
-	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Jul 2019 09:10:53 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 404AB5DF5B
+	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Jul 2019 10:13:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5204C85F83;
-	Wed,  3 Jul 2019 07:10:51 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A02938693D;
+	Wed,  3 Jul 2019 08:13:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xDY7yjwipkkP; Wed,  3 Jul 2019 07:10:49 +0000 (UTC)
+	with ESMTP id ahYdlKSYzwD7; Wed,  3 Jul 2019 08:13:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EB78A85F5A;
-	Wed,  3 Jul 2019 07:10:48 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 50A4A86742;
+	Wed,  3 Jul 2019 08:13:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B46C11BF2A4
- for <devel@linuxdriverproject.org>; Wed,  3 Jul 2019 07:10:46 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8CE9B1BF5A4
+ for <devel@linuxdriverproject.org>; Wed,  3 Jul 2019 08:13:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id AFE0A85F4E
- for <devel@linuxdriverproject.org>; Wed,  3 Jul 2019 07:10:46 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7588B85F4B
+ for <devel@linuxdriverproject.org>; Wed,  3 Jul 2019 08:13:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vGb_nTe73L7k for <devel@linuxdriverproject.org>;
- Wed,  3 Jul 2019 07:10:45 +0000 (UTC)
+ with ESMTP id Ilxaa5IN5-X4 for <devel@linuxdriverproject.org>;
+ Wed,  3 Jul 2019 08:13:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B59CE8511B
- for <devel@driverdev.osuosl.org>; Wed,  3 Jul 2019 07:10:44 +0000 (UTC)
-Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 4BBCA1ED299731A1D55F;
- Wed,  3 Jul 2019 14:54:23 +0800 (CST)
-Received: from [10.151.23.176] (10.151.23.176) by smtp.huawei.com
- (10.3.19.207) with Microsoft SMTP Server (TLS) id 14.3.439.0; Wed, 3 Jul 2019
- 14:54:17 +0800
-Subject: Re: [PATCH] staging: erofs: fix LZ4 limited bounced page mis-reuse
-To: Chao Yu <yuchao0@huawei.com>, Gao Xiang <hsiangkao@aol.com>, "Greg
- Kroah-Hartman" <gregkh@linuxfoundation.org>
-References: <20190630185846.16624-1-hsiangkao@aol.com>
- <dbd9e23d-3e76-8281-81f3-48680b4d0b9d@huawei.com>
- <e57f757f-2a61-3c5d-bf06-264cd1d00fef@huawei.com>
- <570e12d3-985e-3d5a-d7d4-cf0a072442fe@huawei.com>
- <9a199c2a-31be-5768-c5bd-dba69b99d99b@huawei.com>
-From: Gao Xiang <gaoxiang25@huawei.com>
-Message-ID: <340a943e-a912-7937-9a1b-0ef66833c35f@huawei.com>
-Date: Wed, 3 Jul 2019 14:53:57 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
+ [209.85.214.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id EADDB85F10
+ for <devel@driverdev.osuosl.org>; Wed,  3 Jul 2019 08:13:30 +0000 (UTC)
+Received: by mail-pl1-f196.google.com with SMTP id b7so802558pls.6
+ for <devel@driverdev.osuosl.org>; Wed, 03 Jul 2019 01:13:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=BvJNwkPS9MfNl5cMsC1QP7QkMzi/DuELy2LvBnmsMXs=;
+ b=lVKLv9ep+x4cUvfF60e2j506ilKkHO6GJ9kMGHlE16ajbL+aUPEEM5VQAC6ea0Bldg
+ JELTiHoLc+YIjPM+QPlPf3s6whkUv9WCjVkrb9BjMPoiXgeiwiQ1nTMFlgaks4IDjskG
+ 0fgyOsK2vtV9xEHR7ZT0fOL/B2opBXSj2h5l+UdEpM1YuBjWJa0wPoV7ob8l3qqIAOTr
+ vFuyiv9yqqiITs5cpwC3l380edGBtpIjt3jVRO9ocbLYjW4xtkfe8V8K4+hlo8UCt1pt
+ 7cv0tjmysRqss+du9MGt7dKW2lha1blcf4PAFNaJg4ObAmXj5Ld+TPmEAFnwdAc7oBYs
+ jc1Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=BvJNwkPS9MfNl5cMsC1QP7QkMzi/DuELy2LvBnmsMXs=;
+ b=bk63OMUw5Gfz5nhlz7lVYqJXMQIBTog/p/3k7lAa4smhzNCG5yZEpv24DNxKDpOxKf
+ x/y53w4uo8blgeH2gv3w/NzDB0Fq7MAx6le6KdYPoqlleHbmcmAqYMDJZRUcUGDHbmA6
+ TAP8GNiVIkSe9WSDH2UTDxFhrvQ2+eUnMybXzK6mTZAri1gPshJuqoJY28Xce6vJZ0uY
+ aSMFcREAeFq1zPB7n2i/lq0LHZnao+6RQWB3FouslnNBxsaHKbY5+Rn6OhxTrC1EXF0Y
+ JKuo85sbjZQiuTjxQAPcvP2ernR72LZZ5sx1VU5cqVTBjR6xhVvWLCsQ5g6rWXGNGb8A
+ 1acA==
+X-Gm-Message-State: APjAAAUu0pgNx9GfCelRlhNmv7t3WmKYy00NIlRbfM3QNwVTgtVHXFV2
+ Y2fVt64/HGGnDB3joiJnCQU=
+X-Google-Smtp-Source: APXvYqyU1k/W96dJNhLR99ByjoiAJ5wVF3nwNApkKn61Qi1jDrfWmGEXDoi1IdFinLjkKK+4fQ8R1Q==
+X-Received: by 2002:a17:902:b284:: with SMTP id
+ u4mr42218344plr.36.1562141610635; 
+ Wed, 03 Jul 2019 01:13:30 -0700 (PDT)
+Received: from localhost.localdomain ([122.163.64.117])
+ by smtp.gmail.com with ESMTPSA id m6sm1176450pjl.18.2019.07.03.01.13.27
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Wed, 03 Jul 2019 01:13:30 -0700 (PDT)
+From: Nishka Dasgupta <nishkadg.linux@gmail.com>
+To: maxime.ripard@bootlin.com, paul.kocialkowski@bootlin.com,
+ mchehab@kernel.org, gregkh@linuxfoundation.org, wens@csie.org,
+ linux-media@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [PATCH 1/2] staging: media: sunxi: Change return type of
+ cedrus_find_format()
+Date: Wed,  3 Jul 2019 13:43:16 +0530
+Message-Id: <20190703081317.22795-1-nishkadg.linux@gmail.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-In-Reply-To: <9a199c2a-31be-5768-c5bd-dba69b99d99b@huawei.com>
-X-Originating-IP: [10.151.23.176]
-X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,207 +88,56 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Du Wei <weidu.du@huawei.com>,
- Miao Xie <miaoxie@huawei.com>, linux-erofs@lists.ozlabs.org,
- LKML <linux-kernel@vger.kernel.org>
+Cc: Nishka Dasgupta <nishkadg.linux@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+Change return type of cedrus_find_format to bool as it is only called
+once, by a function whose return value is bool, and the return value of
+cedrus_find_format is returned as-is at the call-site.
+Issue found with Coccinelle.
 
+Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
+---
+ drivers/staging/media/sunxi/cedrus/cedrus_video.c | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
 
-On 2019/7/3 14:51, Chao Yu wrote:
-> Hi xiang,
-> 
-> On 2019/7/3 14:06, Gao Xiang wrote:
->> Hi Chao,
->>
->> On 2019/7/3 10:09, Gao Xiang wrote:
->>>
->>>
->>> On 2019/7/3 9:50, Chao Yu wrote:
->>>> On 2019/7/1 2:58, Gao Xiang wrote:
->>>>> From: Gao Xiang <gaoxiang25@huawei.com>
->>>>>
->>>>> Like all lz77-based algrithms, lz4 has a dynamically populated
->>>>> ("sliding window") dictionary and the maximum lookback distance
->>>>> is 65535. Therefore the number of bounced pages could be limited
->>>>> by erofs based on this property.
->>>>>
->>>>> However, just now we observed some lz4 sequences in the extreme
->>>>> case cannot be decompressed correctly after this feature is enabled,
->>>>> the root causes after analysis are clear as follows:
->>>>> 1) max bounced pages should be 17 rather than 16 pages;
->>>>> 2) considering the following case, the broken implementation
->>>>>    could reuse unsafely in advance (in other words, reuse it
->>>>>    less than a safe distance),
->>>>>    0 1 2 ... 16 17 18 ... 33 34
->>>>>    b             p  b         b
->>>>>    note that the bounce page that we are concerned was allocated
->>>>>    at 0, and it reused at 18 since page 17 exists, but it mis-reused
->>>>>    at 34 in advance again, which causes decompress failure.
->>>>>
->>>>> This patch resolves the issue by introducing a bitmap to mark
->>>>> whether the page in the same position of last round is a bounced
->>>>> page or not, and a micro stack data structure to store all
->>>>> available bounced pages.
->>>>>
->>>>> Fixes: 7fc45dbc938a ("staging: erofs: introduce generic decompression backend")
->>>>> Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
->>>>> ---
->>>>>  drivers/staging/erofs/decompressor.c | 50 ++++++++++++++++------------
->>>>>  1 file changed, 28 insertions(+), 22 deletions(-)
->>>>>
->>>>> diff --git a/drivers/staging/erofs/decompressor.c b/drivers/staging/erofs/decompressor.c
->>>>> index 80f1f39719ba..1fb0abb98dff 100644
->>>>> --- a/drivers/staging/erofs/decompressor.c
->>>>> +++ b/drivers/staging/erofs/decompressor.c
->>>>> @@ -13,7 +13,7 @@
->>>>>  #define LZ4_DISTANCE_MAX 65535	/* set to maximum value by default */
->>>>>  #endif
->>>>>  
->>>>> -#define LZ4_MAX_DISTANCE_PAGES	DIV_ROUND_UP(LZ4_DISTANCE_MAX, PAGE_SIZE)
->>>>> +#define LZ4_MAX_DISTANCE_PAGES	(DIV_ROUND_UP(LZ4_DISTANCE_MAX, PAGE_SIZE) + 1)
->>>>>  #ifndef LZ4_DECOMPRESS_INPLACE_MARGIN
->>>>>  #define LZ4_DECOMPRESS_INPLACE_MARGIN(srcsize)  (((srcsize) >> 8) + 32)
->>>>>  #endif
->>>>> @@ -35,19 +35,28 @@ static int lz4_prepare_destpages(struct z_erofs_decompress_req *rq,
->>>>>  	const unsigned int nr =
->>>>>  		PAGE_ALIGN(rq->pageofs_out + rq->outputsize) >> PAGE_SHIFT;
->>>>>  	struct page *availables[LZ4_MAX_DISTANCE_PAGES] = { NULL };
->>>>> -	unsigned long unused[DIV_ROUND_UP(LZ4_MAX_DISTANCE_PAGES,
->>>>> -					  BITS_PER_LONG)] = { 0 };
->>>>> +	unsigned long bounced[DIV_ROUND_UP(LZ4_MAX_DISTANCE_PAGES,
->>>>> +					   BITS_PER_LONG)] = { 0 };
->>>>>  	void *kaddr = NULL;
->>>>> -	unsigned int i, j, k;
->>>>> +	unsigned int i, j, top;
->>>>>  
->>>>> -	for (i = 0; i < nr; ++i) {
->>>>> +	top = 0;
->>>>> +	for (i = j = 0; i < nr; ++i, ++j) {
->>>>>  		struct page *const page = rq->out[i];
->>>>> +		struct page *victim;
->>>>>  
->>>>> -		j = i & (LZ4_MAX_DISTANCE_PAGES - 1);
->>>>> -		if (availables[j])
->>>>> -			__set_bit(j, unused);
->>>>> +		if (j >= LZ4_MAX_DISTANCE_PAGES)
->>>>> +			j = 0;
->>>>> +
->>>>> +		/* 'valid' bounced can only be tested after a complete round */
->>>>> +		if (test_bit(j, bounced)) {
->>>>> +			DBG_BUGON(i < LZ4_MAX_DISTANCE_PAGES);
->>>>> +			DBG_BUGON(top >= LZ4_MAX_DISTANCE_PAGES);
->>>>> +			availables[top++] = rq->out[i - LZ4_MAX_DISTANCE_PAGES];
->>>>
->>>> Maybe we can change 'i - LZ4_MAX_DISTANCE_PAGES' to 'j' directly for better
->>>> readability.
->>>
->>> OK, I think they are equivalent as well, will change for readability, retest and resend.
->>> Thanks for your suggestion :)
->>
->> I tested again and I observed that using j broke the logic and I think we cannot use j
->> to replace i - LZ4_MAX_DISTANCE_PAGES.
->>
->> Since bounced pages was marked according to the last round rather than the first round,
->> we cannot directly use the first round pages to push into the stack, e.g.
-> 
-> Yes, I can understand that, so the bitmap only indicate page in previous round
-> is a new bounced page or a referenced bounced page, using page at last round is
-> safe.
-> 
-> Anyway, thanks for the explanation below, and go ahead with current
-> implementation. :)
+diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_video.c b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+index 9673874ece10..0ec31b9e0aea 100644
+--- a/drivers/staging/media/sunxi/cedrus/cedrus_video.c
++++ b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+@@ -55,8 +55,8 @@ static inline struct cedrus_ctx *cedrus_file2ctx(struct file *file)
+ 	return container_of(file->private_data, struct cedrus_ctx, fh);
+ }
+ 
+-static struct cedrus_format *cedrus_find_format(u32 pixelformat, u32 directions,
+-						unsigned int capabilities)
++static bool cedrus_find_format(u32 pixelformat, u32 directions,
++			       unsigned int capabilities)
+ {
+ 	struct cedrus_format *fmt;
+ 	unsigned int i;
+@@ -70,13 +70,10 @@ static struct cedrus_format *cedrus_find_format(u32 pixelformat, u32 directions,
+ 
+ 		if (fmt->pixelformat == pixelformat &&
+ 		    (fmt->directions & directions) != 0)
+-			break;
++			return true;
+ 	}
+ 
+-	if (i == CEDRUS_FORMATS_COUNT)
+-		return NULL;
+-
+-	return &cedrus_formats[i];
++	return false;
+ }
+ 
+ static bool cedrus_check_format(u32 pixelformat, u32 directions,
+-- 
+2.19.1
 
-Yes, thanks for the idea and taking time to review :)
-
-Thanks,
-Gao Xiang
-
-> 
-> Thanks,
-> 
->>
->> 1)
->>     0 1 2 ... 16 17 18 ... 33 34
->>     p             b            b
->>
->> bounce page could be allocated from rq->out[17], and we could reuse it from rq->out[34], which
->> is not equal to rq->out[0].
->>
->> 2)
->>     0 1 2 ... 16 17 18  19  ... 33 34 35 36
->>       b              p   b                b
->> allocated in rq->out[1] j = 1, reuse it in rq->out[19] j = 2, reuse it again in rq->out[36] j = 2,
->> which is not equal to rq->out[2].
->>
->> I think the original patch is ok, and it cannot be replaced to rq->out[j].
->>
->> Thanks,
->> Gao Xiang
->>
->>>
->>> Thanks,
->>> Gao Xiang
->>>
->>>>
->>>> Otherwise, it looks good to me.
->>>>
->>>> Reviewed-by: Chao Yu <yuchao0@huawei.com>
->>>>
->>>> Thanks,
->>>>
->>>>> +		}
->>>>>  
->>>>>  		if (page) {
->>>>> +			__clear_bit(j, bounced);
->>>>>  			if (kaddr) {
->>>>>  				if (kaddr + PAGE_SIZE == page_address(page))
->>>>>  					kaddr += PAGE_SIZE;
->>>>> @@ -59,27 +68,24 @@ static int lz4_prepare_destpages(struct z_erofs_decompress_req *rq,
->>>>>  			continue;
->>>>>  		}
->>>>>  		kaddr = NULL;
->>>>> +		__set_bit(j, bounced);
->>>>>  
->>>>> -		k = find_first_bit(unused, LZ4_MAX_DISTANCE_PAGES);
->>>>> -		if (k < LZ4_MAX_DISTANCE_PAGES) {
->>>>> -			j = k;
->>>>> -			get_page(availables[j]);
->>>>> +		if (top) {
->>>>> +			victim = availables[--top];
->>>>> +			get_page(victim);
->>>>>  		} else {
->>>>> -			DBG_BUGON(availables[j]);
->>>>> -
->>>>>  			if (!list_empty(pagepool)) {
->>>>> -				availables[j] = lru_to_page(pagepool);
->>>>> -				list_del(&availables[j]->lru);
->>>>> -				DBG_BUGON(page_ref_count(availables[j]) != 1);
->>>>> +				victim = lru_to_page(pagepool);
->>>>> +				list_del(&victim->lru);
->>>>> +				DBG_BUGON(page_ref_count(victim) != 1);
->>>>>  			} else {
->>>>> -				availables[j] = alloc_pages(GFP_KERNEL, 0);
->>>>> -				if (!availables[j])
->>>>> +				victim = alloc_pages(GFP_KERNEL, 0);
->>>>> +				if (!victim)
->>>>>  					return -ENOMEM;
->>>>>  			}
->>>>> -			availables[j]->mapping = Z_EROFS_MAPPING_STAGING;
->>>>> +			victim->mapping = Z_EROFS_MAPPING_STAGING;
->>>>>  		}
->>>>> -		rq->out[i] = availables[j];
->>>>> -		__clear_bit(j, unused);
->>>>> +		rq->out[i] = victim;
->>>>>  	}
->>>>>  	return kaddr ? 1 : 0;
->>>>>  }
->>>>>
->> .
->>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
