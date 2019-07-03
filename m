@@ -1,62 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1CA7E5DDA4
-	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Jul 2019 07:02:36 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 878955DDE6
+	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Jul 2019 08:07:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7041287BD7;
-	Wed,  3 Jul 2019 05:02:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BF7A585F4B;
+	Wed,  3 Jul 2019 06:07:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Rnj0s1hcZE+j; Wed,  3 Jul 2019 05:02:34 +0000 (UTC)
+	with ESMTP id vrSFQ2ZbqPh5; Wed,  3 Jul 2019 06:07:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 185B38744A;
-	Wed,  3 Jul 2019 05:02:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 391A285D55;
+	Wed,  3 Jul 2019 06:07:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 295A21BF5B3
- for <devel@linuxdriverproject.org>; Wed,  3 Jul 2019 05:02:32 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1F8E21BF2F4
+ for <devel@linuxdriverproject.org>; Wed,  3 Jul 2019 06:06:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 265EA2045C
- for <devel@linuxdriverproject.org>; Wed,  3 Jul 2019 05:02:32 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1C552879FD
+ for <devel@linuxdriverproject.org>; Wed,  3 Jul 2019 06:06:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hufWLP4alAax for <devel@linuxdriverproject.org>;
- Wed,  3 Jul 2019 05:02:31 +0000 (UTC)
+ with ESMTP id KBaLiyoddPuS for <devel@linuxdriverproject.org>;
+ Wed,  3 Jul 2019 06:06:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 7646820361
- for <devel@driverdev.osuosl.org>; Wed,  3 Jul 2019 05:02:31 +0000 (UTC)
-Received: from sol.localdomain (c-24-5-143-220.hsd1.ca.comcast.net
- [24.5.143.220])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id E00BD20989;
- Wed,  3 Jul 2019 05:02:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1562130151;
- bh=hPTJr/4Fckifjcsd2u8POjGCFLOUJufQKl8YwN15Dp4=;
- h=Date:From:To:Cc:Subject:From;
- b=gccmNSbBIeCgwTzD3fj8WdT0xTR1/6Uw6PZu7sk91BTtsMbL0o+9zuTLnyFaFGWNY
- NLLVrgFxp01FQhfZrHfqB5h/Fsgu+heOXYe0k0vH2m9+NuYLll75ZWocmUGiBg2WSz
- pXVU/FaxkcT3DbjwzduAu+a+HjhHOQyydG/pQM2Q=
-Date: Tue, 2 Jul 2019 22:02:29 -0700
-From: Eric Biggers <ebiggers@kernel.org>
-To: devel@driverdev.osuosl.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
- Todd Kjos <tkjos@android.com>, Martijn Coenen <maco@android.com>,
- Joel Fernandes <joel@joelfernandes.org>,
- Christian Brauner <christian@brauner.io>
-Subject: Reminder: 3 open syzbot bugs in "android/binder" subsystem
-Message-ID: <20190703050229.GC633@sol.localdomain>
+Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7160687B94
+ for <devel@driverdev.osuosl.org>; Wed,  3 Jul 2019 06:06:29 +0000 (UTC)
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 3C06FD4D7CBA388655BE;
+ Wed,  3 Jul 2019 14:06:25 +0800 (CST)
+Received: from [10.151.23.176] (10.151.23.176) by smtp.huawei.com
+ (10.3.19.211) with Microsoft SMTP Server (TLS) id 14.3.439.0; Wed, 3 Jul 2019
+ 14:06:14 +0800
+Subject: Re: [PATCH] staging: erofs: fix LZ4 limited bounced page mis-reuse
+From: Gao Xiang <gaoxiang25@huawei.com>
+To: Chao Yu <yuchao0@huawei.com>, Gao Xiang <hsiangkao@aol.com>, "Greg
+ Kroah-Hartman" <gregkh@linuxfoundation.org>
+References: <20190630185846.16624-1-hsiangkao@aol.com>
+ <dbd9e23d-3e76-8281-81f3-48680b4d0b9d@huawei.com>
+ <e57f757f-2a61-3c5d-bf06-264cd1d00fef@huawei.com>
+Message-ID: <570e12d3-985e-3d5a-d7d4-cf0a072442fe@huawei.com>
+Date: Wed, 3 Jul 2019 14:06:08 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.12.1 (2019-06-15)
+In-Reply-To: <e57f757f-2a61-3c5d-bf06-264cd1d00fef@huawei.com>
+X-Originating-IP: [10.151.23.176]
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,129 +64,183 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: syzkaller-bugs@googlegroups.com, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: devel@driverdev.osuosl.org, Du Wei <weidu.du@huawei.com>,
+ Miao Xie <miaoxie@huawei.com>, linux-erofs@lists.ozlabs.org,
+ LKML <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-[This email was generated by a script.  Let me know if you have any suggest=
-ions
-to make it better, or if you want it re-generated with the latest status.]
+Hi Chao,
 
-Of the currently open syzbot reports against the upstream kernel, I've manu=
-ally
-marked 3 of them as possibly being bugs in the "android/binder" subsystem. =
- I've
-listed these reports below, sorted by an algorithm that tries to list first=
- the
-reports most likely to be still valid, important, and actionable.
+On 2019/7/3 10:09, Gao Xiang wrote:
+> 
+> 
+> On 2019/7/3 9:50, Chao Yu wrote:
+>> On 2019/7/1 2:58, Gao Xiang wrote:
+>>> From: Gao Xiang <gaoxiang25@huawei.com>
+>>>
+>>> Like all lz77-based algrithms, lz4 has a dynamically populated
+>>> ("sliding window") dictionary and the maximum lookback distance
+>>> is 65535. Therefore the number of bounced pages could be limited
+>>> by erofs based on this property.
+>>>
+>>> However, just now we observed some lz4 sequences in the extreme
+>>> case cannot be decompressed correctly after this feature is enabled,
+>>> the root causes after analysis are clear as follows:
+>>> 1) max bounced pages should be 17 rather than 16 pages;
+>>> 2) considering the following case, the broken implementation
+>>>    could reuse unsafely in advance (in other words, reuse it
+>>>    less than a safe distance),
+>>>    0 1 2 ... 16 17 18 ... 33 34
+>>>    b             p  b         b
+>>>    note that the bounce page that we are concerned was allocated
+>>>    at 0, and it reused at 18 since page 17 exists, but it mis-reused
+>>>    at 34 in advance again, which causes decompress failure.
+>>>
+>>> This patch resolves the issue by introducing a bitmap to mark
+>>> whether the page in the same position of last round is a bounced
+>>> page or not, and a micro stack data structure to store all
+>>> available bounced pages.
+>>>
+>>> Fixes: 7fc45dbc938a ("staging: erofs: introduce generic decompression backend")
+>>> Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
+>>> ---
+>>>  drivers/staging/erofs/decompressor.c | 50 ++++++++++++++++------------
+>>>  1 file changed, 28 insertions(+), 22 deletions(-)
+>>>
+>>> diff --git a/drivers/staging/erofs/decompressor.c b/drivers/staging/erofs/decompressor.c
+>>> index 80f1f39719ba..1fb0abb98dff 100644
+>>> --- a/drivers/staging/erofs/decompressor.c
+>>> +++ b/drivers/staging/erofs/decompressor.c
+>>> @@ -13,7 +13,7 @@
+>>>  #define LZ4_DISTANCE_MAX 65535	/* set to maximum value by default */
+>>>  #endif
+>>>  
+>>> -#define LZ4_MAX_DISTANCE_PAGES	DIV_ROUND_UP(LZ4_DISTANCE_MAX, PAGE_SIZE)
+>>> +#define LZ4_MAX_DISTANCE_PAGES	(DIV_ROUND_UP(LZ4_DISTANCE_MAX, PAGE_SIZE) + 1)
+>>>  #ifndef LZ4_DECOMPRESS_INPLACE_MARGIN
+>>>  #define LZ4_DECOMPRESS_INPLACE_MARGIN(srcsize)  (((srcsize) >> 8) + 32)
+>>>  #endif
+>>> @@ -35,19 +35,28 @@ static int lz4_prepare_destpages(struct z_erofs_decompress_req *rq,
+>>>  	const unsigned int nr =
+>>>  		PAGE_ALIGN(rq->pageofs_out + rq->outputsize) >> PAGE_SHIFT;
+>>>  	struct page *availables[LZ4_MAX_DISTANCE_PAGES] = { NULL };
+>>> -	unsigned long unused[DIV_ROUND_UP(LZ4_MAX_DISTANCE_PAGES,
+>>> -					  BITS_PER_LONG)] = { 0 };
+>>> +	unsigned long bounced[DIV_ROUND_UP(LZ4_MAX_DISTANCE_PAGES,
+>>> +					   BITS_PER_LONG)] = { 0 };
+>>>  	void *kaddr = NULL;
+>>> -	unsigned int i, j, k;
+>>> +	unsigned int i, j, top;
+>>>  
+>>> -	for (i = 0; i < nr; ++i) {
+>>> +	top = 0;
+>>> +	for (i = j = 0; i < nr; ++i, ++j) {
+>>>  		struct page *const page = rq->out[i];
+>>> +		struct page *victim;
+>>>  
+>>> -		j = i & (LZ4_MAX_DISTANCE_PAGES - 1);
+>>> -		if (availables[j])
+>>> -			__set_bit(j, unused);
+>>> +		if (j >= LZ4_MAX_DISTANCE_PAGES)
+>>> +			j = 0;
+>>> +
+>>> +		/* 'valid' bounced can only be tested after a complete round */
+>>> +		if (test_bit(j, bounced)) {
+>>> +			DBG_BUGON(i < LZ4_MAX_DISTANCE_PAGES);
+>>> +			DBG_BUGON(top >= LZ4_MAX_DISTANCE_PAGES);
+>>> +			availables[top++] = rq->out[i - LZ4_MAX_DISTANCE_PAGES];
+>>
+>> Maybe we can change 'i - LZ4_MAX_DISTANCE_PAGES' to 'j' directly for better
+>> readability.
+> 
+> OK, I think they are equivalent as well, will change for readability, retest and resend.
+> Thanks for your suggestion :)
 
-Of these 3 bugs, 1 was seen in mainline in the last week.
+I tested again and I observed that using j broke the logic and I think we cannot use j
+to replace i - LZ4_MAX_DISTANCE_PAGES.
 
-Of these 3 bugs, 1 was bisected to a commit from the following person:
+Since bounced pages was marked according to the last round rather than the first round,
+we cannot directly use the first round pages to push into the stack, e.g.
 
-	Todd Kjos <tkjos@android.com>
+1)
+    0 1 2 ... 16 17 18 ... 33 34
+    p             b            b
 
-If you believe a bug is no longer valid, please close the syzbot report by
-sending a '#syz fix', '#syz dup', or '#syz invalid' command in reply to the
-original thread, as explained at https://goo.gl/tpsmEJ#status
+bounce page could be allocated from rq->out[17], and we could reuse it from rq->out[34], which
+is not equal to rq->out[0].
 
-If you believe I misattributed a bug to the "android/binder" subsystem, ple=
-ase
-let me know, and if possible forward the report to the correct people or ma=
-iling
-list.
+2)
+    0 1 2 ... 16 17 18  19  ... 33 34 35 36
+      b              p   b                b
+allocated in rq->out[1] j = 1, reuse it in rq->out[19] j = 2, reuse it again in rq->out[36] j = 2,
+which is not equal to rq->out[2].
 
-Here are the bugs:
+I think the original patch is ok, and it cannot be replaced to rq->out[j].
 
----------------------------------------------------------------------------=
------
-Title:              kernel BUG at drivers/android/binder_alloc.c:LINE! (4)
-Last occurred:      6 days ago
-Reported:           14 days ago
-Branches:           Mainline and others
-Dashboard link:     https://syzkaller.appspot.com/bug?id=3Dbbf40136a49ffaa8=
-ac60906edcbe77f825b2c406
-Original thread:    https://lkml.kernel.org/lkml/000000000000b6b25b058b96d5=
-c3@google.com/T/#u
+Thanks,
+Gao Xiang
 
-This bug has a C reproducer.
-
-This bug was bisected to:
-
-	commit bde4a19fc04f5f46298c86b1acb7a4af1d5f138d
-	Author: Todd Kjos <tkjos@android.com>
-	Date:   Fri Feb 8 18:35:20 2019 +0000
-
-	=A0=A0binder: use userspace pointer as base of buffer space
-
-The original thread for this bug has received 3 replies; the last was 4 days
-ago.
-
-If you fix this bug, please add the following tag to the commit:
-    Reported-by: syzbot+3ae18325f96190606754@syzkaller.appspotmail.com
-
-If you send any email or patch for this bug, please reply to the original
-thread, which had activity only 4 days ago.  For the git send-email command=
- to
-use, or tips on how to reply if the thread isn't in your mailbox, see the "=
-Reply
-instructions" at https://lkml.kernel.org/r/000000000000b6b25b058b96d5c3@goo=
-gle.com
-
----------------------------------------------------------------------------=
------
-Title:              WARNING in binder_transaction_buffer_release
-Last occurred:      0 days ago
-Reported:           43 days ago
-Branches:           Mainline and others
-Dashboard link:     https://syzkaller.appspot.com/bug?id=3D4e0a6a529aef923a=
-8d61c5d20b8fc0605c730138
-Original thread:    https://lkml.kernel.org/lkml/000000000000afe2c705895266=
-68@google.com/T/#u
-
-This bug has a syzkaller reproducer only.
-
-The original thread for this bug has received 2 replies; the last was 20 da=
-ys
-ago.
-
-If you fix this bug, please add the following tag to the commit:
-    Reported-by: syzbot+8b3c354d33c4ac78bfad@syzkaller.appspotmail.com
-
-If you send any email or patch for this bug, please consider replying to the
-original thread.  For the git send-email command to use, or tips on how to =
-reply
-if the thread isn't in your mailbox, see the "Reply instructions" at
-https://lkml.kernel.org/r/000000000000afe2c70589526668@google.com
-
----------------------------------------------------------------------------=
------
-Title:              possible deadlock in uprobe_clear_state
-Last occurred:      165 days ago
-Reported:           202 days ago
-Branches:           Mainline
-Dashboard link:     https://syzkaller.appspot.com/bug?id=3Da1ce9b3da349209c=
-5085bb8c4fee753d68c3697f
-Original thread:    https://lkml.kernel.org/lkml/00000000000010a9fb057cd141=
-74@google.com/T/#u
-
-Unfortunately, this bug does not have a reproducer.
-
-[Note: the uprobe developers think this is a bug in binder, not uprobes.
- See https://marc.info/?l=3Dlinux-kernel&m=3D155119805728815&w=3D2
- for a suggested fix for this bug.]
-
-If you fix this bug, please add the following tag to the commit:
-    Reported-by: syzbot+1068f09c44d151250c33@syzkaller.appspotmail.com
-
-If you send any email or patch for this bug, please consider replying to the
-original thread.  For the git send-email command to use, or tips on how to =
-reply
-if the thread isn't in your mailbox, see the "Reply instructions" at
-https://lkml.kernel.org/r/00000000000010a9fb057cd14174@google.com
-
+> 
+> Thanks,
+> Gao Xiang
+> 
+>>
+>> Otherwise, it looks good to me.
+>>
+>> Reviewed-by: Chao Yu <yuchao0@huawei.com>
+>>
+>> Thanks,
+>>
+>>> +		}
+>>>  
+>>>  		if (page) {
+>>> +			__clear_bit(j, bounced);
+>>>  			if (kaddr) {
+>>>  				if (kaddr + PAGE_SIZE == page_address(page))
+>>>  					kaddr += PAGE_SIZE;
+>>> @@ -59,27 +68,24 @@ static int lz4_prepare_destpages(struct z_erofs_decompress_req *rq,
+>>>  			continue;
+>>>  		}
+>>>  		kaddr = NULL;
+>>> +		__set_bit(j, bounced);
+>>>  
+>>> -		k = find_first_bit(unused, LZ4_MAX_DISTANCE_PAGES);
+>>> -		if (k < LZ4_MAX_DISTANCE_PAGES) {
+>>> -			j = k;
+>>> -			get_page(availables[j]);
+>>> +		if (top) {
+>>> +			victim = availables[--top];
+>>> +			get_page(victim);
+>>>  		} else {
+>>> -			DBG_BUGON(availables[j]);
+>>> -
+>>>  			if (!list_empty(pagepool)) {
+>>> -				availables[j] = lru_to_page(pagepool);
+>>> -				list_del(&availables[j]->lru);
+>>> -				DBG_BUGON(page_ref_count(availables[j]) != 1);
+>>> +				victim = lru_to_page(pagepool);
+>>> +				list_del(&victim->lru);
+>>> +				DBG_BUGON(page_ref_count(victim) != 1);
+>>>  			} else {
+>>> -				availables[j] = alloc_pages(GFP_KERNEL, 0);
+>>> -				if (!availables[j])
+>>> +				victim = alloc_pages(GFP_KERNEL, 0);
+>>> +				if (!victim)
+>>>  					return -ENOMEM;
+>>>  			}
+>>> -			availables[j]->mapping = Z_EROFS_MAPPING_STAGING;
+>>> +			victim->mapping = Z_EROFS_MAPPING_STAGING;
+>>>  		}
+>>> -		rq->out[i] = availables[j];
+>>> -		__clear_bit(j, unused);
+>>> +		rq->out[i] = victim;
+>>>  	}
+>>>  	return kaddr ? 1 : 0;
+>>>  }
+>>>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
