@@ -2,61 +2,76 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7D08D5F244
-	for <lists+driverdev-devel@lfdr.de>; Thu,  4 Jul 2019 07:26:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D5EF15F292
+	for <lists+driverdev-devel@lfdr.de>; Thu,  4 Jul 2019 08:08:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8559587E3B;
-	Thu,  4 Jul 2019 05:26:56 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id F1A4485EA5;
+	Thu,  4 Jul 2019 06:08:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7YTFFMNPb-R2; Thu,  4 Jul 2019 05:26:56 +0000 (UTC)
+	with ESMTP id w5Hm0LxQ+ge6; Thu,  4 Jul 2019 06:08:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 080FA87E0B;
-	Thu,  4 Jul 2019 05:26:56 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 803BF87E30;
+	Thu,  4 Jul 2019 06:08:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 28D8A1BF575
- for <devel@linuxdriverproject.org>; Thu,  4 Jul 2019 05:26:54 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 27DAC1BF340
+ for <devel@linuxdriverproject.org>; Thu,  4 Jul 2019 06:08:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 2576D203A8
- for <devel@linuxdriverproject.org>; Thu,  4 Jul 2019 05:26:54 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2438C84483
+ for <devel@linuxdriverproject.org>; Thu,  4 Jul 2019 06:08:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NcS4YOyz5MZb for <devel@linuxdriverproject.org>;
- Thu,  4 Jul 2019 05:26:52 +0000 (UTC)
+ with ESMTP id KjviRWcYKIrm for <devel@linuxdriverproject.org>;
+ Thu,  4 Jul 2019 06:08:21 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id A5A3F20382
- for <devel@driverdev.osuosl.org>; Thu,  4 Jul 2019 05:26:52 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id E7426218A3;
- Thu,  4 Jul 2019 05:26:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1562218012;
- bh=I+0cH+uMT7VJ70KPqMIW9T45sVtfmgYmhLBmxgsq+no=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=pLn7CV1p02AUDr60ZlfdxpQ5bkJ8gd6ERqKq4pMX+CjKvnIsgmHtPNGcgQlejITNx
- NYrdzjP+yqOoe/er9SU58/O+EPX1S24y3KThzgRsDyRl3FzS0RfRVPF4fe7AVvg1qd
- vD6iQ1lux/9E6IXGm/cgxz7eruZZHPTmQYa6snQE=
-Date: Thu, 4 Jul 2019 07:26:49 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Yue Hu <zbestahu@gmail.com>
-Subject: Re: [PATCH RESEND v3] staging: erofs: remove unsupported ->datamode
- check in fill_inline_data()
-Message-ID: <20190704052649.GA7454@kroah.com>
-References: <20190702025601.7976-1-zbestahu@gmail.com>
- <20190703162038.GA31307@kroah.com>
- <20190704095903.0000565e.zbestahu@gmail.com>
+Received: from mail-lj1-f196.google.com (mail-lj1-f196.google.com
+ [209.85.208.196])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 45EBA8410C
+ for <devel@driverdev.osuosl.org>; Thu,  4 Jul 2019 06:08:21 +0000 (UTC)
+Received: by mail-lj1-f196.google.com with SMTP id 205so4906181ljj.8
+ for <devel@driverdev.osuosl.org>; Wed, 03 Jul 2019 23:08:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nikanor-nu.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=r0OL21aoHCmJUqSyRuOUM6JM8EbwmZkWEvcS1f/VXQc=;
+ b=pisRV2Ql3caw37w/QiGUOintN93G2+qRu20I6q2ASQHFK062ygqw8DiWiyOgkuMFyC
+ R3MJKsqM8VXcZ/8UU32WRTw4NhVeyj3u5UHMHC35teZWLGp+2z2l33Qy2UilGIm2QQdg
+ ODNSbSZZ5fRl+2AKebqHNOTbwqKTpHxpeosS2fsXPIk4GAfiCBVq+A5+60Ggjb31u2z9
+ 2YqlqAg7BCipF+lk7+uUABXVyhJ8uOA0NApR/D7CyzloDa4rYHRBkpPpCkO3l0MqlXdg
+ HiGP6/b5Pat1u9zL5GFx2afzoaIuiRbS27DEfUihOR5OMjeBD75QFv9eG07Y+1TT0LyF
+ 80Ug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=r0OL21aoHCmJUqSyRuOUM6JM8EbwmZkWEvcS1f/VXQc=;
+ b=t7AhEz1FQqLFf2EHB7rh1Q/72wyTWaBOf/Wf+p8Ts5fi4dmQ/WVAiHkBzEcY+CTVqE
+ orIWhq8AbGvpZiv8JiO6XWjPT7psGUr/iTfeOYkxkOw2Rfo2lkS6TgnVRAQ5l9Lcv0Tj
+ Vu/PoLwmpCH1eabSRY2UE2aVb7PRdGXPHDPDCXCxKvupMbaQRMsE1jblAptWW58FgizW
+ xVLojb8YlPiIIAonhzC9GBcbK7HAQCa3IxlcRaBdl4QQHz5V3eQ7Bmrt9fhVrMkycfJY
+ fVzLGCIW7mq2UYxKP/DFBABITvmVliuBxFpg/FNhRvlt5ZnRhjW98l1ZNAq+fNsKh5ms
+ SeBA==
+X-Gm-Message-State: APjAAAUH8dPX6e6snNrNwmeikYvTRy4amK12OXtGLQFvN2C2C8ly1jDO
+ 9pIW2Dx5Q3htyxvHrZvmp+Ff3w==
+X-Google-Smtp-Source: APXvYqzOsXtBUXJs0TfRsT8D7cp3MEyHCUv0RtiN18pdJ1gLOipAwZAXHhpPYU5ZHSciK3oCZAebog==
+X-Received: by 2002:a2e:86c1:: with SMTP id n1mr7144917ljj.162.1562220499357; 
+ Wed, 03 Jul 2019 23:08:19 -0700 (PDT)
+Received: from dev.nikanor.nu (78-72-133-4-no161.tbcn.telia.com. [78.72.133.4])
+ by smtp.gmail.com with ESMTPSA id b4sm710440lfp.33.2019.07.03.23.08.18
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Wed, 03 Jul 2019 23:08:18 -0700 (PDT)
+From: =?UTF-8?q?Simon=20Sandstr=C3=B6m?= <simon@nikanor.nu>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH 0/3] Simplify NULL comparisons in staging/kpc2000
+Date: Thu,  4 Jul 2019 08:08:08 +0200
+Message-Id: <20190704060811.10330-1-simon@nikanor.nu>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190704095903.0000565e.zbestahu@gmail.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,68 +84,24 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, huyue2@yulong.com, yuchao0@huawei.com,
- linux-erofs@lists.ozlabs.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, gneukum1@gmail.com,
+ linux-kernel@vger.kernel.org,
+ =?UTF-8?q?Simon=20Sandstr=C3=B6m?= <simon@nikanor.nu>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Jul 04, 2019 at 09:59:03AM +0800, Yue Hu wrote:
-> On Wed, 3 Jul 2019 18:20:38 +0200
-> Greg KH <gregkh@linuxfoundation.org> wrote:
-> 
-> > On Tue, Jul 02, 2019 at 10:56:01AM +0800, Yue Hu wrote:
-> > > From: Yue Hu <huyue2@yulong.com>
-> > > 
-> > > Already check if ->datamode is supported in read_inode(), no need to check
-> > > again in the next fill_inline_data() only called by fill_inode().
-> > > 
-> > > Signed-off-by: Yue Hu <huyue2@yulong.com>
-> > > Reviewed-by: Gao Xiang <gaoxiang25@huawei.com>
-> > > Reviewed-by: Chao Yu <yuchao0@huawei.com>
-> > > ---
-> > > no change
-> > > 
-> > >  drivers/staging/erofs/inode.c | 2 --
-> > >  1 file changed, 2 deletions(-)  
-> > 
-> > This is already in my tree, right?
-> 
-> Seems not, i have received notes about other 2 patches below mergerd:
-> 
-> ```note1
-> This is a note to let you know that I've just added the patch titled
-> 
->     staging: erofs: don't check special inode layout
-> 
-> to my staging git tree which can be found at
->     git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
-> in the staging-next branch.
-> ```
-> 
-> ```note2
-> This is a note to let you know that I've just added the patch titled
-> 
->     staging: erofs: return the error value if fill_inline_data() fails
-> 
-> to my staging git tree which can be found at
->     git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
-> in the staging-next branch.
-> ```
-> 
-> No this patch in below link checked:
-> 
-> https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/log/drivers/staging/erofs?h=staging-testing
-
-Then if it is not present, it needs to be rebased as it does not apply.
-
-Please do so and resend it.
-
-thanks,
-
-greg k-h
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+SGksCgpUaGVzZSBwYXRjaGVzIHNpbXBsaWZpZXMgYSBmZXcgY29tcGFyaXNvbnMgdG8gTlVMTCAo
+ImZvbyA9PSBOVUxMIiA9PgoiIWZvbyIpIGluIHN0YWdpbmcva3BjMjAwMCwgYXMgcmVwb3J0ZWQg
+YnkgY2hlY2twYXRjaC5wbC4KCi0gU2ltb24KClNpbW9uIFNhbmRzdHLDtm0gKDMpOgogIHN0YWdp
+bmc6IGtwYzIwMDA6IHNpbXBsaWZ5IGNvbXBhcmlzb24gdG8gTlVMTCBpbiBrcGMyMDAwX3NwaS5j
+CiAgc3RhZ2luZzoga3BjMjAwMDogc2ltcGxpZnkgY29tcGFyaXNvbiB0byBOVUxMIGluIGRtYS5j
+CiAgc3RhZ2luZzoga3BjMjAwMDogc2ltcGxpZnkgY29tcGFyaXNvbiB0byBOVUxMIGluIGZpbGVv
+cHMuYwoKIGRyaXZlcnMvc3RhZ2luZy9rcGMyMDAwL2twYzIwMDBfc3BpLmMgICAgIHwgNCArKy0t
+CiBkcml2ZXJzL3N0YWdpbmcva3BjMjAwMC9rcGNfZG1hL2RtYS5jICAgICB8IDQgKystLQogZHJp
+dmVycy9zdGFnaW5nL2twYzIwMDAva3BjX2RtYS9maWxlb3BzLmMgfCAyICstCiAzIGZpbGVzIGNo
+YW5nZWQsIDUgaW5zZXJ0aW9ucygrKSwgNSBkZWxldGlvbnMoLSkKCi0tIAoyLjIwLjEKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcg
+bGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhk
+cml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
