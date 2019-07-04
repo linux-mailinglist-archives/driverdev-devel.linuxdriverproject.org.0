@@ -1,124 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 372D65F106
-	for <lists+driverdev-devel@lfdr.de>; Thu,  4 Jul 2019 03:45:57 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2856A5F118
+	for <lists+driverdev-devel@lfdr.de>; Thu,  4 Jul 2019 03:59:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 684202047C;
-	Thu,  4 Jul 2019 01:45:55 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AD9BD87E16;
+	Thu,  4 Jul 2019 01:59:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id C0irqz8L5Xtt; Thu,  4 Jul 2019 01:45:53 +0000 (UTC)
+	with ESMTP id I25g7pEpC1T5; Thu,  4 Jul 2019 01:59:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id A7C27203DE;
-	Thu,  4 Jul 2019 01:45:51 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4319187DDB;
+	Thu,  4 Jul 2019 01:59:21 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A03091BF3B9
- for <driverdev-devel@linuxdriverproject.org>;
- Thu,  4 Jul 2019 01:45:49 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D22161BF232
+ for <devel@linuxdriverproject.org>; Thu,  4 Jul 2019 01:59:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9AA7C85319
- for <driverdev-devel@linuxdriverproject.org>;
- Thu,  4 Jul 2019 01:45:49 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id CDFD2864E5
+ for <devel@linuxdriverproject.org>; Thu,  4 Jul 2019 01:59:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id R1NGqkPtXLvL
- for <driverdev-devel@linuxdriverproject.org>;
- Thu,  4 Jul 2019 01:45:48 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from APC01-PU1-obe.outbound.protection.outlook.com
- (mail-eopbgr1320093.outbound.protection.outlook.com [40.107.132.93])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 2A07485045
- for <driverdev-devel@linuxdriverproject.org>;
- Thu,  4 Jul 2019 01:45:48 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=eIPpBT6i+8PwK5Nh9kufbQIC8SYqQbvaf1v1bh5jfz7g8vjIv0sMxT3MbC5ybfQG74hwITtTyaPpGp2EyQEW0Mzco60lB0uQ+TQorK463qXSRN/XQ0WnWHF0fSMSoIPc9xPKBq+oCDDxEn89m9Uj/dWJLoN9odU/kPzJd4t5UjixGzcINujMAPdto/5SYL2rAOJARtXJJha10s2eio3RiCmFGi9ygh+tVvCgCPJGTQjYMkIYjg6iurbRZL0gGbVUduw3QJMvvs4veovRP1eXGRDUnVJ2IsEyZsFQQevQc1RYR7kXHETaIJyjQ+dyHo9bgWkrETPRHzk/eXoUYmbcmg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=7v6GVm6tGYty3JcJjdWZrKUTOKN41704m3N7xx5cBNU=;
- b=OP6RltYtvG74zaJGzHW5WsRh48VD1ll8eWGMewKuYFSbC5o3vPRB5STBt5uhzCyVEJP1wR4xPK4Hlveyk7/8j8zV+YlKmvSfVeowx25PQOTV4s1uV7oJiA3ryj4klUgemFFIBHJEa8DEtNNFhN20yi9j9v8He1NL43JheOo6/gpVZ5W/rEPIDaMYW/jYdQ1zY0kAo5U4oFgx0zRgPtHByFTECWrsm38sAg8/HuOrDeb7llHgt+uAkPr+sqPVH4a3zRqp1bCOEPpFNOV8dYoVqA6rDG8XVxCjbvngOf6401/piXQxqrvMfQPjCfDSol3PpT3y0kMVwTQoKoj2g2w0yw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1;spf=pass
- smtp.mailfrom=microsoft.com;dmarc=pass action=none
- header.from=microsoft.com;dkim=pass header.d=microsoft.com;arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=7v6GVm6tGYty3JcJjdWZrKUTOKN41704m3N7xx5cBNU=;
- b=jKZJF7RDX4vaoSLqae1Lw2Z41LlSHoVYA5vhAaDvj5SsqVQfBifXOywJJW5/XseeFjNjy3QveNVNOu2Th89Gg51w5MTStFPTcqeei2p8jLv6nctklwQeJyiBs2UCwzQoJ056S01YmzYKmESItX2Fo6mplr8A0Oc2BlAVlVmeMKs=
-Received: from PU1P153MB0169.APCP153.PROD.OUTLOOK.COM (10.170.189.13) by
- PU1P153MB0203.APCP153.PROD.OUTLOOK.COM (52.133.194.146) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2073.2; Thu, 4 Jul 2019 01:45:42 +0000
-Received: from PU1P153MB0169.APCP153.PROD.OUTLOOK.COM
- ([fe80::61b3:885f:a7e4:ec0b]) by PU1P153MB0169.APCP153.PROD.OUTLOOK.COM
- ([fe80::61b3:885f:a7e4:ec0b%9]) with mapi id 15.20.2073.004; Thu, 4 Jul 2019
- 01:45:42 +0000
-From: Dexuan Cui <decui@microsoft.com>
-To: Haiyang Zhang <haiyangz@microsoft.com>, KY Srinivasan <kys@microsoft.com>, 
- Stephen Hemminger <sthemmin@microsoft.com>, Sasha Levin
- <Alexander.Levin@microsoft.com>, "linux-hyperv@vger.kernel.org"
- <linux-hyperv@vger.kernel.org>, Michael Kelley <mikelley@microsoft.com>, Long
- Li <longli@microsoft.com>, vkuznets <vkuznets@redhat.com>, Thomas Gleixner
- <tglx@linutronix.de>, Ingo Molnar <mingo@kernel.org>, "H. Peter Anvin"
- <hpa@zytor.com>, Borislav Petkov <bp@alien8.de>, "x86@kernel.org"
- <x86@kernel.org>
-Subject: [PATCH] x86/hyper-v: Zero out the VP assist page to fix CPU offlining
-Thread-Topic: [PATCH] x86/hyper-v: Zero out the VP assist page to fix CPU
- offlining
-Thread-Index: AdUyCb6p1/Ch6raqSV2uCwYf/NBGWg==
-Date: Thu, 4 Jul 2019 01:45:42 +0000
-Message-ID: <PU1P153MB01697CBE66649B4BA91D8B48BFFA0@PU1P153MB0169.APCP153.PROD.OUTLOOK.COM>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Enabled=True;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SiteId=72f988bf-86f1-41af-91ab-2d7cd011db47;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Owner=decui@microsoft.com;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SetDate=2019-07-04T01:45:38.3267647Z;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Name=General;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Application=Microsoft Azure
- Information Protection;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_ActionId=85e22f80-189c-4798-b8a7-1089c5ef2a54;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Extended_MSFT_Method=Automatic
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=decui@microsoft.com; 
-x-originating-ip: [2001:4898:80e8:a:418d:2241:ae9c:1f48]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 2b1af2a1-bd21-482f-1a23-08d70021532d
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:PU1P153MB0203; 
-x-ms-traffictypediagnostic: PU1P153MB0203:|PU1P153MB0203:
-x-ld-processed: 72f988bf-86f1-41af-91ab-2d7cd011db47,ExtAddr
-x-microsoft-antispam-prvs: <PU1P153MB020304C9BC265BA619871426BFFA0@PU1P153MB0203.APCP153.PROD.OUTLOOK.COM>
-x-ms-oob-tlc-oobclassifiers: OLM:8882;
-x-forefront-prvs: 0088C92887
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(39860400002)(136003)(396003)(366004)(376002)(346002)(199004)(189003)(9686003)(478600001)(46003)(55016002)(6436002)(486006)(10090500001)(476003)(53936002)(99286004)(186003)(1511001)(102836004)(6116002)(6506007)(7696005)(2501003)(256004)(66476007)(66556008)(64756008)(14444005)(66446008)(66946007)(73956011)(71200400001)(71190400001)(2906002)(5660300002)(33656002)(10290500003)(52536014)(4326008)(86362001)(76116006)(110136005)(54906003)(25786009)(74316002)(8676002)(81166006)(22452003)(8936002)(316002)(8990500004)(305945005)(81156014)(7736002)(14454004)(7416002)(68736007)(921003)(1121003);
- DIR:OUT; SFP:1102; SCL:1; SRVR:PU1P153MB0203;
- H:PU1P153MB0169.APCP153.PROD.OUTLOOK.COM; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: microsoft.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: mTod6tqUngzCSKu667o6BZtFT8dZxEYDyOvXXGNmRJrBPHYjNR4RQZHDtarzSXxRcf71072+/oTEGgdIyTKpU48SpSXlllfrDuu6eKE7xq0coMg/sxaLfJ6F0ghlgT75H4Qe1uYSBzDxBgUMwUA93ZB8FYGP8rLKOA7H9+gmj6fv7lCip4KrDVnEk/qqC9yad5hY5HzTE9MORL6eu2fOFkOL6FsWenbMbFSUFuI5nXGGMjYKQLp+smiQuCS97+Y4BkmGfyg8WsLZ56XvWdr3+OtsxihnP+ndGux7mkEo8T31x+qZAs1H7SWiUoXOARSDqfF30Mru2EpKkiDXCWVFdvJAzPLcfKzHoOoGR3+skT1E2ZVPMQst5fj+dhA/o3iTJVdGXNyGrRItd1TAaMROmdAxxu2xWuFdKWYhA0ZsSDM=
+ with ESMTP id Ub262faJO3nv for <devel@linuxdriverproject.org>;
+ Thu,  4 Jul 2019 01:59:15 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
+ [209.85.214.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 96887811CC
+ for <devel@driverdev.osuosl.org>; Thu,  4 Jul 2019 01:59:15 +0000 (UTC)
+Received: by mail-pl1-f195.google.com with SMTP id a93so2204209pla.7
+ for <devel@driverdev.osuosl.org>; Wed, 03 Jul 2019 18:59:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=yBNyJBnqU/lYe/Ozz1jmxOlaF/PmqyD3BLJwt7wrtGU=;
+ b=DafuIMzRmRoFk2EtihZ6K9OJnyDWcYNsPH7F4xqO38yVAcGxqFgy2ppKW0kLW2CB8l
+ +Cl/DKFQwgopwOtQNq4x/amG+iW9DSq9UFXBxoP7PzwQ+x8lXt1l3II/rmf46niXX0YQ
+ l+7PSi6Z3xLB1hFmW4N5rwVxWS1r0RUseTBaXBBT+pdO5TfHVgfLSoQVUzUzFNn6LLLk
+ tklOtKZ0IsayBMkMNGdwT8Kt83LjaLPI1PoU8I2KHegSuHkMF42Xnbkcg2R8ykbiLv5s
+ /PGeadBgf9cOKDIvujjxOCkmnPobO44M4GTLfFevleShqEpZvooKdQemKCO8OXTqBNGM
+ UU6g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=yBNyJBnqU/lYe/Ozz1jmxOlaF/PmqyD3BLJwt7wrtGU=;
+ b=hDPZ5IxGcRZx4wt4iNFl/pZJHImvqJMrrB0ptB8TUDSkMvxMWb5Jrvjeqpr8x1QSGX
+ 3lAZhMYE9ewKAz2tHm9TII5L3ifC9GDEwViX1EkOPD9iCzj9plFjqy1Qu4zEKJ6Y2x6M
+ Y9SlZfoYQwYrT4MpyxXJqfUuKmUIIsnH+rabHcMbXzUpRW/eX9brRl+k8AG6tbFs+OKv
+ qPHUiPe7YBZmMysCi8q6I9JarR7KjyNScG4CGznQQFASUV0pRBDV9B4s8h72nxO5KJC6
+ PDc2NipyIm8Rq+nXeHBhZMcsR49p0dryJb0r2zMuccoQfDqG1BQW+PhpYfGX/6HeM0Ox
+ Q+vw==
+X-Gm-Message-State: APjAAAWQd0mWd+/SPNeUS+aGkFzEYq3F12gdC1EEdAncHM5kUtPFGJg2
+ 9JMI00ppVdTqkCY3+538I7g=
+X-Google-Smtp-Source: APXvYqwzCTWt23oxzdyRl3RG83l5rEiHGsDuTVXrO82oG40/lICiq6krwvwERXdF37c9iMzrvV7HNw==
+X-Received: by 2002:a17:902:b592:: with SMTP id
+ a18mr46612654pls.278.1562205555190; 
+ Wed, 03 Jul 2019 18:59:15 -0700 (PDT)
+Received: from localhost ([218.189.10.173])
+ by smtp.gmail.com with ESMTPSA id x25sm3582345pfm.48.2019.07.03.18.59.12
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Wed, 03 Jul 2019 18:59:14 -0700 (PDT)
+Date: Thu, 4 Jul 2019 09:59:03 +0800
+From: Yue Hu <zbestahu@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH RESEND v3] staging: erofs: remove unsupported ->datamode
+ check in fill_inline_data()
+Message-ID: <20190704095903.0000565e.zbestahu@gmail.com>
+In-Reply-To: <20190703162038.GA31307@kroah.com>
+References: <20190702025601.7976-1-zbestahu@gmail.com>
+ <20190703162038.GA31307@kroah.com>
+X-Mailer: Claws Mail 3.17.3 (GTK+ 2.24.32; i686-w64-mingw32)
 MIME-Version: 1.0
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2b1af2a1-bd21-482f-1a23-08d70021532d
-X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Jul 2019 01:45:42.1202 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: decui@microsoft.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PU1P153MB0203
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -131,57 +88,65 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "olaf@aepfle.de" <olaf@aepfle.de>,
- "jasowang@redhat.com" <jasowang@redhat.com>,
- "driverdev-devel@linuxdriverproject.org"
- <driverdev-devel@linuxdriverproject.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "apw@canonical.com" <apw@canonical.com>,
- "marcelo.cerri@canonical.com" <marcelo.cerri@canonical.com>
+Cc: devel@driverdev.osuosl.org, yuchao0@huawei.com,
+ linux-kernel@vger.kernel.org, huyue2@yulong.com, linux-erofs@lists.ozlabs.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-When a CPU is being offlined, the CPU usually still receives a few
-interrupts (e.g. reschedule IPIs), after hv_cpu_die() disables the
-HV_X64_MSR_VP_ASSIST_PAGE, so hv_apic_eoi_write() may not write the EOI
-MSR, if the apic_assist field's bit0 happens to be 1; as a result, Hyper-V
-may not be able to deliver all the interrupts to the CPU, and the CPU may
-not be stopped, and the kernel will hang soon.
+On Wed, 3 Jul 2019 18:20:38 +0200
+Greg KH <gregkh@linuxfoundation.org> wrote:
 
-The VP ASSIST PAGE is an "overlay" page (see Hyper-V TLFS's Section
-5.2.1 "GPA Overlay Pages"), so with this fix we're sure the apic_assist
-field is still zero, after the VP ASSIST PAGE is disabled.
+> On Tue, Jul 02, 2019 at 10:56:01AM +0800, Yue Hu wrote:
+> > From: Yue Hu <huyue2@yulong.com>
+> > 
+> > Already check if ->datamode is supported in read_inode(), no need to check
+> > again in the next fill_inline_data() only called by fill_inode().
+> > 
+> > Signed-off-by: Yue Hu <huyue2@yulong.com>
+> > Reviewed-by: Gao Xiang <gaoxiang25@huawei.com>
+> > Reviewed-by: Chao Yu <yuchao0@huawei.com>
+> > ---
+> > no change
+> > 
+> >  drivers/staging/erofs/inode.c | 2 --
+> >  1 file changed, 2 deletions(-)  
+> 
+> This is already in my tree, right?
 
-Fixes: ba696429d290 ("x86/hyper-v: Implement EOI assist")
-Signed-off-by: Dexuan Cui <decui@microsoft.com>
----
- arch/x86/hyperv/hv_init.c | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
+Seems not, i have received notes about other 2 patches below mergerd:
 
-diff --git a/arch/x86/hyperv/hv_init.c b/arch/x86/hyperv/hv_init.c
-index 0e033ef11a9f..db51a301f759 100644
---- a/arch/x86/hyperv/hv_init.c
-+++ b/arch/x86/hyperv/hv_init.c
-@@ -60,8 +60,14 @@ static int hv_cpu_init(unsigned int cpu)
- 	if (!hv_vp_assist_page)
- 		return 0;
- 
-+	/*
-+	 * The ZERO flag is necessary, because in the case of CPU offlining
-+	 * the page can still be used by hv_apic_eoi_write() for a while,
-+	 * after the VP ASSIST PAGE is disabled in hv_cpu_die().
-+	 */
- 	if (!*hvp)
--		*hvp = __vmalloc(PAGE_SIZE, GFP_KERNEL, PAGE_KERNEL);
-+		*hvp = __vmalloc(PAGE_SIZE, GFP_KERNEL | __GFP_ZERO,
-+				 PAGE_KERNEL);
- 
- 	if (*hvp) {
- 		u64 val;
--- 
-2.19.1
+```note1
+This is a note to let you know that I've just added the patch titled
+
+    staging: erofs: don't check special inode layout
+
+to my staging git tree which can be found at
+    git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
+in the staging-next branch.
+```
+
+```note2
+This is a note to let you know that I've just added the patch titled
+
+    staging: erofs: return the error value if fill_inline_data() fails
+
+to my staging git tree which can be found at
+    git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
+in the staging-next branch.
+```
+
+No this patch in below link checked:
+
+https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/log/drivers/staging/erofs?h=staging-testing
+
+Thanks.
+
+> 
+> confused,
+> 
+> greg k-h
 
 _______________________________________________
 devel mailing list
