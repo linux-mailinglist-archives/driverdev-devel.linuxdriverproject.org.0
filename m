@@ -1,78 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 915175F296
-	for <lists+driverdev-devel@lfdr.de>; Thu,  4 Jul 2019 08:08:34 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7C03D5F638
+	for <lists+driverdev-devel@lfdr.de>; Thu,  4 Jul 2019 12:02:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2019622170;
-	Thu,  4 Jul 2019 06:08:33 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 21A1287E65;
+	Thu,  4 Jul 2019 10:02:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id T4s3LVxtJca3; Thu,  4 Jul 2019 06:08:31 +0000 (UTC)
+	with ESMTP id 60SgW-8djiTA; Thu,  4 Jul 2019 10:02:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id A9D362047B;
-	Thu,  4 Jul 2019 06:08:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 63C8F87E54;
+	Thu,  4 Jul 2019 10:02:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8B23C1BF340
- for <devel@linuxdriverproject.org>; Thu,  4 Jul 2019 06:08:24 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E48151BF48B
+ for <devel@linuxdriverproject.org>; Thu,  4 Jul 2019 10:02:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 87E672047B
- for <devel@linuxdriverproject.org>; Thu,  4 Jul 2019 06:08:24 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E1179860CF
+ for <devel@linuxdriverproject.org>; Thu,  4 Jul 2019 10:02:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id C44Xq7Muk2Cr for <devel@linuxdriverproject.org>;
- Thu,  4 Jul 2019 06:08:23 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lj1-f195.google.com (mail-lj1-f195.google.com
- [209.85.208.195])
- by silver.osuosl.org (Postfix) with ESMTPS id 5EBCD2046F
- for <devel@driverdev.osuosl.org>; Thu,  4 Jul 2019 06:08:23 +0000 (UTC)
-Received: by mail-lj1-f195.google.com with SMTP id v18so4894767ljh.6
- for <devel@driverdev.osuosl.org>; Wed, 03 Jul 2019 23:08:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nikanor-nu.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
+ with ESMTP id 75gz2qwhv02j for <devel@linuxdriverproject.org>;
+ Thu,  4 Jul 2019 10:02:22 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
+ [209.85.214.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2463885FD7
+ for <devel@driverdev.osuosl.org>; Thu,  4 Jul 2019 10:02:22 +0000 (UTC)
+Received: by mail-pl1-f195.google.com with SMTP id bi6so2818236plb.12
+ for <devel@driverdev.osuosl.org>; Thu, 04 Jul 2019 03:02:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=JBbOD4rj/6MTcJXlkxHvsQxP2TTle1/H3CMZv+6B/V4=;
- b=Lgc0eqQT/R1b7aB33G0Mii0j7RL/EyMCalrdd4T10q3Jjz5O09wz4zBWC98iXtsiop
- EchLcnoTN51L/4mAn4u6U946gxTkqRcbtCDb77/uqaUklg0Gj5UGoi2XVEyEeMePmKgn
- W6o2kyY2vWziIvF1tyT2ONHLwEjhmCI/MKTf6cVumE3fXcylTQR0pvzQrlXhXRwuLLwn
- 3zYkmfvRFsZEbb9aJkUvwEgPBMsDqBjyyJBKnP0LYcH8v3xGTEz4hVY7QYbYLnzUrL9W
- EfxVPI2R8Jrg6EMOt5lICmMBVnTW+r3KOBN8pHNt1m0Moci5yWYNqVc3jAPpmnEJtwaM
- wdZQ==
+ bh=AHAOh7FBxYQUboNiiix/lSgcCWAvw4RHDpwodpRKdNs=;
+ b=Q2p98X98irjXvs/iO/RhgVHs6Fge85Y5iF373sUnY3qNCrHybAjkpOg2173g30ukn9
+ HceW3sPP1hcjiOirEYf1+2mbxehzwjbOdybYng+r5jcyFlXNsHvgeNL89Q3S+MFrxv12
+ Rg/JCjywQszl4f7Mb90cJMn6Y5sCGTNGVuW0A1qsFWjYht58BcSwfcWaKbWKdYpJhTK+
+ 2OL5lza0T8EGCgP+/sjaYM9zJ6O96cbpqVgRV/sFu5KLA9MJEl767XFzWRKGIARGVIGN
+ YVM8rxsGOi8DS9TO2jE10VLDKy3iWLNFkeOLvvZKL7EKKDLLU4bDYr0Aklq71Uabo+FM
+ V/pw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=JBbOD4rj/6MTcJXlkxHvsQxP2TTle1/H3CMZv+6B/V4=;
- b=fuiDFFh4tprFcLwFleQvnZIp6GNh+ekopc1FwS6lb2YgmDxK9ZKVjPYfaik3LQvQ9u
- D8ZH8pljZkhgoTKwMJxNOJTZ7+jmVkR2OfeD8bnctTlb0v4Fv43xmVfTZtDnz12Zr+/9
- 76oFhC6Ttp8om2ZxQiJ65bE4b6LazX4Vf6rTTHWOESjURiEvIEWeH1RJ7UcxVjULG+VP
- Yafmm6eXfeBElHCdd2KMPaM3iRvPuAbgD8MSq3HvYZTxC5tIu7wOfJqVCm6xPC9ALuAs
- rXsQKpljzI9Ly8Q0dRS5FLYFIbjmW/rXTbTw5yvUh31UETILHH/SrHpEEKKTvgM3DLGG
- Pg2A==
-X-Gm-Message-State: APjAAAVxC3cPeyjmDXMu0Kz9s2d23pvlRN4QfvulXd7ZRfVPwvfRkg8S
- xBU6mzy+lv4k8CGWTuIElhP9Ig==
-X-Google-Smtp-Source: APXvYqzZ6BCDAqrYU1giJPNAZ8lJa99B9+Frb2uYcMzIN2R0XBOUIf9/8i9L44wd6Hw6HZ6yfzXASQ==
-X-Received: by 2002:a2e:4e12:: with SMTP id c18mr23606824ljb.211.1562220501712; 
- Wed, 03 Jul 2019 23:08:21 -0700 (PDT)
-Received: from dev.nikanor.nu (78-72-133-4-no161.tbcn.telia.com. [78.72.133.4])
- by smtp.gmail.com with ESMTPSA id b4sm710440lfp.33.2019.07.03.23.08.20
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Wed, 03 Jul 2019 23:08:21 -0700 (PDT)
-From: =?UTF-8?q?Simon=20Sandstr=C3=B6m?= <simon@nikanor.nu>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH 3/3] staging: kpc2000: simplify comparison to NULL in fileops.c
-Date: Thu,  4 Jul 2019 08:08:11 +0200
-Message-Id: <20190704060811.10330-4-simon@nikanor.nu>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190704060811.10330-1-simon@nikanor.nu>
-References: <20190704060811.10330-1-simon@nikanor.nu>
+ bh=AHAOh7FBxYQUboNiiix/lSgcCWAvw4RHDpwodpRKdNs=;
+ b=P4Hg+eKTtH8aovIofaG+JXTwDAL6ucAx5P71iEhMK6sBrv4cUC0Do4VRaZ88qLpyzm
+ eIZKvO4mcs2/dqPpUFz2q8glB3jC9IGizWpGX3iAjogYD/DHYlVi1Zvk6AIWgiIKGDiE
+ +/h6tholQFyeflZonVGZnJqGUrYf/7sgWOQPeTbIdlkTMlgNL72aQNS8/MX65MeEO0mN
+ 1XdBDBX/exyzNN5v/TLJCFFe/xTU5qF8txJLVXLH4DO0V7HD87Ly3W5hHD6Dp/n34PBj
+ NDFpkuUwCjL1X5gpmT5YkWdRCVLtE5616OsarNhzWT0/tM5c4fOC8V47QdrGfsVvMGuH
+ HIXw==
+X-Gm-Message-State: APjAAAXtE5TpjRKSx5UfEK3IZXmf64qLPfdDOZG6Lya3RgENnKcSCDe/
+ C6qKOxUK5TGyM+9Dt24LZxk=
+X-Google-Smtp-Source: APXvYqyUpSz5kViPDgxvt9wrV2Cyk1yHzTLql9qU6i3mRjiEnK1Vbw4O//g0ryQX4vvxf+WtJC1zCQ==
+X-Received: by 2002:a17:902:2aa8:: with SMTP id
+ j37mr46217419plb.316.1562234541812; 
+ Thu, 04 Jul 2019 03:02:21 -0700 (PDT)
+Received: from localhost ([218.189.10.173])
+ by smtp.gmail.com with ESMTPSA id w187sm5189791pfb.4.2019.07.04.03.02.19
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Thu, 04 Jul 2019 03:02:21 -0700 (PDT)
+Date: Thu, 4 Jul 2019 18:02:07 +0800
+From: Yue Hu <zbestahu@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH RESEND v3] staging: erofs: remove unsupported ->datamode
+ check in fill_inline_data()
+Message-ID: <20190704180207.0000374e.zbestahu@gmail.com>
+In-Reply-To: <20190704052649.GA7454@kroah.com>
+References: <20190702025601.7976-1-zbestahu@gmail.com>
+ <20190703162038.GA31307@kroah.com>
+ <20190704095903.0000565e.zbestahu@gmail.com>
+ <20190704052649.GA7454@kroah.com>
+X-Mailer: Claws Mail 3.17.3 (GTK+ 2.24.32; i686-w64-mingw32)
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -86,28 +90,79 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gneukum1@gmail.com,
- linux-kernel@vger.kernel.org,
- =?UTF-8?q?Simon=20Sandstr=C3=B6m?= <simon@nikanor.nu>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, huyue2@yulong.com, yuchao0@huawei.com,
+ linux-erofs@lists.ozlabs.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Rml4ZXMgY2hlY2twYXRjaCB3YXJuaW5nICJDb21wYXJpc29uIHRvIE5VTEwgY291bGQgYmUgd3Jp
-dHRlbiBbLi4uXSIuCgpTaWduZWQtb2ZmLWJ5OiBTaW1vbiBTYW5kc3Ryw7ZtIDxzaW1vbkBuaWth
-bm9yLm51PgotLS0KIGRyaXZlcnMvc3RhZ2luZy9rcGMyMDAwL2twY19kbWEvZmlsZW9wcy5jIHwg
-MiArLQogMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL2twYzIwMDAva3BjX2RtYS9maWxlb3BzLmMgYi9kcml2
-ZXJzL3N0YWdpbmcva3BjMjAwMC9rcGNfZG1hL2ZpbGVvcHMuYwppbmRleCA3ZmViMmZkZTBkYjIu
-LjQ4Y2E4OGJjNmIwYiAxMDA2NDQKLS0tIGEvZHJpdmVycy9zdGFnaW5nL2twYzIwMDAva3BjX2Rt
-YS9maWxlb3BzLmMKKysrIGIvZHJpdmVycy9zdGFnaW5nL2twYzIwMDAva3BjX2RtYS9maWxlb3Bz
-LmMKQEAgLTI0Nyw3ICsyNDcsNyBAQCBpbnQgIGtwY19kbWFfb3BlbihzdHJ1Y3QgaW5vZGUgKmlu
-b2RlLCBzdHJ1Y3QgZmlsZSAqZmlscCkKIAlzdHJ1Y3QgZGV2X3ByaXZhdGVfZGF0YSAqcHJpdjsK
-IAlzdHJ1Y3Qga3BjX2RtYV9kZXZpY2UgKmxkZXYgPSBrcGNfZG1hX2xvb2t1cF9kZXZpY2UoaW1p
-bm9yKGlub2RlKSk7CiAKLQlpZiAobGRldiA9PSBOVUxMKQorCWlmICghbGRldikKIAkJcmV0dXJu
-IC1FTk9ERVY7CiAKIAlpZiAoIWF0b21pY19kZWNfYW5kX3Rlc3QoJmxkZXYtPm9wZW5fY291bnQp
-KSB7Ci0tIAoyLjIwLjEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0
-dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
-aXZlcmRldi1kZXZlbAo=
+On Thu, 4 Jul 2019 07:26:49 +0200
+Greg KH <gregkh@linuxfoundation.org> wrote:
+
+> On Thu, Jul 04, 2019 at 09:59:03AM +0800, Yue Hu wrote:
+> > On Wed, 3 Jul 2019 18:20:38 +0200
+> > Greg KH <gregkh@linuxfoundation.org> wrote:
+> >   
+> > > On Tue, Jul 02, 2019 at 10:56:01AM +0800, Yue Hu wrote:  
+> > > > From: Yue Hu <huyue2@yulong.com>
+> > > > 
+> > > > Already check if ->datamode is supported in read_inode(), no need to check
+> > > > again in the next fill_inline_data() only called by fill_inode().
+> > > > 
+> > > > Signed-off-by: Yue Hu <huyue2@yulong.com>
+> > > > Reviewed-by: Gao Xiang <gaoxiang25@huawei.com>
+> > > > Reviewed-by: Chao Yu <yuchao0@huawei.com>
+> > > > ---
+> > > > no change
+> > > > 
+> > > >  drivers/staging/erofs/inode.c | 2 --
+> > > >  1 file changed, 2 deletions(-)    
+> > > 
+> > > This is already in my tree, right?  
+> > 
+> > Seems not, i have received notes about other 2 patches below mergerd:
+> > 
+> > ```note1
+> > This is a note to let you know that I've just added the patch titled
+> > 
+> >     staging: erofs: don't check special inode layout
+> > 
+> > to my staging git tree which can be found at
+> >     git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
+> > in the staging-next branch.
+> > ```
+> > 
+> > ```note2
+> > This is a note to let you know that I've just added the patch titled
+> > 
+> >     staging: erofs: return the error value if fill_inline_data() fails
+> > 
+> > to my staging git tree which can be found at
+> >     git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
+> > in the staging-next branch.
+> > ```
+> > 
+> > No this patch in below link checked:
+> > 
+> > https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/log/drivers/staging/erofs?h=staging-testing  
+> 
+> Then if it is not present, it needs to be rebased as it does not apply.
+> 
+> Please do so and resend it.
+
+Hm, no need to resend since it's included in another patch below.
+
+ec8c244 staging: erofs: add compacted ondisk compression indexes.
+
+Thanks.
+
+> 
+> thanks,
+> 
+> greg k-h
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
