@@ -2,56 +2,86 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A7A6606C0
-	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Jul 2019 15:41:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E24B260B7F
+	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Jul 2019 20:44:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 05BEF8623B;
-	Fri,  5 Jul 2019 13:41:49 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 16810862C9;
+	Fri,  5 Jul 2019 18:44:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Qp51SBAPATxZ; Fri,  5 Jul 2019 13:41:47 +0000 (UTC)
+	with ESMTP id 1TqeDLjyDTMB; Fri,  5 Jul 2019 18:44:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 588B98624A;
-	Fri,  5 Jul 2019 13:41:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B6E4A8626D;
+	Fri,  5 Jul 2019 18:44:07 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A9B041BF5F4
+ by ash.osuosl.org (Postfix) with ESMTP id 890221BF38C
  for <driverdev-devel@linuxdriverproject.org>;
- Fri,  5 Jul 2019 13:41:44 +0000 (UTC)
+ Fri,  5 Jul 2019 18:44:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A672A88154
+ by hemlock.osuosl.org (Postfix) with ESMTP id 8664B87E9C
  for <driverdev-devel@linuxdriverproject.org>;
- Fri,  5 Jul 2019 13:41:44 +0000 (UTC)
+ Fri,  5 Jul 2019 18:44:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id y+Ls9csd-Shb
+ with ESMTP id xD1BV6yM2jh3
  for <driverdev-devel@linuxdriverproject.org>;
- Fri,  5 Jul 2019 13:41:44 +0000 (UTC)
+ Fri,  5 Jul 2019 18:44:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from foss.arm.com (foss.arm.com [217.140.110.172])
- by hemlock.osuosl.org (Postfix) with ESMTP id E7CD98814B
+Received: from mail-qk1-f193.google.com (mail-qk1-f193.google.com
+ [209.85.222.193])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C9A8088157
  for <driverdev-devel@linuxdriverproject.org>;
- Fri,  5 Jul 2019 13:41:43 +0000 (UTC)
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 2C082360;
- Fri,  5 Jul 2019 06:41:43 -0700 (PDT)
-Received: from e121166-lin.cambridge.arm.com (unknown [10.1.196.255])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 0B0AF3F718;
- Fri,  5 Jul 2019 06:41:40 -0700 (PDT)
-Date: Fri, 5 Jul 2019 14:41:38 +0100
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-To: Dexuan Cui <decui@microsoft.com>
-Subject: Re: [PATCH v2] PCI: hv: Fix a use-after-free bug in
- hv_eject_device_work()
-Message-ID: <20190705134138.GB31464@e121166-lin.cambridge.arm.com>
-References: <PU1P153MB0169D420EAB61757DF4B337FBFE70@PU1P153MB0169.APCP153.PROD.OUTLOOK.COM>
+ Fri,  5 Jul 2019 18:44:03 +0000 (UTC)
+Received: by mail-qk1-f193.google.com with SMTP id d15so8588133qkl.4
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 05 Jul 2019 11:44:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=9vNk4QMzZURSontxlUHaInbR3IEnlU2DimYqPqvtTfI=;
+ b=tu3nnmxnuKYvmBagl68iBsRTXmQN1YXam2cQptVgnheit9UkRN+jxsDZOeXuuTYEWJ
+ ZPlx1ZKil+yLdFeJsAtHJneuHyWdARNGKkr/ENgXGVfk26LbuXATkusbtioCT6ETB3/L
+ ye212VsOsxkUeZ/aW4uKjSO0Z0OFf1rE64xaTBemrX2CkJpU6FD/Xg5XtQJ2p5QHai75
+ R4BZcf6SyFg29xiaz9KhSNA38dUVnciX9OwRSf0ztyGmpVNEytvBKmmsHHDX21i85Rqa
+ qwSsovnPWNdnVsiF/IArVM+VVlR2JwOFpc2ztc/Ne0PI8rzjr1Uk+qXkqO+N3a96pU7J
+ qvPg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=9vNk4QMzZURSontxlUHaInbR3IEnlU2DimYqPqvtTfI=;
+ b=dhQumYI5TRELjIlD2GEaDqSiYxfVsPy10nQKqU9kluZaetd3Jnj/eAPyJunZTBTa39
+ b7jeyzZ56UGkQLldO66spjoJrIvM332pNajMl2C0EBkTk2fYz7caXsIc0iMBaEKb/9li
+ rGQUUSZSVIUQwUZooF0TWsaXAECNkFOIJxFG+FaiyFyIgcHYHqTrz4L4kIp8JnOfkhlj
+ nFLixAdR6S/zMSO8KHf8fT0iNar/l1S45deAhBkvRM6IUAhoTYc/YVr0WCP5/ZtbbhUP
+ LSj/XP/94sD2VV5IiTYKEK16g17XMPP+pjNoE77nLHYV5PYr+eNYDO1oSKlqQ0AAhq65
+ RIwg==
+X-Gm-Message-State: APjAAAVqOwerxg2qscQtGosO9fd5R3bUhySC1K+3FblxBAAXNt6qQ99U
+ rgVkaCcMfgtHAVBCMZgEnao2wlJAKkB8z95wuN4=
+X-Google-Smtp-Source: APXvYqxSTx+dxClUHSnWgUlOrh16YxcMhcRRLmPH0YHX/SOLLrzB/RRw/MLDydBrwfQuqfifO2s/dUNpZw5ShBnthCc=
+X-Received: by 2002:a37:9844:: with SMTP id a65mr4262574qke.500.1562352242756; 
+ Fri, 05 Jul 2019 11:44:02 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <PU1P153MB0169D420EAB61757DF4B337FBFE70@PU1P153MB0169.APCP153.PROD.OUTLOOK.COM>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+References: <20190621061517.24089-1-sergio.paracuellos@gmail.com>
+ <a512ac38-e30f-5011-0764-3029d320f10c@kernel.org>
+ <CAGSetNtcJkjnjO1Ftc01ueMuFMmJEv7HPpmQeSf313Rrbe2O5w@mail.gmail.com>
+ <CAMhs-H_c8sq=mX-rPRDHtkqyRj1fQcSNY_8M7Y5ZGU2FV9_zSA@mail.gmail.com>
+ <24106212-9bf9-867c-fed8-8ad828431cd7@kernel.org>
+ <CAMhs-H-0YcipUZ2xWxRTijUDL1F8NMb-gh5WoPcj-jHabbHZJw@mail.gmail.com>
+ <CAMhs-H8JrLbsfk6YwFqVXOfr7M0zKosZ-iMwtU+5ObDOqOOAAQ@mail.gmail.com>
+ <b4180913-127a-1847-57b7-d630897783f0@kernel.org>
+ <CAMhs-H_7y_Uxr23uoh_-K+uoYTTNqARsqZfYpq-hU0vsRRjBsg@mail.gmail.com>
+ <554866dd-9b81-5854-628e-cceabcdebe5b@kernel.org>
+ <CAMhs-H_K-mWQYWNUk3xEBc8Ek_128VzZa-Z1ps4yqbDDOZ+=Vg@mail.gmail.com>
+In-Reply-To: <CAMhs-H_K-mWQYWNUk3xEBc8Ek_128VzZa-Z1ps4yqbDDOZ+=Vg@mail.gmail.com>
+From: Brett Neumeier <bneumeier@gmail.com>
+Date: Fri, 5 Jul 2019 13:43:51 -0500
+Message-ID: <CAGSetNv2adWboHoB4mi9pxgJwbFJhsSmyXegjb7Lc9-H3kiRDQ@mail.gmail.com>
+Subject: Re: [PATCH 0/4] staging: mt7621-pci: Handle minor issues
+To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,112 +94,31 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "linux-hyperv@vger.kernel.org" <linux-hyperv@vger.kernel.org>,
- Stephen Hemminger <sthemmin@microsoft.com>,
- "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
- Haiyang Zhang <haiyangz@microsoft.com>,
- "driverdev-devel@linuxdriverproject.org"
- <driverdev-devel@linuxdriverproject.org>, "olaf@aepfle.de" <olaf@aepfle.de>,
- "Lili Deng \(Wicresoft North America Ltd\)" <v-lide@microsoft.com>,
- Michael Kelley <mikelley@microsoft.com>,
- Sasha Levin <Alexander.Levin@microsoft.com>,
- "apw@canonical.com" <apw@canonical.com>,
- "marcelo.cerri@canonical.com" <marcelo.cerri@canonical.com>,
- "bhelgaas@google.com" <bhelgaas@google.com>, vkuznets <vkuznets@redhat.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Cc: Neil Brown <neil@brown.name>, driverdev-devel@linuxdriverproject.org,
+ Greg Ungerer <gerg@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Jun 21, 2019 at 11:45:23PM +0000, Dexuan Cui wrote:
-> 
-> The commit 05f151a73ec2 itself is correct, but it exposes this
-> use-after-free bug, which is caught by some memory debug options.
-> 
-> Add a Fixes tag to indicate the dependency.
-> 
-> Fixes: 05f151a73ec2 ("PCI: hv: Fix a memory leak in hv_eject_device_work()")
-> Signed-off-by: Dexuan Cui <decui@microsoft.com>
-> Cc: stable@vger.kernel.org
-> ---
-> 
-> In v2:
-> Replaced "hpdev->hbus" with "hbus", since we have the new "hbus" variable. [Michael Kelley]
-> 
->  drivers/pci/controller/pci-hyperv.c | 15 +++++++++------
->  1 file changed, 9 insertions(+), 6 deletions(-)
+On Wed, Jun 26, 2019 at 7:45 AM Sergio Paracuellos
+<sergio.paracuellos@gmail.com> wrote:
+> No problem, I also miss them rewritting code. That is bad :((.
+> > BTW, I applied that on top of your other recent fixes (that ones
+> > you pushed to  gregkh for staging). So I tested with the
+> > updated GPIO reset code.
+> Ok, anyway.. I have just sent the change jus to have the same code behaviour
+> that was being there before.
 
-Applied to pci/hv for v5.3, thanks.
+FWIW, I have the same results as Greg -- the 4.2 driver works every
+time, staging-next frequently hangs.
 
-Lorenzo
+Out of curiosity, if it's not too complex an answer to go into, what's
+the benefit of the staging-next driver? Is there a reason to prefer it
+to the 4.2 driver?
 
-> diff --git a/drivers/pci/controller/pci-hyperv.c b/drivers/pci/controller/pci-hyperv.c
-> index 808a182830e5..5dadc964ad3b 100644
-> --- a/drivers/pci/controller/pci-hyperv.c
-> +++ b/drivers/pci/controller/pci-hyperv.c
-> @@ -1880,6 +1880,7 @@ static void hv_pci_devices_present(struct hv_pcibus_device *hbus,
->  static void hv_eject_device_work(struct work_struct *work)
->  {
->  	struct pci_eject_response *ejct_pkt;
-> +	struct hv_pcibus_device *hbus;
->  	struct hv_pci_dev *hpdev;
->  	struct pci_dev *pdev;
->  	unsigned long flags;
-> @@ -1890,6 +1891,7 @@ static void hv_eject_device_work(struct work_struct *work)
->  	} ctxt;
->  
->  	hpdev = container_of(work, struct hv_pci_dev, wrk);
-> +	hbus = hpdev->hbus;
->  
->  	WARN_ON(hpdev->state != hv_pcichild_ejecting);
->  
-> @@ -1900,8 +1902,7 @@ static void hv_eject_device_work(struct work_struct *work)
->  	 * because hbus->pci_bus may not exist yet.
->  	 */
->  	wslot = wslot_to_devfn(hpdev->desc.win_slot.slot);
-> -	pdev = pci_get_domain_bus_and_slot(hpdev->hbus->sysdata.domain, 0,
-> -					   wslot);
-> +	pdev = pci_get_domain_bus_and_slot(hbus->sysdata.domain, 0, wslot);
->  	if (pdev) {
->  		pci_lock_rescan_remove();
->  		pci_stop_and_remove_bus_device(pdev);
-> @@ -1909,9 +1910,9 @@ static void hv_eject_device_work(struct work_struct *work)
->  		pci_unlock_rescan_remove();
->  	}
->  
-> -	spin_lock_irqsave(&hpdev->hbus->device_list_lock, flags);
-> +	spin_lock_irqsave(&hbus->device_list_lock, flags);
->  	list_del(&hpdev->list_entry);
-> -	spin_unlock_irqrestore(&hpdev->hbus->device_list_lock, flags);
-> +	spin_unlock_irqrestore(&hbus->device_list_lock, flags);
->  
->  	if (hpdev->pci_slot)
->  		pci_destroy_slot(hpdev->pci_slot);
-> @@ -1920,7 +1921,7 @@ static void hv_eject_device_work(struct work_struct *work)
->  	ejct_pkt = (struct pci_eject_response *)&ctxt.pkt.message;
->  	ejct_pkt->message_type.type = PCI_EJECTION_COMPLETE;
->  	ejct_pkt->wslot.slot = hpdev->desc.win_slot.slot;
-> -	vmbus_sendpacket(hpdev->hbus->hdev->channel, ejct_pkt,
-> +	vmbus_sendpacket(hbus->hdev->channel, ejct_pkt,
->  			 sizeof(*ejct_pkt), (unsigned long)&ctxt.pkt,
->  			 VM_PKT_DATA_INBAND, 0);
->  
-> @@ -1929,7 +1930,9 @@ static void hv_eject_device_work(struct work_struct *work)
->  	/* For the two refs got in new_pcichild_device() */
->  	put_pcichild(hpdev);
->  	put_pcichild(hpdev);
-> -	put_hvpcibus(hpdev->hbus);
-> +	/* hpdev has been freed. Do not use it any more. */
-> +
-> +	put_hvpcibus(hbus);
->  }
->  
->  /**
-> -- 
-> 2.17.1
-> 
+-- 
+Brett Neumeier (bneumeier@gmail.com)
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
