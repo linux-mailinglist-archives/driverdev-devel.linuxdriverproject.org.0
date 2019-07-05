@@ -1,50 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AC22560218
-	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Jul 2019 10:26:03 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 07A6460468
+	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Jul 2019 12:26:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BFFBB85D3F;
-	Fri,  5 Jul 2019 08:26:01 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 878D4226B7;
+	Fri,  5 Jul 2019 10:26:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id N_tvPiFRVjBM; Fri,  5 Jul 2019 08:26:01 +0000 (UTC)
+	with ESMTP id sme+rVOqJ9JA; Fri,  5 Jul 2019 10:26:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 612A18610E;
-	Fri,  5 Jul 2019 08:26:00 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B5BA02265B;
+	Fri,  5 Jul 2019 10:26:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DB6B81BF36B
- for <devel@linuxdriverproject.org>; Fri,  5 Jul 2019 08:25:58 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E8D411BF35F
+ for <devel@linuxdriverproject.org>; Fri,  5 Jul 2019 10:26:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D7D3E85BB5
- for <devel@linuxdriverproject.org>; Fri,  5 Jul 2019 08:25:58 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E602987F48
+ for <devel@linuxdriverproject.org>; Fri,  5 Jul 2019 10:26:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id G7Oa3h2U7Oes for <devel@linuxdriverproject.org>;
- Fri,  5 Jul 2019 08:25:58 +0000 (UTC)
+ with ESMTP id PESGOx+xjjWx for <devel@linuxdriverproject.org>;
+ Fri,  5 Jul 2019 10:26:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 4D0BF84EC1
- for <devel@driverdev.osuosl.org>; Fri,  5 Jul 2019 08:25:58 +0000 (UTC)
-Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
- by youngberry.canonical.com with esmtpsa (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.76) (envelope-from <colin.king@canonical.com>)
- id 1hjJXW-0005Cx-Oh; Fri, 05 Jul 2019 08:25:54 +0000
-From: Colin King <colin.king@canonical.com>
-To: Larry Finger <Larry.Finger@lwfinger.net>,
- Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org
-Subject: [PATCH] staging: rtl8712: remove redundant assignment to variable res
-Date: Fri,  5 Jul 2019 09:25:54 +0100
-Message-Id: <20190705082554.15588-1-colin.king@canonical.com>
-X-Mailer: git-send-email 2.20.1
+Received: from relay10.mail.gandi.net (relay10.mail.gandi.net [217.70.178.230])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2ED3787E9D
+ for <devel@driverdev.osuosl.org>; Fri,  5 Jul 2019 10:26:19 +0000 (UTC)
+Received: from aptenodytes (196.109.29.93.rev.sfr.net [93.29.109.196])
+ (Authenticated sender: paul.kocialkowski@bootlin.com)
+ by relay10.mail.gandi.net (Postfix) with ESMTPSA id 637FD24000D;
+ Fri,  5 Jul 2019 10:26:04 +0000 (UTC)
+Date: Fri, 5 Jul 2019 12:26:03 +0200
+From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+To: Nishka Dasgupta <nishkadg.linux@gmail.com>
+Subject: Re: [PATCH 1/2] staging: media: sunxi: Change return type of
+ cedrus_find_format()
+Message-ID: <20190705102603.GA1645@aptenodytes>
+References: <20190703081317.22795-1-nishkadg.linux@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190703081317.22795-1-nishkadg.linux@gmail.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,40 +58,77 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, maxime.ripard@bootlin.com,
+ gregkh@linuxfoundation.org, wens@csie.org, mchehab@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Colin Ian King <colin.king@canonical.com>
+Hi,
 
-The variable res is being initialized with a value that is never
-read and it is being updated later with a new value. The
-initialization is redundant and can be removed.
+On Wed 03 Jul 19, 13:43, Nishka Dasgupta wrote:
+> Change return type of cedrus_find_format to bool as it is only called
+> once, by a function whose return value is bool, and the return value of
+> cedrus_find_format is returned as-is at the call-site.
+> Issue found with Coccinelle.
 
-Addresses-Coverity: ("Unused value")
-Signed-off-by: Colin Ian King <colin.king@canonical.com>
----
- drivers/staging/rtl8712/rtl8712_xmit.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+The purpose of this function (although definitely under-used at this point),
+was to return the pointer to the element structure, not to indicate whether
+the format format is part of the list or not.
 
-diff --git a/drivers/staging/rtl8712/rtl8712_xmit.c b/drivers/staging/rtl8712/rtl8712_xmit.c
-index 307b0e292976..dac79e6dcdcb 100644
---- a/drivers/staging/rtl8712/rtl8712_xmit.c
-+++ b/drivers/staging/rtl8712/rtl8712_xmit.c
-@@ -739,7 +739,7 @@ static void dump_xframe(struct _adapter *padapter,
- 
- int r8712_xmit_direct(struct _adapter *padapter, struct xmit_frame *pxmitframe)
- {
--	int res = _SUCCESS;
-+	int res;
- 
- 	res = r8712_xmitframe_coalesce(padapter, pxmitframe->pkt, pxmitframe);
- 	pxmitframe->pkt = NULL;
+In spite of that, this change reduces the use case for the function, so I do
+not think it is beneficial, sorry.
+
+Cheers,
+
+Paul
+
+> Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
+> ---
+>  drivers/staging/media/sunxi/cedrus/cedrus_video.c | 11 ++++-------
+>  1 file changed, 4 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_video.c b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+> index 9673874ece10..0ec31b9e0aea 100644
+> --- a/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+> @@ -55,8 +55,8 @@ static inline struct cedrus_ctx *cedrus_file2ctx(struct file *file)
+>  	return container_of(file->private_data, struct cedrus_ctx, fh);
+>  }
+>  
+> -static struct cedrus_format *cedrus_find_format(u32 pixelformat, u32 directions,
+> -						unsigned int capabilities)
+> +static bool cedrus_find_format(u32 pixelformat, u32 directions,
+> +			       unsigned int capabilities)
+>  {
+>  	struct cedrus_format *fmt;
+>  	unsigned int i;
+> @@ -70,13 +70,10 @@ static struct cedrus_format *cedrus_find_format(u32 pixelformat, u32 directions,
+>  
+>  		if (fmt->pixelformat == pixelformat &&
+>  		    (fmt->directions & directions) != 0)
+> -			break;
+> +			return true;
+>  	}
+>  
+> -	if (i == CEDRUS_FORMATS_COUNT)
+> -		return NULL;
+> -
+> -	return &cedrus_formats[i];
+> +	return false;
+>  }
+>  
+>  static bool cedrus_check_format(u32 pixelformat, u32 directions,
+> -- 
+> 2.19.1
+> 
+
 -- 
-2.20.1
-
+Paul Kocialkowski, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
