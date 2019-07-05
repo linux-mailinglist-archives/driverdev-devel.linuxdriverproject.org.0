@@ -1,87 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E24B260B7F
-	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Jul 2019 20:44:15 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 16810862C9;
-	Fri,  5 Jul 2019 18:44:09 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1TqeDLjyDTMB; Fri,  5 Jul 2019 18:44:08 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B6E4A8626D;
-	Fri,  5 Jul 2019 18:44:07 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 890221BF38C
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  5 Jul 2019 18:44:04 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2000160C80
+	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Jul 2019 22:43:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 8664B87E9C
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  5 Jul 2019 18:44:04 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E7FBC881D9;
+	Fri,  5 Jul 2019 20:43:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id igIYKFZBWMQ7; Fri,  5 Jul 2019 20:43:07 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 35421881B7;
+	Fri,  5 Jul 2019 20:42:59 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E431C1BF5E9
+ for <devel@linuxdriverproject.org>; Fri,  5 Jul 2019 20:42:56 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id DE5FE861EE
+ for <devel@linuxdriverproject.org>; Fri,  5 Jul 2019 20:42:56 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xD1BV6yM2jh3
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  5 Jul 2019 18:44:03 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qk1-f193.google.com (mail-qk1-f193.google.com
- [209.85.222.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C9A8088157
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  5 Jul 2019 18:44:03 +0000 (UTC)
-Received: by mail-qk1-f193.google.com with SMTP id d15so8588133qkl.4
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 05 Jul 2019 11:44:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=9vNk4QMzZURSontxlUHaInbR3IEnlU2DimYqPqvtTfI=;
- b=tu3nnmxnuKYvmBagl68iBsRTXmQN1YXam2cQptVgnheit9UkRN+jxsDZOeXuuTYEWJ
- ZPlx1ZKil+yLdFeJsAtHJneuHyWdARNGKkr/ENgXGVfk26LbuXATkusbtioCT6ETB3/L
- ye212VsOsxkUeZ/aW4uKjSO0Z0OFf1rE64xaTBemrX2CkJpU6FD/Xg5XtQJ2p5QHai75
- R4BZcf6SyFg29xiaz9KhSNA38dUVnciX9OwRSf0ztyGmpVNEytvBKmmsHHDX21i85Rqa
- qwSsovnPWNdnVsiF/IArVM+VVlR2JwOFpc2ztc/Ne0PI8rzjr1Uk+qXkqO+N3a96pU7J
- qvPg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=9vNk4QMzZURSontxlUHaInbR3IEnlU2DimYqPqvtTfI=;
- b=dhQumYI5TRELjIlD2GEaDqSiYxfVsPy10nQKqU9kluZaetd3Jnj/eAPyJunZTBTa39
- b7jeyzZ56UGkQLldO66spjoJrIvM332pNajMl2C0EBkTk2fYz7caXsIc0iMBaEKb/9li
- rGQUUSZSVIUQwUZooF0TWsaXAECNkFOIJxFG+FaiyFyIgcHYHqTrz4L4kIp8JnOfkhlj
- nFLixAdR6S/zMSO8KHf8fT0iNar/l1S45deAhBkvRM6IUAhoTYc/YVr0WCP5/ZtbbhUP
- LSj/XP/94sD2VV5IiTYKEK16g17XMPP+pjNoE77nLHYV5PYr+eNYDO1oSKlqQ0AAhq65
- RIwg==
-X-Gm-Message-State: APjAAAVqOwerxg2qscQtGosO9fd5R3bUhySC1K+3FblxBAAXNt6qQ99U
- rgVkaCcMfgtHAVBCMZgEnao2wlJAKkB8z95wuN4=
-X-Google-Smtp-Source: APXvYqxSTx+dxClUHSnWgUlOrh16YxcMhcRRLmPH0YHX/SOLLrzB/RRw/MLDydBrwfQuqfifO2s/dUNpZw5ShBnthCc=
-X-Received: by 2002:a37:9844:: with SMTP id a65mr4262574qke.500.1562352242756; 
- Fri, 05 Jul 2019 11:44:02 -0700 (PDT)
+ with ESMTP id WUYeA0PrUl6w for <devel@linuxdriverproject.org>;
+ Fri,  5 Jul 2019 20:42:54 +0000 (UTC)
+X-Greylist: delayed 00:07:45 by SQLgrey-1.7.6
+Received: from mx.0dd.nl (mx.0dd.nl [5.2.79.48])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1B76585F0A
+ for <devel@driverdev.osuosl.org>; Fri,  5 Jul 2019 20:42:53 +0000 (UTC)
+Received: from mail.vdorst.com (mail.vdorst.com [IPv6:fd01::250])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mx.0dd.nl (Postfix) with ESMTPS id 6DE205FA1D;
+ Fri,  5 Jul 2019 22:35:07 +0200 (CEST)
+Authentication-Results: mx.0dd.nl; dkim=pass (2048-bit key;
+ secure) header.d=vdorst.com header.i=@vdorst.com header.b="Bty0AGL2"; 
+ dkim-atps=neutral
+Received: from pc-rene.vdorst.com (pc-rene.vdorst.com [192.168.2.125])
+ by mail.vdorst.com (Postfix) with ESMTPA id 20D441CF6176;
+ Fri,  5 Jul 2019 22:35:07 +0200 (CEST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail.vdorst.com 20D441CF6176
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vdorst.com;
+ s=default; t=1562358907;
+ bh=iDTuEFvk0tw6Q2Z8phsGvBtQUAbQfo1eE9ND1g87xyA=;
+ h=From:To:Cc:Subject:Date:From;
+ b=Bty0AGL2ICr0Oh6zsH50aNeZz9IWZRpVtB3hhJhBhRaMK8Qos1EXl2iQQJjBF7kIs
+ d5ApdTavh3JTmz9LNPLDVq0N+j3T8HiVPXttQ5c7zf2SJpqdLVjQvJcEs1BqoNTh1s
+ xTvtZpJyQFHeTWvQ9BvMhfd8sH1B3g0/ihP+YBHfdm+cEgPrquNShdx3X5vomxdwwp
+ kRAWaHrMJS5Xw+gdzDNGtBN72C0c264TJrbJ7o5Uqvi+aAJYswGNxX9+LoC7ygPM13
+ rwNxEy/nfr1Z8luloHjlldEg0ojTRt+d72VXvLvrbI4nVuk0+DlrwVG/RrS6J4ZzM4
+ kNOmki69anFXA==
+From: =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>
+To: sergio.paracuellos@gmail.com, matthias.bgg@gmail.com,
+ gregkh@linuxfoundation.org
+Subject: [PATCH] staging: mt7621-pci: Fix compiler error 'slot' may be used
+ uninitialized
+Date: Fri,  5 Jul 2019 22:33:27 +0200
+Message-Id: <20190705203327.8493-1-opensource@vdorst.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <20190621061517.24089-1-sergio.paracuellos@gmail.com>
- <a512ac38-e30f-5011-0764-3029d320f10c@kernel.org>
- <CAGSetNtcJkjnjO1Ftc01ueMuFMmJEv7HPpmQeSf313Rrbe2O5w@mail.gmail.com>
- <CAMhs-H_c8sq=mX-rPRDHtkqyRj1fQcSNY_8M7Y5ZGU2FV9_zSA@mail.gmail.com>
- <24106212-9bf9-867c-fed8-8ad828431cd7@kernel.org>
- <CAMhs-H-0YcipUZ2xWxRTijUDL1F8NMb-gh5WoPcj-jHabbHZJw@mail.gmail.com>
- <CAMhs-H8JrLbsfk6YwFqVXOfr7M0zKosZ-iMwtU+5ObDOqOOAAQ@mail.gmail.com>
- <b4180913-127a-1847-57b7-d630897783f0@kernel.org>
- <CAMhs-H_7y_Uxr23uoh_-K+uoYTTNqARsqZfYpq-hU0vsRRjBsg@mail.gmail.com>
- <554866dd-9b81-5854-628e-cceabcdebe5b@kernel.org>
- <CAMhs-H_K-mWQYWNUk3xEBc8Ek_128VzZa-Z1ps4yqbDDOZ+=Vg@mail.gmail.com>
-In-Reply-To: <CAMhs-H_K-mWQYWNUk3xEBc8Ek_128VzZa-Z1ps4yqbDDOZ+=Vg@mail.gmail.com>
-From: Brett Neumeier <bneumeier@gmail.com>
-Date: Fri, 5 Jul 2019 13:43:51 -0500
-Message-ID: <CAGSetNv2adWboHoB4mi9pxgJwbFJhsSmyXegjb7Lc9-H3kiRDQ@mail.gmail.com>
-Subject: Re: [PATCH 0/4] staging: mt7621-pci: Handle minor issues
-To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,32 +74,37 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Neil Brown <neil@brown.name>, driverdev-devel@linuxdriverproject.org,
- Greg Ungerer <gerg@kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org,
+ =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Jun 26, 2019 at 7:45 AM Sergio Paracuellos
-<sergio.paracuellos@gmail.com> wrote:
-> No problem, I also miss them rewritting code. That is bad :((.
-> > BTW, I applied that on top of your other recent fixes (that ones
-> > you pushed to  gregkh for staging). So I tested with the
-> > updated GPIO reset code.
-> Ok, anyway.. I have just sent the change jus to have the same code behaviour
-> that was being there before.
-
-FWIW, I have the same results as Greg -- the 4.2 driver works every
-time, staging-next frequently hangs.
-
-Out of curiosity, if it's not too complex an answer to go into, what's
-the benefit of the staging-next driver? Is there a reason to prefer it
-to the 4.2 driver?
-
--- 
-Brett Neumeier (bneumeier@gmail.com)
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+SW4gY29tbWl0IDgwMmEyZjdiMmZlMyAoInN0YWdpbmc6IG10NzYyMS1wY2k6IGZhY3RvciBvdXQK
+J210NzYyMV9wY2llX2VuYWJsZV9wb3J0JyBmdW5jdGlvbiIpLCBzbG90ID0gcG9ydC0+c2xvdDsg
+bGluZSB3YXMgcmVtb3ZlZC4KQWxzbyBvdGhlciBkZXZfZXJyKCkgcHJpbnQgcGFyYW1ldGVyIHdh
+cyBjaGFuZ2VkIGZyb20gc2xvdCB0byBwb3J0LT5zbG90LgpTbyB0aGUgc2FtZSBzaG91bGQgYmUg
+ZG9uZSBoZXJlLgoKVGhpcyBhbHNvIGZpeGVzIGNvbXBpbGVyIGVycm9yOgpkcml2ZXJzL3N0YWdp
+bmcvbXQ3NjIxLXBjaS9wY2ktbXQ3NjIxLmM6IEluIGZ1bmN0aW9uICdtdDc2MjFfcGNpX3Byb2Jl
+JzoKLi9pbmNsdWRlL2xpbnV4L2RldmljZS5oOjE0OTA6Mjogd2FybmluZzogJ3Nsb3QnIG1heSBi
+ZSB1c2VkIHVuaW5pdGlhbGl6ZWQgaW4gdGhpcyBmdW5jdGlvbiBbLVdtYXliZS11bmluaXRpYWxp
+emVkXQogIF9kZXZfaW5mbyhkZXYsIGRldl9mbXQoZm10KSwgIyNfX1ZBX0FSR1NfXykKICBefn5+
+fn5+fn4KZHJpdmVycy9zdGFnaW5nL210NzYyMS1wY2kvcGNpLW10NzYyMS5jOjUwNDo2OiBub3Rl
+OiAnc2xvdCcgd2FzIGRlY2xhcmVkIGhlcmUKICB1MzIgc2xvdDsKICAgICAgXn5+fgoKRml4ZXM6
+IDgwMmEyZjdiMmZlMyAoInN0YWdpbmc6IG10NzYyMS1wY2k6IGZhY3RvciBvdXQgJ210NzYyMV9w
+Y2llX2VuYWJsZV9wb3J0JyBmdW5jdGlvbiIpClNpZ25lZC1vZmYtYnk6IFJlbsOpIHZhbiBEb3Jz
+dCA8b3BlbnNvdXJjZUB2ZG9yc3QuY29tPgotLS0KIGRyaXZlcnMvc3RhZ2luZy9tdDc2MjEtcGNp
+L3BjaS1tdDc2MjEuYyB8IDIgKy0KIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBk
+ZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9tdDc2MjEtcGNpL3BjaS1t
+dDc2MjEuYyBiL2RyaXZlcnMvc3RhZ2luZy9tdDc2MjEtcGNpL3BjaS1tdDc2MjEuYwppbmRleCAw
+M2Q5MTlhOTQ1NTIuLjgxNjAwYzAzY2FlMSAxMDA2NDQKLS0tIGEvZHJpdmVycy9zdGFnaW5nL210
+NzYyMS1wY2kvcGNpLW10NzYyMS5jCisrKyBiL2RyaXZlcnMvc3RhZ2luZy9tdDc2MjEtcGNpL3Bj
+aS1tdDc2MjEuYwpAQCAtNTExLDcgKzUxMSw3IEBAIHN0YXRpYyB2b2lkIG10NzYyMV9wY2llX2Vu
+YWJsZV9wb3J0cyhzdHJ1Y3QgbXQ3NjIxX3BjaWUgKnBjaWUpCiAJCQkJCXBvcnQtPnNsb3QpOwog
+CQkJCWNvbnRpbnVlOwogCQkJfQotCQkJZGV2X2luZm8oZGV2LCAiUENJRSVkIGVuYWJsZWRcbiIs
+IHNsb3QpOworCQkJZGV2X2luZm8oZGV2LCAiUENJRSVkIGVuYWJsZWRcbiIsIHBvcnQtPnNsb3Qp
+OwogCQkJbnVtX3Nsb3RzX2VuYWJsZWQrKzsKIAkJfQogCX0KLS0gCjIuMjAuMQoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0
+CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZl
+cnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
