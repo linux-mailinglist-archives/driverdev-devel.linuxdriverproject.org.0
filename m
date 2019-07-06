@@ -1,52 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C83A36127B
-	for <lists+driverdev-devel@lfdr.de>; Sat,  6 Jul 2019 19:56:09 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 52E20204D0;
-	Sat,  6 Jul 2019 17:56:08 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BZJsLWWpCSgU; Sat,  6 Jul 2019 17:56:07 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 83C1B204C7;
-	Sat,  6 Jul 2019 17:56:06 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 06BB01BF364
- for <devel@linuxdriverproject.org>; Sat,  6 Jul 2019 17:56:04 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 581896127C
+	for <lists+driverdev-devel@lfdr.de>; Sat,  6 Jul 2019 19:56:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id F3CD186004
- for <devel@linuxdriverproject.org>; Sat,  6 Jul 2019 17:56:03 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3A82F86100;
+	Sat,  6 Jul 2019 17:56:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id mu8T-paKCRIJ; Sat,  6 Jul 2019 17:56:27 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id B585F86064;
+	Sat,  6 Jul 2019 17:56:26 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 1C7581BF364
+ for <devel@linuxdriverproject.org>; Sat,  6 Jul 2019 17:56:24 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 19D47204C2
+ for <devel@linuxdriverproject.org>; Sat,  6 Jul 2019 17:56:24 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Xuf3A25eAYOU for <devel@linuxdriverproject.org>;
- Sat,  6 Jul 2019 17:56:03 +0000 (UTC)
+ with ESMTP id SNsJhOCjqiaT for <devel@linuxdriverproject.org>;
+ Sat,  6 Jul 2019 17:56:23 +0000 (UTC)
 X-Greylist: delayed 00:10:01 by SQLgrey-1.7.6
 Received: from reminddash.icu (j01gymwz.ni.net.tr [89.252.165.100])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5DCA481F63
- for <devel@linuxdriverproject.org>; Sat,  6 Jul 2019 17:56:03 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6669220431
+ for <devel@driverdev.osuosl.org>; Sat,  6 Jul 2019 17:56:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail; d=reminddash.icu; 
  h=From:Date:MIME-Version:To:Subject:Message-ID:Content-Type:Content-Transfer-Encoding;
- i=cayce@reminddash.icu; bh=ghRp/+1y0js51QqXEyZtAKTnXVM=;
- b=eztAl2avMHeB7QB34RKWLeDZzPotemoWsJ0qSd2pV/L6aBdwkeEQaKn7bX+QRaHOcY6w/ezDqq9z
- 7LeaNGLhw2+sZ1lbwEUiabN5oEVy4cwNjAPlB684nkC8hhXon68mqTjf87Bnyi/iwoOrJA/ZJy4a
- mOomiExMMUh+sfEbVEU=
+ i=sieve@reminddash.icu; bh=va2KZLysnieYkevROoCzlcTuiQc=;
+ b=B8sE//eOllY8xCANOSbikEPxJD6qy1u69LL12VY+2F8ms9CJQm7KokksQreiDr8LP9/dzh6F5dNa
+ jdV2SVvj1QAhZYVKMZX4da3Mtpi4qTfnPs3I61YlY7ioULxHAUJtmo2KtLm2u23wIOHOl/qH+13e
+ vkWoXcSVxAclvRUupgM=
 DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=reminddash.icu;
- b=F7sDh2kEoYngRsyX1v+34NhHSlZBGytfTF/7MxhoYLy+KfApTdVTA4qGRpcmLUw99x7zSGIPrO0w
- ngdGpJ5OOt7MMci03PX8d0cifX5O8nDKAA4A+UjaLZ5JOy3IibGUJxX48BWcDG267i62D3FnFdun
- aqDfa2Of2ppqSapY+0Y=;
-From: " Wanda Evans" <cayce@reminddash.icu>
-Date: Sat, 06 Jul 2019 12:41:22 -0500
+ b=WLWfd3dASBCYuwMoXVcphaVVGLkfkQo+BVlbuNUh4pDOPrrxk6GvvCNzJXOB1NEbZ1vTMjtjeBhr
+ tmkh0KhYit6v2x8QQGWO8Sl0/Pqm1igbjfaZlWpiVg+L+zUPDdxqhb1CYnpXg2AuIWoGCU2kUR9y
+ FpQUn4MCKyMVyi2cDZU=;
+From: " Aaron Perez" <sieve@reminddash.icu>
+Date: Sat, 06 Jul 2019 12:41:47 -0500
 MIME-Version: 1.0
-To: <devel@linuxdriverproject.org>
-Subject: Turn $20 to $24K with this Bitcoin Trading system
-Message-ID: <I6eNXO7c4OHywQjUstKreB2Lb7mRrFeogPjD9RpQATE.yNLADLiShRVzvYPlQWLIGrsgCNATbpEkHbUzQRr9v4c@reminddash.icu>
+To: <devel@driverdev.osuosl.org>
+Subject: Become A Bitcoin Billionaire with this done for you trading system
+Message-ID: <queFM2SlevKKy4a53qhqZnaE6ohu3j9PQ9uIgn1_ueA.dV8ezty-1uBkUD8DYWA90zXxACoKypZqj5_rZY983mg@reminddash.icu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,10 +72,10 @@ A smart man (or woman) knows a great opportunity when he or she sees one=E2=
 For a limited time, I am revealing my Bitcoin Trading system, that will tur=
 n you to a millionaire almost overnight
 
->> http://www.reminddash.icu/pcdkerbozfx/dehlmibb31589bunbb/1s9HA2w2Sab_aPh=
-HhvMSbCWjYLFYNxXRCvNEXj0gmwY/ktd0D9Ihrd7DskEbMFTKbjz9cQXneA8BwN3NI9PBhOgRd8=
-hJHLSpfNdDjyEBJp-n-jbOBTmOp2bJgQJZ3GMHyIWkNkFgHZTAxglTaWVCtYTH56oqcWBMInGxt=
-PT1rz0mZJKNrZVY-HB8_OAl-DJ7wA <<
+>> http://www.reminddash.icu/kzxcs/auwbebrtk31589cvtlk/j6K3ON12YESv6hb-4eer=
+dNQ-evzTd_1hxKXOK2OXnrE/7LHZt4-pyBV-dm4_jk5bGjeA6KF-9ymZQmhlwuK9aoHpScSmuQu=
+0CFAGzA6tJPofx7MZ7HuAp_UmqY6-yDR2igTpFgiD9JYxrwMixqmFr4QE_nINgVhkHfl2GPIhym=
+86YT9fKNnUBeQFzT6OW9-3tDU2o1jdIyNgpjui_XHTOz4 <<
 
 Don't believe me? Well check for yourself. I have helped hundreds make hund=
 reds of thousands of dollars with only $20 investments at times. Take advan=
@@ -83,24 +83,25 @@ tage of this information now, before too many people water down this simple=
  method, that no one realizes exists.
 
 Sincerely,
- Wanda Evans
+ Aaron Perez
 
 
 
 if you no longer wish for me to contact you and want to be removed off my d=
 atabase please follow the link below:
-http://www.reminddash.icu/zxuqt/Aw7JD-lAO_8BH-YVZrNKJZm0zr1TPtxGnIMBWcqo65H=
-TYtCVWaTlgxATZHgFkNkWIyHMG3ZJQgJb2pOmTBObj-n-pJBEyjDdNfpSLHJh8dRgOhBP9IN3Nw=
-B8AenXQc9zjbKTFMbEksD7drhI9D0dtk.Ywmg0jXENvCRXxNYFLYjWCbSMvhHhPa_baS2w2AH9s1
-28 W. Colonial Ave. Ellenwood, GA 30294
+http://www.reminddash.icu/zfiygvnmj/4zOTHX_iujpgNyIdj1o2UDt3-9WO6TzFQeBUnNK=
+f9TY68myhIPG2lfHkhVgNIn_EQ4rFmqxiMwrxYJ9DigFpTgi2RDy-6YqmU_pAuH7ZM7xfoPJt6A=
+zGAFC0uQumScSpHoa9KuwlhmQZmy9-FK6AejGb5kj_4md-VByp-4tZHL7.ErnXO2KOXKxh1_dTz=
+ve-QNdree4-bh6vSEY21NO3K6j
+265 S. Schoolhouse St. Boynton Beach, FL 33435
 
 
 
 You can report abuse below:
-http://www.reminddash.icu/albdabrz/Aw7JD-lAO_8BH-YVZrNKJZm0zr1TPtxGnIMBWcqo=
-65HTYtCVWaTlgxATZHgFkNkWIyHMG3ZJQgJb2pOmTBObj-n-pJBEyjDdNfpSLHJh8dRgOhBP9IN=
-3NwB8AenXQc9zjbKTFMbEksD7drhI9D0dtk.Ywmg0jXENvCRXxNYFLYjWCbSMvhHhPa_baS2w2A=
-H9s1
+http://www.reminddash.icu/anezfr/4zOTHX_iujpgNyIdj1o2UDt3-9WO6TzFQeBUnNKf9T=
+Y68myhIPG2lfHkhVgNIn_EQ4rFmqxiMwrxYJ9DigFpTgi2RDy-6YqmU_pAuH7ZM7xfoPJt6AzGA=
+FC0uQumScSpHoa9KuwlhmQZmy9-FK6AejGb5kj_4md-VByp-4tZHL7.ErnXO2KOXKxh1_dTzve-=
+QNdree4-bh6vSEY21NO3K6j
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
