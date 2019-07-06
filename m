@@ -1,52 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E7C63610AC
-	for <lists+driverdev-devel@lfdr.de>; Sat,  6 Jul 2019 14:34:59 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1568A610AB
+	for <lists+driverdev-devel@lfdr.de>; Sat,  6 Jul 2019 14:34:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id AB204857EB;
-	Sat,  6 Jul 2019 12:34:57 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B5EC585466;
+	Sat,  6 Jul 2019 12:34:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NSvsGR-kmijs; Sat,  6 Jul 2019 12:34:57 +0000 (UTC)
+	with ESMTP id Q_J3qKjo0oAa; Sat,  6 Jul 2019 12:34:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3699B81FB3;
-	Sat,  6 Jul 2019 12:34:56 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5558A85218;
+	Sat,  6 Jul 2019 12:34:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 16E3A1BF2A5
- for <devel@linuxdriverproject.org>; Sat,  6 Jul 2019 12:34:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 287A21BF2A5
+ for <devel@linuxdriverproject.org>; Sat,  6 Jul 2019 12:34:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 137D081FB3
- for <devel@linuxdriverproject.org>; Sat,  6 Jul 2019 12:34:54 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 237B485B6F
+ for <devel@linuxdriverproject.org>; Sat,  6 Jul 2019 12:34:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6FSjaOTzTQK5 for <devel@linuxdriverproject.org>;
- Sat,  6 Jul 2019 12:34:53 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+ with ESMTP id DwMiFgx-hk8f for <devel@linuxdriverproject.org>;
+ Sat,  6 Jul 2019 12:34:43 +0000 (UTC)
+X-Greylist: delayed 00:10:02 by SQLgrey-1.7.6
 Received: from musicalrice.icu (unknown [160.20.111.26])
- by whitealder.osuosl.org (Postfix) with ESMTP id 644FB81F4D
- for <devel@driverdev.osuosl.org>; Sat,  6 Jul 2019 12:34:53 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8DECC857EB
+ for <devel@linuxdriverproject.org>; Sat,  6 Jul 2019 12:34:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail; d=musicalrice.icu; 
  h=From:Date:MIME-Version:To:Subject:Message-ID:Content-Type:Content-Transfer-Encoding;
- i=benue@musicalrice.icu; bh=IhQt5LuC+NDbOKqdniV3R2C9Eis=;
- b=gnBeiMmu22nv+pcOOwi0CTHtndNPNK8xy0/myrCuqfMqaF8/h9ABSC23KTI8ZUM1DHmMVzNbGbeT
- eNbiCdsxqjyW8X+AyTawpjM5DUvq52z+sqRd7TFAXUagrtz86tRTIhdELYldjH+AYu2f6jUB0HtJ
- U5C/7Nw1RNITlZ2nRiU=
+ i=benue@musicalrice.icu; bh=+yE6mUHTzAtdXiIYh/DtuCf1EjA=;
+ b=aTJ2y1nKk3oXmUSESbcSJyeVYrd9zbIFjZFsCsDYaLbdc1ILHZ8T54Amta0yN/KK5PE/gIS3KgEf
+ olLAFl7eP3RiiDVkwUkhsiIWiDhi3erL9wSwhh1MNM+glixWaC8NblT5O6dw1Q86UNyOvMd05tCf
+ 6pqG7MUGFUaEKL53Ryk=
 DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=musicalrice.icu;
- b=YouB2/O3+V53uGLTjlO4kaIh3VnYGDJ8/8nziUybDJ7DSfPLPSSDH5HweL9Vjf1yDWXDz6BaXXeG
- +IQLl3HhsTchm91WF7sINf3GphDysrSVMMG87EE+RIn7RPeNdqlPtJXkQ3FKATpJM4ymRulDPFeF
- Sw8wlBP9Xgq7SixEH0o=;
-From: " Ian Hubbard" <benue@musicalrice.icu>
-Date: Sat, 06 Jul 2019 07:21:01 -0500
+ b=fIEFXtInwyfu467+J1SIEd+9upHgZQb16O7lrDqRbi+u/kmCY03XEXLdBCo1AxdZiekrls7d06Xj
+ dSsoGKwpt5Gw5qqSewpEASoX5GGTsDpic9sgFmgew8rYAx7KOixLh+YXO9rAvJQKg3wGQff/H2yq
+ MhK/q15EvrPku3aXeEU=;
+From: " Philip Gonzales" <benue@musicalrice.icu>
+Date: Sat, 06 Jul 2019 07:21:02 -0500
 MIME-Version: 1.0
-To: <devel@driverdev.osuosl.org>
+To: <devel@linuxdriverproject.org>
 Subject: Become A Bitcoin Billionaire with this done for you trading system
-Message-ID: <gVa0Z9A8uKhxmJKqxlmHmPuuCxQTsizHAXuTqfQ6dWk.24kSxI6zwaEbew_ooAb9louvhMZ-KOW8mkrHc5p8gDc@musicalrice.icu>
+Message-ID: <ZbXkQzlpz9eRzz8DksfGci4HmcNOGjRQCi26AOM6ewU.BFXk7RApHPaP5bD4rVcd0N3k8jYfMyfT-rkBDzT3KG4@musicalrice.icu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,10 +72,10 @@ A smart man (or woman) knows a great opportunity when he or she sees one=E2=
 For a limited time, I am revealing my Bitcoin Trading system, that will tur=
 n you to a millionaire almost overnight
 
->> http://www.musicalrice.icu/khhebmhkh/ylrfequh31577legjt/L1yoOdHW7AO5NKc4=
-6T9kv1IwV8vPLt2WpDFdIGTGTlw/0uQKuzdX6LZ-JbG_rTKxx6RwTAl8bi6xwTPv2HywlWB0nzV=
-WBgbYIQkDUe7cgvQ-9i-V6wrmGJRwA5gWGzS_N5-w6WFsGK0oLky_87b5mknWDyEB15oJHQ_261=
-l5FcziW0Z0du6K6XEVW21ix4_vcgop3JJdSjheXcvnU0xoHvw <<
+>> http://www.musicalrice.icu/rhwuvg/aiortlhbw31576hbvjtevqw/wUULF0pjDSpMVS=
+0NdU-Ug7isJ9OoA_qMUb2hKjJcjDY/548qKhSVjcGpylezELbIz-XxiW0uo7Tl9UkVURYzgdSDi=
+7y2BVADArh0pmpvytGjV770QasmvKDIz8S9p7rJLCWOEgp6PSg9MHvPBnbPIeFmGhvg46lzudLQ=
+Wcw8Vhb4a7HHh3vOGDubXublTa05B-mRsuO0SN7nvofLx3k5eHE <<
 
 Don't believe me? Well check for yourself. I have helped hundreds make hund=
 reds of thousands of dollars with only $20 investments at times. Take advan=
@@ -83,25 +83,25 @@ tage of this information now, before too many people water down this simple=
  method, that no one realizes exists.
 
 Sincerely,
- Ian Hubbard
+ Philip Gonzales
 
 
 
 if you no longer wish for me to contact you and want to be removed off my d=
 atabase please follow the link below:
-http://www.musicalrice.icu/vjar/wvHox0UnvcXehjSdJJ3pogcv_4xi12WVEX6K6ud0Z0W=
-izcF5l162_QHJo51BEyDWnkm5b78_ykLo0KGsFW6w-5N_SzGWg5AwRJGmrw6V-i9-Qvgc7eUDkQ=
-IYbgBWVzn0BWlwyH2vPTwx6ib8lATwR6xxKTr_GbJ-ZL6XdzuKQu0.wlTGTGIdFDpW2tLPv8VwI=
-1vk9T64cKN5OA7WHdOoy1L
-8619 South Wall Ave. Waynesboro, PA 17268
+http://www.musicalrice.icu/faisn/EHe5k3xLfovn7NS0OusRm-B50aTlbuXbuDGOv3hHH7=
+a4bhV8wcWQLduzl64gvhGmFeIPbnBPvHM9gSP6pgEOWCLJr7p9S8zIDKvmsaQ077VjGtyvpmp0h=
+rADAVB2y7iDSdgzYRUVkU9lT7ou0WixX-zIbLEzelypGcjVShKq845.YDjcJjKh2bUMq_AoO9Js=
+i7gU-UdN0SVMpSDjp0FLUUw
+265 S. Schoolhouse St. Boynton Beach, FL 33435
 
 
 
 You can report abuse below:
-http://www.musicalrice.icu/abhfxwzkj/wvHox0UnvcXehjSdJJ3pogcv_4xi12WVEX6K6u=
-d0Z0WizcF5l162_QHJo51BEyDWnkm5b78_ykLo0KGsFW6w-5N_SzGWg5AwRJGmrw6V-i9-Qvgc7=
-eUDkQIYbgBWVzn0BWlwyH2vPTwx6ib8lATwR6xxKTr_GbJ-ZL6XdzuKQu0.wlTGTGIdFDpW2tLP=
-v8VwI1vk9T64cKN5OA7WHdOoy1L
+http://www.musicalrice.icu/auxfajb/EHe5k3xLfovn7NS0OusRm-B50aTlbuXbuDGOv3hH=
+H7a4bhV8wcWQLduzl64gvhGmFeIPbnBPvHM9gSP6pgEOWCLJr7p9S8zIDKvmsaQ077VjGtyvpmp=
+0hrADAVB2y7iDSdgzYRUVkU9lT7ou0WixX-zIbLEzelypGcjVShKq845.YDjcJjKh2bUMq_AoO9=
+Jsi7gU-UdN0SVMpSDjp0FLUUw
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
