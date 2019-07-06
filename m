@@ -1,57 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D34BD60F6C
-	for <lists+driverdev-devel@lfdr.de>; Sat,  6 Jul 2019 10:16:25 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 29A5D60F90
+	for <lists+driverdev-devel@lfdr.de>; Sat,  6 Jul 2019 10:57:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 96A692049B;
-	Sat,  6 Jul 2019 08:16:23 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 387EF8561E;
+	Sat,  6 Jul 2019 08:57:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RldUDS84tYv2; Sat,  6 Jul 2019 08:16:22 +0000 (UTC)
+	with ESMTP id VP3F-DNgbf-e; Sat,  6 Jul 2019 08:57:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id CAFDE2049E;
-	Sat,  6 Jul 2019 08:16:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9CC2E853FD;
+	Sat,  6 Jul 2019 08:57:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 50BB01BF357
- for <devel@linuxdriverproject.org>; Sat,  6 Jul 2019 08:16:19 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C36B41BF357
+ for <devel@linuxdriverproject.org>; Sat,  6 Jul 2019 08:57:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 4DD2487820
- for <devel@linuxdriverproject.org>; Sat,  6 Jul 2019 08:16:19 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id BE725853FD
+ for <devel@linuxdriverproject.org>; Sat,  6 Jul 2019 08:57:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id l7GrgM6fMJjK for <devel@linuxdriverproject.org>;
- Sat,  6 Jul 2019 08:16:18 +0000 (UTC)
+ with ESMTP id v4VoALX8d325 for <devel@linuxdriverproject.org>;
+ Sat,  6 Jul 2019 08:57:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mout.web.de (mout.web.de [212.227.17.12])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1EDC4877E7
- for <devel@driverdev.osuosl.org>; Sat,  6 Jul 2019 08:16:17 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 253C184EC1
+ for <devel@driverdev.osuosl.org>; Sat,  6 Jul 2019 08:57:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
- s=dbaedf251592; t=1562400935;
- bh=8+x5zb8M56IwLI9KqnivxYHcbPvMtQLoFq6LdrTZcLw=;
- h=X-UI-Sender-Class:To:From:Subject:Cc:Date;
- b=e6lFzOXYMJdhBNrlpiB0Cxflm9XRNDh3Z77KJOXvTVKiAFV1BMzlGQ8+iIVdyWfi3
- G60BG45DAi2hoafGV7MofID2q1YWSZCGhyt7Rta5YMD9Cqt06Jd9cC576nCLUqhDXo
- XSzlxyNRhbZHGw6NBVvzs6nD7T5VD253WP3D1nbQ=
+ s=dbaedf251592; t=1562403418;
+ bh=mga3jcoqarNpM03f1VZ9ZEB8Apx+m+Akum97wS1Kp74=;
+ h=X-UI-Sender-Class:To:Cc:From:Subject:Date;
+ b=hCo3095G193LGVFu1cJcDkTvKcTlSSnEtJpxD1eUsJBDOE1qZIgnCnM9+QO+LfuKA
+ FNU/CvdgL3bdribx1CrKUYAsWXefFxH+UNs7Iiwhk5RKKvIK7xSYhM9Nd6u1MGXgk7
+ biR+RLlsKzHIPE3pgmINNfV4lyBnTRoUKKOzKTYI=
 X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
-Received: from [192.168.1.2] ([2.244.148.45]) by smtp.web.de (mrweb102
- [213.165.67.124]) with ESMTPSA (Nemesis) id 0M1G68-1icjLr0fbk-00tDOq; Sat, 06
- Jul 2019 10:15:35 +0200
-To: speakup@linux-speakup.org, devel@driverdev.osuosl.org,
- Bhagyashri Dighole <digholebhagyashri@gmail.com>,
- Chris Brannon <chris@the-brannons.com>,
+Received: from [192.168.1.2] ([2.244.148.45]) by smtp.web.de (mrweb101
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 0LzsKN-1iWxPF063X-014ykE; Sat, 06
+ Jul 2019 10:56:58 +0200
+To: devel@driverdev.osuosl.org, Aaro Koskinen <aaro.koskinen@iki.fi>,
+ "David S. Miller" <davem@davemloft.net>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Kirk Reiser <kirk@reisers.ca>, Okash Khawaja <okash.khawaja@gmail.com>,
- Samuel Thibault <samuel.thibault@ens-lyon.org>,
- William Hubbs <w.d.hubbs@gmail.com>
+ Ioannis Valasakis <code@wizofe.uk>, =?UTF-8?Q?Petr_=c5=a0tetiar?=
+ <ynezz@true.cz>
 From: Markus Elfring <Markus.Elfring@web.de>
-Subject: [PATCH] staging: speakup: One function call less in
- speakup_win_enable()
+Subject: [PATCH] staging: octeon: One function call less in
+ cvm_oct_common_set_multicast_list()
 Openpgp: preference=signencrypt
 Autocrypt: addr=Markus.Elfring@web.de; prefer-encrypt=mutual; keydata=
  mQINBFg2+xABEADBJW2hoUoFXVFWTeKbqqif8VjszdMkriilx90WB5c0ddWQX14h6w5bT/A8
@@ -96,33 +94,33 @@ Autocrypt: addr=Markus.Elfring@web.de; prefer-encrypt=mutual; keydata=
  Z/wsLiWTgKlih2QYULvW61XU+mWsK8+ZlYUrRMpkauN4CJ5yTpvp+Orcz5KixHQmc5tbkLWf
  x0n1QFc1xxJhbzN+r9djSGGN/5IBDfUqSANC8cWzHpWaHmSuU3JSAMB/N+yQjIad2ztTckZY
  pwT6oxng29LzZspTYUEzMz3wK2jQHw+U66qBFk8whA7B2uAU1QdGyPgahLYSOa4XAEGb6wbI FEE=
-Message-ID: <11f79333-25c3-1ad9-4975-58c64821f3fe@web.de>
-Date: Sat, 6 Jul 2019 10:15:30 +0200
+Message-ID: <9ce376b1-0450-a0ea-bd4e-2601e4bb8168@web.de>
+Date: Sat, 6 Jul 2019 10:56:52 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.2
 MIME-Version: 1.0
-Content-Language: en-GB
-X-Provags-ID: V03:K1:WjlotG6ZLpR1DGdwN0TbZpJZhsy0inkA5QNDz8Lra+YHLAkenpX
- 6uTJUoF6l8DlszWFDC9KBgIu03P1RQKAR17RaIJCu1d0oqOT1q9zR949n4BovGEzpMPy5af
- 21XUKqdgKCHrGJO0HBU8sJ40hgtujfdHd6eHfdHVpz8zHaQqiU5lY8TUohc9btrEt2XXgHq
- qJlsVNmwY9neJxWAoqL3A==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:CFVnmFccx8k=:+ow3qAQZDdxIYGqSWCYYTR
- cAFXe5+6K239bkRRW+NMFuZB7Ken1PKaYsDQ45xEdCDkTP7eeEvPchw4yQ4WpD1a/H4Xyx7FS
- mgAWBjXUurbJ2DBeSS2jmF1K9Al41lK1p3T1W1m9h5MoqR91FVfz0kuEgwjYXdyFM2wTEqf0e
- kE6WeBXXdaD+dAGJhXXZXsF0fxURe/Zj4bWWQY3addZ52sZDnXtBwYdzV7XwtNYY0BFbgQyub
- sonfuGgUP8gm+RJ+98MqNTJKCqi/aitdQxnNR80gT+lMVEygfiJS9Vuc+pUO63IiBdj+15KkF
- G4fDpgRM8Zviqf+hFw43eP4VDD/KXmPOfx14hTZm4Lwko/Doax/E5B0/ZRLX8DCgS2xsmJ3Ts
- Iu339dYjvpVeeDFHkmnYNWFHx/mBJl/qH/UlG8Rc/syMv6yUL+Kuv2aANWL9hfxTLNt5agupv
- 4FJV4Zqa8afkvnyC8vWz5zTacTXz32wsoH1txpMOGWPr8khomlbFOMnMXnwCRI+JWEcNwE/JS
- /qj0eKcFNyAKIUtNn/t4vl06zQfpz/0LzR1rjKM12eqti3Up4O/rL/ChvNVqtJThFTps6apsc
- OE9hfXdqTIyVkcxkwK0YWo8iByFnVo9OVpQyCXXo5+p+Htc9+8vJZPBUpTRf+t+DPDWDcl5/N
- 5MSZqaa9cz+kTZOvtxUFrU5DV7qszb9oB0/K+j6DFnVX90FZmuTvrCfCuwfMg8p0BpwTKqAHL
- W6kdh/6dSgiN2p2mNGXGT8uTzSa0kwNDLT92KZFxJC1lMXxoxw0sssMRz+D6DF+MaFHn9y5s8
- VB4QIx15NE0pFiJXrHKoJTwJ7tCyFCMPvj+M3pe+ZNdM14wVnuPddZA9bk0/wSF7buPVHz0Df
- E4xaHtsg3hN76pPkxCda8HguXr//U2FfxCibNGTFdtG9knkwfqJZUkSAEZe2/NoCAXQjDdFKu
- ruwf3fC7RT6dDsTdDtQl06oeTpHep9T+vBsYUW0EzgY9Rijv2L9hZ0Lv4+k6ThPT/FcFslySN
- kz8/UaL+ZsJbeGHv5W1iVMh2wKMzS2DTi+XSk0ZXyAlFF9zr0BLikd6YNHnDXBDaBV8nzSdVg
- KjaHZcnyAG6XNY+q0cX2tEOls6zuhESzLRD
+Content-Language: en-US
+X-Provags-ID: V03:K1:NkOwAclk4DCSQV8E6147PGV6k3iHPD5NF9siN8y2nxLc9+zewoj
+ SGaBEYhPUbkMTc+48Oi5J80Ej1/roaQ8fRjJlMNfSA2Rjg40PN6PuWohv37qZlIR7E1zmAo
+ 6z/ETj/7xj/ZW7QC9Rg3ekjplwYnLrKiJjmfzXOxrmdQ6BHWtwCHlUenn8E+kCYJ8+PCyYq
+ VFaxWYXsIX8Dq0aHE7daw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:9/P5YyRt/4I=:QP25Q/yAXh7J3ku4RESW48
+ RoI9YXNxBvUp5DiQP0RQWqxEq6Ncgy5yYnqLBCEhRuz4sl/0ge06TQdjIB8DR9LnwPLjFP+PF
+ IRFpca+ezR17M07aSs3C2oxkKUL3ccREbbtn+J9CfZWdt5EeId7IsQF5xnFN0y9yequiao3DZ
+ E9IP+FftbLeA9nfYp5mXAP3H48Cd2nsxbp9PQvf54+oWr3ERcnJE18rHg8moOSPneT0M/efrv
+ oEcjRAQCzs9XoyEn25ca1m9PTOsQxVRqj3gGoPG64+pxuka2NQRcinB+eJqbH4H6g3fsLH4pm
+ /zv/cT8G4IaU4Lt8XNHeuwekhqUMfxLqnrhoeRO+XBTntFO1pKFqgKbVjKGHtFkiqcUR72xrR
+ p71Exr65iUjdufAQ1qvi6qJSHKgpNz/yTL0P3IM/asUhwb478/5Y2aLxYrFCmqyYl54fnFnQZ
+ 6AHSPY10QApt+jR5CEFlZ1RcfoUHCjNHcCBgyBgb2LSjfp+zDah/t0vi/VH3egZJghggDWvhb
+ nScmxbGllmvLHCd2+SPp85CwvDNCJBRB1b+fUJbJdrVx2/xyBhHU156zgIs+vjyvVNFM8fEEp
+ TjcosssS10g+9xqzulEwhJjF0IdK5bihYd6WA6NrO6oq5PsIx5OFQQQ35wUaaee5xRvsvcBHi
+ Ln79UrwOfQup+iCaM8c+1uaxUwjGE/RS2V3re1CCztVJYcvZcieWVj/w/LtQn8WFLomjIYcHx
+ GspzOsK1JmmanlJQWj/myInbWM5LY9JVQ155Us+CbQ5yTPMcAnODQ5LDfPqpslQLEFw0znwsV
+ Q1z/86mubAXLJwSgibummoGvw6MOW8HoFOUpVdKG+fbwiMLiwSEMf6SGk2uPLKBsRKj7Q2wA5
+ Ni8ssOIbnHbMI5bca1mM3dn68PLQq8Z4Yqi8XHqGJRbPAOo1B4pBTJ0f42+Yo2QE+tpypiMq/
+ XJ4Zy+t01sRxcyXhCUDIAlzY99WZ5q95kjdYskeTagBmZyUa1c92rvxi8OaROgzKwyZuKgq0j
+ q/ckKVrRMTovX90vNYNnCZzCP6J30X4IssBj9i1lrcNLcRIeNM1td1JpJuMjIp8FDucQMxhSO
+ ik/34s3LxDXJXS0jIbHgV1SES78ZFXUlXKt
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -142,7 +140,7 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 From: Markus Elfring <elfring@users.sourceforge.net>
-Date: Sat, 6 Jul 2019 10:03:56 +0200
+Date: Sat, 6 Jul 2019 10:48:23 +0200
 
 Avoid an extra function call by using a ternary operator instead of
 a conditional statement.
@@ -151,27 +149,29 @@ This issue was detected by using the Coccinelle software.
 
 Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
 ---
- drivers/staging/speakup/main.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ drivers/staging/octeon/ethernet.c | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/speakup/main.c b/drivers/staging/speakup/main.c
-index 488f2539aa9a..03bbc9a4dbb3 100644
---- a/drivers/staging/speakup/main.c
-+++ b/drivers/staging/speakup/main.c
-@@ -1917,10 +1917,9 @@ static void speakup_win_enable(struct vc_data *vc)
- 		return;
+diff --git a/drivers/staging/octeon/ethernet.c b/drivers/staging/octeon/ethernet.c
+index 8847a11c212f..93f127a0b287 100644
+--- a/drivers/staging/octeon/ethernet.c
++++ b/drivers/staging/octeon/ethernet.c
+@@ -337,13 +337,8 @@ static void cvm_oct_common_set_multicast_list(struct net_device *dev)
+
+ 		cvmx_write_csr(CVMX_GMXX_RXX_ADR_CTL(index, interface),
+ 			       control.u64);
+-		if (dev->flags & IFF_PROMISC)
+-			cvmx_write_csr(CVMX_GMXX_RXX_ADR_CAM_EN
+-				       (index, interface), 0);
+-		else
+-			cvmx_write_csr(CVMX_GMXX_RXX_ADR_CAM_EN
+-				       (index, interface), 1);
+-
++		cvmx_write_csr(CVMX_GMXX_RXX_ADR_CAM_EN(index, interface),
++			       dev->flags & IFF_PROMISC ? 0 : 1);
+ 		cvmx_write_csr(CVMX_GMXX_PRTX_CFG(index, interface),
+ 			       gmx_cfg.u64);
  	}
- 	win_enabled ^= 1;
--	if (win_enabled)
--		synth_printf("%s\n", spk_msg_get(MSG_WINDOW_SILENCED));
--	else
--		synth_printf("%s\n", spk_msg_get(MSG_WINDOW_SILENCE_DISABLED));
-+	synth_printf("%s\n", spk_msg_get(win_enabled
-+					 ? MSG_WINDOW_SILENCED
-+					 : MSG_WINDOW_SILENCE_DISABLED));
- }
-
- static void speakup_bits(struct vc_data *vc)
 --
 2.22.0
 
