@@ -1,52 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2165361305
-	for <lists+driverdev-devel@lfdr.de>; Sat,  6 Jul 2019 23:35:32 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5614E6132E
+	for <lists+driverdev-devel@lfdr.de>; Sun,  7 Jul 2019 01:07:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2381B81E6D;
-	Sat,  6 Jul 2019 21:35:30 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7302885E12;
+	Sat,  6 Jul 2019 23:07:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Zjx0gTJrcI65; Sat,  6 Jul 2019 21:35:28 +0000 (UTC)
+	with ESMTP id 5FqS+XR0ahkI; Sat,  6 Jul 2019 23:07:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2ACD281E66;
-	Sat,  6 Jul 2019 21:35:28 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BDDDB85209;
+	Sat,  6 Jul 2019 23:07:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3FE8A1BF5DE
- for <devel@linuxdriverproject.org>; Sat,  6 Jul 2019 21:35:25 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id CA16C1BF2EF
+ for <devel@linuxdriverproject.org>; Sat,  6 Jul 2019 23:07:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2DEC082756
- for <devel@linuxdriverproject.org>; Sat,  6 Jul 2019 21:35:25 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C6FA385209
+ for <devel@linuxdriverproject.org>; Sat,  6 Jul 2019 23:07:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ybcG+vsRGHMP for <devel@linuxdriverproject.org>;
- Sat,  6 Jul 2019 21:35:24 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from Galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by hemlock.osuosl.org (Postfix) with ESMTPS id E925F815D7
- for <devel@driverdev.osuosl.org>; Sat,  6 Jul 2019 21:35:23 +0000 (UTC)
-Received: from bigeasy by Galois.linutronix.de with local (Exim 4.80)
- (envelope-from <bigeasy@linutronix.de>)
- id 1hjsL0-00064V-OD; Sat, 06 Jul 2019 23:35:18 +0200
-Date: Sat, 6 Jul 2019 23:35:12 +0200
-From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH 4/7] staging: most: Use spinlock_t instead of struct
- spinlock
-Message-ID: <20190706213512.xuyxgvcy7ntn474d@linutronix.de>
-References: <20190704153803.12739-1-bigeasy@linutronix.de>
- <20190704153803.12739-5-bigeasy@linutronix.de>
- <20190706100253.GA20497@kroah.com>
+ with ESMTP id 24Q-LgIlC434 for <devel@linuxdriverproject.org>;
+ Sat,  6 Jul 2019 23:07:51 +0000 (UTC)
+X-Greylist: delayed 00:10:01 by SQLgrey-1.7.6
+Received: from empiredescent.icu (kjj400m0.ni.net.tr [89.252.165.105])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3749085149
+ for <devel@linuxdriverproject.org>; Sat,  6 Jul 2019 23:07:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail; d=empiredescent.icu;
+ h=From:Date:MIME-Version:To:Subject:Message-ID:Content-Type:Content-Transfer-Encoding;
+ i=itys@empiredescent.icu; bh=T74LNnLHyBWBRWC2g9QEqj0MQp8=;
+ b=eIaUi8urrVuSdYpCCCyabvHNMzowTG+R+fWcp54j8Ppw6kJI+3aksa9YFwT6niCnS16mG4qxlUyZ
+ CHdlS1j8omdVEWwn15vQQpl1Xr4+o5gy10l67zd+QaLXfwWCktVcJIlMEBSnSc/Ow/qlq1zLaauj
+ CaGA8ajzea7dRC9uJyU=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=empiredescent.icu; 
+ b=jN4NA56ZypbK19SCq1EjCp/OJpR+qjC49N+eNvzcZziwIK+l1S/DE21ERdB8i2eCmzZZ1jVUmx3+
+ W6RnFK9wyXRfXFBrSNMBBiXTMrD61SUiGzqXww3PHXfNHlcbs4dYeWbM7MsyhUTDiLTgRsxIiKG8
+ aFuCiKnMf5LGQ1SiG4Y=;
+From: "News Finance" <itys@empiredescent.icu>
+Date: Sat, 06 Jul 2019 17:53:32 -0500
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190706100253.GA20497@kroah.com>
-User-Agent: NeoMutt/20180716
+To: <devel@linuxdriverproject.org>
+Subject: If you bought $5 of Bitcoin 7 years ago,
+ you'd be 4.4 million dollars richer!
+Message-ID: <mGbVr9826JfaDClI2DlHIiEhTKbfKBIgYBsXgctbFB0.OzgbVkOjHbTr2539OAqPJgEbGEnUdJyvqJj8o4Cpnto@empiredescent.icu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,41 +60,41 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Peter Zijlstra <peterz@infradead.org>,
- tglx@linutronix.de, linux-kernel@vger.kernel.org,
- Christian Gromm <christian.gromm@microchip.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 2019-07-06 12:02:53 [+0200], Greg Kroah-Hartman wrote:
-> On Thu, Jul 04, 2019 at 05:38:00PM +0200, Sebastian Andrzej Siewior wrote:
-> > For spinlocks the type spinlock_t should be used instead of "struct
-> > spinlock".
-> 
-> Why?
-> 
-> > Use spinlock_t for spinlock's definition.
-> 
-> Why?  I agree it makes the code smaller, but why is this required?
+This Bitcoin Trading Software, WILL I repeat WILL make you a Millionaire in 2019
 
-I remember PeterZ pointing out to stick to the typedef and it is
-probably better to stick with the typdef since we have it. It was like
-that since it was first introduced (2.1.25 for i386).
-We have a checkpatch warning for that [0]. 
+The gates are open!
 
-This series has only 7 patches (excluding the powerpc bits) so almost
-everyone else is using just the typdef.
+Only a select amount of people are going
+to be able to access this so act fast!
 
-[0] 88982fea52d01 ("checkpatch: warn when declaring "struct spinlock foo;"")
-    from Dec 2012
+=>> http://www.empiredescent.icu/Lwnytrvg/brrwre31599zwkzksbt/4RKj10grsucLXQkSqO426tO7ZMYG_qGWaDaQZQnbqHA/9BZP6hoQI3mQhAbiKJl_-hpnt_0j_JecYYBP3UnBUOJJyptVeySUlHg0gh28-wAqrpanq_dCyi8ALAfkmhhpW0hLzEoB8dRL4_J0tp9nh9oK809dTV-RtdjZlxGEJEUdxupsiOky-2yUpY81d0QL_SOKbdSDJKo5GkXYjpUdRc8PUvEXvSaKUvSHfh_MgYwe
+To your success
 
-> thanks,
-> 
-> greg k-h
+News Finance
+Make sure you get in while you can:
 
-Sebastian
+=>> http://www.empiredescent.icu/Lwnytrvg/brrwre31599zwkzksbt/4RKj10grsucLXQkSqO426tO7ZMYG_qGWaDaQZQnbqHA/9BZP6hoQI3mQhAbiKJl_-hpnt_0j_JecYYBP3UnBUOJJyptVeySUlHg0gh28-wAqrpanq_dCyi8ALAfkmhhpW0hLzEoB8dRL4_J0tp9nh9oK809dTV-RtdjZlxGEJEUdxupsiOky-2yUpY81d0QL_SOKbdSDJKo5GkXYjpUdRc8PUvEXvSaKUvSHfh_MgYwe
+
+
+
+
+
+
+
+
+
+
+
+If you want to discontinue your communications with us please visit here
+http://www.empiredescent.icu/jzgnhkmd/ewYgM_hfHSvUKaSvXEvUP8cRdUpjYXkG5oKJDSdbKOS_LQ0d18YpUy2-ykOispuxdUEJEGxlZjdtR-VTd908Ko9hn9pt0J_4LRd8BoEzLh0WphhmkfALA8iyCd_qnaprqAw-82hg0gHlUSyeVtpyJJOUBnU3PBYYceJ_j0_tnph-_lJKibAhQm3IQoh6PZB9.AHqbnQZQaDaWGq_GYMZ7Ot624OqSkQXLcusrg01jKR4
+
+or 
+Write us @ 153 Cactus Lane Brockton, MA 02301
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
