@@ -1,36 +1,36 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 29A5D60F90
-	for <lists+driverdev-devel@lfdr.de>; Sat,  6 Jul 2019 10:57:29 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6A7B460F8B
+	for <lists+driverdev-devel@lfdr.de>; Sat,  6 Jul 2019 10:57:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 387EF8561E;
-	Sat,  6 Jul 2019 08:57:27 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4DCB9878B3;
+	Sat,  6 Jul 2019 08:57:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VP3F-DNgbf-e; Sat,  6 Jul 2019 08:57:26 +0000 (UTC)
+	with ESMTP id jK7KHLR5Z7jA; Sat,  6 Jul 2019 08:57:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9CC2E853FD;
-	Sat,  6 Jul 2019 08:57:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A7AC586DA5;
+	Sat,  6 Jul 2019 08:57:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C36B41BF357
- for <devel@linuxdriverproject.org>; Sat,  6 Jul 2019 08:57:23 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5151D1BF357
+ for <devel@linuxdriverproject.org>; Sat,  6 Jul 2019 08:57:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id BE725853FD
- for <devel@linuxdriverproject.org>; Sat,  6 Jul 2019 08:57:23 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4F5B487702
+ for <devel@linuxdriverproject.org>; Sat,  6 Jul 2019 08:57:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id v4VoALX8d325 for <devel@linuxdriverproject.org>;
- Sat,  6 Jul 2019 08:57:21 +0000 (UTC)
+ with ESMTP id ru+k2zpJf3YO for <devel@linuxdriverproject.org>;
+ Sat,  6 Jul 2019 08:57:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.web.de (mout.web.de [212.227.17.12])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 253C184EC1
- for <devel@driverdev.osuosl.org>; Sat,  6 Jul 2019 08:57:20 +0000 (UTC)
+Received: from mout.web.de (mout.web.de [217.72.192.78])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 330C286DA5
+ for <devel@driverdev.osuosl.org>; Sat,  6 Jul 2019 08:57:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
  s=dbaedf251592; t=1562403418;
  bh=mga3jcoqarNpM03f1VZ9ZEB8Apx+m+Akum97wS1Kp74=;
@@ -40,7 +40,7 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
  biR+RLlsKzHIPE3pgmINNfV4lyBnTRoUKKOzKTYI=
 X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
 Received: from [192.168.1.2] ([2.244.148.45]) by smtp.web.de (mrweb101
- [213.165.67.124]) with ESMTPSA (Nemesis) id 0LzsKN-1iWxPF063X-014ykE; Sat, 06
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 0MfHsM-1i8O5A065C-00Onja; Sat, 06
  Jul 2019 10:56:58 +0200
 To: devel@driverdev.osuosl.org, Aaro Koskinen <aaro.koskinen@iki.fi>,
  "David S. Miller" <davem@davemloft.net>,
@@ -94,33 +94,33 @@ Autocrypt: addr=Markus.Elfring@web.de; prefer-encrypt=mutual; keydata=
  Z/wsLiWTgKlih2QYULvW61XU+mWsK8+ZlYUrRMpkauN4CJ5yTpvp+Orcz5KixHQmc5tbkLWf
  x0n1QFc1xxJhbzN+r9djSGGN/5IBDfUqSANC8cWzHpWaHmSuU3JSAMB/N+yQjIad2ztTckZY
  pwT6oxng29LzZspTYUEzMz3wK2jQHw+U66qBFk8whA7B2uAU1QdGyPgahLYSOa4XAEGb6wbI FEE=
-Message-ID: <9ce376b1-0450-a0ea-bd4e-2601e4bb8168@web.de>
+Message-ID: <877404bb-a9e4-ffa5-a621-d87fbca549ef@web.de>
 Date: Sat, 6 Jul 2019 10:56:52 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.2
 MIME-Version: 1.0
 Content-Language: en-US
-X-Provags-ID: V03:K1:NkOwAclk4DCSQV8E6147PGV6k3iHPD5NF9siN8y2nxLc9+zewoj
- SGaBEYhPUbkMTc+48Oi5J80Ej1/roaQ8fRjJlMNfSA2Rjg40PN6PuWohv37qZlIR7E1zmAo
- 6z/ETj/7xj/ZW7QC9Rg3ekjplwYnLrKiJjmfzXOxrmdQ6BHWtwCHlUenn8E+kCYJ8+PCyYq
- VFaxWYXsIX8Dq0aHE7daw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:9/P5YyRt/4I=:QP25Q/yAXh7J3ku4RESW48
- RoI9YXNxBvUp5DiQP0RQWqxEq6Ncgy5yYnqLBCEhRuz4sl/0ge06TQdjIB8DR9LnwPLjFP+PF
- IRFpca+ezR17M07aSs3C2oxkKUL3ccREbbtn+J9CfZWdt5EeId7IsQF5xnFN0y9yequiao3DZ
- E9IP+FftbLeA9nfYp5mXAP3H48Cd2nsxbp9PQvf54+oWr3ERcnJE18rHg8moOSPneT0M/efrv
- oEcjRAQCzs9XoyEn25ca1m9PTOsQxVRqj3gGoPG64+pxuka2NQRcinB+eJqbH4H6g3fsLH4pm
- /zv/cT8G4IaU4Lt8XNHeuwekhqUMfxLqnrhoeRO+XBTntFO1pKFqgKbVjKGHtFkiqcUR72xrR
- p71Exr65iUjdufAQ1qvi6qJSHKgpNz/yTL0P3IM/asUhwb478/5Y2aLxYrFCmqyYl54fnFnQZ
- 6AHSPY10QApt+jR5CEFlZ1RcfoUHCjNHcCBgyBgb2LSjfp+zDah/t0vi/VH3egZJghggDWvhb
- nScmxbGllmvLHCd2+SPp85CwvDNCJBRB1b+fUJbJdrVx2/xyBhHU156zgIs+vjyvVNFM8fEEp
- TjcosssS10g+9xqzulEwhJjF0IdK5bihYd6WA6NrO6oq5PsIx5OFQQQ35wUaaee5xRvsvcBHi
- Ln79UrwOfQup+iCaM8c+1uaxUwjGE/RS2V3re1CCztVJYcvZcieWVj/w/LtQn8WFLomjIYcHx
- GspzOsK1JmmanlJQWj/myInbWM5LY9JVQ155Us+CbQ5yTPMcAnODQ5LDfPqpslQLEFw0znwsV
- Q1z/86mubAXLJwSgibummoGvw6MOW8HoFOUpVdKG+fbwiMLiwSEMf6SGk2uPLKBsRKj7Q2wA5
- Ni8ssOIbnHbMI5bca1mM3dn68PLQq8Z4Yqi8XHqGJRbPAOo1B4pBTJ0f42+Yo2QE+tpypiMq/
- XJ4Zy+t01sRxcyXhCUDIAlzY99WZ5q95kjdYskeTagBmZyUa1c92rvxi8OaROgzKwyZuKgq0j
- q/ckKVrRMTovX90vNYNnCZzCP6J30X4IssBj9i1lrcNLcRIeNM1td1JpJuMjIp8FDucQMxhSO
- ik/34s3LxDXJXS0jIbHgV1SES78ZFXUlXKt
+X-Provags-ID: V03:K1:3SOAS6OIFImhnFeCq412wwiEs+6NcGPbuGVNRS4Jm2jfPZq2Kq0
+ ohsWa0K578Qm16/yGXW2Gh40EGmfDosYUZMsLjn4AQxTKT4AiviO++ddene9jfv/98Ug4Q2
+ QeHAO18L/1qSsTenV9Zqoao/DO8Ekf0NkuxPc7mz/VZ/6J5dSEPnacE/QqEKbsC2+MSvGf8
+ eq34JgIBTT038wGEfG73w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:OPlnqBzK9f4=:rOcU37DcUhjiB1pgh72XCQ
+ gw+iKVem0qpNNgCgxc+2JzxyydefFW4XC0gVjSipyoArnI9OkTAcs5OPhZ6MGPwS2MnGZYsrK
+ QFKZ0cfWeI1cdPU1ru1Alx+SWndCTXjZgwLOvT5z807OHlXViJ9W4ZSfhNjJ/WHwIgeAFJlb3
+ ukW8USSCoeeLiMRIhO/XcVXFDTvsGWvf/JL7MBAsW4ZLWyUopFXQC31sCn3K3u+gb+f8lATdP
+ jqowoaTn0CvZP+OvjszdH4mh45lNta2LDkzsM1tCwHCBTydwIiSuttHrxbrW+3gJVq/1EFryt
+ 5u/CBz7/s6Xd+9lfRTAZ3nzeqXP0bL9OzQM6hz8GuwYW6g02utv14GbZbQcAPv7M8Z08PhpOz
+ CBV6swQXSvk2syWPg1Ip8pqgeFW/+hxNQCiw1zyqdEw4WozcXOhxsSrp8WbiLQHKGedUrqlYf
+ Dv0NdM2JF+NpaXmErsYyGTvDBuW8iVSH25XvnzoWufZcUrrher+dim3bJ1PlMG/3Ip6LxyT/y
+ tibUWzzGYuuUGu8Fe5E6EyH9HLtuvlJCNM8LgomX2IY80dSh6Hyqvlpum5BvOg8vJSXYtYohM
+ JEhJ3PseVzBMfiT7dQMNZHBY6kx0TAEWFCjgWxZwzQV0hbvcWpuIBnn551TbSt+zg4EhnAf2g
+ D5nLH6zfB76Q6YQK0xGO6nFfMvu+Xgyy64ts5+NQENs2SGU7aBHmBc/V8xO6xejLzM6DzWbho
+ UKqe16sn3ysQgYEl0HCcgusN+8Yi4ZDuzNacYECUk/O4DV6kXq87nlvU1eChG80oGpSSBJ40A
+ cpqxB3EO2vqmQguLmPEnvexbXy/qMb9gfMwKzMtMV7OOir/7vvTUIzrZlpkrxVGm+VBKJZUQG
+ /gMmjb94n/7HSQ7yoAyBLPjJEDjZs1GWSlX6Nl9BrCcc2+fN/L8Y7Ch6cLFerShor/0MxW01s
+ wcaLow9FUMG0gaHtZCXbNEg01Dwn2S0F7XaVmEj8p3rOVPjrSVjcWo2y0fudv10uQNxa5f4uh
+ rPc/cfXP0Ky9ZCWyyrqnSqA86ERZb6sHUFm3jRltWDWwkPCoDcjYFgMfFm5jpJfl4wfbuYGaN
+ fyNt3wKdWk1NviwEpPciDvwHBHY9kLlSh7f
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
