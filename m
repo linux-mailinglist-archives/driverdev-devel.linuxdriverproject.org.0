@@ -1,78 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42E0261AC0
-	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Jul 2019 08:42:06 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 05BC561AC1
+	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Jul 2019 08:42:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7DC9887368;
-	Mon,  8 Jul 2019 06:42:03 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7232B8608B;
+	Mon,  8 Jul 2019 06:42:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EtZlMc8sbIeh; Mon,  8 Jul 2019 06:42:03 +0000 (UTC)
+	with ESMTP id HENF5ilH6hEJ; Mon,  8 Jul 2019 06:42:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D8D3A86A07;
-	Mon,  8 Jul 2019 06:42:02 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C6DAC85BDF;
+	Mon,  8 Jul 2019 06:42:04 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id BA1971BF577
- for <devel@linuxdriverproject.org>; Mon,  8 Jul 2019 06:42:00 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2F24F1BF577
+ for <devel@linuxdriverproject.org>; Mon,  8 Jul 2019 06:42:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B151087152
- for <devel@linuxdriverproject.org>; Mon,  8 Jul 2019 06:42:00 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 24EA987347
+ for <devel@linuxdriverproject.org>; Mon,  8 Jul 2019 06:42:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AnQPWo3e6Hzn for <devel@linuxdriverproject.org>;
- Mon,  8 Jul 2019 06:42:00 +0000 (UTC)
+ with ESMTP id zVY8cjFCxdDj for <devel@linuxdriverproject.org>;
+ Mon,  8 Jul 2019 06:42:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-pl1-f193.google.com (mail-pl1-f193.google.com
  [209.85.214.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 21FEF86A07
- for <devel@driverdev.osuosl.org>; Mon,  8 Jul 2019 06:42:00 +0000 (UTC)
-Received: by mail-pl1-f193.google.com with SMTP id i2so7728726plt.1
- for <devel@driverdev.osuosl.org>; Sun, 07 Jul 2019 23:42:00 -0700 (PDT)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 3DB4F8731A
+ for <devel@driverdev.osuosl.org>; Mon,  8 Jul 2019 06:42:02 +0000 (UTC)
+Received: by mail-pl1-f193.google.com with SMTP id cl9so7696094plb.10
+ for <devel@driverdev.osuosl.org>; Sun, 07 Jul 2019 23:42:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=fBqarLjlOOZ6KgVxckei/g8H70zvX+idfrwHlqD2hLs=;
- b=bbbavrWkx43Fqu8S0aFnu8XFmkQTYp21eO7Bw9S4NlvtS93cmQDJ26MIqBn+UaLC70
- H3Bz6CqYa2iBAhxbyYZgcEtBs9/0SqNHBnDuKJXmQpFbBrq0jEpC7D84/HM/HTIagrs9
- 1GwrxFzLLg6xf8dMcKU6yPT1HWEq2q4GpIaJjUv81817lcjyIlJIQHYwSTuqyRwXTDRI
- JtRCJaieB1BI8MfDXtYxYOkcX9hYtj8NSSIfTadT0syckRlQmfEQlnCgWcDpw0rETex8
- yXsmZv3lyohYoVe3S9QulFd9m80oKJWHlL2a4VgLx8HE56KKpYMJhcBuUe02i+1bapJR
- VVLw==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=oumeg+yZFDFZu4sK49Nx4eVRhUTd+FXpIWAn79PaRdk=;
+ b=Dk1iEgTIITT/g2Kf3rL4UwciV5LQQYbJw0eiX4m24RiqfBISW/fEFm2Eq5BDH8gcif
+ 37zv/q/ixo0A/eOVaW3rRYtzMZNZfo3c8jtNQ4Dib5cnpraYjWt2pedMqAg/yRBwxRfh
+ 7n9LVslrNAsgFUBfpgg+tr0owsAyx7rBSIbEYiCrTgaUTUXef7m1L2UvOxAa9l7pA+BV
+ K+BRsJQ3uhmzowqj8Iua0m+6Y9d4M4trlf9wPhrX7m4p8LeD5iLN7efS+ASrk5zy6dr3
+ KroWaSuceTPCMFndxCMcH6LTQ0TI14rUUl1oFtqO7vYWkbgxhOZi+DrbZxDOfUeFP38o
+ qgOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=fBqarLjlOOZ6KgVxckei/g8H70zvX+idfrwHlqD2hLs=;
- b=JJYnLOQKFMoMuvamy3BcJVthn3/77Kyh8GwePx7WGCwKeGeNWGJsCsFDhF2zi+sfdn
- hXGgOZeoWvPqHVuo7WD0wif0Qnlb0Ii8327DG7+VKPvyBJmjOg6iMBHfZkjgVVxWLUks
- fN6zWApXrgl7f2FLgYVOaxI6zlawRbA03mzE9YVOzbyRuvqo89CsVRFXUsXrgd5VOD3B
- B4/t4J3PPSIkICciASZxAm/+YoO5xg6XJ50drbOVVpUYMgZQ/jEIremWhzASGZ0T+2yT
- h6T5nMbooFsKwzLQFC2Ih2dqYQxqSCmYJQNy6GX3WKH5KJGfC5ndojuXOIZeUwZu/y/5
- b0vA==
-X-Gm-Message-State: APjAAAUY90Z3SA1CW0kYtIe5rbA3Y3EMzfIcGMGfTpExIFG0KtsDegGe
- GEsfNyDm17Thj70eggr15y8=
-X-Google-Smtp-Source: APXvYqwF7RsKY1By+VVycaqCt36spFuhFdn1/Fl3uWKJQ6wmyWafWHYNupTb8AXO7hcenWjVYT+oog==
-X-Received: by 2002:a17:902:204:: with SMTP id
- 4mr22053330plc.178.1562568119830; 
- Sun, 07 Jul 2019 23:41:59 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=oumeg+yZFDFZu4sK49Nx4eVRhUTd+FXpIWAn79PaRdk=;
+ b=d7M/f7W5wgUxtPwltF2e13gbIXLGbC7qa8MgJ2NAW5WNcan5XWcwuGj0k6WRHQuIgG
+ 0p/qYFi5L5hMlrRH6ZmPp9CJXdI5LMS1s42CvuYv4KMeLQF3WGzqb4uKBLSI5WGJe5CK
+ xyNff8EVzyLrNxCtZYBtV/V8kfuypbasQcfWL/BMs6lubzCfV2FaLqm2a5SeMeNBTBDq
+ YgEuaQOmCmGI+twmxD+DtFzZqnBvJNmOWUzRbanxsKaIUpTVKI+QnMbYr0zIzL4+M2Rn
+ Hkm9ayrcoHwjumC+dvnmVtuLh1AvQplJyYOBsC2dLzgldW0mDI7N7E/bm0U5nEA8CWmr
+ DEfg==
+X-Gm-Message-State: APjAAAWNQxW9ZlwlKU842Uu37c8Nvkmxw7g6KUX9gcKGJajkrog3jQs5
+ zERpgoA0pHicNAWEBV6Jkbg=
+X-Google-Smtp-Source: APXvYqzmNaQyS/Bd2G2BPSLUbXOGzTbm0GK641Rldd5EKfbYQ/MbhAcGGOwJhbiSZSXw28ARDg9HwQ==
+X-Received: by 2002:a17:902:4e25:: with SMTP id
+ f34mr22206731ple.305.1562568121969; 
+ Sun, 07 Jul 2019 23:42:01 -0700 (PDT)
 Received: from localhost.localdomain ([110.227.64.207])
- by smtp.gmail.com with ESMTPSA id b11sm18729817pfd.18.2019.07.07.23.41.57
+ by smtp.gmail.com with ESMTPSA id b11sm18729817pfd.18.2019.07.07.23.42.00
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Sun, 07 Jul 2019 23:41:59 -0700 (PDT)
+ Sun, 07 Jul 2019 23:42:01 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: gregkh@linuxfoundation.org,
 	devel@driverdev.osuosl.org
-Subject: [PATCH 1/3] staging: most: dim2: Replace function
- dim_norm_ctrl_async_buffer_size()
-Date: Mon,  8 Jul 2019 12:11:43 +0530
-Message-Id: <20190708064145.3250-1-nishkadg.linux@gmail.com>
+Subject: [PATCH 2/3] staging: most: dim2: Remove function dimcb_io_read()
+Date: Mon,  8 Jul 2019 12:11:44 +0530
+Message-Id: <20190708064145.3250-2-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
+In-Reply-To: <20190708064145.3250-1-nishkadg.linux@gmail.com>
+References: <20190708064145.3250-1-nishkadg.linux@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -92,55 +93,114 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove function dim_norm_ctrl_async_buffer_size as it does nothing
-except call norm_ctrl_async_buffer_size.
-Rename norm_ctrl_async_buffer_size to dim_norm_ctrl_async_buffer_size to
-maintain compatibility with call sites of the latter.
-Change type of new dim_norm_ctrl_async_buffer_size from static inline to
-non-static to match the old version.
-Modify only remaining call site of norm_ctrl_async_buffer_size to call
-dim_norm_ctrl_async_buffer_size instead.
+Remove function dimcb_io_read as it does nothing except call inbuilt
+function readl.
+Modify call sites accordingly.
 Issue found with Coccinelle.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/most/dim2/hal.c | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+ drivers/staging/most/dim2/dim2.c |  9 ---------
+ drivers/staging/most/dim2/hal.c  | 15 ++++++++-------
+ drivers/staging/most/dim2/hal.h  |  2 --
+ 3 files changed, 8 insertions(+), 18 deletions(-)
 
-diff --git a/drivers/staging/most/dim2/hal.c b/drivers/staging/most/dim2/hal.c
-index 699e02f83bd4..d4d532e76147 100644
---- a/drivers/staging/most/dim2/hal.c
-+++ b/drivers/staging/most/dim2/hal.c
-@@ -471,7 +471,7 @@ static inline bool check_bytes_per_frame(u32 bytes_per_frame)
- 	return true;
+diff --git a/drivers/staging/most/dim2/dim2.c b/drivers/staging/most/dim2/dim2.c
+index 31fbc1a75b06..8d3da8e1d436 100644
+--- a/drivers/staging/most/dim2/dim2.c
++++ b/drivers/staging/most/dim2/dim2.c
+@@ -128,15 +128,6 @@ bool dim2_sysfs_get_state_cb(void)
+ 	return state;
  }
  
--static inline u16 norm_ctrl_async_buffer_size(u16 buf_size)
-+u16 dim_norm_ctrl_async_buffer_size(u16 buf_size)
- {
- 	u16 const max_size = (u16)ADT1_CTRL_ASYNC_BD_MASK + 1u;
- 
-@@ -652,7 +652,7 @@ static bool channel_start(struct dim_channel *ch, u32 buf_addr, u16 buf_size)
- 		return dim_on_error(DIM_ERR_BAD_BUFFER_SIZE, "Bad buffer size");
- 
- 	if (ch->packet_length == 0 && ch->bytes_per_frame == 0 &&
--	    buf_size != norm_ctrl_async_buffer_size(buf_size))
-+	    buf_size != dim_norm_ctrl_async_buffer_size(buf_size))
- 		return dim_on_error(DIM_ERR_BAD_BUFFER_SIZE,
- 				    "Bad control/async buffer size");
- 
-@@ -780,11 +780,6 @@ void dim_service_mlb_int_irq(void)
- 	dimcb_io_write(&g.dim2->MS1, 0);
- }
- 
--u16 dim_norm_ctrl_async_buffer_size(u16 buf_size)
+-/**
+- * dimcb_io_read - callback from HAL to read an I/O register
+- * @ptr32: register address
+- */
+-u32 dimcb_io_read(u32 __iomem *ptr32)
 -{
--	return norm_ctrl_async_buffer_size(buf_size);
+-	return readl(ptr32);
 -}
 -
  /**
-  * Retrieves maximal possible correct buffer size for isochronous data type
-  * conform to given packet length and not bigger than given buffer size.
+  * dimcb_io_write - callback from HAL to write value to an I/O register
+  * @ptr32: register address
+diff --git a/drivers/staging/most/dim2/hal.c b/drivers/staging/most/dim2/hal.c
+index d4d532e76147..fcf5d2a0f491 100644
+--- a/drivers/staging/most/dim2/hal.c
++++ b/drivers/staging/most/dim2/hal.c
+@@ -13,6 +13,7 @@
+ #include "reg.h"
+ #include <linux/stddef.h>
+ #include <linux/kernel.h>
++#include <linux/io.h>
+ 
+ /*
+  * Size factor for isochronous DBR buffer.
+@@ -146,7 +147,7 @@ static void dim2_transfer_madr(u32 val)
+ 	dimcb_io_write(&g.dim2->MADR, val);
+ 
+ 	/* wait for transfer completion */
+-	while ((dimcb_io_read(&g.dim2->MCTL) & 1) != 1)
++	while ((readl(&g.dim2->MCTL) & 1) != 1)
+ 		continue;
+ 
+ 	dimcb_io_write(&g.dim2->MCTL, 0);   /* clear transfer complete */
+@@ -170,7 +171,7 @@ static u32 dim2_read_ctr(u32 ctr_addr, u16 mdat_idx)
+ {
+ 	dim2_transfer_madr(ctr_addr);
+ 
+-	return dimcb_io_read((&g.dim2->MDAT0) + mdat_idx);
++	return readl((&g.dim2->MDAT0) + mdat_idx);
+ }
+ 
+ static void dim2_write_ctr_mask(u32 ctr_addr, const u32 *mask, const u32 *value)
+@@ -357,14 +358,14 @@ static void dim2_configure_channel(
+ 
+ 	/* unmask interrupt for used channel, enable mlb_sys_int[0] interrupt */
+ 	dimcb_io_write(&g.dim2->ACMR0,
+-		       dimcb_io_read(&g.dim2->ACMR0) | bit_mask(ch_addr));
++		       readl(&g.dim2->ACMR0) | bit_mask(ch_addr));
+ }
+ 
+ static void dim2_clear_channel(u8 ch_addr)
+ {
+ 	/* mask interrupt for used channel, disable mlb_sys_int[0] interrupt */
+ 	dimcb_io_write(&g.dim2->ACMR0,
+-		       dimcb_io_read(&g.dim2->ACMR0) & ~bit_mask(ch_addr));
++		       readl(&g.dim2->ACMR0) & ~bit_mask(ch_addr));
+ 
+ 	dim2_clear_cat(AHB_CAT, ch_addr);
+ 	dim2_clear_adt(ch_addr);
+@@ -562,12 +563,12 @@ static bool dim2_is_mlb_locked(void)
+ 	u32 const mask0 = bit_mask(MLBC0_MLBLK_BIT);
+ 	u32 const mask1 = bit_mask(MLBC1_CLKMERR_BIT) |
+ 			  bit_mask(MLBC1_LOCKERR_BIT);
+-	u32 const c1 = dimcb_io_read(&g.dim2->MLBC1);
++	u32 const c1 = readl(&g.dim2->MLBC1);
+ 	u32 const nda_mask = (u32)MLBC1_NDA_MASK << MLBC1_NDA_SHIFT;
+ 
+ 	dimcb_io_write(&g.dim2->MLBC1, c1 & nda_mask);
+-	return (dimcb_io_read(&g.dim2->MLBC1) & mask1) == 0 &&
+-	       (dimcb_io_read(&g.dim2->MLBC0) & mask0) != 0;
++	return (readl(&g.dim2->MLBC1) & mask1) == 0 &&
++	       (readl(&g.dim2->MLBC0) & mask0) != 0;
+ }
+ 
+ /* -------------------------------------------------------------------------- */
+diff --git a/drivers/staging/most/dim2/hal.h b/drivers/staging/most/dim2/hal.h
+index fca6c22de8a6..d16268bd9317 100644
+--- a/drivers/staging/most/dim2/hal.h
++++ b/drivers/staging/most/dim2/hal.h
+@@ -97,8 +97,6 @@ bool dim_enqueue_buffer(struct dim_channel *ch, u32 buffer_addr,
+ 
+ bool dim_detach_buffers(struct dim_channel *ch, u16 buffers_number);
+ 
+-u32 dimcb_io_read(u32 __iomem *ptr32);
+-
+ void dimcb_io_write(u32 __iomem *ptr32, u32 value);
+ 
+ void dimcb_on_error(u8 error_id, const char *error_message);
 -- 
 2.19.1
 
