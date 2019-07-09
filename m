@@ -1,84 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4CCF663AD7
-	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Jul 2019 20:22:55 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id F276163B61
+	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Jul 2019 20:49:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0726287B9B;
-	Tue,  9 Jul 2019 18:22:53 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2D37086866;
+	Tue,  9 Jul 2019 18:49:30 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id KfWHHU5Lw+BF; Tue,  9 Jul 2019 18:49:29 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id DAB7381D83;
+	Tue,  9 Jul 2019 18:49:28 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9ADE91BF4D8
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  9 Jul 2019 18:49:26 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 92E0487B6A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  9 Jul 2019 18:49:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5PoF8atbMkeL; Tue,  9 Jul 2019 18:22:52 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 70C7E87B6A;
-	Tue,  9 Jul 2019 18:22:52 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B4BB61BF4D8
- for <devel@linuxdriverproject.org>; Tue,  9 Jul 2019 18:22:50 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B1C9485E08
- for <devel@linuxdriverproject.org>; Tue,  9 Jul 2019 18:22:50 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id myG4EODUf28F for <devel@linuxdriverproject.org>;
- Tue,  9 Jul 2019 18:22:50 +0000 (UTC)
+ with ESMTP id gA2B7PhwmMst
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  9 Jul 2019 18:49:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
- [209.85.214.195])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 6ED1D85E07
- for <devel@driverdev.osuosl.org>; Tue,  9 Jul 2019 18:22:50 +0000 (UTC)
-Received: by mail-pl1-f195.google.com with SMTP id i2so10526507plt.1
- for <devel@driverdev.osuosl.org>; Tue, 09 Jul 2019 11:22:50 -0700 (PDT)
+Received: from mail-qt1-f194.google.com (mail-qt1-f194.google.com
+ [209.85.160.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1D7FA85C56
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  9 Jul 2019 18:49:26 +0000 (UTC)
+Received: by mail-qt1-f194.google.com with SMTP id j19so22657666qtr.12
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 09 Jul 2019 11:49:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=14941MCmJea/f9nxksHUctUhT5FKLU9Frn5jof0WtuE=;
- b=gW0wqqvyJ4Z2qq0g7t5KKKxsz5V/WKxx7dpvKM6qK/ERdWssQW4tFHYDQ+stV3w7P8
- 9SYfO4PVdHXhPcWe8w+0ApFXRcmBuPs4s4qOv4HwtRYjC4sDt/3xbkW2xeROdxSDqVpp
- vZ4f9clunnn6X3lPL31hO3X8sBb9LJqInHb+xLBrM76SvI0jK5zmtU9s/T3D0JFqQN4a
- M5kRmuAai0rSsvSsFWqp2GveygZr6k9aydXQNKa+dwlyYBccPjmq2bPftzwbR7isMmKO
- 7+eJtBiuOkhu7iPk3AShADa2bkFAFALllHAUF1Mug77rOFBCjQF0BaK2SGRYBCM2N+Uo
- 3byQ==
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=uNRAxPwZKVJvArK2MPeZmsIj3VklLhBz1sgoZH4U338=;
+ b=T8t7xT4bXr5+cMp0SwucOaa+jr6CjxiyTnuEK99alH56YsUvlmqOy68CMG3jCK99Js
+ Bm+3h8WI17JG/ItFy5JAwKorvODj8RQaUDj4nVDQbCLDSUY2I2BJPBN8Cl1ZjFut701p
+ 4iNLGUvbToeVC6cegwXLWxkQj+1alu1DIkkMQZmRayJt/zNqxJA89VE8vrEs7dL2A1jx
+ kDQnK3vdPEE9rVT3azpy/5yyW6apGMi2VkI8Imeh0k1CgHDQ/bM6JULhAt0rX8ScTtVk
+ evkMYAMcArhaxPD4RR4GBtOZsNf33dBGU/VUSc5zeeF53l6k4N07jvQNAv0Mh+0B0g05
+ onhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=14941MCmJea/f9nxksHUctUhT5FKLU9Frn5jof0WtuE=;
- b=EhYSaO1N6y/aGqUajO1DF+c8AWGcYUeMbZZ94qDet8fVL/97CFD7N3Lwr8GHugAKAm
- CjOB81IoAEJxJRvPRavO5h1Vjp/6t2OKDTgGQbyu/SE9Ks8OQwS+fDPl71s3egNsgsEg
- 8ZPP/G5gYXvVqPCrNI6ej19eMa24lYzkpsb9/deZkpdj1olhLPJsDhz8oFO/gcHsmH7G
- yQ2RBuT2cuL1It8GsXa0K8mauvJm//vBBXzlxerAz7lUor9czLRV+nNZWQM1vDrznKDo
- NrMFdorhkcMq1Ol9gsTdY/zRZO/C3uS8pG2M9IjCoyUVYz4f/lgk2P237cw3uegi+QOr
- vTzA==
-X-Gm-Message-State: APjAAAWFgmGRsC94Dsms0jEw6PYEz/nNOcDArhBXs41SNiezvGvR9nuY
- EOWaBX5jZ3g6K2A2lqtzlpM=
-X-Google-Smtp-Source: APXvYqzKj+Fqdp7qcv2pHkOixbAbKJ1ai7LV4ypDO5bRjcwYN89jpWEd4xaWf7wm4WdR3kzF7gzuWQ==
-X-Received: by 2002:a17:902:a40c:: with SMTP id
- p12mr33838928plq.146.1562696570189; 
- Tue, 09 Jul 2019 11:22:50 -0700 (PDT)
-Received: from localhost.localdomain ([2001:19f0:7001:2668:5400:1ff:fe62:2bbd])
- by smtp.gmail.com with ESMTPSA id m69sm21008639pga.11.2019.07.09.11.22.43
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Tue, 09 Jul 2019 11:22:49 -0700 (PDT)
-From: Chuanhong Guo <gch981213@gmail.com>
-To: linux-clk@vger.kernel.org (open list:COMMON CLK FRAMEWORK),
- devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE
- BINDINGS), linux-kernel@vger.kernel.org (open list),
- linux-mips@vger.kernel.org (open list:MIPS),
- devel@driverdev.osuosl.org (open list:STAGING SUBSYSTEM)
-Subject: [PATCH 5/5] staging: mt7621-dts: fix register range of memc node in
- mt7621.dtsi
-Date: Wed, 10 Jul 2019 02:20:18 +0800
-Message-Id: <20190709182018.23193-6-gch981213@gmail.com>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20190709182018.23193-1-gch981213@gmail.com>
-References: <20190709182018.23193-1-gch981213@gmail.com>
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=uNRAxPwZKVJvArK2MPeZmsIj3VklLhBz1sgoZH4U338=;
+ b=A3zlY6xwEFK+Nk7WFpfIYv3Ln5R6QxtRawVdj4fqQs5ilNy1WU6W+rzArjJ+vqenjT
+ GPouCGbdNBH5BjCRk/+8xwc7ikSvt6j2YTAVfySv5XdTlsrJyZR9yCz9DlOy5qxVjnZ1
+ HZe4Rm/zZWX5OKyrOgTemNTkHiiL9y5QIoRKilN0APRGbJz8YevR7ZrljHXkDc2mx2c3
+ z9APWWfyPwKF2pMe11oMwoVJfOR+MFkDWm7vUnAst/yNtvBbblUMAM63uc6E+iUnAZiA
+ tvIejtYbZ5JS6gkGZGDl1dGLzm0VJmxucHADmHz75J5awXqbTNNIb8lvSfD9P2JJrJI5
+ EVGg==
+X-Gm-Message-State: APjAAAW5NuGlYCY/hyPJM6W4wbv/qFVod66ZLHzjUbO6eJwJ7G+kcEhq
+ 6KXfOQV0d3wokA+UGx9fWZL8kWNKSTdEP1St0/E=
+X-Google-Smtp-Source: APXvYqwHTDQtZBqugRdjRtCQK+RSPwb9ASus7uIdVjC9BipvZb/ot9JXAZivf4hQdrrJRE+GX7Agqg/gDb/kzFIT+rM=
+X-Received: by 2002:ac8:27d4:: with SMTP id x20mr19533386qtx.138.1562698165286; 
+ Tue, 09 Jul 2019 11:49:25 -0700 (PDT)
 MIME-Version: 1.0
+Received: by 2002:a37:5289:0:0:0:0:0 with HTTP;
+ Tue, 9 Jul 2019 11:49:24 -0700 (PDT)
+From: "Mr. Ali Mahmood" <mrs.mimiqaudon5@gmail.com>
+Date: Tue, 9 Jul 2019 11:49:24 -0700
+Message-ID: <CA+MC4Qy7WBG2sNCFOihB7uhDiCcYCFagAZnfxpPeXPEPdD73iQ@mail.gmail.com>
+Subject: Dear Friend, My Name is Mr Ali Mahmood
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,43 +84,21 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Weijie Gao <hackpascal@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Stephen Boyd <sboyd@kernel.org>, James Hogan <jhogan@kernel.org>,
- Michael Turquette <mturquette@baylibre.com>,
- Ralf Baechle <ralf@linux-mips.org>, Paul Burton <paul.burton@mips.com>,
- Rob Herring <robh+dt@kernel.org>, John Crispin <john@phrozen.org>,
- NeilBrown <neil@brown.name>
+Reply-To: alimahmood67@yahoo.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The memc node from mt7621.dtsi has incorrect register resource.
-Fix it according to the programming guide.
+Dear Friend,
 
-Signed-off-by: Weijie Gao <hackpascal@gmail.com>
-Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
----
- drivers/staging/mt7621-dts/mt7621.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+My Name is Mr Ali Mahmood, i have a business transaction. I will be
+very glad if you can
+assist me to receive this sum of ( $22 Million dollars.) into your
+bank account for the benefit of our both families, reply me if you are
+interested in this business.
 
-diff --git a/drivers/staging/mt7621-dts/mt7621.dtsi b/drivers/staging/mt7621-dts/mt7621.dtsi
-index 12717f570ceb..ac9189276590 100644
---- a/drivers/staging/mt7621-dts/mt7621.dtsi
-+++ b/drivers/staging/mt7621-dts/mt7621.dtsi
-@@ -138,7 +138,7 @@
- 
- 		memc: memc@5000 {
- 			compatible = "mtk,mt7621-memc";
--			reg = <0x300 0x100>;
-+			reg = <0x5000 0x1000>;
- 		};
- 
- 		cpc: cpc@1fbf0000 {
--- 
-2.21.0
-
+Mr Ali Mahmood
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
