@@ -1,94 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EBC0862CD5
-	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Jul 2019 01:56:13 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id EAF9F62D38
+	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Jul 2019 02:59:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B7BE6879A6;
-	Mon,  8 Jul 2019 23:56:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 09FA585A72;
+	Tue,  9 Jul 2019 00:59:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vrqmD1-g6exY; Mon,  8 Jul 2019 23:56:11 +0000 (UTC)
+	with ESMTP id pfdkKoLub-fy; Tue,  9 Jul 2019 00:59:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1FED987935;
-	Mon,  8 Jul 2019 23:56:11 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D94AD853C3;
+	Tue,  9 Jul 2019 00:59:21 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 502831BF46A
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  8 Jul 2019 23:56:09 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B6D7F1BF232
+ for <devel@linuxdriverproject.org>; Tue,  9 Jul 2019 00:59:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4C9C5214E4
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  8 Jul 2019 23:56:09 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B36F8844CD
+ for <devel@linuxdriverproject.org>; Tue,  9 Jul 2019 00:59:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0ga6hG-y0uv3
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  8 Jul 2019 23:56:08 +0000 (UTC)
-X-Greylist: delayed 00:10:01 by SQLgrey-1.7.6
-Received: from out4-smtp.messagingengine.com (out4-smtp.messagingengine.com
- [66.111.4.28])
- by silver.osuosl.org (Postfix) with ESMTPS id 1A81020002
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  8 Jul 2019 23:56:08 +0000 (UTC)
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
- by mailout.nyi.internal (Postfix) with ESMTP id E3A5022015;
- Mon,  8 Jul 2019 19:46:05 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute5.internal (MEProxy); Mon, 08 Jul 2019 19:46:05 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=tobin.cc; h=date
- :from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm3; bh=ZnKD5eEIZYJ1VFL2/A7bDU3TYvJ
- FCV7a1EZg2QT3PtI=; b=CrGAtSBzEjy593sG/TOOPQCz9eo1QukLCCjkUZ97s22
- X9/ZfmK0gUpgcoD/cc/Og8GVXHDbDvS60STTgO1pAjoz9VdwUra4nkEDPZLIDauX
- 6AGTLj2Vo/oiJFUTA664TLvptiha9UA7Jf7p8m8f8FzoGVnTEETA78FC6gY4OC3p
- C2IQmDxxy2qCA31z5UiTYiKR95bq2XHWe1b3HnE+dASjRYRNCi06CDwf20R4hS+L
- GqE2HeXiIpaK2m+FgaVlJdSDSCmUJ3lypXYz1rOQuQ2y4L6Oi2/tZiXxXQbV4c62
- XbB+P+WW3eFfIRi3VGku/xWSOUIrw0EmCqNmDLucv0g==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=ZnKD5e
- EIZYJ1VFL2/A7bDU3TYvJFCV7a1EZg2QT3PtI=; b=dT5s0caU4YuBdKseVnBi9z
- feK7P5y0dJPGVj0RRCgvwKOftTMv6QefbWt71BQ+WOTD62W1b5K68FZjM7s1Sq7e
- SFbrTDr4oxLxGH57m8TlkB2l5E2SaVSmKdyIdFNO5RjezODguT88S3nWPughlemG
- a0iHwOJP9b4tvrRDwHICsZagVo8nswG/BQZvG4u1V++MZfX8upDkm8vhXe4OwSLq
- 61B9TBjPcOK+Dn5HcwoU1dTjBOU+fYEhERDGF5HVgG9dTtV5EJ87wSQ8avJx3Opz
- fJW2IYGSzXKSwvpQhRFcLGLI8vT8vzQVazdDdbatXJye99nQL99+bpQm4r2BBRxg
- ==
-X-ME-Sender: <xms:vdUjXYAPKdX0mrHo_600XEaZSLuHv8coO7qu2qPtG0HdwaF9brsJyA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduvddrgedugddvhecutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenfg
- hrlhcuvffnffculdduhedmnecujfgurhepfffhvffukfhfgggtuggjofgfsehttdertdfo
- redvnecuhfhrohhmpedfvfhosghinhcuvedrucfjrghrughinhhgfdcuoehmvgesthhosg
- hinhdrtggtqeenucfkphepuddvgedrudelrdefuddrgeenucfrrghrrghmpehmrghilhhf
- rhhomhepmhgvsehtohgsihhnrdgttgenucevlhhushhtvghrufhiiigvpedu
-X-ME-Proxy: <xmx:vdUjXQp98-3YKsDVJvVgbf_V-4RSHQw5QlTLcLwRa21BQUS3daCTDQ>
- <xmx:vdUjXSHrbM5wC4TQdvtMoiYmTrFaKNpplhWW0gRsBumFO1nPM3DmfQ>
- <xmx:vdUjXYxYpPC6HhEQ5d43EZaBWrsqxIDW88_bXAbzlSzmAxvP3NFT6g>
- <xmx:vdUjXRtxnat58em3SNttcr4PqXrCNygcxxexuOaYXmgxr8hZN_B4pw>
-Received: from localhost (unknown [124.19.31.4])
- by mail.messagingengine.com (Postfix) with ESMTPA id A32C98005A;
- Mon,  8 Jul 2019 19:46:04 -0400 (EDT)
-Date: Tue, 9 Jul 2019 09:46:01 +1000
-From: "Tobin C. Harding" <me@tobin.cc>
-To: Amit Kumar <free.amit.kumar@gmail.com>
-Subject: Re: [OSSNA] Intro to kernel hacking tutorial
-Message-ID: <20190708234601.GB18120@ares>
-References: <20190705025055.GA7037@ares>
- <CAPTh4OuL5k8YAbkcnDLQQ4YRFkeaYZ6PwqWPisLtST7oz2+haQ@mail.gmail.com>
- <CAPTh4OuKv4Fx2DOWygCO0oXAm8xLw2f47igrnvhDEf2HWWyuEA@mail.gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAPTh4OuKv4Fx2DOWygCO0oXAm8xLw2f47igrnvhDEf2HWWyuEA@mail.gmail.com>
-X-Mailer: Mutt 1.9.4 (2018-02-28)
-User-Agent: Mutt/1.9.4 (2018-02-28)
+ with ESMTP id R2c1poIhurXQ for <devel@linuxdriverproject.org>;
+ Tue,  9 Jul 2019 00:59:19 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from omr1.cc.vt.edu (outbound.smtp.vt.edu [198.82.183.121])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id EB09D82157
+ for <devel@driverdev.osuosl.org>; Tue,  9 Jul 2019 00:59:18 +0000 (UTC)
+Received: from mr3.cc.vt.edu (mr3.cc.ipv6.vt.edu
+ [IPv6:2607:b400:92:8500:0:7f:b804:6b0a])
+ by omr1.cc.vt.edu (8.14.4/8.14.4) with ESMTP id x690boqO026034
+ for <devel@driverdev.osuosl.org>; Mon, 8 Jul 2019 20:37:50 -0400
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199])
+ by mr3.cc.vt.edu (8.14.7/8.14.7) with ESMTP id x690bj2x012939
+ for <devel@driverdev.osuosl.org>; Mon, 8 Jul 2019 20:37:50 -0400
+Received: by mail-qk1-f199.google.com with SMTP id v4so17876806qkj.10
+ for <devel@driverdev.osuosl.org>; Mon, 08 Jul 2019 17:37:50 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:mime-version
+ :content-transfer-encoding:date:message-id;
+ bh=OjZRbgABpZBvMDOAUmYBmnCF4ZS/G+yWz40tVt9zM7o=;
+ b=La8Bvd1UzWfA+yV6mZG6IT0QGAHwrNvrjuIoNiC/NyzRNG5v16yvc19xToODlpHIOT
+ T/iZ08/YsKfoQZbDCTaavvPtucjrX0WK/DWwAPloOsA3R3BmZUOmjQxUjZ9pSAxrygeN
+ oKs2wMEmMtHR0FY+hYiJNrHot1qR1AxU0pibY30ec7XIdPYGT4xvV3GPOwN4DwqiTzoy
+ WyPoBR23UnYn9JZEeKBR+oKJIJGTvK69IlKH3CIlcplA9rC3FySs+XoGiP2+Le9aqDn5
+ AkL/1u7qk6dq8+HSNJ0v7LyJe7kkXk9Y/9TqPLuqAB6Pt6gsyyBnK/R4WlpkojW3eBDE
+ O7Vw==
+X-Gm-Message-State: APjAAAXB2zz+WGk9QUJBfDQeTNmhCzPoRhunOxNmrrA+yDrGpDtlW9OP
+ mSM1yw02hQ2WmwBt+GQpBMFnihjBpGijFWSpLed2YckZ70ibQ7Gn/lcW6DBvoF+Xj3NVAXPNjrf
+ caUae9akqYP+m1niNyTxCl92b2AtC73Af
+X-Received: by 2002:a37:6813:: with SMTP id d19mr16780988qkc.454.1562632665370; 
+ Mon, 08 Jul 2019 17:37:45 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzbFEeUXsRnbhMMEq2850586hL282ux6U2bioRM0L8JU0Om9HCOlfHqXfOGUn65sn/AuySwJA==
+X-Received: by 2002:a37:6813:: with SMTP id d19mr16780979qkc.454.1562632665165; 
+ Mon, 08 Jul 2019 17:37:45 -0700 (PDT)
+Received: from turing-police ([2601:5c0:c001:4341::7ca])
+ by smtp.gmail.com with ESMTPSA id z33sm6958980qtc.56.2019.07.08.17.37.43
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Mon, 08 Jul 2019 17:37:43 -0700 (PDT)
+From: "Valdis =?utf-8?Q?Kl=c4=93tnieks?=" <valdis.kletnieks@vt.edu>
+X-Google-Original-From: "Valdis =?utf-8?Q?Kl=c4=93tnieks?="
+ <Valdis.Kletnieks@vt.edu>
+X-Mailer: exmh version 2.9.0 11/07/2018 with nmh-1.7+dev
+To: Alexander Viro <viro@zeniv.linux.org.uk>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Procedure questions - new filesystem driver..
+Mime-Version: 1.0
+Date: Mon, 08 Jul 2019 20:37:42 -0400
+Message-ID: <21080.1562632662@turing-police>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,51 +86,58 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- driverdev-devel@linuxdriverproject.org,
- Dan Carpenter <dan.carpenter@oracle.com>,
- Kernelnewbies <kernelnewbies@kernelnewbies.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux-fsdevel@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============8672981638648836611=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Jul 05, 2019 at 10:40:43AM +0530, Amit Kumar wrote:
-> On Fri, Jul 5, 2019 at 9:02 AM Amit Kumar <free.amit.kumar@gmail.com> wrote:
-> >
-> > On Fri, Jul 5, 2019 at 8:21 AM Tobin C. Harding <me@tobin.cc> wrote:
-> > >
-> > > Hi,
-> > >
-> > > I am doing a tutorial at OSSNA in San Diego on getting into kernel
-> > > hacking.  I'm only a couple of years deep into kernel hacking so I
-> > > wanted to reach out to those more experienced than myself (and those
-> > > less experienced).
-> > >
-> > > Is there any thing that you would really like to see covered in this
-> > > tutorial?
-> > >
-> > > If you are a grey beard is there anything that you have been lamenting
-> > > us newbies not knowing/doing?
-> > >
-> > > If you are a newbie is there anything that you are struggling with that
-> > > you really want to learn?
-> > Thank you.
-> > Where can I find your tutorial?
+--===============8672981638648836611==
+Content-Type: multipart/signed; boundary="==_Exmh_1562632662_2389P";
+	 micalg=pgp-sha1; protocol="application/pgp-signature"
+Content-Transfer-Encoding: 7bit
 
-It's not written yet :)
+--==_Exmh_1562632662_2389P
+Content-Type: text/plain; charset=us-ascii
 
-> I forget to tell, merely creating and sending patches is not important.
-> Also I would like to know how to manage patches, using git, mutt, quilt
-> and so on.
-> Sending patch through git-email is good. But different versions of patch.
-> Applying patch from mutt. Replying to patch recipients.
+I have an out-of-tree driver for the exfat file system that I beaten into shape
+for upstreaming. The driver works, and passes sparse and checkpatch (except
+for a number of line-too-long complaints).
 
-Nice suggestions thanks, will work this in.
+Do you want this taken straight to the fs/ tree, or through drivers/staging?
 
-thanks,
-Tobin.
+--==_Exmh_1562632662_2389P
+Content-Type: application/pgp-signature
+
+-----BEGIN PGP SIGNATURE-----
+Comment: Exmh version 2.9.0 11/07/2018
+
+iQIVAwUBXSPh1gdmEQWDXROgAQJUtQ/+NuCpOp32phoMWYvnTb21fwNfIzCEPXBH
+RSyAHXRkx17XhCx4jgTbz6FN95SGVNdlTuMF0GJPwHthtfdmHLql1QB2ROHELCjY
+faIk6BGAuTnHlAExeC4VgMBUA+SBgfMwaVTs9d4i4yQ6+Uy8whEPcdgeuKecctFi
+jt76tj+gRgpRIhTTAKq+DlpaIu/tpORttvGv23x/a8txU2Y0EaBRkcWbUVXWYI8G
+IQ4Sk1J6T1J/n8trp/nHdG3vriAv/w+iUcjVFSDikSrp2tVG4OdbFUzsFC4P+wR4
+7cuBLC4cgYZCX2tj45Tc9qTd6SpvdEozR/SQfW1r4lL1j0N05TZpcsYKzLibIegi
+xWHpAMqSkhwfC2mF8c9ZCvq1wakHaTLN18OxKM/dPUKUxrSPPnvYiLoQsORH9pUK
+JLXY2YlEwdY6SroUfZMBssL8MgGBx+dDcfimyJ1D6oZx1ss4wPRccuk6BmQYBzyH
+hyYbNiKcPGimgZEwg2tVnn86X7FCcAhFza+UuzqJ37c0g4ldr/CYa2C0RXsPHn2x
+eiKlV99LYR0SDugx8rs74s+bSi41Qi1GvSPy4zDWhBsCwwqxo1xFVAcndAk9NIVL
+pKkzVh/nJIoAq724EW2C9dOtasEJx1ogOSUH48hNigytNyLhmOK/gVb9LO8A0vSn
+fKUr0veoCZo=
+=cgVZ
+-----END PGP SIGNATURE-----
+
+--==_Exmh_1562632662_2389P--
+
+--===============8672981638648836611==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============8672981638648836611==--
