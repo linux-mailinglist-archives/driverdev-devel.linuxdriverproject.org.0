@@ -1,77 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id F276163B61
-	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Jul 2019 20:49:31 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5EE7E63BA9
+	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Jul 2019 21:06:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2D37086866;
-	Tue,  9 Jul 2019 18:49:30 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 41DD685E77;
+	Tue,  9 Jul 2019 19:06:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KfWHHU5Lw+BF; Tue,  9 Jul 2019 18:49:29 +0000 (UTC)
+	with ESMTP id g-zjevXAm-Bj; Tue,  9 Jul 2019 19:06:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DAB7381D83;
-	Tue,  9 Jul 2019 18:49:28 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6EFFB85E27;
+	Tue,  9 Jul 2019 19:06:33 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9ADE91BF4D8
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  9 Jul 2019 18:49:26 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 952E91BF280
+ for <devel@linuxdriverproject.org>; Tue,  9 Jul 2019 19:06:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 92E0487B6A
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  9 Jul 2019 18:49:26 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9186A87B94
+ for <devel@linuxdriverproject.org>; Tue,  9 Jul 2019 19:06:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gA2B7PhwmMst
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  9 Jul 2019 18:49:26 +0000 (UTC)
+ with ESMTP id WF8SB9Z4u3aE for <devel@linuxdriverproject.org>;
+ Tue,  9 Jul 2019 19:06:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f194.google.com (mail-qt1-f194.google.com
- [209.85.160.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1D7FA85C56
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  9 Jul 2019 18:49:26 +0000 (UTC)
-Received: by mail-qt1-f194.google.com with SMTP id j19so22657666qtr.12
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 09 Jul 2019 11:49:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=uNRAxPwZKVJvArK2MPeZmsIj3VklLhBz1sgoZH4U338=;
- b=T8t7xT4bXr5+cMp0SwucOaa+jr6CjxiyTnuEK99alH56YsUvlmqOy68CMG3jCK99Js
- Bm+3h8WI17JG/ItFy5JAwKorvODj8RQaUDj4nVDQbCLDSUY2I2BJPBN8Cl1ZjFut701p
- 4iNLGUvbToeVC6cegwXLWxkQj+1alu1DIkkMQZmRayJt/zNqxJA89VE8vrEs7dL2A1jx
- kDQnK3vdPEE9rVT3azpy/5yyW6apGMi2VkI8Imeh0k1CgHDQ/bM6JULhAt0rX8ScTtVk
- evkMYAMcArhaxPD4RR4GBtOZsNf33dBGU/VUSc5zeeF53l6k4N07jvQNAv0Mh+0B0g05
- onhA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=uNRAxPwZKVJvArK2MPeZmsIj3VklLhBz1sgoZH4U338=;
- b=A3zlY6xwEFK+Nk7WFpfIYv3Ln5R6QxtRawVdj4fqQs5ilNy1WU6W+rzArjJ+vqenjT
- GPouCGbdNBH5BjCRk/+8xwc7ikSvt6j2YTAVfySv5XdTlsrJyZR9yCz9DlOy5qxVjnZ1
- HZe4Rm/zZWX5OKyrOgTemNTkHiiL9y5QIoRKilN0APRGbJz8YevR7ZrljHXkDc2mx2c3
- z9APWWfyPwKF2pMe11oMwoVJfOR+MFkDWm7vUnAst/yNtvBbblUMAM63uc6E+iUnAZiA
- tvIejtYbZ5JS6gkGZGDl1dGLzm0VJmxucHADmHz75J5awXqbTNNIb8lvSfD9P2JJrJI5
- EVGg==
-X-Gm-Message-State: APjAAAW5NuGlYCY/hyPJM6W4wbv/qFVod66ZLHzjUbO6eJwJ7G+kcEhq
- 6KXfOQV0d3wokA+UGx9fWZL8kWNKSTdEP1St0/E=
-X-Google-Smtp-Source: APXvYqwHTDQtZBqugRdjRtCQK+RSPwb9ASus7uIdVjC9BipvZb/ot9JXAZivf4hQdrrJRE+GX7Agqg/gDb/kzFIT+rM=
-X-Received: by 2002:ac8:27d4:: with SMTP id x20mr19533386qtx.138.1562698165286; 
- Tue, 09 Jul 2019 11:49:25 -0700 (PDT)
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 212BD81D3F
+ for <devel@driverdev.osuosl.org>; Tue,  9 Jul 2019 19:06:31 +0000 (UTC)
+Received: from sol.localdomain (c-24-5-143-220.hsd1.ca.comcast.net
+ [24.5.143.220])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 4CAF82082A;
+ Tue,  9 Jul 2019 19:06:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1562699190;
+ bh=fE70n4kR+uCMC58qv7QUmipRJhcIVWrEqYIhm4DJJqM=;
+ h=Date:From:To:Cc:Subject:From;
+ b=wcNJBs+S6fsc/60xBzsXftUJBn1tOziTsryYBRqOm9Q4SQtBmc1aOI9aDQ7PGmx8p
+ /ktLxJoCsn1CMldVbHchSGIQDeMjJa6XxdXHlnV3WBtNfzXx2w1Q38rIkxZM2mtMaH
+ WfWHNj/2A5+6eVSXG7nD2XyS4vFedJ2AYqxKgaxs=
+Date: Tue, 9 Jul 2019 12:06:28 -0700
+From: Eric Biggers <ebiggers@kernel.org>
+To: devel@driverdev.osuosl.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
+ Todd Kjos <tkjos@android.com>, Martijn Coenen <maco@android.com>,
+ Joel Fernandes <joel@joelfernandes.org>,
+ Christian Brauner <christian@brauner.io>
+Subject: Reminder: 1 open syzbot bug in "android/ashmem" subsystem
+Message-ID: <20190709190628.GB641@sol.localdomain>
+Mail-Followup-To: devel@driverdev.osuosl.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
+ Todd Kjos <tkjos@android.com>, Martijn Coenen <maco@android.com>,
+ Joel Fernandes <joel@joelfernandes.org>,
+ Christian Brauner <christian@brauner.io>,
+ linux-kernel@vger.kernel.org, syzkaller-bugs@googlegroups.com
 MIME-Version: 1.0
-Received: by 2002:a37:5289:0:0:0:0:0 with HTTP;
- Tue, 9 Jul 2019 11:49:24 -0700 (PDT)
-From: "Mr. Ali Mahmood" <mrs.mimiqaudon5@gmail.com>
-Date: Tue, 9 Jul 2019 11:49:24 -0700
-Message-ID: <CA+MC4Qy7WBG2sNCFOihB7uhDiCcYCFagAZnfxpPeXPEPdD73iQ@mail.gmail.com>
-Subject: Dear Friend, My Name is Mr Ali Mahmood
-To: undisclosed-recipients:;
+Content-Disposition: inline
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,21 +76,48 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: alimahmood67@yahoo.com
+Cc: syzkaller-bugs@googlegroups.com, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear Friend,
+[This email was generated by a script.  Let me know if you have any suggestions
+to make it better, or if you want it re-generated with the latest status.]
 
-My Name is Mr Ali Mahmood, i have a business transaction. I will be
-very glad if you can
-assist me to receive this sum of ( $22 Million dollars.) into your
-bank account for the benefit of our both families, reply me if you are
-interested in this business.
+Of the currently open syzbot reports against the upstream kernel, I've manually
+marked 1 of them as possibly being a bug in the "android/ashmem" subsystem.
 
-Mr Ali Mahmood
+If you believe this bug is no longer valid, please close the syzbot report by
+sending a '#syz fix', '#syz dup', or '#syz invalid' command in reply to the
+original thread, as explained at https://goo.gl/tpsmEJ#status
+
+If you believe I misattributed this bug to the "android/ashmem" subsystem,
+please let me know, and if possible forward the report to the correct people or
+mailing list.
+
+Here is the bug:
+
+--------------------------------------------------------------------------------
+Title:              WARNING in __vm_enough_memory
+Last occurred:      77 days ago
+Reported:           539 days ago
+Branches:           Mainline and others
+Dashboard link:     https://syzkaller.appspot.com/bug?id=52304f8f4b4e28508d52875f95df5e30417eff1b
+Original thread:    https://lkml.kernel.org/lkml/001a1144593661efb50562d9624f@google.com/T/#u
+
+This bug has a C reproducer.
+
+The original thread for this bug received 1 reply, 539 days ago.
+
+If you fix this bug, please add the following tag to the commit:
+    Reported-by: syzbot+cc298e15b6a571ba0c55@syzkaller.appspotmail.com
+
+If you send any email or patch for this bug, please consider replying to the
+original thread.  For the git send-email command to use, or tips on how to reply
+if the thread isn't in your mailbox, see the "Reply instructions" at
+https://lkml.kernel.org/r/001a1144593661efb50562d9624f@google.com
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
