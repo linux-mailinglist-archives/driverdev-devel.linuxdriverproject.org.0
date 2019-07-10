@@ -1,54 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EC1016447C
-	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Jul 2019 11:37:35 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6C803644B1
+	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Jul 2019 11:52:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 21D1721F76;
-	Wed, 10 Jul 2019 09:37:34 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 13F5487DFE;
+	Wed, 10 Jul 2019 09:52:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Xifh4Gf6YJ13; Wed, 10 Jul 2019 09:37:33 +0000 (UTC)
+	with ESMTP id ZiR4HWKIxDHm; Wed, 10 Jul 2019 09:52:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id A6A2E204D2;
-	Wed, 10 Jul 2019 09:37:30 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7169B87D8C;
+	Wed, 10 Jul 2019 09:52:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 94FBD1BF317
- for <devel@linuxdriverproject.org>; Wed, 10 Jul 2019 09:37:28 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 912EC1BF317
+ for <devel@linuxdriverproject.org>; Wed, 10 Jul 2019 09:51:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 91BD32044A
- for <devel@linuxdriverproject.org>; Wed, 10 Jul 2019 09:37:28 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 8D8EB87D96
+ for <devel@linuxdriverproject.org>; Wed, 10 Jul 2019 09:51:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6+iSRXkK-O8h for <devel@linuxdriverproject.org>;
- Wed, 10 Jul 2019 09:37:27 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx1.suse.de (mx2.suse.de [195.135.220.15])
- by silver.osuosl.org (Postfix) with ESMTPS id 5359B20023
- for <devel@driverdev.osuosl.org>; Wed, 10 Jul 2019 09:37:27 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 22AA4AD1E;
- Wed, 10 Jul 2019 09:37:25 +0000 (UTC)
-Message-ID: <d4c5575eef7645b4e326327de870166e8f105b01.camel@suse.de>
-Subject: Re: BUG: Staging: fbtft: Switch to the gpio descriptor interface
-From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-To: Phil Reid <preid@electromag.com.au>, Nishad Kamdar
- <nishadkamdar@gmail.com>,  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- thomas.petazzoni@free-electrons.com, devel@driverdev.osuosl.org, 
- linux-fbdev@vger.kernel.org, dri-devel@lists.freedesktop.org
-Date: Wed, 10 Jul 2019 11:37:23 +0200
-In-Reply-To: <34678cc1-7d65-813a-c037-cfae4d2728f6@electromag.com.au>
-References: <3ca02376-631b-d159-7070-7c50403126de@electromag.com.au>
- <907baecff15308988f44220fcb13b28cba742df2.camel@suse.de>
- <34678cc1-7d65-813a-c037-cfae4d2728f6@electromag.com.au>
-User-Agent: Evolution 3.32.3 
+ with ESMTP id aGFLROkz8LBq for <devel@linuxdriverproject.org>;
+ Wed, 10 Jul 2019 09:51:55 +0000 (UTC)
+X-Greylist: delayed 00:07:22 by SQLgrey-1.7.6
+Received: from pandora.armlinux.org.uk (pandora.armlinux.org.uk [78.32.30.218])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id B77E487D8C
+ for <devel@driverdev.osuosl.org>; Wed, 10 Jul 2019 09:51:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+ MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=j/WSDXca8rXK9NsDZMmI4ZGVD5lmMYmQNn9cX+c1P0c=; b=SuuW/7NN1z53N126yQd0mfU0n
+ ntWsBeL22jFfrqe6UV7yYYjaWAb/mGvo82v/VpffWPeHAXC8qvHdMVqjvTeqQYorTqKjPyjcVkd0Y
+ ehhidoReYAcrBOGYvK5hg+mxgyuD5Njr2SLIjID07Kvs0w8adz+Czb2UlD+NlXUjcnJQShORaFQ6X
+ Xl3J1vYZGJzoNp6wHmHn8OimwqiNyO9IG6bSDFpjxItLMpKnIWdEU05QuowI2tkahamV/uty376Ez
+ mf5JMQomwfeTQc+3SQ9pZj0NiYOkjfuIR3hSKUK/aQunmlQ7Q5KSFX7XpTfFzFgMc9EjJ+4N1wSfg
+ nEpyIjNkA==;
+Received: from shell.armlinux.org.uk
+ ([2001:4d48:ad52:3201:5054:ff:fe00:4ec]:59340)
+ by pandora.armlinux.org.uk with esmtpsa
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
+ (envelope-from <linux@armlinux.org.uk>)
+ id 1hl98c-0005tt-RN; Wed, 10 Jul 2019 10:43:47 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.89)
+ (envelope-from <linux@shell.armlinux.org.uk>)
+ id 1hl98T-0003nw-5z; Wed, 10 Jul 2019 10:43:37 +0100
+Date: Wed, 10 Jul 2019 10:43:37 +0100
+From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+To: Johannes Berg <johannes@sipsolutions.net>
+Subject: Re: [PATCH 00/12] treewide: Fix GENMASK misuses
+Message-ID: <20190710094337.wf2lftxzfjq2etro@shell.armlinux.org.uk>
+References: <cover.1562734889.git.joe@perches.com>
+ <5fa1fa6998332642c49e2d5209193ffe2713f333.camel@sipsolutions.net>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <5fa1fa6998332642c49e2d5209193ffe2713f333.camel@sipsolutions.net>
+User-Agent: NeoMutt/20170113 (1.7.2)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,197 +75,73 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3450142729593761483=="
+Cc: devel@driverdev.osuosl.org, linux-mmc@vger.kernel.org,
+ alsa-devel@alsa-project.org, Benjamin Fair <benjaminfair@google.com>,
+ linux-aspeed@lists.ozlabs.org, Andrew Jeffery <andrew@aj.id.au>,
+ Patrick Venture <venture@google.com>, openbmc@lists.ozlabs.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-iio@vger.kernel.org, Nancy Yuen <yuenn@google.com>,
+ linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
+ netdev@vger.kernel.org, Joe Perches <joe@perches.com>,
+ linux-amlogic@lists.infradead.org, Andrew Morton <akpm@linux-foundation.org>,
+ linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Wed, Jul 10, 2019 at 11:17:31AM +0200, Johannes Berg wrote:
+> On Tue, 2019-07-09 at 22:04 -0700, Joe Perches wrote:
+> > These GENMASK uses are inverted argument order and the
+> > actual masks produced are incorrect.  Fix them.
+> > 
+> > Add checkpatch tests to help avoid more misuses too.
+> > 
+> > Joe Perches (12):
+> >   checkpatch: Add GENMASK tests
+> 
+> IMHO this doesn't make a lot of sense as a checkpatch test - just throw
+> in a BUILD_BUG_ON()?
 
---===============3450142729593761483==
-Content-Type: multipart/signed; micalg="pgp-sha256";
-	protocol="application/pgp-signature"; boundary="=-fwIHiX9YTQNKRwa1QRvp"
+My personal take on this is that GENMASK() is really not useful, it's
+just pure obfuscation and leads to exactly these kinds of mistakes.
 
+Yes, I fully understand the argument that you can just specify the
+start and end bits, and it _in theory_ makes the code more readable.
 
---=-fwIHiX9YTQNKRwa1QRvp
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+However, the problem is when writing code.  GENMASK(a, b).  Is a the
+starting bit or ending bit?  Is b the number of bits?  It's confusing
+and causes mistakes resulting in incorrect code.  A BUILD_BUG_ON()
+can catch some of the cases, but not all of them.
 
-On Wed, 2019-07-10 at 17:27 +0800, Phil Reid wrote:
-> On 10/07/2019 17:05, Nicolas Saenz Julienne wrote:
-> > On Wed, 2019-07-10 at 16:31 +0800, Phil Reid wrote:
-> > > G'day Nishad,
-> > >=20
-> > > I'm just wondering if the commit
-> > > c440eee1a7a1d0f "Staging: fbtft: Switch to the gpio descriptor interf=
-ace"
-> > > was tested on anything.
-> > >=20
-> > > I've had to apply the following patch to get my display functioning a=
-gain.
-> > >=20
-> > > in particular the devm_gpiod_get_index using dev->driver->name for th=
-e
-> > > gpio
-> > > lookup seems
-> > > wrong.
-> >=20
-> > FYI We've seen the same issue this week in opensuse's bugzilla and was
-> > testing
-> > something very similar to the patch below. Phil do you plan on submitti=
-ng
-> > your
-> > fix?
-> >=20
->=20
-> Yes I can submit a patch tomorrow.
->=20
-> I just wasn't sure if it was working for anyone.
+For example:
 
-Please CC me and I'll give it a test :).
+	GENMASK(6, 2)
 
->=20
->=20
->=20
-> > > Also I've had to invert the polarity of the reset-gpios in the DT fil=
-e for
-> > > the
-> > > display to function.
-> > >=20
-> > > this code:
-> > > 	gpiod_set_value_cansleep(par->gpio.reset, 0);
-> > > 	usleep_range(20, 40);
-> > > 	gpiod_set_value_cansleep(par->gpio.reset, 1);
-> > >=20
-> > > could be read as deasserting the reset line and then asserting it.
-> > > So I've had to specify and active high reset line in the DT.
-> > >=20
-> > > Regards
-> > > Phil
-> > >=20
-> > >=20
-> > >=20
-> > >=20
-> > >=20
-> > > diff --git a/drivers/staging/fbtft/fbtft-core.c
-> > > b/drivers/staging/fbtft/fbtft-
-> > > core.c
-> > > index 9b07bad..6fe7cb5 100644
-> > > --- a/drivers/staging/fbtft/fbtft-core.c
-> > > +++ b/drivers/staging/fbtft/fbtft-core.c
-> > > @@ -79,18 +79,16 @@ static int fbtft_request_one_gpio(struct fbtft_pa=
-r
-> > > *par,
-> > >    	struct device_node *node =3D dev->of_node;
-> > >    	int ret =3D 0;
-> > >=20
-> > > -	if (of_find_property(node, name, NULL)) {
-> > > -		*gpiop =3D devm_gpiod_get_index(dev, dev->driver->name, index,
-> > > -					      GPIOD_OUT_HIGH);
-> > > -		if (IS_ERR(*gpiop)) {
-> > > -			ret =3D PTR_ERR(*gpiop);
-> > > -			dev_err(dev,
-> > > -				"Failed to request %s GPIO:%d\n", name, ret);
-> > > -			return ret;
-> > > -		}
-> > > -		fbtft_par_dbg(DEBUG_REQUEST_GPIOS, par, "%s: '%s' GPIO\n",
-> > > -			      __func__, name);
-> > > +	*gpiop =3D devm_gpiod_get_index_optional(dev, name, index,
-> > > +				      GPIOD_OUT_HIGH);
-> > > +	if (IS_ERR(*gpiop)) {
-> > > +		ret =3D PTR_ERR(*gpiop);
-> > > +		dev_err(dev,
-> > > +			"Failed to request %s GPIO: (%d)\n", name, ret);
-> > > +		return ret;
-> > >    	}
-> > > +	fbtft_par_dbg(DEBUG_REQUEST_GPIOS, par, "%s: '%s' GPIO\n",
-> > > +		      __func__, name);
-> > >=20
-> > >    	return ret;
-> > >    }
-> > > @@ -103,34 +101,34 @@ static int fbtft_request_gpios_dt(struct fbtft_=
-par
-> > > *par)
-> > >    	if (!par->info->device->of_node)
-> > >    		return -EINVAL;
-> > >=20
-> > > -	ret =3D fbtft_request_one_gpio(par, "reset-gpios", 0, &par->gpio.re=
-set);
-> > > +	ret =3D fbtft_request_one_gpio(par, "reset", 0, &par->gpio.reset);
-> > >    	if (ret)
-> > >    		return ret;
-> > > -	ret =3D fbtft_request_one_gpio(par, "dc-gpios", 0, &par->gpio.dc);
-> > > +	ret =3D fbtft_request_one_gpio(par, "dc", 0, &par->gpio.dc);
-> > >    	if (ret)
-> > >    		return ret;
-> > > -	ret =3D fbtft_request_one_gpio(par, "rd-gpios", 0, &par->gpio.rd);
-> > > +	ret =3D fbtft_request_one_gpio(par, "rd", 0, &par->gpio.rd);
-> > >    	if (ret)
-> > >    		return ret;
-> > > -	ret =3D fbtft_request_one_gpio(par, "wr-gpios", 0, &par->gpio.wr);
-> > > +	ret =3D fbtft_request_one_gpio(par, "wr", 0, &par->gpio.wr);
-> > >    	if (ret)
-> > >    		return ret;
-> > > -	ret =3D fbtft_request_one_gpio(par, "cs-gpios", 0, &par->gpio.cs);
-> > > +	ret =3D fbtft_request_one_gpio(par, "cs", 0, &par->gpio.cs);
-> > >    	if (ret)
-> > >    		return ret;
-> > > -	ret =3D fbtft_request_one_gpio(par, "latch-gpios", 0, &par->gpio.la=
-tch);
-> > > +	ret =3D fbtft_request_one_gpio(par, "latch", 0, &par->gpio.latch);
-> > >    	if (ret)
-> > >    		return ret;
-> > >    	for (i =3D 0; i < 16; i++) {
-> > > -		ret =3D fbtft_request_one_gpio(par, "db-gpios", i,
-> > > +		ret =3D fbtft_request_one_gpio(par, "db", i,
-> > >    					     &par->gpio.db[i]);
-> > >    		if (ret)
-> > >    			return ret;
-> > > -		ret =3D fbtft_request_one_gpio(par, "led-gpios", i,
-> > > +		ret =3D fbtft_request_one_gpio(par, "led", i,
-> > >    					     &par->gpio.led[i]);
-> > >    		if (ret)
-> > >    			return ret;
-> > > -		ret =3D fbtft_request_one_gpio(par, "aux-gpios", i,
-> > > +		ret =3D fbtft_request_one_gpio(par, "aux", i,
-> > >    					     &par->gpio.aux[i]);
-> > >    		if (ret)
-> > >    			return ret;
-> > >=20
-> > >=20
-> > >=20
->=20
->=20
+would satisify the requirement that a > b, so a BUILD_BUG_ON() will
+not trigger, but was the author meaning 0x3c or 0xc0?
 
+Personally, I've decided I am _not_ going to use GENMASK() in my code
+because I struggle to get the macro arguments correct - I'm _much_
+happier, and it is way more reliable for me to write the mask in hex
+notation.
 
---=-fwIHiX9YTQNKRwa1QRvp
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
+I think this is where use of a ternary operator would come in use.  The
+normal way of writing a number of bits tends to be "a:b", so if GENMASK
+took something like GENMASK(6:2), then I'd have less issue with it,
+because it's argument is then in a familiar notation.
 
------BEGIN PGP SIGNATURE-----
+Yes, I'm sure that someone will point out that the GENMASK arguments
+are just in the same order, but that doesn't prevent _me_ frequently
+getting it wrong - and that's the point.  The macro seems to me to
+cause more problems than it solves.
 
-iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl0lsdMACgkQlfZmHno8
-x/5GSwgAqpLjjTIx5boagZCKlSJeJvR8ZMbv5XQNdGx/xYk2UQy1nSKhuCWufSwL
-Krh0DOypliZqYDA+9RSdp0HiITXjEmiYdn/rNiFNeGmw1bNE5ji5LJkIKGOOAsgE
-tTdK4hn1aZ/se0J0a8p1IJiGk7Jd0nvPV+nrOOoxJABxJhWc+2WbkPjcXTKS+x0u
-6YMz9jYtmRZ3m3xW3dwaESycmpS5mpnzSdu7N73TWupqlhvsmsKmRc6S3iMU+xhv
-seKdwnP3klZo9bLEH86ghFysYkmRktDbtsnoeLOMR3GL6d5hNE9JLhRdg/YiOFiY
-uzs5gFDJATG9Ds5yQ/sc05j39xrA6w==
-=GIWa
------END PGP SIGNATURE-----
-
---=-fwIHiX9YTQNKRwa1QRvp--
-
-
---===============3450142729593761483==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
+According to speedtest.net: 11.9Mbps down 500kbps up
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============3450142729593761483==--
-
