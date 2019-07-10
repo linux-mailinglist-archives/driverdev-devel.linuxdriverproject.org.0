@@ -1,43 +1,43 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1A09064F07
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C652564F08
 	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Jul 2019 01:06:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 242B42047F;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3385886081;
 	Wed, 10 Jul 2019 23:06:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OlwmNiqzuMgc; Wed, 10 Jul 2019 23:06:32 +0000 (UTC)
+	with ESMTP id 8-IzsTkIPzL1; Wed, 10 Jul 2019 23:06:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id DC16620421;
-	Wed, 10 Jul 2019 23:06:30 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D001286044;
+	Wed, 10 Jul 2019 23:06:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 557F01BF47A
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 927EF1BF47A
  for <devel@linuxdriverproject.org>; Wed, 10 Jul 2019 23:06:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 52D43869B4
+ by hemlock.osuosl.org (Postfix) with ESMTP id 8C81086D73
  for <devel@linuxdriverproject.org>; Wed, 10 Jul 2019 23:06:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id R-j4dN1w6lZ0 for <devel@linuxdriverproject.org>;
- Wed, 10 Jul 2019 23:06:27 +0000 (UTC)
-X-Greylist: delayed 00:06:47 by SQLgrey-1.7.6
+ with ESMTP id 7XTb2+YRu-1c for <devel@linuxdriverproject.org>;
+ Wed, 10 Jul 2019 23:06:28 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from fieldses.org (fieldses.org [173.255.197.46])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9F1FD8671F
- for <devel@driverdev.osuosl.org>; Wed, 10 Jul 2019 23:06:27 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1580A86631
+ for <devel@driverdev.osuosl.org>; Wed, 10 Jul 2019 23:06:28 +0000 (UTC)
 Received: by fieldses.org (Postfix, from userid 2815)
- id B4E641D27; Wed, 10 Jul 2019 18:59:39 -0400 (EDT)
+ id 712D11E19; Wed, 10 Jul 2019 19:00:57 -0400 (EDT)
 From: "J. Bruce Fields" <bfields@redhat.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] rtl8192*: display ESSIDs using %pE
-Date: Wed, 10 Jul 2019 18:59:34 -0400
-Message-Id: <1562799574-13315-1-git-send-email-bfields@redhat.com>
+Subject: [PATCH] staging: wlan-ng: use "%*pE" for serial number
+Date: Wed, 10 Jul 2019 19:00:56 -0400
+Message-Id: <1562799656-13401-1-git-send-email-bfields@redhat.com>
 X-Mailer: git-send-email 1.8.3.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -60,41 +60,27 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 From: "J. Bruce Fields" <bfields@redhat.com>
 
-Everywhere else in the kernel ESSIDs are printed using %pE, and I can't
-see why there should be an exception here.
+Almost every user of "%*pE" in the kernel uses just bare "%*pE".  This
+is the only user of "%pEhp".  I can't see why it's needed.
 
 Signed-off-by: J. Bruce Fields <bfields@redhat.com>
 ---
- drivers/staging/rtl8192e/rtllib.h              | 2 +-
- drivers/staging/rtl8192u/ieee80211/ieee80211.h | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/wlan-ng/prism2sta.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8192e/rtllib.h b/drivers/staging/rtl8192e/rtllib.h
-index 2dd57e88276e..096254e422b3 100644
---- a/drivers/staging/rtl8192e/rtllib.h
-+++ b/drivers/staging/rtl8192e/rtllib.h
-@@ -2132,7 +2132,7 @@ static inline const char *escape_essid(const char *essid, u8 essid_len)
- 		return escaped;
- 	}
- 
--	snprintf(escaped, sizeof(escaped), "%*pEn", essid_len, essid);
-+	snprintf(escaped, sizeof(escaped), "%*pE", essid_len, essid);
- 	return escaped;
- }
- 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211.h b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-index d36963469015..3963a08b9eb2 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-@@ -2426,7 +2426,7 @@ static inline const char *escape_essid(const char *essid, u8 essid_len)
- 		return escaped;
- 	}
- 
--	snprintf(escaped, sizeof(escaped), "%*pEn", essid_len, essid);
-+	snprintf(escaped, sizeof(escaped), "%*pE", essid_len, essid);
- 	return escaped;
- }
- 
+diff --git a/drivers/staging/wlan-ng/prism2sta.c b/drivers/staging/wlan-ng/prism2sta.c
+index fb5441399131..8f25496188aa 100644
+--- a/drivers/staging/wlan-ng/prism2sta.c
++++ b/drivers/staging/wlan-ng/prism2sta.c
+@@ -846,7 +846,7 @@ static int prism2sta_getcardinfo(struct wlandevice *wlandev)
+ 	result = hfa384x_drvr_getconfig(hw, HFA384x_RID_NICSERIALNUMBER,
+ 					snum, HFA384x_RID_NICSERIALNUMBER_LEN);
+ 	if (!result) {
+-		netdev_info(wlandev->netdev, "Prism2 card SN: %*pEhp\n",
++		netdev_info(wlandev->netdev, "Prism2 card SN: %*pE\n",
+ 			    HFA384x_RID_NICSERIALNUMBER_LEN, snum);
+ 	} else {
+ 		netdev_err(wlandev->netdev, "Failed to retrieve Prism2 Card SN\n");
 -- 
 2.21.0
 
