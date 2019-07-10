@@ -1,54 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B2AC064291
-	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Jul 2019 09:24:01 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 43C9564398
+	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Jul 2019 10:31:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id D1BCF204A5;
-	Wed, 10 Jul 2019 07:23:59 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2F82285F08;
+	Wed, 10 Jul 2019 08:31:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GL9xKkLBAZzo; Wed, 10 Jul 2019 07:23:59 +0000 (UTC)
+	with ESMTP id X7ka8WHScJg6; Wed, 10 Jul 2019 08:31:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id DDAEE2044F;
-	Wed, 10 Jul 2019 07:23:57 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 62B2885EBF;
+	Wed, 10 Jul 2019 08:31:24 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B1D0A1BF97A
- for <devel@linuxdriverproject.org>; Wed, 10 Jul 2019 07:23:55 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5692B1BF32B
+ for <devel@linuxdriverproject.org>; Wed, 10 Jul 2019 08:31:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3CAE31FD45
- for <devel@linuxdriverproject.org>; Wed, 10 Jul 2019 07:23:55 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4B5148672C
+ for <devel@linuxdriverproject.org>; Wed, 10 Jul 2019 08:31:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XnCBlCryhXyY for <devel@linuxdriverproject.org>;
- Wed, 10 Jul 2019 07:23:54 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from relay6-d.mail.gandi.net (relay6-d.mail.gandi.net
- [217.70.183.198])
- by silver.osuosl.org (Postfix) with ESMTPS id BF73C2000F
- for <devel@driverdev.osuosl.org>; Wed, 10 Jul 2019 07:23:53 +0000 (UTC)
-X-Originating-IP: 86.250.200.211
-Received: from aptenodytes (lfbn-1-17395-211.w86-250.abo.wanadoo.fr
- [86.250.200.211])
- (Authenticated sender: paul.kocialkowski@bootlin.com)
- by relay6-d.mail.gandi.net (Postfix) with ESMTPSA id 8E37BC000D;
- Wed, 10 Jul 2019 07:23:49 +0000 (UTC)
-Date: Wed, 10 Jul 2019 09:23:49 +0200
-From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-To: Joe Perches <joe@perches.com>
-Subject: Re: [PATCH 11/12] staging: media: cedrus: Fix misuse of GENMASK macro
-Message-ID: <20190710072349.GA24674@aptenodytes>
-References: <cover.1562734889.git.joe@perches.com>
- <cd543a5f26b031a0bbd3baa55e1f15813f59f107.1562734889.git.joe@perches.com>
+ with ESMTP id uE8SmyMFXjGI for <devel@linuxdriverproject.org>;
+ Wed, 10 Jul 2019 08:31:20 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from anchovy2.45ru.net.au (anchovy2.45ru.net.au [203.30.46.146])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7661A85A8B
+ for <devel@driverdev.osuosl.org>; Wed, 10 Jul 2019 08:31:19 +0000 (UTC)
+Received: (qmail 7225 invoked by uid 5089); 10 Jul 2019 08:31:15 -0000
+Received: by simscan 1.2.0 ppid: 7139, pid: 7140, t: 0.0724s
+ scanners: regex: 1.2.0 attach: 1.2.0 clamav: 0.88.3/m:40/d:1950
+Received: from unknown (HELO ?192.168.0.128?)
+ (preid@electromag.com.au@203.59.235.95)
+ by anchovy3.45ru.net.au with ESMTPA; 10 Jul 2019 08:31:15 -0000
+To: Nishad Kamdar <nishadkamdar@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ thomas.petazzoni@free-electrons.com, devel@driverdev.osuosl.org,
+ linux-fbdev@vger.kernel.org, dri-devel@lists.freedesktop.org
+From: Phil Reid <preid@electromag.com.au>
+Subject: BUG: Staging: fbtft: Switch to the gpio descriptor interface
+Message-ID: <3ca02376-631b-d159-7070-7c50403126de@electromag.com.au>
+Date: Wed, 10 Jul 2019 16:31:09 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <cd543a5f26b031a0bbd3baa55e1f15813f59f107.1562734889.git.joe@perches.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+Content-Language: en-AU
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,56 +61,119 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Maxime Ripard <maxime.ripard@bootlin.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Chen-Yu Tsai <wens@csie.org>, Andrew Morton <akpm@linux-foundation.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi,
+G'day Nishad,
 
-On Tue 09 Jul 19, 22:04, Joe Perches wrote:
-> Arguments are supposed to be ordered high then low.
-> 
-> Signed-off-by: Joe Perches <joe@perches.com>
+I'm just wondering if the commit
+c440eee1a7a1d0f "Staging: fbtft: Switch to the gpio descriptor interface"
+was tested on anything.
 
-Good catch, thanks!
+I've had to apply the following patch to get my display functioning again.
 
-Acked-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+in particular the devm_gpiod_get_index using dev->driver->name for the gpio lookup seems
+wrong.
 
-Cheers,
+Also I've had to invert the polarity of the reset-gpios in the DT file for the display to function.
 
-Paul
+this code:
+	gpiod_set_value_cansleep(par->gpio.reset, 0);
+	usleep_range(20, 40);
+	gpiod_set_value_cansleep(par->gpio.reset, 1);
 
-> ---
->  drivers/staging/media/sunxi/cedrus/cedrus_regs.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_regs.h b/drivers/staging/media/sunxi/cedrus/cedrus_regs.h
-> index 3e9931416e45..ddd29788d685 100644
-> --- a/drivers/staging/media/sunxi/cedrus/cedrus_regs.h
-> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_regs.h
-> @@ -110,7 +110,7 @@
->  #define VE_DEC_MPEG_MBADDR			(VE_ENGINE_DEC_MPEG + 0x10)
->  
->  #define VE_DEC_MPEG_MBADDR_X(w)			(((w) << 8) & GENMASK(15, 8))
-> -#define VE_DEC_MPEG_MBADDR_Y(h)			(((h) << 0) & GENMASK(0, 7))
-> +#define VE_DEC_MPEG_MBADDR_Y(h)			(((h) << 0) & GENMASK(7, 0))
->  
->  #define VE_DEC_MPEG_CTRL			(VE_ENGINE_DEC_MPEG + 0x14)
->  
-> -- 
-> 2.15.0
-> 
+could be read as deasserting the reset line and then asserting it.
+So I've had to specify and active high reset line in the DT.
 
--- 
-Paul Kocialkowski, Bootlin
-Embedded Linux and kernel engineering
-https://bootlin.com
+Regards
+Phil
+
+
+
+
+
+diff --git a/drivers/staging/fbtft/fbtft-core.c b/drivers/staging/fbtft/fbtft-core.c
+index 9b07bad..6fe7cb5 100644
+--- a/drivers/staging/fbtft/fbtft-core.c
++++ b/drivers/staging/fbtft/fbtft-core.c
+@@ -79,18 +79,16 @@ static int fbtft_request_one_gpio(struct fbtft_par *par,
+  	struct device_node *node = dev->of_node;
+  	int ret = 0;
+
+-	if (of_find_property(node, name, NULL)) {
+-		*gpiop = devm_gpiod_get_index(dev, dev->driver->name, index,
+-					      GPIOD_OUT_HIGH);
+-		if (IS_ERR(*gpiop)) {
+-			ret = PTR_ERR(*gpiop);
+-			dev_err(dev,
+-				"Failed to request %s GPIO:%d\n", name, ret);
+-			return ret;
+-		}
+-		fbtft_par_dbg(DEBUG_REQUEST_GPIOS, par, "%s: '%s' GPIO\n",
+-			      __func__, name);
++	*gpiop = devm_gpiod_get_index_optional(dev, name, index,
++				      GPIOD_OUT_HIGH);
++	if (IS_ERR(*gpiop)) {
++		ret = PTR_ERR(*gpiop);
++		dev_err(dev,
++			"Failed to request %s GPIO: (%d)\n", name, ret);
++		return ret;
+  	}
++	fbtft_par_dbg(DEBUG_REQUEST_GPIOS, par, "%s: '%s' GPIO\n",
++		      __func__, name);
+
+  	return ret;
+  }
+@@ -103,34 +101,34 @@ static int fbtft_request_gpios_dt(struct fbtft_par *par)
+  	if (!par->info->device->of_node)
+  		return -EINVAL;
+
+-	ret = fbtft_request_one_gpio(par, "reset-gpios", 0, &par->gpio.reset);
++	ret = fbtft_request_one_gpio(par, "reset", 0, &par->gpio.reset);
+  	if (ret)
+  		return ret;
+-	ret = fbtft_request_one_gpio(par, "dc-gpios", 0, &par->gpio.dc);
++	ret = fbtft_request_one_gpio(par, "dc", 0, &par->gpio.dc);
+  	if (ret)
+  		return ret;
+-	ret = fbtft_request_one_gpio(par, "rd-gpios", 0, &par->gpio.rd);
++	ret = fbtft_request_one_gpio(par, "rd", 0, &par->gpio.rd);
+  	if (ret)
+  		return ret;
+-	ret = fbtft_request_one_gpio(par, "wr-gpios", 0, &par->gpio.wr);
++	ret = fbtft_request_one_gpio(par, "wr", 0, &par->gpio.wr);
+  	if (ret)
+  		return ret;
+-	ret = fbtft_request_one_gpio(par, "cs-gpios", 0, &par->gpio.cs);
++	ret = fbtft_request_one_gpio(par, "cs", 0, &par->gpio.cs);
+  	if (ret)
+  		return ret;
+-	ret = fbtft_request_one_gpio(par, "latch-gpios", 0, &par->gpio.latch);
++	ret = fbtft_request_one_gpio(par, "latch", 0, &par->gpio.latch);
+  	if (ret)
+  		return ret;
+  	for (i = 0; i < 16; i++) {
+-		ret = fbtft_request_one_gpio(par, "db-gpios", i,
++		ret = fbtft_request_one_gpio(par, "db", i,
+  					     &par->gpio.db[i]);
+  		if (ret)
+  			return ret;
+-		ret = fbtft_request_one_gpio(par, "led-gpios", i,
++		ret = fbtft_request_one_gpio(par, "led", i,
+  					     &par->gpio.led[i]);
+  		if (ret)
+  			return ret;
+-		ret = fbtft_request_one_gpio(par, "aux-gpios", i,
++		ret = fbtft_request_one_gpio(par, "aux", i,
+  					     &par->gpio.aux[i]);
+  		if (ret)
+  			return ret;
+
+
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
