@@ -2,67 +2,76 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6C803644B1
-	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Jul 2019 11:52:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 04AA664AA3
+	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Jul 2019 18:20:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 13F5487DFE;
-	Wed, 10 Jul 2019 09:52:19 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 157A587E5D;
+	Wed, 10 Jul 2019 16:20:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZiR4HWKIxDHm; Wed, 10 Jul 2019 09:52:18 +0000 (UTC)
+	with ESMTP id W6yK7J7sCHwW; Wed, 10 Jul 2019 16:20:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7169B87D8C;
-	Wed, 10 Jul 2019 09:52:18 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 736D487A1D;
+	Wed, 10 Jul 2019 16:20:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 912EC1BF317
- for <devel@linuxdriverproject.org>; Wed, 10 Jul 2019 09:51:56 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 60ACF1BF3F3
+ for <devel@linuxdriverproject.org>; Wed, 10 Jul 2019 16:20:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 8D8EB87D96
- for <devel@linuxdriverproject.org>; Wed, 10 Jul 2019 09:51:56 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 58BB287E41
+ for <devel@linuxdriverproject.org>; Wed, 10 Jul 2019 16:20:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aGFLROkz8LBq for <devel@linuxdriverproject.org>;
- Wed, 10 Jul 2019 09:51:55 +0000 (UTC)
-X-Greylist: delayed 00:07:22 by SQLgrey-1.7.6
-Received: from pandora.armlinux.org.uk (pandora.armlinux.org.uk [78.32.30.218])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B77E487D8C
- for <devel@driverdev.osuosl.org>; Wed, 10 Jul 2019 09:51:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
- MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=j/WSDXca8rXK9NsDZMmI4ZGVD5lmMYmQNn9cX+c1P0c=; b=SuuW/7NN1z53N126yQd0mfU0n
- ntWsBeL22jFfrqe6UV7yYYjaWAb/mGvo82v/VpffWPeHAXC8qvHdMVqjvTeqQYorTqKjPyjcVkd0Y
- ehhidoReYAcrBOGYvK5hg+mxgyuD5Njr2SLIjID07Kvs0w8adz+Czb2UlD+NlXUjcnJQShORaFQ6X
- Xl3J1vYZGJzoNp6wHmHn8OimwqiNyO9IG6bSDFpjxItLMpKnIWdEU05QuowI2tkahamV/uty376Ez
- mf5JMQomwfeTQc+3SQ9pZj0NiYOkjfuIR3hSKUK/aQunmlQ7Q5KSFX7XpTfFzFgMc9EjJ+4N1wSfg
- nEpyIjNkA==;
-Received: from shell.armlinux.org.uk
- ([2001:4d48:ad52:3201:5054:ff:fe00:4ec]:59340)
- by pandora.armlinux.org.uk with esmtpsa
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <linux@armlinux.org.uk>)
- id 1hl98c-0005tt-RN; Wed, 10 Jul 2019 10:43:47 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.89)
- (envelope-from <linux@shell.armlinux.org.uk>)
- id 1hl98T-0003nw-5z; Wed, 10 Jul 2019 10:43:37 +0100
-Date: Wed, 10 Jul 2019 10:43:37 +0100
-From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
-To: Johannes Berg <johannes@sipsolutions.net>
-Subject: Re: [PATCH 00/12] treewide: Fix GENMASK misuses
-Message-ID: <20190710094337.wf2lftxzfjq2etro@shell.armlinux.org.uk>
-References: <cover.1562734889.git.joe@perches.com>
- <5fa1fa6998332642c49e2d5209193ffe2713f333.camel@sipsolutions.net>
+ with ESMTP id itqI5SZq4j82 for <devel@linuxdriverproject.org>;
+ Wed, 10 Jul 2019 16:20:33 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-qk1-f196.google.com (mail-qk1-f196.google.com
+ [209.85.222.196])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A4C6287A1D
+ for <devel@driverdev.osuosl.org>; Wed, 10 Jul 2019 16:20:33 +0000 (UTC)
+Received: by mail-qk1-f196.google.com with SMTP id g18so2362521qkl.3
+ for <devel@driverdev.osuosl.org>; Wed, 10 Jul 2019 09:20:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=QibyFGWnGdatOh5nsBNwpo+J2I04tbVTYJ/VYtxRgmY=;
+ b=T4+Fnl7gXl1bl8llcUm3/9pqHh0ZYkmBG6TpVmEq6dIxAwEVcCJQYVUOULCPceUcP9
+ 1Jl0GyE7nKC6qh7eInjKVNdp+cGBk0t7j4n1/wgmJUYQUC0XAWqXhPWe0Gf3lBL3dsRI
+ djqj0npByspo8KYXIBmm3hkfHblagArY9vZMISTbJgrOpLWTZMz4aYcy1RXorOgbomym
+ gcuyshTAhmEsFg1JtVem18bXWhof2PEtVztmnuTKNaQiS2ph3cy5u6X5iqju6l0mkp8O
+ uTjjNrHc0Lb/zF4Q3ZjfHrrjfUKjo+xIEyTLFLT5Cdrd/yQFocMMWb22PFKKxOCMZkeB
+ 3hxg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=QibyFGWnGdatOh5nsBNwpo+J2I04tbVTYJ/VYtxRgmY=;
+ b=mfhuuh9+cyirQLFfQ0iyt01nRqHLwaeDjZRrB7G+5raFF6GX7BX9DZzsdIOygwmQPk
+ PljkqjPgfgoolTcom2o3DWXf8Vm0NI2yx6X/lpm92EtNX6LYzQvkUw0bhefuub2EeRn0
+ RQ0N8E2RU659nA9xvc0j195twTBIKim9WMrC1bEaoZpCaMXy+HUGWs1ZLabHu9BddGAs
+ kEclPmf9qSrh+V/1/wi4BxafafczU4JW8FCuU1sJkKkByqTshmcGts6cxg/cnv0YogXn
+ zaTHShwlXqgqLjMnC1TXJKeJKNcB1ehgrf0fMBZE7UAmwdz6zMsCroqH659FgBJWqkTM
+ s2uw==
+X-Gm-Message-State: APjAAAXTPb1cjXzwcBDwFfdIWrbPtJaZrRvhdWB59ZNZxXPSRVjnFuVO
+ 8S0y03xftL4yZo3YDfIMJA==
+X-Google-Smtp-Source: APXvYqxVssmy8QQI7rLDeD1eZVdZ4DW7d8qWxdxiaMn/YNYrzpr6p+bYlVuIkxf22mrsNYDvJMmv7Q==
+X-Received: by 2002:a37:4c4e:: with SMTP id z75mr24407869qka.230.1562775632730; 
+ Wed, 10 Jul 2019 09:20:32 -0700 (PDT)
+Received: from localhost.localdomain (modemcable148.230-83-70.mc.videotron.ca.
+ [70.83.230.148])
+ by smtp.googlemail.com with ESMTPSA id 6sm1546208qkp.82.2019.07.10.09.20.31
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Wed, 10 Jul 2019 09:20:32 -0700 (PDT)
+From: Keyur Patel <iamkeyur96@gmail.com>
+To: 
+Subject: [PATCH] staging: greybus: add logging statement when kfifo_alloc fails
+Date: Wed, 10 Jul 2019 08:20:17 -0400
+Message-Id: <20190710122018.2250-1-iamkeyur96@gmail.com>
+X-Mailer: git-send-email 2.22.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <5fa1fa6998332642c49e2d5209193ffe2713f333.camel@sipsolutions.net>
-User-Agent: NeoMutt/20170113 (1.7.2)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,72 +84,43 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-mmc@vger.kernel.org,
- alsa-devel@alsa-project.org, Benjamin Fair <benjaminfair@google.com>,
- linux-aspeed@lists.ozlabs.org, Andrew Jeffery <andrew@aj.id.au>,
- Patrick Venture <venture@google.com>, openbmc@lists.ozlabs.org,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-iio@vger.kernel.org, Nancy Yuen <yuenn@google.com>,
- linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
- netdev@vger.kernel.org, Joe Perches <joe@perches.com>,
- linux-amlogic@lists.infradead.org, Andrew Morton <akpm@linux-foundation.org>,
- linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Alex Elder <elder@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Johan Hovold <johan@kernel.org>, David Lin <dtwlin@gmail.com>,
+ greybus-dev@lists.linaro.org, linux-kernel@vger.kernel.org,
+ iamkeyur96@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Jul 10, 2019 at 11:17:31AM +0200, Johannes Berg wrote:
-> On Tue, 2019-07-09 at 22:04 -0700, Joe Perches wrote:
-> > These GENMASK uses are inverted argument order and the
-> > actual masks produced are incorrect.  Fix them.
-> > 
-> > Add checkpatch tests to help avoid more misuses too.
-> > 
-> > Joe Perches (12):
-> >   checkpatch: Add GENMASK tests
-> 
-> IMHO this doesn't make a lot of sense as a checkpatch test - just throw
-> in a BUILD_BUG_ON()?
+Added missing logging statement when kfifo_alloc fails, to improve
+debugging.
 
-My personal take on this is that GENMASK() is really not useful, it's
-just pure obfuscation and leads to exactly these kinds of mistakes.
+Signed-off-by: Keyur Patel <iamkeyur96@gmail.com>
+---
+ drivers/staging/greybus/uart.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-Yes, I fully understand the argument that you can just specify the
-start and end bits, and it _in theory_ makes the code more readable.
-
-However, the problem is when writing code.  GENMASK(a, b).  Is a the
-starting bit or ending bit?  Is b the number of bits?  It's confusing
-and causes mistakes resulting in incorrect code.  A BUILD_BUG_ON()
-can catch some of the cases, but not all of them.
-
-For example:
-
-	GENMASK(6, 2)
-
-would satisify the requirement that a > b, so a BUILD_BUG_ON() will
-not trigger, but was the author meaning 0x3c or 0xc0?
-
-Personally, I've decided I am _not_ going to use GENMASK() in my code
-because I struggle to get the macro arguments correct - I'm _much_
-happier, and it is way more reliable for me to write the mask in hex
-notation.
-
-I think this is where use of a ternary operator would come in use.  The
-normal way of writing a number of bits tends to be "a:b", so if GENMASK
-took something like GENMASK(6:2), then I'd have less issue with it,
-because it's argument is then in a familiar notation.
-
-Yes, I'm sure that someone will point out that the GENMASK arguments
-are just in the same order, but that doesn't prevent _me_ frequently
-getting it wrong - and that's the point.  The macro seems to me to
-cause more problems than it solves.
-
+diff --git a/drivers/staging/greybus/uart.c b/drivers/staging/greybus/uart.c
+index b3bffe91ae99..86a395ae177d 100644
+--- a/drivers/staging/greybus/uart.c
++++ b/drivers/staging/greybus/uart.c
+@@ -856,8 +856,10 @@ static int gb_uart_probe(struct gbphy_device *gbphy_dev,
+ 
+ 	retval = kfifo_alloc(&gb_tty->write_fifo, GB_UART_WRITE_FIFO_SIZE,
+ 			     GFP_KERNEL);
+-	if (retval)
++	if (retval) {
++		pr_err("kfifo_alloc failed\n");
+ 		goto exit_buf_free;
++	}
+ 
+ 	gb_tty->credits = GB_UART_FIRMWARE_CREDITS;
+ 	init_completion(&gb_tty->credits_complete);
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
-According to speedtest.net: 11.9Mbps down 500kbps up
+2.22.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
