@@ -1,55 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9831C659A9
-	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Jul 2019 16:59:09 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9EEF665EC6
+	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Jul 2019 19:39:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E3133880C1;
-	Thu, 11 Jul 2019 14:59:07 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8B88F22654;
+	Thu, 11 Jul 2019 17:39:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RKWtPvr5vMzZ; Thu, 11 Jul 2019 14:59:07 +0000 (UTC)
+	with ESMTP id 9GzirksGxEZg; Thu, 11 Jul 2019 17:39:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4938488049;
-	Thu, 11 Jul 2019 14:59:07 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1CA43204C3;
+	Thu, 11 Jul 2019 17:39:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1055A1BF232
- for <devel@linuxdriverproject.org>; Thu, 11 Jul 2019 14:59:03 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BE1891BF271
+ for <devel@linuxdriverproject.org>; Thu, 11 Jul 2019 17:39:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0BA9288035
- for <devel@linuxdriverproject.org>; Thu, 11 Jul 2019 14:59:03 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id BB13288162
+ for <devel@linuxdriverproject.org>; Thu, 11 Jul 2019 17:39:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YAmFvEPu1bZ5 for <devel@linuxdriverproject.org>;
- Thu, 11 Jul 2019 14:59:02 +0000 (UTC)
+ with ESMTP id x-gy3yleBXzJ for <devel@linuxdriverproject.org>;
+ Thu, 11 Jul 2019 17:39:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
- by hemlock.osuosl.org (Postfix) with ESMTPS id BC93288002
- for <devel@driverdev.osuosl.org>; Thu, 11 Jul 2019 14:59:01 +0000 (UTC)
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id A035CB428B1CAA18567C;
- Thu, 11 Jul 2019 22:58:58 +0800 (CST)
-Received: from architecture4.huawei.com (10.140.130.215) by smtp.huawei.com
- (10.3.19.209) with Microsoft SMTP Server (TLS) id 14.3.439.0; Thu, 11 Jul
- 2019 22:58:49 +0800
-From: Gao Xiang <gaoxiang25@huawei.com>
-To: Alexander Viro <viro@zeniv.linux.org.uk>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, Andrew Morton <akpm@linux-foundation.org>,
- Theodore Ts'o <tytso@mit.edu>, Linus Torvalds <torvalds@linux-foundation.org>
-Subject: [PATCH v2 24/24] erofs: add document
-Date: Thu, 11 Jul 2019 22:57:55 +0800
-Message-ID: <20190711145755.33908-25-gaoxiang25@huawei.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190711145755.33908-1-gaoxiang25@huawei.com>
-References: <20190711145755.33908-1-gaoxiang25@huawei.com>
+Received: from mail-qk1-f196.google.com (mail-qk1-f196.google.com
+ [209.85.222.196])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0EBD68815D
+ for <devel@driverdev.osuosl.org>; Thu, 11 Jul 2019 17:39:41 +0000 (UTC)
+Received: by mail-qk1-f196.google.com with SMTP id d79so4250895qke.11
+ for <devel@driverdev.osuosl.org>; Thu, 11 Jul 2019 10:39:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=wzqHLodjklfHBMQ2oXwe3rSiKOixJEtNc2HYoaPd72g=;
+ b=KMt8nkUKKA3uNV7EXX0FRWWqjZoFiTLUSIlTfEtUCMpKw3a1tDgd75azHHO1rVn4cz
+ 9xRJWnkyXg+ABgLeUnfO9S03qDAIxen6nJiXSH8yFDBkhKaLcfV2bT2LG9MmmjvuCkt9
+ AvZzz17tqWEvpMsVedJYNIdVKeRqKwmhcCD66UA7YAjVRKjGzK1pPEQ7TCpAZgKGRR47
+ WtZ8RoOesLb/iuIlLx4c4wTeoIk11eZe2g8SaVuCZUJRhEpwezC2+aJblwwHvM/ponVG
+ ZLT9wbQEaGSl55GF260PK21NXHXc0GMcfCB/KVMQC/J9tkWq9XHGSw+wl/3W/8Lb3WsU
+ E0Pw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=wzqHLodjklfHBMQ2oXwe3rSiKOixJEtNc2HYoaPd72g=;
+ b=afxXnWd/H/5aH/rPWQTJrqels0n2wH2rFxGya+yK4q01aRjJiQsv8UJUCkzOVfk3Ss
+ iXRLJf4GGuUuNEu6q4VPzOICdhiYkdnjQDPAB9F1Sep8DZKUwicFGXl1MGHKKHrmzRWG
+ xMo9nc8IggwrS/fUx/FPqF91xAJbuSyDDe5GGBsXQOl186PxKnINS0ZEV/bbGLvVB97d
+ +A5N40aL22z5FANCSOjffQgyuLg4Nc9YoZpOBMG6FLtu8XEZvQ/8IEPSQf/94Q9OW9KX
+ e2l0Bk7TO5DMu6sRnywAmGepdBKz/R4xHJzCaRar1lCk0oEpWwqz+x2z6q3N1we4yCZp
+ 9RJw==
+X-Gm-Message-State: APjAAAVFImwoaTdDI4iIfd1k3WcPvvEXxYI2LI4vIxDHmoNDGVxz16ia
+ L2POyA+DEdJ0kRPYiZ/lWQ==
+X-Google-Smtp-Source: APXvYqy/EP/CSPda0hTxfFy92POdFWAYBW2oeddiFyl8zyVPrCCXK2k0Mo8FTGCs+Hrkne/W6zE2Yw==
+X-Received: by 2002:a37:624b:: with SMTP id w72mr3124272qkb.368.1562866780185; 
+ Thu, 11 Jul 2019 10:39:40 -0700 (PDT)
+Received: from localhost.localdomain (modemcable148.230-83-70.mc.videotron.ca.
+ [70.83.230.148])
+ by smtp.googlemail.com with ESMTPSA id i23sm2266094qtm.17.2019.07.11.10.39.38
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Thu, 11 Jul 2019 10:39:39 -0700 (PDT)
+From: Keyur Patel <iamkeyur96@gmail.com>
+To: 
+Subject: [PATCH v2] staging: most: remove redundant print statement when 
+Date: Thu, 11 Jul 2019 13:39:12 -0400
+Message-Id: <20190711173915.24200-1-iamkeyur96@gmail.com>
+X-Mailer: git-send-email 2.22.0
+In-Reply-To: <20190711110809.17089-1-iamkeyur96@gmail.com>
+References: <20190711110809.17089-1-iamkeyur96@gmail.com>
 MIME-Version: 1.0
-X-Originating-IP: [10.140.130.215]
-X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,243 +86,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-erofs@lists.ozlabs.org,
- Chao Yu <yuchao0@huawei.com>, LKML <linux-kernel@vger.kernel.org>,
- Li Guifu <bluce.liguifu@huawei.com>, Fang Wei <fangwei1@huawei.com>,
- linux-fsdevel@vger.kernel.org, Miao Xie <miaoxie@huawei.com>
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, Suresh Udipi <sudipi@jp.adit-jv.com>,
+ Christian Gromm <christian.gromm@microchip.com>,
+ Colin Ian King <colin.king@canonical.com>,
+ Eugeniu Rosca <erosca@de.adit-jv.com>, iamkeyur96@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This documents key features, usage, and
-on-disk design of erofs.
+This print statement is redundant as kfifo_alloc just calls kmalloc_array
+and without the __GFP_NOWARN flag, already does a dump_stack().
 
-Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
+Signed-off-by: Keyur Patel <iamkeyur96@gmail.com>
 ---
- Documentation/filesystems/erofs.txt | 211 ++++++++++++++++++++++++++++
- 1 file changed, 211 insertions(+)
- create mode 100644 Documentation/filesystems/erofs.txt
+Changes in v2:
+- Edit subject line.
+---
+ drivers/staging/most/cdev/cdev.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/Documentation/filesystems/erofs.txt b/Documentation/filesystems/erofs.txt
-new file mode 100644
-index 000000000000..b7ff62fb61a4
---- /dev/null
-+++ b/Documentation/filesystems/erofs.txt
-@@ -0,0 +1,211 @@
-+Overview
-+========
+diff --git a/drivers/staging/most/cdev/cdev.c b/drivers/staging/most/cdev/cdev.c
+index d0cc0b746107..bc0219ceac50 100644
+--- a/drivers/staging/most/cdev/cdev.c
++++ b/drivers/staging/most/cdev/cdev.c
+@@ -463,10 +463,9 @@ static int comp_probe(struct most_interface *iface, int channel_id,
+ 	spin_lock_init(&c->unlink);
+ 	INIT_KFIFO(c->fifo);
+ 	retval = kfifo_alloc(&c->fifo, cfg->num_buffers, GFP_KERNEL);
+-	if (retval) {
+-		pr_info("failed to alloc channel kfifo");
++	if (retval)
+ 		goto err_del_cdev_and_free_channel;
+-	}
 +
-+EROFS file-system stands for Enhanced Read-Only File System. Different
-+from other read-only file systems, it aims to be designed for flexibility,
-+scalability, but be kept simple and high performance.
-+
-+It is designed as a better filesystem solution for the following scenarios:
-+ - read-only storage media or
-+
-+ - part of a fully trusted read-only solution, which means it needs to be
-+   immutable and bit-for-bit identical to the official golden image for
-+   their releases due to security and other considerations and
-+
-+ - hope to save some extra storage space with guaranteed end-to-end performance
-+   by using reduced metadata and transparent file compression, especially
-+   for those embedded devices with limited memory (ex, smartphone);
-+
-+Here is the main features of EROFS:
-+ - Little endian on-disk design;
-+
-+ - Currently 4KB block size (nobh) and therefore maximum 16TB address space;
-+
-+ - Metadata & data could be mixed by design;
-+
-+ - 2 inode versions for different requirements:
-+                          v1            v2
-+   Inode metadata size:   32 bytes      64 bytes
-+   Max file size:         4 GB          16 EB (also limited by max. vol size)
-+   Max uids/gids:         65536         4294967296
-+   File creation time:    no            yes (64 + 32-bit timestamp)
-+   Max hardlinks:         65536         4294967296
-+   Metadata reserved:     4 bytes       14 bytes
-+
-+ - Support extended attributes (xattrs) as an option;
-+
-+ - Support xattr inline and tail-end data inline for all files;
-+
-+ - Support POSIX.1e ACLs by using xattrs;
-+
-+ - Support statx();
-+
-+ - Support transparent file compression as an option:
-+   LZ4 algorithm with 4 KB fixed-output compression for high performance;
-+
-+The following git tree provides the file system user-space tools under
-+development (ex, formatting tool mkfs.erofs):
-+>> git://git.kernel.org/pub/scm/linux/kernel/git/xiang/erofs-utils.git
-+
-+Bugs and patches are welcome, please kindly help us and send to the following
-+linux-erofs mailing list:
-+>> linux-erofs mailing list   <linux-erofs@lists.ozlabs.org>
-+
-+Note that EROFS is still working in progress as a Linux staging driver,
-+Cc the staging mailing list as well is highly recommended:
-+>> Linux Driver Project Developer List <devel@driverdev.osuosl.org>
-+
-+Mount options
-+=============
-+
-+fault_injection=%d     Enable fault injection in all supported types with
-+                       specified injection rate. Supported injection type:
-+                       Type_Name                Type_Value
-+                       FAULT_KMALLOC            0x000000001
-+                       FAULT_READ_IO            0x000000002
-+(no)user_xattr         Setup Extended User Attributes. Note: xattr is enabled
-+                       by default if CONFIG_EROFS_FS_XATTR is selected.
-+(no)acl                Setup POSIX Access Control List. Note: acl is enabled
-+                       by default if CONFIG_EROFS_FS_POSIX_ACL is selected.
-+
-+On-disk details
-+===============
-+
-+Summary
-+-------
-+Different from other read-only file systems, an EROFS volume is designed
-+to be as simple as possible:
-+
-+                                |-> aligned with the block size
-+   ____________________________________________________________
-+  | |SB| | ... | Metadata | ... | Data | Metadata | ... | Data |
-+  |_|__|_|_____|__________|_____|______|__________|_____|______|
-+  0 +1K
-+
-+All data areas should be aligned with the block size, but metadata areas
-+may not. All metadatas can be now observed in two different spaces (views):
-+ 1. Inode metadata space
-+    Each valid inode should be aligned with an inode slot, which is a fixed
-+    value (32 bytes) and designed to be kept in line with v1 inode size.
-+
-+    Each inode can be directly found with the following formula:
-+         inode offset = meta_blkaddr * block_size + 32 * nid
-+
-+                                |-> aligned with 8B
-+                                           |-> followed closely
-+    + meta_blkaddr blocks                                      |-> another slot
-+     _____________________________________________________________________
-+    |  ...   | inode |  xattrs  | extents  | data inline | ... | inode ...
-+    |________|_______|(optional)|(optional)|__(optional)_|_____|__________
-+             |-> aligned with the inode slot size
-+                  .                   .
-+                .                         .
-+              .                              .
-+            .                                    .
-+          .                                         .
-+        .                                              .
-+      .____________________________________________________|-> aligned with 4B
-+      | xattr_ibody_header | shared xattrs | inline xattrs |
-+      |____________________|_______________|_______________|
-+      |->    12 bytes    <-|->x * 4 bytes<-|               .
-+                          .                .                 .
-+                    .                      .                   .
-+               .                           .                     .
-+           ._______________________________.______________________.
-+           | id | id | id | id |  ... | id | ent | ... | ent| ... |
-+           |____|____|____|____|______|____|_____|_____|____|_____|
-+                                           |-> aligned with 4B
-+                                                       |-> aligned with 4B
-+
-+    Inode could be 32 or 64 bytes, which can be distinguished from a common
-+    field which all inode versions have -- i_advise:
-+
-+        __________________               __________________
-+       |     i_advise     |             |     i_advise     |
-+       |__________________|             |__________________|
-+       |        ...       |             |        ...       |
-+       |                  |             |                  |
-+       |__________________| 32 bytes    |                  |
-+                                        |                  |
-+                                        |__________________| 64 bytes
-+
-+    Xattrs, extents, data inline are followed by the corresponding inode with
-+    proper alignes, and they could be optional for different data mappings,
-+    _currently_ there are totally 3 valid data mappings supported:
-+
-+     1) flat file data without data inline (no extent);
-+     2) fixed-output size data compression (must have extents);
-+     3) flat file data with tail-end data inline (no extent);
-+
-+    The size of the optional xattrs is indicated by i_xattr_count in inode
-+    header. Large xattrs or xattrs shared by many different files can be
-+    stored in shared xattrs metadata rather than inlined right after inode.
-+
-+ 2. Shared xattrs metadata space
-+    Shared xattrs space is similar to the above inode space, started with
-+    a specific block indicated by xattr_blkaddr, organized one by one with
-+    proper align.
-+
-+    Each share xattr can also be directly found by the following formula:
-+         xattr offset = xattr_blkaddr * block_size + 4 * xattr_id
-+
-+                           |-> aligned by  4 bytes
-+    + xattr_blkaddr blocks                     |-> aligned with 4 bytes
-+     _________________________________________________________________________
-+    |  ...   | xattr_entry |  xattr data | ... |  xattr_entry | xattr data  ...
-+    |________|_____________|_____________|_____|______________|_______________
-+
-+Directories
-+-----------
-+All directories are now organized in a compact on-disk format. Note that
-+each directory block is divided into index and name areas in order to support
-+random file lookup, and all directory entries are _strictly_ recorded in
-+alphabetical order in order to support improved prefix binary search
-+algorithm (could refer to the related source code).
-+
-+                 ___________________________
-+                /                           |
-+               /              ______________|________________
-+              /              /              | nameoff1       | nameoffN-1
-+ ____________.______________._______________v________________v__________
-+| dirent | dirent | ... | dirent | filename | filename | ... | filename |
-+|___.0___|____1___|_____|___N-1__|____0_____|____1_____|_____|___N-1____|
-+     \                           ^
-+      \                          |                           * could have
-+       \                         |                             trailing '\0'
-+        \________________________| nameoff0
-+
-+                             Directory block
-+
-+Note that apart from the offset of the first filename, nameoff0 also indicates
-+the total number of directory entries in this block since it is no need to
-+introduce another on-disk field at all.
-+
-+Compression
-+-----------
-+Currently, EROFS supports 4KB fixed-output clustersize transparent file
-+compression, as illustrated below:
-+
-+         |---- Variant-Length Extent ----|-------- VLE --------|----- VLE -----
-+         clusterofs                      clusterofs            clusterofs
-+         |                               |                     |   logical data
-+_________v_______________________________v_____________________v_______________
-+... |    .        |             |        .    |             |  .          | ...
-+____|____.________|_____________|________.____|_____________|__.__________|____
-+    |-> cluster <-|-> cluster <-|-> cluster <-|-> cluster <-|-> cluster <-|
-+         size          size          size          size          size
-+          .                             .                .                   .
-+           .                       .               .                  .
-+            .                  .              .                .
-+      _______._____________._____________._____________._____________________
-+         ... |             |             |             | ... physical data
-+      _______|_____________|_____________|_____________|_____________________
-+             |-> cluster <-|-> cluster <-|-> cluster <-|
-+                  size          size          size
-+
-+Currently each on-disk physical cluster can contain 4KB (un)compressed data
-+at most. For each logical cluster, there is a corresponding on-disk index to
-+describe its cluster type, physical cluster address, etc.
-+
-+See "struct z_erofs_vle_decompressed_index" in erofs_fs.h for more details.
-+
+ 	init_waitqueue_head(&c->wq);
+ 	mutex_init(&c->io_mutex);
+ 	spin_lock_irqsave(&ch_list_lock, cl_flags);
 -- 
-2.17.1
+2.22.0
 
 _______________________________________________
 devel mailing list
