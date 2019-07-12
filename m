@@ -1,76 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3FEFB66700
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6816F66701
 	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Jul 2019 08:28:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6386487645;
-	Fri, 12 Jul 2019 06:28:45 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 149C186D51;
+	Fri, 12 Jul 2019 06:28:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id U7rImuF00h3q; Fri, 12 Jul 2019 06:28:44 +0000 (UTC)
+	with ESMTP id 5qhDfHRdX092; Fri, 12 Jul 2019 06:28:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B2DAA87632;
-	Fri, 12 Jul 2019 06:28:43 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5562B86C1D;
+	Fri, 12 Jul 2019 06:28:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 24B261BF44C
- for <devel@linuxdriverproject.org>; Fri, 12 Jul 2019 06:28:39 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8D2551BF44C
+ for <devel@linuxdriverproject.org>; Fri, 12 Jul 2019 06:28:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 1968586472
- for <devel@linuxdriverproject.org>; Fri, 12 Jul 2019 06:28:39 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 72EB88648E
+ for <devel@linuxdriverproject.org>; Fri, 12 Jul 2019 06:28:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7IA6dGdL9dMZ for <devel@linuxdriverproject.org>;
- Fri, 12 Jul 2019 06:28:38 +0000 (UTC)
+ with ESMTP id Ev2VBm-w8Po8 for <devel@linuxdriverproject.org>;
+ Fri, 12 Jul 2019 06:28:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C077786493
- for <devel@driverdev.osuosl.org>; Fri, 12 Jul 2019 06:28:37 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id m4so4077892pgk.0
- for <devel@driverdev.osuosl.org>; Thu, 11 Jul 2019 23:28:37 -0700 (PDT)
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id DA8CD86490
+ for <devel@driverdev.osuosl.org>; Fri, 12 Jul 2019 06:28:39 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id c73so3840570pfb.13
+ for <devel@driverdev.osuosl.org>; Thu, 11 Jul 2019 23:28:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Fwkor2bHWwjj4RuJ3oISg/JbPLJBSFytqR7C2ZWbZ/s=;
- b=vXKn5EPlcbzML0p1YNSxdlPL4EVH0iZ0pqzd6W54eljW/EYSvqkAMmmZHr5KHYC4Jw
- KWVTIex9wPkF5tJdsjzxWO397rNtGPZorNHTU3qLIpayGWv0D4siUaWQuk/w0FER/VV4
- U85iVuHpfL950UBpWlfCkQP5Q8QoK7o5JjF4KyzHf+Lu37LNsrCbdmPqQ1/s/FW86Fbm
- 7qNN9SzGLLI+ak+2aQlygwGOSurJE5v8Gv8yRoHHh337ahOAWQgjIdTGYP/WeXpDEaPI
- G6bMYaRgt/kM8VgavB68nEIMEf1pJOTKUAwkefDpYuNYsjsyl4uhlHK6DmY8QShmI90n
- 4LkA==
+ bh=+AJ/eR5sMMXfsQTDH1u86KdcdJ0LWTp8oj7GADfBK9A=;
+ b=V3LJFIXxUN7QCZRbMS7OYeivLVdrqyOCUoT6NAo6vsGA+xINFCreiNVYL93XVzmU/A
+ tKRSleQa9bkz8MM4rovFZQ1XZiuWBklebO8k0wRK/gwA/VEJZoExDI3AiWdTlBhN6SGA
+ 2rFzmqRn59E5mc2UTFhZyn6T5iNZHYtKOpV3N3nuLWaep2OpC769rofwLkeHlmPTTv5Z
+ PoSM57nnyLS/1wd9ZSoB6SordP/mqzOEDFX8ZycU9NQMh+ZZx8UVtgicRaYoxdUvAckh
+ k03uz9zj/pO04Dp2dYlD7HE5GVVuXR+0shspTDBn/3tmR0EB+Ol4IlaYkDSdG2JFruLD
+ kUCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Fwkor2bHWwjj4RuJ3oISg/JbPLJBSFytqR7C2ZWbZ/s=;
- b=P2yqylYOf4gtoQU7fqRf+Q/Vx9Zn3dfGgwYM1SCRoCEFR2fmg7YjAUr4cd4L4rT5Kr
- dYQT+rpt4dqqxlwKTF6uqRg11L3xiCNUaBGXxxZs33+s0KzRrwYucITtgEAmorgesMdn
- fDBG473d158oL/9b7nMCSyIeLWW7nKL2gbfPWV4m3YYLbVISrcBgUvemaZJFOXcSoXBq
- JOek2/xbkp5hkrqiXFRIkhEpoS4iyO0PXXO50JHqN3GeYEnt+8pgu8uVNxxvu5tp6Zax
- 5hJV63kyVMeHRN+FQ+YgyfXVldaxrVugZeRl9C5HOvw5hQVQQAGBmQfvf5tjDvk9NbqR
- uIHQ==
-X-Gm-Message-State: APjAAAVcFSSy1A10+A/82pw7vlDa0knl5fK/zAcmFBqyWqz58Ea4hXo3
- vGW+vdhw98Q9jwtZ6jV6FYk=
-X-Google-Smtp-Source: APXvYqxn+4EszUJTnSLoHiLDxduXsS0Afq6256fiToScxzcwHuNQhb7pF7VNP+ZfwnYkiIKpNeysZA==
-X-Received: by 2002:a17:90a:2488:: with SMTP id
- i8mr9441667pje.123.1562912917450; 
- Thu, 11 Jul 2019 23:28:37 -0700 (PDT)
+ bh=+AJ/eR5sMMXfsQTDH1u86KdcdJ0LWTp8oj7GADfBK9A=;
+ b=GbDU9d2uq8XyT+5YPbmLwaBGnmglUjROR4sUSA3wXT07GKh+eClajJBcDMtpRFzEYZ
+ 1obqwRfOIF/eYFf0nHiWYGdZIvooXgJBEBjL6YpInlboDL35lMHcWpqV02sryed7veTZ
+ qdUYHJ4uy1SbcSgY4Wq4llsxgYOBnoOIO6MiOdI4ryTM7OynlBEap+sJ2JtpLg4jA3KM
+ mICji+RfP2O1qfFcg5rcgtt6h2tcSxv5X/pJca4uBwggbg0p2wpFlphJWRBxxIkqv8xw
+ yHFxjARWHKOLJ12dtmbxlMl9xkFvywMPqA1Y77HpnXUgROmi4aLsEHb5RXCTmO4RELbv
+ xVIQ==
+X-Gm-Message-State: APjAAAVSDQ/21l+adEpaCiE8Y4EYXr5P+BLr3CZzDUSy9/Jv7JF/0oi2
+ ZiUEVEz8rHOluZTVgcMDSdE=
+X-Google-Smtp-Source: APXvYqwg+rOzxO+7iuseaNEDvQOzje2Z9ixC6uuaz7v6oKkq+jstPjVSMHztBkV7tvVcNeTaJShjOw==
+X-Received: by 2002:a17:90a:c58e:: with SMTP id
+ l14mr9603391pjt.104.1562912919553; 
+ Thu, 11 Jul 2019 23:28:39 -0700 (PDT)
 Received: from localhost.localdomain ([110.227.64.207])
- by smtp.gmail.com with ESMTPSA id p1sm8830629pff.74.2019.07.11.23.28.35
+ by smtp.gmail.com with ESMTPSA id p1sm8830629pff.74.2019.07.11.23.28.37
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Thu, 11 Jul 2019 23:28:37 -0700 (PDT)
+ Thu, 11 Jul 2019 23:28:39 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: gregkh@linuxfoundation.org,
 	devel@driverdev.osuosl.org
-Subject: [PATCH 08/10] staging: wlan-ng: Remove function hfa384x_docmd_wait()
-Date: Fri, 12 Jul 2019 11:58:05 +0530
-Message-Id: <20190712062807.9361-8-nishkadg.linux@gmail.com>
+Subject: [PATCH 09/10] staging: wlan-ng: Replace function hfa384x_dormem()
+Date: Fri, 12 Jul 2019 11:58:06 +0530
+Message-Id: <20190712062807.9361-9-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190712062807.9361-1-nishkadg.linux@gmail.com>
 References: <20190712062807.9361-1-nishkadg.linux@gmail.com>
@@ -93,130 +93,93 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-As hfa384x_docmd is only called by hfa384x_docmd_wait, and
-hfa384x_docmd_wait always passes 4 constant arguments (DOWAIT,
-NULL, NULL, NULL) to hfa384x_docmd, these constant parameters may be
-removed from hfa384x_docmd and their values used directly instead.
-Remove check for one of these constant parameters of hfa384x_docmd as
-it is no longer necessary.
-Remove hfa384x_docmd_wait as it does nothing except call hfa384x_docmd.
-Modify call sites of hfa384x_docmd_wait to call hfa384x_docmd instead.
-Change type of hfa384x_docmd to inline to match type of former
-hfa384x_docmd_wait.
+Remove parameters mode, cmdcb, usercb, and usercb_data from
+hfa384x_dormem as these parameters are only assigned the same constant
+values (DOWAIT, NULL, NULL, NULL respectively).
+Modify hfa384x_dormem to use these constants directly. Remove check for
+value of mode (as it will always be DOWAIT).
+Remove function hfa384x_dormem_wait as it does nothing except call
+hfa384x_dormem with these extra arguments.
+Modify call sites of hfa384x_dormem_wait to call hfa384x_dormem instead.
 Issue found with Coccinelle.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/wlan-ng/hfa384x_usb.c | 43 +++++++++------------------
- 1 file changed, 14 insertions(+), 29 deletions(-)
+ drivers/staging/wlan-ng/hfa384x_usb.c | 37 ++++++++-------------------
+ 1 file changed, 10 insertions(+), 27 deletions(-)
 
 diff --git a/drivers/staging/wlan-ng/hfa384x_usb.c b/drivers/staging/wlan-ng/hfa384x_usb.c
-index ce1a9ee995a0..c469b89948e6 100644
+index c469b89948e6..9be06a33268c 100644
 --- a/drivers/staging/wlan-ng/hfa384x_usb.c
 +++ b/drivers/staging/wlan-ng/hfa384x_usb.c
-@@ -226,11 +226,9 @@ usbctlx_get_rridresult(const struct hfa384x_usb_rridresp *rridresp,
- 
- /*---------------------------------------------------*/
- /* Low level req/resp CTLX formatters and submitters */
--static int
-+static inline int
- hfa384x_docmd(struct hfa384x *hw,
--	      enum cmd_mode mode,
--	      struct hfa384x_metacmd *cmd,
--	      ctlx_cmdcb_t cmdcb, ctlx_usercb_t usercb, void *usercb_data);
-+	      struct hfa384x_metacmd *cmd);
+@@ -248,12 +248,10 @@ hfa384x_dowrid(struct hfa384x *hw,
  
  static int
- hfa384x_dorrid(struct hfa384x *hw,
-@@ -820,12 +818,6 @@ static void hfa384x_cb_status(struct hfa384x *hw,
+ hfa384x_dormem(struct hfa384x *hw,
+-	       enum cmd_mode mode,
+ 	       u16 page,
+ 	       u16 offset,
+ 	       void *data,
+-	       unsigned int len,
+-	       ctlx_cmdcb_t cmdcb, ctlx_usercb_t usercb, void *usercb_data);
++	       unsigned int len);
+ 
+ static int
+ hfa384x_dowmem(struct hfa384x *hw,
+@@ -818,14 +816,6 @@ static void hfa384x_cb_status(struct hfa384x *hw,
  	}
  }
  
--static inline int hfa384x_docmd_wait(struct hfa384x *hw,
--				     struct hfa384x_metacmd *cmd)
+-static inline int
+-hfa384x_dormem_wait(struct hfa384x *hw,
+-		    u16 page, u16 offset, void *data, unsigned int len)
 -{
--	return hfa384x_docmd(hw, DOWAIT, cmd, NULL, NULL, NULL);
+-	return hfa384x_dormem(hw, DOWAIT,
+-			      page, offset, data, len, NULL, NULL, NULL);
 -}
 -
  static inline int
- hfa384x_dormem_wait(struct hfa384x *hw,
+ hfa384x_dowmem_wait(struct hfa384x *hw,
  		    u16 page, u16 offset, void *data, unsigned int len)
-@@ -873,7 +865,7 @@ int hfa384x_cmd_initialize(struct hfa384x *hw)
- 	cmd.parm1 = 0;
- 	cmd.parm2 = 0;
- 
--	result = hfa384x_docmd_wait(hw, &cmd);
-+	result = hfa384x_docmd(hw, &cmd);
- 
- 	pr_debug("cmdresp.init: status=0x%04x, resp0=0x%04x, resp1=0x%04x, resp2=0x%04x\n",
- 		 cmd.result.status,
-@@ -919,7 +911,7 @@ int hfa384x_cmd_disable(struct hfa384x *hw, u16 macport)
- 	cmd.parm1 = 0;
- 	cmd.parm2 = 0;
- 
--	return hfa384x_docmd_wait(hw, &cmd);
-+	return hfa384x_docmd(hw, &cmd);
- }
- 
- /*----------------------------------------------------------------
-@@ -953,7 +945,7 @@ int hfa384x_cmd_enable(struct hfa384x *hw, u16 macport)
- 	cmd.parm1 = 0;
- 	cmd.parm2 = 0;
- 
--	return hfa384x_docmd_wait(hw, &cmd);
-+	return hfa384x_docmd(hw, &cmd);
- }
- 
- /*----------------------------------------------------------------
-@@ -996,7 +988,7 @@ int hfa384x_cmd_monitor(struct hfa384x *hw, u16 enable)
- 	cmd.parm1 = 0;
- 	cmd.parm2 = 0;
- 
--	return hfa384x_docmd_wait(hw, &cmd);
-+	return hfa384x_docmd(hw, &cmd);
- }
- 
- /*----------------------------------------------------------------
-@@ -1053,7 +1045,7 @@ int hfa384x_cmd_download(struct hfa384x *hw, u16 mode, u16 lowaddr,
- 	cmd.parm1 = highaddr;
- 	cmd.parm2 = codelen;
- 
--	return hfa384x_docmd_wait(hw, &cmd);
-+	return hfa384x_docmd(hw, &cmd);
- }
- 
- /*----------------------------------------------------------------
-@@ -1213,13 +1205,8 @@ static int hfa384x_usbctlx_complete_sync(struct hfa384x *hw,
+@@ -1454,14 +1444,10 @@ hfa384x_dowrid(struct hfa384x *hw,
   *
   * Arguments:
   *	hw		device structure
 - *	mode		DOWAIT or DOASYNC
-  *       cmd             cmd structure.  Includes all arguments and result
-  *                       data points.  All in host order. in host order
-- *	cmdcb		command-specific callback
+  *	page		MAC address space page (CMD format)
+  *	offset		MAC address space offset
+  *	data		Ptr to data buffer to receive read
+  *	len		Length of the data to read (max == 2048)
+- *	cmdcb		command callback for async calls, NULL for DOWAIT calls
 - *	usercb		user callback for async calls, NULL for DOWAIT calls
-- *	usercb_data	user supplied data pointer for async calls, NULL
-- *			for DOWAIT calls
+- *	usercb_data	user supplied data pointer for async calls
   *
   * Returns:
   *	0		success
-@@ -1235,11 +1222,9 @@ static int hfa384x_usbctlx_complete_sync(struct hfa384x *hw,
-  *	process
+@@ -1473,18 +1459,15 @@ hfa384x_dowrid(struct hfa384x *hw,
+  * Side effects:
+  *
+  * Call context:
+- *	interrupt (DOASYNC)
+- *	process (DOWAIT or DOASYNC)
++ *	process (DOWAIT)
   *----------------------------------------------------------------
   */
--static int
-+static inline int
- hfa384x_docmd(struct hfa384x *hw,
--	      enum cmd_mode mode,
--	      struct hfa384x_metacmd *cmd,
--	      ctlx_cmdcb_t cmdcb, ctlx_usercb_t usercb, void *usercb_data)
-+	      struct hfa384x_metacmd *cmd)
+ static int
+ hfa384x_dormem(struct hfa384x *hw,
+-	       enum cmd_mode mode,
+ 	       u16 page,
+ 	       u16 offset,
+ 	       void *data,
+-	       unsigned int len,
+-	       ctlx_cmdcb_t cmdcb, ctlx_usercb_t usercb, void *usercb_data)
++	       unsigned int len)
  {
  	int result;
  	struct hfa384x_usbctlx *ctlx;
-@@ -1262,15 +1247,15 @@ hfa384x_docmd(struct hfa384x *hw,
- 	pr_debug("cmdreq: cmd=0x%04x parm0=0x%04x parm1=0x%04x parm2=0x%04x\n",
- 		 cmd->cmd, cmd->parm0, cmd->parm1, cmd->parm2);
+@@ -1512,15 +1495,15 @@ hfa384x_dormem(struct hfa384x *hw,
+ 
+ 	pr_debug("pktsize=%zd\n", ROUNDUP64(sizeof(ctlx->outbuf.rmemreq)));
  
 -	ctlx->reapable = mode;
 -	ctlx->cmdcb = cmdcb;
@@ -232,9 +195,20 @@ index ce1a9ee995a0..c469b89948e6 100644
  		kfree(ctlx);
 -	} else if (mode == DOWAIT) {
 +	} else {
- 		struct usbctlx_cmd_completor cmd_completor;
- 		struct usbctlx_completor *completor;
+ 		struct usbctlx_rmem_completor completor;
  
+ 		result =
+@@ -2252,8 +2235,8 @@ int hfa384x_drvr_readpda(struct hfa384x *hw, void *buf, unsigned int len)
+ 		curroffset = HFA384x_ADDR_CMD_MKOFF(pdaloc[i].cardaddr);
+ 
+ 		/* units of bytes */
+-		result = hfa384x_dormem_wait(hw, currpage, curroffset, buf,
+-					     len);
++		result = hfa384x_dormem(hw, currpage, curroffset, buf,
++					len);
+ 
+ 		if (result) {
+ 			netdev_warn(hw->wlandev->netdev,
 -- 
 2.19.1
 
