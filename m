@@ -1,76 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3445F66781
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Jul 2019 09:13:09 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3347D6679E
+	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Jul 2019 09:18:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 62C8A86D73;
-	Fri, 12 Jul 2019 07:13:07 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9D087864E6;
+	Fri, 12 Jul 2019 07:18:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4wnSTa0xI-ns; Fri, 12 Jul 2019 07:13:06 +0000 (UTC)
+	with ESMTP id DnIL77Ai0SAZ; Fri, 12 Jul 2019 07:18:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D57118763C;
-	Fri, 12 Jul 2019 07:13:04 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0D630864AD;
+	Fri, 12 Jul 2019 07:18:05 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 51F1C1BF255
- for <devel@linuxdriverproject.org>; Fri, 12 Jul 2019 07:13:02 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 59E181BF255
+ for <devel@linuxdriverproject.org>; Fri, 12 Jul 2019 07:18:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 4F69A86481
- for <devel@linuxdriverproject.org>; Fri, 12 Jul 2019 07:13:02 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 517D686493
+ for <devel@linuxdriverproject.org>; Fri, 12 Jul 2019 07:18:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YqSmJUN2Bhua for <devel@linuxdriverproject.org>;
- Fri, 12 Jul 2019 07:13:01 +0000 (UTC)
+ with ESMTP id W7VCY9qw6K95 for <devel@linuxdriverproject.org>;
+ Fri, 12 Jul 2019 07:18:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
- [209.85.210.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id CBE6486403
- for <devel@driverdev.osuosl.org>; Fri, 12 Jul 2019 07:13:01 +0000 (UTC)
-Received: by mail-pf1-f196.google.com with SMTP id m30so3902728pff.8
- for <devel@driverdev.osuosl.org>; Fri, 12 Jul 2019 00:13:01 -0700 (PDT)
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 0FD8086490
+ for <devel@driverdev.osuosl.org>; Fri, 12 Jul 2019 07:18:01 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id g2so3925557pfq.0
+ for <devel@driverdev.osuosl.org>; Fri, 12 Jul 2019 00:18:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=cmo1tqBeA/Sh2ClKCCO0JqdGpQ8IAK8NK0uVuzIyLd0=;
- b=DDiDxcyprjE4Ta3ztfW9tsjVQv/DEicG6Tlr0nncKQgg7hJxObowvlEhKvRearNs5h
- gTwMEe7djLb+a7fCtQZuARPC+zJS+vDRTSioHGz7CITml5bJ6BXzuC2DKoJkTfFEq406
- K6ATKZAsyYneolthA4B2I5zh25q7Q5uzNpom3Ad7TmotH5xwkT3AAAce2HJT3hsD5hsP
- 2AYAmRpxBYfuCixamSHDd+ejE9KMqSLTCDy3eyFNyUNQEgmjL6OoUvbQYvU4Lc3UIEjd
- vWp7TiwC2beD+iLJRQpvA3tTkL0P/5jkxlkiSv38l1o1pzuNKzuTfTdWxxwr5hyNTZ4K
- QPiQ==
+ bh=P4roQNx52fEn1XBPLwPCmk6lP/r7J/b3EOMhta26DNM=;
+ b=gjVlopBAqD+QW+hHdFCpcsV5t3gzW+Vx1OEqgll0DrLU3fPdRpmjUzk+pKXqI7/MCy
+ tDOWclrOLTUG5MgY36UPZjtZjcBC/odjjxk1fHC/dnEz33nP1xprkykfBkvDzczNbG6z
+ Tlq01rbxr/Rq2oLnCw2ldxe1VdoxeZCfVwE8pOMJATxPTM2uK4S+vbsqshiawyQgFDsR
+ 4xXYHEccPI7c561vdnAhi0vXh1KF/QmhvNCcNvd8Q04sftRnxfusV3pR8cYu+sjXW08Z
+ HPMtURJthJc57hWGWB3kLb6Xj2QWkPl9Byw4yAn5htbkwcii+zWQHTKiY5h2m6tLtrxV
+ ZvhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=cmo1tqBeA/Sh2ClKCCO0JqdGpQ8IAK8NK0uVuzIyLd0=;
- b=gfASML2wFGLDVZF+lzc71AOnPin4nQURBPklANQ9oPUshZ5hUymrrW4hkffVC0wgcj
- lGZ/Mj5RGkbsDGJa7JSPLUhBVbJXMxhcEliszylBIN/VkBpDhZIGTBGjY8L9L5mqYmiO
- tW5LKA5hPNvfZ0whyRmvkroUtrs3YDiLiXN5iXHRcJteUVy23FbAi6KCtTjYPAUi7n1b
- Xe49JKNgn9ybFONMFoeAvoL0Zg4wQzcjg2cwFmpCOJd0nC6ZDzVP72TbuKW3RLhcifQw
- o9etWbJ7n/ddCT5ZcJ9mNLm8WqNSGMdoWor0sdJhoMxG+LX6Sw95BU7EguEQdv8Vh3BX
- ssVg==
-X-Gm-Message-State: APjAAAVXpBQOmamssVMzXLetvrOVTyr9H37WMKzJOLJ2VY/+gGdFTQmt
- DFvJS/Icy2Uw1dHkNiLx/3o=
-X-Google-Smtp-Source: APXvYqyyxt02F7w2fO44SgdWkmlW43gvemD8er2ox2KKleaFdRacxH9sTUY3sUMYU/OElvDtowYPRA==
-X-Received: by 2002:a17:90a:de02:: with SMTP id
- m2mr9851109pjv.18.1562915581568; 
- Fri, 12 Jul 2019 00:13:01 -0700 (PDT)
+ bh=P4roQNx52fEn1XBPLwPCmk6lP/r7J/b3EOMhta26DNM=;
+ b=qQZLFHjWDkB93YbwKGSDMiqqJx7/f+2jQFMOYkusnDHbHc1PrAxgV+OVXE9kGN6F5S
+ 5yoXF7EiOur/XnkxMzFhJJNUQz2wztJ2J+9UUMJTj9bBBXac2wPqpwKM+etR0/Jdzehq
+ JnlGVPMicuqFzs+e6KKSiHlqnKpJYyDSIQAqgY3j3qxPXkfGtsPvR6ywXipnaXYeuh0w
+ WPeUBpQHsDv4yq3eIA7vdZ1QEpYpw5dToFa4FbppmBHv5VzZYFEYVbmsLQYnpoVS/UVZ
+ bLPCoVb6itg66oXDz864zSkHl76l8LKlLQzh796qtPUjX8aDU7AcRSinXKZ40urRLZ0N
+ v0tw==
+X-Gm-Message-State: APjAAAXI0IYeHQLf7vyzZLCIOCruYAT2XBl5JpqtkW47D9bIsi01rlqH
+ TipBPc4tac0Me8Sq0DUcSZCMFhyM
+X-Google-Smtp-Source: APXvYqywii33EESKOIidiPzAwtXdoK6vlcm+9PXtSB1JyCq1ht9mPDKhEO7MKWKiio9pIteaJqFogQ==
+X-Received: by 2002:a17:90a:8a15:: with SMTP id
+ w21mr9939434pjn.134.1562915880761; 
+ Fri, 12 Jul 2019 00:18:00 -0700 (PDT)
 Received: from localhost.localdomain ([110.227.64.207])
- by smtp.gmail.com with ESMTPSA id u69sm12391982pgu.77.2019.07.12.00.12.58
+ by smtp.gmail.com with ESMTPSA id b126sm14019422pfa.126.2019.07.12.00.17.58
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Fri, 12 Jul 2019 00:13:01 -0700 (PDT)
+ Fri, 12 Jul 2019 00:18:00 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
-To: gaoxiang25@huawei.com, yuchao0@huawei.com, gregkh@linuxfoundation.org,
- linux-erofs@lists.ozlabs.org, devel@driverdev.osuosl.org
-Subject: [PATCH] staging: erofs: Remove function erofs_kill_sb()
-Date: Fri, 12 Jul 2019 12:42:47 +0530
-Message-Id: <20190712071247.2357-1-nishkadg.linux@gmail.com>
+To: larry.finger@lwfinger.net, gregkh@linuxfoundation.org,
+ devel@driverdev.osuosl.org
+Subject: [PATCH 1/8] staging: rtl8188eu: core: Replace function Set_MSR()
+Date: Fri, 12 Jul 2019 12:47:38 +0530
+Message-Id: <20190712071746.2474-1-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -91,37 +91,51 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove function erofs_kill_sb as all it does is call kill_block_super.
-Modify references to the former to point to the latter.
+Change reference to Set_NETYPE0_MSR to Set_MSR.
+Replace the contents of Set_MSR with the contents of Set_NETYPE0_MSR as
+Set_MSR does nothing but call Set_NETYPE0_MSR.
+Delete Set_NETYPE0_MSR.
 Issue found with Coccinelle.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/erofs/super.c | 7 +------
- 1 file changed, 1 insertion(+), 6 deletions(-)
+ drivers/staging/rtl8188eu/core/rtw_mlme_ext.c  | 2 +-
+ drivers/staging/rtl8188eu/core/rtw_wlan_util.c | 7 +------
+ 2 files changed, 2 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/erofs/super.c b/drivers/staging/erofs/super.c
-index 54494412eba4..3e2a65ba1945 100644
---- a/drivers/staging/erofs/super.c
-+++ b/drivers/staging/erofs/super.c
-@@ -554,16 +554,11 @@ static struct dentry *erofs_mount(
- 		&priv, erofs_fill_super);
+diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c b/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
+index 6f3c03201f64..18dc9fc1c04a 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
++++ b/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
+@@ -4854,7 +4854,7 @@ u8 setopmode_hdl(struct adapter *padapter, u8 *pbuf)
+ 	}
+ 
+ 	rtw_hal_set_hwreg(padapter, HW_VAR_SET_OPMODE, (u8 *)(&type));
+-	/* Set_NETYPE0_MSR(padapter, type); */
++	/* Set_MSR(padapter, type); */
+ 
+ 	return H2C_SUCCESS;
+ }
+diff --git a/drivers/staging/rtl8188eu/core/rtw_wlan_util.c b/drivers/staging/rtl8188eu/core/rtw_wlan_util.c
+index 7bfc5b7c2757..b75568efb46f 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_wlan_util.c
++++ b/drivers/staging/rtl8188eu/core/rtw_wlan_util.c
+@@ -270,14 +270,9 @@ void Switch_DM_Func(struct adapter *padapter, u32 mode, u8 enable)
+ 		rtw_hal_set_hwreg(padapter, HW_VAR_DM_FUNC_CLR, (u8 *)(&mode));
  }
  
--static void erofs_kill_sb(struct super_block *sb)
+-static void Set_NETYPE0_MSR(struct adapter *padapter, u8 type)
 -{
--	kill_block_super(sb);
+-	rtw_hal_set_hwreg(padapter, HW_VAR_MEDIA_STATUS, (u8 *)(&type));
 -}
 -
- static struct file_system_type erofs_fs_type = {
- 	.owner          = THIS_MODULE,
- 	.name           = "erofs",
- 	.mount          = erofs_mount,
--	.kill_sb        = erofs_kill_sb,
-+	.kill_sb        = kill_block_super,
- 	.fs_flags       = FS_REQUIRES_DEV,
- };
- MODULE_ALIAS_FS("erofs");
+ void Set_MSR(struct adapter *padapter, u8 type)
+ {
+-	Set_NETYPE0_MSR(padapter, type);
++	rtw_hal_set_hwreg(padapter, HW_VAR_MEDIA_STATUS, (u8 *)(&type));
+ }
+ 
+ inline u8 rtw_get_oper_ch(struct adapter *adapter)
 -- 
 2.19.1
 
