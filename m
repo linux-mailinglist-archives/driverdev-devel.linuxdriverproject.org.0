@@ -1,78 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C15FC66702
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Jul 2019 08:28:49 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 73FEF864CD;
-	Fri, 12 Jul 2019 06:28:48 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eIXTLKW6CYe5; Fri, 12 Jul 2019 06:28:47 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D3D2D86472;
-	Fri, 12 Jul 2019 06:28:46 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1A65F1BF44C
- for <devel@linuxdriverproject.org>; Fri, 12 Jul 2019 06:28:45 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3445F66781
+	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Jul 2019 09:13:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id D70FD87635
- for <devel@linuxdriverproject.org>; Fri, 12 Jul 2019 06:28:44 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 62C8A86D73;
+	Fri, 12 Jul 2019 07:13:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 4wnSTa0xI-ns; Fri, 12 Jul 2019 07:13:06 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id D57118763C;
+	Fri, 12 Jul 2019 07:13:04 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 51F1C1BF255
+ for <devel@linuxdriverproject.org>; Fri, 12 Jul 2019 07:13:02 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4F69A86481
+ for <devel@linuxdriverproject.org>; Fri, 12 Jul 2019 07:13:02 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id o4cmLUYqMi1n for <devel@linuxdriverproject.org>;
- Fri, 12 Jul 2019 06:28:42 +0000 (UTC)
+ with ESMTP id YqSmJUN2Bhua for <devel@linuxdriverproject.org>;
+ Fri, 12 Jul 2019 07:13:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
  [209.85.210.196])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 10D4F87631
- for <devel@driverdev.osuosl.org>; Fri, 12 Jul 2019 06:28:42 +0000 (UTC)
-Received: by mail-pf1-f196.google.com with SMTP id i189so3849148pfg.10
- for <devel@driverdev.osuosl.org>; Thu, 11 Jul 2019 23:28:42 -0700 (PDT)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id CBE6486403
+ for <devel@driverdev.osuosl.org>; Fri, 12 Jul 2019 07:13:01 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id m30so3902728pff.8
+ for <devel@driverdev.osuosl.org>; Fri, 12 Jul 2019 00:13:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=5VSUQ38Kjy1j7IQzs7/6SPh4XKaxUatvSyMVMS5Cx4Y=;
- b=sVb1PVHbbQqd3iXKA/NmLbsuaRtasyHOoFwN0quuIhM1FE50l1aUBYEEDBsE2x2SO4
- 0bVXc4LqSd32KB6ZZe5zBJZuO4xPwOaOiuWf1ctZucbqBOEbCW512KuCg8zZgDzLrO4s
- 2koKIDGEkOIf5qFPQICEcfaKko6V8a80CDpfQ1rjuRu8rfVL2mcMEYAcNwMh7vZJxN0Z
- eUZCdBpiwimVbxW5BV+SIkW/sr8WgGedFuPvRCMRM+X4g1/euw3lqip8F6UJmE/bgAdw
- PalhpQhnADx2Y8Hi0mKAmUbEg7ymTdvdnkHi1YObEwz6Jfa8AuurLESy9ndHKrcDbYSg
- B8Kg==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=cmo1tqBeA/Sh2ClKCCO0JqdGpQ8IAK8NK0uVuzIyLd0=;
+ b=DDiDxcyprjE4Ta3ztfW9tsjVQv/DEicG6Tlr0nncKQgg7hJxObowvlEhKvRearNs5h
+ gTwMEe7djLb+a7fCtQZuARPC+zJS+vDRTSioHGz7CITml5bJ6BXzuC2DKoJkTfFEq406
+ K6ATKZAsyYneolthA4B2I5zh25q7Q5uzNpom3Ad7TmotH5xwkT3AAAce2HJT3hsD5hsP
+ 2AYAmRpxBYfuCixamSHDd+ejE9KMqSLTCDy3eyFNyUNQEgmjL6OoUvbQYvU4Lc3UIEjd
+ vWp7TiwC2beD+iLJRQpvA3tTkL0P/5jkxlkiSv38l1o1pzuNKzuTfTdWxxwr5hyNTZ4K
+ QPiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=5VSUQ38Kjy1j7IQzs7/6SPh4XKaxUatvSyMVMS5Cx4Y=;
- b=UT/sMjshLv5cAzYzLiK+1mnZ7u9AIVhGUAM4idnnzjrMCdVlgwmFK9sJ1VF1DdqhBX
- wqI/vNA/6bfXxWLYmYlCcCZsOd9+xqjNWRuTwmtF0ZhUkN4+Vop86hn/BbRQsCzKVhus
- eISQgNpCxlUwrQVgmhw29fbuviIvykxegEhG3U+J4NREcNKcuFFTJbv8TJm3T5e2ujB0
- eXYIbmQ85xrx8DwWEfHwtemtKBTyhqQbuEIpZJsIBSMoHyD+wL0Yi9G0oktkSA0+dgu1
- DOJ+ZKafUGYn3mLIq1g/HMNnFO2AcmtlN7RrLyt77RS7jpoUwfE4IHRax0dP0J1br9c2
- XcFw==
-X-Gm-Message-State: APjAAAUlTkq61r50iSNuF+k+gH1CNbWh0UslIUSxpJDmVjPyLkDemYsa
- RwDp8KRIrxwukEsf4bgf01k=
-X-Google-Smtp-Source: APXvYqwNpPg1j0ZW51U/JRDvuTWfnDuEPXOckpH224mCwcZagw4dX+jSdKg3SFKxMA5e7L78GUPgSQ==
-X-Received: by 2002:a63:224a:: with SMTP id t10mr8821183pgm.289.1562912921647; 
- Thu, 11 Jul 2019 23:28:41 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=cmo1tqBeA/Sh2ClKCCO0JqdGpQ8IAK8NK0uVuzIyLd0=;
+ b=gfASML2wFGLDVZF+lzc71AOnPin4nQURBPklANQ9oPUshZ5hUymrrW4hkffVC0wgcj
+ lGZ/Mj5RGkbsDGJa7JSPLUhBVbJXMxhcEliszylBIN/VkBpDhZIGTBGjY8L9L5mqYmiO
+ tW5LKA5hPNvfZ0whyRmvkroUtrs3YDiLiXN5iXHRcJteUVy23FbAi6KCtTjYPAUi7n1b
+ Xe49JKNgn9ybFONMFoeAvoL0Zg4wQzcjg2cwFmpCOJd0nC6ZDzVP72TbuKW3RLhcifQw
+ o9etWbJ7n/ddCT5ZcJ9mNLm8WqNSGMdoWor0sdJhoMxG+LX6Sw95BU7EguEQdv8Vh3BX
+ ssVg==
+X-Gm-Message-State: APjAAAVXpBQOmamssVMzXLetvrOVTyr9H37WMKzJOLJ2VY/+gGdFTQmt
+ DFvJS/Icy2Uw1dHkNiLx/3o=
+X-Google-Smtp-Source: APXvYqyyxt02F7w2fO44SgdWkmlW43gvemD8er2ox2KKleaFdRacxH9sTUY3sUMYU/OElvDtowYPRA==
+X-Received: by 2002:a17:90a:de02:: with SMTP id
+ m2mr9851109pjv.18.1562915581568; 
+ Fri, 12 Jul 2019 00:13:01 -0700 (PDT)
 Received: from localhost.localdomain ([110.227.64.207])
- by smtp.gmail.com with ESMTPSA id p1sm8830629pff.74.2019.07.11.23.28.39
+ by smtp.gmail.com with ESMTPSA id u69sm12391982pgu.77.2019.07.12.00.12.58
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Thu, 11 Jul 2019 23:28:41 -0700 (PDT)
+ Fri, 12 Jul 2019 00:13:01 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
-To: gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org
-Subject: [PATCH 10/10] staging: wlan-ng: Replace function hfa384x_dowmem()
-Date: Fri, 12 Jul 2019 11:58:07 +0530
-Message-Id: <20190712062807.9361-10-nishkadg.linux@gmail.com>
+To: gaoxiang25@huawei.com, yuchao0@huawei.com, gregkh@linuxfoundation.org,
+ linux-erofs@lists.ozlabs.org, devel@driverdev.osuosl.org
+Subject: [PATCH] staging: erofs: Remove function erofs_kill_sb()
+Date: Fri, 12 Jul 2019 12:42:47 +0530
+Message-Id: <20190712071247.2357-1-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20190712062807.9361-1-nishkadg.linux@gmail.com>
-References: <20190712062807.9361-1-nishkadg.linux@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -92,143 +91,37 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove parameters mode, cmdcb, usercb, and usercb_data from
-hfa384x_dowmem as these parameters are only assigned the same constant
-values (DOWAIT, NULL, NULL, NULL respectively).
-Modify hfa384x_dowmem to use these constants directly. Remove check for
-value of mode (as it will always be DOWAIT).
-Remove function hfa384x_dowmem_wait as it does nothing except call
-hfa384x_dowmem with these extra arguments.
-Modify call sites of hfa384x_dowmem_wait to call hfa384x_dowmem instead.
+Remove function erofs_kill_sb as all it does is call kill_block_super.
+Modify references to the former to point to the latter.
 Issue found with Coccinelle.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/wlan-ng/hfa384x_usb.c | 51 +++++++++------------------
- 1 file changed, 17 insertions(+), 34 deletions(-)
+ drivers/staging/erofs/super.c | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
 
-diff --git a/drivers/staging/wlan-ng/hfa384x_usb.c b/drivers/staging/wlan-ng/hfa384x_usb.c
-index 9be06a33268c..28d372a0663a 100644
---- a/drivers/staging/wlan-ng/hfa384x_usb.c
-+++ b/drivers/staging/wlan-ng/hfa384x_usb.c
-@@ -255,12 +255,10 @@ hfa384x_dormem(struct hfa384x *hw,
- 
- static int
- hfa384x_dowmem(struct hfa384x *hw,
--	       enum cmd_mode mode,
- 	       u16 page,
- 	       u16 offset,
- 	       void *data,
--	       unsigned int len,
--	       ctlx_cmdcb_t cmdcb, ctlx_usercb_t usercb, void *usercb_data);
-+	       unsigned int len);
- 
- static int hfa384x_isgood_pdrcode(u16 pdrcode);
- 
-@@ -816,14 +814,6 @@ static void hfa384x_cb_status(struct hfa384x *hw,
- 	}
+diff --git a/drivers/staging/erofs/super.c b/drivers/staging/erofs/super.c
+index 54494412eba4..3e2a65ba1945 100644
+--- a/drivers/staging/erofs/super.c
++++ b/drivers/staging/erofs/super.c
+@@ -554,16 +554,11 @@ static struct dentry *erofs_mount(
+ 		&priv, erofs_fill_super);
  }
  
--static inline int
--hfa384x_dowmem_wait(struct hfa384x *hw,
--		    u16 page, u16 offset, void *data, unsigned int len)
+-static void erofs_kill_sb(struct super_block *sb)
 -{
--	return hfa384x_dowmem(hw, DOWAIT,
--			      page, offset, data, len, NULL, NULL, NULL);
+-	kill_block_super(sb);
 -}
 -
- /*----------------------------------------------------------------
-  * hfa384x_cmd_initialize
-  *
-@@ -1529,14 +1519,10 @@ hfa384x_dormem(struct hfa384x *hw,
-  *
-  * Arguments:
-  *	hw		device structure
-- *	mode		DOWAIT or DOASYNC
-  *	page		MAC address space page (CMD format)
-  *	offset		MAC address space offset
-  *	data		Ptr to data buffer containing write data
-  *	len		Length of the data to read (max == 2048)
-- *	cmdcb		command callback for async calls, NULL for DOWAIT calls
-- *	usercb		user callback for async calls, NULL for DOWAIT calls
-- *	usercb_data	user supplied data pointer for async calls.
-  *
-  * Returns:
-  *	0		success
-@@ -1549,17 +1535,15 @@ hfa384x_dormem(struct hfa384x *hw,
-  *
-  * Call context:
-  *	interrupt (DOWAIT)
-- *	process (DOWAIT or DOASYNC)
-+ *	process (DOWAIT)
-  *----------------------------------------------------------------
-  */
- static int
- hfa384x_dowmem(struct hfa384x *hw,
--	       enum cmd_mode mode,
- 	       u16 page,
- 	       u16 offset,
- 	       void *data,
--	       unsigned int len,
--	       ctlx_cmdcb_t cmdcb, ctlx_usercb_t usercb, void *usercb_data)
-+	       unsigned int len)
- {
- 	int result;
- 	struct hfa384x_usbctlx *ctlx;
-@@ -1586,15 +1570,15 @@ hfa384x_dowmem(struct hfa384x *hw,
- 	    sizeof(ctlx->outbuf.wmemreq.offset) +
- 	    sizeof(ctlx->outbuf.wmemreq.page) + len;
- 
--	ctlx->reapable = mode;
--	ctlx->cmdcb = cmdcb;
--	ctlx->usercb = usercb;
--	ctlx->usercb_data = usercb_data;
-+	ctlx->reapable = DOWAIT;
-+	ctlx->cmdcb = NULL;
-+	ctlx->usercb = NULL;
-+	ctlx->usercb_data = NULL;
- 
- 	result = hfa384x_usbctlx_submit(hw, ctlx);
- 	if (result != 0) {
- 		kfree(ctlx);
--	} else if (mode == DOWAIT) {
-+	} else {
- 		struct usbctlx_cmd_completor completor;
- 		struct hfa384x_cmdresult wmemresult;
- 
-@@ -1901,10 +1885,10 @@ int hfa384x_drvr_flashdl_write(struct hfa384x *hw, u32 daddr,
- 			writelen = writelen > HFA384x_USB_RWMEM_MAXLEN ?
- 			    HFA384x_USB_RWMEM_MAXLEN : writelen;
- 
--			result = hfa384x_dowmem_wait(hw,
--						     writepage,
--						     writeoffset,
--						     writebuf, writelen);
-+			result = hfa384x_dowmem(hw,
-+						writepage,
-+						writeoffset,
-+						writebuf, writelen);
- 		}
- 
- 		/* set the download 'write flash' mode */
-@@ -2158,12 +2142,11 @@ int hfa384x_drvr_ramdl_write(struct hfa384x *hw, u32 daddr, void *buf, u32 len)
- 			currlen = HFA384x_USB_RWMEM_MAXLEN;
- 
- 		/* Do blocking ctlx */
--		result = hfa384x_dowmem_wait(hw,
--					     currpage,
--					     curroffset,
--					     data +
--					     (i * HFA384x_USB_RWMEM_MAXLEN),
--					     currlen);
-+		result = hfa384x_dowmem(hw,
-+					currpage,
-+					curroffset,
-+					data + (i * HFA384x_USB_RWMEM_MAXLEN),
-+					currlen);
- 
- 		if (result)
- 			break;
+ static struct file_system_type erofs_fs_type = {
+ 	.owner          = THIS_MODULE,
+ 	.name           = "erofs",
+ 	.mount          = erofs_mount,
+-	.kill_sb        = erofs_kill_sb,
++	.kill_sb        = kill_block_super,
+ 	.fs_flags       = FS_REQUIRES_DEV,
+ };
+ MODULE_ALIAS_FS("erofs");
 -- 
 2.19.1
 
