@@ -1,76 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6E261666FE
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Jul 2019 08:28:40 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 80952666FF
+	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Jul 2019 08:28:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DA5F8864B3;
-	Fri, 12 Jul 2019 06:28:38 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 119E988221;
+	Fri, 12 Jul 2019 06:28:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PNe_RSKBRamB; Fri, 12 Jul 2019 06:28:38 +0000 (UTC)
+	with ESMTP id ixVO3e2Pq1Rc; Fri, 12 Jul 2019 06:28:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 762F586472;
-	Fri, 12 Jul 2019 06:28:37 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2220286C1D;
+	Fri, 12 Jul 2019 06:28:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 281551BF44C
- for <devel@linuxdriverproject.org>; Fri, 12 Jul 2019 06:28:34 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 135DC1BF44C
+ for <devel@linuxdriverproject.org>; Fri, 12 Jul 2019 06:28:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 2470886472
- for <devel@linuxdriverproject.org>; Fri, 12 Jul 2019 06:28:34 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 0A87E875CF
+ for <devel@linuxdriverproject.org>; Fri, 12 Jul 2019 06:28:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id g3fF25RG9KaN for <devel@linuxdriverproject.org>;
- Fri, 12 Jul 2019 06:28:33 +0000 (UTC)
+ with ESMTP id H3nNMWFlBTfS for <devel@linuxdriverproject.org>;
+ Fri, 12 Jul 2019 06:28:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
- [209.85.215.193])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 90B3D86469
- for <devel@driverdev.osuosl.org>; Fri, 12 Jul 2019 06:28:33 +0000 (UTC)
-Received: by mail-pg1-f193.google.com with SMTP id o13so4051873pgp.12
- for <devel@driverdev.osuosl.org>; Thu, 11 Jul 2019 23:28:33 -0700 (PDT)
+Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
+ [209.85.214.196])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 8C6CA875C7
+ for <devel@driverdev.osuosl.org>; Fri, 12 Jul 2019 06:28:35 +0000 (UTC)
+Received: by mail-pl1-f196.google.com with SMTP id y8so4259117plr.12
+ for <devel@driverdev.osuosl.org>; Thu, 11 Jul 2019 23:28:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=t3Rcc5mC88i3xu+nqVL4d+w9lnXCAhPMfQFYyczzfAY=;
- b=hJj3pFiHj1MEkKvso1AZoKl74ea6NfxcKqvh2+feOtYNdIDaHmBroDg7Uq6BJV3QDs
- lIw20iydy29NwJ+uVY6hpcWRRN+0xg6CdwTJSigE7jDo4mb3JOV5t6X6RZgF1Sfjo+eg
- s7chSbnfuGcZ1kwB59Cv2bRxUv7/lzjFzCYn9cGy91OQVvwn7DW1UqgOmvuLKwYCSuVm
- UL5kiR5gL/2JG4+kGc7KKoC22OZNyzWqR6aUWAPiMrJDR+p8Hdt95t9ScrJnY0RLdwoN
- xcfNbDdRjFUKT2KU7iz0mzDEtHyouMzTAFstqCQ3wRYr1Vm0Yu5vbq63VZphom8/bfiI
- cKLA==
+ bh=jF3uyBsZPRjslpnNDqY7Jot8LRwF0FNUvKlLEOVlrWI=;
+ b=TH7A05pyAqNiQFR0d9VuQ3M01aQdO1VOn3KLTYX90usRhsEXNES45O4EDBY+QvOzOJ
+ Rfz4CrbY59wQv4uEESRRZWsU/zuhv19rnjqbmQcyJ+rpCYPvxd24ZbexfHlYIF/iqvEp
+ 5jraibFFmlqYY6j3Qlo9RRxEb3N2XCM+rTu1QXeCfZ9Qc7TUsrQdSOYpEHWh9YLKJoIW
+ /QWmVruFrTTbGEBSlq5LBE2vvHVkZLMivftVgOXmF6THZgotTC9WqJ5P2ka/kxJX+rfp
+ RAuz0+g/t3mdRcdFUZ04aMTP/Uw91ENZzSIkouIRRnbXK4IyOqLPlgBqDM7dVzKqjQVR
+ ZWWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=t3Rcc5mC88i3xu+nqVL4d+w9lnXCAhPMfQFYyczzfAY=;
- b=NVQYYTequpWuJsxuVm5E/Mx55QOBjPuJR+yHo0VQsn8F2bzmSwxRPP8SM5GShkHl57
- 5YQfKsTFCPBQ5+iS3MChBoqKa+jBsAyS/CdVxnANy7ltl7qZluQb1nrfMis5t4YkvoRF
- BFNNHBVX2rGvYpfPUix4a53W3np3sYiZXSw/QUoQ+n1EWw7CKkUjpsTXCSmtAcr56jMy
- DS++phCEFAsqT06bs088Ff+zjOiTTo5Ia2AAkMO9yEjz4EfNAXJ0DVMSJZ0Fbzxdrsym
- eXYvCmYted/8KGITWXOFbxTawvwM0o0Fz8O1jFaOyiLfkQIyO1ftOasWAo0YviSXhtdI
- Lpsg==
-X-Gm-Message-State: APjAAAUWr1NqVFirTRJHd00cyizdMgweSbcjsMWbOW+XLoiT3jcrBpOY
- QSpqQpVSDYQ5xPcGp1opIM0265nR
-X-Google-Smtp-Source: APXvYqykMeYlOArKpADCR9U8ahRnQIkE6ZH4bWwGMOIQI3nz7sJ6Ft4KPfoaQ744Y3XmjG1j1LWG2g==
-X-Received: by 2002:a17:90a:b011:: with SMTP id
- x17mr9704373pjq.113.1562912913251; 
- Thu, 11 Jul 2019 23:28:33 -0700 (PDT)
+ bh=jF3uyBsZPRjslpnNDqY7Jot8LRwF0FNUvKlLEOVlrWI=;
+ b=W2ZDmsFAK/M6fUT7YF0kpKTTzHiPvM43rdGcpfKW9Qg/thEgSXu4PlFflCEkOtyBRl
+ hY6oR/Ep76xFnPjVILdTpKSwJzzR2H9VOxZ6yrJruM2P3DpEZ9u+cS47vFL87NtVH9KZ
+ PDjgd7Iw7oY9IUlTesCB0KNg/FGfgxNSfhWKVzqVNiTOFf90+R4KvW+uItf8zQ9OtZ/A
+ o9oy3ir3IlNXyTcjaHTtMCnZ7fJxvIBNeoQap17yQeesnH8sTDU7mBHihS3oV7t4GoMZ
+ bDw/8wFAQKul15MWq9nc9TehpSbFJU/oAsFJTy1baQAmQ/LQnUeHDAZAEsXM3GtZo6qr
+ F8DA==
+X-Gm-Message-State: APjAAAXhq2Y5AL4KGVtNNU1sewzidSJWqP29ekrXYONdFpegskokPDF7
+ GoleiFqR/TqOdpD2uTZcRMU=
+X-Google-Smtp-Source: APXvYqyUWtGdYTlYDPNkkecngBQR9ZjdYyfVB+FgmZzUyFSGoGM7ewwIkB1RFJduchT0AmUYXySppQ==
+X-Received: by 2002:a17:902:e613:: with SMTP id
+ cm19mr8782866plb.299.1562912915282; 
+ Thu, 11 Jul 2019 23:28:35 -0700 (PDT)
 Received: from localhost.localdomain ([110.227.64.207])
- by smtp.gmail.com with ESMTPSA id p1sm8830629pff.74.2019.07.11.23.28.31
+ by smtp.gmail.com with ESMTPSA id p1sm8830629pff.74.2019.07.11.23.28.33
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Thu, 11 Jul 2019 23:28:32 -0700 (PDT)
+ Thu, 11 Jul 2019 23:28:34 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: gregkh@linuxfoundation.org,
 	devel@driverdev.osuosl.org
-Subject: [PATCH 06/10] staging: wlan-ng: Remove function hfa384x_dowmem_async()
-Date: Fri, 12 Jul 2019 11:58:03 +0530
-Message-Id: <20190712062807.9361-6-nishkadg.linux@gmail.com>
+Subject: [PATCH 07/10] staging: wlan-ng: Remove unused function
+ hfa384x_docmd_async()
+Date: Fri, 12 Jul 2019 11:58:04 +0530
+Message-Id: <20190712062807.9361-7-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190712062807.9361-1-nishkadg.linux@gmail.com>
 References: <20190712062807.9361-1-nishkadg.linux@gmail.com>
@@ -93,39 +94,33 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove unused function hfa384x_dowmem_async.
+Remove unused function hfa384x_docmd_async.
 Issue found with Coccinelle.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/wlan-ng/hfa384x_usb.c | 14 --------------
- 1 file changed, 14 deletions(-)
+ drivers/staging/wlan-ng/hfa384x_usb.c | 8 --------
+ 1 file changed, 8 deletions(-)
 
 diff --git a/drivers/staging/wlan-ng/hfa384x_usb.c b/drivers/staging/wlan-ng/hfa384x_usb.c
-index 95dae0b271fc..20ac2dbd8a00 100644
+index 20ac2dbd8a00..ce1a9ee995a0 100644
 --- a/drivers/staging/wlan-ng/hfa384x_usb.c
 +++ b/drivers/staging/wlan-ng/hfa384x_usb.c
-@@ -850,20 +850,6 @@ hfa384x_dowmem_wait(struct hfa384x *hw,
- 			      page, offset, data, len, NULL, NULL, NULL);
+@@ -826,14 +826,6 @@ static inline int hfa384x_docmd_wait(struct hfa384x *hw,
+ 	return hfa384x_docmd(hw, DOWAIT, cmd, NULL, NULL, NULL);
  }
  
 -static inline int
--hfa384x_dowmem_async(struct hfa384x *hw,
--		     u16 page,
--		     u16 offset,
--		     void *data,
--		     unsigned int len,
--		     ctlx_cmdcb_t cmdcb,
--		     ctlx_usercb_t usercb, void *usercb_data)
+-hfa384x_docmd_async(struct hfa384x *hw,
+-		    struct hfa384x_metacmd *cmd,
+-		    ctlx_cmdcb_t cmdcb, ctlx_usercb_t usercb, void *usercb_data)
 -{
--	return hfa384x_dowmem(hw, DOASYNC,
--			      page, offset, data, len,
--			      cmdcb, usercb, usercb_data);
+-	return hfa384x_docmd(hw, DOASYNC, cmd, cmdcb, usercb, usercb_data);
 -}
 -
- /*----------------------------------------------------------------
-  * hfa384x_cmd_initialize
-  *
+ static inline int
+ hfa384x_dormem_wait(struct hfa384x *hw,
+ 		    u16 page, u16 offset, void *data, unsigned int len)
 -- 
 2.19.1
 
