@@ -2,75 +2,76 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7D685667A4
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Jul 2019 09:18:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 27867667A5
+	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Jul 2019 09:18:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 1F6BC2279E;
-	Fri, 12 Jul 2019 07:18:29 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BF20422795;
+	Fri, 12 Jul 2019 07:18:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id N6kqiwwQsV8d; Fri, 12 Jul 2019 07:18:27 +0000 (UTC)
+	with ESMTP id o8APjgmtuANN; Fri, 12 Jul 2019 07:18:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 62C4122795;
-	Fri, 12 Jul 2019 07:18:26 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 217BE2277A;
+	Fri, 12 Jul 2019 07:18:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 19DFD1BF255
- for <devel@linuxdriverproject.org>; Fri, 12 Jul 2019 07:18:23 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 563D21BF255
+ for <devel@linuxdriverproject.org>; Fri, 12 Jul 2019 07:18:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1648587633
- for <devel@linuxdriverproject.org>; Fri, 12 Jul 2019 07:18:23 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4FAED882EB
+ for <devel@linuxdriverproject.org>; Fri, 12 Jul 2019 07:18:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id I0OY9u3YmSYn for <devel@linuxdriverproject.org>;
- Fri, 12 Jul 2019 07:18:21 +0000 (UTC)
+ with ESMTP id MNhsSEiLhlGO for <devel@linuxdriverproject.org>;
+ Fri, 12 Jul 2019 07:18:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
- [209.85.214.195])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 430A68763C
- for <devel@driverdev.osuosl.org>; Fri, 12 Jul 2019 07:18:21 +0000 (UTC)
-Received: by mail-pl1-f195.google.com with SMTP id b7so4338776pls.6
- for <devel@driverdev.osuosl.org>; Fri, 12 Jul 2019 00:18:21 -0700 (PDT)
+Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
+ [209.85.214.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id AE2BA882F2
+ for <devel@driverdev.osuosl.org>; Fri, 12 Jul 2019 07:18:24 +0000 (UTC)
+Received: by mail-pl1-f194.google.com with SMTP id w24so4349523plp.2
+ for <devel@driverdev.osuosl.org>; Fri, 12 Jul 2019 00:18:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=9rOCl9Gd+8qfAPeInD+u8m/REclLKt9vXciOwfFiePo=;
- b=VILjmMPfIR6eNCMIIkb4q6FctQcFerWAHRSNeEaKQEnQd+mhkFiwFECjXMFRxWIIRe
- v4pXv5UnUcIRjv6gYW2vVt6lIWfedXT1H0FqzDxLEnXJzPzftlHzKAOIbFI0vEq5rRef
- UXr/ZXWYsVopUUWT+M7cRLC3rR6QkT70WEoxxC0EzmkJkjo3mxQZYWH7KAfN4D08oxCI
- zf0L+QcKSOYUXNihil9q5D9Y6ESytnSbLOfZfqV454epMCBqfvCGhycZwQyMGLmAoBWZ
- w7dH20ZorTCMSxF2/C8TC+OnOWVNpmPRuJkae3qc/5U5dzmLMsXdT0brNbxIi8FoZEUI
- a+Qw==
+ bh=2zdZVoW0ryakyem5Gpred12nnMGv7YzGjsPGRRI159o=;
+ b=vCABDspXl1Ef/u9/7/LkNNdBkmi1IpXehdVxEGLqdWzubhl6owkRQeg4Klzq+RE77j
+ 1iattXMSgLxwn5so1V4Ku/xlMayIIGfzVcKXMVPVoIBTktimMJXAP0F/X9LRVh57RO4O
+ l4SHWr6EjyFNxzAxgPYdexoKaV2RwMCJIJwIWmeyHcQHJhzV8nam25KXwcrzLbVN7+02
+ pk9io6p0D7euHFviAJ9EoOsq29VsI6Jb1uCxCaZk+uBsXUJt0atF3SC21qCncL3o5fvl
+ JwZYPNrB+430GNR5+bUXrJKQRXT6hOgoSpOjeuyzxFv8cdek0FvoZB8zuH6h1fA5EYQT
+ VEnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=9rOCl9Gd+8qfAPeInD+u8m/REclLKt9vXciOwfFiePo=;
- b=QZN9v/kg8IIfY+VJ7y47ayZDB1Y4GJm+awJQhJGQ0XyiG3xkCgOD5kPhfTVSkptQ3o
- JDu/7rUixSnkGNT8PEKkCExw44XEQZ9cuS8gHzvHPN6QxQpccXw7D6LjyMspmuG5cljD
- sAbB3oNP89LtqW/HEXqFBqDLrhFMakcsi+at55a54flEIHDPm4NmVS4kzU7Xw/2zfGSl
- 2Wr3HITUkyroDp5vJnGj2dvRkD2i/lB4ofKAA4HDDlJhoeu66yvE78m1xP06Hvr1a5ZT
- Iqqs3jUyHeJ3EGEweNcuMOOPqvt7Z8cqsDImH9g3LZowtLVzExakHxZSlVYsFRRIaMeC
- OjfA==
-X-Gm-Message-State: APjAAAVMojims8WQpcWhUH+5Shz+CXWsPs8mM17ihLIJ4498kRJkI2BA
- lWQb0+WSSv6Ccqo9cJMWgWc=
-X-Google-Smtp-Source: APXvYqzkgGcZiOIL9YMNRxOI4FZZdOfCgGrpXd9vwBwI9YQaTf3f7h+DcQw6+894VmLPieY/d0TanA==
-X-Received: by 2002:a17:902:2a29:: with SMTP id
- i38mr9753330plb.46.1562915900982; 
- Fri, 12 Jul 2019 00:18:20 -0700 (PDT)
+ bh=2zdZVoW0ryakyem5Gpred12nnMGv7YzGjsPGRRI159o=;
+ b=LSVcD2tAFnF3GXVK4edx3s/jXuCbhPeuzD7npXqIA4HVva7rSB2rDwdwT7FaiXsWtW
+ 3g0klqtc/KGowWyRsRZeQpwHi1/meYs5qs0DzNuQkkGNqoXQ8yf7vdYsKf85NaWrbxiJ
+ Fh/wb64RK4rCQ+5H1pVV7IQMgIHm4fNSIIfb+lSKmE09CtHn8NLpD/nR2AIA/EvTyd1U
+ WfOBwUVRh9Twp/yhdMVHVNsT2Sj7Xnh1zJTR/MQVozIYQVDX/Dy8g6ANzgb1uQAR63Gv
+ uTcf4BCSjix4PhZiXjt9JI5JH6X8Mzb1StnMU+0Mcqm4PV2+Wu3VKDBOszarPoavvari
+ 9lHQ==
+X-Gm-Message-State: APjAAAXucOKyUw9LaMxAF7HnhLbaF76i3KP3oEQMO6uSZzDC3OlXRW3U
+ 2S5e0MCVv8XsgCj9FAKN7pf24iau
+X-Google-Smtp-Source: APXvYqwqZ9o+le/vwBugDjTP9I8ArO7qzMRYfomLbTvRNU5mJ1XK9EQOf++Qps464qKW/Ni/XP/W8Q==
+X-Received: by 2002:a17:902:b48c:: with SMTP id
+ y12mr9581586plr.202.1562915904431; 
+ Fri, 12 Jul 2019 00:18:24 -0700 (PDT)
 Received: from localhost.localdomain ([110.227.64.207])
- by smtp.gmail.com with ESMTPSA id b126sm14019422pfa.126.2019.07.12.00.18.18
+ by smtp.gmail.com with ESMTPSA id b126sm14019422pfa.126.2019.07.12.00.18.22
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Fri, 12 Jul 2019 00:18:20 -0700 (PDT)
+ Fri, 12 Jul 2019 00:18:24 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: larry.finger@lwfinger.net, gregkh@linuxfoundation.org,
  devel@driverdev.osuosl.org
-Subject: [PATCH 6/8] staging: rtl8188eu: Replace function rtw_alloc_network()
-Date: Fri, 12 Jul 2019 12:47:43 +0530
-Message-Id: <20190712071746.2474-6-nishkadg.linux@gmail.com>
+Subject: [PATCH 7/8] staging: rtl8188eu: Replace function
+ rtl88e_phy_rf6052_config()
+Date: Fri, 12 Jul 2019 12:47:44 +0530
+Message-Id: <20190712071746.2474-7-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190712071746.2474-1-nishkadg.linux@gmail.com>
 References: <20190712071746.2474-1-nishkadg.linux@gmail.com>
@@ -93,82 +94,42 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change external call site of _rtw_alloc_network to rtw_alloc_network.
-Remove function rtw_alloc_network as all it does is call
-_rtw_alloc_network.
-Rename _rtw_alloc_network to rtw_alloc_network to maintain compatibility
-with call sites. Keep its type as non-static (even though the old
-rtw_alloc_network was static) as this functionality is used in other
-files as well.
+Remove function rtl88e_phy_rf6052_config as all it does is call
+rf6052_conf_para.
+Rename rf6052_conf_para to rtl88e_phy_rf6052_config to maintain
+compatibility with call site.
 Issue found with Coccinelle.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/rtl8188eu/core/rtw_cmd.c     | 2 +-
- drivers/staging/rtl8188eu/core/rtw_mlme.c    | 9 ++-------
- drivers/staging/rtl8188eu/include/rtw_mlme.h | 2 +-
- 3 files changed, 4 insertions(+), 9 deletions(-)
+ drivers/staging/rtl8188eu/hal/rf_cfg.c | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_cmd.c b/drivers/staging/rtl8188eu/core/rtw_cmd.c
-index a24b40761af2..815dfee11968 100644
---- a/drivers/staging/rtl8188eu/core/rtw_cmd.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_cmd.c
-@@ -1200,7 +1200,7 @@ void rtw_createbss_cmd_callback(struct adapter *padapter, struct cmd_obj *pcmd)
- 
- 		rtw_indicate_connect(padapter);
- 	} else {
--		pwlan = _rtw_alloc_network(pmlmepriv);
-+		pwlan = rtw_alloc_network(pmlmepriv);
- 		spin_lock_bh(&pmlmepriv->scanned_queue.lock);
- 		if (!pwlan) {
- 			pwlan = rtw_get_oldest_wlan_network(&pmlmepriv->scanned_queue);
-diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme.c b/drivers/staging/rtl8188eu/core/rtw_mlme.c
-index 43c7531e777e..1ec3b237212e 100644
---- a/drivers/staging/rtl8188eu/core/rtw_mlme.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_mlme.c
-@@ -104,7 +104,7 @@ void rtw_free_mlme_priv(struct mlme_priv *pmlmepriv)
- 	}
+diff --git a/drivers/staging/rtl8188eu/hal/rf_cfg.c b/drivers/staging/rtl8188eu/hal/rf_cfg.c
+index 02aeb12c9870..89ee74e795f8 100644
+--- a/drivers/staging/rtl8188eu/hal/rf_cfg.c
++++ b/drivers/staging/rtl8188eu/hal/rf_cfg.c
+@@ -218,7 +218,7 @@ static bool rtl88e_phy_config_rf_with_headerfile(struct adapter *adapt)
+ 	return true;
  }
  
--struct wlan_network *_rtw_alloc_network(struct mlme_priv *pmlmepriv)
-+struct wlan_network *rtw_alloc_network(struct mlme_priv *pmlmepriv)
- 					/* _queue *free_queue) */
+-static bool rf6052_conf_para(struct adapter *adapt)
++static bool rtl88e_phy_rf6052_config(struct adapter *adapt)
  {
- 	struct wlan_network *pnetwork;
-@@ -119,7 +119,7 @@ struct wlan_network *_rtw_alloc_network(struct mlme_priv *pmlmepriv)
- 	list_del_init(&pnetwork->list);
- 
- 	RT_TRACE(_module_rtl871x_mlme_c_, _drv_info_,
--		 ("_rtw_alloc_network: ptr=%p\n", &pnetwork->list));
-+		 ("rtw_alloc_network: ptr=%p\n", &pnetwork->list));
- 	pnetwork->network_type = 0;
- 	pnetwork->fixed = false;
- 	pnetwork->last_scanned = jiffies;
-@@ -272,11 +272,6 @@ u8 *rtw_get_beacon_interval_from_ie(u8 *ie)
- 	return ie + 8;
+ 	struct hal_data_8188e *hal_data = adapt->HalData;
+ 	u32 u4val = 0;
+@@ -247,11 +247,6 @@ static bool rf6052_conf_para(struct adapter *adapt)
+ 	return rtstatus;
  }
  
--static struct wlan_network *rtw_alloc_network(struct mlme_priv *pmlmepriv)
+-static bool rtl88e_phy_rf6052_config(struct adapter *adapt)
 -{
--	return _rtw_alloc_network(pmlmepriv);
+-	return rf6052_conf_para(adapt);
 -}
 -
- int rtw_is_same_ibss(struct adapter *adapter, struct wlan_network *pnetwork)
+ bool rtl88eu_phy_rf_config(struct adapter *adapt)
  {
- 	int ret = true;
-diff --git a/drivers/staging/rtl8188eu/include/rtw_mlme.h b/drivers/staging/rtl8188eu/include/rtw_mlme.h
-index 9abb7c320192..010f0c42368a 100644
---- a/drivers/staging/rtl8188eu/include/rtw_mlme.h
-+++ b/drivers/staging/rtl8188eu/include/rtw_mlme.h
-@@ -333,7 +333,7 @@ void rtw_dynamic_check_timer_handlder(struct timer_list *t);
- 
- void rtw_free_mlme_priv_ie_data(struct mlme_priv *pmlmepriv);
- 
--struct wlan_network *_rtw_alloc_network(struct mlme_priv *pmlmepriv);
-+struct wlan_network *rtw_alloc_network(struct mlme_priv *pmlmepriv);
- 
- int rtw_if_up(struct adapter *padapter);
- 
+ 	return rtl88e_phy_rf6052_config(adapt);
 -- 
 2.19.1
 
