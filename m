@@ -1,57 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E43CA66960
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Jul 2019 10:53:15 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 53EEA669D8
+	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Jul 2019 11:23:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1FC17863D9;
-	Fri, 12 Jul 2019 08:53:13 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 801518766A;
+	Fri, 12 Jul 2019 09:23:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id U6nzoipqG8Md; Fri, 12 Jul 2019 08:53:12 +0000 (UTC)
+	with ESMTP id S353oANeIBEL; Fri, 12 Jul 2019 09:23:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 015BD86403;
-	Fri, 12 Jul 2019 08:53:11 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 05CD687659;
+	Fri, 12 Jul 2019 09:23:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 934A11BF3DA
- for <devel@linuxdriverproject.org>; Fri, 12 Jul 2019 08:53:08 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 569621BF37F
+ for <devel@linuxdriverproject.org>; Fri, 12 Jul 2019 09:23:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 8C22A2274B
- for <devel@linuxdriverproject.org>; Fri, 12 Jul 2019 08:53:08 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 4E3AB204DE
+ for <devel@linuxdriverproject.org>; Fri, 12 Jul 2019 09:23:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AmJJPcOubtid for <devel@linuxdriverproject.org>;
- Fri, 12 Jul 2019 08:53:06 +0000 (UTC)
-X-Greylist: delayed 00:05:02 by SQLgrey-1.7.6
-Received: from mailgw01.mediatek.com (unknown [210.61.82.183])
- by silver.osuosl.org (Postfix) with ESMTPS id F10DE204D7
- for <devel@driverdev.osuosl.org>; Fri, 12 Jul 2019 08:53:05 +0000 (UTC)
-X-UUID: a6087602278f4ecba3588607e09d4a2c-20190712
-X-UUID: a6087602278f4ecba3588607e09d4a2c-20190712
-Received: from mtkcas06.mediatek.inc [(172.21.101.30)] by mailgw01.mediatek.com
- (envelope-from <lecopzer.chen@mediatek.com>)
- (mhqrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1209527918; Fri, 12 Jul 2019 16:47:48 +0800
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 12 Jul 2019 16:47:46 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Fri, 12 Jul 2019 16:47:47 +0800
-From: Lecopzer Chen <lecopzer.chen@mediatek.com>
-To: <linux-kernel@vger.kernel.org>
-Subject: [PATCH] staging: android: ion: Remove unused rbtree for ion_buffer
-Date: Fri, 12 Jul 2019 16:47:17 +0800
-Message-ID: <20190712084717.12441-1-lecopzer.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ with ESMTP id AmmJPpljJLOB for <devel@linuxdriverproject.org>;
+ Fri, 12 Jul 2019 09:23:28 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from hera.aquilenet.fr (hera.aquilenet.fr [185.233.100.1])
+ by silver.osuosl.org (Postfix) with ESMTPS id 3B729203E4
+ for <devel@driverdev.osuosl.org>; Fri, 12 Jul 2019 09:23:28 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hera.aquilenet.fr (Postfix) with ESMTP id 80491918D;
+ Fri, 12 Jul 2019 11:23:25 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at aquilenet.fr
+Received: from hera.aquilenet.fr ([127.0.0.1])
+ by localhost (hera.aquilenet.fr [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id RzIOWer-JWEV; Fri, 12 Jul 2019 11:23:24 +0200 (CEST)
+Received: from function (212.99.1.109.rev.sfr.net [109.1.99.212])
+ by hera.aquilenet.fr (Postfix) with ESMTPSA id B71A7918A;
+ Fri, 12 Jul 2019 11:23:24 +0200 (CEST)
+Received: from samy by function with local (Exim 4.92)
+ (envelope-from <samuel.thibault@ens-lyon.org>)
+ id 1hlrlv-0007Ty-DQ; Fri, 12 Jul 2019 11:23:19 +0200
+Date: Fri, 12 Jul 2019 11:23:19 +0200
+From: Samuel Thibault <samuel.thibault@ens-lyon.org>
+To: speakup@linux-speakup.org
+Subject: [HELP REQUESTED from the community] Was: Staging status of speakup
+Message-ID: <20190712092319.wmke4i7zqzr26tly@function>
+Mail-Followup-To: Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ speakup@linux-speakup.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Okash Khawaja <okash.khawaja@gmail.com>, devel@driverdev.osuosl.org,
+ Kirk Reiser <kirk@reisers.ca>,
+ Simon Dickson <simonhdickson@gmail.com>,
+ linux-kernel@vger.kernel.org,
+ Christopher Brannon <chris@the-brannons.com>
+References: <20190315130035.6a8f16e9@narunkot>
+ <20190316031831.GA2499@kroah.com>
+ <20190706200857.22918345@narunkot>
+ <20190707065710.GA5560@kroah.com> <20190712083819.GA8862@kroah.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 92F56628C2D35BF0FDAA2809FBCCFE1AB61FCD8B124717D9CCEB10392A8CBEA92000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20190712083819.GA8862@kroah.com>
+Organization: I am not organized
+User-Agent: NeoMutt/20170113 (1.7.2)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,137 +78,35 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Lecopzer Chen <lecopzer.chen@mediatek.com>,
- gregkh@linuxfoundation.org, YJ Chiang <yj.chiang@mediatek.com>,
- riandrews@android.com, dri-devel@lists.freedesktop.org, arve@android.com,
- sumit.semwal@linaro.org
+Cc: devel@driverdev.osuosl.org, Kirk Reiser <kirk@reisers.ca>,
+ Simon Dickson <simonhdickson@gmail.com>,
+ Okash Khawaja <okash.khawaja@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Christopher Brannon <chris@the-brannons.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-ion_buffer_add() insert ion_buffer into rbtree every time creating
-an ion_buffer but never use it after ION reworking.
-Also, buffer_lock protects only rbtree operation, remove it together.
+Hello,
 
-Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
-Cc: YJ Chiang <yj.chiang@mediatek.com>
-Cc: Lecopzer Chen <lecopzer.chen@mediatek.com>
----
- drivers/staging/android/ion/ion.c | 36 -------------------------------
- drivers/staging/android/ion/ion.h | 10 +--------
- 2 files changed, 1 insertion(+), 45 deletions(-)
+To readers of the linux-speakup: could you help on this so we can get
+Speakup in mainline?  Neither Okash or I completely know what user
+consequences the files in /sys/accessibility/speakup/ have, so could
+people give brief explanations for each file (something like 3-6 lines
+of explanation)?
 
-diff --git a/drivers/staging/android/ion/ion.c b/drivers/staging/android/ion/ion.c
-index 92c2914239e3..e6b1ca141b93 100644
---- a/drivers/staging/android/ion/ion.c
-+++ b/drivers/staging/android/ion/ion.c
-@@ -29,32 +29,6 @@
- static struct ion_device *internal_dev;
- static int heap_id;
- 
--/* this function should only be called while dev->lock is held */
--static void ion_buffer_add(struct ion_device *dev,
--			   struct ion_buffer *buffer)
--{
--	struct rb_node **p = &dev->buffers.rb_node;
--	struct rb_node *parent = NULL;
--	struct ion_buffer *entry;
--
--	while (*p) {
--		parent = *p;
--		entry = rb_entry(parent, struct ion_buffer, node);
--
--		if (buffer < entry) {
--			p = &(*p)->rb_left;
--		} else if (buffer > entry) {
--			p = &(*p)->rb_right;
--		} else {
--			pr_err("%s: buffer already found.", __func__);
--			BUG();
--		}
--	}
--
--	rb_link_node(&buffer->node, parent, p);
--	rb_insert_color(&buffer->node, &dev->buffers);
--}
--
- /* this function should only be called while dev->lock is held */
- static struct ion_buffer *ion_buffer_create(struct ion_heap *heap,
- 					    struct ion_device *dev,
-@@ -100,9 +74,6 @@ static struct ion_buffer *ion_buffer_create(struct ion_heap *heap,
- 
- 	INIT_LIST_HEAD(&buffer->attachments);
- 	mutex_init(&buffer->lock);
--	mutex_lock(&dev->buffer_lock);
--	ion_buffer_add(dev, buffer);
--	mutex_unlock(&dev->buffer_lock);
- 	return buffer;
- 
- err1:
-@@ -131,11 +102,6 @@ void ion_buffer_destroy(struct ion_buffer *buffer)
- static void _ion_buffer_destroy(struct ion_buffer *buffer)
- {
- 	struct ion_heap *heap = buffer->heap;
--	struct ion_device *dev = buffer->dev;
--
--	mutex_lock(&dev->buffer_lock);
--	rb_erase(&buffer->node, &dev->buffers);
--	mutex_unlock(&dev->buffer_lock);
- 
- 	if (heap->flags & ION_HEAP_FLAG_DEFER_FREE)
- 		ion_heap_freelist_add(heap, buffer);
-@@ -694,8 +660,6 @@ static int ion_device_create(void)
- 	}
- 
- 	idev->debug_root = debugfs_create_dir("ion", NULL);
--	idev->buffers = RB_ROOT;
--	mutex_init(&idev->buffer_lock);
- 	init_rwsem(&idev->lock);
- 	plist_head_init(&idev->heaps);
- 	internal_dev = idev;
-diff --git a/drivers/staging/android/ion/ion.h b/drivers/staging/android/ion/ion.h
-index e291299fd35f..74914a266e25 100644
---- a/drivers/staging/android/ion/ion.h
-+++ b/drivers/staging/android/ion/ion.h
-@@ -23,7 +23,6 @@
- 
- /**
-  * struct ion_buffer - metadata for a particular buffer
-- * @node:		node in the ion_device buffers tree
-  * @list:		element in list of deferred freeable buffers
-  * @dev:		back pointer to the ion_device
-  * @heap:		back pointer to the heap the buffer came from
-@@ -39,10 +38,7 @@
-  * @attachments:	list of devices attached to this buffer
-  */
- struct ion_buffer {
--	union {
--		struct rb_node node;
--		struct list_head list;
--	};
-+	struct list_head list;
- 	struct ion_device *dev;
- 	struct ion_heap *heap;
- 	unsigned long flags;
-@@ -61,14 +57,10 @@ void ion_buffer_destroy(struct ion_buffer *buffer);
- /**
-  * struct ion_device - the metadata of the ion device node
-  * @dev:		the actual misc device
-- * @buffers:		an rb tree of all the existing buffers
-- * @buffer_lock:	lock protecting the tree of buffers
-  * @lock:		rwsem protecting the tree of heaps and clients
-  */
- struct ion_device {
- 	struct miscdevice dev;
--	struct rb_root buffers;
--	struct mutex buffer_lock;
- 	struct rw_semaphore lock;
- 	struct plist_head heaps;
- 	struct dentry *debug_root;
--- 
-2.17.1
+The i18n/ files have been already documented in section 14.1 of the
+spkguide.txt, so we do not need help for them.
 
+Thanks!
+Samuel
+
+Greg KH, le ven. 12 juil. 2019 10:38:19 +0200, a ecrit:
+> Can you make up a patch to create a
+> drivers/staging/speakup/sysfs-speakup file with the needed information?
+> That way it will be much easier to determine exactly what these sysfs
+> files do and my review can be easier, and perhaps not needed at all :)
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
