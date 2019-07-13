@@ -1,75 +1,87 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B55D76775F
-	for <lists+driverdev-devel@lfdr.de>; Sat, 13 Jul 2019 02:53:15 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2DA638773A;
-	Sat, 13 Jul 2019 00:53:13 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 05R+SykCJgRB; Sat, 13 Jul 2019 00:53:10 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 85188877CE;
-	Sat, 13 Jul 2019 00:53:08 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 28E9B1BF3CE
- for <devel@linuxdriverproject.org>; Sat, 13 Jul 2019 00:53:06 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id A771067A04
+	for <lists+driverdev-devel@lfdr.de>; Sat, 13 Jul 2019 13:44:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 2616B204E5
- for <devel@linuxdriverproject.org>; Sat, 13 Jul 2019 00:53:06 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 85E892051F;
+	Sat, 13 Jul 2019 11:44:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id VSPnCMUlrbTe; Sat, 13 Jul 2019 11:44:41 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id C331C20502;
+	Sat, 13 Jul 2019 11:44:39 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2897D1BF424
+ for <devel@linuxdriverproject.org>; Sat, 13 Jul 2019 11:44:37 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2415987327
+ for <devel@linuxdriverproject.org>; Sat, 13 Jul 2019 11:44:37 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jPxn91TLRBXT for <devel@linuxdriverproject.org>;
- Sat, 13 Jul 2019 00:53:05 +0000 (UTC)
-X-Greylist: delayed 00:06:39 by SQLgrey-1.7.6
-Received: from vserver.gregn.net (vserver.gregn.net [174.136.110.154])
- by silver.osuosl.org (Postfix) with ESMTPS id 72CF120390
- for <devel@driverdev.osuosl.org>; Sat, 13 Jul 2019 00:53:05 +0000 (UTC)
-Received: from vbox.gregn.net (unknown
- [IPv6:2001:470:d:6c5:1c66:a9af:c229:a6c8])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by vserver.gregn.net (Postfix) with ESMTPSA id 4CF4A29AF;
- Fri, 12 Jul 2019 17:48:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=gregn.net; s=default;
- t=1562978903; bh=W1cDxqPtwaYUSqAPJJNEkGyGvwtv7TWpa9b1CyQ5Qfo=;
- h=Date:From:To:Subject:References:In-Reply-To:From;
- b=VgxNgp8TpKiCwy+Rt52B2M5V5Ze5WsvyewxpEBKeMWWH5AstiAXDgsfwHG9Ey+HyV
- gJvLwz3Nr4SHm4iLaUhsvHaIUP5dtWPcERiKA87dapqVX8AunH2Yr9jvo2FFj2rNz/
- JTqbJAeSW1OrUNMLRw/xJCWTmscpegDuCQviArk8ka26qYmPXICtA/G38TQ3NzgNXj
- iEY+b1itQ3ztZ0WT5gP0ZwfH9s/IzI1fDqd02KjjWFxS6QyecBHkCWe8qPqKmxQp9p
- c0Oh8w+iRnpMah3PKuS/DH6ubSs9bcT6UnzbuDub8Sdbyalqeik0ZlMy19yE4zm4nc
- UfOTw2hZt6fqA==
-Received: from greg by vbox.gregn.net with local (Exim 4.84_2)
- (envelope-from <greg@gregn.net>)
- id 1hm6BD-0002cY-QK; Fri, 12 Jul 2019 17:46:23 -0700
-Date: Fri, 12 Jul 2019 17:46:23 -0700
-From: Gregory Nowak <greg@gregn.net>
-To: Samuel Thibault <samuel.thibault@ens-lyon.org>, speakup@linux-speakup.org,
+ with ESMTP id Sl719tLPAa73 for <devel@linuxdriverproject.org>;
+ Sat, 13 Jul 2019 11:44:36 +0000 (UTC)
+X-Greylist: delayed 00:05:19 by SQLgrey-1.7.6
+Received: from mout.gmx.net (mout.gmx.net [212.227.15.15])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id B04EB873E3
+ for <devel@driverdev.osuosl.org>; Sat, 13 Jul 2019 11:44:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1563018269;
+ bh=BWWyqYc0Q9lHRlufOjwlKzREgcGCirILPkFoZng2iMw=;
+ h=X-UI-Sender-Class:Subject:From:Cc:References:To:Date:In-Reply-To;
+ b=UrhAAdrlc0n4P1fGW0jr7lXX2g/ioKVNS50R207xVqs1lInp9b+Ub2x3wTEkKS+q2
+ 1+cI9esnN0IVEw6fYy+L2usDUMeRCG0h61DyK3JVcbLHJkYvzGB3tQNNgL7/+0ll2N
+ H8L9ONR9QWzlgIlMkKtLgDQmwfnEKKjLijtxsT9A=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [192.168.43.122] ([92.40.248.250]) by mail.gmx.com (mrgmx005
+ [212.227.17.184]) with ESMTPSA (Nemesis) id 1MGyxN-1hiBm21fEp-00E2qN; Sat, 13
+ Jul 2019 13:38:54 +0200
+Subject: [REGRESSION] Xorg segfaults on Asus Chromebook CP101 with Linux v5.2
+ (was Asus C101P Chromeboot fails to boot with Linux 5.2)
+From: Alex Dewar <alex.dewar@gmx.co.uk>
+References: <59042b09-7651-be1d-347f-0dc4aa02a91b@gmx.co.uk>
+ <CANBLGcyO5wAHgSVjYFB+hcp+SzaKY9d0QJm-hxqnSYbZ4Yv97g@mail.gmail.com>
+ <862e98f3-8a89-a05e-1e85-e6f6004da32b@gmx.co.uk>
+ <5fe66d5d-0624-323f-3bf8-56134ca85eca@gmx.co.uk>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Okash Khawaja <okash.khawaja@gmail.com>, devel@driverdev.osuosl.org,
- Kirk Reiser <kirk@reisers.ca>, Simon Dickson <simonhdickson@gmail.com>,
- linux-kernel@vger.kernel.org, Christopher Brannon <chris@the-brannons.com>
-Subject: Re: [HELP REQUESTED from the community] Was: Staging status of speakup
-Message-ID: <20190713004623.GA9159@gregn.net>
-References: <20190315130035.6a8f16e9@narunkot>
- <20190316031831.GA2499@kroah.com>
- <20190706200857.22918345@narunkot>
- <20190707065710.GA5560@kroah.com> <20190712083819.GA8862@kroah.com>
- <20190712092319.wmke4i7zqzr26tly@function>
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Boris Brezillon <boris.brezillon@collabora.com>
+Message-ID: <f47f8759-8113-812a-b17a-4be09665369e@gmx.co.uk>
+Date: Sat, 13 Jul 2019 12:38:45 +0100
+User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190712092319.wmke4i7zqzr26tly@function>
-X-PGP-Key: http://www.gregn.net/pubkey.asc
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Virus-Scanned: clamav-milter 0.100.3 at vserver
-X-Virus-Status: Clean
+In-Reply-To: <5fe66d5d-0624-323f-3bf8-56134ca85eca@gmx.co.uk>
+Content-Language: en-US
+X-Provags-ID: V03:K1:LbPaPzVSq7PJlnapOmV+BlI1ChwWNYoa0SaFu0C21B84M97YvV7
+ 85RffBT6jaGa40g+bVMVtOXftprToNyjJMhZ21zY+IwVtRgW6GMAs+zzSL7CbLyh+DcuWbv
+ Gc+je70JuDlPCVNZZpllDXJ7wB/EiAjB7ad7ycDyadGdxCqNbl33o80PMLvk321yAP8t/E3
+ zta3oivBwYDmHGCSViX/Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:GFzatS7moko=:nYTcfVI3JhM9qEEglg0qSJ
+ EFBZtGfjCqHqX4uTe/iad9mz2g0Tu2y4cGy2QAdUqRo2dmfb7HTxySef+pyO1DhULew9vvfF5
+ Mx9yy4lS41fjfn96xhsLiLVvxRBGLs2dSCZA6poBGdU81H5+y2rVAZrD0QE1nG/jMYiAdq+xH
+ eH6H1537wbL5mTKnLHCsD5z0VBEtqpWyIFejHtYn1ajyAcwIZpRudEk+RAlLoF7rSf/KbAP48
+ 9hoXDHDQ3HyxJOCpKWwjPby9xUEXyXk9GaXTl2NJLa7jIgrNfLhwFv3DUiWsoxU8/rcdG82BY
+ 22K4cNKck5qEcYPcQjvzRqjvIkZdR7N89Rwb3aknmQm5d1CK6O+0ZR1S3Ft0l7bGwnp/UOmi4
+ N0/rmhdKW7cAbxFU5tjIisYtMDceRpgQ3AcIqrv2i1pDZ5cEreZJvRFf9EBU9H8hBN/6zu50t
+ heV/AVMG2WHJGFDubRs+83e9YR3CWXyEUHRdFNSXs6IM+IoqBsURpnN+HAZM3cVox8B0k4kQI
+ d3/5iCNtKtEy0dYoSe17xiV8c0iHEx3FfWGBvTwNFapvYmaewuQ41I4OU1kodQ/hngoSjTn0+
+ /3dKzo1ot+FMMIKU/mWk2wlnVNiXdbBS1mKVt7uKMjB+zGiJygzDz8h+nF7WGyTRi4mA6FjYE
+ Z47w/xEPUSVl6K1inYrytyntSBraR9dY97gEHR+xk3FKTCjaKy4SnrNOAS2UYxc1yqMu/Wnfu
+ C3l8Q9h/08+yhkqg0bZWxYjGqiYK4I6XjIFWFv23uJpz/WWAkm72wKk2k65s+Rh51SCaX1r+f
+ 0cH6PYw4PJaDh9SRgqWXyfs2gZEAD+U8qO2Im2TcuemT5B7wZgI09hcJ9doQv+W/hlUIN2VIf
+ DGT/f8WnyPxuDJjTFdcGd7aSsQEE0Ce7pJPic7i5w2YOFeXl5a98XbcRzXeMnpd8zAqNGXpMl
+ iPo9JkZNo2XA3eSV/ycJPAHo8iUAdxGUcP6WYBDX49Fpp/2EYpYanvALDCzAo5gxCesgZsBed
+ YHBDzQYTKwR0xWYuGJRnhKQH8tCg8KJybxldxf5Fru6xhwEJ/xkcXEj7S2GZewl8kFq1GdkTX
+ GWMACXESj8ynTfAWrBwca9ozDMOCF1wMTa0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,44 +94,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Cc: devel@driverdev.osuosl.org, Heiko Stuebner <heiko@sntech.de>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ linux-media@vger.kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Jul 12, 2019 at 11:23:19AM +0200, Samuel Thibault wrote:
-> Hello,
-> 
-> To readers of the linux-speakup: could you help on this so we can get
-> Speakup in mainline?  Neither Okash or I completely know what user
-> consequences the files in /sys/accessibility/speakup/ have, so could
-> people give brief explanations for each file (something like 3-6 lines
-> of explanation)?
+Hi all,
 
-I have a recollection of documenting most of this on the speakup list
-in response to a similar query a number of years ago. Unfortunately,
-the speakup mailing list archives aren't easily searchable, and I
-don't have a local copy of that mail.
+I initially thought my machine was failing to boot entirely, but it
+turns out it was just failing to start the display manager. I managed to
+escape to a tty by hammering the keyboard a bit.
 
-Kirk, doing grep with a few of the file names in
-/sys/accessibility/speakup against the list's mbox file archive should
-find that message if it's in fact there. If you can please find it,
-and post the date when it was sent, we can provide a URL to that
-thread as a starting point. If my recollection is wrong, and such a
-message isn't in the archives, I'll write up what I know about.
+I suspect the culprit is the rockchip_vpu driver (in staging/media),
+which has been renamed to hantro in this merge window. When I run startx
+from a terminal, X fails to start and Xorg segfaults (log here:
+http://users.sussex.ac.uk/~ad374/xorg.log). X seems to work without any
+issues in v5.1.
 
-Greg
+I've also tried running trace on the Xorg process, but the output was
+pretty verbose. I can share if that would be helpful though.
 
+Best,
+Alex
 
--- 
-web site: http://www.gregn.net
-gpg public key: http://www.gregn.net/pubkey.asc
-skype: gregn1
-(authorization required, add me to your contacts list first)
-If we haven't been in touch before, e-mail me before adding me to your contacts.
-
---
-Free domains: http://www.eu.org/ or mail dns-manager@EU.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
