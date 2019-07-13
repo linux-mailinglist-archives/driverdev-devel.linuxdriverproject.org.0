@@ -1,87 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A771067A04
-	for <lists+driverdev-devel@lfdr.de>; Sat, 13 Jul 2019 13:44:44 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 85E892051F;
-	Sat, 13 Jul 2019 11:44:42 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VSPnCMUlrbTe; Sat, 13 Jul 2019 11:44:41 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C331C20502;
-	Sat, 13 Jul 2019 11:44:39 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2897D1BF424
- for <devel@linuxdriverproject.org>; Sat, 13 Jul 2019 11:44:37 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9990467AAE
+	for <lists+driverdev-devel@lfdr.de>; Sat, 13 Jul 2019 16:47:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2415987327
- for <devel@linuxdriverproject.org>; Sat, 13 Jul 2019 11:44:37 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 283BC88137;
+	Sat, 13 Jul 2019 14:47:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id tLHmflFaVZk5; Sat, 13 Jul 2019 14:47:05 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 38E2187F71;
+	Sat, 13 Jul 2019 14:47:05 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 873651BF3FF
+ for <devel@linuxdriverproject.org>; Sat, 13 Jul 2019 14:47:03 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 83E3B20018
+ for <devel@linuxdriverproject.org>; Sat, 13 Jul 2019 14:47:03 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Sl719tLPAa73 for <devel@linuxdriverproject.org>;
- Sat, 13 Jul 2019 11:44:36 +0000 (UTC)
-X-Greylist: delayed 00:05:19 by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.15.15])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B04EB873E3
- for <devel@driverdev.osuosl.org>; Sat, 13 Jul 2019 11:44:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1563018269;
- bh=BWWyqYc0Q9lHRlufOjwlKzREgcGCirILPkFoZng2iMw=;
- h=X-UI-Sender-Class:Subject:From:Cc:References:To:Date:In-Reply-To;
- b=UrhAAdrlc0n4P1fGW0jr7lXX2g/ioKVNS50R207xVqs1lInp9b+Ub2x3wTEkKS+q2
- 1+cI9esnN0IVEw6fYy+L2usDUMeRCG0h61DyK3JVcbLHJkYvzGB3tQNNgL7/+0ll2N
- H8L9ONR9QWzlgIlMkKtLgDQmwfnEKKjLijtxsT9A=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [192.168.43.122] ([92.40.248.250]) by mail.gmx.com (mrgmx005
- [212.227.17.184]) with ESMTPSA (Nemesis) id 1MGyxN-1hiBm21fEp-00E2qN; Sat, 13
- Jul 2019 13:38:54 +0200
-Subject: [REGRESSION] Xorg segfaults on Asus Chromebook CP101 with Linux v5.2
- (was Asus C101P Chromeboot fails to boot with Linux 5.2)
-From: Alex Dewar <alex.dewar@gmx.co.uk>
+ with ESMTP id Ba0z2--IjhaN for <devel@linuxdriverproject.org>;
+ Sat, 13 Jul 2019 14:47:02 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id D8BA32000A
+ for <devel@driverdev.osuosl.org>; Sat, 13 Jul 2019 14:47:02 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id EC2172083B;
+ Sat, 13 Jul 2019 14:47:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1563029222;
+ bh=lW5bIDcvdJ3kwdWA9DCCLkrkL9b6UAoY77IbP2qzLaU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=RtTVOCP4TbiLmdwovgel+a4gNqWIRDKhnUUJetX5R/JRAm2uTsZypdugPokrhP0xJ
+ JyPnfqpdk8cyYc3gwXdirU9A8iNM4TyCS6h6gE1kyF4xo0Hfb+tNJPEhkUrcGO5w46
+ XFl6Lc1g1LgWrWFF6V9LqwVF0PVoDZk4vuNEakOk=
+Date: Sat, 13 Jul 2019 16:47:00 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Alex Dewar <alex.dewar@gmx.co.uk>
+Subject: Re: [REGRESSION] Xorg segfaults on Asus Chromebook CP101 with Linux
+ v5.2 (was Asus C101P Chromeboot fails to boot with Linux 5.2)
+Message-ID: <20190713144700.GF5982@kroah.com>
 References: <59042b09-7651-be1d-347f-0dc4aa02a91b@gmx.co.uk>
  <CANBLGcyO5wAHgSVjYFB+hcp+SzaKY9d0QJm-hxqnSYbZ4Yv97g@mail.gmail.com>
  <862e98f3-8a89-a05e-1e85-e6f6004da32b@gmx.co.uk>
  <5fe66d5d-0624-323f-3bf8-56134ca85eca@gmx.co.uk>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Boris Brezillon <boris.brezillon@collabora.com>
-Message-ID: <f47f8759-8113-812a-b17a-4be09665369e@gmx.co.uk>
-Date: Sat, 13 Jul 2019 12:38:45 +0100
-User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ <f47f8759-8113-812a-b17a-4be09665369e@gmx.co.uk>
 MIME-Version: 1.0
-In-Reply-To: <5fe66d5d-0624-323f-3bf8-56134ca85eca@gmx.co.uk>
-Content-Language: en-US
-X-Provags-ID: V03:K1:LbPaPzVSq7PJlnapOmV+BlI1ChwWNYoa0SaFu0C21B84M97YvV7
- 85RffBT6jaGa40g+bVMVtOXftprToNyjJMhZ21zY+IwVtRgW6GMAs+zzSL7CbLyh+DcuWbv
- Gc+je70JuDlPCVNZZpllDXJ7wB/EiAjB7ad7ycDyadGdxCqNbl33o80PMLvk321yAP8t/E3
- zta3oivBwYDmHGCSViX/Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:GFzatS7moko=:nYTcfVI3JhM9qEEglg0qSJ
- EFBZtGfjCqHqX4uTe/iad9mz2g0Tu2y4cGy2QAdUqRo2dmfb7HTxySef+pyO1DhULew9vvfF5
- Mx9yy4lS41fjfn96xhsLiLVvxRBGLs2dSCZA6poBGdU81H5+y2rVAZrD0QE1nG/jMYiAdq+xH
- eH6H1537wbL5mTKnLHCsD5z0VBEtqpWyIFejHtYn1ajyAcwIZpRudEk+RAlLoF7rSf/KbAP48
- 9hoXDHDQ3HyxJOCpKWwjPby9xUEXyXk9GaXTl2NJLa7jIgrNfLhwFv3DUiWsoxU8/rcdG82BY
- 22K4cNKck5qEcYPcQjvzRqjvIkZdR7N89Rwb3aknmQm5d1CK6O+0ZR1S3Ft0l7bGwnp/UOmi4
- N0/rmhdKW7cAbxFU5tjIisYtMDceRpgQ3AcIqrv2i1pDZ5cEreZJvRFf9EBU9H8hBN/6zu50t
- heV/AVMG2WHJGFDubRs+83e9YR3CWXyEUHRdFNSXs6IM+IoqBsURpnN+HAZM3cVox8B0k4kQI
- d3/5iCNtKtEy0dYoSe17xiV8c0iHEx3FfWGBvTwNFapvYmaewuQ41I4OU1kodQ/hngoSjTn0+
- /3dKzo1ot+FMMIKU/mWk2wlnVNiXdbBS1mKVt7uKMjB+zGiJygzDz8h+nF7WGyTRi4mA6FjYE
- Z47w/xEPUSVl6K1inYrytyntSBraR9dY97gEHR+xk3FKTCjaKy4SnrNOAS2UYxc1yqMu/Wnfu
- C3l8Q9h/08+yhkqg0bZWxYjGqiYK4I6XjIFWFv23uJpz/WWAkm72wKk2k65s+Rh51SCaX1r+f
- 0cH6PYw4PJaDh9SRgqWXyfs2gZEAD+U8qO2Im2TcuemT5B7wZgI09hcJ9doQv+W/hlUIN2VIf
- DGT/f8WnyPxuDJjTFdcGd7aSsQEE0Ce7pJPic7i5w2YOFeXl5a98XbcRzXeMnpd8zAqNGXpMl
- iPo9JkZNo2XA3eSV/ycJPAHo8iUAdxGUcP6WYBDX49Fpp/2EYpYanvALDCzAo5gxCesgZsBed
- YHBDzQYTKwR0xWYuGJRnhKQH8tCg8KJybxldxf5Fru6xhwEJ/xkcXEj7S2GZewl8kFq1GdkTX
- GWMACXESj8ynTfAWrBwca9ozDMOCF1wMTa0
+Content-Disposition: inline
+In-Reply-To: <f47f8759-8113-812a-b17a-4be09665369e@gmx.co.uk>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,31 +74,38 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: devel@driverdev.osuosl.org, Heiko Stuebner <heiko@sntech.de>,
  Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
  "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
  linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
  linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi all,
+On Sat, Jul 13, 2019 at 12:38:45PM +0100, Alex Dewar wrote:
+> Hi all,
+> 
+> I initially thought my machine was failing to boot entirely, but it
+> turns out it was just failing to start the display manager. I managed to
+> escape to a tty by hammering the keyboard a bit.
+> 
+> I suspect the culprit is the rockchip_vpu driver (in staging/media),
+> which has been renamed to hantro in this merge window. When I run startx
+> from a terminal, X fails to start and Xorg segfaults (log here:
+> http://users.sussex.ac.uk/~ad374/xorg.log). X seems to work without any
+> issues in v5.1.
+> 
+> I've also tried running trace on the Xorg process, but the output was
+> pretty verbose. I can share if that would be helpful though.
 
-I initially thought my machine was failing to boot entirely, but it
-turns out it was just failing to start the display manager. I managed to
-escape to a tty by hammering the keyboard a bit.
+Can you run 'git bisect' to find the offending commit?
 
-I suspect the culprit is the rockchip_vpu driver (in staging/media),
-which has been renamed to hantro in this merge window. When I run startx
-from a terminal, X fails to start and Xorg segfaults (log here:
-http://users.sussex.ac.uk/~ad374/xorg.log). X seems to work without any
-issues in v5.1.
+thanks,
 
-I've also tried running trace on the Xorg process, but the output was
-pretty verbose. I can share if that would be helpful though.
-
-Best,
-Alex
-
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
