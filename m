@@ -2,76 +2,83 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9534B67C66
-	for <lists+driverdev-devel@lfdr.de>; Sun, 14 Jul 2019 01:06:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CCFB867C8B
+	for <lists+driverdev-devel@lfdr.de>; Sun, 14 Jul 2019 02:20:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9B790877DB;
-	Sat, 13 Jul 2019 23:06:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9B50C87B59;
+	Sun, 14 Jul 2019 00:20:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UkKvofFuCc04; Sat, 13 Jul 2019 23:06:17 +0000 (UTC)
+	with ESMTP id Doigo70wwNwD; Sun, 14 Jul 2019 00:20:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id F2AE084BF0;
-	Sat, 13 Jul 2019 23:06:16 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id EA1B78798D;
+	Sun, 14 Jul 2019 00:20:18 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 97DC21BF326
- for <devel@linuxdriverproject.org>; Sat, 13 Jul 2019 23:06:08 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 56E881BF41C
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 14 Jul 2019 00:20:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 94A1085082
- for <devel@linuxdriverproject.org>; Sat, 13 Jul 2019 23:06:08 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 4EE3520420
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 14 Jul 2019 00:20:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id psG0rAklIO-k for <devel@linuxdriverproject.org>;
- Sat, 13 Jul 2019 23:06:06 +0000 (UTC)
-X-Greylist: delayed 00:07:19 by SQLgrey-1.7.6
-Received: from mail-ua1-f68.google.com (mail-ua1-f68.google.com
- [209.85.222.68])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1909485065
- for <devel@driverdev.osuosl.org>; Sat, 13 Jul 2019 23:06:06 +0000 (UTC)
-Received: by mail-ua1-f68.google.com with SMTP id v18so5376428uad.12
- for <devel@driverdev.osuosl.org>; Sat, 13 Jul 2019 16:06:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=C521pemh84hQDpPKGvZwcyDQbmvvEOy9KjEBffRDfy8=;
- b=tMVaEtsma6gM3qxAeq2DWlq9ccipMteWpzx1QSsbtJxp1KQsgpUK1O3Xm3rUL7U5d6
- 7HIlcZjebo4lVO1eu7C9v7gvyXfkALLm01JlnyVN1tom+hEFpiwojkqysbG+gMY8eAFU
- 19eHob+krzEh4d+U1Rt3N+ZUqIK0qMaXE6YwJAClmNlCZvYNRPxV/qsRQUnAPU3nqWd5
- tL6X3DfIXabcYmh0gJ8H2oOt2n0UMY5pkjVBuG/IN7GzDV502O1UVmZehdQQIDupVzto
- 9in+iY7dMAO36YkrkXzPqfuQtXMBScjUQpLZBG7jDuXub8zkFyZa4zLDdSnd322Pjcq0
- 8L1A==
+ with ESMTP id SvAm5reyk0iJ
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 14 Jul 2019 00:20:16 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-qk1-f196.google.com (mail-qk1-f196.google.com
+ [209.85.222.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id 6492F20131
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 14 Jul 2019 00:20:16 +0000 (UTC)
+Received: by mail-qk1-f196.google.com with SMTP id r6so9184690qkc.0
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 13 Jul 2019 17:20:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=rhx7NIpokwkYhhoEIOD8zmy5v3YVaxOhWoYk5y/SP+k=;
+ b=seI8XyCMUgCQgEKY/1zXOBFhdl26+Lc1/q5Amq9nGQ+l6Uip0n3P/4m+WkuoKq23Q0
+ 5I/R7P6kDrJCc+sZPvf2RgoZvOf8d8FYdw6WfRpP3Y8LayPmYb9emiNJi1DQhbY1sRXo
+ VdXZjW6KoDr1qctZ91+sWAOgHaVHRyC9b2n/Oc9/5vQdQuh3p7B19Uy9nDArnCvmO6XX
+ 1AOVp6dG8vUxyhE9Eu6hCLCbIZzNmuNeurdafaGtQ+GJCaLPTMml4vgRxx0ucQWWtXAG
+ 660AFu3CxNoYLHjp1ByQddzrsIvdpz9ICPyev3+NShLEQJuPviTOiPRsFFiIY2shghGU
+ ng3A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=C521pemh84hQDpPKGvZwcyDQbmvvEOy9KjEBffRDfy8=;
- b=djGFJWEeuAwhVP6gHglDcgh6N1DNB7qw2Of1KmFJkluKPuBOgqReNsjgioS0PQFbf0
- 1c1LN8O3KTTfiveyH3uBa93dSl5Sn4ThMKppGKku8nHymb3IU9EIDDNOB2lvRj3RxbFE
- 0T5ZTES4QbFU5R/6qgUPyYrtCBmzwMW9TP23LhrKjDSknQA9B9Apb0XwqsuP/x8psG2Z
- 2qZWVl5JDH2FD4DXXKwfQ1Z3DTuUh6oIiuO1AdTTm//1cc7Dn9CEqq4bfPvD9BbXS+MH
- EAjRL8yXxtzR25EkVZyIXsucYAYWJDrdqGASAoFvdH+QaJbLxspC3/KHT+SQJcaNAZK4
- uNcg==
-X-Gm-Message-State: APjAAAWDBb5Wnei0jr03Rpih3fByrddGFDII0Tg4wIHbvyonl9EBYGQS
- aT+yOZwzCI/j5ncgzJJA8I1GYIGnpd5mvmRzFEY=
-X-Google-Smtp-Source: APXvYqy9iyOxbGuuKGCYA7P9x4/jCssoGs1MvrDafxGacYP2yXkE8lKvX3eDFZmQr3u0yULaYS1miZoz7xW6gN4q6+4=
-X-Received: by 2002:ab0:2a49:: with SMTP id p9mr12794749uar.0.1563058726092;
- Sat, 13 Jul 2019 15:58:46 -0700 (PDT)
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=rhx7NIpokwkYhhoEIOD8zmy5v3YVaxOhWoYk5y/SP+k=;
+ b=ly57roSlLc7YA6Di9GB8RlF9CPT8YNhkgcagx1sT2nMjsuRrcbJnpFHG8Rx3CSvff4
+ fycl+wr2W1BuKhVZ4wo8G7bY29pjLXGZPqVuXJGMvYrxR4fS0OL8uPUOnc/B42cMHG0L
+ 9EJDapAgztj2QbeiE3HTGPgPAM/eIwWuSnzh7oLWXs1jcBn5UnMkbAbI7ZOzDOBGHS8c
+ sdaR+aaR62ALXicXsitzQB5LAiT25g/D4VMBDv2H7XKXcgmPuHwNdpgUsIcGje2ZoOU6
+ nV+EkWH7Es3+Dv0Q0fzGNUwEgqMBa2u5y4dA4kHkioInVNlZE8nqnEC62GuAlTlPTrqV
+ YEEQ==
+X-Gm-Message-State: APjAAAXbQMZcBKxg0VyCsDRCTPYXlHIHN+oqYMAetoK9IeWT8NToK0B5
+ anM5pqnm7UYvjmGUchvsBbQ=
+X-Google-Smtp-Source: APXvYqw4NPhl98N8116F+zJFmPwBB0mkxAR73VLmL5Ey89kI5ButlPlVrbc8foU0nO4fp3dKi0KRkQ==
+X-Received: by 2002:a37:6086:: with SMTP id
+ u128mr11867128qkb.270.1563063615252; 
+ Sat, 13 Jul 2019 17:20:15 -0700 (PDT)
+Received: from localhost.localdomain ([181.31.106.136])
+ by smtp.gmail.com with ESMTPSA id z33sm6067526qtc.56.2019.07.13.17.20.12
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Sat, 13 Jul 2019 17:20:14 -0700 (PDT)
+From: christianluciano.m@gmail.com
+To: gregkh@linuxfoundation.org, Larry.Finger@lwfinger.net,
+ florian.c.schilhabel@googlemail.com,
+ driverdev-devel@linuxdriverproject.org, christianluciano.m@gmail.com
+Subject: [PATCH] staging: rtl8712: Fix CHECK reported by checkpatch
+Date: Sat, 13 Jul 2019 21:20:05 -0300
+Message-Id: <20190714002005.14303-1-christianluciano.m@gmail.com>
+X-Mailer: git-send-email 2.22.0
 MIME-Version: 1.0
-References: <59042b09-7651-be1d-347f-0dc4aa02a91b@gmx.co.uk>
- <5fe66d5d-0624-323f-3bf8-56134ca85eca@gmx.co.uk>
- <f47f8759-8113-812a-b17a-4be09665369e@gmx.co.uk>
- <2648434.ut0pN6mfR1@phil> <2d52b787-187c-5638-660c-33d51a07770c@gmx.co.uk>
-In-Reply-To: <2d52b787-187c-5638-660c-33d51a07770c@gmx.co.uk>
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Date: Sat, 13 Jul 2019 19:58:38 -0300
-Message-ID: <CAAEAJfAeZaT5wd4k8Lkf6T3G7LpK5LmOOG2ZbVJAQ6Xb7Wtdcw@mail.gmail.com>
-Subject: Re: [REGRESSION] Xorg segfaults on Asus Chromebook CP101 with Linux
- v5.2 (was Asus C101P Chromeboot fails to boot with Linux 5.2)
-To: Alex Dewar <alex.dewar@gmx.co.uk>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,69 +91,208 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Heiko Stuebner <heiko@sntech.de>,
- Tomeu Vizoso <tomeu.vizoso@collabora.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- linux-media <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, 13 Jul 2019 at 13:43, Alex Dewar <alex.dewar@gmx.co.uk> wrote:
->
-> On 13/07/2019 16:17, Heiko Stuebner wrote:
-> > Hi,
-> >
-> > Am Samstag, 13. Juli 2019, 13:38:45 CEST schrieb Alex Dewar:
-> >> I initially thought my machine was failing to boot entirely, but it
-> >> turns out it was just failing to start the display manager. I managed to
-> >> escape to a tty by hammering the keyboard a bit.
-> >>
-> >> I suspect the culprit is the rockchip_vpu driver (in staging/media),
-> >> which has been renamed to hantro in this merge window. When I run startx
-> >> from a terminal, X fails to start and Xorg segfaults (log here:
-> >> http://users.sussex.ac.uk/~ad374/xorg.log). X seems to work without any
-> >> issues in v5.1.
-> >
-> > 5.2 also has support for Panfrost (Mali-Midgard GPUs) but I'm not
-> > sure if it already can support X11 yet and your X11 log mentions
-> > libglamoregl in the segfault stack trace.
-> >
-> > Apart from it bisect that Greg suggested you could also just try
-> > blacklisting either panfrost or vpu kernel modules
-> > /etc/udev/somewhere . This would prevent them from loading
-> >
-> > Hope that helps
-> > Heiko
-> >
-> >
->
-> Hi Heiko,
->
-> Thanks for this. I blacklisted the panfrost driver and X magically
-> started working again.
->
-> I'll try to do a bisect later to find the offending commit though.
->
-> In related news, it also seems that the sound and wifi drivers aren't
-> working either in 5.2 (although I need to do a bit more testing to
-> confirm the latter).
->
+From: Christian Luciano Moreno <christianluciano.m@gmail.com>
 
-Adding myself and Tomeu.
+Change local variable name to avoid CamelCase.
+Align code to the open parenthesis to fix alignment issues.
 
-Perhaps we need to disable Panfrost from defconfig from now?
+Signed-off-by: Christian Luciano Moreno <christianluciano.m@gmail.com>
+---
+ drivers/staging/rtl8712/rtl8712_efuse.c | 67 ++++++++++++-------------
+ 1 file changed, 33 insertions(+), 34 deletions(-)
 
-Regards,
-Eze
+diff --git a/drivers/staging/rtl8712/rtl8712_efuse.c b/drivers/staging/rtl8712/rtl8712_efuse.c
+index 00babd011a62..62aad2f7259d 100644
+--- a/drivers/staging/rtl8712/rtl8712_efuse.c
++++ b/drivers/staging/rtl8712/rtl8712_efuse.c
+@@ -65,7 +65,7 @@ void r8712_efuse_reg_uninit(struct _adapter *padapter)
+ 
+ static u8 efuse_one_byte_read(struct _adapter *padapter, u16 addr, u8 *data)
+ {
+-	u8 tmpidx = 0, bResult;
++	u8 tmpidx = 0, b_result;
+ 
+ 	/* -----------------e-fuse reg ctrl --------------------------------- */
+ 	r8712_write8(padapter, EFUSE_CTRL + 1, (u8)(addr & 0xFF)); /* address */
+@@ -78,17 +78,17 @@ static u8 efuse_one_byte_read(struct _adapter *padapter, u16 addr, u8 *data)
+ 		tmpidx++;
+ 	if (tmpidx < 100) {
+ 		*data = r8712_read8(padapter, EFUSE_CTRL);
+-		bResult = true;
++		b_result = true;
+ 	} else {
+ 		*data = 0xff;
+-		bResult = false;
++		b_result = false;
+ 	}
+-	return bResult;
++	return b_result;
+ }
+ 
+ static u8 efuse_one_byte_write(struct _adapter *padapter, u16 addr, u8 data)
+ {
+-	u8 tmpidx = 0, bResult;
++	u8 tmpidx = 0, b_result;
+ 
+ 	/* -----------------e-fuse reg ctrl -------------------------------- */
+ 	r8712_write8(padapter, EFUSE_CTRL + 1, (u8)(addr & 0xFF)); /* address */
+@@ -101,16 +101,16 @@ static u8 efuse_one_byte_write(struct _adapter *padapter, u16 addr, u8 data)
+ 	       (tmpidx < 100))
+ 		tmpidx++;
+ 	if (tmpidx < 100)
+-		bResult = true;
++		b_result = true;
+ 	else
+-		bResult = false;
+-	return bResult;
++		b_result = false;
++	return b_result;
+ }
+ 
+ static u8 efuse_one_byte_rw(struct _adapter *padapter, u8 bRead, u16 addr,
+ 			    u8 *data)
+ {
+-	u8 tmpidx = 0, tmpv8 = 0, bResult;
++	u8 tmpidx = 0, tmpv8 = 0, b_result;
+ 
+ 	/* -----------------e-fuse reg ctrl --------------------------------- */
+ 	r8712_write8(padapter, EFUSE_CTRL + 1, (u8)(addr & 0xFF)); /* address */
+@@ -124,10 +124,10 @@ static u8 efuse_one_byte_rw(struct _adapter *padapter, u8 bRead, u16 addr,
+ 			tmpidx++;
+ 		if (tmpidx < 100) {
+ 			*data = r8712_read8(padapter, EFUSE_CTRL);
+-			bResult = true;
++			b_result = true;
+ 		} else {
+ 			*data = 0;
+-			bResult = false;
++			b_result = false;
+ 		}
+ 	} else {
+ 		r8712_write8(padapter, EFUSE_CTRL, *data); /* data */
+@@ -136,11 +136,11 @@ static u8 efuse_one_byte_rw(struct _adapter *padapter, u8 bRead, u16 addr,
+ 		       (tmpidx < 100))
+ 			tmpidx++;
+ 		if (tmpidx < 100)
+-			bResult = true;
++			b_result = true;
+ 		else
+-			bResult = false;
++			b_result = false;
+ 	}
+-	return bResult;
++	return b_result;
+ }
+ 
+ static u8 efuse_is_empty(struct _adapter *padapter, u8 *empty)
+@@ -208,20 +208,21 @@ static void pgpacket_copy_data(const u8 word_en, const u8 *sourdata,
+ 
+ u16 r8712_efuse_get_current_size(struct _adapter *padapter)
+ {
+-	int bContinual = true;
++	int b_continual = true;
+ 	u16 efuse_addr = 0;
+ 	u8 hworden = 0;
+ 	u8 efuse_data, word_cnts = 0;
+ 
+-	while (bContinual && efuse_one_byte_read(padapter, efuse_addr,
+-	       &efuse_data) && (efuse_addr < efuse_available_max_size)) {
++	while (b_continual &&
++	       efuse_one_byte_read(padapter, efuse_addr, &efuse_data) &&
++	       (efuse_addr < efuse_available_max_size)) {
+ 		if (efuse_data != 0xFF) {
+ 			hworden =  efuse_data & 0x0F;
+ 			word_cnts = calculate_word_cnts(hworden);
+ 			/* read next header */
+ 			efuse_addr = efuse_addr + (word_cnts * 2) + 1;
+ 		} else {
+-			bContinual = false;
++			b_continual = false;
+ 		}
+ 	}
+ 	return efuse_addr;
+@@ -300,18 +301,16 @@ static u8 fix_header(struct _adapter *padapter, u8 header, u16 header_addr)
+ 		for (i = 0; i < PGPKG_MAX_WORDS; i++) {
+ 			if (BIT(i) & word_en) {
+ 				if (BIT(i) & pkt.word_en) {
+-					if (efuse_one_byte_read(
+-							padapter, addr,
+-							&value))
++					if (efuse_one_byte_read(padapter,
++								addr,
++								&value))
+ 						pkt.data[i * 2] = value;
+ 					else
+ 						return false;
+-					if (efuse_one_byte_read(
+-							padapter,
+-							addr + 1,
+-							&value))
+-						pkt.data[i * 2 + 1] =
+-							value;
++					if (efuse_one_byte_read(padapter,
++								addr + 1,
++								&value))
++						pkt.data[i * 2 + 1] = value;
+ 					else
+ 						return false;
+ 				}
+@@ -360,7 +359,7 @@ u8 r8712_efuse_pg_packet_write(struct _adapter *padapter, const u8 offset,
+ 	u8 efuse_data, target_word_cnts = 0;
+ 	int repeat_times;
+ 	int sub_repeat;
+-	u8 bResult = true;
++	u8 b_result = true;
+ 
+ 	/* check if E-Fuse Clock Enable and E-Fuse Clock is 40M */
+ 	efuse_data = r8712_read8(padapter, EFUSE_CLK_CTRL);
+@@ -382,7 +381,7 @@ u8 r8712_efuse_pg_packet_write(struct _adapter *padapter, const u8 offset,
+ 		while (!efuse_one_byte_read(padapter, efuse_addr,
+ 					    &efuse_data)) {
+ 			if (++sub_repeat > _REPEAT_THRESHOLD_) {
+-				bResult = false; /* continue to blind write */
++				b_result = false; /* continue to blind write */
+ 				break; /* continue to blind write */
+ 			}
+ 		}
+@@ -400,16 +399,16 @@ u8 r8712_efuse_pg_packet_write(struct _adapter *padapter, const u8 offset,
+ 				if (!efuse_one_byte_read(padapter,
+ 							 efuse_addr + i,
+ 							 &efuse_data))
+-					bResult = false;
++					b_result = false;
+ 				else if (*(data + i) != efuse_data) /* fail */
+-					bResult = false;
++					b_result = false;
+ 			}
+ 			break;
+ 		}
+ 		/* write header fail */
+-		bResult = false;
++		b_result = false;
+ 		if (efuse_data == 0xFF)
+-			return bResult; /* nothing damaged. */
++			return b_result; /* nothing damaged. */
+ 		/* call rescue procedure */
+ 		if (!fix_header(padapter, efuse_data, efuse_addr))
+ 			return false; /* rescue fail */
+@@ -418,7 +417,7 @@ u8 r8712_efuse_pg_packet_write(struct _adapter *padapter, const u8 offset,
+ 			break;
+ 		/* otherwise, take another risk... */
+ 	}
+-	return bResult;
++	return b_result;
+ }
+ 
+ u8 r8712_efuse_access(struct _adapter *padapter, u8 bRead, u16 start_addr,
+-- 
+2.22.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
