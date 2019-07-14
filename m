@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 20A796812C
-	for <lists+driverdev-devel@lfdr.de>; Sun, 14 Jul 2019 22:37:56 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 354F7681B0
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Jul 2019 01:39:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A03C620766;
-	Sun, 14 Jul 2019 20:37:53 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E81B285549;
+	Sun, 14 Jul 2019 23:39:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XtCr203gQky3; Sun, 14 Jul 2019 20:37:52 +0000 (UTC)
+	with ESMTP id nT_bZIDbaKXe; Sun, 14 Jul 2019 23:38:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0D5392049A;
-	Sun, 14 Jul 2019 20:37:51 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3A2FB85513;
+	Sun, 14 Jul 2019 23:38:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5C23F1BF59D
- for <devel@linuxdriverproject.org>; Sun, 14 Jul 2019 20:37:49 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 187031BF3F9
+ for <devel@linuxdriverproject.org>; Sun, 14 Jul 2019 23:38:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 58E2D86D73
- for <devel@linuxdriverproject.org>; Sun, 14 Jul 2019 20:37:49 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 097738768B
+ for <devel@linuxdriverproject.org>; Sun, 14 Jul 2019 23:38:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id m0Tah4VPj++y for <devel@linuxdriverproject.org>;
- Sun, 14 Jul 2019 20:37:46 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic308-18.consmr.mail.ir2.yahoo.com
- (sonic308-18.consmr.mail.ir2.yahoo.com [77.238.178.146])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5638385D00
- for <devel@driverdev.osuosl.org>; Sun, 14 Jul 2019 20:37:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aol.com; s=a2048;
- t=1563136664; bh=56HhVaYrGJR6MKwMAHA5oXMmLrE4kBnjCe5YrgJnE0Q=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From:Subject;
- b=LBVonwQsN5e1h+8twAyK4Bz6KelFe9ulpY5LwKqdKqrGZ2uZ21p0HI1GDPDKz5XDyQsRo6i5E+V3wFV3o3sqibGCKMwtdsa23DiyE1/39UULrgThnsvI0tFc4h1irxadOXVVEOkhn3PBfMKqQxpPC2x9LVEXxyqFSH1RJn+B4cFLNTJZvdLbmaf23p/9OsesOTQlaXAX0UD4kZnL9WMdrOYpAZwY8rQNdtDGDwedXU1UYWX5prBa7DYuZ1ANNlWsBmQX8ZLWGfvN2SGgLxkdnHZ4Zi4MMSMQSoj+NibdNIW8YJPb3Epyx9su8A49o3TkgE0Vvpi/CI52LCAaGlc+Eg==
-X-YMail-OSG: 5f5JlG0VM1nEWdED4kc1O5vDYV1TBMbik3rr6xHjhcOE0YrkOxozeOqftS2pMA8
- uw1GF3zBCAy3dSmGgFvmalRWSNS5ifsJZK0ahvVX1e2li8eSn.7_wP_iChD0o79Sc9BOw1jvBiBo
- 3wrA4r70efi_UHxnQZEve68AyHtK349bIU875z9q.ssyngPfhfQNL7poB8814er2SE2dx793dddW
- X5xSFSYDX72RUdAE5Iqz_bGbUUQOVgsbGugtpAMJIo0Fwy1vvX3sYPm3nc4M68.q.AV_IPIg9lil
- QSSdvCmoZpMydj8N6VYq6Mfewly5EtIfNmMRBNW5AYzKtRED2s0lIruwoMoJQ1yo70ZrexRjJLwr
- qEBiwPMwgVSxLte9u8INfUcaPyhBbCqNPGmpb9bQ52KSpXrYoEEGAJXbUxWvfK4A0rC48Kotvwv5
- F8ci6VsS0qkJHLPsH9D1zK.LAQA63epbHgOzSAMa.ZmsI7Za.YYss_swumkilNXlvMyEh7pevYtW
- eljhaJTLyIQhMBhU3sdSPe7KgYWx4o6JJKmG0wlS5Cj6RO6Hbz61oGi0VqJB2V1SYjjtsLQgooDV
- RkGqrMpC9LD4jg7dt.KJqHw.r153K8GhRhbyC1ofu_wUqO4_mQvB8aCraTQoz7dVed4jqXel60N7
- gY3fW_Lakfd4rPYvBoZHLN_8IAV6M9AnrpAa0Ay1vYZ7C37lGxhUmWsHhdtNd.0tk9pXWKf5aaQu
- 5iACGLixi0Gd7zmgQnKmkMpHvkSyfyQFWbME9wKy0jJoQJMhbM1xafy9bmLUL8f.ZxXRNxHTS1Nf
- _Evb4foUrDqJKca.Xccl9DX5vUKayfvhGfAxiMq.efxZGjw3XjGGgm8tHTKdsU_yIswx6M.ksTM3
- UilyGVCJnnqd1oFZmSitLxLckDaSZ.iwcEXICBTTI_S5fsfcwpWQSxVJlVGaJ2OPVlJvoXQ97oIX
- CM3fMzYb3q0iUSEzALZp33xpajR.gvJMEJhI99qLXcMClCRxtTjShcKiVSrgSdWOD_oDcNNb.G7n
- 3IAovnPSWyOmtHeuGZ_28GXZhoRfmTrORKCT3Z89hJbGKcTc7sK0T2pVaDQiFFgjc66ssP1LrpoK
- 2nQPbQo3h0LAvxdtMhMYRahH8dU9_6Odjjlhf8KjhYqOJEn5ifOdINwY.VndlIApGFPNsQcBb72h
- vJ_f62vLvQ5tqOgG_JUBI9hMqlfBUcWKWGHOecLuIpwP9JUwPsLqMC4SWd4s-
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic308.consmr.mail.ir2.yahoo.com with HTTP; Sun, 14 Jul 2019 20:37:44 +0000
-Received: by smtp403.mail.ir2.yahoo.com (Oath Hermes SMTP Server) with ESMTPA
- ID a912500c5590c551bd3365812827a21d; 
- Sun, 14 Jul 2019 20:17:34 +0000 (UTC)
-Subject: Re: [PATCH v2 00/24] erofs: promote erofs from staging
-To: Pavel Machek <pavel@ucw.cz>, Gao Xiang <gaoxiang25@huawei.com>
-References: <20190711145755.33908-1-gaoxiang25@huawei.com>
- <20190714104940.GA1282@xo-6d-61-c0.localdomain>
-From: Gao Xiang <hsiangkao@aol.com>
-Message-ID: <63b9eaca-5d4b-0fe2-c861-7531977a5b48@aol.com>
-Date: Mon, 15 Jul 2019 04:17:27 +0800
+ with ESMTP id pqckAk9NudKT for <devel@linuxdriverproject.org>;
+ Sun, 14 Jul 2019 23:38:55 +0000 (UTC)
+X-Greylist: delayed 00:05:09 by SQLgrey-1.7.6
+Received: from hqemgate15.nvidia.com (hqemgate15.nvidia.com [216.228.121.64])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id DBEAA8767B
+ for <devel@driverdev.osuosl.org>; Sun, 14 Jul 2019 23:38:54 +0000 (UTC)
+Received: from hqpgpgate102.nvidia.com (Not Verified[216.228.121.13]) by
+ hqemgate15.nvidia.com (using TLS: TLSv1.2, DES-CBC3-SHA)
+ id <B5d2bbbde0000>; Sun, 14 Jul 2019 16:33:50 -0700
+Received: from hqmail.nvidia.com ([172.20.161.6])
+ by hqpgpgate102.nvidia.com (PGP Universal service);
+ Sun, 14 Jul 2019 16:33:44 -0700
+X-PGP-Universal: processed;
+ by hqpgpgate102.nvidia.com on Sun, 14 Jul 2019 16:33:44 -0700
+Received: from [10.110.48.28] (10.124.1.5) by HQMAIL107.nvidia.com
+ (172.20.187.13) with Microsoft SMTP Server (TLS) id 15.0.1473.3; Sun, 14 Jul
+ 2019 23:33:43 +0000
+Subject: Re: [PATCH] mm/gup: Use put_user_page*() instead of put_page*()
+To: Bharath Vedartham <linux.bhar@gmail.com>, <akpm@linux-foundation.org>,
+ <ira.weiny@intel.com>
+References: <1563131456-11488-1-git-send-email-linux.bhar@gmail.com>
+X-Nvconfidentiality: public
+From: John Hubbard <jhubbard@nvidia.com>
+Message-ID: <deea584f-2da2-8e1f-5a07-e97bf32c63bb@nvidia.com>
+Date: Sun, 14 Jul 2019 16:33:42 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.2
 MIME-Version: 1.0
-In-Reply-To: <20190714104940.GA1282@xo-6d-61-c0.localdomain>
+In-Reply-To: <1563131456-11488-1-git-send-email-linux.bhar@gmail.com>
+X-Originating-IP: [10.124.1.5]
+X-ClientProxiedBy: HQMAIL108.nvidia.com (172.18.146.13) To
+ HQMAIL107.nvidia.com (172.20.187.13)
 Content-Language: en-US
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nvidia.com; s=n1;
+ t=1563147230; bh=sUtQbAVHKMUq6RFPtKou/JVDvKaLNXmga3Yy3wKxfoA=;
+ h=X-PGP-Universal:Subject:To:CC:References:X-Nvconfidentiality:From:
+ Message-ID:Date:User-Agent:MIME-Version:In-Reply-To:
+ X-Originating-IP:X-ClientProxiedBy:Content-Type:Content-Language:
+ Content-Transfer-Encoding;
+ b=r1gPsCog8Wy8uxXR6oPi9CZ88dx7g7L7elOSl44oNIP1rI4/lkKGF9dnlvvfdYA/b
+ O8GUFPF84ojdVeX8QMV3hJ8+zgk4tR88myJZyetUbYd9bq60hfbfXeF0iJlYAVkubx
+ JOoXVe/7uD2/55/W/MIxdUvILTPB1/5/S5oSyd5brPO5Z4/Keu0Xvr8jrmH/IiEYoP
+ +AIIsSoV1pBraQcZgi5+ULXONecHESIQmh/9tZbs/C10RJWwUL5/YKXsdU8Sk8oBdA
+ NOeOi2iHzHVNK0AKkN3agfSzKCXeIFIHG7vkyBUlPLmDEWfEvazCokcgH4rg3HIpDk
+ byWb1Hr99HYHA==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,54 +82,270 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Theodore Ts'o <tytso@mit.edu>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-erofs@lists.ozlabs.org,
- LKML <linux-kernel@vger.kernel.org>,
- Linus Torvalds <torvalds@linux-foundation.org>,
- Alexander Viro <viro@zeniv.linux.org.uk>, linux-fsdevel@vger.kernel.org,
- Andrew Morton <akpm@linux-foundation.org>, Miao Xie <miaoxie@huawei.com>
+Cc: Jakub Kicinski <jakub.kicinski@netronome.com>, kvm@vger.kernel.org,
+ YueHaibing <yuehaibing@huawei.com>, Alexei Starovoitov <ast@kernel.org>,
+ Keith Busch <keith.busch@intel.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ devel@driverdev.osuosl.org, Dimitri Sivanich <sivanich@sgi.com>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ John Fastabend <john.fastabend@gmail.com>, Jason Gunthorpe <jgg@ziepe.ca>,
+ =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>,
+ Dan Carpenter <dan.carpenter@oracle.com>, linux-media@vger.kernel.org,
+ xdp-newbies@vger.kernel.org, Jesper Dangaard Brouer <hawk@kernel.org>,
+ Arnd Bergmann <arnd@arndb.de>, linux-block@vger.kernel.org,
+ Alexios Zavras <alexios.zavras@intel.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Alexander Viro <viro@zeniv.linux.org.uk>, Thomas Gleixner <tglx@linutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Magnus Karlsson <magnus.karlsson@intel.com>, Jens Axboe <axboe@kernel.dk>,
+ linux-mm@kvack.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Cornelia Huck <cohuck@redhat.com>, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org, linux-fsdevel@vger.kernel.org, bpf@vger.kernel.org,
+ Enrico Weigelt <info@metux.net>, "David S. Miller" <davem@davemloft.net>,
+ "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Pavel,
+On 7/14/19 12:08 PM, Bharath Vedartham wrote:
+> This patch converts all call sites of get_user_pages
+> to use put_user_page*() instead of put_page*() functions to
+> release reference to gup pinned pages.
 
-On 2019/7/14 18:49, Pavel Machek Wrote:
-> On Thu 2019-07-11 22:57:31, Gao Xiang wrote:
->> Changelog from v1:
->>  o resend the whole filesystem into a patchset suggested by Greg;
->>  o code is more cleaner, especially for decompression frontend.
->>
->> --8<----------
->>
->> Hi,
->>
->> EROFS file system has been in Linux-staging for about a year.
->> It has been proved to be stable enough to move out of staging
->> by 10+ millions of HUAWEI Android mobile phones on the market
->> from EMUI 9.0.1, and it was promoted as one of the key features
->> of EMUI 9.1 [1], including P30(pro).
+Hi Bharath,
+
+Thanks for jumping in to help, and welcome to the party!
+
+You've caught everyone in the middle of a merge window, btw.  As a
+result, I'm busy rebasing and reworking the get_user_pages call sites, 
+and gup tracking, in the wake of some semi-traumatic changes to bio 
+and gup and such. I plan to re-post right after 5.3-rc1 shows up, from 
+here:
+
+    https://github.com/johnhubbard/linux/commits/gup_dma_core
+
+...which you'll find already covers the changes you've posted, except for:
+
+    drivers/misc/sgi-gru/grufault.c
+    drivers/staging/kpc2000/kpc_dma/fileops.c
+
+...and this one, which is undergoing to larger local changes, due to
+bvec, so let's leave it out of the choices:
+
+    fs/io_uring.c
+
+Therefore, until -rc1, if you'd like to help, I'd recommend one or more
+of the following ideas:
+
+1. Pull down https://github.com/johnhubbard/linux/commits/gup_dma_core
+and find missing conversions: look for any additional missing 
+get_user_pages/put_page conversions. You've already found a couple missing 
+ones. I haven't re-run a search in a long time, so there's probably even more.
+
+	a) And find more, after I rebase to 5.3-rc1: people probably are adding
+	get_user_pages() calls as we speak. :)
+
+2. Patches: Focus on just one subsystem at a time, and perfect the patch for
+it. For example, I think this the staging driver would be perfect to start with:
+
+    drivers/staging/kpc2000/kpc_dma/fileops.c
+
+	a) verify that you've really, corrected converted the whole
+	driver. (Hint: I think you might be overlooking a put_page call.)
+
+	b) Attempt to test it if you can (I'm being hypocritical in
+	the extreme here, but one of my problems is that testing
+	has been light, so any help is very valuable). qemu...?
+	OTOH, maybe even qemu cannot easily test a kpc2000, but
+	perhaps `git blame` and talking to the authors would help
+	figure out a way to validate the changes.
+
+	Thinking about whether you can run a test that would prove or
+	disprove my claim in (a), above, could be useful in coming up
+	with tests to run.
+
+In other words, a few very high quality conversions (even just one) that
+we can really put our faith in, is what I value most here. Tested patches
+are awesome.
+
+3. Once I re-post, turn on the new CONFIG_DEBUG_GET_USER_PAGES_REFERENCES
+and run things such as xfstest/fstest. (Again, doing so would be going
+further than I have yet--very helpful). Help clarify what conversions have
+actually been tested and work, and which ones remain unvalidated.
+
+Other: Please note that this:
+
+    https://github.com/johnhubbard/linux/commits/gup_dma_core
+
+    a) gets rebased often, and
+
+    b) has a bunch of commits (iov_iter and related) that conflict
+       with the latest linux.git,
+
+    c) has some bugs in the bio area, that I'm fixing, so I don't trust
+       that's it's safely runnable, for a few more days.
+
+One note below, for the future:
+
 > 
-> Ok, maybe it is ready to be moved to kernel proper, but as git can
-> do moves, would it be better to do it as one commit?
+> This is a bunch of trivial conversions which is a part of an effort
+> by John Hubbard to solve issues with gup pinned pages and 
+> filesystem writeback.
 > 
-> Separate patches are still better for review, I guess.
+> The issue is more clearly described in John Hubbard's patch[1] where
+> put_user_page*() functions are introduced.
+> 
+> Currently put_user_page*() simply does put_page but future implementations
+> look to change that once treewide change of put_page callsites to 
+> put_user_page*() is finished.
+> 
+> The lwn article describing the issue with gup pinned pages and filesystem 
+> writeback [2].
+> 
+> This patch has been tested by building and booting the kernel as I don't
+> have the required hardware to test the device drivers.
+> 
+> I did not modify gpu/drm drivers which use release_pages instead of
+> put_page() to release reference of gup pinned pages as I am not clear
+> whether release_pages and put_page are interchangable. 
+> 
+> [1] https://lkml.org/lkml/2019/3/26/1396
 
-Thanks for you reply. Either form is OK for me... The first step could
-be that I hope someone could kindly take some time to look into these
-patches... :)
+When referring to patches in a commit description, please use the 
+commit hash, not an external link. See Submitting Patches [1] for details.
 
-The patch v2 is slightly different for the current code in the staging
-tree since I did some code cleanup these days (mainly renaming / moving,
-including rename unzip_vle.{c,h} to zdata.{c,h} and some confusing
-structure names and clean up internal.h...). No functional chance and I
-can submit cleanup patches to staging as well if doing moves by git...
+Also, once you figure out the right maintainers and other involved people,
+putting Cc: in the commit description is common practice, too.
 
-Thanks,
-Gao Xiang
+[1] https://www.kernel.org/doc/html/latest/process/submitting-patches.html
 
-> 							Pavel
+thanks,
+-- 
+John Hubbard
+NVIDIA
+
+> 
+> [2] https://lwn.net/Articles/784574/
+> 
+> Signed-off-by: Bharath Vedartham <linux.bhar@gmail.com>
+> ---
+>  drivers/media/v4l2-core/videobuf-dma-sg.c | 3 +--
+>  drivers/misc/sgi-gru/grufault.c           | 2 +-
+>  drivers/staging/kpc2000/kpc_dma/fileops.c | 4 +---
+>  drivers/vfio/vfio_iommu_type1.c           | 2 +-
+>  fs/io_uring.c                             | 7 +++----
+>  mm/gup_benchmark.c                        | 6 +-----
+>  net/xdp/xdp_umem.c                        | 7 +------
+>  7 files changed, 9 insertions(+), 22 deletions(-)
+> 
+> diff --git a/drivers/media/v4l2-core/videobuf-dma-sg.c b/drivers/media/v4l2-core/videobuf-dma-sg.c
+> index 66a6c6c..d6eeb43 100644
+> --- a/drivers/media/v4l2-core/videobuf-dma-sg.c
+> +++ b/drivers/media/v4l2-core/videobuf-dma-sg.c
+> @@ -349,8 +349,7 @@ int videobuf_dma_free(struct videobuf_dmabuf *dma)
+>  	BUG_ON(dma->sglen);
+>  
+>  	if (dma->pages) {
+> -		for (i = 0; i < dma->nr_pages; i++)
+> -			put_page(dma->pages[i]);
+> +		put_user_pages(dma->pages, dma->nr_pages);
+>  		kfree(dma->pages);
+>  		dma->pages = NULL;
+>  	}
+> diff --git a/drivers/misc/sgi-gru/grufault.c b/drivers/misc/sgi-gru/grufault.c
+> index 4b713a8..61b3447 100644
+> --- a/drivers/misc/sgi-gru/grufault.c
+> +++ b/drivers/misc/sgi-gru/grufault.c
+> @@ -188,7 +188,7 @@ static int non_atomic_pte_lookup(struct vm_area_struct *vma,
+>  	if (get_user_pages(vaddr, 1, write ? FOLL_WRITE : 0, &page, NULL) <= 0)
+>  		return -EFAULT;
+>  	*paddr = page_to_phys(page);
+> -	put_page(page);
+> +	put_user_page(page);
+>  	return 0;
+>  }
+>  
+> diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c b/drivers/staging/kpc2000/kpc_dma/fileops.c
+> index 6166587..26dceed 100644
+> --- a/drivers/staging/kpc2000/kpc_dma/fileops.c
+> +++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
+> @@ -198,9 +198,7 @@ int  kpc_dma_transfer(struct dev_private_data *priv, struct kiocb *kcb, unsigned
+>  	sg_free_table(&acd->sgt);
+>   err_dma_map_sg:
+>   err_alloc_sg_table:
+> -	for (i = 0 ; i < acd->page_count ; i++){
+> -		put_page(acd->user_pages[i]);
+> -	}
+> +	put_user_pages(acd->user_pages, acd->page_count);
+>   err_get_user_pages:
+>  	kfree(acd->user_pages);
+>   err_alloc_userpages:
+> diff --git a/drivers/vfio/vfio_iommu_type1.c b/drivers/vfio/vfio_iommu_type1.c
+> index add34ad..c491524 100644
+> --- a/drivers/vfio/vfio_iommu_type1.c
+> +++ b/drivers/vfio/vfio_iommu_type1.c
+> @@ -369,7 +369,7 @@ static int vaddr_get_pfn(struct mm_struct *mm, unsigned long vaddr,
+>  		 */
+>  		if (ret > 0 && vma_is_fsdax(vmas[0])) {
+>  			ret = -EOPNOTSUPP;
+> -			put_page(page[0]);
+> +			put_user_page(page[0]);
+>  		}
+>  	}
+>  	up_read(&mm->mmap_sem);
+> diff --git a/fs/io_uring.c b/fs/io_uring.c
+> index 4ef62a4..b4a4549 100644
+> --- a/fs/io_uring.c
+> +++ b/fs/io_uring.c
+> @@ -2694,10 +2694,9 @@ static int io_sqe_buffer_register(struct io_ring_ctx *ctx, void __user *arg,
+>  			 * if we did partial map, or found file backed vmas,
+>  			 * release any pages we did get
+>  			 */
+> -			if (pret > 0) {
+> -				for (j = 0; j < pret; j++)
+> -					put_page(pages[j]);
+> -			}
+> +			if (pret > 0)
+> +				put_user_pages(pages, pret);
+> +
+>  			if (ctx->account_mem)
+>  				io_unaccount_mem(ctx->user, nr_pages);
+>  			kvfree(imu->bvec);
+> diff --git a/mm/gup_benchmark.c b/mm/gup_benchmark.c
+> index 7dd602d..15fc7a2 100644
+> --- a/mm/gup_benchmark.c
+> +++ b/mm/gup_benchmark.c
+> @@ -76,11 +76,7 @@ static int __gup_benchmark_ioctl(unsigned int cmd,
+>  	gup->size = addr - gup->addr;
+>  
+>  	start_time = ktime_get();
+> -	for (i = 0; i < nr_pages; i++) {
+> -		if (!pages[i])
+> -			break;
+> -		put_page(pages[i]);
+> -	}
+> +	put_user_pages(pages, nr_pages);
+>  	end_time = ktime_get();
+>  	gup->put_delta_usec = ktime_us_delta(end_time, start_time);
+>  
+> diff --git a/net/xdp/xdp_umem.c b/net/xdp/xdp_umem.c
+> index 9c6de4f..6103e19 100644
+> --- a/net/xdp/xdp_umem.c
+> +++ b/net/xdp/xdp_umem.c
+> @@ -173,12 +173,7 @@ static void xdp_umem_unpin_pages(struct xdp_umem *umem)
+>  {
+>  	unsigned int i;
+>  
+> -	for (i = 0; i < umem->npgs; i++) {
+> -		struct page *page = umem->pgs[i];
+> -
+> -		set_page_dirty_lock(page);
+> -		put_page(page);
+> -	}
+> +	put_user_pages_dirty_lock(umem->pgs, umem->npgs);
+>  
+>  	kfree(umem->pgs);
+>  	umem->pgs = NULL;
 > 
 _______________________________________________
 devel mailing list
