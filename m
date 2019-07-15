@@ -1,71 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB02068762
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Jul 2019 12:53:50 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 094CC6877B
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Jul 2019 12:56:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4DE4184E2E;
-	Mon, 15 Jul 2019 10:53:49 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 22A99207A1;
+	Mon, 15 Jul 2019 10:56:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QgRGqm7talPM; Mon, 15 Jul 2019 10:53:48 +0000 (UTC)
+	with ESMTP id AO2JEBpzRJJ6; Mon, 15 Jul 2019 10:56:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4BD5086704;
-	Mon, 15 Jul 2019 10:53:48 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4358C207A2;
+	Mon, 15 Jul 2019 10:56:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6F3311BF966
- for <devel@linuxdriverproject.org>; Mon, 15 Jul 2019 10:53:45 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7A7A61BF39C
+ for <devel@linuxdriverproject.org>; Mon, 15 Jul 2019 10:56:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6C78C85C67
- for <devel@linuxdriverproject.org>; Mon, 15 Jul 2019 10:53:45 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7387485B99
+ for <devel@linuxdriverproject.org>; Mon, 15 Jul 2019 10:56:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id itxjOpbqB9EY for <devel@linuxdriverproject.org>;
- Mon, 15 Jul 2019 10:53:44 +0000 (UTC)
+ with ESMTP id MdfhMERUZvF9 for <devel@linuxdriverproject.org>;
+ Mon, 15 Jul 2019 10:56:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
- [209.85.215.195])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 5281785C54
- for <devel@linuxdriverproject.org>; Mon, 15 Jul 2019 10:53:44 +0000 (UTC)
-Received: by mail-pg1-f195.google.com with SMTP id i18so7522214pgl.11
- for <devel@linuxdriverproject.org>; Mon, 15 Jul 2019 03:53:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=RmuPYMJj1ksPxWp3Nnt3MSsohZ+f2rEHBoYqFA6TG4g=;
- b=JkRRfWueyQ6sOQWYmT9mz06UqzCfHJRgG4mLPMFMgM29CmubYYm4y6eRi3C+WPq5A7
- nwddE1G4E9YKbQuLGSKcjcqXkl9tEPGPvjjmQMvuAmk+ZpoGlZuEEAKlbdQ40T38PIpR
- HNBm+cELqP+q9Ep23CdUEfA+PXOgBY1ncUvB6RoxDqu5OGbegkU6jg52qntNMFqF/0Dc
- F6sVrU74n/VueNcqj86pSBAaZ1Pl5GA/sChuPqn98lgQ4zUsAwac8qylX3q2sc3cImyH
- EnCEtPcArBN6rW6bg00pyQpRooFxEcW56RMSw4wAWci4s6+CyFxJC85DhXgDFT4gIiSj
- DAOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=RmuPYMJj1ksPxWp3Nnt3MSsohZ+f2rEHBoYqFA6TG4g=;
- b=eoQbP3A90S0ASfqLv9Lg10uyWxNPqjgLDPoRZZxOwprSmu3yeR9Eag7KdXNdkSosHl
- 5+/nQ/FrlMtD6JMRpTbn2/yS9snVPay+qbri1ipzrR5QTr8PIX1iQckLVG0k2BSrK0t6
- 4+mL4pC3+z3smQr+YC231GLF6YGG2our+AoNIG0MZROOsdRUnjo+QIyOR6+kaVXL+O9N
- /0JHkeiHQXeDWoUItpoBmIAAuwxy8ynMARh4vAOvDBEHThy7JFN5lbY8cdtItIWRuxfz
- qPZR3NgaEJprvuHJynJorvwqJU/fVXj3S4Tb8R7Px97sr3e/4+rNt98JMt/z2kThhCwE
- mbmA==
-X-Gm-Message-State: APjAAAXy3RgCsT3SE/WEau3+TUW43g8Xloohuv8zHpY2vds2GiHbf9HK
- bXYWynfP6RGSDWxEDA7VkTq9xC9XHDUbEhFShwM=
-X-Google-Smtp-Source: APXvYqwvVy9zVXFDKvtO/Bk+dhrb2yiCHcU9wE3YMACnAl8vM25hLodUDE2KF5Io4XJ4sH0o0OKYd0OKx6SL1JoYgcA=
-X-Received: by 2002:a63:c203:: with SMTP id b3mr26625038pgd.450.1563188023793; 
- Mon, 15 Jul 2019 03:53:43 -0700 (PDT)
+Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 45A108592F
+ for <devel@driverdev.osuosl.org>; Mon, 15 Jul 2019 10:56:08 +0000 (UTC)
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 0C25DEB75AB99032BAD4;
+ Mon, 15 Jul 2019 18:56:05 +0800 (CST)
+Received: from [10.151.23.176] (10.151.23.176) by smtp.huawei.com
+ (10.3.19.203) with Microsoft SMTP Server (TLS) id 14.3.439.0; Mon, 15 Jul
+ 2019 18:55:55 +0800
+Subject: Re: [PATCH v3] staging: erofs:converting all 'unsigned' to 'unsigned
+ int'
+To: Pratik Shinde <pratikshinde320@gmail.com>, <linux-erofs@lists.ozlabs.org>, 
+ <yuchao0@huawei.com>
+References: <20190715104332.12596-1-pratikshinde320@gmail.com>
+From: Gao Xiang <gaoxiang25@huawei.com>
+Message-ID: <6c43bc97-23ee-3e8f-42d4-1f4348121ced@huawei.com>
+Date: Mon, 15 Jul 2019 18:55:37 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-Received: by 2002:a17:90a:b78d:0:0:0:0 with HTTP; Mon, 15 Jul 2019 03:53:43
- -0700 (PDT)
-From: Donald Douglas <ddouglasng@gmail.com>
-Date: Mon, 15 Jul 2019 03:53:43 -0700
-Message-ID: <CALVR28FwaBGYZrAyqjNEi4+XtJFA+ieBfOu7O3NhSgOQCaQc3Q@mail.gmail.com>
-Subject: Kindly Respond
-To: undisclosed-recipients:;
+In-Reply-To: <20190715104332.12596-1-pratikshinde320@gmail.com>
+X-Originating-IP: [10.151.23.176]
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,25 +63,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,
 
-I am Barr Fredrick Mbogo a business consultant i have a lucrative
-business to discuss with you from the Eastern part of Africa Uganda to
-be precise aimed at agreed percentage upon your acceptance of my hand
-in business and friendship. Kindly respond to me if you are interested
-to partner with me for an update. Very important.
 
-Yours Sincerely,
-Donald Douglas,
-For,
-Barr Frederick Mbogo
-Legal Consultant.
-Reply to: barrfredmbogo@consultant.com
+On 2019/7/15 18:43, Pratik Shinde wrote:
+> Fixed check patch warnings: converting all 'unsigned' to 'unsigned int'
+> 
+> Signed-off-by: Pratik Shinde <pratikshinde320@gmail.com>
+
+oops, should be "staging: erofs: converting all 'unsigned' to 'unsigned int'"..
+                                ^
+My fault... maybe Greg could fix this issue while merging if accepted.
+
+Apart from that, it looks good to me,
+Reviewed-by: Gao Xiang <gaoxiang25@huawei.com>
+
+Thanks,
+Gao Xiang
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
