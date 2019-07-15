@@ -1,52 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BB8CF684E8
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Jul 2019 10:10:58 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 771F0684EB
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Jul 2019 10:11:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D843D86838;
-	Mon, 15 Jul 2019 08:10:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6888D2076B;
+	Mon, 15 Jul 2019 08:11:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6KXB-FxiXegh; Mon, 15 Jul 2019 08:10:56 +0000 (UTC)
+	with ESMTP id bz5A4JpsoK9e; Mon, 15 Jul 2019 08:11:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 963558680C;
-	Mon, 15 Jul 2019 08:10:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9E87C20767;
+	Mon, 15 Jul 2019 08:11:15 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 239341BF407
- for <devel@linuxdriverproject.org>; Mon, 15 Jul 2019 08:10:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4FCD71BF407;
+ Mon, 15 Jul 2019 08:11:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 1B5AA85C67
- for <devel@linuxdriverproject.org>; Mon, 15 Jul 2019 08:10:54 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4D0BF85C67;
+ Mon, 15 Jul 2019 08:11:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VMykOek2JE8x for <devel@linuxdriverproject.org>;
- Mon, 15 Jul 2019 08:10:53 +0000 (UTC)
+ with ESMTP id WW6gmDvWJfGN; Mon, 15 Jul 2019 08:11:13 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from s2mx02.siteserve.jp (s2mx02.siteserve.jp [210.248.135.119])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7329884ECD
- for <devel@driverdev.osuosl.org>; Mon, 15 Jul 2019 08:10:53 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from s2mx01.siteserve.jp (s2mx01.siteserve.jp [210.248.135.120])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 2DC9984ECD;
+ Mon, 15 Jul 2019 08:11:13 +0000 (UTC)
 Received: from localhost (localhost.localdomain [127.0.0.1])
- by s2mx02.siteserve.jp (Postfix) with ESMTP id C342E11BF01;
- Mon, 15 Jul 2019 17:10:50 +0900 (JST)
-X-Virus-Scanned: amavisd-new at s2mx02.siteserve.jp
-Received: from s2mx02.siteserve.jp ([127.0.0.1])
+ by s2mx01.siteserve.jp (Postfix) with ESMTP id A68E911C1B3;
+ Mon, 15 Jul 2019 17:11:04 +0900 (JST)
+X-Virus-Scanned: amavisd-new at s2mx01.siteserve.jp
+Received: from s2mx01.siteserve.jp ([127.0.0.1])
  by localhost (mail.siteserve.jp [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9-UmuXPFoQbV; Mon, 15 Jul 2019 17:10:50 +0900 (JST)
+ with ESMTP id D2dQp2R7L+HZ; Mon, 15 Jul 2019 17:11:03 +0900 (JST)
 Received: from webmail.nakagawa-consul.com (localhost.localdomain [127.0.0.1])
- by s2mx02.siteserve.jp (Postfix) with ESMTP id D280B11BDB1;
- Mon, 15 Jul 2019 17:10:49 +0900 (JST)
+ by s2mx01.siteserve.jp (Postfix) with ESMTP id 8292511C170;
+ Mon, 15 Jul 2019 17:11:02 +0900 (JST)
 Received: from 174.128.236.106
  (RisuMail authenticated user morita@nakagawa-consul.com)
  by webmail.nakagawa-consul.com with HTTP;
- Mon, 15 Jul 2019 17:10:50 +0900 (JST)
-Message-ID: <50258.174.128.236.106.1563178250.risu@webmail.nakagawa-consul.com>
-Date: Mon, 15 Jul 2019 17:10:50 +0900 (JST)
+ Mon, 15 Jul 2019 17:11:02 +0900 (JST)
+Message-ID: <3372.174.128.236.106.1563178262.risu@webmail.nakagawa-consul.com>
+Date: Mon, 15 Jul 2019 17:11:02 +0900 (JST)
 Subject: Loan offer !!
 From: "Smith Jerry" <morita@nakagawa-consul.com>
 User-Agent: RisuMail 3.1
