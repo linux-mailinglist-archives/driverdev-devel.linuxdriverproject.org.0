@@ -2,80 +2,80 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C1848681BD
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Jul 2019 02:11:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 94D8C681C1
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Jul 2019 02:22:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B57C885618;
-	Mon, 15 Jul 2019 00:11:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A6F7385815;
+	Mon, 15 Jul 2019 00:21:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FHGapcQF8NLi; Mon, 15 Jul 2019 00:11:24 +0000 (UTC)
+	with ESMTP id cgkcAhc2nmfJ; Mon, 15 Jul 2019 00:21:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0484285625;
-	Mon, 15 Jul 2019 00:11:24 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4390D8560B;
+	Mon, 15 Jul 2019 00:21:57 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5DD281BF860
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D61421BF860
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 15 Jul 2019 00:11:22 +0000 (UTC)
+ Mon, 15 Jul 2019 00:21:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 548B08560B
+ by whitealder.osuosl.org (Postfix) with ESMTP id CF2D8860A8
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 15 Jul 2019 00:11:22 +0000 (UTC)
+ Mon, 15 Jul 2019 00:21:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 50cvrBPt1plf
+ with ESMTP id gAQzg-55yFPV
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 15 Jul 2019 00:11:21 +0000 (UTC)
+ Mon, 15 Jul 2019 00:21:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f195.google.com (mail-qt1-f195.google.com
- [209.85.160.195])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 88AEB855C6
+Received: from mail-qk1-f194.google.com (mail-qk1-f194.google.com
+ [209.85.222.194])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 0E48F85BFA
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 15 Jul 2019 00:11:21 +0000 (UTC)
-Received: by mail-qt1-f195.google.com with SMTP id k10so13941963qtq.1
+ Mon, 15 Jul 2019 00:21:54 +0000 (UTC)
+Received: by mail-qk1-f194.google.com with SMTP id w190so10386751qkc.6
  for <driverdev-devel@linuxdriverproject.org>;
- Sun, 14 Jul 2019 17:11:21 -0700 (PDT)
+ Sun, 14 Jul 2019 17:21:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=MCe40YbQXFPhxCndnrznLP1e8gHjy1t8QpfVZEscKsw=;
- b=JBj1Agd24JHKoB+7yRxeI4NTIgMg/WfFBNSWdQZSI5jMRqDHX6ZDU9XDWAwhKil+PO
- B6PMOvAyrK36WWtC+AZfPAUJ7QEWDcToPBz8tQ8x++gqr5yJls1DJsO9Rqizqp9tacXZ
- zdHn+b9oMIqt3D0wvZnNc9NcJZBfEcrtL0UJp0J1/Thoa+8uiMO8q5dp1XxO/OyQEqE+
- k/BmosW7Y8peYZQSVcAo00eD+Npt8PPpHHmsZ734DZRUvzxMhLNwC4DjBzOtEYcwr3M5
- wijPTa8Fq34tH7nu1npHPKv00oho11RpoCfuUxW60jf3GtJNdY+t1r2dUHADRZhYS+Te
- Qxdg==
+ bh=aQEcxMmiCLAt94VDDofaI95Y09BX4XOJ5mIX/4dv2hc=;
+ b=lzF6AMSkkIpzgmUQdWFwv7MQQQj7qz9ZshTQzTmIpmJbz0IZeasNYW6JmfDQa6X6mT
+ mLbmHDonkmOB26gmkQ9PABSiNis5Iw2g75w76eklc+nSwyYs13Lkj5zfnx5hl2YdNfdK
+ ZuQsdjTuf/QL1R4VatqmaLsvPse4q3sLXFuRTrnzjUj/hq+AEsqtbmQ53fmKuWd4gJza
+ M1hdKaPk366NjJKiOj835uRE767G4dsK+aZTXEd2xe0lZMsy24c3VawwjV5OLKbnhmqj
+ TH/qAyXyD/H77dOQ5Zk8bVlCbJolZf8eQVVEbPdQb02AYeIjrBG6q+lCIFSvkj9LLIxl
+ o1uQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=MCe40YbQXFPhxCndnrznLP1e8gHjy1t8QpfVZEscKsw=;
- b=aCoLTwp6PfjfBCFX/doz/tXgfIrCBAM/7VP1J61qyw6MEvyNTdTZ+PHE2Jmnrm9vp0
- 95XWg1DWO31VyEddEosDUht2to90vWBg8npL/pf2ppFqen8TsfCtT0uXm/mxYH5j4uML
- ERuFyXFsjlZE6LZYu/VTV1g6GmA0kPAUHPqY+9v6wcSauEpphCCQZDqb1cgK2RjfKi8E
- x7aR9zGE3X2PxwVUxBcCIAgM91H2GQAydtSYAi2bIwI7MLoNPpFRTyuam4Xa72AU+W09
- qWTTLxdTgd2fL34MMnKF8BXt4Jg+5kiMbUbvkDSTDlWkJpeTfZKRlgotXLg7UbE83okg
- 2Jvw==
-X-Gm-Message-State: APjAAAUztZ+HuzYEnpF013/HZyjXZskUmOFafQGZrPOsiOw3mpFn5IlE
- 10JoJLZKd7IayvYYbDar7JduyCBD3FsTsw==
-X-Google-Smtp-Source: APXvYqzG5i+n9h7LGa1Pzg6t14ZOjRlwf1xlKzJOUYTnbub4+G0TO3nOhsrxQ7Yvm8L5+N3PRaeOUA==
-X-Received: by 2002:ac8:2194:: with SMTP id 20mr15406753qty.203.1563149480717; 
- Sun, 14 Jul 2019 17:11:20 -0700 (PDT)
+ bh=aQEcxMmiCLAt94VDDofaI95Y09BX4XOJ5mIX/4dv2hc=;
+ b=M5qh9ygHr9gVUSdJpRXBJIYkUCd729WDmo5vwhjPEFe2QbI/XWLTwFMQJ8yPRo+QGF
+ kGrSRYn0u5SkYQWQdE0EtKHZGls6ouf+wYWO2Ga6RC09Hx/KW7Tp+qE0uqVDtVfqTWN+
+ qkRm7wDQsfwXssxl1HACYHbOFgJrjR18zS8mpAMKbUfvYMIL+f62YWKwxkGEeStKupYV
+ P4O/0BwVtSIwjBg5988EZembSti/bUPCpSQ9+TSDm9z3PPe638YS5jccT60rm30aXwep
+ ESY6qRR6JKy9dozAPYYcvC3zaJnXzvpfjCVf5FndMx8v4kfMCtqEWeS51igvXFNIjzIR
+ E20w==
+X-Gm-Message-State: APjAAAUegMM8C4i3R1+Ldwolne4ZZQbGxsHu2Evv6OaaTfTAJbaKnK6I
+ ZoJaYapD+g+mgSO9JVnc2iQ=
+X-Google-Smtp-Source: APXvYqwDylxxvLPbXzLtJiREKjeZv/tjanRm+s2VicgGbuT8mOc4hAdy+nRd1JyvedeAOC+sbP+OnA==
+X-Received: by 2002:a37:a142:: with SMTP id k63mr14281175qke.278.1563150113085; 
+ Sun, 14 Jul 2019 17:21:53 -0700 (PDT)
 Received: from localhost.localdomain ([181.31.106.136])
- by smtp.gmail.com with ESMTPSA id r14sm7652335qke.47.2019.07.14.17.11.16
+ by smtp.gmail.com with ESMTPSA id y67sm7298948qkd.40.2019.07.14.17.21.50
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Sun, 14 Jul 2019 17:11:20 -0700 (PDT)
+ Sun, 14 Jul 2019 17:21:52 -0700 (PDT)
 From: christianluciano.m@gmail.com
 To: gregkh@linuxfoundation.org, Larry.Finger@lwfinger.net,
  florian.c.schilhabel@googlemail.com,
  driverdev-devel@linuxdriverproject.org, christianluciano.m@gmail.com
-Subject: [PATCH] staging: rtl8712: Fix alignment with open parenthesis
-Date: Sun, 14 Jul 2019 21:11:08 -0300
-Message-Id: <20190715001108.1003-1-christianluciano.m@gmail.com>
+Subject: [PATCH] staging: rtl8712: Align code with open parenthesis
+Date: Sun, 14 Jul 2019 21:21:40 -0300
+Message-Id: <20190715002140.1432-1-christianluciano.m@gmail.com>
 X-Mailer: git-send-email 2.22.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -97,94 +97,39 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 From: Christian Luciano Moreno <christianluciano.m@gmail.com>
 
-Fix 'CHECK: Alignment should match open parenthesis' reported by checkpatch.
+Fix 'CHECK: Alignment should match open parenthesis' reported by
+checkpatch.
 
 Signed-off-by: Christian Luciano Moreno <christianluciano.m@gmail.com>
 ---
- drivers/staging/rtl8712/usb_ops.h       |  9 +++++----
- drivers/staging/rtl8712/usb_ops_linux.c | 13 +++++++------
- 2 files changed, 12 insertions(+), 10 deletions(-)
+ drivers/staging/rtl8712/xmit_osdep.h | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/usb_ops.h b/drivers/staging/rtl8712/usb_ops.h
-index d62975447d29..5e825dda49e5 100644
---- a/drivers/staging/rtl8712/usb_ops.h
-+++ b/drivers/staging/rtl8712/usb_ops.h
-@@ -21,9 +21,9 @@
- void r8712_usb_write_mem(struct intf_hdl *pintfhdl, u32 addr,
- 			 u32 cnt, u8 *wmem);
- u32 r8712_usb_write_port(struct intf_hdl *pintfhdl, u32 addr,
--			  u32 cnt, u8 *wmem);
-+			 u32 cnt, u8 *wmem);
- u32 r8712_usb_read_port(struct intf_hdl *pintfhdl, u32 addr,
--			 u32 cnt, u8 *rmem);
-+			u32 cnt, u8 *rmem);
- void r8712_usb_set_intf_option(u32 *poption);
- void r8712_usb_set_intf_funs(struct intf_hdl *pintf_hdl);
- uint r8712_usb_init_intf_priv(struct intf_priv *pintfpriv);
-@@ -31,8 +31,9 @@ void r8712_usb_unload_intf_priv(struct intf_priv *pintfpriv);
- void r8712_usb_set_intf_ops(struct _io_ops *pops);
- void r8712_usb_read_port_cancel(struct _adapter *padapter);
- void r8712_usb_write_port_cancel(struct _adapter *padapter);
--int r8712_usbctrl_vendorreq(struct intf_priv *pintfpriv, u8 request, u16 value,
--		      u16 index, void *pdata, u16 len, u8 requesttype);
-+int r8712_usbctrl_vendorreq(struct intf_priv *pintfpriv, u8 request,
-+			    u16 value, u16 index, void *pdata,
-+			    u16 len, u8 requesttype);
+diff --git a/drivers/staging/rtl8712/xmit_osdep.h b/drivers/staging/rtl8712/xmit_osdep.h
+index 21f6b31e0f50..b76021b568f8 100644
+--- a/drivers/staging/rtl8712/xmit_osdep.h
++++ b/drivers/staging/rtl8712/xmit_osdep.h
+@@ -37,16 +37,16 @@ struct xmit_buf;
+ int r8712_xmit_entry(_pkt *pkt, struct  net_device *pnetdev);
+ void r8712_SetFilter(struct work_struct *work);
+ int r8712_xmit_resource_alloc(struct _adapter *padapter,
+-			   struct xmit_buf *pxmitbuf);
++			      struct xmit_buf *pxmitbuf);
+ void r8712_xmit_resource_free(struct _adapter *padapter,
+-			   struct xmit_buf *pxmitbuf);
++			      struct xmit_buf *pxmitbuf);
+ 
+ void r8712_set_qos(struct pkt_file *ppktfile,
+-		    struct pkt_attrib *pattrib);
++		   struct pkt_attrib *pattrib);
+ void _r8712_open_pktfile(_pkt *pktptr, struct pkt_file *pfile);
+ uint _r8712_pktfile_read(struct pkt_file *pfile, u8 *rmem, uint rlen);
+ sint r8712_endofpktfile(struct pkt_file *pfile);
+ void r8712_xmit_complete(struct _adapter *padapter,
+-			     struct xmit_frame *pxframe);
++			 struct xmit_frame *pxframe);
  
  #endif
- 
-diff --git a/drivers/staging/rtl8712/usb_ops_linux.c b/drivers/staging/rtl8712/usb_ops_linux.c
-index 9d290bc2fdb7..5ba9ac6cb6b4 100644
---- a/drivers/staging/rtl8712/usb_ops_linux.c
-+++ b/drivers/staging/rtl8712/usb_ops_linux.c
-@@ -192,7 +192,7 @@ static void r8712_usb_read_port_complete(struct urb *purb)
- 		if ((purb->actual_length > (MAX_RECVBUF_SZ)) ||
- 		    (purb->actual_length < RXDESC_SIZE)) {
- 			r8712_read_port(padapter, precvpriv->ff_hwaddr, 0,
--				  (unsigned char *)precvbuf);
-+					(unsigned char *)precvbuf);
- 		} else {
- 			_pkt *pskb = precvbuf->pskb;
- 
-@@ -228,7 +228,7 @@ static void r8712_usb_read_port_complete(struct urb *purb)
- 			/* Fall through. */
- 		case -EPROTO:
- 			r8712_read_port(padapter, precvpriv->ff_hwaddr, 0,
--				  (unsigned char *)precvbuf);
-+					(unsigned char *)precvbuf);
- 			break;
- 		case -EINPROGRESS:
- 			netdev_err(padapter->pnetdev, "ERROR: URB IS IN PROGRESS!\n");
-@@ -262,8 +262,9 @@ u32 r8712_usb_read_port(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, u8 *rmem)
- 	precvbuf->pskb = skb_dequeue(&precvpriv->free_recv_skb_queue);
- 
- 	if (!precvbuf->pskb) {
--		precvbuf->pskb = netdev_alloc_skb(adapter->pnetdev,
--				 MAX_RECVBUF_SZ + RECVBUFF_ALIGN_SZ);
-+		precvbuf->pskb =
-+			netdev_alloc_skb(adapter->pnetdev,
-+					 MAX_RECVBUF_SZ + RECVBUFF_ALIGN_SZ);
- 		if (!precvbuf->pskb)
- 			return _FAIL;
- 		tmpaddr = (addr_t)precvbuf->pskb->data;
-@@ -367,7 +368,7 @@ static void usb_write_port_complete(struct urb *purb)
- 		break;
- 	default:
- 		netdev_warn(padapter->pnetdev,
--				"r8712u: pipe error: (%d)\n", purb->status);
-+			    "r8712u: pipe error: (%d)\n", purb->status);
- 		break;
- 	}
- 	/* not to consider tx fragment */
-@@ -467,7 +468,7 @@ void r8712_usb_write_port_cancel(struct _adapter *padapter)
- }
- 
- int r8712_usbctrl_vendorreq(struct intf_priv *pintfpriv, u8 request, u16 value,
--		      u16 index, void *pdata, u16 len, u8 requesttype)
-+			    u16 index, void *pdata, u16 len, u8 requesttype)
- {
- 	unsigned int pipe;
- 	int status;
 -- 
 2.22.0
 
