@@ -2,82 +2,74 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CB99D6AF90
-	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Jul 2019 21:09:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8422C6B0EF
+	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Jul 2019 23:17:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id F0B93869F8;
-	Tue, 16 Jul 2019 19:09:31 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5BC9486A3C;
+	Tue, 16 Jul 2019 21:17:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mJAWGA0bkel7; Tue, 16 Jul 2019 19:09:31 +0000 (UTC)
+	with ESMTP id w97bZyKSwJ1U; Tue, 16 Jul 2019 21:17:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7A4F785A5B;
-	Tue, 16 Jul 2019 19:09:30 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id 426568677E;
+	Tue, 16 Jul 2019 21:17:14 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 098F11BF360
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 16 Jul 2019 19:09:28 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7EC5B1BF29A
+ for <devel@linuxdriverproject.org>; Tue, 16 Jul 2019 21:17:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 05E6F87DA6
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 16 Jul 2019 19:09:28 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7BC4587D60
+ for <devel@linuxdriverproject.org>; Tue, 16 Jul 2019 21:17:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EuQMYbAznNpN
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 16 Jul 2019 19:09:26 +0000 (UTC)
+ with ESMTP id gzeqPz0R8lKK for <devel@linuxdriverproject.org>;
+ Tue, 16 Jul 2019 21:17:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f193.google.com (mail-qt1-f193.google.com
- [209.85.160.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id E206C870F6
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 16 Jul 2019 19:09:25 +0000 (UTC)
-Received: by mail-qt1-f193.google.com with SMTP id w17so20744144qto.10
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 16 Jul 2019 12:09:25 -0700 (PDT)
+Received: from mail-qk1-f193.google.com (mail-qk1-f193.google.com
+ [209.85.222.193])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id E6FD687D33
+ for <devel@driverdev.osuosl.org>; Tue, 16 Jul 2019 21:17:10 +0000 (UTC)
+Received: by mail-qk1-f193.google.com with SMTP id v22so15780372qkj.8
+ for <devel@driverdev.osuosl.org>; Tue, 16 Jul 2019 14:17:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Tlf1/4gCVlrmqko9xJwc864URooaAg4ZnUz6s+YkL60=;
- b=NzO+kJsMmKKJYPHhuV1zh3zR0GKlCPXGQqjxoI71EZQ5kYGQXCHWG1gPCpWqN7i/Eg
- VLo25P3RndsLxviiBs1K7bPogNC4I4JpXYoU8ZeO04bi4m8lCm4QxdGrkD7STZdXsvSr
- bHf2Ptzad63Lib30oKvQvXldDDTaTVcjjGjonU980JyoJTY9YDxcPSgGd2TJXQ3foeDL
- 0sBp6AsJgIT88FMmS1u6U4qhqg2c1Y6v/4Ee++KDlAFxeRWizDR4bOt3W3qer7jar2WJ
- rXkP7sZRMn99OadzvnutqqjHSHJzADYiK3F69zRsgY4ZZBiI2VSnA741sdINi0MKlsoJ
- XXIA==
+ h=from:to:cc:subject:date:message-id;
+ bh=GWxxxOtfc0hkJsoN956op0nPQ4cc3G9CQfKbpsVdrj0=;
+ b=SrAwgVOnyiPAaNHxRm3kITb/9/eY2aKXVp3n+Tq/WXDPTV8JkDdwlVp7G/kIeACNfY
+ WhI5Xz8iLcCYypsRAdoBEuTLxIuPkgx/SV7XFlm/QkQA+DCGu0t/WgJU+1FxKVEpSHv8
+ EKrT5/bwn16A8L9IBq6Mh13dPmEa/mXKcw7iRdzyvUetvfv4/ibECfvDm8p51exwA1WN
+ bhO7buH/icq5mR3xluqVeCA8Z1K8TyGXpRGJmjy2HRWjlNHNbodmTJYl7BuTVR9L9o/f
+ 4IWixdvzb1HKrb1TsLm3SyUQ4Yw6k2KjbDpXKP+E1w4MQ9UKS3mL/TL/GqC9wUmYMnP6
+ GaNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Tlf1/4gCVlrmqko9xJwc864URooaAg4ZnUz6s+YkL60=;
- b=mr4vB9clYQUcikSIAMNT8DLLZ91FOePpF1CfMqeJbbPTZ+a1FLC7a9n9Sh1MX+ay6V
- cix+D3fanP+Y0YWuLckbRUan9iy4xfz2yJx4CpCumpxU2vKnBTDwR1F1ddr4Vpvgtsec
- qMz08db27w2wKb8SKjixvaIYl6BV9r+miWaPH0YZk8uhp9aLtxZYjmJfK5z7pgQm4frZ
- YG4SJusiFA+uIPrE2wQYy7IyaOoSJf0x0UUQ0Rys+sHCRp+kecp5oVT8WqabA4S3W+Pe
- bMAiLH6KJK7k5e0R8iVtWxuRJLiF1KbWP7WVXMGC+rRmkpHVIBhraL6xJhZs//4NQ5Dj
- aOTg==
-X-Gm-Message-State: APjAAAWX/MAOoVE7003MOYdNI+jtSduzIE4SaaXAsDuJMBxUWatVL79/
- QQ3W+kf+kQarr0CKNYVeLkc=
-X-Google-Smtp-Source: APXvYqwXqdNPdoroKpqz6MyI++ObkUce20J2PtnRtwjL5SUOBzsiXSXRXhNS6RjTEBR5JpsE2f+mmQ==
-X-Received: by 2002:aed:3461:: with SMTP id w88mr24320014qtd.13.1563304164870; 
- Tue, 16 Jul 2019 12:09:24 -0700 (PDT)
-Received: from localhost.localdomain ([181.31.106.136])
- by smtp.gmail.com with ESMTPSA id f22sm9004691qkk.45.2019.07.16.12.09.22
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Tue, 16 Jul 2019 12:09:24 -0700 (PDT)
-From: christianluciano.m@gmail.com
-To: gregkh@linuxfoundation.org, Larry.Finger@lwfinger.net,
- florian.c.schilhabel@googlemail.com,
- driverdev-devel@linuxdriverproject.org, christianluciano.m@gmail.com
-Subject: [PATCH] staging: rtl8712: recv_linux.c: Align * on block comment
-Date: Tue, 16 Jul 2019 16:09:15 -0300
-Message-Id: <20190716190915.30869-1-christianluciano.m@gmail.com>
-X-Mailer: git-send-email 2.22.0
-MIME-Version: 1.0
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=GWxxxOtfc0hkJsoN956op0nPQ4cc3G9CQfKbpsVdrj0=;
+ b=Aaeqj7B214OePrvPC2aIk8RpxyABp7+r5q4cj794gMQwH47bbezAh1ZBVIF2H1YLL6
+ pl4+Rhfx0H+mXnjU9WLU7IdUCplzhGSzsA+5cLSW9S840C2AOork5+t1m3MxgF9836g+
+ z/qn+P/ial4S8NDNsP+2g3NeeP3C7JeHFm2zcnFhcRgfY/B/juYhrTRkzmSxebRGKkYX
+ c3Cw4/vNA5BZAgS6u23Rd+c7EOoqlNmCiUftxA5YgQicloeLgniuVeXe9HSjEzkSBFmt
+ C0c66RiNr8RN1Mgr6VEMwn+v3BMI73bFfOTIFALaD4pw+VSHxzdRL9ndmrcjl5Yf6Nq8
+ UmuA==
+X-Gm-Message-State: APjAAAVLcHl0utJn9N+wS0DUdpyZ3pC52mFCfxGxA14SpDPKXwdTzMT3
+ e1AQgpEnNprLLR/SVptJAc4=
+X-Google-Smtp-Source: APXvYqxAHzQC7Z90lpdgYOSIs5u9EwVm0pWq+yLNiyr32VCtVGa5BvinBHIJMCdkAzPv0wvD8nFRBA==
+X-Received: by 2002:a37:646:: with SMTP id 67mr22333367qkg.287.1563311830055; 
+ Tue, 16 Jul 2019 14:17:10 -0700 (PDT)
+Received: from maquinola.fibertel.com.ar ([181.31.154.224])
+ by smtp.gmail.com with ESMTPSA id t76sm11023311qke.79.2019.07.16.14.17.07
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Tue, 16 Jul 2019 14:17:08 -0700 (PDT)
+From: Karen Palacio <karen.palacio.1994@gmail.com>
+To: linux-erofs@lists.ozlabs.org,
+	gaoxiang25@huawei.com,
+	yucha0@huawei.com
+Subject: [PATCH] v2: staging: erofs: fix typo
+Date: Tue, 16 Jul 2019 18:16:23 -0300
+Message-Id: <1563311783-12754-1-git-send-email-karen.palacio.1994@gmail.com>
+X-Mailer: git-send-email 2.7.4
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,38 +82,49 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ Karen Palacio <karen.palacio.1994@gmail.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Christian L Moreno <christianluciano.m@gmail.com>
+Fix typo in Kconfig
+Signed-off-by: Karen Palacio <karen.palacio.1994@gmail.com>
 
-Block comments should align the * on each line.
-This warning was reported by checkpatch.pl
+diff --git a/drivers/staging/erofs/Kconfig b/drivers/staging/erofs/Kconfig
+index d04b798..0dcefac 100644
+--- a/drivers/staging/erofs/Kconfig
++++ b/drivers/staging/erofs/Kconfig
+@@ -88,7 +88,7 @@ config EROFS_FS_IO_MAX_RETRIES
+          If unsure, leave the default value (5 retries, 6 IOs at most).
 
-Signed-off-by: Christian L Moreno <christianluciano.m@gmail.com>
+ config EROFS_FS_ZIP
+-       bool "EROFS Data Compresssion Support"
++       bool "EROFS Data Compression Support"
+        depends on EROFS_FS
+        select LZ4_DECOMPRESS
+        help
 ---
- drivers/staging/rtl8712/recv_linux.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/erofs/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8712/recv_linux.c b/drivers/staging/rtl8712/recv_linux.c
-index 84c4c8580f9a..70a4dcd4a1e5 100644
---- a/drivers/staging/rtl8712/recv_linux.c
-+++ b/drivers/staging/rtl8712/recv_linux.c
-@@ -115,8 +115,8 @@ void r8712_recv_indicatepkt(struct _adapter *adapter,
- 	skb->protocol = eth_type_trans(skb, adapter->pnetdev);
- 	netif_rx(skb);
- 	recvframe->u.hdr.pkt = NULL; /* pointers to NULL before
--					* r8712_free_recvframe()
--					*/
-+				      * r8712_free_recvframe()
-+				      */
- 	r8712_free_recvframe(recvframe, free_recv_queue);
- 	return;
- _recv_indicatepkt_drop:
+diff --git a/drivers/staging/erofs/Kconfig b/drivers/staging/erofs/Kconfig
+index d04b798..0dcefac 100644
+--- a/drivers/staging/erofs/Kconfig
++++ b/drivers/staging/erofs/Kconfig
+@@ -88,7 +88,7 @@ config EROFS_FS_IO_MAX_RETRIES
+ 	  If unsure, leave the default value (5 retries, 6 IOs at most).
+ 
+ config EROFS_FS_ZIP
+-	bool "EROFS Data Compresssion Support"
++	bool "EROFS Data Compression Support"
+ 	depends on EROFS_FS
+ 	select LZ4_DECOMPRESS
+ 	help
 -- 
-2.22.0
+2.7.4
 
 _______________________________________________
 devel mailing list
