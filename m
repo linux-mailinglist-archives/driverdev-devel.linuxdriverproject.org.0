@@ -2,77 +2,50 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1C5B96A203
-	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Jul 2019 08:00:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B65166A2A7
+	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Jul 2019 09:06:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4819E85FC6;
-	Tue, 16 Jul 2019 06:00:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EEB5685FC6;
+	Tue, 16 Jul 2019 07:06:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id okYbmpLVeQ4d; Tue, 16 Jul 2019 06:00:20 +0000 (UTC)
+	with ESMTP id MQvBFToMtrpI; Tue, 16 Jul 2019 07:06:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B94FC85F3A;
-	Tue, 16 Jul 2019 06:00:19 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 943C185FA5;
+	Tue, 16 Jul 2019 07:06:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id CFC081BF20D
- for <devel@linuxdriverproject.org>; Tue, 16 Jul 2019 05:59:56 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4C60F1BF310
+ for <devel@linuxdriverproject.org>; Tue, 16 Jul 2019 07:06:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id CCEEC2042C
- for <devel@linuxdriverproject.org>; Tue, 16 Jul 2019 05:59:56 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4995C85C6F
+ for <devel@linuxdriverproject.org>; Tue, 16 Jul 2019 07:06:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kf+QqX1vxgIx for <devel@linuxdriverproject.org>;
- Tue, 16 Jul 2019 05:59:56 +0000 (UTC)
+ with ESMTP id 6TxmPLxgmhLo for <devel@linuxdriverproject.org>;
+ Tue, 16 Jul 2019 07:06:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
- [209.85.210.195])
- by silver.osuosl.org (Postfix) with ESMTPS id 16973203A6
- for <devel@driverdev.osuosl.org>; Tue, 16 Jul 2019 05:59:56 +0000 (UTC)
-Received: by mail-pf1-f195.google.com with SMTP id t16so8534508pfe.11
- for <devel@driverdev.osuosl.org>; Mon, 15 Jul 2019 22:59:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=9ivc6od8L6GPBsgJw/8JaZqQBLdmXOUxA5+liRugWa0=;
- b=fI4bHT3317Rtp+aKT5/k2gKQB3L6a4JNnKR/DjjEmsP0K3XKagE/bN1tibma9pMliR
- dbt0cQ96jOYjd4tJR1trjSF0cJhMWquOBIKB9GFetViNcyldI3gv0Aqh2kcdoNC8RIHd
- cyEUkv2JqmMXklnHPYJqacCd6xj3g9foz4ITuESUz9nR28Rmhmiu62YJxmV5WwVAeRUl
- x1Hq5pvY2d0/txgG+jMvRhX1x9quNZSLPgKcgqLWBINiSSb7OGT3CYUQiHG9qXSC4yyX
- cCZ6hcITQ9aqwTKjRATr3m9TeBLz1WbzThZcywl7lbbcHHFyzVuwRAG1BXBV7O0JFAcl
- rtPQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=9ivc6od8L6GPBsgJw/8JaZqQBLdmXOUxA5+liRugWa0=;
- b=nbjh22Ch2YK0viCrPKHRLFVoyPU7IR4B7IPQf2Ssuy6kXbWV8mdKHLIp4xwwJBf28U
- Zo67MGF74moY9dDsr/jbbko+LveNhrn2zzHJ2P+2ESoO7S5luRt0i2aDquYQ47jNQLXU
- h39I7IS++C40iC5XqVeh88wouf6WlvJH7BLXORoelKU0hgxkc0NDDCtyHl5+hoghfG5h
- a4RZG4ft98Rx9DRJktfPVYxXKGyXUD1IMyNenLw2BCFv4Eo654U3eHLGa8HRPw9vQeu+
- E59iPaXr+K9VCPaEbOzEbtoj9Rb8u3J4cqRP+pcKHtBWPIuJmkJkWdc//Q6XAl44/7tJ
- mmkQ==
-X-Gm-Message-State: APjAAAX8DvqwSM3Xelv1qCnod0FNYuW8ljHSHuwUV/GjEAeTqh7Rz0h5
- buBs/LsfNonsclqX3TkOCi0=
-X-Google-Smtp-Source: APXvYqz4dVd2k8L42iep3Zx8Gmj+7Yp3InAeif4HZktkMvbnTxNhWpLrKi4GwQ6osBcNn5usI3zYEQ==
-X-Received: by 2002:a63:20a:: with SMTP id 10mr31109140pgc.226.1563256795658; 
- Mon, 15 Jul 2019 22:59:55 -0700 (PDT)
-Received: from localhost.localdomain ([110.227.64.207])
- by smtp.gmail.com with ESMTPSA id i3sm20864172pfo.138.2019.07.15.22.59.52
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Mon, 15 Jul 2019 22:59:55 -0700 (PDT)
-From: Nishka Dasgupta <nishkadg.linux@gmail.com>
-To: gregkh@linuxfoundation.org, matthias.bgg@gmail.com,
- devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH] staging: mt7621-pci: Add of_node_put() before return
-Date: Tue, 16 Jul 2019 11:29:44 +0530
-Message-Id: <20190716055944.3237-1-nishkadg.linux@gmail.com>
-X-Mailer: git-send-email 2.19.1
+Received: from huawei.com (szxga05-in.huawei.com [45.249.212.191])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 6726981CFE
+ for <devel@driverdev.osuosl.org>; Tue, 16 Jul 2019 07:06:25 +0000 (UTC)
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 0211B411FFDFF9F98B34;
+ Tue, 16 Jul 2019 15:06:22 +0800 (CST)
+Received: from szvp000203569.huawei.com (10.120.216.130) by
+ DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
+ 14.3.439.0; Tue, 16 Jul 2019 15:06:11 +0800
+From: Chao Yu <yuchao0@huawei.com>
+To: <gregkh@linuxfoundation.org>, <devel@driverdev.osuosl.org>
+Subject: [PATCH] staging: erofs: support bmap
+Date: Tue, 16 Jul 2019 15:05:42 +0800
+Message-ID: <20190716070543.88863-1-yuchao0@huawei.com>
+X-Mailer: git-send-email 2.18.0.rc1
 MIME-Version: 1.0
+X-Originating-IP: [10.120.216.130]
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,49 +58,64 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Nishka Dasgupta <nishkadg.linux@gmail.com>
+Cc: Chao Yu <yuchao0@huawei.com>, linux-erofs@lists.ozlabs.org, chao@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Each iteration of for_each_available_child_of_node puts the previous
-node, but in the case of a return from the middle of the loop, there is
-no put, thus causing a memory leak. Hence add an of_node_put before the
-return in two places.
-Issue found with Coccinelle.
+Add erofs_bmap() to support FIBMAP ioctl on flatmode inode.
 
-Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
+Signed-off-by: Chao Yu <yuchao0@huawei.com>
 ---
- drivers/staging/mt7621-pci/pci-mt7621.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ drivers/staging/erofs/data.c | 29 +++++++++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
 
-diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt7621-pci/pci-mt7621.c
-index 89fa813142ab..2e37fd136ab8 100644
---- a/drivers/staging/mt7621-pci/pci-mt7621.c
-+++ b/drivers/staging/mt7621-pci/pci-mt7621.c
-@@ -400,6 +400,7 @@ static int mt7621_pcie_parse_dt(struct mt7621_pcie *pcie)
+diff --git a/drivers/staging/erofs/data.c b/drivers/staging/erofs/data.c
+index fbce71403d87..03da57f04347 100644
+--- a/drivers/staging/erofs/data.c
++++ b/drivers/staging/erofs/data.c
+@@ -308,9 +308,38 @@ static int erofs_raw_access_readpages(struct file *filp,
+ 	return iomap_readpages(mapping, pages, nr_pages, &erofs_iomap_ops);
+ }
  
- 		err = of_pci_get_devfn(child);
- 		if (err < 0) {
-+			of_node_put(child);
- 			dev_err(dev, "failed to parse devfn: %d\n", err);
- 			return err;
- 		}
-@@ -407,8 +408,10 @@ static int mt7621_pcie_parse_dt(struct mt7621_pcie *pcie)
- 		slot = PCI_SLOT(err);
++static int erofs_get_block(struct inode *inode, sector_t iblock,
++			   struct buffer_head *bh, int create)
++{
++	struct erofs_map_blocks map = {
++		.m_la = iblock << 9,
++	};
++	int err;
++
++	err = erofs_map_blocks(inode, &map, EROFS_GET_BLOCKS_RAW);
++	if (err)
++		return err;
++
++	if (map.m_flags & EROFS_MAP_MAPPED)
++		bh->b_blocknr = erofs_blknr(map.m_pa);
++
++	return err;
++}
++
++static sector_t erofs_bmap(struct address_space *mapping, sector_t block)
++{
++	struct inode *inode = mapping->host;
++
++	if (is_inode_flat_inline(inode))
++		return 0;
++
++	return generic_block_bmap(mapping, block, erofs_get_block);
++}
++
+ /* for uncompressed (aligned) files and raw access for other files */
+ const struct address_space_operations erofs_raw_access_aops = {
+ 	.readpage = erofs_raw_access_readpage,
+ 	.readpages = erofs_raw_access_readpages,
++	.bmap = erofs_bmap,
+ };
  
- 		err = mt7621_pcie_parse_port(pcie, child, slot);
--		if (err)
-+		if (err) {
-+			of_node_put(child);
- 			return err;
-+		}
- 	}
- 
- 	return 0;
 -- 
-2.19.1
+2.18.0.rc1
 
 _______________________________________________
 devel mailing list
