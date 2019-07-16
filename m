@@ -2,35 +2,35 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 53B166A8F9
-	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Jul 2019 14:56:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9C5666A8F6
+	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Jul 2019 14:55:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id CB1FB2049E;
-	Tue, 16 Jul 2019 12:56:07 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5A1CE204CA;
+	Tue, 16 Jul 2019 12:55:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8nsRApYtkWE8; Tue, 16 Jul 2019 12:56:06 +0000 (UTC)
+	with ESMTP id QUHT8yA-aICh; Tue, 16 Jul 2019 12:55:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 38D99203F0;
-	Tue, 16 Jul 2019 12:56:05 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A381120407;
+	Tue, 16 Jul 2019 12:55:04 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BB1021BF3FC
- for <devel@linuxdriverproject.org>; Tue, 16 Jul 2019 12:56:02 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 338861BF3FC
+ for <devel@linuxdriverproject.org>; Tue, 16 Jul 2019 12:55:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id AA8CC86B49
- for <devel@linuxdriverproject.org>; Tue, 16 Jul 2019 12:56:02 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 237E886B49
+ for <devel@linuxdriverproject.org>; Tue, 16 Jul 2019 12:55:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PDEcr3kOjtOi for <devel@linuxdriverproject.org>;
- Tue, 16 Jul 2019 12:56:02 +0000 (UTC)
+ with ESMTP id L16eafMEtyuy for <devel@linuxdriverproject.org>;
+ Tue, 16 Jul 2019 12:55:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 585D4862E8
- for <devel@driverdev.osuosl.org>; Tue, 16 Jul 2019 12:56:02 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 67244862E8
+ for <devel@driverdev.osuosl.org>; Tue, 16 Jul 2019 12:55:00 +0000 (UTC)
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
