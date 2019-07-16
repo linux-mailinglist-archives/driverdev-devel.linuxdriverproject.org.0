@@ -1,57 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7D8666A313
-	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Jul 2019 09:38:52 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C47D46A403
+	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Jul 2019 10:39:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id C03A82152E;
-	Tue, 16 Jul 2019 07:38:50 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8163D84D24;
+	Tue, 16 Jul 2019 08:39:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rb4rtDCS5nXM; Tue, 16 Jul 2019 07:38:50 +0000 (UTC)
+	with ESMTP id IceQYzwlXurD; Tue, 16 Jul 2019 08:39:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D04B2204CC;
-	Tue, 16 Jul 2019 07:38:47 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 99A2784993;
+	Tue, 16 Jul 2019 08:39:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id ED0E41BF310
- for <devel@linuxdriverproject.org>; Tue, 16 Jul 2019 07:38:44 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 39F041BF30D
+ for <devel@linuxdriverproject.org>; Tue, 16 Jul 2019 08:39:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id EA7B4204BD
- for <devel@linuxdriverproject.org>; Tue, 16 Jul 2019 07:38:44 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 36B992047F
+ for <devel@linuxdriverproject.org>; Tue, 16 Jul 2019 08:39:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9ttj6AmXTeLr for <devel@linuxdriverproject.org>;
- Tue, 16 Jul 2019 07:38:43 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
- by silver.osuosl.org (Postfix) with ESMTPS id DD10D204BA
- for <devel@driverdev.osuosl.org>; Tue, 16 Jul 2019 07:38:42 +0000 (UTC)
-Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 29AA45966C685B44ACB4;
- Tue, 16 Jul 2019 15:38:40 +0800 (CST)
-Received: from [10.151.23.176] (10.151.23.176) by smtp.huawei.com
- (10.3.19.201) with Microsoft SMTP Server (TLS) id 14.3.439.0; Tue, 16 Jul
- 2019 15:38:34 +0800
-Subject: Re: [PATCH] staging: erofs: support bmap
-To: Chao Yu <yuchao0@huawei.com>, <gregkh@linuxfoundation.org>,
- <devel@driverdev.osuosl.org>
-References: <20190716070543.88863-1-yuchao0@huawei.com>
- <ed011d9f-6fdc-a8ee-8a18-c94875bbfa53@huawei.com>
- <67b812f6-618d-d390-66f0-7f5eaf2cb6ed@huawei.com>
-From: Gao Xiang <gaoxiang25@huawei.com>
-Message-ID: <b744f9aa-782a-1f29-22da-8bce6ed566d5@huawei.com>
-Date: Tue, 16 Jul 2019 15:37:58 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+ with ESMTP id iU27P-84naaJ for <devel@linuxdriverproject.org>;
+ Tue, 16 Jul 2019 08:39:38 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id 3DBFA203FE
+ for <devel@driverdev.osuosl.org>; Tue, 16 Jul 2019 08:39:38 +0000 (UTC)
+Received: from localhost (unknown [113.157.217.50])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8B244206C2;
+ Tue, 16 Jul 2019 08:39:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1563266378;
+ bh=ssPZAo5dXHHPNouNGTvVRALYu0oPoZ+PbbXzdC0B6Kw=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=X7JVunjjTnc01kKlaG12hQOaomPng4ObG+rthUu1fZurnw5j/g+wfAA0osSY06CcO
+ OFTJxTUzD+e5WBTlt7HfrbSkiUwbSezum1FV7QTjCH0ReSSgz4uYeg4AFpgB2keKLE
+ x6N7nZgDYCTGru+0tcfxeQvNtD6zcuJBomrr7cEI=
+Date: Tue, 16 Jul 2019 17:36:53 +0900
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: john.hubbard@gmail.com
+Subject: Re: [PATCH] staging: kpc2000: whitespace and line length cleanup
+Message-ID: <20190716083653.GB26457@kroah.com>
+References: <20190715212123.432-1-jhubbard@nvidia.com>
+ <20190715212123.432-2-jhubbard@nvidia.com>
 MIME-Version: 1.0
-In-Reply-To: <67b812f6-618d-d390-66f0-7f5eaf2cb6ed@huawei.com>
-X-Originating-IP: [10.151.23.176]
-X-CFilter-Loop: Reflected
+Content-Disposition: inline
+In-Reply-To: <20190715212123.432-2-jhubbard@nvidia.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,76 +66,74 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: chao@kernel.org, linux-erofs@lists.ozlabs.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, Bharath Vedartham <linux.bhar@gmail.com>,
+ Geordan Neukum <gneukum1@gmail.com>, Vandana BN <bnvandana@gmail.com>,
+ Simon =?iso-8859-1?Q?Sandstr=F6m?= <simon@nikanor.nu>,
+ LKML <linux-kernel@vger.kernel.org>, John Hubbard <jhubbard@nvidia.com>,
+ Dan Carpenter <dan.carpenter@oracle.com>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Mon, Jul 15, 2019 at 02:21:23PM -0700, john.hubbard@gmail.com wrote:
+> From: John Hubbard <jhubbard@nvidia.com>
+> =
 
+> This commit was created by running indent(1):
+>     `indent -linux`
+> =
 
-On 2019/7/16 15:35, Chao Yu wrote:
-> Hi Xiang,
-> 
-> On 2019/7/16 15:19, Gao Xiang wrote:
->> Hi Chao,
->>
->> On 2019/7/16 15:05, Chao Yu wrote:
->>> Add erofs_bmap() to support FIBMAP ioctl on flatmode inode.
->>>
->>> Signed-off-by: Chao Yu <yuchao0@huawei.com>
->>> ---
->>>  drivers/staging/erofs/data.c | 29 +++++++++++++++++++++++++++++
->>>  1 file changed, 29 insertions(+)
->>>
->>> diff --git a/drivers/staging/erofs/data.c b/drivers/staging/erofs/data.c
->>> index fbce71403d87..03da57f04347 100644
->>> --- a/drivers/staging/erofs/data.c
->>> +++ b/drivers/staging/erofs/data.c
->>> @@ -308,9 +308,38 @@ static int erofs_raw_access_readpages(struct file *filp,
->>>  	return iomap_readpages(mapping, pages, nr_pages, &erofs_iomap_ops);
->>>  }
->>>  
->>> +static int erofs_get_block(struct inode *inode, sector_t iblock,
->>> +			   struct buffer_head *bh, int create)
->>> +{
->>> +	struct erofs_map_blocks map = {
->>> +		.m_la = iblock << 9,
->>> +	};
->>> +	int err;
->>> +
->>> +	err = erofs_map_blocks(inode, &map, EROFS_GET_BLOCKS_RAW);
->>> +	if (err)
->>> +		return err;
->>> +
->>> +	if (map.m_flags & EROFS_MAP_MAPPED)
->>> +		bh->b_blocknr = erofs_blknr(map.m_pa);
->>> +
->>> +	return err;
->>> +}
->>> +
->>> +static sector_t erofs_bmap(struct address_space *mapping, sector_t block)
->>> +{
->>> +	struct inode *inode = mapping->host;
->>> +
->>> +	if (is_inode_flat_inline(inode))
->>> +		return 0;
->>
->> could we support flat_inline as well? some difficulty on this?
-> 
-> I think we can support partial of this on inline inode, e.g.:
-> 
-> [0, 4k] mapped
-> [4k, 5k] inline
-> 
-> We can find and return the physical block address for first block, but for last
-> block locating in metadata, we should just return 0 (0 indicate bmap has failed
-> to get mapped block address).
+> ...and then applying some manual corrections and
+> cleanup afterward, to keep it sane. No functional changes
+> were made.
+> =
 
-I think that is fine (in the long term, FIEMAP is preferred of course.)
+> In addition to whitespace changes, some strings were split,
+> but not strings that were likely to be a grep problem
+> (in other words, if a user is likely to grep for a string
+> within the driver, that should still work in most cases).
+> =
 
-Thanks,
-Gao Xiang
+> A few "void * foo" cases were fixed to be "void *foo".
+> =
+
+> That was enough to make checkpatch.pl run without errors,
+> although note that there are lots of serious warnings
+> remaining--but those require functional, not just whitespace
+> changes. So those are left for a separate patch.
+> =
+
+> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> Cc: Simon Sandstr=F6m <simon@nikanor.nu>
+> Cc: Geordan Neukum <gneukum1@gmail.com>
+> Cc: Jeremy Sowden <jeremy@azazel.net>
+> Cc: Dan Carpenter <dan.carpenter@oracle.com>
+> Cc: Vandana BN <bnvandana@gmail.com>
+> Cc: devel@driverdev.osuosl.org
+> Cc: Bharath Vedartham <linux.bhar@gmail.com>
+> Signed-off-by: John Hubbard <jhubbard@nvidia.com>
+> ---
+>  drivers/staging/kpc2000/kpc2000_i2c.c         | 189 +++++++++++------
+>  drivers/staging/kpc2000/kpc2000_spi.c         | 116 +++++-----
+>  drivers/staging/kpc2000/kpc_dma/dma.c         | 109 ++++++----
+>  drivers/staging/kpc2000/kpc_dma/fileops.c     | 199 +++++++++++-------
+>  .../staging/kpc2000/kpc_dma/kpc_dma_driver.c  | 113 +++++-----
+>  .../staging/kpc2000/kpc_dma/kpc_dma_driver.h  | 156 +++++++-------
+>  6 files changed, 509 insertions(+), 373 deletions(-)
+
+THat's way too many different types of changes to do all at once, and
+some of these are making the code look worse, not better.
+
+There's a reason we don't run lindent :)
+
+If you want to do one-type-of-fix-per-patch, I'll gladly take these,
+otherwise, I recommend leaving this for those people learning how to do
+development to do.
+
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
