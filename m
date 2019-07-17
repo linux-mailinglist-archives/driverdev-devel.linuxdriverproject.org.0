@@ -1,80 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E49376BE1E
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Jul 2019 16:23:33 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 91CBD6BE59
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Jul 2019 16:35:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 604F6863E0;
-	Wed, 17 Jul 2019 14:23:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6CF7F87ED1;
+	Wed, 17 Jul 2019 14:35:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8SYGLYxg5W14; Wed, 17 Jul 2019 14:23:30 +0000 (UTC)
+	with ESMTP id 0KSDY1n707L6; Wed, 17 Jul 2019 14:35:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 21F378638F;
-	Wed, 17 Jul 2019 14:23:30 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0A3198742F;
+	Wed, 17 Jul 2019 14:35:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E7A721BF342
- for <devel@linuxdriverproject.org>; Wed, 17 Jul 2019 14:23:28 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1141B1BF342
+ for <devel@linuxdriverproject.org>; Wed, 17 Jul 2019 14:35:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id E462F220FB
- for <devel@linuxdriverproject.org>; Wed, 17 Jul 2019 14:23:28 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0DF018638F
+ for <devel@linuxdriverproject.org>; Wed, 17 Jul 2019 14:35:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 30Tv7-uWQWPi for <devel@linuxdriverproject.org>;
- Wed, 17 Jul 2019 14:23:28 +0000 (UTC)
+ with ESMTP id 2Oh1BoZNT4za for <devel@linuxdriverproject.org>;
+ Wed, 17 Jul 2019 14:34:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
- [209.85.210.195])
- by silver.osuosl.org (Postfix) with ESMTPS id 848412045F
- for <devel@driverdev.osuosl.org>; Wed, 17 Jul 2019 14:23:28 +0000 (UTC)
-Received: by mail-pf1-f195.google.com with SMTP id r7so10926525pfl.3
- for <devel@driverdev.osuosl.org>; Wed, 17 Jul 2019 07:23:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=XpT+hyHQLrqTrk2x0mHRYSE52sz59GDyA66hoyA5DA8=;
- b=cR9ZpfCpxkVPqyp15+rlsfv0Uo19LMdW46Mtd25oPGRpue1omqQnENfn4j2eRm9ude
- skJnLsFyEw3cyE/jFOdpetpR8xKckZyVQpYuGkbOMelnKMLFFxPmWrC/bYDw5WKzqsw+
- bjYAZk8DOU5BKHGZZ1RfX2dzKqyBfSX7CF97Yu9uuYX9L3gAuehEkm0jD5F6H3wAbxKF
- Esy/Nfe6owVBjicH1/ZRvt525HyUXAuQtA/BpebfvNzQ5fGjRWNp2DynMWeYqI4P+dE5
- lcAvHd8VxlZH7qpQvdPGkP63uKHcEjFXLj15q1BPmiXpenaKKjFXrKL+vDtkw8TBYDor
- 363A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=XpT+hyHQLrqTrk2x0mHRYSE52sz59GDyA66hoyA5DA8=;
- b=spa0qJCrcFZr0HqhsHJ8TwsHg/3P5J9J1xPoDpIbha36Rd/6IpnGd1C8aMqHEZh2aS
- 8A9X8zf1pKJ7eF5WJIqm3rYVz11TukRZgPlgVWBksTLED8F3oo+jb2FluTfbv2W2LxYO
- PG/dNOkOxZs05tZF4YsUjDQS6pxSapqnGSGPNFd+PFm4F51iYMn33JM4Iob8Emo+fVJa
- cwJ5c08BcRImqaBS3YcYUjXA35QE12Xf5PKtPJM0NrmuFxto1RYKQ+LY0RhuK83TB6kp
- hwexllKcCiRV9UIX1iGOQZA1jip2Yt9SIQdOX3RaASdXaS3kafVIboEZlDf/beU5cDbP
- gtZw==
-X-Gm-Message-State: APjAAAW3iKwXBScVehTLQcHDHcy+pp/FUfmWItXXpGxxGNHgwoUtCbhu
- fy2XQhfphYNyKpOFpbw5Ksw=
-X-Google-Smtp-Source: APXvYqzMGbB7T5JbwWo8Ni2OiTookhu2ITf9hLjDGQPrn3tlis2UqVAOlnIZx35dPi6C0KPX3tPMiA==
-X-Received: by 2002:a17:90a:9b08:: with SMTP id
- f8mr44498517pjp.103.1563373408094; 
- Wed, 17 Jul 2019 07:23:28 -0700 (PDT)
-Received: from localhost.localdomain ([110.227.64.207])
- by smtp.gmail.com with ESMTPSA id l27sm2324253pgn.19.2019.07.17.07.23.24
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Wed, 17 Jul 2019 07:23:27 -0700 (PDT)
-From: Nishka Dasgupta <nishkadg.linux@gmail.com>
-To: paul.kocialkowski@bootlin.com, maxime.ripard@bootlin.com,
- mchehab@kernel.org, gregkh@linuxfoundation.org, wens@csie.org,
- linux-media@vger.kernel.org, devel@driverdev.osuosl.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [PATCH] staging: media: sunxi: Add bool cast to value
-Date: Wed, 17 Jul 2019 19:53:15 +0530
-Message-Id: <20190717142315.3119-1-nishkadg.linux@gmail.com>
-X-Mailer: git-send-email 2.19.1
+Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C534586381
+ for <devel@driverdev.osuosl.org>; Wed, 17 Jul 2019 14:34:58 +0000 (UTC)
+Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id C24388FE867EE1C592AC;
+ Wed, 17 Jul 2019 22:34:54 +0800 (CST)
+Received: from localhost (10.133.213.239) by DGGEMS401-HUB.china.huawei.com
+ (10.3.19.201) with Microsoft SMTP Server id 14.3.439.0; Wed, 17 Jul 2019
+ 22:34:47 +0800
+From: YueHaibing <yuehaibing@huawei.com>
+To: <gregkh@linuxfoundation.org>, <payal.s.kshirsagar.98@gmail.com>,
+ <hariprasad.kelam@gmail.com>
+Subject: [PATCH] staging: rtl8723bs: remove set but not used variable
+ 'cck_highpwr'
+Date: Wed, 17 Jul 2019 22:20:14 +0800
+Message-ID: <20190717142014.43216-1-yuehaibing@huawei.com>
+X-Mailer: git-send-email 2.10.2.windows.1
 MIME-Version: 1.0
+X-Originating-IP: [10.133.213.239]
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,36 +60,60 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Nishka Dasgupta <nishkadg.linux@gmail.com>
+Cc: devel@driverdev.osuosl.org, YueHaibing <yuehaibing@huawei.com>,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Typecast as bool the return value of cedrus_find_format in
-cedrus_check_format as the return value of cedrus_check_format is always
-treated like a boolean value.
+Fixes gcc '-Wunused-but-set-variable' warning:
 
-Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
+drivers/staging/rtl8723bs/hal/odm_HWConfig.c:
+ In function odm_RxPhyStatus92CSeries_Parsing:
+drivers/staging/rtl8723bs/hal/odm_HWConfig.c:92:5: warning:
+ variable cck_highpwr set but not used [-Wunused-but-set-variable]
+
+It is never used and can be removed.
+
+Reported-by: Hulk Robot <hulkci@huawei.com>
+Signed-off-by: YueHaibing <yuehaibing@huawei.com>
 ---
- drivers/staging/media/sunxi/cedrus/cedrus_video.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rtl8723bs/hal/odm_HWConfig.c | 7 -------
+ 1 file changed, 7 deletions(-)
 
-diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_video.c b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
-index e2b530b1a956..f00a048a0a01 100644
---- a/drivers/staging/media/sunxi/cedrus/cedrus_video.c
-+++ b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
-@@ -86,7 +86,7 @@ static struct cedrus_format *cedrus_find_format(u32 pixelformat, u32 directions,
- static bool cedrus_check_format(u32 pixelformat, u32 directions,
- 				unsigned int capabilities)
- {
--	return cedrus_find_format(pixelformat, directions, capabilities);
-+	return (bool)cedrus_find_format(pixelformat, directions, capabilities);
- }
+diff --git a/drivers/staging/rtl8723bs/hal/odm_HWConfig.c b/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
+index 49fa81406..71919a3 100644
+--- a/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
++++ b/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
+@@ -89,7 +89,6 @@ static void odm_RxPhyStatus92CSeries_Parsing(
+ 	u8 RSSI, total_rssi = 0;
+ 	bool isCCKrate = false;
+ 	u8 rf_rx_num = 0;
+-	u8 cck_highpwr = 0;
+ 	u8 LNA_idx, VGA_idx;
+ 	PPHY_STATUS_RPT_8192CD_T pPhyStaRpt = (PPHY_STATUS_RPT_8192CD_T)pPhyStatus;
  
- static void cedrus_prepare_format(struct v4l2_pix_format *pix_fmt)
+@@ -107,16 +106,10 @@ static void odm_RxPhyStatus92CSeries_Parsing(
+ 		/*  (2)PWDB, Average PWDB cacluated by hardware (for rate adaptive) */
+ 		/*  */
+ 
+-		/* if (pHalData->eRFPowerState == eRfOn) */
+-		cck_highpwr = pDM_Odm->bCckHighPower;
+-		/* else */
+-		/* cck_highpwr = false; */
+-
+ 		cck_agc_rpt =  pPhyStaRpt->cck_agc_rpt_ofdm_cfosho_a ;
+ 
+ 		/* 2011.11.28 LukeLee: 88E use different LNA & VGA gain table */
+ 		/* The RSSI formula should be modified according to the gain table */
+-		/* In 88E, cck_highpwr is always set to 1 */
+ 		LNA_idx = ((cck_agc_rpt & 0xE0)>>5);
+ 		VGA_idx = (cck_agc_rpt & 0x1F);
+ 		rx_pwr_all = odm_CCKRSSI_8723B(LNA_idx, VGA_idx);
 -- 
-2.19.1
+2.7.4
+
 
 _______________________________________________
 devel mailing list
