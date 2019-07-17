@@ -1,91 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 554BA6BE8A
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Jul 2019 16:51:41 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E45B46BECC
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Jul 2019 17:08:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 33DE586D85;
-	Wed, 17 Jul 2019 14:51:39 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2B11F863AC;
+	Wed, 17 Jul 2019 15:08:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id w245LGpqzldC; Wed, 17 Jul 2019 14:51:39 +0000 (UTC)
+	with ESMTP id ErgT6gUk6OlI; Wed, 17 Jul 2019 15:08:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 89EA785782;
-	Wed, 17 Jul 2019 14:51:38 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DBA36863E3;
+	Wed, 17 Jul 2019 15:08:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0D20E1BF342
- for <devel@linuxdriverproject.org>; Wed, 17 Jul 2019 14:50:56 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E5F5D1BF57C
+ for <devel@linuxdriverproject.org>; Wed, 17 Jul 2019 15:07:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0A612204D4
- for <devel@linuxdriverproject.org>; Wed, 17 Jul 2019 14:50:56 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id DB9D0221D5
+ for <devel@linuxdriverproject.org>; Wed, 17 Jul 2019 15:07:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1f360qMlwk-u for <devel@linuxdriverproject.org>;
- Wed, 17 Jul 2019 14:50:54 +0000 (UTC)
-X-Greylist: delayed 00:09:07 by SQLgrey-1.7.6
-Received: from wout2-smtp.messagingengine.com (wout2-smtp.messagingengine.com
- [64.147.123.25])
- by silver.osuosl.org (Postfix) with ESMTPS id E100E2045F
- for <devel@driverdev.osuosl.org>; Wed, 17 Jul 2019 14:50:54 +0000 (UTC)
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailout.west.internal (Postfix) with ESMTP id 7630C447;
- Wed, 17 Jul 2019 10:41:45 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute3.internal (MEProxy); Wed, 17 Jul 2019 10:41:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jaseg.net; h=
- from:subject:to:cc:references:message-id:date:mime-version
- :in-reply-to:content-type:content-transfer-encoding; s=fm3; bh=r
- //nzcRetFe1mQcf2ZScBZlmXMRRWgYkY3HhEVoUW5g=; b=QjDKjunKNKXsQdGTK
- YGMgsIKhOOuhTj5HoZEACFt97Cu6KgNCEUO1tzlGKozWGUg+YCktXX73+KyK6q1D
- tK/KCna0OHHdCyXwkFQZ4YMVEbqpyaH1hqJRmY1Y5vOLddFEcSLCtu6hr0fSZNuj
- 11WCVYgtovJmbVmttPIbw//sDu9V7zJpzBrhwrLzXiZgCUR173wgJjQBrJh3GIc6
- n+aMEmHnHCIqTkrg9PFcjonsVy9Celj/DrsM6yj3q4I62r11+pwRiyJqZbzcSEAT
- BVXHhP6/jiXvoMlias5zHAXXPudpxkhYjg1Y9N91p5/iHXxeOBMiaozyQwZ1QLVe
- VedSQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:content-type
- :date:from:in-reply-to:message-id:mime-version:references
- :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm3; bh=r//nzcRetFe1mQcf2ZScBZlmXMRRWgYkY3HhEVoUW
- 5g=; b=HorNKpy4Kd2hLgdJW84OOMnn5hD7jq8EZORqyd+rnO7jr3eLuFtNUT7nH
- q3eIhgsIft8vm/73afzJOF8WP6e9UDCC/7D4nu4duBRh7uUjJZZJJgZhoAh4c0Kp
- oCwC1PkqPdV01+KPntd60ycCAmyyVXjZqI/bRYqwHXvxf+90dKvvCqOwxqK4Tq3h
- ahRXIUupan7r9SIVcZEyfNX9EvQk7qZDjzjCpk8BVcbOIo64XrSYOXRqGiaPX4qM
- Yd1KWKkgaF/EYuaERDJkX1+9LRSVJ2ZsT9w77J0EVG9pAcqhoJI8y8VnJZ5nh8jH
- 7SJwwYlWTWkVKBcrt5RqusLmYTBdA==
-X-ME-Sender: <xms:pjMvXRRe3-Kzp_k7PsuSWDICiSFroLqpAdt6tOOU9bcogU1dHPThWQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduvddrieefgdehhecutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenog
- etfedtuddqtdduucdludehmdenucfjughrpefhuffvfhfkffgfgggjtgfgsehtkeertddt
- feehnecuhfhrohhmpeflrghnpgfuvggsrghsthhirghnpgfinphtthgvuceolhhinhhugi
- esjhgrshgvghdrnhgvtheqnecukfhppeeitddrjedurdeifedrjeehnecurfgrrhgrmhep
- mhgrihhlfhhrohhmpehlihhnuhigsehjrghsvghgrdhnvghtnecuvehluhhsthgvrhfuih
- iivgeptd
-X-ME-Proxy: <xmx:pjMvXX7DJo_hodvFt5Yft56QLLNvvak47rBn7LT2N5SQzMXBxMuivw>
- <xmx:pjMvXV3KSEdHv5hYxzAyZjuHEB0HHfDalLT7xYKvqrr0TGrLjGu9AQ>
- <xmx:pjMvXaD_wkn3P1eBlAlw8VUl_0QSxZrbZzpk8ss_KMyKJsTB_gzNmA>
- <xmx:qTMvXT0DuJp9IqC2S0OSsgmVrTb2XdvFbtk5NKyNXaLprMgpFMzxtg>
-Received: from [10.137.0.16] (softbank060071063075.bbtec.net [60.71.63.75])
- by mail.messagingengine.com (Postfix) with ESMTPA id 31D5580060;
- Wed, 17 Jul 2019 10:41:40 -0400 (EDT)
-From: =?UTF-8?Q?Jan_Sebastian_G=c3=b6tte?= <linux@jaseg.net>
-Subject: [PATCH v2] Staging: fbtft: Fix GPIO handling
-To: =?UTF-8?Q?Jan_Sebastian_G=c3=b6tte?= <linux@jaseg.net>
-References: <20190715143003.12819-1-nsaenzjulienne@suse.de>
- <7b8242ab-cc0c-d90b-60af-ff1c53789e44@opensynergy.com>
- <5a77c18f-7338-888f-2379-12171b6a545e@jaseg.net>
-Message-ID: <75ada52f-afa1-08bc-d0ce-966fc1110e70@jaseg.net>
-Date: Wed, 17 Jul 2019 23:41:37 +0900
+ with ESMTP id tAXVDznJpqlR for <devel@linuxdriverproject.org>;
+ Wed, 17 Jul 2019 15:07:58 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-qt1-f193.google.com (mail-qt1-f193.google.com
+ [209.85.160.193])
+ by silver.osuosl.org (Postfix) with ESMTPS id D2D0D1FEDF
+ for <devel@driverdev.osuosl.org>; Wed, 17 Jul 2019 15:07:57 +0000 (UTC)
+Received: by mail-qt1-f193.google.com with SMTP id 44so23618857qtg.11
+ for <devel@driverdev.osuosl.org>; Wed, 17 Jul 2019 08:07:57 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=ZKjB19WpZnjz3jo720PWZOtMKEqDcxAGDRdZ6CCSf0s=;
+ b=HaVfyDNQsbyWatLlKu8KL3dHQSL3VW6stdv6xkA2j7MKk4P3Bh7+bTTFpFb0dGhpPz
+ QFLa1OcmyQLogBNfl+TdNr5uXNtHUysIlNiltpW37WLV1VWauyG1ZAgXuIfEQ8NL9Hn1
+ H5FX25Q+dHFO5lAyKhrM4/AD3pqIEPSbciWYqrtH6zlbvQUMW6i/gcORW4H6qL21aHkT
+ 85Z+B/4n3fQuqjzjYYkW618O2YsXJGu6tjlCYiupvOpzkhinH+KXBEiuOgnnaJ46/GkN
+ RcBInKRUtwmzdsqsTCqcn/LB7zGmXWyifhygyp6B6EKi4zEu8c093vynr7xmRxEMd7jQ
+ uVjg==
+X-Gm-Message-State: APjAAAWA0Ztv/khGAlmu6OZoe8MXmxvkIkUzYES4UQgy8Oc36L8cEWtY
+ xYrjQfx7zyhDtz4Kd5K1wRbzeA==
+X-Google-Smtp-Source: APXvYqzNmWG7Hd9yodNjEs32oG/e5XZor3q9i7E5uaM8LrpeOf9mvzsXb3xCrYLcCHrTNpUHGwPHAg==
+X-Received: by 2002:ac8:31d6:: with SMTP id i22mr29197459qte.338.1563376076783; 
+ Wed, 17 Jul 2019 08:07:56 -0700 (PDT)
+Received: from [10.193.21.226] ([66.187.232.66])
+ by smtp.gmail.com with ESMTPSA id n3sm10364744qkk.54.2019.07.17.08.07.52
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Wed, 17 Jul 2019 08:07:55 -0700 (PDT)
+Subject: Re: [PATCH] staging: android: ion: Remove unused rbtree for ion_buffer
+To: Lecopzer Chen <lecopzer.chen@mediatek.com>, linux-kernel@vger.kernel.org
+References: <20190712084717.12441-1-lecopzer.chen@mediatek.com>
+From: Laura Abbott <labbott@redhat.com>
+Message-ID: <52dc3872-3d08-1d0d-6d8f-10223bc186bc@redhat.com>
+Date: Wed, 17 Jul 2019 11:07:51 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.2
 MIME-Version: 1.0
-In-Reply-To: <5a77c18f-7338-888f-2379-12171b6a545e@jaseg.net>
+In-Reply-To: <20190712084717.12441-1-lecopzer.chen@mediatek.com>
 Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -99,208 +78,138 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, leobras.c@gmail.com,
- linux-fbdev@vger.kernel.org, nishadkamdar@gmail.com,
- gregkh@linuxfoundation.org, dri-devel@lists.freedesktop.org,
- bhanusreemahesh@gmail.com, Phil Reid <preid@electromag.com.au>
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: quoted-printable
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ YJ Chiang <yj.chiang@mediatek.com>, arve@android.com,
+ dri-devel@lists.freedesktop.org, riandrews@android.com,
+ sumit.semwal@linaro.org
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Commit c440eee1a7a1 ("Staging: fbtft: Switch to the gpio descriptor
-interface") breaks GPIO handling. In several places, checks to only set
-a GPIO if it was configured ended up backwards.
-I have tested this fix. The fixed driver works with a ili9486
-display connected to a raspberry pi via SPI.
+On 7/12/19 4:47 AM, Lecopzer Chen wrote:
+> ion_buffer_add() insert ion_buffer into rbtree every time creating
+> an ion_buffer but never use it after ION reworking.
+> Also, buffer_lock protects only rbtree operation, remove it together.
+> 
+> Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
+> Cc: YJ Chiang <yj.chiang@mediatek.com>
+> Cc: Lecopzer Chen <lecopzer.chen@mediatek.com>
+> ---
+>   drivers/staging/android/ion/ion.c | 36 -------------------------------
+>   drivers/staging/android/ion/ion.h | 10 +--------
+>   2 files changed, 1 insertion(+), 45 deletions(-)
+> 
+> diff --git a/drivers/staging/android/ion/ion.c b/drivers/staging/android/ion/ion.c
+> index 92c2914239e3..e6b1ca141b93 100644
+> --- a/drivers/staging/android/ion/ion.c
+> +++ b/drivers/staging/android/ion/ion.c
+> @@ -29,32 +29,6 @@
+>   static struct ion_device *internal_dev;
+>   static int heap_id;
+>   
+> -/* this function should only be called while dev->lock is held */
+> -static void ion_buffer_add(struct ion_device *dev,
+> -			   struct ion_buffer *buffer)
+> -{
+> -	struct rb_node **p = &dev->buffers.rb_node;
+> -	struct rb_node *parent = NULL;
+> -	struct ion_buffer *entry;
+> -
+> -	while (*p) {
+> -		parent = *p;
+> -		entry = rb_entry(parent, struct ion_buffer, node);
+> -
+> -		if (buffer < entry) {
+> -			p = &(*p)->rb_left;
+> -		} else if (buffer > entry) {
+> -			p = &(*p)->rb_right;
+> -		} else {
+> -			pr_err("%s: buffer already found.", __func__);
+> -			BUG();
+> -		}
+> -	}
+> -
+> -	rb_link_node(&buffer->node, parent, p);
+> -	rb_insert_color(&buffer->node, &dev->buffers);
+> -}
+> -
+>   /* this function should only be called while dev->lock is held */
+>   static struct ion_buffer *ion_buffer_create(struct ion_heap *heap,
+>   					    struct ion_device *dev,
+> @@ -100,9 +74,6 @@ static struct ion_buffer *ion_buffer_create(struct ion_heap *heap,
+>   
+>   	INIT_LIST_HEAD(&buffer->attachments);
+>   	mutex_init(&buffer->lock);
+> -	mutex_lock(&dev->buffer_lock);
+> -	ion_buffer_add(dev, buffer);
+> -	mutex_unlock(&dev->buffer_lock);
+>   	return buffer;
+>   
+>   err1:
+> @@ -131,11 +102,6 @@ void ion_buffer_destroy(struct ion_buffer *buffer)
+>   static void _ion_buffer_destroy(struct ion_buffer *buffer)
+>   {
+>   	struct ion_heap *heap = buffer->heap;
+> -	struct ion_device *dev = buffer->dev;
+> -
+> -	mutex_lock(&dev->buffer_lock);
+> -	rb_erase(&buffer->node, &dev->buffers);
+> -	mutex_unlock(&dev->buffer_lock);
+>   
+>   	if (heap->flags & ION_HEAP_FLAG_DEFER_FREE)
+>   		ion_heap_freelist_add(heap, buffer);
+> @@ -694,8 +660,6 @@ static int ion_device_create(void)
+>   	}
+>   
+>   	idev->debug_root = debugfs_create_dir("ion", NULL);
+> -	idev->buffers = RB_ROOT;
+> -	mutex_init(&idev->buffer_lock);
+>   	init_rwsem(&idev->lock);
+>   	plist_head_init(&idev->heaps);
+>   	internal_dev = idev;
+> diff --git a/drivers/staging/android/ion/ion.h b/drivers/staging/android/ion/ion.h
+> index e291299fd35f..74914a266e25 100644
+> --- a/drivers/staging/android/ion/ion.h
+> +++ b/drivers/staging/android/ion/ion.h
+> @@ -23,7 +23,6 @@
+>   
+>   /**
+>    * struct ion_buffer - metadata for a particular buffer
+> - * @node:		node in the ion_device buffers tree
+>    * @list:		element in list of deferred freeable buffers
+>    * @dev:		back pointer to the ion_device
+>    * @heap:		back pointer to the heap the buffer came from
+> @@ -39,10 +38,7 @@
+>    * @attachments:	list of devices attached to this buffer
+>    */
+>   struct ion_buffer {
+> -	union {
+> -		struct rb_node node;
+> -		struct list_head list;
+> -	};
+> +	struct list_head list;
+>   	struct ion_device *dev;
+>   	struct ion_heap *heap;
+>   	unsigned long flags;
+> @@ -61,14 +57,10 @@ void ion_buffer_destroy(struct ion_buffer *buffer);
+>   /**
+>    * struct ion_device - the metadata of the ion device node
+>    * @dev:		the actual misc device
+> - * @buffers:		an rb tree of all the existing buffers
+> - * @buffer_lock:	lock protecting the tree of buffers
+>    * @lock:		rwsem protecting the tree of heaps and clients
+>    */
+>   struct ion_device {
+>   	struct miscdevice dev;
+> -	struct rb_root buffers;
+> -	struct mutex buffer_lock;
+>   	struct rw_semaphore lock;
+>   	struct plist_head heaps;
+>   	struct dentry *debug_root;
+> 
 
-Fixes: commit c440eee1a7a1d ("Staging: fbtft: Switch to the gpio descriptor=
- interface")
-Tested-by: Jan Sebastian G=F6tte <linux@jaseg.net>
-Reviewed-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-Signed-off-by: Jan Sebastian G=F6tte <linux@jaseg.net>
----
- drivers/staging/fbtft/fb_bd663474.c  | 2 +-
- drivers/staging/fbtft/fb_ili9163.c   | 2 +-
- drivers/staging/fbtft/fb_ili9325.c   | 2 +-
- drivers/staging/fbtft/fb_s6d1121.c   | 2 +-
- drivers/staging/fbtft/fb_ssd1289.c   | 2 +-
- drivers/staging/fbtft/fb_ssd1331.c   | 4 ++--
- drivers/staging/fbtft/fb_upd161704.c | 2 +-
- drivers/staging/fbtft/fbtft-bus.c    | 2 +-
- drivers/staging/fbtft/fbtft-core.c   | 4 ++--
- 9 files changed, 11 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/staging/fbtft/fb_bd663474.c b/drivers/staging/fbtft/fb=
-_bd663474.c
-index b6c6d66e4eb1..e2c7646588f8 100644
---- a/drivers/staging/fbtft/fb_bd663474.c
-+++ b/drivers/staging/fbtft/fb_bd663474.c
-@@ -24,7 +24,7 @@
- =
-
- static int init_display(struct fbtft_par *par)
- {
--	if (!par->gpio.cs)
-+	if (par->gpio.cs)
- 		gpiod_set_value(par->gpio.cs, 0);  /* Activate chip */
- =
-
- 	par->fbtftops.reset(par);
-diff --git a/drivers/staging/fbtft/fb_ili9163.c b/drivers/staging/fbtft/fb_=
-ili9163.c
-index d609a2b67db9..fd32376700e2 100644
---- a/drivers/staging/fbtft/fb_ili9163.c
-+++ b/drivers/staging/fbtft/fb_ili9163.c
-@@ -77,7 +77,7 @@ static int init_display(struct fbtft_par *par)
- {
- 	par->fbtftops.reset(par);
- =
-
--	if (!par->gpio.cs)
-+	if (par->gpio.cs)
- 		gpiod_set_value(par->gpio.cs, 0);  /* Activate chip */
- =
-
- 	write_reg(par, MIPI_DCS_SOFT_RESET); /* software reset */
-diff --git a/drivers/staging/fbtft/fb_ili9325.c b/drivers/staging/fbtft/fb_=
-ili9325.c
-index b090e7ab6fdd..85e54a10ed72 100644
---- a/drivers/staging/fbtft/fb_ili9325.c
-+++ b/drivers/staging/fbtft/fb_ili9325.c
-@@ -85,7 +85,7 @@ static int init_display(struct fbtft_par *par)
- {
- 	par->fbtftops.reset(par);
- =
-
--	if (!par->gpio.cs)
-+	if (par->gpio.cs)
- 		gpiod_set_value(par->gpio.cs, 0);  /* Activate chip */
- =
-
- 	bt &=3D 0x07;
-diff --git a/drivers/staging/fbtft/fb_s6d1121.c b/drivers/staging/fbtft/fb_=
-s6d1121.c
-index b3d0701880fe..5a129b1352cc 100644
---- a/drivers/staging/fbtft/fb_s6d1121.c
-+++ b/drivers/staging/fbtft/fb_s6d1121.c
-@@ -29,7 +29,7 @@ static int init_display(struct fbtft_par *par)
- {
- 	par->fbtftops.reset(par);
- =
-
--	if (!par->gpio.cs)
-+	if (par->gpio.cs)
- 		gpiod_set_value(par->gpio.cs, 0);  /* Activate chip */
- =
-
- 	/* Initialization sequence from Lib_UTFT */
-diff --git a/drivers/staging/fbtft/fb_ssd1289.c b/drivers/staging/fbtft/fb_=
-ssd1289.c
-index bbf75f795234..88a5b6925901 100644
---- a/drivers/staging/fbtft/fb_ssd1289.c
-+++ b/drivers/staging/fbtft/fb_ssd1289.c
-@@ -28,7 +28,7 @@ static int init_display(struct fbtft_par *par)
- {
- 	par->fbtftops.reset(par);
- =
-
--	if (!par->gpio.cs)
-+	if (par->gpio.cs)
- 		gpiod_set_value(par->gpio.cs, 0);  /* Activate chip */
- =
-
- 	write_reg(par, 0x00, 0x0001);
-diff --git a/drivers/staging/fbtft/fb_ssd1331.c b/drivers/staging/fbtft/fb_=
-ssd1331.c
-index 4cfe9f8535d0..37622c9462aa 100644
---- a/drivers/staging/fbtft/fb_ssd1331.c
-+++ b/drivers/staging/fbtft/fb_ssd1331.c
-@@ -81,7 +81,7 @@ static void write_reg8_bus8(struct fbtft_par *par, int le=
-n, ...)
- 	va_start(args, len);
- =
-
- 	*buf =3D (u8)va_arg(args, unsigned int);
--	if (!par->gpio.dc)
-+	if (par->gpio.dc)
- 		gpiod_set_value(par->gpio.dc, 0);
- 	ret =3D par->fbtftops.write(par, par->buf, sizeof(u8));
- 	if (ret < 0) {
-@@ -104,7 +104,7 @@ static void write_reg8_bus8(struct fbtft_par *par, int =
-len, ...)
- 			return;
- 		}
- 	}
--	if (!par->gpio.dc)
-+	if (par->gpio.dc)
- 		gpiod_set_value(par->gpio.dc, 1);
- 	va_end(args);
- }
-diff --git a/drivers/staging/fbtft/fb_upd161704.c b/drivers/staging/fbtft/f=
-b_upd161704.c
-index 564a38e34440..c77832ae5e5b 100644
---- a/drivers/staging/fbtft/fb_upd161704.c
-+++ b/drivers/staging/fbtft/fb_upd161704.c
-@@ -26,7 +26,7 @@ static int init_display(struct fbtft_par *par)
- {
- 	par->fbtftops.reset(par);
- =
-
--	if (!par->gpio.cs)
-+	if (par->gpio.cs)
- 		gpiod_set_value(par->gpio.cs, 0);  /* Activate chip */
- =
-
- 	/* Initialization sequence from Lib_UTFT */
-diff --git a/drivers/staging/fbtft/fbtft-bus.c b/drivers/staging/fbtft/fbtf=
-t-bus.c
-index 2ea814d0dca5..63c65dd67b17 100644
---- a/drivers/staging/fbtft/fbtft-bus.c
-+++ b/drivers/staging/fbtft/fbtft-bus.c
-@@ -135,7 +135,7 @@ int fbtft_write_vmem16_bus8(struct fbtft_par *par, size=
-_t offset, size_t len)
- 	remain =3D len / 2;
- 	vmem16 =3D (u16 *)(par->info->screen_buffer + offset);
- =
-
--	if (!par->gpio.dc)
-+	if (par->gpio.dc)
- 		gpiod_set_value(par->gpio.dc, 1);
- =
-
- 	/* non buffered write */
-diff --git a/drivers/staging/fbtft/fbtft-core.c b/drivers/staging/fbtft/fbt=
-ft-core.c
-index bc750250ccd6..5127de922f6a 100644
---- a/drivers/staging/fbtft/fbtft-core.c
-+++ b/drivers/staging/fbtft/fbtft-core.c
-@@ -916,7 +916,7 @@ static int fbtft_init_display_dt(struct fbtft_par *par)
- 		return -EINVAL;
- =
-
- 	par->fbtftops.reset(par);
--	if (!par->gpio.cs)
-+	if (par->gpio.cs)
- 		gpiod_set_value(par->gpio.cs, 0);  /* Activate chip */
- =
-
- 	while (p) {
-@@ -1007,7 +1007,7 @@ int fbtft_init_display(struct fbtft_par *par)
- 	}
- =
-
- 	par->fbtftops.reset(par);
--	if (!par->gpio.cs)
-+	if (par->gpio.cs)
- 		gpiod_set_value(par->gpio.cs, 0);  /* Activate chip */
- =
-
- 	i =3D 0;
--- =
-
-2.21.0
-
+Acked-by: Laura Abbott <labbott@redhat.com>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
