@@ -1,49 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91CBD6BE59
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Jul 2019 16:35:06 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CD3996BE67
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Jul 2019 16:37:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6CF7F87ED1;
-	Wed, 17 Jul 2019 14:35:03 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4C3F9863E0;
+	Wed, 17 Jul 2019 14:37:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0KSDY1n707L6; Wed, 17 Jul 2019 14:35:03 +0000 (UTC)
+	with ESMTP id SiiZk0RSYnPE; Wed, 17 Jul 2019 14:37:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0A3198742F;
-	Wed, 17 Jul 2019 14:35:02 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 39DE5863AE;
+	Wed, 17 Jul 2019 14:37:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1141B1BF342
- for <devel@linuxdriverproject.org>; Wed, 17 Jul 2019 14:35:00 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 33B5C1BF342
+ for <devel@linuxdriverproject.org>; Wed, 17 Jul 2019 14:37:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0DF018638F
- for <devel@linuxdriverproject.org>; Wed, 17 Jul 2019 14:35:00 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 30CBF863AE
+ for <devel@linuxdriverproject.org>; Wed, 17 Jul 2019 14:37:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2Oh1BoZNT4za for <devel@linuxdriverproject.org>;
- Wed, 17 Jul 2019 14:34:59 +0000 (UTC)
+ with ESMTP id zy1bf8m-xihC for <devel@linuxdriverproject.org>;
+ Wed, 17 Jul 2019 14:37:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C534586381
- for <devel@driverdev.osuosl.org>; Wed, 17 Jul 2019 14:34:58 +0000 (UTC)
-Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id C24388FE867EE1C592AC;
- Wed, 17 Jul 2019 22:34:54 +0800 (CST)
-Received: from localhost (10.133.213.239) by DGGEMS401-HUB.china.huawei.com
- (10.3.19.201) with Microsoft SMTP Server id 14.3.439.0; Wed, 17 Jul 2019
- 22:34:47 +0800
+Received: from huawei.com (szxga05-in.huawei.com [45.249.212.191])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 92EC2863AC
+ for <devel@driverdev.osuosl.org>; Wed, 17 Jul 2019 14:37:39 +0000 (UTC)
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 9EEAA6409E109A8FCEDC;
+ Wed, 17 Jul 2019 22:37:35 +0800 (CST)
+Received: from localhost (10.133.213.239) by DGGEMS409-HUB.china.huawei.com
+ (10.3.19.209) with Microsoft SMTP Server id 14.3.439.0; Wed, 17 Jul 2019
+ 22:37:27 +0800
 From: YueHaibing <yuehaibing@huawei.com>
-To: <gregkh@linuxfoundation.org>, <payal.s.kshirsagar.98@gmail.com>,
- <hariprasad.kelam@gmail.com>
-Subject: [PATCH] staging: rtl8723bs: remove set but not used variable
- 'cck_highpwr'
-Date: Wed, 17 Jul 2019 22:20:14 +0800
-Message-ID: <20190717142014.43216-1-yuehaibing@huawei.com>
+To: <gregkh@linuxfoundation.org>, <himadri18.07@gmail.com>,
+ <colin.king@canonical.com>
+Subject: [PATCH] staging: rtl8192e: remove set but not used variable 'payload '
+Date: Wed, 17 Jul 2019 22:35:51 +0800
+Message-ID: <20190717143551.29200-1-yuehaibing@huawei.com>
 X-Mailer: git-send-email 2.10.2.windows.1
 MIME-Version: 1.0
 X-Originating-IP: [10.133.213.239]
@@ -69,48 +68,36 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 Fixes gcc '-Wunused-but-set-variable' warning:
 
-drivers/staging/rtl8723bs/hal/odm_HWConfig.c:
- In function odm_RxPhyStatus92CSeries_Parsing:
-drivers/staging/rtl8723bs/hal/odm_HWConfig.c:92:5: warning:
- variable cck_highpwr set but not used [-Wunused-but-set-variable]
-
-It is never used and can be removed.
+drivers/staging/rtl8192e/rtllib_rx.c: In function rtllib_rx_InfraAdhoc:
+drivers/staging/rtl8192e/rtllib_rx.c:1303:6: warning:
+ variable payload set but not used [-Wunused-but-set-variable]
 
 Reported-by: Hulk Robot <hulkci@huawei.com>
 Signed-off-by: YueHaibing <yuehaibing@huawei.com>
 ---
- drivers/staging/rtl8723bs/hal/odm_HWConfig.c | 7 -------
- 1 file changed, 7 deletions(-)
+ drivers/staging/rtl8192e/rtllib_rx.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/odm_HWConfig.c b/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
-index 49fa81406..71919a3 100644
---- a/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
-+++ b/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
-@@ -89,7 +89,6 @@ static void odm_RxPhyStatus92CSeries_Parsing(
- 	u8 RSSI, total_rssi = 0;
- 	bool isCCKrate = false;
- 	u8 rf_rx_num = 0;
--	u8 cck_highpwr = 0;
- 	u8 LNA_idx, VGA_idx;
- 	PPHY_STATUS_RPT_8192CD_T pPhyStaRpt = (PPHY_STATUS_RPT_8192CD_T)pPhyStatus;
+diff --git a/drivers/staging/rtl8192e/rtllib_rx.c b/drivers/staging/rtl8192e/rtllib_rx.c
+index 0c19ac2..0bae0a0 100644
+--- a/drivers/staging/rtl8192e/rtllib_rx.c
++++ b/drivers/staging/rtl8192e/rtllib_rx.c
+@@ -1300,7 +1300,6 @@ static int rtllib_rx_InfraAdhoc(struct rtllib_device *ieee, struct sk_buff *skb,
+ 	struct rx_ts_record *pTS = NULL;
+ 	u16 fc, sc, SeqNum = 0;
+ 	u8 type, stype, multicast = 0, unicast = 0, nr_subframes = 0, TID = 0;
+-	u8 *payload;
+ 	u8 dst[ETH_ALEN];
+ 	u8 src[ETH_ALEN];
+ 	u8 bssid[ETH_ALEN] = {0};
+@@ -1412,7 +1411,6 @@ static int rtllib_rx_InfraAdhoc(struct rtllib_device *ieee, struct sk_buff *skb,
  
-@@ -107,16 +106,10 @@ static void odm_RxPhyStatus92CSeries_Parsing(
- 		/*  (2)PWDB, Average PWDB cacluated by hardware (for rate adaptive) */
- 		/*  */
- 
--		/* if (pHalData->eRFPowerState == eRfOn) */
--		cck_highpwr = pDM_Odm->bCckHighPower;
--		/* else */
--		/* cck_highpwr = false; */
--
- 		cck_agc_rpt =  pPhyStaRpt->cck_agc_rpt_ofdm_cfosho_a ;
- 
- 		/* 2011.11.28 LukeLee: 88E use different LNA & VGA gain table */
- 		/* The RSSI formula should be modified according to the gain table */
--		/* In 88E, cck_highpwr is always set to 1 */
- 		LNA_idx = ((cck_agc_rpt & 0xE0)>>5);
- 		VGA_idx = (cck_agc_rpt & 0x1F);
- 		rx_pwr_all = odm_CCKRSSI_8723B(LNA_idx, VGA_idx);
+ 	/* Parse rx data frame (For AMSDU) */
+ 	/* skb: hdr + (possible reassembled) full plaintext payload */
+-	payload = skb->data + hdrlen;
+ 	rxb = kmalloc(sizeof(struct rtllib_rxb), GFP_ATOMIC);
+ 	if (!rxb)
+ 		goto rx_dropped;
 -- 
 2.7.4
 
