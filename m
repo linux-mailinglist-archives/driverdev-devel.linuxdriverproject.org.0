@@ -1,43 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AD5B66BC8A
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Jul 2019 14:45:18 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E49376BE1E
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Jul 2019 16:23:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A11CD87F0C;
-	Wed, 17 Jul 2019 12:45:15 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 604F6863E0;
+	Wed, 17 Jul 2019 14:23:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id e9EYVui875Id; Wed, 17 Jul 2019 12:45:15 +0000 (UTC)
+	with ESMTP id 8SYGLYxg5W14; Wed, 17 Jul 2019 14:23:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1B5C887EB8;
-	Wed, 17 Jul 2019 12:45:15 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 21F378638F;
+	Wed, 17 Jul 2019 14:23:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4B8C71BF341
- for <devel@linuxdriverproject.org>; Wed, 17 Jul 2019 12:45:12 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E7A721BF342
+ for <devel@linuxdriverproject.org>; Wed, 17 Jul 2019 14:23:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 4893A87EB8
- for <devel@linuxdriverproject.org>; Wed, 17 Jul 2019 12:45:12 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E462F220FB
+ for <devel@linuxdriverproject.org>; Wed, 17 Jul 2019 14:23:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xdfV2-tDKVR8 for <devel@linuxdriverproject.org>;
- Wed, 17 Jul 2019 12:45:12 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from b2.supportmail.top (unknown [162.243.233.43])
- by hemlock.osuosl.org (Postfix) with ESMTP id AE97187EAE
- for <devel@driverdev.osuosl.org>; Wed, 17 Jul 2019 12:45:11 +0000 (UTC)
-To: devel@driverdev.osuosl.org
-From: Javier / GTEAM <info@b2.supportmail.top>
-Subject: Oferta
-Date: Wed, 17 Jul 2019 08:32:51 -0400
-Message-ID: <20190717_123251_079262.info@b2.supportmail.top>
-X-Mailer: XMAIL
-Mime-Version: 1.0
+ with ESMTP id 30Tv7-uWQWPi for <devel@linuxdriverproject.org>;
+ Wed, 17 Jul 2019 14:23:28 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id 848412045F
+ for <devel@driverdev.osuosl.org>; Wed, 17 Jul 2019 14:23:28 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id r7so10926525pfl.3
+ for <devel@driverdev.osuosl.org>; Wed, 17 Jul 2019 07:23:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=XpT+hyHQLrqTrk2x0mHRYSE52sz59GDyA66hoyA5DA8=;
+ b=cR9ZpfCpxkVPqyp15+rlsfv0Uo19LMdW46Mtd25oPGRpue1omqQnENfn4j2eRm9ude
+ skJnLsFyEw3cyE/jFOdpetpR8xKckZyVQpYuGkbOMelnKMLFFxPmWrC/bYDw5WKzqsw+
+ bjYAZk8DOU5BKHGZZ1RfX2dzKqyBfSX7CF97Yu9uuYX9L3gAuehEkm0jD5F6H3wAbxKF
+ Esy/Nfe6owVBjicH1/ZRvt525HyUXAuQtA/BpebfvNzQ5fGjRWNp2DynMWeYqI4P+dE5
+ lcAvHd8VxlZH7qpQvdPGkP63uKHcEjFXLj15q1BPmiXpenaKKjFXrKL+vDtkw8TBYDor
+ 363A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=XpT+hyHQLrqTrk2x0mHRYSE52sz59GDyA66hoyA5DA8=;
+ b=spa0qJCrcFZr0HqhsHJ8TwsHg/3P5J9J1xPoDpIbha36Rd/6IpnGd1C8aMqHEZh2aS
+ 8A9X8zf1pKJ7eF5WJIqm3rYVz11TukRZgPlgVWBksTLED8F3oo+jb2FluTfbv2W2LxYO
+ PG/dNOkOxZs05tZF4YsUjDQS6pxSapqnGSGPNFd+PFm4F51iYMn33JM4Iob8Emo+fVJa
+ cwJ5c08BcRImqaBS3YcYUjXA35QE12Xf5PKtPJM0NrmuFxto1RYKQ+LY0RhuK83TB6kp
+ hwexllKcCiRV9UIX1iGOQZA1jip2Yt9SIQdOX3RaASdXaS3kafVIboEZlDf/beU5cDbP
+ gtZw==
+X-Gm-Message-State: APjAAAW3iKwXBScVehTLQcHDHcy+pp/FUfmWItXXpGxxGNHgwoUtCbhu
+ fy2XQhfphYNyKpOFpbw5Ksw=
+X-Google-Smtp-Source: APXvYqzMGbB7T5JbwWo8Ni2OiTookhu2ITf9hLjDGQPrn3tlis2UqVAOlnIZx35dPi6C0KPX3tPMiA==
+X-Received: by 2002:a17:90a:9b08:: with SMTP id
+ f8mr44498517pjp.103.1563373408094; 
+ Wed, 17 Jul 2019 07:23:28 -0700 (PDT)
+Received: from localhost.localdomain ([110.227.64.207])
+ by smtp.gmail.com with ESMTPSA id l27sm2324253pgn.19.2019.07.17.07.23.24
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Wed, 17 Jul 2019 07:23:27 -0700 (PDT)
+From: Nishka Dasgupta <nishkadg.linux@gmail.com>
+To: paul.kocialkowski@bootlin.com, maxime.ripard@bootlin.com,
+ mchehab@kernel.org, gregkh@linuxfoundation.org, wens@csie.org,
+ linux-media@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [PATCH] staging: media: sunxi: Add bool cast to value
+Date: Wed, 17 Jul 2019 19:53:15 +0530
+Message-Id: <20190717142315.3119-1-nishkadg.linux@gmail.com>
+X-Mailer: git-send-email 2.19.1
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,28 +87,38 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Nishka Dasgupta <nishkadg.linux@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-QnVlbm9zIGRpzIFhcywKClRlbmdvIGVsIGhvbm9yIGRlIHByZXNlbnRhcmxlIHVuIHByb2R1Y3Rv
-IHF1ZSBzZSBhZGFwdGEgcGxlbmFtZW50ZSBhIGxhcyBuZWNlc2lkYWRlcyBkZSBzdSBlbXByZXNh
-LiBOdWVzdHJvIHByb2R1Y3RvIGxlIHBlcm1pdGlyw6EgbGxlZ2FyIGEgbnVldm9zIGNsaWVudGVz
-IGUgaW5jcmVtZW50YXIgZGUgbWFuZXJhIGlubWVkaWF0YSBzdXMgdmVudGFzLgoKTGUgcHJlc2Vu
-dGFtb3MgdW5hIGJhc2UgZGUgZGF0b3MgZGUgZW1wcmVzYXMgY29uIGxvcyBkYXRvcyBkZSBjb250
-YWN0byBkZSBzdXMgZHVlw7FvcyB5IGRpcmVjdGl2b3MuCgpFbCBjYXTDoWxvZ28gaW5jbHV5ZSBt
-w6FzIGRlIHVuIG1pbGzDs24gZGUgZGlyZWNjaW9uZXMsIHkgZXMgdW5vIGRlIGxvcyBtYXlvcmVz
-IGVuIGVsIG1lcmNhZG8gZXNwYcOxb2wuIENvbnRpZW5lIGRhdG9zIHRhbGVzIGNvbW86IG5vbWJy
-ZSBkZSBsYSBlbXByZXNhLCBkb21pY2lsaW8gc29jaWFsLCBkYXRvcyBkZSBjb250YWN0byBkZWwg
-ZHVlw7FvLCBlLW1haWwsCnRlbMOpZm9ubywgZmF4LCBww6FnaW5hIHdlYiwgZXRjLgoKUHVlZGUg
-ZW1wZXphciBhIHVzYXIgZWwgY2F0w6Fsb2dvIHkgcHJvbW9jaW9uYXIgc3VzIHByb2R1Y3RvcyBp
-bm1lZGlhdGFtZW50ZS4KCkVsIHJldG9ybm8gZGUgbGEgaW52ZXJzacOzbiBlc3TDoSBnYXJhbnRp
-emFkby4KCsKhTG8gY29tcHJhIHVuYSB2ZXogeSBsbyBwdWVkZSB1c2FyIHRvZGEgbGEgdmlkYSEK
-CgoqKiogZGF0b3MgZGUgZW1wcmVzYXMgZXNwYcOxb2xhcyAtIDEuMDI0LjYyNiByZWdpc3Ryb3Mu
-IC0gMTkwIOKCrCAtIFByb21vY2nDs24gaGFzdGEgZWwgMTcvMDcvMjAxOQoKTcOhcyBpbmZvcm1h
-Y2nDs24gZW4gbnVlc3RyYSB3ZWI6CgpodHRwOi8vd3d3LmJhc2VkZWRhdG9zLWRiYy5jb20vP3Bh
-Z2U9Y2F0YWxvZwoKQXRlbnRhbWVudGUsCkdDLVRlYW0KCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhk
-cml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+Typecast as bool the return value of cedrus_find_format in
+cedrus_check_format as the return value of cedrus_check_format is always
+treated like a boolean value.
+
+Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
+---
+ drivers/staging/media/sunxi/cedrus/cedrus_video.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_video.c b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+index e2b530b1a956..f00a048a0a01 100644
+--- a/drivers/staging/media/sunxi/cedrus/cedrus_video.c
++++ b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+@@ -86,7 +86,7 @@ static struct cedrus_format *cedrus_find_format(u32 pixelformat, u32 directions,
+ static bool cedrus_check_format(u32 pixelformat, u32 directions,
+ 				unsigned int capabilities)
+ {
+-	return cedrus_find_format(pixelformat, directions, capabilities);
++	return (bool)cedrus_find_format(pixelformat, directions, capabilities);
+ }
+ 
+ static void cedrus_prepare_format(struct v4l2_pix_format *pix_fmt)
+-- 
+2.19.1
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
