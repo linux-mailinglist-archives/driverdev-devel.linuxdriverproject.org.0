@@ -1,78 +1,94 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A86F76B26A
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Jul 2019 01:34:06 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 54EF26B88E
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Jul 2019 10:49:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 00C2F8527F;
-	Tue, 16 Jul 2019 23:34:04 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4EBE5220EF;
+	Wed, 17 Jul 2019 08:49:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KNqsZfFLjyQ6; Tue, 16 Jul 2019 23:34:03 +0000 (UTC)
+	with ESMTP id Ucb1VZNWV7bd; Wed, 17 Jul 2019 08:49:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4A2D183E0F;
-	Tue, 16 Jul 2019 23:34:02 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A32CD203A7;
+	Wed, 17 Jul 2019 08:49:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6EEBA1BF40F
- for <devel@linuxdriverproject.org>; Tue, 16 Jul 2019 23:33:59 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 868B21BF3E5
+ for <devel@linuxdriverproject.org>; Wed, 17 Jul 2019 08:49:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 683C687D40
- for <devel@linuxdriverproject.org>; Tue, 16 Jul 2019 23:33:59 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 82E6F2001B
+ for <devel@linuxdriverproject.org>; Wed, 17 Jul 2019 08:49:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id o2sKN9I4goGb for <devel@linuxdriverproject.org>;
- Tue, 16 Jul 2019 23:33:58 +0000 (UTC)
+ with ESMTP id GIxQG44YZVqt for <devel@linuxdriverproject.org>;
+ Wed, 17 Jul 2019 08:49:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic308-8.consmr.mail.gq1.yahoo.com
- (sonic308-8.consmr.mail.gq1.yahoo.com [98.137.68.32])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4F03687CC4
- for <devel@driverdev.osuosl.org>; Tue, 16 Jul 2019 23:33:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aol.com; s=a2048;
- t=1563320038; bh=eQsOILpAk6Vbtm+EGhtjPKkUHl3i1+dBRnpfvAZdzuk=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From:Subject;
- b=PVe4kirigHzpfKQeCGjrW0wWxId5E/LcARfuZUG6a60U9DYUk2Eg3uab5AVf0zTmpPBPSUg3twztiNj3u3fh9r3DlGSZBK8E09ryqQCcIKsNn6vbKxNu/hh6vXGQnrc5M6cPwbbwlPkzjkJEc8ePf5jAIDb5UGqxdJfwQxTklEwwtoahiT8lTVC13FC9+s864wbMa4tWDdJPFZdzmjhT81Oqp7+d4PcD4SMfM7YFqzGSStMA4tYCKccG9g6bq0twUcupXDPYsG1xLHRGtCx+3V4tNTMZuuKCw9dIh7ePal/X1083qMAKFOfhf9sHUuiw1gbETve9FMRO7zSXFM56iQ==
-X-YMail-OSG: 7Cjd.AQVM1nM74a3uMg2CdzFQZC8GK2O89yFYBF3MWX74MDygjGbB.zbg_0J61T
- TO4HqoDwMlpclWtGAl7doajLucKZ5MOx.eGyrXHjLhxqIRwUTiz42m9f_s8a..7bzBjTN_Y8Nzte
- xlj.NyNO3hWjR6RP_QB5XGmRNEkvepp0rsY3xYhOVTUW_hoGbMY5pupz3Y0sOZlBRz0xt1QL.miP
- rwRS0c5.oohRxbo.86E3SePAkTgtlagZ2mRExR0X0eVU_mnc9bySLUtrRbna7uDyYp27HojsaiSv
- bm9u6UZTBszwxfbnSLweo8WGoz2s2ch2ZZ8.w4tK5hiF6ItvUMMye30WE1DxZg6G0RPVGSr.neUD
- w7l8SoE_8PmrgT8lK3QQs.XXMBldTk1IWlDs3XTYiwWWtBlaudVP.ZRI0I0IcZ5TY0XecDgjdOS0
- 32paLT9wkPjZMJze1xOMwdApzLDT8aWIuiRIN12eR1ZlqQnykHY3khNmodk.z6g4Ni7cOvT962KM
- NR4rkEc9qbAiV8KRmoz7v3LukZ6KtYD2tvFOyPDlIZMDOXX8u9uDwA4LQXq43TT6c39HTLp9s1XQ
- yGyWSgX6l6rseCw.yqHTtgekvJ0vevAsDHrCZg1j3czymfX9MiSr6WAW4zXKdXZMredK9DOAb4vg
- XwmkO_F5BxsImSt22TUAC2NopUfAW3.Or.ECCvGidzoBRXCK71mYpSbff1KQ_6EYGMu6JXwOvk9h
- lB8JNhzOgFcxo846QFklJqN25VtIGq6stUJzifMSOg.PWiuTRSLSv1U5Ii2Fzd1yLgFFMyqjPNyH
- jP3aomH12CgsOOcIRGipdfxJhC7ZVsdw.VJFukKVN2wBZadw6NDsj7j.FEhnEl0VbiLG4v35dvoM
- o0Tb7LXRc5FIu5g17bSejhXQJExMakCiDyD4udYc01SK.Jthnpvm_PFDjHBQpTypuuUj1HtlDH5Y
- bBt7jvkxPCG_fHSl1SZ0K4MpzG9dpd_sheEPxcMO3.WNtfqcjll7QPdteSPOWavhzOABsPi3BNCX
- thMoDZ9nbvaLTnCYHB_c7Z4HPlQk175AuiGF5F2fSQ6GusgGytIHnkFFpe5ipXyA8.zLd0gxSuHn
- lnvGuUlgI7IYNSPdXDYT8LLr_PdpbvkFwFpZpLsTuv1hMKEtdBeBDfRC.H6Tw9_JzA8yt0yw2rDO
- kbyCU5yQu9JGDOdUCsqSQnJSnTtB4mLHL9GLljkzuf9gF7IYbjkta0gwGf6mhtToT8o6fhoAIPA-
- -
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic308.consmr.mail.gq1.yahoo.com with HTTP; Tue, 16 Jul 2019 23:33:58 +0000
-Received: by smtp412.mail.gq1.yahoo.com (Oath Hermes SMTP Server) with ESMTPA
- ID f13fd5f4c65f932ad3e93487cc771fc0; 
- Tue, 16 Jul 2019 23:33:55 +0000 (UTC)
-Subject: Re: [PATCH] staging: erofs: a few minor style fixes found using
- checkpatch
-To: Karen Palacio <karen.palacio.1994@gmail.com>
-References: <1563294942-31395-1-git-send-email-karen.palacio.1994@gmail.com>
- <1a0b5e37-a5a1-7a2f-0185-860a4aab4b2b@aol.com>
- <CALQQ+Lk9bL2Zs72u30Xe_1p=0389SvOpPMkLfzGHVSenbszfCA@mail.gmail.com>
-From: Gao Xiang <hsiangkao@aol.com>
-Message-ID: <15c63135-5ea3-515a-65f2-f56c70e90333@aol.com>
-Date: Wed, 17 Jul 2019 07:33:51 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by silver.osuosl.org (Postfix) with ESMTPS id E78C92001A
+ for <devel@driverdev.osuosl.org>; Wed, 17 Jul 2019 08:49:09 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x6H8mQt5173236;
+ Wed, 17 Jul 2019 08:49:08 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ content-transfer-encoding : in-reply-to; s=corp-2018-07-02;
+ bh=s1Vwk3m/q8S/Z/PqBg0E7GuIYvQbJTubJmgN6bruI/U=;
+ b=PihsPpKoVqNfoVW6SzKGs1Qk3w559VH/TaQk7JLjZOarkir/ju957ARY/OKESzM9SGlO
+ RPuHGCPo+oaRlpc9IPMznBu9U27r7CV4X/tQmHhSZfok6iT2zXLtTno3kIBWik1zhavS
+ x02OWLLh0xq01mLCyQbaEk746bbRU8gUvyWfC1clq3zRsLV9kzO2Q5X08qbXsEcivIZE
+ ZgMc/Sc3OE+w/Rrq8mrASTEeOlXeJu5V9PdGxXrkxAteo+msVZ3719Q3OVf18jU3xqAg
+ 5oDEnA2a5GyQ8zW/pJHBXlqlD7Z2VcfkBT8+RiueQeq4KmDW2GEtDYCy4ph72f/kxSCi RQ== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by userp2130.oracle.com with ESMTP id 2tq6qtscf5-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 17 Jul 2019 08:49:08 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x6H8m73Y026995;
+ Wed, 17 Jul 2019 08:49:07 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by userp3020.oracle.com with ESMTP id 2tsmcc9c7x-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 17 Jul 2019 08:49:07 +0000
+Received: from abhmp0001.oracle.com (abhmp0001.oracle.com [141.146.116.7])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x6H8n0x1019837;
+ Wed, 17 Jul 2019 08:49:00 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Wed, 17 Jul 2019 08:49:00 +0000
+Date: Wed, 17 Jul 2019 11:48:52 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Tobias =?iso-8859-1?Q?Nie=DFen?= <tobias.niessen@stud.uni-hannover.de>
+Subject: Re: [PATCH 1/2] staging: rts5208: Rewrite redundant if statement to
+ improve code style
+Message-ID: <20190717084852.GA3089@kadam>
+References: <20190626142857.30155-1-tobias.niessen@stud.uni-hannover.de>
+ <20190626142857.30155-2-tobias.niessen@stud.uni-hannover.de>
+ <20190626145636.GG28859@kadam>
+ <a0f3ac8b-541a-d3d0-e25e-26da11e29748@stud.uni-hannover.de>
 MIME-Version: 1.0
-In-Reply-To: <CALQQ+Lk9bL2Zs72u30Xe_1p=0389SvOpPMkLfzGHVSenbszfCA@mail.gmail.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <a0f3ac8b-541a-d3d0-e25e-26da11e29748@stud.uni-hannover.de>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9320
+ signatures=668688
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=927
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1810050000 definitions=main-1907170106
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9320
+ signatures=668688
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=983 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
+ definitions=main-1907170106
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,234 +101,66 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, yuchao0@huawei.com,
- linux-erofs@lists.ozlabs.org, gregkh@linuxfoundation.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ Sabrina Gaube <sabrina-gaube@web.de>, linux-kernel@vger.kernel.org,
+ linux-kernel@i4.cs.fau.de
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Karen,
+On Sun, Jun 30, 2019 at 04:12:44PM +0200, Tobias Nie=DFen wrote:
+> Am 26.06.2019 um 16:56 schrieb Dan Carpenter:
+> > Both these patches seem fine.
+> > =
 
-On 2019/7/17 ??????2:56, Karen Palacio wrote:
-> Hello, thanks for the fast reply.??
-> 
-> />NACK, all linux filesystems use Opt_xxx. EROFS should obey this practice.
-> /I wasn't aware of that convention, my apologies.
-> 
-> Should I fix that, keep the other changes and resend as v2, or
-> are you not interested in style patches? I'm interested in contributing
-> to this
-> driver, but as I get familiar with it I was planning on making it pass
-> checkpatch as much as possible.
+> > On Wed, Jun 26, 2019 at 04:28:56PM +0200, Tobias Nie=DFen wrote:
+> >> This commit uses the fact that
+> >>
+> >>     if (a) {
+> >>             if (b) {
+> >>                     ...
+> >>             }
+> >>     }
+> >>
+> >> can instead be written as
+> >>
+> >>     if (a && b) {
+> >>             ...
+> >>     }
+> >>
+> >> without any change in behavior, allowing to decrease the indentation
+> >> of the contained code block and thus reducing the average line length.
+> >>
+> >> Signed-off-by: Tobias Nie=DFen <tobias.niessen@stud.uni-hannover.de>
+> >> Signed-off-by: Sabrina Gaube <sabrina-gaube@web.de>
+> > =
 
-Style patches is OK for me as well except for changing some common
-practice (it will make EROFS odd compared with other filesystems) and
-thanks for your interest :)
+> > Signed-off-by is like signing a legal document that you didn't put any
+> > of SCO's secret UNIXWARE source code into your patch or do other illegal
+> > activities.  Everyone who handles a patch is supposed to Sign it.
+> > =
 
-Actually, if you notice that, I'm promoting erofs from staging. I would
-suggest that you could also take a look at that patchset...
+> > It's weird to see Sabrina randomly signing your patches.  Probably there
+> > is a more appropriate kind of tag to use as well or instead such as
+> > Co-Developed-by, Reviewed-by or Suggested-by.
+> > =
 
-Thanks,
-Gao Xiang
+> > regards,
+> > dan carpenter
+> > =
 
-> 
-> Thanks,
-> Karen Palacio.
-> 
-> El mar., 16 jul. 2019 a las 14:03, Gao Xiang (<hsiangkao@aol.com
-> <mailto:hsiangkao@aol.com>>) escribi??:
-> 
-> 
-> 
->     On 2019/7/17 ????12:35, Karen Palacio wrote:
->     > Fix camel case use in variable names,
->     > Fix multiple assignments done in a single line,
->     > Fix end of line containing '('.
-> 
->     One type one patch...
-> 
->     >
->     > Signed-off-by: Karen Palacio <karen.palacio.1994@gmail.com
->     <mailto:karen.palacio.1994@gmail.com>>
->     > ---
->     >?? drivers/staging/erofs/super.c | 55
->     ++++++++++++++++++++++---------------------
->     >?? 1 file changed, 28 insertions(+), 27 deletions(-)
->     >
->     > diff --git a/drivers/staging/erofs/super.c
->     b/drivers/staging/erofs/super.c
->     > index 5449441..e281125 100644
->     > --- a/drivers/staging/erofs/super.c
->     > +++ b/drivers/staging/erofs/super.c
->     > @@ -228,21 +228,21 @@ static void default_options(struct
->     erofs_sb_info *sbi)
->     >?? }
->     >??
->     >?? enum {
->     > -?? ?? ??Opt_user_xattr,
->     > -?? ?? ??Opt_nouser_xattr,
->     > -?? ?? ??Opt_acl,
->     > -?? ?? ??Opt_noacl,
->     > -?? ?? ??Opt_fault_injection,
->     > -?? ?? ??Opt_err
->     > +?? ?? ??opt_user_xattr,
->     > +?? ?? ??opt_nouser_xattr,
->     > +?? ?? ??opt_acl,
->     > +?? ?? ??opt_noacl,
->     > +?? ?? ??opt_fault_injection,
->     > +?? ?? ??opt_err
-> 
->     NACK, all linux filesystems use Opt_xxx. EROFS should obey this
->     practice.
-> 
->     fs/ext4/super.c
->     1436 enum {
->     1437?? ?? ?? ?? ??Opt_bsd_df, Opt_minix_df, Opt_grpid, Opt_nogrpid,
->     1438?? ?? ?? ?? ??Opt_resgid, Opt_resuid, Opt_sb, Opt_err_cont,
->     Opt_err_panic, Opt_err_ro,
->     1439?? ?? ?? ?? ??Opt_nouid32, Opt_debug, Opt_removed,
->     1440?? ?? ?? ?? ??Opt_user_xattr, Opt_nouser_xattr, Opt_acl, Opt_noacl,
->     1441?? ?? ?? ?? ??Opt_auto_da_alloc, Opt_noauto_da_alloc, Opt_noload,
->     1442?? ?? ?? ?? ??Opt_commit, Opt_min_batch_time, Opt_max_batch_time,
->     Opt_journal_dev,
->     1443?? ?? ?? ?? ??Opt_journal_path, Opt_journal_checksum,
->     Opt_journal_async_commit,
->     1444?? ?? ?? ?? ??Opt_abort, Opt_data_journal, Opt_data_ordered,
->     Opt_data_writeback,
->     1445?? ?? ?? ?? ??Opt_data_err_abort, Opt_data_err_ignore,
->     Opt_test_dummy_encryption,
->     1446?? ?? ?? ?? ??Opt_usrjquota, Opt_grpjquota, Opt_offusrjquota,
->     Opt_offgrpjquota,
->     1447?? ?? ?? ?? ??Opt_jqfmt_vfsold, Opt_jqfmt_vfsv0, Opt_jqfmt_vfsv1,
->     Opt_quota,
-> 
->     fs/btrfs/super.c
->     ??294 enum {
->     ??295?? ?? ?? ?? ??Opt_acl, Opt_noacl,
->     ??296?? ?? ?? ?? ??Opt_clear_cache,
->     ??297?? ?? ?? ?? ??Opt_commit_interval,
->     ??298?? ?? ?? ?? ??Opt_compress,
->     ??299?? ?? ?? ?? ??Opt_compress_force,
->     ??300?? ?? ?? ?? ??Opt_compress_force_type,
->     ??301?? ?? ?? ?? ??Opt_compress_type,
->     ??302?? ?? ?? ?? ??Opt_degraded,
->     ??303?? ?? ?? ?? ??Opt_device,
->     ??304?? ?? ?? ?? ??Opt_fatal_errors,
-> 
->     Thanks,
->     Gao Xiang
-> 
-> 
->     >?? };
->     >??
->     >?? static match_table_t erofs_tokens = {
->     > -?? ?? ??{Opt_user_xattr, "user_xattr"},
->     > -?? ?? ??{Opt_nouser_xattr, "nouser_xattr"},
->     > -?? ?? ??{Opt_acl, "acl"},
->     > -?? ?? ??{Opt_noacl, "noacl"},
->     > -?? ?? ??{Opt_fault_injection, "fault_injection=%u"},
->     > -?? ?? ??{Opt_err, NULL}
->     > +?? ?? ??{opt_user_xattr, "user_xattr"},
->     > +?? ?? ??{opt_nouser_xattr, "nouser_xattr"},
->     > +?? ?? ??{opt_acl, "acl"},
->     > +?? ?? ??{opt_noacl, "noacl"},
->     > +?? ?? ??{opt_fault_injection, "fault_injection=%u"},
->     > +?? ?? ??{opt_err, NULL}
->     >?? };
->     >??
->     >?? static int parse_options(struct super_block *sb, char *options)
->     > @@ -260,41 +260,42 @@ static int parse_options(struct super_block
->     *sb, char *options)
->     >?? ?? ?? ?? ?? ?? ?? ??if (!*p)
->     >?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??continue;
->     >??
->     > -?? ?? ?? ?? ?? ?? ??args[0].to = args[0].from = NULL;
->     > +?? ?? ?? ?? ?? ?? ??args[0].to = NULL;
->     > +?? ?? ?? ?? ?? ?? ??args[0].from = NULL;
->     >?? ?? ?? ?? ?? ?? ?? ??token = match_token(p, erofs_tokens, args);
->     >??
->     >?? ?? ?? ?? ?? ?? ?? ??switch (token) {
->     >?? #ifdef CONFIG_EROFS_FS_XATTR
->     > -?? ?? ?? ?? ?? ?? ??case Opt_user_xattr:
->     > +?? ?? ?? ?? ?? ?? ??case opt_user_xattr:
->     >?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??set_opt(EROFS_SB(sb), XATTR_USER);
->     >?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??break;
->     > -?? ?? ?? ?? ?? ?? ??case Opt_nouser_xattr:
->     > +?? ?? ?? ?? ?? ?? ??case opt_nouser_xattr:
->     >?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??clear_opt(EROFS_SB(sb), XATTR_USER);
->     >?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??break;
->     >?? #else
->     > -?? ?? ?? ?? ?? ?? ??case Opt_user_xattr:
->     > +?? ?? ?? ?? ?? ?? ??case opt_user_xattr:
->     >?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??infoln("user_xattr options not supported");
->     >?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??break;
->     > -?? ?? ?? ?? ?? ?? ??case Opt_nouser_xattr:
->     > +?? ?? ?? ?? ?? ?? ??case opt_nouser_xattr:
->     >?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??infoln("nouser_xattr options not supported");
->     >?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??break;
->     >?? #endif
->     >?? #ifdef CONFIG_EROFS_FS_POSIX_ACL
->     > -?? ?? ?? ?? ?? ?? ??case Opt_acl:
->     > +?? ?? ?? ?? ?? ?? ??case opt_acl:
->     >?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??set_opt(EROFS_SB(sb), POSIX_ACL);
->     >?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??break;
->     > -?? ?? ?? ?? ?? ?? ??case Opt_noacl:
->     > +?? ?? ?? ?? ?? ?? ??case opt_noacl:
->     >?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??clear_opt(EROFS_SB(sb), POSIX_ACL);
->     >?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??break;
->     >?? #else
->     > -?? ?? ?? ?? ?? ?? ??case Opt_acl:
->     > +?? ?? ?? ?? ?? ?? ??case opt_acl:
->     >?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??infoln("acl options not supported");
->     >?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??break;
->     > -?? ?? ?? ?? ?? ?? ??case Opt_noacl:
->     > +?? ?? ?? ?? ?? ?? ??case opt_noacl:
->     >?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??infoln("noacl options not supported");
->     >?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??break;
->     >?? #endif
->     > -?? ?? ?? ?? ?? ?? ??case Opt_fault_injection:
->     > +?? ?? ?? ?? ?? ?? ??case opt_fault_injection:
->     >?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??err = erofs_build_fault_attr(EROFS_SB(sb),
->     args);
->     >?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??if (err)
->     >?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??return err;
->     > @@ -525,7 +526,6 @@ static void erofs_put_super(struct super_block
->     *sb)
->     >?? ?? ?? ??sb->s_fs_info = NULL;
->     >?? }
->     >??
->     > -
->     >?? struct erofs_mount_private {
->     >?? ?? ?? ??const char *dev_name;
->     >?? ?? ?? ??char *options;
->     > @@ -541,9 +541,9 @@ static int erofs_fill_super(struct super_block
->     *sb,
->     >?? ?? ?? ?? ?? ?? ?? ??priv->options, silent);
->     >?? }
->     >??
->     > -static struct dentry *erofs_mount(
->     > -?? ?? ??struct file_system_type *fs_type, int flags,
->     > -?? ?? ??const char *dev_name, void *data)
->     > +static struct dentry *erofs_mount(struct file_system_type *fs_type,
->     > +?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??int flags,
->     > +?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??const char *dev_name, void *data)
->     >?? {
->     >?? ?? ?? ??struct erofs_mount_private priv = {
->     >?? ?? ?? ?? ?? ?? ?? ??.dev_name = dev_name,
->     > @@ -623,7 +623,8 @@ static int erofs_statfs(struct dentry *dentry,
->     struct kstatfs *buf)
->     >?? ?? ?? ??buf->f_type = sb->s_magic;
->     >?? ?? ?? ??buf->f_bsize = EROFS_BLKSIZ;
->     >?? ?? ?? ??buf->f_blocks = sbi->blocks;
->     > -?? ?? ??buf->f_bfree = buf->f_bavail = 0;
->     > +?? ?? ??buf->f_bfree = 0;
->     > +?? ?? ??buf->f_bavail = 0;
->     >??
->     >?? ?? ?? ??buf->f_files = ULLONG_MAX;
->     >?? ?? ?? ??buf->f_ffree = ULLONG_MAX - sbi->inos;
->     >
-> 
+> =
+
+> Thank you, Dan. This patch series is a mandatory part of a course
+> Sabrina and I are taking at university. We were told to add
+> Signed-off-by for both of us. I can add Co-Developed-by if that helps?
+
+Yes.  It does help.
+
+regards,
+dan carpenter
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
