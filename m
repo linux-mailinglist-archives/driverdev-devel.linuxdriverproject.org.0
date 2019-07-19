@@ -1,62 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CB9246DB30
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Jul 2019 06:07:50 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7A6F4203E0;
-	Fri, 19 Jul 2019 04:07:48 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kdpiTLc+WXk5; Fri, 19 Jul 2019 04:07:47 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4C54120514;
-	Fri, 19 Jul 2019 04:07:45 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3A1951BF46D
- for <devel@linuxdriverproject.org>; Fri, 19 Jul 2019 04:07:43 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1273C6E16B
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Jul 2019 09:09:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 323868761F
- for <devel@linuxdriverproject.org>; Fri, 19 Jul 2019 04:07:43 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C756B876D1;
+	Fri, 19 Jul 2019 07:09:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id sShJIXqdRShI; Fri, 19 Jul 2019 07:09:56 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 58A32876A2;
+	Fri, 19 Jul 2019 07:09:55 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 65EBE1BF33C
+ for <devel@linuxdriverproject.org>; Fri, 19 Jul 2019 07:09:53 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 62F8D880A1
+ for <devel@linuxdriverproject.org>; Fri, 19 Jul 2019 07:09:53 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LqXvlT11DUrg for <devel@linuxdriverproject.org>;
- Fri, 19 Jul 2019 04:07:42 +0000 (UTC)
+ with ESMTP id zlnrI61lmaP1 for <devel@linuxdriverproject.org>;
+ Fri, 19 Jul 2019 07:09:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 844C0875D1
- for <devel@driverdev.osuosl.org>; Fri, 19 Jul 2019 04:07:42 +0000 (UTC)
-Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
- [73.47.72.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B65CF218BA;
- Fri, 19 Jul 2019 04:07:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1563509262;
- bh=X4vd8OK4yXQ0AbEdR++MYAR4NsXHtv+u2lPVXgjJSTE=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=v9ECzsN0EZwIKcv6wghM1xSCaOWZJr2MFscNuFBpkf1r05qxZejWR6dxsgKxphIlv
- e8ZQwfasdZ0h/83bdce4OvPvcLLo7wIX2nJyPXcEsFNA0iROQ9WnN5A+stjXIJBcZ5
- U/6VNaCGRPKLJODpHXX9kN24AblR46EJ8G4hV2Fk=
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 004/101] staging: vt6656: use meaningful error
- code during buffer allocation
-Date: Fri, 19 Jul 2019 00:05:55 -0400
-Message-Id: <20190719040732.17285-4-sashal@kernel.org>
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id E5E7087ED1
+ for <devel@driverdev.osuosl.org>; Fri, 19 Jul 2019 07:09:52 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id p184so13757326pfp.7
+ for <devel@driverdev.osuosl.org>; Fri, 19 Jul 2019 00:09:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=hw2kNiLoj+LvvfY1YdobU4HU5vXnmTyj3KhgfWP8Lyc=;
+ b=F30SYFLzLUaEvZZyNkrfusWAtMzfDxAGnKIlXrIl6LOCJF2OhfQDsDLT9cmynvdevK
+ JwjuT2TZXcF7zudqpIWMz5/gKm7J0X+6DBmaiQWIZz5dAtOiAitm4MlmT3q+az3sfLrq
+ lAjPAWrRlY/T2WWHlDSv6/2omGMuIyOvfC8PwRKM85273cve4F8Tft6YALL0ynYxhIv/
+ CH7yoVCrZPA0JjDcZeBNWyPX/AMfNdFDhZOFC9bgc1KRlwop6/yxHjX62T9H5Pujnjvv
+ MhXFDeDWxctuByVAbbgvmXY4NjfDmZKaXHs65AJ1zUhplntVEUSR7kzG+yIfgk/dQlY1
+ 7tdg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=hw2kNiLoj+LvvfY1YdobU4HU5vXnmTyj3KhgfWP8Lyc=;
+ b=cU329pXaXCcAkMhIWMMR10IORxjxtMelNba1r5q/HvoLIpgNmVEDSUJleiR1ryxESJ
+ Jpj+n9LKDCG8RB0RcDKCGPa6xulM0vweUwrbnzg7ymmfnqcAxQXslhHepdiCibeYz12A
+ Cl7CL9l8ssxj0/5mBPi0sR+TfhANPffbdyi+xnnj8OCkgv8J5PQuF1utI4qgyaAPqq0q
+ xBp0C9WEB0TO5bNxGAg8Bo8JdtaIhMAlpinoucfytlunmZLuhc96IGm4MxmkLg7Y1FTJ
+ Sdy594hywnyQLuh3EXjCLo111c+OGpnwS8CHAqnASd/erzQj0B/R/u2o67DgfQ7HmoB0
+ Fp8A==
+X-Gm-Message-State: APjAAAXbPOveXV3nS3sMkVKILODHK4AxNXpUHNsZQYce7dDnvaBYuOk4
+ JuChlkpJyREtn/OWNTY5bPI=
+X-Google-Smtp-Source: APXvYqyPYlKJsxcZlDbnkyt2zjKgqcTXPGjGOmY0RYcfU9CmypL8Bb/NbeFOHQDzySOm0VehvgYREA==
+X-Received: by 2002:a17:90a:208d:: with SMTP id
+ f13mr54371662pjg.68.1563520192524; 
+ Fri, 19 Jul 2019 00:09:52 -0700 (PDT)
+Received: from suzukaze.ipads-lab.se.sjtu.edu.cn ([89.31.126.54])
+ by smtp.gmail.com with ESMTPSA id r18sm17470274pfg.77.2019.07.19.00.09.49
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Fri, 19 Jul 2019 00:09:51 -0700 (PDT)
+From: Chuhong Yuan <hslester96@gmail.com>
+To: 
+Subject: [PATCH] staging: rtl8712: Merge memcpy + be16_to_cpus to
+ get_unaligned_be16
+Date: Fri, 19 Jul 2019 15:09:22 +0800
+Message-Id: <20190719070921.27749-1-hslester96@gmail.com>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190719040732.17285-1-sashal@kernel.org>
-References: <20190719040732.17285-1-sashal@kernel.org>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,134 +85,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>,
+Cc: devel@driverdev.osuosl.org,
+ Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Quentin Deslandes <quentin.deslandes@itdev.co.uk>, devel@driverdev.osuosl.org
+ Chuhong Yuan <hslester96@gmail.com>, linux-kernel@vger.kernel.org,
+ Larry Finger <Larry.Finger@lwfinger.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
+Merge the combo of memcpy and be16_to_cpus.
+Use get_unaligned_be16 instead.
+This simplifies the code.
 
-[ Upstream commit d8c2869300ab5f7a19bf6f5a04fe473c5c9887e3 ]
-
-Check on called function's returned value for error and return 0 on
-success or a negative errno value on error instead of a boolean value.
-
-Signed-off-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
 ---
- drivers/staging/vt6656/main_usb.c | 42 ++++++++++++++++++++-----------
- 1 file changed, 28 insertions(+), 14 deletions(-)
+ drivers/staging/rtl8712/rtl871x_recv.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
-index ccafcc2c87ac..70433f756d8e 100644
---- a/drivers/staging/vt6656/main_usb.c
-+++ b/drivers/staging/vt6656/main_usb.c
-@@ -402,16 +402,19 @@ static void vnt_free_int_bufs(struct vnt_private *priv)
- 	kfree(priv->int_buf.data_buf);
- }
+diff --git a/drivers/staging/rtl8712/rtl871x_recv.c b/drivers/staging/rtl8712/rtl871x_recv.c
+index 5298fe603437..9969e5265a40 100644
+--- a/drivers/staging/rtl8712/rtl871x_recv.c
++++ b/drivers/staging/rtl8712/rtl871x_recv.c
+@@ -245,8 +245,7 @@ union recv_frame *r8712_portctrl(struct _adapter *adapter,
+ 	if (auth_alg == 2) {
+ 		/* get ether_type */
+ 		ptr = ptr + pfhdr->attrib.hdrlen + LLC_HEADER_SIZE;
+-		memcpy(&ether_type, ptr, 2);
+-		be16_to_cpus(&ether_type);
++		ether_type = get_unaligned_be16(ptr);
  
--static bool vnt_alloc_bufs(struct vnt_private *priv)
-+static int vnt_alloc_bufs(struct vnt_private *priv)
- {
-+	int ret = 0;
- 	struct vnt_usb_send_context *tx_context;
- 	struct vnt_rcb *rcb;
- 	int ii;
- 
- 	for (ii = 0; ii < priv->num_tx_context; ii++) {
- 		tx_context = kmalloc(sizeof(*tx_context), GFP_KERNEL);
--		if (!tx_context)
-+		if (!tx_context) {
-+			ret = -ENOMEM;
- 			goto free_tx;
-+		}
- 
- 		priv->tx_context[ii] = tx_context;
- 		tx_context->priv = priv;
-@@ -419,16 +422,20 @@ static bool vnt_alloc_bufs(struct vnt_private *priv)
- 
- 		/* allocate URBs */
- 		tx_context->urb = usb_alloc_urb(0, GFP_KERNEL);
--		if (!tx_context->urb)
-+		if (!tx_context->urb) {
-+			ret = -ENOMEM;
- 			goto free_tx;
-+		}
- 
- 		tx_context->in_use = false;
- 	}
- 
- 	for (ii = 0; ii < priv->num_rcb; ii++) {
- 		priv->rcb[ii] = kzalloc(sizeof(*priv->rcb[ii]), GFP_KERNEL);
--		if (!priv->rcb[ii])
-+		if (!priv->rcb[ii]) {
-+			ret = -ENOMEM;
- 			goto free_rx_tx;
-+		}
- 
- 		rcb = priv->rcb[ii];
- 
-@@ -436,39 +443,46 @@ static bool vnt_alloc_bufs(struct vnt_private *priv)
- 
- 		/* allocate URBs */
- 		rcb->urb = usb_alloc_urb(0, GFP_KERNEL);
--		if (!rcb->urb)
-+		if (!rcb->urb) {
-+			ret = -ENOMEM;
- 			goto free_rx_tx;
-+		}
- 
- 		rcb->skb = dev_alloc_skb(priv->rx_buf_sz);
--		if (!rcb->skb)
-+		if (!rcb->skb) {
-+			ret = -ENOMEM;
- 			goto free_rx_tx;
-+		}
- 
- 		rcb->in_use = false;
- 
- 		/* submit rx urb */
--		if (vnt_submit_rx_urb(priv, rcb))
-+		ret = vnt_submit_rx_urb(priv, rcb);
-+		if (ret)
- 			goto free_rx_tx;
- 	}
- 
- 	priv->interrupt_urb = usb_alloc_urb(0, GFP_KERNEL);
--	if (!priv->interrupt_urb)
-+	if (!priv->interrupt_urb) {
-+		ret = -ENOMEM;
- 		goto free_rx_tx;
-+	}
- 
- 	priv->int_buf.data_buf = kmalloc(MAX_INTERRUPT_SIZE, GFP_KERNEL);
- 	if (!priv->int_buf.data_buf) {
--		usb_free_urb(priv->interrupt_urb);
--		goto free_rx_tx;
-+		ret = -ENOMEM;
-+		goto free_rx_tx_urb;
- 	}
- 
--	return true;
-+	return 0;
- 
-+free_rx_tx_urb:
-+	usb_free_urb(priv->interrupt_urb);
- free_rx_tx:
- 	vnt_free_rx_bufs(priv);
--
- free_tx:
- 	vnt_free_tx_bufs(priv);
--
--	return false;
-+	return ret;
- }
- 
- static void vnt_tx_80211(struct ieee80211_hw *hw,
+ 		if ((psta != NULL) && (psta->ieee8021x_blocked)) {
+ 			/* blocked
 -- 
 2.20.1
 
