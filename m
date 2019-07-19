@@ -1,58 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 52DBA6DAD3
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Jul 2019 06:04:54 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id CB9246DB30
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Jul 2019 06:07:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D08B2841E9;
-	Fri, 19 Jul 2019 04:04:52 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7A6F4203E0;
+	Fri, 19 Jul 2019 04:07:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JbXopQL9cIJH; Fri, 19 Jul 2019 04:04:50 +0000 (UTC)
+	with ESMTP id kdpiTLc+WXk5; Fri, 19 Jul 2019 04:07:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3B51E84186;
-	Fri, 19 Jul 2019 04:04:50 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4C54120514;
+	Fri, 19 Jul 2019 04:07:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3C54A1BF9BF
- for <devel@linuxdriverproject.org>; Fri, 19 Jul 2019 04:04:48 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 3A1951BF46D
+ for <devel@linuxdriverproject.org>; Fri, 19 Jul 2019 04:07:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 2EECE841E9
- for <devel@linuxdriverproject.org>; Fri, 19 Jul 2019 04:04:48 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 323868761F
+ for <devel@linuxdriverproject.org>; Fri, 19 Jul 2019 04:07:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5tX0P-Lip0o8 for <devel@linuxdriverproject.org>;
- Fri, 19 Jul 2019 04:04:47 +0000 (UTC)
+ with ESMTP id LqXvlT11DUrg for <devel@linuxdriverproject.org>;
+ Fri, 19 Jul 2019 04:07:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 9FEE284078
- for <devel@driverdev.osuosl.org>; Fri, 19 Jul 2019 04:04:47 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 844C0875D1
+ for <devel@driverdev.osuosl.org>; Fri, 19 Jul 2019 04:07:42 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B94D7218B8;
- Fri, 19 Jul 2019 04:04:46 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id B65CF218BA;
+ Fri, 19 Jul 2019 04:07:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1563509087;
- bh=8tBagpOAOpprCs4uYU53NVUBKsHIAknXM1XHCt4N8L0=;
+ s=default; t=1563509262;
+ bh=X4vd8OK4yXQ0AbEdR++MYAR4NsXHtv+u2lPVXgjJSTE=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ojeAN3frEeYJ78CwA+VewqJRBg8iEDSHciGcBU5N9eRfll/yFYawOfMoFpDya1BUG
- FbqVV9C6B84/jeQbhyjMCCzfd/VKIisWJBomqNHynNNWIGw+bwuygww2yZWkc6ZoZB
- Yph6MTkWBFJuprSXMOHy7pJh7jKDFhPqFW30JHNU=
+ b=v9ECzsN0EZwIKcv6wghM1xSCaOWZJr2MFscNuFBpkf1r05qxZejWR6dxsgKxphIlv
+ e8ZQwfasdZ0h/83bdce4OvPvcLLo7wIX2nJyPXcEsFNA0iROQ9WnN5A+stjXIJBcZ5
+ U/6VNaCGRPKLJODpHXX9kN24AblR46EJ8G4hV2Fk=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.1 061/141] staging: ks7010: Fix build error
-Date: Fri, 19 Jul 2019 00:01:26 -0400
-Message-Id: <20190719040246.15945-61-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 004/101] staging: vt6656: use meaningful error
+ code during buffer allocation
+Date: Fri, 19 Jul 2019 00:05:55 -0400
+Message-Id: <20190719040732.17285-4-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190719040246.15945-1-sashal@kernel.org>
-References: <20190719040246.15945-1-sashal@kernel.org>
+In-Reply-To: <20190719040732.17285-1-sashal@kernel.org>
+References: <20190719040732.17285-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
@@ -68,51 +69,134 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, Hulk Robot <hulkci@huawei.com>,
- devel@driverdev.osuosl.org, YueHaibing <yuehaibing@huawei.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Sasha Levin <sashal@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Quentin Deslandes <quentin.deslandes@itdev.co.uk>, devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: YueHaibing <yuehaibing@huawei.com>
+From: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
 
-[ Upstream commit 3e5bc68fa596874500e8c718605aa44d5e42a34c ]
+[ Upstream commit d8c2869300ab5f7a19bf6f5a04fe473c5c9887e3 ]
 
-when CRYPTO is m and KS7010 is y, building fails:
+Check on called function's returned value for error and return 0 on
+success or a negative errno value on error instead of a boolean value.
 
-drivers/staging/ks7010/ks_hostif.o: In function `michael_mic.constprop.13':
-ks_hostif.c:(.text+0x560): undefined reference to `crypto_alloc_shash'
-ks_hostif.c:(.text+0x580): undefined reference to `crypto_shash_setkey'
-ks_hostif.c:(.text+0x5e0): undefined reference to `crypto_destroy_tfm'
-ks_hostif.c:(.text+0x614): undefined reference to `crypto_shash_update'
-ks_hostif.c:(.text+0x62c): undefined reference to `crypto_shash_update'
-ks_hostif.c:(.text+0x648): undefined reference to `crypto_shash_finup'
-
-Add CRYPTO and CRYPTO_HASH dependencies to fix this.
-
-Reported-by: Hulk Robot <hulkci@huawei.com>
-Fixes: 8b523f20417d ("staging: ks7010: removed custom Michael MIC implementation.")
-Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+Signed-off-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/staging/ks7010/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/staging/vt6656/main_usb.c | 42 ++++++++++++++++++++-----------
+ 1 file changed, 28 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/staging/ks7010/Kconfig b/drivers/staging/ks7010/Kconfig
-index 0b9217674d5b..8a303ce114d8 100644
---- a/drivers/staging/ks7010/Kconfig
-+++ b/drivers/staging/ks7010/Kconfig
-@@ -4,6 +4,7 @@ config KS7010
- 	select WIRELESS_EXT
- 	select WEXT_PRIV
- 	select FW_LOADER
-+	depends on CRYPTO && CRYPTO_HASH
- 	help
- 	  This is a driver for KeyStream KS7010 based SDIO WIFI cards. It is
- 	  found on at least later Spectec SDW-821 (FCC-ID "S2Y-WLAN-11G-K" only,
+diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
+index ccafcc2c87ac..70433f756d8e 100644
+--- a/drivers/staging/vt6656/main_usb.c
++++ b/drivers/staging/vt6656/main_usb.c
+@@ -402,16 +402,19 @@ static void vnt_free_int_bufs(struct vnt_private *priv)
+ 	kfree(priv->int_buf.data_buf);
+ }
+ 
+-static bool vnt_alloc_bufs(struct vnt_private *priv)
++static int vnt_alloc_bufs(struct vnt_private *priv)
+ {
++	int ret = 0;
+ 	struct vnt_usb_send_context *tx_context;
+ 	struct vnt_rcb *rcb;
+ 	int ii;
+ 
+ 	for (ii = 0; ii < priv->num_tx_context; ii++) {
+ 		tx_context = kmalloc(sizeof(*tx_context), GFP_KERNEL);
+-		if (!tx_context)
++		if (!tx_context) {
++			ret = -ENOMEM;
+ 			goto free_tx;
++		}
+ 
+ 		priv->tx_context[ii] = tx_context;
+ 		tx_context->priv = priv;
+@@ -419,16 +422,20 @@ static bool vnt_alloc_bufs(struct vnt_private *priv)
+ 
+ 		/* allocate URBs */
+ 		tx_context->urb = usb_alloc_urb(0, GFP_KERNEL);
+-		if (!tx_context->urb)
++		if (!tx_context->urb) {
++			ret = -ENOMEM;
+ 			goto free_tx;
++		}
+ 
+ 		tx_context->in_use = false;
+ 	}
+ 
+ 	for (ii = 0; ii < priv->num_rcb; ii++) {
+ 		priv->rcb[ii] = kzalloc(sizeof(*priv->rcb[ii]), GFP_KERNEL);
+-		if (!priv->rcb[ii])
++		if (!priv->rcb[ii]) {
++			ret = -ENOMEM;
+ 			goto free_rx_tx;
++		}
+ 
+ 		rcb = priv->rcb[ii];
+ 
+@@ -436,39 +443,46 @@ static bool vnt_alloc_bufs(struct vnt_private *priv)
+ 
+ 		/* allocate URBs */
+ 		rcb->urb = usb_alloc_urb(0, GFP_KERNEL);
+-		if (!rcb->urb)
++		if (!rcb->urb) {
++			ret = -ENOMEM;
+ 			goto free_rx_tx;
++		}
+ 
+ 		rcb->skb = dev_alloc_skb(priv->rx_buf_sz);
+-		if (!rcb->skb)
++		if (!rcb->skb) {
++			ret = -ENOMEM;
+ 			goto free_rx_tx;
++		}
+ 
+ 		rcb->in_use = false;
+ 
+ 		/* submit rx urb */
+-		if (vnt_submit_rx_urb(priv, rcb))
++		ret = vnt_submit_rx_urb(priv, rcb);
++		if (ret)
+ 			goto free_rx_tx;
+ 	}
+ 
+ 	priv->interrupt_urb = usb_alloc_urb(0, GFP_KERNEL);
+-	if (!priv->interrupt_urb)
++	if (!priv->interrupt_urb) {
++		ret = -ENOMEM;
+ 		goto free_rx_tx;
++	}
+ 
+ 	priv->int_buf.data_buf = kmalloc(MAX_INTERRUPT_SIZE, GFP_KERNEL);
+ 	if (!priv->int_buf.data_buf) {
+-		usb_free_urb(priv->interrupt_urb);
+-		goto free_rx_tx;
++		ret = -ENOMEM;
++		goto free_rx_tx_urb;
+ 	}
+ 
+-	return true;
++	return 0;
+ 
++free_rx_tx_urb:
++	usb_free_urb(priv->interrupt_urb);
+ free_rx_tx:
+ 	vnt_free_rx_bufs(priv);
+-
+ free_tx:
+ 	vnt_free_tx_bufs(priv);
+-
+-	return false;
++	return ret;
+ }
+ 
+ static void vnt_tx_80211(struct ieee80211_hw *hw,
 -- 
 2.20.1
 
