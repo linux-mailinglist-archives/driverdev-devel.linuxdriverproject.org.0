@@ -1,82 +1,147 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DE0A1705C3
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Jul 2019 18:52:38 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6275B707FB
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Jul 2019 19:56:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A490587A80;
-	Mon, 22 Jul 2019 16:52:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CFA96864B2;
+	Mon, 22 Jul 2019 17:56:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id i1VD4MOEoBCl; Mon, 22 Jul 2019 16:52:36 +0000 (UTC)
+	with ESMTP id ZmhU7fp1zfg8; Mon, 22 Jul 2019 17:56:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D7FA3852CB;
-	Mon, 22 Jul 2019 16:52:35 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AF62B85168;
+	Mon, 22 Jul 2019 17:56:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 59CAE1BF35F
- for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 16:52:33 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A97CB1BF383
+ for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 17:56:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 568C9875AD
- for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 16:52:33 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A386F845DF
+ for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 17:56:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RmcquV2DsCzR for <devel@linuxdriverproject.org>;
- Mon, 22 Jul 2019 16:52:32 +0000 (UTC)
+ with ESMTP id sU7oe7TCcCMk for <devel@linuxdriverproject.org>;
+ Mon, 22 Jul 2019 17:56:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic316-54.consmr.mail.gq1.yahoo.com
- (sonic316-54.consmr.mail.gq1.yahoo.com [98.137.69.30])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 61481852CB
- for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 16:52:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aol.com; s=a2048;
- t=1563814350; bh=+/7np4FvOppMR9Hf/eQxNoXzqpdKSRbs1I6bZt2UJ40=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From:Subject;
- b=X6sWygAGuqfUgp75ROg5xSq7l5O2IjRks7AVIlvspODL2N9BhL1kDzaRObLFMlu8emxd2RLdH53eDGjWoMCoW2D6KbF2FE8pMxXTJhsR76v/Ozz4VGbTdCBBJ/WRVZ/fcEvjpoP+z9BeM5kEdCpLzbQsL6JcUrBTGhlusK8JJ7lLNsmPxqnUHw3OcLw+WCu2TgEtVZr52Yc1pjEP8/qIhJ9NnirSU2eCEdI7S3ATGA3dR2yD3zkx2v6MW2qcF2pDZ5EHW1AcFkzs7yEU1E6lJptYoiAjsfP3ho3TRJADVWl0lh3YuS+jI1hgY8uAF1xk45T/ICG8CRkJ/HUQgrPiNw==
-X-YMail-OSG: 7mUnhZ0VM1mdbBsgLOwGGOHmwMtvDtQE7eENg83jN0mkP4RUNMNHU9GIn.Ll8dy
- szGhTNA0ZIbinU.B9RfRBHEL80BMJRj4Eue5nnUmw6nOUbHhskhcSuVtttowGK4q5Yu9H4Vpd_3d
- hGeM4yB.cfwoSlnMf_zFR14nbjPo2Ba1VU1MkqAcsErp5SA_MztAYz9ZC_ysVHoUTxo_gm00jUp2
- 9JCdGciZuYS4n4YOFa.nC_ZvXPA22I_8YlCBULrdV4KBqArqO1Ii0aogVpa_ZhugGM6lBH42hGt7
- 0F2.tWIVP6X10DiMFp96o3lck69dLmScvYTOW5uivlW_kup42JMbTyEBRgiUyFN6tDw5DGii3t41
- ZJEjyNu0b7Il4Gyo6nZft9dcj.oro21Riof99754opovfYziPReDh9CH2k38ADyTdnG1x1ZSELtm
- 44iysiZBcw1BvdnPIDnvk2uD1qKsxlxYueoK9LBBDSYuH8_GZxskpwDowsee0JPEygILzBqV1Dj7
- FrBkF7NxwYbqKXGmBsdHLrGaxpVpU1fUjrTbC5sTEr.gHiDswsTjybvlu7MMfmZoViHEW7P.aVmX
- mHKUk5Hij9WgPOuOK23aSuu9XkVHg.tn5RGKj42doquhRnYNWZ_EDpSHMKyQYOzd4QxcgaNchubC
- oWI_uaW21cfwMokc8lHvSRi.Lq8wOxzLTWdEHtoAzvdXdjTVi7e2LY_8Zt5q0sK7N3KrQH1vZQcz
- xlZGZ.sdhvkSLYW31e9xm6QVKixcUepKmtNKjD8wt.qczdyJ_L1MRZ2BI5EBkfEmfNpAI9cyDc9I
- bM3y6eg_w4vz4t9llHdpxVloO2nqvg5_W.X7C6kL.OzWepycJ9O0H8.cjrEqxbk5dXRyQCdvdj3o
- 6ZlcLeadJlxY0bAh6XSG7LYq1YstpiopTW5P0clR2P9KDlRKwf.1su7WasPLe8j0mt.QH_cbN1fy
- tw6_tyiUlI9GcNBrUV.b_lHdQd_9LIb8ss9HitVzA6PpXX6DwzL85wmMtjZ4XYfy8m7e0pKnSUxI
- epITVX5BALgw0ynLy1HXHEWw79qlBj9udhJ_l0ZnmGRhHDxRcQwOsRmbQjgeNwHAT.uXm2raNpyf
- vQkYb9Mm4r3Ko9x8IRG.Nyt4GfwPSQ1l7N599PvuP0sDCx1MFBRbgwiBDeXE2TNsrQsT_guJ1Uq0
- NMWS7m1REosIvBs_QxPK4Sq22II3YEeVRvi3FFTbqk3PX5DhkoeeB7uPtloCJEw_HmrIEIKgupcU
- FctUVfufA
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic316.consmr.mail.gq1.yahoo.com with HTTP; Mon, 22 Jul 2019 16:52:30 +0000
-Received: by smtp421.mail.gq1.yahoo.com (Oath Hermes SMTP Server) with ESMTPA
- ID d88bfb998e3ead874cbe21f5d0ea57ed; 
- Mon, 22 Jul 2019 16:52:26 +0000 (UTC)
-Subject: Re: [PATCH v3 12/24] erofs: introduce tagged pointer
-To: Steven Rostedt <rostedt@goodmis.org>
-References: <20190722025043.166344-1-gaoxiang25@huawei.com>
- <20190722025043.166344-13-gaoxiang25@huawei.com>
- <CAOQ4uxh04gwbM4yFaVpWHVwmJ4BJo4bZaU8A4_NQh2bO_xCHJg@mail.gmail.com>
- <39fad3ab-c295-5f6f-0a18-324acab2f69e@huawei.com>
- <CAOQ4uxgo5kvgoEn7SbuwF9+B1W9Qg1-2jSUm5+iKZdT6-wDEog@mail.gmail.com>
- <20190722104048.463397a0@gandalf.local.home>
- <0c2cdd4f-8fe7-6084-9c2d-c2e475e6806e@aol.com>
- <20190722123502.328cecb6@gandalf.local.home>
-From: Gao Xiang <hsiangkao@aol.com>
-Message-ID: <25e5dd99-b110-45f8-f769-5372ff01510f@aol.com>
-Date: Tue, 23 Jul 2019 00:52:14 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
-In-Reply-To: <20190722123502.328cecb6@gandalf.local.home>
+Received: from esa3.microchip.iphmx.com (esa3.microchip.iphmx.com
+ [68.232.153.233])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D103E845DC
+ for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 17:56:15 +0000 (UTC)
+Received-SPF: Pass (esa3.microchip.iphmx.com: domain of
+ Adham.Abozaeid@microchip.com designates 198.175.253.82 as
+ permitted sender) identity=mailfrom;
+ client-ip=198.175.253.82; receiver=esa3.microchip.iphmx.com;
+ envelope-from="Adham.Abozaeid@microchip.com";
+ x-sender="Adham.Abozaeid@microchip.com";
+ x-conformance=spf_only; x-record-type="v=spf1";
+ x-record-text="v=spf1 mx a:ushub1.microchip.com
+ a:smtpout.microchip.com a:mx1.microchip.iphmx.com
+ a:mx2.microchip.iphmx.com include:servers.mcsv.net
+ include:mktomail.com include:spf.protection.outlook.com ~all"
+Received-SPF: None (esa3.microchip.iphmx.com: no sender
+ authenticity information available from domain of
+ postmaster@email.microchip.com) identity=helo;
+ client-ip=198.175.253.82; receiver=esa3.microchip.iphmx.com;
+ envelope-from="Adham.Abozaeid@microchip.com";
+ x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
+Authentication-Results: esa3.microchip.iphmx.com;
+ spf=Pass smtp.mailfrom=Adham.Abozaeid@microchip.com;
+ spf=None smtp.helo=postmaster@email.microchip.com;
+ dkim=pass (signature verified) header.i=@microchiptechnology.onmicrosoft.com;
+ dmarc=pass (p=none dis=none) d=microchip.com
+IronPort-SDR: DX5Lnt1GpTDQYlnSEC0R+ndtSoys++6yyHj+23D0J6F8BVpobRGhoZEUdetMK5zHxrAyAjWasS
+ EnI2rubVTzuooNMbjft+jB4IoCKB/fXO/vkWKtNE8XMIl3u7milJ8MMVWwFpj/ND2iE3zhopbD
+ B3VP3ojbznLvrxvepMNforYdF6ubhaSlnTQI8NatgSEX6zi9nx8Thg1D3/BO1evek+ohMb/osF
+ j0i3f9YPjvZAJbVSVFWTf/ofJS16gpPEnZl52M+jTGH0pWC7L2BgkJKqG4QoYeFTP2us1sFjDJ
+ 7uw=
+X-IronPort-AV: E=Sophos;i="5.64,295,1559545200"; d="scan'208";a="42278620"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa3.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 22 Jul 2019 10:56:15 -0700
+Received: from chn-vm-ex01.mchp-main.com (10.10.87.71) by
+ chn-vm-ex02.mchp-main.com (10.10.87.72) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Mon, 22 Jul 2019 10:56:13 -0700
+Received: from NAM01-BN3-obe.outbound.protection.outlook.com (10.10.215.89) by
+ email.microchip.com (10.10.87.71) with Microsoft SMTP Server
+ (version=TLS1_2, 
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.1713.5 via Frontend
+ Transport; Mon, 22 Jul 2019 10:56:14 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=MbxH2f28Vxu/kZeE6WPimDqDpPu1DLdovDxmU5bKsKkBZ6XSyuJmEhEt/Kh5P4lyiJfHF7d2Ka1eC6kybdJ15kt2f61nj4MEgIAokTJ5exZHYSVDXg+fQA15/EanWICbGwESzRh7lBaGtbt202JLIwXMXYokRg6+/T2xaOTFIfX3p9Af1LnxjNJxsh0q437lnQzjkT6H58ToOfcc2GyZ+/0KrOeMiKp969jvZ/AzK7SK3B7FTS87N1w22MCzXp1ITlmVtSoyWgK03tt2bYhyCZamjI10UOjvKhKSrOJ63rt4RUX01D8fCfA7373yHS9XZGb2q9mFq6kEWGZ1HpPQJw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=lonj+Prmicgg53M3NM2AlpdIyUcK5OZdlPrIGcGvvw4=;
+ b=Y7nMJMAyH8+HLJ0Iif/cG4c509bP8n6zk2fzfUhIpTGJ5t/rVPZGGo1hEEJCfQRJSsSSEYKHHzMzdPQeSMGocJD355kAr/9eEngcqlToJh8Jbmh7PJbLWZgJY6Ghj5TqsMm4a94CihFxp1lEDptvKMyQwb0EpVoBDIw0yL8DoljGBAo6QBCyvfOJYnhXqpVGe0/s+bVu0YcR7bsBNWMjHD4dCH2KR28CPmFdAczeqSKGfYt4I2PY6NszLWGRsAYuMiYyf7mlKfuvmsF/yQPpFCE8enN2P1anMJlwv8zsAqKQ5EN07KbfkWhXuj0YZiGRnWefdV3uqGTICH8KrXVKng==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1;spf=pass
+ smtp.mailfrom=microchip.com;dmarc=pass action=none
+ header.from=microchip.com;dkim=pass header.d=microchip.com;arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=microchiptechnology.onmicrosoft.com;
+ s=selector1-microchiptechnology-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=lonj+Prmicgg53M3NM2AlpdIyUcK5OZdlPrIGcGvvw4=;
+ b=w1oblm7Q6rQHrWSTu4ZeWCh7wqbCOWEmKxggjeogEjLvc1+jt3GiET6wCW4ZAiBAcvQCTOT8SZNa31pS6NQ+S0+0wna1cvWBVbRgwAKgHy+u66KtdC1FzaMcr5F0RnnotZMPmZVCwrFmOsh7gq+K+89QwxU6i/6qcAMipgOh5OQ=
+Received: from MWHPR11MB1373.namprd11.prod.outlook.com (10.169.234.141) by
+ MWHPR11MB2063.namprd11.prod.outlook.com (10.169.236.140) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2094.14; Mon, 22 Jul 2019 17:56:13 +0000
+Received: from MWHPR11MB1373.namprd11.prod.outlook.com
+ ([fe80::1912:9972:700:c536]) by MWHPR11MB1373.namprd11.prod.outlook.com
+ ([fe80::1912:9972:700:c536%3]) with mapi id 15.20.2094.013; Mon, 22 Jul 2019
+ 17:56:13 +0000
+From: <Adham.Abozaeid@microchip.com>
+To: <linux-wireless@vger.kernel.org>
+Subject: [PATCH] staging: wilc1000: flush the workqueue before deinit the host
+ ifc
+Thread-Topic: [PATCH] staging: wilc1000: flush the workqueue before deinit the
+ host ifc
+Thread-Index: AQHVQLbAuYh1CqTgu0OlxDBGjc23ag==
+Date: Mon, 22 Jul 2019 17:56:13 +0000
+Message-ID: <20190722175604.19650-1-adham.abozaeid@microchip.com>
+Accept-Language: en-US
 Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [198.175.253.81]
+x-clientproxiedby: YTOPR0101CA0041.CANPRD01.PROD.OUTLOOK.COM
+ (2603:10b6:b00:14::18) To MWHPR11MB1373.namprd11.prod.outlook.com
+ (2603:10b6:300:25::13)
+x-ms-exchange-messagesentrepresentingtype: 1
+x-mailer: git-send-email 2.17.1
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: c2e8cfda-37d8-4d72-8c88-08d70ecde28d
+x-microsoft-antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(2017052603328)(7193020);
+ SRVR:MWHPR11MB2063; 
+x-ms-traffictypediagnostic: MWHPR11MB2063:
+x-microsoft-antispam-prvs: <MWHPR11MB206335A6E4FDEB6BFD876E4A8DC40@MWHPR11MB2063.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:541;
+x-forefront-prvs: 01068D0A20
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(39860400002)(366004)(376002)(346002)(396003)(136003)(189003)(199004)(52116002)(14454004)(478600001)(36756003)(50226002)(66446008)(66946007)(66556008)(64756008)(66476007)(305945005)(99286004)(476003)(14444005)(256004)(81156014)(2501003)(7736002)(5660300002)(25786009)(102836004)(81166006)(186003)(8936002)(26005)(6916009)(66066001)(2616005)(486006)(4326008)(4744005)(6506007)(386003)(86362001)(3846002)(54906003)(5640700003)(6512007)(6436002)(6486002)(6116002)(8676002)(2351001)(1076003)(316002)(68736007)(53936002)(107886003)(2906002)(71200400001)(71190400001);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:MWHPR11MB2063;
+ H:MWHPR11MB1373.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+received-spf: None (protection.outlook.com: microchip.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam-message-info: Tb5zlOM+Rji5lZyxnVMZITioMstFVRMvuCE2PftkGU2ijRR+u6lq0BtDWjTZsVZIdVsiW5C33QU2+ZdaXlY41LEbYzfZ8BR0wSFiMoXyLXQgdjJQfvQEqAUTIciMokNlJ94lW/vbDpXkZtTmSZxobilDuGQoA2l+ZD6iZ7CZ8feexhZN/Y4B1hMMEw3iS8mRFB1IoUXPLxNhgzXGg39cMSyVG10Mc8oo8z45BMZ6T+pBOBG16GZdPXMyaClBhY0mkFtg8h+7xwOUJrV76UgY7dA8LrQnuPzyzP1JEvtf7XOalxXMxo7f6KQMu2xryHE+ifszHZGNN1te/k/fJi9+7mq2XZlFox4D1iDqyxY8GJBjTqesxCoArlcwShu+2YjIM2ShuKt8GnLEL5bpmz+cDcNmx7cB7vDoA7R0L9Zxyws=
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-Network-Message-Id: c2e8cfda-37d8-4d72-8c88-08d70ecde28d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Jul 2019 17:56:13.0968 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: adham.abozaeid@microchip.com
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB2063
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,137 +154,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Stephen Rothwell <sfr@canb.auug.org.au>,
- Theodore Ts'o <tytso@mit.edu>, Peter Zijlstra <peterz@infradead.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Miao Xie <miaoxie@huawei.com>,
- Amir Goldstein <amir73il@gmail.com>, linux-erofs@lists.ozlabs.org,
- LKML <linux-kernel@vger.kernel.org>, Matthew Wilcox <willy@infradead.org>,
- Linus Torvalds <torvalds@linux-foundation.org>, Ingo Molnar <mingo@redhat.com>,
- Alexander Viro <viro@zeniv.linux.org.uk>,
- linux-fsdevel <linux-fsdevel@vger.kernel.org>,
- Andrew Morton <akpm@linux-foundation.org>, Will Deacon <will@kernel.org>
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ johannes@sipsolutions.net, Ajay.Kathat@microchip.com,
+ Adham.Abozaeid@microchip.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+From: Adham Abozaeid <adham.abozaeid@microchip.com>
 
+Before deinitializing the host interface, the workqueue should be flushed
+to handle any pending deferred work
 
-On 2019/7/23 ????12:35, Steven Rostedt wrote:
-> On Mon, 22 Jul 2019 23:33:53 +0800
-> Gao Xiang <hsiangkao@aol.com> wrote:
-> 
->> Hi Steven,
->>
->> On 2019/7/22 ????10:40, Steven Rostedt wrote:
->>>>> and I'm not sure Al could accept __fdget conversion (I just wanted to give a example then...)
->>>>>
->>>>> Therefore, I tend to keep silence and just promote EROFS... some better ideas?...
->>>>>    
->>>> Writing example conversion patches to demonstrate cleaner code
->>>> and perhaps reduce LOC seems the best way.  
->>> Yes, I would be more interested in seeing patches that clean up the
->>> code than just talking about it.
->>>   
->>
->> I guess that is related to me, though I didn't plan to promote
->> a generic tagged pointer implementation in this series...
-> 
-> I don't expect you to either.
+Signed-off-by: Adham Abozaeid <adham.abozaeid@microchip.com>
+---
+ drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Beyond my expectation, I think I will (could) learn some new knowledge
-from this topic, thanks you and Amir :)
+diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+index 63c38562ad1a..b0a6045327cc 100644
+--- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
++++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+@@ -2544,6 +2544,7 @@ void wilc_deinit_host_int(struct net_device *net)
+ 
+ 	vif->wilc->p2p_listen_state = false;
+ 
++	flush_workqueue(vif->wilc->hif_workqueue);
+ 	mutex_destroy(&priv->scan_req_lock);
+ 	ret = wilc_deinit(vif);
+ 
+-- 
+2.17.1
 
-> 
->>
->> I try to describe what erofs met and my own implementation,
->> assume that we have 3 tagged pointers, a, b, c, and one
->> potential user only (no need to ACCESS_ONCE).
->>
->> One way is
->>
->> #define A_MASK		1
->> #define B_MASK		1
->> #define C_MASK		3
->>
->> /* now we have 3 mask there, A, B, C is simple,
->>    the real name could be long... */
->>
->> void *a;
->> void *b;
->> void *c;		/* and some pointers */
->>
->> In order to decode the tag, we have to
->> 	((unsigned long)a & A_MASK)
->>
->> to decode the ptr, we have to
->> 	((unsigned long)a & ~A_MASK)
->>
->> In order to fold the tagged pointer...
->> 	(void *)((unsigned long)a | tag)
-> 
-> And you need a way to clear the flag.
-
-Considering one potential user, we could refold the tagged pointer.
-or we could refold the tagged pointer and update the value in atomic
-(like atomic_t does).
-
-a = tagptr_fold(ta, tagptr_unfold_tags(a), tag);
-
-> 
->>
->> You can see the only meaning of these masks is the bitlength of tags,
->> but there are many masks (or we have to do open-coded a & 3,
->> if bitlength is changed, we have to fix them all)...
->>
->> therefore my approach is
->>
->> typedef tagptr1_t ta;	/* tagptr type a with 1-bit tag */
->> typedef tagptr1_t tb;	/* tagptr type b with 1-bit tag */
->> typedef tagptr2_t tc;	/* tagptr type c with 2-bit tag */
->>
->> and ta a; tb b; tc c;
->>
->> the type will represent its bitlength of tags and we can use ta, tb, tc
->> to avoid masks or open-coded bitlength.
->>
->> In order to decode the tag, we can
->> 	tagptr_unfold_tags(a)
->>
->> In order to decode the ptr, we can
->> 	tagptr_unfold_ptr(a)
->>
->> In order to fold the tagged pointer...
->> 	a = tagptr_fold(ta, ptr, tag)
->>
->>
->> ACCESS_ONCE stuff is another thing... If my approach seems cleaner,
->> we could move to include/linux later after EROFS stuffs is done...
->> Or I could use a better tagptr approach later if any...
-> 
-> Looking at the ring buffer code, it may be a bit too complex to try to
-> use a generic infrastructure. Look at rb_head_page_set(), where it does
-> a cmpxchg to set or clear the flags and then tests the previous flags
-> to know what actions need to be done.
-
-The current code supports cmpxchg as well, but I don't look into
-rb_head_page_set... (although I think it is not the critical thing if we
-decide to do some generic tagged pointer approach...)
-
-> 
-> The ring buffer tag code was added in 2009, the rtmutex tag code was
-> added in 2006. It's been 10 years before we needed another tag
-> operation. I'm not sure we benefit from making this generic.
-
-Okay, that depends on your folks, actually...
-
-
-Thanks,
-Gao Xiang
-
-> 
-> -- Steve
-> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
