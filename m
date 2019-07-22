@@ -1,74 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 55CF96FB7E
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Jul 2019 10:40:36 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5C5B66FBA6
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Jul 2019 10:54:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0D975877F1;
-	Mon, 22 Jul 2019 08:40:34 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 97302203F8;
+	Mon, 22 Jul 2019 08:54:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dr2LSRlHj7lK; Mon, 22 Jul 2019 08:40:33 +0000 (UTC)
+	with ESMTP id iuu3lMUY8vdL; Mon, 22 Jul 2019 08:54:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 58E1B8712D;
-	Mon, 22 Jul 2019 08:40:33 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B73DB203A2;
+	Mon, 22 Jul 2019 08:54:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 59F481BF34E
- for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 08:40:31 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1B4E51BF34E
+ for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 08:54:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3E5E387118
- for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 08:40:31 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 170E8840BF
+ for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 08:54:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0tvOo+63nk0T for <devel@linuxdriverproject.org>;
- Mon, 22 Jul 2019 08:40:30 +0000 (UTC)
+ with ESMTP id rNGVkbYmJPZF for <devel@linuxdriverproject.org>;
+ Mon, 22 Jul 2019 08:54:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from lelv0143.ext.ti.com (lelv0143.ext.ti.com [198.47.23.248])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 582518712D
- for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 08:40:30 +0000 (UTC)
-Received: from fllv0035.itg.ti.com ([10.64.41.0])
- by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id x6M8eOsg070238;
- Mon, 22 Jul 2019 03:40:24 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1563784824;
- bh=TviAWhiRP3zQTB51r4gI+gZaJWkaHb/tZnv/A5V5Vec=;
- h=Subject:To:CC:References:From:Date:In-Reply-To;
- b=iGDD/T/krkpcQWBLx7cJN+bhSHCfkTJfr4zmFgdjTROeqVqtmjIOb2TjaQPaq+Ew+
- xyJxkc12dBMvkmGrPryQRTAN9G3loNxthgqkCX4HiiAz/oKPGD8R6XUYsBor0MTDvW
- BnRcmxfHPb/gfiXi3HEXO0qiVt4aFZyBll1kTGao=
-Received: from DLEE105.ent.ti.com (dlee105.ent.ti.com [157.170.170.35])
- by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTPS id x6M8eOaw058289
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Mon, 22 Jul 2019 03:40:24 -0500
-Received: from DLEE102.ent.ti.com (157.170.170.32) by DLEE105.ent.ti.com
- (157.170.170.35) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5; Mon, 22
- Jul 2019 03:40:23 -0500
-Received: from lelv0326.itg.ti.com (10.180.67.84) by DLEE102.ent.ti.com
- (157.170.170.32) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5 via
- Frontend Transport; Mon, 22 Jul 2019 03:40:23 -0500
-Received: from [172.24.190.172] (ileax41-snat.itg.ti.com [10.172.224.153])
- by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id x6M8eIZk028120;
- Mon, 22 Jul 2019 03:40:19 -0500
-Subject: Re: [PATCH] staging: media/davinci_vpfe: fix pinmux setup compilation
-To: Arnd Bergmann <arnd@arndb.de>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-References: <20190722081243.2084226-1-arnd@arndb.de>
-From: Sekhar Nori <nsekhar@ti.com>
-Message-ID: <35b6ec33-f3d7-54ec-e9a0-3748ee9eb343@ti.com>
-Date: Mon, 22 Jul 2019 14:10:18 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
+ [209.85.215.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E96CF83FF4
+ for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 08:54:33 +0000 (UTC)
+Received: by mail-pg1-f195.google.com with SMTP id x15so6999974pgg.8
+ for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 01:54:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=biM0OSNS5ZGpRpAgnAVdTqKaXhBNpNIPHYCeUlAsDXo=;
+ b=J3F1dnC/ZFg2XPia01dmjicHZLH6vHlWaKqphRc4EVU9k8NuQmdSQtNcFq3xlrCUKF
+ 90Lw6ZwJiMBNPbkAZjTSXDqkmdKC8Hf7hpYpUBTbWxuBIeqWzJcGy1IVr7woksYgOtp6
+ zPw7KwySYfsNCVZ45yNTuAfY/EGdXoZam8Ke4ThTVVeDH/V8QAzr38y+MqFODoDhkLrU
+ K7FLg9ySAvF9OHN72uKzG2mifcKYRCYLGKzDOerJKs9haMZEJqtrV0eJoHIJ0ulkx0kS
+ C5d+TimIxfM9YwX8gHjjdbM3WNvfQYoNvJFtcoGxEKeYF9vjesSHqanWj2Ly5DlTo1hq
+ BSUA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=biM0OSNS5ZGpRpAgnAVdTqKaXhBNpNIPHYCeUlAsDXo=;
+ b=pPaJNU4ki8v2NUvHJlSGX28hrXWUsPNLBr0AdLfYruxPPtKTKVVkDkGiolhhquGscp
+ 62/lqkC1gRVIkl+Oxxh2TwaYKzKpdL2pm8B66OtwxY2K9fI8amIYPZlnRYWDI2Z5WBT9
+ Y6uXQDoAOjFioE4O+UsfPE9TW+9SZkgdaIIBc9mijI+9ezfKhJrESWjGjrkO/EuQY878
+ 0Ym7Uz08VRJZ0XpqaA0zvMO3AZgjkgTx7424P+BHPlQ7AGzHQXKqrrAgxQ8WyRAJaAti
+ b7shJ/WImauErrxyOZMcTBngH5wEMQwXvJ9kM8Y5PrKG6LXqudm8zSZaVWTw5HijDkDX
+ /QOA==
+X-Gm-Message-State: APjAAAUzPCoVnIkSgq5gb41NJAx3DvZBKqkxgDrwwTpUXoynZpYD6FxT
+ YS5m3IORW4lTsQAMeieaGxc=
+X-Google-Smtp-Source: APXvYqw4NAMsN7QtS8azeL5m5K/spvFcnwQ2npwNGaA3WlUAzpUuuuj1y5plZArSatdp9cta3HhzbQ==
+X-Received: by 2002:a63:eb56:: with SMTP id b22mr71136439pgk.355.1563785673534; 
+ Mon, 22 Jul 2019 01:54:33 -0700 (PDT)
+Received: from localhost.localdomain ([122.163.0.39])
+ by smtp.gmail.com with ESMTPSA id v27sm52537557pgn.76.2019.07.22.01.54.31
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Mon, 22 Jul 2019 01:54:33 -0700 (PDT)
+From: Nishka Dasgupta <nishkadg.linux@gmail.com>
+To: gregkh@linuxfoundation.org, mchehab@kernel.org,
+ linux-media@vger.kernel.org, devel@driverdev.osuosl.org
+Subject: [PATCH RESEND] staging: media: davinci_vpfe: Replace function
+ vpfe_isif_cleanup()
+Date: Mon, 22 Jul 2019 14:24:20 +0530
+Message-Id: <20190722085420.20294-1-nishkadg.linux@gmail.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-In-Reply-To: <20190722081243.2084226-1-arnd@arndb.de>
-Content-Language: en-US
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,68 +85,69 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Arushi Singhal <arushisinghal19971997@gmail.com>,
- devel@driverdev.osuosl.org, Masahiro Yamada <yamada.masahiro@socionext.com>,
- Mukesh Ojha <mojha@codeaurora.org>, Ioannis Valasakis <code@wizofe.uk>,
- linux-kernel@vger.kernel.org, Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Lad Prabhakar <prabhakar.csengg@gmail.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, linux-media@vger.kernel.org
+Cc: Nishka Dasgupta <nishkadg.linux@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Arnd,
+Rename function isif_remove to vpfe_isif_cleanup, as
+vpfe_isif_cleanup does nothing but call isif_remove.
+Change type of new vpfe_isif_cleanup from static to non-static to match
+the old function definition.
+Remove the original vpfe_isif_cleanup.
+Modify calls to isif_remove to vpfe_isif_cleanup.
+Issue found with Coccinelle.
 
-On 22/07/19 1:42 PM, Arnd Bergmann wrote:
-> The dm365_isif staging driver uses an odd method for configuring its
-> pin muxing by calling directly into low-level davinci platform specific
-> code, even when being compile-tested for other platforms.
-> 
-> As we want davinci to be part of a multi-platform kernel, this will
-> cause a build failure when those headers are no longer exported even
-> for davinci:
-> 
-> drivers/staging/media/davinci_vpfe/dm365_isif.c: In function 'vpfe_isif_init':
-> drivers/staging/media/davinci_vpfe/dm365_isif.c:2031:2: error: implicit declaration of function 'davinci_cfg_reg'; did you mean 'omap_cfg_reg'? [-Werror=implicit-function-declaration]
->   davinci_cfg_reg(DM365_VIN_CAM_WEN);
->   ^~~~~~~~~~~~~~~
->   omap_cfg_reg
-> drivers/staging/media/davinci_vpfe/dm365_isif.c:2031:18: error: 'DM365_VIN_CAM_WEN' undeclared (first use in this function); did you mean 'DM365_ISIF_MAX_CLDC'?
->   davinci_cfg_reg(DM365_VIN_CAM_WEN);
->                   ^~~~~~~~~~~~~~~~~
-> 
-> Digging further, it seems that the platform data structures defined
-> in drivers/staging/media/davinci_vpfe/vpfe.h are an incompatible
-> version of the same structures in include/media/davinci/vpfe_capture.h,
-> which is the version that is used by the platform code, so the
-> combination that exists in the mainline kernel cannot be used.
-> 
-> The platform code already has an abstraction for the pinmux,
-> in the form of the dm365_isif_setup_pinmux() helper. If we want
-> to ever get to use the staging driver again, this needs to be
-> read from the platform data passed to this driver, or rewritten
-> to use the pinmux framework.
-> 
-> For the moment, pretend we pass the helper function in the
-> staging platform driver to get it to build cleanly. I could
-> not figure out how the staging driver relates to the code
-> in drivers/media/platform/davinci/, some clarification on that
-> would be helpful to decide what the long-term plan on this
-> should be to either remove the staging driver as obsolete or
-> integrate it with the rest in a way that actually works.
-> 
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
+---
+Sorry, I think this may have gotten lost the last time I sent it?
 
-I looked at the history of updates on this driver over last 4 years.
-None of them are towards fixing some issue found with the driver during
-actual usage or for improving its design to move it out of staging.
+ .../staging/media/davinci_vpfe/dm365_isif.c   | 21 +++++++------------
+ 1 file changed, 8 insertions(+), 13 deletions(-)
 
-I think no one is really using it or working on moving it out of
-staging. Perhaps the right thing to do would be to delete it.
+diff --git a/drivers/staging/media/davinci_vpfe/dm365_isif.c b/drivers/staging/media/davinci_vpfe/dm365_isif.c
+index 05a997f7aa5d..632a51cf2e4a 100644
+--- a/drivers/staging/media/davinci_vpfe/dm365_isif.c
++++ b/drivers/staging/media/davinci_vpfe/dm365_isif.c
+@@ -1932,8 +1932,13 @@ static const struct v4l2_ctrl_config vpfe_isif_gain_offset = {
+ 	.def = 0,
+ };
+ 
+-static void isif_remove(struct vpfe_isif_device *isif,
+-			struct platform_device *pdev)
++/*
++ * vpfe_isif_cleanup - isif module cleanup
++ * @isif: pointer to isif subdevice
++ * @dev: pointer to platform device structure
++ */
++void vpfe_isif_cleanup(struct vpfe_isif_device *isif,
++		       struct platform_device *pdev)
+ {
+ 	struct resource *res;
+ 	int i = 0;
+@@ -2081,17 +2086,7 @@ int vpfe_isif_init(struct vpfe_isif_device *isif, struct platform_device *pdev)
+ 	return status;
+ isif_fail:
+ 	v4l2_ctrl_handler_free(&isif->ctrls);
+-	isif_remove(isif, pdev);
++	vpfe_isif_cleanup(isif, pdev);
+ 	return status;
+ }
+ 
+-/*
+- * vpfe_isif_cleanup - isif module cleanup
+- * @isif: pointer to isif subdevice
+- * @dev: pointer to platform device structure
+- */
+-void
+-vpfe_isif_cleanup(struct vpfe_isif_device *isif, struct platform_device *pdev)
+-{
+-	isif_remove(isif, pdev);
+-}
+-- 
+2.19.1
 
-Thanks,
-Sekhar
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
