@@ -1,80 +1,93 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D35486FC15
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Jul 2019 11:24:18 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 518646FC2B
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Jul 2019 11:29:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7EC1B876F2;
-	Mon, 22 Jul 2019 09:24:17 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5B944203F8;
+	Mon, 22 Jul 2019 09:29:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id W0BRmveojLYs; Mon, 22 Jul 2019 09:24:17 +0000 (UTC)
+	with ESMTP id kIjEptCdmc2J; Mon, 22 Jul 2019 09:29:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 05FF18735C;
-	Mon, 22 Jul 2019 09:24:17 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by silver.osuosl.org (Postfix) with ESMTP id 8E3BF203CE;
+	Mon, 22 Jul 2019 09:29:30 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 178C41BF302
- for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 09:24:15 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 486941BF302
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 22 Jul 2019 09:29:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0C3C48735C
- for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 09:24:15 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 459232037B
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 22 Jul 2019 09:29:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id adfczJNHj45j for <devel@linuxdriverproject.org>;
- Mon, 22 Jul 2019 09:24:14 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8027786F12
- for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 09:24:14 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id f5so8553662pgu.5
- for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 02:24:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=z6T5b116rmPxozBgPMrCcr5eC7zr/jWOiBDvKXTDKsw=;
- b=cXJxvXC9MLcu8Gfm+T16K5NOi0Pl39XV/3HJpiws6O07sIRWpE9AyfH8eqlgf0BxAX
- i2PsEo7sG86OoNG8vy50xx17lpJq8KZ2/4Xk4DbEJ6wG4wYrFnr7ig/SeJgdHUCz8IVp
- TpCDTB0NP6qrZ3PB/0ofMTZlxt0ZK1eQXJwfsm5DPKkubSHcQ3gzf9ZglEowdxIvjhST
- S6w2R6ZKVmPa3O93Izww6xzXw2ZBoIIaln2Ogp98YAvEN8HX7fyr9fAoXue6F5UJN9x2
- C4F2XEW4C1H0g7gh1LkDH03rtqtkur2Tu1SgdBh2xjY9m8i0RfL7f0Nto62nqoo0/CNG
- KVmQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=z6T5b116rmPxozBgPMrCcr5eC7zr/jWOiBDvKXTDKsw=;
- b=sg5FtgVV+LLnQaNLUd0zsrQwSTOEGw8KshG4mnbHJ5Int4/tD+tUEVPlGBVM/fo5xk
- 9voHHoSx53sfMhDogB1qdnOSZBdgPEsDgSI9AvNZeNT7xYMhpQHHdAQB1RQDoqo8gdIe
- 4sLz7YXtSCqaCPwkgTsC5COYegaxX0SBS0khZoUn+1+LKyN4txagP84YpOWG2KOOmGjt
- h4WR56nqSNP7wSU2C+L8YkrwQrWFm7H8pTejyOnxpLNpE328+a7uYor4tWIipyBTzPxV
- 1lGgwXfNJfegup41O460LJWp9g7OD8W3KvJG64ktScSBs/t92LePMoIYItP3sEaueUJA
- +2IQ==
-X-Gm-Message-State: APjAAAVPSfVol4EAUpKkaqeU/RGk7mFmIhj9hgoKU8Ct3G39rs8u5K0q
- 3w4ODNf8OnmR8rwE9eizlWE=
-X-Google-Smtp-Source: APXvYqyn6N0WzOafxLESyHADA6rDL+07E4fhJCC5zhFw/9p2WzMV/MPx1ugmefFvV0cxyPece9jFbg==
-X-Received: by 2002:a63:6c46:: with SMTP id h67mr61962998pgc.248.1563787454154; 
- Mon, 22 Jul 2019 02:24:14 -0700 (PDT)
-Received: from localhost.localdomain ([122.163.0.39])
- by smtp.gmail.com with ESMTPSA id f19sm52010125pfk.180.2019.07.22.02.24.11
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Mon, 22 Jul 2019 02:24:13 -0700 (PDT)
-From: Nishka Dasgupta <nishkadg.linux@gmail.com>
-To: larry.finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
- gregkh@linuxfoundation.org, devel@driverdev.osuosl.org
-Subject: [PATCH 8/8] staging: rtl8712: r8712_free_recvframe(): Change return
- type
-Date: Mon, 22 Jul 2019 14:53:41 +0530
-Message-Id: <20190722092341.21030-8-nishkadg.linux@gmail.com>
-X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20190722092341.21030-1-nishkadg.linux@gmail.com>
-References: <20190722092341.21030-1-nishkadg.linux@gmail.com>
+ with ESMTP id ApiRUXDukG6h
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 22 Jul 2019 09:29:28 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from out5-smtp.messagingengine.com (out5-smtp.messagingengine.com
+ [66.111.4.29])
+ by silver.osuosl.org (Postfix) with ESMTPS id 5D3C220116
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 22 Jul 2019 09:29:28 +0000 (UTC)
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+ by mailout.nyi.internal (Postfix) with ESMTP id 5BE1721F69;
+ Mon, 22 Jul 2019 05:29:27 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute5.internal (MEProxy); Mon, 22 Jul 2019 05:29:27 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=tobin.cc; h=date
+ :from:to:cc:subject:message-id:references:mime-version
+ :content-type:in-reply-to; s=fm3; bh=u1Fi+KEsy/QE/eTCnAaqcmKU8UK
+ C318aakT4IQidMVw=; b=i82YRqu3G4EBUWNr9DVvNixJcJLQc0Tz37zoMOqewNR
+ NE/ulGGorzaatp2a+6NqRvDX1g+o39dLSG/zgwXWkLknlu2dGmgPMSmXqh42mtcG
+ 8tKWdAmckyP+fplBeZ+x3kB/cLSWmQusbSx+IXQF0h6IlOOaUnuTv/4VqxUTc3oo
+ 6oOREl3D7zz8PrYtlmIW49kg2R7ijqXRa9iFWFuqEllKUDIVwg8E85afkfkbTmSN
+ 8ODEHc9dCAMX07Gn26heiGxbL1IEmeRwM9ELf7V0hKZeHyX+1/un8tJ0KvLnCb6S
+ pw8HAPKoJ8pBLC5VYwETCbUNgkVp8hUi3+5zN1OUVAQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=u1Fi+K
+ Esy/QE/eTCnAaqcmKU8UKC318aakT4IQidMVw=; b=U3DEKFcvxlu4QaLDDBntPD
+ N/HXe6Qa93ENK7W3JVHQ/EAsZHAg75O7wa7/OQAiQK6FTaK/qtWaf+bet9I4LXKU
+ RWYqkEO9jFIL7G3JiXEVF0FKlFDHg8pbEED7stiAX255r+9ql/CGGpKpnHc6ALSx
+ lWG9a+fgu6MvUHulyIuKgvnW51o70J0huMHC8X4US1N8aRN6SS7wn3kP/JT+HH5K
+ rAsdajN9EbwKUsU2X8L9aydoIFQWC2/kDZFpoBa0NjD5Zty1Qiz0VOB5LS+v3Twv
+ 3Kk/99Bduv3G+ENxhQ2tU2rEn82fGa+n0o2kUJOGO2UjDLPAd4Ytz+oDRT3lHd/Q
+ ==
+X-ME-Sender: <xms:9oE1XbcAahsaAjdFFmXfLMlrhDWKlopUuCrrMV3vxkiM1S0bwMtX4g>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduvddrjeeggdduhecutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenfg
+ hrlhcuvffnffculdeftddmnecujfgurhepfffhvffukfhfgggtuggjofgfsehttdertdfo
+ redvnecuhfhrohhmpedfvfhosghinhcuvedrucfjrghrughinhhgfdcuoehmvgesthhosg
+ hinhdrtggtqeenucfkphepuddvgedrudelrdefuddrgeenucfrrghrrghmpehmrghilhhf
+ rhhomhepmhgvsehtohgsihhnrdgttgenucevlhhushhtvghrufhiiigvpedt
+X-ME-Proxy: <xmx:9oE1XTCGRsU-x5YuHnWxbDspIhI7Oz2TL7R0fpbVWiydqN_D-vnL8A>
+ <xmx:9oE1XTpg28agX1G9uiN4nZVbZEjvuKMRZDufFPBCE901ntUxL0R9Lg>
+ <xmx:9oE1XQSeLZndPlvP-MvkCqlt4E-qX5th43I2FBrFOjPpU21qkQe3Sg>
+ <xmx:94E1XeDra_LTzKic2c6x2OSYo1cdO2ZA1cKTatGIbvXN6YF8LnQleA>
+Received: from localhost (unknown [124.19.31.4])
+ by mail.messagingengine.com (Postfix) with ESMTPA id 3492980061;
+ Mon, 22 Jul 2019 05:29:25 -0400 (EDT)
+Date: Mon, 22 Jul 2019 19:29:23 +1000
+From: "Tobin C. Harding" <me@tobin.cc>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [OSSNA] Intro to kernel hacking tutorial
+Message-ID: <20190722092923.GB22763@ares>
+References: <20190705025055.GA7037@ares>
+ <20190719093658.GF3111@kadam>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190719093658.GF3111@kadam>
+X-Mailer: Mutt 1.9.4 (2018-02-28)
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,58 +100,62 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Nishka Dasgupta <nishkadg.linux@gmail.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ driverdev-devel@linuxdriverproject.org,
+ Kernelnewbies <kernelnewbies@kernelnewbies.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change return type of r8712_free_recvframe from int to void as it always
-returns _SUCCESS and its return value is never used.
+On Fri, Jul 19, 2019 at 12:36:58PM +0300, Dan Carpenter wrote:
+> On Fri, Jul 05, 2019 at 12:50:55PM +1000, Tobin C. Harding wrote:
+> > Outcome will (hopefully) be a small patch set into drivers/staging/.
+> > (Don't worry Greg only one group got to this stage last time, you
+> > won't get flooded with patches :)
+> 
+> We're good at reviewing floods of patches.  Send away.
+> 
+> In the end what we want is people who will take over a driver and
+> understand it completely and become the maintainer.  We've had a few
+> people that did appointed themselves to become the maintainer of a
+> random driver and move it out of staging.  But even if people don't make
+> it all the way to become a maintainer, it's nice when they start down
+> that path by focusing on one driver and trying to understand it as much
+> as possible.
+> 
+> Most of the time when you look at a new staging driver, then you do want
+> to clean up the white space just because it's hard to look at
+> non-standard code.  So that's the first step.  But then maybe start at
+> the probe and release functions and clean it up.  Keep your eyes open
+> to any other mistakes or bugs you see.  Write them down.  Then the
+> ioctls.  Etc.  Look at the TODO too.
+> 
+> The other thing I wish people knew was about the relationship with
+> maintainers.  When you start out, you're virtually anonymous for the
+> first couple patchsets.  We get so many and they blend together so we
+> don't remember your name.  So don't think that we mean anything
+> personally if we don't apply your patch.  We have forgotten about the
+> patch as soon as we reply to it.  Don't panic and resend quickly.  You
+> will be too stressed.  Wait until the next day.
+> 
+> In staging we really want to apply patches (unless it's in staging
+> because we're going to remove the code).  I get annoyed with other
+> staging reviewers who NAK patches because "I don't like churn" or
+> whatever.
+> 
+> On the other hand, patches just "silencing checkpatch.pl" is not a valid
+> justification for sending a patch.  Patches should make the code more
+> readable.
+> 
+> Anyway, maintainers are not monsters.  Very few people have made me
+> annoyed to the point where I refuse to review their code.  And everyone
+> else is in my good books so that's fine.
 
-Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
----
- drivers/staging/rtl8712/rtl8712_recv.c | 3 +--
- drivers/staging/rtl8712/rtl871x_recv.h | 2 +-
- 2 files changed, 2 insertions(+), 3 deletions(-)
+Cool, points noted.  Thanks Dan
 
-diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
-index 892ea71c3718..d9574ea3ffb2 100644
---- a/drivers/staging/rtl8712/rtl8712_recv.c
-+++ b/drivers/staging/rtl8712/rtl8712_recv.c
-@@ -120,7 +120,7 @@ void r8712_init_recvbuf(struct _adapter *padapter, struct recv_buf *precvbuf)
- 	}
- }
- 
--int r8712_free_recvframe(union recv_frame *precvframe,
-+void r8712_free_recvframe(union recv_frame *precvframe,
- 		   struct  __queue *pfree_recv_queue)
- {
- 	unsigned long irqL;
-@@ -139,7 +139,6 @@ int r8712_free_recvframe(union recv_frame *precvframe,
- 			precvpriv->free_recvframe_cnt++;
- 	}
- 	spin_unlock_irqrestore(&pfree_recv_queue->lock, irqL);
--	return _SUCCESS;
- }
- 
- static void update_recvframe_attrib_from_recvstat(struct rx_pkt_attrib *pattrib,
-diff --git a/drivers/staging/rtl8712/rtl871x_recv.h b/drivers/staging/rtl8712/rtl871x_recv.h
-index f87b2ff5de1c..0146a774e19d 100644
---- a/drivers/staging/rtl8712/rtl871x_recv.h
-+++ b/drivers/staging/rtl8712/rtl871x_recv.h
-@@ -128,7 +128,7 @@ struct sta_recv_priv {
- 
- /* get a free recv_frame from pfree_recv_queue */
- union recv_frame *r8712_alloc_recvframe(struct  __queue *pfree_recv_queue);
--int r8712_free_recvframe(union recv_frame *precvframe,
-+void r8712_free_recvframe(union recv_frame *precvframe,
- 			  struct  __queue *pfree_recv_queue);
- void r8712_free_recvframe_queue(struct  __queue *pframequeue,
- 				 struct  __queue *pfree_recv_queue);
--- 
-2.19.1
 
+	Tobin
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
