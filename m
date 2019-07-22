@@ -1,54 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6348970316
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Jul 2019 17:05:29 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 81AB370343
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Jul 2019 17:12:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 79CE920334;
-	Mon, 22 Jul 2019 15:05:27 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2CF168648E;
+	Mon, 22 Jul 2019 15:12:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LmyZfFup8+my; Mon, 22 Jul 2019 15:05:26 +0000 (UTC)
+	with ESMTP id zzgwa+iyHBXD; Mon, 22 Jul 2019 15:12:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 10B4820413;
-	Mon, 22 Jul 2019 15:05:25 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CE54684CE0;
+	Mon, 22 Jul 2019 15:12:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 713311BF388
- for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 15:05:22 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B33361BF388
+ for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 15:12:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6D8218553B
- for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 15:05:22 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id AFB8783F66
+ for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 15:12:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5Y7ke5jSetJc for <devel@linuxdriverproject.org>;
- Mon, 22 Jul 2019 15:05:21 +0000 (UTC)
+ with ESMTP id Kjb142PQbGLo for <devel@linuxdriverproject.org>;
+ Mon, 22 Jul 2019 15:12:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from relay12.mail.gandi.net (relay12.mail.gandi.net [217.70.178.232])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7AB4085249
- for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 15:05:20 +0000 (UTC)
-Received: from aptenodytes (lfbn-1-17395-211.w86-250.abo.wanadoo.fr
- [86.250.200.211])
- (Authenticated sender: paul.kocialkowski@bootlin.com)
- by relay12.mail.gandi.net (Postfix) with ESMTPSA id D960C20001D;
- Mon, 22 Jul 2019 15:05:16 +0000 (UTC)
-Date: Mon, 22 Jul 2019 17:05:16 +0200
-From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-To: Nishka Dasgupta <nishkadg.linux@gmail.com>
-Subject: Re: [PATCH v2] staging: media: sunxi: Add bool cast to value
-Message-ID: <20190722150516.GB31695@aptenodytes>
-References: <20190722060651.6538-1-nishkadg.linux@gmail.com>
- <20190722111225.GA2695@azazel.net>
- <20190722122438.GA1908@aptenodytes>
- <45555499-57f3-a315-6f84-f878c3aa0130@gmail.com>
+Received: from outgoing.mit.edu (outgoing-auth-1.mit.edu [18.9.28.11])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B87F18323C
+ for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 15:12:38 +0000 (UTC)
+Received: from callcc.thunk.org (guestnat-104-133-0-99.corp.google.com
+ [104.133.0.99] (may be forged)) (authenticated bits=0)
+ (User authenticated as tytso@ATHENA.MIT.EDU)
+ by outgoing.mit.edu (8.14.7/8.12.4) with ESMTP id x6MFCQsi029018
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 22 Jul 2019 11:12:27 -0400
+Received: by callcc.thunk.org (Postfix, from userid 15806)
+ id 4D51E4202F5; Mon, 22 Jul 2019 11:12:26 -0400 (EDT)
+Date: Mon, 22 Jul 2019 11:12:26 -0400
+From: "Theodore Y. Ts'o" <tytso@mit.edu>
+To: Gao Xiang <hsiangkao@aol.com>
+Subject: Re: [PATCH v3 23/24] erofs: introduce cached decompression
+Message-ID: <20190722151226.GC5172@mit.edu>
+Mail-Followup-To: "Theodore Y. Ts'o" <tytso@mit.edu>,
+ Gao Xiang <hsiangkao@aol.com>, dsterba@suse.cz,
+ Gao Xiang <gaoxiang25@huawei.com>,
+ Alexander Viro <viro@zeniv.linux.org.uk>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Stephen Rothwell <sfr@canb.auug.org.au>,
+ Linus Torvalds <torvalds@linux-foundation.org>,
+ linux-fsdevel@vger.kernel.org, devel@driverdev.osuosl.org,
+ LKML <linux-kernel@vger.kernel.org>, linux-erofs@lists.ozlabs.org,
+ Chao Yu <yuchao0@huawei.com>, Miao Xie <miaoxie@huawei.com>,
+ Li Guifu <bluce.liguifu@huawei.com>, Fang Wei <fangwei1@huawei.com>
+References: <20190722025043.166344-1-gaoxiang25@huawei.com>
+ <20190722025043.166344-24-gaoxiang25@huawei.com>
+ <20190722101818.GN20977@twin.jikos.cz>
+ <41f1659a-0d16-4316-34fc-335b7d142d5c@aol.com>
+ <20190722132513.GA5172@mit.edu>
+ <db672675-c471-5bc8-af15-91c1859e9008@aol.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <45555499-57f3-a315-6f84-f878c3aa0130@gmail.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+In-Reply-To: <db672675-c471-5bc8-af15-91c1859e9008@aol.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,120 +78,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, maxime.ripard@bootlin.com,
- gregkh@linuxfoundation.org, wens@csie.org, mchehab@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Stephen Rothwell <sfr@canb.auug.org.au>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Miao Xie <miaoxie@huawei.com>,
+ Chao Yu <yuchao0@huawei.com>, linux-erofs@lists.ozlabs.org, dsterba@suse.cz,
+ Li Guifu <bluce.liguifu@huawei.com>, LKML <linux-kernel@vger.kernel.org>,
+ Alexander Viro <viro@zeniv.linux.org.uk>, linux-fsdevel@vger.kernel.org,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Linus Torvalds <torvalds@linux-foundation.org>, Fang Wei <fangwei1@huawei.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi,
+On Mon, Jul 22, 2019 at 10:16:44PM +0800, Gao Xiang wrote:
+> OK, I will give a try. One point I think is how to deal with the case
+> if there is already cached information when remounting as well as you said.
+>
+> As the first step, maybe the mount option can be defined as
+> allowing/forbiding caching from now on, which can be refined later.
 
-On Mon 22 Jul 19, 19:14, Nishka Dasgupta wrote:
-> On 22/07/19 5:54 PM, Paul Kocialkowski wrote:
-> > Hi,
-> > 
-> > On Mon 22 Jul 19, 12:12, Jeremy Sowden wrote:
-> > > On 2019-07-22, at 11:36:51 +0530, Nishka Dasgupta wrote:
-> > > > Typecast as bool the return value of cedrus_find_format in
-> > > > cedrus_check_format as the return value of cedrus_check_format is
-> > > > always treated like a boolean value.
-> > > > 
-> > > > Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
-> > > > ---
-> > > > Changes in v2:
-> > > > - Add !! to the returned pointer to ensure that the return value is
-> > > >    always either true or false, and never a non-zero value other than
-> > > >    true.
-> > > > 
-> > > >   drivers/staging/media/sunxi/cedrus/cedrus_video.c | 2 +-
-> > > >   1 file changed, 1 insertion(+), 1 deletion(-)
-> > > > 
-> > > > diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_video.c b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
-> > > > index e2b530b1a956..b731745f21f8 100644
-> > > > --- a/drivers/staging/media/sunxi/cedrus/cedrus_video.c
-> > > > +++ b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
-> > > > @@ -86,7 +86,7 @@ static struct cedrus_format *cedrus_find_format(u32 pixelformat, u32 directions,
-> > > >   static bool cedrus_check_format(u32 pixelformat, u32 directions,
-> > > >   				unsigned int capabilities)
-> > > >   {
-> > > > -	return cedrus_find_format(pixelformat, directions, capabilities);
-> > > > +	return !!(bool)cedrus_find_format(pixelformat, directions, capabilities);
-> > > >   }
-> > > 
-> > > I think the original was fine.  The return value of cedrus_find_format
-> > > will be automatically converted to bool before being returned from
-> > > cedrus_check_format since that is the return-type of the function, and
-> > > the result of converting any non-zero value to bool is 1.
-> > 
-> > Okay I was a bit unsure about that and wanted to play it on the safe side
-> > without really looking it up, but that gave me the occasion to verify.
-> > 
-> >  From what I could find (from my GNU system's /usr/include/unistring/stdbool.h):
-> > 
-> >     Limitations of this substitute, when used in a C89 environment:
-> > 
-> >         - In C99, casts and automatic conversions to '_Bool' or 'bool' are
-> >           performed in such a way that every nonzero value gets converted
-> >           to 'true', and zero gets converted to 'false'.  This doesn't work
-> >           with this substitute.  With this substitute, only the values 0 and 1
-> >           give the expected result when converted to _Bool' or 'bool'.
-> > 
-> > So since the kernel is built for C89 (unless I'm mistaken), I don't think the
-> > compiler provides any guarantee about bool values being converted to 1 when
-> > they are non-zero. As a result, I think it's best to be careful.
-> > 
-> > However, I'm not sure I really see what cocinelle was unhappy about. You
-> > mentionned single-line functions, but I don't see how that can be a problem.
-> 
-> It's not a problem per se. I'm just working on a cleanup project for which I
-> went through all of staging replacing single-line functions with what they
-> were calling. In some cases that makes it easier to figure out what a
-> particular function call does, since the called function actually does
-> something itself instead of just calling a different function?
-> This function was also flagged as one such potentially-removable function by
-> Coccinelle; but in order to do the same replacement that I'd done in other
-> staging drivers, I thought I would do something about the type mismatch
-> first, especially since find_format doesn't appear to be used anywhere else.
-> However, now I won't remove check_format and replace it with find_format as
-> I'd originally planned, since you've said that isn't necessary here. That
-> leaves the return type issue.
-
-Is that an issue reported by coccinelle?
-If so, could you provide details about it?
- 
-> > So in the end, I think we should keep the !! and drop the (bool) cast if there's
-> > no particular warning about it.
-> 
-> Should I send a version 3 that does this?
-
-Yes I think !! would work out fine either way. Apparently we don't need any
-explicit (bool) cast from a pointer anyway.
+Yes; possible solutions include ignoring the issue (assuming that
+cached data structures that "shouldn't" be in the cache given the new
+cache strategy will fall out of the cache over time), forcibly
+flushing the cache when the caching strategy has changed, and of
+course, forbidding caching strategy change at remount time.
 
 Cheers,
 
-Paul
-
-> Thanking you,
-> Nishka
-> 
-> > What do you think?
-> > 
-> > Cheers,
-> > 
-> > Paul
-> > 
-> > > >   static void cedrus_prepare_format(struct v4l2_pix_format *pix_fmt)
-> > > > --
-> > > > 2.19.1
-> > 
-> 
-
--- 
-Paul Kocialkowski, Bootlin
-Embedded Linux and kernel engineering
-https://bootlin.com
+					- Ted
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
