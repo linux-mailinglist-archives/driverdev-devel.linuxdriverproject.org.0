@@ -2,55 +2,79 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A64446F8D8
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Jul 2019 07:25:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D2AD96F94D
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Jul 2019 08:07:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5B9E58560E;
-	Mon, 22 Jul 2019 05:25:28 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 573B38560E;
+	Mon, 22 Jul 2019 06:07:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GM0hhXMJ_imu; Mon, 22 Jul 2019 05:25:27 +0000 (UTC)
+	with ESMTP id dxnsc8KhCgp6; Mon, 22 Jul 2019 06:07:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 39B0A855CC;
-	Mon, 22 Jul 2019 05:25:27 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C307685604;
+	Mon, 22 Jul 2019 06:07:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 14EC71BF421
- for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 05:25:25 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E38931BF3FD
+ for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 06:07:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 0C21585ADB
- for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 05:25:25 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id DA28285BB0
+ for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 06:07:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DEHRFDXTXEVm for <devel@linuxdriverproject.org>;
- Mon, 22 Jul 2019 05:25:23 +0000 (UTC)
+ with ESMTP id G51OVxPRUzGg for <devel@linuxdriverproject.org>;
+ Mon, 22 Jul 2019 06:07:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
- by whitealder.osuosl.org (Postfix) with ESMTPS id BBFE085AD6
- for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 05:25:23 +0000 (UTC)
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 8750EAB3666A593AD324;
- Mon, 22 Jul 2019 13:25:20 +0800 (CST)
-Received: from [10.151.23.176] (10.151.23.176) by smtp.huawei.com
- (10.3.19.212) with Microsoft SMTP Server (TLS) id 14.3.439.0; Mon, 22 Jul
- 2019 13:25:13 +0800
-Subject: Re: [PATCH v3 01/24] erofs: add on-disk layout
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-References: <20190722025043.166344-1-gaoxiang25@huawei.com>
- <20190722025043.166344-2-gaoxiang25@huawei.com>
- <20190722132616.60edd141@canb.auug.org.au> <20190722050522.GA11993@kroah.com>
-From: Gao Xiang <gaoxiang25@huawei.com>
-Message-ID: <98b70190-a7d8-6251-84d9-599ca115f42b@huawei.com>
-Date: Mon, 22 Jul 2019 13:24:45 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
+ [209.85.214.194])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4863D85B71
+ for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 06:07:06 +0000 (UTC)
+Received: by mail-pl1-f194.google.com with SMTP id c14so18636081plo.0
+ for <devel@driverdev.osuosl.org>; Sun, 21 Jul 2019 23:07:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=nJXrgrSN2Tlu02tkqLNuQE/VhMtIboN1RIqkDuAB2P8=;
+ b=rv3mTh5ZiJppYaMjbz2Kd983X1vNPC07xgeWpCrm3uLSWI4w43fHI9rEHIx+fXNnhh
+ Gp6FUgfPY1t+co4YQPixNOVgTgjUZ2QbthzWmGRYjMKcKysQioE0LCZ1eQWfMbgzekdr
+ wwGHWIMgB/uDgHVNZy4dteV/sM26uIAS2iZqjd7+tTeENLooPnhaPtv8UE/1AMajbI9B
+ 9Lh+Epd7kxdEC0bwJhS9dv4D37wL2A4hVz4rbW/EBHIpHErrpl4cBVfTbEHu8R2HSQxl
+ ElKqY7z12d/6qnk6eG9M6e/p9NQqBQ9ZclUDjZ3DmcfFT0C2SM9vgED271a8UmS7VY/M
+ 7jPw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=nJXrgrSN2Tlu02tkqLNuQE/VhMtIboN1RIqkDuAB2P8=;
+ b=e+24EbYPxyyvEd30pJc5RHClYJ9HASVu2W3kfI+hLZXQwL8fpRPyfBA0Xcp3HNmwHQ
+ K+uPyljLptgK7BlkFC/1RDRe+FPgfxHCvfv2p/8bzw9jxVty8OJ/ZtqQfIAv7BdWQJLl
+ gvTo5FZWcofUeR7QgVb18JPGzdk9d73n/51dvxRygA5K/4dayqrcULPAbEXVBJNsSvxF
+ Fz1oCojKeOmqSIFYD8/lw3cMe+rdzXTN85jglK2MFu5phC/u/SK/HY2vvxK7QHe/7ccB
+ lbEh/qL3yRuPF4N+veIfxeLBGh3w3dIp8Y5YdZgPLpJ5JT9b2LxDprXitgKVVwna+qq8
+ T+5A==
+X-Gm-Message-State: APjAAAVPm//kDB6SP9VN/qwmDCs8etM+o1KpjEjaXY4x13YF89HtUf2u
+ MzcWAHt+9DEK8cER9H+vX6g=
+X-Google-Smtp-Source: APXvYqzk6v7tQvu2fTaY2Q2UszOnOuD4ns4eYEIDZ0p4SxWS/dsaD+LXL1DVIAQFRdWnk9tAHO6JCg==
+X-Received: by 2002:a17:902:2f84:: with SMTP id
+ t4mr68932398plb.57.1563775625815; 
+ Sun, 21 Jul 2019 23:07:05 -0700 (PDT)
+Received: from localhost.localdomain ([122.163.0.39])
+ by smtp.gmail.com with ESMTPSA id j13sm35935646pfh.13.2019.07.21.23.07.01
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Sun, 21 Jul 2019 23:07:05 -0700 (PDT)
+From: Nishka Dasgupta <nishkadg.linux@gmail.com>
+To: maxime.ripard@bootlin.com, paul.kocialkowski@bootlin.com,
+ mchehab@kernel.org, gregkh@linuxfoundation.org, wens@csie.org,
+ linux-media@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [PATCH v2] staging: media: sunxi: Add bool cast to value
+Date: Mon, 22 Jul 2019 11:36:51 +0530
+Message-Id: <20190722060651.6538-1-nishkadg.linux@gmail.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-In-Reply-To: <20190722050522.GA11993@kroah.com>
-X-Originating-IP: [10.151.23.176]
-X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,46 +87,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Stephen Rothwell <sfr@canb.auug.org.au>,
- Theodore Ts'o <tytso@mit.edu>, linux-erofs@lists.ozlabs.org,
- Miao Xie <miaoxie@huawei.com>, Chao Yu <yuchao0@huawei.com>,
- LKML <linux-kernel@vger.kernel.org>, Li Guifu <bluce.liguifu@huawei.com>,
- Alexander Viro <viro@zeniv.linux.org.uk>, linux-fsdevel@vger.kernel.org,
- Andrew Morton <akpm@linux-foundation.org>,
- Linus Torvalds <torvalds@linux-foundation.org>, Fang Wei <fangwei1@huawei.com>
+Cc: Nishka Dasgupta <nishkadg.linux@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Greg,
+Typecast as bool the return value of cedrus_find_format in
+cedrus_check_format as the return value of cedrus_check_format is always
+treated like a boolean value.
 
-On 2019/7/22 13:05, Greg Kroah-Hartman wrote:
-> On Mon, Jul 22, 2019 at 01:26:16PM +1000, Stephen Rothwell wrote:
->> Hi Gao,
->>
->> On Mon, 22 Jul 2019 10:50:20 +0800 Gao Xiang <gaoxiang25@huawei.com> wrote:
->>>
->>> diff --git a/fs/erofs/erofs_fs.h b/fs/erofs/erofs_fs.h
->>> new file mode 100644
->>> index 000000000000..e418725abfd6
->>> --- /dev/null
->>> +++ b/fs/erofs/erofs_fs.h
->>> @@ -0,0 +1,316 @@
->>> +/* SPDX-License-Identifier: GPL-2.0 OR Apache-2.0 */
->>
->> I think the preferred tag is now GPL-2.0-only (assuming that is what is
->> intended).
-> 
-> Either is fine, see the LICENSE/preferred/GPL-2.0 file for the list of
-> valid ones.
+Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
+---
+Changes in v2:
+- Add !! to the returned pointer to ensure that the return value is
+  always either true or false, and never a non-zero value other than
+  true.
 
-Yes, I noticed the LICENSE text before and I can do in the either way (use
-GPL-2.0 or GPL-2.0-only). This modification won't take too much time...
-If it is needed, I am happy to do that... That is fine :)
+ drivers/staging/media/sunxi/cedrus/cedrus_video.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks,
-Gao Xiang
+diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_video.c b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+index e2b530b1a956..b731745f21f8 100644
+--- a/drivers/staging/media/sunxi/cedrus/cedrus_video.c
++++ b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+@@ -86,7 +86,7 @@ static struct cedrus_format *cedrus_find_format(u32 pixelformat, u32 directions,
+ static bool cedrus_check_format(u32 pixelformat, u32 directions,
+ 				unsigned int capabilities)
+ {
+-	return cedrus_find_format(pixelformat, directions, capabilities);
++	return !!(bool)cedrus_find_format(pixelformat, directions, capabilities);
+ }
+ 
+ static void cedrus_prepare_format(struct v4l2_pix_format *pix_fmt)
+-- 
+2.19.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
