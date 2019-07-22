@@ -2,75 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2755D6FC14
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Jul 2019 11:24:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4AFBA6FC16
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Jul 2019 11:24:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id F32E88328C;
-	Mon, 22 Jul 2019 09:24:13 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 216558474A;
+	Mon, 22 Jul 2019 09:24:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id G9Sa+Bg3TjVi; Mon, 22 Jul 2019 09:24:13 +0000 (UTC)
+	with ESMTP id va8xZVjT6XVl; Mon, 22 Jul 2019 09:24:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B00BB81D66;
-	Mon, 22 Jul 2019 09:24:12 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0E29181D66;
+	Mon, 22 Jul 2019 09:24:15 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9CED71BF302
- for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 09:24:10 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 455F41BF302
+ for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 09:24:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9A91F20414
- for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 09:24:10 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3F13C8735C
+ for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 09:24:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id U+4Lokfmf0C3 for <devel@linuxdriverproject.org>;
- Mon, 22 Jul 2019 09:24:09 +0000 (UTC)
+ with ESMTP id sMUJQUBrKfqg for <devel@linuxdriverproject.org>;
+ Mon, 22 Jul 2019 09:24:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
- [209.85.210.194])
- by silver.osuosl.org (Postfix) with ESMTPS id 1E8C420455
- for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 09:24:09 +0000 (UTC)
-Received: by mail-pf1-f194.google.com with SMTP id m30so17098602pff.8
- for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 02:24:09 -0700 (PDT)
+Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
+ [209.85.215.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id B82CB86F12
+ for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 09:24:11 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id f25so17367257pgv.10
+ for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 02:24:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=FnFasX7bcyPANmdcwpdUPmi76dlyAO6YklMsRmAmcEY=;
- b=ks1JnCoR7qqAWVzJffNlUGx0laxXAAcuMpy5ywr/OwQPTfNFMv9q9869KTLEtGLiPm
- Tvx7gbS9JouDbEI/bQ/teyehs4IOUD6U+EUwxjGQf8/jKHaPUQZATZz3EnPBliy2ZMUd
- geQvSVmB3i+f4Ru8sn6jRhXFMhp67M92h5fYooOULu654zUJSZOzYaUoEtPJ8OPE71l1
- xi5ELWx0Rz6R3JSOW3GYnAeYsjTqqFj12f7t0STFvwUZzAzvrlSZGYpYL+41Te58/LJU
- +63FeL0jJA9Aj3hF2hmHI6+4OLbINDYzckPCslTGMIc6yYZLD3EJ9DUc4QstYv7nnshQ
- ObVQ==
+ bh=4ti9mZ5eZrzB9FvaOenmpZD+9MtWwMSWpG6NalvqDt0=;
+ b=ZJ10apxjxUa9mkrb0Ke4svt22E71G5Pp1nk8Rkcu/U4Mfw0LDboVKuNnMxTkSSOmsB
+ tbuYP9nqagz3M9F4MidOGC0e3rNagVowTMW8ONRcq8AM4E3Hu6cPe7SwTmLbN3liMKIt
+ F8K0Cyr+0YM9JDBrKK7cM0TLLb4BWWAfizfsSy5f/9GFwaTUJQbqFz6UgXDzqEdJA6Yt
+ vn/qpzIevLqIxWBS5DbtNrilKIXX+C3FQrclqWMapaGprknLBcSeXFAuOYaADEdqW/xo
+ j/Tsx4asmIP2hKOALflVfudd0AxXtCklQsPxXRbtLlRr0Cj9A34O38x6a9YaMrgbkBky
+ J3Og==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=FnFasX7bcyPANmdcwpdUPmi76dlyAO6YklMsRmAmcEY=;
- b=f9j5/D8ndTYLuLECS/dy3DHdEX3Ev7UMis9UlQj+Kq4bJBFsXT8LCT9wCXA+OLXYWn
- u2DD4HJbW8l8ZU6Pgsb85VAuFqz8ZwkBehYE/gPXr8NDI27PE6xFg87jizi2m9dBfEmJ
- RkgS5jxi4w4cG08w9TVIp7nrw0uLRtTOtgUN7T9JqB4TuakUsNukR7nNzeyMlBSEwYjv
- xc6Es8FCi0KrCjK1CzAGCnhbs36+fbJf8ccGFSFPhvw1Gcr4tIfoDKTuY9olteHVapfg
- sBiL8z2ht3xW2mLUtWAXFkdOdaLotGSy5u9owFysSBZP7HfH/qrNHInD93AA39WOXarN
- 1FwA==
-X-Gm-Message-State: APjAAAXJ3Ef+h8dEmtTGxy0e2H9XlqBWQFlwUmQohWQtJOcfYuVF5rr+
- 5se5K6ozNMq2aZPH02uf8hSIf1ju
-X-Google-Smtp-Source: APXvYqxb4QM9zMuEO0j+XiIjdZtx16k9Ra2Q8PvHebLazxLgQUGkgx7yanNE7OIGFv+9UqbpWyi2Gg==
-X-Received: by 2002:a63:e010:: with SMTP id e16mr64833385pgh.285.1563787448674; 
- Mon, 22 Jul 2019 02:24:08 -0700 (PDT)
+ bh=4ti9mZ5eZrzB9FvaOenmpZD+9MtWwMSWpG6NalvqDt0=;
+ b=IG1cDPpyNAZjTVMAgfMTNEJdLfQPdAkf+6+ENBwHW9ftsIxJ1bOsNK0UVm8GsrBVC0
+ Ig94e8KRKW5hsMJIXAUMqITec4ca8iDQLsjmbvYEdbTMXGmhwkvFbHVckkzGkrgPdEt6
+ MsvJprHZD+2IvkFNmlBsHOrzhea/dLITAhO+lqTaywLneVPbGO+z/f9PW2P4r44law6m
+ 0Y0PumOzT+tGi4AH5ir75+iJYiKp9+lZxByXEziefpTuOMxuLJLTnyKQuX5SBDxYn2Wm
+ Kj3D5CP761u/5lyhm+vj5lsfkfBYqXEU0Wun7O+AvDWcjB5xijie7p7z8LG7UJyw+5nH
+ +51Q==
+X-Gm-Message-State: APjAAAVjz2vIyz6YEl26Y9wgj5WQBZfqVpQasTKkjAQ2uQOfnnuIPQWA
+ nhylP3itSEbsLZ45ty+bBxI=
+X-Google-Smtp-Source: APXvYqyTwKxkVz2PeEmYdlxwpHUm1SPRPXdneGYj08vIuwNPhZhNQTyATRKIqbcAqk8JMnvdDp1RQA==
+X-Received: by 2002:a17:90a:5884:: with SMTP id
+ j4mr78829091pji.142.1563787451423; 
+ Mon, 22 Jul 2019 02:24:11 -0700 (PDT)
 Received: from localhost.localdomain ([122.163.0.39])
- by smtp.gmail.com with ESMTPSA id f19sm52010125pfk.180.2019.07.22.02.24.06
+ by smtp.gmail.com with ESMTPSA id f19sm52010125pfk.180.2019.07.22.02.24.09
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Mon, 22 Jul 2019 02:24:08 -0700 (PDT)
+ Mon, 22 Jul 2019 02:24:11 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: larry.finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
  gregkh@linuxfoundation.org, devel@driverdev.osuosl.org
-Subject: [PATCH 6/8] staging: rtl8712: r8712_set_802_11_add_wep(): Change
- return values
-Date: Mon, 22 Jul 2019 14:53:39 +0530
-Message-Id: <20190722092341.21030-6-nishkadg.linux@gmail.com>
+Subject: [PATCH 7/8] staging: rtl8712: r8712_init_recvbuf(): Change return type
+Date: Mon, 22 Jul 2019 14:53:40 +0530
+Message-Id: <20190722092341.21030-7-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190722092341.21030-1-nishkadg.linux@gmail.com>
 References: <20190722092341.21030-1-nishkadg.linux@gmail.com>
@@ -93,91 +93,49 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change call sites of r8712_set_802_11_add_wep to check for 0 and
-non-zero values (e.g -EINVAL, -ENOMEM) instead of for _SUCCESS and
-_FAIL.
-Change return values of r8712_set_802_11_add_wep from true and false and
-_SUCCESS to -EINVAL and the return value of r8712_set_key.
-Change return type from u8 to int to accommodate these new return
-values.
+Change return type of r8712_init_recvbuf from int to void as it always
+returned _SUCCESS and this return value was never used at any call site.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/rtl8712/rtl871x_ioctl_linux.c |  5 ++---
- drivers/staging/rtl8712/rtl871x_ioctl_set.c   | 10 ++++------
- drivers/staging/rtl8712/rtl871x_ioctl_set.h   |  4 ++--
- 3 files changed, 8 insertions(+), 11 deletions(-)
+ drivers/staging/rtl8712/rtl8712_recv.c | 3 +--
+ drivers/staging/rtl8712/rtl8712_recv.h | 2 +-
+ 2 files changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-index b08b9a191a34..944336e0d2e2 100644
---- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-+++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-@@ -419,8 +419,7 @@ static int wpa_set_encryption(struct net_device *dev, struct ieee_param *param,
- 		pwep->KeyIndex |= 0x80000000;
- 		memcpy(pwep->KeyMaterial, param->u.crypt.key, pwep->KeyLength);
- 		if (param->u.crypt.set_tx) {
--			if (r8712_set_802_11_add_wep(padapter, pwep) ==
--			    (u8)_FAIL)
-+			if (r8712_set_802_11_add_wep(padapter, pwep))
- 				ret = -EOPNOTSUPP;
- 		} else {
- 			/* don't update "psecuritypriv->PrivacyAlgrthm" and
-@@ -1585,7 +1584,7 @@ static int r8711_wx_set_enc(struct net_device *dev,
- 	}
- 	wep.KeyIndex |= 0x80000000;	/* transmit key */
- 	memcpy(wep.KeyMaterial, keybuf, wep.KeyLength);
--	if (r8712_set_802_11_add_wep(padapter, &wep) == _FAIL)
-+	if (r8712_set_802_11_add_wep(padapter, &wep))
- 		return -EOPNOTSUPP;
- 	return 0;
- }
-diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_set.c b/drivers/staging/rtl8712/rtl871x_ioctl_set.c
-index 54b16bc41465..6cdc6f1a6bc6 100644
---- a/drivers/staging/rtl8712/rtl871x_ioctl_set.c
-+++ b/drivers/staging/rtl8712/rtl871x_ioctl_set.c
-@@ -327,15 +327,15 @@ u8 r8712_set_802_11_authentication_mode(struct _adapter *padapter,
- 	return ret;
+diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
+index 82ddc0c3ecd4..892ea71c3718 100644
+--- a/drivers/staging/rtl8712/rtl8712_recv.c
++++ b/drivers/staging/rtl8712/rtl8712_recv.c
+@@ -107,7 +107,7 @@ void r8712_free_recv_priv(struct recv_priv *precvpriv)
+ 			    skb_queue_len(&precvpriv->free_recv_skb_queue));
  }
  
--u8 r8712_set_802_11_add_wep(struct _adapter *padapter,
--			    struct NDIS_802_11_WEP *wep)
-+int r8712_set_802_11_add_wep(struct _adapter *padapter,
-+			     struct NDIS_802_11_WEP *wep)
+-int r8712_init_recvbuf(struct _adapter *padapter, struct recv_buf *precvbuf)
++void r8712_init_recvbuf(struct _adapter *padapter, struct recv_buf *precvbuf)
  {
- 	sint	keyid;
- 	struct security_priv *psecuritypriv = &padapter->securitypriv;
- 
- 	keyid = wep->KeyIndex & 0x3fffffff;
- 	if (keyid >= WEP_KEYS)
--		return false;
-+		return -EINVAL;
- 	switch (wep->KeyLength) {
- 	case 5:
- 		psecuritypriv->PrivacyAlgrthm = _WEP40_;
-@@ -351,7 +351,5 @@ u8 r8712_set_802_11_add_wep(struct _adapter *padapter,
- 		wep->KeyLength);
- 	psecuritypriv->DefKeylen[keyid] = wep->KeyLength;
- 	psecuritypriv->PrivacyKeyIndex = keyid;
--	if (r8712_set_key(padapter, psecuritypriv, keyid))
--		return false;
+ 	precvbuf->transfer_len = 0;
+ 	precvbuf->len = 0;
+@@ -118,7 +118,6 @@ int r8712_init_recvbuf(struct _adapter *padapter, struct recv_buf *precvbuf)
+ 		precvbuf->ptail = precvbuf->pbuf;
+ 		precvbuf->pend = precvbuf->pdata + MAX_RECVBUF_SZ;
+ 	}
 -	return _SUCCESS;
-+	return r8712_set_key(padapter, psecuritypriv, keyid);
  }
-diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_set.h b/drivers/staging/rtl8712/rtl871x_ioctl_set.h
-index 8b1085aea962..e2de820f61d9 100644
---- a/drivers/staging/rtl8712/rtl871x_ioctl_set.h
-+++ b/drivers/staging/rtl8712/rtl871x_ioctl_set.h
-@@ -28,8 +28,8 @@ u8 r8712_set_802_11_authentication_mode(struct _adapter *pdapter,
  
- u8 r8712_set_802_11_bssid(struct _adapter *padapter, u8 *bssid);
+ int r8712_free_recvframe(union recv_frame *precvframe,
+diff --git a/drivers/staging/rtl8712/rtl8712_recv.h b/drivers/staging/rtl8712/rtl8712_recv.h
+index 6954c5bfbcaf..3e385b2242d8 100644
+--- a/drivers/staging/rtl8712/rtl8712_recv.h
++++ b/drivers/staging/rtl8712/rtl8712_recv.h
+@@ -136,7 +136,7 @@ union recv_frame {
+ 	} u;
+ };
  
--u8 r8712_set_802_11_add_wep(struct _adapter *padapter,
--			    struct NDIS_802_11_WEP *wep);
-+int r8712_set_802_11_add_wep(struct _adapter *padapter,
-+			     struct NDIS_802_11_WEP *wep);
- 
- u8 r8712_set_802_11_disassociate(struct _adapter *padapter);
- 
+-int r8712_init_recvbuf(struct _adapter *padapter, struct recv_buf *precvbuf);
++void r8712_init_recvbuf(struct _adapter *padapter, struct recv_buf *precvbuf);
+ void r8712_rxcmd_event_hdl(struct _adapter *padapter, void *prxcmdbuf);
+ s32 r8712_signal_scale_mapping(s32 cur_sig);
+ void r8712_reordering_ctrl_timeout_handler(void *pcontext);
 -- 
 2.19.1
 
