@@ -1,66 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E8D7E6FDCA
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Jul 2019 12:29:22 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8940C6FE3B
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Jul 2019 12:59:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 155AD8565B;
-	Mon, 22 Jul 2019 10:29:21 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A9F7D857CB;
+	Mon, 22 Jul 2019 10:59:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vyBZYeogvi3R; Mon, 22 Jul 2019 10:29:20 +0000 (UTC)
+	with ESMTP id lrZTfVPT+K18; Mon, 22 Jul 2019 10:59:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7AAC9853FD;
-	Mon, 22 Jul 2019 10:29:19 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 681F881B81;
+	Mon, 22 Jul 2019 10:59:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id ED1D91BF39A
- for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 10:29:17 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5719F1BF20B
+ for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 10:59:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id E91B1203BF
- for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 10:29:17 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 53C9581926
+ for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 10:59:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NezVyiIogheY for <devel@linuxdriverproject.org>;
- Mon, 22 Jul 2019 10:29:17 +0000 (UTC)
+ with ESMTP id PKlc7NIysP39 for <devel@linuxdriverproject.org>;
+ Mon, 22 Jul 2019 10:59:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qk1-f193.google.com (mail-qk1-f193.google.com
- [209.85.222.193])
- by silver.osuosl.org (Postfix) with ESMTPS id F018D2038F
- for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 10:29:16 +0000 (UTC)
-Received: by mail-qk1-f193.google.com with SMTP id s22so28185247qkj.12
- for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 03:29:16 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=0NOGeJyfbedSFMqRuTXzJhGJqhWVTfys7Td6+TiU9cU=;
- b=Sw7DdYcOQiz7BWpWW4Urauu0r35jh6VTzLzEBtvRXLSczl5db5tOx6b9kKNKgaTjzm
- u5ZvmB+S0x1O7mVfgQemzCl3qy51fUyya+yrmGLiPwIG7WCQCkpKKIqim0FxhKL4N6pT
- F54Cl/Dqt+elmpVt9tUXQuGuCE3aSIKjnVDz1wVB9zRyicDFer88t+u/iZHwURBWevT9
- eyqmaof8m+eTa/KMQZXSINntuf7sq4CcxmBfFX1p8hyWM+T1lTa6DoMn402L8m37f9XS
- uDGINuVKIRZsFpXWTFkVl3eRiqS8KPYtPC+T8KaYwHCXBCEaqHFh1STit9/3k2sa4G/A
- kXJw==
-X-Gm-Message-State: APjAAAU9Y8gVyw2yXrNCLfbXCHPo6YL0b7G/R2FBK9liHeKKBT7Yik6M
- cPHGY27EhL/wbNOSozMWPr4ruG7/zvNcfaZo4Bs=
-X-Google-Smtp-Source: APXvYqzk3DuGvaGAEaTy+ImxITuZDO3qbOIA7saZZgJD0ZGnPw+qsE85yHCiUF55BTu2T15XmHYund5FGCRBFNzC2pc=
-X-Received: by 2002:a37:4ac3:: with SMTP id
- x186mr44393855qka.138.1563791355964; 
- Mon, 22 Jul 2019 03:29:15 -0700 (PDT)
+Received: from sonic308-54.consmr.mail.gq1.yahoo.com
+ (sonic308-54.consmr.mail.gq1.yahoo.com [98.137.68.30])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7A2AA816E6
+ for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 10:59:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aol.com; s=a2048;
+ t=1563793157; bh=xtrUUH0sctj2tsSsDpr3PVuynzXM8HieJ7bbdupoyGk=;
+ h=Subject:To:References:From:Cc:Date:In-Reply-To:From:Subject;
+ b=UeOjUFhrgs5val+8BtBvi2iUTigq/lvOtgLqQvpUxDO1/sBXwh3SURLFEoYM98GJXZcnhiOYrkRw435yNT9gBX5GEjgaYzhjPHabba2dSW9VShK212fEWl+/CxUo160I2Kmq6oUwdZq68VXFXXceuuCoPBhtvtp3zIpZOLR3wb0mXVRy1IogqjkM2PuGToHL6ssD3QgWsPoqTJITh3UOJGo5sy0XKA942G7YARBH1jrw6s7e+NLwi2UntxHvMADXiPSLB7WHgRL8RvMw9aFcC2zZ2hqGlG+MXUjig52fqaEHGKL1n/wNkfuRFMLK9ZtQQrAx3kroZAYuSFu6HxEenQ==
+X-YMail-OSG: Vjc7HoMVM1ng7VzLKgTAtT.ifUxJxTn_RKrPGgSZKTfRzA0woryFcUEkZ90F8F7
+ Lat3BrYZQ_gm1IHA4jEedhefTJvOyQe.U2nhSCMyzxZr1JEDl1wlhfvsqzqAndJkiP4dFAr.R4dY
+ oUKaRgnHIX6X7kwLfj2.s96GDi.CTEuAhHQn4GIjZj5yaCQAOR0LXTt84LauH17rfwssfJW9nwL9
+ ai4xQv8M11j4cJ8CBes5yEzavGza92VYtFgqJqUeWWT6XxV3K088rzTV6JK.ub8z_4JS2jqCJ7Tc
+ K7paDKhq4_m67GlMlmhnmL5Nakuo.FmcTB9vWDY25eMr.TcX843l94AmJdBBwQjjSgn4T2vjo4wR
+ Yz0ApsTdr9SKwePM_TETo7OvT_vPQT6.zzNcJW.Yf0hXzWJi53kMlOX_awBxjYniafX_Isa407dv
+ ZinTxkKovphYTWIAkjA7fl81KNi_oI2Rbq8wU8ODsH2Phw4jqh4smcewrpwlf5Nu3CcEK98dAact
+ 3TH17tH_Czax1rFNGs8Cieuv5ojqzinGaEQOSl3oODV9DxalLm4_HSYajgKi5yTNQuFtLkFKL2eI
+ Twzk6SZeaegB8SM4zb.Kvw753SsAMVLS5FV3Ai0y8_V8Hkzw1oOcd297g7e_f_JovzeuOLm0KbcH
+ a7TCTal..N_gfC714HIaLMfabvTDN6RnC8HI4hM_fpkJGdra6FmMYDytaP16gGvQgPM4aFupPQss
+ zmW7L.iHCOILw6w7AmJmuK82zGpoMAPA0m7f7DBqdVDbIqpMN25HPrhtRBJ_GEGXDclSjebO5Yag
+ EIkjmX40herrCsP5eatmfuOLouremz1P2BGRTbSioIKNXzgcvjGguAfWTclEPi58BHi9BwKwirCZ
+ K.v0kwzOqEM4NIN4PJK4kKFulrEnSHRrrjRSj8ihslyDrbiRMPwQ5dzk_Sl4KNqwDLbId0ZoPNVp
+ AuPl0KvG0rKn8h.Nh.PMGg0DhVmPXNbJN85SnC.qCBAD.rMsZSN4HHsMZuLrTKgzBlKtRoDJtXxC
+ Rs1NTXJC7GGQ0rPRPK1Xyehit14.kxTQbtNxEBFWo83r3Ryj5_R4embRsUn_6QCy1U5_LZPWlMmL
+ DtzW5AptGuSCSA42yfyQzV0txXqme51EbN5j9GF5NrUUKN.sqxdKqIC1LlYVMWLfL24uuZwQi8Jd
+ SsivFaD1kyeJS1xvjseFmeabNPufv7quaY6eFT9Oag.EtNXbQpR6.AjM-
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic308.consmr.mail.gq1.yahoo.com with HTTP; Mon, 22 Jul 2019 10:59:17 +0000
+Received: by smtp425.mail.gq1.yahoo.com (Oath Hermes SMTP Server) with ESMTPA
+ ID b1cb3083fffce511e6c652e202262feb; 
+ Mon, 22 Jul 2019 10:59:15 +0000 (UTC)
+Subject: Re: [PATCH v3 23/24] erofs: introduce cached decompression
+To: dsterba@suse.cz
+References: <20190722025043.166344-1-gaoxiang25@huawei.com>
+ <20190722025043.166344-24-gaoxiang25@huawei.com>
+ <20190722101818.GN20977@twin.jikos.cz>
+From: Gao Xiang <hsiangkao@aol.com>
+Message-ID: <41f1659a-0d16-4316-34fc-335b7d142d5c@aol.com>
+Date: Mon, 22 Jul 2019 18:58:59 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-References: <20190628123819.2785504-1-arnd@arndb.de>
- <20190628123819.2785504-4-arnd@arndb.de>
- <CA+FuTSexLuu8e1XHaY0ObGi46CgZnBpELecBr+kMgCU29Fa_gw@mail.gmail.com>
-In-Reply-To: <CA+FuTSexLuu8e1XHaY0ObGi46CgZnBpELecBr+kMgCU29Fa_gw@mail.gmail.com>
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Mon, 22 Jul 2019 12:28:59 +0200
-Message-ID: <CAK8P3a0xPDmNDbxRkN6ssobFLu1-JLvMG3MSai844hinj2Bs8A@mail.gmail.com>
-Subject: Re: [PATCH 4/4] ipvs: reduce kernel stack usage
-To: Willem de Bruijn <willemdebruijn.kernel@gmail.com>
+In-Reply-To: <20190722101818.GN20977@twin.jikos.cz>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,83 +83,112 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: James Morris <jmorris@namei.org>, driverdevel <devel@driverdev.osuosl.org>,
- linux-scsi <linux-scsi@vger.kernel.org>,
- James Smart <james.smart@broadcom.com>,
- Jozsef Kadlecsik <kadlec@netfilter.org>, lvs-devel@vger.kernel.org,
- Julian Anastasov <ja@ssi.bg>, coreteam@netfilter.org,
- Alexey Kuznetsov <kuznet@ms2.inr.ac.ru>,
- Pablo Neira Ayuso <pablo@netfilter.org>, Wensong Zhang <wensong@linux-vs.org>,
- Dick Kennedy <dick.kennedy@broadcom.com>, Kees Cook <keescook@chromium.org>,
- "James E . J . Bottomley" <jejb@linux.ibm.com>,
- Simon Horman <horms@verge.net.au>,
- Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
- "Martin K . Petersen" <martin.petersen@oracle.com>,
- Ard Biesheuvel <ard.biesheuvel@linaro.org>,
- Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Florian Westphal <fw@strlen.de>, linux-kernel <linux-kernel@vger.kernel.org>,
- netfilter-devel <netfilter-devel@vger.kernel.org>,
- Network Development <netdev@vger.kernel.org>,
- "David S. Miller" <davem@davemloft.net>,
- Larry Finger <Larry.Finger@lwfinger.net>
+Cc: devel@driverdev.osuosl.org, Stephen Rothwell <sfr@canb.auug.org.au>,
+ Theodore Ts'o <tytso@mit.edu>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Miao Xie <miaoxie@huawei.com>, Chao Yu <yuchao0@huawei.com>,
+ linux-erofs@lists.ozlabs.org, LKML <linux-kernel@vger.kernel.org>,
+ Li Guifu <bluce.liguifu@huawei.com>, Alexander Viro <viro@zeniv.linux.org.uk>,
+ linux-fsdevel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>,
+ Linus Torvalds <torvalds@linux-foundation.org>, Fang Wei <fangwei1@huawei.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Jun 28, 2019 at 9:59 PM Willem de Bruijn
-<willemdebruijn.kernel@gmail.com> wrote:
-> On Fri, Jun 28, 2019 at 8:40 AM Arnd Bergmann <arnd@arndb.de> wrote:
-> >
-> > With the new CONFIG_GCC_PLUGIN_STRUCTLEAK_BYREF_ALL option, the stack
-> > usage in the ipvs debug output grows because each instance of
-> > IP_VS_DBG_BUF() now has its own buffer of 160 bytes that add up
-> > rather than reusing the stack slots:
-> >
-> > net/netfilter/ipvs/ip_vs_core.c: In function 'ip_vs_sched_persist':
-> > net/netfilter/ipvs/ip_vs_core.c:427:1: error: the frame size of 1052 bytes is larger than 1024 bytes [-Werror=frame-larger-than=]
-> > net/netfilter/ipvs/ip_vs_core.c: In function 'ip_vs_new_conn_out':
-> > net/netfilter/ipvs/ip_vs_core.c:1231:1: error: the frame size of 1048 bytes is larger than 1024 bytes [-Werror=frame-larger-than=]
-> > net/netfilter/ipvs/ip_vs_ftp.c: In function 'ip_vs_ftp_out':
-> > net/netfilter/ipvs/ip_vs_ftp.c:397:1: error: the frame size of 1104 bytes is larger than 1024 bytes [-Werror=frame-larger-than=]
-> > net/netfilter/ipvs/ip_vs_ftp.c: In function 'ip_vs_ftp_in':
-> > net/netfilter/ipvs/ip_vs_ftp.c:555:1: error: the frame size of 1200 bytes is larger than 1024 bytes [-Werror=frame-larger-than=]
-> >
-> > Since printk() already has a way to print IPv4/IPv6 addresses using
-> > the %pIS format string, use that instead,
->
-> since these are sockaddr_in and sockaddr_in6, should that have the 'n'
-> specifier to denote network byteorder?
+Hi David,
 
-I double-checked the implementation, and don't see that make any difference,
-as 'n' is the default.
+On 2019/7/22 ????6:18, David Sterba wrote:
+> On Mon, Jul 22, 2019 at 10:50:42AM +0800, Gao Xiang wrote:
+>> +choice
+>> +	prompt "EROFS Data Decompression mode"
+>> +	depends on EROFS_FS_ZIP
+>> +	default EROFS_FS_ZIP_CACHE_READAROUND
+>> +	help
+>> +	  EROFS supports three options for decompression.
+>> +	  "In-place I/O Only" consumes the minimum memory
+>> +	  with lowest random read.
+>> +
+>> +	  "Cached Decompression for readaround" consumes
+>> +	  the maximum memory with highest random read.
+>> +
+>> +	  If unsure, select "Cached Decompression for readaround"
+>> +
+>> +config EROFS_FS_ZIP_CACHE_DISABLED
+>> +	bool "In-place I/O Only"
+>> +	help
+>> +	  Read compressed data into page cache and do in-place
+>> +	  I/O decompression directly.
+>> +
+>> +config EROFS_FS_ZIP_CACHE_READAHEAD
+>> +	bool "Cached Decompression for readahead"
+>> +	help
+>> +	  For each request, it caches the last compressed page
+>> +	  for further reading.
+>> +	  It still does in-place I/O for the rest compressed pages.
+>> +
+>> +config EROFS_FS_ZIP_CACHE_READAROUND
+>> +	bool "Cached Decompression for readaround"
+>> +	help
+>> +	  For each request, it caches the both end compressed pages
+>> +	  for further reading.
+>> +	  It still does in-place I/O for the rest compressed pages.
+>> +
+>> +	  Recommended for performance priority.
+> 
+> The number of individual Kconfig options is quite high, are you sure you
+> need them to be split like that?
 
-> >  include/net/ip_vs.h             | 71 +++++++++++++++++++--------------
-> >  net/netfilter/ipvs/ip_vs_core.c | 44 ++++++++++----------
-> >  net/netfilter/ipvs/ip_vs_ftp.c  | 20 +++++-----
-> >  3 files changed, 72 insertions(+), 63 deletions(-)
-> >
-> > diff --git a/include/net/ip_vs.h b/include/net/ip_vs.h
-> > index 3759167f91f5..3dfbeef67be6 100644
-> > --- a/include/net/ip_vs.h
-> > +++ b/include/net/ip_vs.h
-> > @@ -227,6 +227,16 @@ static inline const char *ip_vs_dbg_addr(int af, char *buf, size_t buf_len,
-> >                        sizeof(ip_vs_dbg_buf), addr,                     \
-> >                        &ip_vs_dbg_idx)
-> >
-> > +#define IP_VS_DBG_SOCKADDR4(fam, addr, port)                           \
-> > +       (struct sockaddr*)&(struct sockaddr_in)                         \
-> > +       { .sin_family = (fam), .sin_addr = (addr)->in, .sin_port = (port) }
->
-> might as well set .sin_family = AF_INET here and AF_INET6 below?
+You mean the above? these are 3 cache strategies, which impact the
+runtime memory consumption and performance. I tend to leave the above
+as it-is...
 
-That would work just same, but I don't see any advantage. As the family
-and port members are the same between sockaddr_in and sockaddr_in6,
-the compiler can decide to set these regardless to the argument values
-regardless of the condition.
+> 
+> Eg. the xattrs, acls and security labels seem to be part of the basic
+> set of features so I wonder who does not want to enable them by default.
+> I think you copied ext4 as a skeleton for the options, but for a new
+> filesystem it's not necessary copy the history where I think features
+> were added over time.
 
-       Arnd
+I have no idea... Okay, I will enable them by default.
+
+> 
+> Then eg. the option EROFS_FS_IO_MAX_RETRIES looks like a runtime
+> setting, the config help text does not explain anything about the change
+> in behaviour leaving the user with 'if not sure take the defaut'.
+
+Agreed, you are right. EROFS_FS_IO_MAX_RETRIES is quite a runtime
+setting. I will remove it in the next version (I think I will remove it
+as the first step) or turn it to a mount option.
+
+> 
+> EROFS_FS_USE_VM_MAP_RAM is IMO a very low implementation detail, why
+> does it need to be config option at all?
+
+I'm not sure vm_map_ram() is always better than vmap() for all
+platforms (it has noticeable performance impact). However that
+seems true for my test machines (x86-64, arm64).
+
+If vm_map_ram() is always the optimal choice compared with vmap(),
+I will remove vmap() entirely, that is OK. But I am not sure for
+every platforms though.
+
+> 
+> And so on. I'd suggest to go through all the options and reconsider them
+> to be built-in, or runtime settings. Debugging features like the fault
+> injections could be useful on non-debugging builds too, so a separate
+> option is fine, otherwise grouping other debugging options under the
+> main EROFS_FS_DEBUG would look more logical.
+
+The remaining one is EROFS_FS_CLUSTER_PAGE_LIMIT. It impacts the total
+size of z_erofs_pcluster structure. It's a hard limit, and should be
+configured as small as possible. I can remove it right now since multi-block
+compression is not available now. However, it will be added again after
+multi-block compression is supported.
+
+So, How about leave it right now and use the default value?
+
+Thanks,
+Gao Xiang
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
