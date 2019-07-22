@@ -1,93 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 518646FC2B
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Jul 2019 11:29:36 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4F5C76FD8F
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Jul 2019 12:17:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5B944203F8;
-	Mon, 22 Jul 2019 09:29:33 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3A8D48569B;
+	Mon, 22 Jul 2019 10:17:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kIjEptCdmc2J; Mon, 22 Jul 2019 09:29:32 +0000 (UTC)
+	with ESMTP id Srs0v5YClGwT; Mon, 22 Jul 2019 10:17:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 8E3BF203CE;
-	Mon, 22 Jul 2019 09:29:30 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id D5FD6815F2;
+	Mon, 22 Jul 2019 10:17:11 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 486941BF302
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 22 Jul 2019 09:29:29 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0F44A1BF39A
+ for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 10:17:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 459232037B
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 22 Jul 2019 09:29:29 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 0BE5B817F8
+ for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 10:17:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ApiRUXDukG6h
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 22 Jul 2019 09:29:28 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from out5-smtp.messagingengine.com (out5-smtp.messagingengine.com
- [66.111.4.29])
- by silver.osuosl.org (Postfix) with ESMTPS id 5D3C220116
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 22 Jul 2019 09:29:28 +0000 (UTC)
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
- by mailout.nyi.internal (Postfix) with ESMTP id 5BE1721F69;
- Mon, 22 Jul 2019 05:29:27 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute5.internal (MEProxy); Mon, 22 Jul 2019 05:29:27 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=tobin.cc; h=date
- :from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm3; bh=u1Fi+KEsy/QE/eTCnAaqcmKU8UK
- C318aakT4IQidMVw=; b=i82YRqu3G4EBUWNr9DVvNixJcJLQc0Tz37zoMOqewNR
- NE/ulGGorzaatp2a+6NqRvDX1g+o39dLSG/zgwXWkLknlu2dGmgPMSmXqh42mtcG
- 8tKWdAmckyP+fplBeZ+x3kB/cLSWmQusbSx+IXQF0h6IlOOaUnuTv/4VqxUTc3oo
- 6oOREl3D7zz8PrYtlmIW49kg2R7ijqXRa9iFWFuqEllKUDIVwg8E85afkfkbTmSN
- 8ODEHc9dCAMX07Gn26heiGxbL1IEmeRwM9ELf7V0hKZeHyX+1/un8tJ0KvLnCb6S
- pw8HAPKoJ8pBLC5VYwETCbUNgkVp8hUi3+5zN1OUVAQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=u1Fi+K
- Esy/QE/eTCnAaqcmKU8UKC318aakT4IQidMVw=; b=U3DEKFcvxlu4QaLDDBntPD
- N/HXe6Qa93ENK7W3JVHQ/EAsZHAg75O7wa7/OQAiQK6FTaK/qtWaf+bet9I4LXKU
- RWYqkEO9jFIL7G3JiXEVF0FKlFDHg8pbEED7stiAX255r+9ql/CGGpKpnHc6ALSx
- lWG9a+fgu6MvUHulyIuKgvnW51o70J0huMHC8X4US1N8aRN6SS7wn3kP/JT+HH5K
- rAsdajN9EbwKUsU2X8L9aydoIFQWC2/kDZFpoBa0NjD5Zty1Qiz0VOB5LS+v3Twv
- 3Kk/99Bduv3G+ENxhQ2tU2rEn82fGa+n0o2kUJOGO2UjDLPAd4Ytz+oDRT3lHd/Q
- ==
-X-ME-Sender: <xms:9oE1XbcAahsaAjdFFmXfLMlrhDWKlopUuCrrMV3vxkiM1S0bwMtX4g>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduvddrjeeggdduhecutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenfg
- hrlhcuvffnffculdeftddmnecujfgurhepfffhvffukfhfgggtuggjofgfsehttdertdfo
- redvnecuhfhrohhmpedfvfhosghinhcuvedrucfjrghrughinhhgfdcuoehmvgesthhosg
- hinhdrtggtqeenucfkphepuddvgedrudelrdefuddrgeenucfrrghrrghmpehmrghilhhf
- rhhomhepmhgvsehtohgsihhnrdgttgenucevlhhushhtvghrufhiiigvpedt
-X-ME-Proxy: <xmx:9oE1XTCGRsU-x5YuHnWxbDspIhI7Oz2TL7R0fpbVWiydqN_D-vnL8A>
- <xmx:9oE1XTpg28agX1G9uiN4nZVbZEjvuKMRZDufFPBCE901ntUxL0R9Lg>
- <xmx:9oE1XQSeLZndPlvP-MvkCqlt4E-qX5th43I2FBrFOjPpU21qkQe3Sg>
- <xmx:94E1XeDra_LTzKic2c6x2OSYo1cdO2ZA1cKTatGIbvXN6YF8LnQleA>
-Received: from localhost (unknown [124.19.31.4])
- by mail.messagingengine.com (Postfix) with ESMTPA id 3492980061;
- Mon, 22 Jul 2019 05:29:25 -0400 (EDT)
-Date: Mon, 22 Jul 2019 19:29:23 +1000
-From: "Tobin C. Harding" <me@tobin.cc>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [OSSNA] Intro to kernel hacking tutorial
-Message-ID: <20190722092923.GB22763@ares>
-References: <20190705025055.GA7037@ares>
- <20190719093658.GF3111@kadam>
+ with ESMTP id gSujfneQKCfv for <devel@linuxdriverproject.org>;
+ Mon, 22 Jul 2019 10:17:09 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-qk1-f193.google.com (mail-qk1-f193.google.com
+ [209.85.222.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 0634A815F2
+ for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 10:17:09 +0000 (UTC)
+Received: by mail-qk1-f193.google.com with SMTP id v22so28139677qkj.8
+ for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 03:17:08 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=7CJkKA7SZFRonSxwlZKyw8W6pgs5EdX5dwdC50uPvBs=;
+ b=TXAW+nYfehL80dx80etCtxI86jcWfqZh6FrG9JSHh9XgSWmmCApUWDMi+g3OwEGFuh
+ dOhirehFl+PCOXuS/wFfKYCEkcHrmj+6MGXKFxj9Q9mW6X6HKUOvfz+kQk5dW/NGGKjB
+ /LM2EOFQYUDmcaWXEmL/FTRTYhrqb4IQz8LA8LFj0HMKuwL04SkysYq/8votSAZLWVAV
+ qNfMuPDPrnQNbK6Ru8K6JvPjbH8eor4ImcbdtkyY1YHE50gQW3Z74JMfWCjZBMM4xwit
+ NpkGCdhhW5F9d4b7djw0nGhbYc8KdTy2NjNnCMvPdK1qr3NocmzGvRa5enbtv3b0Xc3M
+ Ff1w==
+X-Gm-Message-State: APjAAAUFUjiSZFhqJDbQBgYfdW/qpBDtx5Hc9jXuVKb2SOlo2b7THVnk
+ GPfEA3S6++KvU5L9o/d25DwBjYYs81VJEBJuSl4=
+X-Google-Smtp-Source: APXvYqy7ISax661sJxUrp3WbLhv5BC0kus4uGgZKznelHiJHcAGScOZIvY+BAP14dw/qwJzgUC+dnqfk8j1fG+ylzm4=
+X-Received: by 2002:a37:4ac3:: with SMTP id
+ x186mr44360140qka.138.1563790627957; 
+ Mon, 22 Jul 2019 03:17:07 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190719093658.GF3111@kadam>
-X-Mailer: Mutt 1.9.4 (2018-02-28)
-User-Agent: Mutt/1.9.4 (2018-02-28)
+References: <20190628123819.2785504-1-arnd@arndb.de>
+ <20190628123819.2785504-4-arnd@arndb.de>
+ <alpine.LFD.2.21.1906302308280.3788@ja.home.ssi.bg>
+In-Reply-To: <alpine.LFD.2.21.1906302308280.3788@ja.home.ssi.bg>
+From: Arnd Bergmann <arnd@arndb.de>
+Date: Mon, 22 Jul 2019 12:16:51 +0200
+Message-ID: <CAK8P3a03wShPgL85K-0W3UUc3QJWLbbs+ZVAnkKLkqg00vVehw@mail.gmail.com>
+Subject: Re: [PATCH 4/4] ipvs: reduce kernel stack usage
+To: Julian Anastasov <ja@ssi.bg>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,62 +73,75 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- driverdev-devel@linuxdriverproject.org,
- Kernelnewbies <kernelnewbies@kernelnewbies.org>
+Cc: James Morris <jmorris@namei.org>, driverdevel <devel@driverdev.osuosl.org>,
+ linux-scsi <linux-scsi@vger.kernel.org>,
+ James Smart <james.smart@broadcom.com>,
+ Jozsef Kadlecsik <kadlec@netfilter.org>, lvs-devel@vger.kernel.org,
+ coreteam@netfilter.org, Alexey Kuznetsov <kuznet@ms2.inr.ac.ru>,
+ Pablo Neira Ayuso <pablo@netfilter.org>, Wensong Zhang <wensong@linux-vs.org>,
+ Dick Kennedy <dick.kennedy@broadcom.com>, Kees Cook <keescook@chromium.org>,
+ "James E . J . Bottomley" <jejb@linux.ibm.com>,
+ Simon Horman <horms@verge.net.au>,
+ Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
+ "Martin K . Petersen" <martin.petersen@oracle.com>,
+ Ard Biesheuvel <ard.biesheuvel@linaro.org>,
+ Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Florian Westphal <fw@strlen.de>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ netfilter-devel <netfilter-devel@vger.kernel.org>,
+ Networking <netdev@vger.kernel.org>, "David S. Miller" <davem@davemloft.net>,
+ Larry Finger <Larry.Finger@lwfinger.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Jul 19, 2019 at 12:36:58PM +0300, Dan Carpenter wrote:
-> On Fri, Jul 05, 2019 at 12:50:55PM +1000, Tobin C. Harding wrote:
-> > Outcome will (hopefully) be a small patch set into drivers/staging/.
-> > (Don't worry Greg only one group got to this stage last time, you
-> > won't get flooded with patches :)
-> 
-> We're good at reviewing floods of patches.  Send away.
-> 
-> In the end what we want is people who will take over a driver and
-> understand it completely and become the maintainer.  We've had a few
-> people that did appointed themselves to become the maintainer of a
-> random driver and move it out of staging.  But even if people don't make
-> it all the way to become a maintainer, it's nice when they start down
-> that path by focusing on one driver and trying to understand it as much
-> as possible.
-> 
-> Most of the time when you look at a new staging driver, then you do want
-> to clean up the white space just because it's hard to look at
-> non-standard code.  So that's the first step.  But then maybe start at
-> the probe and release functions and clean it up.  Keep your eyes open
-> to any other mistakes or bugs you see.  Write them down.  Then the
-> ioctls.  Etc.  Look at the TODO too.
-> 
-> The other thing I wish people knew was about the relationship with
-> maintainers.  When you start out, you're virtually anonymous for the
-> first couple patchsets.  We get so many and they blend together so we
-> don't remember your name.  So don't think that we mean anything
-> personally if we don't apply your patch.  We have forgotten about the
-> patch as soon as we reply to it.  Don't panic and resend quickly.  You
-> will be too stressed.  Wait until the next day.
-> 
-> In staging we really want to apply patches (unless it's in staging
-> because we're going to remove the code).  I get annoyed with other
-> staging reviewers who NAK patches because "I don't like churn" or
-> whatever.
-> 
-> On the other hand, patches just "silencing checkpatch.pl" is not a valid
-> justification for sending a patch.  Patches should make the code more
-> readable.
-> 
-> Anyway, maintainers are not monsters.  Very few people have made me
-> annoyed to the point where I refuse to review their code.  And everyone
-> else is in my good books so that's fine.
+On Sun, Jun 30, 2019 at 10:37 PM Julian Anastasov <ja@ssi.bg> wrote:
+> On Fri, 28 Jun 2019, Arnd Bergmann wrote:
 
-Cool, points noted.  Thanks Dan
+> >       struct ip_vs_conn *ctl_cp = cp->control;
+> >       if (!ctl_cp) {
+> > -             IP_VS_ERR_BUF("request control DEL for uncontrolled: "
+> > -                           "%s:%d to %s:%d\n",
+> > -                           IP_VS_DBG_ADDR(cp->af, &cp->caddr),
+> > -                           ntohs(cp->cport),
+> > -                           IP_VS_DBG_ADDR(cp->af, &cp->vaddr),
+> > -                           ntohs(cp->vport));
+> > +             pr_err("request control DEL for uncontrolled: "
+> > +                    "%pISp to %pISp\n",
 
+(replying a bit late)
 
-	Tobin
+>         ip_vs_dbg_addr() used compact form (%pI6c), so it would be
+> better to use %pISc and %pISpc everywhere in IPVS...
+
+done
+
+>         Also, note that before now port was printed with %d and
+> ntohs() was used, now port should be in network order, so:
+>
+> - ntohs() should be removed
+
+done
+
+> - htons() should be added, if missing. At first look, this case
+> is not present in IPVS, we have only ntohs() usage
+
+I found one case in ip_vs_ftp_in() that needs it in order to subtract one:
+
+                IP_VS_DBG(7, "protocol %s %pISpc %pISpc\n",
+                          ip_vs_proto_name(ipvsh->protocol),
+-                         IP_VS_DBG_SOCKADDR(cp->af, &to, ntohs(port)),
++                         IP_VS_DBG_SOCKADDR(cp->af, &to, port),
+                          IP_VS_DBG_SOCKADDR(cp->af, &cp->vaddr,
+-                                             ntohs(cp->vport)-1));
++                                            htons(ntohs(cp->vport)-1)));
+
+Thanks for the review, I'll send a new patch after some more
+build testing on the new version.
+
+       Arnd
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
