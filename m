@@ -1,76 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4AFBA6FC16
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Jul 2019 11:24:19 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D35486FC15
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Jul 2019 11:24:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 216558474A;
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7EC1B876F2;
 	Mon, 22 Jul 2019 09:24:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id va8xZVjT6XVl; Mon, 22 Jul 2019 09:24:15 +0000 (UTC)
+	with ESMTP id W0BRmveojLYs; Mon, 22 Jul 2019 09:24:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0E29181D66;
-	Mon, 22 Jul 2019 09:24:15 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 05FF18735C;
+	Mon, 22 Jul 2019 09:24:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 455F41BF302
- for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 09:24:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 178C41BF302
+ for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 09:24:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3F13C8735C
- for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 09:24:12 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 0C3C48735C
+ for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 09:24:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sMUJQUBrKfqg for <devel@linuxdriverproject.org>;
- Mon, 22 Jul 2019 09:24:11 +0000 (UTC)
+ with ESMTP id adfczJNHj45j for <devel@linuxdriverproject.org>;
+ Mon, 22 Jul 2019 09:24:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
  [209.85.215.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B82CB86F12
- for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 09:24:11 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id f25so17367257pgv.10
- for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 02:24:11 -0700 (PDT)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8027786F12
+ for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 09:24:14 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id f5so8553662pgu.5
+ for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 02:24:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=4ti9mZ5eZrzB9FvaOenmpZD+9MtWwMSWpG6NalvqDt0=;
- b=ZJ10apxjxUa9mkrb0Ke4svt22E71G5Pp1nk8Rkcu/U4Mfw0LDboVKuNnMxTkSSOmsB
- tbuYP9nqagz3M9F4MidOGC0e3rNagVowTMW8ONRcq8AM4E3Hu6cPe7SwTmLbN3liMKIt
- F8K0Cyr+0YM9JDBrKK7cM0TLLb4BWWAfizfsSy5f/9GFwaTUJQbqFz6UgXDzqEdJA6Yt
- vn/qpzIevLqIxWBS5DbtNrilKIXX+C3FQrclqWMapaGprknLBcSeXFAuOYaADEdqW/xo
- j/Tsx4asmIP2hKOALflVfudd0AxXtCklQsPxXRbtLlRr0Cj9A34O38x6a9YaMrgbkBky
- J3Og==
+ bh=z6T5b116rmPxozBgPMrCcr5eC7zr/jWOiBDvKXTDKsw=;
+ b=cXJxvXC9MLcu8Gfm+T16K5NOi0Pl39XV/3HJpiws6O07sIRWpE9AyfH8eqlgf0BxAX
+ i2PsEo7sG86OoNG8vy50xx17lpJq8KZ2/4Xk4DbEJ6wG4wYrFnr7ig/SeJgdHUCz8IVp
+ TpCDTB0NP6qrZ3PB/0ofMTZlxt0ZK1eQXJwfsm5DPKkubSHcQ3gzf9ZglEowdxIvjhST
+ S6w2R6ZKVmPa3O93Izww6xzXw2ZBoIIaln2Ogp98YAvEN8HX7fyr9fAoXue6F5UJN9x2
+ C4F2XEW4C1H0g7gh1LkDH03rtqtkur2Tu1SgdBh2xjY9m8i0RfL7f0Nto62nqoo0/CNG
+ KVmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=4ti9mZ5eZrzB9FvaOenmpZD+9MtWwMSWpG6NalvqDt0=;
- b=IG1cDPpyNAZjTVMAgfMTNEJdLfQPdAkf+6+ENBwHW9ftsIxJ1bOsNK0UVm8GsrBVC0
- Ig94e8KRKW5hsMJIXAUMqITec4ca8iDQLsjmbvYEdbTMXGmhwkvFbHVckkzGkrgPdEt6
- MsvJprHZD+2IvkFNmlBsHOrzhea/dLITAhO+lqTaywLneVPbGO+z/f9PW2P4r44law6m
- 0Y0PumOzT+tGi4AH5ir75+iJYiKp9+lZxByXEziefpTuOMxuLJLTnyKQuX5SBDxYn2Wm
- Kj3D5CP761u/5lyhm+vj5lsfkfBYqXEU0Wun7O+AvDWcjB5xijie7p7z8LG7UJyw+5nH
- +51Q==
-X-Gm-Message-State: APjAAAVjz2vIyz6YEl26Y9wgj5WQBZfqVpQasTKkjAQ2uQOfnnuIPQWA
- nhylP3itSEbsLZ45ty+bBxI=
-X-Google-Smtp-Source: APXvYqyTwKxkVz2PeEmYdlxwpHUm1SPRPXdneGYj08vIuwNPhZhNQTyATRKIqbcAqk8JMnvdDp1RQA==
-X-Received: by 2002:a17:90a:5884:: with SMTP id
- j4mr78829091pji.142.1563787451423; 
- Mon, 22 Jul 2019 02:24:11 -0700 (PDT)
+ bh=z6T5b116rmPxozBgPMrCcr5eC7zr/jWOiBDvKXTDKsw=;
+ b=sg5FtgVV+LLnQaNLUd0zsrQwSTOEGw8KshG4mnbHJ5Int4/tD+tUEVPlGBVM/fo5xk
+ 9voHHoSx53sfMhDogB1qdnOSZBdgPEsDgSI9AvNZeNT7xYMhpQHHdAQB1RQDoqo8gdIe
+ 4sLz7YXtSCqaCPwkgTsC5COYegaxX0SBS0khZoUn+1+LKyN4txagP84YpOWG2KOOmGjt
+ h4WR56nqSNP7wSU2C+L8YkrwQrWFm7H8pTejyOnxpLNpE328+a7uYor4tWIipyBTzPxV
+ 1lGgwXfNJfegup41O460LJWp9g7OD8W3KvJG64ktScSBs/t92LePMoIYItP3sEaueUJA
+ +2IQ==
+X-Gm-Message-State: APjAAAVPSfVol4EAUpKkaqeU/RGk7mFmIhj9hgoKU8Ct3G39rs8u5K0q
+ 3w4ODNf8OnmR8rwE9eizlWE=
+X-Google-Smtp-Source: APXvYqyn6N0WzOafxLESyHADA6rDL+07E4fhJCC5zhFw/9p2WzMV/MPx1ugmefFvV0cxyPece9jFbg==
+X-Received: by 2002:a63:6c46:: with SMTP id h67mr61962998pgc.248.1563787454154; 
+ Mon, 22 Jul 2019 02:24:14 -0700 (PDT)
 Received: from localhost.localdomain ([122.163.0.39])
- by smtp.gmail.com with ESMTPSA id f19sm52010125pfk.180.2019.07.22.02.24.09
+ by smtp.gmail.com with ESMTPSA id f19sm52010125pfk.180.2019.07.22.02.24.11
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Mon, 22 Jul 2019 02:24:11 -0700 (PDT)
+ Mon, 22 Jul 2019 02:24:13 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: larry.finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
  gregkh@linuxfoundation.org, devel@driverdev.osuosl.org
-Subject: [PATCH 7/8] staging: rtl8712: r8712_init_recvbuf(): Change return type
-Date: Mon, 22 Jul 2019 14:53:40 +0530
-Message-Id: <20190722092341.21030-7-nishkadg.linux@gmail.com>
+Subject: [PATCH 8/8] staging: rtl8712: r8712_free_recvframe(): Change return
+ type
+Date: Mon, 22 Jul 2019 14:53:41 +0530
+Message-Id: <20190722092341.21030-8-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190722092341.21030-1-nishkadg.linux@gmail.com>
 References: <20190722092341.21030-1-nishkadg.linux@gmail.com>
@@ -93,49 +93,49 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change return type of r8712_init_recvbuf from int to void as it always
-returned _SUCCESS and this return value was never used at any call site.
+Change return type of r8712_free_recvframe from int to void as it always
+returns _SUCCESS and its return value is never used.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
  drivers/staging/rtl8712/rtl8712_recv.c | 3 +--
- drivers/staging/rtl8712/rtl8712_recv.h | 2 +-
+ drivers/staging/rtl8712/rtl871x_recv.h | 2 +-
  2 files changed, 2 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
-index 82ddc0c3ecd4..892ea71c3718 100644
+index 892ea71c3718..d9574ea3ffb2 100644
 --- a/drivers/staging/rtl8712/rtl8712_recv.c
 +++ b/drivers/staging/rtl8712/rtl8712_recv.c
-@@ -107,7 +107,7 @@ void r8712_free_recv_priv(struct recv_priv *precvpriv)
- 			    skb_queue_len(&precvpriv->free_recv_skb_queue));
+@@ -120,7 +120,7 @@ void r8712_init_recvbuf(struct _adapter *padapter, struct recv_buf *precvbuf)
+ 	}
  }
  
--int r8712_init_recvbuf(struct _adapter *padapter, struct recv_buf *precvbuf)
-+void r8712_init_recvbuf(struct _adapter *padapter, struct recv_buf *precvbuf)
+-int r8712_free_recvframe(union recv_frame *precvframe,
++void r8712_free_recvframe(union recv_frame *precvframe,
+ 		   struct  __queue *pfree_recv_queue)
  {
- 	precvbuf->transfer_len = 0;
- 	precvbuf->len = 0;
-@@ -118,7 +118,6 @@ int r8712_init_recvbuf(struct _adapter *padapter, struct recv_buf *precvbuf)
- 		precvbuf->ptail = precvbuf->pbuf;
- 		precvbuf->pend = precvbuf->pdata + MAX_RECVBUF_SZ;
+ 	unsigned long irqL;
+@@ -139,7 +139,6 @@ int r8712_free_recvframe(union recv_frame *precvframe,
+ 			precvpriv->free_recvframe_cnt++;
  	}
+ 	spin_unlock_irqrestore(&pfree_recv_queue->lock, irqL);
 -	return _SUCCESS;
  }
  
- int r8712_free_recvframe(union recv_frame *precvframe,
-diff --git a/drivers/staging/rtl8712/rtl8712_recv.h b/drivers/staging/rtl8712/rtl8712_recv.h
-index 6954c5bfbcaf..3e385b2242d8 100644
---- a/drivers/staging/rtl8712/rtl8712_recv.h
-+++ b/drivers/staging/rtl8712/rtl8712_recv.h
-@@ -136,7 +136,7 @@ union recv_frame {
- 	} u;
- };
+ static void update_recvframe_attrib_from_recvstat(struct rx_pkt_attrib *pattrib,
+diff --git a/drivers/staging/rtl8712/rtl871x_recv.h b/drivers/staging/rtl8712/rtl871x_recv.h
+index f87b2ff5de1c..0146a774e19d 100644
+--- a/drivers/staging/rtl8712/rtl871x_recv.h
++++ b/drivers/staging/rtl8712/rtl871x_recv.h
+@@ -128,7 +128,7 @@ struct sta_recv_priv {
  
--int r8712_init_recvbuf(struct _adapter *padapter, struct recv_buf *precvbuf);
-+void r8712_init_recvbuf(struct _adapter *padapter, struct recv_buf *precvbuf);
- void r8712_rxcmd_event_hdl(struct _adapter *padapter, void *prxcmdbuf);
- s32 r8712_signal_scale_mapping(s32 cur_sig);
- void r8712_reordering_ctrl_timeout_handler(void *pcontext);
+ /* get a free recv_frame from pfree_recv_queue */
+ union recv_frame *r8712_alloc_recvframe(struct  __queue *pfree_recv_queue);
+-int r8712_free_recvframe(union recv_frame *precvframe,
++void r8712_free_recvframe(union recv_frame *precvframe,
+ 			  struct  __queue *pfree_recv_queue);
+ void r8712_free_recvframe_queue(struct  __queue *pframequeue,
+ 				 struct  __queue *pfree_recv_queue);
 -- 
 2.19.1
 
