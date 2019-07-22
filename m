@@ -2,53 +2,77 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1EE35701A8
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Jul 2019 15:49:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8ADF17024E
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Jul 2019 16:27:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 639F120448;
-	Mon, 22 Jul 2019 13:49:01 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 73B592045E;
+	Mon, 22 Jul 2019 14:27:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id k4DEcKOGy-8T; Mon, 22 Jul 2019 13:49:00 +0000 (UTC)
+	with ESMTP id DjNhk34Pplrv; Mon, 22 Jul 2019 14:27:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 98472203F7;
-	Mon, 22 Jul 2019 13:48:58 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5F0B5203D6;
+	Mon, 22 Jul 2019 14:27:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0D1361BF365
- for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 13:48:57 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id AD8141BF275
+ for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 14:27:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id F25BB20351
- for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 13:48:56 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id A860F862E8
+ for <devel@linuxdriverproject.org>; Mon, 22 Jul 2019 14:27:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LXuHuTIuTS0o for <devel@linuxdriverproject.org>;
- Mon, 22 Jul 2019 13:48:55 +0000 (UTC)
+ with ESMTP id plhZn1fIPuKu for <devel@linuxdriverproject.org>;
+ Mon, 22 Jul 2019 14:27:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga05-in.huawei.com [45.249.212.191])
- by silver.osuosl.org (Postfix) with ESMTPS id CDB6320028
- for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 13:48:54 +0000 (UTC)
-Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id B47831F73539573CC4C6;
- Mon, 22 Jul 2019 21:48:46 +0800 (CST)
-Received: from localhost (10.133.213.239) by DGGEMS410-HUB.china.huawei.com
- (10.3.19.210) with Microsoft SMTP Server id 14.3.439.0; Mon, 22 Jul 2019
- 21:48:39 +0800
-From: YueHaibing <yuehaibing@huawei.com>
-To: <sakari.ailus@linux.intel.com>, <mchehab@kernel.org>,
- <gregkh@linuxfoundation.org>, <yong.zhi@intel.com>, <digetx@gmail.com>,
- <hverkuil-cisco@xs4all.nl>
-Subject: [PATCH] media: staging: ipu3: Enable IOVA API only when IOMMU support
- is enabled
-Date: Mon, 22 Jul 2019 21:47:49 +0800
-Message-ID: <20190722134749.21580-1-yuehaibing@huawei.com>
-X-Mailer: git-send-email 2.10.2.windows.1
+Received: from sonic308-54.consmr.mail.gq1.yahoo.com
+ (sonic308-54.consmr.mail.gq1.yahoo.com [98.137.68.30])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 5E0F386292
+ for <devel@driverdev.osuosl.org>; Mon, 22 Jul 2019 14:27:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aol.com; s=a2048;
+ t=1563805624; bh=xECj9m2xLSVUpudrwyR6+luhiAWEZ0tY/RvhMhV/bZQ=;
+ h=Subject:To:References:From:Cc:Date:In-Reply-To:From:Subject;
+ b=b3OzPbc49iklhkBZJEKxy2IONINghyXwF78lQoMF+TEkeztZXGPe3+v6JRHszNyljknl/RLfiWnhYsg2udSJxcDABTYM5t6hQ02Sa5qooKbGSHr9+FuzHjQ+A4E51v+hM02Oxth81/01cdyk6uPSwRirtd5uc5zsPNsm3ptaT5oiE43SRyJOdNzVDnXRA5wxw2YtXRK1LtynbJbDZiR42nzUS8tz/QtvE3mZKKTFvvSc4j2OzeWc65UQ0F4D0qfzpRQuc1V/wPsNqmXhTsf3+jqUmqRQdSzOV81SHATrwUdn9ghfZZJgMtzjbxjfG/+hb04JDhCoV03/aT6GqSpttA==
+X-YMail-OSG: H0aMGxQVM1mvOAgQM.BAOlrQE3d.1NSa3bvXBG0WEx9WjJxsItK445bMZKRUfVj
+ 12opgBUymkaVs.u7jpTtxwwa_9GIYRGzyhxP6dFJwVGqa21crki_tZyomWJOspBHrkG9SPzOKRBm
+ D7ufuipeZJ7UXSx_RvAPo1oddnINNrEZbgnso0SMh553gm4Xt3I2HWp8fvGcF6wC3PGdYKtMa9jb
+ 578ArDg3h4v1MjhPDB6Yf2MNsqlnGKnShpZs.JY5Uv9ecp94VS.Xos8wHOoSC8S1EDaDh6IBNxvu
+ uj7xNLnuYXObUN4PIY3VjFIDlpf_6R7gyqFs_MMqi4yvgBqOackLXCeycoj91kprPwdmyDJwqs.f
+ qir7zoltA1FLl.Cj98THb5yimboDtcDxjbyuE.lCfxzOK4IYr2Vsv4uJbjBGzM7YKtqDwG6a1BFU
+ 5vXXwcxGBSMoAOhO2E._UA.d4RMenZngT0tdB29RPSnv9XwU9TfnEJiPRL2LUnFhSc4FORGXT.2O
+ cw69s15OhmZoJQ6f28ofqR521zU.v26Y4Iec1F9ToyPo_MGHv9TBwI02C7DES2z7rA6YAQ3Mgj8o
+ oIjXLO3uZgny.L4lKW78IIxNLfaOgz_y67rH1D_M6H6M_O52G9R_M91TaCDFALRslgEEZDaglPFc
+ ZKN5_BPt65jOgxl8gJjJxvb4XNdvsp6HqydGveyY.rPIDQrxpS1C2hQQSPEoiN1u1D8rfKmBF4jn
+ J2ETvbcvpMU2zbc4y9tCM7LxVzANwro0rulZ3cyLrlQczLrV0cNkZ0mxaJggRaFnekjy.3Wo87wS
+ .c.iEQfKP0Iy3QCR.ncEBd2t0meT1xzXtXPBSuCMzkntXiJhpB08vTX_vvdnZRd0PCDGU7lHiY0x
+ D1oqCQA2kTK0XjqzjSs3QXiLWscRb6qoJUsNpRKzg70YDMsmpzUySjxHcKk4AxSE8Uzaxgsb6mV7
+ yD2xECQ56Ln6ogsx6pNFVewDSl3s.WnSrg.94IsYLIrKYwzUnELlNev9aaC_Ln6eaWFZfudS4Qsg
+ swka882uKsWuYoaxWR1boPTytRoNqgmNKZ0UTHudEkDFBqvOOxamSY7ar5_FpTaW7Sp7AEzyhS0F
+ pW6c_6jmAxUWcSiXK_t6sBXTwuAyBb7AI2DYphKjPe.j6jJUobyHkSPyAi.Vkve0W1fMbwwRkGof
+ PUhAMEvlKm0rhLQsm_SnAx4sgaAMGCWQ.psCllwsv4F8tC2Bc3YOlLiNWdu.ncQ--
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic308.consmr.mail.gq1.yahoo.com with HTTP; Mon, 22 Jul 2019 14:27:04 +0000
+Received: by smtp411.mail.gq1.yahoo.com (Oath Hermes SMTP Server) with ESMTPA
+ ID 947e087edc5dc48dc717612cdbe533da; 
+ Mon, 22 Jul 2019 14:16:59 +0000 (UTC)
+Subject: Re: [PATCH v3 23/24] erofs: introduce cached decompression
+To: "Theodore Y. Ts'o" <tytso@mit.edu>
+References: <20190722025043.166344-1-gaoxiang25@huawei.com>
+ <20190722025043.166344-24-gaoxiang25@huawei.com>
+ <20190722101818.GN20977@twin.jikos.cz>
+ <41f1659a-0d16-4316-34fc-335b7d142d5c@aol.com>
+ <20190722132513.GA5172@mit.edu>
+From: Gao Xiang <hsiangkao@aol.com>
+Message-ID: <db672675-c471-5bc8-af15-91c1859e9008@aol.com>
+Date: Mon, 22 Jul 2019 22:16:44 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-X-Originating-IP: [10.133.213.239]
-X-CFilter-Loop: Reflected
+In-Reply-To: <20190722132513.GA5172@mit.edu>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,46 +85,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, YueHaibing <yuehaibing@huawei.com>,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Stephen Rothwell <sfr@canb.auug.org.au>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Miao Xie <miaoxie@huawei.com>,
+ Chao Yu <yuchao0@huawei.com>, linux-erofs@lists.ozlabs.org, dsterba@suse.cz,
+ Li Guifu <bluce.liguifu@huawei.com>, LKML <linux-kernel@vger.kernel.org>,
+ Alexander Viro <viro@zeniv.linux.org.uk>, linux-fsdevel@vger.kernel.org,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Linus Torvalds <torvalds@linux-foundation.org>, Fang Wei <fangwei1@huawei.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-If IOMMU_SUPPORT is not set, ipu3 driver may select IOMMU_IOVA to m.
-But for many drivers, they use "select IOMMU_IOVA if IOMMU_SUPPORT"
-in the Kconfig, for example, CONFIG_TEGRA_VDE is set to y but IOMMU_IOVA
-is m, then the building fails like this:
+Hi Ted,
 
-drivers/staging/media/tegra-vde/iommu.o: In function `tegra_vde_iommu_map':
-iommu.c:(.text+0x41): undefined reference to `alloc_iova'
-iommu.c:(.text+0x56): undefined reference to `__free_iova'
+On 2019/7/22 ????9:25, Theodore Y. Ts'o wrote,
+> On Mon, Jul 22, 2019 at 06:58:59PM +0800, Gao Xiang wrote:
+>>> The number of individual Kconfig options is quite high, are you sure you
+>>> need them to be split like that?
+>>
+>> You mean the above? these are 3 cache strategies, which impact the
+>> runtime memory consumption and performance. I tend to leave the above
+>> as it-is...
+> 
+> Unless cache strategies involve a huge amount of kernel code, I'd
+> recommend always compiling all of the cache strategies, and then have
+> a way to change the cache strategy via a mount option (and possibly
+> remount, although that can get tricky if there is already cached
+> information).  You could also specify a default in the erofs
+> superblock, you think that would be useful.
+OK, I will give a try. One point I think is how to deal with the case
+if there is already cached information when remounting as well as you said.
 
-Reported-by: Hulk Robot <hulkci@huawei.com>
-Fixes: 7fc7af649ca7 ("media: staging/intel-ipu3: Add imgu top level pci device driver")
-Signed-off-by: YueHaibing <yuehaibing@huawei.com>
----
- drivers/staging/media/ipu3/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+As the first step, maybe the mount option can be defined as
+allowing/forbiding caching from now on, which can be refined later.
 
-diff --git a/drivers/staging/media/ipu3/Kconfig b/drivers/staging/media/ipu3/Kconfig
-index 4b51c67..b7df18f 100644
---- a/drivers/staging/media/ipu3/Kconfig
-+++ b/drivers/staging/media/ipu3/Kconfig
-@@ -4,7 +4,7 @@ config VIDEO_IPU3_IMGU
- 	depends on PCI && VIDEO_V4L2
- 	depends on MEDIA_CONTROLLER && VIDEO_V4L2_SUBDEV_API
- 	depends on X86
--	select IOMMU_IOVA
-+	select IOMMU_IOVA if IOMMU_SUPPORT
- 	select VIDEOBUF2_DMA_SG
- 	help
- 	  This is the Video4Linux2 driver for Intel IPU3 image processing unit,
--- 
-2.7.4
+Thanks,
+Gao Xiang
 
-
+> 
+> 	    	      	   	    - Ted
+> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
