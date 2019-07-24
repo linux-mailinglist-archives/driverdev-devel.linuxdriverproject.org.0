@@ -1,52 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A934E74052
-	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Jul 2019 22:44:23 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 54FC174051
+	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Jul 2019 22:44:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 77CFB869C9;
-	Wed, 24 Jul 2019 20:44:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2CA9E85F61;
+	Wed, 24 Jul 2019 20:44:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lROyHhvKVLMn; Wed, 24 Jul 2019 20:44:20 +0000 (UTC)
+	with ESMTP id 2njyJ_CdeBNL; Wed, 24 Jul 2019 20:44:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 81A1983EEA;
-	Wed, 24 Jul 2019 20:44:19 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A013D85F11;
+	Wed, 24 Jul 2019 20:44:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3B97E1BF97F
- for <devel@linuxdriverproject.org>; Wed, 24 Jul 2019 20:44:12 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id CA7231BF97F
+ for <devel@linuxdriverproject.org>; Wed, 24 Jul 2019 20:44:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 35A8D2048B
- for <devel@linuxdriverproject.org>; Wed, 24 Jul 2019 20:44:12 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id C027887E5D
+ for <devel@linuxdriverproject.org>; Wed, 24 Jul 2019 20:44:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Q8Dw4Ly9WSNS for <devel@linuxdriverproject.org>;
- Wed, 24 Jul 2019 20:44:11 +0000 (UTC)
+ with ESMTP id n64fM9F7Xix0 for <devel@linuxdriverproject.org>;
+ Wed, 24 Jul 2019 20:44:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from plotglare.icu (unknown [185.108.157.96])
- by silver.osuosl.org (Postfix) with ESMTP id 8307720488
- for <devel@linuxdriverproject.org>; Wed, 24 Jul 2019 20:44:11 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2026B87E5C
+ for <devel@driverdev.osuosl.org>; Wed, 24 Jul 2019 20:44:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail; d=plotglare.icu;
  h=From:Date:MIME-Version:To:Subject:Message-ID:Content-Type:Content-Transfer-Encoding;
- i=sieve@plotglare.icu; bh=ELb77CZsIH25yOJWrAPuDU5dznA=;
- b=HdmkZfRtYFZW/My+13x9MHr2rTE5f2Yp5onRsvnZzc1J6L/VNN7PW1vgUhP61vFwPXu/Dn7AIvA2
- zRRECcGyXq2y4lyrGcnepZak3hPfKlPT+oxudWixKo1zEYjvQZrSsdKG0i28zzkXT4417hCuT/Ud
- HRMfjctNGLLnw4QcAnM=
+ i=benue@plotglare.icu; bh=ZbCuRS6PbOV32uguT50/Z9U3xwU=;
+ b=PtdiYGjgWgSlob5GWT1Q8SQ5XNRIn6fi9MGelFYBKWFTou3nqvhiTEHD70uDPZigMS4As9UbMHoe
+ 3veFNcx59GFL/4jiUdfmvqD6PYDOj/g9LIK32z94jvoje1cCg0NpIBtZQ3YRTcGBRsYvTNjLt2uU
+ ToI2vG6iszkNxulXQkU=
 DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=plotglare.icu;
- b=b1tNnUc1G/WIa89w0uL8AYLaXG/ftouAL2W0uIspCfqq6uWQ7TtGP5H8PlYXHLDR97MzZ1Ly4EzT
- 47AjvR+Zs182R7tn3yJH3u7bS4dcncHO07XcD6lw1hb8l3dRkxEd2mV+NIczY5IWF31SfzZqxhGv
- H4zfBOepwUDqOwwSaPY=;
-From: " Pamela Campbell" <sieve@plotglare.icu>
-Date: Wed, 24 Jul 2019 15:23:39 -0500
+ b=ZVkXqLxxTWRqvycbgwgIIpATCh0wInV36zz5m4y9Uv3J6nZufiiUHEurT7IwwoTRtmIjUDcogMp+
+ CyOSuziFQ8x7P44/mmxrSA+8TjQfKXkrRk4soOHyeXeM+IaMYRvXTP2U8Z4FN0gg09xAvdHh9eMc
+ lMgIQ7HlQlRXpOknFwU=;
+From: " Cody Fox" <benue@plotglare.icu>
+Date: Wed, 24 Jul 2019 15:27:42 -0500
 MIME-Version: 1.0
-To: <devel@linuxdriverproject.org>
+To: <devel@driverdev.osuosl.org>
 Subject: Turn $20 to $24K with this Bitcoin Trading system
-Message-ID: <j90OMPCZcoG3VDDf8DJXZ70xA2w97ZzdybdBgxHliv8.JhwteneaqSp_aZfUJ6F16NweOLyoSGs2aotuA1lG2JY@plotglare.icu>
+Message-ID: <YOe-vLjhDurOeI8CDoyYnZqwg2aurmWkDsyW74Ql6_w.i4BXvJTh6aFkH1rE60N3Wjn9aAxosPVG-q48qBlSKaY@plotglare.icu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,10 +72,10 @@ A smart man (or woman) knows a great opportunity when he or she sees one=E2=
 For a limited time, I am revealing my Bitcoin Trading system, that will tur=
 n you to a millionaire almost overnight
 
->> http://www.plotglare.icu/hyjhvut/nbmhaygw32422rlkcgvww/UkgeVK2Fo-CE4MXZE=
-LcldRP84meZP3Qiq-3sSFmmLIk/t_ufl4ytg_jldYCtYBgDMf0aI061OSHMFRjmXEhG5Jp3Ex8W=
-ipjnVwZ9oJupyw0U2vugGQczcSqrHXznKPg_9VNJUB0e7clrlb-h1MAOak7EAwgZ-oKbkLQQcsw=
-X6Qv-tvofFD_zhwiGIBkCtvJpyg <<
+>> http://www.plotglare.icu/hnvhirkxhb/bak32423zyk/1MhdRO9S3D1Z1mjiFE9yBYvW=
+jnNcWFZ1rEy26H3s1p4/oC-JQ_zl27sdmeOb_iTtNLqIIxTghm2uj6IMA5RsXsGAY54imDuYwiP=
+uy4sOzjKf51CVRxqHaxs34NR066qwf51zSVPEMUxuVT8zJ6nOQ52BNJEuVmVs2ZuoheN0ym3ZQI=
+1oC2hGI24d6B36ie7ftg <<
 
 Don't believe me? Well check for yourself. I have helped hundreds make hund=
 reds of thousands of dollars with only $20 investments at times. Take advan=
@@ -83,24 +83,25 @@ tage of this information now, before too many people water down this simple=
  method, that no one realizes exists.
 
 Sincerely,
- Pamela Campbell
+ Cody Fox
 
 
 
 if you no longer wish for me to contact you and want to be removed off my d=
 atabase please follow the link below:
-http://www.plotglare.icu/Wjvmew/gypJvtCkBIGiwhz_DFfovt-vQ6XwscQQLkbKo-ZgwAE=
-7kaOAM1h-blrlc7e0BUJNV9_gPKnzXHrqSczcQGguv2U0wypuJo9ZwVnjpiW8xE3pJ5GhEXmjRF=
-MHSO160Ia0fMDgBYtCYdlj_gty4lfu_t.kILmmFSs3-qiQ3PZem48PRdlcLEZXM4EC-oF2KVegkU
-8619 South Wall Ave. Waynesboro, PA 17268
+http://www.plotglare.icu/Ocralbrdib/gtf7ei63B6d42IGh2Co1IQZ3my0NehouZ2sVmVu=
+EJNB25QOn6Jz8TVuxUMEPVSz15fwq660RN43sxaHqxRVC15fKjzOs4yuPiwYuDmi45YAGsXsR5A=
+MI6ju2mhgTxIIqLNtTi_bOemds72lz_QJ-Co.4p1s3H62yEr1ZFWcNnjWvYBy9EFijm1Z1D3S9O=
+RdhM1
+265 S. Schoolhouse St. Boynton Beach, FL 33435
 
 
 
 You can report abuse below:
-http://www.plotglare.icu/acelbbt/gypJvtCkBIGiwhz_DFfovt-vQ6XwscQQLkbKo-ZgwA=
-E7kaOAM1h-blrlc7e0BUJNV9_gPKnzXHrqSczcQGguv2U0wypuJo9ZwVnjpiW8xE3pJ5GhEXmjR=
-FMHSO160Ia0fMDgBYtCYdlj_gty4lfu_t.kILmmFSs3-qiQ3PZem48PRdlcLEZXM4EC-oF2KVeg=
-kU
+http://www.plotglare.icu/atbqmqw/gtf7ei63B6d42IGh2Co1IQZ3my0NehouZ2sVmVuEJN=
+B25QOn6Jz8TVuxUMEPVSz15fwq660RN43sxaHqxRVC15fKjzOs4yuPiwYuDmi45YAGsXsR5AMI6=
+ju2mhgTxIIqLNtTi_bOemds72lz_QJ-Co.4p1s3H62yEr1ZFWcNnjWvYBy9EFijm1Z1D3S9ORdh=
+M1
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
