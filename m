@@ -1,81 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5712674CCD
-	for <lists+driverdev-devel@lfdr.de>; Thu, 25 Jul 2019 13:18:51 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B9A3274CFE
+	for <lists+driverdev-devel@lfdr.de>; Thu, 25 Jul 2019 13:24:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 34A54862C1;
-	Thu, 25 Jul 2019 11:18:49 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 79AF4880CC;
+	Thu, 25 Jul 2019 11:24:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Sffj-WCwngVt; Thu, 25 Jul 2019 11:18:47 +0000 (UTC)
+	with ESMTP id fQ8lRzoPkdKx; Thu, 25 Jul 2019 11:24:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 84C26861EE;
-	Thu, 25 Jul 2019 11:18:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9D916880A1;
+	Thu, 25 Jul 2019 11:24:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8915D1BF45A
- for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 11:18:44 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 382991BF45A
+ for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 11:24:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 844E3220C4
- for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 11:18:44 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 34A9F220C4
+ for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 11:24:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PMM33uIJRE+S for <devel@linuxdriverproject.org>;
- Thu, 25 Jul 2019 11:18:43 +0000 (UTC)
+ with ESMTP id ngiL+KSnX2KD for <devel@linuxdriverproject.org>;
+ Thu, 25 Jul 2019 11:24:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by silver.osuosl.org (Postfix) with ESMTPS id B546E20350
- for <devel@driverdev.osuosl.org>; Thu, 25 Jul 2019 11:18:43 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id u17so22882201pgi.6
- for <devel@driverdev.osuosl.org>; Thu, 25 Jul 2019 04:18:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to
- :user-agent; bh=1FbnKtI3LwQwgUsr/g3MUa9Py+KRgg38b6IrILFDUhU=;
- b=RiPttf3VULytvTV1gQCGGIofaH3cmMvvcLlShfvYsVeKFzWjG/kfl/UguNaNy7/Dfo
- FVmH2PIQAE2iC69ldXu5sNi9yS2z2PuKCOKbuswCunkNuJwrNoEzBk2cOmbgVNaQZsql
- vWiZsd67ciYl95JIzgVUAExNBHZtC8mivPnxWK78M7nMNjVgpYOHWMOxtXNNo0v9cqC2
- r/T/+iTbpnJX5k7uurmQUrJ54neQWBfYxzH6kvGeSJ+H2ILyhbfMSTjrInxG6dRzsZPQ
- t9CzL6qva/lkcI8XGhVlO+HAbtcciB4SanHFtxVMYgiTsIzVps4/IUCTGBW581LK8m7v
- GkAg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to:user-agent;
- bh=1FbnKtI3LwQwgUsr/g3MUa9Py+KRgg38b6IrILFDUhU=;
- b=K11O1xaJrzgZURv5b3VFvBTSvhQqdbaX6ULOYFRV2QlYrSIUd8UHPbn5w3IGSFbqrc
- LgJ/CopGC5Z5/rMrD5nHUw6+vxSLzwYrNme6TycGMiGF7E5pXtNti3SisQkVPrJe5E65
- R8Y9MyRITAOTR5X5+xaRCbkaErcEZo280tvXrSranBn9VLOv8hLGw3ChtBFEAwfJRumF
- CyUTa3yXvVlfNx3vqlQ57gFftfMcdmbH5adL1N4AhN3mCsHBCYDxGOXvI8fXekqIAKTu
- vst+KxIZEIP7hYMV8kc49QIRw+5Aeu5kZ44IABQZkEkM/TEF+KsR7tGkn5z9/ON10woO
- zNyw==
-X-Gm-Message-State: APjAAAX5nPX0bb4ADWdus8z8I4/mcovxvKKqm4qIjb+3abWlGN122XAt
- dH4KWkkAVv0/DOyX+KtmxUg=
-X-Google-Smtp-Source: APXvYqwWrdl5FJRCm09CQlypUGpElLXPTtXQhNRGvN4DIQ3ybEer3KGwJh1GSg+qHIHbIRJ+x3Bfug==
-X-Received: by 2002:a63:121b:: with SMTP id h27mr70608971pgl.335.1564053523202; 
- Thu, 25 Jul 2019 04:18:43 -0700 (PDT)
-Received: from bharath12345-Inspiron-5559 ([103.110.42.34])
- by smtp.gmail.com with ESMTPSA id s15sm48874992pfd.183.2019.07.25.04.18.38
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 25 Jul 2019 04:18:42 -0700 (PDT)
-Date: Thu, 25 Jul 2019 16:48:35 +0530
-From: Bharath Vedartham <linux.bhar@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v4] staging: kpc2000: Convert put_page to put_user_page*()
-Message-ID: <20190725111834.GA12517@bharath12345-Inspiron-5559>
-References: <20190720173214.GA4250@bharath12345-Inspiron-5559>
- <20190725074634.GB15090@kroah.com>
+Received: from lb3-smtp-cloud7.xs4all.net (lb3-smtp-cloud7.xs4all.net
+ [194.109.24.31])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2E1BA20350
+ for <devel@driverdev.osuosl.org>; Thu, 25 Jul 2019 11:24:30 +0000 (UTC)
+Received: from [IPv6:2001:420:44c1:2579:64cb:e917:d1ce:4f27]
+ ([IPv6:2001:420:44c1:2579:64cb:e917:d1ce:4f27])
+ by smtp-cloud7.xs4all.net with ESMTPA
+ id qbrDhDsLkLqASqbrHhTIzl; Thu, 25 Jul 2019 13:24:28 +0200
+Subject: Re: [PATCH v2] staging: media: sunxi: Add bool cast to value
+To: Nishka Dasgupta <nishkadg.linux@gmail.com>, maxime.ripard@bootlin.com,
+ paul.kocialkowski@bootlin.com, mchehab@kernel.org,
+ gregkh@linuxfoundation.org, wens@csie.org, linux-media@vger.kernel.org,
+ devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org
+References: <20190722060651.6538-1-nishkadg.linux@gmail.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <960d6d68-dff0-1774-8173-b5b1dd0d32f3@xs4all.nl>
+Date: Thu, 25 Jul 2019 13:24:23 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.5.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190725074634.GB15090@kroah.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20190722060651.6538-1-nishkadg.linux@gmail.com>
+Content-Language: en-US
+X-CMAE-Envelope: MS4wfLx4YLBHUEn8dqW0jvm89k2W2gS8HhdbGSV+CNnBVPSVEv89oOd4fAvMAcxKxp+mp1+XOgGDcWUuNfxXHQsSHc6H/RWmuF4f3xMi0ki/GDVu8lhI+Yt0
+ 3V6KPrjO3eopSlnMl8A8vHRtenHxvzKqKK22VedvJ4qBX8xePwtODq8PsnbLHBFgQ0hEEBt4TDAJrhWrFwnfBNasiJx1aN+XUMGuRemTLTy6yUrTEKCagqxM
+ IgzAgghHC2mKYj9hb33X7JW0I7uuJRmrNiwwJQla1RhPKaqdljstPBrtpn0VRhhVvjMAJCWWhYmR4323ktduuLK5bhaEfaXsNrEDC++NojkS2PnJTQihQcr6
+ Cq8vooBLM3fARSl0GulZpv7zl07PHY+FXbxkuhicL/R5zJ7sj1QpqamjuY0Lk4lX9cHXVaakpstPOZrHoTmQGL09syJ9yen1jnOr8iQ7pdrmR52H09wm08et
+ y16yofHaB2SOEtQWo6Mkr4QN9qdKN3bKQzvfO4d4Ka9vryrQurIgvBkrziiLndgvWoavkQEsZ+G3/bg9ILZvfLsCfMEL3OoDVzJ+3fDRSNwGL5jjQyXzmAXJ
+ UGw=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,116 +68,53 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, jhubbard@nvidia.com,
- linux-kernel@vger.kernel.org, linux-mm@kvack.org, jglisse@redhat.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Jul 25, 2019 at 09:46:34AM +0200, Greg KH wrote:
-> On Sat, Jul 20, 2019 at 11:02:14PM +0530, Bharath Vedartham wrote:
-> > For pages that were retained via get_user_pages*(), release those pages
-> > via the new put_user_page*() routines, instead of via put_page().
-> > =
+On 7/22/19 8:06 AM, Nishka Dasgupta wrote:
+> Typecast as bool the return value of cedrus_find_format in
+> cedrus_check_format as the return value of cedrus_check_format is always
+> treated like a boolean value.
+> 
+> Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
+> ---
+> Changes in v2:
+> - Add !! to the returned pointer to ensure that the return value is
+>   always either true or false, and never a non-zero value other than
+>   true.
+> 
+>  drivers/staging/media/sunxi/cedrus/cedrus_video.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_video.c b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+> index e2b530b1a956..b731745f21f8 100644
+> --- a/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+> @@ -86,7 +86,7 @@ static struct cedrus_format *cedrus_find_format(u32 pixelformat, u32 directions,
+>  static bool cedrus_check_format(u32 pixelformat, u32 directions,
+>  				unsigned int capabilities)
+>  {
+> -	return cedrus_find_format(pixelformat, directions, capabilities);
+> +	return !!(bool)cedrus_find_format(pixelformat, directions, capabilities);
 
-> > This is part a tree-wide conversion, as described in commit fc1d8e7cca2=
-d ("mm: introduce put_user_page*(), placeholder versions").
-> =
+Why not write:
 
-> Please line-wrap this line.
-> =
+	return cedrus_find_format(pixelformat, directions, capabilities) != NULL;
 
-> > =
+That way coccinelle should be happy, and it is clear that cedrus_find_format
+returns a pointer and that we return true if it is non-NULL.
 
-> > Cc: Ira Weiny <ira.weiny@intel.com>
-> > Cc: John Hubbard <jhubbard@nvidia.com>
-> > Cc: J=E9r=F4me Glisse <jglisse@redhat.com>
-> > Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> > Cc: Matt Sickler <Matt.Sickler@daktronics.com>
-> > Cc: devel@driverdev.osuosl.org
-> > Cc: linux-kernel@vger.kernel.org
-> > Cc: linux-mm@kvack.org
-> > Reviewed-by: John Hubbard <jhubbard@nvidia.com>
-> > Signed-off-by: Bharath Vedartham <linux.bhar@gmail.com>
-> > ---
-> > Changes since v1
-> >        - Improved changelog by John's suggestion.
-> >        - Moved logic to dirty pages below sg_dma_unmap
-> >        and removed PageReserved check.
-> > Changes since v2
-> >        - Added back PageResevered check as suggested by John Hubbard.
-> > Changes since v3
-> >        - Changed the commit log as suggested by John.
-> >        - Added John's Reviewed-By tag
-> > =
+Regards,
 
-> > ---
-> >  drivers/staging/kpc2000/kpc_dma/fileops.c | 17 ++++++-----------
-> >  1 file changed, 6 insertions(+), 11 deletions(-)
-> > =
+	Hans
 
-> > diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c b/drivers/stagin=
-g/kpc2000/kpc_dma/fileops.c
-> > index 6166587..75ad263 100644
-> > --- a/drivers/staging/kpc2000/kpc_dma/fileops.c
-> > +++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
-> > @@ -198,9 +198,7 @@ int  kpc_dma_transfer(struct dev_private_data *priv=
-, struct kiocb *kcb, unsigned
-> >  	sg_free_table(&acd->sgt);
-> >   err_dma_map_sg:
-> >   err_alloc_sg_table:
-> > -	for (i =3D 0 ; i < acd->page_count ; i++){
-> > -		put_page(acd->user_pages[i]);
-> > -	}
-> > +	put_user_pages(acd->user_pages, acd->page_count);
-> >   err_get_user_pages:
-> >  	kfree(acd->user_pages);
-> >   err_alloc_userpages:
-> > @@ -221,16 +219,13 @@ void  transfer_complete_cb(struct aio_cb_data *ac=
-d, size_t xfr_count, u32 flags)
-> >  	=
+>  }
+>  
+>  static void cedrus_prepare_format(struct v4l2_pix_format *pix_fmt)
+> 
 
-> >  	dev_dbg(&acd->ldev->pldev->dev, "transfer_complete_cb(acd =3D [%p])\n=
-", acd);
-> >  	=
-
-> > -	for (i =3D 0 ; i < acd->page_count ; i++){
-> > -		if (!PageReserved(acd->user_pages[i])){
-> > -			set_page_dirty(acd->user_pages[i]);
-> > -		}
-> > -	}
-> > -	=
-
-> >  	dma_unmap_sg(&acd->ldev->pldev->dev, acd->sgt.sgl, acd->sgt.nents, ac=
-d->ldev->dir);
-> >  	=
-
-> > -	for (i =3D 0 ; i < acd->page_count ; i++){
-> > -		put_page(acd->user_pages[i]);
-> > +	for (i =3D 0; i < acd->page_count; i++) {
-> > +		if (!PageReserved(acd->user_pages[i]))
-> > +			put_user_pages_dirty(&acd->user_pages[i], 1);
-> > +		else
-> > +			put_user_page(acd->user_pages[i]);
-> >  	}
-> >  	=
-
-> >  	sg_free_table(&acd->sgt);
-> > -- =
-
-> > 2.7.4
-> =
-
-> This patch can not be applied at all :(
-> =
-
-> Can you redo it against the latest staging-next branch and resend?
-> =
-
-> thanks,
-Yup. Will do that!
-> greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
