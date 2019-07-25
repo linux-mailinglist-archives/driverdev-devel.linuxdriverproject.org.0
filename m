@@ -1,41 +1,41 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2B93D759A0
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7C395759A1
 	for <lists+driverdev-devel@lfdr.de>; Thu, 25 Jul 2019 23:31:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6482187527;
+	by silver.osuosl.org (Postfix) with ESMTP id D173E226E9;
 	Thu, 25 Jul 2019 21:31:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CvTRPxtcjh5o; Thu, 25 Jul 2019 21:31:46 +0000 (UTC)
+	with ESMTP id 9uuAK6sVdT66; Thu, 25 Jul 2019 21:31:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 05AD18507B;
-	Thu, 25 Jul 2019 21:31:46 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3CB3922253;
+	Thu, 25 Jul 2019 21:31:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 682251BF420
- for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 21:31:41 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id DA7391BF420
+ for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 21:31:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 5FB05226DB
- for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 21:31:41 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id D694F8740E
+ for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 21:31:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HFqCLOXnnrot for <devel@linuxdriverproject.org>;
+ with ESMTP id BBzq4jq64u6a for <devel@linuxdriverproject.org>;
  Thu, 25 Jul 2019 21:31:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa1.microchip.iphmx.com (esa1.microchip.iphmx.com
- [68.232.147.91])
- by silver.osuosl.org (Postfix) with ESMTPS id 31170226D3
+Received: from esa4.microchip.iphmx.com (esa4.microchip.iphmx.com
+ [68.232.154.123])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id EFFA686FD1
  for <devel@driverdev.osuosl.org>; Thu, 25 Jul 2019 21:31:36 +0000 (UTC)
-Received-SPF: Pass (esa1.microchip.iphmx.com: domain of
+Received-SPF: Pass (esa4.microchip.iphmx.com: domain of
  Adham.Abozaeid@microchip.com designates 198.175.253.82 as
  permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa1.microchip.iphmx.com;
+ client-ip=198.175.253.82; receiver=esa4.microchip.iphmx.com;
  envelope-from="Adham.Abozaeid@microchip.com";
  x-sender="Adham.Abozaeid@microchip.com";
  x-conformance=spf_only; x-record-type="v=spf1";
@@ -43,42 +43,42 @@ Received-SPF: Pass (esa1.microchip.iphmx.com: domain of
  a:smtpout.microchip.com a:mx1.microchip.iphmx.com
  a:mx2.microchip.iphmx.com include:servers.mcsv.net
  include:mktomail.com include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa1.microchip.iphmx.com: no sender
+Received-SPF: None (esa4.microchip.iphmx.com: no sender
  authenticity information available from domain of
  postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa1.microchip.iphmx.com;
+ client-ip=198.175.253.82; receiver=esa4.microchip.iphmx.com;
  envelope-from="Adham.Abozaeid@microchip.com";
  x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa1.microchip.iphmx.com;
+Authentication-Results: esa4.microchip.iphmx.com;
  spf=Pass smtp.mailfrom=Adham.Abozaeid@microchip.com;
  spf=None smtp.helo=postmaster@email.microchip.com;
  dkim=pass (signature verified) header.i=@microchiptechnology.onmicrosoft.com;
  dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: 5bjQweDBhsocOYUPZYdFQNykH07wcs54gS6gsTQ/oteK66mQWBfZSF3DjMVuWUMy9RwTkK2xRg
- SlacBWkZ7/CTQAJ/XIx0A82YntMf02mUOPVfvClSO4AYEuo5nLPEAHoyJDeuLtaNcaE+4W4hrx
- NXaD10bwk6XqLpwoZLGtgky5TCCUhAYzPpAxAtORUnRTwDOOaH1/UeCRjxEoPl9jczcQ7BYf+r
- YRb2t65zqSJTIlDVKBMEcFNZFObsUlTONbcCAoMwaRPze7ZV2UQA64LWk1Pa6lCAFAYVI5IeAb
- Fzs=
-X-IronPort-AV: E=Sophos;i="5.64,308,1559545200"; d="scan'208";a="44200122"
+IronPort-SDR: YLGpRBRJgTVK0jaRDYOWFduUMHJf2YM0odliuK40MLWC97+b59W+ondFfY/VxigMAhF4ulfNsI
+ dzMFeJLHviEx/nb1mlBAGwGRKYitp8JgZw6SN9i9+RW1013NkxObWGkE+M1XAVga/8I6Eti7Do
+ o/s5XcxbugbVCaKjhg4ZKGvCHDjkJLSNWdzYJLO2q5B6DBPXk1YF26baqRy0OqQnRkyst1lRHV
+ yan0u7aomru4hyX2MaxJOkjP39zLfMkMwhMKKNwMtqVrvQottR3X/BXFMzhHe8vDAHywg3+Y2e
+ 5Gw=
+X-IronPort-AV: E=Sophos;i="5.64,308,1559545200"; d="scan'208";a="42013687"
 Received: from smtpout.microchip.com (HELO email.microchip.com)
  ([198.175.253.82])
- by esa1.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 25 Jul 2019 14:31:35 -0700
+ by esa4.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 25 Jul 2019 14:31:36 -0700
 Received: from chn-vm-ex03.mchp-main.com (10.10.87.152) by
- chn-vm-ex03.mchp-main.com (10.10.87.152) with Microsoft SMTP Server
+ chn-vm-ex01.mchp-main.com (10.10.87.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Thu, 25 Jul 2019 14:31:35 -0700
+ 15.1.1713.5; Thu, 25 Jul 2019 14:31:34 -0700
 Received: from NAM02-BL2-obe.outbound.protection.outlook.com (10.10.215.89) by
  email.microchip.com (10.10.87.152) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.1713.5
  via Frontend Transport; Thu, 25 Jul 2019 14:31:35 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ZpS8UlLRQdSEWgfQi8P2S00Kv+X1GvSwrK+GZCA/fXiHTd9pqUMx3H9YH/oP3XkfWHuiFW3fo0RRFG3zNhbZ3xCaO+/RULDGJxgBjxB0e5alVmh8jNaW77QGDvqdnTvA8/sngvF5XY0jnfjwJZgEvNDv0AHS1uLoNZGluOwJO7c7utzZ0qwIdB+3mCgsZAcMWOp4lIbiN8sNfW+E5mujadbNzck3YG8s3GK+4TwHzX2GEl4jge5Lkht4OwexAfu182li1hjsuPAuPztnHbj7ef5jEG7IrpjePqt4URiePCC8YnSVwftMCsa2uswnAhDlN/UjWnAtvYcyJG1xiJgTwA==
+ b=CepM/Rl7rsdO6Q4+vlWzyEqhDQ+RGfKY8llqxi3p+7gc4AR9nod4Bgi+iWt7A9Yle0R49S/hci/937XxMeO3Wuznullhyv7u7ti0M5xIwqzj8wjOiTcOnFx3I5UMAxqjpWffRyx/6F2Tf4ry03Dv1QQeIsplRYtWPhfHp99em8h7v41DwdXiBv//ip0PXiL9LqSMTiQUXOv/9ADBEWpRsKu1J5O3QdS72EjnYLohctOviD2darCW/1tt2/g/onBwLE4k/ra6xRTRbRVEiDyzFXhOVbND/cZ7myZoeRi2lMq8qbCYml4Kya6ha/F5I/dQJF7wuKrs36/RmKeWgtrn8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=EzcjPC/RMgzop2flOKh6Gk4eAY//7OsClvCTHWN/WQA=;
- b=XPBtQCQ2ap2hTlyqRHe+LQL/Gwx2k/9SphdEWH04venjJuURQotNeSt31pfbTwUErFwjAbsH4g9n0QLZXsU4SKOXuiakE1WNN/w928bbriPOhDr/nJYzzeQGQ9WRBPGHZ6tmr094df6kC8gQMH1EFL4hLwgQj5roxy8obwWT2Fz0YtKqae3SPh9c8zs2AeAfMBGkWt0377ZMHnVJCC+nhphsyvFOLnqYFt6DD9wa8zADCFLprLFlgazNzCyFTo4OtWzFk4sv9pxLW32VMjBiymfKt/cLpYPXp3YNLJk0D9qqOKg+c9/GLRXZJ1pKWYQky8jXGZsPJHb+7VJjwAzvEg==
+ bh=RWMYCJxFTPrnnCUe1JmVVDsNye3LXADjkqFYPgZjJ7A=;
+ b=WeeKN5wKM8cmA5nZR9xI3wNEVp4aEchIeCXbfa/1hmT1Vw6zK/rrL9EAwolfT4oppmmsyxfYsAZQ09FLmjVfdYOCh59CEfNuubbybSI7nLPdOTjoR9Sx63m+Qi/GpsesuIJegCe3eGsl4qLy7PPFSmcB9Sy7Ay1dCDuxGfyDvP3oEHv7s70y32sKhZ4ZtXRQIuudReSPIHr1kPKuhzVxo/mCtq9hk2Njgy/m89VakVIynnQf2dDpggGZH/e3g/yuihBstE3O9LjcesNU9kdHz3oXm/Guhtk/Zuzd13bOyRRe3E+SqoQw3lygyRmdRTeV9uS4BiEXqie2OBxdlhTpGw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1;spf=pass
  smtp.mailfrom=microchip.com;dmarc=pass action=none
  header.from=microchip.com;dkim=pass header.d=microchip.com;arc=none
@@ -86,23 +86,23 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=microchiptechnology.onmicrosoft.com;
  s=selector1-microchiptechnology-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=EzcjPC/RMgzop2flOKh6Gk4eAY//7OsClvCTHWN/WQA=;
- b=O90IhoKtx0Vx73C9GGVffP6sSRw+IZa3S0audBS3vY0oVBhfVR40pGCaX5W0QEHBcsAf/CuvadYOJJtV9UimlSOQNPMu+LSk2Jpf6B2YcZ5rz5rRv2tTNVvuT7jWc0fDx0YbH8te7B8Po56G65dz8YTpZWZ+bF/Yg/ywp6FCc7M=
+ bh=RWMYCJxFTPrnnCUe1JmVVDsNye3LXADjkqFYPgZjJ7A=;
+ b=tLTmeXtx0uMQVSU4gzgqniw3ePNhqZU4HCDTw6A5cmFoygGEMndA0o3qTF3hhGwzIfcsAd/ohIImxDgTw5qAYj7QNBaX6NlFEY6MsOt7togbOt6yeDp0X/Hl2JCDLiHWFjobDboGx88sfsuPFGFGQ1nC9qikR3LADFQ7z5l34ck=
 Received: from MWHPR11MB1373.namprd11.prod.outlook.com (10.169.234.141) by
  MWHPR11MB1984.namprd11.prod.outlook.com (10.175.54.11) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2115.13; Thu, 25 Jul 2019 21:31:33 +0000
+ 15.20.2115.13; Thu, 25 Jul 2019 21:31:34 +0000
 Received: from MWHPR11MB1373.namprd11.prod.outlook.com
  ([fe80::5836:a39e:ab17:983b]) by MWHPR11MB1373.namprd11.prod.outlook.com
  ([fe80::5836:a39e:ab17:983b%7]) with mapi id 15.20.2115.005; Thu, 25 Jul 2019
- 21:31:33 +0000
+ 21:31:34 +0000
 From: <Adham.Abozaeid@microchip.com>
 To: <linux-wireless@vger.kernel.org>
-Subject: [PATCH 1/6] staging: wilc1000: remove inetaddr notifier
-Thread-Topic: [PATCH 1/6] staging: wilc1000: remove inetaddr notifier
-Thread-Index: AQHVQzBU0zTEWOi4RkieztXudbrD3A==
-Date: Thu, 25 Jul 2019 21:31:33 +0000
-Message-ID: <20190725213125.2810-2-adham.abozaeid@microchip.com>
+Subject: [PATCH 2/6] staging: wilc1000: remove ip timeout timer
+Thread-Topic: [PATCH 2/6] staging: wilc1000: remove ip timeout timer
+Thread-Index: AQHVQzBUreyQ3c8XUEWXReu0mb6vuw==
+Date: Thu, 25 Jul 2019 21:31:34 +0000
+Message-ID: <20190725213125.2810-3-adham.abozaeid@microchip.com>
 References: <20190725213125.2810-1-adham.abozaeid@microchip.com>
 In-Reply-To: <20190725213125.2810-1-adham.abozaeid@microchip.com>
 Accept-Language: en-US
@@ -116,13 +116,13 @@ x-clientproxiedby: MWHPR04CA0040.namprd04.prod.outlook.com
 x-ms-exchange-messagesentrepresentingtype: 1
 x-mailer: git-send-email 2.17.1
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 56101320-b9d6-4958-1a70-08d7114776af
+x-ms-office365-filtering-correlation-id: ddaa7eab-63c7-49b9-e61e-08d711477732
 x-microsoft-antispam: BCL:0; PCL:0;
  RULEID:(2390118)(7020095)(4652040)(8989299)(5600148)(711020)(4605104)(1401327)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7193020);
  SRVR:MWHPR11MB1984; 
 x-ms-traffictypediagnostic: MWHPR11MB1984:
-x-microsoft-antispam-prvs: <MWHPR11MB1984863B5862F1542AAE84668DC10@MWHPR11MB1984.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:262;
+x-microsoft-antispam-prvs: <MWHPR11MB1984B6EFDDFBC8849A93F6CC8DC10@MWHPR11MB1984.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:843;
 x-forefront-prvs: 0109D382B0
 x-forefront-antispam-report: SFV:NSPM;
  SFS:(10009020)(39860400002)(366004)(136003)(396003)(346002)(376002)(189003)(199004)(11346002)(2616005)(476003)(102836004)(386003)(446003)(486006)(6916009)(2351001)(6506007)(66946007)(186003)(99286004)(2501003)(76176011)(26005)(316002)(52116002)(5660300002)(66446008)(256004)(305945005)(6486002)(25786009)(64756008)(66556008)(66476007)(53936002)(1076003)(107886003)(71200400001)(86362001)(71190400001)(4326008)(14444005)(68736007)(478600001)(8936002)(6116002)(6512007)(14454004)(50226002)(8676002)(5640700003)(81166006)(81156014)(3846002)(2906002)(6436002)(66066001)(54906003)(7736002)(36756003);
@@ -132,10 +132,10 @@ x-forefront-antispam-report: SFV:NSPM;
 received-spf: None (protection.outlook.com: microchip.com does not designate
  permitted sender hosts)
 x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: hRMtkGFBdFGjppuTMwXE77ndFeil0TMfCugMTCpea68IBAjzNevgqICgsCSIiJWDViLs+oVrxJ5CVLCbY9jSwK40IBr+ZgS2rMGXLye/qi+Y6koFR/wp8rfB85FcOCwc4tDqZA0N18WJ/NtQtVZuMtTBjimBmm879UmnSce5qg34/psTiXpzTSo0awPumyZ/8aMp3CEePolIRRnIBCjgXiIHmtfv5AUEOG6L7R8JLK8BEbzKzbozpwE422JkwWU+C6fpz5ZLwBEvNIe/tkWhnyQjoPVaXLNv3iWPl5Z9pXTVBYwZAS4Zj3DOXVHZlHYmFedhocEIsdGGdlDaMEpy0A0tTNawL6i3EN8paOquFWRAu+k1oQVcEl2e7pzSjZQFp3mVX0xUF+UxsDopzaLT75l2GS6uCWwyqM7ZBIK/l5E=
+x-microsoft-antispam-message-info: UQeO3oEbPVnDzGRmSiRsiqVIyfidPc1yPHnya+5q0dCLxs4KVYH8KfBv2cDkMYnjpvKNIwzSkJQ/CeP61u6SoZwO6OVMczul+vuUSwxkCslMQAOgZuXxW8xQN6hXbnwsBpH0plWuMxxKceDoecO8paNwwjZfGRtdiqPCAVzQ8V3Vlcl1tf7OpJRUWvfxn4UFgnpuWhlI0XM8zZe6kkI40RnGzZ7CFCZ36tF4izlEGng5tIZ2GYOLHxmNCgAQoHYlfzdyRb0GIyQ70oFTDHTmWLPFDbK9cvq0yRfFLH+26xtLirxmJQYGU/8z78CkFOv87XIpZlVdkWRWYLmAFwPgGuoXklS7kxl/hFNzOyDY1ss/AhCTI8F045DFhxwJx0Do9JaaTAl/y2mqmzY8bSSi8/nnp+iKTDWjae91zMhIxZY=
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 56101320-b9d6-4958-1a70-08d7114776af
-X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Jul 2019 21:31:33.0444 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: ddaa7eab-63c7-49b9-e61e-08d711477732
+X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Jul 2019 21:31:34.0192 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
@@ -163,111 +163,84 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 From: Adham Abozaeid <adham.abozaeid@microchip.com>
 
-Driver registers an inetaddr notifier to disable powersave while the ip
-address is being obtained which should be controlled only by cfg80211.
+during_ip_timer is not required after removing the code that disables
+powersave while the ip is being obtained.
+Its handler clear_during_ip is also removed
 
 Signed-off-by: Adham Abozaeid <adham.abozaeid@microchip.com>
 ---
- drivers/staging/wilc1000/wilc_netdev.c | 65 --------------------------
- 1 file changed, 65 deletions(-)
+ drivers/staging/wilc1000/wilc_hif.c              |  2 --
+ .../staging/wilc1000/wilc_wfi_cfgoperations.c    | 16 ----------------
+ 2 files changed, 18 deletions(-)
 
-diff --git a/drivers/staging/wilc1000/wilc_netdev.c b/drivers/staging/wilc1000/wilc_netdev.c
-index 8d8b7e4399f7..68129a0ba55f 100644
---- a/drivers/staging/wilc1000/wilc_netdev.c
-+++ b/drivers/staging/wilc1000/wilc_netdev.c
-@@ -504,12 +504,6 @@ static int wlan_initialize_threads(struct net_device *dev)
- 	return 0;
- }
+diff --git a/drivers/staging/wilc1000/wilc_hif.c b/drivers/staging/wilc1000/wilc_hif.c
+index 9345cabe3c93..9bd2d14ad610 100644
+--- a/drivers/staging/wilc1000/wilc_hif.c
++++ b/drivers/staging/wilc1000/wilc_hif.c
+@@ -684,8 +684,6 @@ static inline void host_int_parse_assoc_resp_info(struct wilc_vif *vif,
+ 		hif_drv->hif_state = HOST_IF_CONNECTED;
  
--static int dev_state_ev_handler(struct notifier_block *this,
--				unsigned long event, void *ptr);
--static struct notifier_block g_dev_notifier = {
--	.notifier_call = dev_state_ev_handler
--};
--
- static int wilc_wlan_initialize(struct net_device *dev, struct wilc_vif *vif)
- {
- 	int ret = 0;
-@@ -575,7 +569,6 @@ static int wilc_wlan_initialize(struct net_device *dev, struct wilc_vif *vif)
- 			ret = -EIO;
- 			goto fail_fw_start;
- 		}
--		register_inetaddr_notifier(&g_dev_notifier);
- 		wl->initialized = true;
- 		return 0;
- 
-@@ -781,7 +774,6 @@ static int wilc_mac_close(struct net_device *ndev)
- 	if (wl->open_ifcs == 0) {
- 		netdev_dbg(ndev, "Deinitializing wilc1000\n");
- 		wl->close = 1;
--		unregister_inetaddr_notifier(&g_dev_notifier);
- 		wilc_wlan_deinitialize(ndev);
+ 		vif->obtaining_ip = true;
+-		mod_timer(&vif->during_ip_timer,
+-			  jiffies + msecs_to_jiffies(10000));
+ 	} else {
+ 		hif_drv->hif_state = HOST_IF_IDLE;
  	}
+diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+index 736eedef23b6..5559f27c8e24 100644
+--- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
++++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+@@ -70,15 +70,6 @@ struct wilc_p2p_mgmt_data {
+ static const u8 p2p_oui[] = {0x50, 0x6f, 0x9A, 0x09};
+ static const u8 p2p_vendor_spec[] = {0xdd, 0x05, 0x00, 0x08, 0x40, 0x03};
  
-@@ -864,63 +856,6 @@ static const struct net_device_ops wilc_netdev_ops = {
- 	.ndo_set_rx_mode  = wilc_set_multicast_list,
- };
- 
--static int dev_state_ev_handler(struct notifier_block *this,
--				unsigned long event, void *ptr)
+-#define WILC_IP_TIMEOUT_MS		15000
+-
+-static void clear_during_ip(struct timer_list *t)
 -{
--	struct in_ifaddr *dev_iface = ptr;
--	struct wilc_priv *priv;
--	struct host_if_drv *hif_drv;
--	struct net_device *dev;
--	struct wilc_vif *vif;
+-	struct wilc_vif *vif = from_timer(vif, t, during_ip_timer);
 -
--	if (!dev_iface || !dev_iface->ifa_dev || !dev_iface->ifa_dev->dev)
--		return NOTIFY_DONE;
--
--	dev  = (struct net_device *)dev_iface->ifa_dev->dev;
--	if (dev->netdev_ops != &wilc_netdev_ops)
--		return NOTIFY_DONE;
--
--	if (!dev->ieee80211_ptr || !dev->ieee80211_ptr->wiphy)
--		return NOTIFY_DONE;
--
--	vif = netdev_priv(dev);
--	priv = &vif->priv;
--
--	hif_drv = (struct host_if_drv *)priv->hif_drv;
--
--	switch (event) {
--	case NETDEV_UP:
--		if (vif->iftype == WILC_STATION_MODE ||
--		    vif->iftype == WILC_CLIENT_MODE) {
--			hif_drv->ifc_up = 1;
--			vif->obtaining_ip = false;
--			del_timer(&vif->during_ip_timer);
--		}
--
--		if (vif->wilc->enable_ps)
--			wilc_set_power_mgmt(vif, 1, 0);
--
--		break;
--
--	case NETDEV_DOWN:
--		if (vif->iftype == WILC_STATION_MODE ||
--		    vif->iftype == WILC_CLIENT_MODE) {
--			hif_drv->ifc_up = 0;
--			vif->obtaining_ip = false;
--			wilc_set_power_mgmt(vif, 0, 0);
--		}
--
--		wilc_resolve_disconnect_aberration(vif);
--
--		break;
--
--	default:
--		break;
--	}
--
--	return NOTIFY_DONE;
+-	vif->obtaining_ip = false;
 -}
 -
- void wilc_netdev_cleanup(struct wilc *wilc)
+ static void cfg_scan_result(enum scan_event scan_event,
+ 			    struct wilc_rcvd_net_info *info, void *user_void)
  {
- 	int i;
+@@ -1422,7 +1413,6 @@ static int change_virtual_intf(struct wiphy *wiphy, struct net_device *dev,
+ 	priv->p2p.recv_random = 0x00;
+ 	priv->p2p.is_wilc_ie = false;
+ 	vif->obtaining_ip = false;
+-	del_timer(&vif->during_ip_timer);
+ 
+ 	switch (type) {
+ 	case NL80211_IFTYPE_STATION:
+@@ -1470,8 +1460,6 @@ static int change_virtual_intf(struct wiphy *wiphy, struct net_device *dev,
+ 
+ 	case NL80211_IFTYPE_P2P_GO:
+ 		vif->obtaining_ip = true;
+-		mod_timer(&vif->during_ip_timer,
+-			  jiffies + msecs_to_jiffies(WILC_IP_TIMEOUT_MS));
+ 		wilc_set_operation_mode(vif, WILC_AP_MODE);
+ 		dev->ieee80211_ptr->iftype = type;
+ 		priv->wdev.iftype = type;
+@@ -1949,8 +1937,6 @@ int wilc_init_host_int(struct net_device *net)
+ 	struct wilc_vif *vif = netdev_priv(net);
+ 	struct wilc_priv *priv = &vif->priv;
+ 
+-	timer_setup(&vif->during_ip_timer, clear_during_ip, 0);
+-
+ 	priv->p2p_listen_state = false;
+ 
+ 	mutex_init(&priv->scan_req_lock);
+@@ -1973,8 +1959,6 @@ void wilc_deinit_host_int(struct net_device *net)
+ 	mutex_destroy(&priv->scan_req_lock);
+ 	ret = wilc_deinit(vif);
+ 
+-	del_timer_sync(&vif->during_ip_timer);
+-
+ 	if (ret)
+ 		netdev_err(net, "Error while deinitializing host interface\n");
+ }
 -- 
 2.17.1
 
