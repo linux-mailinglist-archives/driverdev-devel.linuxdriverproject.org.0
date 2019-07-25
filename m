@@ -2,60 +2,61 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 43236751D3
-	for <lists+driverdev-devel@lfdr.de>; Thu, 25 Jul 2019 16:52:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2403275401
+	for <lists+driverdev-devel@lfdr.de>; Thu, 25 Jul 2019 18:28:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5C03E863E2;
-	Thu, 25 Jul 2019 14:52:56 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id ABDAC863AE;
+	Thu, 25 Jul 2019 16:28:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6JiuLN_J4kod; Thu, 25 Jul 2019 14:52:55 +0000 (UTC)
+	with ESMTP id cMrUorgRVPW0; Thu, 25 Jul 2019 16:28:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F37ED8638F;
-	Thu, 25 Jul 2019 14:52:54 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5956086427;
+	Thu, 25 Jul 2019 16:28:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AEDF01BF322
- for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 14:52:52 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 3A34E1BF2FE
+ for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 16:28:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id AB5E68638F
- for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 14:52:52 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 360EC88162
+ for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 16:28:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 844BY3ZEdNCc for <devel@linuxdriverproject.org>;
- Thu, 25 Jul 2019 14:52:52 +0000 (UTC)
+ with ESMTP id IuDoQfBFvq-W for <devel@linuxdriverproject.org>;
+ Thu, 25 Jul 2019 16:28:23 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 492658616A
- for <devel@driverdev.osuosl.org>; Thu, 25 Jul 2019 14:52:52 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9B4E421734;
- Thu, 25 Jul 2019 14:52:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1564066372;
- bh=UiAPxBMDA0i/iMkH2fdA0nFfj4Rn3c8p0jAXHIvZ0og=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=qI7UPyLJQ98A3zSspuu8RTVksaDq1QaMKEkkw7btW+Aj4OCcSqpUxLcys6FN/ctNf
- ZxrqUa+qWaSzdtNjYKLdto+bbh0+HjEuSAbH4vhDNqyhcp92mdZ7sGuW6Ucol5y1Ds
- zmVnX+Gywp1MH4/lE9cQ3GEbGP6Cb/cQusPgDVmo=
-Date: Thu, 25 Jul 2019 16:52:49 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Kai-Heng Feng <kai.heng.feng@canonical.com>
-Subject: Re: [PATCH] staging: rtl8723bs: Disable procfs debugging by default
-Message-ID: <20190725145249.GA32271@kroah.com>
-References: <20190718092522.17748-1-kai.heng.feng@canonical.com>
- <20190725075503.GA16693@kroah.com>
- <83A2CB3F-B0C4-43C6-A3A6-B6E8B440BECC@canonical.com>
+Received: from bombadil.infradead.org (bombadil.infradead.org
+ [198.137.202.133])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 33E25880CC
+ for <devel@driverdev.osuosl.org>; Thu, 25 Jul 2019 16:28:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=bombadil.20170209; h=Sender:Content-Transfer-Encoding:
+ MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=1gWwLmhXudB5qYQlPaZcy9XmhEJ6Zg7DZFm5yjBwFjg=; b=tdnwLjtLToaDClIoTMEJw2nUs
+ WjuIT5jJJjR8JDywu5M4lZesIy9+hwZr/NKDnjFqA7M0P+Zjxq1KZB1LRyejTZ8SCCJett67MNzBG
+ K6pjWcy2gp2m4gVOcFIKayAG9jVRy+2iRqEdNR+8zOERorkiLZ3OFIhQjMvPwsgLtxw0i+7X4ycFq
+ F0e8OGEgKWR7/saDT9Mc3s8+jaykcZx33DOSBXofdLZEcfUoh4MUrcortdbDPMaUct6qLtZhDwJun
+ 2pBksaqdq7fcn1l2kbtFuzfWUEma0rgSgpmsFhI/JLancADirslXD4kL+cciPRrEYRzfE92PHM373
+ vOd+MBmrg==;
+Received: from [179.95.31.157] (helo=bombadil.infradead.org)
+ by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
+ id 1hqgb9-0004Lx-Gx; Thu, 25 Jul 2019 16:28:07 +0000
+Received: from mchehab by bombadil.infradead.org with local (Exim 4.92)
+ (envelope-from <mchehab@bombadil.infradead.org>)
+ id 1hqgb7-0000oR-6y; Thu, 25 Jul 2019 12:28:05 -0400
+From: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+To: 
+Subject: [PATCH] media: staging: hantro: avoid future namespace collisions
+Date: Thu, 25 Jul 2019 12:28:04 -0400
+Message-Id: <620428820d0d76de5b29314457a3b27c0634b4f2.1564072060.git.mchehab+samsung@kernel.org>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <83A2CB3F-B0C4-43C6-A3A6-B6E8B440BECC@canonical.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,58 +69,101 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Hariprasad Kelam <hariprasad.kelam@gmail.com>,
+ Tomasz Figa <tfiga@chromium.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jeffy Chen <jeffy.chen@rock-chips.com>,
+ Mauro Carvalho Chehab <mchehab@infradead.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ ZhiChao Yu <zhichao.yu@rock-chips.com>,
+ Ezequiel Garcia <ezequiel@collabora.com>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Jul 25, 2019 at 10:48:42PM +0800, Kai-Heng Feng wrote:
-> at 15:55, Greg KH <gregkh@linuxfoundation.org> wrote:
-> 
-> > On Thu, Jul 18, 2019 at 05:25:22PM +0800, Kai-Heng Feng wrote:
-> > > The procfs provides many useful information for debugging, but it may be
-> > > too much for normal usage, routines like proc_get_sec_info() reports
-> > > various security related information.
-> > > 
-> > > So disable it by defaultl.
-> > > 
-> > > Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
-> > > ---
-> > >  drivers/staging/rtl8723bs/include/autoconf.h | 4 ----
-> > >  1 file changed, 4 deletions(-)
-> > > 
-> > > diff --git a/drivers/staging/rtl8723bs/include/autoconf.h
-> > > b/drivers/staging/rtl8723bs/include/autoconf.h
-> > > index 196aca3aed7b..8f4c1e734473 100644
-> > > --- a/drivers/staging/rtl8723bs/include/autoconf.h
-> > > +++ b/drivers/staging/rtl8723bs/include/autoconf.h
-> > > @@ -57,9 +57,5 @@
-> > >  #define DBG	0	/*  for ODM & BTCOEX debug */
-> > >  #endif /*  !DEBUG */
-> > > 
-> > > -#ifdef CONFIG_PROC_FS
-> > > -#define PROC_DEBUG
-> > > -#endif
-> > 
-> > What?  Why?  If you are going to do this, then rip out all of the code
-> > as well.
-> 
-> Or make it a Kconfig option? Which one do you think is better?
+Rename:
+	vp8_dec_mc_filter -> hantro_vp8_dec_mc_filter
 
-No new config options please.
+As other drivers may end implementing something with the same
+name.
 
-> > And are you _sure_ you want to do this?
-> 
-> Yes. The procfs of rtl8723bs is useful to Realtek to decode but not to
-> others.
+So, prepend driver's name here, in order to make symbol namespace
+cleaner.
 
-If no one else needs this, then rip out all of the code that uses it,
-not just the single #define.
+Signed-off-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+---
+ drivers/staging/media/hantro/hantro_g1_vp8_dec.c     | 5 +++--
+ drivers/staging/media/hantro/hantro_hw.h             | 2 +-
+ drivers/staging/media/hantro/hantro_vp8.c            | 2 +-
+ drivers/staging/media/hantro/rk3399_vpu_hw_vp8_dec.c | 2 +-
+ 4 files changed, 6 insertions(+), 5 deletions(-)
 
-thanks,
+diff --git a/drivers/staging/media/hantro/hantro_g1_vp8_dec.c b/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
+index 181e2f76d8cb..6d99c2be01cf 100644
+--- a/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
++++ b/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
+@@ -342,11 +342,12 @@ static void cfg_tap(struct hantro_ctx *ctx,
+ 		return; /* Tap filter not used. */
+ 
+ 	for (i = 0; i < 8; i++) {
+-		val = (vp8_dec_mc_filter[i][0] << 2) | vp8_dec_mc_filter[i][5];
++		val = (hantro_vp8_dec_mc_filter[i][0] << 2) |
++		       hantro_vp8_dec_mc_filter[i][5];
+ 
+ 		for (j = 0; j < 4; j++)
+ 			hantro_reg_write(vpu, &vp8_dec_pred_bc_tap[i][j],
+-					 vp8_dec_mc_filter[i][j + 1]);
++					 hantro_vp8_dec_mc_filter[i][j + 1]);
+ 
+ 		switch (i) {
+ 		case 2:
+diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
+index e86c84fbfe1a..2b8029674a75 100644
+--- a/drivers/staging/media/hantro/hantro_hw.h
++++ b/drivers/staging/media/hantro/hantro_hw.h
+@@ -95,7 +95,7 @@ extern const struct hantro_variant rk3399_vpu_variant;
+ extern const struct hantro_variant rk3328_vpu_variant;
+ extern const struct hantro_variant rk3288_vpu_variant;
+ 
+-extern const u32 vp8_dec_mc_filter[8][6];
++extern const u32 hantro_vp8_dec_mc_filter[8][6];
+ 
+ void hantro_watchdog(struct work_struct *work);
+ void hantro_run(struct hantro_ctx *ctx);
+diff --git a/drivers/staging/media/hantro/hantro_vp8.c b/drivers/staging/media/hantro/hantro_vp8.c
+index cd01661cac21..0e02d147b189 100644
+--- a/drivers/staging/media/hantro/hantro_vp8.c
++++ b/drivers/staging/media/hantro/hantro_vp8.c
+@@ -35,7 +35,7 @@ struct vp8_prob_tbl_packed {
+  * filter taps taken to 7-bit precision,
+  * reference RFC6386#Page-16, filters[8][6]
+  */
+-const u32 vp8_dec_mc_filter[8][6] = {
++const u32 hantro_vp8_dec_mc_filter[8][6] = {
+ 	{ 0, 0, 128, 0, 0, 0 },
+ 	{ 0, -6, 123, 12, -1, 0 },
+ 	{ 2, -11, 108, 36, -8, 1 },
+diff --git a/drivers/staging/media/hantro/rk3399_vpu_hw_vp8_dec.c b/drivers/staging/media/hantro/rk3399_vpu_hw_vp8_dec.c
+index c5e9f8befe9c..f17e32620b08 100644
+--- a/drivers/staging/media/hantro/rk3399_vpu_hw_vp8_dec.c
++++ b/drivers/staging/media/hantro/rk3399_vpu_hw_vp8_dec.c
+@@ -439,7 +439,7 @@ static void cfg_tap(struct hantro_ctx *ctx,
+ 			if (vp8_dec_pred_bc_tap[i][j].base != 0)
+ 				hantro_reg_write(vpu,
+ 						 &vp8_dec_pred_bc_tap[i][j],
+-						 vp8_dec_mc_filter[i][j]);
++						 hantro_vp8_dec_mc_filter[i][j]);
+ 		}
+ 	}
+ }
+-- 
+2.21.0
 
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
