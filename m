@@ -1,61 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3070574CA4
-	for <lists+driverdev-devel@lfdr.de>; Thu, 25 Jul 2019 13:14:25 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5712674CCD
+	for <lists+driverdev-devel@lfdr.de>; Thu, 25 Jul 2019 13:18:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2C5BF220D0;
-	Thu, 25 Jul 2019 11:14:23 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 34A54862C1;
+	Thu, 25 Jul 2019 11:18:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R-hRpSlc-xi2; Thu, 25 Jul 2019 11:14:22 +0000 (UTC)
+	with ESMTP id Sffj-WCwngVt; Thu, 25 Jul 2019 11:18:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id B9523220DF;
-	Thu, 25 Jul 2019 11:14:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 84C26861EE;
+	Thu, 25 Jul 2019 11:18:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8C3551BF45A
- for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 11:14:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8915D1BF45A
+ for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 11:18:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 856B1220D0
- for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 11:14:18 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 844E3220C4
+ for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 11:18:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ByGaRX5zTt-k for <devel@linuxdriverproject.org>;
- Thu, 25 Jul 2019 11:14:17 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 635A8220CA
- for <devel@driverdev.osuosl.org>; Thu, 25 Jul 2019 11:14:17 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id ABACE21901;
- Thu, 25 Jul 2019 11:14:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1564053257;
- bh=waVczpwrh6pnIoFCpGlxFz7cDpHgzuXb/1ydQioMguo=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=RSoggm/2P6WTNJIke3rmcCIrRUszI+WPd2hVnjsG/6bamaGdunKS9ApcZ18291LuM
- z4n7cR04pDwpU0F9fmP1Mp1GBKZtteDW961BnQL3yENIvM+tE3+3lULQaJ5KyhdLIb
- HgV2/LXYbIVMpbrR9D05M111z/h33mJ4GlsiXmg4=
-Date: Thu, 25 Jul 2019 13:14:14 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH] qlge: Fix build error without CONFIG_ETHERNET
-Message-ID: <20190725111414.GB30958@kroah.com>
-References: <20190724130126.53532-1-yuehaibing@huawei.com>
- <20190724.141202.10100086363454182.davem@davemloft.net>
- <20190724.141228.454330962921320879.davem@davemloft.net>
+ with ESMTP id PMM33uIJRE+S for <devel@linuxdriverproject.org>;
+ Thu, 25 Jul 2019 11:18:43 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
+ [209.85.215.194])
+ by silver.osuosl.org (Postfix) with ESMTPS id B546E20350
+ for <devel@driverdev.osuosl.org>; Thu, 25 Jul 2019 11:18:43 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id u17so22882201pgi.6
+ for <devel@driverdev.osuosl.org>; Thu, 25 Jul 2019 04:18:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to
+ :user-agent; bh=1FbnKtI3LwQwgUsr/g3MUa9Py+KRgg38b6IrILFDUhU=;
+ b=RiPttf3VULytvTV1gQCGGIofaH3cmMvvcLlShfvYsVeKFzWjG/kfl/UguNaNy7/Dfo
+ FVmH2PIQAE2iC69ldXu5sNi9yS2z2PuKCOKbuswCunkNuJwrNoEzBk2cOmbgVNaQZsql
+ vWiZsd67ciYl95JIzgVUAExNBHZtC8mivPnxWK78M7nMNjVgpYOHWMOxtXNNo0v9cqC2
+ r/T/+iTbpnJX5k7uurmQUrJ54neQWBfYxzH6kvGeSJ+H2ILyhbfMSTjrInxG6dRzsZPQ
+ t9CzL6qva/lkcI8XGhVlO+HAbtcciB4SanHFtxVMYgiTsIzVps4/IUCTGBW581LK8m7v
+ GkAg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to:user-agent;
+ bh=1FbnKtI3LwQwgUsr/g3MUa9Py+KRgg38b6IrILFDUhU=;
+ b=K11O1xaJrzgZURv5b3VFvBTSvhQqdbaX6ULOYFRV2QlYrSIUd8UHPbn5w3IGSFbqrc
+ LgJ/CopGC5Z5/rMrD5nHUw6+vxSLzwYrNme6TycGMiGF7E5pXtNti3SisQkVPrJe5E65
+ R8Y9MyRITAOTR5X5+xaRCbkaErcEZo280tvXrSranBn9VLOv8hLGw3ChtBFEAwfJRumF
+ CyUTa3yXvVlfNx3vqlQ57gFftfMcdmbH5adL1N4AhN3mCsHBCYDxGOXvI8fXekqIAKTu
+ vst+KxIZEIP7hYMV8kc49QIRw+5Aeu5kZ44IABQZkEkM/TEF+KsR7tGkn5z9/ON10woO
+ zNyw==
+X-Gm-Message-State: APjAAAX5nPX0bb4ADWdus8z8I4/mcovxvKKqm4qIjb+3abWlGN122XAt
+ dH4KWkkAVv0/DOyX+KtmxUg=
+X-Google-Smtp-Source: APXvYqwWrdl5FJRCm09CQlypUGpElLXPTtXQhNRGvN4DIQ3ybEer3KGwJh1GSg+qHIHbIRJ+x3Bfug==
+X-Received: by 2002:a63:121b:: with SMTP id h27mr70608971pgl.335.1564053523202; 
+ Thu, 25 Jul 2019 04:18:43 -0700 (PDT)
+Received: from bharath12345-Inspiron-5559 ([103.110.42.34])
+ by smtp.gmail.com with ESMTPSA id s15sm48874992pfd.183.2019.07.25.04.18.38
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 25 Jul 2019 04:18:42 -0700 (PDT)
+Date: Thu, 25 Jul 2019 16:48:35 +0530
+From: Bharath Vedartham <linux.bhar@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH v4] staging: kpc2000: Convert put_page to put_user_page*()
+Message-ID: <20190725111834.GA12517@bharath12345-Inspiron-5559>
+References: <20190720173214.GA4250@bharath12345-Inspiron-5559>
+ <20190725074634.GB15090@kroah.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190724.141228.454330962921320879.davem@davemloft.net>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+In-Reply-To: <20190725074634.GB15090@kroah.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,44 +88,116 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: bpoirier@suse.com, devel@driverdev.osuosl.org, GR-Linux-NIC-Dev@marvell.com,
- manishc@marvell.com, netdev@vger.kernel.org, yuehaibing@huawei.com,
- linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, jhubbard@nvidia.com,
+ linux-kernel@vger.kernel.org, linux-mm@kvack.org, jglisse@redhat.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Jul 24, 2019 at 02:12:28PM -0700, David Miller wrote:
-> From: David Miller <davem@davemloft.net>
-> Date: Wed, 24 Jul 2019 14:12:02 -0700 (PDT)
-> 
-> > From: YueHaibing <yuehaibing@huawei.com>
-> > Date: Wed, 24 Jul 2019 21:01:26 +0800
-> > 
-> >> Now if CONFIG_ETHERNET is not set, QLGE driver
-> >> building fails:
-> >> 
-> >> drivers/staging/qlge/qlge_main.o: In function `qlge_remove':
-> >> drivers/staging/qlge/qlge_main.c:4831: undefined reference to `unregister_netdev'
-> >> 
-> >> Reported-by: Hulk Robot <hulkci@huawei.com>
-> >> Fixes: 955315b0dc8c ("qlge: Move drivers/net/ethernet/qlogic/qlge/ to drivers/staging/qlge/")
-> >> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
-> > 
-> > I'll let Greg take this.
-> 
-> Actually, I take that back.
-> 
-> Since the move to staging happened in my tree I will take this ;-)
+On Thu, Jul 25, 2019 at 09:46:34AM +0200, Greg KH wrote:
+> On Sat, Jul 20, 2019 at 11:02:14PM +0530, Bharath Vedartham wrote:
+> > For pages that were retained via get_user_pages*(), release those pages
+> > via the new put_user_page*() routines, instead of via put_page().
+> > =
 
-Thanks.  If you want to push that "move" to Linus soon, I can then take
-any cleanup patches that show up for this driver, otherwise feel free to
-ignore them until 5.4-rc1.
+> > This is part a tree-wide conversion, as described in commit fc1d8e7cca2=
+d ("mm: introduce put_user_page*(), placeholder versions").
+> =
 
-thanks,
+> Please line-wrap this line.
+> =
 
-greg k-h
+> > =
+
+> > Cc: Ira Weiny <ira.weiny@intel.com>
+> > Cc: John Hubbard <jhubbard@nvidia.com>
+> > Cc: J=E9r=F4me Glisse <jglisse@redhat.com>
+> > Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> > Cc: Matt Sickler <Matt.Sickler@daktronics.com>
+> > Cc: devel@driverdev.osuosl.org
+> > Cc: linux-kernel@vger.kernel.org
+> > Cc: linux-mm@kvack.org
+> > Reviewed-by: John Hubbard <jhubbard@nvidia.com>
+> > Signed-off-by: Bharath Vedartham <linux.bhar@gmail.com>
+> > ---
+> > Changes since v1
+> >        - Improved changelog by John's suggestion.
+> >        - Moved logic to dirty pages below sg_dma_unmap
+> >        and removed PageReserved check.
+> > Changes since v2
+> >        - Added back PageResevered check as suggested by John Hubbard.
+> > Changes since v3
+> >        - Changed the commit log as suggested by John.
+> >        - Added John's Reviewed-By tag
+> > =
+
+> > ---
+> >  drivers/staging/kpc2000/kpc_dma/fileops.c | 17 ++++++-----------
+> >  1 file changed, 6 insertions(+), 11 deletions(-)
+> > =
+
+> > diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c b/drivers/stagin=
+g/kpc2000/kpc_dma/fileops.c
+> > index 6166587..75ad263 100644
+> > --- a/drivers/staging/kpc2000/kpc_dma/fileops.c
+> > +++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
+> > @@ -198,9 +198,7 @@ int  kpc_dma_transfer(struct dev_private_data *priv=
+, struct kiocb *kcb, unsigned
+> >  	sg_free_table(&acd->sgt);
+> >   err_dma_map_sg:
+> >   err_alloc_sg_table:
+> > -	for (i =3D 0 ; i < acd->page_count ; i++){
+> > -		put_page(acd->user_pages[i]);
+> > -	}
+> > +	put_user_pages(acd->user_pages, acd->page_count);
+> >   err_get_user_pages:
+> >  	kfree(acd->user_pages);
+> >   err_alloc_userpages:
+> > @@ -221,16 +219,13 @@ void  transfer_complete_cb(struct aio_cb_data *ac=
+d, size_t xfr_count, u32 flags)
+> >  	=
+
+> >  	dev_dbg(&acd->ldev->pldev->dev, "transfer_complete_cb(acd =3D [%p])\n=
+", acd);
+> >  	=
+
+> > -	for (i =3D 0 ; i < acd->page_count ; i++){
+> > -		if (!PageReserved(acd->user_pages[i])){
+> > -			set_page_dirty(acd->user_pages[i]);
+> > -		}
+> > -	}
+> > -	=
+
+> >  	dma_unmap_sg(&acd->ldev->pldev->dev, acd->sgt.sgl, acd->sgt.nents, ac=
+d->ldev->dir);
+> >  	=
+
+> > -	for (i =3D 0 ; i < acd->page_count ; i++){
+> > -		put_page(acd->user_pages[i]);
+> > +	for (i =3D 0; i < acd->page_count; i++) {
+> > +		if (!PageReserved(acd->user_pages[i]))
+> > +			put_user_pages_dirty(&acd->user_pages[i], 1);
+> > +		else
+> > +			put_user_page(acd->user_pages[i]);
+> >  	}
+> >  	=
+
+> >  	sg_free_table(&acd->sgt);
+> > -- =
+
+> > 2.7.4
+> =
+
+> This patch can not be applied at all :(
+> =
+
+> Can you redo it against the latest staging-next branch and resend?
+> =
+
+> thanks,
+Yup. Will do that!
+> greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
