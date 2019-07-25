@@ -1,77 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1A72975526
-	for <lists+driverdev-devel@lfdr.de>; Thu, 25 Jul 2019 19:10:04 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0795C755CF
+	for <lists+driverdev-devel@lfdr.de>; Thu, 25 Jul 2019 19:34:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1E06287196;
-	Thu, 25 Jul 2019 17:10:02 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9BD8F88157;
+	Thu, 25 Jul 2019 17:34:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3+bmV+YoB5Aq; Thu, 25 Jul 2019 17:10:01 +0000 (UTC)
+	with ESMTP id tMgpe27x-Bnp; Thu, 25 Jul 2019 17:34:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 553E9871E0;
-	Thu, 25 Jul 2019 17:10:00 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8D60C87F5C;
+	Thu, 25 Jul 2019 17:33:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3B7561BF312
- for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 17:09:58 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1A7151BF312
+ for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 17:33:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 011F88407F
- for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 17:09:41 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1222287FA4
+ for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 17:33:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xM-RB1cSQmwO for <devel@linuxdriverproject.org>;
- Thu, 25 Jul 2019 17:09:39 +0000 (UTC)
+ with ESMTP id fH5zlVo0DnV4 for <devel@linuxdriverproject.org>;
+ Thu, 25 Jul 2019 17:33:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
- [209.85.221.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 8BA8B83754
- for <devel@driverdev.osuosl.org>; Thu, 25 Jul 2019 17:09:39 +0000 (UTC)
-Received: by mail-wr1-f65.google.com with SMTP id 31so51625124wrm.1
- for <devel@driverdev.osuosl.org>; Thu, 25 Jul 2019 10:09:39 -0700 (PDT)
+Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
+ [209.85.215.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id CDCBA87F5C
+ for <devel@driverdev.osuosl.org>; Thu, 25 Jul 2019 17:33:55 +0000 (UTC)
+Received: by mail-pg1-f195.google.com with SMTP id f20so14149789pgj.0
+ for <devel@driverdev.osuosl.org>; Thu, 25 Jul 2019 10:33:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ec8xBLIRJMB96z4CmSL5OwNWKBAlshAdxvW0h7AzbUM=;
- b=S3y7KyeYp3mLwmfxuf2K68/8o8WfH4ywasVTEy02uE1pjhWHzzu7V7t7YmGASUon1u
- EAsFFpV3kqnMrmSqmBGt9tMWCS0JC04sBVsH3JWDhIfpAk4UK3QCbfI5pKLaUWn9dn7S
- mqJyEEkPeRBAKtSyOTz+QAB31IZXoATamOBLvDAS3233Noms5NkRD7l5qIr38oFG29B6
- 91IXIE6ULkI8LvABripYwAQURI+Qp+DPvk/BFfBHZkgd7F/cnhfX+ZZI9ahEv/tGcEHs
- hhIUpLi+MTBAUIVjyJDjL+Wxrv2GBiyP86/+YV9ORwZ3eaATIRv6SpSdjP/Pi4/I82tg
- m5TA==
+ h=date:from:to:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=hZk0TqDrxTM1KdLxSkV0vH8ZC4HuTZk2jgm5Qa5W38s=;
+ b=pq97gd7dW3xHRFqRCYE8GJRT4eFN1Oj1H5if4i+6I+1XvKweGTnzQwHVsEJWNIOEJV
+ wFmglC/Y6anBzCmfBMAR2fd/ijMUAKRFXrLeW6T6Kd64u0grkGrKPE0COa2IlTXwgr1h
+ 2qneSwBzA/J0tRwQyqPkKJYeHgpE0aRlUojIT43YH5zK1rw3QKRi9YbzJxY6ppFIVEj8
+ HFfKnXLyGnJ7imdQS0R3CNWcPb+tyE0ct79f1XvvZ2dnxgr9iKaBXiOVYOaZ26fmjo3u
+ SH3o6qzzN11S5tbchQDdLuP92OciyhnTVvxnyvfTMn2GYfmXLt56QsixUeBWtKHWfJMQ
+ Koqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ec8xBLIRJMB96z4CmSL5OwNWKBAlshAdxvW0h7AzbUM=;
- b=bj8KfzIsoESyQOEpg06RJ+w53PhTpZLB9p1NQmYK3nUXbxLcL3iynFj8nTYJ2rK8Kw
- 5OPSZ6RBoQCh+l5UqXy1oDkfDpdY+oQvCADCnQZReGfxyLUVY3e1zJ0MIRI0fXTUqle/
- X8ZWyS68iy8utq0Vf2+R1W9OzqundSG6BkNqXKrRST1xfeZ/uIE97lLkaKmXY2EqgJ/f
- y4wGTV/mCS3kNGch8PIDcVCEuG/rPNExdrb0bX04Wch4+8Q92RoeyXirYzSBNGzvomIQ
- 1a5bQK/8S70cJGx+chsuD+Jzr4EbWIp2maqrSrYfLeZ4yk88PXXEVwZBzqweJDAlY12f
- UDyA==
-X-Gm-Message-State: APjAAAXI3lyeqx1HaepOUW1h2PedSewuaR7MNZGyQSx1Uu/aNWtlRk8L
- SZBSRiPLuErGTUd5lJMeaV8=
-X-Google-Smtp-Source: APXvYqywFsQEc1QbUaQQXS0GyR+xSbYgUggabL+ep/LI0JjoGPt5AHn+YExhm9rCT3TsL1LnXwppRw==
-X-Received: by 2002:a5d:618d:: with SMTP id j13mr94779237wru.195.1564074577933; 
- Thu, 25 Jul 2019 10:09:37 -0700 (PDT)
-Received: from localhost.localdomain
- ([2a02:8108:96bf:e0ab:2b68:5d76:a12a:e6ba])
- by smtp.gmail.com with ESMTPSA id u6sm51798911wml.9.2019.07.25.10.09.37
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Thu, 25 Jul 2019 10:09:37 -0700 (PDT)
-From: Michael Straube <straube.linux@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rtl8188eu: replace hal_EfusePgCheckAvailableAddr()
-Date: Thu, 25 Jul 2019 19:09:22 +0200
-Message-Id: <20190725170922.16465-1-straube.linux@gmail.com>
-X-Mailer: git-send-email 2.22.0
+ h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=hZk0TqDrxTM1KdLxSkV0vH8ZC4HuTZk2jgm5Qa5W38s=;
+ b=GClKGlutXtTUfTPPdzkV/dkUyL1ZwsIsyWgO++YzlhSwGAEkXvuBdgW3szr5ZiUgsc
+ Zvgdrb05p1DnaHg8RDgQGbm3eL4e95ZAjB5VcjmR9ftI7FMsaGo/PpPz2LKf194m37e8
+ JM5ZUPw45eH7gl6k5DBIzYoOnODwJTrZI1hnzlvo99xhXCBoVV29v6n/E3xLWaHnAzUr
+ eyAG+rMGNZmCvdkwd4W288Kh1TQZgopp+Fy6foc4NVWlqE6MbZAdhL4zH6f/NnYkEMDZ
+ ZqOaLdpLtTpP4SjnU08GEI5I3qgixRb8WzH4+DaSd3x7+19bIxwnDjq9uB/+p43XueC5
+ n0Uw==
+X-Gm-Message-State: APjAAAWxgTTnBe8M4gfN3hWJ10xTuNfc9xCtIo5UBLqNu72aj54MjKqL
+ ZZvEcEdlpr9LrcKDDMxNrxM=
+X-Google-Smtp-Source: APXvYqw6/wLL6u7WdrtkLm19PLdxm+noBmOPehGs2ypkQbAARYSFQNprz51nqVoNIQ8IT66oWN/mfg==
+X-Received: by 2002:a65:49cc:: with SMTP id t12mr81629192pgs.83.1564076035389; 
+ Thu, 25 Jul 2019 10:33:55 -0700 (PDT)
+Received: from hari-Inspiron-1545 ([183.83.86.126])
+ by smtp.gmail.com with ESMTPSA id t9sm25753094pgj.89.2019.07.25.10.33.52
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 25 Jul 2019 10:33:54 -0700 (PDT)
+Date: Thu, 25 Jul 2019 23:03:49 +0530
+From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Hariprasad Kelam <hariprasad.kelam@gmail.com>,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ hdegoede@redhat.com, Larry.Finger@lwfinger.net
+Subject: [PATCH] staging: rtl8723bs: os_dep: Remove function
+ _rtw_regdomain_select
+Message-ID: <20190725173349.GA9894@hari-Inspiron-1545>
 MIME-Version: 1.0
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,54 +87,48 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Larry.Finger@lwfinger.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Function hal_EfusePgCheckAvailableAddr() contains just a single if
-test. Remove the function and replace the call to it with the if test.
+This function simply returns &rtw_regdom_rd . So replace this function
+with actual code
 
-Signed-off-by: Michael Straube <straube.linux@gmail.com>
+Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 ---
- drivers/staging/rtl8188eu/core/rtw_efuse.c | 13 +------------
- 1 file changed, 1 insertion(+), 12 deletions(-)
+ drivers/staging/rtl8723bs/os_dep/wifi_regd.c | 9 +--------
+ 1 file changed, 1 insertion(+), 8 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_efuse.c b/drivers/staging/rtl8188eu/core/rtw_efuse.c
-index 51c3dd6d7ffb..533ca1ddffb0 100644
---- a/drivers/staging/rtl8188eu/core/rtw_efuse.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_efuse.c
-@@ -763,17 +763,6 @@ static bool hal_EfusePartialWriteCheck(struct adapter *pAdapter, u8 efuseType, u
- 	return ret;
+diff --git a/drivers/staging/rtl8723bs/os_dep/wifi_regd.c b/drivers/staging/rtl8723bs/os_dep/wifi_regd.c
+index aa2f62a..bbd83b2 100644
+--- a/drivers/staging/rtl8723bs/os_dep/wifi_regd.c
++++ b/drivers/staging/rtl8723bs/os_dep/wifi_regd.c
+@@ -115,13 +115,6 @@ static int _rtw_reg_notifier_apply(struct wiphy *wiphy,
+ 	return 0;
  }
  
--static bool
--hal_EfusePgCheckAvailableAddr(
--		struct adapter *pAdapter,
--		u8 efuseType
--	)
+-static const struct ieee80211_regdomain *_rtw_regdomain_select(struct
+-							       rtw_regulatory
+-							       *reg)
 -{
--	if (Efuse_GetCurrentSize(pAdapter) >= EFUSE_MAP_LEN_88E)
--		return false;
--	return true;
+-	return &rtw_regdom_rd;
 -}
 -
- static void hal_EfuseConstructPGPkt(u8 offset, u8 word_en, u8 *pData, struct pgpkt *pTargetPkt)
- {
- 	memset((void *)pTargetPkt->data, 0xFF, sizeof(u8)*8);
-@@ -789,7 +778,7 @@ bool Efuse_PgPacketWrite(struct adapter *pAdapter, u8 offset, u8 word_en, u8 *pD
- 	u16			startAddr = 0;
- 	u8 efuseType = EFUSE_WIFI;
+ static void _rtw_regd_init_wiphy(struct rtw_regulatory *reg,
+ 				 struct wiphy *wiphy,
+ 				 void (*reg_notifier)(struct wiphy *wiphy,
+@@ -137,7 +130,7 @@ static void _rtw_regd_init_wiphy(struct rtw_regulatory *reg,
+ 	wiphy->regulatory_flags &= ~REGULATORY_STRICT_REG;
+ 	wiphy->regulatory_flags &= ~REGULATORY_DISABLE_BEACON_HINTS;
  
--	if (!hal_EfusePgCheckAvailableAddr(pAdapter, efuseType))
-+	if (Efuse_GetCurrentSize(pAdapter) >= EFUSE_MAP_LEN_88E)
- 		return false;
+-	regd = _rtw_regdomain_select(reg);
++	regd = &rtw_regdom_rd;
+ 	wiphy_apply_custom_regulatory(wiphy, regd);
  
- 	hal_EfuseConstructPGPkt(offset, word_en, pData, &targetPkt);
+ 	/* Hard code flags */
 -- 
-2.22.0
+2.7.4
 
 _______________________________________________
 devel mailing list
