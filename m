@@ -1,77 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C4F73744E4
-	for <lists+driverdev-devel@lfdr.de>; Thu, 25 Jul 2019 07:27:21 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5CF7A744E5
+	for <lists+driverdev-devel@lfdr.de>; Thu, 25 Jul 2019 07:27:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D4F5086168;
-	Thu, 25 Jul 2019 05:27:19 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id EE9E5220C1;
+	Thu, 25 Jul 2019 05:27:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id z-vsgA20JqWZ; Thu, 25 Jul 2019 05:27:19 +0000 (UTC)
+	with ESMTP id LwpsIwF-6ZpG; Thu, 25 Jul 2019 05:27:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8CC7986135;
-	Thu, 25 Jul 2019 05:27:18 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9F17122056;
+	Thu, 25 Jul 2019 05:27:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 650821BF2B7
- for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 05:27:16 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D7B241BF2B7
+ for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 05:27:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 622FC8614E
- for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 05:27:16 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D43B687FB5
+ for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 05:27:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zndzdIzUX7h5 for <devel@linuxdriverproject.org>;
- Thu, 25 Jul 2019 05:27:16 +0000 (UTC)
+ with ESMTP id H5Le0mAzLGPl for <devel@linuxdriverproject.org>;
+ Thu, 25 Jul 2019 05:27:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
- [209.85.210.193])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id EB0818614A
- for <devel@driverdev.osuosl.org>; Thu, 25 Jul 2019 05:27:15 +0000 (UTC)
-Received: by mail-pf1-f193.google.com with SMTP id g2so22119794pfq.0
- for <devel@driverdev.osuosl.org>; Wed, 24 Jul 2019 22:27:15 -0700 (PDT)
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 76CB888002
+ for <devel@driverdev.osuosl.org>; Thu, 25 Jul 2019 05:27:18 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id r7so22118449pfl.3
+ for <devel@driverdev.osuosl.org>; Wed, 24 Jul 2019 22:27:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=UhtuJCqNcxIm+EBXcjESVIufNkTV5hpQi4vJIdOJsVY=;
- b=LixUab5LzazCWQB5rBPndlcvfbyGC8zR8pck6CQuqOXx3NkzBiWAfiKsl4nvC8cDYZ
- PYRqvin4/Xxk5JnXzfiRQUJr7Ybqpzzbhf4/wN4lr8tQMGq9C3X78pdJS5ib7ibR4/UM
- HAvsgKWHoeTg8LaUFmGQuxLV3UdIvyMi/1H3n1ktvdlwTQ5ckEFU9y64OCkhumR5LCZN
- gkvhspymHjllrkwpBwhT1ZJSNEPlGawSdRU5CfixEQouO0twmnsJL16ifs79OXG92AC0
- 1FVidsXhWKGLfAbx3OPYG0HExhbU7IzrmvTXI7D5f+tqrwO79fwmCfLdpnvBJ6nc7uFV
- nl8A==
+ bh=8p/Sn53GwQi/N5oxjpUh/wX+FfXzZTPJbVnvW0a6hds=;
+ b=VWimxvP2w8mZFtEt1AEezN+TvBnbzN3UgRpDf4V2VrmZuasyB7AnohHc3bV67IkYvk
+ +7mDDIyVrAsMX1u0tK7b0sMy1INLsB6HzoUOH+WHwwey5k1SYMBKTxYvRRSGBiKIqYdw
+ A3du9oEnd4ZVpDZa38Wh4lyrN4v9vpe/dg+46AGMTQcIr9tok58oxpliCm0pHjjxW8hS
+ zhOKjKm+BW44AlTBOsOp/TFI5FP9xrEqlV3iLYxuMhukvbNkD9tkSCREWy+WObt9Dkj6
+ sBjJ1JiAp1UQ7UcGbpwgwvjNzd8s0meLZp9emJSCfRFLJKYrHsFxoJSQ/v5HERGodzTa
+ FOcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=UhtuJCqNcxIm+EBXcjESVIufNkTV5hpQi4vJIdOJsVY=;
- b=JFA9taBTxzZxp2TTbQbBozYfpfFaKyjuuJJELtlFrrWusi5QhtlTs1v6tJMqtTaViZ
- J/y1jnNwgWbwfRmQ0DtMK9toCvlQIPr6f9GcAmkpVfLL9agl4GtVlRfIKl+wptMMgOfF
- 59giR7+mqec+/ysiIn3z7XMlJsM3z20+gvXt3RE7HbCdE7k9VF3QwT3jm82aUPbGKlkG
- 9qUWwv9q0OQOsSAQVub77LaNeu/UAml/lQcfk5Ak34xFPnMABrO9u5TKzMgNI0O+VkQ3
- lPld3wKATvP1MVKfiaFOdGWgPslbdK2duOHEcRE8PoWbQh/FUdZQcG+s7nGtnAOIwelY
- MPIA==
-X-Gm-Message-State: APjAAAVn1DZYHv+Zn003xx3LH6OUBluKNZt/XcRYaCYaI8az9GgtfRxE
- idkHPUuLz91k/7zzJLEd/O8=
-X-Google-Smtp-Source: APXvYqwAJz5rTBlgFzYwZN95A9jQhtMtBrCFQRn5IRNP8pki2WjP4Imr/xqzYM6NeYB0MjR8iS6otg==
-X-Received: by 2002:a63:36cc:: with SMTP id
- d195mr43823167pga.157.1564032435602; 
- Wed, 24 Jul 2019 22:27:15 -0700 (PDT)
+ bh=8p/Sn53GwQi/N5oxjpUh/wX+FfXzZTPJbVnvW0a6hds=;
+ b=rtaPR4O5NT0jTgnu+X275ge5QDYHBxSvTmILRbvSNICk7ockPWlO5flxKBpAyCVmmG
+ uxxYLUJACBn9wDttczcVDY/XBI2n8Z/fnQNiZ7jsXRl4c2vMwUppD9bw1e85UI+sglhf
+ K+MLzDYkC7KCqKfvz48GEwUASv01udI16D+8JocTy8FN2nPpUlzw3wBGdnaSFCFb8Rsz
+ vbmBVr5XMFI89I/xZa0ve9wOQpjENS77ea4N+FqjRV4d8xtuEO/GNy4lAgtm6Z+tC2y2
+ de2AuXXvBEhGttuDxxoMUcs+edDc9ajUY7xk6Ev2u8i4iHS3LuEz9xaBfqxR3Y+kJvzF
+ lwCg==
+X-Gm-Message-State: APjAAAVCKfmnGlppDuN7mHtPFg+svdgfpjSD43QBFQ/pQnuUYBWmgUqq
+ uyQkxVtLCqANR+badZdSnauy5D2h
+X-Google-Smtp-Source: APXvYqwwpVkc2gNmvRr2o3DkpBBth6K6SwsPYincXPPW3B5BOlj4qflOmjMS61/vdSnNvycSyk5/aQ==
+X-Received: by 2002:a63:b904:: with SMTP id z4mr83124581pge.388.1564032437685; 
+ Wed, 24 Jul 2019 22:27:17 -0700 (PDT)
 Received: from localhost.localdomain ([110.227.69.93])
- by smtp.gmail.com with ESMTPSA id w22sm51615877pfi.175.2019.07.24.22.27.13
+ by smtp.gmail.com with ESMTPSA id w22sm51615877pfi.175.2019.07.24.22.27.15
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Wed, 24 Jul 2019 22:27:15 -0700 (PDT)
+ Wed, 24 Jul 2019 22:27:17 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: gregkh@linuxfoundation.org,
 	devel@driverdev.osuosl.org
-Subject: [PATCH 8/9] staging: rtl8723bs: Replace function
- ODM_TXPowerTrackingCheck()
-Date: Thu, 25 Jul 2019 10:56:44 +0530
-Message-Id: <20190725052645.2372-8-nishkadg.linux@gmail.com>
+Subject: [PATCH 9/9] staging: rtl8723bs: Remove unused function prototype
+ ODM_SetAntenna()
+Date: Thu, 25 Jul 2019 10:56:45 +0530
+Message-Id: <20190725052645.2372-9-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190725052645.2372-1-nishkadg.linux@gmail.com>
 References: <20190725052645.2372-1-nishkadg.linux@gmail.com>
@@ -94,44 +93,28 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove function ODM_TXPowerTrackingCheck as all it does is call
-odm_TXPowerTrackingCheckCE.
-Rename odm_TXPowerTrackingCheckCE to ODM_TXPowerTrackingCheck to
-maintain compatibility with call site.
-Issue found with Coccinelle.
+Remove unused function prototype ODM_SetAntenna.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/rtl8723bs/hal/odm.c | 8 --------
- 1 file changed, 8 deletions(-)
+ drivers/staging/rtl8723bs/hal/odm.h | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/odm.c b/drivers/staging/rtl8723bs/hal/odm.c
-index 01f732853689..dd9a16fb83a4 100644
---- a/drivers/staging/rtl8723bs/hal/odm.c
-+++ b/drivers/staging/rtl8723bs/hal/odm.c
-@@ -342,8 +342,6 @@ void odm_RateAdaptiveMaskInit(PDM_ODM_T pDM_Odm);
+diff --git a/drivers/staging/rtl8723bs/hal/odm.h b/drivers/staging/rtl8723bs/hal/odm.h
+index 6ba77bb70889..fba3b9e1491b 100644
+--- a/drivers/staging/rtl8723bs/hal/odm.h
++++ b/drivers/staging/rtl8723bs/hal/odm.h
+@@ -1365,10 +1365,6 @@ extern  u32 TxScalingTable_Jaguar[TXSCALE_TABLE_SIZE];
+ #define SWAW_STEP_PEAK		0
+ #define SWAW_STEP_DETERMINE	1
  
- void odm_TXPowerTrackingInit(PDM_ODM_T pDM_Odm);
- 
--void odm_TXPowerTrackingCheckCE(PDM_ODM_T pDM_Odm);
+-/* Remove DIG by yuchen */
 -
- /* Remove Edca by Yu Chen */
- 
- 
-@@ -1390,13 +1388,7 @@ void odm_TXPowerTrackingInit(PDM_ODM_T pDM_Odm)
- 
- }
- 
+-void ODM_SetAntenna(PDM_ODM_T pDM_Odm, u8 Antenna);
 -
- void ODM_TXPowerTrackingCheck(PDM_ODM_T pDM_Odm)
--{
--	odm_TXPowerTrackingCheckCE(pDM_Odm);
--}
--
--void odm_TXPowerTrackingCheckCE(PDM_ODM_T pDM_Odm)
- {
- 	struct adapter *Adapter = pDM_Odm->Adapter;
+ /* Remove BB power saving by Yuchen */
  
+ #define dm_CheckTXPowerTracking ODM_TXPowerTrackingCheck
 -- 
 2.19.1
 
