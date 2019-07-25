@@ -1,81 +1,146 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B8B08758AC
-	for <lists+driverdev-devel@lfdr.de>; Thu, 25 Jul 2019 22:08:38 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id EC9847599F
+	for <lists+driverdev-devel@lfdr.de>; Thu, 25 Jul 2019 23:31:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 457BC226D0;
-	Thu, 25 Jul 2019 20:08:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 83A78874D4;
+	Thu, 25 Jul 2019 21:31:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sTY5LjHAj+Z7; Thu, 25 Jul 2019 20:08:36 +0000 (UTC)
+	with ESMTP id ThG0bd3tIIfi; Thu, 25 Jul 2019 21:31:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 8875E226AF;
-	Thu, 25 Jul 2019 20:08:34 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4D59387466;
+	Thu, 25 Jul 2019 21:31:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B71661BF2C6
- for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 20:08:32 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 3C9391BF420
+ for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 21:31:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id AD9FC88235
- for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 20:08:32 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 39BAC22253
+ for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 21:31:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nrrdyay7kMjo for <devel@linuxdriverproject.org>;
- Thu, 25 Jul 2019 20:08:31 +0000 (UTC)
+ with ESMTP id yoQXhWwWT+lY for <devel@linuxdriverproject.org>;
+ Thu, 25 Jul 2019 21:31:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qk1-f195.google.com (mail-qk1-f195.google.com
- [209.85.222.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B871D878AF
- for <devel@driverdev.osuosl.org>; Thu, 25 Jul 2019 20:08:31 +0000 (UTC)
-Received: by mail-qk1-f195.google.com with SMTP id d15so37377920qkl.4
- for <devel@driverdev.osuosl.org>; Thu, 25 Jul 2019 13:08:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=gi1xORrbzPoL0P3xPYkOl5Y2rSsp/Jx6024caSGqLbc=;
- b=Y2rRvE5ML/E8Tlq84Z1huVevhH9eQd35xkxh5VpYtwFN1GRP10UJPdKNoIWHgG9NTs
- pnWqXYULMSpdnsLqPFb9J6/8Ufr/h73V4lMr+Bb+w0U8PshoeJP/rGMqaV6HMaT7yQaZ
- 734g1NfpQYXL/Ae0Np/+pkbLC5bedj8kyO5Tb4hYVnqpT2Z6U/mnxqz89Ab+U0cQFQN1
- P073EZf8ZvsieTXyA/Y6f4iEGGXZXwtnODuCsSb+R3a+RGNttupIjqfSstgcrCoQMGRX
- Ye9q5Z5+DXVcJqT5BwMszpFWzMUek1dCicCYyssryRAX39fcZDfi2ODUh9bOcNTu9WlS
- sLaQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=gi1xORrbzPoL0P3xPYkOl5Y2rSsp/Jx6024caSGqLbc=;
- b=aeGojiqC7tEx3w3TgcAdBuyHdMnf28JcbXz7lbqDmdKlA338ROib3L3VlEKO0wBbxx
- R0SZGuLPOK1dFz5DQ2otcU+/E5DWRarsZSMCgYqHoH2Ols+mNcdcgcig7btb483ztjrV
- H9x8pMjrt+XtuGbLiSzW2sqoTLcl9ST/mBTLOTugwr3mUoE0999MU0/EKFRpMVzuFbEI
- eAYOfrF6Dya0Nghh/D3SkXoMqmA2ubbz2LXCmH6LLavi7OAePhTNzAibwE0J8ZsZN3d4
- PkCkj4NGkSe64O3cJNeGV6IpOD/wdA1hVS0QXOywxqS4z2YpVCilkgJblJiCp3NSYVaX
- 6j9Q==
-X-Gm-Message-State: APjAAAVuSsy5mZr+blom1beMtIdtG+jeehtJUdWghFpZC6GFGSAHNmPn
- QTZVfuz39+680QDdk62C+5M=
-X-Google-Smtp-Source: APXvYqyghEfRUVyXaqFOtoJAxuf9vIQUldSnA+RxPc5VnJNH/jGwK5LyWk/4fl8Jqa4AbDDPhBwR4Q==
-X-Received: by 2002:ae9:ed4b:: with SMTP id c72mr55914956qkg.404.1564085310644; 
- Thu, 25 Jul 2019 13:08:30 -0700 (PDT)
-Received: from karz-laptop.vlan96.localdomain ([200.17.97.58])
- by smtp.gmail.com with ESMTPSA id a67sm23870493qkg.131.2019.07.25.13.08.26
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Thu, 25 Jul 2019 13:08:30 -0700 (PDT)
-From: Kartik Kulkarni <kartik.koolks@gmail.com>
-To: Lars-Peter Clausen <lars@metafoo.de>,
- Michael Hennerich <Michael.Hennerich@analog.com>,
- Stefan Popa <stefan.popa@analog.com>, Jonathan Cameron <jic23@kernel.org>,
- Hartmut Knaack <knaack.h@gmx.de>,
- Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging:iio:adc:ad7280a: add of_match_table entry
-Date: Fri, 26 Jul 2019 01:38:17 +0530
-Message-Id: <20190725200817.31277-1-kartik.koolks@gmail.com>
-X-Mailer: git-send-email 2.20.1
+Received: from esa1.microchip.iphmx.com (esa1.microchip.iphmx.com
+ [68.232.147.91])
+ by silver.osuosl.org (Postfix) with ESMTPS id 0EF46226D0
+ for <devel@driverdev.osuosl.org>; Thu, 25 Jul 2019 21:31:35 +0000 (UTC)
+Received-SPF: Pass (esa1.microchip.iphmx.com: domain of
+ Adham.Abozaeid@microchip.com designates 198.175.253.82 as
+ permitted sender) identity=mailfrom;
+ client-ip=198.175.253.82; receiver=esa1.microchip.iphmx.com;
+ envelope-from="Adham.Abozaeid@microchip.com";
+ x-sender="Adham.Abozaeid@microchip.com";
+ x-conformance=spf_only; x-record-type="v=spf1";
+ x-record-text="v=spf1 mx a:ushub1.microchip.com
+ a:smtpout.microchip.com a:mx1.microchip.iphmx.com
+ a:mx2.microchip.iphmx.com include:servers.mcsv.net
+ include:mktomail.com include:spf.protection.outlook.com ~all"
+Received-SPF: None (esa1.microchip.iphmx.com: no sender
+ authenticity information available from domain of
+ postmaster@email.microchip.com) identity=helo;
+ client-ip=198.175.253.82; receiver=esa1.microchip.iphmx.com;
+ envelope-from="Adham.Abozaeid@microchip.com";
+ x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
+Authentication-Results: esa1.microchip.iphmx.com;
+ spf=Pass smtp.mailfrom=Adham.Abozaeid@microchip.com;
+ spf=None smtp.helo=postmaster@email.microchip.com;
+ dkim=pass (signature verified) header.i=@microchiptechnology.onmicrosoft.com;
+ dmarc=pass (p=none dis=none) d=microchip.com
+IronPort-SDR: h52+T/AePQCbB5ip0n9sXeM6NC+drYF87ZqKV7rWb21ctBFM+3V22sDsL1iKvxVfmmGB4dNy2B
+ uhkvdtqjwEJ+lseC09IW+WXop/KSEqSI9vmUVnkUxmt6K+ShVW0pZfmyN9JmlFSdRtf53ht9c3
+ q2XEzittzXvxxKt0RerVvYp09p00vjXJuq+t+IKoyndkJaLC72iVWbgJGeLXg7bawkOjda64z5
+ NP0pnmtk4JXvdofRIXNsXhDZKUJmHyH+nsCDpIUxu4tB9x1kQigD+TbfzcyMKpIfsxG6fm20wW
+ 8r4=
+X-IronPort-AV: E=Sophos;i="5.64,308,1559545200"; d="scan'208";a="44200120"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa1.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 25 Jul 2019 14:31:35 -0700
+Received: from chn-vm-ex03.mchp-main.com (10.10.87.152) by
+ chn-vm-ex03.mchp-main.com (10.10.87.152) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Thu, 25 Jul 2019 14:31:34 -0700
+Received: from NAM02-BL2-obe.outbound.protection.outlook.com (10.10.215.89) by
+ email.microchip.com (10.10.87.152) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.1713.5
+ via Frontend Transport; Thu, 25 Jul 2019 14:31:34 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=jL9b9qnpmc0vkyTcLTMTsB5sL5EnQJF8xamyHnMGuMpSYLIYz2TqtGgXkxyocuVyrZUmcjzJJDRdLerJxAdZEmDMgDdlF2HfCMrBE3xdhtYOAZaYX+b3Qpx0DBoIThXw+4gUiuqDvHMZXHS4Nw3/9jmuhCgXtmEKCn9M70k8LZmF+k6RBHjnl8kp4maRMO9eJM/wK/zqoeNWpH7FqymjSH0cZI9dRFPb3ATuQq+wqScqxluaenLTeewjm19yWRXPySKz0a2D9ioDhs4uynvwwzBWI2Yg3IrFJbS9EKktyVW16thuYmWXflRnEDJmnDjEm49ijP+TrLF3i9UCEjS8ww==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=w/S0zltY8ZuuGwUYidbg5eH+4iup00E6rMxdoHM/Q+4=;
+ b=aOn9UuQN0l1NiAnUoo9JI+wBTCAgN7GHYVI2jfh1dFQXyC7zpFWVTebSyBwNrotU70W5sYXPyv+Ok1N0uDsPm4p3aGcwELjlIrB/jBiwBSs2SlwKQjzIm9pzuGBN2f3CAgQHlrley1wiC/vmXnv5JfnLLM/yU56O8PdgGRo5HnfZIzAH9ZiqlzY92W6vTVlzf/40pKiuwBFucBZL89J61hbZJ9xIP3Jx7CmANIRWIjt1KYayr+ozba26A4hKntiDkVkCO5iS8KSWGLl/dNMa56KAxW7iopWek2RJ7fxAbQ2nVnO/bFHsFljXfLADO5UIBb8cVx/WqT2BU9iIXWhtEg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1;spf=pass
+ smtp.mailfrom=microchip.com;dmarc=pass action=none
+ header.from=microchip.com;dkim=pass header.d=microchip.com;arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=microchiptechnology.onmicrosoft.com;
+ s=selector1-microchiptechnology-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=w/S0zltY8ZuuGwUYidbg5eH+4iup00E6rMxdoHM/Q+4=;
+ b=eonY+1MKbY6CzZGuGG806mghUSEm78QeHyIB6qT2gqhIRiDybjgS9X/mfstTYkm0KUrwWMUq3HF29I0Z4H5ncuL1/Wdeoa4FKW6pBuaSmgww4fzW9owYXwe1/3NGhaSE0+QdKFBO7QKa1XwbnCBfCVKyObeulLFviaYOsAMKNxA=
+Received: from MWHPR11MB1373.namprd11.prod.outlook.com (10.169.234.141) by
+ MWHPR11MB1984.namprd11.prod.outlook.com (10.175.54.11) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2115.13; Thu, 25 Jul 2019 21:31:32 +0000
+Received: from MWHPR11MB1373.namprd11.prod.outlook.com
+ ([fe80::5836:a39e:ab17:983b]) by MWHPR11MB1373.namprd11.prod.outlook.com
+ ([fe80::5836:a39e:ab17:983b%7]) with mapi id 15.20.2115.005; Thu, 25 Jul 2019
+ 21:31:32 +0000
+From: <Adham.Abozaeid@microchip.com>
+To: <linux-wireless@vger.kernel.org>
+Subject: [PATCH 0/6] staging: wilc1000: don't override user power management
+ selection
+Thread-Topic: [PATCH 0/6] staging: wilc1000: don't override user power
+ management selection
+Thread-Index: AQHVQzBT7IkssIkL3kugvDOm9aH0Yg==
+Date: Thu, 25 Jul 2019 21:31:32 +0000
+Message-ID: <20190725213125.2810-1-adham.abozaeid@microchip.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [198.175.253.81]
+x-clientproxiedby: MWHPR04CA0040.namprd04.prod.outlook.com
+ (2603:10b6:300:ee::26) To MWHPR11MB1373.namprd11.prod.outlook.com
+ (2603:10b6:300:25::13)
+x-ms-exchange-messagesentrepresentingtype: 1
+x-mailer: git-send-email 2.17.1
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 8a0c4676-33f6-4de1-4daf-08d711477636
+x-microsoft-antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(5600148)(711020)(4605104)(1401327)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7193020);
+ SRVR:MWHPR11MB1984; 
+x-ms-traffictypediagnostic: MWHPR11MB1984:
+x-microsoft-antispam-prvs: <MWHPR11MB198457617D5858E6CFB7D56E8DC10@MWHPR11MB1984.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:5236;
+x-forefront-prvs: 0109D382B0
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(39860400002)(366004)(136003)(396003)(346002)(376002)(189003)(199004)(2616005)(476003)(102836004)(386003)(486006)(6916009)(2351001)(6506007)(66946007)(186003)(99286004)(2501003)(26005)(316002)(52116002)(5660300002)(66446008)(256004)(305945005)(6486002)(25786009)(64756008)(66556008)(66476007)(53936002)(1076003)(107886003)(71200400001)(86362001)(71190400001)(4326008)(68736007)(478600001)(8936002)(6116002)(6512007)(14454004)(50226002)(4744005)(8676002)(5640700003)(81166006)(81156014)(3846002)(2906002)(6436002)(66066001)(54906003)(7736002)(36756003);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:MWHPR11MB1984;
+ H:MWHPR11MB1373.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+received-spf: None (protection.outlook.com: microchip.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam-message-info: g7+KWHUD10oZQ5kN5M65nRNEbbHFQNtgBadi3/8jerp2RUbbg6WqMCLxPW1NmqkPYaNHNucgFask8mp4V1Qfkgx9kulXSGVILfHhCB40l9rd8c5HcOwEV3nBA2k4nCxwGR4zbPowC2/Z6QrOsbXNQI1GaPTeoJGr1kC78xIsVHpHSMV3soUhQdmm312VvQU6+gIGY7juUC3Sk80hm035eYad73A7tdXJpQtU2RfgfQ3B8XsnJMXYjyuAldufZuc0xsdjW4myp1eqLNvAhp56ru69z9saqdrIpgJ9aUicp7ffajNq6p9zRCw8w9GpQ+g9nx3OsEIxgw7wFnBR31KRj0gg7gD9yRLCnqIWrZmTyjPRtMj6Ac5jM5/Z0xTD8co4QK7jcart57y5P2dKdHXMyehQvLNbOIDuZ2ixVwt58t8=
 MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8a0c4676-33f6-4de1-4daf-08d711477636
+X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Jul 2019 21:31:32.2116 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: adham.abozaeid@microchip.com
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1984
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,48 +153,41 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-iio@vger.kernel.org,
- linux-kernel@vger.kernel.org, kernel-usp@googlegroups.com,
- Kartik Kulkarni <kartik.koolks@gmail.com>,
- Matheus Tavares <matheus.bernardino@usp.br>
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ johannes@sipsolutions.net, Ajay.Kathat@microchip.com,
+ Adham.Abozaeid@microchip.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Add the of_device_id struct and the respective
-of_match_device entry to complete device tree support.
+From: Adham Abozaeid <adham.abozaeid@microchip.com>
 
-Signed-off-by: Kartik Kulkarni <kartik.koolks@gmail.com>
-Reviewed-by: Matheus Tavares <matheus.bernardino@usp.br>
----
- drivers/staging/iio/adc/ad7280a.c | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+This patch series has changes to avoid overriding the user's selection
+of power management. The current implementation overrides power
+management settings according to ip address state, scan state and number
+and type of open interfaces.
 
-diff --git a/drivers/staging/iio/adc/ad7280a.c b/drivers/staging/iio/adc/ad7280a.c
-index 19a5f244dcae..ded0ba093a28 100644
---- a/drivers/staging/iio/adc/ad7280a.c
-+++ b/drivers/staging/iio/adc/ad7280a.c
-@@ -1027,9 +1027,16 @@ static const struct spi_device_id ad7280_id[] = {
- };
- MODULE_DEVICE_TABLE(spi, ad7280_id);
- 
-+static const struct of_device_id ad7280_of_match[] = {
-+	{ .compatible = "adi,ad7280a", },
-+	{ }
-+};
-+MODULE_DEVICE_TABLE(of, ad7280_of_match);
-+
- static struct spi_driver ad7280_driver = {
- 	.driver = {
--		.name	= "ad7280",
-+		.name	= "ad7280a",
-+		.of_match_table = ad7280_of_match,
- 	},
- 	.probe		= ad7280_probe,
- 	.id_table	= ad7280_id,
+Adham Abozaeid (6):
+  staging: wilc1000: remove inetaddr notifier
+  staging: wilc1000: remove ip timeout timer
+  staging: wilc1000: remove unused members
+  staging: wilc1000: avoid overriding powersave state
+  staging: wilc1000: apply power management regardless of open
+    interfaces
+  staging: wilc1000: remove manual sleep mode
+
+ drivers/staging/wilc1000/wilc_hif.c           | 29 ++-------
+ drivers/staging/wilc1000/wilc_netdev.c        | 65 -------------------
+ drivers/staging/wilc1000/wilc_sdio.c          |  4 +-
+ .../staging/wilc1000/wilc_wfi_cfgoperations.c | 34 +---------
+ drivers/staging/wilc1000/wilc_wfi_netdevice.h |  2 -
+ drivers/staging/wilc1000/wilc_wlan.c          | 14 ----
+ drivers/staging/wilc1000/wilc_wlan.h          |  2 -
+ 7 files changed, 6 insertions(+), 144 deletions(-)
+
 -- 
-2.20.1
+2.17.1
 
 _______________________________________________
 devel mailing list
