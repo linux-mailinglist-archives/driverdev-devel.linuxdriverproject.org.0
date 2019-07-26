@@ -1,82 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 45AE076E64
-	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Jul 2019 17:58:46 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3045D88FD7;
-	Fri, 26 Jul 2019 15:58:43 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id H7bv6Dufy4Ov; Fri, 26 Jul 2019 15:58:42 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 829D788F7F;
-	Fri, 26 Jul 2019 15:58:41 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 330591BF29D
- for <devel@linuxdriverproject.org>; Fri, 26 Jul 2019 15:58:09 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 30C3B770F3
+	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Jul 2019 20:07:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3049022C51
- for <devel@linuxdriverproject.org>; Fri, 26 Jul 2019 15:58:09 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A48B4254B3;
+	Fri, 26 Jul 2019 18:06:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id flX2bfMFfe9j; Fri, 26 Jul 2019 18:06:57 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 6A9FD24EA2;
+	Fri, 26 Jul 2019 18:06:55 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 748F61BF3BD
+ for <devel@linuxdriverproject.org>; Fri, 26 Jul 2019 18:06:53 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 70FD2895FC
+ for <devel@linuxdriverproject.org>; Fri, 26 Jul 2019 18:06:53 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xGtM04YXnny7 for <devel@linuxdriverproject.org>;
- Fri, 26 Jul 2019 15:58:07 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.15.15])
- by silver.osuosl.org (Postfix) with ESMTPS id 654EE25BF2
- for <devel@driverdev.osuosl.org>; Fri, 26 Jul 2019 15:58:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1564156653;
- bh=qQMv8Gq4VWw3O9pfd3Hcs8DunZMxg+zrMDk3d/xK/Ig=;
- h=X-UI-Sender-Class:Subject:To:Cc:References:From:Date:In-Reply-To;
- b=btwBiIdpDEYqjFNOFAQZfoI6LC6YCv7SMbakhPOWf43dVDwnvKQzwlTnVN3J2Eg7w
- Vp0xsYm8cr9OECam+mOvuzsqjJb2YxPA4Vpy/ZlXnc6yiWqb5zZWS8zg0NpgIy81xy
- sVq+tHzpofGTGHvTwUZa9eVve65y/rltKpJEZlVA=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [192.168.1.162] ([37.4.249.127]) by mail.gmx.com (mrgmx004
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1MS3mz-1hwrCA3God-00TRbQ; Fri, 26
- Jul 2019 17:57:33 +0200
-Subject: Re: [PATCH v2 -next] staging: vc04_services: fix
- used-but-set-variable warning
-To: YueHaibing <yuehaibing@huawei.com>, eric@anholt.net,
- gregkh@linuxfoundation.org, inf.braun@fau.de, nishkadg.linux@gmail.com
-References: <20190725142716.49276-1-yuehaibing@huawei.com>
- <20190726092621.27972-1-yuehaibing@huawei.com>
-From: Stefan Wahren <wahrenst@gmx.net>
-Message-ID: <229b2d16-9623-6005-2e1b-4d1f239643a2@gmx.net>
-Date: Fri, 26 Jul 2019 17:57:31 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ with ESMTP id vf03D7oSJ9SB for <devel@linuxdriverproject.org>;
+ Fri, 26 Jul 2019 18:06:51 +0000 (UTC)
+X-Greylist: delayed 00:07:22 by SQLgrey-1.7.6
+Received: from mail-io1-f65.google.com (mail-io1-f65.google.com
+ [209.85.166.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id BD2FB89806
+ for <devel@driverdev.osuosl.org>; Fri, 26 Jul 2019 18:06:49 +0000 (UTC)
+Received: by mail-io1-f65.google.com with SMTP id i10so106538366iol.13
+ for <devel@driverdev.osuosl.org>; Fri, 26 Jul 2019 11:06:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=usp-br.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Mz6yFp/JdoMmP88Hd9wgTkqmhK5wh8hSxVlurnjVo58=;
+ b=AqdQBSa+KR+uV7HGSwYjR8NLjKpjPepgw0zylTLXZ2QQt/1THpF/IcxTn9NEC2+a1o
+ mEdqDuJaXZJSxYKkUXBcNCmPTgQq3dGfUhPsntmMSDH5QtHkMKiKDU86C/gca8cxTMd8
+ 6/yzBbfm3RVHl15/DODIgB3Cd/GPtXpUnJkV2SR4GLk5GbVLK8RwEW3EX2EtkejrFmNv
+ HVjdQh5HsFf+GdZ0BQSIw5dMf1rZZwStF4kg1X0vW0pmSU3Lgs4BDbgxFVRlci6MTiKY
+ tZK3xW9fmKhVo7LFGLcFqYWBmUa72CuL2KwU9npClRTQetuaBXMVcAyI7GofbWa4TVm4
+ OFKA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Mz6yFp/JdoMmP88Hd9wgTkqmhK5wh8hSxVlurnjVo58=;
+ b=uGciqAcRXnPUdMkFcm5ZolOONxGer2+wRi6d2yGY9mrXLm8lwwo93Ao9q6xtuPqzaK
+ 2F6ZwmE7xcP5SadI2pNqq/z9X4tjW6LaodQ2zeTreRm9xahqszQ7wUPByMT6qfeCU76z
+ i4dRCzZBR7rryeTpAHEu12pCJ05Uyxe72D8DVpnlB/9A6mvPsT5Ql32GWPQPxD87ynwE
+ xxjNjDe8lwcGSDypFaGfJZIds7D5O9yyxktKwOQ31tMtjDqIPRggwqyqY9oPlK+G0CDA
+ xSoLw5WJG1Ec9XqAl6DcTSq8wVZq/BnIPJwNppW+bLTXb4rbfBwLuIcQ1bVloG5hbwnD
+ RLxA==
+X-Gm-Message-State: APjAAAX6mF0SglmDT+A9UMpJDSakyTZQLhVLvh7M1ootJKK6gXXrB2Ym
+ VS7dOF+Hj9jBeDKsUxUq8gh6kMucyaIZJa3Evv5UvUeo40w=
+X-Google-Smtp-Source: APXvYqxQgZBD3hEdmYQN0ATdE+xO3I4QX7GvRTvtCBuN9N9yUSx7Dm9vAjvX0rbeiciuckyUOL3NhdqK6yM+PYnGSzE=
+X-Received: by 2002:a5d:9711:: with SMTP id h17mr16548342iol.280.1564163967979; 
+ Fri, 26 Jul 2019 10:59:27 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190726092621.27972-1-yuehaibing@huawei.com>
-Content-Language: en-US
-X-Provags-ID: V03:K1:a2QhRZDV76cNOnjxUp2kDO8bbHN+pQ+5quVTlxjJKZaXVZ8NaaZ
- jaLLWxgnA8kgLJwLh5hRmDmyoaB+0mL5oxcM9ioK+We71b9cPSxIo4RfJjsnDQ5LiM+DRrd
- cEqT6ewd45gEwSuo7F/WosYaSPOtL6R8nN6o65GqjcroVOpVPwZZb1gqtbFzfnDUOlpZDtC
- P19ql6muElPiWevB/OJ5g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:5yPF2OLnToQ=:YON+oYprlbkfGhoC6RuoYj
- nz07pRF4vW8w4G0wmk9aqybt7RDI33cerMdwgmokxtMhpRSoTyhDRe/0xputZ3tPGHqgzNvnP
- 3Hj+ksOssb1Bo5s5XOzuKuaX818IisjjZm36cDLQNrimqpUrt2ATI5W1EMbgU7Vhp28c/MpGj
- 0D1IO4n8Ku1iduTVfOJie1joYj+b3oKDCbHULvNmJ8gfmBzI1tHKsMvESj/elfYlTi3v/5NU+
- H+ld7i6+zc6Gq4G/Y7u4cdHnbYlM13ruyGKDz8ZD1hSWRXydTNxr/jH9eMYxFmUGZYW+ab61s
- kal+mn1AELb1IrK/ChExhHmkDXI13Xy/FL+zTFvU9tjMYd5On3xHLm08fbp5ch2mQqBCkrkvH
- hltK4YmbU05PLASo+5iCIPT8KZhr9ZGCNq+AKua7j32FIHOyqcm0tBm0j7km4rg5Ay/NiMHLR
- +e7vfpB+65StkgSe7S7khtwwoN07fPCQR9VxB1dTBJqI1Rwv5QIiCuy3R+yrNnN6BbHN6Fdb7
- XfqZ5FFazb70uJ6VGdmy/iA06X8edPspsc+aV8cQ3LY7DlueSlFLOsBxqLhRuOehhqTuooBAE
- 7j8eIB+Uxvkbha24/WkvUjgLN5exo+zScz8kb1iaOX3n4C9MtFeCymUrOdTvSMg3VZ/g3mbrC
- qVLWgmp+blBrPHXr+pZVV6uPZohXTx8mn3LmNAyTG4GRNo0iZfg1HGM4KIzrT0+Ai6Tb4BJ1h
- qKiXdnQ8GtYjYb7p02AHPBtt5c317KFXhqrJUelQ3LD4yzUYqH88qSlsz5eksGX+ge+bhGK5E
- AbVLaGC5DPt3Yt2QU1RvK4Qgeo95M4LJN+O7K05xe10GWV+d/GwAKuqSkX79riGv5YUn7YXIf
- cKRZveHfGQOB4xnXtvA0Tx2Z9uH4Vz0WDj24+aYp096orJBluAdKE5pcoqTM1b9AmFOBhsmix
- l4CISh7f/HWOfUyLX0dbFcCPHUMq4t0V2R+JeIu+HAVOloHTaupOdchmXqUcl6HD4pGWtqG4x
- cjETbP2INxt1vUhSfMRJLaSx7rAZchcbYAmFOJhE/Azdgxe/3srFFJoE2Un9jzmwGoAe0kffc
- dQKRQ9SojxtTmQ=
+References: <20190725200817.31277-1-kartik.koolks@gmail.com>
+ <0e273486f1c4fb6249896225837cdf2da0fd2415.camel@analog.com>
+In-Reply-To: <0e273486f1c4fb6249896225837cdf2da0fd2415.camel@analog.com>
+From: Matheus Tavares Bernardino <matheus.bernardino@usp.br>
+Date: Fri, 26 Jul 2019 14:59:16 -0300
+Message-ID: <CAHd-oW5sOry2g_tQbgQ9-dp1esVStmS+UF-TTYoB2mWmzR10jQ@mail.gmail.com>
+Subject: Re: [PATCH] staging:iio:adc:ad7280a: add of_match_table entry
+To: "Ardelean, Alexandru" <alexandru.Ardelean@analog.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,35 +81,78 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, bcm-kernel-feedback-list@broadcom.com,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rpi-kernel@lists.infradead.org
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ "lars@metafoo.de" <lars@metafoo.de>, "Hennerich,
+ Michael" <Michael.Hennerich@analog.com>,
+ "linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "kernel-usp@googlegroups.com" <kernel-usp@googlegroups.com>,
+ "kartik.koolks@gmail.com" <kartik.koolks@gmail.com>,
+ "pmeerw@pmeerw.net" <pmeerw@pmeerw.net>, "knaack.h@gmx.de" <knaack.h@gmx.de>,
+ "Popa, Stefan Serban" <StefanSerban.Popa@analog.com>,
+ "jic23@kernel.org" <jic23@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Yue,
-
-Am 26.07.19 um 11:26 schrieb YueHaibing:
-> Fix gcc used-but-set-variable warning:
-
-just a nit. It is call "unused-but-set-variable"
-
-Acked-by: Stefan Wahren <wahrenst@gmx.net>
-
+On Fri, Jul 26, 2019 at 2:30 AM Ardelean, Alexandru
+<alexandru.Ardelean@analog.com> wrote:
 >
-> drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c: In function vchiq_release_internal:
-> drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c:2827:16: warning:
->  variable local_entity_uc set but not used [-Wunused-but-set-variable]
-> drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c:2827:6: warning:
->  variable local_uc set but not used [-Wunused-but-set-variable]
+> On Fri, 2019-07-26 at 01:38 +0530, Kartik Kulkarni wrote:
+> > Add the of_device_id struct and the respective
+> > of_match_device entry to complete device tree support.
+> >
 >
-> Remove the unused variables 'local_entity_uc' and 'local_uc'
+> This would be a [V2] I suppose.
 >
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
-> ---
+> This change also does the rename of the driver name in a single go.
+> Since it's a trivial change, it's fine from my side.
+
+I think there was a small confusion when we sent the patches. Sorry
+for that. Originally, Kartik made the rename in its own patch. Would
+it be better if we resend the two patches separately?
+
+Thanks,
+Matheus
+
+> Reviewed-by: Alexandru Ardelean <alexandru.ardelean@analog.com>
+>
+>
+> > Signed-off-by: Kartik Kulkarni <kartik.koolks@gmail.com>
+> > Reviewed-by: Matheus Tavares <matheus.bernardino@usp.br>
+> > ---
+> >  drivers/staging/iio/adc/ad7280a.c | 9 ++++++++-
+> >  1 file changed, 8 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/staging/iio/adc/ad7280a.c b/drivers/staging/iio/adc/ad7280a.c
+> > index 19a5f244dcae..ded0ba093a28 100644
+> > --- a/drivers/staging/iio/adc/ad7280a.c
+> > +++ b/drivers/staging/iio/adc/ad7280a.c
+> > @@ -1027,9 +1027,16 @@ static const struct spi_device_id ad7280_id[] = {
+> >  };
+> >  MODULE_DEVICE_TABLE(spi, ad7280_id);
+> >
+> > +static const struct of_device_id ad7280_of_match[] = {
+> > +     { .compatible = "adi,ad7280a", },
+> > +     { }
+> > +};
+> > +MODULE_DEVICE_TABLE(of, ad7280_of_match);
+> > +
+> >  static struct spi_driver ad7280_driver = {
+> >       .driver = {
+> > -             .name   = "ad7280",
+> > +             .name   = "ad7280a",
+> > +             .of_match_table = ad7280_of_match,
+> >       },
+> >       .probe          = ad7280_probe,
+> >       .id_table       = ad7280_id,
+>
+> --
+> You received this message because you are subscribed to the Google Groups "Kernel USP" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to kernel-usp+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/kernel-usp/0e273486f1c4fb6249896225837cdf2da0fd2415.camel%40analog.com.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
