@@ -1,146 +1,142 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DCAFE759A3
-	for <lists+driverdev-devel@lfdr.de>; Thu, 25 Jul 2019 23:31:54 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8F7E8868B4;
-	Thu, 25 Jul 2019 21:31:52 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Hz14lfz7Axz6; Thu, 25 Jul 2019 21:31:51 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CE2DD86892;
-	Thu, 25 Jul 2019 21:31:50 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2E3B51BF420
- for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 21:31:48 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 09CC575EA1
+	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Jul 2019 07:49:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 1FE33226EA
- for <devel@linuxdriverproject.org>; Thu, 25 Jul 2019 21:31:48 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A65BF2D0A0;
+	Fri, 26 Jul 2019 05:49:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id rWioRSvQOSD9; Fri, 26 Jul 2019 05:49:48 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 710982D0E9;
+	Fri, 26 Jul 2019 05:49:45 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 2C89F1BF5F8
+ for <devel@linuxdriverproject.org>; Fri, 26 Jul 2019 05:49:43 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 28D0587B1E
+ for <devel@linuxdriverproject.org>; Fri, 26 Jul 2019 05:49:43 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id t2f5O6Hp8x12 for <devel@linuxdriverproject.org>;
- Thu, 25 Jul 2019 21:31:39 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa1.microchip.iphmx.com (esa1.microchip.iphmx.com
- [68.232.147.91])
- by silver.osuosl.org (Postfix) with ESMTPS id 69DCB226CA
- for <devel@driverdev.osuosl.org>; Thu, 25 Jul 2019 21:31:39 +0000 (UTC)
-Received-SPF: Pass (esa1.microchip.iphmx.com: domain of
- Adham.Abozaeid@microchip.com designates 198.175.253.82 as
- permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa1.microchip.iphmx.com;
- envelope-from="Adham.Abozaeid@microchip.com";
- x-sender="Adham.Abozaeid@microchip.com";
- x-conformance=spf_only; x-record-type="v=spf1";
- x-record-text="v=spf1 mx a:ushub1.microchip.com
- a:smtpout.microchip.com a:mx1.microchip.iphmx.com
- a:mx2.microchip.iphmx.com include:servers.mcsv.net
- include:mktomail.com include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa1.microchip.iphmx.com: no sender
- authenticity information available from domain of
- postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa1.microchip.iphmx.com;
- envelope-from="Adham.Abozaeid@microchip.com";
- x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa1.microchip.iphmx.com;
- spf=Pass smtp.mailfrom=Adham.Abozaeid@microchip.com;
- spf=None smtp.helo=postmaster@email.microchip.com;
- dkim=pass (signature verified) header.i=@microchiptechnology.onmicrosoft.com;
- dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: sprf7Gb3d3IUq3RzH2mkjRXW+FUJxI1+uszcQfHNkJmdsvzQ/Ejx6qsHMBxVwsfeclOjvX4E75
- ZIYQ6MstidbKT5xBgsq3yNoQVjvnIsRIc50kzP2gTxCGfmyhbV1UK1C+WLEB0kHABgcGU46SSC
- 73/hU4AAOoPeDH8bgfVNwMrj3XNNFAwaqENTyPHtdzi0C+fi8OvpdB0IJOQyFoJMZDsrogdopO
- 4fk3DHwKajtYqPYxgqoHm8zdtXpeaK0Okik6JlJtndu3fEO1kKny/wbjvCu3aJop+eyQWHOAe6
- wxM=
-X-IronPort-AV: E=Sophos;i="5.64,308,1559545200"; d="scan'208";a="44200131"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa1.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 25 Jul 2019 14:31:38 -0700
-Received: from chn-vm-ex04.mchp-main.com (10.10.87.151) by
- chn-vm-ex03.mchp-main.com (10.10.87.152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Thu, 25 Jul 2019 14:31:38 -0700
-Received: from NAM02-BL2-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.151) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.1713.5
- via Frontend Transport; Thu, 25 Jul 2019 14:31:38 -0700
+ with ESMTP id 3RQPqncmIsil for <devel@linuxdriverproject.org>;
+ Fri, 26 Jul 2019 05:49:41 +0000 (UTC)
+X-Greylist: delayed 00:19:04 by SQLgrey-1.7.6
+Received: from mx0b-00128a01.pphosted.com (mx0b-00128a01.pphosted.com
+ [148.163.139.77])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9A21987B1A
+ for <devel@driverdev.osuosl.org>; Fri, 26 Jul 2019 05:49:41 +0000 (UTC)
+Received: from pps.filterd (m0167091.ppops.net [127.0.0.1])
+ by mx0b-00128a01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ x6Q5RRrl002881; Fri, 26 Jul 2019 01:30:36 -0400
+Received: from nam04-bn3-obe.outbound.protection.outlook.com
+ (mail-bn3nam04lp2055.outbound.protection.outlook.com [104.47.46.55])
+ by mx0b-00128a01.pphosted.com with ESMTP id 2txwrxvgtt-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 26 Jul 2019 01:30:36 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=W2Tu/E5QxhJwHhFoHDIsSPe06L4NY85gW1RdMYFYILWSt+P0r5yFrqaq6s4enBIFkJKoAcQ/nccUqoDsjYfspLuXaqtg6v4oTqTYozaB+4pLYkQ0Gg+iNLw+4jovKgkBtFNXDFls8RJRvJjpqevljwHqcFlOlPGcXTijk/uBL3ZGBQ2Ij0kH3/NVmpj9VT6ahyn4MQjg/FK5nzltzEF2ANsN4jQn/Gw9fH3GEhOgzuI9DaLNKXm0dsJek4bZtKjZUu4yC3qQCF8AqEBY4tu+yvRLZAHCRSZLQOz7oQVRJWt2MgA/9gp6yC3EtxDAss5KOaGdLZk7oKwSg3X6eRPLsA==
+ b=lr9G7FXemNihSAK41YU+fBOpLuYGM94r4CRprCwwn/8EM8C4zvpx1xnHr53VBEK4Gd7ulBkQAfPkJTHVZVWEGBviGhQu9rAMG22RWVDVrZyfY8O2rvAwHEG1Cdc1v/wMvEk9GdO8XU5kHwoCU1bLN1QPLBCs7UeY0k41rzZStXciG3z32nr2/l7/Y9zrFFbQA81KfOEGebR0O/kk/baqiCdVlcZ9U9n+VRTpniIDOKCrZTvnIabcBGSJBnCeDDTCfykDB7NDVfE+iSv0y+azpVOfOMwgXXpiT15FSion30v7GTc8uyL/hdiH4HmCNsMhIIGhSKHrbburdls03qC8LQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=UdhnouhEKMMu+QZRhJg7pnlQ60ZuJ2/baK6CduWk0I8=;
- b=Dvimo7xnCkPhAlKEZIacwDWKob2dxc8LylHBFwdMQXaJsvkZHf0nFCoXZ1/cDMkFUHDVaGTjrcM9YXZpQ0G0ymM1hUL3xkztGrp1qUvpREaUOUTfBEX6mpy5rTXk6yXxD3MVWiFRmTIMYKKHsl1YlR8DLDbAmHYaooT1tQ4IERShkUt6CDCoxjc/vUQVf6bODKmkuAOi4gKFHl+462lpnBCmWzvj7NXGSPrg2dyFZQX+Rbrt0GWeq8+M+bzIfVKbuTskL3TjC2yW0NnJGJGhwaKfueNdrzJOvOLo0Oplk+bHJW/yDrJA0wM76YrCSxw5ii4edJNxO9rmw0Jj5UOdng==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1;spf=pass
- smtp.mailfrom=microchip.com;dmarc=pass action=none
- header.from=microchip.com;dkim=pass header.d=microchip.com;arc=none
+ bh=UthfyRGMjjhuCkP/cJ+WgT4XUI61ZuLHjEFjYI+L+x0=;
+ b=CUFXrUKmasn6OKaxyzIo9K+iNMWCx+Nnwxh9EcryF+Mw4elcp3OcbohVSPq2KALAblIoCIVP9vFQGAzfKpOa28CgCImKvyBT5WQEz4u/WW39ahSNHGlqV/IaotgcVPJNbxyPCTi83JGHTx7NkA4FXZd/pDL4j1/BGX/G4CO39xzO/B1nGhQaja0H4HsbGoP0/QhCUjbNwneUh0qtAIkVOJS3yIgtIKPXRG2xmzCr+NJhLs0NoNksspby+R5vu5w4PCXW8LzgD4dBHrOVQ7ZQ8iDe5uFzj7VQmG//j8VHz2p0uW5jYN+S99gr6eCCGaunZfFaBoXjXbyu8PuiCCvltg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1;spf=pass (sender ip is
+ 137.71.25.55) smtp.rcpttodomain=usp.br
+ smtp.mailfrom=analog.com;dmarc=bestguesspass action=none
+ header.from=analog.com;dkim=none (message not signed);arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector1-microchiptechnology-onmicrosoft-com;
+ d=analog.onmicrosoft.com; s=selector2-analog-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=UdhnouhEKMMu+QZRhJg7pnlQ60ZuJ2/baK6CduWk0I8=;
- b=iuOLSJt8raKf9qDdZF9iaDCqxTmeRXNHHACC/mgZB+sFk2l34+X0GMIpAyGgfjX7zrFCbHoCIyRIXvzUXhiNkIgHCAVbudCX9uZIQ3LTy0O+/+ByoekyxRWNSGgbYPx1Wwl3aRmJg6+AI8x9xp7Lrgnw8sHOuVBKmNowul0Drzg=
-Received: from MWHPR11MB1373.namprd11.prod.outlook.com (10.169.234.141) by
- MWHPR11MB1984.namprd11.prod.outlook.com (10.175.54.11) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2115.13; Thu, 25 Jul 2019 21:31:37 +0000
-Received: from MWHPR11MB1373.namprd11.prod.outlook.com
- ([fe80::5836:a39e:ab17:983b]) by MWHPR11MB1373.namprd11.prod.outlook.com
- ([fe80::5836:a39e:ab17:983b%7]) with mapi id 15.20.2115.005; Thu, 25 Jul 2019
- 21:31:37 +0000
-From: <Adham.Abozaeid@microchip.com>
-To: <linux-wireless@vger.kernel.org>
-Subject: [PATCH 6/6] staging: wilc1000: remove manual sleep mode
-Thread-Topic: [PATCH 6/6] staging: wilc1000: remove manual sleep mode
-Thread-Index: AQHVQzBXBZBvQVoDpUOfPHfWOT1C6w==
-Date: Thu, 25 Jul 2019 21:31:37 +0000
-Message-ID: <20190725213125.2810-7-adham.abozaeid@microchip.com>
-References: <20190725213125.2810-1-adham.abozaeid@microchip.com>
-In-Reply-To: <20190725213125.2810-1-adham.abozaeid@microchip.com>
+ bh=UthfyRGMjjhuCkP/cJ+WgT4XUI61ZuLHjEFjYI+L+x0=;
+ b=7YDVbiCGJ8DKkF85ZFLt3CbjyDof7MArDgJ33wHENIYuGQyL3zLqTyZsnpEMmx1fAvqLArqMvdXfiUOhtZDIqsHsMRVynctm9cVymnYqBp/hHW+KwpjBPMmt5MVWwfHBwkJNsZR5uNm7GlfC8FcU5WtJNlmfgsO/mRCRO2ymrbo=
+Received: from MWHPR03CA0017.namprd03.prod.outlook.com (2603:10b6:300:117::27)
+ by CY4PR03MB2949.namprd03.prod.outlook.com (2603:10b6:903:12f::15)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2115.10; Fri, 26 Jul
+ 2019 05:30:34 +0000
+Received: from BL2NAM02FT045.eop-nam02.prod.protection.outlook.com
+ (2a01:111:f400:7e46::201) by MWHPR03CA0017.outlook.office365.com
+ (2603:10b6:300:117::27) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.2115.10 via Frontend
+ Transport; Fri, 26 Jul 2019 05:30:34 +0000
+Received-SPF: Pass (protection.outlook.com: domain of analog.com designates
+ 137.71.25.55 as permitted sender) receiver=protection.outlook.com;
+ client-ip=137.71.25.55; helo=nwd2mta1.analog.com;
+Received: from nwd2mta1.analog.com (137.71.25.55) by
+ BL2NAM02FT045.mail.protection.outlook.com (10.152.77.16) with Microsoft SMTP
+ Server (version=TLS1_0, cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.2115.10
+ via Frontend Transport; Fri, 26 Jul 2019 05:30:29 +0000
+Received: from NWD2HUBCAS9.ad.analog.com (nwd2hubcas9.ad.analog.com
+ [10.64.69.109])
+ by nwd2mta1.analog.com (8.13.8/8.13.8) with ESMTP id x6Q5UPGr023878
+ (version=TLSv1/SSLv3 cipher=AES256-SHA bits=256 verify=OK);
+ Thu, 25 Jul 2019 22:30:25 -0700
+Received: from NWD2MBX7.ad.analog.com ([fe80::190e:f9c1:9a22:9663]) by
+ NWD2HUBCAS9.ad.analog.com ([fe80::44a2:871b:49ab:ea47%12]) with mapi id
+ 14.03.0415.000; Fri, 26 Jul 2019 01:30:27 -0400
+From: "Ardelean, Alexandru" <alexandru.Ardelean@analog.com>
+To: "Popa, Stefan Serban" <StefanSerban.Popa@analog.com>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "pmeerw@pmeerw.net" <pmeerw@pmeerw.net>, "jic23@kernel.org"
+ <jic23@kernel.org>, "Hennerich, Michael" <Michael.Hennerich@analog.com>,
+ "lars@metafoo.de" <lars@metafoo.de>, "knaack.h@gmx.de" <knaack.h@gmx.de>,
+ "kartik.koolks@gmail.com" <kartik.koolks@gmail.com>
+Subject: Re: [PATCH] staging:iio:adc:ad7280a: add of_match_table entry
+Thread-Topic: [PATCH] staging:iio:adc:ad7280a: add of_match_table entry
+Thread-Index: AQHVQyS+86BK7s52fU+n6TMvYYCpcabcozOA
+Date: Fri, 26 Jul 2019 05:30:27 +0000
+Message-ID: <0e273486f1c4fb6249896225837cdf2da0fd2415.camel@analog.com>
+References: <20190725200817.31277-1-kartik.koolks@gmail.com>
+In-Reply-To: <20190725200817.31277-1-kartik.koolks@gmail.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-originating-ip: [198.175.253.81]
-x-clientproxiedby: MWHPR04CA0040.namprd04.prod.outlook.com
- (2603:10b6:300:ee::26) To MWHPR11MB1373.namprd11.prod.outlook.com
- (2603:10b6:300:25::13)
-x-ms-exchange-messagesentrepresentingtype: 1
-x-mailer: git-send-email 2.17.1
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: bddb9c8d-073a-4fe6-672d-08d71147795f
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(5600148)(711020)(4605104)(1401327)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7193020);
- SRVR:MWHPR11MB1984; 
-x-ms-traffictypediagnostic: MWHPR11MB1984:
-x-microsoft-antispam-prvs: <MWHPR11MB19844D59956F8DAD744891A18DC10@MWHPR11MB1984.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:565;
-x-forefront-prvs: 0109D382B0
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(39860400002)(366004)(136003)(396003)(346002)(376002)(189003)(199004)(11346002)(2616005)(476003)(102836004)(386003)(446003)(486006)(6916009)(2351001)(6506007)(66946007)(186003)(99286004)(2501003)(76176011)(26005)(316002)(52116002)(5660300002)(66446008)(256004)(305945005)(6486002)(25786009)(64756008)(66556008)(66476007)(53936002)(1076003)(107886003)(71200400001)(86362001)(71190400001)(4326008)(14444005)(68736007)(478600001)(8936002)(6116002)(6512007)(14454004)(50226002)(8676002)(5640700003)(81166006)(81156014)(3846002)(2906002)(6436002)(66066001)(54906003)(7736002)(36756003);
- DIR:OUT; SFP:1101; SCL:1; SRVR:MWHPR11MB1984;
- H:MWHPR11MB1373.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: microchip.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: hpyNn/sicTMkfORwNIc7t0/lWMJwjHzOQpO0ZCl3/8Rp/z8hxFRdOlN/Jyn/sNu4Anq/VcwZsXCH51eoPbF5Rqexcz3X1GSKlXdvXRJypZsZ4Aju2NXu5ncrL+BBwbNzevhMF4EwIrQPHKToWJCBJ91xhwiznCX+bz7AcgVcyeWhPagbjl58AtL5iPQrGAf/lD/oX8Dggq8sCd6qSXZHTovARKkXfLmaw0E+tQe2nvwdmNcLIee2iTArvFGtE4tt/uF3ZjOR1reg/UlckM3LzIlkJJwpFCGSz6BxfecTekoj+pT8dVlvU4MeHJDb1VQGsFvTkuF9aukaOldF3HOZ5ahHzQh+pXSgieAy3CD/OfglNhGeaie2grNqac87YdMNBbpoFG1mJ3BeBUJt6dVjnTw0eQIVAzDiWpkr6WNM4gE=
+x-originating-ip: [10.48.65.145]
+x-adiroutedonprem: True
+Content-ID: <F7D36C623BFDDE4C91223E58A4241AF8@analog.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: bddb9c8d-073a-4fe6-672d-08d71147795f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Jul 2019 21:31:37.5392 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: adham.abozaeid@microchip.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1984
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-HT: Tenant
+X-Forefront-Antispam-Report: CIP:137.71.25.55; IPV:NLI; CTRY:US; EFV:NLI;
+ SFV:NSPM;
+ SFS:(10009020)(136003)(39860400002)(376002)(396003)(346002)(2980300002)(189003)(199004)(305945005)(8676002)(2906002)(47776003)(6246003)(7416002)(436003)(426003)(23676004)(2486003)(336012)(106002)(11346002)(356004)(446003)(76176011)(7696005)(86362001)(2201001)(3846002)(486006)(2616005)(246002)(118296001)(126002)(478600001)(36756003)(476003)(229853002)(2501003)(14454004)(5660300002)(102836004)(70586007)(4326008)(70206006)(50466002)(186003)(110136005)(7636002)(316002)(7736002)(26005)(8936002)(54906003)(6116002)(14444005)(921003)(1121003);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:CY4PR03MB2949; H:nwd2mta1.analog.com; FPR:;
+ SPF:Pass; LANG:en; PTR:nwd2mail10.analog.com; MX:1; A:1; 
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 210f9662-902c-4563-32b5-08d7118a618c
+X-Microsoft-Antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(4709080)(1401327)(2017052603328)(7193020);
+ SRVR:CY4PR03MB2949; 
+X-MS-TrafficTypeDiagnostic: CY4PR03MB2949:
+X-Microsoft-Antispam-PRVS: <CY4PR03MB29497082C0A3128F373F80EEF9C00@CY4PR03MB2949.namprd03.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:7219;
+X-Forefront-PRVS: 01106E96F6
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam-Message-Info: kSZYpEN5Zez8231iKq0Cb7UILGuZZeF8Z3c8ybNW0x1q05uFdQsOAveEisiM+UFX4zBtVkfdrwzCnxoN7Dpmu4aU1Nz1u0C5SrBjNEyJfMZcivafygFwXGMk2UlSaPvl0I2rn7LXwyvbxtaImGGD9nkmK1+c5Y+luOA3DaMi8L8dapKegaH8Wun5vrPkmh4tkGSZcq4UjatrG7gYYJuCapcMpvK9hVvUFJjbOmvazWrPQ502TTcCI/ArAADWBXl6cLnwfS2pUyyK0ObqX/hDV9j/T7xx39bwjvPCsQFaQgzR/6kHzy4b8PxplhXDWISChLGhEr11CXivnCSycaV+e8VKe2nrw2stPSM3iTNjByW4qRh4Cr7GzHqJ17YIcdsqr4vzfudp66QzI5u7OBmobHbAhnvi3P9muyVMoIMWNWM=
+X-OriginatorOrg: analog.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Jul 2019 05:30:29.5961 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 210f9662-902c-4563-32b5-08d7118a618c
+X-MS-Exchange-CrossTenant-Id: eaa689b4-8f87-40e0-9c6f-7228de4d754a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=eaa689b4-8f87-40e0-9c6f-7228de4d754a; Ip=[137.71.25.55];
+ Helo=[nwd2mta1.analog.com]
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR03MB2949
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-07-26_03:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
+ clxscore=1011 lowpriorityscore=0 mlxscore=0 impostorscore=0
+ mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.0.1-1906280000 definitions=main-1907260073
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -153,101 +149,57 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- johannes@sipsolutions.net, Ajay.Kathat@microchip.com,
- Adham.Abozaeid@microchip.com
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ "linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
+ "matheus.bernardino@usp.br" <matheus.bernardino@usp.br>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "kernel-usp@googlegroups.com" <kernel-usp@googlegroups.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Adham Abozaeid <adham.abozaeid@microchip.com>
+On Fri, 2019-07-26 at 01:38 +0530, Kartik Kulkarni wrote:
+> Add the of_device_id struct and the respective
+> of_match_device entry to complete device tree support.
+> 
 
-manual sleep mode was used to put the wilc1000 chip in sleep while in
-disconnected state. This is taken care of in the firmware
+This would be a [V2] I suppose.
 
-Signed-off-by: Adham Abozaeid <adham.abozaeid@microchip.com>
----
- drivers/staging/wilc1000/wilc_hif.c  |  4 ----
- drivers/staging/wilc1000/wilc_sdio.c |  4 +---
- drivers/staging/wilc1000/wilc_wlan.c | 14 --------------
- drivers/staging/wilc1000/wilc_wlan.h |  2 --
- 4 files changed, 1 insertion(+), 23 deletions(-)
+This change also does the rename of the driver name in a single go.
+Since it's a trivial change, it's fine from my side.
 
-diff --git a/drivers/staging/wilc1000/wilc_hif.c b/drivers/staging/wilc1000/wilc_hif.c
-index 75a6931aa147..f8646ea3b0c4 100644
---- a/drivers/staging/wilc1000/wilc_hif.c
-+++ b/drivers/staging/wilc1000/wilc_hif.c
-@@ -1056,13 +1056,9 @@ static void handle_scan_timer(struct work_struct *work)
- static void handle_scan_complete(struct work_struct *work)
- {
- 	struct host_if_msg *msg = container_of(work, struct host_if_msg, work);
--	struct wilc *wilc = msg->vif->wilc;
- 
- 	del_timer(&msg->vif->hif_drv->scan_timer);
- 
--	if (!wilc_wlan_get_num_conn_ifcs(wilc))
--		wilc_chip_sleep_manually(wilc);
--
- 	handle_scan_done(msg->vif, SCAN_EVENT_DONE);
- 
- 	kfree(msg);
-diff --git a/drivers/staging/wilc1000/wilc_sdio.c b/drivers/staging/wilc1000/wilc_sdio.c
-index 4c1c81fed11f..2f9aa36e0114 100644
---- a/drivers/staging/wilc1000/wilc_sdio.c
-+++ b/drivers/staging/wilc1000/wilc_sdio.c
-@@ -193,9 +193,7 @@ static int wilc_sdio_suspend(struct device *dev)
- 	dev_info(dev, "sdio suspend\n");
- 	chip_wakeup(wilc);
- 
--	if (!wilc->suspend_event) {
--		wilc_chip_sleep_manually(wilc);
--	} else {
-+	if (wilc->suspend_event) {
- 		host_sleep_notify(wilc);
- 		chip_allow_sleep(wilc);
- 	}
-diff --git a/drivers/staging/wilc1000/wilc_wlan.c b/drivers/staging/wilc1000/wilc_wlan.c
-index 2cbdbf0090e4..8caa3f4bcdd7 100644
---- a/drivers/staging/wilc1000/wilc_wlan.c
-+++ b/drivers/staging/wilc1000/wilc_wlan.c
-@@ -455,20 +455,6 @@ void chip_wakeup(struct wilc *wilc)
- }
- EXPORT_SYMBOL_GPL(chip_wakeup);
- 
--void wilc_chip_sleep_manually(struct wilc *wilc)
--{
--	if (wilc->chip_ps_state != WILC_CHIP_WAKEDUP)
--		return;
--	acquire_bus(wilc, WILC_BUS_ACQUIRE_ONLY);
--
--	chip_allow_sleep(wilc);
--	wilc->hif_func->hif_write_reg(wilc, 0x10a8, 1);
--
--	wilc->chip_ps_state = WILC_CHIP_SLEEPING_MANUAL;
--	release_bus(wilc, WILC_BUS_RELEASE_ONLY);
--}
--EXPORT_SYMBOL_GPL(wilc_chip_sleep_manually);
--
- void host_wakeup_notify(struct wilc *wilc)
- {
- 	acquire_bus(wilc, WILC_BUS_ACQUIRE_ONLY);
-diff --git a/drivers/staging/wilc1000/wilc_wlan.h b/drivers/staging/wilc1000/wilc_wlan.h
-index b70014142686..802f11807659 100644
---- a/drivers/staging/wilc1000/wilc_wlan.h
-+++ b/drivers/staging/wilc1000/wilc_wlan.h
-@@ -293,8 +293,6 @@ int wilc_wlan_cfg_get(struct wilc_vif *vif, int start, u16 wid, int commit,
- 		      u32 drv_handler);
- int wilc_wlan_txq_add_mgmt_pkt(struct net_device *dev, void *priv, u8 *buffer,
- 			       u32 buffer_size, void (*func)(void *, int));
--void wilc_chip_sleep_manually(struct wilc *wilc);
--
- void wilc_enable_tcp_ack_filter(struct wilc_vif *vif, bool value);
- int wilc_wlan_get_num_conn_ifcs(struct wilc *wilc);
- netdev_tx_t wilc_mac_xmit(struct sk_buff *skb, struct net_device *dev);
--- 
-2.17.1
+Reviewed-by: Alexandru Ardelean <alexandru.ardelean@analog.com>
 
+
+> Signed-off-by: Kartik Kulkarni <kartik.koolks@gmail.com>
+> Reviewed-by: Matheus Tavares <matheus.bernardino@usp.br>
+> ---
+>  drivers/staging/iio/adc/ad7280a.c | 9 ++++++++-
+>  1 file changed, 8 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/iio/adc/ad7280a.c b/drivers/staging/iio/adc/ad7280a.c
+> index 19a5f244dcae..ded0ba093a28 100644
+> --- a/drivers/staging/iio/adc/ad7280a.c
+> +++ b/drivers/staging/iio/adc/ad7280a.c
+> @@ -1027,9 +1027,16 @@ static const struct spi_device_id ad7280_id[] = {
+>  };
+>  MODULE_DEVICE_TABLE(spi, ad7280_id);
+>  
+> +static const struct of_device_id ad7280_of_match[] = {
+> +	{ .compatible = "adi,ad7280a", },
+> +	{ }
+> +};
+> +MODULE_DEVICE_TABLE(of, ad7280_of_match);
+> +
+>  static struct spi_driver ad7280_driver = {
+>  	.driver = {
+> -		.name	= "ad7280",
+> +		.name	= "ad7280a",
+> +		.of_match_table = ad7280_of_match,
+>  	},
+>  	.probe		= ad7280_probe,
+>  	.id_table	= ad7280_id,
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
