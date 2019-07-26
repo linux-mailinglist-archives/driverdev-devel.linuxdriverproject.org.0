@@ -1,56 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE50376449
-	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Jul 2019 13:22:25 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5DE2C764EC
+	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Jul 2019 13:53:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B11D088513;
-	Fri, 26 Jul 2019 11:22:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 21C082616F;
+	Fri, 26 Jul 2019 11:53:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4vyYTouERDED; Fri, 26 Jul 2019 11:22:23 +0000 (UTC)
+	with ESMTP id B0VwR1Lv6PCD; Fri, 26 Jul 2019 11:53:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 579DB884FE;
-	Fri, 26 Jul 2019 11:22:22 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 97D4D261F6;
+	Fri, 26 Jul 2019 11:53:43 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8B2291BF3EC
- for <devel@linuxdriverproject.org>; Fri, 26 Jul 2019 11:22:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D6C3D1BF3EC
+ for <devel@linuxdriverproject.org>; Fri, 26 Jul 2019 11:53:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 87FE889E6C
- for <devel@linuxdriverproject.org>; Fri, 26 Jul 2019 11:22:20 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id CE35C89C1E
+ for <devel@linuxdriverproject.org>; Fri, 26 Jul 2019 11:53:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iJLnTRJv41hb for <devel@linuxdriverproject.org>;
- Fri, 26 Jul 2019 11:22:19 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from Galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by hemlock.osuosl.org (Postfix) with ESMTPS id BFB9689E0A
- for <devel@driverdev.osuosl.org>; Fri, 26 Jul 2019 11:22:19 +0000 (UTC)
-Received: from pd9ef1cb8.dip0.t-ipconnect.de ([217.239.28.184] helo=nanos)
- by Galois.linutronix.de with esmtpsa (TLS1.2:DHE_RSA_AES_256_CBC_SHA256:256)
- (Exim 4.80) (envelope-from <tglx@linutronix.de>)
- id 1hqyIh-0000gP-7L; Fri, 26 Jul 2019 13:22:15 +0200
-Date: Fri, 26 Jul 2019 13:22:14 +0200 (CEST)
-From: Thomas Gleixner <tglx@linutronix.de>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v2] staging: most: Use DEFINE_SPINLOCK() instead of struct
- spinlock
-In-Reply-To: <20190715191933.GA10934@kroah.com>
-Message-ID: <alpine.DEB.2.21.1907261319100.1791@nanos.tec.linutronix.de>
-References: <20190704153803.12739-1-bigeasy@linutronix.de>
- <20190704153803.12739-5-bigeasy@linutronix.de>
- <20190715191933.GA10934@kroah.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+ with ESMTP id mWvVUbvoHidI for <devel@linuxdriverproject.org>;
+ Fri, 26 Jul 2019 11:53:41 +0000 (UTC)
+X-Greylist: delayed 00:08:10 by SQLgrey-1.7.6
+Received: from mail-lj1-f194.google.com (mail-lj1-f194.google.com
+ [209.85.208.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D0F1D89C19
+ for <devel@driverdev.osuosl.org>; Fri, 26 Jul 2019 11:53:40 +0000 (UTC)
+Received: by mail-lj1-f194.google.com with SMTP id d24so51197739ljg.8
+ for <devel@driverdev.osuosl.org>; Fri, 26 Jul 2019 04:53:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=joelfernandes.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=IIyzRbatR38ttllEYMMotwwVkanyqchmaJcpYBpIki0=;
+ b=pETxnGiWkSphfi8/+4c4u+22brSho8PFLYphcLagT7bB4i3SZD16fRKJ1ZGb4qp9QL
+ XlEsF8oKodWUi4PTu9/XdlUG9gA1pNqyjoA1KsmDLbgysBzBCd4nQcFsDELuCIbpAPhL
+ 21AoZAsF7HFuXv/4+6Ros9QR2I6qyBtvICViA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=IIyzRbatR38ttllEYMMotwwVkanyqchmaJcpYBpIki0=;
+ b=q5kuf637ifzYRrUIEtDTszgJzZZD2oFcrzP7/Hc0D6H6mPT0FqSjIvCn3HZne9Njrg
+ nQErqGGNmh16dj1ORkgyJh3lkUl12/5J9em08nuYoOGBtD0oNaLv13JbRoocCRgxzIrh
+ sj+M4roAutPYaA7WeDWX99FfUU6SPe+S85qguKE7gUb70nre40oEF1ytcAaN2Te1IlT9
+ 0ac2uqdDhh54n3ZfTZx5KrG2dWLwKMCFDZQp+HH9JleEoRUyUgfamWeKkgyzYY9HvrQR
+ WlCKyk54K9Tft5foa/lNlUA8tgJRGvD3eW29GSMdwQQ3Y0pqJwkRUed2UF789yldEmTg
+ C7fQ==
+X-Gm-Message-State: APjAAAXdMqRPic1B7bQjnX/0M35uKmWQmHQMhP7vY5EXTMHhB07a72R9
+ GBxh8SFRLyZ0TudklpPIcnyLPn2fqWfvcF255xI=
+X-Google-Smtp-Source: APXvYqy1v+K91LR9Uqf7ttTOrc82KHvHW4Tm7nxGruwvykh6mSwzjj9McmHGuJKaCGbsiBx37LheJaMcKc4BiMCDW/c=
+X-Received: by 2002:a2e:3602:: with SMTP id d2mr13542107lja.112.1564141528767; 
+ Fri, 26 Jul 2019 04:45:28 -0700 (PDT)
 MIME-Version: 1.0
-X-Linutronix-Spam-Score: -1.0
-X-Linutronix-Spam-Level: -
-X-Linutronix-Spam-Status: No , -1.0 points, 5.0 required, ALL_TRUSTED=-1,
- SHORTCIRCUIT=-0.0001
+References: <3b922aa4-c6d4-e4a4-766d-f324ff77f7b5@linux.com>
+ <40f8b7d8-fafa-ad99-34fb-9c63e34917e2@redhat.com>
+ <CALAqxLU199ATrMFa2ARmHOZ3K6ZnOuDLSAqNrTfwOWJaYiW7Yg@mail.gmail.com>
+ <CALAqxLU0VUp=PGx5=JuVp6c5gwLqpSZJxs7ieL631QhdzNQTyA@mail.gmail.com>
+In-Reply-To: <CALAqxLU0VUp=PGx5=JuVp6c5gwLqpSZJxs7ieL631QhdzNQTyA@mail.gmail.com>
+From: Joel Fernandes <joel@joelfernandes.org>
+Date: Fri, 26 Jul 2019 07:45:17 -0400
+Message-ID: <CAEXW_YQFKhfS=2-LkkDkSg_1XzWh9WUa__nWjqxL0Uts9yyDdg@mail.gmail.com>
+Subject: Re: Limits for ION Memory Allocator
+To: John Stultz <john.stultz@linaro.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,69 +80,135 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Peter Zijlstra <peterz@infradead.org>,
- Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- linux-kernel@vger.kernel.org, Christian Gromm <christian.gromm@microchip.com>
+Cc: dri-devel <dri-devel@lists.freedesktop.org>, Linux-MM <linux-mm@kvack.org>,
+ Benjamin Gaignard <benjamin.gaignard@linaro.org>,
+ Daniel Vetter <daniel.vetter@intel.com>,
+ Sumit Semwal <sumit.semwal@linaro.org>,
+ driverdevel <devel@driverdev.osuosl.org>,
+ Christian Brauner <christian@brauner.io>, Dmitry Vyukov <dvyukov@google.com>,
+ alex.popov@linux.com, Alistair Delva <adelva@google.com>,
+ Todd Kjos <tkjos@android.com>, Andrey Konovalov <andreyknvl@google.com>,
+ Chenbo Feng <fengc@google.com>,
+ "moderated list:DMA BUFFER SHARING FRAMEWORK" <linaro-mm-sig@lists.linaro.org>,
+ Riley Andrews <riandrews@android.com>, syzkaller <syzkaller@googlegroups.com>,
+ Martijn Coenen <maco@android.com>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ LKML <linux-kernel@vger.kernel.org>,
+ =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
+ Mark Brown <broonie@kernel.org>, Hridya Valsaraju <hridya@google.com>,
+ Brian Starkey <brian.starkey@arm.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+On Wed, Jul 24, 2019 at 4:24 PM John Stultz <john.stultz@linaro.org> wrote:
+>
+> On Wed, Jul 24, 2019 at 1:18 PM John Stultz <john.stultz@linaro.org> wrote:
+> >
+> > On Wed, Jul 24, 2019 at 12:36 PM Laura Abbott <labbott@redhat.com> wrote:
+> > >
+> > > On 7/17/19 12:31 PM, Alexander Popov wrote:
+> > > > Hello!
+> > > >
+> > > > The syzkaller [1] has a trouble with fuzzing the Linux kernel with ION Memory
+> > > > Allocator.
+> > > >
+> > > > Syzkaller uses several methods [2] to limit memory consumption of the userspace
+> > > > processes calling the syscalls for testing the kernel:
+> > > >   - setrlimit(),
+> > > >   - cgroups,
+> > > >   - various sysctl.
+> > > > But these methods don't work for ION Memory Allocator, so any userspace process
+> > > > that has access to /dev/ion can bring the system to the out-of-memory state.
+> > > >
+> > > > An example of a program doing that:
+> > > >
+> > > >
+> > > > #include <sys/types.h>
+> > > > #include <sys/stat.h>
+> > > > #include <fcntl.h>
+> > > > #include <stdio.h>
+> > > > #include <linux/types.h>
+> > > > #include <sys/ioctl.h>
+> > > >
+> > > > #define ION_IOC_MAGIC         'I'
+> > > > #define ION_IOC_ALLOC         _IOWR(ION_IOC_MAGIC, 0, \
+> > > >                                     struct ion_allocation_data)
+> > > >
+> > > > struct ion_allocation_data {
+> > > >       __u64 len;
+> > > >       __u32 heap_id_mask;
+> > > >       __u32 flags;
+> > > >       __u32 fd;
+> > > >       __u32 unused;
+> > > > };
+> > > >
+> > > > int main(void)
+> > > > {
+> > > >       unsigned long i = 0;
+> > > >       int fd = -1;
+> > > >       struct ion_allocation_data data = {
+> > > >               .len = 0x13f65d8c,
+> > > >               .heap_id_mask = 1,
+> > > >               .flags = 0,
+> > > >               .fd = -1,
+> > > >               .unused = 0
+> > > >       };
+> > > >
+> > > >       fd = open("/dev/ion", 0);
+> > > >       if (fd == -1) {
+> > > >               perror("[-] open /dev/ion");
+> > > >               return 1;
+> > > >       }
+> > > >
+> > > >       while (1) {
+> > > >               printf("iter %lu\n", i);
+> > > >               ioctl(fd, ION_IOC_ALLOC, &data);
+> > > >               i++;
+> > > >       }
+> > > >
+> > > >       return 0;
+> > > > }
+> > > >
+> > > >
+> > > > I looked through the code of ion_alloc() and didn't find any limit checks.
+> > > > Is it currently possible to limit ION kernel allocations for some process?
+> > > >
+> > > > If not, is it a right idea to do that?
+> > > > Thanks!
+> > > >
+> > >
+> > > Yes, I do think that's the right approach. We're working on moving Ion
+> > > out of staging and this is something I mentioned to John Stultz. I don't
+> > > think we've thought too hard about how to do the actual limiting so
+> > > suggestions are welcome.
+> >
+> > In part the dmabuf heaps allow for separate heap devices, so we can
+> > have finer grained permissions to the specific heaps.  But that
+> > doesn't provide any controls on how much memory one process could
+> > allocate using the device if it has permission.
+> >
+> > I suspect the same issue is present with any of the dmabuf exporters
+> > (gpu/display drivers, etc), so this is less of an ION/dmabuf heap
+> > issue and more of a dmabuf core accounting issue.
+> >
+>
+> Also, do unmapped memfd buffers have similar accounting issues?
+>
 
-For spinlocks the type spinlock_t should be used instead of "struct
-spinlock".
+The syzcaller bot didn't complain about this for memfd yet, so I suspect not ;-)
 
-Use DEFINE_SPINLOCK() and spare the run time initialization
+With memfd since it uses shmem underneath, __vm_enough_memory() is
+called during shmem_acct_block() which should take per-process memory
+into account already and fail if there is not enough memory.
 
-Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-Link: https://lkml.kernel.org/r/20190704153803.12739-5-bigeasy@linutronix.de
----
-V2: Rebase on 5.3-rc1. Massaged change log
----
- drivers/staging/most/net/net.c     |    3 +--
- drivers/staging/most/video/video.c |    3 +--
- 2 files changed, 2 insertions(+), 4 deletions(-)
+Should ION be doing something similar to fail if there's not enough memory?
 
---- a/drivers/staging/most/net/net.c
-+++ b/drivers/staging/most/net/net.c
-@@ -69,7 +69,7 @@ struct net_dev_context {
- 
- static struct list_head net_devices = LIST_HEAD_INIT(net_devices);
- static struct mutex probe_disc_mt; /* ch->linked = true, most_nd_open */
--static struct spinlock list_lock; /* list_head, ch->linked = false, dev_hold */
-+static DEFINE_SPINLOCK(list_lock); /* list_head, ch->linked = false, dev_hold */
- static struct core_component comp;
- 
- static int skb_to_mamac(const struct sk_buff *skb, struct mbo *mbo)
-@@ -509,7 +509,6 @@ static int __init most_net_init(void)
- {
- 	int err;
- 
--	spin_lock_init(&list_lock);
- 	mutex_init(&probe_disc_mt);
- 	err = most_register_component(&comp);
- 	if (err)
---- a/drivers/staging/most/video/video.c
-+++ b/drivers/staging/most/video/video.c
-@@ -54,7 +54,7 @@ struct comp_fh {
- };
- 
- static struct list_head video_devices = LIST_HEAD_INIT(video_devices);
--static struct spinlock list_lock;
-+static DEFINE_SPINLOCK(list_lock);
- 
- static inline bool data_ready(struct most_video_dev *mdev)
- {
-@@ -538,7 +538,6 @@ static int __init comp_init(void)
- {
- 	int err;
- 
--	spin_lock_init(&list_lock);
- 	err = most_register_component(&comp);
- 	if (err)
- 		return err;
+thanks,
+
+- Joel
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
