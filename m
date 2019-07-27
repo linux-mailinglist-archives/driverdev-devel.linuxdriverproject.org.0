@@ -1,82 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C1090778BE
-	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Jul 2019 14:36:48 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4C1F0778C5
+	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Jul 2019 14:47:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5951B22902;
-	Sat, 27 Jul 2019 12:36:47 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7E8FC89442;
+	Sat, 27 Jul 2019 12:47:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FJMsjs8EBuYs; Sat, 27 Jul 2019 12:36:46 +0000 (UTC)
+	with ESMTP id KVh2WX0+szYm; Sat, 27 Jul 2019 12:47:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E680A20411;
-	Sat, 27 Jul 2019 12:36:44 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AE1D98942C;
+	Sat, 27 Jul 2019 12:47:05 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E55101BF37C
- for <devel@linuxdriverproject.org>; Sat, 27 Jul 2019 12:36:42 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9CEA71BF37C
+ for <devel@linuxdriverproject.org>; Sat, 27 Jul 2019 12:47:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DD7848841E
- for <devel@linuxdriverproject.org>; Sat, 27 Jul 2019 12:36:42 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9897F89427
+ for <devel@linuxdriverproject.org>; Sat, 27 Jul 2019 12:47:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KcFnDVrVty3I for <devel@linuxdriverproject.org>;
- Sat, 27 Jul 2019 12:36:42 +0000 (UTC)
+ with ESMTP id 3kra6gwapX5q for <devel@linuxdriverproject.org>;
+ Sat, 27 Jul 2019 12:47:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
- [209.85.214.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2F1028841A
- for <devel@driverdev.osuosl.org>; Sat, 27 Jul 2019 12:36:42 +0000 (UTC)
-Received: by mail-pl1-f194.google.com with SMTP id c14so25691921plo.0
- for <devel@driverdev.osuosl.org>; Sat, 27 Jul 2019 05:36:42 -0700 (PDT)
+Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
+ [209.85.215.193])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0A60989424
+ for <devel@driverdev.osuosl.org>; Sat, 27 Jul 2019 12:47:04 +0000 (UTC)
+Received: by mail-pg1-f193.google.com with SMTP id t132so26019300pgb.9
+ for <devel@driverdev.osuosl.org>; Sat, 27 Jul 2019 05:47:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=BcNT+MFCkxdPKPzetxscvcsG7DH/SGCqmRYrqRRIav8=;
- b=t9FogJPyaEYktz+rgn930epLshe+hxaW1YbRK3b7otL2/m53rWbC7Mfrz1R/8BEemu
- PfHYVYDlNHh8X1rgH47s7tNIxECURl0fPvD746WU8S7y9NNB/EMMIlYn89sGU0G92CUv
- VKDI5M/s6SZntF3LPSEmvgg0JvrGby6PFFYq3x3B1lB6JjNPf8pFdpW3n6ZDs5sxGJZw
- d2oEPd37Hb2rgoJWJurflOIxaFOYALZg81RBt3c71LnNywXMCPwoRWMhkQshy6zMng9/
- ThQclJMiOd79DmFc4thzcYW6SSOrvHXxZi11iP6XEoC1IYE092za6Gej0lK/MWvTHtSS
- EVsg==
+ :user-agent; bh=vCgH18Sx+HG3PjjMYsyJR+T5KOZZ1lCW+dOldljDzvU=;
+ b=XJc/Z0EaEU4mkmhHwZ/sDYw7Vun3wx5kEA6+/KUnOX5FT9/bJyQQBGulBfHXI8kosg
+ TLWKOD5Y0oYcoGvxX1v42XNkBbDqmDQ/4jqera5P5HKX928NIztp1ZGtwDEIl3ASg1js
+ 2BzR/1pDU/t59iX0oozRc0aTAv03WSNsewRwk5mpo0241UvBPKBxu+aW9nHBtFKLP0me
+ pz+JXZa3xKSqNqLimzJDN8AcYBToC6KngjJsVb1QQfiVhbN7RgS/4QveJmSymeX5+eds
+ q0Iad3lexazmGkmtNuQkIwtHO+4XBzPxCuDRZWTd8N6OtQFGLIr6QwF5+p0urMicmwuY
+ cpOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=BcNT+MFCkxdPKPzetxscvcsG7DH/SGCqmRYrqRRIav8=;
- b=RTFZgAPSJByG8OVQleV8yFdFqRPBlhvmNbd90lqnZFmgy/Y2TVj3Aw5xeVaDtcoCQ0
- m9CxKruEAHhIgjO+dnQt75NVhAIvZ0PnGVcMdaD91irxtG93VwQDgqYAXVH6lA2asBTK
- 6EbSih9LnSYFHJstL6nHV0DYfEuHCXnY1ur6514U3cKckrakZSTFfRsmHwvm2X5CzN8A
- aMGUG/aZCExeQjtjT9d7KDNlrc6rROTcecakcGDkSOc+D6pSUj/K6p1LBnAcPNPNVzoA
- L2raQwdBTbyYTPUZE7aVVypNxX9wFoUuD5wsvE732EPL/bQK7nqAxAnoyXTlbKt8mXba
- df4Q==
-X-Gm-Message-State: APjAAAW6ljnSGsN5pbh0pDKPAXVyfPyxAQB2Xyg21jW3aELJWlAniAUr
- M4Zc6XcidK4EBisS3e4WhCU=
-X-Google-Smtp-Source: APXvYqyy2ApCW47XDeDmB6DunhoI/d98KYyUxu1caSkKE93oDf+RvAIeTJDyNX18mJKLmClqoRZ0mg==
-X-Received: by 2002:a17:902:4124:: with SMTP id
- e33mr94564573pld.6.1564231001740; 
- Sat, 27 Jul 2019 05:36:41 -0700 (PDT)
+ bh=vCgH18Sx+HG3PjjMYsyJR+T5KOZZ1lCW+dOldljDzvU=;
+ b=rq8jQHZXyssz2Qc5+LEzK5LEG/X5ylvWtX4XGYwougNSE8dpr3ultkHiDHYGzEGZrj
+ 5saZfY+k9ZtXcruX0S66VlEL9nTWKQhqub37gy3uD8REZ/Q0AecCRi7CV/tmSwu5IPAe
+ twlf0eYOx/z5WZd7h6e8JIz+YzKPblR555u0fui7hSCsJzvGUodBEZDtcovY9d0BVNSH
+ CjpslR281+h6Xx+X5EQfohJHRlRUeEE6oxsGQOuEy3hw9npqSlrbutORASrH6d+ri+VF
+ WKk+PZF+rL1lIHk1ulHtmHriPq9kVGhUpM3Pq+ccx7ZIGfrYxfSV74r6DN75TWdE14cR
+ 5LiA==
+X-Gm-Message-State: APjAAAVHUzPCkyvuFtbbCq9YxxrQMmujWmSoTkw5kij9CesQ31Oc4rc9
+ QtNhFsWdmJ30Z5f1SCjHBxM=
+X-Google-Smtp-Source: APXvYqy3/fig2ne1YkWYjVCjGBDdGWAGaCWbJi1DUQ/9F0vceF170kOGOvn52SdQy4awnJixaNN0kA==
+X-Received: by 2002:a65:46cf:: with SMTP id n15mr1881375pgr.267.1564231623635; 
+ Sat, 27 Jul 2019 05:47:03 -0700 (PDT)
 Received: from hari-Inspiron-1545 ([183.83.86.126])
- by smtp.gmail.com with ESMTPSA id s185sm82919285pgs.67.2019.07.27.05.36.37
+ by smtp.gmail.com with ESMTPSA id e189sm34311617pgc.15.2019.07.27.05.47.00
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 27 Jul 2019 05:36:40 -0700 (PDT)
-Date: Sat, 27 Jul 2019 18:06:35 +0530
+ Sat, 27 Jul 2019 05:47:03 -0700 (PDT)
+Date: Sat, 27 Jul 2019 18:16:58 +0530
 From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Hariprasad Kelam <hariprasad.kelam@gmail.com>,
  Larry Finger <Larry.Finger@lwfinger.net>,
- Himadri Pandya <himadri18.07@gmail.com>,
- Josenivaldo Benito Jr <jrbenito@benito.qsl.br>,
- Nishka Dasgupta <nishkadg.linux@gmail.com>,
- Shobhit Kukreti <shobhitkukreti@gmail.com>,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- hdegoede@redhat.com
-Subject: [PATCH] staging: rtl8723bs: hal: Remove function argument padapter
-Message-ID: <20190727123635.GA6797@hari-Inspiron-1545>
+ Puranjay Mohan <puranjay12@gmail.com>,
+ Jeeeun Evans <jeeeunevans@gmail.com>, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] staging: rtl8723bs: os_dep: Remove unused defines
+Message-ID: <20190727124658.GA7829@hari-Inspiron-1545>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.5.24 (2015-08-30)
@@ -97,64 +93,41 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove function argument "padapter" in rtl8723bs_init_recv_priv function
-as its not being used.
+Remove below unused defines RTW_CH_MAX_2G_CHANNEL rtw_a_rates
+RTW_A_RATES_NUM RTW_5G_CHANNELS_NUM
 
 Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 ---
- drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c | 4 ++--
- drivers/staging/rtl8723bs/include/recv_osdep.h | 2 +-
- drivers/staging/rtl8723bs/os_dep/recv_linux.c  | 2 +-
- 3 files changed, 4 insertions(+), 4 deletions(-)
+ drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c | 5 -----
+ 1 file changed, 5 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c b/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
-index e23b39a..022f8fd 100644
---- a/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
-+++ b/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
-@@ -479,7 +479,7 @@ s32 rtl8723bs_init_recv_priv(struct adapter *padapter)
- 		precvpriv->free_recv_buf_queue_cnt = 0;
- 		for (i = 0; i < n ; i++) {
- 			list_del_init(&precvbuf->list);
--			rtw_os_recvbuf_resource_free(padapter, precvbuf);
-+			rtw_os_recvbuf_resource_free(precvbuf);
- 			precvbuf++;
- 		}
- 		precvpriv->precv_buf = NULL;
-@@ -519,7 +519,7 @@ void rtl8723bs_free_recv_priv(struct adapter *padapter)
- 		precvpriv->free_recv_buf_queue_cnt = 0;
- 		for (i = 0; i < n ; i++) {
- 			list_del_init(&precvbuf->list);
--			rtw_os_recvbuf_resource_free(padapter, precvbuf);
-+			rtw_os_recvbuf_resource_free(precvbuf);
- 			precvbuf++;
- 		}
- 		precvpriv->precv_buf = NULL;
-diff --git a/drivers/staging/rtl8723bs/include/recv_osdep.h b/drivers/staging/rtl8723bs/include/recv_osdep.h
-index 1056f61..00b0e2b 100644
---- a/drivers/staging/rtl8723bs/include/recv_osdep.h
-+++ b/drivers/staging/rtl8723bs/include/recv_osdep.h
-@@ -29,7 +29,7 @@ void rtw_os_recv_resource_free(struct recv_priv *precvpriv);
- void rtw_os_free_recvframe(union recv_frame *precvframe);
+diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
+index 9bc6856..30165ca 100644
+--- a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
++++ b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
+@@ -19,8 +19,6 @@
+ #define RTW_MAX_REMAIN_ON_CHANNEL_DURATION 5000 /* ms */
+ #define RTW_MAX_NUM_PMKIDS 4
  
+-#define RTW_CH_MAX_2G_CHANNEL               14      /* Max channel in 2G band */
+-
+ static const u32 rtw_cipher_suites[] = {
+ 	WLAN_CIPHER_SUITE_WEP40,
+ 	WLAN_CIPHER_SUITE_WEP104,
+@@ -73,13 +71,10 @@ static struct ieee80211_rate rtw_rates[] = {
+ 	RATETAB_ENT(540, 0x800, 0),
+ };
  
--void rtw_os_recvbuf_resource_free(struct adapter *padapter, struct recv_buf *precvbuf);
-+void rtw_os_recvbuf_resource_free(struct recv_buf *precvbuf);
+-#define rtw_a_rates		(rtw_rates + 4)
+-#define RTW_A_RATES_NUM	8
+ #define rtw_g_rates		(rtw_rates + 0)
+ #define RTW_G_RATES_NUM	12
  
- _pkt *rtw_os_alloc_msdu_pkt(union recv_frame *prframe, u16 nSubframe_Length, u8 *pdata);
- void rtw_os_recv_indicate_pkt(struct adapter *padapter, _pkt *pkt, struct rx_pkt_attrib *pattrib);
-diff --git a/drivers/staging/rtl8723bs/os_dep/recv_linux.c b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-index 643cacc..a5070fb 100644
---- a/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-+++ b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-@@ -43,7 +43,7 @@ void rtw_os_recv_resource_free(struct recv_priv *precvpriv)
- }
+ #define RTW_2G_CHANNELS_NUM 14
+-#define RTW_5G_CHANNELS_NUM 37
  
- /* free os related resource in struct recv_buf */
--void rtw_os_recvbuf_resource_free(struct adapter *padapter, struct recv_buf *precvbuf)
-+void rtw_os_recvbuf_resource_free(struct recv_buf *precvbuf)
- {
- 	if (precvbuf->pskb) {
- 		dev_kfree_skb_any(precvbuf->pskb);
+ static struct ieee80211_channel rtw_2ghz_channels[] = {
+ 	CHAN2G(1, 2412, 0),
 -- 
 2.7.4
 
