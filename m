@@ -1,58 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CACC07790A
-	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Jul 2019 15:47:55 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 504EE77917
+	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Jul 2019 16:01:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 29988228DC;
-	Sat, 27 Jul 2019 13:47:53 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EB14187587;
+	Sat, 27 Jul 2019 14:01:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uk+uGizG2P-U; Sat, 27 Jul 2019 13:47:52 +0000 (UTC)
+	with ESMTP id x_RFzHqudPGu; Sat, 27 Jul 2019 14:01:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 3658B228AC;
-	Sat, 27 Jul 2019 13:47:49 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7FBF187568;
+	Sat, 27 Jul 2019 14:01:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 473D21BF404
- for <devel@linuxdriverproject.org>; Sat, 27 Jul 2019 13:47:47 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 795721BF404
+ for <devel@linuxdriverproject.org>; Sat, 27 Jul 2019 14:01:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3ECAE872BB
- for <devel@linuxdriverproject.org>; Sat, 27 Jul 2019 13:47:47 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7613B87561
+ for <devel@linuxdriverproject.org>; Sat, 27 Jul 2019 14:01:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zbQ7NsRHMhgN for <devel@linuxdriverproject.org>;
- Sat, 27 Jul 2019 13:47:45 +0000 (UTC)
+ with ESMTP id tfoYdbjqYJg5 for <devel@linuxdriverproject.org>;
+ Sat, 27 Jul 2019 14:01:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C1E808725A
- for <devel@driverdev.osuosl.org>; Sat, 27 Jul 2019 13:47:45 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E86FB874AD
+ for <devel@driverdev.osuosl.org>; Sat, 27 Jul 2019 14:01:06 +0000 (UTC)
 Received: from archlinux (cpc149474-cmbg20-2-0-cust94.5-4.cable.virginm.net
  [82.4.196.95])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id C12DF2084C;
- Sat, 27 Jul 2019 13:47:42 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0CA3120840;
+ Sat, 27 Jul 2019 14:01:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1564235265;
- bh=KRXC9oCHi83exKq/ds8/LJTiS0VCynJGNxGjAL+U2vM=;
+ s=default; t=1564236066;
+ bh=FSQSrO+2OwW4fijGmMlDa81a0rfWwjuQHjY9U+gpkrw=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=maYeT5lXSLwXWuZjkW4yuhX4UdvER0UdQHXIeisgC7pdvO2cNq505+DcW/X8o8IcT
- SITDqZ4pRidtzkcjgf7tVLLYR9BaV/g35+V0EtiQQ0u1L8/6Pc/7yFr22pFCUFYiEa
- osPb3hnkRTs6N/8YTf18KRTg5gaS0WKkmapRxMGM=
-Date: Sat, 27 Jul 2019 14:47:39 +0100
+ b=PjR7grEfGHOQFtuaNbz5IhNwZ5v/m+2PD7bg9i04Qhls6KRovzoTPO7oljMWSpXs6
+ TBOczKpYe2CL11a1hqLvL2sqnSaKNLMMOYBrKiP136O6NFzFJxWwVnfaSSupW1IH0/
+ sOwS2KI4W2VVqYY+OKtXZ0kSdf7snrc/eOzXwPlM=
+Date: Sat, 27 Jul 2019 15:01:01 +0100
 From: Jonathan Cameron <jic23@kernel.org>
-To: Matheus Tavares Bernardino <matheus.bernardino@usp.br>
-Subject: Re: [PATCH] staging:iio:adc:ad7280a: add of_match_table entry
-Message-ID: <20190727144739.4461b5a3@archlinux>
-In-Reply-To: <CAHd-oW5sOry2g_tQbgQ9-dp1esVStmS+UF-TTYoB2mWmzR10jQ@mail.gmail.com>
-References: <20190725200817.31277-1-kartik.koolks@gmail.com>
- <0e273486f1c4fb6249896225837cdf2da0fd2415.camel@analog.com>
- <CAHd-oW5sOry2g_tQbgQ9-dp1esVStmS+UF-TTYoB2mWmzR10jQ@mail.gmail.com>
+To: "Ardelean, Alexandru" <alexandru.Ardelean@analog.com>
+Subject: Re: [PATCH] staging: iio: ad2s1210: Use device-managed API
+Message-ID: <20190727150101.43bb4314@archlinux>
+In-Reply-To: <b7c56658547a972b4e4a2b075b2319192f89c803.camel@analog.com>
+References: <20190726110742.20445-1-hslester96@gmail.com>
+ <b7c56658547a972b4e4a2b075b2319192f89c803.camel@analog.com>
 X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -72,90 +71,82 @@ Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
  Michael" <Michael.Hennerich@analog.com>,
  "linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
  "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "kernel-usp@googlegroups.com" <kernel-usp@googlegroups.com>,
- "kartik.koolks@gmail.com" <kartik.koolks@gmail.com>,
- "pmeerw@pmeerw.net" <pmeerw@pmeerw.net>, "knaack.h@gmx.de" <knaack.h@gmx.de>,
- "Ardelean, Alexandru" <alexandru.Ardelean@analog.com>, "Popa, Stefan
- Serban" <StefanSerban.Popa@analog.com>
+ "hslester96@gmail.com" <hslester96@gmail.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Popa,
+ Stefan Serban" <StefanSerban.Popa@analog.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, 26 Jul 2019 14:59:16 -0300
-Matheus Tavares Bernardino <matheus.bernardino@usp.br> wrote:
+On Fri, 26 Jul 2019 12:36:08 +0000
+"Ardelean, Alexandru" <alexandru.Ardelean@analog.com> wrote:
 
-> On Fri, Jul 26, 2019 at 2:30 AM Ardelean, Alexandru
-> <alexandru.Ardelean@analog.com> wrote:
-> >
-> > On Fri, 2019-07-26 at 01:38 +0530, Kartik Kulkarni wrote:  
-> > > Add the of_device_id struct and the respective
-> > > of_match_device entry to complete device tree support.
-> > >  
-> >
-> > This would be a [V2] I suppose.
-> >
-> > This change also does the rename of the driver name in a single go.
-> > Since it's a trivial change, it's fine from my side.  
+> On Fri, 2019-07-26 at 19:07 +0800, Chuhong Yuan wrote:
+> > [External]
+> > 
+> > Use device-managed API to simplify the code.
+> > The remove function is redundant now and can
+> > be deleted.  
 > 
-> I think there was a small confusion when we sent the patches. Sorry
-> for that. Originally, Kartik made the rename in its own patch. Would
-> it be better if we resend the two patches separately?
-I would prefer that. They are two separate changes, and the driver
-name one may be a little unexpected so let's make sure it's obvious.
+> Reviewed-by: Alexandru Ardelean <alexandru.ardelean@analog.com>
+The end of this probe function is rather odd and probably needs sorting
+out as I imagine that needs to happen before the device is exposed to
+userspace.
 
-There is also the question on whether we should tidy up all the
-prefixing to make it clear that this is an ad7280a throughout.
+Nothing to do with this patch though which is great.
 
-Perhaps that's too painful though and we should leave it like this
-for now.
+Applied to the togreg branch of iio.git and pushed out as testing
+for the autobuilders to play with it.
 
 Thanks,
 
 Jonathan
 
-
 > 
-> Thanks,
-> Matheus
-> 
-> > Reviewed-by: Alexandru Ardelean <alexandru.ardelean@analog.com>
-> >
+> > 
+> > Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
+> > ---
+> >  drivers/staging/iio/resolver/ad2s1210.c | 12 +-----------
+> >  1 file changed, 1 insertion(+), 11 deletions(-)
+> > 
+> > diff --git a/drivers/staging/iio/resolver/ad2s1210.c b/drivers/staging/iio/resolver/ad2s1210.c
+> > index 0c1bd108c386..4b25a3a314ed 100644
+> > --- a/drivers/staging/iio/resolver/ad2s1210.c
+> > +++ b/drivers/staging/iio/resolver/ad2s1210.c
+> > @@ -671,7 +671,7 @@ static int ad2s1210_probe(struct spi_device *spi)
+> >  	indio_dev->num_channels = ARRAY_SIZE(ad2s1210_channels);
+> >  	indio_dev->name = spi_get_device_id(spi)->name;
 > >  
-> > > Signed-off-by: Kartik Kulkarni <kartik.koolks@gmail.com>
-> > > Reviewed-by: Matheus Tavares <matheus.bernardino@usp.br>
-> > > ---
-> > >  drivers/staging/iio/adc/ad7280a.c | 9 ++++++++-
-> > >  1 file changed, 8 insertions(+), 1 deletion(-)
-> > >
-> > > diff --git a/drivers/staging/iio/adc/ad7280a.c b/drivers/staging/iio/adc/ad7280a.c
-> > > index 19a5f244dcae..ded0ba093a28 100644
-> > > --- a/drivers/staging/iio/adc/ad7280a.c
-> > > +++ b/drivers/staging/iio/adc/ad7280a.c
-> > > @@ -1027,9 +1027,16 @@ static const struct spi_device_id ad7280_id[] = {
-> > >  };
-> > >  MODULE_DEVICE_TABLE(spi, ad7280_id);
-> > >
-> > > +static const struct of_device_id ad7280_of_match[] = {
-> > > +     { .compatible = "adi,ad7280a", },
-> > > +     { }
-> > > +};
-> > > +MODULE_DEVICE_TABLE(of, ad7280_of_match);
-> > > +
-> > >  static struct spi_driver ad7280_driver = {
-> > >       .driver = {
-> > > -             .name   = "ad7280",
-> > > +             .name   = "ad7280a",
-> > > +             .of_match_table = ad7280_of_match,
-> > >       },
-> > >       .probe          = ad7280_probe,
-> > >       .id_table       = ad7280_id,  
-> >
-> > --
-> > You received this message because you are subscribed to the Google Groups "Kernel USP" group.
-> > To unsubscribe from this group and stop receiving emails from it, send an email to kernel-usp+unsubscribe@googlegroups.com.
-> > To view this discussion on the web visit https://groups.google.com/d/msgid/kernel-usp/0e273486f1c4fb6249896225837cdf2da0fd2415.camel%40analog.com.  
+> > -	ret = iio_device_register(indio_dev);
+> > +	ret = devm_iio_device_register(&spi->dev, indio_dev);
+> >  	if (ret)
+> >  		return ret;
+> >  
+> > @@ -683,15 +683,6 @@ static int ad2s1210_probe(struct spi_device *spi)
+> >  	return 0;
+> >  }
+> >  
+> > -static int ad2s1210_remove(struct spi_device *spi)
+> > -{
+> > -	struct iio_dev *indio_dev = spi_get_drvdata(spi);
+> > -
+> > -	iio_device_unregister(indio_dev);
+> > -
+> > -	return 0;
+> > -}
+> > -
+> >  static const struct of_device_id ad2s1210_of_match[] = {
+> >  	{ .compatible = "adi,ad2s1210", },
+> >  	{ }
+> > @@ -710,7 +701,6 @@ static struct spi_driver ad2s1210_driver = {
+> >  		.of_match_table = of_match_ptr(ad2s1210_of_match),
+> >  	},
+> >  	.probe = ad2s1210_probe,
+> > -	.remove = ad2s1210_remove,
+> >  	.id_table = ad2s1210_id,
+> >  };
+> >  module_spi_driver(ad2s1210_driver);  
 
 _______________________________________________
 devel mailing list
