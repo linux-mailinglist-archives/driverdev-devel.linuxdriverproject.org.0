@@ -1,81 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0F32E77858
-	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Jul 2019 13:06:27 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 11DE788688;
-	Sat, 27 Jul 2019 11:06:25 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hY6A349xcuLZ; Sat, 27 Jul 2019 11:06:24 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5C6DF88368;
-	Sat, 27 Jul 2019 11:06:24 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 167931BF47F
- for <devel@linuxdriverproject.org>; Sat, 27 Jul 2019 11:06:22 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id C1090778BE
+	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Jul 2019 14:36:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 126B720416
- for <devel@linuxdriverproject.org>; Sat, 27 Jul 2019 11:06:22 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5951B22902;
+	Sat, 27 Jul 2019 12:36:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id FJMsjs8EBuYs; Sat, 27 Jul 2019 12:36:46 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id E680A20411;
+	Sat, 27 Jul 2019 12:36:44 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E55101BF37C
+ for <devel@linuxdriverproject.org>; Sat, 27 Jul 2019 12:36:42 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id DD7848841E
+ for <devel@linuxdriverproject.org>; Sat, 27 Jul 2019 12:36:42 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vnRFbUGjS4QG for <devel@linuxdriverproject.org>;
- Sat, 27 Jul 2019 11:06:21 +0000 (UTC)
+ with ESMTP id KcFnDVrVty3I for <devel@linuxdriverproject.org>;
+ Sat, 27 Jul 2019 12:36:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
- [209.85.210.194])
- by silver.osuosl.org (Postfix) with ESMTPS id 78DC920404
- for <devel@driverdev.osuosl.org>; Sat, 27 Jul 2019 11:06:21 +0000 (UTC)
-Received: by mail-pf1-f194.google.com with SMTP id t16so25678626pfe.11
- for <devel@driverdev.osuosl.org>; Sat, 27 Jul 2019 04:06:21 -0700 (PDT)
+Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
+ [209.85.214.194])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 2F1028841A
+ for <devel@driverdev.osuosl.org>; Sat, 27 Jul 2019 12:36:42 +0000 (UTC)
+Received: by mail-pl1-f194.google.com with SMTP id c14so25691921plo.0
+ for <devel@driverdev.osuosl.org>; Sat, 27 Jul 2019 05:36:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=YYitJm/LwHhp29cVtN6Nj2n/w6bD2omxDxt7bEyLK9k=;
- b=FcEdk6vi7RsiOvNDxGhLvuE4EP+Nvkv8RoKdQHwrHehrmtp2o7zHXAWuTIkCPLBWQv
- r0d6h2PJJ9DOXIKkd+R5kUV3rmAMdx4ibjMQHuFyGWpoBdUERRLKex/36MPDO2VqnSYc
- 5zutKUTvmdWQE5RIp/prQ/q3VFByw/sveHDMfSdZ5kOtKPBLW/+V2jvmDso51DwoQtDJ
- hqQdkgvkf6rXnEQqK6b1WL7hZ0bIMsu8DyrH4v9l9tqk3wM18w9VPCE9u5Mj5Y9S7cgz
- yNAQfkc/oXkAGl7umAjR7maOtAUvDVmxku8hWmYZXKEBvyj9od238g5+01mfrVZP5x2I
- sClA==
+ :user-agent; bh=BcNT+MFCkxdPKPzetxscvcsG7DH/SGCqmRYrqRRIav8=;
+ b=t9FogJPyaEYktz+rgn930epLshe+hxaW1YbRK3b7otL2/m53rWbC7Mfrz1R/8BEemu
+ PfHYVYDlNHh8X1rgH47s7tNIxECURl0fPvD746WU8S7y9NNB/EMMIlYn89sGU0G92CUv
+ VKDI5M/s6SZntF3LPSEmvgg0JvrGby6PFFYq3x3B1lB6JjNPf8pFdpW3n6ZDs5sxGJZw
+ d2oEPd37Hb2rgoJWJurflOIxaFOYALZg81RBt3c71LnNywXMCPwoRWMhkQshy6zMng9/
+ ThQclJMiOd79DmFc4thzcYW6SSOrvHXxZi11iP6XEoC1IYE092za6Gej0lK/MWvTHtSS
+ EVsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=YYitJm/LwHhp29cVtN6Nj2n/w6bD2omxDxt7bEyLK9k=;
- b=OjfnSTpTNuax0n+BskMHf5K2vvHhvOcHUfFppomofvP797HgITg8gt6BWRIdQv8kAv
- eeS7RlBIQJQiQdyd5HHCIzafq2lN7//TWGKhSzVp62TuLAyJU+rbVo3MlOJRUZcX5OqO
- +YXkk7wzhPHNKNjdpdri7PWwKgzdno6IJ8cF7zHTRmFxMHY/oxXoXKZfn39zRoekJx6b
- ppQsVLVa9y9X7m6/e4aeHjdpIvf5gebZI8NirjmKUzcNH2RLPyTAk1hdy+T5D5VDJy6H
- UGHs1VhRwLzsl3qggP9x0e+xs+oSszi86B234vzzkqlEVzRAnQl3tMboXQlqeCgbIUiZ
- aojQ==
-X-Gm-Message-State: APjAAAUsJ+PYzHL7Z2jT95w72OOFQ/ZPxLrdnZyQtFnSEpoKTkrFAq4u
- y7a5utBKuXSMvhAogCRuotU=
-X-Google-Smtp-Source: APXvYqztG7Stf1/2oLY9RCeWsCRmoWJbRTy8Vwz0dyVWtsegBjSwJbT7LGIZiFst3DaFwOfIQ964vw==
-X-Received: by 2002:a63:f926:: with SMTP id h38mr6232479pgi.80.1564225581049; 
- Sat, 27 Jul 2019 04:06:21 -0700 (PDT)
+ bh=BcNT+MFCkxdPKPzetxscvcsG7DH/SGCqmRYrqRRIav8=;
+ b=RTFZgAPSJByG8OVQleV8yFdFqRPBlhvmNbd90lqnZFmgy/Y2TVj3Aw5xeVaDtcoCQ0
+ m9CxKruEAHhIgjO+dnQt75NVhAIvZ0PnGVcMdaD91irxtG93VwQDgqYAXVH6lA2asBTK
+ 6EbSih9LnSYFHJstL6nHV0DYfEuHCXnY1ur6514U3cKckrakZSTFfRsmHwvm2X5CzN8A
+ aMGUG/aZCExeQjtjT9d7KDNlrc6rROTcecakcGDkSOc+D6pSUj/K6p1LBnAcPNPNVzoA
+ L2raQwdBTbyYTPUZE7aVVypNxX9wFoUuD5wsvE732EPL/bQK7nqAxAnoyXTlbKt8mXba
+ df4Q==
+X-Gm-Message-State: APjAAAW6ljnSGsN5pbh0pDKPAXVyfPyxAQB2Xyg21jW3aELJWlAniAUr
+ M4Zc6XcidK4EBisS3e4WhCU=
+X-Google-Smtp-Source: APXvYqyy2ApCW47XDeDmB6DunhoI/d98KYyUxu1caSkKE93oDf+RvAIeTJDyNX18mJKLmClqoRZ0mg==
+X-Received: by 2002:a17:902:4124:: with SMTP id
+ e33mr94564573pld.6.1564231001740; 
+ Sat, 27 Jul 2019 05:36:41 -0700 (PDT)
 Received: from hari-Inspiron-1545 ([183.83.86.126])
- by smtp.gmail.com with ESMTPSA id h1sm73716579pfo.152.2019.07.27.04.06.16
+ by smtp.gmail.com with ESMTPSA id s185sm82919285pgs.67.2019.07.27.05.36.37
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 27 Jul 2019 04:06:19 -0700 (PDT)
-Date: Sat, 27 Jul 2019 16:36:14 +0530
+ Sat, 27 Jul 2019 05:36:40 -0700 (PDT)
+Date: Sat, 27 Jul 2019 18:06:35 +0530
 From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Shobhit Kukreti <shobhitkukreti@gmail.com>,
- Puranjay Mohan <puranjay12@gmail.com>,
- Nathan Chancellor <natechancellor@gmail.com>,
  Hariprasad Kelam <hariprasad.kelam@gmail.com>,
- Madhumitha Prabakaran <madhumithabiw@gmail.com>,
+ Larry Finger <Larry.Finger@lwfinger.net>,
+ Himadri Pandya <himadri18.07@gmail.com>,
+ Josenivaldo Benito Jr <jrbenito@benito.qsl.br>,
  Nishka Dasgupta <nishkadg.linux@gmail.com>,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: rtl8723bs: os_dep: Remove unused function argument
- sdio_device_id
-Message-ID: <20190727110614.GA4605@hari-Inspiron-1545>
+ Shobhit Kukreti <shobhitkukreti@gmail.com>,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ hdegoede@redhat.com
+Subject: [PATCH] staging: rtl8723bs: hal: Remove function argument padapter
+Message-ID: <20190727123635.GA6797@hari-Inspiron-1545>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.5.24 (2015-08-30)
@@ -96,36 +97,64 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove passing pdid as function argument to rtw_sdio_if1_init as it is
-not being used
+Remove function argument "padapter" in rtl8723bs_init_recv_priv function
+as its not being used.
 
 Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 ---
- drivers/staging/rtl8723bs/os_dep/sdio_intf.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c | 4 ++--
+ drivers/staging/rtl8723bs/include/recv_osdep.h | 2 +-
+ drivers/staging/rtl8723bs/os_dep/recv_linux.c  | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/os_dep/sdio_intf.c b/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
-index 540a7ee..cefff1e 100644
---- a/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
-+++ b/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
-@@ -315,7 +315,7 @@ static void sd_intf_stop(struct adapter *padapter)
+diff --git a/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c b/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
+index e23b39a..022f8fd 100644
+--- a/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
++++ b/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
+@@ -479,7 +479,7 @@ s32 rtl8723bs_init_recv_priv(struct adapter *padapter)
+ 		precvpriv->free_recv_buf_queue_cnt = 0;
+ 		for (i = 0; i < n ; i++) {
+ 			list_del_init(&precvbuf->list);
+-			rtw_os_recvbuf_resource_free(padapter, precvbuf);
++			rtw_os_recvbuf_resource_free(precvbuf);
+ 			precvbuf++;
+ 		}
+ 		precvpriv->precv_buf = NULL;
+@@ -519,7 +519,7 @@ void rtl8723bs_free_recv_priv(struct adapter *padapter)
+ 		precvpriv->free_recv_buf_queue_cnt = 0;
+ 		for (i = 0; i < n ; i++) {
+ 			list_del_init(&precvbuf->list);
+-			rtw_os_recvbuf_resource_free(padapter, precvbuf);
++			rtw_os_recvbuf_resource_free(precvbuf);
+ 			precvbuf++;
+ 		}
+ 		precvpriv->precv_buf = NULL;
+diff --git a/drivers/staging/rtl8723bs/include/recv_osdep.h b/drivers/staging/rtl8723bs/include/recv_osdep.h
+index 1056f61..00b0e2b 100644
+--- a/drivers/staging/rtl8723bs/include/recv_osdep.h
++++ b/drivers/staging/rtl8723bs/include/recv_osdep.h
+@@ -29,7 +29,7 @@ void rtw_os_recv_resource_free(struct recv_priv *precvpriv);
+ void rtw_os_free_recvframe(union recv_frame *precvframe);
+ 
+ 
+-void rtw_os_recvbuf_resource_free(struct adapter *padapter, struct recv_buf *precvbuf);
++void rtw_os_recvbuf_resource_free(struct recv_buf *precvbuf);
+ 
+ _pkt *rtw_os_alloc_msdu_pkt(union recv_frame *prframe, u16 nSubframe_Length, u8 *pdata);
+ void rtw_os_recv_indicate_pkt(struct adapter *padapter, _pkt *pkt, struct rx_pkt_attrib *pattrib);
+diff --git a/drivers/staging/rtl8723bs/os_dep/recv_linux.c b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
+index 643cacc..a5070fb 100644
+--- a/drivers/staging/rtl8723bs/os_dep/recv_linux.c
++++ b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
+@@ -43,7 +43,7 @@ void rtw_os_recv_resource_free(struct recv_priv *precvpriv)
  }
  
- 
--static struct adapter *rtw_sdio_if1_init(struct dvobj_priv *dvobj, const struct sdio_device_id  *pdid)
-+static struct adapter *rtw_sdio_if1_init(struct dvobj_priv *dvobj)
+ /* free os related resource in struct recv_buf */
+-void rtw_os_recvbuf_resource_free(struct adapter *padapter, struct recv_buf *precvbuf)
++void rtw_os_recvbuf_resource_free(struct recv_buf *precvbuf)
  {
- 	int status = _FAIL;
- 	struct net_device *pnetdev;
-@@ -473,7 +473,7 @@ static int rtw_drv_init(
- 		goto exit;
- 	}
- 
--	if1 = rtw_sdio_if1_init(dvobj, id);
-+	if1 = rtw_sdio_if1_init(dvobj);
- 	if (if1 == NULL) {
- 		DBG_871X("rtw_init_primarystruct adapter Failed!\n");
- 		goto free_dvobj;
+ 	if (precvbuf->pskb) {
+ 		dev_kfree_skb_any(precvbuf->pskb);
 -- 
 2.7.4
 
