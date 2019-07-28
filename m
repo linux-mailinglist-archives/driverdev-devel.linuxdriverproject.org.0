@@ -1,52 +1,87 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 774C377EED
-	for <lists+driverdev-devel@lfdr.de>; Sun, 28 Jul 2019 12:00:46 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 46FFF77F2D
+	for <lists+driverdev-devel@lfdr.de>; Sun, 28 Jul 2019 13:19:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D7E618714D;
-	Sun, 28 Jul 2019 10:00:44 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9637F884C4;
+	Sun, 28 Jul 2019 11:19:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ky-zjKJBWFt6; Sun, 28 Jul 2019 10:00:44 +0000 (UTC)
+	with ESMTP id dOnhhWlGLG6u; Sun, 28 Jul 2019 11:19:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id ABD35870F4;
-	Sun, 28 Jul 2019 10:00:43 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 56EA888250;
+	Sun, 28 Jul 2019 11:19:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 66BC81BF846
- for <devel@linuxdriverproject.org>; Sun, 28 Jul 2019 10:00:42 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 533B21BF31D
+ for <devel@linuxdriverproject.org>; Sun, 28 Jul 2019 11:19:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5BEE888220
- for <devel@linuxdriverproject.org>; Sun, 28 Jul 2019 10:00:42 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5034388250
+ for <devel@linuxdriverproject.org>; Sun, 28 Jul 2019 11:19:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Cem14CuHoFbj for <devel@linuxdriverproject.org>;
- Sun, 28 Jul 2019 10:00:41 +0000 (UTC)
+ with ESMTP id UZ6gx3FbsODM for <devel@linuxdriverproject.org>;
+ Sun, 28 Jul 2019 11:19:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from agreepath.icu (unknown [185.123.220.163])
- by whitealder.osuosl.org (Postfix) with ESMTP id A64798821F
- for <devel@driverdev.osuosl.org>; Sun, 28 Jul 2019 10:00:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail; d=agreepath.icu;
- h=From:Date:MIME-Version:To:Subject:Message-ID:Content-Type:Content-Transfer-Encoding;
- i=cayce@agreepath.icu; bh=VSrS3sKZ5NOjVA//G3PAk3/rHWg=;
- b=kmP6POx964lzGxhD3uMdL1PRT5dSlo/rISx3E2YS/yDByRrIAC30O04jI0MIRSaM7Bj2tQUlFx6g
- N655UmYZIjc0pGoWPX7643cD85R/ICodJ7pODGlYfb4Fz1C+aZY4G6cZvNct/9z8OshsPGR4tmIp
- kjyNNjd2QqGxy3AiBAM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=agreepath.icu;
- b=JCQVJbZ25vcX0EhihLtJyygxYivQrjNeQ17breFpjsYnevs2saqx58Vymb9/1yKP9RxI44FZgeMv
- /0pObqVr1HNCpGF2pKj9ga7g3wpn5n0/GcuIqDb9uGK7cY4RA5Ln/bvwEQV4qA58wjz8xe6CbF8H
- YmSInMGlRRM7BNw9VKo=;
-From: " Josefina" <cayce@agreepath.icu>
-Date: Sun, 28 Jul 2019 04:44:57 -0500
+Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
+ [209.85.215.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3575A8824F
+ for <devel@driverdev.osuosl.org>; Sun, 28 Jul 2019 11:19:28 +0000 (UTC)
+Received: by mail-pg1-f193.google.com with SMTP id f25so26810452pgv.10
+ for <devel@driverdev.osuosl.org>; Sun, 28 Jul 2019 04:19:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=B6TX782w2nBGeMiqESzq7NZYdapmEI2iIuDzWwvD73U=;
+ b=MXZ+E676Ntw3aSNHqfnVD+vV93kAQFhnjN7v5+bVIai1HEiJ9IdyRrMQj6g7+npQTL
+ To7doQ5Skx9J7FxAUX7BdrvD5EX+ReNYmjeMpEDQ/APqAaTMJNpsRVoid+drvHj7oGwh
+ BCpSC0QOV1+0uqSypplKpllUII17eXJkASlpUYFSKjRx3cv67eog3bwtAw7ma1klYER0
+ HPJZQzppsp/9xG3gC7dC8/vcStTfOt7PI+fAkd+dCRl3/5HqyJYoHKyY+JYk4DxO4k9q
+ MqZxpgHVpO4+pTOlDCe5T/Wfca6MvRt2Zmx1HqWSxoYQtAgw7BQj8A2OdTAzZUAEtehM
+ xNWg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=B6TX782w2nBGeMiqESzq7NZYdapmEI2iIuDzWwvD73U=;
+ b=LfAevK8JVO+24FEaNbgvLbJ2ks90sYaW+/6RgAeStTKimTkMuJbPOHoigbtqmo4hMl
+ CubX9PZqApGgl5pPqmzP87hMq+GBfbEMpQ3RlKMANobfkzE73gCchRLgc4VOmU36j/S9
+ VFCjB95GRg78HbWD5d56Xnk4WAIt6SE46DZJuXU/S3eB4V3+JoyTT5sU9kOJWUumkXoP
+ Ko4BxLJjA6Y7Ro7HAJ+w8GeK9qu63K4NzryxL301GXUEyxDCKmR65n7Y5PnxIwHIEXD+
+ 8INi6Hg+YOkpKimegY9U+CR5CFOzCvBP1DhDfe3neH7D8IMyPGQ5uApgt7VuIWGiAOzs
+ SPug==
+X-Gm-Message-State: APjAAAVEf4Vcj7+Mjjhe8Xb4/c2QkRSThf9lmo36jqjGSqGjHcbI3Uwc
+ lyo31wqxdbzS2YMzZWbBLuY=
+X-Google-Smtp-Source: APXvYqxxfgP0hAWjsHS3mvtNIYhn4ZiY0lxJaD8PKrUgtK38LgU7uiI2Z+xjPs4VKbPFdF41titAYg==
+X-Received: by 2002:a65:52c5:: with SMTP id z5mr85384058pgp.118.1564312767754; 
+ Sun, 28 Jul 2019 04:19:27 -0700 (PDT)
+Received: from hari-Inspiron-1545 ([183.83.86.126])
+ by smtp.gmail.com with ESMTPSA id s11sm56220185pgv.13.2019.07.28.04.19.22
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Sun, 28 Jul 2019 04:19:26 -0700 (PDT)
+Date: Sun, 28 Jul 2019 16:49:18 +0530
+From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Hariprasad Kelam <hariprasad.kelam@gmail.com>,
+ Nishka Dasgupta <nishkadg.linux@gmail.com>,
+ Mamta Shukla <mamtashukla555@gmail.com>,
+ Jeeeun Evans <jeeeunevans@gmail.com>,
+ Shobhit Kukreti <shobhitkukreti@gmail.com>,
+ Hardik Singh Rathore <hardiksingh.k@gmail.com>,
+ Puranjay Mohan <puranjay12@gmail.com>,
+ Anirudh Rayabharam <anirudh.rayabharam@gmail.com>,
+ Kimberly Brown <kimbrownkd@gmail.com>, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, Larry.Finger@lwfinger.net,
+ hdegoede@redhat.com
+Subject: [PATCH] staging: rtl8723bs: core: Remove unneeded extern WFD_OUI
+Message-ID: <20190728111918.GA24278@hari-Inspiron-1545>
 MIME-Version: 1.0
-To: <devel@driverdev.osuosl.org>
-Subject: Become A Bitcoin Billionaire with this done for you trading system
-Message-ID: <WPRS-IRWdebsow7ewg6Nxk_u6CFjFX0-RvqqBhrLalM.hPO6eB9uuNIoZFHOSwF3lqcKdGrW-BiX7z65OeG4U6g@agreepath.icu>
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,49 +94,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-A smart man (or woman) knows a great opportunity when he or she sees one=E2=
-=80=A6 and this is one that everybody who=E2=80=99s interested in improving=
- their financial future should take advantage of =E2=80=93 FAST! =
+Remove unneeded extern variable "extern unsigned char WFD_OUI"
 
+Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+---
+ drivers/staging/rtl8723bs/core/rtw_ap.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-For a limited time, I am revealing my Bitcoin Trading system, that will tur=
-n you to a millionaire almost overnight
+diff --git a/drivers/staging/rtl8723bs/core/rtw_ap.c b/drivers/staging/rtl8723bs/core/rtw_ap.c
+index 7bd5c61..2bb20762 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_ap.c
++++ b/drivers/staging/rtl8723bs/core/rtw_ap.c
+@@ -13,7 +13,6 @@ extern unsigned char RTW_WPA_OUI[];
+ extern unsigned char WMM_OUI[];
+ extern unsigned char WPS_OUI[];
+ extern unsigned char P2P_OUI[];
+-extern unsigned char WFD_OUI[];
+ 
+ void init_mlme_ap_info(struct adapter *padapter)
+ {
+-- 
+2.7.4
 
->> http://www.agreepath.icu/Ioemnoy/bbysbcmm32609rhjzdyq/ak_Y8kxWEJjb_WDug4=
-VzmQKnpLANnhHgH5vb_lmVo9U/oxRvmebh3fazg9vKna3JVO0U5dKMrerfVgTUDbXAvhK_jW-Jp=
-N2_55-urcRlFoMbuAoIqJWD0pmm89Jh2leihda7GeYXuBDrnGOuaIfsmmUu5MRrDKF05euu2qit=
-6YEOaeVsqMmNK_YuiGPnLOrwia9fVVeCXd1pUVh1sCC1FM4 <<
-
-Don't believe me? Well check for yourself. I have helped hundreds make hund=
-reds of thousands of dollars with only $20 investments at times. Take advan=
-tage of this information now, before too many people water down this simple=
- method, that no one realizes exists.
-
-Sincerely,
- Josefina
-
-
-
-if you no longer wish for me to contact you and want to be removed off my d=
-atabase please follow the link below:
-http://www.agreepath.icu/vcoyxnnze/4MF1CCs1hVUp1dXCeVVf9aiwrOLnPGiuY_KNmMqs=
-VeaOEY6tiq2uue50FKDrRM5uUmmsfIauOGnrDBuXYeG7adhiel2hJ98mmp0DWJqIoAubMoFlRcr=
-u-55_2NpJ-Wj_KhvAXbDUTgVfrerMKd5U0OVJ3anKv9gzaf3hbemvRxo.U9oVml_bv5HgHhnNAL=
-pnKQmzV4guDW_bjJEWxk8Y_ka
-361 Chapel Road Shelton, CT 06484
-
-
-
-You can report abuse below:
-http://www.agreepath.icu/ayybzot/4MF1CCs1hVUp1dXCeVVf9aiwrOLnPGiuY_KNmMqsVe=
-aOEY6tiq2uue50FKDrRM5uUmmsfIauOGnrDBuXYeG7adhiel2hJ98mmp0DWJqIoAubMoFlRcru-=
-55_2NpJ-Wj_KhvAXbDUTgVfrerMKd5U0OVJ3anKv9gzaf3hbemvRxo.U9oVml_bv5HgHhnNALpn=
-KQmzV4guDW_bjJEWxk8Y_ka
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
