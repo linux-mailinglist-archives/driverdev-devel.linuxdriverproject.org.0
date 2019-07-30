@@ -1,82 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 202B07A5EC
-	for <lists+driverdev-devel@lfdr.de>; Tue, 30 Jul 2019 12:24:53 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E4F667AA41
+	for <lists+driverdev-devel@lfdr.de>; Tue, 30 Jul 2019 15:55:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 20722863BE;
-	Tue, 30 Jul 2019 10:24:51 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D0B4C85BEC;
+	Tue, 30 Jul 2019 13:55:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id j8epdHcNcjjn; Tue, 30 Jul 2019 10:24:50 +0000 (UTC)
+	with ESMTP id MJCOxboWjrwG; Tue, 30 Jul 2019 13:55:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 894468639B;
-	Tue, 30 Jul 2019 10:24:49 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 84E4E85C19;
+	Tue, 30 Jul 2019 13:55:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 401C81BF27F
- for <devel@linuxdriverproject.org>; Tue, 30 Jul 2019 10:24:48 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id CDF7A1BF834
+ for <devel@linuxdriverproject.org>; Tue, 30 Jul 2019 13:55:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3C3D486373
- for <devel@linuxdriverproject.org>; Tue, 30 Jul 2019 10:24:48 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id CAB0A20418
+ for <devel@linuxdriverproject.org>; Tue, 30 Jul 2019 13:55:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xA4PeLBp+b24 for <devel@linuxdriverproject.org>;
- Tue, 30 Jul 2019 10:24:47 +0000 (UTC)
+ with ESMTP id xkZwiIAjDAnI for <devel@linuxdriverproject.org>;
+ Tue, 30 Jul 2019 13:55:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
- [209.85.215.193])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 268E18628A
- for <devel@driverdev.osuosl.org>; Tue, 30 Jul 2019 10:24:47 +0000 (UTC)
-Received: by mail-pg1-f193.google.com with SMTP id f20so20598589pgj.0
- for <devel@driverdev.osuosl.org>; Tue, 30 Jul 2019 03:24:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=PpkuFgEpyrfTUn2xO93gAkOHvkzw/VpUAN2pijyls6U=;
- b=i2D2zmIM4ny6wmoPxR2fSSipScSI/XAkAlZZjNtJiFjveqSDh7apLS0aLxVPcO7J7F
- ftCu4WiPU41LhKu3ChkWomPRlxIa0aHVFvIGF7MilnjQAMPPNAup7H+RKw2Gc/OHXP+6
- itoTx38nN8845TcXtwB1kd/cNQzwW0zkWzMDdYpsNXsSI+kyG7Es7mABVmiOEkbIFibA
- uGO1SWOsGb5HYI0LY04jiakQA6V4UiI3+vNnZX0qHBq5SNAm21s1Lq/EUahrcYb41InY
- cPgAJHeEnO8W9ZoEPB0r/+zvdKDqqrBxETuOkK6c9R1YDjfTxM9ZDr4tczITMpdiSPfL
- b+3w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=PpkuFgEpyrfTUn2xO93gAkOHvkzw/VpUAN2pijyls6U=;
- b=rEnP5n+1psgHy7sTXbJr9m+KUwRkR7OecU9d8j6caZz8AKjwFB2DiZJsKw52TCyH4e
- NvNPxISR1MWtMVoarPw0D//8PAZITWZqDhle7IAZ/KWsh/keIIYb0BKw/ndg4b2W1bxe
- WbJg1ZvhtFLiKZ8d/MJpNc+h1gYBuSQvdv0f9i2mIi5W/t1zM8MPaJF+tBv1cTBYVASV
- 2Zyc6ZtWPUnTob5NVN6nCptNo9C1AHcq10fvAXYCCo1ogvvRvQ71YISx4r636hcsRRw6
- Q/ZCMpByIqzkpSdaqSx+F/N1gtQUaLfNg59ZJPpcykAx8WX2i72EjRPD3bhAH5jdmvui
- GH8g==
-X-Gm-Message-State: APjAAAVVFS+4Q9VyUlcuoFQlf/q2UFiPbgazIeba1XO9LG8DRYn3y/Ou
- 2TlYuZVzXzE6wfW6p623RLM=
-X-Google-Smtp-Source: APXvYqwA8gWk7GLzEOo/IlpB9GVuTNJbHsDBEkm5fOjRfwYQi/1Pa+NxWHVSXFOHqNHnEhwFE2YlXA==
-X-Received: by 2002:a63:2cd1:: with SMTP id
- s200mr103839175pgs.10.1564482286634; 
- Tue, 30 Jul 2019 03:24:46 -0700 (PDT)
-Received: from bharath12345-Inspiron-5559 ([103.110.42.31])
- by smtp.gmail.com with ESMTPSA id p27sm98530002pfq.136.2019.07.30.03.24.42
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 30 Jul 2019 03:24:46 -0700 (PDT)
-Date: Tue, 30 Jul 2019 15:54:39 +0530
-From: Bharath Vedartham <linux.bhar@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [Linux-kernel-mentees][PATCH v4] staging: kpc2000: Convert
- put_page to put_user_page*()
-Message-ID: <20190730102439.GA6825@bharath12345-Inspiron-5559>
-References: <20190730092843.GA5150@bharath12345-Inspiron-5559>
- <20190730093606.GA15402@kroah.com>
+Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
+ by silver.osuosl.org (Postfix) with ESMTPS id 88E47203C2
+ for <devel@driverdev.osuosl.org>; Tue, 30 Jul 2019 13:55:38 +0000 (UTC)
+Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id E803C32C4CC4C3C17D3C;
+ Tue, 30 Jul 2019 21:55:32 +0800 (CST)
+Received: from localhost (10.133.213.239) by DGGEMS413-HUB.china.huawei.com
+ (10.3.19.213) with Microsoft SMTP Server id 14.3.439.0; Tue, 30 Jul 2019
+ 21:55:23 +0800
+From: YueHaibing <yuehaibing@huawei.com>
+To: <gregkh@linuxfoundation.org>, <willy@infradead.org>, <davem@davemloft.net>
+Subject: [PATCH] staging/octeon: Fix build error without CONFIG_NETDEVICES
+Date: Tue, 30 Jul 2019 21:53:45 +0800
+Message-ID: <20190730135345.42760-1-yuehaibing@huawei.com>
+X-Mailer: git-send-email 2.10.2.windows.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190730093606.GA15402@kroah.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Originating-IP: [10.133.213.239]
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,28 +58,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, John Hubbard <jhubbard@nvidia.com>,
- linux-kernel@vger.kernel.org, linux-mm@kvack.org,
- =?iso-8859-1?B?Suly9G1l?= Glisse <jglisse@redhat.com>,
- linux-kernel-mentees@lists.linuxfoundation.org
+Cc: devel@driverdev.osuosl.org, YueHaibing <yuehaibing@huawei.com>,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Jul 30, 2019 at 11:36:06AM +0200, Greg KH wrote:
-> On Tue, Jul 30, 2019 at 02:58:44PM +0530, Bharath Vedartham wrote:
-> > put_page() to put_user_page*()
-> 
-> What does this mean?
+While do COMPILE_TEST build without CONFIG_NETDEVICES,
+we get Kconfig warning:
 
-That must have been a mistake! I just wanted to forward this patch to
-the Linux-kernel-mentees mailing list. THis patch has already been taken
-by for staging-testing. I ll forward another patch just cc'ing the
-mentees mailing lists and won't disturb the other devs.
+WARNING: unmet direct dependencies detected for PHYLIB
+  Depends on [n]: NETDEVICES [=n]
+  Selected by [y]:
+  - OCTEON_ETHERNET [=y] && STAGING [=y] && (CAVIUM_OCTEON_SOC && NETDEVICES [=n] || COMPILE_TEST [=y])
 
-Thank you
-Bharath
+Reported-by: Hulk Robot <hulkci@huawei.com>
+Fixes: 171a9bae68c7 ("staging/octeon: Allow test build on !MIPS")
+Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+---
+ drivers/staging/octeon/Kconfig | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/staging/octeon/Kconfig b/drivers/staging/octeon/Kconfig
+index 5b39946..5319909 100644
+--- a/drivers/staging/octeon/Kconfig
++++ b/drivers/staging/octeon/Kconfig
+@@ -1,7 +1,8 @@
+ # SPDX-License-Identifier: GPL-2.0
+ config OCTEON_ETHERNET
+ 	tristate "Cavium Networks Octeon Ethernet support"
+-	depends on CAVIUM_OCTEON_SOC && NETDEVICES || COMPILE_TEST
++	depends on CAVIUM_OCTEON_SOC || COMPILE_TEST
++	depends on NETDEVICES
+ 	select PHYLIB
+ 	select MDIO_OCTEON
+ 	help
+-- 
+2.7.4
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
