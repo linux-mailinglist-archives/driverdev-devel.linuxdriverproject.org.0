@@ -2,66 +2,84 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3329F79D5F
-	for <lists+driverdev-devel@lfdr.de>; Tue, 30 Jul 2019 02:33:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 43DD179F69
+	for <lists+driverdev-devel@lfdr.de>; Tue, 30 Jul 2019 05:04:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 653F0860A3;
-	Tue, 30 Jul 2019 00:33:22 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D737B860DB;
+	Tue, 30 Jul 2019 03:04:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OdyMPO4JSaeh; Tue, 30 Jul 2019 00:33:21 +0000 (UTC)
+	with ESMTP id 1hsWgTyAN99R; Tue, 30 Jul 2019 03:04:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 833CA860A2;
-	Tue, 30 Jul 2019 00:33:20 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A7928846C0;
+	Tue, 30 Jul 2019 03:04:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 005471BF97F
- for <devel@linuxdriverproject.org>; Tue, 30 Jul 2019 00:33:18 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 557B41BF333
+ for <devel@linuxdriverproject.org>; Tue, 30 Jul 2019 03:04:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id EFCE5203AC
- for <devel@linuxdriverproject.org>; Tue, 30 Jul 2019 00:33:17 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4E99B846C0
+ for <devel@linuxdriverproject.org>; Tue, 30 Jul 2019 03:04:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JFwWPxllbPXK for <devel@linuxdriverproject.org>;
- Tue, 30 Jul 2019 00:33:17 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from magellan3.msh-paris.fr (magellan3.msh-paris.fr [195.221.170.15])
- by silver.osuosl.org (Postfix) with SMTP id E07DB20108
- for <devel@driverdev.osuosl.org>; Tue, 30 Jul 2019 00:33:06 +0000 (UTC)
-Received: from magellan3.msh-paris.fr (localhost.localdomain [127.0.0.1])
- by magellan3.msh-paris.fr (Proxmox) with ESMTP id 1CBA062211A;
- Mon, 29 Jul 2019 23:47:46 +0200 (CEST)
-Received: from sheliak7.ext.msh-paris.fr (unknown [193.51.124.20])
- by magellan3.msh-paris.fr (Proxmox) with SMTP id EA255622277;
- Mon, 29 Jul 2019 23:47:45 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by sheliak7.ext.msh-paris.fr (Postfix) with ESMTP id 28BB61A02AB;
- Mon, 29 Jul 2019 23:47:45 +0200 (CEST)
-Received: from sheliak7.ext.msh-paris.fr ([127.0.0.1])
- by localhost (sheliak7.ext.msh-paris.fr [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id 0tNSDp6FUPyH; Mon, 29 Jul 2019 23:47:44 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by sheliak7.ext.msh-paris.fr (Postfix) with ESMTP id 3CCEE1A02F2;
- Mon, 29 Jul 2019 23:47:44 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at sheliak7.ext.msh-paris.fr
-Received: from sheliak7.ext.msh-paris.fr ([127.0.0.1])
- by localhost (sheliak7.ext.msh-paris.fr [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id XSYzcjD80B_g; Mon, 29 Jul 2019 23:47:43 +0200 (CEST)
-Received: from [172.16.0.105] (unknown [165.16.162.210])
- by sheliak7.ext.msh-paris.fr (Postfix) with ESMTPSA id F22F51A030D;
- Mon, 29 Jul 2019 23:47:39 +0200 (CEST)
+ with ESMTP id 63qgOYYZsjyZ for <devel@linuxdriverproject.org>;
+ Tue, 30 Jul 2019 03:04:18 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A3D6C841DA
+ for <devel@driverdev.osuosl.org>; Tue, 30 Jul 2019 03:04:18 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id o13so29233054pgp.12
+ for <devel@driverdev.osuosl.org>; Mon, 29 Jul 2019 20:04:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=gD5mfEMWuXarGCctKEueAm1TQYwfzvdTbbmFFyNOtWo=;
+ b=UVBvxgZ6r/zLyKNUUmC7qzvDk5EBxkpH1aC3y+kIo97u1sg42yewB7FkZdIpZMqvpS
+ QIB4TpEnF3SyEtGHbXb/AB4jlJ9mRLrxHLY5bz5G9UFc70g+I+IJA+g1/ySrcOw/pfWt
+ tzD7FDrpyDosPIvxQacedkrga26Bv7MfrsThJiWoy5ymskilTpMy8SO2zzUd7beqKfsl
+ u4Bbb9PSRp/zymco+TgOhWf3RH0SNTve4sqmjJQ8YX7KeQehRXgKMlEsLB5DVtQL2FOR
+ sfTCYP4R/1c2eDlXt/0WCDtWBVhW7r29c2S1WcHEstdLYrR/syUqDu72U6O9LfaWd3Qt
+ 0WkQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=gD5mfEMWuXarGCctKEueAm1TQYwfzvdTbbmFFyNOtWo=;
+ b=CwK5mUrU06yUmn+8WDkcadD7p55NbWhH2+qGqN6xNp3zotIv35i6h9K/nGzKR77hI5
+ f8N3+z4AoUViszF81n3/gljiRn/sV1WXIEX6zHKQ6+H7/JNwyt8IHJBnOtec9vmOA0TM
+ OEMgXzpVSXYe9miZovX+jwezOzp4upN2kymuh9xHRt2JTcYHMZdvWE4pIz+D4UEPxbAr
+ LNYx2eSMaOAMLwxbizmiiIfEXu7F2MssrATgR7bDvenDtUPEqfb6AXYY5rM92F/2FKpE
+ aVdb4K6X3AE7+ScNNeBvZ5VT4OsEAWDidENbMxTDO8LxPgIydxebJ8xS4cKGcb3iP1D8
+ WEag==
+X-Gm-Message-State: APjAAAUvoeS50zjhloXe83t3PjXt3hMj96bWBiPUPu25p6+HaTaoT1T7
+ LhLb0iQtwxVZkVrtvzxSxUU=
+X-Google-Smtp-Source: APXvYqzdWv0EJeJ8yPP/yNdZlsxyvWTQ6kqL8q4wcSPSHXHBf6Lp1lQKBVsPsqDq/ZrNU2RgtE/OJA==
+X-Received: by 2002:a17:90a:1aa4:: with SMTP id
+ p33mr116749314pjp.27.1564455858074; 
+ Mon, 29 Jul 2019 20:04:18 -0700 (PDT)
+Received: from hari-Inspiron-1545 ([183.83.86.126])
+ by smtp.gmail.com with ESMTPSA id n185sm45771965pga.16.2019.07.29.20.04.14
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 29 Jul 2019 20:04:17 -0700 (PDT)
+Date: Tue, 30 Jul 2019 08:34:11 +0530
+From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jeeeun Evans <jeeeunevans@gmail.com>,
+ Hardik Singh Rathore <hardiksingh.k@gmail.com>,
+ Colin Ian King <colin.king@canonical.com>,
+ Mukesh Ojha <mojha@codeaurora.org>,
+ Hariprasad Kelam <hariprasad.kelam@gmail.com>,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ hdegoede@redhat.com, Larry.Finger@lwfinger.net
+Subject: [PATCH] staging: rtl8723bs: core: Remove Macro
+ "IS_MAC_ADDRESS_BROADCAST"
+Message-ID: <20190730030411.GA6140@hari-Inspiron-1545>
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: =?utf-8?q?1=2E000=2E000_Dollar_Spende_f=C3=BCr_Sie?=
-To: Recipients <kbrown@msh-paris.fr>
-From: kbrown@msh-paris.fr<>
-Date: Mon, 29 Jul 2019 23:47:34 +0200
-X-Antivirus: avast! (VPS 170219-0, 2017/02/19), Outbound message
-X-Antivirus-Status: Clean
-Message-Id: <20190729214739.F22F51A030D@sheliak7.ext.msh-paris.fr>
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,29 +92,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: m_l.wanczyk62@aol.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Herzliche Gl=FCckw=FCnsche! Ihnen, lieber Gl=FCckssieger, aus meinem Powerb=
-all-Jackpot von 758,7 Millionen Dollar habe ich beschlossen, jeweils 1.000.=
-000 Dollar an 100 gl=FCckliche Personen zu vergeben, von denen Ihre E-Mail =
-zuf=E4llig ausgew=E4hlt wurde. Weitere Informationen finden Sie auf YouTube=
- unter https://youtu.be/q0Bpez2Z7c0
-F=FCr weitere Informationen kontaktieren Sie diese E-Mail: m_l.wanczyk62@ao=
-l.com
+Remove unused macro IS_MAC_ADDRESS_BROADCAST. In future if one wants use
+it ,use generic API "is_broadcast_ether_addr"
 
-Vielen Dank
-Frau Mavis L. Wanczyk
-m_l.wanczyk62@aol.com
-
+Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 ---
-This email is free from viruses and malware because avast! Antivirus protec=
-tion is active.
-https://www.avast.com/antivirus
+ drivers/staging/rtl8723bs/core/rtw_ioctl_set.c | 7 -------
+ 1 file changed, 7 deletions(-)
 
+diff --git a/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c b/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c
+index 8eb0ff5..eb08569 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c
++++ b/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c
+@@ -9,13 +9,6 @@
+ #include <drv_types.h>
+ #include <rtw_debug.h>
+ 
+-#define IS_MAC_ADDRESS_BROADCAST(addr) \
+-(\
+-	((addr[0] == 0xff) && (addr[1] == 0xff) && \
+-		(addr[2] == 0xff) && (addr[3] == 0xff) && \
+-		(addr[4] == 0xff) && (addr[5] == 0xff))  ? true : false \
+-)
+-
+ u8 rtw_validate_bssid(u8 *bssid)
+ {
+ 	u8 ret = true;
+-- 
+2.7.4
 
 _______________________________________________
 devel mailing list
