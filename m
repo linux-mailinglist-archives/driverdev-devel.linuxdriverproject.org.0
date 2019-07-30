@@ -1,42 +1,42 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4FB3F7A1B7
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D3EDC7A1B8
 	for <lists+driverdev-devel@lfdr.de>; Tue, 30 Jul 2019 09:15:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B7FD286457;
-	Tue, 30 Jul 2019 07:15:10 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7381B2079A;
+	Tue, 30 Jul 2019 07:15:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Obk3S+rGktGz; Tue, 30 Jul 2019 07:15:09 +0000 (UTC)
+	with ESMTP id JMaWvCI9GLz0; Tue, 30 Jul 2019 07:15:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0C9B386372;
-	Tue, 30 Jul 2019 07:14:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9D36520778;
+	Tue, 30 Jul 2019 07:14:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 74C8E1BF2FA
- for <devel@linuxdriverproject.org>; Tue, 30 Jul 2019 07:14:50 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id AF4951BF2FA
+ for <devel@linuxdriverproject.org>; Tue, 30 Jul 2019 07:14:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 71CEB844DA
- for <devel@linuxdriverproject.org>; Tue, 30 Jul 2019 07:14:50 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id AB07620527
+ for <devel@linuxdriverproject.org>; Tue, 30 Jul 2019 07:14:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TFRFzfDRomGE for <devel@linuxdriverproject.org>;
- Tue, 30 Jul 2019 07:14:49 +0000 (UTC)
+ with ESMTP id IAtFdOtjTrNc for <devel@linuxdriverproject.org>;
+ Tue, 30 Jul 2019 07:14:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id EB8C6844FB
- for <devel@driverdev.osuosl.org>; Tue, 30 Jul 2019 07:14:48 +0000 (UTC)
-Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id D25FEB1F2E5B6AF5789B;
+ by silver.osuosl.org (Postfix) with ESMTPS id 27F4C2052B
+ for <devel@driverdev.osuosl.org>; Tue, 30 Jul 2019 07:14:50 +0000 (UTC)
+Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 9AADAACBD89F83AAC19A;
  Tue, 30 Jul 2019 15:14:46 +0800 (CST)
 Received: from architecture4.huawei.com (10.140.130.215) by smtp.huawei.com
  (10.3.19.210) with Microsoft SMTP Server (TLS) id 14.3.439.0; Tue, 30 Jul
- 2019 15:14:37 +0800
+ 2019 15:14:39 +0800
 From: Gao Xiang <gaoxiang25@huawei.com>
 To: Alexander Viro <viro@zeniv.linux.org.uk>, Greg Kroah-Hartman
  <gregkh@linuxfoundation.org>, Andrew Morton <akpm@linux-foundation.org>,
@@ -46,9 +46,9 @@ To: Alexander Viro <viro@zeniv.linux.org.uk>, Greg Kroah-Hartman
  <darrick.wong@oracle.com>, Dave Chinner <david@fromorbit.com>, Jaegeuk Kim
  <jaegeuk@kernel.org>, "Jan Kara" <jack@suse.cz>, Linus Torvalds
  <torvalds@linux-foundation.org>
-Subject: [PATCH v5 05/24] erofs: add inode operations
-Date: Tue, 30 Jul 2019 15:13:54 +0800
-Message-ID: <20190730071413.11871-6-gaoxiang25@huawei.com>
+Subject: [PATCH v5 06/24] erofs: support special inode
+Date: Tue, 30 Jul 2019 15:13:55 +0800
+Message-ID: <20190730071413.11871-7-gaoxiang25@huawei.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190730071413.11871-1-gaoxiang25@huawei.com>
 References: <20190730071413.11871-1-gaoxiang25@huawei.com>
@@ -76,312 +76,66 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This adds core functions to get, read an inode.
-It adds statx support as well.
+This patch adds to support special inode, such as
+block dev, char, socket, pipe inode.
 
 Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
 ---
- fs/erofs/inode.c | 291 +++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 291 insertions(+)
- create mode 100644 fs/erofs/inode.c
+ fs/erofs/inode.c | 27 +++++++++++++++++++++++++--
+ 1 file changed, 25 insertions(+), 2 deletions(-)
 
 diff --git a/fs/erofs/inode.c b/fs/erofs/inode.c
-new file mode 100644
-index 000000000000..b6ea997bc4ae
---- /dev/null
+index b6ea997bc4ae..637bf6e4de44 100644
+--- a/fs/erofs/inode.c
 +++ b/fs/erofs/inode.c
-@@ -0,0 +1,291 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * linux/fs/erofs/inode.c
-+ *
-+ * Copyright (C) 2017-2018 HUAWEI, Inc.
-+ *             http://www.huawei.com/
-+ * Created by Gao Xiang <gaoxiang25@huawei.com>
-+ */
-+#include "internal.h"
-+
-+#include <trace/events/erofs.h>
-+
-+/* no locking */
-+static int read_inode(struct inode *inode, void *data)
-+{
-+	struct erofs_vnode *vi = EROFS_V(inode);
-+	struct erofs_inode_v1 *v1 = data;
-+	const unsigned int advise = le16_to_cpu(v1->i_advise);
-+	erofs_blk_t nblks = 0;
-+
-+	vi->datamode = __inode_data_mapping(advise);
-+
-+	if (unlikely(vi->datamode >= EROFS_INODE_LAYOUT_MAX)) {
-+		errln("unsupported data mapping %u of nid %llu",
-+		      vi->datamode, vi->nid);
-+		DBG_BUGON(1);
-+		return -EIO;
-+	}
-+
-+	if (__inode_version(advise) == EROFS_INODE_LAYOUT_V2) {
-+		struct erofs_inode_v2 *v2 = data;
-+
-+		vi->inode_isize = sizeof(struct erofs_inode_v2);
-+		vi->xattr_isize = ondisk_xattr_ibody_size(v2->i_xattr_icount);
-+
-+		inode->i_mode = le16_to_cpu(v2->i_mode);
-+		vi->raw_blkaddr = le32_to_cpu(v2->i_u.raw_blkaddr);
-+
-+		i_uid_write(inode, le32_to_cpu(v2->i_uid));
-+		i_gid_write(inode, le32_to_cpu(v2->i_gid));
-+		set_nlink(inode, le32_to_cpu(v2->i_nlink));
-+
-+		/* ns timestamp */
-+		inode->i_mtime.tv_sec = inode->i_ctime.tv_sec =
-+			le64_to_cpu(v2->i_ctime);
-+		inode->i_mtime.tv_nsec = inode->i_ctime.tv_nsec =
-+			le32_to_cpu(v2->i_ctime_nsec);
-+
-+		inode->i_size = le64_to_cpu(v2->i_size);
-+
-+		/* total blocks for compressed files */
-+		if (is_inode_layout_compression(inode))
-+			nblks = le32_to_cpu(v2->i_u.compressed_blocks);
-+	} else if (__inode_version(advise) == EROFS_INODE_LAYOUT_V1) {
-+		struct erofs_sb_info *sbi = EROFS_SB(inode->i_sb);
-+
-+		vi->inode_isize = sizeof(struct erofs_inode_v1);
-+		vi->xattr_isize = ondisk_xattr_ibody_size(v1->i_xattr_icount);
-+
-+		inode->i_mode = le16_to_cpu(v1->i_mode);
-+		vi->raw_blkaddr = le32_to_cpu(v1->i_u.raw_blkaddr);
-+
-+		i_uid_write(inode, le16_to_cpu(v1->i_uid));
-+		i_gid_write(inode, le16_to_cpu(v1->i_gid));
-+		set_nlink(inode, le16_to_cpu(v1->i_nlink));
-+
-+		/* use build time to derive all file time */
-+		inode->i_mtime.tv_sec = inode->i_ctime.tv_sec =
-+			sbi->build_time;
-+		inode->i_mtime.tv_nsec = inode->i_ctime.tv_nsec =
-+			sbi->build_time_nsec;
-+
-+		inode->i_size = le32_to_cpu(v1->i_size);
-+		if (is_inode_layout_compression(inode))
-+			nblks = le32_to_cpu(v1->i_u.compressed_blocks);
-+	} else {
-+		errln("unsupported on-disk inode version %u of nid %llu",
-+		      __inode_version(advise), vi->nid);
-+		DBG_BUGON(1);
-+		return -EIO;
-+	}
-+
-+	if (!nblks)
-+		/* measure inode.i_blocks as generic filesystems */
-+		inode->i_blocks = roundup(inode->i_size, EROFS_BLKSIZ) >> 9;
-+	else
-+		inode->i_blocks = nblks << LOG_SECTORS_PER_BLOCK;
-+	return 0;
-+}
-+
-+/*
-+ * try_lock can be required since locking order is:
-+ *   file data(fs_inode)
-+ *        meta(bd_inode)
-+ * but the majority of the callers is "iget",
-+ * in that case we are pretty sure no deadlock since
-+ * no data operations exist. However I tend to
-+ * try_lock since it takes no much overhead and
-+ * will success immediately.
-+ */
-+static int fill_inline_data(struct inode *inode, void *data,
-+			    unsigned int m_pofs)
-+{
-+	struct erofs_vnode *vi = EROFS_V(inode);
-+	struct erofs_sb_info *sbi = EROFS_I_SB(inode);
-+
-+	/* should be inode inline C */
-+	if (!is_inode_flat_inline(inode))
-+		return 0;
-+
-+	/* fast symlink (following ext4) */
-+	if (S_ISLNK(inode->i_mode) && inode->i_size < PAGE_SIZE) {
-+		char *lnk = erofs_kmalloc(sbi, inode->i_size + 1, GFP_KERNEL);
-+
-+		if (unlikely(!lnk))
-+			return -ENOMEM;
-+
-+		m_pofs += vi->inode_isize + vi->xattr_isize;
-+
-+		/* inline symlink data shouldn't across page boundary as well */
-+		if (unlikely(m_pofs + inode->i_size > PAGE_SIZE)) {
-+			DBG_BUGON(1);
-+			kfree(lnk);
+@@ -34,7 +34,16 @@ static int read_inode(struct inode *inode, void *data)
+ 		vi->xattr_isize = ondisk_xattr_ibody_size(v2->i_xattr_icount);
+ 
+ 		inode->i_mode = le16_to_cpu(v2->i_mode);
+-		vi->raw_blkaddr = le32_to_cpu(v2->i_u.raw_blkaddr);
++		if (S_ISREG(inode->i_mode) || S_ISDIR(inode->i_mode) ||
++		    S_ISLNK(inode->i_mode))
++			vi->raw_blkaddr = le32_to_cpu(v2->i_u.raw_blkaddr);
++		else if (S_ISCHR(inode->i_mode) || S_ISBLK(inode->i_mode))
++			inode->i_rdev =
++				new_decode_dev(le32_to_cpu(v2->i_u.rdev));
++		else if (S_ISFIFO(inode->i_mode) || S_ISSOCK(inode->i_mode))
++			inode->i_rdev = 0;
++		else
 +			return -EIO;
-+		}
-+
-+		/* get in-page inline data */
-+		memcpy(lnk, data + m_pofs, inode->i_size);
-+		lnk[inode->i_size] = '\0';
-+
-+		inode->i_link = lnk;
-+		set_inode_fast_symlink(inode);
-+	}
-+	return 0;
-+}
-+
-+static int fill_inode(struct inode *inode, int isdir)
-+{
-+	struct erofs_sb_info *sbi = EROFS_SB(inode->i_sb);
-+	struct erofs_vnode *vi = EROFS_V(inode);
-+	struct page *page;
-+	void *data;
-+	int err;
-+	erofs_blk_t blkaddr;
-+	unsigned int ofs;
-+
-+	trace_erofs_fill_inode(inode, isdir);
-+
-+	blkaddr = erofs_blknr(iloc(sbi, vi->nid));
-+	ofs = erofs_blkoff(iloc(sbi, vi->nid));
-+
-+	debugln("%s, reading inode nid %llu at %u of blkaddr %u",
-+		__func__, vi->nid, ofs, blkaddr);
-+
-+	page = erofs_get_meta_page(inode->i_sb, blkaddr, isdir);
-+
-+	if (IS_ERR(page)) {
-+		errln("failed to get inode (nid: %llu) page, err %ld",
-+		      vi->nid, PTR_ERR(page));
-+		return PTR_ERR(page);
-+	}
-+
-+	DBG_BUGON(!PageUptodate(page));
-+	data = page_address(page);
-+
-+	err = read_inode(inode, data + ofs);
-+	if (!err) {
-+		/* setup the new inode */
-+		if (S_ISREG(inode->i_mode)) {
+ 
+ 		i_uid_write(inode, le32_to_cpu(v2->i_uid));
+ 		i_gid_write(inode, le32_to_cpu(v2->i_gid));
+@@ -58,7 +67,16 @@ static int read_inode(struct inode *inode, void *data)
+ 		vi->xattr_isize = ondisk_xattr_ibody_size(v1->i_xattr_icount);
+ 
+ 		inode->i_mode = le16_to_cpu(v1->i_mode);
+-		vi->raw_blkaddr = le32_to_cpu(v1->i_u.raw_blkaddr);
++		if (S_ISREG(inode->i_mode) || S_ISDIR(inode->i_mode) ||
++		    S_ISLNK(inode->i_mode))
++			vi->raw_blkaddr = le32_to_cpu(v1->i_u.raw_blkaddr);
++		else if (S_ISCHR(inode->i_mode) || S_ISBLK(inode->i_mode))
++			inode->i_rdev =
++				new_decode_dev(le32_to_cpu(v1->i_u.rdev));
++		else if (S_ISFIFO(inode->i_mode) || S_ISSOCK(inode->i_mode))
++			inode->i_rdev = 0;
++		else
++			return -EIO;
+ 
+ 		i_uid_write(inode, le16_to_cpu(v1->i_uid));
+ 		i_gid_write(inode, le16_to_cpu(v1->i_gid));
+@@ -176,6 +194,11 @@ static int fill_inode(struct inode *inode, int isdir)
+ 			/* by default, page_get_link is used for symlink */
+ 			inode->i_op = &erofs_symlink_iops;
+ 			inode_nohighmem(inode);
++		} else if (S_ISCHR(inode->i_mode) || S_ISBLK(inode->i_mode) ||
++			S_ISFIFO(inode->i_mode) || S_ISSOCK(inode->i_mode)) {
 +			inode->i_op = &erofs_generic_iops;
-+			inode->i_fop = &generic_ro_fops;
-+		} else if (S_ISDIR(inode->i_mode)) {
-+			inode->i_op = &erofs_dir_iops;
-+			inode->i_fop = &erofs_dir_fops;
-+		} else if (S_ISLNK(inode->i_mode)) {
-+			/* by default, page_get_link is used for symlink */
-+			inode->i_op = &erofs_symlink_iops;
-+			inode_nohighmem(inode);
-+		} else {
-+			err = -EIO;
++			init_special_inode(inode, inode->i_mode, inode->i_rdev);
 +			goto out_unlock;
-+		}
-+
-+		if (is_inode_layout_compression(inode)) {
-+			err = -ENOTSUPP;
-+			goto out_unlock;
-+		}
-+
-+		inode->i_mapping->a_ops = &erofs_raw_access_aops;
-+
-+		/* fill last page if inline data is available */
-+		err = fill_inline_data(inode, data, ofs);
-+	}
-+
-+out_unlock:
-+	unlock_page(page);
-+	put_page(page);
-+	return err;
-+}
-+
-+/*
-+ * erofs nid is 64bits, but i_ino is 'unsigned long', therefore
-+ * we should do more for 32-bit platform to find the right inode.
-+ */
-+#if BITS_PER_LONG == 32
-+static int erofs_ilookup_test_actor(struct inode *inode, void *opaque)
-+{
-+	const erofs_nid_t nid = *(erofs_nid_t *)opaque;
-+
-+	return EROFS_V(inode)->nid == nid;
-+}
-+
-+static int erofs_iget_set_actor(struct inode *inode, void *opaque)
-+{
-+	const erofs_nid_t nid = *(erofs_nid_t *)opaque;
-+
-+	inode->i_ino = erofs_inode_hash(nid);
-+	return 0;
-+}
-+#endif
-+
-+static inline struct inode *erofs_iget_locked(struct super_block *sb,
-+					      erofs_nid_t nid)
-+{
-+	const unsigned long hashval = erofs_inode_hash(nid);
-+
-+#if BITS_PER_LONG >= 64
-+	/* it is safe to use iget_locked for >= 64-bit platform */
-+	return iget_locked(sb, hashval);
-+#else
-+	return iget5_locked(sb, hashval, erofs_ilookup_test_actor,
-+		erofs_iget_set_actor, &nid);
-+#endif
-+}
-+
-+struct inode *erofs_iget(struct super_block *sb,
-+			 erofs_nid_t nid,
-+			 bool isdir)
-+{
-+	struct inode *inode = erofs_iget_locked(sb, nid);
-+
-+	if (unlikely(!inode))
-+		return ERR_PTR(-ENOMEM);
-+
-+	if (inode->i_state & I_NEW) {
-+		int err;
-+		struct erofs_vnode *vi = EROFS_V(inode);
-+
-+		vi->nid = nid;
-+
-+		err = fill_inode(inode, isdir);
-+		if (likely(!err))
-+			unlock_new_inode(inode);
-+		else {
-+			iget_failed(inode);
-+			inode = ERR_PTR(err);
-+		}
-+	}
-+	return inode;
-+}
-+
-+int erofs_getattr(const struct path *path, struct kstat *stat,
-+		  u32 request_mask, unsigned int query_flags)
-+{
-+	struct inode *const inode = d_inode(path->dentry);
-+
-+	if (is_inode_layout_compression(inode))
-+		stat->attributes |= STATX_ATTR_COMPRESSED;
-+
-+	stat->attributes |= STATX_ATTR_IMMUTABLE;
-+	stat->attributes_mask |= (STATX_ATTR_COMPRESSED |
-+				  STATX_ATTR_IMMUTABLE);
-+
-+	generic_fillattr(inode, stat);
-+	return 0;
-+}
-+
-+const struct inode_operations erofs_generic_iops = {
-+	.getattr = erofs_getattr,
-+};
-+
-+const struct inode_operations erofs_symlink_iops = {
-+	.get_link = page_get_link,
-+	.getattr = erofs_getattr,
-+};
-+
-+const struct inode_operations erofs_fast_symlink_iops = {
-+	.get_link = simple_get_link,
-+	.getattr = erofs_getattr,
-+};
-+
+ 		} else {
+ 			err = -EIO;
+ 			goto out_unlock;
 -- 
 2.17.1
 
