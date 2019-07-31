@@ -1,54 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4AA047C7DA
-	for <lists+driverdev-devel@lfdr.de>; Wed, 31 Jul 2019 17:59:08 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 236FB7C803
+	for <lists+driverdev-devel@lfdr.de>; Wed, 31 Jul 2019 18:00:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EED0485F45;
-	Wed, 31 Jul 2019 15:59:06 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 70F2587D8E;
+	Wed, 31 Jul 2019 16:00:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9bgfT1ClYF_1; Wed, 31 Jul 2019 15:59:05 +0000 (UTC)
+	with ESMTP id 4ePCf7MTVSMJ; Wed, 31 Jul 2019 16:00:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B6F8F85F08;
-	Wed, 31 Jul 2019 15:59:04 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E099B87D6A;
+	Wed, 31 Jul 2019 16:00:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9A8861BF844
- for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 15:58:57 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 864291BF844
+ for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 16:00:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8D12B855E1
- for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 15:58:57 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 7B6101FE2F
+ for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 16:00:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EMmQHeXR3aua for <devel@linuxdriverproject.org>;
- Wed, 31 Jul 2019 15:58:53 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga05-in.huawei.com [45.249.212.191])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 136E786970
- for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 15:58:45 +0000 (UTC)
-Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 2481227EAE3666F9148E;
- Wed, 31 Jul 2019 23:58:41 +0800 (CST)
-Received: from architecture4.huawei.com (10.140.130.215) by smtp.huawei.com
- (10.3.19.210) with Microsoft SMTP Server (TLS) id 14.3.439.0; Wed, 31 Jul
- 2019 23:58:35 +0800
-From: Gao Xiang <gaoxiang25@huawei.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Chao Yu
- <yuchao0@huawei.com>, <devel@driverdev.osuosl.org>
-Subject: [PATCH v2 22/22] staging: erofs: update Kconfig
-Date: Wed, 31 Jul 2019 23:57:52 +0800
-Message-ID: <20190731155752.210602-23-gaoxiang25@huawei.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190731155752.210602-1-gaoxiang25@huawei.com>
-References: <20190731155752.210602-1-gaoxiang25@huawei.com>
+ with ESMTP id OBklLq6N01Ra for <devel@linuxdriverproject.org>;
+ Wed, 31 Jul 2019 16:00:47 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id 71C2D20360
+ for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 16:00:46 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id CF56A206A2;
+ Wed, 31 Jul 2019 16:00:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1564588846;
+ bh=8/iUzsnff7v3bdrLEupAqK60VWMHVs1+tovD+8fMDdg=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=oSq7AczokLq9O5HmGNMMXoBQHyFsn+uD6YtJzSsackbSJOjH4gxnRgXabQ5IUo40f
+ VDSVk4VIirr7JC0jMtPN8qU6VGYI09s81wOUOQnbFA3yoNTTiKFP1DcV3OENUMrD/K
+ TC6xyj22CzGCwJMpv8SwLM/4oeYAaT8kraa4+Cug=
+Date: Wed, 31 Jul 2019 18:00:43 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: David Miller <davem@davemloft.net>
+Subject: Re: next/master build: 221 builds: 11 failed, 210 passed, 13 errors, 
+ 1174 warnings (next-20190731)
+Message-ID: <20190731160043.GA15520@kroah.com>
+References: <5d41767d.1c69fb81.d6304.4c8c@mx.google.com>
+ <20190731112441.GB4369@sirena.org.uk>
+ <20190731113522.GA3426@kroah.com>
+ <20190731.084824.2244928058443049.davem@davemloft.net>
 MIME-Version: 1.0
-X-Originating-IP: [10.140.130.215]
-X-CFilter-Loop: Reflected
+Content-Disposition: inline
+In-Reply-To: <20190731.084824.2244928058443049.davem@davemloft.net>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,132 +70,41 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-erofs@lists.ozlabs.org, Chao Yu <chao@kernel.org>,
- LKML <linux-kernel@vger.kernel.org>, weidu.du@huawei.com,
- Fang Wei <fangwei1@huawei.com>, Miao Xie <miaoxie@huawei.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, andrew@lunn.ch, f.fainelli@gmail.com,
+ kernel-build-reports@lists.linaro.org, netdev@vger.kernel.org,
+ willy@infradead.org, broonie@kernel.org, linux-next@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, hkallweit1@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Keep in line with erofs-outofstaging patchset:
- - turn on CONFIG_EROFS_FS_ZIP by default;
- - turn on CONFIG_EROFS_FS_SECURITY by default suggested by David;
- - update Kconfig description.
-
-Reviewed-by: Chao Yu <yuchao0@huawei.com>
-Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
----
- drivers/staging/erofs/Kconfig | 54 ++++++++++++++++++-----------------
- 1 file changed, 28 insertions(+), 26 deletions(-)
-
-diff --git a/drivers/staging/erofs/Kconfig b/drivers/staging/erofs/Kconfig
-index 1a8e48943e50..16316d1adca3 100644
---- a/drivers/staging/erofs/Kconfig
-+++ b/drivers/staging/erofs/Kconfig
-@@ -4,16 +4,16 @@ config EROFS_FS
- 	tristate "EROFS filesystem support"
- 	depends on BLOCK
- 	help
--	  EROFS(Enhanced Read-Only File System) is a lightweight
-+	  EROFS (Enhanced Read-Only File System) is a lightweight
- 	  read-only file system with modern designs (eg. page-sized
- 	  blocks, inline xattrs/data, etc.) for scenarios which need
--	  high-performance read-only requirements, eg. firmwares in
--	  mobile phone or LIVECDs.
-+	  high-performance read-only requirements, e.g. Android OS
-+	  for mobile phones and LIVECDs.
- 
--	  It also provides VLE compression support, focusing on
--	  random read improvements, keeping relatively lower
--	  compression ratios, which is useful for high-performance
--	  devices with limited memory and ROM space.
-+	  It also provides fixed-sized output compression support,
-+	  which improves storage density, keeps relatively higher
-+	  compression ratios, which is more useful to achieve high
-+	  performance for embedded devices with limited memory.
- 
- 	  If unsure, say N.
- 
-@@ -21,11 +21,19 @@ config EROFS_FS_DEBUG
- 	bool "EROFS debugging feature"
- 	depends on EROFS_FS
- 	help
--	  Print EROFS debugging messages and enable more BUG_ONs
--	  which check the filesystem consistency aggressively.
-+	  Print debugging messages and enable more BUG_ONs which check
-+	  filesystem consistency and find potential issues aggressively,
-+	  which can be used for Android eng build, for example.
- 
- 	  For daily use, say N.
- 
-+config EROFS_FAULT_INJECTION
-+	bool "EROFS fault injection facility"
-+	depends on EROFS_FS
-+	help
-+	  Test EROFS to inject faults such as ENOMEM, EIO, and so on.
-+	  If unsure, say N.
-+
- config EROFS_FS_XATTR
- 	bool "EROFS extended attributes"
- 	depends on EROFS_FS
-@@ -54,6 +62,7 @@ config EROFS_FS_POSIX_ACL
- config EROFS_FS_SECURITY
- 	bool "EROFS Security Labels"
- 	depends on EROFS_FS_XATTR
-+	default y
- 	help
- 	  Security labels provide an access control facility to support Linux
- 	  Security Models (LSMs) accepted by AppArmor, SELinux, Smack and TOMOYO
-@@ -63,22 +72,15 @@ config EROFS_FS_SECURITY
- 
- 	  If you are not using a security module, say N.
- 
--config EROFS_FAULT_INJECTION
--	bool "EROFS fault injection facility"
--	depends on EROFS_FS
--	help
--	  Test EROFS to inject faults such as ENOMEM, EIO, and so on.
--	  If unsure, say N.
--
- config EROFS_FS_ZIP
--	bool "EROFS Data Compresssion Support"
-+	bool "EROFS Data Compression Support"
- 	depends on EROFS_FS
- 	select LZ4_DECOMPRESS
-+	default y
- 	help
--	  Currently we support LZ4 VLE Compression only.
--	  Play at your own risk.
-+	  Enable fixed-sized output compression for EROFS.
- 
--	  If you don't want to use compression feature, say N.
-+	  If you don't want to enable compression feature, say N.
- 
- config EROFS_FS_CLUSTER_PAGE_LIMIT
- 	int "EROFS Cluster Pages Hard Limit"
-@@ -86,11 +88,11 @@ config EROFS_FS_CLUSTER_PAGE_LIMIT
- 	range 1 256
- 	default "1"
- 	help
--	  Indicates VLE compressed pages hard limit of a
--	  compressed cluster.
-+	  Indicates maximum # of pages of a compressed
-+	  physical cluster.
- 
--	  For example, if files of a image are compressed
--	  into 8k-unit, the hard limit should not be less
--	  than 2. Otherwise, the image cannot be mounted
--	  correctly on this kernel.
-+	  For example, if files in a image were compressed
-+	  into 8k-unit, hard limit should not be configured
-+	  less than 2. Otherwise, the image will be refused
-+	  to mount on this kernel.
- 
--- 
-2.17.1
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gV2VkLCBKdWwgMzEsIDIwMTkgYXQgMDg6NDg6MjRBTSAtMDcwMCwgRGF2aWQgTWlsbGVyIHdy
+b3RlOgo+IEZyb206IEdyZWcgS3JvYWgtSGFydG1hbiA8Z3JlZ2toQGxpbnV4Zm91bmRhdGlvbi5v
+cmc+Cj4gRGF0ZTogV2VkLCAzMSBKdWwgMjAxOSAxMzozNToyMiArMDIwMAo+IAo+ID4gT24gV2Vk
+LCBKdWwgMzEsIDIwMTkgYXQgMTI6MjQ6NDFQTSArMDEwMCwgTWFyayBCcm93biB3cm90ZToKPiA+
+PiBPbiBXZWQsIEp1bCAzMSwgMjAxOSBhdCAwNDowNzo0MUFNIC0wNzAwLCBrZXJuZWxjaS5vcmcg
+Ym90IHdyb3RlOgo+ID4+IAo+ID4+IFRvZGF5J3MgLW5leHQgZmFpbHMgdG8gYnVpbGQgYW4gQVJN
+IGFsbG1vZGNvbmZpZyBkdWUgdG86Cj4gPj4gCj4gPj4gPiBhbGxtb2Rjb25maWcgKGFybSwgZ2Nj
+LTgpIOKAlSBGQUlMLCAxIGVycm9yLCA0MCB3YXJuaW5ncywgMCBzZWN0aW9uIG1pc21hdGNoZXMK
+PiA+PiA+IAo+ID4+ID4gRXJyb3JzOgo+ID4+ID4gICAgIGRyaXZlcnMvbmV0L3BoeS9tZGlvLWNh
+dml1bS5oOjExMTozNjogZXJyb3I6IGltcGxpY2l0IGRlY2xhcmF0aW9uIG9mIGZ1bmN0aW9uICd3
+cml0ZXEnOyBkaWQgeW91IG1lYW4gJ3dyaXRlbCc/IFstV2Vycm9yPWltcGxpY2l0LWZ1bmN0aW9u
+LWRlY2xhcmF0aW9uXQo+ID4+IAo+ID4+IGFzIGEgcmVzdWx0IG9mIHRoZSBjaGFuZ2VzIHRoYXQg
+aW50cm9kdWNlZDoKPiA+PiAKPiA+PiBXQVJOSU5HOiB1bm1ldCBkaXJlY3QgZGVwZW5kZW5jaWVz
+IGRldGVjdGVkIGZvciBNRElPX09DVEVPTgo+ID4+ICAgRGVwZW5kcyBvbiBbbl06IE5FVERFVklD
+RVMgWz15XSAmJiBNRElPX0RFVklDRSBbPW1dICYmIE1ESU9fQlVTIFs9bV0gJiYgNjRCSVQgJiYg
+SEFTX0lPTUVNIFs9eV0gJiYgT0ZfTURJTyBbPW1dCj4gPj4gICBTZWxlY3RlZCBieSBbbV06Cj4g
+Pj4gICAtIE9DVEVPTl9FVEhFUk5FVCBbPW1dICYmIFNUQUdJTkcgWz15XSAmJiAoQ0FWSVVNX09D
+VEVPTl9TT0MgJiYgTkVUREVWSUNFUyBbPXldIHx8IENPTVBJTEVfVEVTVCBbPXldKQo+ID4+IAo+
+ID4+IHdoaWNoIGlzIHRyaWdnZXJlZCBieSB0aGUgc3RhZ2luZyBPQ1RFT05fRVRIRVJORVQgZHJp
+dmVyIHdoaWNoIG1pc3NlcyBhCj4gPj4gNjRCSVQgZGVwZW5kZW5jeSBidXQgYWRkZWQgQ09NUElM
+RV9URVNUIGluIDE3MWE5YmFlNjhjNzJmMgo+ID4+IChzdGFnaW5nL29jdGVvbjogQWxsb3cgdGVz
+dCBidWlsZCBvbiAhTUlQUykuCj4gPiAKPiA+IEEgcGF0Y2ggd2FzIHBvc3RlZCBmb3IgdGhpcywg
+YnV0IGl0IG5lZWRzIHRvIGdvIHRocm91Z2ggdGhlIG5ldGRldiB0cmVlCj4gPiBhcyB0aGF0J3Mg
+d2hlcmUgdGhlIG9mZmVuZGluZyBwYXRjaGVzIGFyZSBjb21pbmcgZnJvbS4KPiAKPiBJIGRpZG4n
+dCBjYXRjaCB0aGF0LCB3YXMgbmV0ZGV2IENDOidkPwoKTm9wZSwganVzdCB5b3UgOigKCkknbGwg
+cmVzZW5kIGl0IG5vdyBhbmQgY2M6IG5ldGRldi4KCnRoYW5rcywKCmdyZWcgay1oCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlz
+dApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2
+ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
