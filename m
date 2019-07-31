@@ -1,83 +1,85 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id F31747CBBF
-	for <lists+driverdev-devel@lfdr.de>; Wed, 31 Jul 2019 20:19:11 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BC21A85507;
-	Wed, 31 Jul 2019 18:19:09 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bT1smESWFcgF; Wed, 31 Jul 2019 18:19:09 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7EB1584AE1;
-	Wed, 31 Jul 2019 18:19:08 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 58C7D1BF2EA
- for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 18:19:07 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id AEE6E7CBCD
+	for <lists+driverdev-devel@lfdr.de>; Wed, 31 Jul 2019 20:21:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 52FD88707A
- for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 18:19:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5946487364;
+	Wed, 31 Jul 2019 18:21:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id tuMHbx5tZg9u; Wed, 31 Jul 2019 18:21:12 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id B23408710D;
+	Wed, 31 Jul 2019 18:21:11 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 633541BF2EA
+ for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 18:21:10 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 609A520373
+ for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 18:21:10 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NPTE7OoZo7v6 for <devel@linuxdriverproject.org>;
- Wed, 31 Jul 2019 18:19:06 +0000 (UTC)
+ with ESMTP id F70gaP+crNct for <devel@linuxdriverproject.org>;
+ Wed, 31 Jul 2019 18:21:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id DBA2286FCD
- for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 18:19:06 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id n9so26231799pgc.1
- for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 11:19:06 -0700 (PDT)
+Received: from mail-pl1-f182.google.com (mail-pl1-f182.google.com
+ [209.85.214.182])
+ by silver.osuosl.org (Postfix) with ESMTPS id D87BD2035C
+ for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 18:21:09 +0000 (UTC)
+Received: by mail-pl1-f182.google.com with SMTP id c2so30815048plz.13
+ for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 11:21:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=e0gVq6uy00cY6V3t0O5fCn9fm+ZnY+YHyPLBNweEeig=;
- b=EWc+AfytrePtRJmEbBdd1N1YdQb0s26K0I8f3iwJU8tRvHSw1+z/FjCaGin2jzyAez
- 8uXcOmsUUV/nl/gZczxf6yUeh+1DqpyqaihJUa+srT4ZMKiV2B/5yxDznsfNFcMGp7op
- thkoFXnGxyZPalFv9iHZ2ai2C32G2SK5k5eXtapW+S7cvQBJ0+hOp7BEL6wZycHv+BHE
- FqQruUo4fSHHp7hQV8yGiYtK/XRbshryulJNMDl8htn1UJJ8zlXtoKGfonLlYYpGDZ+Z
- DPV8LZtNCZMKbXX0tOuBHvgQYn/KjlTbHb1e6KRHN7z9r/gcdLu66urKNLyaavw8Fk3p
- LvwA==
+ :user-agent; bh=dkFZjVxhLg5nUBZBwLUZXfe8WesR8N6+UbConjepUGg=;
+ b=XO7Q045V4NUHekNM727e11s2Hin3uH7R4fJpX+7PKmq38/QWde10CmJmFUmTRQsI29
+ R3DbbjSCtF3a0Jbg/Wv9rqkpNMxRa79EoadaxLOnd9KCQ2AMCOpjl0DTikacHfaB4uMZ
+ 9EC3ZW0mjMiWAAl1R51R49k9MnxgPjFjJYGorT90WubZ5QMUDD2SPuxkVwFVFCMtL3a/
+ AVrekYjGzush1DEPMnpVdtWieFvV2jsLVehLmuakdZCJ6/+W/CN3ZQwOWz4VxA+hxe4v
+ ow7kxUPcGHT/M4F6z5hkqJXfseD7k3EFsllDrMt3zL4NYsUzydkf0PU/trD2yJzE8Dcj
+ VGyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=e0gVq6uy00cY6V3t0O5fCn9fm+ZnY+YHyPLBNweEeig=;
- b=Rwy4oasTvNmg0+hfoSWZ6yqKlwczDdhaY278U6533wtJxg//3cKu9hlSmPAxLJKsw3
- h0Dtj9eOvY2flpw7/3R6QwWLq3zAX1CWMv7a69jg1lDVvElS55vsrZ2VzKEtzjO9Ieub
- nml0u8IglRmqb/wDLfcG/FY5tlafqE3iqlKHxZFguU5KvstCWX2qYG9ayQdxpAIw5l+L
- tSc1mEkc7fKF/J2pTyvgZR6FbvikGMjNRnNAn8DPgwVUtZDBeqXdaDKKqXXETBFTv2dv
- D2KlspjVTvut4Nn00DP9blCertpgEWSNvXK8QqE61GxUu8NhcnrP7AwNRMj91vG5IrBw
- ZXqg==
-X-Gm-Message-State: APjAAAVdTJZrnDe7nnLmJzWdCsiTUchwlP6mEXE5xfwTWKlOocxDPIf4
- 7g82tB/SC3xZC60uHxuFarqJPXTs
-X-Google-Smtp-Source: APXvYqx9+Ao6DKAXKMVrhBtgZRmkqziTJWZ3wkHgIlFSCp2BGCIzyU5oU3YbeUH35XPlNymmENDeww==
-X-Received: by 2002:a17:90a:cf8f:: with SMTP id
- i15mr4095141pju.110.1564597146552; 
- Wed, 31 Jul 2019 11:19:06 -0700 (PDT)
+ bh=dkFZjVxhLg5nUBZBwLUZXfe8WesR8N6+UbConjepUGg=;
+ b=lzLEGT7UQPhtjYrp4L0SdgyqAy49AKSY268lx1QjYhryvFF0bYecj9MDa4u7GTRequ
+ caFEx1gvp/Ys4ZL+ZX79F7sKQNe8eMDICxzY4qBy17w7bVVkFIsLa4Z5PsiP6KuVcumR
+ 0TsljtT+J9/zMZl3ealU046T0syh1uqrPIYHI+LOIfoE1pHwX4GgP6c3nVbLEWg47xSX
+ f461eyOPFe4slATY+HT88Ck1KmuE57WOKQr4lGsFTtLy4i6ftcQUbji3jAtH8F7jE3T6
+ X88x005o/hnHjcarwrDdktsgYrn1if6RuGtSW60mRDSwSQPtjzdxq31LwzM9m9eHb9hq
+ fQ5g==
+X-Gm-Message-State: APjAAAVsd7gT1OgIlCZbXRdHI9W5mRTN0V/hecfcUofdUV2s5GYIIKkA
+ 9rOBYHjHvriomtOW/7wYHQU=
+X-Google-Smtp-Source: APXvYqxhc6rBwB828OfKzoKZKB44oQViEuHs5TVaTW4pjaA0GRwu0HIXWKsdrv3YY6rp6WF/vWLkFA==
+X-Received: by 2002:a17:902:e613:: with SMTP id
+ cm19mr113868926plb.299.1564597269551; 
+ Wed, 31 Jul 2019 11:21:09 -0700 (PDT)
 Received: from hari-Inspiron-1545 ([183.83.86.126])
- by smtp.gmail.com with ESMTPSA id s66sm73305597pfs.8.2019.07.31.11.19.03
+ by smtp.gmail.com with ESMTPSA id k6sm78719059pfi.12.2019.07.31.11.21.06
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 31 Jul 2019 11:19:06 -0700 (PDT)
-Date: Wed, 31 Jul 2019 23:49:00 +0530
+ Wed, 31 Jul 2019 11:21:09 -0700 (PDT)
+Date: Wed, 31 Jul 2019 23:51:03 +0530
 From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Nishka Dasgupta <nishkadg.linux@gmail.com>,
+ Vatsala Narang <vatsalanarang@gmail.com>,
  Hariprasad Kelam <hariprasad.kelam@gmail.com>,
- Mamta Shukla <mamtashukla555@gmail.com>,
+ Hardik Singh Rathore <hardiksingh.k@gmail.com>,
+ Madhumitha Prabakaran <madhumithabiw@gmail.com>,
+ Nishka Dasgupta <nishkadg.linux@gmail.com>,
+ Michael Straube <straube.linux@gmail.com>,
+ Hans de Goede <hdegoede@redhat.com>,
  Shobhit Kukreti <shobhitkukreti@gmail.com>,
- Emanuel Bennici <benniciemanuel78@gmail.com>,
- Puranjay Mohan <puranjay12@gmail.com>, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, hdegoede@redhat.com,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
  Larry.Finger@lwfinger.net
-Subject: [Patch v2 06/10] staging: rtl8723bs: os_dep: Remove unused defines
- related to combo scan
-Message-ID: <20190731181900.GA9503@hari-Inspiron-1545>
+Subject: [Patch v2 07/10] staging: rtl8723bs: Remove unneeded function
+ argument for init_addba_retry_timer
+Message-ID: <20190731182103.GA9617@hari-Inspiron-1545>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.5.24 (2015-08-30)
@@ -98,34 +100,56 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove below defines WEXT_CSCAN_AMOUNT WEXT_CSCAN_BUF_LEN
-WEXT_CSCAN_NPROBE_SECTION
+init_addba_retry_timer does not use padapter, so only keep psta
 
 Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 ---
 v2 - Add patch number
 
- drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 3 ---
- 1 file changed, 3 deletions(-)
+ drivers/staging/rtl8723bs/core/rtw_sta_mgt.c     | 2 +-
+ drivers/staging/rtl8723bs/include/rtw_mlme_ext.h | 2 +-
+ drivers/staging/rtl8723bs/os_dep/mlme_linux.c    | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-index 99e6b10..73b412e 100644
---- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-+++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-@@ -21,13 +21,10 @@
- #define RATE_COUNT 4
+diff --git a/drivers/staging/rtl8723bs/core/rtw_sta_mgt.c b/drivers/staging/rtl8723bs/core/rtw_sta_mgt.c
+index bdc52d8..39c3482 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_sta_mgt.c
++++ b/drivers/staging/rtl8723bs/core/rtw_sta_mgt.c
+@@ -262,7 +262,7 @@ struct	sta_info *rtw_alloc_stainfo(struct	sta_priv *pstapriv, u8 *hwaddr)
+ 			)
+ 		);
  
- /*  combo scan */
--#define WEXT_CSCAN_AMOUNT 9
--#define WEXT_CSCAN_BUF_LEN		360
- #define WEXT_CSCAN_HEADER		"CSCAN S\x01\x00\x00S\x00"
- #define WEXT_CSCAN_HEADER_SIZE		12
- #define WEXT_CSCAN_SSID_SECTION		'S'
- #define WEXT_CSCAN_CHANNEL_SECTION	'C'
--#define WEXT_CSCAN_NPROBE_SECTION	'N'
- #define WEXT_CSCAN_ACTV_DWELL_SECTION	'A'
- #define WEXT_CSCAN_PASV_DWELL_SECTION	'P'
- #define WEXT_CSCAN_HOME_DWELL_SECTION	'H'
+-		init_addba_retry_timer(pstapriv->padapter, psta);
++		init_addba_retry_timer(psta);
+ 
+ 		/* for A-MPDU Rx reordering buffer control */
+ 		for (i = 0; i < 16 ; i++) {
+diff --git a/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h b/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
+index fd3cf95..bdbf15f 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
++++ b/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
+@@ -539,7 +539,7 @@ void init_mlme_ext_priv(struct adapter *padapter);
+ int init_hw_mlme_ext(struct adapter *padapter);
+ void free_mlme_ext_priv (struct mlme_ext_priv *pmlmeext);
+ extern void init_mlme_ext_timer(struct adapter *padapter);
+-extern void init_addba_retry_timer(struct adapter *padapter, struct sta_info *psta);
++extern void init_addba_retry_timer(struct sta_info *psta);
+ extern struct xmit_frame *alloc_mgtxmitframe(struct xmit_priv *pxmitpriv);
+ 
+ /* void fill_fwpriv(struct adapter *padapter, struct fw_priv *pfwpriv); */
+diff --git a/drivers/staging/rtl8723bs/os_dep/mlme_linux.c b/drivers/staging/rtl8723bs/os_dep/mlme_linux.c
+index 52a5b31..038036d 100644
+--- a/drivers/staging/rtl8723bs/os_dep/mlme_linux.c
++++ b/drivers/staging/rtl8723bs/os_dep/mlme_linux.c
+@@ -179,7 +179,7 @@ void rtw_report_sec_ie(struct adapter *adapter, u8 authmode, u8 *sec_ie)
+ 	}
+ }
+ 
+-void init_addba_retry_timer(struct adapter *padapter, struct sta_info *psta)
++void init_addba_retry_timer(struct sta_info *psta)
+ {
+ 	timer_setup(&psta->addba_retry_timer, addba_timer_hdl, 0);
+ }
 -- 
 2.7.4
 
