@@ -1,49 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 59E267C7CC
-	for <lists+driverdev-devel@lfdr.de>; Wed, 31 Jul 2019 17:58:53 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 003BB7C7C0
+	for <lists+driverdev-devel@lfdr.de>; Wed, 31 Jul 2019 17:58:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8A7C285F41;
-	Wed, 31 Jul 2019 15:58:51 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9634E87D7B;
+	Wed, 31 Jul 2019 15:58:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8QbyuuWfrsy7; Wed, 31 Jul 2019 15:58:50 +0000 (UTC)
+	with ESMTP id tEOUyZFsi2Zs; Wed, 31 Jul 2019 15:58:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E6A0D85F08;
-	Wed, 31 Jul 2019 15:58:49 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E0D9487D09;
+	Wed, 31 Jul 2019 15:58:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1EEAF1BF844
- for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 15:58:43 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 66F7E1BF844
+ for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 15:58:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1918B86A14
- for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 15:58:43 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4DE8587D40
+ for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 15:58:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SH139dB5hgvQ for <devel@linuxdriverproject.org>;
- Wed, 31 Jul 2019 15:58:41 +0000 (UTC)
+ with ESMTP id QRRX8JGPZ0fB for <devel@linuxdriverproject.org>;
+ Wed, 31 Jul 2019 15:58:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A3D3B86977
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0991C87216
  for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 15:58:30 +0000 (UTC)
 Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id D3523BC2E21BCDD503D3;
+ by Forcepoint Email with ESMTP id D86B9402557CD4B6EF46;
  Wed, 31 Jul 2019 23:58:25 +0800 (CST)
 Received: from architecture4.huawei.com (10.140.130.215) by smtp.huawei.com
  (10.3.19.210) with Microsoft SMTP Server (TLS) id 14.3.439.0; Wed, 31 Jul
- 2019 23:58:18 +0800
+ 2019 23:58:19 +0800
 From: Gao Xiang <gaoxiang25@huawei.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Chao Yu
  <yuchao0@huawei.com>, <devel@driverdev.osuosl.org>
-Subject: [PATCH v2 07/22] staging: erofs: remove redundant #include
- "internal.h"
-Date: Wed, 31 Jul 2019 23:57:37 +0800
-Message-ID: <20190731155752.210602-8-gaoxiang25@huawei.com>
+Subject: [PATCH v2 08/22] staging: erofs: kill CONFIG_EROFS_FS_IO_MAX_RETRIES
+Date: Wed, 31 Jul 2019 23:57:38 +0800
+Message-ID: <20190731155752.210602-9-gaoxiang25@huawei.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190731155752.210602-1-gaoxiang25@huawei.com>
 References: <20190731155752.210602-1-gaoxiang25@huawei.com>
@@ -70,38 +69,65 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Because #include "internal.h" is included in xattr.h
+CONFIG_EROFS_FS_IO_MAX_RETRIES seems a runtime setting
+and users have no idea about the change in behaviour.
 
+Let's remove the setting currently and could turn it
+into a module parameter if it's really needed.
+
+Suggested-by: David Sterba <dsterba@suse.cz>
 Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
 ---
- drivers/staging/erofs/namei.c | 1 -
- drivers/staging/erofs/super.c | 1 -
- 2 files changed, 2 deletions(-)
+ drivers/staging/erofs/Kconfig    | 9 ---------
+ drivers/staging/erofs/internal.h | 8 ++------
+ 2 files changed, 2 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/staging/erofs/namei.c b/drivers/staging/erofs/namei.c
-index 50816b4c05fc..8e06526da023 100644
---- a/drivers/staging/erofs/namei.c
-+++ b/drivers/staging/erofs/namei.c
-@@ -6,7 +6,6 @@
-  *             http://www.huawei.com/
-  * Created by Gao Xiang <gaoxiang25@huawei.com>
-  */
--#include "internal.h"
- #include "xattr.h"
+diff --git a/drivers/staging/erofs/Kconfig b/drivers/staging/erofs/Kconfig
+index 2577cbb46a5b..747e9eebfaa5 100644
+--- a/drivers/staging/erofs/Kconfig
++++ b/drivers/staging/erofs/Kconfig
+@@ -78,15 +78,6 @@ config EROFS_FAULT_INJECTION
+ 	  Test EROFS to inject faults such as ENOMEM, EIO, and so on.
+ 	  If unsure, say N.
  
- #include <trace/events/erofs.h>
-diff --git a/drivers/staging/erofs/super.c b/drivers/staging/erofs/super.c
-index 55f51d2b3930..c20a94b035a7 100644
---- a/drivers/staging/erofs/super.c
-+++ b/drivers/staging/erofs/super.c
-@@ -11,7 +11,6 @@
- #include <linux/statfs.h>
- #include <linux/parser.h>
- #include <linux/seq_file.h>
--#include "internal.h"
- #include "xattr.h"
+-config EROFS_FS_IO_MAX_RETRIES
+-	int "EROFS IO Maximum Retries"
+-	depends on EROFS_FS
+-	default "5"
+-	help
+-	  Maximum retry count of IO Errors.
+-
+-	  If unsure, leave the default value (5 retries, 6 IOs at most).
+-
+ config EROFS_FS_ZIP
+ 	bool "EROFS Data Compresssion Support"
+ 	depends on EROFS_FS
+diff --git a/drivers/staging/erofs/internal.h b/drivers/staging/erofs/internal.h
+index 959bd0ae9d74..a3b9fcdd0c27 100644
+--- a/drivers/staging/erofs/internal.h
++++ b/drivers/staging/erofs/internal.h
+@@ -279,6 +279,8 @@ static inline void z_erofs_exit_zip_subsystem(void) {}
+ #error erofs cannot be used in this platform
+ #endif
  
- #define CREATE_TRACE_POINTS
++#define EROFS_IO_MAX_RETRIES_NOFAIL     5
++
+ #define ROOT_NID(sb)		((sb)->root_nid)
+ 
+ #define erofs_blknr(addr)       ((addr) / EROFS_BLKSIZ)
+@@ -467,12 +469,6 @@ static inline void __submit_bio(struct bio *bio, unsigned int op,
+ 	submit_bio(bio);
+ }
+ 
+-#ifndef CONFIG_EROFS_FS_IO_MAX_RETRIES
+-#define EROFS_IO_MAX_RETRIES_NOFAIL	0
+-#else
+-#define EROFS_IO_MAX_RETRIES_NOFAIL	CONFIG_EROFS_FS_IO_MAX_RETRIES
+-#endif
+-
+ struct page *__erofs_get_meta_page(struct super_block *sb, erofs_blk_t blkaddr,
+ 				   bool prio, bool nofail);
+ 
 -- 
 2.17.1
 
