@@ -1,85 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AEE6E7CBCD
-	for <lists+driverdev-devel@lfdr.de>; Wed, 31 Jul 2019 20:21:14 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C817E7CBD3
+	for <lists+driverdev-devel@lfdr.de>; Wed, 31 Jul 2019 20:22:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5946487364;
-	Wed, 31 Jul 2019 18:21:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F401184EEB;
+	Wed, 31 Jul 2019 18:22:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tuMHbx5tZg9u; Wed, 31 Jul 2019 18:21:12 +0000 (UTC)
+	with ESMTP id spIW7McZDqWr; Wed, 31 Jul 2019 18:22:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B23408710D;
-	Wed, 31 Jul 2019 18:21:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BF18D849FA;
+	Wed, 31 Jul 2019 18:22:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 633541BF2EA
- for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 18:21:10 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8DF8F1BF2EA
+ for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 18:22:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 609A520373
- for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 18:21:10 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 8A70887118
+ for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 18:22:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id F70gaP+crNct for <devel@linuxdriverproject.org>;
- Wed, 31 Jul 2019 18:21:09 +0000 (UTC)
+ with ESMTP id 7yXDX2o4mwXK for <devel@linuxdriverproject.org>;
+ Wed, 31 Jul 2019 18:22:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f182.google.com (mail-pl1-f182.google.com
- [209.85.214.182])
- by silver.osuosl.org (Postfix) with ESMTPS id D87BD2035C
- for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 18:21:09 +0000 (UTC)
-Received: by mail-pl1-f182.google.com with SMTP id c2so30815048plz.13
- for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 11:21:09 -0700 (PDT)
+Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
+ [209.85.210.193])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0D1FF87113
+ for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 18:22:39 +0000 (UTC)
+Received: by mail-pf1-f193.google.com with SMTP id p184so32327751pfp.7
+ for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 11:22:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=dkFZjVxhLg5nUBZBwLUZXfe8WesR8N6+UbConjepUGg=;
- b=XO7Q045V4NUHekNM727e11s2Hin3uH7R4fJpX+7PKmq38/QWde10CmJmFUmTRQsI29
- R3DbbjSCtF3a0Jbg/Wv9rqkpNMxRa79EoadaxLOnd9KCQ2AMCOpjl0DTikacHfaB4uMZ
- 9EC3ZW0mjMiWAAl1R51R49k9MnxgPjFjJYGorT90WubZ5QMUDD2SPuxkVwFVFCMtL3a/
- AVrekYjGzush1DEPMnpVdtWieFvV2jsLVehLmuakdZCJ6/+W/CN3ZQwOWz4VxA+hxe4v
- ow7kxUPcGHT/M4F6z5hkqJXfseD7k3EFsllDrMt3zL4NYsUzydkf0PU/trD2yJzE8Dcj
- VGyg==
+ :user-agent; bh=42JWHwYF6z9j3TvaHmVrJBlG7DPxjQN9Be0ZUa3qbmg=;
+ b=R2F2EXpUAMh7XS98+4i+ms4XMAGWEvWnEmnfc/YngAEPMUHJ1W1UxHEgJjfmreodRa
+ ROi1q98tUEzE/WqSKH17NAd+Vtk5RABmT2JgucXCC7oVhBFqGovVeH/FIbKcsTbtssBM
+ ZEGm1XX3rO78/RwGGZ2sUtHfGzy4o0GvcxNKbrNU3qlnWmEiRjEOhNNgwR2VcNr1KkZD
+ VEKIqM9pq3PsQDjdRUasKfL/I8xvGI7I0RsFsggpWeFhWOQC2v86obyQ0IINBIaMVRCg
+ NyDfE0wA0Pm6sLaijcTkRTFC9+dlYv9urtBcC3FKXBvI0DpTKpDiooAwBQfij4YiB6zw
+ cIKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=dkFZjVxhLg5nUBZBwLUZXfe8WesR8N6+UbConjepUGg=;
- b=lzLEGT7UQPhtjYrp4L0SdgyqAy49AKSY268lx1QjYhryvFF0bYecj9MDa4u7GTRequ
- caFEx1gvp/Ys4ZL+ZX79F7sKQNe8eMDICxzY4qBy17w7bVVkFIsLa4Z5PsiP6KuVcumR
- 0TsljtT+J9/zMZl3ealU046T0syh1uqrPIYHI+LOIfoE1pHwX4GgP6c3nVbLEWg47xSX
- f461eyOPFe4slATY+HT88Ck1KmuE57WOKQr4lGsFTtLy4i6ftcQUbji3jAtH8F7jE3T6
- X88x005o/hnHjcarwrDdktsgYrn1if6RuGtSW60mRDSwSQPtjzdxq31LwzM9m9eHb9hq
- fQ5g==
-X-Gm-Message-State: APjAAAVsd7gT1OgIlCZbXRdHI9W5mRTN0V/hecfcUofdUV2s5GYIIKkA
- 9rOBYHjHvriomtOW/7wYHQU=
-X-Google-Smtp-Source: APXvYqxhc6rBwB828OfKzoKZKB44oQViEuHs5TVaTW4pjaA0GRwu0HIXWKsdrv3YY6rp6WF/vWLkFA==
-X-Received: by 2002:a17:902:e613:: with SMTP id
- cm19mr113868926plb.299.1564597269551; 
- Wed, 31 Jul 2019 11:21:09 -0700 (PDT)
+ bh=42JWHwYF6z9j3TvaHmVrJBlG7DPxjQN9Be0ZUa3qbmg=;
+ b=g3P4rn0Uxs/2GVluaXh8eXrTFHqfffyyU8VOSyBun0vY1u6wNUw/NMNRAjc4s18naz
+ IqtSqBRAThSHu1x9ZzEEMQZuhfz0/KH41RlS/Zmh8aEgAWzJMqaNDTodEamz99DyWRz2
+ C90SctGLW5pJeouQoLZ165Zu0NpZnAJwSPMb69Wl4mDslCzKwvTiwIO7RfcI3q4pLjzf
+ yowjpeX1JsxJzfIT7MmKzdLt5dB4VwTHg60Tp5Zq/zlC2EX+1jjdrAwEFkhYnsX8npaF
+ jgOSWrN1UrR7jQWaG6L4xxmxvTkUFVjzRwv+8QPo3t+g3HP44jtCfTZlFs33blZVleEq
+ yZsA==
+X-Gm-Message-State: APjAAAVQ3GPIL/XdUqEwmACJKPoFPl2Cer4CZpj9391oISMX0ycMHHx3
+ TvrIAN+MTQFpUvlmpXcdQzIrYAYA
+X-Google-Smtp-Source: APXvYqx1ecLNRIsJBPPbf0M4/qluK0H6x8/0Y5NtcjCLCADGkSQ82Io8Ra/zGXzZ1j9nUZkchKX9og==
+X-Received: by 2002:a65:5188:: with SMTP id h8mr4221297pgq.294.1564597358645; 
+ Wed, 31 Jul 2019 11:22:38 -0700 (PDT)
 Received: from hari-Inspiron-1545 ([183.83.86.126])
- by smtp.gmail.com with ESMTPSA id k6sm78719059pfi.12.2019.07.31.11.21.06
+ by smtp.gmail.com with ESMTPSA id r2sm87175611pfl.67.2019.07.31.11.22.34
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 31 Jul 2019 11:21:09 -0700 (PDT)
-Date: Wed, 31 Jul 2019 23:51:03 +0530
+ Wed, 31 Jul 2019 11:22:38 -0700 (PDT)
+Date: Wed, 31 Jul 2019 23:52:32 +0530
 From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Vatsala Narang <vatsalanarang@gmail.com>,
  Hariprasad Kelam <hariprasad.kelam@gmail.com>,
- Hardik Singh Rathore <hardiksingh.k@gmail.com>,
- Madhumitha Prabakaran <madhumithabiw@gmail.com>,
  Nishka Dasgupta <nishkadg.linux@gmail.com>,
- Michael Straube <straube.linux@gmail.com>,
- Hans de Goede <hdegoede@redhat.com>,
+ Mamta Shukla <mamtashukla555@gmail.com>,
+ Kimberly Brown <kimbrownkd@gmail.com>,
+ Puranjay Mohan <puranjay12@gmail.com>,
+ Hardik Singh Rathore <hardiksingh.k@gmail.com>,
  Shobhit Kukreti <shobhitkukreti@gmail.com>,
+ Anirudh Rayabharam <anirudh.rayabharam@gmail.com>,
  devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Larry.Finger@lwfinger.net
-Subject: [Patch v2 07/10] staging: rtl8723bs: Remove unneeded function
- argument for init_addba_retry_timer
-Message-ID: <20190731182103.GA9617@hari-Inspiron-1545>
+ hdegoede@redhat.com, Larry.Finger@lwfinger.net
+Subject: [Patch v2 08/10] staging: rtl8723bs: core: Remove unneeded extern
+ WFD_OUI
+Message-ID: <20190731182232.GA9713@hari-Inspiron-1545>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.5.24 (2015-08-30)
@@ -100,56 +99,27 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-init_addba_retry_timer does not use padapter, so only keep psta
+Remove unneeded extern variable "extern unsigned char WFD_OUI"
 
 Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 ---
 v2 - Add patch number
 
- drivers/staging/rtl8723bs/core/rtw_sta_mgt.c     | 2 +-
- drivers/staging/rtl8723bs/include/rtw_mlme_ext.h | 2 +-
- drivers/staging/rtl8723bs/os_dep/mlme_linux.c    | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/rtl8723bs/core/rtw_ap.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_sta_mgt.c b/drivers/staging/rtl8723bs/core/rtw_sta_mgt.c
-index bdc52d8..39c3482 100644
---- a/drivers/staging/rtl8723bs/core/rtw_sta_mgt.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_sta_mgt.c
-@@ -262,7 +262,7 @@ struct	sta_info *rtw_alloc_stainfo(struct	sta_priv *pstapriv, u8 *hwaddr)
- 			)
- 		);
+diff --git a/drivers/staging/rtl8723bs/core/rtw_ap.c b/drivers/staging/rtl8723bs/core/rtw_ap.c
+index 7bd5c61..2bb20762 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_ap.c
++++ b/drivers/staging/rtl8723bs/core/rtw_ap.c
+@@ -13,7 +13,6 @@ extern unsigned char RTW_WPA_OUI[];
+ extern unsigned char WMM_OUI[];
+ extern unsigned char WPS_OUI[];
+ extern unsigned char P2P_OUI[];
+-extern unsigned char WFD_OUI[];
  
--		init_addba_retry_timer(pstapriv->padapter, psta);
-+		init_addba_retry_timer(psta);
- 
- 		/* for A-MPDU Rx reordering buffer control */
- 		for (i = 0; i < 16 ; i++) {
-diff --git a/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h b/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
-index fd3cf95..bdbf15f 100644
---- a/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
-+++ b/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
-@@ -539,7 +539,7 @@ void init_mlme_ext_priv(struct adapter *padapter);
- int init_hw_mlme_ext(struct adapter *padapter);
- void free_mlme_ext_priv (struct mlme_ext_priv *pmlmeext);
- extern void init_mlme_ext_timer(struct adapter *padapter);
--extern void init_addba_retry_timer(struct adapter *padapter, struct sta_info *psta);
-+extern void init_addba_retry_timer(struct sta_info *psta);
- extern struct xmit_frame *alloc_mgtxmitframe(struct xmit_priv *pxmitpriv);
- 
- /* void fill_fwpriv(struct adapter *padapter, struct fw_priv *pfwpriv); */
-diff --git a/drivers/staging/rtl8723bs/os_dep/mlme_linux.c b/drivers/staging/rtl8723bs/os_dep/mlme_linux.c
-index 52a5b31..038036d 100644
---- a/drivers/staging/rtl8723bs/os_dep/mlme_linux.c
-+++ b/drivers/staging/rtl8723bs/os_dep/mlme_linux.c
-@@ -179,7 +179,7 @@ void rtw_report_sec_ie(struct adapter *adapter, u8 authmode, u8 *sec_ie)
- 	}
- }
- 
--void init_addba_retry_timer(struct adapter *padapter, struct sta_info *psta)
-+void init_addba_retry_timer(struct sta_info *psta)
+ void init_mlme_ap_info(struct adapter *padapter)
  {
- 	timer_setup(&psta->addba_retry_timer, addba_timer_hdl, 0);
- }
 -- 
 2.7.4
 
