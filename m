@@ -1,57 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0ECE97BD92
-	for <lists+driverdev-devel@lfdr.de>; Wed, 31 Jul 2019 11:44:42 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C05567BD9E
+	for <lists+driverdev-devel@lfdr.de>; Wed, 31 Jul 2019 11:47:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 342FF84456;
-	Wed, 31 Jul 2019 09:44:40 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DEB93868F4;
+	Wed, 31 Jul 2019 09:47:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7ckSvt9QQjK9; Wed, 31 Jul 2019 09:44:39 +0000 (UTC)
+	with ESMTP id YQksZb1aZIjJ; Wed, 31 Jul 2019 09:47:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EC4368443A;
-	Wed, 31 Jul 2019 09:44:38 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1354D867D4;
+	Wed, 31 Jul 2019 09:47:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5EA881BF31A
- for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 09:44:36 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2A8171BF4DD
+ for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 09:47:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5C02A8443A
- for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 09:44:36 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 27AE787152
+ for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 09:47:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rkE5tD9tyO0n for <devel@linuxdriverproject.org>;
- Wed, 31 Jul 2019 09:44:36 +0000 (UTC)
+ with ESMTP id fgnOP+MKv-+v for <devel@linuxdriverproject.org>;
+ Wed, 31 Jul 2019 09:47:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id CC5FD840D2
- for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 09:44:35 +0000 (UTC)
-Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 77A6FB0ADDCB2A97CE95;
- Wed, 31 Jul 2019 17:44:32 +0800 (CST)
-Received: from [10.134.22.195] (10.134.22.195) by smtp.huawei.com
- (10.3.19.210) with Microsoft SMTP Server (TLS) id 14.3.439.0; Wed, 31 Jul
- 2019 17:44:26 +0800
-Subject: Re: [PATCH 22/22] staging: erofs: update Kconfig
-To: Gao Xiang <gaoxiang25@huawei.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, <devel@driverdev.osuosl.org>
-References: <20190729065159.62378-1-gaoxiang25@huawei.com>
- <20190729065159.62378-23-gaoxiang25@huawei.com>
-From: Chao Yu <yuchao0@huawei.com>
-Message-ID: <e3927891-1499-9097-af92-9fc6b4ca4efb@huawei.com>
-Date: Wed, 31 Jul 2019 17:44:26 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9876C86CD3
+ for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 09:47:40 +0000 (UTC)
+Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
+ by youngberry.canonical.com with esmtpsa (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.76) (envelope-from <colin.king@canonical.com>)
+ id 1hslCr-0006P6-2g; Wed, 31 Jul 2019 09:47:37 +0000
+From: Colin King <colin.king@canonical.com>
+To: Larry Finger <Larry.Finger@lwfinger.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Michael Straube <straube.linux@gmail.com>, devel@driverdev.osuosl.org
+Subject: [PATCH] staging: rtl8188eu: remove redundant assignment to variable
+ rtstatus
+Date: Wed, 31 Jul 2019 10:47:36 +0100
+Message-Id: <20190731094736.28637-1-colin.king@canonical.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <20190729065159.62378-23-gaoxiang25@huawei.com>
-Content-Language: en-US
-X-Originating-IP: [10.134.22.195]
-X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,24 +58,41 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: weidu.du@huawei.com, Miao Xie <miaoxie@huawei.com>,
- linux-erofs@lists.ozlabs.org, LKML <linux-kernel@vger.kernel.org>
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 2019/7/29 14:51, Gao Xiang wrote:
-> Keep in line with erofs-outofstaging patchset:
->  - turn on CONFIG_EROFS_FS_ZIP by default;
->  - turn on CONFIG_EROFS_FS_SECURITY by default suggested by David;
->  - update Kconfig description.
-> 
-> Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
+From: Colin Ian King <colin.king@canonical.com>
 
-Reviewed-by: Chao Yu <yuchao0@huawei.com>
+Variable rtstatus is being initialized with a value that is never read
+and rtstatus is being re-assigned a little later on. The assignment is
+redundant and hence can be removed.  Also, make rtstatus a bool to
+match the function return type.
 
-Thanks,
+Addresses-Coverity: ("Unused value")
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+---
+ drivers/staging/rtl8188eu/hal/bb_cfg.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/rtl8188eu/hal/bb_cfg.c b/drivers/staging/rtl8188eu/hal/bb_cfg.c
+index 11e0bb9c67d7..51882858fcf0 100644
+--- a/drivers/staging/rtl8188eu/hal/bb_cfg.c
++++ b/drivers/staging/rtl8188eu/hal/bb_cfg.c
+@@ -653,7 +653,7 @@ static bool config_parafile(struct adapter *adapt)
+ 
+ bool rtl88eu_phy_bb_config(struct adapter *adapt)
+ {
+-	int rtstatus = true;
++	bool rtstatus;
+ 	u32 regval;
+ 	u8 crystal_cap;
+ 
+-- 
+2.20.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
