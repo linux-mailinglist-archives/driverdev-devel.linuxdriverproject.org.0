@@ -2,60 +2,144 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7C0127CDF2
-	for <lists+driverdev-devel@lfdr.de>; Wed, 31 Jul 2019 22:09:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CF5937CF2F
+	for <lists+driverdev-devel@lfdr.de>; Wed, 31 Jul 2019 22:58:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5596F85DBB;
-	Wed, 31 Jul 2019 20:09:26 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1464286501;
+	Wed, 31 Jul 2019 20:58:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7JMMK0LYWy3d; Wed, 31 Jul 2019 20:09:25 +0000 (UTC)
+	with ESMTP id Bb-lhZ9Y2Wlv; Wed, 31 Jul 2019 20:58:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A2FD1816E6;
-	Wed, 31 Jul 2019 20:09:23 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id F084F861E7;
+	Wed, 31 Jul 2019 20:58:24 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 84CA91BF319
- for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 20:09:21 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 906291BF319
+ for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 20:58:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 7E8B4203E4
- for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 20:09:21 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8AB578613C
+ for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 20:58:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jR56lcFO7DYp for <devel@linuxdriverproject.org>;
- Wed, 31 Jul 2019 20:09:19 +0000 (UTC)
-X-Greylist: delayed 02:20:00 by SQLgrey-1.7.6
-Received: from 15.mo1.mail-out.ovh.net (15.mo1.mail-out.ovh.net
- [188.165.38.232])
- by silver.osuosl.org (Postfix) with ESMTPS id BD6771FE0A
- for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 20:09:19 +0000 (UTC)
-Received: from player776.ha.ovh.net (unknown [10.109.160.87])
- by mo1.mail-out.ovh.net (Postfix) with ESMTP id 05753188F26
- for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 18:33:47 +0200 (CEST)
-Received: from armadeus.com (lfbn-1-7591-179.w90-126.abo.wanadoo.fr
- [90.126.248.179])
- (Authenticated sender: sebastien.szymanski@armadeus.com)
- by player776.ha.ovh.net (Postfix) with ESMTPSA id A3C58878DD52;
- Wed, 31 Jul 2019 16:33:28 +0000 (UTC)
-From: =?UTF-8?q?S=C3=A9bastien=20Szymanski?= <sebastien.szymanski@armadeus.com>
-To: Rui Miguel Silva <rmfrfs@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Steve Longerbeam <slongerbeam@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>
-Subject: [PATCH v3 2/3] media: imx7-media-csi: add i.MX6UL support
-Date: Wed, 31 Jul 2019 18:33:30 +0200
-Message-Id: <20190731163330.32532-1-sebastien.szymanski@armadeus.com>
-X-Mailer: git-send-email 2.21.0
+ with ESMTP id 3S1ZZkru4Tj5 for <devel@linuxdriverproject.org>;
+ Wed, 31 Jul 2019 20:58:22 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from esa1.microchip.iphmx.com (esa1.microchip.iphmx.com
+ [68.232.147.91])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 2ED5586132
+ for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 20:58:22 +0000 (UTC)
+Received-SPF: Pass (esa1.microchip.iphmx.com: domain of
+ Adham.Abozaeid@microchip.com designates 198.175.253.82 as
+ permitted sender) identity=mailfrom;
+ client-ip=198.175.253.82; receiver=esa1.microchip.iphmx.com;
+ envelope-from="Adham.Abozaeid@microchip.com";
+ x-sender="Adham.Abozaeid@microchip.com";
+ x-conformance=spf_only; x-record-type="v=spf1";
+ x-record-text="v=spf1 mx a:ushub1.microchip.com
+ a:smtpout.microchip.com a:mx1.microchip.iphmx.com
+ a:mx2.microchip.iphmx.com include:servers.mcsv.net
+ include:mktomail.com include:spf.protection.outlook.com ~all"
+Received-SPF: None (esa1.microchip.iphmx.com: no sender
+ authenticity information available from domain of
+ postmaster@email.microchip.com) identity=helo;
+ client-ip=198.175.253.82; receiver=esa1.microchip.iphmx.com;
+ envelope-from="Adham.Abozaeid@microchip.com";
+ x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
+Authentication-Results: esa1.microchip.iphmx.com;
+ spf=Pass smtp.mailfrom=Adham.Abozaeid@microchip.com;
+ spf=None smtp.helo=postmaster@email.microchip.com;
+ dkim=pass (signature verified) header.i=@microchiptechnology.onmicrosoft.com;
+ dmarc=pass (p=none dis=none) d=microchip.com
+IronPort-SDR: Dqb1wi7Q1zOxUSU43TIIHECFUsxGLoO9OhUbXmc24OjH3lvBUtdElqMsL6xmjstRxrkBaI6tsA
+ icuxLVt8rRx6Sbrg2Na4V8gRZO8IVchOmDnJhkWh7GC+iehEYYDtZXZPIOMcpqQS4nnEVJ3d1e
+ evSzYqVpO43Haweh1JQT8KuimItcKqzK8282rD2dVYCN8Prm2G+lwiFTIBJjvYz90xLXU7W8qx
+ xpAv0Ie/yamsP9gSt2ef4Aa15zkeGyIzp5BV004/cFx6H/fxyBwdXMlENnrgM+eip4oI6cZkql
+ 7Zo=
+X-IronPort-AV: E=Sophos;i="5.64,331,1559545200"; d="scan'208";a="44870898"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa1.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 31 Jul 2019 13:58:21 -0700
+Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
+ chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Wed, 31 Jul 2019 13:58:21 -0700
+Received: from NAM03-CO1-obe.outbound.protection.outlook.com (10.10.215.89) by
+ email.microchip.com (10.10.87.151) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
+ via Frontend Transport; Wed, 31 Jul 2019 13:58:20 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=NtZqrMfxiZML2U99eDO33hOBt1S77ZkViUel7kmOtYEfIeuAtMvfa9hEUe9tknmQ3avbRodlcp0eIFY7ettQqCCxzgpVRIZphy2ATEaeBP1BU9PQzreIIxsZExkwgOwADxF6hhLVhex8/4Ik5myovoyUnj8w8rz6fE3H2Ib1l9KXkUJ7hs+G4HuGbq27v/JGi9+MLAxo/q59/gfozQggwU96qwb9Hibwai79F74s3PSlVEaXpu3AFaL+A17Q1MSifx41FjXsreV+bJNMa4+ErvqPRkd81qRQLapXu/8B9Wz4EPlplhCWY3hT0BVP3D16O2LSda2XZbyr4Oeoe9aV5g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=hRdY4FdATr43/b5X5M0SWoSaMDSaf5YicrEZVRuz/HM=;
+ b=E1Vk34vN5/PXSN16/h+4X5BPFqJ1Ti/kO7rY5MV2pLueLsjz9O0rK/Hh26Hy/Ld95ypegcQr4xUmfWDzzdN7ZN3lwai8Zxa0ZgwxXFfalxiIrya7uUUTaX0uHfsZrVTKUTQJYt0QN8963RMjuSTe1+PipGYNPXFsiQjoSNO4H1XLxXFDah+sqRE4CYzDYLn3iScCspKZfz21CLlER84PzYY/CDnUC+CJDcXwRhkdfI4IwjUTjs00lIgBQoRZ2n1v7X2qn1CY74QnSLM3iduE+mCRMOwx7qDJTcGZfwPwigIJXiL+g4tXDjMyL0iHlAPqmrPFEv3k3CM/TrVOpN/Jaw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1;spf=pass
+ smtp.mailfrom=microchip.com;dmarc=pass action=none
+ header.from=microchip.com;dkim=pass header.d=microchip.com;arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=microchiptechnology.onmicrosoft.com;
+ s=selector1-microchiptechnology-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=hRdY4FdATr43/b5X5M0SWoSaMDSaf5YicrEZVRuz/HM=;
+ b=vnmdp5UBnfC/qjKVndzOODto9Yxpjt7DrnSjgan7h6HA4YN29Q4j3l2opRrZK20FbgQPaZ+EenJvwrF2Y7exGXkQ6WrAdun1GO9JCLQ30uLD6YLILqB+cD8L+zUE/KB/hrC/vQjeg8+9bdIqwNy4+7+w3vMFRmIjzIoKGrvrAeA=
+Received: from DM5PR11MB1371.namprd11.prod.outlook.com (10.168.101.145) by
+ DM5PR11MB1660.namprd11.prod.outlook.com (10.172.34.18) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2094.17; Wed, 31 Jul 2019 20:58:19 +0000
+Received: from DM5PR11MB1371.namprd11.prod.outlook.com
+ ([fe80::751e:92c:b069:7c65]) by DM5PR11MB1371.namprd11.prod.outlook.com
+ ([fe80::751e:92c:b069:7c65%3]) with mapi id 15.20.2115.005; Wed, 31 Jul 2019
+ 20:58:19 +0000
+From: <Adham.Abozaeid@microchip.com>
+To: <linux-wireless@vger.kernel.org>
+Subject: [PATCH] staging: wilc1000: merge drv_handle and operation_mode wids
+Thread-Topic: [PATCH] staging: wilc1000: merge drv_handle and operation_mode
+ wids
+Thread-Index: AQHVR+Kuc+YMxhqSE0KT1LYAs8ywDg==
+Date: Wed, 31 Jul 2019 20:58:19 +0000
+Message-ID: <20190731205245.6590-1-adham.abozaeid@microchip.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [198.175.253.81]
+x-clientproxiedby: BYAPR04CA0017.namprd04.prod.outlook.com
+ (2603:10b6:a03:40::30) To DM5PR11MB1371.namprd11.prod.outlook.com
+ (2603:10b6:3:7::17)
+x-ms-exchange-messagesentrepresentingtype: 1
+x-mailer: git-send-email 2.17.1
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 90d03cc5-8e76-427f-1904-08d715f9d0fc
+x-microsoft-antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(5600148)(711020)(4605104)(1401327)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7193020);
+ SRVR:DM5PR11MB1660; 
+x-ms-traffictypediagnostic: DM5PR11MB1660:
+x-microsoft-antispam-prvs: <DM5PR11MB166015BAB038F0871EDB50DB8DDF0@DM5PR11MB1660.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:6430;
+x-forefront-prvs: 011579F31F
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(376002)(136003)(346002)(366004)(396003)(39860400002)(189003)(199004)(50226002)(53936002)(1076003)(14444005)(256004)(25786009)(8676002)(107886003)(14454004)(86362001)(2906002)(54906003)(99286004)(316002)(6512007)(7736002)(6116002)(64756008)(3846002)(6436002)(305945005)(5640700003)(476003)(6506007)(6916009)(486006)(5660300002)(186003)(71200400001)(66066001)(2616005)(71190400001)(8936002)(478600001)(102836004)(4326008)(81166006)(66946007)(68736007)(66556008)(66476007)(2501003)(386003)(66446008)(26005)(81156014)(2351001)(52116002)(6486002)(36756003);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:DM5PR11MB1660;
+ H:DM5PR11MB1371.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+received-spf: None (protection.outlook.com: microchip.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam-message-info: evB2+wRxmDR0qQc1busmWi3sEN5H4xYIcBviEJbaOGv8t96frR1LWvF49GJ/CMREhDg4r1Eb2Z+b5khR3aArogPZyrJ6cIrzIX3BKRslFpMObGs7ZY7lpUIQs3EvAsQNT/9PGZXDR+NYEAcCmqlCFUY9Pc/PCDHCHc6xTSuPiehB5evLz23kSRd5IDksp4ZQOs6OrSoXn1dhXDWUeGAMEHthN1AMxQf2z6BlxKD760WWd4XN98Wi4evkj/taxBKj62z9qk64YyOF9VgdOXnzruKbszVMCEW7izP36vV1ux8cJVYUHKRewOVreg4CwGoVNSBlqvfe1rGYUialeEjySBLXO/e3jUwHKNrnKSv97m00+Eb/gIVWea+l+qTcDKWboiS79/6iSNq38CsD/4MtziNvN7x4GJ2rkH+i2MMJJ4w=
 MIME-Version: 1.0
-X-Ovh-Tracer-Id: 14045319867170182183
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduvddrleehgddutdduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+X-MS-Exchange-CrossTenant-Network-Message-Id: 90d03cc5-8e76-427f-1904-08d715f9d0fc
+X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Jul 2019 20:58:19.4898 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: adham.abozaeid@microchip.com
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR11MB1660
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,81 +152,213 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- NXP Linux Team <linux-imx@nxp.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- =?UTF-8?q?S=C3=A9bastien=20Szymanski?= <sebastien.szymanski@armadeus.com>,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ johannes@sipsolutions.net, Ajay.Kathat@microchip.com,
+ Adham.Abozaeid@microchip.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-aS5NWDcgYW5kIGkuTVg2VUwvTCBoYXZlIHRoZSBzYW1lIENTSSBjb250cm9sbGVyLiBTbyBhZGQg
-aS5NWDZVTC9MIHN1cHBvcnQKdG8gaW14Ny1tZWRpYS1jc2kgZHJpdmVyLgoKU2lnbmVkLW9mZi1i
-eTogU8OpYmFzdGllbiBTenltYW5za2kgPHNlYmFzdGllbi5zenltYW5za2lAYXJtYWRldXMuY29t
-PgotLS0KCkNoYW5nZXMgZm9yIHYzOgotIHJlYmFzZSBvbiBMaW51eCB2NS4zLXJjMgotIHJlbW92
-ZSBjc2lfc29jX2lkIHZhciBhcyBpdCdzIG5vdCBuZWVkZWQgYW55bW9yZSB0aGFua3MgdG8gY29t
-bWl0CiAgZTBjNzZhN2QzNDI4ICgibWVkaWE6IGlteDctbWVkaWEtY3NpOiBnZXQgY3NpIHVwc3Ry
-ZWFtIGVuZHBvaW50IikKCkNoYW5nZXMgZm9yIHYyOgogLSByZWJhc2Ugb24gdG9wIG9mIGxpbnV4
-dHYvbWFzdGVyCiAtIG1lbnRpb24gaS5NWDZVTC9MIGluIGhlYWRlciBhbmQgS2NvbmZpZyBoZWxw
-IHRleHQKIC0gcmVuYW1lIGNzaV90eXBlIHRvIGNzaV9zb2NfaWQKCiBkcml2ZXJzL3N0YWdpbmcv
-bWVkaWEvaW14L0tjb25maWcgICAgICAgICAgfCAgNCArLS0KIGRyaXZlcnMvc3RhZ2luZy9tZWRp
-YS9pbXgvaW14Ny1tZWRpYS1jc2kuYyB8IDMwICsrKysrKysrKysrKysrKy0tLS0tLS0KIDIgZmls
-ZXMgY2hhbmdlZCwgMjMgaW5zZXJ0aW9ucygrKSwgMTEgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2lteC9LY29uZmlnIGIvZHJpdmVycy9zdGFnaW5nL21l
-ZGlhL2lteC9LY29uZmlnCmluZGV4IDRjNzI2MzQ1ZGMyNS4uZjUxNDc2MjQzMDE2IDEwMDY0NAot
-LS0gYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaW14L0tjb25maWcKKysrIGIvZHJpdmVycy9zdGFn
-aW5nL21lZGlhL2lteC9LY29uZmlnCkBAIC0yMiwxMSArMjIsMTEgQEAgY29uZmlnIFZJREVPX0lN
-WF9DU0kKIAkgIEEgdmlkZW80bGludXggY2FtZXJhIHNlbnNvciBpbnRlcmZhY2UgZHJpdmVyIGZv
-ciBpLk1YNS82LgogCiBjb25maWcgVklERU9fSU1YN19DU0kKLQl0cmlzdGF0ZSAiaS5NWDcgQ2Ft
-ZXJhIFNlbnNvciBJbnRlcmZhY2UgZHJpdmVyIgorCXRyaXN0YXRlICJpLk1YNlVML0wgLyBpLk1Y
-NyBDYW1lcmEgU2Vuc29yIEludGVyZmFjZSBkcml2ZXIiCiAJZGVwZW5kcyBvbiBWSURFT19JTVhf
-TUVESUEgJiYgVklERU9fREVWICYmIEkyQwogCWRlZmF1bHQgeQogCWhlbHAKIAkgIEVuYWJsZSBz
-dXBwb3J0IGZvciB2aWRlbzRsaW51eCBjYW1lcmEgc2Vuc29yIGludGVyZmFjZSBkcml2ZXIgZm9y
-Ci0JICBpLk1YNy4KKwkgIGkuTVg2VUwvTCBvciBpLk1YNy4KIGVuZG1lbnUKIGVuZGlmCmRpZmYg
-LS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaW14L2lteDctbWVkaWEtY3NpLmMgYi9kcml2
-ZXJzL3N0YWdpbmcvbWVkaWEvaW14L2lteDctbWVkaWEtY3NpLmMKaW5kZXggNTAwYjRjMDhkOTY3
-Li40Y2E3OWZmNGM5YjMgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9pbXgvaW14
-Ny1tZWRpYS1jc2kuYworKysgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaW14L2lteDctbWVkaWEt
-Y3NpLmMKQEAgLTEsNiArMSw2IEBACiAvLyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogR1BMLTIu
-MAogLyoKLSAqIFY0TDIgQ2FwdHVyZSBDU0kgU3ViZGV2IGZvciBGcmVlc2NhbGUgaS5NWDcgU09D
-CisgKiBWNEwyIENhcHR1cmUgQ1NJIFN1YmRldiBmb3IgRnJlZXNjYWxlIGkuTVg2VUwvTCAvIGku
-TVg3IFNPQwogICoKICAqIENvcHlyaWdodCAoYykgMjAxOSBMaW5hcm8gTHRkCiAgKgpAQCAtNzY1
-LDYgKzc2NSw3IEBAIHN0YXRpYyBpbnQgaW14N19jc2lfY29uZmlndXJlKHN0cnVjdCBpbXg3X2Nz
-aSAqY3NpKQogCXN0cnVjdCB2NGwyX3BpeF9mb3JtYXQgKm91dF9waXggPSAmdmRldi0+Zm10LmZt
-dC5waXg7CiAJX191MzIgaW5fY29kZSA9IGNzaS0+Zm9ybWF0X21idXNbSU1YN19DU0lfUEFEX1NJ
-TktdLmNvZGU7CiAJdTMyIGNyMSwgY3IxODsKKwlpbnQgd2lkdGggPSBvdXRfcGl4LT53aWR0aDsK
-IAogCWlmIChvdXRfcGl4LT5maWVsZCA9PSBWNEwyX0ZJRUxEX0lOVEVSTEFDRUQpIHsKIAkJaW14
-N19jc2lfZGVpbnRlcmxhY2VfZW5hYmxlKGNzaSwgdHJ1ZSk7CkBAIC03NzQsMTUgKzc3NSwyNyBA
-QCBzdGF0aWMgaW50IGlteDdfY3NpX2NvbmZpZ3VyZShzdHJ1Y3QgaW14N19jc2kgKmNzaSkKIAkJ
-aW14N19jc2lfYnVmX3N0cmlkZV9zZXQoY3NpLCAwKTsKIAl9CiAKLQlpbXg3X2NzaV9zZXRfaW1h
-Z3BhcmEoY3NpLCBvdXRfcGl4LT53aWR0aCwgb3V0X3BpeC0+aGVpZ2h0KTsKKwljcjE4ID0gaW14
-N19jc2lfcmVnX3JlYWQoY3NpLCBDU0lfQ1NJQ1IxOCk7CisKKwlpZiAoIWNzaS0+aXNfY3NpMikg
-eworCQlpZiAob3V0X3BpeC0+cGl4ZWxmb3JtYXQgPT0gVjRMMl9QSVhfRk1UX1VZVlkgfHwKKwkJ
-ICAgIG91dF9waXgtPnBpeGVsZm9ybWF0ID09IFY0TDJfUElYX0ZNVF9ZVVlWKQorCQkJd2lkdGgg
-Kj0gMjsKKworCQlpbXg3X2NzaV9zZXRfaW1hZ3BhcmEoY3NpLCB3aWR0aCwgb3V0X3BpeC0+aGVp
-Z2h0KTsKKworCQljcjE4IHw9IChCSVRfQkFTRUFERFJfU1dJVENIX0VOIHwgQklUX0JBU0VBRERS
-X1NXSVRDSF9TRUwgfAorCQkJQklUX0JBU0VBRERSX0NIR19FUlJfRU4pOworCQlpbXg3X2NzaV9y
-ZWdfd3JpdGUoY3NpLCBjcjE4LCBDU0lfQ1NJQ1IxOCk7CiAKLQlpZiAoIWNzaS0+aXNfY3NpMikK
-IAkJcmV0dXJuIDA7CisJfQorCisJaW14N19jc2lfc2V0X2ltYWdwYXJhKGNzaSwgd2lkdGgsIG91
-dF9waXgtPmhlaWdodCk7CiAKIAljcjEgPSBpbXg3X2NzaV9yZWdfcmVhZChjc2ksIENTSV9DU0lD
-UjEpOwogCWNyMSAmPSB+QklUX0dDTEtfTU9ERTsKIAotCWNyMTggPSBpbXg3X2NzaV9yZWdfcmVh
-ZChjc2ksIENTSV9DU0lDUjE4KTsKIAljcjE4ICY9IEJJVF9NSVBJX0RBVEFfRk9STUFUX01BU0s7
-CiAJY3IxOCB8PSBCSVRfREFUQV9GUk9NX01JUEk7CiAKQEAgLTgxNywxMSArODMwLDkgQEAgc3Rh
-dGljIHZvaWQgaW14N19jc2lfZW5hYmxlKHN0cnVjdCBpbXg3X2NzaSAqY3NpKQogewogCWlteDdf
-Y3NpX3N3X3Jlc2V0KGNzaSk7CiAKLQlpZiAoY3NpLT5pc19jc2kyKSB7Ci0JCWlteDdfY3NpX2Rt
-YXJlcV9yZmZfZW5hYmxlKGNzaSk7Ci0JCWlteDdfY3NpX2h3X2VuYWJsZV9pcnEoY3NpKTsKLQkJ
-aW14N19jc2lfaHdfZW5hYmxlKGNzaSk7Ci0JfQorCWlteDdfY3NpX2RtYXJlcV9yZmZfZW5hYmxl
-KGNzaSk7CisJaW14N19jc2lfaHdfZW5hYmxlX2lycShjc2kpOworCWlteDdfY3NpX2h3X2VuYWJs
-ZShjc2kpOwogfQogCiBzdGF0aWMgdm9pZCBpbXg3X2NzaV9kaXNhYmxlKHN0cnVjdCBpbXg3X2Nz
-aSAqY3NpKQpAQCAtMTMwMiw2ICsxMzEzLDcgQEAgc3RhdGljIGludCBpbXg3X2NzaV9yZW1vdmUo
-c3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKIAogc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9k
-ZXZpY2VfaWQgaW14N19jc2lfb2ZfbWF0Y2hbXSA9IHsKIAl7IC5jb21wYXRpYmxlID0gImZzbCxp
-bXg3LWNzaSIgfSwKKwl7IC5jb21wYXRpYmxlID0gImZzbCxpbXg2dWwtY3NpIiB9LAogCXsgfSwK
-IH07CiBNT0RVTEVfREVWSUNFX1RBQkxFKG9mLCBpbXg3X2NzaV9vZl9tYXRjaCk7Ci0tIAoyLjIx
-LjAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVs
-IG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJk
-ZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZl
-bAo=
+From: Adham Abozaeid <adham.abozaeid@microchip.com>
+
+wilc_set_wfi_drv_handler and wilc_set_operation_mode sends the same
+parameters to the FW, so it's better to combine them together.
+
+Kept wilc_set_wfi_drv_handler implementation since it sends all the
+required parameters, and renamed it to wilc_set_operation_mode to be
+more descriptive.
+
+Signed-off-by: Adham Abozaeid <adham.abozaeid@microchip.com>
+---
+ drivers/staging/wilc1000/wilc_hif.c           | 29 ++-----------------
+ drivers/staging/wilc1000/wilc_hif.h           |  5 ++--
+ drivers/staging/wilc1000/wilc_netdev.c        |  6 ++--
+ .../staging/wilc1000/wilc_wfi_cfgoperations.c | 24 +++++++--------
+ drivers/staging/wilc1000/wilc_wlan_if.h       |  3 +-
+ 5 files changed, 20 insertions(+), 47 deletions(-)
+
+diff --git a/drivers/staging/wilc1000/wilc_hif.c b/drivers/staging/wilc1000/wilc_hif.c
+index f8646ea3b0c4..ca252a43cd8c 100644
+--- a/drivers/staging/wilc1000/wilc_hif.c
++++ b/drivers/staging/wilc1000/wilc_hif.c
+@@ -1409,18 +1409,15 @@ int wilc_set_mac_chnl_num(struct wilc_vif *vif, u8 channel)
+ 	return result;
+ }
+ 
+-int wilc_set_wfi_drv_handler(struct wilc_vif *vif, int index, u8 mode,
+-			     u8 ifc_id)
++int wilc_set_operation_mode(struct wilc_vif *vif, int index, u8 mode,
++			    u8 ifc_id)
+ {
+ 	struct wid wid;
+-	struct host_if_drv *hif_drv = vif->hif_drv;
+ 	int result;
+ 	struct wilc_drv_handler drv;
+ 
+-	if (!hif_drv)
+-		return -EFAULT;
+ 
+-	wid.id = WID_SET_DRV_HANDLER;
++	wid.id = WID_SET_OPERATION_MODE;
+ 	wid.type = WID_STR;
+ 	wid.size = sizeof(drv);
+ 	wid.val = (u8 *)&drv;
+@@ -1435,26 +1432,6 @@ int wilc_set_wfi_drv_handler(struct wilc_vif *vif, int index, u8 mode,
+ 	return result;
+ }
+ 
+-int wilc_set_operation_mode(struct wilc_vif *vif, u32 mode)
+-{
+-	struct wid wid;
+-	struct wilc_op_mode op_mode;
+-	int result;
+-
+-	wid.id = WID_SET_OPERATION_MODE;
+-	wid.type = WID_INT;
+-	wid.size = sizeof(op_mode);
+-	wid.val = (u8 *)&op_mode;
+-
+-	op_mode.mode = cpu_to_le32(mode);
+-
+-	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
+-	if (result)
+-		netdev_err(vif->ndev, "Failed to set operation mode\n");
+-
+-	return result;
+-}
+-
+ s32 wilc_get_inactive_time(struct wilc_vif *vif, const u8 *mac, u32 *out_val)
+ {
+ 	struct wid wid;
+diff --git a/drivers/staging/wilc1000/wilc_hif.h b/drivers/staging/wilc1000/wilc_hif.h
+index be1d2497cde9..3bc305151651 100644
+--- a/drivers/staging/wilc1000/wilc_hif.h
++++ b/drivers/staging/wilc1000/wilc_hif.h
+@@ -219,9 +219,8 @@ int wilc_remain_on_channel(struct wilc_vif *vif, u64 cookie,
+ 			   void *user_arg);
+ int wilc_listen_state_expired(struct wilc_vif *vif, u64 cookie);
+ void wilc_frame_register(struct wilc_vif *vif, u16 frame_type, bool reg);
+-int wilc_set_wfi_drv_handler(struct wilc_vif *vif, int index, u8 mode,
+-			     u8 ifc_id);
+-int wilc_set_operation_mode(struct wilc_vif *vif, u32 mode);
++int wilc_set_operation_mode(struct wilc_vif *vif, int index, u8 mode,
++			    u8 ifc_id);
+ int wilc_get_statistics(struct wilc_vif *vif, struct rf_info *stats);
+ void wilc_resolve_disconnect_aberration(struct wilc_vif *vif);
+ int wilc_get_vif_idx(struct wilc_vif *vif);
+diff --git a/drivers/staging/wilc1000/wilc_netdev.c b/drivers/staging/wilc1000/wilc_netdev.c
+index 68129a0ba55f..bd848fdf7f8a 100644
+--- a/drivers/staging/wilc1000/wilc_netdev.c
++++ b/drivers/staging/wilc1000/wilc_netdev.c
+@@ -626,10 +626,8 @@ static int wilc_mac_open(struct net_device *ndev)
+ 		return ret;
+ 	}
+ 
+-	wilc_set_wfi_drv_handler(vif, wilc_get_vif_idx(vif), vif->iftype,
+-				 vif->idx);
+-	wilc_set_operation_mode(vif, vif->iftype);
+-
++	wilc_set_operation_mode(vif, wilc_get_vif_idx(vif),
++				 vif->iftype, vif->idx);
+ 	wilc_get_mac_address(vif, mac_add);
+ 	netdev_dbg(ndev, "Mac address: %pM\n", mac_add);
+ 	ether_addr_copy(ndev->dev_addr, mac_add);
+diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+index e2d9efed36b0..cf661e8ab1c8 100644
+--- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
++++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+@@ -1419,7 +1419,8 @@ static int change_virtual_intf(struct wiphy *wiphy, struct net_device *dev,
+ 		if (vif->iftype == WILC_AP_MODE || vif->iftype == WILC_GO_MODE)
+ 			wilc_wfi_deinit_mon_interface(wl, true);
+ 		vif->iftype = WILC_STATION_MODE;
+-		wilc_set_operation_mode(vif, WILC_STATION_MODE);
++		wilc_set_operation_mode(vif, wilc_get_vif_idx(vif),
++					 WILC_STATION_MODE, vif->idx);
+ 
+ 		memset(priv->assoc_stainfo.sta_associated_bss, 0,
+ 		       WILC_MAX_NUM_STA * ETH_ALEN);
+@@ -1431,8 +1432,8 @@ static int change_virtual_intf(struct wiphy *wiphy, struct net_device *dev,
+ 		priv->wdev.iftype = type;
+ 		vif->monitor_flag = 0;
+ 		vif->iftype = WILC_CLIENT_MODE;
+-		wilc_set_operation_mode(vif, WILC_STATION_MODE);
+-
++		wilc_set_operation_mode(vif, wilc_get_vif_idx(vif),
++					 WILC_STATION_MODE, vif->idx);
+ 		break;
+ 
+ 	case NL80211_IFTYPE_AP:
+@@ -1440,18 +1441,17 @@ static int change_virtual_intf(struct wiphy *wiphy, struct net_device *dev,
+ 		priv->wdev.iftype = type;
+ 		vif->iftype = WILC_AP_MODE;
+ 
+-		if (wl->initialized) {
+-			wilc_set_wfi_drv_handler(vif, wilc_get_vif_idx(vif),
+-						 0, vif->idx);
+-			wilc_set_operation_mode(vif, WILC_AP_MODE);
+-		}
++		if (wl->initialized)
++			wilc_set_operation_mode(vif, wilc_get_vif_idx(vif),
++						 WILC_AP_MODE, vif->idx);
+ 		break;
+ 
+ 	case NL80211_IFTYPE_P2P_GO:
+-		wilc_set_operation_mode(vif, WILC_AP_MODE);
+ 		dev->ieee80211_ptr->iftype = type;
+ 		priv->wdev.iftype = type;
+ 		vif->iftype = WILC_GO_MODE;
++		wilc_set_operation_mode(vif, wilc_get_vif_idx(vif),
++					WILC_AP_MODE, vif->idx);
+ 		break;
+ 
+ 	default:
+@@ -1659,15 +1659,15 @@ static int del_virtual_intf(struct wiphy *wiphy, struct wireless_dev *wdev)
+ 	vif->monitor_flag = 0;
+ 
+ 	mutex_lock(&wl->vif_mutex);
+-	wilc_set_wfi_drv_handler(vif, 0, 0, 0);
+-	for (i = vif->idx; i < wl->vif_num ; i++) {
++	wilc_set_operation_mode(vif, 0, 0, 0);
++	for (i = vif->idx; i < wl->vif_num; i++) {
+ 		if ((i + 1) >= wl->vif_num) {
+ 			wl->vif[i] = NULL;
+ 		} else {
+ 			vif = wl->vif[i + 1];
+ 			vif->idx = i;
+ 			wl->vif[i] = vif;
+-			wilc_set_wfi_drv_handler(vif, wilc_get_vif_idx(vif),
++			wilc_set_operation_mode(vif, wilc_get_vif_idx(vif),
+ 						 vif->iftype, vif->idx);
+ 		}
+ 	}
+diff --git a/drivers/staging/wilc1000/wilc_wlan_if.h b/drivers/staging/wilc1000/wilc_wlan_if.h
+index b89d0e0f04cc..70eac586f80c 100644
+--- a/drivers/staging/wilc1000/wilc_wlan_if.h
++++ b/drivers/staging/wilc1000/wilc_wlan_if.h
+@@ -724,7 +724,6 @@ enum {
+ 	/* NMAC Integer WID list */
+ 	/* Custom Integer WID list */
+ 	WID_GET_INACTIVE_TIME		= 0x2084,
+-	WID_SET_OPERATION_MODE		= 0X2086,
+ 	/* EMAC String WID list */
+ 	WID_SSID			= 0x3000,
+ 	WID_FIRMWARE_VERSION		= 0x3001,
+@@ -755,9 +754,9 @@ enum {
+ 	WID_MODEL_NAME			= 0x3027, /*Added for CAPI tool */
+ 	WID_MODEL_NUM			= 0x3028, /*Added for CAPI tool */
+ 	WID_DEVICE_NAME			= 0x3029, /*Added for CAPI tool */
+-	WID_SET_DRV_HANDLER		= 0x3079,
+ 
+ 	/* NMAC String WID list */
++	WID_SET_OPERATION_MODE		= 0x3079,
+ 	WID_11N_P_ACTION_REQ		= 0x3080,
+ 	WID_HUT_TEST_ID			= 0x3081,
+ 	WID_PMKID_INFO			= 0x3082,
+-- 
+2.17.1
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
