@@ -1,55 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6CCB57BA1E
-	for <lists+driverdev-devel@lfdr.de>; Wed, 31 Jul 2019 09:09:15 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 254257BA35
+	for <lists+driverdev-devel@lfdr.de>; Wed, 31 Jul 2019 09:12:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 932F287CB2;
-	Wed, 31 Jul 2019 07:09:12 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7662186841;
+	Wed, 31 Jul 2019 07:12:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xYozWR09Tqr6; Wed, 31 Jul 2019 07:09:12 +0000 (UTC)
+	with ESMTP id pHeLSQkE4Edl; Wed, 31 Jul 2019 07:12:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1A25087C0D;
-	Wed, 31 Jul 2019 07:09:11 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id EBEED8686D;
+	Wed, 31 Jul 2019 07:12:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 319421BF4DB
- for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 07:09:08 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 08DA21BF4DB
+ for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 07:12:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 2ED5D2154A
- for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 07:09:08 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 05CC68738B
+ for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 07:12:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IAp0aRfiH6p9 for <devel@linuxdriverproject.org>;
- Wed, 31 Jul 2019 07:09:07 +0000 (UTC)
+ with ESMTP id VVckbcIS3cBO for <devel@linuxdriverproject.org>;
+ Wed, 31 Jul 2019 07:11:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga05-in.huawei.com [45.249.212.191])
- by silver.osuosl.org (Postfix) with ESMTPS id F03D221546
- for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 07:09:06 +0000 (UTC)
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 29B0120612329D04C2D0;
- Wed, 31 Jul 2019 15:09:04 +0800 (CST)
+Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2851687368
+ for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 07:11:59 +0000 (UTC)
+Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id BFAFD1E8D5263CB2BA72;
+ Wed, 31 Jul 2019 15:11:56 +0800 (CST)
 Received: from [10.151.23.176] (10.151.23.176) by smtp.huawei.com
- (10.3.19.203) with Microsoft SMTP Server (TLS) id 14.3.439.0; Wed, 31 Jul
- 2019 15:08:58 +0800
-Subject: Re: [PATCH 07/22] staging: erofs: remove redundant #include
- "internal.h"
+ (10.3.19.213) with Microsoft SMTP Server (TLS) id 14.3.439.0; Wed, 31 Jul
+ 2019 15:11:46 +0800
+Subject: Re: [PATCH 08/22] staging: erofs: kill CONFIG_EROFS_FS_IO_MAX_RETRIES
 To: Chao Yu <yuchao0@huawei.com>
 References: <20190729065159.62378-1-gaoxiang25@huawei.com>
- <20190729065159.62378-8-gaoxiang25@huawei.com>
- <bae5fc5b-b2e1-0d74-6374-b1ae5835cbb9@huawei.com>
+ <20190729065159.62378-9-gaoxiang25@huawei.com>
+ <1c979e3f-54ec-cce8-650c-39e060e72169@huawei.com>
 From: Gao Xiang <gaoxiang25@huawei.com>
-Message-ID: <52072867-a9ae-5730-0ce4-47dd8dcb2d8c@huawei.com>
-Date: Wed, 31 Jul 2019 15:08:50 +0800
+Message-ID: <2d7abbad-61d0-df2b-6a42-26f2606d775a@huawei.com>
+Date: Wed, 31 Jul 2019 15:11:38 +0800
 User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
  Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <bae5fc5b-b2e1-0d74-6374-b1ae5835cbb9@huawei.com>
+In-Reply-To: <1c979e3f-54ec-cce8-650c-39e060e72169@huawei.com>
 X-Originating-IP: [10.151.23.176]
 X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -74,22 +73,31 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 Hi Chao,
 
-On 2019/7/31 15:03, Chao Yu wrote:
+On 2019/7/31 15:05, Chao Yu wrote:
 > On 2019/7/29 14:51, Gao Xiang wrote:
->> Because #include "internal.h" is included in xattr.h
+>> CONFIG_EROFS_FS_IO_MAX_RETRIES seems a runtime setting
+>> and users have no idea about the change in behaviour.
+>>
+>> Let's remove the setting currently and fold it into code,
+>> turn it into a module parameter if it's really needed.
+>>
+>> Suggested-by: David Sterba <dsterba@suse.cz>
+>> Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
 > 
-> I think it would be better to remove "internal.h" in xattr.h, and include them
-> both in .c file in where we need xattr definition.
+> It's fine to me, but I'd like to suggest to add this as a sys entry which can be
+> more flexible for user to change.
 
-It seems that all xattr related source files needing internal.h,
-and we need "EROFS_V(inode)", "struct erofs_sb_info", ... stuffs in xattr.h,
-which is defined in internal.h...
+I think it can be added in the later version, the original view
+from David is that he had question how users using this option.
+
+Maybe we can use the default value and leave it to users who
+really need to modify this value (real requirement).
 
 Thanks,
 Gao Xiang
 
 > 
-> Thanks,
+> Thanks
 > 
 _______________________________________________
 devel mailing list
