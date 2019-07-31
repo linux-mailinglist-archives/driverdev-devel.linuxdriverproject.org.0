@@ -1,84 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id F129A7CBDA
-	for <lists+driverdev-devel@lfdr.de>; Wed, 31 Jul 2019 20:24:12 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AB0808496B;
-	Wed, 31 Jul 2019 18:24:11 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uVk8qj3xSEAz; Wed, 31 Jul 2019 18:24:10 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C63CD84AE1;
-	Wed, 31 Jul 2019 18:24:09 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8CA3E1BF2EA
- for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 18:24:07 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D3927CBE6
+	for <lists+driverdev-devel@lfdr.de>; Wed, 31 Jul 2019 20:25:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 882E481B82
- for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 18:24:07 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 24D6185C56;
+	Wed, 31 Jul 2019 18:25:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id zKgA5Jqaguqn; Wed, 31 Jul 2019 18:25:37 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id DC5AF85A8B;
+	Wed, 31 Jul 2019 18:25:36 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 8580E1BF2EA
+ for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 18:25:34 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 8272C203DF
+ for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 18:25:34 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NeJGCFjIF8fZ for <devel@linuxdriverproject.org>;
- Wed, 31 Jul 2019 18:24:06 +0000 (UTC)
+ with ESMTP id hM-PPD-bI55N for <devel@linuxdriverproject.org>;
+ Wed, 31 Jul 2019 18:25:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
- [209.85.215.193])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D049E81B78
- for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 18:24:06 +0000 (UTC)
-Received: by mail-pg1-f193.google.com with SMTP id s1so26160632pgr.2
- for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 11:24:06 -0700 (PDT)
+Received: from mail-pg1-f170.google.com (mail-pg1-f170.google.com
+ [209.85.215.170])
+ by silver.osuosl.org (Postfix) with ESMTPS id 1AA512039D
+ for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 18:25:34 +0000 (UTC)
+Received: by mail-pg1-f170.google.com with SMTP id i70so21724896pgd.4
+ for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 11:25:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=LMprJ1umUnvu1dTPiCF12+IEy2mbH3QvbE/6RTXXxRo=;
- b=tyb32Or3VmREdlP9nkj0OyFFjS3LBsRt3zMvjFavg+65HKxCSVSUX11NDfj9UdNawF
- uJucIx3kBcwVjXfBMquMuh8KX5sGLWuiSzbLb4LalwNSazcPBIToTHKC9kmYw77n3+k2
- vQHaOL33IeMXPDSdi8d3uAzbbpb1ubyu+ea665xYHd790jDaIlfNkU5K7YAZWVSHojyw
- ikHYozd4OIUoxJX5ACxmRhI9b+XLvilnCY0eH8wE6Jg7wp/oyEmyRSWtAimSgViMTsKx
- hqGGSP4wiz/fWHacE6h5txA+aBGJjcu79nfWS2ywvAaU1uUhfGornX4HPZhvPVkGuuY+
- RCqg==
+ :user-agent; bh=CGOO3Qz8vz6py6i7KKOWSpuubNGLxWkIe5GopgOPJrk=;
+ b=n7XN7S3C3zlpCNPVbparKSlbichuk0E/msHzh5M8NUL07f5YbqHff3uNg+enH1io7k
+ 1O89MzhAK6aeTCRHGJggMnklSj+5zAcwxfXmW7QwhjwJulYO/eWXXy8ZZIK+g0FFHpgN
+ +U90F3xDD5RhXFdHIIDcBNqubWnCv68sEDNn1uMuZUhCg04LXXlAob5HP7rAKgH+Xu44
+ hj4svatEGedzU2EwEA4O6O/dnCf3lnhlKNdAwjRlyWznJNZAlgOt1cesVd7QXZzrc0DE
+ Klr3EMxJiTEPSwdgQBXtVMWjrH6arMNfD1B90CpHGwfIo0qnPOeaju8jteyx9C6DWOU3
+ piZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=LMprJ1umUnvu1dTPiCF12+IEy2mbH3QvbE/6RTXXxRo=;
- b=o1Q+/SL74VXJqoMzuTqjC6GzRxgswegt4dqebr1X0HTe02bYfrlimZBSGFbhaQXWUq
- 5hfy4GFDDm5Rt0DES79p36mnHADu+vy2LjB4O84sBoeQBUHCy8mPsNAS53QhIfcCylOI
- bNdU68wnLimgtObjIwG12aoTKdWWy5+FO4QLe3IEpRNmKwKvuwNgI2wDFVH8cFvNnx00
- KdGPz2jX+TiINl8jC5YI2mJAlhOMlffObKr1GyyFlrZto+hs35bYv7npJgFXrm9lzJWZ
- wfvNH2Hl3O3FC9P4NcW9Fmfvt9zsg8A0+2yA7xj+kYmv5ExgB+Imkq/OA1bHrPpCplio
- DwQA==
-X-Gm-Message-State: APjAAAWYkDncn2xQkZ9zQGuFT1esGMqOQkDcYk1D088/CJ+1GGX+x8XN
- CFjM2QfLV/3zmFkpsYhLlUE=
-X-Google-Smtp-Source: APXvYqzhzw2BA7flXoBf5Mp5rPLsLG16tG/QklwIadDX0PbQT9u1Cq4Ak1UsMdb6apJ3lcoK9x+HWA==
-X-Received: by 2002:a62:7990:: with SMTP id
- u138mr46840329pfc.191.1564597446519; 
- Wed, 31 Jul 2019 11:24:06 -0700 (PDT)
+ bh=CGOO3Qz8vz6py6i7KKOWSpuubNGLxWkIe5GopgOPJrk=;
+ b=bIVsP9AXyPoAykhYouH4x6IHa8xk4JS5lYwPwdO0FyjpeOB7k0i+GK+ZGrG5+uLNC5
+ 5aY8bct8KlPQD6+quk8U4mZvzaPQb+XAoLlx/PgaWgwbOiqwrXGPX4/8IHofhO08s6ZS
+ wG6SFPZYL3nZTgJPkEQ5tUuj+JAK0TVfjICo9ewyjoBpsI7DvBf/pB8l4jFg1tLYlwI4
+ 63RmLYjMF6D/WxianSnzwWAUvf1a9L0Qz//UkA88EGpooolMx7KMYUcLHHcOxHQam3bv
+ oc4Wj7PBPtj/XnG9TvMFZ+2rTWNzX1mVov1UsaXQpGsokRw19KvJZXlJU6jV6lsYOIJW
+ Z1/A==
+X-Gm-Message-State: APjAAAUP0RO5gOhPbuvY2wENNAx/sNCqrwJmX0ziuCwYqXgwioOGaDO+
+ FMtjodC8jDeY0YT+WRsNU0U=
+X-Google-Smtp-Source: APXvYqxUVw30HBVQzTRT8MRsyminQ7KjQNSeSj/zgCjKh4Yg2ucaoFQS6N4VwBDXP2aJLZkEhIaLyg==
+X-Received: by 2002:a17:90a:d814:: with SMTP id
+ a20mr4257773pjv.48.1564597533739; 
+ Wed, 31 Jul 2019 11:25:33 -0700 (PDT)
 Received: from hari-Inspiron-1545 ([183.83.86.126])
- by smtp.gmail.com with ESMTPSA id u23sm71863700pfn.140.2019.07.31.11.24.03
+ by smtp.gmail.com with ESMTPSA id g62sm2664106pje.11.2019.07.31.11.25.30
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 31 Jul 2019 11:24:06 -0700 (PDT)
-Date: Wed, 31 Jul 2019 23:54:00 +0530
+ Wed, 31 Jul 2019 11:25:33 -0700 (PDT)
+Date: Wed, 31 Jul 2019 23:55:28 +0530
 From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Hans de Goede <hdegoede@redhat.com>,
- Colin Ian King <colin.king@canonical.com>,
  Hariprasad Kelam <hariprasad.kelam@gmail.com>,
- Arnd Bergmann <arnd@arndb.de>, Jeeeun Evans <jeeeunevans@gmail.com>,
- Nishka Dasgupta <nishkadg.linux@gmail.com>,
- Aditya Pakki <pakki001@umn.edu>,
  Hardik Singh Rathore <hardiksingh.k@gmail.com>,
+ Jeeeun Evans <jeeeunevans@gmail.com>,
+ Colin Ian King <colin.king@canonical.com>,
  devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Larry.Finger@lwfinger.net
-Subject: [Patch v2 09/10] staging: rtl8723bs: core: Remove unneeded variables
- sgi_20m,sgi_40m and sgi_80m
-Message-ID: <20190731182400.GA9792@hari-Inspiron-1545>
+ hdegoede@redhat.com, Larry.Finger@lwfinger.net
+Subject: [Patch v2 10/10] staging: rtl8723bs: core: Remove Macro
+ "IS_MAC_ADDRESS_BROADCAST"
+Message-ID: <20190731182528.GA9874@hari-Inspiron-1545>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.5.24 (2015-08-30)
@@ -99,46 +96,34 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-htpriv.sgi_* variables are of type u8 ,instead of storing them in local
-variables ,its better to read value directly from structure.
+Remove unused macro IS_MAC_ADDRESS_BROADCAST. In future if one wants use
+it ,use generic API "is_broadcast_ether_addr"
 
 Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 ---
 v2 - Add patch number
 
- drivers/staging/rtl8723bs/core/rtw_xmit.c | 11 ++++-------
- 1 file changed, 4 insertions(+), 7 deletions(-)
+ drivers/staging/rtl8723bs/core/rtw_ioctl_set.c | 7 -------
+ 1 file changed, 7 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-index b5dcb78..0690d5e 100644
---- a/drivers/staging/rtl8723bs/core/rtw_xmit.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-@@ -346,21 +346,18 @@ void _rtw_free_xmit_priv(struct xmit_priv *pxmitpriv)
+diff --git a/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c b/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c
+index 8eb0ff5..eb08569 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c
++++ b/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c
+@@ -9,13 +9,6 @@
+ #include <drv_types.h>
+ #include <rtw_debug.h>
  
- u8 query_ra_short_GI(struct sta_info *psta)
- {
--	u8 sgi = false, sgi_20m = false, sgi_40m = false, sgi_80m = false;
+-#define IS_MAC_ADDRESS_BROADCAST(addr) \
+-(\
+-	((addr[0] == 0xff) && (addr[1] == 0xff) && \
+-		(addr[2] == 0xff) && (addr[3] == 0xff) && \
+-		(addr[4] == 0xff) && (addr[5] == 0xff))  ? true : false \
+-)
 -
--	sgi_20m = psta->htpriv.sgi_20m;
--	sgi_40m = psta->htpriv.sgi_40m;
-+	u8 sgi = false;
- 
- 	switch (psta->bw_mode) {
- 	case CHANNEL_WIDTH_80:
--		sgi = sgi_80m;
-+		sgi = false;
- 		break;
- 	case CHANNEL_WIDTH_40:
--		sgi = sgi_40m;
-+		sgi = psta->htpriv.sgi_40m;
- 		break;
- 	case CHANNEL_WIDTH_20:
- 	default:
--		sgi = sgi_20m;
-+		sgi = psta->htpriv.sgi_20m;
- 		break;
- 	}
- 
+ u8 rtw_validate_bssid(u8 *bssid)
+ {
+ 	u8 ret = true;
 -- 
 2.7.4
 
