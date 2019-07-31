@@ -1,75 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5A2E17CC0D
-	for <lists+driverdev-devel@lfdr.de>; Wed, 31 Jul 2019 20:36:40 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1FA767CC4C
+	for <lists+driverdev-devel@lfdr.de>; Wed, 31 Jul 2019 20:51:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5289720410;
-	Wed, 31 Jul 2019 18:36:38 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4D97084BDF;
+	Wed, 31 Jul 2019 18:51:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FmZatE8q9QN3; Wed, 31 Jul 2019 18:36:37 +0000 (UTC)
+	with ESMTP id EA0pTTQ_brOZ; Wed, 31 Jul 2019 18:51:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4584B203CB;
-	Wed, 31 Jul 2019 18:36:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0D06D84B91;
+	Wed, 31 Jul 2019 18:51:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 516ED1BF2EA
- for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 18:36:33 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D00391BF2EA
+ for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 18:51:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4EA4D20360
- for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 18:36:33 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5756F84D24
+ for <devel@linuxdriverproject.org>; Wed, 31 Jul 2019 18:51:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1a16TInHZ7aB for <devel@linuxdriverproject.org>;
- Wed, 31 Jul 2019 18:36:32 +0000 (UTC)
+ with ESMTP id CPPVA-nNik9U for <devel@linuxdriverproject.org>;
+ Wed, 31 Jul 2019 18:51:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
- [209.85.210.195])
- by silver.osuosl.org (Postfix) with ESMTPS id DE1762033B
- for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 18:36:32 +0000 (UTC)
-Received: by mail-pf1-f195.google.com with SMTP id i189so32356091pfg.10
- for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 11:36:32 -0700 (PDT)
+Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
+ [209.85.128.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 0001484E5A
+ for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 18:51:06 +0000 (UTC)
+Received: by mail-wm1-f65.google.com with SMTP id s15so39409187wmj.3
+ for <devel@driverdev.osuosl.org>; Wed, 31 Jul 2019 11:51:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=CDz+d68kK243TDqiK1NIHv51qZyJgsAbmVMIQB4C8hA=;
- b=uVJ4kuvizTFMl0PZZfBRuMnaeJnygWvwTvlBnQWHCYFjp2qWosEZ2sdvgNNW/JTj97
- i8YrnN4IXGmWGPg1Ul+XABKjMvZDXiP4X/h8LMdRejyiQeNDPMZQdOYtkvj/nctz3rOp
- nBsGFD3Ks6OwSD6X2hNvQFBEOTmul2dmx+bm6Y1ZwupyzP4X6/FBdMFXXuwOa0jnR9BD
- mG3ooqmf9Wa3MRvq7bI1adrevwTdQ2dDL3Q6LWaLJMDOOavQ3gPxKNxgAEfbgs5zzzUW
- rslv7djoSK1Va99wkPMsF41urYs2Z+usZ5aLnKNt9by0t399bTqje9qSr4I/satSCxYt
- WL4A==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=TIq//3WBvHqO99YVQvLeZ50v6iDly2l9GsQRTcXr4CU=;
+ b=CyPRLG609W1sq1ut05WWPgwwnrpx5iSeNBPqSvSTfJC3S3DV3HR/nGphe0hFxcmafO
+ q6PF7zrIUDkRNJe4QUG4g6zy4YP4AVJN5XfzOvrw7m30iD1SCzYLLgqtwYa9e58hWNft
+ CDtLXu8HdzDldZDDzg/o9ph644TnThNpEFgKKbQMmAj8pJDFhGVRO2XLbW3MBjZSIMsi
+ 8Szyv/SfbREdsF2ljJZlhhukLPfRhBWHhfmww+A5teEhiJoKdtpPVOilfeEjyiw0jbuT
+ A6v2yhigJjWZiRXEF74HPMG8D67KaG/i7srTfs8yiT7x6pvNF5I+zqD0PeFySEexWQpl
+ g5FA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=CDz+d68kK243TDqiK1NIHv51qZyJgsAbmVMIQB4C8hA=;
- b=pqDK9Z6N2Y/KElWHXDorge4PYPO3axUPhRTpVNuSndNRJRy7w1N1b3QQUxkSOc+J/U
- xZlB19vcjYyjj5O6iSIewvSNs02AvUJb614dHnjph+M9QFxQdIxulAKYDEBznWoIKGd0
- BnhIY1MiL1R4Kglz2aUo26cxcxsuMyZ0FyiLwqbAyZPgKQ2cYie+EndUb5yZOzuGPUcG
- fRbVCUE7EmX2WdOoKiV2EGUCPqlaZ+qEh8di1jgiTNjvPraKqlzHRPB25L3WnDpk0Pan
- GXdxhjBzuIBcnQINdDT2jK/1PpM3AGPZVk6oeplIQYYeg0HVuMQpzimtx1RKLFos3cjF
- rPcA==
-X-Gm-Message-State: APjAAAXafcDvCkWlSBM0idisAchtrL9iaylmX2GrwJz6x/ZZkr7BXifE
- l6HqDdRca0iPZL51xtvmXM8=
-X-Google-Smtp-Source: APXvYqxt778NrcDU6VEz3IsXTgcrNE1lZ37D3/J/5XP2DykdutWw96vKy1J0UYLYfRz6P6Ji/0MArg==
-X-Received: by 2002:a63:6bc5:: with SMTP id
- g188mr85059063pgc.225.1564598192338; 
- Wed, 31 Jul 2019 11:36:32 -0700 (PDT)
-Received: from localhost.localdomain ([183.83.73.90])
- by smtp.gmail.com with ESMTPSA id y14sm19780610pge.7.2019.07.31.11.36.29
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 31 Jul 2019 11:36:31 -0700 (PDT)
-From: Harsh Jain <harshjain32@gmail.com>
-To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] staging:kpc2000:Fix dubious x | !y sparse warning
-Date: Thu,  1 Aug 2019 00:06:06 +0530
-Message-Id: <20190731183606.2513-1-harshjain32@gmail.com>
-X-Mailer: git-send-email 2.17.1
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=TIq//3WBvHqO99YVQvLeZ50v6iDly2l9GsQRTcXr4CU=;
+ b=YKA7wSl6eqT5UgMxA2Qiknjf4I0sH5AJbpVzumq5/QksO1I9bVmumgrV8kVir38Y2F
+ 7naac9KpzkJJoW/icknp3miBe9QbTAavXykjGMDiJuUU5SNdXe3PspX+M2vUvOzGc88F
+ UtSzwBwFF34Iik85QXReK/V3BX2F2fLd1tBgWvEDp/MykVOrjFDBw+ObbmPwiLBxdKVn
+ bBwtTy1unYZ5DELktDW+rSFFkS1Iwbo3422o/dxnTjHjpLnWgGbCDqp+A0lWrZ6TlANx
+ FtgmDbBDqQA9nfZeJdRFRWaWgZCexXVQwOCazlrS30vCINq2STd0APZ1h8StEeIj9gcI
+ 9wLQ==
+X-Gm-Message-State: APjAAAWF7qpc8D3+UxBC/nMmqdu0bO5qWfXT0UNL+UWZJOrixFcU8YMW
+ 2ZmCF5WFTTmm1+inxBZzSuw=
+X-Google-Smtp-Source: APXvYqwT3vvKCphGwPAkg3s6juYAFATCs84O8st2n9NhxyeSzVKnAtJ+JFmzCZMNEF2070f4dGarbQ==
+X-Received: by 2002:a1c:cb0a:: with SMTP id b10mr110648132wmg.41.1564599065059; 
+ Wed, 31 Jul 2019 11:51:05 -0700 (PDT)
+Received: from localhost.localdomain ([2a01:4f8:222:2f1b::2])
+ by smtp.gmail.com with ESMTPSA id o20sm174722993wrh.8.2019.07.31.11.51.03
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Wed, 31 Jul 2019 11:51:04 -0700 (PDT)
+From: Nathan Chancellor <natechancellor@gmail.com>
+To: davem@davemloft.net
+Subject: [PATCH] net: mdio-octeon: Fix build error and Kconfig warning
+Date: Wed, 31 Jul 2019 11:50:24 -0700
+Message-Id: <20190731185023.20954-1-natechancellor@gmail.com>
+X-Mailer: git-send-email 2.22.0
+In-Reply-To: <20190731.094150.851749535529247096.davem@davemloft.net>
+References: <20190731.094150.851749535529247096.davem@davemloft.net>
+MIME-Version: 1.0
+X-Patchwork-Bot: notify
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,58 +86,84 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: harshjain32@gmail.com
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, andrew@lunn.ch, f.fainelli@gmail.com,
+ kernel-build-reports@lists.linaro.org, gregkh@linuxfoundation.org,
+ willy@infradead.org, broonie@kernel.org, linux-next@vger.kernel.org,
+ netdev@vger.kernel.org, natechancellor@gmail.com,
+ linux-arm-kernel@lists.infradead.org, hkallweit1@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Bitwise OR(|) operation with 0 always yield same result.
-It fixes dubious x | !y sparse warning.
+arm allyesconfig warns:
 
-Signed-off-by: Harsh Jain <harshjain32@gmail.com>
+WARNING: unmet direct dependencies detected for MDIO_OCTEON
+  Depends on [n]: NETDEVICES [=y] && MDIO_DEVICE [=y] && MDIO_BUS [=y]
+&& 64BIT && HAS_IOMEM [=y] && OF_MDIO [=y]
+  Selected by [y]:
+  - OCTEON_ETHERNET [=y] && STAGING [=y] && (CAVIUM_OCTEON_SOC &&
+NETDEVICES [=y] || COMPILE_TEST [=y])
+
+and errors:
+
+In file included from ../drivers/net/phy/mdio-octeon.c:14:
+../drivers/net/phy/mdio-octeon.c: In function 'octeon_mdiobus_probe':
+../drivers/net/phy/mdio-cavium.h:111:36: error: implicit declaration of
+function 'writeq'; did you mean 'writeb'?
+[-Werror=implicit-function-declaration]
+  111 | #define oct_mdio_writeq(val, addr) writeq(val, (void *)addr)
+      |                                    ^~~~~~
+../drivers/net/phy/mdio-octeon.c:56:2: note: in expansion of macro
+'oct_mdio_writeq'
+   56 |  oct_mdio_writeq(smi_en.u64, bus->register_base + SMI_EN);
+      |  ^~~~~~~~~~~~~~~
+cc1: some warnings being treated as errors
+
+This allows MDIO_OCTEON to be built with COMPILE_TEST as well and
+includes the proper header for readq/writeq. This does not address
+the several -Wint-to-pointer-cast and -Wpointer-to-int-cast warnings
+that appeared as a result of commit 171a9bae68c7 ("staging/octeon:
+Allow test build on !MIPS") in these files.
+
+Fixes: 171a9bae68c7 ("staging/octeon: Allow test build on !MIPS")
+Reported-by: kbuild test robot <lkp@intel.com>
+Reported-by: Mark Brown <broonie@kernel.org>
+Reported-by: Randy Dunlap <rdunlap@infradead.org>
+Signed-off-by: Nathan Chancellor <natechancellor@gmail.com>
 ---
- drivers/staging/kpc2000/kpc2000_i2c.c | 16 +---------------
- 1 file changed, 1 insertion(+), 15 deletions(-)
+ drivers/net/phy/Kconfig       | 2 +-
+ drivers/net/phy/mdio-cavium.h | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/kpc2000/kpc2000_i2c.c b/drivers/staging/kpc2000/kpc2000_i2c.c
-index b108da4..5f027d7c 100644
---- a/drivers/staging/kpc2000/kpc2000_i2c.c
-+++ b/drivers/staging/kpc2000/kpc2000_i2c.c
-@@ -536,29 +536,15 @@ static u32 i801_func(struct i2c_adapter *adapter)
+diff --git a/drivers/net/phy/Kconfig b/drivers/net/phy/Kconfig
+index 20f14c5fbb7e..ed2edf4b5b0e 100644
+--- a/drivers/net/phy/Kconfig
++++ b/drivers/net/phy/Kconfig
+@@ -159,7 +159,7 @@ config MDIO_MSCC_MIIM
  
- 	u32 f =
- 		I2C_FUNC_I2C                     | /* 0x00000001 (I enabled this one) */
--		!I2C_FUNC_10BIT_ADDR             | /* 0x00000002 */
--		!I2C_FUNC_PROTOCOL_MANGLING      | /* 0x00000004 */
- 		((priv->features & FEATURE_SMBUS_PEC) ? I2C_FUNC_SMBUS_PEC : 0) | /* 0x00000008 */
--		!I2C_FUNC_SMBUS_BLOCK_PROC_CALL  | /* 0x00008000 */
- 		I2C_FUNC_SMBUS_QUICK             | /* 0x00010000 */
--		!I2C_FUNC_SMBUS_READ_BYTE        | /* 0x00020000 */
--		!I2C_FUNC_SMBUS_WRITE_BYTE       | /* 0x00040000 */
--		!I2C_FUNC_SMBUS_READ_BYTE_DATA   | /* 0x00080000 */
--		!I2C_FUNC_SMBUS_WRITE_BYTE_DATA  | /* 0x00100000 */
--		!I2C_FUNC_SMBUS_READ_WORD_DATA   | /* 0x00200000 */
--		!I2C_FUNC_SMBUS_WRITE_WORD_DATA  | /* 0x00400000 */
--		!I2C_FUNC_SMBUS_PROC_CALL        | /* 0x00800000 */
--		!I2C_FUNC_SMBUS_READ_BLOCK_DATA  | /* 0x01000000 */
--		!I2C_FUNC_SMBUS_WRITE_BLOCK_DATA | /* 0x02000000 */
- 		((priv->features & FEATURE_I2C_BLOCK_READ) ? I2C_FUNC_SMBUS_READ_I2C_BLOCK : 0) | /* 0x04000000 */
- 		I2C_FUNC_SMBUS_WRITE_I2C_BLOCK   | /* 0x08000000 */
- 
- 		I2C_FUNC_SMBUS_BYTE              | /* _READ_BYTE  _WRITE_BYTE */
- 		I2C_FUNC_SMBUS_BYTE_DATA         | /* _READ_BYTE_DATA  _WRITE_BYTE_DATA */
- 		I2C_FUNC_SMBUS_WORD_DATA         | /* _READ_WORD_DATA  _WRITE_WORD_DATA */
--		I2C_FUNC_SMBUS_BLOCK_DATA        | /* _READ_BLOCK_DATA  _WRITE_BLOCK_DATA */
--		!I2C_FUNC_SMBUS_I2C_BLOCK        | /* _READ_I2C_BLOCK  _WRITE_I2C_BLOCK */
--		!I2C_FUNC_SMBUS_EMUL;              /* _QUICK  _BYTE  _BYTE_DATA  _WORD_DATA  _PROC_CALL  _WRITE_BLOCK_DATA  _I2C_BLOCK _PEC */
-+		I2C_FUNC_SMBUS_BLOCK_DATA;	   /* _READ_BLOCK_DATA  _WRITE_BLOCK_DATA */
- 	return f;
+ config MDIO_OCTEON
+ 	tristate "Octeon and some ThunderX SOCs MDIO buses"
+-	depends on 64BIT
++	depends on 64BIT || COMPILE_TEST
+ 	depends on HAS_IOMEM && OF_MDIO
+ 	select MDIO_CAVIUM
+ 	help
+diff --git a/drivers/net/phy/mdio-cavium.h b/drivers/net/phy/mdio-cavium.h
+index ed5f9bb5448d..b7f89ad27465 100644
+--- a/drivers/net/phy/mdio-cavium.h
++++ b/drivers/net/phy/mdio-cavium.h
+@@ -108,6 +108,8 @@ static inline u64 oct_mdio_readq(u64 addr)
+ 	return cvmx_read_csr(addr);
  }
- 
+ #else
++#include <linux/io-64-nonatomic-lo-hi.h>
++
+ #define oct_mdio_writeq(val, addr)	writeq(val, (void *)addr)
+ #define oct_mdio_readq(addr)		readq((void *)addr)
+ #endif
 -- 
-2.7.4
+2.22.0
 
 _______________________________________________
 devel mailing list
