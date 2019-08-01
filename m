@@ -1,52 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D2A737D300
-	for <lists+driverdev-devel@lfdr.de>; Thu,  1 Aug 2019 03:53:28 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5FA867DF8B
+	for <lists+driverdev-devel@lfdr.de>; Thu,  1 Aug 2019 17:58:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 53AFD87E49;
-	Thu,  1 Aug 2019 01:53:26 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9BCC682494;
+	Thu,  1 Aug 2019 15:58:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0PLbudRVxANc; Thu,  1 Aug 2019 01:53:26 +0000 (UTC)
+	with ESMTP id 0rfZDFnlbldT; Thu,  1 Aug 2019 15:58:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A37B287E34;
-	Thu,  1 Aug 2019 01:53:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2F58C8626F;
+	Thu,  1 Aug 2019 15:56:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 444A61BF5A6
- for <devel@linuxdriverproject.org>; Thu,  1 Aug 2019 01:53:23 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5DB9E1BF3BC
+ for <devel@linuxdriverproject.org>; Thu,  1 Aug 2019 08:02:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3EB492264A
- for <devel@linuxdriverproject.org>; Thu,  1 Aug 2019 01:53:23 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5ADE587DAF
+ for <devel@linuxdriverproject.org>; Thu,  1 Aug 2019 08:02:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5aYGsHsoKueD for <devel@linuxdriverproject.org>;
- Thu,  1 Aug 2019 01:53:22 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
- by silver.osuosl.org (Postfix) with ESMTPS id E55B62263E
- for <devel@driverdev.osuosl.org>; Thu,  1 Aug 2019 01:53:21 +0000 (UTC)
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 34FC2BF9F088E20BF035;
- Thu,  1 Aug 2019 09:53:19 +0800 (CST)
-Received: from localhost (10.133.213.239) by DGGEMS409-HUB.china.huawei.com
- (10.3.19.209) with Microsoft SMTP Server id 14.3.439.0; Thu, 1 Aug 2019
- 09:53:12 +0800
-From: YueHaibing <yuehaibing@huawei.com>
-To: <gregkh@linuxfoundation.org>
-Subject: [PATCH -next] staging: rtl8723bs: remove set but not used variable
- 'bEEPROMCheck'
-Date: Thu, 1 Aug 2019 09:53:07 +0800
-Message-ID: <20190801015307.44572-1-yuehaibing@huawei.com>
-X-Mailer: git-send-email 2.10.2.windows.1
+ with ESMTP id jHrm0LI+NEGt for <devel@linuxdriverproject.org>;
+ Thu,  1 Aug 2019 08:02:45 +0000 (UTC)
+X-Greylist: delayed 00:10:08 by SQLgrey-1.7.6
+Received: from server1.vvssuuaa.top (unknown [154.92.130.131])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9C9F487DAA
+ for <devel@driverdev.osuosl.org>; Thu,  1 Aug 2019 08:02:45 +0000 (UTC)
+Received: from DESKTOP-0APOJRD (223.83.183.204) by server1.vvssuuaa.top id
+ h8aeaa0e97ch for <devel@driverdev.osuosl.org>;
+ Thu, 1 Aug 2019 07:52:36 +0000 (envelope-from <info1@uscnm.top>)
+From: "Shelly Huang" <shakingtable@shakingtable.com.cn>
+Subject: Gold mining
+To: devel@driverdev.osuosl.org
 MIME-Version: 1.0
-X-Originating-IP: [10.133.213.239]
-X-CFilter-Loop: Reflected
+Date: Thu, 1 Aug 2019 15:52:36 +0800
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.3790.4913
+Content-Disposition: inline
+Message-Id: <20190801080247.5ADE587DAF@hemlock.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,45 +56,31 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, YueHaibing <yuehaibing@huawei.com>,
- linux-kernel@vger.kernel.org
+Reply-To: shakingtable@shakingtable.com.cn
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fixes gcc '-Wunused-but-set-variable' warning:
+ Dear Sir/Madam,
 
-drivers/staging/rtl8723bs//hal/odm_CfoTracking.c: In function 'odm_SetCrystalCap':
-drivers/staging/rtl8723bs//hal/odm_CfoTracking.c:14:7: warning:
- variable 'bEEPROMCheck' set but not used [-Wunused-but-set-variable]
-
-Reported-by: Hulk Robot <hulkci@huawei.com>
-Signed-off-by: YueHaibing <yuehaibing@huawei.com>
----
- drivers/staging/rtl8723bs/hal/odm_CfoTracking.c | 5 -----
- 1 file changed, 5 deletions(-)
-
-diff --git a/drivers/staging/rtl8723bs/hal/odm_CfoTracking.c b/drivers/staging/rtl8723bs/hal/odm_CfoTracking.c
-index a733046..95edd14 100644
---- a/drivers/staging/rtl8723bs/hal/odm_CfoTracking.c
-+++ b/drivers/staging/rtl8723bs/hal/odm_CfoTracking.c
-@@ -11,11 +11,6 @@ static void odm_SetCrystalCap(void *pDM_VOID, u8 CrystalCap)
- {
- 	PDM_ODM_T pDM_Odm = (PDM_ODM_T)pDM_VOID;
- 	PCFO_TRACKING pCfoTrack = &pDM_Odm->DM_CfoTrack;
--	bool bEEPROMCheck;
--	struct adapter *Adapter = pDM_Odm->Adapter;
--	struct hal_com_data *pHalData = GET_HAL_DATA(Adapter);
--
--	bEEPROMCheck = pHalData->EEPROMVersion >= 0x01;
  
- 	if (pCfoTrack->CrystalCap == CrystalCap)
- 		return;
--- 
-2.7.4
+
+Hello, how are you there ?
 
 
+This is Shelly from Jiangxi Jinshibao Mining Machinery Manufacturing Co.Ltd, 
+
+
+We are one of the largest mining equipment manufacturers in China. we provide with reliable prices and Only High quality , which has good reputation all around the world.if you are interesting, please reply us with your requirement details! 
+
+waiting for your early reply! Thanks .
+
+
+Shelly Huang
+
+
+Whatsapp: +8615970857791
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
