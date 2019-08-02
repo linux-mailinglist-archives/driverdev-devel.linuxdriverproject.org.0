@@ -1,55 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 391EE7FCCC
-	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2019 16:52:48 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 06C2B7FD24
+	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2019 17:13:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 730268868D;
-	Fri,  2 Aug 2019 14:52:46 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8CA1E87DDF;
+	Fri,  2 Aug 2019 15:13:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cp0KQb06axQF; Fri,  2 Aug 2019 14:52:46 +0000 (UTC)
+	with ESMTP id H43OVw97V1rJ; Fri,  2 Aug 2019 15:13:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 84BA388667;
-	Fri,  2 Aug 2019 14:52:45 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B85A587DC8;
+	Fri,  2 Aug 2019 15:13:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1E8AF1BF2AB
- for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 14:52:43 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 617FA1BF303
+ for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 15:13:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 1AFF88641E
- for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 14:52:43 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5E94286B62
+ for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 15:13:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Q7oP9VGdf_56 for <devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 14:52:41 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx1.suse.de (mx2.suse.de [195.135.220.15])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E0FE2863CD
- for <devel@driverdev.osuosl.org>; Fri,  2 Aug 2019 14:52:40 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 80E69AF3F;
- Fri,  2 Aug 2019 14:52:38 +0000 (UTC)
-Received: by quack2.suse.cz (Postfix, from userid 1000)
- id 09FD71E433B; Fri,  2 Aug 2019 16:52:27 +0200 (CEST)
-Date: Fri, 2 Aug 2019 16:52:27 +0200
-From: Jan Kara <jack@suse.cz>
-To: Matthew Wilcox <willy@infradead.org>
-Subject: Re: [PATCH 00/34] put_user_pages(): miscellaneous call sites
-Message-ID: <20190802145227.GQ25064@quack2.suse.cz>
-References: <20190802022005.5117-1-jhubbard@nvidia.com>
- <20190802091244.GD6461@dhcp22.suse.cz>
- <20190802124146.GL25064@quack2.suse.cz>
- <20190802142443.GB5597@bombadil.infradead.org>
+ with ESMTP id IE7rLB4VimCs for <devel@linuxdriverproject.org>;
+ Fri,  2 Aug 2019 15:13:17 +0000 (UTC)
+X-Greylist: delayed 00:06:57 by SQLgrey-1.7.6
+Received: from mail-io1-f65.google.com (mail-io1-f65.google.com
+ [209.85.166.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 10B7586B6D
+ for <devel@driverdev.osuosl.org>; Fri,  2 Aug 2019 15:13:17 +0000 (UTC)
+Received: by mail-io1-f65.google.com with SMTP id g20so152917261ioc.12
+ for <devel@driverdev.osuosl.org>; Fri, 02 Aug 2019 08:13:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=brauner.io; s=google;
+ h=from:date:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=eWnA4ZjQO5d8NsMY1qHYaup11KljkJKpaTVStdPxcfQ=;
+ b=PlvEKlqVLtTxj0dmXgdb1RKnAAib5uIf1KhVuXZY6IgV2gbV9NT2KbNh3HA8km79wu
+ 4c6OjMPbbT6CsIivG2dLmt2IuqP4Q4mnJsaves2s/wJ6TSpIiGe/Vsu7GcHzEkrJMYu7
+ 4bqdnZIX2bGn+mXtG7bG9HD4exvtz1p7L0pDTRdLGF7MBhegwI5uJ/f2hI6dlCGMr8PV
+ GV89LNloxlFmC/JvxrPnuGEADGaArv6ahYVr6KRz0WHHi+NOnM6kKWaIU4bPo29pwEkM
+ 74F9nDK7SxQR19oW0jyh+G0QUHwh/94EJv80zE2Q+qhs/tIM39IL2csSrUjjh6uvpVtD
+ DKpg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:date:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=eWnA4ZjQO5d8NsMY1qHYaup11KljkJKpaTVStdPxcfQ=;
+ b=F1JnKnxPHtDlakg2oAAWooHtxWqF9G0zYehD0+y/nI4vnVPgxWC0nnXSG+qUyRRc1S
+ Q7oB7GFj9UhjpUWv7S9Icsy/ssCtLrSe398q1qFa9zCEVS5JVTvUQCNUc6fmcCQDbZMH
+ 6QSqKRTKc9vWWlZrIS4kfE3wlnPEWYTOnwODWE///WtZLGale2NTiIJzwZTefe1SN4Er
+ ZsbkHcDXNLNmfWT2lWW0ZffxdvkrUJmSRUJcqqII/zs2/mew8p2OSF0Nd+QSydqaZpsP
+ rK1gj58UX1qLangY9bKRpJJoCKexT1JOCuVSHeocJUJ0T5evk6cuqpzwMHvalRvd0wFA
+ ZtAA==
+X-Gm-Message-State: APjAAAV3JBbXs/eTMY8OJyd5mhoFmVfcVfh1b0SOX3UYMPLDLhTZRmaF
+ mtxEJ1FUQ+BOvpN3Dk47183HPsiQb7c=
+X-Google-Smtp-Source: APXvYqxI4PgiPSy0IaEO6+IpKjEFmUOCoPatgyhLg355kJMSWRwV6n3Re1cBSGIF9FeQzjA+L1VxQA==
+X-Received: by 2002:a5e:db0a:: with SMTP id q10mr7604951iop.168.1564758379632; 
+ Fri, 02 Aug 2019 08:06:19 -0700 (PDT)
+Received: from brauner.io ([162.223.5.78])
+ by smtp.gmail.com with ESMTPSA id z26sm76466529ioi.85.2019.08.02.08.06.16
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Fri, 02 Aug 2019 08:06:19 -0700 (PDT)
+From: Christian Brauner <christian@brauner.io>
+X-Google-Original-From: Christian Brauner <christian.brauner@ubuntu.com>
+Date: Fri, 2 Aug 2019 17:06:16 +0200
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH] Add default binder devices through binderfs when
+ configured
+Message-ID: <20190802150612.eff7t42256pvxuja@brauner.io>
+References: <20190801223556.209184-1-hridya@google.com>
+ <20190802061838.GA10844@kroah.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190802142443.GB5597@bombadil.infradead.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20190802061838.GA10844@kroah.com>
+User-Agent: NeoMutt/20180716
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,69 +89,163 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-fbdev@vger.kernel.org, Jan Kara <jack@suse.cz>, kvm@vger.kernel.org,
- Dave Hansen <dave.hansen@linux.intel.com>, Dave Chinner <david@fromorbit.com>,
- dri-devel@lists.freedesktop.org, Michal Hocko <mhocko@kernel.org>,
- linux-mm@kvack.org, sparclinux@vger.kernel.org,
- Dan Williams <dan.j.williams@intel.com>, devel@driverdev.osuosl.org,
- rds-devel@oss.oracle.com, linux-rdma@vger.kernel.org, x86@kernel.org,
- amd-gfx@lists.freedesktop.org, Christoph Hellwig <hch@infradead.org>,
- Jason Gunthorpe <jgg@ziepe.ca>, xen-devel@lists.xenproject.org,
- devel@lists.orangefs.org, linux-media@vger.kernel.org,
- John Hubbard <jhubbard@nvidia.com>, intel-gfx@lists.freedesktop.org,
- john.hubbard@gmail.com, linux-block@vger.kernel.org,
- =?iso-8859-1?B?Suly9G1l?= Glisse <jglisse@redhat.com>,
- linux-rpi-kernel@lists.infradead.org, ceph-devel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-nfs@vger.kernel.org,
- netdev@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
- linux-xfs@vger.kernel.org, linux-crypto@vger.kernel.org,
- linux-fsdevel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>
+Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
+ kernel-team@android.com, linux-kernel@vger.kernel.org,
+ Joel Fernandes <joel@joelfernandes.org>,
+ Arve =?utf-8?B?SGrDuG5uZXbDpWc=?= <arve@android.com>,
+ Hridya Valsaraju <hridya@google.com>, Martijn Coenen <maco@android.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri 02-08-19 07:24:43, Matthew Wilcox wrote:
-> On Fri, Aug 02, 2019 at 02:41:46PM +0200, Jan Kara wrote:
-> > On Fri 02-08-19 11:12:44, Michal Hocko wrote:
-> > > On Thu 01-08-19 19:19:31, john.hubbard@gmail.com wrote:
-> > > [...]
-> > > > 2) Convert all of the call sites for get_user_pages*(), to
-> > > > invoke put_user_page*(), instead of put_page(). This involves dozens of
-> > > > call sites, and will take some time.
-> > > 
-> > > How do we make sure this is the case and it will remain the case in the
-> > > future? There must be some automagic to enforce/check that. It is simply
-> > > not manageable to do it every now and then because then 3) will simply
-> > > be never safe.
-> > > 
-> > > Have you considered coccinele or some other scripted way to do the
-> > > transition? I have no idea how to deal with future changes that would
-> > > break the balance though.
+On Fri, Aug 02, 2019 at 08:18:38AM +0200, Greg Kroah-Hartman wrote:
+> On Thu, Aug 01, 2019 at 03:35:56PM -0700, Hridya Valsaraju wrote:
+> > If CONFIG_ANDROID_BINDERFS is set, the default binder devices
+> > specified by CONFIG_ANDROID_BINDER_DEVICES are created in each
+> > binderfs instance instead of global devices being created by
+> > the binder driver.
 > > 
-> > Yeah, that's why I've been suggesting at LSF/MM that we may need to create
-> > a gup wrapper - say vaddr_pin_pages() - and track which sites dropping
-> > references got converted by using this wrapper instead of gup. The
-> > counterpart would then be more logically named as unpin_page() or whatever
-> > instead of put_user_page().  Sure this is not completely foolproof (you can
-> > create new callsite using vaddr_pin_pages() and then just drop refs using
-> > put_page()) but I suppose it would be a high enough barrier for missed
-> > conversions... Thoughts?
+> > Co-developed-by: Christian Brauner <christian.brauner@ubuntu.com>
+> > Signed-off-by: Christian Brauner <christian.brauner@ubuntu.com>
+> > Signed-off-by: Hridya Valsaraju <hridya@google.com>
+> > ---
+> >  drivers/android/binder.c   |  3 ++-
+> >  drivers/android/binderfs.c | 46 ++++++++++++++++++++++++++++++++++----
+> >  2 files changed, 44 insertions(+), 5 deletions(-)
+> > 
+> > diff --git a/drivers/android/binder.c b/drivers/android/binder.c
+> > index 466b6a7f8ab7..65a99ac26711 100644
+> > --- a/drivers/android/binder.c
+> > +++ b/drivers/android/binder.c
+> > @@ -6279,7 +6279,8 @@ static int __init binder_init(void)
+> >  				    &transaction_log_fops);
+> >  	}
+> >  
+> > -	if (strcmp(binder_devices_param, "") != 0) {
+> > +	if (!IS_ENABLED(CONFIG_ANDROID_BINDERFS) &&
+> > +	    strcmp(binder_devices_param, "") != 0) {
+> >  		/*
+> >  		* Copy the module_parameter string, because we don't want to
+> >  		* tokenize it in-place.
+> > diff --git a/drivers/android/binderfs.c b/drivers/android/binderfs.c
+> > index e773f45d19d9..9f5ed50ffd70 100644
+> > --- a/drivers/android/binderfs.c
+> > +++ b/drivers/android/binderfs.c
+> > @@ -48,6 +48,10 @@ static dev_t binderfs_dev;
+> >  static DEFINE_MUTEX(binderfs_minors_mutex);
+> >  static DEFINE_IDA(binderfs_minors);
+> >  
+> > +static char *binder_devices_param = CONFIG_ANDROID_BINDER_DEVICES;
+> > +module_param_named(devices, binder_devices_param, charp, 0444);
+> > +MODULE_PARM_DESC(devices, "Binder devices to be created by default");
+> > +
 > 
-> I think the API we really need is get_user_bvec() / put_user_bvec(),
-> and I know Christoph has been putting some work into that.  That avoids
-> doing refcount operations on hundreds of pages if the page in question is
-> a huge page.  Once people are switched over to that, they won't be tempted
-> to manually call put_page() on the individual constituent pages of a bvec.
+> Why are you creating a module parameter?  That was not in your changelog
+> :(
 
-Well, get_user_bvec() is certainly a good API for one class of users but
-just looking at the above series, you'll see there are *many* places that
-just don't work with bvecs at all and you need something for those.
+Yeah, you don't need an additional module parameter. You can just move
 
-								Honza
--- 
-Jan Kara <jack@suse.com>
-SUSE Labs, CR
+static char *binder_devices_param = CONFIG_ANDROID_BINDER_DEVICES;
+module_param_named(devices, binder_devices_param, charp, 0444);
+
+from binder.c to binder_internal.h and expose it to binder.c and
+binderfs.c this way. This will work just fine since binderfs.c doesn't
+modify the parameter and binder.c makes a copy of it before doing so.
+
+> 
+> 
+> 
+> >  /**
+> >   * binderfs_mount_opts - mount options for binderfs
+> >   * @max: maximum number of allocatable binderfs binder devices
+> > @@ -135,7 +139,6 @@ static int binderfs_binder_device_create(struct inode *ref_inode,
+> >  #else
+> >  	bool use_reserve = true;
+> >  #endif
+> > -
+> >  	/* Reserve new minor number for the new device. */
+> >  	mutex_lock(&binderfs_minors_mutex);
+> >  	if (++info->device_count <= info->mount_opts.max)
+> > @@ -186,8 +189,7 @@ static int binderfs_binder_device_create(struct inode *ref_inode,
+> >  	req->major = MAJOR(binderfs_dev);
+> >  	req->minor = minor;
+> >  
+> > -	ret = copy_to_user(userp, req, sizeof(*req));
+> > -	if (ret) {
+> > +	if (userp && copy_to_user(userp, req, sizeof(*req))) {
+> >  		ret = -EFAULT;
+> >  		goto err;
+> >  	}
+> > @@ -467,6 +469,9 @@ static int binderfs_fill_super(struct super_block *sb, void *data, int silent)
+> >  	int ret;
+> >  	struct binderfs_info *info;
+> >  	struct inode *inode = NULL;
+> > +	struct binderfs_device device_info = { 0 };
+> > +	const char *name;
+> > +	size_t len;
+> >  
+> >  	sb->s_blocksize = PAGE_SIZE;
+> >  	sb->s_blocksize_bits = PAGE_SHIFT;
+> > @@ -521,7 +526,28 @@ static int binderfs_fill_super(struct super_block *sb, void *data, int silent)
+> >  	if (!sb->s_root)
+> >  		return -ENOMEM;
+> >  
+> > -	return binderfs_binder_ctl_create(sb);
+> > +	ret = binderfs_binder_ctl_create(sb);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	name = binder_devices_param;
+> > +	for (len = strcspn(name, ","); len > 0; len = strcspn(name, ",")) {
+> > +		/*
+> > +		 * init_binderfs() has already checked that the length of
+> > +		 * device_name_entry->name is not greater than device_info.name.
+> > +		 */
+> > +		strscpy(device_info.name, name, len + 1);
+> > +		ret = binderfs_binder_device_create(inode, NULL, &device_info);
+> > +		if (ret)
+> > +			return ret;
+> > +		name += len;
+> > +		if (*name == ',')
+> > +			name++;
+> > +
+> > +	}
+> > +
+> > +	return 0;
+> > +
+> >  }
+> >  
+> >  static struct dentry *binderfs_mount(struct file_system_type *fs_type,
+> > @@ -553,6 +579,18 @@ static struct file_system_type binder_fs_type = {
+> >  int __init init_binderfs(void)
+> >  {
+> >  	int ret;
+> > +	const char *name;
+> > +	size_t len;
+> > +
+> > +	/* Verify that the default binderfs device names are valid. */
+> > +	name = binder_devices_param;
+> > +	for (len = strcspn(name, ","); len > 0; len = strcspn(name, ",")) {
+> > +		if (len > BINDERFS_MAX_NAME)
+> > +			return -E2BIG;
+> > +		name += len;
+> > +		if (*name == ',')
+> > +			name++;
+> > +	}
+> 
+> This verification should be a separate patch, right?
+> 
+> But the real issue here is I have no idea _why_ you are wanting this
+> patch.  The changelog text says _what_ you are doing only, which isn't
+> ok.
+> 
+> Please provide more information as to why this is needed, what problem
+> it is solving, and break this up into a patch series and resend.
+> 
+> thanks,
+> 
+> greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
