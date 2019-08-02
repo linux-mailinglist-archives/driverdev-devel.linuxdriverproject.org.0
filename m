@@ -1,79 +1,123 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 85301801B4
-	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2019 22:23:42 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id F323B801C5
+	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2019 22:31:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B8D4D86C20;
-	Fri,  2 Aug 2019 20:23:40 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 25E3887E8F;
+	Fri,  2 Aug 2019 20:31:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eXfaR9wev8r5; Fri,  2 Aug 2019 20:23:40 +0000 (UTC)
+	with ESMTP id bcC8HgDSlO26; Fri,  2 Aug 2019 20:31:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9634986BA3;
-	Fri,  2 Aug 2019 20:23:39 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3662087E81;
+	Fri,  2 Aug 2019 20:31:44 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0B6E71BF3D4
- for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 20:23:37 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 136861BF3D4
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  2 Aug 2019 20:31:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 08ACD204AF
- for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 20:23:37 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 09A9087E3C
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  2 Aug 2019 20:31:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ASlvDHvvdymh for <devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 20:23:36 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f194.google.com (mail-qt1-f194.google.com
- [209.85.160.194])
- by silver.osuosl.org (Postfix) with ESMTPS id 7F2EE2035B
- for <devel@driverdev.osuosl.org>; Fri,  2 Aug 2019 20:23:36 +0000 (UTC)
-Received: by mail-qt1-f194.google.com with SMTP id d23so75277579qto.2
- for <devel@driverdev.osuosl.org>; Fri, 02 Aug 2019 13:23:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=7b+QpyZJy6WVG+CsDdFzQqS3UP4BUviIhmtTS57SLxI=;
- b=Efl24pIIAWTWx/nSPf8qxs1ZdBAjZceq8NkYlGnae0RIl+ZKMw339lWIdlkxxn4PD8
- LLQuPj9yp5pqYUC5/1w7dIDh7FbAFJEqm1vWWNN1my3zWreokDhXB8eTJ6WWbz6sdT5a
- 7EjatRff4kM50cooNbVjk13Ru0PTpDhOOmj5vN1s1TUR41Yv4NSwps4icALMfgXhx6ci
- dp7aczZfvp+7Rhiwjsiz7sfvjSHexhT5mfldf1gVYbIpwqzlWIHCFojSR3y+OoVjudW/
- uRgR8KlY0316lBONQG0moGnOy/hglJXHhhgYHwl5PvDId86NwAfEuJ4ZEwc1WEroiXQx
- CKWg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=7b+QpyZJy6WVG+CsDdFzQqS3UP4BUviIhmtTS57SLxI=;
- b=cpBl7SNzmGL0cZ/Al5Jb5NCQ5CkdTJUSISmPjlb3cxPLeRzsOneKpi8+94EOd/IAXk
- PCjv5R5mbPj20Qky1Srw9MoEGW9Yd0GIeMcsrJhPNdId2tywKW/IQB966ceRUR+95HcM
- 7oZlMZ/GetVDAtXf0Lu1A1f7MTWPGVTSeXQZqBRsDnyMeXUGJluUb8gYB42TFTjC8lY8
- +cEak1eZGKEyXxZ4SCyKEuJ+SvBqiiUbhyN2ME6i9j1box4y/7tIHcbuj69HdAlTg+qB
- /2Mp516m6zFUl9lE5TW7eCB9MfquyvK8fbvpD+hY9gt9OQwnOBVMc/3VDGuHNPLa0fvi
- 1wPA==
-X-Gm-Message-State: APjAAAU1F2DZLQLxLVgS5v2OLMNF7xaguFo2cgFF6JgFFxcVizxePBPP
- cgApbZ1CNXqnd5o6SipaHxU=
-X-Google-Smtp-Source: APXvYqxng4ujPdMSOl8LXJMqkhOtwXaWv/1GkHPTS6Mif0yJO/ekUiIXcAXJ4oiId/EKiwuZviAUGw==
-X-Received: by 2002:aed:3f29:: with SMTP id p38mr95861962qtf.126.1564777415353; 
- Fri, 02 Aug 2019 13:23:35 -0700 (PDT)
-Received: from 541fc7a84f4a.ime.usp.br ([143.107.45.1])
- by smtp.gmail.com with ESMTPSA id y9sm32294338qki.116.2019.08.02.13.23.33
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Fri, 02 Aug 2019 13:23:34 -0700 (PDT)
-From: Thiago Bonotto <thbonotto@gmail.com>
-To: Karsten Keil <isdn@linux-pingi.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, netdev@vger.kernel.org,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- lkcamp@lists.libreplanetbr.org
-Subject: [PATCH] staging: isdn: remove unnecessary parentheses
-Date: Fri,  2 Aug 2019 20:23:23 +0000
-Message-Id: <20190802202323.27117-1-thbonotto@gmail.com>
-X-Mailer: git-send-email 2.20.1
+ with ESMTP id 04zMsY11GOGQ
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  2 Aug 2019 20:31:40 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from APC01-SG2-obe.outbound.protection.outlook.com
+ (mail-eopbgr1310121.outbound.protection.outlook.com [40.107.131.121])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 35D2487D25
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  2 Aug 2019 20:31:39 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=mjL9SJ554zyYkvJFlyPlQ52+w527RFfKdSfZwSQhGz1fZbkj3zRKw36WV9xXFAIbVJ2ICNbaLnwX+wYA9aHWglC30NK28LGf58/nFeTI8kkaK6KNGuGHnuVLaRRyg20CXycjN0SfB13JfV7xfh7U9Pm/fbbUDf8NTn0Kay3Jit+vMuH6XmGxi2nGLbaIgyondZTMPbM/fSkEJOs/NlWhOj6sM5q3sWdyLD3DsoKGXgks4oI8CrtSzFyJDMrpfjDdYxZoynUGG76CsmystF3QE1qAPBEMl4FAINe8DNBIEMmKT4ZwqF/qqby8jvlUJ6gQzwAGzMUElNyAS6BDwVAg1Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=GGZ1q5MsjpR65mpe98+A428gxbRJcxGR5ImoDLAZDQs=;
+ b=fRQK5V1j/3LSbN/lAHLerl41zVOUq+gi2yWOU+/FCijWVzRYNSy1I7WcXBrPnzKie+Ox7YADo+B4IDSwCYpLhXHQb8cnpsUQBKAi6l2TF0UzLEAMTU0domCBI8u+koHnWJEOFEY0RAglNwn3xU0h7QTDXQbXSr/k2k6GVzXL6n1kwKrdPelY5BEWUaL4laIXeSuoujcsAlHRNOz0EXTurWRtSMQJ3a8feBq3e68SiZdsQjdHWP9DrohQlzhWfLbL7Zc+lrK+41hN3L5/J85F4QOSKXVS1VtrSZaE/G0NF/yu3L66wP/JaBaK1pskxV6ZmvwI8GedO++ZafnoHsMZoA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=microsoft.com; dmarc=pass action=none
+ header.from=microsoft.com; dkim=pass header.d=microsoft.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=GGZ1q5MsjpR65mpe98+A428gxbRJcxGR5ImoDLAZDQs=;
+ b=Q202xz0n6FYG6YZbgHH7HhO9Xfk7fyrforOQoinaxTkCUk0UJ/e4AaTq4RGqMsRTlmFVuivGT8SDUHXlwoAwirSqywKCtr/6qRlook1sE+cllOYGFtQ8OLOkRRgGbDQsaecy1jjBTt3lyBD76QxtrNO1+o20CLcaqLC2nQXlSSc=
+Received: from PU1P153MB0169.APCP153.PROD.OUTLOOK.COM (10.170.189.13) by
+ PU1P153MB0185.APCP153.PROD.OUTLOOK.COM (10.170.187.143) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2157.2; Fri, 2 Aug 2019 20:31:27 +0000
+Received: from PU1P153MB0169.APCP153.PROD.OUTLOOK.COM
+ ([fe80::d44e:57b7:d8fc:e91c]) by PU1P153MB0169.APCP153.PROD.OUTLOOK.COM
+ ([fe80::d44e:57b7:d8fc:e91c%7]) with mapi id 15.20.2157.001; Fri, 2 Aug 2019
+ 20:31:27 +0000
+From: Dexuan Cui <decui@microsoft.com>
+To: Bjorn Helgaas <helgaas@kernel.org>, Stephen Hemminger
+ <sthemmin@microsoft.com>
+Subject: RE: [PATCH] PCI: hv: Fix panic by calling hv_pci_remove_slots()
+ earlier
+Thread-Topic: [PATCH] PCI: hv: Fix panic by calling hv_pci_remove_slots()
+ earlier
+Thread-Index: AdVI0ZE8ZG/OuLUpRiCFkuQ9gvUCcwAmKCuAAACT/uA=
+Date: Fri, 2 Aug 2019 20:31:26 +0000
+Message-ID: <PU1P153MB01698F51FE22C39086CC8353BFD90@PU1P153MB0169.APCP153.PROD.OUTLOOK.COM>
+References: <PU1P153MB0169DBCFEE7257F5BB93580ABFD90@PU1P153MB0169.APCP153.PROD.OUTLOOK.COM>
+ <20190802194053.GL151852@google.com>
+In-Reply-To: <20190802194053.GL151852@google.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Enabled=True;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SiteId=72f988bf-86f1-41af-91ab-2d7cd011db47;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Owner=decui@microsoft.com;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SetDate=2019-08-02T20:31:22.8119515Z;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Name=General;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Application=Microsoft Azure
+ Information Protection;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_ActionId=43160eaa-d2f6-4110-aeb7-ac4462d2355d;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Extended_MSFT_Method=Automatic
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=decui@microsoft.com; 
+x-originating-ip: [2601:600:a280:1760:71c8:ee0a:27d:d7aa]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: fa4f1d55-41c1-4d6c-f988-08d71788650a
+x-ms-office365-filtering-ht: Tenant
+x-microsoft-antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(5600148)(711020)(4605104)(1401327)(4618075)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7193020);
+ SRVR:PU1P153MB0185; 
+x-ms-traffictypediagnostic: PU1P153MB0185:|PU1P153MB0185:
+x-ms-exchange-transport-forked: True
+x-ld-processed: 72f988bf-86f1-41af-91ab-2d7cd011db47,ExtAddr
+x-microsoft-antispam-prvs: <PU1P153MB01858CF3D93DB06EAAF4FB3EBFD90@PU1P153MB0185.APCP153.PROD.OUTLOOK.COM>
+x-ms-oob-tlc-oobclassifiers: OLM:7691;
+x-forefront-prvs: 011787B9DD
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(4636009)(376002)(366004)(136003)(396003)(39860400002)(346002)(40224003)(54534003)(199004)(189003)(6116002)(10090500001)(81156014)(316002)(5660300002)(2906002)(8936002)(33656002)(8676002)(66476007)(66556008)(54906003)(76116006)(8990500004)(66446008)(22452003)(64756008)(6636002)(7736002)(68736007)(46003)(11346002)(25786009)(305945005)(10290500003)(74316002)(478600001)(1511001)(9686003)(76176011)(110136005)(7696005)(486006)(53936002)(476003)(55016002)(66946007)(446003)(14454004)(86362001)(81166006)(6246003)(4326008)(71190400001)(229853002)(99286004)(102836004)(7416002)(6506007)(71200400001)(14444005)(186003)(52536014)(6436002)(256004);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:PU1P153MB0185;
+ H:PU1P153MB0169.APCP153.PROD.OUTLOOK.COM; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+received-spf: None (protection.outlook.com: microsoft.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam-message-info: 1Bbdk3ldAg3wRSB6wuc7QP8cdfePd81VnPjPHVP8ALJBZTtIvfbIadLTB9vfFa6pTNC5rB94qe92+NL6Eq3NXKvr/HDnyyt63UR7rjhQpSc0NUuCAHgH7BHRyVR8aGAE36Xv1vCgRxECmH4wYR3AMQ40MdpyNoTdmfazzlWio+i5TK92dap1BwQUHs/aSjbXmYNxoTcJLkDmxeaTlypKdbmOWZyyrLTZ7W6Htsys7ntYnaOzL/B/9Iw6r7gIICFlzyBRQGzYu0sGzt31KqLRlWLV6ACKV1owQVLc3/UfkRc5L3Hz6XJ1fwinwZfTT6kv4dtJ/qFHUXjH5aev8f6XCbS/+IT8vmZNOPiMvKPnDhc7jwES3TMjfjndU+YPzbUFTbSANm9DcqfuM1/y+ZceVaJNveyLtaeA0HiFUqIYJ1A=
 MIME-Version: 1.0
+X-OriginatorOrg: microsoft.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: fa4f1d55-41c1-4d6c-f988-08d71788650a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Aug 2019 20:31:27.0076 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: qTDeaNc0QEmnA7PC3yMA4gCDUTqt8vTFgP59K8auAFJ5CBNZOzAXi187wEgfoltVCvrHESrw/iWsdoCJt4mQSA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PU1P153MB0185
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,41 +130,89 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: "linux-hyperv@vger.kernel.org" <linux-hyperv@vger.kernel.org>,
+ "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>,
+ "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
+ Haiyang Zhang <haiyangz@microsoft.com>,
+ "driverdev-devel@linuxdriverproject.org"
+ <driverdev-devel@linuxdriverproject.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Michael Kelley <mikelley@microsoft.com>,
+ Sasha Levin <Alexander.Levin@microsoft.com>,
+ "marcelo.cerri@canonical.com" <marcelo.cerri@canonical.com>,
+ "olaf@aepfle.de" <olaf@aepfle.de>, "apw@canonical.com" <apw@canonical.com>,
+ vkuznets <vkuznets@redhat.com>, "jasowang@redhat.com" <jasowang@redhat.com>,
+ "jackm@mellanox.com" <jackm@mellanox.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix the following checkpatch error:
+> From: Bjorn Helgaas <helgaas@kernel.org>
+> Sent: Friday, August 2, 2019 12:41 PM
+> The subject line only describes the mechanical code change, which is
+> obvious from the patch.  It would be better if we could say something
+> about *why* we need this.
 
-ERROR: return is not a function, parentheses are not required
-FILE: drivers/staging/isdn/hysdn/hysdn_net.c:289:
-+        return (0);                /* and return success */
-
-Signed-off-by: Thiago Bonotto <thbonotto@gmail.com>
----
-Hello, this is my first contribution :)
-Thanks for reviewing 
-
- drivers/staging/isdn/hysdn/hysdn_net.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/isdn/hysdn/hysdn_net.c b/drivers/staging/isdn/hysdn/hysdn_net.c
-index bea37ae30..dcb9ef7a2 100644
---- a/drivers/staging/isdn/hysdn/hysdn_net.c
-+++ b/drivers/staging/isdn/hysdn/hysdn_net.c
-@@ -286,7 +286,7 @@ hysdn_net_create(hysdn_card *card)
+Hi Bjorn,
+Sorry. I'll try to write a better changelog in v2. :-)
  
- 	if (card->debug_flags & LOG_NET_INIT)
- 		hysdn_addlog(card, "network device created");
--	return (0);		/* and return success */
-+	return 0;		/* and return success */
- }				/* hysdn_net_create */
- 
- /***************************************************************************/
--- 
-2.20.1
+> On Fri, Aug 02, 2019 at 01:32:28AM +0000, Dexuan Cui wrote:
+> >
+> > When a slot is removed, the pci_dev must still exist.
+> >
+> > pci_remove_root_bus() removes and free all the pci_devs, so
+> > hv_pci_remove_slots() must be called before pci_remove_root_bus(),
+> > otherwise a general protection fault can happen, if the kernel is built
+> 
+> "general protection fault" is an x86 term that doesn't really say what
+> the issue is.  I suspect this would be a "use-after-free" problem.
 
+Yes, it's use-after-free. I'll fix the the wording.
+ 
+> > --- a/drivers/pci/controller/pci-hyperv.c
+> > +++ b/drivers/pci/controller/pci-hyperv.c
+> > @@ -2757,8 +2757,8 @@ static int hv_pci_remove(struct hv_device *hdev)
+> >  		/* Remove the bus from PCI's point of view. */
+> >  		pci_lock_rescan_remove();
+> >  		pci_stop_root_bus(hbus->pci_bus);
+> > -		pci_remove_root_bus(hbus->pci_bus);
+> >  		hv_pci_remove_slots(hbus);
+> > +		pci_remove_root_bus(hbus->pci_bus);
+> 
+> I'm curious about why we need hv_pci_remove_slots() at all.  None of
+> the other callers of pci_stop_root_bus() and pci_remove_root_bus() do
+> anything similar to hv_pci_remove_slots().
+> 
+> Surely some of those callers also support slots, so there must be some
+> other path that calls pci_destroy_slot() in those cases.  Can we use a
+> similar strategy here?
+
+Originally Stephen Heminger added the slot code for pci-hyperv.c:
+a15f2c08c708 ("PCI: hv: support reporting serial number as slot information")
+So he may know this better. My understanding is: we can not use the similar
+stragegy used in the 2 other users of pci_create_slot():
+
+drivers/pci/hotplug/pci_hotplug_core.c calls pci_create_slot().
+It looks drivers/pci/hotplug/ is quite different from pci-hyperv.c because
+pci-hyper-v uses a simple *private* hot-plug protocol, making it impossible
+to use the API pci_hp_register() and pci_hp_destroy() -> pci_destroy_slot().
+
+drivers/acpi/pci_slot.c calls pci_create_slot(), and saves the created slots in
+the static "slot_list" list in the same file. Again, since pci-hyper-v uses a private
+PCI-device-discovery protocol (which is based on VMBus rather the emulated
+ACPI and PCI), acpi_pci_slot_enumerate() can not find the PCI devices that are
+discovered by pci-hyperv, so we can not use the standard register_slot() ->
+pci_create_slot() to create the slots and hence acpi_pci_slot_remove() -> 
+pci_destroy_slot() can not work for pci-hyperv.
+
+I think I can use this as the v2 changelog:
+
+The slot must be removed before the pci_dev is removed, otherwise a panic
+can happen due to use-after-free.
+
+Thanks,
+Dexuan
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
