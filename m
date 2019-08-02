@@ -1,70 +1,65 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3008680298
-	for <lists+driverdev-devel@lfdr.de>; Sat,  3 Aug 2019 00:12:04 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1AC148029E
+	for <lists+driverdev-devel@lfdr.de>; Sat,  3 Aug 2019 00:15:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id C62F2204DD;
-	Fri,  2 Aug 2019 22:12:01 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 32D7488468;
+	Fri,  2 Aug 2019 22:15:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id d5PnkG7WAiSK; Fri,  2 Aug 2019 22:12:01 +0000 (UTC)
+	with ESMTP id DLAuK9mzvLzk; Fri,  2 Aug 2019 22:15:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 16AC820494;
-	Fri,  2 Aug 2019 22:11:59 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 930E88842A;
+	Fri,  2 Aug 2019 22:15:45 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B276D1BF831
- for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 22:11:57 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id ADF1C1BF831
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  2 Aug 2019 22:15:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id AD7D487708
- for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 22:11:57 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id A5B9C8842A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  2 Aug 2019 22:15:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KQlk8icLji4W for <devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 22:11:56 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0213.hostedemail.com
- [216.40.44.213])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 9A2E28766D
- for <devel@driverdev.osuosl.org>; Fri,  2 Aug 2019 22:11:56 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave01.hostedemail.com (Postfix) with ESMTP id 66D9F1801D3EC
- for <devel@driverdev.osuosl.org>; Fri,  2 Aug 2019 22:05:10 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay01.hostedemail.com (Postfix) with ESMTP id 669D7100E806B;
- Fri,  2 Aug 2019 22:05:07 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 50, 0, 0, , d41d8cd98f00b204, joe@perches.com, :::::::::::::,
- RULES_HIT:41:355:379:599:800:960:967:973:988:989:1260:1263:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2393:2525:2553:2560:2563:2682:2685:2828:2859:2933:2937:2939:2942:2945:2947:2951:2954:3022:3138:3139:3140:3141:3142:3352:3622:3865:3867:3874:3934:3936:3938:3941:3944:3947:3950:3953:3956:3959:4321:4384:4605:4659:5007:7514:9025:9388:9389:10004:10049:10400:10848:10967:11232:11658:11914:12043:12296:12297:12555:12740:12760:12895:12986:13069:13095:13311:13357:13439:14096:14097:14181:14659:14721:14764:21080:21433:21451:21611:21627:21691:30009:30054:30070:30090:30091,
- 0,
- RBL:23.242.196.136:@perches.com:.lbl8.mailshell.net-62.8.0.180 64.201.201.201,
- CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none, DomainCache:0,
- MSF:not bulk, SPF:fn, MSBL:0, DNSBL:neutral, Custom_rules:0:0:0, LFtime:26,
- LUA_SUMMARY:none
-X-HE-Tag: swing93_49a7a4bebce5e
-X-Filterd-Recvd-Size: 2071
-Received: from XPS-9350.home (cpe-23-242-196-136.socal.res.rr.com
- [23.242.196.136]) (Authenticated sender: joe@perches.com)
- by omf20.hostedemail.com (Postfix) with ESMTPA;
- Fri,  2 Aug 2019 22:05:06 +0000 (UTC)
-Message-ID: <2ecfbf8dda354fe47912446bf5c3fe30ca905aa0.camel@perches.com>
-Subject: Re: [PATCH] isdn: hysdn: Fix error spaces around '*'
-From: Joe Perches <joe@perches.com>
-To: Stephen Hemminger <stephen@networkplumber.org>, Jose Carlos Cazarin
- Filho <joseespiriki@gmail.com>
-Date: Fri, 02 Aug 2019 15:05:05 -0700
-In-Reply-To: <20190802145506.168b576b@hermes.lan>
-References: <20190802195602.28414-1-joseespiriki@gmail.com>
- <20190802145506.168b576b@hermes.lan>
-User-Agent: Evolution 3.30.5-0ubuntu0.18.10.1 
+ with ESMTP id eIKaabDqI+gR
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  2 Aug 2019 22:15:42 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 020928841A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  2 Aug 2019 22:15:41 +0000 (UTC)
+Received: from localhost (unknown [69.71.4.100])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 7FAC92087C;
+ Fri,  2 Aug 2019 22:15:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1564784141;
+ bh=0VIAzOo4zb+swZnODQr4hpD7QckO3wZdHQ/+75GTF1U=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=uKqTme8pWjp2pFS3sAbNjLV/ACQVZk5uy3e4F7mchlG8JEQKkiMhiZALaWbrk9dTF
+ PIZ+QsF9kwvw77M+BSZBGxYm/mPQD5HFsDY/DsHx0F1SVUB4RXpIp0jCG2gTlP88Gv
+ KFks3NVPUOXw2b//d5n6Fhj08gxat8oPs+x8imWQ=
+Date: Fri, 2 Aug 2019 17:15:40 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Dexuan Cui <decui@microsoft.com>
+Subject: Re: [PATCH] PCI: hv: Fix panic by calling hv_pci_remove_slots()
+ earlier
+Message-ID: <20190802221540.GN151852@google.com>
+References: <PU1P153MB0169DBCFEE7257F5BB93580ABFD90@PU1P153MB0169.APCP153.PROD.OUTLOOK.COM>
+ <20190802194053.GL151852@google.com>
+ <PU1P153MB01698F51FE22C39086CC8353BFD90@PU1P153MB0169.APCP153.PROD.OUTLOOK.COM>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <PU1P153MB01698F51FE22C39086CC8353BFD90@PU1P153MB0169.APCP153.PROD.OUTLOOK.COM>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,46 +72,100 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org, isdn@linux-pingi.de,
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org
+Cc: "linux-hyperv@vger.kernel.org" <linux-hyperv@vger.kernel.org>,
+ "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>,
+ Stephen Hemminger <sthemmin@microsoft.com>,
+ "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
+ Haiyang Zhang <haiyangz@microsoft.com>,
+ "driverdev-devel@linuxdriverproject.org"
+ <driverdev-devel@linuxdriverproject.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Michael Kelley <mikelley@microsoft.com>,
+ Sasha Levin <Alexander.Levin@microsoft.com>,
+ "marcelo.cerri@canonical.com" <marcelo.cerri@canonical.com>,
+ "olaf@aepfle.de" <olaf@aepfle.de>, "apw@canonical.com" <apw@canonical.com>,
+ vkuznets <vkuznets@redhat.com>, "jasowang@redhat.com" <jasowang@redhat.com>,
+ "jackm@mellanox.com" <jackm@mellanox.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, 2019-08-02 at 14:55 -0700, Stephen Hemminger wrote:
-> On Fri,  2 Aug 2019 19:56:02 +0000
-> Jose Carlos Cazarin Filho <joseespiriki@gmail.com> wrote:
+On Fri, Aug 02, 2019 at 08:31:26PM +0000, Dexuan Cui wrote:
+> > From: Bjorn Helgaas <helgaas@kernel.org>
+> > Sent: Friday, August 2, 2019 12:41 PM
+> > The subject line only describes the mechanical code change, which is
+> > obvious from the patch.  It would be better if we could say something
+> > about *why* we need this.
 > 
-> > Fix checkpath error:
-> > CHECK: spaces preferred around that '*' (ctx:WxV)
-> > +extern hysdn_card *card_root;        /* pointer to first card */
+> Hi Bjorn,
+> Sorry. I'll try to write a better changelog in v2. :-)
+>  
+> > On Fri, Aug 02, 2019 at 01:32:28AM +0000, Dexuan Cui wrote:
+> > >
+> > > When a slot is removed, the pci_dev must still exist.
+> > >
+> > > pci_remove_root_bus() removes and free all the pci_devs, so
+> > > hv_pci_remove_slots() must be called before pci_remove_root_bus(),
+> > > otherwise a general protection fault can happen, if the kernel is built
 > > 
-> > Signed-off-by: Jose Carlos Cazarin Filho <joseespiriki@gmail.com>
+> > "general protection fault" is an x86 term that doesn't really say what
+> > the issue is.  I suspect this would be a "use-after-free" problem.
 > 
-> Read the TODO, these drivers are scheduled for removal, so changes
-> are not helpful at this time.
+> Yes, it's use-after-free. I'll fix the the wording.
+>  
+> > > --- a/drivers/pci/controller/pci-hyperv.c
+> > > +++ b/drivers/pci/controller/pci-hyperv.c
+> > > @@ -2757,8 +2757,8 @@ static int hv_pci_remove(struct hv_device *hdev)
+> > >  		/* Remove the bus from PCI's point of view. */
+> > >  		pci_lock_rescan_remove();
+> > >  		pci_stop_root_bus(hbus->pci_bus);
+> > > -		pci_remove_root_bus(hbus->pci_bus);
+> > >  		hv_pci_remove_slots(hbus);
+> > > +		pci_remove_root_bus(hbus->pci_bus);
+> > 
+> > I'm curious about why we need hv_pci_remove_slots() at all.  None of
+> > the other callers of pci_stop_root_bus() and pci_remove_root_bus() do
+> > anything similar to hv_pci_remove_slots().
+> > 
+> > Surely some of those callers also support slots, so there must be some
+> > other path that calls pci_destroy_slot() in those cases.  Can we use a
+> > similar strategy here?
+> 
+> Originally Stephen Heminger added the slot code for pci-hyperv.c:
+> a15f2c08c708 ("PCI: hv: support reporting serial number as slot information")
+> So he may know this better. My understanding is: we can not use the similar
+> stragegy used in the 2 other users of pci_create_slot():
+> 
+> drivers/pci/hotplug/pci_hotplug_core.c calls pci_create_slot().
+> It looks drivers/pci/hotplug/ is quite different from pci-hyperv.c because
+> pci-hyper-v uses a simple *private* hot-plug protocol, making it impossible
+> to use the API pci_hp_register() and pci_hp_destroy() -> pci_destroy_slot().
+> 
+> drivers/acpi/pci_slot.c calls pci_create_slot(), and saves the created slots in
+> the static "slot_list" list in the same file. Again, since pci-hyper-v uses a private
+> PCI-device-discovery protocol (which is based on VMBus rather the emulated
+> ACPI and PCI), acpi_pci_slot_enumerate() can not find the PCI devices that are
+> discovered by pci-hyperv, so we can not use the standard register_slot() ->
+> pci_create_slot() to create the slots and hence acpi_pci_slot_remove() -> 
+> pci_destroy_slot() can not work for pci-hyperv.
 
-Maybe better to mark the MAINTAINERS entry obsolete so
-checkpatch bleats a message about unnecessary changes.
----
- MAINTAINERS | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Hmm, ok.  This still doesn't seem right to me, but I think the bottom
+line will be that the current slot registration interfaces just don't
+work quite right for all the cases we want them to.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 30bf852e6d6b..b5df91032574 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -8628,7 +8628,7 @@ M:	Karsten Keil <isdn@linux-pingi.de>
- L:	isdn4linux@listserv.isdn4linux.de (subscribers-only)
- L:	netdev@vger.kernel.org
- W:	http://www.isdn4linux.de
--S:	Odd Fixes
-+S:	Obsolete
- F:	Documentation/isdn/
- F:	drivers/isdn/capi/
- F:	drivers/staging/isdn/
+Maybe it would be a good project for somebody to rethink them, but it
+doesn't seem practical for *this* patch.  Thanks for looking into it
+this far!
 
+> I think I can use this as the v2 changelog:
+> 
+> The slot must be removed before the pci_dev is removed, otherwise a panic
+> can happen due to use-after-free.
+
+Sounds good.
+
+Bjorn
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
