@@ -2,122 +2,78 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id F323B801C5
-	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2019 22:31:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8E4DD80214
+	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2019 23:00:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 25E3887E8F;
-	Fri,  2 Aug 2019 20:31:46 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5070387EDD;
+	Fri,  2 Aug 2019 21:00:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bcC8HgDSlO26; Fri,  2 Aug 2019 20:31:45 +0000 (UTC)
+	with ESMTP id ybYg6Q+Ef525; Fri,  2 Aug 2019 21:00:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3662087E81;
-	Fri,  2 Aug 2019 20:31:44 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id CB81987EB5;
+	Fri,  2 Aug 2019 21:00:26 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 136861BF3D4
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 20:31:42 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 491541BF476
+ for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 21:00:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 09A9087E3C
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 20:31:42 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3DF4686BCF
+ for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 21:00:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 04zMsY11GOGQ
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 20:31:40 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from APC01-SG2-obe.outbound.protection.outlook.com
- (mail-eopbgr1310121.outbound.protection.outlook.com [40.107.131.121])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 35D2487D25
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 20:31:39 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=mjL9SJ554zyYkvJFlyPlQ52+w527RFfKdSfZwSQhGz1fZbkj3zRKw36WV9xXFAIbVJ2ICNbaLnwX+wYA9aHWglC30NK28LGf58/nFeTI8kkaK6KNGuGHnuVLaRRyg20CXycjN0SfB13JfV7xfh7U9Pm/fbbUDf8NTn0Kay3Jit+vMuH6XmGxi2nGLbaIgyondZTMPbM/fSkEJOs/NlWhOj6sM5q3sWdyLD3DsoKGXgks4oI8CrtSzFyJDMrpfjDdYxZoynUGG76CsmystF3QE1qAPBEMl4FAINe8DNBIEMmKT4ZwqF/qqby8jvlUJ6gQzwAGzMUElNyAS6BDwVAg1Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=GGZ1q5MsjpR65mpe98+A428gxbRJcxGR5ImoDLAZDQs=;
- b=fRQK5V1j/3LSbN/lAHLerl41zVOUq+gi2yWOU+/FCijWVzRYNSy1I7WcXBrPnzKie+Ox7YADo+B4IDSwCYpLhXHQb8cnpsUQBKAi6l2TF0UzLEAMTU0domCBI8u+koHnWJEOFEY0RAglNwn3xU0h7QTDXQbXSr/k2k6GVzXL6n1kwKrdPelY5BEWUaL4laIXeSuoujcsAlHRNOz0EXTurWRtSMQJ3a8feBq3e68SiZdsQjdHWP9DrohQlzhWfLbL7Zc+lrK+41hN3L5/J85F4QOSKXVS1VtrSZaE/G0NF/yu3L66wP/JaBaK1pskxV6ZmvwI8GedO++ZafnoHsMZoA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microsoft.com; dmarc=pass action=none
- header.from=microsoft.com; dkim=pass header.d=microsoft.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=GGZ1q5MsjpR65mpe98+A428gxbRJcxGR5ImoDLAZDQs=;
- b=Q202xz0n6FYG6YZbgHH7HhO9Xfk7fyrforOQoinaxTkCUk0UJ/e4AaTq4RGqMsRTlmFVuivGT8SDUHXlwoAwirSqywKCtr/6qRlook1sE+cllOYGFtQ8OLOkRRgGbDQsaecy1jjBTt3lyBD76QxtrNO1+o20CLcaqLC2nQXlSSc=
-Received: from PU1P153MB0169.APCP153.PROD.OUTLOOK.COM (10.170.189.13) by
- PU1P153MB0185.APCP153.PROD.OUTLOOK.COM (10.170.187.143) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2157.2; Fri, 2 Aug 2019 20:31:27 +0000
-Received: from PU1P153MB0169.APCP153.PROD.OUTLOOK.COM
- ([fe80::d44e:57b7:d8fc:e91c]) by PU1P153MB0169.APCP153.PROD.OUTLOOK.COM
- ([fe80::d44e:57b7:d8fc:e91c%7]) with mapi id 15.20.2157.001; Fri, 2 Aug 2019
- 20:31:27 +0000
-From: Dexuan Cui <decui@microsoft.com>
-To: Bjorn Helgaas <helgaas@kernel.org>, Stephen Hemminger
- <sthemmin@microsoft.com>
-Subject: RE: [PATCH] PCI: hv: Fix panic by calling hv_pci_remove_slots()
- earlier
-Thread-Topic: [PATCH] PCI: hv: Fix panic by calling hv_pci_remove_slots()
- earlier
-Thread-Index: AdVI0ZE8ZG/OuLUpRiCFkuQ9gvUCcwAmKCuAAACT/uA=
-Date: Fri, 2 Aug 2019 20:31:26 +0000
-Message-ID: <PU1P153MB01698F51FE22C39086CC8353BFD90@PU1P153MB0169.APCP153.PROD.OUTLOOK.COM>
-References: <PU1P153MB0169DBCFEE7257F5BB93580ABFD90@PU1P153MB0169.APCP153.PROD.OUTLOOK.COM>
- <20190802194053.GL151852@google.com>
-In-Reply-To: <20190802194053.GL151852@google.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Enabled=True;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SiteId=72f988bf-86f1-41af-91ab-2d7cd011db47;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Owner=decui@microsoft.com;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SetDate=2019-08-02T20:31:22.8119515Z;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Name=General;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Application=Microsoft Azure
- Information Protection;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_ActionId=43160eaa-d2f6-4110-aeb7-ac4462d2355d;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Extended_MSFT_Method=Automatic
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=decui@microsoft.com; 
-x-originating-ip: [2601:600:a280:1760:71c8:ee0a:27d:d7aa]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: fa4f1d55-41c1-4d6c-f988-08d71788650a
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(5600148)(711020)(4605104)(1401327)(4618075)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7193020);
- SRVR:PU1P153MB0185; 
-x-ms-traffictypediagnostic: PU1P153MB0185:|PU1P153MB0185:
-x-ms-exchange-transport-forked: True
-x-ld-processed: 72f988bf-86f1-41af-91ab-2d7cd011db47,ExtAddr
-x-microsoft-antispam-prvs: <PU1P153MB01858CF3D93DB06EAAF4FB3EBFD90@PU1P153MB0185.APCP153.PROD.OUTLOOK.COM>
-x-ms-oob-tlc-oobclassifiers: OLM:7691;
-x-forefront-prvs: 011787B9DD
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(376002)(366004)(136003)(396003)(39860400002)(346002)(40224003)(54534003)(199004)(189003)(6116002)(10090500001)(81156014)(316002)(5660300002)(2906002)(8936002)(33656002)(8676002)(66476007)(66556008)(54906003)(76116006)(8990500004)(66446008)(22452003)(64756008)(6636002)(7736002)(68736007)(46003)(11346002)(25786009)(305945005)(10290500003)(74316002)(478600001)(1511001)(9686003)(76176011)(110136005)(7696005)(486006)(53936002)(476003)(55016002)(66946007)(446003)(14454004)(86362001)(81166006)(6246003)(4326008)(71190400001)(229853002)(99286004)(102836004)(7416002)(6506007)(71200400001)(14444005)(186003)(52536014)(6436002)(256004);
- DIR:OUT; SFP:1102; SCL:1; SRVR:PU1P153MB0185;
- H:PU1P153MB0169.APCP153.PROD.OUTLOOK.COM; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: microsoft.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: 1Bbdk3ldAg3wRSB6wuc7QP8cdfePd81VnPjPHVP8ALJBZTtIvfbIadLTB9vfFa6pTNC5rB94qe92+NL6Eq3NXKvr/HDnyyt63UR7rjhQpSc0NUuCAHgH7BHRyVR8aGAE36Xv1vCgRxECmH4wYR3AMQ40MdpyNoTdmfazzlWio+i5TK92dap1BwQUHs/aSjbXmYNxoTcJLkDmxeaTlypKdbmOWZyyrLTZ7W6Htsys7ntYnaOzL/B/9Iw6r7gIICFlzyBRQGzYu0sGzt31KqLRlWLV6ACKV1owQVLc3/UfkRc5L3Hz6XJ1fwinwZfTT6kv4dtJ/qFHUXjH5aev8f6XCbS/+IT8vmZNOPiMvKPnDhc7jwES3TMjfjndU+YPzbUFTbSANm9DcqfuM1/y+ZceVaJNveyLtaeA0HiFUqIYJ1A=
+ with ESMTP id RiIT7ivz8wyq for <devel@linuxdriverproject.org>;
+ Fri,  2 Aug 2019 21:00:24 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-qk1-f193.google.com (mail-qk1-f193.google.com
+ [209.85.222.193])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 5456C86BBB
+ for <devel@driverdev.osuosl.org>; Fri,  2 Aug 2019 21:00:24 +0000 (UTC)
+Received: by mail-qk1-f193.google.com with SMTP id d79so55828544qke.11
+ for <devel@driverdev.osuosl.org>; Fri, 02 Aug 2019 14:00:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=kwE3+6BcTglZ7l+bRUlKAeLgMYqdZqdhQZew+tyQBhc=;
+ b=VdzkLE5tcD+dAKnnkMn/COI3GEV/C5NjE6tmJRXRJKWi5GAG0puvA/kPUC50iX7wQq
+ m8uJxenXH0BbjwttGAHYOl2uLptkC3NexdiIq78LQldakVzrKcCN8O5Y/ziIZPSFezD7
+ 64qaA1Y3pjuzdWKzTdLWCWwhK6SI9zsFEpSHSY4OM71aTy7p7tdHhu+87YlMwojHfof/
+ jjFKW2w7xz2h60Q5ujQQ7/7ktFAN8OOiYRwcetFS54IRZVuIisb7PxTBncOMrCuq3elE
+ Li+ygXFhjaP8i8BOSD1jhOcoP12+vB5IF8JFjd00cmAvif5pGdQHExMlXAS87sc6ZeyI
+ +Gaw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=kwE3+6BcTglZ7l+bRUlKAeLgMYqdZqdhQZew+tyQBhc=;
+ b=ueCctDXpBqMT4K1WPFaVW0xBzJCX9ypkpgubImbzz0gt1WBw81+GqmsEjhyoN9uhqw
+ jTijkAP46BYCNKAGC+g4moBkZYdScLMScaJVcVcti0cGt5PS6OLQ7PkCcA/qxEgcDosE
+ R0ynPfaI1civamoM73c6HvAmmXS6HKrL7CtV6SEJvIKtKsNYM6IRmNJwc+sHgoJ+b4DJ
+ Uw9RtSflJkvUO/G8Uabde1WuXBNUtAdGOes1cz5NZLp5e4xO5kgg5QkhCcfIGlQzTTOw
+ OUvb3qrRJA1/ZX+T5Az2GkM0un+ztQNho5mwW+skVaV7WFkcgY+kZ8pcz1St5Bnbhxzf
+ Grgw==
+X-Gm-Message-State: APjAAAV8WV9Zpc0/ALQzivNQPHyobSq1rCtQ1RlyZAb/fTg3WrH880yg
+ mZmlN9wvltEmiEs4douuJU4=
+X-Google-Smtp-Source: APXvYqxQK78E2PZwOIgAdfjgcQ3w55xhTiXKNqtO/lRNK3LgnMSywCpvG0K93f8iU1aAbCHZjTMi1A==
+X-Received: by 2002:ae9:f107:: with SMTP id k7mr28181289qkg.215.1564779623127; 
+ Fri, 02 Aug 2019 14:00:23 -0700 (PDT)
+Received: from 0366fb520575.ime.usp.br ([143.107.45.1])
+ by smtp.gmail.com with ESMTPSA id o50sm2129600qtj.17.2019.08.02.14.00.20
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Fri, 02 Aug 2019 14:00:22 -0700 (PDT)
+From: Jose Carlos Cazarin Filho <joseespiriki@gmail.com>
+To: Larry Finger <Larry.Finger@lwfinger.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ lkcamp@lists.libreplanetbr.org
+Subject: [PATCH] rtl8188eu: hal: phy.c
+Date: Fri,  2 Aug 2019 21:00:18 +0000
+Message-Id: <20190802210018.29251-1-joseespiriki@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: fa4f1d55-41c1-4d6c-f988-08d71788650a
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Aug 2019 20:31:27.0076 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: qTDeaNc0QEmnA7PC3yMA4gCDUTqt8vTFgP59K8auAFJ5CBNZOzAXi187wEgfoltVCvrHESrw/iWsdoCJt4mQSA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PU1P153MB0185
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -130,89 +86,186 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "linux-hyperv@vger.kernel.org" <linux-hyperv@vger.kernel.org>,
- "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>,
- "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
- Haiyang Zhang <haiyangz@microsoft.com>,
- "driverdev-devel@linuxdriverproject.org"
- <driverdev-devel@linuxdriverproject.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Michael Kelley <mikelley@microsoft.com>,
- Sasha Levin <Alexander.Levin@microsoft.com>,
- "marcelo.cerri@canonical.com" <marcelo.cerri@canonical.com>,
- "olaf@aepfle.de" <olaf@aepfle.de>, "apw@canonical.com" <apw@canonical.com>,
- vkuznets <vkuznets@redhat.com>, "jasowang@redhat.com" <jasowang@redhat.com>,
- "jackm@mellanox.com" <jackm@mellanox.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-> From: Bjorn Helgaas <helgaas@kernel.org>
-> Sent: Friday, August 2, 2019 12:41 PM
-> The subject line only describes the mechanical code change, which is
-> obvious from the patch.  It would be better if we could say something
-> about *why* we need this.
+Fix a lot of checkpath errors of the type:
+	-CHECK: spaces preferred around that
+	-CHECK: Alignment should match open parenthesis
 
-Hi Bjorn,
-Sorry. I'll try to write a better changelog in v2. :-)
+Signed-off-by: Jose Carlos Cazarin Filho <joseespiriki@gmail.com>
+---
+ My second commit to the kernel, I know you ppl don't like these kind of commits
+ fixing style-only erros pointed by the checkpath, but I'm doing this just to learn
+ Thanks!
+ drivers/staging/rtl8188eu/hal/phy.c | 54 ++++++++++++++---------------
+ 1 file changed, 27 insertions(+), 27 deletions(-)
+
+diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
+index 51c40abfa..f0d242dec 100644
+--- a/drivers/staging/rtl8188eu/hal/phy.c
++++ b/drivers/staging/rtl8188eu/hal/phy.c
+@@ -52,7 +52,7 @@ void phy_set_bb_reg(struct adapter *adapt, u32 regaddr, u32 bitmask, u32 data)
+ }
  
-> On Fri, Aug 02, 2019 at 01:32:28AM +0000, Dexuan Cui wrote:
-> >
-> > When a slot is removed, the pci_dev must still exist.
-> >
-> > pci_remove_root_bus() removes and free all the pci_devs, so
-> > hv_pci_remove_slots() must be called before pci_remove_root_bus(),
-> > otherwise a general protection fault can happen, if the kernel is built
-> 
-> "general protection fault" is an x86 term that doesn't really say what
-> the issue is.  I suspect this would be a "use-after-free" problem.
-
-Yes, it's use-after-free. I'll fix the the wording.
+ static u32 rf_serial_read(struct adapter *adapt,
+-			enum rf_radio_path rfpath, u32 offset)
++			  enum rf_radio_path rfpath, u32 offset)
+ {
+ 	u32 ret = 0;
+ 	struct bb_reg_def *phyreg = &adapt->HalData->PHYRegDef[rfpath];
+@@ -69,10 +69,10 @@ static u32 rf_serial_read(struct adapter *adapt,
+ 					    bMaskDWord);
  
-> > --- a/drivers/pci/controller/pci-hyperv.c
-> > +++ b/drivers/pci/controller/pci-hyperv.c
-> > @@ -2757,8 +2757,8 @@ static int hv_pci_remove(struct hv_device *hdev)
-> >  		/* Remove the bus from PCI's point of view. */
-> >  		pci_lock_rescan_remove();
-> >  		pci_stop_root_bus(hbus->pci_bus);
-> > -		pci_remove_root_bus(hbus->pci_bus);
-> >  		hv_pci_remove_slots(hbus);
-> > +		pci_remove_root_bus(hbus->pci_bus);
-> 
-> I'm curious about why we need hv_pci_remove_slots() at all.  None of
-> the other callers of pci_stop_root_bus() and pci_remove_root_bus() do
-> anything similar to hv_pci_remove_slots().
-> 
-> Surely some of those callers also support slots, so there must be some
-> other path that calls pci_destroy_slot() in those cases.  Can we use a
-> similar strategy here?
+ 	tmplong2 = (tmplong2 & (~bLSSIReadAddress)) |
+-		   (offset<<23) | bLSSIReadEdge;
++		   (offset << 23) | bLSSIReadEdge;
+ 
+ 	phy_set_bb_reg(adapt, rFPGA0_XA_HSSIParameter2, bMaskDWord,
+-		       tmplong&(~bLSSIReadEdge));
++		       tmplong & (~bLSSIReadEdge));
+ 	udelay(10);
+ 
+ 	phy_set_bb_reg(adapt, phyreg->rfHSSIPara2, bMaskDWord, tmplong2);
+@@ -102,12 +102,12 @@ static void rf_serial_write(struct adapter *adapt,
+ 	struct bb_reg_def *phyreg = &adapt->HalData->PHYRegDef[rfpath];
+ 
+ 	offset &= 0xff;
+-	data_and_addr = ((offset<<20) | (data&0x000fffff)) & 0x0fffffff;
++	data_and_addr = ((offset << 20) | (data & 0x000fffff)) & 0x0fffffff;
+ 	phy_set_bb_reg(adapt, phyreg->rf3wireOffset, bMaskDWord, data_and_addr);
+ }
+ 
+ u32 rtw_hal_read_rfreg(struct adapter *adapt, enum rf_radio_path rf_path,
+-		     u32 reg_addr, u32 bit_mask)
++		       u32 reg_addr, u32 bit_mask)
+ {
+ 	u32 original_value, bit_shift;
+ 
+@@ -117,7 +117,7 @@ u32 rtw_hal_read_rfreg(struct adapter *adapt, enum rf_radio_path rf_path,
+ }
+ 
+ void phy_set_rf_reg(struct adapter *adapt, enum rf_radio_path rf_path,
+-		     u32 reg_addr, u32 bit_mask, u32 data)
++		    u32 reg_addr, u32 bit_mask, u32 data)
+ {
+ 	u32 original_value, bit_shift;
+ 
+@@ -143,20 +143,20 @@ static void get_tx_power_index(struct adapter *adapt, u8 channel, u8 *cck_pwr,
+ 	for (TxCount = 0; TxCount < path_nums; TxCount++) {
+ 		if (TxCount == RF_PATH_A) {
+ 			cck_pwr[TxCount] = hal_data->Index24G_CCK_Base[TxCount][index];
+-			ofdm_pwr[TxCount] = hal_data->Index24G_BW40_Base[RF_PATH_A][index]+
++			ofdm_pwr[TxCount] = hal_data->Index24G_BW40_Base[RF_PATH_A][index] +
+ 					    hal_data->OFDM_24G_Diff[TxCount][RF_PATH_A];
+ 
+-			bw20_pwr[TxCount] = hal_data->Index24G_BW40_Base[RF_PATH_A][index]+
++			bw20_pwr[TxCount] = hal_data->Index24G_BW40_Base[RF_PATH_A][index] +
+ 					    hal_data->BW20_24G_Diff[TxCount][RF_PATH_A];
+ 			bw40_pwr[TxCount] = hal_data->Index24G_BW40_Base[TxCount][index];
+ 		} else if (TxCount == RF_PATH_B) {
+ 			cck_pwr[TxCount] = hal_data->Index24G_CCK_Base[TxCount][index];
+-			ofdm_pwr[TxCount] = hal_data->Index24G_BW40_Base[RF_PATH_A][index]+
+-			hal_data->BW20_24G_Diff[RF_PATH_A][index]+
++			ofdm_pwr[TxCount] = hal_data->Index24G_BW40_Base[RF_PATH_A][index] +
++			hal_data->BW20_24G_Diff[RF_PATH_A][index] +
+ 			hal_data->BW20_24G_Diff[TxCount][index];
+ 
+-			bw20_pwr[TxCount] = hal_data->Index24G_BW40_Base[RF_PATH_A][index]+
+-			hal_data->BW20_24G_Diff[TxCount][RF_PATH_A]+
++			bw20_pwr[TxCount] = hal_data->Index24G_BW40_Base[RF_PATH_A][index] +
++			hal_data->BW20_24G_Diff[TxCount][RF_PATH_A] +
+ 			hal_data->BW20_24G_Diff[TxCount][index];
+ 			bw40_pwr[TxCount] = hal_data->Index24G_BW40_Base[TxCount][index];
+ 		}
+@@ -190,7 +190,7 @@ void phy_set_tx_power_level(struct adapter *adapt, u8 channel)
+ 
+ 	rtl88eu_phy_rf6052_set_cck_txpower(adapt, &cck_pwr[0]);
+ 	rtl88eu_phy_rf6052_set_ofdm_txpower(adapt, &ofdm_pwr[0], &bw20_pwr[0],
+-					  &bw40_pwr[0], channel);
++					    &bw40_pwr[0], channel);
+ }
+ 
+ static void phy_set_bw_mode_callback(struct adapter *adapt)
+@@ -903,13 +903,13 @@ static bool simularity_compare(struct adapter *adapt, s32 resulta[][8],
+ 		if (diff > MAX_TOLERANCE) {
+ 			if ((i == 2 || i == 6) && !sim_bitmap) {
+ 				if (resulta[c1][i] + resulta[c1][i+1] == 0)
+-					final_candidate[(i/4)] = c2;
++					final_candidate[(i / 4)] = c2;
+ 				else if (resulta[c2][i] + resulta[c2][i+1] == 0)
+-					final_candidate[(i/4)] = c1;
++					final_candidate[(i / 4)] = c1;
+ 				else
+-					sim_bitmap = sim_bitmap | (1<<i);
++					sim_bitmap = sim_bitmap | (1 << i);
+ 			} else {
+-				sim_bitmap = sim_bitmap | (1<<i);
++				sim_bitmap = sim_bitmap | (1 << i);
+ 			}
+ 		}
+ 	}
+@@ -1074,19 +1074,19 @@ static void phy_iq_calibrate(struct adapter *adapt, s32 result[][8],
+ 			path_b_ok = phy_path_b_iqk(adapt);
+ 			if (path_b_ok == 0x03) {
+ 				result[t][4] = (phy_query_bb_reg(adapt, rTx_Power_Before_IQK_B,
+-								 bMaskDWord)&0x3FF0000)>>16;
++								 bMaskDWord)&0x3FF0000) >> 16;
+ 				result[t][5] = (phy_query_bb_reg(adapt, rTx_Power_After_IQK_B,
+-								 bMaskDWord)&0x3FF0000)>>16;
++								 bMaskDWord)&0x3FF0000) >> 16;
+ 				result[t][6] = (phy_query_bb_reg(adapt, rRx_Power_Before_IQK_B_2,
+-								 bMaskDWord)&0x3FF0000)>>16;
++								 bMaskDWord)&0x3FF0000) >> 16;
+ 				result[t][7] = (phy_query_bb_reg(adapt, rRx_Power_After_IQK_B_2,
+-								 bMaskDWord)&0x3FF0000)>>16;
++								 bMaskDWord)&0x3FF0000) >> 16;
+ 				break;
+ 			} else if (i == (retry_count - 1) && path_b_ok == 0x01) {	/* Tx IQK OK */
+ 				result[t][4] = (phy_query_bb_reg(adapt, rTx_Power_Before_IQK_B,
+-								 bMaskDWord)&0x3FF0000)>>16;
++								 bMaskDWord)&0x3FF0000) >> 16;
+ 				result[t][5] = (phy_query_bb_reg(adapt, rTx_Power_After_IQK_B,
+-								 bMaskDWord)&0x3FF0000)>>16;
++								 bMaskDWord)&0x3FF0000) >> 16;
+ 			}
+ 		}
+ 
+@@ -1158,12 +1158,12 @@ static void phy_lc_calibrate(struct adapter *adapt, bool is2t)
+ 		/* 2. Set RF mode = standby mode */
+ 		/* Path-A */
+ 		phy_set_rf_reg(adapt, RF_PATH_A, RF_AC, bMask12Bits,
+-			       (rf_a_mode&0x8FFFF)|0x10000);
++			       (rf_a_mode&0x8FFFF) | 0x10000);
+ 
+ 		/* Path-B */
+ 		if (is2t)
+ 			phy_set_rf_reg(adapt, RF_PATH_B, RF_AC, bMask12Bits,
+-				       (rf_b_mode&0x8FFFF)|0x10000);
++				       (rf_b_mode&0x8FFFF) | 0x10000);
+ 	}
+ 
+ 	/* 3. Read RF reg18 */
+@@ -1171,12 +1171,12 @@ static void phy_lc_calibrate(struct adapter *adapt, bool is2t)
+ 
+ 	/* 4. Set LC calibration begin bit15 */
+ 	phy_set_rf_reg(adapt, RF_PATH_A, RF_CHNLBW, bMask12Bits,
+-		       lc_cal|0x08000);
++		       lc_cal | 0x08000);
+ 
+ 	msleep(100);
+ 
+ 	/* Restore original situation */
+-	if ((tmpreg&0x70) != 0) {
++	if ((tmpreg & 0x70) != 0) {
+ 		/* Deal with continuous TX case */
+ 		/* Path-A */
+ 		usb_write8(adapt, 0xd03, tmpreg);
+-- 
+2.20.1
 
-Originally Stephen Heminger added the slot code for pci-hyperv.c:
-a15f2c08c708 ("PCI: hv: support reporting serial number as slot information")
-So he may know this better. My understanding is: we can not use the similar
-stragegy used in the 2 other users of pci_create_slot():
-
-drivers/pci/hotplug/pci_hotplug_core.c calls pci_create_slot().
-It looks drivers/pci/hotplug/ is quite different from pci-hyperv.c because
-pci-hyper-v uses a simple *private* hot-plug protocol, making it impossible
-to use the API pci_hp_register() and pci_hp_destroy() -> pci_destroy_slot().
-
-drivers/acpi/pci_slot.c calls pci_create_slot(), and saves the created slots in
-the static "slot_list" list in the same file. Again, since pci-hyper-v uses a private
-PCI-device-discovery protocol (which is based on VMBus rather the emulated
-ACPI and PCI), acpi_pci_slot_enumerate() can not find the PCI devices that are
-discovered by pci-hyperv, so we can not use the standard register_slot() ->
-pci_create_slot() to create the slots and hence acpi_pci_slot_remove() -> 
-pci_destroy_slot() can not work for pci-hyperv.
-
-I think I can use this as the v2 changelog:
-
-The slot must be removed before the pci_dev is removed, otherwise a panic
-can happen due to use-after-free.
-
-Thanks,
-Dexuan
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
