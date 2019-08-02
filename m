@@ -1,59 +1,122 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 24185802C1
-	for <lists+driverdev-devel@lfdr.de>; Sat,  3 Aug 2019 00:32:44 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id CFA86802FE
+	for <lists+driverdev-devel@lfdr.de>; Sat,  3 Aug 2019 00:52:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 36F28860FF;
-	Fri,  2 Aug 2019 22:32:42 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D216420434;
+	Fri,  2 Aug 2019 22:52:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 33HmfBX4WLQA; Fri,  2 Aug 2019 22:32:41 +0000 (UTC)
+	with ESMTP id ChsTIuyTVFcv; Fri,  2 Aug 2019 22:52:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D327C85313;
-	Fri,  2 Aug 2019 22:32:40 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by silver.osuosl.org (Postfix) with ESMTP id 253AF20405;
+	Fri,  2 Aug 2019 22:52:04 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B55091BF831
- for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 22:32:38 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E61C51BF831
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  2 Aug 2019 22:51:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id AA69686370
- for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 22:32:38 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9F0F587F78
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  2 Aug 2019 22:51:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3jO6LlPaWWav for <devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 22:32:38 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 2855F8633B
- for <devel@driverdev.osuosl.org>; Fri,  2 Aug 2019 22:32:38 +0000 (UTC)
-Received: from tleilax.poochiereds.net (cpe-71-70-156-158.nc.res.rr.com
- [71.70.156.158])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 58F57206A3;
- Fri,  2 Aug 2019 22:32:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1564785158;
- bh=z6ytUlp+CIECyVYgzsmKAgNAlD3y+8CHq71PuCQ0D+c=;
- h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
- b=cpjIBy8JqGDmfo2YvJ1zHX2H3F5SzV7XyBEUvKOoDGfZiHGtVeJHlsiNF8f/o/lw/
- 1IriX/50tm1jxxFU6BHxnU7AmYr31cK1qfEIW7FiUI67JvLd42gEz50jymZEZTSESa
- 2e28o/zwwAXm5Iq/SkAmipJbFc8z+f7/iU9PnXtA=
-Message-ID: <2f0d5993e9731808b73b0018f5fc4b3335fc6373.camel@kernel.org>
-Subject: Re: [PATCH 03/34] net/ceph: convert put_page() to put_user_page*()
-From: Jeff Layton <jlayton@kernel.org>
-To: john.hubbard@gmail.com, Andrew Morton <akpm@linux-foundation.org>
-Date: Fri, 02 Aug 2019 18:32:33 -0400
-In-Reply-To: <20190802022005.5117-4-jhubbard@nvidia.com>
-References: <20190802022005.5117-1-jhubbard@nvidia.com>
- <20190802022005.5117-4-jhubbard@nvidia.com>
-User-Agent: Evolution 3.32.4 (3.32.4-1.fc30) 
+ with ESMTP id HhDcRRVoN9ek
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  2 Aug 2019 22:51:14 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from APC01-SG2-obe.outbound.protection.outlook.com
+ (mail-eopbgr1310111.outbound.protection.outlook.com [40.107.131.111])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A1ACD87ED2
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  2 Aug 2019 22:50:27 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=jZpj3xiYWqAXJYkfFSg66zoQp+TP3xNGNWX02d7JhW2WO9MPJcH/btcq3u7fm9sO+gBzj51aQx6E50lSKxvOqXCi1rCE33VjDTKKV8nv+Vsd5IGnbJObVTcKtgMPv/L/3RMBqWUN3zHRKwfVOVD+eHB/GxzqqzMMYnid8wlaZBSUGqlwM1/RP5hXPy4c2911eNVmaeB4G81m9ugh73BdEQxCQW/fDpZsNj8AIMmv12bz4VygwC+sqMBpWmnibS3srcQbPaEOKuzBQ+dPRN7Olz0MzS2wU5XJUX5YE0eYT2/fxa3cQThDkmabhgmnNzjRAFaxzZWKmfCRhB2iOED29w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=SEoVPnmO3JxhE0nF6jREGy77cqKv65QzLFWHO2SQY74=;
+ b=aJYCXeIzqWQxQU4kpzL29Zu1Qa2u6Pe2MUHAj6Ahgy8VxcY71y0PeDWzahFosA77EueQhBN8R8EMVya+xpBagxYAPeO955QLoChnxv3jOUAuO57Znlpv77T/HBjSngogGdXbWTDlMogU4Rylx9/dRQD8f86MBMCD+Jjn9AVVD6wlF8NSdKaOrF0bMWoPQITckbwRuU4zmm7AQJCIdiqrtWx0Lh8ib6RhRSXYQUuFfgpnuJyFglmhh2HGrrOgl8czblMMA8MnnGCCfEoOZJdr3WEOd2YXUzfGebXHKkftyJjBMb+Lta0VMvWxbdroHgPBbjoL665agdd+OaToo3ZhaQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=microsoft.com; dmarc=pass action=none
+ header.from=microsoft.com; dkim=pass header.d=microsoft.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=SEoVPnmO3JxhE0nF6jREGy77cqKv65QzLFWHO2SQY74=;
+ b=K7UQc5TLGPg5Dvcd8DjQO9siXzY8WuTn67VKEV1AieoFQIfn0Chj78swZDfBg7yXN2+xfHJxs8cRSoeobpA1ZDbID85Hm3tisyFCAWiU5eeSYmXxXfF9GSXV4d+iato/aKn6S17c7Q9vBDW9NeYa0olBbZ52fijP9avBZTF36Vk=
+Received: from PU1P153MB0169.APCP153.PROD.OUTLOOK.COM (10.170.189.13) by
+ PU1P153MB0105.APCP153.PROD.OUTLOOK.COM (10.170.188.10) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2157.2; Fri, 2 Aug 2019 22:50:21 +0000
+Received: from PU1P153MB0169.APCP153.PROD.OUTLOOK.COM
+ ([fe80::d44e:57b7:d8fc:e91c]) by PU1P153MB0169.APCP153.PROD.OUTLOOK.COM
+ ([fe80::d44e:57b7:d8fc:e91c%7]) with mapi id 15.20.2157.001; Fri, 2 Aug 2019
+ 22:50:21 +0000
+From: Dexuan Cui <decui@microsoft.com>
+To: "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>,
+ "bhelgaas@google.com" <bhelgaas@google.com>, "linux-pci@vger.kernel.org"
+ <linux-pci@vger.kernel.org>, Michael Kelley <mikelley@microsoft.com>, Stephen
+ Hemminger <sthemmin@microsoft.com>
+Subject: [PATCH v2] PCI: hv: Fix panic by calling hv_pci_remove_slots() earlier
+Thread-Topic: [PATCH v2] PCI: hv: Fix panic by calling hv_pci_remove_slots()
+ earlier
+Thread-Index: AdVJg/VErstT3ocmRgK9bYa/R2iIzA==
+Date: Fri, 2 Aug 2019 22:50:20 +0000
+Message-ID: <PU1P153MB01693F32F6BB02F9655CC84EBFD90@PU1P153MB0169.APCP153.PROD.OUTLOOK.COM>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Enabled=True;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SiteId=72f988bf-86f1-41af-91ab-2d7cd011db47;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Owner=decui@microsoft.com;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SetDate=2019-08-02T22:50:18.0174061Z;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Name=General;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Application=Microsoft Azure
+ Information Protection;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_ActionId=72f415c9-f574-414f-b43f-00fa1f90d651;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Extended_MSFT_Method=Automatic
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=decui@microsoft.com; 
+x-originating-ip: [2601:600:a280:1760:71c8:ee0a:27d:d7aa]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: a14aa9b9-639c-43f7-597e-08d7179bcc68
+x-ms-office365-filtering-ht: Tenant
+x-microsoft-antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(5600148)(711020)(4605104)(1401327)(4618075)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7193020);
+ SRVR:PU1P153MB0105; 
+x-ms-traffictypediagnostic: PU1P153MB0105:|PU1P153MB0105:
+x-ms-exchange-transport-forked: True
+x-ms-exchange-purlcount: 2
+x-ld-processed: 72f988bf-86f1-41af-91ab-2d7cd011db47,ExtAddr
+x-microsoft-antispam-prvs: <PU1P153MB0105CC9A7F7A1EAF38AD6E16BFD90@PU1P153MB0105.APCP153.PROD.OUTLOOK.COM>
+x-ms-oob-tlc-oobclassifiers: OLM:6790;
+x-forefront-prvs: 011787B9DD
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(4636009)(376002)(39860400002)(366004)(396003)(136003)(346002)(189003)(199004)(54534003)(14454004)(486006)(5660300002)(52536014)(8676002)(966005)(478600001)(10090500001)(8936002)(4326008)(2201001)(10290500003)(71200400001)(74316002)(64756008)(33656002)(7696005)(53936002)(102836004)(66446008)(2501003)(99286004)(66556008)(186003)(66946007)(6636002)(6506007)(81156014)(81166006)(7736002)(55016002)(1511001)(68736007)(256004)(14444005)(107886003)(2906002)(66476007)(76116006)(6306002)(9686003)(7416002)(110136005)(8990500004)(6436002)(305945005)(25786009)(476003)(54906003)(316002)(6116002)(46003)(86362001)(22452003)(71190400001);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:PU1P153MB0105;
+ H:PU1P153MB0169.APCP153.PROD.OUTLOOK.COM; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+received-spf: None (protection.outlook.com: microsoft.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam-message-info: cmjGBKpE/l+VDInHfIMOQDyOdGLFpnPNg8G9nQo2S0f55/fdd9hugEVGAPeV8LUM26hAsZkt0+KoAr+nr9EyjlL2uepR/pkrP8LzHrHpQTreDeaXJ+w3p3tGw3APbQL4eYHHqx+2IGJhcXrBY8T2sXU7Dn0KLSliviKjNuB6z0ER61Bgh+MgER64te8BDsAXmIi1Ab1/8uCQswqRAUBlAGm9zL/rZ07244MUCx5/+wbcJCUtMqKFcD0uRVLVCtdYpwtynQl7t46N21gZv34oW9GtHQNY5SpCf52Yaugpma+RFB4OPqwH12QzxDBhQRA0cb/Non8F87uyDNH5ZWYXg89VlOlrRsY1dQvC653WrmIAQgMEDgyc/AJpU65It4NpTPrFDtcOi1FFxguBrW3cT7URDpVVlBDL9rxGPYGKOmc=
 MIME-Version: 1.0
+X-OriginatorOrg: microsoft.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a14aa9b9-639c-43f7-597e-08d7179bcc68
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Aug 2019 22:50:20.8477 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: jjAFy6/HYkz/NnbomXVaBxtYA46fm8x6UfEx5VvkuJHaj5unJPtrdAQORuUHvMJ53UgQY2L3lH8ITZ4RTDL9gg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PU1P153MB0105
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,71 +129,54 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-fbdev@vger.kernel.org, Jan Kara <jack@suse.cz>, kvm@vger.kernel.org,
- Dave Hansen <dave.hansen@linux.intel.com>, Dave Chinner <david@fromorbit.com>,
- dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
- sparclinux@vger.kernel.org, ceph-devel@vger.kernel.org,
- devel@driverdev.osuosl.org, rds-devel@oss.oracle.com,
- Sage Weil <sage@redhat.com>, linux-rdma@vger.kernel.org, x86@kernel.org,
- amd-gfx@lists.freedesktop.org, Christoph Hellwig <hch@infradead.org>,
- Jason Gunthorpe <jgg@ziepe.ca>, xen-devel@lists.xenproject.org,
- Ilya Dryomov <idryomov@gmail.com>, devel@lists.orangefs.org,
- linux-media@vger.kernel.org, John Hubbard <jhubbard@nvidia.com>,
- intel-gfx@lists.freedesktop.org, linux-block@vger.kernel.org,
- =?ISO-8859-1?Q?J=E9r=F4me?= Glisse <jglisse@redhat.com>,
- linux-rpi-kernel@lists.infradead.org, Dan Williams <dan.j.williams@intel.com>,
- linux-arm-kernel@lists.infradead.org, linux-nfs@vger.kernel.org,
- netdev@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
- linux-xfs@vger.kernel.org, linux-crypto@vger.kernel.org,
- linux-fsdevel@vger.kernel.org, "David S . Miller" <davem@davemloft.net>
+Cc: "linux-hyperv@vger.kernel.org" <linux-hyperv@vger.kernel.org>,
+ Haiyang Zhang <haiyangz@microsoft.com>,
+ "driverdev-devel@linuxdriverproject.org"
+ <driverdev-devel@linuxdriverproject.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "jackm@mellanox.com" <jackm@mellanox.com>,
+ Sasha Levin <Alexander.Levin@microsoft.com>,
+ "marcelo.cerri@canonical.com" <marcelo.cerri@canonical.com>,
+ "olaf@aepfle.de" <olaf@aepfle.de>, "apw@canonical.com" <apw@canonical.com>,
+ vkuznets <vkuznets@redhat.com>, "jasowang@redhat.com" <jasowang@redhat.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, 2019-08-01 at 19:19 -0700, john.hubbard@gmail.com wrote:
-> From: John Hubbard <jhubbard@nvidia.com>
-> 
-> For pages that were retained via get_user_pages*(), release those pages
-> via the new put_user_page*() routines, instead of via put_page() or
-> release_pages().
-> 
-> This is part a tree-wide conversion, as described in commit fc1d8e7cca2d
-> ("mm: introduce put_user_page*(), placeholder versions").
-> 
-> Cc: Ilya Dryomov <idryomov@gmail.com>
-> Cc: Sage Weil <sage@redhat.com>
-> Cc: David S. Miller <davem@davemloft.net>
-> Cc: ceph-devel@vger.kernel.org
-> Cc: netdev@vger.kernel.org
-> Signed-off-by: John Hubbard <jhubbard@nvidia.com>
-> ---
->  net/ceph/pagevec.c | 8 +-------
->  1 file changed, 1 insertion(+), 7 deletions(-)
-> 
-> diff --git a/net/ceph/pagevec.c b/net/ceph/pagevec.c
-> index 64305e7056a1..c88fff2ab9bd 100644
-> --- a/net/ceph/pagevec.c
-> +++ b/net/ceph/pagevec.c
-> @@ -12,13 +12,7 @@
->  
->  void ceph_put_page_vector(struct page **pages, int num_pages, bool dirty)
->  {
-> -	int i;
-> -
-> -	for (i = 0; i < num_pages; i++) {
-> -		if (dirty)
-> -			set_page_dirty_lock(pages[i]);
-> -		put_page(pages[i]);
-> -	}
-> +	put_user_pages_dirty_lock(pages, num_pages, dirty);
->  	kvfree(pages);
->  }
->  EXPORT_SYMBOL(ceph_put_page_vector);
 
-This patch looks sane enough. Assuming that the earlier patches are OK:
+The slot must be removed before the pci_dev is removed, otherwise a panic
+can happen due to use-after-free.
 
-Acked-by: Jeff Layton <jlayton@kernel.org>
+Fixes: 15becc2b56c6 ("PCI: hv: Add hv_pci_remove_slots() when we unload the driver")
+Signed-off-by: Dexuan Cui <decui@microsoft.com>
+Cc: stable@vger.kernel.org
+---
+
+Changes in v2:
+  Improved the changelog accordign to the discussion with Bjorn Helgaas:
+	  https://lkml.org/lkml/2019/8/1/1173
+	  https://lkml.org/lkml/2019/8/2/1559
+
+ drivers/pci/controller/pci-hyperv.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/pci/controller/pci-hyperv.c b/drivers/pci/controller/pci-hyperv.c
+index 6b9cc6e60a..68c611d 100644
+--- a/drivers/pci/controller/pci-hyperv.c
++++ b/drivers/pci/controller/pci-hyperv.c
+@@ -2757,8 +2757,8 @@ static int hv_pci_remove(struct hv_device *hdev)
+ 		/* Remove the bus from PCI's point of view. */
+ 		pci_lock_rescan_remove();
+ 		pci_stop_root_bus(hbus->pci_bus);
+-		pci_remove_root_bus(hbus->pci_bus);
+ 		hv_pci_remove_slots(hbus);
++		pci_remove_root_bus(hbus->pci_bus);
+ 		pci_unlock_rescan_remove();
+ 		hbus->state = hv_pcibus_removed;
+ 	}
+-- 
+1.8.3.1
 
 _______________________________________________
 devel mailing list
