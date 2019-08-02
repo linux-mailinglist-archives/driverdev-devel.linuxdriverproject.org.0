@@ -1,120 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6498A7E786
-	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2019 03:32:45 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id AFD7A22DD3;
-	Fri,  2 Aug 2019 01:32:43 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2iPU-SqtwuFF; Fri,  2 Aug 2019 01:32:42 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id AB1AF2283A;
-	Fri,  2 Aug 2019 01:32:40 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2FE9C1BF393
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 01:32:38 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 65E787E7C3
+	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2019 04:17:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 29D7E8836F
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 01:32:38 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 00E5288407;
+	Fri,  2 Aug 2019 02:17:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id fD4GW16DgukS; Fri,  2 Aug 2019 02:17:02 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2BAF8883C6;
+	Fri,  2 Aug 2019 02:17:02 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 00F7B1BF29C
+ for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 02:16:59 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id EBD2F86982
+ for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 02:16:59 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XvVPjc6apwxF
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 01:32:36 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from APC01-SG2-obe.outbound.protection.outlook.com
- (mail-eopbgr1310105.outbound.protection.outlook.com [40.107.131.105])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 40C918836C
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 01:32:36 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=mt2rc7uqXCTjh4C9MORwqBoBK25jKZAhEgFP7i4ihXstKr5KUk8FFPt0hIVjD6JtUaEQRP1h+EczzpBXiSUdnwAoD1hMaUrvyXjVSjC2iumXDMYLf/g5zq61KObHMJXeBbvXSKISiq8AmnkkpyjoGJrRNxw5WEpzR4brtVUNlqrYDtWNEadR/nhyvdi2B+AZhelzxY8Mh5/u+20kzefXhT/2omlesSchdMUn/5/l+r0TP1fSc6PqUsL82UkR87w/09x6HDp2lWHdHUitPedw5YjDqqkXKhm64ZRcAhfK3rvGnXeI9NXJFevP493NWGOqjo4w3H2UinZwmzf4xSBhmA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=oPBA9C55bMwDHnO7zcQNahnKxdu0Y+IJtHzyJlBwUEo=;
- b=jGf5oALuEQpXnpEuOBU+frid54iKc/J3DJTI12oNPGRNERlfx3UANKownmyDxLmfD/szrrKO35Y2Kkc24igieW9Z3oBSfc+SbKp/rbsKtuEbT0o6cSJoTOSycT9BmdB0WbRXmEPDzPTtxh6r+sFk0bmmC3pQDBcBR9E23InEjyMYTuGVnrwugK4o4Q/A6GCGcyHWCWiFxt/3PwJl6jxqVQG6UQOazgor4A/fuU7cUYpST87fqk1r1si9Kp35NluAxgBjhtXGCU/56fXJB4f3hrm30WP9KRRKaRXXpO7nl/2v9+fBW8Wjp2W54kfEHqg1k0/e737WxbuvZkwPlKOxow==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microsoft.com; dmarc=pass action=none
- header.from=microsoft.com; dkim=pass header.d=microsoft.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=oPBA9C55bMwDHnO7zcQNahnKxdu0Y+IJtHzyJlBwUEo=;
- b=d7bhAf09xYMTxEY85CqGNSBRIoQ301qGtzvvHvUP3asB8ak5WgCEvSTQKyMFUzmfNa+qL+x2Y4ZHrPsY/U1V5WM+6K1iz2qTS5lyqi9Iv32phcXrGLvYuBjay9sl8LXJ1vXJWqhUSFAnNchMxqt3pAVq6gvoz+xdRiXa+5aXjWM=
-Received: from PU1P153MB0169.APCP153.PROD.OUTLOOK.COM (10.170.189.13) by
- PU1P153MB0155.APCP153.PROD.OUTLOOK.COM (10.170.189.11) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2157.2; Fri, 2 Aug 2019 01:32:29 +0000
-Received: from PU1P153MB0169.APCP153.PROD.OUTLOOK.COM
- ([fe80::d44e:57b7:d8fc:e91c]) by PU1P153MB0169.APCP153.PROD.OUTLOOK.COM
- ([fe80::d44e:57b7:d8fc:e91c%7]) with mapi id 15.20.2157.001; Fri, 2 Aug 2019
- 01:32:29 +0000
-From: Dexuan Cui <decui@microsoft.com>
-To: "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>,
- "bhelgaas@google.com" <bhelgaas@google.com>, "linux-pci@vger.kernel.org"
- <linux-pci@vger.kernel.org>, Michael Kelley <mikelley@microsoft.com>
-Subject: [PATCH] PCI: hv: Fix panic by calling hv_pci_remove_slots() earlier
-Thread-Topic: [PATCH] PCI: hv: Fix panic by calling hv_pci_remove_slots()
- earlier
-Thread-Index: AdVI0ZE8ZG/OuLUpRiCFkuQ9gvUCcw==
-Date: Fri, 2 Aug 2019 01:32:28 +0000
-Message-ID: <PU1P153MB0169DBCFEE7257F5BB93580ABFD90@PU1P153MB0169.APCP153.PROD.OUTLOOK.COM>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Enabled=True;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SiteId=72f988bf-86f1-41af-91ab-2d7cd011db47;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Owner=decui@microsoft.com;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SetDate=2019-08-02T01:32:25.5889428Z;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Name=General;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Application=Microsoft Azure
- Information Protection;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_ActionId=154bf01c-1130-41a4-800e-1005f6745547;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Extended_MSFT_Method=Automatic
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=decui@microsoft.com; 
-x-originating-ip: [2001:4898:80e8:9:e996:753d:33cc:42bb]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 23e0c25c-7e4c-42e0-c97e-08d716e94842
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:PU1P153MB0155; 
-x-ms-traffictypediagnostic: PU1P153MB0155:|PU1P153MB0155:
-x-ms-exchange-transport-forked: True
-x-ld-processed: 72f988bf-86f1-41af-91ab-2d7cd011db47,ExtAddr
-x-microsoft-antispam-prvs: <PU1P153MB01552CE7D55C0F17AB257AC5BFD90@PU1P153MB0155.APCP153.PROD.OUTLOOK.COM>
-x-ms-oob-tlc-oobclassifiers: OLM:107;
-x-forefront-prvs: 011787B9DD
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(39860400002)(136003)(346002)(366004)(396003)(376002)(189003)(199004)(66446008)(54906003)(110136005)(10290500003)(316002)(107886003)(478600001)(25786009)(2501003)(52536014)(66946007)(10090500001)(305945005)(46003)(55016002)(2906002)(6116002)(74316002)(5660300002)(2201001)(8990500004)(6436002)(64756008)(9686003)(66476007)(66556008)(71200400001)(76116006)(476003)(71190400001)(4326008)(53936002)(33656002)(14444005)(22452003)(8936002)(186003)(68736007)(102836004)(7736002)(7696005)(99286004)(86362001)(7416002)(6636002)(81166006)(1511001)(6506007)(81156014)(486006)(14454004)(8676002)(256004);
- DIR:OUT; SFP:1102; SCL:1; SRVR:PU1P153MB0155;
- H:PU1P153MB0169.APCP153.PROD.OUTLOOK.COM; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: microsoft.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: hiEDoMTSr5+kYgO7AKVwSbcy08XLQAhnA6pcs7jeazzGNBPI8FaaC4KKlXsv3TFyNB9rofSeSvDS8dbo4ICdT8ZhdbqMHJY3sMFTs0a7ZCv4RdfepsUj7JTUwqGa7P2fQXG2CAL6lgEU9TtpwhPDYUgcCJbGybuAk3hI1QJ0uvFKZ7MR3E/yz8vqweH7J2ZwSagZwNtDPR6sSCM54RdyX5xw5LQgea6r9Ti3WSzCabjHXmFMpS99u3Af3sbG+YSJL4DkG/DwOMuTdxON5UZSaBDp7jwkWGBBFtMX+MbiqRxKt+TGISR9v/67usiWl7TvNUgyON9wQSbIujcNjU/mXNP5IveGJYiUOglt4P3K4nfU3GirISZ00L0xc86BGiL4b98H3cf7CZ9y/l40cPhlp4DH96eqQ9FQOsulQGcMJnk=
+ with ESMTP id XB_M9ofzVvZv for <devel@linuxdriverproject.org>;
+ Fri,  2 Aug 2019 02:16:58 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id BECA08697D
+ for <devel@driverdev.osuosl.org>; Fri,  2 Aug 2019 02:16:58 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id r22so7627700pgk.10
+ for <devel@driverdev.osuosl.org>; Thu, 01 Aug 2019 19:16:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=3GzlMAdD/Fj4tpT1z/PK8Fr3raamoGX6ZwkHP2yb6K8=;
+ b=pAxzsc9vmHAK9ZK89AacBmqXQvuHXeShpu27WlEkAV6xBcEz/H1GAWLFbWBo+u7caH
+ KIqDnTL+IS2r069Sqit6niTwIVD3yHwM2oL4UXxooa0ZG6T9kc1SZGdEzbmbTAJoZkzv
+ Zbj81BMMiMsLujqrLP+vNRoPoAfxuyhBIJfz/EZgUl0FsiQZK3MgWkswQuDuhoaZBO9G
+ KrSO58P9Rr9KxqN5N1BphpFtggyeHWY4ZqA08b5SYu2LL+896Hx8WIi0vBM/z3/TtXKP
+ sQF/9gkVaL/sxZPp1Zgqo9a2gtCNNW4Q0F26WcstDN/wMJyWuPSmF5s5FUO43iGXa+xl
+ t4bA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=3GzlMAdD/Fj4tpT1z/PK8Fr3raamoGX6ZwkHP2yb6K8=;
+ b=fZETHH3r21V2y9Q3XCSbMSixIMFdjkQxVvmkcW4lB+xlhvbncfKXPi2A1MfaiB74Bj
+ 8P2IawJarpayr41rMXNLiNNDnKiZCDftjief6xvQIX53vgFUXsUv9yPox0vOoHsNywpf
+ KXKbtGuSrwYGc/jnWiO3c4il1PbPYpz0tKpaiXxV8V3BdHCH+cIhz3fGucRAuNMod+fr
+ nOUE8rQ3jt/1KCpKCteShikOxhmwdklTtjuXCPPk28FHSttYIFCmPo71c8fBpOMVr5Kg
+ D87I5ucINYF4PpYw1AVt6KtsYtNXWBpOQRGN7rIAGwrD+Lwjw5UsGAIYX8qmQkmPOzZ/
+ oODw==
+X-Gm-Message-State: APjAAAVAU/UCzDGOa+xXYCfznDyFQ9Kk2kDR9WYBuMUY58Uto1wKfXBT
+ 0vJEKYLzdVJhtCo3cxnQJUo=
+X-Google-Smtp-Source: APXvYqzWsTlsiBNw6waYjgVc0NeqKYlyVqx46uMvNCwkUysDnG1IH1bMSSj1oKU/Y8CdBrk8llU2wQ==
+X-Received: by 2002:a63:dd16:: with SMTP id t22mr90672497pgg.140.1564712218248; 
+ Thu, 01 Aug 2019 19:16:58 -0700 (PDT)
+Received: from blueforge.nvidia.com (searspoint.nvidia.com. [216.228.112.21])
+ by smtp.gmail.com with ESMTPSA id
+ p187sm118200292pfg.89.2019.08.01.19.16.56
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Thu, 01 Aug 2019 19:16:57 -0700 (PDT)
+From: john.hubbard@gmail.com
+X-Google-Original-From: jhubbard@nvidia.com
+To: Andrew Morton <akpm@linux-foundation.org>
+Subject: [PATCH 00/34] put_user_pages(): miscellaneous call sites
+Date: Thu,  1 Aug 2019 19:16:19 -0700
+Message-Id: <20190802021653.4882-1-jhubbard@nvidia.com>
+X-Mailer: git-send-email 2.22.0
 MIME-Version: 1.0
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 23e0c25c-7e4c-42e0-c97e-08d716e94842
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Aug 2019 01:32:28.7694 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: t+UWZ7oF4k4by04T0oHW4jev95Vc4ewUyJkVCu9GZ02+7If+kQQS6dC8sDIgjsejM6AkFUq7o6ofWJZZYpENmg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PU1P153MB0155
+X-NVConfidentiality: public
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -127,72 +86,161 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "linux-hyperv@vger.kernel.org" <linux-hyperv@vger.kernel.org>,
- Stephen Hemminger <sthemmin@microsoft.com>,
- Haiyang Zhang <haiyangz@microsoft.com>,
- "driverdev-devel@linuxdriverproject.org"
- <driverdev-devel@linuxdriverproject.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "jackm@mellanox.com" <jackm@mellanox.com>,
- Sasha Levin <Alexander.Levin@microsoft.com>,
- "marcelo.cerri@canonical.com" <marcelo.cerri@canonical.com>,
- "olaf@aepfle.de" <olaf@aepfle.de>, "apw@canonical.com" <apw@canonical.com>,
- vkuznets <vkuznets@redhat.com>, "jasowang@redhat.com" <jasowang@redhat.com>
+Cc: linux-fbdev@vger.kernel.org, Jan Kara <jack@suse.cz>, kvm@vger.kernel.org,
+ Dave Hansen <dave.hansen@linux.intel.com>, Dave Chinner <david@fromorbit.com>,
+ dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
+ sparclinux@vger.kernel.org, ceph-devel@vger.kernel.org,
+ devel@driverdev.osuosl.org, rds-devel@oss.oracle.com,
+ linux-rdma@vger.kernel.org, x86@kernel.org, amd-gfx@lists.freedesktop.org,
+ Christoph Hellwig <hch@infradead.org>, Jason Gunthorpe <jgg@ziepe.ca>,
+ xen-devel@lists.xenproject.org, devel@lists.orangefs.org,
+ linux-media@vger.kernel.org, John Hubbard <jhubbard@nvidia.com>,
+ intel-gfx@lists.freedesktop.org, linux-block@vger.kernel.org,
+ =?UTF-8?q?J=C3=A9r=C3=B4me=20Glisse?= <jglisse@redhat.com>,
+ linux-rpi-kernel@lists.infradead.org, Dan Williams <dan.j.williams@intel.com>,
+ linux-arm-kernel@lists.infradead.org, linux-nfs@vger.kernel.org,
+ netdev@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
+ linux-xfs@vger.kernel.org, linux-crypto@vger.kernel.org,
+ linux-fsdevel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+From: John Hubbard <jhubbard@nvidia.com>
 
-When a slot is removed, the pci_dev must still exist.
+Hi,
 
-pci_remove_root_bus() removes and free all the pci_devs, so
-hv_pci_remove_slots() must be called before pci_remove_root_bus(),
-otherwise a general protection fault can happen, if the kernel is built
-with the memory debugging options.
+These are best characterized as miscellaneous conversions: many (not all)
+call sites that don't involve biovec or iov_iter, nor mm/. It also leaves
+out a few call sites that require some more work. These are mostly pretty
+simple ones.
 
-Fixes: 15becc2b56c6 ("PCI: hv: Add hv_pci_remove_slots() when we unload the driver")
-Signed-off-by: Dexuan Cui <decui@microsoft.com>
-Cc: stable@vger.kernel.org
+It's probably best to send all of these via Andrew's -mm tree, assuming
+that there are no significant merge conflicts with ongoing work in other
+trees (which I doubt, given that these are small changes).
 
----
+These patches apply to the latest linux.git. Patch #1 is also already in
+Andrew's tree, but given the broad non-linux-mm Cc list, I thought it
+would be more convenient to just include that patch here, so that people
+can use linux.git as the base--even though these are probably destined
+for linux-mm.
 
-When pci-hyperv is unloaded, this panic can happen:
+This is part a tree-wide conversion, as described in commit fc1d8e7cca2d
+("mm: introduce put_user_page*(), placeholder versions"). That commit
+has an extensive description of the problem and the planned steps to
+solve it, but the highlites are:
 
- general protection fault:
- CPU: 2 PID: 1091 Comm: rmmod Not tainted 5.2.0+
- RIP: 0010:pci_slot_release+0x30/0xd0
- Call Trace:
-  kobject_release+0x65/0x190
-  pci_destroy_slot+0x25/0x60
-  hv_pci_remove+0xec/0x110 [pci_hyperv]
-  vmbus_remove+0x20/0x30 [hv_vmbus]
-  device_release_driver_internal+0xd5/0x1b0
-  driver_detach+0x44/0x7c
-  bus_remove_driver+0x75/0xc7
-  vmbus_driver_unregister+0x50/0xbd [hv_vmbus]
-  __x64_sys_delete_module+0x136/0x200
-  do_syscall_64+0x5e/0x220
+1) Provide put_user_page*() routines, intended to be used
+for releasing pages that were pinned via get_user_pages*().
 
- drivers/pci/controller/pci-hyperv.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+2) Convert all of the call sites for get_user_pages*(), to
+invoke put_user_page*(), instead of put_page(). This involves dozens of
+call sites, and will take some time.
 
-diff --git a/drivers/pci/controller/pci-hyperv.c b/drivers/pci/controller/pci-hyperv.c
-index 6b9cc6e60a..68c611d 100644
---- a/drivers/pci/controller/pci-hyperv.c
-+++ b/drivers/pci/controller/pci-hyperv.c
-@@ -2757,8 +2757,8 @@ static int hv_pci_remove(struct hv_device *hdev)
- 		/* Remove the bus from PCI's point of view. */
- 		pci_lock_rescan_remove();
- 		pci_stop_root_bus(hbus->pci_bus);
--		pci_remove_root_bus(hbus->pci_bus);
- 		hv_pci_remove_slots(hbus);
-+		pci_remove_root_bus(hbus->pci_bus);
- 		pci_unlock_rescan_remove();
- 		hbus->state = hv_pcibus_removed;
- 	}
+3) After (2) is complete, use get_user_pages*() and put_user_page*() to
+implement tracking of these pages. This tracking will be separate from
+the existing struct page refcounting.
+
+4) Use the tracking and identification of these pages, to implement
+special handling (especially in writeback paths) when the pages are
+backed by a filesystem.
+
+And a few references, also from that commit:
+
+[1] https://lwn.net/Articles/774411/ : "DMA and get_user_pages()"
+[2] https://lwn.net/Articles/753027/ : "The Trouble with get_user_pages()"
+
+
+Ira Weiny (1):
+  fs/binfmt_elf: convert put_page() to put_user_page*()
+
+John Hubbard (33):
+  mm/gup: add make_dirty arg to put_user_pages_dirty_lock()
+  net/rds: convert put_page() to put_user_page*()
+  net/ceph: convert put_page() to put_user_page*()
+  x86/kvm: convert put_page() to put_user_page*()
+  drm/etnaviv: convert release_pages() to put_user_pages()
+  drm/i915: convert put_page() to put_user_page*()
+  drm/radeon: convert put_page() to put_user_page*()
+  media/ivtv: convert put_page() to put_user_page*()
+  media/v4l2-core/mm: convert put_page() to put_user_page*()
+  genwqe: convert put_page() to put_user_page*()
+  scif: convert put_page() to put_user_page*()
+  vmci: convert put_page() to put_user_page*()
+  rapidio: convert put_page() to put_user_page*()
+  oradax: convert put_page() to put_user_page*()
+  staging/vc04_services: convert put_page() to put_user_page*()
+  drivers/tee: convert put_page() to put_user_page*()
+  vfio: convert put_page() to put_user_page*()
+  fbdev/pvr2fb: convert put_page() to put_user_page*()
+  fsl_hypervisor: convert put_page() to put_user_page*()
+  xen: convert put_page() to put_user_page*()
+  fs/exec.c: convert put_page() to put_user_page*()
+  orangefs: convert put_page() to put_user_page*()
+  uprobes: convert put_page() to put_user_page*()
+  futex: convert put_page() to put_user_page*()
+  mm/frame_vector.c: convert put_page() to put_user_page*()
+  mm/gup_benchmark.c: convert put_page() to put_user_page*()
+  mm/memory.c: convert put_page() to put_user_page*()
+  mm/madvise.c: convert put_page() to put_user_page*()
+  mm/process_vm_access.c: convert put_page() to put_user_page*()
+  crypt: convert put_page() to put_user_page*()
+  nfs: convert put_page() to put_user_page*()
+  goldfish_pipe: convert put_page() to put_user_page*()
+  kernel/events/core.c: convert put_page() to put_user_page*()
+
+ arch/x86/kvm/svm.c                            |   4 +-
+ crypto/af_alg.c                               |   7 +-
+ drivers/gpu/drm/etnaviv/etnaviv_gem.c         |   4 +-
+ drivers/gpu/drm/i915/gem/i915_gem_userptr.c   |   9 +-
+ drivers/gpu/drm/radeon/radeon_ttm.c           |   2 +-
+ drivers/infiniband/core/umem.c                |   5 +-
+ drivers/infiniband/hw/hfi1/user_pages.c       |   5 +-
+ drivers/infiniband/hw/qib/qib_user_pages.c    |   5 +-
+ drivers/infiniband/hw/usnic/usnic_uiom.c      |   5 +-
+ drivers/infiniband/sw/siw/siw_mem.c           |  10 +-
+ drivers/media/pci/ivtv/ivtv-udma.c            |  14 +--
+ drivers/media/pci/ivtv/ivtv-yuv.c             |  10 +-
+ drivers/media/v4l2-core/videobuf-dma-sg.c     |   3 +-
+ drivers/misc/genwqe/card_utils.c              |  17 +--
+ drivers/misc/mic/scif/scif_rma.c              |  17 ++-
+ drivers/misc/vmw_vmci/vmci_context.c          |   2 +-
+ drivers/misc/vmw_vmci/vmci_queue_pair.c       |  11 +-
+ drivers/platform/goldfish/goldfish_pipe.c     |   9 +-
+ drivers/rapidio/devices/rio_mport_cdev.c      |   9 +-
+ drivers/sbus/char/oradax.c                    |   2 +-
+ .../interface/vchiq_arm/vchiq_2835_arm.c      |  10 +-
+ drivers/tee/tee_shm.c                         |  10 +-
+ drivers/vfio/vfio_iommu_type1.c               |   8 +-
+ drivers/video/fbdev/pvr2fb.c                  |   3 +-
+ drivers/virt/fsl_hypervisor.c                 |   7 +-
+ drivers/xen/gntdev.c                          |   5 +-
+ drivers/xen/privcmd.c                         |   7 +-
+ fs/binfmt_elf.c                               |   2 +-
+ fs/binfmt_elf_fdpic.c                         |   2 +-
+ fs/exec.c                                     |   2 +-
+ fs/nfs/direct.c                               |   4 +-
+ fs/orangefs/orangefs-bufmap.c                 |   7 +-
+ include/linux/mm.h                            |   5 +-
+ kernel/events/core.c                          |   2 +-
+ kernel/events/uprobes.c                       |   6 +-
+ kernel/futex.c                                |  10 +-
+ mm/frame_vector.c                             |   4 +-
+ mm/gup.c                                      | 115 ++++++++----------
+ mm/gup_benchmark.c                            |   2 +-
+ mm/madvise.c                                  |   2 +-
+ mm/memory.c                                   |   2 +-
+ mm/process_vm_access.c                        |  18 +--
+ net/ceph/pagevec.c                            |   8 +-
+ net/rds/info.c                                |   5 +-
+ net/rds/message.c                             |   2 +-
+ net/rds/rdma.c                                |  15 ++-
+ virt/kvm/kvm_main.c                           |   4 +-
+ 47 files changed, 151 insertions(+), 266 deletions(-)
+
 -- 
-1.8.3.1
+2.22.0
 
 _______________________________________________
 devel mailing list
