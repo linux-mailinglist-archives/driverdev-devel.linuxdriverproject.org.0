@@ -2,41 +2,41 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A63EA7F74A
-	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2019 14:54:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CDAD47F774
+	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2019 14:55:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id BF7A4235BE;
-	Fri,  2 Aug 2019 12:54:32 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0E22423528;
+	Fri,  2 Aug 2019 12:55:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ncQBcM6pVJ39; Fri,  2 Aug 2019 12:54:31 +0000 (UTC)
+	with ESMTP id kIgWVLIlltpu; Fri,  2 Aug 2019 12:55:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id CA43D2344A;
-	Fri,  2 Aug 2019 12:54:28 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0CCBA23B31;
+	Fri,  2 Aug 2019 12:54:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 358881BF378
- for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 12:54:27 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id F191F1BF378
+ for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 12:54:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3270E87487
- for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 12:54:27 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E5D592379C
+ for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 12:54:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ciA4rJd5gneB for <devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 12:54:24 +0000 (UTC)
+ with ESMTP id pcPhZHxtDmKk for <devel@linuxdriverproject.org>;
+ Fri,  2 Aug 2019 12:54:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B19688701E
- for <devel@driverdev.osuosl.org>; Fri,  2 Aug 2019 12:54:24 +0000 (UTC)
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 78B68DCB631E8EB2DDAC;
- Fri,  2 Aug 2019 20:54:22 +0800 (CST)
+Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
+ by silver.osuosl.org (Postfix) with ESMTPS id EA8DD23453
+ for <devel@driverdev.osuosl.org>; Fri,  2 Aug 2019 12:54:29 +0000 (UTC)
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 8EE78A7AF00FA5006F89;
+ Fri,  2 Aug 2019 20:54:27 +0800 (CST)
 Received: from architecture4.huawei.com (10.140.130.215) by smtp.huawei.com
  (10.3.19.203) with Microsoft SMTP Server (TLS) id 14.3.439.0; Fri, 2 Aug 2019
- 20:54:16 +0800
+ 20:54:17 +0800
 From: Gao Xiang <gaoxiang25@huawei.com>
 To: Alexander Viro <viro@zeniv.linux.org.uk>, Greg Kroah-Hartman
  <gregkh@linuxfoundation.org>, Andrew Morton <akpm@linux-foundation.org>,
@@ -46,9 +46,9 @@ To: Alexander Viro <viro@zeniv.linux.org.uk>, Greg Kroah-Hartman
  "Darrick J . Wong" <darrick.wong@oracle.com>, Dave Chinner
  <david@fromorbit.com>, "Jaegeuk Kim" <jaegeuk@kernel.org>, Jan Kara
  <jack@suse.cz>, Linus Torvalds <torvalds@linux-foundation.org>
-Subject: [PATCH v6 07/24] erofs: add directory operations
-Date: Fri, 2 Aug 2019 20:53:30 +0800
-Message-ID: <20190802125347.166018-8-gaoxiang25@huawei.com>
+Subject: [PATCH v6 08/24] erofs: add namei functions
+Date: Fri, 2 Aug 2019 20:53:31 +0800
+Message-ID: <20190802125347.166018-9-gaoxiang25@huawei.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190802125347.166018-1-gaoxiang25@huawei.com>
 References: <20190802125347.166018-1-gaoxiang25@huawei.com>
@@ -76,23 +76,23 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This adds functions for directory, mainly readdir.
+This commit adds functions that transfer names to inodes.
 
 Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
 ---
- fs/erofs/dir.c | 147 +++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 147 insertions(+)
- create mode 100644 fs/erofs/dir.c
+ fs/erofs/namei.c | 247 +++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 247 insertions(+)
+ create mode 100644 fs/erofs/namei.c
 
-diff --git a/fs/erofs/dir.c b/fs/erofs/dir.c
+diff --git a/fs/erofs/namei.c b/fs/erofs/namei.c
 new file mode 100644
-index 000000000000..7cf7da8574c4
+index 000000000000..73bf61637907
 --- /dev/null
-+++ b/fs/erofs/dir.c
-@@ -0,0 +1,147 @@
++++ b/fs/erofs/namei.c
+@@ -0,0 +1,247 @@
 +// SPDX-License-Identifier: GPL-2.0-only
 +/*
-+ * linux/fs/erofs/dir.c
++ * linux/fs/erofs/namei.c
 + *
 + * Copyright (C) 2017-2018 HUAWEI, Inc.
 + *             http://www.huawei.com/
@@ -100,141 +100,241 @@ index 000000000000..7cf7da8574c4
 + */
 +#include "internal.h"
 +
-+static const unsigned char erofs_filetype_table[EROFS_FT_MAX] = {
-+	[EROFS_FT_UNKNOWN]	= DT_UNKNOWN,
-+	[EROFS_FT_REG_FILE]	= DT_REG,
-+	[EROFS_FT_DIR]		= DT_DIR,
-+	[EROFS_FT_CHRDEV]	= DT_CHR,
-+	[EROFS_FT_BLKDEV]	= DT_BLK,
-+	[EROFS_FT_FIFO]		= DT_FIFO,
-+	[EROFS_FT_SOCK]		= DT_SOCK,
-+	[EROFS_FT_SYMLINK]	= DT_LNK,
++#include <trace/events/erofs.h>
++
++struct erofs_qstr {
++	const unsigned char *name;
++	const unsigned char *end;
 +};
 +
-+static void debug_one_dentry(unsigned char d_type, const char *de_name,
-+			     unsigned int de_namelen)
++/* based on the end of qn is accurate and it must have the trailing '\0' */
++static inline int dirnamecmp(const struct erofs_qstr *qn,
++			     const struct erofs_qstr *qd,
++			     unsigned int *matched)
 +{
-+#ifdef CONFIG_EROFS_FS_DEBUG
-+	/* since the on-disk name could not have the trailing '\0' */
-+	unsigned char dbg_namebuf[EROFS_NAME_LEN + 1];
++	unsigned int i = *matched;
 +
-+	memcpy(dbg_namebuf, de_name, de_namelen);
-+	dbg_namebuf[de_namelen] = '\0';
++	/*
++	 * on-disk error, let's only BUG_ON in the debugging mode.
++	 * otherwise, it will return 1 to just skip the invalid name
++	 * and go on (in consideration of the lookup performance).
++	 */
++	DBG_BUGON(qd->name > qd->end);
 +
-+	debugln("found dirent %s de_len %u d_type %d", dbg_namebuf,
-+		de_namelen, d_type);
-+#endif
-+}
-+
-+static int erofs_fill_dentries(struct dir_context *ctx,
-+			       void *dentry_blk, unsigned int *ofs,
-+			       unsigned int nameoff, unsigned int maxsize)
-+{
-+	struct erofs_dirent *de = dentry_blk + *ofs;
-+	const struct erofs_dirent *end = dentry_blk + nameoff;
-+
-+	while (de < end) {
-+		const char *de_name;
-+		unsigned int de_namelen;
-+		unsigned char d_type;
-+
-+		if (de->file_type < EROFS_FT_MAX)
-+			d_type = erofs_filetype_table[de->file_type];
-+		else
-+			d_type = DT_UNKNOWN;
-+
-+		nameoff = le16_to_cpu(de->nameoff);
-+		de_name = (char *)dentry_blk + nameoff;
-+
-+		/* the last dirent in the block? */
-+		if (de + 1 >= end)
-+			de_namelen = strnlen(de_name, maxsize - nameoff);
-+		else
-+			de_namelen = le16_to_cpu(de[1].nameoff) - nameoff;
-+
-+		/* a corrupted entry is found */
-+		if (unlikely(nameoff + de_namelen > maxsize ||
-+			     de_namelen > EROFS_NAME_LEN)) {
-+			DBG_BUGON(1);
-+			return -EIO;
++	/* qd could not have trailing '\0' */
++	/* However it is absolutely safe if < qd->end */
++	while (qd->name + i < qd->end && qd->name[i] != '\0') {
++		if (qn->name[i] != qd->name[i]) {
++			*matched = i;
++			return qn->name[i] > qd->name[i] ? 1 : -1;
 +		}
-+
-+		debug_one_dentry(d_type, de_name, de_namelen);
-+		if (!dir_emit(ctx, de_name, de_namelen,
-+			      le64_to_cpu(de->nid), d_type))
-+			/* stopped by some reason */
-+			return 1;
-+		++de;
-+		*ofs += sizeof(struct erofs_dirent);
-+	}
-+	*ofs = maxsize;
-+	return 0;
-+}
-+
-+static int erofs_readdir(struct file *f, struct dir_context *ctx)
-+{
-+	struct inode *dir = file_inode(f);
-+	struct address_space *mapping = dir->i_mapping;
-+	const size_t dirsize = i_size_read(dir);
-+	unsigned int i = ctx->pos / EROFS_BLKSIZ;
-+	unsigned int ofs = ctx->pos % EROFS_BLKSIZ;
-+	int err = 0;
-+	bool initial = true;
-+
-+	while (ctx->pos < dirsize) {
-+		struct page *dentry_page;
-+		struct erofs_dirent *de;
-+		unsigned int nameoff, maxsize;
-+
-+		dentry_page = read_mapping_page(mapping, i, NULL);
-+		if (IS_ERR(dentry_page))
-+			continue;
-+
-+		de = (struct erofs_dirent *)kmap(dentry_page);
-+
-+		nameoff = le16_to_cpu(de->nameoff);
-+
-+		if (unlikely(nameoff < sizeof(struct erofs_dirent) ||
-+			     nameoff >= PAGE_SIZE)) {
-+			errln("%s, invalid de[0].nameoff %u",
-+			      __func__, nameoff);
-+
-+			err = -EIO;
-+			goto skip_this;
-+		}
-+
-+		maxsize = min_t(unsigned int,
-+				dirsize - ctx->pos + ofs, PAGE_SIZE);
-+
-+		/* search dirents at the arbitrary position */
-+		if (unlikely(initial)) {
-+			initial = false;
-+
-+			ofs = roundup(ofs, sizeof(struct erofs_dirent));
-+			if (unlikely(ofs >= nameoff))
-+				goto skip_this;
-+		}
-+
-+		err = erofs_fill_dentries(ctx, de, &ofs, nameoff, maxsize);
-+skip_this:
-+		kunmap(dentry_page);
-+
-+		put_page(dentry_page);
-+
-+		ctx->pos = blknr_to_addr(i) + ofs;
-+
-+		if (unlikely(err))
-+			break;
 +		++i;
-+		ofs = 0;
 +	}
-+	return err < 0 ? err : 0;
++	*matched = i;
++	/* See comments in __d_alloc on the terminating NUL character */
++	return qn->name[i] == '\0' ? 0 : 1;
 +}
 +
-+const struct file_operations erofs_dir_fops = {
-+	.llseek		= generic_file_llseek,
-+	.read		= generic_read_dir,
-+	.iterate_shared	= erofs_readdir,
++#define nameoff_from_disk(off, sz)	(le16_to_cpu(off) & ((sz) - 1))
++
++static struct erofs_dirent *find_target_dirent(struct erofs_qstr *name,
++					       u8 *data,
++					       unsigned int dirblksize,
++					       const int ndirents)
++{
++	int head, back;
++	unsigned int startprfx, endprfx;
++	struct erofs_dirent *const de = (struct erofs_dirent *)data;
++
++	/* since the 1st dirent has been evaluated previously */
++	head = 1;
++	back = ndirents - 1;
++	startprfx = endprfx = 0;
++
++	while (head <= back) {
++		const int mid = head + (back - head) / 2;
++		const int nameoff = nameoff_from_disk(de[mid].nameoff,
++						      dirblksize);
++		unsigned int matched = min(startprfx, endprfx);
++		struct erofs_qstr dname = {
++			.name = data + nameoff,
++			.end = unlikely(mid >= ndirents - 1) ?
++				data + dirblksize :
++				data + nameoff_from_disk(de[mid + 1].nameoff,
++							 dirblksize)
++		};
++
++		/* string comparison without already matched prefix */
++		int ret = dirnamecmp(name, &dname, &matched);
++
++		if (unlikely(!ret)) {
++			return de + mid;
++		} else if (ret > 0) {
++			head = mid + 1;
++			startprfx = matched;
++		} else {
++			back = mid - 1;
++			endprfx = matched;
++		}
++	}
++
++	return ERR_PTR(-ENOENT);
++}
++
++static struct page *find_target_block_classic(struct inode *dir,
++					      struct erofs_qstr *name,
++					      int *_ndirents)
++{
++	unsigned int startprfx, endprfx;
++	int head, back;
++	struct address_space *const mapping = dir->i_mapping;
++	struct page *candidate = ERR_PTR(-ENOENT);
++
++	startprfx = endprfx = 0;
++	head = 0;
++	back = inode_datablocks(dir) - 1;
++
++	while (head <= back) {
++		const int mid = head + (back - head) / 2;
++		struct page *page = read_mapping_page(mapping, mid, NULL);
++
++		if (!IS_ERR(page)) {
++			struct erofs_dirent *de = kmap_atomic(page);
++			const int nameoff = nameoff_from_disk(de->nameoff,
++							      EROFS_BLKSIZ);
++			const int ndirents = nameoff / sizeof(*de);
++			int diff;
++			unsigned int matched;
++			struct erofs_qstr dname;
++
++			if (unlikely(!ndirents)) {
++				DBG_BUGON(1);
++				kunmap_atomic(de);
++				put_page(page);
++				page = ERR_PTR(-EIO);
++				goto out;
++			}
++
++			matched = min(startprfx, endprfx);
++
++			dname.name = (u8 *)de + nameoff;
++			if (ndirents == 1)
++				dname.end = (u8 *)de + EROFS_BLKSIZ;
++			else
++				dname.end = (u8 *)de +
++					nameoff_from_disk(de[1].nameoff,
++							  EROFS_BLKSIZ);
++
++			/* string comparison without already matched prefix */
++			diff = dirnamecmp(name, &dname, &matched);
++			kunmap_atomic(de);
++
++			if (unlikely(!diff)) {
++				*_ndirents = 0;
++				goto out;
++			} else if (diff > 0) {
++				head = mid + 1;
++				startprfx = matched;
++
++				if (!IS_ERR(candidate))
++					put_page(candidate);
++				candidate = page;
++				*_ndirents = ndirents;
++			} else {
++				put_page(page);
++
++				back = mid - 1;
++				endprfx = matched;
++			}
++			continue;
++		}
++out:		/* free if the candidate is valid */
++		if (!IS_ERR(candidate))
++			put_page(candidate);
++		return page;
++	}
++	return candidate;
++}
++
++int erofs_namei(struct inode *dir,
++		struct qstr *name,
++		erofs_nid_t *nid, unsigned int *d_type)
++{
++	int ndirents;
++	struct page *page;
++	void *data;
++	struct erofs_dirent *de;
++	struct erofs_qstr qn;
++
++	if (unlikely(!dir->i_size))
++		return -ENOENT;
++
++	qn.name = name->name;
++	qn.end = name->name + name->len;
++
++	ndirents = 0;
++	page = find_target_block_classic(dir, &qn, &ndirents);
++
++	if (IS_ERR(page))
++		return PTR_ERR(page);
++
++	data = kmap_atomic(page);
++	/* the target page has been mapped */
++	if (ndirents)
++		de = find_target_dirent(&qn, data, EROFS_BLKSIZ, ndirents);
++	else
++		de = (struct erofs_dirent *)data;
++
++	if (!IS_ERR(de)) {
++		*nid = le64_to_cpu(de->nid);
++		*d_type = de->file_type;
++	}
++
++	kunmap_atomic(data);
++	put_page(page);
++
++	return PTR_ERR_OR_ZERO(de);
++}
++
++/* NOTE: i_mutex is already held by vfs */
++static struct dentry *erofs_lookup(struct inode *dir,
++				   struct dentry *dentry,
++				   unsigned int flags)
++{
++	int err;
++	erofs_nid_t nid;
++	unsigned int d_type;
++	struct inode *inode;
++
++	DBG_BUGON(!d_really_is_negative(dentry));
++	/* dentry must be unhashed in lookup, no need to worry about */
++	DBG_BUGON(!d_unhashed(dentry));
++
++	trace_erofs_lookup(dir, dentry, flags);
++
++	/* file name exceeds fs limit */
++	if (unlikely(dentry->d_name.len > EROFS_NAME_LEN))
++		return ERR_PTR(-ENAMETOOLONG);
++
++	/* false uninitialized warnings on gcc 4.8.x */
++	err = erofs_namei(dir, &dentry->d_name, &nid, &d_type);
++
++	if (err == -ENOENT) {
++		/* negative dentry */
++		inode = NULL;
++	} else if (unlikely(err)) {
++		inode = ERR_PTR(err);
++	} else {
++		debugln("%s, %s (nid %llu) found, d_type %u", __func__,
++			dentry->d_name.name, nid, d_type);
++		inode = erofs_iget(dir->i_sb, nid, d_type == EROFS_FT_DIR);
++	}
++	return d_splice_alias(inode, dentry);
++}
++
++const struct inode_operations erofs_dir_iops = {
++	.lookup = erofs_lookup,
++	.getattr = erofs_getattr,
 +};
 +
 -- 
