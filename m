@@ -1,60 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 769E57EC8A
-	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2019 08:18:47 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 69CB77EC91
+	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2019 08:25:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 419C18791F;
-	Fri,  2 Aug 2019 06:18:45 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id EFA9088498;
+	Fri,  2 Aug 2019 06:24:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KS3ZpuWOMXWX; Fri,  2 Aug 2019 06:18:44 +0000 (UTC)
+	with ESMTP id dWsK10Dra1zw; Fri,  2 Aug 2019 06:24:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C916687897;
-	Fri,  2 Aug 2019 06:18:43 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5860F88415;
+	Fri,  2 Aug 2019 06:24:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3F6C81BF27A
- for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 06:18:42 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id DE7741BF27A
+ for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 06:24:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3C62F8462F
- for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 06:18:42 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id DB0418615E
+ for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 06:24:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iGmDkRT4vVFg for <devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 06:18:41 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 670D187897
- for <devel@driverdev.osuosl.org>; Fri,  2 Aug 2019 06:18:41 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B53C2206A3;
- Fri,  2 Aug 2019 06:18:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1564726721;
- bh=S2K3wR2YDF5jGxl+ayK0HwksDCL5fZX4E5bkNRkkw6w=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=wt2hZUnBBuDeU0ylH1gYzOMkO4yaW+uABg2cFnjUn+tsd/HWksAiDtDVZ0+/EUIgy
- JNYSiv1BEA8r9iewfHHSg3Z0lIBLnXlLOUVn9kFHtfthFrprIMCJEAnLgnw6TOeZ7j
- AwG0fVWgtT6LV87aqZ4NHRslk6GvazxhCpnFG+CQ=
-Date: Fri, 2 Aug 2019 08:18:38 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Hridya Valsaraju <hridya@google.com>
-Subject: Re: [PATCH] Add default binder devices through binderfs when
- configured
-Message-ID: <20190802061838.GA10844@kroah.com>
-References: <20190801223556.209184-1-hridya@google.com>
+ with ESMTP id 4sYheuNssSHY for <devel@linuxdriverproject.org>;
+ Fri,  2 Aug 2019 06:24:57 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7E9E686103
+ for <devel@driverdev.osuosl.org>; Fri,  2 Aug 2019 06:24:57 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id t132so35528459pgb.9
+ for <devel@driverdev.osuosl.org>; Thu, 01 Aug 2019 23:24:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=59h+gUge6S8yVn91fbWMnosNPgFcMjEQHfc/i+SvB9A=;
+ b=BbQtyr+16tz520xTKI6yvVAcWK3A5pu9ntkIo68KZQGHKKmvI5xNPt7qKVaW3yHImn
+ eOFRWwtKxyczBdhfXd/IENhmXqDF1jgsFb58bVsUGNJO2Lp3ueYYSJ24xkOmeQCz7vny
+ CS0/RFTcQ/DTeJZgJdtKEZzjCygWBpCac7U7phmLbgEYT+ta+KJOHOnCbFQiydh+lq80
+ WnnV0/X6Df/kMCzy/A8yPV0IlFn9k90AdT0TzOcE//VUkxk7ZReU+Zuux16swwWv45GN
+ UKSql61w/uRD72iyYUT7/HctLuO4v/M/Lv4KDBKyRRndkP5PCGWeQONTazbxLue/cxiW
+ LtEA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=59h+gUge6S8yVn91fbWMnosNPgFcMjEQHfc/i+SvB9A=;
+ b=Rb5YU1oWGQIZdRPHRJRRMXbmODXu9nybGTs618B20Xm4Q4cyyVZZmcK8kQXX4drKEs
+ EWV1jW+YJVzZ43ddPuQu5jE0U/KPxqMWc8HSjC9ROYdi23CExfn2tcN3r5axPXr8bLBW
+ FuM1enqqWteYKp/rQY46QFQ7Pog6zUT+NYCXsquuqxblSJ2UmIS6fL0JzQqDOYyn4Ug4
+ iFzBHgNVM9W57aKoAxktyeom4FLiahD3eGN8bC77B3gvtJqEBX5Uz/qNTtu+Yptvs2lA
+ L7GRTU5CdwEkGuAukAPeI8+KWQt+pEWq8gbaeS5JXl36gUSPVVXEC8kA6DQG27OBlabI
+ W+JQ==
+X-Gm-Message-State: APjAAAWtmFyjyWBhGoMUw3FMxwHB+2+PAMskj7lhdRKoFTP1+0B2gqLT
+ 09TeIcfW0RWD07VG/1+tcCM=
+X-Google-Smtp-Source: APXvYqx498KIJAxgPXsDT7m2yHk1MT60JXSy8sZ7d7KICMeQ9EV3WbgeU9Tp3cjoPZjnowZs7jO/AA==
+X-Received: by 2002:a62:fb18:: with SMTP id x24mr56517987pfm.231.1564727097275; 
+ Thu, 01 Aug 2019 23:24:57 -0700 (PDT)
+Received: from localhost.localdomain ([122.163.105.8])
+ by smtp.gmail.com with ESMTPSA id r15sm80249986pfh.121.2019.08.01.23.24.55
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Thu, 01 Aug 2019 23:24:56 -0700 (PDT)
+From: Nishka Dasgupta <nishkadg.linux@gmail.com>
+To: gregkh@linuxfoundation.org,
+	devel@driverdev.osuosl.org
+Subject: [PATCH 1/4] staging: rtl8723bs: Change return type of
+ hal_btcoex_IsBtExist()
+Date: Fri,  2 Aug 2019 11:54:41 +0530
+Message-Id: <20190802062444.30384-1-nishkadg.linux@gmail.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190801223556.209184-1-hridya@google.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,153 +85,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
- kernel-team@android.com, linux-kernel@vger.kernel.org,
- Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
- Joel Fernandes <joel@joelfernandes.org>,
- Christian Brauner <christian.brauner@ubuntu.com>,
- Martijn Coenen <maco@android.com>, Christian Brauner <christian@brauner.io>
+Cc: Nishka Dasgupta <nishkadg.linux@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Aug 01, 2019 at 03:35:56PM -0700, Hridya Valsaraju wrote:
-> If CONFIG_ANDROID_BINDERFS is set, the default binder devices
-> specified by CONFIG_ANDROID_BINDER_DEVICES are created in each
-> binderfs instance instead of global devices being created by
-> the binder driver.
-> 
-> Co-developed-by: Christian Brauner <christian.brauner@ubuntu.com>
-> Signed-off-by: Christian Brauner <christian.brauner@ubuntu.com>
-> Signed-off-by: Hridya Valsaraju <hridya@google.com>
-> ---
->  drivers/android/binder.c   |  3 ++-
->  drivers/android/binderfs.c | 46 ++++++++++++++++++++++++++++++++++----
->  2 files changed, 44 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-> index 466b6a7f8ab7..65a99ac26711 100644
-> --- a/drivers/android/binder.c
-> +++ b/drivers/android/binder.c
-> @@ -6279,7 +6279,8 @@ static int __init binder_init(void)
->  				    &transaction_log_fops);
->  	}
->  
-> -	if (strcmp(binder_devices_param, "") != 0) {
-> +	if (!IS_ENABLED(CONFIG_ANDROID_BINDERFS) &&
-> +	    strcmp(binder_devices_param, "") != 0) {
->  		/*
->  		* Copy the module_parameter string, because we don't want to
->  		* tokenize it in-place.
-> diff --git a/drivers/android/binderfs.c b/drivers/android/binderfs.c
-> index e773f45d19d9..9f5ed50ffd70 100644
-> --- a/drivers/android/binderfs.c
-> +++ b/drivers/android/binderfs.c
-> @@ -48,6 +48,10 @@ static dev_t binderfs_dev;
->  static DEFINE_MUTEX(binderfs_minors_mutex);
->  static DEFINE_IDA(binderfs_minors);
->  
-> +static char *binder_devices_param = CONFIG_ANDROID_BINDER_DEVICES;
-> +module_param_named(devices, binder_devices_param, charp, 0444);
-> +MODULE_PARM_DESC(devices, "Binder devices to be created by default");
-> +
+Change return type of hal_btcoex_IsBtExist from u8 to bool as its only
+possible return values are true and false.
 
-Why are you creating a module parameter?  That was not in your changelog
-:(
+Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
+---
+ drivers/staging/rtl8723bs/hal/hal_btcoex.c     | 2 +-
+ drivers/staging/rtl8723bs/include/hal_btcoex.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
+diff --git a/drivers/staging/rtl8723bs/hal/hal_btcoex.c b/drivers/staging/rtl8723bs/hal/hal_btcoex.c
+index 8987b5f892c0..73f3d93d2d1a 100644
+--- a/drivers/staging/rtl8723bs/hal/hal_btcoex.c
++++ b/drivers/staging/rtl8723bs/hal/hal_btcoex.c
+@@ -1335,7 +1335,7 @@ void hal_btcoex_SetBTCoexist(struct adapter *padapter, u8 bBtExist)
+  *true	Enable BT co-exist mechanism
+  *false	Disable BT co-exist mechanism
+  */
+-u8 hal_btcoex_IsBtExist(struct adapter *padapter)
++bool hal_btcoex_IsBtExist(struct adapter *padapter)
+ {
+ 	struct hal_com_data *pHalData;
+ 
+diff --git a/drivers/staging/rtl8723bs/include/hal_btcoex.h b/drivers/staging/rtl8723bs/include/hal_btcoex.h
+index 6f7514be998f..a91116e5c549 100644
+--- a/drivers/staging/rtl8723bs/include/hal_btcoex.h
++++ b/drivers/staging/rtl8723bs/include/hal_btcoex.h
+@@ -22,7 +22,7 @@ typedef struct _BT_COEXIST
+ void DBG_BT_INFO(u8 *dbgmsg);
+ 
+ void hal_btcoex_SetBTCoexist(struct adapter *padapter, u8 bBtExist);
+-u8 hal_btcoex_IsBtExist(struct adapter *padapter);
++bool hal_btcoex_IsBtExist(struct adapter *padapter);
+ bool hal_btcoex_IsBtDisabled(struct adapter *);
+ void hal_btcoex_SetChipType(struct adapter *padapter, u8 chipType);
+ void hal_btcoex_SetPgAntNum(struct adapter *padapter, u8 antNum);
+-- 
+2.19.1
 
-
->  /**
->   * binderfs_mount_opts - mount options for binderfs
->   * @max: maximum number of allocatable binderfs binder devices
-> @@ -135,7 +139,6 @@ static int binderfs_binder_device_create(struct inode *ref_inode,
->  #else
->  	bool use_reserve = true;
->  #endif
-> -
->  	/* Reserve new minor number for the new device. */
->  	mutex_lock(&binderfs_minors_mutex);
->  	if (++info->device_count <= info->mount_opts.max)
-> @@ -186,8 +189,7 @@ static int binderfs_binder_device_create(struct inode *ref_inode,
->  	req->major = MAJOR(binderfs_dev);
->  	req->minor = minor;
->  
-> -	ret = copy_to_user(userp, req, sizeof(*req));
-> -	if (ret) {
-> +	if (userp && copy_to_user(userp, req, sizeof(*req))) {
->  		ret = -EFAULT;
->  		goto err;
->  	}
-> @@ -467,6 +469,9 @@ static int binderfs_fill_super(struct super_block *sb, void *data, int silent)
->  	int ret;
->  	struct binderfs_info *info;
->  	struct inode *inode = NULL;
-> +	struct binderfs_device device_info = { 0 };
-> +	const char *name;
-> +	size_t len;
->  
->  	sb->s_blocksize = PAGE_SIZE;
->  	sb->s_blocksize_bits = PAGE_SHIFT;
-> @@ -521,7 +526,28 @@ static int binderfs_fill_super(struct super_block *sb, void *data, int silent)
->  	if (!sb->s_root)
->  		return -ENOMEM;
->  
-> -	return binderfs_binder_ctl_create(sb);
-> +	ret = binderfs_binder_ctl_create(sb);
-> +	if (ret)
-> +		return ret;
-> +
-> +	name = binder_devices_param;
-> +	for (len = strcspn(name, ","); len > 0; len = strcspn(name, ",")) {
-> +		/*
-> +		 * init_binderfs() has already checked that the length of
-> +		 * device_name_entry->name is not greater than device_info.name.
-> +		 */
-> +		strscpy(device_info.name, name, len + 1);
-> +		ret = binderfs_binder_device_create(inode, NULL, &device_info);
-> +		if (ret)
-> +			return ret;
-> +		name += len;
-> +		if (*name == ',')
-> +			name++;
-> +
-> +	}
-> +
-> +	return 0;
-> +
->  }
->  
->  static struct dentry *binderfs_mount(struct file_system_type *fs_type,
-> @@ -553,6 +579,18 @@ static struct file_system_type binder_fs_type = {
->  int __init init_binderfs(void)
->  {
->  	int ret;
-> +	const char *name;
-> +	size_t len;
-> +
-> +	/* Verify that the default binderfs device names are valid. */
-> +	name = binder_devices_param;
-> +	for (len = strcspn(name, ","); len > 0; len = strcspn(name, ",")) {
-> +		if (len > BINDERFS_MAX_NAME)
-> +			return -E2BIG;
-> +		name += len;
-> +		if (*name == ',')
-> +			name++;
-> +	}
-
-This verification should be a separate patch, right?
-
-But the real issue here is I have no idea _why_ you are wanting this
-patch.  The changelog text says _what_ you are doing only, which isn't
-ok.
-
-Please provide more information as to why this is needed, what problem
-it is solving, and break this up into a patch series and resend.
-
-thanks,
-
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
