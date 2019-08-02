@@ -1,80 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C58FE7EC94
-	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2019 08:25:12 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id DFC177ECBC
+	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2019 08:36:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 653EF884A6;
-	Fri,  2 Aug 2019 06:25:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BF2E1869A5;
+	Fri,  2 Aug 2019 06:36:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PzoQyntTmNsV; Fri,  2 Aug 2019 06:25:11 +0000 (UTC)
+	with ESMTP id t6NZylPXxVH8; Fri,  2 Aug 2019 06:36:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E72D988427;
-	Fri,  2 Aug 2019 06:25:10 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 32AA5868B5;
+	Fri,  2 Aug 2019 06:36:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7C5031BF27A
- for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 06:25:08 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 23EB91BF27A
+ for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 06:36:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 312B5231E9
- for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 06:25:08 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1D81785B3C
+ for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 06:36:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OmNB4fq4V-hx for <devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 06:25:04 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
- [209.85.210.193])
- by silver.osuosl.org (Postfix) with ESMTPS id 9575723086
- for <devel@driverdev.osuosl.org>; Fri,  2 Aug 2019 06:25:04 +0000 (UTC)
-Received: by mail-pf1-f193.google.com with SMTP id p184so35473082pfp.7
- for <devel@driverdev.osuosl.org>; Thu, 01 Aug 2019 23:25:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=Web7OROfv+/0KBRXJSM6EtP0nxkPXpkBAGSRKaKVF+Q=;
- b=m4j6EVz5zN3fAseWZWHLBWFA2rwhkaAcclhZc+PbgXhIowQPbCR7H9HtTPKhWEiKy7
- gipLtzQIKt7g1clTpTKtr90pzESiXZFTtkeiD09yQVXFDuYhBsjLWldcnpgJbRr+CjmX
- Gf/euY6JniAk+nFnXGigoY0O8cT5OF1rLG+HwMda9SreaW+MJUiUVN+x78KuHVWwCcvi
- vYEczsH4c8OyF7/nGd7s5Z2zm+dOOtnwPrqXupVN5RA15s50EBxgsbADXazvwR536zdT
- UyLAhJ3EiODaIkveZGd/O0IByJ5+5W7+NhjaFCDJu7QRWUXFFf3zj8ZQ52nzOztc7P5n
- 4htQ==
+ with ESMTP id W0cdBh3QiuaC for <devel@linuxdriverproject.org>;
+ Fri,  2 Aug 2019 06:36:29 +0000 (UTC)
+X-Greylist: delayed 00:07:10 by SQLgrey-1.7.6
+Received: from mail-io1-f67.google.com (mail-io1-f67.google.com
+ [209.85.166.67])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 6E396857BC
+ for <devel@driverdev.osuosl.org>; Fri,  2 Aug 2019 06:36:29 +0000 (UTC)
+Received: by mail-io1-f67.google.com with SMTP id z3so8730392iog.0
+ for <devel@driverdev.osuosl.org>; Thu, 01 Aug 2019 23:36:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=8J0CG6n/mGE9VY7Tzl2V8r1MEJfljCPCP1w3kMFb7gU=;
+ b=RjyjBD2oGv8Yelvkiciev/lZ+Q3xXx8QFqdYzdY4aCHOlugQGM86oI6FqZDvirisZ5
+ VJ+QLkBMLnRka6ltoYGD5wyPSjpGXQPHFctjuGwd1+UFurx0yvKt9ushEUj8EZV9ix2W
+ 01tKC6Gaz3MS8M+0E+YLTPk1gYgnaZnSfnfDmi+UFK25mv5gEzSDgABsBJUiG+nhSsUl
+ RKT5eQ9kRkeBcJ7gT+NzJThlFQ8TbWheTrXZG+kEcBrFAA6KQockx50ATbHKRl86DAya
+ RCLedopliZ67rTczSP3iIMKDggIEdiJgpUtX8J4w3apFv4UIzEajhXW7aw51MfImXOri
+ CFCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Web7OROfv+/0KBRXJSM6EtP0nxkPXpkBAGSRKaKVF+Q=;
- b=MraOg5JGw+jHm4QIX6VDxIWatYX4wSXQOQLeyZlEADZdl27eI1oDJBffwUNWsF7OzP
- JYPBwrqLQD/79hdG9GG7rbBeH9fP49nx/q6oywbnJ9WDfZy1FJuMx1ZtwVqRRWZu0k0S
- 9Q1ArR8S+/ywkhdMy9cNDBz4BUufRqtyp7/CFftnROjRCmGxpKw6NbcnuMKn0OUFg6tu
- kdJfHWTLgFZCm99HAgCyg4TkmIjasYL/iNOdchJxplHpKViG5pWb5Ti4yqaPN431uwDB
- G4/VlfulscLhHMwKnB3+UpIB+AOIyMWXuV/x2HoGyhjSvP6S4L1WnXrqp8VhBVLHAVUK
- oTBQ==
-X-Gm-Message-State: APjAAAXNbhYM+xx8kYigPuUS8bLX8YtOTrutx22LFhv7BhOqDHI7mUFP
- MgNwKR7KJCBpkbfLS9vLldwt9pqGKZ8=
-X-Google-Smtp-Source: APXvYqwjkEFQ194MK3TC4h16WkKRpmDNj4Z6dG1n90jUg0D/0i3/JGChL8BR92d44mw5GiTb7eDcMw==
-X-Received: by 2002:a17:90a:bb0c:: with SMTP id
- u12mr2783050pjr.132.1564727104215; 
- Thu, 01 Aug 2019 23:25:04 -0700 (PDT)
-Received: from localhost.localdomain ([122.163.105.8])
- by smtp.gmail.com with ESMTPSA id r15sm80249986pfh.121.2019.08.01.23.25.02
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Thu, 01 Aug 2019 23:25:03 -0700 (PDT)
-From: Nishka Dasgupta <nishkadg.linux@gmail.com>
-To: gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org
-Subject: [PATCH 4/4] staging: rtl8723bs: Replace hal_btcoex_Initialize()
-Date: Fri,  2 Aug 2019 11:54:44 +0530
-Message-Id: <20190802062444.30384-4-nishkadg.linux@gmail.com>
-X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20190802062444.30384-1-nishkadg.linux@gmail.com>
-References: <20190802062444.30384-1-nishkadg.linux@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=8J0CG6n/mGE9VY7Tzl2V8r1MEJfljCPCP1w3kMFb7gU=;
+ b=jnTo8+bsXDYUI4mQEpGSCbtwzHKtyG5qq/4FMPK0NS/QsOHo1RoPbc4bbVqVdHrU2o
+ +LAj2dj7+M59ucSWpLd0JKpAR9MJ7NA5Zd8MqFIkcExZW9GswcsH5MHs1TFnZ/CczjEO
+ DJQKnPrcxxzFecMawrI8KNCf2KcSxViNSox9jPmPwfeXh2x9Hs+VFEQS6i1cU+Mx1jjQ
+ IgWDqcXeB76fvoHBu8kk7rCtpOEjIsEtW0H1icVWdlJ2Yxdg2v0Fg7ALetZ5zrwuonG+
+ +7kgaPJhfZTaOnkxtiZ4csUz6s9f487MlQWGsgi3vrkjMrUMSmDFQkckLvWXD7TltRzf
+ mMvQ==
+X-Gm-Message-State: APjAAAWmpTFKSEOsML4zoA7si2qALe/cyWTgnFjoScQHsUIub9pQiI0C
+ aI0Lqz8dlm3w0PL3Zxbdex35QhOHypxxJZoclN6EoA==
+X-Google-Smtp-Source: APXvYqyCEEQjF5gUAqe0Jy7lkgRv7S109dxiMqY3y1rXR3KgTUxyI68+/GDAwhKmPjZXNLxgfhvOgGBjK0GGgCuPqfQ=
+X-Received: by 2002:a6b:3b89:: with SMTP id i131mr71226796ioa.33.1564727358352; 
+ Thu, 01 Aug 2019 23:29:18 -0700 (PDT)
 MIME-Version: 1.0
+References: <20190802022005.5117-1-jhubbard@nvidia.com>
+ <20190802022005.5117-17-jhubbard@nvidia.com>
+In-Reply-To: <20190802022005.5117-17-jhubbard@nvidia.com>
+From: Jens Wiklander <jens.wiklander@linaro.org>
+Date: Fri, 2 Aug 2019 08:29:07 +0200
+Message-ID: <CAHUa44G++iiwU62jj7QH=V3sr4z26sf007xrwWLPw6AAeMLAEw@mail.gmail.com>
+Subject: Re: [PATCH 16/34] drivers/tee: convert put_page() to put_user_page*()
+To: john.hubbard@gmail.com
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,115 +80,97 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Nishka Dasgupta <nishkadg.linux@gmail.com>
+Cc: linux-fbdev@vger.kernel.org, Jan Kara <jack@suse.cz>, kvm@vger.kernel.org,
+ Dave Hansen <dave.hansen@linux.intel.com>, Dave Chinner <david@fromorbit.com>,
+ dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
+ sparclinux@vger.kernel.org, Dan Williams <dan.j.williams@intel.com>,
+ devel@driverdev.osuosl.org, rds-devel@oss.oracle.com,
+ linux-rdma@vger.kernel.org, x86@kernel.org, amd-gfx@lists.freedesktop.org,
+ Christoph Hellwig <hch@infradead.org>, Jason Gunthorpe <jgg@ziepe.ca>,
+ xen-devel@lists.xenproject.org, devel@lists.orangefs.org,
+ linux-media@vger.kernel.org, John Hubbard <jhubbard@nvidia.com>,
+ intel-gfx@lists.freedesktop.org, linux-block@vger.kernel.org,
+ =?UTF-8?B?SsOpcsO0bWUgR2xpc3Nl?= <jglisse@redhat.com>,
+ linux-rpi-kernel@lists.infradead.org, ceph-devel@vger.kernel.org,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-nfs@vger.kernel.org,
+ netdev@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
+ linux-xfs@vger.kernel.org,
+ "open list:HARDWARE RANDOM NUMBER GENERATOR CORE"
+ <linux-crypto@vger.kernel.org>, linux-fsdevel@vger.kernel.org,
+ Andrew Morton <akpm@linux-foundation.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove hal_btcoex_Initialize as all it does is perform a memset and call
-EXhalbtcoutsrc_InitlizeVariables.
-Rename EXhalbtcoutsrc_InitlizeVariables to hal_btcoex_Initialize and add
-the memset of hal_btcoex_Initialize in order to maintain compatibility
-with call sites of the latter (EXhalbtcoutsrc is not called anywhere
-else except in now-removed old hal_btcoex_Initialize).
-Change return type of new hal_btcoex_Initialize from u8 to void and
-remove its return statement as the return value of hal_btcoex_Initialize
-is never used.
-Change the type of function argument at call site to match the function
-parameter of new hal_btcoex_Initialize.
+On Fri, Aug 2, 2019 at 4:20 AM <john.hubbard@gmail.com> wrote:
+>
+> From: John Hubbard <jhubbard@nvidia.com>
+>
+> For pages that were retained via get_user_pages*(), release those pages
+> via the new put_user_page*() routines, instead of via put_page() or
+> release_pages().
+>
+> This is part a tree-wide conversion, as described in commit fc1d8e7cca2d
+> ("mm: introduce put_user_page*(), placeholder versions").
+>
+> Cc: Jens Wiklander <jens.wiklander@linaro.org>
+> Signed-off-by: John Hubbard <jhubbard@nvidia.com>
+> ---
+>  drivers/tee/tee_shm.c | 10 ++--------
+>  1 file changed, 2 insertions(+), 8 deletions(-)
 
-Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
----
- drivers/staging/rtl8723bs/hal/HalBtcOutSrc.h   |  1 -
- drivers/staging/rtl8723bs/hal/hal_btcoex.c     | 16 ++++++----------
- drivers/staging/rtl8723bs/include/hal_btcoex.h |  2 +-
- drivers/staging/rtl8723bs/os_dep/sdio_intf.c   |  2 +-
- 4 files changed, 8 insertions(+), 13 deletions(-)
+Acked-by: Jens Wiklander <jens.wiklander@linaro.org>
 
-diff --git a/drivers/staging/rtl8723bs/hal/HalBtcOutSrc.h b/drivers/staging/rtl8723bs/hal/HalBtcOutSrc.h
-index aad86570b59c..7150d54d49ab 100644
---- a/drivers/staging/rtl8723bs/hal/HalBtcOutSrc.h
-+++ b/drivers/staging/rtl8723bs/hal/HalBtcOutSrc.h
-@@ -532,7 +532,6 @@ typedef struct _BTC_COEXIST {
- 
- extern BTC_COEXIST GLBtCoexist;
- 
--u8 EXhalbtcoutsrc_InitlizeVariables(void *Adapter);
- void EXhalbtcoutsrc_PowerOnSetting(PBTC_COEXIST pBtCoexist);
- void EXhalbtcoutsrc_InitHwConfig(PBTC_COEXIST pBtCoexist, u8 bWifiOnly);
- void EXhalbtcoutsrc_InitCoexDm(PBTC_COEXIST pBtCoexist);
-diff --git a/drivers/staging/rtl8723bs/hal/hal_btcoex.c b/drivers/staging/rtl8723bs/hal/hal_btcoex.c
-index d2147a65c1cd..19486f0e0ead 100644
---- a/drivers/staging/rtl8723bs/hal/hal_btcoex.c
-+++ b/drivers/staging/rtl8723bs/hal/hal_btcoex.c
-@@ -957,9 +957,13 @@ static u8 EXhalbtcoutsrc_BindBtCoexWithAdapter(void *padapter)
- 	return true;
- }
- 
--u8 EXhalbtcoutsrc_InitlizeVariables(void *padapter)
-+void hal_btcoex_Initialize(void *padapter)
- {
--	PBTC_COEXIST pBtCoexist = &GLBtCoexist;
-+	PBTC_COEXIST pBtCoexist;
-+
-+	memset(&GLBtCoexist, 0, sizeof(GLBtCoexist));
-+
-+	pBtCoexist = &GLBtCoexist;
- 
- 	/* pBtCoexist->statistics.cntBind++; */
- 
-@@ -999,8 +1003,6 @@ u8 EXhalbtcoutsrc_InitlizeVariables(void *padapter)
- 	GLBtcWiFiInScanState = false;
- 
- 	GLBtcWiFiInIQKState = false;
--
--	return true;
- }
- 
- void EXhalbtcoutsrc_PowerOnSetting(PBTC_COEXIST pBtCoexist)
-@@ -1382,12 +1384,6 @@ void hal_btcoex_SetSingleAntPath(struct adapter *padapter, u8 singleAntPath)
- 	EXhalbtcoutsrc_SetSingleAntPath(singleAntPath);
- }
- 
--u8 hal_btcoex_Initialize(struct adapter *padapter)
--{
--	memset(&GLBtCoexist, 0, sizeof(GLBtCoexist));
--	return EXhalbtcoutsrc_InitlizeVariables((void *)padapter);
--}
--
- void hal_btcoex_PowerOnSetting(struct adapter *padapter)
- {
- 	EXhalbtcoutsrc_PowerOnSetting(&GLBtCoexist);
-diff --git a/drivers/staging/rtl8723bs/include/hal_btcoex.h b/drivers/staging/rtl8723bs/include/hal_btcoex.h
-index a0b502c34a25..eb03813fdcb9 100644
---- a/drivers/staging/rtl8723bs/include/hal_btcoex.h
-+++ b/drivers/staging/rtl8723bs/include/hal_btcoex.h
-@@ -28,7 +28,7 @@ void hal_btcoex_SetChipType(struct adapter *padapter, u8 chipType);
- void hal_btcoex_SetPgAntNum(struct adapter *padapter, u8 antNum);
- void hal_btcoex_SetSingleAntPath(struct adapter *padapter, u8 singleAntPath);
- 
--u8 hal_btcoex_Initialize(struct adapter *padapter);
-+void hal_btcoex_Initialize(void *padapter);
- void hal_btcoex_PowerOnSetting(struct adapter *padapter);
- void hal_btcoex_InitHwConfig(struct adapter *padapter, u8 bWifiOnly);
- 
-diff --git a/drivers/staging/rtl8723bs/os_dep/sdio_intf.c b/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
-index 540a7eed621d..65ffb807eda2 100644
---- a/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
-+++ b/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
-@@ -371,7 +371,7 @@ static struct adapter *rtw_sdio_if1_init(struct dvobj_priv *dvobj, const struct
- 
- 	rtw_hal_chip_configure(padapter);
- 
--	hal_btcoex_Initialize(padapter);
-+	hal_btcoex_Initialize((void *) padapter);
- 
- 	/* 3 6. read efuse/eeprom data */
- 	rtw_hal_read_chip_info(padapter);
--- 
-2.19.1
+I suppose you're taking this via your own tree or such.
 
+Thanks,
+Jens
+
+>
+> diff --git a/drivers/tee/tee_shm.c b/drivers/tee/tee_shm.c
+> index 2da026fd12c9..c967d0420b67 100644
+> --- a/drivers/tee/tee_shm.c
+> +++ b/drivers/tee/tee_shm.c
+> @@ -31,16 +31,13 @@ static void tee_shm_release(struct tee_shm *shm)
+>
+>                 poolm->ops->free(poolm, shm);
+>         } else if (shm->flags & TEE_SHM_REGISTER) {
+> -               size_t n;
+>                 int rc = teedev->desc->ops->shm_unregister(shm->ctx, shm);
+>
+>                 if (rc)
+>                         dev_err(teedev->dev.parent,
+>                                 "unregister shm %p failed: %d", shm, rc);
+>
+> -               for (n = 0; n < shm->num_pages; n++)
+> -                       put_page(shm->pages[n]);
+> -
+> +               put_user_pages(shm->pages, shm->num_pages);
+>                 kfree(shm->pages);
+>         }
+>
+> @@ -313,16 +310,13 @@ struct tee_shm *tee_shm_register(struct tee_context *ctx, unsigned long addr,
+>         return shm;
+>  err:
+>         if (shm) {
+> -               size_t n;
+> -
+>                 if (shm->id >= 0) {
+>                         mutex_lock(&teedev->mutex);
+>                         idr_remove(&teedev->idr, shm->id);
+>                         mutex_unlock(&teedev->mutex);
+>                 }
+>                 if (shm->pages) {
+> -                       for (n = 0; n < shm->num_pages; n++)
+> -                               put_page(shm->pages[n]);
+> +                       put_user_pages(shm->pages, shm->num_pages);
+>                         kfree(shm->pages);
+>                 }
+>         }
+> --
+> 2.22.0
+>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
