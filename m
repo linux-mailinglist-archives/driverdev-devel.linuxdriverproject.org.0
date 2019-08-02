@@ -1,65 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0D1767FED0
-	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2019 18:42:30 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id F3A6880066
+	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2019 20:49:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9A56387E5E;
-	Fri,  2 Aug 2019 16:42:27 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8AE0B23B31;
+	Fri,  2 Aug 2019 18:49:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9lLp0plztL-i; Fri,  2 Aug 2019 16:42:27 +0000 (UTC)
+	with ESMTP id XpVmTHRAMZel; Fri,  2 Aug 2019 18:49:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5BE3D87E23;
-	Fri,  2 Aug 2019 16:42:26 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3ED60204B7;
+	Fri,  2 Aug 2019 18:49:49 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C02A61BF296
- for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 16:42:24 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id BF62C1BF3FC
+ for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 18:49:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BD29588571
- for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 16:42:24 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B9D7787780
+ for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 18:49:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lafdItUsZSJh for <devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 16:42:24 +0000 (UTC)
-X-Greylist: delayed 00:20:04 by SQLgrey-1.7.6
-Received: from bombadil.infradead.org (bombadil.infradead.org
- [198.137.202.133])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5D3D688572
- for <devel@driverdev.osuosl.org>; Fri,  2 Aug 2019 16:42:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20170209; h=Content-Transfer-Encoding:
- Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
- Subject:Sender:Reply-To:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=JiPRz1b1DB02obaqCC3z20a5XEDkM8AtFJgDiFd1iVo=; b=AIBv+30IiFOPBIKyKY90cKN7C
- c7RI1W+PPUsBiM7EcXVDttqHmkSyweMEcecPRoVFyAqtHoFbazefx7dgXUo4qTjtWbKsJ9f6C6EFB
- 0iv6ei++jHrxflsJto44ZAzCS2R3R1furjP8FvzjMaZLnrad4n62SQbhYm27XgHh9TjWCdbRdOIv4
- J0D25W2MWjxZoh+7WyYdRLk6qTedaW1x179xjzSBr9fl0TdbMdK4qGBymCrGIQe4Rrdy9CxFDJ726
- kUcO2YdaGL7m8LRrHaAoaOcdRqT4p+00MCj3hv205btJQxYRZzguwA6qUET1DWdjlq2q6hyxUgL+I
- JzZTQ0GuA==;
-Received: from static-50-53-52-16.bvtn.or.frontiernet.net ([50.53.52.16]
- helo=[192.168.1.17])
- by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1htaJu-00047k-7l; Fri, 02 Aug 2019 16:22:18 +0000
-Subject: Re: linux-next: Tree for Aug 2 (staging/octeon/)
-To: Stephen Rothwell <sfr@canb.auug.org.au>,
- Linux Next Mailing List <linux-next@vger.kernel.org>
-References: <20190802155223.41b0be6e@canb.auug.org.au>
-From: Randy Dunlap <rdunlap@infradead.org>
-Message-ID: <9f6374e6-2175-0e0c-6be3-a2aca53bd865@infradead.org>
-Date: Fri, 2 Aug 2019 09:22:17 -0700
+ with ESMTP id swKGedaSnlHZ for <devel@linuxdriverproject.org>;
+ Fri,  2 Aug 2019 18:49:46 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from hqemgate14.nvidia.com (hqemgate14.nvidia.com [216.228.121.143])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D0D8487631
+ for <devel@driverdev.osuosl.org>; Fri,  2 Aug 2019 18:49:46 +0000 (UTC)
+Received: from hqpgpgate101.nvidia.com (Not Verified[216.228.121.13]) by
+ hqemgate14.nvidia.com (using TLS: TLSv1.2, DES-CBC3-SHA)
+ id <B5d4485cb0000>; Fri, 02 Aug 2019 11:49:47 -0700
+Received: from hqmail.nvidia.com ([172.20.161.6])
+ by hqpgpgate101.nvidia.com (PGP Universal service);
+ Fri, 02 Aug 2019 11:49:46 -0700
+X-PGP-Universal: processed;
+ by hqpgpgate101.nvidia.com on Fri, 02 Aug 2019 11:49:46 -0700
+Received: from [10.2.171.217] (10.124.1.5) by HQMAIL107.nvidia.com
+ (172.20.187.13) with Microsoft SMTP Server (TLS) id 15.0.1473.3; Fri, 2 Aug
+ 2019 18:49:45 +0000
+Subject: Re: [PATCH 06/34] drm/i915: convert put_page() to put_user_page*()
+To: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Andrew Morton
+ <akpm@linux-foundation.org>, <john.hubbard@gmail.com>
+References: <20190802022005.5117-1-jhubbard@nvidia.com>
+ <20190802022005.5117-7-jhubbard@nvidia.com>
+ <156473756254.19842.12384378926183716632@jlahtine-desk.ger.corp.intel.com>
+X-Nvconfidentiality: public
+From: John Hubbard <jhubbard@nvidia.com>
+Message-ID: <7d9a9c57-4322-270b-b636-7214019f87e9@nvidia.com>
+Date: Fri, 2 Aug 2019 11:48:08 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190802155223.41b0be6e@canb.auug.org.au>
+In-Reply-To: <156473756254.19842.12384378926183716632@jlahtine-desk.ger.corp.intel.com>
+X-Originating-IP: [10.124.1.5]
+X-ClientProxiedBy: HQMAIL104.nvidia.com (172.18.146.11) To
+ HQMAIL107.nvidia.com (172.20.187.13)
 Content-Language: en-US
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nvidia.com; s=n1;
+ t=1564771787; bh=S6tEtRzvj2UDxwZj4cj8eQvbGOkT9/8mALKEDpv4kUk=;
+ h=X-PGP-Universal:Subject:To:CC:References:X-Nvconfidentiality:From:
+ Message-ID:Date:User-Agent:MIME-Version:In-Reply-To:
+ X-Originating-IP:X-ClientProxiedBy:Content-Type:Content-Language:
+ Content-Transfer-Encoding;
+ b=Y3fHk+98nOh18vMhIm6oxYzfGEP8O2OFNum6iQoB2YYU2gm7Ou5mcASXhMaNa0kba
+ BTSi3qY+ef5NxNUgS+af9aZz1Xc0xlcalUQEIFNZpatz8EG3c4tRcTzbThhIfTheTe
+ KUIJTej9BZ3lpHo5Yb8ku9IclBxYdC+NGE9oZ9fgbh7w5eghYXLn/xfb7XAp0GzwuH
+ IJ6d9B7kXtD+UvM1BqXw9xtNu+yigVn+igq6/71hO2kl6CxZVC/aFF46g+y63m13bY
+ ASWUBsfN5BXUM2Pu5Zj4LSXQjLICQo96hEH38MKObK2sbDPzzqMyeBnMmqRYo7/r9E
+ eYoSABVJVs3oQ==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,41 +84,94 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Nathan Chancellor <natechancellor@gmail.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Matthew Wilcox <willy@infradead.org>
-Content-Type: text/plain; charset="us-ascii"
+Cc: linux-fbdev@vger.kernel.org, Jan Kara <jack@suse.cz>, kvm@vger.kernel.org,
+ David Airlie <airlied@linux.ie>, Dave Hansen <dave.hansen@linux.intel.com>,
+ Dave Chinner <david@fromorbit.com>, dri-devel@lists.freedesktop.org,
+ linux-mm@kvack.org, sparclinux@vger.kernel.org, ceph-devel@vger.kernel.org,
+ devel@driverdev.osuosl.org, rds-devel@oss.oracle.com,
+ linux-rdma@vger.kernel.org, x86@kernel.org, amd-gfx@lists.freedesktop.org,
+ Christoph Hellwig <hch@infradead.org>, Jason Gunthorpe <jgg@ziepe.ca>,
+ xen-devel@lists.xenproject.org, devel@lists.orangefs.org,
+ linux-media@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ Jani Nikula <jani.nikula@linux.intel.com>, linux-block@vger.kernel.org,
+ =?UTF-8?B?SsOpcsO0bWUgR2xpc3Nl?= <jglisse@redhat.com>,
+ linux-rpi-kernel@lists.infradead.org, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Dan Williams <dan.j.williams@intel.com>, linux-arm-kernel@lists.infradead.org,
+ linux-nfs@vger.kernel.org, netdev@vger.kernel.org,
+ LKML <linux-kernel@vger.kernel.org>, linux-xfs@vger.kernel.org,
+ linux-crypto@vger.kernel.org, linux-fsdevel@vger.kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 8/1/19 10:52 PM, Stephen Rothwell wrote:
-> Hi all,
+On 8/2/19 2:19 AM, Joonas Lahtinen wrote:
+> Quoting john.hubbard@gmail.com (2019-08-02 05:19:37)
+>> From: John Hubbard <jhubbard@nvidia.com>
+>>
+>> For pages that were retained via get_user_pages*(), release those pages
+>> via the new put_user_page*() routines, instead of via put_page() or
+>> release_pages().
+>>
+>> This is part a tree-wide conversion, as described in commit fc1d8e7cca2d
+>> ("mm: introduce put_user_page*(), placeholder versions").
+>>
+>> Note that this effectively changes the code's behavior in
+>> i915_gem_userptr_put_pages(): it now calls set_page_dirty_lock(),
+>> instead of set_page_dirty(). This is probably more accurate.
 > 
-> Changes since 20190801:
+> We've already fixed this in drm-tip where the current code uses
+> set_page_dirty_lock().
+> 
+> This would conflict with our tree. Rodrigo is handling
+> drm-intel-next for 5.4, so you guys want to coordinate how
+> to merge.
 > 
 
-on x86_64:
-when CONFIG_OF is not set/enabled.
+Hi Joonas, Rodrigo,
+
+First of all, I apologize for the API breakage: put_user_pages_dirty_lock()
+has an additional "dirty" parameter.
+
+In order to deal with the merge problem, I'll drop this patch from my series,
+and I'd recommend that the drm-intel-next take the following approach:
+
+1) For now, s/put_page/put_user_page/ in i915_gem_userptr_put_pages(),
+and fix up the set_page_dirty() --> set_page_dirty_lock() issue, like this
+(based against linux.git):
+
+diff --git a/drivers/gpu/drm/i915/gem/i915_gem_userptr.c 
+b/drivers/gpu/drm/i915/gem/i915_gem_userptr.c
+index 528b61678334..94721cc0093b 100644
+--- a/drivers/gpu/drm/i915/gem/i915_gem_userptr.c
++++ b/drivers/gpu/drm/i915/gem/i915_gem_userptr.c
+@@ -664,10 +664,10 @@ i915_gem_userptr_put_pages(struct drm_i915_gem_object *obj,
+
+         for_each_sgt_page(page, sgt_iter, pages) {
+                 if (obj->mm.dirty)
+-                       set_page_dirty(page);
++                       set_page_dirty_lock(page);
+
+                 mark_page_accessed(page);
+-               put_page(page);
++               put_user_page(page);
+         }
+         obj->mm.dirty = false;
 
 
-WARNING: unmet direct dependencies detected for MDIO_OCTEON
-  Depends on [n]: NETDEVICES [=y] && MDIO_DEVICE [=y] && MDIO_BUS [=y] && 64BIT [=y] && HAS_IOMEM [=y] && OF_MDIO [=n]
-  Selected by [y]:
-  - OCTEON_ETHERNET [=y] && STAGING [=y] && (CAVIUM_OCTEON_SOC || COMPILE_TEST [=y]) && NETDEVICES [=y]
+That will leave you with your original set_page_dirty_lock() calls
+and everything works properly.
 
-ld: drivers/net/phy/mdio-octeon.o: in function `octeon_mdiobus_probe':
-mdio-octeon.c:(.text+0x31c): undefined reference to `cavium_mdiobus_read'
-ld: mdio-octeon.c:(.text+0x35a): undefined reference to `cavium_mdiobus_write'
+2) Next cycle, move to the new put_user_pages_dirty_lock().
 
-
-OCTEON_ETHERNET should not select MDIO_OCTEON when OF_MDIO is not set/enabled.
-
-
+thanks,
 -- 
-~Randy
+John Hubbard
+NVIDIA
+
+
+> Regards, Joonas
+> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
