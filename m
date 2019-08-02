@@ -1,77 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4B85A7E7FE
-	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2019 04:20:29 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E68B37E7FC
+	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2019 04:20:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id E6F2622CD4;
-	Fri,  2 Aug 2019 02:20:27 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 96AE6869B8;
+	Fri,  2 Aug 2019 02:20:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xZ2PbhmVwGLy; Fri,  2 Aug 2019 02:20:20 +0000 (UTC)
+	with ESMTP id bBWKpi_2kQff; Fri,  2 Aug 2019 02:20:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 8253D22EC1;
-	Fri,  2 Aug 2019 02:20:19 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 61D418699E;
+	Fri,  2 Aug 2019 02:20:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 215701BF29C
- for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 02:20:16 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 900B01BF29C
+ for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 02:20:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 1E2A3883C0
- for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 02:20:16 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8B18D878A1
+ for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 02:20:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TuoKD3Q0GUzp for <devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 02:20:15 +0000 (UTC)
+ with ESMTP id b27sULUb0bcl for <devel@linuxdriverproject.org>;
+ Fri,  2 Aug 2019 02:20:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
- [209.85.214.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5595B883C1
- for <devel@driverdev.osuosl.org>; Fri,  2 Aug 2019 02:20:15 +0000 (UTC)
-Received: by mail-pl1-f195.google.com with SMTP id a93so32956161pla.7
- for <devel@driverdev.osuosl.org>; Thu, 01 Aug 2019 19:20:15 -0700 (PDT)
+Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
+ [209.85.210.194])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id BF2F9878A9
+ for <devel@driverdev.osuosl.org>; Fri,  2 Aug 2019 02:20:16 +0000 (UTC)
+Received: by mail-pf1-f194.google.com with SMTP id i189so35156697pfg.10
+ for <devel@driverdev.osuosl.org>; Thu, 01 Aug 2019 19:20:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=qSYlns3rxzw4u/DyjG2ivKH4pSlvpz3tTvNpv+Vzl0A=;
- b=D/j6QNqz3yFiYsyeUlBoZoB8rZu5aCb/yvzz1zxOgNp3ybEqPbsxe9btxXQCwNnRiL
- 1hhEXFWz1aCfU0TnFrQv5Hdu1Y4yj+09YOcLKnBgch2wIeWxdJn+CuF7gDQRR3DG86LM
- Y2SvxC7kLx20v2OT7+JApu4gV5A7mbLpTUBZ6FnTk6beDldtvE5mb/QvfkkyqN0v2VG1
- 9ofVdaCVs4q01OeX0AkhxB3Ji5RomrK0H8nso03ee71VFXG/bdlheK3cdFpHFmb/m/jZ
- kT41q1q3qFT4PGqgyOwuRL5tvfmQTGDLJg5egH8fWfpo6yuqqIAezax6SWmNi42S34sa
- BMyg==
+ bh=weSPcOAlMB+nks0BWLOsxsBmAu907UZGrfndvq6oQnc=;
+ b=g/PNAVO1jcA7rjmvur5Gi5SyBm+cHCwd0FZu0S4Yd4WKYY8nqKUy+Kjq5L8LbAIDam
+ oq+DMw/apiFaV6V9t2AYTvJ0UtZRGdqpPgiFYeIHq5U9A659jHv3iijVBsi80zStn1WW
+ yA7d3ZYX2ikKALXpz54vXEPMXgXSlYxT87JksMZBQueD34Vn0QLhvvHOTCuzyirgAxhY
+ PS1hXIRKbtV044f7MD5ThhAFxJavcS5DN9nP30sURDOyWv4TACAbp0MhELnCZVrxEr+Y
+ L5R1pu68TEBkTXOjXzFMyL79KTHMlgJNcYv+KmIulF31bskwh/7J7wKRv6nstiIy1Eix
+ KMbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=qSYlns3rxzw4u/DyjG2ivKH4pSlvpz3tTvNpv+Vzl0A=;
- b=sqJLcCzVg7mS34HlRvmwPJ2jiw0dmVVaxtDOiwrMPKi6xHOE+67iVIt8HNRGJRpLOc
- 4D6aubNIJLH/Y5OlhdjF6vEVvCdPI/wLmqGGRq4AcapcRItpc2tkJovlRgG45NAqGh55
- SmtknbLzWb2G/vCk71aHm95jh/IHvhNZxT1AfzD246NvhoQk21S34ceUbwa59aSsIBCT
- XgDwZJV+WFQyH/mjDAsB2FnVCH7ykkNnW/X+ZkryZ38L+cO4VI8ohaOjYnCGrbCM8JJ4
- IV1r0I/0vakIB8eHCZXb9xYaVyo8EOkCn89T8fYmrBulepNf/V5IG3vE9zJEq/tdv+d9
- pD6Q==
-X-Gm-Message-State: APjAAAVWpbQfJg4QTlkONYYyYNN/2deLYPdIEQeHggDKSX3KCl9bczUs
- 5IJdKPFNHvkSr3WHk71p5Cc=
-X-Google-Smtp-Source: APXvYqwe/PIHkPn7ZzlBTJ10qqxG8IKfziWCo/9dNIX4ajnyTWnRigA/C0Xc1g8+MHenU4v2W+nK1Q==
-X-Received: by 2002:a17:902:24b:: with SMTP id
- 69mr123383293plc.250.1564712414959; 
- Thu, 01 Aug 2019 19:20:14 -0700 (PDT)
+ bh=weSPcOAlMB+nks0BWLOsxsBmAu907UZGrfndvq6oQnc=;
+ b=Wzxqntm60jJnvHnWaJwhFv0+beHE/wcql1ujJI4Z42JvyIWx34SkIUMl3oHuUSKUrs
+ vqsz0rgQjE9iC5v3jttoNQlmuhIxgoCYLu+k+5Z46VvIdHAHia8HxVekI2qhDsawYoKH
+ Hahtwys5fUsHiHLCvf37Idwquv2QhzS1/4dZFfV6hya0P2eAb/gyadpE1ZpO4mRZwxj6
+ nT3aYcK/BK1+hLyuvdeVJvHqeU/E12YP6Xl51T+5Fj0VbPmJxoYcIotg4URieJlD/ffC
+ B+/65E24GNM9yLWFWakAPXOCxz82VhksvNXFQOZDFHIy0SN5YYhCVOeSajBuodq7FYdq
+ s0rg==
+X-Gm-Message-State: APjAAAVf+T1nYaW5iFIiImy95dabyB13JBKMfaIglgyGYzlnGMGPMEc2
+ PJq6o/60IqiuPpx+JzToRWg=
+X-Google-Smtp-Source: APXvYqxciGgcMDXcQ3A2dbcQcp1f7eltXWtJvGVKyn0lRu+bq9UEFtA9QCl9A6sNDZqj7/W8XpREEA==
+X-Received: by 2002:a17:90a:2385:: with SMTP id
+ g5mr1977411pje.12.1564712416439; 
+ Thu, 01 Aug 2019 19:20:16 -0700 (PDT)
 Received: from blueforge.nvidia.com (searspoint.nvidia.com. [216.228.112.21])
  by smtp.gmail.com with ESMTPSA id
- u9sm38179744pgc.5.2019.08.01.19.20.13
+ u9sm38179744pgc.5.2019.08.01.19.20.14
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Thu, 01 Aug 2019 19:20:14 -0700 (PDT)
+ Thu, 01 Aug 2019 19:20:16 -0700 (PDT)
 From: john.hubbard@gmail.com
 X-Google-Original-From: jhubbard@nvidia.com
 To: Andrew Morton <akpm@linux-foundation.org>
-Subject: [PATCH 02/34] net/rds: convert put_page() to put_user_page*()
-Date: Thu,  1 Aug 2019 19:19:33 -0700
-Message-Id: <20190802022005.5117-3-jhubbard@nvidia.com>
+Subject: [PATCH 03/34] net/ceph: convert put_page() to put_user_page*()
+Date: Thu,  1 Aug 2019 19:19:34 -0700
+Message-Id: <20190802022005.5117-4-jhubbard@nvidia.com>
 X-Mailer: git-send-email 2.22.0
 In-Reply-To: <20190802022005.5117-1-jhubbard@nvidia.com>
 References: <20190802022005.5117-1-jhubbard@nvidia.com>
@@ -94,12 +94,12 @@ Cc: linux-fbdev@vger.kernel.org, Jan Kara <jack@suse.cz>, kvm@vger.kernel.org,
  dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
  sparclinux@vger.kernel.org, ceph-devel@vger.kernel.org,
  devel@driverdev.osuosl.org, rds-devel@oss.oracle.com,
- linux-rdma@vger.kernel.org, x86@kernel.org, amd-gfx@lists.freedesktop.org,
- Christoph Hellwig <hch@infradead.org>, Jason Gunthorpe <jgg@ziepe.ca>,
- xen-devel@lists.xenproject.org, devel@lists.orangefs.org,
+ Sage Weil <sage@redhat.com>, linux-rdma@vger.kernel.org, x86@kernel.org,
+ amd-gfx@lists.freedesktop.org, Christoph Hellwig <hch@infradead.org>,
+ Jason Gunthorpe <jgg@ziepe.ca>, xen-devel@lists.xenproject.org,
+ Ilya Dryomov <idryomov@gmail.com>, devel@lists.orangefs.org,
  linux-media@vger.kernel.org, John Hubbard <jhubbard@nvidia.com>,
- intel-gfx@lists.freedesktop.org,
- Santosh Shilimkar <santosh.shilimkar@oracle.com>, linux-block@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, linux-block@vger.kernel.org,
  =?UTF-8?q?J=C3=A9r=C3=B4me=20Glisse?= <jglisse@redhat.com>,
  linux-rpi-kernel@lists.infradead.org, Dan Williams <dan.j.williams@intel.com>,
  linux-arm-kernel@lists.infradead.org, linux-nfs@vger.kernel.org,
@@ -120,109 +120,35 @@ release_pages().
 This is part a tree-wide conversion, as described in commit fc1d8e7cca2d
 ("mm: introduce put_user_page*(), placeholder versions").
 
-Cc: Santosh Shilimkar <santosh.shilimkar@oracle.com>
+Cc: Ilya Dryomov <idryomov@gmail.com>
+Cc: Sage Weil <sage@redhat.com>
 Cc: David S. Miller <davem@davemloft.net>
+Cc: ceph-devel@vger.kernel.org
 Cc: netdev@vger.kernel.org
-Cc: linux-rdma@vger.kernel.org
-Cc: rds-devel@oss.oracle.com
 Signed-off-by: John Hubbard <jhubbard@nvidia.com>
 ---
- net/rds/info.c    |  5 ++---
- net/rds/message.c |  2 +-
- net/rds/rdma.c    | 15 +++++++--------
- 3 files changed, 10 insertions(+), 12 deletions(-)
+ net/ceph/pagevec.c | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
 
-diff --git a/net/rds/info.c b/net/rds/info.c
-index 03f6fd56d237..ca6af2889adf 100644
---- a/net/rds/info.c
-+++ b/net/rds/info.c
-@@ -162,7 +162,6 @@ int rds_info_getsockopt(struct socket *sock, int optname, char __user *optval,
- 	struct rds_info_lengths lens;
- 	unsigned long nr_pages = 0;
- 	unsigned long start;
--	unsigned long i;
- 	rds_info_func func;
- 	struct page **pages = NULL;
- 	int ret;
-@@ -235,8 +234,8 @@ int rds_info_getsockopt(struct socket *sock, int optname, char __user *optval,
- 		ret = -EFAULT;
+diff --git a/net/ceph/pagevec.c b/net/ceph/pagevec.c
+index 64305e7056a1..c88fff2ab9bd 100644
+--- a/net/ceph/pagevec.c
++++ b/net/ceph/pagevec.c
+@@ -12,13 +12,7 @@
  
- out:
--	for (i = 0; pages && i < nr_pages; i++)
+ void ceph_put_page_vector(struct page **pages, int num_pages, bool dirty)
+ {
+-	int i;
+-
+-	for (i = 0; i < num_pages; i++) {
+-		if (dirty)
+-			set_page_dirty_lock(pages[i]);
 -		put_page(pages[i]);
-+	if (pages)
-+		put_user_pages(pages, nr_pages);
- 	kfree(pages);
- 
- 	return ret;
-diff --git a/net/rds/message.c b/net/rds/message.c
-index 50f13f1d4ae0..d7b0d266c437 100644
---- a/net/rds/message.c
-+++ b/net/rds/message.c
-@@ -404,7 +404,7 @@ static int rds_message_zcopy_from_user(struct rds_message *rm, struct iov_iter *
- 			int i;
- 
- 			for (i = 0; i < rm->data.op_nents; i++)
--				put_page(sg_page(&rm->data.op_sg[i]));
-+				put_user_page(sg_page(&rm->data.op_sg[i]));
- 			mmp = &rm->data.op_mmp_znotifier->z_mmp;
- 			mm_unaccount_pinned_pages(mmp);
- 			ret = -EFAULT;
-diff --git a/net/rds/rdma.c b/net/rds/rdma.c
-index 916f5ec373d8..6762e8696b99 100644
---- a/net/rds/rdma.c
-+++ b/net/rds/rdma.c
-@@ -162,8 +162,7 @@ static int rds_pin_pages(unsigned long user_addr, unsigned int nr_pages,
- 				  pages);
- 
- 	if (ret >= 0 && ret < nr_pages) {
--		while (ret--)
--			put_page(pages[ret]);
-+		put_user_pages(pages, ret);
- 		ret = -EFAULT;
- 	}
- 
-@@ -276,7 +275,7 @@ static int __rds_rdma_map(struct rds_sock *rs, struct rds_get_mr_args *args,
- 
- 	if (IS_ERR(trans_private)) {
- 		for (i = 0 ; i < nents; i++)
--			put_page(sg_page(&sg[i]));
-+			put_user_page(sg_page(&sg[i]));
- 		kfree(sg);
- 		ret = PTR_ERR(trans_private);
- 		goto out;
-@@ -464,9 +463,10 @@ void rds_rdma_free_op(struct rm_rdma_op *ro)
- 		 * to local memory */
- 		if (!ro->op_write) {
- 			WARN_ON(!page->mapping && irqs_disabled());
--			set_page_dirty(page);
-+			put_user_pages_dirty_lock(&page, 1, true);
-+		} else {
-+			put_user_page(page);
- 		}
--		put_page(page);
- 	}
- 
- 	kfree(ro->op_notifier);
-@@ -481,8 +481,7 @@ void rds_atomic_free_op(struct rm_atomic_op *ao)
- 	/* Mark page dirty if it was possibly modified, which
- 	 * is the case for a RDMA_READ which copies from remote
- 	 * to local memory */
--	set_page_dirty(page);
--	put_page(page);
-+	put_user_pages_dirty_lock(&page, 1, true);
- 
- 	kfree(ao->op_notifier);
- 	ao->op_notifier = NULL;
-@@ -867,7 +866,7 @@ int rds_cmsg_atomic(struct rds_sock *rs, struct rds_message *rm,
- 	return ret;
- err:
- 	if (page)
--		put_page(page);
-+		put_user_page(page);
- 	rm->atomic.op_active = 0;
- 	kfree(rm->atomic.op_notifier);
- 
+-	}
++	put_user_pages_dirty_lock(pages, num_pages, dirty);
+ 	kvfree(pages);
+ }
+ EXPORT_SYMBOL(ceph_put_page_vector);
 -- 
 2.22.0
 
