@@ -1,77 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 69CB77EC91
-	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2019 08:25:02 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D88A87EC92
+	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2019 08:25:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EFA9088498;
-	Fri,  2 Aug 2019 06:24:59 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DEE2E20501;
+	Fri,  2 Aug 2019 06:25:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dWsK10Dra1zw; Fri,  2 Aug 2019 06:24:59 +0000 (UTC)
+	with ESMTP id ZQw1NenImLwB; Fri,  2 Aug 2019 06:25:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5860F88415;
-	Fri,  2 Aug 2019 06:24:59 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4BEBE20397;
+	Fri,  2 Aug 2019 06:25:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DE7741BF27A
- for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 06:24:57 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 768E41BF27A
+ for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 06:25:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id DB0418615E
- for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 06:24:57 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 52FBC88415
+ for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 06:25:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4sYheuNssSHY for <devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 06:24:57 +0000 (UTC)
+ with ESMTP id s4Bjr2ImJPhV for <devel@linuxdriverproject.org>;
+ Fri,  2 Aug 2019 06:24:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
- [209.85.215.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7E9E686103
- for <devel@driverdev.osuosl.org>; Fri,  2 Aug 2019 06:24:57 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id t132so35528459pgb.9
- for <devel@driverdev.osuosl.org>; Thu, 01 Aug 2019 23:24:57 -0700 (PDT)
+Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
+ [209.85.210.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id B3E7F8844C
+ for <devel@driverdev.osuosl.org>; Fri,  2 Aug 2019 06:24:59 +0000 (UTC)
+Received: by mail-pf1-f194.google.com with SMTP id u14so35494679pfn.2
+ for <devel@driverdev.osuosl.org>; Thu, 01 Aug 2019 23:24:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=59h+gUge6S8yVn91fbWMnosNPgFcMjEQHfc/i+SvB9A=;
- b=BbQtyr+16tz520xTKI6yvVAcWK3A5pu9ntkIo68KZQGHKKmvI5xNPt7qKVaW3yHImn
- eOFRWwtKxyczBdhfXd/IENhmXqDF1jgsFb58bVsUGNJO2Lp3ueYYSJ24xkOmeQCz7vny
- CS0/RFTcQ/DTeJZgJdtKEZzjCygWBpCac7U7phmLbgEYT+ta+KJOHOnCbFQiydh+lq80
- WnnV0/X6Df/kMCzy/A8yPV0IlFn9k90AdT0TzOcE//VUkxk7ZReU+Zuux16swwWv45GN
- UKSql61w/uRD72iyYUT7/HctLuO4v/M/Lv4KDBKyRRndkP5PCGWeQONTazbxLue/cxiW
- LtEA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=Nc4VCQbxJzaCBkqPxArE9MLIV2MSfmfFev47Tsxxmqk=;
+ b=rPVCYfsLCyW9LVKH6suwBIrH/aBdNM/+crnmQ3uilA3/+Ra1fjQD+1aRBeEhMQ7XDV
+ P51OWEWcqq/IMxwLg+dvXek0EW/1A3sg0tusThdZnrCKgjTsRSTHpVGqZ6bXTuqYEfIs
+ Nwu57G3N+8l3NtLaDjC4GqDf+l2i8rusQFsFi7EQP6t7xsP9CaO8wnAjd7gtbf1IkrfT
+ Qgekf9cgpNSkgZMuv2YTlO6NSLrmhIDo7VRtH+PUMAgeBvD7m21VlneVv6tq7ZXR9Fi7
+ 76xgNa5daZUH3PQmwfvrbfjEdE7elpInDJJL8eSbkFxcyHijxDJvEq4gbnD5nhBcQgyn
+ v04g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=59h+gUge6S8yVn91fbWMnosNPgFcMjEQHfc/i+SvB9A=;
- b=Rb5YU1oWGQIZdRPHRJRRMXbmODXu9nybGTs618B20Xm4Q4cyyVZZmcK8kQXX4drKEs
- EWV1jW+YJVzZ43ddPuQu5jE0U/KPxqMWc8HSjC9ROYdi23CExfn2tcN3r5axPXr8bLBW
- FuM1enqqWteYKp/rQY46QFQ7Pog6zUT+NYCXsquuqxblSJ2UmIS6fL0JzQqDOYyn4Ug4
- iFzBHgNVM9W57aKoAxktyeom4FLiahD3eGN8bC77B3gvtJqEBX5Uz/qNTtu+Yptvs2lA
- L7GRTU5CdwEkGuAukAPeI8+KWQt+pEWq8gbaeS5JXl36gUSPVVXEC8kA6DQG27OBlabI
- W+JQ==
-X-Gm-Message-State: APjAAAWtmFyjyWBhGoMUw3FMxwHB+2+PAMskj7lhdRKoFTP1+0B2gqLT
- 09TeIcfW0RWD07VG/1+tcCM=
-X-Google-Smtp-Source: APXvYqx498KIJAxgPXsDT7m2yHk1MT60JXSy8sZ7d7KICMeQ9EV3WbgeU9Tp3cjoPZjnowZs7jO/AA==
-X-Received: by 2002:a62:fb18:: with SMTP id x24mr56517987pfm.231.1564727097275; 
- Thu, 01 Aug 2019 23:24:57 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=Nc4VCQbxJzaCBkqPxArE9MLIV2MSfmfFev47Tsxxmqk=;
+ b=Mv26s5O1SdotKviTaNVGG9vT9kzjaILpAwdL4vXmNnUmvFOUvRFn0g3vBlKv2EMnMR
+ MrBsn+CSUVpOmVGGMhvlclHZd9VrK9Oed4iBRT6IaM0pHqXARnGdq8cyAAUDLW8RE+Ta
+ 00x033MpQBWMvMwhC174kIzKVwcExzXdxeQMTGP1Wl6R7Du5Ix/7A3Z3kzdyS3pvt1UA
+ jlClOc8o9it9CNsVaAI8zFYS0fNz1D4ehu4ALOoswW/+hK47J67QWTYnb/B4JccILLRJ
+ Hch4WwhgLDe92rHSA2T7eoDMTxo4TU4To9I5ywbmCDDarKwYkhGN/lKwfg+ugFYyN07t
+ Cn/w==
+X-Gm-Message-State: APjAAAXHWf6HckXXvQ2dCRK9vf40jzI9FS/kj97lpyJTjJzZ94us5CqE
+ u+vxTP2f9Q2gdRm2fQygppE=
+X-Google-Smtp-Source: APXvYqyGpo/Wf2D6CFlgNlG1o733gpSNI12s1UXI/Yi6NwPp+6gVYUEdc3OHzK4n3hK6CSMbjGsVAw==
+X-Received: by 2002:a62:3c3:: with SMTP id 186mr57846229pfd.21.1564727099399; 
+ Thu, 01 Aug 2019 23:24:59 -0700 (PDT)
 Received: from localhost.localdomain ([122.163.105.8])
- by smtp.gmail.com with ESMTPSA id r15sm80249986pfh.121.2019.08.01.23.24.55
+ by smtp.gmail.com with ESMTPSA id r15sm80249986pfh.121.2019.08.01.23.24.57
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Thu, 01 Aug 2019 23:24:56 -0700 (PDT)
+ Thu, 01 Aug 2019 23:24:59 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: gregkh@linuxfoundation.org,
 	devel@driverdev.osuosl.org
-Subject: [PATCH 1/4] staging: rtl8723bs: Change return type of
- hal_btcoex_IsBtExist()
-Date: Fri,  2 Aug 2019 11:54:41 +0530
-Message-Id: <20190802062444.30384-1-nishkadg.linux@gmail.com>
+Subject: [PATCH 2/4] staging: rtl8723bs: Change return type of
+ hal_btcoex_IsBtControlLps()
+Date: Fri,  2 Aug 2019 11:54:42 +0530
+Message-Id: <20190802062444.30384-2-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
+In-Reply-To: <20190802062444.30384-1-nishkadg.linux@gmail.com>
+References: <20190802062444.30384-1-nishkadg.linux@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -91,41 +93,46 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change return type of hal_btcoex_IsBtExist from u8 to bool as its only
-possible return values are true and false.
+Change return type of hal_btcoex_IsBtControlLps from u8 to bool as it
+only returns boolean values.
+Change comparison to false within this function; check the boolean
+variable directly instead.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/rtl8723bs/hal/hal_btcoex.c     | 2 +-
+ drivers/staging/rtl8723bs/hal/hal_btcoex.c     | 4 ++--
  drivers/staging/rtl8723bs/include/hal_btcoex.h | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/staging/rtl8723bs/hal/hal_btcoex.c b/drivers/staging/rtl8723bs/hal/hal_btcoex.c
-index 8987b5f892c0..73f3d93d2d1a 100644
+index 73f3d93d2d1a..85f5371d349b 100644
 --- a/drivers/staging/rtl8723bs/hal/hal_btcoex.c
 +++ b/drivers/staging/rtl8723bs/hal/hal_btcoex.c
-@@ -1335,7 +1335,7 @@ void hal_btcoex_SetBTCoexist(struct adapter *padapter, u8 bBtExist)
-  *true	Enable BT co-exist mechanism
-  *false	Disable BT co-exist mechanism
-  */
--u8 hal_btcoex_IsBtExist(struct adapter *padapter)
-+bool hal_btcoex_IsBtExist(struct adapter *padapter)
- {
- 	struct hal_com_data *pHalData;
+@@ -1475,9 +1475,9 @@ void hal_btcoex_SetManualControl(struct adapter *padapter, u8 bmanual)
+ 	GLBtCoexist.bManualControl = bmanual;
+ }
  
+-u8 hal_btcoex_IsBtControlLps(struct adapter *padapter)
++bool hal_btcoex_IsBtControlLps(struct adapter *padapter)
+ {
+-	if (hal_btcoex_IsBtExist(padapter) == false)
++	if (!hal_btcoex_IsBtExist(padapter))
+ 		return false;
+ 
+ 	if (GLBtCoexist.btInfo.bBtDisabled)
 diff --git a/drivers/staging/rtl8723bs/include/hal_btcoex.h b/drivers/staging/rtl8723bs/include/hal_btcoex.h
-index 6f7514be998f..a91116e5c549 100644
+index a91116e5c549..da25f8e98ec7 100644
 --- a/drivers/staging/rtl8723bs/include/hal_btcoex.h
 +++ b/drivers/staging/rtl8723bs/include/hal_btcoex.h
-@@ -22,7 +22,7 @@ typedef struct _BT_COEXIST
- void DBG_BT_INFO(u8 *dbgmsg);
+@@ -47,7 +47,7 @@ void hal_btcoex_Handler(struct adapter *padapter);
  
- void hal_btcoex_SetBTCoexist(struct adapter *padapter, u8 bBtExist);
--u8 hal_btcoex_IsBtExist(struct adapter *padapter);
-+bool hal_btcoex_IsBtExist(struct adapter *padapter);
- bool hal_btcoex_IsBtDisabled(struct adapter *);
- void hal_btcoex_SetChipType(struct adapter *padapter, u8 chipType);
- void hal_btcoex_SetPgAntNum(struct adapter *padapter, u8 antNum);
+ s32 hal_btcoex_IsBTCoexCtrlAMPDUSize(struct adapter *padapter);
+ void hal_btcoex_SetManualControl(struct adapter *padapter, u8 bmanual);
+-u8 hal_btcoex_IsBtControlLps(struct adapter *);
++bool hal_btcoex_IsBtControlLps(struct adapter *padapter);
+ u8 hal_btcoex_IsLpsOn(struct adapter *);
+ u8 hal_btcoex_RpwmVal(struct adapter *);
+ u8 hal_btcoex_LpsVal(struct adapter *);
 -- 
 2.19.1
 
