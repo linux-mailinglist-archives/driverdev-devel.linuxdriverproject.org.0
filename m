@@ -2,77 +2,54 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EC0C67FC38
-	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2019 16:28:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 391EE7FCCC
+	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2019 16:52:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9082588648;
-	Fri,  2 Aug 2019 14:28:02 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 730268868D;
+	Fri,  2 Aug 2019 14:52:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id por9pPVWTTiI; Fri,  2 Aug 2019 14:28:02 +0000 (UTC)
+	with ESMTP id cp0KQb06axQF; Fri,  2 Aug 2019 14:52:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E03E9885F6;
-	Fri,  2 Aug 2019 14:28:01 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 84BA388667;
+	Fri,  2 Aug 2019 14:52:45 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 558251BF424
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 14:27:59 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1E8AF1BF2AB
+ for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 14:52:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 52D6988612
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 14:27:59 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1AFF88641E
+ for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 14:52:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 36gUAzQQ-oHN
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 14:27:58 +0000 (UTC)
+ with ESMTP id Q7oP9VGdf_56 for <devel@linuxdriverproject.org>;
+ Fri,  2 Aug 2019 14:52:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f68.google.com (mail-io1-f68.google.com
- [209.85.166.68])
- by hemlock.osuosl.org (Postfix) with ESMTPS id BA598885F6
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 14:27:58 +0000 (UTC)
-Received: by mail-io1-f68.google.com with SMTP id o9so48974689iom.3
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 02 Aug 2019 07:27:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=COQSSC3FyQ9zsjfcJetSPqTqonJJTUUS9kZ5oAAdlbY=;
- b=Dm0i06YnHPrJyh2t6AxP5+pDWHhxBDyVRQ3NyvWhqM+hhTTGp2a1tA25QSRPIpFGLd
- d2WxDEqNJxBlr268x4wTD4GVHW9PLpzYFkVHYy/zmFf8TH60Wc5zmomKg9S1czjqwqXW
- IItf257uk+GLejIInk9VtdCCesaxXki5WBoHqa11or+0rBk11whwzuISjO/gJDdkEXmj
- //6PEGhIkAS8Z43inMdfHFu+6fV+AyQsHFHwKnpvDA1+C/FSEbP8oOLpmaetwGPZefEb
- NQjxvs9b1m1BUWOEjh6oBL99uPFNquPqipy2WSvCZQoAeY21nlbY7RMFeC75fOq8fIN4
- oNQg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=COQSSC3FyQ9zsjfcJetSPqTqonJJTUUS9kZ5oAAdlbY=;
- b=B1BRjC3BjQdqa/rmRPk7Eb+t3xcBsaY2afUrzqoIbforZp0roCUV2GevIjZpFzm1fU
- zj39Idoxk5yCIPe8gQcgKO0j+osZqqgZa8TRj6XddSAejbYi2MbPTc9y0xhd5o3QSPu/
- YelJL0QDUJP0QKR8khQhZc6BTDtB9LNGPzr/et2y4/rmT/7uRZ2caw7busOyYmmo8tW7
- LPq3dYv+MQwEgejf2eEXOvxn9b5qBmqcLqLJHQnFKp4Xt1J7BFYMmtyaRMYmRYDZ4QLR
- 81A+ZTU6H2MzuW73jljSEQ7XbdNu3B1voG/txzi/z79IpifH+JN9UtT+aDihZT/BLzVz
- ybeA==
-X-Gm-Message-State: APjAAAULdk+4aHS/yxyj640CA8oc9Q5KEOsLZLi277tkmYi1v9MP0dFt
- 1dxm5GhuTeaBFfESzhVfn9QSo8vPXJlBVd3RDw==
-X-Google-Smtp-Source: APXvYqyIK5r/8JgcUZtRsBu9woEfJVYsrXqVzJCWby0n82DaBHIAmJp1K0rizYnOtojI+I9XChM8U73pDitezk79m2U=
-X-Received: by 2002:a02:914c:: with SMTP id b12mr3176875jag.105.1564756078071; 
- Fri, 02 Aug 2019 07:27:58 -0700 (PDT)
+Received: from mx1.suse.de (mx2.suse.de [195.135.220.15])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E0FE2863CD
+ for <devel@driverdev.osuosl.org>; Fri,  2 Aug 2019 14:52:40 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx1.suse.de (Postfix) with ESMTP id 80E69AF3F;
+ Fri,  2 Aug 2019 14:52:38 +0000 (UTC)
+Received: by quack2.suse.cz (Postfix, from userid 1000)
+ id 09FD71E433B; Fri,  2 Aug 2019 16:52:27 +0200 (CEST)
+Date: Fri, 2 Aug 2019 16:52:27 +0200
+From: Jan Kara <jack@suse.cz>
+To: Matthew Wilcox <willy@infradead.org>
+Subject: Re: [PATCH 00/34] put_user_pages(): miscellaneous call sites
+Message-ID: <20190802145227.GQ25064@quack2.suse.cz>
+References: <20190802022005.5117-1-jhubbard@nvidia.com>
+ <20190802091244.GD6461@dhcp22.suse.cz>
+ <20190802124146.GL25064@quack2.suse.cz>
+ <20190802142443.GB5597@bombadil.infradead.org>
 MIME-Version: 1.0
-Received: by 2002:a02:9188:0:0:0:0:0 with HTTP;
- Fri, 2 Aug 2019 07:27:57 -0700 (PDT)
-From: "Mrs,Mary J. Anold" <info.zennitbankplcnigerian@gmail.com>
-Date: Fri, 2 Aug 2019 15:27:57 +0100
-Message-ID: <CABHzvrknBv9u7WG8E3TPnxKanLiE+imPGF56fwZVo4Fpy0mHbA@mail.gmail.com>
-Subject: I have already sent you Money Gram payment of $5000.00 today,
- MTCN 10288059
-To: undisclosed-recipients:;
+Content-Disposition: inline
+In-Reply-To: <20190802142443.GB5597@bombadil.infradead.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,52 +62,69 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: moneygram.1820@outlook.fr
+Cc: linux-fbdev@vger.kernel.org, Jan Kara <jack@suse.cz>, kvm@vger.kernel.org,
+ Dave Hansen <dave.hansen@linux.intel.com>, Dave Chinner <david@fromorbit.com>,
+ dri-devel@lists.freedesktop.org, Michal Hocko <mhocko@kernel.org>,
+ linux-mm@kvack.org, sparclinux@vger.kernel.org,
+ Dan Williams <dan.j.williams@intel.com>, devel@driverdev.osuosl.org,
+ rds-devel@oss.oracle.com, linux-rdma@vger.kernel.org, x86@kernel.org,
+ amd-gfx@lists.freedesktop.org, Christoph Hellwig <hch@infradead.org>,
+ Jason Gunthorpe <jgg@ziepe.ca>, xen-devel@lists.xenproject.org,
+ devel@lists.orangefs.org, linux-media@vger.kernel.org,
+ John Hubbard <jhubbard@nvidia.com>, intel-gfx@lists.freedesktop.org,
+ john.hubbard@gmail.com, linux-block@vger.kernel.org,
+ =?iso-8859-1?B?Suly9G1l?= Glisse <jglisse@redhat.com>,
+ linux-rpi-kernel@lists.infradead.org, ceph-devel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-nfs@vger.kernel.org,
+ netdev@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
+ linux-xfs@vger.kernel.org, linux-crypto@vger.kernel.org,
+ linux-fsdevel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Attn Beneficiary,
+On Fri 02-08-19 07:24:43, Matthew Wilcox wrote:
+> On Fri, Aug 02, 2019 at 02:41:46PM +0200, Jan Kara wrote:
+> > On Fri 02-08-19 11:12:44, Michal Hocko wrote:
+> > > On Thu 01-08-19 19:19:31, john.hubbard@gmail.com wrote:
+> > > [...]
+> > > > 2) Convert all of the call sites for get_user_pages*(), to
+> > > > invoke put_user_page*(), instead of put_page(). This involves dozens of
+> > > > call sites, and will take some time.
+> > > 
+> > > How do we make sure this is the case and it will remain the case in the
+> > > future? There must be some automagic to enforce/check that. It is simply
+> > > not manageable to do it every now and then because then 3) will simply
+> > > be never safe.
+> > > 
+> > > Have you considered coccinele or some other scripted way to do the
+> > > transition? I have no idea how to deal with future changes that would
+> > > break the balance though.
+> > 
+> > Yeah, that's why I've been suggesting at LSF/MM that we may need to create
+> > a gup wrapper - say vaddr_pin_pages() - and track which sites dropping
+> > references got converted by using this wrapper instead of gup. The
+> > counterpart would then be more logically named as unpin_page() or whatever
+> > instead of put_user_page().  Sure this is not completely foolproof (you can
+> > create new callsite using vaddr_pin_pages() and then just drop refs using
+> > put_page()) but I suppose it would be a high enough barrier for missed
+> > conversions... Thoughts?
+> 
+> I think the API we really need is get_user_bvec() / put_user_bvec(),
+> and I know Christoph has been putting some work into that.  That avoids
+> doing refcount operations on hundreds of pages if the page in question is
+> a huge page.  Once people are switched over to that, they won't be tempted
+> to manually call put_page() on the individual constituent pages of a bvec.
 
-GoodNews
-I have already sent you Money Gram payment of $5000.00 today, MTCN 10288059
-because we have finally concluded to effect your transfer
-funds of $4.8,000.000usd
-through MONEY GRAM International Fund transfer Service
-Each payment will be sending to you by $5000.00 daily until the
-($4.8,000.000usd) is completely transferred
-we have this morning sent  MONEY GRAM payment of $5,000.00
-ready to pick up by you, Money Gram payment of $5000.00 sent today,
-MTCN 10288059
-So contact the MONEY GRAM Agent to pick up this first payment of $5000 now
+Well, get_user_bvec() is certainly a good API for one class of users but
+just looking at the above series, you'll see there are *many* places that
+just don't work with bvecs at all and you need something for those.
 
-Contact person Dr. Don James
-Direector MONEY GRAM Service,Benin
-Phone number: +229 98856728
-E-mail: moneygram.1820@outlook.fr
-
-Ask him to give you the complete, sender name, question and
-answer to enable you pick up the $5.000.00 sent today, Also you are
-instructed to re-confirm to him your information's as listed below to
-avoid wrong transactions
-
-(1) Receiver Name--------------
-(2) Contact address--------------
-(3) Country---------------------
-(4) Telephone------------------
-
-Contact Dr. Don James for your MONEY GRAM payment of $4.8,000.000usd
-Note: I have paid the deposit and insurrance fees for you but the only
-money you are required to send to them is just $19.00 dollars only for
-transfer fee
-You must make sure that you send this required transfer to office
-before you can be avle to pick up your first $5000.00 at your addrss
-today.
-We need your urgent reply
-
-Best Regards
-Mrs,Mary J. Anold
+								Honza
+-- 
+Jan Kara <jack@suse.com>
+SUSE Labs, CR
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
