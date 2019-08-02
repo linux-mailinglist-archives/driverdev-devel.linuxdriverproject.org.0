@@ -1,42 +1,42 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8A7E37F787
-	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2019 14:55:58 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 624CD7F762
+	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2019 14:54:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id D1FE2203F1;
-	Fri,  2 Aug 2019 12:55:50 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id ED65F87601;
+	Fri,  2 Aug 2019 12:54:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dPD4W+pi9iX3; Fri,  2 Aug 2019 12:55:48 +0000 (UTC)
+	with ESMTP id h1Eb1CcetlQD; Fri,  2 Aug 2019 12:54:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7527A2413D;
-	Fri,  2 Aug 2019 12:54:51 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B844A875E2;
+	Fri,  2 Aug 2019 12:54:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C670A1BF378
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 932AF1BF9BD
  for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 12:54:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C0657834A7
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8BCA0875E0
  for <devel@linuxdriverproject.org>; Fri,  2 Aug 2019 12:54:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ca5kN5fac1_q for <devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 12:54:44 +0000 (UTC)
+ with ESMTP id Ai4RPBYSgRP4 for <devel@linuxdriverproject.org>;
+ Fri,  2 Aug 2019 12:54:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 4E6B680221
- for <devel@driverdev.osuosl.org>; Fri,  2 Aug 2019 12:54:44 +0000 (UTC)
+Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 8002B87605
+ for <devel@driverdev.osuosl.org>; Fri,  2 Aug 2019 12:54:45 +0000 (UTC)
 Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id CBEF7DEA75231DA92A06;
- Fri,  2 Aug 2019 20:54:37 +0800 (CST)
+ by Forcepoint Email with ESMTP id D4EF8F2800FD38757019;
+ Fri,  2 Aug 2019 20:54:42 +0800 (CST)
 Received: from architecture4.huawei.com (10.140.130.215) by smtp.huawei.com
  (10.3.19.203) with Microsoft SMTP Server (TLS) id 14.3.439.0; Fri, 2 Aug 2019
- 20:54:31 +0800
+ 20:54:33 +0800
 From: Gao Xiang <gaoxiang25@huawei.com>
 To: Alexander Viro <viro@zeniv.linux.org.uk>, Greg Kroah-Hartman
  <gregkh@linuxfoundation.org>, Andrew Morton <akpm@linux-foundation.org>,
@@ -46,9 +46,9 @@ To: Alexander Viro <viro@zeniv.linux.org.uk>, Greg Kroah-Hartman
  "Darrick J . Wong" <darrick.wong@oracle.com>, Dave Chinner
  <david@fromorbit.com>, "Jaegeuk Kim" <jaegeuk@kernel.org>, Jan Kara
  <jack@suse.cz>, Linus Torvalds <torvalds@linux-foundation.org>
-Subject: [PATCH v6 18/24] erofs: introduce pagevec for decompression subsystem
-Date: Fri, 2 Aug 2019 20:53:41 +0800
-Message-ID: <20190802125347.166018-19-gaoxiang25@huawei.com>
+Subject: [PATCH v6 19/24] erofs: add erofs_allocpage()
+Date: Fri, 2 Aug 2019 20:53:42 +0800
+Message-ID: <20190802125347.166018-20-gaoxiang25@huawei.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190802125347.166018-1-gaoxiang25@huawei.com>
 References: <20190802125347.166018-1-gaoxiang25@huawei.com>
@@ -76,191 +76,56 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-For each physical cluster, there is a straight-forward
-way of allocating a fixed or variable-sized array to
-record the corresponding file pages for its decompression
-if we decide to decompress these pages asynchronously
-(eg. read-ahead case), however it will take variable-sized
-on-heap memory compared with traditional uncompressed
-filesystems.
-
-This patch introduces a pagevec solution to reuse some
-allocated file page in the time-sharing approach to store
-parts of the array itself in order to minimize the extra
-memory overhead, thus only a small-sized constant array
-used for booting the whole array itself up will be needed.
+This patch introduces an temporary _on-stack_ page
+pool to reuse the freed page directly as much as
+it can for better performance and release all pages
+at a time, it also slightly reduces the possibility of
+the potential memory allocation failure.
 
 Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
 ---
- fs/erofs/zpvec.h | 159 +++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 159 insertions(+)
- create mode 100644 fs/erofs/zpvec.h
+ fs/erofs/internal.h |  2 ++
+ fs/erofs/utils.c    | 14 ++++++++++++++
+ 2 files changed, 16 insertions(+)
 
-diff --git a/fs/erofs/zpvec.h b/fs/erofs/zpvec.h
-new file mode 100644
-index 000000000000..bb7689e67836
---- /dev/null
-+++ b/fs/erofs/zpvec.h
-@@ -0,0 +1,159 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * linux/fs/erofs/zpvec.h
-+ *
-+ * Copyright (C) 2018 HUAWEI, Inc.
-+ *             http://www.huawei.com/
-+ * Created by Gao Xiang <gaoxiang25@huawei.com>
-+ */
-+#ifndef __EROFS_FS_ZPVEC_H
-+#define __EROFS_FS_ZPVEC_H
+diff --git a/fs/erofs/internal.h b/fs/erofs/internal.h
+index 19694886dda9..1a322304560f 100644
+--- a/fs/erofs/internal.h
++++ b/fs/erofs/internal.h
+@@ -489,6 +489,8 @@ int erofs_namei(struct inode *dir, struct qstr *name,
+ extern const struct file_operations erofs_dir_fops;
+ 
+ /* utils.c */
++struct page *erofs_allocpage(struct list_head *pool, gfp_t gfp, bool nofail);
 +
-+#include "tagptr.h"
-+
-+/* page type in pagevec for decompress subsystem */
-+enum z_erofs_page_type {
-+	/* including Z_EROFS_VLE_PAGE_TAIL_EXCLUSIVE */
-+	Z_EROFS_PAGE_TYPE_EXCLUSIVE,
-+
-+	Z_EROFS_VLE_PAGE_TYPE_TAIL_SHARED,
-+
-+	Z_EROFS_VLE_PAGE_TYPE_HEAD,
-+	Z_EROFS_VLE_PAGE_TYPE_MAX
-+};
-+
-+extern void __compiletime_error("Z_EROFS_PAGE_TYPE_EXCLUSIVE != 0")
-+	__bad_page_type_exclusive(void);
-+
-+/* pagevec tagged pointer */
-+typedef tagptr2_t	erofs_vtptr_t;
-+
-+/* pagevec collector */
-+struct z_erofs_pagevec_ctor {
-+	struct page *curr, *next;
-+	erofs_vtptr_t *pages;
-+
-+	unsigned int nr, index;
-+};
-+
-+static inline void z_erofs_pagevec_ctor_exit(struct z_erofs_pagevec_ctor *ctor,
-+					     bool atomic)
+ #if (EROFS_PCPUBUF_NR_PAGES > 0)
+ void *erofs_get_pcpubuf(unsigned int pagenr);
+ #define erofs_put_pcpubuf(buf) do { \
+diff --git a/fs/erofs/utils.c b/fs/erofs/utils.c
+index f3eed9af24d6..ae6362abed67 100644
+--- a/fs/erofs/utils.c
++++ b/fs/erofs/utils.c
+@@ -9,6 +9,20 @@
+ #include "internal.h"
+ #include <linux/pagevec.h>
+ 
++struct page *erofs_allocpage(struct list_head *pool, gfp_t gfp, bool nofail)
 +{
-+	if (!ctor->curr)
-+		return;
++	struct page *page;
 +
-+	if (atomic)
-+		kunmap_atomic(ctor->pages);
-+	else
-+		kunmap(ctor->curr);
-+}
-+
-+static inline struct page *
-+z_erofs_pagevec_ctor_next_page(struct z_erofs_pagevec_ctor *ctor,
-+			       unsigned int nr)
-+{
-+	unsigned int index;
-+
-+	/* keep away from occupied pages */
-+	if (ctor->next)
-+		return ctor->next;
-+
-+	for (index = 0; index < nr; ++index) {
-+		const erofs_vtptr_t t = ctor->pages[index];
-+		const unsigned int tags = tagptr_unfold_tags(t);
-+
-+		if (tags == Z_EROFS_PAGE_TYPE_EXCLUSIVE)
-+			return tagptr_unfold_ptr(t);
++	if (!list_empty(pool)) {
++		page = lru_to_page(pool);
++		DBG_BUGON(page_ref_count(page) != 1);
++		list_del(&page->lru);
++	} else {
++		page = alloc_pages(gfp | (nofail ? __GFP_NOFAIL : 0), 0);
 +	}
-+	DBG_BUGON(nr >= ctor->nr);
-+	return NULL;
++	return page;
 +}
 +
-+static inline void
-+z_erofs_pagevec_ctor_pagedown(struct z_erofs_pagevec_ctor *ctor,
-+			      bool atomic)
-+{
-+	struct page *next = z_erofs_pagevec_ctor_next_page(ctor, ctor->nr);
-+
-+	z_erofs_pagevec_ctor_exit(ctor, atomic);
-+
-+	ctor->curr = next;
-+	ctor->next = NULL;
-+	ctor->pages = atomic ?
-+		kmap_atomic(ctor->curr) : kmap(ctor->curr);
-+
-+	ctor->nr = PAGE_SIZE / sizeof(struct page *);
-+	ctor->index = 0;
-+}
-+
-+static inline void z_erofs_pagevec_ctor_init(struct z_erofs_pagevec_ctor *ctor,
-+					     unsigned int nr,
-+					     erofs_vtptr_t *pages,
-+					     unsigned int i)
-+{
-+	ctor->nr = nr;
-+	ctor->curr = ctor->next = NULL;
-+	ctor->pages = pages;
-+
-+	if (i >= nr) {
-+		i -= nr;
-+		z_erofs_pagevec_ctor_pagedown(ctor, false);
-+		while (i > ctor->nr) {
-+			i -= ctor->nr;
-+			z_erofs_pagevec_ctor_pagedown(ctor, false);
-+		}
-+	}
-+	ctor->next = z_erofs_pagevec_ctor_next_page(ctor, i);
-+	ctor->index = i;
-+}
-+
-+static inline bool z_erofs_pagevec_enqueue(struct z_erofs_pagevec_ctor *ctor,
-+					   struct page *page,
-+					   enum z_erofs_page_type type,
-+					   bool *occupied)
-+{
-+	*occupied = false;
-+	if (unlikely(!ctor->next && type))
-+		if (ctor->index + 1 == ctor->nr)
-+			return false;
-+
-+	if (unlikely(ctor->index >= ctor->nr))
-+		z_erofs_pagevec_ctor_pagedown(ctor, false);
-+
-+	/* exclusive page type must be 0 */
-+	if (Z_EROFS_PAGE_TYPE_EXCLUSIVE != (uintptr_t)NULL)
-+		__bad_page_type_exclusive();
-+
-+	/* should remind that collector->next never equal to 1, 2 */
-+	if (type == (uintptr_t)ctor->next) {
-+		ctor->next = page;
-+		*occupied = true;
-+	}
-+	ctor->pages[ctor->index++] = tagptr_fold(erofs_vtptr_t, page, type);
-+	return true;
-+}
-+
-+static inline struct page *
-+z_erofs_pagevec_dequeue(struct z_erofs_pagevec_ctor *ctor,
-+			enum z_erofs_page_type *type)
-+{
-+	erofs_vtptr_t t;
-+
-+	if (unlikely(ctor->index >= ctor->nr)) {
-+		DBG_BUGON(!ctor->next);
-+		z_erofs_pagevec_ctor_pagedown(ctor, true);
-+	}
-+
-+	t = ctor->pages[ctor->index];
-+
-+	*type = tagptr_unfold_tags(t);
-+
-+	/* should remind that collector->next never equal to 1, 2 */
-+	if (*type == (uintptr_t)ctor->next)
-+		ctor->next = tagptr_unfold_ptr(t);
-+
-+	ctor->pages[ctor->index++] = tagptr_fold(erofs_vtptr_t, NULL, 0);
-+	return tagptr_unfold_ptr(t);
-+}
-+#endif
-+
+ #if (EROFS_PCPUBUF_NR_PAGES > 0)
+ static struct {
+ 	u8 data[PAGE_SIZE * EROFS_PCPUBUF_NR_PAGES];
 -- 
 2.17.1
 
