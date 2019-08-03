@@ -1,122 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CFA86802FE
-	for <lists+driverdev-devel@lfdr.de>; Sat,  3 Aug 2019 00:52:09 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 612FD80362
+	for <lists+driverdev-devel@lfdr.de>; Sat,  3 Aug 2019 02:13:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id D216420434;
-	Fri,  2 Aug 2019 22:52:07 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7E5A186502;
+	Sat,  3 Aug 2019 00:13:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ChsTIuyTVFcv; Fri,  2 Aug 2019 22:52:06 +0000 (UTC)
+	with ESMTP id HZPIVslqcql7; Sat,  3 Aug 2019 00:13:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 253AF20405;
-	Fri,  2 Aug 2019 22:52:04 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 65F5C864B3;
+	Sat,  3 Aug 2019 00:13:46 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E61C51BF831
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 22:51:33 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 813881BF9C2
+ for <devel@linuxdriverproject.org>; Sat,  3 Aug 2019 00:13:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9F0F587F78
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 22:51:23 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7B567875A2
+ for <devel@linuxdriverproject.org>; Sat,  3 Aug 2019 00:13:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HhDcRRVoN9ek
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 22:51:14 +0000 (UTC)
+ with ESMTP id BNcB08GMOm3I for <devel@linuxdriverproject.org>;
+ Sat,  3 Aug 2019 00:13:43 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from APC01-SG2-obe.outbound.protection.outlook.com
- (mail-eopbgr1310111.outbound.protection.outlook.com [40.107.131.111])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A1ACD87ED2
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  2 Aug 2019 22:50:27 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jZpj3xiYWqAXJYkfFSg66zoQp+TP3xNGNWX02d7JhW2WO9MPJcH/btcq3u7fm9sO+gBzj51aQx6E50lSKxvOqXCi1rCE33VjDTKKV8nv+Vsd5IGnbJObVTcKtgMPv/L/3RMBqWUN3zHRKwfVOVD+eHB/GxzqqzMMYnid8wlaZBSUGqlwM1/RP5hXPy4c2911eNVmaeB4G81m9ugh73BdEQxCQW/fDpZsNj8AIMmv12bz4VygwC+sqMBpWmnibS3srcQbPaEOKuzBQ+dPRN7Olz0MzS2wU5XJUX5YE0eYT2/fxa3cQThDkmabhgmnNzjRAFaxzZWKmfCRhB2iOED29w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=SEoVPnmO3JxhE0nF6jREGy77cqKv65QzLFWHO2SQY74=;
- b=aJYCXeIzqWQxQU4kpzL29Zu1Qa2u6Pe2MUHAj6Ahgy8VxcY71y0PeDWzahFosA77EueQhBN8R8EMVya+xpBagxYAPeO955QLoChnxv3jOUAuO57Znlpv77T/HBjSngogGdXbWTDlMogU4Rylx9/dRQD8f86MBMCD+Jjn9AVVD6wlF8NSdKaOrF0bMWoPQITckbwRuU4zmm7AQJCIdiqrtWx0Lh8ib6RhRSXYQUuFfgpnuJyFglmhh2HGrrOgl8czblMMA8MnnGCCfEoOZJdr3WEOd2YXUzfGebXHKkftyJjBMb+Lta0VMvWxbdroHgPBbjoL665agdd+OaToo3ZhaQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microsoft.com; dmarc=pass action=none
- header.from=microsoft.com; dkim=pass header.d=microsoft.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=SEoVPnmO3JxhE0nF6jREGy77cqKv65QzLFWHO2SQY74=;
- b=K7UQc5TLGPg5Dvcd8DjQO9siXzY8WuTn67VKEV1AieoFQIfn0Chj78swZDfBg7yXN2+xfHJxs8cRSoeobpA1ZDbID85Hm3tisyFCAWiU5eeSYmXxXfF9GSXV4d+iato/aKn6S17c7Q9vBDW9NeYa0olBbZ52fijP9avBZTF36Vk=
-Received: from PU1P153MB0169.APCP153.PROD.OUTLOOK.COM (10.170.189.13) by
- PU1P153MB0105.APCP153.PROD.OUTLOOK.COM (10.170.188.10) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2157.2; Fri, 2 Aug 2019 22:50:21 +0000
-Received: from PU1P153MB0169.APCP153.PROD.OUTLOOK.COM
- ([fe80::d44e:57b7:d8fc:e91c]) by PU1P153MB0169.APCP153.PROD.OUTLOOK.COM
- ([fe80::d44e:57b7:d8fc:e91c%7]) with mapi id 15.20.2157.001; Fri, 2 Aug 2019
- 22:50:21 +0000
-From: Dexuan Cui <decui@microsoft.com>
-To: "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>,
- "bhelgaas@google.com" <bhelgaas@google.com>, "linux-pci@vger.kernel.org"
- <linux-pci@vger.kernel.org>, Michael Kelley <mikelley@microsoft.com>, Stephen
- Hemminger <sthemmin@microsoft.com>
-Subject: [PATCH v2] PCI: hv: Fix panic by calling hv_pci_remove_slots() earlier
-Thread-Topic: [PATCH v2] PCI: hv: Fix panic by calling hv_pci_remove_slots()
- earlier
-Thread-Index: AdVJg/VErstT3ocmRgK9bYa/R2iIzA==
-Date: Fri, 2 Aug 2019 22:50:20 +0000
-Message-ID: <PU1P153MB01693F32F6BB02F9655CC84EBFD90@PU1P153MB0169.APCP153.PROD.OUTLOOK.COM>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Enabled=True;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SiteId=72f988bf-86f1-41af-91ab-2d7cd011db47;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Owner=decui@microsoft.com;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SetDate=2019-08-02T22:50:18.0174061Z;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Name=General;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Application=Microsoft Azure
- Information Protection;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_ActionId=72f415c9-f574-414f-b43f-00fa1f90d651;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Extended_MSFT_Method=Automatic
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=decui@microsoft.com; 
-x-originating-ip: [2601:600:a280:1760:71c8:ee0a:27d:d7aa]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: a14aa9b9-639c-43f7-597e-08d7179bcc68
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(5600148)(711020)(4605104)(1401327)(4618075)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7193020);
- SRVR:PU1P153MB0105; 
-x-ms-traffictypediagnostic: PU1P153MB0105:|PU1P153MB0105:
-x-ms-exchange-transport-forked: True
-x-ms-exchange-purlcount: 2
-x-ld-processed: 72f988bf-86f1-41af-91ab-2d7cd011db47,ExtAddr
-x-microsoft-antispam-prvs: <PU1P153MB0105CC9A7F7A1EAF38AD6E16BFD90@PU1P153MB0105.APCP153.PROD.OUTLOOK.COM>
-x-ms-oob-tlc-oobclassifiers: OLM:6790;
-x-forefront-prvs: 011787B9DD
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(376002)(39860400002)(366004)(396003)(136003)(346002)(189003)(199004)(54534003)(14454004)(486006)(5660300002)(52536014)(8676002)(966005)(478600001)(10090500001)(8936002)(4326008)(2201001)(10290500003)(71200400001)(74316002)(64756008)(33656002)(7696005)(53936002)(102836004)(66446008)(2501003)(99286004)(66556008)(186003)(66946007)(6636002)(6506007)(81156014)(81166006)(7736002)(55016002)(1511001)(68736007)(256004)(14444005)(107886003)(2906002)(66476007)(76116006)(6306002)(9686003)(7416002)(110136005)(8990500004)(6436002)(305945005)(25786009)(476003)(54906003)(316002)(6116002)(46003)(86362001)(22452003)(71190400001);
- DIR:OUT; SFP:1102; SCL:1; SRVR:PU1P153MB0105;
- H:PU1P153MB0169.APCP153.PROD.OUTLOOK.COM; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: microsoft.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: cmjGBKpE/l+VDInHfIMOQDyOdGLFpnPNg8G9nQo2S0f55/fdd9hugEVGAPeV8LUM26hAsZkt0+KoAr+nr9EyjlL2uepR/pkrP8LzHrHpQTreDeaXJ+w3p3tGw3APbQL4eYHHqx+2IGJhcXrBY8T2sXU7Dn0KLSliviKjNuB6z0ER61Bgh+MgER64te8BDsAXmIi1Ab1/8uCQswqRAUBlAGm9zL/rZ07244MUCx5/+wbcJCUtMqKFcD0uRVLVCtdYpwtynQl7t46N21gZv34oW9GtHQNY5SpCf52Yaugpma+RFB4OPqwH12QzxDBhQRA0cb/Non8F87uyDNH5ZWYXg89VlOlrRsY1dQvC653WrmIAQgMEDgyc/AJpU65It4NpTPrFDtcOi1FFxguBrW3cT7URDpVVlBDL9rxGPYGKOmc=
+Received: from hqemgate16.nvidia.com (hqemgate16.nvidia.com [216.228.121.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 432AC826E0
+ for <devel@driverdev.osuosl.org>; Sat,  3 Aug 2019 00:13:43 +0000 (UTC)
+Received: from hqpgpgate101.nvidia.com (Not Verified[216.228.121.13]) by
+ hqemgate16.nvidia.com (using TLS: TLSv1.2, DES-CBC3-SHA)
+ id <B5d44d1b70000>; Fri, 02 Aug 2019 17:13:43 -0700
+Received: from hqmail.nvidia.com ([172.20.161.6])
+ by hqpgpgate101.nvidia.com (PGP Universal service);
+ Fri, 02 Aug 2019 17:13:42 -0700
+X-PGP-Universal: processed;
+ by hqpgpgate101.nvidia.com on Fri, 02 Aug 2019 17:13:42 -0700
+Received: from [10.110.48.28] (10.124.1.5) by HQMAIL107.nvidia.com
+ (172.20.187.13) with Microsoft SMTP Server (TLS) id 15.0.1473.3; Sat, 3 Aug
+ 2019 00:13:42 +0000
+Subject: Re: [PATCH v4] staging: kpc2000: Convert put_page() to
+ put_user_page*()
+To: Bharath Vedartham <linux.bhar@gmail.com>, <gregkh@linuxfoundation.org>,
+ <Matt.Sickler@daktronics.com>
+References: <1564058658-3551-1-git-send-email-linux.bhar@gmail.com>
+X-Nvconfidentiality: public
+From: John Hubbard <jhubbard@nvidia.com>
+Message-ID: <4467d671-d011-0ebc-e2de-48a9745d4fe6@nvidia.com>
+Date: Fri, 2 Aug 2019 17:13:42 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a14aa9b9-639c-43f7-597e-08d7179bcc68
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Aug 2019 22:50:20.8477 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: jjAFy6/HYkz/NnbomXVaBxtYA46fm8x6UfEx5VvkuJHaj5unJPtrdAQORuUHvMJ53UgQY2L3lH8ITZ4RTDL9gg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PU1P153MB0105
+In-Reply-To: <1564058658-3551-1-git-send-email-linux.bhar@gmail.com>
+X-Originating-IP: [10.124.1.5]
+X-ClientProxiedBy: HQMAIL104.nvidia.com (172.18.146.11) To
+ HQMAIL107.nvidia.com (172.20.187.13)
+Content-Language: en-US
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nvidia.com; s=n1;
+ t=1564791223; bh=xdJekrXrqSEkbcFhdjp7xR8+tNNoUXUqIgXLHmUnwRs=;
+ h=X-PGP-Universal:Subject:To:CC:References:X-Nvconfidentiality:From:
+ Message-ID:Date:User-Agent:MIME-Version:In-Reply-To:
+ X-Originating-IP:X-ClientProxiedBy:Content-Type:Content-Language:
+ Content-Transfer-Encoding;
+ b=Q3ngW/HtFs5cKcLOFRiDyp/sjKGrf3S/BIpPhC3sg/XAHIkhAPuOkBNsWlaIfZQm+
+ DyOw+GoC7Ln++nsmMD6ICDlKHFOoazO5hasrN5Se39NVf4JiW0c0sWVapHhkd1zqVJ
+ dAgPBLhMLeWZhlQg/eS3kDbFwwREGPFjShjmIEQwOFYDWJumJqcHn31IVhlLzvXG/5
+ xMnItcy5iCsWOKLGXgW1x7XFgwhARbt77SFgA4QKuuOuvOspra98z+moBTUmkoKBUh
+ xnNIF9Rn832yv7EMfep7LRQtgtB1yRzPgmhHUnfCkhoTZZSN59Pqt5f96lTYp21RKS
+ ClwVCbnz8Yi8w==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -129,56 +83,81 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "linux-hyperv@vger.kernel.org" <linux-hyperv@vger.kernel.org>,
- Haiyang Zhang <haiyangz@microsoft.com>,
- "driverdev-devel@linuxdriverproject.org"
- <driverdev-devel@linuxdriverproject.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "jackm@mellanox.com" <jackm@mellanox.com>,
- Sasha Levin <Alexander.Levin@microsoft.com>,
- "marcelo.cerri@canonical.com" <marcelo.cerri@canonical.com>,
- "olaf@aepfle.de" <olaf@aepfle.de>, "apw@canonical.com" <apw@canonical.com>,
- vkuznets <vkuznets@redhat.com>, "jasowang@redhat.com" <jasowang@redhat.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, linux-mm@kvack.org,
+ =?UTF-8?B?SsOpcsO0bWUgR2xpc3Nl?= <jglisse@redhat.com>,
+ linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-
-The slot must be removed before the pci_dev is removed, otherwise a panic
-can happen due to use-after-free.
-
-Fixes: 15becc2b56c6 ("PCI: hv: Add hv_pci_remove_slots() when we unload the driver")
-Signed-off-by: Dexuan Cui <decui@microsoft.com>
-Cc: stable@vger.kernel.org
----
-
-Changes in v2:
-  Improved the changelog accordign to the discussion with Bjorn Helgaas:
-	  https://lkml.org/lkml/2019/8/1/1173
-	  https://lkml.org/lkml/2019/8/2/1559
-
- drivers/pci/controller/pci-hyperv.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/pci/controller/pci-hyperv.c b/drivers/pci/controller/pci-hyperv.c
-index 6b9cc6e60a..68c611d 100644
---- a/drivers/pci/controller/pci-hyperv.c
-+++ b/drivers/pci/controller/pci-hyperv.c
-@@ -2757,8 +2757,8 @@ static int hv_pci_remove(struct hv_device *hdev)
- 		/* Remove the bus from PCI's point of view. */
- 		pci_lock_rescan_remove();
- 		pci_stop_root_bus(hbus->pci_bus);
--		pci_remove_root_bus(hbus->pci_bus);
- 		hv_pci_remove_slots(hbus);
-+		pci_remove_root_bus(hbus->pci_bus);
- 		pci_unlock_rescan_remove();
- 		hbus->state = hv_pcibus_removed;
- 	}
--- 
-1.8.3.1
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gNy8yNS8xOSA1OjQ0IEFNLCBCaGFyYXRoIFZlZGFydGhhbSB3cm90ZToKPiBGb3IgcGFnZXMg
+dGhhdCB3ZXJlIHJldGFpbmVkIHZpYSBnZXRfdXNlcl9wYWdlcyooKSwgcmVsZWFzZSB0aG9zZSBw
+YWdlcwo+IHZpYSB0aGUgbmV3IHB1dF91c2VyX3BhZ2UqKCkgcm91dGluZXMsIGluc3RlYWQgb2Yg
+dmlhIHB1dF9wYWdlKCkuCj4gCj4gVGhpcyBpcyBwYXJ0IGEgdHJlZS13aWRlIGNvbnZlcnNpb24s
+IGFzIGRlc2NyaWJlZCBpbiBjb21taXQgZmMxZDhlN2NjYTJkCj4gKCJtbTogaW50cm9kdWNlIHB1
+dF91c2VyX3BhZ2UqKCksIHBsYWNlaG9sZGVyIHZlcnNpb25zIikuCj4gCgpIaSBCaGFyYXRoLAoK
+SWYgeW91IGxpa2UsIEkgY291bGQgcmUtcG9zdCB5b3VyIHBhdGNoIGhlcmUsIG1vZGlmaWVkIHNs
+aWdodGx5LCBhcyBwYXJ0IG9mCnRoZSBuZXh0IHZlcnNpb24gb2YgdGhlIG1pc2NlbGxhbmVvdXMg
+Y2FsbCBzaXRlIGNvbnZlcnNpb24gc2VyaWVzIFsxXS4KCkFzIHBhcnQgb2YgdGhhdCwgd2Ugc2hv
+dWxkIGNoYW5nZSB0aGlzIHRvIHVzZSBwdXRfdXNlcl9wYWdlc19kaXJ0eV9sb2NrKCkgCihzZWUg
+YmVsb3cpLgoKCj4gQ2M6IElyYSBXZWlueSA8aXJhLndlaW55QGludGVsLmNvbT4KPiBDYzogSm9o
+biBIdWJiYXJkIDxqaHViYmFyZEBudmlkaWEuY29tPgo+IENjOiBKw6lyw7RtZSBHbGlzc2UgPGpn
+bGlzc2VAcmVkaGF0LmNvbT4KPiBDYzogR3JlZyBLcm9haC1IYXJ0bWFuIDxncmVna2hAbGludXhm
+b3VuZGF0aW9uLm9yZz4KPiBDYzogTWF0dCBTaWNrbGVyIDxNYXR0LlNpY2tsZXJAZGFrdHJvbmlj
+cy5jb20+Cj4gQ2M6IGRldmVsQGRyaXZlcmRldi5vc3Vvc2wub3JnCj4gQ2M6IGxpbnV4LWtlcm5l
+bEB2Z2VyLmtlcm5lbC5vcmcKPiBDYzogbGludXgtbW1Aa3ZhY2sub3JnCj4gUmV2aWV3ZWQtYnk6
+IEpvaG4gSHViYmFyZCA8amh1YmJhcmRAbnZpZGlhLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBCaGFy
+YXRoIFZlZGFydGhhbSA8bGludXguYmhhckBnbWFpbC5jb20+Cj4gLS0tCj4gQ2hhbmdlcyBzaW5j
+ZSB2MQo+ICAgICAgICAgLSBJbXByb3ZlZCBjaGFuZ2Vsb2cgYnkgSm9obidzIHN1Z2dlc3Rpb24u
+Cj4gICAgICAgICAtIE1vdmVkIGxvZ2ljIHRvIGRpcnR5IHBhZ2VzIGJlbG93IHNnX2RtYV91bm1h
+cAo+ICAgICAgICAgIGFuZCByZW1vdmVkIFBhZ2VSZXNlcnZlZCBjaGVjay4KPiBDaGFuZ2VzIHNp
+bmNlIHYyCj4gICAgICAgICAtIEFkZGVkIGJhY2sgUGFnZVJlc2V2ZXJlZCBjaGVjayBhcwo+ICAg
+ICAgICAgc3VnZ2VzdGVkIGJ5IEpvaG4gSHViYmFyZC4KPiBDaGFuZ2VzIHNpbmNlIHYzCj4gICAg
+ICAgICAtIENoYW5nZWQgdGhlIGNoYW5nZWxvZyBhcyBzdWdnZXN0ZWQgYnkgSm9obi4KPiAgICAg
+ICAgIC0gQWRkZWQgSm9obidzIFJldmlld2VkLUJ5IHRhZy4KPiBDaGFuZ2VzIHNpbmNlIHY0Cj4g
+ICAgICAgICAtIFJlYmFzZWQgdGhlIHBhdGNoIG9uIHRoZSBzdGFnaW5nIHRyZWUuCj4gICAgICAg
+ICAtIEltcHJvdmVkIGNvbW1pdCBsb2cgYnkgZml4aW5nIGEgbGluZSB3cmFwLgo+IC0tLQo+ICBk
+cml2ZXJzL3N0YWdpbmcva3BjMjAwMC9rcGNfZG1hL2ZpbGVvcHMuYyB8IDE3ICsrKysrKy0tLS0t
+LS0tLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCA2IGluc2VydGlvbnMoKyksIDExIGRlbGV0aW9ucygt
+KQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcva3BjMjAwMC9rcGNfZG1hL2ZpbGVv
+cHMuYyBiL2RyaXZlcnMvc3RhZ2luZy9rcGMyMDAwL2twY19kbWEvZmlsZW9wcy5jCj4gaW5kZXgg
+NDhjYTg4Yi4uZjE1ZTI5MiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3N0YWdpbmcva3BjMjAwMC9r
+cGNfZG1hL2ZpbGVvcHMuYwo+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9rcGMyMDAwL2twY19kbWEv
+ZmlsZW9wcy5jCj4gQEAgLTE5MCw5ICsxOTAsNyBAQCBzdGF0aWMgaW50IGtwY19kbWFfdHJhbnNm
+ZXIoc3RydWN0IGRldl9wcml2YXRlX2RhdGEgKnByaXYsCj4gIAlzZ19mcmVlX3RhYmxlKCZhY2Qt
+PnNndCk7Cj4gICBlcnJfZG1hX21hcF9zZzoKPiAgIGVycl9hbGxvY19zZ190YWJsZToKPiAtCWZv
+ciAoaSA9IDAgOyBpIDwgYWNkLT5wYWdlX2NvdW50IDsgaSsrKSB7Cj4gLQkJcHV0X3BhZ2UoYWNk
+LT51c2VyX3BhZ2VzW2ldKTsKPiAtCX0KPiArCXB1dF91c2VyX3BhZ2VzKGFjZC0+dXNlcl9wYWdl
+cywgYWNkLT5wYWdlX2NvdW50KTsKPiAgIGVycl9nZXRfdXNlcl9wYWdlczoKPiAgCWtmcmVlKGFj
+ZC0+dXNlcl9wYWdlcyk7Cj4gICBlcnJfYWxsb2NfdXNlcnBhZ2VzOgo+IEBAIC0yMTEsMTYgKzIw
+OSwxMyBAQCB2b2lkICB0cmFuc2Zlcl9jb21wbGV0ZV9jYihzdHJ1Y3QgYWlvX2NiX2RhdGEgKmFj
+ZCwgc2l6ZV90IHhmcl9jb3VudCwgdTMyIGZsYWdzKQo+ICAJQlVHX09OKGFjZC0+bGRldiA9PSBO
+VUxMKTsKPiAgCUJVR19PTihhY2QtPmxkZXYtPnBsZGV2ID09IE5VTEwpOwo+ICAKPiAtCWZvciAo
+aSA9IDAgOyBpIDwgYWNkLT5wYWdlX2NvdW50IDsgaSsrKSB7Cj4gLQkJaWYgKCFQYWdlUmVzZXJ2
+ZWQoYWNkLT51c2VyX3BhZ2VzW2ldKSkgewo+IC0JCQlzZXRfcGFnZV9kaXJ0eShhY2QtPnVzZXJf
+cGFnZXNbaV0pOwo+IC0JCX0KPiAtCX0KPiAtCj4gIAlkbWFfdW5tYXBfc2coJmFjZC0+bGRldi0+
+cGxkZXYtPmRldiwgYWNkLT5zZ3Quc2dsLCBhY2QtPnNndC5uZW50cywgYWNkLT5sZGV2LT5kaXIp
+Owo+ICAKPiAtCWZvciAoaSA9IDAgOyBpIDwgYWNkLT5wYWdlX2NvdW50IDsgaSsrKSB7Cj4gLQkJ
+cHV0X3BhZ2UoYWNkLT51c2VyX3BhZ2VzW2ldKTsKPiArCWZvciAoaSA9IDA7IGkgPCBhY2QtPnBh
+Z2VfY291bnQ7IGkrKykgewo+ICsJCWlmICghUGFnZVJlc2VydmVkKGFjZC0+dXNlcl9wYWdlc1tp
+XSkpCj4gKwkJCXB1dF91c2VyX3BhZ2VzX2RpcnR5KCZhY2QtPnVzZXJfcGFnZXNbaV0sIDEpOwoK
+ClRoaXMgd291bGQgY2hhbmdlIHRvOgoJCQlwdXRfdXNlcl9wYWdlc19kaXJ0eV9sb2NrKCZhY2Qt
+PnVzZXJfcGFnZXNbaV0sIDEsIHRydWUpOwoKCi4uLmFuZCB3ZSdkIGFkZCB0aGlzIGJsdXJiICh0
+aGlzIHRpbWUgd2l0aCBDSCdzIG5hbWUgc3BlbGxlZCBwcm9wZXJseSkgdG8gCnRoZSBjb21taXQg
+ZGVzY3JpcHRpb246CgpOb3RlIHRoYXQgdGhpcyBlZmZlY3RpdmVseSBjaGFuZ2VzIHRoZSBjb2Rl
+J3MgYmVoYXZpb3IgaW4KcXBfcmVsZWFzZV9wYWdlcygpOiBpdCBub3cgdWx0aW1hdGVseSBjYWxs
+cyBzZXRfcGFnZV9kaXJ0eV9sb2NrKCksCmluc3RlYWQgb2Ygc2V0X3BhZ2VfZGlydHkoKS4gVGhp
+cyBpcyBwcm9iYWJseSBtb3JlIGFjY3VyYXRlLgoKQXMgQ2hyaXN0b3BoIEhlbGx3aWcgcHV0IGl0
+LCAic2V0X3BhZ2VfZGlydHkoKSBpcyBvbmx5IHNhZmUgaWYgd2UgYXJlCmRlYWxpbmcgd2l0aCBh
+IGZpbGUgYmFja2VkIHBhZ2Ugd2hlcmUgd2UgaGF2ZSByZWZlcmVuY2Ugb24gdGhlIGlub2RlIGl0
+CmhhbmdzIG9mZi4iIFsxXQoKWzFdIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3IvMjAxOTA3MjMx
+NTM2NDAuR0I3MjBAbHN0LmRlCgpBbHNvLCBmdXR1cmU6IEkgZG9uJ3Qga25vdyB0aGUgZHJpdmVy
+IHdlbGwgZW5vdWdoIHRvIHNheSwgYnV0IG1heWJlICJ0cnVlIiAKY291bGQgYmUgcmVwbGFjZWQg
+YnkgImFjZC0+bGRldi0+ZGlyID09IERNQV9GUk9NX0RFVklDRSIsIHRoZXJlLCBidXQgdGhhdAp3
+b3VsZCBiZSBhIHNlcGFyYXRlIHBhdGNoLgoKCnRoYW5rcywKLS0gCkpvaG4gSHViYmFyZApOVklE
+SUEKCgo+ICsJCWVsc2UKPiArCQkJcHV0X3VzZXJfcGFnZShhY2QtPnVzZXJfcGFnZXNbaV0pOwo+
+ICAJfQo+ICAKPiAgCXNnX2ZyZWVfdGFibGUoJmFjZC0+c2d0KTsKPiAKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVs
+QGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2pl
+Y3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
