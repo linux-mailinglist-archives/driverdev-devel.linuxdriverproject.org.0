@@ -1,79 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4BBAA808E9
-	for <lists+driverdev-devel@lfdr.de>; Sun,  4 Aug 2019 04:48:45 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 73AB5808FC
+	for <lists+driverdev-devel@lfdr.de>; Sun,  4 Aug 2019 05:49:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DD53A86FEF;
-	Sun,  4 Aug 2019 02:48:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C1B0487E60;
+	Sun,  4 Aug 2019 03:49:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id X3HE3Muxjoh7; Sun,  4 Aug 2019 02:48:42 +0000 (UTC)
+	with ESMTP id igxdWT1eWm45; Sun,  4 Aug 2019 03:49:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 47989869BA;
-	Sun,  4 Aug 2019 02:48:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1BBA08782E;
+	Sun,  4 Aug 2019 03:49:15 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B14721BF336
- for <devel@linuxdriverproject.org>; Sun,  4 Aug 2019 02:48:38 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id EA07F1BF385
+ for <devel@linuxdriverproject.org>; Sun,  4 Aug 2019 03:49:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id AD7BA85DCA
- for <devel@linuxdriverproject.org>; Sun,  4 Aug 2019 02:48:38 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E6B7E8782E
+ for <devel@linuxdriverproject.org>; Sun,  4 Aug 2019 03:49:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RkRrCkzIs16U for <devel@linuxdriverproject.org>;
- Sun,  4 Aug 2019 02:48:37 +0000 (UTC)
+ with ESMTP id CgnNt0WLXqjL for <devel@linuxdriverproject.org>;
+ Sun,  4 Aug 2019 03:49:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
- [209.85.210.194])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B6A4885ABF
- for <devel@driverdev.osuosl.org>; Sun,  4 Aug 2019 02:48:37 +0000 (UTC)
-Received: by mail-pf1-f194.google.com with SMTP id q10so37882419pff.9
- for <devel@driverdev.osuosl.org>; Sat, 03 Aug 2019 19:48:37 -0700 (PDT)
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D8A9A87804
+ for <devel@driverdev.osuosl.org>; Sun,  4 Aug 2019 03:49:10 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id c3so14794709pfa.13
+ for <devel@driverdev.osuosl.org>; Sat, 03 Aug 2019 20:49:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=//GfN3Tbw0iv5naNbxPygrhfLkS7hy9vXqEmA+ERuTo=;
- b=jWH0xTg/65qp8vQiXDVhWNKmPIRchShll3kyPuLJ0T1HSLWmsqStAdcfAFEJbQGPJB
- TRbV2ehDZ1w+s4qtip8bQt32gi+URtuRkaRz79e/Epp4XCKc7GeL0axSdAwMauM7Mi7/
- PoB5LboeDtzanpCpTIhVxGcN4BQUVfbpUMHPaixfaDFHUYXo4dR+WLHaM2J9Dww1bmwa
- wWKvH/FjMS4BgtzWiO7VlPlN9PcyadiRE7OpIj7jrIR3EbT5/VSfaZ42HLMk/jqDNvL6
- o+Sp89FIyJoXr2NKo/W6NrAV9GA/VV7GdclMVFEajjekO25ZJJpXq12OKbaqYnF/aPbd
- SpJg==
+ :user-agent; bh=qPpsx0lZXSAze2smB67N23Z3ac9MnBXGfrM+XLrnXhY=;
+ b=Xa5XhcGOqYQkHtIrimdKrUWMsV6UxQFF5NYX6yKSzHGH4atjizk4EvZMqs0Gd5TaqS
+ FyYWb3okHzvS24/7w9/CdXDQwIYPsVWzvB+KGU+aUWqqEUmYuupI5RRrpk0Gw3ntb2Ux
+ vnPJNSWjenG06l3tHrSJqAYe6XkMz1oTW7hMeBaSadW66KcpEgf1I/Ohs2/NNsRTYzUI
+ 9VW7FJ36K8jJGeEQwqNs867a0Jvofh7lsNpU2NnhmeMPP4z8LPQohcBwVD/bbszwYT7i
+ Q8PUKXUir1HdtT4SVOUGDU0qBsnV333B0xXhDzt5rE3FzfB6ccYL/8ee/e3YLrudG1Te
+ eWRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=//GfN3Tbw0iv5naNbxPygrhfLkS7hy9vXqEmA+ERuTo=;
- b=VJ0yHnFiodT6Ky77qVBDuW3jQvX+XckKKVSA6cbiMP6uKeb+Y2IKrumJnRkAJi+Pkk
- GlPLNRcvfsDOOlLWxm/ywwtDfNm5TOi8inslwfhbMYDi3A2AQlJ8db8lylDmKtZBkSjj
- JDEgj00L91KQ0gO8t68s+aX74KkJJcO8YXzZsWnssYiS0rDMkK6kvRE7iITEZoWhjs64
- q/9LOybZWF6nrtp5KZNFGUpqHsnh116UC0rln3wYP0miHzqBWn2wBDxox/a4LhKRV1wS
- D5q6v9f4BiqWWe8/NGNcOCeJjSVbHWy1CASDFejenKiJsHejGwGA4hZc15okOoGvngxC
- +ttw==
-X-Gm-Message-State: APjAAAVozQSjPtHAimbHgCca8dShq+OeMKFqhS8f8DtbDMq4YgRtZ1Kz
- Kqz6extGCnKLDs/Q8Walstc=
-X-Google-Smtp-Source: APXvYqxkqMIr3gd1UerXuwiuO6nIs3V0SevBtiYxmIFJNu9y3PmizlMcRVTekpQOlTtIydziFx/nIg==
-X-Received: by 2002:a17:90a:3aed:: with SMTP id
- b100mr11734655pjc.63.1564886917381; 
- Sat, 03 Aug 2019 19:48:37 -0700 (PDT)
+ bh=qPpsx0lZXSAze2smB67N23Z3ac9MnBXGfrM+XLrnXhY=;
+ b=QXIVAXzToIkRgVl43uoDWDwsgNZLA/jHBLfMZrbkyOd0mlcQnSEfOuK5ncErUhwzeY
+ Km6wlKNC7xOpjio6BQkFuELL76+CYMtLE3NdcIDrWDFJH2GfrLUilMM9S0oman5BqnNC
+ prgQxShGz9X9kYJjEGoV3enToxGanpV50Nma9nbOjzMIYsmXy7bDQgfPJh/D8mHGW2sK
+ yylXUTUnGo/K4tp9ggQX3wj0gIxr6Wj3R6k7w3jPnRK3xaEIi9wpn2uTvkGaEdgMaFuA
+ PZgQE91afwpyx1eL2VniU71WEP+NX1wmiBkT7KDQ5t41l/LjyHL6OHqC6Qp6vb5MRaNI
+ Xtng==
+X-Gm-Message-State: APjAAAW16yEXd3MhrLStD7ppiTXfEFAd8mdOrkWyMeqPytvqEm5jDyMa
+ ExHjXadJBG2paWljzNqLoTg=
+X-Google-Smtp-Source: APXvYqzfLPe75VdOmbLiNrGlHAGZ1J4CtJ5f6qfokYi8u1C2tmCEnAHMBaRpHdA2MRaCG8DdPSGIIA==
+X-Received: by 2002:a63:3c5:: with SMTP id 188mr128318137pgd.394.1564890550467; 
+ Sat, 03 Aug 2019 20:49:10 -0700 (PDT)
 Received: from hari-Inspiron-1545 ([183.83.86.126])
- by smtp.gmail.com with ESMTPSA id u128sm90686772pfu.48.2019.08.03.19.48.34
+ by smtp.gmail.com with ESMTPSA id a21sm88482666pfi.27.2019.08.03.20.49.07
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 03 Aug 2019 19:48:36 -0700 (PDT)
-Date: Sun, 4 Aug 2019 08:18:32 +0530
+ Sat, 03 Aug 2019 20:49:09 -0700 (PDT)
+Date: Sun, 4 Aug 2019 09:19:05 +0530
 From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-To: joe@perches.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Himadri Pandya <himadri18.07@gmail.com>,
- Larry Finger <Larry.Finger@lwfinger.net>,
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ John Whitmore <johnfwhitmore@gmail.com>,
+ Nishka Dasgupta <nishkadg.linux@gmail.com>,
+ Colin Ian King <colin.king@canonical.com>,
  Hariprasad Kelam <hariprasad.kelam@gmail.com>,
- Michiel Schuurmans <michielschuurmans@gmail.com>,
  devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [Patch v2] staging: rtl8192e: Make use kmemdup
-Message-ID: <20190804024832.GA14352@hari-Inspiron-1545>
+Subject: [PATCH] staging: rtl8192u: Add NULL check post kzalloc
+Message-ID: <20190804034904.GA16513@hari-Inspiron-1545>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.5.24 (2015-08-30)
@@ -94,61 +93,57 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-As kmemdup API does kmalloc + memcpy . We can make use of it instead of
-calling kmalloc and memcpy independetly.
+Collect returns status of kzalloc.
 
 Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 ---
-v2 - remove the netdev_info() uses for allocation failures
+ drivers/staging/rtl8192u/r8192U_core.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
- drivers/staging/rtl8192e/rtllib_softmac.c | 24 +++++++-----------------
- 1 file changed, 7 insertions(+), 17 deletions(-)
-
-diff --git a/drivers/staging/rtl8192e/rtllib_softmac.c b/drivers/staging/rtl8192e/rtllib_softmac.c
-index e29e8d6..f2f7529 100644
---- a/drivers/staging/rtl8192e/rtllib_softmac.c
-+++ b/drivers/staging/rtl8192e/rtllib_softmac.c
-@@ -1382,15 +1382,10 @@ rtllib_association_req(struct rtllib_network *beacon,
- 	ieee->assocreq_ies = NULL;
- 	ies = &(hdr->info_element[0].id);
- 	ieee->assocreq_ies_len = (skb->data + skb->len) - ies;
--	ieee->assocreq_ies = kmalloc(ieee->assocreq_ies_len, GFP_ATOMIC);
--	if (ieee->assocreq_ies)
--		memcpy(ieee->assocreq_ies, ies, ieee->assocreq_ies_len);
--	else {
--		netdev_info(ieee->dev,
--			    "%s()Warning: can't alloc memory for assocreq_ies\n",
--			    __func__);
-+	ieee->assocreq_ies = kmemdup(ies, ieee->assocreq_ies_len, GFP_ATOMIC);
-+	if (!ieee->assocreq_ies)
- 		ieee->assocreq_ies_len = 0;
--	}
-+
- 	return skb;
+diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
+index fe1f279..3240442 100644
+--- a/drivers/staging/rtl8192u/r8192U_core.c
++++ b/drivers/staging/rtl8192u/r8192U_core.c
+@@ -2096,7 +2096,7 @@ static void rtl8192_SetWirelessMode(struct net_device *dev, u8 wireless_mode)
  }
  
-@@ -2259,17 +2254,12 @@ rtllib_rx_assoc_resp(struct rtllib_device *ieee, struct sk_buff *skb,
- 			ieee->assocresp_ies = NULL;
- 			ies = &(assoc_resp->info_element[0].id);
- 			ieee->assocresp_ies_len = (skb->data + skb->len) - ies;
--			ieee->assocresp_ies = kmalloc(ieee->assocresp_ies_len,
-+			ieee->assocresp_ies = kmemdup(ies,
-+						      ieee->assocresp_ies_len,
- 						      GFP_ATOMIC);
--			if (ieee->assocresp_ies)
--				memcpy(ieee->assocresp_ies, ies,
--				       ieee->assocresp_ies_len);
--			else {
--				netdev_info(ieee->dev,
--					    "%s()Warning: can't alloc memory for assocresp_ies\n",
--					    __func__);
-+			if (!ieee->assocresp_ies)
- 				ieee->assocresp_ies_len = 0;
--			}
+ /* init priv variables here. only non_zero value should be initialized here. */
+-static void rtl8192_init_priv_variable(struct net_device *dev)
++static int rtl8192_init_priv_variable(struct net_device *dev)
+ {
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
+ 	u8 i;
+@@ -2223,6 +2223,8 @@ static void rtl8192_init_priv_variable(struct net_device *dev)
+ 
+ 	priv->AcmControl = 0;
+ 	priv->pFirmware = kzalloc(sizeof(rt_firmware), GFP_KERNEL);
++	if (!priv->pFirmware)
++		return -ENOMEM;
+ 
+ 	/* rx related queue */
+ 	skb_queue_head_init(&priv->rx_queue);
+@@ -2236,6 +2238,8 @@ static void rtl8192_init_priv_variable(struct net_device *dev)
+ 	for (i = 0; i < MAX_QUEUE_SIZE; i++)
+ 		skb_queue_head_init(&priv->ieee80211->skb_drv_aggQ[i]);
+ 	priv->rf_set_chan = rtl8192_phy_SwChnl;
 +
- 			rtllib_associate_complete(ieee);
- 		} else {
- 			/* aid could not been allocated */
++	return 0;
+ }
+ 
+ /* init lock here */
+@@ -2605,7 +2609,11 @@ static short rtl8192_init(struct net_device *dev)
+ 		memcpy(priv->txqueue_to_outpipemap, queuetopipe, 9);
+ 	}
+ #endif
+-	rtl8192_init_priv_variable(dev);
++	err = rtl8192_init_priv_variable(dev);
++	if (err) {
++		DMESG("init private variables failed");
++		return err;
++	}
+ 	rtl8192_init_priv_lock(priv);
+ 	rtl8192_init_priv_task(dev);
+ 	rtl8192_get_eeprom_size(dev);
 -- 
 2.7.4
 
