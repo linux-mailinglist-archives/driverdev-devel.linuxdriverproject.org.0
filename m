@@ -2,76 +2,76 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 52F4780D17
-	for <lists+driverdev-devel@lfdr.de>; Mon,  5 Aug 2019 00:49:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9E03980D1D
+	for <lists+driverdev-devel@lfdr.de>; Mon,  5 Aug 2019 00:49:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id EAA8B20431;
-	Sun,  4 Aug 2019 22:49:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 35A1D203BA;
+	Sun,  4 Aug 2019 22:49:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4S4FWHTOuedP; Sun,  4 Aug 2019 22:49:44 +0000 (UTC)
+	with ESMTP id FdPtk+Uf+seE; Sun,  4 Aug 2019 22:49:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 681BF2049A;
-	Sun,  4 Aug 2019 22:49:41 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CDCC7204C5;
+	Sun,  4 Aug 2019 22:49:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A56131BF868
- for <devel@linuxdriverproject.org>; Sun,  4 Aug 2019 22:49:37 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6F7EB1BF591
+ for <devel@linuxdriverproject.org>; Sun,  4 Aug 2019 22:49:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A1F8B87AA1
- for <devel@linuxdriverproject.org>; Sun,  4 Aug 2019 22:49:37 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5DA2386506
+ for <devel@linuxdriverproject.org>; Sun,  4 Aug 2019 22:49:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2RURHuPLKSDe for <devel@linuxdriverproject.org>;
- Sun,  4 Aug 2019 22:49:37 +0000 (UTC)
+ with ESMTP id LjGb7Fx5BPXc for <devel@linuxdriverproject.org>;
+ Sun,  4 Aug 2019 22:49:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 13B4187B45
- for <devel@driverdev.osuosl.org>; Sun,  4 Aug 2019 22:49:37 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id n9so32441860pgc.1
- for <devel@driverdev.osuosl.org>; Sun, 04 Aug 2019 15:49:37 -0700 (PDT)
+Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
+ [209.85.215.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9903E863F1
+ for <devel@driverdev.osuosl.org>; Sun,  4 Aug 2019 22:49:38 +0000 (UTC)
+Received: by mail-pg1-f193.google.com with SMTP id n190so3535666pgn.0
+ for <devel@driverdev.osuosl.org>; Sun, 04 Aug 2019 15:49:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=34zW6BJN89MycamN6XZc+aPi3iIpUXsyW4mngm2d11Q=;
- b=Vl3ziFlsVP8d5c8y0YmW6fDZsGTWTBWfBuMUsCvUNMfO41hPRu5nz6knOx+9Exr4dm
- faLIZ6PGv5svewcMn6NrpUtC2sVsC+7jyMTiSPQOkMWSlMNBGkEc5Hzdhl1GLUQ+lU00
- s8/u7LPhlwjUp5vP9Cq58ZxyRYaJggFlYisUFFtIS444ycMw8U/APZaIEYWga3Yussps
- tKIhHu6BLxxDR9A3QUeopRp/JQJFEZSB+ASswX2FluN7nR+bVi9w3B9Wm/JRet3KnCM9
- BzOgVm6BdbLPf53jqaXQstPr6PLJxFbgM+ClIPWs4p2Wp5bWVtpTaVjy3ylfOWo6XjbI
- VLCQ==
+ bh=j5bjFl/k0oxV1FIP4HazX0NuQurNmMvZSnaBil5PKNk=;
+ b=MqpI7yn2v8JiaESKRamQoMhID5IYen684AVXtcKPVHm7ukeZx5WJLqHqdIEJqV0WrU
+ VfCpQM5hioJATjULHPTYB3nfhDV1hZvNLdoXtUM170GmrlC8kjyYeFhBDtjPQS6eYlGi
+ Z1KZbaNfekNsK96f9fHDqC8EM5JDem4jjQqa0uOUzUD0HnkcyB0RGrqGZafbKz+HSERm
+ ycJb8r/hMPkJxrohrkltdvb3Bv5T3e9OF54rrvF1bh8OIMrv7vUbWFQiw+cjVGvVjkWZ
+ fASWr56xEv6QUfwcZwREb2sSNIm1Ysoe7red/z7MjIlPR6uaG4NZls/tzbyEvLg9FjxD
+ 24hg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=34zW6BJN89MycamN6XZc+aPi3iIpUXsyW4mngm2d11Q=;
- b=caz6KgHWceM6Haq6v021CSPrvG2EjBsCYdo68BKMHsLII3I779vvQi7Jozkr4H4btm
- DCHDajby/d/tuqYUoId0AsypfKhx4HQalK8U8jRNPYBSGaZiMuwgN6cjWzbdO+64jF5T
- B2gKKn62luP7hvRdEsuUnchUsJIXoAeADmVgkRoY+sQhOL9o8yiv3RZ6UeKZ4pnLoNjC
- 01tUsFSl9C6JJ+94ZkZdgPUgjmBvHitG1fAHqF90ATRgXO6YBW8e8k/hIqBKZhV+Thg6
- MPmYe4acPCXdyHzyJhaSMfZDYmcuYLwlOkebavIfHE93oDoM4Jcnwj4u92jaB4I+k5uw
- xgjw==
-X-Gm-Message-State: APjAAAWTsS8V+q23Ky7/sv5BTf5H/Y1R1aYWTU8XDtbLTxMyTQZ4A2kV
- 5sCjKRM2k5SVrzVsPeSfdlg=
-X-Google-Smtp-Source: APXvYqzZzuc1CJxZdFJgWU/FwmUoZ/p878RlqbCeEzJ5+atuTCZn+89D3JrxmbErf1XY9IXgA3NZ2A==
-X-Received: by 2002:a17:90a:f498:: with SMTP id
- bx24mr15350312pjb.91.1564958976783; 
- Sun, 04 Aug 2019 15:49:36 -0700 (PDT)
+ bh=j5bjFl/k0oxV1FIP4HazX0NuQurNmMvZSnaBil5PKNk=;
+ b=J3xwKJ3NZgCwBQq5kutrs3ageCzWBPZuQBtnS4QGkAdrT3Ye9+NXpfcNHtPlzjj3Jf
+ UQLcRjVSONkN1XTGcMtlhKHDLHP1LalAsSZQJpqtXXkyuV6gD1JUbqC4V21KBp3iYyHx
+ CGusRjxGdGKcoOIqdBzNrsXYwWOEBIozCSGCnUKVAffsaOrBHAtvUVI4TlZaj6Tjulm5
+ af0GckTh/nOHws/ZwpUXUL1RKxZX8RA9Pvlw5bMvXxERY9tj6Yb74ieaaghJSKXyc4F4
+ NKK/hFDRpd2xBMzHgrM1xbFTWwAds/0lyru7MjMbn3r31OeQ8P3YpAO++WaMBLHZVuzj
+ 7h5g==
+X-Gm-Message-State: APjAAAXspGZsXEe8DtuDQFh1GStNtOE2dLk2CKKeIw+PdziBr4/77kVi
+ RcULnHpmu/HW22xtN3A/lkI=
+X-Google-Smtp-Source: APXvYqwTnNt3iCmBWtT8pTi/FFYixGudghLt9/4mGGXij726CsdCF3vK7jbIkfaYxVJp0BLjNqynIA==
+X-Received: by 2002:a17:90a:b908:: with SMTP id
+ p8mr15231945pjr.94.1564958978299; 
+ Sun, 04 Aug 2019 15:49:38 -0700 (PDT)
 Received: from blueforge.nvidia.com (searspoint.nvidia.com. [216.228.112.21])
  by smtp.gmail.com with ESMTPSA id
- r6sm35946836pjb.22.2019.08.04.15.49.35
+ r6sm35946836pjb.22.2019.08.04.15.49.36
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Sun, 04 Aug 2019 15:49:36 -0700 (PDT)
+ Sun, 04 Aug 2019 15:49:37 -0700 (PDT)
 From: john.hubbard@gmail.com
 X-Google-Original-From: jhubbard@nvidia.com
 To: Andrew Morton <akpm@linux-foundation.org>
-Subject: [PATCH v2 11/34] scif: convert put_page() to put_user_page*()
-Date: Sun,  4 Aug 2019 15:48:52 -0700
-Message-Id: <20190804224915.28669-12-jhubbard@nvidia.com>
+Subject: [PATCH v2 12/34] vmci: convert put_page() to put_user_page*()
+Date: Sun,  4 Aug 2019 15:48:53 -0700
+Message-Id: <20190804224915.28669-13-jhubbard@nvidia.com>
 X-Mailer: git-send-email 2.22.0
 In-Reply-To: <20190804224915.28669-1-jhubbard@nvidia.com>
 References: <20190804224915.28669-1-jhubbard@nvidia.com>
@@ -90,24 +90,23 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: linux-fbdev@vger.kernel.org, Jan Kara <jack@suse.cz>, kvm@vger.kernel.org,
+ "Gustavo A . R . Silva" <gustavo@embeddedor.com>,
  Dave Hansen <dave.hansen@linux.intel.com>, Dave Chinner <david@fromorbit.com>,
- Sudeep Dutt <sudeep.dutt@intel.com>, dri-devel@lists.freedesktop.org,
- linux-mm@kvack.org, sparclinux@vger.kernel.org, ceph-devel@vger.kernel.org,
- devel@driverdev.osuosl.org, Ashutosh Dixit <ashutosh.dixit@intel.com>,
- rds-devel@oss.oracle.com, linux-rdma@vger.kernel.org, x86@kernel.org,
- amd-gfx@lists.freedesktop.org, Christoph Hellwig <hch@infradead.org>,
- Jason Gunthorpe <jgg@ziepe.ca>, xen-devel@lists.xenproject.org,
- devel@lists.orangefs.org, linux-media@vger.kernel.org,
- Joerg Roedel <jroedel@suse.de>, Arnd Bergmann <arnd@arndb.de>,
- John Hubbard <jhubbard@nvidia.com>, intel-gfx@lists.freedesktop.org,
- linux-block@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
+ sparclinux@vger.kernel.org, ceph-devel@vger.kernel.org,
+ devel@driverdev.osuosl.org, rds-devel@oss.oracle.com,
+ linux-rdma@vger.kernel.org, x86@kernel.org, amd-gfx@lists.freedesktop.org,
+ Christoph Hellwig <hch@infradead.org>, Jason Gunthorpe <jgg@ziepe.ca>,
+ xen-devel@lists.xenproject.org, devel@lists.orangefs.org,
+ linux-media@vger.kernel.org, Kees Cook <keescook@chromium.org>,
+ Arnd Bergmann <arnd@arndb.de>, John Hubbard <jhubbard@nvidia.com>,
+ intel-gfx@lists.freedesktop.org, linux-block@vger.kernel.org,
  =?UTF-8?q?J=C3=A9r=C3=B4me=20Glisse?= <jglisse@redhat.com>,
- linux-rpi-kernel@lists.infradead.org, Zhen Lei <thunder.leizhen@huawei.com>,
- Dan Williams <dan.j.williams@intel.com>, linux-arm-kernel@lists.infradead.org,
- linux-nfs@vger.kernel.org, netdev@vger.kernel.org,
- LKML <linux-kernel@vger.kernel.org>, linux-xfs@vger.kernel.org,
- linux-crypto@vger.kernel.org, linux-fsdevel@vger.kernel.org,
- Robin Murphy <robin.murphy@arm.com>
+ linux-rpi-kernel@lists.infradead.org, Dan Williams <dan.j.williams@intel.com>,
+ linux-arm-kernel@lists.infradead.org, linux-nfs@vger.kernel.org,
+ netdev@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
+ linux-xfs@vger.kernel.org, linux-crypto@vger.kernel.org,
+ linux-fsdevel@vger.kernel.org, Al Viro <viro@zeniv.linux.org.uk>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
@@ -122,55 +121,61 @@ release_pages().
 This is part a tree-wide conversion, as described in commit fc1d8e7cca2d
 ("mm: introduce put_user_page*(), placeholder versions").
 
-Cc: Sudeep Dutt <sudeep.dutt@intel.com>
-Cc: Ashutosh Dixit <ashutosh.dixit@intel.com>
+Note that this effectively changes the code's behavior in
+qp_release_pages(): it now ultimately calls set_page_dirty_lock(),
+instead of set_page_dirty(). This is probably more accurate.
+
+As Christoph Hellwig put it, "set_page_dirty() is only safe if we are
+dealing with a file backed page where we have reference on the inode it
+hangs off." [1]
+
+[1] https://lore.kernel.org/r/20190723153640.GB720@lst.de
+
 Cc: Arnd Bergmann <arnd@arndb.de>
-Cc: Joerg Roedel <jroedel@suse.de>
-Cc: Robin Murphy <robin.murphy@arm.com>
-Cc: Zhen Lei <thunder.leizhen@huawei.com>
+Cc: Al Viro <viro@zeniv.linux.org.uk>
+Cc: Gustavo A. R. Silva <gustavo@embeddedor.com>
+Cc: Kees Cook <keescook@chromium.org>
 Signed-off-by: John Hubbard <jhubbard@nvidia.com>
 ---
- drivers/misc/mic/scif/scif_rma.c | 17 ++++++++---------
- 1 file changed, 8 insertions(+), 9 deletions(-)
+ drivers/misc/vmw_vmci/vmci_context.c    |  2 +-
+ drivers/misc/vmw_vmci/vmci_queue_pair.c | 11 ++---------
+ 2 files changed, 3 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/misc/mic/scif/scif_rma.c b/drivers/misc/mic/scif/scif_rma.c
-index 01e27682ea30..d84ed9466920 100644
---- a/drivers/misc/mic/scif/scif_rma.c
-+++ b/drivers/misc/mic/scif/scif_rma.c
-@@ -113,13 +113,14 @@ static int scif_destroy_pinned_pages(struct scif_pinned_pages *pin)
- 	int writeable = pin->prot & SCIF_PROT_WRITE;
- 	int kernel = SCIF_MAP_KERNEL & pin->map_flags;
+diff --git a/drivers/misc/vmw_vmci/vmci_context.c b/drivers/misc/vmw_vmci/vmci_context.c
+index 16695366ec92..9daa52ee63b7 100644
+--- a/drivers/misc/vmw_vmci/vmci_context.c
++++ b/drivers/misc/vmw_vmci/vmci_context.c
+@@ -587,7 +587,7 @@ void vmci_ctx_unset_notify(struct vmci_ctx *context)
  
--	for (j = 0; j < pin->nr_pages; j++) {
--		if (pin->pages[j] && !kernel) {
-+	if (kernel) {
-+		for (j = 0; j < pin->nr_pages; j++) {
- 			if (writeable)
--				SetPageDirty(pin->pages[j]);
-+				set_page_dirty_lock(pin->pages[j]);
- 			put_page(pin->pages[j]);
- 		}
+ 	if (notify_page) {
+ 		kunmap(notify_page);
+-		put_page(notify_page);
++		put_user_page(notify_page);
+ 	}
+ }
+ 
+diff --git a/drivers/misc/vmw_vmci/vmci_queue_pair.c b/drivers/misc/vmw_vmci/vmci_queue_pair.c
+index 8531ae781195..e5434551d0ef 100644
+--- a/drivers/misc/vmw_vmci/vmci_queue_pair.c
++++ b/drivers/misc/vmw_vmci/vmci_queue_pair.c
+@@ -626,15 +626,8 @@ static void qp_release_queue_mutex(struct vmci_queue *queue)
+ static void qp_release_pages(struct page **pages,
+ 			     u64 num_pages, bool dirty)
+ {
+-	int i;
+-
+-	for (i = 0; i < num_pages; i++) {
+-		if (dirty)
+-			set_page_dirty(pages[i]);
+-
+-		put_page(pages[i]);
+-		pages[i] = NULL;
 -	}
-+	} else
-+		put_user_pages_dirty_lock(pin->pages, pin->nr_pages, writeable);
++	put_user_pages_dirty_lock(pages, num_pages, dirty);
++	memset(pages, 0, num_pages * sizeof(struct page *));
+ }
  
- 	scif_free(pin->pages,
- 		  pin->nr_pages * sizeof(*pin->pages));
-@@ -1385,11 +1386,9 @@ int __scif_pin_pages(void *addr, size_t len, int *out_prot,
- 				if (ulimit)
- 					__scif_dec_pinned_vm_lock(mm, nr_pages);
- 				/* Roll back any pinned pages */
--				for (i = 0; i < pinned_pages->nr_pages; i++) {
--					if (pinned_pages->pages[i])
--						put_page(
--						pinned_pages->pages[i]);
--				}
-+				put_user_pages(pinned_pages->pages,
-+					       pinned_pages->nr_pages);
-+
- 				prot &= ~SCIF_PROT_WRITE;
- 				try_upgrade = false;
- 				goto retry;
+ /*
 -- 
 2.22.0
 
