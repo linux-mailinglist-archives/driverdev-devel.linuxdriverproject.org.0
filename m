@@ -1,77 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8E67480C00
-	for <lists+driverdev-devel@lfdr.de>; Sun,  4 Aug 2019 20:33:05 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4F4A62046F;
-	Sun,  4 Aug 2019 18:33:03 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id olfkk6viUqRA; Sun,  4 Aug 2019 18:33:02 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4B70F20436;
-	Sun,  4 Aug 2019 18:33:01 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9C3F41BF403
- for <devel@linuxdriverproject.org>; Sun,  4 Aug 2019 18:32:58 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 82C2C80CFD
+	for <lists+driverdev-devel@lfdr.de>; Mon,  5 Aug 2019 00:49:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 992888798B
- for <devel@linuxdriverproject.org>; Sun,  4 Aug 2019 18:32:58 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 65EDB87B2B;
+	Sun,  4 Aug 2019 22:49:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id U4I2sdBXp3BG; Sun,  4 Aug 2019 22:49:24 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6A82187AA1;
+	Sun,  4 Aug 2019 22:49:22 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 585BA1BF591
+ for <devel@linuxdriverproject.org>; Sun,  4 Aug 2019 22:49:20 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 52B4A20431
+ for <devel@linuxdriverproject.org>; Sun,  4 Aug 2019 22:49:20 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 55FdBMUr+XM0 for <devel@linuxdriverproject.org>;
- Sun,  4 Aug 2019 18:32:58 +0000 (UTC)
+ with ESMTP id 9oL9tvc54Oi1 for <devel@linuxdriverproject.org>;
+ Sun,  4 Aug 2019 22:49:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
- [209.85.215.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 018AB87985
- for <devel@driverdev.osuosl.org>; Sun,  4 Aug 2019 18:32:57 +0000 (UTC)
-Received: by mail-pg1-f193.google.com with SMTP id d1so5682147pgp.4
- for <devel@driverdev.osuosl.org>; Sun, 04 Aug 2019 11:32:57 -0700 (PDT)
+Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
+ [209.85.214.194])
+ by silver.osuosl.org (Postfix) with ESMTPS id 6BD52203BA
+ for <devel@driverdev.osuosl.org>; Sun,  4 Aug 2019 22:49:19 +0000 (UTC)
+Received: by mail-pl1-f194.google.com with SMTP id 4so28679000pld.10
+ for <devel@driverdev.osuosl.org>; Sun, 04 Aug 2019 15:49:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=M1Gvzhgkq3uypUYE0BK54gI1jvg+vB6OQn9HgeGo1C4=;
- b=uiKScfPaDZyKdF3E6bF2WUbY+A+cK/IXsc+XjPVPHuEMba1IHc3yHGjLEEb8tFDXxk
- 6w9dLIIM9ET/Jvg16knHG0mFyUtY+Wil9NBk0zaTDEsddqGYiZ8VErWwIkH3eiiVYjpS
- O0sSpV3nAk8yTHmT3RuOTVdRBotUYbvdfIK5UFDG8DB9dSuam1rdkJEVoI0yum5SEsV1
- mfAWuIm80AIwxHVOawLgisIxUtyvkcTbJdQCDRLNcvtVFdQcGNrqtDLu62tEvgoSwr+J
- eq9tv+iNUiFF2MQR+jbPDHa/bAFOGaix0l92loEPvock4Pksc0WW81rw+vyw7bNd/tXR
- SwIg==
+ bh=YZWsn+x3jxp8fDI44kijDFRG/svqEg676iUchgN7QlQ=;
+ b=B1sMPAcstI1puFk4w0cpCwyzsYpSCgnvkOWm4iaJnV8UBmRJR0FrVO7eeE2XgV7/DO
+ DR3tgluGLB1/vbyPlZSBhbH+uo9CrzBJ1Q1rSPrUCEwEtdEEdHEsEYUhdaEO6ERTThp5
+ mEExF0x3pWqACoKcpQ4jZSYPKI1ZJek74ypeshcY0SnsNOjJI1e96tP2zvVBSu1jKr+e
+ Ym/g1QeiNeLfwG1YUwV1crKOGP7UibjO/7uqLpqDUr9tSTViDlNhIsYnzcFJ7cH459WG
+ UptxQms1lJSvYFzHsJjq9KZpFUhZyY+WV1c+r9r6Bw6gMAdbrBCCcRHzjatxpXqpGNbN
+ SemQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=M1Gvzhgkq3uypUYE0BK54gI1jvg+vB6OQn9HgeGo1C4=;
- b=UtHEuXr8GT5DX9QvW8Xqqb7GvLpZ6PP3rss1OxMZnLEz0PN76Y06Xame50E4PXBzkU
- N1AsTg159+0+Je6Auv0lpvQnqZWJ667yUjSO1GMTt0JN1TzMLgIzul1AeKjXBsl8nGLn
- 1+NlxURGR5jzq6gNcJZ8aIfEhgW4UgklkJN6DMdyBeL51gQAzHJN2KsLQhl8mb/qoH+M
- AKlTL6wluQoO0aaQqyfinysGGetQbtxEpBuYnPfQizKBJ7bAajZN2xRrazm8gaNdFHpY
- un0DBpn6aOGD7SLmqmceefJchy/D5O1qGsEobYAwne7hg5+tCJmyi0NFLxhSJ7TZZfcL
- UFGA==
-X-Gm-Message-State: APjAAAWZiJoptDrlr120iT4KeyrjS6/4+b0rfsNL7l5JkYf1VeyppV67
- oPIn7DH70zr41ApgKte3jLQ=
-X-Google-Smtp-Source: APXvYqwK5WbGPiyo0oQxjvJnrjYzvciabM3qjZqtVBvYB0ircVXV3sf8ELBElcx0XW2M0wHMW+pPVw==
-X-Received: by 2002:a62:1ccd:: with SMTP id
- c196mr70133403pfc.102.1564943577435; 
- Sun, 04 Aug 2019 11:32:57 -0700 (PDT)
-Received: from localhost.localdomain ([116.75.76.55])
- by smtp.gmail.com with ESMTPSA id w2sm71009773pgc.32.2019.08.04.11.32.53
+ bh=YZWsn+x3jxp8fDI44kijDFRG/svqEg676iUchgN7QlQ=;
+ b=t6EweCNa0oO+jBYOJFdeFm3EgW4ULZc3U68+vXknDQJzYK4g35IWDQ/EzUb1GfP1xe
+ 6cyfrwxqtit89oM3oUa3FMlTbxvoiz1Atns1QtohkmDqQ4h9TdZo/lpQqh3BCWVaTwCW
+ xzwhevMjin0vcaciMb7N3QJTkkJ8irIDRvubYTPy8d2HHK0e1LgiblHj+yp24B3YWnIL
+ B2LlPyhyFs8QR9yS9Rh6w6gaBc1qATNsdhpan0Xq30wHlrvK+wGxmDt923PNTqrqr99Y
+ 1MslALat1mfoPhL+Fo/+PlSIBPt20gWWrnfcLO0/yV84YDRtxQbR06lkIGMj8fq08gVG
+ cvYw==
+X-Gm-Message-State: APjAAAVN7MRP0ZyiQpFeuWrjJ4uFJrolCI+EcI2tkwdJ1ZhLKdQ1QQYB
+ Bals4Ov01eAyRt5Ui8qLYn4=
+X-Google-Smtp-Source: APXvYqxKaZcQUZ6UkPpcjP3XTdHmlP5C8HsDSLXmXJQis54EHd1b2U7WGwbPzUzQrFqhwr6YKPwdiw==
+X-Received: by 2002:a17:902:a413:: with SMTP id
+ p19mr142672660plq.134.1564958958984; 
+ Sun, 04 Aug 2019 15:49:18 -0700 (PDT)
+Received: from blueforge.nvidia.com (searspoint.nvidia.com. [216.228.112.21])
+ by smtp.gmail.com with ESMTPSA id
+ r6sm35946836pjb.22.2019.08.04.15.49.16
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Sun, 04 Aug 2019 11:32:56 -0700 (PDT)
-From: Giridhar Prasath R <cristianoprasath@gmail.com>
-To: 
-Subject: [PATCH] staging: pi433 line over 80 characters in multiple places
-Date: Mon,  5 Aug 2019 05:32:45 +0530
-Message-Id: <20190805000248.4902-1-cristianoprasath@gmail.com>
+ Sun, 04 Aug 2019 15:49:18 -0700 (PDT)
+From: john.hubbard@gmail.com
+X-Google-Original-From: jhubbard@nvidia.com
+To: Andrew Morton <akpm@linux-foundation.org>
+Subject: [PATCH v2 00/34] put_user_pages(): miscellaneous call sites
+Date: Sun,  4 Aug 2019 15:48:41 -0700
+Message-Id: <20190804224915.28669-1-jhubbard@nvidia.com>
 X-Mailer: git-send-email 2.22.0
 MIME-Version: 1.0
+X-NVConfidentiality: public
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,64 +87,186 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
- Giridhar Prasath R <cristianoprasath@gmail.com>, linux-kernel@vger.kernel.org
+Cc: linux-fbdev@vger.kernel.org, Jan Kara <jack@suse.cz>, kvm@vger.kernel.org,
+ Dave Hansen <dave.hansen@linux.intel.com>, Dave Chinner <david@fromorbit.com>,
+ dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
+ sparclinux@vger.kernel.org, ceph-devel@vger.kernel.org,
+ devel@driverdev.osuosl.org, rds-devel@oss.oracle.com,
+ linux-rdma@vger.kernel.org, x86@kernel.org, amd-gfx@lists.freedesktop.org,
+ Christoph Hellwig <hch@infradead.org>, Jason Gunthorpe <jgg@ziepe.ca>,
+ xen-devel@lists.xenproject.org, devel@lists.orangefs.org,
+ linux-media@vger.kernel.org, John Hubbard <jhubbard@nvidia.com>,
+ intel-gfx@lists.freedesktop.org, linux-block@vger.kernel.org,
+ =?UTF-8?q?J=C3=A9r=C3=B4me=20Glisse?= <jglisse@redhat.com>,
+ linux-rpi-kernel@lists.infradead.org, Dan Williams <dan.j.williams@intel.com>,
+ linux-arm-kernel@lists.infradead.org, linux-nfs@vger.kernel.org,
+ netdev@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
+ linux-xfs@vger.kernel.org, linux-crypto@vger.kernel.org,
+ linux-fsdevel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix the following checkpatch warnings:
+From: John Hubbard <jhubbard@nvidia.com>
 
-WARNING: line over 80 characters
-FILE: drivers/staging/pi433/pi433_if.h
+Changes since v1:
 
-Signed-off-by: Giridhar Prasath R <cristianoprasath@gmail.com>
----
- drivers/staging/pi433/pi433_if.h | 23 ++++++++++++++++-------
- 1 file changed, 16 insertions(+), 7 deletions(-)
+* 9 out of 34 patches have been reviewed or ack'd or changed:
+    * Picked up Keith's Reviewed-by for patch 26 (gup_benchmark).
+    * Picked up ACKs for patches 3, 10, 15, 16 (ceph, genwqe,
+      staging/vc04_services, drivers/tee).
 
-diff --git a/drivers/staging/pi433/pi433_if.h b/drivers/staging/pi433/pi433_if.h
-index 9feb95c431cb..915bd96910c6 100644
---- a/drivers/staging/pi433/pi433_if.h
-+++ b/drivers/staging/pi433/pi433_if.h
-@@ -117,9 +117,14 @@ struct pi433_rx_cfg {
- 
- 	/* packet format */
- 	enum option_on_off	enable_sync;
--	enum option_on_off	enable_length_byte;	  /* should be used in combination with sync, only */
--	enum address_filtering	enable_address_filtering; /* operational with sync, only */
--	enum option_on_off	enable_crc;		  /* only operational, if sync on and fixed length or length byte is used */
-+	/* should be used in combination with sync, only */
-+	enum option_on_off	enable_length_byte;
-+	/* operational with sync, only */
-+	enum address_filtering	enable_address_filtering;
-+	/* only operational,
-+	 * if sync on and fixed length or length byte is used
-+	 */
-+	enum option_on_off	enable_crc;
- 
- 	__u8			sync_length;
- 	__u8			fixed_message_length;
-@@ -132,10 +137,14 @@ struct pi433_rx_cfg {
- 
- #define PI433_IOC_MAGIC			'r'
- 
--#define PI433_IOC_RD_TX_CFG	_IOR(PI433_IOC_MAGIC, PI433_TX_CFG_IOCTL_NR, char[sizeof(struct pi433_tx_cfg)])
--#define PI433_IOC_WR_TX_CFG	_IOW(PI433_IOC_MAGIC, PI433_TX_CFG_IOCTL_NR, char[sizeof(struct pi433_tx_cfg)])
-+#define PI433_IOC_RD_TX_CFG	_IOR(PI433_IOC_MAGIC, PI433_TX_CFG_IOCTL_NR,\
-+char[sizeof(struct pi433_tx_cfg)])
-+#define PI433_IOC_WR_TX_CFG	_IOW(PI433_IOC_MAGIC, PI433_TX_CFG_IOCTL_NR,\
-+char[sizeof(struct pi433_tx_cfg)])
- 
--#define PI433_IOC_RD_RX_CFG	_IOR(PI433_IOC_MAGIC, PI433_RX_CFG_IOCTL_NR, char[sizeof(struct pi433_rx_cfg)])
--#define PI433_IOC_WR_RX_CFG	_IOW(PI433_IOC_MAGIC, PI433_RX_CFG_IOCTL_NR, char[sizeof(struct pi433_rx_cfg)])
-+#define PI433_IOC_RD_RX_CFG	_IOR(PI433_IOC_MAGIC, PI433_RX_CFG_IOCTL_NR,\
-+char[sizeof(struct pi433_rx_cfg)])
-+#define PI433_IOC_WR_RX_CFG	_IOW(PI433_IOC_MAGIC, PI433_RX_CFG_IOCTL_NR,\
-+char[sizeof(struct pi433_rx_cfg)])
- 
- #endif /* PI433_H */
+* Patch 6 (i915): adjusted drivers/gpu/drm/i915/gem/i915_gem_userptr.c to
+  match the latest linux.git: the code has already been fixed in linux.git,
+  as of the latest -rc, to do a set_page_dirty_lock(), instead of
+  set_page_dirty(). So all that it needs now is a conversion to
+  put_user_page(). I've done that in a way (avoiding the changed API call)
+  that allows patch 6 to go up via either Andrew's -mm tree, or the drm
+  tree, just in case. See that patch's comments for slightly more detail.
+
+* Patch 20 (xen): applied Juergen's recommended fix, and speculatively
+  (pending his approval) added his Signed-off-by (also noted in the patch
+  comments).
+
+* Improved patch 31 (NFS) as recommended by Calum Mackay.
+
+* Includes the latest version of patch 1. (Patch 1 has been separately
+  reposted [3], with those updates. And it's included here in order to
+  make this series apply directly to linux.git, as noted in the original
+  cover letter below.)
+
+Cover letter from v1:
+
+These are best characterized as miscellaneous conversions: many (not all)
+call sites that don't involve biovec or iov_iter, nor mm/. It also leaves
+out a few call sites that require some more work. These are mostly pretty
+simple ones.
+
+It's probably best to send all of these via Andrew's -mm tree, assuming
+that there are no significant merge conflicts with ongoing work in other
+trees (which I doubt, given that these are small changes).
+
+These patches apply to the latest linux.git. Patch #1 is also already in
+Andrew's tree, but given the broad non-linux-mm Cc list, I thought it
+would be more convenient to just include that patch here, so that people
+can use linux.git as the base--even though these are probably destined
+for linux-mm.
+
+This is part a tree-wide conversion, as described in commit fc1d8e7cca2d
+("mm: introduce put_user_page*(), placeholder versions"). That commit
+has an extensive description of the problem and the planned steps to
+solve it, but the highlites are:
+
+1) Provide put_user_page*() routines, intended to be used
+for releasing pages that were pinned via get_user_pages*().
+
+2) Convert all of the call sites for get_user_pages*(), to
+invoke put_user_page*(), instead of put_page(). This involves dozens of
+call sites, and will take some time.
+
+3) After (2) is complete, use get_user_pages*() and put_user_page*() to
+implement tracking of these pages. This tracking will be separate from
+the existing struct page refcounting.
+
+4) Use the tracking and identification of these pages, to implement
+special handling (especially in writeback paths) when the pages are
+backed by a filesystem.
+
+And a few references, also from that commit:
+
+[1] https://lwn.net/Articles/774411/ : "DMA and get_user_pages()"
+[2] https://lwn.net/Articles/753027/ : "The Trouble with get_user_pages()"
+
+[3] "mm/gup: add make_dirty arg to put_user_pages_dirty_lock()"
+    https://lore.kernel.org/r/20190804214042.4564-1-jhubbard@nvidia.com
+
+Ira Weiny (1):
+  fs/binfmt_elf: convert put_page() to put_user_page*()
+
+John Hubbard (33):
+  mm/gup: add make_dirty arg to put_user_pages_dirty_lock()
+  net/rds: convert put_page() to put_user_page*()
+  net/ceph: convert put_page() to put_user_page*()
+  x86/kvm: convert put_page() to put_user_page*()
+  drm/etnaviv: convert release_pages() to put_user_pages()
+  drm/i915: convert put_page() to put_user_page*()
+  drm/radeon: convert put_page() to put_user_page*()
+  media/ivtv: convert put_page() to put_user_page*()
+  media/v4l2-core/mm: convert put_page() to put_user_page*()
+  genwqe: convert put_page() to put_user_page*()
+  scif: convert put_page() to put_user_page*()
+  vmci: convert put_page() to put_user_page*()
+  rapidio: convert put_page() to put_user_page*()
+  oradax: convert put_page() to put_user_page*()
+  staging/vc04_services: convert put_page() to put_user_page*()
+  drivers/tee: convert put_page() to put_user_page*()
+  vfio: convert put_page() to put_user_page*()
+  fbdev/pvr2fb: convert put_page() to put_user_page*()
+  fsl_hypervisor: convert put_page() to put_user_page*()
+  fs/exec.c: convert put_page() to put_user_page*()
+  xen: convert put_page() to put_user_page*()
+  orangefs: convert put_page() to put_user_page*()
+  uprobes: convert put_page() to put_user_page*()
+  futex: convert put_page() to put_user_page*()
+  mm/frame_vector.c: convert put_page() to put_user_page*()
+  mm/gup_benchmark.c: convert put_page() to put_user_page*()
+  mm/memory.c: convert put_page() to put_user_page*()
+  mm/madvise.c: convert put_page() to put_user_page*()
+  mm/process_vm_access.c: convert put_page() to put_user_page*()
+  crypt: convert put_page() to put_user_page*()
+  fs/nfs: convert put_page() to put_user_page*()
+  goldfish_pipe: convert put_page() to put_user_page*()
+  kernel/events/core.c: convert put_page() to put_user_page*()
+
+ arch/x86/kvm/svm.c                            |   4 +-
+ crypto/af_alg.c                               |   7 +-
+ drivers/gpu/drm/etnaviv/etnaviv_gem.c         |   4 +-
+ drivers/gpu/drm/i915/gem/i915_gem_userptr.c   |   6 +-
+ drivers/gpu/drm/radeon/radeon_ttm.c           |   2 +-
+ drivers/infiniband/core/umem.c                |   5 +-
+ drivers/infiniband/hw/hfi1/user_pages.c       |   5 +-
+ drivers/infiniband/hw/qib/qib_user_pages.c    |  13 +-
+ drivers/infiniband/hw/usnic/usnic_uiom.c      |   5 +-
+ drivers/infiniband/sw/siw/siw_mem.c           |  19 +--
+ drivers/media/pci/ivtv/ivtv-udma.c            |  14 +--
+ drivers/media/pci/ivtv/ivtv-yuv.c             |  11 +-
+ drivers/media/v4l2-core/videobuf-dma-sg.c     |   3 +-
+ drivers/misc/genwqe/card_utils.c              |  17 +--
+ drivers/misc/mic/scif/scif_rma.c              |  17 ++-
+ drivers/misc/vmw_vmci/vmci_context.c          |   2 +-
+ drivers/misc/vmw_vmci/vmci_queue_pair.c       |  11 +-
+ drivers/platform/goldfish/goldfish_pipe.c     |   9 +-
+ drivers/rapidio/devices/rio_mport_cdev.c      |   9 +-
+ drivers/sbus/char/oradax.c                    |   2 +-
+ .../interface/vchiq_arm/vchiq_2835_arm.c      |  10 +-
+ drivers/tee/tee_shm.c                         |  10 +-
+ drivers/vfio/vfio_iommu_type1.c               |   8 +-
+ drivers/video/fbdev/pvr2fb.c                  |   3 +-
+ drivers/virt/fsl_hypervisor.c                 |   7 +-
+ drivers/xen/privcmd.c                         |  32 ++---
+ fs/binfmt_elf.c                               |   2 +-
+ fs/binfmt_elf_fdpic.c                         |   2 +-
+ fs/exec.c                                     |   2 +-
+ fs/nfs/direct.c                               |  11 +-
+ fs/orangefs/orangefs-bufmap.c                 |   7 +-
+ include/linux/mm.h                            |   5 +-
+ kernel/events/core.c                          |   2 +-
+ kernel/events/uprobes.c                       |   6 +-
+ kernel/futex.c                                |  10 +-
+ mm/frame_vector.c                             |   4 +-
+ mm/gup.c                                      | 115 ++++++++----------
+ mm/gup_benchmark.c                            |   2 +-
+ mm/madvise.c                                  |   2 +-
+ mm/memory.c                                   |   2 +-
+ mm/process_vm_access.c                        |  18 +--
+ net/ceph/pagevec.c                            |   8 +-
+ net/rds/info.c                                |   5 +-
+ net/rds/message.c                             |   2 +-
+ net/rds/rdma.c                                |  15 ++-
+ virt/kvm/kvm_main.c                           |   4 +-
+ 46 files changed, 164 insertions(+), 295 deletions(-)
+
 -- 
 2.22.0
 
