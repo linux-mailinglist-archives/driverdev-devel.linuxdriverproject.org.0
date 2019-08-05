@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9249080BF9
-	for <lists+driverdev-devel@lfdr.de>; Sun,  4 Aug 2019 20:13:47 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8E67480C00
+	for <lists+driverdev-devel@lfdr.de>; Sun,  4 Aug 2019 20:33:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5E46D858DD;
-	Sun,  4 Aug 2019 18:13:45 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4F4A62046F;
+	Sun,  4 Aug 2019 18:33:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3QvD9OvChJen; Sun,  4 Aug 2019 18:13:44 +0000 (UTC)
+	with ESMTP id olfkk6viUqRA; Sun,  4 Aug 2019 18:33:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EE06B85617;
-	Sun,  4 Aug 2019 18:13:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4B70F20436;
+	Sun,  4 Aug 2019 18:33:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6533F1BF403
- for <devel@linuxdriverproject.org>; Sun,  4 Aug 2019 18:13:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9C3F41BF403
+ for <devel@linuxdriverproject.org>; Sun,  4 Aug 2019 18:32:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 512778796C
- for <devel@linuxdriverproject.org>; Sun,  4 Aug 2019 18:13:41 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 992888798B
+ for <devel@linuxdriverproject.org>; Sun,  4 Aug 2019 18:32:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ierCqytPsHzp for <devel@linuxdriverproject.org>;
- Sun,  4 Aug 2019 18:13:40 +0000 (UTC)
+ with ESMTP id 55FdBMUr+XM0 for <devel@linuxdriverproject.org>;
+ Sun,  4 Aug 2019 18:32:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
  [209.85.215.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id F1285878C8
- for <devel@driverdev.osuosl.org>; Sun,  4 Aug 2019 18:13:39 +0000 (UTC)
-Received: by mail-pg1-f193.google.com with SMTP id o13so38470073pgp.12
- for <devel@driverdev.osuosl.org>; Sun, 04 Aug 2019 11:13:39 -0700 (PDT)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 018AB87985
+ for <devel@driverdev.osuosl.org>; Sun,  4 Aug 2019 18:32:57 +0000 (UTC)
+Received: by mail-pg1-f193.google.com with SMTP id d1so5682147pgp.4
+ for <devel@driverdev.osuosl.org>; Sun, 04 Aug 2019 11:32:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=FmcZ2hRM/N0fqpxXPyaJgm9RQypUKj6pFQyAEiitRbQ=;
- b=QOq+dD8238vDhFCumvsPRVNAJc/w1AyJQ/yrJFybIR9DotuEndkSxPBenU8MwE/JOL
- QJDUFUBAfuWKeU+tj4PNo47FpLroyJdURQK0hUJIetVMVo0t4Nkdd7nFyxNJtlhXzbLt
- G9kc/VzDZ20eUbrSPPrXNIvgb9sWvunDgBd4r80WIap4JOlATzOkEmCXHWrbhLkKdVHr
- M6R8auxV4rBHG0rbXq333kqNqvH6U0w2LFcjiX/YIs2i9PwiZ01zdi1kqkj9CSQWot5e
- +/KJBtjjdrSd4vkqlLLcJxBMEkVK7rGRR6wQpZoM889o3XVem6wRnRGV++gVTuPodwQF
- HC7A==
+ bh=M1Gvzhgkq3uypUYE0BK54gI1jvg+vB6OQn9HgeGo1C4=;
+ b=uiKScfPaDZyKdF3E6bF2WUbY+A+cK/IXsc+XjPVPHuEMba1IHc3yHGjLEEb8tFDXxk
+ 6w9dLIIM9ET/Jvg16knHG0mFyUtY+Wil9NBk0zaTDEsddqGYiZ8VErWwIkH3eiiVYjpS
+ O0sSpV3nAk8yTHmT3RuOTVdRBotUYbvdfIK5UFDG8DB9dSuam1rdkJEVoI0yum5SEsV1
+ mfAWuIm80AIwxHVOawLgisIxUtyvkcTbJdQCDRLNcvtVFdQcGNrqtDLu62tEvgoSwr+J
+ eq9tv+iNUiFF2MQR+jbPDHa/bAFOGaix0l92loEPvock4Pksc0WW81rw+vyw7bNd/tXR
+ SwIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=FmcZ2hRM/N0fqpxXPyaJgm9RQypUKj6pFQyAEiitRbQ=;
- b=qPrMBBw+iGte92BtnXxCCcMNJAFHJzTa4uQOZ16JOC9mQ1cE/gpIT5YGc78/VA7Otx
- DFj9F+vLl59Dm7yvCS2/qEJwWUQYAtsjgaAiF/Wy/uw7slOZFH5CsLftStN/jJDxrlZ7
- P9V+eHqoFZNYbM56MG1JfL9/Cw8HRLCIOvsz1xvcpVTxFoBqhUit1JnAc/Q1Jz00ocLC
- h/qhfqoBJX4hqSRgrkW5pmegDXGxwaOeVd/LR+wSYiCGSHfK0za3sFJbnK1zRKh3aFuy
- DxmKCdRjnWUkhBZYuK00Z2X3f2o+G5Z7/0l+k0r8oAYR9+HeCnVBfoblBRK5McLx647k
- 2BAA==
-X-Gm-Message-State: APjAAAXsGbG80W4fRpZ9UQQK/GMtTnPGg1OIAl7jWF9xCT2Sib9I5Nxf
- 509pGzFgmpXpu+YVgERcuA4=
-X-Google-Smtp-Source: APXvYqz+l8k+a1rHIiexacBDBVj9Dzb05Jm7BxC5GzUYlYQWnvFLMNZKJ25VJep+sij+hZ3Yez+v2A==
-X-Received: by 2002:a63:d84e:: with SMTP id
- k14mr133530694pgj.234.1564942419120; 
- Sun, 04 Aug 2019 11:13:39 -0700 (PDT)
+ bh=M1Gvzhgkq3uypUYE0BK54gI1jvg+vB6OQn9HgeGo1C4=;
+ b=UtHEuXr8GT5DX9QvW8Xqqb7GvLpZ6PP3rss1OxMZnLEz0PN76Y06Xame50E4PXBzkU
+ N1AsTg159+0+Je6Auv0lpvQnqZWJ667yUjSO1GMTt0JN1TzMLgIzul1AeKjXBsl8nGLn
+ 1+NlxURGR5jzq6gNcJZ8aIfEhgW4UgklkJN6DMdyBeL51gQAzHJN2KsLQhl8mb/qoH+M
+ AKlTL6wluQoO0aaQqyfinysGGetQbtxEpBuYnPfQizKBJ7bAajZN2xRrazm8gaNdFHpY
+ un0DBpn6aOGD7SLmqmceefJchy/D5O1qGsEobYAwne7hg5+tCJmyi0NFLxhSJ7TZZfcL
+ UFGA==
+X-Gm-Message-State: APjAAAWZiJoptDrlr120iT4KeyrjS6/4+b0rfsNL7l5JkYf1VeyppV67
+ oPIn7DH70zr41ApgKte3jLQ=
+X-Google-Smtp-Source: APXvYqwK5WbGPiyo0oQxjvJnrjYzvciabM3qjZqtVBvYB0ircVXV3sf8ELBElcx0XW2M0wHMW+pPVw==
+X-Received: by 2002:a62:1ccd:: with SMTP id
+ c196mr70133403pfc.102.1564943577435; 
+ Sun, 04 Aug 2019 11:32:57 -0700 (PDT)
 Received: from localhost.localdomain ([116.75.76.55])
- by smtp.gmail.com with ESMTPSA id f64sm85201258pfa.115.2019.08.04.11.13.35
+ by smtp.gmail.com with ESMTPSA id w2sm71009773pgc.32.2019.08.04.11.32.53
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Sun, 04 Aug 2019 11:13:38 -0700 (PDT)
+ Sun, 04 Aug 2019 11:32:56 -0700 (PDT)
 From: Giridhar Prasath R <cristianoprasath@gmail.com>
 To: 
-Subject: [PATCH] Fix the following checkpatch warnings:
-Date: Mon,  5 Aug 2019 05:13:19 +0530
-Message-Id: <20190804234322.4410-1-cristianoprasath@gmail.com>
+Subject: [PATCH] staging: pi433 line over 80 characters in multiple places
+Date: Mon,  5 Aug 2019 05:32:45 +0530
+Message-Id: <20190805000248.4902-1-cristianoprasath@gmail.com>
 X-Mailer: git-send-email 2.22.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -90,6 +90,8 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
+
+Fix the following checkpatch warnings:
 
 WARNING: line over 80 characters
 FILE: drivers/staging/pi433/pi433_if.h
