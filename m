@@ -2,76 +2,77 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B15EF82419
-	for <lists+driverdev-devel@lfdr.de>; Mon,  5 Aug 2019 19:39:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A9B908250E
+	for <lists+driverdev-devel@lfdr.de>; Mon,  5 Aug 2019 20:52:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7999820798;
-	Mon,  5 Aug 2019 17:39:14 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 16C612046F;
+	Mon,  5 Aug 2019 18:52:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id N8D-sIqvqYwl; Mon,  5 Aug 2019 17:39:13 +0000 (UTC)
+	with ESMTP id 2dxrFaczbV3b; Mon,  5 Aug 2019 18:52:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4819420785;
-	Mon,  5 Aug 2019 17:39:11 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D870820436;
+	Mon,  5 Aug 2019 18:51:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 39C751BF2F9
- for <devel@linuxdriverproject.org>; Mon,  5 Aug 2019 17:39:09 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 301F01BF35D
+ for <devel@linuxdriverproject.org>; Mon,  5 Aug 2019 18:51:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 351B987D9E
- for <devel@linuxdriverproject.org>; Mon,  5 Aug 2019 17:39:09 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 2D6F82036F
+ for <devel@linuxdriverproject.org>; Mon,  5 Aug 2019 18:51:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id goyRbnapdqfE for <devel@linuxdriverproject.org>;
- Mon,  5 Aug 2019 17:39:08 +0000 (UTC)
+ with ESMTP id gTn6uNgoy-hN for <devel@linuxdriverproject.org>;
+ Mon,  5 Aug 2019 18:51:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8D63787D80
- for <devel@driverdev.osuosl.org>; Mon,  5 Aug 2019 17:39:08 +0000 (UTC)
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 74DB8C056807;
- Mon,  5 Aug 2019 17:39:06 +0000 (UTC)
-Received: from rt4.app.eng.rdu2.redhat.com (rt4.app.eng.rdu2.redhat.com
- [10.10.161.56])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id D7C3E5DA60;
- Mon,  5 Aug 2019 17:39:01 +0000 (UTC)
-Received: from rt4.app.eng.rdu2.redhat.com (localhost [127.0.0.1])
- by rt4.app.eng.rdu2.redhat.com (8.14.4/8.14.4) with ESMTP id x75Hd0BJ023399;
- Mon, 5 Aug 2019 13:39:00 -0400
-Received: (from apache@localhost)
- by rt4.app.eng.rdu2.redhat.com (8.14.4/8.14.4/Submit) id x75Hcnwa023396;
- Mon, 5 Aug 2019 13:38:49 -0400
-From: Red Hat Product Security <secalert@redhat.com>
-X-PGP-Public-Key: https://www.redhat.com/security/650d5882.txt
-Subject: [engineering.redhat.com #494100] Question on submitting patch for a
- security bug
-In-Reply-To: <CAJ7L_Gp2HJoFOVxTgakCJw3LMuiPY0+60-giOtw3OwRD6zyNTQ@mail.gmail.com>
-References: <RT-Ticket-494100@engineering.redhat.com>
- <CAJ7L_Gp2HJoFOVxTgakCJw3LMuiPY0+60-giOtw3OwRD6zyNTQ@mail.gmail.com>
-Message-ID: <rt-4.0.13-23214-1565026728-1358.494100-5-0@engineering.redhat.com>
-Precedence: bulk
-X-RT-Loop-Prevention: engineering.redhat.com
-RT-Ticket: engineering.redhat.com #494100
-Managed-BY: RT 4.0.13 (http://www.bestpractical.com/rt/)
-RT-Originator: pjp@redhat.com
-To: b.zolnierkie@samsung.com, bob.liu@oracle.com, chuck.lever@oracle.com,
- davem@davemloft.net, emamd001@umn.edu, gregkh@linuxfoundation.org,
- kubakici@wp.pl, kvalo@codeaurora.org, navid.emamdoost@gmail.com,
- sam@ravnborg.org
+Received: from mail-lf1-f67.google.com (mail-lf1-f67.google.com
+ [209.85.167.67])
+ by silver.osuosl.org (Postfix) with ESMTPS id A35E720363
+ for <devel@driverdev.osuosl.org>; Mon,  5 Aug 2019 18:51:55 +0000 (UTC)
+Received: by mail-lf1-f67.google.com with SMTP id v16so4977798lfg.11
+ for <devel@driverdev.osuosl.org>; Mon, 05 Aug 2019 11:51:55 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=BNhKN5SY5q1+Mh+bjmt4HOn1FwJMHHMXbbFzHulQuBA=;
+ b=HvQXURsJ/hkQM8yat12DaOuMDtErvGYk6k+LCzjCht/+Ckd1Y8ox1ePPbawawgk78c
+ hN9PMHoSzhudNTZyTami/VzslKW7BUz4TM7ldLTk4Q0PXL67ZgTA6x/Mh1TMEAFHeuCA
+ MNFAiMXz0V/aKLG+N/o+AXqqKpesL4rGbXobKvuI+0VnwZKqRsD8GJchPGpkbc4Kc9MA
+ /9mzo31Mor4/8qCtSpkPSyKYuNhAwG4x7/T5AXftePE3Mjf1kgaHfbyj8548YgOND4Vd
+ j9E22OVtQCz2B0Gm/WX35l/YTRgrj6kqXjoS8kkOvNjRBUEB2ig4p6TylSGTF7DO/dAv
+ hGmw==
+X-Gm-Message-State: APjAAAUwKkyFLFFs3Fq2IqtEujwaNFNiozYLgDn5x6PU61BPY1ZWJVuo
+ LWdoNFi3wBP4EmWgkQE7yyo1WT+SPO0=
+X-Google-Smtp-Source: APXvYqw926atBZSefxoGoI8XFHcAsEcBJsdtqZEM0oyoPoNFs4hnigU0yCbqqRVHKtsZ9Th59Wa6UA==
+X-Received: by 2002:a19:7006:: with SMTP id h6mr71323430lfc.5.1565031113265;
+ Mon, 05 Aug 2019 11:51:53 -0700 (PDT)
+Received: from mail-lj1-f173.google.com (mail-lj1-f173.google.com.
+ [209.85.208.173])
+ by smtp.gmail.com with ESMTPSA id l23sm17465810lje.106.2019.08.05.11.51.52
+ for <devel@driverdev.osuosl.org>
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Mon, 05 Aug 2019 11:51:52 -0700 (PDT)
+Received: by mail-lj1-f173.google.com with SMTP id y17so55601830ljk.10
+ for <devel@driverdev.osuosl.org>; Mon, 05 Aug 2019 11:51:52 -0700 (PDT)
+X-Received: by 2002:a2e:9b4a:: with SMTP id o10mr22932480ljj.137.1565031112745; 
+ Mon, 05 Aug 2019 11:51:52 -0700 (PDT)
 MIME-Version: 1.0
-X-RT-Original-Encoding: utf-8
-Date: Mon, 5 Aug 2019 13:38:48 -0400
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.32]); Mon, 05 Aug 2019 17:39:08 +0000 (UTC)
+References: <20190802202323.27117-1-thbonotto@gmail.com>
+ <20190805145020.GE1974@kadam>
+In-Reply-To: <20190805145020.GE1974@kadam>
+From: Helen Koike <helen@koikeco.de>
+Date: Mon, 5 Aug 2019 15:51:41 -0300
+X-Gmail-Original-Message-ID: <CAPW4XYb-KycdZjfb7y786+3VJhfxhj-9qs7DCr3Kyc8o3kUysw@mail.gmail.com>
+Message-ID: <CAPW4XYb-KycdZjfb7y786+3VJhfxhj-9qs7DCr3Kyc8o3kUysw@mail.gmail.com>
+Subject: Re: [Lkcamp] [PATCH] staging: isdn: remove unnecessary parentheses
+To: Dan Carpenter <dan.carpenter@oracle.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
+Precedence: list
 List-Id: Linux Driver Project Developer List
  <driverdev-devel.linuxdriverproject.org>
 List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>, 
@@ -81,65 +82,41 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: secalert@redhat.com
-Cc: kstewart@linuxfoundation.org, alexandre.belloni@bootlin.com,
- airlied@linux.ie, dri-devel@lists.freedesktop.org, bfields@fieldses.org,
- linux-ide@vger.kernel.org, thierry.reding@gmail.com,
- linux-stm32@st-md-mailman.stormreply.com, devel@driverdev.osuosl.org,
- joabreu@synopsys.com, linux-arm-kernel@lists.infradead.org,
- linux-serial@vger.kernel.org, jslaby@suse.com, matthias@redhat.com,
- alexandre.torgue@st.com, smccaman@umn.edu, kjlu@umn.edu, josef@toxicpanda.com,
- johnfwhitmore@gmail.com, nbd@other.debian.org, linux-block@vger.kernel.org,
- linux-mediatek@lists.infradead.org, nishkadg.linux@gmail.com,
- matthias.bgg@gmail.com, peppe.cavallaro@st.com, tglx@linutronix.de,
- andriy.shevchenko@linux.intel.com, trond.myklebust@hammerspace.com,
- allison@lohutok.net, axboe@kernel.dk, mcoquelin.stm32@gmail.com,
- linux-nfs@vger.kernel.org, netdev@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- unglinuxdriver@microchip.com, vkoul@kernel.org, vishal@chelsio.com,
- daniel@ffwll.ch, colin.king@canonical.com, anna.schumaker@netapp.com
+Cc: devel@driverdev.osuosl.org, Karsten Keil <isdn@linux-pingi.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ lkcamp@lists.libreplanetbr.org, netdev@vger.kernel.org,
+ Thiago Bonotto <thbonotto@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello Navid,
+Hi,
 
-On Thu, 18 Jul 2019 01:30:20 GMT, emamd001@umn.edu wrote:
-> I've found a null dereference bug in the Linux kernel source code. I was
-> wondering should I cc the patch to you as well (along with the
-> maintainers)?
+On Mon, Aug 5, 2019 at 11:51 AM Dan Carpenter <dan.carpenter@oracle.com> wrote:
+>
+> This driver is obselete so we're just keeping it around for a couple
+> kernel releases and then deleting it.  We're not taking cleanups for it.
 
-No. Please do not cc <secalert@redhat.com> on the upstream kernel patches.
-It is meant for reporting security issues only.
+I'm sorry, it was me who suggested Thiago to make this change
+as his first contribution, I didn't see the TODO file.
 
-Going through the patches here
+Thiago, it would be great if you could send a patch to another staging driver
+to get starting and to learn how the kernel development cycle works.
+Feel free to ping me or the lkcamp group if you want some pointers/guidance.
 
-1. Issues in ../staging/ drivers are not considered for CVE, they are not to be
-used
-in production environment.
+Thanks both for your contribution.
+Helen
 
-2. Many of the patches listed fix NULL pointer dereference when memory
-allocation
-fails and returns NULL.
-
-3. Do you happen to have reproducers for these issues? Could an unprivileged
-user trigger them?
-
-> Also, I was wondering what are the steps to get CVE for the bug (this is
-> the first time I am reporting a bug)?
-
-Generally CVE is assigned after confirming that a given issue really is a
-security issue. And it may
-have impact ranging from information leakage, DoS to privilege escalation or
-maybe arbitrary code
-execution. Every NULL pointer dereference is not security issue.
-
-
-Hope it helps. Thank you.
----
-Prasad J Pandit / Red Hat Product Security Team
-
+>
+> regards,
+> dan carpenter
+>
+>
+> _______________________________________________
+> Lkcamp mailing list
+> Lkcamp@lists.libreplanetbr.org
+> https://lists.libreplanetbr.org/mailman/listinfo/lkcamp
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
