@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 771AE827FB
-	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Aug 2019 01:35:42 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 716C6827FC
+	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Aug 2019 01:35:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0EF3A87B7D;
-	Mon,  5 Aug 2019 23:35:41 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8DA3F86274;
+	Mon,  5 Aug 2019 23:35:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Z6pdPNSpHNMK; Mon,  5 Aug 2019 23:35:40 +0000 (UTC)
+	with ESMTP id sJv6ajZPISwX; Mon,  5 Aug 2019 23:35:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7C10F87A96;
-	Mon,  5 Aug 2019 23:35:40 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CDC3E86180;
+	Mon,  5 Aug 2019 23:35:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C6D301BF390
- for <devel@linuxdriverproject.org>; Mon,  5 Aug 2019 23:35:32 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B73191BF390
+ for <devel@linuxdriverproject.org>; Mon,  5 Aug 2019 23:35:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id BD62220441
- for <devel@linuxdriverproject.org>; Mon,  5 Aug 2019 23:35:32 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B1EC885BCA
+ for <devel@linuxdriverproject.org>; Mon,  5 Aug 2019 23:35:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aEhj2eSRihq8 for <devel@linuxdriverproject.org>;
- Mon,  5 Aug 2019 23:35:32 +0000 (UTC)
+ with ESMTP id Cfr8Q3iwEXHz for <devel@linuxdriverproject.org>;
+ Mon,  5 Aug 2019 23:35:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
- [209.85.215.195])
- by silver.osuosl.org (Postfix) with ESMTPS id F1A092044B
- for <devel@driverdev.osuosl.org>; Mon,  5 Aug 2019 23:35:31 +0000 (UTC)
-Received: by mail-pg1-f195.google.com with SMTP id z14so3285836pga.5
- for <devel@driverdev.osuosl.org>; Mon, 05 Aug 2019 16:35:31 -0700 (PDT)
+Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
+ [209.85.210.194])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2B15385B4A
+ for <devel@driverdev.osuosl.org>; Mon,  5 Aug 2019 23:35:33 +0000 (UTC)
+Received: by mail-pf1-f194.google.com with SMTP id f17so36429979pfn.6
+ for <devel@driverdev.osuosl.org>; Mon, 05 Aug 2019 16:35:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=Fbs1mFAvJTATM6fIvB9UCHmR0ykE58CEjMWw0CNcKVw=;
- b=J3zvZBPbrHmjS6LZta22eIsImAqYXiEzcBjlGvfa482lW8RjJx4Akc0Ae3QmAzH2GO
- h0LOzT6sPTs/PEl8B7wYP3VutzzoymShyzc7QKqD/z/fAxou3Ejno26qhQWzTw9ZbvoX
- s7CM7TZYWM4m8Mm10u8JGrDRrw1V21hEUkPPSbplPewwOJ2nAcvDkID94cqB8PC87Pb8
- vfxjBV11vQ5JhzuWPxQ/5hvbjhBvvhnci3txlljSsa0yTGdtVQksNsnCcfLM8pAgpluZ
- TwfQZi+2cQTMR9/zLZB2EAsHJaW1U7vUPTntLgrdSicwrUJKpr7z6mcPQ1RurdeOh4Wn
- 2Ndg==
+ bh=80zZuvj+LjB7muc1lRSag1oD8GSQkupjbn/Cdl2Z1us=;
+ b=m9+1Z16t7VCOSQhnktxeXV9tpgKBUk4i4dqvz1AUM2uLciXya2YHvUdXKQPg0nahrp
+ Ls2DL2gNH8qovIXjYf3Ou4K404eivEwkhL8C+H1EjVAuTSOaDqxBoT63k1fy4l7adTzQ
+ A8FZAf4UVV73lJCmwuyKdNwn+s/AHZiFq+Lfy7cgnR0uOjHpcX4BXip0NbwJaeDsALPC
+ POF+Gbq9VZLBATGU2wh30Jfth38krYE1Tlw/3A1u8v02JkC6ye9uz57r4S+AHmfDMw/Q
+ Sy8FW41P88uHNyoSkU+TtXlmHiDG1qLCBe2VO7hgLpTe/I1MZqUKNtKVgKmQSdu5Q+x8
+ 6Prw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=Fbs1mFAvJTATM6fIvB9UCHmR0ykE58CEjMWw0CNcKVw=;
- b=VF/6CTjip0c1IfxET1M51kYuyjlCd7a7/lEmGNI9Ia2rfyj9nloOMof+odcoUq2rhz
- ZOKWWmSKZagqN9iDeQAuoVJlEF8Em/JdLZOSFuIN3D5RhzleFEq8hwAx/H5tVanEW5mZ
- BZ1q/0MGmMpdvnsS197eYt33joBr/ru6m+z36oRqR+TMWzgI5nnpPnVfSeqJxJyAXEdi
- JVecCNJCQZesn+HazvCPQsRaIaGng+e40Ls8BcXDyqcIQ0rZuKIOJN30G6O92WKqkG+w
- m9spJu70CkEz/4q39ULY3j1/wgZC6/42eV0KUKCm5UFbfbZg3PEOJ++QhLvvYiTz1n2q
- wrwQ==
-X-Gm-Message-State: APjAAAU6Ls2ViAihjImg+PQLOxnracYzllE6Ehw0z1MLcHkWCPMq874W
- pJBGemnDZKJaGJ8Z6igvy1g=
-X-Google-Smtp-Source: APXvYqxMcB13LsIEJrOTuGY/j/XtK9RITES5UnefU9LWRAVWxAW33EUR/o2Ph3AMnZGny6/J1lcIww==
-X-Received: by 2002:a62:ce07:: with SMTP id y7mr548956pfg.12.1565048131431;
- Mon, 05 Aug 2019 16:35:31 -0700 (PDT)
+ bh=80zZuvj+LjB7muc1lRSag1oD8GSQkupjbn/Cdl2Z1us=;
+ b=nwXVtgVfcKYyfNdn6PhX2fecmvWZ1KGx6UDkw0Y7meBYde/MlwIoFGQq2b1C9IYyLS
+ dT+Ke26eAB/OUtPfyD4Uky/nMciw1zeZEp2w+LlpKKUJ1fDFhR+JlaZW4tNHhVJZKyPh
+ UKRT0/ANi4gCuXO6LwBcvY8W5c530y7lIlTQf3ls/gpAjMQaoGJh9w0G5BPN/O05U+l+
+ 6BUs54lbBDxCCbbaGVn5r+t6ydGD7mlF2P5CGE5Dea31nKY+DtsKpAHQDklr/eQGqFDM
+ puOGD4PyF3sVaPSPmykEs4n96qegNm2/Jmab+AkXkIawDlrMPF6wWsfmIuvW/zidcDNl
+ dyew==
+X-Gm-Message-State: APjAAAXGxByHGwQUcoN3FCNINmRqiqQDGu63mIfjuokLoFeiAzvQYxGK
+ 6AWUssxL5ERbHrIlg4IQJYeS6Gtf
+X-Google-Smtp-Source: APXvYqynuc9WSN7P4iFLSAjU9euUo/l2aSIhsQXrCHSGZFYLHfCOnZ0+BnlOVd8HxGgj63ZeqPGtRw==
+X-Received: by 2002:aa7:9481:: with SMTP id z1mr560979pfk.92.1565048132680;
+ Mon, 05 Aug 2019 16:35:32 -0700 (PDT)
 Received: from majic.sklembedded.com (c-73-202-231-77.hsd1.ca.comcast.net.
  [73.202.231.77])
- by smtp.googlemail.com with ESMTPSA id 30sm31296349pjk.17.2019.08.05.16.35.30
+ by smtp.googlemail.com with ESMTPSA id 30sm31296349pjk.17.2019.08.05.16.35.31
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Mon, 05 Aug 2019 16:35:30 -0700 (PDT)
+ Mon, 05 Aug 2019 16:35:32 -0700 (PDT)
 From: Steve Longerbeam <slongerbeam@gmail.com>
 To: linux-media@vger.kernel.org
-Subject: [PATCH 14/22] media: imx7-mipi-csis: Create media links in bound
+Subject: [PATCH 15/22] media: imx7-media-csi: Create media links in bound
  notifier
-Date: Mon,  5 Aug 2019 16:34:57 -0700
-Message-Id: <20190805233505.21167-15-slongerbeam@gmail.com>
+Date: Mon,  5 Aug 2019 16:34:58 -0700
+Message-Id: <20190805233505.21167-16-slongerbeam@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190805233505.21167-1-slongerbeam@gmail.com>
 References: <20190805233505.21167-1-slongerbeam@gmail.com>
@@ -102,63 +102,62 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 Implement a notifier bound op to register media links from the remote
-sub-device's source pad(s) to the mipi csi-2 receiver sink pad.
+sub-device's source pad(s) to the CSI sink pad.
 
 Signed-off-by: Steve Longerbeam <slongerbeam@gmail.com>
 ---
- drivers/staging/media/imx/imx7-mipi-csis.c | 25 ++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
+ drivers/staging/media/imx/imx7-media-csi.c | 24 ++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
-diff --git a/drivers/staging/media/imx/imx7-mipi-csis.c b/drivers/staging/media/imx/imx7-mipi-csis.c
-index f71d9183cad2..e03b2317a1ac 100644
---- a/drivers/staging/media/imx/imx7-mipi-csis.c
-+++ b/drivers/staging/media/imx/imx7-mipi-csis.c
-@@ -259,6 +259,12 @@ struct csi_state {
- 	bool sink_linked;
+diff --git a/drivers/staging/media/imx/imx7-media-csi.c b/drivers/staging/media/imx/imx7-media-csi.c
+index a1c96c52a606..f71ac485f780 100644
+--- a/drivers/staging/media/imx/imx7-media-csi.c
++++ b/drivers/staging/media/imx/imx7-media-csi.c
+@@ -196,6 +196,11 @@ struct imx7_csi {
+ 	struct completion last_eof_completion;
  };
  
-+static inline struct csi_state *
-+notifier_to_csis_state(struct v4l2_async_notifier *n)
++static inline struct imx7_csi *notifier_to_dev(struct v4l2_async_notifier *n)
 +{
-+	return container_of(n, struct csi_state, notifier);
++	return container_of(n, struct imx7_csi, notifier);
 +}
 +
- struct csis_pix_format {
- 	unsigned int pix_width_alignment;
- 	u32 code;
-@@ -863,6 +869,23 @@ static int mipi_csis_parse_endpoint(struct device *dev,
- 	return 0;
+ static u32 imx7_csi_reg_read(struct imx7_csi *csi, unsigned int offset)
+ {
+ 	return readl(csi->regbase + offset);
+@@ -1173,6 +1178,23 @@ static int imx7_csi_parse_endpoint(struct device *dev,
+ 	return fwnode_device_is_available(asd->match.fwnode) ? 0 : -EINVAL;
  }
  
-+static int mipi_csis_notify_bound(struct v4l2_async_notifier *notifier,
-+				  struct v4l2_subdev *sd,
-+				  struct v4l2_async_subdev *asd)
++static int imx7_csi_notify_bound(struct v4l2_async_notifier *notifier,
++				 struct v4l2_subdev *sd,
++				 struct v4l2_async_subdev *asd)
 +{
-+	struct csi_state *state = notifier_to_csis_state(notifier);
-+	struct media_pad *sink = &state->mipi_sd.entity.pads[CSIS_PAD_SINK];
++	struct imx7_csi *csi = notifier_to_dev(notifier);
++	struct media_pad *sink = &csi->sd.entity.pads[IMX7_CSI_PAD_SINK];
 +
 +	return media_create_fwnode_pad_links(sink,
-+					     dev_fwnode(state->mipi_sd.dev),
++					     dev_fwnode(csi->sd.dev),
 +					     &sd->entity,
 +					     dev_fwnode(sd->dev), 0);
 +}
 +
-+static const struct v4l2_async_notifier_operations mipi_csis_notify_ops = {
-+	.bound = mipi_csis_notify_bound,
++static const struct v4l2_async_notifier_operations imx7_csi_notify_ops = {
++	.bound = imx7_csi_notify_bound,
 +};
 +
- static int mipi_csis_subdev_init(struct v4l2_subdev *mipi_sd,
- 				 struct platform_device *pdev,
- 				 const struct v4l2_subdev_ops *ops)
-@@ -895,6 +918,8 @@ static int mipi_csis_subdev_init(struct v4l2_subdev *mipi_sd,
+ static int imx7_csi_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+@@ -1253,6 +1275,8 @@ static int imx7_csi_probe(struct platform_device *pdev)
  
- 	v4l2_async_notifier_init(&state->notifier);
+ 	v4l2_async_notifier_init(&csi->notifier);
  
-+	state->notifier.ops = &mipi_csis_notify_ops;
++	csi->notifier.ops = &imx7_csi_notify_ops;
 +
- 	ret = v4l2_async_register_fwnode_subdev(mipi_sd, &state->notifier,
+ 	ret = v4l2_async_register_fwnode_subdev(&csi->sd, &csi->notifier,
  						sizeof(struct v4l2_async_subdev),
- 						&sink_port, 1,
+ 						NULL, 0,
 -- 
 2.17.1
 
