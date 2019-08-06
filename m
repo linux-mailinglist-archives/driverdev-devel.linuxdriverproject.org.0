@@ -1,123 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 356BB83A47
-	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Aug 2019 22:31:23 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 68AF283A61
+	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Aug 2019 22:39:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9CB548650F;
-	Tue,  6 Aug 2019 20:31:21 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7933F220DD;
+	Tue,  6 Aug 2019 20:39:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6wXvwBWozgGY; Tue,  6 Aug 2019 20:31:21 +0000 (UTC)
+	with ESMTP id iHGGOZD8MWUR; Tue,  6 Aug 2019 20:39:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8092C854E7;
-	Tue,  6 Aug 2019 20:31:19 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C090722098;
+	Tue,  6 Aug 2019 20:39:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2377E1BF375
- for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 20:31:16 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id DF00A1BF375
+ for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 20:39:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 1D0EC87554
- for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 20:31:16 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id D620181F48
+ for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 20:39:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id W+78w9gYQvIT for <devel@linuxdriverproject.org>;
- Tue,  6 Aug 2019 20:31:15 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM03-BY2-obe.outbound.protection.outlook.com
- (mail-eopbgr780128.outbound.protection.outlook.com [40.107.78.128])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A746C86DDC
- for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 20:31:15 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=nAc7t8kncGOA2Nvyw1SIppDWdTbZRSVnSeqzuSkY2qWLXjU2u8aTy2PKSI+nA/ynCCQcQgZGw/KBKJy35o7v0MIEjUDSeBRRzQ6TkmHfzpaTbn27gtCO3KGFpvuQDAHzAv3AfdS9aCXqidcMGNtsmz2r6eialuZBBGEfoHrfI5zNIHTHDPnVTX0X5XXUv1NOYuPvZOZKbYKGLew0LDy2AN49KoEVerzquL1pWhmDSeLsPyGWM6sw0NMIiLCgHtTL8QsikLhOR3ydR2y2Z7nkhvo0lWAYkKBsivpoY/CKWxkUNYhhTTC20Y5L3UJLgWj507qivt5iYVHWjWiUl43usQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=kksfFcm3GBFsZkms/2CzgqzxYkQ6KvCxhAIvLS/Bzo0=;
- b=VbaWGXhlsLl2Boy61bpkMw7kUxoZ3R0KAZyf6QKKx21dePL+f/U6NtcklIfMvJxcZdhP1fL2JL9V8OPP1tAfT1Fd+rdYyD3nEq2MBvxsZkOnChGaOqct+BROCLzrRuyFujniRRQpuX1pKwif1Wi7ytkIO5SZ8vP4dVkHubpuuiriuuV8YYdBIn1itg8CvMUqkAGlmjgbMJjRVYvysbtG3Tlx7pd9ml8CRa5G+B9qEsFz94oLBcQk0zRj1PqSdSpF4vl7j9uMb6hLEhRRvHFLKGS+mq2c+e30jXAK9lHdZ0ept43Dhhder8Sg80aZJ0E7lEZk93uHw7UGHDwjSf1OXg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microsoft.com; dmarc=pass action=none
- header.from=microsoft.com; dkim=pass header.d=microsoft.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=kksfFcm3GBFsZkms/2CzgqzxYkQ6KvCxhAIvLS/Bzo0=;
- b=eVTPAmRoFhJDZPLWmKpzlmCCHE6JfGf7G4//Uulk9nlvGga8tkwgp+5j3f1Rx/livn88o8EzYsvNEhINcFlRf29zG3DPh5z/Ucg6wtcAtiYJRwNXiNY0xbk12IEWEz7HMlr6/qszGEeLFc83FqlahGL7UqwI6rdIXZYT/DUkKfY=
-Received: from BYAPR21MB1335.namprd21.prod.outlook.com (20.179.60.209) by
- BYAPR21MB1255.namprd21.prod.outlook.com (20.179.57.159) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2157.9; Tue, 6 Aug 2019 20:31:13 +0000
-Received: from BYAPR21MB1335.namprd21.prod.outlook.com
- ([fe80::819:aea0:eda4:9301]) by BYAPR21MB1335.namprd21.prod.outlook.com
- ([fe80::819:aea0:eda4:9301%9]) with mapi id 15.20.2157.001; Tue, 6 Aug 2019
- 20:31:13 +0000
-From: Michael Kelley <mikelley@microsoft.com>
-To: "will.deacon@arm.com" <will.deacon@arm.com>, "catalin.marinas@arm.com"
- <catalin.marinas@arm.com>, "mark.rutland@arm.com" <mark.rutland@arm.com>,
- "marc.zyngier@arm.com" <marc.zyngier@arm.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, "gregkh@linuxfoundation.org"
- <gregkh@linuxfoundation.org>, "linux-kernel@vger.kernel.org"
- <linux-kernel@vger.kernel.org>, "linux-hyperv@vger.kernel.org"
- <linux-hyperv@vger.kernel.org>, "devel@linuxdriverproject.org"
- <devel@linuxdriverproject.org>, "olaf@aepfle.de" <olaf@aepfle.de>,
- "apw@canonical.com" <apw@canonical.com>, vkuznets <vkuznets@redhat.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>, "marcelo.cerri@canonical.com"
- <marcelo.cerri@canonical.com>, KY Srinivasan <kys@microsoft.com>
-Subject: [PATCH v4 8/8] Drivers: hv: Enable Hyper-V code to be built on ARM64
-Thread-Topic: [PATCH v4 8/8] Drivers: hv: Enable Hyper-V code to be built on
- ARM64
-Thread-Index: AQHVTJXj8v6XQum5DEe1djG7y0U7wg==
-Date: Tue, 6 Aug 2019 20:31:13 +0000
-Message-ID: <1565122133-9086-9-git-send-email-mikelley@microsoft.com>
-References: <1565122133-9086-1-git-send-email-mikelley@microsoft.com>
-In-Reply-To: <1565122133-9086-1-git-send-email-mikelley@microsoft.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: MWHPR01CA0030.prod.exchangelabs.com (2603:10b6:300:101::16)
- To BYAPR21MB1335.namprd21.prod.outlook.com
- (2603:10b6:a03:115::17)
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=mikelley@microsoft.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-mailer: git-send-email 1.8.3.1
-x-originating-ip: [131.107.174.8]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: c453a1ff-561f-4dfa-d7ba-08d71aad0637
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:BYAPR21MB1255; 
-x-ms-traffictypediagnostic: BYAPR21MB1255:|BYAPR21MB1255:
-x-ms-exchange-transport-forked: True
-x-ld-processed: 72f988bf-86f1-41af-91ab-2d7cd011db47,ExtAddr
-x-microsoft-antispam-prvs: <BYAPR21MB1255DC528C15734B31A92298D7D50@BYAPR21MB1255.namprd21.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1332;
-x-forefront-prvs: 0121F24F22
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(366004)(39860400002)(396003)(376002)(136003)(346002)(189003)(199004)(71200400001)(102836004)(71190400001)(386003)(6636002)(6512007)(66446008)(7416002)(10090500001)(6506007)(10290500003)(66946007)(316002)(50226002)(110136005)(14454004)(4326008)(6116002)(1511001)(52116002)(64756008)(99286004)(2501003)(4744005)(2201001)(25786009)(68736007)(476003)(11346002)(446003)(86362001)(8936002)(3846002)(14444005)(486006)(6486002)(256004)(8676002)(54906003)(76176011)(26005)(4720700003)(186003)(7736002)(81166006)(81156014)(2616005)(66066001)(66476007)(22452003)(5660300002)(2906002)(53936002)(305945005)(478600001)(6436002)(36756003)(66556008)(921003)(1121003);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR21MB1255;
- H:BYAPR21MB1335.namprd21.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: microsoft.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: +WDWPP+NTP/4pti+i5drAz9nT/q8NkoE9503eYu5m4zGbmi+BzeYP4SRIftOMUSyDtZKbSBfdsYIA1qlj8JANqUxaljmOxUyJw0+IpH8F5vFosEVtDuthBffUYfeKdHWPFv57T19RsgUPDfmOAlwyU/I0Pac83V8vmFqM6CrU7uuZnvPVRadMeu2Yp7UC76QtcwUI+ImKswimBUar/T3u4CcXPj11jp9WxXakQ5WUvu4VKxqEjlyfrv+mGD1KogopryogWqld/wCLiqi0JEWAxYVoEyextjaRP6X4Q3PlWwe5q+1bXGpn0Ndv0OK3yR3xMzD0BfJL0CsSc4ZnOIJXFcpjuT5allHYuXBmXXb4OYfcNSh/vDq8NTfFgkDVzrRDXefV4iAD/9SFOOWwZsxM3+VuVQ8ItRAqWLP6cGs8ZA=
+ with ESMTP id cqP32tPb75Oo for <devel@linuxdriverproject.org>;
+ Tue,  6 Aug 2019 20:39:18 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from hqemgate16.nvidia.com (hqemgate16.nvidia.com [216.228.121.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E6A2A81EAA
+ for <devel@driverdev.osuosl.org>; Tue,  6 Aug 2019 20:39:17 +0000 (UTC)
+Received: from hqpgpgate101.nvidia.com (Not Verified[216.228.121.13]) by
+ hqemgate16.nvidia.com (using TLS: TLSv1.2, DES-CBC3-SHA)
+ id <B5d49e5760000>; Tue, 06 Aug 2019 13:39:18 -0700
+Received: from hqmail.nvidia.com ([172.20.161.6])
+ by hqpgpgate101.nvidia.com (PGP Universal service);
+ Tue, 06 Aug 2019 13:39:17 -0700
+X-PGP-Universal: processed;
+ by hqpgpgate101.nvidia.com on Tue, 06 Aug 2019 13:39:17 -0700
+Received: from [10.110.48.28] (10.124.1.5) by HQMAIL107.nvidia.com
+ (172.20.187.13) with Microsoft SMTP Server (TLS) id 15.0.1473.3; Tue, 6 Aug
+ 2019 20:39:16 +0000
+Subject: Re: [PATCH v2 01/34] mm/gup: add make_dirty arg to
+ put_user_pages_dirty_lock()
+To: Ira Weiny <ira.weiny@intel.com>, <john.hubbard@gmail.com>
+References: <20190804224915.28669-1-jhubbard@nvidia.com>
+ <20190804224915.28669-2-jhubbard@nvidia.com>
+ <20190806173945.GA4748@iweiny-DESK2.sc.intel.com>
+X-Nvconfidentiality: public
+From: John Hubbard <jhubbard@nvidia.com>
+Message-ID: <0e232d84-e6ea-159e-91d4-77e938377161@nvidia.com>
+Date: Tue, 6 Aug 2019 13:39:16 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c453a1ff-561f-4dfa-d7ba-08d71aad0637
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Aug 2019 20:31:13.3565 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: cQ0R+KiVYV+6SGp9gZLytL7vYfJ/rteM3114ZgPMBKb75JP8fxS2Pip//r+OdbMIQt0D7H7C4aLYXx/youMe9w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR21MB1255
+In-Reply-To: <20190806173945.GA4748@iweiny-DESK2.sc.intel.com>
+X-Originating-IP: [10.124.1.5]
+X-ClientProxiedBy: HQMAIL104.nvidia.com (172.18.146.11) To
+ HQMAIL107.nvidia.com (172.20.187.13)
+Content-Language: en-US
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nvidia.com; s=n1;
+ t=1565123958; bh=kP7gTuC3ZdPRsl2ZM8hKtRsMZoJPCXuUqs/7ZYFYlas=;
+ h=X-PGP-Universal:Subject:To:CC:References:X-Nvconfidentiality:From:
+ Message-ID:Date:User-Agent:MIME-Version:In-Reply-To:
+ X-Originating-IP:X-ClientProxiedBy:Content-Type:Content-Language:
+ Content-Transfer-Encoding;
+ b=De7r6lQUtbn+GTEsMqljgVKTlQIrCw8ZESuRqc7w4LEYPASOCDyQM6KfNGQouIjYR
+ fh0BckBJVbNT9AbXMQb66ZhMKSleBMpCp4Q67sEppT12m031guaO+mSQiN77Vubrty
+ dLwAVLGyjRDyH8bKz/ie59UuEUjWXDBsQB9IGYcfiHyqrDkJ8dhLAwUMAPjRDqyeiY
+ KJw8zEX2A8/HIUmoazoyVwItiLDzuGpYh0geDqgdodA5dwJzt0S2azlo+PhdmfDHXO
+ 6GhmRkzx66GKpfVpxeAm8ztIGHTRgebRJf3i5iJHgoMtdv7J6YmmRpepQCyIfl7KA0
+ CyUb7h3ZsvM+w==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -130,47 +84,97 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sunil Muthuswamy <sunilmut@microsoft.com>,
- "boqun.feng" <boqun.feng@gmail.com>, Michael Kelley <mikelley@microsoft.com>
+Cc: linux-fbdev@vger.kernel.org, Jan Kara <jack@suse.cz>, kvm@vger.kernel.org,
+ Dave Hansen <dave.hansen@linux.intel.com>, Dave Chinner <david@fromorbit.com>,
+ dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
+ Matthew Wilcox <willy@infradead.org>, sparclinux@vger.kernel.org,
+ Dan Williams <dan.j.williams@intel.com>, devel@driverdev.osuosl.org,
+ rds-devel@oss.oracle.com, linux-rdma@vger.kernel.org, x86@kernel.org,
+ amd-gfx@lists.freedesktop.org, Christoph Hellwig <hch@lst.de>,
+ Christoph Hellwig <hch@infradead.org>, Jason Gunthorpe <jgg@ziepe.ca>,
+ xen-devel@lists.xenproject.org, devel@lists.orangefs.org,
+ linux-media@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-block@vger.kernel.org,
+ =?UTF-8?B?SsOpcsO0bWUgR2xpc3Nl?= <jglisse@redhat.com>,
+ linux-rpi-kernel@lists.infradead.org, ceph-devel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-nfs@vger.kernel.org,
+ netdev@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
+ linux-xfs@vger.kernel.org, linux-crypto@vger.kernel.org,
+ linux-fsdevel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Update drivers/hv/Kconfig so CONFIG_HYPERV and CONFIG_HYPERV_TSCPAGE
-can be selected on ARM64, causing the Hyper-V specific code to be built.
+On 8/6/19 10:39 AM, Ira Weiny wrote:
+> On Sun, Aug 04, 2019 at 03:48:42PM -0700, john.hubbard@gmail.com wrote:
+>> From: John Hubbard <jhubbard@nvidia.com>
+...
+>> -
+>>  /**
+>> - * put_user_pages_dirty() - release and dirty an array of gup-pinned pages
+>> - * @pages:  array of pages to be marked dirty and released.
+>> + * put_user_pages_dirty_lock() - release and optionally dirty gup-pinned pages
+>> + * @pages:  array of pages to be maybe marked dirty, and definitely released.
+> 
+> Better would be.
+> 
+> @pages:  array of pages to be put
 
-Signed-off-by: Michael Kelley <mikelley@microsoft.com>
----
- drivers/hv/Kconfig | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+OK, I'll change to that wording.
 
-diff --git a/drivers/hv/Kconfig b/drivers/hv/Kconfig
-index 9a59957..6f8808f 100644
---- a/drivers/hv/Kconfig
-+++ b/drivers/hv/Kconfig
-@@ -4,7 +4,8 @@ menu "Microsoft Hyper-V guest support"
- 
- config HYPERV
- 	tristate "Microsoft Hyper-V client drivers"
--	depends on X86 && ACPI && X86_LOCAL_APIC && HYPERVISOR_GUEST
-+	depends on ACPI && \
-+			((X86 && X86_LOCAL_APIC && HYPERVISOR_GUEST) || ARM64)
- 	select PARAVIRT
- 	select X86_HV_CALLBACK_VECTOR
- 	help
-@@ -15,7 +16,7 @@ config HYPERV_TIMER
- 	def_bool HYPERV
- 
- config HYPERV_TSCPAGE
--       def_bool HYPERV && X86_64
-+       def_bool HYPERV && (X86_64 || ARM64)
- 
- config HYPERV_UTILS
- 	tristate "Microsoft Hyper-V Utilities driver"
+> 
+>>   * @npages: number of pages in the @pages array.
+>> + * @make_dirty: whether to mark the pages dirty
+>>   *
+>>   * "gup-pinned page" refers to a page that has had one of the get_user_pages()
+>>   * variants called on that page.
+>>   *
+>>   * For each page in the @pages array, make that page (or its head page, if a
+>> - * compound page) dirty, if it was previously listed as clean. Then, release
+>> - * the page using put_user_page().
+>> + * compound page) dirty, if @make_dirty is true, and if the page was previously
+>> + * listed as clean. In any case, releases all pages using put_user_page(),
+>> + * possibly via put_user_pages(), for the non-dirty case.
+> 
+> I don't think users of this interface need this level of detail.  I think
+> something like.
+> 
+>  * For each page in the @pages array, release the page.  If @make_dirty is
+>  * true, mark the page dirty prior to release.
+
+Yes, it is too wordy, I'll change to that.
+
+> 
+...
+>> -void put_user_pages_dirty_lock(struct page **pages, unsigned long npages)
+>> -{
+>> -	__put_user_pages_dirty(pages, npages, set_page_dirty_lock);
+>> +	/*
+>> +	 * TODO: this can be optimized for huge pages: if a series of pages is
+>> +	 * physically contiguous and part of the same compound page, then a
+>> +	 * single operation to the head page should suffice.
+>> +	 */
+> 
+> I think this comment belongs to the for loop below...  or just something about
+> how to make this and put_user_pages() more efficient.  It is odd, that this is
+> the same comment as in put_user_pages()...
+
+Actually I think I'll just delete the comment entirely, it's just noise really.
+
+> 
+> The code is good.  So... Other than the comments.
+> 
+> Reviewed-by: Ira Weiny <ira.weiny@intel.com>
+
+
+Thanks for the review!
+
+
+thanks,
 -- 
-1.8.3.1
-
+John Hubbard
+NVIDIA
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
