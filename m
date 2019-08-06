@@ -2,66 +2,58 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 52A79833AF
-	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Aug 2019 16:14:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 674E98355A
+	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Aug 2019 17:34:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3CEAB860D1;
-	Tue,  6 Aug 2019 14:14:08 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3B14A84AE2;
+	Tue,  6 Aug 2019 15:34:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KWVngkZYI0h9; Tue,  6 Aug 2019 14:14:07 +0000 (UTC)
+	with ESMTP id znH7T1XU4gtI; Tue,  6 Aug 2019 15:34:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6525F85FA3;
-	Tue,  6 Aug 2019 14:14:06 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D1D3C84E6B;
+	Tue,  6 Aug 2019 15:34:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8D6CE1BF3D9
- for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 14:14:04 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5A4B31BF5EA
+ for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 15:34:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 886D987E5F
- for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 14:14:04 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 54AF287BF5
+ for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 15:34:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qSQ-lx6A7fPy for <devel@linuxdriverproject.org>;
- Tue,  6 Aug 2019 14:14:03 +0000 (UTC)
+ with ESMTP id stw5HxF5qn8Y for <devel@linuxdriverproject.org>;
+ Tue,  6 Aug 2019 15:34:38 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0121.hostedemail.com
- [216.40.44.121])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8E44F87E5C
- for <devel@driverdev.osuosl.org>; Tue,  6 Aug 2019 14:14:03 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave04.hostedemail.com (Postfix) with ESMTP id 307F71801530F
- for <devel@driverdev.osuosl.org>; Tue,  6 Aug 2019 10:29:46 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay02.hostedemail.com (Postfix) with ESMTP id 67B4B6121;
- Tue,  6 Aug 2019 10:29:43 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, :::::::,
- RULES_HIT:41:355:379:599:968:973:982:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1539:1593:1594:1711:1730:1747:1777:1792:1801:2393:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3868:3870:3871:3872:4250:4321:4559:4605:5007:7809:10004:10400:10848:11232:11658:11914:12297:12740:12760:12895:13069:13095:13311:13357:13439:14181:14581:14659:14721:21080:21433:21451:21627:30012:30025:30054:30091,
- 0,
- RBL:23.242.196.136:@perches.com:.lbl8.mailshell.net-62.8.0.180 64.201.201.201,
- CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none, DomainCache:0,
- MSF:not bulk, SPF:fn, MSBL:0, DNSBL:neutral, Custom_rules:0:0:0, LFtime:27,
- LUA_SUMMARY:none
-X-HE-Tag: goat74_37ab30b107b50
-X-Filterd-Recvd-Size: 1545
-Received: from XPS-9350.home (cpe-23-242-196-136.socal.res.rr.com
- [23.242.196.136]) (Authenticated sender: joe@perches.com)
- by omf14.hostedemail.com (Postfix) with ESMTPA;
- Tue,  6 Aug 2019 10:29:42 +0000 (UTC)
-Message-ID: <b73f09c944625a40b2589e9bac7f8bd22a711ed3.camel@perches.com>
-Subject: Re: [PATCH] USB: Move wusbcore and UWB to staging as it is obsolete
-From: Joe Perches <joe@perches.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org
-Date: Tue, 06 Aug 2019 03:29:40 -0700
-In-Reply-To: <20190806101509.GA11280@kroah.com>
-References: <20190806101509.GA11280@kroah.com>
-User-Agent: Evolution 3.30.5-0ubuntu0.18.10.1 
+Received: from ozlabs.org (ozlabs.org [203.11.71.1])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4100A87BD4
+ for <devel@driverdev.osuosl.org>; Tue,  6 Aug 2019 15:34:38 +0000 (UTC)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest
+ SHA256) (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 462zFv3F9sz9sMr;
+ Wed,  7 Aug 2019 01:34:27 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=canb.auug.org.au;
+ s=201702; t=1565105672;
+ bh=5FHAJ2a0H+dgGw8qV5krRpvfMTW4QMVUNBiIFTz7ukc=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=dcShrCbsau/hwzLIEVX+xCQkjw8ytUmuBphP7Wzk0Os+PeYJL4E9AZojKIxsW/XCC
+ xTyuNmwgEnwSEW6/Kz8amhaNxd/QkXfyj6TN7B3JHn6lyvGiqz9io4rs24B6/81qqU
+ aHhTQCVVCoPKVEFdalsWvjQTI3tUyZFaUFc133mkcqknYyDVNSEChFStksBky28u+/
+ GQO177sJv9EuIy1iyMEkE5ZTlNxx7pwHSxx0QCJI51C+dfkT0hpyUbfm+uzI+0mdxe
+ ZEqmwK2hiOD8JXrhyc//NCp7AK7xY6zJ2JDZpiGvVhYTi+uG79dj7xnbSdH/Jt6dGk
+ vLa4gCEEgqDLA==
+Date: Wed, 7 Aug 2019 01:34:23 +1000
+From: Stephen Rothwell <sfr@canb.auug.org.au>
+To: Gao Xiang <gaoxiang25@huawei.com>
+Subject: Re: [PATCH RFC] erofs: move erofs out of staging
+Message-ID: <20190807013423.02fd6990@canb.auug.org.au>
+In-Reply-To: <20190806094925.228906-1-gaoxiang25@huawei.com>
+References: <20190806094925.228906-1-gaoxiang25@huawei.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -75,34 +67,66 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, linux-erofs@lists.ozlabs.org,
+ Chao Yu <yuchao0@huawei.com>, Theodore Ts'o <tytso@mit.edu>,
+ "Darrick J . Wong" <darrick.wong@oracle.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jan Kara <jack@suse.cz>,
+ Amir Goldstein <amir73il@gmail.com>, Dave Chinner <david@fromorbit.com>,
+ David Sterba <dsterba@suse.cz>, Li Guifu <bluce.liguifu@huawei.com>,
+ LKML <linux-kernel@vger.kernel.org>, Christoph Hellwig <hch@infradead.org>,
+ Miao Xie <miaoxie@huawei.com>, Alexander Viro <viro@zeniv.linux.org.uk>,
+ Pavel Machek <pavel@denx.de>, linux-fsdevel@vger.kernel.org,
+ Jaegeuk Kim <jaegeuk@kernel.org>, Andrew Morton <akpm@linux-foundation.org>,
+ Linus Torvalds <torvalds@linux-foundation.org>, Fang Wei <fangwei1@huawei.com>
+Content-Type: multipart/mixed; boundary="===============5802151033911499306=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, 2019-08-06 at 12:15 +0200, Greg Kroah-Hartman wrote:
-> The UWB and wusbcore code is long obsolete, so let us just move the code
-> out of the real part of the kernel and into the drivers/staging/
-> location with plans to remove it entirely in a few releases.
-[]
->  MAINTAINERS                                   | 15 +++-------
-[]
-> diff --git a/MAINTAINERS b/MAINTAINERS
-[]
-> @@ -3800,14 +3800,9 @@ F:	scripts/sign-file.c
->  F:	scripts/extract-cert.c
->  
->  CERTIFIED WIRELESS USB (WUSB) SUBSYSTEM:
-> -L:	linux-usb@vger.kernel.org
-> +L:	devel@driverdev.osuosl.org
->  S:	Orphan
+--===============5802151033911499306==
+Content-Type: multipart/signed; boundary="Sig_/3zuq9Mbh_pVR5QZxswgd1wJ";
+ protocol="application/pgp-signature"; micalg=pgp-sha256
 
-Better to mark this as obsolete so checkpatch emits
-a message saying "no unnecessary modifications"
+--Sig_/3zuq9Mbh_pVR5QZxswgd1wJ
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
 
+Hi Gao,
+
+One small suggestion: just remove the file names from the comments at
+the top of the files rather than change them to reflect that they have
+moved.  We can usually tell the name of a file by its name :-)
+
+--=20
+Cheers,
+Stephen Rothwell
+
+--Sig_/3zuq9Mbh_pVR5QZxswgd1wJ
+Content-Type: application/pgp-signature
+Content-Description: OpenPGP digital signature
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEENIC96giZ81tWdLgKAVBC80lX0GwFAl1Jnf8ACgkQAVBC80lX
+0GyktAf/awWVta3LRhqpez+RTEQC6IzKAlgR8ULIAJpHB3OZFNlv6Lxvbg3l/Jdq
+XZAoR3RqQTr49hpHePfnENWdxIFa7DUCyOjO5MeWyP7VpVBEk48YSFnBUtPIzh7m
++UdrAt+zOdjzdRd6/v2DGhd8dXLZ+rsupL9XA75ak2iVEGjEnlTorjwKDaYy2VR+
+cV0mFcFNBEHs2Ok2wTfYYzUx7id7/tcVfjWuzvyvd1d0Y53FLgWLvIVCsJNM0HmH
+LlpVkiVpMFDCC3SMSiffhkOkNigEV1vY3wxlS2qniRz+qXbAMqPv8CRbtdO92bkM
+LBThN5N6CBu+SqQgGSvGv08yzx+eqg==
+=sZOX
+-----END PGP SIGNATURE-----
+
+--Sig_/3zuq9Mbh_pVR5QZxswgd1wJ--
+
+--===============5802151033911499306==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============5802151033911499306==--
