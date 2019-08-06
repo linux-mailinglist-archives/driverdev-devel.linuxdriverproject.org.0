@@ -1,71 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 95E2E838EE
-	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Aug 2019 20:48:17 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D321D85E6F;
-	Tue,  6 Aug 2019 18:48:15 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dReUR6rQaY9X; Tue,  6 Aug 2019 18:48:13 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C1EE785F11;
-	Tue,  6 Aug 2019 18:48:13 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 043481BF2F4
- for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 18:48:11 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id A0BFF83942
+	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Aug 2019 21:01:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 017FC20131
- for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 18:48:11 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 21F0721FEF;
+	Tue,  6 Aug 2019 19:01:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RLjV5WlPBkmL; Tue,  6 Aug 2019 19:01:36 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 971142154E;
+	Tue,  6 Aug 2019 19:01:34 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 501EB1BF2F4
+ for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 19:01:32 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4C793860A3
+ for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 19:01:32 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CjgHEbVqAZ9Q for <devel@linuxdriverproject.org>;
- Tue,  6 Aug 2019 18:48:10 +0000 (UTC)
-X-Greylist: delayed 00:07:22 by SQLgrey-1.7.6
-Received: from mail-vk1-f201.google.com (mail-vk1-f201.google.com
- [209.85.221.201])
- by silver.osuosl.org (Postfix) with ESMTPS id 23D1B21FF6
- for <devel@driverdev.osuosl.org>; Tue,  6 Aug 2019 18:48:10 +0000 (UTC)
-Received: by mail-vk1-f201.google.com with SMTP id p196so38146414vke.17
- for <devel@driverdev.osuosl.org>; Tue, 06 Aug 2019 11:48:10 -0700 (PDT)
+ with ESMTP id ubjFfThzFXmc for <devel@linuxdriverproject.org>;
+ Tue,  6 Aug 2019 19:01:31 +0000 (UTC)
+X-Greylist: delayed 00:15:20 by SQLgrey-1.7.6
+Received: from mail-ot1-f73.google.com (mail-ot1-f73.google.com
+ [209.85.210.73])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 8A345855D2
+ for <devel@driverdev.osuosl.org>; Tue,  6 Aug 2019 19:01:31 +0000 (UTC)
+Received: by mail-ot1-f73.google.com with SMTP id q16so50321466otn.11
+ for <devel@driverdev.osuosl.org>; Tue, 06 Aug 2019 12:01:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=KgzH53PwLND1jLbrm/0exiWYFdiM2SzHVv8Uf5Mh6WA=;
- b=TO8OuL1BlbirCPPWqGBbRPnqwohgpSqYuh+mhD9Fan+N5xQ1xSkyjcwfXIqmsy4UCP
- 9XcJI/4gKegHjuZT9J96o6CEHzcowSFVIEEH8eLjEVCKjWtcE6XaEeaavb0XxUegiXe+
- ZmzLJa6mwQpxrwLxiwrEDMxmoyNGiEeyXQ9BQ2VpoIA4LVG9HwGTXVcg74DWpEKIApEK
- TIB5s9aGPzn5c59x+rXxXBEIWx49BC1LVuUnpN/Nf3jbUw1qZIqz9dgxYeMnOS6c3rGg
- 6KpnF9tEFyWR48Xn35qMlIJaALvbd7W09HjbGGX/vD8US+B03GIHucPGf9rOIKjcKdZt
- lH7g==
+ h=date:message-id:mime-version:subject:from:to:cc;
+ bh=wP2k6PxKQdbd17RqxG3El2muiWWiSGy2kc2Gh5XByrI=;
+ b=WDd/BGxofkfzmjb4D/zPUq3gRY5vVS5MLRGKZVCYfXHv34Te7S8e4Bwb30pkMShHie
+ 1+4797JKG5wBhEsNIjw79qTNSW2+Eznh3vG1/oYul2LAqbqiPFy9nIyRofpSeZTqz7/L
+ RtZLGtGCOrSblUrgQ7Lgwa3Gl52NUeBClGtks3ov0ttCGeOqOu0muBrhHxFiaanYlI7X
+ qbZUZAii/D6/GBW8a79S/zA0J+/z8j3TkU8WOQMUaGOSBYP28+IB8fZvabkUKLCPzuxH
+ /EQrxqgUJoYu3vguLR46VNRLNWErX+wiTN8fS2qaSZPvSoWWDhPtpYyDs5a7ASHy/+ha
+ Ku9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=KgzH53PwLND1jLbrm/0exiWYFdiM2SzHVv8Uf5Mh6WA=;
- b=cvWSdq+TDIEAeHpprakFN6hiHPcEH0nvGV/lLA7+pWVGmms/Q3VelyuMiyCi0seldZ
- 3mKG98P5sRguTBYac3La/ue78LNPLBmfEFwczWRoKbd48N4hdHjFnWdDL39C0FNYpilv
- Z7Bwc93TD1e/wGgN3nUFWbmo3T+OVFminchMM7X7mGaR5AL1AC+CNbMlOFcZLIttQ+hE
- 9sg54T60qF31weQrhglfuXF01sx3S0+MvhuI8OMyPfCvYBfEvZ/mRNFOK07Xcy2CMaKd
- uqcReq7LGbUIr4OXTWFe5xC6Otne966MmXEe0bpbsbRKAdTLCdpabvntZsDwQrdvSeG3
- lwkg==
-X-Gm-Message-State: APjAAAWeMlEFgvChXXrHtGYZo74+JONTfX5LijPUUTO43rA/iVqotiLG
- 2pQLVDGnp8UW2Ubr9oelOBlySPwwR/8=
-X-Google-Smtp-Source: APXvYqyj/C1aMKroLXjnt52133U+mF/4/m9/pdxH6SIvZVODYB8EP6DW0aydx4KyYo0ko4Aw4zZlgx5Prrg=
-X-Received: by 2002:ab0:5398:: with SMTP id k24mr1923016uaa.6.1565116847615;
- Tue, 06 Aug 2019 11:40:47 -0700 (PDT)
-Date: Tue,  6 Aug 2019 11:40:06 -0700
-In-Reply-To: <20190806184007.60739-1-hridya@google.com>
-Message-Id: <20190806184007.60739-3-hridya@google.com>
+ h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
+ bh=wP2k6PxKQdbd17RqxG3El2muiWWiSGy2kc2Gh5XByrI=;
+ b=qtNoNO4BB8r9Nfu3/lyzyRGY/chxxv2hgE9fnfM53Cx4GkSQazDPoY7lGD0bEW5bX0
+ iL14oxsszoIfkUHFoS3Awzew6HOYl/Wj7Xh5keicHcMn30PelNo44n0w3wHjZf2XoON8
+ AaUdvfq5UY5BqcThdf5zxm1M3tRTONJp4BCKgHAJy2sh/pnm/5BYpiQtMaNWrP9ELysF
+ lkY6aKVWJTyeCV23lKPLiFOcq+prOWbq/PYofqPASoRRj93flHtagqNp3FF3jKbHHdSD
+ 5OGr0RcmcmrciKGGUtXLlQ7u6hAiZrE8J0eauQu/W/IRh9bt1bJetnxdTQnxICDFrUZI
+ BmHA==
+X-Gm-Message-State: APjAAAVw/1Sr1zaoneJLEoJrseTV+7/gHWHdx33kDIi7CCHevYwoIVzs
+ N1jeOdbaKLK09UIrFTwTtN+nSkdpmGA=
+X-Google-Smtp-Source: APXvYqwwYmJkHthiaIvaPs+VLc2DIFtXsjOTFOVcyvEdIPgfAq5a3Y0oU2QxDuFPqvHfDsC36M25NaYhWtk=
+X-Received: by 2002:a65:57ca:: with SMTP id q10mr4401454pgr.52.1565116824642; 
+ Tue, 06 Aug 2019 11:40:24 -0700 (PDT)
+Date: Tue,  6 Aug 2019 11:40:04 -0700
+Message-Id: <20190806184007.60739-1-hridya@google.com>
 Mime-Version: 1.0
-References: <20190806184007.60739-1-hridya@google.com>
 X-Mailer: git-send-email 2.22.0.770.g0f2c4a37fd-goog
-Subject: [PATCH v2 2/2] binder: Validate the default binderfs device names.
+Subject: [PATCH v2 0/2] Add default binderfs devices
 From: Hridya Valsaraju <hridya@google.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
  "=?UTF-8?q?Arve=20Hj=C3=B8nnev=C3=A5g?=" <arve@android.com>,
@@ -85,48 +82,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Hridya Valsaraju <hridya@google.com>,
- Christian Brauner <christian.brauner@ubuntu.com>, kernel-team@android.com
+Cc: Hridya Valsaraju <hridya@google.com>, kernel-team@android.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Length of a binderfs device name cannot exceed BINDERFS_MAX_NAME.
-This patch adds a check in binderfs_init() to ensure the same
-for the default binder devices that will be created in every
-binderfs instance.
+Binderfs was created to help provide private binder devices to
+containers in their own IPC namespace. Currently, every time a new binderfs
+instance is mounted, its private binder devices need to be created via
+IOCTL calls. This patch series eliminates the effort for creating
+the default binder devices for each binderfs instance by creating them
+automatically.
 
-Co-developed-by: Christian Brauner <christian.brauner@ubuntu.com>
-Signed-off-by: Christian Brauner <christian.brauner@ubuntu.com>
-Signed-off-by: Hridya Valsaraju <hridya@google.com>
----
- drivers/android/binderfs.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+Hridya Valsaraju (2):
+  binder: Add default binder devices through binderfs when configured
+  binder: Validate the default binderfs device names.
 
-diff --git a/drivers/android/binderfs.c b/drivers/android/binderfs.c
-index 886b4e0f482f..52c8bd361906 100644
---- a/drivers/android/binderfs.c
-+++ b/drivers/android/binderfs.c
-@@ -572,6 +572,18 @@ static struct file_system_type binder_fs_type = {
- int __init init_binderfs(void)
- {
- 	int ret;
-+	const char *name;
-+	size_t len;
-+
-+	/* Verify that the default binderfs device names are valid. */
-+	name = binder_devices_param;
-+	for (len = strcspn(name, ","); len > 0; len = strcspn(name, ",")) {
-+		if (len > BINDERFS_MAX_NAME)
-+			return -E2BIG;
-+		name += len;
-+		if (*name == ',')
-+			name++;
-+	}
- 
- 	/* Allocate new major number for binderfs. */
- 	ret = alloc_chrdev_region(&binderfs_dev, 0, BINDERFS_MAX_MINOR,
+ drivers/android/binder.c          |  5 +++--
+ drivers/android/binder_internal.h |  2 ++
+ drivers/android/binderfs.c        | 37 ++++++++++++++++++++++++++++---
+ 3 files changed, 39 insertions(+), 5 deletions(-)
+
 -- 
 2.22.0.770.g0f2c4a37fd-goog
 
