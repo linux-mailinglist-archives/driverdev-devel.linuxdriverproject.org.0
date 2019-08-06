@@ -1,66 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C633D8326A
-	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Aug 2019 15:12:10 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 52A79833AF
+	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Aug 2019 16:14:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D069786995;
-	Tue,  6 Aug 2019 13:12:08 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3CEAB860D1;
+	Tue,  6 Aug 2019 14:14:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id egZNbiw6s-X6; Tue,  6 Aug 2019 13:12:08 +0000 (UTC)
+	with ESMTP id KWVngkZYI0h9; Tue,  6 Aug 2019 14:14:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 869E886762;
-	Tue,  6 Aug 2019 13:12:07 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6525F85FA3;
+	Tue,  6 Aug 2019 14:14:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4A4ED1BF28A
- for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 13:12:05 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8D6CE1BF3D9
+ for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 14:14:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 4039C86767
- for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 13:12:05 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 886D987E5F
+ for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 14:14:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IhbHJWElU-HJ for <devel@linuxdriverproject.org>;
- Tue,  6 Aug 2019 13:12:04 +0000 (UTC)
+ with ESMTP id qSQ-lx6A7fPy for <devel@linuxdriverproject.org>;
+ Tue,  6 Aug 2019 14:14:03 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from eu-smtp-delivery-151.mimecast.com
- (eu-smtp-delivery-151.mimecast.com [207.82.80.151])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B20EA86762
- for <devel@driverdev.osuosl.org>; Tue,  6 Aug 2019 13:12:03 +0000 (UTC)
-Received: from AcuMS.aculab.com (156.67.243.126 [156.67.243.126]) (Using
- TLS) by relay.mimecast.com with ESMTP id
- uk-mta-31-8SN7SsMjODOE3pGV42hYng-1; Tue, 06 Aug 2019 14:10:15 +0100
-Received: from AcuMS.Aculab.com (fd9f:af1c:a25b:0:43c:695e:880f:8750) by
- AcuMS.aculab.com (fd9f:af1c:a25b:0:43c:695e:880f:8750) with Microsoft SMTP
- Server (TLS) id 15.0.1347.2; Tue, 6 Aug 2019 14:10:14 +0100
-Received: from AcuMS.Aculab.com ([fe80::43c:695e:880f:8750]) by
- AcuMS.aculab.com ([fe80::43c:695e:880f:8750%12]) with mapi id 15.00.1347.000; 
- Tue, 6 Aug 2019 14:10:14 +0100
-From: David Laight <David.Laight@ACULAB.COM>
-To: 'Dan Carpenter' <dan.carpenter@oracle.com>, Jose Carlos Cazarin Filho
- <joseespiriki@gmail.com>
-Subject: RE: [PATCH] rtl8712: rtl871x_ioctl_linux.c: fix unnecessary typecast
-Thread-Topic: [PATCH] rtl8712: rtl871x_ioctl_linux.c: fix unnecessary typecast
-Thread-Index: AQHVTE2Sh/UbLvavCEKXN3OpolxoRabuFsqQ
-Date: Tue, 6 Aug 2019 13:10:14 +0000
-Message-ID: <8d6c6714f9ca46ab90b2a747c05b899b@AcuMS.aculab.com>
-References: <20190806013329.28574-1-joseespiriki@gmail.com>
- <20190806115305.GF1974@kadam>
-In-Reply-To: <20190806115305.GF1974@kadam>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-exchange-transport-fromentityheader: Hosted
-x-originating-ip: [10.202.205.107]
+Received: from smtprelay.hostedemail.com (smtprelay0121.hostedemail.com
+ [216.40.44.121])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8E44F87E5C
+ for <devel@driverdev.osuosl.org>; Tue,  6 Aug 2019 14:14:03 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave04.hostedemail.com (Postfix) with ESMTP id 307F71801530F
+ for <devel@driverdev.osuosl.org>; Tue,  6 Aug 2019 10:29:46 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay02.hostedemail.com (Postfix) with ESMTP id 67B4B6121;
+ Tue,  6 Aug 2019 10:29:43 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, :::::::,
+ RULES_HIT:41:355:379:599:968:973:982:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1539:1593:1594:1711:1730:1747:1777:1792:1801:2393:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3868:3870:3871:3872:4250:4321:4559:4605:5007:7809:10004:10400:10848:11232:11658:11914:12297:12740:12760:12895:13069:13095:13311:13357:13439:14181:14581:14659:14721:21080:21433:21451:21627:30012:30025:30054:30091,
+ 0,
+ RBL:23.242.196.136:@perches.com:.lbl8.mailshell.net-62.8.0.180 64.201.201.201,
+ CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none, DomainCache:0,
+ MSF:not bulk, SPF:fn, MSBL:0, DNSBL:neutral, Custom_rules:0:0:0, LFtime:27,
+ LUA_SUMMARY:none
+X-HE-Tag: goat74_37ab30b107b50
+X-Filterd-Recvd-Size: 1545
+Received: from XPS-9350.home (cpe-23-242-196-136.socal.res.rr.com
+ [23.242.196.136]) (Authenticated sender: joe@perches.com)
+ by omf14.hostedemail.com (Postfix) with ESMTPA;
+ Tue,  6 Aug 2019 10:29:42 +0000 (UTC)
+Message-ID: <b73f09c944625a40b2589e9bac7f8bd22a711ed3.camel@perches.com>
+Subject: Re: [PATCH] USB: Move wusbcore and UWB to staging as it is obsolete
+From: Joe Perches <joe@perches.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org
+Date: Tue, 06 Aug 2019 03:29:40 -0700
+In-Reply-To: <20190806101509.GA11280@kroah.com>
+References: <20190806101509.GA11280@kroah.com>
+User-Agent: Evolution 3.30.5-0ubuntu0.18.10.1 
 MIME-Version: 1.0
-X-MC-Unique: 8SN7SsMjODOE3pGV42hYng-1
-X-Mimecast-Spam-Score: 0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,64 +75,32 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- "florian.c.schilhabel@googlemail.com"
- <florian.c.schilhabel@googlemail.com>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "lkcamp@lists.libreplanetbr.org" <lkcamp@lists.libreplanetbr.org>,
- "Larry.Finger@lwfinger.net" <Larry.Finger@lwfinger.net>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Dan Carpenter
-> Sent: 06 August 2019 12:53
-> On Mon, Aug 05, 2019 at 10:33:29PM -0300, Jose Carlos Cazarin Filho wrote:
-> > Fix checkpath warning:
-> > WARNING: Unnecessary typecast of c90 int constant
-> >
-> > Signed-off-by: Jose Carlos Cazarin Filho <joseespiriki@gmail.com>
-> > ---
-> >  Hello all!
-> >  This is my first commit to the Linux Kernel, I'm doing this to learn and be able
-> >  to contribute more in the future
-> >  Peace all!
-> >  drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 4 ++--
-> >  1 file changed, 2 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-> b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-> > index 944336e0d..da371072e 100644
-> > --- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-> > +++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-> > @@ -665,8 +665,8 @@ static int r8711_wx_set_freq(struct net_device *dev,
-> >
-> >  /* If setting by frequency, convert to a channel */
-> >  	if ((fwrq->e == 1) &&
-> > -	  (fwrq->m >= (int) 2.412e8) &&
-> > -	  (fwrq->m <= (int) 2.487e8)) {
-> > +	  (fwrq->m >= 2.412e8) &&
-> > +	  (fwrq->m <= 2.487e8)) {
-> 
-> I don't think we can do this.  You're not allowed to use floats in the
-> kernel (because they make context switching slow).  I could have sworn
-> that we use the -nofp to stop the compile when people use floats but
-> this compiles fine for me.
+On Tue, 2019-08-06 at 12:15 +0200, Greg Kroah-Hartman wrote:
+> The UWB and wusbcore code is long obsolete, so let us just move the code
+> out of the real part of the kernel and into the drivers/staging/
+> location with plans to remove it entirely in a few releases.
+[]
+>  MAINTAINERS                                   | 15 +++-------
+[]
+> diff --git a/MAINTAINERS b/MAINTAINERS
+[]
+> @@ -3800,14 +3800,9 @@ F:	scripts/sign-file.c
+>  F:	scripts/extract-cert.c
+>  
+>  CERTIFIED WIRELESS USB (WUSB) SUBSYSTEM:
+> -L:	linux-usb@vger.kernel.org
+> +L:	devel@driverdev.osuosl.org
+>  S:	Orphan
 
-My guess is the 'c90 int constant' text.
+Better to mark this as obsolete so checkpatch emits
+a message saying "no unnecessary modifications"
 
-It rather implies that '2.412e8' has become the same as '2141200000'.
-Which is rather worrying because suddenly 'int_var * 2.4e8' might
-be an integer multiply rather than a double one and overflow.
-Have the standard people broken code again?
-
-	David
-
--
-Registered Address Lakeside, Bramley Road, Mount Farm, Milton Keynes, MK1 1PT, UK
-Registration No: 1397386 (Wales)
 
 _______________________________________________
 devel mailing list
