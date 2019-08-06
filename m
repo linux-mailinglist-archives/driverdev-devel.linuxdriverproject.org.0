@@ -1,75 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 43F188293D
-	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Aug 2019 03:33:43 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 70AB682BDC
+	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Aug 2019 08:41:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id AC69F86256;
-	Tue,  6 Aug 2019 01:33:41 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 94311214E9;
+	Tue,  6 Aug 2019 06:41:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Htlum-NlvSKY; Tue,  6 Aug 2019 01:33:41 +0000 (UTC)
+	with ESMTP id 3BEkvg42mpwL; Tue,  6 Aug 2019 06:41:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8C67785B6F;
-	Tue,  6 Aug 2019 01:33:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CB7AA20C41;
+	Tue,  6 Aug 2019 06:41:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C4A831BF328
- for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 01:33:36 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 673311BF2BA
+ for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 06:41:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B460485BD3
- for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 01:33:36 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 619BB2041D
+ for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 06:41:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FnBNmGVMy4JJ for <devel@linuxdriverproject.org>;
- Tue,  6 Aug 2019 01:33:36 +0000 (UTC)
+ with ESMTP id 2CQLjxTGZdDs for <devel@linuxdriverproject.org>;
+ Tue,  6 Aug 2019 06:41:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f195.google.com (mail-qt1-f195.google.com
- [209.85.160.195])
- by whitealder.osuosl.org (Postfix) with ESMTPS id EC73685B6F
- for <devel@driverdev.osuosl.org>; Tue,  6 Aug 2019 01:33:35 +0000 (UTC)
-Received: by mail-qt1-f195.google.com with SMTP id x22so9581238qtp.12
- for <devel@driverdev.osuosl.org>; Mon, 05 Aug 2019 18:33:35 -0700 (PDT)
+Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
+ [209.85.215.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id C6EE620381
+ for <devel@driverdev.osuosl.org>; Tue,  6 Aug 2019 06:41:30 +0000 (UTC)
+Received: by mail-pg1-f195.google.com with SMTP id n9so34814662pgc.1
+ for <devel@driverdev.osuosl.org>; Mon, 05 Aug 2019 23:41:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:subject:date:message-id;
- bh=3Q58zsuke6wL53H4L04d0Bb7ddU3CfSaVopOCua6A/0=;
- b=I6z6O7r3bTflfnCWcqkpvE2mqzgQuHYLFT6MkZp0mZMZMQY8RyQ+feZCfoS9hi3Xqy
- TP8h6xHhaLdVoXbxc2okS54YaAbAltMFH8zPZq3Ag5qF/VYe8cPESBjzbU2lJOgLsjZ+
- +gNqKtoMHFU7pT188vUoWhF2H2j4niN/M61rt+rGI/+x4MEaNAoiagXLhdWm+lYZXV7c
- x6udGDlR3vLoKsZN5GOD0cS9qjZoMpt16TPV0TKjD2BkWCS5tqOfwwwItNc1U8j5pO6w
- +tq9kNvuMw73Yagz6yl3Y8W7xC1w6CxaPEf2qJXZu1ni+JvZ9yhtpklqEUFl4TsmfpsR
- Ug5w==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=O7Wxe/wopuDLr6j5LeIpmGJxa41bzUArxht2aFk5QSM=;
+ b=PQB59KqEEQ6y0YFrHhLO6+txcqFbBih2qQcVtibs659NMIAQoA/YBANqsk+eX0SCuW
+ sbY5s48PsWRf99yFceRWzXQadQVb8U2KdQ8q5N/UC+OS70N9ZV3HvwGvO+3M/Xch9BlK
+ anE08yqAnkcZ18O26SB/+Gjcpq4K06YY9aZnWnTdy+Wa0fG6zxZ9XbgvfBHtwfHLtab3
+ jt8HleZQrIUDKrcyd0EKiknFIxmyoeclUXM7WGS+onyhFtjlcA3xbvW/hYQGqUM1DSzg
+ 4NZvoLpj01Kft8IYBqifjDaNJ0jIAe5TExtcC+IIoWzOyo6kpNrriZw+LRDwaIOTZ9AJ
+ +UXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id;
- bh=3Q58zsuke6wL53H4L04d0Bb7ddU3CfSaVopOCua6A/0=;
- b=PDTf1Gapmr22oDH5V6GCW33f8Uju17/7wogHVxOgXSg4dtMOQG6zvUuY6kncF+g7Wh
- hV6u2RS8+/qUegv76V0i+0U+7TRzYgUUHi89ZYNWFRMfu36RLac6iBK0+M7GyyoddvnA
- 2hoNyYFaIl0izT6mmcI/D/jSvsgFX/1j9St3WCxOid+HR4XlC+gOJsTBxesyuWteJwtG
- f1R49SQffteSYT2hnoA66uo7ZcQFgIGAbJ4IrItu6c28zOO+QYsk6pLJB7+LdNMgZDEH
- Iu5t2oTfkfS43JKCyIHrdfyE03W8fhJ0wQLr7Qpmu6sSpyfSuslwyMnbmrJxaoWvijiG
- uloA==
-X-Gm-Message-State: APjAAAWRA4BX9HFg9+ImgFYq6+BlNXG0HCTsQ97gO/F93j6b8DKn1jlp
- HzsGU2p4b37zjdAz2P6Ndk0=
-X-Google-Smtp-Source: APXvYqzgRzdHJOOQyzxpSYifLO5Qk5rHQG71pSzz//XeqGOwQ18oRylnPv1yxUlNr/5FHtW0umMFUA==
-X-Received: by 2002:ac8:2774:: with SMTP id h49mr855184qth.97.1565055214743;
- Mon, 05 Aug 2019 18:33:34 -0700 (PDT)
-Received: from localhost.localdomain ([2804:431:c7f0:2195:b8bc:4baa:a575:e6c8])
- by smtp.gmail.com with ESMTPSA id k123sm34789574qkf.13.2019.08.05.18.33.31
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Mon, 05 Aug 2019 18:33:33 -0700 (PDT)
-From: Jose Carlos Cazarin Filho <joseespiriki@gmail.com>
-To: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
- gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, lkcamp@lists.libreplanetbr.org
-Subject: [PATCH] rtl8712: rtl871x_ioctl_linux.c: fix unnecessary typecast
-Date: Mon,  5 Aug 2019 22:33:29 -0300
-Message-Id: <20190806013329.28574-1-joseespiriki@gmail.com>
-X-Mailer: git-send-email 2.17.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=O7Wxe/wopuDLr6j5LeIpmGJxa41bzUArxht2aFk5QSM=;
+ b=U9cOlI+fGHz2vOq13eny0SGyEQJhhtJTHJR/33Bl8SN9CfOeyoRVzFDw+xbok2TP1r
+ vbXlFdSUEt0dOaRFyZluL7ube2YK03LQn/QthXBMfmw+rklc9iVY0sS17T2qxA5jWghZ
+ V20sekd8JjCxzX+UHicU3RRo2c7WePM/qRWKGmYVcIIPdsciiUzUI9LGWjjBevyQEEhN
+ fiKEvl0NDIPYIDj6ZAdpIxfCIkTQTLWF4iD45gEBc31j1CezxoNC/s/2QWi01xRiuJdV
+ fGzQ2ye1hY4yi0bjoLjYdcbXWoPJKNRPwODROv/BN8rqVBCbDx0BnbX5VC/vSnEi3OTm
+ WIMw==
+X-Gm-Message-State: APjAAAVWRzA3lj5KH3QAKswkcEsG8WMunbgeZHPtCi97CdaALZ0QTOEW
+ d4RcxQ2HsUnVNF2thnCJNYr7WZEULak1xiSr4M0=
+X-Google-Smtp-Source: APXvYqwNrBeCBFk00MAwOwazzhjYBhn+KfLDMNZ9dnhN85lTl19ENdSbslLn8ga+DxdlH5db2IF4JBnKiLNcySs6fRY=
+X-Received: by 2002:a63:e54f:: with SMTP id z15mr1658530pgj.4.1565073690207;
+ Mon, 05 Aug 2019 23:41:30 -0700 (PDT)
+MIME-Version: 1.0
+References: <20190805233505.21167-1-slongerbeam@gmail.com>
+ <20190805233505.21167-5-slongerbeam@gmail.com>
+In-Reply-To: <20190805233505.21167-5-slongerbeam@gmail.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Tue, 6 Aug 2019 09:41:18 +0300
+Message-ID: <CAHp75VcOh8bOf_s6t0ehwGtcYn64QFGj303SVvpHrztEOhTRgg@mail.gmail.com>
+Subject: Re: [PATCH 04/22] media: Move v4l2_fwnode_parse_link from v4l2 to
+ driver base
+To: Steve Longerbeam <slongerbeam@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,42 +81,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-MIME-Version: 1.0
+Cc: Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Shawn Guo <shawnguo@kernel.org>,
+ "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Michal Simek <michal.simek@xilinx.com>,
+ "open list:ACPI" <linux-acpi@vger.kernel.org>,
+ NXP Linux Team <linux-imx@nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Len Brown <lenb@kernel.org>, Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Thomas Gleixner <tglx@linutronix.de>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ "moderated list:ARM/ZYNQ ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>,
+ Hyun Kwon <hyun.kwon@xilinx.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ open list <linux-kernel@vger.kernel.org>,
+ Jacopo Mondi <jacopo+renesas@jmondi.org>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ Enrico Weigelt <info@metux.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix checkpath warning:
-WARNING: Unnecessary typecast of c90 int constant
+On Tue, Aug 6, 2019 at 2:37 AM Steve Longerbeam <slongerbeam@gmail.com> wrote:
+>
+> There is nothing v4l2-specific about v4l2_fwnode_{parse|put}_link().
+> Make these functions more generally available by moving them to driver
+> base, with the appropriate name changes to the functions and struct.
+>
+> In the process embed a 'struct fwnode_endpoint' in 'struct fwnode_link'
+> for both sides of the link, and make use of fwnode_graph_parse_endpoint()
+> to fully parse both endpoints. Rename members local_node and
+> remote_node to more descriptive local_port_parent and
+> remote_port_parent.
+>
 
-Signed-off-by: Jose Carlos Cazarin Filho <joseespiriki@gmail.com>
----
- Hello all!
- This is my first commit to the Linux Kernel, I'm doing this to learn and be able
- to contribute more in the future
- Peace all! 
- drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+May I ask if it's going to be used outside of v4l2?
+Any user in mind?
 
-diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-index 944336e0d..da371072e 100644
---- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-+++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-@@ -665,8 +665,8 @@ static int r8711_wx_set_freq(struct net_device *dev,
- 
- /* If setting by frequency, convert to a channel */
- 	if ((fwrq->e == 1) &&
--	  (fwrq->m >= (int) 2.412e8) &&
--	  (fwrq->m <= (int) 2.487e8)) {
-+	  (fwrq->m >= 2.412e8) &&
-+	  (fwrq->m <= 2.487e8)) {
- 		int f = fwrq->m / 100000;
- 		int c = 0;
- 
 -- 
-2.17.1
-
+With Best Regards,
+Andy Shevchenko
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
