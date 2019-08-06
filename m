@@ -2,90 +2,65 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0124E831BF
-	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Aug 2019 14:48:36 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C633D8326A
+	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Aug 2019 15:12:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id AC83686912;
-	Tue,  6 Aug 2019 12:48:33 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D069786995;
+	Tue,  6 Aug 2019 13:12:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id g0cFS6WXU1BR; Tue,  6 Aug 2019 12:48:33 +0000 (UTC)
+	with ESMTP id egZNbiw6s-X6; Tue,  6 Aug 2019 13:12:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 465658657C;
-	Tue,  6 Aug 2019 12:48:32 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 869E886762;
+	Tue,  6 Aug 2019 13:12:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 733DC1BF5F4
- for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 12:48:29 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4A4ED1BF28A
+ for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 13:12:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 704808657C
- for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 12:48:29 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4039C86767
+ for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 13:12:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uclIl1RL+9Mn for <devel@linuxdriverproject.org>;
- Tue,  6 Aug 2019 12:48:29 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by whitealder.osuosl.org (Postfix) with ESMTPS id ED37D8656A
- for <devel@driverdev.osuosl.org>; Tue,  6 Aug 2019 12:48:28 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x76CkMM6041562;
- Tue, 6 Aug 2019 12:48:28 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2018-07-02;
- bh=zBKsoyvZW42pljgNs2qIOF6TztDTbsqax0iQzIQWQUA=;
- b=GsAGNu2Y6qtsIHwl45KkdUA6HeAwIhix9kO+Z6MO+x+7QPubpPVdo2Um4Y7xtMLsZiEg
- 5IZ6PCp10+0JMkU0tUHg6Z4BPLldm7AyznNWjVxulJ/frAUXplxQcdHPg9BySdj4mSRQ
- XaZtw8jHWj0GDW9aaPWSar7XBNCFexDB+1r4u5E99JUPRgfLngAUXJhXmKcc/KLFDbe1
- bzM5O4ySrXozVEMbSA6llto4+QtJHad92MXMnHdj8Lnjb5SiBXhDumt9kG6OmhZCfgfP
- g7DRe6XvgRixUvhHC8d5KVSnveK84iK6muRdsX8evknWCXQ97Z1Y4eBfL8JxnIvOKODr Yg== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by userp2130.oracle.com with ESMTP id 2u51ptx08h-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 06 Aug 2019 12:48:28 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x76CldLw014390;
- Tue, 6 Aug 2019 12:48:27 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3020.oracle.com with ESMTP id 2u7576yns5-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 06 Aug 2019 12:48:27 +0000
-Received: from abhmp0018.oracle.com (abhmp0018.oracle.com [141.146.116.24])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x76CmQZA008964;
- Tue, 6 Aug 2019 12:48:26 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 06 Aug 2019 05:48:25 -0700
-Date: Tue, 6 Aug 2019 15:48:19 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Merwin Trever Ferrao <merwintf@gmail.com>
-Subject: Re: [PATCH] Staging: rtl8188eu: core: rtw_security: tidy up
- crc32_init()
-Message-ID: <20190806124819.GE1935@kadam>
-References: <20190806122849.GA25628@IoT-COE>
+ with ESMTP id IhbHJWElU-HJ for <devel@linuxdriverproject.org>;
+ Tue,  6 Aug 2019 13:12:04 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from eu-smtp-delivery-151.mimecast.com
+ (eu-smtp-delivery-151.mimecast.com [207.82.80.151])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B20EA86762
+ for <devel@driverdev.osuosl.org>; Tue,  6 Aug 2019 13:12:03 +0000 (UTC)
+Received: from AcuMS.aculab.com (156.67.243.126 [156.67.243.126]) (Using
+ TLS) by relay.mimecast.com with ESMTP id
+ uk-mta-31-8SN7SsMjODOE3pGV42hYng-1; Tue, 06 Aug 2019 14:10:15 +0100
+Received: from AcuMS.Aculab.com (fd9f:af1c:a25b:0:43c:695e:880f:8750) by
+ AcuMS.aculab.com (fd9f:af1c:a25b:0:43c:695e:880f:8750) with Microsoft SMTP
+ Server (TLS) id 15.0.1347.2; Tue, 6 Aug 2019 14:10:14 +0100
+Received: from AcuMS.Aculab.com ([fe80::43c:695e:880f:8750]) by
+ AcuMS.aculab.com ([fe80::43c:695e:880f:8750%12]) with mapi id 15.00.1347.000; 
+ Tue, 6 Aug 2019 14:10:14 +0100
+From: David Laight <David.Laight@ACULAB.COM>
+To: 'Dan Carpenter' <dan.carpenter@oracle.com>, Jose Carlos Cazarin Filho
+ <joseespiriki@gmail.com>
+Subject: RE: [PATCH] rtl8712: rtl871x_ioctl_linux.c: fix unnecessary typecast
+Thread-Topic: [PATCH] rtl8712: rtl871x_ioctl_linux.c: fix unnecessary typecast
+Thread-Index: AQHVTE2Sh/UbLvavCEKXN3OpolxoRabuFsqQ
+Date: Tue, 6 Aug 2019 13:10:14 +0000
+Message-ID: <8d6c6714f9ca46ab90b2a747c05b899b@AcuMS.aculab.com>
+References: <20190806013329.28574-1-joseespiriki@gmail.com>
+ <20190806115305.GF1974@kadam>
+In-Reply-To: <20190806115305.GF1974@kadam>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.202.205.107]
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190806122849.GA25628@IoT-COE>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9340
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=960
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1906280000 definitions=main-1908060128
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9340
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1906280000
- definitions=main-1908060127
+X-MC-Unique: 8SN7SsMjODOE3pGV42hYng-1
+X-Mimecast-Spam-Score: 0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,19 +73,64 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, Larry.Finger@lwfinger.net
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ "florian.c.schilhabel@googlemail.com"
+ <florian.c.schilhabel@googlemail.com>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "lkcamp@lists.libreplanetbr.org" <lkcamp@lists.libreplanetbr.org>,
+ "Larry.Finger@lwfinger.net" <Larry.Finger@lwfinger.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Looks good.
+From: Dan Carpenter
+> Sent: 06 August 2019 12:53
+> On Mon, Aug 05, 2019 at 10:33:29PM -0300, Jose Carlos Cazarin Filho wrote:
+> > Fix checkpath warning:
+> > WARNING: Unnecessary typecast of c90 int constant
+> >
+> > Signed-off-by: Jose Carlos Cazarin Filho <joseespiriki@gmail.com>
+> > ---
+> >  Hello all!
+> >  This is my first commit to the Linux Kernel, I'm doing this to learn and be able
+> >  to contribute more in the future
+> >  Peace all!
+> >  drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+> b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+> > index 944336e0d..da371072e 100644
+> > --- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+> > +++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+> > @@ -665,8 +665,8 @@ static int r8711_wx_set_freq(struct net_device *dev,
+> >
+> >  /* If setting by frequency, convert to a channel */
+> >  	if ((fwrq->e == 1) &&
+> > -	  (fwrq->m >= (int) 2.412e8) &&
+> > -	  (fwrq->m <= (int) 2.487e8)) {
+> > +	  (fwrq->m >= 2.412e8) &&
+> > +	  (fwrq->m <= 2.487e8)) {
+> 
+> I don't think we can do this.  You're not allowed to use floats in the
+> kernel (because they make context switching slow).  I could have sworn
+> that we use the -nofp to stop the compile when people use floats but
+> this compiles fine for me.
 
-Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
+My guess is the 'c90 int constant' text.
 
-regards,
-dan carpenter
+It rather implies that '2.412e8' has become the same as '2141200000'.
+Which is rather worrying because suddenly 'int_var * 2.4e8' might
+be an integer multiply rather than a double one and overflow.
+Have the standard people broken code again?
+
+	David
+
+-
+Registered Address Lakeside, Bramley Road, Mount Farm, Milton Keynes, MK1 1PT, UK
+Registration No: 1397386 (Wales)
 
 _______________________________________________
 devel mailing list
