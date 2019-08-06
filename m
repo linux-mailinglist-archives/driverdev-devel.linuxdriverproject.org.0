@@ -1,79 +1,150 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5395D83956
-	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Aug 2019 21:06:12 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3CF392202C;
-	Tue,  6 Aug 2019 19:06:10 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Kuixidwx-+RN; Tue,  6 Aug 2019 19:06:09 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 023A12094D;
-	Tue,  6 Aug 2019 19:06:07 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 156A11BF39F
- for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 19:06:05 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id ADD46839B6
+	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Aug 2019 21:32:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 0C2B8867F2
- for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 19:06:05 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8A9478696A;
+	Tue,  6 Aug 2019 19:32:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id TltZNQGb8-ob; Tue,  6 Aug 2019 19:32:42 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1666286124;
+	Tue,  6 Aug 2019 19:32:41 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 74B691BF39F
+ for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 19:32:38 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 712C685FC1
+ for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 19:32:38 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id J2wUvT0XRBQa for <devel@linuxdriverproject.org>;
- Tue,  6 Aug 2019 19:06:04 +0000 (UTC)
-X-Greylist: delayed 00:25:24 by SQLgrey-1.7.6
-Received: from mail-qt1-f202.google.com (mail-qt1-f202.google.com
- [209.85.160.202])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2DD0C85608
- for <devel@driverdev.osuosl.org>; Tue,  6 Aug 2019 19:06:04 +0000 (UTC)
-Received: by mail-qt1-f202.google.com with SMTP id f28so79925190qtg.2
- for <devel@driverdev.osuosl.org>; Tue, 06 Aug 2019 12:06:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=3gHpNPP1fnGrZAV26eEJQxjBXqWlw2vn3cK+N4C2Azg=;
- b=aVRbzD5JDu0Fk13cbLAGvxnSJ47je+XwmMOS2Ygv0A6wpqI52paQJaZsXOvsEQJUGz
- BUNrVTEi3/pqNeI+In/GrDkR+SRbMBIzJggCVu60OsO1w4Z5CizfoyBtVsRZ3fibcnxI
- NJSklHKSZKTI8YNGSleyYy3ZQT8gOpVBH+ZNGzskWO5eWS0ZOla8yCKyba65CXAW7wBo
- egVYNnN7h9MwoPdvup7KeQXwDfxIcHCXioCLu1YwI50Wf0aO5UEXQYLSjA6kyZh9S4Mn
- e4O53EGYazUQW6JWQZfCm3Bffma6vJQnbKtySiQ2NqInvVeM1lFieFawaOsHO+MtUl+0
- XjIw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=3gHpNPP1fnGrZAV26eEJQxjBXqWlw2vn3cK+N4C2Azg=;
- b=MNGaRUEb1DYH+1NET9Sebpx2vYQthS1M4O2FW9irQt+n7PxcxXTvU7b9Hzu0znN6tk
- oh0+tGYz7QPLcytbSTEn7ngdkL+NUYi8BDFlbvHVcusfX7ffwQD+qiIEs1NgB3MKY4en
- opNzW89/NNmAtj1pFUwstKrfH+Yx53egZFARs1qEMPVmsmrCb7pVYFz9B38aBUvMot/E
- DpB5mO2XuNkg3za99LIrMDqQv/tYl3CRPgnSfN1fV7u/2BEcedAor4JEIN/5AyQAgzUS
- xNWcT378MbIjGoVO/lGyVqxT76SAB8XMtKyh75gA7PUfPHbgzxqVEhCiLkvqcNtFe1H4
- zoow==
-X-Gm-Message-State: APjAAAVWJRk/0LG91foEJ3BjxNv9picfhvbXPl1mYq9QXuubAQULG5Gn
- fR6MRXbExLh/rn/gsXfupGXMC/Sz3qs=
-X-Google-Smtp-Source: APXvYqyGwrwx9UimhQcaVkY91plBBeSj6QGmB3xoFdLBqmShltNYoD/THqgcEHQ4tOcwptByKBkbhdpCiH0=
-X-Received: by 2002:ac8:541a:: with SMTP id b26mr4433733qtq.229.1565116839255; 
- Tue, 06 Aug 2019 11:40:39 -0700 (PDT)
-Date: Tue,  6 Aug 2019 11:40:05 -0700
-In-Reply-To: <20190806184007.60739-1-hridya@google.com>
-Message-Id: <20190806184007.60739-2-hridya@google.com>
-Mime-Version: 1.0
-References: <20190806184007.60739-1-hridya@google.com>
-X-Mailer: git-send-email 2.22.0.770.g0f2c4a37fd-goog
-Subject: [PATCH v2 1/2] binder: Add default binder devices through binderfs
- when configured
-From: Hridya Valsaraju <hridya@google.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- "=?UTF-8?q?Arve=20Hj=C3=B8nnev=C3=A5g?=" <arve@android.com>,
- Todd Kjos <tkjos@android.com>, Martijn Coenen <maco@android.com>, 
- Joel Fernandes <joel@joelfernandes.org>,
- Christian Brauner <christian@brauner.io>, 
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+ with ESMTP id iQQbEKsAmmxb for <devel@linuxdriverproject.org>;
+ Tue,  6 Aug 2019 19:32:37 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from esa4.microchip.iphmx.com (esa4.microchip.iphmx.com
+ [68.232.154.123])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C95C985F9B
+ for <devel@driverdev.osuosl.org>; Tue,  6 Aug 2019 19:32:36 +0000 (UTC)
+Received-SPF: Pass (esa4.microchip.iphmx.com: domain of
+ Adham.Abozaeid@microchip.com designates 198.175.253.82 as
+ permitted sender) identity=mailfrom;
+ client-ip=198.175.253.82; receiver=esa4.microchip.iphmx.com;
+ envelope-from="Adham.Abozaeid@microchip.com";
+ x-sender="Adham.Abozaeid@microchip.com";
+ x-conformance=spf_only; x-record-type="v=spf1";
+ x-record-text="v=spf1 mx a:ushub1.microchip.com
+ a:smtpout.microchip.com a:mx1.microchip.iphmx.com
+ a:mx2.microchip.iphmx.com include:servers.mcsv.net
+ include:mktomail.com include:spf.protection.outlook.com ~all"
+Received-SPF: None (esa4.microchip.iphmx.com: no sender
+ authenticity information available from domain of
+ postmaster@email.microchip.com) identity=helo;
+ client-ip=198.175.253.82; receiver=esa4.microchip.iphmx.com;
+ envelope-from="Adham.Abozaeid@microchip.com";
+ x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
+Authentication-Results: esa4.microchip.iphmx.com;
+ spf=Pass smtp.mailfrom=Adham.Abozaeid@microchip.com;
+ spf=None smtp.helo=postmaster@email.microchip.com;
+ dkim=pass (signature verified) header.i=@microchiptechnology.onmicrosoft.com;
+ dmarc=pass (p=none dis=none) d=microchip.com
+IronPort-SDR: LmPF4wXQCPRNS0XPAbQtjwHNuOnRaa6pnBRx4FbtUZHIMOfVlhfajMt91RjLkFCNETcN5oLSX8
+ Z7jXvfoQP3Dn7EblQWaDOZL+KqW3FwpMw/E34p4YaI0IXM8XBajhXtMUX51THQtHJS6eSpRNiL
+ GUdScW9ZyoEDzPCHNMVGs3IUGbtlfplnoB7K3lWaxEilOSMmwlr0nofUPheji+6PxMwvzqWzTa
+ B9UB/6VY92Gqp1loefbd01z7S1EiMbvMtMvocnLt1Sbrv0fImzjGsY9lUDViL1vc2HYIQ+3l5c
+ 6ZI=
+X-IronPort-AV: E=Sophos;i="5.64,353,1559545200"; d="scan'208";a="43397239"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa4.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 06 Aug 2019 12:32:18 -0700
+Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
+ chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Tue, 6 Aug 2019 12:32:10 -0700
+Received: from NAM02-BL2-obe.outbound.protection.outlook.com (10.10.215.89) by
+ email.microchip.com (10.10.87.152) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
+ via Frontend Transport; Tue, 6 Aug 2019 12:32:11 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=YMgVapPYwht8VGcQXO8/i6l6ltHQbEjyQ323S2gsXx/wZrU+j9X5YTSqnSAEJl3b13tcKg+yn2txPgs1lPRyAMJQ0R/Wa1lV25tkz89cF2NUWmzEMPM/35Y/s0MksgUaJKjw2z+XojHkpv3H66IVRX7eSYYHFEMSy+i19CuDlOwb8ieL1fVIfKznOgd4rTaDvX3BUL8s8ZPb4SdOJ26KivHcZOBab0teaCrUuqcAK8spFN9OD4nrpe4+oBuNp9BJBMlS9X5N7YAxTrDssbO8+U/JIw7EkLfrubiu6AYGoWmgYGRkeqSKFtPXtUCKtMr1j8ihJt328TwrrfzPwMQ7oA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=EzTO0CwbreFbKe49+mV6LHnB1W3Eab20PYAVUCFQ+ss=;
+ b=XybTLbbFD7elCdLK1F82g2mrno3XiTphWfZA3bMsPXvZZKZPGzdK8N0Uap06bCAsrNHEDoUdCa/OFQ1P8wzA8fHFeY24DGIYal3ZcQ3cHi0fZKjyhF9OUbsMn9pCA6Ezq2m24B62QN8uyhQMuG6+ar8AFVSTQMVKhjNM2vmyvgGrMzHCZvtsr+7RIXkbrEpIjd9y2TwZTIwjdz3x/JNYJ7fw6T44KtoBVK54u3MP1mMzoy/kwMHCnd/dYhicnYv2oOgp+urGwHdXwIvT0BqBUw9apU/xobnM3XKalUgaPgV1PNWNdu7vRYmdIYfY8mrrTbiKtGMvP+gThTJLyWeZFw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1;spf=pass
+ smtp.mailfrom=microchip.com;dmarc=pass action=none
+ header.from=microchip.com;dkim=pass header.d=microchip.com;arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=microchiptechnology.onmicrosoft.com;
+ s=selector1-microchiptechnology-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=EzTO0CwbreFbKe49+mV6LHnB1W3Eab20PYAVUCFQ+ss=;
+ b=V8bWc+gRaEFPJHLg7m9CD6AohLo4ECHV/ZbeyuZ1Rb26bFJTSjGoCZBqEDeyckd/Wunh/mwP+I+GLCm6IDSExWy60IwdVwpbn+zDl6ItwLsVTgao1gSGmxEvxGkHLUE74coaSjahhELi6r2b81RFJi62TSeOwkpQRH3FeVD6yMs=
+Received: from MWHPR11MB1373.namprd11.prod.outlook.com (10.169.234.141) by
+ MWHPR11MB1357.namprd11.prod.outlook.com (10.169.237.140) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2136.17; Tue, 6 Aug 2019 19:32:09 +0000
+Received: from MWHPR11MB1373.namprd11.prod.outlook.com
+ ([fe80::480d:becc:c567:3336]) by MWHPR11MB1373.namprd11.prod.outlook.com
+ ([fe80::480d:becc:c567:3336%2]) with mapi id 15.20.2136.018; Tue, 6 Aug 2019
+ 19:32:09 +0000
+From: <Adham.Abozaeid@microchip.com>
+To: <dan.carpenter@oracle.com>
+Subject: Re: [PATCH 3/6] staging: wilc1000: remove unused members
+Thread-Topic: [PATCH 3/6] staging: wilc1000: remove unused members
+Thread-Index: AQHVQzBVmkV0XiIfSkqdQ0TzXZfFVabuI64AgABuv4A=
+Date: Tue, 6 Aug 2019 19:32:08 +0000
+Message-ID: <f0a3701c-39c3-1b95-3148-621b26d3f870@microchip.com>
+References: <20190725213125.2810-1-adham.abozaeid@microchip.com>
+ <20190725213125.2810-4-adham.abozaeid@microchip.com>
+ <20190806124656.GH1974@kadam>
+In-Reply-To: <20190806124656.GH1974@kadam>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [198.175.253.81]
+user-agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.3.0
+x-clientproxiedby: BYAPR07CA0093.namprd07.prod.outlook.com
+ (2603:10b6:a03:12b::34) To MWHPR11MB1373.namprd11.prod.outlook.com
+ (2603:10b6:300:25::13)
+x-ms-exchange-messagesentrepresentingtype: 1
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 80790541-d3ae-4456-39ef-08d71aa4c56d
+x-microsoft-antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(2017052603328)(7193020);
+ SRVR:MWHPR11MB1357; 
+x-ms-traffictypediagnostic: MWHPR11MB1357:
+x-microsoft-antispam-prvs: <MWHPR11MB1357D31362EE7B5D1B4B0E728DD50@MWHPR11MB1357.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:6430;
+x-forefront-prvs: 0121F24F22
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(136003)(376002)(346002)(366004)(39860400002)(396003)(199004)(189003)(102836004)(305945005)(65826007)(5660300002)(54906003)(58126008)(66476007)(66446008)(64756008)(66556008)(99286004)(31686004)(65806001)(66066001)(65956001)(4326008)(66946007)(52116002)(25786009)(478600001)(6506007)(386003)(6512007)(229853002)(68736007)(6916009)(107886003)(86362001)(53546011)(6246003)(76176011)(316002)(6436002)(4744005)(31696002)(53936002)(6486002)(64126003)(8676002)(8936002)(7736002)(81156014)(81166006)(71200400001)(2906002)(26005)(3846002)(6116002)(256004)(14444005)(486006)(186003)(14454004)(11346002)(2616005)(476003)(446003)(71190400001)(36756003);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:MWHPR11MB1357;
+ H:MWHPR11MB1373.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+received-spf: None (protection.outlook.com: microchip.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam-message-info: H0lcblvlTQTTGVhd83yxLWkq6ZM4kK1ihUHIKmiM/6jc5JfAT8uFm2QPWPGp6fcb3oIptRCRTGdihgizbZi+eJtfNNCuXsurag7e1gLrtMbfjx+FCmIOKbQX+dBnXg9L7Cn5P5BpAOVVp6ZEBuHXrC625UZgA+i85e11YgvmTLf7nQ/uMUwM8Ju7r8lzDQjUCPWIrQ1oTtSaJU4JoOzF95cH72xvUgZ7hX3LHP5xFcUHsUqrcxA4cYy9geC8XIxJzUhFQTcBztYTdiPVn41MmJmRDGDAMKBVWAgIDgqXiOko/yL0njOQz/taTQKNzfNsQ2sHnFO3aiM23xDF4y69e4nDIyTWTDET2CB70pZelAshXrWy1pWfwk3PxzbZUZogTXNfySX7wgzl3w+7S0W7AqgV6Cc6elsDVIh3EjHQFd4=
+Content-ID: <AD2B8C269CF526418476B195FCD4B5B6@namprd11.prod.outlook.com>
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-Network-Message-Id: 80790541-d3ae-4456-39ef-08d71aa4c56d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Aug 2019 19:32:08.8901 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: adham.abozaeid@microchip.com
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1357
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,128 +157,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Hridya Valsaraju <hridya@google.com>,
- Christian Brauner <christian.brauner@ubuntu.com>, kernel-team@android.com
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ johannes@sipsolutions.net, linux-wireless@vger.kernel.org,
+ Ajay.Kathat@microchip.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Currently, since each binderfs instance needs its own
-private binder devices, every time a binderfs instance is
-mounted, all the default binder devices need to be created
-via the BINDER_CTL_ADD IOCTL. This patch aims to
-add a solution to automatically create the default binder
-devices for each binderfs instance that gets mounted.
-To achieve this goal, when CONFIG_ANDROID_BINDERFS is set,
-the default binder devices specified by CONFIG_ANDROID_BINDER_DEVICES
-are created in each binderfs instance instead of global devices
-being created by the binder driver.
+Hi Dan
 
-Co-developed-by: Christian Brauner <christian.brauner@ubuntu.com>
-Signed-off-by: Christian Brauner <christian.brauner@ubuntu.com>
-Signed-off-by: Hridya Valsaraju <hridya@google.com>
----
-
-Changes in v2:
-- Updated commit message as per Greg Kroah-Hartman.
-- Removed new module parameter creation as per Greg
-  Kroah-Hartman/Christian Brauner.
-- Refactored device name length check into a new patch as per Greg Kroah-Hartman.
-
- drivers/android/binder.c          |  5 +++--
- drivers/android/binder_internal.h |  2 ++
- drivers/android/binderfs.c        | 25 ++++++++++++++++++++++---
- 3 files changed, 27 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-index 466b6a7f8ab7..ca6b21a53321 100644
---- a/drivers/android/binder.c
-+++ b/drivers/android/binder.c
-@@ -123,7 +123,7 @@ static uint32_t binder_debug_mask = BINDER_DEBUG_USER_ERROR |
- 	BINDER_DEBUG_FAILED_TRANSACTION | BINDER_DEBUG_DEAD_TRANSACTION;
- module_param_named(debug_mask, binder_debug_mask, uint, 0644);
- 
--static char *binder_devices_param = CONFIG_ANDROID_BINDER_DEVICES;
-+char *binder_devices_param = CONFIG_ANDROID_BINDER_DEVICES;
- module_param_named(devices, binder_devices_param, charp, 0444);
- 
- static DECLARE_WAIT_QUEUE_HEAD(binder_user_error_wait);
-@@ -6279,7 +6279,8 @@ static int __init binder_init(void)
- 				    &transaction_log_fops);
- 	}
- 
--	if (strcmp(binder_devices_param, "") != 0) {
-+	if (!IS_ENABLED(CONFIG_ANDROID_BINDERFS) &&
-+	    strcmp(binder_devices_param, "") != 0) {
- 		/*
- 		* Copy the module_parameter string, because we don't want to
- 		* tokenize it in-place.
-diff --git a/drivers/android/binder_internal.h b/drivers/android/binder_internal.h
-index 045b3e42d98b..fe8c745dc8e0 100644
---- a/drivers/android/binder_internal.h
-+++ b/drivers/android/binder_internal.h
-@@ -37,6 +37,8 @@ struct binder_device {
- 
- extern const struct file_operations binder_fops;
- 
-+extern char *binder_devices_param;
-+
- #ifdef CONFIG_ANDROID_BINDERFS
- extern bool is_binderfs_device(const struct inode *inode);
- #else
-diff --git a/drivers/android/binderfs.c b/drivers/android/binderfs.c
-index e773f45d19d9..886b4e0f482f 100644
---- a/drivers/android/binderfs.c
-+++ b/drivers/android/binderfs.c
-@@ -186,8 +186,7 @@ static int binderfs_binder_device_create(struct inode *ref_inode,
- 	req->major = MAJOR(binderfs_dev);
- 	req->minor = minor;
- 
--	ret = copy_to_user(userp, req, sizeof(*req));
--	if (ret) {
-+	if (userp && copy_to_user(userp, req, sizeof(*req))) {
- 		ret = -EFAULT;
- 		goto err;
- 	}
-@@ -467,6 +466,9 @@ static int binderfs_fill_super(struct super_block *sb, void *data, int silent)
- 	int ret;
- 	struct binderfs_info *info;
- 	struct inode *inode = NULL;
-+	struct binderfs_device device_info = { 0 };
-+	const char *name;
-+	size_t len;
- 
- 	sb->s_blocksize = PAGE_SIZE;
- 	sb->s_blocksize_bits = PAGE_SHIFT;
-@@ -521,7 +523,24 @@ static int binderfs_fill_super(struct super_block *sb, void *data, int silent)
- 	if (!sb->s_root)
- 		return -ENOMEM;
- 
--	return binderfs_binder_ctl_create(sb);
-+	ret = binderfs_binder_ctl_create(sb);
-+	if (ret)
-+		return ret;
-+
-+	name = binder_devices_param;
-+	for (len = strcspn(name, ","); len > 0; len = strcspn(name, ",")) {
-+		strscpy(device_info.name, name, len + 1);
-+		ret = binderfs_binder_device_create(inode, NULL, &device_info);
-+		if (ret)
-+			return ret;
-+		name += len;
-+		if (*name == ',')
-+			name++;
-+
-+	}
-+
-+	return 0;
-+
- }
- 
- static struct dentry *binderfs_mount(struct file_system_type *fs_type,
--- 
-2.22.0.770.g0f2c4a37fd-goog
+On 8/6/19 5:46 AM, Dan Carpenter wrote:
+> External E-Mail
+>
+>
+> On Thu, Jul 25, 2019 at 09:31:34PM +0000, Adham.Abozaeid@microchip.com wrote:
+>> From: Adham Abozaeid <adham.abozaeid@microchip.com>
+>>
+>> remove obtaining_ip from struct wilc_vif
+>>
+> How is this "unused"?  It looks like it is used to me.
+The main usage of obtaining_ip was to track the inetadd_notifier status.
+After removing the notifier and ip address timeout timer in the first and second patch,
+the remaining usage became meaningless, and could be removed.
+> regards,
+> dan carpenter
+>
+>
 
 _______________________________________________
 devel mailing list
