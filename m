@@ -1,60 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B5AD83A3E
-	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Aug 2019 22:30:58 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F33483A3F
+	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Aug 2019 22:31:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2E95686B3B;
-	Tue,  6 Aug 2019 20:30:56 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E713587E9D;
+	Tue,  6 Aug 2019 20:31:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Rv+My-d+idsJ; Tue,  6 Aug 2019 20:30:55 +0000 (UTC)
+	with ESMTP id 5DtMBlgSzxw2; Tue,  6 Aug 2019 20:31:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7930586AF0;
-	Tue,  6 Aug 2019 20:30:54 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7823687E13;
+	Tue,  6 Aug 2019 20:31:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5B7911BF375
- for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 20:30:52 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D5D291BF375
+ for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 20:30:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 51A7C84AF1
- for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 20:30:52 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D24BF85624
+ for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 20:30:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iPiAbAKkjhit for <devel@linuxdriverproject.org>;
- Tue,  6 Aug 2019 20:30:51 +0000 (UTC)
+ with ESMTP id rLfDWKCLHArr for <devel@linuxdriverproject.org>;
+ Tue,  6 Aug 2019 20:30:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from NAM04-CO1-obe.outbound.protection.outlook.com
- (mail-eopbgr690134.outbound.protection.outlook.com [40.107.69.134])
- by whitealder.osuosl.org (Postfix) with ESMTPS id DEA5486A72
- for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 20:30:50 +0000 (UTC)
+ (mail-eopbgr690116.outbound.protection.outlook.com [40.107.69.116])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E65A98560E
+ for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 20:30:56 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=BmcQ7ch3r4nfesL2ErdnZklCaq2hd99Bo17N9wqVsWcTwehogeDEFzwtWwGdMPFBIFyzBLmX9zD+13ws78El2aS15LTCJvzlIN6CZtTzL4end5jmAt/b1OIRdko1llenSVkcONrDlXs7jooH87cjD71bEWiQQqnoHQGpLoWJ4azoVnWWAzPEgFSUiFbAko6JShl3Z+TRO7/Yh9oGCHUydciI0kB5QSWyyAgHklw+hmE1N4Hk6IZYTc2TJbafN9JD+TPfy6kiwyJeVVfOKeg2djWYMedRCZql1uh7dsTY6Nv8Qsc10wjletbI+TIBT/DORv0PKAQHbKEYRr8FHzV22A==
+ b=POndwhj59HAlFylWKvaDUyckSqjQTSQr5Pdvp1I7Mv+Q8ONhbfiS2to0OWys7LCE9ToQRAGD0PJ1ImlGrOXZOLlWQtWwomyHmHxBInm9l87mwKsekuM2aC73nRUyut80zIW9ILIpW+fiJTRPAY7tIH0MbfrdfvYlewwMG1l0A/SDTq16lAOYhMEBIY1a45eH8QIk25l/5BDyLySOVTRI/GWI8TeG/T1oEpL11zN97tlGkaKUz+g1sunI8hblafNz3Q8YSM9RB/iLIPFyOARpt+ALiirL9oM8FqxeRWBJ/YLhARvan5/R+EEGRLWH76AVfvw2xgHCe5BIMNPhhDuqdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=VFqXJ7W/1v+4EdZk//xFfAeZ2eMlpTzQWuXzVGj8ZvI=;
- b=IWUbU9bqxcnwXIRA8S/nBNoAtdrUc8/RClHideU/zv1iTO8oh1DfNYbtX0skbAR8lEUgfEjUGQbdVLUV7Yj5fy8LbvmDrRVnnk7EZ08pw8mRmHayw7zCrTJKxzVqU/gWQwUgqVkcb61Fd97zDBejnRZCbnQQbXyc4FNzTIIkh1jBGi/ZAnGbelDoEDIvYZkVpZkywEs5adaF8N5z0/yGRNiX6TWVLD0JS8QAOk7ytyXuBLJft9jAJfdQ5awNhmVfjRPrnwlbnQCkW7WcNP1Wicna++B0FDG3nLcfta46B6ZocXAOKN1QjBCGEkwiv3R2gm5zagjqflBLA2CEdNqD2w==
+ bh=okNn/r1zGf7JSzyO9cz5htFo9euxczWyzmqy3oQv29Q=;
+ b=GZVd0CnjwsPpwdOaj0hTVOxxhtrLfsg3WGmyh6Rzy1mEFNzWNWX/Ugn/FOvMfNWRACiJA/ZFrFRgRXutP5EiFd6Ts0zzCoaz8fnPMsdaV18ZFHjtKk1sUHxIvVnP5boIcpGM1iOm8G2VmHDxDd6PUidPx09MgaBzTC2YINYDpL5UXChUJNbfLYoII/oV1Dv7ACW14xHHqpeqZHKOOnwOvYCvZnTTf+yK+wIwPfU+FL1EnHeQNOwXKJ5/nCyWJZA5eZc5smyzOJAHqR4vWl7iXzwtZPSkaniU1mK+joiJEXCSMo9EzWyy+ZQWWPIjHqSLZYRY1i8ElcSfrVQP/9wFvg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=microsoft.com; dmarc=pass action=none
  header.from=microsoft.com; dkim=pass header.d=microsoft.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=VFqXJ7W/1v+4EdZk//xFfAeZ2eMlpTzQWuXzVGj8ZvI=;
- b=oMy76mj32n+g0orx9B7ygavqAfkqbUzny5HuSweSe84bO2N0vkxmuwXEAajjPERGAG0RvyBAUovpA8/tGkYqmWW6KdkGRJIoOOf7qtbPRUs5P1QFznSoIYPhiF5dkWwqq2RybBDuupgMSV4ckt3d8pHYLRyQyRiiKSypWZVrdzk=
+ bh=okNn/r1zGf7JSzyO9cz5htFo9euxczWyzmqy3oQv29Q=;
+ b=QiOfGx+4y1GTj0V9hQo7MposaWN5EPw4+0BwgO0FfVEVpUlxrk6FPdwR6RQji+xo3z3iVDrrspTljdSo6Sc8fYJikb/Dw8g7QEn+vxye4aBdUQnwfWQS42jyXuj0+q0bYjbPaXpc+3kdEBPMz5qN0f4EIxxB0TSBje0NVrg530M=
 Received: from BYAPR21MB1335.namprd21.prod.outlook.com (20.179.60.209) by
  BYAPR21MB1206.namprd21.prod.outlook.com (20.179.57.16) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2157.13; Tue, 6 Aug 2019 20:30:48 +0000
+ 15.20.2157.13; Tue, 6 Aug 2019 20:30:54 +0000
 Received: from BYAPR21MB1335.namprd21.prod.outlook.com
  ([fe80::819:aea0:eda4:9301]) by BYAPR21MB1335.namprd21.prod.outlook.com
  ([fe80::819:aea0:eda4:9301%9]) with mapi id 15.20.2157.001; Tue, 6 Aug 2019
- 20:30:48 +0000
+ 20:30:54 +0000
 From: Michael Kelley <mikelley@microsoft.com>
 To: "will.deacon@arm.com" <will.deacon@arm.com>, "catalin.marinas@arm.com"
  <catalin.marinas@arm.com>, "mark.rutland@arm.com" <mark.rutland@arm.com>,
@@ -68,11 +68,13 @@ To: "will.deacon@arm.com" <will.deacon@arm.com>, "catalin.marinas@arm.com"
  "apw@canonical.com" <apw@canonical.com>, vkuznets <vkuznets@redhat.com>,
  "jasowang@redhat.com" <jasowang@redhat.com>, "marcelo.cerri@canonical.com"
  <marcelo.cerri@canonical.com>, KY Srinivasan <kys@microsoft.com>
-Subject: [PATCH v4 0/8] Enable Linux guests on Hyper-V on ARM64
-Thread-Topic: [PATCH v4 0/8] Enable Linux guests on Hyper-V on ARM64
-Thread-Index: AQHVTJXUFtv+Ew2tU0qrx4VqyHzNjA==
-Date: Tue, 6 Aug 2019 20:30:48 +0000
-Message-ID: <1565122133-9086-1-git-send-email-mikelley@microsoft.com>
+Subject: [PATCH v4 1/8] arm64: hyperv: Add core Hyper-V include files
+Thread-Topic: [PATCH v4 1/8] arm64: hyperv: Add core Hyper-V include files
+Thread-Index: AQHVTJXYMOS6C9L2tEO2MJcPqZGzmg==
+Date: Tue, 6 Aug 2019 20:30:54 +0000
+Message-ID: <1565122133-9086-2-git-send-email-mikelley@microsoft.com>
+References: <1565122133-9086-1-git-send-email-mikelley@microsoft.com>
+In-Reply-To: <1565122133-9086-1-git-send-email-mikelley@microsoft.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -86,34 +88,35 @@ x-ms-exchange-messagesentrepresentingtype: 1
 x-mailer: git-send-email 1.8.3.1
 x-originating-ip: [131.107.174.8]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 1fb5ceea-ff85-49de-ab4d-08d71aacf754
+x-ms-office365-filtering-correlation-id: 5ab8c4f0-a7f2-4b71-5875-08d71aacfaf5
 x-ms-office365-filtering-ht: Tenant
 x-microsoft-antispam: BCL:0; PCL:0;
  RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
  SRVR:BYAPR21MB1206; 
 x-ms-traffictypediagnostic: BYAPR21MB1206:|BYAPR21MB1206:
 x-ms-exchange-transport-forked: True
+x-ms-exchange-purlcount: 1
 x-ld-processed: 72f988bf-86f1-41af-91ab-2d7cd011db47,ExtAddr
-x-microsoft-antispam-prvs: <BYAPR21MB1206D1F8C43771C6402FB1B4D7D50@BYAPR21MB1206.namprd21.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:5236;
+x-microsoft-antispam-prvs: <BYAPR21MB1206BD5DA6933F4D3077CE56D7D50@BYAPR21MB1206.namprd21.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:7691;
 x-forefront-prvs: 0121F24F22
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(346002)(396003)(366004)(39860400002)(376002)(136003)(189003)(199004)(66556008)(3846002)(52116002)(6636002)(6116002)(22452003)(6512007)(71200400001)(4720700003)(5660300002)(71190400001)(8936002)(53936002)(2906002)(86362001)(64756008)(66446008)(66946007)(7416002)(66476007)(8676002)(81156014)(10290500003)(6436002)(99286004)(2616005)(478600001)(66066001)(14454004)(14444005)(110136005)(476003)(102836004)(68736007)(305945005)(2201001)(7736002)(2501003)(10090500001)(26005)(50226002)(4326008)(256004)(6506007)(25786009)(6486002)(316002)(386003)(54906003)(486006)(36756003)(1511001)(81166006)(186003)(921003)(1121003);
+ SFS:(10019020)(4636009)(136003)(376002)(39860400002)(396003)(366004)(346002)(189003)(199004)(110136005)(14444005)(14454004)(476003)(102836004)(68736007)(966005)(446003)(99286004)(6436002)(81156014)(8676002)(10290500003)(478600001)(66066001)(2616005)(11346002)(6306002)(316002)(6486002)(76176011)(186003)(81166006)(486006)(54906003)(386003)(1511001)(36756003)(2501003)(10090500001)(2201001)(305945005)(7736002)(26005)(25786009)(6506007)(50226002)(4326008)(256004)(66476007)(6512007)(71200400001)(71190400001)(5660300002)(30864003)(4720700003)(6116002)(6636002)(52116002)(3846002)(66556008)(22452003)(64756008)(66946007)(66446008)(7416002)(86362001)(53936002)(8936002)(53946003)(2906002)(921003)(1121003);
  DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR21MB1206;
  H:BYAPR21MB1335.namprd21.prod.outlook.com; FPR:; SPF:None; LANG:en;
  PTR:InfoNoRecords; MX:1; A:1; 
 received-spf: None (protection.outlook.com: microsoft.com does not designate
  permitted sender hosts)
 x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: Etl3gaV99kW+Ho2LPjLrPEwaxVmpoWztMLcjwyHXwBmBQn/oF+Kpq0llFLmkLBibjNnH0ioWoFb9MqoQ5b5ly+4D3TapWd02j1AUIzmaAPt39lp+uP9kBbH0nsg3sYZ9ug2pyib4bHUhQQcsd8urfKh/+GoO5/VmHglLXlMqlQ11zbTemoxIi43/DLnVj7dT2UHykGLgoUzOwQfBmgt00G4ActHhDC1FsbjgVXiMTrZGtEdO6/y91Pu67tuLrHo1HHsD/NVSS4RNYet80TIpMLR2J92HC5IeXii3oxpfmphcpYEBz5kcuPdwAOEaFBxeTVuk6y4pVU3QKiN+/H8/P1O5pILTK4+45RZWHDtEW+H4Ywa0mSgt2zfUxyltlOq4GC7/tH3YL3LW+siyVZIgE1zMUz8yPBgHtIDkABUtBh0=
+x-microsoft-antispam-message-info: 4WBk+22/hB3ptpQy1SVm9xl0KMFA1pWkPbfkba7tasG2IrVwku0UBp5P4Nv5u1KLAJ135Q70CLyJJ18IxoSrf1ktU2Q2xihfBZAp5CScCJEb+RA7JxINeDb3lmaqDcAFNIKPj7fHEGOsa3vpREMW3sMu0ymGpBXmZJ7WvdUiAsk2IoHWcxhl/LgA/0d1SmMYyb4iarjdFN756h+XfdEUyUJzPn14eZIzimbrr2AGIjcgGjwsBT6583DbbsC5KaKlgFB06qnbxi+8InUCoSeb5ExcSDSstZyxtsgtNKl5aJopcKaykjil58A6QIgyVPrgo2TyHrbozdhsdD/45z5lxnNeZs1/n7heHk1EBvocHN6zbRHJzKKEYwb72TeMzRJHy4b5DCqbNpe3sOXiX+vgajIUUm7kJ6rifkn4mVol5T8=
 MIME-Version: 1.0
 X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1fb5ceea-ff85-49de-ab4d-08d71aacf754
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Aug 2019 20:30:48.3757 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5ab8c4f0-a7f2-4b71-5875-08d71aacfaf5
+X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Aug 2019 20:30:54.4588 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: UakzYUC4/gx/k60BbaM0oP3AWjMQKZAUOYm/Toyqo3C1+G3aAjadPvNQT3eNNVTc6ZJIz8+Xk4cczeqreyBayw==
+X-MS-Exchange-CrossTenant-userprincipalname: 7Q/dTWqqnnosd072COu0GYLLeCC3OnuoeuC4vnNtkNKNBQGoD4tl/Vp43lnyUmouTMCSUT4D6Qxmv3kb7dvj5A==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR21MB1206
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -134,117 +137,565 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This series enables Linux guests running on Hyper-V on ARM64
-hardware. New ARM64-specific code in arch/arm64/hyperv initializes
-Hyper-V, including its interrupts and hypercall mechanism.
-Existing architecture independent drivers for Hyper-V's VMbus and
-synthetic devices just work when built for ARM64. Hyper-V code is
-built and included in the image and modules only if CONFIG_HYPERV
-is enabled.
+hyperv-tlfs.h defines Hyper-V interfaces from the Hyper-V Top Level
+Functional Spec (TLFS). The TLFS is distinctly oriented to x86/x64,
+and Hyper-V has not separated out the architecture-dependent parts into
+x86/x64 vs. ARM64. So hyperv-tlfs.h includes information for ARM64
+that is not yet formally published. The TLFS is available here:
 
-The eight patches are organized as follows:
-1) Add include files that define the Hyper-V interface as
-   described in the Hyper-V Top Level Functional Spec (TLFS), plus
-   additional definitions specific to Linux running on Hyper-V.
+  docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/reference/tlfs
 
-2 thru 6) Add core Hyper-V support on ARM64, including hypercalls,
-   interrupt handlers, kexec & panic handlers, and core hypervisor
-   initialization.
+mshyperv.h defines Linux-specific structures and routines for
+interacting with Hyper-V on ARM64, and #includes the architecture-
+independent part of mshyperv.h in include/asm-generic.
 
-7) Update the existing VMbus driver to generalize interrupt
-   management across x86/x64 and ARM64.
-
-8) Make CONFIG_HYPERV selectable on ARM64 in addition to x86/x64.
-
-Some areas of Linux guests on Hyper-V on ARM64 are a work-
-in-progress:
-
-* Hyper-V on ARM64 currently runs with a 4 Kbyte page size, but
-  allows guests with 16K/64K page size. However, the Linux drivers
-  for Hyper-V synthetic devices assume the guest page size is 4K.
-  This patch set lays the groundwork for larger guest page sizes,
-  but the main changes are in a different patch stream that is
-  underway to update these drivers.
-
-* The Hyper-V vPCI driver at drivers/pci/host/pci-hyperv.c has
-  x86/x64-specific code and is not being built for ARM64. Fixing
-  this driver to enable vPCI devices on ARM64 will be done later.
-
-In a few cases, terminology from the x86/x64 world has been carried
-over into the ARM64 code ("MSR", "TSC").  Hyper-V still uses the
-x86/x64 terminology and has not replaced it with something more
-generic, so the code uses the Hyper-V terminology.  This will be
-fixed when Hyper-V updates the usage in the TLFS.
-
-This patch set is built against a 5.3.0-rc2-next-20190731 tree.
-
-Changes in v4:
-* Moved clock-related code into an architecture independent
-  Hyper-V clocksource driver that is already upstream. Clock
-  related code is removed from this patch set except for the
-  ARM64 specific interrupt handler. [Marc Zyngier]
-* Separately upstreamed the split of mshyperv.h into arch independent
-  and arch dependent portions. The arch independent portion has been
-  removed from this patch set.
-* Divided patch #2 of the series into multiple smaller patches
-  [Marc Zyngier]
-* Changed a dozen or so smaller things based on feedback
-  [Marc Zyngier, Will Deacon]
-* Added functions to alloc/free Hyper-V size pages. These are
-  for use by drivers for Hyper-V synthetic devices when they are
-  updated to handle guest page size != Hyper-V page size
-
-Changes in v3:
-* Added initialization of hv_vp_index array like was recently
-  added on x86 branch [KY Srinivasan]
-* Changed Hyper-V ARM64 register symbols to be all uppercase 
-  instead of mixed case [KY Srinivasan]
-* Separated mshyperv.h into two files, one architecture
-  independent and one architecture dependent. After this code
-  is upstream, will make changes to the x86 code to use the
-  architecture independent file and remove duplication. And
-  once we have a multi-architecture Hyper-V TLFS, will do a
-  separate patch to split hyperv-tlfs.h in the same way.
-  [KY Srinivasan]
-* Minor tweaks to rebase to latest linux-next code
-
-Changes in v2:
-* Removed patch to implement slow_virt_to_phys() on ARM64.
-  Use of slow_virt_to_phys() in arch independent Hyper-V
-  drivers has been eliminated by commit 6ba34171bcbd
-  ("Drivers: hv: vmbus: Remove use of slow_virt_to_phys()")
-* Minor tweaks to rebase to latest linux-next code
-
-Michael Kelley (8):
-  arm64: hyperv: Add core Hyper-V include files
-  arm64: hyperv: Add hypercall and register access functions
-  arm64: hyperv: Add memory alloc/free functions for Hyper-V size pages
-  arm64: hyperv: Add interrupt handlers for VMbus and stimer
-  arm64: hyperv: Add kexec and panic handlers
-  arm64: hyperv: Initialize hypervisor on boot
-  Drivers: hv: vmbus: Add hooks for per-CPU IRQ
-  Drivers: hv: Enable Hyper-V code to be built on ARM64
-
- MAINTAINERS                          |   3 +
- arch/arm64/Makefile                  |   1 +
- arch/arm64/hyperv/Makefile           |   2 +
- arch/arm64/hyperv/hv_hvc.S           |  44 ++++
- arch/arm64/hyperv/hv_init.c          | 404 ++++++++++++++++++++++++++++++++++
- arch/arm64/hyperv/mshyperv.c         | 165 ++++++++++++++
+Signed-off-by: Michael Kelley <mikelley@microsoft.com>
+---
+ MAINTAINERS                          |   2 +
  arch/arm64/include/asm/hyperv-tlfs.h | 408 +++++++++++++++++++++++++++++++++++
  arch/arm64/include/asm/mshyperv.h    | 105 +++++++++
- arch/x86/include/asm/mshyperv.h      |   4 +
- drivers/hv/Kconfig                   |   5 +-
- drivers/hv/hv.c                      |   2 +
- include/asm-generic/mshyperv.h       |   5 +
- 12 files changed, 1146 insertions(+), 2 deletions(-)
- create mode 100644 arch/arm64/hyperv/Makefile
- create mode 100644 arch/arm64/hyperv/hv_hvc.S
- create mode 100644 arch/arm64/hyperv/hv_init.c
- create mode 100644 arch/arm64/hyperv/mshyperv.c
+ 3 files changed, 515 insertions(+)
  create mode 100644 arch/arm64/include/asm/hyperv-tlfs.h
  create mode 100644 arch/arm64/include/asm/mshyperv.h
 
+diff --git a/MAINTAINERS b/MAINTAINERS
+index cf2225b..fa98b21 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -7486,6 +7486,8 @@ F:	arch/x86/include/asm/trace/hyperv.h
+ F:	arch/x86/include/asm/hyperv-tlfs.h
+ F:	arch/x86/kernel/cpu/mshyperv.c
+ F:	arch/x86/hyperv
++F:	arch/arm64/include/asm/hyperv-tlfs.h
++F:	arch/arm64/include/asm/mshyperv.h
+ F:	drivers/clocksource/hyperv_timer.c
+ F:	drivers/hid/hid-hyperv.c
+ F:	drivers/hv/
+diff --git a/arch/arm64/include/asm/hyperv-tlfs.h b/arch/arm64/include/asm/hyperv-tlfs.h
+new file mode 100644
+index 0000000..fe167c4
+--- /dev/null
++++ b/arch/arm64/include/asm/hyperv-tlfs.h
+@@ -0,0 +1,408 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++
++/*
++ * This file contains definitions from the Hyper-V Hypervisor Top-Level
++ * Functional Specification (TLFS):
++ * https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/reference/tlfs
++ *
++ * Copyright (C) 2019, Microsoft, Inc.
++ *
++ * Author : Michael Kelley <mikelley@microsoft.com>
++ */
++
++#ifndef _ASM_HYPERV_TLFS_H
++#define _ASM_HYPERV_TLFS_H
++
++#include <linux/types.h>
++
++/*
++ * All data structures defined in the TLFS that are shared between Hyper-V
++ * and a guest VM use Little Endian byte ordering.  This matches the default
++ * byte ordering of Linux running on ARM64, so no special handling is required.
++ */
++
++
++/*
++ * While not explicitly listed in the TLFS, Hyper-V always runs with a page
++ * size of 4096. These definitions are used when communicating with Hyper-V
++ * using guest physical pages and guest physical page addresses, since the
++ * guest page size may not be 4096 on ARM64.
++ */
++#define HV_HYP_PAGE_SHIFT	12
++#define HV_HYP_PAGE_SIZE	(1 << HV_HYP_PAGE_SHIFT)
++#define HV_HYP_PAGE_MASK	(~(HV_HYP_PAGE_SIZE - 1))
++
++/*
++ * These Hyper-V registers provide information equivalent to the CPUID
++ * instruction on x86/x64.
++ */
++#define HV_REGISTER_HYPERVISOR_VERSION		0x00000100 /*CPUID 0x40000002 */
++#define	HV_REGISTER_PRIVILEGES_AND_FEATURES	0x00000200 /*CPUID 0x40000003 */
++#define	HV_REGISTER_FEATURES			0x00000201 /*CPUID 0x40000004 */
++#define	HV_REGISTER_IMPLEMENTATION_LIMITS	0x00000202 /*CPUID 0x40000005 */
++#define HV_ARM64_REGISTER_INTERFACE_VERSION	0x00090006 /*CPUID 0x40000001 */
++
++/*
++ * Feature identification. HvRegisterPrivilegesAndFeaturesInfo returns a
++ * 128-bit value with flags indicating which features are available to the
++ * partition based upon the current partition privileges. The 128-bit
++ * value is broken up with different portions stored in different 32-bit
++ * fields in the ms_hyperv structure.
++ */
++
++/* Partition Reference Counter available*/
++#define HV_MSR_TIME_REF_COUNT_AVAILABLE		BIT(1)
++
++/*
++ * Synthetic Timers available
++ */
++#define HV_MSR_SYNTIMER_AVAILABLE		BIT(3)
++
++/* Frequency MSRs available */
++#define HV_FEATURE_FREQUENCY_MSRS_AVAILABLE	BIT(8)
++
++/* Reference TSC available */
++#define HV_MSR_REFERENCE_TSC_AVAILABLE		BIT(9)
++
++/* Crash MSR available */
++#define HV_FEATURE_GUEST_CRASH_MSR_AVAILABLE	BIT(10)
++
++
++/*
++ * This group of flags is in the high order 64-bits of the returned
++ * 128-bit value.
++ */
++
++/* STIMER direct mode is available */
++#define HV_STIMER_DIRECT_MODE_AVAILABLE		BIT(19)
++
++/*
++ * Implementation recommendations in register
++ * HvRegisterFeaturesInfo. Indicates which behaviors the hypervisor
++ * recommends the OS implement for optimal performance.
++ */
++
++/*
++ * Recommend not using Auto EOI
++ */
++#define HV_DEPRECATING_AEOI_RECOMMENDED		BIT(9)
++
++/*
++ * Synthetic register definitions equivalent to MSRs on x86/x64
++ */
++#define HV_REGISTER_CRASH_P0		0x00000210
++#define HV_REGISTER_CRASH_P1		0x00000211
++#define HV_REGISTER_CRASH_P2		0x00000212
++#define HV_REGISTER_CRASH_P3		0x00000213
++#define HV_REGISTER_CRASH_P4		0x00000214
++#define HV_REGISTER_CRASH_CTL		0x00000215
++
++#define HV_REGISTER_GUEST_OSID		0x00090002
++#define HV_REGISTER_VPINDEX		0x00090003
++#define HV_REGISTER_TIME_REFCOUNT	0x00090004
++#define HV_REGISTER_REFERENCE_TSC	0x00090017
++
++#define HV_REGISTER_SINT0		0x000A0000
++#define HV_REGISTER_SINT1		0x000A0001
++#define HV_REGISTER_SINT2		0x000A0002
++#define HV_REGISTER_SINT3		0x000A0003
++#define HV_REGISTER_SINT4		0x000A0004
++#define HV_REGISTER_SINT5		0x000A0005
++#define HV_REGISTER_SINT6		0x000A0006
++#define HV_REGISTER_SINT7		0x000A0007
++#define HV_REGISTER_SINT8		0x000A0008
++#define HV_REGISTER_SINT9		0x000A0009
++#define HV_REGISTER_SINT10		0x000A000A
++#define HV_REGISTER_SINT11		0x000A000B
++#define HV_REGISTER_SINT12		0x000A000C
++#define HV_REGISTER_SINT13		0x000A000D
++#define HV_REGISTER_SINT14		0x000A000E
++#define HV_REGISTER_SINT15		0x000A000F
++#define HV_REGISTER_SCONTROL		0x000A0010
++#define HV_REGISTER_SVERSION		0x000A0011
++#define HV_REGISTER_SIFP		0x000A0012
++#define HV_REGISTER_SIPP		0x000A0013
++#define HV_REGISTER_EOM			0x000A0014
++#define HV_REGISTER_SIRBP		0x000A0015
++
++#define HV_REGISTER_STIMER0_CONFIG	0x000B0000
++#define HV_REGISTER_STIMER0_COUNT	0x000B0001
++#define HV_REGISTER_STIMER1_CONFIG	0x000B0002
++#define HV_REGISTER_STIMER1_COUNT	0x000B0003
++#define HV_REGISTER_STIMER2_CONFIG	0x000B0004
++#define HV_REGISTER_STIMER2_COUNT	0x000B0005
++#define HV_REGISTER_STIMER3_CONFIG	0x000B0006
++#define HV_REGISTER_STIMER3_COUNT	0x000B0007
++
++/*
++ * Crash notification flags.
++ */
++#define HV_CRASH_CTL_CRASH_NOTIFY_MSG	BIT_ULL(62)
++#define HV_CRASH_CTL_CRASH_NOTIFY	BIT_ULL(63)
++
++/*
++ * The guest OS needs to register the guest ID with the hypervisor.
++ * The guest ID is a 64 bit entity and the structure of this ID is
++ * specified in the Hyper-V TLFS.
++ */
++#define HV_LINUX_VENDOR_ID              0x8100
++
++/* Declare the various hypercall operations. */
++#define HVCALL_FLUSH_VIRTUAL_ADDRESS_SPACE	0x0002
++#define HVCALL_FLUSH_VIRTUAL_ADDRESS_LIST	0x0003
++#define HVCALL_NOTIFY_LONG_SPIN_WAIT		0x0008
++#define HVCALL_SEND_IPI				0x000b
++#define HVCALL_FLUSH_VIRTUAL_ADDRESS_SPACE_EX	0x0013
++#define HVCALL_FLUSH_VIRTUAL_ADDRESS_LIST_EX	0x0014
++#define HVCALL_SEND_IPI_EX			0x0015
++#define HVCALL_GET_VP_REGISTERS			0x0050
++#define HVCALL_SET_VP_REGISTERS			0x0051
++#define HVCALL_POST_MESSAGE			0x005c
++#define HVCALL_SIGNAL_EVENT			0x005d
++#define HVCALL_RETARGET_INTERRUPT		0x007e
++#define HVCALL_START_VIRTUAL_PROCESSOR		0x0099
++
++/* Declare standard hypercall field values. */
++#define HV_PARTITION_ID_SELF                    ((u64)-1)
++#define HV_VP_INDEX_SELF                        ((u32)-2)
++
++#define HV_HYPERCALL_FAST_BIT                   BIT(16)
++#define HV_HYPERCALL_REP_COUNT_1                BIT_ULL(32)
++#define HV_HYPERCALL_RESULT_MASK                GENMASK_ULL(15, 0)
++
++/* Define the hypercall status result */
++
++union hv_hypercall_status {
++	u64 as_uint64;
++	struct {
++		u16 status;
++		u16 reserved;
++		u16 reps_completed;  /* Low 12 bits */
++		u16 reserved2;
++	};
++};
++
++/* hypercall status code */
++#define HV_STATUS_SUCCESS			0
++#define HV_STATUS_INVALID_HYPERCALL_CODE	2
++#define HV_STATUS_INVALID_HYPERCALL_INPUT	3
++#define HV_STATUS_INVALID_ALIGNMENT		4
++#define HV_STATUS_INSUFFICIENT_MEMORY		11
++#define HV_STATUS_INVALID_CONNECTION_ID		18
++#define HV_STATUS_INSUFFICIENT_BUFFERS		19
++
++/* Define output layout for Get VP Register hypercall */
++struct hv_get_vp_register_output {
++	u64 registervaluelow;
++	u64 registervaluehigh;
++};
++
++#define HV_FLUSH_ALL_PROCESSORS			BIT(0)
++#define HV_FLUSH_ALL_VIRTUAL_ADDRESS_SPACES	BIT(1)
++#define HV_FLUSH_NON_GLOBAL_MAPPINGS_ONLY	BIT(2)
++#define HV_FLUSH_USE_EXTENDED_RANGE_FORMAT	BIT(3)
++
++enum HV_GENERIC_SET_FORMAT {
++	HV_GENERIC_SET_SPARSE_4K,
++	HV_GENERIC_SET_ALL,
++};
++
++/*
++ * The Hyper-V TimeRefCount register and the TSC
++ * page provide a guest VM clock with 100ns tick rate
++ */
++#define HV_CLOCK_HZ (NSEC_PER_SEC/100)
++
++/*
++ * The fields in this structure are set by Hyper-V and read
++ * by the Linux guest.  They should be accessed with READ_ONCE()
++ * so the compiler doesn't optimize in a way that will cause
++ * problems.  The union pads the size out to the page size
++ * used in communication with Hyper-V.
++ */
++struct ms_hyperv_tsc_page {
++	union {
++		struct {
++			u32 tsc_sequence;
++			u32 reserved1;
++			u64 tsc_scale;
++			s64 tsc_offset;
++		} __packed;
++		u8 reserved2[HV_HYP_PAGE_SIZE];
++	};
++};
++
++/* Define the number of synthetic interrupt sources. */
++#define HV_SYNIC_SINT_COUNT		(16)
++/* Define the expected SynIC version. */
++#define HV_SYNIC_VERSION_1		(0x1)
++
++#define HV_SYNIC_CONTROL_ENABLE		(1ULL << 0)
++#define HV_SYNIC_SIMP_ENABLE		(1ULL << 0)
++#define HV_SYNIC_SIEFP_ENABLE		(1ULL << 0)
++#define HV_SYNIC_SINT_MASKED		(1ULL << 16)
++#define HV_SYNIC_SINT_AUTO_EOI		(1ULL << 17)
++#define HV_SYNIC_SINT_VECTOR_MASK	(0xFF)
++
++#define HV_SYNIC_STIMER_COUNT		(4)
++
++/* Define synthetic interrupt controller message constants. */
++#define HV_MESSAGE_SIZE			(256)
++#define HV_MESSAGE_PAYLOAD_BYTE_COUNT	(240)
++#define HV_MESSAGE_PAYLOAD_QWORD_COUNT	(30)
++
++/* Define hypervisor message types. */
++enum hv_message_type {
++	HVMSG_NONE			= 0x00000000,
++
++	/* Memory access messages. */
++	HVMSG_UNMAPPED_GPA		= 0x80000000,
++	HVMSG_GPA_INTERCEPT		= 0x80000001,
++
++	/* Timer notification messages. */
++	HVMSG_TIMER_EXPIRED		= 0x80000010,
++
++	/* Error messages. */
++	HVMSG_INVALID_VP_REGISTER_VALUE	= 0x80000020,
++	HVMSG_UNRECOVERABLE_EXCEPTION	= 0x80000021,
++	HVMSG_UNSUPPORTED_FEATURE	= 0x80000022,
++
++	/* Trace buffer complete messages. */
++	HVMSG_EVENTLOG_BUFFERCOMPLETE	= 0x80000040,
++};
++
++/* Define synthetic interrupt controller message flags. */
++union hv_message_flags {
++	__u8 asu8;
++	struct {
++		__u8 msg_pending:1;
++		__u8 reserved:7;
++	} __packed;
++};
++
++/* Define port identifier type. */
++union hv_port_id {
++	__u32 asu32;
++	struct {
++		__u32 id:24;
++		__u32 reserved:8;
++	}  __packed u;
++};
++
++/* Define synthetic interrupt controller message header. */
++struct hv_message_header {
++	__u32 message_type;
++	__u8 payload_size;
++	union hv_message_flags message_flags;
++	__u8 reserved[2];
++	union {
++		__u64 sender;
++		union hv_port_id port;
++	};
++} __packed;
++
++/* Define synthetic interrupt controller message format. */
++struct hv_message {
++	struct hv_message_header header;
++	union {
++		__u64 payload[HV_MESSAGE_PAYLOAD_QWORD_COUNT];
++	} u;
++} __packed;
++
++/* Define the synthetic interrupt message page layout. */
++struct hv_message_page {
++	struct hv_message sint_message[HV_SYNIC_SINT_COUNT];
++} __packed;
++
++/* Define timer message payload structure. */
++struct hv_timer_message_payload {
++	__u32 timer_index;
++	__u32 reserved;
++	__u64 expiration_time;	/* When the timer expired */
++	__u64 delivery_time;	/* When the message was delivered */
++} __packed;
++
++#define HV_STIMER_ENABLE		(1ULL << 0)
++#define HV_STIMER_PERIODIC		(1ULL << 1)
++#define HV_STIMER_LAZY			(1ULL << 2)
++#define HV_STIMER_AUTOENABLE		(1ULL << 3)
++#define HV_STIMER_SINT(config)		(__u8)(((config) >> 16) & 0x0F)
++
++
++/* Define synthetic interrupt controller flag constants. */
++#define HV_EVENT_FLAGS_COUNT		(256 * 8)
++#define HV_EVENT_FLAGS_LONG_COUNT	(256 / sizeof(unsigned long))
++
++/*
++ * Timer configuration register.
++ */
++union hv_stimer_config {
++	u64 as_uint64;
++	struct {
++		u64 enable:1;
++		u64 periodic:1;
++		u64 lazy:1;
++		u64 auto_enable:1;
++		u64 apic_vector:8;
++		u64 direct_mode:1;
++		u64 reserved_z0:3;
++		u64 sintx:4;
++		u64 reserved_z1:44;
++	} __packed;
++};
++
++
++/* Define the synthetic interrupt controller event flags format. */
++union hv_synic_event_flags {
++	unsigned long flags[HV_EVENT_FLAGS_LONG_COUNT];
++};
++
++/* Define SynIC control register. */
++union hv_synic_scontrol {
++	u64 as_uint64;
++	struct {
++		u64 enable:1;
++		u64 reserved:63;
++	} __packed;
++};
++
++/* Define synthetic interrupt source. */
++union hv_synic_sint {
++	u64 as_uint64;
++	struct {
++		u64 vector:8;
++		u64 reserved1:8;
++		u64 masked:1;
++		u64 auto_eoi:1;
++		u64 reserved2:46;
++	} __packed;
++};
++
++/* Define the format of the SIMP register */
++union hv_synic_simp {
++	u64 as_uint64;
++	struct {
++		u64 simp_enabled:1;
++		u64 preserved:11;
++		u64 base_simp_gpa:52;
++	} __packed;
++};
++
++/* Define the format of the SIEFP register */
++union hv_synic_siefp {
++	u64 as_uint64;
++	struct {
++		u64 siefp_enabled:1;
++		u64 preserved:11;
++		u64 base_siefp_gpa:52;
++	} __packed;
++};
++
++struct hv_vpset {
++	u64 format;
++	u64 valid_bank_mask;
++	u64 bank_contents[];
++} __packed;
++
++
++#endif
+diff --git a/arch/arm64/include/asm/mshyperv.h b/arch/arm64/include/asm/mshyperv.h
+new file mode 100644
+index 0000000..a8468a6
+--- /dev/null
++++ b/arch/arm64/include/asm/mshyperv.h
+@@ -0,0 +1,105 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++
++/*
++ * Linux-specific definitions for managing interactions with Microsoft's
++ * Hyper-V hypervisor. The definitions in this file are specific to
++ * the ARM64 architecture.  See include/asm-generic/mshyperv.h for
++ * definitions are that architecture independent.
++ *
++ * Definitions that are specified in the Hyper-V Top Level Functional
++ * Spec (TLFS) should not go in this file, but should instead go in
++ * hyperv-tlfs.h.
++ *
++ * Copyright (C) 2019, Microsoft, Inc.
++ *
++ * Author : Michael Kelley <mikelley@microsoft.com>
++ */
++
++#ifndef _ASM_MSHYPERV_H
++#define _ASM_MSHYPERV_H
++
++#include <linux/types.h>
++#include <linux/interrupt.h>
++#include <linux/clocksource.h>
++#include <linux/irq.h>
++#include <linux/irqdesc.h>
++#include <asm/hyperv-tlfs.h>
++
++/*
++ * Define the IRQ numbers/vectors used by Hyper-V VMbus interrupts
++ * and by STIMER0 Direct Mode interrupts. Hyper-V should be supplying
++ * these values through ACPI, but there are no other interrupting
++ * devices in a Hyper-V VM on ARM64, so it's OK to hard code for now.
++ * The "CALLBACK_VECTOR" terminology is a left-over from the x86/x64
++ * world that is used in architecture independent Hyper-V code.
++ */
++#define HYPERVISOR_CALLBACK_VECTOR 16
++#define	HV_STIMER0_IRQNR	   17
++
++extern u64 hv_do_hvc(u64 control, ...);
++extern u64 hv_do_hvc_fast_get(u64 control, u64 input1, u64 input2, u64 input3,
++		struct hv_get_vp_register_output *output);
++
++/*
++ * Declare calls to get and set Hyper-V VP register values on ARM64, which
++ * requires a hypercall.
++ */
++extern void hv_set_vpreg(u32 reg, u64 value);
++extern u64 hv_get_vpreg(u32 reg);
++extern void hv_get_vpreg_128(u32 reg, struct hv_get_vp_register_output *result);
++
++/*
++ * Use the Hyper-V provided stimer0 as the timer that is made
++ * available to the architecture independent Hyper-V drivers.
++ */
++#define hv_init_timer(timer, tick) \
++		hv_set_vpreg(HV_REGISTER_STIMER0_COUNT + (2*timer), tick)
++#define hv_init_timer_config(timer, val) \
++		hv_set_vpreg(HV_REGISTER_STIMER0_CONFIG + (2*timer), val)
++#define hv_get_current_tick(tick) \
++		(tick = hv_get_vpreg(HV_REGISTER_TIME_REFCOUNT))
++
++#define hv_get_simp(val) (val = hv_get_vpreg(HV_REGISTER_SIPP))
++#define hv_set_simp(val) hv_set_vpreg(HV_REGISTER_SIPP, val)
++
++#define hv_get_siefp(val) (val = hv_get_vpreg(HV_REGISTER_SIFP))
++#define hv_set_siefp(val) hv_set_vpreg(HV_REGISTER_SIFP, val)
++
++#define hv_get_synic_state(val) (val = hv_get_vpreg(HV_REGISTER_SCONTROL))
++#define hv_set_synic_state(val) hv_set_vpreg(HV_REGISTER_SCONTROL, val)
++
++#define hv_get_vp_index(index) (index = hv_get_vpreg(HV_REGISTER_VPINDEX))
++
++#define hv_signal_eom()	hv_set_vpreg(HV_REGISTER_EOM, 0)
++
++/*
++ * Hyper-V SINT registers are numbered sequentially, so we can just
++ * add the SINT number to the register number of SINT0
++ */
++#define hv_get_synint_state(sint_num, val) \
++		(val = hv_get_vpreg(HV_REGISTER_SINT0 + sint_num))
++#define hv_set_synint_state(sint_num, val) \
++		hv_set_vpreg(HV_REGISTER_SINT0 + sint_num, val)
++
++#define hv_get_crash_ctl(val) \
++		(val = hv_get_vpreg(HV_REGISTER_CRASH_CTL))
++#define hv_get_time_ref_count(val) \
++		(val = hv_get_vpreg(HV_REGISTER_TIME_REFCOUNT))
++#define hv_get_reference_tsc(val) \
++		(val = hv_get_vpreg(HV_REGISTER_REFERENCE_TSC))
++#define hv_set_reference_tsc(val) \
++		hv_set_vpreg(HV_REGISTER_REFERENCE_TSC, val)
++#define hv_set_clocksource_vdso(val) \
++		((val).archdata.vdso_direct = false)
++
++#if IS_ENABLED(CONFIG_HYPERV)
++#define hv_enable_stimer0_percpu_irq(irq)	enable_percpu_irq(irq, 0)
++#define hv_disable_stimer0_percpu_irq(irq)	disable_percpu_irq(irq)
++#endif
++
++/* ARM64 specific code to read the hardware clock */
++#define hv_get_raw_timer() arch_timer_read_counter()
++
++#include <asm-generic/mshyperv.h>
++
++#endif
 -- 
 1.8.3.1
 
