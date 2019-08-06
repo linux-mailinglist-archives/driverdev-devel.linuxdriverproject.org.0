@@ -1,60 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 674E98355A
-	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Aug 2019 17:34:44 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id EC4E283758
+	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Aug 2019 18:53:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3B14A84AE2;
-	Tue,  6 Aug 2019 15:34:42 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0793586091;
+	Tue,  6 Aug 2019 16:53:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id znH7T1XU4gtI; Tue,  6 Aug 2019 15:34:41 +0000 (UTC)
+	with ESMTP id lgt8JtR70fJz; Tue,  6 Aug 2019 16:53:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D1D3C84E6B;
-	Tue,  6 Aug 2019 15:34:40 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9BC4285C7D;
+	Tue,  6 Aug 2019 16:53:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5A4B31BF5EA
- for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 15:34:39 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id DF2F71BF5B3
+ for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 16:53:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 54AF287BF5
- for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 15:34:39 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D4A8B85521
+ for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 16:53:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id stw5HxF5qn8Y for <devel@linuxdriverproject.org>;
- Tue,  6 Aug 2019 15:34:38 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from ozlabs.org (ozlabs.org [203.11.71.1])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4100A87BD4
- for <devel@driverdev.osuosl.org>; Tue,  6 Aug 2019 15:34:38 +0000 (UTC)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest
- SHA256) (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 462zFv3F9sz9sMr;
- Wed,  7 Aug 2019 01:34:27 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=canb.auug.org.au;
- s=201702; t=1565105672;
- bh=5FHAJ2a0H+dgGw8qV5krRpvfMTW4QMVUNBiIFTz7ukc=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=dcShrCbsau/hwzLIEVX+xCQkjw8ytUmuBphP7Wzk0Os+PeYJL4E9AZojKIxsW/XCC
- xTyuNmwgEnwSEW6/Kz8amhaNxd/QkXfyj6TN7B3JHn6lyvGiqz9io4rs24B6/81qqU
- aHhTQCVVCoPKVEFdalsWvjQTI3tUyZFaUFc133mkcqknYyDVNSEChFStksBky28u+/
- GQO177sJv9EuIy1iyMEkE5ZTlNxx7pwHSxx0QCJI51C+dfkT0hpyUbfm+uzI+0mdxe
- ZEqmwK2hiOD8JXrhyc//NCp7AK7xY6zJ2JDZpiGvVhYTi+uG79dj7xnbSdH/Jt6dGk
- vLa4gCEEgqDLA==
-Date: Wed, 7 Aug 2019 01:34:23 +1000
-From: Stephen Rothwell <sfr@canb.auug.org.au>
-To: Gao Xiang <gaoxiang25@huawei.com>
-Subject: Re: [PATCH RFC] erofs: move erofs out of staging
-Message-ID: <20190807013423.02fd6990@canb.auug.org.au>
-In-Reply-To: <20190806094925.228906-1-gaoxiang25@huawei.com>
-References: <20190806094925.228906-1-gaoxiang25@huawei.com>
+ with ESMTP id eN3-gsV-HfLf for <devel@linuxdriverproject.org>;
+ Tue,  6 Aug 2019 16:53:51 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
+ [209.85.221.66])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 12324854FC
+ for <devel@driverdev.osuosl.org>; Tue,  6 Aug 2019 16:53:51 +0000 (UTC)
+Received: by mail-wr1-f66.google.com with SMTP id p13so14016441wru.10
+ for <devel@driverdev.osuosl.org>; Tue, 06 Aug 2019 09:53:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-transfer-encoding:content-language;
+ bh=gxNkkJD3b/WJ2BCN1yM/UBEgODs/xbGIxyPlrinnovU=;
+ b=YDWulAFE5M1Cj2s64V8j8s4cLZ1QNjqZ5aD10HE/qncnQNsNiWNP1srKy9Z936zPzZ
+ GfLtuLfTfrrKO3l7ixtUHK6aIHkRVgaik5+aOyFeBIxlxV7xPMyeKBLP45ubBVWxqsvG
+ wv/eUSKpDGVhO/g1WIJNOS0+R9Wfm8cnW8QIO5tIdAWAE7WTYI7POS3z35s1jXLnCod4
+ CWXJQqx3mhYa908hr5zPh9VqNo/osxl0WXgr26ayPgSZw6kCEbUbyRkHjfamOz2yZxLr
+ yYLSsxfbZ8JDyt/lxippVAe3faaTsN4WpYs1vq6t0UsM2gnR9HGI8OGgrzC6l8M2QSke
+ UBOQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-transfer-encoding
+ :content-language;
+ bh=gxNkkJD3b/WJ2BCN1yM/UBEgODs/xbGIxyPlrinnovU=;
+ b=G837DlXqdBX5AM6HNJ5QzaQL7LAUsz3NWkezHepvdb81CuckSjXrHFLt+PalfuRbgK
+ 8L93xhZsbwymzFCBBFolnwZauXiUGnd4MrZ5qio/GMlWoLl9nhcmyy2/NpnctCMyozOA
+ yTALs6eqElRMVjdh7/EpnEy4zNK8RaRJq4/7Ee6ri9VSVGrlTGz/aysFBzAnq0zGDCPs
+ i7zPRx2zXyC/NwGZWOWWEmFxt4aCEHksGYCScG8o7nkJjaqx7hYnjO1HOE5/8KPf1v42
+ MIxVVLLlQI8qYz+F3xmqVPAuEoDGEG91mUsgZbIs1SOid3bY0Y+iDyEGhvTRoTouk3ag
+ SahQ==
+X-Gm-Message-State: APjAAAVh4LnTkpVGCjspcRG4r+9B9dU+uXUI2elIwoY6HKsiIgsTuJU0
+ Xq6TwfnYNcihWrCrMEOy0IA=
+X-Google-Smtp-Source: APXvYqwkEM8/7FtU/qIz2EzqolfwDqNOFGtE+29zXZgsxLDAnchWnPtpfHMtQFGIzAti+86XMVHClQ==
+X-Received: by 2002:adf:ec49:: with SMTP id w9mr5292515wrn.303.1565110429245; 
+ Tue, 06 Aug 2019 09:53:49 -0700 (PDT)
+Received: from [172.30.90.245] (sjewanfw1-nat.mentorg.com. [139.181.7.34])
+ by smtp.gmail.com with ESMTPSA id l15sm2581667wrq.64.2019.08.06.09.53.44
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 06 Aug 2019 09:53:48 -0700 (PDT)
+Subject: Re: [PATCH 04/22] media: Move v4l2_fwnode_parse_link from v4l2 to
+ driver base
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+References: <20190805233505.21167-1-slongerbeam@gmail.com>
+ <20190805233505.21167-5-slongerbeam@gmail.com>
+ <CAHp75VcOh8bOf_s6t0ehwGtcYn64QFGj303SVvpHrztEOhTRgg@mail.gmail.com>
+From: Steve Longerbeam <slongerbeam@gmail.com>
+Message-ID: <4750b347-b421-6569-600f-0ced8406460e@gmail.com>
+Date: Tue, 6 Aug 2019 09:53:41 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
+In-Reply-To: <CAHp75VcOh8bOf_s6t0ehwGtcYn64QFGj303SVvpHrztEOhTRgg@mail.gmail.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,66 +91,61 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-erofs@lists.ozlabs.org,
- Chao Yu <yuchao0@huawei.com>, Theodore Ts'o <tytso@mit.edu>,
- "Darrick J . Wong" <darrick.wong@oracle.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jan Kara <jack@suse.cz>,
- Amir Goldstein <amir73il@gmail.com>, Dave Chinner <david@fromorbit.com>,
- David Sterba <dsterba@suse.cz>, Li Guifu <bluce.liguifu@huawei.com>,
- LKML <linux-kernel@vger.kernel.org>, Christoph Hellwig <hch@infradead.org>,
- Miao Xie <miaoxie@huawei.com>, Alexander Viro <viro@zeniv.linux.org.uk>,
- Pavel Machek <pavel@denx.de>, linux-fsdevel@vger.kernel.org,
- Jaegeuk Kim <jaegeuk@kernel.org>, Andrew Morton <akpm@linux-foundation.org>,
- Linus Torvalds <torvalds@linux-foundation.org>, Fang Wei <fangwei1@huawei.com>
-Content-Type: multipart/mixed; boundary="===============5802151033911499306=="
+Cc: Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Shawn Guo <shawnguo@kernel.org>,
+ "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Michal Simek <michal.simek@xilinx.com>,
+ "open list:ACPI" <linux-acpi@vger.kernel.org>,
+ NXP Linux Team <linux-imx@nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Len Brown <lenb@kernel.org>, Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Thomas Gleixner <tglx@linutronix.de>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ "moderated list:ARM/ZYNQ ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>,
+ Hyun Kwon <hyun.kwon@xilinx.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ open list <linux-kernel@vger.kernel.org>,
+ Jacopo Mondi <jacopo+renesas@jmondi.org>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ Enrico Weigelt <info@metux.net>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
---===============5802151033911499306==
-Content-Type: multipart/signed; boundary="Sig_/3zuq9Mbh_pVR5QZxswgd1wJ";
- protocol="application/pgp-signature"; micalg=pgp-sha256
+Hi Andy,
 
---Sig_/3zuq9Mbh_pVR5QZxswgd1wJ
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
+On 8/5/19 11:41 PM, Andy Shevchenko wrote:
+> On Tue, Aug 6, 2019 at 2:37 AM Steve Longerbeam <slongerbeam@gmail.com> wrote:
+>> There is nothing v4l2-specific about v4l2_fwnode_{parse|put}_link().
+>> Make these functions more generally available by moving them to driver
+>> base, with the appropriate name changes to the functions and struct.
+>>
+>> In the process embed a 'struct fwnode_endpoint' in 'struct fwnode_link'
+>> for both sides of the link, and make use of fwnode_graph_parse_endpoint()
+>> to fully parse both endpoints. Rename members local_node and
+>> remote_node to more descriptive local_port_parent and
+>> remote_port_parent.
+>>
+> May I ask if it's going to be used outside of v4l2?
 
-Hi Gao,
+It could be, I can see fwnode_graph_parse_link() being useful in DRM, 
+for example. But at this, only media core and v4l2 are making use of it.
 
-One small suggestion: just remove the file names from the comments at
-the top of the files rather than change them to reflect that they have
-moved.  We can usually tell the name of a file by its name :-)
+This patch was created so that fwnode links can be parsed in a new media 
+core function that forms media links from fwnode links.
 
---=20
-Cheers,
-Stephen Rothwell
+The full patchset doesn't seem to be up yet, but see [1] for the cover 
+letter.
 
---Sig_/3zuq9Mbh_pVR5QZxswgd1wJ
-Content-Type: application/pgp-signature
-Content-Description: OpenPGP digital signature
+Steve
 
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEENIC96giZ81tWdLgKAVBC80lX0GwFAl1Jnf8ACgkQAVBC80lX
-0GyktAf/awWVta3LRhqpez+RTEQC6IzKAlgR8ULIAJpHB3OZFNlv6Lxvbg3l/Jdq
-XZAoR3RqQTr49hpHePfnENWdxIFa7DUCyOjO5MeWyP7VpVBEk48YSFnBUtPIzh7m
-+UdrAt+zOdjzdRd6/v2DGhd8dXLZ+rsupL9XA75ak2iVEGjEnlTorjwKDaYy2VR+
-cV0mFcFNBEHs2Ok2wTfYYzUx7id7/tcVfjWuzvyvd1d0Y53FLgWLvIVCsJNM0HmH
-LlpVkiVpMFDCC3SMSiffhkOkNigEV1vY3wxlS2qniRz+qXbAMqPv8CRbtdO92bkM
-LBThN5N6CBu+SqQgGSvGv08yzx+eqg==
-=sZOX
------END PGP SIGNATURE-----
-
---Sig_/3zuq9Mbh_pVR5QZxswgd1wJ--
-
---===============5802151033911499306==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+[1] https://www.mail-archive.com/linux-media@vger.kernel.org/msg148910.html
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============5802151033911499306==--
