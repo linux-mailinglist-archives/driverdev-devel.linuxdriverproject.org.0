@@ -1,150 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id ADD46839B6
-	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Aug 2019 21:32:44 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1D49583A26
+	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Aug 2019 22:16:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8A9478696A;
-	Tue,  6 Aug 2019 19:32:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C45D786160;
+	Tue,  6 Aug 2019 20:16:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TltZNQGb8-ob; Tue,  6 Aug 2019 19:32:42 +0000 (UTC)
+	with ESMTP id jTSz6NsmcC43; Tue,  6 Aug 2019 20:16:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1666286124;
-	Tue,  6 Aug 2019 19:32:41 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 91FFF85F83;
+	Tue,  6 Aug 2019 20:16:15 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 74B691BF39F
- for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 19:32:38 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DD5841BF375
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  6 Aug 2019 20:16:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 712C685FC1
- for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 19:32:38 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id DA3A285F83
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  6 Aug 2019 20:16:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iQQbEKsAmmxb for <devel@linuxdriverproject.org>;
- Tue,  6 Aug 2019 19:32:37 +0000 (UTC)
+ with ESMTP id brHY-6UHv1OX
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  6 Aug 2019 20:16:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa4.microchip.iphmx.com (esa4.microchip.iphmx.com
- [68.232.154.123])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C95C985F9B
- for <devel@driverdev.osuosl.org>; Tue,  6 Aug 2019 19:32:36 +0000 (UTC)
-Received-SPF: Pass (esa4.microchip.iphmx.com: domain of
- Adham.Abozaeid@microchip.com designates 198.175.253.82 as
- permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa4.microchip.iphmx.com;
- envelope-from="Adham.Abozaeid@microchip.com";
- x-sender="Adham.Abozaeid@microchip.com";
- x-conformance=spf_only; x-record-type="v=spf1";
- x-record-text="v=spf1 mx a:ushub1.microchip.com
- a:smtpout.microchip.com a:mx1.microchip.iphmx.com
- a:mx2.microchip.iphmx.com include:servers.mcsv.net
- include:mktomail.com include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa4.microchip.iphmx.com: no sender
- authenticity information available from domain of
- postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa4.microchip.iphmx.com;
- envelope-from="Adham.Abozaeid@microchip.com";
- x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa4.microchip.iphmx.com;
- spf=Pass smtp.mailfrom=Adham.Abozaeid@microchip.com;
- spf=None smtp.helo=postmaster@email.microchip.com;
- dkim=pass (signature verified) header.i=@microchiptechnology.onmicrosoft.com;
- dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: LmPF4wXQCPRNS0XPAbQtjwHNuOnRaa6pnBRx4FbtUZHIMOfVlhfajMt91RjLkFCNETcN5oLSX8
- Z7jXvfoQP3Dn7EblQWaDOZL+KqW3FwpMw/E34p4YaI0IXM8XBajhXtMUX51THQtHJS6eSpRNiL
- GUdScW9ZyoEDzPCHNMVGs3IUGbtlfplnoB7K3lWaxEilOSMmwlr0nofUPheji+6PxMwvzqWzTa
- B9UB/6VY92Gqp1loefbd01z7S1EiMbvMtMvocnLt1Sbrv0fImzjGsY9lUDViL1vc2HYIQ+3l5c
- 6ZI=
-X-IronPort-AV: E=Sophos;i="5.64,353,1559545200"; d="scan'208";a="43397239"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa4.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 06 Aug 2019 12:32:18 -0700
-Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
- chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Tue, 6 Aug 2019 12:32:10 -0700
-Received: from NAM02-BL2-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
- via Frontend Transport; Tue, 6 Aug 2019 12:32:11 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=YMgVapPYwht8VGcQXO8/i6l6ltHQbEjyQ323S2gsXx/wZrU+j9X5YTSqnSAEJl3b13tcKg+yn2txPgs1lPRyAMJQ0R/Wa1lV25tkz89cF2NUWmzEMPM/35Y/s0MksgUaJKjw2z+XojHkpv3H66IVRX7eSYYHFEMSy+i19CuDlOwb8ieL1fVIfKznOgd4rTaDvX3BUL8s8ZPb4SdOJ26KivHcZOBab0teaCrUuqcAK8spFN9OD4nrpe4+oBuNp9BJBMlS9X5N7YAxTrDssbO8+U/JIw7EkLfrubiu6AYGoWmgYGRkeqSKFtPXtUCKtMr1j8ihJt328TwrrfzPwMQ7oA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=EzTO0CwbreFbKe49+mV6LHnB1W3Eab20PYAVUCFQ+ss=;
- b=XybTLbbFD7elCdLK1F82g2mrno3XiTphWfZA3bMsPXvZZKZPGzdK8N0Uap06bCAsrNHEDoUdCa/OFQ1P8wzA8fHFeY24DGIYal3ZcQ3cHi0fZKjyhF9OUbsMn9pCA6Ezq2m24B62QN8uyhQMuG6+ar8AFVSTQMVKhjNM2vmyvgGrMzHCZvtsr+7RIXkbrEpIjd9y2TwZTIwjdz3x/JNYJ7fw6T44KtoBVK54u3MP1mMzoy/kwMHCnd/dYhicnYv2oOgp+urGwHdXwIvT0BqBUw9apU/xobnM3XKalUgaPgV1PNWNdu7vRYmdIYfY8mrrTbiKtGMvP+gThTJLyWeZFw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1;spf=pass
- smtp.mailfrom=microchip.com;dmarc=pass action=none
- header.from=microchip.com;dkim=pass header.d=microchip.com;arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector1-microchiptechnology-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=EzTO0CwbreFbKe49+mV6LHnB1W3Eab20PYAVUCFQ+ss=;
- b=V8bWc+gRaEFPJHLg7m9CD6AohLo4ECHV/ZbeyuZ1Rb26bFJTSjGoCZBqEDeyckd/Wunh/mwP+I+GLCm6IDSExWy60IwdVwpbn+zDl6ItwLsVTgao1gSGmxEvxGkHLUE74coaSjahhELi6r2b81RFJi62TSeOwkpQRH3FeVD6yMs=
-Received: from MWHPR11MB1373.namprd11.prod.outlook.com (10.169.234.141) by
- MWHPR11MB1357.namprd11.prod.outlook.com (10.169.237.140) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2136.17; Tue, 6 Aug 2019 19:32:09 +0000
-Received: from MWHPR11MB1373.namprd11.prod.outlook.com
- ([fe80::480d:becc:c567:3336]) by MWHPR11MB1373.namprd11.prod.outlook.com
- ([fe80::480d:becc:c567:3336%2]) with mapi id 15.20.2136.018; Tue, 6 Aug 2019
- 19:32:09 +0000
-From: <Adham.Abozaeid@microchip.com>
-To: <dan.carpenter@oracle.com>
-Subject: Re: [PATCH 3/6] staging: wilc1000: remove unused members
-Thread-Topic: [PATCH 3/6] staging: wilc1000: remove unused members
-Thread-Index: AQHVQzBVmkV0XiIfSkqdQ0TzXZfFVabuI64AgABuv4A=
-Date: Tue, 6 Aug 2019 19:32:08 +0000
-Message-ID: <f0a3701c-39c3-1b95-3148-621b26d3f870@microchip.com>
-References: <20190725213125.2810-1-adham.abozaeid@microchip.com>
- <20190725213125.2810-4-adham.abozaeid@microchip.com>
- <20190806124656.GH1974@kadam>
-In-Reply-To: <20190806124656.GH1974@kadam>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [198.175.253.81]
-user-agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.3.0
-x-clientproxiedby: BYAPR07CA0093.namprd07.prod.outlook.com
- (2603:10b6:a03:12b::34) To MWHPR11MB1373.namprd11.prod.outlook.com
- (2603:10b6:300:25::13)
-x-ms-exchange-messagesentrepresentingtype: 1
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 80790541-d3ae-4456-39ef-08d71aa4c56d
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(2017052603328)(7193020);
- SRVR:MWHPR11MB1357; 
-x-ms-traffictypediagnostic: MWHPR11MB1357:
-x-microsoft-antispam-prvs: <MWHPR11MB1357D31362EE7B5D1B4B0E728DD50@MWHPR11MB1357.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:6430;
-x-forefront-prvs: 0121F24F22
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(136003)(376002)(346002)(366004)(39860400002)(396003)(199004)(189003)(102836004)(305945005)(65826007)(5660300002)(54906003)(58126008)(66476007)(66446008)(64756008)(66556008)(99286004)(31686004)(65806001)(66066001)(65956001)(4326008)(66946007)(52116002)(25786009)(478600001)(6506007)(386003)(6512007)(229853002)(68736007)(6916009)(107886003)(86362001)(53546011)(6246003)(76176011)(316002)(6436002)(4744005)(31696002)(53936002)(6486002)(64126003)(8676002)(8936002)(7736002)(81156014)(81166006)(71200400001)(2906002)(26005)(3846002)(6116002)(256004)(14444005)(486006)(186003)(14454004)(11346002)(2616005)(476003)(446003)(71190400001)(36756003);
- DIR:OUT; SFP:1101; SCL:1; SRVR:MWHPR11MB1357;
- H:MWHPR11MB1373.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: microchip.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: H0lcblvlTQTTGVhd83yxLWkq6ZM4kK1ihUHIKmiM/6jc5JfAT8uFm2QPWPGp6fcb3oIptRCRTGdihgizbZi+eJtfNNCuXsurag7e1gLrtMbfjx+FCmIOKbQX+dBnXg9L7Cn5P5BpAOVVp6ZEBuHXrC625UZgA+i85e11YgvmTLf7nQ/uMUwM8Ju7r8lzDQjUCPWIrQ1oTtSaJU4JoOzF95cH72xvUgZ7hX3LHP5xFcUHsUqrcxA4cYy9geC8XIxJzUhFQTcBztYTdiPVn41MmJmRDGDAMKBVWAgIDgqXiOko/yL0njOQz/taTQKNzfNsQ2sHnFO3aiM23xDF4y69e4nDIyTWTDET2CB70pZelAshXrWy1pWfwk3PxzbZUZogTXNfySX7wgzl3w+7S0W7AqgV6Cc6elsDVIh3EjHQFd4=
-Content-ID: <AD2B8C269CF526418476B195FCD4B5B6@namprd11.prod.outlook.com>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 583DE85F7C
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  6 Aug 2019 20:16:13 +0000 (UTC)
+Received: from localhost (unknown [69.71.4.100])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id E7AD82070C;
+ Tue,  6 Aug 2019 20:16:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1565122573;
+ bh=CHdEFDdC6MO7xI0dc+/jQv+NXvBM8cI43X6TKLK577M=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=ow2jBeqS4Y7JdM2VwzqcvRHDfcYU5ouUMku8rA0TEMfRBQDVxyFec06eyKybYUgQj
+ KySLkYju9Gy0giIsRKiwHVCe2w5O03hmfEqqL1u/EMaYF4M5aWvTCLomJ6ILbWLvTT
+ r29xKNy6KNSqg5rwyLzneBnk8LV420HPO1gyF9MM=
+Date: Tue, 6 Aug 2019 15:16:11 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Dexuan Cui <decui@microsoft.com>
+Subject: Re: [PATCH v2] PCI: hv: Fix panic by calling hv_pci_remove_slots()
+ earlier
+Message-ID: <20190806201611.GT151852@google.com>
+References: <PU1P153MB01693F32F6BB02F9655CC84EBFD90@PU1P153MB0169.APCP153.PROD.OUTLOOK.COM>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 80790541-d3ae-4456-39ef-08d71aa4c56d
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Aug 2019 19:32:08.8901 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: adham.abozaeid@microchip.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1357
+Content-Disposition: inline
+In-Reply-To: <PU1P153MB01693F32F6BB02F9655CC84EBFD90@PU1P153MB0169.APCP153.PROD.OUTLOOK.COM>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -157,34 +70,66 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- johannes@sipsolutions.net, linux-wireless@vger.kernel.org,
- Ajay.Kathat@microchip.com
+Cc: "linux-hyperv@vger.kernel.org" <linux-hyperv@vger.kernel.org>,
+ "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>,
+ Stephen Hemminger <sthemmin@microsoft.com>,
+ "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
+ Haiyang Zhang <haiyangz@microsoft.com>,
+ "driverdev-devel@linuxdriverproject.org"
+ <driverdev-devel@linuxdriverproject.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Michael Kelley <mikelley@microsoft.com>,
+ Sasha Levin <Alexander.Levin@microsoft.com>,
+ "marcelo.cerri@canonical.com" <marcelo.cerri@canonical.com>,
+ "olaf@aepfle.de" <olaf@aepfle.de>, "apw@canonical.com" <apw@canonical.com>,
+ vkuznets <vkuznets@redhat.com>, "jasowang@redhat.com" <jasowang@redhat.com>,
+ "jackm@mellanox.com" <jackm@mellanox.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Dan
+Thanks for updating this.  But you didn't update the subject line,
+which is really still a little too low-level.  Maybe Lorenzo will fix
+this.  Something like this, maybe?
 
-On 8/6/19 5:46 AM, Dan Carpenter wrote:
-> External E-Mail
->
->
-> On Thu, Jul 25, 2019 at 09:31:34PM +0000, Adham.Abozaeid@microchip.com wrote:
->> From: Adham Abozaeid <adham.abozaeid@microchip.com>
->>
->> remove obtaining_ip from struct wilc_vif
->>
-> How is this "unused"?  It looks like it is used to me.
-The main usage of obtaining_ip was to track the inetadd_notifier status.
-After removing the notifier and ip address timeout timer in the first and second patch,
-the remaining usage became meaningless, and could be removed.
-> regards,
-> dan carpenter
->
->
+  PCI: hv: Avoid use of hv_pci_dev->pci_slot after freeing it
 
+On Fri, Aug 02, 2019 at 10:50:20PM +0000, Dexuan Cui wrote:
+> 
+> The slot must be removed before the pci_dev is removed, otherwise a panic
+> can happen due to use-after-free.
+> 
+> Fixes: 15becc2b56c6 ("PCI: hv: Add hv_pci_remove_slots() when we unload the driver")
+> Signed-off-by: Dexuan Cui <decui@microsoft.com>
+> Cc: stable@vger.kernel.org
+> ---
+> 
+> Changes in v2:
+>   Improved the changelog accordign to the discussion with Bjorn Helgaas:
+> 	  https://lkml.org/lkml/2019/8/1/1173
+> 	  https://lkml.org/lkml/2019/8/2/1559
+> 
+>  drivers/pci/controller/pci-hyperv.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pci/controller/pci-hyperv.c b/drivers/pci/controller/pci-hyperv.c
+> index 6b9cc6e60a..68c611d 100644
+> --- a/drivers/pci/controller/pci-hyperv.c
+> +++ b/drivers/pci/controller/pci-hyperv.c
+> @@ -2757,8 +2757,8 @@ static int hv_pci_remove(struct hv_device *hdev)
+>  		/* Remove the bus from PCI's point of view. */
+>  		pci_lock_rescan_remove();
+>  		pci_stop_root_bus(hbus->pci_bus);
+> -		pci_remove_root_bus(hbus->pci_bus);
+>  		hv_pci_remove_slots(hbus);
+> +		pci_remove_root_bus(hbus->pci_bus);
+>  		pci_unlock_rescan_remove();
+>  		hbus->state = hv_pcibus_removed;
+>  	}
+> -- 
+> 1.8.3.1
+> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
