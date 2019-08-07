@@ -1,77 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9940983F1D
-	for <lists+driverdev-devel@lfdr.de>; Wed,  7 Aug 2019 03:34:42 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 98C7C83FA0
+	for <lists+driverdev-devel@lfdr.de>; Wed,  7 Aug 2019 03:35:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 47BE787EE8;
-	Wed,  7 Aug 2019 01:34:41 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1F1C0221FB;
+	Wed,  7 Aug 2019 01:35:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SgiTxk8sNgT5; Wed,  7 Aug 2019 01:34:40 +0000 (UTC)
+	with ESMTP id f8vVlIlPcHS6; Wed,  7 Aug 2019 01:35:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 88B4C87397;
-	Wed,  7 Aug 2019 01:34:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E7637221B1;
+	Wed,  7 Aug 2019 01:34:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 257961BF389
- for <devel@linuxdriverproject.org>; Wed,  7 Aug 2019 01:34:29 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6B14A1BF389
+ for <devel@linuxdriverproject.org>; Wed,  7 Aug 2019 01:34:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 1F4A386149
- for <devel@linuxdriverproject.org>; Wed,  7 Aug 2019 01:34:29 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 566B722193
+ for <devel@linuxdriverproject.org>; Wed,  7 Aug 2019 01:34:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6pe7uyq7Z8G7 for <devel@linuxdriverproject.org>;
- Wed,  7 Aug 2019 01:34:28 +0000 (UTC)
+ with ESMTP id r85pwSaeT7lW for <devel@linuxdriverproject.org>;
+ Wed,  7 Aug 2019 01:34:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
- [209.85.210.194])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 859BE86130
- for <devel@driverdev.osuosl.org>; Wed,  7 Aug 2019 01:34:28 +0000 (UTC)
-Received: by mail-pf1-f194.google.com with SMTP id m30so42508097pff.8
- for <devel@driverdev.osuosl.org>; Tue, 06 Aug 2019 18:34:28 -0700 (PDT)
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2A7FA221FB
+ for <devel@driverdev.osuosl.org>; Wed,  7 Aug 2019 01:34:30 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id w3so5333794pgt.13
+ for <devel@driverdev.osuosl.org>; Tue, 06 Aug 2019 18:34:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=XDFswRI13oGzit66yuxshlgOj+nOKd4gwJhAdxr7MGM=;
- b=X+oC46vd7xsqyIlCfk9jfvvzV6KsruG8Ld3KbyZxbsoEi8/HO1GbnyS051djmD0t5e
- IHHS/+1UxUZwPEi5YIHD09i1hw+sYQFPMWL5MXVDvXn8jTsvyuss+94LZL/cM8p3bjpq
- d4b4EaFpAv2r0fuq82w4gX6G8xDhtpwliffNpgIRnaMzTN6SuMgZ7nNfOclK8ThivKOZ
- 7xyX43NI19Uw1hhV+vBLTAkRAlmFP4cWwG7rBuQsdFHL+GJXdhmd4ykYSxe8XYPo9VdG
- z0ekXKuUssjo5Om7rTdk/VGJmbSK9hbVth13oi1xkOKAckGir4q2yshriVnE4uLo3fC5
- EABw==
+ bh=uQGOdku7Vl3REPvOJ8nTMNJxS9zoi9IIquO7PYdcYIA=;
+ b=L6PrjOsrS6boUIN/DOymS83vV7YlAKPpT9Xdrfk7ax1OcCgE7PAsCiB8I3wTJde6P0
+ jWSZSVN0MQGqPFzlI9I6nQdqRL1oXS8MVgrMBG2RUC/9SCRR/2JXuxH0Bc1AbFhAasOV
+ xWwwBWKfNUqmzHZ9usEoeFIoZA0TFhsqfa1vxdEBmkB+UHsGh6j98UqgUEfpOkZ8azEw
+ XctfU3/I30ArTXSEYH2C9KRaAbt0v2hqFYnx8WGIkLVSjGqesnYt/lo+Nif4WusFAWAo
+ kwn89YnMjOOYX9/SsgW6zCkgnnE6VjyidKN7erx1BI5f02v6uid8cXohhKk4FwCmi1FI
+ cYgw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=XDFswRI13oGzit66yuxshlgOj+nOKd4gwJhAdxr7MGM=;
- b=EfKmGPRpcc5KZtRr/7cc8fXJdZlJ7Ys7IaAlGLmUPIVPVe/7KCpWHMjIakDvCNcRQG
- tVdOvdeefvQAnwVnyPMSXXpojQZi8g3lqdTVn1k+AcTMpHOEFDDHa7YLA30ZFbNuFEOd
- v4x0IIm3Y3gsl4dTBuxHTiA78U49oG6Gi6RcJTYR7Zm5/Gp2QQRes/oTbBqUH2L6EpmH
- 7jvSdpUIlvaf0fJOo6ZVe0BxwO3RwKWUjl8dX7MBM0CdYZxHT2iSHEXC+oPFyL55tVa5
- 4rtAWMVuA8MNnINF7SvchzC6tj2j5luRYzwsYg96snD5xKJioqT6/Sjmelg0RZCIS3QV
- AUsg==
-X-Gm-Message-State: APjAAAVdMb4aMVi4HaLBmOyVP7cKy/eaStpGbvn/0qUTfLvDSusH1Mxn
- IaZW5QTr6QyhN1LM2OYE7mo=
-X-Google-Smtp-Source: APXvYqyNVjxjb1rRFJ4zL7VZgTd8hKKqHIiZI2K7th6msFTgZFcONMzTsZWyvyMWu34CEbDocoskag==
-X-Received: by 2002:a65:5202:: with SMTP id o2mr5279108pgp.29.1565141668202;
- Tue, 06 Aug 2019 18:34:28 -0700 (PDT)
+ bh=uQGOdku7Vl3REPvOJ8nTMNJxS9zoi9IIquO7PYdcYIA=;
+ b=YjveKNYSEgYfGTEL7eWvRdJPXJd5Vate/OtdSnpfPmgMlEUOgzGzA8uOfNgrUNYPvR
+ WJukjysMJbZC1dsOUMovIh8jIBUaZbO79sQeUh4HU/0pjKaMN8BVizvrNORvXVaOnSPI
+ QtB8DXYH87utH2K0FQt0ZMxsiW+n/1ziF9rj0RhjJYnmfLxsdolb3y/l/S5dRPIfmAX0
+ Nxeyxbg2RVKaVAOymMiAwVbYwnOFrzSVPPAGGp3ZUmXYUp4I7O7QKtQY2PjqeLyajxDB
+ bsLwSY4cHJ9j1SAbtwRrSYYwzZgYNeTd0jXKkLhWsbgkGZLtuB6HhP722kvvG5HFt0sL
+ TCaQ==
+X-Gm-Message-State: APjAAAWHmImrRWF8GcklRcsoNqmR60c5cW0e0jhZXZ045KILUa0uEdxR
+ SCngW5jUqM2WWPE5qRdzwDs=
+X-Google-Smtp-Source: APXvYqyaoKmDNdUJQD7xvZFSQjCmYuVY+zKJwqcOsFMJXKJ76CQxjmhpKXdBBVyw94JCP/lkY4QWYw==
+X-Received: by 2002:aa7:8f2c:: with SMTP id y12mr6988234pfr.38.1565141669837; 
+ Tue, 06 Aug 2019 18:34:29 -0700 (PDT)
 Received: from blueforge.nvidia.com (searspoint.nvidia.com. [216.228.112.21])
  by smtp.gmail.com with ESMTPSA id
- u69sm111740800pgu.77.2019.08.06.18.34.26
+ u69sm111740800pgu.77.2019.08.06.18.34.28
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Tue, 06 Aug 2019 18:34:27 -0700 (PDT)
+ Tue, 06 Aug 2019 18:34:29 -0700 (PDT)
 From: john.hubbard@gmail.com
 X-Google-Original-From: jhubbard@nvidia.com
 To: Andrew Morton <akpm@linux-foundation.org>
-Subject: [PATCH v3 27/41] mm/frame_vector.c: convert put_page() to
+Subject: [PATCH v3 28/41] mm/gup_benchmark.c: convert put_page() to
  put_user_page*()
-Date: Tue,  6 Aug 2019 18:33:26 -0700
-Message-Id: <20190807013340.9706-28-jhubbard@nvidia.com>
+Date: Tue,  6 Aug 2019 18:33:27 -0700
+Message-Id: <20190807013340.9706-29-jhubbard@nvidia.com>
 X-Mailer: git-send-email 2.22.0
 In-Reply-To: <20190807013340.9706-1-jhubbard@nvidia.com>
 References: <20190807013340.9706-1-jhubbard@nvidia.com>
@@ -90,22 +90,25 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: linux-fbdev@vger.kernel.org, Jan Kara <jack@suse.cz>, kvm@vger.kernel.org,
+ "Michael S . Tsirkin" <mst@redhat.com>,
  Dave Hansen <dave.hansen@linux.intel.com>, Dave Chinner <david@fromorbit.com>,
- dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
- sparclinux@vger.kernel.org, ceph-devel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, Keith Busch <keith.busch@intel.com>,
+ linux-mm@kvack.org, sparclinux@vger.kernel.org,
+ Dan Carpenter <dan.carpenter@oracle.com>, ceph-devel@vger.kernel.org,
  devel@driverdev.osuosl.org, rds-devel@oss.oracle.com,
- linux-rdma@vger.kernel.org, x86@kernel.org, amd-gfx@lists.freedesktop.org,
- Christoph Hellwig <hch@infradead.org>, Jason Gunthorpe <jgg@ziepe.ca>,
- Mel Gorman <mgorman@suse.de>, xen-devel@lists.xenproject.org,
+ linux-rdma@vger.kernel.org, x86@kernel.org, YueHaibing <yuehaibing@huawei.com>,
+ amd-gfx@lists.freedesktop.org, Christoph Hellwig <hch@infradead.org>,
+ Jason Gunthorpe <jgg@ziepe.ca>, xen-devel@lists.xenproject.org,
  devel@lists.orangefs.org, linux-media@vger.kernel.org,
- Vlastimil Babka <vbabka@suse.cz>, John Hubbard <jhubbard@nvidia.com>,
- intel-gfx@lists.freedesktop.org, linux-block@vger.kernel.org,
+ John Hubbard <jhubbard@nvidia.com>, intel-gfx@lists.freedesktop.org,
+ linux-block@vger.kernel.org,
  =?UTF-8?q?J=C3=A9r=C3=B4me=20Glisse?= <jglisse@redhat.com>,
  linux-rpi-kernel@lists.infradead.org, Dan Williams <dan.j.williams@intel.com>,
  linux-arm-kernel@lists.infradead.org, linux-nfs@vger.kernel.org,
  netdev@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
  linux-xfs@vger.kernel.org, linux-crypto@vger.kernel.org,
- linux-fsdevel@vger.kernel.org
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-fsdevel@vger.kernel.org,
+ "Kirill A . Shutemov" <kirill.shutemov@linux.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
@@ -120,37 +123,32 @@ release_pages().
 This is part a tree-wide conversion, as described in commit fc1d8e7cca2d
 ("mm: introduce put_user_page*(), placeholder versions").
 
-Cc: Dan Williams <dan.j.williams@intel.com>
-Cc: Jan Kara <jack@suse.cz>
-Cc: Mel Gorman <mgorman@suse.de>
-Cc: Vlastimil Babka <vbabka@suse.cz>
+Reviewed-by: Keith Busch <keith.busch@intel.com>
+
+Cc: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Keith Busch <keith.busch@intel.com>
+Cc: Kirill A. Shutemov <kirill.shutemov@linux.intel.com>
+Cc: Michael S. Tsirkin <mst@redhat.com>
+Cc: YueHaibing <yuehaibing@huawei.com>
 Signed-off-by: John Hubbard <jhubbard@nvidia.com>
 ---
- mm/frame_vector.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ mm/gup_benchmark.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/mm/frame_vector.c b/mm/frame_vector.c
-index c64dca6e27c2..f590badac776 100644
---- a/mm/frame_vector.c
-+++ b/mm/frame_vector.c
-@@ -120,7 +120,6 @@ EXPORT_SYMBOL(get_vaddr_frames);
-  */
- void put_vaddr_frames(struct frame_vector *vec)
- {
--	int i;
- 	struct page **pages;
- 
- 	if (!vec->got_ref)
-@@ -133,8 +132,7 @@ void put_vaddr_frames(struct frame_vector *vec)
- 	 */
- 	if (WARN_ON(IS_ERR(pages)))
- 		goto out;
--	for (i = 0; i < vec->nr_frames; i++)
+diff --git a/mm/gup_benchmark.c b/mm/gup_benchmark.c
+index 7dd602d7f8db..515ac8eeb6ee 100644
+--- a/mm/gup_benchmark.c
++++ b/mm/gup_benchmark.c
+@@ -79,7 +79,7 @@ static int __gup_benchmark_ioctl(unsigned int cmd,
+ 	for (i = 0; i < nr_pages; i++) {
+ 		if (!pages[i])
+ 			break;
 -		put_page(pages[i]);
-+	put_user_pages(pages, vec->nr_frames);
- 	vec->got_ref = false;
- out:
- 	vec->nr_frames = 0;
++		put_user_page(pages[i]);
+ 	}
+ 	end_time = ktime_get();
+ 	gup->put_delta_usec = ktime_us_delta(end_time, start_time);
 -- 
 2.22.0
 
