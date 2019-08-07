@@ -1,52 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DAF8185329
-	for <lists+driverdev-devel@lfdr.de>; Wed,  7 Aug 2019 20:46:20 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B8361853AA
+	for <lists+driverdev-devel@lfdr.de>; Wed,  7 Aug 2019 21:39:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EFDC885EA2;
-	Wed,  7 Aug 2019 18:46:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E5F9E84DB8;
+	Wed,  7 Aug 2019 19:38:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8jt5s92G5leM; Wed,  7 Aug 2019 18:46:17 +0000 (UTC)
+	with ESMTP id vPjzGviYW1ly; Wed,  7 Aug 2019 19:38:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5F5C784FB1;
-	Wed,  7 Aug 2019 18:46:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D0E198357B;
+	Wed,  7 Aug 2019 19:38:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E9FC01BF340
- for <devel@linuxdriverproject.org>; Wed,  7 Aug 2019 18:46:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B7F261BF20D
+ for <devel@linuxdriverproject.org>; Wed,  7 Aug 2019 19:38:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E6EFF8772E
- for <devel@linuxdriverproject.org>; Wed,  7 Aug 2019 18:46:14 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id AD21F87749
+ for <devel@linuxdriverproject.org>; Wed,  7 Aug 2019 19:38:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id D-d71JE27wDr for <devel@linuxdriverproject.org>;
- Wed,  7 Aug 2019 18:46:14 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from soundangle.icu (unknown [69.44.143.23])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8640D87700
- for <devel@linuxdriverproject.org>; Wed,  7 Aug 2019 18:46:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail; d=soundangle.icu; 
+ with ESMTP id B919FjrDiNkr for <devel@linuxdriverproject.org>;
+ Wed,  7 Aug 2019 19:38:53 +0000 (UTC)
+X-Greylist: delayed 00:10:02 by SQLgrey-1.7.6
+Received: from shortcreed.icu (unknown [69.44.143.24])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 0EA5987747
+ for <devel@linuxdriverproject.org>; Wed,  7 Aug 2019 19:38:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail; d=shortcreed.icu; 
  h=From:Date:MIME-Version:To:Subject:Message-ID:Content-Type:Content-Transfer-Encoding;
- i=fate@soundangle.icu; bh=Bx4SoQUNGa1qqa30U9SeyBpqZEI=;
- b=WDR+XRg+pgBxBLzHH+dYmvZGzxp2lnbyjBMR2wL7PUzSeEqGeq2srHzIIVLTj9mhG6F6++N/ea4c
- YmFf4fXy5QJww3gpQzeTq7DDkAF9RpuS5JDBf6nQPSxpYX6ic15XDHeJ+2V5d/39vhbF69pAf7PA
- x6dI/InqhZBHI7i+kNc=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=soundangle.icu;
- b=SjuDbxXupzZBUvhJ1HIrxTg4oQZT4V8JBn/b74G/E0Mj6rcDkbRjjUoFIHsFoP5/HlH/3IJFlr23
- X47S0sqUGhdV6L/3CP8yUoZoRFcAIGmwWOIpt3CtKHLmbIOg9u4XyvZrxmkF2guPPJ1mW3Pg6JlE
- Mnf9BxEOXn9M3AQJcHw=;
-From: " Gregory" <fate@soundangle.icu>
-Date: Wed, 07 Aug 2019 13:32:47 -0500
+ i=think@shortcreed.icu; bh=Bx4SoQUNGa1qqa30U9SeyBpqZEI=;
+ b=heKfGm6IQUqvz5RYGcMvndOCobhUHh/cC6cCc0IAZvUv9EfOOQfx1c0aC/UsAtyz4gzva8pKgP/o
+ b1Y3KFM0SEdAfw7iOYqd9ZdPKXEex1+a2j7hhEHoQ8hr8G3/NirY0qYzecz3PHdzif7A+DO3lIS8
+ avzmyXeQBebJfI0QIF0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=shortcreed.icu;
+ b=bE1YBUzE9l/ByTRF3c4akzIa736jPp/XjPUWQkKtVsBIpOygTETBAHJdwENBE3/VSec6UhTgV/9W
+ lirwP4ak1RsflqfndJ7jjh2E9bXii22Q5DIW/frkUXJtYjLznsIIVGcMmzKP/9b8RGAdTDZFnygO
+ dCOSfDGKuSpRqVwb3ig=;
+From: " Meredith Curtis" <think@shortcreed.icu>
+Date: Wed, 07 Aug 2019 14:24:19 -0500
 MIME-Version: 1.0
 To: <devel@linuxdriverproject.org>
-Subject: Why is this WiFi booster so popular across the World?
-Message-ID: <HvLlZM-wLWDbF0CXT7goNFGP7Pvo0rWrCs55iFmCso8.2ZXBI8ZLHPUoQLQXaWEtrJpdf0Eehe-enzB609ZCH9U@soundangle.icu>
+Subject: Slow internet? Don't miss out on this WiFi booster
+Message-ID: <jSDIJUDfX7ouOYfw9Jf-LpdZzSn3vvoFb7i7V5FHb70.7k7G8rR_s1LJaMpc-dGfc1UECB8AF65eMzZrHP97Czk@shortcreed.icu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
