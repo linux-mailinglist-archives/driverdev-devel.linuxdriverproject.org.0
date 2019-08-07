@@ -1,76 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2C94B83F8A
-	for <lists+driverdev-devel@lfdr.de>; Wed,  7 Aug 2019 03:35:39 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BDA7783F23
+	for <lists+driverdev-devel@lfdr.de>; Wed,  7 Aug 2019 03:34:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id C005922274;
-	Wed,  7 Aug 2019 01:35:37 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1703D81A11;
+	Wed,  7 Aug 2019 01:34:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MDNYL9vWnUfm; Wed,  7 Aug 2019 01:35:37 +0000 (UTC)
+	with ESMTP id WLC5uTRPI1v6; Wed,  7 Aug 2019 01:34:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 43F562267B;
-	Wed,  7 Aug 2019 01:34:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 936FA83616;
+	Wed,  7 Aug 2019 01:34:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CF3EA1BF389
- for <devel@linuxdriverproject.org>; Wed,  7 Aug 2019 01:34:37 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E2A231BF389
+ for <devel@linuxdriverproject.org>; Wed,  7 Aug 2019 01:34:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C8A2186B90
- for <devel@linuxdriverproject.org>; Wed,  7 Aug 2019 01:34:37 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id DAE3B86149
+ for <devel@linuxdriverproject.org>; Wed,  7 Aug 2019 01:34:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id h8HpQdMmzmUk for <devel@linuxdriverproject.org>;
- Wed,  7 Aug 2019 01:34:32 +0000 (UTC)
+ with ESMTP id Us-v9VGdDaRL for <devel@linuxdriverproject.org>;
+ Wed,  7 Aug 2019 01:34:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
- [209.85.215.195])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5429A81389
- for <devel@driverdev.osuosl.org>; Wed,  7 Aug 2019 01:34:25 +0000 (UTC)
-Received: by mail-pg1-f195.google.com with SMTP id z14so5311076pga.5
- for <devel@driverdev.osuosl.org>; Tue, 06 Aug 2019 18:34:25 -0700 (PDT)
+Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
+ [209.85.210.193])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 0850986130
+ for <devel@driverdev.osuosl.org>; Wed,  7 Aug 2019 01:34:27 +0000 (UTC)
+Received: by mail-pf1-f193.google.com with SMTP id f17so38505047pfn.6
+ for <devel@driverdev.osuosl.org>; Tue, 06 Aug 2019 18:34:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=lKIFYbXGeRFczJ7GPuSawhtMV9YIx2+MYUTps7oOTAE=;
- b=rAOpaTjUSe2mFnrvmhnJS8xKHHDfXHpmD+l4Uv9l8gmgovmdA6+wJqXqls9UsmJQBz
- ep3JWBTwWzs2IRGwW41GCxQWL8zWFiSR6uy1gns5wXkfbjCngWqZazp0XVGWvkIrwV7K
- z/fUXqz3btTykEGkC1n2yQAIcvStpMcGGmLYj4sdGhsYd7aWY+K2HM0TRDI35Ihws22z
- bA5Wn1kxkVVUCZDFZU2yV7yqOW35XJ9lVNcA81nOyQ1MEO7P4qKnD+B4GkGo8p2H58WM
- u5trmpjCembtTJLb3EXiFKzyKJTiFQRUI8DgENKYMdkcBAeXgiFZBUUnvfxQ+ER9+IzC
- DzYw==
+ bh=rRiJNzkH0bRoPJKYXoQcsROADD9YH4USeXVLEsmAa1E=;
+ b=ZAOMcyqaxqY643ITrRXBO6KWZEv0BPrbx5tJQbPH7rHQpilJpWZFaQqivaW1dFVk9n
+ HEg+YPfjTMvoOIccb/08xfn9NKdsR6RZrkMFQVLviReHqdXnWL+vc4R4t0ltPC+hbt68
+ VA4jLMoR95CN/y6sAkP8CqnObqsDT6qKWV75L660iR7mpVuhSyRR/4cQnMVcKpvgWZXu
+ ppOap2XKxusMXjt7xI2vgsY0f8KkQAj/hv5RrF9v3DRsqTv3I7ksuzgSRnKVipJSmOcw
+ MASa+XFQrV8LVi8afesATNPV3nj9fqATOCuf2yKuf9L1MVFlsmCg+cL6q2lyis0vQrGP
+ pY7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=lKIFYbXGeRFczJ7GPuSawhtMV9YIx2+MYUTps7oOTAE=;
- b=Kbbph/3sEgLcgzoWP+2qXEWrXkWNhejzmBO+BIEFX9HzY1lWf0kLPCmn1Wa8JYlAWK
- Hf9kz+Zmb3ElseFR5Pl6PYz3R5XBAaECrQKH4D6Ei5JaGiXZhL4Wap6vJbsSKTXHt/4A
- 8xprCwmYk3p7YGhFZ6G+EKCZBqC57pTNOxOmJ0CwxEHxqgPak99uPMU4AEA3lHJHVMBL
- ewxdGt00zF2eoYVcwqSMgEw3BNwrCwFEB4HD8vj7bOcBWdt7nZAFV/ZFwKhd1nPBUEk7
- Msyhz0MZ3r6DugsXLzwjUJk7TAf5m86yefof/Aw3AK7a0ZreQ3jjdg7CqWT1zyXtih1V
- eXDg==
-X-Gm-Message-State: APjAAAV4IE3NxKYHJow4PzFfAJBroUb7mzXUZ4Hvq0TMuWfdD409b8zx
- 8kbE7Eq2vEmkiH7Sv5VdbvA=
-X-Google-Smtp-Source: APXvYqy16jzsEED+wwh8ENkTlGqxRvZ0RoyFpGJNp0G/IOpaWMDvDoKlXk8GjrxTBQC2gP0d6Cw0/w==
-X-Received: by 2002:a65:4205:: with SMTP id c5mr5563561pgq.267.1565141664948; 
- Tue, 06 Aug 2019 18:34:24 -0700 (PDT)
+ bh=rRiJNzkH0bRoPJKYXoQcsROADD9YH4USeXVLEsmAa1E=;
+ b=nbua4wAYbizFBJb483PIgOVDubn/y5v2J2vh4DeI0605cxb/NjoLFgBhYvEeQWI2yH
+ 8NMuwpiU3BOqVNh4xVaOc+7atwNNsqRJ+/BKrD4PZ36HwEeqhaZDs+rQc3mWQThOoCjG
+ FSYxUQ9Zrwy4fzQvid8pMmhClF83gXlGCnFRe4RIhG5P0OuO6vT2rM2RuvkxFMRsr8Cq
+ qF40IEGgAqhYNq84I7PZsbDDxHNuIaNNCE5a1JfmxwDJBT2iY7ASSoqiOpO46aDCNrUS
+ 1RtS6lJu8Ovq/EKO0osNoxHz62hoOt7kjEbg/PPF2UK/qG7fhKIZBDxrEAjkongTGcUD
+ Cdag==
+X-Gm-Message-State: APjAAAWHBX5faJzfRo6y/AI9iyfozH7m33f1eoLoDnxG58x7Kre45rdm
+ oUl6cOQ8EsrXKyvUcXcRxLY=
+X-Google-Smtp-Source: APXvYqz+78FWPbJakrK1ZelWQJSg29Gh/RFKsj1GJIoNKea8JqaCLYMVGyBI1IWh4QFTdizL46lHtA==
+X-Received: by 2002:a65:610a:: with SMTP id z10mr5605978pgu.178.1565141666704; 
+ Tue, 06 Aug 2019 18:34:26 -0700 (PDT)
 Received: from blueforge.nvidia.com (searspoint.nvidia.com. [216.228.112.21])
  by smtp.gmail.com with ESMTPSA id
- u69sm111740800pgu.77.2019.08.06.18.34.23
+ u69sm111740800pgu.77.2019.08.06.18.34.25
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Tue, 06 Aug 2019 18:34:24 -0700 (PDT)
+ Tue, 06 Aug 2019 18:34:26 -0700 (PDT)
 From: john.hubbard@gmail.com
 X-Google-Original-From: jhubbard@nvidia.com
 To: Andrew Morton <akpm@linux-foundation.org>
-Subject: [PATCH v3 25/41] uprobes: convert put_page() to put_user_page*()
-Date: Tue,  6 Aug 2019 18:33:24 -0700
-Message-Id: <20190807013340.9706-26-jhubbard@nvidia.com>
+Subject: [PATCH v3 26/41] futex: convert put_page() to put_user_page*()
+Date: Tue,  6 Aug 2019 18:33:25 -0700
+Message-Id: <20190807013340.9706-27-jhubbard@nvidia.com>
 X-Mailer: git-send-email 2.22.0
 In-Reply-To: <20190807013340.9706-1-jhubbard@nvidia.com>
 References: <20190807013340.9706-1-jhubbard@nvidia.com>
@@ -94,20 +94,18 @@ Cc: linux-fbdev@vger.kernel.org, Jan Kara <jack@suse.cz>, kvm@vger.kernel.org,
  dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
  sparclinux@vger.kernel.org, ceph-devel@vger.kernel.org,
  devel@driverdev.osuosl.org, rds-devel@oss.oracle.com,
- linux-rdma@vger.kernel.org, Jiri Olsa <jolsa@redhat.com>, x86@kernel.org,
- amd-gfx@lists.freedesktop.org, Christoph Hellwig <hch@infradead.org>,
- Jason Gunthorpe <jgg@ziepe.ca>, Ingo Molnar <mingo@redhat.com>,
- xen-devel@lists.xenproject.org, devel@lists.orangefs.org,
- linux-media@vger.kernel.org, John Hubbard <jhubbard@nvidia.com>,
- intel-gfx@lists.freedesktop.org, Arnaldo Carvalho de Melo <acme@kernel.org>,
+ linux-rdma@vger.kernel.org, x86@kernel.org, amd-gfx@lists.freedesktop.org,
+ Christoph Hellwig <hch@infradead.org>, Jason Gunthorpe <jgg@ziepe.ca>,
+ Ingo Molnar <mingo@redhat.com>, xen-devel@lists.xenproject.org,
+ devel@lists.orangefs.org, linux-media@vger.kernel.org,
+ John Hubbard <jhubbard@nvidia.com>, intel-gfx@lists.freedesktop.org,
  linux-block@vger.kernel.org,
  =?UTF-8?q?J=C3=A9r=C3=B4me=20Glisse?= <jglisse@redhat.com>,
- linux-rpi-kernel@lists.infradead.org, Namhyung Kim <namhyung@kernel.org>,
+ linux-rpi-kernel@lists.infradead.org, Darren Hart <dvhart@infradead.org>,
  Dan Williams <dan.j.williams@intel.com>, linux-arm-kernel@lists.infradead.org,
  linux-nfs@vger.kernel.org, netdev@vger.kernel.org,
- LKML <linux-kernel@vger.kernel.org>,
- Alexander Shishkin <alexander.shishkin@linux.intel.com>,
- linux-xfs@vger.kernel.org, linux-crypto@vger.kernel.org,
+ LKML <linux-kernel@vger.kernel.org>, linux-xfs@vger.kernel.org,
+ Thomas Gleixner <tglx@linutronix.de>, linux-crypto@vger.kernel.org,
  linux-fsdevel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -123,48 +121,64 @@ release_pages().
 This is part a tree-wide conversion, as described in commit fc1d8e7cca2d
 ("mm: introduce put_user_page*(), placeholder versions").
 
-Cc: Peter Zijlstra <peterz@infradead.org>
+Cc: Thomas Gleixner <tglx@linutronix.de>
 Cc: Ingo Molnar <mingo@redhat.com>
-Cc: Arnaldo Carvalho de Melo <acme@kernel.org>
-Cc: Alexander Shishkin <alexander.shishkin@linux.intel.com>
-Cc: Jiri Olsa <jolsa@redhat.com>
-Cc: Namhyung Kim <namhyung@kernel.org>
+Cc: Peter Zijlstra <peterz@infradead.org>
+Cc: Darren Hart <dvhart@infradead.org>
 Signed-off-by: John Hubbard <jhubbard@nvidia.com>
 ---
- kernel/events/uprobes.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ kernel/futex.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/kernel/events/uprobes.c b/kernel/events/uprobes.c
-index 84fa00497c49..4a575de8cec8 100644
---- a/kernel/events/uprobes.c
-+++ b/kernel/events/uprobes.c
-@@ -397,7 +397,7 @@ __update_ref_ctr(struct mm_struct *mm, unsigned long vaddr, short d)
- 	ret = 0;
+diff --git a/kernel/futex.c b/kernel/futex.c
+index 6d50728ef2e7..4b4cae58ec57 100644
+--- a/kernel/futex.c
++++ b/kernel/futex.c
+@@ -623,7 +623,7 @@ get_futex_key(u32 __user *uaddr, int fshared, union futex_key *key, enum futex_a
+ 		lock_page(page);
+ 		shmem_swizzled = PageSwapCache(page) || page->mapping;
+ 		unlock_page(page);
+-		put_page(page);
++		put_user_page(page);
+ 
+ 		if (shmem_swizzled)
+ 			goto again;
+@@ -675,7 +675,7 @@ get_futex_key(u32 __user *uaddr, int fshared, union futex_key *key, enum futex_a
+ 
+ 		if (READ_ONCE(page->mapping) != mapping) {
+ 			rcu_read_unlock();
+-			put_page(page);
++			put_user_page(page);
+ 
+ 			goto again;
+ 		}
+@@ -683,7 +683,7 @@ get_futex_key(u32 __user *uaddr, int fshared, union futex_key *key, enum futex_a
+ 		inode = READ_ONCE(mapping->host);
+ 		if (!inode) {
+ 			rcu_read_unlock();
+-			put_page(page);
++			put_user_page(page);
+ 
+ 			goto again;
+ 		}
+@@ -702,7 +702,7 @@ get_futex_key(u32 __user *uaddr, int fshared, union futex_key *key, enum futex_a
+ 		 */
+ 		if (!atomic_inc_not_zero(&inode->i_count)) {
+ 			rcu_read_unlock();
+-			put_page(page);
++			put_user_page(page);
+ 
+ 			goto again;
+ 		}
+@@ -723,7 +723,7 @@ get_futex_key(u32 __user *uaddr, int fshared, union futex_key *key, enum futex_a
+ 	}
+ 
  out:
- 	kunmap_atomic(kaddr);
 -	put_page(page);
 +	put_user_page(page);
- 	return ret;
+ 	return err;
  }
  
-@@ -504,7 +504,7 @@ int uprobe_write_opcode(struct arch_uprobe *auprobe, struct mm_struct *mm,
- 	ret = __replace_page(vma, vaddr, old_page, new_page);
- 	put_page(new_page);
- put_old:
--	put_page(old_page);
-+	put_user_page(old_page);
- 
- 	if (unlikely(ret == -EAGAIN))
- 		goto retry;
-@@ -1981,7 +1981,7 @@ static int is_trap_at_addr(struct mm_struct *mm, unsigned long vaddr)
- 		return result;
- 
- 	copy_from_page(page, vaddr, &opcode, UPROBE_SWBP_INSN_SIZE);
--	put_page(page);
-+	put_user_page(page);
-  out:
- 	/* This needs to return true for any variant of the trap insn */
- 	return is_trap_insn(&opcode);
 -- 
 2.22.0
 
