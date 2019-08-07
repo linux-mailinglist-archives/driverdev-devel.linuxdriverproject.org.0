@@ -1,75 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9056483DF4
-	for <lists+driverdev-devel@lfdr.de>; Wed,  7 Aug 2019 01:45:54 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A0F0783ED7
+	for <lists+driverdev-devel@lfdr.de>; Wed,  7 Aug 2019 03:33:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 35B191FEE0;
-	Tue,  6 Aug 2019 23:45:52 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 41BA586135;
+	Wed,  7 Aug 2019 01:33:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8igehsb1yTcb; Tue,  6 Aug 2019 23:45:51 +0000 (UTC)
+	with ESMTP id ZhS2PQdjcki0; Wed,  7 Aug 2019 01:33:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id A807720389;
-	Tue,  6 Aug 2019 23:45:49 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7DE5386141;
+	Wed,  7 Aug 2019 01:33:49 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 80E611BF33D
- for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 23:45:47 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 010F71BF389
+ for <devel@linuxdriverproject.org>; Wed,  7 Aug 2019 01:33:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 7E3AA866F6
- for <devel@linuxdriverproject.org>; Tue,  6 Aug 2019 23:45:47 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E0F0387D46
+ for <devel@linuxdriverproject.org>; Wed,  7 Aug 2019 01:33:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id i8io0+3vjw9G for <devel@linuxdriverproject.org>;
- Tue,  6 Aug 2019 23:45:46 +0000 (UTC)
+ with ESMTP id PcwtZN3wBMak for <devel@linuxdriverproject.org>;
+ Wed,  7 Aug 2019 01:33:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qk1-f196.google.com (mail-qk1-f196.google.com
- [209.85.222.196])
- by whitealder.osuosl.org (Postfix) with ESMTPS id C7DB78660D
- for <devel@driverdev.osuosl.org>; Tue,  6 Aug 2019 23:45:46 +0000 (UTC)
-Received: by mail-qk1-f196.google.com with SMTP id t8so64391387qkt.1
- for <devel@driverdev.osuosl.org>; Tue, 06 Aug 2019 16:45:46 -0700 (PDT)
+Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
+ [209.85.215.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8155F87397
+ for <devel@driverdev.osuosl.org>; Wed,  7 Aug 2019 01:33:45 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id r26so6586234pgl.10
+ for <devel@driverdev.osuosl.org>; Tue, 06 Aug 2019 18:33:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:subject:date:message-id;
- bh=KwjfUXmkMLwgZFzBGBkcCMuagBT54f1cClmLSvTViy4=;
- b=pOeEa8YD7yD0xUZQ1hrLvbZ09z6x76B+kHNbrFpS14L3PoUF6eMTrzSo0L7N2EIAt1
- ex4NpR3hXOmJhcT4cxvbLBYubBz0QOqaiI3OyIKZq8dyxju2lSRis4VgNYNPtTBkaFwm
- cFTBRJbSoLIa9GhGn+AWNMhudYyppdiEMQQEKXvsJVPpctFB0PjMREVDwheEtgOvQ/9P
- ZETPPi0k25KcwTQOp3EDKsh/MOvamkmpCMYcirnWCweiXcrNCDYHdgV53HHTddtOtXPz
- PmdcyWTGfptCWZ7EGELgLreKebAi6GR/v+2nCUEKme0VBgIObTNz9LwFysJf/sKc94zJ
- bTow==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=bu6Wx/Zv0X2lMGB+6eAGD3f+7w4NebYnh9OyUltbVMY=;
+ b=WKhTC7/NleZ5wl/m99RxFU5GTYlO8sAogUyGNyjS7ZMLv3XHi007FfkG6BVCgU+Bmy
+ T3VegDJda51xUPw2saeUjZlJHGD0jnfFuo5DdnLoehQnEteNq7qwg9WXajoyYejvTwAF
+ GoigQXs4nKu7bkgKcA9QsKT4zEZIWIAY6ncKOFaNuurJf+Gx4aK/CqiHIW05060hKeLP
+ e8wzbRN6qJ6wLpjyt7VLfpX7u/mdl6LjzZdo5r3ud0s1ecFK9gapeD392yrEqXmh0P5o
+ 8Znc5GzzJt7KNlfXrbUJ4HdSTe9uwkLHHr/jg0IQMA/5DhiDN2/jW7ebfHYyXkt/VEdR
+ iveA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id;
- bh=KwjfUXmkMLwgZFzBGBkcCMuagBT54f1cClmLSvTViy4=;
- b=sPPOfjZeU0HtHplRGuAIJ4I9rVTCEKCphMKYPl/y4cxvAzYzB3/ohAHcplJcf0ykXE
- TdRusKhF4HlvXGbRKP3LSdvEw3CqVq9xq8g8ZDN3lRuTDmnMb3HpNUPVPnKYu0a5dlS9
- aMBj3z2zRN9/pY098fuuSoARvR+KMN/Hf63UNnFZqLeSFG41FJjsPMUYM4LTofBIbbBL
- +AyV7sQ0aiVaLIAyV1XGH1Y7HQfzFuN9SvS4Dzjc4pbHhAhtHyUF/AZiu6s3yvmm08a5
- Z6JwH0jSK1j00N8L3nz2iyJ8OZYuukbKc8bOQeJ1LEclZns1jD329t+5uqo3YYdTE2PU
- PaLg==
-X-Gm-Message-State: APjAAAUOjMk1s+3/O4xZjcKlZYswnqb6vx7sp8IOGaPEdsKY3uwYQO2M
- LlBs14y+/cemT2ClfgCCNIA=
-X-Google-Smtp-Source: APXvYqx8Umtbcef0JHFuEG9mSgOJNaXWzjh9roUKT7NrNsVVRAQZJktaCKmTGvpjkbPE1SEBDt93AQ==
-X-Received: by 2002:a37:d95:: with SMTP id 143mr5666435qkn.132.1565135145544; 
- Tue, 06 Aug 2019 16:45:45 -0700 (PDT)
-Received: from cazarin-lenovo.ic.unicamp.br
- (wifi-177-220-85-250.wifi.ic.unicamp.br. [177.220.85.250])
- by smtp.gmail.com with ESMTPSA id k25sm47873987qta.78.2019.08.06.16.45.42
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=bu6Wx/Zv0X2lMGB+6eAGD3f+7w4NebYnh9OyUltbVMY=;
+ b=NjQ9eGWhT4hwTJEFvmwmVBRQzBfCPrK7j8WgxCXd1OulGZI1P/JdZx2jp5CfgUEdVF
+ XUR3FGt6sxuUlG3/rOFAZTb1SscUrK08VY0QAEtyR4zJJsaRUczQN2CFoZzaUg9lJqPX
+ zDqkYE361ob52t2S4/tYIpE83pLz2IVEiQjxPplMS/Khe2ea9AtowfBfu5A4qL8CLSyG
+ uSiq3vRGYolnOwnfALqLP+TBcXHJ2FZYTangLw1uvR0hZC7BPw8RTtEhkdpHYZNTYAgh
+ Spj/El9FUWfHnCkx4miaW/DZC6dz8O5d/SfxBEXaNlEfsz0a/EOHx/tR58DDqE826n4b
+ Kc1Q==
+X-Gm-Message-State: APjAAAXHR/CoF6lwr8Xt2Q85rwRVqQnspirlRWAwZXtQQhiq/HTdEk3K
+ ckjP67Q3xXktK1v8clpU0Bg=
+X-Google-Smtp-Source: APXvYqxMFgcbwFS29vaoaJF5voBWzbNV95Jxnnuvuep7nQF4Lu4A+WYxlXsfFeaV5xyuM4/n9aQBGQ==
+X-Received: by 2002:a17:90a:9f0b:: with SMTP id
+ n11mr5828269pjp.98.1565141624787; 
+ Tue, 06 Aug 2019 18:33:44 -0700 (PDT)
+Received: from blueforge.nvidia.com (searspoint.nvidia.com. [216.228.112.21])
+ by smtp.gmail.com with ESMTPSA id
+ u69sm111740800pgu.77.2019.08.06.18.33.43
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Tue, 06 Aug 2019 16:45:44 -0700 (PDT)
-From: Jose Carlos Cazarin Filho <joseespiriki@gmail.com>
-To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, lkcamp@lists.libreplanetbr.org
-Subject: [PATCH] staging: rtl8723bs: fix brace position in enum declaration
-Date: Tue,  6 Aug 2019 20:45:39 -0300
-Message-Id: <20190806234539.7513-1-joseespiriki@gmail.com>
-X-Mailer: git-send-email 2.17.1
+ Tue, 06 Aug 2019 18:33:44 -0700 (PDT)
+From: john.hubbard@gmail.com
+X-Google-Original-From: jhubbard@nvidia.com
+To: Andrew Morton <akpm@linux-foundation.org>
+Subject: [PATCH v3 00/39] put_user_pages(): miscellaneous call sites
+Date: Tue,  6 Aug 2019 18:32:59 -0700
+Message-Id: <20190807013340.9706-1-jhubbard@nvidia.com>
+X-Mailer: git-send-email 2.22.0
+MIME-Version: 1.0
+X-NVConfidentiality: public
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,44 +87,246 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-MIME-Version: 1.0
+Cc: linux-fbdev@vger.kernel.org, Jan Kara <jack@suse.cz>, kvm@vger.kernel.org,
+ Dave Hansen <dave.hansen@linux.intel.com>, Dave Chinner <david@fromorbit.com>,
+ dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
+ sparclinux@vger.kernel.org, ceph-devel@vger.kernel.org,
+ devel@driverdev.osuosl.org, rds-devel@oss.oracle.com,
+ linux-rdma@vger.kernel.org, x86@kernel.org, amd-gfx@lists.freedesktop.org,
+ Christoph Hellwig <hch@infradead.org>, Jason Gunthorpe <jgg@ziepe.ca>,
+ xen-devel@lists.xenproject.org, devel@lists.orangefs.org,
+ linux-media@vger.kernel.org, John Hubbard <jhubbard@nvidia.com>,
+ intel-gfx@lists.freedesktop.org, linux-block@vger.kernel.org,
+ =?UTF-8?q?J=C3=A9r=C3=B4me=20Glisse?= <jglisse@redhat.com>,
+ linux-rpi-kernel@lists.infradead.org, Dan Williams <dan.j.williams@intel.com>,
+ linux-arm-kernel@lists.infradead.org, linux-nfs@vger.kernel.org,
+ netdev@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
+ linux-xfs@vger.kernel.org, linux-crypto@vger.kernel.org,
+ linux-fsdevel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix two checkpath errors of type:
-"open brace '{' following enum go on the same line"
+From: John Hubbard <jhubbard@nvidia.com>
 
-Signed-off-by: Jose Carlos Cazarin Filho <joseespiriki@gmail.com>
----
- drivers/staging/rtl8723bs/include/rtw_mlme.h | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+Hi,
 
-diff --git a/drivers/staging/rtl8723bs/include/rtw_mlme.h b/drivers/staging/rtl8723bs/include/rtw_mlme.h
-index d3c07d1c3..2223e1f13 100644
---- a/drivers/staging/rtl8723bs/include/rtw_mlme.h
-+++ b/drivers/staging/rtl8723bs/include/rtw_mlme.h
-@@ -81,15 +81,13 @@ enum dot11AuthAlgrthmNum {
- };
- 
- /*  Scan type including active and passive scan. */
--typedef enum _RT_SCAN_TYPE
--{
-+typedef enum _RT_SCAN_TYPE {
- 	SCAN_PASSIVE,
- 	SCAN_ACTIVE,
- 	SCAN_MIX,
- }RT_SCAN_TYPE, *PRT_SCAN_TYPE;
- 
--enum  _BAND
--{
-+enum  _BAND {
- 	GHZ24_50 = 0,
- 	GHZ_50,
- 	GHZ_24,
+This consolidates everything into a "here's what's remaining for Andrew
+to add to his tree (for now)" series:
+
+* The first patch is an updated version of one that is already in the akpm tree.
+
+* The next two patches are already in the akpm tree, included here for
+  completeness.
+
+* The last 5 patches are new to this series, but were previously posted.
+
+Changes since v2:
+
+* Updated patch 1
+    * Review feedback from Ira. (This only affected the code comments.)
+      Added Ira's Reviewed-by.
+
+    * Review feedback: Further collapsed the siw_umem code: siw_free_plist() is
+      gone entirely.
+
+* Added 7 patches:
+    * 3 patches from the "mm/: 3 more put_user_page() conversions" series:
+	"mm/ksm: convert put_page() to put_user_page*()"
+	"mm/mempolicy.c: convert put_page() to put_user_page*()"
+	"mm/mlock.c: convert put_page() to put_user_page*()"
+
+    * "security/tomoyo: convert put_page() to put_user_page*()", now that
+      Tetsuo has ACK'd it for going in via Andrew's tree.
+
+    * "powerpc: convert put_page() to put_user_page*()": no reviews yet.
+
+    * two patches that were already accepted:
+	"drivers/gpu/drm/via: convert put_page() to put_user_page*()"
+	"net/xdp: convert put_page() to put_user_page*()"
+
+* Continued to omit 1 patch ("fs/io_uring.c: convert put_page() to
+  put_user_page*()"), sent separately, because Jens Axboe is putting it into his
+  tree.
+
+* Added Rodrigo Vivi's ACK for the i915 patch.
+* Added Tetsuo Handa's ACK for the security/tomoyo patch
+* Juergen Gross has verified that his Signed-off-by is valid.
+* Added Calum Mackay's Reviewed-by.
+
+Changes since v1:
+
+* 9 out of 34 patches have been reviewed or ack'd or changed:
+    * Picked up Keith's Reviewed-by for patch 26 (gup_benchmark).
+    * Picked up ACKs for patches 3, 10, 15, 16 (ceph, genwqe,
+      staging/vc04_services, drivers/tee).
+
+* Patch 6 (i915): adjusted drivers/gpu/drm/i915/gem/i915_gem_userptr.c to
+  match the latest linux.git: the code has already been fixed in linux.git,
+  as of the latest -rc, to do a set_page_dirty_lock(), instead of
+  set_page_dirty(). So all that it needs now is a conversion to
+  put_user_page(). I've done that in a way (avoiding the changed API call)
+  that allows patch 6 to go up via either Andrew's -mm tree, or the drm
+  tree, just in case. See that patch's comments for slightly more detail.
+
+* Patch 20 (xen): applied Juergen's recommended fix, and speculatively
+  (pending his approval) added his Signed-off-by (also noted in the patch
+  comments).
+
+* Improved patch 31 (NFS) as recommended by Calum Mackay.
+
+* Includes the latest version of patch 1. (Patch 1 has been separately
+  reposted [3], with those updates. And it's included here in order to
+  make this series apply directly to linux.git, as noted in the original
+  cover letter below.)
+
+Cover letter from v1:
+
+These are best characterized as miscellaneous conversions: many (not all)
+call sites that don't involve biovec or iov_iter, nor mm/. It also leaves
+out a few call sites that require some more work. These are mostly pretty
+simple ones.
+
+It's probably best to send all of these via Andrew's -mm tree, assuming
+that there are no significant merge conflicts with ongoing work in other
+trees (which I doubt, given that these are small changes).
+
+These patches apply to the latest linux.git. Patch #1 is also already in
+Andrew's tree, but given the broad non-linux-mm Cc list, I thought it
+would be more convenient to just include that patch here, so that people
+can use linux.git as the base--even though these are probably destined
+for linux-mm.
+
+This is part a tree-wide conversion, as described in commit fc1d8e7cca2d
+("mm: introduce put_user_page*(), placeholder versions"). That commit
+has an extensive description of the problem and the planned steps to
+solve it, but the highlites are:
+
+1) Provide put_user_page*() routines, intended to be used
+for releasing pages that were pinned via get_user_pages*().
+
+2) Convert all of the call sites for get_user_pages*(), to
+invoke put_user_page*(), instead of put_page(). This involves dozens of
+call sites, and will take some time.
+
+3) After (2) is complete, use get_user_pages*() and put_user_page*() to
+implement tracking of these pages. This tracking will be separate from
+the existing struct page refcounting.
+
+4) Use the tracking and identification of these pages, to implement
+special handling (especially in writeback paths) when the pages are
+backed by a filesystem.
+
+And a few references, also from that commit:
+
+[1] https://lwn.net/Articles/774411/ : "DMA and get_user_pages()"
+[2] https://lwn.net/Articles/753027/ : "The Trouble with get_user_pages()"
+
+[3] "mm/gup: add make_dirty arg to put_user_pages_dirty_lock()"
+    https://lore.kernel.org/r/20190804214042.4564-1-jhubbard@nvidia.com
+
+Ira Weiny (1):
+  fs/binfmt_elf: convert put_page() to put_user_page*()
+
+John Hubbard (38):
+  mm/gup: add make_dirty arg to put_user_pages_dirty_lock()
+  net/rds: convert put_page() to put_user_page*()
+  net/ceph: convert put_page() to put_user_page*()
+  x86/kvm: convert put_page() to put_user_page*()
+  drm/etnaviv: convert release_pages() to put_user_pages()
+  drm/i915: convert put_page() to put_user_page*()
+  drm/radeon: convert put_page() to put_user_page*()
+  media/ivtv: convert put_page() to put_user_page*()
+  media/v4l2-core/mm: convert put_page() to put_user_page*()
+  genwqe: convert put_page() to put_user_page*()
+  scif: convert put_page() to put_user_page*()
+  vmci: convert put_page() to put_user_page*()
+  rapidio: convert put_page() to put_user_page*()
+  oradax: convert put_page() to put_user_page*()
+  staging/vc04_services: convert put_page() to put_user_page*()
+  drivers/tee: convert put_page() to put_user_page*()
+  vfio: convert put_page() to put_user_page*()
+  fbdev/pvr2fb: convert put_page() to put_user_page*()
+  fsl_hypervisor: convert put_page() to put_user_page*()
+  xen: convert put_page() to put_user_page*()
+  fs/exec.c: convert put_page() to put_user_page*()
+  orangefs: convert put_page() to put_user_page*()
+  uprobes: convert put_page() to put_user_page*()
+  futex: convert put_page() to put_user_page*()
+  mm/frame_vector.c: convert put_page() to put_user_page*()
+  mm/gup_benchmark.c: convert put_page() to put_user_page*()
+  mm/memory.c: convert put_page() to put_user_page*()
+  mm/madvise.c: convert put_page() to put_user_page*()
+  mm/process_vm_access.c: convert put_page() to put_user_page*()
+  crypt: convert put_page() to put_user_page*()
+  fs/nfs: convert put_page() to put_user_page*()
+  goldfish_pipe: convert put_page() to put_user_page*()
+  kernel/events/core.c: convert put_page() to put_user_page*()
+  security/tomoyo: convert put_page() to put_user_page*()
+  powerpc: convert put_page() to put_user_page*()
+  mm/mlock.c: convert put_page() to put_user_page*()
+  mm/mempolicy.c: convert put_page() to put_user_page*()
+  mm/ksm: convert put_page() to put_user_page*()
+
+ arch/powerpc/kvm/book3s_64_mmu_hv.c           |   4 +-
+ arch/powerpc/kvm/book3s_64_mmu_radix.c        |  19 ++-
+ arch/powerpc/kvm/e500_mmu.c                   |   3 +-
+ arch/powerpc/mm/book3s64/iommu_api.c          |  11 +-
+ arch/x86/kvm/svm.c                            |   4 +-
+ crypto/af_alg.c                               |   7 +-
+ drivers/gpu/drm/etnaviv/etnaviv_gem.c         |   4 +-
+ drivers/gpu/drm/i915/gem/i915_gem_userptr.c   |   6 +-
+ drivers/gpu/drm/radeon/radeon_ttm.c           |   2 +-
+ drivers/infiniband/core/umem.c                |   5 +-
+ drivers/infiniband/hw/hfi1/user_pages.c       |   5 +-
+ drivers/infiniband/hw/qib/qib_user_pages.c    |  13 +--
+ drivers/infiniband/hw/usnic/usnic_uiom.c      |   5 +-
+ drivers/infiniband/sw/siw/siw_mem.c           |  19 +--
+ drivers/media/pci/ivtv/ivtv-udma.c            |  14 +--
+ drivers/media/pci/ivtv/ivtv-yuv.c             |  11 +-
+ drivers/media/v4l2-core/videobuf-dma-sg.c     |   3 +-
+ drivers/misc/genwqe/card_utils.c              |  17 +--
+ drivers/misc/mic/scif/scif_rma.c              |  17 ++-
+ drivers/misc/vmw_vmci/vmci_context.c          |   2 +-
+ drivers/misc/vmw_vmci/vmci_queue_pair.c       |  11 +-
+ drivers/platform/goldfish/goldfish_pipe.c     |   9 +-
+ drivers/rapidio/devices/rio_mport_cdev.c      |   9 +-
+ drivers/sbus/char/oradax.c                    |   2 +-
+ .../interface/vchiq_arm/vchiq_2835_arm.c      |  10 +-
+ drivers/tee/tee_shm.c                         |  10 +-
+ drivers/vfio/vfio_iommu_type1.c               |   8 +-
+ drivers/video/fbdev/pvr2fb.c                  |   3 +-
+ drivers/virt/fsl_hypervisor.c                 |   7 +-
+ drivers/xen/privcmd.c                         |  32 ++---
+ fs/binfmt_elf.c                               |   2 +-
+ fs/binfmt_elf_fdpic.c                         |   2 +-
+ fs/exec.c                                     |   2 +-
+ fs/nfs/direct.c                               |  11 +-
+ fs/orangefs/orangefs-bufmap.c                 |   7 +-
+ include/linux/mm.h                            |   5 +-
+ kernel/events/core.c                          |   2 +-
+ kernel/events/uprobes.c                       |   6 +-
+ kernel/futex.c                                |  10 +-
+ mm/frame_vector.c                             |   4 +-
+ mm/gup.c                                      | 109 +++++++-----------
+ mm/gup_benchmark.c                            |   2 +-
+ mm/ksm.c                                      |  14 +--
+ mm/madvise.c                                  |   2 +-
+ mm/memory.c                                   |   2 +-
+ mm/mempolicy.c                                |   2 +-
+ mm/mlock.c                                    |   6 +-
+ mm/process_vm_access.c                        |  18 +--
+ net/ceph/pagevec.c                            |   8 +-
+ net/rds/info.c                                |   5 +-
+ net/rds/message.c                             |   2 +-
+ net/rds/rdma.c                                |  15 ++-
+ security/tomoyo/domain.c                      |   2 +-
+ virt/kvm/kvm_main.c                           |   4 +-
+ 54 files changed, 191 insertions(+), 323 deletions(-)
+
 -- 
-2.17.1
+2.22.0
 
 _______________________________________________
 devel mailing list
