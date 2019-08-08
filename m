@@ -1,102 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 00E3986179
-	for <lists+driverdev-devel@lfdr.de>; Thu,  8 Aug 2019 14:17:29 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4E8B886440
+	for <lists+driverdev-devel@lfdr.de>; Thu,  8 Aug 2019 16:24:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9899987430;
-	Thu,  8 Aug 2019 12:17:26 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7CABF20499;
+	Thu,  8 Aug 2019 14:24:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MMcfdSDTIr-Q; Thu,  8 Aug 2019 12:17:26 +0000 (UTC)
+	with ESMTP id NWVr23H9xwhu; Thu,  8 Aug 2019 14:24:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 723AA86A40;
-	Thu,  8 Aug 2019 12:17:25 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 644AA20427;
+	Thu,  8 Aug 2019 14:23:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 427331BF3FD
- for <devel@linuxdriverproject.org>; Thu,  8 Aug 2019 12:17:23 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6AC001BF5DF
+ for <devel@linuxdriverproject.org>; Thu,  8 Aug 2019 14:23:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3CC8A880D4
- for <devel@linuxdriverproject.org>; Thu,  8 Aug 2019 12:17:23 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 67DF520340
+ for <devel@linuxdriverproject.org>; Thu,  8 Aug 2019 14:23:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iNKhZ3VOtJ6a for <devel@linuxdriverproject.org>;
- Thu,  8 Aug 2019 12:17:22 +0000 (UTC)
+ with ESMTP id IFCCBKgGwstu for <devel@linuxdriverproject.org>;
+ Thu,  8 Aug 2019 14:23:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by hemlock.osuosl.org (Postfix) with ESMTPS id BB9FD87D9C
- for <devel@driverdev.osuosl.org>; Thu,  8 Aug 2019 12:17:22 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x78CDxPF135037;
- Thu, 8 Aug 2019 12:17:20 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=vMrJ91GMO1CD+aMStdBznA5LKGeM9s5PCFnZKiLM6Zg=;
- b=fvtvz7yl7UyjrCq3AXhqEIjYIs0GQKXpOb2BoucaemYDTCVbTnN2E5xz6KdxuDQEl60G
- mMbKhKN/hnWOHtrM0gHaFA6Wd3vAwWqyytfIbTn102Bd6HFUav2CNwIbmjPl4ajCmkBX
- 7VrR3E6rZWg5TWA1qZuPBG2XkmQrxwehoc4pwe01SuGIPtMEhv6Sv2wJ/xOPfS/Lwj/N
- 3Ipuc73oAsf4pSJittoeCi6NSDGdsvNv6aFROpPqzA9C/HD0T1iO1VkxeQr/zeKccBxp
- 8F0W99uZ5+mkDSYY18Mqbc7XA0AMmzunU8DOlt6fQEHd9ORDj5V/PdPwBeLc+idppIRu yQ== 
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2018-07-02;
- bh=vMrJ91GMO1CD+aMStdBznA5LKGeM9s5PCFnZKiLM6Zg=;
- b=JT9U3BQYkriAIpYP1ep4QamFrVZ8BD+tt9efJ8BtElm+m4Bv/Jz8zOr7r/AvTrYNH78d
- PNKOn/smvSXDE2/uB9pbTOfijXsSGPBPhYSOrU0PvttXk9DHo00hyNehlb2eEmYWeXaJ
- BwpK0hgLLSeOKmPLk2Gam+GvXp6mnMXomt6bxmb1dWfmMEIp1yvCTAzXUnDM7bnP+LhE
- XcMMfE0PmV2HyLBT6GPz8O08QoO9IFIDjVAxJEAMwjsSdrhYo8OX0TPh8c3ew5tJbnb9
- 2x3SnaF4sMigMcu2NOuMxSzgWvF1DQKjGvLsqWvOfDAu2eSwhHy2t1XEWhTHIJNzlfiz JA== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2120.oracle.com with ESMTP id 2u8hgp0srj-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 08 Aug 2019 12:17:20 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x78CChev069593;
- Thu, 8 Aug 2019 12:17:19 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by aserp3030.oracle.com with ESMTP id 2u75bxked5-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 08 Aug 2019 12:17:19 +0000
-Received: from abhmp0003.oracle.com (abhmp0003.oracle.com [141.146.116.9])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x78CHI0r001460;
- Thu, 8 Aug 2019 12:17:18 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 08 Aug 2019 05:17:17 -0700
-Date: Thu, 8 Aug 2019 15:17:08 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Nishka Dasgupta <nishkadg.linux@gmail.com>
-Subject: Re: [PATCH 10/10] staging: rtl8712: r8712_xmit_classifier(): Change
- return values and type
-Message-ID: <20190808121708.GP1974@kadam>
-References: <20190808064012.12661-1-nishkadg.linux@gmail.com>
- <20190808064012.12661-10-nishkadg.linux@gmail.com>
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by silver.osuosl.org (Postfix) with ESMTPS id BF98A20018
+ for <devel@driverdev.osuosl.org>; Thu,  8 Aug 2019 14:23:56 +0000 (UTC)
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 08 Aug 2019 07:23:56 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,361,1559545200"; d="scan'208";a="350187610"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga005.jf.intel.com with ESMTP; 08 Aug 2019 07:23:54 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1hvjKc-0009E8-1b; Thu, 08 Aug 2019 22:23:54 +0800
+Date: Thu, 8 Aug 2019 22:23:40 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Gabriel Beauchamp <beauchampgabriel@gmail.com>
+Subject: Re: [PATCH v3] Staging: most: fix coding style issues
+Message-ID: <201908082224.xkj3s0FR%lkp@intel.com>
+References: <20190630165604.2452-1-beauchampgabriel@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190808064012.12661-10-nishkadg.linux@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9342
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1906280000 definitions=main-1908080129
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9342
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1906280000
- definitions=main-1908080129
+In-Reply-To: <20190630165604.2452-1-beauchampgabriel@gmail.com>
+X-Patchwork-Hint: ignore
+User-Agent: NeoMutt/20170113 (1.7.2)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,20 +67,65 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, florian.c.schilhabel@googlemail.com,
- gregkh@linuxfoundation.org, larry.finger@lwfinger.net
+Cc: devel@driverdev.osuosl.org, gustavo@embeddedor.com,
+ gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+ Gabriel Beauchamp <beauchampgabriel@gmail.com>, kbuild-all@01.org,
+ christian.gromm@microchip.com, joe@perches.com, colin.king@canonical.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Looks good to me.
+Hi Gabriel,
 
-Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
+Thank you for the patch! Perhaps something to improve:
 
-regards,
-dan carpenter
+[auto build test WARNING on staging/staging-testing]
+[cannot apply to v5.3-rc3 next-20190808]
+[if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
 
+url:    https://github.com/0day-ci/linux/commits/Gabriel-Beauchamp/Staging-most-fix-coding-style-issues/20190701-203804
+reproduce:
+        # apt-get install sparse
+        # sparse version: v0.6.1-rc1-7-g2b96cd8-dirty
+        make ARCH=x86_64 allmodconfig
+        make C=1 CF='-fdiagnostic-prefix -D__CHECK_ENDIAN__'
+
+If you fix the issue, kindly add following tag
+Reported-by: kbuild test robot <lkp@intel.com>
+
+
+sparse warnings: (new ones prefixed by >>)
+
+>> drivers/staging/most/core.c:308:30: sparse: sparse: incorrect type in assignment (different modifiers) @@    expected char *type @@    got char const *char *type @@
+>> drivers/staging/most/core.c:308:30: sparse:    expected char *type
+>> drivers/staging/most/core.c:308:30: sparse:    got char const *const name
+
+vim +308 drivers/staging/most/core.c
+
+   296	
+   297	static ssize_t set_datatype_show(struct device *dev,
+   298					 struct device_attribute *attr,
+   299					 char *buf)
+   300	{
+   301		int i;
+   302		char *type = "unconfigured\n";
+   303	
+   304		struct most_channel *c = to_channel(dev);
+   305	
+   306		for (i = 0; i < ARRAY_SIZE(ch_data_type); i++) {
+   307			if (c->cfg.data_type & ch_data_type[i].most_ch_data_type) {
+ > 308				type = ch_data_type[i].name;
+   309				break;
+   310			}
+   311		}
+   312		return snprintf(buf, PAGE_SIZE, "%s", type);
+   313	}
+   314	
+
+---
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
