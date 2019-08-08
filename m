@@ -1,52 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 86A1C85901
-	for <lists+driverdev-devel@lfdr.de>; Thu,  8 Aug 2019 06:24:34 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CD968858F8
+	for <lists+driverdev-devel@lfdr.de>; Thu,  8 Aug 2019 06:23:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 26452881D9;
-	Thu,  8 Aug 2019 04:24:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C064386302;
+	Thu,  8 Aug 2019 04:23:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id I-OyN9iVeiu6; Thu,  8 Aug 2019 04:24:21 +0000 (UTC)
+	with ESMTP id xfBQ0-M3Rhgm; Thu,  8 Aug 2019 04:23:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7C9008624A;
-	Thu,  8 Aug 2019 04:24:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7B1AB86142;
+	Thu,  8 Aug 2019 04:23:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id AAADE1BF4E7
- for <devel@linuxdriverproject.org>; Thu,  8 Aug 2019 04:24:19 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0256D1BF4E7
+ for <devel@linuxdriverproject.org>; Thu,  8 Aug 2019 04:23:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A6C8E87522
- for <devel@linuxdriverproject.org>; Thu,  8 Aug 2019 04:24:19 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id F3BB2866A3
+ for <devel@linuxdriverproject.org>; Thu,  8 Aug 2019 04:23:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ljmpY+Z3QCVc for <devel@linuxdriverproject.org>;
- Thu,  8 Aug 2019 04:24:19 +0000 (UTC)
+ with ESMTP id 7NRmuPTrimJ2 for <devel@linuxdriverproject.org>;
+ Thu,  8 Aug 2019 04:23:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from swearnight.icu (unknown [69.44.143.37])
- by hemlock.osuosl.org (Postfix) with ESMTP id 36DDC8624A
- for <devel@driverdev.osuosl.org>; Thu,  8 Aug 2019 04:24:19 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C739A81E80
+ for <devel@linuxdriverproject.org>; Thu,  8 Aug 2019 04:23:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail; d=swearnight.icu; 
  h=From:Date:MIME-Version:To:Subject:Message-ID:Content-Type:Content-Transfer-Encoding;
- i=fate@swearnight.icu; bh=Bx4SoQUNGa1qqa30U9SeyBpqZEI=;
- b=e9TFMMdIPkUT5xiLj1y7USWFn1FRD8jcPpoCL65hfYKT1nss65l1c/RCMnTmNBLfk9FfghPH13YK
- XzF2/OFAxoB7QKDO6yFdaF/Z5mPAB1rUabIyUzWBZkWYEhsNrhqcDeVvUcekSNs50rjZADKU8CAV
- i13sx8C3EFaMlxYjFAQ=
+ i=think@swearnight.icu; bh=Bx4SoQUNGa1qqa30U9SeyBpqZEI=;
+ b=o5Bp9Wr2bDXql7hbWe3QISrN2FJtZVMewaVJ2+JFKpJZbXjDmdG1IOEDQidE21X0RBqm43qMJC85
+ XPbGOIixa8hhV7AEIvkFPDrPY7/J/bNyLK3KWVVn/AnItVR89LXheh7pRwMXiH1vJ4v+ug4ywT+N
+ MnLbMJXx5w2KTf6yves=
 DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=swearnight.icu;
- b=ntRSKu2t1dIz6p41+7VgSVlJ5ld2u0s0oI1cPbE2LObd9gx2ELNqbiZYk5XpAHUTpfseTnISKvvU
- 6mnp4lwlt+eUykycujBUzw/37uwKjvB82orcY5HkOnreM9WvbBpgX90qHrYtUXWpsxS6Qvrsdfar
- u0mBDEFoCCGFcSP3esY=;
-From: " Justin" <fate@swearnight.icu>
-Date: Wed, 07 Aug 2019 23:07:49 -0500
+ b=xtGY7Y2Qt2xLGeTYZAglW18vjoG87DT83P30rZjj77r1a4x8qHapbqoM6DL7r8i4M7q/aktSS/4/
+ EsONRtXEbkA7VDefQUrwhrGm5s3LA37p+z8axPrqV0mv7E/eaRlz3d8IENmx5OgWjvH208BnB+pP
+ 7FrLdCQbs1zlIoBHqO4=;
+From: " Thelma Jennings" <think@swearnight.icu>
+Date: Wed, 07 Aug 2019 23:08:11 -0500
 MIME-Version: 1.0
-To: <devel@driverdev.osuosl.org>
-Subject: Why is this WiFi booster so popular across the World?
-Message-ID: <akxcHwtpNseHeWRTIwrBwjAfQUy6Epvpo1OH0QW2niQ.BeHFouaqFoiMUGWrGQSd186npAOrlD28NYrbEj01KkE@swearnight.icu>
+To: <devel@linuxdriverproject.org>
+Subject: Slow internet? Don't miss out on this WiFi booster
+Message-ID: <iVq2PFpg06bWGVZL2ZVuYKUw6JwtxNQI0N8s2bmICGY.btXDZqOdQgLDkEb8IoDhrIIGx1NMduTbwVnwTrZhyFk@swearnight.icu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
