@@ -1,76 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8FA1485AED
-	for <lists+driverdev-devel@lfdr.de>; Thu,  8 Aug 2019 08:40:35 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 876F485AEE
+	for <lists+driverdev-devel@lfdr.de>; Thu,  8 Aug 2019 08:40:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 21D35881D0;
-	Thu,  8 Aug 2019 06:40:33 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D663C204B5;
+	Thu,  8 Aug 2019 06:40:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id t7KU8KaMS1Wg; Thu,  8 Aug 2019 06:40:32 +0000 (UTC)
+	with ESMTP id eAKg6mADanHP; Thu,  8 Aug 2019 06:40:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 42ADB8817B;
-	Thu,  8 Aug 2019 06:40:32 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 725D320452;
+	Thu,  8 Aug 2019 06:40:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C3B421BF83A
- for <devel@linuxdriverproject.org>; Thu,  8 Aug 2019 06:40:27 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id AFAFC1BF83A
+ for <devel@linuxdriverproject.org>; Thu,  8 Aug 2019 06:40:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BD07F8817B
- for <devel@linuxdriverproject.org>; Thu,  8 Aug 2019 06:40:27 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id AA4E920452
+ for <devel@linuxdriverproject.org>; Thu,  8 Aug 2019 06:40:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Uk72Jh-5NHvP for <devel@linuxdriverproject.org>;
- Thu,  8 Aug 2019 06:40:27 +0000 (UTC)
+ with ESMTP id iOxlc598UpLf for <devel@linuxdriverproject.org>;
+ Thu,  8 Aug 2019 06:40:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f193.google.com (mail-pl1-f193.google.com
- [209.85.214.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 20F78880C7
- for <devel@driverdev.osuosl.org>; Thu,  8 Aug 2019 06:40:27 +0000 (UTC)
-Received: by mail-pl1-f193.google.com with SMTP id b3so43142695plr.4
- for <devel@driverdev.osuosl.org>; Wed, 07 Aug 2019 23:40:27 -0700 (PDT)
+Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
+ [209.85.215.193])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2B83920446
+ for <devel@driverdev.osuosl.org>; Thu,  8 Aug 2019 06:40:30 +0000 (UTC)
+Received: by mail-pg1-f193.google.com with SMTP id x15so33157845pgg.8
+ for <devel@driverdev.osuosl.org>; Wed, 07 Aug 2019 23:40:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=vyn9XHJszlx+sDuCxrNK2kdn/BHbly2V+4YFdV/QH3c=;
- b=i0Xite479iGUz4CnV12PTjQZOBN6kjo+Nle/lo3kd9k05UOF1qiKFfV3yNOhFhAhsD
- bkmciFp/1p8IaisUQAJWOKScNG3QTwsjMOpgtzWBHSel5pBMLSBH6GOPE6tvRBow8YRD
- OOtq5/c5pcv0lswRR3NC8lMnzXF7egxI8P7EnlWDZ2tqYwrry3D/2fpGN3Uv41HBDYwp
- pc43Re+NB3h/b/77Vs+sxbjoXFuGXEGzk0A4kx55X8vei4fpTGvAgWLw6clhHL8d7C1p
- xUhiPcjObJGrl1F4k0CK8TxzGo1V1lk44jMYJRkcSN09tPooJinjsFvTcS5iNKpp3UQy
- +AVw==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=W1CFx59IYJOVq1zbkjfg+1CyzPkO3w4y2x609JhtX8k=;
+ b=JINPfDBHY7PN+gUSPYhvCXWyYn3EXelFxcMyZTrfwIBwxCjwscJFo/Hm/WOq8MpFDd
+ 1F+nGqqiNRQjPoA1/Bpyab/AWCJCwwOW+TKBQhbYed/Ksvc8stfDrQNFVWOkuHOh2wpm
+ zaenRScdPtmz8Z7qWthhz+OBMP46c8aaKzfZ10lhH+OhgtufVeQWaLTBpj2rwm6iB35W
+ iOGeeog+hsEpSKWCV2DWu+pwadRqVnDivMqZij0k/Jpk05fppzWUrLA+MSDfUxczrHCo
+ X/X/KE1bp/RO6oIhhEv1LtNSQ5vgRR0Dm08ti9+VBT6uxGeRLHUKuC5m/yNVgMTGmqSQ
+ 10Fw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=vyn9XHJszlx+sDuCxrNK2kdn/BHbly2V+4YFdV/QH3c=;
- b=MEou3g/G0+YH3RT8UKIIwEA6NiM8Wd5JysuxyIzJiY46i/d+/o1e5t90vyLctXvnFS
- jbrQfI86z+fWJayb6k0lJXfFTqZDeLwfzETjpNPy6RBdZXewyG+pKCg2KxLMjBZWf0kR
- iSg6wfDzPAOsGXp9DGJE7KYiDqyHQV4QL/FPziJHBR/ZroxlEOHcuEjqN4gs6N8h0LH0
- /MkEps/lhq2LvL/IQnkUNJBonUetHNyLQOMuU+jqjGtcMwzX8+j6mGXCFG3JMwCMfSYN
- dPQyxpNHRKS/LX95iQGqgdiwB3Blz0sCfA+trzZnCiBmNP17RLABKEmJPUVgu2blHYUz
- owlw==
-X-Gm-Message-State: APjAAAXrrrt07z87kGHl7sLhq49Ax3f6AGvsxkLYbCQxElj+Uxqf7RdQ
- ol9I7wolLUJwaUD+0VPqln4=
-X-Google-Smtp-Source: APXvYqxoBJNqk2EyiZZyjVAcRLLEOi1pR6NkX+wdyBli6VYOyBPCWau4HA7rBvi9n+dA22Iqz6j0aQ==
-X-Received: by 2002:a17:902:306:: with SMTP id 6mr1806046pld.86.1565246426788; 
- Wed, 07 Aug 2019 23:40:26 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=W1CFx59IYJOVq1zbkjfg+1CyzPkO3w4y2x609JhtX8k=;
+ b=emKOPI193jJjkMoOKiMHedztxMNY587gataoYLCWF9aduasF/bQZSFLvRKuxgLnxqb
+ 37iaia9VnnPZLphnQ4MjnzVIx4kamHHo0tlb4DwtVMBXkVMD8uVMJDbxi7JxkME94BOM
+ RuaNpabYWg40aLruQ2+NsTKlBJTA/AjHK5iRcX8J9EUqeYe6qkFoJRfeFzy1A1yx35T4
+ fjf53N5XyH+m3XPmeRTAKW8l9vssGLCl8wkYsVRyRBXjGiLNXqO+Ke1kDxsU3q0gNBeS
+ dMNLUgMREAjxqHjipFY8sWQJreChcFrcHWvpiBKN0EhKMuMgqSFznQpQJI+iaVE+k7JX
+ iVgw==
+X-Gm-Message-State: APjAAAVTpgmYy0X8vmPaH/j1iGIjuID/CYcxW+k6iz/zBNR1MK8WNev6
+ eX6hz6nqpUy2Rw3ESwSHCQs=
+X-Google-Smtp-Source: APXvYqxiR1OvKoMYWvclyyRFNArahX2gpY7Mssdv4jhoPL1wqZJCr/OoRi88GqEqKD3ILGjPfEV93Q==
+X-Received: by 2002:a17:90a:360b:: with SMTP id
+ s11mr2376529pjb.51.1565246429704; 
+ Wed, 07 Aug 2019 23:40:29 -0700 (PDT)
 Received: from localhost.localdomain ([122.163.44.6])
- by smtp.gmail.com with ESMTPSA id m101sm1213950pjb.7.2019.08.07.23.40.23
+ by smtp.gmail.com with ESMTPSA id m101sm1213950pjb.7.2019.08.07.23.40.27
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Wed, 07 Aug 2019 23:40:26 -0700 (PDT)
+ Wed, 07 Aug 2019 23:40:29 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: larry.finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
  gregkh@linuxfoundation.org, devel@driverdev.osuosl.org
-Subject: [PATCH 01/10] staging: rtl8712: amsdu_to_msdu(): Change return type
-Date: Thu,  8 Aug 2019 12:10:03 +0530
-Message-Id: <20190808064012.12661-1-nishkadg.linux@gmail.com>
+Subject: [PATCH 02/10] staging: rtl8712: recv_indicatepkt_reorder(): Change
+ return values
+Date: Thu,  8 Aug 2019 12:10:04 +0530
+Message-Id: <20190808064012.12661-2-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
+In-Reply-To: <20190808064012.12661-1-nishkadg.linux@gmail.com>
+References: <20190808064012.12661-1-nishkadg.linux@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -90,60 +94,66 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change return type of amsdu_to_msdu from int to void as it always
-returns _SUCCESS. Remove return statement as well.
-As this return value was never anything other than _SUCCESS, remove the
-if-branch that depends on the return value not being _SUCCESS.
-Remove local variable that was only used in the now-removed if-branch
-Modify call site to call the function amsdu_to_msdu without expecting
-a return value.
+Change return values of recv_indicatepkt_reorder from _SUCCESS/_FAIL to
+0/-ENOMEM and -EINVAL.
+Within recv_indicatepkt_reorder, modify comparison to true and use the
+respective value directly.
+Modify call site of recv_indicatepkt_reorder to check for the new return
+values.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/rtl8712/rtl8712_recv.c | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+ drivers/staging/rtl8712/rtl8712_recv.c | 13 ++++++-------
+ 1 file changed, 6 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
-index eb9a4a5ed740..42372e7e76ac 100644
+index 42372e7e76ac..3950b2424b64 100644
 --- a/drivers/staging/rtl8712/rtl8712_recv.c
 +++ b/drivers/staging/rtl8712/rtl8712_recv.c
-@@ -318,7 +318,7 @@ union recv_frame *r8712_recvframe_chk_defrag(struct _adapter *padapter,
- 	return prtnframe;
- }
- 
--static int amsdu_to_msdu(struct _adapter *padapter, union recv_frame *prframe)
-+static void amsdu_to_msdu(struct _adapter *padapter, union recv_frame *prframe)
- {
- 	int	a_len, padding_len;
- 	u16	eth_type, nSubframe_Length;
-@@ -416,7 +416,6 @@ static int amsdu_to_msdu(struct _adapter *padapter, union recv_frame *prframe)
- exit:
- 	prframe->u.hdr.len = 0;
- 	r8712_free_recvframe(prframe, pfree_recv_queue);
--	return _SUCCESS;
- }
- 
- void r8712_rxcmd_event_hdl(struct _adapter *padapter, void *prxcmdbuf)
-@@ -506,7 +505,6 @@ int r8712_recv_indicatepkts_in_order(struct _adapter *padapter,
- 	union recv_frame *prframe;
- 	struct rx_pkt_attrib *pattrib;
- 	int bPktInBuf = false;
--	struct recv_priv *precvpriv = &padapter->recvpriv;
- 	struct  __queue *ppending_recvframe_queue =
- 			 &preorder_ctrl->pending_recvframe_queue;
- 
-@@ -543,10 +541,7 @@ int r8712_recv_indicatepkts_in_order(struct _adapter *padapter,
- 							       prframe);
- 				}
- 			} else if (pattrib->amsdu == 1) {
--				if (amsdu_to_msdu(padapter, prframe) !=
--				    _SUCCESS)
--					r8712_free_recvframe(prframe,
--						   &precvpriv->free_recv_queue);
-+				amsdu_to_msdu(padapter, prframe);
+@@ -569,9 +569,9 @@ static int recv_indicatepkt_reorder(struct _adapter *padapter,
+ 			if (!padapter->driver_stopped &&
+ 			    !padapter->surprise_removed) {
+ 				r8712_recv_indicatepkt(padapter, prframe);
+-				return _SUCCESS;
++				return 0;
+ 			} else {
+-				return _FAIL;
++				return -EINVAL;
  			}
- 			/* Update local variables. */
- 			bPktInBuf = false;
+ 		}
+ 	}
+@@ -593,8 +593,7 @@ static int recv_indicatepkt_reorder(struct _adapter *padapter,
+ 	 * 2. All packets with SeqNum larger than or equal to
+ 	 * WinStart => Buffer it.
+ 	 */
+-	if (r8712_recv_indicatepkts_in_order(padapter, preorder_ctrl, false) ==
+-	    true) {
++	if (r8712_recv_indicatepkts_in_order(padapter, preorder_ctrl, false)) {
+ 		mod_timer(&preorder_ctrl->reordering_ctrl_timer,
+ 			  jiffies + msecs_to_jiffies(REORDER_WAIT_TIME));
+ 		spin_unlock_irqrestore(&ppending_recvframe_queue->lock, irql);
+@@ -602,10 +601,10 @@ static int recv_indicatepkt_reorder(struct _adapter *padapter,
+ 		spin_unlock_irqrestore(&ppending_recvframe_queue->lock, irql);
+ 		del_timer(&preorder_ctrl->reordering_ctrl_timer);
+ 	}
+-	return _SUCCESS;
++	return 0;
+ _err_exit:
+ 	spin_unlock_irqrestore(&ppending_recvframe_queue->lock, irql);
+-	return _FAIL;
++	return -ENOMEM;
+ }
+ 
+ void r8712_reordering_ctrl_timeout_handler(void *pcontext)
+@@ -631,7 +630,7 @@ static int r8712_process_recv_indicatepkts(struct _adapter *padapter,
+ 	struct ht_priv	*phtpriv = &pmlmepriv->htpriv;
+ 
+ 	if (phtpriv->ht_option == 1) { /*B/G/N Mode*/
+-		if (recv_indicatepkt_reorder(padapter, prframe) != _SUCCESS) {
++		if (recv_indicatepkt_reorder(padapter, prframe)) {
+ 			/* including perform A-MPDU Rx Ordering Buffer Control*/
+ 			if (!padapter->driver_stopped &&
+ 			    !padapter->surprise_removed)
 -- 
 2.19.1
 
