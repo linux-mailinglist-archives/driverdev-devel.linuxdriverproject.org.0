@@ -2,51 +2,51 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B062785797
-	for <lists+driverdev-devel@lfdr.de>; Thu,  8 Aug 2019 03:23:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B7028583F
+	for <lists+driverdev-devel@lfdr.de>; Thu,  8 Aug 2019 04:38:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id F255B87745;
-	Thu,  8 Aug 2019 01:23:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 01A93811F7;
+	Thu,  8 Aug 2019 02:38:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AfZl8lUy3DNC; Thu,  8 Aug 2019 01:23:36 +0000 (UTC)
+	with ESMTP id Jt8Ax7s+8MZ9; Thu,  8 Aug 2019 02:38:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B648787609;
-	Thu,  8 Aug 2019 01:23:35 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7C8F886EAC;
+	Thu,  8 Aug 2019 02:38:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 330801BF3E3
- for <devel@linuxdriverproject.org>; Thu,  8 Aug 2019 01:23:33 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0AE621BF573
+ for <devel@linuxdriverproject.org>; Thu,  8 Aug 2019 02:38:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 2C7D086538
- for <devel@linuxdriverproject.org>; Thu,  8 Aug 2019 01:23:33 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 04D3B86EAC
+ for <devel@linuxdriverproject.org>; Thu,  8 Aug 2019 02:38:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7w1UaNlRT5Wi for <devel@linuxdriverproject.org>;
- Thu,  8 Aug 2019 01:23:32 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from referchart.icu (unknown [69.44.143.32])
- by fraxinus.osuosl.org (Postfix) with ESMTP id AAE198652A
- for <devel@driverdev.osuosl.org>; Thu,  8 Aug 2019 01:23:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail; d=referchart.icu; 
+ with ESMTP id Wb6WyT3-c0Ga for <devel@linuxdriverproject.org>;
+ Thu,  8 Aug 2019 02:38:50 +0000 (UTC)
+X-Greylist: delayed 00:10:02 by SQLgrey-1.7.6
+Received: from spillgreet.icu (unknown [69.44.143.33])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 04AF485B8D
+ for <devel@linuxdriverproject.org>; Thu,  8 Aug 2019 02:38:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail; d=spillgreet.icu; 
  h=From:Date:MIME-Version:To:Subject:Message-ID:Content-Type:Content-Transfer-Encoding;
- i=civilian@referchart.icu; bh=1j6UoIppiwR8lnii1vZqHm5Ee1M=;
- b=gxN0b6so3Qf7u/L8ec61hQ1vtYAVUXx7mC3sUX9QfwsqZlBZQh6N1zDtMdbYus7DA2+prQzxuI3g
- LgvS4V1OnI4bLLizNgtFjPjXakhZuWUTWEnRj4CI3sZC0OEDeqz6OFnI5Ad7qx0dOHu4EJVE8rRH
- 60JfjGFWLokJ/SKm14s=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=referchart.icu;
- b=B22bNrihKkxosXdx5azjXRm/tHpXIMq0czfshjotp7d/nJhP1Qwk8gkAKc/GFIJbrrIWkPIAAgne
- mwqFuCH8ePMZJjQ+P8DEZ5gyeg8H/J21JZ9hJ4dXHeswgmfxJbtfomMnSveSHJ9ZFFYz5vymkxxs
- am50/qR5HreDZdtvHls=;
-From: " Brian Jenkins" <civilian@referchart.icu>
-Date: Wed, 07 Aug 2019 20:06:36 -0500
+ i=info@spillgreet.icu; bh=EnkCuvO/f0dhDY/FLS/GwkPIpP0=;
+ b=NyRo+8uHzxw6u36MAEPrJYFwGF27giyEjKzfcziwq/3w0pzGHqWm2DRZu6PlhAsU7ViCluBMYzCu
+ BsCxFyjeJU06Ffl3qweOjto3uCZsFT3a04/BvrodP0dWI05+bp1Cwvn3J0vfWOXbfY5ztOAubYDm
+ Ffh3kFk0xeRE8VBb6z4=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=spillgreet.icu;
+ b=NY2Q0mqlAMyj0y20AY9OfGnEqtlLXx8OJMk1sPV/RFqRcJkls1V80Rz9AZTCK+n/QIJ/S0MZVY0c
+ uUqP5YFORGCgyh3liRDuxoNhF0bGeYzO31wc8MhaANZkI+BNqsIf4Q7hb721umVVrftxyE/ODv0V
+ rLUi7wMSZ7rRR2G0Q3Q=;
+From: " Harold Schneider" <info@spillgreet.icu>
+Date: Wed, 07 Aug 2019 21:22:53 -0500
 MIME-Version: 1.0
-To: <devel@driverdev.osuosl.org>
-Subject: Become a Bedroom Beast - Take this and go all night!
-Message-ID: <tJNbXr_EHfsR0sbpoFD5ieDqXHBOdrWWXyuVMUXAPRY.QnCr5Y9ZOpGOJGzULpXc4z6tJsoMP5WCCYixePzKLdU@referchart.icu>
+To: <devel@linuxdriverproject.org>
+Subject: Best tech gadget you'll want in 2019
+Message-ID: <tLo4qZv3GN4shc_PrtsgOJkD3YKGJsGZVAQvWn70_ok.ohpcAJVvXf_UCorSUbNKO7eQBLLyjtrNtdIQOEhWH_w@spillgreet.icu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,11 +64,11 @@ Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-New Revolutionary Pi.ll making Wives happy!!
+This Selfie Drone Is Putting Drone Companies Out Of Business. =
 
-Take this 15 minutes Before Intercourse! Amazing results!
+The Idea Is Genius!
 
-Get Started Now ! visit http://bit.ly/2MKRMM7
+Check it out here: http://bit.ly/2YvKF1t
 
 =E2=80=94=E2=80=94-
 If you'd prefer not to receive future emails, Unsubscribe Here http://bit.l=
