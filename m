@@ -1,74 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE48D882C8
-	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Aug 2019 20:41:57 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 75B81883AB
+	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Aug 2019 22:08:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2B0D887799;
-	Fri,  9 Aug 2019 18:41:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D049122D2D;
+	Fri,  9 Aug 2019 20:08:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yiTA0nn2dHTo; Fri,  9 Aug 2019 18:41:53 +0000 (UTC)
+	with ESMTP id bViqgY8VI4n6; Fri,  9 Aug 2019 20:08:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2A920877EA;
-	Fri,  9 Aug 2019 18:41:52 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4A15B22BCC;
+	Fri,  9 Aug 2019 20:08:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9DA451BF2B0
- for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 18:41:50 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2506A1BF2B5
+ for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 20:08:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 99582868DC
- for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 18:41:50 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 21B0487813
+ for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 20:08:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8Zo_dNlbvBPe for <devel@linuxdriverproject.org>;
- Fri,  9 Aug 2019 18:41:50 +0000 (UTC)
+ with ESMTP id er5Vnmi-8bLm for <devel@linuxdriverproject.org>;
+ Fri,  9 Aug 2019 20:08:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f68.google.com (mail-ot1-f68.google.com
- [209.85.210.68])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D8B48868A6
- for <devel@driverdev.osuosl.org>; Fri,  9 Aug 2019 18:41:49 +0000 (UTC)
-Received: by mail-ot1-f68.google.com with SMTP id n5so136396533otk.1
- for <devel@driverdev.osuosl.org>; Fri, 09 Aug 2019 11:41:49 -0700 (PDT)
+Received: from mail-ot1-f67.google.com (mail-ot1-f67.google.com
+ [209.85.210.67])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 6030687746
+ for <devel@driverdev.osuosl.org>; Fri,  9 Aug 2019 20:08:38 +0000 (UTC)
+Received: by mail-ot1-f67.google.com with SMTP id d17so137359738oth.5
+ for <devel@driverdev.osuosl.org>; Fri, 09 Aug 2019 13:08:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=65V1JuI2VA80cQiA+hQRPmXIFv0sktRgZklgyYT7uA0=;
- b=DWPweNNhV4+ruQv9Ddd4zqB9w0vtKDVgapB/ZVHrS05Sn8qP4BmMIriNe0wx9XQBGH
- hOF76QgLBKdnwg6w3+Dkuq+ngwyXRP42e/T1eL02kQNGDu00IXab7lmWTo0QiBysr9E/
- TeZlVF/M1hklUCmW09cFplmzLG5DScXSOgnbkJACjKVnylHr2s87Eta7YTGr9m2xvVN8
- qRoINJQcSrSlsguzfhx7xCQRiujtA2/A+kve2xletz9rb8leO26rubFGhWdtoxPAfIJS
- QrRzC4jGVAGQLe/Khw7yFoWPIhCpLPo4hC5Ujj2mu3KCwC/8PxZjQ2eu95XsZzEB7vE8
- Y8Cg==
+ :cc; bh=bK7KxUzVsn8VTJ+Hf3wxQB3YMP5WkwuYdnj8VxgnBSE=;
+ b=icVRSXJ8l3gDBm5+KYdytP97B5LamsZL9GMxcIs4Y1k3glZqs/6mIq2T9/cDkslS/M
+ LLMPBAk0Puq6bECPCbYsNCYP6srkhQ2v2hYqXOl1KKvdLQnP3CWC0EqbAeT39Xthu+MO
+ 4Xqh+ECX+M3ps31nU2QA64d6Obf4vsTKQYqdo/PGEP4sDjK+F1kdD8ivG0dvB0Vr04er
+ GaDXu9ph/EdDe6hiwp+1hzzvc0Aw1mhzvgpIzJUsu9xNX+mNM2TzxRci5HEwu5nMxX3m
+ p4qCEn3Nm8mFBxTqYSPOeWGhvgx/gYCwIXiAdgdNTqDhKIgwY/M/qeqv3mC9Poyr0tOM
+ Vm4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=65V1JuI2VA80cQiA+hQRPmXIFv0sktRgZklgyYT7uA0=;
- b=pEiNu71aHQ19hGLKd/CXdiggRw6wXaxHslyngC/zrMJgCKOWnYc1pxXSy5munhUf7t
- H+ErfMu5K+n+ra0wS93LNlsOmtYNEobG47Q1TuXo4hoPiA8K9H3VQCW4PiUfuD7qCx0L
- W2WejaI+MKvwzZFBrcmP6RQesZP9HEoFGjYrWc9A18UMS28oY9314xN+A5ql8m5xRvmA
- /Z4rZYHwNsHkUH80DC/QAmUUMAhea2XbrbddDqVUOA6ggrFSQfTcx5Wk/Nrcs1SuJQ3t
- eAo9PTCzRnuR0vjMbikXsebZbvqUtBhs9HTq7d74ZW/OdGLqU4D6h6UBcrEImnDu7j/P
- c92A==
-X-Gm-Message-State: APjAAAUSeBEA6zIuhSnmy9G2frWHLNIX3jDoGwfjIXh3KSREaEKvYmZI
- xSuIpYvL/XUDgq77RxXvuAkLpZc8Up6svRC+N9mWpA==
-X-Google-Smtp-Source: APXvYqxofUvcQ8atqUEUAeawzR1iYVttn85OBd+PtUiLhtQNlBMyJ9X3QlcGqVql+JVlFOO7UV4cffGfKEsIucd9ydw=
-X-Received: by 2002:a9d:73d0:: with SMTP id m16mr20182380otk.190.1565376108768; 
- Fri, 09 Aug 2019 11:41:48 -0700 (PDT)
+ bh=bK7KxUzVsn8VTJ+Hf3wxQB3YMP5WkwuYdnj8VxgnBSE=;
+ b=CchyCC3OcNgQYfmWuuEoATj4p3QZPtYIB2EcTMaRdN3Ze9Doc2Zh1n3ZluiKJ1Hojq
+ fmJnS45FmLSM8H1baHZi6/WLVmRnsR6QlaIJ3cxrsWeaEG+U2A0EvQeJQ72Rbyrlc0FQ
+ X7FJdfSlxB0F85kZJt+dmGc5SL4+wbxKRCu3BtNhSLsb+f08+7qZSNY4IyU8pt8tTkoz
+ M7fQtNSGBZtbHsh7IxGoRQbZlNJyKBbogCut6I3E4wggIG0ghI6BGQyTVmPJaM0rQOOa
+ eYNtuBb93PC0BdMtwYC3HZUO96z5n9Vb5WFQgMrMGzxX1Y5NR7mGh08KWU+qUCn+xPRt
+ gRWQ==
+X-Gm-Message-State: APjAAAUlpf+BrYe6miP++IxthTSKwM33Uffc4Zm6DUWE2G+Ck7YdDJHo
+ G0NCuIs4sC+LHvvloRwAjEjiMShLmhB4m8NmAIKqdw==
+X-Google-Smtp-Source: APXvYqww2xFRM10n5D7e4RwxGnvUBVisuszGhFTmaJYbJF8aWwP1GvcI7JkaufQUg2xZQgUI03lQUoHetkTrSfSFcBo=
+X-Received: by 2002:aca:5a04:: with SMTP id o4mr1089820oib.36.1565381317080;
+ Fri, 09 Aug 2019 13:08:37 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190808222727.132744-1-hridya@google.com>
- <20190808222727.132744-3-hridya@google.com>
- <20190809145508.GD16262@kroah.com>
- <20190809181439.qrs2k7l23ot4am4s@wittgenstein>
-In-Reply-To: <20190809181439.qrs2k7l23ot4am4s@wittgenstein>
+ <20190808222727.132744-2-hridya@google.com>
+ <20190809145016.GB16262@kroah.com>
+ <20190809182216.5xzx6tss6fh42mso@wittgenstein>
+In-Reply-To: <20190809182216.5xzx6tss6fh42mso@wittgenstein>
 From: Hridya Valsaraju <hridya@google.com>
-Date: Fri, 9 Aug 2019 11:41:12 -0700
-Message-ID: <CA+wgaPPK0fY2a+pCEFHrw8p8WCb459yw41s_6xppWFfEa=P7Og@mail.gmail.com>
-Subject: Re: [PATCH v3 2/2] binder: Validate the default binderfs device names.
+Date: Fri, 9 Aug 2019 13:08:01 -0700
+Message-ID: <CA+wgaPNjfvcVvcDB9ZBWupLegHchZ3AxYibBV8BPFE9SrPymtg@mail.gmail.com>
+Subject: Re: [PATCH v3 1/2] binder: Add default binder devices through
+ binderfs when configured
 To: Christian Brauner <christian.brauner@ubuntu.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -92,74 +93,53 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Aug 9, 2019 at 11:14 AM Christian Brauner
+On Fri, Aug 9, 2019 at 11:22 AM Christian Brauner
 <christian.brauner@ubuntu.com> wrote:
 >
-> On Fri, Aug 09, 2019 at 04:55:08PM +0200, Greg Kroah-Hartman wrote:
-> > On Thu, Aug 08, 2019 at 03:27:26PM -0700, Hridya Valsaraju wrote:
-> > > Length of a binderfs device name cannot exceed BINDERFS_MAX_NAME.
-> > > This patch adds a check in binderfs_init() to ensure the same
-> > > for the default binder devices that will be created in every
-> > > binderfs instance.
-> > >
-> > > Co-developed-by: Christian Brauner <christian.brauner@ubuntu.com>
-> > > Signed-off-by: Christian Brauner <christian.brauner@ubuntu.com>
-> > > Signed-off-by: Hridya Valsaraju <hridya@google.com>
-> > > ---
-> > >  drivers/android/binderfs.c | 12 ++++++++++++
-> > >  1 file changed, 12 insertions(+)
-> > >
-> > > diff --git a/drivers/android/binderfs.c b/drivers/android/binderfs.c
-> > > index aee46dd1be91..55c5adb87585 100644
-> > > --- a/drivers/android/binderfs.c
-> > > +++ b/drivers/android/binderfs.c
-> > > @@ -570,6 +570,18 @@ static struct file_system_type binder_fs_type = {
-> > >  int __init init_binderfs(void)
-> > >  {
-> > >     int ret;
-> > > +   const char *name;
-> > > +   size_t len;
-> > > +
-> > > +   /* Verify that the default binderfs device names are valid. */
+> On Fri, Aug 09, 2019 at 04:50:16PM +0200, Greg Kroah-Hartman wrote:
+> > On Thu, Aug 08, 2019 at 03:27:25PM -0700, Hridya Valsaraju wrote:
+> > > Currently, since each binderfs instance needs its own
+> > > private binder devices, every time a binderfs instance is
+> > > mounted, all the default binder devices need to be created
+> > > via the BINDER_CTL_ADD IOCTL.
 > >
-> > And by "valid" you only mean "not bigger than BINDERFS_MAX_NAME, right?
-> >
-> > > +   name = binder_devices_param;
-> > > +   for (len = strcspn(name, ","); len > 0; len = strcspn(name, ",")) {
-> > > +           if (len > BINDERFS_MAX_NAME)
-> > > +                   return -E2BIG;
-> > > +           name += len;
-> > > +           if (*name == ',')
-> > > +                   name++;
-> > > +   }
-> >
-> > We already tokenize the binderfs device names in binder_init(), why not
-> > check this there instead?  Parsing the same string over and over isn't
-> > the nicest.
+> > Wasn't that a design goal of binderfs?
 >
-> non-binderfs binder devices do not have their limit set to
-> BINDERFS_NAME_MAX. That's why the check has likely been made specific to
-> binderfs binder devices which do have that limit.
+> Sure, but if you solely rely binderfs to be used to provide binder
+> devices having them pre-created on each mount makes quite some sense,
+> imho.
+>
+> >
+> > > This patch aims to
+> > > add a solution to automatically create the default binder
+> > > devices for each binderfs instance that gets mounted.
+> > > To achieve this goal, when CONFIG_ANDROID_BINDERFS is set,
+> > > the default binder devices specified by CONFIG_ANDROID_BINDER_DEVICES
+> > > are created in each binderfs instance instead of global devices
+> > > being created by the binder driver.
+> >
+> > This is going to change how things work today, what is going to break
+> > because of this change?
+> >
+> > I don't object to this, except for the worry of changing the default
+> > behavior.
+>
+> This is something that Hridya and Todd can speak better to given that
+> they suggested this change. :)
+> From my perspective, binderfs binder devices and the regular binder
+> driver are mostly used mutually exclusive in practice atm so that this
+> change has little chance of breaking anyone.
 
+As Christian says, we do not anticipate the change to break any
+existing use cases since binderfs binder devices and regular binder
+devices are generally not used simultaneously. Hopefully, there are
+not a lot of unusual use cases since binderfs itself is relatively new
+as well :)
 
-Thank you Greg and Christian, for taking another look. Yes,
-non-binderfs binder devices not having this limitation is the reason
-why the check was made specific to binderfs devices. Also, when
-CONFIG_ANDROID_BINDERFS is set, patch 1/2 disabled the same string
-being parsed in binder_init().
 
 >
-> But, in practice, 255 is the standard path-part limit that no-one really
-> exceeds especially not for stuff such as device nodes which usually have
-> rather standard naming schemes (e.g. binder, vndbinder, hwbinder, etc.).
-> So yes, we can move that check before both the binderfs binder device
-> and non-binderfs binder device parsing code and treat it as a generic
-> check.
-> Then we can also backport that check as you requested in the other mail.
-> Unless Hridya or Todd have objections, of course.
-
-I do not have any objections to adding a generic check in binder_init() instead.
-
+> Now I really need to go back to vacation time - which I suck at
+> apparently. :)
 >
 > Christian
 _______________________________________________
