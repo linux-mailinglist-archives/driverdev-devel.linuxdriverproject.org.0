@@ -2,78 +2,76 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 20EE686D67
-	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Aug 2019 00:50:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1080986F47
+	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Aug 2019 03:26:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5CD2B8761F;
-	Thu,  8 Aug 2019 22:50:01 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3A6BB87694;
+	Fri,  9 Aug 2019 01:26:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7mK3ZdlQdF+0; Thu,  8 Aug 2019 22:50:00 +0000 (UTC)
+	with ESMTP id TPRQS0iRUyHl; Fri,  9 Aug 2019 01:26:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 96532874D4;
-	Thu,  8 Aug 2019 22:49:59 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C62DA8761F;
+	Fri,  9 Aug 2019 01:26:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2760B1BF35F
- for <devel@linuxdriverproject.org>; Thu,  8 Aug 2019 22:49:57 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 7A0981BF37B
+ for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 01:26:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 242AA847FE
- for <devel@linuxdriverproject.org>; Thu,  8 Aug 2019 22:49:57 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6902187594
+ for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 01:26:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5ydtZNv8cIn5 for <devel@linuxdriverproject.org>;
- Thu,  8 Aug 2019 22:49:54 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-vk1-f202.google.com (mail-vk1-f202.google.com
- [209.85.221.202])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 356ED847D1
- for <devel@driverdev.osuosl.org>; Thu,  8 Aug 2019 22:49:54 +0000 (UTC)
-Received: by mail-vk1-f202.google.com with SMTP id g68so37852851vkb.1
- for <devel@driverdev.osuosl.org>; Thu, 08 Aug 2019 15:49:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=Gg8nHdywARqj4NfIjRfnVnITGpTVJRTSlVwGVid0Qko=;
- b=ijU38H5kf5gPrtFLsVxbQKfJV+WB9zN4OKWEFpdOF99YKzidgPnA3zkMBd4K8IkvjC
- fqru1IJuLAmGAH+rl5s2E2irvjFeeg/y1hk+eOeDvqxrPXtz9ZwiE96E3trFp/3xCfIA
- 3M1WynnVATUMgi8dK0mY4H44CrRXdZXHwjdBX68mrx6XYumjQCa4OKjjpnSnnOgN9F+z
- RG0B2UmoA6gdrhwn8iJpNnInXxPz3CkxYoEHmQCpMZI4Ijr0CWmclYLQzVjqzxOOwrJj
- HjEs6n4IlU/rgQDlnktw9GzWpe2AMJ8UcnbiSXn8DlOgYWjnz5dy4pb4qu6qvGkoUx1r
- A/aw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=Gg8nHdywARqj4NfIjRfnVnITGpTVJRTSlVwGVid0Qko=;
- b=Ld6qC2ac6j8zAm8WRqcWwZZACvCnzykQcln+tCaCgywZh0RaDh/cgIR5n6PlZN4Wzi
- sa0b5JJl1DXUZvZfruta7Bt/bGLbUABY40PpQvjV0tEsehHf9pWC0ghHFTpj+oJY3d8O
- PichJrGV0O5YWtrzABVxJY04OiPl0d9BZ16ozdo2FbXXBTw0mvxEsl+ekQ2yzLoqjSK4
- zPiCVtiJQZM9N/AfC/XzToltV0YcmldbsrnSrv12dSekknf1HvM53WF5KdcpEIZDPJ7p
- Nxkyi/TKXZQTeE1/oQmJ0hHwMOiTUVktiP0UPDbSpAN3OV8AtPyht3u7ccWWy6MDcKwo
- j4Cg==
-X-Gm-Message-State: APjAAAV7ZndRreaBo529tkMy3tuPP4UB6M/OMD3Pp/wzqchn9IhLmb0R
- nsK6ag7RVhIToc7RnVUInKmu6PbqNZQ=
-X-Google-Smtp-Source: APXvYqx6pc8AZYRIy2S2wR703wxN2Gqx0htVtO5Ct/fs0PSgsxmOGzaRIrPBwEeB/GN6lOSy0S/4Lc4qKDE=
-X-Received: by 2002:a65:5a44:: with SMTP id z4mr14811850pgs.41.1565303266166; 
- Thu, 08 Aug 2019 15:27:46 -0700 (PDT)
-Date: Thu,  8 Aug 2019 15:27:25 -0700
-In-Reply-To: <20190808222727.132744-1-hridya@google.com>
-Message-Id: <20190808222727.132744-2-hridya@google.com>
-Mime-Version: 1.0
-References: <20190808222727.132744-1-hridya@google.com>
-X-Mailer: git-send-email 2.22.0.770.g0f2c4a37fd-goog
-Subject: [PATCH v3 1/2] binder: Add default binder devices through binderfs
- when configured
-From: Hridya Valsaraju <hridya@google.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- "=?UTF-8?q?Arve=20Hj=C3=B8nnev=C3=A5g?=" <arve@android.com>,
- Todd Kjos <tkjos@android.com>, Martijn Coenen <maco@android.com>, 
- Joel Fernandes <joel@joelfernandes.org>,
- Christian Brauner <christian@brauner.io>, 
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+ with ESMTP id nhfZMgJuMuuX for <devel@linuxdriverproject.org>;
+ Fri,  9 Aug 2019 01:26:43 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from hqemgate14.nvidia.com (hqemgate14.nvidia.com [216.228.121.143])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id DC5858758F
+ for <devel@driverdev.osuosl.org>; Fri,  9 Aug 2019 01:26:43 +0000 (UTC)
+Received: from hqpgpgate101.nvidia.com (Not Verified[216.228.121.13]) by
+ hqemgate14.nvidia.com (using TLS: TLSv1.2, DES-CBC3-SHA)
+ id <B5d4ccbd50000>; Thu, 08 Aug 2019 18:26:45 -0700
+Received: from hqmail.nvidia.com ([172.20.161.6])
+ by hqpgpgate101.nvidia.com (PGP Universal service);
+ Thu, 08 Aug 2019 18:26:43 -0700
+X-PGP-Universal: processed;
+ by hqpgpgate101.nvidia.com on Thu, 08 Aug 2019 18:26:43 -0700
+Received: from [10.110.48.28] (10.124.1.5) by HQMAIL107.nvidia.com
+ (172.20.187.13) with Microsoft SMTP Server (TLS) id 15.0.1473.3; Fri, 9 Aug
+ 2019 01:26:42 +0000
+Subject: Re: [PATCH v3 38/41] powerpc: convert put_page() to put_user_page*()
+To: Michael Ellerman <mpe@ellerman.id.au>, Andrew Morton
+ <akpm@linux-foundation.org>
+References: <20190807013340.9706-1-jhubbard@nvidia.com>
+ <20190807013340.9706-39-jhubbard@nvidia.com>
+ <87k1botdpx.fsf@concordia.ellerman.id.au>
+From: John Hubbard <jhubbard@nvidia.com>
+X-Nvconfidentiality: public
+Message-ID: <248c9ab2-93cc-6d8b-606d-d85b83e791e5@nvidia.com>
+Date: Thu, 8 Aug 2019 18:26:42 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
+MIME-Version: 1.0
+In-Reply-To: <87k1botdpx.fsf@concordia.ellerman.id.au>
+X-Originating-IP: [10.124.1.5]
+X-ClientProxiedBy: HQMAIL101.nvidia.com (172.20.187.10) To
+ HQMAIL107.nvidia.com (172.20.187.13)
+Content-Language: en-US
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nvidia.com; s=n1;
+ t=1565314005; bh=mIo2y95DYwpm5TwfN0ChMwsAj72bzfnkFfj+rLdjqVU=;
+ h=X-PGP-Universal:Subject:To:CC:References:From:X-Nvconfidentiality:
+ Message-ID:Date:User-Agent:MIME-Version:In-Reply-To:
+ X-Originating-IP:X-ClientProxiedBy:Content-Type:Content-Language:
+ Content-Transfer-Encoding;
+ b=sN/0osHqfMASG3Gn5uYJsmBevNgkDITrwy5z0XhYDRnSVjTtczC6Zn93vXUVACtgl
+ zsE5J5OQn1U0e8RQtUv/QuY5iXNoztc7U7xk0b8D/XTbbdQX85oERprBP+FlchEBmH
+ cDA/Z0zP30Are5EcBXQtJgaAWOYtGMQytxGRabpoiJwuifLVi+3nH2crRLrU8L/jsz
+ NjANrKoFZE22mpOq52s3fZ9ut+mKAUlAXHfdi2WiqPjr5KVieTASv9oPdSZ5QUx628
+ sL0qbeXqIPI+CnsO9wdJm+9w+qSRY9+X67MIO8EOa4e3TPJTGVb16/VuBW7YteYrzL
+ bdoBRcdIA11ng==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,130 +84,54 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Hridya Valsaraju <hridya@google.com>,
- Christian Brauner <christian.brauner@ubuntu.com>, kernel-team@android.com
+Cc: linux-fbdev@vger.kernel.org, Jan Kara <jack@suse.cz>, kvm@vger.kernel.org,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Dave Hansen <dave.hansen@linux.intel.com>, Dave Chinner <david@fromorbit.com>,
+ dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
+ sparclinux@vger.kernel.org, ceph-devel@vger.kernel.org,
+ devel@driverdev.osuosl.org, rds-devel@oss.oracle.com,
+ linux-rdma@vger.kernel.org, x86@kernel.org, amd-gfx@lists.freedesktop.org,
+ Christoph Hellwig <hch@lst.de>, Christoph Hellwig <hch@infradead.org>,
+ Jason Gunthorpe <jgg@ziepe.ca>, xen-devel@lists.xenproject.org,
+ devel@lists.orangefs.org, linux-media@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, linux-block@vger.kernel.org,
+ =?UTF-8?B?SsOpcsO0bWUgR2xpc3Nl?= <jglisse@redhat.com>,
+ linux-rpi-kernel@lists.infradead.org, Dan Williams <dan.j.williams@intel.com>,
+ linux-arm-kernel@lists.infradead.org, linux-nfs@vger.kernel.org,
+ netdev@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
+ linux-xfs@vger.kernel.org, linux-crypto@vger.kernel.org,
+ linux-fsdevel@vger.kernel.org, linuxppc-dev@lists.ozlabs.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Currently, since each binderfs instance needs its own
-private binder devices, every time a binderfs instance is
-mounted, all the default binder devices need to be created
-via the BINDER_CTL_ADD IOCTL. This patch aims to
-add a solution to automatically create the default binder
-devices for each binderfs instance that gets mounted.
-To achieve this goal, when CONFIG_ANDROID_BINDERFS is set,
-the default binder devices specified by CONFIG_ANDROID_BINDER_DEVICES
-are created in each binderfs instance instead of global devices
-being created by the binder driver.
+On 8/7/19 10:42 PM, Michael Ellerman wrote:
+> Hi John,
+> 
+> john.hubbard@gmail.com writes:
+>> diff --git a/arch/powerpc/mm/book3s64/iommu_api.c b/arch/powerpc/mm/book3s64/iommu_api.c
+>> index b056cae3388b..e126193ba295 100644
+>> --- a/arch/powerpc/mm/book3s64/iommu_api.c
+>> +++ b/arch/powerpc/mm/book3s64/iommu_api.c
+>> @@ -203,6 +202,7 @@ static void mm_iommu_unpin(struct mm_iommu_table_group_mem_t *mem)
+>>  {
+>>  	long i;
+>>  	struct page *page = NULL;
+>> +	bool dirty = false;
+> 
+> I don't think you need that initialisation do you?
+> 
 
-Co-developed-by: Christian Brauner <christian.brauner@ubuntu.com>
-Signed-off-by: Christian Brauner <christian.brauner@ubuntu.com>
-Signed-off-by: Hridya Valsaraju <hridya@google.com>
----
+Nope, it can go. Fixed locally, thanks.
 
-Changes in v2:
-- Updated commit message as per Greg Kroah-Hartman.
-- Removed new module parameter creation as per Greg
-  Kroah-Hartman/Christian Brauner.
-- Refactored device name length check into a new patch as per Greg Kroah-Hartman.
+Did you get a chance to look at enough of the other bits to feel comfortable 
+with the patch, overall?
 
-Changes in v3:
--Removed unnecessary empty lines as per Dan Carpenter.
-
- drivers/android/binder.c          |  5 +++--
- drivers/android/binder_internal.h |  2 ++
- drivers/android/binderfs.c        | 23 ++++++++++++++++++++---
- 3 files changed, 25 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-index 466b6a7f8ab7..ca6b21a53321 100644
---- a/drivers/android/binder.c
-+++ b/drivers/android/binder.c
-@@ -123,7 +123,7 @@ static uint32_t binder_debug_mask = BINDER_DEBUG_USER_ERROR |
- 	BINDER_DEBUG_FAILED_TRANSACTION | BINDER_DEBUG_DEAD_TRANSACTION;
- module_param_named(debug_mask, binder_debug_mask, uint, 0644);
- 
--static char *binder_devices_param = CONFIG_ANDROID_BINDER_DEVICES;
-+char *binder_devices_param = CONFIG_ANDROID_BINDER_DEVICES;
- module_param_named(devices, binder_devices_param, charp, 0444);
- 
- static DECLARE_WAIT_QUEUE_HEAD(binder_user_error_wait);
-@@ -6279,7 +6279,8 @@ static int __init binder_init(void)
- 				    &transaction_log_fops);
- 	}
- 
--	if (strcmp(binder_devices_param, "") != 0) {
-+	if (!IS_ENABLED(CONFIG_ANDROID_BINDERFS) &&
-+	    strcmp(binder_devices_param, "") != 0) {
- 		/*
- 		* Copy the module_parameter string, because we don't want to
- 		* tokenize it in-place.
-diff --git a/drivers/android/binder_internal.h b/drivers/android/binder_internal.h
-index 045b3e42d98b..fe8c745dc8e0 100644
---- a/drivers/android/binder_internal.h
-+++ b/drivers/android/binder_internal.h
-@@ -37,6 +37,8 @@ struct binder_device {
- 
- extern const struct file_operations binder_fops;
- 
-+extern char *binder_devices_param;
-+
- #ifdef CONFIG_ANDROID_BINDERFS
- extern bool is_binderfs_device(const struct inode *inode);
- #else
-diff --git a/drivers/android/binderfs.c b/drivers/android/binderfs.c
-index e773f45d19d9..aee46dd1be91 100644
---- a/drivers/android/binderfs.c
-+++ b/drivers/android/binderfs.c
-@@ -186,8 +186,7 @@ static int binderfs_binder_device_create(struct inode *ref_inode,
- 	req->major = MAJOR(binderfs_dev);
- 	req->minor = minor;
- 
--	ret = copy_to_user(userp, req, sizeof(*req));
--	if (ret) {
-+	if (userp && copy_to_user(userp, req, sizeof(*req))) {
- 		ret = -EFAULT;
- 		goto err;
- 	}
-@@ -467,6 +466,9 @@ static int binderfs_fill_super(struct super_block *sb, void *data, int silent)
- 	int ret;
- 	struct binderfs_info *info;
- 	struct inode *inode = NULL;
-+	struct binderfs_device device_info = { 0 };
-+	const char *name;
-+	size_t len;
- 
- 	sb->s_blocksize = PAGE_SIZE;
- 	sb->s_blocksize_bits = PAGE_SHIFT;
-@@ -521,7 +523,22 @@ static int binderfs_fill_super(struct super_block *sb, void *data, int silent)
- 	if (!sb->s_root)
- 		return -ENOMEM;
- 
--	return binderfs_binder_ctl_create(sb);
-+	ret = binderfs_binder_ctl_create(sb);
-+	if (ret)
-+		return ret;
-+
-+	name = binder_devices_param;
-+	for (len = strcspn(name, ","); len > 0; len = strcspn(name, ",")) {
-+		strscpy(device_info.name, name, len + 1);
-+		ret = binderfs_binder_device_create(inode, NULL, &device_info);
-+		if (ret)
-+			return ret;
-+		name += len;
-+		if (*name == ',')
-+			name++;
-+	}
-+
-+	return 0;
- }
- 
- static struct dentry *binderfs_mount(struct file_system_type *fs_type,
+thanks,
 -- 
-2.22.0.770.g0f2c4a37fd-goog
-
+John Hubbard
+NVIDIA
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
