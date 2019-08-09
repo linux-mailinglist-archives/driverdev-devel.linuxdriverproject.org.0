@@ -2,53 +2,58 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB1A7879C1
-	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Aug 2019 14:20:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D3D2A87AA9
+	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Aug 2019 14:57:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4568C22803;
-	Fri,  9 Aug 2019 12:20:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3151620343;
+	Fri,  9 Aug 2019 12:56:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cx3-x8BMTFc1; Fri,  9 Aug 2019 12:20:54 +0000 (UTC)
+	with ESMTP id 3vxi2GeP2gSD; Fri,  9 Aug 2019 12:56:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id A1279203B7;
-	Fri,  9 Aug 2019 12:20:52 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3CA03227B1;
+	Fri,  9 Aug 2019 12:56:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 539F11BF2CF
- for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 12:20:50 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A36661BF2CF
+ for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 12:56:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5027F86A22
- for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 12:20:50 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 9F0BA85BCD
+ for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 12:56:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wX2REd0EBWWm for <devel@linuxdriverproject.org>;
- Fri,  9 Aug 2019 12:20:49 +0000 (UTC)
+ with ESMTP id SIcPS-noTaWv for <devel@linuxdriverproject.org>;
+ Fri,  9 Aug 2019 12:56:51 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from ozlabs.org (ozlabs.org [203.11.71.1])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1257F863C5
- for <devel@driverdev.osuosl.org>; Fri,  9 Aug 2019 12:20:49 +0000 (UTC)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest
- SHA256) (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 464kpy5K69z9sBF;
- Fri,  9 Aug 2019 22:20:42 +1000 (AEST)
-From: Michael Ellerman <mpe@ellerman.id.au>
-To: John Hubbard <jhubbard@nvidia.com>,
- Andrew Morton <akpm@linux-foundation.org>
-Subject: Re: [PATCH v3 38/41] powerpc: convert put_page() to put_user_page*()
-In-Reply-To: <248c9ab2-93cc-6d8b-606d-d85b83e791e5@nvidia.com>
-References: <20190807013340.9706-1-jhubbard@nvidia.com>
- <20190807013340.9706-39-jhubbard@nvidia.com>
- <87k1botdpx.fsf@concordia.ellerman.id.au>
- <248c9ab2-93cc-6d8b-606d-d85b83e791e5@nvidia.com>
-Date: Fri, 09 Aug 2019 22:20:40 +1000
-Message-ID: <875zn6ttrb.fsf@concordia.ellerman.id.au>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E446686A24
+ for <devel@driverdev.osuosl.org>; Fri,  9 Aug 2019 12:56:51 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 4986720B7C;
+ Fri,  9 Aug 2019 12:56:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1565355411;
+ bh=bGD8aEP4a64R/eBVC495DgtcJcfd4ZnnlriZrZK79Us=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Ux8v/VdR2h69DjRbe8tj7TUsxRePrHFrq+HMokZcYj7W6xxGOkp6olVTYKRP2bl6l
+ kgewB1RUyhSfGj30WTAcDlv/PDAuyAj5V81Si2/F9TAXe6CLgJ3+XhZ1OYqbbVgJP/
+ lIw+bpHXQH72GcuoxdcPRR189Qwdf7HB1qg+yV3s=
+Date: Fri, 9 Aug 2019 14:56:49 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: YueHaibing <yuehaibing@huawei.com>
+Subject: Re: [PATCH] staging: wusbcore: Fix build error without CONFIG_USB
+Message-ID: <20190809125649.GA2531@kroah.com>
+References: <20190809102150.66896-1-yuehaibing@huawei.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190809102150.66896-1-yuehaibing@huawei.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,61 +66,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-fbdev@vger.kernel.org, Jan Kara <jack@suse.cz>, kvm@vger.kernel.org,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Dave Hansen <dave.hansen@linux.intel.com>, Dave Chinner <david@fromorbit.com>,
- dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
- sparclinux@vger.kernel.org, ceph-devel@vger.kernel.org,
- devel@driverdev.osuosl.org, rds-devel@oss.oracle.com,
- linux-rdma@vger.kernel.org, x86@kernel.org, amd-gfx@lists.freedesktop.org,
- Christoph Hellwig <hch@lst.de>, Christoph Hellwig <hch@infradead.org>,
- Jason Gunthorpe <jgg@ziepe.ca>, xen-devel@lists.xenproject.org,
- devel@lists.orangefs.org, linux-media@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, linux-block@vger.kernel.org,
- =?utf-8?B?SsOpcsO0?= =?utf-8?B?bWU=?= Glisse <jglisse@redhat.com>,
- linux-rpi-kernel@lists.infradead.org, Dan Williams <dan.j.williams@intel.com>,
- linux-arm-kernel@lists.infradead.org, linux-nfs@vger.kernel.org,
- netdev@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
- linux-xfs@vger.kernel.org, linux-crypto@vger.kernel.org,
- linux-fsdevel@vger.kernel.org, linuxppc-dev@lists.ozlabs.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ ard.biesheuvel@linaro.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-John Hubbard <jhubbard@nvidia.com> writes:
-> On 8/7/19 10:42 PM, Michael Ellerman wrote:
->> Hi John,
->> 
->> john.hubbard@gmail.com writes:
->>> diff --git a/arch/powerpc/mm/book3s64/iommu_api.c b/arch/powerpc/mm/book3s64/iommu_api.c
->>> index b056cae3388b..e126193ba295 100644
->>> --- a/arch/powerpc/mm/book3s64/iommu_api.c
->>> +++ b/arch/powerpc/mm/book3s64/iommu_api.c
->>> @@ -203,6 +202,7 @@ static void mm_iommu_unpin(struct mm_iommu_table_group_mem_t *mem)
->>>  {
->>>  	long i;
->>>  	struct page *page = NULL;
->>> +	bool dirty = false;
->> 
->> I don't think you need that initialisation do you?
->> 
->
-> Nope, it can go. Fixed locally, thanks.
+On Fri, Aug 09, 2019 at 06:21:50PM +0800, YueHaibing wrote:
+> USB_WUSB should depends on CONFIG_USB, otherwise building fails
+> 
+> drivers/staging/wusbcore/wusbhc.o: In function `wusbhc_giveback_urb':
+> wusbhc.c:(.text+0xa28): undefined reference to `usb_hcd_giveback_urb'
+> 
+> Reported-by: Hulk Robot <hulkci@huawei.com>
+> Fixes: 71ed79b0e4be ("USB: Move wusbcore and UWB to staging as it is obsolete")
+> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+> ---
+>  drivers/staging/wusbcore/Kconfig | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/wusbcore/Kconfig b/drivers/staging/wusbcore/Kconfig
+> index 056c60b..a559d02 100644
+> --- a/drivers/staging/wusbcore/Kconfig
+> +++ b/drivers/staging/wusbcore/Kconfig
+> @@ -4,7 +4,7 @@
+>  #
+>  config USB_WUSB
+>  	tristate "Enable Wireless USB extensions"
+> -	depends on UWB
+> +	depends on UWB && USB
+>  	select CRYPTO
+>  	select CRYPTO_AES
+>  	select CRYPTO_CCM
+> -- 
+> 2.7.4
 
-Thanks.
+Ah, good catch, sorry about that!
 
-> Did you get a chance to look at enough of the other bits to feel comfortable 
-> with the patch, overall?
-
-Mostly :) It's not really my area, but all the conversions looked
-correct to me as best as I could tell.
-
-So I'm fine for it to go in as part of the series:
-
-Acked-by: Michael Ellerman <mpe@ellerman.id.au> (powerpc)
-
-cheers
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
