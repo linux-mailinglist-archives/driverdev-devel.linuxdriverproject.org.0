@@ -2,80 +2,59 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3B09D8716E
-	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Aug 2019 07:24:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 698E087433
+	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Aug 2019 10:34:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D83F5866A9;
-	Fri,  9 Aug 2019 05:24:40 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2A4A584D24;
+	Fri,  9 Aug 2019 08:34:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nFCHAhn-UIjy; Fri,  9 Aug 2019 05:24:40 +0000 (UTC)
+	with ESMTP id KCDa7nLclhZP; Fri,  9 Aug 2019 08:34:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A22FB82066;
-	Fri,  9 Aug 2019 05:24:39 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B5E588481F;
+	Fri,  9 Aug 2019 08:34:43 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id F2F0D1BF5DC
- for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 05:24:36 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 613E51BF338
+ for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 08:34:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id EC8E822270
- for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 05:24:36 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 5DE3B2226E
+ for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 08:34:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xR+FhNbVGkqK for <devel@linuxdriverproject.org>;
- Fri,  9 Aug 2019 05:24:34 +0000 (UTC)
+ with ESMTP id M5O7K8hN1ndc for <devel@linuxdriverproject.org>;
+ Fri,  9 Aug 2019 08:34:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
- [209.85.214.196])
- by silver.osuosl.org (Postfix) with ESMTPS id 42EE221551
- for <devel@driverdev.osuosl.org>; Fri,  9 Aug 2019 05:24:34 +0000 (UTC)
-Received: by mail-pl1-f196.google.com with SMTP id ay6so44541651plb.9
- for <devel@driverdev.osuosl.org>; Thu, 08 Aug 2019 22:24:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=WFQgXLs8DeronhFyYcvrLO7Mg35uT2uPyNmKpc5hatA=;
- b=FmL9v3HXOYLI+hwwIz4KZ86TX/xKbjo9jQYz5wnwkmblC/TzpFx54IS7PNgBHGoViY
- YnFABbjR8DCKi28IGeghg4sb5ga+mIyiAUWtddPsy2sdNjdjAudzwy/W7bnXO69q1wBB
- BESS+oA+pLhrClTn0G2hHeKQXIVnyF/i1Z0lqFyZFoE+jqhfw+DMhIgK+SnhoQgszLYK
- ma9UIgGXDEfjxPjUqioT+4R1UfCegmc2aFV5aNrNC4lbsj4+fZlKXccic2ZE7/fxq+LN
- z48BpBr8HkBqTG+hI2UEobMasZGYUG30DWhHY6PAx5Z7N4Lnflh+F50tArOrv3ck0zK6
- FjDw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=WFQgXLs8DeronhFyYcvrLO7Mg35uT2uPyNmKpc5hatA=;
- b=iQ8Wl/GXtbSmRE8Fu++9GVWdyvki4WqbKIbPBNsC6/iPbY7P+1nUyqDKMbeDB5OI4C
- fnVDyhjjEmxjHmiDsWWJI4O43FbwAk6l6+5cNdm6UT/FCIIXjno8RdeiYRcHc8dddtZL
- 4WpWOC8oCGPej+xAsuXiNtJIVKbdl3O7W0LFNQ99HNWAoYHxPwugEkmwRhZkuTQUcyth
- N5YE+A/UBl8IZjTKI75RjTqosY5iOu3ZxPbahGnedeZES8gRYjOJsX5DXwF6zm7GVqqT
- T3mhM1b89wS4CpmQMPsapdqgm+6GnBBCOh9RtbV+82IyIF0QIE4BGhqFTtNme6VwmkIv
- ib3A==
-X-Gm-Message-State: APjAAAUW32DZB26E0Ff7qC6vwgdSckvQLoNowM7/ViT4un1Sy6mmZc8J
- 5iirJXRZfEJ2qmYQJx5qZHs=
-X-Google-Smtp-Source: APXvYqwmiCHznZhRqH3GLoC5KYqgMBqmWz0RYZ+wPQ3RimLwjIJ6kIB2v2DPq9ktOakrcNJV7q/p3w==
-X-Received: by 2002:a17:902:9307:: with SMTP id
- bc7mr16661924plb.183.1565328273990; 
- Thu, 08 Aug 2019 22:24:33 -0700 (PDT)
-Received: from localhost.localdomain ([122.163.44.6])
- by smtp.gmail.com with ESMTPSA id h13sm65710491pfn.13.2019.08.08.22.24.31
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Thu, 08 Aug 2019 22:24:33 -0700 (PDT)
-From: Nishka Dasgupta <nishkadg.linux@gmail.com>
-To: larry.finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
- gregkh@linuxfoundation.org, devel@driverdev.osuosl.org
-Subject: [PATCH 11/11] staging: rtl8712: r8712_dump_aggr_xframe(): Change type
- to void
-Date: Fri,  9 Aug 2019 10:53:53 +0530
-Message-Id: <20190809052353.5308-11-nishkadg.linux@gmail.com>
-X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20190809052353.5308-1-nishkadg.linux@gmail.com>
-References: <20190809052353.5308-1-nishkadg.linux@gmail.com>
+Received: from mx1.suse.de (mx2.suse.de [195.135.220.15])
+ by silver.osuosl.org (Postfix) with ESMTPS id B2B8D203CE
+ for <devel@driverdev.osuosl.org>; Fri,  9 Aug 2019 08:34:39 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx1.suse.de (Postfix) with ESMTP id DD89FAE49;
+ Fri,  9 Aug 2019 08:34:36 +0000 (UTC)
+Received: by quack2.suse.cz (Postfix, from userid 1000)
+ id DC04B1E437E; Fri,  9 Aug 2019 10:34:35 +0200 (CEST)
+Date: Fri, 9 Aug 2019 10:34:35 +0200
+From: Jan Kara <jack@suse.cz>
+To: Ira Weiny <ira.weiny@intel.com>
+Subject: Re: [PATCH 00/34] put_user_pages(): miscellaneous call sites
+Message-ID: <20190809083435.GA17568@quack2.suse.cz>
+References: <20190802022005.5117-1-jhubbard@nvidia.com>
+ <20190802091244.GD6461@dhcp22.suse.cz>
+ <20190802124146.GL25064@quack2.suse.cz>
+ <20190802142443.GB5597@bombadil.infradead.org>
+ <20190802145227.GQ25064@quack2.suse.cz>
+ <076e7826-67a5-4829-aae2-2b90f302cebd@nvidia.com>
+ <20190807083726.GA14658@quack2.suse.cz>
+ <20190807084649.GQ11812@dhcp22.suse.cz>
+ <20190808023637.GA1508@iweiny-DESK2.sc.intel.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190808023637.GA1508@iweiny-DESK2.sc.intel.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,63 +67,95 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Nishka Dasgupta <nishkadg.linux@gmail.com>
+Cc: linux-fbdev@vger.kernel.org, Jan Kara <jack@suse.cz>, kvm@vger.kernel.org,
+ Dave Hansen <dave.hansen@linux.intel.com>, Dave Chinner <david@fromorbit.com>,
+ dri-devel@lists.freedesktop.org, Michal Hocko <mhocko@kernel.org>,
+ linux-mm@kvack.org, amd-gfx@lists.freedesktop.org, sparclinux@vger.kernel.org,
+ Dan Williams <dan.j.williams@intel.com>, devel@driverdev.osuosl.org,
+ rds-devel@oss.oracle.com, linux-rdma@vger.kernel.org, x86@kernel.org,
+ Matthew Wilcox <willy@infradead.org>, Christoph Hellwig <hch@infradead.org>,
+ Jason Gunthorpe <jgg@ziepe.ca>, xen-devel@lists.xenproject.org,
+ devel@lists.orangefs.org, linux-media@vger.kernel.org,
+ John Hubbard <jhubbard@nvidia.com>, intel-gfx@lists.freedesktop.org,
+ john.hubbard@gmail.com, linux-block@vger.kernel.org,
+ =?iso-8859-1?B?Suly9G1l?= Glisse <jglisse@redhat.com>,
+ linux-rpi-kernel@lists.infradead.org, ceph-devel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-nfs@vger.kernel.org,
+ netdev@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
+ linux-xfs@vger.kernel.org, linux-crypto@vger.kernel.org,
+ linux-fsdevel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change return type of r8712_dump_aggr_xframe from u8 to void as it
-always returns _SUCCESS and its return value is never used.
+On Wed 07-08-19 19:36:37, Ira Weiny wrote:
+> On Wed, Aug 07, 2019 at 10:46:49AM +0200, Michal Hocko wrote:
+> > > So I think your debug option and my suggested renaming serve a bit
+> > > different purposes (and thus both make sense). If you do the renaming, you
+> > > can just grep to see unconverted sites. Also when someone merges new GUP
+> > > user (unaware of the new rules) while you switch GUP to use pins instead of
+> > > ordinary references, you'll get compilation error in case of renaming
+> > > instead of hard to debug refcount leak without the renaming. And such
+> > > conflict is almost bound to happen given the size of GUP patch set... Also
+> > > the renaming serves against the "coding inertia" - i.e., GUP is around for
+> > > ages so people just use it without checking any documentation or comments.
+> > > After switching how GUP works, what used to be correct isn't anymore so
+> > > renaming the function serves as a warning that something has really
+> > > changed.
+> > 
+> > Fully agreed!
+> 
+> Ok Prior to this I've been basing all my work for the RDMA/FS DAX stuff in
+> Johns put_user_pages()...  (Including when I proposed failing truncate with a
+> lease in June [1])
+> 
+> However, based on the suggestions in that thread it became clear that a new
+> interface was going to need to be added to pass in the "RDMA file" information
+> to GUP to associate file pins with the correct processes...
+> 
+> I have many drawings on my white board with "a whole lot of lines" on them to
+> make sure that if a process opens a file, mmaps it, pins it with RDMA, _closes_
+> it, and ummaps it; that the resulting file pin can still be traced back to the
+> RDMA context and all the processes which may have access to it....  No matter
+> where the original context may have come from.  I believe I have accomplished
+> that.
+> 
+> Before I go on, I would like to say that the "imbalance" of get_user_pages()
+> and put_page() bothers me from a purist standpoint...  However, since this
+> discussion cropped up I went ahead and ported my work to Linus' current master
+> (5.3-rc3+) and in doing so I only had to steal a bit of Johns code...  Sorry
+> John...  :-(
+> 
+> I don't have the commit messages all cleaned up and I know there may be some
+> discussion on these new interfaces but I wanted to throw this series out there
+> because I think it may be what Jan and Michal are driving at (or at least in
+> that direction.
+> 
+> Right now only RDMA and DAX FS's are supported.  Other users of GUP will still
+> fail on a DAX file and regular files will still be at risk.[2]
+> 
+> I've pushed this work (based 5.3-rc3+ (33920f1ec5bf)) here[3]:
+> 
+> https://github.com/weiny2/linux-kernel/tree/linus-rdmafsdax-b0-v3
+> 
+> I think the most relevant patch to this conversation is:
+> 
+> https://github.com/weiny2/linux-kernel/commit/5d377653ba5cf11c3b716f904b057bee6641aaf6
+> 
+> I stole Jans suggestion for a name as the name I used while prototyping was
+> pretty bad...  So Thanks Jan...  ;-)
 
-Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
----
- drivers/staging/rtl8712/rtl8712_xmit.c | 6 ++----
- drivers/staging/rtl8712/rtl8712_xmit.h | 4 ++--
- 2 files changed, 4 insertions(+), 6 deletions(-)
+For your function, I'd choose a name like vaddr_pin_leased_pages() so that
+association with a lease is clear from the name :) Also I'd choose the
+counterpart to be vaddr_unpin_leased_page[s](). Especially having put_page in
+the name looks confusing to me...
 
-diff --git a/drivers/staging/rtl8712/rtl8712_xmit.c b/drivers/staging/rtl8712/rtl8712_xmit.c
-index 9152c25c11f8..c247f92207f5 100644
---- a/drivers/staging/rtl8712/rtl8712_xmit.c
-+++ b/drivers/staging/rtl8712/rtl8712_xmit.c
-@@ -352,8 +352,8 @@ u16 r8712_xmitframe_aggr_next(struct xmit_buf *pxmitbuf,
- 		(((struct tx_desc *)pxmitbuf->pbuf)->txdw0 & 0x0000ffff);
- }
- 
--u8 r8712_dump_aggr_xframe(struct xmit_buf *pxmitbuf,
--			struct xmit_frame *pxmitframe)
-+void r8712_dump_aggr_xframe(struct xmit_buf *pxmitbuf,
-+			    struct xmit_frame *pxmitframe)
- {
- 	struct _adapter *padapter = pxmitframe->padapter;
- 	struct dvobj_priv *pdvobj = &padapter->dvobjpriv;
-@@ -390,8 +390,6 @@ u8 r8712_dump_aggr_xframe(struct xmit_buf *pxmitbuf,
- 	}
- 	r8712_write_port(pxmitframe->padapter, RTL8712_DMA_H2CCMD,
- 			total_length + TXDESC_SIZE, (u8 *)pxmitframe);
--
--	return _SUCCESS;
- }
- 
- #endif
-diff --git a/drivers/staging/rtl8712/rtl8712_xmit.h b/drivers/staging/rtl8712/rtl8712_xmit.h
-index faf2128285b6..0b56bd3ac4d0 100644
---- a/drivers/staging/rtl8712/rtl8712_xmit.h
-+++ b/drivers/staging/rtl8712/rtl8712_xmit.h
-@@ -104,8 +104,8 @@ void r8712_do_queue_select(struct _adapter *padapter,
- #ifdef CONFIG_R8712_TX_AGGR
- void r8712_xmitframe_aggr_1st(struct xmit_buf *pxmitbuf,
- 			      struct xmit_frame *pxmitframe);
--u8 r8712_dump_aggr_xframe(struct xmit_buf *pxmitbuf,
--			struct xmit_frame *pxmitframe);
-+void r8712_dump_aggr_xframe(struct xmit_buf *pxmitbuf,
-+			    struct xmit_frame *pxmitframe);
- #endif
- 
- #endif
+								Honza
+
 -- 
-2.19.1
-
+Jan Kara <jack@suse.com>
+SUSE Labs, CR
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
