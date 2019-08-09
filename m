@@ -1,150 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B19588265
-	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Aug 2019 20:25:38 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CE48D882C8
+	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Aug 2019 20:41:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 437B520425;
-	Fri,  9 Aug 2019 18:25:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2B0D887799;
+	Fri,  9 Aug 2019 18:41:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3dcPRkYordQH; Fri,  9 Aug 2019 18:25:36 +0000 (UTC)
+	with ESMTP id yiTA0nn2dHTo; Fri,  9 Aug 2019 18:41:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E06CF20414;
-	Fri,  9 Aug 2019 18:25:34 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2A920877EA;
+	Fri,  9 Aug 2019 18:41:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 897EF1BF2B0
- for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 18:25:32 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9DA451BF2B0
+ for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 18:41:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 848C020401
- for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 18:25:32 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 99582868DC
+ for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 18:41:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gWw68XlnEtQU for <devel@linuxdriverproject.org>;
- Fri,  9 Aug 2019 18:25:30 +0000 (UTC)
+ with ESMTP id 8Zo_dNlbvBPe for <devel@linuxdriverproject.org>;
+ Fri,  9 Aug 2019 18:41:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa4.microchip.iphmx.com (esa4.microchip.iphmx.com
- [68.232.154.123])
- by silver.osuosl.org (Postfix) with ESMTPS id D30B320417
- for <devel@driverdev.osuosl.org>; Fri,  9 Aug 2019 18:25:29 +0000 (UTC)
-Received-SPF: Pass (esa4.microchip.iphmx.com: domain of
- Adham.Abozaeid@microchip.com designates 198.175.253.82 as
- permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa4.microchip.iphmx.com;
- envelope-from="Adham.Abozaeid@microchip.com";
- x-sender="Adham.Abozaeid@microchip.com";
- x-conformance=spf_only; x-record-type="v=spf1";
- x-record-text="v=spf1 mx a:ushub1.microchip.com
- a:smtpout.microchip.com a:mx1.microchip.iphmx.com
- a:mx2.microchip.iphmx.com include:servers.mcsv.net
- include:mktomail.com include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa4.microchip.iphmx.com: no sender
- authenticity information available from domain of
- postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa4.microchip.iphmx.com;
- envelope-from="Adham.Abozaeid@microchip.com";
- x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa4.microchip.iphmx.com;
- spf=Pass smtp.mailfrom=Adham.Abozaeid@microchip.com;
- spf=None smtp.helo=postmaster@email.microchip.com;
- dkim=pass (signature verified) header.i=@microchiptechnology.onmicrosoft.com;
- dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: RvXlqprSjXUvT05ajsqTgBszIr8GBv5dlkGzFr1Ze++KqAE2CJOM7kxrG4t0WxgiUc4m6uwRYp
- l2vsur7MQXyLTWYj4fpuT+Kyf3HS/CD1hpe74cmT4+96OXl2XbtVOWk/y5mfzxUt9RqY586n/n
- vJfEK/rPrQLTrRfFVQI4ELNI1ui7FuU8HH/g+rPl5XhK5LykzUIUlijQGQLip/W2c9WFL431Ws
- CBM0oycSDf8pOLFBZStDyM0Tk66cufkuvBXxHr9hS/vGmwAwmW9TSA/oC2KwnP4c6ygxyAwjje
- ghI=
-X-IronPort-AV: E=Sophos;i="5.64,366,1559545200"; d="scan'208";a="43782627"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa4.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 09 Aug 2019 11:25:23 -0700
-Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
- chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Fri, 9 Aug 2019 11:25:23 -0700
-Received: from NAM01-SN1-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.71) with Microsoft SMTP Server
- (version=TLS1_2, 
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5 via Frontend
- Transport; Fri, 9 Aug 2019 11:25:21 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jrFYWzBBSDvutPlvxdEuq0RDZ55ol7MtApNAE/NCObYS74S+OGtFEnVpgA71AgSeYnyIbrTw6J5xedv6eUDIuwWsxIZQFH8IsBEkSq3gqdg+PKzR4wl67kcdKmMuACR1rTGXYww5XxAaqoR0XWb9WQG3uovUwFrs8x+d8CW1hIl982dzva96erWKRSprtdcSDpVldB/wEn8fPUb/CYfb+uaYHQZ7dWHQTksx7JP8T9Uz4joF48imhe8oDabXP08P3+uAgjIymERc1eycaA6GsGUo4N2bKAmHXk8HN7sgTTg8TWTLOV0hSnn3Qxc4cxzlS9qASl1+Qb30jhAtS5m3Jw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0iIcI27aQJwo4OugbGOiKqRRehRbwf1u9SlVkhpc5n0=;
- b=YQox08C5lnu2ZUPkX1OfUoRwKthMdAKJdNJK0gftecRXX8unvMgbrM5bp2hShDfakULKLwqYkiPWqy+ecEB6I5MtSMpQurhOcX15jKpIikcbIKVAb8WbtWzaIQXzNv7NKsXMitjx87/0AGbfQqQLqzj83DHLmOKb6ji/3DJmHuPXF4ivetZmHmwgfwGqDJ9pNydQrlFiULqEpoBvu7GPFmNd7+J4Sg9U8Wfj9CJjcwOUJ87m3ZtWMgMdwtnxqftboC0q68YjCvf1QmRt70TtKbuZTmiATliH0HedDspa92AhiD1xV4XI4SFp+HS+dct/R4AInG513bSGf0uv3K0ohA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microchip.com; dmarc=pass action=none
- header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector1-microchiptechnology-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0iIcI27aQJwo4OugbGOiKqRRehRbwf1u9SlVkhpc5n0=;
- b=ktE9Uf/y4UwLEBxxwS80610PqFg545ytpoavgkzVwAa+Zac9peTTv0QZ9nUUiSv8fk2HvVj233jX2QK44B8LEwru67tIEbS6wkBZbiHZuH2r9V+UK1OTaKeKEkK+JPDDzHaLHPAgwgDfeLzCoWO6QBbSwH5MmKoSaeNTAH6RV6g=
-Received: from MWHPR11MB1373.namprd11.prod.outlook.com (10.169.234.141) by
- MWHPR11MB1950.namprd11.prod.outlook.com (10.175.55.16) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2157.15; Fri, 9 Aug 2019 18:25:19 +0000
-Received: from MWHPR11MB1373.namprd11.prod.outlook.com
- ([fe80::480d:becc:c567:3336]) by MWHPR11MB1373.namprd11.prod.outlook.com
- ([fe80::480d:becc:c567:3336%2]) with mapi id 15.20.2157.020; Fri, 9 Aug 2019
- 18:25:19 +0000
-From: <Adham.Abozaeid@microchip.com>
-To: <linux-wireless@vger.kernel.org>
-Subject: [PATCH v2 2/2] staging: wilc1000: return kernel error codes from
- wilc_wlan_stop
-Thread-Topic: [PATCH v2 2/2] staging: wilc1000: return kernel error codes from
- wilc_wlan_stop
-Thread-Index: AQHVTt/Megb7GILlxkecONemIE97uQ==
-Date: Fri, 9 Aug 2019 18:25:19 +0000
-Message-ID: <20190809182510.22443-3-adham.abozaeid@microchip.com>
-References: <20190809182510.22443-1-adham.abozaeid@microchip.com>
-In-Reply-To: <20190809182510.22443-1-adham.abozaeid@microchip.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [198.175.253.81]
-x-clientproxiedby: BYAPR02CA0035.namprd02.prod.outlook.com
- (2603:10b6:a02:ee::48) To MWHPR11MB1373.namprd11.prod.outlook.com
- (2603:10b6:300:25::13)
-x-ms-exchange-messagesentrepresentingtype: 1
-x-mailer: git-send-email 2.17.1
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: f255cc06-c4bd-42ca-67b6-08d71cf6ef03
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(2017052603328)(7193020);
- SRVR:MWHPR11MB1950; 
-x-ms-traffictypediagnostic: MWHPR11MB1950:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <MWHPR11MB1950F30A3AC32AEA73CF85058DD60@MWHPR11MB1950.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:962;
-x-forefront-prvs: 01244308DF
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(136003)(346002)(39860400002)(366004)(396003)(376002)(199004)(189003)(5660300002)(6486002)(71200400001)(5640700003)(186003)(6436002)(26005)(66066001)(2351001)(107886003)(6512007)(53936002)(50226002)(1076003)(54906003)(7736002)(2906002)(86362001)(386003)(2501003)(71190400001)(305945005)(8676002)(6506007)(14454004)(11346002)(2616005)(476003)(446003)(256004)(99286004)(6116002)(3846002)(486006)(64756008)(76176011)(66556008)(66946007)(52116002)(66446008)(66476007)(81156014)(81166006)(6916009)(8936002)(4326008)(316002)(25786009)(102836004)(36756003)(478600001);
- DIR:OUT; SFP:1101; SCL:1; SRVR:MWHPR11MB1950;
- H:MWHPR11MB1373.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: microchip.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: 9QCvnwkfRI+ETEb1hgDZ1OKUdl+TLS+1U8CxlRInAx5lg2f3w+bbSPh/Zvc/Hm16vyfl681qXHTZm6+vhvyL+EN+BvuMPPOr/B83sNBhAXZ6pO+Xky7vCIaG9JjqG8CsFQRrA7fIfiAmfih9u7c/3J9uPbIoVOI9wPi/PXcac8oWD9h8JF83+Ms3BolCvtGgTzQtPazDnsQ7J3JbiFJ2aME2TM+/kV0c6ZxKN2LjAJnV8HEYNf6vxKQCk9153OxgoVMsGu+UqH90rbls2XfctOvglcDIIA6hplQJ41h5THW+qZYgGJGgaFVyEDNHBS8vRTqS0jyTZKB7SHkXvuUJQlvv7kM5+ikoiX/UKRwD5sBc8K2ZJLPZm1+SolBzR7StRzhcGebaqkax6cCnowePzYTXDBJCCRBOHTWuMLxD77M=
+Received: from mail-ot1-f68.google.com (mail-ot1-f68.google.com
+ [209.85.210.68])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D8B48868A6
+ for <devel@driverdev.osuosl.org>; Fri,  9 Aug 2019 18:41:49 +0000 (UTC)
+Received: by mail-ot1-f68.google.com with SMTP id n5so136396533otk.1
+ for <devel@driverdev.osuosl.org>; Fri, 09 Aug 2019 11:41:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=65V1JuI2VA80cQiA+hQRPmXIFv0sktRgZklgyYT7uA0=;
+ b=DWPweNNhV4+ruQv9Ddd4zqB9w0vtKDVgapB/ZVHrS05Sn8qP4BmMIriNe0wx9XQBGH
+ hOF76QgLBKdnwg6w3+Dkuq+ngwyXRP42e/T1eL02kQNGDu00IXab7lmWTo0QiBysr9E/
+ TeZlVF/M1hklUCmW09cFplmzLG5DScXSOgnbkJACjKVnylHr2s87Eta7YTGr9m2xvVN8
+ qRoINJQcSrSlsguzfhx7xCQRiujtA2/A+kve2xletz9rb8leO26rubFGhWdtoxPAfIJS
+ QrRzC4jGVAGQLe/Khw7yFoWPIhCpLPo4hC5Ujj2mu3KCwC/8PxZjQ2eu95XsZzEB7vE8
+ Y8Cg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=65V1JuI2VA80cQiA+hQRPmXIFv0sktRgZklgyYT7uA0=;
+ b=pEiNu71aHQ19hGLKd/CXdiggRw6wXaxHslyngC/zrMJgCKOWnYc1pxXSy5munhUf7t
+ H+ErfMu5K+n+ra0wS93LNlsOmtYNEobG47Q1TuXo4hoPiA8K9H3VQCW4PiUfuD7qCx0L
+ W2WejaI+MKvwzZFBrcmP6RQesZP9HEoFGjYrWc9A18UMS28oY9314xN+A5ql8m5xRvmA
+ /Z4rZYHwNsHkUH80DC/QAmUUMAhea2XbrbddDqVUOA6ggrFSQfTcx5Wk/Nrcs1SuJQ3t
+ eAo9PTCzRnuR0vjMbikXsebZbvqUtBhs9HTq7d74ZW/OdGLqU4D6h6UBcrEImnDu7j/P
+ c92A==
+X-Gm-Message-State: APjAAAUSeBEA6zIuhSnmy9G2frWHLNIX3jDoGwfjIXh3KSREaEKvYmZI
+ xSuIpYvL/XUDgq77RxXvuAkLpZc8Up6svRC+N9mWpA==
+X-Google-Smtp-Source: APXvYqxofUvcQ8atqUEUAeawzR1iYVttn85OBd+PtUiLhtQNlBMyJ9X3QlcGqVql+JVlFOO7UV4cffGfKEsIucd9ydw=
+X-Received: by 2002:a9d:73d0:: with SMTP id m16mr20182380otk.190.1565376108768; 
+ Fri, 09 Aug 2019 11:41:48 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: f255cc06-c4bd-42ca-67b6-08d71cf6ef03
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Aug 2019 18:25:19.5693 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: l8rGMGJTPN3s9Ng4/FGX8LnhYLh1DO42ZLkl17NGnQ7h8G0m6iqYsUvLKkarmiF8J9ftryJOGsAYudqtxDscLsz2zGT+iZcxA3mp5heI5oo=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1950
+References: <20190808222727.132744-1-hridya@google.com>
+ <20190808222727.132744-3-hridya@google.com>
+ <20190809145508.GD16262@kroah.com>
+ <20190809181439.qrs2k7l23ot4am4s@wittgenstein>
+In-Reply-To: <20190809181439.qrs2k7l23ot4am4s@wittgenstein>
+From: Hridya Valsaraju <hridya@google.com>
+Date: Fri, 9 Aug 2019 11:41:12 -0700
+Message-ID: <CA+wgaPPK0fY2a+pCEFHrw8p8WCb459yw41s_6xppWFfEa=P7Og@mail.gmail.com>
+Subject: Re: [PATCH v3 2/2] binder: Validate the default binderfs device names.
+To: Christian Brauner <christian.brauner@ubuntu.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -157,71 +82,86 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- johannes@sipsolutions.net, Ajay.Kathat@microchip.com,
- Adham.Abozaeid@microchip.com
+Cc: devel@driverdev.osuosl.org, kernel-team@android.com,
+ Todd Kjos <tkjos@android.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org,
+ =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
+ Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Adham Abozaeid <adham.abozaeid@microchip.com>
+On Fri, Aug 9, 2019 at 11:14 AM Christian Brauner
+<christian.brauner@ubuntu.com> wrote:
+>
+> On Fri, Aug 09, 2019 at 04:55:08PM +0200, Greg Kroah-Hartman wrote:
+> > On Thu, Aug 08, 2019 at 03:27:26PM -0700, Hridya Valsaraju wrote:
+> > > Length of a binderfs device name cannot exceed BINDERFS_MAX_NAME.
+> > > This patch adds a check in binderfs_init() to ensure the same
+> > > for the default binder devices that will be created in every
+> > > binderfs instance.
+> > >
+> > > Co-developed-by: Christian Brauner <christian.brauner@ubuntu.com>
+> > > Signed-off-by: Christian Brauner <christian.brauner@ubuntu.com>
+> > > Signed-off-by: Hridya Valsaraju <hridya@google.com>
+> > > ---
+> > >  drivers/android/binderfs.c | 12 ++++++++++++
+> > >  1 file changed, 12 insertions(+)
+> > >
+> > > diff --git a/drivers/android/binderfs.c b/drivers/android/binderfs.c
+> > > index aee46dd1be91..55c5adb87585 100644
+> > > --- a/drivers/android/binderfs.c
+> > > +++ b/drivers/android/binderfs.c
+> > > @@ -570,6 +570,18 @@ static struct file_system_type binder_fs_type = {
+> > >  int __init init_binderfs(void)
+> > >  {
+> > >     int ret;
+> > > +   const char *name;
+> > > +   size_t len;
+> > > +
+> > > +   /* Verify that the default binderfs device names are valid. */
+> >
+> > And by "valid" you only mean "not bigger than BINDERFS_MAX_NAME, right?
+> >
+> > > +   name = binder_devices_param;
+> > > +   for (len = strcspn(name, ","); len > 0; len = strcspn(name, ",")) {
+> > > +           if (len > BINDERFS_MAX_NAME)
+> > > +                   return -E2BIG;
+> > > +           name += len;
+> > > +           if (*name == ',')
+> > > +                   name++;
+> > > +   }
+> >
+> > We already tokenize the binderfs device names in binder_init(), why not
+> > check this there instead?  Parsing the same string over and over isn't
+> > the nicest.
+>
+> non-binderfs binder devices do not have their limit set to
+> BINDERFS_NAME_MAX. That's why the check has likely been made specific to
+> binderfs binder devices which do have that limit.
 
-return -EIO for bus failures, 0 otherwise.
 
-Signed-off-by: Adham Abozaeid <adham.abozaeid@microchip.com>
----
- drivers/staging/wilc1000/wilc_wlan.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+Thank you Greg and Christian, for taking another look. Yes,
+non-binderfs binder devices not having this limitation is the reason
+why the check was made specific to binderfs devices. Also, when
+CONFIG_ANDROID_BINDERFS is set, patch 1/2 disabled the same string
+being parsed in binder_init().
 
-diff --git a/drivers/staging/wilc1000/wilc_wlan.c b/drivers/staging/wilc1000/wilc_wlan.c
-index 3d902b499a34..2bbb359d2119 100644
---- a/drivers/staging/wilc1000/wilc_wlan.c
-+++ b/drivers/staging/wilc1000/wilc_wlan.c
-@@ -979,7 +979,7 @@ int wilc_wlan_stop(struct wilc *wilc, struct wilc_vif *vif)
- 	if (!ret) {
- 		netdev_err(vif->ndev, "Error while reading reg\n");
- 		release_bus(wilc, WILC_BUS_RELEASE_ALLOW_SLEEP);
--		return ret;
-+		return -EIO;
- 	}
- 
- 	ret = wilc->hif_func->hif_write_reg(wilc, WILC_GP_REG_0,
-@@ -987,14 +987,14 @@ int wilc_wlan_stop(struct wilc *wilc, struct wilc_vif *vif)
- 	if (!ret) {
- 		netdev_err(vif->ndev, "Error while writing reg\n");
- 		release_bus(wilc, WILC_BUS_RELEASE_ALLOW_SLEEP);
--		return ret;
-+		return -EIO;
- 	}
- 
- 	ret = wilc->hif_func->hif_read_reg(wilc, WILC_FW_HOST_COMM, &reg);
- 	if (!ret) {
- 		netdev_err(vif->ndev, "Error while reading reg\n");
- 		release_bus(wilc, WILC_BUS_RELEASE_ALLOW_SLEEP);
--		return ret;
-+		return -EIO;
- 	}
- 	reg = BIT(0);
- 
-@@ -1002,12 +1002,12 @@ int wilc_wlan_stop(struct wilc *wilc, struct wilc_vif *vif)
- 	if (!ret) {
- 		netdev_err(vif->ndev, "Error while writing reg\n");
- 		release_bus(wilc, WILC_BUS_RELEASE_ALLOW_SLEEP);
--		return ret;
-+		return -EIO;
- 	}
- 
- 	release_bus(wilc, WILC_BUS_RELEASE_ALLOW_SLEEP);
- 
--	return ret;
-+	return 0;
- }
- 
- void wilc_wlan_cleanup(struct net_device *dev)
--- 
-2.17.1
+>
+> But, in practice, 255 is the standard path-part limit that no-one really
+> exceeds especially not for stuff such as device nodes which usually have
+> rather standard naming schemes (e.g. binder, vndbinder, hwbinder, etc.).
+> So yes, we can move that check before both the binderfs binder device
+> and non-binderfs binder device parsing code and treat it as a generic
+> check.
+> Then we can also backport that check as you requested in the other mail.
+> Unless Hridya or Todd have objections, of course.
 
+I do not have any objections to adding a generic check in binder_init() instead.
+
+>
+> Christian
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
