@@ -2,76 +2,76 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E125B8716C
-	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Aug 2019 07:24:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3B09D8716E
+	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Aug 2019 07:24:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6C2908648E;
-	Fri,  9 Aug 2019 05:24:37 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D83F5866A9;
+	Fri,  9 Aug 2019 05:24:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kkw8JqyIAs9q; Fri,  9 Aug 2019 05:24:36 +0000 (UTC)
+	with ESMTP id nFCHAhn-UIjy; Fri,  9 Aug 2019 05:24:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AC14C84407;
-	Fri,  9 Aug 2019 05:24:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A22FB82066;
+	Fri,  9 Aug 2019 05:24:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 315F81BF5DC
- for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 05:24:34 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id F2F0D1BF5DC
+ for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 05:24:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 27C01861AB
- for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 05:24:34 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id EC8E822270
+ for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 05:24:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id y+UouAo5Ootq for <devel@linuxdriverproject.org>;
- Fri,  9 Aug 2019 05:24:33 +0000 (UTC)
+ with ESMTP id xR+FhNbVGkqK for <devel@linuxdriverproject.org>;
+ Fri,  9 Aug 2019 05:24:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
- [209.85.214.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id EE160875B4
- for <devel@driverdev.osuosl.org>; Fri,  9 Aug 2019 05:24:31 +0000 (UTC)
-Received: by mail-pl1-f194.google.com with SMTP id b3so44539951plr.4
- for <devel@driverdev.osuosl.org>; Thu, 08 Aug 2019 22:24:31 -0700 (PDT)
+Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
+ [209.85.214.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id 42EE221551
+ for <devel@driverdev.osuosl.org>; Fri,  9 Aug 2019 05:24:34 +0000 (UTC)
+Received: by mail-pl1-f196.google.com with SMTP id ay6so44541651plb.9
+ for <devel@driverdev.osuosl.org>; Thu, 08 Aug 2019 22:24:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=3uVkxMKPW2J8PBXaiAQezVtSx496EjJp3yt27ZKme78=;
- b=cOlJ60W0foxEBaDaFCzr3ycN4jICHCAo6iS3VvTZevtYshWzt90XSanWJet44bHe4S
- k8tKrbsQZSHwTdfjf43c36mXhrjD4tC51auUB1zP7Bi+6mzxtg54tnGCzQLvTcUr3nXK
- gBzC2WRlyeu4X6IJHG8c7y8DOmT0kBg5JQws8+hDijUVJ2dgh4N9xtT8nh8tNXJ6j9L7
- 15jdNg3GT+BPVoEIm00/jfqHlNPp/AJTHuD4n4nSSrogrjUu6mUjo/7o/0Dd1u/FIecp
- L20jMPiqAPVauRmN4XnT5UJ8wLksZ2uug3V5dUn96blOjL7e4gTjw4uOpnfXHZfwyuC2
- 1m/Q==
+ bh=WFQgXLs8DeronhFyYcvrLO7Mg35uT2uPyNmKpc5hatA=;
+ b=FmL9v3HXOYLI+hwwIz4KZ86TX/xKbjo9jQYz5wnwkmblC/TzpFx54IS7PNgBHGoViY
+ YnFABbjR8DCKi28IGeghg4sb5ga+mIyiAUWtddPsy2sdNjdjAudzwy/W7bnXO69q1wBB
+ BESS+oA+pLhrClTn0G2hHeKQXIVnyF/i1Z0lqFyZFoE+jqhfw+DMhIgK+SnhoQgszLYK
+ ma9UIgGXDEfjxPjUqioT+4R1UfCegmc2aFV5aNrNC4lbsj4+fZlKXccic2ZE7/fxq+LN
+ z48BpBr8HkBqTG+hI2UEobMasZGYUG30DWhHY6PAx5Z7N4Lnflh+F50tArOrv3ck0zK6
+ FjDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=3uVkxMKPW2J8PBXaiAQezVtSx496EjJp3yt27ZKme78=;
- b=D1wWGw168Jy+L5xYepWRlbMEhkq1H0k62vx1gRFVX6TzDMVXpzzshI7tt4Z6ocvf8Y
- 9zulEmC0k9bu7Gb+vP7OyXonvdABA+QSGS70QUZXIsD2b0+frppSSvtUGhnzbf91BtH+
- ljA728cGD86SN3l5umM23MDYH10NlQFdtkh7LSJ4pt99KE5ar4JiwWjgjbvQaLXWVZC7
- 3V/puo5Ibnrj7wbuSfCxcmAJOpzBov3q3/N0KmGE/YHLLA+4F3BTh07gmedKuWDIGzDO
- iYGvXafpsO3R0QdnEfBM2lU7/2ap3MWxdMP/lL3erL7tUuNjwWbcZ5cqgY1eTt66DI9f
- S2uQ==
-X-Gm-Message-State: APjAAAX1LLn9ZpfWplTH/ZnILqLZio3iNO8sAr5T8PWy0jWSC1SpFNd2
- JTk+d0IDQMWKzOtpHI5H27M=
-X-Google-Smtp-Source: APXvYqzetClFuoIvKac24S6KQSQZB+uR3kuZBG3KDpofUuHQQtJv2yJYUkyraoD26b+FZ9F+QGP9FA==
-X-Received: by 2002:a17:902:e2:: with SMTP id
- a89mr17504669pla.210.1565328271623; 
- Thu, 08 Aug 2019 22:24:31 -0700 (PDT)
+ bh=WFQgXLs8DeronhFyYcvrLO7Mg35uT2uPyNmKpc5hatA=;
+ b=iQ8Wl/GXtbSmRE8Fu++9GVWdyvki4WqbKIbPBNsC6/iPbY7P+1nUyqDKMbeDB5OI4C
+ fnVDyhjjEmxjHmiDsWWJI4O43FbwAk6l6+5cNdm6UT/FCIIXjno8RdeiYRcHc8dddtZL
+ 4WpWOC8oCGPej+xAsuXiNtJIVKbdl3O7W0LFNQ99HNWAoYHxPwugEkmwRhZkuTQUcyth
+ N5YE+A/UBl8IZjTKI75RjTqosY5iOu3ZxPbahGnedeZES8gRYjOJsX5DXwF6zm7GVqqT
+ T3mhM1b89wS4CpmQMPsapdqgm+6GnBBCOh9RtbV+82IyIF0QIE4BGhqFTtNme6VwmkIv
+ ib3A==
+X-Gm-Message-State: APjAAAUW32DZB26E0Ff7qC6vwgdSckvQLoNowM7/ViT4un1Sy6mmZc8J
+ 5iirJXRZfEJ2qmYQJx5qZHs=
+X-Google-Smtp-Source: APXvYqwmiCHznZhRqH3GLoC5KYqgMBqmWz0RYZ+wPQ3RimLwjIJ6kIB2v2DPq9ktOakrcNJV7q/p3w==
+X-Received: by 2002:a17:902:9307:: with SMTP id
+ bc7mr16661924plb.183.1565328273990; 
+ Thu, 08 Aug 2019 22:24:33 -0700 (PDT)
 Received: from localhost.localdomain ([122.163.44.6])
- by smtp.gmail.com with ESMTPSA id h13sm65710491pfn.13.2019.08.08.22.24.29
+ by smtp.gmail.com with ESMTPSA id h13sm65710491pfn.13.2019.08.08.22.24.31
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Thu, 08 Aug 2019 22:24:31 -0700 (PDT)
+ Thu, 08 Aug 2019 22:24:33 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: larry.finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
  gregkh@linuxfoundation.org, devel@driverdev.osuosl.org
-Subject: [PATCH 10/11] staging: rtl8712: r8712_xmitframe_aggr_1st(): Change
- return type to void
-Date: Fri,  9 Aug 2019 10:53:52 +0530
-Message-Id: <20190809052353.5308-10-nishkadg.linux@gmail.com>
+Subject: [PATCH 11/11] staging: rtl8712: r8712_dump_aggr_xframe(): Change type
+ to void
+Date: Fri,  9 Aug 2019 10:53:53 +0530
+Message-Id: <20190809052353.5308-11-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190809052353.5308-1-nishkadg.linux@gmail.com>
 References: <20190809052353.5308-1-nishkadg.linux@gmail.com>
@@ -94,7 +94,7 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change return type of r8712_xmitframe_aggr_1st from u8 to void as it
+Change return type of r8712_dump_aggr_xframe from u8 to void as it
 always returns _SUCCESS and its return value is never used.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
@@ -104,43 +104,43 @@ Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
  2 files changed, 4 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/staging/rtl8712/rtl8712_xmit.c b/drivers/staging/rtl8712/rtl8712_xmit.c
-index 6f1dbcf25859..9152c25c11f8 100644
+index 9152c25c11f8..c247f92207f5 100644
 --- a/drivers/staging/rtl8712/rtl8712_xmit.c
 +++ b/drivers/staging/rtl8712/rtl8712_xmit.c
-@@ -318,8 +318,8 @@ void r8712_append_mpdu_unit(struct xmit_buf *pxmitbuf,
+@@ -352,8 +352,8 @@ u16 r8712_xmitframe_aggr_next(struct xmit_buf *pxmitbuf,
+ 		(((struct tx_desc *)pxmitbuf->pbuf)->txdw0 & 0x0000ffff);
  }
  
- 
--u8 r8712_xmitframe_aggr_1st(struct xmit_buf *pxmitbuf,
+-u8 r8712_dump_aggr_xframe(struct xmit_buf *pxmitbuf,
 -			struct xmit_frame *pxmitframe)
-+void r8712_xmitframe_aggr_1st(struct xmit_buf *pxmitbuf,
-+			      struct xmit_frame *pxmitframe)
++void r8712_dump_aggr_xframe(struct xmit_buf *pxmitbuf,
++			    struct xmit_frame *pxmitframe)
  {
- 	/* linux complete context doesn't need to protect */
- 	pxmitframe->pxmitbuf = pxmitbuf;
-@@ -332,8 +332,6 @@ u8 r8712_xmitframe_aggr_1st(struct xmit_buf *pxmitbuf,
- 	r8712_construct_txaggr_cmd_hdr(pxmitbuf);
- 	r8712_append_mpdu_unit(pxmitbuf, pxmitframe);
- 	pxmitbuf->aggr_nr = 1;
+ 	struct _adapter *padapter = pxmitframe->padapter;
+ 	struct dvobj_priv *pdvobj = &padapter->dvobjpriv;
+@@ -390,8 +390,6 @@ u8 r8712_dump_aggr_xframe(struct xmit_buf *pxmitbuf,
+ 	}
+ 	r8712_write_port(pxmitframe->padapter, RTL8712_DMA_H2CCMD,
+ 			total_length + TXDESC_SIZE, (u8 *)pxmitframe);
 -
 -	return _SUCCESS;
  }
  
- u16 r8712_xmitframe_aggr_next(struct xmit_buf *pxmitbuf,
+ #endif
 diff --git a/drivers/staging/rtl8712/rtl8712_xmit.h b/drivers/staging/rtl8712/rtl8712_xmit.h
-index 9be8fb70c92e..faf2128285b6 100644
+index faf2128285b6..0b56bd3ac4d0 100644
 --- a/drivers/staging/rtl8712/rtl8712_xmit.h
 +++ b/drivers/staging/rtl8712/rtl8712_xmit.h
-@@ -102,8 +102,8 @@ void r8712_do_queue_select(struct _adapter *padapter,
- 			   struct pkt_attrib *pattrib);
- 
+@@ -104,8 +104,8 @@ void r8712_do_queue_select(struct _adapter *padapter,
  #ifdef CONFIG_R8712_TX_AGGR
--u8 r8712_xmitframe_aggr_1st(struct xmit_buf *pxmitbuf,
+ void r8712_xmitframe_aggr_1st(struct xmit_buf *pxmitbuf,
+ 			      struct xmit_frame *pxmitframe);
+-u8 r8712_dump_aggr_xframe(struct xmit_buf *pxmitbuf,
 -			struct xmit_frame *pxmitframe);
-+void r8712_xmitframe_aggr_1st(struct xmit_buf *pxmitbuf,
-+			      struct xmit_frame *pxmitframe);
- u8 r8712_dump_aggr_xframe(struct xmit_buf *pxmitbuf,
- 			struct xmit_frame *pxmitframe);
++void r8712_dump_aggr_xframe(struct xmit_buf *pxmitbuf,
++			    struct xmit_frame *pxmitframe);
+ #endif
+ 
  #endif
 -- 
 2.19.1
