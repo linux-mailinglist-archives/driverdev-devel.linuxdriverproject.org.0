@@ -1,58 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D3D2A87AA9
-	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Aug 2019 14:57:00 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3151620343;
-	Fri,  9 Aug 2019 12:56:59 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3vxi2GeP2gSD; Fri,  9 Aug 2019 12:56:58 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 3CA03227B1;
-	Fri,  9 Aug 2019 12:56:56 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A36661BF2CF
- for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 12:56:53 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1B79B87D37
+	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Aug 2019 16:51:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9F0BA85BCD
- for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 12:56:53 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7D08E8696D;
+	Fri,  9 Aug 2019 14:51:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8znkqid2u7OG; Fri,  9 Aug 2019 14:51:46 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 74A49869FD;
+	Fri,  9 Aug 2019 14:51:43 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 679361BF2F2
+ for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 14:51:41 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id E2494848DB
+ for <devel@linuxdriverproject.org>; Fri,  9 Aug 2019 14:51:22 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SIcPS-noTaWv for <devel@linuxdriverproject.org>;
- Fri,  9 Aug 2019 12:56:51 +0000 (UTC)
+ with ESMTP id IFe7j2hp0Z75 for <devel@linuxdriverproject.org>;
+ Fri,  9 Aug 2019 14:51:15 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E446686A24
- for <devel@driverdev.osuosl.org>; Fri,  9 Aug 2019 12:56:51 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 95FA288442
+ for <devel@driverdev.osuosl.org>; Fri,  9 Aug 2019 14:50:18 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 4986720B7C;
- Fri,  9 Aug 2019 12:56:51 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id E26FB208C4;
+ Fri,  9 Aug 2019 14:50:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1565355411;
- bh=bGD8aEP4a64R/eBVC495DgtcJcfd4ZnnlriZrZK79Us=;
+ s=default; t=1565362218;
+ bh=H+aFC41WTfEHyca84kgJ4nvuBia6TgTyEiDk56wKsU0=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Ux8v/VdR2h69DjRbe8tj7TUsxRePrHFrq+HMokZcYj7W6xxGOkp6olVTYKRP2bl6l
- kgewB1RUyhSfGj30WTAcDlv/PDAuyAj5V81Si2/F9TAXe6CLgJ3+XhZ1OYqbbVgJP/
- lIw+bpHXQH72GcuoxdcPRR189Qwdf7HB1qg+yV3s=
-Date: Fri, 9 Aug 2019 14:56:49 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: YueHaibing <yuehaibing@huawei.com>
-Subject: Re: [PATCH] staging: wusbcore: Fix build error without CONFIG_USB
-Message-ID: <20190809125649.GA2531@kroah.com>
-References: <20190809102150.66896-1-yuehaibing@huawei.com>
+ b=p4/m0hTsTJk8ReJo5wAny4/PaHO0Tgr/AsaXR8Cn8fdCDgphvClRMi0xcs01bMFH2
+ 9TzKWigr+rv0if6J+O07TTne/KD2u8wfZnVYFhRSnKhnuMywKX6nF85KcRfYMq0Ih5
+ 4teuj5j+vkCom4J6Ovbm7ZheHtQqUFXC8A4Siw74=
+Date: Fri, 9 Aug 2019 16:50:16 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Hridya Valsaraju <hridya@google.com>
+Subject: Re: [PATCH v3 1/2] binder: Add default binder devices through
+ binderfs when configured
+Message-ID: <20190809145016.GB16262@kroah.com>
+References: <20190808222727.132744-1-hridya@google.com>
+ <20190808222727.132744-2-hridya@google.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190809102150.66896-1-yuehaibing@huawei.com>
+In-Reply-To: <20190808222727.132744-2-hridya@google.com>
 User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -66,43 +68,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- ard.biesheuvel@linaro.org
+Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
+ kernel-team@android.com, linux-kernel@vger.kernel.org,
+ Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
+ Joel Fernandes <joel@joelfernandes.org>,
+ Christian Brauner <christian.brauner@ubuntu.com>,
+ Martijn Coenen <maco@android.com>, Christian Brauner <christian@brauner.io>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Aug 09, 2019 at 06:21:50PM +0800, YueHaibing wrote:
-> USB_WUSB should depends on CONFIG_USB, otherwise building fails
-> 
-> drivers/staging/wusbcore/wusbhc.o: In function `wusbhc_giveback_urb':
-> wusbhc.c:(.text+0xa28): undefined reference to `usb_hcd_giveback_urb'
-> 
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Fixes: 71ed79b0e4be ("USB: Move wusbcore and UWB to staging as it is obsolete")
-> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
-> ---
->  drivers/staging/wusbcore/Kconfig | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/wusbcore/Kconfig b/drivers/staging/wusbcore/Kconfig
-> index 056c60b..a559d02 100644
-> --- a/drivers/staging/wusbcore/Kconfig
-> +++ b/drivers/staging/wusbcore/Kconfig
-> @@ -4,7 +4,7 @@
->  #
->  config USB_WUSB
->  	tristate "Enable Wireless USB extensions"
-> -	depends on UWB
-> +	depends on UWB && USB
->  	select CRYPTO
->  	select CRYPTO_AES
->  	select CRYPTO_CCM
-> -- 
-> 2.7.4
+On Thu, Aug 08, 2019 at 03:27:25PM -0700, Hridya Valsaraju wrote:
+> Currently, since each binderfs instance needs its own
+> private binder devices, every time a binderfs instance is
+> mounted, all the default binder devices need to be created
+> via the BINDER_CTL_ADD IOCTL.
 
-Ah, good catch, sorry about that!
+Wasn't that a design goal of binderfs?
+
+> This patch aims to
+> add a solution to automatically create the default binder
+> devices for each binderfs instance that gets mounted.
+> To achieve this goal, when CONFIG_ANDROID_BINDERFS is set,
+> the default binder devices specified by CONFIG_ANDROID_BINDER_DEVICES
+> are created in each binderfs instance instead of global devices
+> being created by the binder driver.
+
+This is going to change how things work today, what is going to break
+because of this change?
+
+I don't object to this, except for the worry of changing the default
+behavior.
+
+thanks,
 
 greg k-h
 _______________________________________________
