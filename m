@@ -1,50 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3239F8A027
-	for <lists+driverdev-devel@lfdr.de>; Mon, 12 Aug 2019 15:55:31 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7F3F585DBB;
-	Mon, 12 Aug 2019 13:55:29 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tpOrWUUuKcap; Mon, 12 Aug 2019 13:55:28 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 996A485B5C;
-	Mon, 12 Aug 2019 13:55:27 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3624A1BF34C
- for <devel@linuxdriverproject.org>; Mon, 12 Aug 2019 13:55:26 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id BB0D38A143
+	for <lists+driverdev-devel@lfdr.de>; Mon, 12 Aug 2019 16:37:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 31F362034C
- for <devel@linuxdriverproject.org>; Mon, 12 Aug 2019 13:55:26 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CE4132000B;
+	Mon, 12 Aug 2019 14:37:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id xcl96ZvumPMM; Mon, 12 Aug 2019 14:37:10 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 99F4F203E7;
+	Mon, 12 Aug 2019 14:37:08 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D7FD21BF2C1
+ for <devel@linuxdriverproject.org>; Mon, 12 Aug 2019 14:37:04 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id D38248653D
+ for <devel@linuxdriverproject.org>; Mon, 12 Aug 2019 14:37:04 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LjA3SuNYqPQF for <devel@linuxdriverproject.org>;
- Mon, 12 Aug 2019 13:55:24 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from relay10.mail.gandi.net (relay10.mail.gandi.net [217.70.178.230])
- by silver.osuosl.org (Postfix) with ESMTPS id 742842012D
- for <devel@driverdev.osuosl.org>; Mon, 12 Aug 2019 13:55:24 +0000 (UTC)
-Received: from localhost (lfbn-1-17395-211.w86-250.abo.wanadoo.fr
- [86.250.200.211]) (Authenticated sender: maxime.ripard@bootlin.com)
- by relay10.mail.gandi.net (Postfix) with ESMTPSA id AD3FC240003;
- Mon, 12 Aug 2019 13:55:19 +0000 (UTC)
-Date: Mon, 12 Aug 2019 15:55:19 +0200
-From: Maxime Ripard <maxime.ripard@bootlin.com>
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH 0/7] media: cedrus: Improvements/cleanup
-Message-ID: <20190812135519.ysmqytkhtln7sknc@flea>
-References: <20190530211516.1891-1-jernej.skrabec@siol.net>
- <274221f1-b2d2-83aa-d84b-e1c572a1b832@xs4all.nl>
+ with ESMTP id mVtD1tOkRCvC for <devel@linuxdriverproject.org>;
+ Mon, 12 Aug 2019 14:37:04 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 58EEF8610F
+ for <devel@driverdev.osuosl.org>; Mon, 12 Aug 2019 14:37:04 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 9DBCF20665;
+ Mon, 12 Aug 2019 14:37:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1565620624;
+ bh=19w5f6Fwk20FKJU0kvKgskzjOj2oLv7ggABO5y7SBw0=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=PaQuLIUWajE8c2yN5fC8Es5kUXoF43/evNLLhALjOUvX9j1BdJwqvLlfIss7IvzYg
+ usE8zPVBOjXf/dgeuXLlefd7B7iPWHzLmy6PMRo7owTCWdesyTo11v/41U1HjC4rpO
+ yykg+xUHIMEj6p9MM3OzvFHU+PBVTAkPUmwKDfQg=
+Date: Mon, 12 Aug 2019 16:37:01 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Nishka Dasgupta <nishkadg.linux@gmail.com>
+Subject: Re: [PATCH 01/11] staging: rtl8712: _r8712_init_xmit_priv(): Change
+ return values and type
+Message-ID: <20190812143701.GA27411@kroah.com>
+References: <20190809052353.5308-1-nishkadg.linux@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <274221f1-b2d2-83aa-d84b-e1c572a1b832@xs4all.nl>
-User-Agent: NeoMutt/20180716
+Content-Disposition: inline
+In-Reply-To: <20190809052353.5308-1-nishkadg.linux@gmail.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,75 +67,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Jernej Skrabec <jernej.skrabec@siol.net>,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
- paul.kocialkowski@bootlin.com, wens@csie.org, mchehab@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============1343883215452479996=="
+Cc: devel@driverdev.osuosl.org, florian.c.schilhabel@googlemail.com,
+ larry.finger@lwfinger.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Fri, Aug 09, 2019 at 10:53:43AM +0530, Nishka Dasgupta wrote:
+> Change the return values in _r8712_init_xmit_priv from _SUCCESS/_FAIL to
+> 0/-ENOMEM respectively. Change return type from sint to int.
+> 
+> Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 
---===============1343883215452479996==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="5ghcmst6jaoa4kn7"
-Content-Disposition: inline
+I only received 9 patches in this series.  I'll try to apply these, but
+if they fail, please fix up your tree, and resend the remaining ones.
 
+thanks,
 
---5ghcmst6jaoa4kn7
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-Hi!
-
-On Mon, Aug 12, 2019 at 02:12:21PM +0200, Hans Verkuil wrote:
-> On 5/30/19 11:15 PM, Jernej Skrabec wrote:
-> > Here is first batch of random Cedrus improvements/cleanups. Only patch 2
-> > has a change which raises a question about H264 controls.
-> >
-> > Changes were tested on H3 SoC using modified ffmpeg and Kodi.
-> >
-> > Please take a look.
->
-> This has been sitting in patchwork for quite some time. I've updated the
-> status of the various patches and most needed extra work.
->
-> It seems that patches 4/7 and 5/7 are OK. Maxime, can you please confirm
-> that these two are still valid? They apply cleanly on the latest master
-> at least, but since they are a bit old I prefer to have confirmation that
-> it's OK to merge them.
-
-Yes, you can definitely merge those.
-
-Maxime
-
---
-Maxime Ripard, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
-
---5ghcmst6jaoa4kn7
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCXVFvxwAKCRDj7w1vZxhR
-xaNLAPsEGPiyqOdRajYEA4cGxVY18jjPs7B80tUGLwn7y/lX7QEA1hoN114NPrjR
-odSkIRw1Cs9MkNQXMbozY4cjiWx8ZAs=
-=JSLg
------END PGP SIGNATURE-----
-
---5ghcmst6jaoa4kn7--
-
---===============1343883215452479996==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============1343883215452479996==--
