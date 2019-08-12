@@ -2,103 +2,56 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F129897EE
-	for <lists+driverdev-devel@lfdr.de>; Mon, 12 Aug 2019 09:37:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B888B89915
+	for <lists+driverdev-devel@lfdr.de>; Mon, 12 Aug 2019 10:57:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DA91587B21;
-	Mon, 12 Aug 2019 07:37:11 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 25E5F87ACB;
+	Mon, 12 Aug 2019 08:57:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Z8Woso9oQsRb; Mon, 12 Aug 2019 07:37:11 +0000 (UTC)
+	with ESMTP id XnWLLxUie8zg; Mon, 12 Aug 2019 08:57:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 39A40875C7;
-	Mon, 12 Aug 2019 07:37:11 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3A61F87804;
+	Mon, 12 Aug 2019 08:57:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D4BD31BF359
- for <devel@linuxdriverproject.org>; Mon, 12 Aug 2019 07:37:08 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1D40A1BF473
+ for <devel@linuxdriverproject.org>; Mon, 12 Aug 2019 08:57:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C7AAA875C7
- for <devel@linuxdriverproject.org>; Mon, 12 Aug 2019 07:37:08 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 19B2F85F8D
+ for <devel@linuxdriverproject.org>; Mon, 12 Aug 2019 08:57:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id d6AK+KQuoeo9 for <devel@linuxdriverproject.org>;
- Mon, 12 Aug 2019 07:37:07 +0000 (UTC)
+ with ESMTP id E9HaqudnIyN1 for <devel@linuxdriverproject.org>;
+ Mon, 12 Aug 2019 08:57:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from EUR01-DB5-obe.outbound.protection.outlook.com
- (mail-oln040092064024.outbound.protection.outlook.com [40.92.64.24])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 657FF875C2
- for <devel@driverdev.osuosl.org>; Mon, 12 Aug 2019 07:37:07 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=j7z5dfCYQU7j1skmgl/LX+t/lKum7ggeYI74+oy+vppKJMP4upW5OKA4UWTWHDKto7PwPtJZoruMnqJq/gYuYosRGiOOcmnlTa71CocmqNjMY9Z27v1nxIMeW5wQ3eQ/A449OgG7L+e70u1rwqpyqJG/7Q+wqoGD7A/O1EVZeaJlqwDuR/9xj0sJlps86cDHbz4CVeYnMlkfVz28OwRO1LOR8+dcc1W2iF/VuDXQJeTkIGJPnAt6NtJYaBgDggX2M1FSHYtlA/Uhb9vD85uTP7sojw8vz3jy5u87mUilC/vTwe2ePXpGes/z7Kiyi+TGO2YcDQ67So4CB3a0nOA7Pg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=PO1SlIy5+lhv9CzqrpNs5jaFl7DFGGDbPlMYFlGBJkw=;
- b=daU4NFwiiEJt7Wr+4N0C/etYwhuA1ERZTCvQ0A+6YWkDGR0XORBqLxm0ALhl9TZ4hQ3K1WEc+JU4Yt3CKFLktiycaGV5/oBNtRaTYJac6mwJzEoSNEFrx/ugr8JDFz4yooLY/vfFMNi6vTwHje7Y1PGzN/Qr0fX29GwrpZF/mC+m/nj9afd9eOIxABMVHcHFN+xqad6axrxz1vxiIw6CaBVgLsAfhd6IMGmNe69kKAur6wYbQgmfPNfiPqDj/JIzzrJ4+XgPorDWRSj0x15QtjZt0FzXi2lsi13KXv0V9m24fmeTL1tjEbCY+LTZaGtJKwdZBNfwirwadVRUjRvUPA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=PO1SlIy5+lhv9CzqrpNs5jaFl7DFGGDbPlMYFlGBJkw=;
- b=c+GfiQCXlAt6goF0bjtm5C7AB9J9ANkP3sugIMy7WxaqEIWpf5iuOs/jj+upEjUZoTY9Ubj1s2at5b3kgAct45bs9v1DrkgZca0op9RXbp9ZkiEJqX2UBqG4i+Jp6WPsTX36iOcKayn83QTbI7PxD53g7Pmg3DKEwZpIAEDBRRjrpAhWAmNKgTskRipOxZFMEd7FnJiQtoYf+7BlArg8AqTYlEKOu4wPLMDdBjGNb9G1gtlhwflkAG6s6D09jg7FiHUhJrBrpkBQDZ4NHS9VWQH2QwWayjwOBEwfhTNKERFCwVP6ZKl7kMH6vDhE71dbs3g/gATGO4vfxXeLCcXKDg==
-Received: from HE1EUR01FT042.eop-EUR01.prod.protection.outlook.com
- (10.152.0.54) by HE1EUR01HT047.eop-EUR01.prod.protection.outlook.com
- (10.152.1.43) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.2157.15; Mon, 12 Aug
- 2019 07:37:00 +0000
-Received: from DB7PR08MB3801.eurprd08.prod.outlook.com (10.152.0.59) by
- HE1EUR01FT042.mail.protection.outlook.com (10.152.0.228) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.2157.15 via Frontend Transport; Mon, 12 Aug 2019 07:37:00 +0000
-Received: from DB7PR08MB3801.eurprd08.prod.outlook.com
- ([fe80::b8b5:365b:15a4:6e83]) by DB7PR08MB3801.eurprd08.prod.outlook.com
- ([fe80::b8b5:365b:15a4:6e83%6]) with mapi id 15.20.2157.022; Mon, 12 Aug 2019
- 07:37:00 +0000
-From: David Binderman <dcb314@hotmail.com>
-To: "abbotti@mev.co.uk" <abbotti@mev.co.uk>, "hsweeten@visionengravers.com"
- <hsweeten@visionengravers.com>, "gregkh@linuxfoundation.org"
- <gregkh@linuxfoundation.org>, "devel@driverdev.osuosl.org"
- <devel@driverdev.osuosl.org>, "linux-kernel@vger.kernel.org"
- <linux-kernel@vger.kernel.org>
-Subject: linux-5.3-rc4/drivers/staging/comedi/drivers/dt3000.c:373: (error)
- Signed integer overflow for expression 'divider*base'
-Thread-Topic: linux-5.3-rc4/drivers/staging/comedi/drivers/dt3000.c:373:
- (error) Signed integer overflow for expression 'divider*base'
-Thread-Index: AQHVUOAls4UOgTcrz0GoNXXEGVUiLA==
-Date: Mon, 12 Aug 2019 07:37:00 +0000
-Message-ID: <DB7PR08MB3801C29431C1A737AE60F0C99CD30@DB7PR08MB3801.eurprd08.prod.outlook.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-GB
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-incomingtopheadermarker: OriginalChecksum:853E928B15DC3B49D5673ED35173AFC02192440BB93F7C845DDF964F61421666;
- UpperCasedChecksum:0659F5DB919996C851E38A856490AC8F3007239FFD5D2B9DA302B10231B4E33F;
- SizeAsReceived:7000; Count:41
-x-ms-exchange-messagesentrepresentingtype: 1
-x-tmn: [1Vi09pCwz5csJnKq8wbFnfdvoy6sps49]
-x-ms-publictraffictype: Email
-x-incomingheadercount: 41
-x-eopattributedmessage: 0
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(5050001)(7020095)(20181119110)(201702061078)(5061506573)(5061507331)(1603103135)(2017031320274)(2017031322404)(2017031323274)(2017031324274)(1601125500)(1603101475)(1701031045);
- SRVR:HE1EUR01HT047; 
-x-ms-traffictypediagnostic: HE1EUR01HT047:
-x-microsoft-antispam-message-info: m1KULnO2MB6OQHq8r8n4UW9pjh95O0ntxftNcJkWsg6+Yv5c1UKwwqmv+c0SvHI9rDJ4Na0WxKo0BJ/ciDKE7sY0TKFvbMzPqkpyhsm+hirSO5ahbqgtEMaGb9t6WtpQGVjT+8gii/oztRVY0Y0GIf2++P9OYJ2Fnp8ihHJ5QLKABQ5xMQuY/o5A4Xyi+fN/
-x-ms-exchange-transport-forked: True
+Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 63D5A85DA0
+ for <devel@driverdev.osuosl.org>; Mon, 12 Aug 2019 08:57:37 +0000 (UTC)
+Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 9EE8799132131362ED60;
+ Mon, 12 Aug 2019 16:57:33 +0800 (CST)
+Received: from localhost (10.202.226.61) by DGGEMS407-HUB.china.huawei.com
+ (10.3.19.207) with Microsoft SMTP Server id 14.3.439.0; Mon, 12 Aug 2019
+ 16:57:30 +0800
+Date: Mon, 12 Aug 2019 09:57:17 +0100
+From: Jonathan Cameron <jonathan.cameron@huawei.com>
+To: Rodrigo Ribeiro <rodrigorsdc@gmail.com>
+Subject: Re: [PATCH] staging: iio: accel: adis16240: Improve readability on
+ write_raw function
+Message-ID: <20190812095717.00002918@huawei.com>
+In-Reply-To: <CAOeBkLqGe-5LwBq1yrX_F8kNn2UK-7+7H+AOZPAqKS5OKHuYkA@mail.gmail.com>
+References: <20190810150058.3509-1-rodrigorsdc@gmail.com>
+ <20190811094322.063ad682@archlinux>
+ <CAOeBkLqGe-5LwBq1yrX_F8kNn2UK-7+7H+AOZPAqKS5OKHuYkA@mail.gmail.com>
+Organization: Huawei
+X-Mailer: Claws Mail 3.17.3 (GTK+ 2.24.32; i686-w64-mingw32)
 MIME-Version: 1.0
-X-OriginatorOrg: hotmail.com
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-CrossTenant-Network-Message-Id: 77f281b4-9627-4293-fb36-08d71ef7dc9d
-X-MS-Exchange-CrossTenant-rms-persistedconsumerorg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Aug 2019 07:37:00.1691 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Internet
-X-MS-Exchange-CrossTenant-id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: HE1EUR01HT047
+X-Originating-IP: [10.202.226.61]
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -111,31 +64,147 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, Lars-Peter Clausen <lars@metafoo.de>, Peter
+ Meerwald-Stadler <pmeerw@pmeerw.net>,
+ Michael Hennerich <Michael.Hennerich@analog.com>, linux-iio@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ LKML <linux-kernel@vger.kernel.org>, kernel-usp@googlegroups.com,
+ Stefan Popa <stefan.popa@analog.com>, Hartmut Knaack <knaack.h@gmx.de>,
+ Jonathan Cameron <jic23@kernel.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello there,
+On Sun, 11 Aug 2019 13:47:04 -0300
+Rodrigo Ribeiro <rodrigorsdc@gmail.com> wrote:
 
-Source code is
+> Em dom, 11 de ago de 2019 =E0s 05:43, Jonathan Cameron
+> <jic23@kernel.org> escreveu:
+> >
+> > On Sat, 10 Aug 2019 12:00:58 -0300
+> > Rodrigo <rodrigorsdc@gmail.com> wrote:
+> >  =
 
-    prescale = 15;
-    base = timer_base * (1 << prescale);
-    divider = 65535;
-    *nanosec = divider * base;
+> > > From: Rodrigo Carvalho <rodrigorsdc@gmail.com>
+> > >
+> > > Improve readability by using GENMASK macro, changing switch statement
+> > > by if statement and removing unnecessary local variables.  =
 
-timer_base seems to be 500 or 100. 
-nanosec is a pointer to int, so it can only hold about 2,000,000,000 nanoseconds, or about 2 seconds.
+> >  =
 
-Suggest rework code to use longs. 
+> =
 
-Regards
+> Hi Jonathan. Thanks for reviewing!
+> =
 
-David Binderman
+> > From your description it sounds like multiple changes in one patch.
+> > Always preferable to have one type of change in a patch and more
+> > small patches.
+> >
+> > Based on comments below, I would leave the switch statement alone,
+> > but put in your GENMASK change as that one is good and gets
+> > rid of the odd local variable 'bits' as well :)
+> >
+> > Thanks,
+> >
+> > Jonathan
+> >
+> >  =
+
+> > >
+> > > Signed-off-by: Rodrigo Ribeiro Carvalho <rodrigorsdc@gmail.com>
+> > > ---
+> > >  drivers/staging/iio/accel/adis16240.c | 16 +++++++---------
+> > >  1 file changed, 7 insertions(+), 9 deletions(-)
+> > >
+> > > diff --git a/drivers/staging/iio/accel/adis16240.c b/drivers/staging/=
+iio/accel/adis16240.c
+> > > index 62f4b3b1b457..68f165501389 100644
+> > > --- a/drivers/staging/iio/accel/adis16240.c
+> > > +++ b/drivers/staging/iio/accel/adis16240.c
+> > > @@ -309,17 +309,15 @@ static int adis16240_write_raw(struct iio_dev *=
+indio_dev,
+> > >                              long mask)
+> > >  {
+> > >       struct adis *st =3D iio_priv(indio_dev);
+> > > -     int bits =3D 10;
+> > > -     s16 val16;
+> > > +     int m;
+> > >       u8 addr;
+> > >
+> > > -     switch (mask) {
+> > > -     case IIO_CHAN_INFO_CALIBBIAS:
+> > > -             val16 =3D val & ((1 << bits) - 1);
+> > > -             addr =3D adis16240_addresses[chan->scan_index][0];
+> > > -             return adis_write_reg_16(st, addr, val16);
+> > > -     }
+> > > -     return -EINVAL;
+> > > +     if (mask !=3D IIO_CHAN_INFO_CALIBBIAS)
+> > > +             return -EINVAL;  =
+
+> >
+> > Hmm. We generally encourage the use of switch statements in these
+> > cases because they reduce churn as new features are added.
+> >
+> > In this particular case, we don't have any control of sampling frequency
+> > in the driver, but the hardware appears to support it (table 23 on the
+> > datasheet).  =
+
+> =
+
+> On drivers of same kind out of staging (adis16209 and adis16201), sampling
+> frequency writing are not implemented, even though datasheets suggest a r=
+egister
+> writing for this. I can try to implement if it is a good one.
+
+I would be a bit nervous about doing so if you don't have
+hardware, and we can't find anyone who is setup to test the device.
+
+Obviously if you can get it tested one way or the other, it would be good
+to add support.
 
 
-time-_Base seems to be 50 or 100.
+Thanks,
+
+J
+
+> =
+
+> > > +
+> > > +     m =3D GENMASK(9, 0);
+> > > +     addr =3D adis16240_addresses[chan->scan_index][0];
+> > > +     return adis_write_reg_16(st, addr, val & m);  =
+
+> > Why the local variable m?  Can we not just do
+> >
+> >         return adis_write_reg_16(st, addr, val & GENMASK(9, 0));
+> >
+> > If anything I think that is a little more readable than your
+> > version.  There is a reasonable argument for just having
+> > addr inline as well.
+> >
+> >         return adis_write_reg_16(st,
+> >                                  adis16240_addresses[chan->scan_index][=
+0],
+> >                                  val & GENMASK(9, 0));
+> >
+> > However, given I'm suggesting you leave it as a switch statement, it
+> > will be too long with addr inline.
+> >  =
+
+> > >  }
+> > >
+> > >  static const struct iio_chan_spec adis16240_channels[] =3D {  =
+
+> >  =
+
+> =
+
+> Regards,
+> Rodrigo
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
