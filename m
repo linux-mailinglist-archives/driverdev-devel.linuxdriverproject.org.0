@@ -1,77 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 383548C233
-	for <lists+driverdev-devel@lfdr.de>; Tue, 13 Aug 2019 22:39:04 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 80FD68C538
+	for <lists+driverdev-devel@lfdr.de>; Wed, 14 Aug 2019 02:43:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7F86887D5E;
-	Tue, 13 Aug 2019 20:39:00 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3E7A686079;
+	Wed, 14 Aug 2019 00:43:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8HcbAV6CrZ9Q; Tue, 13 Aug 2019 20:39:00 +0000 (UTC)
+	with ESMTP id V4v6M-Al1LXg; Wed, 14 Aug 2019 00:43:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AA28F87BD3;
-	Tue, 13 Aug 2019 20:38:59 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B2D9385FC1;
+	Wed, 14 Aug 2019 00:43:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 92A191BF3C3
- for <devel@linuxdriverproject.org>; Tue, 13 Aug 2019 20:38:56 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 3F6851BF3D4;
+ Wed, 14 Aug 2019 00:43:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 8F619203E2
- for <devel@linuxdriverproject.org>; Tue, 13 Aug 2019 20:38:56 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3A5F3871F0;
+ Wed, 14 Aug 2019 00:43:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xxQ4KCavFlBX for <devel@linuxdriverproject.org>;
- Tue, 13 Aug 2019 20:38:56 +0000 (UTC)
+ with ESMTP id T2fWlHXJ2Aj4; Wed, 14 Aug 2019 00:43:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
- [209.85.214.195])
- by silver.osuosl.org (Postfix) with ESMTPS id 2155F20382
- for <devel@driverdev.osuosl.org>; Tue, 13 Aug 2019 20:38:56 +0000 (UTC)
-Received: by mail-pl1-f195.google.com with SMTP id m9so49580205pls.8
- for <devel@driverdev.osuosl.org>; Tue, 13 Aug 2019 13:38:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=hwvRVADKtc6Sj8Y/Ad99QEgzGhBVmriNcJ7rbr0fKVI=;
- b=iEC8laF3x+qgX1ohOCNpcpJIcSnP9mLcGmISbHdt0P8/+KXpP/D41yVUkMYzVDm4J1
- paCWz3rbmRXsWxYvST6YCi4f5Rvnk6HayNapUN7XZA5/U7dIvFz5P83r1VXgiJDvZqeb
- V9xKYAnbKTpMxwxK2dc8cEyyLGW8OKmY2OUsPkgX0AqwY2D0lOdJqzG6H9Ud6NgrP/NZ
- MuFsUUbXKc3YNWkBaJPnajzYRh6BpNAL68MPubolClGDhxEr6jGNzblN0Heyhfbg9wQc
- MpjF7f4CAFdNmNJGOjJ1aAO6hxGqUVMEl58H7/FQWQbpkHSXV/bii/G9btPTaWoDOEp1
- lzgw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=hwvRVADKtc6Sj8Y/Ad99QEgzGhBVmriNcJ7rbr0fKVI=;
- b=NRTRrNRvKU2T0AECLlEtpTsvH/xn5Sf/qxDBmFDoLWhtlDeFY/+titvQD8AzUlHDKs
- 3BotwSWRY4RFQw3lrclS3wlNuyaApTIOhQJCMGTacXcBz5a9pvpP2Klib9EDx0IQAZNs
- 3phlukVt5rG3hgm3fje6xm2kaNZjPBfeRWUP2fZj6o/Di0A1AbfmdjXpcZrgdgA3MiYl
- TlclE1HclpFWJqbCyS4QORDZ00PwYut+5gqY2Ap/EPmIFipZJJpTYtFgX65tfSyKK5RM
- SpPTtNzkOD+n5Of+WS9s7PTIpGCU/52HQOkjltxqVRHUZbU0hX6OVBF27/GN8uaUtU1q
- sLkg==
-X-Gm-Message-State: APjAAAXOZ3v9L7RZEdd1P2BiXocoeW/Hb+7Ha0xWTTbpSktc17Tswgh9
- X2g3eTVmBpBJrpm+f6J7RMw=
-X-Google-Smtp-Source: APXvYqzyp+JWU8mM9jJ+W9dSqpzHTVp2JgnXsOkgKW1ZAAWSP+MgmKQ+0e2ix7K0XbXXyMfnFiStqQ==
-X-Received: by 2002:a17:902:690b:: with SMTP id
- j11mr3937576plk.35.1565728734886; 
- Tue, 13 Aug 2019 13:38:54 -0700 (PDT)
-Received: from localhost.localdomain ([103.97.240.130])
- by smtp.gmail.com with ESMTPSA id e7sm15095721pfn.72.2019.08.13.13.38.51
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 13 Aug 2019 13:38:53 -0700 (PDT)
-From: Pratik Shinde <pratikshinde320@gmail.com>
-To: linux-erofs@lists.ozlabs.org,
-	gaoxiang25@huawei.com,
-	yuchao0@huawei.com
-Subject: [PATCH] staging: erofs: removing an extra call to iloc() in
- fill_inode()
-Date: Wed, 14 Aug 2019 02:08:40 +0530
-Message-Id: <20190813203840.13782-1-pratikshinde320@gmail.com>
-X-Mailer: git-send-email 2.9.3
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from h1337434.stratoserver.net (h1337434.stratoserver.net
+ [85.214.102.28])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 66D7E873B6;
+ Wed, 14 Aug 2019 00:43:34 +0000 (UTC)
+Received: from [197.234.219.54] (helo=User)
+ by h1337434.stratoserver.net with esmtpa (Exim 4.66)
+ (envelope-from <info.norbert@daum.net>)
+ id 1hxd7z-000641-Dg; Tue, 13 Aug 2019 22:10:44 +0200
+From: "Mrs. Marina Luda"<<info.norbert@daum.net>>
+Subject: PLEASE READ CAREFULLY
+Date: Tue, 13 Aug 2019 21:25:38 +0100
+MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20190814004336.3A5F3871F0@whitealder.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,44 +57,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- Pratik Shinde <pratikshinde320@gmail.com>
-MIME-Version: 1.0
+Reply-To: mrsmarinaluda001@mail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-in fill_inode() we call iloc() twice.Avoiding the extra call by
-storing the result.
+Sir/Madam
 
-Signed-off-by: Pratik Shinde <pratikshinde320@gmail.com>
----
- drivers/staging/erofs/inode.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/erofs/inode.c b/drivers/staging/erofs/inode.c
-index 4c3d8bf..d82ba6c 100644
---- a/drivers/staging/erofs/inode.c
-+++ b/drivers/staging/erofs/inode.c
-@@ -167,11 +167,12 @@ static int fill_inode(struct inode *inode, int isdir)
- 	int err;
- 	erofs_blk_t blkaddr;
- 	unsigned int ofs;
-+	erofs_off_t inode_loc;
- 
- 	trace_erofs_fill_inode(inode, isdir);
--
--	blkaddr = erofs_blknr(iloc(sbi, vi->nid));
--	ofs = erofs_blkoff(iloc(sbi, vi->nid));
-+	inode_loc = iloc(sbi, vi->nid);
-+	blkaddr = erofs_blknr(inode_loc);
-+	ofs = erofs_blkoff(inode_loc);
- 
- 	debugln("%s, reading inode nid %llu at %u of blkaddr %u",
- 		__func__, vi->nid, ofs, blkaddr);
--- 
-2.9.3
+I am Mrs. Marina Luda, I am a US citizen, 52 years Old. I reside here in Florida USA. My residential address is as follows, 7008 E Hwy 326 Silver Springs Florida 34488 United States, am thinking of relocating since I am now rich. I am one of those that took part in the compensation in West Africa (Nigeria) many years ago and they refused to pay me, I had paid over $85,000 while trying to get my payment all to no avail.
+
+So I decided to travel to Washington with all my compensation documents, And I was directed by the Federal Bureau of Investigation Director to contact Mr.James Douglas, who is a representative of the INTERNATIONAL MONETARY FUND (IMF) and a member of the Compensation Award Committee, I contacted him and he explained everything to me. He said whoever is contacting us through emails are fake.
+
+He took me to the paying bank for the claim of my compensation payment. Right now I can't even sleep,I am the most happiest woman on earth because I have received my compensation funds of $12.5 Million US Dollars. Moreover, Mr. James Douglas showed me the full information of those that are yet to receive their payments and I saw your email as one of the beneficiaries on the list he showed me, that is why I decided to email you to stop dealing with those people, they are not with your fund, 
+
+they are only making money out of you. I will advise you to contact Mr. Jame Douglas. Kindly send your personal details to him to prove your identification.
+
+Full Name:
+Home Address:
+Occupation:
+Phone Number:
+Age:
+Gender:
+country:
+
+You have to contact him directly on this information below.
+
+Compensation Award Office.
+Name : Mr. James Douglas
+Email: jamesddouglas01@gmail.com
+
+You really have to stop dealing with those people that are contacting you and telling you that your fund is with them, it is not in anyway with them, they are only taking advantage of you and  will dry you up until you have nothing. The only money I paid after I met Mr. Jame Douglas was just $425 USD for the paper works, take note of that.
+
+Once again stop contacting those people, I will advise you to contact Mr. Jame Douglas so that he can help you to receive your fund instead of dealing with those liars that will be turning you around asking for different kind of money to complete your transaction.
+
+Thank you and be Blessed.
+
+
+
+Mrs. Marina Luda
+7008 E Hwy 326 Silver
+Springs FLorida
+34488 United States
+
+
 
 _______________________________________________
 devel mailing list
