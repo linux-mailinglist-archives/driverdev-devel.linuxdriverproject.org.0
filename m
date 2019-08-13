@@ -2,56 +2,60 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 81C6C8AD1E
-	for <lists+driverdev-devel@lfdr.de>; Tue, 13 Aug 2019 05:20:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 469648AD2E
+	for <lists+driverdev-devel@lfdr.de>; Tue, 13 Aug 2019 05:41:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 986BA861DD;
-	Tue, 13 Aug 2019 03:20:37 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 86CD8861C5;
+	Tue, 13 Aug 2019 03:40:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5WvDuevwU6aj; Tue, 13 Aug 2019 03:20:37 +0000 (UTC)
+	with ESMTP id wjqODP7Xvy22; Tue, 13 Aug 2019 03:40:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5EA6B86166;
-	Tue, 13 Aug 2019 03:20:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2337E85BCF;
+	Tue, 13 Aug 2019 03:40:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E36281BF967
- for <devel@linuxdriverproject.org>; Tue, 13 Aug 2019 03:20:33 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A2B461BF967
+ for <devel@linuxdriverproject.org>; Tue, 13 Aug 2019 03:40:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id DA0EC87C70
- for <devel@linuxdriverproject.org>; Tue, 13 Aug 2019 03:20:33 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9CE3187D3D
+ for <devel@linuxdriverproject.org>; Tue, 13 Aug 2019 03:40:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aTuOXAZtjZBv for <devel@linuxdriverproject.org>;
- Tue, 13 Aug 2019 03:20:32 +0000 (UTC)
+ with ESMTP id OjuxlAXA1uKa for <devel@linuxdriverproject.org>;
+ Tue, 13 Aug 2019 03:40:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8891487B92
- for <devel@driverdev.osuosl.org>; Tue, 13 Aug 2019 03:20:32 +0000 (UTC)
-Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id C41CBBDF5305D4C95974;
- Tue, 13 Aug 2019 11:20:29 +0800 (CST)
-Received: from [10.134.22.195] (10.134.22.195) by smtp.huawei.com
- (10.3.19.214) with Microsoft SMTP Server (TLS) id 14.3.439.0; Tue, 13 Aug
- 2019 11:20:21 +0800
+Received: from huawei.com (szxga03-in.huawei.com [45.249.212.189])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 765E287D39
+ for <devel@driverdev.osuosl.org>; Tue, 13 Aug 2019 03:40:54 +0000 (UTC)
+Received: from DGGEMM403-HUB.china.huawei.com (unknown [172.30.72.54])
+ by Forcepoint Email with ESMTP id 90EE0B75969977179D59;
+ Tue, 13 Aug 2019 11:40:50 +0800 (CST)
+Received: from dggeme762-chm.china.huawei.com (10.3.19.108) by
+ DGGEMM403-HUB.china.huawei.com (10.3.20.211) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Tue, 13 Aug 2019 11:40:49 +0800
+Received: from 138 (10.175.124.28) by dggeme762-chm.china.huawei.com
+ (10.3.19.108) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1591.10; Tue, 13
+ Aug 2019 11:40:49 +0800
+Date: Tue, 13 Aug 2019 11:57:57 +0800
+From: Gao Xiang <gaoxiang25@huawei.com>
+To: Chao Yu <yuchao0@huawei.com>
 Subject: Re: [PATCH 3/3] staging: erofs: xattr.c: avoid BUG_ON
-To: Gao Xiang <gaoxiang25@huawei.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, <devel@driverdev.osuosl.org>,
- <linux-fsdevel@vger.kernel.org>
+Message-ID: <20190813035754.GA23614@138>
 References: <20190813023054.73126-1-gaoxiang25@huawei.com>
  <20190813023054.73126-3-gaoxiang25@huawei.com>
-From: Chao Yu <yuchao0@huawei.com>
-Message-ID: <84f50ca2-3411-36a6-049a-0d343d8df325@huawei.com>
-Date: Tue, 13 Aug 2019 11:20:22 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
+ <84f50ca2-3411-36a6-049a-0d343d8df325@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20190813023054.73126-3-gaoxiang25@huawei.com>
-Content-Language: en-US
-X-Originating-IP: [10.134.22.195]
+Content-Disposition: inline
+In-Reply-To: <84f50ca2-3411-36a6-049a-0d343d8df325@huawei.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
+X-Originating-IP: [10.175.124.28]
+X-ClientProxiedBy: dggeme702-chm.china.huawei.com (10.1.199.98) To
+ dggeme762-chm.china.huawei.com (10.3.19.108)
 X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -65,30 +69,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-erofs@lists.ozlabs.org, Chao Yu <chao@kernel.org>,
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Miao Xie <miaoxie@huawei.com>, Chao Yu <chao@kernel.org>,
  LKML <linux-kernel@vger.kernel.org>, weidu.du@huawei.com,
- Fang Wei <fangwei1@huawei.com>, Miao Xie <miaoxie@huawei.com>
+ Fang Wei <fangwei1@huawei.com>, linux-fsdevel@vger.kernel.org,
+ linux-erofs@lists.ozlabs.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 2019/8/13 10:30, Gao Xiang wrote:
-> Kill all the remaining BUG_ON in EROFS:
->  - one BUG_ON was used to detect xattr on-disk corruption,
->    proper error handling should be added for it instead;
->  - the other BUG_ONs are used to detect potential issues,
->    use DBG_BUGON only in (eng) debugging version.
+Hi Chao,
 
-BTW, do we need add WARN_ON() into DBG_BUGON() to show some details function or
-call stack in where we encounter the issue?
-
+On Tue, Aug 13, 2019 at 11:20:22AM +0800, Chao Yu wrote:
+> On 2019/8/13 10:30, Gao Xiang wrote:
+> > Kill all the remaining BUG_ON in EROFS:
+> >  - one BUG_ON was used to detect xattr on-disk corruption,
+> >    proper error handling should be added for it instead;
+> >  - the other BUG_ONs are used to detect potential issues,
+> >    use DBG_BUGON only in (eng) debugging version.
 > 
-> Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
+> BTW, do we need add WARN_ON() into DBG_BUGON() to show some details function or
+> call stack in where we encounter the issue?
 
-Reviewed-by: Chao Yu <yuchao0@huawei.com>
+Thanks for kindly review :)
+
+Agreed, it seems much better. If there are no other considerations
+here, I can submit another patch addressing it later or maybe we
+can change it in the next linux version since I'd like to focusing
+on moving out of staging for this round...
 
 Thanks,
+Gao Xiang
+
+> 
+> > 
+> > Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
+> 
+> Reviewed-by: Chao Yu <yuchao0@huawei.com>
+> 
+> Thanks,
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
