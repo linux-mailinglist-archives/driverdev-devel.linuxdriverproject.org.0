@@ -1,71 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AC6068BDB5
-	for <lists+driverdev-devel@lfdr.de>; Tue, 13 Aug 2019 17:51:51 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 74F788C189
+	for <lists+driverdev-devel@lfdr.de>; Tue, 13 Aug 2019 21:31:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0E74D88370;
-	Tue, 13 Aug 2019 15:51:50 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8441C869BB;
+	Tue, 13 Aug 2019 19:31:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zneryZs3CkQG; Tue, 13 Aug 2019 15:51:49 +0000 (UTC)
+	with ESMTP id PnzcFZgehO51; Tue, 13 Aug 2019 19:31:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8087F88182;
-	Tue, 13 Aug 2019 15:51:49 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4A5A286937;
+	Tue, 13 Aug 2019 19:31:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4EAB51BF364
- for <devel@linuxdriverproject.org>; Tue, 13 Aug 2019 15:51:47 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id AED8E1BF404
+ for <devel@linuxdriverproject.org>; Tue, 13 Aug 2019 19:31:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 4845387430
- for <devel@linuxdriverproject.org>; Tue, 13 Aug 2019 15:51:47 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id AB5F586940
+ for <devel@linuxdriverproject.org>; Tue, 13 Aug 2019 19:31:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zL+lVm8Il9qP for <devel@linuxdriverproject.org>;
- Tue, 13 Aug 2019 15:51:45 +0000 (UTC)
+ with ESMTP id sqBNVztGqgNe for <devel@linuxdriverproject.org>;
+ Tue, 13 Aug 2019 19:31:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f66.google.com (mail-ot1-f66.google.com
- [209.85.210.66])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 516FF86C59
- for <devel@driverdev.osuosl.org>; Tue, 13 Aug 2019 15:51:45 +0000 (UTC)
-Received: by mail-ot1-f66.google.com with SMTP id z17so55846725otk.13
- for <devel@driverdev.osuosl.org>; Tue, 13 Aug 2019 08:51:45 -0700 (PDT)
+Received: from mail-qt1-f194.google.com (mail-qt1-f194.google.com
+ [209.85.160.194])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1ABAC8693B
+ for <devel@driverdev.osuosl.org>; Tue, 13 Aug 2019 19:31:30 +0000 (UTC)
+Received: by mail-qt1-f194.google.com with SMTP id e8so7039996qtp.7
+ for <devel@driverdev.osuosl.org>; Tue, 13 Aug 2019 12:31:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ZrsJ75uAl0CvFW97qeOMuBabIxioxFuZCHkYM94A0LA=;
+ b=oeUsGepxWxGwvAWqyLXN21B4JepvWUV9hHbolgX2xKRyBoUoRrxCEddc4hAtHT7HQ+
+ AoGnnCk3xWvxMnSmHdAk5aCTAE7fCx7UhHQI3uTM40S6/5E07y/arn0Lek8qRxQOxBuP
+ TV3lGCGcNuGw+zYZGj5NTx1fc7zCiJgDk1xjJ8X/ewyQcNAgQodATlqbCVeq7ynHJQhj
+ 8xGZkD5otdl/CmNVMLERUUQjGYc1NBi62Nlnk9ih6xntQI6cwyGrS8tS0MnI+kSXnv4s
+ yR78QP1gwLm77D+paUklwomMEzbYtajHT3C2V2KTZFQpsvOdzRiy/99dKhisq8+oyIfV
+ 9f3A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=ohFLMScLjVByBJFrR6C+4j/VSebLPBigBTSwqkkayik=;
- b=HgMDXEggAxVsKRFFSLREzsK5MyRKiIt98yvmEB8Osa/954xhUPPUt20BbAMpTDVUyY
- mnC/SRiNPh49sVXMh3unAUFKFTTHwbErkw8hHWtCs82YfFffrW36Fn67jTBJF+Y1ylVS
- bs1oCm5hr26dcSXUjp0is7TfzVhk0pNsxCpAj0GYkftEc4zoJD3+Lu6+FJHy3Op/OMth
- UC1/Unlx7efv23H0jv9ljuf6kTQ0uFh2jECMWhc7uqgEq8AfI//m3KHBkm2+5Z3EkmAJ
- oUuSWgCNMi0xlFyt3PxiwRN7rszY2+KuNHOYskPOebhB2n0heDzR7AbDNOGdiJ8wudDK
- 2g7Q==
-X-Gm-Message-State: APjAAAWwHkIOCkmEP5vD1jaT+dk+b4GG7Ndny6mzutOvp8obe+leTvW+
- ONu4GX/dHrd9REmz/XWt3g==
-X-Google-Smtp-Source: APXvYqxSeFwa1U2REzU2wk4Pb7uZS4OB2XVfpDeXm4KgsqA5BenxqxMVspOAXVlQLR7PyOR052yYjA==
-X-Received: by 2002:a6b:b549:: with SMTP id e70mr32598873iof.95.1565711504396; 
- Tue, 13 Aug 2019 08:51:44 -0700 (PDT)
-Received: from localhost ([64.188.179.254])
- by smtp.gmail.com with ESMTPSA id l26sm23511094ioj.24.2019.08.13.08.51.43
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ZrsJ75uAl0CvFW97qeOMuBabIxioxFuZCHkYM94A0LA=;
+ b=BEQsg/o7v65UQDl5WFmo7CDIhjqjLBwh+SdTl3bP8XSpwvtfHQvyBxu17DaIAdCMTs
+ IHQwVLqsA7SJhpEXrkG8yD1Ju8D+KUMgnR4fVIyWbFsK700hvqLW7BoWsGlMfW4tAgV1
+ P28vq9i3vWJNMo00vfu6FpPSWbra5JX4FIyOuCntf9ky6FX9hf+N4zNjc4WmV/UsNIzj
+ hfjs5eALEQPsW6JFp76tF4eKf+v6/Qkoiij5nuNb3GHAn7uWTIfMHuaK8eGK4aoFpM15
+ 8rrlJPvzS/ExqKm64tI4Jo5gg84/yD4S//Z+CWUpmno2MqWj1Xu3Eft0MvLmGChYompi
+ ksyQ==
+X-Gm-Message-State: APjAAAXJIJ1v9/4qlygi+li0HWf9pynMJ0APDTwzi60TkoF/uiVj4fM6
+ cbFbQwAHZKLLFq7iOZD0NAg=
+X-Google-Smtp-Source: APXvYqyE30ghXoW4lyuazBzGdIN1K2YIYdWEw1TaM6LGrPL7xJwCrZqQ6LKihXqLCTqfIS7vkKFSEA==
+X-Received: by 2002:ac8:2b47:: with SMTP id 7mr26123152qtv.116.1565724689118; 
+ Tue, 13 Aug 2019 12:31:29 -0700 (PDT)
+Received: from rodrigo-note.semfio.usp.br ([143.107.45.1])
+ by smtp.gmail.com with ESMTPSA id 145sm2382399qkm.1.2019.08.13.12.31.25
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Tue, 13 Aug 2019 08:51:43 -0700 (PDT)
-Date: Tue, 13 Aug 2019 09:51:43 -0600
-From: Rob Herring <robh@kernel.org>
-To: Chuanhong Guo <gch981213@gmail.com>
-Subject: Re: [PATCH v2 4/6] dt: bindings: add mt7621-pll dt binding
- documentation
-Message-ID: <20190813155143.GA19830@bogus>
-References: <20190724022310.28010-1-gch981213@gmail.com>
- <20190724022310.28010-5-gch981213@gmail.com>
+ Tue, 13 Aug 2019 12:31:28 -0700 (PDT)
+From: Rodrigo Ribeiro <rodrigorsdc@gmail.com>
+To: Lars-Peter Clausen <lars@metafoo.de>,
+ Michael Hennerich <Michael.Hennerich@analog.com>,
+ Stefan Popa <stefan.popa@analog.com>, Jonathan Cameron <jic23@kernel.org>,
+ Hartmut Knaack <knaack.h@gmx.de>,
+ Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH v2] staging: iio: accel: adis16240: Improve readability on
+ write_raw function
+Date: Tue, 13 Aug 2019 16:31:01 -0300
+Message-Id: <20190813193101.26867-1-rodrigorsdc@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190724022310.28010-5-gch981213@gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,69 +89,48 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Stephen Boyd <sboyd@kernel.org>, James Hogan <jhogan@kernel.org>,
- Michael Turquette <mturquette@baylibre.com>,
- "open list:MIPS" <linux-mips@vger.kernel.org>,
- Ralf Baechle <ralf@linux-mips.org>, open list <linux-kernel@vger.kernel.org>,
- Paul Burton <paul.burton@mips.com>, Weijie Gao <hackpascal@gmail.com>,
- John Crispin <john@phrozen.org>, NeilBrown <neil@brown.name>,
- Mark Rutland <mark.rutland@arm.com>,
- "open list:COMMON CLK FRAMEWORK" <linux-clk@vger.kernel.org>
+Cc: linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, Rodrigo Ribeiro Carvalho <rodrigorsdc@gmail.com>,
+ kernel-usp@googlegroups.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Jul 24, 2019 at 10:23:08AM +0800, Chuanhong Guo wrote:
-> This commit adds device tree binding documentation for MT7621
-> PLL controller.
-> 
-> Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
-> ---
-> 
-> Change since v1:
-> drop useless syscon in compatible string
-> 
->  .../bindings/clock/mediatek,mt7621-pll.txt     | 18 ++++++++++++++++++
->  1 file changed, 18 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt7621-pll.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt7621-pll.txt b/Documentation/devicetree/bindings/clock/mediatek,mt7621-pll.txt
-> new file mode 100644
-> index 000000000000..7dcfbd5283e3
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt7621-pll.txt
-> @@ -0,0 +1,18 @@
-> +Binding for Mediatek MT7621 PLL controller
-> +
-> +The PLL controller provides the 2 main clocks of the SoC: CPU and BUS.
-> +
-> +Required Properties:
-> +- compatible: has to be "mediatek,mt7621-pll"
-> +- #clock-cells: has to be one
-> +
-> +Optional properties:
-> +- clock-output-names: should be "cpu", "bus"
-> +
-> +Example:
-> +	pll {
-> +		compatible = "mediatek,mt7621-pll";
+Replace shift and minus operation by GENMASK macro and remove the local
+variables used to store intermediate data.
 
-You didn't answer Stephen's question on v1.
+Signed-off-by: Rodrigo Ribeiro Carvalho <rodrigorsdc@gmail.com>
+---
+v2:
+   - Leave switch statement instead of replace by if statement
+ drivers/staging/iio/accel/adis16240.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-Based on this binding, there is no way to control/program the PLL. Is 
-this part of some IP block?
+diff --git a/drivers/staging/iio/accel/adis16240.c b/drivers/staging/iio/accel/adis16240.c
+index 62f4b3b1b457..82099db4bf0c 100644
+--- a/drivers/staging/iio/accel/adis16240.c
++++ b/drivers/staging/iio/accel/adis16240.c
+@@ -309,15 +309,12 @@ static int adis16240_write_raw(struct iio_dev *indio_dev,
+ 			       long mask)
+ {
+ 	struct adis *st = iio_priv(indio_dev);
+-	int bits = 10;
+-	s16 val16;
+ 	u8 addr;
+ 
+ 	switch (mask) {
+ 	case IIO_CHAN_INFO_CALIBBIAS:
+-		val16 = val & ((1 << bits) - 1);
+ 		addr = adis16240_addresses[chan->scan_index][0];
+-		return adis_write_reg_16(st, addr, val16);
++		return adis_write_reg_16(st, addr, val & GENMASK(9, 0));
+ 	}
+ 	return -EINVAL;
+ }
+-- 
+2.20.1
 
-> +
-> +		#clock-cells = <1>;
-> +		clock-output-names = "cpu", "bus";
-> +	};
-> -- 
-> 2.21.0
-> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
