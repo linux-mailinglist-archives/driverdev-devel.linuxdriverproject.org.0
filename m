@@ -1,76 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1C02F8AE06
-	for <lists+driverdev-devel@lfdr.de>; Tue, 13 Aug 2019 06:47:04 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DB6AF87DAF;
-	Tue, 13 Aug 2019 04:47:01 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gloHT4LZaMMt; Tue, 13 Aug 2019 04:47:01 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4111587522;
-	Tue, 13 Aug 2019 04:47:01 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 039801BF369
- for <devel@linuxdriverproject.org>; Tue, 13 Aug 2019 04:46:59 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 784678AE07
+	for <lists+driverdev-devel@lfdr.de>; Tue, 13 Aug 2019 06:47:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id F2E0E86BCF
- for <devel@linuxdriverproject.org>; Tue, 13 Aug 2019 04:46:58 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0BB3986D29;
+	Tue, 13 Aug 2019 04:47:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Rsc57pxtOM0B; Tue, 13 Aug 2019 04:47:04 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3617D86B90;
+	Tue, 13 Aug 2019 04:47:04 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 04FF01BF369
+ for <devel@linuxdriverproject.org>; Tue, 13 Aug 2019 04:47:00 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0231A86102
+ for <devel@linuxdriverproject.org>; Tue, 13 Aug 2019 04:47:00 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LztgtKmzb57J for <devel@linuxdriverproject.org>;
- Tue, 13 Aug 2019 04:46:57 +0000 (UTC)
+ with ESMTP id eCi-t3qYX5Lg for <devel@linuxdriverproject.org>;
+ Tue, 13 Aug 2019 04:46:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
- [209.85.215.196])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 21C3686C46
- for <devel@driverdev.osuosl.org>; Tue, 13 Aug 2019 04:46:57 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id w10so50590803pgj.7
- for <devel@driverdev.osuosl.org>; Mon, 12 Aug 2019 21:46:57 -0700 (PDT)
+Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
+ [209.85.210.194])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 807E0860C5
+ for <devel@driverdev.osuosl.org>; Tue, 13 Aug 2019 04:46:59 +0000 (UTC)
+Received: by mail-pf1-f194.google.com with SMTP id c81so1850639pfc.11
+ for <devel@driverdev.osuosl.org>; Mon, 12 Aug 2019 21:46:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=CDQwbGVTEBP9Bnjosm2ekW6qXYHiP55ZHXi/wL2zosY=;
- b=boz8hYLbHG0VA4PbL7wHcg4jDw4m7HAeg2jP+hd/l+uywGnpv1Os9sdMdzz2MxrnMu
- nVV+n1xHW/tM3bYrzVqOoSS/reEbtyHz9sD7/v9b8ON+x5L2b/aTneYNHODoEoOGvtCR
- num0GdYp8jmGt8dNz9oYJggaAHmakCytokpxsIPgb0McdtDMk9DKwsJmimtc9esGQYQ6
- ll26eHXWdAfoxx8bXrTcRMCdyhFJTGk0GFX+MhQnVJAvRIcGcsxzZy0nEjm1A3i+yA/9
- eLb5UK3ToYzcP+ELPH9xPQksuXpjIskm7mu1uM9Xp1iYp2dmihVnVBD47cb9bY0FbmGK
- 9jzA==
+ bh=3uVkxMKPW2J8PBXaiAQezVtSx496EjJp3yt27ZKme78=;
+ b=A655f9l8O4cLdN3HbYhNHx2cMbrUZjDKvTjNf2CR2uGszWWW5+3GDzPy+D0C83YH29
+ 5L6wKC8hUGnPGk+dRVS7MBr5rIcGEWYD59RbfY8yS4QpuNkhYhDbhFDxPHP8guYRYL52
+ k7iJSy/LaTA7HQOSkI2Okp81RDtWdqj9fBmo9Agpf8UPo7eelAFYxcEFJhOe3q+ifpwd
+ LnNIP+BCjQaLsYxrNbKHy958EmUDLu8eP0eSj9BJwYPSP92tmDAFBB3qwq56Q6vck/Si
+ 76NjRNtO7iIlawJNx+ICSTXGSRa3ut16VBecpAyp46D85XcSNwjRPKG/tWJ23AmGlCXK
+ kTZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=CDQwbGVTEBP9Bnjosm2ekW6qXYHiP55ZHXi/wL2zosY=;
- b=YZjv4oFbLX01hukULyH9OmWBX/ULjUz6J0RJBs/+6p3ygbtM/smU0XTKImph9xQJ81
- oxVQrYMgLiVSM//FZsjiUtuSUrY39oSPUrbu0iYA9w9I/rKRncP2AIbpNGGCI9oZ+fzC
- 0hwFDD9MZHxkCikBCdORyE3EJBE4LPaZOXH8/cyA8TPZJ4pyikouEI+i6ln+x+WQ51X1
- +WpoEpqg0DmiLe3lX5zq/aWoamETs1cUzi7MimWf6qwQ2KBWNa2mqEVJwLKGEjBKPXki
- pKtH7gxKD0f1r2y9F1gN54DxNtSCSotRW3NLuyJmvQwuZr9dqPgCXsLVzVN2hwc9Poqm
- jbyg==
-X-Gm-Message-State: APjAAAUhsoQOSZ01+AavEGkGye65dRAA3m5O3bkjQvjvXrcXqzLMd5/v
- WnZcmu0MPiv6ND6qpRaEh+U=
-X-Google-Smtp-Source: APXvYqzw0ngWKc6LXtlEYuTrIGrzJC93KQ8Sp8577mWkPz8Dlu8EyrnMyoI2hs/APYtqItrij/c/Uw==
-X-Received: by 2002:a63:c70d:: with SMTP id n13mr32679390pgg.171.1565671616661; 
- Mon, 12 Aug 2019 21:46:56 -0700 (PDT)
+ bh=3uVkxMKPW2J8PBXaiAQezVtSx496EjJp3yt27ZKme78=;
+ b=FsPVComZWQ26tCclDtih7au1wnVZGrqUhZtWYPLhy+LhVlqCjjVbypR92q60j1ySCf
+ 13qv94EZvqkplXVVw+panOPqUSovgj6aryab4xxxQ8iQDBMZ6IKAhPa8qFimt1LnnSCo
+ 6vmtpLdnDqs7TbnSXPycaJ/Kx5rZaSF+UQxF1qAOFjaBXp7sOYzqzye/JD7GXNbVGyWu
+ Dpm5usxAnASVMwgcHM6VJXh31bQ/nD1XcerkFhrFw12eTiTDBD0cbV55wYoYjcS46JVC
+ 6pvUEEvUNd2oJksM7ADwPwG7bGumetWKiijpz7qq1qq7jlRqBNooroSgZWrM1A+uNgpe
+ 8ZpQ==
+X-Gm-Message-State: APjAAAUSMMBR+Z2YtohQ217xoOSouUhnUtfk+Rs1thxuE8+aGGeK9+l4
+ yoDHWu5TQ8Tzob1421Goo4PVlkwI
+X-Google-Smtp-Source: APXvYqwgreX/c0lxiHRg7QG5gQP4XoJZgX2lPfLBEyCaQlnkEDR2uuxolL6Zn+PyGiY8qYqlttstbw==
+X-Received: by 2002:a65:6815:: with SMTP id l21mr33437422pgt.146.1565671619167; 
+ Mon, 12 Aug 2019 21:46:59 -0700 (PDT)
 Received: from localhost.localdomain ([122.163.110.75])
- by smtp.gmail.com with ESMTPSA id t7sm246135pgp.68.2019.08.12.21.46.54
+ by smtp.gmail.com with ESMTPSA id t7sm246135pgp.68.2019.08.12.21.46.56
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Mon, 12 Aug 2019 21:46:56 -0700 (PDT)
+ Mon, 12 Aug 2019 21:46:58 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
 To: larry.finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
  gregkh@linuxfoundation.org, devel@driverdev.osuosl.org
-Subject: [PATCH RESEND 2/4] staging: rtl8712: r8712_append_mpdu_unit(): Change
- return type
-Date: Tue, 13 Aug 2019 10:16:36 +0530
-Message-Id: <20190813044638.16348-2-nishkadg.linux@gmail.com>
+Subject: [PATCH RESEND 3/4] staging: rtl8712: r8712_xmitframe_aggr_1st():
+ Change return type to void
+Date: Tue, 13 Aug 2019 10:16:37 +0530
+Message-Id: <20190813044638.16348-3-nishkadg.linux@gmail.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190813044638.16348-1-nishkadg.linux@gmail.com>
 References: <20190813044638.16348-1-nishkadg.linux@gmail.com>
@@ -93,68 +93,54 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change return type of r8712_append_mpdu_unit from u8 to void and remove
-its return statement as it always returns only _SUCCESS. Modify call
-sites to simply call this function instead of checking its return value,
-and execute all the statements in the if-block for when the function
-returns _SUCCESS.
+Change return type of r8712_xmitframe_aggr_1st from u8 to void as it
+always returns _SUCCESS and its return value is never used.
 
 Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- drivers/staging/rtl8712/rtl8712_xmit.c | 19 ++++++++-----------
- 1 file changed, 8 insertions(+), 11 deletions(-)
+ drivers/staging/rtl8712/rtl8712_xmit.c | 6 ++----
+ drivers/staging/rtl8712/rtl8712_xmit.h | 4 ++--
+ 2 files changed, 4 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/staging/rtl8712/rtl8712_xmit.c b/drivers/staging/rtl8712/rtl8712_xmit.c
-index 04e70048f0dd..6f1dbcf25859 100644
+index 6f1dbcf25859..9152c25c11f8 100644
 --- a/drivers/staging/rtl8712/rtl8712_xmit.c
 +++ b/drivers/staging/rtl8712/rtl8712_xmit.c
-@@ -278,8 +278,8 @@ void r8712_construct_txaggr_cmd_hdr(struct xmit_buf *pxmitbuf)
- 	pcmdpriv->cmd_seq++;
+@@ -318,8 +318,8 @@ void r8712_append_mpdu_unit(struct xmit_buf *pxmitbuf,
  }
  
--u8 r8712_append_mpdu_unit(struct xmit_buf *pxmitbuf,
+ 
+-u8 r8712_xmitframe_aggr_1st(struct xmit_buf *pxmitbuf,
 -			struct xmit_frame *pxmitframe)
-+void r8712_append_mpdu_unit(struct xmit_buf *pxmitbuf,
-+			    struct xmit_frame *pxmitframe)
++void r8712_xmitframe_aggr_1st(struct xmit_buf *pxmitbuf,
++			      struct xmit_frame *pxmitframe)
  {
- 	struct _adapter *padapter = pxmitframe->padapter;
- 	struct tx_desc *ptx_desc = (struct tx_desc *)pxmitbuf->pbuf;
-@@ -315,8 +315,6 @@ u8 r8712_append_mpdu_unit(struct xmit_buf *pxmitbuf,
- 		((ptx_desc->txdw0 & 0x0000ffff) +
- 			((TXDESC_SIZE + last_txcmdsz + padding_sz) &
- 			 0x0000ffff)));
+ 	/* linux complete context doesn't need to protect */
+ 	pxmitframe->pxmitbuf = pxmitbuf;
+@@ -332,8 +332,6 @@ u8 r8712_xmitframe_aggr_1st(struct xmit_buf *pxmitbuf,
+ 	r8712_construct_txaggr_cmd_hdr(pxmitbuf);
+ 	r8712_append_mpdu_unit(pxmitbuf, pxmitframe);
+ 	pxmitbuf->aggr_nr = 1;
 -
 -	return _SUCCESS;
  }
  
+ u16 r8712_xmitframe_aggr_next(struct xmit_buf *pxmitbuf,
+diff --git a/drivers/staging/rtl8712/rtl8712_xmit.h b/drivers/staging/rtl8712/rtl8712_xmit.h
+index 9be8fb70c92e..faf2128285b6 100644
+--- a/drivers/staging/rtl8712/rtl8712_xmit.h
++++ b/drivers/staging/rtl8712/rtl8712_xmit.h
+@@ -102,8 +102,8 @@ void r8712_do_queue_select(struct _adapter *padapter,
+ 			   struct pkt_attrib *pattrib);
  
-@@ -332,8 +330,8 @@ u8 r8712_xmitframe_aggr_1st(struct xmit_buf *pxmitbuf,
- 	/*RTL8712_DMA_H2CCMD */
- 	r8712_construct_txaggr_cmd_desc(pxmitbuf);
- 	r8712_construct_txaggr_cmd_hdr(pxmitbuf);
--	if (r8712_append_mpdu_unit(pxmitbuf, pxmitframe) == _SUCCESS)
--		pxmitbuf->aggr_nr = 1;
-+	r8712_append_mpdu_unit(pxmitbuf, pxmitframe);
-+	pxmitbuf->aggr_nr = 1;
- 
- 	return _SUCCESS;
- }
-@@ -347,11 +345,10 @@ u16 r8712_xmitframe_aggr_next(struct xmit_buf *pxmitbuf,
- 	/* buffer addr assoc */
- 	pxmitframe->buf_addr = pxmitbuf->pbuf + TXDESC_SIZE +
- 		(((struct tx_desc *)pxmitbuf->pbuf)->txdw0 & 0x0000ffff);
--	if (r8712_append_mpdu_unit(pxmitbuf, pxmitframe) == _SUCCESS) {
--		r8712_free_xmitframe_ex(&pxmitframe->padapter->xmitpriv,
--					pxmitframe);
--		pxmitbuf->aggr_nr++;
--	}
-+	r8712_append_mpdu_unit(pxmitbuf, pxmitframe);
-+	r8712_free_xmitframe_ex(&pxmitframe->padapter->xmitpriv,
-+				pxmitframe);
-+	pxmitbuf->aggr_nr++;
- 
- 	return TXDESC_SIZE +
- 		(((struct tx_desc *)pxmitbuf->pbuf)->txdw0 & 0x0000ffff);
+ #ifdef CONFIG_R8712_TX_AGGR
+-u8 r8712_xmitframe_aggr_1st(struct xmit_buf *pxmitbuf,
+-			struct xmit_frame *pxmitframe);
++void r8712_xmitframe_aggr_1st(struct xmit_buf *pxmitbuf,
++			      struct xmit_frame *pxmitframe);
+ u8 r8712_dump_aggr_xframe(struct xmit_buf *pxmitbuf,
+ 			struct xmit_frame *pxmitframe);
+ #endif
 -- 
 2.19.1
 
