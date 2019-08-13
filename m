@@ -1,84 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A5E638ADED
-	for <lists+driverdev-devel@lfdr.de>; Tue, 13 Aug 2019 06:40:30 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D78808AE05
+	for <lists+driverdev-devel@lfdr.de>; Tue, 13 Aug 2019 06:47:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D31F786130;
-	Tue, 13 Aug 2019 04:40:28 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7978486C11;
+	Tue, 13 Aug 2019 04:46:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pbSGdLe9PX_h; Tue, 13 Aug 2019 04:40:26 +0000 (UTC)
+	with ESMTP id 26H12JKUXGnI; Tue, 13 Aug 2019 04:46:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 29B5885683;
-	Tue, 13 Aug 2019 04:40:26 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 26E9186C4D;
+	Tue, 13 Aug 2019 04:46:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4365A1BF369
- for <devel@linuxdriverproject.org>; Tue, 13 Aug 2019 04:40:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F16761BF369
+ for <devel@linuxdriverproject.org>; Tue, 13 Aug 2019 04:46:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3D93287D86
- for <devel@linuxdriverproject.org>; Tue, 13 Aug 2019 04:40:24 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id EEAA087880
+ for <devel@linuxdriverproject.org>; Tue, 13 Aug 2019 04:46:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xpvyl2r9zJBZ for <devel@linuxdriverproject.org>;
- Tue, 13 Aug 2019 04:40:23 +0000 (UTC)
+ with ESMTP id GsZm1KI0Toqu for <devel@linuxdriverproject.org>;
+ Tue, 13 Aug 2019 04:46:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
- [209.85.214.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 0F5E387D80
- for <devel@driverdev.osuosl.org>; Tue, 13 Aug 2019 04:40:23 +0000 (UTC)
-Received: by mail-pl1-f194.google.com with SMTP id bj8so1734941plb.4
- for <devel@driverdev.osuosl.org>; Mon, 12 Aug 2019 21:40:23 -0700 (PDT)
+Received: from mail-pl1-f193.google.com (mail-pl1-f193.google.com
+ [209.85.214.193])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7934187522
+ for <devel@driverdev.osuosl.org>; Tue, 13 Aug 2019 04:46:54 +0000 (UTC)
+Received: by mail-pl1-f193.google.com with SMTP id t14so48730670plr.11
+ for <devel@driverdev.osuosl.org>; Mon, 12 Aug 2019 21:46:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=8GLOZFQ56OAbaoXlhnRk+YHGtv4hGs6RGM5Kij6lBIU=;
- b=arBD8dMtva+ZxyXyeFcMnzBFvC4FQd0y8a9O5lBi42o+2eDs6v/ZqbdjP+jZMqRW4U
- 7FhLNPZ2AMQD7IuANmkahImpWEUKKUNuhoWJ6htJnQsruvELU0Yz0jz2ejKtvWvrqjZY
- IjP+6MZ+AoRreddxXB65EqpBvMExAkhzZdCCkULiq3CyF91KfWHqag5LNc/VxwC0hgQk
- zvZuhDH9TY8F3VJARTwzMOlQoWGsxdfWUIAvT6w8RhxpCn7oxRC9taJxUzeBFH1KBEu2
- 1y4IJvbZ3RjanJR6BiPJCMxX6w2ty2hVrABtKAU8U0LwKWcgYtLaPmx3ER4kB5ro4arA
- oNEg==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=bnujz0g3GDWZ2GThAeJ2BM9VllXCdQqZt+VNl22+obU=;
+ b=uyrS8Y4gweBcVDQxCOno3trR+vYYIq/redVmrwiADIj9GzperYbMdIY79WAKiUuTJ+
+ TBiX1jd6TuTRN0zp70phjDqRD8iKUcuu/MOTTHjH/AvhBkUbLh6wcA4Dkc7hFgSoAga1
+ oHoKGz81RCv+057l5oW/JltyWdH4k0N+s4Q9aDkKcdPQ91ArGl3L03FCGxkLM7ZjDiEx
+ 0aJlh2TAXadqo9kK9l6iFroAMiXiXWdm9tKmcf/D35xHNm2LrQjWk/9Q3DE5Xxpemgto
+ kNDkI00faWoTjwyd9Akfpd8sQYoAIVYWPOhBTXlH2Ossp6sq3N8PrZTSG1X24/eerrir
+ T/uw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=8GLOZFQ56OAbaoXlhnRk+YHGtv4hGs6RGM5Kij6lBIU=;
- b=px68jahIC99OruDHGm7hCde8CKUem4/wYUbED2HG42Q8vyMwac+f+Tce3eo8nlQLSW
- H8BhTewLqi4vgw5EyLYybhBSssG32TbES3aJ/30ANRUHnf1nsiVTWyHumvAejgk6Qdj2
- LubmrbjU+cWromro6FZlAPqncrzOsipB5PS1dJQoHj5JhAeIFUiu64SP5ICiG4BYFoXY
- Q3v/MGRqJ/m9r8KwGuWI2jXoijB6aUWrco41KHPndt6Dlu9GbzmxKdzO3rFvnkbVna4u
- dCmD2vFl0B2SL/Cea0hZc/5SEqaD+IE7Ggbb663ep+SzPoADzo1kAbR6JmL4+OFuEV9k
- Qcrw==
-X-Gm-Message-State: APjAAAXnT+vprSyzy+otGHeYWLKL3qqa45LcR5WauYWb96fQd14wKjvi
- zXJu2aFimidjnCXVG+kFULWIgyyG
-X-Google-Smtp-Source: APXvYqz6H5ywLEki7BeCk0WrXE1/ruT/tdzbA1G2QjNTP7pVJzs1Mvsx2Rq9cN3/D1RFSHIR7MAyNg==
-X-Received: by 2002:a17:902:830c:: with SMTP id
- bd12mr36747709plb.237.1565671222576; 
- Mon, 12 Aug 2019 21:40:22 -0700 (PDT)
-Received: from [10.0.2.15] ([122.163.110.75])
- by smtp.gmail.com with ESMTPSA id x25sm144958968pfa.90.2019.08.12.21.40.20
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 12 Aug 2019 21:40:22 -0700 (PDT)
-Subject: Re: [PATCH 01/11] staging: rtl8712: _r8712_init_xmit_priv(): Change
- return values and type
-To: Greg KH <gregkh@linuxfoundation.org>
-References: <20190809052353.5308-1-nishkadg.linux@gmail.com>
- <20190812143701.GA27411@kroah.com>
+ bh=bnujz0g3GDWZ2GThAeJ2BM9VllXCdQqZt+VNl22+obU=;
+ b=h+IwUfUYCxyw4VKu23AzCqh4aYciS67pdjHU5o7fZu1SDUL9+pY/JZ0o2Ry9iE+Vf5
+ yy7jd+Y0SVCv9rtperulFXY25lT4gwJn3ZsziQIRZO+ajX0VyVufpeWaJCTWzRSFRDfO
+ VegQnOmdxwmD4M+LX4KvAl7Z7PMlMmwPc4ZwVLdXN90pbLdWvJZE3fU8Ng8F/zoiPz4U
+ UM1mVtytSsx7+Uwnz6lmL1Wi/pRfIqOhwHsxYlsZ/QPLBBsfbhUE3RMI/hQkW4+o9ESZ
+ bZPsBxxEfQlN+bz2/JVh/tHDZF9BZSGrrYkXJ9Gq1wmNvl9emU5/Nu79APP2aJsQGjt7
+ RI+w==
+X-Gm-Message-State: APjAAAUCWHiKMhzRD4SCGe9nfBFr8aME5thkCVkezNY72kEDGFFiCNLz
+ qVhKa+E6eAp3FrqMuRFDLQZkspcN
+X-Google-Smtp-Source: APXvYqyvTI0leNpR/SAByya0x3d21I5PGUIQKc/qsyMTeLEdxkoikOEq0yyGOuODJ/tWtxMAh9s4aw==
+X-Received: by 2002:a17:902:bf07:: with SMTP id
+ bi7mr36794587plb.167.1565671614222; 
+ Mon, 12 Aug 2019 21:46:54 -0700 (PDT)
+Received: from localhost.localdomain ([122.163.110.75])
+ by smtp.gmail.com with ESMTPSA id t7sm246135pgp.68.2019.08.12.21.46.51
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Mon, 12 Aug 2019 21:46:53 -0700 (PDT)
 From: Nishka Dasgupta <nishkadg.linux@gmail.com>
-Message-ID: <e4e5c320-afa6-9a26-1c00-c7878ba9e1b7@gmail.com>
-Date: Tue, 13 Aug 2019 10:10:17 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+To: larry.finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
+ gregkh@linuxfoundation.org, devel@driverdev.osuosl.org
+Subject: [PATCH RESEND 1/4] staging: rtl8712: xmitframe_addmic(): Change
+ return values and type
+Date: Tue, 13 Aug 2019 10:16:35 +0530
+Message-Id: <20190813044638.16348-1-nishkadg.linux@gmail.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-In-Reply-To: <20190812143701.GA27411@kroah.com>
-Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,33 +86,75 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, florian.c.schilhabel@googlemail.com,
- larry.finger@lwfinger.net
+Cc: Nishka Dasgupta <nishkadg.linux@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 12/08/19 8:07 PM, Greg KH wrote:
-> On Fri, Aug 09, 2019 at 10:53:43AM +0530, Nishka Dasgupta wrote:
->> Change the return values in _r8712_init_xmit_priv from _SUCCESS/_FAIL to
->> 0/-ENOMEM respectively. Change return type from sint to int.
->>
->> Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
-> 
-> I only received 9 patches in this series.  I'll try to apply these, but
-> if they fail, please fix up your tree, and resend the remaining ones.
+Change return values of xmitframe_addmic from _SUCCESS and _FAIL to 0
+and -ENOMEM respectively. Modify call sites to check for non-zero values
+instead of _FAIL.
+Also change return type from sint to int.
 
-Okay. I'm resending the 4 patches that haven't been applied yet.
+Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
+---
+ drivers/staging/rtl8712/rtl871x_xmit.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-Thanking you,
-Nishka
-
-> 
-> thanks,
-> 
-> greg k-h
-> 
+diff --git a/drivers/staging/rtl8712/rtl871x_xmit.c b/drivers/staging/rtl8712/rtl871x_xmit.c
+index 178f8b96943b..cc5809e49e35 100644
+--- a/drivers/staging/rtl8712/rtl871x_xmit.c
++++ b/drivers/staging/rtl8712/rtl871x_xmit.c
+@@ -342,8 +342,8 @@ int r8712_update_attrib(struct _adapter *padapter, _pkt *pkt,
+ 	return 0;
+ }
+ 
+-static sint xmitframe_addmic(struct _adapter *padapter,
+-			     struct xmit_frame *pxmitframe)
++static int xmitframe_addmic(struct _adapter *padapter,
++			    struct xmit_frame *pxmitframe)
+ {
+ 	u32	curfragnum, length;
+ 	u8	*pframe, *payload, mic[8];
+@@ -372,7 +372,7 @@ static sint xmitframe_addmic(struct _adapter *padapter,
+ 				if (!memcmp(psecuritypriv->XGrptxmickey
+ 				   [psecuritypriv->XGrpKeyid].skey,
+ 				   null_key, 16))
+-					return _FAIL;
++					return -ENOMEM;
+ 				/*start to calculate the mic code*/
+ 				r8712_secmicsetkey(&micdata,
+ 					 psecuritypriv->
+@@ -381,7 +381,7 @@ static sint xmitframe_addmic(struct _adapter *padapter,
+ 			} else {
+ 				if (!memcmp(&stainfo->tkiptxmickey.skey[0],
+ 					    null_key, 16))
+-					return _FAIL;
++					return -ENOMEM;
+ 				/* start to calculate the mic code */
+ 				r8712_secmicsetkey(&micdata,
+ 					     &stainfo->tkiptxmickey.skey[0]);
+@@ -442,7 +442,7 @@ static sint xmitframe_addmic(struct _adapter *padapter,
+ 			payload = payload - pattrib->last_txcmdsz + 8;
+ 		}
+ 	}
+-	return _SUCCESS;
++	return 0;
+ }
+ 
+ static sint xmitframe_swencrypt(struct _adapter *padapter,
+@@ -696,7 +696,7 @@ sint r8712_xmitframe_coalesce(struct _adapter *padapter, _pkt *pkt,
+ 		memcpy(mem_start, pbuf_start + TXDESC_OFFSET, pattrib->hdrlen);
+ 	}
+ 
+-	if (xmitframe_addmic(padapter, pxmitframe) == _FAIL)
++	if (xmitframe_addmic(padapter, pxmitframe))
+ 		return _FAIL;
+ 	xmitframe_swencrypt(padapter, pxmitframe);
+ 	return _SUCCESS;
+-- 
+2.19.1
 
 _______________________________________________
 devel mailing list
