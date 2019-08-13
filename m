@@ -1,84 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 068398B053
-	for <lists+driverdev-devel@lfdr.de>; Tue, 13 Aug 2019 08:58:24 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 74D8D8B3E0
+	for <lists+driverdev-devel@lfdr.de>; Tue, 13 Aug 2019 11:16:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 52A9286F92;
-	Tue, 13 Aug 2019 06:58:22 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1F893227C4;
+	Tue, 13 Aug 2019 09:16:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id m4PDFlor7bxW; Tue, 13 Aug 2019 06:58:21 +0000 (UTC)
+	with ESMTP id UJgMuo3t+A9u; Tue, 13 Aug 2019 09:16:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2FE7B86E4E;
-	Tue, 13 Aug 2019 06:58:21 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by silver.osuosl.org (Postfix) with ESMTP id 9B0DA2283A;
+	Tue, 13 Aug 2019 09:15:17 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5F7181BF479
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 13 Aug 2019 06:58:19 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 479001BF282
+ for <devel@linuxdriverproject.org>; Tue, 13 Aug 2019 09:15:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5A9AE86E4E
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 13 Aug 2019 06:58:19 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3B87C87ECD
+ for <devel@linuxdriverproject.org>; Tue, 13 Aug 2019 09:15:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NUNCdKPlvcm2
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 13 Aug 2019 06:58:18 +0000 (UTC)
+ with ESMTP id dM8Qonc6twj5 for <devel@linuxdriverproject.org>;
+ Tue, 13 Aug 2019 09:14:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
- [209.85.215.193])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D56BF86E3F
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 13 Aug 2019 06:58:18 +0000 (UTC)
-Received: by mail-pg1-f193.google.com with SMTP id p3so447381pgb.9
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 12 Aug 2019 23:58:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=Oy8w87OGqyy3aD6mb+8tT7RQ6tXYMvbwQYBp8RpjanU=;
- b=ajlpxTBLtoRLtH8NYh1AH+bOxjAGnC1L4mK8NNAY9UkblagKN6g/Q6R04FjMPsdfZb
- m6TXI0FK0msjA+hpEx4eAkH2Bz/ma4X4V0LYvtl1+IzZqWkV8v0GZtN6Jo8cFxdOYl8v
- Vqp94zO403iRsn0Ud6/RFL577esJexZnGRggG60zeUTHwKZue18u9jGEZtbZnyJ5Lfll
- qHte40+hD3rte9Kbi7iSOaQJN0JvqBQYL93Ll/ju207zqEqgioVJ+gfGoqGY4OygZaX3
- qFKf12f3EKts61iZk8Rz+e6dKE/Pwi6UcPaErzc7HfNF/PnHlD81nf9GwHN7QdATD0Ap
- eCFw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=Oy8w87OGqyy3aD6mb+8tT7RQ6tXYMvbwQYBp8RpjanU=;
- b=Po3/mRgEGcKi+NarHviUYMND2ToIs5fO2l9vrqgN3DDsgGSzMZCuyCRLqMX4nKi0yr
- mcud1D+zJUnKHjGgPJVE7wnqgNeiU4Twdk/WIMJNSLKzyq6P06qOByKEfAPRLRpZ6Cs+
- mBkNCHx2MvDqX0yxJf/Z3ZbzlvjYvdVXcdqeOdL9EQnPvRZyExap5InFHzUqOjQvaa8q
- GoNX/vh5bmcTqdCsDEbNyUWZmbXOD6cV0kYRLHkD0mstmAeLwgQT8GBWWs8ZFBoUEygW
- 0RcEp2KDgvxF8UvozV4neZrJafJ4DjHvjC/vlLB4LrxOHGRCnf1uxpCxXrP975DLnWut
- 0KRg==
-X-Gm-Message-State: APjAAAWnDCUGQkDTDCodjfjs8ZjGe9FO3hKpOUUlhYOc3tCcQoW0RWoT
- 8C73tO6Rty3E84XkkA1KJ88=
-X-Google-Smtp-Source: APXvYqwX3hJN/niX2uSddRF4jZ1fgQnswtrsDV/+SQyTZvkyXMMmOCWRYcqwLf2lI4T4Wtj0Vz26+g==
-X-Received: by 2002:a17:90a:d151:: with SMTP id
- t17mr863113pjw.60.1565679498231; 
- Mon, 12 Aug 2019 23:58:18 -0700 (PDT)
-Received: from IoT-COE ([2401:4900:275a:ff77:44c:6b0e:447:1c5c])
- by smtp.gmail.com with ESMTPSA id ev3sm1127153pjb.3.2019.08.12.23.58.15
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Mon, 12 Aug 2019 23:58:17 -0700 (PDT)
-Date: Tue, 13 Aug 2019 12:28:06 +0530
-From: Merwin Trever Ferrao <merwintf@gmail.com>
-To: gregkh@linuxfoundation.org, Larry.Finger@lwfinger.net,
- florian.c.schilhabel@googlemail.com, driverdev-devel@linuxdriverproject.org
-Subject: [PATCH] Staging: rtl8712: rtl8712_recv: fixed 80 character length
- warning
-Message-ID: <20190813065806.GA23606@IoT-COE>
+Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id F30DA87EAA
+ for <devel@driverdev.osuosl.org>; Tue, 13 Aug 2019 09:14:07 +0000 (UTC)
+Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 972A0A30ACC58762311D;
+ Tue, 13 Aug 2019 17:14:04 +0800 (CST)
+Received: from architecture4.huawei.com (10.140.130.215) by smtp.huawei.com
+ (10.3.19.208) with Microsoft SMTP Server (TLS) id 14.3.439.0; Tue, 13 Aug
+ 2019 17:13:57 +0800
+From: Gao Xiang <gaoxiang25@huawei.com>
+To: linux-fsdevel <linux-fsdevel@vger.kernel.org>, LKML
+ <linux-kernel@vger.kernel.org>, Alexander Viro <viro@zeniv.linux.org.uk>
+Subject: [PATCH v7 00/24] erofs: promote erofs from staging
+Date: Tue, 13 Aug 2019 17:13:02 +0800
+Message-ID: <20190813091326.84652-1-gaoxiang25@huawei.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Originating-IP: [10.140.130.215]
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,35 +59,245 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: merwintf@gmail.com
+Cc: devel@driverdev.osuosl.org, Stephen Rothwell <sfr@canb.auug.org.au>,
+ linux-erofs@lists.ozlabs.org, Chao Yu <yuchao0@huawei.com>,
+ Theodore Ts'o <tytso@mit.edu>, "Darrick J . Wong" <darrick.wong@oracle.com>,
+ Pavel Machek <pavel@denx.de>, Jan Kara <jack@suse.cz>,
+ Amir Goldstein <amir73il@gmail.com>, Dave
+ Chinner <david@fromorbit.com>, David Sterba <dsterba@suse.cz>,
+ Li Guifu <bluce.liguifu@huawei.com>, Christoph Hellwig <hch@infradead.org>,
+ Richard Weinberger <richard@nod.at>, Miao Xie <miaoxie@huawei.com>,
+ Fang Wei <fangwei1@huawei.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jaegeuk Kim <jaegeuk@kernel.org>, Andrew Morton <akpm@linux-foundation.org>,
+ Linus Torvalds <torvalds@linux-foundation.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-When the checkpatch.pl script was run, it showed lines with length
-more than 80 characters in rtl8712_recv.c file. Fixed by
-breaking it up into two lines within 80 characters.
+Hi folks,
 
-Signed-off-by: Merwin Trever Ferrao <merwintf@gmail.com>
----
- drivers/staging/rtl8712/rtl8712_recv.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+[I strip the previous cover letter, the old one can be found in v6:
+ https://lore.kernel.org/linux-fsdevel/20190802125347.166018-1-gaoxiang25@huawei.com/] 
 
-diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
-index 42cb2c95b40c..9901815604f4 100644
---- a/drivers/staging/rtl8712/rtl8712_recv.c
-+++ b/drivers/staging/rtl8712/rtl8712_recv.c
-@@ -35,7 +35,8 @@ static u8 rfc1042_header[] = {0xaa, 0xaa, 0x03, 0x00, 0x00, 0x00};
- 
- static void recv_tasklet(void *priv);
- 
--void r8712_init_recv_priv(struct recv_priv *precvpriv, struct _adapter *padapter)
-+void r8712_init_recv_priv(struct recv_priv *precvpriv,
-+			  struct _adapter *padapter)
- {
- 	int i;
- 	struct recv_buf *precvbuf;
+We'd like to submit a formal moving patch applied to staging tree
+for 5.4, before that we'd like to hear if there are some ACKs,
+suggestions or NAKs, objections of EROFS. Therefore, we can improve
+it in this round or rethink about the whole thing.
+
+As related materials mentioned [1] [2], the goal of EROFS is to
+save extra storage space with guaranteed end-to-end performance
+for read-only files, which has better performance over exist Linux
+compression filesystems based on fixed-sized output compression
+and inplace decompression. It even has better performance in
+a large compression ratio range compared with generic uncompressed
+filesystems with proper CPU-storage combinations. And we think this
+direction is correct and a dedicated kernel team is continuously /
+actively working on improving it, enough testers and beta / end
+users using it.
+
+EROFS has been applied to almost all in-service HUAWEI smartphones
+(Yes, the number is still increasing by time) and it seems like
+a success. It can be used in more wider scenarios. We think it's
+useful for Linux / Android OS community and it's the time moving
+out of staging.
+
+In order to get started, latest stable mkfs.erofs is available at
+git://git.kernel.org/pub/scm/linux/kernel/git/xiang/erofs-utils.git -b dev
+with README in the repository.
+
+We are still tuning sequential read performance for ultra-fast
+speed NVME SSDs like Samsung 970PRO, but at least now you can
+try on your PC with some data with proper compression ratio,
+the latest Linux kernel, USB sticks and a not very old-fashioned
+CPU for convenience sake. There are also benchmarks available
+in the above materials mentioned.
+
+EROFS is a self-contained filesystem driver. Although there are
+still some TODOs to be more generic, we will actively keep on
+developping / tuning EROFS with the evolution of Linux kernel
+as the other in-kernel filesystems.
+
+EROFS is now ready for reviewing and moving, and the code is
+already cleaned up as shiny floors... Please kindly take some
+precious time, share your comments about EROFS and let us know
+your opinion about this. It's really important for us since
+generally speaking, we like to use Linux _in-tree_ stuffs rather
+than lack of supported out-of-tree / orphan stuffs as well.
+
+Thank you in advance,
+Gao Xiang
+
+[1] https://kccncosschn19eng.sched.com/event/Nru2/erofs-an-introduction-and-our-smartphone-practice-xiang-gao-huawei
+[2] https://www.usenix.org/conference/atc19/presentation/gao
+
+Changelog from v6:
+ o keep up with the latest staging patchset
+   https://lore.kernel.org/linux-fsdevel/20190813023054.73126-1-gaoxiang25@huawei.com/
+   in order to fix the following cases:
+   - inline erofs_inode_is_data_compressed() in erofs_fs.h;
+   - remove incomplete cleancache;
+   - remove all BUG_ON in EROFS.
+ o Removing the file names from the comments at the top of the files
+   suggested by Stephen will be applied to the real moving patch later.
+
+It can also be found in git at tag "erofs_2019-08-13" at:
+ https://git.kernel.org/pub/scm/linux/kernel/git/xiang/linux.git/
+
+and the latest fs code is available at:
+ https://git.kernel.org/pub/scm/linux/kernel/git/xiang/linux.git/tree/fs/erofs?h=erofs-outofstaging
+
+Changelog from v5:
+ o keep up with "[PATCH v2] staging: erofs: updates according to erofs-outofstaging v4"
+    https://lore.kernel.org/lkml/20190731155752.210602-1-gaoxiang25@huawei.com/
+   which mainly addresses review comments from Chao:
+  - keep the marco EROFS_IO_MAX_RETRIES_NOFAIL in internal.h;
+  - kill a redundant NULL check in "__stagingpage_alloc";
+  - add some descriptions in document about "use_vmap";
+  - rearrange erofs_vmap of "staging: erofs: kill CONFIG_EROFS_FS_USE_VM_MAP_RAM";
+
+ o all changes have been merged into staging tree, which are under staging-testing:
+    https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/log/?h=staging-testing
+
+Changelog from v4:
+ o rebase on Linus 5.3-rc1;
+
+ o keep up with "staging: erofs: updates according to erofs-outofstaging v4"
+   in order to get main code bit-for-bit identical with staging tree:
+    https://lore.kernel.org/lkml/20190729065159.62378-1-gaoxiang25@huawei.com/
+
+Changelog from v3:
+ o use GPL-2.0-only for SPDX-License-Identifier suggested by Stephen;
+
+ o kill all kconfig cache strategies and turn them into mount options
+   "cache_strategy={disable|readahead|readaround}" suggested by Ted.
+   As the first step, cached pages can still be usable after cache is
+   disabled by remounting, and these pages will be fallen out over
+   time, which can be refined in the later version if some requirement
+   is needed. Update related document as well;
+
+ o turn on CONFIG_EROFS_FS_SECURITY by default suggested by David;
+
+ o kill CONFIG_EROFS_FS_IO_MAX_RETRIES and fold it into code; turn
+   EROFS_FS_USE_VM_MAP_RAM into a module parameter ("use_vmap")
+   suggested by David.
+
+Changelog from v2:
+ o kill sbi->dev_name and clean up all failure handling in
+   fill_super() suggested by Al.
+   Note that the initialzation of managed_cache is now moved
+   after s_root is assigned since it's more preferred to iput()
+   in .put_super() and all inodes should be evicted before
+   the end of generic_shutdown_super(sb);
+
+ o fold in the following staging patches (and thanks):
+   staging: erofs:converting all 'unsigned' to 'unsigned int'
+   staging: erofs: Remove function erofs_kill_sb()
+    - However it was revoked due to erofs_kill_sb reused...
+   staging: erofs: avoid opened loop codes
+   staging: erofs: support bmap
+
+ o move EROFS_SUPER_MAGIC_V1 from linux/fs/erofs/erofs_fs.h to
+   include/uapi/linux/magic.h for userspace utilities.
+
+Changelog from v1:
+ o resend the whole filesystem into a patchset suggested by Greg;
+ o code is more cleaner, especially for decompression frontend.
+
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Alexander Viro <viro@zeniv.linux.org.uk>
+Cc: Andrew Morton <akpm@linux-foundation.org>
+Cc: Stephen Rothwell <sfr@canb.auug.org.au>
+Cc: Theodore Ts'o <tytso@mit.edu>
+Cc: Pavel Machek <pavel@denx.de>
+Cc: David Sterba <dsterba@suse.cz>
+Cc: Amir Goldstein <amir73il@gmail.com>
+Cc: Christoph Hellwig <hch@infradead.org>
+Cc: Darrick J . Wong <darrick.wong@oracle.com>
+Cc: Dave Chinner <david@fromorbit.com>
+Cc: Jaegeuk Kim <jaegeuk@kernel.org>
+Cc: Jan Kara <jack@suse.cz> 
+Cc: Richard Weinberger <richard@nod.at>
+Cc: Chao Yu <yuchao0@huawei.com>
+Cc: Miao Xie <miaoxie@huawei.com>
+Cc: Li Guifu <bluce.liguifu@huawei.com>
+Cc: Fang Wei <fangwei1@huawei.com>
+Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
+
+Gao Xiang (24):
+  erofs: add on-disk layout
+  erofs: add erofs in-memory stuffs
+  erofs: add super block operations
+  erofs: add raw address_space operations
+  erofs: add inode operations
+  erofs: support special inode
+  erofs: add directory operations
+  erofs: add namei functions
+  erofs: support tracepoint
+  erofs: update Kconfig and Makefile
+  erofs: introduce xattr & posixacl support
+  erofs: introduce tagged pointer
+  erofs: add compression indexes support
+  erofs: introduce superblock registration
+  erofs: introduce erofs shrinker
+  erofs: introduce workstation for decompression
+  erofs: introduce per-CPU buffers implementation
+  erofs: introduce pagevec for decompression subsystem
+  erofs: add erofs_allocpage()
+  erofs: introduce generic decompression backend
+  erofs: introduce LZ4 decompression inplace
+  erofs: introduce the decompression frontend
+  erofs: introduce cached decompression
+  erofs: add document
+
+ Documentation/filesystems/erofs.txt |  225 +++++
+ fs/Kconfig                          |    1 +
+ fs/Makefile                         |    1 +
+ fs/erofs/Kconfig                    |   98 ++
+ fs/erofs/Makefile                   |   11 +
+ fs/erofs/compress.h                 |   62 ++
+ fs/erofs/data.c                     |  423 ++++++++
+ fs/erofs/decompressor.c             |  360 +++++++
+ fs/erofs/dir.c                      |  147 +++
+ fs/erofs/erofs_fs.h                 |  316 ++++++
+ fs/erofs/inode.c                    |  326 +++++++
+ fs/erofs/internal.h                 |  553 +++++++++++
+ fs/erofs/namei.c                    |  251 +++++
+ fs/erofs/super.c                    |  666 +++++++++++++
+ fs/erofs/tagptr.h                   |  110 +++
+ fs/erofs/utils.c                    |  335 +++++++
+ fs/erofs/xattr.c                    |  704 ++++++++++++++
+ fs/erofs/xattr.h                    |   94 ++
+ fs/erofs/zdata.c                    | 1405 +++++++++++++++++++++++++++
+ fs/erofs/zdata.h                    |  195 ++++
+ fs/erofs/zmap.c                     |  462 +++++++++
+ fs/erofs/zpvec.h                    |  159 +++
+ include/trace/events/erofs.h        |  256 +++++
+ include/uapi/linux/magic.h          |    1 +
+ 24 files changed, 7161 insertions(+)
+ create mode 100644 Documentation/filesystems/erofs.txt
+ create mode 100644 fs/erofs/Kconfig
+ create mode 100644 fs/erofs/Makefile
+ create mode 100644 fs/erofs/compress.h
+ create mode 100644 fs/erofs/data.c
+ create mode 100644 fs/erofs/decompressor.c
+ create mode 100644 fs/erofs/dir.c
+ create mode 100644 fs/erofs/erofs_fs.h
+ create mode 100644 fs/erofs/inode.c
+ create mode 100644 fs/erofs/internal.h
+ create mode 100644 fs/erofs/namei.c
+ create mode 100644 fs/erofs/super.c
+ create mode 100644 fs/erofs/tagptr.h
+ create mode 100644 fs/erofs/utils.c
+ create mode 100644 fs/erofs/xattr.c
+ create mode 100644 fs/erofs/xattr.h
+ create mode 100644 fs/erofs/zdata.c
+ create mode 100644 fs/erofs/zdata.h
+ create mode 100644 fs/erofs/zmap.c
+ create mode 100644 fs/erofs/zpvec.h
+ create mode 100644 include/trace/events/erofs.h
+
 -- 
 2.17.1
 
