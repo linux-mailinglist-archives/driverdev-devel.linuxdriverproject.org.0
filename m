@@ -1,57 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 190F68CA28
-	for <lists+driverdev-devel@lfdr.de>; Wed, 14 Aug 2019 06:15:27 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6852720503;
-	Wed, 14 Aug 2019 04:15:25 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yZeX9tQPb1iv; Wed, 14 Aug 2019 04:15:21 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id B126320528;
-	Wed, 14 Aug 2019 04:15:15 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 578C41BF3F3
- for <devel@linuxdriverproject.org>; Wed, 14 Aug 2019 04:15:13 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id BC9C38CA61
+	for <lists+driverdev-devel@lfdr.de>; Wed, 14 Aug 2019 06:26:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 54938854CC
- for <devel@linuxdriverproject.org>; Wed, 14 Aug 2019 04:15:13 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AD5B4861B2;
+	Wed, 14 Aug 2019 04:26:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 9eF6EFhI7Gqj; Wed, 14 Aug 2019 04:26:41 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 438ED860C0;
+	Wed, 14 Aug 2019 04:26:40 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 52E731BF3F3
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 14 Aug 2019 04:26:38 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4B58586FC1
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 14 Aug 2019 04:26:38 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qJTo7LIn6nnS for <devel@linuxdriverproject.org>;
- Wed, 14 Aug 2019 04:15:12 +0000 (UTC)
+ with ESMTP id PPQmLh5XaFrK
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 14 Aug 2019 04:26:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C13A3854B4
- for <devel@driverdev.osuosl.org>; Wed, 14 Aug 2019 04:15:12 +0000 (UTC)
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 000CB60CD10D94A268ED;
- Wed, 14 Aug 2019 12:15:10 +0800 (CST)
-Received: from localhost.localdomain (10.175.124.28) by smtp.huawei.com
- (10.3.19.211) with Microsoft SMTP Server (TLS) id 14.3.439.0; Wed, 14 Aug
- 2019 12:15:00 +0800
-From: Gao Xiang <gaoxiang25@huawei.com>
-To: Chao Yu <yuchao0@huawei.com>, Pavel Machek <pavel@denx.de>, "Greg
- Kroah-Hartman" <gregkh@linuxfoundation.org>, <devel@driverdev.osuosl.org>,
- <linux-fsdevel@vger.kernel.org>
-Subject: [PATCH RESEND 2/2] staging: erofs: differentiate unsupported on-disk
- format
-Date: Wed, 14 Aug 2019 12:32:08 +0800
-Message-ID: <20190814043208.15591-2-gaoxiang25@huawei.com>
-X-Mailer: git-send-email 2.17.2
-In-Reply-To: <20190814043208.15591-1-gaoxiang25@huawei.com>
-References: <20190814042525.4925-2-gaoxiang25@huawei.com>
- <20190814043208.15591-1-gaoxiang25@huawei.com>
+Received: from h1337434.stratoserver.net (h1337434.stratoserver.net
+ [85.214.102.28])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 53C5F86E1D
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 14 Aug 2019 04:26:36 +0000 (UTC)
+Received: from [197.234.219.54] (helo=User)
+ by h1337434.stratoserver.net with esmtpa (Exim 4.66)
+ (envelope-from <info.norbert@daum.net>)
+ id 1hxd90-0006Q3-My; Tue, 13 Aug 2019 22:11:49 +0200
+From: "Mrs. Marina Luda"<<info.norbert@daum.net>>
+Subject: PLEASE READ CAREFULLY
+Date: Tue, 13 Aug 2019 21:26:41 +0100
 MIME-Version: 1.0
-X-Originating-IP: [10.175.124.28]
-X-CFilter-Loop: Reflected
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20190814042638.4B58586FC1@whitealder.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,78 +61,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-erofs@lists.ozlabs.org, Chao Yu <chao@kernel.org>,
- LKML <linux-kernel@vger.kernel.org>, weidu.du@huawei.com,
- Fang Wei <fangwei1@huawei.com>, Miao Xie <miaoxie@huawei.com>
+Reply-To: mrsmarinaluda001@mail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-For some specific fields, use ENOTSUPP instead of EIO
-for values which look sane but aren't supported right now.
+Sir/Madam
 
-Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
----
- drivers/staging/erofs/inode.c | 4 ++--
- drivers/staging/erofs/zmap.c  | 6 +++---
- 2 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/staging/erofs/inode.c b/drivers/staging/erofs/inode.c
-index 461fd4213ce7..1088cd154efa 100644
---- a/drivers/staging/erofs/inode.c
-+++ b/drivers/staging/erofs/inode.c
-@@ -24,7 +24,7 @@ static int read_inode(struct inode *inode, void *data)
- 		errln("unsupported data mapping %u of nid %llu",
- 		      vi->datamode, vi->nid);
- 		DBG_BUGON(1);
--		return -EIO;
-+		return -ENOTSUPP;
- 	}
- 
- 	if (__inode_version(advise) == EROFS_INODE_LAYOUT_V2) {
-@@ -95,7 +95,7 @@ static int read_inode(struct inode *inode, void *data)
- 		errln("unsupported on-disk inode version %u of nid %llu",
- 		      __inode_version(advise), vi->nid);
- 		DBG_BUGON(1);
--		return -EIO;
-+		return -ENOTSUPP;
- 	}
- 
- 	if (!nblks)
-diff --git a/drivers/staging/erofs/zmap.c b/drivers/staging/erofs/zmap.c
-index 16b3625604f4..f955d0752792 100644
---- a/drivers/staging/erofs/zmap.c
-+++ b/drivers/staging/erofs/zmap.c
-@@ -178,7 +178,7 @@ static int vle_legacy_load_cluster_from_disk(struct z_erofs_maprecorder *m,
- 		break;
- 	default:
- 		DBG_BUGON(1);
--		return -EIO;
-+		return -ENOTSUPP;
- 	}
- 	m->type = type;
- 	return 0;
-@@ -362,7 +362,7 @@ static int vle_extent_lookback(struct z_erofs_maprecorder *m,
- 		errln("unknown type %u at lcn %lu of nid %llu",
- 		      m->type, lcn, vi->nid);
- 		DBG_BUGON(1);
--		return -EIO;
-+		return -ENOTSUPP;
- 	}
- 	return 0;
- }
-@@ -436,7 +436,7 @@ int z_erofs_map_blocks_iter(struct inode *inode,
- 	default:
- 		errln("unknown type %u at offset %llu of nid %llu",
- 		      m.type, ofs, vi->nid);
--		err = -EIO;
-+		err = -ENOTSUPP;
- 		goto unmap_out;
- 	}
- 
--- 
-2.17.2
+I am Mrs. Marina Luda, I am a US citizen, 52 years Old. I reside here in Florida USA. My residential address is as follows, 7008 E Hwy 326 Silver Springs Florida 34488 United States, am thinking of relocating since I am now rich. I am one of those that took part in the compensation in West Africa (Nigeria) many years ago and they refused to pay me, I had paid over $85,000 while trying to get my payment all to no avail.
+
+So I decided to travel to Washington with all my compensation documents, And I was directed by the Federal Bureau of Investigation Director to contact Mr.James Douglas, who is a representative of the INTERNATIONAL MONETARY FUND (IMF) and a member of the Compensation Award Committee, I contacted him and he explained everything to me. He said whoever is contacting us through emails are fake.
+
+He took me to the paying bank for the claim of my compensation payment. Right now I can't even sleep,I am the most happiest woman on earth because I have received my compensation funds of $12.5 Million US Dollars. Moreover, Mr. James Douglas showed me the full information of those that are yet to receive their payments and I saw your email as one of the beneficiaries on the list he showed me, that is why I decided to email you to stop dealing with those people, they are not with your fund, 
+
+they are only making money out of you. I will advise you to contact Mr. Jame Douglas. Kindly send your personal details to him to prove your identification.
+
+Full Name:
+Home Address:
+Occupation:
+Phone Number:
+Age:
+Gender:
+country:
+
+You have to contact him directly on this information below.
+
+Compensation Award Office.
+Name : Mr. James Douglas
+Email: jamesddouglas01@gmail.com
+
+You really have to stop dealing with those people that are contacting you and telling you that your fund is with them, it is not in anyway with them, they are only taking advantage of you and  will dry you up until you have nothing. The only money I paid after I met Mr. Jame Douglas was just $425 USD for the paper works, take note of that.
+
+Once again stop contacting those people, I will advise you to contact Mr. Jame Douglas so that he can help you to receive your fund instead of dealing with those liars that will be turning you around asking for different kind of money to complete your transaction.
+
+Thank you and be Blessed.
+
+
+
+Mrs. Marina Luda
+7008 E Hwy 326 Silver
+Springs FLorida
+34488 United States
+
+
 
 _______________________________________________
 devel mailing list
