@@ -1,61 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C57FE8C60F
-	for <lists+driverdev-devel@lfdr.de>; Wed, 14 Aug 2019 04:12:32 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D14FF875EB;
-	Wed, 14 Aug 2019 02:12:30 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GcfJvM+S+a8N; Wed, 14 Aug 2019 02:12:30 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 86E1D875B6;
-	Wed, 14 Aug 2019 02:12:27 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A4A081BF23C
- for <devel@linuxdriverproject.org>; Wed, 14 Aug 2019 02:12:24 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C3FB8CA0D
+	for <lists+driverdev-devel@lfdr.de>; Wed, 14 Aug 2019 06:08:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9F65087D7B
- for <devel@linuxdriverproject.org>; Wed, 14 Aug 2019 02:12:24 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2942A87F0C;
+	Wed, 14 Aug 2019 04:08:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ofqHm9cBWTYE; Wed, 14 Aug 2019 04:08:34 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 41BE287EA2;
+	Wed, 14 Aug 2019 04:08:34 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 8E7EA1BF3F3
+ for <devel@linuxdriverproject.org>; Wed, 14 Aug 2019 04:08:30 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 8A472204DC
+ for <devel@linuxdriverproject.org>; Wed, 14 Aug 2019 04:08:30 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cjXdfR2TAIzh for <devel@linuxdriverproject.org>;
- Wed, 14 Aug 2019 02:12:23 +0000 (UTC)
+ with ESMTP id 87a9Yz1DFayq for <devel@linuxdriverproject.org>;
+ Wed, 14 Aug 2019 04:08:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8107687BB6
- for <devel@driverdev.osuosl.org>; Wed, 14 Aug 2019 02:12:23 +0000 (UTC)
-Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
- [73.47.72.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 70C1220842;
- Wed, 14 Aug 2019 02:12:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1565748743;
- bh=ed986r5hXz2jFm/xnp0aJsVrHTaLCp8d/JzUrylEx+M=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=rXsyqBmgYNwltaXcARhC4/nzyfb994k1g9RMwWHuynKMKaStrE4k5rwtLbHeL+Tf9
- ton9HyJjuME0D9SkNmsrX2swy0ZbngTqtbjDZxs0QvrsqouHt/to3gZxkan8+GfeQD
- FCZv9K6ecfBDBuBmeRaLbLKCEzXN7Vs3YIhmtQ8Y=
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.2 041/123] Staging: fbtft: Fix GPIO handling
-Date: Tue, 13 Aug 2019 22:09:25 -0400
-Message-Id: <20190814021047.14828-41-sashal@kernel.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190814021047.14828-1-sashal@kernel.org>
-References: <20190814021047.14828-1-sashal@kernel.org>
+Received: from huawei.com (szxga05-in.huawei.com [45.249.212.191])
+ by silver.osuosl.org (Postfix) with ESMTPS id A9D0E203FD
+ for <devel@driverdev.osuosl.org>; Wed, 14 Aug 2019 04:08:28 +0000 (UTC)
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 34E9DFD20040FEE61D17;
+ Wed, 14 Aug 2019 12:08:23 +0800 (CST)
+Received: from localhost.localdomain (10.175.124.28) by smtp.huawei.com
+ (10.3.19.214) with Microsoft SMTP Server (TLS) id 14.3.439.0; Wed, 14 Aug
+ 2019 12:08:17 +0800
+From: Gao Xiang <gaoxiang25@huawei.com>
+To: Chao Yu <yuchao0@huawei.com>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, <devel@driverdev.osuosl.org>,
+ <linux-fsdevel@vger.kernel.org>
+Subject: [PATCH 1/2] staging: erofs: introduce EFSCORRUPTED and more logs
+Date: Wed, 14 Aug 2019 12:25:24 +0800
+Message-ID: <20190814042525.4925-1-gaoxiang25@huawei.com>
+X-Mailer: git-send-email 2.17.2
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+X-Originating-IP: [10.175.124.28]
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,118 +60,246 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: =?UTF-8?q?Jan=20Sebastian=20G=C3=B6tte?= <linux@jaseg.net>,
- Sasha Levin <sashal@kernel.org>, linux-fbdev@vger.kernel.org,
- devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- dri-devel@lists.freedesktop.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-erofs@lists.ozlabs.org, Chao Yu <chao@kernel.org>,
+ LKML <linux-kernel@vger.kernel.org>, weidu.du@huawei.com,
+ Fang Wei <fangwei1@huawei.com>, Miao Xie <miaoxie@huawei.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RnJvbTogSmFuIFNlYmFzdGlhbiBHw7Z0dGUgPGxpbnV4QGphc2VnLm5ldD4KClsgVXBzdHJlYW0g
-Y29tbWl0IDkyZTNlODg0ODg3YzBkMjc4MDQyZmJiYjZmNmM5YjQxZDZhZGRiNzEgXQoKQ29tbWl0
-IGM0NDBlZWUxYTdhMSAoIlN0YWdpbmc6IGZidGZ0OiBTd2l0Y2ggdG8gdGhlIGdwaW8gZGVzY3Jp
-cHRvcgppbnRlcmZhY2UiKSBicmVha3MgR1BJTyBoYW5kbGluZy4gSW4gc2V2ZXJhbCBwbGFjZXMs
-IGNoZWNrcyB0byBvbmx5IHNldAphIEdQSU8gaWYgaXQgd2FzIGNvbmZpZ3VyZWQgZW5kZWQgdXAg
-YmFja3dhcmRzLgpJIGhhdmUgdGVzdGVkIHRoaXMgZml4LiBUaGUgZml4ZWQgZHJpdmVyIHdvcmtz
-IHdpdGggYSBpbGk5NDg2CmRpc3BsYXkgY29ubmVjdGVkIHRvIGEgcmFzcGJlcnJ5IHBpIHZpYSBT
-UEkuCgpGaXhlczogYzQ0MGVlZTFhN2ExZCAoIlN0YWdpbmc6IGZidGZ0OiBTd2l0Y2ggdG8gdGhl
-IGdwaW8gZGVzY3JpcHRvciBpbnRlcmZhY2UiKQpUZXN0ZWQtYnk6IEphbiBTZWJhc3RpYW4gR8O2
-dHRlIDxsaW51eEBqYXNlZy5uZXQ+ClJldmlld2VkLWJ5OiBOaWNvbGFzIFNhZW56IEp1bGllbm5l
-IDxuc2FlbnpqdWxpZW5uZUBzdXNlLmRlPgpTaWduZWQtb2ZmLWJ5OiBKYW4gU2ViYXN0aWFuIEfD
-tnR0ZSA8bGludXhAamFzZWcubmV0PgpMaW5rOiBodHRwczovL2xvcmUua2VybmVsLm9yZy9yLzc1
-YWRhNTJmLWFmYTEtMDhiYy1kMGNlLTk2NmZjMTExMGU3MEBqYXNlZy5uZXQKU2lnbmVkLW9mZi1i
-eTogR3JlZyBLcm9haC1IYXJ0bWFuIDxncmVna2hAbGludXhmb3VuZGF0aW9uLm9yZz4KU2lnbmVk
-LW9mZi1ieTogU2FzaGEgTGV2aW4gPHNhc2hhbEBrZXJuZWwub3JnPgotLS0KIGRyaXZlcnMvc3Rh
-Z2luZy9mYnRmdC9mYl9iZDY2MzQ3NC5jICB8IDIgKy0KIGRyaXZlcnMvc3RhZ2luZy9mYnRmdC9m
-Yl9pbGk5MTYzLmMgICB8IDIgKy0KIGRyaXZlcnMvc3RhZ2luZy9mYnRmdC9mYl9pbGk5MzI1LmMg
-ICB8IDIgKy0KIGRyaXZlcnMvc3RhZ2luZy9mYnRmdC9mYl9zNmQxMTIxLmMgICB8IDIgKy0KIGRy
-aXZlcnMvc3RhZ2luZy9mYnRmdC9mYl9zc2QxMjg5LmMgICB8IDIgKy0KIGRyaXZlcnMvc3RhZ2lu
-Zy9mYnRmdC9mYl9zc2QxMzMxLmMgICB8IDQgKystLQogZHJpdmVycy9zdGFnaW5nL2ZidGZ0L2Zi
-X3VwZDE2MTcwNC5jIHwgMiArLQogZHJpdmVycy9zdGFnaW5nL2ZidGZ0L2ZidGZ0LWJ1cy5jICAg
-IHwgMiArLQogZHJpdmVycy9zdGFnaW5nL2ZidGZ0L2ZidGZ0LWNvcmUuYyAgIHwgNCArKy0tCiA5
-IGZpbGVzIGNoYW5nZWQsIDExIGluc2VydGlvbnMoKyksIDExIGRlbGV0aW9ucygtKQoKZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9mYnRmdC9mYl9iZDY2MzQ3NC5jIGIvZHJpdmVycy9zdGFn
-aW5nL2ZidGZ0L2ZiX2JkNjYzNDc0LmMKaW5kZXggYjZjNmQ2NmU0ZWIxYi4uZTJjNzY0NjU4OGY4
-YyAxMDA2NDQKLS0tIGEvZHJpdmVycy9zdGFnaW5nL2ZidGZ0L2ZiX2JkNjYzNDc0LmMKKysrIGIv
-ZHJpdmVycy9zdGFnaW5nL2ZidGZ0L2ZiX2JkNjYzNDc0LmMKQEAgLTI0LDcgKzI0LDcgQEAKIAog
-c3RhdGljIGludCBpbml0X2Rpc3BsYXkoc3RydWN0IGZidGZ0X3BhciAqcGFyKQogewotCWlmICgh
-cGFyLT5ncGlvLmNzKQorCWlmIChwYXItPmdwaW8uY3MpCiAJCWdwaW9kX3NldF92YWx1ZShwYXIt
-PmdwaW8uY3MsIDApOyAgLyogQWN0aXZhdGUgY2hpcCAqLwogCiAJcGFyLT5mYnRmdG9wcy5yZXNl
-dChwYXIpOwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL2ZidGZ0L2ZiX2lsaTkxNjMuYyBi
-L2RyaXZlcnMvc3RhZ2luZy9mYnRmdC9mYl9pbGk5MTYzLmMKaW5kZXggZDYwOWEyYjY3ZGI5Yi4u
-ZmQzMjM3NjcwMGUyOCAxMDA2NDQKLS0tIGEvZHJpdmVycy9zdGFnaW5nL2ZidGZ0L2ZiX2lsaTkx
-NjMuYworKysgYi9kcml2ZXJzL3N0YWdpbmcvZmJ0ZnQvZmJfaWxpOTE2My5jCkBAIC03Nyw3ICs3
-Nyw3IEBAIHN0YXRpYyBpbnQgaW5pdF9kaXNwbGF5KHN0cnVjdCBmYnRmdF9wYXIgKnBhcikKIHsK
-IAlwYXItPmZidGZ0b3BzLnJlc2V0KHBhcik7CiAKLQlpZiAoIXBhci0+Z3Bpby5jcykKKwlpZiAo
-cGFyLT5ncGlvLmNzKQogCQlncGlvZF9zZXRfdmFsdWUocGFyLT5ncGlvLmNzLCAwKTsgIC8qIEFj
-dGl2YXRlIGNoaXAgKi8KIAogCXdyaXRlX3JlZyhwYXIsIE1JUElfRENTX1NPRlRfUkVTRVQpOyAv
-KiBzb2Z0d2FyZSByZXNldCAqLwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL2ZidGZ0L2Zi
-X2lsaTkzMjUuYyBiL2RyaXZlcnMvc3RhZ2luZy9mYnRmdC9mYl9pbGk5MzI1LmMKaW5kZXggYjA5
-MGU3YWI2ZmRkNi4uODVlNTRhMTBlZDcyYyAxMDA2NDQKLS0tIGEvZHJpdmVycy9zdGFnaW5nL2Zi
-dGZ0L2ZiX2lsaTkzMjUuYworKysgYi9kcml2ZXJzL3N0YWdpbmcvZmJ0ZnQvZmJfaWxpOTMyNS5j
-CkBAIC04NSw3ICs4NSw3IEBAIHN0YXRpYyBpbnQgaW5pdF9kaXNwbGF5KHN0cnVjdCBmYnRmdF9w
-YXIgKnBhcikKIHsKIAlwYXItPmZidGZ0b3BzLnJlc2V0KHBhcik7CiAKLQlpZiAoIXBhci0+Z3Bp
-by5jcykKKwlpZiAocGFyLT5ncGlvLmNzKQogCQlncGlvZF9zZXRfdmFsdWUocGFyLT5ncGlvLmNz
-LCAwKTsgIC8qIEFjdGl2YXRlIGNoaXAgKi8KIAogCWJ0ICY9IDB4MDc7CmRpZmYgLS1naXQgYS9k
-cml2ZXJzL3N0YWdpbmcvZmJ0ZnQvZmJfczZkMTEyMS5jIGIvZHJpdmVycy9zdGFnaW5nL2ZidGZ0
-L2ZiX3M2ZDExMjEuYwppbmRleCBiM2QwNzAxODgwZmUzLi41YTEyOWIxMzUyY2M4IDEwMDY0NAot
-LS0gYS9kcml2ZXJzL3N0YWdpbmcvZmJ0ZnQvZmJfczZkMTEyMS5jCisrKyBiL2RyaXZlcnMvc3Rh
-Z2luZy9mYnRmdC9mYl9zNmQxMTIxLmMKQEAgLTI5LDcgKzI5LDcgQEAgc3RhdGljIGludCBpbml0
-X2Rpc3BsYXkoc3RydWN0IGZidGZ0X3BhciAqcGFyKQogewogCXBhci0+ZmJ0ZnRvcHMucmVzZXQo
-cGFyKTsKIAotCWlmICghcGFyLT5ncGlvLmNzKQorCWlmIChwYXItPmdwaW8uY3MpCiAJCWdwaW9k
-X3NldF92YWx1ZShwYXItPmdwaW8uY3MsIDApOyAgLyogQWN0aXZhdGUgY2hpcCAqLwogCiAJLyog
-SW5pdGlhbGl6YXRpb24gc2VxdWVuY2UgZnJvbSBMaWJfVVRGVCAqLwpkaWZmIC0tZ2l0IGEvZHJp
-dmVycy9zdGFnaW5nL2ZidGZ0L2ZiX3NzZDEyODkuYyBiL2RyaXZlcnMvc3RhZ2luZy9mYnRmdC9m
-Yl9zc2QxMjg5LmMKaW5kZXggYmJmNzVmNzk1MjM0Yi4uODhhNWI2OTI1OTAxZCAxMDA2NDQKLS0t
-IGEvZHJpdmVycy9zdGFnaW5nL2ZidGZ0L2ZiX3NzZDEyODkuYworKysgYi9kcml2ZXJzL3N0YWdp
-bmcvZmJ0ZnQvZmJfc3NkMTI4OS5jCkBAIC0yOCw3ICsyOCw3IEBAIHN0YXRpYyBpbnQgaW5pdF9k
-aXNwbGF5KHN0cnVjdCBmYnRmdF9wYXIgKnBhcikKIHsKIAlwYXItPmZidGZ0b3BzLnJlc2V0KHBh
-cik7CiAKLQlpZiAoIXBhci0+Z3Bpby5jcykKKwlpZiAocGFyLT5ncGlvLmNzKQogCQlncGlvZF9z
-ZXRfdmFsdWUocGFyLT5ncGlvLmNzLCAwKTsgIC8qIEFjdGl2YXRlIGNoaXAgKi8KIAogCXdyaXRl
-X3JlZyhwYXIsIDB4MDAsIDB4MDAwMSk7CmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvZmJ0
-ZnQvZmJfc3NkMTMzMS5jIGIvZHJpdmVycy9zdGFnaW5nL2ZidGZ0L2ZiX3NzZDEzMzEuYwppbmRl
-eCA0Y2ZlOWY4NTM1ZDBmLi4zNzYyMmM5NDYyYWE3IDEwMDY0NAotLS0gYS9kcml2ZXJzL3N0YWdp
-bmcvZmJ0ZnQvZmJfc3NkMTMzMS5jCisrKyBiL2RyaXZlcnMvc3RhZ2luZy9mYnRmdC9mYl9zc2Qx
-MzMxLmMKQEAgLTgxLDcgKzgxLDcgQEAgc3RhdGljIHZvaWQgd3JpdGVfcmVnOF9idXM4KHN0cnVj
-dCBmYnRmdF9wYXIgKnBhciwgaW50IGxlbiwgLi4uKQogCXZhX3N0YXJ0KGFyZ3MsIGxlbik7CiAK
-IAkqYnVmID0gKHU4KXZhX2FyZyhhcmdzLCB1bnNpZ25lZCBpbnQpOwotCWlmICghcGFyLT5ncGlv
-LmRjKQorCWlmIChwYXItPmdwaW8uZGMpCiAJCWdwaW9kX3NldF92YWx1ZShwYXItPmdwaW8uZGMs
-IDApOwogCXJldCA9IHBhci0+ZmJ0ZnRvcHMud3JpdGUocGFyLCBwYXItPmJ1Ziwgc2l6ZW9mKHU4
-KSk7CiAJaWYgKHJldCA8IDApIHsKQEAgLTEwNCw3ICsxMDQsNyBAQCBzdGF0aWMgdm9pZCB3cml0
-ZV9yZWc4X2J1czgoc3RydWN0IGZidGZ0X3BhciAqcGFyLCBpbnQgbGVuLCAuLi4pCiAJCQlyZXR1
-cm47CiAJCX0KIAl9Ci0JaWYgKCFwYXItPmdwaW8uZGMpCisJaWYgKHBhci0+Z3Bpby5kYykKIAkJ
-Z3Bpb2Rfc2V0X3ZhbHVlKHBhci0+Z3Bpby5kYywgMSk7CiAJdmFfZW5kKGFyZ3MpOwogfQpkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL2ZidGZ0L2ZiX3VwZDE2MTcwNC5jIGIvZHJpdmVycy9z
-dGFnaW5nL2ZidGZ0L2ZiX3VwZDE2MTcwNC5jCmluZGV4IDU2NGEzOGUzNDQ0MDYuLmM3NzgzMmFl
-NWU1YmEgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy9mYnRmdC9mYl91cGQxNjE3MDQuYwor
-KysgYi9kcml2ZXJzL3N0YWdpbmcvZmJ0ZnQvZmJfdXBkMTYxNzA0LmMKQEAgLTI2LDcgKzI2LDcg
-QEAgc3RhdGljIGludCBpbml0X2Rpc3BsYXkoc3RydWN0IGZidGZ0X3BhciAqcGFyKQogewogCXBh
-ci0+ZmJ0ZnRvcHMucmVzZXQocGFyKTsKIAotCWlmICghcGFyLT5ncGlvLmNzKQorCWlmIChwYXIt
-PmdwaW8uY3MpCiAJCWdwaW9kX3NldF92YWx1ZShwYXItPmdwaW8uY3MsIDApOyAgLyogQWN0aXZh
-dGUgY2hpcCAqLwogCiAJLyogSW5pdGlhbGl6YXRpb24gc2VxdWVuY2UgZnJvbSBMaWJfVVRGVCAq
-LwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL2ZidGZ0L2ZidGZ0LWJ1cy5jIGIvZHJpdmVy
-cy9zdGFnaW5nL2ZidGZ0L2ZidGZ0LWJ1cy5jCmluZGV4IDJlYTgxNGQwZGNhNWQuLjYzYzY1ZGQ2
-N2IxNzUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy9mYnRmdC9mYnRmdC1idXMuYworKysg
-Yi9kcml2ZXJzL3N0YWdpbmcvZmJ0ZnQvZmJ0ZnQtYnVzLmMKQEAgLTEzNSw3ICsxMzUsNyBAQCBp
-bnQgZmJ0ZnRfd3JpdGVfdm1lbTE2X2J1czgoc3RydWN0IGZidGZ0X3BhciAqcGFyLCBzaXplX3Qg
-b2Zmc2V0LCBzaXplX3QgbGVuKQogCXJlbWFpbiA9IGxlbiAvIDI7CiAJdm1lbTE2ID0gKHUxNiAq
-KShwYXItPmluZm8tPnNjcmVlbl9idWZmZXIgKyBvZmZzZXQpOwogCi0JaWYgKCFwYXItPmdwaW8u
-ZGMpCisJaWYgKHBhci0+Z3Bpby5kYykKIAkJZ3Bpb2Rfc2V0X3ZhbHVlKHBhci0+Z3Bpby5kYywg
-MSk7CiAKIAkvKiBub24gYnVmZmVyZWQgd3JpdGUgKi8KZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3Rh
-Z2luZy9mYnRmdC9mYnRmdC1jb3JlLmMgYi9kcml2ZXJzL3N0YWdpbmcvZmJ0ZnQvZmJ0ZnQtY29y
-ZS5jCmluZGV4IDliMDdiYWRmNGM2Y2EuLjhmZTIyMzI0NDI0OTIgMTAwNjQ0Ci0tLSBhL2RyaXZl
-cnMvc3RhZ2luZy9mYnRmdC9mYnRmdC1jb3JlLmMKKysrIGIvZHJpdmVycy9zdGFnaW5nL2ZidGZ0
-L2ZidGZ0LWNvcmUuYwpAQCAtOTE5LDcgKzkxOSw3IEBAIHN0YXRpYyBpbnQgZmJ0ZnRfaW5pdF9k
-aXNwbGF5X2R0KHN0cnVjdCBmYnRmdF9wYXIgKnBhcikKIAkJcmV0dXJuIC1FSU5WQUw7CiAKIAlw
-YXItPmZidGZ0b3BzLnJlc2V0KHBhcik7Ci0JaWYgKCFwYXItPmdwaW8uY3MpCisJaWYgKHBhci0+
-Z3Bpby5jcykKIAkJZ3Bpb2Rfc2V0X3ZhbHVlKHBhci0+Z3Bpby5jcywgMCk7ICAvKiBBY3RpdmF0
-ZSBjaGlwICovCiAKIAl3aGlsZSAocCkgewpAQCAtMTAxMCw3ICsxMDEwLDcgQEAgaW50IGZidGZ0
-X2luaXRfZGlzcGxheShzdHJ1Y3QgZmJ0ZnRfcGFyICpwYXIpCiAJfQogCiAJcGFyLT5mYnRmdG9w
-cy5yZXNldChwYXIpOwotCWlmICghcGFyLT5ncGlvLmNzKQorCWlmIChwYXItPmdwaW8uY3MpCiAJ
-CWdwaW9kX3NldF92YWx1ZShwYXItPmdwaW8uY3MsIDApOyAgLyogQWN0aXZhdGUgY2hpcCAqLwog
-CiAJaSA9IDA7Ci0tIAoyLjIwLjEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qu
-b3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2RyaXZlcmRldi1kZXZlbAo=
+Previously, EROFS uses EIO to indicate that filesystem is
+corrupted as well, but other filesystems tend to use
+EUCLEAN instead, let's follow what others do right now.
+
+Also, add some more prints to the syslog.
+
+Suggested-by: Pavel Machek <pavel@denx.de>
+Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
+---
+
+This patchset has dependency on the previous patchset yesterday
+ https://lore.kernel.org/lkml/20190813023054.73126-1-gaoxiang25@huawei.com/
+
+Thanks,
+Gao Xiang
+
+ drivers/staging/erofs/data.c     |  6 ++++--
+ drivers/staging/erofs/dir.c      | 15 ++++++++-------
+ drivers/staging/erofs/inode.c    | 17 ++++++++++++-----
+ drivers/staging/erofs/internal.h |  2 ++
+ drivers/staging/erofs/namei.c    |  6 ++++--
+ drivers/staging/erofs/xattr.c    |  5 +++--
+ drivers/staging/erofs/zmap.c     |  5 +++--
+ 7 files changed, 36 insertions(+), 20 deletions(-)
+
+diff --git a/drivers/staging/erofs/data.c b/drivers/staging/erofs/data.c
+index 4cdb743c8b8d..72c4b4c5296b 100644
+--- a/drivers/staging/erofs/data.c
++++ b/drivers/staging/erofs/data.c
+@@ -143,10 +143,12 @@ static int erofs_map_blocks_flatmode(struct inode *inode,
+ 			vi->xattr_isize + erofs_blkoff(map->m_la);
+ 		map->m_plen = inode->i_size - offset;
+ 
+-		/* inline data should locate in one meta block */
++		/* inline data should be located in one meta block */
+ 		if (erofs_blkoff(map->m_pa) + map->m_plen > PAGE_SIZE) {
++			errln("inline data cross block boundary @ nid %llu",
++			      vi->nid);
+ 			DBG_BUGON(1);
+-			err = -EIO;
++			err = -EFSCORRUPTED;
+ 			goto err_out;
+ 		}
+ 
+diff --git a/drivers/staging/erofs/dir.c b/drivers/staging/erofs/dir.c
+index 2fbfc4935077..01efc96e1212 100644
+--- a/drivers/staging/erofs/dir.c
++++ b/drivers/staging/erofs/dir.c
+@@ -34,7 +34,7 @@ static void debug_one_dentry(unsigned char d_type, const char *de_name,
+ #endif
+ }
+ 
+-static int erofs_fill_dentries(struct dir_context *ctx,
++static int erofs_fill_dentries(struct inode *dir, struct dir_context *ctx,
+ 			       void *dentry_blk, unsigned int *ofs,
+ 			       unsigned int nameoff, unsigned int maxsize)
+ {
+@@ -63,8 +63,9 @@ static int erofs_fill_dentries(struct dir_context *ctx,
+ 		/* a corrupted entry is found */
+ 		if (unlikely(nameoff + de_namelen > maxsize ||
+ 			     de_namelen > EROFS_NAME_LEN)) {
++			errln("bogus dirent @ nid %llu", EROFS_V(dir)->nid);
+ 			DBG_BUGON(1);
+-			return -EIO;
++			return -EFSCORRUPTED;
+ 		}
+ 
+ 		debug_one_dentry(d_type, de_name, de_namelen);
+@@ -104,10 +105,9 @@ static int erofs_readdir(struct file *f, struct dir_context *ctx)
+ 
+ 		if (unlikely(nameoff < sizeof(struct erofs_dirent) ||
+ 			     nameoff >= PAGE_SIZE)) {
+-			errln("%s, invalid de[0].nameoff %u",
+-			      __func__, nameoff);
+-
+-			err = -EIO;
++			errln("%s, invalid de[0].nameoff %u @ nid %llu",
++			      __func__, nameoff, EROFS_V(dir)->nid);
++			err = -EFSCORRUPTED;
+ 			goto skip_this;
+ 		}
+ 
+@@ -123,7 +123,8 @@ static int erofs_readdir(struct file *f, struct dir_context *ctx)
+ 				goto skip_this;
+ 		}
+ 
+-		err = erofs_fill_dentries(ctx, de, &ofs, nameoff, maxsize);
++		err = erofs_fill_dentries(dir, ctx, de, &ofs,
++					  nameoff, maxsize);
+ skip_this:
+ 		kunmap(dentry_page);
+ 
+diff --git a/drivers/staging/erofs/inode.c b/drivers/staging/erofs/inode.c
+index 286729143365..461fd4213ce7 100644
+--- a/drivers/staging/erofs/inode.c
++++ b/drivers/staging/erofs/inode.c
+@@ -43,7 +43,7 @@ static int read_inode(struct inode *inode, void *data)
+ 		else if (S_ISFIFO(inode->i_mode) || S_ISSOCK(inode->i_mode))
+ 			inode->i_rdev = 0;
+ 		else
+-			return -EIO;
++			goto bogusimode;
+ 
+ 		i_uid_write(inode, le32_to_cpu(v2->i_uid));
+ 		i_gid_write(inode, le32_to_cpu(v2->i_gid));
+@@ -76,7 +76,7 @@ static int read_inode(struct inode *inode, void *data)
+ 		else if (S_ISFIFO(inode->i_mode) || S_ISSOCK(inode->i_mode))
+ 			inode->i_rdev = 0;
+ 		else
+-			return -EIO;
++			goto bogusimode;
+ 
+ 		i_uid_write(inode, le16_to_cpu(v1->i_uid));
+ 		i_gid_write(inode, le16_to_cpu(v1->i_gid));
+@@ -104,6 +104,11 @@ static int read_inode(struct inode *inode, void *data)
+ 	else
+ 		inode->i_blocks = nblks << LOG_SECTORS_PER_BLOCK;
+ 	return 0;
++
++bogusimode:
++	errln("bogus i_mode (%o) @ nid %llu", inode->i_mode, vi->nid);
++	DBG_BUGON(1);
++	return -EFSCORRUPTED;
+ }
+ 
+ /*
+@@ -137,9 +142,11 @@ static int fill_inline_data(struct inode *inode, void *data,
+ 
+ 		/* inline symlink data shouldn't across page boundary as well */
+ 		if (unlikely(m_pofs + inode->i_size > PAGE_SIZE)) {
+-			DBG_BUGON(1);
+ 			kfree(lnk);
+-			return -EIO;
++			errln("inline data cross block boundary @ nid %llu",
++			      vi->nid);
++			DBG_BUGON(1);
++			return -EFSCORRUPTED;
+ 		}
+ 
+ 		/* get in-page inline data */
+@@ -200,7 +207,7 @@ static int fill_inode(struct inode *inode, int isdir)
+ 			init_special_inode(inode, inode->i_mode, inode->i_rdev);
+ 			goto out_unlock;
+ 		} else {
+-			err = -EIO;
++			err = -EFSCORRUPTED;
+ 			goto out_unlock;
+ 		}
+ 
+diff --git a/drivers/staging/erofs/internal.h b/drivers/staging/erofs/internal.h
+index 4ce5991c381f..12f737cbc0c0 100644
+--- a/drivers/staging/erofs/internal.h
++++ b/drivers/staging/erofs/internal.h
+@@ -548,5 +548,7 @@ static inline int z_erofs_init_zip_subsystem(void) { return 0; }
+ static inline void z_erofs_exit_zip_subsystem(void) {}
+ #endif	/* !CONFIG_EROFS_FS_ZIP */
+ 
++#define EFSCORRUPTED    EUCLEAN         /* Filesystem is corrupted */
++
+ #endif	/* __EROFS_INTERNAL_H */
+ 
+diff --git a/drivers/staging/erofs/namei.c b/drivers/staging/erofs/namei.c
+index 8e06526da023..c0963f5a2d22 100644
+--- a/drivers/staging/erofs/namei.c
++++ b/drivers/staging/erofs/namei.c
+@@ -116,10 +116,12 @@ static struct page *find_target_block_classic(struct inode *dir,
+ 			struct erofs_qstr dname;
+ 
+ 			if (unlikely(!ndirents)) {
+-				DBG_BUGON(1);
+ 				kunmap_atomic(de);
+ 				put_page(page);
+-				page = ERR_PTR(-EIO);
++				errln("corrupted dir block %d @ nid %llu",
++				      mid, EROFS_V(dir)->nid);
++				DBG_BUGON(1);
++				page = ERR_PTR(-EFSCORRUPTED);
+ 				goto out;
+ 			}
+ 
+diff --git a/drivers/staging/erofs/xattr.c b/drivers/staging/erofs/xattr.c
+index 289c7850ec96..c5bfc9be412f 100644
+--- a/drivers/staging/erofs/xattr.c
++++ b/drivers/staging/erofs/xattr.c
+@@ -75,8 +75,9 @@ static int init_inode_xattrs(struct inode *inode)
+ 		goto out_unlock;
+ 	} else if (vi->xattr_isize < sizeof(struct erofs_xattr_ibody_header)) {
+ 		if (unlikely(vi->xattr_isize)) {
++			errln("bogus xattr ibody @ nid %llu", vi->nid);
+ 			DBG_BUGON(1);
+-			ret = -EIO;
++			ret = -EFSCORRUPTED;
+ 			goto out_unlock;	/* xattr ondisk layout error */
+ 		}
+ 		ret = -ENOATTR;
+@@ -237,7 +238,7 @@ static int xattr_foreach(struct xattr_iter *it,
+ 		/* xattr on-disk corruption: xattr entry beyond xattr_isize */
+ 		if (unlikely(*tlimit < entry_sz)) {
+ 			DBG_BUGON(1);
+-			return -EIO;
++			return -EFSCORRUPTED;
+ 		}
+ 		*tlimit -= entry_sz;
+ 	}
+diff --git a/drivers/staging/erofs/zmap.c b/drivers/staging/erofs/zmap.c
+index aeed5c674d9e..16b3625604f4 100644
+--- a/drivers/staging/erofs/zmap.c
++++ b/drivers/staging/erofs/zmap.c
+@@ -338,8 +338,9 @@ static int vle_extent_lookback(struct z_erofs_maprecorder *m,
+ 	int err;
+ 
+ 	if (lcn < lookback_distance) {
++		errln("bogus lookback distance @ nid %llu", vi->nid);
+ 		DBG_BUGON(1);
+-		return -EIO;
++		return -EFSCORRUPTED;
+ 	}
+ 
+ 	/* load extent head logical cluster if needed */
+@@ -419,7 +420,7 @@ int z_erofs_map_blocks_iter(struct inode *inode,
+ 		if (unlikely(!m.lcn)) {
+ 			errln("invalid logical cluster 0 at nid %llu",
+ 			      vi->nid);
+-			err = -EIO;
++			err = -EFSCORRUPTED;
+ 			goto unmap_out;
+ 		}
+ 		end = (m.lcn << lclusterbits) | m.clusterofs;
+-- 
+2.17.2
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
