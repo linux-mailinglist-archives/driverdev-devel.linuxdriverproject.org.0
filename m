@@ -1,87 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4B7068DDA5
-	for <lists+driverdev-devel@lfdr.de>; Wed, 14 Aug 2019 21:05:03 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6F5A68E049
+	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Aug 2019 00:05:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CE7CA877AD;
-	Wed, 14 Aug 2019 19:05:00 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AD00B844AF;
+	Wed, 14 Aug 2019 22:05:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ndbEAGvvnCyV; Wed, 14 Aug 2019 19:05:00 +0000 (UTC)
+	with ESMTP id BL0BkJTxBrh5; Wed, 14 Aug 2019 22:05:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C9AE686C4D;
-	Wed, 14 Aug 2019 19:04:58 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E6FA7840BF;
+	Wed, 14 Aug 2019 22:04:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 405BC1BF3B5
- for <devel@linuxdriverproject.org>; Wed, 14 Aug 2019 19:04:57 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B8E921BF34B
+ for <devel@linuxdriverproject.org>; Wed, 14 Aug 2019 22:04:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3ACAB864F6
- for <devel@linuxdriverproject.org>; Wed, 14 Aug 2019 19:04:57 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B36FB87646
+ for <devel@linuxdriverproject.org>; Wed, 14 Aug 2019 22:04:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gINS013pCA9V for <devel@linuxdriverproject.org>;
- Wed, 14 Aug 2019 19:04:55 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
- [209.85.210.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E9FB585ADF
- for <devel@driverdev.osuosl.org>; Wed, 14 Aug 2019 19:04:55 +0000 (UTC)
-Received: by mail-pf1-f194.google.com with SMTP id g2so54131559pfq.0
- for <devel@driverdev.osuosl.org>; Wed, 14 Aug 2019 12:04:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=vseqSnSbN0/CqanKomWBzaCIiF5jTd1dDC+ZOTFJoRU=;
- b=NIUd46jprVTVWb3fgGd29jnISTwMC3sQLMBzqbzBx5/C/GbBaRyCyZuIZG4f8Uch80
- XGuLIqfmPvQ6z82mGFrCsuSFrROVu1t9z3XyMwxTEMjTlKIV5FkXdjanZh7Dd0POtN+S
- BwA9JU2VOATUXFcUNJCTHbhzp1EW/NnqqUw7VjKYbTpSAYfCV4lvoYfL37oM4x5RCCMG
- dgbSOh5K2P9x6Kw3+5rYztkqapb02op3DEUgrh3ZanrRGjq8F7MZomVPda30Ty7lY3/N
- Cl3ePLIn0U+V3+NOqwAJ1FHRAHOL21IJvANqGqrKfbgscg2sJCL035S3EbBpdmHZQxNX
- 8NFQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=vseqSnSbN0/CqanKomWBzaCIiF5jTd1dDC+ZOTFJoRU=;
- b=FyhOB2VpxeWeeUqy7sLUn1QOE6Cte3/lUw4OjXL1TjrhPg/DqeHVlaIkrNMbxn0J+D
- W0J02uCUsxBCaSlxgOTWC1efaQXYB7tTuteMr07NjzVk4l4QcLrxKYCjHzNDEaX4zGch
- cMnUStFtrUKJU47Qv96tTRjR9aUdRssq7fIXTJ4K35pLRko+md7OvM8dpgl4YFxlKOgm
- KNUgQO60Ng5qbjVzxhIvCz28B+57UT746R2pPFLXzybF1ONFeTfHQtfyM+n57CGhBicl
- GReJ8LiWMSlIcXjo7azfZk+fbeQao3hyYtXKqwkGZOVI9fjA8T3xosJikJ7gAOfL8Uyy
- if0Q==
-X-Gm-Message-State: APjAAAXoSqgCMZ8KlnNJVJ+F+OcDUMutNHiysC4FBLIxrNRYFopZPqfI
- T9pMbxQ6AeDxijjZ+1QvYq4=
-X-Google-Smtp-Source: APXvYqxPvTpGzpOkdo/g/K4RNLCTrEvQmHU4pCu/ZH1U09LHKXfy4gAnJ648mZN9j/inAzh8Er9WwQ==
-X-Received: by 2002:a17:90a:cc13:: with SMTP id
- b19mr1108603pju.117.1565809495303; 
- Wed, 14 Aug 2019 12:04:55 -0700 (PDT)
-Received: from [172.30.88.90] (sjewanfw1-nat.mentorg.com. [139.181.7.34])
- by smtp.gmail.com with ESMTPSA id t15sm702679pfc.47.2019.08.14.12.04.44
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 14 Aug 2019 12:04:54 -0700 (PDT)
+ with ESMTP id TaXYPsp8m-cG for <devel@linuxdriverproject.org>;
+ Wed, 14 Aug 2019 22:04:56 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from pandora.armlinux.org.uk (pandora.armlinux.org.uk [78.32.30.218])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id BF6D086849
+ for <devel@driverdev.osuosl.org>; Wed, 14 Aug 2019 22:04:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+ MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=yZJZc6bPnymXOyRmv25X7N9D2emSqLB8ZfiOEQ7nToU=; b=ddv6iy3IQteNIqV/iXD9158oZ
+ LroheE2bDRFtnRZGMGvT+ILxG1FnK+z2Y8o9E22Jy9CPSoFq5oWWWsrb50iCXzt9yVVVJhobjV6aw
+ i0pZ7OO825u8L0btv0Orsvl5X79891J+4KPyJaaYdziN3zk1WapKJuwARQL7ZjfgO/4mO+tR09iEa
+ tMw4KBGQcsq8WmX4Mqn9Ib0nluWlvsXBzW9FA9BlKDoFfMhRgYqCwSw2Oalg0c6EGyWEIrVg5BkY5
+ Jk6GMTFgfuRf1+fLAT+n0kEHmhlFG0FONX9aPwbqiAJixkpRma6Y7WavtJqzRAV4n+Zr3cJCEKN9+
+ JpLMnFeCQ==;
+Received: from shell.armlinux.org.uk
+ ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:56662)
+ by pandora.armlinux.org.uk with esmtpsa
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
+ (envelope-from <linux@armlinux.org.uk>)
+ id 1hy1Nu-0000L9-Jm; Wed, 14 Aug 2019 23:04:46 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.92)
+ (envelope-from <linux@shell.armlinux.org.uk>)
+ id 1hy1Nl-0000Lf-AN; Wed, 14 Aug 2019 23:04:37 +0100
+Date: Wed, 14 Aug 2019 23:04:37 +0100
+From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+To: Steve Longerbeam <slongerbeam@gmail.com>
 Subject: Re: [PATCH 04/22] media: Move v4l2_fwnode_parse_link from v4l2 to
  driver base
-To: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+Message-ID: <20190814220437.GJ13294@shell.armlinux.org.uk>
 References: <20190805233505.21167-1-slongerbeam@gmail.com>
  <20190805233505.21167-5-slongerbeam@gmail.com>
  <CAHp75VcOh8bOf_s6t0ehwGtcYn64QFGj303SVvpHrztEOhTRgg@mail.gmail.com>
  <4750b347-b421-6569-600f-0ced8406460e@gmail.com>
  <20190814103054.GI13294@shell.armlinux.org.uk>
-From: Steve Longerbeam <slongerbeam@gmail.com>
-Message-ID: <e0a19469-af9d-d9de-499f-4ffbf04542b3@gmail.com>
-Date: Wed, 14 Aug 2019 12:04:41 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ <e0a19469-af9d-d9de-499f-4ffbf04542b3@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20190814103054.GI13294@shell.armlinux.org.uk>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <e0a19469-af9d-d9de-499f-4ffbf04542b3@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,8 +81,10 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
  "Rafael J. Wysocki" <rafael@kernel.org>,
  Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Shawn Guo <shawnguo@kernel.org>,
  "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
  Michal Simek <michal.simek@xilinx.com>,
@@ -106,47 +94,49 @@ Cc: Heikki Krogerus <heikki.krogerus@linux.intel.com>,
  Philipp Zabel <p.zabel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>,
  Thomas Gleixner <tglx@linutronix.de>,
  Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
  "moderated list:ARM/ZYNQ ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>,
- Enrico Weigelt <info@metux.net>, Hyun Kwon <hyun.kwon@xilinx.com>,
+ Hyun Kwon <hyun.kwon@xilinx.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  open list <linux-kernel@vger.kernel.org>,
  Jacopo Mondi <jacopo+renesas@jmondi.org>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
  Hans Verkuil <hverkuil-cisco@xs4all.nl>,
  Linux Media Mailing List <linux-media@vger.kernel.org>,
- Shawn Guo <shawnguo@kernel.org>
+ Enrico Weigelt <info@metux.net>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Wed, Aug 14, 2019 at 12:04:41PM -0700, Steve Longerbeam wrote:
+> 
+> 
+> On 8/14/19 3:30 AM, Russell King - ARM Linux admin wrote:
+> > On Tue, Aug 06, 2019 at 09:53:41AM -0700, Steve Longerbeam wrote:
+> > > The full patchset doesn't seem to be up yet, but see [1] for the cover
+> > > letter.
+> > Was the entire series copied to the mailing lists, or just selected
+> > patches?  I only saw 4, 9, 11 and 13-22 via lakml.
+> 
+> The whole series was posted to the linux-media ML, see [1]. At the time,
+> none of the linux-media ML archives had the whole series.
+> 
+> > In the absence of the other patches, will this solve imx-media binding
+> > the internal subdevs of sensor devices to the CSI2 interface?
+> 
+> "internal subdevs of sensor devices" ?? That doesn't make any sense.
 
+Sorry, but it makes complete sense when you consider that sensor
+devices may have more than one subdev, but there should be only one
+that is the "output" to whatever the camera is attached to.  The
+other subdevs are internal to the sensor.
 
-On 8/14/19 3:30 AM, Russell King - ARM Linux admin wrote:
-> On Tue, Aug 06, 2019 at 09:53:41AM -0700, Steve Longerbeam wrote:
->> The full patchset doesn't seem to be up yet, but see [1] for the cover
->> letter.
-> Was the entire series copied to the mailing lists, or just selected
-> patches?  I only saw 4, 9, 11 and 13-22 via lakml.
+subdevs are not purely the remit of SoC drivers.
 
-The whole series was posted to the linux-media ML, see [1]. At the time, 
-none of the linux-media ML archives had the whole series.
-
-> In the absence of the other patches, will this solve imx-media binding
-> the internal subdevs of sensor devices to the CSI2 interface?
-
-"internal subdevs of sensor devices" ?? That doesn't make any sense.
-
-Sensors are external to the SoC, there are no "internal" sensor devices.
-
-Not sure what you mean by "binding" either in this context, but external 
-sensors can connect via fwnode endpoint, and later translated to media 
-link, to the receiver CSI-2 sink.
-
-Steve
-
-[1] https://www.spinics.net/lists/linux-media/msg155160.html
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
+According to speedtest.net: 11.9Mbps down 500kbps up
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
