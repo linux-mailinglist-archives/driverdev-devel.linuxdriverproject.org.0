@@ -2,54 +2,69 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BBCD38CFE6
-	for <lists+driverdev-devel@lfdr.de>; Wed, 14 Aug 2019 11:42:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7AB018D0BB
+	for <lists+driverdev-devel@lfdr.de>; Wed, 14 Aug 2019 12:31:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5FAB02202E;
-	Wed, 14 Aug 2019 09:42:58 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A65BE21537;
+	Wed, 14 Aug 2019 10:31:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BRpvjEZH0iPd; Wed, 14 Aug 2019 09:42:57 +0000 (UTC)
+	with ESMTP id jwyChraDD0+C; Wed, 14 Aug 2019 10:31:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 2EDB320784;
-	Wed, 14 Aug 2019 09:42:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 41BEE204C0;
+	Wed, 14 Aug 2019 10:31:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 549041BF363
- for <devel@linuxdriverproject.org>; Wed, 14 Aug 2019 09:42:54 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 20B801BF30C
+ for <devel@linuxdriverproject.org>; Wed, 14 Aug 2019 10:31:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 4EB1587117
- for <devel@linuxdriverproject.org>; Wed, 14 Aug 2019 09:42:54 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1420E8636D
+ for <devel@linuxdriverproject.org>; Wed, 14 Aug 2019 10:31:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6xYNz5rPU0aD for <devel@linuxdriverproject.org>;
- Wed, 14 Aug 2019 09:42:52 +0000 (UTC)
+ with ESMTP id m4qYCzbnMSF3 for <devel@linuxdriverproject.org>;
+ Wed, 14 Aug 2019 10:31:15 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from hillosipuli.retiisi.org.uk (retiisi.org.uk [95.216.213.190])
- by whitealder.osuosl.org (Postfix) with ESMTPS id ADD838701E
- for <devel@driverdev.osuosl.org>; Wed, 14 Aug 2019 09:42:52 +0000 (UTC)
-Received: from valkosipuli.localdomain (valkosipuli.retiisi.org.uk
- [IPv6:2a01:4f9:c010:4572::80:2])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest
- SHA256) (No client certificate requested)
- by hillosipuli.retiisi.org.uk (Postfix) with ESMTPS id 7A1F3634C89;
- Wed, 14 Aug 2019 12:42:38 +0300 (EEST)
-Received: from sailus by valkosipuli.localdomain with local (Exim 4.92)
- (envelope-from <sakari.ailus@retiisi.org.uk>)
- id 1hxpnh-0000u7-SD; Wed, 14 Aug 2019 12:42:37 +0300
-Date: Wed, 14 Aug 2019 12:42:37 +0300
-From: Sakari Ailus <sakari.ailus@iki.fi>
-To: =?iso-8859-1?Q?S=E9bastien?= Szymanski <sebastien.szymanski@armadeus.com>
-Subject: Re: [PATCH v3 1/3] ARM: dts: imx6ul: Add csi node
-Message-ID: <20190814094237.GJ2527@valkosipuli.retiisi.org.uk>
-References: <20190731163257.32448-1-sebastien.szymanski@armadeus.com>
+Received: from pandora.armlinux.org.uk (pandora.armlinux.org.uk [78.32.30.218])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9689986362
+ for <devel@driverdev.osuosl.org>; Wed, 14 Aug 2019 10:31:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+ MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=vIn3VrH7ocwDZwAAstv4Z1w3Iw6dyOjCurgY/OY+iMg=; b=vVh2LAglzEG++FwqN4KSlYc3e
+ r1btgKmDEiOv85fXEZ+HfeiKQBXj02w1pCssYPOmHUYKWhHS2i274oG8l7lzAZQyzqLikkkKa2/cn
+ WqMl1l0IGoprA+wUx5VYjOFf8yY23van8tZYvi6GupNDAe5pITc2JQ3GiWymo+Kc7VaMu2DZ6jqsM
+ 2q0ZsPP+7DcgBWAlSUisioPDmWaF5tS9lO/A5V44fXMDcQMBLxm+bdNYuCMutScF2l2wOZXilNUAC
+ Y22OnCoc77oDHHMtZ+EIAfsKBwK6Mcu/2EPbieFfdGiXbXawu/8aRhm05G6xCnRbCDDFMmJ3m/ak/
+ ulXIvjO9w==;
+Received: from shell.armlinux.org.uk
+ ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:56468)
+ by pandora.armlinux.org.uk with esmtpsa
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
+ (envelope-from <linux@armlinux.org.uk>)
+ id 1hxqYb-0005uy-JR; Wed, 14 Aug 2019 11:31:05 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.92)
+ (envelope-from <linux@shell.armlinux.org.uk>)
+ id 1hxqYR-0008OC-2C; Wed, 14 Aug 2019 11:30:55 +0100
+Date: Wed, 14 Aug 2019 11:30:55 +0100
+From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+To: Steve Longerbeam <slongerbeam@gmail.com>
+Subject: Re: [PATCH 04/22] media: Move v4l2_fwnode_parse_link from v4l2 to
+ driver base
+Message-ID: <20190814103054.GI13294@shell.armlinux.org.uk>
+References: <20190805233505.21167-1-slongerbeam@gmail.com>
+ <20190805233505.21167-5-slongerbeam@gmail.com>
+ <CAHp75VcOh8bOf_s6t0ehwGtcYn64QFGj303SVvpHrztEOhTRgg@mail.gmail.com>
+ <4750b347-b421-6569-600f-0ced8406460e@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190731163257.32448-1-sebastien.szymanski@armadeus.com>
+In-Reply-To: <4750b347-b421-6569-600f-0ced8406460e@gmail.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -63,72 +78,49 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- devel@driverdev.osuosl.org, Pengutronix Kernel Team <kernel@pengutronix.de>,
+Cc: Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Michal Simek <michal.simek@xilinx.com>,
+ "open list:ACPI" <linux-acpi@vger.kernel.org>,
+ Andy Shevchenko <andy.shevchenko@gmail.com>,
+ NXP Linux Team <linux-imx@nxp.com>, Len Brown <lenb@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ "moderated list:ARM/ZYNQ ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>,
+ Enrico Weigelt <info@metux.net>, Hyun Kwon <hyun.kwon@xilinx.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
- NXP Linux Team <linux-imx@nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Steve Longerbeam <slongerbeam@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ open list <linux-kernel@vger.kernel.org>,
+ Jacopo Mondi <jacopo+renesas@jmondi.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ Shawn Guo <shawnguo@kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi S=E9bastien,
+On Tue, Aug 06, 2019 at 09:53:41AM -0700, Steve Longerbeam wrote:
+> The full patchset doesn't seem to be up yet, but see [1] for the cover
+> letter.
 
-On Wed, Jul 31, 2019 at 06:32:57PM +0200, S=E9bastien Szymanski wrote:
-> Add csi node for i.MX6UL SoC.
-> =
+Was the entire series copied to the mailing lists, or just selected
+patches?  I only saw 4, 9, 11 and 13-22 via lakml.
 
-> Reviewed-by: Fabio Estevam <festevam@gmail.com>
-> Signed-off-by: S=E9bastien Szymanski <sebastien.szymanski@armadeus.com>
+In the absence of the other patches, will this solve imx-media binding
+the internal subdevs of sensor devices to the CSI2 interface?
 
-This should be probably merged through the ARM tree.
+Thanks.
 
-I can take the other two.
-
-> ---
-> =
-
-> Changes for v3:
->  - none
-> =
-
-> Changes for v2:
->  - only "mclk" clock is required now.
-> =
-
->  arch/arm/boot/dts/imx6ul.dtsi | 9 +++++++++
->  1 file changed, 9 insertions(+)
-> =
-
-> diff --git a/arch/arm/boot/dts/imx6ul.dtsi b/arch/arm/boot/dts/imx6ul.dtsi
-> index 81d4b4925127..56cfcf0e5084 100644
-> --- a/arch/arm/boot/dts/imx6ul.dtsi
-> +++ b/arch/arm/boot/dts/imx6ul.dtsi
-> @@ -957,6 +957,15 @@
->  				};
->  			};
->  =
-
-> +			csi: csi@21c4000 {
-> +				compatible =3D "fsl,imx6ul-csi", "fsl,imx7-csi";
-> +				reg =3D <0x021c4000 0x4000>;
-> +				interrupts =3D <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
-> +				clocks =3D <&clks IMX6UL_CLK_CSI>;
-> +				clock-names =3D "mclk";
-> +				status =3D "disabled";
-> +			};
-> +
->  			lcdif: lcdif@21c8000 {
->  				compatible =3D "fsl,imx6ul-lcdif", "fsl,imx28-lcdif";
->  				reg =3D <0x021c8000 0x4000>;
-
--- =
-
-Sakari Ailus
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
+According to speedtest.net: 11.9Mbps down 500kbps up
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
