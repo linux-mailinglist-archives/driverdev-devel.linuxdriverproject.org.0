@@ -1,73 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A71D68F15C
-	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Aug 2019 19:00:02 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EB34A834ED;
-	Thu, 15 Aug 2019 17:00:00 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8ZDyqnmbTThm; Thu, 15 Aug 2019 16:59:59 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D6614834B0;
-	Thu, 15 Aug 2019 16:59:58 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 68FC31BF23C
- for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 16:59:57 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id D061F8F157
+	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Aug 2019 18:59:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6695C204F2
- for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 16:59:57 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C765E228EB;
+	Thu, 15 Aug 2019 16:59:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id V+WzWjk+A0h5; Thu, 15 Aug 2019 16:59:24 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 8F156204F8;
+	Thu, 15 Aug 2019 16:59:21 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C6C0B1BF23C
+ for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 16:59:19 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id C40EF86148
+ for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 16:59:19 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vhQ8SNWSpU3b for <devel@linuxdriverproject.org>;
- Thu, 15 Aug 2019 16:59:56 +0000 (UTC)
-X-Greylist: delayed 00:22:53 by SQLgrey-1.7.6
-Received: from mail-qt1-f193.google.com (mail-qt1-f193.google.com
- [209.85.160.193])
- by silver.osuosl.org (Postfix) with ESMTPS id 3C411204E2
- for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 16:59:56 +0000 (UTC)
-Received: by mail-qt1-f193.google.com with SMTP id b11so3021728qtp.10
- for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 09:59:56 -0700 (PDT)
+ with ESMTP id Wz1BnUSvmGa4 for <devel@linuxdriverproject.org>;
+ Thu, 15 Aug 2019 16:59:19 +0000 (UTC)
+X-Greylist: delayed 00:23:21 by SQLgrey-1.7.6
+Received: from mail-vk1-f193.google.com (mail-vk1-f193.google.com
+ [209.85.221.193])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id F09A183702
+ for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 16:59:18 +0000 (UTC)
+Received: by mail-vk1-f193.google.com with SMTP id z67so518930vkd.5
+ for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 09:59:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=joelfernandes.org; s=google;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=ako5fluBLDpfE1J18WjJkmrO4kyd01koUp3/srSLSio=;
- b=qtT/kgiqDdqZS87IpBnNlRkIc96pYOs3bsFznlNVDQXAV2IQZtGmds429Cbcj1BTeq
- ZRejWIcNM9GvygOmD8IxOlvXRvQOmdcgh6laGyvGysnw6JvUmmGthXwWmTlMNHdjNCF/
- 6sQOAp7i1LGEOBBfLrB8gi3qFuSZ7/MNXiNFM=
+ bh=YXtKn6tSCQy3NpA9rMW2UTi1pemQ0emlmM8VnUNaMb4=;
+ b=Hu85KiG7Ok++jxRYVDbjomkFeYLFzXGOLI4c+CF1GFmLn15HbUeRCf1KF/2FQ+hpfp
+ 9jA7urHEkeMnGRuF2CVBM3zZ/CCBzG0dB1kQ/uY+kYpL2ReZlk7XP9554UdsgjN34dl5
+ RCtc6YTXLk3L8BT8MzvPpjMFMFnRKOHE8yES0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=ako5fluBLDpfE1J18WjJkmrO4kyd01koUp3/srSLSio=;
- b=JyICwgrUXlv26IeiuuQiTHbKkw1NwbC/0y0ZSwLi3+m6ALGnLEEE6Otv5y+gLGQgEY
- RpnPTRUnY7brv2FXW+sYcF6NrlXQ4wVr/iRfISHmTmlUnumUhHyGvprhIByPSVt+85jp
- epzBeIFuTuND9XhHy6CwfZJPug/6fL6GrHL+SsEbAfOiret0DtRvu+fGqeTygkoDeqSQ
- oMWhAsMZCkP4Ra8e6WowY8D58xPe8Dd/hukpmnyhvEH/p+Ul5JoSkpl30xuUN34RzDYP
- KQ16AJzpHvHCetseSmiqK4ItbSWsLjzZgxWPJUaqYBHnWHd4uYKAyma0uIzFOUDcw387
- 3sJA==
-X-Gm-Message-State: APjAAAUkyfmKmrcpdVcHsEjzbi72qvrW4B5fzTsm/nTTGhl9pGLe+d5I
- if9hAdcI4ghIEfmg6TFwC6ljCYRP3+0=
-X-Google-Smtp-Source: APXvYqyyibvRsNaV3CtcWbxkzfTVTQ58VnhGf9a0pKudGLIxAoscuok8Pnf8eybfSz3FnCIT24W3TQ==
-X-Received: by 2002:a63:7b4d:: with SMTP id k13mr4073354pgn.182.1565886524798; 
- Thu, 15 Aug 2019 09:28:44 -0700 (PDT)
+ bh=YXtKn6tSCQy3NpA9rMW2UTi1pemQ0emlmM8VnUNaMb4=;
+ b=iQKQWQqgkLhhYk5xvctIJvWVUZqgntkKsaucrQZkW83t/pz40cEcVH2yNEUJxulDd5
+ shSP8SNkBbJzI+kvpaqsAUrf4OvirnVUBCVLRPWEeP+mJNofbsEaoznweyDoZ6gpo6+5
+ CqW3RSM+MQLfBtCfKSgYbGzd5UJi7ohhODf51eZMpbp/11U82+WRgVCkkJ725nkNjCQz
+ bdmfmdGS7dTHj/BrskIUTaOiqAXxzS//bA78ZTrJqYP/0+zt9PLEIzzx3OFuZzVwuOSH
+ p55PggfBwTjydVf1B4jbYfc0gwlC37BnBuMPqBgdAOmeuwnePNQgXh58a6O1t9Z2IxYH
+ KWfQ==
+X-Gm-Message-State: APjAAAXr4hT9VQO+qsoKSftJBPgG3MOm5QHjF+LEXxh5MgFuNFl2yadU
+ bH0U2RlldUCvmh4hIY4bSTyXGynHNjQ=
+X-Google-Smtp-Source: APXvYqwUsPXLcmLHAxB2tRsW34D41FmV40ffddklYTLPs1CB9bmhuB11dBR/dzlVYi+AjkqgOw7N6g==
+X-Received: by 2002:a65:5a8c:: with SMTP id c12mr4055445pgt.73.1565886643402; 
+ Thu, 15 Aug 2019 09:30:43 -0700 (PDT)
 Received: from localhost ([172.19.216.18])
- by smtp.gmail.com with ESMTPSA id 185sm3486276pfd.125.2019.08.15.09.28.43
+ by smtp.gmail.com with ESMTPSA id f205sm3924774pfa.161.2019.08.15.09.30.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Aug 2019 09:28:43 -0700 (PDT)
-Date: Thu, 15 Aug 2019 12:28:27 -0400
+ Thu, 15 Aug 2019 09:30:42 -0700 (PDT)
+Date: Thu, 15 Aug 2019 12:30:25 -0400
 From: Joel Fernandes <joel@joelfernandes.org>
 To: Hridya Valsaraju <hridya@google.com>
 Subject: Re: [PATCH v3 1/2] binder: Add default binder devices through
  binderfs when configured
-Message-ID: <20190815162827.GA75595@google.com>
+Message-ID: <20190815163025.GB75595@google.com>
 References: <20190808222727.132744-1-hridya@google.com>
  <20190808222727.132744-2-hridya@google.com>
 MIME-Version: 1.0
@@ -112,6 +112,7 @@ On Thu, Aug 08, 2019 at 03:27:25PM -0700, Hridya Valsaraju wrote:
 > Co-developed-by: Christian Brauner <christian.brauner@ubuntu.com>
 > Signed-off-by: Christian Brauner <christian.brauner@ubuntu.com>
 > Signed-off-by: Hridya Valsaraju <hridya@google.com>
+> ---
 
 Reviewed-by: Joel Fernandes (Google) <joel@joelfernandes.org>
 
@@ -119,7 +120,6 @@ thanks,
 
  - Joel
 
-> ---
 > 
 > Changes in v2:
 > - Updated commit message as per Greg Kroah-Hartman.
