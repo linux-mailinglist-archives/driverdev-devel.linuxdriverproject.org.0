@@ -2,76 +2,49 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E36E38E498
-	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Aug 2019 07:49:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 80FF78E525
+	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Aug 2019 09:01:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9472B88294;
-	Thu, 15 Aug 2019 05:49:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C5362859ED;
+	Thu, 15 Aug 2019 07:01:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1Bfo4STNP2yI; Thu, 15 Aug 2019 05:49:42 +0000 (UTC)
+	with ESMTP id 7SdLWe6bP1vm; Thu, 15 Aug 2019 07:01:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C971488273;
-	Thu, 15 Aug 2019 05:49:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9F80885A81;
+	Thu, 15 Aug 2019 07:01:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3042C1BF3EF
- for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 05:49:39 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 292851BF852
+ for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 07:01:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 2D170203A9
- for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 05:49:39 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 248FB2046B
+ for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 07:01:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BQNgnWknhT8Q for <devel@linuxdriverproject.org>;
- Thu, 15 Aug 2019 05:49:38 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
- [209.85.215.196])
- by silver.osuosl.org (Postfix) with ESMTPS id 941C220035
- for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 05:49:38 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id n190so868589pgn.0
- for <devel@driverdev.osuosl.org>; Wed, 14 Aug 2019 22:49:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=1OqFapc9e33XbACkgO+1qaCXcygsIwUXz+fU/hzrbVM=;
- b=H/HZMCnUO2feKHwxaAF76oKE54jp+YUiE1s5eBJyb1YMXsZWTJP4gAajuFPUtuTEK4
- C0PfnGIhYspHoQ9L7xOcwws2myqXCSOEYHn1uElNpT9i2aFwVCZbgWF5FiRTtkPPIqfe
- Iu9y95udG9tggy79LS8sVyOuBgxJmNFnptRGdTffoaidK81yQlGwq34Yz7edf9bQV83y
- 9Ga81JXxUzUTcCRgBq62QIrD9THB6Dzu8jQF/p017qSFSHCWCW4N7V+BRuBM2QqADE+w
- M0oV2vOjlofk76wORkxePdTSvZBdMCPtr2KrnLpt8oEqxv7kIMiw3W0Idosd8E9QFHLO
- fa6A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=1OqFapc9e33XbACkgO+1qaCXcygsIwUXz+fU/hzrbVM=;
- b=U9Vu8uGfjezZcxe1FWLajHxHayR826cmYqU6IbOBmcemr3i665fOHnTDRWFCtlJqYx
- kksNzzf7Y/ksvBlbOotz7GG7ciIl3RQhaegBp2OaWWDvhXmk8vqfs9XpqbXm3m6n8DgX
- FKM/ylOKLdl0sqVExi0rbUMBVPpFEX9ESaaxfnjto8HIDjErJb+HZwP7VBbbd5GH65vc
- /ssE1g/YvYfOxxi/R9sVrizQ6PhXQEZRQDqX3STlFwMIOa7fwbH5bK5HO8Yshmj6+brB
- i+T+Dt45YNJnXwYWqtYb1EnuLdfm4le06T0zFfme9V8ZReqQI+oYZDGNDZGjaYYIyqzu
- snZg==
-X-Gm-Message-State: APjAAAXMR1NVOWvEy/9cnbu/ypthwjIHJxQ9viModFEvYaVjlSiQr0Mz
- mcwJIuSP437qYIKNzOQiT3c=
-X-Google-Smtp-Source: APXvYqxe0Dzo/tsr3eXeLCEk35BpIVi/xvOtqCCODY1wnf2MlAjodiGdp1asNb3fJCHnb0MuRQcbkQ==
-X-Received: by 2002:a17:90a:9cf:: with SMTP id 73mr769511pjo.90.1565848178252; 
- Wed, 14 Aug 2019 22:49:38 -0700 (PDT)
-Received: from localhost.localdomain ([110.225.3.176])
- by smtp.gmail.com with ESMTPSA id ce7sm425391pjb.16.2019.08.14.22.49.35
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Wed, 14 Aug 2019 22:49:37 -0700 (PDT)
-From: Nishka Dasgupta <nishkadg.linux@gmail.com>
-To: rspringer@google.com, toddpoynor@google.com, benchan@chromium.org,
- gregkh@linuxfoundation.org, devel@driverdev.osuosl.org
-Subject: [PATCH] staging: gasket: apex: Make structure apex_desc constant
-Date: Thu, 15 Aug 2019 11:19:24 +0530
-Message-Id: <20190815054924.643-1-nishkadg.linux@gmail.com>
-X-Mailer: git-send-email 2.19.1
+ with ESMTP id 0LDt9Uw4BtOg for <devel@linuxdriverproject.org>;
+ Thu, 15 Aug 2019 07:01:37 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from atrey.karlin.mff.cuni.cz (atrey.karlin.mff.cuni.cz
+ [195.113.26.193])
+ by silver.osuosl.org (Postfix) with ESMTPS id 6611220000
+ for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 07:01:37 +0000 (UTC)
+Received: by atrey.karlin.mff.cuni.cz (Postfix, from userid 512)
+ id 34AD7806FD; Thu, 15 Aug 2019 09:01:20 +0200 (CEST)
+Date: Thu, 15 Aug 2019 09:01:32 +0200
+From: Pavel Machek <pavel@denx.de>
+To: Gao Xiang <gaoxiang25@huawei.com>
+Subject: Re: [PATCH v7 08/24] erofs: add namei functions
+Message-ID: <20190815070132.GB3669@amd>
+References: <20190813091326.84652-1-gaoxiang25@huawei.com>
+ <20190813091326.84652-9-gaoxiang25@huawei.com>
+ <20190813114821.GB11559@amd> <20190813122332.GA17429@138>
 MIME-Version: 1.0
+In-Reply-To: <20190813122332.GA17429@138>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,41 +57,95 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Nishka Dasgupta <nishkadg.linux@gmail.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Jan Kara <jack@suse.cz>, Chao Yu <yuchao0@huawei.com>,
+ Dave Chinner <david@fromorbit.com>, David Sterba <dsterba@suse.cz>,
+ Miao Xie <miaoxie@huawei.com>, devel@driverdev.osuosl.org,
+ Stephen Rothwell <sfr@canb.auug.org.au>,
+ "Darrick J . Wong" <darrick.wong@oracle.com>,
+ Richard Weinberger <richard@nod.at>, Christoph Hellwig <hch@infradead.org>,
+ Linus Torvalds <torvalds@linux-foundation.org>,
+ Amir Goldstein <amir73il@gmail.com>, Alexander Viro <viro@zeniv.linux.org.uk>,
+ Jaegeuk Kim <jaegeuk@kernel.org>, Theodore Ts'o <tytso@mit.edu>,
+ Pavel Machek <pavel@denx.de>, LKML <linux-kernel@vger.kernel.org>,
+ Li Guifu <bluce.liguifu@huawei.com>, Fang Wei <fangwei1@huawei.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-fsdevel <linux-fsdevel@vger.kernel.org>,
+ Andrew Morton <akpm@linux-foundation.org>, linux-erofs@lists.ozlabs.org
+Content-Type: multipart/mixed; boundary="===============3005282846228408851=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Static structure apex_desc, of type gasket_driver_desc, is used only as
-an argument to the functions gasket_register_device() and
-gasket_unregister_device(). In the definitions of both these functions,
-their parameter is declared as const. Hence make apex_desc itself
-constant to protect it from modification.
-Issue found with Coccinelle.
 
-Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
----
- drivers/staging/gasket/apex_driver.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+--===============3005282846228408851==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="MfFXiAuoTsnnDAfZ"
+Content-Disposition: inline
 
-diff --git a/drivers/staging/gasket/apex_driver.c b/drivers/staging/gasket/apex_driver.c
-index 464648ee2036..2973bb920a26 100644
---- a/drivers/staging/gasket/apex_driver.c
-+++ b/drivers/staging/gasket/apex_driver.c
-@@ -659,7 +659,7 @@ static void apex_pci_remove(struct pci_dev *pci_dev)
- 	pci_disable_device(pci_dev);
- }
- 
--static struct gasket_driver_desc apex_desc = {
-+static const struct gasket_driver_desc apex_desc = {
- 	.name = "apex",
- 	.driver_version = APEX_DRIVER_VERSION,
- 	.major = 120,
--- 
-2.19.1
+
+--MfFXiAuoTsnnDAfZ
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi!
+
+> > > +	/*
+> > > +	 * on-disk error, let's only BUG_ON in the debugging mode.
+> > > +	 * otherwise, it will return 1 to just skip the invalid name
+> > > +	 * and go on (in consideration of the lookup performance).
+> > > +	 */
+> > > +	DBG_BUGON(qd->name > qd->end);
+> >=20
+> > I believe you should check for errors in non-debug mode, too.
+>=20
+> Thanks for your kindly reply!
+>=20
+> The following is just my personal thought... If I am wrong, please
+> kindly point out...
+>=20
+> As you can see, this is a new prefixed string binary search algorithm
+> which can provide similar performance with hashed approach (but no
+> need to store hash value at all), so I really care about its lookup
+> performance.
+>=20
+> There is something needing to be concerned, is, whether namei() should
+> report any potential on-disk issues or just return -ENOENT for these
+> corrupted dirs, I think I tend to use the latter one.
+
+-ENOENT is okay for corrupted directories, as long as corrupted
+directories do not cause some kind of security bugs (memory
+corruption, crashes, ...)
+
+
+Best regards,
+								Pavel
+--=20
+DENX Software Engineering GmbH,      Managing Director: Wolfgang Denk
+HRB 165235 Munich, Office: Kirchenstr.5, D-82194 Groebenzell, Germany
+
+--MfFXiAuoTsnnDAfZ
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iEYEARECAAYFAl1VA0wACgkQMOfwapXb+vJ0RACeIl9SXkQ+HyKjoz6KEOY1IIxQ
+fokAoLx3vqeReYdzJjSOjFpCjcgEgtud
+=GkrJ
+-----END PGP SIGNATURE-----
+
+--MfFXiAuoTsnnDAfZ--
+
+--===============3005282846228408851==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============3005282846228408851==--
