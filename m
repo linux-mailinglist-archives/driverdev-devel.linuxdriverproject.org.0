@@ -1,82 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8B09A8F080
-	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Aug 2019 18:26:15 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A71D68F15C
+	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Aug 2019 19:00:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id CC3C4228EF;
-	Thu, 15 Aug 2019 16:26:13 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EB34A834ED;
+	Thu, 15 Aug 2019 17:00:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id U2hkMLUblI2h; Thu, 15 Aug 2019 16:26:13 +0000 (UTC)
+	with ESMTP id 8ZDyqnmbTThm; Thu, 15 Aug 2019 16:59:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 74D73204D2;
-	Thu, 15 Aug 2019 16:26:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D6614834B0;
+	Thu, 15 Aug 2019 16:59:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D3B041BF3A6
- for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 16:26:09 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 68FC31BF23C
+ for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 16:59:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D08AB883F0
- for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 16:26:09 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6695C204F2
+ for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 16:59:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id z8PuUNMtSt+g for <devel@linuxdriverproject.org>;
- Thu, 15 Aug 2019 16:26:09 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lj1-f196.google.com (mail-lj1-f196.google.com
- [209.85.208.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D74C4883AC
- for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 16:26:08 +0000 (UTC)
-Received: by mail-lj1-f196.google.com with SMTP id z17so2774742ljz.0
- for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 09:26:08 -0700 (PDT)
+ with ESMTP id vhQ8SNWSpU3b for <devel@linuxdriverproject.org>;
+ Thu, 15 Aug 2019 16:59:56 +0000 (UTC)
+X-Greylist: delayed 00:22:53 by SQLgrey-1.7.6
+Received: from mail-qt1-f193.google.com (mail-qt1-f193.google.com
+ [209.85.160.193])
+ by silver.osuosl.org (Postfix) with ESMTPS id 3C411204E2
+ for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 16:59:56 +0000 (UTC)
+Received: by mail-qt1-f193.google.com with SMTP id b11so3021728qtp.10
+ for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 09:59:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linux-foundation.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=9Io8f1bPaeNDioMtOu6b9FaHz1PaQCP05A6nz5CudSE=;
- b=GdUTEFZxtX4Lqzwngdfr2kBTyvwT41GJPNn6kb81iJMXzazObo52enBgWkwrOOq3lr
- fcNdZi8U6UPgNqNDEBWhKZKeMiP71ad8QufdLOLqaXmVo1Qm1ZJcKLGCfWYtcR0rwDEt
- 373s5sBtHdFaBBHWllHqZ5/T8eYXJ/Nx4+edw=
+ d=joelfernandes.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=ako5fluBLDpfE1J18WjJkmrO4kyd01koUp3/srSLSio=;
+ b=qtT/kgiqDdqZS87IpBnNlRkIc96pYOs3bsFznlNVDQXAV2IQZtGmds429Cbcj1BTeq
+ ZRejWIcNM9GvygOmD8IxOlvXRvQOmdcgh6laGyvGysnw6JvUmmGthXwWmTlMNHdjNCF/
+ 6sQOAp7i1LGEOBBfLrB8gi3qFuSZ7/MNXiNFM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=9Io8f1bPaeNDioMtOu6b9FaHz1PaQCP05A6nz5CudSE=;
- b=sFjB17pMusnOjm2LR0ebNXXvEXbg6oLJAdQQCnXq7Q9X3k+xdymGX1iom9hAUWDkw4
- CHfDFNsKYQBxooIN4fSQXB1Wu1zXcsYGrDvhTLNe2n8PQFN0EJ6DwMuokd8QUdc88R9X
- yj9xVBRcYuH87oUDSEkhdR7ple+UK/MTWxR0a0NyQP4hokOU/AQfJ5EYyHBt952Qicot
- WDYm4XTTqC2yCPH1lI7OpQUY0CLeJ+RVqDueNWQTauZPnHm5xwYmBtYjVgPT4gs8wycb
- gFI24hBkTc8RVmu2NDUsH2hUdcivJ1grYFZ0hzpOAFCLqfPIJRzaQsQS+paEzIuSIBRN
- D4jg==
-X-Gm-Message-State: APjAAAXni9cscgkon5RvOvCzUKZchTQNIvO1daKDuAtP0dbQTHhaLybU
- KcQFT8sOHcVRG9dKrCxSRdV3+R3OcGM=
-X-Google-Smtp-Source: APXvYqykOjHSTzyK33H4ChIE0ZKBerh2UV3rCjgb9C++nCcj2Z9g4fGmr6gy5vOl/nKFFO842cgAFw==
-X-Received: by 2002:a2e:8150:: with SMTP id t16mr2954800ljg.154.1565886366817; 
- Thu, 15 Aug 2019 09:26:06 -0700 (PDT)
-Received: from mail-lj1-f180.google.com (mail-lj1-f180.google.com.
- [209.85.208.180])
- by smtp.gmail.com with ESMTPSA id f17sm515767lfa.67.2019.08.15.09.26.06
- for <devel@driverdev.osuosl.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 15 Aug 2019 09:26:06 -0700 (PDT)
-Received: by mail-lj1-f180.google.com with SMTP id e27so2732921ljb.7
- for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 09:26:06 -0700 (PDT)
-X-Received: by 2002:a2e:9192:: with SMTP id f18mr3104005ljg.52.1565885908392; 
- Thu, 15 Aug 2019 09:18:28 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=ako5fluBLDpfE1J18WjJkmrO4kyd01koUp3/srSLSio=;
+ b=JyICwgrUXlv26IeiuuQiTHbKkw1NwbC/0y0ZSwLi3+m6ALGnLEEE6Otv5y+gLGQgEY
+ RpnPTRUnY7brv2FXW+sYcF6NrlXQ4wVr/iRfISHmTmlUnumUhHyGvprhIByPSVt+85jp
+ epzBeIFuTuND9XhHy6CwfZJPug/6fL6GrHL+SsEbAfOiret0DtRvu+fGqeTygkoDeqSQ
+ oMWhAsMZCkP4Ra8e6WowY8D58xPe8Dd/hukpmnyhvEH/p+Ul5JoSkpl30xuUN34RzDYP
+ KQ16AJzpHvHCetseSmiqK4ItbSWsLjzZgxWPJUaqYBHnWHd4uYKAyma0uIzFOUDcw387
+ 3sJA==
+X-Gm-Message-State: APjAAAUkyfmKmrcpdVcHsEjzbi72qvrW4B5fzTsm/nTTGhl9pGLe+d5I
+ if9hAdcI4ghIEfmg6TFwC6ljCYRP3+0=
+X-Google-Smtp-Source: APXvYqyyibvRsNaV3CtcWbxkzfTVTQ58VnhGf9a0pKudGLIxAoscuok8Pnf8eybfSz3FnCIT24W3TQ==
+X-Received: by 2002:a63:7b4d:: with SMTP id k13mr4073354pgn.182.1565886524798; 
+ Thu, 15 Aug 2019 09:28:44 -0700 (PDT)
+Received: from localhost ([172.19.216.18])
+ by smtp.gmail.com with ESMTPSA id 185sm3486276pfd.125.2019.08.15.09.28.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 15 Aug 2019 09:28:43 -0700 (PDT)
+Date: Thu, 15 Aug 2019 12:28:27 -0400
+From: Joel Fernandes <joel@joelfernandes.org>
+To: Hridya Valsaraju <hridya@google.com>
+Subject: Re: [PATCH v3 1/2] binder: Add default binder devices through
+ binderfs when configured
+Message-ID: <20190815162827.GA75595@google.com>
+References: <20190808222727.132744-1-hridya@google.com>
+ <20190808222727.132744-2-hridya@google.com>
 MIME-Version: 1.0
-References: <20190815044155.88483-1-gaoxiang25@huawei.com>
- <20190815090603.GD4938@kroah.com>
-In-Reply-To: <20190815090603.GD4938@kroah.com>
-From: Linus Torvalds <torvalds@linux-foundation.org>
-Date: Thu, 15 Aug 2019 09:18:12 -0700
-X-Gmail-Original-Message-ID: <CAHk-=wjKz7JLd=mj0w2LUiWC2_VOeNWhTTrw1j-i-KyEHH5g5w@mail.gmail.com>
-Message-ID: <CAHk-=wjKz7JLd=mj0w2LUiWC2_VOeNWhTTrw1j-i-KyEHH5g5w@mail.gmail.com>
-Subject: Re: [PATCH v8 00/24] erofs: promote erofs from staging v8
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Content-Disposition: inline
+In-Reply-To: <20190808222727.132744-2-hridya@google.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,40 +86,142 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Jan Kara <jack@suse.cz>, Amir Goldstein <amir73il@gmail.com>,
- Dave Chinner <david@fromorbit.com>, David Sterba <dsterba@suse.cz>,
- Miao Xie <miaoxie@huawei.com>, devel@driverdev.osuosl.org,
- Stephen Rothwell <sfr@canb.auug.org.au>,
- "Darrick J . Wong" <darrick.wong@oracle.com>,
- Richard Weinberger <richard@nod.at>, Christoph Hellwig <hch@infradead.org>,
- Chao Yu <yuchao0@huawei.com>, Alexander Viro <viro@zeniv.linux.org.uk>,
- Jaegeuk Kim <jaegeuk@kernel.org>, Theodore Ts'o <tytso@mit.edu>,
- Pavel Machek <pavel@denx.de>, LKML <linux-kernel@vger.kernel.org>,
- Li Guifu <bluce.liguifu@huawei.com>, Fang Wei <fangwei1@huawei.com>,
- linux-fsdevel <linux-fsdevel@vger.kernel.org>,
- Andrew Morton <akpm@linux-foundation.org>, linux-erofs@lists.ozlabs.org
+Cc: devel@driverdev.osuosl.org, kernel-team@android.com,
+ Todd Kjos <tkjos@android.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org,
+ Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
+ Christian Brauner <christian.brauner@ubuntu.com>,
+ Martijn Coenen <maco@android.com>, Christian Brauner <christian@brauner.io>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Aug 15, 2019 at 2:06 AM Greg Kroah-Hartman
-<gregkh@linuxfoundation.org> wrote:
->
-> I know everyone is busy, but given the length this has been in staging,
-> and the constant good progress toward cleaning it all up that has been
-> happening, I want to get this moved out of staging soon.
+On Thu, Aug 08, 2019 at 03:27:25PM -0700, Hridya Valsaraju wrote:
+> Currently, since each binderfs instance needs its own
+> private binder devices, every time a binderfs instance is
+> mounted, all the default binder devices need to be created
+> via the BINDER_CTL_ADD IOCTL. This patch aims to
+> add a solution to automatically create the default binder
+> devices for each binderfs instance that gets mounted.
+> To achieve this goal, when CONFIG_ANDROID_BINDERFS is set,
+> the default binder devices specified by CONFIG_ANDROID_BINDER_DEVICES
+> are created in each binderfs instance instead of global devices
+> being created by the binder driver.
+> 
+> Co-developed-by: Christian Brauner <christian.brauner@ubuntu.com>
+> Signed-off-by: Christian Brauner <christian.brauner@ubuntu.com>
+> Signed-off-by: Hridya Valsaraju <hridya@google.com>
 
-Since it doesn't touch anything outside of its own filesystem, I have
-no real objections. We've never had huge problems with odd
-filesystems.
+Reviewed-by: Joel Fernandes (Google) <joel@joelfernandes.org>
 
-I read through the patches to look for syntactic stuff (ie very much
-*not* looking at actual code working or not), and had only one
-comment. It's not critical, but it would be nice to do as part of (or
-before) the "get it out of staging".
+thanks,
 
-                 Linus
+ - Joel
+
+> ---
+> 
+> Changes in v2:
+> - Updated commit message as per Greg Kroah-Hartman.
+> - Removed new module parameter creation as per Greg
+>   Kroah-Hartman/Christian Brauner.
+> - Refactored device name length check into a new patch as per Greg Kroah-Hartman.
+> 
+> Changes in v3:
+> -Removed unnecessary empty lines as per Dan Carpenter.
+> 
+>  drivers/android/binder.c          |  5 +++--
+>  drivers/android/binder_internal.h |  2 ++
+>  drivers/android/binderfs.c        | 23 ++++++++++++++++++++---
+>  3 files changed, 25 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/android/binder.c b/drivers/android/binder.c
+> index 466b6a7f8ab7..ca6b21a53321 100644
+> --- a/drivers/android/binder.c
+> +++ b/drivers/android/binder.c
+> @@ -123,7 +123,7 @@ static uint32_t binder_debug_mask = BINDER_DEBUG_USER_ERROR |
+>  	BINDER_DEBUG_FAILED_TRANSACTION | BINDER_DEBUG_DEAD_TRANSACTION;
+>  module_param_named(debug_mask, binder_debug_mask, uint, 0644);
+>  
+> -static char *binder_devices_param = CONFIG_ANDROID_BINDER_DEVICES;
+> +char *binder_devices_param = CONFIG_ANDROID_BINDER_DEVICES;
+>  module_param_named(devices, binder_devices_param, charp, 0444);
+>  
+>  static DECLARE_WAIT_QUEUE_HEAD(binder_user_error_wait);
+> @@ -6279,7 +6279,8 @@ static int __init binder_init(void)
+>  				    &transaction_log_fops);
+>  	}
+>  
+> -	if (strcmp(binder_devices_param, "") != 0) {
+> +	if (!IS_ENABLED(CONFIG_ANDROID_BINDERFS) &&
+> +	    strcmp(binder_devices_param, "") != 0) {
+>  		/*
+>  		* Copy the module_parameter string, because we don't want to
+>  		* tokenize it in-place.
+> diff --git a/drivers/android/binder_internal.h b/drivers/android/binder_internal.h
+> index 045b3e42d98b..fe8c745dc8e0 100644
+> --- a/drivers/android/binder_internal.h
+> +++ b/drivers/android/binder_internal.h
+> @@ -37,6 +37,8 @@ struct binder_device {
+>  
+>  extern const struct file_operations binder_fops;
+>  
+> +extern char *binder_devices_param;
+> +
+>  #ifdef CONFIG_ANDROID_BINDERFS
+>  extern bool is_binderfs_device(const struct inode *inode);
+>  #else
+> diff --git a/drivers/android/binderfs.c b/drivers/android/binderfs.c
+> index e773f45d19d9..aee46dd1be91 100644
+> --- a/drivers/android/binderfs.c
+> +++ b/drivers/android/binderfs.c
+> @@ -186,8 +186,7 @@ static int binderfs_binder_device_create(struct inode *ref_inode,
+>  	req->major = MAJOR(binderfs_dev);
+>  	req->minor = minor;
+>  
+> -	ret = copy_to_user(userp, req, sizeof(*req));
+> -	if (ret) {
+> +	if (userp && copy_to_user(userp, req, sizeof(*req))) {
+>  		ret = -EFAULT;
+>  		goto err;
+>  	}
+> @@ -467,6 +466,9 @@ static int binderfs_fill_super(struct super_block *sb, void *data, int silent)
+>  	int ret;
+>  	struct binderfs_info *info;
+>  	struct inode *inode = NULL;
+> +	struct binderfs_device device_info = { 0 };
+> +	const char *name;
+> +	size_t len;
+>  
+>  	sb->s_blocksize = PAGE_SIZE;
+>  	sb->s_blocksize_bits = PAGE_SHIFT;
+> @@ -521,7 +523,22 @@ static int binderfs_fill_super(struct super_block *sb, void *data, int silent)
+>  	if (!sb->s_root)
+>  		return -ENOMEM;
+>  
+> -	return binderfs_binder_ctl_create(sb);
+> +	ret = binderfs_binder_ctl_create(sb);
+> +	if (ret)
+> +		return ret;
+> +
+> +	name = binder_devices_param;
+> +	for (len = strcspn(name, ","); len > 0; len = strcspn(name, ",")) {
+> +		strscpy(device_info.name, name, len + 1);
+> +		ret = binderfs_binder_device_create(inode, NULL, &device_info);
+> +		if (ret)
+> +			return ret;
+> +		name += len;
+> +		if (*name == ',')
+> +			name++;
+> +	}
+> +
+> +	return 0;
+>  }
+>  
+>  static struct dentry *binderfs_mount(struct file_system_type *fs_type,
+> -- 
+> 2.22.0.770.g0f2c4a37fd-goog
+> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
