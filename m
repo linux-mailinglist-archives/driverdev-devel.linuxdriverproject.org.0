@@ -2,58 +2,98 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0C3DB8E7BF
-	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Aug 2019 11:06:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 477008E8F1
+	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Aug 2019 12:21:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id B08242283A;
-	Thu, 15 Aug 2019 09:06:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CFE55204BE;
+	Thu, 15 Aug 2019 10:21:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1CSecMN-yzy1; Thu, 15 Aug 2019 09:06:12 +0000 (UTC)
+	with ESMTP id xurKyI8ZPkVg; Thu, 15 Aug 2019 10:21:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E9DC72010A;
-	Thu, 15 Aug 2019 09:06:10 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 701A7204A9;
+	Thu, 15 Aug 2019 10:21:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id EDF5D1BF3A0
- for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 09:06:08 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9D4651BF311
+ for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 10:21:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id E185620465
- for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 09:06:08 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9509486DCA
+ for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 10:21:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UgxZlDrZYLrW for <devel@linuxdriverproject.org>;
- Thu, 15 Aug 2019 09:06:06 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id A3A83229D4
- for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 09:06:05 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id CEF3A218A6;
- Thu, 15 Aug 2019 09:06:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1565859965;
- bh=Mc3YrEyyDx8AvnWtpvQCsXoWv0AaiAhsDt9By4lPmxc=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=K3L5k2vJ2kFpsG2wfCLVkOngcZzZqI9yll1frug6xM0uM7bdwF/+iA26VOaSAndDN
- v6ed2vDKBv2obKuG2LL7maD7MOtU/i9uIyZSa3nZVUd+iYA5s3wlBu9pi47qQOVRbO
- /OliDX5MrGyc2/QiINacfpFQxVdBu/vbpytThbqc=
-Date: Thu, 15 Aug 2019 11:06:03 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Gao Xiang <gaoxiang25@huawei.com>
-Subject: Re: [PATCH v8 00/24] erofs: promote erofs from staging v8
-Message-ID: <20190815090603.GD4938@kroah.com>
-References: <20190815044155.88483-1-gaoxiang25@huawei.com>
+ with ESMTP id nPu5rtK-4j4b for <devel@linuxdriverproject.org>;
+ Thu, 15 Aug 2019 10:21:26 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id EDB828691E
+ for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 10:21:25 +0000 (UTC)
+Received: from 1.general.cking.uk.vpn ([10.172.193.212])
+ by youngberry.canonical.com with esmtpsa (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.76) (envelope-from <colin.king@canonical.com>)
+ id 1hyCsl-0006b3-9t; Thu, 15 Aug 2019 10:21:23 +0000
+To: Lars-Peter Clausen <lars@metafoo.de>, Jonathan Cameron
+ <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>,
+ Peter Meerwald-Stadler <pmeerw@pmeerw.ne>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Michael Hennerich <Michael.Hennerich@analog.com>,
+ Stefan Popa <stefan.popa@analog.com>, linux-iio@vger.kernel.org,
+ "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>
+From: Colin Ian King <colin.king@canonical.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=colin.king@canonical.com; prefer-encrypt=mutual; keydata=
+ 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
+Subject: static analysis bug report in drivers/staging/iio/dac/ad5380.c
+Message-ID: <dd9e8ad0-31c8-a06f-be6b-e665e9b2c1c2@canonical.com>
+Date: Thu, 15 Aug 2019 11:21:22 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190815044155.88483-1-gaoxiang25@huawei.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,94 +106,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Jan Kara <jack@suse.cz>, Amir Goldstein <amir73il@gmail.com>,
- Dave Chinner <david@fromorbit.com>, David Sterba <dsterba@suse.cz>,
- Miao Xie <miaoxie@huawei.com>, devel@driverdev.osuosl.org,
- Stephen Rothwell <sfr@canb.auug.org.au>,
- "Darrick J . Wong" <darrick.wong@oracle.com>,
- Richard Weinberger <richard@nod.at>, Christoph Hellwig <hch@infradead.org>,
- Chao Yu <yuchao0@huawei.com>, linux-erofs@lists.ozlabs.org,
- Alexander Viro <viro@zeniv.linux.org.uk>, Jaegeuk Kim <jaegeuk@kernel.org>,
- Theodore Ts'o <tytso@mit.edu>, Pavel Machek <pavel@denx.de>,
- LKML <linux-kernel@vger.kernel.org>, Li Guifu <bluce.liguifu@huawei.com>,
- Fang Wei <fangwei1@huawei.com>, linux-fsdevel@vger.kernel.org,
- Andrew Morton <akpm@linux-foundation.org>,
- Linus Torvalds <torvalds@linux-foundation.org>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Aug 15, 2019 at 12:41:31PM +0800, Gao Xiang wrote:
-> [I strip the previous cover letter, the old one can be found in v6:
->  https://lore.kernel.org/r/20190802125347.166018-1-gaoxiang25@huawei.com/]
-> 
-> We'd like to submit a formal moving patch applied to staging tree
-> for 5.4, before that we'd like to hear if there are some ACKs,
-> suggestions or NAKs, objections of EROFS. Therefore, we can improve
-> it in this round or rethink about the whole thing.
-> 
-> As related materials mentioned [1] [2], the goal of EROFS is to
-> save extra storage space with guaranteed end-to-end performance
-> for read-only files, which has better performance over exist Linux
-> compression filesystems based on fixed-sized output compression
-> and inplace decompression. It even has better performance in
-> a large compression ratio range compared with generic uncompressed
-> filesystems with proper CPU-storage combinations. And we think this
-> direction is correct and a dedicated kernel team is continuously /
-> actively working on improving it, enough testers and beta / end
-> users using it.
-> 
-> EROFS has been applied to almost all in-service HUAWEI smartphones
-> (Yes, the number is still increasing by time) and it seems like
-> a success. It can be used in more wider scenarios. We think it's
-> useful for Linux / Android OS community and it's the time moving
-> out of staging.
-> 
-> In order to get started, latest stable mkfs.erofs is available at
-> 
-> git://git.kernel.org/pub/scm/linux/kernel/git/xiang/erofs-utils.git -b dev
-> 
-> with README in the repository.
-> 
-> We are still tuning sequential read performance for ultra-fast
-> speed NVME SSDs like Samsung 970PRO, but at least now you can
-> try on your PC with some data with proper compression ratio,
-> the latest Linux kernel, USB stick for convenience sake and
-> a not very old-fashioned CPU. There are also benchmarks available
-> in the above materials mentioned.
-> 
-> EROFS is a self-contained filesystem driver. Although there are
-> still some TODOs to be more generic, we will actively keep on
-> developping / tuning EROFS with the evolution of Linux kernel
-> as the other in-kernel filesystems.
-> 
-> As I mentioned before in LSF/MM 2019, in the future, we'd like
-> to generalize the decompression engine into a library for other
-> fses to use after the whole system is mature like fscrypt.
-> However, such metadata should be designed respectively for
-> each fs, and synchronous metadata read cost will be larger
-> than EROFS because of those ondisk limitation. Therefore EROFS
-> is still a better choice for read-only scenarios.
-> 
-> EROFS is now ready for reviewing and moving, and the code is
-> already cleaned up as shiny floors... Please kindly take some
-> precious time, share your comments about EROFS and let us know
-> your opinion about this. It's really important for us since
-> generally speaking, we like to use Linux _in-tree_ stuffs rather
-> than lack of supported out-of-tree / orphan stuffs as well.
+Hi,
 
-I know everyone is busy, but given the length this has been in staging,
-and the constant good progress toward cleaning it all up that has been
-happening, I want to get this moved out of staging soon.
+Static analysis with Coverity Scan has detected a potential assignment
+bug in ad5380.c:
 
-So, unless there are any objections, I'll take this patchset in a week
-into my staging tree to move the filesystem into the "real" part of the
-kernel.
+217        case IIO_CHAN_INFO_CALIBBIAS:
+218                ret = regmap_read(st->regmap,
+AD5380_REG_OFFSET(chan->address),
+219                                        val);
+220                if (ret)
+221                        return ret;
+222                *val >>= chan->scan_type.shift;
 
-thanks,
+CID 43178 (#1 of 1): Unused value (UNUSED_VALUE)assigned_pointer:
+Assigning value from val - (1 << chan->scan_type.realbits) / 2 to val
+here, but that stored value is not used.
 
-greg k-h
+223                val -= (1 << chan->scan_type.realbits) / 2;
+224                return IIO_VAL_INT;
+
+val is a pointer and so updating it before a return is probably not the
+intention.  I suspect the intention was probably:
+
+		   *val -= (1 << chan->scan_type.realbits) / 2;
+
+However, I'm not confident about this as the following case has:
+
+225        case IIO_CHAN_INFO_SCALE:
+226                *val = 2 * st->vref;
+227                *val2 = chan->scan_type.realbits;
+228                return IIO_VAL_FRACTIONAL_LOG2;
+
+which may imply the update maybe to *val2 instead, e.g.:
+
+		*val2 -= (1 << chan->scan_type.realbits) / 2;
+
+Any ideas?
+
+Colin
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
