@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5270E8F129
-	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Aug 2019 18:47:25 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D99FF87856;
-	Thu, 15 Aug 2019 16:47:22 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JHyEcYIZ2R2b; Thu, 15 Aug 2019 16:47:22 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 76EB487813;
-	Thu, 15 Aug 2019 16:47:20 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9940D1BF3A6
- for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 16:47:18 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1A7848F1B6
+	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Aug 2019 19:14:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 964238654C
- for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 16:47:18 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7EEEB84499;
+	Thu, 15 Aug 2019 17:14:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 28fX14LDtE5z; Thu, 15 Aug 2019 17:14:45 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5922883773;
+	Thu, 15 Aug 2019 17:14:44 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 793E61BF2C3
+ for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 17:14:42 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 7667D204F3
+ for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 17:14:42 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XfXgBnDOV5gr for <devel@linuxdriverproject.org>;
- Thu, 15 Aug 2019 16:47:17 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic312-24.consmr.mail.gq1.yahoo.com
- (sonic312-24.consmr.mail.gq1.yahoo.com [98.137.69.205])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E711786538
- for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 16:47:17 +0000 (UTC)
+ with ESMTP id cMb9x4+MkPJV for <devel@linuxdriverproject.org>;
+ Thu, 15 Aug 2019 17:14:39 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from sonic309-25.consmr.mail.ir2.yahoo.com
+ (sonic309-25.consmr.mail.ir2.yahoo.com [77.238.179.83])
+ by silver.osuosl.org (Postfix) with ESMTPS id 65567204E2
+ for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 17:14:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aol.com; s=a2048;
- t=1565887637; bh=synLMlaglsY0Z1eDHodD6fZP0N3IIeMoHfFfRAPdHSA=;
+ t=1565889277; bh=B1CDKmFfj6aDeTiNOiZadWEgT+fWeNQZxcrgAnVsmOs=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From:Subject;
- b=THAPNN1iVhpXmu/CI7B3zBiQNSrMASs+XgqCS+pihKjgUNDvQpMItp8MEiOaj72s/9wgLmDFsSllP4tu/lEY93aUsMkocu5U9Tt9N0cRps18lZ35QIKTil/BChWuwQnALwEvwyQ+IaxmVRT+gDv23QfySBgBgbtwO/M8DE9d5nuce8yNtqHM6Ke9EZLX2FTuPXH/G1jQdElTDK9IiEjoex6HPX0ZI9DHl7AN5lSYqPwgfqXoU9DknORdRJ48QsLLKDAraK/ZHH7l5trmK5PHX5WhPBxEN3cAm2JUzE8YpzUiTufpBivPOT+FqySzvgVl/E6GSaGtUuY+Xrmqw8AnRQ==
-X-YMail-OSG: DGMMZyYVM1nVJU6KZhXFai9ZsZzdlOD3JwSg.75gQuSAfWNRT_EdhIWzE9BEdkd
- oz6gBRaOYYaMCZe8LZu4DlIWjmyM2ydY343Fk5E.IPEgQHsYdM7wwmqZ3qeqcAheN5QFoLjlo4Zd
- P8vvxWuhodBdOw7P4bkeGiRBZkOZQd5z1FJOQfsfJUBxa92VWpbFvwkrjt7w8Wymwshtae.lUHyl
- SZd3jYBdO8NVMacLZf4XFqbK8giyX0YjGNTbFN6Bi5XdjFF4O404ljiEg39huKQmx_GkHGV6X1_W
- D.sTojNbGIZVqPKZeIu7uY.znsCq9THeltGrsE53G6pACdtQXNYY4BuoU9bs8IytRVM5sckdDqSB
- vzcIYTjf_SL2exUr6uye3Lk6pcyr7MsgdjfO69bsuMJpHGMgn4KBIxJWs4rDrY8IGMNaM6WofrsH
- 8bY28b2GKgtY01EXFJsAtWgO7Xc3_O2cbBJn.A9RYkp3MW905rALj73N8nTEVP3yqYKnbY1yR_j2
- CSa0Ox_HPprd7d1PNsgkt_YPUxwU3PTdFM80oJKQZ_75PWVnqKom.n72vuW6HmHTev4N4mZprOHs
- TfcVQsAme05z7tjxaTqvbJ8LS_ndTTx1Lqw3tIOtPEVSCf0BDevkgkE9FozKeL7phFdj_pAM7G3E
- Oye6ej8vJztxw274hLF8b8G49wXzeU9J9uuuwihnWcqOx7GjpkaytItErGsfGUshAffLWAJi6BCs
- DPrUKKU6.6thtlm3SiTolAi7zV73Yxphs0lpCKc_SSBhrjkps_6tFASc196bbKsiQ9P3qStvk5R8
- YBcSgTPdg3xvSw93WtrAHrDJudAC0H5BZj6NKk5rn_8.K3MvGeSvCpCproE00WQyPeGOEnE6HUtm
- bqGuQXiGEdrOOu6rd2O0groFg9qU9_ScAi37G_s9dwL40L6Ajw0Y0IikXpeeb0T5fLDp0FjTTihg
- Cmsq_zON8rwea32UArZ.Z9_bTyvwTUNPeLRm80pWX0oivxIbX.PeIHc4YvuxLRL_VkOkT4jaqVuD
- 4L9pI3QwFYdwNZtb7y.vg99qrp2QDwJe10qhaHQl_c.SoqKUMJTNM6e.AinWmDenI8xynYvSurJT
- 6C_OpJQtX_9UJZhYkUUP2EOPjNRWFmEr9gBlvdRq0umIK3n3GrhufOOn80goFhaRDmg6EV9_r.Mp
- HAQCS8gVleKfOeu7iI1QHhUo94k4lH8_jcQh.KKv9.Uy0xeq7qsNu3tdK.nYwuNjhX_q3IJ1om0z
- c5Rr38ZhyxTDNvz_zEPhDCJWvHv223_K90Hs-
+ b=c/qezGAkO2x0zLvwNmDTgftEgdMFGXh5dlRs26ixul7HTIvTgP4zXemB7fZ/FK21JbQI/YIG5IdVSNYqZMFAOh2uMnueMxlHZzkQ7m4fIY6mA/snHGrZqU2SvQxf56eDGatPhPVBvAQsuLR4CSFgTzLFgROFih/eZ3nIu4oam7XTYfUqz7ps1uXHcl+/1Eosq+q0OMoZYJE5ak4XrNVXBrSKngmk72YdTeEe/W8leCyC/tBlKTOsgiVfX9C+C8T/g76aQ0+gqF4eGhtzRPbcWp/I5WA+L2QYE/oQ4DiV8kTnQxjzy5uRdnj0+Ji1/dJz3+HFjMU0vU42f4Jb0djiLg==
+X-YMail-OSG: UCM0UGEVM1k.ECZKTxS2OqaNxzGHhhZ.pF6bQgH1V5pop2SUDTzFWfBv_5CJXjN
+ lmzvdcgsctqscHstS.D3ySu2diMWMVLd1NlS_.QLBfWHJgiZJNUUORUdNzd_1JBEHhl23GXEI9Cr
+ SkA.ME94KDhq3JYnKqfxE3lBqx1qsUoxTDPcsaK7CSV9uXRuC_rVeJWQGHFrLSxBUMlfKTCwLK1Q
+ SRwutEVv7UDXOJfgMG4dfSMV8ocaxYvcBM__Q2ClXC6IYJVrJ4YY.flrgyQVVBvoCL7eNBwLxq..
+ E_cKvKeO5.MMCvhwZl.6UTiEJwVPemSOCL9d9MpkZyzrjgsHgpLwmbmm4TZE9yC7ZV5IgDV.cfqj
+ 6yNGkLoZdle_xiEedxjALL37oIp1kh0B0AnA.rfKPdq.uwJVIgTQW3DfVqlf6iKhB6uy5RFkNXRD
+ IlR3ZLEMzYftGCwgQzomL.99B5RdayKOfbP7ZfTyQFsQfXaxma1dQwsDzs1eJW7MlH6NvdnIH6v0
+ bl_66yAONv0NOGPRWVKJ2AUkGWWM5HBJDnqQZDhfj2vYWjXijuZiUOYh218tDbWkiNOWjMiXRv5w
+ Nco0gD6FUD9TZNJowGp.fNnHLIWQcSoJvyGArd42Ffch7Cx6LrmtIkLSBB96xZiAkDsIdZSQCSc6
+ dkew2LYcnzCsBKEhae3KwsT1sQGkuPPJHLa0xazi.g4qhenO1N9UemS55UuwOF0X0QuNam0ArZVe
+ B33q0v8eDbA3TkRAhrspGG0NCt8Bw54BjY6.zQd4f7PTFB76.fPLd7UUF5LElwll.bgQ7L6fQplJ
+ OkBMAzSujJwqSD6EqYHLE0a5NAsbBhO9VISE_me1hH17bSBl7PczHs72rzmHz7y4Ct6M2jZQpSB6
+ tHWM.i.sGQksU1s5UcKLX3g9nFurGU02ehnJtJH_DkBr5b75yV8_Kwlosn0Z.4gGb_AUmPY7CvEN
+ MUT_Hs1lwsxl9CamXd_8IYJNCuCjCl439CIsZhETFo1_kc3Ym_ysi0jzwtdzhSf3nvYG65HHjczN
+ 02AhHEXoNChDFLMmb35Zbz597Zwjb_yN.f8l32.wP_8j2dFd61e9qAPZ9feIO1mnYh8jMP9.8gtC
+ Iuhc0t6IPpsXPvLhXu6mLkFuALJhX9VT7QJomXTsg2k0BTOmxpOPmc4KbWEtgl.qKtaeqJBXu.Lh
+ U2PQwdOgTlMhmhp4bmv2LeLI40LC8k3GvxgXsEOLJJHFKc4uiqRbwrVnkKviQ..NTaE3gXl6T8yc
+ dtaTogao_6wD2HNBCXC2GNMHbgcUmop8L_06agRcMtFBrCsI-
 Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic312.consmr.mail.gq1.yahoo.com with HTTP; Thu, 15 Aug 2019 16:47:17 +0000
-Received: by smtp411.mail.gq1.yahoo.com (Oath Hermes SMTP Server) with ESMTPA
- ID 56dbf3541076f4413fe12889395d767b; 
- Thu, 15 Aug 2019 16:47:15 +0000 (UTC)
-Date: Fri, 16 Aug 2019 00:46:56 +0800
+ sonic309.consmr.mail.ir2.yahoo.com with HTTP; Thu, 15 Aug 2019 17:14:37 +0000
+Received: by smtp432.mail.ir2.yahoo.com (Oath Hermes SMTP Server) with ESMTPA
+ ID ed96a2e86c060211f0b97b71e44301c9; 
+ Thu, 15 Aug 2019 17:04:32 +0000 (UTC)
+Date: Fri, 16 Aug 2019 01:04:14 +0800
 From: Gao Xiang <hsiangkao@aol.com>
 To: Linus Torvalds <torvalds@linux-foundation.org>
-Subject: Re: [PATCH v8 07/24] erofs: add directory operations
-Message-ID: <20190815164650.GA4958@hsiangkao-HP-ZHAN-66-Pro-G1>
+Subject: Re: [PATCH v8 00/24] erofs: promote erofs from staging v8
+Message-ID: <20190815170409.GB4958@hsiangkao-HP-ZHAN-66-Pro-G1>
 References: <20190815044155.88483-1-gaoxiang25@huawei.com>
- <20190815044155.88483-8-gaoxiang25@huawei.com>
- <CAHk-=wiUs+b=iVKM3mVooXgVk7cmmC67KTmnAuL0cd_cMMVAKw@mail.gmail.com>
+ <20190815090603.GD4938@kroah.com>
+ <CAHk-=wjKz7JLd=mj0w2LUiWC2_VOeNWhTTrw1j-i-KyEHH5g5w@mail.gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAHk-=wiUs+b=iVKM3mVooXgVk7cmmC67KTmnAuL0cd_cMMVAKw@mail.gmail.com>
+In-Reply-To: <CAHk-=wjKz7JLd=mj0w2LUiWC2_VOeNWhTTrw1j-i-KyEHH5g5w@mail.gmail.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -86,14 +86,14 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: devel@driverdev.osuosl.org, Stephen Rothwell <sfr@canb.auug.org.au>,
  linux-erofs@lists.ozlabs.org, Jan Kara <jack@suse.cz>,
  "Darrick J . Wong" <darrick.wong@oracle.com>,
- Richard Weinberger <richard@nod.at>, Amir Goldstein <amir73il@gmail.com>,
- Dave Chinner <david@fromorbit.com>, David Sterba <dsterba@suse.cz>,
- Theodore Ts'o <tytso@mit.edu>, Christoph Hellwig <hch@infradead.org>,
- Pavel Machek <pavel@denx.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Alexander Viro <viro@zeniv.linux.org.uk>, Jaegeuk Kim <jaegeuk@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Amir Goldstein <amir73il@gmail.com>, Dave Chinner <david@fromorbit.com>,
+ David Sterba <dsterba@suse.cz>, Theodore Ts'o <tytso@mit.edu>,
+ Christoph Hellwig <hch@infradead.org>, Pavel Machek <pavel@denx.de>,
+ Alexander Viro <viro@zeniv.linux.org.uk>, Richard Weinberger <richard@nod.at>,
  linux-fsdevel <linux-fsdevel@vger.kernel.org>,
- Andrew Morton <akpm@linux-foundation.org>, Miao Xie <miaoxie@huawei.com>,
- LKML <linux-kernel@vger.kernel.org>
+ Jaegeuk Kim <jaegeuk@kernel.org>, Andrew Morton <akpm@linux-foundation.org>,
+ Miao Xie <miaoxie@huawei.com>, LKML <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
@@ -101,51 +101,34 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 Hi Linus,
 
-On Thu, Aug 15, 2019 at 09:13:19AM -0700, Linus Torvalds wrote:
-> On Wed, Aug 14, 2019 at 9:42 PM Gao Xiang <gaoxiang25@huawei.com> wrote:
+On Thu, Aug 15, 2019 at 09:18:12AM -0700, Linus Torvalds wrote:
+> On Thu, Aug 15, 2019 at 2:06 AM Greg Kroah-Hartman
+> <gregkh@linuxfoundation.org> wrote:
 > >
-> > +
-> > +static const unsigned char erofs_filetype_table[EROFS_FT_MAX] = {
-> > +       [EROFS_FT_UNKNOWN]      = DT_UNKNOWN,
-> > +       [EROFS_FT_REG_FILE]     = DT_REG,
-> > +       [EROFS_FT_DIR]          = DT_DIR,
-> > +       [EROFS_FT_CHRDEV]       = DT_CHR,
-> > +       [EROFS_FT_BLKDEV]       = DT_BLK,
-> > +       [EROFS_FT_FIFO]         = DT_FIFO,
-> > +       [EROFS_FT_SOCK]         = DT_SOCK,
-> > +       [EROFS_FT_SYMLINK]      = DT_LNK,
-> > +};
+> > I know everyone is busy, but given the length this has been in staging,
+> > and the constant good progress toward cleaning it all up that has been
+> > happening, I want to get this moved out of staging soon.
 > 
-> Hmm.
+> Since it doesn't touch anything outside of its own filesystem, I have
+> no real objections. We've never had huge problems with odd
+> filesystems.
 > 
-> The EROFS_FT_XYZ values seem to match the normal FT_XYZ values, and
-> we've lately tried to just have filesystems use the standard ones
-> instead of having a (pointless) duplicate conversion between the two.
-> 
-> And then you can use the common "fs_ftype_to_dtype()" to convert from
-> FT_XYZ to DT_XYZ.
-> 
-> Maybe I'm missing something, and the EROFS_FT_x list actually differs
-> from the normal FT_x list some way, but it would be good to not
-> introduce another case of this in normal filesystems, just as we've
-> been getting rid of them.
-> 
-> See for example commit e10892189428 ("ext2: use common file type conversion").
+> I read through the patches to look for syntactic stuff (ie very much
+> *not* looking at actual code working or not), and had only one
+> comment. It's not critical, but it would be nice to do as part of (or
+> before) the "get it out of staging".
 
-Yes, you're right. There is nothing different with DT_XYZ since
-I followed what f2fs did when I wrote this place.
+Thanks for your kind reply!
 
-Actually, I noticed that patchset once in mailing list months ago
-https://lore.kernel.org/r/20181023201952.GA15676@pathfinder/
-but I didn't keep eyes on it (whether this patchset is merged or not...)
-
-OK, let me fix that like other fses. Thanks for pointing out.
+OK, I will submit a patch later to address your comment and
+a pending formal moving patch with a suggestion by Stephen earlier
+for Greg as well.
 
 Thanks,
 Gao Xiang
 
 > 
->                Linus
+>                  Linus
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
