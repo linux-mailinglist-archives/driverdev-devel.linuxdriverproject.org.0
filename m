@@ -1,79 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AA2BC8F0F0
-	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Aug 2019 18:40:24 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5270E8F129
+	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Aug 2019 18:47:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E519986958;
-	Thu, 15 Aug 2019 16:40:22 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D99FF87856;
+	Thu, 15 Aug 2019 16:47:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9pR8MXsUkrkY; Thu, 15 Aug 2019 16:40:22 +0000 (UTC)
+	with ESMTP id JHyEcYIZ2R2b; Thu, 15 Aug 2019 16:47:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7C89485785;
-	Thu, 15 Aug 2019 16:40:21 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 76EB487813;
+	Thu, 15 Aug 2019 16:47:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 466311BF3A6
- for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 16:40:19 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9940D1BF3A6
+ for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 16:47:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3DCC7883AC
- for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 16:40:19 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 964238654C
+ for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 16:47:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gelAR0XmIoVo for <devel@linuxdriverproject.org>;
- Thu, 15 Aug 2019 16:40:18 +0000 (UTC)
-X-Greylist: delayed 00:08:01 by SQLgrey-1.7.6
-Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
- [209.85.214.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8C54C82731
- for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 16:40:18 +0000 (UTC)
-Received: by mail-pl1-f194.google.com with SMTP id i2so1277627plt.1
- for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 09:40:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=joelfernandes.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=e5AR81pVrLpSOkNr7/eYssnE7D9iHMmdgw/0YazKbLk=;
- b=BP+2uBTqPhkx+piVq9TF3dGBmo3jHkuJ+wMRP2Ui/bokbaIh0Vg5Adz/5MbS45QDKd
- j0WRkqK6Q+z7BqfoXAf9sBzbU4N+WhobFjNL4dJUmTmdcf6kSETk6jWBYs4PUw5i8HXH
- n5X01pxkbnMYus7IbvZ3lMcIt4i8HpBZLLXrg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=e5AR81pVrLpSOkNr7/eYssnE7D9iHMmdgw/0YazKbLk=;
- b=lRnmCUyrM3mTZgJnj7uT2n3NHHzupLblH/usp/wVD3ms3LmU1+3QtZ4BhTL4kvMhwB
- t4rCTyC6GxUopjnIkP7X7xLIbKJoMehgX2QSXtqtDCN6GyCbMSBjBlDmNVpjnIlidMxX
- 5zHbADPTEcHpEsy4/W+Xi3fWY8Mmc+WqqK7g6VlRmwpP/s2z39szwWQFrH+Wa09vWgMo
- NsVp4eNL27VLcWhYGkAi/uo9Vl5yOsytNHBV/WdbUAAscI73go0u9tmd5ldi3gglCuva
- F1AGr2bCVPXlA89Ofn1ID3JjKh3Sum+xTImuNX7erCkUmXT6NM3FeBlL7NgARLQcfZHe
- Lkvw==
-X-Gm-Message-State: APjAAAV9B2RjVhniIGIPDk98J5dfxHYjAJjO3wKRUdH1gEttFTXlIaYI
- ZVKb/HVbuWwCwpojClsZh0ncfA==
-X-Google-Smtp-Source: APXvYqxbKVoQ2qS9wmLpyTLXKjkjdL92B8ZELrIIY7OLzcGJImUb56OlBZSn6Y0vBcYiZkQmIpVxuA==
-X-Received: by 2002:a17:902:7286:: with SMTP id
- d6mr5095323pll.61.1565886737439; 
- Thu, 15 Aug 2019 09:32:17 -0700 (PDT)
-Received: from localhost ([172.19.216.18])
- by smtp.gmail.com with ESMTPSA id p5sm3442540pfg.184.2019.08.15.09.32.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Aug 2019 09:32:16 -0700 (PDT)
-Date: Thu, 15 Aug 2019 12:31:59 -0400
-From: Joel Fernandes <joel@joelfernandes.org>
-To: Hridya Valsaraju <hridya@google.com>
-Subject: Re: [PATCH v3 2/2] binder: Validate the default binderfs device names.
-Message-ID: <20190815163159.GC75595@google.com>
-References: <20190808222727.132744-1-hridya@google.com>
- <20190808222727.132744-3-hridya@google.com>
+ with ESMTP id XfXgBnDOV5gr for <devel@linuxdriverproject.org>;
+ Thu, 15 Aug 2019 16:47:17 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from sonic312-24.consmr.mail.gq1.yahoo.com
+ (sonic312-24.consmr.mail.gq1.yahoo.com [98.137.69.205])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E711786538
+ for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 16:47:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aol.com; s=a2048;
+ t=1565887637; bh=synLMlaglsY0Z1eDHodD6fZP0N3IIeMoHfFfRAPdHSA=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From:Subject;
+ b=THAPNN1iVhpXmu/CI7B3zBiQNSrMASs+XgqCS+pihKjgUNDvQpMItp8MEiOaj72s/9wgLmDFsSllP4tu/lEY93aUsMkocu5U9Tt9N0cRps18lZ35QIKTil/BChWuwQnALwEvwyQ+IaxmVRT+gDv23QfySBgBgbtwO/M8DE9d5nuce8yNtqHM6Ke9EZLX2FTuPXH/G1jQdElTDK9IiEjoex6HPX0ZI9DHl7AN5lSYqPwgfqXoU9DknORdRJ48QsLLKDAraK/ZHH7l5trmK5PHX5WhPBxEN3cAm2JUzE8YpzUiTufpBivPOT+FqySzvgVl/E6GSaGtUuY+Xrmqw8AnRQ==
+X-YMail-OSG: DGMMZyYVM1nVJU6KZhXFai9ZsZzdlOD3JwSg.75gQuSAfWNRT_EdhIWzE9BEdkd
+ oz6gBRaOYYaMCZe8LZu4DlIWjmyM2ydY343Fk5E.IPEgQHsYdM7wwmqZ3qeqcAheN5QFoLjlo4Zd
+ P8vvxWuhodBdOw7P4bkeGiRBZkOZQd5z1FJOQfsfJUBxa92VWpbFvwkrjt7w8Wymwshtae.lUHyl
+ SZd3jYBdO8NVMacLZf4XFqbK8giyX0YjGNTbFN6Bi5XdjFF4O404ljiEg39huKQmx_GkHGV6X1_W
+ D.sTojNbGIZVqPKZeIu7uY.znsCq9THeltGrsE53G6pACdtQXNYY4BuoU9bs8IytRVM5sckdDqSB
+ vzcIYTjf_SL2exUr6uye3Lk6pcyr7MsgdjfO69bsuMJpHGMgn4KBIxJWs4rDrY8IGMNaM6WofrsH
+ 8bY28b2GKgtY01EXFJsAtWgO7Xc3_O2cbBJn.A9RYkp3MW905rALj73N8nTEVP3yqYKnbY1yR_j2
+ CSa0Ox_HPprd7d1PNsgkt_YPUxwU3PTdFM80oJKQZ_75PWVnqKom.n72vuW6HmHTev4N4mZprOHs
+ TfcVQsAme05z7tjxaTqvbJ8LS_ndTTx1Lqw3tIOtPEVSCf0BDevkgkE9FozKeL7phFdj_pAM7G3E
+ Oye6ej8vJztxw274hLF8b8G49wXzeU9J9uuuwihnWcqOx7GjpkaytItErGsfGUshAffLWAJi6BCs
+ DPrUKKU6.6thtlm3SiTolAi7zV73Yxphs0lpCKc_SSBhrjkps_6tFASc196bbKsiQ9P3qStvk5R8
+ YBcSgTPdg3xvSw93WtrAHrDJudAC0H5BZj6NKk5rn_8.K3MvGeSvCpCproE00WQyPeGOEnE6HUtm
+ bqGuQXiGEdrOOu6rd2O0groFg9qU9_ScAi37G_s9dwL40L6Ajw0Y0IikXpeeb0T5fLDp0FjTTihg
+ Cmsq_zON8rwea32UArZ.Z9_bTyvwTUNPeLRm80pWX0oivxIbX.PeIHc4YvuxLRL_VkOkT4jaqVuD
+ 4L9pI3QwFYdwNZtb7y.vg99qrp2QDwJe10qhaHQl_c.SoqKUMJTNM6e.AinWmDenI8xynYvSurJT
+ 6C_OpJQtX_9UJZhYkUUP2EOPjNRWFmEr9gBlvdRq0umIK3n3GrhufOOn80goFhaRDmg6EV9_r.Mp
+ HAQCS8gVleKfOeu7iI1QHhUo94k4lH8_jcQh.KKv9.Uy0xeq7qsNu3tdK.nYwuNjhX_q3IJ1om0z
+ c5Rr38ZhyxTDNvz_zEPhDCJWvHv223_K90Hs-
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic312.consmr.mail.gq1.yahoo.com with HTTP; Thu, 15 Aug 2019 16:47:17 +0000
+Received: by smtp411.mail.gq1.yahoo.com (Oath Hermes SMTP Server) with ESMTPA
+ ID 56dbf3541076f4413fe12889395d767b; 
+ Thu, 15 Aug 2019 16:47:15 +0000 (UTC)
+Date: Fri, 16 Aug 2019 00:46:56 +0800
+From: Gao Xiang <hsiangkao@aol.com>
+To: Linus Torvalds <torvalds@linux-foundation.org>
+Subject: Re: [PATCH v8 07/24] erofs: add directory operations
+Message-ID: <20190815164650.GA4958@hsiangkao-HP-ZHAN-66-Pro-G1>
+References: <20190815044155.88483-1-gaoxiang25@huawei.com>
+ <20190815044155.88483-8-gaoxiang25@huawei.com>
+ <CAHk-=wiUs+b=iVKM3mVooXgVk7cmmC67KTmnAuL0cd_cMMVAKw@mail.gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190808222727.132744-3-hridya@google.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <CAHk-=wiUs+b=iVKM3mVooXgVk7cmmC67KTmnAuL0cd_cMMVAKw@mail.gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,63 +83,69 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, kernel-team@android.com,
- Todd Kjos <tkjos@android.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org,
- Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
- Christian Brauner <christian.brauner@ubuntu.com>,
- Martijn Coenen <maco@android.com>, Christian Brauner <christian@brauner.io>
+Cc: devel@driverdev.osuosl.org, Stephen Rothwell <sfr@canb.auug.org.au>,
+ linux-erofs@lists.ozlabs.org, Jan Kara <jack@suse.cz>,
+ "Darrick J . Wong" <darrick.wong@oracle.com>,
+ Richard Weinberger <richard@nod.at>, Amir Goldstein <amir73il@gmail.com>,
+ Dave Chinner <david@fromorbit.com>, David Sterba <dsterba@suse.cz>,
+ Theodore Ts'o <tytso@mit.edu>, Christoph Hellwig <hch@infradead.org>,
+ Pavel Machek <pavel@denx.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Alexander Viro <viro@zeniv.linux.org.uk>, Jaegeuk Kim <jaegeuk@kernel.org>,
+ linux-fsdevel <linux-fsdevel@vger.kernel.org>,
+ Andrew Morton <akpm@linux-foundation.org>, Miao Xie <miaoxie@huawei.com>,
+ LKML <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Aug 08, 2019 at 03:27:26PM -0700, Hridya Valsaraju wrote:
-> Length of a binderfs device name cannot exceed BINDERFS_MAX_NAME.
-> This patch adds a check in binderfs_init() to ensure the same
-> for the default binder devices that will be created in every
-> binderfs instance.
+Hi Linus,
+
+On Thu, Aug 15, 2019 at 09:13:19AM -0700, Linus Torvalds wrote:
+> On Wed, Aug 14, 2019 at 9:42 PM Gao Xiang <gaoxiang25@huawei.com> wrote:
+> >
+> > +
+> > +static const unsigned char erofs_filetype_table[EROFS_FT_MAX] = {
+> > +       [EROFS_FT_UNKNOWN]      = DT_UNKNOWN,
+> > +       [EROFS_FT_REG_FILE]     = DT_REG,
+> > +       [EROFS_FT_DIR]          = DT_DIR,
+> > +       [EROFS_FT_CHRDEV]       = DT_CHR,
+> > +       [EROFS_FT_BLKDEV]       = DT_BLK,
+> > +       [EROFS_FT_FIFO]         = DT_FIFO,
+> > +       [EROFS_FT_SOCK]         = DT_SOCK,
+> > +       [EROFS_FT_SYMLINK]      = DT_LNK,
+> > +};
 > 
-> Co-developed-by: Christian Brauner <christian.brauner@ubuntu.com>
-> Signed-off-by: Christian Brauner <christian.brauner@ubuntu.com>
-> Signed-off-by: Hridya Valsaraju <hridya@google.com>
-> ---
-
-Reviewed-by: Joel Fernandes (Google) <joel@joelfernandes.org>
-
-thanks,
-
- - Joel
-
->  drivers/android/binderfs.c | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
+> Hmm.
 > 
-> diff --git a/drivers/android/binderfs.c b/drivers/android/binderfs.c
-> index aee46dd1be91..55c5adb87585 100644
-> --- a/drivers/android/binderfs.c
-> +++ b/drivers/android/binderfs.c
-> @@ -570,6 +570,18 @@ static struct file_system_type binder_fs_type = {
->  int __init init_binderfs(void)
->  {
->  	int ret;
-> +	const char *name;
-> +	size_t len;
-> +
-> +	/* Verify that the default binderfs device names are valid. */
-> +	name = binder_devices_param;
-> +	for (len = strcspn(name, ","); len > 0; len = strcspn(name, ",")) {
-> +		if (len > BINDERFS_MAX_NAME)
-> +			return -E2BIG;
-> +		name += len;
-> +		if (*name == ',')
-> +			name++;
-> +	}
->  
->  	/* Allocate new major number for binderfs. */
->  	ret = alloc_chrdev_region(&binderfs_dev, 0, BINDERFS_MAX_MINOR,
-> -- 
-> 2.22.0.770.g0f2c4a37fd-goog
+> The EROFS_FT_XYZ values seem to match the normal FT_XYZ values, and
+> we've lately tried to just have filesystems use the standard ones
+> instead of having a (pointless) duplicate conversion between the two.
 > 
+> And then you can use the common "fs_ftype_to_dtype()" to convert from
+> FT_XYZ to DT_XYZ.
+> 
+> Maybe I'm missing something, and the EROFS_FT_x list actually differs
+> from the normal FT_x list some way, but it would be good to not
+> introduce another case of this in normal filesystems, just as we've
+> been getting rid of them.
+> 
+> See for example commit e10892189428 ("ext2: use common file type conversion").
+
+Yes, you're right. There is nothing different with DT_XYZ since
+I followed what f2fs did when I wrote this place.
+
+Actually, I noticed that patchset once in mailing list months ago
+https://lore.kernel.org/r/20181023201952.GA15676@pathfinder/
+but I didn't keep eyes on it (whether this patchset is merged or not...)
+
+OK, let me fix that like other fses. Thanks for pointing out.
+
+Thanks,
+Gao Xiang
+
+> 
+>                Linus
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
