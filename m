@@ -1,56 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D5CA88EB8F
-	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Aug 2019 14:30:21 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 372B08EB95
+	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Aug 2019 14:34:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 25630877EC;
-	Thu, 15 Aug 2019 12:30:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A4530227EC;
+	Thu, 15 Aug 2019 12:34:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iSCGjQByqzLE; Thu, 15 Aug 2019 12:30:19 +0000 (UTC)
+	with ESMTP id sO1imkwJLetf; Thu, 15 Aug 2019 12:34:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0B46A8770A;
-	Thu, 15 Aug 2019 12:30:19 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 35F4A204D6;
+	Thu, 15 Aug 2019 12:34:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 643ED1BF34F
- for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 12:30:16 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 61AF91BF34F
+ for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 12:34:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 60FC78839E
- for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 12:30:16 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 5EDD020483
+ for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 12:34:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id o3wz9IeEuDOS for <devel@linuxdriverproject.org>;
- Thu, 15 Aug 2019 12:30:15 +0000 (UTC)
+ with ESMTP id 8ZEju-zRwo5Q for <devel@linuxdriverproject.org>;
+ Thu, 15 Aug 2019 12:34:15 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B543088398
- for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 12:30:15 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 17CF42083B;
- Thu, 15 Aug 2019 12:30:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1565872215;
- bh=fcSMZ1hJLe1SylXpsIiEI19jNgj4Ja71oWB1pvH9mE0=;
- h=From:To:Cc:Subject:Date:From;
- b=iCyeKbRHojiJhhwZiRC9bCk1k8tH4WmyxMoMLzl9zNRaKr2F33UYtutxdiliP+MtA
- SD4T8YiQs4wtpIigV47cAxXUwpy9ltZTfqtJoxElPIYuLiYq4AFgEhmZRqh4d9l7Oy
- qkINkjsbMNu0GR9YZnBO//iSzWFtTfRpxfTY6BNM=
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: devel@driverdev.osuosl.org
-Subject: [PATCH] staging: sm750fb: fix odd license text
-Date: Thu, 15 Aug 2019 14:30:09 +0200
-Message-Id: <20190815123009.16499-1-gregkh@linuxfoundation.org>
-X-Mailer: git-send-email 2.22.1
+Received: from smtp81.ord1d.emailsrvr.com (smtp81.ord1d.emailsrvr.com
+ [184.106.54.81])
+ by silver.osuosl.org (Postfix) with ESMTPS id A6C072038F
+ for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 12:34:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
+ s=20190130-41we5z8j; t=1565872455;
+ bh=hGpCaA/D00Yczz11TX8jM5ILlUq2mYkAlz4nIzKqTdY=;
+ h=Subject:To:From:Date:From;
+ b=UYfnMEJKphn9631j7Bja//vrYjr1SmVhK43enCNfvn2eyGxsvzvEeISqo7jq1FzBE
+ sxwf1fcLN9xsSMqrGG64uv9gpUhADmkD2XF4BDi5ZLWC7eyeE+ptoM50QkdQwxZAf+
+ BoyvlHbc5xkFb6i3wca2OangIJwHMVJAE6kPVsf0=
+X-Auth-ID: abbotti@mev.co.uk
+Received: by smtp19.relay.ord1d.emailsrvr.com (Authenticated sender:
+ abbotti-AT-mev.co.uk) with ESMTPSA id 260466021A; 
+ Thu, 15 Aug 2019 08:34:13 -0400 (EDT)
+X-Sender-Id: abbotti@mev.co.uk
+Received: from [10.0.0.173] (remote.quintadena.com [81.133.34.160])
+ (using TLSv1.2 with cipher AES128-SHA) by 0.0.0.0:465 (trex/5.7.12);
+ Thu, 15 Aug 2019 08:34:14 -0400
+Subject: Re: [PATCH] staging: comedi: usbduxsigma: remove redundant assignment
+ to variable fx2delay
+To: Colin King <colin.king@canonical.com>,
+ H Hartley Sweeten <hsweeten@visionengravers.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org
+References: <20190815105314.5756-1-colin.king@canonical.com>
+From: Ian Abbott <abbotti@mev.co.uk>
+Organization: MEV Ltd.
+Message-ID: <7d0f8510-9c54-ab4b-c963-e99348efdfd0@mev.co.uk>
+Date: Thu, 15 Aug 2019 13:34:12 +0100
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
+In-Reply-To: <20190815105314.5756-1-colin.king@canonical.com>
+Content-Language: en-GB
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,75 +74,49 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-fbdev@vger.kernel.org, Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
- Teddy Wang <teddy.wang@siliconmotion.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-There is some "confusing" license text in some of the sm750fb driver
-files.  After discussing it with the company, it turns out to have been
-a mistake and these lines can be safely removed.  The files are all to
-be licensed under the GPLv2 license.
+On 15/08/2019 11:53, Colin King wrote:
+> From: Colin Ian King <colin.king@canonical.com>
+> 
+> Variable fx2delay is being initialized with a value that is never read
+> and fx2delay is being re-assigned a little later on. The assignment is
+> redundant and hence can be removed.
+> 
+> Addresses-Coverity: ("Unused value")
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+> ---
+>   drivers/staging/comedi/drivers/usbduxsigma.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/comedi/drivers/usbduxsigma.c b/drivers/staging/comedi/drivers/usbduxsigma.c
+> index 3cc40d2544be..54d7605e909f 100644
+> --- a/drivers/staging/comedi/drivers/usbduxsigma.c
+> +++ b/drivers/staging/comedi/drivers/usbduxsigma.c
+> @@ -1074,7 +1074,7 @@ static int usbduxsigma_pwm_period(struct comedi_device *dev,
+>   				  unsigned int period)
+>   {
+>   	struct usbduxsigma_private *devpriv = dev->private;
+> -	int fx2delay = 255;
+> +	int fx2delay;
+>   
+>   	if (period < MIN_PWM_PERIOD)
+>   		return -EAGAIN;
+> 
 
-Cc: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
-Cc: Teddy Wang <teddy.wang@siliconmotion.com>
-Cc: linux-fbdev@vger.kernel.org
-Cc: devel@driverdev.osuosl.org
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
----
- drivers/staging/sm750fb/ddk750.h       | 3 ---
- drivers/staging/sm750fb/ddk750_swi2c.c | 3 ---
- drivers/staging/sm750fb/ddk750_swi2c.h | 3 ---
- 3 files changed, 9 deletions(-)
+Looks fine, thanks!
 
-diff --git a/drivers/staging/sm750fb/ddk750.h b/drivers/staging/sm750fb/ddk750.h
-index 482c1c6ba422..64ef4d258a91 100644
---- a/drivers/staging/sm750fb/ddk750.h
-+++ b/drivers/staging/sm750fb/ddk750.h
-@@ -2,9 +2,6 @@
- /*
-  *         Copyright (c) 2007 by Silicon Motion, Inc. (SMI)
-  *
-- *  All rights are reserved. Reproduction or in part is prohibited
-- *  without the written consent of the copyright owner.
-- *
-  *  RegSC.h --- SM718 SDK
-  *  This file contains the definitions for the System Configuration registers.
-  */
-diff --git a/drivers/staging/sm750fb/ddk750_swi2c.c b/drivers/staging/sm750fb/ddk750_swi2c.c
-index 5c0ac747ea2b..0ef8d4ff2ef9 100644
---- a/drivers/staging/sm750fb/ddk750_swi2c.c
-+++ b/drivers/staging/sm750fb/ddk750_swi2c.c
-@@ -2,9 +2,6 @@
- /*
-  *         Copyright (c) 2007 by Silicon Motion, Inc. (SMI)
-  *
-- *  All rights are reserved. Reproduction or in part is prohibited
-- *  without the written consent of the copyright owner.
-- *
-  *  swi2c.c --- SM750/SM718 DDK
-  *  This file contains the source code for I2C using software
-  *  implementation.
-diff --git a/drivers/staging/sm750fb/ddk750_swi2c.h b/drivers/staging/sm750fb/ddk750_swi2c.h
-index 5868feea791b..dfa166060da7 100644
---- a/drivers/staging/sm750fb/ddk750_swi2c.h
-+++ b/drivers/staging/sm750fb/ddk750_swi2c.h
-@@ -2,9 +2,6 @@
- /*
-  *         Copyright (c) 2007 by Silicon Motion, Inc. (SMI)
-  *
-- *  All rights are reserved. Reproduction or in part is prohibited
-- *  without the written consent of the copyright owner.
-- *
-  *  swi2c.h --- SM750/SM718 DDK
-  *  This file contains the definitions for i2c using software
-  *  implementation.
+Reviewed-by: Ian Abbott <abbotti@mev.co.uk>
+
 -- 
-2.22.1
-
+-=( Ian Abbott <abbotti@mev.co.uk> || Web: www.mev.co.uk )=-
+-=( MEV Ltd. is a company registered in England & Wales. )=-
+-=( Registered number: 02862268.  Registered address:    )=-
+-=( 15 West Park Road, Bramhall, STOCKPORT, SK7 3JZ, UK. )=-
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
