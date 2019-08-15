@@ -1,87 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EBD478EFCF
-	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Aug 2019 17:51:34 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6CD7D20507;
-	Thu, 15 Aug 2019 15:51:33 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id H8BjqRYC7ItM; Thu, 15 Aug 2019 15:51:32 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 6A93820504;
-	Thu, 15 Aug 2019 15:51:31 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C62E31BF3CE
- for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 15:51:26 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 907568EFEE
+	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Aug 2019 18:00:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C18D187813
- for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 15:51:26 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A6B548780E;
+	Thu, 15 Aug 2019 16:00:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 4kK1qiDF2D3M; Thu, 15 Aug 2019 16:00:36 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id EA6C386E2A;
+	Thu, 15 Aug 2019 16:00:35 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1ADF31BF3CE
+ for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 16:00:33 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 12C0E86962
+ for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 16:00:33 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tp1gKKlzizRB for <devel@linuxdriverproject.org>;
- Thu, 15 Aug 2019 15:51:24 +0000 (UTC)
+ with ESMTP id WYeSWjAP5e81 for <devel@linuxdriverproject.org>;
+ Thu, 15 Aug 2019 16:00:31 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from out5-smtp.messagingengine.com (out5-smtp.messagingengine.com
- [66.111.4.29])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E989B87668
- for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 15:51:23 +0000 (UTC)
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
- by mailout.nyi.internal (Postfix) with ESMTP id B500E21F15;
- Thu, 15 Aug 2019 11:51:21 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute6.internal (MEProxy); Thu, 15 Aug 2019 11:51:21 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
- date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm1; bh=UIPGXfQTDFCslVKtBg0ZoEeVLhB
- sG9U2SjEzsxCXZ9Y=; b=FkDZPL3FedjyLa5vkKOzxhNagju8lovpYhcPKhP+tHJ
- 0pLcqrSelmwguYfHIw7uZa3geJCHQ9FkpWbNw3xkmo3SjUsD6rTf997UayuqskGM
- xQRQf0yIKhyDuhrAq1dp+CvC/33I/mh55OXQ6nT7Yrdt+IhWtM8+kMcMoYd2uv8g
- rhIf0YQJkCCY4wwnVnFEhp+aJtvzyRlMTJlr6l4jMNB5U9N2ct7YLMBIbHd3afHn
- /Q32k/0+OK+T3C7aKAAG9OCKilrb9WxgPdgBXcwLJPaCY6gXuHAx2NQ/3V5BBtET
- 2sSlS8avXS0KPCMkUG8indK0NqokCPpAC8OTNYgTqkw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=UIPGXf
- QTDFCslVKtBg0ZoEeVLhBsG9U2SjEzsxCXZ9Y=; b=A1P+RIQnUk9zn5dtgYjBMp
- rZRjxSO7YOkqaeMQZGLuoEvnkcIUg291Mdgz/M5f6vjlrgRj9qdJtnwk9RL9Al14
- TW1RMq9rUn6zudllOAXxu6qsvEGXyKtOGfd5V2tUQk26UDGbUjHTNJBBUC+zHFGw
- sEfUfqj6PJrKxP0PILODIYWiIx2HLhrWudnd1HKuZ3qoAsrI2BKOR9GWjgg+1z8a
- SYrd/1JLq563WWDWiA4if3ySQKxeyf9P4/9zldaDXv7/czxdM/+BZiU4oa0sr5pp
- dCgZD7ZWPR8QG4LZMY6/pCSIBn1fmJYx8RQ2N3lgf8946WubBPtFCzWOl+O4/Zbg
- ==
-X-ME-Sender: <xms:eX9VXbSCA2SPhpaCCM2zJ-jZ9ak-x4Nh7DOYZ17KJHSadRmaXSQloA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduvddrudefuddgledvucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpeffhffvuffkfhggtggujggfsehttd
- ertddtredvnecuhfhrohhmpefirhgvghcumffjuceoghhrvghgsehkrhhorghhrdgtohhm
- qeenucfkphepkeefrdekiedrkeelrddutdejnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
- hgrhgvgheskhhrohgrhhdrtghomhenucevlhhushhtvghrufhiiigvpedt
-X-ME-Proxy: <xmx:eX9VXSft9AfoJXGDNEHkCVY68QTmuRzu1qrpcimten6E2yZBeJ_lLA>
- <xmx:eX9VXSAWpyfq5-jHgHIH0Stl1yK9PvyM06PoYzwRJhNW6YZMR_NTpg>
- <xmx:eX9VXY1lBW3zIIzJ7tfJ8i-1-uZ2aaxl34ul6zCG25vDyFJB6KNjbw>
- <xmx:eX9VXeKcFznPBeOPIqFiH1TsokGnxUQYd-xnPFBAVJBH1wEeF4c94Q>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E1B0786918
+ for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 16:00:31 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
- by mail.messagingengine.com (Postfix) with ESMTPA id 26D2B380076;
- Thu, 15 Aug 2019 11:51:21 -0400 (EDT)
-Date: Thu, 15 Aug 2019 17:51:19 +0200
-From: Greg KH <greg@kroah.com>
-To: hugoziviani <hugoziviani@gmail.com>
-Subject: Re: [PATCH v2] staging: drivers: rtl8712: removing unnecessary
- parenthesis
-Message-ID: <20190815155119.GA13141@kroah.com>
-References: <20190815152640.32265-1-hugoziviani@gmail.com>
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 437762089E;
+ Thu, 15 Aug 2019 16:00:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1565884831;
+ bh=+/fnRC0jyLVx6w920S0CF2lCIeWd4yq3V09fV2AHnhg=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=ZWmoVGtPoveLoyfnLs/9mqMq5pYFU9h2xV2OIfAV4B31zah4f7ieduiOuiGxClEdB
+ IuGnVeeqH2/8bPzkxENWlpIiUjAXjy7jQkSUY0+2F15xz+0Mewxduj/DO1/eHI/bwa
+ lgysM4yBfyo8Stj0WHD1DTOZkAPyXf53sKKzZy7c=
+Date: Thu, 15 Aug 2019 18:00:29 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Hridya Valsaraju <hridya@google.com>
+Subject: Re: [PATCH v3 0/2] Add default binderfs devices
+Message-ID: <20190815160029.GA23940@kroah.com>
+References: <20190808222727.132744-1-hridya@google.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190815152640.32265-1-hugoziviani@gmail.com>
+In-Reply-To: <20190808222727.132744-1-hridya@google.com>
 User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -95,46 +66,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
+ kernel-team@android.com, linux-kernel@vger.kernel.org,
+ Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
+ Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
+ Christian Brauner <christian@brauner.io>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Aug 15, 2019 at 11:26:40AM -0400, hugoziviani wrote:
-> Fix checkpatch error "CHECK: Remove unecessary parenthesis in drivers/staging/rtl8712/rtl871x_mlme.c"
+On Thu, Aug 08, 2019 at 03:27:24PM -0700, Hridya Valsaraju wrote:
+> Binderfs was created to help provide private binder devices to
+> containers in their own IPC namespace. Currently, every time a new binderfs
+> instance is mounted, its private binder devices need to be created via
+> IOCTL calls. This patch series eliminates the effort for creating
+> the default binder devices for each binderfs instance by creating them
+> automatically.
 > 
-> Signed-off-by: hugoziviani <hugoziviani@gmail.com>
-> ---
->  drivers/staging/rtl8712/rtl871x_mlme.c | 84 +++++++++++++-------------
->  1 file changed, 42 insertions(+), 42 deletions(-)
+> Hridya Valsaraju (2):
+>   binder: Add default binder devices through binderfs when configured
+>   binder: Validate the default binderfs device names.
 
-Hi,
+I'd like to get a reviewed-by from the other binder maintainers before
+taking this series....
 
-This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-a patch that has triggered this response.  He used to manually respond
-to these common problems, but in order to save his sanity (he kept
-writing the same thing over and over, yet to different people), I was
-created.  Hopefully you will not take offence and will fix the problem
-in your patch and resubmit it so that it can be accepted into the Linux
-kernel tree.
+{hint}
 
-You are receiving this message because of the following common error(s)
-as indicated below:
-
-- It looks like you did not use your "real" name for the patch on either
-  the Signed-off-by: line, or the From: line (both of which have to
-  match).  Please read the kernel file, Documentation/SubmittingPatches
-  for how to do this correctly.
-
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
-
-thanks,
-
-greg k-h's patch email bot
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
