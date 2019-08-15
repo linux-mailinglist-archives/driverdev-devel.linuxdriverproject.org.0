@@ -1,63 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2391F8E536
-	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Aug 2019 09:08:55 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 712A88E71A
+	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Aug 2019 10:40:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 73B3B227CC;
-	Thu, 15 Aug 2019 07:08:52 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C0D278831B;
+	Thu, 15 Aug 2019 08:40:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ywiVHar-b11a; Thu, 15 Aug 2019 07:08:52 +0000 (UTC)
+	with ESMTP id 4AcJL64Au6cS; Thu, 15 Aug 2019 08:40:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E55D32276C;
-	Thu, 15 Aug 2019 07:08:49 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 17DD1882EC;
+	Thu, 15 Aug 2019 08:40:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 526571BF84C
- for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 07:08:37 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E9E981BF847
+ for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 08:40:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 4DBD5867A5
- for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 07:08:37 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E53F086DCF
+ for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 08:40:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WSMzRtOym0nA for <devel@linuxdriverproject.org>;
- Thu, 15 Aug 2019 07:08:36 +0000 (UTC)
+ with ESMTP id 68ZmulWP8XlU for <devel@linuxdriverproject.org>;
+ Thu, 15 Aug 2019 08:40:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga02-in.huawei.com [45.249.212.188])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 6F9CE8655C
- for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 07:08:35 +0000 (UTC)
-Received: from DGGEMM404-HUB.china.huawei.com (unknown [172.30.72.53])
- by Forcepoint Email with ESMTP id D21833C0005A2CC6FB3C;
- Thu, 15 Aug 2019 15:08:27 +0800 (CST)
-Received: from dggeme762-chm.china.huawei.com (10.3.19.108) by
- DGGEMM404-HUB.china.huawei.com (10.3.20.212) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 15 Aug 2019 15:08:27 +0800
-Received: from 138 (10.175.124.28) by dggeme762-chm.china.huawei.com
- (10.3.19.108) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1591.10; Thu, 15
- Aug 2019 15:08:26 +0800
-Date: Thu, 15 Aug 2019 15:25:35 +0800
-From: Gao Xiang <gaoxiang25@huawei.com>
-To: Pavel Machek <pavel@denx.de>
-Subject: Re: [PATCH v7 08/24] erofs: add namei functions
-Message-ID: <20190815072534.GA38177@138>
-References: <20190813091326.84652-1-gaoxiang25@huawei.com>
- <20190813091326.84652-9-gaoxiang25@huawei.com>
- <20190813114821.GB11559@amd> <20190813122332.GA17429@138>
- <20190815070132.GB3669@amd>
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 2E06886D95
+ for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 08:40:37 +0000 (UTC)
+Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
+ by youngberry.canonical.com with esmtpsa (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.76) (envelope-from <colin.king@canonical.com>)
+ id 1hyBJC-0006KM-Hw; Thu, 15 Aug 2019 08:40:34 +0000
+From: Colin King <colin.king@canonical.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ John Whitmore <johnfwhitmore@gmail.com>, devel@driverdev.osuosl.org
+Subject: [PATCH] staging: rtl8192u: fix up indentation of a statement
+Date: Thu, 15 Aug 2019 09:40:34 +0100
+Message-Id: <20190815084034.13885-1-colin.king@canonical.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190815070132.GB3669@amd>
-User-Agent: Mutt/1.11.3 (2019-02-01)
-X-Originating-IP: [10.175.124.28]
-X-ClientProxiedBy: dggeme712-chm.china.huawei.com (10.1.199.108) To
- dggeme762-chm.china.huawei.com (10.3.19.108)
-X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,75 +56,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Jan Kara <jack@suse.cz>, Chao Yu <yuchao0@huawei.com>,
- Dave Chinner <david@fromorbit.com>, David Sterba <dsterba@suse.cz>,
- Miao Xie <miaoxie@huawei.com>, devel@driverdev.osuosl.org,
- Stephen Rothwell <sfr@canb.auug.org.au>, "Darrick J .
- Wong" <darrick.wong@oracle.com>, Richard Weinberger <richard@nod.at>,
- Christoph Hellwig <hch@infradead.org>,
- Linus Torvalds <torvalds@linux-foundation.org>,
- Amir Goldstein <amir73il@gmail.com>, Alexander Viro <viro@zeniv.linux.org.uk>,
- Jaegeuk Kim <jaegeuk@kernel.org>, Theodore Ts'o <tytso@mit.edu>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- LKML <linux-kernel@vger.kernel.org>, Li Guifu <bluce.liguifu@huawei.com>,
- Fang Wei <fangwei1@huawei.com>, linux-fsdevel <linux-fsdevel@vger.kernel.org>,
- Andrew Morton <akpm@linux-foundation.org>, linux-erofs@lists.ozlabs.org
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Pavel,
+From: Colin Ian King <colin.king@canonical.com>
 
-On Thu, Aug 15, 2019 at 09:01:32AM +0200, Pavel Machek wrote:
-> Hi!
-> 
-> > > > +	/*
-> > > > +	 * on-disk error, let's only BUG_ON in the debugging mode.
-> > > > +	 * otherwise, it will return 1 to just skip the invalid name
-> > > > +	 * and go on (in consideration of the lookup performance).
-> > > > +	 */
-> > > > +	DBG_BUGON(qd->name > qd->end);
-> > > 
-> > > I believe you should check for errors in non-debug mode, too.
-> > 
-> > Thanks for your kindly reply!
-> > 
-> > The following is just my personal thought... If I am wrong, please
-> > kindly point out...
-> > 
-> > As you can see, this is a new prefixed string binary search algorithm
-> > which can provide similar performance with hashed approach (but no
-> > need to store hash value at all), so I really care about its lookup
-> > performance.
-> > 
-> > There is something needing to be concerned, is, whether namei() should
-> > report any potential on-disk issues or just return -ENOENT for these
-> > corrupted dirs, I think I tend to use the latter one.
-> 
-> -ENOENT is okay for corrupted directories, as long as corrupted
-> directories do not cause some kind of security bugs (memory
-> corruption, crashes, ...)
+There is a statement that is indented one level too deeply, remove
+the extraneous tab.
 
-Yes, I am certain that it will return -ENOENT for such corrupted
-directories and it will certainly not crash the kernel as well.
+Addresses-Coverity: ("Identation does not match nesting level")
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+---
+ drivers/staging/rtl8192u/r8190_rtl8256.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-I have fuzzed it for several months and it seems fine after
-commit 419d6efc50e9 ("staging: erofs: keep corrupted fs from crashing kernel in erofs_namei()")
-
-Don't worry about that :)
-
-Thanks,
-Gao Xiang
-
-> 
-> 
-> Best regards,
-> 								Pavel
-> -- 
-> DENX Software Engineering GmbH,      Managing Director: Wolfgang Denk
-> HRB 165235 Munich, Office: Kirchenstr.5, D-82194 Groebenzell, Germany
-
+diff --git a/drivers/staging/rtl8192u/r8190_rtl8256.c b/drivers/staging/rtl8192u/r8190_rtl8256.c
+index 92de92a3325a..0bedf88525cd 100644
+--- a/drivers/staging/rtl8192u/r8190_rtl8256.c
++++ b/drivers/staging/rtl8192u/r8190_rtl8256.c
+@@ -289,8 +289,8 @@ void phy_set_rf8256_ofdm_tx_power(struct net_device *dev, u8 powerlevel)
+ 			writeVal = 0x03030303;
+ 		} else {
+ 			writeVal = (byte3<<24) | (byte2<<16) | (byte1<<8) | byte0;
+-			}
+-			rtl8192_setBBreg(dev, RegOffset[index], 0x7f7f7f7f, writeVal);
++		}
++		rtl8192_setBBreg(dev, RegOffset[index], 0x7f7f7f7f, writeVal);
+ 	}
+ 	return;
+ 
+-- 
+2.20.1
 
 _______________________________________________
 devel mailing list
