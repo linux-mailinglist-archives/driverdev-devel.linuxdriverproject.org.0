@@ -1,53 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D78888F8F0
-	for <lists+driverdev-devel@lfdr.de>; Fri, 16 Aug 2019 04:33:31 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2537A8FB46
+	for <lists+driverdev-devel@lfdr.de>; Fri, 16 Aug 2019 08:44:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8B68C863DC;
-	Fri, 16 Aug 2019 02:33:30 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6FCAB8795E;
+	Fri, 16 Aug 2019 06:44:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id L09lQp1fuXKC; Fri, 16 Aug 2019 02:33:29 +0000 (UTC)
+	with ESMTP id 2ugFjITavSAm; Fri, 16 Aug 2019 06:44:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AE1B4860C1;
-	Fri, 16 Aug 2019 02:33:28 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E1418878E1;
+	Fri, 16 Aug 2019 06:44:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1B0D61BF2BD
- for <devel@linuxdriverproject.org>; Fri, 16 Aug 2019 02:33:25 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id F0AD51BF842
+ for <devel@linuxdriverproject.org>; Fri, 16 Aug 2019 06:44:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 1768E8618F
- for <devel@linuxdriverproject.org>; Fri, 16 Aug 2019 02:33:25 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id EE69A203AD
+ for <devel@linuxdriverproject.org>; Fri, 16 Aug 2019 06:44:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eeIKtt_rJK38 for <devel@linuxdriverproject.org>;
- Fri, 16 Aug 2019 02:33:23 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 920A58643D
- for <devel@driverdev.osuosl.org>; Fri, 16 Aug 2019 02:33:23 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 15 Aug 2019 19:33:23 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,391,1559545200"; d="scan'208";a="194894553"
-Received: from genxtest-ykzhao.sh.intel.com ([10.239.143.71])
- by fmsmga001.fm.intel.com with ESMTP; 15 Aug 2019 19:33:22 -0700
-From: Zhao Yakui <yakui.zhao@intel.com>
-To: x86@kernel.org, linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org
-Subject: [RFC PATCH 15/15] drivers/acrn: add the support of offline SOS cpu
-Date: Fri, 16 Aug 2019 10:25:56 +0800
-Message-Id: <1565922356-4488-16-git-send-email-yakui.zhao@intel.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1565922356-4488-1-git-send-email-yakui.zhao@intel.com>
+ with ESMTP id CJRZ0NGa+fnJ for <devel@linuxdriverproject.org>;
+ Fri, 16 Aug 2019 06:44:30 +0000 (UTC)
+X-Greylist: delayed 00:05:47 by SQLgrey-1.7.6
+Received: from mail.skyhub.de (mail.skyhub.de [5.9.137.197])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7BEA6203A2
+ for <devel@driverdev.osuosl.org>; Fri, 16 Aug 2019 06:44:30 +0000 (UTC)
+Received: from zn.tnic (p200300EC2F0A920041519BC41B2ACCA3.dip0.t-ipconnect.de
+ [IPv6:2003:ec:2f0a:9200:4151:9bc4:1b2a:cca3])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.skyhub.de (SuperMail on ZX Spectrum 128k) with ESMTPSA id 8C8E51EC0A91;
+ Fri, 16 Aug 2019 08:38:39 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alien8.de; s=dkim;
+ t=1565937519;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:in-reply-to:in-reply-to:  references:references;
+ bh=5Vqiu9wtaNx8kVRzHPBxlLz2F2d6oTzKG7AVaoCM5PU=;
+ b=V1pG1doAqPi4XoqA2IBe8N40J5t74wL8WVTo6puCBmWddUU3k/Khf7QOat3LZ6FoCArSVX
+ RUEzU4Ng1uH9iV7KWOckv85k2fnd8FJc5j+6mp5X1Va7mnWKkO3aa/DvZ6ylTFfWODEDq/
+ J4RhIRXf3QR4LrTQAkdTqeyVY2LF2gU=
+Date: Fri, 16 Aug 2019 08:39:25 +0200
+From: Borislav Petkov <bp@alien8.de>
+To: Zhao Yakui <yakui.zhao@intel.com>
+Subject: Re: [RFC PATCH 00/15] acrn: add the ACRN driver module
+Message-ID: <20190816063925.GB18980@zn.tnic>
 References: <1565922356-4488-1-git-send-email-yakui.zhao@intel.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1565922356-4488-1-git-send-email-yakui.zhao@intel.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,108 +68,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Zhao Yakui <yakui.zhao@intel.com>, Jason Chen CJ <jason.cj.chen@intel.com>
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, x86@kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The ACRN-hypervisor works in partition mode. In such case the guest OS
-and domain0 kernel will run in the different CPUs.  In course of booting
-domain0 kernel, it can use all the available CPUs,which can accelerate
-the booting. But after the booting is finished, it needs to offline the
-other CPUs so that they can be allocated to the guest OS.
+On Fri, Aug 16, 2019 at 10:25:41AM +0800, Zhao Yakui wrote:
+> The first three patches are the changes under x86/acrn, which adds the
+> required APIs for the driver and reports the X2APIC caps. 
+> The remaining patches add the ACRN driver module, which accepts the ioctl
+> from user-space and then communicate with the low-level ACRN hypervisor
+> by using hypercall.
 
-add sysfs with attr "offline_cpu", use
-	echo cpu_id > /sys/class/acrn/acrn_hsm/offline_cpu
-to do the hypercall offline/destroy according vcpu.
-before doing it, It will offline cpu by using the below cmd:
-	echo 0 > /sys/devices/system/cpu/cpuX/online
+I have a problem with that: you're adding interfaces to arch/x86/ and
+its users go into staging. Why? Why not directly put the driver where
+it belongs, clean it up properly and submit it like everything else is
+submitted?
 
-Currently this is mainly used in user-space device model before
-booting other ACRN guest.
+I don't want to have stuff in arch/x86/ which is used solely by code in
+staging and the latter is lingering there indefinitely because no one is
+cleaning it up...
 
-Co-developed-by: Jason Chen CJ <jason.cj.chen@intel.com>
-Signed-off-by: Jason Chen CJ <jason.cj.chen@intel.com>
-Signed-off-by: Zhao Yakui <yakui.zhao@intel.com>
----
- drivers/staging/acrn/acrn_dev.c | 45 +++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 45 insertions(+)
-
-diff --git a/drivers/staging/acrn/acrn_dev.c b/drivers/staging/acrn/acrn_dev.c
-index 0602125..6868003 100644
---- a/drivers/staging/acrn/acrn_dev.c
-+++ b/drivers/staging/acrn/acrn_dev.c
-@@ -588,6 +588,41 @@ static const struct file_operations fops = {
- #define SUPPORT_HV_API_VERSION_MAJOR	1
- #define SUPPORT_HV_API_VERSION_MINOR	0
- 
-+static ssize_t
-+offline_cpu_store(struct device *dev,
-+			struct device_attribute *attr,
-+			const char *buf, size_t count)
-+{
-+#ifdef CONFIG_X86
-+	u64 cpu, lapicid;
-+
-+	if (kstrtoull(buf, 0, &cpu) < 0)
-+		return -EINVAL;
-+
-+	if (cpu_possible(cpu)) {
-+		lapicid = cpu_data(cpu).apicid;
-+		pr_info("acrn: try to offline cpu %lld with lapicid %lld\n",
-+				cpu, lapicid);
-+		if (hcall_sos_offline_cpu(lapicid) < 0) {
-+			pr_err("acrn: failed to offline cpu from Hypervisor!\n");
-+			return -EINVAL;
-+		}
-+	}
-+#endif
-+	return count;
-+}
-+
-+static DEVICE_ATTR(offline_cpu, 00200, NULL, offline_cpu_store);
-+
-+static struct attribute *acrn_attrs[] = {
-+	&dev_attr_offline_cpu.attr,
-+	NULL
-+};
-+
-+static struct attribute_group acrn_attr_group = {
-+	.attrs = acrn_attrs,
-+};
-+
- static int __init acrn_init(void)
- {
- 	unsigned long flag;
-@@ -647,6 +682,15 @@ static int __init acrn_init(void)
- 		return PTR_ERR(acrn_device);
- 	}
- 
-+	if (sysfs_create_group(&acrn_device->kobj, &acrn_attr_group)) {
-+		pr_warn("acrn: sysfs create failed\n");
-+		device_destroy(acrn_class, MKDEV(major, 0));
-+		class_unregister(acrn_class);
-+		class_destroy(acrn_class);
-+		unregister_chrdev(major, DEVICE_NAME);
-+		return -EINVAL;
-+	}
-+
- 	tasklet_init(&acrn_io_req_tasklet, io_req_tasklet, 0);
- 	local_irq_save(flag);
- 	acrn_setup_intr_irq(acrn_intr_handler);
-@@ -664,6 +708,7 @@ static void __exit acrn_exit(void)
- 
- 	tasklet_kill(&acrn_io_req_tasklet);
- 	acrn_remove_intr_irq();
-+	sysfs_remove_group(&acrn_device->kobj, &acrn_attr_group);
- 	device_destroy(acrn_class, MKDEV(major, 0));
- 	class_unregister(acrn_class);
- 	class_destroy(acrn_class);
 -- 
-2.7.4
+Regards/Gruss,
+    Boris.
 
+Good mailing practices for 400: avoid top-posting and trim the reply.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
