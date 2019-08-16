@@ -1,47 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A452C9076A
-	for <lists+driverdev-devel@lfdr.de>; Fri, 16 Aug 2019 20:02:57 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7CD1390A5E
+	for <lists+driverdev-devel@lfdr.de>; Fri, 16 Aug 2019 23:37:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id AB49A235B8;
-	Fri, 16 Aug 2019 18:02:55 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D983D885C4;
+	Fri, 16 Aug 2019 21:37:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TgonzrhzXpbO; Fri, 16 Aug 2019 18:02:54 +0000 (UTC)
+	with ESMTP id RSiPMN+tpok4; Fri, 16 Aug 2019 21:37:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id AAEA520797;
-	Fri, 16 Aug 2019 18:02:52 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2DE3A87C66;
+	Fri, 16 Aug 2019 21:37:41 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7C74E1BF83C
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 16 Aug 2019 18:02:50 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 535131BF35B
+ for <devel@linuxdriverproject.org>; Fri, 16 Aug 2019 21:37:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 79D7086B1D
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 16 Aug 2019 18:02:50 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 505C986B83
+ for <devel@linuxdriverproject.org>; Fri, 16 Aug 2019 21:37:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DGuR57TxV6ji
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 16 Aug 2019 18:02:49 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from sp-exchange.ca (sp-exchange.ca [104.236.232.215])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id AECA286B0E
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 16 Aug 2019 18:02:49 +0000 (UTC)
-MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: In good faith
-To: Recipients <pablomanci@yopmail.com>
-From: "P Mancilla" <pablomanci@yopmail.com>
-Date: Fri, 16 Aug 2019 09:46:49 -0700
-Message-Id: <20190816180250.79D7086B1D@fraxinus.osuosl.org>
+ with ESMTP id iKjWGLlv7miq for <devel@linuxdriverproject.org>;
+ Fri, 16 Aug 2019 21:37:38 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
+ [209.85.214.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9B68586B7A
+ for <devel@driverdev.osuosl.org>; Fri, 16 Aug 2019 21:37:38 +0000 (UTC)
+Received: by mail-pl1-f196.google.com with SMTP id g4so2961257plo.3
+ for <devel@driverdev.osuosl.org>; Fri, 16 Aug 2019 14:37:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=fTpUWS30pfgfF0kfyohSd9GMDa/HWOaCYSg035cqnes=;
+ b=patTmd4qCLHzas15wSuPirWurKKMLH1fF/3dDF3JcMpXjFIEY8vs1fI4VWGYHvrzDe
+ fYXvZ1fL/k7PWWk9U3DjKWbBWgrJVOG7Dh1aQO/sInYCbWxKDlETpVIXoTn8QYa4z1BY
+ dDSW40JfkHoKssl0OeL8PkpDS6dPYcreT5KEOTl6Q8hTc237G+sBERvJg1Y00/k1N8By
+ JRvSnWnCXYQtqtoNOWKWTK59fW1VdxhznQANJ3lRRCS9191CeFQQ1N8WgNkJyok3IAAX
+ Zc653274LOVBALfUvXqX7i1UoSlXfMvaLm/yoJVh+xrZ8gCe8GTCAJuFHyQjsrXL+R4L
+ vO1g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=fTpUWS30pfgfF0kfyohSd9GMDa/HWOaCYSg035cqnes=;
+ b=dwpTAo+Tr6jfZD+MBA57r899/7WQ9DAMIeoXe0EbpksXW1NNMdlkNfTc9Qb+8C01QN
+ Jytbp+dIR7NlpOHwNy/mTIqMOoAETqTyoAS8daL5xHD/zqu+egojxFChS+meYAr49Nh9
+ EmL5+ZexFu2HVs6PIkZSdLXkDJ7xEUhuM76su+5Q3BpOfz6AoYhf51Xtyyejy2a2Ke+G
+ //clbqj0kHk5E2nANpQTyQ5j0WE98NByU0ucOAzYxFQ5vPy7BWGE90bPkx0zaaviSIk8
+ RtXuNq4IbE2Pa8GPCTrhiWbsjgYtE/vv+3oB4y7/E0UWcXzJlBmmWA3iyTwtWltrzGGh
+ 2r7Q==
+X-Gm-Message-State: APjAAAUYf6pV/gzJ2Z+/L07abSISTCAgAUm8j5Skwrh2JQ0pMNl68z5E
+ rZqilo5LpHeqaE2sOeJq348=
+X-Google-Smtp-Source: APXvYqyMF1Akn6/4rKezH7Cqam/+MS7qOgJmgjePWAM8pmRHtHzpV2thgBq2xomQgiJLw+5e0v1Y/w==
+X-Received: by 2002:a17:902:e584:: with SMTP id
+ cl4mr10938735plb.160.1565991458223; 
+ Fri, 16 Aug 2019 14:37:38 -0700 (PDT)
+Received: from localhost.localdomain ([157.41.169.31])
+ by smtp.gmail.com with ESMTPSA id z13sm7016861pfa.94.2019.08.16.14.37.34
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 16 Aug 2019 14:37:37 -0700 (PDT)
+From: Sumera Priyadarsini <sylphrenadin@gmail.com>
+To: rspringer@google.com
+Subject: [PATCH] staging: gasket: Remove unnecessary line-breaks in function
+ signatures
+Date: Sat, 17 Aug 2019 03:07:02 +0530
+Message-Id: <20190816213702.32116-1-sylphrenadin@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,21 +82,72 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: pablomancilla1@orange.es
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ toddpoynor@google.com, Sumera Priyadarsini <sylphrenadin@gmail.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Good day  
-My name is Pablo Mancilla  diagnosed with Esophageal cancer which has defiled all forms of medical treatment and right now I have only about a few more months to live, according to medical experts.
-I have not particularly lived my life so well, as I never really cared for anyone(not even myself)but my business. Though I am very rich, I was never generous, I was always hostile to people and only focused on my business as that was the only thing I cared for. But now I regret all this as I now know that there is more to life than just wanting to have or make all the money in the world. I believe when God gives me a second chance to come to this world I would live my life a different way from how I have lived it. Now that God has called me, I have willed and given most of my property and assets to my immediate and extended family members as well as a few close friends. I want God to be merciful to me and accept my soul so, I have decided to give alms to charity organizations, as I want this to be one of the last good deeds I do on earth. So far, I have distributed money to some charity organizations in the U.A.E, Algeria and Malaysia. Now that my health has deteriorated so 
- badly, I cannot do this myself anymore.
-I once asked members of my family to close one of my accounts and distribute the money which I have there to charity organization in Bulgaria and Pakistan, they refused and kept the money to themselves. I will be glad if you can assist me with my charity project since I am sick and unable continue with it.Kindly get back to me
+This patch fixes the function signatures for gasket_read_page_table_size,
+gasket_read_simple_page_table_size, gasket_partition_page_table,
+gasket_config_coherent_allocator to avoid  the checkpatch.pl warning:
 
-I will be glad if you can get back to me,
-God be with you
-P Mancilla.
+	CHECK: Lines should not end with a '('
+
+Signed-off-by: Sumera Priyadarsini <sylphrenadin@gmail.com>
+---
+ drivers/staging/gasket/gasket_ioctl.c | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/staging/gasket/gasket_ioctl.c b/drivers/staging/gasket/gasket_ioctl.c
+index 7ecfba4f2b06..240f9bb10b71 100644
+--- a/drivers/staging/gasket/gasket_ioctl.c
++++ b/drivers/staging/gasket/gasket_ioctl.c
+@@ -39,8 +39,7 @@ static int gasket_set_event_fd(struct gasket_dev *gasket_dev,
+ }
+ 
+ /* Read the size of the page table. */
+-static int gasket_read_page_table_size(
+-	struct gasket_dev *gasket_dev,
++static int gasket_read_page_table_size(struct gasket_dev *gasket_dev,
+ 	struct gasket_page_table_ioctl __user *argp)
+ {
+ 	int ret = 0;
+@@ -66,8 +65,7 @@ static int gasket_read_page_table_size(
+ }
+ 
+ /* Read the size of the simple page table. */
+-static int gasket_read_simple_page_table_size(
+-	struct gasket_dev *gasket_dev,
++static int gasket_read_simple_page_table_size(struct gasket_dev *gasket_dev,
+ 	struct gasket_page_table_ioctl __user *argp)
+ {
+ 	int ret = 0;
+@@ -93,8 +91,7 @@ static int gasket_read_simple_page_table_size(
+ }
+ 
+ /* Set the boundary between the simple and extended page tables. */
+-static int gasket_partition_page_table(
+-	struct gasket_dev *gasket_dev,
++static int gasket_partition_page_table(struct gasket_dev *gasket_dev,
+ 	struct gasket_page_table_ioctl __user *argp)
+ {
+ 	int ret;
+@@ -185,8 +182,7 @@ static int gasket_unmap_buffers(struct gasket_dev *gasket_dev,
+  * Reserve structures for coherent allocation, and allocate or free the
+  * corresponding memory.
+  */
+-static int gasket_config_coherent_allocator(
+-	struct gasket_dev *gasket_dev,
++static int gasket_config_coherent_allocator(struct gasket_dev *gasket_dev,
+ 	struct gasket_coherent_alloc_config_ioctl __user *argp)
+ {
+ 	int ret;
+-- 
+2.17.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
