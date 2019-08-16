@@ -1,59 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8B36F8FB9F
-	for <lists+driverdev-devel@lfdr.de>; Fri, 16 Aug 2019 09:03:53 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B8BDB8FBA7
+	for <lists+driverdev-devel@lfdr.de>; Fri, 16 Aug 2019 09:06:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 929E38794A;
-	Fri, 16 Aug 2019 07:03:51 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 605ED884FB;
+	Fri, 16 Aug 2019 07:06:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jrNIXdPdWbHh; Fri, 16 Aug 2019 07:03:51 +0000 (UTC)
+	with ESMTP id LudP4K4QtPPH; Fri, 16 Aug 2019 07:06:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 56CCA81DFD;
-	Fri, 16 Aug 2019 07:03:50 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D382B884E5;
+	Fri, 16 Aug 2019 07:06:03 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 866201BF842
- for <devel@linuxdriverproject.org>; Fri, 16 Aug 2019 07:03:47 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 166501BF354
+ for <devel@linuxdriverproject.org>; Fri, 16 Aug 2019 07:06:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6BFC1860C1
- for <devel@linuxdriverproject.org>; Fri, 16 Aug 2019 07:03:47 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 13DDF2036C
+ for <devel@linuxdriverproject.org>; Fri, 16 Aug 2019 07:06:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pDU3kr4u9GKu for <devel@linuxdriverproject.org>;
- Fri, 16 Aug 2019 07:03:46 +0000 (UTC)
+ with ESMTP id ELJ-EYRLfG16 for <devel@linuxdriverproject.org>;
+ Fri, 16 Aug 2019 07:06:01 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D6E0E85F49
- for <devel@driverdev.osuosl.org>; Fri, 16 Aug 2019 07:03:46 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 8A12720361
+ for <devel@driverdev.osuosl.org>; Fri, 16 Aug 2019 07:06:01 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 3A679206C1;
- Fri, 16 Aug 2019 07:03:46 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id DC570206C1;
+ Fri, 16 Aug 2019 07:06:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1565939026;
- bh=harVtDZ3Mjw5P1AQ7Ik6ukdvdVe+6Ge5VYwU38+ajZs=;
+ s=default; t=1565939161;
+ bh=nm906M80KO0Xu3l6PWo+UB5AziH6MjwJ4ERd8RA4nlo=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=qsO94+A0bPL9zhDaWF3g9RCQFGvKtfFMVXDQK1TM9It4agcJIYZsnoGuBJqFDtc6v
- VRTpeHGWGg/PIR8H4OU2gS2T69sWzzHU4+zxgB80kb03Jm/gU8JxdGXa2L0r+6Ss1j
- ckeaXF8OL9nMl6/L5DCR7frYhxnngfZBfGcV0/uQ=
-Date: Fri, 16 Aug 2019 09:03:43 +0200
+ b=FIJRJpIqb8t6HI3YwtHz+CaoxOj+ej8gL0oStt1J9jR/k68GfgsF5KI0zIb5i9S5h
+ UAPKhRCpOeTvcY4MlmqOCjTtzqg/MT36wSFTSb5ShXTeavXGzhlSnPzZAAy++kbFdY
+ NhBemp7LY/Xc0ywrA0Q4IsUePHEjzJ7ALQvalpK0=
+Date: Fri, 16 Aug 2019 09:05:59 +0200
 From: Greg KH <gregkh@linuxfoundation.org>
 To: Zhao Yakui <yakui.zhao@intel.com>
-Subject: Re: [RFC PATCH 00/15] acrn: add the ACRN driver module
-Message-ID: <20190816070343.GA1368@kroah.com>
+Subject: Re: [RFC PATCH 04/15] drivers/acrn: add the basic framework of acrn
+ char device driver
+Message-ID: <20190816070559.GB1368@kroah.com>
 References: <1565922356-4488-1-git-send-email-yakui.zhao@intel.com>
- <20190816063925.GB18980@zn.tnic>
+ <1565922356-4488-5-git-send-email-yakui.zhao@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190816063925.GB18980@zn.tnic>
+In-Reply-To: <1565922356-4488-5-git-send-email-yakui.zhao@intel.com>
 User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -67,40 +68,52 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, x86@kernel.org, Borislav Petkov <bp@alien8.de>,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, x86@kernel.org, linux-kernel@vger.kernel.org,
+ Jason Chen CJ <jason.cj.chen@intel.com>, Jack Ren <jack.ren@intel.com>,
+ Liu Shuo <shuo.a.liu@intel.com>, Mingqiang Chi <mingqiang.chi@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Aug 16, 2019 at 08:39:25AM +0200, Borislav Petkov wrote:
-> On Fri, Aug 16, 2019 at 10:25:41AM +0800, Zhao Yakui wrote:
-> > The first three patches are the changes under x86/acrn, which adds the
-> > required APIs for the driver and reports the X2APIC caps. 
-> > The remaining patches add the ACRN driver module, which accepts the ioctl
-> > from user-space and then communicate with the low-level ACRN hypervisor
-> > by using hypercall.
+On Fri, Aug 16, 2019 at 10:25:45AM +0800, Zhao Yakui wrote:
+> ACRN hypervisor service module is the important middle layer that allows
+> the Linux kernel to communicate with the ACRN hypervisor. It includes
+> the management of virtualized CPU/memory/device/interrupt for other ACRN
+> guest. The user-space applications can use the provided ACRN ioctls to
+> interact with ACRN hypervisor through different hypercalls.
 > 
-> I have a problem with that: you're adding interfaces to arch/x86/ and
-> its users go into staging. Why? Why not directly put the driver where
-> it belongs, clean it up properly and submit it like everything else is
-> submitted?
+> Add one basic framework firstly and the following patches will
+> add the corresponding implementations, which includes the management of
+> virtualized CPU/memory/interrupt and the emulation of MMIO/IO/PCI access.
+> The device file of /dev/acrn_hsm can be accessed in user-space to
+> communicate with ACRN module.
 > 
-> I don't want to have stuff in arch/x86/ which is used solely by code in
-> staging and the latter is lingering there indefinitely because no one is
-> cleaning it up...
+> Co-developed-by: Jason Chen CJ <jason.cj.chen@intel.com>
+> Signed-off-by: Jason Chen CJ <jason.cj.chen@intel.com>
+> Co-developed-by: Jack Ren <jack.ren@intel.com>
+> Signed-off-by: Jack Ren <jack.ren@intel.com>
+> Co-developed-by: Mingqiang Chi <mingqiang.chi@intel.com>
+> Signed-off-by: Mingqiang Chi <mingqiang.chi@intel.com>
+> Co-developed-by: Liu Shuo <shuo.a.liu@intel.com>
+> Signed-off-by: Liu Shuo <shuo.a.liu@intel.com>
+> Signed-off-by: Zhao Yakui <yakui.zhao@intel.com>
+> ---
+>  drivers/staging/Kconfig         |   2 +
 
-I agree, stuff in drivers/staging/ must be self-contained, with no
-changes outside of the code's subdirectory needed in order for it to
-work.  That way it is trivial for us to delete it when it never gets
-cleaned up :)
+Also, your subject line for all of these patches are wrong, it is not
+drivers/acrn :(
 
-You never say _why_ this should go into drivers/staging/, nor do you
-have a TODO file like all other staging code that explains exactly what
-needs to be done to get it out of there.
+And you forgot to cc: the staging maintainer :(
 
-thanks,
+As I have said with NUMEROUS Intel patches in the past, I now refuse to
+take patches from you all WITHOUT having it signed-off-by someone from
+the Intel "OTC" group (or whatever the Intel Linux group is called these
+days).  They are a resource you can not ignore, and if you do, you just
+end up making the rest of the kernel community grumpy by having us do
+their work for them :(
+
+Please work with them.
 
 greg k-h
 _______________________________________________
