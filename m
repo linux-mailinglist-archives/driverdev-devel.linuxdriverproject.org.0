@@ -1,90 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0812E8F528
-	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Aug 2019 21:56:34 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3D82621F69;
-	Thu, 15 Aug 2019 19:56:32 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ITuSCBiSoNlW; Thu, 15 Aug 2019 19:56:31 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 5E07C2051D;
-	Thu, 15 Aug 2019 19:56:29 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C2F4D1BF2FF
- for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 19:56:27 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 37B5E8F8DF
+	for <lists+driverdev-devel@lfdr.de>; Fri, 16 Aug 2019 04:33:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B942D86E77
- for <devel@linuxdriverproject.org>; Thu, 15 Aug 2019 19:56:27 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7443F8790A;
+	Fri, 16 Aug 2019 02:33:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id j9BvJPyzOrH7; Fri, 16 Aug 2019 02:33:04 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3C12A86E6A;
+	Fri, 16 Aug 2019 02:33:03 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id DFA721BF2BD
+ for <devel@linuxdriverproject.org>; Fri, 16 Aug 2019 02:33:00 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D9124860F8
+ for <devel@linuxdriverproject.org>; Fri, 16 Aug 2019 02:33:00 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lMt2-itzRWrU for <devel@linuxdriverproject.org>;
- Thu, 15 Aug 2019 19:56:26 +0000 (UTC)
+ with ESMTP id EM5eT9aKGEry for <devel@linuxdriverproject.org>;
+ Fri, 16 Aug 2019 02:33:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
- [209.85.221.67])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 6F85986DBD
- for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 19:56:26 +0000 (UTC)
-Received: by mail-wr1-f67.google.com with SMTP id p17so3237464wrf.11
- for <devel@driverdev.osuosl.org>; Thu, 15 Aug 2019 12:56:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=g9gYXoDI8x/e6fYrmXGn/1ayuYBgMKowuhsSXyNfgGk=;
- b=BxFVHZYKa5FJrzI4dPgxhphpWrPJX2/swt830QW256gBUwXxM+yJC5IcwYLsVK7nDX
- YJfjPvRIeaA5/1BBNJXoqsgHTewr/PGetGNR+nY8LcUb106z3sVc1BGnzwC66iGgyvBi
- +mZLEhnELdlHg5W9w2aWb5ElMS7FgSEkhszGxlzux9iKt0MowKuNOJLEMUsF+38EitOx
- aWGA01aulScsS+DFbHrtKj7iyTuIPYhoHtdzLh8PvOBthQUYT/SsM7uXPDDj4Q1D9eSV
- 8Sy3e80DmLJG96aLV8uckZ39ffojhwRHHccpX8EVLTaFDo7W+D2mPyxmub0qfUW0foGm
- Ocvg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=g9gYXoDI8x/e6fYrmXGn/1ayuYBgMKowuhsSXyNfgGk=;
- b=jZQJLAP3bzQ7J0j9zCgHEW3UG8ugm3JmDDUHNrczmKkH6kEy3/1xGGjmsHiuzbqXfc
- 7mqyL4D71oVYcF95mXXW+UN8+Hp/3ioFHGBCiHQlAmjvhBRVP3Sn22oOTcFL3sUFymmh
- 2vD8DJX9Q4P8wBEkcGkCZucM0lFRCCja0ilMU2sLjADUCwyJ3Y/W8SCMOaD+Y+9pPohW
- 03UfdN+ZhQV46vxWP41iaohzdGOhKO331QB/9VovD+JddWKs8JN32RiO2usP2vD9qzif
- P2S0Vvz2EO5XBsVCvag8kw5iLrkNZCvWPcafX8BbuE0JTTmjYkvWcjxUuHAZAfMbA/el
- U7tw==
-X-Gm-Message-State: APjAAAWIlCdExGpsLKa0YIqvEkoghX+TA7GVw176p3HTDOXroQ/GxU9o
- fiWoeG+7bdd1/osyFQq6cfc=
-X-Google-Smtp-Source: APXvYqxCRww3HZkI3tRakEQwmbHT9qSGZgIG7df34SLn3B0yW2ltqN9deIrgqnjQ87uU/8wJDAOtvQ==
-X-Received: by 2002:adf:ffc2:: with SMTP id x2mr3219310wrs.338.1565898984599; 
- Thu, 15 Aug 2019 12:56:24 -0700 (PDT)
-Received: from [172.30.88.191] (sjewanfw1-nat.mentorg.com. [139.181.7.34])
- by smtp.gmail.com with ESMTPSA id h2sm1762739wmb.28.2019.08.15.12.56.17
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 15 Aug 2019 12:56:23 -0700 (PDT)
-Subject: Re: [PATCH 04/22] media: Move v4l2_fwnode_parse_link from v4l2 to
- driver base
-To: Russell King - ARM Linux admin <linux@armlinux.org.uk>
-References: <20190805233505.21167-1-slongerbeam@gmail.com>
- <20190805233505.21167-5-slongerbeam@gmail.com>
- <CAHp75VcOh8bOf_s6t0ehwGtcYn64QFGj303SVvpHrztEOhTRgg@mail.gmail.com>
- <4750b347-b421-6569-600f-0ced8406460e@gmail.com>
- <20190814103054.GI13294@shell.armlinux.org.uk>
- <e0a19469-af9d-d9de-499f-4ffbf04542b3@gmail.com>
- <20190814220437.GJ13294@shell.armlinux.org.uk>
- <1842bf8f-4f97-6294-41db-74f9f8e2befd@gmail.com>
- <20190814231509.GK13294@shell.armlinux.org.uk>
-From: Steve Longerbeam <slongerbeam@gmail.com>
-Message-ID: <9b9ca684-9309-cadd-2e58-9ae73162a807@gmail.com>
-Date: Thu, 15 Aug 2019 12:56:15 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
-In-Reply-To: <20190814231509.GK13294@shell.armlinux.org.uk>
-Content-Language: en-US
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1837B860C1
+ for <devel@driverdev.osuosl.org>; Fri, 16 Aug 2019 02:33:00 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 15 Aug 2019 19:32:59 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,391,1559545200"; d="scan'208";a="194894466"
+Received: from genxtest-ykzhao.sh.intel.com ([10.239.143.71])
+ by fmsmga001.fm.intel.com with ESMTP; 15 Aug 2019 19:32:58 -0700
+From: Zhao Yakui <yakui.zhao@intel.com>
+To: x86@kernel.org, linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org
+Subject: [RFC PATCH 00/15] acrn: add the ACRN driver module
+Date: Fri, 16 Aug 2019 10:25:41 +0800
+Message-Id: <1565922356-4488-1-git-send-email-yakui.zhao@intel.com>
+X-Mailer: git-send-email 2.7.4
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,115 +58,91 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Heikki Krogerus <heikki.krogerus@linux.intel.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Shawn Guo <shawnguo@kernel.org>,
- "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Michal Simek <michal.simek@xilinx.com>,
- "open list:ACPI" <linux-acpi@vger.kernel.org>,
- Andy Shevchenko <andy.shevchenko@gmail.com>,
- NXP Linux Team <linux-imx@nxp.com>, Len Brown <lenb@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>,
- Thomas Gleixner <tglx@linutronix.de>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- "moderated list:ARM/ZYNQ ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>,
- Hyun Kwon <hyun.kwon@xilinx.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- open list <linux-kernel@vger.kernel.org>,
- Jacopo Mondi <jacopo+renesas@jmondi.org>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- Enrico Weigelt <info@metux.net>
+Cc: Zhao Yakui <yakui.zhao@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+ACRN is a flexible, lightweight reference hypervisor, built with real-time
+and safety-criticality in mind, optimized to streamline embedded development
+through an open source platform. It is built for embedded IOT with small
+footprint and real-time features. More details can be found
+in https://projectacrn.org/
+
+This is the patch set that add the ACRN driver module on ACRN guest, which
+acts as the router to communciate with ACRN hypervisor.
+The user-space applications can use the provided ACRN ioctls to
+interact with ACRN hypervisor through different hypercalls. After the ACRN
+module is loaded, the device file of /dev/acrn_hsm can be accessed in
+user-space. It includes the management of virtualized CPU/memory/
+device/interrupt/MMIO emulation for other ACRN guest. 
+ 
+The first three patches are the changes under x86/acrn, which adds the
+required APIs for the driver and reports the X2APIC caps. 
+The remaining patches add the ACRN driver module, which accepts the ioctl
+from user-space and then communicate with the low-level ACRN hypervisor
+by using hypercall.
 
 
-On 8/14/19 4:15 PM, Russell King - ARM Linux admin wrote:
-> On Wed, Aug 14, 2019 at 04:00:30PM -0700, Steve Longerbeam wrote:
->>
->> On 8/14/19 3:04 PM, Russell King - ARM Linux admin wrote:
->>> On Wed, Aug 14, 2019 at 12:04:41PM -0700, Steve Longerbeam wrote:
->>>> On 8/14/19 3:30 AM, Russell King - ARM Linux admin wrote:
->>>>> On Tue, Aug 06, 2019 at 09:53:41AM -0700, Steve Longerbeam wrote:
->>>>>> The full patchset doesn't seem to be up yet, but see [1] for the cover
->>>>>> letter.
->>>>> Was the entire series copied to the mailing lists, or just selected
->>>>> patches?  I only saw 4, 9, 11 and 13-22 via lakml.
->>>> The whole series was posted to the linux-media ML, see [1]. At the time,
->>>> none of the linux-media ML archives had the whole series.
->>>>
->>>>> In the absence of the other patches, will this solve imx-media binding
->>>>> the internal subdevs of sensor devices to the CSI2 interface?
->>>> "internal subdevs of sensor devices" ?? That doesn't make any sense.
->>> Sorry, but it makes complete sense when you consider that sensor
->>> devices may have more than one subdev, but there should be only one
->>> that is the "output" to whatever the camera is attached to.  The
->>> other subdevs are internal to the sensor.
->> Ah, thanks for the clarification. Yes, by "internal subdevs" I understand
->> what you mean now. The adv748x and smiapp are examples.
->>
->>> subdevs are not purely the remit of SoC drivers.
->> So there is no binding of internal subdevs to the receiver CSI-2. The
->> receiver CSI-2 subdev will create media links to the subdev that has an
->> externally exposed fwnode endpoint that connects with the CSI-2 sink pad.
-> Maybe - with 5.2, I get:
->
-> - entity 15: imx6-mipi-csi2 (5 pads, 6 links)
->               type V4L2 subdev subtype Unknown flags 0
->               device node name /dev/v4l-subdev2
->          pad0: Sink
-> ...
->                  <- "imx219 0-0010":0 []
->                  <- "imx219 pixel 0-0010":0 []
->
-> Adding some debug in gives:
->
-> [   11.963362] imx-media: imx_media_create_of_links() for imx6-mipi-csi2
-> [   11.963396] imx-media: create_of_link(): /soc/aips-bus@2000000/iomuxc-gpr@20e0000/ipu1_csi0_mux
-> [   11.963422] imx-media: create_of_link(): /soc/ipu@2400000
-> [   11.963450] imx-media: create_of_link(): /soc/ipu@2800000
-> [   11.963478] imx-media: create_of_link(): /soc/aips-bus@2000000/iomuxc-gpr@20e0000/ipu2_csi1_mux
-> [   11.963489] imx-media: imx6-mipi-csi2:4 -> ipu2_csi1_mux:0
-> [   11.963522] imx-media: create_of_link(): /soc/aips-bus@2100000/i2c@21a0000/camera@10
-> [   11.963533] imx-media: imx219 0-0010:0 -> imx6-mipi-csi2:0
-> [   11.963549] imx-media: imx_media_create_of_links() for imx219 pixel 0-0010
-> [   11.963577] imx-media: create_of_link(): /soc/aips-bus@2100000/mipi@21dc000
-> [   11.963587] imx-media: imx219 pixel 0-0010:0 -> imx6-mipi-csi2:0
-> [   11.963602] imx-media: imx_media_create_of_links() for imx219 0-0010
->
-> Note that it's not created by imx6-mipi-csi2, but by imx-media delving
-> around in the imx219 subdevs.
->
->  From what I can see, smiapp does the same thing that I do in imx219 -
-> sets the subdev->dev member to point at the struct device, which then
-> means that v4l2_device_register_subdev() will associate the same fwnode
-> with both "imx219 pixel 0-0010" and "imx219 0-0010".
+Zhao Yakui (15):
+  x86/acrn: Report X2APIC for ACRN guest
+  x86/acrn: Add two APIs to add/remove driver-specific upcall ISR handler
+  x86/acrn: Add hypercall for ACRN guest
+  drivers/acrn: add the basic framework of acrn char device driver
+  drivers/acrn: add driver-specific hypercall for ACRN_HSM
+  drivers/acrn: add the support of querying ACRN api version
+  drivers/acrn: add acrn vm/vcpu management for ACRN_HSM char device
+  drivers/acrn: add VM memory management for ACRN char device
+  drivers/acrn: add passthrough device support
+  drivers/acrn: add interrupt injection support
+  drivers/acrn: add the support of handling emulated ioreq
+  drivers/acrn: add driver-specific IRQ handle to dispatch IO_REQ request
+  drivers/acrn: add service to obtain Power data transition
+  drivers/acrn: add the support of irqfd and eventfd
+  drivers/acrn: add the support of offline SOS cpu
 
-Ok, understood.
+ arch/x86/include/asm/acrn.h               |  57 ++
+ arch/x86/kernel/cpu/acrn.c                |  20 +-
+ drivers/staging/Kconfig                   |   2 +
+ drivers/staging/Makefile                  |   1 +
+ drivers/staging/acrn/Kconfig              |  18 +
+ drivers/staging/acrn/Makefile             |   9 +
+ drivers/staging/acrn/acrn_dev.c           | 727 +++++++++++++++++++++++
+ drivers/staging/acrn/acrn_drv_internal.h  | 186 ++++++
+ drivers/staging/acrn/acrn_hv_defs.h       |  65 +++
+ drivers/staging/acrn/acrn_hypercall.c     | 136 +++++
+ drivers/staging/acrn/acrn_hypercall.h     | 132 +++++
+ drivers/staging/acrn/acrn_ioeventfd.c     | 407 +++++++++++++
+ drivers/staging/acrn/acrn_ioreq.c         | 937 ++++++++++++++++++++++++++++++
+ drivers/staging/acrn/acrn_irqfd.c         | 339 +++++++++++
+ drivers/staging/acrn/acrn_mm.c            | 227 ++++++++
+ drivers/staging/acrn/acrn_mm_hugetlb.c    | 281 +++++++++
+ drivers/staging/acrn/acrn_vm_mngt.c       | 116 ++++
+ include/linux/acrn/acrn_drv.h             | 200 +++++++
+ include/uapi/linux/acrn/acrn_common_def.h | 201 +++++++
+ include/uapi/linux/acrn/acrn_ioctl_defs.h | 345 +++++++++++
+ 20 files changed, 4400 insertions(+), 6 deletions(-)
+ create mode 100644 drivers/staging/acrn/Kconfig
+ create mode 100644 drivers/staging/acrn/Makefile
+ create mode 100644 drivers/staging/acrn/acrn_dev.c
+ create mode 100644 drivers/staging/acrn/acrn_drv_internal.h
+ create mode 100644 drivers/staging/acrn/acrn_hv_defs.h
+ create mode 100644 drivers/staging/acrn/acrn_hypercall.c
+ create mode 100644 drivers/staging/acrn/acrn_hypercall.h
+ create mode 100644 drivers/staging/acrn/acrn_ioeventfd.c
+ create mode 100644 drivers/staging/acrn/acrn_ioreq.c
+ create mode 100644 drivers/staging/acrn/acrn_irqfd.c
+ create mode 100644 drivers/staging/acrn/acrn_mm.c
+ create mode 100644 drivers/staging/acrn/acrn_mm_hugetlb.c
+ create mode 100644 drivers/staging/acrn/acrn_vm_mngt.c
+ create mode 100644 include/linux/acrn/acrn_drv.h
+ create mode 100644 include/uapi/linux/acrn/acrn_common_def.h
+ create mode 100644 include/uapi/linux/acrn/acrn_ioctl_defs.h
 
-I realize imx_media_create_of_link() is a bit intrusive, and that's one 
-of the things I'm trying to get rid of in this patchset. Unfortunately 
-it's there for a reason which is described in patch 0021. But to explain 
-here, the imx6-mipi-csi2 receiver outputs its four virtual channels on 
-four separate source pads, and those connect to four different 
-subdevices (video mux's and CSI's), and the problem is that only the 
-first subdev that adds imx6-mipi-csi2 to its notifier asd list will get 
-a notifier bind() callback (where links can be created to 
-imx6-mipi-csi2) -- the other subdevs don't contain it in their asd lists 
-so they never create the links to imx6-mipi-csi2. So until the 
-requirement in v4l2-async that no notifiers can contain the same asd in 
-its list is relaxed, this function will have to remain, but I can make 
-it less intrusive (only create the missing links from imx6-mipi-csi2). 
-I'm not able to find a cleaner workaround at the moment.
-
-Steve
+-- 
+2.7.4
 
 _______________________________________________
 devel mailing list
