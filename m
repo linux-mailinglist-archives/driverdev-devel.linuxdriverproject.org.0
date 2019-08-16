@@ -1,50 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42C448F8E4
-	for <lists+driverdev-devel@lfdr.de>; Fri, 16 Aug 2019 04:33:12 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D8BE28F8ED
+	for <lists+driverdev-devel@lfdr.de>; Fri, 16 Aug 2019 04:33:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E88FE8615E;
-	Fri, 16 Aug 2019 02:33:10 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 89200230FE;
+	Fri, 16 Aug 2019 02:33:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mkVN22zLx9zV; Fri, 16 Aug 2019 02:33:09 +0000 (UTC)
+	with ESMTP id 0RY3JLVoSzUr; Fri, 16 Aug 2019 02:33:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8357B8612E;
-	Fri, 16 Aug 2019 02:33:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5FFFF23039;
+	Fri, 16 Aug 2019 02:33:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0607E1BF2BD
- for <devel@linuxdriverproject.org>; Fri, 16 Aug 2019 02:33:04 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 815641BF2BD
+ for <devel@linuxdriverproject.org>; Fri, 16 Aug 2019 02:33:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id F287E860F8
- for <devel@linuxdriverproject.org>; Fri, 16 Aug 2019 02:33:03 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7E582860C1
+ for <devel@linuxdriverproject.org>; Fri, 16 Aug 2019 02:33:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ActQP3XJBV52 for <devel@linuxdriverproject.org>;
- Fri, 16 Aug 2019 02:33:03 +0000 (UTC)
+ with ESMTP id IhO2kWE8vNNI for <devel@linuxdriverproject.org>;
+ Fri, 16 Aug 2019 02:33:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7427186101
- for <devel@driverdev.osuosl.org>; Fri, 16 Aug 2019 02:33:03 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B162886191
+ for <devel@driverdev.osuosl.org>; Fri, 16 Aug 2019 02:33:05 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga001.fm.intel.com ([10.253.24.23])
  by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 15 Aug 2019 19:33:03 -0700
+ 15 Aug 2019 19:33:05 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,391,1559545200"; d="scan'208";a="194894481"
+X-IronPort-AV: E=Sophos;i="5.64,391,1559545200"; d="scan'208";a="194894485"
 Received: from genxtest-ykzhao.sh.intel.com ([10.239.143.71])
- by fmsmga001.fm.intel.com with ESMTP; 15 Aug 2019 19:33:02 -0700
+ by fmsmga001.fm.intel.com with ESMTP; 15 Aug 2019 19:33:03 -0700
 From: Zhao Yakui <yakui.zhao@intel.com>
 To: x86@kernel.org, linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org
-Subject: [RFC PATCH 03/15] x86/acrn: Add hypercall for ACRN guest
-Date: Fri, 16 Aug 2019 10:25:44 +0800
-Message-Id: <1565922356-4488-4-git-send-email-yakui.zhao@intel.com>
+Subject: [RFC PATCH 04/15] drivers/acrn: add the basic framework of acrn char
+ device driver
+Date: Fri, 16 Aug 2019 10:25:45 +0800
+Message-Id: <1565922356-4488-5-git-send-email-yakui.zhao@intel.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1565922356-4488-1-git-send-email-yakui.zhao@intel.com>
 References: <1565922356-4488-1-git-send-email-yakui.zhao@intel.com>
@@ -60,90 +61,229 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Zhao Yakui <yakui.zhao@intel.com>, Jason Chen CJ <jason.cj.chen@intel.com>
+Cc: Zhao Yakui <yakui.zhao@intel.com>, Mingqiang Chi <mingqiang.chi@intel.com>,
+ Jack Ren <jack.ren@intel.com>, Jason Chen CJ <jason.cj.chen@intel.com>,
+ Liu Shuo <shuo.a.liu@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-When ACRN hypervisor is detected, the hypercall is needed so that the
-ACRN guest can query/config some settings. For example: it can be used
-to query the resources in hypervisor and manage the CPU/memory/device/
-interrupt for guest operating system.
+ACRN hypervisor service module is the important middle layer that allows
+the Linux kernel to communicate with the ACRN hypervisor. It includes
+the management of virtualized CPU/memory/device/interrupt for other ACRN
+guest. The user-space applications can use the provided ACRN ioctls to
+interact with ACRN hypervisor through different hypercalls.
 
-On x86 it is implemented with the VMCALL instruction.
+Add one basic framework firstly and the following patches will
+add the corresponding implementations, which includes the management of
+virtualized CPU/memory/interrupt and the emulation of MMIO/IO/PCI access.
+The device file of /dev/acrn_hsm can be accessed in user-space to
+communicate with ACRN module.
 
 Co-developed-by: Jason Chen CJ <jason.cj.chen@intel.com>
 Signed-off-by: Jason Chen CJ <jason.cj.chen@intel.com>
+Co-developed-by: Jack Ren <jack.ren@intel.com>
+Signed-off-by: Jack Ren <jack.ren@intel.com>
+Co-developed-by: Mingqiang Chi <mingqiang.chi@intel.com>
+Signed-off-by: Mingqiang Chi <mingqiang.chi@intel.com>
+Co-developed-by: Liu Shuo <shuo.a.liu@intel.com>
+Signed-off-by: Liu Shuo <shuo.a.liu@intel.com>
 Signed-off-by: Zhao Yakui <yakui.zhao@intel.com>
 ---
- arch/x86/include/asm/acrn.h | 54 +++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 54 insertions(+)
+ drivers/staging/Kconfig         |   2 +
+ drivers/staging/Makefile        |   1 +
+ drivers/staging/acrn/Kconfig    |  18 ++++++
+ drivers/staging/acrn/Makefile   |   2 +
+ drivers/staging/acrn/acrn_dev.c | 123 ++++++++++++++++++++++++++++++++++++++++
+ 5 files changed, 146 insertions(+)
+ create mode 100644 drivers/staging/acrn/Kconfig
+ create mode 100644 drivers/staging/acrn/Makefile
+ create mode 100644 drivers/staging/acrn/acrn_dev.c
 
-diff --git a/arch/x86/include/asm/acrn.h b/arch/x86/include/asm/acrn.h
-index 857e6244..ab97c3d 100644
---- a/arch/x86/include/asm/acrn.h
-+++ b/arch/x86/include/asm/acrn.h
-@@ -11,4 +11,58 @@ extern void acrn_hv_vector_handler(struct pt_regs *regs);
+diff --git a/drivers/staging/Kconfig b/drivers/staging/Kconfig
+index 7c96a01..0766de5 100644
+--- a/drivers/staging/Kconfig
++++ b/drivers/staging/Kconfig
+@@ -120,4 +120,6 @@ source "drivers/staging/kpc2000/Kconfig"
  
- extern void acrn_setup_intr_irq(void (*handler)(void));
- extern void acrn_remove_intr_irq(void);
+ source "drivers/staging/isdn/Kconfig"
+ 
++source "drivers/staging/acrn/Kconfig"
 +
+ endif # STAGING
+diff --git a/drivers/staging/Makefile b/drivers/staging/Makefile
+index fcaac96..f927eb0 100644
+--- a/drivers/staging/Makefile
++++ b/drivers/staging/Makefile
+@@ -49,4 +49,5 @@ obj-$(CONFIG_XIL_AXIS_FIFO)	+= axis-fifo/
+ obj-$(CONFIG_EROFS_FS)		+= erofs/
+ obj-$(CONFIG_FIELDBUS_DEV)     += fieldbus/
+ obj-$(CONFIG_KPC2000)		+= kpc2000/
++obj-$(CONFIG_ACRN_HSM)		+= acrn/
+ obj-$(CONFIG_ISDN_CAPI)		+= isdn/
+diff --git a/drivers/staging/acrn/Kconfig b/drivers/staging/acrn/Kconfig
+new file mode 100644
+index 0000000..a047d5f
+--- /dev/null
++++ b/drivers/staging/acrn/Kconfig
+@@ -0,0 +1,18 @@
++config ACRN_HSM
++	tristate "Intel ACRN Hypervisor service Module"
++	depends on ACRN_GUEST
++	depends on HUGETLBFS
++	depends on PCI_MSI
++	default n
++	help
++	  This is the Hypervisor service Module (ACRN.ko) for ACRN guest
++	  to communicate with ACRN hypervisor. It includes the management
++	  of virtualized CPU/memory/device/interrupt for other ACRN guest.
++
++	  It is required if it needs to manage other ACRN guests. User-guest
++	  OS does not need it.
++
++	  If unsure, say N.
++	  If you wish to work on this driver, to help improve it, or to
++	  report problems you have with them, please use the
++	  acrn-dev@lists.projectacrn.org mailing list.
+diff --git a/drivers/staging/acrn/Makefile b/drivers/staging/acrn/Makefile
+new file mode 100644
+index 0000000..48fca38
+--- /dev/null
++++ b/drivers/staging/acrn/Makefile
+@@ -0,0 +1,2 @@
++obj-$(CONFIG_ACRN_HSM)	:= acrn.o
++acrn-y := acrn_dev.o
+diff --git a/drivers/staging/acrn/acrn_dev.c b/drivers/staging/acrn/acrn_dev.c
+new file mode 100644
+index 0000000..55a7612
+--- /dev/null
++++ b/drivers/staging/acrn/acrn_dev.c
+@@ -0,0 +1,123 @@
++// SPDX-License-Identifier: GPL-2.0+ OR BSD-3-Clause
 +/*
-+ * Hypercalls for ACRN guest
++ * ACRN hyperviosr service module (HSM): main framework
 + *
-+ * Hypercall number is passed in R8 register.
-+ * Up to 2 arguments are passed in RDI, RSI.
-+ * Return value will be placed in RAX.
++ * Copyright (C) 2019 Intel Corporation. All rights reserved.
++ *
++ * Jason Chen CJ <jason.cj.chen@intel.com>
++ * Zhao Yakui <yakui.zhao@intel.com>
++ * Jack Ren <jack.ren@intel.com>
++ * Mingqiang Chi <mingqiang.chi@intel.com>
++ * Liu Shuo <shuo.a.liu@intel.com>
++ *
 + */
-+static inline long acrn_hypercall0(unsigned long hcall_id)
++
++#include <linux/bits.h>
++#include <linux/device.h>
++#include <linux/fs.h>
++#include <linux/kdev_t.h>
++#include <linux/kernel.h>
++#include <linux/init.h>
++#include <linux/module.h>
++#include <asm/acrn.h>
++#include <asm/hypervisor.h>
++
++#define  DEVICE_NAME "acrn_hsm"
++#define  CLASS_NAME  "acrn"
++
++static int	acrn_hsm_inited;
++static int	major;
++static struct class	*acrn_class;
++static struct device	*acrn_device;
++
++static
++int acrn_dev_open(struct inode *inodep, struct file *filep)
 +{
-+	long result;
++	pr_info("%s: opening device node\n", __func__);
 +
-+	/* the hypercall is implemented with the VMCALL instruction.
-+	 * volatile qualifier is added to avoid that it is dropped
-+	 * because of compiler optimization.
-+	 */
-+	asm volatile("movq %[hcall_id], %%r8\n\t"
-+		     "vmcall\n\t"
-+		     : "=a" (result)
-+		     : [hcall_id] "g" (hcall_id)
-+		     : "r8");
-+
-+	return result;
++	return 0;
 +}
 +
-+static inline long acrn_hypercall1(unsigned long hcall_id,
-+				   unsigned long param1)
++static
++long acrn_dev_ioctl(struct file *filep,
++		    unsigned int ioctl_num, unsigned long ioctl_param)
 +{
-+	long result;
++	long ret = 0;
 +
-+	asm volatile("movq %[hcall_id], %%r8\n\t"
-+		     "vmcall\n\t"
-+		     : "=a" (result)
-+		     : [hcall_id] "g" (hcall_id), "D" (param1)
-+		     : "r8");
-+
-+	return result;
++	return ret;
 +}
 +
-+static inline long acrn_hypercall2(unsigned long hcall_id,
-+				   unsigned long param1,
-+				   unsigned long param2)
++static int acrn_dev_release(struct inode *inodep, struct file *filep)
 +{
-+	long result;
-+
-+	asm volatile("movq %[hcall_id], %%r8\n\t"
-+		     "vmcall\n\t"
-+		     : "=a" (result)
-+		     : [hcall_id] "g" (hcall_id), "D" (param1), "S" (param2)
-+		     : "r8");
-+
-+	return result;
++	return 0;
 +}
 +
- #endif /* _ASM_X86_ACRN_H */
++static const struct file_operations fops = {
++	.open = acrn_dev_open,
++	.release = acrn_dev_release,
++	.unlocked_ioctl = acrn_dev_ioctl,
++};
++
++#define EAX_PRIVILEGE_VM	BIT(0)
++
++static int __init acrn_init(void)
++{
++	acrn_hsm_inited = 0;
++	if (x86_hyper_type != X86_HYPER_ACRN)
++		return -ENODEV;
++
++	if (!(cpuid_eax(0x40000001) & EAX_PRIVILEGE_VM))
++		return -EPERM;
++
++	/* Try to dynamically allocate a major number for the device */
++	major = register_chrdev(0, DEVICE_NAME, &fops);
++	if (major < 0) {
++		pr_warn("acrn: failed to register a major number\n");
++		return major;
++	}
++	pr_info("acrn: registered correctly with major number %d\n", major);
++
++	/* Register the device class */
++	acrn_class = class_create(THIS_MODULE, CLASS_NAME);
++	if (IS_ERR(acrn_class)) {
++		unregister_chrdev(major, DEVICE_NAME);
++		pr_warn("acrn: failed to register device class\n");
++		return PTR_ERR(acrn_class);
++	}
++
++	/* Register the device driver */
++	acrn_device = device_create(acrn_class, NULL, MKDEV(major, 0),
++				    NULL, DEVICE_NAME);
++	if (IS_ERR(acrn_device)) {
++		class_destroy(acrn_class);
++		unregister_chrdev(major, DEVICE_NAME);
++		pr_warn("acrn: failed to create the device\n");
++		return PTR_ERR(acrn_device);
++	}
++
++	pr_info("acrn: ACRN Hypervisor service module initialized\n");
++	acrn_hsm_inited = 1;
++	return 0;
++}
++
++static void __exit acrn_exit(void)
++{
++	if (!acrn_hsm_inited)
++		return;
++
++	device_destroy(acrn_class, MKDEV(major, 0));
++	class_unregister(acrn_class);
++	class_destroy(acrn_class);
++	unregister_chrdev(major, DEVICE_NAME);
++	pr_info("acrn: exit\n");
++}
++
++module_init(acrn_init);
++module_exit(acrn_exit);
++
++MODULE_AUTHOR("Intel");
++MODULE_LICENSE("GPL");
++MODULE_DESCRIPTION("This is a char device driver, acts as a route\n"
++		"responsible for transferring IO requsts from other modules\n"
++		"either in user-space or in kernel to and from ACRN hypervisor\n");
++MODULE_VERSION("0.1");
 -- 
 2.7.4
 
