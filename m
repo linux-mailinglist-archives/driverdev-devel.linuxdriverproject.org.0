@@ -2,71 +2,91 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A40BE8FDD2
-	for <lists+driverdev-devel@lfdr.de>; Fri, 16 Aug 2019 10:31:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 751BD900B7
+	for <lists+driverdev-devel@lfdr.de>; Fri, 16 Aug 2019 13:28:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A4E2E231A1;
-	Fri, 16 Aug 2019 08:31:39 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BC21223223;
+	Fri, 16 Aug 2019 11:28:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2OX783NJyXEK; Fri, 16 Aug 2019 08:31:38 +0000 (UTC)
+	with ESMTP id C2XB7VLv6f+2; Fri, 16 Aug 2019 11:28:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0301823119;
-	Fri, 16 Aug 2019 08:31:36 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 566E523236;
+	Fri, 16 Aug 2019 11:28:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id F222B1BF333
- for <devel@linuxdriverproject.org>; Fri, 16 Aug 2019 08:31:33 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8009E1BF325
+ for <devel@linuxdriverproject.org>; Fri, 16 Aug 2019 11:28:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id EED0A85F58
- for <devel@linuxdriverproject.org>; Fri, 16 Aug 2019 08:31:33 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7CCC286A61
+ for <devel@linuxdriverproject.org>; Fri, 16 Aug 2019 11:28:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id D3OMsRZdQk5K for <devel@linuxdriverproject.org>;
- Fri, 16 Aug 2019 08:31:33 +0000 (UTC)
+ with ESMTP id NgO0FQHGN3eU for <devel@linuxdriverproject.org>;
+ Fri, 16 Aug 2019 11:28:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
- [209.85.221.67])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 14A4385E43
- for <devel@driverdev.osuosl.org>; Fri, 16 Aug 2019 08:31:33 +0000 (UTC)
-Received: by mail-wr1-f67.google.com with SMTP id y8so741915wrn.10
- for <devel@driverdev.osuosl.org>; Fri, 16 Aug 2019 01:31:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=nMteWjiol09LnNTGAtg+qqwxoUC+aePsLIm1kIpTrJs=;
- b=oCj+GOx8zj3DZDR8aTDgqrL6lshNRYHcEJ9xc7u/k5AAXmEozG5CiyjIcN62uoR4yk
- /dZXF2qmsL6jlDXs1GlkR2A/kSPm/FFMDejUbnIKqNjQtHvOcl4zAg6VDFE80jvid6MD
- 52rJCbC9f15qQ3tWLYI9mE+Qjr2VSBI/Xc+5cXxFil0vTyG3GnDha7zPP8OJddjUr/Hq
- kon3JPJo1IcTbdJL2KaVY8vLnRPATMCLI5ZJACiqczFx0h7wXsZNpPh56pMC+YTAO9cW
- 6XPg2vjaqtITAY9hZVyE6bhzL/BLKppzKSylT9ZNyy0Rn17zbVd0dOqMqj5AMFhpoO7L
- oyPQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=nMteWjiol09LnNTGAtg+qqwxoUC+aePsLIm1kIpTrJs=;
- b=RNFneYxut/s08INZtHrikmo6dhwhzWaxTMCT7UTqHT8qRQZqiln/KujchrDa7djv+V
- JZBuVFpGbo4WUmnizKXfm946hW0ftcT4dDpo23S4P3NhRoGn717rnVMV/qINvzWTIegA
- WbKjG0boR1MEU7ltxhjvgQibaF+O97sl4v539wWTWH1aQgp4Gowc0ppieoZxhyMSyMx0
- YqKutaZAm8cxUEOYPWCCg2mZ3rKpJ5wUyxCa57XbokiMaWfshYWv/VE8oDx4Bc91lN4K
- Y6sygz01dgebHFPd8i3RLp+ZHdni+WR6TqZ2jRJXqD53wm6HRwEaG2mFQvDO7jeZgEAz
- wRJA==
-X-Gm-Message-State: APjAAAXuaYdd9+Ca9rdLPafb8I/6+FvYzl5H5GnSOx1V/xM/hq8+e9LP
- soWVXfK4KRVzg0ay6mKOThgoeeZXcFGaNkRKKH+Mww==
-X-Google-Smtp-Source: APXvYqwh5XDkO7F2xERL7f+E+ehgrXGdbgDaiyV9najpnyy1GfPAMnxMomE45gSsbegm0OpSlpcxM0Q0s5kDUvwvH7k=
-X-Received: by 2002:adf:e8c2:: with SMTP id k2mr9106596wrn.198.1565944291339; 
- Fri, 16 Aug 2019 01:31:31 -0700 (PDT)
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 096AD85CA3
+ for <devel@driverdev.osuosl.org>; Fri, 16 Aug 2019 11:28:33 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x7GBNw7F109538;
+ Fri, 16 Aug 2019 11:28:33 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=SqXeneh5bcubBR+QyitTTb1yLD5Uh3NKY8dvKiiRDp4=;
+ b=dxczLG/XYCt7XkjLc8FaO8r8HZR+RKxUxjj544ZKc2fSI5vu/ItVvpvD5TBDlNxAIlpu
+ WF0tGkD9sAf+dTYi4gxExKwPx/kDA8j9ASZgBrM1lI+E3BZuNRSD6bNbb496qdeDkdBN
+ 12xYkwU6FeviXs1ie4GvxUPEajafJ235BAhO3KbW7wnjX1QT4XPwpQLZbWnTTlW/6OED
+ VZSbqP8LKE5XjScbPDPTyhWkHiKhDuQzuuWq2Vw9m6L9l75+RiAakgs9YD//gGjgZkf4
+ LZ3Nb95OJrzmruUNrr+DjKcGgKZ7CyWyCOgmHy2b/aIbXbJMOlXWdX88cyAujYei/NRD lA== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by userp2120.oracle.com with ESMTP id 2u9pjqyveh-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 16 Aug 2019 11:28:32 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x7GBS9Pm154035;
+ Fri, 16 Aug 2019 11:28:32 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by aserp3020.oracle.com with ESMTP id 2udscpb8gq-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 16 Aug 2019 11:28:32 +0000
+Received: from abhmp0018.oracle.com (abhmp0018.oracle.com [141.146.116.24])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x7GBSVFw009073;
+ Fri, 16 Aug 2019 11:28:31 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Fri, 16 Aug 2019 04:28:30 -0700
+Date: Fri, 16 Aug 2019 14:28:20 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Zhao Yakui <yakui.zhao@intel.com>
+Subject: Re: [RFC PATCH 04/15] drivers/acrn: add the basic framework of acrn
+ char device driver
+Message-ID: <20190816112820.GV1974@kadam>
+References: <1565922356-4488-1-git-send-email-yakui.zhao@intel.com>
+ <1565922356-4488-5-git-send-email-yakui.zhao@intel.com>
 MIME-Version: 1.0
-References: <20190816065936.12214-1-contact@christina-quast.de>
-In-Reply-To: <20190816065936.12214-1-contact@christina-quast.de>
-From: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-Date: Fri, 16 Aug 2019 11:31:23 +0300
-Message-ID: <CAKv+Gu-qbwCJzH2TMpe5hEh8UAO3XQ66Zzf9Nx4UqBXd3Lr79w@mail.gmail.com>
-Subject: Re: [PATCH 0/2] Use ccm(aes) aead transform in staging drivers
-To: Christina Quast <contact@christina-quast.de>
+Content-Disposition: inline
+In-Reply-To: <1565922356-4488-5-git-send-email-yakui.zhao@intel.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9350
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1906280000 definitions=main-1908160121
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9350
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1906280000
+ definitions=main-1908160120
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,51 +99,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- Herbert Xu <herbert@gondor.apana.org.au>, Eric Biggers <ebiggers@google.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- "<linux-wireless@vger.kernel.org>" <linux-wireless@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Anushka Shukla <anushkacharu9@gmail.com>, Zach Turner <turnerzdp@gmail.com>,
- "open list:HARDWARE RANDOM NUMBER GENERATOR CORE"
- <linux-crypto@vger.kernel.org>,
- Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>,
- Johannes Berg <johannes@sipsolutions.net>,
- "David S. Miller" <davem@davemloft.net>
+Cc: devel@driverdev.osuosl.org, x86@kernel.org, linux-kernel@vger.kernel.org,
+ Jason Chen CJ <jason.cj.chen@intel.com>, Jack Ren <jack.ren@intel.com>,
+ Liu Shuo <shuo.a.liu@intel.com>, Mingqiang Chi <mingqiang.chi@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, 16 Aug 2019 at 10:00, Christina Quast
-<contact@christina-quast.de> wrote:
->
-> Use ccm(aes) aead transform instead of invoking the AES block cipher
-> block by block.
->
+On Fri, Aug 16, 2019 at 10:25:45AM +0800, Zhao Yakui wrote:
+> +static
+> +int acrn_dev_open(struct inode *inodep, struct file *filep)
+> +{
+> +	pr_info("%s: opening device node\n", __func__);
+> +
+> +	return 0;
+> +}
+> +
+> +static
+> +long acrn_dev_ioctl(struct file *filep,
+> +		    unsigned int ioctl_num, unsigned long ioctl_param)
+> +{
+> +	long ret = 0;
+> +
+> +	return ret;
 
-Thanks! This eliminates another two users of the bare cipher API,
-which is not the right abstraction for drivers to use.
 
-Reviewed-by: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+This module is mostly stubs and debugging printks...  :(
 
-I don't have the hardware, so I can't test this.
+I looked ahead in the patch series to see if we do something with the
+stubs later on and it turns out we do.  Fold the two patches together so
+that we don't have to review patches like this one.  Each patch should
+do "one thing" which makes sense and can be reviewed independently.
 
-> Christina Quast (2):
->   staging: rtl8192u: ieee80211: ieee80211_crypt_ccmp.c: Use crypto API
->     ccm(aes)
->   staging: rtl8192e: rtllib_crypt_ccmp.c: Use crypto API ccm(aes)
->
->  drivers/staging/rtl8192e/Kconfig              |   1 +
->  drivers/staging/rtl8192e/rtllib_crypt_ccmp.c  | 187 ++++++++----------
->  drivers/staging/rtl8192u/Kconfig              |   2 +
->  .../rtl8192u/ieee80211/ieee80211_crypt_ccmp.c | 187 ++++++++----------
->  4 files changed, 159 insertions(+), 218 deletions(-)
->
-> --
-> 2.20.1
->
+regards,
+dan carpenter
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
