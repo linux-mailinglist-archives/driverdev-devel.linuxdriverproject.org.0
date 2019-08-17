@@ -2,82 +2,82 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C4EF6911BB
-	for <lists+driverdev-devel@lfdr.de>; Sat, 17 Aug 2019 17:40:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C6984911C5
+	for <lists+driverdev-devel@lfdr.de>; Sat, 17 Aug 2019 17:45:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2A57E21505;
-	Sat, 17 Aug 2019 15:40:25 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 673522154E;
+	Sat, 17 Aug 2019 15:45:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NjaBiLqtRahc; Sat, 17 Aug 2019 15:40:24 +0000 (UTC)
+	with ESMTP id Den8rQkM6KRw; Sat, 17 Aug 2019 15:45:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E17992152F;
-	Sat, 17 Aug 2019 15:40:21 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 60B732152F;
+	Sat, 17 Aug 2019 15:45:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 741611BF4DD
- for <devel@linuxdriverproject.org>; Sat, 17 Aug 2019 15:40:20 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 873311BF4DD
+ for <devel@linuxdriverproject.org>; Sat, 17 Aug 2019 15:45:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 4FCB28583F
- for <devel@linuxdriverproject.org>; Sat, 17 Aug 2019 15:40:20 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 8412B21505
+ for <devel@linuxdriverproject.org>; Sat, 17 Aug 2019 15:45:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id D0S8zlCFbWAl for <devel@linuxdriverproject.org>;
- Sat, 17 Aug 2019 15:40:19 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.15.18])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 2E1838562D
- for <devel@driverdev.osuosl.org>; Sat, 17 Aug 2019 15:40:18 +0000 (UTC)
+ with ESMTP id ttjdpYQCqcED for <devel@linuxdriverproject.org>;
+ Sat, 17 Aug 2019 15:45:37 +0000 (UTC)
+X-Greylist: delayed 00:05:14 by SQLgrey-1.7.6
+Received: from mout.gmx.net (mout.gmx.net [212.227.15.19])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2C8941FEAB
+ for <devel@driverdev.osuosl.org>; Sat, 17 Aug 2019 15:45:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1566056394;
- bh=AT8tQ8sV2zOi6Dtc/VRg7C7E0nn4hiwSx3ciNzqfz0w=;
+ s=badeba3b8450; t=1566056734;
+ bh=xLEnuBmrR/uFscSY3VPh/qzC4C+JNq9Vyo2I8dKS2YI=;
  h=X-UI-Sender-Class:Subject:To:Cc:References:From:Date:In-Reply-To;
- b=avVszXptm4G/mPAGm2B4LOJZFFvuTZCLjF1eUjNJn8lyOFZUxIRW4B/FhcEGtig4L
- AUbjclSp3MC/ovb3Kkbxbk/dJIcm1s/qqLYJS3hSd+l/CJfZhbf3amk09nN7MU/FUu
- ArjZpjqD0e1DJY4T5dmLrnolBCcWis32mnASaraM=
+ b=ksHPIoC+0DOsEChYMzoMElxBMo3g+fbkWthYQvpfVoU4PEwP86ey/Ywa+bldRZwNf
+ rsvKutUPjPoGcutxqoFB4IQdVvPNm03O8Wg4QbnvETxjZG8+LOhOxKsbJKfeKze6/g
+ zoDAh3f/NEMnC+U/NWiH+EMCt994vh5ol5iCVJ6g=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [192.168.178.38] ([95.90.191.58]) by mail.gmx.com (mrgmx004
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1M59C2-1i06jm1htE-001EXn; Sat, 17
- Aug 2019 17:39:54 +0200
+Received: from [192.168.178.38] ([95.90.191.58]) by mail.gmx.com (mrgmx001
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 0MarNa-1hfoy1225S-00KPLm; Sat, 17
+ Aug 2019 17:40:03 +0200
 Subject: Re: [PATCH v2 4/6] dt: bindings: add mt7621-pll dt binding
  documentation
 To: Chuanhong Guo <gch981213@gmail.com>, Rob Herring <robh@kernel.org>
 References: <20190724022310.28010-1-gch981213@gmail.com>
  <20190724022310.28010-5-gch981213@gmail.com> <20190813155143.GA19830@bogus>
  <CAJsYDVKnf4M8jyVOyotRxs=SsHqjex_q60AwkX=QAPK33ivw-Q@mail.gmail.com>
-From: Oleksij Rempel <fishor@gmx.net>
-Message-ID: <2d48f4a4-7d30-547b-21ee-6aadabe7d7c3@gmx.net>
-Date: Sat, 17 Aug 2019 17:39:52 +0200
+From: Oleksij Rempel <linux@rempel-privat.de>
+Message-ID: <f0743ace-0ca2-82a2-a162-aaa98c8925a8@rempel-privat.de>
+Date: Sat, 17 Aug 2019 17:40:01 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
 In-Reply-To: <CAJsYDVKnf4M8jyVOyotRxs=SsHqjex_q60AwkX=QAPK33ivw-Q@mail.gmail.com>
 Content-Language: en-US
-X-Provags-ID: V03:K1:KUmLKsF+HTyzMx/uyoNKutLyersnTtU0bdigAi87JdxCt+apx0p
- RVLj0qGlC+f5yfR4KdHtu1IM+omrhfvaVwW2MV4hi+r7opWxmVCN64gZ26VXAzcYviGctL3
- FSxjqt1KeAPEmF5+5FZgvYU+qKw6UHq/f5D4zpPwtZMtAomt6s8ew+XBo0O+PSYdk4Xytvy
- DcH09fsacZnm8/qW1JR9g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:PVGbF0GK/B0=:/XleIUlOc/F0S93RM3xKFP
- Yk0/MDhFODIEuiZZcww7NTjHWHwDWdxM8cYONolAPNu0VCPPYdSiJfFCKczG9KSCeCkfTa68e
- BUYzoDm8eGiOO6Qj8llb6jENGpumkN+cpSaAGDyo1UoJRsGvvefcAKrMA9mhZH6z3W5O5oWwR
- En8YCmVkeLvuksHfK5WkRMHmuzZeEY/vuBmXy1nvm4FjyV2f3sixsJR3Ir7eyNsQsaKuHc8tO
- CfzxWR+89ES0BJjwtJXtR2+Ck08q0oHxqgqtdz3fiv8OcwEUqQi9a1UP81ksV35L8LvSxL7s9
- l4Q5lcPrN6cOAdiaHIETHkFnIF1toHQY9LLzx33lqQ5yv6squyKtZ2sQ2yF7oDeAXFrDlbZly
- 9DBMuti1zkraj7yjtq2s0J9DqPzRD098MEIrO9lt9CUyv77dl5G5gzgylUTI5T9rEG4+55Gpg
- 8QUwlTQuWtE7KHnpdPaOyY0UyfPtDYQD/TMUGcO90WrcO0oXUQX6PMx+xP0EfXi9D+g3VDkbX
- 2W+S9U1cj6XhZWCmi5I1xIuQyjald7cvR9+r5+KoLP37BMC8cmwnR89svgYxLhG0kRbhtzWBU
- lVDxZZxLIefBix90CckokM5/X1yTdzobXQn01lJ1Vl+uqmqKAZTK65eK0oTkvGqlfr08bKubZ
- etVKkkBAEPbcJQ6TU1oeQcDD02EP2rOAIETe+dj7Gqf83ysXa8y6h3BA/YOylB3UQLbW8o/gZ
- YCL3COVx1QqOMoaykUsqbIXzSHJnXuTqBZsMuenKCxWbwaHfUskhyuX8vojcfgm4O12zVICC+
- TN6mRdqK9NmqH4ht1qAn3uc1zuKzCHZyK1dhZqdH2Qa+Gq5a9KCpHXtRGdiPXzlPZrFUcLz6n
- o/z2Jq8/hYOB4KZqljfBnvyNQISqVBjRRqStpYAquRyLfnDfrAOG2+U4+npUsJVtDWH6wduXT
- ZKV5mdDQfRl0K9s/u6VibTlEbVwpB59iIaZGG8MlSKhxd5QwPzGgo/BTpbgNFOmUKQ2SjTTZF
- bljFwecu85lqklhtdtyhFFy7zqwfACdZQcgOrx/L6lB2LwWzSHvl/kq3PG2JEyq1SbAHoehon
- OZ7D7OILi5flyJjgqkI+V+jsAqry203cx6fm+Akj3x3ucT6iUDYrtkuYnqORd6kbVOWyUZioz
- iDVMqIWG4cqo+Id6x4MCvLfVfz10fpRj6PYJHUFkzW6vnvQg==
+X-Provags-ID: V03:K1:Y7+/rIX/X/rHWVa8YAjwg6EVopQ5xqOASiWpAFiqfw3VZUxwevS
+ XD/pjP+cds1KG21PWSwAduQgKrD5V5Js/ozzRzBAgpWEUlO2BDFsngZI9AzXfxu3gjMeXu6
+ 2MEa7u3TVzdqM6r8k8MVZKgk2M40uDJeUF3K1jRkrZMw8K7bozhkLHf0AS8PVq1qZpliVJX
+ UayhG5CGqUZKsTzKGJu+Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:T/V7/v9RgfM=:4nhWfYQy9BctBZOQ8DsiJ4
+ sOhem/jfO0bP96vAE2dNi16ntsLYVKqJGoNQnd6tekq3i22aj54vcQHOI9zl3/1t2t9OlaGFz
+ /R6D6vZusmUUoPmND01maQ/lo+xD/e8jU6J/fN5spAcOIcIDPV0cK6qmhHrOJHCYqdbTrT1Eg
+ WPM6abNLqi6sOtFuqpSz1O3VTAbPM3NHPU95W5b58uOb2Rf+8EvezlfBHHz1FIY0mlFMV3KCa
+ IuzyKBkD0WRK04WVnPR1G6O/q6Lc7r9yeGSl1TMZGR6p6skAxnsjlSC7S8Khv+CUAIFhRabTi
+ E5W/zxB4SDzyGNMB7uf2tWddeMNa2XVxmjGj2nc9Cy/jFPcfcRzcGbI831GHTFI/OZ1zrkqfR
+ yQT8YcHjs9ioPM7NAi+kuQbHLgyUHNysIz79kuxh/LsVX2OV80Dp5ySL8raiKeWLPwZ6SrzBO
+ i1NnWZ1ejPS/rxlXEQhWY0LljqIK42EydiITHFP3VbairEqTtT7uD38/jPmM5SCQoMn5agWZ3
+ OCgWfpbcdx4TRpTHW3mL/TbvJsFD3Fc+yye8Rc7z8MFeZkXjZH2zjwF37wucwajlfTdKaoL56
+ dNjtJ1YJa5q/V4yPGzCsJtnwyeYTdnYASPFX+eZrm11zQm8IFpHO0gWGc6ErrQImmUoQCpXuI
+ vqM+yRCQRTFVAufbjtj27MksFYhNhZqQbkzz4f/QEcPXfOCAvplEu8/n7qejWPn+mNKvoZ5Y6
+ txYKi9753IIVRXQgYxeY7uXa8AntH7ewu3BV2o81EZw4Ifly1Qmfj5xQdERCICH6ibmkhW7UY
+ ivwScixJWPr21hw2fJy6gdze8Lg3WXHjzqfjYsTznS/czM6O0HhmyrxxYFjEuaTmwCAYZ7ZS7
+ oeMwqIjCHcZ48zjhvwVybT+Ye/qck9ok+BGsV87VQ/MpFQiMR4vrCGcEaaKUm39vRvzS3lps+
+ S4F/30oA1xCe/7TPuAfIhckk7TcLYyHbK+Y88z1hM8fwW40o3Gm2UUhHRIzC2262NNxXOtfGO
+ vOWSH/GI+HEsiAyHFE1fwugkIw5OY1S2wRW3ClTd2sTDh6A8TOl7L90Apg8y8SzF3gMXfsZPF
+ keLwjuqniaeFAN7zxTBwpX3/XGBxa7CXZybtqB1VvOitQGUt242L0NTqxSlqHbaB1L4rGuqUG
+ AdHpQ=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -157,6 +157,10 @@ IMO - this information is enough to create full blown drivers/clk/mediatek/clk-m
 > [0] https://elixir.bootlin.com/linux/latest/source/arch/mips/ralink/mt7621.c#L156
 >
 
+
+--
+Regards,
+Oleksij
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
