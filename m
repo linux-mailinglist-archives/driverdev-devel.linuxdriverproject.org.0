@@ -1,83 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C6984911C5
-	for <lists+driverdev-devel@lfdr.de>; Sat, 17 Aug 2019 17:45:45 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 30833911EF
+	for <lists+driverdev-devel@lfdr.de>; Sat, 17 Aug 2019 18:23:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 673522154E;
-	Sat, 17 Aug 2019 15:45:43 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 161718633E;
+	Sat, 17 Aug 2019 16:23:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Den8rQkM6KRw; Sat, 17 Aug 2019 15:45:42 +0000 (UTC)
+	with ESMTP id XiQPUrQX9Pw5; Sat, 17 Aug 2019 16:23:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 60B732152F;
-	Sat, 17 Aug 2019 15:45:40 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id EEA188632F;
+	Sat, 17 Aug 2019 16:23:04 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 873311BF4DD
- for <devel@linuxdriverproject.org>; Sat, 17 Aug 2019 15:45:38 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9D3791BF86C
+ for <devel@linuxdriverproject.org>; Sat, 17 Aug 2019 16:23:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 8412B21505
- for <devel@linuxdriverproject.org>; Sat, 17 Aug 2019 15:45:38 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 950C820791
+ for <devel@linuxdriverproject.org>; Sat, 17 Aug 2019 16:23:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ttjdpYQCqcED for <devel@linuxdriverproject.org>;
- Sat, 17 Aug 2019 15:45:37 +0000 (UTC)
-X-Greylist: delayed 00:05:14 by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.15.19])
- by silver.osuosl.org (Postfix) with ESMTPS id 2C8941FEAB
- for <devel@driverdev.osuosl.org>; Sat, 17 Aug 2019 15:45:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1566056734;
- bh=xLEnuBmrR/uFscSY3VPh/qzC4C+JNq9Vyo2I8dKS2YI=;
- h=X-UI-Sender-Class:Subject:To:Cc:References:From:Date:In-Reply-To;
- b=ksHPIoC+0DOsEChYMzoMElxBMo3g+fbkWthYQvpfVoU4PEwP86ey/Ywa+bldRZwNf
- rsvKutUPjPoGcutxqoFB4IQdVvPNm03O8Wg4QbnvETxjZG8+LOhOxKsbJKfeKze6/g
- zoDAh3f/NEMnC+U/NWiH+EMCt994vh5ol5iCVJ6g=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [192.168.178.38] ([95.90.191.58]) by mail.gmx.com (mrgmx001
- [212.227.17.190]) with ESMTPSA (Nemesis) id 0MarNa-1hfoy1225S-00KPLm; Sat, 17
- Aug 2019 17:40:03 +0200
+ with ESMTP id i9HvWPe0AxSd for <devel@linuxdriverproject.org>;
+ Sat, 17 Aug 2019 16:23:01 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ot1-f68.google.com (mail-ot1-f68.google.com
+ [209.85.210.68])
+ by silver.osuosl.org (Postfix) with ESMTPS id E6246204B7
+ for <devel@driverdev.osuosl.org>; Sat, 17 Aug 2019 16:23:00 +0000 (UTC)
+Received: by mail-ot1-f68.google.com with SMTP id w4so12285761ote.11
+ for <devel@driverdev.osuosl.org>; Sat, 17 Aug 2019 09:23:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=KkNWyjY6i4wH5Ddws0s2bRyPMfosm9/NVsRV0Y2N3PA=;
+ b=Gae8lsMgP+bqtdFraWZyNJ3QSjRTqvKKxKT4pM6SJUdpIMMZgL+pwT5603gDEytVT/
+ 7IfPEA5vvnTeWryo5heiMGJkAqnA08w2yfKhxvSElFgtd5W+8Jm470hzi6zroaCGJ4rw
+ IRShg0E8R9s5W6TZo6nQ6/67TigSbeW3d14/CU1xYbvXmR2YdfsDfGqQbADNVpNq4OnZ
+ BQtrbyMc56aC3fLcKG1YLIQxNKAHZwRXMdZ/GkmYDtfpLoKc0gIKuK/ZIJdVrw0qnGDL
+ VXRtZ4uTCDCHCJ3DE3B8FJnpLOfl2Jee8DBzGa2sh+vclbL62MbrRa32N8kEoDkipkMy
+ OPYg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=KkNWyjY6i4wH5Ddws0s2bRyPMfosm9/NVsRV0Y2N3PA=;
+ b=DwDHodwz+CPKxQN1rbASjl8g2JP/1p2H1A3IHmsIWEw+a7pRan3hlyDbMi3Zj2FtUG
+ GBZU9MSXvE/u5ngcYg6FM1Za4J8CtxCAf68Czzgi7pXJVgW8b6sD0mZZZzgW9pWPpLfw
+ 7YdPw/4aEeTgCIcDKPOOLOhOYUDWlFVk091hDgO+OSebmmqa473m2H6onHo4BuVjcH67
+ 6rG4OquezWxL7yCAEB3KfgU6FfMqK4rlj5Cm+wLdjmzrPlIxORG6OVFsA0LDpxrLTBR4
+ 4gt9R2A0yjuLDVkS9vd5BSLA4k047skGlXMYKMEKH7TPORwf762E62gJj0xX52uzybwx
+ 8gPA==
+X-Gm-Message-State: APjAAAX48HrP1aAX1G4TrUuCjigJ59S21H3MC9hFxSR3DFMrg7Zsr5RG
+ 0On8ISmhCBBCDuRm8Nv5259UxJttZijqaIVOOSg=
+X-Google-Smtp-Source: APXvYqzk0u4Ilu0Q5NFLJH9XglZbvfPbUIEi9ktxQWn+FMhZXdGxFqVp2pgY+cR90FakhznowefHdiXUlijcVdJ4n0Q=
+X-Received: by 2002:a05:6830:1184:: with SMTP id
+ u4mr11456282otq.181.1566058980205; 
+ Sat, 17 Aug 2019 09:23:00 -0700 (PDT)
+MIME-Version: 1.0
+References: <20190724022310.28010-1-gch981213@gmail.com>
+ <20190724022310.28010-5-gch981213@gmail.com>
+ <20190813155143.GA19830@bogus>
+ <CAJsYDVKnf4M8jyVOyotRxs=SsHqjex_q60AwkX=QAPK33ivw-Q@mail.gmail.com>
+ <2d48f4a4-7d30-547b-21ee-6aadabe7d7c3@gmx.net>
+In-Reply-To: <2d48f4a4-7d30-547b-21ee-6aadabe7d7c3@gmx.net>
+From: Chuanhong Guo <gch981213@gmail.com>
+Date: Sun, 18 Aug 2019 00:22:49 +0800
+Message-ID: <CAJsYDVLq1-U_AngA4=YKHS_L=zurhLse9XwQ0Rzup9BdXfri-w@mail.gmail.com>
 Subject: Re: [PATCH v2 4/6] dt: bindings: add mt7621-pll dt binding
  documentation
-To: Chuanhong Guo <gch981213@gmail.com>, Rob Herring <robh@kernel.org>
-References: <20190724022310.28010-1-gch981213@gmail.com>
- <20190724022310.28010-5-gch981213@gmail.com> <20190813155143.GA19830@bogus>
- <CAJsYDVKnf4M8jyVOyotRxs=SsHqjex_q60AwkX=QAPK33ivw-Q@mail.gmail.com>
-From: Oleksij Rempel <linux@rempel-privat.de>
-Message-ID: <f0743ace-0ca2-82a2-a162-aaa98c8925a8@rempel-privat.de>
-Date: Sat, 17 Aug 2019 17:40:01 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
-In-Reply-To: <CAJsYDVKnf4M8jyVOyotRxs=SsHqjex_q60AwkX=QAPK33ivw-Q@mail.gmail.com>
-Content-Language: en-US
-X-Provags-ID: V03:K1:Y7+/rIX/X/rHWVa8YAjwg6EVopQ5xqOASiWpAFiqfw3VZUxwevS
- XD/pjP+cds1KG21PWSwAduQgKrD5V5Js/ozzRzBAgpWEUlO2BDFsngZI9AzXfxu3gjMeXu6
- 2MEa7u3TVzdqM6r8k8MVZKgk2M40uDJeUF3K1jRkrZMw8K7bozhkLHf0AS8PVq1qZpliVJX
- UayhG5CGqUZKsTzKGJu+Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:T/V7/v9RgfM=:4nhWfYQy9BctBZOQ8DsiJ4
- sOhem/jfO0bP96vAE2dNi16ntsLYVKqJGoNQnd6tekq3i22aj54vcQHOI9zl3/1t2t9OlaGFz
- /R6D6vZusmUUoPmND01maQ/lo+xD/e8jU6J/fN5spAcOIcIDPV0cK6qmhHrOJHCYqdbTrT1Eg
- WPM6abNLqi6sOtFuqpSz1O3VTAbPM3NHPU95W5b58uOb2Rf+8EvezlfBHHz1FIY0mlFMV3KCa
- IuzyKBkD0WRK04WVnPR1G6O/q6Lc7r9yeGSl1TMZGR6p6skAxnsjlSC7S8Khv+CUAIFhRabTi
- E5W/zxB4SDzyGNMB7uf2tWddeMNa2XVxmjGj2nc9Cy/jFPcfcRzcGbI831GHTFI/OZ1zrkqfR
- yQT8YcHjs9ioPM7NAi+kuQbHLgyUHNysIz79kuxh/LsVX2OV80Dp5ySL8raiKeWLPwZ6SrzBO
- i1NnWZ1ejPS/rxlXEQhWY0LljqIK42EydiITHFP3VbairEqTtT7uD38/jPmM5SCQoMn5agWZ3
- OCgWfpbcdx4TRpTHW3mL/TbvJsFD3Fc+yye8Rc7z8MFeZkXjZH2zjwF37wucwajlfTdKaoL56
- dNjtJ1YJa5q/V4yPGzCsJtnwyeYTdnYASPFX+eZrm11zQm8IFpHO0gWGc6ErrQImmUoQCpXuI
- vqM+yRCQRTFVAufbjtj27MksFYhNhZqQbkzz4f/QEcPXfOCAvplEu8/n7qejWPn+mNKvoZ5Y6
- txYKi9753IIVRXQgYxeY7uXa8AntH7ewu3BV2o81EZw4Ifly1Qmfj5xQdERCICH6ibmkhW7UY
- ivwScixJWPr21hw2fJy6gdze8Lg3WXHjzqfjYsTznS/czM6O0HhmyrxxYFjEuaTmwCAYZ7ZS7
- oeMwqIjCHcZ48zjhvwVybT+Ye/qck9ok+BGsV87VQ/MpFQiMR4vrCGcEaaKUm39vRvzS3lps+
- S4F/30oA1xCe/7TPuAfIhckk7TcLYyHbK+Y88z1hM8fwW40o3Gm2UUhHRIzC2262NNxXOtfGO
- vOWSH/GI+HEsiAyHFE1fwugkIw5OY1S2wRW3ClTd2sTDh6A8TOl7L90Apg8y8SzF3gMXfsZPF
- keLwjuqniaeFAN7zxTBwpX3/XGBxa7CXZybtqB1VvOitQGUt242L0NTqxSlqHbaB1L4rGuqUG
- AdHpQ=
+To: Oleksij Rempel <fishor@gmx.net>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,76 +86,49 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ Rob Herring <robh@kernel.org>,
  "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Stephen Boyd <sboyd@kernel.org>, James Hogan <jhogan@kernel.org>,
- Michael Turquette <mturquette@baylibre.com>,
+ <devicetree@vger.kernel.org>, Stephen Boyd <sboyd@kernel.org>,
+ James Hogan <jhogan@kernel.org>, Michael Turquette <mturquette@baylibre.com>,
  "open list:MIPS" <linux-mips@vger.kernel.org>,
  Ralf Baechle <ralf@linux-mips.org>, open list <linux-kernel@vger.kernel.org>,
  Paul Burton <paul.burton@mips.com>, Weijie Gao <hackpascal@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  John Crispin <john@phrozen.org>, NeilBrown <neil@brown.name>,
  Mark Rutland <mark.rutland@arm.com>,
  "open list:COMMON CLK FRAMEWORK" <linux-clk@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi,
+Hi!
 
-Am 17.08.19 um 16:42 schrieb Chuanhong Guo:
-> Hi!
->
-> On Tue, Aug 13, 2019 at 11:51 PM Rob Herring <robh@kernel.org> wrote:
->> [...]
->>> +Example:
->>> +     pll {
->>> +             compatible = "mediatek,mt7621-pll";
->>
->> You didn't answer Stephen's question on v1.
->
-> I thought he was asking why there's a syscon in compatible string. I
-> noticed that the syscon in my previous patch is a copy-paste error
-> from elsewhere and dropped it.
->
->>
->> Based on this binding, there is no way to control/program the PLL. Is
->> this part of some IP block?
->
-> The entire section is called "system control" in datasheet and is
-> occupied in arch/mips/ralink/mt7621.c [0]
-> Two clocks provided here is determined by reading some read-only
-> registers in this part.
-> There's another register in this section providing clock gates for
-> every peripherals, but MTK doesn't provide a clock plan in their
-> datasheet. I can't determine corresponding clock frequencies for every
-> peripherals, thus unable to write a working clock driver.
+On Sat, Aug 17, 2019 at 11:40 PM Oleksij Rempel <fishor@gmx.net> wrote:
 
-In provided link [0] the  ralink_clk_init function is reading SYSC_REG_CPLL_CLKCFG0 R/W register.
-This register is used to determine clock source,  clock freq and CPU or bus clocks.
-SYSC_REG_CPLL_CLKCFG1 register is a clock gate controller. It is used to enable or disable clocks.
-Jist wild assumption. All peripheral devices are suing bus clock.
+> In provided link [0] the  ralink_clk_init function is reading SYSC_REG_CPLL_CLKCFG0 R/W register.
+> This register is used to determine clock source,  clock freq and CPU or bus clocks.
 
-IMO - this information is enough to create full blown drivers/clk/mediatek/clk-mt7621.c
+This register should only be changed by bootloader, not kernel. So
+it's read-only in kernel's perspective.
 
->>> +
->>> +             #clock-cells = <1>;
->>> +             clock-output-names = "cpu", "bus";
->>> +     };
->>> --
->>> 2.21.0
->>>
+> SYSC_REG_CPLL_CLKCFG1 register is a clock gate controller. It is used to enable or disable clocks.
+> Jist wild assumption. All peripheral devices are suing bus clock.
+
+This assumption is incorrect. When this patchset is applied in
+OpenWrt, I asked the author why there's still a fixed clock in
+mt7621.dtsi, He told me that there's another clock for those unchanged
+peripherals and he doesn't have time to write a clock provider for it.
+I don't know how many undocumented clocks are there since this piece
+of info is missing in datasheet.
+
 >
-> Regards,
-> Chuanhong Guo
->
-> [0] https://elixir.bootlin.com/linux/latest/source/arch/mips/ralink/mt7621.c#L156
->
+> IMO - this information is enough to create full blown drivers/clk/mediatek/clk-mt7621.c
 
+And this information isn't enough because the assumption above is incorrect :P
 
---
 Regards,
-Oleksij
+Chuanhong Guo
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
