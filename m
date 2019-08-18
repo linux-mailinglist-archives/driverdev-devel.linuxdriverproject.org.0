@@ -1,86 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5ED03918F0
-	for <lists+driverdev-devel@lfdr.de>; Sun, 18 Aug 2019 20:38:23 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 97BBC918ED
+	for <lists+driverdev-devel@lfdr.de>; Sun, 18 Aug 2019 20:36:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9B6EC20035;
-	Sun, 18 Aug 2019 18:38:21 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C00F6856ED;
+	Sun, 18 Aug 2019 18:36:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id E5mkxVZperxU; Sun, 18 Aug 2019 18:38:19 +0000 (UTC)
+	with ESMTP id hPbW1XNsv8am; Sun, 18 Aug 2019 18:36:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 3638120449;
-	Sun, 18 Aug 2019 18:38:16 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 10350854D8;
+	Sun, 18 Aug 2019 18:36:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E64BF1BF406
- for <devel@linuxdriverproject.org>; Sun, 18 Aug 2019 18:38:13 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6766F1BF406
+ for <devel@linuxdriverproject.org>; Sun, 18 Aug 2019 18:36:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id DC74284FF9
- for <devel@linuxdriverproject.org>; Sun, 18 Aug 2019 18:38:13 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 62D068547B
+ for <devel@linuxdriverproject.org>; Sun, 18 Aug 2019 18:36:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2i_IA7p_gd22 for <devel@linuxdriverproject.org>;
- Sun, 18 Aug 2019 18:38:12 +0000 (UTC)
-X-Greylist: delayed 00:06:03 by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.15.15])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 65FB184C78
- for <devel@driverdev.osuosl.org>; Sun, 18 Aug 2019 18:38:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1566153487;
- bh=JnSOVaSr8ZMfWjAXv4Mm3x6HT+bnyfuADTLNgCCBU3s=;
- h=X-UI-Sender-Class:Date:From:To:Cc:Subject:References:In-Reply-To;
- b=c0BA0T94sQU0FFveHYrXJoqihvGgwBHcmRZdKLwAu4Ke6+sDy7IpHuI0YskXN/ZjS
- KCFLSJVKU2ANqhv+uOqc8w53dz8QPu34pOMuGAl84L3xRSl3HQ6NDeWsNswvuCeUeP
- nmnhVb+NbZ947V4YGk67TL0UpePKcre89GOiqhLU=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from hsiangkao-HP-ZHAN-66-Pro-G1 ([115.197.242.96]) by mail.gmx.com
- (mrgmx003 [212.227.17.184]) with ESMTPSA (Nemesis) id
- 0Lb5GD-1iepNI0Ctd-00kf6J; Sun, 18 Aug 2019 20:31:22 +0200
-Date: Mon, 19 Aug 2019 02:31:05 +0800
-From: Gao Xiang <hsiangkao@gmx.com>
-To: Richard Weinberger <richard@nod.at>
-Subject: Re: [PATCH] erofs: move erofs out of staging
-Message-ID: <20190818183104.GB1617@hsiangkao-HP-ZHAN-66-Pro-G1>
-References: <20190817082313.21040-1-hsiangkao@aol.com>
- <20190818084521.GA17909@hsiangkao-HP-ZHAN-66-Pro-G1>
- <1133002215.69049.1566119033047.JavaMail.zimbra@nod.at>
- <20190818090949.GA30276@kroah.com>
- <790210571.69061.1566120073465.JavaMail.zimbra@nod.at>
- <20190818151154.GA32157@mit.edu>
- <1897345637.69314.1566148000847.JavaMail.zimbra@nod.at>
- <20190818174621.GB12940@mit.edu>
- <538856932.69442.1566151228866.JavaMail.zimbra@nod.at>
+ with ESMTP id VXXDh1x0iK97 for <devel@linuxdriverproject.org>;
+ Sun, 18 Aug 2019 18:36:07 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-qk1-f193.google.com (mail-qk1-f193.google.com
+ [209.85.222.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id CE81685456
+ for <devel@driverdev.osuosl.org>; Sun, 18 Aug 2019 18:36:06 +0000 (UTC)
+Received: by mail-qk1-f193.google.com with SMTP id 125so8847797qkl.6
+ for <devel@driverdev.osuosl.org>; Sun, 18 Aug 2019 11:36:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=e7TlGCUf1JSTI6LOCtMDPWUdsew/XXSqNWQ0500csFk=;
+ b=VwjzuuA1cEGqSdsoBXdYxZEdXn/gzNCGfoGU4iMtPqvugKpO6f6UYPWFqPJxMvubLr
+ Kk3tmqJ0nDztM1w74kpyAqqFtDCtYJGkGeWlrBvXAypJLuzw7hqVURAHHPHMScKQdHF3
+ 6tDQIfCuz9lzPHoj9AM8AEeg/LcGrh4IiOr6a3x8ZdQo9msPTl8w7JJR8HQScvgWw7WM
+ fPv9CKoljAxl0oG56NqFpSkH3qngVh1wkjR2MEYgl03jxq7Vv014+hje7LFzqJtt6kA1
+ tJnkLZQnuzKN+Zxb/3wxcXldNvcVFee7zCPZZjMIqFyC3qJ4jdgRdag0moLEItw3b8di
+ ii6A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=e7TlGCUf1JSTI6LOCtMDPWUdsew/XXSqNWQ0500csFk=;
+ b=o4qwcQb7ojPuS7g2HR0EJqcy/9DY3PUNcv5PraD8kIZhfiK3yOTMRsvKOzjxSLvnGT
+ Z6V7scia/QCMPIQ6Ba3Fm2CCGr6JLmv3890NX0W6W56sYHODQp2vSHcb6Hqzx8lQYoFm
+ lgrkKd4zUtjOdngX+01Cf1v86k3uDT/4n/0IZSFdm6bEgZ6tHAV1pPCDC54xv169OxCP
+ fnTsfDGJbASWIc+dzzyrNfixAPn7lSv+xVfFSg4OzFhmztnfLHqR3SDl4/LJ9zYMHKXJ
+ NTl4Al4WzgvtR8os259U/HP+WsjZYcn1NTIuKawYroVrdWSos90qys6uxnZjuGYMDgZO
+ TRuQ==
+X-Gm-Message-State: APjAAAXz/Otfk9XVvzh2bGW2EWSpJYiaTMeXLcqbgaxqT2OBQLleuFgz
+ hP6CnvZen9Se+OrNmHlVCwg=
+X-Google-Smtp-Source: APXvYqzjyDFtqHr5NHdj4nZFP5FTz9f9Erl3Y00N3/EznOCzKCnQe0hZk13W8DTSxbNqL01uzjrVHg==
+X-Received: by 2002:a37:c206:: with SMTP id i6mr10763120qkm.384.1566153365724; 
+ Sun, 18 Aug 2019 11:36:05 -0700 (PDT)
+Received: from localhost.localdomain ([2804:431:c7d2:f9b3:a288:b4ff:fe9b:37cc])
+ by smtp.gmail.com with ESMTPSA id a6sm5987094qkd.135.2019.08.18.11.36.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 18 Aug 2019 11:36:05 -0700 (PDT)
+From: Eduardo Barretto <edusbarretto@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: kpc2000: kpc2000_i2c: Fix different address spaces
+ warnings
+Date: Sun, 18 Aug 2019 15:35:55 -0300
+Message-Id: <20190818183555.7167-1-edusbarretto@gmail.com>
+X-Mailer: git-send-email 2.22.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <538856932.69442.1566151228866.JavaMail.zimbra@nod.at>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Provags-ID: V03:K1:H+NFCf0wlqRcqkLlPam7c5tw+KObwz8nlqwhdtnkWhSReB61qKl
- F1fRmaMOcEwjjy47KN8sdZ1Nk/+0402ISuwlyXPlwfJQstQFGVihGeyZdqeQJasAygKYq2Z
- xcEfL1e/z/LZK01QHjhFsQhPIhw+Hojr493apR3fT3uYUv6ggEieajZZwysC9q/TQOFjLtk
- Waa/H1RdohVdkujV0ShNw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:y6mqRcqsJSQ=:60iaxuPKkxdEqmsyxxLF11
- 0ae9JTebC66WgcyZrHz/u25+LTZzhJB/N4A+4WynLT3XfaBm9jUWxuBk96eIDQ+pDGTqtik4/
- WqLmRCMsR4tEeUTC0RV0WVQVr7jupmEc14ZTTZtCXSKU9IFEH64nxjm3suq0pRXeBZBQFymFH
- 2vKdlGBp0i8sG8dPHuU9A82om33OoADlLNBwo8kkT+xKMYJP1BKW6nIf93rYDCuZn4gu1XHyA
- SagxZNDonKlwOzOgK2BVjFN5/SiOQEUWuMFqee9QQYrKtgY9E0D/WlgaJllZohNm+J45Fy9yc
- +ea/odAedfvGpCMYmfHerg9BaYa3bKytSAJPV23QeZn60J/zvzbkWFwVQOH+RvC/zbtg2L7/8
- 64bYNSXio2TFKha/8rJtC7I1qEfnymKfB5GV0VxaLfXxF0A7kdxITjfun6wJ1o+xrKKNT0U4z
- gUubQ/fnO2UM8h7EK8HBvKIQ35ZD8u3geSXE0EfRHJj+Shl8x693apMKC6q6H9v8u8BXHTF9G
- TxCV/qjPumi4CBslrJ4b+/SGZBi7CHSOTlGML3fL3Fko1NVOKe8Yrd10kWLwNM5u6N3+vU+l/
- 1/+SIgL3wrw+u2GCHBst62i6092LBUiIxwopP+eAuCmVR73sg/XNO1T1danjLXfFJDt5tjDwP
- oeoOzaKRUxVhrJeo4SK6IfXzGZ52C1x07Rw2zgh0TbFQrWdOsqZBIb+//SOxur3ltQbxGKfgT
- PGpRNl/3vthXdBblKi5h/RGvgvw0tUWm9AOCAPP3F1cnxNy/jFAyZmIbGg9y2GzAmlZ6Y0bxY
- /JPPYppQ56dT+bmOBuVK8pn0rZDyu6e1Cer+IW5BKS901qVRh6CpkE+xRsawvp2DZPgsXmyTT
- kf4HoGgx3y5dUxdlLeNWzOkIzyYIlSDBi8ijJmcFRN3HH7RrU82C0ZLRVhF7NDf5ROwjMjWeQ
- RibuaN1LsdVYVJUBjrirD31tiyzNVptS9zIClgm+PeolN0EAAF3oH+P+WYR98hTMlb2x03MUm
- pbnBsw/WNrckwNoUP7dfYMZaQ/XlFw4q0VpAEw1uqVXA4He1OB8gETs6aIouXj/r1+Jl+hp17
- DQxmZE8G9/L+gPhKHj/H9LvSNxlLYRQfolsONMNaddboDAH68f04Q0D9Q==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,74 +84,279 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel <devel@driverdev.osuosl.org>, Stephen Rothwell <sfr@canb.auug.org.au>,
- linux-erofs <linux-erofs@lists.ozlabs.org>, Jan Kara <jack@suse.cz>,
- Darrick <darrick.wong@oracle.com>, torvalds <torvalds@linux-foundation.org>,
- Amir Goldstein <amir73il@gmail.com>, Dave Chinner <david@fromorbit.com>,
- linux-kernel <linux-kernel@vger.kernel.org>, David Sterba <dsterba@suse.cz>,
- Christoph Hellwig <hch@infradead.org>, Pavel Machek <pavel@denx.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Al Viro <viro@zeniv.linux.org.uk>, Jaegeuk Kim <jaegeuk@kernel.org>,
- linux-fsdevel <linux-fsdevel@vger.kernel.org>, tytso <tytso@mit.edu>,
- Andrew Morton <akpm@linux-foundation.org>, Miao Xie <miaoxie@huawei.com>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Richard,
+This patch fixes the following sparse warnings:
 
-On Sun, Aug 18, 2019 at 08:00:28PM +0200, Richard Weinberger wrote:
-> ----- Urspr=FCngliche Mail -----
-> > Von: "tytso" <tytso@mit.edu>
-> > An: "richard" <richard@nod.at>
-> > CC: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>, "Gao Xiang" <hsi=
-angkao@aol.com>, "Jan Kara" <jack@suse.cz>, "Chao
-> > Yu" <yuchao0@huawei.com>, "Dave Chinner" <david@fromorbit.com>, "David =
-Sterba" <dsterba@suse.cz>, "Miao Xie"
-> > <miaoxie@huawei.com>, "devel" <devel@driverdev.osuosl.org>, "Stephen Ro=
-thwell" <sfr@canb.auug.org.au>, "Darrick"
-> > <darrick.wong@oracle.com>, "Christoph Hellwig" <hch@infradead.org>, "Am=
-ir Goldstein" <amir73il@gmail.com>,
-> > "linux-erofs" <linux-erofs@lists.ozlabs.org>, "Al Viro" <viro@zeniv.lin=
-ux.org.uk>, "Jaegeuk Kim" <jaegeuk@kernel.org>,
-> > "linux-kernel" <linux-kernel@vger.kernel.org>, "Li Guifu" <bluce.liguif=
-u@huawei.com>, "Fang Wei" <fangwei1@huawei.com>,
-> > "Pavel Machek" <pavel@denx.de>, "linux-fsdevel" <linux-fsdevel@vger.ker=
-nel.org>, "Andrew Morton"
-> > <akpm@linux-foundation.org>, "torvalds" <torvalds@linux-foundation.org>
-> > Gesendet: Sonntag, 18. August 2019 19:46:21
-> > Betreff: Re: [PATCH] erofs: move erofs out of staging
->
-> > On Sun, Aug 18, 2019 at 07:06:40PM +0200, Richard Weinberger wrote:
-> >> > So holding a file system like EROFS to a higher standard than say,
-> >> > ext4, xfs, or btrfs hardly seems fair.
-> >>
-> >> Nobody claimed that.
-> >
-> > Pointing out that erofs has issues in this area when Gao Xiang is
-> > asking if erofs can be moved out of staging and join the "official
-> > clubhouse" of file systems could certainly be reasonable interpreted
-> > as such.  Reporting such vulnerablities are a good thing, and
-> > hopefully all file system maintainers will welcome them.  Doing them
-> > on a e-mail thread about promoting out of erofs is certainly going to
-> > lead to inferences of a double standard.
->
-> Well, this was not at all my intention.
-> erofs raised my attention and instead of wasting a new thread
-> I answered here and reported what I found while looking at it.
-> That's all.
+kpc2000_i2c.c:137: warning: incorrect type in argument 1
+                                   (different address spaces)
+kpc2000_i2c.c:137:    expected void const volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:137:    got void *
+kpc2000_i2c.c:146: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:146:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:146:    got void *
+kpc2000_i2c.c:147: warning: incorrect type in argument 1
+                                   (different address spaces)
+kpc2000_i2c.c:147:    expected void const volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:147:    got void *
+kpc2000_i2c.c:166: warning: incorrect type in argument 1
+                                   (different address spaces)
+kpc2000_i2c.c:166:    expected void const volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:166:    got void *
+kpc2000_i2c.c:166: warning: incorrect type in argument 2
+                                  (different address spaces)
+kpc2000_i2c.c:166:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:166:    got void *
+kpc2000_i2c.c:168: warning: incorrect type in argument 1
+                                   (different address spaces)
+kpc2000_i2c.c:168:    expected void const volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:168:    got void *
+kpc2000_i2c.c:168: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:168:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:168:    got void *
+kpc2000_i2c.c:171: warning: incorrect type in argument 1
+                                   (different address spaces)
+kpc2000_i2c.c:171:    expected void const volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:171:    got void *
+kpc2000_i2c.c:174: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:174:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:174:    got void *
+kpc2000_i2c.c:193: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:193:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:193:    got void *
+kpc2000_i2c.c:194: warning: incorrect type in argument 1
+                                   (different address spaces)
+kpc2000_i2c.c:194:    expected void const volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:194:    got void *
+kpc2000_i2c.c:214: warning: incorrect type in argument 2
+                                  (different address spaces)
+kpc2000_i2c.c:214:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:214:    got void *
+kpc2000_i2c.c:219: warning: incorrect type in argument 1
+                                  (different address spaces)
+kpc2000_i2c.c:219:    expected void const volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:219:    got void *
+kpc2000_i2c.c:226: warning: incorrect type in argument 2
+                                  (different address spaces)
+kpc2000_i2c.c:226:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:226:    got void *
+kpc2000_i2c.c:238: warning: incorrect type in argument 1
+                                   (different address spaces)
+kpc2000_i2c.c:238:    expected void const volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:238:    got void *
+kpc2000_i2c.c:244: warning: incorrect type in argument 2
+                                  (different address spaces)
+kpc2000_i2c.c:244:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:244:    got void *
+kpc2000_i2c.c:252: warning: incorrect type in argument 1
+                                  (different address spaces)
+kpc2000_i2c.c:252:    expected void const volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:252:    got void *
+kpc2000_i2c.c:257: warning: incorrect type in argument 2
+                                  (different address spaces)
+kpc2000_i2c.c:257:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:257:    got void *
+kpc2000_i2c.c:259: warning: incorrect type in argument 2
+				   (different address spaces)
+kpc2000_i2c.c:259:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:259:    got void *
+kpc2000_i2c.c:267: warning: incorrect type in argument 1
+                                   (different address spaces)
+kpc2000_i2c.c:267:    expected void const volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:267:    got void *
+kpc2000_i2c.c:273: warning: incorrect type in argument 1
+                                   (different address spaces)
+kpc2000_i2c.c:273:    expected void const volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:273:    got void *
+kpc2000_i2c.c:293: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:293:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:293:    got void *
+kpc2000_i2c.c:294: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:294:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:294:    got void *
+kpc2000_i2c.c:309: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:309:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:309:    got void *
+kpc2000_i2c.c:312: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:312:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:312:    got void *
+kpc2000_i2c.c:317: warning: incorrect type in argument 1
+                                   (different address spaces)
+kpc2000_i2c.c:317:    expected void const volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:317:    got void *
+kpc2000_i2c.c:324: warning: incorrect type in argument 1
+                                   (different address spaces)
+kpc2000_i2c.c:324:    expected void const volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:324:    got void *
+kpc2000_i2c.c:328: warning: incorrect type in argument 1
+                                   (different address spaces)
+kpc2000_i2c.c:328:    expected void const volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:328:    got void *
+kpc2000_i2c.c:329: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:329:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:329:    got void *
+kpc2000_i2c.c:330: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:330:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:330:    got void *
+kpc2000_i2c.c:338: warning: incorrect type in argument 1
+                                   (different address spaces)
+kpc2000_i2c.c:338:    expected void const volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:338:    got void *
+kpc2000_i2c.c:340: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:340:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:340:    got void *
+kpc2000_i2c.c:342: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:342:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:342:    got void *
+kpc2000_i2c.c:350: warning: incorrect type in argument 1
+                                  (different address spaces)
+kpc2000_i2c.c:350:    expected void const volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:350:    got void *
+kpc2000_i2c.c:350: warning: incorrect type in argument 2
+                                  (different address spaces)
+kpc2000_i2c.c:350:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:350:    got void *
+kpc2000_i2c.c:351: warning: incorrect type in argument 1
+                                   (different address spaces)
+kpc2000_i2c.c:351:    expected void const volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:351:    got void *
+kpc2000_i2c.c:414: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:414:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:414:    got void *
+kpc2000_i2c.c:420: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:420:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:420:    got void *
+kpc2000_i2c.c:422: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:422:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:422:    got void *
+kpc2000_i2c.c:427: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:427:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:427:    got void *
+kpc2000_i2c.c:428: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:428:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:428:    got void *
+kpc2000_i2c.c:430: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:430:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:430:    got void *
+kpc2000_i2c.c:435: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:435:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:435:    got void *
+kpc2000_i2c.c:436: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:436:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:436:    got void *
+kpc2000_i2c.c:438: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:438:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:438:    got void *
+kpc2000_i2c.c:439: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:439:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:439:    got void *
+kpc2000_i2c.c:445: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:445:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:445:    got void *
+kpc2000_i2c.c:446: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:446:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:446:    got void *
+kpc2000_i2c.c:454: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:454:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:454:    got void *
+kpc2000_i2c.c:459: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:459:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:459:    got void *
+kpc2000_i2c.c:461: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:461:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:461:    got void *
+kpc2000_i2c.c:472: warning: incorrect type in argument 1
+                                   (different address spaces)
+kpc2000_i2c.c:472:    expected void const volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:472:    got void *
+kpc2000_i2c.c:472: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:472:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:472:    got void *
+kpc2000_i2c.c:475: warning: incorrect type in argument 1
+                                   (different address spaces)
+kpc2000_i2c.c:475:    expected void const volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:475:    got void *
+kpc2000_i2c.c:475: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:475:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:475:    got void *
+kpc2000_i2c.c:493: warning: incorrect type in argument 1
+                                   (different address spaces)
+kpc2000_i2c.c:493:    expected void const volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:493:    got void *
+kpc2000_i2c.c:493: warning: incorrect type in argument 2
+                                   (different address spaces)
+kpc2000_i2c.c:493:    expected void volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:493:    got void *
+kpc2000_i2c.c:512: warning: incorrect type in argument 1
+                                   (different address spaces)
+kpc2000_i2c.c:512:    expected void const volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:512:    got void *
+kpc2000_i2c.c:516: warning: incorrect type in argument 1
+                                   (different address spaces)
+kpc2000_i2c.c:516:    expected void const volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:516:    got void *
+kpc2000_i2c.c:516: warning: incorrect type in argument 1
+                                   (different address spaces)
+kpc2000_i2c.c:516:    expected void const volatile [noderef] <asn:2> *addr
+kpc2000_i2c.c:516:    got void *
 
-Thank you very much, EROFS finally has some real concern
-after a quite long time. I will do that but I really want
-to upstream for 5.4LTS and hope to get your further report.
+Signed-off-by: Eduardo Barretto <edusbarretto@gmail.com>
+---
+ drivers/staging/kpc2000/kpc2000_i2c.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Thanks,
-Gao Xiang
+diff --git a/drivers/staging/kpc2000/kpc2000_i2c.c b/drivers/staging/kpc2000/kpc2000_i2c.c
+index b108da4ac633..bc02534d8dc3 100644
+--- a/drivers/staging/kpc2000/kpc2000_i2c.c
++++ b/drivers/staging/kpc2000/kpc2000_i2c.c
+@@ -123,9 +123,9 @@ struct i2c_device {
+ 
+ // FIXME!
+ #undef inb_p
+-#define inb_p(a) readq((void *)a)
++#define inb_p(a) readq((void __iomem *)a)
+ #undef outb_p
+-#define outb_p(d, a) writeq(d, (void *)a)
++#define outb_p(d, a) writeq(d, (void __iomem *)a)
+ 
+ /* Make sure the SMBus host is ready to start transmitting.
+  * Return 0 if it is, -EBUSY if it is not.
+-- 
+2.22.1
 
->
-> Thanks,
-> //richard
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
