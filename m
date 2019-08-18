@@ -1,72 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 962649140C
-	for <lists+driverdev-devel@lfdr.de>; Sun, 18 Aug 2019 03:48:55 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CAB7791413
+	for <lists+driverdev-devel@lfdr.de>; Sun, 18 Aug 2019 03:56:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AA0F58598A;
-	Sun, 18 Aug 2019 01:48:53 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 65BA785EA8;
+	Sun, 18 Aug 2019 01:56:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pH3QXFPacSiS; Sun, 18 Aug 2019 01:48:52 +0000 (UTC)
+	with ESMTP id PRIiH5fTh888; Sun, 18 Aug 2019 01:56:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 146718583F;
-	Sun, 18 Aug 2019 01:48:52 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9017785DB1;
+	Sun, 18 Aug 2019 01:56:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A38031BF3C8
- for <devel@linuxdriverproject.org>; Sun, 18 Aug 2019 01:48:50 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0847B1BF3C8
+ for <devel@linuxdriverproject.org>; Sun, 18 Aug 2019 01:56:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9D29C8583F
- for <devel@linuxdriverproject.org>; Sun, 18 Aug 2019 01:48:50 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 04E308578B
+ for <devel@linuxdriverproject.org>; Sun, 18 Aug 2019 01:56:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id e50tHyh4EB2f for <devel@linuxdriverproject.org>;
- Sun, 18 Aug 2019 01:48:50 +0000 (UTC)
+ with ESMTP id uN8HuyCRk6l8 for <devel@linuxdriverproject.org>;
+ Sun, 18 Aug 2019 01:56:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic316-55.consmr.mail.gq1.yahoo.com
- (sonic316-55.consmr.mail.gq1.yahoo.com [98.137.69.31])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 11FF08508E
- for <devel@driverdev.osuosl.org>; Sun, 18 Aug 2019 01:48:50 +0000 (UTC)
+Received: from sonic304-25.consmr.mail.gq1.yahoo.com
+ (sonic304-25.consmr.mail.gq1.yahoo.com [98.137.68.206])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7A3BE84528
+ for <devel@driverdev.osuosl.org>; Sun, 18 Aug 2019 01:56:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aol.com; s=a2048;
- t=1566092929; bh=3z4YsL7cITdwo3WfgBzjdtBKxHfbzIYd54Y/QXXxpig=;
- h=From:To:Cc:Subject:Date:From:Subject;
- b=igjsmRk2B/VVMaIiwk6KZFJ2xs+vdkB0aTsEmbInOb3+X4jBeC3xc5GWN/bnYJeQ/3ugotsaMLuXLDNSVDW+RsZ2xQgJhXn6BlInOyZOt3zFUjpqF13OO8hBUngPCNJIpvCMsy1r2HWwsVzmI8NHrpH4pejQnUC05EffWbZXO9hACzDgoo8w1fbNBnZH9fDdTzQWkuwZ4ReO7PW7Fi3+/h5nAyV4psVt7lo+U2iOu5q7gwisfaumKBdTDLmceTpzftAWFAsCAWrGdADs0Bhw6+XIQ98o8Z0A1mPnET1PHgsm/WO6DvsANrRlZGVcqSgDITJDxZayIovb2713IBng4g==
-X-YMail-OSG: nH1tLc8VM1kDn9rx2c7sy4Ia4G0fR8nB1KDqylp4FskuR13tFJNVAPwp840OXp5
- EhdNzOzVsNmE7oedZI.bicNh6Y.BUanFjxjAkKiRMaee40cc_0EVqmjKoLOjackBCV8S0iz6ujsp
- RADzb3Hz7mDmBa3S3zCS7UcLlpImM.xDT4ovcBwWoHZ71b.fQWIQY0GPpGeUZQYE3Z4h8gcmsJXL
- wAxWZRyExv_LAqhUEi0Ktc8sXAwljeXkuu2KRvHdAymTDslbi_17hUs6APnlTr2Jr4InQEZ8aUXw
- YRdNha51u84WLXU_ljA20gbSaaqAZyHH5h1MHSJB61IIgsvKc.iyyDOdXj9NFVcBHffBsaWRsJrs
- 1CnB.dH6ODkf2UNOjProgFs3PV.LtqTWZleiPe63zUc0FRpOolRYxmBCutnURgUYF66a43eFadr0
- Cic3D5wt3QuPJOJjMzWSDirBuACdYLIrM4CI0fyw8W6AJ4M7A_Mn_H.IoZRz33SwCPnPofPuZcjE
- JiQgGviKoqQRed3bwcT47oWp5iFdDhS07V192MYe1yQ6fAmDyhzgUSD1vewYdpJ7fN.N_4JaMRp6
- P1nfunMU4NBxqwYJzW9WxZzdOWHHGwKLqjWDS1TylVvr1dSDMz.y8IkO2BLW0dZ7Lg3e.QousgcU
- .84G1QxI4kiPY31wANpRIP1rPB_vBk84ecr08dmO_QRHVjLAxmvFAEWSl2ZvaWoJRzUolq4yrnTc
- Do1WMUIVjlGP53sg9J6a5elF_uKzkbZ10qkYxpZjtioSqj5q7MhOOJNvl9E9w0sAZIEOscAv4LZY
- MVQVkCeYTNfj1KZGNpnX5RmlfEoFlR9c7Jrbx6pXc2JJ7RErzQl2xsksY0K2tYk4BVQAi91H58kB
- rqWHIU7t.HGxJ_N.pEl0WioD4aL8DBXT.FbVCgwshCkp6pq4x8ImtDz1dbjfK_YyzmSq7SIceAID
- rZV..yrIopk0c4z9QIcARAA.ZGj22.MtATeg9iPC_2yZrqKjxjFe_AmWpFgelDKBXi17BIS81zQw
- PeZKoDaI9SN4GuyvVJ1Ekr9jNxBI26HwJd8MhuWLcVMqTixd.dIgLodiZL3qJVFz0K10HOyK_ZEd
- 1ohHBW4Vp9giHb3d5q1MZz.vXv_.nB9pUtSEwjGH9F_wVZqArmt2TRjo28N6hvCHtfKhl98bQioN
- JdIpEhf4lkn3XK.LbY0C.083i3brSpG3uyhB13CP6rEgBw0NUkyu5eoKmvy7VSMnWKrJvMc2liSv
- czKCr_7IpTwBhZUpzVapYwwMr00Y06wwZqzc-
+ t=1566093409; bh=7wiUkSJ86VOkepGAHwVEnii71cs817iuqxjlV0yqVSI=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From:Subject;
+ b=FDBsDJtFmpH6IxQ95s6Y2j7LEJfa7aYx/EMpcGvZF9zphoQws5ULRsVy4QkPwrIusdR5nXgYEGOpiNh5N5cHWbJNE7G3iuDHQcLJ4hiv/qlo3Z4eO2s9YjVzxqxEDLBcUBkMYFL0AuoGgY8dDwUBMzCg+12kYFOruHs3GofLZhILFyyQmYhhGgtvrTJ4RIBFmhD+JgrSWUchz9/da4nUatxGj8n/Sq32m9UfwrL+cNPD2ABG6uEwlYh+c6ESnCrCYAj/CBUiMAyzYKs4FR9CEg9T5FIp1sL67kUp2Hpqazl0/v329iklN5yrQDx9wHVOTKQNQQXtHJoFjjGksC9x8Q==
+X-YMail-OSG: wN1O5xEVM1ngY_0OCJpc.KKFC0nz8sQV_1oGH16.37UcLuIPiV1epD2SLzKV5kr
+ YvWjk90u9HZPTE4PzcVZzLa66s2dsJFjWarGCwMQJC2Pe8_GhXHygc7166OJH7wFZ0Fsg0DieynB
+ i3XVcsQLiDI36zx7gprY0k23HH_a0n1Fz1yhnV1lIgupi0rmS9mqfrPcDGqDJhO27_2UGxWjfQtV
+ bv6uR6VXcMl7lPmS.fLhBIN2hQquDxewnVHQApR0_MjUG1uqFbVZHUkp8ZJ8nd8XWq6qsy4PX78P
+ GEIMe7U.2Xifj7cXG9_X2tTV6m3XTzezDWEs7u5nJkXad8R3z1W9aLZZWan7pRMdG9REdt9G7.dv
+ mTRVZOS2rYJ2oWHRC33qlEUcJY_K0qP8PBsWvCPPV7O6rjfEyydqHwLNsdgnLD6F.Y7FZkd5Ur.E
+ MA7aDT1xX92U1eNu3Z1yLdKZJJiR1BAjhtJ0MG93ipeLSu5nhziAlLDIrSFYtahOiGQDpVb_DMsQ
+ GrI7AlhAaYxqC23zfndUNtyFVOTEF1y7cLg3jS3TeBGAF25BEjH8eIOOTwZIH_U_1loRNtMf8kNA
+ co.6vGovVEoHxqKnSmYJCTVKiEZM5AKX5.bdAeFigv01Y4mAHQZbsXXV14iqE2ny0i.fqcujcDO6
+ O5d771SGRqn7Sf3MLTU1ZY9lTfoVo0nk95SBZ2Sm1MLBccA2LrTaUXwjnctoYVNVlkZe0pJF_aMq
+ M6OxOBUl6CvVrIeyhzuXG87XEZf84._yTSW1lUzeADJUy8.Xy573MY8fAH_y.MOK.2gh3J3lj8ID
+ 37PQ3JR4OUpHX9G7gaHQl3AlvorBOucrh7EGLC0ZAIXDxIIvKQ8ZqG5NI2_x22eH.iHmxI2UDQ2J
+ OjtaVK_xXKt0aHtssYJf9tPef.qi6kWA3SG996s17I9.L5146dBl4alPX1HpNv6xZllK1ZyKsjGq
+ UAelQSKTpVwbcbRP5oQpLoFhUQDRRoOorfmzrzsQ2lTLsyRpowvGbsHz_4uXUCNyW_cdNKZ1mtzc
+ fLyv6bhXbwLojuwFoGJ5pMrH9FbVI91iKck5_CfT_Ybv0dpWvRjwyW6EAH4Y50vRYckvRZezbFOc
+ JqncKTaufWjwEJscFJ2fdmg1qra_vMD7zK8Ryl_eF6dmmfUTp3M8ME80ye13VBtP55bvZpgdF0ba
+ OmaNrQSRJjnqrQ9bpkgAbP8rFismYDtVPajt1ju8oKUyUJRCJh6J1WwGVBV27ECLACqJi7dn0m15
+ M5nclAMo0jmUWAd.TSKOpQTRO357B35sVEw--
 Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic316.consmr.mail.gq1.yahoo.com with HTTP; Sun, 18 Aug 2019 01:48:49 +0000
-Received: by smtp411.mail.gq1.yahoo.com (Oath Hermes SMTP Server) with ESMTPA
- ID be81c6d863eaec55ce60d29fea3fc0a8; 
- Sun, 18 Aug 2019 01:48:44 +0000 (UTC)
+ sonic304.consmr.mail.gq1.yahoo.com with HTTP; Sun, 18 Aug 2019 01:56:49 +0000
+Received: by smtp409.mail.gq1.yahoo.com (Oath Hermes SMTP Server) with ESMTPA
+ ID ede1d329074793b6a6ac0c38eeffc50c; 
+ Sun, 18 Aug 2019 01:56:47 +0000 (UTC)
 From: Gao Xiang <hsiangkao@aol.com>
 To: Chao Yu <yuchao0@huawei.com>, Richard Weinberger <richard@nod.at>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  devel@driverdev.osuosl.org, linux-fsdevel@vger.kernel.org
-Subject: [PATCH] staging: erofs: fix an error handling in erofs_readdir()
-Date: Sun, 18 Aug 2019 09:48:35 +0800
-Message-Id: <20190818014835.5874-1-hsiangkao@aol.com>
+Subject: [PATCH v2] staging: erofs: fix an error handling in erofs_readdir()
+Date: Sun, 18 Aug 2019 09:56:31 +0800
+Message-Id: <20190818015631.6982-1-hsiangkao@aol.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190818014835.5874-1-hsiangkao@aol.com>
+References: <20190818014835.5874-1-hsiangkao@aol.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,7 +103,7 @@ is an improper error handling in erofs_readdir().
 
 Let's fix it now.
 
-[1] https://lore.kernel.org/r/1746679415.68815.1566076790942.JavaMail.zimbra@nod.at/
+[1] https://lore.kernel.org/r/1163995781.68824.1566084358245.JavaMail.zimbra@nod.at/
 
 Reported-by: Richard Weinberger <richard@nod.at>
 Fixes: 3aa8ec716e52 ("staging: erofs: add directory operations")
@@ -109,7 +111,10 @@ Cc: <stable@vger.kernel.org> # 4.19+
 Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
 ---
 
-Which is based on the following patch as well
+changelog from v1:
+ - fix the incorrect external link in commit message.
+
+This patch is based on the following patch as well
 https://lore.kernel.org/r/20190816071142.8633-1-gaoxiang25@huawei.com/
 
 and
