@@ -1,80 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A5F4791774
-	for <lists+driverdev-devel@lfdr.de>; Sun, 18 Aug 2019 17:12:20 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id BEB419177C
+	for <lists+driverdev-devel@lfdr.de>; Sun, 18 Aug 2019 17:21:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6AAD587568;
-	Sun, 18 Aug 2019 15:12:18 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E1829204C4;
+	Sun, 18 Aug 2019 15:21:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4O7JhsPFjtXh; Sun, 18 Aug 2019 15:12:18 +0000 (UTC)
+	with ESMTP id y2CPx-qMfbqZ; Sun, 18 Aug 2019 15:21:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D36CE85C8C;
-	Sun, 18 Aug 2019 15:12:17 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7E62A20482;
+	Sun, 18 Aug 2019 15:21:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C2A881BF3D1
- for <devel@linuxdriverproject.org>; Sun, 18 Aug 2019 15:12:15 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A3AA71BF3D1
+ for <devel@linuxdriverproject.org>; Sun, 18 Aug 2019 15:21:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id BEB5185725
- for <devel@linuxdriverproject.org>; Sun, 18 Aug 2019 15:12:15 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 9EDA085722
+ for <devel@linuxdriverproject.org>; Sun, 18 Aug 2019 15:21:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id I47lllGCqddF for <devel@linuxdriverproject.org>;
- Sun, 18 Aug 2019 15:12:14 +0000 (UTC)
+ with ESMTP id T4Gu0j1MooVG for <devel@linuxdriverproject.org>;
+ Sun, 18 Aug 2019 15:21:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from outgoing.mit.edu (outgoing-auth-1.mit.edu [18.9.28.11])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A492A85722
- for <devel@driverdev.osuosl.org>; Sun, 18 Aug 2019 15:12:14 +0000 (UTC)
-Received: from callcc.thunk.org ([12.235.16.3]) (authenticated bits=0)
- (User authenticated as tytso@ATHENA.MIT.EDU)
- by outgoing.mit.edu (8.14.7/8.12.4) with ESMTP id x7IFBt5Z011483
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Sun, 18 Aug 2019 11:11:56 -0400
-Received: by callcc.thunk.org (Postfix, from userid 15806)
- id E4DB04218EF; Sun, 18 Aug 2019 11:11:54 -0400 (EDT)
-Date: Sun, 18 Aug 2019 11:11:54 -0400
-From: "Theodore Y. Ts'o" <tytso@mit.edu>
-To: Richard Weinberger <richard@nod.at>
-Subject: Re: [PATCH] erofs: move erofs out of staging
-Message-ID: <20190818151154.GA32157@mit.edu>
-Mail-Followup-To: "Theodore Y. Ts'o" <tytso@mit.edu>,
- Richard Weinberger <richard@nod.at>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Gao Xiang <hsiangkao@aol.com>, Jan Kara <jack@suse.cz>,
- Chao Yu <yuchao0@huawei.com>, Dave Chinner <david@fromorbit.com>,
- David Sterba <dsterba@suse.cz>, Miao Xie <miaoxie@huawei.com>,
- devel <devel@driverdev.osuosl.org>,
- Stephen Rothwell <sfr@canb.auug.org.au>,
- Darrick <darrick.wong@oracle.com>,
- Christoph Hellwig <hch@infradead.org>,
- Amir Goldstein <amir73il@gmail.com>,
- linux-erofs <linux-erofs@lists.ozlabs.org>,
- Al Viro <viro@zeniv.linux.org.uk>, Jaegeuk Kim <jaegeuk@kernel.org>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- Li Guifu <bluce.liguifu@huawei.com>, Fang Wei <fangwei1@huawei.com>,
- Pavel Machek <pavel@denx.de>,
- linux-fsdevel <linux-fsdevel@vger.kernel.org>,
- Andrew Morton <akpm@linux-foundation.org>,
- torvalds <torvalds@linux-foundation.org>
-References: <20190817082313.21040-1-hsiangkao@aol.com>
- <20190817220706.GA11443@hsiangkao-HP-ZHAN-66-Pro-G1>
- <1163995781.68824.1566084358245.JavaMail.zimbra@nod.at>
- <20190817233843.GA16991@hsiangkao-HP-ZHAN-66-Pro-G1>
- <1405781266.69008.1566116210649.JavaMail.zimbra@nod.at>
- <20190818084521.GA17909@hsiangkao-HP-ZHAN-66-Pro-G1>
- <1133002215.69049.1566119033047.JavaMail.zimbra@nod.at>
- <20190818090949.GA30276@kroah.com>
- <790210571.69061.1566120073465.JavaMail.zimbra@nod.at>
+Received: from mail-io1-f67.google.com (mail-io1-f67.google.com
+ [209.85.166.67])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id EE4A68568D
+ for <devel@driverdev.osuosl.org>; Sun, 18 Aug 2019 15:21:05 +0000 (UTC)
+Received: by mail-io1-f67.google.com with SMTP id s21so15618944ioa.1
+ for <devel@driverdev.osuosl.org>; Sun, 18 Aug 2019 08:21:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=J7fPfB4NOFjj+0lwTkAH+mRK1JzZdb5Bqg7OlEHxdtA=;
+ b=R0EFZvYvIKc5JmdcGmlQ0FqqbB1So/mF4Rcwe8FX/LzTCDRNODTjaQTrlW0yPW/K1U
+ k2WHQ81LGx8F5VYGGReoUNFkC/iY7ccsaebFectXl9u1Bd5NY338oQDwMZm8vmFRkMA/
+ N+Vq7ArXnhDomHyFG7i7nHxWM4FVN+xtbECWlclV0W4I/ocdCyw+ck0F/JwHBtkoM1/C
+ JRoGG0uzVvwuAJw/ahM1DUQRVStblHzktrJAAKRpl33oRUlq3RHSRUgWFy61KA7EGIef
+ yeAjYFsCWO+wePkIRi/AVeDN43Lov/qEjGQENisj6y4LAKUOKDw+JDJay8kw8u2kGm16
+ KFgQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=J7fPfB4NOFjj+0lwTkAH+mRK1JzZdb5Bqg7OlEHxdtA=;
+ b=BGh72ILVBS5Owm9DQq0lI3qGUUu5KPg8acw64DK6RMEhmnD/utpQOBi6RTBiNVFGHN
+ nGOrcK2ZFMcHu8aB+uXEyLvplNgzp8S64y61tAlvFuhYihD3fLP2blcPjSfxwaVCIh0A
+ yCbN5FORA2+Mqg5ZPG/Xi3oVbJPGRrNiUC0AMhw8+IXeSNH0mNWa5+pqV0L/lH15oEfE
+ ++c/9ijIHvXejzGAMkLXgWzMZ0M9mh263Qs3FYu9umoytnFcA26GsOCfRCdWOKJ4mmGs
+ NIVnr+ocoWKOuj8PIYaGuWqTiDGV6GCJCp2MXjqLUkmzcj1umALRxYHmAL5yv0pyaWP1
+ T8gQ==
+X-Gm-Message-State: APjAAAW/agiKMx6KkZw1xn4nQ0TxUeFFbuOtr7rfqmfRZ3aMtgzG0RGZ
+ BTO4DAm7aikVp+BHFOV8T4s=
+X-Google-Smtp-Source: APXvYqzc1d8/aSCCYWyQWiFJB7Ea07frOjKD3EnuRhKWbAM7xuBi2VnCJgfYD5ehDNrof5I9CTIFvQ==
+X-Received: by 2002:a5d:8249:: with SMTP id n9mr20876179ioo.14.1566141665127; 
+ Sun, 18 Aug 2019 08:21:05 -0700 (PDT)
+Received: from localhost.localdomain ([2607:fea8:7a60:20d::10])
+ by smtp.gmail.com with ESMTPSA id i9sm9138681ioe.35.2019.08.18.08.21.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 18 Aug 2019 08:21:04 -0700 (PDT)
+From: Donald Yandt <donald.yandt@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH v2] staging: android: Remove ion device tree bindings from the
+ TODO
+Date: Sun, 18 Aug 2019 11:20:23 -0400
+Message-Id: <20190818152023.891-1-donald.yandt@gmail.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <790210571.69061.1566120073465.JavaMail.zimbra@nod.at>
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,70 +84,43 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Jan Kara <jack@suse.cz>, Amir Goldstein <amir73il@gmail.com>,
- Dave Chinner <david@fromorbit.com>,
- linux-kernel <linux-kernel@vger.kernel.org>, Miao Xie <miaoxie@huawei.com>,
- devel <devel@driverdev.osuosl.org>, Stephen Rothwell <sfr@canb.auug.org.au>,
- Darrick <darrick.wong@oracle.com>, Christoph Hellwig <hch@infradead.org>,
- torvalds <torvalds@linux-foundation.org>, Chao Yu <yuchao0@huawei.com>,
- Al Viro <viro@zeniv.linux.org.uk>, Jaegeuk Kim <jaegeuk@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- David Sterba <dsterba@suse.cz>, Li Guifu <bluce.liguifu@huawei.com>,
- Fang Wei <fangwei1@huawei.com>, Pavel Machek <pavel@denx.de>,
- linux-fsdevel <linux-fsdevel@vger.kernel.org>,
- Andrew Morton <akpm@linux-foundation.org>,
- linux-erofs <linux-erofs@lists.ozlabs.org>
+Cc: devel@driverdev.osuosl.org, tkjos@android.com, linux-kernel@vger.kernel.org,
+ arve@android.com, Donald Yandt <donald.yandt@gmail.com>,
+ joel@joelfernandes.org, maco@android.com, christian@brauner.io
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Aug 18, 2019 at 11:21:13AM +0200, Richard Weinberger wrote:
-> > Not to say that erofs shouldn't be worked on to fix these kinds of
-> > issues, just that it's not an unheard of thing to trust the disk image.
-> > Especially for the normal usage model of erofs, where the whole disk
-> > image is verfied before it is allowed to be mounted as part of the boot
-> > process.
-> 
-> For normal use I see no problem at all.
-> I fear distros that try to mount anything you plug into your USB.
-> 
-> At least SUSE already blacklists erofs:
-> https://github.com/openSUSE/suse-module-tools/blob/master/suse-module-tools.spec#L24
+Commit 23a4388f24f5 ("staging: android: ion: Remove file ion_chunk_heap.c")
+and eadbf7a34e44 ("staging: android: ion: Remove file ion_carveout_heap.c")
+removed the chunk and carveout heaps from ion but left behind the device
+tree bindings for them in the TODO, this patch removes it.
 
-Note that of the mainstream file systems, ext4 and xfs don't guarantee
-that it's safe to blindly take maliciously provided file systems, such
-as those provided by a untrusted container, and mount it on a file
-system without problems.  As I recall, one of the XFS developers
-described file system fuzzing reports as a denial of service attack on
-the developers.  And on the ext4 side, while I try to address them, it
-is by no means considered a high priority work item, and I don't
-consider fixes of fuzzing reports to be worthy of coordinated
-disclosure or a high priority bug to fix.  (I have closed more bugs in
-this area than XFS has, although that may be that ext4 started with
-more file system format bugs than XFS; however given the time to first
-bug in 2017 using American Fuzzy Lop[1] being 5 seconds for btrfs, 10
-seconds for f2fs, 25 seconds for reiserfs, 4 minutes for ntfs, 1h45m
-for xfs, and 2h for ext4, that seems unlikely.)
+Signed-off-by: Donald Yandt <donald.yandt@gmail.com>
+---
+Changes in v2:
+- Referenced previous commits and described the commit in greater detail.
+---
+ drivers/staging/android/TODO | 2 --
+ 1 file changed, 2 deletions(-)
 
-[1] https://events.static.linuxfound.org/sites/events/files/slides/AFL%20filesystem%20fuzzing%2C%20Vault%202016_0.pdf
+diff --git a/drivers/staging/android/TODO b/drivers/staging/android/TODO
+index fbf015cc6d62..767dd98fd92d 100644
+--- a/drivers/staging/android/TODO
++++ b/drivers/staging/android/TODO
+@@ -6,8 +6,6 @@ TODO:
+ 
+ 
+ ion/
+- - Add dt-bindings for remaining heaps (chunk and carveout heaps). This would
+-   involve putting appropriate bindings in a memory node for Ion to find.
+  - Split /dev/ion up into multiple nodes (e.g. /dev/ion/heap0)
+  - Better test framework (integration with VGEM was suggested)
+ 
+-- 
+2.21.0
 
-So holding a file system like EROFS to a higher standard than say,
-ext4, xfs, or btrfs hardly seems fair.  There seems to be a very
-unfortunate tendancy for us to hold new file systems to impossibly
-high standards, when in fact, adding a file system to Linux should
-not, in my opinion, be a remarkable event.  We have a huge number of
-them already, many of which are barely maintained and probably have
-far worse issues than file systems trying to get into the clubhouse.
-
-If a file system is requesting core changes to the VM or block layers,
-sure, we should care about the interfaces.  But this nitpicking about
-whether or not a file system can be trusted in what I consider to be
-COMPLETELY INSANE CONTAINER USE CASES is really not fair.
-
-Cheers,
-
-						- Ted
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
