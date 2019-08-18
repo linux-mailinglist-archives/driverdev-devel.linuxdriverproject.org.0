@@ -1,56 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F0E3A91859
-	for <lists+driverdev-devel@lfdr.de>; Sun, 18 Aug 2019 19:29:46 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 488739186C
+	for <lists+driverdev-devel@lfdr.de>; Sun, 18 Aug 2019 19:44:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AAE59874E4;
-	Sun, 18 Aug 2019 17:29:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 86BC9204C4;
+	Sun, 18 Aug 2019 17:44:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Wki4QdM69F1X; Sun, 18 Aug 2019 17:29:44 +0000 (UTC)
+	with ESMTP id WA2ebDxzZAY0; Sun, 18 Aug 2019 17:44:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8CFF1873E3;
-	Sun, 18 Aug 2019 17:29:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id EFFBF20449;
+	Sun, 18 Aug 2019 17:44:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id AFB891BF867
- for <devel@linuxdriverproject.org>; Sun, 18 Aug 2019 17:29:41 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8B74D1BF31A
+ for <devel@linuxdriverproject.org>; Sun, 18 Aug 2019 17:44:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id ABC2F816F9
- for <devel@linuxdriverproject.org>; Sun, 18 Aug 2019 17:29:41 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 862CD86FCD
+ for <devel@linuxdriverproject.org>; Sun, 18 Aug 2019 17:44:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PNb7kCwGG6UR for <devel@linuxdriverproject.org>;
- Sun, 18 Aug 2019 17:29:41 +0000 (UTC)
+ with ESMTP id y5PRDtP+bXC5 for <devel@linuxdriverproject.org>;
+ Sun, 18 Aug 2019 17:44:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 23E0C85404
- for <devel@driverdev.osuosl.org>; Sun, 18 Aug 2019 17:29:41 +0000 (UTC)
-Received: from sol.localdomain (c-24-5-143-220.hsd1.ca.comcast.net
- [24.5.143.220])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 480E22146E;
- Sun, 18 Aug 2019 17:29:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1566149381;
- bh=PgJleJMkSwlg249xRQ3F/CLBlnJ55j1fqyWspV/sxSo=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=FekiGl/L6shXdxivYe+rkyONVdHXfQ6Afmbfr/fNBY+CHkNu25IEPWPt56UlqUHno
- bFpMcqrtl7K2u7xAZD9UH+7fT8gKqlVaSimOuXQXrY2NSWuSlGZnV8E0f/h03HFPB1
- o0+oYsbdFDrx6uD30QvqnfFZ6AXv0QVAO+i0O/fc=
-Date: Sun, 18 Aug 2019 10:29:38 -0700
-From: Eric Biggers <ebiggers@kernel.org>
+Received: from outgoing.mit.edu (outgoing-auth-1.mit.edu [18.9.28.11])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4061C86D7A
+ for <devel@driverdev.osuosl.org>; Sun, 18 Aug 2019 17:44:13 +0000 (UTC)
+Received: from callcc.thunk.org ([12.235.16.3]) (authenticated bits=0)
+ (User authenticated as tytso@ATHENA.MIT.EDU)
+ by outgoing.mit.edu (8.14.7/8.12.4) with ESMTP id x7IHhsaJ022921
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Sun, 18 Aug 2019 13:43:56 -0400
+Received: by callcc.thunk.org (Postfix, from userid 15806)
+ id 494464218EF; Sun, 18 Aug 2019 13:43:54 -0400 (EDT)
+Date: Sun, 18 Aug 2019 13:43:54 -0400
+From: "Theodore Y. Ts'o" <tytso@mit.edu>
 To: Christoph Hellwig <hch@infradead.org>
 Subject: Re: [PATCH] erofs: move erofs out of staging
-Message-ID: <20190818172938.GA14413@sol.localdomain>
-Mail-Followup-To: Christoph Hellwig <hch@infradead.org>,
- "Theodore Y. Ts'o" <tytso@mit.edu>,
+Message-ID: <20190818174354.GA12940@mit.edu>
+Mail-Followup-To: "Theodore Y. Ts'o" <tytso@mit.edu>,
+ Christoph Hellwig <hch@infradead.org>,
  Richard Weinberger <richard@nod.at>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Gao Xiang <hsiangkao@aol.com>, Jan Kara <jack@suse.cz>,
@@ -68,7 +62,9 @@ Mail-Followup-To: Christoph Hellwig <hch@infradead.org>,
  linux-fsdevel <linux-fsdevel@vger.kernel.org>,
  Andrew Morton <akpm@linux-foundation.org>,
  torvalds <torvalds@linux-foundation.org>
-References: <20190817233843.GA16991@hsiangkao-HP-ZHAN-66-Pro-G1>
+References: <20190817220706.GA11443@hsiangkao-HP-ZHAN-66-Pro-G1>
+ <1163995781.68824.1566084358245.JavaMail.zimbra@nod.at>
+ <20190817233843.GA16991@hsiangkao-HP-ZHAN-66-Pro-G1>
  <1405781266.69008.1566116210649.JavaMail.zimbra@nod.at>
  <20190818084521.GA17909@hsiangkao-HP-ZHAN-66-Pro-G1>
  <1133002215.69049.1566119033047.JavaMail.zimbra@nod.at>
@@ -76,12 +72,10 @@ References: <20190817233843.GA16991@hsiangkao-HP-ZHAN-66-Pro-G1>
  <790210571.69061.1566120073465.JavaMail.zimbra@nod.at>
  <20190818151154.GA32157@mit.edu>
  <20190818155812.GB13230@infradead.org>
- <20190818161638.GE1118@sol.localdomain>
- <20190818162201.GA16269@infradead.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190818162201.GA16269@infradead.org>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+In-Reply-To: <20190818155812.GB13230@infradead.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,53 +95,43 @@ Cc: Jan Kara <jack@suse.cz>, Amir Goldstein <amir73il@gmail.com>,
  Darrick <darrick.wong@oracle.com>, Richard Weinberger <richard@nod.at>,
  torvalds <torvalds@linux-foundation.org>, Chao Yu <yuchao0@huawei.com>,
  Al Viro <viro@zeniv.linux.org.uk>, Jaegeuk Kim <jaegeuk@kernel.org>,
- "Theodore Y. Ts'o" <tytso@mit.edu>, Pavel Machek <pavel@denx.de>,
- David Sterba <dsterba@suse.cz>, Li Guifu <bluce.liguifu@huawei.com>,
- Fang Wei <fangwei1@huawei.com>,
+ Pavel Machek <pavel@denx.de>, David Sterba <dsterba@suse.cz>,
+ Li Guifu <bluce.liguifu@huawei.com>, Fang Wei <fangwei1@huawei.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  linux-fsdevel <linux-fsdevel@vger.kernel.org>,
  Andrew Morton <akpm@linux-foundation.org>,
  linux-erofs <linux-erofs@lists.ozlabs.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Aug 18, 2019 at 09:22:01AM -0700, Christoph Hellwig wrote:
-> On Sun, Aug 18, 2019 at 09:16:38AM -0700, Eric Biggers wrote:
-> > Ted's observation was about maliciously-crafted filesystems, though, so
-> > integrity-only features such as metadata checksums are irrelevant.  Also the
-> > filesystem version is irrelevant; anything accepted by the kernel code (even if
-> 
-> I think allowing users to mount file systems (any of ours) without
-> privilege is a rather bad idea.  But that doesn't mean we should not be
-> as robust as we can.  Optionally disabling support for legacy formats
-> at compile and/or runtime is something we should actively look into as
-> well.
-> 
-> > it's legacy/deprecated) is open attack surface.
-> > 
-> > I personally consider it *mandatory* that we deal with this stuff.  But I can
-> > understand that we don't do a good job at it, so we shouldn't hold a new
-> > filesystem to an unfairly high standard relative to other filesystems...
-> 
-> I very much disagree.  We can't really force anyone to fix up old file
-> systems.  But we can very much hold new ones to (slightly) higher
-> standards.  Thats the only way to get the average quality up.  Some as
-> for things like code style - we can't magically fix up all old stuff,
-> but we can and usually do hold new code to higher standards.  (Often not
-> to standards as high as I'd personally prefer, btw).
-
-Not sure what you're even disagreeing with, as I *do* expect new filesystems to
-be held to a high standard, and to be written with the assumption that the
-on-disk data may be corrupted or malicious.  We just can't expect the bar to be
-so high (e.g. no bugs) that it's never been attained by *any* filesystem even
-after years/decades of active development.  If the developers were careful, the
-code generally looks robust, and they are willing to address such bugs as they
-are found, realistically that's as good as we can expect to get...
-
-- Eric
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gU3VuLCBBdWcgMTgsIDIwMTkgYXQgMDg6NTg6MTJBTSAtMDcwMCwgQ2hyaXN0b3BoIEhlbGx3
+aWcgd3JvdGU6Cj4gT24gU3VuLCBBdWcgMTgsIDIwMTkgYXQgMTE6MTE6NTRBTSAtMDQwMCwgVGhl
+b2RvcmUgWS4gVHMnbyB3cm90ZToKPiA+IE5vdGUgdGhhdCBvZiB0aGUgbWFpbnN0cmVhbSBmaWxl
+IHN5c3RlbXMsIGV4dDQgYW5kIHhmcyBkb24ndCBndWFyYW50ZWUKPiA+IHRoYXQgaXQncyBzYWZl
+IHRvIGJsaW5kbHkgdGFrZSBtYWxpY2lvdXNseSBwcm92aWRlZCBmaWxlIHN5c3RlbXMsIHN1Y2gK
+PiA+IGFzIHRob3NlIHByb3ZpZGVkIGJ5IGEgdW50cnVzdGVkIGNvbnRhaW5lciwgYW5kIG1vdW50
+IGl0IG9uIGEgZmlsZQo+ID4gc3lzdGVtIHdpdGhvdXQgcHJvYmxlbXMuICBBcyBJIHJlY2FsbCwg
+b25lIG9mIHRoZSBYRlMgZGV2ZWxvcGVycwo+ID4gZGVzY3JpYmVkIGZpbGUgc3lzdGVtIGZ1enpp
+bmcgcmVwb3J0cyBhcyBhIGRlbmlhbCBvZiBzZXJ2aWNlIGF0dGFjayBvbgo+ID4gdGhlIGRldmVs
+b3BlcnMuCj4gCj4gSSB0aGluayB0aGlzIGdyZWF0bHkgbWlzcmVwcmVzZW50cyB0aGUgZ2VuZXJh
+bCBhdHRpdHV0ZSBvZiB0aGUgWEZTCj4gZGV2ZWxvcGVycy4gIFdlIHRha2Ugc2FuaXR5IGNoZWNr
+cyBmb3IgdGhlIG1vZGVybiB2NSBvbiBkaXNrIGZvcm1hdAo+IHZlcnkgc2VyaWVzLCBhbmQgcHV0
+IGEgbG90IG9mIGVmZm9ydCBpbnRvIGhhbmRsaW5nIGNvcnJ1cHRlZCBmaWxlCj4gc3lzdGVtcyBh
+cyBnb29kIGFzIHBvc3NpYmxlLCBhbHRob3VnaCB0aGVyZSBhcmUgb2YgY291cnNlIG5vIGd1YXJh
+bnRlZdGVLgo+IAo+IFRoZSBxdW90ZSB0aGF0IHlvdSd2ZSB0YWtlbiBvdXQgb2YgY29udGV4dCBp
+cyBmb3IgdGhlIGxlZ2FjeSB2NCBmb3JtYXQKPiB0aGF0IGhhcyBubyBjaGVja3N1bXMgYW5kIG90
+aGVyIGludGVncml0eSBmZWF0dXJlcy4KCkFjdHVhbGx5LCB3aGF0IFByb2YuIEtpbSdzIHJlc2Vh
+cmNoIGdyb3VwIHdhcyBkb2luZyB3YXMgdGFraW5nIHRoZQpsYXRlc3QgZmlsZSBzeXN0ZW0gZm9y
+bWF0cyAoZm9yIGV4dDQgYW5kIHhmcykgYW5kIGZpeGluZyB1cCB0aGUKY2hlY2tzdW0gYWZ0ZXIg
+ZnV6emluZyB0aGUgbWV0YWRhdGEgYmxvY2tzLiAgVGhlIGdvYWwgd2FzIHRvIGZpbmQKcG90ZW50
+aWFsIHNlY3VyaXR5IHZ1bG5lcmFiaWxpdGllcywgbm90IHRvIHNlZSBpZiBmaWxlIHN5c3RlbXMg
+d291bGQKY3Jhc2ggaWYgZmVkIGludmFsaWQgaW5wdXQuICBBdCBsZWFzdCBmb3IgZXh0NCwgYXQg
+bGVhc3Qgb25lIG9mClByb2YuIEtpbSdzIGZ1enppbmcgcmVzdWx0cyB3YXMgb25lIHRoYXQgdGhh
+dCBJIGJlbGlldmUgY291bGQgaGF2ZQpiZWVuIGxldmVyYWdlZCBpbnRvIGEgc3RhY2sgb3ZlcmZs
+b3cgYXR0YWNrLiAgSSBjYW4ndCBzcGVhayB0byBoaXMKcmVzdWx0cyB3aXRoIHJlc3BlY3QgdG8g
+WEZTLCBzaW5jZSBJIGRpZG4ndCBsb29rIGF0IHRoZW0uCgpDaGVlcnMsCgoJCQkJCS0gVGVkCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxp
+bmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGlu
+dXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
