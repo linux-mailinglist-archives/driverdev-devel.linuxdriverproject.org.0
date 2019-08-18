@@ -1,56 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B0978915AC
-	for <lists+driverdev-devel@lfdr.de>; Sun, 18 Aug 2019 11:04:02 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 06966915BC
+	for <lists+driverdev-devel@lfdr.de>; Sun, 18 Aug 2019 11:09:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9FCE1841DA;
-	Sun, 18 Aug 2019 09:04:00 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1C87C835CE;
+	Sun, 18 Aug 2019 09:09:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uDtVrEuwwsTH; Sun, 18 Aug 2019 09:04:00 +0000 (UTC)
+	with ESMTP id BZM42jowUDvh; Sun, 18 Aug 2019 09:09:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6AF4081439;
-	Sun, 18 Aug 2019 09:03:59 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CED6F83527;
+	Sun, 18 Aug 2019 09:09:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 86D701BF3CC
- for <devel@linuxdriverproject.org>; Sun, 18 Aug 2019 09:03:57 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 062801BF376
+ for <devel@linuxdriverproject.org>; Sun, 18 Aug 2019 09:09:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 830E885742
- for <devel@linuxdriverproject.org>; Sun, 18 Aug 2019 09:03:57 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 01EDD835CE
+ for <devel@linuxdriverproject.org>; Sun, 18 Aug 2019 09:09:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cesCR_OEOcK8 for <devel@linuxdriverproject.org>;
- Sun, 18 Aug 2019 09:03:56 +0000 (UTC)
+ with ESMTP id q-QuigZ_1Fs5 for <devel@linuxdriverproject.org>;
+ Sun, 18 Aug 2019 09:09:52 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from lithops.sigma-star.at (lithops.sigma-star.at [195.201.40.130])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id DA19D85184
- for <devel@driverdev.osuosl.org>; Sun, 18 Aug 2019 09:03:55 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by lithops.sigma-star.at (Postfix) with ESMTP id 47E59608311C;
- Sun, 18 Aug 2019 11:03:54 +0200 (CEST)
-Received: from lithops.sigma-star.at ([127.0.0.1])
- by localhost (lithops.sigma-star.at [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id oPN-VV6EAqFe; Sun, 18 Aug 2019 11:03:54 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by lithops.sigma-star.at (Postfix) with ESMTP id D4E906083139;
- Sun, 18 Aug 2019 11:03:53 +0200 (CEST)
-Received: from lithops.sigma-star.at ([127.0.0.1])
- by localhost (lithops.sigma-star.at [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id 6BRG8VH4p6ay; Sun, 18 Aug 2019 11:03:53 +0200 (CEST)
-Received: from lithops.sigma-star.at (lithops.sigma-star.at [195.201.40.130])
- by lithops.sigma-star.at (Postfix) with ESMTP id 369BA608311C;
- Sun, 18 Aug 2019 11:03:53 +0200 (CEST)
-Date: Sun, 18 Aug 2019 11:03:53 +0200 (CEST)
-From: Richard Weinberger <richard@nod.at>
-To: Gao Xiang <hsiangkao@aol.com>
-Message-ID: <1133002215.69049.1566119033047.JavaMail.zimbra@nod.at>
-In-Reply-To: <20190818084521.GA17909@hsiangkao-HP-ZHAN-66-Pro-G1>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 38CDE83509
+ for <devel@driverdev.osuosl.org>; Sun, 18 Aug 2019 09:09:52 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 5F3792173B;
+ Sun, 18 Aug 2019 09:09:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1566119392;
+ bh=zJeFs7U/OKJWGGAMgwGEyd/YRXXtatS0kuwxKva2EtI=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=0UZqnSyoKKQI2GubQ7wUWVIzzCcywbZk0Vo5WOBVxQoz0OxWGEiiXXyd2WEKHQbN8
+ +nUz3Fi4lJqCIQKluFrSEk+kOlmFp23ugbEb7oiWGNF8pk3mmYPGEdXDrRd6Z4NSDn
+ /sYRTOi+IAPVeIgSOSpwJEki9pCCk8/4CidsmOIE=
+Date: Sun, 18 Aug 2019 11:09:49 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Richard Weinberger <richard@nod.at>
+Subject: Re: [PATCH] erofs: move erofs out of staging
+Message-ID: <20190818090949.GA30276@kroah.com>
 References: <20190817082313.21040-1-hsiangkao@aol.com>
  <1746679415.68815.1566076790942.JavaMail.zimbra@nod.at>
  <20190817220706.GA11443@hsiangkao-HP-ZHAN-66-Pro-G1>
@@ -58,12 +56,11 @@ References: <20190817082313.21040-1-hsiangkao@aol.com>
  <20190817233843.GA16991@hsiangkao-HP-ZHAN-66-Pro-G1>
  <1405781266.69008.1566116210649.JavaMail.zimbra@nod.at>
  <20190818084521.GA17909@hsiangkao-HP-ZHAN-66-Pro-G1>
-Subject: Re: [PATCH] erofs: move erofs out of staging
+ <1133002215.69049.1566119033047.JavaMail.zimbra@nod.at>
 MIME-Version: 1.0
-X-Originating-IP: [195.201.40.130]
-X-Mailer: Zimbra 8.8.12_GA_3807 (ZimbraWebClient - FF60 (Linux)/8.8.12_GA_3809)
-Thread-Topic: erofs: move erofs out of staging
-Thread-Index: zPcjjr8wUC8isJCGfxMEFAfBoxlmEA==
+Content-Disposition: inline
+In-Reply-To: <1133002215.69049.1566119033047.JavaMail.zimbra@nod.at>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,35 +73,56 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Jan Kara <jack@suse.cz>, Chao Yu <yuchao0@huawei.com>,
- Dave Chinner <david@fromorbit.com>, David Sterba <dsterba@suse.cz>,
- Miao Xie <miaoxie@huawei.com>, devel <devel@driverdev.osuosl.org>,
- Stephen Rothwell <sfr@canb.auug.org.au>, Darrick <darrick.wong@oracle.com>,
- Christoph Hellwig <hch@infradead.org>, Amir Goldstein <amir73il@gmail.com>,
- linux-erofs <linux-erofs@lists.ozlabs.org>, Al Viro <viro@zeniv.linux.org.uk>,
+Cc: Jan Kara <jack@suse.cz>, Amir Goldstein <amir73il@gmail.com>,
+ Dave Chinner <david@fromorbit.com>,
+ linux-kernel <linux-kernel@vger.kernel.org>, Miao Xie <miaoxie@huawei.com>,
+ devel <devel@driverdev.osuosl.org>, Stephen Rothwell <sfr@canb.auug.org.au>,
+ Darrick <darrick.wong@oracle.com>, Christoph Hellwig <hch@infradead.org>,
+ Chao Yu <yuchao0@huawei.com>, Al Viro <viro@zeniv.linux.org.uk>,
  Jaegeuk Kim <jaegeuk@kernel.org>, tytso <tytso@mit.edu>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel <linux-kernel@vger.kernel.org>,
+ torvalds <torvalds@linux-foundation.org>, David Sterba <dsterba@suse.cz>,
  Li Guifu <bluce.liguifu@huawei.com>, Fang Wei <fangwei1@huawei.com>,
  Pavel Machek <pavel@denx.de>, linux-fsdevel <linux-fsdevel@vger.kernel.org>,
  Andrew Morton <akpm@linux-foundation.org>,
- torvalds <torvalds@linux-foundation.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ linux-erofs <linux-erofs@lists.ozlabs.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-LS0tLS0gVXJzcHLDvG5nbGljaGUgTWFpbCAtLS0tLQo+IEkgYWdyZWUgd2l0aCB5b3UsIGJ1dCB3
-aGF0IGNhbiB3ZSBkbyBub3cgaXMgdHJ5aW5nIG91ciBiZXN0IHRvIGZ1enoKPiBhbGwgdGhlIGZp
-ZWxkcy4KPiAKPiBTbywgd2hhdCBpcyB5b3VyIG9waW5pb24gYWJvdXQgRVJPRlM/CgpBbGwgSSdt
-IHNheWluZyBpcyB0aGF0IHlvdSBzaG91bGQgbm90IGJsaW5kbHkgdHJ1c3QgdGhlIGRpc2suCgpB
-bm90aGVyIHRoaW5nIHRoYXQgcmFpc2VzIG15IGF0dGVudGlvbiBpcyBpbiBzdXBlcmJsb2NrX3Jl
-YWQoKToKICAgICAgICBtZW1jcHkoc2JpLT52b2x1bWVfbmFtZSwgbGF5b3V0LT52b2x1bWVfbmFt
-ZSwKICAgICAgICAgICAgICAgc2l6ZW9mKGxheW91dC0+dm9sdW1lX25hbWUpKTsKCldoZXJlIGRv
-IHlvdSBjaGVjayB3aGV0aGVyIC0+dm9sdW1lX25hbWUgaGFzIGEgTlVMIHRlcm1pbmF0b3I/CkN1
-cnJlbnRseSB0aGlzIGZpZWxkIGhhcyBubyB1c2VyLCBtYXliZSB3aWxsIGFkZCBhIGNoZWNrIHVw
-b24gdXNhZ2UuCkJ1dCB0aGlzIGtpbmQgb2YgdGhpbmdzIG1ha2VzIG1lIHdvbmRlci4KClRoYW5r
-cywKLy9yaWNoYXJkCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6
-Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZl
-cmRldi1kZXZlbAo=
+On Sun, Aug 18, 2019 at 11:03:53AM +0200, Richard Weinberger wrote:
+> ----- Urspr=FCngliche Mail -----
+> > I agree with you, but what can we do now is trying our best to fuzz
+> > all the fields.
+> > =
+
+> > So, what is your opinion about EROFS?
+> =
+
+> All I'm saying is that you should not blindly trust the disk.
+> =
+
+> Another thing that raises my attention is in superblock_read():
+>         memcpy(sbi->volume_name, layout->volume_name,
+>                sizeof(layout->volume_name));
+> =
+
+> Where do you check whether ->volume_name has a NUL terminator?
+> Currently this field has no user, maybe will add a check upon usage.
+> But this kind of things makes me wonder.
+
+You have looked at reiserfs lately, right?  :)
+
+Not to say that erofs shouldn't be worked on to fix these kinds of
+issues, just that it's not an unheard of thing to trust the disk image.
+Especially for the normal usage model of erofs, where the whole disk
+image is verfied before it is allowed to be mounted as part of the boot
+process.
+
+thanks,
+
+greg k-h
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
