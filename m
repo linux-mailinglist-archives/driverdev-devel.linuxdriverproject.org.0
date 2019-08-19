@@ -1,60 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AE3C991CA5
-	for <lists+driverdev-devel@lfdr.de>; Mon, 19 Aug 2019 07:40:02 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AFE50844C2;
-	Mon, 19 Aug 2019 05:40:00 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XmxriNHerYmW; Mon, 19 Aug 2019 05:39:59 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D724D84069;
-	Mon, 19 Aug 2019 05:39:58 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5D38E1BF41B
- for <devel@linuxdriverproject.org>; Mon, 19 Aug 2019 05:39:56 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0867091C98
+	for <lists+driverdev-devel@lfdr.de>; Mon, 19 Aug 2019 07:35:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 593A52042C
- for <devel@linuxdriverproject.org>; Mon, 19 Aug 2019 05:39:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 808F020468;
+	Mon, 19 Aug 2019 05:35:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id sbksR1LcbyJR; Mon, 19 Aug 2019 05:35:53 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 29DB82043D;
+	Mon, 19 Aug 2019 05:35:47 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 952501BF41B
+ for <devel@linuxdriverproject.org>; Mon, 19 Aug 2019 05:35:44 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 910D887861
+ for <devel@linuxdriverproject.org>; Mon, 19 Aug 2019 05:35:44 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id svljwktwZSMt for <devel@linuxdriverproject.org>;
- Mon, 19 Aug 2019 05:39:55 +0000 (UTC)
+ with ESMTP id hUevbU+6y4eY for <devel@linuxdriverproject.org>;
+ Mon, 19 Aug 2019 05:35:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by silver.osuosl.org (Postfix) with ESMTPS id 56F971FDFB
- for <devel@driverdev.osuosl.org>; Mon, 19 Aug 2019 05:39:55 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 18 Aug 2019 22:39:55 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,403,1559545200"; d="scan'208";a="378083046"
-Received: from genxtest-ykzhao.sh.intel.com (HELO [10.239.143.71])
- ([10.239.143.71])
- by fmsmga006.fm.intel.com with ESMTP; 18 Aug 2019 22:39:53 -0700
-Subject: Re: [RFC PATCH 08/15] drivers/acrn: add VM memory management for ACRN
- char device
-To: Dan Carpenter <dan.carpenter@oracle.com>
-References: <1565922356-4488-1-git-send-email-yakui.zhao@intel.com>
- <1565922356-4488-9-git-send-email-yakui.zhao@intel.com>
- <20190816124757.GW1974@kadam>
-From: "Zhao, Yakui" <yakui.zhao@intel.com>
-Message-ID: <8b909c22-3873-2b5d-4845-1fee1a5d81ce@intel.com>
-Date: Mon, 19 Aug 2019 13:32:54 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.6.0
+Received: from huawei.com (szxga08-in.huawei.com [45.249.212.255])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0EE1A87860
+ for <devel@driverdev.osuosl.org>; Mon, 19 Aug 2019 05:35:42 +0000 (UTC)
+Received: from DGGEMM406-HUB.china.huawei.com (unknown [172.30.72.57])
+ by Forcepoint Email with ESMTP id 1A406362A16C0B40E993;
+ Mon, 19 Aug 2019 13:35:38 +0800 (CST)
+Received: from dggeme762-chm.china.huawei.com (10.3.19.108) by
+ DGGEMM406-HUB.china.huawei.com (10.3.20.214) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Mon, 19 Aug 2019 13:35:37 +0800
+Received: from 138 (10.175.124.28) by dggeme762-chm.china.huawei.com
+ (10.3.19.108) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1591.10; Mon, 19
+ Aug 2019 13:35:36 +0800
+Date: Mon, 19 Aug 2019 13:52:43 +0800
+From: Gao Xiang <gaoxiang25@huawei.com>
+To: Joe Perches <joe@perches.com>
+Subject: Re: [PATCH] erofs: Use common kernel logging style
+Message-ID: <20190819055243.GB30459@138>
+References: <20190817082313.21040-1-hsiangkao@aol.com>
+ <1746679415.68815.1566076790942.JavaMail.zimbra@nod.at>
+ <20190817220706.GA11443@hsiangkao-HP-ZHAN-66-Pro-G1>
+ <1163995781.68824.1566084358245.JavaMail.zimbra@nod.at>
+ <20190817233843.GA16991@hsiangkao-HP-ZHAN-66-Pro-G1>
+ <1405781266.69008.1566116210649.JavaMail.zimbra@nod.at>
+ <20190818084521.GA17909@hsiangkao-HP-ZHAN-66-Pro-G1>
+ <1133002215.69049.1566119033047.JavaMail.zimbra@nod.at>
+ <20190818092839.GA18975@hsiangkao-HP-ZHAN-66-Pro-G1>
+ <52e4e3a7f160f5d2825bec04a3bc4eb4b0d1165a.camel@perches.com>
 MIME-Version: 1.0
-In-Reply-To: <20190816124757.GW1974@kadam>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <52e4e3a7f160f5d2825bec04a3bc4eb4b0d1165a.camel@perches.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
+X-Originating-IP: [10.175.124.28]
+X-ClientProxiedBy: dggeme708-chm.china.huawei.com (10.1.199.104) To
+ dggeme762-chm.china.huawei.com (10.3.19.108)
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,94 +76,559 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Li@osuosl.org, x86@kernel.org,
- linux-kernel@vger.kernel.org, Jason Chen CJ <jason.cj.chen@intel.com>,
- Liu Shuo <shuo.a.liu@intel.com>, Fei <lei1.li@intel.com>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: devel <devel@driverdev.osuosl.org>, Chao Yu <yuchao0@huawei.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Miao Xie <miaoxie@huawei.com>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ Li Guifu <bluce.liguifu@huawei.com>, Fang Wei <fangwei1@huawei.com>,
+ linux-fsdevel <linux-fsdevel@vger.kernel.org>,
+ linux-erofs <linux-erofs@lists.ozlabs.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-CgpPbiAyMDE55bm0MDjmnIgxNuaXpSAyMDo1OCwgRGFuIENhcnBlbnRlciB3cm90ZToKPiBPbiBG
-cmksIEF1ZyAxNiwgMjAxOSBhdCAxMDoyNTo0OUFNICswODAwLCBaaGFvIFlha3VpIHdyb3RlOgo+
-PiAraW50IGh1Z2VwYWdlX21hcF9ndWVzdChzdHJ1Y3QgYWNybl92bSAqdm0sIHN0cnVjdCB2bV9t
-ZW1tYXAgKm1lbW1hcCkKPj4gK3sKPj4gKwlzdHJ1Y3QgcGFnZSAqcGFnZSA9IE5VTEwsICpyZWdp
-b25zX2J1Zl9wZyA9IE5VTEw7Cj4+ICsJdW5zaWduZWQgbG9uZyBsZW4sIGd1ZXN0X2dwYSwgdm1h
-Owo+PiArCXN0cnVjdCB2bV9tZW1vcnlfcmVnaW9uICpyZWdpb25fYXJyYXk7Cj4+ICsJc3RydWN0
-IHNldF9yZWdpb25zICpyZWdpb25zOwo+PiArCWludCBtYXhfc2l6ZSA9IFBBR0VfU0laRSAvIHNp
-emVvZihzdHJ1Y3Qgdm1fbWVtb3J5X3JlZ2lvbik7Cj4+ICsJaW50IHJldDsKPj4gKwo+PiArCWlm
-ICghdm0gfHwgIW1lbW1hcCkKPj4gKwkJcmV0dXJuIC1FSU5WQUw7Cj4+ICsKPj4gKwlsZW4gPSBt
-ZW1tYXAtPmxlbjsKPj4gKwl2bWEgPSBtZW1tYXAtPnZtYV9iYXNlOwo+PiArCWd1ZXN0X2dwYSA9
-IG1lbW1hcC0+Z3BhOwo+PiArCj4+ICsJLyogcHJlcGFyZSBzZXRfbWVtb3J5X3JlZ2lvbnMgaW5m
-byAqLwo+PiArCXJlZ2lvbnNfYnVmX3BnID0gYWxsb2NfcGFnZShHRlBfS0VSTkVMKTsKPj4gKwlp
-ZiAoIXJlZ2lvbnNfYnVmX3BnKQo+PiArCQlyZXR1cm4gLUVOT01FTTsKPj4gKwo+PiArCXJlZ2lv
-bnMgPSBremFsbG9jKHNpemVvZigqcmVnaW9ucyksIEdGUF9LRVJORUwpOwo+PiArCWlmICghcmVn
-aW9ucykgewo+PiArCQlfX2ZyZWVfcGFnZShyZWdpb25zX2J1Zl9wZyk7Cj4+ICsJCXJldHVybiAt
-RU5PTUVNOwo+IAo+IEl0J3MgYmV0dGVyIHRvIGRvIGEgZ290byBlcnJfZnJlZV9yZWdpb25zX2J1
-ZiBoZXJlLiAgTW9yZSBjb21tZW50cwo+IGJlbG93Lgo+IAo+PiArCX0KPj4gKwlyZWdpb25zLT5t
-cl9udW0gPSAwOwo+PiArCXJlZ2lvbnMtPnZtaWQgPSB2bS0+dm1pZDsKPj4gKwlyZWdpb25zLT5y
-ZWdpb25zX2dwYSA9IHBhZ2VfdG9fcGh5cyhyZWdpb25zX2J1Zl9wZyk7Cj4+ICsJcmVnaW9uX2Fy
-cmF5ID0gcGFnZV90b192aXJ0KHJlZ2lvbnNfYnVmX3BnKTsKPj4gKwo+PiArCXdoaWxlIChsZW4g
-PiAwKSB7Cj4+ICsJCXVuc2lnbmVkIGxvbmcgdm0wX2dwYSwgcGFnZXNpemU7Cj4+ICsKPj4gKwkJ
-cmV0ID0gZ2V0X3VzZXJfcGFnZXNfZmFzdCh2bWEsIDEsIDEsICZwYWdlKTsKPj4gKwkJaWYgKHVu
-bGlrZWx5KHJldCAhPSAxKSB8fCAoIXBhZ2UpKSB7Cj4+ICsJCQlwcl9lcnIoImZhaWxlZCB0byBw
-aW4gaHVnZSBwYWdlIVxuIik7Cj4+ICsJCQlyZXQgPSAtRU5PTUVNOwo+PiArCQkJZ290byBlcnI7
-Cj4gCj4gZ290byBlcnIgaXMgYSByZWQgZmxhZy4gIEl0J3MgYmV0dGVyIGlmIGVycm9yIGxhYmVs
-cyBkbyBvbmUgc3BlY2lmaWMKPiBuYW1lZCB0aGluZyBsaWtlOgo+IAo+IGVycl9yZWdpb25zOgo+
-IAlrZnJlZShyZWdpb25zKTsKPiBlcnJfZnJlZV9yZWdpb25zX2J1ZjoKPiAJX19mcmVlX3BhZ2Uo
-cmVnaW9uc19idWZfcGcpOwo+IAo+IFdlIHNob3VsZCB1bndpbmQgaW4gdGhlIG9wcG9zaXRlL21p
-cnJvciBvcmRlciBmcm9tIGhvdyB0aGluZ3Mgd2VyZQo+IGFsbG9jYXRlZC4gIFRoZW4gd2UgY2Fu
-IHJlbW92ZSB0aGUgaWYgc3RhdGVtZW50cyBpbiB0aGUgZXJyb3IgaGFuZGxpbmcuCgpUaGFua3Mg
-Zm9yIHRoZSByZXZpZXcuCgpXaWxsIGZvbGxvdyB5b3VyIHN1Z2dlc3Rpb24gdG8gdW53aW5kIHRo
-ZSBlcnJvciBoYW5kbGluZy4KCj4gCj4gSW4gdGhpcyBzaXR1YXRpb24sIHNheSB0aGUgdXNlciB0
-cmlnZ2VycyBhbiAtRUZBVUxUIGluCj4gZ2V0X3VzZXJfcGFnZXNfZmFzdCgpIGluIHRoZSBzZWNv
-bmQgaXRlcmF0aW9uIHRocm91Z2ggdGhlIGxvb3AuICBUaGF0Cj4gbWVhbnMgdGhhdCAicGFnZSIg
-aXMgdGhlIG5vbi1OVUxMIHBhZ2UgZnJvbSB0aGUgcHJldmlvdXMgaXRlcmF0aW9uLiAgV2UKPiBo
-YXZlIGFscmVhZHkgYWRkZWQgaXQgdG8gYWRkX2d1ZXN0X21hcCgpLiAgQnV0IG5vdyB3ZSdyZSBm
-cmVlaW5nIGl0Cj4gd2l0aG91dCByZW1vdmluZyBpdCBmcm9tIHRoZSBtYXAgc28gcHJvYmFibHkg
-aXQgbGVhZHMgdG8gYSB1c2UgYWZ0ZXIKPiBmcmVlLgo+IAo+IFRoZSBiZXN0IHdheSB0byB3cml0
-ZSB0aGUgZXJyb3IgaGFuZGxpbmcgaW4gYSBsb29wIGxpa2UgdGhpcyBpcyB0bwo+IGNsZWFuIHVw
-IHRoZSBwYXJ0aWFsIGl0ZXJhdGlvbiB0aGF0IGhhcyBzdWNjZWVkIChub3RoaW5nIGhlcmUpLCBh
-bmQgdGhlbgo+IHVud2luZCBhbGwgdGhlIHN1Y2Nlc3NmdWwgaXRlcmF0aW9ucyBhdCB0aGUgYm90
-dG9tIG9mIHRoZSBmdW5jdGlvbi4KPiAiZ290byB1bndpbmRfbG9vcDsiCj4gCgpJbiB0aGVvcnkg
-d2Ugc2hvdWxkIGNsZWFudXAgdGhlIHByZXZpb3VzIHN1Y2Nlc3MgaXRlcmF0aW9uIGlmIGl0IApl
-bmNvdW50ZXJzIG9uZSBlcnJvciBpbiB0aGUgY3VycmVudCBpdGVyYXRpb24uCkJ1dCBpdCB3aWxs
-IGJlIHF1aXRlIGNvbXBsZXggdG8gY2xlYW51cCB1cCB0aGUgcHJldmlvdXMgaXRlcmF0aW9uLgpj
-YWxsIHRoZSBzZXRfbWVtb3J5X3JlZ2lvbnMgZm9yIE1SX0RFTCBvcC4KY2FsbCB0aGUgcmVtb3Zl
-X2d1ZXN0X21hcCBmb3IgdGhlIGFkZGVkIGhhc2ggaXRlbQpjYWxsIHRoZSBwdXRfcGFnZSBmb3Ig
-cmV0dXJuZWQgcGFnZSBpbiBnZXRfdXNlcl9wYWdlc19mYXN0LgoKSW4gZmFjdCBhcyB0aGlzIGRy
-aXZlciBpcyBtYWlubHkgdXNlZCBmb3IgZW1iZWRkZWQgSU9UIHVzYWdlLCBpdCBkb2Vzbid0IApo
-YW5kbGUgdGhlIGNvbXBsZXggY2xlYW51cCB3aGVuIHN1Y2ggZXJyb3IgaXMgZW5jb3VudGVyZWQu
-IEluc3RlYWQgdGhlIApjbGVhbiB1cCBpcyBoYW5kbGVkIGluIGZyZWVfZ3Vlc3Rfdm0uCgo+PiAr
-CQl9Cj4+ICsKPj4gKwkJdm0wX2dwYSA9IHBhZ2VfdG9fcGh5cyhwYWdlKTsKPj4gKwkJcGFnZXNp
-emUgPSBQQUdFX1NJWkUgPDwgY29tcG91bmRfb3JkZXIocGFnZSk7Cj4+ICsKPj4gKwkJcmV0ID0g
-YWRkX2d1ZXN0X21hcCh2bSwgdm0wX2dwYSwgZ3Vlc3RfZ3BhLCBwYWdlc2l6ZSk7Cj4+ICsJCWlm
-IChyZXQgPCAwKSB7Cj4+ICsJCQlwcl9lcnIoImZhaWxlZCB0byBhZGQgbWVtc2VnIGZvciBodWdl
-IHBhZ2UhXG4iKTsKPj4gKwkJCWdvdG8gZXJyOwo+IAo+IFNvIHRoZW4gaGVyZSwgaXQgd291bGQg
-YmU6Cj4gCj4gCQkJcHJfZXJyKCJmYWlsZWQgdG8gYWRkIG1lbXNlZyBmb3IgaHVnZSBwYWdlIVxu
-Iik7Cj4gCQkJcHV0X3BhZ2UocGFnZSk7Cj4gCQkJZ290byB1bndpbmRfbG9vcDsKPiAKPiByZWdh
-cmRzLAo+IGRhbiBjYXJwZW50ZXIKPiAKPj4gKwkJfQo+PiArCj4+ICsJCS8qIGZpbGwgZWFjaCBt
-ZW1vcnkgcmVnaW9uIGludG8gcmVnaW9uX2FycmF5ICovCj4+ICsJCXJlZ2lvbl9hcnJheVtyZWdp
-b25zLT5tcl9udW1dLnR5cGUgPSBNUl9BREQ7Cj4+ICsJCXJlZ2lvbl9hcnJheVtyZWdpb25zLT5t
-cl9udW1dLmdwYSA9IGd1ZXN0X2dwYTsKPj4gKwkJcmVnaW9uX2FycmF5W3JlZ2lvbnMtPm1yX251
-bV0udm0wX2dwYSA9IHZtMF9ncGE7Cj4+ICsJCXJlZ2lvbl9hcnJheVtyZWdpb25zLT5tcl9udW1d
-LnNpemUgPSBwYWdlc2l6ZTsKPj4gKwkJcmVnaW9uX2FycmF5W3JlZ2lvbnMtPm1yX251bV0ucHJv
-dCA9Cj4+ICsJCQkJKE1FTV9UWVBFX1dCICYgTUVNX1RZUEVfTUFTSykgfAo+PiArCQkJCShtZW1t
-YXAtPnByb3QgJiBNRU1fQUNDRVNTX1JJR0hUX01BU0spOwo+PiArCQlyZWdpb25zLT5tcl9udW0r
-KzsKPj4gKwkJaWYgKHJlZ2lvbnMtPm1yX251bSA9PSBtYXhfc2l6ZSkgewo+PiArCQkJcHJfZGVi
-dWcoInJlZ2lvbiBidWZmZXIgZnVsbCwgc2V0ICYgcmVuZXcgcmVnaW9ucyFcbiIpOwo+PiArCQkJ
-cmV0ID0gc2V0X21lbW9yeV9yZWdpb25zKHJlZ2lvbnMpOwo+PiArCQkJaWYgKHJldCA8IDApIHsK
-Pj4gKwkJCQlwcl9lcnIoImZhaWxlZCB0byBzZXQgcmVnaW9ucyxyZXQ9JWQhXG4iLCByZXQpOwo+
-PiArCQkJCWdvdG8gZXJyOwo+PiArCQkJfQo+PiArCQkJcmVnaW9ucy0+bXJfbnVtID0gMDsKPj4g
-KwkJfQo+PiArCj4+ICsJCWxlbiAtPSBwYWdlc2l6ZTsKPj4gKwkJdm1hICs9IHBhZ2VzaXplOwo+
-PiArCQlndWVzdF9ncGEgKz0gcGFnZXNpemU7Cj4+ICsJfQo+PiArCj4+ICsJcmV0ID0gc2V0X21l
-bW9yeV9yZWdpb25zKHJlZ2lvbnMpOwo+PiArCWlmIChyZXQgPCAwKSB7Cj4+ICsJCXByX2Vycigi
-ZmFpbGVkIHRvIHNldCByZWdpb25zLCByZXQ9JWQhXG4iLCByZXQpOwo+PiArCQlnb3RvIGVycjsK
-Pj4gKwl9Cj4+ICsKPj4gKwlfX2ZyZWVfcGFnZShyZWdpb25zX2J1Zl9wZyk7Cj4+ICsJa2ZyZWUo
-cmVnaW9ucyk7Cj4+ICsKPj4gKwlyZXR1cm4gMDsKPj4gK2VycjoKPj4gKwlpZiAocmVnaW9uc19i
-dWZfcGcpCj4+ICsJCV9fZnJlZV9wYWdlKHJlZ2lvbnNfYnVmX3BnKTsKPj4gKwlpZiAocGFnZSkK
-Pj4gKwkJcHV0X3BhZ2UocGFnZSk7Cj4+ICsJa2ZyZWUocmVnaW9ucyk7Cj4+ICsJcmV0dXJuIHJl
-dDsKPj4gK30KPj4gKwo+IApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpo
-dHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
-cml2ZXJkZXYtZGV2ZWwK
+Hi Joe,
+
+On Sun, Aug 18, 2019 at 10:28:41PM -0700, Joe Perches wrote:
+> Rename errln, infoln, and debugln to the typical pr_<level> uses
+> to the typical kernel styles of pr_<level>
+
+How about using erofs_err / ... to instead that?
+ - I can hardly see directly use pr_<level> for those filesystems in fs/...
+
+ - maybe we will introduce super_block to print more information
+   about the specific filesystem...
+
+> 
+> Miscellanea:
+> 
+> o Add newline terminations to the uses
+> o Use "%s: ...", __func__ and not the atypical "%s, ...", __func__
+
+Agreed.
+
+Thanks,
+Gao Xiang
+
+> o Trivial grammar changes in output logging
+> o Delete the now unused macros
+> 
+> Signed-off-by: Joe Perches <joe@perches.com>
+> ---
+>  drivers/staging/erofs/data.c         |  6 ++--
+>  drivers/staging/erofs/decompressor.c |  6 ++--
+>  drivers/staging/erofs/dir.c          |  8 +++---
+>  drivers/staging/erofs/inode.c        | 16 +++++------
+>  drivers/staging/erofs/internal.h     |  8 ++----
+>  drivers/staging/erofs/namei.c        |  4 +--
+>  drivers/staging/erofs/super.c        | 54 +++++++++++++++++++-----------------
+>  drivers/staging/erofs/xattr.c        |  4 +--
+>  drivers/staging/erofs/zdata.c        | 12 ++++----
+>  drivers/staging/erofs/zdata.h        |  2 +-
+>  drivers/staging/erofs/zmap.c         | 26 ++++++++---------
+>  11 files changed, 73 insertions(+), 73 deletions(-)
+> 
+> diff --git a/drivers/staging/erofs/data.c b/drivers/staging/erofs/data.c
+> index 4cdb743c8b8d..677d95e8fdeb 100644
+> --- a/drivers/staging/erofs/data.c
+> +++ b/drivers/staging/erofs/data.c
+> @@ -152,8 +152,8 @@ static int erofs_map_blocks_flatmode(struct inode *inode,
+>  
+>  		map->m_flags |= EROFS_MAP_META;
+>  	} else {
+> -		errln("internal error @ nid: %llu (size %llu), m_la 0x%llx",
+> -		      vi->nid, inode->i_size, map->m_la);
+> +		pr_err("internal error @ nid: %llu (size %llu), m_la 0x%llx\n",
+> +		       vi->nid, inode->i_size, map->m_la);
+>  		DBG_BUGON(1);
+>  		err = -EIO;
+>  		goto err_out;
+> @@ -363,7 +363,7 @@ static int erofs_raw_access_readpages(struct file *filp,
+>  
+>  			/* all the page errors are ignored when readahead */
+>  			if (IS_ERR(bio)) {
+> -				pr_err("%s, readahead error at page %lu of nid %llu\n",
+> +				pr_err("%s: readahead error at page %lu of nid %llu\n",
+>  				       __func__, page->index,
+>  				       EROFS_V(mapping->host)->nid);
+>  
+> diff --git a/drivers/staging/erofs/decompressor.c b/drivers/staging/erofs/decompressor.c
+> index 5361a2bbedb6..24d450ce66c1 100644
+> --- a/drivers/staging/erofs/decompressor.c
+> +++ b/drivers/staging/erofs/decompressor.c
+> @@ -166,9 +166,9 @@ static int lz4_decompress(struct z_erofs_decompress_req *rq, u8 *out)
+>  					  inlen, rq->outputsize,
+>  					  rq->outputsize);
+>  	if (ret < 0) {
+> -		errln("%s, failed to decompress, in[%p, %u, %u] out[%p, %u]",
+> -		      __func__, src + inputmargin, inlen, inputmargin,
+> -		      out, rq->outputsize);
+> +		pr_err("%s: failed to decompress, in[%p, %u, %u] out[%p, %u]\n",
+> +		       __func__, src + inputmargin, inlen, inputmargin,
+> +		       out, rq->outputsize);
+>  		WARN_ON(1);
+>  		print_hex_dump(KERN_DEBUG, "[ in]: ", DUMP_PREFIX_OFFSET,
+>  			       16, 1, src + inputmargin, inlen, true);
+> diff --git a/drivers/staging/erofs/dir.c b/drivers/staging/erofs/dir.c
+> index 2fbfc4935077..526c7b5dd4db 100644
+> --- a/drivers/staging/erofs/dir.c
+> +++ b/drivers/staging/erofs/dir.c
+> @@ -29,8 +29,8 @@ static void debug_one_dentry(unsigned char d_type, const char *de_name,
+>  	memcpy(dbg_namebuf, de_name, de_namelen);
+>  	dbg_namebuf[de_namelen] = '\0';
+>  
+> -	debugln("found dirent %s de_len %u d_type %d", dbg_namebuf,
+> -		de_namelen, d_type);
+> +	pr_debug("found dirent %s de_len %u d_type %d\n",
+> +		 dbg_namebuf, de_namelen, d_type);
+>  #endif
+>  }
+>  
+> @@ -104,8 +104,8 @@ static int erofs_readdir(struct file *f, struct dir_context *ctx)
+>  
+>  		if (unlikely(nameoff < sizeof(struct erofs_dirent) ||
+>  			     nameoff >= PAGE_SIZE)) {
+> -			errln("%s, invalid de[0].nameoff %u",
+> -			      __func__, nameoff);
+> +			pr_err("%s: invalid de[0].nameoff %u\n",
+> +			       __func__, nameoff);
+>  
+>  			err = -EIO;
+>  			goto skip_this;
+> diff --git a/drivers/staging/erofs/inode.c b/drivers/staging/erofs/inode.c
+> index 286729143365..7b91f3baf8d4 100644
+> --- a/drivers/staging/erofs/inode.c
+> +++ b/drivers/staging/erofs/inode.c
+> @@ -21,8 +21,8 @@ static int read_inode(struct inode *inode, void *data)
+>  	vi->datamode = __inode_data_mapping(advise);
+>  
+>  	if (unlikely(vi->datamode >= EROFS_INODE_LAYOUT_MAX)) {
+> -		errln("unsupported data mapping %u of nid %llu",
+> -		      vi->datamode, vi->nid);
+> +		pr_err("unsupported data mapping %u of nid %llu\n",
+> +		       vi->datamode, vi->nid);
+>  		DBG_BUGON(1);
+>  		return -EIO;
+>  	}
+> @@ -92,8 +92,8 @@ static int read_inode(struct inode *inode, void *data)
+>  		if (is_inode_layout_compression(inode))
+>  			nblks = le32_to_cpu(v1->i_u.compressed_blocks);
+>  	} else {
+> -		errln("unsupported on-disk inode version %u of nid %llu",
+> -		      __inode_version(advise), vi->nid);
+> +		pr_err("unsupported on-disk inode version %u of nid %llu\n",
+> +		       __inode_version(advise), vi->nid);
+>  		DBG_BUGON(1);
+>  		return -EIO;
+>  	}
+> @@ -167,14 +167,14 @@ static int fill_inode(struct inode *inode, int isdir)
+>  	blkaddr = erofs_blknr(iloc(sbi, vi->nid));
+>  	ofs = erofs_blkoff(iloc(sbi, vi->nid));
+>  
+> -	debugln("%s, reading inode nid %llu at %u of blkaddr %u",
+> -		__func__, vi->nid, ofs, blkaddr);
+> +	pr_debug("%s: reading inode nid %llu at %u of blkaddr %u\n",
+> +		 __func__, vi->nid, ofs, blkaddr);
+>  
+>  	page = erofs_get_meta_page(inode->i_sb, blkaddr, isdir);
+>  
+>  	if (IS_ERR(page)) {
+> -		errln("failed to get inode (nid: %llu) page, err %ld",
+> -		      vi->nid, PTR_ERR(page));
+> +		pr_err("failed to get inode (nid: %llu) page, err %ld\n",
+> +		       vi->nid, PTR_ERR(page));
+>  		return PTR_ERR(page);
+>  	}
+>  
+> diff --git a/drivers/staging/erofs/internal.h b/drivers/staging/erofs/internal.h
+> index 4ce5991c381f..3833ae713355 100644
+> --- a/drivers/staging/erofs/internal.h
+> +++ b/drivers/staging/erofs/internal.h
+> @@ -23,13 +23,10 @@
+>  #undef pr_fmt
+>  #define pr_fmt(fmt) "erofs: " fmt
+>  
+> -#define errln(x, ...)   pr_err(x "\n", ##__VA_ARGS__)
+> -#define infoln(x, ...)  pr_info(x "\n", ##__VA_ARGS__)
+>  #ifdef CONFIG_EROFS_FS_DEBUG
+> -#define debugln(x, ...) pr_debug(x "\n", ##__VA_ARGS__)
+> +#define DEBUG
+>  #define DBG_BUGON               BUG_ON
+>  #else
+> -#define debugln(x, ...)         ((void)0)
+>  #define DBG_BUGON(x)            ((void)(x))
+>  #endif	/* !CONFIG_EROFS_FS_DEBUG */
+>  
+> @@ -108,7 +105,8 @@ struct erofs_sb_info {
+>  
+>  #ifdef CONFIG_EROFS_FAULT_INJECTION
+>  #define erofs_show_injection_info(type)					\
+> -	infoln("inject %s in %s of %pS", erofs_fault_name[type],        \
+> +	pr_info("inject %s in %s of %pS\n",				\
+> +		erofs_fault_name[type],					\
+>  		__func__, __builtin_return_address(0))
+>  
+>  static inline bool time_to_inject(struct erofs_sb_info *sbi, int type)
+> diff --git a/drivers/staging/erofs/namei.c b/drivers/staging/erofs/namei.c
+> index 8e06526da023..1cba4d471433 100644
+> --- a/drivers/staging/erofs/namei.c
+> +++ b/drivers/staging/erofs/namei.c
+> @@ -233,8 +233,8 @@ static struct dentry *erofs_lookup(struct inode *dir,
+>  	} else if (unlikely(err)) {
+>  		inode = ERR_PTR(err);
+>  	} else {
+> -		debugln("%s, %s (nid %llu) found, d_type %u", __func__,
+> -			dentry->d_name.name, nid, d_type);
+> +		pr_debug("%s: %s (nid %llu) found, d_type %u\n",
+> +			 __func__, dentry->d_name.name, nid, d_type);
+>  		inode = erofs_iget(dir->i_sb, nid, d_type == EROFS_FT_DIR);
+>  	}
+>  	return d_splice_alias(inode, dentry);
+> diff --git a/drivers/staging/erofs/super.c b/drivers/staging/erofs/super.c
+> index f65a1ff9f42f..97096bfa5e73 100644
+> --- a/drivers/staging/erofs/super.c
+> +++ b/drivers/staging/erofs/super.c
+> @@ -75,8 +75,8 @@ static bool check_layout_compatibility(struct super_block *sb,
+>  
+>  	/* check if current kernel meets all mandatory requirements */
+>  	if (requirements & (~EROFS_ALL_REQUIREMENTS)) {
+> -		errln("unidentified requirements %x, please upgrade kernel version",
+> -		      requirements & ~EROFS_ALL_REQUIREMENTS);
+> +		pr_err("unidentified requirements %x, please upgrade kernel version\n",
+> +		       requirements & ~EROFS_ALL_REQUIREMENTS);
+>  		return false;
+>  	}
+>  	return true;
+> @@ -93,7 +93,7 @@ static int superblock_read(struct super_block *sb)
+>  	bh = sb_bread(sb, 0);
+>  
+>  	if (!bh) {
+> -		errln("cannot read erofs superblock");
+> +		pr_err("cannot read erofs superblock\n");
+>  		return -EIO;
+>  	}
+>  
+> @@ -103,15 +103,15 @@ static int superblock_read(struct super_block *sb)
+>  
+>  	ret = -EINVAL;
+>  	if (le32_to_cpu(layout->magic) != EROFS_SUPER_MAGIC_V1) {
+> -		errln("cannot find valid erofs superblock");
+> +		pr_err("cannot find valid erofs superblock\n");
+>  		goto out;
+>  	}
+>  
+>  	blkszbits = layout->blkszbits;
+>  	/* 9(512 bytes) + LOG_SECTORS_PER_BLOCK == LOG_BLOCK_SIZE */
+>  	if (unlikely(blkszbits != LOG_BLOCK_SIZE)) {
+> -		errln("blksize %u isn't supported on this platform",
+> -		      1 << blkszbits);
+> +		pr_err("blksize %u isn't supported on this platform\n",
+> +		       1 << blkszbits);
+>  		goto out;
+>  	}
+>  
+> @@ -187,7 +187,7 @@ static void __erofs_build_fault_attr(struct erofs_sb_info *sbi,
+>  static int erofs_build_fault_attr(struct erofs_sb_info *sbi,
+>  				  substring_t *args)
+>  {
+> -	infoln("fault_injection options not supported");
+> +	pr_info("fault_injection options not supported\n");
+>  	return 0;
+>  }
+>  
+> @@ -205,7 +205,7 @@ static int erofs_build_cache_strategy(struct erofs_sb_info *sbi,
+>  	int err = 0;
+>  
+>  	if (!cs) {
+> -		errln("Not enough memory to store cache strategy");
+> +		pr_err("Not enough memory to store cache strategy\n");
+>  		return -ENOMEM;
+>  	}
+>  
+> @@ -216,7 +216,7 @@ static int erofs_build_cache_strategy(struct erofs_sb_info *sbi,
+>  	} else if (!strcmp(cs, "readaround")) {
+>  		sbi->cache_strategy = EROFS_ZIP_CACHE_READAROUND;
+>  	} else {
+> -		errln("Unrecognized cache strategy \"%s\"", cs);
+> +		pr_err("Unrecognized cache strategy \"%s\"\n", cs);
+>  		err = -EINVAL;
+>  	}
+>  	kfree(cs);
+> @@ -226,7 +226,7 @@ static int erofs_build_cache_strategy(struct erofs_sb_info *sbi,
+>  static int erofs_build_cache_strategy(struct erofs_sb_info *sbi,
+>  				      substring_t *args)
+>  {
+> -	infoln("EROFS compression is disabled, so cache strategy is ignored");
+> +	pr_info("EROFS compression is disabled, so cache strategy is ignored\n");
+>  	return 0;
+>  }
+>  #endif
+> @@ -294,10 +294,10 @@ static int parse_options(struct super_block *sb, char *options)
+>  			break;
+>  #else
+>  		case Opt_user_xattr:
+> -			infoln("user_xattr options not supported");
+> +			pr_info("user_xattr options not supported\n");
+>  			break;
+>  		case Opt_nouser_xattr:
+> -			infoln("nouser_xattr options not supported");
+> +			pr_info("nouser_xattr options not supported\n");
+>  			break;
+>  #endif
+>  #ifdef CONFIG_EROFS_FS_POSIX_ACL
+> @@ -309,10 +309,10 @@ static int parse_options(struct super_block *sb, char *options)
+>  			break;
+>  #else
+>  		case Opt_acl:
+> -			infoln("acl options not supported");
+> +			pr_info("acl options not supported\n");
+>  			break;
+>  		case Opt_noacl:
+> -			infoln("noacl options not supported");
+> +			pr_info("noacl options not supported\n");
+>  			break;
+>  #endif
+>  		case Opt_fault_injection:
+> @@ -326,7 +326,8 @@ static int parse_options(struct super_block *sb, char *options)
+>  				return err;
+>  			break;
+>  		default:
+> -			errln("Unrecognized mount option \"%s\" or missing value", p);
+> +			pr_err("Unrecognized mount option \"%s\" or missing value\n",
+> +			       p);
+>  			return -EINVAL;
+>  		}
+>  	}
+> @@ -398,13 +399,13 @@ static int erofs_fill_super(struct super_block *sb, void *data, int silent)
+>  	struct erofs_sb_info *sbi;
+>  	int err;
+>  
+> -	infoln("fill_super, device -> %s", sb->s_id);
+> -	infoln("options -> %s", (char *)data);
+> +	pr_info("%s: device -> %s\n", __func__, sb->s_id);
+> +	pr_info("options -> %s\n", (char *)data);
+>  
+>  	sb->s_magic = EROFS_SUPER_MAGIC;
+>  
+>  	if (unlikely(!sb_set_blocksize(sb, EROFS_BLKSIZ))) {
+> -		errln("failed to set erofs blksize");
+> +		pr_err("failed to set erofs blksize\n");
+>  		return -EINVAL;
+>  	}
+>  
+> @@ -434,7 +435,7 @@ static int erofs_fill_super(struct super_block *sb, void *data, int silent)
+>  		return err;
+>  
+>  	if (!silent)
+> -		infoln("root inode @ nid %llu", ROOT_NID(sbi));
+> +		pr_info("root inode @ nid %llu\n", ROOT_NID(sbi));
+>  
+>  	if (test_opt(sbi, POSIX_ACL))
+>  		sb->s_flags |= SB_POSIXACL;
+> @@ -451,8 +452,8 @@ static int erofs_fill_super(struct super_block *sb, void *data, int silent)
+>  		return PTR_ERR(inode);
+>  
+>  	if (unlikely(!S_ISDIR(inode->i_mode))) {
+> -		errln("rootino(nid %llu) is not a directory(i_mode %o)",
+> -		      ROOT_NID(sbi), inode->i_mode);
+> +		pr_err("rootino(nid %llu) is not a directory(i_mode %o)\n",
+> +		       ROOT_NID(sbi), inode->i_mode);
+>  		iput(inode);
+>  		return -EINVAL;
+>  	}
+> @@ -468,7 +469,8 @@ static int erofs_fill_super(struct super_block *sb, void *data, int silent)
+>  		return err;
+>  
+>  	if (!silent)
+> -		infoln("mounted on %s with opts: %s.", sb->s_id, (char *)data);
+> +		pr_info("mounted on %s with opts: %s\n",
+> +			sb->s_id, (char *)data);
+>  	return 0;
+>  }
+>  
+> @@ -487,7 +489,7 @@ static void erofs_kill_sb(struct super_block *sb)
+>  	struct erofs_sb_info *sbi;
+>  
+>  	WARN_ON(sb->s_magic != EROFS_SUPER_MAGIC);
+> -	infoln("unmounting for %s", sb->s_id);
+> +	pr_info("unmounting for %s\n", sb->s_id);
+>  
+>  	kill_block_super(sb);
+>  
+> @@ -526,7 +528,7 @@ static int __init erofs_module_init(void)
+>  	int err;
+>  
+>  	erofs_check_ondisk_layout_definitions();
+> -	infoln("initializing erofs " EROFS_VERSION);
+> +	pr_info("initializing erofs " EROFS_VERSION "\n");
+>  
+>  	err = erofs_init_inode_cache();
+>  	if (err)
+> @@ -544,7 +546,7 @@ static int __init erofs_module_init(void)
+>  	if (err)
+>  		goto fs_err;
+>  
+> -	infoln("successfully to initialize erofs");
+> +	pr_info("successfully initialized erofs\n");
+>  	return 0;
+>  
+>  fs_err:
+> @@ -563,7 +565,7 @@ static void __exit erofs_module_exit(void)
+>  	z_erofs_exit_zip_subsystem();
+>  	erofs_exit_shrinker();
+>  	erofs_exit_inode_cache();
+> -	infoln("successfully finalize erofs");
+> +	pr_info("successfully finalized erofs\n");
+>  }
+>  
+>  /* get filesystem statistics */
+> diff --git a/drivers/staging/erofs/xattr.c b/drivers/staging/erofs/xattr.c
+> index 289c7850ec96..e774a8c1bfae 100644
+> --- a/drivers/staging/erofs/xattr.c
+> +++ b/drivers/staging/erofs/xattr.c
+> @@ -69,8 +69,8 @@ static int init_inode_xattrs(struct inode *inode)
+>  	 *    undefined right now (maybe use later with some new sb feature).
+>  	 */
+>  	if (vi->xattr_isize == sizeof(struct erofs_xattr_ibody_header)) {
+> -		errln("xattr_isize %d of nid %llu is not supported yet",
+> -		      vi->xattr_isize, vi->nid);
+> +		pr_err("xattr_isize %d of nid %llu is not supported yet\n",
+> +		       vi->xattr_isize, vi->nid);
+>  		ret = -ENOTSUPP;
+>  		goto out_unlock;
+>  	} else if (vi->xattr_isize < sizeof(struct erofs_xattr_ibody_header)) {
+> diff --git a/drivers/staging/erofs/zdata.c b/drivers/staging/erofs/zdata.c
+> index 2d7aaf98f7de..17daf286747e 100644
+> --- a/drivers/staging/erofs/zdata.c
+> +++ b/drivers/staging/erofs/zdata.c
+> @@ -585,7 +585,7 @@ static int z_erofs_do_read_page(struct z_erofs_decompress_frontend *fe,
+>  	}
+>  
+>  	/* go ahead the next map_blocks */
+> -	debugln("%s: [out-of-range] pos %llu", __func__, offset + cur);
+> +	pr_debug("%s: [out-of-range] pos %llu\n", __func__, offset + cur);
+>  
+>  	if (z_erofs_collector_end(clt))
+>  		fe->backmost = false;
+> @@ -665,8 +665,8 @@ static int z_erofs_do_read_page(struct z_erofs_decompress_frontend *fe,
+>  out:
+>  	z_erofs_onlinepage_endio(page);
+>  
+> -	debugln("%s, finish page: %pK spiltted: %u map->m_llen %llu",
+> -		__func__, page, spiltted, map->m_llen);
+> +	pr_debug("%s: finish page: %pK spiltted: %u map->m_llen %llu\n",
+> +		 __func__, page, spiltted, map->m_llen);
+>  	return err;
+>  
+>  	/* if some error occurred while processing this page */
+> @@ -1308,7 +1308,7 @@ static int z_erofs_vle_normalaccess_readpage(struct file *file,
+>  	(void)z_erofs_collector_end(&f.clt);
+>  
+>  	if (err) {
+> -		errln("%s, failed to read, err [%d]", __func__, err);
+> +		pr_err("%s: failed to read, err [%d]\n", __func__, err);
+>  		goto out;
+>  	}
+>  
+> @@ -1380,8 +1380,8 @@ static int z_erofs_vle_normalaccess_readpages(struct file *filp,
+>  		if (err) {
+>  			struct erofs_vnode *vi = EROFS_V(inode);
+>  
+> -			errln("%s, readahead error at page %lu of nid %llu",
+> -			      __func__, page->index, vi->nid);
+> +			pr_err("%s: readahead error at page %lu of nid %llu\n",
+> +			       __func__, page->index, vi->nid);
+>  		}
+>  		put_page(page);
+>  	}
+> diff --git a/drivers/staging/erofs/zdata.h b/drivers/staging/erofs/zdata.h
+> index e11fe1959ca2..e96e8ee270d2 100644
+> --- a/drivers/staging/erofs/zdata.h
+> +++ b/drivers/staging/erofs/zdata.h
+> @@ -184,7 +184,7 @@ static inline void z_erofs_onlinepage_endio(struct page *page)
+>  			SetPageUptodate(page);
+>  		unlock_page(page);
+>  	}
+> -	debugln("%s, page %p value %x", __func__, page, atomic_read(u.o));
+> +	pr_debug("%s: page %p value %x\n", __func__, page, atomic_read(u.o));
+>  }
+>  
+>  #define Z_EROFS_VMAP_ONSTACK_PAGES	\
+> diff --git a/drivers/staging/erofs/zmap.c b/drivers/staging/erofs/zmap.c
+> index aeed5c674d9e..b2adf531379a 100644
+> --- a/drivers/staging/erofs/zmap.c
+> +++ b/drivers/staging/erofs/zmap.c
+> @@ -66,8 +66,8 @@ static int fill_inode_lazy(struct inode *inode)
+>  	vi->z_algorithmtype[1] = h->h_algorithmtype >> 4;
+>  
+>  	if (vi->z_algorithmtype[0] >= Z_EROFS_COMPRESSION_MAX) {
+> -		errln("unknown compression format %u for nid %llu, please upgrade kernel",
+> -		      vi->z_algorithmtype[0], vi->nid);
+> +		pr_err("unknown compression format %u for nid %llu, please upgrade kernel\n",
+> +		       vi->z_algorithmtype[0], vi->nid);
+>  		err = -ENOTSUPP;
+>  		goto unmap_done;
+>  	}
+> @@ -77,8 +77,8 @@ static int fill_inode_lazy(struct inode *inode)
+>  					((h->h_clusterbits >> 3) & 3);
+>  
+>  	if (vi->z_physical_clusterbits[0] != LOG_BLOCK_SIZE) {
+> -		errln("unsupported physical clusterbits %u for nid %llu, please upgrade kernel",
+> -		      vi->z_physical_clusterbits[0], vi->nid);
+> +		pr_err("unsupported physical clusterbits %u for nid %llu, please upgrade kernel\n",
+> +		       vi->z_physical_clusterbits[0], vi->nid);
+>  		err = -ENOTSUPP;
+>  		goto unmap_done;
+>  	}
+> @@ -358,8 +358,8 @@ static int vle_extent_lookback(struct z_erofs_maprecorder *m,
+>  		map->m_la = (lcn << lclusterbits) | m->clusterofs;
+>  		break;
+>  	default:
+> -		errln("unknown type %u at lcn %lu of nid %llu",
+> -		      m->type, lcn, vi->nid);
+> +		pr_err("unknown type %u at lcn %lu of nid %llu\n",
+> +		       m->type, lcn, vi->nid);
+>  		DBG_BUGON(1);
+>  		return -EIO;
+>  	}
+> @@ -417,8 +417,8 @@ int z_erofs_map_blocks_iter(struct inode *inode,
+>  		}
+>  		/* m.lcn should be >= 1 if endoff < m.clusterofs */
+>  		if (unlikely(!m.lcn)) {
+> -			errln("invalid logical cluster 0 at nid %llu",
+> -			      vi->nid);
+> +			pr_err("invalid logical cluster 0 at nid %llu\n",
+> +			       vi->nid);
+>  			err = -EIO;
+>  			goto unmap_out;
+>  		}
+> @@ -433,8 +433,8 @@ int z_erofs_map_blocks_iter(struct inode *inode,
+>  			goto unmap_out;
+>  		break;
+>  	default:
+> -		errln("unknown type %u at offset %llu of nid %llu",
+> -		      m.type, ofs, vi->nid);
+> +		pr_err("unknown type %u at offset %llu of nid %llu\n",
+> +		       m.type, ofs, vi->nid);
+>  		err = -EIO;
+>  		goto unmap_out;
+>  	}
+> @@ -449,9 +449,9 @@ int z_erofs_map_blocks_iter(struct inode *inode,
+>  		kunmap_atomic(m.kaddr);
+>  
+>  out:
+> -	debugln("%s, m_la %llu m_pa %llu m_llen %llu m_plen %llu m_flags 0%o",
+> -		__func__, map->m_la, map->m_pa,
+> -		map->m_llen, map->m_plen, map->m_flags);
+> +	pr_debug("%s: m_la %llu m_pa %llu m_llen %llu m_plen %llu m_flags 0%o\n",
+> +		 __func__, map->m_la, map->m_pa,
+> +		 map->m_llen, map->m_plen, map->m_flags);
+>  
+>  	trace_z_erofs_map_blocks_iter_exit(inode, map, flags, err);
+>  
+> 
+> 
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
