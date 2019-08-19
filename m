@@ -1,69 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 59A5891CC8
-	for <lists+driverdev-devel@lfdr.de>; Mon, 19 Aug 2019 07:52:06 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 255E891CEF
+	for <lists+driverdev-devel@lfdr.de>; Mon, 19 Aug 2019 08:18:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 56A388798F;
-	Mon, 19 Aug 2019 05:52:04 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4A31C20444;
+	Mon, 19 Aug 2019 06:18:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NnzPjH2skMSf; Mon, 19 Aug 2019 05:52:04 +0000 (UTC)
+	with ESMTP id llhiWOrf8Iji; Mon, 19 Aug 2019 06:18:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8824687874;
-	Mon, 19 Aug 2019 05:52:03 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 35CF02045B;
+	Mon, 19 Aug 2019 06:18:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0A74B1BF41B
- for <devel@linuxdriverproject.org>; Mon, 19 Aug 2019 05:52:01 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 4E86F1BF410
+ for <devel@linuxdriverproject.org>; Mon, 19 Aug 2019 06:17:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 057ED8553C
- for <devel@linuxdriverproject.org>; Mon, 19 Aug 2019 05:52:01 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 4BCBF20444
+ for <devel@linuxdriverproject.org>; Mon, 19 Aug 2019 06:17:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7sHLhYhA3fPN for <devel@linuxdriverproject.org>;
- Mon, 19 Aug 2019 05:51:59 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga08-in.huawei.com [45.249.212.255])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 910C884E4E
- for <devel@driverdev.osuosl.org>; Mon, 19 Aug 2019 05:51:59 +0000 (UTC)
-Received: from DGGEMM401-HUB.china.huawei.com (unknown [172.30.72.54])
- by Forcepoint Email with ESMTP id 83A1CB25DEFF370E1043;
- Mon, 19 Aug 2019 13:51:55 +0800 (CST)
-Received: from dggeme762-chm.china.huawei.com (10.3.19.108) by
- DGGEMM401-HUB.china.huawei.com (10.3.20.209) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Mon, 19 Aug 2019 13:51:54 +0800
-Received: from 138 (10.175.124.28) by dggeme762-chm.china.huawei.com
- (10.3.19.108) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1591.10; Mon, 19
- Aug 2019 13:51:54 +0800
-Date: Mon, 19 Aug 2019 14:08:58 +0800
-From: Gao Xiang <gaoxiang25@huawei.com>
-To: Joe Perches <joe@perches.com>
-Subject: Re: [PATCH] erofs: Use common kernel logging style
-Message-ID: <20190819060858.GC30459@138>
-References: <20190817220706.GA11443@hsiangkao-HP-ZHAN-66-Pro-G1>
- <1163995781.68824.1566084358245.JavaMail.zimbra@nod.at>
- <20190817233843.GA16991@hsiangkao-HP-ZHAN-66-Pro-G1>
- <1405781266.69008.1566116210649.JavaMail.zimbra@nod.at>
- <20190818084521.GA17909@hsiangkao-HP-ZHAN-66-Pro-G1>
- <1133002215.69049.1566119033047.JavaMail.zimbra@nod.at>
- <20190818092839.GA18975@hsiangkao-HP-ZHAN-66-Pro-G1>
- <52e4e3a7f160f5d2825bec04a3bc4eb4b0d1165a.camel@perches.com>
- <20190819055243.GB30459@138>
- <31cb3e54fe532630b45bb74ba4fc688eb86eab1f.camel@perches.com>
+ with ESMTP id uRSoI7X+VTdC for <devel@linuxdriverproject.org>;
+ Mon, 19 Aug 2019 06:17:56 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.skyhub.de (mail.skyhub.de [5.9.137.197])
+ by silver.osuosl.org (Postfix) with ESMTPS id E4A3420437
+ for <devel@driverdev.osuosl.org>; Mon, 19 Aug 2019 06:17:55 +0000 (UTC)
+Received: from zn.tnic (p200300EC2F04B700DD16340F367BA899.dip0.t-ipconnect.de
+ [IPv6:2003:ec:2f04:b700:dd16:340f:367b:a899])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.skyhub.de (SuperMail on ZX Spectrum 128k) with ESMTPSA id 5CA9D1EC072D;
+ Mon, 19 Aug 2019 08:17:51 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alien8.de; s=dkim;
+ t=1566195471;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:in-reply-to:in-reply-to:  references:references;
+ bh=Tij8cUPtjlXBKM4Vt2vKmoASpHF0u05wcnukynHg88Y=;
+ b=cv2oEIevx6RQAjKhn9EqEh82mDGBtttH2QjyhXEwIatTUCGo3hIvmlf45xQt8YqYrW5qpI
+ l8kk59VaETbHymgum6O2Y8VBEIfC3k8WhgBBqSS73s5abTCQ8O0AzbjNsXmNTlkt/RfyLr
+ w2gMqpDhmjOYD3yRf07U/7csjjkRkGs=
+Date: Mon, 19 Aug 2019 08:18:40 +0200
+From: Borislav Petkov <bp@alien8.de>
+To: "Zhao, Yakui" <yakui.zhao@intel.com>
+Subject: Re: [RFC PATCH 00/15] acrn: add the ACRN driver module
+Message-ID: <20190819061840.GB4841@zn.tnic>
+References: <1565922356-4488-1-git-send-email-yakui.zhao@intel.com>
+ <20190816063925.GB18980@zn.tnic>
+ <78897bb2-e6eb-cac2-7166-eccb7cd5c959@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <31cb3e54fe532630b45bb74ba4fc688eb86eab1f.camel@perches.com>
-User-Agent: Mutt/1.11.3 (2019-02-01)
-X-Originating-IP: [10.175.124.28]
-X-ClientProxiedBy: dggeme717-chm.china.huawei.com (10.1.199.113) To
- dggeme762-chm.china.huawei.com (10.3.19.108)
-X-CFilter-Loop: Reflected
+In-Reply-To: <78897bb2-e6eb-cac2-7166-eccb7cd5c959@intel.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,61 +70,32 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel <devel@driverdev.osuosl.org>, Chao Yu <yuchao0@huawei.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Miao Xie <miaoxie@huawei.com>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- Li Guifu <bluce.liguifu@huawei.com>, Fang Wei <fangwei1@huawei.com>,
- linux-fsdevel <linux-fsdevel@vger.kernel.org>,
- linux-erofs <linux-erofs@lists.ozlabs.org>
+Cc: devel@driverdev.osuosl.org, x86@kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Joe,
+On Mon, Aug 19, 2019 at 09:44:25AM +0800, Zhao, Yakui wrote:
+> Not sure whether it can be sent in two patch sets?
+> The first is to add the required APIs for ACRN driver.
+> The second is to add the ACRN driver
 
-On Sun, Aug 18, 2019 at 10:47:17PM -0700, Joe Perches wrote:
-> On Mon, 2019-08-19 at 13:52 +0800, Gao Xiang wrote:
-> > Hi Joe,
-> 
-> Hello.
-> 
-> > On Sun, Aug 18, 2019 at 10:28:41PM -0700, Joe Perches wrote:
-> > > Rename errln, infoln, and debugln to the typical pr_<level> uses
-> > > to the typical kernel styles of pr_<level>
-> > 
-> > How about using erofs_err / ... to instead that?
-> 
-> <shrug>  I've no opinion.
-> It seems most fs/*/* filesystems actually do use pr_<level>
-> sed works well if you want that.
+One patchset adding the APIs and its user(s).
 
-Sorry, I mainly refer to ext4, ext2, xfs and f2fs...
-I didn't notice the other filesystems, you are right.
+And make sure to refresh on
 
-Okay, I have no opinion as well (maybe we could turn back later to
-introduce sb parameter...)
+https://www.kernel.org/doc/html/latest/process/submitting-patches.html
 
-> 
-> >  - I can hardly see directly use pr_<level> for those filesystems in fs/...
-> 
-> just fyi:
-> 
-> There was this one existing pr_<level> use in erofs
+before sending.
 
-That is just because the following piece of code was taken from fs/mpage.c,
-I tend to replace it with iomap in the later version after tail-end packing inline is done.
+Thx.
 
-Thanks,
-Gao Xiang
+-- 
+Regards/Gruss,
+    Boris.
 
-> 
-> drivers/staging/erofs/data.c:366:                               pr_err("%s, readahead error at page %lu of nid %llu\n",
-> drivers/staging/erofs/data.c-367-                                      __func__, page->index,
-> drivers/staging/erofs/data.c-368-                                      EROFS_V(mapping->host)->nid);
-> 
-> 
-> 
+Good mailing practices for 400: avoid top-posting and trim the reply.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
