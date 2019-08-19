@@ -1,66 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A154091E3D
-	for <lists+driverdev-devel@lfdr.de>; Mon, 19 Aug 2019 09:45:40 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4E94E91E3B
+	for <lists+driverdev-devel@lfdr.de>; Mon, 19 Aug 2019 09:45:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A730685DF5;
-	Mon, 19 Aug 2019 07:45:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 89762204A5;
+	Mon, 19 Aug 2019 07:45:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WlmFSJhe6880; Mon, 19 Aug 2019 07:45:38 +0000 (UTC)
+	with ESMTP id j4yC4L+0VGCw; Mon, 19 Aug 2019 07:45:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7510F85B7C;
-	Mon, 19 Aug 2019 07:45:37 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7515B20468;
+	Mon, 19 Aug 2019 07:45:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7192B1BF393
- for <devel@linuxdriverproject.org>; Mon, 19 Aug 2019 07:45:35 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 36B631BF393
+ for <devel@linuxdriverproject.org>; Mon, 19 Aug 2019 07:45:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6E7758797A
- for <devel@linuxdriverproject.org>; Mon, 19 Aug 2019 07:45:35 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 334952047C
+ for <devel@linuxdriverproject.org>; Mon, 19 Aug 2019 07:45:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id U1htb6eZK4UH for <devel@linuxdriverproject.org>;
- Mon, 19 Aug 2019 07:45:33 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.skyhub.de (mail.skyhub.de [5.9.137.197])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1795087766
- for <devel@driverdev.osuosl.org>; Mon, 19 Aug 2019 07:45:32 +0000 (UTC)
-Received: from zn.tnic (p200300EC2F04B700DD16340F367BA899.dip0.t-ipconnect.de
- [IPv6:2003:ec:2f04:b700:dd16:340f:367b:a899])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.skyhub.de (SuperMail on ZX Spectrum 128k) with ESMTPSA id A116D1EC0B6E;
- Mon, 19 Aug 2019 09:45:29 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alien8.de; s=dkim;
- t=1566200729;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:in-reply-to:in-reply-to:  references:references;
- bh=0dkuKpXpNOV2CcoIwLeUmjN7fWrdSqx1Cdg+eS5av44=;
- b=DXoq3HNHEGcuz8L5ZvvJ4H0sxCrtY24lnJeXrwKWHwcSJ5j+y890QAxrh9QbHhkMbW9/qZ
- ay48PC1OsZae02KJhB3+BgzS3uGfP9l1kL3OGjfXyBFVKucuuit5Emq3lj0BjWS97Z0571
- sqrU9UTmfkjNSb+jqsJeGXD/baBfBu8=
-Date: Mon, 19 Aug 2019 09:46:14 +0200
-From: Borislav Petkov <bp@alien8.de>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [RFC PATCH 08/15] drivers/acrn: add VM memory management for
- ACRN char device
-Message-ID: <20190819074614.GD4841@zn.tnic>
-References: <1565922356-4488-1-git-send-email-yakui.zhao@intel.com>
- <1565922356-4488-9-git-send-email-yakui.zhao@intel.com>
- <20190816124757.GW1974@kadam>
- <8b909c22-3873-2b5d-4845-1fee1a5d81ce@intel.com>
- <20190819073958.GC4451@kadam>
+ with ESMTP id 79jDMUcCy3T3 for <devel@linuxdriverproject.org>;
+ Mon, 19 Aug 2019 07:45:18 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from huawei.com (szxga03-in.huawei.com [45.249.212.189])
+ by silver.osuosl.org (Postfix) with ESMTPS id D934520468
+ for <devel@driverdev.osuosl.org>; Mon, 19 Aug 2019 07:45:17 +0000 (UTC)
+Received: from DGGEMM401-HUB.china.huawei.com (unknown [172.30.72.54])
+ by Forcepoint Email with ESMTP id 44C1AA404B148E78718E;
+ Mon, 19 Aug 2019 15:45:13 +0800 (CST)
+Received: from dggeme762-chm.china.huawei.com (10.3.19.108) by
+ DGGEMM401-HUB.china.huawei.com (10.3.20.209) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Mon, 19 Aug 2019 15:45:13 +0800
+Received: from 138 (10.175.124.28) by dggeme762-chm.china.huawei.com
+ (10.3.19.108) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1591.10; Mon, 19
+ Aug 2019 15:45:11 +0800
+Date: Mon, 19 Aug 2019 16:02:18 +0800
+From: Gao Xiang <gaoxiang25@huawei.com>
+To: Richard Weinberger <richard@nod.at>
+Subject: Re: [PATCH] erofs: move erofs out of staging
+Message-ID: <20190819080218.GA42231@138>
+References: <1133002215.69049.1566119033047.JavaMail.zimbra@nod.at>
+ <20190818155812.GB13230@infradead.org>
+ <20190818161638.GE1118@sol.localdomain>
+ <20190818162201.GA16269@infradead.org>
+ <20190818172938.GA14413@sol.localdomain>
+ <20190818174702.GA17633@infradead.org>
+ <20190818181654.GA1617@hsiangkao-HP-ZHAN-66-Pro-G1>
+ <20190818201405.GA27398@hsiangkao-HP-ZHAN-66-Pro-G1>
+ <1559833874.69649.1566200143457.JavaMail.zimbra@nod.at>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190819073958.GC4451@kadam>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <1559833874.69649.1566200143457.JavaMail.zimbra@nod.at>
+User-Agent: Mutt/1.11.3 (2019-02-01)
+X-Originating-IP: [10.175.124.28]
+X-ClientProxiedBy: dggeme718-chm.china.huawei.com (10.1.199.114) To
+ dggeme762-chm.china.huawei.com (10.3.19.108)
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,31 +75,56 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Li@osuosl.org, x86@kernel.org,
- linux-kernel@vger.kernel.org, Jason Chen CJ <jason.cj.chen@intel.com>, "Zhao,
- Yakui" <yakui.zhao@intel.com>, Liu Shuo <shuo.a.liu@intel.com>,
- Fei <lei1.li@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Jan Kara <jack@suse.cz>, Christoph Hellwig <hch@infradead.org>,
+ Chao Yu <yuchao0@huawei.com>, Dave Chinner <david@fromorbit.com>,
+ linux-kernel <linux-kernel@vger.kernel.org>, Miao Xie <miaoxie@huawei.com>,
+ devel <devel@driverdev.osuosl.org>, Stephen Rothwell <sfr@canb.auug.org.au>,
+ Darrick <darrick.wong@oracle.com>, Eric Biggers <ebiggers@kernel.org>,
+ torvalds <torvalds@linux-foundation.org>, Amir Goldstein <amir73il@gmail.com>,
+ Al Viro <viro@zeniv.linux.org.uk>, Jaegeuk Kim <jaegeuk@kernel.org>,
+ tytso <tytso@mit.edu>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ David Sterba <dsterba@suse.cz>, Li Guifu <bluce.liguifu@huawei.com>,
+ Fang Wei <fangwei1@huawei.com>, Pavel Machek <pavel@denx.de>,
+ linux-fsdevel <linux-fsdevel@vger.kernel.org>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ linux-erofs <linux-erofs@lists.ozlabs.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Aug 19, 2019 at 10:39:58AM +0300, Dan Carpenter wrote:
-> On Mon, Aug 19, 2019 at 01:32:54PM +0800, Zhao, Yakui wrote:
-> > In fact as this driver is mainly used for embedded IOT usage, it doesn't
-> > handle the complex cleanup when such error is encountered. Instead the clean
-> > up is handled in free_guest_vm.
-> 
-> A use after free here seems like a potential security problem.  Security
-> matters for IoT...  :(
+Hi Richard,
 
-Yeah, the "S" in "IoT" stands for security.
+On Mon, Aug 19, 2019 at 09:35:43AM +0200, Richard Weinberger wrote:
+> ----- Urspr=FCngliche Mail -----
+> > I have made a simple fuzzer to inject messy in inode metadata,
+> > dir data, compressed indexes and super block,
+> > https://git.kernel.org/pub/scm/linux/kernel/git/xiang/erofs-utils.git/c=
+ommit/?h=3Dexperimental-fuzzer
+> > =
 
--- 
-Regards/Gruss,
-    Boris.
+> > I am testing with some given dirs and the following script.
+> > Does it look reasonable?
+> =
 
-Good mailing practices for 400: avoid top-posting and trim the reply.
+> I think that's a very good start. :-)
+
+I have been testing with this tools for hours, it seems strong
+against corrupted images without compression.
+
+I'm now struggling with corrupted images with compression,
+hopefully most of them can be fixed trivially... I will send
+the bunch of fixes later... Let me dig into it more...
+
+Thanks for your reply :-)
+
+Thanks,
+Gao Xiang
+
+> =
+
+> Thanks,
+> //richard
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
