@@ -1,68 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4E94E91E3B
-	for <lists+driverdev-devel@lfdr.de>; Mon, 19 Aug 2019 09:45:27 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 78F4F91F42
+	for <lists+driverdev-devel@lfdr.de>; Mon, 19 Aug 2019 10:45:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 89762204A5;
-	Mon, 19 Aug 2019 07:45:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0AC4F85C67;
+	Mon, 19 Aug 2019 08:45:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id j4yC4L+0VGCw; Mon, 19 Aug 2019 07:45:24 +0000 (UTC)
+	with ESMTP id exZtsAVMCbxE; Mon, 19 Aug 2019 08:45:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7515B20468;
-	Mon, 19 Aug 2019 07:45:23 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CDA2585C4F;
+	Mon, 19 Aug 2019 08:45:49 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 36B631BF393
- for <devel@linuxdriverproject.org>; Mon, 19 Aug 2019 07:45:19 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id BC2BA1BF350
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 19 Aug 2019 08:45:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 334952047C
- for <devel@linuxdriverproject.org>; Mon, 19 Aug 2019 07:45:19 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id B288F87AF3
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 19 Aug 2019 08:45:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 79jDMUcCy3T3 for <devel@linuxdriverproject.org>;
- Mon, 19 Aug 2019 07:45:18 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga03-in.huawei.com [45.249.212.189])
- by silver.osuosl.org (Postfix) with ESMTPS id D934520468
- for <devel@driverdev.osuosl.org>; Mon, 19 Aug 2019 07:45:17 +0000 (UTC)
-Received: from DGGEMM401-HUB.china.huawei.com (unknown [172.30.72.54])
- by Forcepoint Email with ESMTP id 44C1AA404B148E78718E;
- Mon, 19 Aug 2019 15:45:13 +0800 (CST)
-Received: from dggeme762-chm.china.huawei.com (10.3.19.108) by
- DGGEMM401-HUB.china.huawei.com (10.3.20.209) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Mon, 19 Aug 2019 15:45:13 +0800
-Received: from 138 (10.175.124.28) by dggeme762-chm.china.huawei.com
- (10.3.19.108) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1591.10; Mon, 19
- Aug 2019 15:45:11 +0800
-Date: Mon, 19 Aug 2019 16:02:18 +0800
-From: Gao Xiang <gaoxiang25@huawei.com>
-To: Richard Weinberger <richard@nod.at>
-Subject: Re: [PATCH] erofs: move erofs out of staging
-Message-ID: <20190819080218.GA42231@138>
-References: <1133002215.69049.1566119033047.JavaMail.zimbra@nod.at>
- <20190818155812.GB13230@infradead.org>
- <20190818161638.GE1118@sol.localdomain>
- <20190818162201.GA16269@infradead.org>
- <20190818172938.GA14413@sol.localdomain>
- <20190818174702.GA17633@infradead.org>
- <20190818181654.GA1617@hsiangkao-HP-ZHAN-66-Pro-G1>
- <20190818201405.GA27398@hsiangkao-HP-ZHAN-66-Pro-G1>
- <1559833874.69649.1566200143457.JavaMail.zimbra@nod.at>
+ with ESMTP id D7f6LJ7uL95b
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 19 Aug 2019 08:45:47 +0000 (UTC)
+X-Greylist: delayed 00:10:01 by SQLgrey-1.7.6
+Received: from sonic301-8.consmr.mail.bf2.yahoo.com
+ (sonic301-8.consmr.mail.bf2.yahoo.com [74.6.129.47])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D801A87A43
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 19 Aug 2019 08:45:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1566204345; bh=47frjXP+ZIzYlnqEqbmJOhe9g4EhEvadJJ0Vh1NSIJc=;
+ h=Date:From:Reply-To:Subject:From:Subject;
+ b=fOP7+1DeEkBRnvDNva3yIuVROw0jLyJ+CaEktHOnaBZ0sRbhdO2t+NZqQB9ooiAK9HnGLYN9cJx3z+UFZT2wisMTMVZB6w+jvFHoJhH/Ax+ej6vYIFp5cjx838IHGG4IapMroHemQN6X35SKlTeSrPggHUvSKJ1n3dRck4NT4A/vyreAK97XAszI2qqiMi9G2oEJF5axjJa06XeLAUVsh1ZTWK5GcSfx0flz+taAP0YtoWuLab+/nv4veKAR6IABM2a+vD1wkiMM4tT3t7Acq/slZtr+j9ynb1hOJtCOP5wPfQqz1vgdg2FadGKq2DpS4YeFZCUYM509K6PMcitt+g==
+X-YMail-OSG: jh1BmrMVM1k8EbAEvH7Ay_BA93fPZL._jLyayyG8XK4jqKMYONByf9_2NUKYpMn
+ uUfpM6M59nCEQ3l9GCvLVr49aNePG12pJHlxz906aSDhmP4O_64hHgdfUip3YyAHRbBFYo_juMb3
+ uur_PNzbthQVveZ5ZDjwe_jgGKndi6AAP9yFP63vdH9Z02P8ZAdwFEemYof4EyDGXLD9gzrbKFj6
+ .OLGmAcofl.9kPrMvj_cwWpMuhZhynk4PH9xPYQ8Yf5ZsfGhph2G6c0SnUujtqlfmQwOBylW3Rh9
+ rbpT8pFRvOfCUJzBIXhAImnxMXiCh5rxjEX3g1dFFbL6UAp4SrEHJov4jL4f8tOscpyDvfbwnl_6
+ u7Kl1tWH8uN10EIHHhMEtUbv6AW40UyK0Cg45J66yOEJs0SMIOqUS8.oj_bEl5iU6VJ7DrJjgq6E
+ 5YIlM8fH7N16cu1mQDeh2qSuNYkNJ6eanmN5LANwhXeEJiuCQvuXyEG4P90NlyP9qh7z5rb3.lle
+ 7UGqdMAONSzx9YLYXWz_hd0UOkk9fUxTPmnApk_NI8e2CAjBsTyTqcL7sDrrIB6gx_MtjViPv_NE
+ wKumiyEfGfwN0ferKxREdc.88CQe2DQYRu4mgi1qh0_6ChAmLnTXPZU34YzwIOUqISVXr6Nv6QhZ
+ pq67AHs0iCov6qCfqlmf.s25Ujp5gh9iGCvNtrMn8SlTrRbwL4bxKFgKzaZ9tUUT1N7g42HuWkL7
+ 5E.NaFy6Rl3KWxLWwD5wU3BsDd_Ngedu84yZYWr4xDUgAY6dFCU_MbAsyapAZVrteZ7aUMHljV4q
+ fwtnkxzc1_xymyHcRx02w0bV1WnWbvXnmWbocCd7E_zJXn20JHNEUiwPx2vwx4GRAgKnGmcsrtbC
+ zB4ASgv9O5mcrCspD5pk_eM.gw9Dz4FW3MbOFRt0EWh0Qpt1sjkT_8YFmHsx0FOyjXaJJMOdgZ.Y
+ WoNz_27POupM.cDB6ogz_OqEoKcKvhNVO49g4p5U0S0P.8Y_PZqRRA0SR2QJF2NHjAdMThtvPdA2
+ TTIBfajCIlySab1nZRn_U7eEay7uSgkf7_hZ283qR0XUL5mGlPsik7p757SLyfO.3fhMcWdWpnLW
+ iyDvV4imKCHZUOzS_hm4lMDkdvWRYnjj3CHT7w_7tPwtNE94M.ASm.JFKdjYC28K3gl2OHhQgsLm
+ BLyxdzGCB1sn5v8ETGbDZmOTug8DhJ3sYv7mpktt9b0qTq0KPJ6qNMUJap8951OsS7aM-
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic301.consmr.mail.bf2.yahoo.com with HTTP; Mon, 19 Aug 2019 08:45:45 +0000
+Date: Mon, 19 Aug 2019 08:35:41 +0000 (UTC)
+From: "Engr.Francisco Pinto." <coz40@gatku.online>
+Message-ID: <379841628.786414.1566203741980@mail.yahoo.com>
+Subject: Crude Oil Lifting Contract Offer.
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1559833874.69649.1566200143457.JavaMail.zimbra@nod.at>
-User-Agent: Mutt/1.11.3 (2019-02-01)
-X-Originating-IP: [10.175.124.28]
-X-ClientProxiedBy: dggeme718-chm.china.huawei.com (10.1.199.114) To
- dggeme762-chm.china.huawei.com (10.3.19.108)
-X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,56 +76,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Jan Kara <jack@suse.cz>, Christoph Hellwig <hch@infradead.org>,
- Chao Yu <yuchao0@huawei.com>, Dave Chinner <david@fromorbit.com>,
- linux-kernel <linux-kernel@vger.kernel.org>, Miao Xie <miaoxie@huawei.com>,
- devel <devel@driverdev.osuosl.org>, Stephen Rothwell <sfr@canb.auug.org.au>,
- Darrick <darrick.wong@oracle.com>, Eric Biggers <ebiggers@kernel.org>,
- torvalds <torvalds@linux-foundation.org>, Amir Goldstein <amir73il@gmail.com>,
- Al Viro <viro@zeniv.linux.org.uk>, Jaegeuk Kim <jaegeuk@kernel.org>,
- tytso <tytso@mit.edu>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- David Sterba <dsterba@suse.cz>, Li Guifu <bluce.liguifu@huawei.com>,
- Fang Wei <fangwei1@huawei.com>, Pavel Machek <pavel@denx.de>,
- linux-fsdevel <linux-fsdevel@vger.kernel.org>,
- Andrew Morton <akpm@linux-foundation.org>,
- linux-erofs <linux-erofs@lists.ozlabs.org>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Reply-To: engr.frcopinto@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Richard,
 
-On Mon, Aug 19, 2019 at 09:35:43AM +0200, Richard Weinberger wrote:
-> ----- Urspr=FCngliche Mail -----
-> > I have made a simple fuzzer to inject messy in inode metadata,
-> > dir data, compressed indexes and super block,
-> > https://git.kernel.org/pub/scm/linux/kernel/git/xiang/erofs-utils.git/c=
-ommit/?h=3Dexperimental-fuzzer
-> > =
 
-> > I am testing with some given dirs and the following script.
-> > Does it look reasonable?
-> =
+Dear Partner,
+ CONFIDENTIAL OFFER REGARDING CRUDE OIL LIFTING CONTRACT.
+ CRUDE OIL LIFTING LICENSE NO: ANP-C-STP/056432.
+ Reply Email: engr.frcopinto@gmail.com
 
-> I think that's a very good start. :-)
+This is a confidential business offer from the oil rich Sao Tome and Principe. Please ensure that you reply this email strictly at : engr.frcopinto@gmail.com
 
-I have been testing with this tools for hours, it seems strong
-against corrupted images without compression.
+I make this introduction based on my regard for your credibility. My name is Engr. Francisco Pinto. I work with the Sao Tome and Principe national petroleum agency. To be precise, I oversee the issuance of oil allocation license for our oil company. My position in the agency entitles me to recommend oil allocation bidders and actualize oil lifting and exploration allocation licenses to my candidates based on my interest. I also oversee and approve the issuance of the license for oil allocation in our company and also monitor the lifting procedures in our company.
 
-I'm now struggling with corrupted images with compression,
-hopefully most of them can be fixed trivially... I will send
-the bunch of fixes later... Let me dig into it more...
+In June 2007, I facilitated and actualized the license of a candidate. A business man from Korea (Comprehensive details to be provided subsequently). The license was for 1 year at 24 million BBLS/12 months. Incidentally the candidate was no more. The license has been valid till date (as I always ensure that I keep to my side of the bargain), I have decided to begin using the license from AUGUST. I am in need of a partner from your country whom I can trust. I will package this partner as the allocation license beneficiary and assign the license to this partner. Due to my position in the petroleum agency, I cannot handle this position. Your profile fits into the criteria of a partner I need. This is why I am contacting you. With the trend of events in Sao Tome and Principe, we shall be able to lift a minimum of 400,000 barrels of BLCO per month. This will fetch us an average of US$28 million per month. And we have from AUGUST 2019 up until AUGUST 2020 to lift crude oil which wi
+ ll fetch us approximately (12) x (28) Million dollars. This is approximately 336 Million dollars for the rest of the time of the license allocation. I have ready buyers who are waiting and would be ready to scramble for any number of barrels we lift. Also, I will oversee all lifting procedures with the available mercenary around.
 
-Thanks for your reply :-)
+ THIS IS WHAT I PROPOSE.
 
+{1} Your Company profile shall be used in place of the initial license Operator. This I shall handle with my capacity in the company.
+{2} I will ensure that your company's profile is recognized as the current license operator and that we have a mandate for at least min of 400,000 barrels per month, a maximum of 500,000 barrels per month. Starting from AUGUST.
+{3}I will ensure that all lifting procedures are in place and buyers readily available to purchase the product.
+{4} You shall stand in as the license operator for all lifting and sales transactions; we shall open an account for the receipt of the oil sale proceeds in which both of us shall be signatories to the account or you can provide your personal or company bank account to receive the payments on our behalf.
+{5} We shall split the oil sale proceeds in the ratio of 60:40 equity shares. I shall be entitled to 60% share while your company shall be entitled to 40% share.
+
+Please note: no third-party arrangement shall be allowed. I believe you are a man of wisdom and intelligence. This offer I make to you is based on utmost good faith. I could be Jeopardizing my position in the agency if a word of this goes out. Therefore, without mincing words, I rely on you for utmost confidentiality on every bit of detail relating to this transaction. I am in London on official duties at the moment waiting for your response. Upon your positive response, I will be willing to forward to you proof of my proposition and my personal identity. Also, I shall fly back to Sao Tome and Principe and from there we shall commence operations. I shall also provide you details of the former license operator and a copy of the license issued to him for the lifting of crude oil in our company which I personally approved and endorsed. Also, procedures for license reassignment and actualizing the rest of the project shall be provided to you.
+
+Please in response to this email: engr.frcopinto@gmail.com, quote the reference number. CRUDE OIL LIFTING LICENSE NO: ANP-C-STP/056432.
+I look forward to a prospective business relationship between us.
 Thanks,
-Gao Xiang
-
-> =
-
-> Thanks,
-> //richard
+Engr. Francisco Pinto
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
