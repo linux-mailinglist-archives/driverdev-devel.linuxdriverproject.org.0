@@ -2,117 +2,79 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B992095A1E
-	for <lists+driverdev-devel@lfdr.de>; Tue, 20 Aug 2019 10:47:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1B61E96486
+	for <lists+driverdev-devel@lfdr.de>; Tue, 20 Aug 2019 17:34:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 0340F2274E;
-	Tue, 20 Aug 2019 08:47:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2D6EB2287D;
+	Tue, 20 Aug 2019 15:34:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QZplDi-bqR5u; Tue, 20 Aug 2019 08:47:18 +0000 (UTC)
+	with ESMTP id gcWIgETdeNjX; Tue, 20 Aug 2019 15:34:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id A976B227CC;
-	Tue, 20 Aug 2019 08:47:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C0F4A2285E;
+	Tue, 20 Aug 2019 15:34:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 658061BF2B3
- for <devel@linuxdriverproject.org>; Tue, 20 Aug 2019 08:47:11 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 6B89E1BF2F8
+ for <devel@linuxdriverproject.org>; Tue, 20 Aug 2019 15:34:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 60B3F8756D
- for <devel@linuxdriverproject.org>; Tue, 20 Aug 2019 08:47:11 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 689DF8698D
+ for <devel@linuxdriverproject.org>; Tue, 20 Aug 2019 15:34:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2xOiqs9lGphp for <devel@linuxdriverproject.org>;
- Tue, 20 Aug 2019 08:47:08 +0000 (UTC)
+ with ESMTP id nAkJsgXP4vV4 for <devel@linuxdriverproject.org>;
+ Tue, 20 Aug 2019 15:34:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.15.18])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 7D31B87430
- for <devel@driverdev.osuosl.org>; Tue, 20 Aug 2019 08:47:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1566290783;
- bh=EBVlGBCVrp4icYHnuaKiKD9FrToj2NDpH6MM6Vo97lc=;
- h=X-UI-Sender-Class:Subject:To:Cc:References:From:Date:In-Reply-To;
- b=JJV9v6iyMorgp+P5rIi/fp1UTsuXteW+REqL1lFQ/q9FwgPpyT1JeK9yrz0OcSCAi
- vdcpWM1l3ique3/6TbCXMVFJz0GHQbczRWeMATVE9gv8KPpZya7fJDHY2YA9Rg/9iN
- GEvYem0LAReXuvfXZ+98mad/N28Ah97KRAhKafeA=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [0.0.0.0] ([54.250.245.166]) by mail.gmx.com (mrgmx002
- [212.227.17.184]) with ESMTPSA (Nemesis) id 0Ln897-1iTHBT1qFp-00hQ9d; Tue, 20
- Aug 2019 10:46:23 +0200
-Subject: Re: [PATCH] erofs: move erofs out of staging
-To: Chao Yu <yuchao0@huawei.com>, Gao Xiang <hsiangkao@aol.com>,
- "Darrick J. Wong" <darrick.wong@oracle.com>
-References: <790210571.69061.1566120073465.JavaMail.zimbra@nod.at>
- <20190818151154.GA32157@mit.edu> <20190818155812.GB13230@infradead.org>
- <20190818161638.GE1118@sol.localdomain>
- <20190818162201.GA16269@infradead.org>
- <20190818172938.GA14413@sol.localdomain>
- <20190818174702.GA17633@infradead.org>
- <20190818181654.GA1617@hsiangkao-HP-ZHAN-66-Pro-G1>
- <20190818201405.GA27398@hsiangkao-HP-ZHAN-66-Pro-G1>
- <20190819160923.GG15198@magnolia>
- <20190819203051.GA10075@hsiangkao-HP-ZHAN-66-Pro-G1>
- <bdb91cbf-985b-5a2c-6019-560b79739431@gmx.com>
- <ad62636f-ef1b-739f-42cc-28d9d7ed86da@huawei.com>
- <c6f6de48-2594-05e4-2048-9a9c59c018d7@gmx.com>
- <c9a27e20-33fa-2cad-79f2-ecc26f6f3490@huawei.com>
-From: Qu Wenruo <quwenruo.btrfs@gmx.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=quwenruo.btrfs@gmx.com; prefer-encrypt=mutual; keydata=
- mQENBFnVga8BCACyhFP3ExcTIuB73jDIBA/vSoYcTyysFQzPvez64TUSCv1SgXEByR7fju3o
- 8RfaWuHCnkkea5luuTZMqfgTXrun2dqNVYDNOV6RIVrc4YuG20yhC1epnV55fJCThqij0MRL
- 1NxPKXIlEdHvN0Kov3CtWA+R1iNN0RCeVun7rmOrrjBK573aWC5sgP7YsBOLK79H3tmUtz6b
- 9Imuj0ZyEsa76Xg9PX9Hn2myKj1hfWGS+5og9Va4hrwQC8ipjXik6NKR5GDV+hOZkktU81G5
- gkQtGB9jOAYRs86QG/b7PtIlbd3+pppT0gaS+wvwMs8cuNG+Pu6KO1oC4jgdseFLu7NpABEB
- AAG0IlF1IFdlbnJ1byA8cXV3ZW5ydW8uYnRyZnNAZ214LmNvbT6JAVQEEwEIAD4CGwMFCwkI
- BwIGFQgJCgsCBBYCAwECHgECF4AWIQQt33LlpaVbqJ2qQuHCPZHzoSX+qAUCWdWCnQUJCWYC
- bgAKCRDCPZHzoSX+qAR8B/94VAsSNygx1C6dhb1u1Wp1Jr/lfO7QIOK/nf1PF0VpYjTQ2au8
- ihf/RApTna31sVjBx3jzlmpy+lDoPdXwbI3Czx1PwDbdhAAjdRbvBmwM6cUWyqD+zjVm4RTG
- rFTPi3E7828YJ71Vpda2qghOYdnC45xCcjmHh8FwReLzsV2A6FtXsvd87bq6Iw2axOHVUax2
- FGSbardMsHrya1dC2jF2R6n0uxaIc1bWGweYsq0LXvLcvjWH+zDgzYCUB0cfb+6Ib/ipSCYp
- 3i8BevMsTs62MOBmKz7til6Zdz0kkqDdSNOq8LgWGLOwUTqBh71+lqN2XBpTDu1eLZaNbxSI
- ilaVuQENBFnVga8BCACqU+th4Esy/c8BnvliFAjAfpzhI1wH76FD1MJPmAhA3DnX5JDORcga
- CbPEwhLj1xlwTgpeT+QfDmGJ5B5BlrrQFZVE1fChEjiJvyiSAO4yQPkrPVYTI7Xj34FnscPj
- /IrRUUka68MlHxPtFnAHr25VIuOS41lmYKYNwPNLRz9Ik6DmeTG3WJO2BQRNvXA0pXrJH1fN
- GSsRb+pKEKHKtL1803x71zQxCwLh+zLP1iXHVM5j8gX9zqupigQR/Cel2XPS44zWcDW8r7B0
- q1eW4Jrv0x19p4P923voqn+joIAostyNTUjCeSrUdKth9jcdlam9X2DziA/DHDFfS5eq4fEv
- ABEBAAGJATwEGAEIACYWIQQt33LlpaVbqJ2qQuHCPZHzoSX+qAUCWdWBrwIbDAUJA8JnAAAK
- CRDCPZHzoSX+qA3xB/4zS8zYh3Cbm3FllKz7+RKBw/ETBibFSKedQkbJzRlZhBc+XRwF61mi
- f0SXSdqKMbM1a98fEg8H5kV6GTo62BzvynVrf/FyT+zWbIVEuuZttMk2gWLIvbmWNyrQnzPl
- mnjK4AEvZGIt1pk+3+N/CMEfAZH5Aqnp0PaoytRZ/1vtMXNgMxlfNnb96giC3KMR6U0E+siA
- 4V7biIoyNoaN33t8m5FwEwd2FQDG9dAXWhG13zcm9gnk63BN3wyCQR+X5+jsfBaS4dvNzvQv
- h8Uq/YGjCoV1ofKYh3WKMY8avjq25nlrhzD/Nto9jHp8niwr21K//pXVA81R2qaXqGbql+zo
-Message-ID: <735b8d15-bcb5-b11b-07c1-0617eb1e5ce9@gmx.com>
-Date: Tue, 20 Aug 2019 16:46:03 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 0F375868CF
+ for <devel@driverdev.osuosl.org>; Tue, 20 Aug 2019 15:34:12 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id w16so3603043pfn.7
+ for <devel@driverdev.osuosl.org>; Tue, 20 Aug 2019 08:34:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=dPHNmTe4Qd6sGNb6G6+TQiW7l0R1WKyJpGI4kCBBgLU=;
+ b=R+12pmEPP36+qTGpBxTfi+7XXsKJd23bmEEKqznjUXPyVRhGmSQ3tO15ETAl5a65xs
+ udovK9MUPsc/LeqJJ3OtO/8UmZIc7utKbKpH3VxsHwTWuTn4P/aEQFJzpR9yuzQ0yjx6
+ ktPV8+ySpuJt4r4KVubB3s0Kttb8/J5lb/ktY6gk92aWvnHCw0J3FTBZiflkUL9zs/T6
+ FU2KWd/sb424pco+quhOXUsVJxTFH8VKvD7QFyyTQQL8n7yKqXb56Djp5AfSt1TOH050
+ RqfzXmM4BvnABddyQb/cUwLf/IgeKoQlOjfFTxG4xPd5icurBVOQgS9RdJWKhi2iJUUn
+ 1EXg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=dPHNmTe4Qd6sGNb6G6+TQiW7l0R1WKyJpGI4kCBBgLU=;
+ b=kEmqsNuHNHnQaGIHbWDuaoQwgzXLugXYFf6MVLt6dwYJZMw5lHQcps5TquAzTFIv8e
+ eWfp7XPXc86Sct5Pv9bBFpitb4AYy+p4Nb+5D0aEgGWInhDmKU2CE8g4ZmnR1EddGnK5
+ pndmH+jIQZ8UZEE1jlXuUW5ahx0aQRVIQednu1zVZ6jbr4p2OK1hUUYSaLUcyL66Ysdd
+ SvTHjSELjS8Gi4+VB2kWtXL21kyTFwNd54coHgYcMRy7zG4TGUch6SWZOCTIFTjGtyX7
+ S/0jVU4RsWHpQXtAhMTAVWSij4Z6ySln9yoI7j/Y4t3vwKdyL5CnN9RoYXClHaD/u/0u
+ 98CQ==
+X-Gm-Message-State: APjAAAW4lKiAxHAKaBN2zEXUEVbq3RzjHuAHMy9qAGFJdgV489gDIpOF
+ 3XNrGFvpvEJ0eKYIfdHkfm5fhMeCdbs=
+X-Google-Smtp-Source: APXvYqzHRKRyg7+7CoVECVrHvDxtLshKsTIe4TgL6o5OZVN72oUf3TOpd2aOox7UbbYlhK/bpuuiHg==
+X-Received: by 2002:a17:90a:c086:: with SMTP id o6mr668903pjs.2.1566315251498; 
+ Tue, 20 Aug 2019 08:34:11 -0700 (PDT)
+Received: from masabert (i118-21-156-233.s30.a048.ap.plala.or.jp.
+ [118.21.156.233])
+ by smtp.gmail.com with ESMTPSA id bt18sm276897pjb.1.2019.08.20.08.34.10
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 20 Aug 2019 08:34:10 -0700 (PDT)
+Received: by masabert (Postfix, from userid 1000)
+ id 43C312011CC; Wed, 21 Aug 2019 00:33:58 +0900 (JST)
+From: Masanari Iida <standby24x7@gmail.com>
+To: linux-kernel@vger.kernel.org, gregkh@linuxfoundation.org,
+ devel@driverdev.osuosl.org, abbotti@mev.co.uk, hsweeten@visionengravers.com
+Subject: [PATCH] staging: comedi: ni_mio_common: Fix a typo in ni_mio_common.c
+Date: Wed, 21 Aug 2019 00:33:56 +0900
+Message-Id: <20190820153356.25189-1-standby24x7@gmail.com>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
-In-Reply-To: <c9a27e20-33fa-2cad-79f2-ecc26f6f3490@huawei.com>
-X-Provags-ID: V03:K1:1wqXq/0in6IfAkHB8akysmuzP9uzNyxmHmhAzExPc371ksQFLD8
- Cdt5AwTNnmMiYFAbDW6BkoUQ5T8DnWNT9tDAzkbqTk5jP1Ob1r0WLgr4yca+Ns9SZwjDu2X
- vkxKKN+M7bd6AkuTNBtZViIGlYmC1n9zfAYzXFKoUFCyq4gfVULmvt90V+b5m6SmsjEaHRT
- hA/DT864MFqJJ5XBPvvZw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:VS2uBzGSQXA=:Njk4aHa8Y50tGMR18ReoZa
- NmXttE2l1C55nPmuFyQrrh62SYMRWm9X36GKiZEoIUeM8TB2xwBr0jydBQe2n05nQ2nbXHpcy
- 6M6eFHMrxuABqWR5lj9RtTBm0ehpbuWw77o/BH+s6WubSMMUJFfBMvIcbFcX6EdMPhgCLVkV8
- 6L/3zLFR0XSDO+betOYm8G2iqOMGuwxvFpGPDfET8a3gs+0fshyAM+RlE0bqUh0yoEYk6za2m
- kvADanb80T+n25MOow/jvMcAFgPLC/73EpuneQV7YAC6Br2oJm4J2g6TH5Mo35Qs6vZaOU3AJ
- pz/t+vHj/48pFWOmGaB7fiyVCNcjryKkjJGwVqKPrk3bDRFKTmRGjUxr2KKBYPuIJpxVrcd+z
- b8l1R/6W1FyGA28UG7HBFj8XjpK0gPyABhSP1Gh+4He+P9pVyU25oFuRg75NQ9mvG/gwSW/fk
- P+EMjqgLsWXozwz5HXCA0xvUoc4mNki53NocP9MphwEKhda/8d6Alfzs8b5w0BZF7sS+eCz0A
- B12SPsbAlkKJAZ4bfHP9Jh2ykxKTrnSn5sPgH+XXIS/5qqx7NXINDWBTfoWfZn3Qec4Jwz3pF
- gcQ6j6uhW/U5vQ04EKEpA22zisTLbtHQCiq5OqVuqDpYjAsPwTbEmWw5afnXdN+fVkKyn0Ske
- buM2LE7dprg0u4Pu4Pu4WTyI6sWB2N094Qx5g14v6Jp+O3zd3+b40IxZCWNORqo4l9MCgUzhb
- Reo94c+tLiLdQwdha4vGge3tUXmfFL5YkMScvWonoSu8oFiY3lNcwyfyqTNvg14xEA0zh5obT
- hBqsMEZ9a/ZQXf58+jSEboVH6xD2Rbx/nwRe18sruv6e2dNt5N8m+DnocbEt5QTeoNi7VIQ19
- Zm6t90xt8S3hy4KOgDo/5FgRMW4AfCpkCoVbM2cLDfnBWNoFrzGnECmze2P/CpKOD47fM3Ev/
- TM9tsKwb45PT7J3d+Z2Iv1J/DVz+jHxboSMOB7KRZv98Um/sFmLOHvV+vPUMo/dw+nfs/0wpW
- wI0RHzpmoCoSU8+hBb/TZySB6WmtIMYliISUA41rGk5osjB5ayEYG1doBHbMtRe3wMriP68g1
- kMV74UgROZsV4NuYqHFk4kOTQaBkNxLm2HUaNpGl0oJ3Cb5LmjolWsxtaFtR3yUobkc9sMRXt
- oMvejVAWWtRNLHha3Q4/6q+M3N6tAjcW3Voxz3hsTcpPuDIA==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -125,169 +87,35 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Jan Kara <jack@suse.cz>, Christoph Hellwig <hch@infradead.org>,
- Amir Goldstein <amir73il@gmail.com>, Dave Chinner <david@fromorbit.com>,
- linux-kernel <linux-kernel@vger.kernel.org>, Miao Xie <miaoxie@huawei.com>,
- devel <devel@driverdev.osuosl.org>, Stephen Rothwell <sfr@canb.auug.org.au>,
- Richard Weinberger <richard@nod.at>, Eric Biggers <ebiggers@kernel.org>,
- torvalds <torvalds@linux-foundation.org>, Al Viro <viro@zeniv.linux.org.uk>,
- Jaegeuk Kim <jaegeuk@kernel.org>, "Theodore Y. Ts'o" <tytso@mit.edu>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- David Sterba <dsterba@suse.cz>, Li Guifu <bluce.liguifu@huawei.com>,
- Fang Wei <fangwei1@huawei.com>, Pavel Machek <pavel@denx.de>,
- linux-fsdevel <linux-fsdevel@vger.kernel.org>,
- Andrew Morton <akpm@linux-foundation.org>,
- linux-erofs <linux-erofs@lists.ozlabs.org>
-Content-Type: multipart/mixed; boundary="===============3255628241370481729=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============3255628241370481729==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="4LVjIQCVca5X3T5GkfFKKDlO5YDcA3qer"
+This patch fix a spelling typo in ni_mio_common.c
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---4LVjIQCVca5X3T5GkfFKKDlO5YDcA3qer
-Content-Type: multipart/mixed; boundary="slQR6rSH5UnNorxY9BmaW69TgYDvJmTLN";
- protected-headers="v1"
-From: Qu Wenruo <quwenruo.btrfs@gmx.com>
-To: Chao Yu <yuchao0@huawei.com>, Gao Xiang <hsiangkao@aol.com>,
- "Darrick J. Wong" <darrick.wong@oracle.com>
-Cc: Christoph Hellwig <hch@infradead.org>, "Theodore Y. Ts'o"
- <tytso@mit.edu>, Eric Biggers <ebiggers@kernel.org>,
- Richard Weinberger <richard@nod.at>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jan Kara <jack@suse.cz>,
- Dave Chinner <david@fromorbit.com>, David Sterba <dsterba@suse.cz>,
- Miao Xie <miaoxie@huawei.com>, devel <devel@driverdev.osuosl.org>,
- Stephen Rothwell <sfr@canb.auug.org.au>, Amir Goldstein
- <amir73il@gmail.com>, linux-erofs <linux-erofs@lists.ozlabs.org>,
- Al Viro <viro@zeniv.linux.org.uk>, Jaegeuk Kim <jaegeuk@kernel.org>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- Li Guifu <bluce.liguifu@huawei.com>, Fang Wei <fangwei1@huawei.com>,
- Pavel Machek <pavel@denx.de>, linux-fsdevel <linux-fsdevel@vger.kernel.org>,
- Andrew Morton <akpm@linux-foundation.org>,
- torvalds <torvalds@linux-foundation.org>
-Message-ID: <735b8d15-bcb5-b11b-07c1-0617eb1e5ce9@gmx.com>
-Subject: Re: [PATCH] erofs: move erofs out of staging
-References: <790210571.69061.1566120073465.JavaMail.zimbra@nod.at>
- <20190818151154.GA32157@mit.edu> <20190818155812.GB13230@infradead.org>
- <20190818161638.GE1118@sol.localdomain>
- <20190818162201.GA16269@infradead.org>
- <20190818172938.GA14413@sol.localdomain>
- <20190818174702.GA17633@infradead.org>
- <20190818181654.GA1617@hsiangkao-HP-ZHAN-66-Pro-G1>
- <20190818201405.GA27398@hsiangkao-HP-ZHAN-66-Pro-G1>
- <20190819160923.GG15198@magnolia>
- <20190819203051.GA10075@hsiangkao-HP-ZHAN-66-Pro-G1>
- <bdb91cbf-985b-5a2c-6019-560b79739431@gmx.com>
- <ad62636f-ef1b-739f-42cc-28d9d7ed86da@huawei.com>
- <c6f6de48-2594-05e4-2048-9a9c59c018d7@gmx.com>
- <c9a27e20-33fa-2cad-79f2-ecc26f6f3490@huawei.com>
-In-Reply-To: <c9a27e20-33fa-2cad-79f2-ecc26f6f3490@huawei.com>
+Signed-off-by: Masanari Iida <standby24x7@gmail.com>
+---
+ drivers/staging/comedi/drivers/ni_mio_common.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
---slQR6rSH5UnNorxY9BmaW69TgYDvJmTLN
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-[...]
->=20
-> Yeah, it looks like we need searching more levels mapping to find the f=
-inal
-> physical block address of inode/node/data in btrfs.
->=20
-> IMO, in a little lazy way, we can reform and reuse existed function in
-> btrfs-progs which can find the mapping info of inode/node/data accordin=
-g to
-> specified ino or ino+pg_no.
-
-Maybe no need to go as deep as ino.
-
-What about just go physical bytenr? E.g. for XFS/EXT* choose a random
-bytenr. Then verify if that block is used, if not, try again.
-
-If used, check if it's metadata. If not, try again.
-(feel free to corrupt data, in fact btrfs uses some data as space cache,
-so it should make some sense)
-
-If metadata, corrupt that bytenr/bytenr range in the metadata block,
-regenerate checksum, call it a day and let kernel suffer.
-
-For btrfs, just do extra physical -> logical convert in the first place,
-then follow the same workflow.
-It should work for any fs as long as it's on single device.
-
->=20
->>
->> It may depends on the granularity. But definitely a good idea to do so=
-
->> in a generic way.
->> Currently we depend on super kind student developers/reporters on such=
-
->=20
-> Yup, I just guess Wen Xu may be interested in working on a generic way =
-to fuzz
-> filesystem, as I know they dig deep in filesystem code when doing fuzz.=
-
-
-Don't forget Yoon Jungyeon, I see more than one times he reported fuzzed
-images with proper reproducer and bugzilla links.
-Even using his personal mail address, not school mail address.
-
-Those guys are really awesome!
-
-> BTW,
-> which impresses me is, constructing checkpoint by injecting one byte, a=
-nd then
-> write a correct recalculated checksum value on that checkpoint, making =
-that
-> checkpoint looks valid...
-
-IIRC F2FS guys may be also investigating a similar mechanism, as they
-also got a hard fight against reports from those awesome reporters.
-
-So such fuzzed image is a new trend for fs development.
-
-Thanks,
-Qu
-
->=20
-> Thanks,
->=20
-
-
---slQR6rSH5UnNorxY9BmaW69TgYDvJmTLN--
-
---4LVjIQCVca5X3T5GkfFKKDlO5YDcA3qer
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEELd9y5aWlW6idqkLhwj2R86El/qgFAl1bs0sACgkQwj2R86El
-/qiHxgf9EuNDrR5H/dHCixK+MxIhu42YyiGiZIYxH9qGLoZN6JLd1FkWYuzGJrlv
-96F5Y50vW6iPslAnlmp3tFdmeEI6IMCiELXZAKjZOzbaba2bdzJWJUG75ZGpdxay
-IUaBIbOsiGealuKPcoEkeU9yzq9CtzoXgbLDt9Y5osokp0cRdzfzRVEUSQ/gj4QE
-EzOVDdNwTZbaaZboFlaSD4hbEgkNFxnq9C3qn4trxe4pVp7oaeK17wi3I1KHXo0Q
-I3griKjozf0Cp6rka4a3nCpZ/ML3busRZclXsLlnbHKGA0gQFpPkUqTrrojZORx4
-wBuwYdhYEWzsLK0+NcDgCe2z/ZRCog==
-=VtSx
------END PGP SIGNATURE-----
-
---4LVjIQCVca5X3T5GkfFKKDlO5YDcA3qer--
-
---===============3255628241370481729==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+diff --git a/drivers/staging/comedi/drivers/ni_mio_common.c b/drivers/staging/comedi/drivers/ni_mio_common.c
+index c175227009f1..f98e3ae27bff 100644
+--- a/drivers/staging/comedi/drivers/ni_mio_common.c
++++ b/drivers/staging/comedi/drivers/ni_mio_common.c
+@@ -596,7 +596,7 @@ static int ni_request_ao_mite_channel(struct comedi_device *dev)
+ 	if (!mite_chan) {
+ 		spin_unlock_irqrestore(&devpriv->mite_channel_lock, flags);
+ 		dev_err(dev->class_dev,
+-			"failed to reserve mite dma channel for analog outut\n");
++			"failed to reserve mite dma channel for analog output\n");
+ 		return -EBUSY;
+ 	}
+ 	mite_chan->dir = COMEDI_OUTPUT;
+-- 
+2.23.0
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============3255628241370481729==--
