@@ -2,57 +2,60 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C75595464
-	for <lists+driverdev-devel@lfdr.de>; Tue, 20 Aug 2019 04:30:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C2B2395472
+	for <lists+driverdev-devel@lfdr.de>; Tue, 20 Aug 2019 04:33:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 58B3F22721;
-	Tue, 20 Aug 2019 02:30:22 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9A3D422744;
+	Tue, 20 Aug 2019 02:32:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aK484BPxZpsM; Tue, 20 Aug 2019 02:30:21 +0000 (UTC)
+	with ESMTP id QZ--Y57u28Fw; Tue, 20 Aug 2019 02:32:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id DB6502271F;
-	Tue, 20 Aug 2019 02:30:18 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 292AE22721;
+	Tue, 20 Aug 2019 02:32:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D1AD21BF315
- for <devel@linuxdriverproject.org>; Tue, 20 Aug 2019 02:30:16 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 00D0A1BF315
+ for <devel@linuxdriverproject.org>; Tue, 20 Aug 2019 02:32:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C49B686E82
- for <devel@linuxdriverproject.org>; Tue, 20 Aug 2019 02:30:16 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id EE4CC86329
+ for <devel@linuxdriverproject.org>; Tue, 20 Aug 2019 02:32:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yDT9MCZehCrs for <devel@linuxdriverproject.org>;
- Tue, 20 Aug 2019 02:30:16 +0000 (UTC)
+ with ESMTP id eTMl2VpH7r7K for <devel@linuxdriverproject.org>;
+ Tue, 20 Aug 2019 02:32:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2514486E4F
- for <devel@driverdev.osuosl.org>; Tue, 20 Aug 2019 02:30:16 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 4578884F2B
+ for <devel@driverdev.osuosl.org>; Tue, 20 Aug 2019 02:32:52 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
  by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 19 Aug 2019 19:30:15 -0700
+ 19 Aug 2019 19:32:52 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,407,1559545200"; d="scan'208";a="178050474"
+X-IronPort-AV: E=Sophos;i="5.64,407,1559545200"; d="scan'208";a="178050985"
 Received: from genxtest-ykzhao.sh.intel.com (HELO [10.239.143.71])
  ([10.239.143.71])
- by fmsmga008.fm.intel.com with ESMTP; 19 Aug 2019 19:30:14 -0700
-Subject: Re: [RFC PATCH 15/15] drivers/acrn: add the support of offline SOS cpu
+ by fmsmga008.fm.intel.com with ESMTP; 19 Aug 2019 19:32:51 -0700
+Subject: Re: [RFC PATCH 08/15] drivers/acrn: add VM memory management for ACRN
+ char device
 To: Dan Carpenter <dan.carpenter@oracle.com>
 References: <1565922356-4488-1-git-send-email-yakui.zhao@intel.com>
- <1565922356-4488-16-git-send-email-yakui.zhao@intel.com>
- <20190819103417.GD4451@kadam>
+ <1565922356-4488-9-git-send-email-yakui.zhao@intel.com>
+ <20190816124757.GW1974@kadam>
+ <8b909c22-3873-2b5d-4845-1fee1a5d81ce@intel.com>
+ <20190819073958.GC4451@kadam>
 From: "Zhao, Yakui" <yakui.zhao@intel.com>
-Message-ID: <18360e11-22af-8f14-21ad-3fa0e8d23210@intel.com>
-Date: Tue, 20 Aug 2019 10:23:14 +0800
+Message-ID: <1896e9f8-7947-3c7a-4328-ddbdeee892e3@intel.com>
+Date: Tue, 20 Aug 2019 10:25:51 +0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
  Thunderbird/52.6.0
 MIME-Version: 1.0
-In-Reply-To: <20190819103417.GD4451@kadam>
+In-Reply-To: <20190819073958.GC4451@kadam>
 Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -73,27 +76,16 @@ Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-CgpPbiAyMDE55bm0MDjmnIgxOeaXpSAxODozNCwgRGFuIENhcnBlbnRlciB3cm90ZToKPiBPbiBG
-cmksIEF1ZyAxNiwgMjAxOSBhdCAxMDoyNTo1NkFNICswODAwLCBaaGFvIFlha3VpIHdyb3RlOgo+
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL2Fjcm4vYWNybl9kZXYuYyBiL2RyaXZlcnMv
-c3RhZ2luZy9hY3JuL2Fjcm5fZGV2LmMKPj4gaW5kZXggMDYwMjEyNS4uNjg2ODAwMyAxMDA2NDQK
-Pj4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL2Fjcm4vYWNybl9kZXYuYwo+PiArKysgYi9kcml2ZXJz
-L3N0YWdpbmcvYWNybi9hY3JuX2Rldi5jCj4+IEBAIC01ODgsNiArNTg4LDQxIEBAIHN0YXRpYyBj
-b25zdCBzdHJ1Y3QgZmlsZV9vcGVyYXRpb25zIGZvcHMgPSB7Cj4+ICAgI2RlZmluZSBTVVBQT1JU
-X0hWX0FQSV9WRVJTSU9OX01BSk9SCTEKPj4gICAjZGVmaW5lIFNVUFBPUlRfSFZfQVBJX1ZFUlNJ
-T05fTUlOT1IJMAo+PiAgIAo+PiArc3RhdGljIHNzaXplX3QKPj4gK29mZmxpbmVfY3B1X3N0b3Jl
-KHN0cnVjdCBkZXZpY2UgKmRldiwKPj4gKwkJCXN0cnVjdCBkZXZpY2VfYXR0cmlidXRlICphdHRy
-LAo+PiArCQkJY29uc3QgY2hhciAqYnVmLCBzaXplX3QgY291bnQpCj4+ICt7Cj4+ICsjaWZkZWYg
-Q09ORklHX1g4Ngo+PiArCXU2NCBjcHUsIGxhcGljaWQ7Cj4+ICsKPj4gKwlpZiAoa3N0cnRvdWxs
-KGJ1ZiwgMCwgJmNwdSkgPCAwKQo+PiArCQlyZXR1cm4gLUVJTlZBTDsKPiAKClRoYW5rcyBmb3Ig
-dGhlIHJldmlldy4KCk1ha2Ugc2Vuc2UuClRoZSBlcnJvciBjb2RlIHdpbGwgYmUgcHJlc2VydmVk
-LgoKPiBQcmVzZXJ2ZSB0aGUgZXJyb3IgY29kZS4KPiAKPiAJcmV0ID0ga3N0cnRvdWxsKGJ1Ziwg
-MCwgJmNwdSk7Cj4gCWlmIChyZXQpCj4gCQlyZXR1cm4gcmV0OwoKCj4gCj4+ICsKPj4gKwlpZiAo
-Y3B1X3Bvc3NpYmxlKGNwdSkpIHsKPiAKPiBZb3UgY2FuJ3QgcGFzcyB1bmNoZWNrZWQgY3B1IHZh
-bHVlcyB0byBjcHVfcG9zc2libGUoKSBvciBpdCByZXN1bHRzIGluCj4gYW4gb3V0IG9mIGJvdW5k
-cyByZWFkIGlmIGNwdSBpcyA+PSB0aGFuIG5yX2NwdV9pZHMuCj4gCgpPSy4gSXQgd2lsbCBhZGQg
-dGhlIGNoZWNrIG9mICJjcHUgPCBudW1fcG9zc2libGVzX2NwdSgpIiB0byBhdm9pZCB0aGUgCm91
-dCBvZiBib3VuZHMuCgo+IHJlZ2FyZHMsCj4gZGFuIGNhcnBlbnRlcgo+IApfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2
-ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJv
-amVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+CgpPbiAyMDE55bm0MDjmnIgxOeaXpSAxNTozOSwgRGFuIENhcnBlbnRlciB3cm90ZToKPiBPbiBN
+b24sIEF1ZyAxOSwgMjAxOSBhdCAwMTozMjo1NFBNICswODAwLCBaaGFvLCBZYWt1aSB3cm90ZToK
+Pj4gSW4gZmFjdCBhcyB0aGlzIGRyaXZlciBpcyBtYWlubHkgdXNlZCBmb3IgZW1iZWRkZWQgSU9U
+IHVzYWdlLCBpdCBkb2Vzbid0Cj4+IGhhbmRsZSB0aGUgY29tcGxleCBjbGVhbnVwIHdoZW4gc3Vj
+aCBlcnJvciBpcyBlbmNvdW50ZXJlZC4gSW5zdGVhZCB0aGUgY2xlYW4KPj4gdXAgaXMgaGFuZGxl
+ZCBpbiBmcmVlX2d1ZXN0X3ZtLgo+IAo+IEEgdXNlIGFmdGVyIGZyZWUgaGVyZSBzZWVtcyBsaWtl
+IGEgcG90ZW50aWFsIHNlY3VyaXR5IHByb2JsZW0uICBTZWN1cml0eQo+IG1hdHRlcnMgZm9yIElv
+VC4uLiAgOigKClRoYW5rcyBmb3IgcG9pbnRpbmcgb3V0IHRoZSBpc3N1ZS4KVGhlIGNsZWFudXAg
+d2lsbCBiZSBjb25zaWRlcmVkIGNhcmVmdWxseS4KCj4gCj4gcmVnYXJkcywKPiBkYW4gY2FycGVu
+dGVyCj4gCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRl
+dmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2
+ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1k
+ZXZlbAo=
