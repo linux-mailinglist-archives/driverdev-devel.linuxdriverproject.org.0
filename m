@@ -1,91 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C5CCC98E58
-	for <lists+driverdev-devel@lfdr.de>; Thu, 22 Aug 2019 10:50:44 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C6B15993F8
+	for <lists+driverdev-devel@lfdr.de>; Thu, 22 Aug 2019 14:39:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E4B2786A36;
-	Thu, 22 Aug 2019 08:50:42 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 073008214C;
+	Thu, 22 Aug 2019 12:39:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bu8gyuFcTj5L; Thu, 22 Aug 2019 08:50:42 +0000 (UTC)
+	with ESMTP id gaHop4T2cgPz; Thu, 22 Aug 2019 12:39:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3BEFF86A3C;
-	Thu, 22 Aug 2019 08:50:41 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A19FD816F9;
+	Thu, 22 Aug 2019 12:39:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 509631BF9B9
- for <devel@linuxdriverproject.org>; Thu, 22 Aug 2019 08:50:31 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id EB09F1BF409
+ for <devel@linuxdriverproject.org>; Thu, 22 Aug 2019 12:38:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0C001868B5
- for <devel@linuxdriverproject.org>; Thu, 22 Aug 2019 08:50:31 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E81D921543
+ for <devel@linuxdriverproject.org>; Thu, 22 Aug 2019 12:38:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SBLATJEdGH1B for <devel@linuxdriverproject.org>;
- Thu, 22 Aug 2019 08:50:30 +0000 (UTC)
+ with ESMTP id DFI6KVq9NXwx for <devel@linuxdriverproject.org>;
+ Thu, 22 Aug 2019 12:38:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id CCCFE8685E
- for <devel@driverdev.osuosl.org>; Thu, 22 Aug 2019 08:50:19 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x7M8nQqm124526;
- Thu, 22 Aug 2019 08:50:17 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=lApRD2BRq+7hJJnluRFUtj3dNodqui2pOpL9TsZdsvQ=;
- b=iSiNnufs8VT/Fp6eeTleeLVU8AU9c4CqoxJehp52aW8SCgldaYQEv3hRjXlp3sib6Bv8
- +I8QdH45Ej0gWl/KtOdi5C6VBfmseZWUmuEVsWLIxjbrKPdWO+kic2yP2LcSVxURHZi6
- olxLndkXNmG9qo76vKM8saAj9DpSMdW94krPu+cvawH/rqCol75autCPPATW7dGah6CM
- dHJvSAYjZOkBX0L9z8YJ0zaNl2eoR7kHKivMywZIDorRa/emJ4Lv+t3ltxq9wiR7O7HN
- 11fGb/PJO7mtrj784NFwD6spzxe8XNuCF1PnzxXBWV8/luhvx/N/0hRGa/TKu+pqwbPP Uw== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by userp2120.oracle.com with ESMTP id 2uea7r3x7s-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 22 Aug 2019 08:50:17 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x7M8nHSC081461;
- Thu, 22 Aug 2019 08:50:17 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by userp3020.oracle.com with ESMTP id 2uh83prxbk-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 22 Aug 2019 08:50:17 +0000
-Received: from abhmp0004.oracle.com (abhmp0004.oracle.com [141.146.116.10])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x7M8oGGJ026765;
- Thu, 22 Aug 2019 08:50:16 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 22 Aug 2019 01:50:15 -0700
-Date: Thu, 22 Aug 2019 11:50:08 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Colin King <colin.king@canonical.com>
-Subject: Re: [PATCH] staging: rtl8192u: remove redundant assignment to
- pointer crypt
-Message-ID: <20190822085008.GH4451@kadam>
-References: <20190822084609.8971-1-colin.king@canonical.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190822084609.8971-1-colin.king@canonical.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9355
- signatures=668684
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1906280000 definitions=main-1908220097
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9355
- signatures=668684
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1906280000
- definitions=main-1908220097
+Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
+ [209.85.221.67])
+ by silver.osuosl.org (Postfix) with ESMTPS id 187C12152E
+ for <devel@driverdev.osuosl.org>; Thu, 22 Aug 2019 12:38:58 +0000 (UTC)
+Received: by mail-wr1-f67.google.com with SMTP id k2so5292871wrq.2
+ for <devel@driverdev.osuosl.org>; Thu, 22 Aug 2019 05:38:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=2yyL+3tM9mSt5kE1ALeX6Ty5QXmmZMrb4tbRBsxGTeE=;
+ b=S+lrkLL6LmaTWZ3kaj59RfGGeeE1zezGYh6F892O434uwJEZQOg2XD3RGHbVhf3zAm
+ tTHKhvmxSvON1rh+c/eaAfY0lsR3UPkhGRgu6ytfUuxYHI1vh5irHmJOs5B1PALYQPeo
+ Z4jfw5qnG6cpWG1vElUD26JIo3MWJVwjETCK+RVO9dhTlauq6m5QF6AXo5nxXWTY8gOG
+ OGGll9V/mGcIGTiGRQcsqyqeyaTeaGfGkA+QYxXuDsWf+dCEl1bVMssikurAlmwV1lqb
+ IoFkGMUYO6cfP48T6lye4sMwLFqaN9fI9ojPQtH3L4iZJwkVj5+i2r1jAXrJppzU02Xa
+ wGdA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=2yyL+3tM9mSt5kE1ALeX6Ty5QXmmZMrb4tbRBsxGTeE=;
+ b=OeNUmeOrfvyFg7nLdn1JaKolTPBCWgzxhVNtKL56rTIW0c7/tYeQKLtkMi0NPbpmR9
+ 3aOCA5i7yrQhQR9m6iaISjkmK1fQbQESuYQQw59j5YnGx5DRrT0QyihUPN3CZvw/54sw
+ Hq8wkZMf8Ftg31H7cjB0oZDV7NYn1Ud+12cfJGJnT0llC6pIIkQ37zlHmJyLDscFr4UI
+ ECwrUciw1eVVEYTN2Xuu7P/qXdRpcedybN77BfT91nCEWVOzqw8My/kTki6zoAcuf/co
+ 3k8v9sO9V+brxE82SZjeALxJLsysSnVAgzu6Hx/oFuZ4w+48CB7FPLyaAuQGH+Ss/Mwq
+ rNTA==
+X-Gm-Message-State: APjAAAVQbR7ZTEHNpYQciqGm0ft7x1xXun92RidMsvE9guZVbse5EgJl
+ NDZTFfq1/soOK2QR7c8aMZw=
+X-Google-Smtp-Source: APXvYqyUryLr5qmc3F8K9mBFiNnf8qDauD9NslXpIU3ZO2/cMJ0v1ikma5jdOyRHvow2F8goEmk68w==
+X-Received: by 2002:a5d:4f81:: with SMTP id d1mr47254318wru.177.1566477536353; 
+ Thu, 22 Aug 2019 05:38:56 -0700 (PDT)
+Received: from localhost.localdomain.localdomain (67.200.broadband2.iol.cz.
+ [83.208.200.67])
+ by smtp.googlemail.com with ESMTPSA id r17sm60719483wrg.93.2019.08.22.05.38.54
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 22 Aug 2019 05:38:55 -0700 (PDT)
+From: Martin Tomes <tomesm@gmail.com>
+To: isdn@linux-pingi.de
+Subject: [PATCH] Staging: isdn/gigaset : Fix bare unsigned warnings and
+ trailing lines errors
+Date: Wed, 21 Aug 2019 15:27:39 +0000
+Message-Id: <1566401259-16921-1-git-send-email-tomesm@gmail.com>
+X-Mailer: git-send-email 1.8.3.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,32 +82,150 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org,
- John Whitmore <johnfwhitmore@gmail.com>
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, Martin Tomes <tomesm@gmail.com>,
+ netdev@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Aug 22, 2019 at 09:46:09AM +0100, Colin King wrote:
-> From: Colin Ian King <colin.king@canonical.com>
-> 
-> The pointer crypt is being set with a value that is never read,
-> the assignment is redundant and hence can be removed.
-> 
-> Thanks to Dan Carpenter for sanity checking that this was indeed
-> redundant.
-> 
-> Addresses-Coverity: ("Unused value")
-> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+There are many bare use of unsigned warnings and trailing statements should be on next line errors from checkpatch.pl script.
+Change the code by adding 'unsigned int'. Move 'break' statement of 'switch' command to next line.
 
-Thanks!
+Signed-off-by: Martin Tomes <tomesm@gmail.com>
+---
+ drivers/staging/isdn/gigaset/usb-gigaset.c | 52 ++++++++++++++++++------------
+ 1 file changed, 31 insertions(+), 21 deletions(-)
 
-Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
-
-regards,
-dan carpenter
+diff --git a/drivers/staging/isdn/gigaset/usb-gigaset.c b/drivers/staging/isdn/gigaset/usb-gigaset.c
+index 1b9b436..d565242 100644
+--- a/drivers/staging/isdn/gigaset/usb-gigaset.c
++++ b/drivers/staging/isdn/gigaset/usb-gigaset.c
+@@ -143,16 +143,16 @@ struct usb_cardstate {
+ 	char			bchars[6];		/* for request 0x19 */
+ };
+ 
+-static inline unsigned tiocm_to_gigaset(unsigned state)
++static inline unsigned int tiocm_to_gigaset(unsigned int state)
+ {
+ 	return ((state & TIOCM_DTR) ? 1 : 0) | ((state & TIOCM_RTS) ? 2 : 0);
+ }
+ 
+-static int gigaset_set_modem_ctrl(struct cardstate *cs, unsigned old_state,
+-				  unsigned new_state)
++static int gigaset_set_modem_ctrl(struct cardstate *cs, unsigned int old_state,
++				  unsigned int new_state)
+ {
+ 	struct usb_device *udev = cs->hw.usb->udev;
+-	unsigned mask, val;
++	unsigned int mask, val;
+ 	int r;
+ 
+ 	mask = tiocm_to_gigaset(old_state ^ new_state);
+@@ -178,7 +178,7 @@ static int set_value(struct cardstate *cs, u8 req, u16 val)
+ 	int r, r2;
+ 
+ 	gig_dbg(DEBUG_USBREQ, "request %02x (%04x)",
+-		(unsigned)req, (unsigned)val);
++		(unsigned int)req, (unsigned int)val);
+ 	r = usb_control_msg(udev, usb_sndctrlpipe(udev, 0), 0x12, 0x41,
+ 			    0xf /*?*/, 0, NULL, 0, 2000 /*?*/);
+ 	/* no idea what this does */
+@@ -191,7 +191,7 @@ static int set_value(struct cardstate *cs, u8 req, u16 val)
+ 			    val, 0, NULL, 0, 2000 /*?*/);
+ 	if (r < 0)
+ 		dev_err(&udev->dev, "error %d on request 0x%02x\n",
+-			-r, (unsigned)req);
++			-r, (unsigned int)req);
+ 
+ 	r2 = usb_control_msg(udev, usb_sndctrlpipe(udev, 0), 0x19, 0x41,
+ 			     0, 0, cs->hw.usb->bchars, 6, 2000 /*?*/);
+@@ -205,7 +205,7 @@ static int set_value(struct cardstate *cs, u8 req, u16 val)
+  * set the baud rate on the internal serial adapter
+  * using the undocumented parameter setting command
+  */
+-static int gigaset_baud_rate(struct cardstate *cs, unsigned cflag)
++static int gigaset_baud_rate(struct cardstate *cs, unsigned int cflag)
+ {
+ 	u16 val;
+ 	u32 rate;
+@@ -213,16 +213,26 @@ static int gigaset_baud_rate(struct cardstate *cs, unsigned cflag)
+ 	cflag &= CBAUD;
+ 
+ 	switch (cflag) {
+-	case    B300: rate =     300; break;
+-	case    B600: rate =     600; break;
+-	case   B1200: rate =    1200; break;
+-	case   B2400: rate =    2400; break;
+-	case   B4800: rate =    4800; break;
+-	case   B9600: rate =    9600; break;
+-	case  B19200: rate =   19200; break;
+-	case  B38400: rate =   38400; break;
+-	case  B57600: rate =   57600; break;
+-	case B115200: rate =  115200; break;
++	case    B300: rate =     300;
++		      break;
++	case    B600: rate =     600;
++		      break;
++	case   B1200: rate =    1200;
++		      break;
++	case   B2400: rate =    2400;
++		      break;
++	case   B4800: rate =    4800;
++		      break;
++	case   B9600: rate =    9600;
++		      break;
++	case  B19200: rate =   19200;
++		      break;
++	case  B38400: rate =   38400;
++		      break;
++	case  B57600: rate =   57600;
++		      break;
++	case B115200: rate =  115200;
++		      break;
+ 	default:
+ 		rate =  9600;
+ 		dev_err(cs->dev, "unsupported baudrate request 0x%x,"
+@@ -345,7 +355,7 @@ static void gigaset_read_int_callback(struct urb *urb)
+ 	struct inbuf_t *inbuf = cs->inbuf;
+ 	int status = urb->status;
+ 	int r;
+-	unsigned numbytes;
++	unsigned int numbytes;
+ 	unsigned char *src;
+ 	unsigned long flags;
+ 
+@@ -357,7 +367,7 @@ static void gigaset_read_int_callback(struct urb *urb)
+ 			if (unlikely(*src))
+ 				dev_warn(cs->dev,
+ 					 "%s: There was no leading 0, but 0x%02x!\n",
+-					 __func__, (unsigned) *src);
++					 __func__, (unsigned int) *src);
+ 			++src; /* skip leading 0x00 */
+ 			--numbytes;
+ 			if (gigaset_fill_inbuf(inbuf, src, numbytes)) {
+@@ -517,7 +527,7 @@ static int gigaset_write_cmd(struct cardstate *cs, struct cmdbuf_t *cb)
+ 
+ static int gigaset_write_room(struct cardstate *cs)
+ {
+-	unsigned bytes;
++	unsigned int bytes;
+ 
+ 	bytes = cs->cmdbytes;
+ 	return bytes < IF_WRITEBUF ? IF_WRITEBUF - bytes : 0;
+@@ -611,7 +621,7 @@ static int write_modem(struct cardstate *cs)
+ 	}
+ 
+ 	/* Copy data to bulk out buffer and transmit data */
+-	count = min(bcs->tx_skb->len, (unsigned) ucs->bulk_out_size);
++	count = min(bcs->tx_skb->len, (unsigned int) ucs->bulk_out_size);
+ 	skb_copy_from_linear_data(bcs->tx_skb, ucs->bulk_out_buffer, count);
+ 	skb_pull(bcs->tx_skb, count);
+ 	ucs->busy = 1;
+-- 
+1.8.3.1
 
 _______________________________________________
 devel mailing list
