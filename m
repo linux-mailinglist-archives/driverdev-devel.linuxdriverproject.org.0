@@ -1,81 +1,95 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8A50B9828C
-	for <lists+driverdev-devel@lfdr.de>; Wed, 21 Aug 2019 20:16:44 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A88FF98293
+	for <lists+driverdev-devel@lfdr.de>; Wed, 21 Aug 2019 20:18:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2DF3487C76;
-	Wed, 21 Aug 2019 18:16:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0A2E686449;
+	Wed, 21 Aug 2019 18:18:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id X04p7ym0Xyrq; Wed, 21 Aug 2019 18:16:41 +0000 (UTC)
+	with ESMTP id r8YQ8JR2gwbC; Wed, 21 Aug 2019 18:18:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 93C9886F88;
-	Wed, 21 Aug 2019 18:16:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 491FA86433;
+	Wed, 21 Aug 2019 18:18:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5780B1BF417
- for <devel@linuxdriverproject.org>; Wed, 21 Aug 2019 18:16:40 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D937D1BF417
+ for <devel@linuxdriverproject.org>; Wed, 21 Aug 2019 18:18:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 54D31203FC
- for <devel@linuxdriverproject.org>; Wed, 21 Aug 2019 18:16:40 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id D438386C5C
+ for <devel@linuxdriverproject.org>; Wed, 21 Aug 2019 18:18:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5Vvmo37DXgkL for <devel@linuxdriverproject.org>;
- Wed, 21 Aug 2019 18:16:40 +0000 (UTC)
+ with ESMTP id O5mKjj5l2572 for <devel@linuxdriverproject.org>;
+ Wed, 21 Aug 2019 18:18:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f193.google.com (mail-pl1-f193.google.com
- [209.85.214.193])
- by silver.osuosl.org (Postfix) with ESMTPS id 3498A203F4
- for <devel@driverdev.osuosl.org>; Wed, 21 Aug 2019 18:16:40 +0000 (UTC)
-Received: by mail-pl1-f193.google.com with SMTP id h3so1754664pls.7
- for <devel@driverdev.osuosl.org>; Wed, 21 Aug 2019 11:16:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=ggqd974gCpWCPzLLF2L1xsiqYnOd5O3DgGhiZnJEAO0=;
- b=rlCmND5+WIvOpT2dHjpCSne2ygZ3gpYmNiXy8ySv76FJchH0uZuwhu/hMDOvJSX/RE
- xo93yo5ql0AJ6o6lgE+GsCk0PzH+BZEC38QqNSULelfLoR0Hc95QQqNgtXeSIjxpC5Kn
- CVUmovGUK1ivT2lhcYkOfcPcD+Wa1HiQO7txY4D/TX4by7mCOaZgPq2s7o3KtJEmdmMW
- +FMkRielPaVXhM0tosVNv7yOhUs+NRtKKBg6z98aHg4nsn7s/cQaaz9/dO/LrIPI3ihV
- MFR7K5PE1MXEYs9W7ScCjTir9L2J56R7ZhVQWcSg42WLueiN+JfGniKquqEzCywqzLlR
- Ta9A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=ggqd974gCpWCPzLLF2L1xsiqYnOd5O3DgGhiZnJEAO0=;
- b=HePbPqakqnacOpsWl2iisFB0Uo7PPr3kAJVUnyJ2IxqKmrIOIfLRuX3d8EOvGictfh
- CFOROjRmJbMAoHN3F3lRW9gpURV3F3Oqnd0od4PhOFzV/me0Gvh4apMfH1CJLK4CS7KQ
- mf0SdxHN9p4ZM4K0qGlV9tTI5EeLSEZ5+09LwCDTqTnA8tTChSJFci5nzhQZjTLCTejs
- n6/4oBLR8e2uqhALj/RJV1Gl5drAM4iFBny3jjTl46XfcWakJsQZ0sWMFYNcSu8OUx0X
- oqeqH7zpQ0Xu6K2Aja+Et8eiwQT0IiDsprpAqRl0mqhzF/L77q4Ch9yuv6inSapffqvv
- z44A==
-X-Gm-Message-State: APjAAAUSMG31JpGSVFgZUSQKDCDtdCwTP4eQQx5xlV5fDxRTPoPAL1Fm
- NJz5VQMgrolchzZF0uhgLPY=
-X-Google-Smtp-Source: APXvYqzgBWFl1vEhGO9Zq53Z2H8Q8G7WkZbM5gUo1K2nGRZMgtVApzBwVfeDVpzrcPVF4NMou1Ui4A==
-X-Received: by 2002:a17:902:302:: with SMTP id
- 2mr10242444pld.149.1566411399729; 
- Wed, 21 Aug 2019 11:16:39 -0700 (PDT)
-Received: from saurav ([123.201.163.53])
- by smtp.gmail.com with ESMTPSA id e66sm24688755pfe.142.2019.08.21.11.16.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 21 Aug 2019 11:16:39 -0700 (PDT)
-Date: Wed, 21 Aug 2019 23:46:34 +0530
-From: Saurav Girepunje <saurav.girepunje@gmail.com>
-To: gregkh@linuxfoundation.org;, nishkadg.linux@gmail.com;,
- hariprasad.kelam@gmail.com;, mamtashukla555@gmail.com;,
- shobhitkukreti@gmail.com;, benniciemanuel78@gmail.com;,
- puranjay12@gmail.com;, devel@driverdev.osuosl.org;,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: rtl8723bs: os_dep: Drop condition with no effect
-Message-ID: <20190821181631.GA11082@saurav>
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7E11886452
+ for <devel@driverdev.osuosl.org>; Wed, 21 Aug 2019 18:18:43 +0000 (UTC)
+Received: from 1.general.cking.uk.vpn ([10.172.193.212])
+ by youngberry.canonical.com with esmtpsa (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.76) (envelope-from <colin.king@canonical.com>)
+ id 1i0VBw-0002r5-5S; Wed, 21 Aug 2019 18:18:40 +0000
+From: Colin Ian King <colin.king@canonical.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=colin.king@canonical.com; prefer-encrypt=mutual; keydata=
+ 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
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jerry Chuang <jerry-chuang@realtek.com>,
+ John Whitmore <johnfwhitmore@gmail.com>, devel@driverdev.osuosl.org
+Subject: re: Added Realtek rtl8192u driver to staging - static analysis report.
+Message-ID: <cb1222a8-4c67-8fac-f1d9-755e97699caa@canonical.com>
+Date: Wed, 21 Aug 2019 19:18:39 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,36 +102,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: saurav.girepunje@hotmail.com
+Cc: linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-As the "else if" and "else" branch body are identical the condition
-has no effect. So drop the "else if" condition.
+Hi,
 
-Signed-off-by: Saurav Girepunje <saurav.girepunje@gmail.com>
----
- drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 2 --
- 1 file changed, 2 deletions(-)
+Static analysis of linux-next picked up an issue with the following commit:
 
-diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-index 90c2997256b7..36ea7256329a 100644
---- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-+++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-@@ -215,8 +215,6 @@ static char *translate_scan(struct adapter *padapter,
- 	} else if (ht_cap) {
- 		if (mcs_rate&0x8000) { /* MCS15 */
- 			max_rate = (bw_40MHz) ? ((short_GI)?300:270):((short_GI)?144:130);
--		} else if (mcs_rate&0x0080) { /* MCS7 */
--			max_rate = (bw_40MHz) ? ((short_GI)?150:135):((short_GI)?72:65);
- 		} else { /* default MCS7 */
- 			/* DBG_871X("wx_get_scan, mcs_rate_bitmap = 0x%x\n", mcs_rate); */
- 			max_rate = (bw_40MHz) ? ((short_GI)?150:135):((short_GI)?72:65);
--- 
-2.20.1
+commit 8fc8598e61f6f384f3eaf1d9b09500c12af47b37
+Author: Jerry Chuang <jerry-chuang@realtek.com>
+Date:   Tue Nov 3 07:17:11 2009 -0200
 
+    Staging: Added Realtek rtl8192u driver to staging
+
+In drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c we have:
+
+CID 48331 (#1 of 1): Unused value (UNUSED_VALUE) assigned_pointer
+
+Assigning value from ieee->crypt[ieee->tx_keyidx] to crypt here, but
+that stored value is not used.
+
+746        crypt = ieee->crypt[ieee->tx_keyidx];
+747        if (encrypt)
+748                beacon_buf->capability |=
+cpu_to_le16(WLAN_CAPABILITY_PRIVACY);
+
+Pointer crypt is being assigned but is never used afterwards.  Now
+either this is a redundant assignment and can be removed OR maybe crypt
+should be checked and there is a typo, e.g.:
+
+	crypt = ieee->crypt[ieee->tx_keyidx];
+	if (crypt)
+		...
+
+Either way, it's not clear to me and I think the code needs cleaning up.
+Any ideas?
+
+Colin
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
