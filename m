@@ -1,111 +1,93 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 13ACB97DEE
-	for <lists+driverdev-devel@lfdr.de>; Wed, 21 Aug 2019 17:01:26 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id ECAFD97E51
+	for <lists+driverdev-devel@lfdr.de>; Wed, 21 Aug 2019 17:13:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EE4F586F87;
-	Wed, 21 Aug 2019 15:01:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2BA1220458;
+	Wed, 21 Aug 2019 15:13:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id d4pYkmOiWHei; Wed, 21 Aug 2019 15:01:23 +0000 (UTC)
+	with ESMTP id 8+m0KO-ougUq; Wed, 21 Aug 2019 15:13:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C01E186C37;
-	Wed, 21 Aug 2019 15:01:22 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1B13520461;
+	Wed, 21 Aug 2019 15:13:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CFC741BF360
- for <devel@linuxdriverproject.org>; Wed, 21 Aug 2019 15:01:19 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0E4F91BF352
+ for <devel@linuxdriverproject.org>; Wed, 21 Aug 2019 15:13:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C9C5386C37
- for <devel@linuxdriverproject.org>; Wed, 21 Aug 2019 15:01:19 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 04FB788253
+ for <devel@linuxdriverproject.org>; Wed, 21 Aug 2019 15:13:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wzAHnmT5E1y9 for <devel@linuxdriverproject.org>;
- Wed, 21 Aug 2019 15:01:18 +0000 (UTC)
-X-Greylist: delayed 02:31:33 by SQLgrey-1.7.6
-Received: from EUR02-AM5-obe.outbound.protection.outlook.com
- (mail-eopbgr00065.outbound.protection.outlook.com [40.107.0.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id AE23186CB4
- for <devel@driverdev.osuosl.org>; Wed, 21 Aug 2019 15:01:17 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ZLCGY5juTq329rcOrCULdNNvJb1/SohowXOsg9srtBFO+RUMT3xE+ZVxpx+lQcblcDLdCRCWUqnT3v0NLRe/NbSx823sin8gX0SoCtVoymVhdjNv/Axx6gOa70Y0J59TdZ+GDMeGEpc5UVGzjTZiOpq61AUZIjd7wUJE0x6SEuY6uoT7y0tcd8lzMzLu+7FUQv4PZiXNjIe8DBqzkK0iYIevZQ1eTYKU9ob3UlB7c7wT+WHIE6L8xd9GJVo0y63nU86ekXPsbJkBQK6NELGtPL6a6W0T9ziuPUZnSTLgs/uGQIX6NwYN86md6uy1rwOlGodf3ULyiRDRIFFPOpf82g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=oLqbqxBOQN2/GPnlvANSCnHFiFVbmLEjPu39txbea6g=;
- b=CxSE3z5uq5FQ3r04uY6ETPnDAZmyd4h/0T26JZijXOEp6+5n4P8q2bTd7VvSAZbVUoubNTN6nk/lr9DDx3VV9PdQJ2V6XFBW8mg0/g6UTzvfzTVPv9mUQdSAykTsk6YLb+U6N3juqT/5bHdLzG+GtqbU5Cys+lC1M14sxxUtwtJEVVNJxAOr1RPMs4LyT29SfKqAY3Bg4EVOT5enID3BpwoRhbTJhk1ECKyteldgIvZuh2HPifoW5c62RvzYA7WQUMoCidTntit7aM2rNyG663DPMqS+3LBIM54SHLSdXyRe1eLVlC01EjFHoq8BlfksgSgzLszwpkySGgT3f/Wbjg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=itdev.co.uk; dmarc=pass action=none header.from=itdev.co.uk;
- dkim=pass header.d=itdev.co.uk; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=itdevltd.onmicrosoft.com; s=selector2-itdevltd-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=oLqbqxBOQN2/GPnlvANSCnHFiFVbmLEjPu39txbea6g=;
- b=axDB/EoDsXhVAZmSF+RB/k1R74duriQRTFU5OxeYU6TCAzy3gggfyjshGiEknQ+bUJxLrtVDouaavyo2lNTf6uluH74yLfikTIaPvbVDXVr8ZBQGdHMv6ZN9zX5ix+oRIJzyO0Q/YuXBaa5V74jnPxORP7p2TebKZORd+jUpJyo=
-Received: from VI1PR08MB3168.eurprd08.prod.outlook.com (52.133.15.143) by
- VI1PR08MB5535.eurprd08.prod.outlook.com (52.133.247.151) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2178.16; Wed, 21 Aug 2019 12:29:39 +0000
-Received: from VI1PR08MB3168.eurprd08.prod.outlook.com
- ([fe80::586d:db76:56c3:51e5]) by VI1PR08MB3168.eurprd08.prod.outlook.com
- ([fe80::586d:db76:56c3:51e5%6]) with mapi id 15.20.2178.018; Wed, 21 Aug 2019
- 12:29:39 +0000
-From: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
-To: Markus Elfring <Markus.Elfring@web.de>
-Subject: =?Windows-1252?Q?Re:_[PATCH]_staging:_vt6656:_Delete_an_unnecessary_check?=
- =?Windows-1252?Q?_before_the_macro_call_=93dev=5Fkfree=5Fskb=94?=
-Thread-Topic: =?Windows-1252?Q?[PATCH]_staging:_vt6656:_Delete_an_unnecessary_check_bef?=
- =?Windows-1252?Q?ore_the_macro_call_=93dev=5Fkfree=5Fskb=94?=
-Thread-Index: AQHVWBkdo33lx9Cu5UScsQk7wN549acFh/6A
-Date: Wed, 21 Aug 2019 12:29:39 +0000
-Message-ID: <20190821122936.GA17249@qd-ubuntu>
-References: <ff6e12fb-f144-351b-25e9-a864b58d7acf@web.de>
-In-Reply-To: <ff6e12fb-f144-351b-25e9-a864b58d7acf@web.de>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: LO2P265CA0265.GBRP265.PROD.OUTLOOK.COM
- (2603:10a6:600:a1::13) To VI1PR08MB3168.eurprd08.prod.outlook.com
- (2603:10a6:803:47::15)
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=quentin.deslandes@itdev.co.uk; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-originating-ip: [89.21.227.133]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: f077eee4-0ce7-4f88-c61c-08d726333c50
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(7021145)(8989299)(5600148)(711020)(4605104)(1401327)(4534185)(7022145)(4603075)(4627221)(201702281549075)(8990200)(7048125)(7024125)(7027125)(7023125)(2017052603328)(7193020);
- SRVR:VI1PR08MB5535; 
-x-ms-traffictypediagnostic: VI1PR08MB5535:
-x-microsoft-antispam-prvs: <VI1PR08MB553585B9854D3C362E493C09B3AA0@VI1PR08MB5535.eurprd08.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1751;
-x-forefront-prvs: 0136C1DDA4
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(7916004)(136003)(366004)(396003)(376002)(346002)(39830400003)(199004)(189003)(5660300002)(476003)(2906002)(446003)(66946007)(305945005)(11346002)(53936002)(44832011)(3846002)(6116002)(6486002)(86362001)(66446008)(66476007)(66556008)(64756008)(102836004)(8936002)(186003)(486006)(7736002)(6246003)(81156014)(6512007)(9686003)(6506007)(386003)(81166006)(26005)(508600001)(6916009)(229853002)(76176011)(256004)(6436002)(33656002)(66066001)(99286004)(71200400001)(4744005)(316002)(1076003)(54906003)(25786009)(33716001)(14454004)(4326008)(71190400001)(52116002);
- DIR:OUT; SFP:1101; SCL:1; SRVR:VI1PR08MB5535;
- H:VI1PR08MB3168.eurprd08.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: itdev.co.uk does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: eILLsWoQQI+u7jgGSq+pjbbXhgDVDsIjV8YMBVGBrmrF22sw7nq1pVB9qDX0D3tbNI5SH/0aCYu/b+CU59eN6wzDEr+A7JTzlpLy7wJYNE6NJEfsy7crz3t+iC7I/5SWyfd51fDTJNYsSo7ooJ+R+pIJqbQYzNyBlwZgyOCiTZcfl9b1CZ1flyle+N+iEm5CyQfMFQIwjDcLZ3+mS1pfg0g866r4HlQsZz+qI7SI3jOBzHyHG5Md+e1ER2MJPJOdhF64OveAxKvl0082qRs/WBuzQi9XNAkpWdPvcz69DSZjk2TJxjZ/aBpBsrvoB1jVagXWLKwnUSaX+PpMSKm0K/XklYIqcZYQq2OSD/iMiOFI/dpJcLDaMJJW3SYVJXMdFq0F3ylKL8i5hZdc1LnxVLo53TM5Tb2HsujwSoSSm00=
-x-ms-exchange-transport-forked: True
-Content-ID: <A94C004902C25A41B81281DBB938D576@eurprd08.prod.outlook.com>
+ with ESMTP id 8WEerabjqG93 for <devel@linuxdriverproject.org>;
+ Wed, 21 Aug 2019 15:13:38 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from out4-smtp.messagingengine.com (out4-smtp.messagingengine.com
+ [66.111.4.28])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C084087EE9
+ for <devel@driverdev.osuosl.org>; Wed, 21 Aug 2019 15:13:38 +0000 (UTC)
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+ by mailout.nyi.internal (Postfix) with ESMTP id B0EDB2104C;
+ Wed, 21 Aug 2019 11:13:37 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute5.internal (MEProxy); Wed, 21 Aug 2019 11:13:37 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=tobin.cc; h=date
+ :from:to:cc:subject:message-id:references:mime-version
+ :content-type:in-reply-to; s=fm3; bh=UXyep5gmvR7gzJOTpOWksLGbdCj
+ w2vu09aQuJ/K1NOc=; b=nbdXa8G4twyAo8+ISYJ66Col/oqbNPt6AVX9SSYbLWi
+ uAgVpzJjqkxbKQG67or8LQCT+IPbcLdn0o3xfgdFA9HPCTyZg3rugtLjV4L2ZaXg
+ XqvcVOKqHJXR2qQlWcsKdBtQCWFUw/Q5lYfqyk4i4DE4ePTxDTK+QSof2+6+hyP7
+ b/VyxgUN7aFVkUAaGgDOL1O4tPmaKyhUcdTOh4b+Bs2n5YmUTvIc0izCvPsmazeJ
+ a3S8CIxpKnFQH8SA6HDd+gGal3X0dJuoZKtjO+HMOTMFcDxa6AOrjYIwq8hb0ZI9
+ yqcLljMFXOFgyLw4fS1/LS5tBMycYqDOwjLzFmUdbbA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=UXyep5
+ gmvR7gzJOTpOWksLGbdCjw2vu09aQuJ/K1NOc=; b=FIjJL6Gl6VLEJEiAyJNGPb
+ kW2mq+V+KmKF+EFY5EHxYvMsHlVsJvq53dWdCdvtfL2Eh4wjCV5So9sx/1BrGMap
+ tISxO+6XcL+FN4JMLbxH1lCehzf9H8fGJvmNPVtdN61zNw3YRlHAKYwVKabo/rBR
+ y1u1SaDZXs1F5iaikSwoF5fSUANzT/m7iuUzY3vtErbJPsM9CFjTRJ7MfY8+sKxH
+ qLtMTT0JFg8Dva+7vbWdE9NBVyhHRqbqC+uMIK2lEwVRdnmp5bA/CJtrcC+dr6wX
+ fzW1FWM26hkD384cKHf6aRilJ+BzF7UEjZMXuZGvGQZjkWvNVdgvutCFNnxY7psQ
+ ==
+X-ME-Sender: <xms:oF9dXUSkEp3wmoKgiGcC_-NCiEf8Yaz7E7Hs1XSR8vpvF-Ea-4pdaA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduvddrudegfedgkeekucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ gfrhhlucfvnfffucdludehmdenucfjughrpeffhffvuffkfhggtggujgfofgesthdtredt
+ ofervdenucfhrhhomhepfdfvohgsihhnucevrdcujfgrrhguihhnghdfuceomhgvsehtoh
+ gsihhnrdgttgeqnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucfkphepjedtrddu
+ ieeirdektddrudelgeenucfrrghrrghmpehmrghilhhfrhhomhepmhgvsehtohgsihhnrd
+ gttgenucevlhhushhtvghrufhiiigvpedt
+X-ME-Proxy: <xmx:oF9dXWXqaRTicXEg7Rivmu0jRibBbbqqORI_nNRcWfozKf6GdFT9RQ>
+ <xmx:oF9dXdt7svvQyWlYmVn7uDEWhm9PafN5fBawrZOYea3lrhP-eqHAKg>
+ <xmx:oF9dXUuunXXGCREuLqDauNdQ8nT2rlMtk2sJKEpeXIMId0yn5pOhHQ>
+ <xmx:oV9dXb8Y1JlYJaa2pMr28JqRZtlvXVatDBAwfCMod5lqhbSm41GA5w>
+Received: from localhost (wsip-70-166-80-194.sd.sd.cox.net [70.166.80.194])
+ by mail.messagingengine.com (Postfix) with ESMTPA id 81450D6005A;
+ Wed, 21 Aug 2019 11:13:36 -0400 (EDT)
+Date: Wed, 21 Aug 2019 08:13:35 -0700
+From: "Tobin C. Harding" <me@tobin.cc>
+To: Gao Xiang <gaoxiang25@huawei.com>
+Subject: Re: [PATCH 2/2] staging/erofs: Balanced braces around a few
+ conditional statements.
+Message-ID: <20190821151241.GF12461@ares>
+References: <1566346700-28536-1-git-send-email-caitlynannefinn@gmail.com>
+ <1566346700-28536-3-git-send-email-caitlynannefinn@gmail.com>
+ <7aaca457a3d3feb951082d0659eec568a908971f.camel@perches.com>
+ <20190821023122.GA159802@architecture4>
 MIME-Version: 1.0
-X-OriginatorOrg: itdev.co.uk
-X-MS-Exchange-CrossTenant-Network-Message-Id: f077eee4-0ce7-4f88-c61c-08d726333c50
-X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Aug 2019 12:29:39.5467 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 2d2930c4-2251-45b4-ad79-3582c5f41740
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 3V++MHc9rJRi/MR6o+yUBlBncSqDs+epd2F8hPK/PYuFgus1JYgLC+bxeqTLpFr4xnenOsnIKUeSQQF2Nw9FRf9kYhR7Cob2ZHv+OMm9tws=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR08MB5535
+Content-Disposition: inline
+In-Reply-To: <20190821023122.GA159802@architecture4>
+X-Mailer: Mutt 1.9.4 (2018-02-28)
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,51 +100,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "kernel-janitors@vger.kernel.org" <kernel-janitors@vger.kernel.org>,
- Forest Bond <forest@alittletooquiet.net>, LKML <linux-kernel@vger.kernel.org>
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Chao Yu <yuchao0@huawei.com>, linux-kernel@vger.kernel.org,
+ Joe Perches <joe@perches.com>, linux-erofs@lists.ozlabs.org,
+ Caitlyn <caitlynannefinn@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Aug 21, 2019 at 02:07:56PM +0200, Markus Elfring wrote:
-> From: Markus Elfring <elfring@users.sourceforge.net>
-> Date: Wed, 21 Aug 2019 13:56:35 +0200
+On Wed, Aug 21, 2019 at 10:31:22AM +0800, Gao Xiang wrote:
+> On Tue, Aug 20, 2019 at 07:26:46PM -0700, Joe Perches wrote:
+> > On Tue, 2019-08-20 at 20:18 -0400, Caitlyn wrote:
+> > > Balanced braces to fix some checkpath warnings in inode.c and
+> > > unzip_vle.c
+> > []
+> > > diff --git a/drivers/staging/erofs/unzip_vle.c b/drivers/staging/erofs/unzip_vle.c
+> > []
+> > > @@ -915,21 +915,21 @@ static int z_erofs_vle_unzip(struct super_block *sb,
+> > >  	mutex_lock(&work->lock);
+> > >  	nr_pages = work->nr_pages;
+> > >  
+> > > -	if (likely(nr_pages <= Z_EROFS_VLE_VMAP_ONSTACK_PAGES))
+> > > +	if (likely(nr_pages <= Z_EROFS_VLE_VMAP_ONSTACK_PAGES)) {
+> > >  		pages = pages_onstack;
+> > > -	else if (nr_pages <= Z_EROFS_VLE_VMAP_GLOBAL_PAGES &&
+> > > -		 mutex_trylock(&z_pagemap_global_lock))
+> > > +	} else if (nr_pages <= Z_EROFS_VLE_VMAP_GLOBAL_PAGES &&
+> > > +		 mutex_trylock(&z_pagemap_global_lock)) {
+> > 
+> > Extra space after tab
 > 
-> The dev_kfree_skb() function performs also input parameter validation.
-> Thus the test around the call is not needed.
-> 
-> This issue was detected by using the Coccinelle software.
-> 
-> Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
-> ---
->  drivers/staging/vt6656/main_usb.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
-> index 856ba97aec4f..f57e890659aa 100644
-> --- a/drivers/staging/vt6656/main_usb.c
-> +++ b/drivers/staging/vt6656/main_usb.c
-> @@ -422,8 +422,7 @@ static void vnt_free_rx_bufs(struct vnt_private *priv)
->  		}
-> 
->  		/* deallocate skb */
-> -		if (rcb->skb)
-> -			dev_kfree_skb(rcb->skb);
-> +		dev_kfree_skb(rcb->skb);
-> 
->  		kfree(rcb);
->  	}
-> --
-> 2.23.0
-> 
+> There is actually balanced braces in linux-next.
+> https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/tree/drivers/staging/erofs/zdata.c#n762
 
-Reviewed-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
+Which tree did these changes go in through please Gao?  I believe
+Caitlyn was working off of the staging-next branch of Greg's staging
+tree.
 
-Regards,
-Quentin
+thanks,
+Tobin.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
