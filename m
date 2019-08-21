@@ -1,131 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C820E97C47
-	for <lists+driverdev-devel@lfdr.de>; Wed, 21 Aug 2019 16:17:22 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0CA5D97CC3
+	for <lists+driverdev-devel@lfdr.de>; Wed, 21 Aug 2019 16:24:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1B87086D33;
-	Wed, 21 Aug 2019 14:17:21 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B4EEA8884F;
+	Wed, 21 Aug 2019 14:24:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id J-FGMo7ZCzSr; Wed, 21 Aug 2019 14:17:20 +0000 (UTC)
+	with ESMTP id 6LrTreh2EqHr; Wed, 21 Aug 2019 14:24:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 80FE08525D;
-	Wed, 21 Aug 2019 14:17:18 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3BFFD88761;
+	Wed, 21 Aug 2019 14:24:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4E8F31BF2FA
- for <devel@linuxdriverproject.org>; Wed, 21 Aug 2019 14:17:16 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8224C1BF2FA
+ for <devel@linuxdriverproject.org>; Wed, 21 Aug 2019 14:24:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4AD08248A1
- for <devel@linuxdriverproject.org>; Wed, 21 Aug 2019 14:17:16 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7F3DA887C8
+ for <devel@linuxdriverproject.org>; Wed, 21 Aug 2019 14:24:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nuVD0Rv9aXwN for <devel@linuxdriverproject.org>;
- Wed, 21 Aug 2019 14:17:15 +0000 (UTC)
+ with ESMTP id 9VmuXEtDnaqv for <devel@linuxdriverproject.org>;
+ Wed, 21 Aug 2019 14:24:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx0b-00128a01.pphosted.com (mx0b-00128a01.pphosted.com
- [148.163.139.77])
- by silver.osuosl.org (Postfix) with ESMTPS id 06ADE231CB
- for <devel@driverdev.osuosl.org>; Wed, 21 Aug 2019 14:17:14 +0000 (UTC)
-Received: from pps.filterd (m0167091.ppops.net [127.0.0.1])
- by mx0b-00128a01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- x7LEFt4X026159; Wed, 21 Aug 2019 10:17:11 -0400
-Received: from nam01-bn3-obe.outbound.protection.outlook.com
- (mail-bn3nam01lp2055.outbound.protection.outlook.com [104.47.33.55])
- by mx0b-00128a01.pphosted.com with ESMTP id 2ug3mac2wd-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=NOT);
- Wed, 21 Aug 2019 10:17:11 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=AQk6rVYfCOHb9kYWYp2ZohlBOJjFXWOrE6piCCBu9pjGzWdad5dUjGMRoFK9VmvJXEqcNDmIXrrPe3i5uNmggathcu9u3lZ2k7NGyClg0/1krgzMHE6iVKzfhKbi49GQz65XQjfI91owsYwS2T9XsoeE5ggLNyRz22Jdw8m/7qxdwiHjtMCQseW5BywheX/9KzfbW5FaqL/vjkWyZXs4XbwryfboJo6VoK/pEvRNsJ5DofUlEBc1FYf6uUMxFVAUfZb3Ed6FlY2CKREnLwzxm0qpZKrkNLJ/tfNIEQku22AXivWWE6c8Iuobm64C4dSDdYw+L1wpWbTyw+xmOUxdbw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=bh9sSZWrstr07mS0w9mNVsQBVCj7BgAlH0eJ4glJsM8=;
- b=n1K1aHikKuTEuLPo/ZzXOoVF7wbKSj9rWirIYh+dzwh4mXA8TD3HS61eG3dtAIt9M084gu0ejQG2HujX+YUdlooIstccJzeoBkbltZmApTpqSzOadQ3Jkp0QJaitMhXzhgY4SFZoZWJKn44QEPrBKgR8l7brq9rcvIJSQnDHhchS5Bd70YCHFfeEVm2rcY0BFxuiAQ7QOpeEc7Dwe8iyuO0+3088unKJR93KjEhEVAPJNJFbJMRJzDWVkEGet8nf/Deo59K4Eok+P0MyzngMj+MFhihbqBQKTG72oIxdMd+Hkx70IvuE96F0CREdwUt2sOQxAMqGfxjrvgIG4B4N1w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 137.71.25.55) smtp.rcpttodomain=vger.kernel.org smtp.mailfrom=analog.com;
- dmarc=bestguesspass action=none header.from=analog.com; dkim=none (message
- not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=analog.onmicrosoft.com; s=selector2-analog-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=bh9sSZWrstr07mS0w9mNVsQBVCj7BgAlH0eJ4glJsM8=;
- b=WV7qnMpia10DBoYixEw8PugnngaZxQ6wP7j8b/zXo/wss7UbAQXRoez5Xk1KsUIbIQyeb/vV6YXpc1bMPRfSPi7Vdymw1bIP5TOHHYgTDGL0QLw/FKVAA6oaly8JjwgZcZCo9kYBUphzFG6v4h1Fms1HEeV3ueeVjv10dUwhhIg=
-Received: from CY4PR03CA0088.namprd03.prod.outlook.com (2603:10b6:910:4d::29)
- by DM5PR03MB2553.namprd03.prod.outlook.com (2603:10b6:3:41::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2178.16; Wed, 21 Aug
- 2019 14:17:08 +0000
-Received: from BL2NAM02FT010.eop-nam02.prod.protection.outlook.com
- (2a01:111:f400:7e46::200) by CY4PR03CA0088.outlook.office365.com
- (2603:10b6:910:4d::29) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.2178.16 via Frontend
- Transport; Wed, 21 Aug 2019 14:17:08 +0000
-Received-SPF: Pass (protection.outlook.com: domain of analog.com designates
- 137.71.25.55 as permitted sender) receiver=protection.outlook.com;
- client-ip=137.71.25.55; helo=nwd2mta1.analog.com;
-Received: from nwd2mta1.analog.com (137.71.25.55) by
- BL2NAM02FT010.mail.protection.outlook.com (10.152.77.53) with Microsoft SMTP
- Server (version=TLS1_0, cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.2178.16
- via Frontend Transport; Wed, 21 Aug 2019 14:17:08 +0000
-Received: from NWD2HUBCAS7.ad.analog.com (nwd2hubcas7.ad.analog.com
- [10.64.69.107])
- by nwd2mta1.analog.com (8.13.8/8.13.8) with ESMTP id x7LEH4YD005682
- (version=TLSv1/SSLv3 cipher=AES256-SHA bits=256 verify=OK);
- Wed, 21 Aug 2019 07:17:04 -0700
-Received: from ben-Latitude-E6540.ad.analog.com (10.48.65.163) by
- NWD2HUBCAS7.ad.analog.com (10.64.69.107) with Microsoft SMTP Server id
- 14.3.408.0; Wed, 21 Aug 2019 10:17:07 -0400
-From: Beniamin Bia <beniamin.bia@analog.com>
-To: <jic23@kernel.org>
-Subject: [PATCH v3 4/4] dt-bindings: iio: adc: Add AD7606B ADC documentation
-Date: Wed, 21 Aug 2019 17:16:56 +0300
-Message-ID: <20190821141656.4815-4-beniamin.bia@analog.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190821141656.4815-1-beniamin.bia@analog.com>
-References: <20190821141656.4815-1-beniamin.bia@analog.com>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 16BB488761
+ for <devel@driverdev.osuosl.org>; Wed, 21 Aug 2019 14:24:29 +0000 (UTC)
+Received: from [192.168.0.101] (unknown [180.111.132.43])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id A46DB22D6D;
+ Wed, 21 Aug 2019 14:24:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1566397468;
+ bh=9ksBVq9fAhzcjSVB61cJ1f0+9AqNBnX70fl6ffNSxOM=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=j20Sm2jz1Cmc2mvnqzcuD6jFCrpjk7WWTUoUgOs4WLl5/tUYXz9HEX5cM4RBVk8MM
+ L0n9ZiqxCoNdk+ZcltFzlDnyBGUlRhNm+zXZO3v1Q2PFYhqiq0dknjNY9vqVIjM2Eo
+ 2inn4NWkmYr1TWDl8VfjXaMs5cM1pHivqiORkjWk=
+Subject: Re: [PATCH v2 5/6] staging: erofs: detect potential multiref due to
+ corrupted images
+To: Gao Xiang <gaoxiang25@huawei.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+References: <20190821021942.GA14087@kroah.com>
+ <20190821140152.229648-1-gaoxiang25@huawei.com>
+From: Chao Yu <chao@kernel.org>
+Message-ID: <e0f76952-2fcf-5d62-d318-f13077913af0@kernel.org>
+Date: Wed, 21 Aug 2019 22:24:14 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.9.1
 MIME-Version: 1.0
-X-ADIRoutedOnPrem: True
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:137.71.25.55; IPV:NLI; CTRY:US; EFV:NLI;
- SFV:NSPM;
- SFS:(10009020)(396003)(39860400002)(346002)(376002)(136003)(2980300002)(199004)(189003)(44832011)(305945005)(54906003)(106002)(2616005)(2351001)(486006)(476003)(446003)(51416003)(7696005)(11346002)(316002)(126002)(107886003)(14444005)(1076003)(4326008)(186003)(5660300002)(26005)(6666004)(356004)(70586007)(966005)(70206006)(76176011)(336012)(426003)(16586007)(36756003)(8936002)(86362001)(50466002)(48376002)(47776003)(6916009)(50226002)(2906002)(8676002)(7636002)(7416002)(478600001)(6306002)(246002);
- DIR:OUT; SFP:1101; SCL:1; SRVR:DM5PR03MB2553; H:nwd2mta1.analog.com; FPR:;
- SPF:Pass; LANG:en; PTR:nwd2mail10.analog.com; A:1; MX:1; 
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 469d2330-1e7a-4c9e-f8d0-08d72642401e
-X-Microsoft-Antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(5600148)(711020)(4605104)(4709080)(1401327)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328);
- SRVR:DM5PR03MB2553; 
-X-MS-TrafficTypeDiagnostic: DM5PR03MB2553:
-X-MS-Exchange-PUrlCount: 3
-X-Microsoft-Antispam-PRVS: <DM5PR03MB2553E35A76F48E93A5B44A70F0AA0@DM5PR03MB2553.namprd03.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:6108;
-X-Forefront-PRVS: 0136C1DDA4
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam-Message-Info: f95nOJpPZ9ImLLRkPOjiy7WdOGiBcEkd5puhsiDBU0+NMUQqD27aSTej2Hd2Z/XVz4XqgpI0dJ9MUOT+173lK4aKQp5WDCx0UEym0EKy7bhj3FBP++wZrQl/5zistpBCv/3OmsR8X3YRcNEmEH53hbWAK5VFHMW2WnvhEsx6+xF/W+Ag0cYQd1TGW2lGeWJdrRgDBMOrEZvYsnf5d9JzmzrPQN8LxfRr4kGqGmNAl6KFijetjWgkeZaL5kIxXb7lKez9N5Slj8hYtUCFJwQsesg2QKcY7OxkdUg7O69LflrchSHzfVxlY2VE+WU6TjDTbcTjjS9x/JYftHVUXJodQcrPAjgma//DSiHbDCqkrKAR8VNCboW3zrAkoVlvGaeQuO9Qyu12x3O4eHHNUCFgI2c3Czk4XToddfxXb5XLZZk=
-X-OriginatorOrg: analog.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Aug 2019 14:17:08.0622 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 469d2330-1e7a-4c9e-f8d0-08d72642401e
-X-MS-Exchange-CrossTenant-Id: eaa689b4-8f87-40e0-9c6f-7228de4d754a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=eaa689b4-8f87-40e0-9c6f-7228de4d754a; Ip=[137.71.25.55];
- Helo=[nwd2mta1.analog.com]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR03MB2553
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
- definitions=2019-08-21_05:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
- clxscore=1015 lowpriorityscore=0 mlxscore=0 impostorscore=0
- mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.0.1-1906280000 definitions=main-1908210156
+In-Reply-To: <20190821140152.229648-1-gaoxiang25@huawei.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -138,61 +69,27 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, mark.rutland@arm.com, lars@metafoo.de,
- biabeniamin@outlook.com, Michael.Hennerich@analog.com,
- devicetree@vger.kernel.org, linux-iio@vger.kernel.org,
- gregkh@linuxfoundation.org, linus.walleij@linaro.org,
- linux-kernel@vger.kernel.org, nicolas.ferre@microchip.com, robh+dt@kernel.org,
- pmeerw@pmeerw.net, knaack.h@gmx.de, mchehab+samsung@kernel.org,
- paulmck@linux.ibm.com, Beniamin Bia <beniamin.bia@analog.com>
+Cc: devel@driverdev.osuosl.org, Miao Xie <miaoxie@huawei.com>,
+ LKML <linux-kernel@vger.kernel.org>, stable@vger.kernel.org,
+ weidu.du@huawei.com, linux-fsdevel@vger.kernel.org,
+ linux-erofs@lists.ozlabs.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Documentation for AD7606B Analog to Digital Converter and software
-mode was added.
+On 2019-8-21 22:01, Gao Xiang wrote:
+> As reported by erofs-utils fuzzer, currently, multiref
+> (ondisk deduplication) hasn't been supported for now,
+> we should forbid it properly.
+> 
+> Fixes: 3883a79abd02 ("staging: erofs: introduce VLE decompression support")
+> Cc: <stable@vger.kernel.org> # 4.19+
+> Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
 
-Signed-off-by: Beniamin Bia <beniamin.bia@analog.com>
----
-Changes in v3:
--nothing changed
+Reviewed-by: Chao Yu <yuchao0@huawei.com>
 
- Documentation/devicetree/bindings/iio/adc/adi,ad7606.yaml | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/Documentation/devicetree/bindings/iio/adc/adi,ad7606.yaml b/Documentation/devicetree/bindings/iio/adc/adi,ad7606.yaml
-index 509dbe9c84d2..2afe31747a70 100644
---- a/Documentation/devicetree/bindings/iio/adc/adi,ad7606.yaml
-+++ b/Documentation/devicetree/bindings/iio/adc/adi,ad7606.yaml
-@@ -13,6 +13,7 @@ maintainers:
- description: |
-   Analog Devices AD7606 Simultaneous Sampling ADC
-   https://www.analog.com/media/en/technical-documentation/data-sheets/ad7606_7606-6_7606-4.pdf
-+  https://www.analog.com/media/en/technical-documentation/data-sheets/AD7606B.pdf
-   https://www.analog.com/media/en/technical-documentation/data-sheets/AD7616.pdf
- 
- properties:
-@@ -22,6 +23,7 @@ properties:
-       - adi,ad7606-8
-       - adi,ad7606-6
-       - adi,ad7606-4
-+      - adi,ad7606b
-       - adi,ad7616
- 
-   reg:
-@@ -87,7 +89,7 @@ properties:
- 
-   adi,sw-mode:
-     description:
--      Software mode of operation, so far available only for ad7616.
-+      Software mode of operation, so far available only for ad7616 and ad7606B.
-       It is enabled when all three oversampling mode pins are connected to
-       high level. The device is configured by the corresponding registers. If the
-       adi,oversampling-ratio-gpios property is defined, then the driver will set the
--- 
-2.17.1
-
+Thanks,
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
