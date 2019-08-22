@@ -2,63 +2,67 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 812F59A249
-	for <lists+driverdev-devel@lfdr.de>; Thu, 22 Aug 2019 23:40:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A0D3F9A24B
+	for <lists+driverdev-devel@lfdr.de>; Thu, 22 Aug 2019 23:40:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 41569884D0;
-	Thu, 22 Aug 2019 21:40:40 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4F9E0884E1;
+	Thu, 22 Aug 2019 21:40:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6wpi6YvJ9NvK; Thu, 22 Aug 2019 21:40:40 +0000 (UTC)
+	with ESMTP id M6hWSwOR27pr; Thu, 22 Aug 2019 21:40:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A1DEA87E91;
-	Thu, 22 Aug 2019 21:40:39 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id BD9A3882F2;
+	Thu, 22 Aug 2019 21:40:51 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B02741BF2FC
- for <devel@linuxdriverproject.org>; Thu, 22 Aug 2019 21:40:36 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6EBE31BF2FC
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 22 Aug 2019 21:40:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id AD15886B5B
- for <devel@linuxdriverproject.org>; Thu, 22 Aug 2019 21:40:36 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6B6CC20490
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 22 Aug 2019 21:40:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ICaUd8xEyx4G for <devel@linuxdriverproject.org>;
- Thu, 22 Aug 2019 21:40:36 +0000 (UTC)
+ with ESMTP id Avl4-OyCysVl
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 22 Aug 2019 21:40:49 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic310-20.consmr.mail.sg3.yahoo.com
- (sonic310-20.consmr.mail.sg3.yahoo.com [106.10.244.140])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B1FAB86644
- for <devel@linuxdriverproject.org>; Thu, 22 Aug 2019 21:40:35 +0000 (UTC)
+Received: from sonic301-21.consmr.mail.sg3.yahoo.com
+ (sonic301-21.consmr.mail.sg3.yahoo.com [106.10.242.84])
+ by silver.osuosl.org (Postfix) with ESMTPS id 725B620451
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 22 Aug 2019 21:40:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1566510033; bh=wbCv+8O2v3DMbJoa3tcT30FtNYMW8nrNMLMKGn43MF4=;
+ t=1566510046; bh=wbCv+8O2v3DMbJoa3tcT30FtNYMW8nrNMLMKGn43MF4=;
  h=Date:From:Reply-To:Subject:From:Subject;
- b=b6ARj9K7DbISm3RC+BNffc1H4lYyRtZwI2KFiigASML4EcnQDi8zxBlL+yvj1ecAw+eK43XrHEHtvQVkURyIlvUNOCBDoH23+2Yr8gNQaLAJiTkozJt87l9uWIjWNNqtv8r993Fr2dkQzKT5fGAbxpYcqn8n+UFk8L5dcXMtKaqLRM1bwoK6enSS3Wfj5U1wrtN8VUDKtVdLwfNINP55YVeqquC/yim6RsqOEKms49c0zLywpswLtsq22DMC/+E1/NvHYU+0lb7RXwj4PNYQeRrfJxMco+7P+Ui/qaBZd6t7egBZINmwl8m+okbxsCbMGXEF79xSVgmru4+LCFyJSA==
-X-YMail-OSG: L_PV.ocVM1l_zeTHX94WrlsplW6b1G8EK_WN0HlZAWffU5PyOJjltrW.lsR9o5c
- CLoDiFCG0BB3gMCSuHJpOS6WfDZDLz8ltUQItamTi3T3MEByJyaHyKCbkwLT1ZrZe1no8CH_GUs7
- 7UHEVjlEyZDJo8LybEXZW5JMs0.LMdk3oC0cI4p323WwS92YqnjPuJdNaxAdgElCbMn1nb4p3hBU
- MJ5FunBdrwgJgQv2Gh4uzMuYuKncU._EFA9R5oqa_5XPwYzQanufxGy1.8YXJwTYO7tTLgSlY8Zx
- _m_cvgqeYIG7AbxN99At.KfvWV59zfzfG2LyHGjJEfGk3l9mpp2_x5f3F9G_xXL159liKlsFvKbn
- VAstTfBWtFo2zMptXkYSxOy3spaHrqwcF11COsp0mh2sBvEAqh15O_zkPSqJmu0b6j8kAmqWJDFf
- Wb2hCus9kXlVfr5AioZLd62u6MKtCh7pL1uymcf6CaDpQatd80tslUMCzWQBd3o2cJ5fwDxOyNAO
- KuMhURTC7bGlBh_oKFZWjbonZY1Ah3jEMpl6DXHAnoRBl7uExSFB8AjIv9S_6HrzyJkNEMf_90mG
- I69zU1rcQ7XErvUNi0hqTLqi_a57WXX_zvo7vl.wt7Ch0IGQIkrcgL8mGYCjQ0bsLhCp9cNlBKte
- Ns1hd7xkZgZj9UJ1l6BwWSGYvHX3I65Dg8v_Lx7FTGq2mkbPOBGWqf1PtHOVS56AGxDCVl4caMAR
- IzLhPExfcgN2Y_hWLvirqQcx3zZ3AU4od0F0HU7MT15xCBUYZ2IUIIEVKLpBFRH1rvZza71Hjy66
- 0ckBWH85W1lPBMb2nXPXUYidGy1n_SfRJDE.u00LtHdWrcnK_7B_KADwOhp2PIzC07u6WDuhGWjz
- QqjcEL3_yXfzubg7r9VkbNrTeatIbTuOGLIhFqo8ZGqUhKbmNv7uqYSkWFEjbAmwaopaR8x7spJg
- vDOrL3CG0C6v0hEhmkXGOnwsP6Bsu9nXOvq6cCkZpuerpm6Oezo1h.P9F.HPX6qFf0Jh2ihr2lHq
- sncFAhJ9wA6TW7X91Sep47tBffM_AK.Z.61h5E2FlCUjwLISmhrOnaIIQtKms6rtMtbJE8OMZ9t8
- BMwDiSpUZnoCgIPSwZXBPH7vlNqRHwWX3k1Wc87Et.hQ1r.WrAV1VPw491ueELSar_MmbeGCZ_rq
- ip1mC0yCfM42gF0ifZQDTmkQs.Yap9DwMoyZh6HEwwTjNtsaLE4Td_2BbQBxL1Tf_5hFBwfx1Fl9
- qoWX.hdM-
+ b=Oqdtw+1urQLO5lGYEnlGdw8q6wixQXx9jrYKpFfXdjxlE9hEIHVP5iEUsISkrfK2bHFyH4Nf3e4WAWqHNhaWKFmvWCh6/NIb43ih2V7phEmECQdOHFVa6CMfm9fcJ+IrHGLByl37BxUZB+gGv5iBhxrQKjlK6c527cTP8bwJPRcE4P3nw4hK5xJInMSL/RuQEMmue/NGwHT8i4eE7aaR5JiBmMck0gxZab0y0b/Vc4brZfUwHnrLC4uUUUHhC3dmVVuF+8MXor7mykfGGEqDmWT0sJmZHX/OmQdh/CS+6saKb5jd7VYEDGX14HkpwvTQKXWiGwLXnvy/gfPuYsJE+w==
+X-YMail-OSG: 50PK3SQVM1lw1m6exzOv.A2u2Kq9y5OLp2mqhY1niamcF37kbmiG5X7R60U9cuU
+ pz2iApP_m1LqpkCb6IC.6oMaBYi18XkKMb5ojAVngaLvV0zD3ZFljh6Rq36SrH5EHzYjpAErTTYf
+ nngcrnBvRF5beW0fyOgxnWrfhwAHv9Yr9IIiM1_vRPea5lZDM89Q4TFEvnR.whVt_MMDih6Hs0.h
+ dcMizFsBajYD.MiOhardE5FBoESeFLs9cvFFFeiyRNirH5TuSCt6M9f9vQXQs7Mq31bwQVOK.kZt
+ G1GnknKpi7uquDs9bPTqsZa5ggZy9TctPJVHRxsdY9wjiZZ6BsbbTFdzynKu4Z3KBisaVM763sly
+ uroe.ahczflS01ev2yPIUzo7yZKvXoIue0_xuANtIZOZKq09WXYjV9Q8nsx5xVCdeAQmLwz0VL2T
+ gZCpXrOXIpWy2AqtH75Vz82C7lZyw9iw6ni80O5A_El0.piJrKbMucLSuHP4DlPVDkoytXgKkQNE
+ VnTrMDaXae9V6v840MaivaKuVQ_e6gYYYfSrm_QVtFwSaWoHXWjZOE7HAMExFjJugE_7DzUmmvdI
+ dYdhSfsDoV4.nWWSYxzNnV5NSEgdNoxrxtMfi7UiLM0JNlepPu_opWcwtQn0sdSn2y8SZb3.G6sN
+ fpu0ovpJv2KqI3XETwPQchPl7X2lQelJjfwaD40eG9ahRKuvBigGE7BQMqSEf.4XqHQNlav_YRzM
+ u0muLmW.2kqOqKMxa4UXUI65RN1qTuik_I3wFyjkDHw9J7ByVEffXeQeKVjeaJHFHnsIiwJ6_VZV
+ 72Uhv5j.wMWxLzBQKLqQ_VmsBHWWfEs5TLiK5hSiTCnWKfSV9EgFDHymGwSV_LRUMpMvFiphK7.g
+ 2o2SD4VEVC93_746F6PDdXVoR1YMeR9.0a960bfLs4lsNDHoxBR8w7qX7.mgP5ywHX5bMcrJnKPm
+ sfQmg4MbfEz3A8uswGs.dVOJYOC_O9exBCXXWEWPQTJpEpR1zcAkKIOO5vsUp2YvSmq9PfW3xBuT
+ Twtjvu3u09EV4vasf.6iRFxiqyTafnOHMaJffPGVUVR9MhpDc7qlFpsuI5OrfBAxRA.wHzIR91uu
+ KaHPLCawdhIw1f49XB4xBfniiuSVMncJDORx5IFZQNB11VPaIy0wHegEZmyq7kq5jOTuJRuora6k
+ kDcj5ll13AVtuYWJ9rsbUJrEil51lbkmWqOqDtuGbXRsbMCWWoidsdWNOHudAGh1on7f_xLsATIr
+ HfkFK1t4jFNlm
 Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic310.consmr.mail.sg3.yahoo.com with HTTP; Thu, 22 Aug 2019 21:40:33 +0000
-Date: Thu, 22 Aug 2019 21:30:26 +0000 (UTC)
+ sonic301.consmr.mail.sg3.yahoo.com with HTTP; Thu, 22 Aug 2019 21:40:46 +0000
+Date: Thu, 22 Aug 2019 21:30:40 +0000 (UTC)
 From: Bandile Macartney <info.fsvt@usa.com>
-Message-ID: <2102739410.908728.1566509426893@mail.yahoo.com>
+Message-ID: <1730655873.908733.1566509440981@mail.yahoo.com>
 Subject: COMPENSATION PAYMENT OF $4,800,000 MILLION DOLLAR
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
