@@ -1,73 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 43F26993C1
-	for <lists+driverdev-devel@lfdr.de>; Thu, 22 Aug 2019 14:34:08 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 38AA099406
+	for <lists+driverdev-devel@lfdr.de>; Thu, 22 Aug 2019 14:44:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6AF5888498;
-	Thu, 22 Aug 2019 12:34:06 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AADCC2202C;
+	Thu, 22 Aug 2019 12:44:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LDPgafu5dI10; Thu, 22 Aug 2019 12:34:06 +0000 (UTC)
+	with ESMTP id Pih0A1T+R5MP; Thu, 22 Aug 2019 12:44:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D0D358833C;
-	Thu, 22 Aug 2019 12:34:05 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DDDEC2152E;
+	Thu, 22 Aug 2019 12:44:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C844B1BF409
- for <devel@linuxdriverproject.org>; Thu, 22 Aug 2019 12:34:03 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5841C1BF409
+ for <devel@linuxdriverproject.org>; Thu, 22 Aug 2019 12:43:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C4BE184DBD
- for <devel@linuxdriverproject.org>; Thu, 22 Aug 2019 12:34:03 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 52FA284763
+ for <devel@linuxdriverproject.org>; Thu, 22 Aug 2019 12:43:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RF+JC-158Q2M for <devel@linuxdriverproject.org>;
- Thu, 22 Aug 2019 12:34:03 +0000 (UTC)
+ with ESMTP id 1hqij5+rBWCP for <devel@linuxdriverproject.org>;
+ Thu, 22 Aug 2019 12:43:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lj1-f196.google.com (mail-lj1-f196.google.com
- [209.85.208.196])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 51DC684973
- for <devel@driverdev.osuosl.org>; Thu, 22 Aug 2019 12:34:03 +0000 (UTC)
-Received: by mail-lj1-f196.google.com with SMTP id x18so5406767ljh.1
- for <devel@driverdev.osuosl.org>; Thu, 22 Aug 2019 05:34:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=aWwEGZ7IKPwlD1SyN53LweuoS+rG8j2WBRgPDxMagPA=;
- b=Rbh3JsGIh2x+jDuVbneOEsdobwGn2xF3k9KTKgjnK8Dyd2ODu1sdAQZQ15vVyYnqdt
- 7E9K7FhpCx9S2Dr1Ddo93q8TQvnmC/kE524CSoK66UbjC0Keqf53qhQ3yEqx3HAqneCK
- QJH+OsNLuiNr6NKxEeJtactPjxkq0IA/anzWTZbfxsdGDFNukm8hCNfpT4lameBjcg1P
- vMEErESY7RDQugMc/b/MZ0+sk5n2uzgwjXg1V0nNdJsVb5O6VyZacEb0HGljYN7+OPri
- sm6Rp5BE3EkVBy2/1k5KenPYcnLllMAdQCixAZH/6rT6ERxgPTfrELU8FhhN52TrBApt
- 4Cxw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to:content-transfer-encoding;
- bh=aWwEGZ7IKPwlD1SyN53LweuoS+rG8j2WBRgPDxMagPA=;
- b=hu0YDH7h63eYpIEkMjNr+X/8j3ODu4d90frT0Zu21p6zQz56/wS/bIxk+9kN5QNKtc
- /Iw2+EDSKmGxob/TI/Iy2WnA2i2dLeh18hTf0u7lKPsVCN8vl0HQkqShpwraYsYwS1I6
- mnI7BLS/wCm9rKOzdQK8DBX4RYrGPvWWnrfXCaT+zVH2v6N86joD34XNE30hk9k0lIZm
- In6oKwsyGxu2imfe/PU9qyUBqO0iiCD5aG9oM+1WVmnmRLZrOYVUBP5HBBCJ20PZKslz
- avZVILzYE+pT7ZyIxhCjJPNAAUpAUACdZrvfPtvunBBmpgM5blYSclXL3FQRhOacQgG8
- 6Q+Q==
-X-Gm-Message-State: APjAAAUiT3j1zQ1LKI27wm+KlDedM0WPy/GduX1X9eUXg6vKKZROO8CV
- cFvu/ZxbACc3mFsiBITXJ2PyHOckjgdbI7afspM=
-X-Google-Smtp-Source: APXvYqz3MRqWqCJljuYvGs7Z39vR8szuBA98XmfHPUkBGUeOj4vI/x4jHKyZ57W6CcLrF9xDbGoqKi5bbRMPFZ+Cc3Y=
-X-Received: by 2002:a2e:9a44:: with SMTP id k4mr17910876ljj.96.1566477241520; 
- Thu, 22 Aug 2019 05:34:01 -0700 (PDT)
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E8E57816F4
+ for <devel@driverdev.osuosl.org>; Thu, 22 Aug 2019 12:43:57 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x7MChPGb134044;
+ Thu, 22 Aug 2019 12:43:56 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=ZYokRlnvCmLtc9vK3EkGdQ38OM+1djb8iV/zhcd0nFE=;
+ b=PR+brW4lxpOr/O6zGzhkbPeL5HPrgqNFedOwlgbaVB/O3yTR6P/ngCY5HMTxuYBLf5gh
+ Yj1wHGwQb2UjI1wBhhJ/Lxo1g8ezVc3Ne5MhcZwwGx97h6tQktPRd5NKXApBqsDqP8Sg
+ brPz1uFfM5uiICOfJ2GfW6ANwC0tAbr/LeYObzSdXAFQ8g16p9GPs46ImpIdYohUgG/l
+ HlMO3yI+zDFRcl+Xi/C7oOgJtYoJvoYVzheLL1dvDmsTZlMrF+CkMHGC4lYHcLwqbD5L
+ R9k5Ab1YY8AHakuuscZsv03D1CpJQIZ1R+9vsbK97ywzCtaGyZFlw2YHXjupKc8WJLIE eQ== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by userp2130.oracle.com with ESMTP id 2ue90twe6e-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 22 Aug 2019 12:43:56 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x7MChiGt189847;
+ Thu, 22 Aug 2019 12:43:56 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by userp3030.oracle.com with ESMTP id 2uh2q5y7u4-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 22 Aug 2019 12:43:55 +0000
+Received: from abhmp0020.oracle.com (abhmp0020.oracle.com [141.146.116.26])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x7MCgvSr006308;
+ Thu, 22 Aug 2019 12:42:57 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 22 Aug 2019 05:42:55 -0700
+Date: Thu, 22 Aug 2019 15:42:49 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Martin Tomes <tomesm@gmail.com>
+Subject: Re: [PATCH] Staging: isdn/gigaset : Fix bare unsigned warnings and
+ trailing lines errors
+Message-ID: <20190822124249.GI4451@kadam>
+References: <1566401259-16921-1-git-send-email-tomesm@gmail.com>
 MIME-Version: 1.0
-Received: by 2002:ab3:6a0f:0:0:0:0:0 with HTTP; Thu, 22 Aug 2019 05:34:01
- -0700 (PDT)
-From: "Law firm(Eku and Associates)" <ezeobodo1@gmail.com>
-Date: Thu, 22 Aug 2019 12:34:01 +0000
-Message-ID: <CAN-_bTZ726ayFtAv4dpjhKOuZFqgxZg3rZFa8VV4nXz4ZvjT-Q@mail.gmail.com>
-Subject: MY $25,000,000.00 INVESTMENT PROPOSAL WITH YOU AND IN YOUR COUNTRY.
-To: undisclosed-recipients:;
+Content-Disposition: inline
+In-Reply-To: <1566401259-16921-1-git-send-email-tomesm@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9355
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=950
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1906280000 definitions=main-1908220137
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9355
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1906280000
+ definitions=main-1908220137
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,38 +98,30 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: eku.lawfirm@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org, isdn@linux-pingi.de,
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-LS0gCkRlYXIsCldpdGggZHVlIHJlc3BlY3QgdGhpcyBpcyBub3Qgc3BhbSBvciBTY2FtIG1haWws
-IGJlY2F1c2UgSSBoYXZlCmNvbnRhY3RlZCB5b3UgYmVmb3JlIGFuZCB0aGVyZSB3YXMgbm8gcmVz
-cG9uc2UgZnJvbSB5b3UsSSBhcG9sb2dpc2UgaWYKdGhlIGNvbnRlbnRzIG9mIHRoaXMgbWFpbCBh
-cmUgY29udHJhcnkgdG8geW91ciBtb3JhbCBldGhpY3MsIHdoaWNoIEkKZmVlbCBtYXkgYmUgb2Yg
-Z3JlYXQgZGlzdHVyYmFuY2UgdG8geW91ciBwZXJzb24sIGJ1dCBwbGVhc2UgdHJlYXQgdGhpcwp3
-aXRoIGFic29sdXRlIGNvbmZpZGVudGlhbGl0eSwgYmVsaWV2aW5nIHRoYXQgdGhpcyBlbWFpbCBy
-ZWFjaGVzIHlvdQppbiBnb29kIGZhaXRoLiBNeSBjb250YWN0aW5nIHlvdSBpcyBub3QgYSBtaXN0
-YWtlIG9yIGEgY29pbmNpZGVuY2UKYmVjYXVzZSBHb2QgY2FuIHVzZSBhbnkgcGVyc29uIGtub3du
-IG9yIHVua25vd24gdG8gYWNjb21wbGlzaCBncmVhdAp0aGluZ3MuCkkgYW0gYSBsYXd5ZXIgYW5k
-IEkgaGF2ZSBhbiBpbnZlc3RtZW50IGJ1c2luZXNzIHByb3Bvc2FsIHRvIG9mZmVyIHlvdS4KSXQg
-aXMgbm90IG9mZmljaWFsIGJ1dCBzaG91bGQgYmUgY29uc2lkZXJlZCBhcyBsZWdhbCBhbmQgY29u
-ZmlkZW50aWFsCmJ1c2luZXNzLiBJIGhhdmUgYSBjdXN0b21lcidzIGRlcG9zaXQgb2YgJFVTMjUg
-bWlsbGlvbiBkb2xsYXJzIHJlYWR5CnRvIGJlIG1vdmVkIGZvciBpbnZlc3RtZW50IGlmIHlvdSBj
-YW4gcGFydG5lciB3aXRoIHVzLiBXZSBhcmUgcmVhZHkgdG8Kb2ZmZXIgeW91IDEwJSBvZiB0aGlz
-IHRvdGFsIGFtb3VudCBhcyB5b3VyIGNvbXBlbnNhdGlvbiBmb3Igc3VwcG9ydGluZwp0aGUgdHJh
-bnNhY3Rpb24gdG8gY29tcGxldGlvbi4gSWYgeW91IGFyZSBpbnRlcmVzdGVkIHRvIGhlbHAgbWUg
-cGxlYXNlCnJlcGx5IG1lIHdpdGggeW91ciBmdWxsIGRldGFpbHMgYXMgc3RhdGVkIGJlbG93Ogoo
-MSkgWW91ciBmdWxsIG5hbWVzOgooMikgWW91ciBhZGRyZXNzOgooMykgWW91ciBvY2N1cGF0aW9u
-OgooNCkgWW91ciBtb2JpbGUgdGVsZXBob25lIG51bWJlcjoKKDUpIFlvdXIgbmF0aW9uYWxpdHk6
-Cig2KSBZb3VyIHByZXNlbnQgbG9jYXRpb246Cig3KSBZb3VyIGFnZToKU28gdGhhdCBJIHdpbGwg
-cHJvdmlkZSB5b3UgbW9yZSBkZXRhaWxzIG9uIHdoYXQgdG8gZG8gYW5kIHdoYXQgaXMKcmVxdWly
-ZWQgZm9yIHN1Y2Nlc3NmdWwgY29tcGxldGlvbi4KTm90ZTogRE8gTk9UIFJFUExZIE1FIElGIFlP
-VSBBUkUgTk9UIElOVEVSRVNURUQgQU5EIFdJVEhPVVQgVEhFIEFCT1ZFCk1FTlRJT05FRCBERVRB
-SUxTCgpTaW5jw6hyZW1lbnQgdsO0dHJlLApBdm9jYXQgRXRpZW5uZSBFa3UgRXNxLihMYXdmaXJt
-KQpQcm9jdXJldXIgcHJpbmNpcGFsLiBEZSBDYWJpbmV0IGTigJlhdm9jYXRzIGRlIGzigJlBZnJp
-cXVlIGRlIGzigJlvdWVzdC4KU2t5cGU6d2VzdGFmcmljYWxhd2Zpcm0KX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVs
-QGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2pl
-Y3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+Hi Martin,
+
+These drivers are ancient and going to be deleted soon.  We're not
+accepting cleanups for them at this point.
+
+On Wed, Aug 21, 2019 at 03:27:39PM +0000, Martin Tomes wrote:
+> There are many bare use of unsigned warnings and trailing statements should be on next line errors from checkpatch.pl script.
+> Change the code by adding 'unsigned int'. Move 'break' statement of 'switch' command to next line.
+
+For future reference, this should be split up so each patch fixes
+one kind of style issue.  And the commit message lines of text are too
+long.  The limit is 75 characters for commit messages (like an email).
+
+regards,
+dan carpenter
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
