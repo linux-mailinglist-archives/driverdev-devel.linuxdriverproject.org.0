@@ -1,64 +1,126 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D1D3C9B46E
-	for <lists+driverdev-devel@lfdr.de>; Fri, 23 Aug 2019 18:24:30 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9B4BF9B565
+	for <lists+driverdev-devel@lfdr.de>; Fri, 23 Aug 2019 19:24:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3798F86E14;
-	Fri, 23 Aug 2019 16:24:29 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9AA8123543;
+	Fri, 23 Aug 2019 17:24:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NalT969yhzrC; Fri, 23 Aug 2019 16:24:28 +0000 (UTC)
+	with ESMTP id YvznzmwJ-IcC; Fri, 23 Aug 2019 17:24:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8EB3486E07;
-	Fri, 23 Aug 2019 16:24:26 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6323F20432;
+	Fri, 23 Aug 2019 17:24:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5C1F01BF263
- for <devel@linuxdriverproject.org>; Fri, 23 Aug 2019 16:24:25 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 9A7241BF3A7
+ for <devel@linuxdriverproject.org>; Fri, 23 Aug 2019 17:24:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 58B3488585
- for <devel@linuxdriverproject.org>; Fri, 23 Aug 2019 16:24:25 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 96ED12151E
+ for <devel@linuxdriverproject.org>; Fri, 23 Aug 2019 17:24:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zLiitQFxY11M for <devel@linuxdriverproject.org>;
- Fri, 23 Aug 2019 16:24:24 +0000 (UTC)
+ with ESMTP id VyFOF2QWRm4m for <devel@linuxdriverproject.org>;
+ Fri, 23 Aug 2019 17:24:29 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from sender-of-o52.zoho.com (sender-of-o52.zoho.com [135.84.80.217])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 358D9885C6
- for <devel@driverdev.osuosl.org>; Fri, 23 Aug 2019 16:24:24 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; t=1566577459; cv=none; d=zoho.com; s=zohoarc; 
- b=d44TyERSDniRgfkarAZXKficKhfoK9cxRKWY5DpkAJ68NvF7h5Ky3mtVWGO3g2pkYQAb6yq/jG6YG+jvqGsMWNbbt2TP35gZvZstDhSu4fufEPcMBD0/jxYGR53gCuGGxMztXvBrzj/Cw0A84E2IQHg7+7uvGjEqL4q44zF+/CA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
- s=zohoarc; t=1566577459;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:MIME-Version:Message-ID:Subject:To:ARC-Authentication-Results;
- bh=oTEca0+JkMwmTD2K3n6tenNXccXxTKkMAL8MDDry6+c=; 
- b=hFjzJ++tR91MvvFdt+Fkozp3JXMQfx67GhqmF2nMZeELL02qv+gKI8uYS5PX0x3jqhMPYNRtVvnGHeljFy+nob7g1S3iVGDlB9nRLbP1hsjYZafUMPocxaFD4fVfUMZhJZ29O2IxSWwxrIaoK5Ki1wZ6fuKeO+l0JMQF1+mXFxM=
-ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=brennan.io;
- spf=pass  smtp.mailfrom=stephen@brennan.io;
- dmarc=pass header.from=<stephen@brennan.io> header.from=<stephen@brennan.io>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1566577459; 
- s=selector01; d=brennan.io; i=stephen@brennan.io;
- h=From:To:Cc:Message-ID:Subject:Date:MIME-Version:Content-Transfer-Encoding:Content-Type;
- l=13989; bh=oTEca0+JkMwmTD2K3n6tenNXccXxTKkMAL8MDDry6+c=;
- b=CpwXQj1G2/dWJuSd2tVlwWEDDLydCXbndDMWVS7N8RAnzJPKo/V0Q7cO8mfXTpKT
- OB99WeCCgXEzsgw/qN/ZNXtkati+P2fdZLd4fVvmDRhoXAKb+g9ITBwcqN5GFntUJ89
- Cxkt+WfevKuB8/D2huwqR2V3Zh12JAbF//bGuhwc=
-Received: from localhost (wsip-184-188-36-2.sd.sd.cox.net [184.188.36.2]) by
- mx.zohomail.com with SMTPS id 1566577455386750.6789979443778;
- Fri, 23 Aug 2019 09:24:15 -0700 (PDT)
-From: Stephen Brennan <stephen@brennan.io>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Message-ID: <20190823162410.10038-1-stephen@brennan.io>
-Subject: [PATCH] staging: rtl8192u: remove code under TO_DO_LIST
-Date: Fri, 23 Aug 2019 09:24:10 -0700
-X-Mailer: git-send-email 2.22.0
+Received: from mout.web.de (mout.web.de [212.227.15.14])
+ by silver.osuosl.org (Postfix) with ESMTPS id BC82220432
+ for <devel@driverdev.osuosl.org>; Fri, 23 Aug 2019 17:24:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
+ s=dbaedf251592; t=1566581057;
+ bh=axaiOeUShbLcLslK7d9+vWY1/tIn2dxWmeYhqI286Jo=;
+ h=X-UI-Sender-Class:Subject:To:Cc:References:From:Date:In-Reply-To;
+ b=N1GeB/6c+DKmDV6l0JAMUJJGyA04U9jzOutwEmRUv1Hi8cdD/XH2p6j5u8EWl1ROY
+ XKnFO+NqkWsyN7v91zfkXrUhmooPLCJS4RIp+SiKJHWbhJ6Zrxc57PeKgA7uvApDNP
+ N9LLYenmQhZGxzKsXA6+YSqpODseMQPv19sS9WIs=
+X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
+Received: from [192.168.1.2] ([93.133.157.93]) by smtp.web.de (mrweb003
+ [213.165.67.108]) with ESMTPSA (Nemesis) id 0MfqC4-1hpCj71idw-00ND8W; Fri, 23
+ Aug 2019 19:24:17 +0200
+Subject: Re: staging: vt6656: Use common error handling code in
+ vnt_alloc_bufs()
+To: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
+References: <91e8a9b7-e79d-dafc-10b8-dd79eb59eff9@web.de>
+ <20190823145540.GA2536@qd-ubuntu>
+From: Markus Elfring <Markus.Elfring@web.de>
+Openpgp: preference=signencrypt
+Autocrypt: addr=Markus.Elfring@web.de; prefer-encrypt=mutual; keydata=
+ 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 FEE=
+Message-ID: <10006e33-ed90-74ec-4d59-4074caf4ecd4@web.de>
+Date: Fri, 23 Aug 2019 19:24:07 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-X-ZohoMailClient: External
+In-Reply-To: <20190823145540.GA2536@qd-ubuntu>
+Content-Language: en-US
+X-Provags-ID: V03:K1:f2OZOzRZwcMG9mCS05z3+J38Ecf6PmC5XXpes47trtjfqk5XosS
+ lofMm55AzDrJ+EL5k3ZUEO0RSbTzm4wS32fb+9pv7cbnJIWDT3XPeiXnJa64xW74eMvT14V
+ q7Ws/C46B+P8UTZoeCY6IoCZdwc/PcKZ2gM1mhybx/X3No7bbZehvx1SzARsNpt8EKbx+bU
+ tz3B4CQyojGvfkqEmYQhg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:4bqdoIQTb5Q=:tNdzmmacaQ4bQBLHOuihVx
+ T38EmW32SSpmoWMHhlBQkvxQhoAs/bgiyqn7dRZRtUCTvJFJQcbK3X9MmUdPMmRrN5dn6seqN
+ P/qfZAsukPfR22hGXwzoF/awBcLRcqwnS02gzrngUUuNA3hLbNc39R0FYHsIdyJbFzsMGLGCa
+ d9GNukuQFAzh67x+UOB6IVGrNrUwa4nn78rQhZ/XgTiIlt6oL3BkT12KCBS32uJP2a43dtRYX
+ w9W4uEcMynUp267QIHhKZ5kQsxH+DQ9AgTNdxenizapokDUvLGDUg+ABL+47pgTeLdRSGa8r4
+ SJ8H0a1PnL6ajqcV8khsTz/istsmeq+TwcsYa8it7WHkDv0Xd5cX42v+RWfJ0Ta30ETXvRm11
+ E2p3S2fi3QQs22HHWur2rR1iGmQBeTrS4km/uDF4S7NVpl/rQOIbJmV49s5CGNZ9+C6mcQk0S
+ 4BKxM+K/jRw1uVfmOvHvfkjhUcixkx9ddA+IuXAB4wMrBvhp8D0RiGYegQW8JmulDslrc631/
+ Y4wWDe3FqUBYWjeVuzzXEksbBHPMdOwE01+IzLRUU3dQVNpV5KOliNllHCmeNNstP+BtPcDOg
+ mxjnwB7xzOJ816DDFe8sKEomTFGVlCsMr6MHwAAwQKnqLH84Rk8QEtZFE5r0aYy8pNz03ylas
+ pvR+3WtR5qjrktN/LE495H7EVfheocXC0jFm9AbjXuTDFSysDiwfAumw1prXeypUttk3/qnXO
+ HvF2+VlM7HeRnO+xyggDX3d25JjBuBCx4pKuxpj2xUfDQE81W9GDKTdsbeU2ro5jh+2duBG7b
+ bPTvpZCZVYhFt4AqeC1W/Uo1xdHpTs+uzGEprT1IR76WA1gkjxlPnXDzgCusHQ1mWe0CPb26K
+ K/KyDk8z9S8pNorhnnIyvpneWTAT+ebqY4knYP7XZlLL18LJa74hZdQExA0ptQtponEZSyr1p
+ /jF0+0BmKl0cgaqvNZ1TZwE4w5LxZi/0oiyJuCq/g+RgYfzj0SE1fMJoG88WEVbtXE+4tE0rL
+ VAYkypte0ixULGcUZt0zoCb11gm2epE/QAYYO+FLcGCy8rzqDYJ8MT7qwElFScD3dHAvlkerQ
+ vvk+lellNVxgXJjsyqJk7Pmaos1iqex4qDcrB8+0eTv1pBBg5UH4/ff2y3I1a4U2GcD7+d7yW
+ q6tec=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,371 +133,62 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Dan Carpenter <dan.carpenter@oracle.com>,
- linux-kernel@vger.kernel.org
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ kernel-janitors@vger.kernel.org, Forest Bond <forest@alittletooquiet.net>,
+ LKML <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Several blocks of code are guarded by #ifdef TO_DO_LIST. If this is
-defined, compilation fails. No machinery exists to define this, and no
-documenation on the in-progress feature exists. Since this code is dead,
-let's delete it.
+ Your patch remove redundant code, which is fine.
 
-Signed-off-by: Stephen Brennan <stephen@brennan.io>
----
-
-Sorry, I know you're giving a keynote right now Greg :)
-
- .../staging/rtl8192u/ieee80211/ieee80211.h    |   2 -
- .../staging/rtl8192u/ieee80211/ieee80211_tx.c |  21 ----
- .../rtl8192u/ieee80211/rtl819x_HTProc.c       |   4 -
- .../rtl8192u/ieee80211/rtl819x_TSProc.c       |   4 -
- drivers/staging/rtl8192u/r8192U_core.c        | 101 +-----------------
- drivers/staging/rtl8192u/r819xU_phy.c         |  59 ----------
- 6 files changed, 4 insertions(+), 187 deletions(-)
-
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211.h b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-index daebbbd8f4dd..9576b647f6b1 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-@@ -1649,10 +1649,8 @@ struct ieee80211_device {
- 	struct list_head		Rx_TS_Pending_List;
- 	struct list_head		Rx_TS_Unused_List;
- 	struct rx_ts_record		RxTsRecord[TOTAL_TS_NUM];
--//#ifdef TO_DO_LIST
- 	struct rx_reorder_entry	RxReorderEntry[128];
- 	struct list_head		RxReorder_Unused_List;
--//#endif
- 	// Qos related. Added by Annie, 2005-11-01.
- //	PSTA_QOS			pStaQos;
- 	u8				ForcedPriority;		// Force per-packet priority 1~7. (default: 0, not to force it.)
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-index e76bdedc8409..140e3cb66a2e 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-@@ -302,13 +302,6 @@ static void ieee80211_tx_query_agg_cap(struct ieee80211_device *ieee,
- 	if (is_multicast_ether_addr(hdr->addr1))
- 		return;
- 	//check packet and mode later
--#ifdef TO_DO_LIST
--	if (pTcb->PacketLength >= 4096)
--		return;
--	// For RTL819X, if pairwisekey = wep/tkip, we don't aggrregation.
--	if (!Adapter->HalFunc.GetNmodeSupportBySecCfgHandler(Adapter))
--		return;
--#endif
- 	if (!ieee->GetNmodeSupportBySecCfg(ieee->dev)) {
- 		return;
- 	}
-@@ -509,20 +502,6 @@ static void ieee80211_query_protectionmode(struct ieee80211_device *ieee,
- static void ieee80211_txrate_selectmode(struct ieee80211_device *ieee,
- 					struct cb_desc *tcb_desc)
- {
--#ifdef TO_DO_LIST
--	if (!IsDataFrame(pFrame)) {
--		pTcb->bTxDisableRateFallBack = true;
--		pTcb->bTxUseDriverAssingedRate = true;
--		pTcb->RATRIndex = 7;
--		return;
--	}
--
--	if (pMgntInfo->ForcedDataRate != 0) {
--		pTcb->bTxDisableRateFallBack = true;
--		pTcb->bTxUseDriverAssingedRate = true;
--		return;
--	}
--#endif
- 	if (ieee->bTxDisableRateFallBack)
- 		tcb_desc->bTxDisableRateFallBack = true;
- 
-diff --git a/drivers/staging/rtl8192u/ieee80211/rtl819x_HTProc.c b/drivers/staging/rtl8192u/ieee80211/rtl819x_HTProc.c
-index c73a8058cf87..dba3f2db9f48 100644
---- a/drivers/staging/rtl8192u/ieee80211/rtl819x_HTProc.c
-+++ b/drivers/staging/rtl8192u/ieee80211/rtl819x_HTProc.c
-@@ -93,10 +93,6 @@ void HTUpdateDefaultSetting(struct ieee80211_device *ieee)
- 	ieee->bTxDisableRateFallBack = 0;
- 	ieee->bTxUseDriverAssingedRate = 0;
- 
--#ifdef	TO_DO_LIST
--	// 8190 only. Assign duration operation mode to firmware
--	pMgntInfo->bTxEnableFwCalcDur = (BOOLEAN)pNdisCommon->bRegTxEnableFwCalcDur;
--#endif
- 	/*
- 	 * 8190 only, Realtek proprietary aggregation mode
- 	 * Set MPDUDensity=2,   1: Set MPDUDensity=2(32k)  for Realtek AP and set MPDUDensity=0(8k) for others
-diff --git a/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c b/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c
-index f4e5aa07421f..5cee1031a27c 100644
---- a/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c
-+++ b/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c
-@@ -180,14 +180,12 @@ void TSInitialize(struct ieee80211_device *ieee)
- 	}
- 	// Initialize unused Rx Reorder List.
- 	INIT_LIST_HEAD(&ieee->RxReorder_Unused_List);
--//#ifdef TO_DO_LIST
- 	for (count = 0; count < REORDER_ENTRY_NUM; count++) {
- 		list_add_tail(&pRxReorderEntry->List, &ieee->RxReorder_Unused_List);
- 		if (count == (REORDER_ENTRY_NUM - 1))
- 			break;
- 		pRxReorderEntry = &ieee->RxReorderEntry[count + 1];
- 	}
--//#endif
- }
- 
- static void AdmitTS(struct ieee80211_device *ieee,
-@@ -417,7 +415,6 @@ static void RemoveTsEntry(struct ieee80211_device *ieee, struct ts_common_info *
- 	TsInitDelBA(ieee, pTs, TxRxSelect);
- 
- 	if (TxRxSelect == RX_DIR) {
--//#ifdef TO_DO_LIST
- 		struct rx_reorder_entry	*pRxReorderEntry;
- 		struct rx_ts_record     *pRxTS = (struct rx_ts_record *)pTs;
- 		if (timer_pending(&pRxTS->rx_pkt_pending_timer))
-@@ -445,7 +442,6 @@ static void RemoveTsEntry(struct ieee80211_device *ieee, struct ts_common_info *
- 			spin_unlock_irqrestore(&(ieee->reorder_spinlock), flags);
- 		}
- 
--//#endif
- 	} else {
- 		struct tx_ts_record *pTxTS = (struct tx_ts_record *)pTs;
- 		del_timer_sync(&pTxTS->ts_add_ba_timer);
-diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
-index 569d02240bf5..2821411878ce 100644
---- a/drivers/staging/rtl8192u/r8192U_core.c
-+++ b/drivers/staging/rtl8192u/r8192U_core.c
-@@ -2076,14 +2076,6 @@ static void rtl8192_SetWirelessMode(struct net_device *dev, u8 wireless_mode)
- 			wireless_mode = WIRELESS_MODE_B;
- 		}
- 	}
--#ifdef TO_DO_LIST
--	/* TODO: this function doesn't work well at this time,
--	 * we should wait for FPGA
--	 */
--	ActUpdateChannelAccessSetting(
--			pAdapter, pHalData->CurrentWirelessMode,
--			&pAdapter->MgntInfo.Info8185.ChannelAccessSetting);
--#endif
- 	priv->ieee80211->mode = wireless_mode;
- 
- 	if (wireless_mode == WIRELESS_MODE_N_24G ||
-@@ -2159,12 +2151,6 @@ static int rtl8192_init_priv_variable(struct net_device *dev)
- 
- 	priv->ieee80211->InitialGainHandler = InitialGain819xUsb;
- 	priv->card_type = USB;
--#ifdef TO_DO_LIST
--	if (Adapter->bInHctTest) {
--		pHalData->ShortRetryLimit = 7;
--		pHalData->LongRetryLimit = 7;
--	}
--#endif
- 	priv->ShortRetryLimit = 0x30;
- 	priv->LongRetryLimit = 0x30;
- 	priv->EarlyRxThreshold = 7;
-@@ -2180,34 +2166,6 @@ static int rtl8192_init_priv_variable(struct net_device *dev)
- 		 * TRUE: SW provides them
- 		 */
- 		(false ? TCR_SAT : 0);
--#ifdef TO_DO_LIST
--	if (Adapter->bInHctTest)
--		pHalData->ReceiveConfig =
--			pHalData->CSMethod |
--			/* accept management/data */
--			RCR_AMF | RCR_ADF |
--			/* accept control frame for SW
--			 * AP needs PS-poll
--			 */
--			RCR_ACF |
--			/* accept BC/MC/UC */
--			RCR_AB | RCR_AM | RCR_APM |
--			/* accept ICV/CRC error
--			 * packet
--			 */
--			RCR_AICV | RCR_ACRC32 |
--			/* Max DMA Burst Size per Tx
--			 * DMA Burst, 7: unlimited.
--			 */
--			((u32)7 << RCR_MXDMA_OFFSET) |
--			/* Rx FIFO Threshold,
--			 * 7: No Rx threshold.
--			 */
--			(pHalData->EarlyRxThreshold << RCR_FIFO_OFFSET) |
--			(pHalData->EarlyRxThreshold == 7 ? RCR_OnlyErlPkt : 0);
--	else
--
--#endif
- 	priv->ReceiveConfig	=
- 		/* accept management/data */
- 		RCR_AMF | RCR_ADF |
-@@ -2665,19 +2623,10 @@ static void rtl8192_hwconfig(struct net_device *dev)
- 		regRRSR = RATE_ALL_CCK | RATE_ALL_OFDM_AG;
- 		break;
- 	case WIRELESS_MODE_AUTO:
--#ifdef TO_DO_LIST
--		if (Adapter->bInHctTest) {
--			regBwOpMode = BW_OPMODE_20MHZ;
--			regRATR = RATE_ALL_CCK | RATE_ALL_OFDM_AG;
--			regRRSR = RATE_ALL_CCK | RATE_ALL_OFDM_AG;
--		} else
--#endif
--		{
--			regBwOpMode = BW_OPMODE_20MHZ;
--			regRATR = RATE_ALL_CCK | RATE_ALL_OFDM_AG |
--				  RATE_ALL_OFDM_1SS | RATE_ALL_OFDM_2SS;
--			regRRSR = RATE_ALL_CCK | RATE_ALL_OFDM_AG;
--		}
-+		regBwOpMode = BW_OPMODE_20MHZ;
-+		regRATR = RATE_ALL_CCK | RATE_ALL_OFDM_AG |
-+			  RATE_ALL_OFDM_1SS | RATE_ALL_OFDM_2SS;
-+		regRRSR = RATE_ALL_CCK | RATE_ALL_OFDM_AG;
- 		break;
- 	case WIRELESS_MODE_N_24G:
- 		/* It support CCK rate by default. CCK rate will be filtered
-@@ -2848,48 +2797,6 @@ static bool rtl8192_adapter_start(struct net_device *dev)
- 	}
- 	RT_TRACE(COMP_INIT, "%s():after firmware download\n", __func__);
- 
--#ifdef TO_DO_LIST
--	if (Adapter->ResetProgress == RESET_TYPE_NORESET) {
--		if (pMgntInfo->RegRfOff) { /* User disable RF via registry. */
--			RT_TRACE((COMP_INIT | COMP_RF), DBG_LOUD,
--				 ("InitializeAdapter819xUsb(): Turn off RF for RegRfOff ----------\n"));
--			MgntActSet_RF_State(Adapter, eRfOff, RF_CHANGE_BY_SW);
--			/* Those actions will be discard in MgntActSet_RF_State
--			 * because of the same state
--			 */
--			for (eRFPath = 0; eRFPath < pHalData->NumTotalRFPath; eRFPath++)
--				PHY_SetRFReg(Adapter,
--					     (enum rf90_radio_path_e)eRFPath,
--					     0x4, 0xC00, 0x0);
--		} else if (pMgntInfo->RfOffReason > RF_CHANGE_BY_PS) {
--			/* H/W or S/W RF OFF before sleep. */
--			RT_TRACE((COMP_INIT | COMP_RF), DBG_LOUD,
--				 ("InitializeAdapter819xUsb(): Turn off RF for RfOffReason(%d) ----------\n",
--				  pMgntInfo->RfOffReason));
--			MgntActSet_RF_State(Adapter,
--					    eRfOff,
--					    pMgntInfo->RfOffReason);
--		} else {
--			pHalData->eRFPowerState = eRfOn;
--			pMgntInfo->RfOffReason = 0;
--			RT_TRACE((COMP_INIT | COMP_RF), DBG_LOUD,
--				 ("InitializeAdapter819xUsb(): RF is on ----------\n"));
--		}
--	} else {
--		if (pHalData->eRFPowerState == eRfOff) {
--			MgntActSet_RF_State(Adapter,
--					    eRfOff,
--					    pMgntInfo->RfOffReason);
--			/* Those actions will be discard in MgntActSet_RF_State
--			 * because of the same state
--			 */
--			for (eRFPath = 0; eRFPath < pHalData->NumTotalRFPath; eRFPath++)
--				PHY_SetRFReg(Adapter,
--					     (enum rf90_radio_path_e)eRFPath,
--					     0x4, 0xC00, 0x0);
--		}
--	}
--#endif
- 	/* config RF. */
- 	if (priv->ResetProgress == RESET_TYPE_NORESET) {
- 		rtl8192_phy_RFConfig(dev);
-diff --git a/drivers/staging/rtl8192u/r819xU_phy.c b/drivers/staging/rtl8192u/r819xU_phy.c
-index 5f04afe53d69..c04d8eca0cfb 100644
---- a/drivers/staging/rtl8192u/r819xU_phy.c
-+++ b/drivers/staging/rtl8192u/r819xU_phy.c
-@@ -516,16 +516,6 @@ static void rtl8192_phyConfigBB(struct net_device *dev,
- {
- 	u32 i;
- 
--#ifdef TO_DO_LIST
--	u32 *rtl8192PhyRegArrayTable = NULL, *rtl8192AgcTabArrayTable = NULL;
--
--	if (Adapter->bInHctTest) {
--		PHY_REGArrayLen = PHY_REGArrayLengthDTM;
--		AGCTAB_ArrayLen = AGCTAB_ArrayLengthDTM;
--		Rtl8190PHY_REGArray_Table = Rtl819XPHY_REGArrayDTM;
--		Rtl8190AGCTAB_Array_Table = Rtl819XAGCTAB_ArrayDTM;
--	}
--#endif
- 	if (ConfigType == BASEBAND_CONFIG_PHY_REG) {
- 		for (i = 0; i < PHY_REG_1T2RArrayLength; i += 2) {
- 			rtl8192_setBBreg(dev, Rtl8192UsbPHY_REG_1T2RArray[i],
-@@ -1059,10 +1049,6 @@ static void rtl8192_SetTxPowerLevel(struct net_device *dev, u8 channel)
- 
- 	switch (priv->rf_chip) {
- 	case RF_8225:
--#ifdef TO_DO_LIST
--		PHY_SetRF8225CckTxPower(Adapter, powerlevel);
--		PHY_SetRF8225OfdmTxPower(Adapter, powerlevelOFDM24G);
--#endif
- 		break;
- 
- 	case RF_8256:
-@@ -1160,48 +1146,6 @@ bool rtl8192_SetRFPowerState(struct net_device *dev,
- 		RT_TRACE(COMP_ERR, "Not support rf_chip(%x)\n", priv->rf_chip);
- 		break;
- 	}
--#ifdef TO_DO_LIST
--	if (bResult) {
--		/* Update current RF state variable. */
--		pHalData->eRFPowerState = eRFPowerState;
--		switch (pHalData->RFChipID) {
--		case RF_8256:
--			switch (pHalData->eRFPowerState) {
--			case eRfOff:
--				/* If Rf off reason is from IPS,
--				 * LED should blink with no link
--				 */
--				if (pMgntInfo->RfOffReason == RF_CHANGE_BY_IPS)
--					Adapter->HalFunc.LedControlHandler(Adapter, LED_CTL_NO_LINK);
--				else
--					/* Turn off LED if RF is not ON. */
--					Adapter->HalFunc.LedControlHandler(Adapter, LED_CTL_POWER_OFF);
--				break;
--
--			case eRfOn:
--				/* Turn on RF we are still linked, which might
--				 * happen when we quickly turn off and on HW RF.
--				 */
--				if (pMgntInfo->bMediaConnect)
--					Adapter->HalFunc.LedControlHandler(Adapter, LED_CTL_LINK);
--				else
--					/* Turn off LED if RF is not ON. */
--					Adapter->HalFunc.LedControlHandler(Adapter, LED_CTL_NO_LINK);
--				break;
--
--			default:
--				break;
--			}
--			break;
--
--		default:
--			RT_TRACE(COMP_RF, DBG_LOUD, "%s(): Unknown RF type\n",
--				 __func__);
--			break;
--		}
--
--	}
--#endif
- 	priv->SetRFPowerStateInProgress = false;
- 
- 	return bResult;
-@@ -1628,9 +1572,6 @@ void rtl8192_SetBWModeWorkItem(struct net_device *dev)
- 	/* <3> Set RF related register */
- 	switch (priv->rf_chip) {
- 	case RF_8225:
--#ifdef TO_DO_LIST
--		PHY_SetRF8225Bandwidth(Adapter, pHalData->CurrentChannelBW);
--#endif
- 		break;
- 
- 	case RF_8256:
--- 
-2.22.0
+Thanks for your constructive feedback.
 
 
+> code you changed was simple enough to be understand quickly. I think replacing
+> it with a crossed goto (even if it remove redundant code) might not be the best
+> option.
+>
+> A solution might be to move the second loop to the top of the function
 
+I am unsure about the relevance of the loop ordering for the affected
+resource allocations.
+
+
+> so you should be able to replace the end of the cleanup calls with:
+>
+> enomem:
+> 	ret = -ENOMEM;
+> free_rx:
+> 	vnt_free_rx_bufs(priv);
+> 	return ret;
+
+The exception handling can eventually adjusted another bit according
+to your refactoring.
+
+
+> This way, only a failed call to vnt_submit_rx_urb() should jump to free_rx,
+
+It seems that a goto statement will still be needed in an error code
+part by both discussed variants.
+
+
+> another failed call should jump to enomem or previously defined
+> label, so we can correctly forward errors.
+
+This view sounds promising.
+
+
+> With such solution it might be worth adding a comment to describe
+> that all error should be ENOMEM except for vnt_submit_rx_urb().
+
+Can this function implementation become clearer also without
+such a comment?
+
+Regards,
+Markus
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
