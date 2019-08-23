@@ -2,124 +2,110 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6006E9B0F6
-	for <lists+driverdev-devel@lfdr.de>; Fri, 23 Aug 2019 15:30:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 25A789B30D
+	for <lists+driverdev-devel@lfdr.de>; Fri, 23 Aug 2019 17:10:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6D16A86D9E;
-	Fri, 23 Aug 2019 13:30:37 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 319A186DF2;
+	Fri, 23 Aug 2019 15:10:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7tPLnH1c6qUv; Fri, 23 Aug 2019 13:30:36 +0000 (UTC)
+	with ESMTP id uClSKAP-Vna5; Fri, 23 Aug 2019 15:10:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 145BB86D64;
-	Fri, 23 Aug 2019 13:30:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 09BCD86B23;
+	Fri, 23 Aug 2019 15:10:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8F8D81BF9C1
- for <devel@linuxdriverproject.org>; Fri, 23 Aug 2019 13:30:34 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 85CBD1BF25B
+ for <devel@linuxdriverproject.org>; Fri, 23 Aug 2019 15:10:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 897DB885C4
- for <devel@linuxdriverproject.org>; Fri, 23 Aug 2019 13:30:34 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8272D86975
+ for <devel@linuxdriverproject.org>; Fri, 23 Aug 2019 15:10:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Pg6HdXLwzw7J for <devel@linuxdriverproject.org>;
- Fri, 23 Aug 2019 13:30:33 +0000 (UTC)
+ with ESMTP id cL-JhDFj_dRL for <devel@linuxdriverproject.org>;
+ Fri, 23 Aug 2019 15:10:12 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.web.de (mout.web.de [212.227.15.3])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4E7AF885B4
- for <devel@driverdev.osuosl.org>; Fri, 23 Aug 2019 13:30:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
- s=dbaedf251592; t=1566567020;
- bh=ALaFDHqwPH8Mt5DeXm4ojQGnigcAUy04TdDkzLYiDJE=;
- h=X-UI-Sender-Class:To:From:Subject:Cc:Date;
- b=p20LNyLL6Qtqx0hWLKG8oCnJbWfar2TVu/r30Jdqu2hnFXbqm8K3u3CRNjmL31pjz
- 0Eouugubdhibh/NZvK21hUStvYzqxJarQMb45GVEXqmt4s4rqnfeB8+mMRk1EzkY+t
- Cog62BaIHpZJueR59UxhAd4phKjo2umlsMg7vgwo=
-X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
-Received: from [192.168.1.2] ([93.133.157.93]) by smtp.web.de (mrweb002
- [213.165.67.108]) with ESMTPSA (Nemesis) id 0M6ml2-1iD4MS0yzU-00wZ94; Fri, 23
- Aug 2019 15:30:20 +0200
-To: devel@driverdev.osuosl.org, Forest Bond <forest@alittletooquiet.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Quentin Deslandes <quentin.deslandes@itdev.co.uk>
-From: Markus Elfring <Markus.Elfring@web.de>
-Subject: [PATCH] staging: vt6656: Use common error handling code in
+Received: from EUR02-AM5-obe.outbound.protection.outlook.com
+ (mail-eopbgr00046.outbound.protection.outlook.com [40.107.0.46])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E606F8693C
+ for <devel@driverdev.osuosl.org>; Fri, 23 Aug 2019 15:10:11 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=E7Ra3XcwfQP+XPAWxOmCopzW5Fmu5XI7/nPYdCRjV5AxkslJETBno274wTiPee+YpA0h7eUbfqF2iu35Mtx34DC9RI+izeQh++I6KtxcEcV0p+Wd5/MBkSAk94rMTkufVhBzEpKMlwEWL7CF5x7R37ejEPUSwQCOORca+l5n4NUI3heBXtjD7YKTb1H6Jgk+B75GTWtuvKMr5vLlomGoAOqzvdoMqD8IFaJnjvBgEqgknEAE4SK4V5GCnlzVnC73VBC02hvnPnUltl+mT3MRQc8B1943IAgKPDLJ2MAMjmYxAPvj9vVFgEvrJXnDCVw/v0G87hidmmwmESyoDbmTaQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=mM2YGIH1b0yAhKDVbUyg2+K6/XvCj6yRkV6iXZp5+bY=;
+ b=V7GTbIMzornvr+tnWIR5ZXc0+aSv52m2W0cze+1ZY6fFE+lrUSl9UKUidikx+XFrMvR2yvEOPLPhaTLYRYwrmfOxVj2qoTDiLZFK1w918r5UR5Qrm9EPY87aXKvbYkZkCYcnngXJvz5oyQ0ZOieLIFyuFDyt1XIYXizJ2a3ARsesaCBnK9zAWyt/kIHsixV2S5/ALAl1cjAnppXk+ztlqrlrw+2azKjYZd5WebABHf4ARbcWXXn7FshP8N+c71yihgrneSxEyL9jz/ZOFosYiHbJmufh8I/LcJ++oKOpuT/rT04eYMnwnT/ySQ3L4dQN8ou1CXFgWjbAr2oEGbGG+Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=itdev.co.uk; dmarc=pass action=none header.from=itdev.co.uk;
+ dkim=pass header.d=itdev.co.uk; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=itdevltd.onmicrosoft.com; s=selector2-itdevltd-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=mM2YGIH1b0yAhKDVbUyg2+K6/XvCj6yRkV6iXZp5+bY=;
+ b=iFfMTo5wtQUFIAns9krxSZLLFLjV0vKmA3qIbbkIYqR7mS3WyY0QHMHGl2XNo5LAbC+ETHpS2pDBtQ3wP6a2al1LXN4ZbqrjOfcwVSiEDmCnVTr4mg2/l5+6gSPl96M5X7G/raLHqlAio/z5pJxW0U02O2GanfOIgbmqiMW2Qng=
+Received: from VI1PR08MB3168.eurprd08.prod.outlook.com (52.133.15.143) by
+ VI1PR08MB3312.eurprd08.prod.outlook.com (52.134.31.17) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2178.16; Fri, 23 Aug 2019 14:55:46 +0000
+Received: from VI1PR08MB3168.eurprd08.prod.outlook.com
+ ([fe80::586d:db76:56c3:51e5]) by VI1PR08MB3168.eurprd08.prod.outlook.com
+ ([fe80::586d:db76:56c3:51e5%6]) with mapi id 15.20.2178.020; Fri, 23 Aug 2019
+ 14:55:45 +0000
+From: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
+To: Markus Elfring <Markus.Elfring@web.de>
+Subject: Re: [PATCH] staging: vt6656: Use common error handling code in
  vnt_alloc_bufs()
-Openpgp: preference=signencrypt
-Autocrypt: addr=Markus.Elfring@web.de; prefer-encrypt=mutual; keydata=
- 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 FEE=
-Message-ID: <91e8a9b7-e79d-dafc-10b8-dd79eb59eff9@web.de>
-Date: Fri, 23 Aug 2019 15:30:11 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
+Thread-Topic: [PATCH] staging: vt6656: Use common error handling code in
+ vnt_alloc_bufs()
+Thread-Index: AQHVWbbu5uhEbt5BlEGgbiFaMjR5MKcI0j0A
+Date: Fri, 23 Aug 2019 14:55:45 +0000
+Message-ID: <20190823145540.GA2536@qd-ubuntu>
+References: <91e8a9b7-e79d-dafc-10b8-dd79eb59eff9@web.de>
+In-Reply-To: <91e8a9b7-e79d-dafc-10b8-dd79eb59eff9@web.de>
+Accept-Language: en-GB, en-US
 Content-Language: en-US
-X-Provags-ID: V03:K1:4Q1UCrgqX3Wfn+IdiS0GOWjaZjKOAmQDNl55ErMjtkYBuB9Jc4c
- FOfOVb2sBF+wwE/Cf5hBkyjHnBw9OZEkZywetS0GIvYXAMqCek4f/D/ujdGqdEmRoRSSDMS
- qa1ezt/cp93a5x/tyJx0PzZHCjYCQe5gwSnWJOKlDOhOm+Y9BuuRh69O6w7jolSBnK0njyV
- xHMIi3M8E3npW8+768NeA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:NMFuZg+YpOw=:Wy50rB9lL65hc2IhRNjZm6
- z8Mz784OCczlaZuYnK3gm5yG3cSbqxLfvHAKa5g8K3hZHkFf4tQxqlSE9/8KWJjD7jo5odHLW
- VZvoERnpLIwaXFgJSqaoY18OY3lTaRqFxjJTFg43JtOLgZuPbYLJvFyF3fiyihgZHrFjHaZLS
- Ua8ocJ+QrqnprnJC+0Mf4dr2X5GsWogaGvO1nEUlBZA0/t8gPHlb6hBsnd1CPybzDzn9VrH4c
- FbdCHTzxuw0OyrYi1qj7+AldxiU6FCZVtBv4oSHSl59n2E5zMmcRKjaqOpsfPBHnLUQ1Vnmuf
- mT4zrqTim6CFP/l3f+i2/Yyihyd9I8IYEbS7Std3lGFzFGtIYwBzNSk7rAta4f3wmkno4dpU+
- m5P5kQA2M/jXgBRp8zrTr3JI86Dki1+hlG+ux4Ph8PVMP7uoji0K8KIQjbjxGlUtHY0uYeFBC
- JpXnDDTtX3XwNhYH1QPW66hra3LPkaLL8G619UO9KQqXyOBnAC94kpDhurIxr7Iz+8aPmHQBe
- 93GveCdmGjfX3/QrlkcGIfV9VekCDyNrXe05ETeyF7XtnDLJXB874CLA/nXJ96yaW1x9bsiaP
- 0I13+kM0rgyy4HMgz5QAhrkgSrL/gmK28z5zpaLLxWwkaNnDA1QVxkldMNkxB8V9l23n3Y58f
- YzHIT0RIMRSNtrXfsrncY2A7oASn8j13OqhNs9zTDtevB9q6NRDn1vf8PqaVLsDZHLh7yrLv+
- hdfakVfeeMRw/HZibHMrIXHq52iteH9YW00CjYXXvdLyX6pjoq1W3jdRIEVFB9P2CleGGGx9B
- kmVcBr4MmGxkMilgYz2v9ZtsFJ9fc/u1kAnOZOsT076bSfNW3GJltrCJvk9i0HUmEEF6kGGGx
- r7JbgNZt+rQPiKrArN/GoHnN3PM1MMDce0j1vnNC64uuYgPhi5Vd29I1DmAh/tdSpCRy1qWSc
- o0BYBc2rVLptogyZkJtCat5WSWE5GTWcRVE085O6HVTLvvGWV6e8y+gxnzH+pTUzvPY8LxLYb
- /+5rlHdIJm2ljlA45LaunR3cgsoO8AlZFej+RGCmNSGuxw0HAF9XCZkMH0/Fvobxy28KtCtEC
- 1+11y8bh5lxsx7VGIVztCgslaqqa4DDTDoO6GssARqnL7RjNr8fqDZjrfEDzaj7rHQ6x5jthn
- q/2/8Z4ISvNAknkt6zQMmPnnrJwRC4OoGvRdlS/jVDEhjoEA==
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-clientproxiedby: LO2P265CA0115.GBRP265.PROD.OUTLOOK.COM
+ (2603:10a6:600:c::31) To VI1PR08MB3168.eurprd08.prod.outlook.com
+ (2603:10a6:803:47::15)
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=quentin.deslandes@itdev.co.uk; 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-originating-ip: [89.21.227.133]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: b620ed57-c342-4be7-77c1-08d727d9f9c3
+x-microsoft-antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(7021145)(8989299)(4534185)(7022145)(4603075)(4627221)(201702281549075)(8990200)(7048125)(7024125)(7027125)(7023125)(5600166)(711020)(4605104)(1401327)(2017052603328)(7193020);
+ SRVR:VI1PR08MB3312; 
+x-ms-traffictypediagnostic: VI1PR08MB3312:
+x-microsoft-antispam-prvs: <VI1PR08MB3312B05DE8302ADE51437EE7B3A40@VI1PR08MB3312.eurprd08.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:8882;
+x-forefront-prvs: 0138CD935C
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(7916004)(39830400003)(136003)(346002)(396003)(376002)(366004)(199004)(189003)(66066001)(53936002)(25786009)(1076003)(316002)(14454004)(6436002)(44832011)(6506007)(6486002)(386003)(4326008)(6246003)(6916009)(66946007)(446003)(26005)(11346002)(476003)(66446008)(64756008)(66556008)(66476007)(54906003)(186003)(2906002)(9686003)(99286004)(52116002)(508600001)(486006)(305945005)(71190400001)(71200400001)(229853002)(256004)(33656002)(8676002)(102836004)(5660300002)(3846002)(81166006)(81156014)(8936002)(6116002)(6512007)(76176011)(33716001)(7736002)(86362001)(334744003);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:VI1PR08MB3312;
+ H:VI1PR08MB3168.eurprd08.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+received-spf: None (protection.outlook.com: itdev.co.uk does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam-message-info: avT6Jw14HzHdd+QQwU4fYd5nGDfM2ifyBtNA4RsVVYR35lus53wOnDviltvxQJ9gnz7AyNA8xMFy6V8VLoqjh4bF4RywcDs+u4n0NTvFp5QCY6evHqeZhG5o0IcR2MgHQW9Xeh8Y6kIp0+gNlV55npB5IkiXon+o4va1aQksVqNMe2YhR0mscOlE3oFws99kzCmTQz4Tzw1uBtLKmb3pVd1Uh20snH0tkeeDaf0gnSR2MNsyK/2FXCKj4FQql7QK+cPeKcNHp77YAs2AWl24cnU7H1bVBIr2jblhp+1WCsruihJBSkEh+pbnn0HaBiMpm1E6ztsMSjADmqdkXXsB1Bu/j9Kfg1q0t9FuWYVClsJa8utQJ4Xxf4dbjD8ogaTctcpDAB/WYiSfXLuNE+GXdbVbQmc+h1SnXp5HOBgl9BQ=
+x-ms-exchange-transport-forked: True
+Content-ID: <F80DB4D0BA6D474C82A0EFABD86EB8BA@eurprd08.prod.outlook.com>
+MIME-Version: 1.0
+X-OriginatorOrg: itdev.co.uk
+X-MS-Exchange-CrossTenant-Network-Message-Id: b620ed57-c342-4be7-77c1-08d727d9f9c3
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Aug 2019 14:55:45.8801 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 2d2930c4-2251-45b4-ad79-3582c5f41740
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 0eCCJJ4ZdgJXXr/JVaG55QP2ae8zz59p3LN+sj0LvS9ZAKUGyDARrgXvZUUH69nthmOnf7Le6FvipPg5eJH0KrvKABuFsEn61oK+Tmr3uIo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR08MB3312
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -132,122 +118,149 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "kernel-janitors@vger.kernel.org" <kernel-janitors@vger.kernel.org>,
+ Forest Bond <forest@alittletooquiet.net>, LKML <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Markus Elfring <elfring@users.sourceforge.net>
-Date: Fri, 23 Aug 2019 15:15:41 +0200
+On Fri, Aug 23, 2019 at 03:30:11PM +0200, Markus Elfring wrote:
+> From: Markus Elfring <elfring@users.sourceforge.net>
+> Date: Fri, 23 Aug 2019 15:15:41 +0200
+> 
+> Adjust jump targets so that a bit of exception handling can be better
+> reused at the end of this function.
+> 
+> This issue was detected by using the Coccinelle software.
+> 
+> Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
+> ---
+>  drivers/staging/vt6656/main_usb.c | 46 +++++++++++++------------------
+>  1 file changed, 19 insertions(+), 27 deletions(-)
+> 
+> diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
+> index 856ba97aec4f..d9f14da37bbc 100644
+> --- a/drivers/staging/vt6656/main_usb.c
+> +++ b/drivers/staging/vt6656/main_usb.c
+> @@ -443,10 +443,8 @@ static int vnt_alloc_bufs(struct vnt_private *priv)
+> 
+>  	for (ii = 0; ii < priv->num_tx_context; ii++) {
+>  		tx_context = kmalloc(sizeof(*tx_context), GFP_KERNEL);
+> -		if (!tx_context) {
+> -			ret = -ENOMEM;
+> -			goto free_tx;
+> -		}
+> +		if (!tx_context)
+> +			goto e_nomem_tx;
+> 
+>  		priv->tx_context[ii] = tx_context;
+>  		tx_context->priv = priv;
+> @@ -454,20 +452,16 @@ static int vnt_alloc_bufs(struct vnt_private *priv)
+> 
+>  		/* allocate URBs */
+>  		tx_context->urb = usb_alloc_urb(0, GFP_KERNEL);
+> -		if (!tx_context->urb) {
+> -			ret = -ENOMEM;
+> -			goto free_tx;
+> -		}
+> +		if (!tx_context->urb)
+> +			goto e_nomem_tx;
+> 
+>  		tx_context->in_use = false;
+>  	}
+> 
+>  	for (ii = 0; ii < priv->num_rcb; ii++) {
+>  		priv->rcb[ii] = kzalloc(sizeof(*priv->rcb[ii]), GFP_KERNEL);
+> -		if (!priv->rcb[ii]) {
+> -			ret = -ENOMEM;
+> -			goto free_rx_tx;
+> -		}
+> +		if (!priv->rcb[ii])
+> +			goto e_nomem_rx;
+> 
+>  		rcb = priv->rcb[ii];
+> 
+> @@ -475,16 +469,12 @@ static int vnt_alloc_bufs(struct vnt_private *priv)
+> 
+>  		/* allocate URBs */
+>  		rcb->urb = usb_alloc_urb(0, GFP_KERNEL);
+> -		if (!rcb->urb) {
+> -			ret = -ENOMEM;
+> -			goto free_rx_tx;
+> -		}
+> +		if (!rcb->urb)
+> +			goto e_nomem_rx;
+> 
+>  		rcb->skb = dev_alloc_skb(priv->rx_buf_sz);
+> -		if (!rcb->skb) {
+> -			ret = -ENOMEM;
+> -			goto free_rx_tx;
+> -		}
+> +		if (!rcb->skb)
+> +			goto e_nomem_rx;
+> 
+>  		rcb->in_use = false;
+> 
+> @@ -495,21 +485,23 @@ static int vnt_alloc_bufs(struct vnt_private *priv)
+>  	}
+> 
+>  	priv->interrupt_urb = usb_alloc_urb(0, GFP_KERNEL);
+> -	if (!priv->interrupt_urb) {
+> -		ret = -ENOMEM;
+> -		goto free_rx_tx;
+> -	}
+> +	if (!priv->interrupt_urb)
+> +		goto e_nomem_rx;
+> 
+>  	priv->int_buf.data_buf = kmalloc(MAX_INTERRUPT_SIZE, GFP_KERNEL);
+> -	if (!priv->int_buf.data_buf) {
+> -		ret = -ENOMEM;
+> +	if (!priv->int_buf.data_buf)
+>  		goto free_rx_tx_urb;
+> -	}
+> 
+>  	return 0;
+> 
+> +e_nomem_tx:
+> +	ret = -ENOMEM;
+> +	goto free_tx;
+> +
+>  free_rx_tx_urb:
+>  	usb_free_urb(priv->interrupt_urb);
+> +e_nomem_rx:
+> +	ret = -ENOMEM;
+>  free_rx_tx:
+>  	vnt_free_rx_bufs(priv);
+>  free_tx:
+> --
+> 2.23.0
+> 
 
-Adjust jump targets so that a bit of exception handling can be better
-reused at the end of this function.
+Your patch remove redundant code, which is fine. However, and IMHO, the
+code you changed was simple enough to be understand quickly. I think replacing
+it with a crossed goto (even if it remove redundant code) might not be the best
+option.
 
-This issue was detected by using the Coccinelle software.
+A solution might be to move the second loop to the top of the function so
+you should be able to replace the end of the cleanup calls with:
 
-Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
----
- drivers/staging/vt6656/main_usb.c | 46 +++++++++++++------------------
- 1 file changed, 19 insertions(+), 27 deletions(-)
+enomem:
+	ret = -ENOMEM;
+free_rx:
+	vnt_free_rx_bufs(priv);
+	return ret;
 
-diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
-index 856ba97aec4f..d9f14da37bbc 100644
---- a/drivers/staging/vt6656/main_usb.c
-+++ b/drivers/staging/vt6656/main_usb.c
-@@ -443,10 +443,8 @@ static int vnt_alloc_bufs(struct vnt_private *priv)
+This way, only a failed call to vnt_submit_rx_urb() should jump to
+free_rx, another failed call should jump to enomem or previously defined
+label, so we can correctly forward errors. With such solution it might
+be worth adding a comment to describe that all error should be ENOMEM
+except for vnt_submit_rx_urb(). Does that looks good to you?
 
- 	for (ii = 0; ii < priv->num_tx_context; ii++) {
- 		tx_context = kmalloc(sizeof(*tx_context), GFP_KERNEL);
--		if (!tx_context) {
--			ret = -ENOMEM;
--			goto free_tx;
--		}
-+		if (!tx_context)
-+			goto e_nomem_tx;
-
- 		priv->tx_context[ii] = tx_context;
- 		tx_context->priv = priv;
-@@ -454,20 +452,16 @@ static int vnt_alloc_bufs(struct vnt_private *priv)
-
- 		/* allocate URBs */
- 		tx_context->urb = usb_alloc_urb(0, GFP_KERNEL);
--		if (!tx_context->urb) {
--			ret = -ENOMEM;
--			goto free_tx;
--		}
-+		if (!tx_context->urb)
-+			goto e_nomem_tx;
-
- 		tx_context->in_use = false;
- 	}
-
- 	for (ii = 0; ii < priv->num_rcb; ii++) {
- 		priv->rcb[ii] = kzalloc(sizeof(*priv->rcb[ii]), GFP_KERNEL);
--		if (!priv->rcb[ii]) {
--			ret = -ENOMEM;
--			goto free_rx_tx;
--		}
-+		if (!priv->rcb[ii])
-+			goto e_nomem_rx;
-
- 		rcb = priv->rcb[ii];
-
-@@ -475,16 +469,12 @@ static int vnt_alloc_bufs(struct vnt_private *priv)
-
- 		/* allocate URBs */
- 		rcb->urb = usb_alloc_urb(0, GFP_KERNEL);
--		if (!rcb->urb) {
--			ret = -ENOMEM;
--			goto free_rx_tx;
--		}
-+		if (!rcb->urb)
-+			goto e_nomem_rx;
-
- 		rcb->skb = dev_alloc_skb(priv->rx_buf_sz);
--		if (!rcb->skb) {
--			ret = -ENOMEM;
--			goto free_rx_tx;
--		}
-+		if (!rcb->skb)
-+			goto e_nomem_rx;
-
- 		rcb->in_use = false;
-
-@@ -495,21 +485,23 @@ static int vnt_alloc_bufs(struct vnt_private *priv)
- 	}
-
- 	priv->interrupt_urb = usb_alloc_urb(0, GFP_KERNEL);
--	if (!priv->interrupt_urb) {
--		ret = -ENOMEM;
--		goto free_rx_tx;
--	}
-+	if (!priv->interrupt_urb)
-+		goto e_nomem_rx;
-
- 	priv->int_buf.data_buf = kmalloc(MAX_INTERRUPT_SIZE, GFP_KERNEL);
--	if (!priv->int_buf.data_buf) {
--		ret = -ENOMEM;
-+	if (!priv->int_buf.data_buf)
- 		goto free_rx_tx_urb;
--	}
-
- 	return 0;
-
-+e_nomem_tx:
-+	ret = -ENOMEM;
-+	goto free_tx;
-+
- free_rx_tx_urb:
- 	usb_free_urb(priv->interrupt_urb);
-+e_nomem_rx:
-+	ret = -ENOMEM;
- free_rx_tx:
- 	vnt_free_rx_bufs(priv);
- free_tx:
---
-2.23.0
-
+Regards,
+Quentin
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
