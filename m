@@ -2,47 +2,47 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id ABADF9C694
-	for <lists+driverdev-devel@lfdr.de>; Mon, 26 Aug 2019 02:00:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 94D229C698
+	for <lists+driverdev-devel@lfdr.de>; Mon, 26 Aug 2019 02:06:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C3FFC84D56;
-	Sun, 25 Aug 2019 23:59:59 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 74D9D8609D;
+	Mon, 26 Aug 2019 00:06:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id s_74R6hxgj-C; Sun, 25 Aug 2019 23:59:59 +0000 (UTC)
+	with ESMTP id 7SulFS5QYSxv; Mon, 26 Aug 2019 00:06:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 10F8184BB6;
-	Sun, 25 Aug 2019 23:59:58 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A6BF985534;
+	Mon, 26 Aug 2019 00:06:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 55BF01BF20F
- for <devel@linuxdriverproject.org>; Sun, 25 Aug 2019 23:59:56 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 012D91BF38B
+ for <devel@linuxdriverproject.org>; Mon, 26 Aug 2019 00:06:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 52C0986B50
- for <devel@linuxdriverproject.org>; Sun, 25 Aug 2019 23:59:56 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id ED47986E9E
+ for <devel@linuxdriverproject.org>; Mon, 26 Aug 2019 00:06:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PwILIBrHyNOm for <devel@linuxdriverproject.org>;
- Sun, 25 Aug 2019 23:59:55 +0000 (UTC)
+ with ESMTP id MwgvqE98IMJu for <devel@linuxdriverproject.org>;
+ Mon, 26 Aug 2019 00:06:25 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from fineinfo.co.kr (unknown [118.47.55.35])
- by whitealder.osuosl.org (Postfix) with ESMTP id 247FF869C9
- for <devel@linuxdriverproject.org>; Sun, 25 Aug 2019 23:59:55 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id ADB3A86E3A
+ for <devel@driverdev.osuosl.org>; Mon, 26 Aug 2019 00:06:25 +0000 (UTC)
 Received: from User (unknown [193.56.28.164]) (Authenticated sender: root)
- by fineinfo.co.kr (Postfix) with ESMTPA id 4E76C4B7AA4;
+ by fineinfo.co.kr (Postfix) with ESMTPA id E6EC74B7AA1;
  Mon, 26 Aug 2019 09:49:54 +0900 (KST)
 From: "Mrs J. Zhang"<juliazhangkh@gmail.com>
 Subject: Save a soul.
-Date: Sun, 25 Aug 2019 14:53:30 -0700
+Date: Sun, 25 Aug 2019 14:53:29 -0700
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20190826004955.4E76C4B7AA4@fineinfo.co.kr>
+Message-Id: <20190826004954.E6EC74B7AA1@fineinfo.co.kr>
 To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
