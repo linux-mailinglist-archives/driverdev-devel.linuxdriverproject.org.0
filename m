@@ -2,77 +2,56 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC0779BED8
-	for <lists+driverdev-devel@lfdr.de>; Sat, 24 Aug 2019 18:33:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 97F479C226
+	for <lists+driverdev-devel@lfdr.de>; Sun, 25 Aug 2019 07:55:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A9644204A3;
-	Sat, 24 Aug 2019 16:33:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 13B80204E0;
+	Sun, 25 Aug 2019 05:55:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BXgDUwIIzsFB; Sat, 24 Aug 2019 16:33:55 +0000 (UTC)
+	with ESMTP id zqiefjrjf7MH; Sun, 25 Aug 2019 05:55:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 52C9020485;
-	Sat, 24 Aug 2019 16:33:49 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9BFD3204DB;
+	Sun, 25 Aug 2019 05:54:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2396D1BF5A9
- for <devel@linuxdriverproject.org>; Sat, 24 Aug 2019 16:33:48 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B9D2C1BF5A7
+ for <devel@linuxdriverproject.org>; Sun, 25 Aug 2019 05:54:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 1233585BF2
- for <devel@linuxdriverproject.org>; Sat, 24 Aug 2019 16:33:48 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A3895204CE
+ for <devel@linuxdriverproject.org>; Sun, 25 Aug 2019 05:54:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7vQo-4rj4XQN for <devel@linuxdriverproject.org>;
- Sat, 24 Aug 2019 16:33:46 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A353185B81
- for <devel@driverdev.osuosl.org>; Sat, 24 Aug 2019 16:33:46 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id o13so7703777pgp.12
- for <devel@driverdev.osuosl.org>; Sat, 24 Aug 2019 09:33:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=Y2pNRxpBXv4EPioyvtKi+BMt5i9vPsPZ/rrPRKvUY9M=;
- b=hFanz7AiVDe1Vm31R4aT0e3IwyTVgm1ao5r+UFb/2br/gnPs+VRKBAUCS1guSBnbGS
- gaHDYQ4uGXFYvAfnV92SETj6zbXJ0TYIJX4yuVufuTF6artx1Zsm8dX37GnNKi10hxEi
- xJ9cDlQV9VM7LS7t6jEhzPt12ETP2EJ48Xy4Qh4PV/P08O91oO0P3ZysJrr4/4WmyNgR
- XjJEPmY2+/sPH/BK4N4448T3wBESDJhYsV39u1gU2fo5qooO25lb5oSc165o+mYuo1H0
- 1bvow0UUi6zCQ9T4cSmPdhurnD4Ags3K1/Obh67Zi0ZxLmSdNqNy934UGTI25u6sUGQ2
- Ayhw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=Y2pNRxpBXv4EPioyvtKi+BMt5i9vPsPZ/rrPRKvUY9M=;
- b=iBZsRWA7xKakGCTtW0cPhDP4HQINJjodxUUHpyNOj9x37kiTWioWxJHqao/rvWzlag
- pLivwNgsigyZmWar3l34YMd+N4RX8p3GENqkloQ/AzHHtDTIM5bFCvmdM9A6K2Xz5HjC
- 8mNu5RWirmtqEx6gsP4jFZMRlJVlXJth9UNA17rfNzZZYHQ5+b6QmPzs1GSlYw+S0TUJ
- Aic+AD39+JQ5dGryyNv7ReZWTi/AYb9Nxiv7sVQ+31OZ0xhiQYAcaRfrnR+HZ2IL8c4m
- b1LoWsZy2uF5rAJhqoBupyBN5zzRfvmr6uVF+OZk814OYL00ccTuDsKq9pEnLHXAyR2Q
- Pf6Q==
-X-Gm-Message-State: APjAAAVTbqrNh2Z6gkZQguxmZ287B3ReyR7npFfavCr410qKJywjyAnD
- vi1qoI6BOEHMinbIZ6unVUc=
-X-Google-Smtp-Source: APXvYqy7XM7SHNJg1g5xp5EUfXRXtTecgbURbV5VyHM3klp4MmfBTUULeprEiiw7Fh+iXCdgOA4k3A==
-X-Received: by 2002:a17:90a:2e86:: with SMTP id
- r6mr9086391pjd.67.1566664426066; 
- Sat, 24 Aug 2019 09:33:46 -0700 (PDT)
-Received: from majic.sklembedded.com (c-73-202-231-77.hsd1.ca.comcast.net.
- [73.202.231.77])
- by smtp.googlemail.com with ESMTPSA id k3sm5733018pjo.3.2019.08.24.09.33.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 24 Aug 2019 09:33:45 -0700 (PDT)
-From: Steve Longerbeam <slongerbeam@gmail.com>
-To: linux-media@vger.kernel.org
-Subject: [PATCH v2 2/2] media: imx: Move pads init to probe
-Date: Sat, 24 Aug 2019 09:33:37 -0700
-Message-Id: <20190824163337.8260-3-slongerbeam@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190824163337.8260-1-slongerbeam@gmail.com>
-References: <20190824163337.8260-1-slongerbeam@gmail.com>
+ with ESMTP id SaRMXTGNuPeF for <devel@linuxdriverproject.org>;
+ Sun, 25 Aug 2019 05:54:50 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id B8C6420491
+ for <devel@driverdev.osuosl.org>; Sun, 25 Aug 2019 05:54:50 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0709C2173E;
+ Sun, 25 Aug 2019 05:54:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1566712490;
+ bh=iFQQ8QesHQ/6dGBjornBDY2YtXJ+3wlgKPrjgvZIzOA=;
+ h=From:To:Cc:Subject:Date:From;
+ b=WVa1uq452BmJ0A9K6xB1hS5m4JfVTwbE/D4HLd5rNa8NbbrFx53hD76oxSA7bkEcn
+ pVQRrzYLfwSkpcnxFGmZyJPgFqmBqA+OxlfVHgRumRUYagqIPGK+Y/mVn2yi7v3iSJ
+ LKdqyIyUlRLxQZ58dAm7J1mAGde3CkK8khkrY4VQ=
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: devel@driverdev.osuosl.org, greybus-dev@lists.linaro.org, elder@kernel.org,
+ johan@kernel.org
+Subject: [PATCH 0/9] staging: move greybus core out of staging
+Date: Sun, 25 Aug 2019 07:54:20 +0200
+Message-Id: <20190825055429.18547-1-gregkh@linuxfoundation.org>
+X-Mailer: git-send-email 2.23.0
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,509 +64,148 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- open list <linux-kernel@vger.kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Steve Longerbeam <slongerbeam@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>
-MIME-Version: 1.0
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-If a subdevice is unregistered and then registered again without the
-driver being removed and re-probed (which will happen when the media
-device is removed and re-probed without also removing/re-probing the
-subdevice), media_device_register_entity() is called with a non-zero
-entity->num_pads, and then the subdevice's .registered callback calls
-media_entity_pads_init(). Thus the subdevice's pad objects are added
-to the media device pad list twice, causing list corruption.
+The Greybus code has long been "stable" but was living in the
+drivers/staging/ directory to see if there really was going to be
+devices using this protocol over the long-term.  With the success of
+millions of phones with this hardware and code in it, and the recent
+Google Summer of Code project, and a number of of new devices in the
+works from various companies, it is time to finally move this code out
+of staging into the "real" portion of the kernel so that people know
+they can rely on it.
 
-One way to fix this would be to create media_entity_pads_destroy(),
-and call it in the subdevice's .unregistered callback. But calling
-media_entity_pads_init() in the .registered callbacks was done for
-legacy reasons and is no longer necessary, so move the call to
-media_entity_pads_init() into the subdevice's probe functions. This
-fixes the duplicate pad obejcts in the media device pad list.
+This series first does a little bit of checkpatch cleanups for some
+basic remaining issues in the greybus files, and then moves the include
+directory, the greybus core code, and the es2 greybus host controller
+driver into drivers/greybus.
 
-Signed-off-by: Steve Longerbeam <slongerbeam@gmail.com>
----
- drivers/staging/media/imx/imx-ic-prp.c        | 25 ++++++-----------
- drivers/staging/media/imx/imx-ic-prpencvf.c   | 28 +++++++++----------
- drivers/staging/media/imx/imx-media-capture.c | 15 +++++-----
- drivers/staging/media/imx/imx-media-csi.c     | 21 +++++++-------
- drivers/staging/media/imx/imx-media-vdic.c    | 27 ++++++++----------
- drivers/staging/media/imx/imx6-mipi-csi2.c    | 27 ++++++++----------
- drivers/staging/media/imx/imx7-media-csi.c    | 18 ++++++------
- drivers/staging/media/imx/imx7-mipi-csis.c    | 23 +++++----------
- 8 files changed, 81 insertions(+), 103 deletions(-)
+To come after this is the movement of the Documentation entries and a
+number of the module drivers that are stable.
 
-diff --git a/drivers/staging/media/imx/imx-ic-prp.c b/drivers/staging/media/imx/imx-ic-prp.c
-index 35e60a120dc1..2a4f77e83ed3 100644
---- a/drivers/staging/media/imx/imx-ic-prp.c
-+++ b/drivers/staging/media/imx/imx-ic-prp.c
-@@ -428,32 +428,19 @@ static int prp_s_frame_interval(struct v4l2_subdev *sd,
- 	return 0;
- }
- 
--/*
-- * retrieve our pads parsed from the OF graph by the media device
-- */
- static int prp_registered(struct v4l2_subdev *sd)
- {
- 	struct prp_priv *priv = sd_to_priv(sd);
--	int i, ret;
- 	u32 code;
- 
--	for (i = 0; i < PRP_NUM_PADS; i++) {
--		priv->pad[i].flags = (i == PRP_SINK_PAD) ?
--			MEDIA_PAD_FL_SINK : MEDIA_PAD_FL_SOURCE;
--	}
--
- 	/* init default frame interval */
- 	priv->frame_interval.numerator = 1;
- 	priv->frame_interval.denominator = 30;
- 
- 	/* set a default mbus format  */
- 	imx_media_enum_ipu_format(&code, 0, CS_SEL_YUV);
--	ret = imx_media_init_mbus_fmt(&priv->format_mbus, 640, 480, code,
--				      V4L2_FIELD_NONE, NULL);
--	if (ret)
--		return ret;
--
--	return media_entity_pads_init(&sd->entity, PRP_NUM_PADS, priv->pad);
-+	return imx_media_init_mbus_fmt(&priv->format_mbus, 640, 480, code,
-+				       V4L2_FIELD_NONE, NULL);
- }
- 
- static const struct v4l2_subdev_pad_ops prp_pad_ops = {
-@@ -487,6 +474,7 @@ static const struct v4l2_subdev_internal_ops prp_internal_ops = {
- static int prp_init(struct imx_ic_priv *ic_priv)
- {
- 	struct prp_priv *priv;
-+	int i;
- 
- 	priv = devm_kzalloc(ic_priv->ipu_dev, sizeof(*priv), GFP_KERNEL);
- 	if (!priv)
-@@ -496,7 +484,12 @@ static int prp_init(struct imx_ic_priv *ic_priv)
- 	ic_priv->task_priv = priv;
- 	priv->ic_priv = ic_priv;
- 
--	return 0;
-+	for (i = 0; i < PRP_NUM_PADS; i++)
-+		priv->pad[i].flags = (i == PRP_SINK_PAD) ?
-+			MEDIA_PAD_FL_SINK : MEDIA_PAD_FL_SOURCE;
-+
-+	return media_entity_pads_init(&ic_priv->sd.entity, PRP_NUM_PADS,
-+				      priv->pad);
- }
- 
- static void prp_remove(struct imx_ic_priv *ic_priv)
-diff --git a/drivers/staging/media/imx/imx-ic-prpencvf.c b/drivers/staging/media/imx/imx-ic-prpencvf.c
-index f8a0b21fcd02..09c4e3f33807 100644
---- a/drivers/staging/media/imx/imx-ic-prpencvf.c
-+++ b/drivers/staging/media/imx/imx-ic-prpencvf.c
-@@ -1240,9 +1240,6 @@ static int prp_s_frame_interval(struct v4l2_subdev *sd,
- 	return 0;
- }
- 
--/*
-- * retrieve our pads parsed from the OF graph by the media device
-- */
- static int prp_registered(struct v4l2_subdev *sd)
- {
- 	struct prp_priv *priv = sd_to_priv(sd);
-@@ -1250,12 +1247,9 @@ static int prp_registered(struct v4l2_subdev *sd)
- 	int i, ret;
- 	u32 code;
- 
-+	/* set a default mbus format  */
-+	imx_media_enum_ipu_format(&code, 0, CS_SEL_YUV);
- 	for (i = 0; i < PRPENCVF_NUM_PADS; i++) {
--		priv->pad[i].flags = (i == PRPENCVF_SINK_PAD) ?
--			MEDIA_PAD_FL_SINK : MEDIA_PAD_FL_SOURCE;
--
--		/* set a default mbus format  */
--		imx_media_enum_ipu_format(&code, 0, CS_SEL_YUV);
- 		ret = imx_media_init_mbus_fmt(&priv->format_mbus[i],
- 					      640, 480, code, V4L2_FIELD_NONE,
- 					      &priv->cc[i]);
-@@ -1267,11 +1261,6 @@ static int prp_registered(struct v4l2_subdev *sd)
- 	priv->frame_interval.numerator = 1;
- 	priv->frame_interval.denominator = 30;
- 
--	ret = media_entity_pads_init(&sd->entity, PRPENCVF_NUM_PADS,
--				     priv->pad);
--	if (ret)
--		return ret;
--
- 	priv->vdev = imx_media_capture_device_init(ic_priv->ipu_dev,
- 						   &ic_priv->sd,
- 						   PRPENCVF_SRC_PAD);
-@@ -1337,6 +1326,7 @@ static const struct v4l2_subdev_internal_ops prp_internal_ops = {
- static int prp_init(struct imx_ic_priv *ic_priv)
- {
- 	struct prp_priv *priv;
-+	int i, ret;
- 
- 	priv = devm_kzalloc(ic_priv->ipu_dev, sizeof(*priv), GFP_KERNEL);
- 	if (!priv)
-@@ -1350,7 +1340,17 @@ static int prp_init(struct imx_ic_priv *ic_priv)
- 
- 	mutex_init(&priv->lock);
- 
--	return 0;
-+	for (i = 0; i < PRPENCVF_NUM_PADS; i++) {
-+		priv->pad[i].flags = (i == PRPENCVF_SINK_PAD) ?
-+			MEDIA_PAD_FL_SINK : MEDIA_PAD_FL_SOURCE;
-+	}
-+
-+	ret = media_entity_pads_init(&ic_priv->sd.entity, PRPENCVF_NUM_PADS,
-+				     priv->pad);
-+	if (ret)
-+		mutex_destroy(&priv->lock);
-+
-+	return ret;
- }
- 
- static void prp_remove(struct imx_ic_priv *ic_priv)
-diff --git a/drivers/staging/media/imx/imx-media-capture.c b/drivers/staging/media/imx/imx-media-capture.c
-index b33a07bc9105..c95d2c330a76 100644
---- a/drivers/staging/media/imx/imx-media-capture.c
-+++ b/drivers/staging/media/imx/imx-media-capture.c
-@@ -765,13 +765,6 @@ int imx_media_capture_device_register(struct imx_media_video_dev *vdev)
- 
- 	INIT_LIST_HEAD(&priv->ready_q);
- 
--	priv->vdev_pad.flags = MEDIA_PAD_FL_SINK;
--	ret = media_entity_pads_init(&vfd->entity, 1, &priv->vdev_pad);
--	if (ret) {
--		v4l2_err(sd, "failed to init dev pad\n");
--		goto unreg;
--	}
--
- 	/* create the link from the src_sd devnode pad to device node */
- 	ret = media_create_pad_link(&sd->entity, priv->src_sd_pad,
- 				    &vfd->entity, 0, 0);
-@@ -834,6 +827,7 @@ imx_media_capture_device_init(struct device *dev, struct v4l2_subdev *src_sd,
- {
- 	struct capture_priv *priv;
- 	struct video_device *vfd;
-+	int ret;
- 
- 	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
- 	if (!priv)
-@@ -858,6 +852,13 @@ imx_media_capture_device_init(struct device *dev, struct v4l2_subdev *src_sd,
- 	vfd->queue = &priv->q;
- 	priv->vdev.vfd = vfd;
- 
-+	priv->vdev_pad.flags = MEDIA_PAD_FL_SINK;
-+	ret = media_entity_pads_init(&vfd->entity, 1, &priv->vdev_pad);
-+	if (ret) {
-+		video_device_release(vfd);
-+		return ERR_PTR(ret);
-+	}
-+
- 	INIT_LIST_HEAD(&priv->vdev.list);
- 
- 	video_set_drvdata(vfd, priv);
-diff --git a/drivers/staging/media/imx/imx-media-csi.c b/drivers/staging/media/imx/imx-media-csi.c
-index b3f1cf08a102..0b320d6e5037 100644
---- a/drivers/staging/media/imx/imx-media-csi.c
-+++ b/drivers/staging/media/imx/imx-media-csi.c
-@@ -1740,9 +1740,6 @@ static int csi_unsubscribe_event(struct v4l2_subdev *sd, struct v4l2_fh *fh,
- 	return v4l2_event_unsubscribe(fh, sub);
- }
- 
--/*
-- * retrieve our pads parsed from the OF graph by the media device
-- */
- static int csi_registered(struct v4l2_subdev *sd)
- {
- 	struct csi_priv *priv = v4l2_get_subdevdata(sd);
-@@ -1759,9 +1756,6 @@ static int csi_registered(struct v4l2_subdev *sd)
- 	priv->csi = csi;
- 
- 	for (i = 0; i < CSI_NUM_PADS; i++) {
--		priv->pad[i].flags = (i == CSI_SINK_PAD) ?
--			MEDIA_PAD_FL_SINK : MEDIA_PAD_FL_SOURCE;
--
- 		code = 0;
- 		if (i != CSI_SINK_PAD)
- 			imx_media_enum_ipu_format(&code, 0, CS_SEL_YUV);
-@@ -1793,10 +1787,6 @@ static int csi_registered(struct v4l2_subdev *sd)
- 		goto put_csi;
- 	}
- 
--	ret = media_entity_pads_init(&sd->entity, CSI_NUM_PADS, priv->pad);
--	if (ret)
--		goto free_fim;
--
- 	priv->vdev = imx_media_capture_device_init(priv->sd.dev,
- 						   &priv->sd,
- 						   CSI_SRC_PAD_IDMAC);
-@@ -1934,7 +1924,7 @@ static int imx_csi_probe(struct platform_device *pdev)
- 	struct ipu_client_platformdata *pdata;
- 	struct pinctrl *pinctrl;
- 	struct csi_priv *priv;
--	int ret;
-+	int i, ret;
- 
- 	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
- 	if (!priv)
-@@ -1974,6 +1964,15 @@ static int imx_csi_probe(struct platform_device *pdev)
- 	imx_media_grp_id_to_sd_name(priv->sd.name, sizeof(priv->sd.name),
- 				    priv->sd.grp_id, ipu_get_num(priv->ipu));
- 
-+	for (i = 0; i < CSI_NUM_PADS; i++)
-+		priv->pad[i].flags = (i == CSI_SINK_PAD) ?
-+			MEDIA_PAD_FL_SINK : MEDIA_PAD_FL_SOURCE;
-+
-+	ret = media_entity_pads_init(&priv->sd.entity, CSI_NUM_PADS,
-+				     priv->pad);
-+	if (ret)
-+		return ret;
-+
- 	mutex_init(&priv->lock);
- 
- 	v4l2_ctrl_handler_init(&priv->ctrl_hdlr, 0);
-diff --git a/drivers/staging/media/imx/imx-media-vdic.c b/drivers/staging/media/imx/imx-media-vdic.c
-index cfad65a16917..0d83c2c41606 100644
---- a/drivers/staging/media/imx/imx-media-vdic.c
-+++ b/drivers/staging/media/imx/imx-media-vdic.c
-@@ -841,9 +841,6 @@ static int vdic_s_frame_interval(struct v4l2_subdev *sd,
- 	return ret;
- }
- 
--/*
-- * retrieve our pads parsed from the OF graph by the media device
-- */
- static int vdic_registered(struct v4l2_subdev *sd)
- {
- 	struct vdic_priv *priv = v4l2_get_subdevdata(sd);
-@@ -851,9 +848,6 @@ static int vdic_registered(struct v4l2_subdev *sd)
- 	u32 code;
- 
- 	for (i = 0; i < VDIC_NUM_PADS; i++) {
--		priv->pad[i].flags = (i == VDIC_SRC_PAD_DIRECT) ?
--			MEDIA_PAD_FL_SOURCE : MEDIA_PAD_FL_SINK;
--
- 		code = 0;
- 		if (i != VDIC_SINK_PAD_IDMAC)
- 			imx_media_enum_ipu_format(&code, 0, CS_SEL_YUV);
-@@ -874,15 +868,7 @@ static int vdic_registered(struct v4l2_subdev *sd)
- 
- 	priv->active_input_pad = VDIC_SINK_PAD_DIRECT;
- 
--	ret = vdic_init_controls(priv);
--	if (ret)
--		return ret;
--
--	ret = media_entity_pads_init(&sd->entity, VDIC_NUM_PADS, priv->pad);
--	if (ret)
--		v4l2_ctrl_handler_free(&priv->ctrl_hdlr);
--
--	return ret;
-+	return vdic_init_controls(priv);
- }
- 
- static void vdic_unregistered(struct v4l2_subdev *sd)
-@@ -927,7 +913,7 @@ struct v4l2_subdev *imx_media_vdic_register(struct v4l2_device *v4l2_dev,
- 					    u32 grp_id)
- {
- 	struct vdic_priv *priv;
--	int ret;
-+	int i, ret;
- 
- 	priv = devm_kzalloc(ipu_dev, sizeof(*priv), GFP_KERNEL);
- 	if (!priv)
-@@ -949,6 +935,15 @@ struct v4l2_subdev *imx_media_vdic_register(struct v4l2_device *v4l2_dev,
- 
- 	mutex_init(&priv->lock);
- 
-+	for (i = 0; i < VDIC_NUM_PADS; i++)
-+		priv->pad[i].flags = (i == VDIC_SRC_PAD_DIRECT) ?
-+			MEDIA_PAD_FL_SOURCE : MEDIA_PAD_FL_SINK;
-+
-+	ret = media_entity_pads_init(&priv->sd.entity, VDIC_NUM_PADS,
-+				     priv->pad);
-+	if (ret)
-+		goto free;
-+
- 	ret = v4l2_device_register_subdev(v4l2_dev, &priv->sd);
- 	if (ret)
- 		goto free;
-diff --git a/drivers/staging/media/imx/imx6-mipi-csi2.c b/drivers/staging/media/imx/imx6-mipi-csi2.c
-index bfa4b254c4e4..cd3dd6e33ef0 100644
---- a/drivers/staging/media/imx/imx6-mipi-csi2.c
-+++ b/drivers/staging/media/imx/imx6-mipi-csi2.c
-@@ -497,26 +497,13 @@ static int csi2_set_fmt(struct v4l2_subdev *sd,
- 	return ret;
- }
- 
--/*
-- * retrieve our pads parsed from the OF graph by the media device
-- */
- static int csi2_registered(struct v4l2_subdev *sd)
- {
- 	struct csi2_dev *csi2 = sd_to_dev(sd);
--	int i, ret;
--
--	for (i = 0; i < CSI2_NUM_PADS; i++) {
--		csi2->pad[i].flags = (i == CSI2_SINK_PAD) ?
--		MEDIA_PAD_FL_SINK : MEDIA_PAD_FL_SOURCE;
--	}
- 
- 	/* set a default mbus format  */
--	ret = imx_media_init_mbus_fmt(&csi2->format_mbus,
-+	return imx_media_init_mbus_fmt(&csi2->format_mbus,
- 				      640, 480, 0, V4L2_FIELD_NONE, NULL);
--	if (ret)
--		return ret;
--
--	return media_entity_pads_init(&sd->entity, CSI2_NUM_PADS, csi2->pad);
- }
- 
- static const struct media_entity_operations csi2_entity_ops = {
-@@ -573,7 +560,7 @@ static int csi2_probe(struct platform_device *pdev)
- 	unsigned int sink_port = 0;
- 	struct csi2_dev *csi2;
- 	struct resource *res;
--	int ret;
-+	int i, ret;
- 
- 	csi2 = devm_kzalloc(&pdev->dev, sizeof(*csi2), GFP_KERNEL);
- 	if (!csi2)
-@@ -592,6 +579,16 @@ static int csi2_probe(struct platform_device *pdev)
- 	csi2->sd.entity.function = MEDIA_ENT_F_VID_IF_BRIDGE;
- 	csi2->sd.grp_id = IMX_MEDIA_GRP_ID_CSI2;
- 
-+	for (i = 0; i < CSI2_NUM_PADS; i++) {
-+		csi2->pad[i].flags = (i == CSI2_SINK_PAD) ?
-+		MEDIA_PAD_FL_SINK : MEDIA_PAD_FL_SOURCE;
-+	}
-+
-+	ret = media_entity_pads_init(&csi2->sd.entity, CSI2_NUM_PADS,
-+				     csi2->pad);
-+	if (ret)
-+		return ret;
-+
- 	csi2->pllref_clk = devm_clk_get(&pdev->dev, "ref");
- 	if (IS_ERR(csi2->pllref_clk)) {
- 		v4l2_err(&csi2->sd, "failed to get pll reference clock\n");
-diff --git a/drivers/staging/media/imx/imx7-media-csi.c b/drivers/staging/media/imx/imx7-media-csi.c
-index b61ab16a337a..0fe302b89770 100644
---- a/drivers/staging/media/imx/imx7-media-csi.c
-+++ b/drivers/staging/media/imx/imx7-media-csi.c
-@@ -1100,9 +1100,6 @@ static int imx7_csi_registered(struct v4l2_subdev *sd)
- 	int i;
- 
- 	for (i = 0; i < IMX7_CSI_PADS_NUM; i++) {
--		csi->pad[i].flags = (i == IMX7_CSI_PAD_SINK) ?
--			MEDIA_PAD_FL_SINK : MEDIA_PAD_FL_SOURCE;
--
- 		/* set a default mbus format  */
- 		ret = imx_media_init_mbus_fmt(&csi->format_mbus[i],
- 					      800, 600, 0, V4L2_FIELD_NONE,
-@@ -1115,10 +1112,6 @@ static int imx7_csi_registered(struct v4l2_subdev *sd)
- 		csi->frame_interval[i].denominator = 30;
- 	}
- 
--	ret = media_entity_pads_init(&sd->entity, IMX7_CSI_PADS_NUM, csi->pad);
--	if (ret < 0)
--		return ret;
--
- 	csi->vdev = imx_media_capture_device_init(csi->sd.dev, &csi->sd,
- 						  IMX7_CSI_PAD_SRC);
- 	if (IS_ERR(csi->vdev))
-@@ -1199,7 +1192,7 @@ static int imx7_csi_probe(struct platform_device *pdev)
- 	struct device_node *node = dev->of_node;
- 	struct imx_media_dev *imxmd;
- 	struct imx7_csi *csi;
--	int ret;
-+	int i, ret;
- 
- 	csi = devm_kzalloc(&pdev->dev, sizeof(*csi), GFP_KERNEL);
- 	if (!csi)
-@@ -1266,6 +1259,15 @@ static int imx7_csi_probe(struct platform_device *pdev)
- 	v4l2_ctrl_handler_init(&csi->ctrl_hdlr, 0);
- 	csi->sd.ctrl_handler = &csi->ctrl_hdlr;
- 
-+	for (i = 0; i < IMX7_CSI_PADS_NUM; i++)
-+		csi->pad[i].flags = (i == IMX7_CSI_PAD_SINK) ?
-+			MEDIA_PAD_FL_SINK : MEDIA_PAD_FL_SOURCE;
-+
-+	ret = media_entity_pads_init(&csi->sd.entity, IMX7_CSI_PADS_NUM,
-+				     csi->pad);
-+	if (ret < 0)
-+		goto free;
-+
- 	ret = v4l2_async_register_fwnode_subdev(&csi->sd,
- 						sizeof(struct v4l2_async_subdev),
- 						NULL, 0,
-diff --git a/drivers/staging/media/imx/imx7-mipi-csis.c b/drivers/staging/media/imx/imx7-mipi-csis.c
-index d1cdf011c8f1..cdf7d0d85042 100644
---- a/drivers/staging/media/imx/imx7-mipi-csis.c
-+++ b/drivers/staging/media/imx/imx7-mipi-csis.c
-@@ -780,17 +780,6 @@ static irqreturn_t mipi_csis_irq_handler(int irq, void *dev_id)
- 	return IRQ_HANDLED;
- }
- 
--static int mipi_csis_registered(struct v4l2_subdev *mipi_sd)
--{
--	struct csi_state *state = mipi_sd_to_csis_state(mipi_sd);
--
--	state->pads[CSIS_PAD_SINK].flags = MEDIA_PAD_FL_SINK;
--	state->pads[CSIS_PAD_SOURCE].flags = MEDIA_PAD_FL_SOURCE;
--
--	return media_entity_pads_init(&state->mipi_sd.entity, CSIS_PADS_NUM,
--				      state->pads);
--}
--
- static const struct v4l2_subdev_core_ops mipi_csis_core_ops = {
- 	.log_status	= mipi_csis_log_status,
- };
-@@ -816,10 +805,6 @@ static const struct v4l2_subdev_ops mipi_csis_subdev_ops = {
- 	.pad	= &mipi_csis_pad_ops,
- };
- 
--static const struct v4l2_subdev_internal_ops mipi_csis_internal_ops = {
--	.registered = mipi_csis_registered,
--};
--
- static int mipi_csis_parse_dt(struct platform_device *pdev,
- 			      struct csi_state *state)
- {
-@@ -880,7 +865,6 @@ static int mipi_csis_subdev_init(struct v4l2_subdev *mipi_sd,
- 
- 	mipi_sd->entity.function = MEDIA_ENT_F_VID_IF_BRIDGE;
- 	mipi_sd->entity.ops = &mipi_csis_entity_ops;
--	mipi_sd->internal_ops = &mipi_csis_internal_ops;
- 
- 	mipi_sd->dev = &pdev->dev;
- 
-@@ -892,6 +876,13 @@ static int mipi_csis_subdev_init(struct v4l2_subdev *mipi_sd,
- 
- 	v4l2_set_subdevdata(mipi_sd, &pdev->dev);
- 
-+	state->pads[CSIS_PAD_SINK].flags = MEDIA_PAD_FL_SINK;
-+	state->pads[CSIS_PAD_SOURCE].flags = MEDIA_PAD_FL_SOURCE;
-+	ret = media_entity_pads_init(&mipi_sd->entity, CSIS_PADS_NUM,
-+				     state->pads);
-+	if (ret)
-+		return ret;
-+
- 	ret = v4l2_async_register_fwnode_subdev(mipi_sd,
- 						sizeof(struct v4l2_async_subdev),
- 						&sink_port, 1,
+Greg Kroah-Hartman (9):
+  staging: greybus: fix up SPDX comment in .h files
+  staging: greybus: remove license "boilerplate"
+  staging: greybus: hd: Fix up some alignment checkpatch issues
+  staging: greybus: manifest: Fix up some alignment checkpatch issues
+  staging: greybus: log: Fix up some alignment checkpatch issues
+  staging: greybus: loopback: Fix up some alignment checkpatch issues
+  staging: greybus: move core include files to include/linux/greybus/
+  staging: greybus: move the greybus core to drivers/greybus
+  staging: greybus: move es2 to drivers/greybus/
+
+ MAINTAINERS                                   |   3 +
+ drivers/Kconfig                               |   2 +
+ drivers/Makefile                              |   1 +
+ drivers/greybus/Kconfig                       |  32 +++++
+ drivers/greybus/Makefile                      |  26 +++++
+ drivers/greybus/arpc.h                        |  63 ++++++++++
+ drivers/{staging => }/greybus/bundle.c        |   2 +-
+ drivers/{staging => }/greybus/connection.c    |   2 +-
+ drivers/{staging => }/greybus/control.c       |   2 +-
+ drivers/{staging => }/greybus/core.c          |   2 +-
+ drivers/{staging => }/greybus/debugfs.c       |   3 +-
+ drivers/{staging => }/greybus/es2.c           |   3 +-
+ drivers/{staging => }/greybus/greybus_trace.h |   2 +-
+ drivers/{staging => }/greybus/hd.c            |  12 +-
+ drivers/{staging => }/greybus/interface.c     |   2 +-
+ drivers/{staging => }/greybus/manifest.c      |  41 ++++---
+ drivers/{staging => }/greybus/module.c        |   2 +-
+ drivers/{staging => }/greybus/operation.c     |   2 +-
+ drivers/{staging => }/greybus/svc.c           |   3 +-
+ drivers/{staging => }/greybus/svc_watchdog.c  |   2 +-
+ .../Documentation/firmware/authenticate.c     |  46 --------
+ .../greybus/Documentation/firmware/firmware.c |  46 --------
+ drivers/staging/greybus/Kconfig               |  27 -----
+ drivers/staging/greybus/Makefile              |  22 ----
+ drivers/staging/greybus/arche-platform.c      |   2 +-
+ drivers/staging/greybus/arpc.h                | 109 ------------------
+ drivers/staging/greybus/audio_apbridgea.c     |   3 +-
+ drivers/staging/greybus/audio_apbridgea.h     |  26 +----
+ drivers/staging/greybus/audio_codec.h         |   4 +-
+ drivers/staging/greybus/audio_gb.c            |   4 +-
+ drivers/staging/greybus/authentication.c      |   3 +-
+ drivers/staging/greybus/bootrom.c             |   2 +-
+ drivers/staging/greybus/camera.c              |   2 +-
+ drivers/staging/greybus/firmware.h            |   4 +-
+ drivers/staging/greybus/fw-core.c             |   2 +-
+ drivers/staging/greybus/fw-download.c         |   2 +-
+ drivers/staging/greybus/fw-management.c       |   2 +-
+ drivers/staging/greybus/gb-camera.h           |   2 +-
+ drivers/staging/greybus/gbphy.c               |   2 +-
+ drivers/staging/greybus/gbphy.h               |   2 +-
+ drivers/staging/greybus/gpio.c                |   2 +-
+ .../staging/greybus/greybus_authentication.h  |  48 +-------
+ drivers/staging/greybus/greybus_firmware.h    |  48 +-------
+ drivers/staging/greybus/hid.c                 |   3 +-
+ drivers/staging/greybus/i2c.c                 |   2 +-
+ drivers/staging/greybus/light.c               |   4 +-
+ drivers/staging/greybus/log.c                 |   9 +-
+ drivers/staging/greybus/loopback.c            |   9 +-
+ drivers/staging/greybus/power_supply.c        |   3 +-
+ drivers/staging/greybus/pwm.c                 |   2 +-
+ drivers/staging/greybus/raw.c                 |   3 +-
+ drivers/staging/greybus/sdio.c                |   2 +-
+ drivers/staging/greybus/spi.c                 |   2 +-
+ drivers/staging/greybus/spilib.c              |   2 +-
+ drivers/staging/greybus/spilib.h              |   2 +-
+ drivers/staging/greybus/tools/loopback_test.c |   2 -
+ drivers/staging/greybus/uart.c                |   2 +-
+ drivers/staging/greybus/usb.c                 |   2 +-
+ drivers/staging/greybus/vibrator.c            |   3 +-
+ .../greybus => include/linux}/greybus.h       |  26 ++---
+ .../linux}/greybus/bundle.h                   |   0
+ .../linux}/greybus/connection.h               |   0
+ .../linux}/greybus/control.h                  |   0
+ .../linux}/greybus/greybus_id.h               |   0
+ .../linux}/greybus/greybus_manifest.h         |   2 +-
+ .../linux}/greybus/greybus_protocols.h        |  48 +-------
+ .../staging => include/linux}/greybus/hd.h    |   2 +-
+ .../linux}/greybus/interface.h                |   2 +-
+ .../linux}/greybus/manifest.h                 |   2 +-
+ .../linux}/greybus/module.h                   |   2 +-
+ .../linux}/greybus/operation.h                |   2 +-
+ .../staging => include/linux}/greybus/svc.h   |   2 +-
+ 72 files changed, 225 insertions(+), 532 deletions(-)
+ create mode 100644 drivers/greybus/Kconfig
+ create mode 100644 drivers/greybus/Makefile
+ create mode 100644 drivers/greybus/arpc.h
+ rename drivers/{staging => }/greybus/bundle.c (99%)
+ rename drivers/{staging => }/greybus/connection.c (99%)
+ rename drivers/{staging => }/greybus/control.c (99%)
+ rename drivers/{staging => }/greybus/core.c (99%)
+ rename drivers/{staging => }/greybus/debugfs.c (94%)
+ rename drivers/{staging => }/greybus/es2.c (99%)
+ rename drivers/{staging => }/greybus/greybus_trace.h (99%)
+ rename drivers/{staging => }/greybus/hd.c (96%)
+ rename drivers/{staging => }/greybus/interface.c (99%)
+ rename drivers/{staging => }/greybus/manifest.c (95%)
+ rename drivers/{staging => }/greybus/module.c (99%)
+ rename drivers/{staging => }/greybus/operation.c (99%)
+ rename drivers/{staging => }/greybus/svc.c (99%)
+ rename drivers/{staging => }/greybus/svc_watchdog.c (99%)
+ delete mode 100644 drivers/staging/greybus/arpc.h
+ rename {drivers/staging/greybus => include/linux}/greybus.h (88%)
+ rename {drivers/staging => include/linux}/greybus/bundle.h (100%)
+ rename {drivers/staging => include/linux}/greybus/connection.h (100%)
+ rename {drivers/staging => include/linux}/greybus/control.h (100%)
+ rename {drivers/staging => include/linux}/greybus/greybus_id.h (100%)
+ rename {drivers/staging => include/linux}/greybus/greybus_manifest.h (99%)
+ rename {drivers/staging => include/linux}/greybus/greybus_protocols.h (96%)
+ rename {drivers/staging => include/linux}/greybus/hd.h (98%)
+ rename {drivers/staging => include/linux}/greybus/interface.h (98%)
+ rename {drivers/staging => include/linux}/greybus/manifest.h (87%)
+ rename {drivers/staging => include/linux}/greybus/module.h (94%)
+ rename {drivers/staging => include/linux}/greybus/operation.h (99%)
+ rename {drivers/staging => include/linux}/greybus/svc.h (98%)
+
 -- 
-2.17.1
+2.23.0
 
 _______________________________________________
 devel mailing list
