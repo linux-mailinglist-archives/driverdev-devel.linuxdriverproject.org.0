@@ -1,54 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9A4A19D081
-	for <lists+driverdev-devel@lfdr.de>; Mon, 26 Aug 2019 15:28:01 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AB1239D0A5
+	for <lists+driverdev-devel@lfdr.de>; Mon, 26 Aug 2019 15:32:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7ECA28788E;
-	Mon, 26 Aug 2019 13:27:59 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 94851868B2;
+	Mon, 26 Aug 2019 13:32:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id k2h2l3eGpB0t; Mon, 26 Aug 2019 13:27:59 +0000 (UTC)
+	with ESMTP id 4mbFIhkR9neb; Mon, 26 Aug 2019 13:32:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0958687534;
-	Mon, 26 Aug 2019 13:27:59 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7FC5A8464A;
+	Mon, 26 Aug 2019 13:32:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2F2C81BF345
- for <devel@linuxdriverproject.org>; Mon, 26 Aug 2019 13:27:57 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id F0C9A1BF345
+ for <devel@linuxdriverproject.org>; Mon, 26 Aug 2019 13:32:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2A1168777C
- for <devel@linuxdriverproject.org>; Mon, 26 Aug 2019 13:27:57 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id ECC958464A
+ for <devel@linuxdriverproject.org>; Mon, 26 Aug 2019 13:32:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0cfny1GxVXa7 for <devel@linuxdriverproject.org>;
- Mon, 26 Aug 2019 13:27:56 +0000 (UTC)
+ with ESMTP id ZFi3IgabmT1A for <devel@linuxdriverproject.org>;
+ Mon, 26 Aug 2019 13:32:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8732587534
- for <devel@driverdev.osuosl.org>; Mon, 26 Aug 2019 13:27:56 +0000 (UTC)
-Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id D51777CE6EC814E9F398;
- Mon, 26 Aug 2019 21:27:52 +0800 (CST)
-Received: from architecture4.huawei.com (10.140.130.215) by smtp.huawei.com
- (10.3.19.205) with Microsoft SMTP Server (TLS) id 14.3.439.0; Mon, 26 Aug
- 2019 21:27:42 +0800
-From: Gao Xiang <gaoxiang25@huawei.com>
-To: Chao Yu <yuchao0@huawei.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, <devel@driverdev.osuosl.org>
-Subject: [PATCH RESEND] erofs: fix compile warnings when moving out
- include/trace/events/erofs.h
-Date: Mon, 26 Aug 2019 21:26:53 +0800
-Message-ID: <20190826132653.100731-1-gaoxiang25@huawei.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190826132234.96939-1-gaoxiang25@huawei.com>
-References: <20190826132234.96939-1-gaoxiang25@huawei.com>
+Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C557581B89
+ for <devel@driverdev.osuosl.org>; Mon, 26 Aug 2019 13:32:31 +0000 (UTC)
+Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 5EFA913FC29889333CDC;
+ Mon, 26 Aug 2019 21:32:27 +0800 (CST)
+Received: from localhost (10.133.213.239) by DGGEMS401-HUB.china.huawei.com
+ (10.3.19.201) with Microsoft SMTP Server id 14.3.439.0; Mon, 26 Aug 2019
+ 21:32:20 +0800
+From: YueHaibing <yuehaibing@huawei.com>
+To: <digetx@gmail.com>, <mchehab@kernel.org>, <gregkh@linuxfoundation.org>,
+ <thierry.reding@gmail.com>, <jonathanh@nvidia.com>, <robin.murphy@arm.com>,
+ <hverkuil-cisco@xs4all.nl>
+Subject: [PATCH] media: staging: tegra-vde: Disable building with COMPILE_TEST
+Date: Mon, 26 Aug 2019 21:31:40 +0800
+Message-ID: <20190826133140.13456-1-yuehaibing@huawei.com>
+X-Mailer: git-send-email 2.10.2.windows.1
 MIME-Version: 1.0
-X-Originating-IP: [10.140.130.215]
+X-Originating-IP: [10.133.213.239]
 X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -62,86 +60,53 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Stephen Rothwell <sfr@canb.auug.org.au>, linux-erofs@lists.ozlabs.org,
- Chao Yu <chao@kernel.org>, LKML <linux-kernel@vger.kernel.org>,
- weidu.du@huawei.com, Fang Wei <fangwei1@huawei.com>,
- Miao Xie <miaoxie@huawei.com>
+Cc: devel@driverdev.osuosl.org, YueHaibing <yuehaibing@huawei.com>,
+ linux-kernel@vger.kernel.org, iommu@lists.linux-foundation.org,
+ linux-tegra@vger.kernel.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-As Stephon reported [1], many compile warnings are raised when
-moving out include/trace/events/erofs.h:
+If COMPILE_TEST is y and IOMMU_SUPPORT is n, selecting TEGRA_VDE
+to m will set IOMMU_IOVA to m, this fails the building of
+TEGRA_HOST1X and DRM_TEGRA which is y like this:
 
-In file included from include/trace/events/erofs.h:8,
-                 from <command-line>:
-include/trace/events/erofs.h:28:37: warning: 'struct dentry' declared inside parameter list will not be visible outside of this definition or declaration
-  TP_PROTO(struct inode *dir, struct dentry *dentry, unsigned int flags),
-                                     ^~~~~~
-include/linux/tracepoint.h:233:34: note: in definition of macro '__DECLARE_TRACE'
-  static inline void trace_##name(proto)    \
-                                  ^~~~~
-include/linux/tracepoint.h:396:24: note: in expansion of macro 'PARAMS'
-  __DECLARE_TRACE(name, PARAMS(proto), PARAMS(args),  \
-                        ^~~~~~
-include/linux/tracepoint.h:532:2: note: in expansion of macro 'DECLARE_TRACE'
-  DECLARE_TRACE(name, PARAMS(proto), PARAMS(args))
-  ^~~~~~~~~~~~~
-include/linux/tracepoint.h:532:22: note: in expansion of macro 'PARAMS'
-  DECLARE_TRACE(name, PARAMS(proto), PARAMS(args))
-                      ^~~~~~
-include/trace/events/erofs.h:26:1: note: in expansion of macro 'TRACE_EVENT'
- TRACE_EVENT(erofs_lookup,
- ^~~~~~~~~~~
-include/trace/events/erofs.h:28:2: note: in expansion of macro 'TP_PROTO'
-  TP_PROTO(struct inode *dir, struct dentry *dentry, unsigned int flags),
-  ^~~~~~~~
+drivers/gpu/host1x/cdma.o: In function `host1x_cdma_init':
+cdma.c:(.text+0x66c): undefined reference to `alloc_iova'
+cdma.c:(.text+0x698): undefined reference to `__free_iova'
 
-That makes me very confused since most original EROFS tracepoint code
-was taken from f2fs, and finally I found
+drivers/gpu/drm/tegra/drm.o: In function `tegra_drm_unload':
+drm.c:(.text+0xeb0): undefined reference to `put_iova_domain'
+drm.c:(.text+0xeb4): undefined reference to `iova_cache_put'
 
-commit 43c78d88036e ("kbuild: compile-test kernel headers to ensure they are self-contained")
-
-It seems these warnings are generated from KERNEL_HEADER_TEST feature and
-ext4/f2fs tracepoint files were in blacklist.
-
-Anyway, let's fix these issues for KERNEL_HEADER_TEST feature instead
-of adding to blacklist...
-
-[1] https://lore.kernel.org/lkml/20190826162432.11100665@canb.auug.org.au/
-Reported-by: Stephen Rothwell <sfr@canb.auug.org.au>
-Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
+Reported-by: Hulk Robot <hulkci@huawei.com>
+Fixes: 6b2265975239 ("media: staging: tegra-vde: Fix build error")
+Fixes: b301f8de1925 ("media: staging: media: tegra-vde: Add IOMMU support")
+Signed-off-by: YueHaibing <yuehaibing@huawei.com>
 ---
+ drivers/staging/media/tegra-vde/Kconfig | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-[RESEND] Cc Stephen as well. no change at all...
-
-Hi Chao and Greg,
- It seems the root cause reported by Stephen is the following (sorry for
- taking some time...) could you kindly review and merge this patch?
-
-Thanks,
-Gao Xiang
-
- include/trace/events/erofs.h | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/include/trace/events/erofs.h b/include/trace/events/erofs.h
-index bfb2da9c4eee..d239f39cbc8c 100644
---- a/include/trace/events/erofs.h
-+++ b/include/trace/events/erofs.h
-@@ -6,6 +6,9 @@
- #define _TRACE_EROFS_H
- 
- #include <linux/tracepoint.h>
-+#include <linux/fs.h>
-+
-+struct erofs_map_blocks;
- 
- #define show_dev(dev)		MAJOR(dev), MINOR(dev)
- #define show_dev_nid(entry)	show_dev(entry->dev), entry->nid
+diff --git a/drivers/staging/media/tegra-vde/Kconfig b/drivers/staging/media/tegra-vde/Kconfig
+index ba49ea5..a41d30c 100644
+--- a/drivers/staging/media/tegra-vde/Kconfig
++++ b/drivers/staging/media/tegra-vde/Kconfig
+@@ -1,9 +1,9 @@
+ # SPDX-License-Identifier: GPL-2.0
+ config TEGRA_VDE
+ 	tristate "NVIDIA Tegra Video Decoder Engine driver"
+-	depends on ARCH_TEGRA || COMPILE_TEST
++	depends on ARCH_TEGRA
+ 	select DMA_SHARED_BUFFER
+-	select IOMMU_IOVA if (IOMMU_SUPPORT || COMPILE_TEST)
++	select IOMMU_IOVA if IOMMU_SUPPORT
+ 	select SRAM
+ 	help
+ 	    Say Y here to enable support for the NVIDIA Tegra video decoder
 -- 
-2.17.1
+2.7.4
+
 
 _______________________________________________
 devel mailing list
