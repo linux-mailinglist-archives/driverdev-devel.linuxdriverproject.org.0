@@ -1,49 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A4279C72A
-	for <lists+driverdev-devel@lfdr.de>; Mon, 26 Aug 2019 04:15:59 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 307F520431;
-	Mon, 26 Aug 2019 02:15:57 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MO+gKY0tLeYh; Mon, 26 Aug 2019 02:15:56 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id BCA8A20427;
-	Mon, 26 Aug 2019 02:15:54 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6A3C71BF275;
- Mon, 26 Aug 2019 02:15:51 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7CEE39C870
+	for <lists+driverdev-devel@lfdr.de>; Mon, 26 Aug 2019 06:36:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6362C87B39;
- Mon, 26 Aug 2019 02:15:51 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3A77187E94;
+	Mon, 26 Aug 2019 04:36:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id s-KDoG3QEttj; Mon, 26 Aug 2019 04:36:12 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9D04E87D9F;
+	Mon, 26 Aug 2019 04:36:11 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id AFC4B1BF35F
+ for <devel@linuxdriverproject.org>; Mon, 26 Aug 2019 04:36:09 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id A9B6C87476
+ for <devel@linuxdriverproject.org>; Mon, 26 Aug 2019 04:36:09 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uf0vXPo7ziiA; Mon, 26 Aug 2019 02:15:49 +0000 (UTC)
+ with ESMTP id uClOcHK4FexQ for <devel@linuxdriverproject.org>;
+ Mon, 26 Aug 2019 04:36:08 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from fineinfo.co.kr (unknown [118.47.55.35])
- by hemlock.osuosl.org (Postfix) with ESMTP id 871A687A43;
- Mon, 26 Aug 2019 02:15:49 +0000 (UTC)
-Received: from User (unknown [193.56.28.164]) (Authenticated sender: root)
- by fineinfo.co.kr (Postfix) with ESMTPA id 949CE4F618A;
- Mon, 26 Aug 2019 12:08:40 +0900 (KST)
-From: "Mrs J. Zhang"<juliazhangkh@gmail.com>
-Subject: Save a soul.
-Date: Sun, 25 Aug 2019 17:12:17 -0700
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id CCDA886DA8
+ for <devel@driverdev.osuosl.org>; Mon, 26 Aug 2019 04:36:08 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 204132173E;
+ Mon, 26 Aug 2019 04:36:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1566794168;
+ bh=I1jL0/Uu2qQHbpkL6WfRWDaM6cQyx9pIFap/+g6agYs=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=NpOEXZSJ8ODfPw2dxMHwytKIvGGO65XaxSZr8rbctTA9kaPPgDeNIb37v7rFV5B+p
+ Z8ffPZ4Y6Cgb1uQtpfRPzu57LKrxMFSdMcJo7UH3bnOi2IjS9j2/ryevNFyKazJr4D
+ 5ZrJV5gNVVQ8l+H23ugmVIV3BPnzAQ1XDqFMP1Ec=
+Date: Mon, 26 Aug 2019 06:36:06 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Sumera Priyadarsini <sylphrenadin@gmail.com>
+Subject: Re: [PATCH] staging: rtl8192u: Fix spacing style issues
+Message-ID: <20190826043606.GA27266@kroah.com>
+References: <20190825193835.28848-1-sylphrenadin@gmail.com>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20190826030842.949CE4F618A@fineinfo.co.kr>
-To: undisclosed-recipients:;
+Content-Disposition: inline
+In-Reply-To: <20190825193835.28848-1-sylphrenadin@gmail.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,22 +66,29 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: juliazhanghk@gmail.com
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Good day brothers and sisters in the Lord,
+On Mon, Aug 26, 2019 at 01:08:35AM +0530, Sumera Priyadarsini wrote:
+> This patch fixes the file r8190_rtl8256.c to avoid the following
+> checkpatch.pl warnings:
+> 	CHECK: spaces preferred around that '<<' (ctx:VxV)
+> 	CHECK: spaces preferred around that '-' (ctx:VxV)
+> 	CHECK: Blank lines aren't necessary before a close brace '}'
+> 	CHECK: Please use a blank line after function/struct/union/enum declarations
+> 	CHECK: No space is necessary after a cast
+> 	CHECK: Please don't use multiple blank lines
+> 	CHECK: Please don't use multiple blank lines
 
-I greet you in the name of our lord Jesus christ and my mother Mary.My name is Mrs. Julia Zhang, the wife of late Mr Moses Zhang. I have suffered maltreatment and untold hardship in the hands of my late husband's family, since the death of my husband with my son and daughter in a car crash. By tradition, all that my late husband had, [wealth] belongs to his brothers/family. And myself is to be remarried by his immediate younger brother which I vehemently refused. They have taken all that I suffered with my husband to acquire including treasures, houses and his bank particulars seized by them.
+Can you split this up into at least 2 different patches, one for blank l
+ines and one for spaces?
 
-I have suffered cancer of the esophagus for almost 5 yrs now, my health is very bad and i need help.
+thanks,
 
-Thank you and God bless.
-
-Stay blessed.
-Mrs. Julia Zhang
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
