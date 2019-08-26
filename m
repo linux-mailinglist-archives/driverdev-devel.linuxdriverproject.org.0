@@ -1,50 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5ACEA9D054
-	for <lists+driverdev-devel@lfdr.de>; Mon, 26 Aug 2019 15:23:50 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A4A19D081
+	for <lists+driverdev-devel@lfdr.de>; Mon, 26 Aug 2019 15:28:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 31E8A86840;
-	Mon, 26 Aug 2019 13:23:48 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7ECA28788E;
+	Mon, 26 Aug 2019 13:27:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WZ1YL7+F8JUX; Mon, 26 Aug 2019 13:23:47 +0000 (UTC)
+	with ESMTP id k2h2l3eGpB0t; Mon, 26 Aug 2019 13:27:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B62E18673C;
-	Mon, 26 Aug 2019 13:23:45 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0958687534;
+	Mon, 26 Aug 2019 13:27:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3533A1BF345
- for <devel@linuxdriverproject.org>; Mon, 26 Aug 2019 13:23:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2F2C81BF345
+ for <devel@linuxdriverproject.org>; Mon, 26 Aug 2019 13:27:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2CAD287807
- for <devel@linuxdriverproject.org>; Mon, 26 Aug 2019 13:23:41 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2A1168777C
+ for <devel@linuxdriverproject.org>; Mon, 26 Aug 2019 13:27:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pmiqXtQ5K0sC for <devel@linuxdriverproject.org>;
- Mon, 26 Aug 2019 13:23:39 +0000 (UTC)
+ with ESMTP id 0cfny1GxVXa7 for <devel@linuxdriverproject.org>;
+ Mon, 26 Aug 2019 13:27:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B47528777C
- for <devel@driverdev.osuosl.org>; Mon, 26 Aug 2019 13:23:39 +0000 (UTC)
-Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 086A83DE10F13807F273;
- Mon, 26 Aug 2019 21:23:34 +0800 (CST)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8732587534
+ for <devel@driverdev.osuosl.org>; Mon, 26 Aug 2019 13:27:56 +0000 (UTC)
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id D51777CE6EC814E9F398;
+ Mon, 26 Aug 2019 21:27:52 +0800 (CST)
 Received: from architecture4.huawei.com (10.140.130.215) by smtp.huawei.com
- (10.3.19.214) with Microsoft SMTP Server (TLS) id 14.3.439.0; Mon, 26 Aug
- 2019 21:23:26 +0800
+ (10.3.19.205) with Microsoft SMTP Server (TLS) id 14.3.439.0; Mon, 26 Aug
+ 2019 21:27:42 +0800
 From: Gao Xiang <gaoxiang25@huawei.com>
 To: Chao Yu <yuchao0@huawei.com>, Greg Kroah-Hartman
  <gregkh@linuxfoundation.org>, <devel@driverdev.osuosl.org>
-Subject: [PATCH] erofs: fix compile warnings when moving out
+Subject: [PATCH RESEND] erofs: fix compile warnings when moving out
  include/trace/events/erofs.h
-Date: Mon, 26 Aug 2019 21:22:34 +0800
-Message-ID: <20190826132234.96939-1-gaoxiang25@huawei.com>
+Date: Mon, 26 Aug 2019 21:26:53 +0800
+Message-ID: <20190826132653.100731-1-gaoxiang25@huawei.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190826132234.96939-1-gaoxiang25@huawei.com>
+References: <20190826132234.96939-1-gaoxiang25@huawei.com>
 MIME-Version: 1.0
 X-Originating-IP: [10.140.130.215]
 X-CFilter-Loop: Reflected
@@ -60,9 +62,10 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-erofs@lists.ozlabs.org, Chao Yu <chao@kernel.org>,
- LKML <linux-kernel@vger.kernel.org>, weidu.du@huawei.com,
- Fang Wei <fangwei1@huawei.com>, Miao Xie <miaoxie@huawei.com>
+Cc: Stephen Rothwell <sfr@canb.auug.org.au>, linux-erofs@lists.ozlabs.org,
+ Chao Yu <chao@kernel.org>, LKML <linux-kernel@vger.kernel.org>,
+ weidu.du@huawei.com, Fang Wei <fangwei1@huawei.com>,
+ Miao Xie <miaoxie@huawei.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
@@ -110,6 +113,8 @@ of adding to blacklist...
 Reported-by: Stephen Rothwell <sfr@canb.auug.org.au>
 Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
 ---
+
+[RESEND] Cc Stephen as well. no change at all...
 
 Hi Chao and Greg,
  It seems the root cause reported by Stephen is the following (sorry for
