@@ -1,82 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B6699C95A
-	for <lists+driverdev-devel@lfdr.de>; Mon, 26 Aug 2019 08:22:17 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5ACEA9D054
+	for <lists+driverdev-devel@lfdr.de>; Mon, 26 Aug 2019 15:23:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C6C48860E0;
-	Mon, 26 Aug 2019 06:22:15 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 31E8A86840;
+	Mon, 26 Aug 2019 13:23:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MNKEIf6oTud5; Mon, 26 Aug 2019 06:22:15 +0000 (UTC)
+	with ESMTP id WZ1YL7+F8JUX; Mon, 26 Aug 2019 13:23:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 616BC860C5;
-	Mon, 26 Aug 2019 06:22:14 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B62E18673C;
+	Mon, 26 Aug 2019 13:23:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3D03A1BF42D
- for <devel@linuxdriverproject.org>; Mon, 26 Aug 2019 06:22:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3533A1BF345
+ for <devel@linuxdriverproject.org>; Mon, 26 Aug 2019 13:23:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 39E9A87A12
- for <devel@linuxdriverproject.org>; Mon, 26 Aug 2019 06:22:12 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2CAD287807
+ for <devel@linuxdriverproject.org>; Mon, 26 Aug 2019 13:23:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xGdRZTWxaj0Y for <devel@linuxdriverproject.org>;
- Mon, 26 Aug 2019 06:22:11 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
- [209.85.214.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B0337879EF
- for <devel@driverdev.osuosl.org>; Mon, 26 Aug 2019 06:22:11 +0000 (UTC)
-Received: by mail-pl1-f194.google.com with SMTP id bj8so9493653plb.4
- for <devel@driverdev.osuosl.org>; Sun, 25 Aug 2019 23:22:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=DFNKLlML8ZG0U6zSvck4G0suOs1+3RpMULNqnE5vfmE=;
- b=HZtqhUVgaaWvXSuMadlnQlfTp0nMMEvpsWVtBYe/NNERsuqqMBdf6Z/CIv7esFkvEq
- VK4itHwOLhgftKByG86oc7HifeQpF5/fpyzukMA2zTvz9xr44gmtJUJDmaufTRocf7+l
- e78E+Tjqq9wAFfTfNdTXVtqZZvD9scAvIVH7IEHt1zXPuKv03+ockt/3ZDVsGYmJ277N
- UED8KhWfCWo7WSSvkKWuIK+IMcX/sKn5ohfxdOBYH3JyKTv2iGcV3nHXU/ZTtRUgAniB
- EJngDM95BxyFQFDehH3Et8Jd06PUX6rsQnT16ZqFUak26ZB/XaWaUUPQMF7d12trj8Ax
- YwEw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=DFNKLlML8ZG0U6zSvck4G0suOs1+3RpMULNqnE5vfmE=;
- b=poK4iyUGRaqfrierQm3+zAGUGdImvudaFcbfUxgCYP0iecI3aa7pplIaDYzESz3Gu3
- cRvXmQ7m4iaynx5LcRoS+qPhS9QFCwHUbPHu7uXQMnXj7staJfTo3XBIQ/XU0Mx23JWl
- 61DtF701wHYksLdwUCzEL+KKLFpEXqWXULMAW46vmBNlGqKYPcUfKJuovTj2aUN9BTT/
- wmuPN/Ltuv5aVTvbJNmqv1ENQxU7YjTo3r9v+P3iBHQJ+EuBF5Gzs/Q6V7wr2CDHshUt
- rLmS+LSqKx4I+b+jkholGA7p/puV7NbqzBEQE97rn79FvF8j9JE3tLWPhrUlFfwANo8o
- 5cDg==
-X-Gm-Message-State: APjAAAUOkrXcrO251ZvKN14dBAhk+WXhEIYhZUH+FSDRdPl0B27e6igo
- 4HuvJ+1e3TgY8GOKSWRjJu12Uw==
-X-Google-Smtp-Source: APXvYqw3O24kdVqAku1lk9iqySccxlxqBlpdpGlSV0fOUZdZbeox5M+FlskBtNUYqKT8CggkpjYO0w==
-X-Received: by 2002:a17:902:f096:: with SMTP id
- go22mr17762668plb.58.1566800089617; 
- Sun, 25 Aug 2019 23:14:49 -0700 (PDT)
-Received: from localhost ([122.172.76.219])
- by smtp.gmail.com with ESMTPSA id h197sm10948152pfe.67.2019.08.25.23.14.48
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sun, 25 Aug 2019 23:14:48 -0700 (PDT)
-Date: Mon, 26 Aug 2019 11:44:47 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [greybus-dev] [PATCH 9/9] staging: greybus: move es2 to
- drivers/greybus/
-Message-ID: <20190826061447.7oynduw2schwrck4@vireshk-i7>
-References: <20190825055429.18547-1-gregkh@linuxfoundation.org>
- <20190825055429.18547-10-gregkh@linuxfoundation.org>
+ with ESMTP id pmiqXtQ5K0sC for <devel@linuxdriverproject.org>;
+ Mon, 26 Aug 2019 13:23:39 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id B47528777C
+ for <devel@driverdev.osuosl.org>; Mon, 26 Aug 2019 13:23:39 +0000 (UTC)
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 086A83DE10F13807F273;
+ Mon, 26 Aug 2019 21:23:34 +0800 (CST)
+Received: from architecture4.huawei.com (10.140.130.215) by smtp.huawei.com
+ (10.3.19.214) with Microsoft SMTP Server (TLS) id 14.3.439.0; Mon, 26 Aug
+ 2019 21:23:26 +0800
+From: Gao Xiang <gaoxiang25@huawei.com>
+To: Chao Yu <yuchao0@huawei.com>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, <devel@driverdev.osuosl.org>
+Subject: [PATCH] erofs: fix compile warnings when moving out
+ include/trace/events/erofs.h
+Date: Mon, 26 Aug 2019 21:22:34 +0800
+Message-ID: <20190826132234.96939-1-gaoxiang25@huawei.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190825055429.18547-10-gregkh@linuxfoundation.org>
-User-Agent: NeoMutt/20180716-391-311a52
+X-Originating-IP: [10.140.130.215]
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,37 +60,84 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, greybus-dev@lists.linaro.org, elder@kernel.org,
- johan@kernel.org, linux-kernel@vger.kernel.org
+Cc: linux-erofs@lists.ozlabs.org, Chao Yu <chao@kernel.org>,
+ LKML <linux-kernel@vger.kernel.org>, weidu.du@huawei.com,
+ Fang Wei <fangwei1@huawei.com>, Miao Xie <miaoxie@huawei.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 25-08-19, 07:54, Greg Kroah-Hartman wrote:
-> The es2 Greybus host controller has long been stable, so move it out of
-> drivers/staging/ to drivers/greybus/
-> 
-> Cc: Johan Hovold <johan@kernel.org>
-> Cc: Alex Elder <elder@kernel.org>
-> Cc: greybus-dev@lists.linaro.org
-> Cc: linux-kernel@vger.kernel.org
-> Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> ---
->  drivers/greybus/Kconfig              | 16 ++++++++++++++++
->  drivers/greybus/Makefile             |  7 +++++++
->  drivers/{staging => }/greybus/arpc.h |  0
->  drivers/{staging => }/greybus/es2.c  |  2 +-
->  drivers/staging/greybus/Kconfig      | 11 -----------
->  drivers/staging/greybus/Makefile     |  5 -----
->  6 files changed, 24 insertions(+), 17 deletions(-)
->  rename drivers/{staging => }/greybus/arpc.h (100%)
->  rename drivers/{staging => }/greybus/es2.c (99%)
+As Stephon reported [1], many compile warnings are raised when
+moving out include/trace/events/erofs.h:
 
-Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+In file included from include/trace/events/erofs.h:8,
+                 from <command-line>:
+include/trace/events/erofs.h:28:37: warning: 'struct dentry' declared inside parameter list will not be visible outside of this definition or declaration
+  TP_PROTO(struct inode *dir, struct dentry *dentry, unsigned int flags),
+                                     ^~~~~~
+include/linux/tracepoint.h:233:34: note: in definition of macro '__DECLARE_TRACE'
+  static inline void trace_##name(proto)    \
+                                  ^~~~~
+include/linux/tracepoint.h:396:24: note: in expansion of macro 'PARAMS'
+  __DECLARE_TRACE(name, PARAMS(proto), PARAMS(args),  \
+                        ^~~~~~
+include/linux/tracepoint.h:532:2: note: in expansion of macro 'DECLARE_TRACE'
+  DECLARE_TRACE(name, PARAMS(proto), PARAMS(args))
+  ^~~~~~~~~~~~~
+include/linux/tracepoint.h:532:22: note: in expansion of macro 'PARAMS'
+  DECLARE_TRACE(name, PARAMS(proto), PARAMS(args))
+                      ^~~~~~
+include/trace/events/erofs.h:26:1: note: in expansion of macro 'TRACE_EVENT'
+ TRACE_EVENT(erofs_lookup,
+ ^~~~~~~~~~~
+include/trace/events/erofs.h:28:2: note: in expansion of macro 'TP_PROTO'
+  TP_PROTO(struct inode *dir, struct dentry *dentry, unsigned int flags),
+  ^~~~~~~~
 
+That makes me very confused since most original EROFS tracepoint code
+was taken from f2fs, and finally I found
+
+commit 43c78d88036e ("kbuild: compile-test kernel headers to ensure they are self-contained")
+
+It seems these warnings are generated from KERNEL_HEADER_TEST feature and
+ext4/f2fs tracepoint files were in blacklist.
+
+Anyway, let's fix these issues for KERNEL_HEADER_TEST feature instead
+of adding to blacklist...
+
+[1] https://lore.kernel.org/lkml/20190826162432.11100665@canb.auug.org.au/
+Reported-by: Stephen Rothwell <sfr@canb.auug.org.au>
+Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
+---
+
+Hi Chao and Greg,
+ It seems the root cause reported by Stephen is the following (sorry for
+ taking some time...) could you kindly review and merge this patch?
+
+Thanks,
+Gao Xiang
+
+ include/trace/events/erofs.h | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/include/trace/events/erofs.h b/include/trace/events/erofs.h
+index bfb2da9c4eee..d239f39cbc8c 100644
+--- a/include/trace/events/erofs.h
++++ b/include/trace/events/erofs.h
+@@ -6,6 +6,9 @@
+ #define _TRACE_EROFS_H
+ 
+ #include <linux/tracepoint.h>
++#include <linux/fs.h>
++
++struct erofs_map_blocks;
+ 
+ #define show_dev(dev)		MAJOR(dev), MINOR(dev)
+ #define show_dev_nid(entry)	show_dev(entry->dev), entry->nid
 -- 
-viresh
+2.17.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
