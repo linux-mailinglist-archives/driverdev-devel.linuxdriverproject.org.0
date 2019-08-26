@@ -1,89 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42E419D2DF
-	for <lists+driverdev-devel@lfdr.de>; Mon, 26 Aug 2019 17:36:27 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 51A5D9D3A2
+	for <lists+driverdev-devel@lfdr.de>; Mon, 26 Aug 2019 18:04:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4497F2051C;
-	Mon, 26 Aug 2019 15:36:25 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7CE27818B2;
+	Mon, 26 Aug 2019 16:04:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RYXbY-K34Rm7; Mon, 26 Aug 2019 15:36:24 +0000 (UTC)
+	with ESMTP id eiaxBYx2GMxB; Mon, 26 Aug 2019 16:04:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7E47A2075B;
-	Mon, 26 Aug 2019 15:36:22 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D145781CF3;
+	Mon, 26 Aug 2019 16:04:17 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D946C1BF3A8
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A944A1BF3A8
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 26 Aug 2019 15:36:20 +0000 (UTC)
+ Mon, 26 Aug 2019 16:04:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D2D20860C5
+ by hemlock.osuosl.org (Postfix) with ESMTP id A397D8798D
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 26 Aug 2019 15:36:20 +0000 (UTC)
+ Mon, 26 Aug 2019 16:04:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eGs6g1w53-wA
+ with ESMTP id ca6xXgFiQeB0
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 26 Aug 2019 15:36:20 +0000 (UTC)
+ Mon, 26 Aug 2019 16:04:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3DF6D85F98
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D145D8796C
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 26 Aug 2019 15:36:20 +0000 (UTC)
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 6C4E07BDA0
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 26 Aug 2019 15:36:19 +0000 (UTC)
-Received: by mail-qt1-f198.google.com with SMTP id b9so17859967qti.20
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 26 Aug 2019 08:36:19 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:cc:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=NsPv3lFDycYPFFrAHLqtSyRg0z/C2YwzNfJ0P1dX2gc=;
- b=cqpGVLf4rBfdkv9aUh+ad8egU8aZrS0rwNsFMsKpDy2VqDk4AjfMBuEYIkGQhr/OXt
- QyhdTT26sydKENuw5SOWZ8lbxRuRxRKPJ9n4/fVoIZYmL/j4rsIpqx314x7Cxr9XT0Xq
- vrexVmGLXWRNv+MXmFPWJFaU85sLt4unTAMhotZDtyRYY0mYEBPAwi4oI59aPqsyqyZs
- OmwwtfuA+VCX622F3eGJukiKvTuhf8wvz9opX/oMQvgTQaL+oY/rr7Rf7ce9lDaU5EYn
- RxeX2BZPFxPTxaIpBFThHC7rN9Wf3y38XeXM4YfrweD4YeuMLHS/nNS2/x/8WKwEzSUO
- pRsg==
-X-Gm-Message-State: APjAAAWM/AIzFWU6eAVkLfDgbOPnf0rOSt1dRVYwSkSom8iyUxvd04L4
- //vUOhU3nkqGuhsVLarlrzW3tCTIkpkLiOQOgly4XqwYXiWvs265Jt3tboTUN2XFzG3Db8BzgxH
- PgSj8WylL6jFcn+UfZKoFztIJeeZk6+KZ5mNYCw==
-X-Received: by 2002:a05:620a:11a6:: with SMTP id
- c6mr17128396qkk.275.1566833778511; 
- Mon, 26 Aug 2019 08:36:18 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyqa064arUdcae/2FC4w7yM04/VoV1TKXPbjpuvY+se19QxrQ51ZPUVy6e3Y1o9m9O9401D0A==
-X-Received: by 2002:a05:620a:11a6:: with SMTP id
- c6mr17128376qkk.275.1566833778283; 
- Mon, 26 Aug 2019 08:36:18 -0700 (PDT)
-Received: from [192.168.1.157] (pool-96-235-39-235.pitbpa.fios.verizon.net.
- [96.235.39.235])
- by smtp.gmail.com with ESMTPSA id o33sm7159369qtd.72.2019.08.26.08.36.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 26 Aug 2019 08:36:17 -0700 (PDT)
+ Mon, 26 Aug 2019 16:04:14 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 26 Aug 2019 09:04:14 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,433,1559545200"; d="scan'208";a="204630447"
+Received: from alexey-ws.iil.intel.com (HELO [10.189.205.150])
+ ([10.189.205.150])
+ by fmsmga004.fm.intel.com with ESMTP; 26 Aug 2019 09:04:12 -0700
+From: Alexey Skidanov <alexey.skidanov@intel.com>
 Subject: Re: [PATCH] staging: android: ion: cma heap: Limit size of allocated
  buffer
-To: Alexey Skidanov <alexey.skidanov@intel.com>,
- driverdev-devel@linuxdriverproject.org
+To: Laura Abbott <labbott@redhat.com>, driverdev-devel@linuxdriverproject.org
 References: <1566613683-1872-1-git-send-email-alexey.skidanov@intel.com>
-From: Laura Abbott <labbott@redhat.com>
-Message-ID: <af46d441-9648-8508-3989-f19a70f73a26@redhat.com>
-Date: Mon, 26 Aug 2019 11:36:17 -0400
+ <af46d441-9648-8508-3989-f19a70f73a26@redhat.com>
+Message-ID: <5f902bea-f3cd-0d64-0534-582c29dda365@intel.com>
+Date: Mon, 26 Aug 2019 03:55:12 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <1566613683-1872-1-git-send-email-alexey.skidanov@intel.com>
+In-Reply-To: <af46d441-9648-8508-3989-f19a70f73a26@redhat.com>
 Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -99,68 +72,53 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: John Stultz <john.stultz@linaro.org>,
  Sumit Semwal <sumit.semwal@linaro.org>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 8/23/19 10:28 PM, Alexey Skidanov wrote:
-> In ion_cma_heap, the allocated buffer is represented by a single
-> struct scatterlist instance. The length field of this struct is
-> 32 bit, hence the maximal size of requested buffer should be
-> less than 4GB.
-> 
-> The len paramer of the allocation function is 64 bit (on 64 bit systems).
-> Hence the requested size might be greater than 4GB and in this case
-> the field length of the struct scatterlist is initialized incorrectly.
-> 
-> To fix this, we check that requested size may fit into
-> the field length of the struct scatterlist
-> 
-
-Is this a real issue that's actually possible to hit? Allocating
-more than a 4GB region of CMA seems ill advised and likely to
-throw off all the accounting.
-
-> Signed-off-by: Alexey Skidanov <alexey.skidanov@intel.com>
-> ---
->   drivers/staging/android/ion/ion.h          | 5 +++++
->   drivers/staging/android/ion/ion_cma_heap.c | 3 +++
->   2 files changed, 8 insertions(+)
-> 
-> diff --git a/drivers/staging/android/ion/ion.h b/drivers/staging/android/ion/ion.h
-> index e291299..9dd7e20 100644
-> --- a/drivers/staging/android/ion/ion.h
-> +++ b/drivers/staging/android/ion/ion.h
-> @@ -21,6 +21,11 @@
->   
->   #include "../uapi/ion.h"
->   
-> +#define MAX_SCATTERLIST_LEN ({\
-> +		typeof(((struct scatterlist *)0)->length) v;\
-> +		v = -1;\
-> +	})
-> +
->   /**
->    * struct ion_buffer - metadata for a particular buffer
->    * @node:		node in the ion_device buffers tree
-> diff --git a/drivers/staging/android/ion/ion_cma_heap.c b/drivers/staging/android/ion/ion_cma_heap.c
-> index bf65e67..d069719 100644
-> --- a/drivers/staging/android/ion/ion_cma_heap.c
-> +++ b/drivers/staging/android/ion/ion_cma_heap.c
-> @@ -36,6 +36,9 @@ static int ion_cma_allocate(struct ion_heap *heap, struct ion_buffer *buffer,
->   	unsigned long align = get_order(size);
->   	int ret;
->   
-> +	if (size > MAX_SCATTERLIST_LEN)
-> +		return -EINVAL;
-> +
->   	if (align > CONFIG_CMA_ALIGNMENT)
->   		align = CONFIG_CMA_ALIGNMENT;
->   
-> 
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+Ck9uIDgvMjYvMTkgMTE6MzYgQU0sIExhdXJhIEFiYm90dCB3cm90ZToKPiBPbiA4LzIzLzE5IDEw
+OjI4IFBNLCBBbGV4ZXkgU2tpZGFub3Ygd3JvdGU6Cj4+IEluIGlvbl9jbWFfaGVhcCwgdGhlIGFs
+bG9jYXRlZCBidWZmZXIgaXMgcmVwcmVzZW50ZWQgYnkgYSBzaW5nbGUKPj4gc3RydWN0IHNjYXR0
+ZXJsaXN0IGluc3RhbmNlLiBUaGUgbGVuZ3RoIGZpZWxkIG9mIHRoaXMgc3RydWN0IGlzCj4+IDMy
+IGJpdCwgaGVuY2UgdGhlIG1heGltYWwgc2l6ZSBvZiByZXF1ZXN0ZWQgYnVmZmVyIHNob3VsZCBi
+ZQo+PiBsZXNzIHRoYW4gNEdCLgo+Pgo+PiBUaGUgbGVuIHBhcmFtZXIgb2YgdGhlIGFsbG9jYXRp
+b24gZnVuY3Rpb24gaXMgNjQgYml0IChvbiA2NCBiaXQgc3lzdGVtcykuCj4+IEhlbmNlIHRoZSBy
+ZXF1ZXN0ZWQgc2l6ZSBtaWdodCBiZSBncmVhdGVyIHRoYW4gNEdCIGFuZCBpbiB0aGlzIGNhc2UK
+Pj4gdGhlIGZpZWxkIGxlbmd0aCBvZiB0aGUgc3RydWN0IHNjYXR0ZXJsaXN0IGlzIGluaXRpYWxp
+emVkIGluY29ycmVjdGx5Lgo+Pgo+PiBUbyBmaXggdGhpcywgd2UgY2hlY2sgdGhhdCByZXF1ZXN0
+ZWQgc2l6ZSBtYXkgZml0IGludG8KPj4gdGhlIGZpZWxkIGxlbmd0aCBvZiB0aGUgc3RydWN0IHNj
+YXR0ZXJsaXN0Cj4+Cj4KPiBJcyB0aGlzIGEgcmVhbCBpc3N1ZSB0aGF0J3MgYWN0dWFsbHkgcG9z
+c2libGUgdG8gaGl0PyBBbGxvY2F0aW5nCj4gbW9yZSB0aGFuIGEgNEdCIHJlZ2lvbiBvZiBDTUEg
+c2VlbXMgaWxsIGFkdmlzZWQgYW5kIGxpa2VseSB0bwo+IHRocm93IG9mZiBhbGwgdGhlIGFjY291
+bnRpbmcuCj4KWWVzLiBOb3Qgc3VyZSB3aHkgaXQgc2VlbXMgaWxsIGFkdmlzZWQgLSBtb3N0IG9m
+IHRoZSBidWZmZXJzIGFyZSBzbWFsbCBvciBtaWRkbGUgc2l6ZSBvbmVzLCBidXQgc29tZXRpbWVz
+IHJlYWxseSBodWdlIG9uZSBpcyByZXF1ZXN0ZWQuCgo+PiBTaWduZWQtb2ZmLWJ5OiBBbGV4ZXkg
+U2tpZGFub3YgPGFsZXhleS5za2lkYW5vdkBpbnRlbC5jb20+Cj4+IC0tLQo+PiDCoCBkcml2ZXJz
+L3N0YWdpbmcvYW5kcm9pZC9pb24vaW9uLmjCoMKgwqDCoMKgwqDCoMKgwqAgfCA1ICsrKysrCj4+
+IMKgIGRyaXZlcnMvc3RhZ2luZy9hbmRyb2lkL2lvbi9pb25fY21hX2hlYXAuYyB8IDMgKysrCj4+
+IMKgIDIgZmlsZXMgY2hhbmdlZCwgOCBpbnNlcnRpb25zKCspCj4+Cj4+IGRpZmYgLS1naXQgYS9k
+cml2ZXJzL3N0YWdpbmcvYW5kcm9pZC9pb24vaW9uLmggYi9kcml2ZXJzL3N0YWdpbmcvYW5kcm9p
+ZC9pb24vaW9uLmgKPj4gaW5kZXggZTI5MTI5OS4uOWRkN2UyMCAxMDA2NDQKPj4gLS0tIGEvZHJp
+dmVycy9zdGFnaW5nL2FuZHJvaWQvaW9uL2lvbi5oCj4+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9h
+bmRyb2lkL2lvbi9pb24uaAo+PiBAQCAtMjEsNiArMjEsMTEgQEAKPj4gwqAgwqAgI2luY2x1ZGUg
+Ii4uL3VhcGkvaW9uLmgiCj4+IMKgICsjZGVmaW5lIE1BWF9TQ0FUVEVSTElTVF9MRU4gKHtcCj4+
+ICvCoMKgwqDCoMKgwqDCoCB0eXBlb2YoKChzdHJ1Y3Qgc2NhdHRlcmxpc3QgKikwKS0+bGVuZ3Ro
+KSB2O1wKPj4gK8KgwqDCoMKgwqDCoMKgIHYgPSAtMTtcCj4+ICvCoMKgwqAgfSkKPj4gKwo+PiDC
+oCAvKioKPj4gwqDCoCAqIHN0cnVjdCBpb25fYnVmZmVyIC0gbWV0YWRhdGEgZm9yIGEgcGFydGlj
+dWxhciBidWZmZXIKPj4gwqDCoCAqIEBub2RlOsKgwqDCoMKgwqDCoMKgIG5vZGUgaW4gdGhlIGlv
+bl9kZXZpY2UgYnVmZmVycyB0cmVlCj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvYW5k
+cm9pZC9pb24vaW9uX2NtYV9oZWFwLmMgYi9kcml2ZXJzL3N0YWdpbmcvYW5kcm9pZC9pb24vaW9u
+X2NtYV9oZWFwLmMKPj4gaW5kZXggYmY2NWU2Ny4uZDA2OTcxOSAxMDA2NDQKPj4gLS0tIGEvZHJp
+dmVycy9zdGFnaW5nL2FuZHJvaWQvaW9uL2lvbl9jbWFfaGVhcC5jCj4+ICsrKyBiL2RyaXZlcnMv
+c3RhZ2luZy9hbmRyb2lkL2lvbi9pb25fY21hX2hlYXAuYwo+PiBAQCAtMzYsNiArMzYsOSBAQCBz
+dGF0aWMgaW50IGlvbl9jbWFfYWxsb2NhdGUoc3RydWN0IGlvbl9oZWFwICpoZWFwLCBzdHJ1Y3Qg
+aW9uX2J1ZmZlciAqYnVmZmVyLAo+PiDCoMKgwqDCoMKgIHVuc2lnbmVkIGxvbmcgYWxpZ24gPSBn
+ZXRfb3JkZXIoc2l6ZSk7Cj4+IMKgwqDCoMKgwqAgaW50IHJldDsKPj4gwqAgK8KgwqDCoCBpZiAo
+c2l6ZSA+IE1BWF9TQ0FUVEVSTElTVF9MRU4pCj4+ICvCoMKgwqDCoMKgwqDCoCByZXR1cm4gLUVJ
+TlZBTDsKPj4gKwo+PiDCoMKgwqDCoMKgIGlmIChhbGlnbiA+IENPTkZJR19DTUFfQUxJR05NRU5U
+KQo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgYWxpZ24gPSBDT05GSUdfQ01BX0FMSUdOTUVOVDsKPj4g
+wqAKPgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZl
+bCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVy
+ZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2
+ZWwK
