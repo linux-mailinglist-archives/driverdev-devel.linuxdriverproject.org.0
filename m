@@ -1,39 +1,44 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5D5A69EF7F
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D09659EF80
 	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Aug 2019 17:57:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DD643884ED;
-	Tue, 27 Aug 2019 15:57:27 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fvhfX+8c2PLY; Tue, 27 Aug 2019 15:57:27 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 66B7D884D2;
-	Tue, 27 Aug 2019 15:57:27 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A50251BF576
- for <devel@linuxdriverproject.org>; Tue, 27 Aug 2019 15:57:24 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id A1256230F6
- for <devel@linuxdriverproject.org>; Tue, 27 Aug 2019 15:57:24 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 233BC23100;
+	Tue, 27 Aug 2019 15:57:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id mihHm-I7P-GD; Tue, 27 Aug 2019 15:57:27 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 8FC4C230FE;
+	Tue, 27 Aug 2019 15:57:26 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 71F681BF576
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 27 Aug 2019 15:57:24 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6E900868D0
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 27 Aug 2019 15:57:24 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WeW505hQX411 for <devel@linuxdriverproject.org>;
+ with ESMTP id zMdvKCAFaQCf
+ for <driverdev-devel@linuxdriverproject.org>;
  Tue, 27 Aug 2019 15:57:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
- [209.85.221.66])
- by silver.osuosl.org (Postfix) with ESMTPS id B9F152305A
- for <devel@driverdev.osuosl.org>; Tue, 27 Aug 2019 15:57:23 +0000 (UTC)
-Received: by mail-wr1-f66.google.com with SMTP id t16so19356425wra.6
- for <devel@driverdev.osuosl.org>; Tue, 27 Aug 2019 08:57:23 -0700 (PDT)
+Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
+ [209.85.221.68])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id BA602866C4
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 27 Aug 2019 15:57:23 +0000 (UTC)
+Received: by mail-wr1-f68.google.com with SMTP id u16so19365853wrr.0
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 27 Aug 2019 08:57:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=references:user-agent:from:to:cc:subject:in-reply-to:date
  :message-id:mime-version;
@@ -49,14 +54,14 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  h=x-gm-message-state:references:user-agent:from:to:cc:subject
  :in-reply-to:date:message-id:mime-version;
  bh=H1torqY/P3gtGJ+ugePzQCECcZOx2AhSiXCBn05NB9k=;
- b=azzh8BLiLX1o+tJUfeaJCd91BBJrvTGF2tGVvJmg8EDWSTttL3tGjhijCYr472I67D
- YcfHXtGdkcR+4UOFqcYuf309QUMyrISngj9tKrdDVMtSo0b3ComxjgljzB4K64Ta0aDR
- mtD3pFEphwegDphm67HQ8KkBTW2PzzJqNXM5sqLU39a64vbt+hl4s66ZnLQ6zYuQWvlG
- bpyR0nGb1FWeMbLgrT46+0Vg2yJ8Ah9SUwrYOHsJEzie6aYwX7GtffAqpIoqxL0u+PEn
- WYn601rwysTWE3Tb5g3LPo131C5fFeE+0vp5HnWq15sEPmUU9hMvsq8LX3sTCmLLhhrU
- /QBw==
-X-Gm-Message-State: APjAAAVQmUrlQElt7KF7vKX99KTmN+rA7ls21CTCXyIo06HNlepG8Pe3
- puKTxH+72GtqdSkro+LwASc=
+ b=QXOncydgQxh1poSRxIv+tHp0zkbcDpbjvJo5GEF/Cp8hgsaLJyKCKnlgkAxwWfNbmQ
+ Uyeazv3EXk8xtso5e5Yu8isWE/PNHsBoIclNSIN0YleF29U9IkpJHKeSETUqyuGgBJE4
+ 82xZV4a+iSKoEmelkpFxAyYLgxkIvNHDdNwnXlg6S6UCe48ncq71adyCUXYhfvbo5cdC
+ lcgifXYCwZ8e46vQvX1M50+PRrscpDMCS/7LAn6v6ZE6nO+FPF90nHhoRKSEer/OaUvB
+ 50BlbWoK4PqmxdZz1mHHQGO8HZOp5w8apOqAeNT+wjWWzuRqd7kxwayGH+NNAkeDpPZ5
+ OJ2w==
+X-Gm-Message-State: APjAAAVxWDjk6tGW1ZhR9QT4EeI04dvHHsQ8aiysRL67kMtnH2m0jG9s
+ creRyBhB+Yen0IVuLgYw1Y8=
 X-Google-Smtp-Source: APXvYqw1eVmS+SjnJwtinntp3LdrJ8JbR6zDEg86MR8gxyYXhMoa2ggTGXf8z78qW/ip4Bnmb32bsw==
 X-Received: by 2002:a5d:6742:: with SMTP id l2mr29732445wrw.70.1566921442215; 
  Tue, 27 Aug 2019 08:57:22 -0700 (PDT)
