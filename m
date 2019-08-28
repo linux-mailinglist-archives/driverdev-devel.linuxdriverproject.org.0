@@ -2,73 +2,74 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 89E4AA0B33
-	for <lists+driverdev-devel@lfdr.de>; Wed, 28 Aug 2019 22:20:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7E017A0BB9
+	for <lists+driverdev-devel@lfdr.de>; Wed, 28 Aug 2019 22:43:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9E3B188C2F;
-	Wed, 28 Aug 2019 20:20:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D748B88C09;
+	Wed, 28 Aug 2019 20:42:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IONU1DWJv8cX; Wed, 28 Aug 2019 20:20:14 +0000 (UTC)
+	with ESMTP id 2HmOyVynF+b8; Wed, 28 Aug 2019 20:42:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 08FD388C07;
-	Wed, 28 Aug 2019 20:20:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9C789886AF;
+	Wed, 28 Aug 2019 20:42:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 74C521BF4E2
- for <devel@linuxdriverproject.org>; Wed, 28 Aug 2019 20:20:12 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 118CC1BF4E2
+ for <devel@linuxdriverproject.org>; Wed, 28 Aug 2019 20:42:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7134688BC7
- for <devel@linuxdriverproject.org>; Wed, 28 Aug 2019 20:20:12 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 0E4C620487
+ for <devel@linuxdriverproject.org>; Wed, 28 Aug 2019 20:42:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CpwQ0907w2wv for <devel@linuxdriverproject.org>;
- Wed, 28 Aug 2019 20:20:11 +0000 (UTC)
+ with ESMTP id hRU0hOPjvRn2 for <devel@linuxdriverproject.org>;
+ Wed, 28 Aug 2019 20:42:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f67.google.com (mail-ot1-f67.google.com
- [209.85.210.67])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 85E4C88915
- for <devel@driverdev.osuosl.org>; Wed, 28 Aug 2019 20:20:11 +0000 (UTC)
-Received: by mail-ot1-f67.google.com with SMTP id f17so1138949otq.4
- for <devel@driverdev.osuosl.org>; Wed, 28 Aug 2019 13:20:11 -0700 (PDT)
+Received: from mail-ot1-f68.google.com (mail-ot1-f68.google.com
+ [209.85.210.68])
+ by silver.osuosl.org (Postfix) with ESMTPS id D49B420482
+ for <devel@driverdev.osuosl.org>; Wed, 28 Aug 2019 20:42:54 +0000 (UTC)
+Received: by mail-ot1-f68.google.com with SMTP id w4so1153834ote.11
+ for <devel@driverdev.osuosl.org>; Wed, 28 Aug 2019 13:42:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=kZdApXr7HqxlwdsIqx7JRjNU5L47bfzu9+cVzi/wilM=;
- b=EdWzyAPkTBY+vrZQocH789fQ4t/os1Ygvj5020ZxvjsaGWulSsQKv4dLOVKJCxzZP2
- Z8lWs32NbYkVz+PGG4WfdPBjqonhDt68G+kJxW/HkHFOW47ehkZIfD5vABTKm9ldu6db
- LxIng0pHRkH7V5H80+7305Q6OQYWunXLgdq1dFsOfM0uHA3YELY90GNWLVAD1fCDpje6
- ad7Q4N/pw94HH5Xj83Q3jOELs45m9eDpN6MQeG2wCF2fFqnoi+jpKopfFDWgD3p0XbDj
- zYNCDbMtGArHytv8s/99XSmutHVNdhioB0Vb2ZRfhj82mSw8RGL7R2NOHNo+bykJpIYJ
- kUNg==
+ :cc; bh=gyXGeGM3qNFrB5NaUrrtvt6KfxMRkmPmPa7zh7Lf/Ws=;
+ b=a9LWQsxVfm6q156CbfV6/AA8rNqpUHcDWtN7LJ05uIdu6lelSnWM/l5JALpLmF6SKj
+ bGz8NqfVAHgIhYlIUFMImNUhFxzHE5TfQ7//B/9iq2tEBDlJAblaAq1G4cW9bqTvHryo
+ 7cukJbsO3AhEt2Lt3zmPAyxc7EBMlxjgFBy1ItRx/ipdrnC6dPnOLpy2PgkhF8ExUjyU
+ LP0HACfxuBtreGtMkdTCWfAZyVOb5iT49oq583JsDyXuxY/HuQWsoogGK4qoUmbEZ1TL
+ H9nfiepJfXRZfSRns7XTV4GC+dnaM98FoQ7qBhSEPxfFNT4fOqmTYfVZzulK2gkGY/Nd
+ xuUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=kZdApXr7HqxlwdsIqx7JRjNU5L47bfzu9+cVzi/wilM=;
- b=gz4SYgqHFPh3m1eD1PTUx7jljVulOxk/KoxiudVoauqx/10sIxyyBp43bjMBFafimz
- WswWo/znIg8wkQ4od+X6c+TtAM3CxcaD8sHsyLEPAGIIXXJTDygWo6RPnEo6B/2XuxdQ
- 1NCeHx0dh+lXGLDGM8dBYZtFHaBDB/ioVLIYWVHPFUO0WvTmSQR6MtSeKo208V6XqlC1
- qkSzxam36bldRC2syF3FR4W5lGRW81o8eR0R/j7HfWn1+a2MMFY7Smb+FShWV4ZuNnCU
- D+X91jZgfmJ/1iuwdM1kOCfuwFzZV444Ls7XKX0EqXpw6Uofu0K+iP4OCC8GLXcOiaOL
- fi7w==
-X-Gm-Message-State: APjAAAXVklkcdv+7Qz/ooDjtOaXWnpuAPT3RT3SEVFuQmY25HcqSyVll
- +C1+0kVXLskpTjqpO7wkK6HVgjQI8tdvs8t1d9edfA==
-X-Google-Smtp-Source: APXvYqzpRwBDr5k3lHA1Fn4+aNQ2cSnP2tDWjnyZhpbILqeveLlypdbb6aa2cI5016dpfZeIdMTWDY+la2UgntTulo4=
-X-Received: by 2002:a9d:4817:: with SMTP id c23mr4529909otf.97.1567023610275; 
- Wed, 28 Aug 2019 13:20:10 -0700 (PDT)
+ bh=gyXGeGM3qNFrB5NaUrrtvt6KfxMRkmPmPa7zh7Lf/Ws=;
+ b=ay+PpjfNs5rby0cPVA9VpBabsoXGuJypt3YNL9WP2TanH5M5DCJ1kmxBpjXNXFoook
+ KpdMpEeVBUPZvzu4Ok1/vtw1VVF+9OuX6a9URCs7awMT4BHwG1ca6ZTgi48ZTLVtR9+7
+ p/QCOSgWsZsEJeFbPhReOSB0+7RTGRFg9XSnSZ5jbhJeZ1YcU+e9QepjZMw1czT1CAnc
+ usnAuz1VPsZzndGaE6E71lWlwf1KZ1qq4kQL4kCdixTzcs8j+SAZxYRxcjYIkmlWokYG
+ mshaXiwnCuGgjfXnIFU8T1Rm78m7k/ayBCsnlOjZGf9nxzO9I2r6Ibm2df1LC6VyMntN
+ yl4w==
+X-Gm-Message-State: APjAAAWMwf5skuIdIx59vFprjcsEzFms7mmC/NY9/ObByVrsJ6omHdRe
+ vtAspIdeJcWxvir4/hXRceXVw3nSCBBfWc6efdmQdA==
+X-Google-Smtp-Source: APXvYqwZYnf+72BEPbxaq/j3biRONIoTPQdoZMBdfJ8oeckRqbO07vVfI+WCzSYnYEbDCEPZNAwBVtZyZLWQjvysFII=
+X-Received: by 2002:a9d:3b3:: with SMTP id f48mr5004135otf.35.1567024973722;
+ Wed, 28 Aug 2019 13:42:53 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190827204152.114609-1-hridya@google.com>
- <20190827204152.114609-3-hridya@google.com>
- <20190828125816.cexbvn2dqy6to3ww@wittgenstein>
-In-Reply-To: <20190828125816.cexbvn2dqy6to3ww@wittgenstein>
+ <20190827204152.114609-5-hridya@google.com>
+ <20190828130759.4b4gtzf2jpi5c46y@wittgenstein>
+ <CAHRSSEw3Z6Wg1dsXmJei-o=FRj1U0Ys9_WHRbB4KTCCwjntjeQ@mail.gmail.com>
+In-Reply-To: <CAHRSSEw3Z6Wg1dsXmJei-o=FRj1U0Ys9_WHRbB4KTCCwjntjeQ@mail.gmail.com>
 From: Hridya Valsaraju <hridya@google.com>
-Date: Wed, 28 Aug 2019 13:19:33 -0700
-Message-ID: <CA+wgaPNkPgo64H6ZyFPCP_1BFSt1ZPQqBFk701a=W9O4H9BB-Q@mail.gmail.com>
-Subject: Re: [PATCH 2/4] binder: Add stats, state and transactions files
-To: Christian Brauner <christian.brauner@ubuntu.com>
+Date: Wed, 28 Aug 2019 13:42:17 -0700
+Message-ID: <CA+wgaPOSkzkQyYwgXMwZxwNadqNR7z3wibABG=6wRtQ4spbeWA@mail.gmail.com>
+Subject: Re: [PATCH 4/4] binder: Add binder_proc logging to binderfs
+To: Todd Kjos <tkjos@google.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,332 +82,340 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, kernel-team@android.com,
- Todd Kjos <tkjos@android.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org,
+Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
+ Android Kernel Team <kernel-team@android.com>, Todd Kjos <tkjos@android.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ LKML <linux-kernel@vger.kernel.org>,
  =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
- Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>
+ Joel Fernandes <joel@joelfernandes.org>,
+ Christian Brauner <christian.brauner@ubuntu.com>,
+ Martijn Coenen <maco@android.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Aug 28, 2019 at 5:58 AM Christian Brauner
-<christian.brauner@ubuntu.com> wrote:
+On Wed, Aug 28, 2019 at 9:21 AM Todd Kjos <tkjos@google.com> wrote:
 >
-> On Tue, Aug 27, 2019 at 01:41:50PM -0700, Hridya Valsaraju wrote:
-> > The following binder stat files currently live in debugfs.
+> On Wed, Aug 28, 2019 at 6:08 AM Christian Brauner
+> <christian.brauner@ubuntu.com> wrote:
 > >
-> > /sys/kernel/debug/binder/state
-> > /sys/kernel/debug/binder/stats
-> > /sys/kernel/debug/binder/transactions
+> > On Tue, Aug 27, 2019 at 01:41:52PM -0700, Hridya Valsaraju wrote:
+> > > Currently /sys/kernel/debug/binder/proc contains
+> > > the debug data for every binder_proc instance.
+> > > This patch makes this information also available
+> > > in a binderfs instance mounted with a mount option
+> > > "stats=global" in addition to debugfs. The patch does
+> > > not affect the presence of the file in debugfs.
+> > >
+> > > If a binderfs instance is mounted at path /dev/binderfs,
+> > > this file would be present at /dev/binderfs/binder_logs/proc.
+> > > This change provides an alternate way to access this file when debugfs
+> > > is not mounted.
+> > >
+> > > Signed-off-by: Hridya Valsaraju <hridya@google.com>
 > >
-> > This patch makes these files available in a binderfs instance
-> > mounted with the mount option 'stats=global'. For example, if a binderfs
-> > instance is mounted at path /dev/binderfs, the above files will be
-> > available at the following locations:
+> > I'm still wondering whether there's a nicer way to create those debuf
+> > files per-process without doing it in binder_open() but it has worked
+> > fine for a long time with debugfs.
 > >
-> > /dev/binderfs/binder_logs/state
-> > /dev/binderfs/binder_logs/stats
-> > /dev/binderfs/binder_logs/transactions
+> > Also, one minor question below. Otherwise
 > >
-> > This provides a way to access them even when debugfs is not mounted.
-> >
-> > Signed-off-by: Hridya Valsaraju <hridya@google.com>
-> > ---
-> >  drivers/android/binder.c          |  15 ++--
-> >  drivers/android/binder_internal.h |   8 ++
-> >  drivers/android/binderfs.c        | 137 +++++++++++++++++++++++++++++-
-> >  3 files changed, 150 insertions(+), 10 deletions(-)
-> >
-> > diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-> > index ca6b21a53321..de795bd229c4 100644
-> > --- a/drivers/android/binder.c
-> > +++ b/drivers/android/binder.c
-> > @@ -6055,7 +6055,7 @@ static void print_binder_proc_stats(struct seq_file *m,
-> >  }
-> >
-> >
-> > -static int state_show(struct seq_file *m, void *unused)
-> > +int binder_state_show(struct seq_file *m, void *unused)
-> >  {
-> >       struct binder_proc *proc;
-> >       struct binder_node *node;
-> > @@ -6094,7 +6094,7 @@ static int state_show(struct seq_file *m, void *unused)
-> >       return 0;
-> >  }
-> >
-> > -static int stats_show(struct seq_file *m, void *unused)
-> > +int binder_stats_show(struct seq_file *m, void *unused)
-> >  {
-> >       struct binder_proc *proc;
-> >
-> > @@ -6110,7 +6110,7 @@ static int stats_show(struct seq_file *m, void *unused)
-> >       return 0;
-> >  }
-> >
-> > -static int transactions_show(struct seq_file *m, void *unused)
-> > +int binder_transactions_show(struct seq_file *m, void *unused)
-> >  {
-> >       struct binder_proc *proc;
-> >
-> > @@ -6198,9 +6198,6 @@ const struct file_operations binder_fops = {
-> >       .release = binder_release,
-> >  };
-> >
-> > -DEFINE_SHOW_ATTRIBUTE(state);
-> > -DEFINE_SHOW_ATTRIBUTE(stats);
-> > -DEFINE_SHOW_ATTRIBUTE(transactions);
-> >  DEFINE_SHOW_ATTRIBUTE(transaction_log);
-> >
-> >  static int __init init_binder_device(const char *name)
-> > @@ -6256,17 +6253,17 @@ static int __init binder_init(void)
-> >                                   0444,
-> >                                   binder_debugfs_dir_entry_root,
-> >                                   NULL,
-> > -                                 &state_fops);
-> > +                                 &binder_state_fops);
-> >               debugfs_create_file("stats",
-> >                                   0444,
-> >                                   binder_debugfs_dir_entry_root,
-> >                                   NULL,
-> > -                                 &stats_fops);
-> > +                                 &binder_stats_fops);
-> >               debugfs_create_file("transactions",
-> >                                   0444,
-> >                                   binder_debugfs_dir_entry_root,
-> >                                   NULL,
-> > -                                 &transactions_fops);
-> > +                                 &binder_transactions_fops);
-> >               debugfs_create_file("transaction_log",
-> >                                   0444,
-> >                                   binder_debugfs_dir_entry_root,
-> > diff --git a/drivers/android/binder_internal.h b/drivers/android/binder_internal.h
-> > index fe8c745dc8e0..12ef96f256c6 100644
-> > --- a/drivers/android/binder_internal.h
-> > +++ b/drivers/android/binder_internal.h
-> > @@ -57,4 +57,12 @@ static inline int __init init_binderfs(void)
-> >  }
-> >  #endif
-> >
-> > +int binder_stats_show(struct seq_file *m, void *unused);
-> > +DEFINE_SHOW_ATTRIBUTE(binder_stats);
-> > +
-> > +int binder_state_show(struct seq_file *m, void *unused);
-> > +DEFINE_SHOW_ATTRIBUTE(binder_state);
-> > +
-> > +int binder_transactions_show(struct seq_file *m, void *unused);
-> > +DEFINE_SHOW_ATTRIBUTE(binder_transactions);
-> >  #endif /* _LINUX_BINDER_INTERNAL_H */
-> > diff --git a/drivers/android/binderfs.c b/drivers/android/binderfs.c
-> > index d95d179aec58..d542f9b8d8ab 100644
-> > --- a/drivers/android/binderfs.c
-> > +++ b/drivers/android/binderfs.c
-> > @@ -280,7 +280,7 @@ static void binderfs_evict_inode(struct inode *inode)
-> >
-> >       clear_inode(inode);
-> >
-> > -     if (!device)
-> > +     if (!device || S_ISREG(inode->i_mode))
+> > Acked-by: Christian Brauner <christian.brauner@ubuntu.com>
 >
-> Hm, remind me why we need the S_ISREG again?
+> Acked-by: Todd Kjos <tkjos@google.com>
+>
+> >
+> > > ---
+> > >  drivers/android/binder.c          | 38 ++++++++++++++++++-
+> > >  drivers/android/binder_internal.h | 46 ++++++++++++++++++++++
+> > >  drivers/android/binderfs.c        | 63 ++++++++++++++-----------------
+> > >  3 files changed, 111 insertions(+), 36 deletions(-)
+> > >
+> > > diff --git a/drivers/android/binder.c b/drivers/android/binder.c
+> > > index bed217310197..37189838f32a 100644
+> > > --- a/drivers/android/binder.c
+> > > +++ b/drivers/android/binder.c
+> > > @@ -481,6 +481,7 @@ struct binder_priority {
+> > >   * @inner_lock:           can nest under outer_lock and/or node lock
+> > >   * @outer_lock:           no nesting under innor or node lock
+> > >   *                        Lock order: 1) outer, 2) node, 3) inner
+> > > + * @binderfs_entry:       process-specific binderfs log file
+> > >   *
+> > >   * Bookkeeping structure for binder processes
+> > >   */
+> > > @@ -510,6 +511,7 @@ struct binder_proc {
+> > >       struct binder_context *context;
+> > >       spinlock_t inner_lock;
+> > >       spinlock_t outer_lock;
+> > > +     struct dentry *binderfs_entry;
+> > >  };
+> > >
+> > >  enum {
+> > > @@ -5347,6 +5349,8 @@ static int binder_open(struct inode *nodp, struct file *filp)
+> > >  {
+> > >       struct binder_proc *proc;
+> > >       struct binder_device *binder_dev;
+> > > +     struct binderfs_info *info;
+> > > +     struct dentry *binder_binderfs_dir_entry_proc = NULL;
+> > >
+> > >       binder_debug(BINDER_DEBUG_OPEN_CLOSE, "%s: %d:%d\n", __func__,
+> > >                    current->group_leader->pid, current->pid);
+> > > @@ -5368,11 +5372,14 @@ static int binder_open(struct inode *nodp, struct file *filp)
+> > >       }
+> > >
+> > >       /* binderfs stashes devices in i_private */
+> > > -     if (is_binderfs_device(nodp))
+> > > +     if (is_binderfs_device(nodp)) {
+> > >               binder_dev = nodp->i_private;
+> > > -     else
+> > > +             info = nodp->i_sb->s_fs_info;
+> > > +             binder_binderfs_dir_entry_proc = info->proc_log_dir;
+> > > +     } else {
+> > >               binder_dev = container_of(filp->private_data,
+> > >                                         struct binder_device, miscdev);
+> > > +     }
+> > >       proc->context = &binder_dev->context;
+> > >       binder_alloc_init(&proc->alloc);
+> > >
+> > > @@ -5403,6 +5410,27 @@ static int binder_open(struct inode *nodp, struct file *filp)
+> > >                       &proc_fops);
+> > >       }
+> > >
+> > > +     if (binder_binderfs_dir_entry_proc) {
+> > > +             char strbuf[11];
+> > > +             struct dentry *binderfs_entry;
+> > > +
+> > > +             snprintf(strbuf, sizeof(strbuf), "%u", proc->pid);
+> > > +             /*
+> > > +              * Similar to debugfs, the process specific log file is shared
+> > > +              * between contexts. If the file has already been created for a
+> > > +              * process, the following binderfs_create_file() call will
+> > > +              * fail if another context of the same process invoked
+> > > +              * binder_open(). This is ok since same as debugfs,
+> > > +              * the log file will contain information on all contexts of a
+> > > +              * given PID.
+> > > +              */
+> > > +             binderfs_entry = binderfs_create_file(binder_binderfs_dir_entry_proc,
+> > > +                     strbuf, &proc_fops, (void *)(unsigned long)proc->pid);
+> > > +             if (!IS_ERR(binderfs_entry))
+> > > +                     proc->binderfs_entry = binderfs_entry;
+> >
+> > You are sure that you don't want to fail the open, when the debug file
+> > cannot be created in the binderfs instance? I'm not objecting at all, I
+> > just want to make sure that this is the semantics you want because it
+> > would be easy to differentiate between the non-fail-debugfs and the new
+> > binderfs case.
+>
+> I don't think we should fail the open, but it would be nice to have
+> some indication that it failed -- maybe a pr_warn() ?
 
-Thanks for taking a look Christian! We need the additional check
-because for some of the stat files(for example, the transaction log
-file in patch 3/5), the binder driver uses the i_private field of its
-inode to stash some data that will be used for content generation when
-the file is opened.
+Thanks for taking a look Christian and Todd! The reason I do not fail
+binder_open() on an error here is because once the file has been
+created for a process, if the same process invokes binder_open() again
+from a different context, the binderfs_create_file() call would fail
+with the EEXIST error code. This is expected behaviour since the log
+file is shared between all contexts of a process(same as the behaviour
+of the file in debugfs today). I can add a pr_warn() statement in v2
+as Todd suggested so that the failure would be logged.
 
-> Also we probably should do:
->
-> if (S_ISREG(inode->i_mode) || !device)
->
-> should this maybe be:
->
-> if (!S_ISCHR(inode->i_mode) || !device)
->
-> ?
-
-Sounds good to me, will make the change in v2!
-
->
-> >               return;
 > >
-> >       mutex_lock(&binderfs_minors_mutex);
-> > @@ -504,6 +504,138 @@ static const struct inode_operations binderfs_dir_inode_operations = {
-> >       .unlink = binderfs_unlink,
-> >  };
-> >
-> > +static struct inode *binderfs_make_inode(struct super_block *sb, int mode)
-> > +{
-> > +     struct inode *ret;
-> > +
-> > +     ret = new_inode(sb);
-> > +     if (ret) {
-> > +             ret->i_ino = iunique(sb, BINDERFS_MAX_MINOR + INODE_OFFSET);
-> > +             ret->i_mode = mode;
-> > +             ret->i_atime = ret->i_mtime = ret->i_ctime = current_time(ret);
-> > +     }
-> > +     return ret;
-> > +}
-> > +
-> > +static struct dentry *binderfs_create_dentry(struct dentry *dir,
-> > +                                          const char *name)
-> > +{
-> > +     struct dentry *dentry;
-> > +
-> > +     dentry = lookup_one_len(name, dir, strlen(name));
-> > +     if (IS_ERR(dentry))
-> > +             return dentry;
-> > +
-> > +     /* Return error if the file/dir already exists. */
-> > +     if (d_really_is_positive(dentry)) {
-> > +             dput(dentry);
-> > +             return ERR_PTR(-EEXIST);
-> > +     }
-> > +
-> > +     return dentry;
-> > +}
-> > +
-> > +static struct dentry *binderfs_create_file(struct dentry *dir, const char *name,
-> > +                                 const struct file_operations *fops,
-> > +                                 void *data)
-> > +{
-> > +     struct dentry *dentry;
-> > +     struct inode *new_inode, *dir_inode;
-> > +     struct super_block *sb;
-> > +
-> > +     dir_inode = dir->d_inode;
-> > +     inode_lock(dir_inode);
-> > +
-> > +     dentry = binderfs_create_dentry(dir, name);
-> > +     if (IS_ERR(dentry))
-> > +             goto out;
-> > +
-> > +     sb = dir_inode->i_sb;
-> > +     new_inode = binderfs_make_inode(sb, S_IFREG | 0444);
-> > +     if (!new_inode) {
-> > +             dput(dentry);
-> > +             dentry = ERR_PTR(-ENOMEM);
-> > +             goto out;
-> > +     }
-> > +
-> > +     new_inode->i_fop = fops;
-> > +     new_inode->i_private = data;
-> > +     d_instantiate(dentry, new_inode);
-> > +     fsnotify_create(dir_inode, dentry);
-> > +
-> > +out:
-> > +     inode_unlock(dir_inode);
-> > +     return dentry;
-> > +}
-> > +
-> > +static struct dentry *binderfs_create_dir(struct dentry *parent,
-> > +                                       const char *name)
-> > +{
-> > +     struct dentry *dentry;
-> > +     struct inode *new_inode, *parent_inode;
-> > +     struct super_block *sb;
-> > +
-> > +     parent_inode = d_inode(parent);
->
-> For consistency, could you use the same variable name for the directory
-> in which you create a new dentry? I don't care if its "dir_inode" like
-> above or "parent_inode".
-
-Makes sense, will make the change in v2.
-
->
-> > +     inode_lock(parent_inode);
-> > +
-> > +     dentry = binderfs_create_dentry(parent, name);
-> > +     if (IS_ERR(dentry))
-> > +             goto out;
-> > +
-> > +     sb = parent_inode->i_sb;
-> > +     new_inode = binderfs_make_inode(sb, S_IFDIR | 0755);
-> > +     if (!new_inode) {
-> > +             dput(dentry);
-> > +             dentry = ERR_PTR(-ENOMEM);
-> > +             goto out;
-> > +     }
-> > +
-> > +     new_inode->i_fop = &simple_dir_operations;
-> > +     new_inode->i_op = &simple_dir_inode_operations;
-> > +
-> > +     inc_nlink(new_inode);
-> > +     d_instantiate(dentry, new_inode);
-> > +     inc_nlink(parent_inode);
-> > +     fsnotify_mkdir(parent_inode, dentry);
-> > +out:
->
-> For consistency please leave a \n after fsnotify_mkdir and the goto
-> label like you did in the function above.
-
-Agreed, will fix in v2.
-
->
-> > +     inode_unlock(parent_inode);
-> > +     return dentry;
-> > +}
-> > +
-> > +static int init_binder_logs(struct super_block *sb)
-> > +{
-> > +     struct dentry *binder_logs_root_dir, *file_dentry;
->
-> Why "file_dentry" and not just simply "dentry" like everywhere else?
-
-I was trying to distinguish it from the directory dentries in the
-function but I don't mind changing it to just 'dentry' for
-consistency.
-
->
-> > +     int ret = 0;
-> > +
-> > +     binder_logs_root_dir = binderfs_create_dir(sb->s_root,
-> > +                                                "binder_logs");
-> > +     if (IS_ERR(binder_logs_root_dir)) {
-> > +             ret = PTR_ERR(binder_logs_root_dir);
-> > +             goto out;
-> > +     }
-> > +
-> > +     file_dentry = binderfs_create_file(binder_logs_root_dir, "stats",
-> > +                                        &binder_stats_fops, NULL);
-> > +     if (IS_ERR(file_dentry)) {
-> > +             ret = PTR_ERR(file_dentry);
-> > +             goto out;
-> > +     }
-> > +
-> > +     file_dentry = binderfs_create_file(binder_logs_root_dir, "state",
-> > +                                        &binder_state_fops, NULL);
-> > +     if (IS_ERR(file_dentry)) {
-> > +             ret = PTR_ERR(file_dentry);
-> > +             goto out;
-> > +     }
-> > +
-> > +     file_dentry = binderfs_create_file(binder_logs_root_dir, "transactions",
-> > +                                        &binder_transactions_fops, NULL);
-> > +     if (IS_ERR(file_dentry))
-> > +             ret = PTR_ERR(file_dentry);
-> > +out:
-> > +     return ret;
-> > +}
-> > +
-> >  static int binderfs_fill_super(struct super_block *sb, void *data, int silent)
-> >  {
-> >       int ret;
-> > @@ -582,6 +714,9 @@ static int binderfs_fill_super(struct super_block *sb, void *data, int silent)
-> >
-> >       }
-> >
-> > +     if (info->mount_opts.stats_mode == STATS_GLOBAL)
-> > +             return init_binder_logs(sb);
-> > +
-> >       return 0;
-> >  }
+> > > +
+> > > +     }
+> > > +
+> > >       return 0;
+> > >  }
+> > >
+> > > @@ -5442,6 +5470,12 @@ static int binder_release(struct inode *nodp, struct file *filp)
+> > >       struct binder_proc *proc = filp->private_data;
+> > >
+> > >       debugfs_remove(proc->debugfs_entry);
+> > > +
+> > > +     if (proc->binderfs_entry) {
+> > > +             binderfs_remove_file(proc->binderfs_entry);
+> > > +             proc->binderfs_entry = NULL;
+> > > +     }
+> > > +
+> > >       binder_defer_work(proc, BINDER_DEFERRED_RELEASE);
+> > >
+> > >       return 0;
+> > > diff --git a/drivers/android/binder_internal.h b/drivers/android/binder_internal.h
+> > > index b9be42d9464c..bd47f7f72075 100644
+> > > --- a/drivers/android/binder_internal.h
+> > > +++ b/drivers/android/binder_internal.h
+> > > @@ -35,17 +35,63 @@ struct binder_device {
+> > >       struct inode *binderfs_inode;
+> > >  };
+> > >
+> > > +/**
+> > > + * binderfs_mount_opts - mount options for binderfs
+> > > + * @max: maximum number of allocatable binderfs binder devices
+> > > + * @stats_mode: enable binder stats in binderfs.
+> > > + */
+> > > +struct binderfs_mount_opts {
+> > > +     int max;
+> > > +     int stats_mode;
+> > > +};
+> > > +
+> > > +/**
+> > > + * binderfs_info - information about a binderfs mount
+> > > + * @ipc_ns:         The ipc namespace the binderfs mount belongs to.
+> > > + * @control_dentry: This records the dentry of this binderfs mount
+> > > + *                  binder-control device.
+> > > + * @root_uid:       uid that needs to be used when a new binder device is
+> > > + *                  created.
+> > > + * @root_gid:       gid that needs to be used when a new binder device is
+> > > + *                  created.
+> > > + * @mount_opts:     The mount options in use.
+> > > + * @device_count:   The current number of allocated binder devices.
+> > > + * @proc_log_dir:   Pointer to the directory dentry containing process-specific
+> > > + *                  logs.
+> > > + */
+> > > +struct binderfs_info {
+> > > +     struct ipc_namespace *ipc_ns;
+> > > +     struct dentry *control_dentry;
+> > > +     kuid_t root_uid;
+> > > +     kgid_t root_gid;
+> > > +     struct binderfs_mount_opts mount_opts;
+> > > +     int device_count;
+> > > +     struct dentry *proc_log_dir;
+> > > +};
+> > > +
+> > >  extern const struct file_operations binder_fops;
+> > >
+> > >  extern char *binder_devices_param;
+> > >
+> > >  #ifdef CONFIG_ANDROID_BINDERFS
+> > >  extern bool is_binderfs_device(const struct inode *inode);
+> > > +extern struct dentry *binderfs_create_file(struct dentry *dir, const char *name,
+> > > +                                        const struct file_operations *fops,
+> > > +                                        void *data);
+> > > +extern void binderfs_remove_file(struct dentry *dentry);
+> > >  #else
+> > >  static inline bool is_binderfs_device(const struct inode *inode)
+> > >  {
+> > >       return false;
+> > >  }
+> > > +static inline struct dentry *binderfs_create_file(struct dentry *dir,
+> > > +                                        const char *name,
+> > > +                                        const struct file_operations *fops,
+> > > +                                        void *data)
+> > > +{
+> > > +     return NULL;
+> > > +}
+> > > +static inline void binderfs_remove_file(struct dentry *dentry) {}
+> > >  #endif
+> > >
+> > >  #ifdef CONFIG_ANDROID_BINDERFS
+> > > diff --git a/drivers/android/binderfs.c b/drivers/android/binderfs.c
+> > > index dc25a7d759c9..c386a3738290 100644
+> > > --- a/drivers/android/binderfs.c
+> > > +++ b/drivers/android/binderfs.c
+> > > @@ -48,16 +48,6 @@ static dev_t binderfs_dev;
+> > >  static DEFINE_MUTEX(binderfs_minors_mutex);
+> > >  static DEFINE_IDA(binderfs_minors);
+> > >
+> > > -/**
+> > > - * binderfs_mount_opts - mount options for binderfs
+> > > - * @max: maximum number of allocatable binderfs binder devices
+> > > - * @stats_mode: enable binder stats in binderfs.
+> > > - */
+> > > -struct binderfs_mount_opts {
+> > > -     int max;
+> > > -     int stats_mode;
+> > > -};
+> > > -
+> > >  enum {
+> > >       Opt_max,
+> > >       Opt_stats_mode,
+> > > @@ -75,27 +65,6 @@ static const match_table_t tokens = {
+> > >       { Opt_err, NULL     }
+> > >  };
+> > >
+> > > -/**
+> > > - * binderfs_info - information about a binderfs mount
+> > > - * @ipc_ns:         The ipc namespace the binderfs mount belongs to.
+> > > - * @control_dentry: This records the dentry of this binderfs mount
+> > > - *                  binder-control device.
+> > > - * @root_uid:       uid that needs to be used when a new binder device is
+> > > - *                  created.
+> > > - * @root_gid:       gid that needs to be used when a new binder device is
+> > > - *                  created.
+> > > - * @mount_opts:     The mount options in use.
+> > > - * @device_count:   The current number of allocated binder devices.
+> > > - */
+> > > -struct binderfs_info {
+> > > -     struct ipc_namespace *ipc_ns;
+> > > -     struct dentry *control_dentry;
+> > > -     kuid_t root_uid;
+> > > -     kgid_t root_gid;
+> > > -     struct binderfs_mount_opts mount_opts;
+> > > -     int device_count;
+> > > -};
+> > > -
+> > >  static inline struct binderfs_info *BINDERFS_I(const struct inode *inode)
+> > >  {
+> > >       return inode->i_sb->s_fs_info;
+> > > @@ -535,7 +504,22 @@ static struct dentry *binderfs_create_dentry(struct dentry *dir,
+> > >       return dentry;
+> > >  }
+> > >
+> > > -static struct dentry *binderfs_create_file(struct dentry *dir, const char *name,
+> > > +void binderfs_remove_file(struct dentry *dentry)
+> > > +{
+> > > +     struct inode *dir;
+> > > +
+> > > +     dir = d_inode(dentry->d_parent);
+> > > +     inode_lock(dir);
+> > > +     if (simple_positive(dentry)) {
+> > > +             dget(dentry);
+> > > +             simple_unlink(dir, dentry);
+> > > +             d_delete(dentry);
+> > > +             dput(dentry);
+> > > +     }
+> > > +     inode_unlock(dir);
+> > > +}
+> > > +
+> > > +struct dentry *binderfs_create_file(struct dentry *dir, const char *name,
+> > >                                   const struct file_operations *fops,
+> > >                                   void *data)
+> > >  {
+> > > @@ -604,7 +588,8 @@ static struct dentry *binderfs_create_dir(struct dentry *parent,
+> > >
+> > >  static int init_binder_logs(struct super_block *sb)
+> > >  {
+> > > -     struct dentry *binder_logs_root_dir, *file_dentry;
+> > > +     struct dentry *binder_logs_root_dir, *file_dentry, *proc_log_dir;
+> > > +     struct binderfs_info *info;
+> > >       int ret = 0;
+> > >
+> > >       binder_logs_root_dir = binderfs_create_dir(sb->s_root,
+> > > @@ -648,8 +633,18 @@ static int init_binder_logs(struct super_block *sb)
+> > >                                          "failed_transaction_log",
+> > >                                          &binder_transaction_log_fops,
+> > >                                          &binder_transaction_log_failed);
+> > > -     if (IS_ERR(file_dentry))
+> > > +     if (IS_ERR(file_dentry)) {
+> > >               ret = PTR_ERR(file_dentry);
+> > > +             goto out;
+> > > +     }
+> > > +
+> > > +     proc_log_dir = binderfs_create_dir(binder_logs_root_dir, "proc");
+> > > +     if (IS_ERR(proc_log_dir)) {
+> > > +             ret = PTR_ERR(proc_log_dir);
+> > > +             goto out;
+> > > +     }
+> > > +     info = sb->s_fs_info;
+> > > +     info->proc_log_dir = proc_log_dir;
+> > >
+> > >  out:
+> > >       return ret;
+> > > --
+> > > 2.23.0.187.g17f5b7556c-goog
+> > >
 > >
 > > --
-> > 2.23.0.187.g17f5b7556c-goog
+> > To unsubscribe from this group and stop receiving emails from it, send an email to kernel-team+unsubscribe@android.com.
 > >
 _______________________________________________
 devel mailing list
