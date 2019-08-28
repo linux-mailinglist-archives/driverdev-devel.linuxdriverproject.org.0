@@ -2,69 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E09DEA08A1
-	for <lists+driverdev-devel@lfdr.de>; Wed, 28 Aug 2019 19:36:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 89E4AA0B33
+	for <lists+driverdev-devel@lfdr.de>; Wed, 28 Aug 2019 22:20:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 667B788A64;
-	Wed, 28 Aug 2019 17:36:57 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9E3B188C2F;
+	Wed, 28 Aug 2019 20:20:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AYcJQchbcVGW; Wed, 28 Aug 2019 17:36:57 +0000 (UTC)
+	with ESMTP id IONU1DWJv8cX; Wed, 28 Aug 2019 20:20:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AB96988927;
-	Wed, 28 Aug 2019 17:36:56 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 08FD388C07;
+	Wed, 28 Aug 2019 20:20:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B56351BF300
- for <devel@linuxdriverproject.org>; Wed, 28 Aug 2019 17:36:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 74C521BF4E2
+ for <devel@linuxdriverproject.org>; Wed, 28 Aug 2019 20:20:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id AFEFF888C4
- for <devel@linuxdriverproject.org>; Wed, 28 Aug 2019 17:36:54 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7134688BC7
+ for <devel@linuxdriverproject.org>; Wed, 28 Aug 2019 20:20:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WmP4kEXcKCBd for <devel@linuxdriverproject.org>;
- Wed, 28 Aug 2019 17:36:53 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0253.hostedemail.com
- [216.40.44.253])
- by hemlock.osuosl.org (Postfix) with ESMTPS id DCEE98851F
- for <devel@driverdev.osuosl.org>; Wed, 28 Aug 2019 17:36:53 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave05.hostedemail.com (Postfix) with ESMTP id 8F770180622AD
- for <devel@driverdev.osuosl.org>; Wed, 28 Aug 2019 17:20:29 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay04.hostedemail.com (Postfix) with ESMTP id 9762B180A812D;
- Wed, 28 Aug 2019 17:20:26 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, :::::::::,
- RULES_HIT:41:355:379:599:960:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1461:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:1801:2375:2393:2559:2562:2693:2828:3138:3139:3140:3141:3142:3353:3622:3866:3867:3868:3872:3873:4250:4321:4605:4823:5007:7903:9149:10004:10400:10848:11026:11232:11473:11658:11914:12297:12438:12555:12740:12760:12895:13069:13311:13357:13439:14659:14721:21080:21162:21451:21627:30054:30091,
- 0,
- RBL:23.242.196.136:@perches.com:.lbl8.mailshell.net-62.8.0.180 64.201.201.201,
- CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none, DomainCache:0,
- MSF:not bulk, SPF:fn, MSBL:0, DNSBL:neutral, Custom_rules:0:0:0, LFtime:29,
- LUA_SUMMARY:none
-X-HE-Tag: road64_7821b4d3ac041
-X-Filterd-Recvd-Size: 2726
-Received: from XPS-9350.home (cpe-23-242-196-136.socal.res.rr.com
- [23.242.196.136]) (Authenticated sender: joe@perches.com)
- by omf04.hostedemail.com (Postfix) with ESMTPA;
- Wed, 28 Aug 2019 17:20:25 +0000 (UTC)
-Message-ID: <6b17910acdb7259b16a65265e8a6a8bbcd6c86cd.camel@perches.com>
-Subject: Re: [PATCH v2 2/3] staging: rtl8192u: fix macro alignment in ieee80211
-From: Joe Perches <joe@perches.com>
-To: Stephen Brennan <stephen@brennan.io>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>
-Date: Wed, 28 Aug 2019 10:20:24 -0700
-In-Reply-To: <20190821143540.4501-3-stephen@brennan.io>
-References: <20190821143540.4501-1-stephen@brennan.io>
- <20190821143540.4501-3-stephen@brennan.io>
-User-Agent: Evolution 3.32.1-2 
+ with ESMTP id CpwQ0907w2wv for <devel@linuxdriverproject.org>;
+ Wed, 28 Aug 2019 20:20:11 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ot1-f67.google.com (mail-ot1-f67.google.com
+ [209.85.210.67])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 85E4C88915
+ for <devel@driverdev.osuosl.org>; Wed, 28 Aug 2019 20:20:11 +0000 (UTC)
+Received: by mail-ot1-f67.google.com with SMTP id f17so1138949otq.4
+ for <devel@driverdev.osuosl.org>; Wed, 28 Aug 2019 13:20:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=kZdApXr7HqxlwdsIqx7JRjNU5L47bfzu9+cVzi/wilM=;
+ b=EdWzyAPkTBY+vrZQocH789fQ4t/os1Ygvj5020ZxvjsaGWulSsQKv4dLOVKJCxzZP2
+ Z8lWs32NbYkVz+PGG4WfdPBjqonhDt68G+kJxW/HkHFOW47ehkZIfD5vABTKm9ldu6db
+ LxIng0pHRkH7V5H80+7305Q6OQYWunXLgdq1dFsOfM0uHA3YELY90GNWLVAD1fCDpje6
+ ad7Q4N/pw94HH5Xj83Q3jOELs45m9eDpN6MQeG2wCF2fFqnoi+jpKopfFDWgD3p0XbDj
+ zYNCDbMtGArHytv8s/99XSmutHVNdhioB0Vb2ZRfhj82mSw8RGL7R2NOHNo+bykJpIYJ
+ kUNg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=kZdApXr7HqxlwdsIqx7JRjNU5L47bfzu9+cVzi/wilM=;
+ b=gz4SYgqHFPh3m1eD1PTUx7jljVulOxk/KoxiudVoauqx/10sIxyyBp43bjMBFafimz
+ WswWo/znIg8wkQ4od+X6c+TtAM3CxcaD8sHsyLEPAGIIXXJTDygWo6RPnEo6B/2XuxdQ
+ 1NCeHx0dh+lXGLDGM8dBYZtFHaBDB/ioVLIYWVHPFUO0WvTmSQR6MtSeKo208V6XqlC1
+ qkSzxam36bldRC2syF3FR4W5lGRW81o8eR0R/j7HfWn1+a2MMFY7Smb+FShWV4ZuNnCU
+ D+X91jZgfmJ/1iuwdM1kOCfuwFzZV444Ls7XKX0EqXpw6Uofu0K+iP4OCC8GLXcOiaOL
+ fi7w==
+X-Gm-Message-State: APjAAAXVklkcdv+7Qz/ooDjtOaXWnpuAPT3RT3SEVFuQmY25HcqSyVll
+ +C1+0kVXLskpTjqpO7wkK6HVgjQI8tdvs8t1d9edfA==
+X-Google-Smtp-Source: APXvYqzpRwBDr5k3lHA1Fn4+aNQ2cSnP2tDWjnyZhpbILqeveLlypdbb6aa2cI5016dpfZeIdMTWDY+la2UgntTulo4=
+X-Received: by 2002:a9d:4817:: with SMTP id c23mr4529909otf.97.1567023610275; 
+ Wed, 28 Aug 2019 13:20:10 -0700 (PDT)
 MIME-Version: 1.0
+References: <20190827204152.114609-1-hridya@google.com>
+ <20190827204152.114609-3-hridya@google.com>
+ <20190828125816.cexbvn2dqy6to3ww@wittgenstein>
+In-Reply-To: <20190828125816.cexbvn2dqy6to3ww@wittgenstein>
+From: Hridya Valsaraju <hridya@google.com>
+Date: Wed, 28 Aug 2019 13:19:33 -0700
+Message-ID: <CA+wgaPNkPgo64H6ZyFPCP_1BFSt1ZPQqBFk701a=W9O4H9BB-Q@mail.gmail.com>
+Subject: Re: [PATCH 2/4] binder: Add stats, state and transactions files
+To: Christian Brauner <christian.brauner@ubuntu.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,50 +81,333 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, kernel-team@android.com,
+ Todd Kjos <tkjos@android.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org,
+ =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
+ Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, 2019-08-21 at 07:35 -0700, Stephen Brennan wrote:
-> Several macros display unaligned, due to mixes of tabs and spaces. These
-> can be fixed by making spacing consistent, do this.
-[]
-> @@ -452,18 +452,19 @@ do { if (ieee80211_debug_level & (level)) \
->    printk(KERN_DEBUG "ieee80211: " fmt, ## args); } while (0)
->  //wb added to debug out data buf
->  //if you want print DATA buffer related BA, please set ieee80211_debug_level to DATA|BA
-> -#define IEEE80211_DEBUG_DATA(level, data, datalen)	\
-> -	do { if ((ieee80211_debug_level & (level)) == (level))	\
-> -		{	\
-> -			int i;					\
-> -			u8 *pdata = (u8 *) data;			\
-> -			printk(KERN_DEBUG "ieee80211: %s()\n", __func__);	\
-> -			for (i = 0; i < (int)(datalen); i++) {		\
-> -				printk("%2x ", pdata[i]);		\
-> -				if ((i + 1) % 16 == 0) printk("\n");	\
-> -			}				\
-> -			printk("\n");			\
-> -		}					\
-> +#define IEEE80211_DEBUG_DATA(level, data, datalen)                             \
-> +	do { if ((ieee80211_debug_level & (level)) == (level))                 \
-> +		{                                                              \
-> +			int i;                                                 \
-> +			u8 *pdata = (u8 *) data;                               \
-> +			printk(KERN_DEBUG "ieee80211: %s()\n", __func__);      \
-> +			for (i = 0; i < (int)(datalen); i++) {                 \
-> +				printk("%2x ", pdata[i]);                      \
-> +				if ((i + 1) % 16 == 0)                         \
-> +					printk("\n");                          \
-> +			}                                                      \
-> +			printk("\n");                                          \
+On Wed, Aug 28, 2019 at 5:58 AM Christian Brauner
+<christian.brauner@ubuntu.com> wrote:
+>
+> On Tue, Aug 27, 2019 at 01:41:50PM -0700, Hridya Valsaraju wrote:
+> > The following binder stat files currently live in debugfs.
+> >
+> > /sys/kernel/debug/binder/state
+> > /sys/kernel/debug/binder/stats
+> > /sys/kernel/debug/binder/transactions
+> >
+> > This patch makes these files available in a binderfs instance
+> > mounted with the mount option 'stats=global'. For example, if a binderfs
+> > instance is mounted at path /dev/binderfs, the above files will be
+> > available at the following locations:
+> >
+> > /dev/binderfs/binder_logs/state
+> > /dev/binderfs/binder_logs/stats
+> > /dev/binderfs/binder_logs/transactions
+> >
+> > This provides a way to access them even when debugfs is not mounted.
+> >
+> > Signed-off-by: Hridya Valsaraju <hridya@google.com>
+> > ---
+> >  drivers/android/binder.c          |  15 ++--
+> >  drivers/android/binder_internal.h |   8 ++
+> >  drivers/android/binderfs.c        | 137 +++++++++++++++++++++++++++++-
+> >  3 files changed, 150 insertions(+), 10 deletions(-)
+> >
+> > diff --git a/drivers/android/binder.c b/drivers/android/binder.c
+> > index ca6b21a53321..de795bd229c4 100644
+> > --- a/drivers/android/binder.c
+> > +++ b/drivers/android/binder.c
+> > @@ -6055,7 +6055,7 @@ static void print_binder_proc_stats(struct seq_file *m,
+> >  }
+> >
+> >
+> > -static int state_show(struct seq_file *m, void *unused)
+> > +int binder_state_show(struct seq_file *m, void *unused)
+> >  {
+> >       struct binder_proc *proc;
+> >       struct binder_node *node;
+> > @@ -6094,7 +6094,7 @@ static int state_show(struct seq_file *m, void *unused)
+> >       return 0;
+> >  }
+> >
+> > -static int stats_show(struct seq_file *m, void *unused)
+> > +int binder_stats_show(struct seq_file *m, void *unused)
+> >  {
+> >       struct binder_proc *proc;
+> >
+> > @@ -6110,7 +6110,7 @@ static int stats_show(struct seq_file *m, void *unused)
+> >       return 0;
+> >  }
+> >
+> > -static int transactions_show(struct seq_file *m, void *unused)
+> > +int binder_transactions_show(struct seq_file *m, void *unused)
+> >  {
+> >       struct binder_proc *proc;
+> >
+> > @@ -6198,9 +6198,6 @@ const struct file_operations binder_fops = {
+> >       .release = binder_release,
+> >  };
+> >
+> > -DEFINE_SHOW_ATTRIBUTE(state);
+> > -DEFINE_SHOW_ATTRIBUTE(stats);
+> > -DEFINE_SHOW_ATTRIBUTE(transactions);
+> >  DEFINE_SHOW_ATTRIBUTE(transaction_log);
+> >
+> >  static int __init init_binder_device(const char *name)
+> > @@ -6256,17 +6253,17 @@ static int __init binder_init(void)
+> >                                   0444,
+> >                                   binder_debugfs_dir_entry_root,
+> >                                   NULL,
+> > -                                 &state_fops);
+> > +                                 &binder_state_fops);
+> >               debugfs_create_file("stats",
+> >                                   0444,
+> >                                   binder_debugfs_dir_entry_root,
+> >                                   NULL,
+> > -                                 &stats_fops);
+> > +                                 &binder_stats_fops);
+> >               debugfs_create_file("transactions",
+> >                                   0444,
+> >                                   binder_debugfs_dir_entry_root,
+> >                                   NULL,
+> > -                                 &transactions_fops);
+> > +                                 &binder_transactions_fops);
+> >               debugfs_create_file("transaction_log",
+> >                                   0444,
+> >                                   binder_debugfs_dir_entry_root,
+> > diff --git a/drivers/android/binder_internal.h b/drivers/android/binder_internal.h
+> > index fe8c745dc8e0..12ef96f256c6 100644
+> > --- a/drivers/android/binder_internal.h
+> > +++ b/drivers/android/binder_internal.h
+> > @@ -57,4 +57,12 @@ static inline int __init init_binderfs(void)
+> >  }
+> >  #endif
+> >
+> > +int binder_stats_show(struct seq_file *m, void *unused);
+> > +DEFINE_SHOW_ATTRIBUTE(binder_stats);
+> > +
+> > +int binder_state_show(struct seq_file *m, void *unused);
+> > +DEFINE_SHOW_ATTRIBUTE(binder_state);
+> > +
+> > +int binder_transactions_show(struct seq_file *m, void *unused);
+> > +DEFINE_SHOW_ATTRIBUTE(binder_transactions);
+> >  #endif /* _LINUX_BINDER_INTERNAL_H */
+> > diff --git a/drivers/android/binderfs.c b/drivers/android/binderfs.c
+> > index d95d179aec58..d542f9b8d8ab 100644
+> > --- a/drivers/android/binderfs.c
+> > +++ b/drivers/android/binderfs.c
+> > @@ -280,7 +280,7 @@ static void binderfs_evict_inode(struct inode *inode)
+> >
+> >       clear_inode(inode);
+> >
+> > -     if (!device)
+> > +     if (!device || S_ISREG(inode->i_mode))
+>
+> Hm, remind me why we need the S_ISREG again?
 
-without pr_cont/KERN_CONT, this will output a terrible mess.
+Thanks for taking a look Christian! We need the additional check
+because for some of the stat files(for example, the transaction log
+file in patch 3/5), the binder driver uses the i_private field of its
+inode to stash some data that will be used for content generation when
+the file is opened.
 
-It's probably better to use print_hex_dump_debug
+> Also we probably should do:
+>
+> if (S_ISREG(inode->i_mode) || !device)
+>
+> should this maybe be:
+>
+> if (!S_ISCHR(inode->i_mode) || !device)
+>
+> ?
 
+Sounds good to me, will make the change in v2!
 
+>
+> >               return;
+> >
+> >       mutex_lock(&binderfs_minors_mutex);
+> > @@ -504,6 +504,138 @@ static const struct inode_operations binderfs_dir_inode_operations = {
+> >       .unlink = binderfs_unlink,
+> >  };
+> >
+> > +static struct inode *binderfs_make_inode(struct super_block *sb, int mode)
+> > +{
+> > +     struct inode *ret;
+> > +
+> > +     ret = new_inode(sb);
+> > +     if (ret) {
+> > +             ret->i_ino = iunique(sb, BINDERFS_MAX_MINOR + INODE_OFFSET);
+> > +             ret->i_mode = mode;
+> > +             ret->i_atime = ret->i_mtime = ret->i_ctime = current_time(ret);
+> > +     }
+> > +     return ret;
+> > +}
+> > +
+> > +static struct dentry *binderfs_create_dentry(struct dentry *dir,
+> > +                                          const char *name)
+> > +{
+> > +     struct dentry *dentry;
+> > +
+> > +     dentry = lookup_one_len(name, dir, strlen(name));
+> > +     if (IS_ERR(dentry))
+> > +             return dentry;
+> > +
+> > +     /* Return error if the file/dir already exists. */
+> > +     if (d_really_is_positive(dentry)) {
+> > +             dput(dentry);
+> > +             return ERR_PTR(-EEXIST);
+> > +     }
+> > +
+> > +     return dentry;
+> > +}
+> > +
+> > +static struct dentry *binderfs_create_file(struct dentry *dir, const char *name,
+> > +                                 const struct file_operations *fops,
+> > +                                 void *data)
+> > +{
+> > +     struct dentry *dentry;
+> > +     struct inode *new_inode, *dir_inode;
+> > +     struct super_block *sb;
+> > +
+> > +     dir_inode = dir->d_inode;
+> > +     inode_lock(dir_inode);
+> > +
+> > +     dentry = binderfs_create_dentry(dir, name);
+> > +     if (IS_ERR(dentry))
+> > +             goto out;
+> > +
+> > +     sb = dir_inode->i_sb;
+> > +     new_inode = binderfs_make_inode(sb, S_IFREG | 0444);
+> > +     if (!new_inode) {
+> > +             dput(dentry);
+> > +             dentry = ERR_PTR(-ENOMEM);
+> > +             goto out;
+> > +     }
+> > +
+> > +     new_inode->i_fop = fops;
+> > +     new_inode->i_private = data;
+> > +     d_instantiate(dentry, new_inode);
+> > +     fsnotify_create(dir_inode, dentry);
+> > +
+> > +out:
+> > +     inode_unlock(dir_inode);
+> > +     return dentry;
+> > +}
+> > +
+> > +static struct dentry *binderfs_create_dir(struct dentry *parent,
+> > +                                       const char *name)
+> > +{
+> > +     struct dentry *dentry;
+> > +     struct inode *new_inode, *parent_inode;
+> > +     struct super_block *sb;
+> > +
+> > +     parent_inode = d_inode(parent);
+>
+> For consistency, could you use the same variable name for the directory
+> in which you create a new dentry? I don't care if its "dir_inode" like
+> above or "parent_inode".
+
+Makes sense, will make the change in v2.
+
+>
+> > +     inode_lock(parent_inode);
+> > +
+> > +     dentry = binderfs_create_dentry(parent, name);
+> > +     if (IS_ERR(dentry))
+> > +             goto out;
+> > +
+> > +     sb = parent_inode->i_sb;
+> > +     new_inode = binderfs_make_inode(sb, S_IFDIR | 0755);
+> > +     if (!new_inode) {
+> > +             dput(dentry);
+> > +             dentry = ERR_PTR(-ENOMEM);
+> > +             goto out;
+> > +     }
+> > +
+> > +     new_inode->i_fop = &simple_dir_operations;
+> > +     new_inode->i_op = &simple_dir_inode_operations;
+> > +
+> > +     inc_nlink(new_inode);
+> > +     d_instantiate(dentry, new_inode);
+> > +     inc_nlink(parent_inode);
+> > +     fsnotify_mkdir(parent_inode, dentry);
+> > +out:
+>
+> For consistency please leave a \n after fsnotify_mkdir and the goto
+> label like you did in the function above.
+
+Agreed, will fix in v2.
+
+>
+> > +     inode_unlock(parent_inode);
+> > +     return dentry;
+> > +}
+> > +
+> > +static int init_binder_logs(struct super_block *sb)
+> > +{
+> > +     struct dentry *binder_logs_root_dir, *file_dentry;
+>
+> Why "file_dentry" and not just simply "dentry" like everywhere else?
+
+I was trying to distinguish it from the directory dentries in the
+function but I don't mind changing it to just 'dentry' for
+consistency.
+
+>
+> > +     int ret = 0;
+> > +
+> > +     binder_logs_root_dir = binderfs_create_dir(sb->s_root,
+> > +                                                "binder_logs");
+> > +     if (IS_ERR(binder_logs_root_dir)) {
+> > +             ret = PTR_ERR(binder_logs_root_dir);
+> > +             goto out;
+> > +     }
+> > +
+> > +     file_dentry = binderfs_create_file(binder_logs_root_dir, "stats",
+> > +                                        &binder_stats_fops, NULL);
+> > +     if (IS_ERR(file_dentry)) {
+> > +             ret = PTR_ERR(file_dentry);
+> > +             goto out;
+> > +     }
+> > +
+> > +     file_dentry = binderfs_create_file(binder_logs_root_dir, "state",
+> > +                                        &binder_state_fops, NULL);
+> > +     if (IS_ERR(file_dentry)) {
+> > +             ret = PTR_ERR(file_dentry);
+> > +             goto out;
+> > +     }
+> > +
+> > +     file_dentry = binderfs_create_file(binder_logs_root_dir, "transactions",
+> > +                                        &binder_transactions_fops, NULL);
+> > +     if (IS_ERR(file_dentry))
+> > +             ret = PTR_ERR(file_dentry);
+> > +out:
+> > +     return ret;
+> > +}
+> > +
+> >  static int binderfs_fill_super(struct super_block *sb, void *data, int silent)
+> >  {
+> >       int ret;
+> > @@ -582,6 +714,9 @@ static int binderfs_fill_super(struct super_block *sb, void *data, int silent)
+> >
+> >       }
+> >
+> > +     if (info->mount_opts.stats_mode == STATS_GLOBAL)
+> > +             return init_binder_logs(sb);
+> > +
+> >       return 0;
+> >  }
+> >
+> > --
+> > 2.23.0.187.g17f5b7556c-goog
+> >
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
