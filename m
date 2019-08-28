@@ -1,73 +1,65 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 782CAA02FA
-	for <lists+driverdev-devel@lfdr.de>; Wed, 28 Aug 2019 15:16:41 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 85FDAA05BB
+	for <lists+driverdev-devel@lfdr.de>; Wed, 28 Aug 2019 17:09:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2DD6F86C4D;
-	Wed, 28 Aug 2019 13:16:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E945523340;
+	Wed, 28 Aug 2019 15:09:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cGvlLUf2ACkS; Wed, 28 Aug 2019 13:16:39 +0000 (UTC)
+	with ESMTP id xKyOGQb0vhmf; Wed, 28 Aug 2019 15:09:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 89B3E86BB9;
-	Wed, 28 Aug 2019 13:16:36 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 221A522E20;
+	Wed, 28 Aug 2019 15:09:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9A5CD1BF286
- for <devel@linuxdriverproject.org>; Wed, 28 Aug 2019 13:16:34 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B89BB1BF574
+ for <devel@linuxdriverproject.org>; Wed, 28 Aug 2019 15:09:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 97373840B9
- for <devel@linuxdriverproject.org>; Wed, 28 Aug 2019 13:16:34 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id B5B1988575
+ for <devel@linuxdriverproject.org>; Wed, 28 Aug 2019 15:09:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hnb9i52cW8Od for <devel@linuxdriverproject.org>;
- Wed, 28 Aug 2019 13:16:33 +0000 (UTC)
+ with ESMTP id I0qsdWLqDnhU for <devel@linuxdriverproject.org>;
+ Wed, 28 Aug 2019 15:09:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f66.google.com (mail-lf1-f66.google.com
- [209.85.167.66])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 15DF586B74
- for <devel@driverdev.osuosl.org>; Wed, 28 Aug 2019 13:16:33 +0000 (UTC)
-Received: by mail-lf1-f66.google.com with SMTP id u29so2130556lfk.7
- for <devel@driverdev.osuosl.org>; Wed, 28 Aug 2019 06:16:32 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=8gkg8AyrMQ7zRIAJQTyGmu2XIwtEpflTp13b6P2wFnA=;
- b=adg6bNKHXNaNV+aNTV4PTRbA/vJ/paXGtOxtf0PT1t8pUT4JZKl41W0gPJXlm7Bu/8
- o3QerkR0+T4jHYg7O9ygDSXSyNgXZAJ/e/4oCaYNfuh6zuAgb33ZxARZIOfspjFUNL9C
- A0MBR9vSgrliwdxRzpayT2qxCgfNUEb/6+PDNMqaF618ShPQzlaBTPUeDveDVYSaHeYf
- 49L7ySAM6d8TfkePFSz+iuWEHSw4lp++kYKQG9LjEFodRrLKmpTyq+Pw+pFxdUVDLdhN
- 5cunaAZqzRfBwyA3zrCkeZlCwXX3BdG3X7KN/oqPE0PQ6wup0oBIYdbTIfGlRh5Hoe1P
- zdCA==
-X-Gm-Message-State: APjAAAX7Ceag/t6KlaWFCsq1Bdqv34tfQHs2Zks2jgW9gknONNIX65Xe
- AMdcAep+zWMEUd58qimlqHI=
-X-Google-Smtp-Source: APXvYqy9SbKWqCM+LP95NcWikOcdDzVHK9f11OhcPiI7ZYQ/XGenRPoSeL27K+qoM6V6AuJK8vgXQQ==
-X-Received: by 2002:ac2:42cc:: with SMTP id n12mr2669705lfl.47.1566998191244; 
- Wed, 28 Aug 2019 06:16:31 -0700 (PDT)
-Received: from xi.terra (c-51f1e055.07-184-6d6c6d4.bbcust.telenor.se.
- [85.224.241.81])
- by smtp.gmail.com with ESMTPSA id t66sm598650lje.66.2019.08.28.06.16.30
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 28 Aug 2019 06:16:30 -0700 (PDT)
-Received: from johan by xi.terra with local (Exim 4.92)
- (envelope-from <johan@kernel.org>)
- id 1i2xoI-0005cy-Oa; Wed, 28 Aug 2019 15:16:27 +0200
-Date: Wed, 28 Aug 2019 15:16:26 +0200
-From: Johan Hovold <johan@kernel.org>
-To: Rui Miguel Silva <rui.silva@linaro.org>
-Subject: Re: [PATCH v2] staging: greybus: fix more header declarations
-Message-ID: <20190828131626.GF13017@localhost>
-References: <20190828124825.20800-1-rui.silva@linaro.org>
+Received: from bombadil.infradead.org (bombadil.infradead.org
+ [198.137.202.133])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7559088551
+ for <devel@driverdev.osuosl.org>; Wed, 28 Aug 2019 15:09:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=bombadil.20170209; h=Content-Transfer-Encoding:
+ Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
+ Subject:Sender:Reply-To:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=8YFvl0cLJd1ogxe77UjD+VFVK3dmu+mmfBCxAM+r4ro=; b=Vy8s6/PwyPpx7KsYu0/eABwEF
+ OS+B1MbhlGcq7Qn4LhpOzipqdFfdd2NLvYf6rjq9y5ncbJf6Mh4Z0dJ7HugjoehduIPd+4Hn/LSRb
+ 0AUCxmbCMhGO3R5y0NnKgngxbfQKjA9OBuPbVzJ4oK2x5UNfiTckkogPjyNPcyltc2E1zEeAtd6gd
+ 1n6AGck5A4hPtGIO/9xxKJ7paQIJ1UlS2cIxWC4ZuBfessz4XdJ8xwOxd6sqMgjQiagXAzkgCz49N
+ Pei5iRq7/cGpWNrLX0+FKDCzbJ5sCIAtAk679sP6SirDpnuQkZIR0xebfqAmPoBuvIikdKc1RAmXI
+ WIWJuD5GQ==;
+Received: from [2601:1c0:6200:6e8::4f71]
+ by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
+ id 1i2zZq-0004zO-Pw; Wed, 28 Aug 2019 15:09:38 +0000
+Subject: Re: [PATCH v2] staging: greybus: add missing includes
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Rui Miguel Silva <rui.silva@linaro.org>
+References: <20190827205917.8308-1-rui.silva@linaro.org>
+ <20190828083519.GA29752@kroah.com>
+From: Randy Dunlap <rdunlap@infradead.org>
+Message-ID: <0b740eb9-5ef4-8346-aa78-6b07bb060e7b@infradead.org>
+Date: Wed, 28 Aug 2019 08:09:38 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190828124825.20800-1-rui.silva@linaro.org>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+In-Reply-To: <20190828083519.GA29752@kroah.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,60 +72,102 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Alex Elder <elder@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Johan Hovold <johan@kernel.org>, greybus-dev@lists.linaro.org,
+Cc: devel@driverdev.osuosl.org, greybus-dev@lists.linaro.org,
+ Alex Elder <elder@kernel.org>, Johan Hovold <johan@kernel.org>,
  Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Aug 28, 2019 at 01:48:25PM +0100, Rui Miguel Silva wrote:
-> More headers needed to be fixed when moving greybus out of staging and
-> enabling the COMPILE_TEST option.
+On 8/28/19 1:35 AM, Greg Kroah-Hartman wrote:
+> On Tue, Aug 27, 2019 at 09:59:17PM +0100, Rui Miguel Silva wrote:
+>> Before moving greybus core out of staging and moving header files to
+>> include/linux some greybus header files were missing the necessary
+>> includes. This would trigger compilation faillures with some example
+>> errors logged bellow for with CONFIG_KERNEL_HEADER_TEST=y.
+>>
+>> So, add the necessary headers to compile clean before relocating the
+>> header files.
+>>
+>> ./include/linux/greybus/hd.h:23:50: error: unknown type name 'u16'
+>>   int (*cport_disable)(struct gb_host_device *hd, u16 cport_id); ^~~
+>> ./include/linux/greybus/greybus_protocols.h:1314:2: error: unknown type name '__u8'
+>>   __u8 data[0];
+>>   ^~~~
+>> ./include/linux/greybus/hd.h:24:52: error: unknown type name 'u16'
+>>   int (*cport_connected)(struct gb_host_device *hd, u16 cport_id); ^~~
+>> ./include/linux/greybus/hd.h:25:48: error: unknown type name 'u16'
+>>   int (*cport_flush)(struct gb_host_device *hd, u16 cport_id); ^~~
+>> ./include/linux/greybus/hd.h:26:51: error: unknown type name 'u16'
+>>   int (*cport_shutdown)(struct gb_host_device *hd, u16 cport_id, ^~~
+>> ./include/linux/greybus/hd.h:27:5: error: unknown type name 'u8'
+>> u8 phase, unsigned int timeout);
+>>      ^~
+>> ./include/linux/greybus/hd.h:28:50: error: unknown type name 'u16'
+>>   int (*cport_quiesce)(struct gb_host_device *hd, u16 cport_id, ^~~
+>> ./include/linux/greybus/hd.h:29:5: error: unknown type name 'size_t'
+>>      size_t peer_space, unsigned int timeout);
+>>      ^~~~~~
+>> ./include/linux/greybus/hd.h:29:5: note: 'size_t' is defined in header '<stddef.h>'; did you forget to '#include <stddef.h>'?
+>> ./include/linux/greybus/hd.h:1:1:
+>> +#include <stddef.h>
+>>  /* SPDX-License-Identifier: GPL-2.0 */
+>> ./include/linux/greybus/hd.h:29:5:
+>>      size_t peer_space, unsigned int timeout);
+>>      ^~~~~~
+>> ./include/linux/greybus/hd.h:30:48: error: unknown type name 'u16'
+>>   int (*cport_clear)(struct gb_host_device *hd, u16 cport_id); ^~~
+>> ./include/linux/greybus/hd.h:32:49: error: unknown type name 'u16'
+>>   int (*message_send)(struct gb_host_device *hd, u16 dest_cport_id, ^~~
+>> ./include/linux/greybus/hd.h:33:32: error: unknown type name 'gfp_t'
+>> struct gb_message *message, gfp_t gfp_mask); ^~~~~
+>> ./include/linux/greybus/hd.h:35:55: error: unknown type name 'u16'
+>>   int (*latency_tag_enable)(struct gb_host_device *hd, u16 cport_id);
+>>
+>> Reported-by: kbuild test robot <lkp@intel.com>
+>> Reported-by: Gao Xiang <hsiangkao@aol.com>
+>> Signed-off-by: Rui Miguel Silva <rui.silva@linaro.org>
+>> Acked-by: Alex Elder <elder@kernel.org>
+>> ---
+>>
+>> v1->v2:
+>> lkp@intel:
+>>   - added greybus_protocols.h include to svc.h header
+>> Alex Elder:
+>>   - remove extra line in operation.h
+>>
+>> Looks like lkp can now find missing headers that we can not :),
+>> it must be the config. but it is right.
+>>
+>> Greg please note the new include in svc.h may need to be changed
+>> when moving headers to include/linux
 > 
-> Add forward declarations for the needed structures.
+> As a version of your first patch is already in my tree, this one will
+> not apply :(
 > 
-> Reported-by: kbuild test robot <lkp@intel.com>
-> Signed-off-by: Rui Miguel Silva <rui.silva@linaro.org>
-> ---
-> v1->v2:
-> Johan Hovold:
->   - use forward declarations instead including all headers
+> Can you just send a fix-up patch against my staging-next branch instead?
+> 
+> thanks,
+> 
+> greg k-h
+> _______________________________________________
+> devel mailing list
+> devel@linuxdriverproject.org
+> http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+> 
 
-Reviewed-by: Johan Hovold <johan@kernel.org>
+linux-next of 20190828 has these warnings:
 
->  include/linux/greybus/operation.h | 2 +-
->  include/linux/greybus/svc.h       | 2 ++
->  2 files changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/include/linux/greybus/operation.h b/include/linux/greybus/operation.h
-> index 8ca864bba23e..cb8e4ef45222 100644
-> --- a/include/linux/greybus/operation.h
-> +++ b/include/linux/greybus/operation.h
-> @@ -15,7 +15,7 @@
->  #include <linux/types.h>
->  #include <linux/workqueue.h>
->  
-> -
-> +struct gb_host_device;
->  struct gb_operation;
->  
->  /* The default amount of time a request is given to complete */
-> diff --git a/include/linux/greybus/svc.h b/include/linux/greybus/svc.h
-> index 507f8bd4e4c8..5afaf5f06856 100644
-> --- a/include/linux/greybus/svc.h
-> +++ b/include/linux/greybus/svc.h
-> @@ -12,6 +12,8 @@
->  #include <linux/types.h>
->  #include <linux/device.h>
->  
-> +struct gb_svc_l2_timer_cfg;
-> +
->  #define GB_SVC_CPORT_FLAG_E2EFC		BIT(0)
->  #define GB_SVC_CPORT_FLAG_CSD_N		BIT(1)
->  #define GB_SVC_CPORT_FLAG_CSV_N		BIT(2)
+./../include/linux/greybus/svc.h:91:18: warning: 'struct gb_svc_l2_timer_cfg' declared inside parameter list will not be visible outside of this definition or declaration
+./../include/linux/greybus/operation.h:188:34: warning: 'struct gb_host_device' declared inside parameter list will not be visible outside of this definition or declaration
+
+
+Are they fixed by some of these patches?
+
+thanks.
+-- 
+~Randy
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
