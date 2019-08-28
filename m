@@ -1,60 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4FD0AA00E1
-	for <lists+driverdev-devel@lfdr.de>; Wed, 28 Aug 2019 13:42:20 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 114E9A0201
+	for <lists+driverdev-devel@lfdr.de>; Wed, 28 Aug 2019 14:40:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id DBE0D24E08;
-	Wed, 28 Aug 2019 11:42:18 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C012D87C94;
+	Wed, 28 Aug 2019 12:40:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LrjagtUEL2OZ; Wed, 28 Aug 2019 11:42:18 +0000 (UTC)
+	with ESMTP id oFT+S3Q5Uh8l; Wed, 28 Aug 2019 12:40:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 55AF222C44;
-	Wed, 28 Aug 2019 11:42:16 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4B07187AEF;
+	Wed, 28 Aug 2019 12:40:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C5CAC1BF3BA
- for <devel@linuxdriverproject.org>; Wed, 28 Aug 2019 11:42:13 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C5DBA1BF37B
+ for <devel@linuxdriverproject.org>; Wed, 28 Aug 2019 12:39:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id C00342288F
- for <devel@linuxdriverproject.org>; Wed, 28 Aug 2019 11:42:13 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id C2798888C4
+ for <devel@linuxdriverproject.org>; Wed, 28 Aug 2019 12:39:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DBWlZsifMocP for <devel@linuxdriverproject.org>;
- Wed, 28 Aug 2019 11:42:13 +0000 (UTC)
+ with ESMTP id hjwX0cY0qGl6 for <devel@linuxdriverproject.org>;
+ Wed, 28 Aug 2019 12:39:57 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 1C3B920489
- for <devel@driverdev.osuosl.org>; Wed, 28 Aug 2019 11:42:13 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6349422CF8;
- Wed, 28 Aug 2019 11:42:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1566992532;
- bh=zH+ojuRhzLH8sX9tVDCQRPVIBwPVhwuPp8IQq60ItOw=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=mHqZGHEe5aj7RTNSG36dq7Den5hWRIKUIV+WhqBb+VYXulgJGzP1nqnowFgFCgyMk
- loKsUv7Lc3ylTVVNKxWP/UU8rUn3z9/CXZuaNfW44IDkH4Hd8GPpzsnTtt2zgJXPkF
- WqBxoWCCnP9Y4YIqjHd24WuUUfwZJsDz1Eb3bmfI=
-Date: Wed, 28 Aug 2019 13:42:10 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Johan Hovold <johan@kernel.org>
-Subject: Re: [PATCH] staging: greybus: fix more header includes
-Message-ID: <20190828114210.GB31462@kroah.com>
-References: <20190828102859.13180-1-rui.silva@linaro.org>
- <20190828104726.GE13017@localhost>
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id BD7A5888BF
+ for <devel@driverdev.osuosl.org>; Wed, 28 Aug 2019 12:39:57 +0000 (UTC)
+Received: from [213.220.153.21] (helo=wittgenstein)
+ by youngberry.canonical.com with esmtpsa (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.76) (envelope-from <christian.brauner@ubuntu.com>)
+ id 1i2xEv-0002EI-OW; Wed, 28 Aug 2019 12:39:53 +0000
+Date: Wed, 28 Aug 2019 14:39:53 +0200
+From: Christian Brauner <christian.brauner@ubuntu.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH 1/4] binder: add a mount option to show global stats
+Message-ID: <20190828123952.zzffvezeq4hykxej@wittgenstein>
+References: <20190827204152.114609-1-hridya@google.com>
+ <20190827204152.114609-2-hridya@google.com>
+ <20190828092237.GA23192@kroah.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190828104726.GE13017@localhost>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+In-Reply-To: <20190828092237.GA23192@kroah.com>
+User-Agent: NeoMutt/20180716
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,60 +60,136 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, greybus-dev@lists.linaro.org,
- Alex Elder <elder@kernel.org>, Rui Miguel Silva <rui.silva@linaro.org>,
- Dan Carpenter <dan.carpenter@oracle.com>
+Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
+ kernel-team@android.com, linux-kernel@vger.kernel.org,
+ Joel Fernandes <joel@joelfernandes.org>,
+ Arve =?utf-8?B?SGrDuG5uZXbDpWc=?= <arve@android.com>,
+ Hridya Valsaraju <hridya@google.com>, Martijn Coenen <maco@android.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Aug 28, 2019 at 12:47:26PM +0200, Johan Hovold wrote:
-> On Wed, Aug 28, 2019 at 11:28:59AM +0100, Rui Miguel Silva wrote:
-> > More headers needed to be fixed when moving greybus out of staging and
-> > enabling the COMPILE_TEST option.
+On Wed, Aug 28, 2019 at 11:22:37AM +0200, Greg Kroah-Hartman wrote:
+> On Tue, Aug 27, 2019 at 01:41:49PM -0700, Hridya Valsaraju wrote:
+> > Currently, all binder state and statistics live in debugfs.
+> > We need this information even when debugfs is not mounted.
+> > This patch adds the mount option 'stats' to enable a binderfs
+> > instance to have binder debug information present in the same.
+> > 'stats=global' will enable the global binder statistics. In
+> > the future, 'stats=local' will enable binder statistics local
+> > to the binderfs instance. The two modes 'global' and 'local'
+> > will be mutually exclusive. 'stats=global' option is only available
+> > for a binderfs instance mounted in the initial user namespace.
+> > An attempt to use the option to mount a binderfs instance in
+> > another user namespace will return an EPERM error.
 > > 
-> > Reported-by: kbuild test robot <lkp@intel.com>
-> > Signed-off-by: Rui Miguel Silva <rui.silva@linaro.org>
+> > Signed-off-by: Hridya Valsaraju <hridya@google.com>
 > > ---
-> >  include/linux/greybus/operation.h | 1 +
-> >  include/linux/greybus/svc.h       | 2 ++
-> >  2 files changed, 3 insertions(+)
+> >  drivers/android/binderfs.c | 47 ++++++++++++++++++++++++++++++++++++--
+> >  1 file changed, 45 insertions(+), 2 deletions(-)
 > > 
-> > diff --git a/include/linux/greybus/operation.h b/include/linux/greybus/operation.h
-> > index 8ca864bba23e..bfbc56d8d863 100644
-> > --- a/include/linux/greybus/operation.h
-> > +++ b/include/linux/greybus/operation.h
-> > @@ -15,6 +15,7 @@
-> >  #include <linux/types.h>
-> >  #include <linux/workqueue.h>
+> > diff --git a/drivers/android/binderfs.c b/drivers/android/binderfs.c
+> > index cc2e71576396..d95d179aec58 100644
+> > --- a/drivers/android/binderfs.c
+> > +++ b/drivers/android/binderfs.c
+> > @@ -51,18 +51,27 @@ static DEFINE_IDA(binderfs_minors);
+> >  /**
+> >   * binderfs_mount_opts - mount options for binderfs
+> >   * @max: maximum number of allocatable binderfs binder devices
+> > + * @stats_mode: enable binder stats in binderfs.
+> >   */
+> >  struct binderfs_mount_opts {
+> >  	int max;
+> > +	int stats_mode;
+> >  };
 > >  
-> > +#include "hd.h"
-> 
-> No need to include hd.h, you only need a forward declaration of struct
-> gb_host_device.
-> 
-> >  struct gb_operation;
+> >  enum {
+> >  	Opt_max,
+> > +	Opt_stats_mode,
+> >  	Opt_err
+> >  };
 > >  
-> > diff --git a/include/linux/greybus/svc.h b/include/linux/greybus/svc.h
-> > index 507f8bd4e4c8..11a86504c429 100644
-> > --- a/include/linux/greybus/svc.h
-> > +++ b/include/linux/greybus/svc.h
-> > @@ -12,6 +12,8 @@
-> >  #include <linux/types.h>
-> >  #include <linux/device.h>
+> > +enum binderfs_stats_mode {
+> > +	STATS_NONE,
+> > +	STATS_GLOBAL,
+> > +};
+> > +
+> >  static const match_table_t tokens = {
+> >  	{ Opt_max, "max=%d" },
+> > +	{ Opt_stats_mode, "stats=%s" },
+> >  	{ Opt_err, NULL     }
+> >  };
 > >  
-> > +#include "greybus_protocols.h"
+> > @@ -290,8 +299,9 @@ static void binderfs_evict_inode(struct inode *inode)
+> >  static int binderfs_parse_mount_opts(char *data,
+> >  				     struct binderfs_mount_opts *opts)
+> >  {
+> > -	char *p;
+> > +	char *p, *stats;
+> >  	opts->max = BINDERFS_MAX_MINOR;
+> > +	opts->stats_mode = STATS_NONE;
+> >  
+> >  	while ((p = strsep(&data, ",")) != NULL) {
+> >  		substring_t args[MAX_OPT_ARGS];
+> > @@ -311,6 +321,24 @@ static int binderfs_parse_mount_opts(char *data,
+> >  
+> >  			opts->max = max_devices;
+> >  			break;
+> > +		case Opt_stats_mode:
+> > +			stats = match_strdup(&args[0]);
+> > +			if (!stats)
+> > +				return -ENOMEM;
+> > +
+> > +			if (strcmp(stats, "global") != 0) {
+> > +				kfree(stats);
+> > +				return -EINVAL;
+> > +			}
+> > +
+> > +			if (!capable(CAP_SYS_ADMIN)) {
+> > +				kfree(stats);
+> > +				return -EINVAL;
 > 
-> Same here, no need to include all the protocol definitions for struct
-> gb_svc_l2_timer_cfg.
+> Can a non-CAP_SYS_ADMIN task even call this function?  Anyway, if it
 
-I agree with Johan, just forward declare these things and all should be
-fine and much simpler.
+It can. A task that has CAP_SYS_ADMIN in the userns the corresponding
+binderfs mount has been created in can change the max=<nr> mount option.
+Only stats=global currently requires capable(CAP_SYS_ADMIN) aka
+CAP_SYS_ADMIN in the initial userns to prevent non-initial userns from
+snooping at global statistics.
 
-thanks,
-
-greg k-h
+> can, put the check at the top of the case, and just return early before
+> doing any extra work like checking values or allocating memory.
+> 
+> > +			}
+> > +
+> > +			opts->stats_mode = STATS_GLOBAL;
+> > +			kfree(stats);
+> > +			break;
+> >  		default:
+> >  			pr_err("Invalid mount options\n");
+> >  			return -EINVAL;
+> > @@ -322,8 +350,21 @@ static int binderfs_parse_mount_opts(char *data,
+> >  
+> >  static int binderfs_remount(struct super_block *sb, int *flags, char *data)
+> >  {
+> > +	int prev_stats_mode, ret;
+> >  	struct binderfs_info *info = sb->s_fs_info;
+> > -	return binderfs_parse_mount_opts(data, &info->mount_opts);
+> > +
+> > +	prev_stats_mode = info->mount_opts.stats_mode;
+> > +	ret = binderfs_parse_mount_opts(data, &info->mount_opts);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	if (prev_stats_mode != info->mount_opts.stats_mode) {
+> > +		pr_info("Binderfs stats mode cannot be changed during a remount\n");
+> 
+> pr_err()?
+> 
+> thanks,
+> 
+> greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
