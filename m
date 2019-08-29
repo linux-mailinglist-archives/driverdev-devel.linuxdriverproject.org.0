@@ -2,63 +2,61 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A0AE3A2232
-	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Aug 2019 19:27:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7EB94A239C
+	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Aug 2019 20:18:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DA6C388BA0;
-	Thu, 29 Aug 2019 17:26:59 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5A6A4892A4;
+	Thu, 29 Aug 2019 18:17:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cgtr+Sm4OvUW; Thu, 29 Aug 2019 17:26:59 +0000 (UTC)
+	with ESMTP id qjW0-Z1FiWHu; Thu, 29 Aug 2019 18:17:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5A0EE88703;
-	Thu, 29 Aug 2019 17:26:59 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CC1E388876;
+	Thu, 29 Aug 2019 18:17:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0D7621BF288
- for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 17:26:57 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8B8501BF34C
+ for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 18:17:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0A22388703
- for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 17:26:57 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 87F80871A7
+ for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 18:17:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GtUBw4XEPl2j for <devel@linuxdriverproject.org>;
- Thu, 29 Aug 2019 17:26:55 +0000 (UTC)
+ with ESMTP id ntsJHJi0e1ly for <devel@linuxdriverproject.org>;
+ Thu, 29 Aug 2019 18:17:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga08-in.huawei.com [45.249.212.255])
- by hemlock.osuosl.org (Postfix) with ESMTPS id E4E57886FE
- for <devel@driverdev.osuosl.org>; Thu, 29 Aug 2019 17:26:54 +0000 (UTC)
-Received: from DGGEMM403-HUB.china.huawei.com (unknown [172.30.72.55])
- by Forcepoint Email with ESMTP id 67FB2820B3EF025C7953;
- Fri, 30 Aug 2019 01:26:51 +0800 (CST)
-Received: from dggeme762-chm.china.huawei.com (10.3.19.108) by
- DGGEMM403-HUB.china.huawei.com (10.3.20.211) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 30 Aug 2019 01:26:50 +0800
-Received: from architecture4 (10.140.130.215) by
- dggeme762-chm.china.huawei.com (10.3.19.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1591.10; Fri, 30 Aug 2019 01:26:49 +0800
-Date: Fri, 30 Aug 2019 01:26:02 +0800
-From: Gao Xiang <gaoxiang25@huawei.com>
-To: Joe Perches <joe@perches.com>
-Subject: Re: [PATCH v6 01/24] erofs: add on-disk layout
-Message-ID: <20190829172602.GA228414@architecture4>
-References: <20190802125347.166018-1-gaoxiang25@huawei.com>
- <20190802125347.166018-2-gaoxiang25@huawei.com>
- <20190829095954.GB20598@infradead.org>
- <20190829103252.GA64893@architecture4>
- <67d6efbbc9ac6db23215660cb970b7ef29dc0c1d.camel@perches.com>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7A1DE87065
+ for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 18:17:56 +0000 (UTC)
+Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
+ [73.47.72.35])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id BA422233FF;
+ Thu, 29 Aug 2019 18:17:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1567102676;
+ bh=Wja6VqfCilwc3YHL7O41vyxi8Rnh2cRte0lRT6l2i8I=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=VJiRZXXFNPWxKPtz2J15XIRBu7xUWm8ZS8gh0tOMu3c0MJNrA6koKQC+CvFOR6MWj
+ VnYj3ZjCsCOtzsfBAvH22LEmMRDp/ZUStOagrL204DCVamsB7y8gxRvHUR9VqHvses
+ QZpZfQEj0fmz6XCQheJVnlmXI5D+IHT24ivIfjjY=
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH AUTOSEL 4.9 12/16] Tools: hv: kvp: eliminate 'may be used
+ uninitialized' warning
+Date: Thu, 29 Aug 2019 14:17:30 -0400
+Message-Id: <20190829181736.9040-12-sashal@kernel.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190829181736.9040-1-sashal@kernel.org>
+References: <20190829181736.9040-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <67d6efbbc9ac6db23215660cb970b7ef29dc0c1d.camel@perches.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Originating-IP: [10.140.130.215]
-X-ClientProxiedBy: dggeme715-chm.china.huawei.com (10.1.199.111) To
- dggeme762-chm.china.huawei.com (10.3.19.108)
-X-CFilter-Loop: Reflected
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,87 +69,35 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Jan Kara <jack@suse.cz>, Chao Yu <yuchao0@huawei.com>, Dave
- Chinner <david@fromorbit.com>, LKML <linux-kernel@vger.kernel.org>,
- Miao Xie <miaoxie@huawei.com>, devel@driverdev.osuosl.org,
- Stephen Rothwell <sfr@canb.auug.org.au>,
- "Darrick J . Wong" <darrick.wong@oracle.com>,
- Christoph Hellwig <hch@infradead.org>,
- Linus Torvalds <torvalds@linux-foundation.org>,
- Amir Goldstein <amir73il@gmail.com>, Alexander Viro <viro@zeniv.linux.org.uk>,
- Jaegeuk Kim <jaegeuk@kernel.org>, Theodore Ts'o <tytso@mit.edu>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- David Sterba <dsterba@suse.cz>, Li Guifu <bluce.liguifu@huawei.com>,
- Fang Wei <fangwei1@huawei.com>, Pavel Machek <pavel@denx.de>,
- linux-fsdevel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>,
- linux-erofs@lists.ozlabs.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Sasha Levin <sashal@kernel.org>, devel@linuxdriverproject.org,
+ Vitaly Kuznetsov <vkuznets@redhat.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Joe,
-
-On Thu, Aug 29, 2019 at 08:58:17AM -0700, Joe Perches wrote:
-> On Thu, 2019-08-29 at 18:32 +0800, Gao Xiang wrote:
-> > Hi Christoph,
-> > 
-> > On Thu, Aug 29, 2019 at 02:59:54AM -0700, Christoph Hellwig wrote:
-> > > > --- /dev/null
-> > > > +++ b/fs/erofs/erofs_fs.h
-> > > > @@ -0,0 +1,316 @@
-> > > > +/* SPDX-License-Identifier: GPL-2.0-only OR Apache-2.0 */
-> > > > +/*
-> > > > + * linux/fs/erofs/erofs_fs.h
-> > > 
-> > > Please remove the pointless file names in the comment headers.
-> > 
-> > Already removed in the latest version.
-> > 
-> > > > +struct erofs_super_block {
-> > > > +/*  0 */__le32 magic;           /* in the little endian */
-> > > > +/*  4 */__le32 checksum;        /* crc32c(super_block) */
-> > > > +/*  8 */__le32 features;        /* (aka. feature_compat) */
-> > > > +/* 12 */__u8 blkszbits;         /* support block_size == PAGE_SIZE only */
-> > > 
-> > > Please remove all the byte offset comments.  That is something that can
-> > > easily be checked with gdb or pahole.
-> > 
-> > I have no idea the actual issue here.
-> > It will help all developpers better add fields or calculate
-> > these offsets in their mind, and with care.
-> > 
-> > Rather than they didn't run "gdb" or "pahole" and change it by mistake.
-> 
-> I think Christoph is not right here.
-> 
-> Using external tools for validation is extra work
-> when necessary for understanding the code.
-> 
-> The expected offset is somewhat valuable, but
-> perhaps the form is a bit off given the visual
-> run-in to the field types.
-> 
-> The extra work with this form is manipulating all
-> the offsets whenever a structure change occurs.
-> 
-> The comments might be better with a form more like:
-
-Thanks for your comment.
-I will change those places as you suggested, that is fine.
-
-Thanks,
-Gao Xiang
-
-> 
-> struct erofs_super_block {	/* offset description */
-> 	__le32 magic;		/*   0  */
-> 	__le32 checksum;	/*   4  crc32c(super_block) */
-> 	__le32 features;	/*   8  (aka. feature_compat) */
-> 	__u8 blkszbits;		/*  12  support block_size == PAGE_SIZE only */
-> 
-> 
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RnJvbTogVml0YWx5IEt1em5ldHNvdiA8dmt1em5ldHNAcmVkaGF0LmNvbT4KClsgVXBzdHJlYW0g
+Y29tbWl0IDg5ZWI0ZDhkMjU3MjJhMGEwMTk0Y2Y3ZmE0N2JhNjAyZTMyYTZkYTcgXQoKV2hlbiBi
+dWlsZGluZyBodl9rdnBfZGFlbW9uIEdDQy04LjMgY29tcGxhaW5zOgoKaHZfa3ZwX2RhZW1vbi5j
+OiBJbiBmdW5jdGlvbiDigJhrdnBfZ2V0X2lwX2luZm8uY29uc3Rwcm9w4oCZOgpodl9rdnBfZGFl
+bW9uLmM6ODEyOjMwOiB3YXJuaW5nOiDigJhpcF9idWZmZXLigJkgbWF5IGJlIHVzZWQgdW5pbml0
+aWFsaXplZCBpbiB0aGlzIGZ1bmN0aW9uIFstV21heWJlLXVuaW5pdGlhbGl6ZWRdCiAgc3RydWN0
+IGh2X2t2cF9pcGFkZHJfdmFsdWUgKmlwX2J1ZmZlcjsKCnRoaXMgc2VlbXMgdG8gYmUgYSBmYWxz
+ZSBwb3NpdGl2ZTogd2Ugb25seSB1c2UgaXBfYnVmZmVyIHdoZW4Kb3AgPT0gS1ZQX09QX0dFVF9J
+UF9JTkZPIGFuZCBpdCBpcyBvbmx5IHVuc2V0IHdoZW4gb3AgPT0gS1ZQX09QX0VOVU1FUkFURS4K
+ClNpbGVuY2UgdGhlIHdhcm5pbmcgYnkgaW5pdGlhbGl6aW5nIGlwX2J1ZmZlciB0byBOVUxMLgoK
+U2lnbmVkLW9mZi1ieTogVml0YWx5IEt1em5ldHNvdiA8dmt1em5ldHNAcmVkaGF0LmNvbT4KU2ln
+bmVkLW9mZi1ieTogU2FzaGEgTGV2aW4gPHNhc2hhbEBrZXJuZWwub3JnPgotLS0KIHRvb2xzL2h2
+L2h2X2t2cF9kYWVtb24uYyB8IDIgKy0KIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwg
+MSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL3Rvb2xzL2h2L2h2X2t2cF9kYWVtb24uYyBiL3Rv
+b2xzL2h2L2h2X2t2cF9kYWVtb24uYwppbmRleCAxNzc0ODAwNjY4MTY4Li5hM2FjMjgzYTk4NWFl
+IDEwMDY0NAotLS0gYS90b29scy9odi9odl9rdnBfZGFlbW9uLmMKKysrIGIvdG9vbHMvaHYvaHZf
+a3ZwX2RhZW1vbi5jCkBAIC04NzgsNyArODc4LDcgQEAga3ZwX2dldF9pcF9pbmZvKGludCBmYW1p
+bHksIGNoYXIgKmlmX25hbWUsIGludCBvcCwKIAlpbnQgc25fb2Zmc2V0ID0gMDsKIAlpbnQgZXJy
+b3IgPSAwOwogCWNoYXIgKmJ1ZmZlcjsKLQlzdHJ1Y3QgaHZfa3ZwX2lwYWRkcl92YWx1ZSAqaXBf
+YnVmZmVyOworCXN0cnVjdCBodl9rdnBfaXBhZGRyX3ZhbHVlICppcF9idWZmZXIgPSBOVUxMOwog
+CWNoYXIgY2lkcl9tYXNrWzVdOyAvKiAveHl6ICovCiAJaW50IHdlaWdodDsKIAlpbnQgaTsKLS0g
+CjIuMjAuMQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+ZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2Ry
+aXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2
+LWRldmVsCg==
