@@ -2,60 +2,67 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3A5C4A212A
-	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Aug 2019 18:42:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7BD6FA213B
+	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Aug 2019 18:45:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3A85C884AD;
-	Thu, 29 Aug 2019 16:42:24 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id EE2988848B;
+	Thu, 29 Aug 2019 16:45:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id E2xr+WCGPEJU; Thu, 29 Aug 2019 16:42:23 +0000 (UTC)
+	with ESMTP id g+ifMfSzdBiw; Thu, 29 Aug 2019 16:45:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1F1E98846A;
-	Thu, 29 Aug 2019 16:42:22 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E5B368848A;
+	Thu, 29 Aug 2019 16:45:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1643B1BF2BB
- for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 16:42:19 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 6AB461BF2BB
+ for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 16:45:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 10E07883A7
- for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 16:42:19 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 679738703D
+ for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 16:45:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eNvp1Lza9BJV for <devel@linuxdriverproject.org>;
- Thu, 29 Aug 2019 16:42:18 +0000 (UTC)
+ with ESMTP id 8KVn5silEj_4 for <devel@linuxdriverproject.org>;
+ Thu, 29 Aug 2019 16:45:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 62B34883ED
- for <devel@driverdev.osuosl.org>; Thu, 29 Aug 2019 16:42:18 +0000 (UTC)
-Received: from localhost (c-73-47-72-35.hsd1.nh.comcast.net [73.47.72.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 031752070B;
- Thu, 29 Aug 2019 16:42:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1567096938;
- bh=bRpqTp3EjTmLNhGd3WmD0wtWWTzJRaoQEOOaMMh/9qU=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=KtLG/S2tSMFYc5IJeMsFlWVsyXjpRehwx+Mw4Cy0TBEsERF1DhBJvMZRxuTwnvkp1
- uVRPCVZrPmtgecc0hldS6Ie+52Q28fIDUhduZu7Z/L0nV18MC9bRH2qqx/a27YBkx6
- YQdw+rvueX/1l73Y6Gri7rMc/Vc/YyKvYOP05VCA=
-Date: Thu, 29 Aug 2019 12:42:17 -0400
-From: Sasha Levin <sashal@kernel.org>
-To: Tyler Hicks <tyhicks@canonical.com>
-Subject: Re: [PATCH AUTOSEL 4.14 05/14] binder: take read mode of mmap_sem in
- binder_alloc_free_page()
-Message-ID: <20190829164217.GJ5281@sasha-vm>
-References: <20190829105043.2508-1-sashal@kernel.org>
- <20190829105043.2508-5-sashal@kernel.org>
- <20190829151052.GB27650@elm>
+Received: from huawei.com (szxga02-in.huawei.com [45.249.212.188])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D34E187031
+ for <devel@driverdev.osuosl.org>; Thu, 29 Aug 2019 16:45:34 +0000 (UTC)
+Received: from DGGEMM401-HUB.china.huawei.com (unknown [172.30.72.54])
+ by Forcepoint Email with ESMTP id BF8D0B6611532AB7397F;
+ Fri, 30 Aug 2019 00:45:30 +0800 (CST)
+Received: from dggeme762-chm.china.huawei.com (10.3.19.108) by
+ DGGEMM401-HUB.china.huawei.com (10.3.20.209) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Fri, 30 Aug 2019 00:45:30 +0800
+Received: from architecture4 (10.140.130.215) by
+ dggeme762-chm.china.huawei.com (10.3.19.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1591.10; Fri, 30 Aug 2019 00:45:29 +0800
+Date: Fri, 30 Aug 2019 00:44:42 +0800
+From: Gao Xiang <gaoxiang25@huawei.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [PATCH] staging: exfat: add exfat filesystem code to staging
+Message-ID: <20190829164442.GA203852@architecture4>
+References: <20190828170022.GA7873@kroah.com>
+ <20190829062340.GB3047@infradead.org>
+ <20190829063955.GA30193@kroah.com>
+ <20190829094136.GA28643@infradead.org>
+ <20190829095019.GA13557@kroah.com>
+ <20190829103749.GA13661@infradead.org>
+ <20190829111810.GA23393@kroah.com> <20190829151144.GJ23584@kadam>
+ <20190829152757.GA125003@architecture4>
+ <20190829154346.GK23584@kadam>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190829151052.GB27650@elm>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20190829154346.GK23584@kadam>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Originating-IP: [10.140.130.215]
+X-ClientProxiedBy: dggeme707-chm.china.huawei.com (10.1.199.103) To
+ dggeme762-chm.china.huawei.com (10.3.19.108)
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,56 +75,49 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Todd Kjos <tkjos@android.com>, linux-kernel@vger.kernel.org,
- stable@vger.kernel.org
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>, Christoph
+ Hellwig <hch@infradead.org>,
+ Valdis =?gbk?Q?Kl=A8=A5tnieks?= <valdis.kletnieks@vt.edu>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Sasha Levin <alexander.levin@microsoft.com>,
+ "linux-fsdevel@vger.kernel.org" <linux-fsdevel@vger.kernel.org>,
+ OGAWA Hirofumi <hirofumi@mail.parknet.co.jp>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Aug 29, 2019 at 10:10:52AM -0500, Tyler Hicks wrote:
->Hello, Sasha!
->
->On 2019-08-29 06:50:34, Sasha Levin wrote:
->> From: Tyler Hicks <tyhicks@canonical.com>
->>
->> [ Upstream commit 60d4885710836595192c42d3e04b27551d30ec91 ]
->>
->> Restore the behavior of locking mmap_sem for reading in
->> binder_alloc_free_page(), as was first done in commit 3013bf62b67a
->> ("binder: reduce mmap_sem write-side lock"). That change was
->> inadvertently reverted by commit 5cec2d2e5839 ("binder: fix race between
->> munmap() and direct reclaim").
->>
->> In addition, change the name of the label for the error path to
->> accurately reflect that we're taking the lock for reading.
->>
->> Backporting note: This fix is only needed when *both* of the commits
->> mentioned above are applied. That's an unlikely situation since they
->> both landed during the development of v5.1 but only one of them is
->> targeted for stable.
->
->This patch isn't meant to be applied to 4.14 since commit 3013bf62b67a
->("binder: reduce mmap_sem write-side lock") was never brought back to
->4.14.
->
->My backporting note above isn't helpful for AUTOSEL purposes. Do you
->have a suggestion for what I could have done in the patch tags to convey
->that guidance to AUTOSEL?
+Hi Dan,
 
-Hey Tyler,
+On Thu, Aug 29, 2019 at 11:43:46PM +0800, Dan Carpenter wrote:
+> > p.s. There are 2947 (un)likely places in fs/ directory.
+> 
+> I was complaining about you adding new pointless ones, not existing
+> ones.  The likely/unlikely annotations are supposed to be functional and
+> not decorative.  I explained this very clearly.
+> 
+> Probably most of the annotations in fs/ are wrong but they are also
+> harmless except for the slight messiness.  However there are definitely
+> some which are important so removing them all isn't a good idea.
+> 
+> > If you like, I will delete them all.
+> 
+> But for erofs, I don't think that any of the likely/unlikely calls have
+> been thought about so I'm fine with removing all of them in one go.
 
-No, this is just me messing up. AUTOSEL actually handled this well.
+Anyway, I have removed them all in
+https://lore.kernel.org/r/20190829163827.203274-1-gaoxiang25@huawei.com/
 
-What happened here you ask? This series is basically a set of patches
-that fix a different fix that went into stable. It didn't go through the
-regular AUTOSEL flow and I goofed up manually. Sorry for the noise, I've
-dropped the patch.
+Does it look good to you?
 
---
 Thanks,
-Sasha
+Gao Xiang
+
+> 
+> regards,
+> dan carpenter
+> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
