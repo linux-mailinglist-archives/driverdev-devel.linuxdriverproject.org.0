@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 29CE8A16DB
-	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Aug 2019 12:51:52 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0F4BFA16D0
+	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Aug 2019 12:51:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DD7FC87463;
-	Thu, 29 Aug 2019 10:51:48 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 325DE85C5C;
+	Thu, 29 Aug 2019 10:51:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mXRNKM9EO1Mn; Thu, 29 Aug 2019 10:51:48 +0000 (UTC)
+	with ESMTP id Yd5dvqQ_sqwR; Thu, 29 Aug 2019 10:51:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EC20F81BBA;
-	Thu, 29 Aug 2019 10:51:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 824A587236;
+	Thu, 29 Aug 2019 10:51:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0F4A11BF2CA
- for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 10:51:43 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 98DA01BF2CA
+ for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 10:50:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0BFEE820A1
- for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 10:51:43 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9634A2039B
+ for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 10:50:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id A1v9jmx5MEw6 for <devel@linuxdriverproject.org>;
- Thu, 29 Aug 2019 10:51:41 +0000 (UTC)
+ with ESMTP id w5yZl2bfMbXK for <devel@linuxdriverproject.org>;
+ Thu, 29 Aug 2019 10:50:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B7E0388AD3
- for <devel@driverdev.osuosl.org>; Thu, 29 Aug 2019 10:50:22 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 13E7620396
+ for <devel@driverdev.osuosl.org>; Thu, 29 Aug 2019 10:50:50 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 98F2D2189D;
- Thu, 29 Aug 2019 10:50:21 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 2FA412173E;
+ Thu, 29 Aug 2019 10:50:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1567075822;
- bh=l4bD2X66wQYH9bFuxf5F1FvSh18IMJFDWESpsXZ5qBw=;
+ s=default; t=1567075849;
+ bh=L1yVC3rnPFRRolPJlkmoEEORLM7PJgCXDPecs1CxcTc=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Q3PEA99czadxvoNpw2ANW5bfMHOPi8iDoIgTxOJvq//Tm1DTWzCzSTVPCp5f09Gbd
- +Pmg8z2jP2X3XFko3z+H2GhD1UjSu0lnF6kBDvEzFsDO2+eZ4DfmOp+RIWzzqpLjBR
- sj/ziuyWctXt9U4oxZzE6NUd8cOxS6cgL0wSRZl8=
+ b=ilPqGS73Z/N0d4nvJJQ+AkbPPI6iP2RnNbr1gsxoGXINDheHjck+G0zWwZ1OSpUQV
+ KldS1Nlw757lhEXd1rMnXOnKzE3dSWIT/RjUkKelsG5SWA8AmHYtYk7NZ0DdBkf1TR
+ NjL2c7frt/GHwPphnE1ZM6VYpggQaYpTcHnCLL50=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 11/29] binder: take read mode of mmap_sem in
+Subject: [PATCH AUTOSEL 4.14 05/14] binder: take read mode of mmap_sem in
  binder_alloc_free_page()
-Date: Thu, 29 Aug 2019 06:49:51 -0400
-Message-Id: <20190829105009.2265-11-sashal@kernel.org>
+Date: Thu, 29 Aug 2019 06:50:34 -0400
+Message-Id: <20190829105043.2508-5-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190829105009.2265-1-sashal@kernel.org>
-References: <20190829105009.2265-1-sashal@kernel.org>
+In-Reply-To: <20190829105043.2508-1-sashal@kernel.org>
+References: <20190829105043.2508-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
@@ -105,10 +105,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/android/binder_alloc.c b/drivers/android/binder_alloc.c
-index a654ccfd1a222..21dc20c52cd4d 100644
+index e0b0399ff7ec8..81c67459259ec 100644
 --- a/drivers/android/binder_alloc.c
 +++ b/drivers/android/binder_alloc.c
-@@ -962,8 +962,8 @@ enum lru_status binder_alloc_free_page(struct list_head *item,
+@@ -949,8 +949,8 @@ enum lru_status binder_alloc_free_page(struct list_head *item,
  	mm = alloc->vma_vm_mm;
  	if (!mmget_not_zero(mm))
  		goto err_mmget;
@@ -119,7 +119,7 @@ index a654ccfd1a222..21dc20c52cd4d 100644
  	vma = binder_alloc_get_vma(alloc);
  
  	list_lru_isolate(lru, item);
-@@ -978,7 +978,7 @@ enum lru_status binder_alloc_free_page(struct list_head *item,
+@@ -965,7 +965,7 @@ enum lru_status binder_alloc_free_page(struct list_head *item,
  
  		trace_binder_unmap_user_end(alloc, index);
  	}
@@ -128,7 +128,7 @@ index a654ccfd1a222..21dc20c52cd4d 100644
  	mmput(mm);
  
  	trace_binder_unmap_kernel_start(alloc, index);
-@@ -993,7 +993,7 @@ enum lru_status binder_alloc_free_page(struct list_head *item,
+@@ -980,7 +980,7 @@ enum lru_status binder_alloc_free_page(struct list_head *item,
  	mutex_unlock(&alloc->mutex);
  	return LRU_REMOVED_RETRY;
  
