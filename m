@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7EB94A239C
-	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Aug 2019 20:18:01 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id DC7D6A23A1
+	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Aug 2019 20:18:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5A6A4892A4;
-	Thu, 29 Aug 2019 18:17:59 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 143FB88607;
+	Thu, 29 Aug 2019 18:18:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qjW0-Z1FiWHu; Thu, 29 Aug 2019 18:17:59 +0000 (UTC)
+	with ESMTP id unRXDRsHkuRM; Thu, 29 Aug 2019 18:18:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CC1E388876;
-	Thu, 29 Aug 2019 18:17:58 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E93DC8853D;
+	Thu, 29 Aug 2019 18:18:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8B8501BF34C
- for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 18:17:57 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 7CD621BF34C
+ for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 18:18:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 87F80871A7
- for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 18:17:57 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7A0C4885DB
+ for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 18:18:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ntsJHJi0e1ly for <devel@linuxdriverproject.org>;
- Thu, 29 Aug 2019 18:17:56 +0000 (UTC)
+ with ESMTP id h06WthqbOT29 for <devel@linuxdriverproject.org>;
+ Thu, 29 Aug 2019 18:18:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7A1DE87065
- for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 18:17:56 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 13FC78853D
+ for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 18:18:17 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id BA422233FF;
- Thu, 29 Aug 2019 18:17:55 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 550692341C;
+ Thu, 29 Aug 2019 18:18:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1567102676;
+ s=default; t=1567102696;
  bh=Wja6VqfCilwc3YHL7O41vyxi8Rnh2cRte0lRT6l2i8I=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=VJiRZXXFNPWxKPtz2J15XIRBu7xUWm8ZS8gh0tOMu3c0MJNrA6koKQC+CvFOR6MWj
- VnYj3ZjCsCOtzsfBAvH22LEmMRDp/ZUStOagrL204DCVamsB7y8gxRvHUR9VqHvses
- QZpZfQEj0fmz6XCQheJVnlmXI5D+IHT24ivIfjjY=
+ b=YPIBs0Kt60RjzTIegJrs4IDNvwHTiQPcsyMOjPFgWgOQAvsvU5rbGuNukFSyRNfhf
+ 7wWsxduacVJ9o0Zu4qCbn0BNucdqZykkpNaCAygqbeYJBJFd6Hunr6HykoEf3/uWjK
+ vsoEh7Mp0LTxBDCON8uiJuWw+k3w0d1zI+4OVPcg=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.9 12/16] Tools: hv: kvp: eliminate 'may be used
+Subject: [PATCH AUTOSEL 4.4 12/15] Tools: hv: kvp: eliminate 'may be used
  uninitialized' warning
-Date: Thu, 29 Aug 2019 14:17:30 -0400
-Message-Id: <20190829181736.9040-12-sashal@kernel.org>
+Date: Thu, 29 Aug 2019 14:17:59 -0400
+Message-Id: <20190829181802.9619-12-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190829181736.9040-1-sashal@kernel.org>
-References: <20190829181736.9040-1-sashal@kernel.org>
+In-Reply-To: <20190829181802.9619-1-sashal@kernel.org>
+References: <20190829181802.9619-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
