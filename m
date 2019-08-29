@@ -1,54 +1,97 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 884DDA1E83
-	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Aug 2019 17:11:05 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6352988C3D;
-	Thu, 29 Aug 2019 15:11:03 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id l3l+M98QMJTB; Thu, 29 Aug 2019 15:11:03 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CEBB388B80;
-	Thu, 29 Aug 2019 15:11:02 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 027321BF487
- for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 15:11:01 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 85BC9A1E8B
+	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Aug 2019 17:12:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id F2FF98722F
- for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 15:11:00 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F1C1F8723F;
+	Thu, 29 Aug 2019 15:12:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id nxke-4-1kpfR; Thu, 29 Aug 2019 15:12:22 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CBB1587239;
+	Thu, 29 Aug 2019 15:12:21 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 847891BF487
+ for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 15:12:19 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 81C83254B3
+ for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 15:12:19 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FcAZXW5TSNzL for <devel@linuxdriverproject.org>;
- Thu, 29 Aug 2019 15:10:59 +0000 (UTC)
+ with ESMTP id FTONpqDKp-hp for <devel@linuxdriverproject.org>;
+ Thu, 29 Aug 2019 15:12:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A267484EEB
- for <devel@driverdev.osuosl.org>; Thu, 29 Aug 2019 15:10:59 +0000 (UTC)
-Received: from 162-237-133-238.lightspeed.rcsntx.sbcglobal.net
- ([162.237.133.238] helo=elm)
- by youngberry.canonical.com with esmtpsa (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.76) (envelope-from <tyhicks@canonical.com>)
- id 1i3M4d-0001RJ-7M; Thu, 29 Aug 2019 15:10:55 +0000
-Date: Thu, 29 Aug 2019 10:10:52 -0500
-From: Tyler Hicks <tyhicks@canonical.com>
-To: Sasha Levin <sashal@kernel.org>
-Subject: Re: [PATCH AUTOSEL 4.14 05/14] binder: take read mode of mmap_sem in
- binder_alloc_free_page()
-Message-ID: <20190829151052.GB27650@elm>
-References: <20190829105043.2508-1-sashal@kernel.org>
- <20190829105043.2508-5-sashal@kernel.org>
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by silver.osuosl.org (Postfix) with ESMTPS id 1981320499
+ for <devel@driverdev.osuosl.org>; Thu, 29 Aug 2019 15:12:19 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x7TF95bt170618;
+ Thu, 29 Aug 2019 15:12:18 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=7KVDA6makHRKF1W7P13Rqq46WC6MHa9VLKGUtmhcqT8=;
+ b=G49twJpyt6U9+ghNKLS3TpWvBUnt042QYHxLQHop0rr1a+6dxqfK1NmRrBZhEOydcbHd
+ oahY/w805QYqFqCqv0Q5qXv+N+cUe6Sj7IPqH5qiwMQaPdn4liUego9Ki94PMEJbfL5R
+ i+eCb6iqIbSKLjIOk+gQitPl5BdStrhqBZ0IXcOtgOcWJDWeNyWHBLftVQojZFFfncVq
+ pX3BgE4RyM5neoOtPW+JI4eC30P0AaIEWJBzMhUG/P27GToCJUTwaonk1AEh8SdZZpdA
+ owV8wCeEfpn75Fjjs5cd8HPJmmL2T8bBQ3FweM73CpZn47TKKWcheYSvDEdkovYm5eRl wA== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by userp2130.oracle.com with ESMTP id 2uph3c00nb-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 29 Aug 2019 15:12:18 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x7TF9VPk068501;
+ Thu, 29 Aug 2019 15:12:17 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by aserp3030.oracle.com with ESMTP id 2up98t0djr-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 29 Aug 2019 15:12:17 +0000
+Received: from abhmp0011.oracle.com (abhmp0011.oracle.com [141.146.116.17])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x7TFCDL7013582;
+ Thu, 29 Aug 2019 15:12:13 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 29 Aug 2019 08:12:12 -0700
+Date: Thu, 29 Aug 2019 18:11:44 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH] staging: exfat: add exfat filesystem code to staging
+Message-ID: <20190829151144.GJ23584@kadam>
+References: <20190828160817.6250-1-gregkh@linuxfoundation.org>
+ <20190828170022.GA7873@kroah.com>
+ <20190829062340.GB3047@infradead.org>
+ <20190829063955.GA30193@kroah.com>
+ <20190829094136.GA28643@infradead.org>
+ <20190829095019.GA13557@kroah.com>
+ <20190829103749.GA13661@infradead.org>
+ <20190829111810.GA23393@kroah.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190829105043.2508-5-sashal@kernel.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20190829111810.GA23393@kroah.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9363
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=725
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1906280000 definitions=main-1908290164
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9363
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=792 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1906280000
+ definitions=main-1908290164
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,91 +104,25 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Todd Kjos <tkjos@android.com>, linux-kernel@vger.kernel.org,
- stable@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Sasha Levin <alexander.levin@microsoft.com>,
+ Valdis =?utf-8?Q?Kl=C4=93tnieks?= <valdis.kletnieks@vt.edu>,
+ linux-kernel@vger.kernel.org, Christoph Hellwig <hch@infradead.org>,
+ linux-fsdevel@vger.kernel.org, OGAWA Hirofumi <hirofumi@mail.parknet.co.jp>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello, Sasha!
+On Thu, Aug 29, 2019 at 01:18:10PM +0200, Greg Kroah-Hartman wrote:
+> It could always use more review, which the developers asked for
+> numerous times.
 
-On 2019-08-29 06:50:34, Sasha Levin wrote:
-> From: Tyler Hicks <tyhicks@canonical.com>
-> 
-> [ Upstream commit 60d4885710836595192c42d3e04b27551d30ec91 ]
-> 
-> Restore the behavior of locking mmap_sem for reading in
-> binder_alloc_free_page(), as was first done in commit 3013bf62b67a
-> ("binder: reduce mmap_sem write-side lock"). That change was
-> inadvertently reverted by commit 5cec2d2e5839 ("binder: fix race between
-> munmap() and direct reclaim").
-> 
-> In addition, change the name of the label for the error path to
-> accurately reflect that we're taking the lock for reading.
-> 
-> Backporting note: This fix is only needed when *both* of the commits
-> mentioned above are applied. That's an unlikely situation since they
-> both landed during the development of v5.1 but only one of them is
-> targeted for stable.
+I stopped commenting on erofs style because all the likely/unlikely()
+nonsense is a pet peeve.
 
-This patch isn't meant to be applied to 4.14 since commit 3013bf62b67a
-("binder: reduce mmap_sem write-side lock") was never brought back to
-4.14.
+regards,
+dan carpenter
 
-My backporting note above isn't helpful for AUTOSEL purposes. Do you
-have a suggestion for what I could have done in the patch tags to convey
-that guidance to AUTOSEL?
-
-Tyler
-
-> 
-> Fixes: 5cec2d2e5839 ("binder: fix race between munmap() and direct reclaim")
-> Signed-off-by: Tyler Hicks <tyhicks@canonical.com>
-> Acked-by: Todd Kjos <tkjos@android.com>
-> Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> Signed-off-by: Sasha Levin <sashal@kernel.org>
-> ---
->  drivers/android/binder_alloc.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/android/binder_alloc.c b/drivers/android/binder_alloc.c
-> index e0b0399ff7ec8..81c67459259ec 100644
-> --- a/drivers/android/binder_alloc.c
-> +++ b/drivers/android/binder_alloc.c
-> @@ -949,8 +949,8 @@ enum lru_status binder_alloc_free_page(struct list_head *item,
->  	mm = alloc->vma_vm_mm;
->  	if (!mmget_not_zero(mm))
->  		goto err_mmget;
-> -	if (!down_write_trylock(&mm->mmap_sem))
-> -		goto err_down_write_mmap_sem_failed;
-> +	if (!down_read_trylock(&mm->mmap_sem))
-> +		goto err_down_read_mmap_sem_failed;
->  	vma = binder_alloc_get_vma(alloc);
->  
->  	list_lru_isolate(lru, item);
-> @@ -965,7 +965,7 @@ enum lru_status binder_alloc_free_page(struct list_head *item,
->  
->  		trace_binder_unmap_user_end(alloc, index);
->  	}
-> -	up_write(&mm->mmap_sem);
-> +	up_read(&mm->mmap_sem);
->  	mmput(mm);
->  
->  	trace_binder_unmap_kernel_start(alloc, index);
-> @@ -980,7 +980,7 @@ enum lru_status binder_alloc_free_page(struct list_head *item,
->  	mutex_unlock(&alloc->mutex);
->  	return LRU_REMOVED_RETRY;
->  
-> -err_down_write_mmap_sem_failed:
-> +err_down_read_mmap_sem_failed:
->  	mmput_async(mm);
->  err_mmget:
->  err_page_already_freed:
-> -- 
-> 2.20.1
-> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
