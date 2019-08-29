@@ -1,59 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AFAAAA11EB
-	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Aug 2019 08:42:36 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0F1BCA123B
+	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Aug 2019 09:02:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0A67D88628;
-	Thu, 29 Aug 2019 06:42:35 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 47A36893B7;
+	Thu, 29 Aug 2019 07:02:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3vPMxeGkGCLi; Thu, 29 Aug 2019 06:42:34 +0000 (UTC)
+	with ESMTP id t1Ak03qSLjWk; Thu, 29 Aug 2019 07:02:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C5732885B4;
-	Thu, 29 Aug 2019 06:42:33 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B5E5389297;
+	Thu, 29 Aug 2019 07:02:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 29C651BF2B6
- for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 06:42:32 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 85DD51BF9B5
+ for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 07:02:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 25388885B4
- for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 06:42:32 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7DCA1871AD
+ for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 07:02:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KEJ1PctlIVCD for <devel@linuxdriverproject.org>;
- Thu, 29 Aug 2019 06:42:31 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id C3F9B88586
- for <devel@driverdev.osuosl.org>; Thu, 29 Aug 2019 06:42:31 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 0EC402073F;
- Thu, 29 Aug 2019 06:42:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1567060951;
- bh=LUI4hV71RkxJNICcSpNRgTs4BSj0yh0DSutBWm6dN1w=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ksQxfqbw0Qo5gH5tpCVTsvpYOcGOlvDWxehZBThWuSiefXxTar0I7MZfPHpewu5fq
- 5HagXVeJ4iJsob7R+YXSyr9j9HAA/E5hM0M17kEIpMQWS3PSsMWj5eU3wgihlj4HlC
- MvOqqkqQ4t/ie5gl/iy8jF3gbMWm5siOcwBeUlkQ=
-Date: Thu, 29 Aug 2019 08:42:29 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Peikan Tsai <peikantsai@gmail.com>
-Subject: Re: [PATCH] binder: Use kmem_cache for binder_thread
-Message-ID: <20190829064229.GA30423@kroah.com>
-References: <20190829054953.GA18328@mark-All-Series>
+ with ESMTP id it9jAoPF28oI for <devel@linuxdriverproject.org>;
+ Thu, 29 Aug 2019 07:02:43 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from huawei.com (szxga01-in.huawei.com [45.249.212.187])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 788DB84578
+ for <devel@driverdev.osuosl.org>; Thu, 29 Aug 2019 07:02:43 +0000 (UTC)
+Received: from DGGEMM406-HUB.china.huawei.com (unknown [172.30.72.56])
+ by Forcepoint Email with ESMTP id 6612FD7DAFD70E48869C;
+ Thu, 29 Aug 2019 15:02:37 +0800 (CST)
+Received: from dggeme762-chm.china.huawei.com (10.3.19.108) by
+ DGGEMM406-HUB.china.huawei.com (10.3.20.214) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 29 Aug 2019 15:02:36 +0800
+Received: from architecture4 (10.140.130.215) by
+ dggeme762-chm.china.huawei.com (10.3.19.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1591.10; Thu, 29 Aug 2019 15:02:36 +0800
+Date: Thu, 29 Aug 2019 15:01:49 +0800
+From: Gao Xiang <gaoxiang25@huawei.com>
+To: Christoph Hellwig <hch@infradead.org>
+Subject: Re: [PATCH] staging: exfat: add exfat filesystem code to staging
+Message-ID: <20190829070149.GA155353@architecture4>
+References: <20190828160817.6250-1-gregkh@linuxfoundation.org>
+ <20190828170022.GA7873@kroah.com>
+ <20190829062340.GB3047@infradead.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190829054953.GA18328@mark-All-Series>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+In-Reply-To: <20190829062340.GB3047@infradead.org>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Originating-IP: [10.140.130.215]
+X-ClientProxiedBy: dggeme717-chm.china.huawei.com (10.1.199.113) To
+ dggeme762-chm.china.huawei.com (10.3.19.108)
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,36 +69,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, tkjos@android.com, linux-kernel@vger.kernel.org,
- arve@android.com, joel@joelfernandes.org, maco@android.com,
- christian@brauner.io
+Cc: devel@driverdev.osuosl.org, Eric Biggers <ebiggers@kernel.org>,
+ Valdis =?gbk?Q?Kl=A8=A5tnieks?= <valdis.kletnieks@vt.edu>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, yuchao0@huawei.com,
+ linux-kernel@vger.kernel.org, Sasha Levin <alexander.levin@microsoft.com>,
+ Zefan Li <lizefan@huawei.com>, linux-fsdevel@vger.kernel.org,
+ "Theodore Y. Ts'o" <tytso@mit.edu>, miaoxie@huawei.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Aug 29, 2019 at 01:49:53PM +0800, Peikan Tsai wrote:
-> Hi,
+Hi Christoph,
 
-No need for that in a changelog text :)
+On Wed, Aug 28, 2019 at 11:23:40PM -0700, Christoph Hellwig wrote:
+> Can we please just review the damn thing and get it into the proper
+> tree?  That whole concept of staging file systems just has been one
+> fricking disaster, including Greg just moving not fully reviewed ones
+> over like erofs just because he feels like it.  I'm getting sick and
+> tired of this scheme.
 
-> The allocated size for each binder_thread is 512 bytes by kzalloc.
-> Because the size of binder_thread is fixed and it's only 304 bytes.
-> It will save 208 bytes per binder_thread when use create a kmem_cache
-> for the binder_thread.
+I just want to a word on EROFS stuff (I'm not suitable to comment
+on the current exfat implementation). Since EROFS stuff has been
+in staging tree for more than a year, anyone who wants to review
+it can review this filesystem at any time.
 
-Are you _sure_ it really will save that much memory?  You want to do
-allocations based on a nice alignment for lots of good reasons,
-especially for something that needs quick accesses.
+EROFS is not just a homebrew or experimental fs for now, it has been
+widely used for many commerical smartphones, and we will upstream it
+to AOSP for more Android smartphones after it gets merged to upstream.
+I personally cc-ed you for a month, and I didn't get any objection
+from others (including Linus) for about 2 months. That isn't because
+of someone likes it, rather we cannot make no progress compared with
+some exist fs community because this is our love work.
 
-Did you test your change on a system that relies on binder and find any
-speed improvement or decrease, and any actual memory savings?
+And it's self-contained driver at least, and it's disabled by default,
+It cannot be stayed in staging tree to do a lot of EROFS feature
+improvements itself forever (since it is cleaned enough).
+It has proven its validity as well.
 
-If so, can you post your results?
+Thanks,
+Gao Xiang
 
-thanks,
-
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
