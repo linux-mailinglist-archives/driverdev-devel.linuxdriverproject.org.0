@@ -1,60 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0E972A1934
-	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Aug 2019 13:47:12 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2E36DA1974
+	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Aug 2019 14:00:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C87948717E;
-	Thu, 29 Aug 2019 11:47:09 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 42CBE89200;
+	Thu, 29 Aug 2019 12:00:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qF-0Xdc7uTze; Thu, 29 Aug 2019 11:47:09 +0000 (UTC)
+	with ESMTP id oFxqbbkcWu+R; Thu, 29 Aug 2019 12:00:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9D57F8712F;
-	Thu, 29 Aug 2019 11:47:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B394B8888A;
+	Thu, 29 Aug 2019 12:00:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B51D61BF3CA
- for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 11:47:05 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 302071BF2C8
+ for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 12:00:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id AF4BB8812B
- for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 11:47:05 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 2A0DA834A0
+ for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 12:00:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2663lNpcLTL5 for <devel@linuxdriverproject.org>;
- Thu, 29 Aug 2019 11:47:04 +0000 (UTC)
+ with ESMTP id bkOzYUR95U0h for <devel@linuxdriverproject.org>;
+ Thu, 29 Aug 2019 12:00:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga01-in.huawei.com [45.249.212.187])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D735088129
- for <devel@driverdev.osuosl.org>; Thu, 29 Aug 2019 11:47:03 +0000 (UTC)
+Received: from huawei.com (szxga08-in.huawei.com [45.249.212.255])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id F23FB834FE
+ for <devel@driverdev.osuosl.org>; Thu, 29 Aug 2019 12:00:13 +0000 (UTC)
 Received: from DGGEMM401-HUB.china.huawei.com (unknown [172.30.72.53])
- by Forcepoint Email with ESMTP id 2BEB912594CBE9FD61FD;
- Thu, 29 Aug 2019 19:46:59 +0800 (CST)
+ by Forcepoint Email with ESMTP id 1F79FF69D7A4173BC632;
+ Thu, 29 Aug 2019 20:00:11 +0800 (CST)
 Received: from dggeme762-chm.china.huawei.com (10.3.19.108) by
  DGGEMM401-HUB.china.huawei.com (10.3.20.209) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 29 Aug 2019 19:46:58 +0800
+ id 14.3.439.0; Thu, 29 Aug 2019 20:00:10 +0800
 Received: from architecture4 (10.140.130.215) by
  dggeme762-chm.china.huawei.com (10.3.19.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1591.10; Thu, 29 Aug 2019 19:46:57 +0800
-Date: Thu, 29 Aug 2019 19:46:11 +0800
+ 15.1.1591.10; Thu, 29 Aug 2019 20:00:09 +0800
+Date: Thu, 29 Aug 2019 19:59:22 +0800
 From: Gao Xiang <gaoxiang25@huawei.com>
 To: Christoph Hellwig <hch@infradead.org>
-Subject: Re: [PATCH v6 04/24] erofs: add raw address_space operations
-Message-ID: <20190829114610.GF64893@architecture4>
+Subject: Re: [PATCH v6 05/24] erofs: add inode operations
+Message-ID: <20190829115922.GG64893@architecture4>
 References: <20190802125347.166018-1-gaoxiang25@huawei.com>
- <20190802125347.166018-5-gaoxiang25@huawei.com>
- <20190829101721.GD20598@infradead.org>
+ <20190802125347.166018-6-gaoxiang25@huawei.com>
+ <20190829102426.GE20598@infradead.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190829101721.GD20598@infradead.org>
+In-Reply-To: <20190829102426.GE20598@infradead.org>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 X-Originating-IP: [10.140.130.215]
-X-ClientProxiedBy: dggeme709-chm.china.huawei.com (10.1.199.105) To
+X-ClientProxiedBy: dggeme712-chm.china.huawei.com (10.1.199.108) To
  dggeme762-chm.china.huawei.com (10.3.19.108)
 X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -85,20 +85,46 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Christoph,
+On Thu, Aug 29, 2019 at 03:24:26AM -0700, Christoph Hellwig wrote:
 
-On Thu, Aug 29, 2019 at 03:17:21AM -0700, Christoph Hellwig wrote:
-> The actual address_space operations seem to largely duplicate
-> the iomap versions.  Please use those instead.  Also I don't think
-> any new file system should write up ->bmap these days.
+[]
 
-iomap doesn't support tail-end packing inline data till now,
-I think Chao and I told you and Andreas before [1].
+> 
+> > +
+> > +		/* fill last page if inline data is available */
+> > +		err = fill_inline_data(inode, data, ofs);
+> 
+> Well, I think you should move the is_inode_flat_inline and
+> (S_ISLNK(inode->i_mode) && inode->i_size < PAGE_SIZE) checks from that
+> helper here, as otherwise you make everyone wonder why you'd always
+> fill out the inline data.
 
-Since EROFS keeps a self-contained driver for now, we will use
-iomap if it supports tail-end packing inline data later.
+Currently, fill_inline_data() only fills for fast symlink,
+later we can fill any tail-end block (such as dir block)
+for our requirements.
 
-[1] https://lore.kernel.org/linux-fsdevel/90fca1c4-c142-992d-ebf3-03c8017f95b7@huawei.com/
+And I think that is minor.
+
+> 
+> > +static inline struct inode *erofs_iget_locked(struct super_block *sb,
+> > +					      erofs_nid_t nid)
+> > +{
+> > +	const unsigned long hashval = erofs_inode_hash(nid);
+> > +
+> > +#if BITS_PER_LONG >= 64
+> > +	/* it is safe to use iget_locked for >= 64-bit platform */
+> > +	return iget_locked(sb, hashval);
+> > +#else
+> > +	return iget5_locked(sb, hashval, erofs_ilookup_test_actor,
+> > +		erofs_iget_set_actor, &nid);
+> > +#endif
+> 
+> Just use the slightly more complicated 32-bit version everywhere so that
+> you have a single actually tested code path.  And then remove this
+> helper.
+
+The consideration is simply because iget_locked performs better
+than iget5_locked.
 
 Thanks,
 Gao Xiang
