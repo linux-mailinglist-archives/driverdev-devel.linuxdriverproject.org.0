@@ -1,83 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2D651A2691
-	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Aug 2019 20:59:15 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A7B4BA26F1
+	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Aug 2019 21:04:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 27FAF89342;
-	Thu, 29 Aug 2019 18:59:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B43B8261D5;
+	Thu, 29 Aug 2019 19:04:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id S9pW7l4u3joz; Thu, 29 Aug 2019 18:59:13 +0000 (UTC)
+	with ESMTP id TrCFpLhdOg-Q; Thu, 29 Aug 2019 19:04:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A0F75891DB;
-	Thu, 29 Aug 2019 18:59:12 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1BC6926143;
+	Thu, 29 Aug 2019 19:04:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1F8081BF20D
- for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 18:59:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 771591BF471
+ for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 19:04:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 1C1AB891EE
- for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 18:59:07 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 738F5892A1
+ for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 19:04:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mQj68f2srNj3 for <devel@linuxdriverproject.org>;
- Thu, 29 Aug 2019 18:59:06 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
- [209.85.210.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 2F8CA891DB
- for <devel@driverdev.osuosl.org>; Thu, 29 Aug 2019 18:59:06 +0000 (UTC)
-Received: by mail-pf1-f196.google.com with SMTP id g2so2710463pfq.0
- for <devel@driverdev.osuosl.org>; Thu, 29 Aug 2019 11:59:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=R3qNdsy+RA8q5xEKIekaterX1FMMD41w6Pyv+N6rQvM=;
- b=Ryr4eWHNakM79Uz5IF+shdCAGHLvxz+qHwYhVYS5GxwXavW6MOFOTSUealV+NvDYen
- PHrOFCF21p1YXkfFXnXaLBro1auhCw9R6KnpLk9lAdLVu5OJGGVhM03AosfNbuTn/kyz
- v4B5PzKt/ZhHkQR58J6/umPhXhxfih3PctvYD6BO7X18UI/9HFTkxtM94rMcAPyO6vNn
- KBFVnwVlkumWteaX1t17ehT6FWvNuWZVUq6e+to4qTaDHYXOOCFFlUEqNZl9VRKamTvS
- SeD1Il092xMIrn+n6AlCRxVVDx0U/P9w763tTH+vIPBJcIGMlDV7pvEk8AwLxidWvDF0
- lyOQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=R3qNdsy+RA8q5xEKIekaterX1FMMD41w6Pyv+N6rQvM=;
- b=K4ZmBfXwUgrp/c5DBEelfno3l0BCl4KCzpJ4WPp7nFFB9N+EXH03pJ6wpBY9RhMu5f
- hKEl47SJIZLC32mND5TYv/z2NPUD/5d1HV0bCwRraOY4x8ROA/RyNoUFSInMszV7NxKT
- Lak5y0taZ0PJo6ieX9M9VLcmc7xWChs5n9rsGSGKOk3tlY9BNeL/Yb85WC5192iUXYyo
- US4rC9+yMeVnkYd8ghoRUnGT3iDoapPGPrCYA0E6pgmnGESRg7DJcAjA9dahxaHEhmk0
- PKZdsbsJ/FyhTqYCdHQOLoW20hufxn1IXbFq5Ivor5TPlMCySmVfpPidsZ0p+W+2nHia
- SjIg==
-X-Gm-Message-State: APjAAAW7devvqUYFCypnMq532C2GOCCicZ1BAZ9HsPgNyBKMDJ/uoP+s
- /9j0ZVMB+DCe8GeNmLZAag==
-X-Google-Smtp-Source: APXvYqxAgO1aXnb8LpUxDik+ZPEub6ZSujBoieCX5UO9w0IcvSYwK7FUPYEVitI6Mld6z8OxPlBGRA==
-X-Received: by 2002:a63:6146:: with SMTP id v67mr10147635pgb.271.1567105145753; 
- Thu, 29 Aug 2019 11:59:05 -0700 (PDT)
-Received: from mark-All-Series (114-32-231-59.HINET-IP.hinet.net.
- [114.32.231.59])
- by smtp.gmail.com with ESMTPSA id b3sm4623185pfp.65.2019.08.29.11.59.03
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 29 Aug 2019 11:59:04 -0700 (PDT)
-Date: Fri, 30 Aug 2019 02:59:01 +0800
-From: Peikan Tsai <peikantsai@gmail.com>
-To: Christian Brauner <christian.brauner@ubuntu.com>
-Subject: Re: [PATCH] binder: Use kmem_cache for binder_thread
-Message-ID: <20190829185901.GA4680@mark-All-Series>
-References: <20190829054953.GA18328@mark-All-Series>
- <20190829064229.GA30423@kroah.com>
- <20190829135359.GB63638@google.com>
- <20190829152721.ttsyfwaeygmwmcu7@wittgenstein>
+ with ESMTP id nrTbQhWLRjMv for <devel@linuxdriverproject.org>;
+ Thu, 29 Aug 2019 19:04:35 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.siol.net (mailoutvs37.siol.net [185.57.226.228])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 708A28928F
+ for <devel@driverdev.osuosl.org>; Thu, 29 Aug 2019 19:04:35 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.siol.net (Postfix) with ESMTP id 79FA3521E5A;
+ Thu, 29 Aug 2019 21:04:32 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at psrvmta11.zcs-production.pri
+Received: from mail.siol.net ([127.0.0.1])
+ by localhost (psrvmta11.zcs-production.pri [127.0.0.1]) (amavisd-new,
+ port 10032)
+ with ESMTP id w7XRHfaMZ7tm; Thu, 29 Aug 2019 21:04:32 +0200 (CEST)
+Received: from mail.siol.net (localhost [127.0.0.1])
+ by mail.siol.net (Postfix) with ESMTPS id DC64152437F;
+ Thu, 29 Aug 2019 21:04:31 +0200 (CEST)
+Received: from jernej-laptop.localnet (cpe-86-58-59-25.static.triera.net
+ [86.58.59.25]) (Authenticated sender: jernej.skrabec@siol.net)
+ by mail.siol.net (Postfix) with ESMTPA id D0323521E5A;
+ Thu, 29 Aug 2019 21:04:28 +0200 (CEST)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@siol.net>
+To: Boris Brezillon <boris.brezillon@collabora.com>
+Subject: Re: [PATCH 5/8] media: cedrus: Detect first slice of a frame
+Date: Thu, 29 Aug 2019 21:04:28 +0200
+Message-ID: <3132748.mYbjOY1tKM@jernej-laptop>
+In-Reply-To: <20190826202831.311c7c20@collabora.com>
+References: <20190822194500.2071-1-jernej.skrabec@siol.net>
+ <20190822194500.2071-6-jernej.skrabec@siol.net>
+ <20190826202831.311c7c20@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190829152721.ttsyfwaeygmwmcu7@wittgenstein>
-User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,62 +68,89 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, tkjos@android.com,
- Greg KH <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- arve@android.com, Joel Fernandes <joel@joelfernandes.org>, maco@android.com
+Cc: devel@driverdev.osuosl.org, acourbot@chromium.org, pawel@osciak.com,
+ jonas@kwiboo.se, gregkh@linuxfoundation.org, wens@csie.org, mripard@kernel.org,
+ tfiga@chromium.org, paul.kocialkowski@bootlin.com, kyungmin.park@samsung.com,
+ linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ hverkuil-cisco@xs4all.nl, mchehab@kernel.org, ezequiel@collabora.com,
+ linux-kernel@vger.kernel.org, m.szyprowski@samsung.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Aug 29, 2019 at 05:27:22PM +0200, Christian Brauner wrote:
-> On Thu, Aug 29, 2019 at 09:53:59AM -0400, Joel Fernandes wrote:
-> > On Thu, Aug 29, 2019 at 08:42:29AM +0200, Greg KH wrote:
-> > > On Thu, Aug 29, 2019 at 01:49:53PM +0800, Peikan Tsai wrote:
-> > [snip] 
-> > > > The allocated size for each binder_thread is 512 bytes by kzalloc.
-> > > > Because the size of binder_thread is fixed and it's only 304 bytes.
-> > > > It will save 208 bytes per binder_thread when use create a kmem_cache
-> > > > for the binder_thread.
-> > > 
-> > > Are you _sure_ it really will save that much memory?  You want to do
-> > > allocations based on a nice alignment for lots of good reasons,
-> > > especially for something that needs quick accesses.
+Dne ponedeljek, 26. avgust 2019 ob 20:28:31 CEST je Boris Brezillon 
+napisal(a):
+> Hi Jernej,
+> 
+> On Thu, 22 Aug 2019 21:44:57 +0200
+> 
+> Jernej Skrabec <jernej.skrabec@siol.net> wrote:
+> > When codec supports multiple slices in one frame, VPU has to know when
+> > first slice of each frame is being processed, presumably to correctly
+> > clear/set data in auxiliary buffers.
 > > 
-> > Alignment can be done for slab allocations, kmem_cache_create() takes an
-> > align argument. I am not sure what the default alignment of objects is
-> > though (probably no default alignment). What is an optimal alignment in your
-> > view?
-> 
-> Probably SLAB_HWCACHE_ALIGN would make most sense.
-> 
-
-Agree. Thanks for yours comments and suggestions.
-I'll put SLAB_HWCACHE_ALIGN it in patch v2.
-
+> > Add first_slice field to cedrus_run structure and set it according to
+> > timestamps of capture and output buffers. If timestamps are different,
+> > it's first slice and viceversa.
 > > 
-> > > Did you test your change on a system that relies on binder and find any
-> > > speed improvement or decrease, and any actual memory savings?
-> > > 
-> > > If so, can you post your results?
+> > Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
+> > ---
 > > 
-> > That's certainly worth it and I thought of asking for the same, but spoke too
-> > soon!
+> >  drivers/staging/media/sunxi/cedrus/cedrus.h     | 1 +
+> >  drivers/staging/media/sunxi/cedrus/cedrus_dec.c | 2 ++
+> >  2 files changed, 3 insertions(+)
+> > 
+> > diff --git a/drivers/staging/media/sunxi/cedrus/cedrus.h
+> > b/drivers/staging/media/sunxi/cedrus/cedrus.h index
+> > 2f017a651848..32cb38e541c6 100644
+> > --- a/drivers/staging/media/sunxi/cedrus/cedrus.h
+> > +++ b/drivers/staging/media/sunxi/cedrus/cedrus.h
+> > @@ -70,6 +70,7 @@ struct cedrus_mpeg2_run {
+> > 
+> >  struct cedrus_run {
+> >  
+> >  	struct vb2_v4l2_buffer	*src;
+> >  	struct vb2_v4l2_buffer	*dst;
+> > 
+> > +	bool first_slice;
+> > 
+> >  	union {
+> >  	
+> >  		struct cedrus_h264_run	h264;
+> > 
+> > diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+> > b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c index
+> > 56ca4c9ad01c..d7b54accfe83 100644
+> > --- a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+> > +++ b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+> > @@ -31,6 +31,8 @@ void cedrus_device_run(void *priv)
+> > 
+> >  	run.src = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+> >  	run.dst = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+> > 
+> > +	run.first_slice =
+> > +		run.src->vb2_buf.timestamp != run.dst-
+>vb2_buf.timestamp;
 > 
-> Yeah, it'd be interesting to see what difference this actually makes. 
+> Can't we use slice->first_mb_in_slice to determine if a slice is the
+> first? I'd expect ->first_mb_in_slice to be 0 (unless we decide to
+> support ASO).
+
+I looked in all VPU documentation available to me (which isn't much) and there 
+is no indication if ASO is supported or not. Do you have any sample video with 
+out-of-order slices? It's my understanding that this is uncommon. If it's 
+supported, I would leave code as-is.
+
+Best regards,
+Jernej
+
 > 
-> Christian
+> >  	/* Apply request(s) controls if needed. */
+> >  	src_req = run.src->vb2_buf.req_obj.req;
 
-I tested this change on an Android device(arm) with AOSP kernel 4.19 and
-observed
-memory usage of binder_thread. But I didn't do binder benchmark yet.
 
-On my platform the memory usage of binder_thread reduce about 90 KB as
-the
-following result.
-        nr obj          obj size        total
-	before: 624             512             319488 bytes
-	after:  728             312             227136 bytes
+
 
 _______________________________________________
 devel mailing list
