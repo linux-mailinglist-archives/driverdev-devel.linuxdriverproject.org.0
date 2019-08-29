@@ -1,127 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E5020A1C6C
-	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Aug 2019 16:09:58 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D2586A1C87
+	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Aug 2019 16:16:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2AE0588C0D;
-	Thu, 29 Aug 2019 14:09:53 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A357C254B3;
+	Thu, 29 Aug 2019 14:16:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fCv-Vx34mc0q; Thu, 29 Aug 2019 14:09:52 +0000 (UTC)
+	with ESMTP id HmvZZj869DuN; Thu, 29 Aug 2019 14:16:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 26CCA88836;
-	Thu, 29 Aug 2019 14:09:48 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 732C92049D;
+	Thu, 29 Aug 2019 14:16:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B0C4F1BF855
- for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 14:09:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 506871BF855
+ for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 14:16:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id AD647882A7
- for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 14:09:37 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4C6AF883FC
+ for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 14:16:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hYw9J-yr+mvL for <devel@linuxdriverproject.org>;
- Thu, 29 Aug 2019 14:09:37 +0000 (UTC)
+ with ESMTP id Kp65+W9pT0Iu for <devel@linuxdriverproject.org>;
+ Thu, 29 Aug 2019 14:16:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.web.de (mout.web.de [212.227.15.3])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 6F3FB88156
- for <devel@driverdev.osuosl.org>; Thu, 29 Aug 2019 14:09:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
- s=dbaedf251592; t=1567087746;
- bh=v0Udfz8+vrJdTmzBpUeGxpkVKYZBssqSqLWqH1nIup0=;
- h=X-UI-Sender-Class:To:Cc:References:Subject:From:Date:In-Reply-To;
- b=PBQRrG4mZDL5hHIvLATbqaAIyKuSmm4s+sow4HmJKOPlw8K6ouargHJ/jvIrPOXTi
- hOSiIkCc9C7AkIG33srug7Ampn+jacC0ku1zfhWcc4RJahCzdg7InBCgFJ70eT93ob
- +76qsBi/sj3nYaT9YA56d/FsYzJVvX3UgTwy8IT0=
-X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
-Received: from [192.168.1.2] ([78.48.172.157]) by smtp.web.de (mrweb002
- [213.165.67.108]) with ESMTPSA (Nemesis) id 0M09z2-1iLopq2DF6-00uMrO; Thu, 29
- Aug 2019 16:09:06 +0200
-To: devel@driverdev.osuosl.org, linux-fsdevel@vger.kernel.org,
- Sasha Levin <alexander.levin@microsoft.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- =?UTF-8?Q?Valdis_Kl=c4=93tnieks?= <valdis.kletnieks@vt.edu>
-References: <20190828160817.6250-1-gregkh@linuxfoundation.org>
-Subject: Re: [PATCH] staging: exfat: add exfat filesystem code to staging
-From: Markus Elfring <Markus.Elfring@web.de>
-Openpgp: preference=signencrypt
-Autocrypt: addr=Markus.Elfring@web.de; prefer-encrypt=mutual; keydata=
- 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 FEE=
-Message-ID: <60dbaf22-226d-a2dc-2fbd-547f29da6887@web.de>
-Date: Thu, 29 Aug 2019 16:08:54 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+Received: from huawei.com (szxga01-in.huawei.com [45.249.212.187])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 679D8883F7
+ for <devel@driverdev.osuosl.org>; Thu, 29 Aug 2019 14:16:18 +0000 (UTC)
+Received: from DGGEMM405-HUB.china.huawei.com (unknown [172.30.72.56])
+ by Forcepoint Email with ESMTP id 76D783B9BB770475E910;
+ Thu, 29 Aug 2019 22:16:10 +0800 (CST)
+Received: from dggeme762-chm.china.huawei.com (10.3.19.108) by
+ DGGEMM405-HUB.china.huawei.com (10.3.20.213) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 29 Aug 2019 22:16:10 +0800
+Received: from architecture4 (10.140.130.215) by
+ dggeme762-chm.china.huawei.com (10.3.19.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1591.10; Thu, 29 Aug 2019 22:16:09 +0800
+Date: Thu, 29 Aug 2019 22:15:22 +0800
+From: Gao Xiang <gaoxiang25@huawei.com>
+To: Pratik Shinde <pratikshinde320@gmail.com>
+Subject: Re: [PATCH] staging: erofs: using switch-case while checking the
+ inode type.
+Message-ID: <20190829141522.GA15562@architecture4>
+References: <20190829130813.11721-1-pratikshinde320@gmail.com>
+ <20190829135607.GA195010@architecture4>
+ <CAGu0czRasWHj53uF5zAoDRjbxU2sgN6HtazN_9Y-mkK6NjO-LQ@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20190828160817.6250-1-gregkh@linuxfoundation.org>
-Content-Language: en-GB
-X-Provags-ID: V03:K1:++WnNzneJmiUqaQDo/a7Jqi5KhFUbYMK7W4DMw/n3r/lyL/IzJa
- bMtPF4Y+pBTNLjsQhBChLA6CIpi1bhskEYbDzJNFzeeIItofEPtbmSjQ5Y+/VTkLy9PtPro
- 9b8/06BuGTtsCQGNZhzPjwbOg0+esJyROZqQvjpDSFSe0z96VA4Z19tt5Pwagcmf6KMU5Tt
- wv5FWVNjWaXoW8oEGHqXw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:DVRlympRWJ8=:BGlFKUEsF/uNYKtOXOSobe
- nY8mpfYBz0SREZ/Vi7a670qu9hwrNuBCzEp5gMKTPPBXz/MVGn4ZUZ3uBBq0+Y6M8+RzMZWN2
- gTODTEue0itWRMNwrYLEwubyhB3VH/DCUURKIgwJY9PuH4030DVWA2IHa5rLpwhaYlTGPeXdb
- nAH8XjtyM7REDyZmV2M2sv9X3Bsu18S/PKN0qhmnAZfcW6WTpwCl5p+mXD6LdlZP9yIwg8vse
- l6787yzscofY3hYdvyrB88BHJsUz7sDen5FclOT/FnKhEgsmGZyToJyyW0UJNWCDLT2StOc+5
- Vqh9UlEkoGC0kvOQBiXhvyYhTiyn02DRFNCwXDsGNc+5jS+i1K+Nleo6a3dBE/HhTcJ6XF6FM
- YrcK2a6dvAxVsCZUBhPIG+VsG9uxGEnHrIHyPI5v7Z3m2oDKE9XWYupUSNZdjbptYw/VBtSk/
- 3mspZ4+y8CwV4HKGoiwS77im8G6/xXn8VywHBaqDN8OMRIFxWVX+0nU0kUPuVIRcV6qFpq7po
- zfeGop7iR1UubOFpdpcs6LfeDok7kamJDRj8RNNjeinR5BIyjkz/V0wBxz8XC2zMYg9nQJbXM
- OfEa6kx/KvV/JHMi0ZgvzJdvbL5wnuVDkfAFWnJ2hgoFYQOlGHKoChVOJ34/9AqbLOZzEZf2f
- b+eAc9lJnNZ1lLv6mij1eaH/Mq6vCfLbgtyqG/D0d7NLZPAdWtSEUm1/GYOUJcdK5bP8rdPBE
- dBdtLYjhc6yRi4fsK/K00dHTUpPbIXcXS+y1pc9mpYMjxaXx4FCvnC78hkqCJ0ERI9LLGsqGn
- obH3wrpsqkt/uBulTl1TQv8C2mhJRte/U9mrUt+Zb0PQmtE40nFvlYQk+Ox+WTBuyX7w88w8W
- M2ciIdFIi2gEaOZ840oyeYyuC6ofqSb4BYnBE3AoGxXQyy9F3Jxw8HoHSVBjAeXEY81uFe08J
- fcjsVLKhxxV7poF+pqdXm/em0qX/kSGbI2KA4lhA/67jEfAamE7qzxg05puMeDjhetj2YXMKO
- pUBKD9IhjMiZ42Hyx7vQ2po29ExEyIUJZpI3UxJB402CkLwTOR4Pj0dXsYIruHcJFJHOF9EIa
- 4CE3lBXJGAJPhHnourfRzAdj9UamZzEjMsMIPrTX/Vy0XOexuizF7z+GlLuysskonpXqt3jJe
- PScU30z882c6wU9oO0bhkhJ3rNix91jBUKRxGOtJgEd54E3w==
+Content-Disposition: inline
+In-Reply-To: <CAGu0czRasWHj53uF5zAoDRjbxU2sgN6HtazN_9Y-mkK6NjO-LQ@mail.gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Originating-IP: [10.140.130.215]
+X-ClientProxiedBy: dggeme717-chm.china.huawei.com (10.1.199.113) To
+ dggeme762-chm.china.huawei.com (10.3.19.108)
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -134,18 +70,114 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ Chao Yu <yuchao0@huawei.com>, linux-erofs@lists.ozlabs.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-PiArKysgYi9kcml2ZXJzL3N0YWdpbmcvZXhmYXQvZXhmYXQuaAo+IEBAIC0wLDAgKzEsOTczIEBA
-CuKApgo+ICsvKiBmaWxlIHR5cGVzICovCj4gKyNkZWZpbmUgVFlQRV9VTlVTRUQJCTB4MDAwMAo+
-ICsjZGVmaW5lIFRZUEVfREVMRVRFRAkJMHgwMDAxCuKApgo+ICsvKiB0aW1lIG1vZGVzICovCj4g
-KyNkZWZpbmUgVE1fQ1JFQVRFCQkwCj4gKyNkZWZpbmUgVE1fTU9ESUZZCQkxCgpXaWxsIGl0IGJl
-IGhlbHBmdWwgdG8gd29yayB3aXRoIGVudW1lcmF0aW9ucyBhdCBzdWNoIHBsYWNlcz8KClJlZ2Fy
-ZHMsCk1hcmt1cwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8v
-ZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJk
-ZXYtZGV2ZWwK
+On Thu, Aug 29, 2019 at 07:35:01PM +0530, Pratik Shinde wrote:
+> Hi Gao,
+> 
+> Sorry I didn't pull the latest tree. I will do the necessary.
+> Anyways, don't you think it will be cleaner to have a switch case statement
+> rather than if-else statement.
+
+I think so, but that's another personal choise and no urgent
+as well (It is just a cleanup to some extent).
+
+I am very happy that you send a patch about this, but we have
+to take care of handling "fall through" properly at least,
+and I don't want to introduce some extra compile warnings
+instead at this time.
+
+EROFS is sensitive for now and I have no idea what the "real"
+point is.
+
+Thanks,
+Gao Xiang
+
+> 
+> --Pratik
+> 
+> 
+> 
+> On Thu, 29 Aug, 2019, 7:27 PM Gao Xiang, <gaoxiang25@huawei.com> wrote:
+> 
+> > Hi Pratik,
+> >
+> > On Thu, Aug 29, 2019 at 06:38:13PM +0530, Pratik Shinde wrote:
+> > > while filling the linux inode, using switch-case statement to check
+> > > the type of inode.
+> > > switch-case statement looks more clean.
+> > >
+> > > Signed-off-by: Pratik Shinde <pratikshinde320@gmail.com>
+> >
+> > No, that is not the case, see __ext4_iget() in fs/ext4/inode.c.
+> > and could you write patches based on latest staging tree?
+> > erofs is now in "fs/" rather than "drivers/staging".
+> > and I will review it then.
+> >
+> > p.s. if someone argues here or there, there will be endless
+> > issues since there is no standard at all.
+> >
+> > Thanks,
+> > Gao Xiang
+> >
+> > > ---
+> > >  drivers/staging/erofs/inode.c | 18 ++++++++++++------
+> > >  1 file changed, 12 insertions(+), 6 deletions(-)
+> > >
+> > > diff --git a/drivers/staging/erofs/inode.c
+> > b/drivers/staging/erofs/inode.c
+> > > index 4c3d8bf..2d2d545 100644
+> > > --- a/drivers/staging/erofs/inode.c
+> > > +++ b/drivers/staging/erofs/inode.c
+> > > @@ -190,22 +190,28 @@ static int fill_inode(struct inode *inode, int
+> > isdir)
+> > >       err = read_inode(inode, data + ofs);
+> > >       if (!err) {
+> > >               /* setup the new inode */
+> > > -             if (S_ISREG(inode->i_mode)) {
+> > > +             switch (inode->i_mode & S_IFMT) {
+> > > +             case S_IFREG:
+> > >                       inode->i_op = &erofs_generic_iops;
+> > >                       inode->i_fop = &generic_ro_fops;
+> > > -             } else if (S_ISDIR(inode->i_mode)) {
+> > > +                     break;
+> > > +             case S_IFDIR:
+> > >                       inode->i_op = &erofs_dir_iops;
+> > >                       inode->i_fop = &erofs_dir_fops;
+> > > -             } else if (S_ISLNK(inode->i_mode)) {
+> > > +                     break;
+> > > +             case S_IFLNK:
+> > >                       /* by default, page_get_link is used for symlink */
+> > >                       inode->i_op = &erofs_symlink_iops;
+> > >                       inode_nohighmem(inode);
+> > > -             } else if (S_ISCHR(inode->i_mode) ||
+> > S_ISBLK(inode->i_mode) ||
+> > > -                     S_ISFIFO(inode->i_mode) ||
+> > S_ISSOCK(inode->i_mode)) {
+> > > +                     break;
+> > > +             case S_IFCHR:
+> > > +             case S_IFBLK:
+> > > +             case S_IFIFO:
+> > > +             case S_IFSOCK:
+> > >                       inode->i_op = &erofs_generic_iops;
+> > >                       init_special_inode(inode, inode->i_mode,
+> > inode->i_rdev);
+> > >                       goto out_unlock;
+> > > -             } else {
+> > > +             default:
+> > >                       err = -EIO;
+> > >                       goto out_unlock;
+> > >               }
+> > > --
+> > > 2.9.3
+> > >
+> >
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
