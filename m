@@ -1,62 +1,98 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A4207A1F70
-	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Aug 2019 17:42:39 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E789D88493;
-	Thu, 29 Aug 2019 15:42:37 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dJgrFFdcu87p; Thu, 29 Aug 2019 15:42:37 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 07A378841A;
-	Thu, 29 Aug 2019 15:42:36 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DA8131BF487
- for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 15:42:33 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id A8FBFA1F80
+	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Aug 2019 17:44:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D3BFB887D9
- for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 15:42:33 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8CD2588C4B;
+	Thu, 29 Aug 2019 15:44:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id dymVfpqw1hyN; Thu, 29 Aug 2019 15:44:45 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1150788B38;
+	Thu, 29 Aug 2019 15:44:45 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5DA9F1BF487
+ for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 15:44:42 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5A79886B89
+ for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 15:44:42 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IQHRi1pSTR7c for <devel@linuxdriverproject.org>;
- Thu, 29 Aug 2019 15:42:32 +0000 (UTC)
+ with ESMTP id oO2GMTJTyDb3 for <devel@linuxdriverproject.org>;
+ Thu, 29 Aug 2019 15:44:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga01-in.huawei.com [45.249.212.187])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1D4B5885CB
- for <devel@driverdev.osuosl.org>; Thu, 29 Aug 2019 15:42:31 +0000 (UTC)
-Received: from DGGEMM404-HUB.china.huawei.com (unknown [172.30.72.53])
- by Forcepoint Email with ESMTP id 4648CDBF252A50D01A48;
- Thu, 29 Aug 2019 23:42:25 +0800 (CST)
-Received: from dggeme762-chm.china.huawei.com (10.3.19.108) by
- DGGEMM404-HUB.china.huawei.com (10.3.20.212) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 29 Aug 2019 23:42:24 +0800
-Received: from architecture4 (10.140.130.215) by
- dggeme762-chm.china.huawei.com (10.3.19.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1591.10; Thu, 29 Aug 2019 23:42:24 +0800
-Date: Thu, 29 Aug 2019 23:41:37 +0800
-From: Gao Xiang <gaoxiang25@huawei.com>
-To: Christoph Hellwig <hch@infradead.org>
-Subject: Re: [PATCH v6 01/24] erofs: add on-disk layout
-Message-ID: <20190829154136.GA129582@architecture4>
-References: <20190802125347.166018-1-gaoxiang25@huawei.com>
- <20190802125347.166018-2-gaoxiang25@huawei.com>
- <20190829095954.GB20598@infradead.org>
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C9AF086B21
+ for <devel@driverdev.osuosl.org>; Thu, 29 Aug 2019 15:44:41 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x7TFhhH3030608;
+ Thu, 29 Aug 2019 15:44:40 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=HhSzXQLQd627KDCnwBWVZ5E6XXUHKUdsQ5GwPoAcuAE=;
+ b=V5wFcW14Kl0+OKr/ow4fc0ZImGhrOYilc4OdgLOcbYK6MkUSHir0rGevnADz5fBL8bWN
+ 1Xjs14uEsVd2AF/Wbw+exLDwm/pE7l0+JV/e9jdz09qjf3aBGtBC6r+5UoY8oqYNM1L0
+ j9dCs87BOy9gI2RzPT1SBW8ajXxMZHSEFnw7ZSfUPEpskurHZtJRXB3yif8DXOZeOLA+
+ s096OUmyvHGcYGnfbYxFpIcYaoWXex96DNn5rsmOk8fBHRY24D0dJgqpWYCT236eoKZt
+ W90uevUmYteCJf3p0MmYPff+1AjueQpMpUnYcxivfUvhY7GFv1//3Eyexv/cwuVJnRzG mg== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by aserp2120.oracle.com with ESMTP id 2uphcyg4gb-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 29 Aug 2019 15:44:40 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x7TFiGWe129225;
+ Thu, 29 Aug 2019 15:44:39 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by aserp3020.oracle.com with ESMTP id 2upc8uukv9-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 29 Aug 2019 15:44:39 +0000
+Received: from abhmp0019.oracle.com (abhmp0019.oracle.com [141.146.116.25])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x7TFhv6u023805;
+ Thu, 29 Aug 2019 15:43:57 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 29 Aug 2019 08:43:56 -0700
+Date: Thu, 29 Aug 2019 18:43:46 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Gao Xiang <gaoxiang25@huawei.com>
+Subject: Re: [PATCH] staging: exfat: add exfat filesystem code to staging
+Message-ID: <20190829154346.GK23584@kadam>
+References: <20190828160817.6250-1-gregkh@linuxfoundation.org>
+ <20190828170022.GA7873@kroah.com>
+ <20190829062340.GB3047@infradead.org>
+ <20190829063955.GA30193@kroah.com>
+ <20190829094136.GA28643@infradead.org>
+ <20190829095019.GA13557@kroah.com>
+ <20190829103749.GA13661@infradead.org>
+ <20190829111810.GA23393@kroah.com> <20190829151144.GJ23584@kadam>
+ <20190829152757.GA125003@architecture4>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190829095954.GB20598@infradead.org>
+In-Reply-To: <20190829152757.GA125003@architecture4>
 User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Originating-IP: [10.140.130.215]
-X-ClientProxiedBy: dggeme703-chm.china.huawei.com (10.1.199.99) To
- dggeme762-chm.china.huawei.com (10.3.19.108)
-X-CFilter-Loop: Reflected
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9364
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=885
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1906280000 definitions=main-1908290168
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9364
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=945 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1906280000
+ definitions=main-1908290168
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,78 +105,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Stephen Rothwell <sfr@canb.auug.org.au>,
- linux-erofs@lists.ozlabs.org, Chao Yu <yuchao0@huawei.com>,
- Theodore Ts'o <tytso@mit.edu>, "Darrick J . Wong" <darrick.wong@oracle.com>,
- Pavel Machek <pavel@denx.de>, Jan Kara <jack@suse.cz>,
- Amir Goldstein <amir73il@gmail.com>, Dave Chinner <david@fromorbit.com>,
- David Sterba <dsterba@suse.cz>, Li Guifu <bluce.liguifu@huawei.com>,
- LKML <linux-kernel@vger.kernel.org>, Miao Xie <miaoxie@huawei.com>,
- Alexander Viro <viro@zeniv.linux.org.uk>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-fsdevel@vger.kernel.org,
- Jaegeuk Kim <jaegeuk@kernel.org>, Andrew Morton <akpm@linux-foundation.org>,
- Linus Torvalds <torvalds@linux-foundation.org>, Fang Wei <fangwei1@huawei.com>
+Cc: devel@driverdev.osuosl.org, Christoph Hellwig <hch@infradead.org>,
+ Valdis =?utf-8?Q?Kl=C4=93tnieks?= <valdis.kletnieks@vt.edu>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Sasha Levin <alexander.levin@microsoft.com>, linux-fsdevel@vger.kernel.org,
+ OGAWA Hirofumi <hirofumi@mail.parknet.co.jp>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Christoph,
+> p.s. There are 2947 (un)likely places in fs/ directory.
 
-On Thu, Aug 29, 2019 at 02:59:54AM -0700, Christoph Hellwig wrote:
+I was complaining about you adding new pointless ones, not existing
+ones.  The likely/unlikely annotations are supposed to be functional and
+not decorative.  I explained this very clearly.
 
-[]
+Probably most of the annotations in fs/ are wrong but they are also
+harmless except for the slight messiness.  However there are definitely
+some which are important so removing them all isn't a good idea.
 
-> 
-> > +static bool erofs_inode_is_data_compressed(unsigned int datamode)
-> > +{
-> > +	if (datamode == EROFS_INODE_FLAT_COMPRESSION)
-> > +		return true;
-> > +	return datamode == EROFS_INODE_FLAT_COMPRESSION_LEGACY;
-> > +}
-> 
-> This looks like a really obsfucated way to write:
-> 
-> 	return datamode == EROFS_INODE_FLAT_COMPRESSION ||
-> 		datamode == EROFS_INODE_FLAT_COMPRESSION_LEGACY;
+> If you like, I will delete them all.
 
-Add a word about this, the above approach is not horrible if more
-datamode add here and comments, e.g
+But for erofs, I don't think that any of the likely/unlikely calls have
+been thought about so I'm fine with removing all of them in one go.
 
-static bool erofs_inode_is_data_compressed(unsigned int datamode)
-{
-	/* has z_erofs_map_header */
-	if (datamode == EROFS_INODE_FLAT_COMPRESSION)
-		return true;
-	/* some blablabla */
-	if (datamode == (1) )
-		return true;
-	/* some blablablabla */
-	if (datamode == (2) )
-		return true;
-	/* no z_erofs_map_header */
-	return datamode == EROFS_INODE_FLAT_COMPRESSION_LEGACY;
-}
+regards,
+dan carpenter
 
-vs.
-
-static bool erofs_inode_is_data_compressed(unsigned int datamode)
-{
-	/* has z_erofs_map_header */
-	return datamode == EROFS_INODE_FLAT_COMPRESSION ||
-		/* some blablabla */
-	       datamode == (1) ||
-	       	/* some blablablabla */
-	       datamode == (2) ||
-	        /* no z_erofs_map_header */
-	       datamode == EROFS_INODE_FLAT_COMPRESSION_LEGACY;
-}
-
-I have no idea which one is better.
-Anyway, if you still like the form, I will change it.
-
-Thanks,
-Gao Xiang
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
