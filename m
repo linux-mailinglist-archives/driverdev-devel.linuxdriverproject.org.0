@@ -1,77 +1,94 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E7B70A3685
-	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Aug 2019 14:18:19 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C5B33A3688
+	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Aug 2019 14:18:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EF55A8806D;
-	Fri, 30 Aug 2019 12:18:17 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BB9D28714B;
+	Fri, 30 Aug 2019 12:18:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zv0ENnEpPizC; Fri, 30 Aug 2019 12:18:17 +0000 (UTC)
+	with ESMTP id fAytbFKzN4Fy; Fri, 30 Aug 2019 12:18:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6498A87FCD;
-	Fri, 30 Aug 2019 12:18:16 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4585B86EE4;
+	Fri, 30 Aug 2019 12:18:24 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 37B4E1BF25B
- for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 12:18:14 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id F2CA91BF25B
+ for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 12:18:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 34FD020459
- for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 12:18:14 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id EF05487FEC
+ for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 12:18:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ewh6L5+2HDel for <devel@linuxdriverproject.org>;
- Fri, 30 Aug 2019 12:18:13 +0000 (UTC)
+ with ESMTP id Scx+0nlgnFzp for <devel@linuxdriverproject.org>;
+ Fri, 30 Aug 2019 12:18:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by silver.osuosl.org (Postfix) with ESMTPS id 37BA52043D
- for <devel@driverdev.osuosl.org>; Fri, 30 Aug 2019 12:18:13 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id k3so3463581pgb.10
- for <devel@driverdev.osuosl.org>; Fri, 30 Aug 2019 05:18:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=d+u4kAGquV8UHBtexzJEDeIUXA+wS2Qu7dNuoeTxVJ8=;
- b=Fr2n4Hgmslw4/PFIV0ItqyrHA8SleeT0DpVjWEt9WUYA7C8MfZ5kuWmlaIi2Sxv92H
- jrJDiKtbuRBecOcLtk+cdGIjdrnzabaxrcX1+KOpP6Cqfva4z5PfPdQR2/Ig32h/Nif9
- 7Ba7CmGhX2OAx3shlP9WAgx9XsmqpyzBZN7nEsSvx+BSu5LHjL52mXdPNWDQoy1nFVyI
- sdDWitbP8stiSWVKfqD3REzQ8h+vBTMJbPLkSuOw1c0XAJYcYqz5miuKOQh2b4Hq5l7m
- yhFETniYe+QbtzI0DPhvF2Ka3iPzmcwi/i7pk3xWzAlXfplvitsOga1GzPjViDmEy9eD
- ZE9A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=d+u4kAGquV8UHBtexzJEDeIUXA+wS2Qu7dNuoeTxVJ8=;
- b=YtOnYUs5JqANH3iebbQ6yloFmW5JAhEARcW+W40UmYQyEyoLzAQiuHagU5LTVdRwMu
- UYRtnZAmFPbvP4xhB/taQdhoUR5pav2qyBZgZOPh7XcSey3XctL2eASllu2Ioi+liP4L
- AfM04OpfYnzzuc2jdX34eBVXlDlUjn9Rn5l8lNmr6db9MnwQwwAxk9H6B5r9/NCWb5Xz
- 9GqqLOyX5Asbdq+9veYpoxC0m5WcNT0W5SBXQDeSxD5FyCZflc/3IAAZTsL/koNJf8UR
- OUIrHxB1Q+8rD0r1hm1Xh8er6dp1wC4vC1/2VNB6FOUJOHkhJoyJKsLXrFnUpz+5GJNv
- nKbg==
-X-Gm-Message-State: APjAAAV9NTbHo/tnJIa6Accpk/lXEnFoAKDcRuv0I4kt1+clE0ehRjJK
- sFINjqqqNKMA1C8FlteJlvE=
-X-Google-Smtp-Source: APXvYqw3EyjGxyI8hhrkbOttJeLIcyOCWLux6Ymx0e5OUquaLV4I3gLjRkHoCegaLLDbyNQjyXoUlw==
-X-Received: by 2002:a63:3387:: with SMTP id
- z129mr12667607pgz.177.1567167492633; 
- Fri, 30 Aug 2019 05:18:12 -0700 (PDT)
-Received: from dell-inspiron ([117.220.112.196])
- by smtp.gmail.com with ESMTPSA id e13sm13887882pfl.130.2019.08.30.05.18.08
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 30 Aug 2019 05:18:11 -0700 (PDT)
-Date: Fri, 30 Aug 2019 17:48:01 +0530
-From: P SAI PRASANTH <saip2823@gmail.com>
-To: gregkh@linuxfoundation.org, kim.jamie.bradley@gmail.com
-Subject: [PATCH v2] staging: rts5208: Fix checkpath warning
-Message-ID: <20190830121801.GA10295@dell-inspiron>
+Received: from sonic302-21.consmr.mail.gq1.yahoo.com
+ (sonic302-21.consmr.mail.gq1.yahoo.com [98.137.68.147])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3E1E787FCD
+ for <devel@driverdev.osuosl.org>; Fri, 30 Aug 2019 12:18:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aol.com; s=a2048;
+ t=1567167501; bh=pJNmdYW4A3IZxLHwMlL3CbYdeyHCPUoPhyy4gROfL18=;
+ h=Date:From:To:Subject:References:In-Reply-To:From:Subject;
+ b=p2WSfTLFAYduPbFLvCGjVOey3q8rv3EnshLFdJa5Kqg5dhrJz3lS3HXDCW3ZtXx0S8nvxPJ+JPAoLDe8TpI8/Fls81YXUVwQpFVcLwFSEV13033yJ6FNfLg6kVApdFtHRc2pH6rFVBAr2pmwi0l6w5MGkZib7RsLUpjMf+hGqiXwsqqcNPUaTmTHsvOrKFuxdsxv/+t8KFhJXJeNSh2PLANk0jl2R6F3V1N2tadzxOYAoHEF4ZJaKY/jC/4BXqakzNkZCMXBIGnnRZR0d3ssIyP4pEf5f9gsOwq/wbx5nG4zBFSke+z9qVzhHE+CeIDS9U4tocLVTUsdDu+hBXZnxA==
+X-YMail-OSG: 5O846uAVM1nZSuvIYdmUf.GpsVMgh0JWWWvuo8fuQiE9tFQZE3d_IfkfFhKKVRK
+ 1KPHI.9HNytY681diHE5BYSDR04gJvQWPSTN50g2l3fJ1u9vNlrGBe2UswxkGMl03g4Nqb723kGE
+ tBej5k1XRm.d6Yur2QYUIBdl5S4Ts_JfapqPHyZ4HU4NLCmqycirhFpuYZdwjpid7671Ywt_5rgp
+ dymKR0c7JvwwxbA_uwtdzGNQkfn6fedu0.qnG12rd.0b1dQCeWmQlAUQuWyTaifjj4LCLEWFkcCT
+ hRniCYhQRwBqxQb3pURviuyCjgCHoMwd7G34pBvVw2Ts3GK7MVNoBYgfVFX3fEuHaTV2g.56mJfi
+ .0bIcWDa0icL51hNApl7oSuEON.soD46dK0g4NmEUKDATV8KxJZQ04dnJILZuQn.DBLYTkDxiNNO
+ AwVrE0ejYx5AmPHT_MhMmmvIvOZa2eZ0xseLLwjtJ.UUq.OdZECwCNZn0B9W1.c9uhrhIe1AQA_Q
+ Awv1LboFGhaaor6houJpIvtee8HSu3Pdev1jCGdX1VBfMu53DnoxETT8qBrtGqvnUCbz42iWiM9m
+ Q5mSVbJ.NhSdNwskUb.8oRsIeLxboV__Bro0St9g_0aj22QIupPQesD3uIwcdO_N7iht4gu0XhyK
+ UibzUaKlPosUQn0fv4GTlCdXDFiVKUf51DVvXp3gUz5zJJNGwpGEPAejK2sJJHUJO7vMBYNNeg88
+ JyLDOBl8ZREvsbqQF0m4MJn5LSK_IqM4Vfo_c7.7o6CcJZiYYgidBEhf77pDtl0nqwtu4KvDJXBa
+ bAn0IH57T8TyKPn0N.izAQrtp9pIk_aq1.KrU8rZVnqCJalLI1eR902Q_6zB6QM9KZelD0WQF_2j
+ c4BR8os0PJu6vz4H3howOskPmFCfKkcRHq8zWPnOzB_mR0t_lG98dYSdqn7mTDT6P8qvKEuEaBcp
+ 6XNMLDq8LoJZwYf_j2HGj4OJ.pLlAlGlCgGZS59ORqiNkI231hnKLvDqLz_7VEGDUbOqqevpSqXx
+ zEPC42KUCju0SBWrsyduO2frlp5tsZKXhzz.LB50MFz31bZtIiYdgMvCppqZBReybAcOqTgoORiS
+ kIrMKia8ThBFCS3NAphkJJMacbKztxVRmkitC8b9LB_cgkreRA1WZysacsCImITGKyGY84C0PaDm
+ ukFVGCl9UfLZu0T3MEPD46av11c3cxMw3wvvX4WFMh3CuhaFRmq1dTfJ3qi9vUCUpgT7wDc.eLY_
+ hN3XezaBvlQxEjIlz9jf5PPFKMTqbd0nP8DU-
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic302.consmr.mail.gq1.yahoo.com with HTTP; Fri, 30 Aug 2019 12:18:21 +0000
+Received: by smtp405.mail.gq1.yahoo.com (Oath Hermes SMTP Server) with ESMTPA
+ ID b6c3fb5892809f707687e2f58172e2b8; 
+ Fri, 30 Aug 2019 12:18:19 +0000 (UTC)
+Date: Fri, 30 Aug 2019 20:18:07 +0800
+From: Gao Xiang <hsiangkao@aol.com>
+To: dsterba@suse.cz, Joe Perches <joe@perches.com>,
+ Gao Xiang <gaoxiang25@huawei.com>, Christoph Hellwig <hch@infradead.org>,
+ Alexander Viro <viro@zeniv.linux.org.uk>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Stephen Rothwell <sfr@canb.auug.org.au>,
+ Theodore Ts'o <tytso@mit.edu>, Pavel Machek <pavel@denx.de>,
+ Amir Goldstein <amir73il@gmail.com>,
+ "Darrick J . Wong" <darrick.wong@oracle.com>,
+ Dave Chinner <david@fromorbit.com>,
+ Jaegeuk Kim <jaegeuk@kernel.org>, Jan Kara <jack@suse.cz>,
+ Linus Torvalds <torvalds@linux-foundation.org>,
+ linux-fsdevel@vger.kernel.org, devel@driverdev.osuosl.org,
+ LKML <linux-kernel@vger.kernel.org>, linux-erofs@lists.ozlabs.org,
+ Chao Yu <yuchao0@huawei.com>, Miao Xie <miaoxie@huawei.com>,
+ Li Guifu <bluce.liguifu@huawei.com>, Fang Wei <fangwei1@huawei.com>
+Subject: Re: [PATCH v6 01/24] erofs: add on-disk layout
+Message-ID: <20190830121806.GA20984@hsiangkao-HP-ZHAN-66-Pro-G1>
+References: <20190802125347.166018-1-gaoxiang25@huawei.com>
+ <20190802125347.166018-2-gaoxiang25@huawei.com>
+ <20190829095954.GB20598@infradead.org>
+ <20190829103252.GA64893@architecture4>
+ <67d6efbbc9ac6db23215660cb970b7ef29dc0c1d.camel@perches.com>
+ <20190830120714.GN2752@twin.jikos.cz>
 MIME-Version: 1.0
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20190830120714.GN2752@twin.jikos.cz>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,49 +101,79 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch fixes the following checkpath warning 
-in the file drivers/staging/rts5208/rtsx_transport.c:546
+Hi David,
 
-WARNING: line over 80 characters
-+                               option = RTSX_SG_VALID | RTSX_SG_END |
-RTSX_SG_TRANS_DATA;
+On Fri, Aug 30, 2019 at 02:07:14PM +0200, David Sterba wrote:
+> On Thu, Aug 29, 2019 at 08:58:17AM -0700, Joe Perches wrote:
+> > On Thu, 2019-08-29 at 18:32 +0800, Gao Xiang wrote:
+> > > Hi Christoph,
+> > > 
+> > > On Thu, Aug 29, 2019 at 02:59:54AM -0700, Christoph Hellwig wrote:
+> > > > > --- /dev/null
+> > > > > +++ b/fs/erofs/erofs_fs.h
+> > > > > @@ -0,0 +1,316 @@
+> > > > > +/* SPDX-License-Identifier: GPL-2.0-only OR Apache-2.0 */
+> > > > > +/*
+> > > > > + * linux/fs/erofs/erofs_fs.h
+> > > > 
+> > > > Please remove the pointless file names in the comment headers.
+> > > 
+> > > Already removed in the latest version.
+> > > 
+> > > > > +struct erofs_super_block {
+> > > > > +/*  0 */__le32 magic;           /* in the little endian */
+> > > > > +/*  4 */__le32 checksum;        /* crc32c(super_block) */
+> > > > > +/*  8 */__le32 features;        /* (aka. feature_compat) */
+> > > > > +/* 12 */__u8 blkszbits;         /* support block_size == PAGE_SIZE only */
+> > > > 
+> > > > Please remove all the byte offset comments.  That is something that can
+> > > > easily be checked with gdb or pahole.
+> > > 
+> > > I have no idea the actual issue here.
+> > > It will help all developpers better add fields or calculate
+> > > these offsets in their mind, and with care.
+> > > 
+> > > Rather than they didn't run "gdb" or "pahole" and change it by mistake.
+> > 
+> > I think Christoph is not right here.
+> > 
+> > Using external tools for validation is extra work
+> > when necessary for understanding the code.
+> 
+> The advantage of using the external tools that the information about
+> offsets is provably correct ...
+> 
+> > The expected offset is somewhat valuable, but
+> > perhaps the form is a bit off given the visual
+> > run-in to the field types.
+> > 
+> > The extra work with this form is manipulating all
+> > the offsets whenever a structure change occurs.
+> 
+> ... while this is error prone.
 
-Signed-off-by: P SAI PRASANTH <saip2823@gmail.com>
----
-Changes in v2:
- -restructured code for better fixing the checkpath warning
- -wrapped commit description
+I will redo a full patchset and comments addressing
+what Christoph all said yesterday.
 
- drivers/staging/rts5208/rtsx_transport.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+Either form is fine with me for this case, let's remove
+them instead.
 
-diff --git a/drivers/staging/rts5208/rtsx_transport.c b/drivers/staging/rts5208/rtsx_transport.c
-index 8277d78..48c782f 100644
---- a/drivers/staging/rts5208/rtsx_transport.c
-+++ b/drivers/staging/rts5208/rtsx_transport.c
-@@ -540,11 +540,10 @@ static int rtsx_transfer_sglist_adma(struct rtsx_chip *chip, u8 card,
- 
- 			dev_dbg(rtsx_dev(chip), "DMA addr: 0x%x, Len: 0x%x\n",
- 				(unsigned int)addr, len);
--
-+
-+			option = RTSX_SG_VALID | RTSX_SG_TRANS_DATA;
- 			if (j == (sg_cnt - 1))
--				option = RTSX_SG_VALID | RTSX_SG_END | RTSX_SG_TRANS_DATA;
--			else
--				option = RTSX_SG_VALID | RTSX_SG_TRANS_DATA;
-+				option |= RTSX_SG_END
- 
- 			rtsx_add_sg_tbl(chip, (u32)addr, (u32)len, option);
- 
--- 
-2.7.4
+Thanks,
+Gao Xiang
+
+> 
+> > The comments might be better with a form more like:
+> > 
+> > struct erofs_super_block {	/* offset description */
+> > 	__le32 magic;		/*   0  */
+> > 	__le32 checksum;	/*   4  crc32c(super_block) */
+> > 	__le32 features;	/*   8  (aka. feature_compat) */
+> > 	__u8 blkszbits;		/*  12  support block_size == PAGE_SIZE only */
 
 _______________________________________________
 devel mailing list
