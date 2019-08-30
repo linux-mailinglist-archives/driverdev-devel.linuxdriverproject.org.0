@@ -1,47 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7CA8CA3D3A
-	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Aug 2019 19:50:59 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 99076A3D8A
+	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Aug 2019 20:15:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2A90F875E2;
-	Fri, 30 Aug 2019 17:50:58 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6DB3F265F6;
+	Fri, 30 Aug 2019 18:15:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9YcN1ZPGmEK3; Fri, 30 Aug 2019 17:50:57 +0000 (UTC)
+	with ESMTP id JUm5VnNQQ8mV; Fri, 30 Aug 2019 18:15:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1E2278496B;
-	Fri, 30 Aug 2019 17:50:57 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 61193253E7;
+	Fri, 30 Aug 2019 18:15:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7D95B1BF20D
- for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 17:50:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0E8FC1BF3F6
+ for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 18:15:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7AAD2870BB
- for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 17:50:54 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 09DD486B82
+ for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 18:15:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0zLmrRG-24Xb for <devel@linuxdriverproject.org>;
- Fri, 30 Aug 2019 17:50:54 +0000 (UTC)
+ with ESMTP id ZT2aKHeQx3LX for <devel@linuxdriverproject.org>;
+ Fri, 30 Aug 2019 18:15:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from youngberry.canonical.com (youngberry.canonical.com
  [91.189.89.112])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E78EE8496B
- for <devel@driverdev.osuosl.org>; Fri, 30 Aug 2019 17:50:53 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 753C286B7E
+ for <devel@driverdev.osuosl.org>; Fri, 30 Aug 2019 18:15:26 +0000 (UTC)
 Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
  by youngberry.canonical.com with esmtpsa (TLS1.0:RSA_AES_256_CBC_SHA1:32)
  (Exim 4.76) (envelope-from <colin.king@canonical.com>)
- id 1i3l2w-0008Qk-Mu; Fri, 30 Aug 2019 17:50:50 +0000
+ id 1i3lQi-0001db-9R; Fri, 30 Aug 2019 18:15:24 +0000
 From: Colin King <colin.king@canonical.com>
 To: Valdis Kletnieks <valdis.kletnieks@vt.edu>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org
-Subject: [PATCH] staging: exfat: check for null return from call to FAT_getblk
-Date: Fri, 30 Aug 2019 18:50:50 +0100
-Message-Id: <20190830175050.12706-1-colin.king@canonical.com>
+Subject: [PATCH] staging: exfat: remove redundant goto
+Date: Fri, 30 Aug 2019 19:15:23 +0100
+Message-Id: <20190830181523.13356-1-colin.king@canonical.com>
 X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -64,30 +64,31 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 From: Colin Ian King <colin.king@canonical.com>
 
-A call to FAT_getblk is missing a null return check which can
-lead to a null pointer dereference.  Fix this by adding a null
-check to match all the other FAT_getblk return sanity checks.
+The goto after a return is never executed, so it is redundant and can
+be removed.
 
-Addresses-Coverity: ("Dereference null return")
-Fixes: c48c9f7ff32b ("staging: exfat: add exfat filesystem code to staging")
+Addresses-Coverity: ("Structurally dead code")
 Signed-off-by: Colin Ian King <colin.king@canonical.com>
 ---
- drivers/staging/exfat/exfat_cache.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/staging/exfat/exfat_super.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/staging/exfat/exfat_cache.c b/drivers/staging/exfat/exfat_cache.c
-index f05d692c2b1e..1565ce65d39f 100644
---- a/drivers/staging/exfat/exfat_cache.c
-+++ b/drivers/staging/exfat/exfat_cache.c
-@@ -369,6 +369,8 @@ static s32 __FAT_write(struct super_block *sb, u32 loc, u32 content)
- 				FAT_modify(sb, sec);
+diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
+index 5b5c2ca8c9aa..5b3c4dfe0ecc 100644
+--- a/drivers/staging/exfat/exfat_super.c
++++ b/drivers/staging/exfat/exfat_super.c
+@@ -663,10 +663,8 @@ static int ffsLookupFile(struct inode *inode, char *path, struct file_id_t *fid)
+ 	/* search the file name for directories */
+ 	dentry = p_fs->fs_func->find_dir_entry(sb, &dir, &uni_name, num_entries,
+ 					       &dos_name, TYPE_ALL);
+-	if (dentry < -1) {
++	if (dentry < -1)
+ 		return FFS_NOTFOUND;
+-		goto out;
+-	}
  
- 				fat_sector = FAT_getblk(sb, ++sec);
-+				if (!fat_sector)
-+					return -1;
- 				fat_sector[0] = (u8)((fat_sector[0] & 0xF0) |
- 						     (content >> 8));
- 			} else {
+ 	fid->dir.dir = dir.dir;
+ 	fid->dir.size = dir.size;
 -- 
 2.20.1
 
