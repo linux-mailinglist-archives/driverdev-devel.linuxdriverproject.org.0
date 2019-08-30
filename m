@@ -2,63 +2,83 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id F3122A3CD2
-	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Aug 2019 19:16:13 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2DD62A3D01
+	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Aug 2019 19:27:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 633F8203D7;
-	Fri, 30 Aug 2019 17:16:12 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A5A6B265F1;
+	Fri, 30 Aug 2019 17:27:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VcNwGpsznIUw; Fri, 30 Aug 2019 17:16:10 +0000 (UTC)
+	with ESMTP id lWQzrpZqhrVd; Fri, 30 Aug 2019 17:27:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 1363422026;
-	Fri, 30 Aug 2019 17:16:09 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 497502038D;
+	Fri, 30 Aug 2019 17:27:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 25E201BF20D
- for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 17:16:07 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B63431BF20D
+ for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 17:27:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 22ED5203D7
- for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 17:16:07 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id B2AD4893D9
+ for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 17:27:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vFZ21dPlW6h8 for <devel@linuxdriverproject.org>;
- Fri, 30 Aug 2019 17:16:06 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga08-in.huawei.com [45.249.212.255])
- by silver.osuosl.org (Postfix) with ESMTPS id BEEF9203A7
- for <devel@driverdev.osuosl.org>; Fri, 30 Aug 2019 17:16:05 +0000 (UTC)
-Received: from DGGEMM402-HUB.china.huawei.com (unknown [172.30.72.56])
- by Forcepoint Email with ESMTP id 6DF902A22AA429166DF2;
- Sat, 31 Aug 2019 01:16:00 +0800 (CST)
-Received: from dggeme762-chm.china.huawei.com (10.3.19.108) by
- DGGEMM402-HUB.china.huawei.com (10.3.20.210) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Sat, 31 Aug 2019 01:15:59 +0800
-Received: from architecture4 (10.140.130.215) by
- dggeme762-chm.china.huawei.com (10.3.19.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1591.10; Sat, 31 Aug 2019 01:15:59 +0800
-Date: Sat, 31 Aug 2019 01:15:11 +0800
-From: Gao Xiang <gaoxiang25@huawei.com>
-To: Christoph Hellwig <hch@infradead.org>
-Subject: Re: [PATCH v6 03/24] erofs: add super block operations
-Message-ID: <20190830171510.GC107220@architecture4>
-References: <20190802125347.166018-1-gaoxiang25@huawei.com>
- <20190802125347.166018-4-gaoxiang25@huawei.com>
- <20190829101545.GC20598@infradead.org>
- <20190829105048.GB64893@architecture4>
- <20190830163910.GB29603@infradead.org>
+ with ESMTP id N-xI6D2gsqVM for <devel@linuxdriverproject.org>;
+ Fri, 30 Aug 2019 17:27:26 +0000 (UTC)
+X-Greylist: delayed 00:07:36 by SQLgrey-1.7.6
+Received: from mail-qk1-f196.google.com (mail-qk1-f196.google.com
+ [209.85.222.196])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A88C188527
+ for <devel@driverdev.osuosl.org>; Fri, 30 Aug 2019 17:27:26 +0000 (UTC)
+Received: by mail-qk1-f196.google.com with SMTP id 4so6806221qki.6
+ for <devel@driverdev.osuosl.org>; Fri, 30 Aug 2019 10:27:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ndufresne-ca.20150623.gappssmtp.com; s=20150623;
+ h=message-id:subject:from:to:cc:date:in-reply-to:references
+ :user-agent:mime-version;
+ bh=Lv7F7XfXtTfsXJ4fsL2rJKslKTnu6PBtRjHrGo9jnJc=;
+ b=vhE/pRy0Rqd3VBQJA5AOWcACzc014lyGB4mWKq6KKlKsiZYlKftqO2Nt8QRZnyj4SB
+ XgH0ppxgYw2ebO+hAXlpMeL3tBwYbT1ckNr2kR5sta3R6QVhaBsq/2k4rXkcA3W1JXf9
+ c7+NWxG0azeMGQ9waD084P8ygY1qHdiHZBfo34hgS2atU4V2jscUlJ88KkNw2wkiabt3
+ tTvesrhPc9OOwARdzWh2y3OS8Ueo7LmIX67GwQDmVgXQ16t1ElTttGbYxAYFsLFty2/C
+ SS/yYlHVUEgb7YJs4n/thMT7LIclenx2VyhO6A3/c4qb1zH3Dzp1POGnHwbgFY+aX+Ib
+ hHpw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+ :references:user-agent:mime-version;
+ bh=Lv7F7XfXtTfsXJ4fsL2rJKslKTnu6PBtRjHrGo9jnJc=;
+ b=nTNBfdfcuda1BW1kUXByQwX2JIuExicfANOSdZDH7hzeX/mB++JCGldbRURo2iLsN4
+ XCj0qm+eX0/SIPKCKs0VEUwfvYh07hnUDmYUwDd78aUn+Pyt8nhLkPnxrEnPr2AszZqs
+ r7OuLJoWc57eiXtGTVYa7Mu47ADs1zANyudjaT9sIp68Vh853BUEQuMEfAIHIVSqhOqG
+ SQBP88EOBjlMGMw55lWLKM0RtGQXwVzAKrX4qGsIKPEs20UNwaReKUv0MhNgF7Rsyaai
+ sA7yp3p9364yqcniCmMHiTVr4IzFKldrKLn2NX59aRYGL6IlNbStE33a7LRIU3sWzavF
+ sKKQ==
+X-Gm-Message-State: APjAAAXdZs6CTnqRwsbL7eoWH/SBSZa0aMcBsEoO4HBWO1LnCDuImPFk
+ cy6Gd/h2rtlKV6BNZMvznwTcZw==
+X-Google-Smtp-Source: APXvYqzFCIDQ4rnTVqgs8xMi2NAdoI5wuK0m/PpbK+c/0M2O94L/SiDiAMj2ybLbsAwNMNggOuV7Dw==
+X-Received: by 2002:a37:92c6:: with SMTP id u189mr15710250qkd.69.1567185589116; 
+ Fri, 30 Aug 2019 10:19:49 -0700 (PDT)
+Received: from tpx230-nicolas (modemcable154.55-37-24.static.videotron.ca.
+ [24.37.55.154])
+ by smtp.gmail.com with ESMTPSA id z187sm3372624qke.99.2019.08.30.10.19.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 30 Aug 2019 10:19:46 -0700 (PDT)
+Message-ID: <3580d4f1549c405173f061c5e2ece3c8f2cfa7e4.camel@ndufresne.ca>
+Subject: Re: [PATCH 5/8] media: cedrus: Detect first slice of a frame
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Boris Brezillon <boris.brezillon@collabora.com>, Jernej
+ =?UTF-8?Q?=C5=A0krabec?= <jernej.skrabec@siol.net>
+Date: Fri, 30 Aug 2019 13:19:42 -0400
+In-Reply-To: <20190830074806.78a2b8b4@collabora.com>
+References: <20190822194500.2071-1-jernej.skrabec@siol.net>
+ <20190822194500.2071-6-jernej.skrabec@siol.net>
+ <20190826202831.311c7c20@collabora.com> <3132748.mYbjOY1tKM@jernej-laptop>
+ <20190830074806.78a2b8b4@collabora.com>
+User-Agent: Evolution 3.32.4 (3.32.4-1.fc30) 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190830163910.GB29603@infradead.org>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Originating-IP: [10.140.130.215]
-X-ClientProxiedBy: dggeme702-chm.china.huawei.com (10.1.199.98) To
- dggeme762-chm.china.huawei.com (10.3.19.108)
-X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,163 +91,147 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Stephen Rothwell <sfr@canb.auug.org.au>,
- linux-erofs@lists.ozlabs.org, Chao Yu <yuchao0@huawei.com>,
- Theodore Ts'o <tytso@mit.edu>, "Darrick J . Wong" <darrick.wong@oracle.com>,
- Pavel Machek <pavel@denx.de>, Jan Kara <jack@suse.cz>,
- Amir Goldstein <amir73il@gmail.com>, Dave Chinner <david@fromorbit.com>,
- David Sterba <dsterba@suse.cz>, Li Guifu <bluce.liguifu@huawei.com>,
- LKML <linux-kernel@vger.kernel.org>, Miao Xie <miaoxie@huawei.com>,
- Alexander Viro <viro@zeniv.linux.org.uk>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-fsdevel@vger.kernel.org,
- Jaegeuk Kim <jaegeuk@kernel.org>, Andrew Morton <akpm@linux-foundation.org>,
- Linus Torvalds <torvalds@linux-foundation.org>, Fang Wei <fangwei1@huawei.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, acourbot@chromium.org, pawel@osciak.com,
+ jonas@kwiboo.se, gregkh@linuxfoundation.org, wens@csie.org, mripard@kernel.org,
+ tfiga@chromium.org, paul.kocialkowski@bootlin.com, kyungmin.park@samsung.com,
+ linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ hverkuil-cisco@xs4all.nl, mchehab@kernel.org, ezequiel@collabora.com,
+ linux-kernel@vger.kernel.org, m.szyprowski@samsung.com
+Content-Type: multipart/mixed; boundary="===============4082265812117997311=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Christoph,
 
-On Fri, Aug 30, 2019 at 09:39:10AM -0700, Christoph Hellwig wrote:
-> On Thu, Aug 29, 2019 at 06:50:48PM +0800, Gao Xiang wrote:
-> > > Please use an erofs_ prefix for all your functions.
-> > 
-> > It is already a static function, I have no idea what is wrong here.
-> 
-> Which part of all wasn't clear?  Have you looked at the prefixes for
-> most functions in the various other big filesystems?
-
-I will add erofs prefix to free_inode as you said.
-
-At least, all non-prefix functions in erofs are all static functions,
-it won't pollute namespace... I will add "erofs_" to other meaningful
-callbacks...And as you can see...
-
-cifs/cifsfs.c
-1303:cifs_init_inodecache(void)
-1509:   rc = cifs_init_inodecache();
-
-hpfs/super.c
-254:static int init_inodecache(void)
-771:    int err = init_inodecache();
-
-minix/inode.c
-84:static int __init init_inodecache(void)
-665:    int err = init_inodecache();
-
-isofs/inode.c
-88:static int __init init_inodecache(void)
-1580:   int err = init_inodecache();
-
-bfs/inode.c
-261:static int __init init_inodecache(void)
-468:    int err = init_inodecache();
-
-ext4/super.c
-1144:static int __init init_inodecache(void)
-6115:   err = init_inodecache();
-
-reiserfs/super.c
-666:static int __init init_inodecache(void)
-2606:   ret = init_inodecache();
-
-squashfs/super.c
-406:static int __init init_inodecache(void)
-430:    int err = init_inodecache();
-
-udf/super.c
-177:static int __init init_inodecache(void)
-232:    err = init_inodecache();
-
-qnx4/inode.c
-358:static int init_inodecache(void)
-399:    err = init_inodecache();
-
-ufs/super.c
-1463:static int __init init_inodecache(void)
-1517:   int err = init_inodecache();
-
-qnx6/inode.c
-618:static int init_inodecache(void)
-659:    err = init_inodecache();
-
-f2fs/super.c
-3540:static int __init init_inodecache(void)
-3572:   err = init_inodecache();
+--===============4082265812117997311==
+Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
+	boundary="=-0LtRcsKKEiURq7JtFoDE"
 
 
-> 
-> > > > +	/* be careful RCU symlink path (see ext4_inode_info->i_data)! */
-> > > > +	if (is_inode_fast_symlink(inode))
-> > > > +		kfree(inode->i_link);
-> > > 
-> > > is_inode_fast_symlink only shows up in a later patch.  And really
-> > > obsfucates the check here in the only caller as you can just do an
-> > > unconditional kfree here - i_link will be NULL except for the case
-> > > where you explicitly set it.
-> > 
-> > I cannot fully understand your point (sorry about my English),
-> > I will reply you about this later.
-> 
-> With that I mean that you should:
-> 
->  1) remove is_inode_fast_symlink and just opencode it in the few places
->     using it
->  2) remove the check in this place entirely as it is not needed
->  3) remove the comment quoted above as it is more confusing than not
->     having the comment
+--=-0LtRcsKKEiURq7JtFoDE
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Got it, thanks!
+Le vendredi 30 ao=C3=BBt 2019 =C3=A0 07:48 +0200, Boris Brezillon a =C3=A9c=
+rit :
+> On Thu, 29 Aug 2019 21:04:28 +0200
+> Jernej =C5=A0krabec <jernej.skrabec@siol.net> wrote:
+>=20
+> > Dne ponedeljek, 26. avgust 2019 ob 20:28:31 CEST je Boris Brezillon=20
+> > napisal(a):
+> > > Hi Jernej,
+> > >=20
+> > > On Thu, 22 Aug 2019 21:44:57 +0200
+> > >=20
+> > > Jernej Skrabec <jernej.skrabec@siol.net> wrote: =20
+> > > > When codec supports multiple slices in one frame, VPU has to know w=
+hen
+> > > > first slice of each frame is being processed, presumably to correct=
+ly
+> > > > clear/set data in auxiliary buffers.
+> > > >=20
+> > > > Add first_slice field to cedrus_run structure and set it according =
+to
+> > > > timestamps of capture and output buffers. If timestamps are differe=
+nt,
+> > > > it's first slice and viceversa.
+> > > >=20
+> > > > Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
+> > > > ---
+> > > >=20
+> > > >  drivers/staging/media/sunxi/cedrus/cedrus.h     | 1 +
+> > > >  drivers/staging/media/sunxi/cedrus/cedrus_dec.c | 2 ++
+> > > >  2 files changed, 3 insertions(+)
+> > > >=20
+> > > > diff --git a/drivers/staging/media/sunxi/cedrus/cedrus.h
+> > > > b/drivers/staging/media/sunxi/cedrus/cedrus.h index
+> > > > 2f017a651848..32cb38e541c6 100644
+> > > > --- a/drivers/staging/media/sunxi/cedrus/cedrus.h
+> > > > +++ b/drivers/staging/media/sunxi/cedrus/cedrus.h
+> > > > @@ -70,6 +70,7 @@ struct cedrus_mpeg2_run {
+> > > >=20
+> > > >  struct cedrus_run {
+> > > > =20
+> > > >  	struct vb2_v4l2_buffer	*src;
+> > > >  	struct vb2_v4l2_buffer	*dst;
+> > > >=20
+> > > > +	bool first_slice;
+> > > >=20
+> > > >  	union {
+> > > >  =09
+> > > >  		struct cedrus_h264_run	h264;
+> > > >=20
+> > > > diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+> > > > b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c index
+> > > > 56ca4c9ad01c..d7b54accfe83 100644
+> > > > --- a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+> > > > +++ b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+> > > > @@ -31,6 +31,8 @@ void cedrus_device_run(void *priv)
+> > > >=20
+> > > >  	run.src =3D v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+> > > >  	run.dst =3D v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+> > > >=20
+> > > > +	run.first_slice =3D
+> > > > +		run.src->vb2_buf.timestamp !=3D run.dst- =20
+> > > vb2_buf.timestamp;
+> > >=20
+> > > Can't we use slice->first_mb_in_slice to determine if a slice is the
+> > > first? I'd expect ->first_mb_in_slice to be 0 (unless we decide to
+> > > support ASO). =20
+> >=20
+> > I looked in all VPU documentation available to me (which isn't much) an=
+d there=20
+> > is no indication if ASO is supported or not. Do you have any sample vid=
+eo with=20
+> > out-of-order slices? It's my understanding that this is uncommon.
+>=20
+> I'm not entirely sure, but my understanding was that it might be used
+> when streaming over network where some packets might be lost and
+> re-emitted later on.
+>=20
+> > If it's=20
+> > supported, I would leave code as-is.
+>=20
+> I remember seeing the ASO acronym mentioned in the hantro G1 spec, but
+> at the same time we're doing frame-based decoding, so I guess the HW
+> block expects slices to be ordered in that case. Honestly I don't know,
+> so let's keep the code as-is.
 
-> 
-> > > Is there any good reasons to use buffer heads like this in new code
-> > > vs directly using bios?
-> > 
-> > This page can save in bdev page cache, it contains not only the erofs
-> > superblock so it can be fetched in page cache later.
-> 
-> If you want it in the page cache why not use read_mapping_page or similar?
+We had an ASO interrupt when we tried to do slice decoding rather then
+frame. I believe on Hantro, the way to do ASO is to actually re-order
+in software.
 
-It's reasonable, I will change as you suggested.
-(The difference is whether it has some buffer_head to the sb page or not...)
+ASO is a feature of baseline profile use to reduce latency. As an
+example, VA-API does not support baseline profile (only constrained-
+baseline, which excludes ASO).
 
-> 
-> > > > +/* set up default EROFS parameters */
-> > > > +static void default_options(struct erofs_sb_info *sbi)
-> > > > +{
-> > > > +}
-> > > 
-> > > No need to add an empty function.
-> > 
-> > Later patch will fill this function.
-> 
-> Please only add the function in the patch actually adding the
-> functionality.
+Nicolas
 
-That was my fault when spilting patches...considering
-it's an >7KLOC filesystem (maybe spilting the whole xfs or
-ext4 properly is more harder)... Anyway, that is my fault.
 
-> 
-> > > > +}
-> > > 
-> > > Why is this needed?  You can just free your sb privatte information in
-> > > ->put_super and wire up kill_block_super as the ->kill_sb method
-> > > directly.
-> > 
-> > See Al's comments,
-> > https://lore.kernel.org/r/20190720224955.GD17978@ZenIV.linux.org.uk/
-> 
-> With that code it makes sense.  In this paticular patch it does not.
-> So please add it only when actually needed.
+--=-0LtRcsKKEiURq7JtFoDE
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
 
-Same as above...
+-----BEGIN PGP SIGNATURE-----
 
-Thanks,
-Gao Xiang
+iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCXWlarwAKCRBxUwItrAao
+HBNPAJ9N2BBAFQLk5dhvhHq+DkURXWdFXQCcDJNUwgnp0u1Q8T6rWaMoTSg5Kck=
+=hsiz
+-----END PGP SIGNATURE-----
+
+--=-0LtRcsKKEiURq7JtFoDE--
+
+
+--===============4082265812117997311==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============4082265812117997311==--
+
