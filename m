@@ -1,63 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8DCFFA3B4A
-	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Aug 2019 18:05:24 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 74D3BA3BFF
+	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Aug 2019 18:28:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 18B74260A3;
-	Fri, 30 Aug 2019 16:05:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 68A72874A6;
+	Fri, 30 Aug 2019 16:28:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IiDzPGL-xYbA; Fri, 30 Aug 2019 16:05:21 +0000 (UTC)
+	with ESMTP id 0GDWKR2AUJ7v; Fri, 30 Aug 2019 16:28:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 507FD25E18;
-	Fri, 30 Aug 2019 16:05:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1E6C88746E;
+	Fri, 30 Aug 2019 16:28:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C4D9B1BF844
- for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 16:05:18 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D08A61BF844
+ for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 16:28:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BE1198938C
- for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 16:05:18 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id CCC7987E3C
+ for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 16:28:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cp2ecnY85syo for <devel@linuxdriverproject.org>;
- Fri, 30 Aug 2019 16:05:16 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga03-in.huawei.com [45.249.212.189])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4B59E89383
- for <devel@driverdev.osuosl.org>; Fri, 30 Aug 2019 16:05:16 +0000 (UTC)
-Received: from DGGEMM401-HUB.china.huawei.com (unknown [172.30.72.57])
- by Forcepoint Email with ESMTP id BE52241B7913997FE1D5;
- Sat, 31 Aug 2019 00:05:10 +0800 (CST)
-Received: from dggeme762-chm.china.huawei.com (10.3.19.108) by
- DGGEMM401-HUB.china.huawei.com (10.3.20.209) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Sat, 31 Aug 2019 00:05:10 +0800
-Received: from architecture4 (10.140.130.215) by
- dggeme762-chm.china.huawei.com (10.3.19.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1591.10; Sat, 31 Aug 2019 00:05:09 +0800
-Date: Sat, 31 Aug 2019 00:04:20 +0800
-From: Gao Xiang <gaoxiang25@huawei.com>
-To: Christoph Hellwig <hch@infradead.org>
-Subject: Re: [PATCH v3 6/7] erofs: remove all likely/unlikely annotations
-Message-ID: <20190830160415.GC69026@architecture4>
+ with ESMTP id tG5aeL7mTmfD for <devel@linuxdriverproject.org>;
+ Fri, 30 Aug 2019 16:28:17 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from bombadil.infradead.org (bombadil.infradead.org
+ [198.137.202.133])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 5862487D87
+ for <devel@driverdev.osuosl.org>; Fri, 30 Aug 2019 16:28:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=bombadil.20170209; h=In-Reply-To:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=RdPMpAXXBaiQno2G62m49MFypxqlVKUtgB8faAoi/bA=; b=m0ltjgx7t4ynixYMj9EPQrDSd
+ gouxhmamQQK46+oauBJCwjtVgtNnrQh3DY23q1oViqIYVv0QTxvU8EoQ2QX088A3jt8it37QT5tav
+ +G99U5Hvmr8MWiuaitu6f4u0/16jw6KiM7gZ1aQphmP3iwQ4Ep8Ka7z0Z1hi8dRKhi7TrUA50F4rN
+ 6tsT6WTOz8bN8V7WcePdcW6dl7pBthWt1CXoQ36kayghdBUUFC2rvbk2mlhO/aFNG+K6fyaE5nxxt
+ s8RKesu5J5MzBXL4CN/QjwpPqfrgUu3acD8Zy1p3mVZi/IUFVrm/eTTNm+BVfU3APEHcq1XOQIYIO
+ cSh/4TjEA==;
+Received: from hch by bombadil.infradead.org with local (Exim 4.92 #3 (Red Hat
+ Linux)) id 1i3jky-0006Lt-Fu; Fri, 30 Aug 2019 16:28:12 +0000
+Date: Fri, 30 Aug 2019 09:28:12 -0700
+From: Christoph Hellwig <hch@infradead.org>
+To: Gao Xiang <gaoxiang25@huawei.com>
+Subject: Re: [PATCH v3 7/7] erofs: redundant assignment in
+ __erofs_get_meta_page()
+Message-ID: <20190830162812.GA10694@infradead.org>
 References: <20190830032006.GA20217@architecture4>
  <20190830033643.51019-1-gaoxiang25@huawei.com>
- <20190830033643.51019-6-gaoxiang25@huawei.com>
- <20190830154650.GB11571@infradead.org>
+ <20190830033643.51019-7-gaoxiang25@huawei.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190830154650.GB11571@infradead.org>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Originating-IP: [10.140.130.215]
-X-ClientProxiedBy: dggeme701-chm.china.huawei.com (10.1.199.97) To
- dggeme762-chm.china.huawei.com (10.3.19.108)
-X-CFilter-Loop: Reflected
+In-Reply-To: <20190830033643.51019-7-gaoxiang25@huawei.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
+X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
+ bombadil.infradead.org. See http://www.infradead.org/rpr.html
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,36 +76,44 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: devel@driverdev.osuosl.org, Chao Yu <chao@kernel.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Miao Xie <miaoxie@huawei.com>,
  Chao Yu <yuchao0@huawei.com>, LKML <linux-kernel@vger.kernel.org>,
- weidu.du@huawei.com, Fang Wei <fangwei1@huawei.com>,
- Joe Perches <joe@perches.com>, linux-erofs@lists.ozlabs.org,
- Dan Carpenter <dan.carpenter@oracle.com>
+ Christoph Hellwig <hch@infradead.org>, weidu.du@huawei.com,
+ Fang Wei <fangwei1@huawei.com>, Joe Perches <joe@perches.com>,
+ linux-erofs@lists.ozlabs.org, Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Christoph,
+> -		err = bio_add_page(bio, page, PAGE_SIZE, 0);
+> -		if (err != PAGE_SIZE) {
+> +		if (bio_add_page(bio, page, PAGE_SIZE, 0) != PAGE_SIZE) {
+>  			err = -EFAULT;
+>  			goto err_out;
+>  		}
 
-On Fri, Aug 30, 2019 at 08:46:50AM -0700, Christoph Hellwig wrote:
-> On Fri, Aug 30, 2019 at 11:36:42AM +0800, Gao Xiang wrote:
-> > As Dan Carpenter suggested [1], I have to remove
-> > all erofs likely/unlikely annotations.
-> 
-> Do you have to remove all of them, or just those where you don't have
-> a particularly good reason why you think in this particular case they
-> might actually matter?
+This patch looks like an improvement.  But looking at that whole
+area just makes me cringe.
 
-I just added unlikely/likely for all erofs error handling paths or
-rare happened cases at first... (That is all in my thought...)
+Why is there __erofs_get_meta_page with the two weird booleans instead
+of a single erofs_get_meta_page that gets and gfp_t for additional
+flags and an unsigned int for additional bio op flags.
 
-I don't have some benchmark data for each unlikely/likely case (and I have
-no idea "is that worth to take time to benchmark rather than do another more
-useful stuffs"), so..I have to kill them all...
+Why do need ioprio support to start with?  Seeing that in a new
+fs look kinda odd.  Do you have benchmarks that show the difference?
 
-Thanks,
-Gao Xiang
+That function then calls erofs_grab_bio, which tries to handle a
+bio_alloc failure, except that the function will not actually fail
+due the mempool backing it.  It also seems like and awfully
+huge function to inline.
 
+Why is there __submit_bio which really just obsfucates what is
+going on?  Also why is __submit_bio using bio_set_op_attrs instead
+of opencode it as the comment right next to it asks you to?
 
+Also I really don't understand why you can't just use read_cache_page
+or even read_cache_page_gfp instead of __erofs_get_meta_page.
+That function is a whole lot of duplication of functionality shared
+by a lot of other file systems.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
