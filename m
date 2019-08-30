@@ -1,74 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6651AA2C4C
-	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Aug 2019 03:30:09 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7C8EA261D0;
-	Fri, 30 Aug 2019 01:30:07 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uAFroEb7xp-W; Fri, 30 Aug 2019 01:30:06 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D4B65260C5;
-	Fri, 30 Aug 2019 01:30:04 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8C6EE1BF40E
- for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 01:30:02 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 683B1A2CA8
+	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Aug 2019 04:07:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 892F688796
- for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 01:30:02 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1087388D8F;
+	Fri, 30 Aug 2019 02:07:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id HC9Th9evv4L2; Fri, 30 Aug 2019 02:07:50 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id B04F988D24;
+	Fri, 30 Aug 2019 02:07:49 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 4A50D1BF29F
+ for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 02:06:46 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 47476261A4
+ for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 02:06:46 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZP5fvAcLb+0e for <devel@linuxdriverproject.org>;
- Fri, 30 Aug 2019 01:30:01 +0000 (UTC)
-X-Greylist: delayed 00:05:10 by SQLgrey-1.7.6
-Received: from mail-yw1-f68.google.com (mail-yw1-f68.google.com
- [209.85.161.68])
- by hemlock.osuosl.org (Postfix) with ESMTPS id AA4158882F
- for <devel@driverdev.osuosl.org>; Fri, 30 Aug 2019 01:30:01 +0000 (UTC)
-Received: by mail-yw1-f68.google.com with SMTP id n205so1835527ywb.10
- for <devel@driverdev.osuosl.org>; Thu, 29 Aug 2019 18:30:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=omnibond-com.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=yDmQxANGbqTJGtO1OhTa4PkciZSXcUVcA6Y2VnUF5Ug=;
- b=tRuQF9NGsWriwh9rOUGWV/XnpvxEIfrIBLDnzsNlL2DcXYptI5uYx9v9XRgXG9ikj+
- lAdRFBmN8WWgzpxjYwMBvOBMGH9vQkyzn/bAHiywFTqTy8Rv0zmy7NK3LdyKNjjgvNdr
- mcLlIarH9lbZWT5t7oU7MIVWXKIhgWd4FFEn+XvtJUHOlIO0rItLGA+Zt6tlzfYijXTt
- MmEvGy0xnlwDGgt/OUq/OkC9egtS+p7sT3eJ3BcAb9vNf6OatXnbSWZ0hHXVonsgbMVH
- pMy2zHMasv+EgzYrXDb3idQdrvXUOVYyNS1FKC2EzXUecfAda8U+O/uwCTXSTJ6SOTSm
- T3ow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=yDmQxANGbqTJGtO1OhTa4PkciZSXcUVcA6Y2VnUF5Ug=;
- b=uIerXzkqIdZQkhGxZiwCEWVaUzUY0LJulIPBulwiw7117sWmgM7wvJ6zpu6p09x8NH
- Q3D5zUCn5AGQ/3pQVWG5T6rRd3TZyYWaooO/sBrfJc1ntdAEJa+SHze/oyRzuQvU6vKt
- xj393/RkfvRqzTE9MfJhTbNgVo7cTjS8LRzw1KcpuYLrfAmbQCmjumPD+dimygxLUQtW
- jGYeqKMsWvEwNI2hPqxwlgkccBR/fkRm/TyIfINPoDhZq32cAn8yYPxe8T4ux3mBe+qe
- mw9fQ+2agKq+NDYg6ryIXoWPCZcul4TpzQcq6cN3yTH6YfPRIqqu/xv+zosjCBlYzZCz
- 5lxg==
-X-Gm-Message-State: APjAAAXkp8DSibABgdPMGGoEwUhBo35q/+uc7oUyiLzjIBp/tqyTa8hb
- /Zm9UABBni0ikUMROnnF5XfhJDDPGwtztosfk/oKAw==
-X-Google-Smtp-Source: APXvYqyIDKOrxjb28zWL9kagM4gqNHMvZYp0EWQP/d+eBC6/dEWbXTKwXclpCyHxrYDHzsr0mwrMijbohn/hHGTlziQ=
-X-Received: by 2002:a81:3681:: with SMTP id d123mr9802172ywa.348.1567128600919; 
- Thu, 29 Aug 2019 18:30:00 -0700 (PDT)
+ with ESMTP id h73wUWyEF-hc for <devel@linuxdriverproject.org>;
+ Fri, 30 Aug 2019 02:06:45 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
+ by silver.osuosl.org (Postfix) with ESMTPS id 3C12D20412
+ for <devel@driverdev.osuosl.org>; Fri, 30 Aug 2019 02:06:45 +0000 (UTC)
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 0EC28CB0385988FD9438;
+ Fri, 30 Aug 2019 10:06:42 +0800 (CST)
+Received: from [10.134.22.195] (10.134.22.195) by smtp.huawei.com
+ (10.3.19.205) with Microsoft SMTP Server (TLS) id 14.3.439.0; Fri, 30 Aug
+ 2019 10:06:31 +0800
+Subject: Re: [PATCH] staging: exfat: add exfat filesystem code to staging
+To: Dan Carpenter <dan.carpenter@oracle.com>, Gao Xiang <gaoxiang25@huawei.com>
+References: <20190828160817.6250-1-gregkh@linuxfoundation.org>
+ <20190828170022.GA7873@kroah.com> <20190829062340.GB3047@infradead.org>
+ <20190829063955.GA30193@kroah.com> <20190829094136.GA28643@infradead.org>
+ <20190829095019.GA13557@kroah.com> <20190829103749.GA13661@infradead.org>
+ <20190829111810.GA23393@kroah.com> <20190829151144.GJ23584@kadam>
+ <20190829152757.GA125003@architecture4> <20190829154346.GK23584@kadam>
+From: Chao Yu <yuchao0@huawei.com>
+Message-ID: <cd38b645-2930-3e02-6c6a-5972ea02b537@huawei.com>
+Date: Fri, 30 Aug 2019 10:06:25 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.9.1
 MIME-Version: 1.0
-References: <20190807013340.9706-1-jhubbard@nvidia.com>
- <912eb2bd-4102-05c1-5571-c261617ad30b@nvidia.com>
-In-Reply-To: <912eb2bd-4102-05c1-5571-c261617ad30b@nvidia.com>
-From: Mike Marshall <hubcap@omnibond.com>
-Date: Thu, 29 Aug 2019 21:29:50 -0400
-Message-ID: <CAOg9mSQKGDywcMde2DE42diUS7J8m74Hdv+xp_PJhC39EXZQuw@mail.gmail.com>
-Subject: Re: [PATCH v3 00/39] put_user_pages(): miscellaneous call sites
-To: John Hubbard <jhubbard@nvidia.com>
+In-Reply-To: <20190829154346.GK23584@kadam>
+Content-Language: en-US
+X-Originating-IP: [10.134.22.195]
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,59 +67,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-fbdev@vger.kernel.org, Jan Kara <jack@suse.cz>, kvm@vger.kernel.org,
- Dave Hansen <dave.hansen@linux.intel.com>, Dave Chinner <david@fromorbit.com>,
- dri-devel@lists.freedesktop.org, linux-mm <linux-mm@kvack.org>,
- sparclinux@vger.kernel.org, Dan Williams <dan.j.williams@intel.com>,
- devel@driverdev.osuosl.org, rds-devel@oss.oracle.com,
- linux-rdma@vger.kernel.org, x86@kernel.org, amd-gfx@lists.freedesktop.org,
- Christoph Hellwig <hch@infradead.org>, Jason Gunthorpe <jgg@ziepe.ca>,
- xen-devel@lists.xenproject.org, devel@lists.orangefs.org,
- linux-media@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- john.hubbard@gmail.com, linux-block@vger.kernel.org,
- =?UTF-8?B?SsOpcsO0bWUgR2xpc3Nl?= <jglisse@redhat.com>,
- linux-rpi-kernel@lists.infradead.org, ceph-devel <ceph-devel@vger.kernel.org>,
- linux-arm-kernel@lists.infradead.org,
- Linux NFS Mailing List <linux-nfs@vger.kernel.org>, netdev@vger.kernel.org,
- LKML <linux-kernel@vger.kernel.org>, linux-xfs@vger.kernel.org,
- linux-crypto@vger.kernel.org, linux-fsdevel <linux-fsdevel@vger.kernel.org>,
- Andrew Morton <akpm@linux-foundation.org>
+Cc: devel@driverdev.osuosl.org, Christoph Hellwig <hch@infradead.org>,
+ =?UTF-8?Q?Valdis_Kl=c4=93tnieks?= <valdis.kletnieks@vt.edu>, Greg
+ Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Sasha Levin <alexander.levin@microsoft.com>, linux-fsdevel@vger.kernel.org,
+ OGAWA Hirofumi <hirofumi@mail.parknet.co.jp>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi John...
+On 2019/8/29 23:43, Dan Carpenter wrote:
+>> p.s. There are 2947 (un)likely places in fs/ directory.
+> 
+> I was complaining about you adding new pointless ones, not existing
+> ones.  The likely/unlikely annotations are supposed to be functional and
+> not decorative.  I explained this very clearly.
+> 
+> Probably most of the annotations in fs/ are wrong but they are also
+> harmless except for the slight messiness.  However there are definitely
+> some which are important so removing them all isn't a good idea.
 
-I added this patch series on top of Linux 5.3rc6 and ran
-xfstests with no regressions...
+Hi Dan,
 
-Acked-by: Mike Marshall <hubcap@omnibond.com>
+Could you please pick up one positive example using likely and unlikely
+correctly? so we can follow the example, rather than removing them all blindly.
 
--Mike
+Thanks,
 
-On Tue, Aug 6, 2019 at 9:50 PM John Hubbard <jhubbard@nvidia.com> wrote:
->
-> On 8/6/19 6:32 PM, john.hubbard@gmail.com wrote:
-> > From: John Hubbard <jhubbard@nvidia.com>
-> > ...
-> >
-> > John Hubbard (38):
-> >   mm/gup: add make_dirty arg to put_user_pages_dirty_lock()
-> ...
-> >  54 files changed, 191 insertions(+), 323 deletions(-)
-> >
-> ahem, yes, apparently this is what happens if I add a few patches while editing
-> the cover letter... :)
->
-> The subject line should read "00/41", and the list of files affected here is
-> therefore under-reported in this cover letter. However, the patch series itself is
-> intact and ready for submission.
->
-> thanks,
-> --
-> John Hubbard
-> NVIDIA
+> 
+>> If you like, I will delete them all.
+> 
+> But for erofs, I don't think that any of the likely/unlikely calls have
+> been thought about so I'm fine with removing all of them in one go.
+> 
+> regards,
+> dan carpenter
+> 
+> .
+> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
