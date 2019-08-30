@@ -2,53 +2,53 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0577EA3106
-	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Aug 2019 09:30:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 214A2A3116
+	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Aug 2019 09:34:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8BA9F89278;
-	Fri, 30 Aug 2019 07:30:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B912A8927D;
+	Fri, 30 Aug 2019 07:34:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6kE+HEOUDi4i; Fri, 30 Aug 2019 07:30:31 +0000 (UTC)
+	with ESMTP id IhjL+W9UqkqA; Fri, 30 Aug 2019 07:34:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 058D1886AD;
-	Fri, 30 Aug 2019 07:30:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 303F288D81;
+	Fri, 30 Aug 2019 07:34:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 259C21BF34A
- for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 07:30:29 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2E48E1BF34A
+ for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 07:34:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 22C5387245
- for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 07:30:29 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 2BDA5873B5
+ for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 07:34:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vBz-9P_8KNEO for <devel@linuxdriverproject.org>;
- Fri, 30 Aug 2019 07:30:28 +0000 (UTC)
+ with ESMTP id 4UFWw85GTqbu for <devel@linuxdriverproject.org>;
+ Fri, 30 Aug 2019 07:34:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from youngberry.canonical.com (youngberry.canonical.com
  [91.189.89.112])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 744EB854AD
- for <devel@driverdev.osuosl.org>; Fri, 30 Aug 2019 07:30:28 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9127D8738D
+ for <devel@driverdev.osuosl.org>; Fri, 30 Aug 2019 07:34:08 +0000 (UTC)
 Received: from 162-237-133-238.lightspeed.rcsntx.sbcglobal.net
  ([162.237.133.238] helo=elm)
  by youngberry.canonical.com with esmtpsa (TLS1.0:RSA_AES_256_CBC_SHA1:32)
  (Exim 4.76) (envelope-from <tyhicks@canonical.com>)
- id 1i3bMV-0000hq-Ga; Fri, 30 Aug 2019 07:30:23 +0000
-Date: Fri, 30 Aug 2019 02:30:19 -0500
+ id 1i3bQ4-0000zO-Fx; Fri, 30 Aug 2019 07:34:04 +0000
+Date: Fri, 30 Aug 2019 02:34:00 -0500
 From: Tyler Hicks <tyhicks@canonical.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH AUTOSEL 4.19 11/29] binder: take read mode of mmap_sem in
+Subject: Re: [PATCH AUTOSEL 4.14 05/14] binder: take read mode of mmap_sem in
  binder_alloc_free_page()
-Message-ID: <20190830073019.GA16891@elm>
-References: <20190829105009.2265-1-sashal@kernel.org>
- <20190829105009.2265-11-sashal@kernel.org>
- <20190829151320.GC27650@elm> <20190830062910.GC15257@kroah.com>
+Message-ID: <20190830073400.GB16891@elm>
+References: <20190829105043.2508-1-sashal@kernel.org>
+ <20190829105043.2508-5-sashal@kernel.org>
+ <20190829151052.GB27650@elm> <20190830062349.GB15257@kroah.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190830062910.GC15257@kroah.com>
+In-Reply-To: <20190830062349.GB15257@kroah.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -70,11 +70,11 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 2019-08-30 08:29:10, Greg Kroah-Hartman wrote:
-> On Thu, Aug 29, 2019 at 10:13:20AM -0500, Tyler Hicks wrote:
+On 2019-08-30 08:23:49, Greg Kroah-Hartman wrote:
+> On Thu, Aug 29, 2019 at 10:10:52AM -0500, Tyler Hicks wrote:
 > > Hello, Sasha!
 > > 
-> > On 2019-08-29 06:49:51, Sasha Levin wrote:
+> > On 2019-08-29 06:50:34, Sasha Levin wrote:
 > > > From: Tyler Hicks <tyhicks@canonical.com>
 > > > 
 > > > [ Upstream commit 60d4885710836595192c42d3e04b27551d30ec91 ]
@@ -93,19 +93,17 @@ On 2019-08-30 08:29:10, Greg Kroah-Hartman wrote:
 > > > both landed during the development of v5.1 but only one of them is
 > > > targeted for stable.
 > > 
-> > This patch isn't meant to be applied to 4.19 since commit 3013bf62b67a
+> > This patch isn't meant to be applied to 4.14 since commit 3013bf62b67a
 > > ("binder: reduce mmap_sem write-side lock") was never brought back to
-> > 4.19.
-> > 
-> > Tyler
-> > 
-> > > 
-> > > Fixes: 5cec2d2e5839 ("binder: fix race between munmap() and direct reclaim")
+> > 4.14.
 > 
-> But this commit is in 4.19.49
+> But the patch says:
+> 	Fixes: 5cec2d2e5839 ("binder: fix race between munmap() and direct reclaim")
+> and that commit is in 4.14.124.
 
-That's correct but commit 3013bf62b67a isn't present in 4.19.y. See the
-"Backporting note" above.
+This patch fixes 5cec2d2e5839 but only when 3013bf62b67a is also
+applied. If 3013bf62b67a isn't present, this patch shouldn't be
+backported. 3013bf62b67a isn't in 4.14.y.
 
 Tyler
 
