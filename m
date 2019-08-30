@@ -2,73 +2,125 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC959A3623
-	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Aug 2019 14:00:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 11F9AA362F
+	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Aug 2019 14:01:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2FA7187E8E;
-	Fri, 30 Aug 2019 12:00:07 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9AC0387EF9;
+	Fri, 30 Aug 2019 12:01:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UMtgBhfaF7nr; Fri, 30 Aug 2019 12:00:05 +0000 (UTC)
+	with ESMTP id rRnF55Mv96+Z; Fri, 30 Aug 2019 12:01:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 240B087EAE;
-	Fri, 30 Aug 2019 12:00:03 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9620D87EAF;
+	Fri, 30 Aug 2019 12:01:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3082F1BF29F
- for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 11:59:59 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0FBCD1BF3F7
+ for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 12:01:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 2CD5D8545B
- for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 11:59:59 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 0967587E8E
+ for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 12:01:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id niW5hk83NAxg for <devel@linuxdriverproject.org>;
- Fri, 30 Aug 2019 11:59:58 +0000 (UTC)
+ with ESMTP id ED8-SLAwiJDV for <devel@linuxdriverproject.org>;
+ Fri, 30 Aug 2019 12:01:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic303-20.consmr.mail.ir2.yahoo.com
- (sonic303-20.consmr.mail.ir2.yahoo.com [77.238.178.201])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1D6D78543A
- for <devel@driverdev.osuosl.org>; Fri, 30 Aug 2019 11:59:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aol.com; s=a2048;
- t=1567166396; bh=WNQcku/ghJ+02xOFF6/bqpQqBFtbzhnUrUZfG3N4Odg=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From:Subject;
- b=biPqc2PZaeUn35iIFtuMZ9gQcit7Vjarf9e/WYwir5F8H1QoQEcjkdRm9773j7iQn+1cPrM57gV68wfOhvVTj+hpJlzc6anuR1Dbq529XnOte8CQLoqjk2gakNpoOVrzMvTcJNIWmN+cERAggHvBQmEDrBAu/Uf0U2uK8cObjf3D2TL9B2cpoa3YSAblYuDKaUuNRogqgBY2aL6tHJbqUv1UzSs/PV2vBojRbwpkY2pFtOC9VYHWHWfwlh71PeyGz/DPUVdqQKNgBISMt5FsCg3WiTaU4e+2B5849YYyE8hgc3m35D/Fv2/9vHqH0UCyiZrlnBAyhulOZ077Biojcg==
-X-YMail-OSG: LkknR7YVM1nLb90_eSTDuhJtSFPvWDP2rElYtNbbjaNA.iZsNzrrvrfviK.qIjd
- IXus2o7fdFy6guCWcEE1IcmtzHO0sZbnBf7YkuNpoTiFCIpo.tNy7fj_OtTGtImv7z_dJ4pjY9z4
- W0mJAmtvroVvwMayYQnelkXq5BUC_DgCITBo.8A0LdP01631DXZmtbDsZffAgmJ3QCQYMIL3iNo4
- 7eVmJbyav6A_9XjIXnEE3bxIgnQi62jL4ApxnQKyknlhHOlRQjcAupHVJvMAeyqTmzFirrzMwstk
- 3RQRJmzExRWWkAo5KxLzsVihNahDDdx0WmD_nxpE5ZWPREMdhrfCVMQivesX625BIVMyIGWY7ajy
- IP8hZXqh_skzrx_voSMJ8GuswsehWaQu47RDvG1MfoPYy8IIkM1zdlm0i8nb27qtSYVa3xnxOIAN
- pqnRhCJCN2SNgDA_IkK01WOohiwW_2qkPG9UMAGvWCYGX89j7ycfKx7C5qQjmubla6739vIZS4vj
- Q5WKt.3zdqNE8yzMUQOiXJl7fhSe3jdVgBAkF_0hPB9DPUfDKjUs2w3yS8FuXhrkrD4cGhxJUh9e
- a0WAS334xn7ZX8oPLuXiI5b998pUuVTUo9UGvXvGvS1JPDp9Dt2Ayz.5EkkZzM5Kddug813J3o1U
- f8QA8M5RAT7eWeJQpphKkIPS5JPY32B2jf40HmTpjo0rId9P4Ansa3uj06t6nwoU7NaY7jRD9nuZ
- 937KKs3dRTVWWlk9p2LOhM1EgvXs7onekJYZ7aNFgtIgJHCOhEJfPgS7.RIuJojDUbYUv1ymhYQn
- CBXad.giLCj6eUOW6W.LbAdGz16oV7LlbKvHOraBv4BBhEvn3q4qExZfHVean2IxytEWHL_WBGmY
- _4wTd42W4DAjjUM5maZzDNVGlNpKqqiWelN3felx6eseB0e_6oxuzhwx1o2LH7ztSXW3qdrkCUxg
- W8P.CiVPaQXGPGLCHN_hSkMDsAzpW8uiKLtE1HolBwKsbLIVNNetgVwWwVOcIerv2ai8q40aPpG0
- iHKzCxoqtuUyZnQA3t526NFuo_ESLfCN9NDk3dbyKdRWoax6CamsNBeE7Dh6aurV7zDAxwnp.9h.
- VeOUNJlNeP8mwrk8QPjlDtKLLAEK_ZsOEfJjbqela8Qzrpmwata_ym.s3cNRHE0OMICdBT3xGEMG
- qbvGhXswzZKllomaKHS9pbCWpfdohlXI2zZ_nN_217Cpr09wzCAO1BSjKvBAFmJGr98IdWokPJ9F
- 0ghXJHYTyS3lm8wrY5x3SUzS0ca_niuI-
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic303.consmr.mail.ir2.yahoo.com with HTTP; Fri, 30 Aug 2019 11:59:56 +0000
-Received: by smtp432.mail.ir2.yahoo.com (Oath Hermes SMTP Server) with ESMTPA
- ID 08026dd6bbce525e72ed2e9b63384b86; 
- Fri, 30 Aug 2019 11:59:55 +0000 (UTC)
-Date: Fri, 30 Aug 2019 19:59:48 +0800
-From: Gao Xiang <hsiangkao@aol.com>
-To: Pratik Shinde <pratikshinde320@gmail.com>
-Subject: Re: [PATCH] erofs: using switch-case while checking the inode type.
-Message-ID: <20190830115947.GA10981@hsiangkao-HP-ZHAN-66-Pro-G1>
-References: <20190830095615.10995-1-pratikshinde320@gmail.com>
+Received: from mout.web.de (mout.web.de [212.227.15.14])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id CC75387EB1
+ for <devel@driverdev.osuosl.org>; Fri, 30 Aug 2019 12:01:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
+ s=dbaedf251592; t=1567166420;
+ bh=7fxlgd4hZrILEvOf/F6mMfDqgF1HNFPlpJAW44RPfbo=;
+ h=X-UI-Sender-Class:To:Cc:References:Subject:From:Date:In-Reply-To;
+ b=Kywu54IqJVRYAlLQ7nhqVZcBp27C9ZlYs6jTU9DqQsdj6C07Q7KVhJ4QfNXEHXlkA
+ nDjOM3FMsJYFuTEOJZpwfsisnrcuRjbrUOK72WCqPohURBwa7jUinXBkvSGdzmL8af
+ u9/XDDVH3Q9/z0vCq1atnc4YdbWZA6Dn6Jmku0VQ=
+X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
+Received: from [192.168.1.2] ([93.133.166.132]) by smtp.web.de (mrweb003
+ [213.165.67.108]) with ESMTPSA (Nemesis) id 0MWS0g-1hg89R3i3e-00XbqT; Fri, 30
+ Aug 2019 14:00:20 +0200
+To: Gao Xiang <gaoxiang25@huawei.com>,
+ Dan Carpenter <dan.carpenter@oracle.com>, devel@driverdev.osuosl.org,
+ linux-fsdevel@vger.kernel.org, kernel-janitors@vger.kernel.org
+References: <20190830063838.GA144157@architecture4>
+Subject: Re: Checking usage of likeliness annotations
+From: Markus Elfring <Markus.Elfring@web.de>
+Openpgp: preference=signencrypt
+Autocrypt: addr=Markus.Elfring@web.de; prefer-encrypt=mutual; keydata=
+ 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 FEE=
+Message-ID: <50c1dad3-c19c-3f95-405c-da7c6d0b7bf4@web.de>
+Date: Fri, 30 Aug 2019 14:00:09 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190830095615.10995-1-pratikshinde320@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <20190830063838.GA144157@architecture4>
+Content-Language: en-GB
+X-Provags-ID: V03:K1:5hSF1VhouE827mMr8faeRcTzdqvFnAsbl1HPZ3fCRurpYru7Idt
+ cJYALT20Jx1kDDr9Q3H21QGt8fkkdpXSlyxM99G77JLdjOz9t1GQ0tT5vw7w5QwUajCrtaV
+ HK+LcIxZ9nfx1Kmr35Q0IlWvqMJ38NABFE1GAgLrg/1bTrVet4eb2Ri/wndYXrDeYHi3T/Q
+ cXSTyHG1ftXmOrm1Vj3Qg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:TjJuGtu5FeQ=:v1bATQRbPMke+6RYLQgpHm
+ sIX6dDTiZh6VQSqjVtIj/gS0mWzY+roULYD3WyexDnrK6Ei2BIt3guqK7iBXBvqFSeYfF2svp
+ vFdd2DPdpgK+2gp0HMD1hP8g74FtyVixECs86x5QaPgG+Wlgq7WECFKJ8PggqZvAE56LMXStz
+ O7OZcHpnaV2M4k51hwZKNIkj4lMakqzSKlpMzaF3J8a39gkyrRah7ZTaOPQXngRLqSoYNnngp
+ tyx0JLfd3IvRXJOoPCa+EWh0WTzVIGGvTgV/yiY1eKkeGDISiBf9u3crqTaosAHD+ks3bwQa1
+ uySBddgl5OVT0DIhfWRIAKAcP+L34OhDh1r7meuEVnwVJ3CIM7F5V21uQR7HZYXBvcjGBD5Pt
+ aSL3Mp0gybDJM49dnei+IK0+q0Fr8Wbe8xIgVJtajKRH/LgtkUnGm5ZEPCBNU69vcvm00TDRQ
+ bHfwhgJaYRN3dLBZZUni68mD7FR3xccq55VPuMhX1eUHOxJoAoTAc6e+MBE7p8QGHXwblMhSX
+ YZlfOvv2a7GFAjwGZ/9r5eYzLlwny1XxI7+lBtRKC166pEys9BJjmvawsiljdVVfxYukRFUgR
+ BIF1CiACGJjLhxJt/XSZBh9WSp8SEfNoFh0COgsL63Fahqi2UNKVsO0MhlI/zO2U6XE/C6T0J
+ uB78ZW8x2Tj8a0eGooEaEGuNKalRl680GYypbWaN2lSqIUBf/vF+6k5aYe8ZgDxpqcKCWk2Sz
+ lTpeisR2TBEC/i9xcsHjmsYUZf6At92ojYe3n9VwivMPJNHuS/NumuxxTyJmJ26u1FYPrWx3C
+ kid/YGh25P1Yol+uBthdlPPilSuJ5KPK7sJwtR4E4b04lnU+dCCyvv834Psf+uClEeP063wQ0
+ D1LCe+6MEveCNODhxvCrHgYNdLDL843wPEnH4Nx2IRzt8RNGXCMSaDGjSqU84zm8rOt6+/5qh
+ /kkpHAyL1hbB3+qOGrSbibEayF/9aM6PuPo8ADnusUYA9Q1GiRDBhHu9lkigBCKPWVO+9yjBp
+ oulS90N1shNJ4heqG4mow9PG61qMN4zO3RV6HZxKuXXSHkOZD41i6vQH7xblxYF808fEx51VL
+ u7iyCyUljjAXLVkqMvJgoiNiPQeK2uHReV25c8fYoGyiL+PX0Ztg/emOyShIlykvWSApWh7YL
+ 2YW9KP8IbWMttApOM7F2nmWz5+cIHLpQ8wk4JFPONrZA5FWw==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,81 +133,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, yuchao0@huawei.com,
- linux-erofs@lists.ozlabs.org, gregkh@linuxfoundation.org
+Cc: Christoph Hellwig <hch@infradead.org>,
+ =?UTF-8?Q?Valdis_Kl=c4=93tnieks?= <valdis.kletnieks@vt.edu>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Chao Yu <yuchao0@huawei.com>,
+ Rasmus Villemoes <linux@rasmusvillemoes.dk>, linux-kernel@vger.kernel.org,
+ Denis Efremov <efremov@linux.com>, Sasha Levin <alexander.levin@microsoft.com>,
+ Ogawa Hirofumi <hirofumi@mail.parknet.co.jp>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Pratik,
+> I'm also curious about that, what is the filesystem or kernel standard about
+> likely/unlikely use (since I didn't find some documented standard
+> so I used in my personal way,
 
-The subject line could be better as '[PATCH v2] xxxxxx'...
+Such information is helpful.
 
-On Fri, Aug 30, 2019 at 03:26:15PM +0530, Pratik Shinde wrote:
-> while filling the linux inode, using switch-case statement to check
-> the type of inode.
-> switch-case statement looks more clean here.
-> 
-> Signed-off-by: Pratik Shinde <pratikshinde320@gmail.com>
 
-I have no problem of this patch, and I will do a test and reply
-you "Reviewed-by:" in hours (I'm doing another patchset to resolve
-what Christoph suggested again)...
+> I think it is reasonable at least to cover all error handling paths),
 
-Thanks,
-Gao Xiang
+I hope so, too.
 
-> ---
->  fs/erofs/inode.c | 18 ++++++++++++------
->  1 file changed, 12 insertions(+), 6 deletions(-)
-> 
-> diff --git a/fs/erofs/inode.c b/fs/erofs/inode.c
-> index 80f4fe9..6336cc1 100644
-> --- a/fs/erofs/inode.c
-> +++ b/fs/erofs/inode.c
-> @@ -190,22 +190,28 @@ static int fill_inode(struct inode *inode, int isdir)
->  	err = read_inode(inode, data + ofs);
->  	if (!err) {
->  		/* setup the new inode */
-> -		if (S_ISREG(inode->i_mode)) {
-> +		switch (inode->i_mode & S_IFMT) {
-> +		case S_IFREG:
->  			inode->i_op = &erofs_generic_iops;
->  			inode->i_fop = &generic_ro_fops;
-> -		} else if (S_ISDIR(inode->i_mode)) {
-> +			break;
-> +		case S_IFDIR:
->  			inode->i_op = &erofs_dir_iops;
->  			inode->i_fop = &erofs_dir_fops;
-> -		} else if (S_ISLNK(inode->i_mode)) {
-> +			break;
-> +		case S_IFLNK:
->  			/* by default, page_get_link is used for symlink */
->  			inode->i_op = &erofs_symlink_iops;
->  			inode_nohighmem(inode);
-> -		} else if (S_ISCHR(inode->i_mode) || S_ISBLK(inode->i_mode) ||
-> -			S_ISFIFO(inode->i_mode) || S_ISSOCK(inode->i_mode)) {
-> +			break;
-> +		case S_IFCHR:
-> +		case S_IFBLK:
-> +		case S_IFIFO:
-> +		case S_IFSOCK:
->  			inode->i_op = &erofs_generic_iops;
->  			init_special_inode(inode, inode->i_mode, inode->i_rdev);
->  			goto out_unlock;
-> -		} else {
-> +		default:
->  			err = -EFSCORRUPTED;
->  			goto out_unlock;
->  		}
-> -- 
-> 2.9.3
-> 
-> _______________________________________________
-> devel mailing list
-> devel@linuxdriverproject.org
-> http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+I imagine that the likeliness annotation usage could depend also on
+software build parameters.
+Would you occasionally like to influence corresponding probabilities
+any more by system settings?
+
+
+> maybe I'm an _idiot_
+
+I hope not.
+
+
+> as some earlier unfriendly word said somewhere
+> so I'm too stupid to understand the implicit meaning of some document.
+
+Can the software development discussion be continued in more constructive ways?
+
+Regards,
+Markus
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
