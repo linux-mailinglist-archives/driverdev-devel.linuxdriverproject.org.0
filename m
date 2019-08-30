@@ -1,60 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id F2E1EA2AF8
-	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Aug 2019 01:35:13 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6651AA2C4C
+	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Aug 2019 03:30:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0C505885E0;
-	Thu, 29 Aug 2019 23:35:12 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7C8EA261D0;
+	Fri, 30 Aug 2019 01:30:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vVTFSvFaD9iJ; Thu, 29 Aug 2019 23:35:11 +0000 (UTC)
+	with ESMTP id uAFroEb7xp-W; Fri, 30 Aug 2019 01:30:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E6B34883F2;
-	Thu, 29 Aug 2019 23:35:10 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D4B65260C5;
+	Fri, 30 Aug 2019 01:30:04 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id ADFD51BF3EA
- for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 23:35:08 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8C6EE1BF40E
+ for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 01:30:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A94648723D
- for <devel@linuxdriverproject.org>; Thu, 29 Aug 2019 23:35:08 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 892F688796
+ for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 01:30:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 033pM2peUor2 for <devel@linuxdriverproject.org>;
- Thu, 29 Aug 2019 23:35:07 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7DD8B8723A
- for <devel@driverdev.osuosl.org>; Thu, 29 Aug 2019 23:35:07 +0000 (UTC)
-Received: from localhost (c-73-47-72-35.hsd1.nh.comcast.net [73.47.72.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 0A0392173E;
- Thu, 29 Aug 2019 23:35:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1567121707;
- bh=MyHmJUU3Gn2uuapEBmq5L4LI7DM7u2Evj0T5dUzngj8=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=MbKkKKR0uyA41FC66Oo4hTRux8s83095GYUAliZ9zLkaKe7iz2b30Mi8EiHVPoF3q
- clZF0De+LYVO+xsNkIjkfxYgtwFaKjdINb7Y+oqJyLdMAB35Ic2zGoEYOPH7Ny5ELw
- TBILAOb2LwnxMigNkC8Cbk1WoUYTG/6qrjCEEQos=
-Date: Thu, 29 Aug 2019 19:35:06 -0400
-From: Sasha Levin <sashal@kernel.org>
-To: Valdis =?utf-8?Q?Kl=C4=93tnieks?= <valdis.kletnieks@vt.edu>
-Subject: Re: [PATCH] staging: exfat: add exfat filesystem code to staging
-Message-ID: <20190829233506.GT5281@sasha-vm>
-References: <20190828160817.6250-1-gregkh@linuxfoundation.org>
- <20190829205631.uhz6jdboneej3j3c@pali>
- <184209.1567120696@turing-police>
+ with ESMTP id ZP5fvAcLb+0e for <devel@linuxdriverproject.org>;
+ Fri, 30 Aug 2019 01:30:01 +0000 (UTC)
+X-Greylist: delayed 00:05:10 by SQLgrey-1.7.6
+Received: from mail-yw1-f68.google.com (mail-yw1-f68.google.com
+ [209.85.161.68])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id AA4158882F
+ for <devel@driverdev.osuosl.org>; Fri, 30 Aug 2019 01:30:01 +0000 (UTC)
+Received: by mail-yw1-f68.google.com with SMTP id n205so1835527ywb.10
+ for <devel@driverdev.osuosl.org>; Thu, 29 Aug 2019 18:30:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=omnibond-com.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=yDmQxANGbqTJGtO1OhTa4PkciZSXcUVcA6Y2VnUF5Ug=;
+ b=tRuQF9NGsWriwh9rOUGWV/XnpvxEIfrIBLDnzsNlL2DcXYptI5uYx9v9XRgXG9ikj+
+ lAdRFBmN8WWgzpxjYwMBvOBMGH9vQkyzn/bAHiywFTqTy8Rv0zmy7NK3LdyKNjjgvNdr
+ mcLlIarH9lbZWT5t7oU7MIVWXKIhgWd4FFEn+XvtJUHOlIO0rItLGA+Zt6tlzfYijXTt
+ MmEvGy0xnlwDGgt/OUq/OkC9egtS+p7sT3eJ3BcAb9vNf6OatXnbSWZ0hHXVonsgbMVH
+ pMy2zHMasv+EgzYrXDb3idQdrvXUOVYyNS1FKC2EzXUecfAda8U+O/uwCTXSTJ6SOTSm
+ T3ow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=yDmQxANGbqTJGtO1OhTa4PkciZSXcUVcA6Y2VnUF5Ug=;
+ b=uIerXzkqIdZQkhGxZiwCEWVaUzUY0LJulIPBulwiw7117sWmgM7wvJ6zpu6p09x8NH
+ Q3D5zUCn5AGQ/3pQVWG5T6rRd3TZyYWaooO/sBrfJc1ntdAEJa+SHze/oyRzuQvU6vKt
+ xj393/RkfvRqzTE9MfJhTbNgVo7cTjS8LRzw1KcpuYLrfAmbQCmjumPD+dimygxLUQtW
+ jGYeqKMsWvEwNI2hPqxwlgkccBR/fkRm/TyIfINPoDhZq32cAn8yYPxe8T4ux3mBe+qe
+ mw9fQ+2agKq+NDYg6ryIXoWPCZcul4TpzQcq6cN3yTH6YfPRIqqu/xv+zosjCBlYzZCz
+ 5lxg==
+X-Gm-Message-State: APjAAAXkp8DSibABgdPMGGoEwUhBo35q/+uc7oUyiLzjIBp/tqyTa8hb
+ /Zm9UABBni0ikUMROnnF5XfhJDDPGwtztosfk/oKAw==
+X-Google-Smtp-Source: APXvYqyIDKOrxjb28zWL9kagM4gqNHMvZYp0EWQP/d+eBC6/dEWbXTKwXclpCyHxrYDHzsr0mwrMijbohn/hHGTlziQ=
+X-Received: by 2002:a81:3681:: with SMTP id d123mr9802172ywa.348.1567128600919; 
+ Thu, 29 Aug 2019 18:30:00 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <184209.1567120696@turing-police>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <20190807013340.9706-1-jhubbard@nvidia.com>
+ <912eb2bd-4102-05c1-5571-c261617ad30b@nvidia.com>
+In-Reply-To: <912eb2bd-4102-05c1-5571-c261617ad30b@nvidia.com>
+From: Mike Marshall <hubcap@omnibond.com>
+Date: Thu, 29 Aug 2019 21:29:50 -0400
+Message-ID: <CAOg9mSQKGDywcMde2DE42diUS7J8m74Hdv+xp_PJhC39EXZQuw@mail.gmail.com>
+Subject: Re: [PATCH v3 00/39] put_user_pages(): miscellaneous call sites
+To: John Hubbard <jhubbard@nvidia.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,44 +81,60 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Christoph Hellwig <hch@infradead.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Sasha Levin <alexander.levin@microsoft.com>,
- Pali =?iso-8859-1?Q?Roh=E1r?= <pali.rohar@gmail.com>,
- linux-fsdevel@vger.kernel.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: linux-fbdev@vger.kernel.org, Jan Kara <jack@suse.cz>, kvm@vger.kernel.org,
+ Dave Hansen <dave.hansen@linux.intel.com>, Dave Chinner <david@fromorbit.com>,
+ dri-devel@lists.freedesktop.org, linux-mm <linux-mm@kvack.org>,
+ sparclinux@vger.kernel.org, Dan Williams <dan.j.williams@intel.com>,
+ devel@driverdev.osuosl.org, rds-devel@oss.oracle.com,
+ linux-rdma@vger.kernel.org, x86@kernel.org, amd-gfx@lists.freedesktop.org,
+ Christoph Hellwig <hch@infradead.org>, Jason Gunthorpe <jgg@ziepe.ca>,
+ xen-devel@lists.xenproject.org, devel@lists.orangefs.org,
+ linux-media@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ john.hubbard@gmail.com, linux-block@vger.kernel.org,
+ =?UTF-8?B?SsOpcsO0bWUgR2xpc3Nl?= <jglisse@redhat.com>,
+ linux-rpi-kernel@lists.infradead.org, ceph-devel <ceph-devel@vger.kernel.org>,
+ linux-arm-kernel@lists.infradead.org,
+ Linux NFS Mailing List <linux-nfs@vger.kernel.org>, netdev@vger.kernel.org,
+ LKML <linux-kernel@vger.kernel.org>, linux-xfs@vger.kernel.org,
+ linux-crypto@vger.kernel.org, linux-fsdevel <linux-fsdevel@vger.kernel.org>,
+ Andrew Morton <akpm@linux-foundation.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gVGh1LCBBdWcgMjksIDIwMTkgYXQgMDc6MTg6MTZQTSAtMDQwMCwgVmFsZGlzIEtsxJN0bmll
-a3Mgd3JvdGU6Cj5PbiBUaHUsIDI5IEF1ZyAyMDE5IDIyOjU2OjMxICswMjAwLCBQYWxpIFJvaD9y
-IHNhaWQ6Cj4KPj4gSSdtIG5vdCByZWFsbHkgc3VyZSBpZiB0aGlzIGV4ZmF0IGltcGxlbWVudGF0
-aW9uIGlzIGZ1bGx5IHN1aXRhYmxlIGZvcgo+PiBtYWlubGluZSBsaW51eCBrZXJuZWwuCj4+Cj4+
-IEluIG15IG9waW5pb24sIHByb3BlciB3YXkgc2hvdWxkIGJlIHRvIGltcGxlbWVudCBleEZBVCBz
-dXBwb3J0IGludG8KPj4gZXhpc3RpbmcgZnMvZmF0LyBjb2RlIGluc3RlYWQgb2YgcmVwbGFjaW5n
-IHdob2xlIHZmYXQvbXNkb3NmcyBieSB0aGlzCj4+IG5ldyAobm93IHN0YWdpbmcpIGZhdCBpbXBs
-ZW1lbnRhdGlvbi4KPgo+PiBJbiBsaW51eCBrZXJuZWwgd2UgcmVhbGx5IGRvIG5vdCBuZWVkIHR3
-byBkaWZmZXJlbnQgaW1wbGVtZW50YXRpb24gb2YKPj4gVkZBVDMyLgo+Cj5UaGlzIHBhdGNoIGhv
-d2V2ZXIgZG9lcyBoYXZlIG9uZSBtYWpvciBhZHZhbnRhZ2Ugb3ZlciAicGF0Y2ggdmZhdCB0bwo+
-c3VwcG9ydCBleGZhdCIgLSB3aGljaCBpcyB0aGF0IHRoZSBwYXRjaCBleGlzdHMuCj4KPklmIHNv
-bWVib2R5IGNvbWVzIGZvcndhcmQgd2l0aCBhbiBhY3R1YWwgImV4dGVuZCB2ZmF0IHRvIGRvIGV4
-ZmF0IiBwYXRjaCwKPndlIHNob3VsZCBhdCB0aGF0IHBvaW50IGhhdmUgYSBkaXNjdXNzaW9uIGFi
-b3V0IHJlbGF0aXZlIG1lcml0cy4uLi4KClRoaXMgcGF0Y2ggZ29pbmcgaW50byBzdGFnaW5nIGRv
-ZXNuJ3QgbmVjZXNzYXJpbHkgbWVhbiB0aGF0IG9uZSBkYXkKaXQnbGwgZ2V0IG1vdmVkIHRvIGZz
-L2V4ZmF0Ly4gSXQncyB2ZXJ5IHBvc3NpYmxlIHRoYXQgdGhlIGFwcHJvYWNoIHdvdWxkCmluc3Rl
-YWQgYmUgdG8gdXNlIHRoZSBzdGFnaW5nIGNvZGUgZm9yIHJlZmVyZW5jZSwgYnVpbGQgdGhpcwpm
-dW5jdGlvbmFsaXR5IGluIGZzL2ZhdC8sIGFuZCBraWxsIG9mZiB0aGUgc3RhZ2luZyBjb2RlIHdo
-ZW4gaXQncyBub3QKbmVlZGVkIGFueW1vcmUuCgpXaXRoIHJlZ2FyZHMgdG8gbWlzc2luZyBzcGVj
-cy9kb2NzL3doYXRldmVyIC0gb3VyIG1haW4gY29uY2VybiB3aXRoIHRoaXMKcmVsZWFzZSB3YXMg
-dGhhdCB3ZSB3YW50IGZ1bGwgaW50ZXJvcGVyYWJpbGl0eSwgd2hpY2ggaXMgd2h5IHRoZSBzcGVj
-CndhcyBtYWRlIHB1YmxpYyBhcy1pcyB3aXRob3V0IG1vZGlmaWNhdGlvbnMgZnJvbSB3aGF0IHdh
-cyB1c2VkCmludGVybmFsbHkuIFRoZXJlJ3Mgbm8gInNlY3JldCBzYXVjZSIgdGhhdCBNaWNyb3Nv
-ZnQgaXMgaGlkaW5nIGhlcmUuCgpIb3cgYWJvdXQgd2UgZ2l2ZSB0aGlzIHNwZWMvY29kZSB0aW1l
-IHRvIGdldCBzb2FrZWQgYW5kIHJldmlld2VkIGZvciBhCmJpdCwgYW5kIGlmIGZvbGtzIHN0aWxs
-IGZlZWwgKGluIGEgbW9udGggb3Igc28/KSB0aGF0IHRoZXJlIGFyZSBtaXNzaW5nCmJpdHMgb2Yg
-aW5mb3JtYXRpb24gcmVsYXRlZCB0byBleGZhdCwgSSdsbCBiZSBoYXBweSB0byBnbyBiYWNrIGFu
-ZCB0cnkKdG8gZ2V0IHRoZW0gb3V0IGFzIHdlbGwuCgotLQpUaGFua3MsClNhc2hhCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxp
-c3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJp
-dmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+Hi John...
+
+I added this patch series on top of Linux 5.3rc6 and ran
+xfstests with no regressions...
+
+Acked-by: Mike Marshall <hubcap@omnibond.com>
+
+-Mike
+
+On Tue, Aug 6, 2019 at 9:50 PM John Hubbard <jhubbard@nvidia.com> wrote:
+>
+> On 8/6/19 6:32 PM, john.hubbard@gmail.com wrote:
+> > From: John Hubbard <jhubbard@nvidia.com>
+> > ...
+> >
+> > John Hubbard (38):
+> >   mm/gup: add make_dirty arg to put_user_pages_dirty_lock()
+> ...
+> >  54 files changed, 191 insertions(+), 323 deletions(-)
+> >
+> ahem, yes, apparently this is what happens if I add a few patches while editing
+> the cover letter... :)
+>
+> The subject line should read "00/41", and the list of files affected here is
+> therefore under-reported in this cover letter. However, the patch series itself is
+> intact and ready for submission.
+>
+> thanks,
+> --
+> John Hubbard
+> NVIDIA
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
