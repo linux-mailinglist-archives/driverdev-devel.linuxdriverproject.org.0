@@ -1,60 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 685ECA2F9D
-	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Aug 2019 08:17:42 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6FFFEA2FB7
+	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Aug 2019 08:23:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1E1E387402;
-	Fri, 30 Aug 2019 06:17:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2EEC189200;
+	Fri, 30 Aug 2019 06:23:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cmNmkTPlnf1I; Fri, 30 Aug 2019 06:17:40 +0000 (UTC)
+	with ESMTP id M3F2a1y3dk1D; Fri, 30 Aug 2019 06:23:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D09CC87387;
-	Fri, 30 Aug 2019 06:17:39 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 897AD88D97;
+	Fri, 30 Aug 2019 06:23:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 673D61BF3C6
- for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 06:17:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C26CE1BF3C6
+ for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 06:23:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 6498F8832A
- for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 06:17:37 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id BA6118825E
+ for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 06:23:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nZUDaKn3hM3G for <devel@linuxdriverproject.org>;
- Fri, 30 Aug 2019 06:17:36 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 42BBD882DE
- for <devel@driverdev.osuosl.org>; Fri, 30 Aug 2019 06:17:36 +0000 (UTC)
-Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 17F0D92207381C1165EC;
- Fri, 30 Aug 2019 14:17:34 +0800 (CST)
-Received: from [10.134.22.195] (10.134.22.195) by smtp.huawei.com
- (10.3.19.207) with Microsoft SMTP Server (TLS) id 14.3.439.0; Fri, 30 Aug
- 2019 14:17:28 +0800
-Subject: Re: [PATCH v3 5/7] erofs: kill erofs_{init,exit}_inode_cache
-To: Gao Xiang <gaoxiang25@huawei.com>, Dan Carpenter
- <dan.carpenter@oracle.com>, Christoph Hellwig <hch@infradead.org>, "Joe
- Perches" <joe@perches.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- <devel@driverdev.osuosl.org>
-References: <20190830032006.GA20217@architecture4>
- <20190830033643.51019-1-gaoxiang25@huawei.com>
- <20190830033643.51019-5-gaoxiang25@huawei.com>
-From: Chao Yu <yuchao0@huawei.com>
-Message-ID: <1188f42d-af41-1104-a7a9-37c237463869@huawei.com>
-Date: Fri, 30 Aug 2019 14:17:27 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
+ with ESMTP id JwNzSbf7dAlb for <devel@linuxdriverproject.org>;
+ Fri, 30 Aug 2019 06:23:52 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 1C80A81FCC
+ for <devel@driverdev.osuosl.org>; Fri, 30 Aug 2019 06:23:52 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 650872186A;
+ Fri, 30 Aug 2019 06:23:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1567146231;
+ bh=PRUhatSeU/3T/AMs4GtzyoWnaRohArYodojMqtzoabU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=swdgx3EeSI3MsNB2JN+gyh2gKdV4OMK7dXbAeJgOizr6RUJr++DN4edDVGSPIbQxt
+ thdqo0EL1GE5KzHAAuHu40kZs6M/USeadSEQHm4yQV1xz8Nq6639uJSH9VzKlKnA0z
+ +R6kl9HxgSSj7hszfCA3EUQyb1tRogq6pGuEYJdw=
+Date: Fri, 30 Aug 2019 08:23:49 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Tyler Hicks <tyhicks@canonical.com>
+Subject: Re: [PATCH AUTOSEL 4.14 05/14] binder: take read mode of mmap_sem in
+ binder_alloc_free_page()
+Message-ID: <20190830062349.GB15257@kroah.com>
+References: <20190829105043.2508-1-sashal@kernel.org>
+ <20190829105043.2508-5-sashal@kernel.org>
+ <20190829151052.GB27650@elm>
 MIME-Version: 1.0
-In-Reply-To: <20190830033643.51019-5-gaoxiang25@huawei.com>
-Content-Language: en-US
-X-Originating-IP: [10.134.22.195]
-X-CFilter-Loop: Reflected
+Content-Disposition: inline
+In-Reply-To: <20190829151052.GB27650@elm>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,30 +69,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-erofs@lists.ozlabs.org, Chao Yu <chao@kernel.org>,
- LKML <linux-kernel@vger.kernel.org>, weidu.du@huawei.com,
- Fang Wei <fangwei1@huawei.com>, Miao Xie <miaoxie@huawei.com>
+Cc: Sasha Levin <sashal@kernel.org>, devel@driverdev.osuosl.org,
+ Todd Kjos <tkjos@android.com>, linux-kernel@vger.kernel.org,
+ stable@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 2019/8/30 11:36, Gao Xiang wrote:
-> As Christoph said [1] "having this function
-> seems entirely pointless", I have to kill those.
+On Thu, Aug 29, 2019 at 10:10:52AM -0500, Tyler Hicks wrote:
+> Hello, Sasha!
 > 
-> filesystem                              function name
-> ext2,f2fs,ext4,isofs,squashfs,cifs,...  init_inodecache
+> On 2019-08-29 06:50:34, Sasha Levin wrote:
+> > From: Tyler Hicks <tyhicks@canonical.com>
+> > 
+> > [ Upstream commit 60d4885710836595192c42d3e04b27551d30ec91 ]
+> > 
+> > Restore the behavior of locking mmap_sem for reading in
+> > binder_alloc_free_page(), as was first done in commit 3013bf62b67a
+> > ("binder: reduce mmap_sem write-side lock"). That change was
+> > inadvertently reverted by commit 5cec2d2e5839 ("binder: fix race between
+> > munmap() and direct reclaim").
+> > 
+> > In addition, change the name of the label for the error path to
+> > accurately reflect that we're taking the lock for reading.
+> > 
+> > Backporting note: This fix is only needed when *both* of the commits
+> > mentioned above are applied. That's an unlikely situation since they
+> > both landed during the development of v5.1 but only one of them is
+> > targeted for stable.
 > 
-> In addition, add a "rcu_barrier()" when exit_fs();
-> 
-> [1] https://lore.kernel.org/r/20190829101545.GC20598@infradead.org/
-> Reported-by: Christoph Hellwig <hch@infradead.org>
-> Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
+> This patch isn't meant to be applied to 4.14 since commit 3013bf62b67a
+> ("binder: reduce mmap_sem write-side lock") was never brought back to
+> 4.14.
 
-Reviewed-by: Chao Yu <yuchao0@huawei.com>
+But the patch says:
+	Fixes: 5cec2d2e5839 ("binder: fix race between munmap() and direct reclaim")
+and that commit is in 4.14.124.
 
-Thanks,
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
