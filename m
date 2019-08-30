@@ -1,56 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 153D9A3185
-	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Aug 2019 09:48:49 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E97FCA31AD
+	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Aug 2019 09:56:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8580989289;
-	Fri, 30 Aug 2019 07:48:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 68B63873E6;
+	Fri, 30 Aug 2019 07:56:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zk85sxZcdkZg; Fri, 30 Aug 2019 07:48:46 +0000 (UTC)
+	with ESMTP id MMsxqcmSP0sX; Fri, 30 Aug 2019 07:56:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A87458920F;
-	Fri, 30 Aug 2019 07:48:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8EC908738C;
+	Fri, 30 Aug 2019 07:56:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 645471BF34A
- for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 07:48:43 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 727411BF34A
+ for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 07:56:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 57F2B8920F
- for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 07:48:43 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6EFBF86E92
+ for <devel@linuxdriverproject.org>; Fri, 30 Aug 2019 07:56:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Zz8WmFkwt3w6 for <devel@linuxdriverproject.org>;
- Fri, 30 Aug 2019 07:48:41 +0000 (UTC)
+ with ESMTP id 0wMu0tcN1gZ1 for <devel@linuxdriverproject.org>;
+ Fri, 30 Aug 2019 07:56:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 54E6689203
- for <devel@driverdev.osuosl.org>; Fri, 30 Aug 2019 07:48:41 +0000 (UTC)
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id EE31C4723AAB79C3E0CD;
- Fri, 30 Aug 2019 15:48:37 +0800 (CST)
-Received: from [10.134.22.195] (10.134.22.195) by smtp.huawei.com
- (10.3.19.202) with Microsoft SMTP Server (TLS) id 14.3.439.0; Fri, 30 Aug
- 2019 15:48:27 +0800
-Subject: Re: [PATCH v8 00/24] erofs: promote erofs from staging v8
-To: Gao Xiang <gaoxiang25@huawei.com>, <linux-fsdevel@vger.kernel.org>,
- <devel@driverdev.osuosl.org>, Alexander Viro <viro@zeniv.linux.org.uk>
-References: <20190815044155.88483-1-gaoxiang25@huawei.com>
-From: Chao Yu <yuchao0@huawei.com>
-Message-ID: <9ba5968d-45a6-c66e-52df-ae232cc42365@huawei.com>
-Date: Fri, 30 Aug 2019 15:48:26 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
+Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
+ [209.85.128.68])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id EDFA88717E
+ for <devel@driverdev.osuosl.org>; Fri, 30 Aug 2019 07:56:50 +0000 (UTC)
+Received: by mail-wm1-f68.google.com with SMTP id p13so6413421wmh.1
+ for <devel@driverdev.osuosl.org>; Fri, 30 Aug 2019 00:56:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to
+ :user-agent; bh=Pzjr7IHiDTSGbuYdOJZ1L0KgTpVtEtYyO9Tpe0cPJug=;
+ b=NtVlF12toJ1KoXMdiq99sxClGtZEzzFmf0XNJHYt0HTv3nvOdbK88TVUbzZ24Ze0Cu
+ rAE0nDAKKiyckW4pbD2kQdZGNHArvwdSwRGxsdoltWwo5B0vGzRTV4Ca36sAdHEP+mcv
+ 3jttKn0nj73Az4MoDZ4k2pkh9gnJgF+j6zNI5wlDvgaqu5Y6h5zzT49MKm+aCFGcsThk
+ U013AU29RAjFJ0g62c99AIM86GDG1qudks0pzraKP6AHCRebJGi1JRJXHqajAbcHPC1+
+ RrzaN+cGYIEU9zrcHYjWS03AT2vyxkaLXSkxtEV3UGrSpwwia2E+m8elKQSIWtU6Yhp8
+ vOdQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to:user-agent;
+ bh=Pzjr7IHiDTSGbuYdOJZ1L0KgTpVtEtYyO9Tpe0cPJug=;
+ b=tjTL8d7J9l8VLrUyzhrMTqUSg43k3/zYo9NLc4vEHKQja21EJRQgFFF9GCEi1kPnyV
+ /CSsc0tog5n4oC20l/uSV/V83IVbJcsTO6BKCQpPLRbGwhkYEUD1POjtVfEvgUnHwM3Z
+ DHRvuR2XiAzbiOe5BwOWQf/g6rTV5pIfmpkrOE2Vjte39uDLZ4F4lVTKCdEMJSl3l+VE
+ BCfE2d/LdgZTMZWw8uCqWYCrsYWe1lumya4XR8RyQ/Ns6vAZKtWEXYf9eHli3b8sEcOB
+ 0eYPE0s3gOcE9F4ZdZSeOEipjtn+xBXFYeU0JU9RxfWlJUP9LLzo255aNXzpD6RRcHOC
+ mHdA==
+X-Gm-Message-State: APjAAAV08mFYTYLlO3gBMzlq6xm+iTzze1gPbK/1YIb2yNt1jgj0qNyF
+ uMBbMEKDaYyGfil4fvc8u4w=
+X-Google-Smtp-Source: APXvYqwWMhz6AYO79cLTfS4NU4cvhssRYhUgKGpZd5SwJOl1epDbyaSO+NOuQGPbFztqXTq0jw2Z7g==
+X-Received: by 2002:a05:600c:145:: with SMTP id
+ w5mr6972934wmm.75.1567151809265; 
+ Fri, 30 Aug 2019 00:56:49 -0700 (PDT)
+Received: from pali ([2a02:2b88:2:1::5cc6:2f])
+ by smtp.gmail.com with ESMTPSA id u128sm1610168wmg.34.2019.08.30.00.56.48
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Fri, 30 Aug 2019 00:56:48 -0700 (PDT)
+Date: Fri, 30 Aug 2019 09:56:47 +0200
+From: Pali =?utf-8?B?Um9ow6Fy?= <pali.rohar@gmail.com>
+To: Sasha Levin <sashal@kernel.org>
+Subject: Re: [PATCH] staging: exfat: add exfat filesystem code to staging
+Message-ID: <20190830075647.wvhrx4asnkrfkkwk@pali>
+References: <20190828160817.6250-1-gregkh@linuxfoundation.org>
+ <20190829205631.uhz6jdboneej3j3c@pali>
+ <184209.1567120696@turing-police> <20190829233506.GT5281@sasha-vm>
 MIME-Version: 1.0
-In-Reply-To: <20190815044155.88483-1-gaoxiang25@huawei.com>
-Content-Language: en-US
-X-Originating-IP: [10.134.22.195]
-X-CFilter-Loop: Reflected
+Content-Disposition: inline
+In-Reply-To: <20190829233506.GT5281@sasha-vm>
+User-Agent: NeoMutt/20170113 (1.7.2)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,277 +90,82 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Stephen Rothwell <sfr@canb.auug.org.au>, linux-erofs@lists.ozlabs.org,
- Theodore Ts'o <tytso@mit.edu>, "Darrick J . Wong" <darrick.wong@oracle.com>,
- Pavel Machek <pavel@denx.de>, Jan Kara <jack@suse.cz>,
- Amir Goldstein <amir73il@gmail.com>, Dave Chinner <david@fromorbit.com>,
- LKML <linux-kernel@vger.kernel.org>, Li Guifu <bluce.liguifu@huawei.com>,
- David Sterba <dsterba@suse.cz>, Christoph Hellwig <hch@infradead.org>,
- Richard Weinberger <richard@nod.at>, Miao Xie <miaoxie@huawei.com>,
- Fang Wei <fangwei1@huawei.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Jaegeuk Kim <jaegeuk@kernel.org>, Andrew Morton <akpm@linux-foundation.org>,
- Linus Torvalds <torvalds@linux-foundation.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, Christoph Hellwig <hch@infradead.org>,
+ Valdis =?utf-8?Q?Kl=C4=93tnieks?= <valdis.kletnieks@vt.edu>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Sasha Levin <alexander.levin@microsoft.com>, linux-fsdevel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 2019/8/15 12:41, Gao Xiang wrote:
-> [I strip the previous cover letter, the old one can be found in v6:
->  https://lore.kernel.org/r/20190802125347.166018-1-gaoxiang25@huawei.com/]
-> 
-> We'd like to submit a formal moving patch applied to staging tree
-> for 5.4, before that we'd like to hear if there are some ACKs,
-> suggestions or NAKs, objections of EROFS. Therefore, we can improve
-> it in this round or rethink about the whole thing.
-> 
-> As related materials mentioned [1] [2], the goal of EROFS is to
-> save extra storage space with guaranteed end-to-end performance
-> for read-only files, which has better performance over exist Linux
-> compression filesystems based on fixed-sized output compression
-> and inplace decompression. It even has better performance in
-> a large compression ratio range compared with generic uncompressed
-> filesystems with proper CPU-storage combinations. And we think this
-> direction is correct and a dedicated kernel team is continuously /
-> actively working on improving it, enough testers and beta / end
-> users using it.
-> 
-> EROFS has been applied to almost all in-service HUAWEI smartphones
-> (Yes, the number is still increasing by time) and it seems like
-> a success. It can be used in more wider scenarios. We think it's
-> useful for Linux / Android OS community and it's the time moving
-> out of staging.
-> 
-> In order to get started, latest stable mkfs.erofs is available at
-> 
-> git://git.kernel.org/pub/scm/linux/kernel/git/xiang/erofs-utils.git -b dev
-> 
-> with README in the repository.
-> 
-> We are still tuning sequential read performance for ultra-fast
-> speed NVME SSDs like Samsung 970PRO, but at least now you can
-> try on your PC with some data with proper compression ratio,
-> the latest Linux kernel, USB stick for convenience sake and
-> a not very old-fashioned CPU. There are also benchmarks available
-> in the above materials mentioned.
-> 
-> EROFS is a self-contained filesystem driver. Although there are
-> still some TODOs to be more generic, we will actively keep on
-> developping / tuning EROFS with the evolution of Linux kernel
-> as the other in-kernel filesystems.
-> 
-> As I mentioned before in LSF/MM 2019, in the future, we'd like
-> to generalize the decompression engine into a library for other
-> fses to use after the whole system is mature like fscrypt.
-> However, such metadata should be designed respectively for
-> each fs, and synchronous metadata read cost will be larger
-> than EROFS because of those ondisk limitation. Therefore EROFS
-> is still a better choice for read-only scenarios.
-> 
-> EROFS is now ready for reviewing and moving, and the code is
-> already cleaned up as shiny floors... Please kindly take some
-> precious time, share your comments about EROFS and let us know
-> your opinion about this. It's really important for us since
-> generally speaking, we like to use Linux _in-tree_ stuffs rather
-> than lack of supported out-of-tree / orphan stuffs as well.
-
-EROFS proposes its very unique fixed-sized output compression and inplace
-decompression framework joining into the ecosystem of compression filesystem, I
-think it will enrich diversity of compression filesystem, and bring healthy
-competition there.
-
-I do believe this is the right time to promote erofs to fs/ directory, let it be
-the formal member of filesystem clubhouse.
-
-Acked-by: Chao Yu <yuchao0@huawei.com>
-
-Thanks
-
-> 
-> Thank you in advance,
-> Gao Xiang
-> 
-> [1] https://kccncosschn19eng.sched.com/event/Nru2/erofs-an-introduction-and-our-smartphone-practice-xiang-gao-huawei
-> [2] https://www.usenix.org/conference/atc19/presentation/gao
-> 
-> Changelog from v7:
->  o keep up with the latest staging tree in addition to
->    the latest staging patch:
->    https://lore.kernel.org/r/20190814103705.60698-1-gaoxiang25@huawei.com/
->    - use EUCLEAN for fs corruption cases suggested by Pavel;
->    - turn EIO into EOPNOTSUPP for unsupported on-disk format;
->    - fix all misused ENOTSUPP into EOPNOTSUPP pointed out by Chao;
->  o update cover letter
-> 
-> It can also be found in git at tag "erofs_2019-08-15" (will be shown later) at:
->  https://git.kernel.org/pub/scm/linux/kernel/git/xiang/linux.git/
-> 
-> and the latest fs code is available at:
->  https://git.kernel.org/pub/scm/linux/kernel/git/xiang/linux.git/tree/fs/erofs?h=erofs-outofstaging
-> 
-> Changelog from v6:
->  o keep up with the latest staging patchset
->    https://lore.kernel.org/linux-fsdevel/20190813023054.73126-1-gaoxiang25@huawei.com/
->    in order to fix the following cases:
->    - inline erofs_inode_is_data_compressed() in erofs_fs.h;
->    - remove incomplete cleancache;
->    - remove all BUG_ON in EROFS.
->  o Removing the file names from the comments at the top of the files
->    suggested by Stephen will be applied to the real moving patch later.
-> 
-> Changelog from v5:
->  o keep up with "[PATCH v2] staging: erofs: updates according to erofs-outofstaging v4"
->     https://lore.kernel.org/lkml/20190731155752.210602-1-gaoxiang25@huawei.com/
->    which mainly addresses review comments from Chao:
->   - keep the marco EROFS_IO_MAX_RETRIES_NOFAIL in internal.h;
->   - kill a redundant NULL check in "__stagingpage_alloc";
->   - add some descriptions in document about "use_vmap";
->   - rearrange erofs_vmap of "staging: erofs: kill CONFIG_EROFS_FS_USE_VM_MAP_RAM";
-> 
->  o all changes have been merged into staging tree, which are under staging-testing:
->     https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/log/?h=staging-testing
-> 
-> Changelog from v4:
->  o rebase on Linux 5.3-rc1;
-> 
->  o keep up with "staging: erofs: updates according to erofs-outofstaging v4"
->    in order to get main code bit-for-bit identical with staging tree:
->     https://lore.kernel.org/lkml/20190729065159.62378-1-gaoxiang25@huawei.com/
-> 
-> Changelog from v3:
->  o use GPL-2.0-only for SPDX-License-Identifier suggested by Stephen;
-> 
->  o kill all kconfig cache strategies and turn them into mount options
->    "cache_strategy={disable|readahead|readaround}" suggested by Ted.
->    As the first step, cached pages can still be usable after cache is
->    disabled by remounting, and these pages will be fallen out over
->    time, which can be refined in the later version if some requirement
->    is needed. Update related document as well;
-> 
->  o turn on CONFIG_EROFS_FS_SECURITY by default suggested by David;
-> 
->  o kill CONFIG_EROFS_FS_IO_MAX_RETRIES and fold it into code; turn
->    EROFS_FS_USE_VM_MAP_RAM into a module parameter ("use_vmap")
->    suggested by David.
-> 
-> Changelog from v2:
->  o kill sbi->dev_name and clean up all failure handling in
->    fill_super() suggested by Al.
->    Note that the initialzation of managed_cache is now moved
->    after s_root is assigned since it's more preferred to iput()
->    in .put_super() and all inodes should be evicted before
->    the end of generic_shutdown_super(sb);
-> 
->  o fold in the following staging patches (and thanks):
->    staging: erofs:converting all 'unsigned' to 'unsigned int'
->    staging: erofs: Remove function erofs_kill_sb()
->     - However it was revoked due to erofs_kill_sb reused...
->    staging: erofs: avoid opened loop codes
->    staging: erofs: support bmap
-> 
->  o move EROFS_SUPER_MAGIC_V1 from linux/fs/erofs/erofs_fs.h to
->    include/uapi/linux/magic.h for userspace utilities.
-> 
-> Changelog from v1:
->  o resend the whole filesystem into a patchset suggested by Greg;
->  o code is more cleaner, especially for decompression frontend.
-> 
-> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> Cc: Alexander Viro <viro@zeniv.linux.org.uk>
-> Cc: Andrew Morton <akpm@linux-foundation.org>
-> Cc: Stephen Rothwell <sfr@canb.auug.org.au>
-> Cc: Theodore Ts'o <tytso@mit.edu>
-> Cc: Pavel Machek <pavel@denx.de>
-> Cc: David Sterba <dsterba@suse.cz>
-> Cc: Amir Goldstein <amir73il@gmail.com>
-> Cc: Christoph Hellwig <hch@infradead.org>
-> Cc: Darrick J . Wong <darrick.wong@oracle.com>
-> Cc: Dave Chinner <david@fromorbit.com>
-> Cc: Jaegeuk Kim <jaegeuk@kernel.org>
-> Cc: Jan Kara <jack@suse.cz> 
-> Cc: Richard Weinberger <richard@nod.at>
-> Cc: Chao Yu <yuchao0@huawei.com>
-> Cc: Miao Xie <miaoxie@huawei.com>
-> Cc: Li Guifu <bluce.liguifu@huawei.com>
-> Cc: Fang Wei <fangwei1@huawei.com>
-> Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
-> 
-> 
-> Gao Xiang (24):
->   erofs: add on-disk layout
->   erofs: add erofs in-memory stuffs
->   erofs: add super block operations
->   erofs: add raw address_space operations
->   erofs: add inode operations
->   erofs: support special inode
->   erofs: add directory operations
->   erofs: add namei functions
->   erofs: support tracepoint
->   erofs: update Kconfig and Makefile
->   erofs: introduce xattr & posixacl support
->   erofs: introduce tagged pointer
->   erofs: add compression indexes support
->   erofs: introduce superblock registration
->   erofs: introduce erofs shrinker
->   erofs: introduce workstation for decompression
->   erofs: introduce per-CPU buffers implementation
->   erofs: introduce pagevec for decompression subsystem
->   erofs: add erofs_allocpage()
->   erofs: introduce generic decompression backend
->   erofs: introduce LZ4 decompression inplace
->   erofs: introduce the decompression frontend
->   erofs: introduce cached decompression
->   erofs: add document
-> 
->  Documentation/filesystems/erofs.txt |  225 +++++
->  fs/Kconfig                          |    1 +
->  fs/Makefile                         |    1 +
->  fs/erofs/Kconfig                    |   98 ++
->  fs/erofs/Makefile                   |   11 +
->  fs/erofs/compress.h                 |   62 ++
->  fs/erofs/data.c                     |  425 ++++++++
->  fs/erofs/decompressor.c             |  360 +++++++
->  fs/erofs/dir.c                      |  148 +++
->  fs/erofs/erofs_fs.h                 |  316 ++++++
->  fs/erofs/inode.c                    |  333 +++++++
->  fs/erofs/internal.h                 |  555 +++++++++++
->  fs/erofs/namei.c                    |  253 +++++
->  fs/erofs/super.c                    |  666 +++++++++++++
->  fs/erofs/tagptr.h                   |  110 +++
->  fs/erofs/utils.c                    |  335 +++++++
->  fs/erofs/xattr.c                    |  705 ++++++++++++++
->  fs/erofs/xattr.h                    |   94 ++
->  fs/erofs/zdata.c                    | 1405 +++++++++++++++++++++++++++
->  fs/erofs/zdata.h                    |  195 ++++
->  fs/erofs/zmap.c                     |  463 +++++++++
->  fs/erofs/zpvec.h                    |  159 +++
->  include/trace/events/erofs.h        |  256 +++++
->  include/uapi/linux/magic.h          |    1 +
->  24 files changed, 7177 insertions(+)
->  create mode 100644 Documentation/filesystems/erofs.txt
->  create mode 100644 fs/erofs/Kconfig
->  create mode 100644 fs/erofs/Makefile
->  create mode 100644 fs/erofs/compress.h
->  create mode 100644 fs/erofs/data.c
->  create mode 100644 fs/erofs/decompressor.c
->  create mode 100644 fs/erofs/dir.c
->  create mode 100644 fs/erofs/erofs_fs.h
->  create mode 100644 fs/erofs/inode.c
->  create mode 100644 fs/erofs/internal.h
->  create mode 100644 fs/erofs/namei.c
->  create mode 100644 fs/erofs/super.c
->  create mode 100644 fs/erofs/tagptr.h
->  create mode 100644 fs/erofs/utils.c
->  create mode 100644 fs/erofs/xattr.c
->  create mode 100644 fs/erofs/xattr.h
->  create mode 100644 fs/erofs/zdata.c
->  create mode 100644 fs/erofs/zdata.h
->  create mode 100644 fs/erofs/zmap.c
->  create mode 100644 fs/erofs/zpvec.h
->  create mode 100644 include/trace/events/erofs.h
-> 
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+SGVsbG8sIHRoYW5rIHlvdSBmb3IgaW5wdXQhCgpPbiBUaHVyc2RheSAyOSBBdWd1c3QgMjAxOSAx
+OTozNTowNiBTYXNoYSBMZXZpbiB3cm90ZToKPiBPbiBUaHUsIEF1ZyAyOSwgMjAxOSBhdCAwNzox
+ODoxNlBNIC0wNDAwLCBWYWxkaXMgS2zEk3RuaWVrcyB3cm90ZToKPiA+IE9uIFRodSwgMjkgQXVn
+IDIwMTkgMjI6NTY6MzEgKzAyMDAsIFBhbGkgUm9oP3Igc2FpZDoKPiA+IAo+ID4gPiBJJ20gbm90
+IHJlYWxseSBzdXJlIGlmIHRoaXMgZXhmYXQgaW1wbGVtZW50YXRpb24gaXMgZnVsbHkgc3VpdGFi
+bGUgZm9yCj4gPiA+IG1haW5saW5lIGxpbnV4IGtlcm5lbC4KPiA+ID4gCj4gPiA+IEluIG15IG9w
+aW5pb24sIHByb3BlciB3YXkgc2hvdWxkIGJlIHRvIGltcGxlbWVudCBleEZBVCBzdXBwb3J0IGlu
+dG8KPiA+ID4gZXhpc3RpbmcgZnMvZmF0LyBjb2RlIGluc3RlYWQgb2YgcmVwbGFjaW5nIHdob2xl
+IHZmYXQvbXNkb3NmcyBieSB0aGlzCj4gPiA+IG5ldyAobm93IHN0YWdpbmcpIGZhdCBpbXBsZW1l
+bnRhdGlvbi4KPiA+IAo+ID4gPiBJbiBsaW51eCBrZXJuZWwgd2UgcmVhbGx5IGRvIG5vdCBuZWVk
+IHR3byBkaWZmZXJlbnQgaW1wbGVtZW50YXRpb24gb2YKPiA+ID4gVkZBVDMyLgo+ID4gCj4gPiBU
+aGlzIHBhdGNoIGhvd2V2ZXIgZG9lcyBoYXZlIG9uZSBtYWpvciBhZHZhbnRhZ2Ugb3ZlciAicGF0
+Y2ggdmZhdCB0bwo+ID4gc3VwcG9ydCBleGZhdCIgLSB3aGljaCBpcyB0aGF0IHRoZSBwYXRjaCBl
+eGlzdHMuCj4gPiAKPiA+IElmIHNvbWVib2R5IGNvbWVzIGZvcndhcmQgd2l0aCBhbiBhY3R1YWwg
+ImV4dGVuZCB2ZmF0IHRvIGRvIGV4ZmF0IiBwYXRjaCwKPiA+IHdlIHNob3VsZCBhdCB0aGF0IHBv
+aW50IGhhdmUgYSBkaXNjdXNzaW9uIGFib3V0IHJlbGF0aXZlIG1lcml0cy4uLi4KPiAKPiBUaGlz
+IHBhdGNoIGdvaW5nIGludG8gc3RhZ2luZyBkb2Vzbid0IG5lY2Vzc2FyaWx5IG1lYW4gdGhhdCBv
+bmUgZGF5Cj4gaXQnbGwgZ2V0IG1vdmVkIHRvIGZzL2V4ZmF0Ly4gSXQncyB2ZXJ5IHBvc3NpYmxl
+IHRoYXQgdGhlIGFwcHJvYWNoIHdvdWxkCj4gaW5zdGVhZCBiZSB0byB1c2UgdGhlIHN0YWdpbmcg
+Y29kZSBmb3IgcmVmZXJlbmNlLCBidWlsZCB0aGlzCj4gZnVuY3Rpb25hbGl0eSBpbiBmcy9mYXQv
+LCBhbmQga2lsbCBvZmYgdGhlIHN0YWdpbmcgY29kZSB3aGVuIGl0J3Mgbm90Cj4gbmVlZGVkIGFu
+eW1vcmUuCgpTbywgaWYgY3VycmVudCBleGZhdCBjb2RlIGlzIGp1c3QgZ29pbmcgdG8gYmUgInJl
+ZmVyZW5jZSIgaG93IHRvCmltcGxlbWVudCBleGZhdCBwcm9wZXJseSBpbiBmcy9mYXQsIGlzIHRo
+aXMgY29ycmVjdCB1c2FnZSBvZiAic3RhZ2luZyI/CgpJIHdhcyBpbiBpbXByZXNzaW9uIHRoYXQg
+c3RhZ2luZyBpcyB0aGVyZSBmb3IgZHJpdmVycyB3aGljaCBuZWVkcwpjbGVhbnVwIGFzIHRoZXkg
+YXJlIG5vdCByZWFkeSB0byBiZSBwYXJ0IG9mIG1haW5saW5lLiBCdXQgbm90IHRoYXQgaXQgaXMK
+Zm9yICJyYW5kb20iIGltcGxlbWVudGF0aW9uIG9mIHNvbWV0aGluZyB3aGljaCBpcyBnb2luZyB0
+byBiZSBqdXN0IGEKImNvZGUgZXhhbXBsZSIgb3IgInJlZmVyZW5jZSIgZm9yIGZpbmFsIGltcGxl
+bWVudGF0aW9uIHdoaWNoIHdvdWxkIGJlCmRpZmZlcmVudC4KCk1heWJlIG90aGVyIHBlb3BsZSBj
+b3VsZCBjbGFyaWZ5IHN0YXRlIG9mIHN0YWdpbmcsIGlmIHRoaXMgaXMgaG93CnN0YWdpbmcgc2hv
+dWxkIGJlIHVzZWQgb3Igbm90LgoKPiBXaXRoIHJlZ2FyZHMgdG8gbWlzc2luZyBzcGVjcy9kb2Nz
+L3doYXRldmVyIC0gb3VyIG1haW4gY29uY2VybiB3aXRoIHRoaXMKPiByZWxlYXNlIHdhcyB0aGF0
+IHdlIHdhbnQgZnVsbCBpbnRlcm9wZXJhYmlsaXR5LCB3aGljaCBpcyB3aHkgdGhlIHNwZWMKPiB3
+YXMgbWFkZSBwdWJsaWMgYXMtaXMgd2l0aG91dCBtb2RpZmljYXRpb25zIGZyb20gd2hhdCB3YXMg
+dXNlZAo+IGludGVybmFsbHkuIFRoZXJlJ3Mgbm8gInNlY3JldCBzYXVjZSIgdGhhdCBNaWNyb3Nv
+ZnQgaXMgaGlkaW5nIGhlcmUuCgpPaywgaWYgaXQgd2FzIGp1c3QgZHJvcCBvZiAiY3VycmVudCB2
+ZXJzaW9uIiBvZiBkb2N1bWVudGF0aW9uIHRoZW4gaXQKbWFrZXMgc2Vuc2UuCgo+IEhvdyBhYm91
+dCB3ZSBnaXZlIHRoaXMgc3BlYy9jb2RlIHRpbWUgdG8gZ2V0IHNvYWtlZCBhbmQgcmV2aWV3ZWQg
+Zm9yIGEKPiBiaXQsIGFuZCBpZiBmb2xrcyBzdGlsbCBmZWVsIChpbiBhIG1vbnRoIG9yIHNvPykg
+dGhhdCB0aGVyZSBhcmUgbWlzc2luZwo+IGJpdHMgb2YgaW5mb3JtYXRpb24gcmVsYXRlZCB0byBl
+eGZhdCwgSSdsbCBiZSBoYXBweSB0byBnbyBiYWNrIGFuZCB0cnkKPiB0byBnZXQgdGhlbSBvdXQg
+YXMgd2VsbC4KCkJhc2ljYWxseSBleHRlcm5hbCByZWZlcmVuY2VzIGluIHRoYXQgcmVsZWFzZWQg
+ZXhGQVQgc3BlY2lmaWNhdGlvbiBhcmUKdW5rbm93biAvIG5vdCByZWxlYXNlZCB5ZXQuIExpa2Ug
+VGV4RkFULiBTbyBpZiB5b3UgaGF2ZSBhbiBpbnB1dCBpbiBNUwpjb3VsZCB5b3UgZm9yd2FyZCBy
+ZXF1ZXN0IGFib3V0IHRoZXNlIG1pc3NpbmcgYml0cz8KCkFsc28sIE1TIGFscmVhZHkgcmVsZWFz
+ZWQgc291cmNlIGNvZGUgb2YgRkFUMzIga2VybmVsIGRyaXZlcgooZmFzdGZhdC5zeXMpIGFuZCBm
+cm9tIGNvZGUgY2FuIGJlIHNlZW4gdGhhdCBpdCBkb2VzIG5vdCBtYXRjaCBNUyBGQVQKc3BlY2lm
+aWNhdGlvbiwgYW5kIGluY2x1ZGUgc29tZSAic2VjcmV0IHNhdWNlIiBiaXRzLiBTb3VyY2UgY29k
+ZSBpcyBvbjoKaHR0cHM6Ly9naXRodWIuY29tL21pY3Jvc29mdC9XaW5kb3dzLWRyaXZlci1zYW1w
+bGVzL3RyZWUvbWFzdGVyL2ZpbGVzeXMvZmFzdGZhdAoKSW4gZmFzdGZhdC5zeXMgdGhlcmUgaXMg
+ZS5nLiB1c2FnZSBvZiB1bmRvY3VtZW50ZWQgYml0cyBpbiBkaXJlY3RvcnkKZW50cnkgb3IgdXNh
+Z2Ugb2YgdW5kb2N1bWVudGVkIGJpdHMgZm9yIG1hcmtpbmcgZmlsZXN5c3RlbSBhcyAiZGlydHki
+IC0tCmluY29ycmVjdGx5IHVubW91bnRlZC4KCldvdWxkIGl0IGJlIHBvc3NpYmxlIGZvciBNUyB0
+byByZWxlYXNlIGluIHNhbWUgd2F5IGNvZGUgb2YgZXhGQVQgTlQKZHJpdmVyPyBJJ20gcmVhbGx5
+IGEgYml0IHNjZXB0aWNhbCB0aGF0IGV4RkFUIE1TIGltcGxlbWVudGF0aW9uIGlzCnJlYWxseSBh
+Y2NvcmRpbmcgdG8gc3RhbmRhcmQgYXMgSSBhbHJlYWR5IGtub3duIHRoYXQgRkFUMzIgaXMgbm90
+LgoKSnVzdCB0byBub3RlIHRoYXQgSSBkaWQgc29tZSBpbnZlc3RpZ2F0aW9uIGluIEZBVDMyIGxl
+dmVsIGhvdyBhcmUKaGFuZGxlZCB2b2x1bWUgbGFiZWxzIGFuZCBJIGZvdW5kIG1vcmUgYnVncyBp
+biBjdXJyZW50IGltcGxlbWVudGF0aW9ucwoobXRvb2xzLCBkb3Nmc3Rvb2xzLCB1dGlsLWxpbnV4
+IGFuZCBldmVuIGluIGZhc3RmYXQuc3lzKS4gU29tZQpyZWZlcmVuY2VzIGFyZSBvbjogaHR0cHM6
+Ly93d3cuc3Bpbmljcy5uZXQvbGlzdHMva2VybmVsL21zZzI2NDA4OTEuaHRtbAoKRml4ZXMgZm9y
+IG10b29scywgZG9zZnN0b29scyBhbmQgdXRpbC1saW51eCB3ZXJlIGFscmVhZHkgYXBwbGllZCBh
+bmQgZml4CmZvciBNUydzIGZhc3RmYXQuc3lzIGlzIHBlbmRpbmcgaW4gb3BlbmVkIHB1bGwgcmVx
+dWVzdDoKaHR0cHM6Ly9naXRodWIuY29tL21pY3Jvc29mdC9XaW5kb3dzLWRyaXZlci1zYW1wbGVz
+L3B1bGwvMzAzCgpDb3VsZCB5b3UgcGxlYXNlIGZvcndhcmQgbXkgcHVsbCByZXF1ZXN0IGZvciBm
+YXN0ZmF0LnN5cyBmaXhlcyB0bwphcHByb3ByaWF0ZSBwZW9wbGUvdGVhbSBpbiBNUz8KCi0tIApQ
+YWxpIFJvaMOhcgpwYWxpLnJvaGFyQGdtYWlsLmNvbQpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2
+ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
