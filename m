@@ -1,82 +1,85 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AA4A0A440A
-	for <lists+driverdev-devel@lfdr.de>; Sat, 31 Aug 2019 12:30:33 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CF5BB8708D;
-	Sat, 31 Aug 2019 10:30:31 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OtUfjG-hSiC1; Sat, 31 Aug 2019 10:30:31 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8C4C887074;
-	Sat, 31 Aug 2019 10:30:30 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7AD381BF42E
- for <devel@linuxdriverproject.org>; Sat, 31 Aug 2019 10:30:28 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 22779A440D
+	for <lists+driverdev-devel@lfdr.de>; Sat, 31 Aug 2019 12:32:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 76091203F6
- for <devel@linuxdriverproject.org>; Sat, 31 Aug 2019 10:30:28 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2B4DB20414;
+	Sat, 31 Aug 2019 10:31:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id SrDzaTSXWJZN; Sat, 31 Aug 2019 10:31:58 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 8FC77203F6;
+	Sat, 31 Aug 2019 10:31:57 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 0CBFD1BF42E
+ for <devel@linuxdriverproject.org>; Sat, 31 Aug 2019 10:31:56 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 077E3870DC
+ for <devel@linuxdriverproject.org>; Sat, 31 Aug 2019 10:31:56 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZhzcxUVcAiFp for <devel@linuxdriverproject.org>;
- Sat, 31 Aug 2019 10:30:27 +0000 (UTC)
+ with ESMTP id pWh-BhPzYPXo for <devel@linuxdriverproject.org>;
+ Sat, 31 Aug 2019 10:31:55 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from omr1.cc.vt.edu (outbound.smtp.vt.edu [198.82.183.121])
- by silver.osuosl.org (Postfix) with ESMTPS id 7510A203EF
- for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 10:30:27 +0000 (UTC)
-Received: from mr6.cc.vt.edu (mr6.cc.ipv6.vt.edu
- [IPv6:2607:b400:92:8500:0:af:2d00:4488])
- by omr1.cc.vt.edu (8.14.4/8.14.4) with ESMTP id x7VAUQvN004505
- for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 06:30:26 -0400
+Received: from omr2.cc.vt.edu (outbound.smtp.vt.edu [198.82.183.121])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 4D05E8708D
+ for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 10:31:55 +0000 (UTC)
+Received: from mr5.cc.vt.edu (junk.cc.ipv6.vt.edu
+ [IPv6:2607:b400:92:9:0:9d:8fcb:4116])
+ by omr2.cc.vt.edu (8.14.4/8.14.4) with ESMTP id x7VAVrEH022181
+ for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 06:31:53 -0400
 Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
  [209.85.160.200])
- by mr6.cc.vt.edu (8.14.7/8.14.7) with ESMTP id x7VAULZt012728
- for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 06:30:26 -0400
-Received: by mail-qt1-f200.google.com with SMTP id 38so9943738qtx.3
- for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 03:30:26 -0700 (PDT)
+ by mr5.cc.vt.edu (8.14.7/8.14.7) with ESMTP id x7VAVmRn031825
+ for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 06:31:53 -0400
+Received: by mail-qt1-f200.google.com with SMTP id h18so9865857qto.18
+ for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 03:31:53 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:in-reply-to:references
  :mime-version:content-transfer-encoding:date:message-id;
- bh=yS6lJBR0z5pXlUbR3vjtDfvuZ/ch4JHNsJdpqfM7yNY=;
- b=sOTEGu4ouKhQIQ8wKipzXQ+EE8phEAwa2w1x+vGjmPPBCkjMxHVWTVapx3Yzn0/bFi
- KIsVIb59w3hklXRN9GXvDAWktyE0oQ7MNJq/yBLFmUybWeN603k0DByeiCpUjgfIzoAN
- 8tCmyWbaQw4gxcc+1UxmjJDGneNKVaYysHkY8PNRnlVouE3Hv7VpwIx55eONz98Bp26t
- /drLIfmL1IlBJPo2jsYyZXuBzDfrAswXfLv8uY5PXL4QSV8oehSlkdK6fOHA9zgDu8z5
- csxUq72DF7rwfWrg4UDUjWqUtoiGBTt1cek+iqRzFcqXSgHpPfCHIz4YhQV2pP9OvQEU
- C6WA==
-X-Gm-Message-State: APjAAAVUDCki6+Q3I4LrLTcNBdxy5Mq+JvQZVRZuuflUbK+DnQ3Y8oPK
- yVZ2YMIxYs50StjiWlVqkv0kG7h1w3MNdcXS04jVNwaoxPVlDCbG0BU1h5BMyQNi1Lnhg3XwI7t
- ddHJ8il+fa+nXG9Dnmiv4cQ2y5hQo6sq7
-X-Received: by 2002:a05:620a:1125:: with SMTP id
- p5mr4061528qkk.210.1567247421048; 
- Sat, 31 Aug 2019 03:30:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxuInrftSS9yb0sn0s1xQsaIUrlAnhCycOjV4outISe323Mo9dV6f7RRjcoGpIH/0dZSLvqtw==
-X-Received: by 2002:a05:620a:1125:: with SMTP id
- p5mr4061511qkk.210.1567247420798; 
- Sat, 31 Aug 2019 03:30:20 -0700 (PDT)
+ bh=IDGw4t+jkka64Wht6d3CAXrxONGQFYzW5tFrvF9rQ80=;
+ b=AJDq+xexri3uEZXLTO9kTnvfrC7ZEaOv1oL+f4HHVZEwX7BJJP7YdJ96Fug3q+lWx8
+ 1T9AmVV8xrbswQV2maZQFqqQVwVgJFOiSXRHw2Ar/brahZnU2RhydWs1O3iwgRm94V2H
+ g8DdxBcKlqVwMoI8chHvX37Jha7xwN3xYDFnuJClLA6AY9aO66A6Fs0jtJov+R/F49Lk
+ ZkpwzUfYNzArU2q3CgAQa8u/l8F/AfRJ33Bifu135U2nU/h5yFlTD+tKbisHrmvBWNGQ
+ F+aKTzgCMY9YB64qC+B0e1a/TzosBgjjTeRndnpbgOn4+wyfsYiplLmQYVIfP9wxHdKN
+ e5kg==
+X-Gm-Message-State: APjAAAU4+SwtoE47tkFYd+YIpl6UHMS1C9lvxzVMf3WxL4N3d+Q4mkrO
+ eiDEGry5iwZzjcDZswJuvm50VzGPrNYFFIVj88Lqp1/oHo5M6/4o9dcSkp5AW5RzNOcICcFG7uB
+ f7jjDAbBonlDS4M3BOpoU+JABWNGqnN4z
+X-Received: by 2002:a37:8c04:: with SMTP id o4mr19360117qkd.163.1567247508218; 
+ Sat, 31 Aug 2019 03:31:48 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwY45aL6/n6Q+yi+UlWzypyRQEmcFtucMm/svMFPIxtNeXRyUsVRUo0F9jcenYO+qbRIHxMog==
+X-Received: by 2002:a37:8c04:: with SMTP id o4mr19360098qkd.163.1567247508020; 
+ Sat, 31 Aug 2019 03:31:48 -0700 (PDT)
 Received: from turing-police ([2601:5c0:c001:4340::ba0])
- by smtp.gmail.com with ESMTPSA id s17sm1979613qkm.54.2019.08.31.03.30.19
+ by smtp.gmail.com with ESMTPSA id 22sm4217243qkc.90.2019.08.31.03.31.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 31 Aug 2019 03:30:19 -0700 (PDT)
+ Sat, 31 Aug 2019 03:31:46 -0700 (PDT)
 From: "Valdis Kl=?utf-8?Q?=c4=93?=tnieks" <valdis.kletnieks@vt.edu>
 X-Google-Original-From: "Valdis Kl=?utf-8?Q?=c4=93?=tnieks"
  <Valdis.Kletnieks@vt.edu>
 X-Mailer: exmh version 2.9.0 11/07/2018 with nmh-1.7+dev
-To: Colin King <colin.king@canonical.com>
-Subject: Re: [PATCH] staging: exfat: remove redundant goto
-In-Reply-To: <20190830181523.13356-1-colin.king@canonical.com>
-References: <20190830181523.13356-1-colin.king@canonical.com>
+To: Dave Chinner <david@fromorbit.com>
+Subject: Re: [PATCH] staging: exfat: add exfat filesystem code to staging
+In-Reply-To: <20190830215410.GD7777@dread.disaster.area>
+References: <20190828160817.6250-1-gregkh@linuxfoundation.org>
+ <20190828170022.GA7873@kroah.com> <20190829062340.GB3047@infradead.org>
+ <20190829063955.GA30193@kroah.com> <20190829094136.GA28643@infradead.org>
+ <20190829095019.GA13557@kroah.com> <20190829103749.GA13661@infradead.org>
+ <20190829111810.GA23393@kroah.com>
+ <20190830215410.GD7777@dread.disaster.area>
 Mime-Version: 1.0
-Date: Sat, 31 Aug 2019 06:30:18 -0400
-Message-ID: <295459.1567247418@turing-police>
+Date: Sat, 31 Aug 2019 06:31:45 -0400
+Message-ID: <295503.1567247505@turing-police>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,70 +92,57 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============6631363614109890318=="
+Cc: devel@driverdev.osuosl.org, Sasha Levin <alexander.levin@microsoft.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Christoph Hellwig <hch@infradead.org>, linux-fsdevel@vger.kernel.org,
+ OGAWA Hirofumi <hirofumi@mail.parknet.co.jp>
+Content-Type: multipart/mixed; boundary="===============7704076009591472743=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
---===============6631363614109890318==
-Content-Type: multipart/signed; boundary="==_Exmh_1567247418_4251P";
+--===============7704076009591472743==
+Content-Type: multipart/signed; boundary="==_Exmh_1567247505_4251P";
 	 micalg=pgp-sha1; protocol="application/pgp-signature"
 Content-Transfer-Encoding: 7bit
 
---==_Exmh_1567247418_4251P
+--==_Exmh_1567247505_4251P
 Content-Type: text/plain; charset=us-ascii
 
-On Fri, 30 Aug 2019 19:15:23 +0100, Colin King said:
-> From: Colin Ian King <colin.king@canonical.com>
->
-> The goto after a return is never executed, so it is redundant and can
-> be removed.
->
-> Addresses-Coverity: ("Structurally dead code")
-> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+On Sat, 31 Aug 2019 07:54:10 +1000, Dave Chinner said:
 
-Good catch....
+> The correct place for new filesystem review is where all the
+> experienced filesystem developers hang out - that's linux-fsdevel,
+> not the driver staging tree.
 
-> -	if (dentry < -1) {
-> +	if (dentry < -1)
->  		return FFS_NOTFOUND;
-> -		goto out;
-> -	}
-
-But the wrong fix. The code *used* to have returns like this all over the
-place, but that meant it returns with a lock held - whoops.  The *other* 287 or
-so places I changed to 'ret = FFS_yaddayadda',  followed by a 'goto out' but I
-apparently missed one.
-
-And thanks a bunch for feeding it to Coverity :)
+So far everything's been cc'ed to linux-fsdevel, which has been spending
+more time discussing unlikely() usage in a different filesystem.
 
 
 
---==_Exmh_1567247418_4251P
+--==_Exmh_1567247505_4251P
 Content-Type: application/pgp-signature
 
 -----BEGIN PGP SIGNATURE-----
 Comment: Exmh version 2.9.0 11/07/2018
 
-iQIVAwUBXWpMOQdmEQWDXROgAQIm0w//aPU0Rv6gMxB2mP0p2L7LaEtmwIdoEwD9
-ntgSn8am4fv/Zi99Y7BOBzCw5/KAyV8qo0V5LzIt4seIgXCa+I/gd12ngxmfRt1B
-0HAjQQQZl5TX5l2gnAzTIlUasA6mnxkb27/9x+qSUZRwoCRSliQC4wsaNzHbDO0y
-iSNdDeiRz9hqSHtim2p7OJG2DSMTzrahN5BYD58a78/ocgOGjokb4v1nSHkU2zIS
-+3C1AhCU9K6o9RedPZ3aoLELlWfwXa6EWgtiMsNC28ay/b0LkJBiA8XelQkdlfmE
-mXq+g51uNim/ZT5m2YZWx6znD/SjGbwBgmftA/oawZuw4REpvAHVihULK5SGVwNn
-ClPsmzGIzLvlDeAE3NKnyMAZZ5/Ip49aLxjViJMAPKFhTOHpI8mKJFYjKja8DF/c
-Bu16fZqvbm7Ux50iljUwc94NEVw1QDefd8PkTc3UgwInv54xpUvb5pckweHWe8bj
-FANfoJKJWmYy2aDIHyww9Yj5obKJLazQTISnUZrpgP8b2HlvFolaLC/669sLd36v
-Rdvz/nNh5bUL5vA8nojDQ+mSYMEy5zi38hRQdGnM45IW1K+GOquDRRTl3w82DNRF
-TfuiZym2//hGZFaPD/tZuGLwmWcxN+5gvn6U5IPwaBHnDwYf4GgHmqh0G0PaOg5W
-v4SY1xOsplg=
-=O42f
+iQIVAwUBXWpMkAdmEQWDXROgAQJ88g/+L8aZBmGh/szeaXflnEcMn79pb3NyBxih
++ZtyT6+w4tFSdaj5tNw2bqM+p/gNl7wEdZj0UsBmCZaogZi95/ZfawiJ/Fr/Ck5g
+YAa6JJCa8KJfl5TwC3ojDmHSc92/zqivcB4DY58rjLkeHe6b0RkouQZVLGsLtGYY
+3VsID8G7CKOVkBzGLOyv6xHpjcOg125ulCd+eoQw5Z2GHL7/50JDvy2TpAYlxut8
+kGK07Fs2pwQMxDBMbxTS51qSGu51ZscURPt6jUGpqSEa1a/1x/y5fuILeoxyy9HO
+hSrqc3lXnvbL7+0mXIqg7cm62kJ72GmGoE6mNwuG6Z9q0T7uK/0rT0Ffnnopf/b0
+2cZz4+xTMJVeS3cZQttHVN9XNgq2DajdoDLNWFgTiPABIdRsaBeUrGRIzwbeTYRH
+xESRCtZpePDBDWvu7q/IyuQoQJHWq7oqEHOTE0SJ4cZvycEnsf1AN6oN4ES3Umqs
+ZQmPwjtm7vu10SsJPEYoxZQPau5qq/vPr9lF0pMW8J9fUH4Ro45wD2sSgllVBqQj
+2PF59qNEfMzwuUiX8+Snb/cKChD6wzpMuz18+m1wEZGzuvybpdZITp2HofmRbovD
+Dr+BttOImxJB7tpyJKtoRkr5A0Zf4pxk1RambfMqxtUtsJSr7JxCiH24nthjR0gG
+ONk8TCj1hSg=
+=xo/v
 -----END PGP SIGNATURE-----
 
---==_Exmh_1567247418_4251P--
+--==_Exmh_1567247505_4251P--
 
---===============6631363614109890318==
+--===============7704076009591472743==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -163,4 +153,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---===============6631363614109890318==--
+--===============7704076009591472743==--
