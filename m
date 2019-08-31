@@ -1,75 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A8A9AA4453
-	for <lists+driverdev-devel@lfdr.de>; Sat, 31 Aug 2019 13:56:01 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B12D7A4593
+	for <lists+driverdev-devel@lfdr.de>; Sat, 31 Aug 2019 19:27:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 29D7A86B1F;
-	Sat, 31 Aug 2019 11:55:59 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 96184203BD;
+	Sat, 31 Aug 2019 17:27:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yfdjDAYYMn1E; Sat, 31 Aug 2019 11:55:58 +0000 (UTC)
+	with ESMTP id E3WmP0+qM+Z4; Sat, 31 Aug 2019 17:27:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 50F6986E7F;
-	Sat, 31 Aug 2019 11:55:57 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 099C120398;
+	Sat, 31 Aug 2019 17:27:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C2B541BF426
- for <devel@linuxdriverproject.org>; Sat, 31 Aug 2019 11:55:55 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 706001BF2AE
+ for <devel@linuxdriverproject.org>; Sat, 31 Aug 2019 17:26:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id BFC9D20031
- for <devel@linuxdriverproject.org>; Sat, 31 Aug 2019 11:55:55 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6CDEE20379
+ for <devel@linuxdriverproject.org>; Sat, 31 Aug 2019 17:26:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1IaV8CxRUhzG for <devel@linuxdriverproject.org>;
- Sat, 31 Aug 2019 11:55:55 +0000 (UTC)
+ with ESMTP id xcEkazgF1b6i for <devel@linuxdriverproject.org>;
+ Sat, 31 Aug 2019 17:26:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by silver.osuosl.org (Postfix) with ESMTPS id 2E10320028
- for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 11:55:55 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id n9so4894248pgc.1
- for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 04:55:55 -0700 (PDT)
+Received: from mail-lj1-f193.google.com (mail-lj1-f193.google.com
+ [209.85.208.193])
+ by silver.osuosl.org (Postfix) with ESMTPS id 4B82F20109
+ for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 17:26:56 +0000 (UTC)
+Received: by mail-lj1-f193.google.com with SMTP id x18so9294197ljh.1
+ for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 10:26:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=jiPI/S1I8ovmltBRaSbmMFouXNTRLulDlE8rPr/ejko=;
- b=GGUFrqGAVjbyF5vKF3QF51JSgXMSZfxc7mdKdQy421z5AVSFolgparAvlh75IjaOO1
- 7PcWSJ4fxcA3OHXKMqg7lai8U5bEr60glEVhd8RNRQ0r6k6KZT3kTS0PSddADp+rOdvk
- l1McEl6fVEe+X5umSQIxqN42n8gwqpiEXPR4+bEbz38lyiNoFuR3tZ+cdC88mGUOnjcN
- hqL6YkkjDXobfVk8b1BBUM+yVkcVqbnFmyFOMFGZuAp7qMhAPW2V3V2ZEjWAVI9pdd1m
- XwOgjgDZlBEYt4oGeR2l6JmVDkvqCgOCM3wc9eToZWJCuNkD4ygUDoTpGUMWyS/qK5ZG
- 46gQ==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=rJkDLV4v1T0ZlJal69EutIWWJNaMipXTowQmmuZqIEw=;
+ b=bijyrtLzJMpDV/QfoymnOP7MyNktKJQSo0LllG+wfXTIAZdYy44HJ1WbD2jhMHB7nC
+ +pA0onOjlhFVSeRhEPyqgH3K+3JnKD10bNr084nZ0HomqzcBmA9X6OcTmJFv+6UF2Sxv
+ QDLFjGy3jDzovxdewJh5aEwqDWV7ijBM4aiIHcJOYV5uojWJrau4PgcT9tOiaRW++VnN
+ jVvQh5Nw9YCu1D9iczWKua6YZ5o/Qp8P+bTWRjwZs4zJUBsGvXWyD/JfVLd60J2YZhdM
+ h+Yzmmbr5AZYJtgGXcab7pOY5HmsCj7YNXBaCT7AKoNZ1Z6rejRaxeB+mD+nO5/nuORl
+ IWyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=jiPI/S1I8ovmltBRaSbmMFouXNTRLulDlE8rPr/ejko=;
- b=soAQKZ+rnJs0Bv4cOLqi8ebPNfo+qCWXY9G+fp4rWbe8o6sO2uS6Nfo3ggKgAf9oS8
- ndevvHZu2SS7JUfK5wG6m2JtU/i3SLh10pOD4rAFmv2WLOHJw1ti+xH8cYEH5shHG9Nb
- PESDWGj8cLgnihDv1lE0KKYIhos+xfzFn5vOjiwHFPMTkca3yd59FPbclT0YiLyUZUal
- Z1SQblaN5UWQ59elnnMhnzppLSBJvt0V+2Sr8QXA83PNFRF/BaQPHgAC7klC9WxbJnOF
- nlAr9ortCeT8CEknU0tZudVlwmOZgm2/JN0feJNNLxoR7HMxtlmFQJ3HhVJRxzebu2KJ
- awfA==
-X-Gm-Message-State: APjAAAW2Dr3dBOjUmthK8jP94W6xJTG4X0S4Z0xr0VcHVh+FFeMp+LBH
- /jjgO6tmJANPQCvA5j0Dna8=
-X-Google-Smtp-Source: APXvYqz8wPT9Oo/EEVfCWytD2ATICtzrqqQct0x8l87FYI1dLTg9Ot+r67im8hkY0QQzTA+N8NzwKg==
-X-Received: by 2002:a17:90a:ad4a:: with SMTP id
- w10mr3617827pjv.41.1567252554735; 
- Sat, 31 Aug 2019 04:55:54 -0700 (PDT)
-Received: from localhost.localdomain ([183.83.73.90])
- by smtp.gmail.com with ESMTPSA id t15sm10353411pfc.47.2019.08.31.04.55.50
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 31 Aug 2019 04:55:54 -0700 (PDT)
-From: Harsh Jain <harshjain32@gmail.com>
-To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] staging:kpc2000: Fix long constant sparse warning
-Date: Sat, 31 Aug 2019 17:25:32 +0530
-Message-Id: <20190831115532.2398-1-harshjain32@gmail.com>
-X-Mailer: git-send-email 2.17.1
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=rJkDLV4v1T0ZlJal69EutIWWJNaMipXTowQmmuZqIEw=;
+ b=UTNdjey5mNzHMg0EmVUN9k/c1Ut0RE1+GqaP7P1115GxCeceHBGy5jZE6en+ZzBjXj
+ ZV+m8c9K9sLuKgu4kbwOZjzwn2yHtVOYn79dVnCaWghZVQwAFpiz3D6nvEYJK7gUCM5v
+ idgj5rFrVunfTOaKGbGaPiJa4CZf9TIO+6F51MQtNc/78RPg/G96VHgFv09tGgw6Swxt
+ I6uUAu3+Z0LUD5QqZEU49mcRBgKI4iVW2HnGMoIvqGlRrzNMo99qS04YQQepdHZlhMP7
+ 4B41Eg3mHfj9nATtf5E5ysuCUNpyc0jVoVSrOtlRZ/pP1d93relRaaOlPBlDVfJPmrlf
+ 1Cfw==
+X-Gm-Message-State: APjAAAXWZSM70lEbvoMjxdxhw0bX+Dj1DKJt5NKdNYBrXPy0Vk25/hz3
+ EfFmJp5QZ4De/K+Eu+USqrk=
+X-Google-Smtp-Source: APXvYqzLz9TjucBk9Gq1E/bU6jz1XmD1zdYBh8oukD8QqhBwWU23nwqVGmcn3hFq7GpS9VEupaSl1g==
+X-Received: by 2002:a2e:88c7:: with SMTP id a7mr12143536ljk.72.1567272414022; 
+ Sat, 31 Aug 2019 10:26:54 -0700 (PDT)
+Received: from [192.168.0.160] (ppp89-110-19-106.pppoe.avangarddsl.ru.
+ [89.110.19.106])
+ by smtp.gmail.com with ESMTPSA id p10sm1016775lji.71.2019.08.31.10.26.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 31 Aug 2019 10:26:53 -0700 (PDT)
+Subject: Re: [PATCH] r8188eu: use skb_put_data instead of skb_put/memcpy pair
+To: Dan Carpenter <dan.carpenter@oracle.com>
+References: <4c9e1e66-5ffc-c04b-9ea8-39cec5fd9b2a@gmail.com>
+ <20190827103134.GC23584@kadam>
+From: Ivan Safonov <insafonov@gmail.com>
+Message-ID: <33548df8-6eb3-0ce6-d37e-1b4b79b0dcfc@gmail.com>
+Date: Sat, 31 Aug 2019 20:30:16 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
+MIME-Version: 1.0
+In-Reply-To: <20190827103134.GC23584@kadam>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,133 +90,53 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: harshjain32@gmail.com
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Sanjana Sanikommu <sanjana99reddy99@gmail.com>,
+ Colin Ian King <colin.king@canonical.com>,
+ Vatsala Narang <vatsalanarang@gmail.com>,
+ Larry Finger <Larry.Finger@lwfinger.net>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-It fixed following warning in kpc2000 driver
-"constant XXXX is so big it is unsigned long"
+On 8/27/19 1:31 PM, Dan Carpenter wrote:
+> On Sun, Aug 25, 2019 at 11:48:58PM +0300, Ivan Safonov wrote:
+>> skb_put_data is shorter and clear.
+>>
+> 
+> Please don't start the commit message in the middle of a sentence.  It
+> often gets split from the start of the sentence.  See how it looks here.
+> https://marc.info/?l=linux-driver-devel&m=156676594611401&w=2
+> 
+> 
+>> Signed-off-by: Ivan Safonov <insafonov@gmail.com>
+>> ---
+>>   drivers/staging/rtl8188eu/core/rtw_recv.c        | 6 +-----
+>>   drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c | 3 +--
+>>   2 files changed, 2 insertions(+), 7 deletions(-)
+>>
+>> diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c
+>> b/drivers/staging/rtl8188eu/core/rtw_recv.c
+>> index 620da6c003d8..d4278361e002 100644
+>> --- a/drivers/staging/rtl8188eu/core/rtw_recv.c
+>> +++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
+>> @@ -1373,11 +1373,7 @@ static struct recv_frame *recvframe_defrag(struct
+>> adapter *adapter,
+>>                  /* append  to first fragment frame's tail (if privacy frame,
+>> pull the ICV) */
+>>                  skb_trim(prframe->pkt, prframe->pkt->len -
+>> prframe->attrib.icv_len);
+> 
+> 
+> Your email client corrupted the patch so it can't be applied.
 
-Signed-off-by: Harsh Jain <harshjain32@gmail.com>
----
- drivers/staging/kpc2000/kpc2000/cell_probe.c | 18 +++++++++---------
- drivers/staging/kpc2000/kpc2000/core.c       | 18 +++++++++---------
- drivers/staging/kpc2000/kpc_dma/fileops.c    |  8 ++++----
- 3 files changed, 22 insertions(+), 22 deletions(-)
-
-diff --git a/drivers/staging/kpc2000/kpc2000/cell_probe.c b/drivers/staging/kpc2000/kpc2000/cell_probe.c
-index c124a836db27..738122afc2ae 100644
---- a/drivers/staging/kpc2000/kpc2000/cell_probe.c
-+++ b/drivers/staging/kpc2000/kpc2000/cell_probe.c
-@@ -53,15 +53,15 @@ struct core_table_entry {
- static
- void  parse_core_table_entry_v0(struct core_table_entry *cte, const u64 read_val)
- {
--	cte->type                = ((read_val & 0xFFF0000000000000) >> 52);
--	cte->offset              = ((read_val & 0x00000000FFFF0000) >> 16) * 4096;
--	cte->length              = ((read_val & 0x0000FFFF00000000) >> 32) * 8;
--	cte->s2c_dma_present     = ((read_val & 0x0008000000000000) >> 51);
--	cte->s2c_dma_channel_num = ((read_val & 0x0007000000000000) >> 48);
--	cte->c2s_dma_present     = ((read_val & 0x0000000000008000) >> 15);
--	cte->c2s_dma_channel_num = ((read_val & 0x0000000000007000) >> 12);
--	cte->irq_count           = ((read_val & 0x0000000000000C00) >> 10);
--	cte->irq_base_num        = ((read_val & 0x00000000000003F8) >>  3);
-+	cte->type                = ((read_val & 0xFFF0000000000000UL) >> 52);
-+	cte->offset              = ((read_val & 0x00000000FFFF0000UL) >> 16) * 4096;
-+	cte->length              = ((read_val & 0x0000FFFF00000000UL) >> 32) * 8;
-+	cte->s2c_dma_present     = ((read_val & 0x0008000000000000UL) >> 51);
-+	cte->s2c_dma_channel_num = ((read_val & 0x0007000000000000UL) >> 48);
-+	cte->c2s_dma_present     = ((read_val & 0x0000000000008000UL) >> 15);
-+	cte->c2s_dma_channel_num = ((read_val & 0x0000000000007000UL) >> 12);
-+	cte->irq_count           = ((read_val & 0x0000000000000C00UL) >> 10);
-+	cte->irq_base_num        = ((read_val & 0x00000000000003F8UL) >>  3);
- }
- 
- static
-diff --git a/drivers/staging/kpc2000/kpc2000/core.c b/drivers/staging/kpc2000/kpc2000/core.c
-index cb05cca687e1..0a23727d0dc3 100644
---- a/drivers/staging/kpc2000/kpc2000/core.c
-+++ b/drivers/staging/kpc2000/kpc2000/core.c
-@@ -205,7 +205,7 @@ static void wait_and_read_ssid(struct kp2000_device *pcard)
- 	u64 read_val = readq(pcard->sysinfo_regs_base + REG_FPGA_SSID);
- 	unsigned long timeout;
- 
--	if (read_val & 0x8000000000000000) {
-+	if (read_val & 0x8000000000000000UL) {
- 		pcard->ssid = read_val;
- 		return;
- 	}
-@@ -213,7 +213,7 @@ static void wait_and_read_ssid(struct kp2000_device *pcard)
- 	timeout = jiffies + (HZ * 2);
- 	do {
- 		read_val = readq(pcard->sysinfo_regs_base + REG_FPGA_SSID);
--		if (read_val & 0x8000000000000000) {
-+		if (read_val & 0x8000000000000000UL) {
- 			pcard->ssid = read_val;
- 			return;
- 		}
-@@ -241,16 +241,16 @@ static int  read_system_regs(struct kp2000_device *pcard)
- 	}
- 
- 	read_val = readq(pcard->sysinfo_regs_base + REG_CARD_ID_AND_BUILD);
--	pcard->card_id = (read_val & 0xFFFFFFFF00000000) >> 32;
--	pcard->build_version = (read_val & 0x00000000FFFFFFFF) >> 0;
-+	pcard->card_id = (read_val & 0xFFFFFFFF00000000UL) >> 32;
-+	pcard->build_version = (read_val & 0x00000000FFFFFFFFUL) >> 0;
- 
- 	read_val = readq(pcard->sysinfo_regs_base + REG_DATE_AND_TIME_STAMPS);
--	pcard->build_datestamp = (read_val & 0xFFFFFFFF00000000) >> 32;
--	pcard->build_timestamp = (read_val & 0x00000000FFFFFFFF) >> 0;
-+	pcard->build_datestamp = (read_val & 0xFFFFFFFF00000000UL) >> 32;
-+	pcard->build_timestamp = (read_val & 0x00000000FFFFFFFFUL) >> 0;
- 
- 	read_val = readq(pcard->sysinfo_regs_base + REG_CORE_TABLE_OFFSET);
--	pcard->core_table_length = (read_val & 0xFFFFFFFF00000000) >> 32;
--	pcard->core_table_offset = (read_val & 0x00000000FFFFFFFF) >> 0;
-+	pcard->core_table_length = (read_val & 0xFFFFFFFF00000000UL) >> 32;
-+	pcard->core_table_offset = (read_val & 0x00000000FFFFFFFFUL) >> 0;
- 
- 	wait_and_read_ssid(pcard);
- 
-@@ -401,7 +401,7 @@ static int kp2000_pcie_probe(struct pci_dev *pdev,
- 		goto err_release_dma;
- 
- 	// Disable all "user" interrupts because they're not used yet.
--	writeq(0xFFFFFFFFFFFFFFFF,
-+	writeq(0xFFFFFFFFFFFFFFFFUL,
- 	       pcard->sysinfo_regs_base + REG_INTERRUPT_MASK);
- 
- 	// let the card master PCIe
-diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c b/drivers/staging/kpc2000/kpc_dma/fileops.c
-index 48ca88bc6b0b..cb52bd9a6d2f 100644
---- a/drivers/staging/kpc2000/kpc_dma/fileops.c
-+++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
-@@ -146,15 +146,15 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
- 			card_addr += desc->DescByteCount;
- 
- 			dma_addr  = sg_dma_address(sg) + (p * 0x80000);
--			desc->DescSystemAddrLS = (dma_addr & 0x00000000FFFFFFFF) >>  0;
--			desc->DescSystemAddrMS = (dma_addr & 0xFFFFFFFF00000000) >> 32;
-+			desc->DescSystemAddrLS = (dma_addr & 0x00000000FFFFFFFFUL) >>  0;
-+			desc->DescSystemAddrMS = (dma_addr & 0xFFFFFFFF00000000UL) >> 32;
- 
- 			user_ctl = acd->priv->user_ctl;
- 			if (i == acd->mapped_entry_count-1 && p == pcnt-1) {
- 				user_ctl = acd->priv->user_ctl_last;
- 			}
--			desc->DescUserControlLS = (user_ctl & 0x00000000FFFFFFFF) >>  0;
--			desc->DescUserControlMS = (user_ctl & 0xFFFFFFFF00000000) >> 32;
-+			desc->DescUserControlLS = (user_ctl & 0x00000000FFFFFFFFUL) >>  0;
-+			desc->DescUserControlMS = (user_ctl & 0xFFFFFFFF00000000UL) >> 32;
- 
- 			if (i == acd->mapped_entry_count-1 && p == pcnt-1)
- 				desc->acd = acd;
--- 
-2.17.1
-
+Thanks, Dan.
+> 
+> regards,
+> dan carpenter
+> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
