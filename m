@@ -2,78 +2,81 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A8E9BA4325
-	for <lists+driverdev-devel@lfdr.de>; Sat, 31 Aug 2019 09:41:13 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id AA4A0A440A
+	for <lists+driverdev-devel@lfdr.de>; Sat, 31 Aug 2019 12:30:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id ACB9087647;
-	Sat, 31 Aug 2019 07:41:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CF5BB8708D;
+	Sat, 31 Aug 2019 10:30:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xWKSb8PhqwT8; Sat, 31 Aug 2019 07:41:10 +0000 (UTC)
+	with ESMTP id OtUfjG-hSiC1; Sat, 31 Aug 2019 10:30:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1E6F3874C7;
-	Sat, 31 Aug 2019 07:41:10 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8C4C887074;
+	Sat, 31 Aug 2019 10:30:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E67D21BF267
- for <devel@linuxdriverproject.org>; Sat, 31 Aug 2019 07:41:07 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 7AD381BF42E
+ for <devel@linuxdriverproject.org>; Sat, 31 Aug 2019 10:30:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DF4D1824E3
- for <devel@linuxdriverproject.org>; Sat, 31 Aug 2019 07:41:07 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 76091203F6
+ for <devel@linuxdriverproject.org>; Sat, 31 Aug 2019 10:30:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1K-cO2MRNxR2 for <devel@linuxdriverproject.org>;
- Sat, 31 Aug 2019 07:41:07 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
- [209.85.214.195])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 56FBB87E75
- for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 07:41:07 +0000 (UTC)
-Received: by mail-pl1-f195.google.com with SMTP id h3so4366404pls.7
- for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 00:41:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=chnLX+5iIXcwerLGQG9r+UVsc2Dbf/r7ciZlTZZfaxM=;
- b=c013Ad8yHXrmAwiNw5iVbA4XJlDGivjPRePYXI9dNS61w7oMN8cyokGOXoxgcrbI47
- IbuGqLmCdrf5V9lLG0hfIO74OpBCRGSRw7KkNSPhODI8Y6ewmE00fLkCFOKa3T2Hqa82
- /k7guerGe0N2XcMInzfYqd7frtmcRGRRJ1Cca3DwwA6md1SLuCKYhCwT0VjzGVsA6jMt
- eKn6WkSy0KrJ9Crgzs3kDmfSs0iC0roIqUkeQtBUZyirAm4YrAIyVBCCm2yjmanhH6wQ
- k20EwuJ2JCFCYiefeygA3J3cu6f9L2Ci6bKxYN8e2SHss7LRpTmUdgVfajS2RK9bN4in
- fFqw==
+ with ESMTP id ZhzcxUVcAiFp for <devel@linuxdriverproject.org>;
+ Sat, 31 Aug 2019 10:30:27 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from omr1.cc.vt.edu (outbound.smtp.vt.edu [198.82.183.121])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7510A203EF
+ for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 10:30:27 +0000 (UTC)
+Received: from mr6.cc.vt.edu (mr6.cc.ipv6.vt.edu
+ [IPv6:2607:b400:92:8500:0:af:2d00:4488])
+ by omr1.cc.vt.edu (8.14.4/8.14.4) with ESMTP id x7VAUQvN004505
+ for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 06:30:26 -0400
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
+ [209.85.160.200])
+ by mr6.cc.vt.edu (8.14.7/8.14.7) with ESMTP id x7VAULZt012728
+ for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 06:30:26 -0400
+Received: by mail-qt1-f200.google.com with SMTP id 38so9943738qtx.3
+ for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 03:30:26 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=chnLX+5iIXcwerLGQG9r+UVsc2Dbf/r7ciZlTZZfaxM=;
- b=EJuM+Mbh6aHM5ftnCHX9+4CG21/W8By1z4lwf59lTcKWpLdSSaR9rDspWPvpqXroZ0
- Kq5D/TYzdLuQ4lkBB7sIj/g8LJTzpdodjZ2V9/S+SrfPoiRmRjN9Re+CEkRffGjCcGKl
- 7vT+shm63ZtgIQXMHniUi0xQJQnlBY2jIKoPdbxqANAulyp95dlQCzk2lf/YGT+ctUqk
- NYmrf6IfStnUfnMaYUhkVbCi7WnJzEP0Hu09JbHBVVdSgTzQSjDZ3MigfWu2Enx0a8NT
- rF6EywJRk+5f0f0iVYQBzXJWXDx86rGSjiptanX6Cr3a363qI8HPJ+SXt158xmBmL7yV
- 59Vw==
-X-Gm-Message-State: APjAAAUe5wqfNTVl/y094RfEiVSzSJBWwzO+xQqV2j/G1/+KvJSGHuDN
- gzG9mSC8gCPVkVVTvTmhz4I=
-X-Google-Smtp-Source: APXvYqwjFvvwezds47QrplR/PAzW94gzq1A5Vm/569IXQmNEszQ7QBsL9KdmlrszNriNG33UAQsV8A==
-X-Received: by 2002:a17:902:d24:: with SMTP id
- 33mr19860676plu.133.1567237266794; 
- Sat, 31 Aug 2019 00:41:06 -0700 (PDT)
-Received: from MeraComputer ([117.220.112.100])
- by smtp.gmail.com with ESMTPSA id q132sm1526341pfq.16.2019.08.31.00.41.02
+ h=x-gm-message-state:sender:from:to:cc:subject:in-reply-to:references
+ :mime-version:content-transfer-encoding:date:message-id;
+ bh=yS6lJBR0z5pXlUbR3vjtDfvuZ/ch4JHNsJdpqfM7yNY=;
+ b=sOTEGu4ouKhQIQ8wKipzXQ+EE8phEAwa2w1x+vGjmPPBCkjMxHVWTVapx3Yzn0/bFi
+ KIsVIb59w3hklXRN9GXvDAWktyE0oQ7MNJq/yBLFmUybWeN603k0DByeiCpUjgfIzoAN
+ 8tCmyWbaQw4gxcc+1UxmjJDGneNKVaYysHkY8PNRnlVouE3Hv7VpwIx55eONz98Bp26t
+ /drLIfmL1IlBJPo2jsYyZXuBzDfrAswXfLv8uY5PXL4QSV8oehSlkdK6fOHA9zgDu8z5
+ csxUq72DF7rwfWrg4UDUjWqUtoiGBTt1cek+iqRzFcqXSgHpPfCHIz4YhQV2pP9OvQEU
+ C6WA==
+X-Gm-Message-State: APjAAAVUDCki6+Q3I4LrLTcNBdxy5Mq+JvQZVRZuuflUbK+DnQ3Y8oPK
+ yVZ2YMIxYs50StjiWlVqkv0kG7h1w3MNdcXS04jVNwaoxPVlDCbG0BU1h5BMyQNi1Lnhg3XwI7t
+ ddHJ8il+fa+nXG9Dnmiv4cQ2y5hQo6sq7
+X-Received: by 2002:a05:620a:1125:: with SMTP id
+ p5mr4061528qkk.210.1567247421048; 
+ Sat, 31 Aug 2019 03:30:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxuInrftSS9yb0sn0s1xQsaIUrlAnhCycOjV4outISe323Mo9dV6f7RRjcoGpIH/0dZSLvqtw==
+X-Received: by 2002:a05:620a:1125:: with SMTP id
+ p5mr4061511qkk.210.1567247420798; 
+ Sat, 31 Aug 2019 03:30:20 -0700 (PDT)
+Received: from turing-police ([2601:5c0:c001:4340::ba0])
+ by smtp.gmail.com with ESMTPSA id s17sm1979613qkm.54.2019.08.31.03.30.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 31 Aug 2019 00:41:05 -0700 (PDT)
-Date: Sat, 31 Aug 2019 13:10:55 +0530
-From: Prakhar Sinha <prakharsinha2808@gmail.com>
-To: gregkh@linuxfoundation.org, tobias.niessen@stud.uni-hannover.de,
- kim.jamie.bradley@gmail.com, pakki001@umn.edu, sabrina-gaube@web.de,
- nishkadg.linux@gmail.com, qader.aymen@gmail.com
-Subject: [PATCH] staging: rts5208: Fixed checkpatch warning.
-Message-ID: <20190831074055.GA10177@MeraComputer>
-MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+ Sat, 31 Aug 2019 03:30:19 -0700 (PDT)
+From: "Valdis Kl=?utf-8?Q?=c4=93?=tnieks" <valdis.kletnieks@vt.edu>
+X-Google-Original-From: "Valdis Kl=?utf-8?Q?=c4=93?=tnieks"
+ <Valdis.Kletnieks@vt.edu>
+X-Mailer: exmh version 2.9.0 11/07/2018 with nmh-1.7+dev
+To: Colin King <colin.king@canonical.com>
+Subject: Re: [PATCH] staging: exfat: remove redundant goto
+In-Reply-To: <20190830181523.13356-1-colin.king@canonical.com>
+References: <20190830181523.13356-1-colin.king@canonical.com>
+Mime-Version: 1.0
+Date: Sat, 31 Aug 2019 06:30:18 -0400
+Message-ID: <295459.1567247418@turing-police>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,78 +89,78 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============6631363614109890318=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch solves the following checkpatch.pl's messages in
-drivers/staging/rts5208/sd.c
+--===============6631363614109890318==
+Content-Type: multipart/signed; boundary="==_Exmh_1567247418_4251P";
+	 micalg=pgp-sha1; protocol="application/pgp-signature"
+Content-Transfer-Encoding: 7bit
 
-WARNING: line over 80 characters
-4517: FILE: drivers/staging/rts5208/sd.c:4517:
-+                                               sd_card->sd_lock_status &=
-~(SD_UNLOCK_POW_ON | SD_SDR_RST);
+--==_Exmh_1567247418_4251P
+Content-Type: text/plain; charset=us-ascii
 
-WARNING: line over 80 characters
-4518: FILE: drivers/staging/rts5208/sd.c:4518:
-+                                               goto
-sd_execute_write_cmd_failed;
+On Fri, 30 Aug 2019 19:15:23 +0100, Colin King said:
+> From: Colin Ian King <colin.king@canonical.com>
+>
+> The goto after a return is never executed, so it is redundant and can
+> be removed.
+>
+> Addresses-Coverity: ("Structurally dead code")
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
 
-WARNING: line over 80 characters
-4522: FILE: drivers/staging/rts5208/sd.c:4522:
-+                               sd_card->sd_lock_status &= ~(SD_UNLOCK_POW_ON |
-SD_SDR_RST);
+Good catch....
 
-Signed-off-by: Prakhar Sinha <prakharsinha2808@gmail.com>
----
- drivers/staging/rts5208/sd.c | 26 ++++++++++++--------------
- 1 file changed, 12 insertions(+), 14 deletions(-)
+> -	if (dentry < -1) {
+> +	if (dentry < -1)
+>  		return FFS_NOTFOUND;
+> -		goto out;
+> -	}
 
-diff --git a/drivers/staging/rts5208/sd.c b/drivers/staging/rts5208/sd.c
-index a06045344301..7d6f2c56e740 100644
---- a/drivers/staging/rts5208/sd.c
-+++ b/drivers/staging/rts5208/sd.c
-@@ -4505,22 +4505,20 @@ int sd_execute_write_data(struct scsi_cmnd *srb, struct rtsx_chip *chip)
- 
- 		dev_dbg(rtsx_dev(chip), "sd_lock_state = 0x%x, sd_card->sd_lock_status = 0x%x\n",
- 			sd_lock_state, sd_card->sd_lock_status);
--		if (sd_lock_state ^ (sd_card->sd_lock_status & SD_LOCKED)) {
-+		if (sd_lock_state ^ (sd_card->sd_lock_status & SD_LOCKED))
- 			sd_card->sd_lock_notify = 1;
--			if (sd_lock_state &&
--			    (sd_card->sd_lock_status & SD_LOCK_1BIT_MODE)) {
--				sd_card->sd_lock_status |= (
--					SD_UNLOCK_POW_ON | SD_SDR_RST);
--				if (CHK_SD(sd_card)) {
--					retval = reset_sd(chip);
--					if (retval != STATUS_SUCCESS) {
--						sd_card->sd_lock_status &= ~(SD_UNLOCK_POW_ON | SD_SDR_RST);
--						goto sd_execute_write_cmd_failed;
--					}
--				}
--
--				sd_card->sd_lock_status &= ~(SD_UNLOCK_POW_ON | SD_SDR_RST);
-+		if ((sd_lock_state & !(sd_card->sd_lock_status & SD_LOCKED)) &&
-+		    (sd_card->sd_lock_status & SD_LOCK_1BIT_MODE)) {
-+			sd_card->sd_lock_status |= (SD_UNLOCK_POW_ON |
-+						    SD_SDR_RST);
-+			if (CHK_SD(sd_card) &&
-+			    reset_sd(chip) != STATUS_SUCCESS) {
-+				sd_card->sd_lock_status &= ~(SD_UNLOCK_POW_ON |
-+							     SD_SDR_RST);
-+				goto sd_execute_write_cmd_failed;
- 			}
-+			sd_card->sd_lock_status &= ~(SD_UNLOCK_POW_ON |
-+						     SD_SDR_RST);
- 		}
- 	}
- 
--- 
-2.20.1
+But the wrong fix. The code *used* to have returns like this all over the
+place, but that meant it returns with a lock held - whoops.  The *other* 287 or
+so places I changed to 'ret = FFS_yaddayadda',  followed by a 'goto out' but I
+apparently missed one.
+
+And thanks a bunch for feeding it to Coverity :)
+
+
+
+--==_Exmh_1567247418_4251P
+Content-Type: application/pgp-signature
+
+-----BEGIN PGP SIGNATURE-----
+Comment: Exmh version 2.9.0 11/07/2018
+
+iQIVAwUBXWpMOQdmEQWDXROgAQIm0w//aPU0Rv6gMxB2mP0p2L7LaEtmwIdoEwD9
+ntgSn8am4fv/Zi99Y7BOBzCw5/KAyV8qo0V5LzIt4seIgXCa+I/gd12ngxmfRt1B
+0HAjQQQZl5TX5l2gnAzTIlUasA6mnxkb27/9x+qSUZRwoCRSliQC4wsaNzHbDO0y
+iSNdDeiRz9hqSHtim2p7OJG2DSMTzrahN5BYD58a78/ocgOGjokb4v1nSHkU2zIS
++3C1AhCU9K6o9RedPZ3aoLELlWfwXa6EWgtiMsNC28ay/b0LkJBiA8XelQkdlfmE
+mXq+g51uNim/ZT5m2YZWx6znD/SjGbwBgmftA/oawZuw4REpvAHVihULK5SGVwNn
+ClPsmzGIzLvlDeAE3NKnyMAZZ5/Ip49aLxjViJMAPKFhTOHpI8mKJFYjKja8DF/c
+Bu16fZqvbm7Ux50iljUwc94NEVw1QDefd8PkTc3UgwInv54xpUvb5pckweHWe8bj
+FANfoJKJWmYy2aDIHyww9Yj5obKJLazQTISnUZrpgP8b2HlvFolaLC/669sLd36v
+Rdvz/nNh5bUL5vA8nojDQ+mSYMEy5zi38hRQdGnM45IW1K+GOquDRRTl3w82DNRF
+TfuiZym2//hGZFaPD/tZuGLwmWcxN+5gvn6U5IPwaBHnDwYf4GgHmqh0G0PaOg5W
+v4SY1xOsplg=
+=O42f
+-----END PGP SIGNATURE-----
+
+--==_Exmh_1567247418_4251P--
+
+--===============6631363614109890318==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============6631363614109890318==--
