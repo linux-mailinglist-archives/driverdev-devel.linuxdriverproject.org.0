@@ -1,77 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A3EC8A4318
-	for <lists+driverdev-devel@lfdr.de>; Sat, 31 Aug 2019 09:32:43 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A8E9BA4325
+	for <lists+driverdev-devel@lfdr.de>; Sat, 31 Aug 2019 09:41:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4044B893D6;
-	Sat, 31 Aug 2019 07:32:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id ACB9087647;
+	Sat, 31 Aug 2019 07:41:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zB6jYqIZYkn7; Sat, 31 Aug 2019 07:32:42 +0000 (UTC)
+	with ESMTP id xWKSb8PhqwT8; Sat, 31 Aug 2019 07:41:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C075E88757;
-	Sat, 31 Aug 2019 07:32:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1E6F3874C7;
+	Sat, 31 Aug 2019 07:41:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 30B2B1BF267
- for <devel@linuxdriverproject.org>; Sat, 31 Aug 2019 07:32:40 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E67D21BF267
+ for <devel@linuxdriverproject.org>; Sat, 31 Aug 2019 07:41:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2DD9D8929B
- for <devel@linuxdriverproject.org>; Sat, 31 Aug 2019 07:32:40 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id DF4D1824E3
+ for <devel@linuxdriverproject.org>; Sat, 31 Aug 2019 07:41:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RC4Pp304JFt6 for <devel@linuxdriverproject.org>;
- Sat, 31 Aug 2019 07:32:39 +0000 (UTC)
+ with ESMTP id 1K-cO2MRNxR2 for <devel@linuxdriverproject.org>;
+ Sat, 31 Aug 2019 07:41:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
- [209.85.215.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C5B0D88757
- for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 07:32:39 +0000 (UTC)
-Received: by mail-pg1-f195.google.com with SMTP id n9so4678296pgc.1
- for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 00:32:39 -0700 (PDT)
+Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
+ [209.85.214.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 56FBB87E75
+ for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 07:41:07 +0000 (UTC)
+Received: by mail-pl1-f195.google.com with SMTP id h3so4366404pls.7
+ for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 00:41:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=4xeK59h0dqCDcu/8tG2EqDqz6mbyedjvxBCh7CZRZvQ=;
- b=UZ79Hi/R760hKF/v9HJQR4DXHYNs5Z8azbjqxFeLlLuQhNSFkXEOoR4lKhFNp40MOt
- kfWD/QjgyedpmYbkQEpu/7vVpXYf4sTzTbKxPpRy/vwUA2Jamu1JYHa6mnsby/V2NVOM
- aZHIIRTao9Mr8LHsk29ppnTh1TMQZPdJZtprI4rvqo1iKjj35MhN8HNPeRcARG8b72tH
- oM/0VGoER74bg9tN4si0amvbui5pPMi/TL7xhkx4T+Yu1HjMFDeXohBXHQTm7t31c/o/
- sKPANOj+M1tiAr3TqdZoAvEvDsl3h6PAhZ6W7bsrYZv8nfkDZoyvMyALKrXU7f/u9don
- +aVQ==
+ :user-agent; bh=chnLX+5iIXcwerLGQG9r+UVsc2Dbf/r7ciZlTZZfaxM=;
+ b=c013Ad8yHXrmAwiNw5iVbA4XJlDGivjPRePYXI9dNS61w7oMN8cyokGOXoxgcrbI47
+ IbuGqLmCdrf5V9lLG0hfIO74OpBCRGSRw7KkNSPhODI8Y6ewmE00fLkCFOKa3T2Hqa82
+ /k7guerGe0N2XcMInzfYqd7frtmcRGRRJ1Cca3DwwA6md1SLuCKYhCwT0VjzGVsA6jMt
+ eKn6WkSy0KrJ9Crgzs3kDmfSs0iC0roIqUkeQtBUZyirAm4YrAIyVBCCm2yjmanhH6wQ
+ k20EwuJ2JCFCYiefeygA3J3cu6f9L2Ci6bKxYN8e2SHss7LRpTmUdgVfajS2RK9bN4in
+ fFqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=4xeK59h0dqCDcu/8tG2EqDqz6mbyedjvxBCh7CZRZvQ=;
- b=UokJZj3FUwfunuUiDu+8B8i0h4sFPmNhGWsHe3JpZXGipQErmVqBxVHPjaiDII4gc8
- lZdc8dKwNxj7AykYIfrs4oiJC8nhcHtHPAHjFFDZ3Da6dsHNvb70AGTeOFf4Ai7JOkrR
- s39WTKI093f7fWviLfIcWVoSEh4VKhQRL63qhR3F2CEtUQCgOQQkjnUpr+PR5pC7x19v
- hiiNgShhJRhZPZJ/OlLIy9ySXC/0Uw/fH1eCgQLIxPUr8KZHvph4dJbWEl2SLBDv/iVm
- MzKCTfaqj+alzbCRuDbjJJHtugf3Ik6ULLUVSW+NYJq6NeMwpMgjPCR5q/ZtA7l+zs1Z
- zQpA==
-X-Gm-Message-State: APjAAAW+4qppm+DlgdwsjwbJFXRpPpKarwMK5qvS7oatJ4Y6U6VDQ8Sg
- n4+0Jet56bF/mFKchgnE3P8=
-X-Google-Smtp-Source: APXvYqwA3BKO6wzDlauVQwkzCt4StF88WSRKsYSj3W4wWU5sP2nmxNeTgT2dENm5rRfTf+IYeyDj7A==
-X-Received: by 2002:a63:6c02:: with SMTP id h2mr17043219pgc.61.1567236759334; 
- Sat, 31 Aug 2019 00:32:39 -0700 (PDT)
-Received: from dell-inspiron ([117.220.112.196])
- by smtp.gmail.com with ESMTPSA id e6sm21247686pfl.37.2019.08.31.00.32.33
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 31 Aug 2019 00:32:38 -0700 (PDT)
-Date: Sat, 31 Aug 2019 13:02:24 +0530
-From: P SAI PRASANTH <saip2823@gmail.com>
-To: gregkh@linuxfoundation.org, sabrina-gaube@web.de, qader.aymen@gmail.com,
- tobias.niessen@stud.uni-hannover.de, kim.jamie.bradley@gmail.com
-Subject: [PATCH] staging: rts5208: Fix checkpath warning
-Message-ID: <20190831073224.GA6197@dell-inspiron>
+ bh=chnLX+5iIXcwerLGQG9r+UVsc2Dbf/r7ciZlTZZfaxM=;
+ b=EJuM+Mbh6aHM5ftnCHX9+4CG21/W8By1z4lwf59lTcKWpLdSSaR9rDspWPvpqXroZ0
+ Kq5D/TYzdLuQ4lkBB7sIj/g8LJTzpdodjZ2V9/S+SrfPoiRmRjN9Re+CEkRffGjCcGKl
+ 7vT+shm63ZtgIQXMHniUi0xQJQnlBY2jIKoPdbxqANAulyp95dlQCzk2lf/YGT+ctUqk
+ NYmrf6IfStnUfnMaYUhkVbCi7WnJzEP0Hu09JbHBVVdSgTzQSjDZ3MigfWu2Enx0a8NT
+ rF6EywJRk+5f0f0iVYQBzXJWXDx86rGSjiptanX6Cr3a363qI8HPJ+SXt158xmBmL7yV
+ 59Vw==
+X-Gm-Message-State: APjAAAUe5wqfNTVl/y094RfEiVSzSJBWwzO+xQqV2j/G1/+KvJSGHuDN
+ gzG9mSC8gCPVkVVTvTmhz4I=
+X-Google-Smtp-Source: APXvYqwjFvvwezds47QrplR/PAzW94gzq1A5Vm/569IXQmNEszQ7QBsL9KdmlrszNriNG33UAQsV8A==
+X-Received: by 2002:a17:902:d24:: with SMTP id
+ 33mr19860676plu.133.1567237266794; 
+ Sat, 31 Aug 2019 00:41:06 -0700 (PDT)
+Received: from MeraComputer ([117.220.112.100])
+ by smtp.gmail.com with ESMTPSA id q132sm1526341pfq.16.2019.08.31.00.41.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 31 Aug 2019 00:41:05 -0700 (PDT)
+Date: Sat, 31 Aug 2019 13:10:55 +0530
+From: Prakhar Sinha <prakharsinha2808@gmail.com>
+To: gregkh@linuxfoundation.org, tobias.niessen@stud.uni-hannover.de,
+ kim.jamie.bradley@gmail.com, pakki001@umn.edu, sabrina-gaube@web.de,
+ nishkadg.linux@gmail.com, qader.aymen@gmail.com
+Subject: [PATCH] staging: rts5208: Fixed checkpatch warning.
+Message-ID: <20190831074055.GA10177@MeraComputer>
 MIME-Version: 1.0
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,34 +92,70 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch fixes the following checkpath warning
-in file drivers/staging/rts5208/xd.c:1754
+This patch solves the following checkpatch.pl's messages in
+drivers/staging/rts5208/sd.c
 
 WARNING: line over 80 characters
-+                                           index, offset, DMA_TO_DEVICE,
-chip->xd_timeout);
+4517: FILE: drivers/staging/rts5208/sd.c:4517:
++                                               sd_card->sd_lock_status &=
+~(SD_UNLOCK_POW_ON | SD_SDR_RST);
 
-Signed-off-by: P SAI PRASANTH <saip2823@gmail.com>
+WARNING: line over 80 characters
+4518: FILE: drivers/staging/rts5208/sd.c:4518:
++                                               goto
+sd_execute_write_cmd_failed;
+
+WARNING: line over 80 characters
+4522: FILE: drivers/staging/rts5208/sd.c:4522:
++                               sd_card->sd_lock_status &= ~(SD_UNLOCK_POW_ON |
+SD_SDR_RST);
+
+Signed-off-by: Prakhar Sinha <prakharsinha2808@gmail.com>
 ---
- drivers/staging/rts5208/xd.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/staging/rts5208/sd.c | 26 ++++++++++++--------------
+ 1 file changed, 12 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/staging/rts5208/xd.c b/drivers/staging/rts5208/xd.c
-index f3dc96a..e62eee3 100644
---- a/drivers/staging/rts5208/xd.c
-+++ b/drivers/staging/rts5208/xd.c
-@@ -1751,7 +1751,8 @@ static int xd_write_multiple_pages(struct rtsx_chip *chip, u32 old_blk,
+diff --git a/drivers/staging/rts5208/sd.c b/drivers/staging/rts5208/sd.c
+index a06045344301..7d6f2c56e740 100644
+--- a/drivers/staging/rts5208/sd.c
++++ b/drivers/staging/rts5208/sd.c
+@@ -4505,22 +4505,20 @@ int sd_execute_write_data(struct scsi_cmnd *srb, struct rtsx_chip *chip)
  
- 	retval = rtsx_transfer_data_partial(chip, XD_CARD, buf, page_cnt * 512,
- 					    scsi_sg_count(chip->srb),
--					    index, offset, DMA_TO_DEVICE, chip->xd_timeout);
-+					    index, offset,
-+					    DMA_TO_DEVICE, chip->xd_timeout);
- 	if (retval < 0) {
- 		rtsx_clear_xd_error(chip);
+ 		dev_dbg(rtsx_dev(chip), "sd_lock_state = 0x%x, sd_card->sd_lock_status = 0x%x\n",
+ 			sd_lock_state, sd_card->sd_lock_status);
+-		if (sd_lock_state ^ (sd_card->sd_lock_status & SD_LOCKED)) {
++		if (sd_lock_state ^ (sd_card->sd_lock_status & SD_LOCKED))
+ 			sd_card->sd_lock_notify = 1;
+-			if (sd_lock_state &&
+-			    (sd_card->sd_lock_status & SD_LOCK_1BIT_MODE)) {
+-				sd_card->sd_lock_status |= (
+-					SD_UNLOCK_POW_ON | SD_SDR_RST);
+-				if (CHK_SD(sd_card)) {
+-					retval = reset_sd(chip);
+-					if (retval != STATUS_SUCCESS) {
+-						sd_card->sd_lock_status &= ~(SD_UNLOCK_POW_ON | SD_SDR_RST);
+-						goto sd_execute_write_cmd_failed;
+-					}
+-				}
+-
+-				sd_card->sd_lock_status &= ~(SD_UNLOCK_POW_ON | SD_SDR_RST);
++		if ((sd_lock_state & !(sd_card->sd_lock_status & SD_LOCKED)) &&
++		    (sd_card->sd_lock_status & SD_LOCK_1BIT_MODE)) {
++			sd_card->sd_lock_status |= (SD_UNLOCK_POW_ON |
++						    SD_SDR_RST);
++			if (CHK_SD(sd_card) &&
++			    reset_sd(chip) != STATUS_SUCCESS) {
++				sd_card->sd_lock_status &= ~(SD_UNLOCK_POW_ON |
++							     SD_SDR_RST);
++				goto sd_execute_write_cmd_failed;
+ 			}
++			sd_card->sd_lock_status &= ~(SD_UNLOCK_POW_ON |
++						     SD_SDR_RST);
+ 		}
+ 	}
  
 -- 
-2.7.4
+2.20.1
 
 _______________________________________________
 devel mailing list
