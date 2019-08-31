@@ -1,85 +1,94 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 22779A440D
-	for <lists+driverdev-devel@lfdr.de>; Sat, 31 Aug 2019 12:32:01 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2B4DB20414;
-	Sat, 31 Aug 2019 10:31:59 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SrDzaTSXWJZN; Sat, 31 Aug 2019 10:31:58 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 8FC77203F6;
-	Sat, 31 Aug 2019 10:31:57 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0CBFD1BF42E
- for <devel@linuxdriverproject.org>; Sat, 31 Aug 2019 10:31:56 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 57583A4434
+	for <lists+driverdev-devel@lfdr.de>; Sat, 31 Aug 2019 12:58:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 077E3870DC
- for <devel@linuxdriverproject.org>; Sat, 31 Aug 2019 10:31:56 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9281087005;
+	Sat, 31 Aug 2019 10:58:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id HYCbDxtZ0GVc; Sat, 31 Aug 2019 10:58:03 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 027EC86FF8;
+	Sat, 31 Aug 2019 10:58:02 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D10F11BF42E
+ for <devel@linuxdriverproject.org>; Sat, 31 Aug 2019 10:57:59 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id CDC90886F7
+ for <devel@linuxdriverproject.org>; Sat, 31 Aug 2019 10:57:59 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pWh-BhPzYPXo for <devel@linuxdriverproject.org>;
- Sat, 31 Aug 2019 10:31:55 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from omr2.cc.vt.edu (outbound.smtp.vt.edu [198.82.183.121])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 4D05E8708D
- for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 10:31:55 +0000 (UTC)
-Received: from mr5.cc.vt.edu (junk.cc.ipv6.vt.edu
- [IPv6:2607:b400:92:9:0:9d:8fcb:4116])
- by omr2.cc.vt.edu (8.14.4/8.14.4) with ESMTP id x7VAVrEH022181
- for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 06:31:53 -0400
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
- [209.85.160.200])
- by mr5.cc.vt.edu (8.14.7/8.14.7) with ESMTP id x7VAVmRn031825
- for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 06:31:53 -0400
-Received: by mail-qt1-f200.google.com with SMTP id h18so9865857qto.18
- for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 03:31:53 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:in-reply-to:references
- :mime-version:content-transfer-encoding:date:message-id;
- bh=IDGw4t+jkka64Wht6d3CAXrxONGQFYzW5tFrvF9rQ80=;
- b=AJDq+xexri3uEZXLTO9kTnvfrC7ZEaOv1oL+f4HHVZEwX7BJJP7YdJ96Fug3q+lWx8
- 1T9AmVV8xrbswQV2maZQFqqQVwVgJFOiSXRHw2Ar/brahZnU2RhydWs1O3iwgRm94V2H
- g8DdxBcKlqVwMoI8chHvX37Jha7xwN3xYDFnuJClLA6AY9aO66A6Fs0jtJov+R/F49Lk
- ZkpwzUfYNzArU2q3CgAQa8u/l8F/AfRJ33Bifu135U2nU/h5yFlTD+tKbisHrmvBWNGQ
- F+aKTzgCMY9YB64qC+B0e1a/TzosBgjjTeRndnpbgOn4+wyfsYiplLmQYVIfP9wxHdKN
- e5kg==
-X-Gm-Message-State: APjAAAU4+SwtoE47tkFYd+YIpl6UHMS1C9lvxzVMf3WxL4N3d+Q4mkrO
- eiDEGry5iwZzjcDZswJuvm50VzGPrNYFFIVj88Lqp1/oHo5M6/4o9dcSkp5AW5RzNOcICcFG7uB
- f7jjDAbBonlDS4M3BOpoU+JABWNGqnN4z
-X-Received: by 2002:a37:8c04:: with SMTP id o4mr19360117qkd.163.1567247508218; 
- Sat, 31 Aug 2019 03:31:48 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwY45aL6/n6Q+yi+UlWzypyRQEmcFtucMm/svMFPIxtNeXRyUsVRUo0F9jcenYO+qbRIHxMog==
-X-Received: by 2002:a37:8c04:: with SMTP id o4mr19360098qkd.163.1567247508020; 
- Sat, 31 Aug 2019 03:31:48 -0700 (PDT)
-Received: from turing-police ([2601:5c0:c001:4340::ba0])
- by smtp.gmail.com with ESMTPSA id 22sm4217243qkc.90.2019.08.31.03.31.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 31 Aug 2019 03:31:46 -0700 (PDT)
-From: "Valdis Kl=?utf-8?Q?=c4=93?=tnieks" <valdis.kletnieks@vt.edu>
-X-Google-Original-From: "Valdis Kl=?utf-8?Q?=c4=93?=tnieks"
- <Valdis.Kletnieks@vt.edu>
-X-Mailer: exmh version 2.9.0 11/07/2018 with nmh-1.7+dev
-To: Dave Chinner <david@fromorbit.com>
-Subject: Re: [PATCH] staging: exfat: add exfat filesystem code to staging
-In-Reply-To: <20190830215410.GD7777@dread.disaster.area>
-References: <20190828160817.6250-1-gregkh@linuxfoundation.org>
- <20190828170022.GA7873@kroah.com> <20190829062340.GB3047@infradead.org>
- <20190829063955.GA30193@kroah.com> <20190829094136.GA28643@infradead.org>
- <20190829095019.GA13557@kroah.com> <20190829103749.GA13661@infradead.org>
- <20190829111810.GA23393@kroah.com>
- <20190830215410.GD7777@dread.disaster.area>
-Mime-Version: 1.0
-Date: Sat, 31 Aug 2019 06:31:45 -0400
-Message-ID: <295503.1567247505@turing-police>
+ with ESMTP id nfTqlnZF+JpM for <devel@linuxdriverproject.org>;
+ Sat, 31 Aug 2019 10:57:59 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 63B0F88708
+ for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 10:57:59 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x7VAt6gS012369;
+ Sat, 31 Aug 2019 10:57:56 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=ozxVxnuhOlY8BW1RqOr9u3YWuE9zaJOBgn+uoApcv8w=;
+ b=czS+OJhht/1HYcIw838trx7yLziM6sLYkilzvRpGO1UPTBNoOj82c4EBPcBLNPe8px7u
+ STu04aDn26y26C0eaeB18B3O833x1zPr8QF+o2cFs2yGFHBav96r1SjmzIRaJXPmDlqY
+ tr20ommYshXLk8YK2INTeHVUs6ZO9QLwO7tAn1MIETU4HAtsJrC2QCMBt4FldBAnfw2V
+ 8wNO6jcWZ7jyKzWVwjruunLrC4aEzcCvToanK2KLZg+tAUWedDaj2cX5YTFLmS0vrhhT
+ KiIxgXeAnDoLCHeSH1R/sI4Nvyw+UPiQS+fI0II7yznVdVItgojBy2m+f6UMiAk5IKpE 6Q== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by userp2120.oracle.com with ESMTP id 2uqqje006y-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sat, 31 Aug 2019 10:57:56 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x7VArlar022869;
+ Sat, 31 Aug 2019 10:57:55 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by aserp3020.oracle.com with ESMTP id 2uqgqhyvmq-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sat, 31 Aug 2019 10:57:55 +0000
+Received: from abhmp0014.oracle.com (abhmp0014.oracle.com [141.146.116.20])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x7VAvh9D025043;
+ Sat, 31 Aug 2019 10:57:44 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Sat, 31 Aug 2019 03:57:43 -0700
+Date: Sat, 31 Aug 2019 13:57:32 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Gao Xiang <gaoxiang25@huawei.com>
+Subject: Re: [PATCH v3 6/7] erofs: remove all likely/unlikely annotations
+Message-ID: <20190831105732.GH8372@kadam>
+References: <20190830032006.GA20217@architecture4>
+ <20190830033643.51019-1-gaoxiang25@huawei.com>
+ <20190830033643.51019-6-gaoxiang25@huawei.com>
+ <20190830154650.GB11571@infradead.org>
+ <20190830160415.GC69026@architecture4>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190830160415.GC69026@architecture4>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9365
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=786
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1906280000 definitions=main-1908310129
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9365
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=847 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1906280000
+ definitions=main-1908310129
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,65 +101,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Sasha Levin <alexander.levin@microsoft.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Christoph Hellwig <hch@infradead.org>, linux-fsdevel@vger.kernel.org,
- OGAWA Hirofumi <hirofumi@mail.parknet.co.jp>
-Content-Type: multipart/mixed; boundary="===============7704076009591472743=="
+Cc: devel@driverdev.osuosl.org, Chao Yu <chao@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Miao Xie <miaoxie@huawei.com>,
+ Chao Yu <yuchao0@huawei.com>, LKML <linux-kernel@vger.kernel.org>,
+ Christoph Hellwig <hch@infradead.org>, weidu.du@huawei.com,
+ Fang Wei <fangwei1@huawei.com>, Joe Perches <joe@perches.com>,
+ linux-erofs@lists.ozlabs.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
---===============7704076009591472743==
-Content-Type: multipart/signed; boundary="==_Exmh_1567247505_4251P";
-	 micalg=pgp-sha1; protocol="application/pgp-signature"
-Content-Transfer-Encoding: 7bit
+On Sat, Aug 31, 2019 at 12:04:20AM +0800, Gao Xiang wrote:
+> I don't have some benchmark data for each unlikely/likely case (and I have
+> no idea "is that worth to take time to benchmark rather than do another more
+> useful stuffs"), so..I have to kill them all...
 
---==_Exmh_1567247505_4251P
-Content-Type: text/plain; charset=us-ascii
+We don't really require benchmarks, just that a reasonable person would
+think it might make a difference.
 
-On Sat, 31 Aug 2019 07:54:10 +1000, Dave Chinner said:
-
-> The correct place for new filesystem review is where all the
-> experienced filesystem developers hang out - that's linux-fsdevel,
-> not the driver staging tree.
-
-So far everything's been cc'ed to linux-fsdevel, which has been spending
-more time discussing unlikely() usage in a different filesystem.
-
-
-
---==_Exmh_1567247505_4251P
-Content-Type: application/pgp-signature
-
------BEGIN PGP SIGNATURE-----
-Comment: Exmh version 2.9.0 11/07/2018
-
-iQIVAwUBXWpMkAdmEQWDXROgAQJ88g/+L8aZBmGh/szeaXflnEcMn79pb3NyBxih
-+ZtyT6+w4tFSdaj5tNw2bqM+p/gNl7wEdZj0UsBmCZaogZi95/ZfawiJ/Fr/Ck5g
-YAa6JJCa8KJfl5TwC3ojDmHSc92/zqivcB4DY58rjLkeHe6b0RkouQZVLGsLtGYY
-3VsID8G7CKOVkBzGLOyv6xHpjcOg125ulCd+eoQw5Z2GHL7/50JDvy2TpAYlxut8
-kGK07Fs2pwQMxDBMbxTS51qSGu51ZscURPt6jUGpqSEa1a/1x/y5fuILeoxyy9HO
-hSrqc3lXnvbL7+0mXIqg7cm62kJ72GmGoE6mNwuG6Z9q0T7uK/0rT0Ffnnopf/b0
-2cZz4+xTMJVeS3cZQttHVN9XNgq2DajdoDLNWFgTiPABIdRsaBeUrGRIzwbeTYRH
-xESRCtZpePDBDWvu7q/IyuQoQJHWq7oqEHOTE0SJ4cZvycEnsf1AN6oN4ES3Umqs
-ZQmPwjtm7vu10SsJPEYoxZQPau5qq/vPr9lF0pMW8J9fUH4Ro45wD2sSgllVBqQj
-2PF59qNEfMzwuUiX8+Snb/cKChD6wzpMuz18+m1wEZGzuvybpdZITp2HofmRbovD
-Dr+BttOImxJB7tpyJKtoRkr5A0Zf4pxk1RambfMqxtUtsJSr7JxCiH24nthjR0gG
-ONk8TCj1hSg=
-=xo/v
------END PGP SIGNATURE-----
-
---==_Exmh_1567247505_4251P--
-
---===============7704076009591472743==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+regards,
+dan carpenter
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============7704076009591472743==--
