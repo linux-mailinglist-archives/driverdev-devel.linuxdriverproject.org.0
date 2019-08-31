@@ -1,66 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 51AE2A41FE
-	for <lists+driverdev-devel@lfdr.de>; Sat, 31 Aug 2019 05:50:41 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3EE798940C;
-	Sat, 31 Aug 2019 03:50:39 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1itAha0ITbNQ; Sat, 31 Aug 2019 03:50:39 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 53F428879C;
-	Sat, 31 Aug 2019 03:50:38 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 29C841BF989
- for <devel@linuxdriverproject.org>; Sat, 31 Aug 2019 03:50:36 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7C37EA42CC
+	for <lists+driverdev-devel@lfdr.de>; Sat, 31 Aug 2019 08:35:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 2624487D3B
- for <devel@linuxdriverproject.org>; Sat, 31 Aug 2019 03:50:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8653C87FB5;
+	Sat, 31 Aug 2019 06:35:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id g-1aWIjJEyO5; Sat, 31 Aug 2019 06:35:04 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id B150C87D3B;
+	Sat, 31 Aug 2019 06:35:02 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C45B41BF297
+ for <devel@linuxdriverproject.org>; Sat, 31 Aug 2019 06:35:00 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id C052988761
+ for <devel@linuxdriverproject.org>; Sat, 31 Aug 2019 06:35:00 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VcX4vvT6ltls for <devel@linuxdriverproject.org>;
- Sat, 31 Aug 2019 03:50:35 +0000 (UTC)
+ with ESMTP id cIC2q8Ko0ZJF for <devel@linuxdriverproject.org>;
+ Sat, 31 Aug 2019 06:34:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
- by whitealder.osuosl.org (Postfix) with ESMTPS id CEBC087D0C
- for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 03:50:34 +0000 (UTC)
-Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 573B89E32BE16FCE1349;
- Sat, 31 Aug 2019 11:50:31 +0800 (CST)
-Received: from [10.134.22.195] (10.134.22.195) by smtp.huawei.com
- (10.3.19.210) with Microsoft SMTP Server (TLS) id 14.3.439.0; Sat, 31 Aug
- 2019 11:50:22 +0800
-Subject: Re: [PATCH] staging: exfat: add exfat filesystem code to staging
-To: <dsterba@suse.cz>, Dan Carpenter <dan.carpenter@oracle.com>, Gao Xiang
- <gaoxiang25@huawei.com>, <devel@driverdev.osuosl.org>, Sasha Levin
- <alexander.levin@microsoft.com>, =?UTF-8?Q?Valdis_Kl=c4=93tnieks?=
- <valdis.kletnieks@vt.edu>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- <linux-kernel@vger.kernel.org>, Christoph Hellwig <hch@infradead.org>,
- <linux-fsdevel@vger.kernel.org>, OGAWA Hirofumi <hirofumi@mail.parknet.co.jp>
-References: <20190829062340.GB3047@infradead.org>
- <20190829063955.GA30193@kroah.com> <20190829094136.GA28643@infradead.org>
- <20190829095019.GA13557@kroah.com> <20190829103749.GA13661@infradead.org>
- <20190829111810.GA23393@kroah.com> <20190829151144.GJ23584@kadam>
- <20190829152757.GA125003@architecture4> <20190829154346.GK23584@kadam>
- <cd38b645-2930-3e02-6c6a-5972ea02b537@huawei.com>
- <20190830115142.GM2752@twin.jikos.cz>
-From: Chao Yu <yuchao0@huawei.com>
-Message-ID: <29d7e697-3d74-bc0e-a756-713f682c32ff@huawei.com>
-Date: Sat, 31 Aug 2019 11:50:21 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
+Received: from mail-yw1-f65.google.com (mail-yw1-f65.google.com
+ [209.85.161.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 47215886D6
+ for <devel@driverdev.osuosl.org>; Sat, 31 Aug 2019 06:34:59 +0000 (UTC)
+Received: by mail-yw1-f65.google.com with SMTP id z64so3153930ywe.7
+ for <devel@driverdev.osuosl.org>; Fri, 30 Aug 2019 23:34:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=w5dRQc/V85HUSdK58SOuqLdOPIPqHI76KYRXadjhW1Q=;
+ b=cG4yS7h+dHwCqC7+1d/JcKh3/NJvSD6CdeEW76fj6dxOuSvT9LSkJ8Nw3jmjC0bhZ4
+ Sqx+lrDHzXK1l3xs8fjelflWht3rUg9LcY/+nBUGiZep0IuzstbMDRGUXyjzoHG7DxD/
+ FpLTH8v7U7hprKh92RiJ0SQhkoJWM2DpwrNuUDnbZXfWbVuLIira7NywHRNsESJFm/vM
+ vs/lvXv9Jn61eYBI4hYDyFFou9UMyxS8NTMnjWc4K+2gGiTsaYN980N8H6QvMgMYgx/R
+ FNMz2TizJuR2z4eFxtNyFMXeMJJNbhab1gIRpoX9peerBAO98/FPCgrsZ/v87KPz/xsk
+ mAhg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=w5dRQc/V85HUSdK58SOuqLdOPIPqHI76KYRXadjhW1Q=;
+ b=ngMKkoHi8uBA2hMkRqMvlHYAE3cqpphoUolaH/a1U7aOHRbuCHFINYOZMptdhwc30S
+ eD1OpKmNMhO/C98PhAMEcj20ZI4K/Tpi/FmU9j66N7i2sWiUjK5Hd6fALfc/+YlsfMdY
+ sowDJ8rrlTM8BEZwuS7pmECEUSS+iCpcyl6lxHs9to5yCv6y+tWfRMk0BBR3woXz6hBX
+ k95tsrwuY0IYhCUNgM5Ju1tb8TaeyKF9e67PoP+D1Wx2L/Orj0cXE7qaNElVZw787P34
+ 1jKFKdubrlnQc2/NZ/Ib7pVkK+unn7ciFTP6u7b3oG51lGCt+qglYcvXvc0y4JVnpl3i
+ eb2g==
+X-Gm-Message-State: APjAAAWi33QACwwmp+R5fa3n4xP4FWTmGcVNqMOjtPVE7NGABiWGcaD7
+ pKhm1sdzWdt0Wd+EMSUPwL6H3HOlX+NTTw1x64E=
+X-Google-Smtp-Source: APXvYqxA5jrG+aw5cnWfvi5zFi4WHO9+wZCHT7+Yz6m0t7DUrxcUd6HDfyHU+ofMYTrsXauHYejNEsuIL56i7wezFkE=
+X-Received: by 2002:a81:6c8:: with SMTP id 191mr11928917ywg.181.1567233298135; 
+ Fri, 30 Aug 2019 23:34:58 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190830115142.GM2752@twin.jikos.cz>
-Content-Language: en-US
-X-Originating-IP: [10.134.22.195]
-X-CFilter-Loop: Reflected
+References: <20190802125347.166018-1-gaoxiang25@huawei.com>
+ <20190802125347.166018-4-gaoxiang25@huawei.com>
+ <20190829101545.GC20598@infradead.org>
+ <20190829105048.GB64893@architecture4> <20190830163910.GB29603@infradead.org>
+ <20190830171510.GC107220@architecture4>
+In-Reply-To: <20190830171510.GC107220@architecture4>
+From: Amir Goldstein <amir73il@gmail.com>
+Date: Sat, 31 Aug 2019 09:34:44 +0300
+Message-ID: <CAOQ4uxichLUsPyg5Fqg-pSL85oqoDFcQHZbzdrkXX_-kK=CjDQ@mail.gmail.com>
+Subject: Re: [PATCH v6 03/24] erofs: add super block operations
+To: Gao Xiang <gaoxiang25@huawei.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,57 +83,76 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, Stephen Rothwell <sfr@canb.auug.org.au>,
+ linux-erofs@lists.ozlabs.org, Theodore Ts'o <tytso@mit.edu>,
+ "Darrick J . Wong" <darrick.wong@oracle.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jan Kara <jack@suse.cz>,
+ Chao Yu <yuchao0@huawei.com>, Dave Chinner <david@fromorbit.com>,
+ David Sterba <dsterba@suse.cz>, Li Guifu <bluce.liguifu@huawei.com>,
+ LKML <linux-kernel@vger.kernel.org>, Christoph Hellwig <hch@infradead.org>,
+ Miao Xie <miaoxie@huawei.com>, Alexander Viro <viro@zeniv.linux.org.uk>,
+ Pavel Machek <pavel@denx.de>, linux-fsdevel <linux-fsdevel@vger.kernel.org>,
+ Jaegeuk Kim <jaegeuk@kernel.org>, Andrew Morton <akpm@linux-foundation.org>,
+ Linus Torvalds <torvalds@linux-foundation.org>, Fang Wei <fangwei1@huawei.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 2019/8/30 19:51, David Sterba wrote:
-> On Fri, Aug 30, 2019 at 10:06:25AM +0800, Chao Yu wrote:
->> On 2019/8/29 23:43, Dan Carpenter wrote:
->>>> p.s. There are 2947 (un)likely places in fs/ directory.
->>>
->>> I was complaining about you adding new pointless ones, not existing
->>> ones.  The likely/unlikely annotations are supposed to be functional and
->>> not decorative.  I explained this very clearly.
->>>
->>> Probably most of the annotations in fs/ are wrong but they are also
->>> harmless except for the slight messiness.  However there are definitely
->>> some which are important so removing them all isn't a good idea.
->>
->> Hi Dan,
->>
->> Could you please pick up one positive example using likely and unlikely
->> correctly? so we can follow the example, rather than removing them all blindly.
-> 
-> Remove all of them and re-add with explanation if and how each is going
-> to make things better. If you can't reason about, prove by benchmarks or
-> point to inefficient asm code generated, then don't add them again.
+On Fri, Aug 30, 2019 at 8:16 PM Gao Xiang <gaoxiang25@huawei.com> wrote:
+>
+> Hi Christoph,
+>
+> On Fri, Aug 30, 2019 at 09:39:10AM -0700, Christoph Hellwig wrote:
+> > On Thu, Aug 29, 2019 at 06:50:48PM +0800, Gao Xiang wrote:
+> > > > Please use an erofs_ prefix for all your functions.
+> > >
+> > > It is already a static function, I have no idea what is wrong here.
+> >
+> > Which part of all wasn't clear?  Have you looked at the prefixes for
+> > most functions in the various other big filesystems?
+>
+> I will add erofs prefix to free_inode as you said.
+>
+> At least, all non-prefix functions in erofs are all static functions,
+> it won't pollute namespace... I will add "erofs_" to other meaningful
+> callbacks...And as you can see...
+>
+> cifs/cifsfs.c
+> 1303:cifs_init_inodecache(void)
+> 1509:   rc = cifs_init_inodecache();
+>
+> hpfs/super.c
+> 254:static int init_inodecache(void)
+> 771:    int err = init_inodecache();
+>
+> minix/inode.c
+> 84:static int __init init_inodecache(void)
+> 665:    int err = init_inodecache();
+>
 
-It seems the result of it is strongly related to arch and compiler, if we readd
-it after we just prove its gain only in one combination, I doubt we may suffer
-regression in other combination in between archs and comilers. It looks like we
-don't have any cheaper way to readd it? instead of verifying all/most combinations.
+Hi Gao,
 
-> 
-> The feedback I got from CPU and compiler people over the years is not to
-> bother using the annotations. CPUs are doing dynamic branch prediction
-> and compilers are applying tons of optimizations.
-> 
-> GCC docs state about the builtin: "In general, you should prefer to use
-> actual profile feedback for this (-fprofile-arcs), as programmers are
-> notoriously bad at predicting how their programs actually perform."
-> (https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html)
+"They did it first" is never a good reply for code review comments.
+Nobody cares if you copy&paste code with init_inodecache().
+I understand why you thought static function names do not pollute
+the (linker) namespace, but they do pollute the global namespace.
 
-Yes, I agree with this. Thanks a lot for sharing your experience. :)
+free_inode() as a local function name is one of the worst examples
+for VFS namespace pollution.
 
-The removal change has done and been merged into Greg's tree, let's consider to
-readd it later if possible as you suggested.
+VFS code uses function names like those a lot in the global namespace, e.g.:
+clear_inode(),new_inode().
 
-thanks,
+For example from recent history of namespace collision caused by your line
+of thinking, see:
+e6fd2093a85d md: namespace private helper names
 
-> .
-> 
+Besides, you really have nothing to loose from prefixing everything
+with erofs_, do you? It's better for review, for debugging...
+
+Thanks,
+Amir.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
