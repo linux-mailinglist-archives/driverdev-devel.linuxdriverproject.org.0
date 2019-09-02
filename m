@@ -1,64 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1C312A5ACD
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Sep 2019 17:51:43 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 42A9BA5AD6
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Sep 2019 17:54:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 550E121551;
-	Mon,  2 Sep 2019 15:51:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6E173860AD;
+	Mon,  2 Sep 2019 15:54:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ExjIhety+tbG; Mon,  2 Sep 2019 15:51:40 +0000 (UTC)
+	with ESMTP id cQFKagkILOtu; Mon,  2 Sep 2019 15:54:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 558FA2154E;
-	Mon,  2 Sep 2019 15:51:37 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 449ED85EAF;
+	Mon,  2 Sep 2019 15:54:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 897C51BF32D
- for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 15:51:35 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0F9921BF32D
+ for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 15:54:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 85177864D8
- for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 15:51:35 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 0996B85C98
+ for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 15:54:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ozHDC8X8c7qj for <devel@linuxdriverproject.org>;
- Mon,  2 Sep 2019 15:51:33 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga02-in.huawei.com [45.249.212.188])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4DB6C864D2
- for <devel@driverdev.osuosl.org>; Mon,  2 Sep 2019 15:51:33 +0000 (UTC)
-Received: from DGGEMM404-HUB.china.huawei.com (unknown [172.30.72.56])
- by Forcepoint Email with ESMTP id D87F48830A7DEFEEDC58;
- Mon,  2 Sep 2019 23:51:29 +0800 (CST)
-Received: from dggeme762-chm.china.huawei.com (10.3.19.108) by
- DGGEMM404-HUB.china.huawei.com (10.3.20.212) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Mon, 2 Sep 2019 23:51:29 +0800
-Received: from architecture4 (10.140.130.215) by
- dggeme762-chm.china.huawei.com (10.3.19.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1591.10; Mon, 2 Sep 2019 23:51:29 +0800
-Date: Mon, 2 Sep 2019 23:50:38 +0800
-From: Gao Xiang <gaoxiang25@huawei.com>
-To: Christoph Hellwig <hch@infradead.org>
-Subject: Re: [PATCH 00/21] erofs: patchset addressing Christoph's comments
-Message-ID: <20190902155037.GD179615@architecture4>
-References: <20190802125347.166018-1-gaoxiang25@huawei.com>
- <20190901055130.30572-1-hsiangkao@aol.com>
- <20190902124645.GA8369@infradead.org>
- <20190902142452.GE2664@architecture4>
- <20190902152323.GB14009@infradead.org>
+ with ESMTP id b6EMC8L-wlPE for <devel@linuxdriverproject.org>;
+ Mon,  2 Sep 2019 15:54:26 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D3062857D0
+ for <devel@driverdev.osuosl.org>; Mon,  2 Sep 2019 15:54:26 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 3822D217D7;
+ Mon,  2 Sep 2019 15:54:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1567439666;
+ bh=HMwyh/e6yuiazEWDmWTrxtN8R7FLKODjf5dUfshAxQc=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=EbRvuexgwBsiQlMqtf0kEICmFvBY8Pcf7VhHUI5k8CyEzoS0+Bc50hycoq273oGOB
+ kN6W1UMx/Szw7MIj5e6zeVveRR5neZTYnsERXyEDf3eRsL1f7LKqE2XrgLQ0IUBAhG
+ dFniv99KVFplEhrchKtJE3C6fJ4ISwdL5U2CdSmc=
+Date: Mon, 2 Sep 2019 17:54:24 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Tyler Hicks <tyhicks@canonical.com>
+Subject: Re: [PATCH AUTOSEL 4.19 11/29] binder: take read mode of mmap_sem in
+ binder_alloc_free_page()
+Message-ID: <20190902155424.GA21884@kroah.com>
+References: <20190829105009.2265-1-sashal@kernel.org>
+ <20190829105009.2265-11-sashal@kernel.org>
+ <20190829151320.GC27650@elm> <20190830062910.GC15257@kroah.com>
+ <20190830073019.GA16891@elm>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190902152323.GB14009@infradead.org>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Originating-IP: [10.140.130.215]
-X-ClientProxiedBy: dggeme710-chm.china.huawei.com (10.1.199.106) To
- dggeme762-chm.china.huawei.com (10.3.19.108)
-X-CFilter-Loop: Reflected
+In-Reply-To: <20190830073019.GA16891@elm>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,66 +70,55 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Chao Yu <yuchao0@huawei.com>, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>, linux-fsdevel@vger.kernel.org,
- linux-erofs@lists.ozlabs.org, Chao Yu <chao@kernel.org>
+Cc: Sasha Levin <sashal@kernel.org>, devel@driverdev.osuosl.org,
+ Todd Kjos <tkjos@android.com>, linux-kernel@vger.kernel.org,
+ stable@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Christoph,
-
-On Mon, Sep 02, 2019 at 08:23:23AM -0700, Christoph Hellwig wrote:
-> On Mon, Sep 02, 2019 at 10:24:52PM +0800, Gao Xiang wrote:
-> > > code quality stuff.  We're not addressing the issues with large amounts
-> > > of functionality duplicating VFS helpers.
+On Fri, Aug 30, 2019 at 02:30:19AM -0500, Tyler Hicks wrote:
+> On 2019-08-30 08:29:10, Greg Kroah-Hartman wrote:
+> > On Thu, Aug 29, 2019 at 10:13:20AM -0500, Tyler Hicks wrote:
+> > > Hello, Sasha!
+> > > 
+> > > On 2019-08-29 06:49:51, Sasha Levin wrote:
+> > > > From: Tyler Hicks <tyhicks@canonical.com>
+> > > > 
+> > > > [ Upstream commit 60d4885710836595192c42d3e04b27551d30ec91 ]
+> > > > 
+> > > > Restore the behavior of locking mmap_sem for reading in
+> > > > binder_alloc_free_page(), as was first done in commit 3013bf62b67a
+> > > > ("binder: reduce mmap_sem write-side lock"). That change was
+> > > > inadvertently reverted by commit 5cec2d2e5839 ("binder: fix race between
+> > > > munmap() and direct reclaim").
+> > > > 
+> > > > In addition, change the name of the label for the error path to
+> > > > accurately reflect that we're taking the lock for reading.
+> > > > 
+> > > > Backporting note: This fix is only needed when *both* of the commits
+> > > > mentioned above are applied. That's an unlikely situation since they
+> > > > both landed during the development of v5.1 but only one of them is
+> > > > targeted for stable.
+> > > 
+> > > This patch isn't meant to be applied to 4.19 since commit 3013bf62b67a
+> > > ("binder: reduce mmap_sem write-side lock") was never brought back to
+> > > 4.19.
+> > > 
+> > > Tyler
+> > > 
+> > > > 
+> > > > Fixes: 5cec2d2e5839 ("binder: fix race between munmap() and direct reclaim")
 > > 
-> > You means killing erofs_get_meta_page or avoid erofs_read_raw_page?
-> > 
-> >  - For killing erofs_get_meta_page, here is the current erofs_get_meta_page:
+> > But this commit is in 4.19.49
 > 
-> > I think it is simple enough. read_cache_page need write a similar
-> > filler, or read_cache_page_gfp will call .readpage, and then
-> > introduce buffer_heads, that is what I'd like to avoid now (no need these
-> > bd_inode buffer_heads in memory...)
-> 
-> If using read_cache_page_gfp and ->readpage works, please do.  The
-> fact that the block device inode uses buffer heads is an implementation
-> detail that might not last very long and should be invisible to you.
-> It also means you can get rid of a lot of code that you don't have
-> to maintain and others don't have to update for global API changes.
+> That's correct but commit 3013bf62b67a isn't present in 4.19.y. See the
+> "Backporting note" above.
 
-I care about those useless buffer_heads in memory for our products...
+Heh, I never read that part of the text, nevermind :)
 
-Since we are nobh filesystem (a little request, could I use it
-after buffer_heads are fully avoided, I have no idea why I need
-those buffer_heads in memory.... But I think bd_inode is good
-for caching metadata...)
-
-> 
-> >  - For erofs_read_raw_page, it can be avoided after iomap tail-end packing
-> >    feature is done... If we remove it now, it will make EROFS broken.
-> >    It is no urgent and Chao will focus on iomap tail-end packing feature.
-> 
-> Ok.  I wish we would have just sorted this out beforehand, which we
-> could have trivially done without all that staging mess.
-
-Firstly, I'd like to introduce EROFS as a self-contained
-filesystem to introduce new fixed-sized output compression
-to upstream and promote it...
-
-And then we can do many improvements for EROFS in parallel...
-(if we introduce EROFS and touch many core modules like
-iomap, mm readahead code or modify LZ4 code at once...
-It could be more careful... Let's improve it step-by-step...
-We are a dedicated team if the Linux community needs us,
-we will still here... It will be actively maintained.)
-
-Thanks,
-Gao Xiang
-
-
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
