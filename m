@@ -1,63 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6296BA55FF
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Sep 2019 14:28:10 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 898E5A5601
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Sep 2019 14:28:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 917548674D;
-	Mon,  2 Sep 2019 12:28:08 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C42F787D9D;
+	Mon,  2 Sep 2019 12:28:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xFjJrRDxjgE1; Mon,  2 Sep 2019 12:28:07 +0000 (UTC)
+	with ESMTP id 9GyQWTnh2jwH; Mon,  2 Sep 2019 12:28:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EBBED865C1;
-	Mon,  2 Sep 2019 12:28:06 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2F97C87D54;
+	Mon,  2 Sep 2019 12:28:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9D1DA1BF359
- for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 12:28:04 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B087B1BF359
+ for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 12:28:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 99EE0865C1
- for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 12:28:04 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id A7AD5865D0
+ for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 12:28:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ekZbUXLd9Cl2 for <devel@linuxdriverproject.org>;
- Mon,  2 Sep 2019 12:28:04 +0000 (UTC)
+ with ESMTP id KyF1-ngYnE-k for <devel@linuxdriverproject.org>;
+ Mon,  2 Sep 2019 12:28:39 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from bombadil.infradead.org (bombadil.infradead.org
  [198.137.202.133])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3F9BC863F4
- for <devel@driverdev.osuosl.org>; Mon,  2 Sep 2019 12:28:04 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3D347863F4
+ for <devel@driverdev.osuosl.org>; Mon,  2 Sep 2019 12:28:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20170209; h=In-Reply-To:Content-Type:MIME-Version
  :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
  Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
  List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=F00YZR20OKS9hpCy+NmnvPb/a9hMj2df+foI3LrwsI0=; b=Ei9IagKy4eiTF1pBi0Lf/vIfL
- S+xgDHBkxR+1oKoyugKczja5koHUZDuTb/ZLi20pCuPakSbdEQhMtKQbs8tn711wLvPAtKUsThQMD
- s5GcniBuXJlw1gZjDilvtU/iNyWffavjNO+25PQN//pNmOGwq+UN8Nx3PE1Zsvbh5G+11m/QVf7RW
- HJ3pklGCjX6lqeIKZtj10IV86p8psVVqorn5V0oKiECXxb59+TDJ6qOwa4JOjhCSX+LwL5vK54Kzn
- mHZ+y/8hkhw7J7aAI4AIfd1FWIzYzoUNKlAF8pkn4FCgzoczmje/U9O6TNeGZ4dR4yBqicJu2A/XF
- ItEvhs2aw==;
+ bh=Be/ms/OJKGVxo7e8F3rHJQGcp7FrmkdDRfckdC6QUAo=; b=Q8ndzAoMeSDVU5DmiNdG+sA6d
+ 8DrrS0HQw2FVvZz160rayjyJFMKkVHbGAAj6ejbxtqPzo/sQMilXaRvWNRsFJnZ/bL0Dw+yybMaR/
+ iXqIZVWeRJUvMKRC2rJ/iDgYszCSittOhuH+I5Z9z2zVltWVjRS3v/LIUKxqMl7OoP2HPip+b6Cc9
+ njpYNNKPAVslVgdmiSSV4N0kZDCGZycMaVtCmFhd7K6A1IQVbmug89exefRhktZbM7XRa+FtRdgyx
+ imm6YWk2GDwCBaubMGvtUKGBILIZR2F1RU0N+1KPPQV1lTG7RNfpaMt1P3w/qyNx5lmgFvVjJd/dD
+ tD7oMLZfw==;
 Received: from hch by bombadil.infradead.org with local (Exim 4.92 #3 (Red Hat
- Linux)) id 1i4lRB-00049w-8b; Mon, 02 Sep 2019 12:28:01 +0000
-Date: Mon, 2 Sep 2019 05:28:01 -0700
+ Linux)) id 1i4lRk-0004CP-AT; Mon, 02 Sep 2019 12:28:36 +0000
+Date: Mon, 2 Sep 2019 05:28:36 -0700
 From: Christoph Hellwig <hch@infradead.org>
 To: Gao Xiang <hsiangkao@aol.com>
-Subject: Re: [PATCH 18/21] erofs: add "erofs_" prefix for common and short
- functions
-Message-ID: <20190902122801.GP15931@infradead.org>
+Subject: Re: [PATCH 19/21] erofs: kill all erofs specific fault injection
+Message-ID: <20190902122836.GQ15931@infradead.org>
 References: <20190802125347.166018-1-gaoxiang25@huawei.com>
  <20190901055130.30572-1-hsiangkao@aol.com>
- <20190901055130.30572-19-hsiangkao@aol.com>
+ <20190901055130.30572-20-hsiangkao@aol.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190901055130.30572-19-hsiangkao@aol.com>
+In-Reply-To: <20190901055130.30572-20-hsiangkao@aol.com>
 User-Agent: Mutt/1.11.4 (2019-03-13)
 X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
  bombadil.infradead.org. See http://www.infradead.org/rpr.html
@@ -82,9 +81,14 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Thanks.  I don't have a tree with all these applies, but please make
-sure this covers at least all inlines in headers and all methods
-wired up to operation structures.
+On Sun, Sep 01, 2019 at 01:51:28PM +0800, Gao Xiang wrote:
+> From: Gao Xiang <gaoxiang25@huawei.com>
+> 
+> As Christoph suggested [1], "Please just use plain kmalloc
+> everywhere and let the normal kernel error injection code
+> take care of injeting any errors."
+
+Thanks.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
