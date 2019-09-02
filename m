@@ -2,67 +2,52 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8938FA5BDD
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Sep 2019 19:39:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4E26DA5BE8
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Sep 2019 19:46:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6B32F21552;
-	Mon,  2 Sep 2019 17:39:49 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 13DAB21F5A;
+	Mon,  2 Sep 2019 17:46:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Kn2aTeSnwFvK; Mon,  2 Sep 2019 17:39:48 +0000 (UTC)
+	with ESMTP id RGxH472ezUMa; Mon,  2 Sep 2019 17:46:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4FEFA2155E;
-	Mon,  2 Sep 2019 17:39:45 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 78ECF20534;
+	Mon,  2 Sep 2019 17:46:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D4D121BF30B
- for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 17:39:42 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D44091BF30B
+ for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 17:46:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D20C220774
- for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 17:39:42 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id D0082864C5
+ for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 17:46:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mbrMOFget7+A for <devel@linuxdriverproject.org>;
- Mon,  2 Sep 2019 17:39:41 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from bombadil.infradead.org (bombadil.infradead.org
- [198.137.202.133])
- by silver.osuosl.org (Postfix) with ESMTPS id 7CE2921552
- for <devel@driverdev.osuosl.org>; Mon,  2 Sep 2019 17:39:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20170209; h=Content-Transfer-Encoding:
- Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:
- Subject:Sender:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=hEGWoA2tYnse4FOhsxlEH/jFHn84yJrgUujZ+4IiIa0=; b=SGnGV0+pbDM5rhHxiPkQ4xpwq
- x1hSrK8wB/eqxQj3w8PwB2x4+zvIj6JAHzC+MizEH1JZoXlBabDFBRikErFoxpY+2tFaqzqyZxCb7
- zshjdYup4vA0RmXnCa+RP/n2e7uT3KgxbWASVCh4pYb9Y3W+dZlIAkVCkCkJMPZ39uRtU24LuyrPr
- uKv77MJGwrZ9gHUYW3bggdXVm69N9NSDZS6EIxtpHmZ8ge9WW99zy6Azz1FdaUJXeFfLVcH1p94fw
- MTym2Yo6Tk26Cv5APe8XiGV4gtZYylywthwojnHyPQzlDd8gA9Q85UPLZBAu9oSaKOUqIgyv5uALy
- fq5BSxPWw==;
-Received: from [2601:1c0:6200:6e8::4f71]
- by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1i4qIm-0004GB-Di; Mon, 02 Sep 2019 17:39:40 +0000
+ with ESMTP id SManwJIBORPZ for <devel@linuxdriverproject.org>;
+ Mon,  2 Sep 2019 17:46:34 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3BC2586501
+ for <devel@driverdev.osuosl.org>; Mon,  2 Sep 2019 17:46:34 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 990A8208E4;
+ Mon,  2 Sep 2019 17:46:33 +0000 (UTC)
+Date: Mon, 2 Sep 2019 19:46:31 +0200
+From: Greg KH <greg@kroah.com>
+To: Randy Dunlap <rdunlap@infradead.org>
 Subject: Re: linux-next: Tree for Sep 2 (exfat)
-To: Stephen Rothwell <sfr@canb.auug.org.au>,
- Linux Next Mailing List <linux-next@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Valdis Kletnieks <valdis.kletnieks@vt.edu>,
- "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- Linux FS Devel <linux-fsdevel@vger.kernel.org>
+Message-ID: <20190902174631.GB31445@kroah.com>
 References: <20190902224310.208575dc@canb.auug.org.au>
-From: Randy Dunlap <rdunlap@infradead.org>
-Message-ID: <cecc2af6-7ef6-29f6-569e-b591365e45ad@infradead.org>
-Date: Mon, 2 Sep 2019 10:39:39 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ <cecc2af6-7ef6-29f6-569e-b591365e45ad@infradead.org>
 MIME-Version: 1.0
-In-Reply-To: <20190902224310.208575dc@canb.auug.org.au>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <cecc2af6-7ef6-29f6-569e-b591365e45ad@infradead.org>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,29 +60,74 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ Stephen Rothwell <sfr@canb.auug.org.au>,
+ Valdis Kletnieks <valdis.kletnieks@vt.edu>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Linux Next Mailing List <linux-next@vger.kernel.org>,
+ Linux FS Devel <linux-fsdevel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 9/2/19 5:43 AM, Stephen Rothwell wrote:
-> Hi all,
+On Mon, Sep 02, 2019 at 10:39:39AM -0700, Randy Dunlap wrote:
+> On 9/2/19 5:43 AM, Stephen Rothwell wrote:
+> > Hi all,
+> > 
+> > News: I will only be doing 2 more releases before I leave for Kernel
+> > Summit (there may be some reports on Thursday, but I doubt I will have
+> > time to finish the full release) and then no more until Sept 30.
+> > 
+> > Changes since 20190830:
+> > 
 > 
-> News: I will only be doing 2 more releases before I leave for Kernel
-> Summit (there may be some reports on Thursday, but I doubt I will have
-> time to finish the full release) and then no more until Sept 30.
-> 
-> Changes since 20190830:
-> 
+> Hi,
+> I am seeing lots of exfat build errors when CONFIG_BLOCK is not set/enabled.
+> Maybe its Kconfig should also say
+> 	depends on BLOCK
+> ?
 
-Hi,
-I am seeing lots of exfat build errors when CONFIG_BLOCK is not set/enabled.
-Maybe its Kconfig should also say
-	depends on BLOCK
-?
+Here's what I committed to my tree:
 
+
+From e2b880d3d1afaa5cad108c29be3e307b1917d195 Mon Sep 17 00:00:00 2001
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Date: Mon, 2 Sep 2019 19:45:06 +0200
+Subject: staging: exfat: make exfat depend on BLOCK
+
+This should fix a build error in some configurations when CONFIG_BLOCK
+is not selected.  Also properly set the dependancy for no FAT support at
+the same time.
+
+Reported-by: Randy Dunlap <rdunlap@infradead.org>
+Cc: Valdis Kletnieks <valdis.kletnieks@vt.edu>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/staging/exfat/Kconfig | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/staging/exfat/Kconfig b/drivers/staging/exfat/Kconfig
+index f52129c67f97..290dbfc7ace1 100644
+--- a/drivers/staging/exfat/Kconfig
++++ b/drivers/staging/exfat/Kconfig
+@@ -1,11 +1,13 @@
+ config EXFAT_FS
+ 	tristate "exFAT fs support"
++	depends on BLOCK
+ 	select NLS
+ 	help
+ 	  This adds support for the exFAT file system.
+ 
+ config EXFAT_DONT_MOUNT_VFAT
+ 	bool "Prohibit mounting of fat/vfat filesysems by exFAT"
++	depends on EXFAT_FS
+ 	default y
+ 	help
+ 	  By default, the exFAT driver will only mount exFAT filesystems, and refuse
 -- 
-~Randy
+2.23.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
