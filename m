@@ -1,62 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5148CA541F
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Sep 2019 12:36:18 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C0830A542F
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Sep 2019 12:40:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1586986501;
-	Mon,  2 Sep 2019 10:36:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5D66787D56;
+	Mon,  2 Sep 2019 10:40:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ohDVfhcF1Hsm; Mon,  2 Sep 2019 10:36:15 +0000 (UTC)
+	with ESMTP id jy4qzIqxUo4A; Mon,  2 Sep 2019 10:40:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 565A38649A;
-	Mon,  2 Sep 2019 10:36:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 87F5587CEE;
+	Mon,  2 Sep 2019 10:40:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 24CEA1BF47A
- for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 10:36:12 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id BEF581BF47A
+ for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 10:40:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 176E320010
- for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 10:36:12 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id BB7A784CBC
+ for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 10:40:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TQtcvId9cz4p for <devel@linuxdriverproject.org>;
- Mon,  2 Sep 2019 10:36:09 +0000 (UTC)
+ with ESMTP id a7hHEYp+G+B6 for <devel@linuxdriverproject.org>;
+ Mon,  2 Sep 2019 10:40:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga01-in.huawei.com [45.249.212.187])
- by silver.osuosl.org (Postfix) with ESMTPS id F23A82000F
- for <devel@driverdev.osuosl.org>; Mon,  2 Sep 2019 10:36:08 +0000 (UTC)
-Received: from DGGEMM404-HUB.china.huawei.com (unknown [172.30.72.53])
- by Forcepoint Email with ESMTP id 32EA73D857F82B433D68;
- Mon,  2 Sep 2019 18:36:05 +0800 (CST)
-Received: from dggeme762-chm.china.huawei.com (10.3.19.108) by
- DGGEMM404-HUB.china.huawei.com (10.3.20.212) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Mon, 2 Sep 2019 18:36:04 +0800
-Received: from architecture4 (10.140.130.215) by
- dggeme762-chm.china.huawei.com (10.3.19.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1591.10; Mon, 2 Sep 2019 18:36:03 +0800
-Date: Mon, 2 Sep 2019 18:35:12 +0800
-From: Gao Xiang <gaoxiang25@huawei.com>
-To: Pavel Machek <pavel@denx.de>
-Subject: Re: [PATCH v6 01/24] erofs: add on-disk layout
-Message-ID: <20190902103509.GA42552@architecture4>
-References: <20190802125347.166018-1-gaoxiang25@huawei.com>
- <20190802125347.166018-2-gaoxiang25@huawei.com>
- <20190829095954.GB20598@infradead.org> <20190902084020.GB19557@amd>
+Received: from mail-io1-f65.google.com (mail-io1-f65.google.com
+ [209.85.166.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 083BF8475F
+ for <devel@driverdev.osuosl.org>; Mon,  2 Sep 2019 10:40:32 +0000 (UTC)
+Received: by mail-io1-f65.google.com with SMTP id s21so28332649ioa.1
+ for <devel@driverdev.osuosl.org>; Mon, 02 Sep 2019 03:40:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=BrYjaClXVx+uPifSJclfUi0yOnEtosbjjweRJo+C/to=;
+ b=PcDAluxmCoO/lJ+HM6JeYIjdx+sHQwyiEhfOwNThR2FDXpZVwqggysRRwIJQzYZ1lt
+ NHv8VerHaSkIUGzyg7wZc+54iz4MDeM9rhjH61R6w5RY8BGir9uNhS/jIUtnAS4/uwbA
+ dFFyeUWAXPlWCBxIwNw0L/HBuOKYokPr71d0iAL3aDZ4kRnCHf3BYf+DPr/9vWYQYexG
+ /aJcavXTNyM22uthPjyT0s6dRNl2AEOS+G4NFCQmZPvMyTgWD5fnmj01uXi1eHrvrKKr
+ 0rLjIOLr2HP7ras/z/afVsFK4PJR/ww233CbEElLiY0J0rDZzfHe30sIR064pRPb5JAT
+ XnKw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=BrYjaClXVx+uPifSJclfUi0yOnEtosbjjweRJo+C/to=;
+ b=eeOMVMJP5mvzhvHKLyYOA7ghMRZtJtQqfjXXIfJNRCFFSpKSfAsyeqFUM406raHO82
+ BjxfQilxYd0ZFAN6OxXepPcXMm+dgTC2/OqBAjjEpIT3T67DIz8L5NPCwoC1uDAu2Wer
+ ARUdj0N5s3HGE0CEPOvj4QZqt0We1/BfMLRaqxsTdgfs0MbHUuvT93Pt+H0hRW1F45HW
+ QA906nFHazVWPnX4nglM2IYCPvmFi/JffYUQGGNTlVGuRAA647/3NWsqoIj2bz6T3cdM
+ Wb5TysMQzlsTx1yjsvwfVuolm04U7rcXpvIa4clhnoy+bgMD3nBIE2xPuSBEzKg0gMfu
+ +kzw==
+X-Gm-Message-State: APjAAAXt1J9ceUTzTDkmPOQ/gK+s2SOoeiq26s8OagdnHZr8HcUrYKJC
+ yXXJonZGaGi8U+DBp7g673McSJ+HfufKiP9lhL8=
+X-Google-Smtp-Source: APXvYqzpONyVA6fMNge7fAExzDk0x6sAOrjm5h4a48gNdeMI9sjchzZ1wmPXL7d22wD86qA7bf/nOqqCBbocPjCfLmE=
+X-Received: by 2002:a02:8563:: with SMTP id g90mr15264959jai.63.1567420831211; 
+ Mon, 02 Sep 2019 03:40:31 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190902084020.GB19557@amd>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Originating-IP: [10.140.130.215]
-X-ClientProxiedBy: dggeme715-chm.china.huawei.com (10.1.199.111) To
- dggeme762-chm.china.huawei.com (10.3.19.108)
-X-CFilter-Loop: Reflected
+Received: by 2002:a5e:8d13:0:0:0:0:0 with HTTP;
+ Mon, 2 Sep 2019 03:40:30 -0700 (PDT)
+From: " Mr.Abdellatife Jouahri" <princessrokiakasmil2009@gmail.com>
+Date: Mon, 2 Sep 2019 03:40:30 -0700
+Message-ID: <CAAsQ=g1wi6Ubdy5PoeGGASvh=PGRBDiEUV6v8zu4gEQxfxnUrA@mail.gmail.com>
+Subject: VERRY VERRY URGENT
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,49 +79,77 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Stephen Rothwell <sfr@canb.auug.org.au>,
- linux-erofs@lists.ozlabs.org, Chao Yu <yuchao0@huawei.com>,
- Theodore Ts'o <tytso@mit.edu>, "Darrick J . Wong" <darrick.wong@oracle.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jan Kara <jack@suse.cz>,
- Amir Goldstein <amir73il@gmail.com>, Dave Chinner <david@fromorbit.com>,
- David Sterba <dsterba@suse.cz>, Li Guifu <bluce.liguifu@huawei.com>,
- LKML <linux-kernel@vger.kernel.org>, Christoph Hellwig <hch@infradead.org>,
- Miao Xie <miaoxie@huawei.com>, Alexander Viro <viro@zeniv.linux.org.uk>,
- linux-fsdevel@vger.kernel.org, Jaegeuk Kim <jaegeuk@kernel.org>,
- Andrew Morton <akpm@linux-foundation.org>,
- Linus Torvalds <torvalds@linux-foundation.org>, Fang Wei <fangwei1@huawei.com>
+Reply-To: abdellatife56jouahri@aol.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Pavel,
+FROM MR.Abdellatife Jouahri
+AUDIT& ACCOUNT MANAGER
+BANK OF AFRICA (B.O.A)
+OUAGADOUGOU BURKINA FASO
+WEST AFRICA.
 
-(Thanks...)
+Dear Friend,
 
-On Mon, Sep 02, 2019 at 10:40:20AM +0200, Pavel Machek wrote:
+With due respect, I have decided to contact you on
+a business transaction that will be beneficial to both of us. At the
+bank last account and auditing evaluation, my staffs came across an
+old account which was being maintained by a foreign client who we
+learn was among the deceased passengers of motor accident on
+November.2003, the deceased was unable to run this account since his
+death. The account has remained dormant without the knowledge of his
+family since it was put in a safe deposit account in the bank for
+future investment by the client.
 
-> 
-> So __packed is right thing to do. If architecture accesses that
-> slowly, that's ungood, but different structures between architectures
-> would be really bad.
+Since his demise, even the members of his family haven't applied for
+claims over this fund and it has been in the safe deposit account
+until I discovered that it cannot be claimed since our client
+is a foreign national and we are sure that he has no next of kin here to
+take claims over the money. As the director of the department, this
+discovery was brought to my office for me to decide what is to do .I
+decided to seek an option through which to transfer this money out of the
+bank and out of the country too.
 
-(...a little word, it seems that Christoph was trying to say that
- it's unnecessary to __packed for this case since we designed most
- erofs on-disk format in natural alignment... Anyway, I updated,
- that seems okay...)
+The total amount in the account is 18.6 million with my positions as
+staffs of the bank, I am handicapped because I cannot operate foreign
+accounts and cannot lay strong claim over this money. The client was
+a foreign national and you will only be asked to act as his next of
+kin and I will supply you with all the necessary information and bank
+data to assist you in being able to transfer this money to any bank of
+your choice where this money could be transferred into. The total sum
+will be shared as follows: 50% for me, 50% for you and expenses
+incidental occur during the transfer will be incur by both of us. The
+transfer is risk free on both sides hence you are going to follow my
+instruction till the fund transfer to your account. Since I work in
+this bank that is why you should be confident in the success of this
+transaction because you will be updated with information as at when
+desired.
 
-Thanks,
-Gao Xiang
+I will wish you to keep this transaction secret and confidential as I
+am hoping to retire with my share of this money at the end of
+transaction which will be when this money is safety in your account. I
+will then come over to your country for sharing according to the
+previously agreed percentages. You might even have to advise me on
+possibilities of investment in your country or elsewhere of our
+choice. May God help you to help me to a restive retirement, Amen ,And
+You have to contact me through my private e-mail at
+(abdellatife56jouahri@aol.com )Please for further information and
+inquires feel free to contact me back immediately for more explanation
+and better understanding I want you to assure me your capability of
+handling this project with trust by providing me your following
+information details such as:
 
-> 
-> Best regards,
-> 								Pavel
-> -- 
-> DENX Software Engineering GmbH,      Managing Director: Wolfgang Denk
-> HRB 165235 Munich, Office: Kirchenstr.5, D-82194 Groebenzell, Germany
+(1)NAME..............
+(2)AGE:................
+(3)SEX:.....................
+(4)PHONE NUMBER:.................
+(5)OCCUPATION:.....................
+(6)YOUR COUNTRY:.....................
 
-
+Yours sincerely,
+Mr.Abdellatife Jouahri
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
