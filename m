@@ -2,61 +2,62 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 193A3A55E5
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Sep 2019 14:26:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 30888A55F3
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Sep 2019 14:27:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3349685FF3;
-	Mon,  2 Sep 2019 12:26:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D8D7785FBA;
+	Mon,  2 Sep 2019 12:27:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id G7WCXfQLe7cp; Mon,  2 Sep 2019 12:26:35 +0000 (UTC)
+	with ESMTP id kPDaua14q_Zo; Mon,  2 Sep 2019 12:27:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EC25885FB6;
-	Mon,  2 Sep 2019 12:26:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E8FB685FB6;
+	Mon,  2 Sep 2019 12:27:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CC6AB1BF359
- for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 12:26:32 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 995711BF359
+ for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 12:27:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C746385FBA
- for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 12:26:32 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 9642885FBA
+ for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 12:27:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 02Gepg0lUl6Z for <devel@linuxdriverproject.org>;
- Mon,  2 Sep 2019 12:26:31 +0000 (UTC)
+ with ESMTP id Gx9S9jzZVbVZ for <devel@linuxdriverproject.org>;
+ Mon,  2 Sep 2019 12:27:11 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from bombadil.infradead.org (bombadil.infradead.org
  [198.137.202.133])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id AF48485FB6
- for <devel@driverdev.osuosl.org>; Mon,  2 Sep 2019 12:26:31 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2E15685FB6
+ for <devel@driverdev.osuosl.org>; Mon,  2 Sep 2019 12:27:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20170209; h=In-Reply-To:Content-Type:MIME-Version
  :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
  Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
  List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=svUkB0dxi2TuM3Fl0ZlJgO11nAP1/canIdeXNo7nLhk=; b=qLGt2hfPD/A3ccp43tsVxEP+x
- jUUBvQ2XSyyvgDYe6TrtxZgmxG16PIqrFXwYQD0yu1nwGhSCRVMgr+BdkXiKj/jUe/2dQ5P7VV3pB
- mpwJArbHQTIKn0n527nkd8xUQJNtgNtVG8et41zGsCgOkMzEOlCzz45lNssyF4O0wqmBgl6Ukn6n/
- 8ofbDkQMFNYqoFQnvcgy+ixWOpyh3PXymSyceVE8mrA4rAByp/dH+mwABAy8SkQ5g83bFmoNvqLB1
- XOC0h+5IQadmsREIEoQJIxKs+Dac3mR4wbOu6xrUwlc8scnfiePGNF1jWbmmkDViTqxZwhaFQrhQG
- w8IvWePTA==;
+ bh=zmlFqohBdGnD9okb+s9Q0ZrXBWISBFgz5ZPgdIgZAow=; b=c4of95qTH/D9oMJ8yJH/UpKmL
+ dELjvOjPwso+4MEzXPQU/x5qrxw8uyyNx99UbRljAXI6z6mXWbVjKM8d3d5evCLS/H2oAm+06CZvv
+ oodNl0dTdD+tBu780qhrG1Y6Oag1PkeAFofSgdPw1FKp3z+0l7IpNcrZPV4t/0E6KjgwYlbdAVAwe
+ xL0JkAd+yBOA2DCVvWWM5zaQ6fh3/bLQ/L3U+k5hM3rOMH5r9DK2mQaQCe3XAUYJQ+ALfqRW0xv4s
+ 8q6xP8Y4WCWxd9RWkaP3BhjXYPqq9Fzx8mA2jwh8Ot9pbAj3bOWFK3GcJ3KGSWXYH+JPRXKGYeh/U
+ YH/5l3Jmg==;
 Received: from hch by bombadil.infradead.org with local (Exim 4.92 #3 (Red Hat
- Linux)) id 1i4lPf-00042m-Hk; Mon, 02 Sep 2019 12:26:27 +0000
-Date: Mon, 2 Sep 2019 05:26:27 -0700
+ Linux)) id 1i4lQK-000473-GM; Mon, 02 Sep 2019 12:27:08 +0000
+Date: Mon, 2 Sep 2019 05:27:08 -0700
 From: Christoph Hellwig <hch@infradead.org>
 To: Gao Xiang <hsiangkao@aol.com>
-Subject: Re: [PATCH 16/21] erofs: kill magic underscores
-Message-ID: <20190902122627.GN15931@infradead.org>
+Subject: Re: [PATCH 17/21] erofs: use a switch statement when dealing with
+ the file modes
+Message-ID: <20190902122708.GO15931@infradead.org>
 References: <20190802125347.166018-1-gaoxiang25@huawei.com>
  <20190901055130.30572-1-hsiangkao@aol.com>
- <20190901055130.30572-17-hsiangkao@aol.com>
+ <20190901055130.30572-18-hsiangkao@aol.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190901055130.30572-17-hsiangkao@aol.com>
+In-Reply-To: <20190901055130.30572-18-hsiangkao@aol.com>
 User-Agent: Mutt/1.11.4 (2019-03-13)
 X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
  bombadil.infradead.org. See http://www.infradead.org/rpr.html
@@ -81,52 +82,9 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
->  
-> -	vi->datamode = __inode_data_mapping(advise);
-> +	vi->datamode = erofs_inode_data_mapping(advise);
->  
->  	if (vi->datamode >= EROFS_INODE_LAYOUT_MAX) {
+Thanks,
 
-While you are at it can we aim for some naming consistency here?  The
-inode member is called is called datamode, the helper is called
-inode_data_mapping, and the enum uses layout?  To me data_layout seems
-most descriptive, datamode is probably ok, but mapping seems very
-misleading given that we've already overloaded that terms for multiple
-other uses.
-
-And while we are at naming choices - maybe i_format might be
-a better name for the i_advise field in the on-disk inode?
-
-> +	if (erofs_inode_version(advise) == EROFS_INODE_LAYOUT_V2) {
-
-I still need to wade through the old thread - but didn't you say this
-wasn't really a new vs old version but a compat vs full inode?  Maybe
-the names aren't that suitable either?
-
->  		struct erofs_inode_v2 *v2 = data;
->  
->  		vi->inode_isize = sizeof(struct erofs_inode_v2);
-> @@ -58,7 +58,7 @@ static int read_inode(struct inode *inode, void *data)
->  		/* total blocks for compressed files */
->  		if (erofs_inode_is_data_compressed(vi->datamode))
->  			nblks = le32_to_cpu(v2->i_u.compressed_blocks);
-> -	} else if (__inode_version(advise) == EROFS_INODE_LAYOUT_V1) {
-> +	} else if (erofs_inode_version(advise) == EROFS_INODE_LAYOUT_V1) {
-
-Also a lot of code would use a switch statements to switch for different
-matches on the same value instead of chained if/else if/else if
-statements.
-
-> +#define erofs_bitrange(x, bit, bits) (((x) >> (bit)) & ((1 << (bits)) - 1))
-
-> +#define erofs_inode_version(advise)	\
-> +	erofs_bitrange(advise, EROFS_I_VERSION_BIT, EROFS_I_VERSION_BITS)
->  
-> +#define erofs_inode_data_mapping(advise)	\
-> +	erofs_bitrange(advise, EROFS_I_DATA_MAPPING_BIT, \
-> +		       EROFS_I_DATA_MAPPING_BITS)
-
-All these should probably be inline functions.
+this looks much nicer.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
