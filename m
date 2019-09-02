@@ -2,62 +2,65 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 32DD9A55C1
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Sep 2019 14:19:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F1E2A55C9
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Sep 2019 14:20:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 36CBA84E0A;
-	Mon,  2 Sep 2019 12:19:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3DA0285FC6;
+	Mon,  2 Sep 2019 12:20:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id USwAYzUV-90d; Mon,  2 Sep 2019 12:19:35 +0000 (UTC)
+	with ESMTP id D64-EEO32K0a; Mon,  2 Sep 2019 12:20:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0EFB4810BC;
-	Mon,  2 Sep 2019 12:19:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 17AB283339;
+	Mon,  2 Sep 2019 12:20:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EF01D1BF359
- for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 12:19:32 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6EF2F1BF359
+ for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 12:20:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id EC62887D6A
- for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 12:19:32 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 6804987D75
+ for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 12:20:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3OKSBmjZLQMD for <devel@linuxdriverproject.org>;
- Mon,  2 Sep 2019 12:19:31 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga08-in.huawei.com [45.249.212.255])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C171987D36
- for <devel@driverdev.osuosl.org>; Mon,  2 Sep 2019 12:19:30 +0000 (UTC)
-Received: from DGGEMM405-HUB.china.huawei.com (unknown [172.30.72.55])
- by Forcepoint Email with ESMTP id 90FEE4A06E9169645A6E;
- Mon,  2 Sep 2019 20:19:26 +0800 (CST)
-Received: from dggeme762-chm.china.huawei.com (10.3.19.108) by
- DGGEMM405-HUB.china.huawei.com (10.3.20.213) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Mon, 2 Sep 2019 20:19:26 +0800
-Received: from architecture4 (10.140.130.215) by
- dggeme762-chm.china.huawei.com (10.3.19.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1591.10; Mon, 2 Sep 2019 20:19:25 +0800
-Date: Mon, 2 Sep 2019 20:18:34 +0800
-From: Gao Xiang <gaoxiang25@huawei.com>
-To: Christoph Hellwig <hch@infradead.org>
-Subject: Re: [PATCH 12/21] erofs: kill verbose debug info in erofs_fill_super
-Message-ID: <20190902121834.GC2664@architecture4>
+ with ESMTP id AlEQLZu0hWgk for <devel@linuxdriverproject.org>;
+ Mon,  2 Sep 2019 12:20:20 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from bombadil.infradead.org (bombadil.infradead.org
+ [198.137.202.133])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id E25B487D6E
+ for <devel@driverdev.osuosl.org>; Mon,  2 Sep 2019 12:20:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=bombadil.20170209; h=In-Reply-To:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=i5OA/qh7001EI8dEeuvEnN4yuwyVMoB29w/Q1Jv0ARc=; b=E6jprwKTuDlVOxDRxjwN01ZmY
+ Nl4A7Gq/ofd05hhiVv23gYTwweQKRIPZIjo/I4xYXs4OHbudOK+HsjZ2uBzMApSEl1lrZhbuFGGQ+
+ EMKutBgK98psJybQMiEI0ZrJsKr0oHIfsdZYxtgmHe7BE+lAyKPoO3IMoe0EXLue4OmZqYkNPnXfi
+ Ms3HTCy/ToEpSCMwZfAY2mWGr5zMZefoyJGcHZ2GUL6+pV7jiTVzh42lmUbPb5R6CD9gmf5n4tWBS
+ Pe9vcKYu7xR07oYJjzJx9/SkZmAZAKkkK0lOrdjq96nJdjapKb6/bF26m20lH8gFNH/mU0ICdaiPU
+ uCIldhptQ==;
+Received: from hch by bombadil.infradead.org with local (Exim 4.92 #3 (Red Hat
+ Linux)) id 1i4lJg-00022h-Ua; Mon, 02 Sep 2019 12:20:16 +0000
+Date: Mon, 2 Sep 2019 05:20:16 -0700
+From: Christoph Hellwig <hch@infradead.org>
+To: Gao Xiang <hsiangkao@aol.com>
+Subject: Re: [PATCH 13/21] erofs: simplify erofs_grab_bio() since bio_alloc()
+ never fail
+Message-ID: <20190902122016.GL15931@infradead.org>
 References: <20190802125347.166018-1-gaoxiang25@huawei.com>
  <20190901055130.30572-1-hsiangkao@aol.com>
- <20190901055130.30572-13-hsiangkao@aol.com>
- <20190902121424.GK15931@infradead.org>
+ <20190901055130.30572-14-hsiangkao@aol.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190902121424.GK15931@infradead.org>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Originating-IP: [10.140.130.215]
-X-ClientProxiedBy: dggeme713-chm.china.huawei.com (10.1.199.109) To
- dggeme762-chm.china.huawei.com (10.3.19.108)
-X-CFilter-Loop: Reflected
+In-Reply-To: <20190901055130.30572-14-hsiangkao@aol.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
+X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
+ bombadil.infradead.org. See http://www.infradead.org/rpr.html
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,39 +73,64 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Chao Yu <yuchao0@huawei.com>, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>, linux-fsdevel@vger.kernel.org,
- linux-erofs@lists.ozlabs.org, Chao Yu <chao@kernel.org>
+Cc: devel@driverdev.osuosl.org, Chao Yu <chao@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Chao Yu <yuchao0@huawei.com>,
+ Christoph Hellwig <hch@infradead.org>, linux-fsdevel@vger.kernel.org,
+ linux-erofs@lists.ozlabs.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Christoph,
-
-On Mon, Sep 02, 2019 at 05:14:24AM -0700, Christoph Hellwig wrote:
-> On Sun, Sep 01, 2019 at 01:51:21PM +0800, Gao Xiang wrote:
-> > From: Gao Xiang <gaoxiang25@huawei.com>
-> > 
-> > As Christoph said [1], "That is some very verbose
-> > debug info.  We usually don't add that and let
-> > people trace the function instead. "
+On Sun, Sep 01, 2019 at 01:51:22PM +0800, Gao Xiang wrote:
+> From: Gao Xiang <gaoxiang25@huawei.com>
 > 
-> Note that this applies to most of the infoln users as far as
-> I can tell.  And if you want to keep some of those I think you
-> should converted them to use pr_info directly, and also print
-> sb->s_id as a prefix before the actual message so that the user
-> knows which file system is affected.
+> As Christoph pointed out [1], "erofs_grab_bio tries to
+> handle a bio_alloc failure, except that the function will
+> not actually fail due the mempool backing it."
+> 
+> Sorry about useless code, fix it now.
 
-Thanks for your suggestion...
+A lot of file systems used to have this, it is a classic that gets
+copy and pasted everywhere.  If you feel like doing a little project
+it might make sense to check for other places that do the same.
 
-I think I will turn them into erofs_errln and etc...
-and print sb->s_id as a prefix...
+> +		bio = erofs_grab_bio(sb, blkaddr, 1, sb, read_endio);
+>  
+>  		if (bio_add_page(bio, page, PAGE_SIZE, 0) != PAGE_SIZE) {
+>  			err = -EFAULT;
+> @@ -275,13 +270,7 @@ static inline struct bio *erofs_read_raw_page(struct bio *bio,
+>  		if (nblocks > BIO_MAX_PAGES)
+>  			nblocks = BIO_MAX_PAGES;
+>  
+> -		bio = erofs_grab_bio(sb, blknr, nblocks, sb,
+> -				     read_endio, false);
+> -		if (IS_ERR(bio)) {
+> -			err = PTR_ERR(bio);
+> -			bio = NULL;
+> -			goto err_out;
+> -		}
+> +		bio = erofs_grab_bio(sb, blknr, nblocks, sb, read_endio);
 
-Thanks,
-Gao Xiang
+Btw, I think you should remove erofs_grab_bio in its current form.
+The full code in data.c is indeed used in two places, so a local
+erofs_raw_page_alloc_bio (or whatever name you prefer) helper here
+that hardcodes the sb amd read_endio argument to simplify it a bit
+makes sense.
 
+> diff --git a/fs/erofs/zdata.c b/fs/erofs/zdata.c
+> index f06a2fad7af2..abe28565d6c0 100644
+> --- a/fs/erofs/zdata.c
+> +++ b/fs/erofs/zdata.c
+> @@ -1265,7 +1265,7 @@ static bool z_erofs_vle_submit_all(struct super_block *sb,
+>  		if (!bio) {
+>  			bio = erofs_grab_bio(sb, first_index + i,
+>  					     BIO_MAX_PAGES, bi_private,
+> -					     z_erofs_vle_read_endio, true);
+> +					     z_erofs_vle_read_endio);
 
+But I think here you might as well open code it entirely, or at least
+us a separate (and local to zdata.c) helper.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
