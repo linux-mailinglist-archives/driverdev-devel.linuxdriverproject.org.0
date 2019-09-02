@@ -1,66 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AEB43A5A75
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Sep 2019 17:23:35 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 894DAA5A82
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Sep 2019 17:25:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7814F2154A;
-	Mon,  2 Sep 2019 15:23:33 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 34A6E87DA6;
+	Mon,  2 Sep 2019 15:25:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aJvnXZyTO2yO; Mon,  2 Sep 2019 15:23:32 +0000 (UTC)
+	with ESMTP id H1EhNnyIL-OH; Mon,  2 Sep 2019 15:25:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 64D9221541;
-	Mon,  2 Sep 2019 15:23:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8833887B60;
+	Mon,  2 Sep 2019 15:25:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 551F91BF32D
- for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 15:23:29 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id DA1421BF32D
+ for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 15:25:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 51686207A2
- for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 15:23:29 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D5E8C85FB4
+ for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 15:25:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ItROxymvesVg for <devel@linuxdriverproject.org>;
- Mon,  2 Sep 2019 15:23:28 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from bombadil.infradead.org (bombadil.infradead.org
- [198.137.202.133])
- by silver.osuosl.org (Postfix) with ESMTPS id A36EF203B2
- for <devel@driverdev.osuosl.org>; Mon,  2 Sep 2019 15:23:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20170209; h=In-Reply-To:Content-Type:MIME-Version
- :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=qlt1XZvn+qXgX2CBCaJ2bCzou441y9kxu8YsfHGoCq0=; b=NCN9+wvdBIRI2Pfb0QIrDqKWa
- qHDXFSl8v9/HhWPrQ/KFTTKLr9x6MilMwRmZRtlpqvUzB91OTeE0EzFNVz6N84SRzAFGVCl5mK6F1
- MMXmumOBHphfa6vwNFPuxMkpT8P8DSD8LoROBqhL7pd3u+osqxIdiFgBpAojI6n2uNpqYfbKxnZbN
- Va5jRgrOJPmLpoSDQRd/VPVHigQ1Y9H3PH56mh20OIjulyQPprs/AaysOdvi0NrqLH2RtRHmF2fuK
- AaqYeJuBeFX2e1Bv39sBrB0YpPwcbtcT29m/uZlJ4ouiXq6EHJc8s4H+48oUyuNG2VToIoIVuRjci
- ILfA9cMow==;
-Received: from hch by bombadil.infradead.org with local (Exim 4.92 #3 (Red Hat
- Linux)) id 1i4oAt-0006QV-Jw; Mon, 02 Sep 2019 15:23:23 +0000
-Date: Mon, 2 Sep 2019 08:23:23 -0700
-From: Christoph Hellwig <hch@infradead.org>
-To: Gao Xiang <gaoxiang25@huawei.com>
-Subject: Re: [PATCH 00/21] erofs: patchset addressing Christoph's comments
-Message-ID: <20190902152323.GB14009@infradead.org>
+ with ESMTP id 6L2oPvoUZCV6 for <devel@linuxdriverproject.org>;
+ Mon,  2 Sep 2019 15:25:47 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from huawei.com (szxga08-in.huawei.com [45.249.212.255])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9901985F89
+ for <devel@driverdev.osuosl.org>; Mon,  2 Sep 2019 15:25:47 +0000 (UTC)
+Received: from DGGEMM404-HUB.china.huawei.com (unknown [172.30.72.57])
+ by Forcepoint Email with ESMTP id 63347F3EFAF56709ABD5;
+ Mon,  2 Sep 2019 23:25:44 +0800 (CST)
+Received: from dggeme762-chm.china.huawei.com (10.3.19.108) by
+ DGGEMM404-HUB.china.huawei.com (10.3.20.212) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Mon, 2 Sep 2019 23:25:44 +0800
+Received: from architecture4 (10.140.130.215) by
+ dggeme762-chm.china.huawei.com (10.3.19.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1591.10; Mon, 2 Sep 2019 23:25:43 +0800
+Date: Mon, 2 Sep 2019 23:24:52 +0800
+From: Gao Xiang <gaoxiang25@huawei.com>
+To: Christoph Hellwig <hch@infradead.org>
+Subject: Re: [PATCH v6 03/24] erofs: add super block operations
+Message-ID: <20190902152451.GC179615@architecture4>
 References: <20190802125347.166018-1-gaoxiang25@huawei.com>
- <20190901055130.30572-1-hsiangkao@aol.com>
- <20190902124645.GA8369@infradead.org>
- <20190902142452.GE2664@architecture4>
+ <20190802125347.166018-4-gaoxiang25@huawei.com>
+ <20190829101545.GC20598@infradead.org>
+ <20190901085452.GA4663@hsiangkao-HP-ZHAN-66-Pro-G1>
+ <20190902125109.GA9826@infradead.org>
+ <20190902144303.GF2664@architecture4>
+ <20190902151910.GA14009@infradead.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190902142452.GE2664@architecture4>
-User-Agent: Mutt/1.11.4 (2019-03-13)
-X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
- bombadil.infradead.org. See http://www.infradead.org/rpr.html
+In-Reply-To: <20190902151910.GA14009@infradead.org>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Originating-IP: [10.140.130.215]
+X-ClientProxiedBy: dggeme710-chm.china.huawei.com (10.1.199.106) To
+ dggeme762-chm.china.huawei.com (10.3.19.108)
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,40 +73,76 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Chao Yu <yuchao0@huawei.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Christoph Hellwig <hch@infradead.org>, linux-fsdevel@vger.kernel.org,
- linux-erofs@lists.ozlabs.org, Chao Yu <chao@kernel.org>
+Cc: Jan Kara <jack@suse.cz>, Amir Goldstein <amir73il@gmail.com>,
+ Dave Chinner <david@fromorbit.com>, David Sterba <dsterba@suse.cz>,
+ Miao Xie <miaoxie@huawei.com>, devel@driverdev.osuosl.org,
+ Stephen Rothwell <sfr@canb.auug.org.au>,
+ "Darrick J . Wong" <darrick.wong@oracle.com>, Chao Yu <yuchao0@huawei.com>,
+ Alexander Viro <viro@zeniv.linux.org.uk>, Jaegeuk Kim <jaegeuk@kernel.org>,
+ Theodore Ts'o <tytso@mit.edu>, Pavel Machek <pavel@denx.de>,
+ Linus Torvalds <torvalds@linux-foundation.org>,
+ LKML <linux-kernel@vger.kernel.org>, Li Guifu <bluce.liguifu@huawei.com>,
+ Fang Wei <fangwei1@huawei.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-fsdevel@vger.kernel.org,
+ Andrew Morton <akpm@linux-foundation.org>, linux-erofs@lists.ozlabs.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Sep 02, 2019 at 10:24:52PM +0800, Gao Xiang wrote:
-> > code quality stuff.  We're not addressing the issues with large amounts
-> > of functionality duplicating VFS helpers.
+Hi Christoph,
+
+On Mon, Sep 02, 2019 at 08:19:10AM -0700, Christoph Hellwig wrote:
+> On Mon, Sep 02, 2019 at 10:43:04PM +0800, Gao Xiang wrote:
+> > Hi Christoph,
+> > > > ...
+> > > >  24         __le32 features;        /* (aka. feature_compat) */
+> > > > ...
+> > > >  38         __le32 requirements;    /* (aka. feature_incompat) */
+> > > > ...
+> > > >  41 };
+> > > 
+> > > This is only cosmetic, why not stick to feature_compat and
+> > > feature_incompat?
+> > 
+> > Okay, will fix. (however, in my mind, I'm some confused why
+> > "features" could be incompatible...)
 > 
-> You means killing erofs_get_meta_page or avoid erofs_read_raw_page?
+> The feature is incompatible if it requires changes to the driver.
+> An easy to understand historic example is that ext3 originally did not
+> have the file types in the directory entry.  Adding them means old
+> file system drivers can not read a file system with this new feature,
+> so an incompat flag has to be added.
+
+Got it.
+
 > 
->  - For killing erofs_get_meta_page, here is the current erofs_get_meta_page:
+> > > > > > +	memcpy(&sb->s_uuid, layout->uuid, sizeof(layout->uuid));
+> > > > > > +	memcpy(sbi->volume_name, layout->volume_name,
+> > > > > > +	       sizeof(layout->volume_name));
+> > > > > 
+> > > > > s_uuid should preferably be a uuid_t (assuming it is a real BE uuid,
+> > > > > if it is le it should be a guid_t).
+> > > > 
+> > > > For this case, I have no idea how to deal with...
+> > > > I have little knowledge about this uuid stuff, so I just copied
+> > > > from f2fs... (Could be no urgent of this field...)
+> > > 
+> > > Who fills out this field in the on-disk format and how?
+> > 
+> > mkfs.erofs, but this field leaves 0 for now. Is that reasonable?
+> > (using libuuid can generate it easily...)
+> 
+> If the filed is always zero for now please don't fill it out.  If you
+> decide it is worth adding the uuid eventually please add a compat
+> feature flag that you have a valid uuid and only fill out the field
+> if the file system actualy has a valid uuid.
 
-> I think it is simple enough. read_cache_page need write a similar
-> filler, or read_cache_page_gfp will call .readpage, and then
-> introduce buffer_heads, that is what I'd like to avoid now (no need these
-> bd_inode buffer_heads in memory...)
+Okay. Will do that then (as a note here).
 
-If using read_cache_page_gfp and ->readpage works, please do.  The
-fact that the block device inode uses buffer heads is an implementation
-detail that might not last very long and should be invisible to you.
-It also means you can get rid of a lot of code that you don't have
-to maintain and others don't have to update for global API changes.
+Thanks,
+Gao Xiang
 
->  - For erofs_read_raw_page, it can be avoided after iomap tail-end packing
->    feature is done... If we remove it now, it will make EROFS broken.
->    It is no urgent and Chao will focus on iomap tail-end packing feature.
-
-Ok.  I wish we would have just sorted this out beforehand, which we
-could have trivially done without all that staging mess.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
