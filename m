@@ -1,68 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8F3B3A5209
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Sep 2019 10:43:12 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8DA5CA52E9
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Sep 2019 11:36:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 956D886406;
-	Mon,  2 Sep 2019 08:43:10 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1397B20768;
+	Mon,  2 Sep 2019 09:36:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id g6rdud1kXxa2; Mon,  2 Sep 2019 08:43:10 +0000 (UTC)
+	with ESMTP id bLI9C2Z1naM2; Mon,  2 Sep 2019 09:36:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 82D79862E8;
-	Mon,  2 Sep 2019 08:43:09 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3413320535;
+	Mon,  2 Sep 2019 09:36:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1782B1BF5E9
- for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 08:43:08 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 44DD41BF23C
+ for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 09:36:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 11DDB862ED
- for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 08:43:08 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3FD1085D8F
+ for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 09:36:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id P9p4ubDkg47J for <devel@linuxdriverproject.org>;
- Mon,  2 Sep 2019 08:43:06 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from atrey.karlin.mff.cuni.cz (atrey.karlin.mff.cuni.cz
- [195.113.26.193])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B59B4862E8
- for <devel@driverdev.osuosl.org>; Mon,  2 Sep 2019 08:43:06 +0000 (UTC)
-Received: by atrey.karlin.mff.cuni.cz (Postfix, from userid 512)
- id ACB57809D3; Mon,  2 Sep 2019 10:42:50 +0200 (CEST)
-Date: Mon, 2 Sep 2019 10:43:03 +0200
-From: Pavel Machek <pavel@denx.de>
-To: dsterba@suse.cz, Joe Perches <joe@perches.com>,
- Gao Xiang <gaoxiang25@huawei.com>, Christoph Hellwig <hch@infradead.org>,
- Alexander Viro <viro@zeniv.linux.org.uk>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Andrew Morton <akpm@linux-foundation.org>,
- Stephen Rothwell <sfr@canb.auug.org.au>,
- Theodore Ts'o <tytso@mit.edu>, Pavel Machek <pavel@denx.de>,
- Amir Goldstein <amir73il@gmail.com>,
- "Darrick J . Wong" <darrick.wong@oracle.com>,
- Dave Chinner <david@fromorbit.com>,
- Jaegeuk Kim <jaegeuk@kernel.org>, Jan Kara <jack@suse.cz>,
- Linus Torvalds <torvalds@linux-foundation.org>,
- linux-fsdevel@vger.kernel.org, devel@driverdev.osuosl.org,
- LKML <linux-kernel@vger.kernel.org>, linux-erofs@lists.ozlabs.org,
- Chao Yu <yuchao0@huawei.com>, Miao Xie <miaoxie@huawei.com>,
- Li Guifu <bluce.liguifu@huawei.com>, Fang Wei <fangwei1@huawei.com>
-Subject: Re: [PATCH v6 01/24] erofs: add on-disk layout
-Message-ID: <20190902084303.GC19557@amd>
-References: <20190802125347.166018-1-gaoxiang25@huawei.com>
- <20190802125347.166018-2-gaoxiang25@huawei.com>
- <20190829095954.GB20598@infradead.org>
- <20190829103252.GA64893@architecture4>
- <67d6efbbc9ac6db23215660cb970b7ef29dc0c1d.camel@perches.com>
- <20190830120714.GN2752@twin.jikos.cz>
+ with ESMTP id qx2AkRItZFX4 for <devel@linuxdriverproject.org>;
+ Mon,  2 Sep 2019 09:36:32 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
+ [209.85.221.66])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 869C685D6F
+ for <devel@driverdev.osuosl.org>; Mon,  2 Sep 2019 09:36:32 +0000 (UTC)
+Received: by mail-wr1-f66.google.com with SMTP id c3so13272481wrd.7
+ for <devel@driverdev.osuosl.org>; Mon, 02 Sep 2019 02:36:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=references:user-agent:from:to:cc:subject:in-reply-to:date
+ :message-id:mime-version;
+ bh=7S+vZhVc5zHeiLc/DC6Z2xOOWxBDBUvpp/e3pBI1NHw=;
+ b=SdLltcIqfSTbhoDBqB0JMt9oUEV92Oj/pOU/Ob14cQsQPj+tVBpl3Rr/9U2efcxzSw
+ G8V7L49e6FUh7X+XY0Pg/NAWU3hPUVh0bflsweMM8+44JIlZC41qyHKccjz9hEOHtKhY
+ /QRuBI2cRf2dQ7DB1g4J4239lW7vLw2cgwLL1JxWT7n/w6icES8esjSDU3uL6EVcGoSN
+ i+6J3BjMyq3zpw/INszfY/hWVYhfXhS323KJNFt4RJY0spsQRPWWQys/InPvU+ohDXba
+ m9DYKI8EqZolY7g8hH/XWLgJB1E0iNyLz/UxqPT+3QFN1mecQQkw6V9VJz79skA3pCjJ
+ 44IA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:references:user-agent:from:to:cc:subject
+ :in-reply-to:date:message-id:mime-version;
+ bh=7S+vZhVc5zHeiLc/DC6Z2xOOWxBDBUvpp/e3pBI1NHw=;
+ b=hjzrdS7cG5BcCOjqeIb++/oHilWkCmn4MjkR8g75Xti2hFDqIQ2TFUPNSpxual75tR
+ mVsih89ELDfkOTcFUi69wRKgeK/F7lJboXsTzIqvmM584eBIKSj0M0VZ5y/9ihsql2X/
+ 7lbJr8o8B6D6+tl6Tkw7RE4XpNsBUs3oQRgGuDyXX1Dfi2GGxtf8Fnb04ISpsAkGUlxT
+ hBXUemCDXWOGw0IyyqQ7keiIFknZdgqUmdn34OOWgW4jbSK08jTVjT87SqF9pJksQN+E
+ 6HMaUs5Y/zYwQnN9Uvb9ruJbT7UCSOrMSPoUsjWSFDB2dIBX6P6aWKyDGBXEWGJCYbdN
+ lbKw==
+X-Gm-Message-State: APjAAAWwj0gH9jaVYBlvgwq+pX93Flu56Ium9wWKqT6MQIFiAIt9jmCg
+ EptUFal7r5Bmcuh+74BEARw=
+X-Google-Smtp-Source: APXvYqwnZx3UsFw9tXhL1LKY1pc0SI7+G9To5dGcweMEWFrJ8hdLdd2oaTaKuKhIo7cilHZxWPmycw==
+X-Received: by 2002:adf:d187:: with SMTP id v7mr36485204wrc.33.1567416990962; 
+ Mon, 02 Sep 2019 02:36:30 -0700 (PDT)
+Received: from arch-late (87-196-73-69.net.novis.pt. [87.196.73.69])
+ by smtp.gmail.com with ESMTPSA id r6sm14586137wmf.0.2019.09.02.02.36.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 02 Sep 2019 02:36:28 -0700 (PDT)
+References: <20190805233505.21167-1-slongerbeam@gmail.com>
+ <20190805233505.21167-15-slongerbeam@gmail.com>
+User-agent: mu4e 1.2.0; emacs 27.0.50
+From: Rui Miguel Silva <rmfrfs@gmail.com>
+To: Steve Longerbeam <slongerbeam@gmail.com>
+Subject: Re: [PATCH 14/22] media: imx7-mipi-csis: Create media links in bound
+ notifier
+In-reply-to: <20190805233505.21167-15-slongerbeam@gmail.com>
+Date: Mon, 02 Sep 2019 10:36:20 +0100
+Message-ID: <m3d0gj59bf.fsf@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20190830120714.GN2752@twin.jikos.cz>
-User-Agent: Mutt/1.5.23 (2014-03-12)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,76 +87,107 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6818822895076290137=="
+Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ open list <linux-kernel@vger.kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+Hi Steve,
+Just to let you know that this series no longer apply clean after
+your other series:
+media: imx: Fix subdev unregister/register issues
 
---===============6818822895076290137==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="lMM8JwqTlfDpEaS6"
-Content-Disposition: inline
+And since you will need to send a new one, some notes...
 
+On Tue 06 Aug 2019 at 00:34, Steve Longerbeam wrote:
+> Implement a notifier bound op to register media links from the remote
+> sub-device's source pad(s) to the mipi csi-2 receiver sink pad.
+>
+> Signed-off-by: Steve Longerbeam <slongerbeam@gmail.com>
+> ---
+>  drivers/staging/media/imx/imx7-mipi-csis.c | 25 ++++++++++++++++++++++
+>  1 file changed, 25 insertions(+)
+>
+> diff --git a/drivers/staging/media/imx/imx7-mipi-csis.c b/drivers/staging/media/imx/imx7-mipi-csis.c
+> index f71d9183cad2..e03b2317a1ac 100644
+> --- a/drivers/staging/media/imx/imx7-mipi-csis.c
+> +++ b/drivers/staging/media/imx/imx7-mipi-csis.c
+> @@ -259,6 +259,12 @@ struct csi_state {
+>  	bool sink_linked;
+>  };
+>
+> +static inline struct csi_state *
+> +notifier_to_csis_state(struct v4l2_async_notifier *n)
+>
 
---lMM8JwqTlfDpEaS6
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+instead of adding this between structs declaration can you move it
+down near the similar converter:
 
-Hi!
+static struct csi_state *mipi_sd_to_csis_state(struct v4l2_subdev *sdev)
 
-> > > Rather than they didn't run "gdb" or "pahole" and change it by mistak=
-e.
-> >=20
-> > I think Christoph is not right here.
-> >=20
-> > Using external tools for validation is extra work
-> > when necessary for understanding the code.
->=20
-> The advantage of using the external tools that the information about
-> offsets is provably correct ...
+and remove the inline since the compiler should do this and add
+namespacing function name like the other functions, something like:
 
-No. gdb tells you what the actual offsets _are_.
+static struct csi_state * mipi_notifier_to_csis_state(struct v4l2_async_notifier *n)
 
-> > The expected offset is somewhat valuable, but
-> > perhaps the form is a bit off given the visual
-> > run-in to the field types.
-> >=20
-> > The extra work with this form is manipulating all
-> > the offsets whenever a structure change occurs.
->=20
-> ... while this is error prone.
+Just to coherency.
 
-While the comment tells you what they _should be_.
+Other than this, looks good to me.
 
-								Pavel
---=20
-DENX Software Engineering GmbH,      Managing Director: Wolfgang Denk
-HRB 165235 Munich, Office: Kirchenstr.5, D-82194 Groebenzell, Germany
+Cheers,
+   Rui
 
---lMM8JwqTlfDpEaS6
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iEYEARECAAYFAl1s1hcACgkQMOfwapXb+vLwegCgmC1y9HxKZu/YFm0T4U+rH5ko
-oJcAni3phOqqriczOS1slpVzLy+HY7Nv
-=pnr4
------END PGP SIGNATURE-----
-
---lMM8JwqTlfDpEaS6--
-
---===============6818822895076290137==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> +{
+> +	return container_of(n, struct csi_state, notifier);
+> +}
+> +
+>  struct csis_pix_format {
+>  	unsigned int pix_width_alignment;
+>  	u32 code;
+> @@ -863,6 +869,23 @@ static int mipi_csis_parse_endpoint(struct device *dev,
+>  	return 0;
+>  }
+>
+> +static int mipi_csis_notify_bound(struct v4l2_async_notifier *notifier,
+> +				  struct v4l2_subdev *sd,
+> +				  struct v4l2_async_subdev *asd)
+> +{
+> +	struct csi_state *state = notifier_to_csis_state(notifier);
+> +	struct media_pad *sink = &state->mipi_sd.entity.pads[CSIS_PAD_SINK];
+> +
+> +	return media_create_fwnode_pad_links(sink,
+> +					     dev_fwnode(state->mipi_sd.dev),
+> +					     &sd->entity,
+> +					     dev_fwnode(sd->dev), 0);
+> +}
+> +
+> +static const struct v4l2_async_notifier_operations mipi_csis_notify_ops = {
+> +	.bound = mipi_csis_notify_bound,
+> +};
+> +
+>  static int mipi_csis_subdev_init(struct v4l2_subdev *mipi_sd,
+>  				 struct platform_device *pdev,
+>  				 const struct v4l2_subdev_ops *ops)
+> @@ -895,6 +918,8 @@ static int mipi_csis_subdev_init(struct v4l2_subdev *mipi_sd,
+>
+>  	v4l2_async_notifier_init(&state->notifier);
+>
+> +	state->notifier.ops = &mipi_csis_notify_ops;
+> +
+>  	ret = v4l2_async_register_fwnode_subdev(mipi_sd, &state->notifier,
+>  						sizeof(struct v4l2_async_subdev),
+>  						&sink_port, 1,
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============6818822895076290137==--
