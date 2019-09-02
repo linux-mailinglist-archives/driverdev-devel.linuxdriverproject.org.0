@@ -1,62 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF1FFA5582
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Sep 2019 14:05:15 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 12A9AA5586
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Sep 2019 14:05:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3237987D63;
-	Mon,  2 Sep 2019 12:05:14 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0BCCE8666F;
+	Mon,  2 Sep 2019 12:05:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VX++wOxqU++G; Mon,  2 Sep 2019 12:05:14 +0000 (UTC)
+	with ESMTP id 4cgJK6URzcyi; Mon,  2 Sep 2019 12:05:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A5ABC87D14;
-	Mon,  2 Sep 2019 12:05:13 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A3621865C4;
+	Mon,  2 Sep 2019 12:05:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2427E1BF359
- for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 12:05:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B9E911BF359
+ for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 12:05:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2088787D14
- for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 12:05:12 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id B749887CFB
+ for <devel@linuxdriverproject.org>; Mon,  2 Sep 2019 12:05:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Y7Z4r2gZqEQh for <devel@linuxdriverproject.org>;
- Mon,  2 Sep 2019 12:05:11 +0000 (UTC)
+ with ESMTP id GITz929wJYYY for <devel@linuxdriverproject.org>;
+ Mon,  2 Sep 2019 12:05:53 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from bombadil.infradead.org (bombadil.infradead.org
  [198.137.202.133])
- by hemlock.osuosl.org (Postfix) with ESMTPS id F26E287CCB
- for <devel@driverdev.osuosl.org>; Mon,  2 Sep 2019 12:05:10 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 5D29B87CCB
+ for <devel@driverdev.osuosl.org>; Mon,  2 Sep 2019 12:05:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20170209; h=In-Reply-To:Content-Type:MIME-Version
  :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
  Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
  List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=dXWn+A1sRVmLUbQptxdzKnlErfLZaZwQz+KmzxIMlqo=; b=ZVO1F7QzZBrYhEdlDfaPu/614
- Up2AY3++ZwAyAntG+H9TvQbOTgcy3JcptjyZ2ryyl/hUt6AKn0NT5Xz5mYzZ70XpTW/iHhvcUTmHc
- t3bn/TGFNFvWvxKr6LbT9otMNtpkpcXwAC1+QPR1vEPC3QX1xvRwI3KcsXaTOkEUpN8FmWtpqNkWa
- DwaGeoWZawwEevWM7GVpEoZqelTtbZUtxGjYLsIyMAiCyqHjwq3bHr0ibA1Lei3B92HwYhOyewSGE
- h8cs9XIl0Yaqc1eMMS+Uv6bgSeK+YGSDsv4SdeB6bP9Poy7IbylUI4oMFxKR/Gl+MubAhQhtchtEx
- vZI/eB9QA==;
+ bh=rQBNmZ3r7tPYZ93qcdgzs9aT3ulfgxUExQ/2KE/PgFY=; b=TTaKIim1bhF1mLqocBrdBlH85
+ 8sJEL9o/uIe3NswXx32FNw7orE6U35jhrCh6sKd2DBNdat+AXAON5TRrFb+KuxHVqrpOG/xPmLgZs
+ tYTVBj16cMNmFbCXUpVfkgAXmoJVqikEKnhkVgXzufH7+RRgECy7TvQ7BtSQiCllCIbBDpFgWO6Ga
+ UpLklxlrYvFyjCFfvqjYUDl0MNEGMbf2VASynnkfV2PLD3mrLYFZY1Pi4UsguCMW69cUtuJ0CbY5L
+ mrrAOEjySYvNc6lJitTAD3pije93p6JhN8g570szEXj+Ehs+eLTSKX+G6uWyoq6iRWyp51Y3XfJWa
+ NprfvUrGQ==;
 Received: from hch by bombadil.infradead.org with local (Exim 4.92 #3 (Red Hat
- Linux)) id 1i4l50-0005Ed-VM; Mon, 02 Sep 2019 12:05:06 +0000
-Date: Mon, 2 Sep 2019 05:05:06 -0700
+ Linux)) id 1i4l5g-0005RV-BO; Mon, 02 Sep 2019 12:05:48 +0000
+Date: Mon, 2 Sep 2019 05:05:48 -0700
 From: Christoph Hellwig <hch@infradead.org>
 To: Gao Xiang <hsiangkao@aol.com>
-Subject: Re: [PATCH 01/21] erofs: remove all the byte offset comments
-Message-ID: <20190902120506.GA15931@infradead.org>
+Subject: Re: [PATCH 02/21] erofs: on-disk format should have explicitly
+ assigned numbers
+Message-ID: <20190902120548.GB15931@infradead.org>
 References: <20190802125347.166018-1-gaoxiang25@huawei.com>
  <20190901055130.30572-1-hsiangkao@aol.com>
- <20190901055130.30572-2-hsiangkao@aol.com>
+ <20190901055130.30572-3-hsiangkao@aol.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190901055130.30572-2-hsiangkao@aol.com>
+In-Reply-To: <20190901055130.30572-3-hsiangkao@aol.com>
 User-Agent: Mutt/1.11.4 (2019-03-13)
 X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
  bombadil.infradead.org. See http://www.infradead.org/rpr.html
@@ -81,15 +82,30 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Sep 01, 2019 at 01:51:10PM +0800, Gao Xiang wrote:
-> From: Gao Xiang <gaoxiang25@huawei.com>
-> 
-> As Christoph suggested [1], "Please remove all the byte offset comments.
-> that is something that can easily be checked with gdb or pahole."
+On Sun, Sep 01, 2019 at 01:51:11PM +0800, Gao Xiang wrote:
+>  enum {
+> -	EROFS_INODE_FLAT_PLAIN,
+> -	EROFS_INODE_FLAT_COMPRESSION_LEGACY,
+> -	EROFS_INODE_FLAT_INLINE,
+> -	EROFS_INODE_FLAT_COMPRESSION,
+> +	EROFS_INODE_FLAT_PLAIN			= 0,
+> +	EROFS_INODE_FLAT_COMPRESSION_LEGACY	= 1,
+> +	EROFS_INODE_FLAT_INLINE			= 2,
+> +	EROFS_INODE_FLAT_COMPRESSION		= 3,
+>  	EROFS_INODE_LAYOUT_MAX
+>  };
+>  
+> @@ -184,7 +184,7 @@ struct erofs_xattr_entry {
+>  
+>  /* available compression algorithm types */
+>  enum {
+> -	Z_EROFS_COMPRESSION_LZ4,
+> +	Z_EROFS_COMPRESSION_LZ4	= 0,
+>  	Z_EROFS_COMPRESSION_MAX
+>  };
 
-Looks good.  If you want to keep them after the field names as someone
-pointed out feel free to - I don't think it actually is very useful
-but we've also heard other opinions.
+This all looks ok - it somtimes also helps to have a comment near
+the numbers to indicate where they are stored, must that isn't a must.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
