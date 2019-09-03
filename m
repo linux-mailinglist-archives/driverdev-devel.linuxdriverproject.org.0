@@ -1,59 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 22481A629C
-	for <lists+driverdev-devel@lfdr.de>; Tue,  3 Sep 2019 09:35:32 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C5363883F0;
-	Tue,  3 Sep 2019 07:35:30 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xVUjjunjZf0E; Tue,  3 Sep 2019 07:35:30 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 15C4E883CC;
-	Tue,  3 Sep 2019 07:35:30 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6A1ED1BF332
- for <devel@linuxdriverproject.org>; Tue,  3 Sep 2019 07:35:27 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id B1593A63B7
+	for <lists+driverdev-devel@lfdr.de>; Tue,  3 Sep 2019 10:18:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6457A81E4D
- for <devel@linuxdriverproject.org>; Tue,  3 Sep 2019 07:35:27 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DCDF8864F2;
+	Tue,  3 Sep 2019 08:18:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id F9JGacHYbbZb; Tue,  3 Sep 2019 08:18:51 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9D01B864EA;
+	Tue,  3 Sep 2019 08:18:49 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 82AC91BF2A9
+ for <devel@linuxdriverproject.org>; Tue,  3 Sep 2019 08:18:47 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7FA60883AD
+ for <devel@linuxdriverproject.org>; Tue,  3 Sep 2019 08:18:47 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Q4-ENQ3NRJBD for <devel@linuxdriverproject.org>;
- Tue,  3 Sep 2019 07:35:27 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 120D081A2D
- for <devel@driverdev.osuosl.org>; Tue,  3 Sep 2019 07:35:27 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6E69022CF8;
- Tue,  3 Sep 2019 07:35:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1567496126;
- bh=g/tGl9iVFuPLvexhXY0vB0nltXebd6VJ1xSVyJPY2HY=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=M3ejSkoP+yquxFEF3viM+aBqK/yI4qmLZSzekWST6NVNnwvJ+m1jNyIIuI9vmrPCP
- NeigJMrlsTca7Kda1n7bvVSi0G/CbWHBvMZ1d4yX8+DliYSsqncfJgGWQEmNe29pmk
- RePsJGb8bW9P6uFiXgnXryTIcoktlVrnsaO7D6So=
-Date: Tue, 3 Sep 2019 09:35:24 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Prakhar Sinha <prakharsinha2808@gmail.com>
-Subject: Re: [PATCH] staging: rts5208: Fixed checkpatch warning.
-Message-ID: <20190903073524.GB21543@kroah.com>
-References: <20190831074055.GA10177@MeraComputer>
+ with ESMTP id XQDccSINZp6l for <devel@linuxdriverproject.org>;
+ Tue,  3 Sep 2019 08:18:46 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from huawei.com (szxga03-in.huawei.com [45.249.212.189])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id B476A883AC
+ for <devel@driverdev.osuosl.org>; Tue,  3 Sep 2019 08:18:45 +0000 (UTC)
+Received: from DGGEMM403-HUB.china.huawei.com (unknown [172.30.72.53])
+ by Forcepoint Email with ESMTP id 6E25654F8C19C09BEE56;
+ Tue,  3 Sep 2019 16:18:42 +0800 (CST)
+Received: from dggeme762-chm.china.huawei.com (10.3.19.108) by
+ DGGEMM403-HUB.china.huawei.com (10.3.20.211) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Tue, 3 Sep 2019 16:18:41 +0800
+Received: from architecture4 (10.140.130.215) by
+ dggeme762-chm.china.huawei.com (10.3.19.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1591.10; Tue, 3 Sep 2019 16:18:41 +0800
+Date: Tue, 3 Sep 2019 16:17:49 +0800
+From: Gao Xiang <gaoxiang25@huawei.com>
+To: Christoph Hellwig <hch@infradead.org>
+Subject: Re: [PATCH 00/21] erofs: patchset addressing Christoph's comments
+Message-ID: <20190903081749.GA89379@architecture4>
+References: <20190802125347.166018-1-gaoxiang25@huawei.com>
+ <20190901055130.30572-1-hsiangkao@aol.com>
+ <20190902124645.GA8369@infradead.org>
+ <20190902142452.GE2664@architecture4>
+ <20190902152323.GB14009@infradead.org>
+ <20190902155037.GD179615@architecture4>
+ <20190903065803.GA11205@infradead.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190831074055.GA10177@MeraComputer>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+In-Reply-To: <20190903065803.GA11205@infradead.org>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Originating-IP: [10.140.130.215]
+X-ClientProxiedBy: dggeme701-chm.china.huawei.com (10.1.199.97) To
+ dggeme762-chm.china.huawei.com (10.3.19.108)
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,44 +73,189 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, sabrina-gaube@web.de,
- linux-kernel@vger.kernel.org, nishkadg.linux@gmail.com, pakki001@umn.edu,
- tobias.niessen@stud.uni-hannover.de, kim.jamie.bradley@gmail.com,
- qader.aymen@gmail.com
+Cc: devel@driverdev.osuosl.org, Chao Yu <yuchao0@huawei.com>, Greg
+ Kroah-Hartman <gregkh@linuxfoundation.org>, linux-fsdevel@vger.kernel.org,
+ linux-erofs@lists.ozlabs.org, Chao Yu <chao@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, Aug 31, 2019 at 01:10:55PM +0530, Prakhar Sinha wrote:
-> This patch solves the following checkpatch.pl's messages in
-> drivers/staging/rts5208/sd.c
-> 
-> WARNING: line over 80 characters
-> 4517: FILE: drivers/staging/rts5208/sd.c:4517:
-> +                                               sd_card->sd_lock_status &=
-> ~(SD_UNLOCK_POW_ON | SD_SDR_RST);
-> 
-> WARNING: line over 80 characters
-> 4518: FILE: drivers/staging/rts5208/sd.c:4518:
-> +                                               goto
-> sd_execute_write_cmd_failed;
-> 
-> WARNING: line over 80 characters
-> 4522: FILE: drivers/staging/rts5208/sd.c:4522:
-> +                               sd_card->sd_lock_status &= ~(SD_UNLOCK_POW_ON |
-> SD_SDR_RST);
-> 
-> Signed-off-by: Prakhar Sinha <prakharsinha2808@gmail.com>
-> ---
->  drivers/staging/rts5208/sd.c | 26 ++++++++++++--------------
->  1 file changed, 12 insertions(+), 14 deletions(-)
+Hi Christoph,
 
-Same subject line as your previous patch, please fix it up to be unique.
+On Mon, Sep 02, 2019 at 11:58:03PM -0700, Christoph Hellwig wrote:
+> On Mon, Sep 02, 2019 at 11:50:38PM +0800, Gao Xiang wrote:
+> > > > You means killing erofs_get_meta_page or avoid erofs_read_raw_page?
+> > > > 
+> > > >  - For killing erofs_get_meta_page, here is the current erofs_get_meta_page:
+> > > 
+> > > > I think it is simple enough. read_cache_page need write a similar
+> > > > filler, or read_cache_page_gfp will call .readpage, and then
+> > > > introduce buffer_heads, that is what I'd like to avoid now (no need these
+> > > > bd_inode buffer_heads in memory...)
+> > > 
+> > > If using read_cache_page_gfp and ->readpage works, please do.  The
+> > > fact that the block device inode uses buffer heads is an implementation
+> > > detail that might not last very long and should be invisible to you.
+> > > It also means you can get rid of a lot of code that you don't have
+> > > to maintain and others don't have to update for global API changes.
+> > 
+> > I care about those useless buffer_heads in memory for our products...
+> > 
+> > Since we are nobh filesystem (a little request, could I use it
+> > after buffer_heads are fully avoided, I have no idea why I need
+> > those buffer_heads in memory.... But I think bd_inode is good
+> > for caching metadata...)
+> 
+> Then please use read_cache_page with iomap_readpage(s), and write
+> comment explaining why your are not using read_cache_page_gfp.
 
-thanks,
+I implement a prelimitary version, but I have no idea it is a really
+cleanup for now.
 
-greg k-h
+From 001e3e64c81e4ced0d22b147e6abf90060e704b5 Mon Sep 17 00:00:00 2001
+From: Gao Xiang <gaoxiang25@huawei.com>
+Date: Tue, 3 Sep 2019 16:13:00 +0800
+Subject: [PATCH] erofs: use iomap_readpage for erofs_get_meta_page
+
+Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
+---
+ fs/erofs/Kconfig |  1 +
+ fs/erofs/data.c  | 91 ++++++++++++++++++++++++++----------------------
+ 2 files changed, 51 insertions(+), 41 deletions(-)
+
+diff --git a/fs/erofs/Kconfig b/fs/erofs/Kconfig
+index 9d634d3a1845..c9eeb0bf4737 100644
+--- a/fs/erofs/Kconfig
++++ b/fs/erofs/Kconfig
+@@ -3,6 +3,7 @@
+ config EROFS_FS
+ 	tristate "EROFS filesystem support"
+ 	depends on BLOCK
++	select FS_IOMAP
+ 	help
+ 	  EROFS (Enhanced Read-Only File System) is a lightweight
+ 	  read-only file system with modern designs (eg. page-sized
+diff --git a/fs/erofs/data.c b/fs/erofs/data.c
+index 3881c0689134..34c6e05fab71 100644
+--- a/fs/erofs/data.c
++++ b/fs/erofs/data.c
+@@ -5,6 +5,9 @@
+  * Created by Gao Xiang <gaoxiang25@huawei.com>
+  */
+ #include "internal.h"
++#include <linux/iomap.h>
++#include <linux/mpage.h>
++#include <linux/sched/mm.h>
+ #include <linux/prefetch.h>
+ 
+ #include <trace/events/erofs.h>
+@@ -51,54 +54,60 @@ static struct bio *erofs_grab_raw_bio(struct super_block *sb,
+ 	return bio;
+ }
+ 
+-struct page *erofs_get_meta_page(struct super_block *sb, erofs_blk_t blkaddr)
++static int erofs_meta_iomap_begin(struct inode *inode, loff_t pos,
++				  loff_t length, unsigned int flags,
++				  struct iomap *iomap)
+ {
+-	struct inode *const bd_inode = sb->s_bdev->bd_inode;
+-	struct address_space *const mapping = bd_inode->i_mapping;
+-	/* prefer retrying in the allocator to blindly looping below */
+-	const gfp_t gfp = mapping_gfp_constraint(mapping, ~__GFP_FS);
+-	struct page *page;
+-	int err;
+-
+-repeat:
+-	page = find_or_create_page(mapping, blkaddr, gfp);
+-	if (!page)
+-		return ERR_PTR(-ENOMEM);
+-
+-	DBG_BUGON(!PageLocked(page));
+-
+-	if (!PageUptodate(page)) {
+-		struct bio *bio;
++	const unsigned int blkbits = inode->i_blkbits;
++
++	iomap->flags = 0;
++	iomap->bdev = I_BDEV(inode);
++	iomap->offset = round_down(pos, 1 << blkbits);
++	iomap->addr = iomap->offset;
++	iomap->length = round_up(length, 1 << blkbits);
++	iomap->type = IOMAP_MAPPED;
++	return 0;
++}
+ 
+-		bio = erofs_grab_raw_bio(sb, blkaddr, 1, true);
++static const struct iomap_ops erofs_meta_iomap_ops = {
++	.iomap_begin = erofs_meta_iomap_begin,
++};
+ 
+-		if (bio_add_page(bio, page, PAGE_SIZE, 0) != PAGE_SIZE) {
+-			err = -EFAULT;
+-			goto err_out;
+-		}
++static int
++erofs_meta_get_block(struct inode *inode, sector_t iblock,
++		     struct buffer_head *bh, int create)
++{
++	bh->b_bdev = I_BDEV(inode);
++	bh->b_blocknr = iblock;
++	set_buffer_mapped(bh);
++	return 0;
++}
+ 
+-		submit_bio(bio);
+-		lock_page(page);
++static int erofs_read_meta_page(void *file, struct page *page)
++{
++	/* in case of getting some pages with buffer_heads */
++	if (i_blocksize(page->mapping->host) == PAGE_SIZE &&
++	    !page_has_buffers(page))
++		return iomap_readpage(page, &erofs_meta_iomap_ops);
++
++	/*
++	 * cannot use blkdev_readpage or blkdev_get_block directly
++	 * since static in block_dev.c
++	 */
++	return mpage_readpage(page, erofs_meta_get_block);
++}
+ 
+-		/* this page has been truncated by others */
+-		if (page->mapping != mapping) {
+-			unlock_page(page);
+-			put_page(page);
+-			goto repeat;
+-		}
++struct page *erofs_get_meta_page(struct super_block *sb, erofs_blk_t blkaddr)
++{
++	struct inode *const bd_inode = sb->s_bdev->bd_inode;
++	struct address_space *const mapping = bd_inode->i_mapping;
++	unsigned int nofs_flag;
++	struct page *page;
+ 
+-		/* more likely a read error */
+-		if (!PageUptodate(page)) {
+-			err = -EIO;
+-			goto err_out;
+-		}
+-	}
++	nofs_flag = memalloc_nofs_save();
++	page = read_cache_page(mapping, blkaddr, erofs_read_meta_page, NULL);
++	memalloc_nofs_restore(nofs_flag);
+ 	return page;
+-
+-err_out:
+-	unlock_page(page);
+-	put_page(page);
+-	return ERR_PTR(err);
+ }
+ 
+ static int erofs_map_blocks_flatmode(struct inode *inode,
+-- 
+2.17.1
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
