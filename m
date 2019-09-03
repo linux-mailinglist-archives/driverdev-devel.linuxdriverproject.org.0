@@ -1,79 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DFE34A609D
-	for <lists+driverdev-devel@lfdr.de>; Tue,  3 Sep 2019 07:32:01 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D533AA6179
+	for <lists+driverdev-devel@lfdr.de>; Tue,  3 Sep 2019 08:31:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4F19488252;
-	Tue,  3 Sep 2019 05:32:00 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8C185875BF;
+	Tue,  3 Sep 2019 06:31:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EhLYtMw8-TGX; Tue,  3 Sep 2019 05:32:00 +0000 (UTC)
+	with ESMTP id BP3zaKx1fxFh; Tue,  3 Sep 2019 06:31:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BBA3E87AF3;
-	Tue,  3 Sep 2019 05:31:59 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 29D8C875A0;
+	Tue,  3 Sep 2019 06:31:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6BDD11BF38D
- for <devel@linuxdriverproject.org>; Tue,  3 Sep 2019 05:31:56 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E66BD1BF25F
+ for <devel@linuxdriverproject.org>; Tue,  3 Sep 2019 06:31:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 672F487ABF
- for <devel@linuxdriverproject.org>; Tue,  3 Sep 2019 05:31:56 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E07AD86371
+ for <devel@linuxdriverproject.org>; Tue,  3 Sep 2019 06:31:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wD+U--55-hcz for <devel@linuxdriverproject.org>;
- Tue,  3 Sep 2019 05:31:53 +0000 (UTC)
+ with ESMTP id QG-hntnXPgFE for <devel@linuxdriverproject.org>;
+ Tue,  3 Sep 2019 06:31:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
- [209.85.128.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 42B358757E
- for <devel@driverdev.osuosl.org>; Tue,  3 Sep 2019 05:31:53 +0000 (UTC)
-Received: by mail-wm1-f65.google.com with SMTP id r195so297108wme.2
- for <devel@driverdev.osuosl.org>; Mon, 02 Sep 2019 22:31:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=sdTc5Col9gW6RO/wUIFLd9Ir0j2e9yKZwNZmVQ90wII=;
- b=R4T6GqueH4Qho03y99R1OJ7lpN3EOzwGjqO/Hxlf6NWmhobqQLXz+aM5ybWMA8M3eM
- MqTf5odZCddxCDu1/xag4JzYqF9qv3MU8Lho/1PNMONq5/6Jz3/3/i866qPMBGTNcuNi
- 0rmClZhaHdp+b+fhVo6AvHoSN+6ZoP3W2IrWeWZmFuMyPohn1SS9tVn9pZzRHVz/kwGy
- MBOOGRfkl1N2xbCWnkg9I5Gy4flUaM6OXhbCo7ytsZHY4cgqWI42h+mtvw27O8tUWuC2
- djwv1S6aq5WORUYcBE1Ce0spF2k69eg0yHyJ6gDYMOc4/VhL4lj7BrFwh1YHfKo5Mhyy
- eZ2w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=sdTc5Col9gW6RO/wUIFLd9Ir0j2e9yKZwNZmVQ90wII=;
- b=sBTcEw/pH8PepJEgc3xVg7kCJJ4EVGG/SGrDZfjnE70dYls5Xek3WmH8JCEEh3nzp9
- fb8oUt4pHjYveyVwZDj0FtwFWWw8jq7+UjneZPkm9fxjNkbJ4Dkn2vH5IlvERtuE52M3
- g1aWrE9riGlgs33/PVMXqSx1HdYjlOSEQQH3FFNypBwbCYjfkTFdMANOXak5qvS0xylq
- n2YPrBvZrCGWmXrpzLQWJwo/ZNk+jcMQcpzq6nlbvuMIi/SiWsCdXYoZImAqW0qS22TW
- fdLX1fBzESoumPOREAmah81U9tXPqFF8Q1n3984f506XajratzbnGaUI9D1m3oZIP6fH
- 1h8g==
-X-Gm-Message-State: APjAAAVZaCUIz/pnDhBWtUbVf1lyz+UKNPVazIxoqeTCvU6Zpdg8DVSQ
- wMmr3Xza4E4jSuXxNC8INTQ=
-X-Google-Smtp-Source: APXvYqzU0OzUqhyCh6F+DEeckS/Al/RvOuCOKRjN0LgPq6DjX3hdGdbPVeuCGGT5w3R+/B3EKct7hQ==
-X-Received: by 2002:a1c:a796:: with SMTP id q144mr32071273wme.15.1567488711366; 
- Mon, 02 Sep 2019 22:31:51 -0700 (PDT)
-Received: from archlinux-threadripper ([2a01:4f8:222:2f1b::2])
- by smtp.gmail.com with ESMTPSA id n14sm57733246wra.75.2019.09.02.22.31.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 02 Sep 2019 22:31:50 -0700 (PDT)
-Date: Mon, 2 Sep 2019 22:31:49 -0700
-From: Nathan Chancellor <natechancellor@gmail.com>
-To: Colin King <colin.king@canonical.com>
-Subject: Re: [PATCH] staging: exfat: fix uninitialized variable ret
-Message-ID: <20190903053149.GA56440@archlinux-threadripper>
-References: <20190830184644.15590-1-colin.king@canonical.com>
+Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id F401385F57
+ for <devel@driverdev.osuosl.org>; Tue,  3 Sep 2019 06:31:12 +0000 (UTC)
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 7037E8B6A2F31DF55807;
+ Tue,  3 Sep 2019 14:31:07 +0800 (CST)
+Received: from [10.134.22.195] (10.134.22.195) by smtp.huawei.com
+ (10.3.19.214) with Microsoft SMTP Server (TLS) id 14.3.439.0; Tue, 3 Sep 2019
+ 14:30:56 +0800
+Subject: Re: [PATCH v8 11/24] erofs: introduce xattr & posixacl support
+To: <dsterba@suse.cz>, Chao Yu <chao@kernel.org>, Christoph Hellwig
+ <hch@infradead.org>, Gao Xiang <gaoxiang25@huawei.com>,
+ <linux-fsdevel@vger.kernel.org>, <devel@driverdev.osuosl.org>, Alexander Viro
+ <viro@zeniv.linux.org.uk>, LKML <linux-kernel@vger.kernel.org>, "Greg
+ Kroah-Hartman" <gregkh@linuxfoundation.org>, Andrew Morton
+ <akpm@linux-foundation.org>, Stephen Rothwell <sfr@canb.auug.org.au>,
+ Theodore Ts'o <tytso@mit.edu>, Pavel Machek <pavel@denx.de>, Amir Goldstein
+ <amir73il@gmail.com>, "Darrick J . Wong" <darrick.wong@oracle.com>, "Dave
+ Chinner" <david@fromorbit.com>, Jaegeuk Kim <jaegeuk@kernel.org>, Jan Kara
+ <jack@suse.cz>, Richard Weinberger <richard@nod.at>, Linus Torvalds
+ <torvalds@linux-foundation.org>, <linux-erofs@lists.ozlabs.org>, Miao Xie
+ <miaoxie@huawei.com>, Li Guifu <bluce.liguifu@huawei.com>, Fang Wei
+ <fangwei1@huawei.com>
+References: <20190815044155.88483-1-gaoxiang25@huawei.com>
+ <20190815044155.88483-12-gaoxiang25@huawei.com>
+ <20190902125711.GA23462@infradead.org> <20190902130644.GT2752@suse.cz>
+ <813e1b65-e6ba-631c-6506-f356738c477f@kernel.org>
+ <20190902142037.GW2752@twin.jikos.cz>
+From: Chao Yu <yuchao0@huawei.com>
+Message-ID: <12d37c63-dd0e-04fb-91f8-f4b930e867e5@huawei.com>
+Date: Tue, 3 Sep 2019 14:30:55 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.9.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190830184644.15590-1-colin.king@canonical.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+In-Reply-To: <20190902142037.GW2752@twin.jikos.cz>
+Content-Language: en-US
+X-Originating-IP: [10.134.22.195]
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,43 +78,32 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- kernel-janitors@vger.kernel.org, Valdis Kletnieks <valdis.kletnieks@vt.edu>,
- linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Aug 30, 2019 at 07:46:44PM +0100, Colin King wrote:
-> From: Colin Ian King <colin.king@canonical.com>
+On 2019/9/2 22:20, David Sterba wrote:
+> Oh right, I think the reasons are historical and that we can remove the
+> options nowadays. From the compatibility POV this should be safe, with
+> ACLs compiled out, no tool would use them, and no harm done when the
+> code is present but not used.
 > 
-> Currently there are error return paths in ffsReadFile that
-> exit via lable err_out that return and uninitialized error
-> return in variable ret. Fix this by initializing ret to zero.
-> 
-> Addresses-Coverity: ("Uninitialized scalar variable")
-> Fixes: c48c9f7ff32b ("staging: exfat: add exfat filesystem code to staging")
-> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+> There were some efforts by embedded guys to make parts of kernel more
+> configurable to allow removing subsystems to reduce the final image
+> size. In this case I don't think it would make any noticeable
+> difference, eg. the size of fs/btrfs/acl.o on release config is 1.6KiB,
+> while the whole module is over 1.3MiB.
 
-Clang also warns about this:
+Actually, btrfs's LOC is about 20 times larger than erofs's, acl part's LOC
+could be very small one in btrfs.
 
-drivers/staging/exfat/exfat_super.c:885:6: warning: variable 'ret' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
-        if (p_fs->dev_ejected)
-            ^~~~~~~~~~~~~~~~~
-drivers/staging/exfat/exfat_super.c:892:9: note: uninitialized use occurs here
-        return ret;
-               ^~~
-drivers/staging/exfat/exfat_super.c:885:2: note: remove the 'if' if its condition is always true
-        if (p_fs->dev_ejected)
-        ^~~~~~~~~~~~~~~~~~~~~~
-drivers/staging/exfat/exfat_super.c:776:9: note: initialize the variable 'ret' to silence this warning
-        int ret;
-               ^
-                = 0
-1 warning generated.
+EROFS can be slimmed about 10% size if we disable XATTR/ACL config, which is
+worth to keep that, at least for now.
 
-Reviewed-by: Nathan Chancellor <natechancellor@gmail.com>
+Thanks,
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
