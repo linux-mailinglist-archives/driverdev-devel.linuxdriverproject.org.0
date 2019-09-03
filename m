@@ -1,48 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DF817A72E5
-	for <lists+driverdev-devel@lfdr.de>; Tue,  3 Sep 2019 20:56:07 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id F18C18848F;
-	Tue,  3 Sep 2019 18:56:05 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ehy5MxaqYprk; Tue,  3 Sep 2019 18:56:05 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7BF4488453;
-	Tue,  3 Sep 2019 18:56:04 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0B63F1BF5A6
- for <devel@linuxdriverproject.org>; Tue,  3 Sep 2019 18:56:03 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 34827A744E
+	for <lists+driverdev-devel@lfdr.de>; Tue,  3 Sep 2019 22:10:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 01C8186364
- for <devel@linuxdriverproject.org>; Tue,  3 Sep 2019 18:56:03 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 312948699B;
+	Tue,  3 Sep 2019 20:10:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Sf8I24-1rF4c; Tue,  3 Sep 2019 20:10:19 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0CB248402A;
+	Tue,  3 Sep 2019 20:10:18 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 503E81BF4DD
+ for <devel@linuxdriverproject.org>; Tue,  3 Sep 2019 20:09:41 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4CEE18773A
+ for <devel@linuxdriverproject.org>; Tue,  3 Sep 2019 20:09:41 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DWP9vs5bvk9b for <devel@linuxdriverproject.org>;
- Tue,  3 Sep 2019 18:56:01 +0000 (UTC)
+ with ESMTP id PwSZ9Mylspjj for <devel@linuxdriverproject.org>;
+ Tue,  3 Sep 2019 20:09:39 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from valentin-vidic.from.hr (valentin-vidic.from.hr [94.229.67.141])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A60BD86113
- for <devel@driverdev.osuosl.org>; Tue,  3 Sep 2019 18:56:00 +0000 (UTC)
-X-Virus-Scanned: Debian amavisd-new at valentin-vidic.from.hr
-Received: by valentin-vidic.from.hr (Postfix, from userid 1000)
- id DE9AF3A32A; Tue,  3 Sep 2019 20:55:48 +0200 (CEST)
-From: Valentin Vidic <vvidic@valentin-vidic.from.hr>
-To: Valdis Kletnieks <valdis.kletnieks@vt.edu>
-Subject: [PATCH] staging: exfat: drop local TRUE/FALSE defines
-Date: Tue,  3 Sep 2019 20:55:37 +0200
-Message-Id: <20190903185537.25099-1-vvidic@valentin-vidic.from.hr>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190903181946.GA14349@kroah.com>
-References: <20190903181946.GA14349@kroah.com>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C343E87729
+ for <devel@driverdev.osuosl.org>; Tue,  3 Sep 2019 20:09:39 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1A48D21883;
+ Tue,  3 Sep 2019 20:09:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1567541379;
+ bh=RWLf+gPj7WvM0+1+ogprzhLiV84KpAxi+upLU/hLfhE=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=NgsNr1ILT5Lxgh8UUAfceJTX2Z56RSAcZ+e7UhF4kYxk3mvX6teYMIhHCrrA3AsTq
+ cwMb7+Hu5jE9YyL5DVA/pUA7zq7m+dHRGbzpqX5M6BFEkoziK+NlpuULh4ZtwAdERI
+ hmVfE+3aRDTYBrysS/YDlNcr4OH7cxiw9a0jA4DA=
+Date: Tue, 3 Sep 2019 22:09:37 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Valentin Vidic <vvidic@valentin-vidic.from.hr>
+Subject: Re: [PATCH] staging: exfat: cleanup explicit comparisons to NULL
+Message-ID: <20190903200937.GA18191@kroah.com>
+References: <20190903171337.22889-1-vvidic@valentin-vidic.from.hr>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190903171337.22889-1-vvidic@valentin-vidic.from.hr>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,425 +66,421 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org, Valentin Vidic <vvidic@valentin-vidic.from.hr>,
- Al Viro <viro@zeniv.linux.org.uk>
+Cc: devel@driverdev.osuosl.org, Valdis Kletnieks <valdis.kletnieks@vt.edu>,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Replace with bool where it makes sense. Also drop unused local
-variable lossy in fat_find_dir_entry.
+On Tue, Sep 03, 2019 at 07:13:37PM +0200, Valentin Vidic wrote:
+> Fixes checkpatch.pl warnings:
+> 
+>   CHECK: Comparison to NULL could be written "expr"
+>   CHECK: Comparison to NULL could be written "!expr"
+> 
+> Signed-off-by: Valentin Vidic <vvidic@valentin-vidic.from.hr>
+> ---
+>  drivers/staging/exfat/exfat_core.c  | 34 ++++++++---------
+>  drivers/staging/exfat/exfat_super.c | 58 ++++++++++++++---------------
+>  2 files changed, 46 insertions(+), 46 deletions(-)
+> 
+> diff --git a/drivers/staging/exfat/exfat_core.c b/drivers/staging/exfat/exfat_core.c
+> index 46b9f4455da1..7b39544cdaf1 100644
+> --- a/drivers/staging/exfat/exfat_core.c
+> +++ b/drivers/staging/exfat/exfat_core.c
+> @@ -100,7 +100,7 @@ void fs_set_vol_flags(struct super_block *sb, u32 new_flag)
+>  	p_fs->vol_flag = new_flag;
+>  
+>  	if (p_fs->vol_type == EXFAT) {
+> -		if (p_fs->pbr_bh == NULL) {
+> +		if (!p_fs->pbr_bh) {
+>  			if (sector_read(sb, p_fs->PBR_sector,
+>  					&p_fs->pbr_bh, 1) != FFS_SUCCESS)
+>  				return;
+> @@ -543,7 +543,7 @@ s32 load_alloc_bitmap(struct super_block *sb)
+>  				p_fs->vol_amap = kmalloc_array(p_fs->map_sectors,
+>  							       sizeof(struct buffer_head *),
+>  							       GFP_KERNEL);
+> -				if (p_fs->vol_amap == NULL)
+> +				if (!p_fs->vol_amap)
+>  					return FFS_MEMORYERR;
+>  
+>  				sector = START_SECTOR(p_fs->map_clu);
+> @@ -685,7 +685,7 @@ void sync_alloc_bitmap(struct super_block *sb)
+>  	int i;
+>  	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
+>  
+> -	if (p_fs->vol_amap == NULL)
+> +	if (!p_fs->vol_amap)
+>  		return;
+>  
+>  	for (i = 0; i < p_fs->map_sectors; i++)
+> @@ -714,7 +714,7 @@ static s32 __load_upcase_table(struct super_block *sb, sector_t sector,
+>  
+>  	upcase_table = p_fs->vol_utbl = kmalloc(UTBL_COL_COUNT * sizeof(u16 *),
+>  						GFP_KERNEL);
+> -	if (upcase_table == NULL)
+> +	if (!upcase_table)
+>  		return FFS_MEMORYERR;
+>  	memset(upcase_table, 0, UTBL_COL_COUNT * sizeof(u16 *));
+>  
+> @@ -750,11 +750,11 @@ static s32 __load_upcase_table(struct super_block *sb, sector_t sector,
+>  			else { /* uni != index , uni != 0xFFFF */
+>  				u16 col_index = get_col_index(index);
+>  
+> -				if (upcase_table[col_index] == NULL) {
+> +				if (!upcase_table[col_index]) {
+>  					pr_debug("alloc = 0x%X\n", col_index);
+>  					upcase_table[col_index] = kmalloc_array(UTBL_ROW_COUNT,
+>  						sizeof(u16), GFP_KERNEL);
+> -					if (upcase_table[col_index] == NULL) {
+> +					if (!upcase_table[col_index]) {
+>  						ret = FFS_MEMORYERR;
+>  						goto error;
+>  					}
+> @@ -794,7 +794,7 @@ static s32 __load_default_upcase_table(struct super_block *sb)
+>  
+>  	upcase_table = p_fs->vol_utbl = kmalloc(UTBL_COL_COUNT * sizeof(u16 *),
+>  						GFP_KERNEL);
+> -	if (upcase_table == NULL)
+> +	if (!upcase_table)
+>  		return FFS_MEMORYERR;
+>  	memset(upcase_table, 0, UTBL_COL_COUNT * sizeof(u16 *));
+>  
+> @@ -812,12 +812,12 @@ static s32 __load_default_upcase_table(struct super_block *sb)
+>  		else { /* uni != index , uni != 0xFFFF */
+>  			u16 col_index = get_col_index(index);
+>  
+> -			if (upcase_table[col_index] == NULL) {
+> +			if (!upcase_table[col_index]) {
+>  				pr_debug("alloc = 0x%X\n", col_index);
+>  				upcase_table[col_index] = kmalloc_array(UTBL_ROW_COUNT,
+>  									sizeof(u16),
+>  									GFP_KERNEL);
+> -				if (upcase_table[col_index] == NULL) {
+> +				if (!upcase_table[col_index]) {
+>  					ret = FFS_MEMORYERR;
+>  					goto error;
+>  				}
+> @@ -1640,7 +1640,7 @@ struct dentry_t *get_entry_with_sector(struct super_block *sb, sector_t sector,
+>  
+>  	buf = buf_getblk(sb, sector);
+>  
+> -	if (buf == NULL)
+> +	if (!buf)
+>  		return NULL;
+>  
+>  	return (struct dentry_t *)(buf + offset);
+> @@ -1658,10 +1658,10 @@ struct dentry_t *get_entry_in_dir(struct super_block *sb, struct chain_t *p_dir,
+>  
+>  	buf = buf_getblk(sb, sec);
+>  
+> -	if (buf == NULL)
+> +	if (!buf)
+>  		return NULL;
+>  
+> -	if (sector != NULL)
+> +	if (sector)
+>  		*sector = sec;
+>  	return (struct dentry_t *)(buf + off);
+>  }
+> @@ -1721,7 +1721,7 @@ struct entry_set_cache_t *get_entry_set_in_dir(struct super_block *sb,
+>  	sec += START_SECTOR(clu);
+>  
+>  	buf = buf_getblk(sb, sec);
+> -	if (buf == NULL)
+> +	if (!buf)
+>  		goto err_out;
+>  
+>  	ep = (struct dentry_t *)(buf + off);
+> @@ -1741,7 +1741,7 @@ struct entry_set_cache_t *get_entry_set_in_dir(struct super_block *sb,
+>  	pr_debug("%s: trying to kmalloc %zx bytes for %d entries\n", __func__,
+>  		 bufsize, num_entries);
+>  	es = kmalloc(bufsize, GFP_KERNEL);
+> -	if (es == NULL)
+> +	if (!es)
+>  		goto err_out;
+>  
+>  	es->num_entries = num_entries;
+> @@ -1820,7 +1820,7 @@ struct entry_set_cache_t *get_entry_set_in_dir(struct super_block *sb,
+>  				sec++;
+>  			}
+>  			buf = buf_getblk(sb, sec);
+> -			if (buf == NULL)
+> +			if (!buf)
+>  				goto err_out;
+>  			off = 0;
+>  			ep = (struct dentry_t *)(buf);
+> @@ -1872,7 +1872,7 @@ static s32 __write_partial_entries_in_entry_set(struct super_block *sb,
+>  				     remaining_byte_in_sector >> DENTRY_SIZE_BITS,
+>  				     num_entries);
+>  		buf = buf_getblk(sb, sec);
+> -		if (buf == NULL)
+> +		if (!buf)
+>  			goto err_out;
+>  		pr_debug("es->buf %p buf_off %u\n", esbuf, buf_off);
+>  		pr_debug("copying %d entries from %p to sector %llu\n",
+> @@ -2649,7 +2649,7 @@ void exfat_get_uni_name_from_ext_entry(struct super_block *sb,
+>  	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
+>  
+>  	es = get_entry_set_in_dir(sb, p_dir, entry, ES_ALL_ENTRIES, &ep);
+> -	if (es == NULL || es->num_entries < 3) {
+> +	if (!es || es->num_entries < 3) {
+>  		if (es)
+>  			release_entry_set(es);
+>  		return;
+> diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
+> index 881cd85cf677..8d93403a3308 100644
+> --- a/drivers/staging/exfat/exfat_super.c
+> +++ b/drivers/staging/exfat/exfat_super.c
+> @@ -341,7 +341,7 @@ static int exfat_cmpi(const struct dentry *dentry, unsigned int len,
+>  	alen = exfat_striptail_len(name);
+>  	blen = __exfat_striptail_len(len, str);
+>  	if (alen == blen) {
+> -		if (t == NULL) {
+> +		if (!t) {
+>  			if (strncasecmp(name->name, str, alen) == 0)
+>  				return 0;
+>  		} else if (nls_strnicmp(t, name->name, str, alen) == 0)
+> @@ -587,7 +587,7 @@ static int ffsGetVolInfo(struct super_block *sb, struct vol_info_t *info)
+>  	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
+>  
+>  	/* check the validity of pointer parameters */
+> -	if (info == NULL)
+> +	if (!info)
+>  		return FFS_ERROR;
+>  
+>  	/* acquire the lock for file system critical section */
+> @@ -650,7 +650,7 @@ static int ffsLookupFile(struct inode *inode, char *path, struct file_id_t *fid)
+>  	pr_debug("%s entered\n", __func__);
+>  
+>  	/* check the validity of pointer parameters */
+> -	if ((fid == NULL) || (path == NULL) || (*path == '\0'))
+> +	if (!fid || !path || (*path == '\0'))
+>  		return FFS_ERROR;
+>  
+>  	/* acquire the lock for file system critical section */
+> @@ -743,7 +743,7 @@ static int ffsCreateFile(struct inode *inode, char *path, u8 mode,
+>  	int ret;
+>  
+>  	/* check the validity of pointer parameters */
+> -	if ((fid == NULL) || (path == NULL) || (*path == '\0'))
+> +	if (!fid || !path || (*path == '\0'))
+>  		return FFS_ERROR;
+>  
+>  	/* acquire the lock for file system critical section */
+> @@ -788,11 +788,11 @@ static int ffsReadFile(struct inode *inode, struct file_id_t *fid, void *buffer,
+>  	struct bd_info_t *p_bd = &(EXFAT_SB(sb)->bd_info);
+>  
+>  	/* check the validity of the given file id */
+> -	if (fid == NULL)
+> +	if (!fid)
+>  		return FFS_INVALIDFID;
+>  
+>  	/* check the validity of pointer parameters */
+> -	if (buffer == NULL)
+> +	if (!buffer)
+>  		return FFS_ERROR;
+>  
+>  	/* acquire the lock for file system critical section */
+> @@ -811,7 +811,7 @@ static int ffsReadFile(struct inode *inode, struct file_id_t *fid, void *buffer,
+>  		count = fid->size - fid->rwoffset;
+>  
+>  	if (count == 0) {
+> -		if (rcount != NULL)
+> +		if (rcount)
+>  			*rcount = 0;
+>  		ret = FFS_EOF;
+>  		goto out;
+> @@ -885,7 +885,7 @@ static int ffsReadFile(struct inode *inode, struct file_id_t *fid, void *buffer,
+>  /* How did this ever work and not leak a brlse()?? */
+>  err_out:
+>  	/* set the size of read bytes */
+> -	if (rcount != NULL)
+> +	if (rcount)
+>  		*rcount = read_bytes;
+>  
+>  	if (p_fs->dev_ejected)
+> @@ -917,11 +917,11 @@ static int ffsWriteFile(struct inode *inode, struct file_id_t *fid,
+>  	struct bd_info_t *p_bd = &(EXFAT_SB(sb)->bd_info);
+>  
+>  	/* check the validity of the given file id */
+> -	if (fid == NULL)
+> +	if (!fid)
+>  		return FFS_INVALIDFID;
+>  
+>  	/* check the validity of pointer parameters */
+> -	if (buffer == NULL)
+> +	if (!buffer)
+>  		return FFS_ERROR;
+>  
+>  	/* acquire the lock for file system critical section */
+> @@ -937,7 +937,7 @@ static int ffsWriteFile(struct inode *inode, struct file_id_t *fid,
+>  		fid->rwoffset = fid->size;
+>  
+>  	if (count == 0) {
+> -		if (wcount != NULL)
+> +		if (wcount)
+>  			*wcount = 0;
+>  		ret = FFS_SUCCESS;
+>  		goto out;
+> @@ -1096,7 +1096,7 @@ static int ffsWriteFile(struct inode *inode, struct file_id_t *fid,
+>  	if (p_fs->vol_type == EXFAT) {
+>  		es = get_entry_set_in_dir(sb, &(fid->dir), fid->entry,
+>  					  ES_ALL_ENTRIES, &ep);
+> -		if (es == NULL)
+> +		if (!es)
+>  			goto err_out;
+>  		ep2 = ep+1;
+>  	} else {
+> @@ -1138,7 +1138,7 @@ static int ffsWriteFile(struct inode *inode, struct file_id_t *fid,
+>  
+>  err_out:
+>  	/* set the size of written bytes */
+> -	if (wcount != NULL)
+> +	if (wcount)
+>  		*wcount = write_bytes;
+>  
+>  	if (num_alloced == 0)
+> @@ -1225,7 +1225,7 @@ static int ffsTruncateFile(struct inode *inode, u64 old_size, u64 new_size)
+>  	if (p_fs->vol_type == EXFAT) {
+>  		es = get_entry_set_in_dir(sb, &fid->dir, fid->entry,
+>  					  ES_ALL_ENTRIES, &ep);
+> -		if (es == NULL) {
+> +		if (!es) {
+>  			ret = FFS_MEDIAERR;
+>  			goto out;
+>  			}
+> @@ -1320,11 +1320,11 @@ static int ffsMoveFile(struct inode *old_parent_inode, struct file_id_t *fid,
+>  	s32 new_entry = 0;
+>  
+>  	/* check the validity of the given file id */
+> -	if (fid == NULL)
+> +	if (!fid)
+>  		return FFS_INVALIDFID;
+>  
+>  	/* check the validity of pointer parameters */
+> -	if ((new_path == NULL) || (*new_path == '\0'))
+> +	if (!new_path || (*new_path == '\0'))
+>  		return FFS_ERROR;
+>  
+>  	/* acquire the lock for file system critical section */
+> @@ -1441,7 +1441,7 @@ static int ffsRemoveFile(struct inode *inode, struct file_id_t *fid)
+>  	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
+>  
+>  	/* check the validity of the given file id */
+> -	if (fid == NULL)
+> +	if (!fid)
+>  		return FFS_INVALIDFID;
+>  
+>  	/* acquire the lock for file system critical section */
+> @@ -1529,7 +1529,7 @@ static int ffsSetAttr(struct inode *inode, u32 attr)
+>  	if (p_fs->vol_type == EXFAT) {
+>  		es = get_entry_set_in_dir(sb, &(fid->dir), fid->entry,
+>  					  ES_ALL_ENTRIES, &ep);
+> -		if (es == NULL) {
+> +		if (!es) {
+>  			ret = FFS_MEDIAERR;
+>  			goto out;
+>  		}
+> @@ -1645,7 +1645,7 @@ static int ffsReadStat(struct inode *inode, struct dir_entry_t *info)
+>  	if (p_fs->vol_type == EXFAT) {
+>  		es = get_entry_set_in_dir(sb, &(fid->dir), fid->entry,
+>  					  ES_2_ENTRIES, &ep);
+> -		if (es == NULL) {
+> +		if (!es) {
+>  			ret = FFS_MEDIAERR;
+>  			goto out;
+>  		}
+> @@ -1769,7 +1769,7 @@ static int ffsWriteStat(struct inode *inode, struct dir_entry_t *info)
+>  	if (p_fs->vol_type == EXFAT) {
+>  		es = get_entry_set_in_dir(sb, &(fid->dir), fid->entry,
+>  					  ES_ALL_ENTRIES, &ep);
+> -		if (es == NULL) {
+> +		if (!es) {
+>  			ret = FFS_MEDIAERR;
+>  			goto out;
+>  		}
+> @@ -1838,7 +1838,7 @@ static int ffsMapCluster(struct inode *inode, s32 clu_offset, u32 *clu)
+>  	struct file_id_t *fid = &(EXFAT_I(inode)->fid);
+>  
+>  	/* check the validity of pointer parameters */
+> -	if (clu == NULL)
+> +	if (!clu)
+>  		return FFS_ERROR;
+>  
+>  	/* acquire the lock for file system critical section */
+> @@ -1922,7 +1922,7 @@ static int ffsMapCluster(struct inode *inode, s32 clu_offset, u32 *clu)
+>  		if (p_fs->vol_type == EXFAT) {
+>  			es = get_entry_set_in_dir(sb, &fid->dir, fid->entry,
+>  						  ES_ALL_ENTRIES, &ep);
+> -			if (es == NULL) {
+> +			if (!es) {
+>  				ret = FFS_MEDIAERR;
+>  				goto out;
+>  			}
+> @@ -1990,7 +1990,7 @@ static int ffsCreateDir(struct inode *inode, char *path, struct file_id_t *fid)
+>  	pr_debug("%s entered\n", __func__);
+>  
+>  	/* check the validity of pointer parameters */
+> -	if ((fid == NULL) || (path == NULL) || (*path == '\0'))
+> +	if (!fid || !path || (*path == '\0'))
+>  		return FFS_ERROR;
+>  
+>  	/* acquire the lock for file system critical section */
+> @@ -2036,7 +2036,7 @@ static int ffsReadDir(struct inode *inode, struct dir_entry_t *dir_entry)
+>  	struct file_id_t *fid = &(EXFAT_I(inode)->fid);
+>  
+>  	/* check the validity of pointer parameters */
+> -	if (dir_entry == NULL)
+> +	if (!dir_entry)
+>  		return FFS_ERROR;
+>  
+>  	/* check if the given file ID is opened */
+> @@ -2227,7 +2227,7 @@ static int ffsRemoveDir(struct inode *inode, struct file_id_t *fid)
+>  	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
+>  
+>  	/* check the validity of the given file id */
+> -	if (fid == NULL)
+> +	if (!fid)
+>  		return FFS_INVALIDFID;
+>  
+>  	dir.dir = fid->dir.dir;
+> @@ -3115,10 +3115,10 @@ static const char *exfat_get_link(struct dentry *dentry, struct inode *inode,
+>  {
+>  	struct exfat_inode_info *ei = EXFAT_I(inode);
+>  
+> -	if (ei->target != NULL) {
+> +	if (ei->target) {
+>  		char *cookie = ei->target;
+>  
+> -		if (cookie != NULL)
+> +		if (cookie)
+>  			return (char *)(ei->target);
+>  	}
+>  	return NULL;
+> @@ -3780,7 +3780,7 @@ static int parse_options(char *options, int silent, int *debug,
+>  	if (!options)
+>  		goto out;
+>  
+> -	while ((p = strsep(&options, ",")) != NULL) {
+> +	while (p = strsep(&options, ",")) {
 
-Signed-off-by: Valentin Vidic <vvidic@valentin-vidic.from.hr>
----
- drivers/staging/exfat/exfat.h       |  3 --
- drivers/staging/exfat/exfat_core.c  | 81 +++++++++++++++--------------
- drivers/staging/exfat/exfat_nls.c   |  2 +-
- drivers/staging/exfat/exfat_super.c | 18 ++++---
- 4 files changed, 53 insertions(+), 51 deletions(-)
+There was an "extra" set of () in here to keep gcc happy, otherwise we
+now have:
+drivers/staging/exfat/exfat_super.c: In function parse_options:
+drivers/staging/exfat/exfat_super.c:3785:9: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+ 3785 |  while (p = strsep(&options, ",")) {
+      |         ^
 
-diff --git a/drivers/staging/exfat/exfat.h b/drivers/staging/exfat/exfat.h
-index 816681d1103a..0aa14dea4e09 100644
---- a/drivers/staging/exfat/exfat.h
-+++ b/drivers/staging/exfat/exfat.h
-@@ -86,9 +86,6 @@
- #define CLUSTER_16(x)		((u16)(x))
- #define CLUSTER_32(x)		((u32)(x))
- 
--#define FALSE			0
--#define TRUE			1
--
- #define START_SECTOR(x)							\
- 	((((sector_t)((x) - 2)) << p_fs->sectors_per_clu_bits) +	\
- 	 p_fs->data_start_sector)
-diff --git a/drivers/staging/exfat/exfat_core.c b/drivers/staging/exfat/exfat_core.c
-index 1246afcffb8d..1630f16459a3 100644
---- a/drivers/staging/exfat/exfat_core.c
-+++ b/drivers/staging/exfat/exfat_core.c
-@@ -705,7 +705,7 @@ static s32 __load_upcase_table(struct super_block *sb, sector_t sector,
- 	struct buffer_head *tmp_bh = NULL;
- 	sector_t end_sector = num_sectors + sector;
- 
--	u8	skip = FALSE;
-+	bool	skip = false;
- 	u32	index = 0;
- 	u16	uni = 0;
- 	u16 **upcase_table;
-@@ -742,11 +742,11 @@ static s32 __load_upcase_table(struct super_block *sb, sector_t sector,
- 				index += uni;
- 				pr_debug("to 0x%X (amount of 0x%X)\n",
- 					 index, uni);
--				skip = FALSE;
-+				skip = false;
- 			} else if (uni == index) {
- 				index++;
- 			} else if (uni == 0xFFFF) {
--				skip = TRUE;
-+				skip = true;
- 			} else { /* uni != index , uni != 0xFFFF */
- 				u16 col_index = get_col_index(index);
- 
-@@ -787,7 +787,7 @@ static s32 __load_default_upcase_table(struct super_block *sb)
- 	u32 j;
- 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
- 
--	u8	skip = FALSE;
-+	bool	skip = false;
- 	u32	index = 0;
- 	u16	uni = 0;
- 	u16 **upcase_table;
-@@ -804,11 +804,11 @@ static s32 __load_default_upcase_table(struct super_block *sb)
- 			pr_debug("skip from 0x%X ", index);
- 			index += uni;
- 			pr_debug("to 0x%X (amount of 0x%X)\n", index, uni);
--			skip = FALSE;
-+			skip = false;
- 		} else if (uni == index) {
- 			index++;
- 		} else if (uni == 0xFFFF) {
--			skip = TRUE;
-+			skip = true;
- 		} else { /* uni != index , uni != 0xFFFF */
- 			u16 col_index = get_col_index(index);
- 
-@@ -1399,7 +1399,7 @@ void init_dos_entry(struct dos_dentry_t *ep, u32 type, u32 start_clu)
- void init_ext_entry(struct ext_dentry_t *ep, s32 order, u8 chksum, u16 *uniname)
- {
- 	int i;
--	u8 end = FALSE;
-+	bool end = false;
- 
- 	fat_set_entry_type((struct dentry_t *) ep, TYPE_EXTEND);
- 	ep->order = (u8) order;
-@@ -1411,7 +1411,7 @@ void init_ext_entry(struct ext_dentry_t *ep, s32 order, u8 chksum, u16 *uniname)
- 		if (!end) {
- 			SET16(ep->unicode_0_4+i, *uniname);
- 			if (*uniname == 0x0)
--				end = TRUE;
-+				end = true;
- 			else
- 				uniname++;
- 		} else {
-@@ -1423,7 +1423,7 @@ void init_ext_entry(struct ext_dentry_t *ep, s32 order, u8 chksum, u16 *uniname)
- 		if (!end) {
- 			SET16_A(ep->unicode_5_10 + i, *uniname);
- 			if (*uniname == 0x0)
--				end = TRUE;
-+				end = true;
- 			else
- 				uniname++;
- 		} else {
-@@ -1435,7 +1435,7 @@ void init_ext_entry(struct ext_dentry_t *ep, s32 order, u8 chksum, u16 *uniname)
- 		if (!end) {
- 			SET16_A(ep->unicode_11_12 + i, *uniname);
- 			if (*uniname == 0x0)
--				end = TRUE;
-+				end = true;
- 			else
- 				uniname++;
- 		} else {
-@@ -2146,8 +2146,9 @@ s32 fat_find_dir_entry(struct super_block *sb, struct chain_t *p_dir,
- 		       struct uni_name_t *p_uniname, s32 num_entries,
- 		       struct dos_name_t *p_dosname, u32 type)
- {
--	int i, dentry = 0, lossy = FALSE, len;
--	s32 order = 0, is_feasible_entry = TRUE, has_ext_entry = FALSE;
-+	int i, dentry = 0, len;
-+	s32 order = 0;
-+	bool is_feasible_entry = true, has_ext_entry = false;
- 	s32 dentries_per_clu;
- 	u32 entry_type;
- 	u16 entry_uniname[14], *uniname = NULL, unichar;
-@@ -2190,11 +2191,11 @@ s32 fat_find_dir_entry(struct super_block *sb, struct chain_t *p_dir,
- 						return dentry;
- 
- 					dos_ep = (struct dos_dentry_t *) ep;
--					if ((!lossy) && (!nls_dosname_cmp(sb, p_dosname->name, dos_ep->name)))
-+					if (!nls_dosname_cmp(sb, p_dosname->name, dos_ep->name))
- 						return dentry;
- 				}
--				is_feasible_entry = TRUE;
--				has_ext_entry = FALSE;
-+				is_feasible_entry = true;
-+				has_ext_entry = false;
- 			} else if (entry_type == TYPE_EXTEND) {
- 				if (is_feasible_entry) {
- 					ext_ep = (struct ext_dentry_t *) ep;
-@@ -2212,16 +2213,16 @@ s32 fat_find_dir_entry(struct super_block *sb, struct chain_t *p_dir,
- 					*(uniname+len) = 0x0;
- 
- 					if (nls_uniname_cmp(sb, uniname, entry_uniname))
--						is_feasible_entry = FALSE;
-+						is_feasible_entry = false;
- 
- 					*(uniname+len) = unichar;
- 				}
--				has_ext_entry = TRUE;
-+				has_ext_entry = true;
- 			} else if (entry_type == TYPE_UNUSED) {
- 				return -2;
- 			}
--			is_feasible_entry = TRUE;
--			has_ext_entry = FALSE;
-+			is_feasible_entry = true;
-+			has_ext_entry = false;
- 		}
- 
- 		if (p_dir->dir == CLUSTER_32(0))
-@@ -2244,7 +2245,8 @@ s32 exfat_find_dir_entry(struct super_block *sb, struct chain_t *p_dir,
- 			 struct dos_name_t *p_dosname, u32 type)
- {
- 	int i = 0, dentry = 0, num_ext_entries = 0, len, step;
--	s32 order = 0, is_feasible_entry = FALSE;
-+	s32 order = 0;
-+	bool is_feasible_entry = false;
- 	s32 dentries_per_clu, num_empty = 0;
- 	u32 entry_type;
- 	u16 entry_uniname[16], *uniname = NULL, unichar;
-@@ -2288,7 +2290,7 @@ s32 exfat_find_dir_entry(struct super_block *sb, struct chain_t *p_dir,
- 			step = 1;
- 
- 			if ((entry_type == TYPE_UNUSED) || (entry_type == TYPE_DELETED)) {
--				is_feasible_entry = FALSE;
-+				is_feasible_entry = false;
- 
- 				if (p_fs->hint_uentry.entry == -1) {
- 					num_empty++;
-@@ -2311,9 +2313,9 @@ s32 exfat_find_dir_entry(struct super_block *sb, struct chain_t *p_dir,
- 					file_ep = (struct file_dentry_t *) ep;
- 					if ((type == TYPE_ALL) || (type == entry_type)) {
- 						num_ext_entries = file_ep->num_ext;
--						is_feasible_entry = TRUE;
-+						is_feasible_entry = true;
- 					} else {
--						is_feasible_entry = FALSE;
-+						is_feasible_entry = false;
- 						step = file_ep->num_ext + 1;
- 					}
- 				} else if (entry_type == TYPE_STREAM) {
-@@ -2323,7 +2325,7 @@ s32 exfat_find_dir_entry(struct super_block *sb, struct chain_t *p_dir,
- 						    p_uniname->name_len == strm_ep->name_len) {
- 							order = 1;
- 						} else {
--							is_feasible_entry = FALSE;
-+							is_feasible_entry = false;
- 							step = num_ext_entries;
- 						}
- 					}
-@@ -2343,7 +2345,7 @@ s32 exfat_find_dir_entry(struct super_block *sb, struct chain_t *p_dir,
- 						*(uniname+len) = 0x0;
- 
- 						if (nls_uniname_cmp(sb, uniname, entry_uniname)) {
--							is_feasible_entry = FALSE;
-+							is_feasible_entry = false;
- 							step = num_ext_entries - order + 1;
- 						} else if (order == num_ext_entries) {
- 							p_fs->hint_uentry.dir = CLUSTER_32(~0);
-@@ -2354,7 +2356,7 @@ s32 exfat_find_dir_entry(struct super_block *sb, struct chain_t *p_dir,
- 						*(uniname+len) = unichar;
- 					}
- 				} else {
--					is_feasible_entry = FALSE;
-+					is_feasible_entry = false;
- 				}
- 			}
- 
-@@ -2522,17 +2524,17 @@ bool is_dir_empty(struct super_block *sb, struct chain_t *p_dir)
- 			type = p_fs->fs_func->get_entry_type(ep);
- 
- 			if (type == TYPE_UNUSED)
--				return TRUE;
-+				return true;
- 			if ((type != TYPE_FILE) && (type != TYPE_DIR))
- 				continue;
- 
- 			if (p_dir->dir == CLUSTER_32(0)) /* FAT16 root_dir */
--				return FALSE;
-+				return false;
- 
- 			if (p_fs->vol_type == EXFAT)
--				return FALSE;
-+				return false;
- 			if ((p_dir->dir == p_fs->root_dir) || ((++count) > 2))
--				return FALSE;
-+				return false;
- 		}
- 
- 		if (p_dir->dir == CLUSTER_32(0))
-@@ -2548,7 +2550,7 @@ bool is_dir_empty(struct super_block *sb, struct chain_t *p_dir)
- 			break;
- 	}
- 
--	return TRUE;
-+	return true;
- }
- 
- /*
-@@ -2741,7 +2743,8 @@ s32 extract_uni_name_from_name_entry(struct name_dentry_t *ep, u16 *uniname,
- s32 fat_generate_dos_name(struct super_block *sb, struct chain_t *p_dir,
- 			  struct dos_name_t *p_dosname)
- {
--	int i, j, count = 0, count_begin = FALSE;
-+	int i, j, count = 0;
-+	bool count_begin = false;
- 	s32 dentries_per_clu;
- 	u32 type;
- 	u8 bmap[128/* 1 ~ 1023 */];
-@@ -2779,14 +2782,14 @@ s32 fat_generate_dos_name(struct super_block *sb, struct chain_t *p_dir,
- 				continue;
- 
- 			count = 0;
--			count_begin = FALSE;
-+			count_begin = false;
- 
- 			for (j = 0; j < 8; j++) {
- 				if (ep->name[j] == ' ')
- 					break;
- 
- 				if (ep->name[j] == '~') {
--					count_begin = TRUE;
-+					count_begin = true;
- 				} else if (count_begin) {
- 					if ((ep->name[j] >= '0') &&
- 					    (ep->name[j] <= '9')) {
-@@ -2794,7 +2797,7 @@ s32 fat_generate_dos_name(struct super_block *sb, struct chain_t *p_dir,
- 							(ep->name[j] - '0');
- 					} else {
- 						count = 0;
--						count_begin = FALSE;
-+						count_begin = false;
- 					}
- 				}
- 			}
-@@ -3613,7 +3616,7 @@ int sector_read(struct super_block *sb, sector_t sec, struct buffer_head **bh,
- 	if (!p_fs->dev_ejected) {
- 		ret = bdev_read(sb, sec, bh, 1, read);
- 		if (ret != FFS_SUCCESS)
--			p_fs->dev_ejected = TRUE;
-+			p_fs->dev_ejected = 1;
- 	}
- 
- 	return ret;
-@@ -3642,7 +3645,7 @@ int sector_write(struct super_block *sb, sector_t sec, struct buffer_head *bh,
- 	if (!p_fs->dev_ejected) {
- 		ret = bdev_write(sb, sec, bh, 1, sync);
- 		if (ret != FFS_SUCCESS)
--			p_fs->dev_ejected = TRUE;
-+			p_fs->dev_ejected = 1;
- 	}
- 
- 	return ret;
-@@ -3665,7 +3668,7 @@ int multi_sector_read(struct super_block *sb, sector_t sec,
- 	if (!p_fs->dev_ejected) {
- 		ret = bdev_read(sb, sec, bh, num_secs, read);
- 		if (ret != FFS_SUCCESS)
--			p_fs->dev_ejected = TRUE;
-+			p_fs->dev_ejected = 1;
- 	}
- 
- 	return ret;
-@@ -3693,7 +3696,7 @@ int multi_sector_write(struct super_block *sb, sector_t sec,
- 	if (!p_fs->dev_ejected) {
- 		ret = bdev_write(sb, sec, bh, num_secs, sync);
- 		if (ret != FFS_SUCCESS)
--			p_fs->dev_ejected = TRUE;
-+			p_fs->dev_ejected = 1;
- 	}
- 
- 	return ret;
-diff --git a/drivers/staging/exfat/exfat_nls.c b/drivers/staging/exfat/exfat_nls.c
-index 2ca58616159b..03cb8290b5d2 100644
---- a/drivers/staging/exfat/exfat_nls.c
-+++ b/drivers/staging/exfat/exfat_nls.c
-@@ -225,7 +225,7 @@ void nls_uniname_to_dosname(struct super_block *sb,
- 		*dosname = 0x05;
- 
- 	if (*uniname != 0x0)
--		lossy = TRUE;
-+		lossy = true;
- 
- 	if (upper & lower)
- 		p_dosname->name_case = 0xFF;
-diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
-index e44b860e35e8..03de872aaa1d 100644
---- a/drivers/staging/exfat/exfat_super.c
-+++ b/drivers/staging/exfat/exfat_super.c
-@@ -452,7 +452,7 @@ static int ffsMountVol(struct super_block *sb)
- 	buf_init(sb);
- 
- 	sema_init(&p_fs->v_sem, 1);
--	p_fs->dev_ejected = FALSE;
-+	p_fs->dev_ejected = 0;
- 
- 	/* open the block device */
- 	bdev_open(sb);
-@@ -903,7 +903,8 @@ static int ffsReadFile(struct inode *inode, struct file_id_t *fid, void *buffer,
- static int ffsWriteFile(struct inode *inode, struct file_id_t *fid,
- 			void *buffer, u64 count, u64 *wcount)
- {
--	s32 modified = FALSE, offset, sec_offset, clu_offset;
-+	bool modified = false;
-+	s32 offset, sec_offset, clu_offset;
- 	s32 num_clusters, num_alloc, num_alloced = (s32) ~0;
- 	int ret = 0;
- 	u32 clu, last_clu;
-@@ -1011,14 +1012,14 @@ static int ffsWriteFile(struct inode *inode, struct file_id_t *fid,
- 				if (new_clu.flags == 0x01)
- 					fid->flags = 0x01;
- 				fid->start_clu = new_clu.dir;
--				modified = TRUE;
-+				modified = true;
- 			} else {
- 				if (new_clu.flags != fid->flags) {
- 					exfat_chain_cont_cluster(sb,
- 								 fid->start_clu,
- 								 num_clusters);
- 					fid->flags = 0x01;
--					modified = TRUE;
-+					modified = true;
- 				}
- 				if (new_clu.flags == 0x01)
- 					FAT_write(sb, last_clu, new_clu.dir);
-@@ -1088,7 +1089,7 @@ static int ffsWriteFile(struct inode *inode, struct file_id_t *fid,
- 
- 		if (fid->size < fid->rwoffset) {
- 			fid->size = fid->rwoffset;
--			modified = TRUE;
-+			modified = true;
- 		}
- 	}
- 
-@@ -1828,7 +1829,8 @@ static int ffsWriteStat(struct inode *inode, struct dir_entry_t *info)
- 
- static int ffsMapCluster(struct inode *inode, s32 clu_offset, u32 *clu)
- {
--	s32 num_clusters, num_alloced, modified = FALSE;
-+	s32 num_clusters, num_alloced;
-+	bool modified = false;
- 	u32 last_clu;
- 	int ret = FFS_SUCCESS;
- 	sector_t sector = 0;
-@@ -1906,13 +1908,13 @@ static int ffsMapCluster(struct inode *inode, s32 clu_offset, u32 *clu)
- 			if (new_clu.flags == 0x01)
- 				fid->flags = 0x01;
- 			fid->start_clu = new_clu.dir;
--			modified = TRUE;
-+			modified = true;
- 		} else {
- 			if (new_clu.flags != fid->flags) {
- 				exfat_chain_cont_cluster(sb, fid->start_clu,
- 							 num_clusters);
- 				fid->flags = 0x01;
--				modified = TRUE;
-+				modified = true;
- 			}
- 			if (new_clu.flags == 0x01)
- 				FAT_write(sb, last_clu, new_clu.dir);
--- 
-2.20.1
+So I can't take this patch, sorry.
 
+Please fix up and resend.
+
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
