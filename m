@@ -1,73 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B6F1A6A5C
-	for <lists+driverdev-devel@lfdr.de>; Tue,  3 Sep 2019 15:50:18 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C2278A6CF1
+	for <lists+driverdev-devel@lfdr.de>; Tue,  3 Sep 2019 17:37:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 82435863A1;
-	Tue,  3 Sep 2019 13:50:16 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id F144120426;
+	Tue,  3 Sep 2019 15:37:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id f-ItJv4GRNjO; Tue,  3 Sep 2019 13:50:16 +0000 (UTC)
+	with ESMTP id dm51Ef8-QpNn; Tue,  3 Sep 2019 15:37:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5FE738693D;
-	Tue,  3 Sep 2019 13:50:15 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 83E782049D;
+	Tue,  3 Sep 2019 15:37:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0B3651BF30A
- for <devel@linuxdriverproject.org>; Tue,  3 Sep 2019 13:50:13 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 00A4D1BF593
+ for <devel@linuxdriverproject.org>; Tue,  3 Sep 2019 15:37:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B54CF8547D
- for <devel@linuxdriverproject.org>; Tue,  3 Sep 2019 13:49:56 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id EB90A8248B
+ for <devel@linuxdriverproject.org>; Tue,  3 Sep 2019 15:37:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id x_HEzEtyD4_q for <devel@linuxdriverproject.org>;
- Tue,  3 Sep 2019 13:49:55 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f193.google.com (mail-oi1-f193.google.com
- [209.85.167.193])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 8EBE585319
- for <devel@driverdev.osuosl.org>; Tue,  3 Sep 2019 13:49:55 +0000 (UTC)
-Received: by mail-oi1-f193.google.com with SMTP id o6so12759337oic.9
- for <devel@driverdev.osuosl.org>; Tue, 03 Sep 2019 06:49:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=FktHJJ+UJV2Hk/dUahUPepTrl057EHVfJavoeuM6yvg=;
- b=oypBiOmGJZLXxbRU2YFxX5DvICWjkNtIDoANVdCGB5BRFrqUWQBdk0nzocOcvQixWm
- vS8eY1SroEmDrpXmybYItp31ORXU38YlX5NC8Z/W6a3IK9fkGydbOT4/A1swO5EnFXXN
- HJVGhkXG3P7xJSk+9X9+5uToaWwWH4HgP6XbKZue2iwy7RNyswlyv/TGOZysIxEftEFP
- t72R6mIlcpLPZEoMNeZGJ0FL55WV00TRHlPspWaXhOYq4qcX/HVFtRpz5m5Oj23CwUjV
- fWm/SPNy/unQSNwI+tlgSU0wzMK+6lfpQIhvYtHcj5WxMd2gL4iQYBur00r4aMxKWo4w
- mgFQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to:content-transfer-encoding;
- bh=FktHJJ+UJV2Hk/dUahUPepTrl057EHVfJavoeuM6yvg=;
- b=NuETB4RjQOymrcBqlnOivN4H+ABZ/rqcP6qxGCfk0OehtlEcbMCxTapmVmtkakkyXO
- I2uyQrbSf0+Wr4gQgcBtAZbjVes/U71+1kMbOezJuaoWc/7IIkHBhfROhc0gbGoVxcMt
- Tl2onvkvTpjQF9yAZmIHVn5SiCw3CDe55FivYL9gigAEmvSgJHldYlypJ089e9yNR8W1
- zKVGFoJgNjIEtofcan1DprvVGnR+k+l2ehI6L5bWuRfqzoYa5E2W2rKKFM+9fD52dIyx
- wvjOMH4sH7o8KG9AccdwkBwIc+qRJgw2XmmxhZg+74AMO8j+3VLg0k3lYHbNXYY2WaKS
- w/Ow==
-X-Gm-Message-State: APjAAAWvnnfvNWWtxW/6D846UDQkxIhLkL+Xl4ilvhL+391KpXnpWhvq
- Hd/RZlV/o6NTXzdZhLw+PzXIy9ZKWvobljvZy+4=
-X-Google-Smtp-Source: APXvYqw7IocNSQUNnmeuZCiyMstUfN59rsMpq0RE5I6ME3FN9WZHuMc+UM/S0tcCPgun0UnlsU0clqiK94tImkKow3A=
-X-Received: by 2002:aca:1b11:: with SMTP id b17mr78796oib.152.1567518594779;
- Tue, 03 Sep 2019 06:49:54 -0700 (PDT)
+ with ESMTP id du5bk_Ofz04K for <devel@linuxdriverproject.org>;
+ Tue,  3 Sep 2019 15:37:11 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from bombadil.infradead.org (bombadil.infradead.org
+ [198.137.202.133])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 4D3BD8242B
+ for <devel@driverdev.osuosl.org>; Tue,  3 Sep 2019 15:37:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=bombadil.20170209; h=In-Reply-To:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=TOMcH7snttb2Sr7cqyYUxOSzNPnn0zJCorjl1PxxkD8=; b=iPZa9nn0+EclNXulN9PX55CfF
+ gjiZ/RcbonRlNHqkBzmGEe6Ioj+rAZKWUTmZvc8doirxhztv7FprjyzD7VGiWIB7qATK55E7i7a1x
+ TmDqOuFRVBJbmG60tr0ElwbLZ46pwJskgV7Cz8NNRFQitmpy5Nz/lO1P2FXCuvPwzYgXor8S0FMf6
+ LAmnu/Qk8ARcx6Ev1/WBOUwEB1FDGT6iVSDqwPmo763jvjWRJqLnfmylBY0Mx+wmdggFpEJOWd14L
+ UHDHQLEhg+ERlFoN1IzFKJI+sahK6t1WEtjnYNVxM2f8AqkTLjGHcU8IooYs/dyfk3rjjLyTwS9xf
+ nr5m+CE5w==;
+Received: from hch by bombadil.infradead.org with local (Exim 4.92 #3 (Red Hat
+ Linux)) id 1i5Arg-0000dg-Ql; Tue, 03 Sep 2019 15:37:04 +0000
+Date: Tue, 3 Sep 2019 08:37:04 -0700
+From: Christoph Hellwig <hch@infradead.org>
+To: Gao Xiang <gaoxiang25@huawei.com>
+Subject: Re: [PATCH 00/21] erofs: patchset addressing Christoph's comments
+Message-ID: <20190903153704.GA2201@infradead.org>
+References: <20190802125347.166018-1-gaoxiang25@huawei.com>
+ <20190901055130.30572-1-hsiangkao@aol.com>
+ <20190902124645.GA8369@infradead.org>
+ <20190902142452.GE2664@architecture4>
+ <20190902152323.GB14009@infradead.org>
+ <20190902155037.GD179615@architecture4>
+ <20190903065803.GA11205@infradead.org>
+ <20190903081749.GA89379@architecture4>
 MIME-Version: 1.0
-Received: by 2002:a9d:5886:0:0:0:0:0 with HTTP;
- Tue, 3 Sep 2019 06:49:54 -0700 (PDT)
-From: joe akaba <barrimurphy1965@gmail.com>
-Date: Tue, 3 Sep 2019 15:49:54 +0200
-Message-ID: <CAGZA+7p=txEw++SS5ZrJxbkcn1YqiVB8_Z=j3nxYYfophGpxfQ@mail.gmail.com>
-Subject: hello
-To: undisclosed-recipients:;
+Content-Disposition: inline
+In-Reply-To: <20190903081749.GA89379@architecture4>
+User-Agent: Mutt/1.11.4 (2019-03-13)
+X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
+ bombadil.infradead.org. See http://www.infradead.org/rpr.html
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,31 +77,25 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: joeakaba00@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, Chao Yu <yuchao0@huawei.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Christoph Hellwig <hch@infradead.org>, linux-fsdevel@vger.kernel.org,
+ linux-erofs@lists.ozlabs.org, Chao Yu <chao@kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SGVsbG8KCk15IG5hbWUgaXMgSm9lIEFrYWJhSSBhbSBhIGxhd3llciBieSBwcm9mZXNzaW9uLiBJ
-IHdpc2ggdG8gb2ZmZXIgeW91CnRoZSBuZXh0IG9mIGtpbiB0byBteSBjbGllbnQuIFlvdSB3aWxs
-IGluaGVyaXQgdGhlIHN1bSBvZiAoJDguNSBNaWxsaW9uKQpkb2xsYXJzIG15IGNsaWVudCBsZWZ0
-IGluIHRoZSBiYW5rIGJlZm9yZSBoaXMgZGVhdGguCgpNeSBjbGllbnQgaXMgYSBjaXRpemVuIG9m
-IHlvdXIgY291bnRyeSB3aG8gZGllZCBpbiBhdXRvIGNyYXNoIHdpdGggaGlzIHdpZmUKYW5kIG9u
-bHkgc29uLiBJIHdpbGwgYmUgZW50aXRsZWQgd2l0aCA1MCUgb2YgdGhlIHRvdGFsIGZ1bmQgd2hp
-bGUgNTAlIHdpbGwKYmUgZm9yIHlvdS4KUGxlYXNlIGNvbnRhY3QgbXkgcHJpdmF0ZSBlbWFpbCBo
-ZXJlIGZvciBtb3JlIGRldGFpbHM6am9lYWthYmEwMEBnbWFpbC5jb20KCk1hbnkgdGhhbmtzIGlu
-IGFkdmFuY2UsCk1yLkpvZSBBa2FiYQoKCkhhbGxvCgpNZWluIE5hbWUgaXN0IEpvZSBBa2FiYS4g
-SWNoIGJpbiB2b24gQmVydWYgUmVjaHRzYW53YWx0LiBJY2ggbcO2Y2h0ZQpJaG5lbiBhbmJpZXRl
-bgpkaWUgbsOkY2hzdGVuIFZlcndhbmR0ZW4genUgbWVpbmVtIEtsaWVudGVuLiBTaWUgZXJiZW4g
-ZGllIFN1bW1lIHZvbgooOCw1IE1pbGxpb25lbiBVUy1Eb2xsYXIpCkRvbGxhciwgZGllIG1laW4g
-S3VuZGUgdm9yIHNlaW5lbSBUb2QgaW4gZGVyIEJhbmsgZ2VsYXNzZW4gaGF0LgoKTWVpbiBNYW5k
-YW50IGlzdCBlaW4gU3RhYXRzYsO8cmdlciBJaHJlcyBMYW5kZXMsIGRlciBtaXQgc2VpbmVyIEZy
-YXUKYmVpIGVpbmVtIEF1dG91bmZhbGwgdW1zIExlYmVuIGdla29tbWVuIGlzdAp1bmQgbnVyIFNv
-aG4uIEljaCB3ZXJkZSBtaXQgNTAlIGRlcyBHZXNhbXRmb25kcyBiZXJlY2h0aWd0IHNlaW4sIHfD
-pGhyZW5kIDUwJQpzZWluIGbDvHIgZGljaC4KQml0dGUga29udGFrdGllcmVuIFNpZSBtZWluZSBw
-cml2YXRlIEUtTWFpbCBoaWVyIGbDvHIgd2VpdGVyZQpJbmZvcm1hdGlvbmVuOiBqb2Vha2FiYTAw
-QGdtYWlsLmNvbQoKVmllbGVuIERhbmsgaW0gVm9yYXVzLApNci5Kb2UgQWthYmEKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0
-CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZl
-cnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+On Tue, Sep 03, 2019 at 04:17:49PM +0800, Gao Xiang wrote:
+> I implement a prelimitary version, but I have no idea it is a really
+> cleanup for now.
+
+The fact that this has to guess the block device address_space
+implementation is indeed pretty ugly.  I'd much prefer to just use
+read_cache_page_gfp, and live with the fact that this allocates
+bufferheads behind you for now.  I'll try to speed up my attempts to
+get rid of the buffer heads on the block device mapping instead.
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
