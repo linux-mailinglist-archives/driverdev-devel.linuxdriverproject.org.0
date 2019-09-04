@@ -1,64 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3A86EA7CE7
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Sep 2019 09:39:16 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 32326A7D9C
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Sep 2019 10:22:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id ED26481D92;
-	Wed,  4 Sep 2019 07:39:13 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 49D73882D3;
+	Wed,  4 Sep 2019 08:22:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id A3y0UnCTQj9q; Wed,  4 Sep 2019 07:39:13 +0000 (UTC)
+	with ESMTP id IjSf0rOuw4vg; Wed,  4 Sep 2019 08:22:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C97C5817F4;
-	Wed,  4 Sep 2019 07:39:12 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C456887E3C;
+	Wed,  4 Sep 2019 08:22:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2FD221BF319
- for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 07:39:11 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 6BA381BF2EC
+ for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 08:22:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 2B98581D92
- for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 07:39:11 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 682C5868E8
+ for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 08:22:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lWH2gSkju29m for <devel@linuxdriverproject.org>;
- Wed,  4 Sep 2019 07:39:09 +0000 (UTC)
+ with ESMTP id wJw-PqvHs4JI for <devel@linuxdriverproject.org>;
+ Wed,  4 Sep 2019 08:22:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga08-in.huawei.com [45.249.212.255])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0C7D5817F4
- for <devel@driverdev.osuosl.org>; Wed,  4 Sep 2019 07:39:08 +0000 (UTC)
-Received: from DGGEMM404-HUB.china.huawei.com (unknown [172.30.72.57])
- by Forcepoint Email with ESMTP id F40EBA30E87F6D87541D;
- Wed,  4 Sep 2019 15:39:04 +0800 (CST)
-Received: from dggeme762-chm.china.huawei.com (10.3.19.108) by
- DGGEMM404-HUB.china.huawei.com (10.3.20.212) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 4 Sep 2019 15:39:04 +0800
-Received: from architecture4 (10.140.130.215) by
- dggeme762-chm.china.huawei.com (10.3.19.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1591.10; Wed, 4 Sep 2019 15:39:04 +0800
-Date: Wed, 4 Sep 2019 15:38:11 +0800
-From: Gao Xiang <gaoxiang25@huawei.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH] erofs: using switch-case while checking the inode type.
-Message-ID: <20190904073811.GA37718@architecture4>
-References: <20190830095615.10995-1-pratikshinde320@gmail.com>
- <20190830115947.GA10981@hsiangkao-HP-ZHAN-66-Pro-G1>
- <20190830142233.GA241393@architecture4>
- <20190904021247.GA65103@architecture4>
- <20190904063134.GA24285@kroah.com>
+Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
+ [209.85.214.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id EDE39868D5
+ for <devel@driverdev.osuosl.org>; Wed,  4 Sep 2019 08:22:38 +0000 (UTC)
+Received: by mail-pl1-f196.google.com with SMTP id k1so1882792pls.11
+ for <devel@driverdev.osuosl.org>; Wed, 04 Sep 2019 01:22:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=R+MTq1VS0iR1Cmy3+6Y5RTbLGGusOaeHEDjli8lEEug=;
+ b=RTBHYoMusuZZ5AhgQVW4Ifku1G8VvN4Ll0zy023Lbai0cViQEH2bR6Iui/by5YW1Ap
+ Q6aYgQSGI9o/EGk+Sn2VF2wxSMZqyDRoqmknxzQNcPNtlmHeghzyeCGm/q0giQ5NFWNI
+ C1HvKXxbYbV0VHTuxz6/Ip6QnSNpNZ7ZMUOImib8g8ItRoRcH8mTzwGOHTTTOy2waQ94
+ nO0BsM7b0Rma+caRCrzA2ZsNaEfBYIhVnamBuZcaQOilnxF5VtbynTkCur6tN8LvjwEh
+ /KdfPBtSwEEHmECBR3CasdP57gyGVdxJVcyyG2tk4EHazua53hS5K8I6uuUcqLLB9kyZ
+ BY0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=R+MTq1VS0iR1Cmy3+6Y5RTbLGGusOaeHEDjli8lEEug=;
+ b=JbpypMS452USMYoJfYVpBprDh81PDHVQb4DnWf3LxvZyIXiNnn2ZKo8PBkl3HlrDrk
+ 4K6U10bNtITFt5kIXtf1ZSFfIS18tvst3o0xTmXbd5fBR45VU82oD9B/2uaqEVTdj/vf
+ RJ0TmLEYgoPLXs7N29LhdHjV0h475R55vMUScMkpyVH/qG7Ft274XNvv1Ez4p2GClKc2
+ 2QbnwSnNxki/16ZpQERbe4H2dyHc6tT8+cmjmDJXW+DuqOAAihMZ6INHzMQNXYzKQ+1w
+ 1yHSvgKD+66Qnbk50XVTaBVFYYqWgdu2y1m/J/YsDFimSg3i0BXjW84EqN3zOH5bUaTF
+ 6WIQ==
+X-Gm-Message-State: APjAAAUHfPNXzx68k8yoDRsF6y0EzH33bLtkDbBqDzu3vF38b1DmwoyJ
+ 6b9agQpbo/FiMxXSpccY/Co=
+X-Google-Smtp-Source: APXvYqx1Bf1AOmUEnA9r1G5j3AiZRcryCIH6SYuoyG7V3crQWL4xyMzhyRlY+1SwI2QFZ3T3XLdMbA==
+X-Received: by 2002:a17:902:8345:: with SMTP id
+ z5mr41132525pln.29.1567585358436; 
+ Wed, 04 Sep 2019 01:22:38 -0700 (PDT)
+Received: from LGEARND20B15 ([27.122.242.75])
+ by smtp.gmail.com with ESMTPSA id y8sm22025894pfe.146.2019.09.04.01.22.35
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 04 Sep 2019 01:22:37 -0700 (PDT)
+Date: Wed, 4 Sep 2019 17:22:32 +0900
+From: Austin Kim <austindh.kim@gmail.com>
+To: mchehab@kernel.org, khilman@baylibre.com
+Subject: [PATCH] media: meson: Add NULL check after the call to kmalloc()
+Message-ID: <20190904082232.GA171180@LGEARND20B15>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190904063134.GA24285@kroah.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Originating-IP: [10.140.130.215]
-X-ClientProxiedBy: dggeme719-chm.china.huawei.com (10.1.199.115) To
- dggeme762-chm.china.huawei.com (10.3.19.108)
-X-CFilter-Loop: Reflected
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,48 +84,43 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Pratik Shinde <pratikshinde320@gmail.com>,
- linux-erofs@lists.ozlabs.org
+Cc: mjourdan@baylibre.com, devel@driverdev.osuosl.org,
+ gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Sep 04, 2019 at 08:31:34AM +0200, Greg KH wrote:
-> On Wed, Sep 04, 2019 at 10:12:47AM +0800, Gao Xiang wrote:
-> > Hi Greg,
-> > 
-> > On Fri, Aug 30, 2019 at 10:22:33PM +0800, Gao Xiang wrote:
-> > > On Fri, Aug 30, 2019 at 07:59:48PM +0800, Gao Xiang wrote:
-> > > > Hi Pratik,
-> > > > 
-> > > > The subject line could be better as '[PATCH v2] xxxxxx'...
-> > > > 
-> > > > On Fri, Aug 30, 2019 at 03:26:15PM +0530, Pratik Shinde wrote:
-> > > > > while filling the linux inode, using switch-case statement to check
-> > > > > the type of inode.
-> > > > > switch-case statement looks more clean here.
-> > > > > 
-> > > > > Signed-off-by: Pratik Shinde <pratikshinde320@gmail.com>
-> > > > 
-> > > > I have no problem of this patch, and I will do a test and reply
-> > > > you "Reviewed-by:" in hours (I'm doing another patchset to resolve
-> > > > what Christoph suggested again)...
-> > > 
-> > > Reviewed-by: Gao Xiang <gaoxiang25@huawei.com>
-> > 
-> > ping.. could you kindly merge this patch, the following patchset
-> > has dependency on it...
-> 
-> Will go do that now, sorry for the delay.
+If the kmalloc() return NULL, the NULL pointer dereference will occur.
+	new_ts->ts = ts;
 
-Thanks Greg...
+Add exception check after the call to kmalloc() is made.
 
-Thanks,
-Gao Xiang
+Signed-off-by: Austin Kim <austindh.kim@gmail.com>
+---
+ drivers/staging/media/meson/vdec/vdec_helpers.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-> 
-> greg k-h
+diff --git a/drivers/staging/media/meson/vdec/vdec_helpers.c b/drivers/staging/media/meson/vdec/vdec_helpers.c
+index f16948b..e7e56d5 100644
+--- a/drivers/staging/media/meson/vdec/vdec_helpers.c
++++ b/drivers/staging/media/meson/vdec/vdec_helpers.c
+@@ -206,6 +206,10 @@ void amvdec_add_ts_reorder(struct amvdec_session *sess, u64 ts, u32 offset)
+ 	unsigned long flags;
+ 
+ 	new_ts = kmalloc(sizeof(*new_ts), GFP_KERNEL);
++	if (!new_ts) {
++		dev_err(sess->core->dev, "Failed to kmalloc()\n");
++		return;
++	}
+ 	new_ts->ts = ts;
+ 	new_ts->offset = offset;
+ 
+-- 
+2.6.2
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
