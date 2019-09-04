@@ -1,49 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 28AB1A785D
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Sep 2019 04:10:26 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1DFBAA786D
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Sep 2019 04:10:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 499C8869BB;
-	Wed,  4 Sep 2019 02:10:24 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9F725878BB;
+	Wed,  4 Sep 2019 02:10:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HOuvR3Hwn0hl; Wed,  4 Sep 2019 02:10:23 +0000 (UTC)
+	with ESMTP id UnIbt-oKvsyn; Wed,  4 Sep 2019 02:10:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AA79485644;
-	Wed,  4 Sep 2019 02:10:22 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A2BE6878AE;
+	Wed,  4 Sep 2019 02:10:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AE04D1BF4DB
- for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 02:10:20 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 444C31BF4DB
+ for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 02:10:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id AB02E869BB
- for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 02:10:20 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 41E6822CC7
+ for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 02:10:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7aHd4_lD9cPn for <devel@linuxdriverproject.org>;
- Wed,  4 Sep 2019 02:10:17 +0000 (UTC)
+ with ESMTP id g9w2nye20qjm for <devel@linuxdriverproject.org>;
+ Wed,  4 Sep 2019 02:10:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga05-in.huawei.com [45.249.212.191])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 86C8985644
- for <devel@driverdev.osuosl.org>; Wed,  4 Sep 2019 02:10:17 +0000 (UTC)
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 4D35536BA690EBFB9591;
- Wed,  4 Sep 2019 10:10:15 +0800 (CST)
+Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
+ by silver.osuosl.org (Postfix) with ESMTPS id B345422CB0
+ for <devel@driverdev.osuosl.org>; Wed,  4 Sep 2019 02:10:23 +0000 (UTC)
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 5B6A46BC7B4DED72A622;
+ Wed,  4 Sep 2019 10:10:20 +0800 (CST)
 Received: from architecture4.huawei.com (10.140.130.215) by smtp.huawei.com
  (10.3.19.211) with Microsoft SMTP Server (TLS) id 14.3.439.0; Wed, 4 Sep 2019
- 10:10:08 +0800
+ 10:10:09 +0800
 From: Gao Xiang <gaoxiang25@huawei.com>
 To: Chao Yu <yuchao0@huawei.com>, Greg Kroah-Hartman
  <gregkh@linuxfoundation.org>, Christoph Hellwig <hch@lst.de>,
  <devel@driverdev.osuosl.org>
-Subject: [PATCH v2 04/25] erofs: kill __packed for on-disk structures
-Date: Wed, 4 Sep 2019 10:08:51 +0800
-Message-ID: <20190904020912.63925-5-gaoxiang25@huawei.com>
+Subject: [PATCH v2 05/25] erofs: update erofs_inode_is_data_compressed helper
+Date: Wed, 4 Sep 2019 10:08:52 +0800
+Message-ID: <20190904020912.63925-6-gaoxiang25@huawei.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190904020912.63925-1-gaoxiang25@huawei.com>
 References: <20190901055130.30572-1-hsiangkao@aol.com>
@@ -70,94 +70,36 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-As Christoph suggested "Please don't add __packed" [1],
-remove all __packed except struct erofs_dirent here.
+As Christoph said, "This looks like a really obsfucated
+way to write:
+	return datamode == EROFS_INODE_FLAT_COMPRESSION ||
+		datamode == EROFS_INODE_FLAT_COMPRESSION_LEGACY; "
 
-Note that all on-disk fields except struct erofs_dirent
-(12 bytes with a 8-byte nid) in EROFS are naturally aligned.
+Although I had my own consideration, it's the right way for now.
 
 [1] https://lore.kernel.org/r/20190829095954.GB20598@infradead.org/
 Reported-by: Christoph Hellwig <hch@infradead.org>
 Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
 ---
- fs/erofs/erofs_fs.h | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+ fs/erofs/erofs_fs.h | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
 diff --git a/fs/erofs/erofs_fs.h b/fs/erofs/erofs_fs.h
-index c1220b0f26e0..59dcc2e8cb02 100644
+index 59dcc2e8cb02..87d7ae82339a 100644
 --- a/fs/erofs/erofs_fs.h
 +++ b/fs/erofs/erofs_fs.h
-@@ -38,7 +38,7 @@ struct erofs_super_block {
- 	__le32 requirements;    /* (aka. feature_incompat) */
+@@ -62,9 +62,8 @@ enum {
  
- 	__u8 reserved2[44];
--} __packed;
-+};
- 
- /*
-  * erofs inode data mapping:
-@@ -91,12 +91,12 @@ struct erofs_inode_v1 {
- 
- 		/* for device files, used to indicate old/new device # */
- 		__le32 rdev;
--	} i_u __packed;
-+	} i_u;
- 	__le32 i_ino;           /* only used for 32-bit stat compatibility */
- 	__le16 i_uid;
- 	__le16 i_gid;
- 	__le32 i_reserved2;
--} __packed;
-+};
- 
- /* 32 bytes on-disk inode */
- #define EROFS_INODE_LAYOUT_V1   0
-@@ -119,7 +119,7 @@ struct erofs_inode_v2 {
- 
- 		/* for device files, used to indicate old/new device # */
- 		__le32 rdev;
--	} i_u __packed;
-+	} i_u;
- 
- 	/* only used for 32-bit stat compatibility */
- 	__le32 i_ino;
-@@ -130,7 +130,7 @@ struct erofs_inode_v2 {
- 	__le32 i_ctime_nsec;
- 	__le32 i_nlink;
- 	__u8   i_reserved2[16];
--} __packed;
-+};
- 
- #define EROFS_MAX_SHARED_XATTRS         (128)
- /* h_shared_count between 129 ... 255 are special # */
-@@ -152,7 +152,7 @@ struct erofs_xattr_ibody_header {
- 	__u8   h_shared_count;
- 	__u8   h_reserved2[7];
- 	__le32 h_shared_xattrs[0];      /* shared xattr id array */
--} __packed;
-+};
- 
- /* Name indexes */
- #define EROFS_XATTR_INDEX_USER              1
-@@ -169,7 +169,7 @@ struct erofs_xattr_entry {
- 	__le16 e_value_size;    /* size of attribute value */
- 	/* followed by e_name and e_value */
- 	char   e_name[0];       /* attribute name */
--} __packed;
-+};
- 
- static inline unsigned int erofs_xattr_ibody_size(__le16 i_xattr_icount)
+ static inline bool erofs_inode_is_data_compressed(unsigned int datamode)
  {
-@@ -273,8 +273,8 @@ struct z_erofs_vle_decompressed_index {
- 		 * [1] - pointing to the tail cluster
- 		 */
- 		__le16 delta[2];
--	} di_u __packed;
--} __packed;
-+	} di_u;
-+};
+-	if (datamode == EROFS_INODE_FLAT_COMPRESSION)
+-		return true;
+-	return datamode == EROFS_INODE_FLAT_COMPRESSION_LEGACY;
++	return datamode == EROFS_INODE_FLAT_COMPRESSION ||
++		datamode == EROFS_INODE_FLAT_COMPRESSION_LEGACY;
+ }
  
- #define Z_EROFS_VLE_LEGACY_INDEX_ALIGN(size) \
- 	(round_up(size, sizeof(struct z_erofs_vle_decompressed_index)) + \
+ /* bit definitions of inode i_advise */
 -- 
 2.17.1
 
