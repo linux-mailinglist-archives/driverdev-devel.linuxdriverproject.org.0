@@ -1,51 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E9B4A80F6
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Sep 2019 13:19:44 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8091BA8289
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Sep 2019 14:37:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 25ED787DCC;
-	Wed,  4 Sep 2019 11:19:43 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AFDEF87951;
+	Wed,  4 Sep 2019 12:37:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id L4IJBhyVaLD6; Wed,  4 Sep 2019 11:19:43 +0000 (UTC)
+	with ESMTP id SYi6GnupS46e; Wed,  4 Sep 2019 12:37:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C23AA87861;
-	Wed,  4 Sep 2019 11:19:40 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5D8FC87998;
+	Wed,  4 Sep 2019 12:37:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 66A911BF40D
- for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 11:19:39 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 99F601BF3DE
+ for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 12:37:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 549652044F
- for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 11:19:39 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 95A158574A
+ for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 12:37:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dRumTyyJfVp1 for <devel@linuxdriverproject.org>;
- Wed,  4 Sep 2019 11:19:38 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by silver.osuosl.org (Postfix) with ESMTPS id B619020433
- for <devel@driverdev.osuosl.org>; Wed,  4 Sep 2019 11:19:38 +0000 (UTC)
-Received: from [213.220.153.21] (helo=wittgenstein)
- by youngberry.canonical.com with esmtpsa (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.76) (envelope-from <christian.brauner@ubuntu.com>)
- id 1i5TK3-0005LA-Qr; Wed, 04 Sep 2019 11:19:35 +0000
-Date: Wed, 4 Sep 2019 13:19:35 +0200
-From: Christian Brauner <christian.brauner@ubuntu.com>
-To: Hridya Valsaraju <hridya@google.com>
-Subject: Re: [PATCH v3 0/4] Add binder state and statistics to binderfs
-Message-ID: <20190904111934.ya37tlzqjqvt7h6a@wittgenstein>
-References: <20190903161655.107408-1-hridya@google.com>
+ with ESMTP id lvhBzUWpNaXh for <devel@linuxdriverproject.org>;
+ Wed,  4 Sep 2019 12:37:14 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 61B4584C2C
+ for <devel@driverdev.osuosl.org>; Wed,  4 Sep 2019 12:37:14 +0000 (UTC)
+X-Amp-Result: UNSCANNABLE
+X-Amp-File-Uploaded: False
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 04 Sep 2019 05:37:13 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,467,1559545200"; d="scan'208";a="212378188"
+Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
+ by fmsmga002.fm.intel.com with ESMTP; 04 Sep 2019 05:37:12 -0700
+Received: from andy by smile with local (Exim 4.92.1)
+ (envelope-from <andriy.shevchenko@linux.intel.com>)
+ id 1i5UX9-0000pS-5I; Wed, 04 Sep 2019 15:37:11 +0300
+Date: Wed, 4 Sep 2019 15:37:11 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: kbuild test robot <lkp@intel.com>
+Subject: Re: [staging:staging-testing 314/401]
+ drivers/iio/common/hid-sensors/hid-sensor-attributes.c:312: undefined
+ reference to `__udivdi3'
+Message-ID: <20190904123711.GL2680@smile.fi.intel.com>
+References: <201909041145.dxkxV8cJ%lkp@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190903161655.107408-1-hridya@google.com>
-User-Agent: NeoMutt/20180716
+In-Reply-To: <201909041145.dxkxV8cJ%lkp@intel.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,56 +68,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, kernel-team@android.com,
- Todd Kjos <tkjos@android.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org,
- Arve =?utf-8?B?SGrDuG5uZXbDpWc=?= <arve@android.com>,
- Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>
+Cc: devel@driverdev.osuosl.org, kbuild-all@01.org,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Sep 03, 2019 at 09:16:51AM -0700, Hridya Valsaraju wrote:
-> Currently, the only way to access binder state and
-> statistics is through debugfs. We need a way to
-> access the same even when debugfs is not mounted.
-> These patches add a mount option to make this
-> information available in binderfs without affecting
-> its presence in debugfs. The following debugfs nodes
-> will be made available in a binderfs instance when
-> mounted with the mount option 'stats=global' or 'stats=local'.
+On Wed, Sep 04, 2019 at 11:33:50AM +0800, kbuild test robot wrote:
+> tree:   https://kernel.googlesource.com/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
+> head:   74eb9c06b1d722468db397595ac6834b9e4ac235
+> commit: 473d12f7638c93acbd9296a8cd455b203d5eb528 [314/401] iio: hid-sensor-attributes: Convert to use int_pow()
+> config: i386-randconfig-e004-201935 (attached as .config)
+> compiler: gcc-7 (Debian 7.4.0-11) 7.4.0
+> reproduce:
+>         git checkout 473d12f7638c93acbd9296a8cd455b203d5eb528
+>         # save the attached .config to linux build tree
+>         make ARCH=i386 
 > 
->  /sys/kernel/debug/binder/failed_transaction_log
->  /sys/kernel/debug/binder/proc
->  /sys/kernel/debug/binder/state
->  /sys/kernel/debug/binder/stats
->  /sys/kernel/debug/binder/transaction_log
->  /sys/kernel/debug/binder/transactions
+> If you fix the issue, kindly add following tag
+> Reported-by: kbuild test robot <lkp@intel.com>
+> 
+> All errors (new ones prefixed by >>):
 
-Acked-by: Christian Brauner <christian.brauner@ubuntu.com>
+So, as far as I understood it wasn't compiled on 32-bit before, so, it's not a
+new error and thus would (has to?) be fixed separately.
 
-Btw, I think your counting is off-by-one. :) We usually count the
-initial send of a series as 0 and the first rework of that series as v1.
-I think you counted your initial send as v1 and the first rework as v2. :)
+>    ld: drivers/iio/common/hid-sensors/hid-sensor-attributes.o: in function `adjust_exponent_nano':
+> >> drivers/iio/common/hid-sensors/hid-sensor-attributes.c:312: undefined reference to `__udivdi3'
+> >> ld: drivers/iio/common/hid-sensors/hid-sensor-attributes.c:314: undefined reference to `__umoddi3'
+> >> ld: drivers/iio/common/hid-sensors/hid-sensor-attributes.c:324: undefined reference to `__udivdi3'
+>    ld: drivers/iio/common/hid-sensors/hid-sensor-attributes.c:325: undefined reference to `__umoddi3'
 
-Christian
 
-> 
-> Hridya Valsaraju (4):
->   binder: add a mount option to show global stats
->   binder: Add stats, state and transactions files
->   binder: Make transaction_log available in binderfs
->   binder: Add binder_proc logging to binderfs
-> 
->  drivers/android/binder.c          |  95 ++++++-----
->  drivers/android/binder_internal.h |  84 ++++++++++
->  drivers/android/binderfs.c        | 255 ++++++++++++++++++++++++++----
->  3 files changed, 362 insertions(+), 72 deletions(-)
-> 
-> -- 
-> 2.23.0.187.g17f5b7556c-goog
-> 
+-- 
+With Best Regards,
+Andy Shevchenko
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
