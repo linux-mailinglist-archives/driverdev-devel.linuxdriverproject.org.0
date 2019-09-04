@@ -1,77 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A2CE3A946A
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Sep 2019 23:03:37 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8AC5CA9476
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Sep 2019 23:06:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4C04B87BFE;
-	Wed,  4 Sep 2019 21:03:36 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DC714855EA;
+	Wed,  4 Sep 2019 21:06:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id raeVxAVbLZ-O; Wed,  4 Sep 2019 21:03:35 +0000 (UTC)
+	with ESMTP id 1pZKDkAAUoSc; Wed,  4 Sep 2019 21:06:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 441858740E;
-	Wed,  4 Sep 2019 21:03:35 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 321CB847C8;
+	Wed,  4 Sep 2019 21:06:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4E9531BF3D1
- for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 21:03:33 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 899991BF9AD
+ for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 21:06:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 4B88686739
- for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 21:03:33 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 860C184FC9
+ for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 21:06:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id D7YhaQqoPYF7 for <devel@linuxdriverproject.org>;
- Wed,  4 Sep 2019 21:03:32 +0000 (UTC)
+ with ESMTP id imCEHjpj6WRy for <devel@linuxdriverproject.org>;
+ Wed,  4 Sep 2019 21:06:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f193.google.com (mail-qt1-f193.google.com
- [209.85.160.193])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id AEE3A86407
- for <devel@driverdev.osuosl.org>; Wed,  4 Sep 2019 21:03:32 +0000 (UTC)
-Received: by mail-qt1-f193.google.com with SMTP id u40so107185qth.11
- for <devel@driverdev.osuosl.org>; Wed, 04 Sep 2019 14:03:32 -0700 (PDT)
+Received: from mail-qt1-f196.google.com (mail-qt1-f196.google.com
+ [209.85.160.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 36F9C84D0F
+ for <devel@driverdev.osuosl.org>; Wed,  4 Sep 2019 21:06:25 +0000 (UTC)
+Received: by mail-qt1-f196.google.com with SMTP id j10so139946qtp.8
+ for <devel@driverdev.osuosl.org>; Wed, 04 Sep 2019 14:06:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=CzEDh/TsIq7upWl5Yv4giE6ogitNU/Rn6EYmhnKlYvk=;
- b=oNH2euNPlkfsmgsbVWioFIdW/n5Zsqzl3Xc42ZsNtjCeEXUBg47otMMdcUkPnpAVeq
- fSYRdgt/3W0BQMYCwvFNN88AczjtCFjXr4iMki7BjJk+cuGkWJytORNuhmWSNBVh7CGN
- r1pPapMWW4MdJiPK45JbSB3idS16Kazwy6D+S7mhUIytq+2+zUAmksQjRzAMfe9xkmLt
- +zZ/8NcM53m5NFTwk400QeODytz4F8l30idy13m6BbHs56HtLEzq/uYEWL79u6i+lNkk
- RSbVGU0l3NARncpWYVOpRPerW03Ma9wvaOhOo/W+2eeufNqnodfid9F92qhWaubQl3b8
- DiTg==
+ bh=UaZIRIb7eWDZUmuFUvyLJZmPVK7Rr9RueiAiw2bvhuY=;
+ b=Ar7mAQHarWzTpLuNkoxVGscFW2h5Z1XgkkQgf6T1ze27edjg8vNPRaiXl1tvdFHGKF
+ VFBnKOgaShRFEX3uP/UUK9PyE0le4/R7wUeL6ysQUCuB13lQs370sLLc/jK5UdVF8HWw
+ 1oGzQvU6kYV5c9VbZqCNTb0aqrJNzOeTn/HjjI0+J1Jw2oTIkyzncubeh3Qjj5cM/EEp
+ A/iB3BZjPGM5dyBJqmkXedT96aXWQB6l5iWExy8yCss7TRtMMLQVbTsVPsF4QbdIQ5d7
+ qYiokp++onnRb9W1XQtbmbH1F9xAvDk+yT8N0Z038LrHIlEXMXqGXsgrloX5qhVdrsFo
+ vwMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=CzEDh/TsIq7upWl5Yv4giE6ogitNU/Rn6EYmhnKlYvk=;
- b=nLMeYA0nSKsPv8JvWAZhGjzsFoAvbbs8L5JJjD0vkLwMtTT3TFNHVOuXjtwyHKZ8WH
- Lv3bEykFi/pLscqIGaHkL8G0fPFRQgX8OmI8eqinLbiXMaI4Hyf0x2O0xMA2aJ4Dc/sL
- WcTdKII05Jqle7Z6xDz7CbE5nrS5mtgkpPTgYJKs/8aPEziaQ416FBWkpQV6L81/V7+i
- tsuioRkJ8Rik9siiBe/86SElaaKUvGryU69nlIAt18ZSQmQBeyc+/VVvHl0HjBjSgaRL
- qJko2RwaXaDs0vBCuvKNZ1SSv/9L1iwUXZgWc25dtmadqyoTH89NTOXITu+w2Boi7+y5
- xO9A==
-X-Gm-Message-State: APjAAAUy3YFAlgh/sZbNMYK8qw1PgN30C7bJfbKmYIDJmvSoFNMzzCu6
- Oar+WQ+l0KnvNPramTwlq7vYuNvs
-X-Google-Smtp-Source: APXvYqyiG8Lc/uvqk95Uzde1T+GxJ7uHvZpxs0K5bY6Y8JzN3eTEDKj2o6jwgMg/OfQN/pNR4g2eJA==
-X-Received: by 2002:ac8:2b82:: with SMTP id m2mr69263qtm.35.1567631011842;
- Wed, 04 Sep 2019 14:03:31 -0700 (PDT)
-Received: from 657840b88179.ic.unicamp.br
- (wifi-177-220-84-123.wifi.ic.unicamp.br. [177.220.84.123])
- by smtp.gmail.com with ESMTPSA id t55sm81669qth.6.2019.09.04.14.03.29
+ bh=UaZIRIb7eWDZUmuFUvyLJZmPVK7Rr9RueiAiw2bvhuY=;
+ b=K/Koatjs5UsYWIUB7Bh9z3yQB7kVwiIUYyxJ3+JcsSydslBeZxetMZ2APVENPEBT+G
+ 4wzLaGz1wzOoi4z26pyHrCMZev2RbfHdPHmpXNxGK3pg9RTrbLQaYk9mcKY+3wr2aFN4
+ l8+hyP1V1mrryedKfDYVONt3fk8LK2lWtv8lIImW/zV7i3BkBkyNXc9T4tcpYXRHzjTd
+ VV3Hqkmgnk/PJG/2ZVudDhmorHPfyggAbeUNS4VFXYdFSa01vveb8u509fqpoL7u1WUy
+ epaUWi+LtxZ68o3DmHs117d3Ok1O1o3ThVDP8//HuDZLm0ySh0WtnnJ4yUlKKw/cL/SV
+ G/fg==
+X-Gm-Message-State: APjAAAVpXOA1hb92YOFEjXV1JAHZA0jlNt4XdVjCJzkaCWY/ee3BqWwd
+ GKBdORjbVVWLoNTZkuB0GlA=
+X-Google-Smtp-Source: APXvYqwVoEzX6KSezOYOFf+WK2aIAr87DU49pQjAfxp0pf9UKtZOQWsSmSLyU+3HlWu+KMfP6vmIUQ==
+X-Received: by 2002:ac8:92d:: with SMTP id t42mr105126qth.206.1567631184313;
+ Wed, 04 Sep 2019 14:06:24 -0700 (PDT)
+Received: from 24a3ceb039de.ic.unicamp.br
+ (wifi-177-220-85-167.wifi.ic.unicamp.br. [177.220.85.167])
+ by smtp.gmail.com with ESMTPSA id o127sm86871qkd.104.2019.09.04.14.06.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Sep 2019 14:03:31 -0700 (PDT)
-From: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- lkcamp@lists.libreplanet.br.org
-Subject: [PATCH] staging: rtl8192e: remove unnecessary blank line
-Date: Wed,  4 Sep 2019 21:03:26 +0000
-Message-Id: <20190904210326.17983-1-martinsdecarvalhobeatriz@gmail.com>
+ Wed, 04 Sep 2019 14:06:23 -0700 (PDT)
+From: Pedro Chinen <ph.u.chinen@gmail.com>
+To: Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ greybus-dev@lists.linaro.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, lkcamp@lists.libreplanetbr.org
+Subject: [PATCH] staging: greybus: loopback_test: remove multiple blank lines
+Date: Wed,  4 Sep 2019 21:05:47 +0000
+Message-Id: <20190904210547.5288-1-ph.u.chinen@gmail.com>
 X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -91,27 +92,42 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix checkpath error "CHECK: Blank lines aren't necessary after an open
-brace '{'"
-in rtllib.h:482.
+Fix following checkpath warnings in multiple lines:
+CHECK: Please don't use multiple blank lines
 
-Signed-off-by: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
+Signed-off-by: Pedro Chinen <ph.u.chinen@gmail.com>
 ---
- drivers/staging/rtl8192e/rtllib.h | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/staging/greybus/tools/loopback_test.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-diff --git a/drivers/staging/rtl8192e/rtllib.h b/drivers/staging/rtl8192e/rtllib.h
-index 7a0128815..328f410da 100644
---- a/drivers/staging/rtl8192e/rtllib.h
-+++ b/drivers/staging/rtl8192e/rtllib.h
-@@ -479,7 +479,6 @@ enum wireless_mode {
- #define P80211_OUI_LEN 3
+diff --git a/drivers/staging/greybus/tools/loopback_test.c b/drivers/staging/greybus/tools/loopback_test.c
+index ba6f905f26fa..1e78c148d7cb 100644
+--- a/drivers/staging/greybus/tools/loopback_test.c
++++ b/drivers/staging/greybus/tools/loopback_test.c
+@@ -779,7 +779,6 @@ static void prepare_devices(struct loopback_test *t)
+ 		if (t->stop_all || device_enabled(t, i))
+ 			write_sysfs_val(t->devices[i].sysfs_entry, "type", 0);
  
- struct rtllib_snap_hdr {
 -
- 	u8    dsap;   /* always 0xAA */
- 	u8    ssap;   /* always 0xAA */
- 	u8    ctrl;   /* always 0x03 */
+ 	for (i = 0; i < t->device_count; i++) {
+ 		if (!device_enabled(t, i))
+ 			continue;
+@@ -850,7 +849,6 @@ void loopback_run(struct loopback_test *t)
+ 	if (ret)
+ 		goto err;
+ 
+-
+ 	get_results(t);
+ 
+ 	log_results(t);
+@@ -882,7 +880,6 @@ static int sanity_check(struct loopback_test *t)
+ 
+ 	}
+ 
+-
+ 	return 0;
+ }
+ 
 -- 
 2.20.1
 
