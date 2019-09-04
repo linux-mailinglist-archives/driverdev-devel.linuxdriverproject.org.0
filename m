@@ -1,49 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 188F2A786A
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Sep 2019 04:10:34 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C62CBA785A
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Sep 2019 04:10:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id E6CAB22D2D;
-	Wed,  4 Sep 2019 02:10:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 43C4E883C8;
+	Wed,  4 Sep 2019 02:10:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lhLd2ZQWATYM; Wed,  4 Sep 2019 02:10:30 +0000 (UTC)
+	with ESMTP id CW7sIPCkZM8d; Wed,  4 Sep 2019 02:10:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 09C8322D10;
-	Wed,  4 Sep 2019 02:10:27 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B21B487C66;
+	Wed,  4 Sep 2019 02:10:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 64D7B1BF4DB
- for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 02:10:21 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id F21681BF4DB
+ for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 02:10:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5F54885644
- for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 02:10:21 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id EE1B3880E0
+ for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 02:10:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pLSy1-vP7W9D for <devel@linuxdriverproject.org>;
+ with ESMTP id 4LyuZ0CSJ3mj for <devel@linuxdriverproject.org>;
  Wed,  4 Sep 2019 02:10:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from huawei.com (szxga05-in.huawei.com [45.249.212.191])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 86C2E8034E
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 84BF387C66
  for <devel@driverdev.osuosl.org>; Wed,  4 Sep 2019 02:10:17 +0000 (UTC)
 Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 575B02FF21D1C15272DF;
+ by Forcepoint Email with ESMTP id 525D9A02AB4F0FA6D09C;
  Wed,  4 Sep 2019 10:10:15 +0800 (CST)
 Received: from architecture4.huawei.com (10.140.130.215) by smtp.huawei.com
  (10.3.19.211) with Microsoft SMTP Server (TLS) id 14.3.439.0; Wed, 4 Sep 2019
- 10:10:05 +0800
+ 10:10:06 +0800
 From: Gao Xiang <gaoxiang25@huawei.com>
 To: Chao Yu <yuchao0@huawei.com>, Greg Kroah-Hartman
  <gregkh@linuxfoundation.org>, Christoph Hellwig <hch@lst.de>,
  <devel@driverdev.osuosl.org>
-Subject: [PATCH v2 01/25] erofs: remove all the byte offset comments
-Date: Wed, 4 Sep 2019 10:08:48 +0800
-Message-ID: <20190904020912.63925-2-gaoxiang25@huawei.com>
+Subject: [PATCH v2 02/25] erofs: on-disk format should have explicitly
+ assigned numbers
+Date: Wed, 4 Sep 2019 10:08:49 +0800
+Message-ID: <20190904020912.63925-3-gaoxiang25@huawei.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190904020912.63925-1-gaoxiang25@huawei.com>
 References: <20190901055130.30572-1-hsiangkao@aol.com>
@@ -70,181 +71,59 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-As Christoph suggested [1], "Please remove all the byte offset comments.
-that is something that can easily be checked with gdb or pahole."
+As Christoph suggested [1], on-disk format should have
+explicitly assigned numbers.
 
 [1] https://lore.kernel.org/r/20190829095954.GB20598@infradead.org/
 Reported-by: Christoph Hellwig <hch@infradead.org>
 Signed-off-by: Gao Xiang <gaoxiang25@huawei.com>
 ---
- fs/erofs/erofs_fs.h | 105 +++++++++++++++++++++++---------------------
- 1 file changed, 54 insertions(+), 51 deletions(-)
+ fs/erofs/erofs_fs.h | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
 diff --git a/fs/erofs/erofs_fs.h b/fs/erofs/erofs_fs.h
-index afa7d45ca958..49335fff9d65 100644
+index 49335fff9d65..d1f152a3670a 100644
 --- a/fs/erofs/erofs_fs.h
 +++ b/fs/erofs/erofs_fs.h
-@@ -17,27 +17,28 @@
- #define EROFS_REQUIREMENT_LZ4_0PADDING	0x00000001
- #define EROFS_ALL_REQUIREMENTS		EROFS_REQUIREMENT_LZ4_0PADDING
+@@ -53,10 +53,10 @@ struct erofs_super_block {
+  * 4~7 - reserved
+  */
+ enum {
+-	EROFS_INODE_FLAT_PLAIN,
+-	EROFS_INODE_FLAT_COMPRESSION_LEGACY,
+-	EROFS_INODE_FLAT_INLINE,
+-	EROFS_INODE_FLAT_COMPRESSION,
++	EROFS_INODE_FLAT_PLAIN			= 0,
++	EROFS_INODE_FLAT_COMPRESSION_LEGACY	= 1,
++	EROFS_INODE_FLAT_INLINE			= 2,
++	EROFS_INODE_FLAT_COMPRESSION		= 3,
+ 	EROFS_INODE_LAYOUT_MAX
+ };
  
-+/* 128-byte erofs on-disk super block */
- struct erofs_super_block {
--/*  0 */__le32 magic;           /* in the little endian */
--/*  4 */__le32 checksum;        /* crc32c(super_block) */
--/*  8 */__le32 features;        /* (aka. feature_compat) */
--/* 12 */__u8 blkszbits;         /* support block_size == PAGE_SIZE only */
--/* 13 */__u8 reserved;
--
--/* 14 */__le16 root_nid;
--/* 16 */__le64 inos;            /* total valid ino # (== f_files - f_favail) */
--
--/* 24 */__le64 build_time;      /* inode v1 time derivation */
--/* 32 */__le32 build_time_nsec;
--/* 36 */__le32 blocks;          /* used for statfs */
--/* 40 */__le32 meta_blkaddr;
--/* 44 */__le32 xattr_blkaddr;
--/* 48 */__u8 uuid[16];          /* 128-bit uuid for volume */
--/* 64 */__u8 volume_name[16];   /* volume name */
--/* 80 */__le32 requirements;    /* (aka. feature_incompat) */
--
--/* 84 */__u8 reserved2[44];
--} __packed;                     /* 128 bytes */
-+	__le32 magic;           /* file system magic number */
-+	__le32 checksum;        /* crc32c(super_block) */
-+	__le32 features;        /* (aka. feature_compat) */
-+	__u8 blkszbits;         /* support block_size == PAGE_SIZE only */
-+	__u8 reserved;
-+
-+	__le16 root_nid;	/* nid of root directory */
-+	__le64 inos;            /* total valid ino # (== f_files - f_favail) */
-+
-+	__le64 build_time;      /* inode v1 time derivation */
-+	__le32 build_time_nsec;	/* inode v1 time derivation in nano scale */
-+	__le32 blocks;          /* used for statfs */
-+	__le32 meta_blkaddr;	/* start block address of metadata area */
-+	__le32 xattr_blkaddr;	/* start block address of shared xattr area */
-+	__u8 uuid[16];          /* 128-bit uuid for volume */
-+	__u8 volume_name[16];   /* volume name */
-+	__le32 requirements;    /* (aka. feature_incompat) */
-+
-+	__u8 reserved2[44];
-+} __packed;
+@@ -184,7 +184,7 @@ struct erofs_xattr_entry {
  
- /*
-  * erofs inode data mapping:
-@@ -73,16 +74,17 @@ static inline bool erofs_inode_is_data_compressed(unsigned int datamode)
- #define EROFS_I_VERSION_BIT             0
- #define EROFS_I_DATA_MAPPING_BIT        1
+ /* available compression algorithm types */
+ enum {
+-	Z_EROFS_COMPRESSION_LZ4,
++	Z_EROFS_COMPRESSION_LZ4	= 0,
+ 	Z_EROFS_COMPRESSION_MAX
+ };
  
-+/* 32-byte reduced form of an ondisk inode */
- struct erofs_inode_v1 {
--/*  0 */__le16 i_advise;
-+	__le16 i_advise;	/* inode hints */
+@@ -242,10 +242,10 @@ struct z_erofs_map_header {
+  *                (di_advise could be 0, 1 or 2)
+  */
+ enum {
+-	Z_EROFS_VLE_CLUSTER_TYPE_PLAIN,
+-	Z_EROFS_VLE_CLUSTER_TYPE_HEAD,
+-	Z_EROFS_VLE_CLUSTER_TYPE_NONHEAD,
+-	Z_EROFS_VLE_CLUSTER_TYPE_RESERVED,
++	Z_EROFS_VLE_CLUSTER_TYPE_PLAIN		= 0,
++	Z_EROFS_VLE_CLUSTER_TYPE_HEAD		= 1,
++	Z_EROFS_VLE_CLUSTER_TYPE_NONHEAD	= 2,
++	Z_EROFS_VLE_CLUSTER_TYPE_RESERVED	= 3,
+ 	Z_EROFS_VLE_CLUSTER_TYPE_MAX
+ };
  
- /* 1 header + n-1 * 4 bytes inline xattr to keep continuity */
--/*  2 */__le16 i_xattr_icount;
--/*  4 */__le16 i_mode;
--/*  6 */__le16 i_nlink;
--/*  8 */__le32 i_size;
--/* 12 */__le32 i_reserved;
--/* 16 */union {
-+	__le16 i_xattr_icount;
-+	__le16 i_mode;
-+	__le16 i_nlink;
-+	__le32 i_size;
-+	__le32 i_reserved;
-+	union {
- 		/* file total compressed blocks for data mapping 1 */
- 		__le32 compressed_blocks;
- 		__le32 raw_blkaddr;
-@@ -90,10 +92,10 @@ struct erofs_inode_v1 {
- 		/* for device files, used to indicate old/new device # */
- 		__le32 rdev;
- 	} i_u __packed;
--/* 20 */__le32 i_ino;           /* only used for 32-bit stat compatibility */
--/* 24 */__le16 i_uid;
--/* 26 */__le16 i_gid;
--/* 28 */__le32 i_reserved2;
-+	__le32 i_ino;           /* only used for 32-bit stat compatibility */
-+	__le16 i_uid;
-+	__le16 i_gid;
-+	__le32 i_reserved2;
- } __packed;
- 
- /* 32 bytes on-disk inode */
-@@ -101,15 +103,16 @@ struct erofs_inode_v1 {
- /* 64 bytes on-disk inode */
- #define EROFS_INODE_LAYOUT_V2   1
- 
-+/* 64-byte complete form of an ondisk inode */
- struct erofs_inode_v2 {
--/*  0 */__le16 i_advise;
-+	__le16 i_advise;	/* inode hints */
- 
- /* 1 header + n-1 * 4 bytes inline xattr to keep continuity */
--/*  2 */__le16 i_xattr_icount;
--/*  4 */__le16 i_mode;
--/*  6 */__le16 i_reserved;
--/*  8 */__le64 i_size;
--/* 16 */union {
-+	__le16 i_xattr_icount;
-+	__le16 i_mode;
-+	__le16 i_reserved;
-+	__le64 i_size;
-+	union {
- 		/* file total compressed blocks for data mapping 1 */
- 		__le32 compressed_blocks;
- 		__le32 raw_blkaddr;
-@@ -119,15 +122,15 @@ struct erofs_inode_v2 {
- 	} i_u __packed;
- 
- 	/* only used for 32-bit stat compatibility */
--/* 20 */__le32 i_ino;
--
--/* 24 */__le32 i_uid;
--/* 28 */__le32 i_gid;
--/* 32 */__le64 i_ctime;
--/* 40 */__le32 i_ctime_nsec;
--/* 44 */__le32 i_nlink;
--/* 48 */__u8   i_reserved2[16];
--} __packed;                     /* 64 bytes */
-+	__le32 i_ino;
-+
-+	__le32 i_uid;
-+	__le32 i_gid;
-+	__le64 i_ctime;
-+	__le32 i_ctime_nsec;
-+	__le32 i_nlink;
-+	__u8   i_reserved2[16];
-+} __packed;
- 
- #define EROFS_MAX_SHARED_XATTRS         (128)
- /* h_shared_count between 129 ... 255 are special # */
-@@ -264,7 +267,7 @@ struct z_erofs_vle_decompressed_index {
- 		 * [1] - pointing to the tail cluster
- 		 */
- 		__le16 delta[2];
--	} di_u __packed;		/* 8 bytes */
-+	} di_u __packed;
- } __packed;
- 
- #define Z_EROFS_VLE_LEGACY_INDEX_ALIGN(size) \
-@@ -273,10 +276,10 @@ struct z_erofs_vle_decompressed_index {
- 
- /* dirent sorts in alphabet order, thus we can do binary search */
- struct erofs_dirent {
--	__le64 nid;     /*  0, node number */
--	__le16 nameoff; /*  8, start offset of file name */
--	__u8 file_type; /* 10, file type */
--	__u8 reserved;  /* 11, reserved */
-+	__le64 nid;     /* node number */
-+	__le16 nameoff; /* start offset of file name */
-+	__u8 file_type; /* file type */
-+	__u8 reserved;  /* reserved */
- } __packed;
- 
- /*
 -- 
 2.17.1
 
