@@ -1,59 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C37C4A7E31
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Sep 2019 10:45:33 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EE1E7877CE;
-	Wed,  4 Sep 2019 08:45:31 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iW5nRjgxksWq; Wed,  4 Sep 2019 08:45:31 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DC3AC81DD2;
-	Wed,  4 Sep 2019 08:45:30 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D938D1BF2EC
- for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 08:45:28 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id A0A4CA7F91
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Sep 2019 11:39:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id CFAA287E4A
- for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 08:45:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2086E882AF;
+	Wed,  4 Sep 2019 09:39:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id F1Yi9HzIrMc1; Wed,  4 Sep 2019 09:39:05 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id EE1C087C9F;
+	Wed,  4 Sep 2019 09:39:04 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1B6F91BF40B
+ for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 09:39:02 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 17E4B81E5E
+ for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 09:39:02 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ObEcjNEt+SpV for <devel@linuxdriverproject.org>;
- Wed,  4 Sep 2019 08:45:28 +0000 (UTC)
+ with ESMTP id B828Flu-UNJz for <devel@linuxdriverproject.org>;
+ Wed,  4 Sep 2019 09:39:01 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4A42187C20
- for <devel@driverdev.osuosl.org>; Wed,  4 Sep 2019 08:45:28 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 81A8A22CEA;
- Wed,  4 Sep 2019 08:45:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1567586728;
- bh=ReJN7nfBuAkxDGWCkNioWGAoCEhadI8k72Wr8vLuB04=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=q3Xt1vFW/wLgQGkDEIy6pqv/t0kVUwS6A3oiUXXAYWBOsZHrhociWsvB2liN1QZHu
- +SSN7vWvBsPVq82ASvqxK10UF/FXwJaiuidUdpOlfaeNy50XOGVJC+DRhY7DTioILy
- jS6HbwoS0Jhjv1c7g1DMdZWsb7tvNRYs2pda0vpw=
-Date: Wed, 4 Sep 2019 10:45:25 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Austin Kim <austindh.kim@gmail.com>
-Subject: Re: [PATCH] media: meson: Add NULL check after the call to kmalloc()
-Message-ID: <20190904084525.GB4925@kroah.com>
-References: <20190904082232.GA171180@LGEARND20B15>
+Received: from eu-smtp-delivery-151.mimecast.com
+ (eu-smtp-delivery-151.mimecast.com [207.82.80.151])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D3C74811FC
+ for <devel@driverdev.osuosl.org>; Wed,  4 Sep 2019 09:39:00 +0000 (UTC)
+Received: from AcuMS.aculab.com (156.67.243.126 [156.67.243.126]) (Using
+ TLS) by relay.mimecast.com with ESMTP id
+ uk-mta-106-MP-yMEjzODqKT_VQfSISUA-1; Wed, 04 Sep 2019 10:38:55 +0100
+Received: from AcuMS.Aculab.com (fd9f:af1c:a25b:0:43c:695e:880f:8750) by
+ AcuMS.aculab.com (fd9f:af1c:a25b:0:43c:695e:880f:8750) with Microsoft SMTP
+ Server (TLS) id 15.0.1347.2; Wed, 4 Sep 2019 10:38:55 +0100
+Received: from AcuMS.Aculab.com ([fe80::43c:695e:880f:8750]) by
+ AcuMS.aculab.com ([fe80::43c:695e:880f:8750%12]) with mapi id 15.00.1347.000; 
+ Wed, 4 Sep 2019 10:38:55 +0100
+From: David Laight <David.Laight@ACULAB.COM>
+To: =?iso-8859-2?Q?=27Valentin_Vidi=E6=27?= <vvidic@valentin-vidic.from.hr>,
+ Al Viro <viro@zeniv.linux.org.uk>
+Subject: RE: [PATCH] staging: exfat: cleanup braces for if/else statements
+Thread-Topic: [PATCH] staging: exfat: cleanup braces for if/else statements
+Thread-Index: AQHVYoMgt2lCAY06IEWAL3uRVSEYfacbQ6fg
+Date: Wed, 4 Sep 2019 09:38:55 +0000
+Message-ID: <d14cda319c584db9b8aa35b15b542f89@AcuMS.aculab.com>
+References: <20190903164732.14194-1-vvidic@valentin-vidic.from.hr>
+ <20190903173249.GL1131@ZenIV.linux.org.uk>
+ <20190903181208.GA8469@valentin-vidic.from.hr>
+In-Reply-To: <20190903181208.GA8469@valentin-vidic.from.hr>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.202.205.107]
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190904082232.GA171180@LGEARND20B15>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+X-MC-Unique: MP-yMEjzODqKT_VQfSISUA-1
+X-Mimecast-Spam-Score: 0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,47 +74,36 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: mjourdan@baylibre.com, devel@driverdev.osuosl.org, khilman@baylibre.com,
- linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
- mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Valdis Kletnieks <valdis.kletnieks@vt.edu>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Sep 04, 2019 at 05:22:32PM +0900, Austin Kim wrote:
-> If the kmalloc() return NULL, the NULL pointer dereference will occur.
-> 	new_ts->ts = ts;
+From: Valentin Vidic
+> Sent: 03 September 2019 19:12
+> On Tue, Sep 03, 2019 at 06:32:49PM +0100, Al Viro wrote:
+> > On Tue, Sep 03, 2019 at 06:47:32PM +0200, Valentin Vidic wrote:
+> > > +			} else if (uni == 0xFFFF) {
+> > >  				skip = TRUE;
+> >
+> > While we are at it, could you get rid of that 'TRUE' macro?
 > 
-> Add exception check after the call to kmalloc() is made.
-> 
-> Signed-off-by: Austin Kim <austindh.kim@gmail.com>
-> ---
->  drivers/staging/media/meson/vdec/vdec_helpers.c | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/drivers/staging/media/meson/vdec/vdec_helpers.c b/drivers/staging/media/meson/vdec/vdec_helpers.c
-> index f16948b..e7e56d5 100644
-> --- a/drivers/staging/media/meson/vdec/vdec_helpers.c
-> +++ b/drivers/staging/media/meson/vdec/vdec_helpers.c
-> @@ -206,6 +206,10 @@ void amvdec_add_ts_reorder(struct amvdec_session *sess, u64 ts, u32 offset)
->  	unsigned long flags;
->  
->  	new_ts = kmalloc(sizeof(*new_ts), GFP_KERNEL);
-> +	if (!new_ts) {
-> +		dev_err(sess->core->dev, "Failed to kmalloc()\n");
+> Sure, but maybe in a separate patch since TRUE/FALSE has more
+> calls than just this.
 
-Did you run this through checkpatch?  I think it will say that this line
-is not ok.
+I bet you can get rid of the 'skip' variable and simplify the code
+by using continue/break/return (or maybe goto).
 
-> +		return;
+	David
 
-Shouldn't you return an -ENOMEM error somehow?
+-
+Registered Address Lakeside, Bramley Road, Mount Farm, Milton Keynes, MK1 1PT, UK
+Registration No: 1397386 (Wales)
 
-thanks,
-
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
