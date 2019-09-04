@@ -1,60 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8091BA8289
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Sep 2019 14:37:22 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 30674A8359
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Sep 2019 15:06:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id AFDEF87951;
-	Wed,  4 Sep 2019 12:37:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B2A1323100;
+	Wed,  4 Sep 2019 13:06:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SYi6GnupS46e; Wed,  4 Sep 2019 12:37:20 +0000 (UTC)
+	with ESMTP id dYNue4MiHyAd; Wed,  4 Sep 2019 13:06:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5D8FC87998;
-	Wed,  4 Sep 2019 12:37:18 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5FB2223077;
+	Wed,  4 Sep 2019 13:06:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 99F601BF3DE
- for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 12:37:15 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6A7BA1BF3CC
+ for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 13:05:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 95A158574A
- for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 12:37:15 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 62CE3869C0
+ for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 13:05:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lvhBzUWpNaXh for <devel@linuxdriverproject.org>;
- Wed,  4 Sep 2019 12:37:14 +0000 (UTC)
+ with ESMTP id 30gX9OdCf8wQ for <devel@linuxdriverproject.org>;
+ Wed,  4 Sep 2019 13:05:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 61B4584C2C
- for <devel@driverdev.osuosl.org>; Wed,  4 Sep 2019 12:37:14 +0000 (UTC)
-X-Amp-Result: UNSCANNABLE
-X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 04 Sep 2019 05:37:13 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,467,1559545200"; d="scan'208";a="212378188"
-Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
- by fmsmga002.fm.intel.com with ESMTP; 04 Sep 2019 05:37:12 -0700
-Received: from andy by smile with local (Exim 4.92.1)
- (envelope-from <andriy.shevchenko@linux.intel.com>)
- id 1i5UX9-0000pS-5I; Wed, 04 Sep 2019 15:37:11 +0300
-Date: Wed, 4 Sep 2019 15:37:11 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: kbuild test robot <lkp@intel.com>
-Subject: Re: [staging:staging-testing 314/401]
- drivers/iio/common/hid-sensors/hid-sensor-attributes.c:312: undefined
- reference to `__udivdi3'
-Message-ID: <20190904123711.GL2680@smile.fi.intel.com>
-References: <201909041145.dxkxV8cJ%lkp@intel.com>
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id EDA758697E
+ for <devel@driverdev.osuosl.org>; Wed,  4 Sep 2019 13:05:37 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id u72so7038969pgb.10
+ for <devel@driverdev.osuosl.org>; Wed, 04 Sep 2019 06:05:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=qk0OuOrMg5tOAzN4rz02JAWnOMG6qE8NiffpgXWoJIA=;
+ b=N4YK1Gs2/2Z5emAWr4rJ6LlOxnQIH/unOWSowk+HvjjBI420gcZERK249bDAeb3iQZ
+ qhloqYi6Evcw8E6l2PHMJMkjYXJ0IgTIkxxVYG1bl5JhspLW5beXsOBpYB/cTm4mdhxv
+ KujH3nGRXzNVcjeNXxE8If5Xs2mQlgL7uhfaKqw/uhQvyOdQAKG0Pxhaq13E1FroDukE
+ 8/JVfclzHgbNMCMyPys4IsLG56WLWFLUg4t9jv7gIkiI35IC9RDBpwGxrRgIeLxHZ55k
+ GaAAKaZPEPJBEjoC9YLo2JMb3n98QpYnnHdYND4fMtXBS+AwE0vlqvy2zkOcWLHyHV1Z
+ TyaQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=qk0OuOrMg5tOAzN4rz02JAWnOMG6qE8NiffpgXWoJIA=;
+ b=kFYaMBVskXOT3W9bGXOFPdXBy/SJLqsrkXwGtb60TFBmcxylxs5L88iQJxyL5yAcHg
+ wDdvCI6tOrUmAObDJkUNtDNnAuoqZHiVw5coEE4/qSNZDQ7YzZ2Hrh+lD13tbNztUqn7
+ hym0O0Sa/56IX07Y47tUAGLIDW6P2B5nBdS1hUZiAU247YMTVYCArgjswzojws5gUxa0
+ z3RDueDMbQ2gRqJvgBuPSc05H54L9Szre2TPvUCUx+A3aCn4nrOVEm+ZU46frhpHLRxf
+ kDAQyWHjkVA/e+hB3Ea3Mp/FAf0PIHBjC6h2DJeQHQGp2N5GxOFgHGwbVESiXJoc8I7X
+ Oqgg==
+X-Gm-Message-State: APjAAAW/ejlbgdz+FVyd+H8QI5fkeOL5sS238iWcaLneaeHEIEnGNFa0
+ 55QOt0r/7IDsCiXjaFRPVD0=
+X-Google-Smtp-Source: APXvYqyr1WQwei2qjMxwIDgD3cmeL28e2tXbuoEH2pJa/xjAC5DFJbtgv41/0opqn3xvXL7seEGsvQ==
+X-Received: by 2002:a65:621a:: with SMTP id d26mr28659658pgv.153.1567602337098; 
+ Wed, 04 Sep 2019 06:05:37 -0700 (PDT)
+Received: from MeraComputer ([117.220.112.100])
+ by smtp.gmail.com with ESMTPSA id h12sm26159377pgr.8.2019.09.04.06.05.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 04 Sep 2019 06:05:36 -0700 (PDT)
+Date: Wed, 4 Sep 2019 18:35:23 +0530
+From: Prakhar Sinha <prakharsinha2808@gmail.com>
+To: gregkh@linuxfoundation.org, tobias.niessen@stud.uni-hannover.de,
+ kim.jamie.bradley@gmail.com, pakki001@umn.edu, sabrina-gaube@web.de,
+ nishkadg.linux@gmail.com, qader.aymen@gmail.com
+Subject: [PATCH] staging: rts5208: Fix 80 char warning by re-structuring
+ if-blocks.
+Message-ID: <20190904130523.GA17126@MeraComputer>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <201909041145.dxkxV8cJ%lkp@intel.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -68,43 +86,73 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, kbuild-all@01.org,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Sep 04, 2019 at 11:33:50AM +0800, kbuild test robot wrote:
-> tree:   https://kernel.googlesource.com/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
-> head:   74eb9c06b1d722468db397595ac6834b9e4ac235
-> commit: 473d12f7638c93acbd9296a8cd455b203d5eb528 [314/401] iio: hid-sensor-attributes: Convert to use int_pow()
-> config: i386-randconfig-e004-201935 (attached as .config)
-> compiler: gcc-7 (Debian 7.4.0-11) 7.4.0
-> reproduce:
->         git checkout 473d12f7638c93acbd9296a8cd455b203d5eb528
->         # save the attached .config to linux build tree
->         make ARCH=i386 
-> 
-> If you fix the issue, kindly add following tag
-> Reported-by: kbuild test robot <lkp@intel.com>
-> 
-> All errors (new ones prefixed by >>):
+This patch solves the following checkpatch.pl's messages in
+drivers/staging/rts5208/sd.c
 
-So, as far as I understood it wasn't compiled on 32-bit before, so, it's not a
-new error and thus would (has to?) be fixed separately.
+WARNING: line over 80 characters
+4517: FILE: drivers/staging/rts5208/sd.c:4517:
++                                               sd_card->sd_lock_status &= ~(SD_UNLOCK_POW_ON | SD_SDR_RST);
 
->    ld: drivers/iio/common/hid-sensors/hid-sensor-attributes.o: in function `adjust_exponent_nano':
-> >> drivers/iio/common/hid-sensors/hid-sensor-attributes.c:312: undefined reference to `__udivdi3'
-> >> ld: drivers/iio/common/hid-sensors/hid-sensor-attributes.c:314: undefined reference to `__umoddi3'
-> >> ld: drivers/iio/common/hid-sensors/hid-sensor-attributes.c:324: undefined reference to `__udivdi3'
->    ld: drivers/iio/common/hid-sensors/hid-sensor-attributes.c:325: undefined reference to `__umoddi3'
+WARNING: line over 80 characters
+4518: FILE: drivers/staging/rts5208/sd.c:4518:
++                                               goto sd_execute_write_cmd_failed;
 
+WARNING: line over 80 characters
+4522: FILE: drivers/staging/rts5208/sd.c:4522:
++                               sd_card->sd_lock_status &= ~(SD_UNLOCK_POW_ON | SD_SDR_RST);
 
+Signed-off-by: Prakhar Sinha <prakharsinha2808@gmail.com>
+---
+ drivers/staging/rts5208/sd.c | 26 ++++++++++++--------------
+ 1 file changed, 12 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/staging/rts5208/sd.c b/drivers/staging/rts5208/sd.c
+index a06045344301..7d6f2c56e740 100644
+--- a/drivers/staging/rts5208/sd.c
++++ b/drivers/staging/rts5208/sd.c
+@@ -4505,22 +4505,20 @@ int sd_execute_write_data(struct scsi_cmnd *srb, struct rtsx_chip *chip)
+ 
+ 		dev_dbg(rtsx_dev(chip), "sd_lock_state = 0x%x, sd_card->sd_lock_status = 0x%x\n",
+ 			sd_lock_state, sd_card->sd_lock_status);
+-		if (sd_lock_state ^ (sd_card->sd_lock_status & SD_LOCKED)) {
++		if (sd_lock_state ^ (sd_card->sd_lock_status & SD_LOCKED))
+ 			sd_card->sd_lock_notify = 1;
+-			if (sd_lock_state &&
+-			    (sd_card->sd_lock_status & SD_LOCK_1BIT_MODE)) {
+-				sd_card->sd_lock_status |= (
+-					SD_UNLOCK_POW_ON | SD_SDR_RST);
+-				if (CHK_SD(sd_card)) {
+-					retval = reset_sd(chip);
+-					if (retval != STATUS_SUCCESS) {
+-						sd_card->sd_lock_status &= ~(SD_UNLOCK_POW_ON | SD_SDR_RST);
+-						goto sd_execute_write_cmd_failed;
+-					}
+-				}
+-
+-				sd_card->sd_lock_status &= ~(SD_UNLOCK_POW_ON | SD_SDR_RST);
++		if ((sd_lock_state & !(sd_card->sd_lock_status & SD_LOCKED)) &&
++		    (sd_card->sd_lock_status & SD_LOCK_1BIT_MODE)) {
++			sd_card->sd_lock_status |= (SD_UNLOCK_POW_ON |
++						    SD_SDR_RST);
++			if (CHK_SD(sd_card) &&
++			    reset_sd(chip) != STATUS_SUCCESS) {
++				sd_card->sd_lock_status &= ~(SD_UNLOCK_POW_ON |
++							     SD_SDR_RST);
++				goto sd_execute_write_cmd_failed;
+ 			}
++			sd_card->sd_lock_status &= ~(SD_UNLOCK_POW_ON |
++						     SD_SDR_RST);
+ 		}
+ 	}
+ 
 -- 
-With Best Regards,
-Andy Shevchenko
-
+2.20.1
 
 _______________________________________________
 devel mailing list
