@@ -1,52 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 29D73A9882
-	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Sep 2019 04:43:12 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A7FD5A98E3
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Sep 2019 05:29:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EDFD8884ED;
-	Thu,  5 Sep 2019 02:43:09 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DB5AC87ABA;
+	Thu,  5 Sep 2019 03:29:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Bb8iB3vuJH01; Thu,  5 Sep 2019 02:43:09 +0000 (UTC)
+	with ESMTP id FAkae-x8uBpg; Thu,  5 Sep 2019 03:29:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 708F2880E2;
-	Thu,  5 Sep 2019 02:43:07 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 60449876D5;
+	Thu,  5 Sep 2019 03:29:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 80DD61BF371
- for <devel@linuxdriverproject.org>; Thu,  5 Sep 2019 02:43:05 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 84CFF1BF97A
+ for <devel@linuxdriverproject.org>; Thu,  5 Sep 2019 03:29:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7DA8488081
- for <devel@linuxdriverproject.org>; Thu,  5 Sep 2019 02:43:05 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7DCBC87A6E
+ for <devel@linuxdriverproject.org>; Thu,  5 Sep 2019 03:29:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id J3Dks4GWZXgU for <devel@linuxdriverproject.org>;
- Thu,  5 Sep 2019 02:43:04 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga05-in.huawei.com [45.249.212.191])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 9D11887FA4
- for <devel@driverdev.osuosl.org>; Thu,  5 Sep 2019 02:43:04 +0000 (UTC)
-Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id B8A9C1DB3F159A7D5A6F;
- Thu,  5 Sep 2019 10:43:00 +0800 (CST)
-Received: from localhost.localdomain.localdomain (10.175.113.25) by
- DGGEMS407-HUB.china.huawei.com (10.3.19.207) with Microsoft SMTP Server id
- 14.3.439.0; Thu, 5 Sep 2019 10:42:51 +0800
-From: YueHaibing <yuehaibing@huawei.com>
-To: Valdis Kletnieks <valdis.kletnieks@vt.edu>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>
-Subject: [PATCH -next] staging: exfat: Use kmemdup in exfat_symlink()
-Date: Thu, 5 Sep 2019 03:00:47 +0000
-Message-ID: <20190905030047.88401-1-yuehaibing@huawei.com>
-X-Mailer: git-send-email 2.20.1
+ with ESMTP id 3nnveAuFSn8N for <devel@linuxdriverproject.org>;
+ Thu,  5 Sep 2019 03:29:37 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.moh.go.tz (unknown [41.217.202.52])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 01072879C5
+ for <devel@linuxdriverproject.org>; Thu,  5 Sep 2019 03:29:36 +0000 (UTC)
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by mail.moh.go.tz (Postfix) with ESMTP id BA5C915A51E2;
+ Thu,  5 Sep 2019 03:49:36 +0300 (EAT)
+Received: from mail.moh.go.tz ([127.0.0.1])
+ by localhost (mail.moh.go.tz [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id 5qX2HKVJF1lY; Thu,  5 Sep 2019 03:49:36 +0300 (EAT)
+Received: from mail.moh.go.tz (localhost.localdomain [127.0.0.1])
+ by mail.moh.go.tz (Postfix) with ESMTP id 8789815A4CFC;
+ Thu,  5 Sep 2019 03:07:38 +0300 (EAT)
+DKIM-Filter: OpenDKIM Filter v2.8.4 mail.moh.go.tz 8789815A4CFC
+Received: from [192.168.0.109] (unknown [164.160.95.75])
+ by mail.moh.go.tz (Postfix) with ESMTPSA id A390315856A6;
+ Thu,  5 Sep 2019 02:06:30 +0300 (EAT)
 MIME-Version: 1.0
-X-Originating-IP: [10.175.113.25]
-X-CFilter-Loop: Reflected
+Content-Description: Mail message body
+Subject: We Offer Private, Commercial and Personal Loans
+To: Recipients <>
+From: Jesse Financial Home<>
+Date: Thu, 05 Sep 2019 00:18:44 +0200
+Message-Id: <20190904230630.A390315856A6@mail.moh.go.tz>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,41 +63,13 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, kernel-janitors@vger.kernel.org,
- YueHaibing <yuehaibing@huawei.com>, linux-kernel@vger.kernel.org
+Reply-To: jessewarrenloans@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Use kmemdup rather than duplicating its implementation
-
-Signed-off-by: YueHaibing <yuehaibing@huawei.com>
----
- drivers/staging/exfat/exfat_super.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
-index 5b5c2ca8c9aa..05fdecc3e9ea 100644
---- a/drivers/staging/exfat/exfat_super.c
-+++ b/drivers/staging/exfat/exfat_super.c
-@@ -2696,12 +2696,11 @@ static int exfat_symlink(struct inode *dir, struct dentry *dentry,
- 	inode->i_mtime = inode->i_atime = inode->i_ctime = current_time(inode);
- 	/* timestamp is already written, so mark_inode_dirty() is unneeded. */
- 
--	EXFAT_I(inode)->target = kmalloc(len+1, GFP_KERNEL);
-+	EXFAT_I(inode)->target = kmemdup(target, len + 1, GFP_KERNEL);
- 	if (!EXFAT_I(inode)->target) {
- 		err = -ENOMEM;
- 		goto out;
- 	}
--	memcpy(EXFAT_I(inode)->target, target, len+1);
- 
- 	dentry->d_time = GET_IVERSION(dentry->d_parent->d_inode);
- 	d_instantiate(dentry, inode);
-
-
-
+Do You Need A Loan To Pay Off Your Bills Asap, If Yes Do Contact Us For More Information Via Email: jessewarrenloans@gmail.com or WhatsApp us on: +1-(365)-300-3916
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
