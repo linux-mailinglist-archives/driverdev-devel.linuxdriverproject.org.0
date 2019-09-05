@@ -1,153 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 28DF7AA18C
-	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Sep 2019 13:35:08 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7E318AA3EC
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Sep 2019 15:11:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6D2C6234BB;
-	Thu,  5 Sep 2019 11:35:05 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 548A087CBE;
+	Thu,  5 Sep 2019 13:11:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tMESkgtTY169; Thu,  5 Sep 2019 11:35:04 +0000 (UTC)
+	with ESMTP id uImFNGXfQQkx; Thu,  5 Sep 2019 13:11:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 92F5623735;
-	Thu,  5 Sep 2019 11:35:02 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3A06587CA3;
+	Thu,  5 Sep 2019 13:11:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2CB931BF410
- for <devel@linuxdriverproject.org>; Thu,  5 Sep 2019 11:35:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5A1151BF681
+ for <devel@linuxdriverproject.org>; Thu,  5 Sep 2019 13:11:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 28C1A885F6
- for <devel@linuxdriverproject.org>; Thu,  5 Sep 2019 11:35:01 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5337E873CE
+ for <devel@linuxdriverproject.org>; Thu,  5 Sep 2019 13:11:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4G-hHmAL7kNp for <devel@linuxdriverproject.org>;
- Thu,  5 Sep 2019 11:35:00 +0000 (UTC)
+ with ESMTP id A1Zj3R044RZt for <devel@linuxdriverproject.org>;
+ Thu,  5 Sep 2019 13:11:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa3.microchip.iphmx.com (esa3.microchip.iphmx.com
- [68.232.153.233])
- by hemlock.osuosl.org (Postfix) with ESMTPS id EA6FA885F1
- for <devel@driverdev.osuosl.org>; Thu,  5 Sep 2019 11:34:59 +0000 (UTC)
-Received-SPF: Pass (esa3.microchip.iphmx.com: domain of
- Ajay.Kathat@microchip.com designates 198.175.253.82 as
- permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa3.microchip.iphmx.com;
- envelope-from="Ajay.Kathat@microchip.com";
- x-sender="Ajay.Kathat@microchip.com"; x-conformance=spf_only;
- x-record-type="v=spf1"; x-record-text="v=spf1 mx
- a:ushub1.microchip.com a:smtpout.microchip.com
- a:mx1.microchip.iphmx.com a:mx2.microchip.iphmx.com
- include:servers.mcsv.net include:mktomail.com
- include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa3.microchip.iphmx.com: no sender
- authenticity information available from domain of
- postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa3.microchip.iphmx.com;
- envelope-from="Ajay.Kathat@microchip.com";
- x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa3.microchip.iphmx.com;
- spf=Pass smtp.mailfrom=Ajay.Kathat@microchip.com;
- spf=None smtp.helo=postmaster@email.microchip.com;
- dkim=pass (signature verified) header.i=@microchiptechnology.onmicrosoft.com;
- dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: PtPIRUosD9LyyRb75RUDAqPif8RNDAC6fNYr0P84QzhhFS1w/i2950s2C5u/tdw0Gme8AkG++q
- K6N2OHqQ4VSyYK+REbKpD/t9hd8uPs3zDyc+94HUuXN1sjyCyfkVXc1ogfJmYWqHPEcns//cO5
- GMZPShSYr6DbwE7DW2KVJu1giIfxcK9XgQxkt7W0MuPiPk7e5T3kMbFt8pBlvz+3uEX2LuWByM
- TT3u0EoIJEH87Lryjzj7mp0fsmavTqt1DesiwKRa22PHuy29oYG0KmA0GUm1nFuZljJG9hrU/W
- 8fk=
-X-IronPort-AV: E=Sophos;i="5.64,470,1559545200"; d="scan'208";a="47936976"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa3.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 05 Sep 2019 04:34:59 -0700
-Received: from chn-vm-ex02.mchp-main.com (10.10.85.144) by
- chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Thu, 5 Sep 2019 04:34:58 -0700
-Received: from NAM04-CO1-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.72) with Microsoft SMTP Server
- (version=TLS1_2, 
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5 via Frontend
- Transport; Thu, 5 Sep 2019 04:34:58 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jX4nwhnWSqOgsWso4ocCYETqcb7bIAvC4ap0WbDwM+hDx22vgaFkzhx7g5SLQa4/XbkxjgR+VcXU1y4Qo/hUGGYR1GYNLW8F3fykCfEUB3KWClZY6NTwWtdPVJiJU7eeuTw+yc7DyuRC3RpfPt6h7FFZ8W2gvEU6+fFnnPYH19TqzqS4ubhPOWaTDiVVSxYykf5r2cfJCMf0jI9+jrsPpEpYKpJym5AbjdqNaWunTYw9KfSaQZYDNHomkhsS9GfmD4OgXx34J5BhmlPXLf70NAEGOPFPWKnwHgsGZZVm+Qd8QMCiGHXcJAmSXbNRAbVv2Hy+xw0/8MT3CMX9s5u2yQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=29FwnydSVZa44ay7U18Q8Q3QOvBIPCZSaJ2UQrkSOvQ=;
- b=mE+Hw3Zi6ZANcbfAS1D+pjiUrdUdHhBLCRxHGmbjd/CnQekkkL2NDuuzJ0MT79Q4EGhuKP3rCWSDjynr0YzF4tzS9DEx0Y4UvlW5ZcLCP1XiFS/tJXBgkgPeqVvE3ioSvKlicmHKlwxgK9gbaEsWb3OZRy+1oe4kMZ6HsMnIl2znDfS0xZmuRvg4yhheZp6Q0LFXJV0cXW9cOQdEzx2t+hlUJigeXG4XiELt2q/ghaNF6bV5Kbyb0BvWd4Pp7xVXK55GiaDGdWLFFDTf8Sn1rg6v5RSpQOiVhLCQdsTdr3PE0ys34khdo1dX0pNK56DagvsjJVn2qN+wxOAj0b5IrQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microchip.com; dmarc=pass action=none
- header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector2-microchiptechnology-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=29FwnydSVZa44ay7U18Q8Q3QOvBIPCZSaJ2UQrkSOvQ=;
- b=qDpJAt9Y49vLpLu4I4hHGD0IC80I/oFfr8o0tYOuc6yUb3swLCuTojZb/7Fg+WTB+c6MIE1isFaA1fO2/t2h+M/HZphgiIDNhpOEQamLzMspJa0eRUdQecP5O6OgndZNJMQo4mdAx3P81VHSXwzqAR5Jk/u8caCXyeqGx9xxeyo=
-Received: from BN6PR11MB3985.namprd11.prod.outlook.com (10.255.129.78) by
- BN6PR11MB1489.namprd11.prod.outlook.com (10.172.22.10) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2220.20; Thu, 5 Sep 2019 11:34:56 +0000
-Received: from BN6PR11MB3985.namprd11.prod.outlook.com
- ([fe80::5864:dae1:9b7e:ff83]) by BN6PR11MB3985.namprd11.prod.outlook.com
- ([fe80::5864:dae1:9b7e:ff83%4]) with mapi id 15.20.2220.022; Thu, 5 Sep 2019
- 11:34:56 +0000
-From: <Ajay.Kathat@microchip.com>
-To: <greg@kroah.com>
-Subject: Re: [PATCH 1/2] staging: dt-bindings: wilc1000: add optional rtc_clk
- property
-Thread-Topic: [PATCH 1/2] staging: dt-bindings: wilc1000: add optional rtc_clk
- property
-Thread-Index: AQHVYyVmBkghZ7w+IkiStodl6jvpxKccmquAgAAYcQCAAEJxAA==
-Date: Thu, 5 Sep 2019 11:34:56 +0000
-Message-ID: <5878d3a6-65b7-0f02-2810-57f5c060b931@microchip.com>
-References: <1567603548-13355-1-git-send-email-eugen.hristev@microchip.com>
- <da5ea898-d8da-a6e2-97a0-4662b7d70b31@microchip.com>
- <20190905073700.GA30339@kroah.com>
-In-Reply-To: <20190905073700.GA30339@kroah.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: BYAPR05CA0012.namprd05.prod.outlook.com
- (2603:10b6:a03:c0::25) To BN6PR11MB3985.namprd11.prod.outlook.com
- (2603:10b6:405:7b::14)
-x-ms-exchange-messagesentrepresentingtype: 1
-x-originating-ip: [121.244.27.38]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 999e74f4-3326-4f8d-401b-08d731f513c3
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600166)(711020)(4605104)(1401327)(2017052603328)(7193020);
- SRVR:BN6PR11MB1489; 
-x-ms-traffictypediagnostic: BN6PR11MB1489:
-x-ms-exchange-purlcount: 1
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BN6PR11MB14898052B1CBCB84189969C5E3BB0@BN6PR11MB1489.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
-x-forefront-prvs: 015114592F
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(366004)(39850400004)(136003)(376002)(346002)(396003)(189003)(199004)(52116002)(6246003)(53936002)(66066001)(31696002)(86362001)(256004)(6116002)(3846002)(2616005)(229853002)(66446008)(11346002)(64756008)(476003)(446003)(66476007)(305945005)(7736002)(6512007)(6436002)(31686004)(486006)(6306002)(36756003)(66946007)(66556008)(71190400001)(6486002)(81166006)(76176011)(3450700001)(478600001)(14454004)(81156014)(8676002)(5660300002)(6916009)(54906003)(966005)(71200400001)(316002)(2906002)(43066004)(102836004)(53546011)(6506007)(386003)(4326008)(186003)(8936002)(99286004)(25786009)(26005);
- DIR:OUT; SFP:1101; SCL:1; SRVR:BN6PR11MB1489;
- H:BN6PR11MB3985.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: microchip.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: p1CuM5RoWcW0AbAn/paFHiBLK4gZblthm6N43cF4qAD0fQ0JTFTsh6mFvKJGAGhJ8iOOVA0gIPEfcTZkdiknNKUb2dGG3lFwL3/1mU7ajE/GD9kvnrp6W5DAo9fK4YV15LB9y6eF0p9Yt3DsxgTAwoQkrgY37mni1TFpop4UmO7fnEbieOzhEBw9TVZ13OStoz507ud3BfbbHAyu1XSQ2soehh9LLA0L8ypx3KeWm4SK2/qoFdUtF2wfo7hbBcE4JqBgtSoypeKlxJcE2Cetj7yF9PeSqDZo3W+Hi+qoBg5dV+AJ9/yEiDSLKYfUG3m3ycZg9agaBWklc739P2H5osRUFzR5bbO1p3Xz7Z0jp44NOgpvY2Tzi2imiUihoXmtaenq4tn1AXe3VhgrOYWGxgHAKrJQyvNwzWJ0cjENRr8=
-Content-ID: <25DBC010746EEB4F8B6A46E4EBFD80F4@namprd11.prod.outlook.com>
+Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 733728700D
+ for <devel@linuxdriverproject.org>; Thu,  5 Sep 2019 13:11:38 +0000 (UTC)
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id BC131C0578C9
+ for <devel@linuxdriverproject.org>; Thu,  5 Sep 2019 13:11:37 +0000 (UTC)
+Received: by mail-wr1-f69.google.com with SMTP id j3so978762wrn.7
+ for <devel@linuxdriverproject.org>; Thu, 05 Sep 2019 06:11:37 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
+ :message-id:mime-version;
+ bh=9ANyZ4dBkBOltXnKi+WoWQpmuFWiDil0u88wFq4AYQY=;
+ b=hcoYxGVgX21dvumudVn6f3jZpQVCCXefGKmosmTfjrlAaYIaKUncZFio7p6dNlzTWL
+ 0OGjCM2MZBDD2aDJpjVgFPj/q4SF/wHktFOhcR+M8XiBjzKijXKmaFAHC6mGuQUY56b5
+ u7uxiEXvHDYxaYA2lwBNKdc3OaxF0bIZmKhroT3VLYER/kpTWt5aDrcQiHT969IJ4o5V
+ W/+achQEC8Csb2t2GmuIVGxnuvI8JJo04qgoBgZV86A1/Hr38ndf+rni2fCU5N5+9dDQ
+ ezrml3wRxsu0AoHnIg9xx0Wk4SGtIWfBatwkJQo2zQ1LYk0xOsx65AaGSmfr+q1RsDMl
+ 5Krg==
+X-Gm-Message-State: APjAAAXOg7bb7Wbv89+6mKG6VOetHuszEorIj35ig3nSbHhNKMpp2HEB
+ XgAi7TJoD4Jw0sov1LYdteZEAYYjwYOddNbztE32due50jARTbMD9Hi4coEYo/ioGGxwuEdXkcH
+ 60lhbOI6UMH8Hwkpm86mf7ge1
+X-Received: by 2002:a1c:80ca:: with SMTP id b193mr2630538wmd.171.1567689095197; 
+ Thu, 05 Sep 2019 06:11:35 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyKbK6O+n/cVqLS49y3v2z3Wc3ajQWQx/waHdOI+hpMRHK7GNQBFj0JYwrQL53NYvHAotP2eA==
+X-Received: by 2002:a1c:80ca:: with SMTP id b193mr2630501wmd.171.1567689094909; 
+ Thu, 05 Sep 2019 06:11:34 -0700 (PDT)
+Received: from vitty.brq.redhat.com (nat-pool-brq-t.redhat.com.
+ [213.175.37.10])
+ by smtp.gmail.com with ESMTPSA id x5sm3093960wrg.69.2019.09.05.06.11.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 05 Sep 2019 06:11:34 -0700 (PDT)
+From: Vitaly Kuznetsov <vkuznets@redhat.com>
+To: Wanpeng Li <kernellwp@gmail.com>,
+ syzbot <syzbot+dff25ee91f0c7d5c1695@syzkaller.appspotmail.com>
+Subject: Re: general protection fault in __apic_accept_irq
+In-Reply-To: <CANRm+CxBdFjVrYzAe_Rs=v6BMSq9Gx+ngDrEitK6aez=kMq2XQ@mail.gmail.com>
+References: <000000000000e3072b0591ca1937@google.com>
+ <CANRm+CxBdFjVrYzAe_Rs=v6BMSq9Gx+ngDrEitK6aez=kMq2XQ@mail.gmail.com>
+Date: Thu, 05 Sep 2019 15:11:33 +0200
+Message-ID: <87imq6khve.fsf@vitty.brq.redhat.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 999e74f4-3326-4f8d-401b-08d731f513c3
-X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Sep 2019 11:34:56.5745 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 0NIB7JrzKfcIfl6b3wTVI7sOEHKf1lmBtIml5WPSbnn/8KAewUZY1GJZwGkd0QSwexcbehS7IfCpbehdLqF7LbS6YqePP0pfM/hZqR496EI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB1489
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -160,54 +85,88 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: Ajay.Kathat@microchip.com
-Cc: devel@driverdev.osuosl.org, Eugen.Hristev@microchip.com,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- Adham.Abozaeid@microchip.com
+Cc: Sasha Levin <sashal@kernel.org>, Stephen Hemminger <sthemmin@microsoft.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, kvm <kvm@vger.kernel.org>,
+ Radim Krcmar <rkrcmar@redhat.com>, Haiyang Zhang <haiyangz@microsoft.com>,
+ the arch/x86 maintainers <x86@kernel.org>, syzkaller-bugs@googlegroups.com,
+ LKML <linux-kernel@vger.kernel.org>,
+ Sean Christopherson <sean.j.christopherson@intel.com>, mikelley@microsoft.com,
+ Wanpeng Li <wanpengli@tencent.com>, Ingo Molnar <mingo@redhat.com>,
+ Borislav Petkov <bp@alien8.de>, "H. Peter Anvin" <hpa@zytor.com>,
+ devel@linuxdriverproject.org, Thomas Gleixner <tglx@linutronix.de>,
+ Joerg Roedel <joro@8bytes.org>, Jim Mattson <jmattson@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Greg,
+Wanpeng Li <kernellwp@gmail.com> writes:
 
-On 05-Sep-19 1:07 PM, Greg KH wrote:
-> On Thu, Sep 05, 2019 at 06:09:43AM +0000, Ajay.Kathat@microchip.com wrote:
->> Hi Eugen,
+> On Thu, 5 Sep 2019 at 16:53, syzbot
+> <syzbot+dff25ee91f0c7d5c1695@syzkaller.appspotmail.com> wrote:
 >>
->> On 04-Sep-19 7:03 PM, Eugen Hristev - M18282 wrote:
->>> From: Eugen Hristev <eugen.hristev@microchip.com>
->>>
->>> Add bindings for optional rtc clock pin.
->>>
->>> Signed-off-by: Eugen Hristev <eugen.hristev@microchip.com>
+>> Hello,
 >>
->> Thanks for sending the patch series. The changes in this series looks
->> good to me.
+>> syzbot found the following crash on:
 >>
->> Acked-by: Ajay Singh <ajay.kathat@microchip.com>
-> 
-> This is good, but, you are adding new features to the driver, when it is
-> still in the staging directory.  What's the plan on getting it out of
-> here?  What is left to do?
-> 
+>> HEAD commit:    3b47fd5c Merge tag 'nfs-for-5.3-4' of git://git.linux-nfs...
+>> git tree:       upstream
+>> console output: https://syzkaller.appspot.com/x/log.txt?x=124af12a600000
+>> kernel config:  https://syzkaller.appspot.com/x/.config?x=144488c6c6c6d2b6
+>> dashboard link: https://syzkaller.appspot.com/bug?extid=dff25ee91f0c7d5c1695
+>> compiler:       clang version 9.0.0 (/home/glider/llvm/clang
+>> 80fee25776c2fb61e74c1ecb1a523375c2500b69)
+>> syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=10954676600000
+>> C reproducer:   https://syzkaller.appspot.com/x/repro.c?x=1752fe0a600000
+>>
+>> The bug was bisected to:
+>>
+>> commit 0aa67255f54df192d29aec7ac6abb1249d45bda7
+>> Author: Vitaly Kuznetsov <vkuznets@redhat.com>
+>> Date:   Mon Nov 26 15:47:29 2018 +0000
+>>
+>>      x86/hyper-v: move synic/stimer control structures definitions to
+>> hyperv-tlfs.h
+>>
+>> bisection log:  https://syzkaller.appspot.com/x/bisect.txt?x=156128c1600000
+>> console output: https://syzkaller.appspot.com/x/log.txt?x=136128c1600000
+>>
+>> IMPORTANT: if you fix the bug, please add the following tag to the commit:
+>> Reported-by: syzbot+dff25ee91f0c7d5c1695@syzkaller.appspotmail.com
+>> Fixes: 0aa67255f54d ("x86/hyper-v: move synic/stimer control structures
+>> definitions to hyperv-tlfs.h")
+>>
+>> kvm [9347]: vcpu0, guest rIP: 0xcc Hyper-V uhandled wrmsr: 0x40000004 data
+>> 0x94
+>> kvm [9347]: vcpu0, guest rIP: 0xcc Hyper-V uhandled wrmsr: 0x40000004 data
+>> 0x48c
+>> kvm [9347]: vcpu0, guest rIP: 0xcc Hyper-V uhandled wrmsr: 0x40000004 data
+>> 0x4ac
+>> kvm [9347]: vcpu0, guest rIP: 0xcc Hyper-V uhandled wrmsr: 0x40000005 data
+>> 0x1520
+>> kvm [9347]: vcpu0, guest rIP: 0xcc Hyper-V uhandled wrmsr: 0x40000006 data
+>> 0x15d4
+>> kvm [9347]: vcpu0, guest rIP: 0xcc Hyper-V uhandled wrmsr: 0x40000007 data
+>> 0x15c4
+>> kasan: CONFIG_KASAN_INLINE enabled
+>> kasan: GPF could be caused by NULL-ptr deref or user memory access
+>> general protection fault: 0000 [#1] PREEMPT SMP KASAN
+>> CPU: 0 PID: 9347 Comm: syz-executor665 Not tainted 5.3.0-rc7+ #0
+>> Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS
+>> Google 01/01/2011
+>> RIP: 0010:__apic_accept_irq+0x46/0x740 arch/x86/kvm/lapic.c:1029
+>
+> Thanks for the report, I found the root cause, will send a patch soon.
+>
 
-The plan is to get this driver reviewed and identify if there are any
-more TODO items. Waiting for the review to complete.
+I'm really interested in how any issue can be caused by 0aa67255f54d as
+we just moved some definitions from a c file to a common header... (ok,
+we did more than that, some structures gained '__packed' but it all
+still seems legitimate to me and I can't recall any problems with
+genuine Hyper-V...)
 
-During the last review [1], we have received comment to simplify the
-packing of WID commands by avoiding the translation layer. We had done
-some improvements in this but still, there are few items under discussion.
-But I am not sure if this is a blocker for mainline or can be addressed
-later.
-At this time, I don't know if there are any more TODO for this driver.
-Currently also working on testing and fixing bugs.
-
-[1].
-https://lore.kernel.org/linux-wireless/1562896697-8002-1-git-send-email-ajay.kathat@microchip.com/
-
-Regards,
-Ajay
+-- 
+Vitaly
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
