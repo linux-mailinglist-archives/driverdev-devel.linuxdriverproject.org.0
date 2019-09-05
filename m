@@ -1,88 +1,46 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DDC70A7FF1
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Sep 2019 12:04:40 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 87B4AA8044
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Sep 2019 12:20:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D33BC876B3;
-	Wed,  4 Sep 2019 10:04:38 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5B5A0882E3;
+	Wed,  4 Sep 2019 10:20:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9h0yyCSkgC4v; Wed,  4 Sep 2019 10:04:38 +0000 (UTC)
+	with ESMTP id 1gHYdeeclhuQ; Wed,  4 Sep 2019 10:20:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9E7A4878BC;
-	Wed,  4 Sep 2019 10:04:37 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2A7AB88582;
+	Wed,  4 Sep 2019 10:18:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0E6B21BF47F
- for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 10:04:36 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 36F201BF47F
+ for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 10:18:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0B64684647
- for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 10:04:36 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3437586AD3
+ for <devel@linuxdriverproject.org>; Wed,  4 Sep 2019 10:18:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2C5UEy8iAQ-A for <devel@linuxdriverproject.org>;
- Wed,  4 Sep 2019 10:04:35 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7356384518
- for <devel@driverdev.osuosl.org>; Wed,  4 Sep 2019 10:04:35 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x84A47Wh123230;
- Wed, 4 Sep 2019 10:04:34 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : mime-version : content-type; s=corp-2019-08-05;
- bh=jbhkDb5OQlgB05nFnu/BmVaX6e8czF1EQGjdDkFSZP8=;
- b=ENhma2y03GJUM5mJ2u/MnUMFpxu4jS2IF7iCAaXGR/gr4SW3xgwgjftOLzMtgWhzfm3r
- CNo4y1PNf1zbVqaEbEqvNDf+nl8ewFdlDajEPKOvF6GGYZfWCNLH9aLgQgny+EJbfOGb
- LikfSBkP0Gfw5Ed3qrQAQTOoMkDimtdoUvAh7+yna9JxMG1zfCECcvOv+VhHAIYdgDS6
- Pl0ULFgBMY2G3X0PYqHGlLvZM68HRRnkLmOMfW4IfPLEXoUUndAE1rJhdUy4dIScsY8i
- s7MIMZrkaS09U8YpWUWyoPqdFpfnRXqrQFpRrHxuXKORHceKfwz0V6exTZIgvLP9jSbc KQ== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by aserp2120.oracle.com with ESMTP id 2utb5yr0af-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 04 Sep 2019 10:04:34 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x849waTT063919;
- Wed, 4 Sep 2019 09:59:18 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by userp3030.oracle.com with ESMTP id 2usu52sqey-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 04 Sep 2019 09:59:18 +0000
-Received: from abhmp0009.oracle.com (abhmp0009.oracle.com [141.146.116.15])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x849xEH2031350;
- Wed, 4 Sep 2019 09:59:14 GMT
-Received: from mwanda (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 04 Sep 2019 02:59:14 -0700
-Date: Wed, 4 Sep 2019 12:59:08 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Valdis Kletnieks <valdis.kletnieks@vt.edu>
-Subject: [PATCH] staging: exfat: Fix two missing unlocks on error paths
-Message-ID: <20190904095908.GA7007@mwanda>
+ with ESMTP id iCf_7U-85TXh for <devel@linuxdriverproject.org>;
+ Wed,  4 Sep 2019 10:18:39 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from don.com (unknown [94.177.241.243])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 186D186C76
+ for <devel@driverdev.osuosl.org>; Wed,  4 Sep 2019 10:17:45 +0000 (UTC)
+Received: from [103.207.38.153] (unknown [103.207.38.153])
+ by don.com (Postfix) with ESMTPA id 7ED29CC149
+ for <devel@driverdev.osuosl.org>; Wed,  4 Sep 2019 05:54:50 -0400 (EDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-X-Mailer: git-send-email haha only kidding
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9369
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1906280000 definitions=main-1909040099
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9369
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1906280000
- definitions=main-1909040100
+Content-Description: Mail message body
+Subject: FROM LOTTERY DESK
+To: devel@driverdev.osuosl.org
+From: naleahb@pololo.ml
+Date: Wed, 04 Sep 2019 18:42:20 -0700
+Message-Id: <20190904101848.3437586AD3@fraxinus.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,50 +53,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- kernel-janitors@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: rogermake0@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-These two error paths need to unlock before we can return.
-
-Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
----
- drivers/staging/exfat/exfat_super.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
-index 5b5c2ca8c9aa..87e66e385e88 100644
---- a/drivers/staging/exfat/exfat_super.c
-+++ b/drivers/staging/exfat/exfat_super.c
-@@ -664,7 +670,7 @@ static int ffsLookupFile(struct inode *inode, char *path, struct file_id_t *fid)
- 	dentry = p_fs->fs_func->find_dir_entry(sb, &dir, &uni_name, num_entries,
- 					       &dos_name, TYPE_ALL);
- 	if (dentry < -1) {
--		return FFS_NOTFOUND;
-+		ret = FFS_NOTFOUND;
- 		goto out;
- 	}
- 
-@@ -1199,8 +1205,10 @@ static int ffsTruncateFile(struct inode *inode, u64 old_size, u64 new_size)
- 		} else {
- 			while (num_clusters > 0) {
- 				last_clu = clu.dir;
--				if (FAT_read(sb, clu.dir, &clu.dir) == -1)
--					return FFS_MEDIAERR;
-+				if (FAT_read(sb, clu.dir, &clu.dir) == -1) {
-+					ret = FFS_MEDIAERR;
-+					goto out;
-+				}
- 				num_clusters--;
- 			}
- 		}
--- 
-2.20.1
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RGVhciBXaW5uZXIsCgpXZSBhcmUgaGFwcHkgdG8gaW5mb3JtIHlvdSB0aGUgcmVzdWx0IG9mIHRo
+ZSBqdXN0IGNvbmNsdWRlZCBUSEUgMjAyMCBPTFlNUElDUyBPTkxJTkUgTE9UVEVSWSBQUk9NT1RJ
+T04gZmluYWwgZHJhd3MgaGVsZCBvbiB0aGUgMTl0aCBvZiBBdWd1c3QsMjAxOSwgeW91ciBlbWFp
+bCBhZGRyZXNzIHdhcyBhbW9uZyB0aGUgNTAgTHVja3kgd2lubmVycyB3aG8gd29uICQyLDUwMCww
+MDAsIDAwLiAoVHdvIE1pbGxpb25zIEZpdmUgSHVuZHJlZCBUaG91c2FuZCBVbml0ZWQgU3RhdGVz
+IERvbGxhcikgZWFjaCwgdGhpcyBpcyBwYXJ0IG9mIHRoZSBTb2NpYWwgbmV0d29yayBwYXJ0aWNp
+cGF0aW9uIGZvciBIb3N0aW5nIG9mIHRva3lvLTIwMjAgU3VtbWVyIE9seW1waWNzIDIwMjAgaW4g
+VG9reW8gSmFwYW4uKCAyNCBKdWx5IDIwMjAg4oCTIDkgQXVndXN0IDIwMjApLgoKSG93ZXZlciB0
+aGUgcmVzdWx0cyB3ZXJlIHJlbGVhc2VkIG9uIHRoZSAyM3JkIEF1Z3VzdCwgMjAxOSBhbmQgeW91
+ciBlbWFpbCB3YXMgYXR0YWNoZWQgdG8gdGlja2V0IG51bWJlciAoUklPUFBSIDAwOSkgYW5kIGJh
+bGxvdCBudW1iZXIgKEJOOiA3NzcxODIwMTYvMjApLiBUaGUgb25saW5lIGRyYXdzIHdhcyBjb25k
+dWN0ZWQgYnkgYSByYW5kb20gc2VsZWN0aW9uIG9mIGVtYWlsIGFkZHJlc3NlcyBmcm9tIGFuIGV4
+Y2x1c2l2ZSBsaXN0IG9mIDI5LDAzMSBlbWFpbCBhZGRyZXNzZXMgb2YgaW5kaXZpZHVhbHMgYW5k
+IGNvcnBvcmF0ZSBib2RpZXMgcGlja2VkIGJ5IGFuIGFkdmFuY2VkIGF1dG9tYXRlZCByYW5kb20g
+Y29tcHV0ZXIgc2VhcmNoIGZyb20gdGhlIGludGVybmV0LiBIb3dldmVyLCBubyB0aWNrZXRzIHdl
+cmUgc29sZCBidXQgYWxsIGVtYWlsIGFkZHJlc3NlcyB3ZXJlIGFzc2lnbmVkIHRvIGRpZmZlcmVu
+dCB0aWNrZXQgbnVtYmVycyBmb3IgcmVwcmVzZW50YXRpb24gYW5kIHByaXZhY3kuClBsZWFzZSB5
+b3UgYXJlIGFkdmlzZWQgdG8gY29tcGxldGUgdGhlIGJlbG93IGZvcm0gYW5kIHNlbmQgaXQgaW1t
+ZWRpYXRlbHkgdG8gb3VyIFByb21vdGlvbiBtYW5hZ2VyIHRocm91Z2ggZW1haWwgb3IgY2FsbCBm
+b3IgcHJvbXB0IGNvbGxlY3Rpb24gb2YgeW91ciBmdW5kIGZyb20gYW55IG9mIHRoZSBkZXNpZ25h
+dGVkIGJhbmsuCgpOQU1FOi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4gLi4uLi4uLi4uLi4uCgpB
+RERSRVNTOi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uCiAKQUdFOi4uLi4uLi4u
+Li4uLi4uLi4uIFNFWDouLi4uLi4uLi4uLi4uLi4KIApFTUFJTDouLi4uLi4uLi4uLi4uLi4uLi4u
+Li4uLi4gLi4uLi4uLi4uLi4uCiAKUEhPTkU6Li4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uIC4uLi4u
+Li4uLi4uCgpUSUNLRVQgTk864oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCmLi4KCkJBTExPVCBO
+TzrigKbigKbigKbigKbigKbigKbigKbigKbigKbigKYKCiAKIChDT05UQUNUIFBST01PVElPTiBN
+QU5BR0VSKSAgRk9SIERFVEFJTFM6Ck5hbWU6IE1yLiBSb2dlciBNY2tlbmVsLiAoRElDKQpFLU1B
+SUw6ICBpbmZvQG9seW1waWMtMjAyMHRva3lvLmNvbQpXZWJzaXRlOiBodHRwOi8vb2x5bXBpYy0y
+MDIwdG9reW8uY29tClBob25lOisxLSg3MDgpIDI5NC0zNjUyClVuaXRlZCBTdGF0ZXMgb2YgQW1l
+cmljYQpZb3UgYXJlIHRvIGtlZXAgYWxsIGxvdHRvIGluZm9ybWF0aW9uIGF3YXkgZnJvbSB0aGUg
+Z2VuZXJhbCBwdWJsaWMgZXNwZWNpYWxseSB5b3VyIHRpY2tldCBudW1iZXIgYW5kIGJhbGxvdCBu
+dW1iZXIuIChUaGlzIGlzIGltcG9ydGFudCBhcyBhIGNhc2Ugb2YgZG91YmxlIGNsYWltcyB3aWxs
+IG5vdCBiZSBlbnRlcnRhaW5lZCkuCkFjY2VwdCBvdXIgaGVhcnR5IGNvbmdyYXR1bGF0aW9ucyBv
+bmNlIGFnYWluIQogCkdsb2JhbCBDaGFpcm1hbgpTaWduZWQKMjAyMCBUb2t5byBPbHltcGljcyBM
+b3R0ZXJ5IE9yZ2FuaXppbmcgQ29tbWl0dGVlLgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJw
+cm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
