@@ -1,56 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E0BCCABBC8
-	for <lists+driverdev-devel@lfdr.de>; Fri,  6 Sep 2019 17:08:35 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 491B2ABBCD
+	for <lists+driverdev-devel@lfdr.de>; Fri,  6 Sep 2019 17:09:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 268C8881DE;
-	Fri,  6 Sep 2019 15:08:33 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4AEAE204B6;
+	Fri,  6 Sep 2019 15:09:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wJ+D3wlMqzHl; Fri,  6 Sep 2019 15:08:32 +0000 (UTC)
+	with ESMTP id 80r9CFc2D-09; Fri,  6 Sep 2019 15:09:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 43AF68818E;
-	Fri,  6 Sep 2019 15:08:32 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 841A42049A;
+	Fri,  6 Sep 2019 15:09:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EB4FD1BF296
- for <devel@linuxdriverproject.org>; Fri,  6 Sep 2019 15:08:29 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 0CAFE1BF296
+ for <devel@linuxdriverproject.org>; Fri,  6 Sep 2019 15:09:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E504688187
- for <devel@linuxdriverproject.org>; Fri,  6 Sep 2019 15:08:29 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 0945A2048C
+ for <devel@linuxdriverproject.org>; Fri,  6 Sep 2019 15:09:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id luIX2ureqPyv for <devel@linuxdriverproject.org>;
- Fri,  6 Sep 2019 15:08:29 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5574788183
- for <devel@driverdev.osuosl.org>; Fri,  6 Sep 2019 15:08:29 +0000 (UTC)
-Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
- by youngberry.canonical.com with esmtpsa (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.76) (envelope-from <colin.king@canonical.com>)
- id 1i6FqZ-0001Eg-V9; Fri, 06 Sep 2019 15:08:24 +0000
-From: Colin King <colin.king@canonical.com>
-To: Rui Miguel Silva <rmfrfs@gmail.com>,
- Steve Longerbeam <slongerbeam@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- linux-media@vger.kernel.org, devel@driverdev.osuosl.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [PATCH] media: imx7-mipi-csis: make array 'registers' static const,
- makes object smaller
-Date: Fri,  6 Sep 2019 16:08:23 +0100
-Message-Id: <20190906150823.30859-1-colin.king@canonical.com>
-X-Mailer: git-send-email 2.20.1
+ with ESMTP id vuJHdXaDoN6h for <devel@linuxdriverproject.org>;
+ Fri,  6 Sep 2019 15:09:36 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.130])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9D86F20477
+ for <devel@driverdev.osuosl.org>; Fri,  6 Sep 2019 15:09:35 +0000 (UTC)
+Received: from threadripper.lan ([149.172.19.189]) by mrelayeu.kundenserver.de
+ (mreue009 [212.227.15.129]) with ESMTPA (Nemesis) id
+ 1MhUDj-1iated0Y4J-00eZJS; Fri, 06 Sep 2019 17:09:20 +0200
+From: Arnd Bergmann <arnd@arndb.de>
+To: Valdis Kletnieks <valdis.kletnieks@vt.edu>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH 1/2] exfat stopusing CONFIG_FAT_DEFAULT_IOCHARSET
+Date: Fri,  6 Sep 2019 17:09:04 +0200
+Message-Id: <20190906150917.1025250-1-arnd@arndb.de>
+X-Mailer: git-send-email 2.20.0
 MIME-Version: 1.0
+X-Provags-ID: V03:K1:uqse4hogKOr7BI9YbaZwXs0qyNe9NNWburGdPI+eJEYl2q8Qt1s
+ uQVNJNkUVfq+l/FOkvdPd5DI9S065oyd28MutYIcNOCemFvmd3sk0OS91NieEqurLW0ou7f
+ 7ybSd+bMXeKQX5WVWhkVlHXTSMVz410x/mC3E8ME35vkFYSA8+DLyrt9KG6rKKChBeUtw66
+ fXV42UtlfUIJdeW5Yh2ZA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:4FoCFpjAsA8=:5xtEH+8/eJEDimTUKDvoYx
+ kHftU+cpIZPlUEmKAgHcJcxq4+61ytMOFgBk1BUg/7s3p9h3KjyOBG4cplYu2dq9FduHsP5Wd
+ etPBm5XzDrEnA9JY8SZ1xaAR7hD2IxFe1Stnq6vsIEpFiqPcJmicIKmVjvF325ZY0IyIrvzdr
+ TQNfgsdGgIgXaEiHFvtwPZtWH3UpLrD8tp/lYpaBUP5GqFIYLsJyrVidm5t42K25yyfF8IG9N
+ vYQwy/yGu1XDYBHnnWjnk0d0at38ouNKDmx9jDQgr+BAIFQWjAXnD4eY8jFP9btIELx8fHEhd
+ OpU8yixFAEbdhpms2EPQ7/wQ7TOA+cCl/1Qk1nunsskh6meH2OeEiMT1aH7kGMaNecVP/pWP6
+ RrQekXMfDXUmHSi8+iSBUKP2uHkETJkOFqN0fXjisKElLbxq11b2Vwa2NkwUE87H0gNe78Qty
+ lIVGFWJqW4g4epFt31ZxReiSmtTxshaz/lCpNVfQwAf0yCpq+OnaaKbhvD5bjnwznMJDVDXMn
+ SVfFK/LPNj3dCPIO0S4pstaF+rsEKQ3O0UpHyMSYBk1Virp5T+b9ScsK3AOiR6pk+mNr6JkD0
+ sDJCXFSskfU8O5Ky1m3zMVsBWAwRG6qqzCz2KfYgXsFJwDjShdHbsOq6rm1kV86hKelnGerIZ
+ /n6ejLqNNTazUL7mEzUWJqg+DzXA/dkphaju4bZlcBowvBQ1GvMzzHzhoM8T9dobYJMNPWCPj
+ RHQFXGcTLWue1b0TAUZpOzbZJA3c/hKBWaJlbetfN/Rkt39ZPz+M0ybZzyysB2Y5cATh9aQEH
+ 3nyf+i1B3NKhmOpzHwTU1xruTx4QN0n6LzmF5qAQNPGNS+hyF0=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,47 +71,48 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Valentin Vidic <vvidic@valentin-vidic.from.hr>,
+ linux-kernel@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>,
+ Colin Ian King <colin.king@canonical.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Colin Ian King <colin.king@canonical.com>
+When CONFIG_VFAT_FS is disabled, the reference to CONFIG_FAT_DEFAULT_IOCHARSET
+causes a link failure:
 
-Don't populate the array 'registers' on the stack but instead make it
-static const. Makes the object code smaller by 10 bytes.
+drivers/staging/exfat/exfat_super.c:46:41: error: use of undeclared identifier 'CONFIG_FAT_DEFAULT_IOCHARSET'
+static char exfat_default_iocharset[] = CONFIG_FAT_DEFAULT_IOCHARSET;
 
-Before:
-   text	   data	    bss	    dec	    hex	filename
-  20138	   5196	    128	  25462	   6376	staging/media/imx/imx7-mipi-csis.o
+I could not figure out why the correct code is commented
+out, but using that fixes the problem.
 
-After:
-   text	   data	    bss	    dec	    hex	filename
-  20032	   5292	    128	  25452	   636c	staging/media/imx/imx7-mipi-csis.o
-
-(gcc version 9.2.1, amd64)
-
-Signed-off-by: Colin Ian King <colin.king@canonical.com>
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 ---
- drivers/staging/media/imx/imx7-mipi-csis.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/exfat/exfat_super.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/staging/media/imx/imx7-mipi-csis.c b/drivers/staging/media/imx/imx7-mipi-csis.c
-index 73d8354e618c..f8a97b7e2535 100644
---- a/drivers/staging/media/imx/imx7-mipi-csis.c
-+++ b/drivers/staging/media/imx/imx7-mipi-csis.c
-@@ -293,7 +293,7 @@ static int mipi_csis_dump_regs(struct csi_state *state)
- 	struct device *dev = &state->pdev->dev;
- 	unsigned int i;
- 	u32 cfg;
--	struct {
-+	static const struct {
- 		u32 offset;
- 		const char * const name;
- 	} registers[] = {
+diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
+index 3934b120e1dd..37e78620723f 100644
+--- a/drivers/staging/exfat/exfat_super.c
++++ b/drivers/staging/exfat/exfat_super.c
+@@ -39,11 +39,8 @@
+ 
+ static struct kmem_cache *exfat_inode_cachep;
+ 
+-// FIXME use commented lines
+-// static int exfat_default_codepage = CONFIG_EXFAT_DEFAULT_CODEPAGE;
+-// static char exfat_default_iocharset[] = CONFIG_EXFAT_DEFAULT_IOCHARSET;
+-static int exfat_default_codepage = CONFIG_FAT_DEFAULT_CODEPAGE;
+-static char exfat_default_iocharset[] = CONFIG_FAT_DEFAULT_IOCHARSET;
++static int exfat_default_codepage = CONFIG_EXFAT_DEFAULT_CODEPAGE;
++static char exfat_default_iocharset[] = CONFIG_EXFAT_DEFAULT_IOCHARSET;
+ 
+ #define INC_IVERSION(x) (inode_inc_iversion(x))
+ #define GET_IVERSION(x) (inode_peek_iversion_raw(x))
 -- 
-2.20.1
+2.20.0
 
 _______________________________________________
 devel mailing list
