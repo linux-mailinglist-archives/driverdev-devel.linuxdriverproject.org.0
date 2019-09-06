@@ -1,84 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B8BECABEFE
-	for <lists+driverdev-devel@lfdr.de>; Fri,  6 Sep 2019 19:50:47 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B246CAC086
+	for <lists+driverdev-devel@lfdr.de>; Fri,  6 Sep 2019 21:26:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 65A158820C;
-	Fri,  6 Sep 2019 17:50:45 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C159120502;
+	Fri,  6 Sep 2019 19:26:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oWC4Yd5KFi+N; Fri,  6 Sep 2019 17:50:45 +0000 (UTC)
+	with ESMTP id PWPDpo5J6E59; Fri,  6 Sep 2019 19:26:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D1EF887E24;
-	Fri,  6 Sep 2019 17:50:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C70B720443;
+	Fri,  6 Sep 2019 19:26:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1537C1BF401
- for <devel@linuxdriverproject.org>; Fri,  6 Sep 2019 17:50:42 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E304C1BF5B5
+ for <devel@linuxdriverproject.org>; Fri,  6 Sep 2019 19:26:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 105A487C22
- for <devel@linuxdriverproject.org>; Fri,  6 Sep 2019 17:50:42 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id DFAD684B96
+ for <devel@linuxdriverproject.org>; Fri,  6 Sep 2019 19:26:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6g7bqmIJXwRq for <devel@linuxdriverproject.org>;
- Fri,  6 Sep 2019 17:50:41 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f194.google.com (mail-oi1-f194.google.com
- [209.85.167.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 288FF87C1A
- for <devel@driverdev.osuosl.org>; Fri,  6 Sep 2019 17:50:41 +0000 (UTC)
-Received: by mail-oi1-f194.google.com with SMTP id z6so128017oix.9
- for <devel@driverdev.osuosl.org>; Fri, 06 Sep 2019 10:50:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=F4XFpZ/Ntp6JNNqwWcwMDQ9RkygXrkeY+nz32s4dwlI=;
- b=a2lXYmPyCS4UA3sQ/bVxed9DPzu2SlgOjrFzOX4oEzGwjRtl+jVYZt6AjXGy07rY29
- 24SeCgfuTyObZ50ZEOgxXU3gG6tUn6H4IVDoTClIE+Iw9fK2pvvQnoIfi3cVo1w/HlLM
- oxltd0ZVJUkncdo4JwomxUQA4leGpMW7mOd0bk1e8BvBDKPBY+dps8bkRhnCLoKHXjcp
- 3JgnO54Au8u+2LWvy753N44LAAU0SSK5584KCAhPu9DIH/BGQult7vs/ODi6xQnAsPxV
- IQQc2dTxYlYZawB7hEzyyLD9RE9s1ay6pOfMo/0hkoiXozlSqCY+X/uZ9pW+Ro56aZjq
- UXog==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=F4XFpZ/Ntp6JNNqwWcwMDQ9RkygXrkeY+nz32s4dwlI=;
- b=pvUD4/Kd+NFPySBNibGFyy4Gn9rL/5CPXpJGS9/U7DfxcFDBT0EVcpNWxzGjetWJbs
- 8QRKV8bKC5W9Qq8MqydPH68vVO3BHZITaLOUR2M5OV3GjOIvj+hhO9xosE2E28aMa/95
- NLwbNzAyCBWUGKi+DYM92RJfQfjWnfHgq4xV2tR8y1Ph+UECVBF98MzKjD/d5obnP4Wm
- pKWCszWLTZE2nNzY5NaL2PNhdagh/JwxsimmMDbNw2gHkYuAfi7pExBvFPSj1BXSnnES
- nN4S9GxkjbXugKfzsGl3P6AOlFJ50LIH1G2uPrM0yXkukT3ZMMuHeM4uG0V1eoyfS6UN
- xKiw==
-X-Gm-Message-State: APjAAAXZyXD9ECQB5KEYy42VDcG/kzfHR3VEI/myYBddZW7fVqPOrP39
- mlnzoVBNaZj706JAvHl0uis=
-X-Google-Smtp-Source: APXvYqxzox6qJNPz7yEiqg0BiF3uTnaUtCGgjyVmQFBVlRPiRvwAQoEaZjVsB/vZH88rAZLKA1LVyg==
-X-Received: by 2002:a54:4f11:: with SMTP id e17mr7643443oiy.46.1567792240430; 
- Fri, 06 Sep 2019 10:50:40 -0700 (PDT)
-Received: from [192.168.1.156] (cpe-24-31-245-230.kc.res.rr.com.
- [24.31.245.230])
- by smtp.gmail.com with ESMTPSA id i47sm2453711ota.1.2019.09.06.10.50.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 06 Sep 2019 10:50:40 -0700 (PDT)
-Subject: Re: [PATCH] staging: rtl8188eu: make two arrays static const, makes
- object smaller
-To: Colin King <colin.king@canonical.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org
-References: <20190906173949.21860-1-colin.king@canonical.com>
-From: Larry Finger <Larry.Finger@lwfinger.net>
-Message-ID: <9f1e1550-2a75-abc3-4d87-a0c1d1ae1ccb@lwfinger.net>
-Date: Fri, 6 Sep 2019 12:50:39 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ with ESMTP id 7Wy6f1HIxDbg for <devel@linuxdriverproject.org>;
+ Fri,  6 Sep 2019 19:26:50 +0000 (UTC)
+X-Greylist: delayed 00:48:43 by SQLgrey-1.7.6
+Received: from mxout012.mail.hostpoint.ch (mxout012.mail.hostpoint.ch
+ [217.26.49.172])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 76EAA847CB
+ for <devel@driverdev.osuosl.org>; Fri,  6 Sep 2019 19:26:50 +0000 (UTC)
+Received: from [10.0.2.45] (helo=asmtp012.mail.hostpoint.ch)
+ by mxout012.mail.hostpoint.ch with esmtp (Exim 4.92.2 (FreeBSD))
+ (envelope-from <sandro@volery.com>)
+ id 1i6J7T-000Jjb-HO; Fri, 06 Sep 2019 20:38:03 +0200
+Received: from 145-126.cable.senselan.ch ([83.222.145.126] helo=volery)
+ by asmtp012.mail.hostpoint.ch with esmtpsa
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2 (FreeBSD))
+ (envelope-from <sandro@volery.com>)
+ id 1i6J7T-000Axi-Dk; Fri, 06 Sep 2019 20:38:03 +0200
+X-Authenticated-Sender-Id: sandro@volery.com
+Date: Fri, 6 Sep 2019 20:38:01 +0200
+From: volery <sandro@volery.com>
+To: rspringer@google.com, toddpoynor@google.com, benchan@chromium.org,
+ gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] Fixed parentheses malpractice in apex_driver.c
+Message-ID: <20190906183801.GA2456@volery>
 MIME-Version: 1.0
-In-Reply-To: <20190906173949.21860-1-colin.king@canonical.com>
-Content-Language: en-US
+Content-Disposition: inline
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,36 +64,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 9/6/19 12:39 PM, Colin King wrote:
-> From: Colin Ian King <colin.king@canonical.com>
-> 
-> Don't populate two arrays on the stack but instead make them
-> static const. Makes the object code smaller by 49 bytes.
-> 
-> Before:
->     text	   data	    bss	    dec	    hex	filename
->    26821	   5616	      0	  32437	   7eb5	rtl8188eu/core/rtw_ieee80211.o
-> 
-> After:
->     text	   data	    bss	    dec	    hex	filename
->    26612	   5776	      0	  32388	   7e84	rtl8188eu/core/rtw_ieee80211.o
-> 
-> (gcc version 9.2.1, amd64)
-> 
-> Signed-off-by: Colin Ian King <colin.king@canonical.com>
-> ---
+There were some parentheses at the end of lines, which I took care of.
+This is my first patch.
 
-Acked-by: Larry Finger <Larry.Finger@lwfinger.net>
+Signed-off-by: Sandro Volery <sandro@volery.com>
+---
+ drivers/staging/gasket/apex_driver.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
-Thanks,
+diff --git a/drivers/staging/gasket/apex_driver.c b/drivers/staging/gasket/apex_driver.c
+index 464648ee2036..78ebd590f877 100644
+--- a/drivers/staging/gasket/apex_driver.c
++++ b/drivers/staging/gasket/apex_driver.c
+@@ -527,17 +527,20 @@ static ssize_t sysfs_show(struct device *device, struct device_attribute *attr,
+ 	switch (type) {
+ 	case ATTR_KERNEL_HIB_PAGE_TABLE_SIZE:
+ 		ret = scnprintf(buf, PAGE_SIZE, "%u\n",
+-				gasket_page_table_num_entries(
++				gasket_page_table_num_entries
++				(
+ 					gasket_dev->page_table[0]));
+ 		break;
+ 	case ATTR_KERNEL_HIB_SIMPLE_PAGE_TABLE_SIZE:
+ 		ret = scnprintf(buf, PAGE_SIZE, "%u\n",
+-				gasket_page_table_num_simple_entries(
++				gasket_page_table_num_simple_entries
++				(
+ 					gasket_dev->page_table[0]));
+ 		break;
+ 	case ATTR_KERNEL_HIB_NUM_ACTIVE_PAGES:
+ 		ret = scnprintf(buf, PAGE_SIZE, "%u\n",
+-				gasket_page_table_num_active_pages(
++				gasket_page_table_num_active_pages
++				(
+ 					gasket_dev->page_table[0]));
+ 		break;
+ 	default:
+-- 
+2.23.0
 
-Larry
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
