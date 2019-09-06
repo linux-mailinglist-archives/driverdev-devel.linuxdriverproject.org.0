@@ -2,57 +2,49 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 55817ABD8C
-	for <lists+driverdev-devel@lfdr.de>; Fri,  6 Sep 2019 18:19:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D6A57ABEE0
+	for <lists+driverdev-devel@lfdr.de>; Fri,  6 Sep 2019 19:39:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5544E881F9;
-	Fri,  6 Sep 2019 16:19:04 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E5A8D88216;
+	Fri,  6 Sep 2019 17:39:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fLDCnbvTx4zr; Fri,  6 Sep 2019 16:19:04 +0000 (UTC)
+	with ESMTP id FlzXG3iGyiEu; Fri,  6 Sep 2019 17:39:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BA72888058;
-	Fri,  6 Sep 2019 16:19:03 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C8E4F8818D;
+	Fri,  6 Sep 2019 17:39:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id ABFC31BF325
- for <devel@linuxdriverproject.org>; Fri,  6 Sep 2019 16:19:01 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 85CED1BF401
+ for <devel@linuxdriverproject.org>; Fri,  6 Sep 2019 17:39:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A5B8984702
- for <devel@linuxdriverproject.org>; Fri,  6 Sep 2019 16:19:01 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 81DB388137
+ for <devel@linuxdriverproject.org>; Fri,  6 Sep 2019 17:39:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8LuJ3ACLCpHo for <devel@linuxdriverproject.org>;
- Fri,  6 Sep 2019 16:19:01 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3818584770
- for <devel@driverdev.osuosl.org>; Fri,  6 Sep 2019 16:19:01 +0000 (UTC)
-Received: from localhost (unknown [89.248.140.12])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 7C2EB206CD;
- Fri,  6 Sep 2019 16:19:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1567786741;
- bh=9JR/0RztC02zpm+rMuDn4vuBR9pFtNIfq7WpGGMOOk8=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Qv7QxCLK0akzGp/aWJtCSApckxdhXoDkU3zjElZjYbChWOO/P0UEMvjqq5TVqHKLx
- r8uorRp2vKP67C3cQ6rffnowSq8geny5GgzA8w0gnzlzaJ4XDsbIq7Mo6DvLXMI/rv
- tBeg+CB+3Hv3hcgSB0AZgynFArCm9CBVW1vEAV+Y=
-Date: Fri, 6 Sep 2019 18:18:57 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [PATCH 1/2] exfat stopusing CONFIG_FAT_DEFAULT_IOCHARSET
-Message-ID: <20190906161857.GA2585@kroah.com>
-References: <20190906150917.1025250-1-arnd@arndb.de>
+ with ESMTP id AOA5kcPVcmZA for <devel@linuxdriverproject.org>;
+ Fri,  6 Sep 2019 17:39:53 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id E8DB488012
+ for <devel@driverdev.osuosl.org>; Fri,  6 Sep 2019 17:39:52 +0000 (UTC)
+Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
+ by youngberry.canonical.com with esmtpsa (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.76) (envelope-from <colin.king@canonical.com>)
+ id 1i6ID7-0005Vl-LM; Fri, 06 Sep 2019 17:39:49 +0000
+From: Colin King <colin.king@canonical.com>
+To: Larry Finger <Larry.Finger@lwfinger.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org
+Subject: [PATCH] staging: rtl8188eu: make two arrays static const,
+ makes object smaller
+Date: Fri,  6 Sep 2019 18:39:49 +0100
+Message-Id: <20190906173949.21860-1-colin.king@canonical.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190906150917.1025250-1-arnd@arndb.de>
-User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,28 +57,57 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Valentin Vidic <vvidic@valentin-vidic.from.hr>,
- Valdis Kletnieks <valdis.kletnieks@vt.edu>, linux-kernel@vger.kernel.org,
- Colin Ian King <colin.king@canonical.com>
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Sep 06, 2019 at 05:09:04PM +0200, Arnd Bergmann wrote:
-> When CONFIG_VFAT_FS is disabled, the reference to CONFIG_FAT_DEFAULT_IOCHARSET
-> causes a link failure:
-> 
-> drivers/staging/exfat/exfat_super.c:46:41: error: use of undeclared identifier 'CONFIG_FAT_DEFAULT_IOCHARSET'
-> static char exfat_default_iocharset[] = CONFIG_FAT_DEFAULT_IOCHARSET;
-> 
-> I could not figure out why the correct code is commented
-> out, but using that fixes the problem.
+From: Colin Ian King <colin.king@canonical.com>
 
-For some reason I was getting a build error without that, I added those
-commented out lines.  Odd.  Oh well, thanks for fixing this :)
+Don't populate two arrays on the stack but instead make them
+static const. Makes the object code smaller by 49 bytes.
 
-greg k-h
+Before:
+   text	   data	    bss	    dec	    hex	filename
+  26821	   5616	      0	  32437	   7eb5	rtl8188eu/core/rtw_ieee80211.o
+
+After:
+   text	   data	    bss	    dec	    hex	filename
+  26612	   5776	      0	  32388	   7e84	rtl8188eu/core/rtw_ieee80211.o
+
+(gcc version 9.2.1, amd64)
+
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+---
+ drivers/staging/rtl8188eu/core/rtw_ieee80211.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/rtl8188eu/core/rtw_ieee80211.c b/drivers/staging/rtl8188eu/core/rtw_ieee80211.c
+index 28b3cdd10397..cc1b5438c04c 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_ieee80211.c
++++ b/drivers/staging/rtl8188eu/core/rtw_ieee80211.c
+@@ -59,7 +59,7 @@ static u8 WIFI_OFDMRATES[] = {
+ 
+ int rtw_get_bit_value_from_ieee_value(u8 val)
+ {
+-	unsigned char dot11_rate_table[] = {
++	static const unsigned char dot11_rate_table[] = {
+ 		2, 4, 11, 22, 12, 18, 24, 36, 48,
+ 		72, 96, 108, 0}; /*  last element must be zero!! */
+ 	int i = 0;
+@@ -275,7 +275,7 @@ unsigned char *rtw_get_wpa_ie(unsigned char *pie, uint *wpa_ie_len, int limit)
+ 	uint len;
+ 	u16 val16;
+ 	__le16 le_tmp;
+-	unsigned char wpa_oui_type[] = {0x00, 0x50, 0xf2, 0x01};
++	static const unsigned char wpa_oui_type[] = {0x00, 0x50, 0xf2, 0x01};
+ 	u8 *pbuf = pie;
+ 	int limit_new = limit;
+ 
+-- 
+2.20.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
