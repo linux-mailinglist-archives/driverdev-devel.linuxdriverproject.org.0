@@ -2,73 +2,61 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 37C67AB14A
-	for <lists+driverdev-devel@lfdr.de>; Fri,  6 Sep 2019 05:41:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B92BBAB47C
+	for <lists+driverdev-devel@lfdr.de>; Fri,  6 Sep 2019 10:59:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E5107875BE;
-	Fri,  6 Sep 2019 03:41:40 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id EDE9A87E6E;
+	Fri,  6 Sep 2019 08:59:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oydxwGpda8Uc; Fri,  6 Sep 2019 03:41:40 +0000 (UTC)
+	with ESMTP id 2nxv2sHww59a; Fri,  6 Sep 2019 08:59:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 630C0875BC;
-	Fri,  6 Sep 2019 03:41:40 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 71FC587B08;
+	Fri,  6 Sep 2019 08:59:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C8FAD1BF32A
- for <devel@linuxdriverproject.org>; Fri,  6 Sep 2019 03:41:38 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 16CAE1BF350
+ for <devel@linuxdriverproject.org>; Fri,  6 Sep 2019 08:58:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C382887C7E
- for <devel@linuxdriverproject.org>; Fri,  6 Sep 2019 03:41:38 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 0559887ADF
+ for <devel@linuxdriverproject.org>; Fri,  6 Sep 2019 08:58:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kabxkzBwX+aj for <devel@linuxdriverproject.org>;
- Fri,  6 Sep 2019 03:41:38 +0000 (UTC)
+ with ESMTP id 24x00BjLkowP for <devel@linuxdriverproject.org>;
+ Fri,  6 Sep 2019 08:58:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f193.google.com (mail-oi1-f193.google.com
- [209.85.167.193])
- by whitealder.osuosl.org (Postfix) with ESMTPS id DED178489C
- for <devel@linuxdriverproject.org>; Fri,  6 Sep 2019 03:41:37 +0000 (UTC)
-Received: by mail-oi1-f193.google.com with SMTP id v7so3830035oib.4
- for <devel@linuxdriverproject.org>; Thu, 05 Sep 2019 20:41:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=/UWj5FYLQqxX8OK3sv5wN+QK4oOfih0NXrF9rNtYsag=;
- b=Jwso5vdA/lIl8N41TCTTc1ljotibPSixhzpLha9iSRNu+QyBOWBJ4/Et7LNSW0G7cZ
- +UfTt0OOYNLi88obnLjjcXPTaavTrdpi8bwR1Bqr33m/UD2YpKnxPe0t9I0tVfK58vRd
- DAitJHEtN3qkUTh4NyI6DmY0CWHgrQzf+dTiLzSeYFwLnW2CWm93fFe3sjRJBdk38Nu9
- 8HCULpK/SLYYKQETess/USE8k3HoJ4nuAuUriZhMLzNNeqjE83pu5k1IW9MB41IwlmRP
- yHGvnnrRFvJpx0LJ9o9RbU5UXxIDLKxoR1GHv56DNKI+eQLhcG9YzlbvNfgzFSFgTe3R
- PyOQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=/UWj5FYLQqxX8OK3sv5wN+QK4oOfih0NXrF9rNtYsag=;
- b=teOIaHjhB8/mIC8MCxvy8ffU/hF6FM8UuWZkMhYu1ifqKhmLGFcdSuIZEm61HRj9yR
- Q8jrSutZVS0vytyL+NaYO26oHWyEcgiA8MNs3X0Rq8iqoT+8QVDSKw6phpKUYpzns+U0
- R8uKGDZCqCqt2f1AuaP8kgdBpeZABzkG1zUXin1PD+HYUfElfGWJp+i2ndGl6TS8nou0
- HaqUhtgU6YV4sJGbC7mhiaCR54yJoxY0I7D7F7z3kcHRFB8ROpZWYvdv6QuPxmuXo8JH
- VzSgakEZqI5/aNQtYtttQeTrS3auYPFvkT7HtaIfkjyB9WZV4118f2HX7+3BiW9o6/fh
- CyfQ==
-X-Gm-Message-State: APjAAAX4kpdAARJgh8TKUcnDsrXn3aNC/Z6vAiY3/nGZsGbx0fCcNX9Q
- 3TjrEl3EihUaSY2lpwcbe6odoUoWtktFMe3AjQM=
-X-Google-Smtp-Source: APXvYqymERoKyHwQliD27rahQ8CUHy8GwvwRRgkUWzWzRpIGHhyNOVA+Ajrg2UQ28xLhSQ4dtMlYAuV8JJL/TO5v3GE=
-X-Received: by 2002:a54:4814:: with SMTP id j20mr5337898oij.33.1567741296954; 
- Thu, 05 Sep 2019 20:41:36 -0700 (PDT)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 60B9187766
+ for <devel@driverdev.osuosl.org>; Fri,  6 Sep 2019 08:58:56 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 06 Sep 2019 01:58:56 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,472,1559545200"; d="scan'208";a="195384167"
+Received: from rongch2-mobl.ccr.corp.intel.com (HELO [10.255.28.15])
+ ([10.255.28.15])
+ by orsmga002.jf.intel.com with ESMTP; 06 Sep 2019 01:58:53 -0700
+Subject: Re: [kbuild-all] [staging:staging-testing 314/401]
+ drivers/iio/common/hid-sensors/hid-sensor-attributes.c:312: undefined
+ reference to `__udivdi3'
+To: Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+References: <201909041145.dxkxV8cJ%lkp@intel.com>
+ <20190904123711.GL2680@smile.fi.intel.com>
+ <20190905100846.000045b4@huawei.com>
+From: "Chen, Rong A" <rong.a.chen@intel.com>
+Message-ID: <3ecfa3de-5f8c-3606-b72a-f767cf646d56@intel.com>
+Date: Fri, 6 Sep 2019 16:58:52 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-References: <000000000000e3072b0591ca1937@google.com>
- <CANRm+CxBdFjVrYzAe_Rs=v6BMSq9Gx+ngDrEitK6aez=kMq2XQ@mail.gmail.com>
- <87imq6khve.fsf@vitty.brq.redhat.com>
-In-Reply-To: <87imq6khve.fsf@vitty.brq.redhat.com>
-From: Wanpeng Li <kernellwp@gmail.com>
-Date: Fri, 6 Sep 2019 11:41:24 +0800
-Message-ID: <CANRm+CwCncK=ZUg9PwT2tgrg3-7MO40n+b0HnShhNwBp2PQH3A@mail.gmail.com>
-Subject: Re: general protection fault in __apic_accept_irq
-To: Vitaly Kuznetsov <vkuznets@redhat.com>
+In-Reply-To: <20190905100846.000045b4@huawei.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,93 +69,78 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>,
- Stephen Hemminger <sthemmin@microsoft.com>, mikelley@microsoft.com,
- kvm <kvm@vger.kernel.org>, Radim Krcmar <rkrcmar@redhat.com>,
- Haiyang Zhang <haiyangz@microsoft.com>,
- the arch/x86 maintainers <x86@kernel.org>, syzkaller-bugs@googlegroups.com,
- LKML <linux-kernel@vger.kernel.org>,
- Sean Christopherson <sean.j.christopherson@intel.com>,
- syzbot <syzbot+dff25ee91f0c7d5c1695@syzkaller.appspotmail.com>,
- Wanpeng Li <wanpengli@tencent.com>, Ingo Molnar <mingo@redhat.com>,
- Borislav Petkov <bp@alien8.de>, "H. Peter Anvin" <hpa@zytor.com>,
- devel@linuxdriverproject.org, Thomas Gleixner <tglx@linutronix.de>,
- Joerg Roedel <joro@8bytes.org>, Jim Mattson <jmattson@google.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: devel@driverdev.osuosl.org, linux-iio@vger.kernel.org, kbuild-all@01.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, 5 Sep 2019 at 21:11, Vitaly Kuznetsov <vkuznets@redhat.com> wrote:
->
-> Wanpeng Li <kernellwp@gmail.com> writes:
->
-> > On Thu, 5 Sep 2019 at 16:53, syzbot
-> > <syzbot+dff25ee91f0c7d5c1695@syzkaller.appspotmail.com> wrote:
-> >>
-> >> Hello,
-> >>
-> >> syzbot found the following crash on:
-> >>
-> >> HEAD commit:    3b47fd5c Merge tag 'nfs-for-5.3-4' of git://git.linux-nfs...
-> >> git tree:       upstream
-> >> console output: https://syzkaller.appspot.com/x/log.txt?x=124af12a600000
-> >> kernel config:  https://syzkaller.appspot.com/x/.config?x=144488c6c6c6d2b6
-> >> dashboard link: https://syzkaller.appspot.com/bug?extid=dff25ee91f0c7d5c1695
-> >> compiler:       clang version 9.0.0 (/home/glider/llvm/clang
-> >> 80fee25776c2fb61e74c1ecb1a523375c2500b69)
-> >> syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=10954676600000
-> >> C reproducer:   https://syzkaller.appspot.com/x/repro.c?x=1752fe0a600000
-> >>
-> >> The bug was bisected to:
-> >>
-> >> commit 0aa67255f54df192d29aec7ac6abb1249d45bda7
-> >> Author: Vitaly Kuznetsov <vkuznets@redhat.com>
-> >> Date:   Mon Nov 26 15:47:29 2018 +0000
-> >>
-> >>      x86/hyper-v: move synic/stimer control structures definitions to
-> >> hyperv-tlfs.h
-> >>
-> >> bisection log:  https://syzkaller.appspot.com/x/bisect.txt?x=156128c1600000
-> >> console output: https://syzkaller.appspot.com/x/log.txt?x=136128c1600000
-> >>
-> >> IMPORTANT: if you fix the bug, please add the following tag to the commit:
-> >> Reported-by: syzbot+dff25ee91f0c7d5c1695@syzkaller.appspotmail.com
-> >> Fixes: 0aa67255f54d ("x86/hyper-v: move synic/stimer control structures
-> >> definitions to hyperv-tlfs.h")
-> >>
-> >> kvm [9347]: vcpu0, guest rIP: 0xcc Hyper-V uhandled wrmsr: 0x40000004 data
-> >> 0x94
-> >> kvm [9347]: vcpu0, guest rIP: 0xcc Hyper-V uhandled wrmsr: 0x40000004 data
-> >> 0x48c
-> >> kvm [9347]: vcpu0, guest rIP: 0xcc Hyper-V uhandled wrmsr: 0x40000004 data
-> >> 0x4ac
-> >> kvm [9347]: vcpu0, guest rIP: 0xcc Hyper-V uhandled wrmsr: 0x40000005 data
-> >> 0x1520
-> >> kvm [9347]: vcpu0, guest rIP: 0xcc Hyper-V uhandled wrmsr: 0x40000006 data
-> >> 0x15d4
-> >> kvm [9347]: vcpu0, guest rIP: 0xcc Hyper-V uhandled wrmsr: 0x40000007 data
-> >> 0x15c4
-> >> kasan: CONFIG_KASAN_INLINE enabled
-> >> kasan: GPF could be caused by NULL-ptr deref or user memory access
-> >> general protection fault: 0000 [#1] PREEMPT SMP KASAN
-> >> CPU: 0 PID: 9347 Comm: syz-executor665 Not tainted 5.3.0-rc7+ #0
-> >> Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS
-> >> Google 01/01/2011
-> >> RIP: 0010:__apic_accept_irq+0x46/0x740 arch/x86/kvm/lapic.c:1029
-> >
-> > Thanks for the report, I found the root cause, will send a patch soon.
-> >
->
-> I'm really interested in how any issue can be caused by 0aa67255f54d as
-> we just moved some definitions from a c file to a common header... (ok,
-> we did more than that, some structures gained '__packed' but it all
-> still seems legitimate to me and I can't recall any problems with
-> genuine Hyper-V...)
 
-Yes, the bisect is false positive, we can focus on fixing the bug.
 
-         Wanpeng
+On 9/5/2019 5:08 PM, Jonathan Cameron wrote:
+> On Wed, 4 Sep 2019 15:37:11 +0300
+> Andy Shevchenko <andriy.shevchenko@linux.intel.com> wrote:
+>
+>> On Wed, Sep 04, 2019 at 11:33:50AM +0800, kbuild test robot wrote:
+>>> tree:   https://kernel.googlesource.com/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
+>>> head:   74eb9c06b1d722468db397595ac6834b9e4ac235
+>>> commit: 473d12f7638c93acbd9296a8cd455b203d5eb528 [314/401] iio: hid-sensor-attributes: Convert to use int_pow()
+>>> config: i386-randconfig-e004-201935 (attached as .config)
+>>> compiler: gcc-7 (Debian 7.4.0-11) 7.4.0
+>>> reproduce:
+>>>          git checkout 473d12f7638c93acbd9296a8cd455b203d5eb528
+>>>          # save the attached .config to linux build tree
+>>>          make ARCH=i386
+>>>
+>>> If you fix the issue, kindly add following tag
+>>> Reported-by: kbuild test robot <lkp@intel.com>
+>>>
+>>> All errors (new ones prefixed by >>):
+>> So, as far as I understood it wasn't compiled on 32-bit before, so, it's not a
+>> new error and thus would (has to?) be fixed separately.
+> I'm not convinced.  My assumption is this is triggered because the local pow_10
+> function was returning int whereas generic int_pow is returning an int64.
+> Whilst I would imagine it is fairly easy to fix, I'll not have a chance to do
+> so until the weekend.  Perhaps we should just revert this patch and revisit
+> in the next cycle?
+>
+> 0-day people, any idea why the iio.git/testing branch isn't getting built any
+> more?  I got lazy and started relying on your infrastructure and not bothering
+> with 32 bit local builds.  Somewhere along the way you stopped building it
+> and I'm afraid I didn't really notice.
+>
+> Thanks for you all your hard work on 0day btw as it used to catch a lot
+> of stuff my local few builds didn't!
+>
+> Jonathan
+
+Hi Jonathan,
+
+Sorry for the inconvenience, we updated the git url to 
+https://kernel.googlesource.com/pub/scm/linux/kernel/git/jic23/iio.git 
+recently,
+but it seems the branches are not updated, so we switch to use 
+https://git.kernel.org/pub/scm/linux/kernel/git/jic23/iio.git now.
+
+Best Regards,
+Rong Chen
+
+
+>
+>
+>
+>>>     ld: drivers/iio/common/hid-sensors/hid-sensor-attributes.o: in function `adjust_exponent_nano':
+>>>>> drivers/iio/common/hid-sensors/hid-sensor-attributes.c:312: undefined reference to `__udivdi3'
+>>>>> ld: drivers/iio/common/hid-sensors/hid-sensor-attributes.c:314: undefined reference to `__umoddi3'
+>>>>> ld: drivers/iio/common/hid-sensors/hid-sensor-attributes.c:324: undefined reference to `__udivdi3'
+>>>     ld: drivers/iio/common/hid-sensors/hid-sensor-attributes.c:325: undefined reference to `__umoddi3'
+>>
+>
+> _______________________________________________
+> kbuild-all mailing list
+> kbuild-all@lists.01.org
+> https://lists.01.org/mailman/listinfo/kbuild-all
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
