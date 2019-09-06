@@ -1,49 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id F0906ABEFD
-	for <lists+driverdev-devel@lfdr.de>; Fri,  6 Sep 2019 19:50:29 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B8BECABEFE
+	for <lists+driverdev-devel@lfdr.de>; Fri,  6 Sep 2019 19:50:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 750D786BCC;
-	Fri,  6 Sep 2019 17:50:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 65A158820C;
+	Fri,  6 Sep 2019 17:50:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id moD79k8QP1Qu; Fri,  6 Sep 2019 17:50:28 +0000 (UTC)
+	with ESMTP id oWC4Yd5KFi+N; Fri,  6 Sep 2019 17:50:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E39B986B93;
-	Fri,  6 Sep 2019 17:50:26 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D1EF887E24;
+	Fri,  6 Sep 2019 17:50:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A853C1BF401
- for <devel@linuxdriverproject.org>; Fri,  6 Sep 2019 17:50:25 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1537C1BF401
+ for <devel@linuxdriverproject.org>; Fri,  6 Sep 2019 17:50:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A592787C22
- for <devel@linuxdriverproject.org>; Fri,  6 Sep 2019 17:50:25 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 105A487C22
+ for <devel@linuxdriverproject.org>; Fri,  6 Sep 2019 17:50:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QgH-U0lLRFYw for <devel@linuxdriverproject.org>;
- Fri,  6 Sep 2019 17:50:23 +0000 (UTC)
+ with ESMTP id 6g7bqmIJXwRq for <devel@linuxdriverproject.org>;
+ Fri,  6 Sep 2019 17:50:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A5EC887C1A
- for <devel@driverdev.osuosl.org>; Fri,  6 Sep 2019 17:50:23 +0000 (UTC)
-Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
- by youngberry.canonical.com with esmtpsa (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.76) (envelope-from <colin.king@canonical.com>)
- id 1i6INJ-0006Sb-Qj; Fri, 06 Sep 2019 17:50:21 +0000
-From: Colin King <colin.king@canonical.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org
-Subject: [PATCH] staging: rtl8723bs: core: make array op_class static const,
- makes object smaller
-Date: Fri,  6 Sep 2019 18:50:21 +0100
-Message-Id: <20190906175021.25103-1-colin.king@canonical.com>
-X-Mailer: git-send-email 2.20.1
+Received: from mail-oi1-f194.google.com (mail-oi1-f194.google.com
+ [209.85.167.194])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 288FF87C1A
+ for <devel@driverdev.osuosl.org>; Fri,  6 Sep 2019 17:50:41 +0000 (UTC)
+Received: by mail-oi1-f194.google.com with SMTP id z6so128017oix.9
+ for <devel@driverdev.osuosl.org>; Fri, 06 Sep 2019 10:50:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=F4XFpZ/Ntp6JNNqwWcwMDQ9RkygXrkeY+nz32s4dwlI=;
+ b=a2lXYmPyCS4UA3sQ/bVxed9DPzu2SlgOjrFzOX4oEzGwjRtl+jVYZt6AjXGy07rY29
+ 24SeCgfuTyObZ50ZEOgxXU3gG6tUn6H4IVDoTClIE+Iw9fK2pvvQnoIfi3cVo1w/HlLM
+ oxltd0ZVJUkncdo4JwomxUQA4leGpMW7mOd0bk1e8BvBDKPBY+dps8bkRhnCLoKHXjcp
+ 3JgnO54Au8u+2LWvy753N44LAAU0SSK5584KCAhPu9DIH/BGQult7vs/ODi6xQnAsPxV
+ IQQc2dTxYlYZawB7hEzyyLD9RE9s1ay6pOfMo/0hkoiXozlSqCY+X/uZ9pW+Ro56aZjq
+ UXog==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=F4XFpZ/Ntp6JNNqwWcwMDQ9RkygXrkeY+nz32s4dwlI=;
+ b=pvUD4/Kd+NFPySBNibGFyy4Gn9rL/5CPXpJGS9/U7DfxcFDBT0EVcpNWxzGjetWJbs
+ 8QRKV8bKC5W9Qq8MqydPH68vVO3BHZITaLOUR2M5OV3GjOIvj+hhO9xosE2E28aMa/95
+ NLwbNzAyCBWUGKi+DYM92RJfQfjWnfHgq4xV2tR8y1Ph+UECVBF98MzKjD/d5obnP4Wm
+ pKWCszWLTZE2nNzY5NaL2PNhdagh/JwxsimmMDbNw2gHkYuAfi7pExBvFPSj1BXSnnES
+ nN4S9GxkjbXugKfzsGl3P6AOlFJ50LIH1G2uPrM0yXkukT3ZMMuHeM4uG0V1eoyfS6UN
+ xKiw==
+X-Gm-Message-State: APjAAAXZyXD9ECQB5KEYy42VDcG/kzfHR3VEI/myYBddZW7fVqPOrP39
+ mlnzoVBNaZj706JAvHl0uis=
+X-Google-Smtp-Source: APXvYqxzox6qJNPz7yEiqg0BiF3uTnaUtCGgjyVmQFBVlRPiRvwAQoEaZjVsB/vZH88rAZLKA1LVyg==
+X-Received: by 2002:a54:4f11:: with SMTP id e17mr7643443oiy.46.1567792240430; 
+ Fri, 06 Sep 2019 10:50:40 -0700 (PDT)
+Received: from [192.168.1.156] (cpe-24-31-245-230.kc.res.rr.com.
+ [24.31.245.230])
+ by smtp.gmail.com with ESMTPSA id i47sm2453711ota.1.2019.09.06.10.50.39
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 06 Sep 2019 10:50:40 -0700 (PDT)
+Subject: Re: [PATCH] staging: rtl8188eu: make two arrays static const, makes
+ object smaller
+To: Colin King <colin.king@canonical.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org
+References: <20190906173949.21860-1-colin.king@canonical.com>
+From: Larry Finger <Larry.Finger@lwfinger.net>
+Message-ID: <9f1e1550-2a75-abc3-4d87-a0c1d1ae1ccb@lwfinger.net>
+Date: Fri, 6 Sep 2019 12:50:39 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
+In-Reply-To: <20190906173949.21860-1-colin.king@canonical.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,56 +92,35 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Colin Ian King <colin.king@canonical.com>
+On 9/6/19 12:39 PM, Colin King wrote:
+> From: Colin Ian King <colin.king@canonical.com>
+> 
+> Don't populate two arrays on the stack but instead make them
+> static const. Makes the object code smaller by 49 bytes.
+> 
+> Before:
+>     text	   data	    bss	    dec	    hex	filename
+>    26821	   5616	      0	  32437	   7eb5	rtl8188eu/core/rtw_ieee80211.o
+> 
+> After:
+>     text	   data	    bss	    dec	    hex	filename
+>    26612	   5776	      0	  32388	   7e84	rtl8188eu/core/rtw_ieee80211.o
+> 
+> (gcc version 9.2.1, amd64)
+> 
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+> ---
 
-Don't populate the array op_class on the stack but instead make it
-static const. Makes the object code smaller by 64 bytes.
+Acked-by: Larry Finger <Larry.Finger@lwfinger.net>
 
-Before:
-   text	   data	    bss	    dec	    hex	filename
-  93553	   7944	   5056	 106553	  1a039	rtl8723bs/core/rtw_mlme_ext.o
+Thanks,
 
-After:
-   text	   data	    bss	    dec	    hex	filename
-  93425	   8008	   5056	 106489	  19ff9	rtl8723bs/core/rtw_mlme_ext.o
-
-(gcc version 9.2.1, amd64)
-
-Signed-off-by: Colin Ian King <colin.king@canonical.com>
----
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index 2128886c9924..814b7a6bf4ea 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -344,7 +344,7 @@ static void init_channel_list(struct adapter *padapter, RT_CHANNEL_INFO *channel
- 							  struct p2p_channels *channel_list)
- {
- 
--	struct p2p_oper_class_map op_class[] = {
-+	static const struct p2p_oper_class_map op_class[] = {
- 		{ IEEE80211G,  81,   1,  13,  1, BW20 },
- 		{ IEEE80211G,  82,  14,  14,  1, BW20 },
- 		{ IEEE80211A, 115,  36,  48,  4, BW20 },
-@@ -363,7 +363,7 @@ static void init_channel_list(struct adapter *padapter, RT_CHANNEL_INFO *channel
- 
- 	for (op = 0; op_class[op].op_class; op++) {
- 		u8 ch;
--		struct p2p_oper_class_map *o = &op_class[op];
-+		const struct p2p_oper_class_map *o = &op_class[op];
- 		struct p2p_reg_class *reg = NULL;
- 
- 		for (ch = o->min_chan; ch <= o->max_chan; ch += o->inc) {
--- 
-2.20.1
-
+Larry
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
