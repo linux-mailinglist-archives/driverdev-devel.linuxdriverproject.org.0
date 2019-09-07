@@ -1,70 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 71C75AC1DA
-	for <lists+driverdev-devel@lfdr.de>; Fri,  6 Sep 2019 23:11:17 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CB9CAAC3FC
+	for <lists+driverdev-devel@lfdr.de>; Sat,  7 Sep 2019 03:50:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A0070864EF;
-	Fri,  6 Sep 2019 21:11:15 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4A83587E3C;
+	Sat,  7 Sep 2019 01:50:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KAh7q3Kbt6WG; Fri,  6 Sep 2019 21:11:14 +0000 (UTC)
+	with ESMTP id akyeQh+HUBB0; Sat,  7 Sep 2019 01:50:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 18A9486516;
-	Fri,  6 Sep 2019 21:11:11 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5B96D87E0B;
+	Sat,  7 Sep 2019 01:50:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 79E0A1BF3FE
- for <devel@linuxdriverproject.org>; Fri,  6 Sep 2019 21:11:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AEB101BF330
+ for <devel@linuxdriverproject.org>; Sat,  7 Sep 2019 01:50:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 760B188253
- for <devel@linuxdriverproject.org>; Fri,  6 Sep 2019 21:11:09 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id ABAC4882F8
+ for <devel@linuxdriverproject.org>; Sat,  7 Sep 2019 01:50:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id l6cMAMCQOzhM for <devel@linuxdriverproject.org>;
- Fri,  6 Sep 2019 21:11:08 +0000 (UTC)
+ with ESMTP id 99P24w1n5xB1 for <devel@linuxdriverproject.org>;
+ Sat,  7 Sep 2019 01:50:09 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0214.hostedemail.com
- [216.40.44.214])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 6F6858822A
- for <devel@driverdev.osuosl.org>; Fri,  6 Sep 2019 21:11:08 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave06.hostedemail.com (Postfix) with ESMTP id BEA8580181A2
- for <devel@driverdev.osuosl.org>; Fri,  6 Sep 2019 20:55:30 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay08.hostedemail.com (Postfix) with ESMTP id 16215182CF669;
- Fri,  6 Sep 2019 20:55:28 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, :::::::::::::,
- RULES_HIT:41:69:355:379:599:968:973:988:989:1260:1277:1311:1313:1314:1345:1359:1381:1437:1515:1516:1518:1534:1542:1593:1594:1711:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3353:3622:3865:3866:3867:3868:3871:3872:3873:4321:5007:6119:7903:8603:10004:10400:10848:11026:11232:11473:11658:11914:12043:12048:12296:12297:12438:12555:12740:12760:12895:13439:14181:14659:14721:21080:21627:30054:30091,
- 0,
- RBL:47.151.152.152:@perches.com:.lbl8.mailshell.net-62.8.0.100 64.201.201.201,
- CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none, DomainCache:0,
- MSF:not bulk, SPF:fn, MSBL:0, DNSBL:neutral, Custom_rules:0:0:0, LFtime:28,
- LUA_SUMMARY:none
-X-HE-Tag: crib41_2f8de0bcaf609
-X-Filterd-Recvd-Size: 3286
-Received: from XPS-9350.home (unknown [47.151.152.152])
- (Authenticated sender: joe@perches.com)
- by omf01.hostedemail.com (Postfix) with ESMTPA;
- Fri,  6 Sep 2019 20:55:26 +0000 (UTC)
-Message-ID: <f64f4ccd12ac9de5368a2d312751d7afae45f824.camel@perches.com>
-Subject: Re: [PATCH] Fixed parentheses malpractice in apex_driver.c
-From: Joe Perches <joe@perches.com>
-To: volery <sandro@volery.com>, rspringer@google.com, toddpoynor@google.com,
- benchan@chromium.org, gregkh@linuxfoundation.org,
- devel@driverdev.osuosl.org,  linux-kernel@vger.kernel.org
-Date: Fri, 06 Sep 2019 13:55:24 -0700
-In-Reply-To: <20190906183801.GA2456@volery>
-References: <20190906183801.GA2456@volery>
-User-Agent: Evolution 3.32.1-2 
+Received: from mail-gateway-0902.c09.cynet (c9outbound210.ctmail.com
+ [216.163.188.210])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 31B5A87F81
+ for <devel@linuxdriverproject.org>; Sat,  7 Sep 2019 01:50:09 +0000 (UTC)
+Received: from mail2world-inbound-0912.c09.cynet (unknown [10.9.37.12])
+ by mail-gateway-0902.c09.cynet (Postfix) with ESMTP id BB1A6702F662A
+ for <devel@linuxdriverproject.org>; Fri,  6 Sep 2019 18:50:00 -0700 (PDT)
+Received: from exim by mail2world-inbound-0912.c09.cynet with local (Exim 4.92)
+ id 1i6PrU-000C5L-Nl
+ for devel@linuxdriverproject.org; Sat, 07 Sep 2019 01:50:00 +0000
+X-Failed-Recipients: 31365474@qq.com
+Auto-Submitted: auto-replied
+From: Mail Delivery System <Mailer-Daemon@mail2world-inbound-0912.c09.cynet>
+To: devel@linuxdriverproject.org
 MIME-Version: 1.0
+Subject: Mail delivery failed
+  : returning message to sender
+X-opentraffic-bounce: yes
+Message-Id: <E1i6PrU-000C5L-Nl@mail2world-inbound-0912.c09.cynet>
+Date: Sat, 07 Sep 2019 01:50:00 +0000
+X-CTASD-RefID: str=0001.0A09020A.5D730CCB.005D, ss=1, re=0.000, recu=0.000,
+ reip=0.000, cl=1, cld=1, fgs=256
+X-CTASD-IP: 10.9.37.12
+X-CTASD-Sender: Mailer-Daemon@mail2world-inbound-0912.c09.cynet
+x-ctasd: uncategorized
+x-ctasd-vod: uncategorized
+x-ctasd-station: 
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,85 +67,81 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2211617161942350871=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, 2019-09-06 at 20:38 +0200, volery wrote:
-> There were some parentheses at the end of lines, which I took care of.
+--===============2211617161942350871==
+Content-Type: multipart/report; report-type=delivery-status; boundary=1567821000-eximdsn-1479575525
 
-Not every instance of this checkpatch warning should be changed.
+--1567821000-eximdsn-1479575525
+Content-type: text/plain; charset=us-ascii
 
-This specific instance is because it uses very long identifiers
-and really maybe should just be left alone.
+This message was created automatically by mail delivery software.
 
-> This is my first patch.
+A message that you sent could not be delivered to all of its recipients.
+This is a permanent error. The following address(es) failed:
 
-Welcome, try again though.
+  31365474@qq.com
+    host m2w-in1.ctmail.com [209.67.128.24]
+    SMTP error from remote mail server after RCPT TO:<31365474@qq.com>:
+    501 This system is not configured to relay mail to <31365474@qq.com> for 216.163.188.208
 
-If you really want to do something here maybe do something like
-use temporaries to reduce line length and remove multiple
-scnprintf statements.  This would also reduce object size.
+--1567821000-eximdsn-1479575525
+Content-type: message/delivery-status
 
----
- drivers/staging/gasket/apex_driver.c | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+Reporting-MTA: dns; mail2world-inbound-0912.c09.cynet
 
-diff --git a/drivers/staging/gasket/apex_driver.c b/drivers/staging/gasket/apex_driver.c
-index 2973bb920a26..ae1a3a14dde6 100644
---- a/drivers/staging/gasket/apex_driver.c
-+++ b/drivers/staging/gasket/apex_driver.c
-@@ -509,6 +509,8 @@ static ssize_t sysfs_show(struct device *device, struct device_attribute *attr,
- 	struct gasket_dev *gasket_dev;
- 	struct gasket_sysfs_attribute *gasket_attr;
- 	enum sysfs_attribute_type type;
-+	struct gasket_page_table *gpt;
-+	uint val;
- 
- 	gasket_dev = gasket_sysfs_get_device_data(device);
- 	if (!gasket_dev) {
-@@ -524,29 +526,27 @@ static ssize_t sysfs_show(struct device *device, struct device_attribute *attr,
- 	}
- 
- 	type = (enum sysfs_attribute_type)gasket_attr->data.attr_type;
-+	gpt = gasket_dev->page_table[0];
- 	switch (type) {
- 	case ATTR_KERNEL_HIB_PAGE_TABLE_SIZE:
--		ret = scnprintf(buf, PAGE_SIZE, "%u\n",
--				gasket_page_table_num_entries(
--					gasket_dev->page_table[0]));
-+		val = gasket_page_table_num_entries(gpt);
- 		break;
- 	case ATTR_KERNEL_HIB_SIMPLE_PAGE_TABLE_SIZE:
--		ret = scnprintf(buf, PAGE_SIZE, "%u\n",
--				gasket_page_table_num_simple_entries(
--					gasket_dev->page_table[0]));
-+		val = gasket_page_table_num_simple_entries(gpt);
- 		break;
- 	case ATTR_KERNEL_HIB_NUM_ACTIVE_PAGES:
--		ret = scnprintf(buf, PAGE_SIZE, "%u\n",
--				gasket_page_table_num_active_pages(
--					gasket_dev->page_table[0]));
-+		val = gasket_page_table_num_active_pages(gpt);
- 		break;
- 	default:
- 		dev_dbg(gasket_dev->dev, "Unknown attribute: %s\n",
- 			attr->attr.name);
- 		ret = 0;
--		break;
-+		goto exit;
- 	}
- 
-+	ret = scnprintf(buf, PAGE_SIZE, "%u\n", val);
-+
-+exit:
- 	gasket_sysfs_put_attr(device, gasket_attr);
- 	gasket_sysfs_put_device_data(device, gasket_dev);
- 	return ret;
+Action: failed
+Final-Recipient: rfc822;31365474@qq.com
+Status: 5.0.0
+Remote-MTA: dns; m2w-in1.ctmail.com
+Diagnostic-Code: smtp; 501 This system is not configured to relay mail to <31365474@qq.com> for 216.163.188.208
 
+--1567821000-eximdsn-1479575525
+Content-type: message/rfc822
+
+Return-path: <devel@linuxdriverproject.org>
+Received: from [218.87.53.130] (port=64073 helo=vdpu)
+	by mail2world-inbound-0912.c09.cynet with smtp (Exim 4.92)
+	(envelope-from <devel@linuxdriverproject.org>)
+	id 1i6PrU-000C4Z-CB
+	for 31365474@qq.com; Sat, 07 Sep 2019 01:50:00 +0000
+Mime-Version: 1.0
+Content-Type: text/plain; charset="gb2312"
+Content-Transfer-Encoding: 7bit
+SUBJECT: test
+TO: 31365474@qq.com
+FROM: devel@linuxdriverproject.org
+X-CTCH-Spam: Unknown
+X-CTCH-VOD: Unknown
+X-CTCH-Flags: 0
+X-CTCH-RefID: str=0001.0A090202.5D730CC8.002B,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
+X-CTASD-IP: 218.87.53.130
+X-CTASD-Sender: devel@linuxdriverproject.org
+X-SMP-SenderIP: open=218.87.53.130,hash=KWGuy717QlJRYTCyKE6OgQ==
+X-SMP-Subject: open=test,hash=CY9rzUYh03PK3k6DJie09g==
+X-SMP-Domain: open=linuxdriverproject.org,hash=qQsDay/wWKu6lf6mvJnaeA==
+X-SMP-From: open=devel@linuxdriverproject.org,hash=axVRQBbYSeXTtPwSuUIAEg==
+X-SMP-Rfc822Rules: R_652294,R_668993,DBB_65838,R_DBB_XHBH23,R_DBB_XHBH24
+X-SMP-TxtHtmlRules: R_620513,R_640434,R_661792,R_617743,R_649587,R_677701,R_628391,R_634493,R_628891,R_635740,R_629599,R_676468,R_644065,R_676920,R_608219
+X-SMP-FinalRule: 
+X-SMP-RuleTag: rfc822=R_652294;R_668993;DBB_65838;R_DBB_XHBH23;R_DBB_XHBH24,txthtml=R_620513;R_640434;R_661792;R_617743;R_649587;R_677701;R_628391;R_634493;R_628891;R_635740;R_629599;R_676468;R_644065;R_676920;R_608219,fixed-rfc822=,fixed-txthtml=F_41975943;F_42289494;F_41975942;F_12850734,compound-before=,eval-rfc822=E_1625;E_1654;E_1658;E_1677;E_1679;E_647;E_650,eval=E_1638;E_1647,eval-url=
+X-SMP-END: 
+
+test
+
+--1567821000-eximdsn-1479575525--
+
+--===============2211617161942350871==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============2211617161942350871==--
