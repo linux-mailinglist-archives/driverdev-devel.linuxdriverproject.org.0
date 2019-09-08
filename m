@@ -1,58 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 56DCDACECE
-	for <lists+driverdev-devel@lfdr.de>; Sun,  8 Sep 2019 15:05:48 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8CCB9ACF18
+	for <lists+driverdev-devel@lfdr.de>; Sun,  8 Sep 2019 15:49:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1628C85721;
-	Sun,  8 Sep 2019 13:05:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 42593870A1;
+	Sun,  8 Sep 2019 13:49:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R5ZF+NPIcStC; Sun,  8 Sep 2019 13:05:45 +0000 (UTC)
+	with ESMTP id Rdw3l4Cw8RMn; Sun,  8 Sep 2019 13:49:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A2D1285497;
-	Sun,  8 Sep 2019 13:05:44 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3035F86FAF;
+	Sun,  8 Sep 2019 13:49:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D5E5D1BF40F
- for <devel@linuxdriverproject.org>; Sun,  8 Sep 2019 13:05:42 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2AC0C1BF40F
+ for <devel@linuxdriverproject.org>; Sun,  8 Sep 2019 13:48:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D3758203F7
- for <devel@linuxdriverproject.org>; Sun,  8 Sep 2019 13:05:42 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2777484C2A
+ for <devel@linuxdriverproject.org>; Sun,  8 Sep 2019 13:48:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Uo5sHXV1f9OC for <devel@linuxdriverproject.org>;
- Sun,  8 Sep 2019 13:05:42 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 8CAB420358
- for <devel@driverdev.osuosl.org>; Sun,  8 Sep 2019 13:05:42 +0000 (UTC)
-Received: from localhost (unknown [62.28.240.114])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id E7829218AC;
- Sun,  8 Sep 2019 13:05:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1567947942;
- bh=BpW4G5OlFYRFsnxzK33LDdwhTu34uQdmEC2uXFJp6yM=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=2b8pD7oAMf/WbISUFj4dZEZY7/kzIq8ILCK6Xa7aUj20hiIn9J+jvAB+hBe+Ztmpp
- 145C/IiE4qk3vVQuCEwDjpgbHYmgDrsHz4rodwYUG6YlSo0L17VoZYVtLqrYQqHcef
- 3/WClAIQyJmuWh9q0f9nsx9pWI1sOyD2jOJg51xk=
-Date: Sun, 8 Sep 2019 14:05:40 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: hariprasad@osuosl.org, Kelam@osuosl.org, hariprasad.kelam@gmail.com
-Subject: Re: [PATCH] staging: exfat: make use of kmemdup
-Message-ID: <20190908130540.GA9394@kroah.com>
-References: <1567934921-6475-1-git-send-email-hariprasad.kelam@gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1567934921-6475-1-git-send-email-hariprasad.kelam@gmail.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+ with ESMTP id vpAf9AkKAB1m for <devel@linuxdriverproject.org>;
+ Sun,  8 Sep 2019 13:48:38 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-io1-f67.google.com (mail-io1-f67.google.com
+ [209.85.166.67])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 83A7E84C23
+ for <devel@driverdev.osuosl.org>; Sun,  8 Sep 2019 13:48:38 +0000 (UTC)
+Received: by mail-io1-f67.google.com with SMTP id r26so22810004ioh.8
+ for <devel@driverdev.osuosl.org>; Sun, 08 Sep 2019 06:48:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=oFn65Gx0LceV9UpwBpRBxIJy0Sy+f8hyn5shhbHZwGY=;
+ b=fZ1C77cALrVsEVNsgCc8SoP1kDV2VcjQckKG2yXKeZxbSTAOiSGATXDS0TkMDpYooW
+ C6PjdLTYnZh0qPgKG647RSGa6U7/tDP9IhwUopPKNatbWgGl2hT5QuhSxDsh+FcrBHfJ
+ dKipTfEorZhVcxWmdwmFFw5AzqTPUXdawvg+8ga81oOcH58ZxnXBmWQPrkeEn91pKJS7
+ YhI3Sid3dpmiVXz8p1RNqkcpqxGoVVffGuko9jAm9UrA2h2vq3/RsEmN9LXIaRlI/isv
+ pFb6DLQL9HK0z90Z1P+dkquY8wAa/RcIrv4CNwS3Q8nLoGUunkM9eibAy/789iBaDANr
+ JHhA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=oFn65Gx0LceV9UpwBpRBxIJy0Sy+f8hyn5shhbHZwGY=;
+ b=S4N1+3oaWuK5ekx1zkFS/7I4ChUD3b/yckups4xBK11IBE58m6+NMUDbRcvrG/8XXS
+ Tp7t4x7ygumwqHlUnTW0eu66HlT28IMrYgrqkQaUHXqDiTvcbfNC6IGOleKjmhpZr79B
+ OKJPkA9Pxn9L2CFGh6mxfNh3HbkfTWJzVNhD7Ya/u/zNnHi4YEfqnWUkK/4K2+rvycts
+ NcNGCU79NDPqVSEfnCspwCapRMqatqYR+c96ORct+V5RbLv4HW3I4FLAsjp0EP9csxUR
+ qQYaWcskY1L5y6b6LES1fNRgZF9V+jdmzxQIzrvUSA/HBY88Xbli11dR/dai6vKXcdUs
+ gMhA==
+X-Gm-Message-State: APjAAAX/P5KcHEwTDQGBBZ2DJFRnorR1tv8xUOgczIkPHkVos8rxXA+S
+ pyEiKfd21qHJqjTQKOYK2NU=
+X-Google-Smtp-Source: APXvYqymoIbipF+QFyqKIvFQS+3h+eR47zlB0UY9E1dU6IsNMCa2eT2KiNA0h+tsaaSp48HbhI0HUQ==
+X-Received: by 2002:a5d:9746:: with SMTP id c6mr15520437ioo.235.1567950517595; 
+ Sun, 08 Sep 2019 06:48:37 -0700 (PDT)
+Received: from localhost.localdomain ([198.52.185.227])
+ by smtp.gmail.com with ESMTPSA id k11sm2813251ioa.20.2019.09.08.06.48.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 08 Sep 2019 06:48:37 -0700 (PDT)
+From: thesven73@gmail.com
+X-Google-Original-From: TheSven73@gmail.com
+To: Rob Herring <robh+dt@kernel.org>
+Subject: [PATCH] dt-bindings: anybus-controller: move to staging/ tree
+Date: Sun,  8 Sep 2019 09:48:05 -0400
+Message-Id: <20190908134805.30957-1-TheSven73@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,30 +81,36 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Valdis Kletnieks <valdis.kletnieks@vt.edu>,
- linux-kernel@vger.kernel.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ devel@driverdev.osuosl.org, Sven Van Asbroeck <TheSven73@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Sep 08, 2019 at 02:58:41PM +0530, hariprasad@osuosl.org wrote:
-> From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-> 
-> fix below issue reported by coccicheck
-> drivers/staging//exfat/exfat_super.c:2709:26-33: WARNING opportunity for
-> kmemdup
-> 
-> Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-> ---
->  drivers/staging/exfat/exfat_super.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
+From: Sven Van Asbroeck <TheSven73@gmail.com>
 
-This doesn't apply to my tree at all, what did you make it against?
+The devicetree bindings for anybus-controller were mistakenly
+merged into the main Linux tree. Its driver resides in
+staging/, so the bindings belong in staging/ too.
 
-thanks,
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Fixes: 20a980e957bf ("dt-bindings: anybus-controller: document devicetree binding")
+Signed-off-by: Sven Van Asbroeck <TheSven73@gmail.com>
+---
+ .../devicetree/bindings/fieldbus/arcx,anybus-controller.txt       | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename {Documentation => drivers/staging/fieldbus/Documentation}/devicetree/bindings/fieldbus/arcx,anybus-controller.txt (100%)
 
-greg k-h
+diff --git a/Documentation/devicetree/bindings/fieldbus/arcx,anybus-controller.txt b/drivers/staging/fieldbus/Documentation/devicetree/bindings/fieldbus/arcx,anybus-controller.txt
+similarity index 100%
+rename from Documentation/devicetree/bindings/fieldbus/arcx,anybus-controller.txt
+rename to drivers/staging/fieldbus/Documentation/devicetree/bindings/fieldbus/arcx,anybus-controller.txt
+-- 
+2.17.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
