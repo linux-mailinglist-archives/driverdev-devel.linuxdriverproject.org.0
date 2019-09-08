@@ -2,54 +2,56 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 46BB0ACF9D
-	for <lists+driverdev-devel@lfdr.de>; Sun,  8 Sep 2019 18:10:36 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5724CACF9B
+	for <lists+driverdev-devel@lfdr.de>; Sun,  8 Sep 2019 18:10:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D7EC485040;
-	Sun,  8 Sep 2019 16:10:34 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9E1B8855D3;
+	Sun,  8 Sep 2019 16:10:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oDuTfRShgYeA; Sun,  8 Sep 2019 16:10:33 +0000 (UTC)
+	with ESMTP id jtri50WqMs-X; Sun,  8 Sep 2019 16:10:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 68A4984B89;
-	Sun,  8 Sep 2019 16:10:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E19D085040;
+	Sun,  8 Sep 2019 16:10:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D12461BF3D0
- for <devel@linuxdriverproject.org>; Sun,  8 Sep 2019 16:10:26 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D1F011BF3D0
+ for <devel@linuxdriverproject.org>; Sun,  8 Sep 2019 16:10:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id CD5522043B
- for <devel@linuxdriverproject.org>; Sun,  8 Sep 2019 16:10:26 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id CA34B86F13
+ for <devel@linuxdriverproject.org>; Sun,  8 Sep 2019 16:10:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DIFz6GTPB91M for <devel@linuxdriverproject.org>;
- Sun,  8 Sep 2019 16:10:24 +0000 (UTC)
+ with ESMTP id w9OqKX+EIZwi for <devel@linuxdriverproject.org>;
+ Sun,  8 Sep 2019 16:10:23 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from valentin-vidic.from.hr (valentin-vidic.from.hr [94.229.67.141])
- by silver.osuosl.org (Postfix) with ESMTPS id 5ED742043A
- for <devel@driverdev.osuosl.org>; Sun,  8 Sep 2019 16:10:24 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 111A786DC6
+ for <devel@driverdev.osuosl.org>; Sun,  8 Sep 2019 16:10:23 +0000 (UTC)
 X-Virus-Scanned: Debian amavisd-new at valentin-vidic.from.hr
 Received: by valentin-vidic.from.hr (Postfix, from userid 1000)
- id 30DAC214; Sun,  8 Sep 2019 16:10:17 +0000 (UTC)
+ id 50569216; Sun,  8 Sep 2019 16:10:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=valentin-vidic.from.hr; s=2017; t=1567959017;
- bh=sxZx2w1XNWPndSRJ8NNxw7MGGnoe/Lw4VpfMTF/K3ds=;
- h=From:To:Cc:Subject:Date:From;
- b=JGykRtoPjtFtyFePhbqXRNlerrWPxrRTzPEJX4G8jWmZxejMfvc5J2Md1aAjy2L5O
- MpuVdnTTe05jNuYfdYbcwzdo3hqQisqQ4u1z/P8jgBWsv0rXTidyBxYvJq2MfuKHhP
- MOEP9SY6M6akLwh1ZVT60oFWQPtBW2prdRoKLokA93pxu0qzuwrjRHfpn9WUlCaMgl
- V32clUMNoag/zFN88Q4YW62MlQ9viKAZXd+RcJpFAki0OhF/zjyVuCs2fpXEWwAW6Y
- euOGr4MUDz2AOnw3ATZxUiSgxo6JVVZhgo5jt/6yX8hkUOifAkWvBwLM3bVcXsCMZ7
- dSsOGgWr7nplg==
+ d=valentin-vidic.from.hr; s=2017; t=1567959019;
+ bh=1MjEh5GX4AmKOIbspwOJIzlsp3OjQFimOJ8snyEnEd0=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=QWHNxgX05BBsQ9msph7aos3/JbpEadD4z5D61uvc+wGAkIX10ZihK/AMEi+j1kWqt
+ jbTytgA2R/B5ANgUUix6uMVDJ6jgqxs/9hIqG9X+MPim09U6PfRw6R/TvlZBBp03M6
+ ebUsfUyEl1CM9IoIDZFa3tkxETRRvtV2+8uyF2aE7drZQEnHiQ6qcKMz8fO7RwMq6i
+ l91mQutX4qr62x1QENYZaOM/lB0yQrez3ddXrBaZuARhFzOPi4dKwTgyCXbU0Kgezu
+ eTpgjq/NhnB92tjoXAnimRZ5dBfAhKG/QURl1XJQFzfn5iSH5lpIEy/8T/rKY1FzeY
+ yRSqsEQh2saKA==
 From: Valentin Vidic <vvidic@valentin-vidic.from.hr>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v2 1/3] staging: exfat: drop duplicate date_time_t struct
-Date: Sun,  8 Sep 2019 16:10:13 +0000
-Message-Id: <20190908161015.26000-1-vvidic@valentin-vidic.from.hr>
+Subject: [PATCH v2 2/3] staging: exfat: drop unused field access_time_ms
+Date: Sun,  8 Sep 2019 16:10:14 +0000
+Message-Id: <20190908161015.26000-2-vvidic@valentin-vidic.from.hr>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190908161015.26000-1-vvidic@valentin-vidic.from.hr>
+References: <20190908161015.26000-1-vvidic@valentin-vidic.from.hr>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -70,358 +72,41 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Use timestamp_t for everything and cleanup duplicate code.
+Not used in the exfat-fuse implementation and spec defines
+this position should hold the value for CreateUtcOffset.
 
 Signed-off-by: Valentin Vidic <vvidic@valentin-vidic.from.hr>
 ---
-v2: split up into multiple patches
-
- drivers/staging/exfat/exfat.h       |  35 +++---
- drivers/staging/exfat/exfat_super.c | 174 ++++++++--------------------
- 2 files changed, 61 insertions(+), 148 deletions(-)
+ drivers/staging/exfat/exfat.h      | 3 +--
+ drivers/staging/exfat/exfat_core.c | 1 -
+ 2 files changed, 1 insertion(+), 3 deletions(-)
 
 diff --git a/drivers/staging/exfat/exfat.h b/drivers/staging/exfat/exfat.h
-index 0aa14dea4e09..58e1e889779f 100644
+index 58e1e889779f..6491ea034928 100644
 --- a/drivers/staging/exfat/exfat.h
 +++ b/drivers/staging/exfat/exfat.h
-@@ -241,16 +241,6 @@ static inline u16 get_row_index(u16 i)
- #define UNI_PAR_DIR_NAME        "\0.\0."
- #endif
- 
--struct date_time_t {
--	u16      Year;
--	u16      Month;
--	u16      Day;
--	u16      Hour;
--	u16      Minute;
--	u16      Second;
--	u16      MilliSecond;
--};
--
- struct part_info_t {
- 	u32      Offset;    /* start sector number of the partition */
- 	u32      Size;      /* in sectors */
-@@ -289,6 +279,16 @@ struct file_id_t {
- 	u32      hint_last_clu;
+@@ -444,8 +444,7 @@ struct file_dentry_t {
+ 	u8       access_date[2];
+ 	u8       create_time_ms;
+ 	u8       modify_time_ms;
+-	u8       access_time_ms;
+-	u8       reserved2[9];
++	u8       reserved2[10];
  };
  
-+struct timestamp_t {
-+	u16      millisec;   /* 0 ~ 999              */
-+	u16      sec;        /* 0 ~ 59               */
-+	u16      min;        /* 0 ~ 59               */
-+	u16      hour;       /* 0 ~ 23               */
-+	u16      day;        /* 1 ~ 31               */
-+	u16      mon;        /* 1 ~ 12               */
-+	u16      year;       /* 0 ~ 127 (since 1980) */
-+};
-+
- struct dir_entry_t {
- 	char Name[MAX_NAME_LENGTH * MAX_CHARSET_SIZE];
- 
-@@ -298,18 +298,9 @@ struct dir_entry_t {
- 	u32 Attr;
- 	u64 Size;
- 	u32 NumSubdirs;
--	struct date_time_t CreateTimestamp;
--	struct date_time_t ModifyTimestamp;
--	struct date_time_t AccessTimestamp;
--};
--
--struct timestamp_t {
--	u16      sec;        /* 0 ~ 59               */
--	u16      min;        /* 0 ~ 59               */
--	u16      hour;       /* 0 ~ 23               */
--	u16      day;        /* 1 ~ 31               */
--	u16      mon;        /* 1 ~ 12               */
--	u16      year;       /* 0 ~ 127 (since 1980) */
-+	struct timestamp_t CreateTimestamp;
-+	struct timestamp_t ModifyTimestamp;
-+	struct timestamp_t AccessTimestamp;
- };
- 
- /* MS_DOS FAT partition boot record (512 bytes) */
-diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
-index 60dfea73a7a4..54b6c2ff3c96 100644
---- a/drivers/staging/exfat/exfat_super.c
-+++ b/drivers/staging/exfat/exfat_super.c
-@@ -56,18 +56,16 @@ static void exfat_write_super(struct super_block *sb);
- #define UNIX_SECS_2108    4354819200L
- 
- /* Convert a FAT time/date pair to a UNIX date (seconds since 1 1 70). */
--static void exfat_time_fat2unix(struct exfat_sb_info *sbi,
--				struct timespec64 *ts, struct date_time_t *tp)
-+static void exfat_time_fat2unix(struct timespec64 *ts, struct timestamp_t *tp)
- {
--	ts->tv_sec = mktime64(tp->Year + 1980, tp->Month + 1, tp->Day,
--			      tp->Hour, tp->Minute, tp->Second);
-+	ts->tv_sec = mktime64(tp->year + 1980, tp->mon + 1, tp->day,
-+			      tp->hour, tp->min, tp->sec);
- 
--	ts->tv_nsec = tp->MilliSecond * NSEC_PER_MSEC;
-+	ts->tv_nsec = tp->millisec * NSEC_PER_MSEC;
+ /* MS-DOS EXFAT stream extension directory entry (32 bytes) */
+diff --git a/drivers/staging/exfat/exfat_core.c b/drivers/staging/exfat/exfat_core.c
+index 995358cc7c79..8476eeedba83 100644
+--- a/drivers/staging/exfat/exfat_core.c
++++ b/drivers/staging/exfat/exfat_core.c
+@@ -1456,7 +1456,6 @@ void init_file_entry(struct file_dentry_t *ep, u32 type)
+ 	exfat_set_entry_time((struct dentry_t *)ep, tp, TM_ACCESS);
+ 	ep->create_time_ms = 0;
+ 	ep->modify_time_ms = 0;
+-	ep->access_time_ms = 0;
  }
  
- /* Convert linear UNIX date to a FAT time/date pair. */
--static void exfat_time_unix2fat(struct exfat_sb_info *sbi,
--				struct timespec64 *ts, struct date_time_t *tp)
-+static void exfat_time_unix2fat(struct timespec64 *ts, struct timestamp_t *tp)
- {
- 	time64_t second = ts->tv_sec;
- 	struct tm tm;
-@@ -75,69 +73,42 @@ static void exfat_time_unix2fat(struct exfat_sb_info *sbi,
- 	time64_to_tm(second, 0, &tm);
- 
- 	if (second < UNIX_SECS_1980) {
--		tp->MilliSecond = 0;
--		tp->Second	= 0;
--		tp->Minute	= 0;
--		tp->Hour	= 0;
--		tp->Day		= 1;
--		tp->Month	= 1;
--		tp->Year	= 0;
-+		tp->millisec	= 0;
-+		tp->sec		= 0;
-+		tp->min		= 0;
-+		tp->hour	= 0;
-+		tp->day		= 1;
-+		tp->mon		= 1;
-+		tp->year	= 0;
- 		return;
- 	}
- 
- 	if (second >= UNIX_SECS_2108) {
--		tp->MilliSecond = 999;
--		tp->Second	= 59;
--		tp->Minute	= 59;
--		tp->Hour	= 23;
--		tp->Day		= 31;
--		tp->Month	= 12;
--		tp->Year	= 127;
-+		tp->millisec	= 999;
-+		tp->sec		= 59;
-+		tp->min		= 59;
-+		tp->hour	= 23;
-+		tp->day		= 31;
-+		tp->mon		= 12;
-+		tp->year	= 127;
- 		return;
- 	}
- 
--	tp->MilliSecond = ts->tv_nsec / NSEC_PER_MSEC;
--	tp->Second	= tm.tm_sec;
--	tp->Minute	= tm.tm_min;
--	tp->Hour	= tm.tm_hour;
--	tp->Day		= tm.tm_mday;
--	tp->Month	= tm.tm_mon + 1;
--	tp->Year	= tm.tm_year + 1900 - 1980;
-+	tp->millisec	= ts->tv_nsec / NSEC_PER_MSEC;
-+	tp->sec		= tm.tm_sec;
-+	tp->min		= tm.tm_min;
-+	tp->hour	= tm.tm_hour;
-+	tp->day		= tm.tm_mday;
-+	tp->mon		= tm.tm_mon + 1;
-+	tp->year	= tm.tm_year + 1900 - 1980;
- }
- 
- struct timestamp_t *tm_current(struct timestamp_t *tp)
- {
--	time64_t second = ktime_get_real_seconds();
--	struct tm tm;
--
--	time64_to_tm(second, 0, &tm);
-+	struct timespec64 ts;
- 
--	if (second < UNIX_SECS_1980) {
--		tp->sec  = 0;
--		tp->min  = 0;
--		tp->hour = 0;
--		tp->day  = 1;
--		tp->mon  = 1;
--		tp->year = 0;
--		return tp;
--	}
--
--	if (second >= UNIX_SECS_2108) {
--		tp->sec  = 59;
--		tp->min  = 59;
--		tp->hour = 23;
--		tp->day  = 31;
--		tp->mon  = 12;
--		tp->year = 127;
--		return tp;
--	}
--
--	tp->sec  = tm.tm_sec;
--	tp->min  = tm.tm_min;
--	tp->hour = tm.tm_hour;
--	tp->day  = tm.tm_mday;
--	tp->mon  = tm.tm_mon + 1;
--	tp->year = tm.tm_year + 1900 - 1980;
-+	ktime_get_real_ts64(&ts);
-+	exfat_time_unix2fat(&ts, tp);
- 
- 	return tp;
- }
-@@ -1502,7 +1473,6 @@ static int ffsReadStat(struct inode *inode, struct dir_entry_t *info)
- 	int ret = FFS_SUCCESS;
- 	struct chain_t dir;
- 	struct uni_name_t uni_name;
--	struct timestamp_t tm;
- 	struct dentry_t *ep, *ep2;
- 	struct super_block *sb = inode->i_sb;
- 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
-@@ -1520,11 +1490,11 @@ static int ffsReadStat(struct inode *inode, struct dir_entry_t *info)
- 		    (fid->entry == -1)) {
- 			info->Attr = ATTR_SUBDIR;
- 			memset((char *)&info->CreateTimestamp, 0,
--			       sizeof(struct date_time_t));
-+			       sizeof(struct timestamp_t));
- 			memset((char *)&info->ModifyTimestamp, 0,
--			       sizeof(struct date_time_t));
-+			       sizeof(struct timestamp_t));
- 			memset((char *)&info->AccessTimestamp, 0,
--			       sizeof(struct date_time_t));
-+			       sizeof(struct timestamp_t));
- 			strcpy(info->ShortName, ".");
- 			strcpy(info->Name, ".");
- 
-@@ -1575,25 +1545,9 @@ static int ffsReadStat(struct inode *inode, struct dir_entry_t *info)
- 	/* set FILE_INFO structure using the acquired struct dentry_t */
- 	info->Attr = p_fs->fs_func->get_entry_attr(ep);
- 
--	p_fs->fs_func->get_entry_time(ep, &tm, TM_CREATE);
--	info->CreateTimestamp.Year = tm.year;
--	info->CreateTimestamp.Month = tm.mon;
--	info->CreateTimestamp.Day = tm.day;
--	info->CreateTimestamp.Hour = tm.hour;
--	info->CreateTimestamp.Minute = tm.min;
--	info->CreateTimestamp.Second = tm.sec;
--	info->CreateTimestamp.MilliSecond = 0;
--
--	p_fs->fs_func->get_entry_time(ep, &tm, TM_MODIFY);
--	info->ModifyTimestamp.Year = tm.year;
--	info->ModifyTimestamp.Month = tm.mon;
--	info->ModifyTimestamp.Day = tm.day;
--	info->ModifyTimestamp.Hour = tm.hour;
--	info->ModifyTimestamp.Minute = tm.min;
--	info->ModifyTimestamp.Second = tm.sec;
--	info->ModifyTimestamp.MilliSecond = 0;
--
--	memset((char *) &info->AccessTimestamp, 0, sizeof(struct date_time_t));
-+	p_fs->fs_func->get_entry_time(ep, &info->CreateTimestamp, TM_CREATE);
-+	p_fs->fs_func->get_entry_time(ep, &info->ModifyTimestamp, TM_MODIFY);
-+	memset((char *)&info->AccessTimestamp, 0, sizeof(struct timestamp_t));
- 
- 	*(uni_name.name) = 0x0;
- 	/* XXX this is very bad for exfat cuz name is already included in es.
-@@ -1652,7 +1606,6 @@ static int ffsWriteStat(struct inode *inode, struct dir_entry_t *info)
- {
- 	sector_t sector = 0;
- 	int ret = FFS_SUCCESS;
--	struct timestamp_t tm;
- 	struct dentry_t *ep, *ep2;
- 	struct entry_set_cache_t *es = NULL;
- 	struct super_block *sb = inode->i_sb;
-@@ -1699,22 +1652,8 @@ static int ffsWriteStat(struct inode *inode, struct dir_entry_t *info)
- 	p_fs->fs_func->set_entry_attr(ep, info->Attr);
- 
- 	/* set FILE_INFO structure using the acquired struct dentry_t */
--	tm.sec  = info->CreateTimestamp.Second;
--	tm.min  = info->CreateTimestamp.Minute;
--	tm.hour = info->CreateTimestamp.Hour;
--	tm.day  = info->CreateTimestamp.Day;
--	tm.mon  = info->CreateTimestamp.Month;
--	tm.year = info->CreateTimestamp.Year;
--	p_fs->fs_func->set_entry_time(ep, &tm, TM_CREATE);
--
--	tm.sec  = info->ModifyTimestamp.Second;
--	tm.min  = info->ModifyTimestamp.Minute;
--	tm.hour = info->ModifyTimestamp.Hour;
--	tm.day  = info->ModifyTimestamp.Day;
--	tm.mon  = info->ModifyTimestamp.Month;
--	tm.year = info->ModifyTimestamp.Year;
--	p_fs->fs_func->set_entry_time(ep, &tm, TM_MODIFY);
--
-+	p_fs->fs_func->set_entry_time(ep, &info->CreateTimestamp, TM_CREATE);
-+	p_fs->fs_func->set_entry_time(ep, &info->ModifyTimestamp, TM_MODIFY);
- 	p_fs->fs_func->set_entry_size(ep2, info->Size);
- 
- 	if (p_fs->vol_type != EXFAT) {
-@@ -1941,7 +1880,6 @@ static int ffsReadDir(struct inode *inode, struct dir_entry_t *dir_entry)
- 	sector_t sector;
- 	struct chain_t dir, clu;
- 	struct uni_name_t uni_name;
--	struct timestamp_t tm;
- 	struct dentry_t *ep;
- 	struct super_block *sb = inode->i_sb;
- 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
-@@ -2038,26 +1976,12 @@ static int ffsReadDir(struct inode *inode, struct dir_entry_t *dir_entry)
- 			buf_lock(sb, sector);
- 			dir_entry->Attr = fs_func->get_entry_attr(ep);
- 
--			fs_func->get_entry_time(ep, &tm, TM_CREATE);
--			dir_entry->CreateTimestamp.Year = tm.year;
--			dir_entry->CreateTimestamp.Month = tm.mon;
--			dir_entry->CreateTimestamp.Day = tm.day;
--			dir_entry->CreateTimestamp.Hour = tm.hour;
--			dir_entry->CreateTimestamp.Minute = tm.min;
--			dir_entry->CreateTimestamp.Second = tm.sec;
--			dir_entry->CreateTimestamp.MilliSecond = 0;
--
--			fs_func->get_entry_time(ep, &tm, TM_MODIFY);
--			dir_entry->ModifyTimestamp.Year = tm.year;
--			dir_entry->ModifyTimestamp.Month = tm.mon;
--			dir_entry->ModifyTimestamp.Day = tm.day;
--			dir_entry->ModifyTimestamp.Hour = tm.hour;
--			dir_entry->ModifyTimestamp.Minute = tm.min;
--			dir_entry->ModifyTimestamp.Second = tm.sec;
--			dir_entry->ModifyTimestamp.MilliSecond = 0;
--
-+			fs_func->get_entry_time(ep, &dir_entry->CreateTimestamp,
-+						TM_CREATE);
-+			fs_func->get_entry_time(ep, &dir_entry->ModifyTimestamp,
-+						TM_MODIFY);
- 			memset((char *)&dir_entry->AccessTimestamp, 0,
--			       sizeof(struct date_time_t));
-+			       sizeof(struct timestamp_t));
- 
- 			*(uni_name.name) = 0x0;
- 			fs_func->get_uni_name_from_ext_entry(sb, &dir, dentry,
-@@ -3349,9 +3273,9 @@ static int exfat_fill_inode(struct inode *inode, struct file_id_t *fid)
- 	inode->i_blocks = ((i_size_read(inode) + (p_fs->cluster_size - 1))
- 				& ~((loff_t)p_fs->cluster_size - 1)) >> 9;
- 
--	exfat_time_fat2unix(sbi, &inode->i_mtime, &info.ModifyTimestamp);
--	exfat_time_fat2unix(sbi, &inode->i_ctime, &info.CreateTimestamp);
--	exfat_time_fat2unix(sbi, &inode->i_atime, &info.AccessTimestamp);
-+	exfat_time_fat2unix(&inode->i_mtime, &info.ModifyTimestamp);
-+	exfat_time_fat2unix(&inode->i_ctime, &info.CreateTimestamp);
-+	exfat_time_fat2unix(&inode->i_atime, &info.AccessTimestamp);
- 
- 	return 0;
- }
-@@ -3412,8 +3336,6 @@ static void exfat_destroy_inode(struct inode *inode)
- 
- static int exfat_write_inode(struct inode *inode, struct writeback_control *wbc)
- {
--	struct super_block *sb = inode->i_sb;
--	struct exfat_sb_info *sbi = EXFAT_SB(sb);
- 	struct dir_entry_t info;
- 
- 	if (inode->i_ino == EXFAT_ROOT_INO)
-@@ -3422,9 +3344,9 @@ static int exfat_write_inode(struct inode *inode, struct writeback_control *wbc)
- 	info.Attr = exfat_make_attr(inode);
- 	info.Size = i_size_read(inode);
- 
--	exfat_time_unix2fat(sbi, &inode->i_mtime, &info.ModifyTimestamp);
--	exfat_time_unix2fat(sbi, &inode->i_ctime, &info.CreateTimestamp);
--	exfat_time_unix2fat(sbi, &inode->i_atime, &info.AccessTimestamp);
-+	exfat_time_unix2fat(&inode->i_mtime, &info.ModifyTimestamp);
-+	exfat_time_unix2fat(&inode->i_ctime, &info.CreateTimestamp);
-+	exfat_time_unix2fat(&inode->i_atime, &info.AccessTimestamp);
- 
- 	ffsWriteStat(inode, &info);
- 
+ void init_strm_entry(struct strm_dentry_t *ep, u8 flags, u32 start_clu, u64 size)
 -- 
 2.20.1
 
