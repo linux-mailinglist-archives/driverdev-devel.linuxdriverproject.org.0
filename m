@@ -1,82 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0BE30ACBD5
-	for <lists+driverdev-devel@lfdr.de>; Sun,  8 Sep 2019 11:43:22 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id BE652ACD32
+	for <lists+driverdev-devel@lfdr.de>; Sun,  8 Sep 2019 14:49:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9D46287079;
-	Sun,  8 Sep 2019 09:43:19 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DABB185168;
+	Sun,  8 Sep 2019 12:49:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UFmo7SbC7OnK; Sun,  8 Sep 2019 09:43:19 +0000 (UTC)
+	with ESMTP id Sx+86MbE95QC; Sun,  8 Sep 2019 12:49:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9DEE686FE7;
-	Sun,  8 Sep 2019 09:43:18 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 629BD84ECF;
+	Sun,  8 Sep 2019 12:49:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A69EA1BF584
- for <devel@linuxdriverproject.org>; Sun,  8 Sep 2019 09:43:16 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id DA2E51BF37E
+ for <devel@linuxdriverproject.org>; Sun,  8 Sep 2019 12:48:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A347E86DB0
- for <devel@linuxdriverproject.org>; Sun,  8 Sep 2019 09:43:16 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id D33B020026
+ for <devel@linuxdriverproject.org>; Sun,  8 Sep 2019 12:48:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VjJ6HLie4Hdw for <devel@linuxdriverproject.org>;
- Sun,  8 Sep 2019 09:43:15 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f45.google.com (mail-ot1-f45.google.com
- [209.85.210.45])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8B9C486DA3
- for <devel@driverdev.osuosl.org>; Sun,  8 Sep 2019 09:43:15 +0000 (UTC)
-Received: by mail-ot1-f45.google.com with SMTP id s28so9728762otd.4
- for <devel@driverdev.osuosl.org>; Sun, 08 Sep 2019 02:43:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=H0aCFYLWWsw9XbsDwRcJGWbuffYIbA5nq3wzYx1JSTE=;
- b=MOKPAMBVye7ohlZPamS+5wXEgG6VuOSPSme1HCy2VGSbaoT/tc+Ry4GANknkqSbnG0
- rI5LZEN7dQyHJeiJ7hrz/vQdpj8tPUmhyqRGtw4GUI15Z8nA1wR+jUazGW9VCa0SmVWb
- Z9XUq37Yh/sINIckT2+9YLpfknwhA8Hari/qCbw1FKbtKZymgVFWRNk2h2ry4quSuyZy
- 0AUmOicq3uJIybwjVTYFa6C1mq7rV4UrbB3YFIqk9e08ETXaRziwZOvY17YE4TxBNfzH
- ej2bHLXDAIuuq7vhzG1b6CP7loxNdPs2wSu4UPW0DRfAU0+q55Ob8ivI1/0hS2iiC9JJ
- sBHQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=H0aCFYLWWsw9XbsDwRcJGWbuffYIbA5nq3wzYx1JSTE=;
- b=kQPHH9XX+js88FbIYQL+bs+CGJFZI4pzA6aZmbQBoC734x7ypdOggpueRnGJ6NqGZq
- Ig6mso14r2RiITqB6gejdUo2DDKICya9ulQs2GMZ3Z2x0iOwq3zssRZUU3KkaK6+/wBC
- V9/qJa+v9NS4qZIigfftB2KlhqtvS/DcW8u4AwveuHTSd5hKhV5fKLXmFMCSF2S/Rpsp
- fBwQ1Ik0TwUkxlWES+iav1paFgnRihMIENmeUTbNocXfVfBVJTYEPXZbFXpL/La6hAeB
- 5IqgPU+3ALFr3gPx5z3chFY6ALtx9MdeBaljssYePX1puA1vi3hYZOnkY7OZPh7Ju53A
- Z4uw==
-X-Gm-Message-State: APjAAAWqolGarA7INdEyAtExl2mFAyidu+JRSqFe+T2wMtct+29cuMwp
- ylJJIW0XVpig/GDkEziHmb0IlgR4+BgBIi6z7Rs=
-X-Google-Smtp-Source: APXvYqx0FVoT8jwMh/4Ix4eqT8GvqZ0zur1TMAfh8vRT8Jq3iZ2aH0372H1avk1/yWtpoG9EWkyXnVnIPe6NZGK9sTI=
-X-Received: by 2002:a05:6830:1288:: with SMTP id
- z8mr14641847otp.236.1567935793630; 
- Sun, 08 Sep 2019 02:43:13 -0700 (PDT)
+ with ESMTP id ZXnk-zFPeecS for <devel@linuxdriverproject.org>;
+ Sun,  8 Sep 2019 12:48:20 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from valentin-vidic.from.hr (valentin-vidic.from.hr [94.229.67.141])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2CB362001E
+ for <devel@driverdev.osuosl.org>; Sun,  8 Sep 2019 12:48:20 +0000 (UTC)
+X-Virus-Scanned: Debian amavisd-new at valentin-vidic.from.hr
+Received: by valentin-vidic.from.hr (Postfix, from userid 1000)
+ id 44527212; Sun,  8 Sep 2019 12:48:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=valentin-vidic.from.hr; s=2017; t=1567946893;
+ bh=zp8QcPwkSZobaSC2ux2hJnAR+LBPtkF8kyth8WQzEQs=;
+ h=From:To:Cc:Subject:Date:From;
+ b=KamavMSuPxQ/v9Bc2SHnL5zy05VNyv6QONDknRiS2jvKtHnNehJu7stt4Gr2gG7ch
+ ue/Mhd5Xo0SSQ2DzGFuYtu0jGbg/lM0x/6G04vd3fEULQ/TJOKk24fxNKyDpez6iy0
+ g8mwLL3jAXOkjSeIK6R5n70jehKNeBOaZ9gP8i4lzoUM3P+7c5CTAuY3UQ4+m5a+Qe
+ Gj66/nPnwt7isfITvLB6f+aZeLBWDkEBQOid9+82tWJEAp9Oo1KQpE05k+DDhs7Pu1
+ fhUBjX2ezJOfuQuo4ebBOzIWhr/zgmYVQmLzassXCKeRVPx2pOFn7Vu5ol9DYjjD/C
+ bQJRKjt+bpJZg==
+From: Valentin Vidic <vvidic@valentin-vidic.from.hr>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: exfat: add millisecond support
+Date: Sun,  8 Sep 2019 12:48:08 +0000
+Message-Id: <20190908124808.23739-1-vvidic@valentin-vidic.from.hr>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <20190316031831.GA2499@kroah.com>
- <20190706200857.22918345@narunkot>
- <20190707065710.GA5560@kroah.com> <20190712083819.GA8862@kroah.com>
- <20190712092319.wmke4i7zqzr26tly@function> <20190713004623.GA9159@gregn.net>
- <20190725035352.GA7717@gregn.net>
- <875znqhia0.fsf@cmbmachine.messageid.invalid>
- <m3sgqucs1x.wl-covici@ccs.covici.com>
- <CAOtcWM0qynSjnF6TtY_s7a51B7JweDb7jwdxStEmPvB9tJFU4Q@mail.gmail.com>
- <20190821222209.GA4577@gregn.net>
-In-Reply-To: <20190821222209.GA4577@gregn.net>
-From: Okash Khawaja <okash.khawaja@gmail.com>
-Date: Sun, 8 Sep 2019 10:43:02 +0100
-Message-ID: <CAOtcWM0Jzo+wew-uiOmde+eZXEWZ310L8wXscWjJv5OXqXJe6Q@mail.gmail.com>
-Subject: Re: [HELP REQUESTED from the community] Was: Staging status of speakup
-To: "Speakup is a screen review system for Linux." <speakup@linux-speakup.org>
-Content-Type: multipart/mixed; boundary="00000000000002b3bf05920780e5"
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,200 +63,502 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Simon Dickson <simonhdickson@gmail.com>, linux-kernel@vger.kernel.org,
- John Covici <covici@ccs.covici.com>
+Cc: devel@driverdev.osuosl.org, Valentin Vidic <vvidic@valentin-vidic.from.hr>,
+ Valdis Kletnieks <valdis.kletnieks@vt.edu>, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
---00000000000002b3bf05920780e5
-Content-Type: text/plain; charset="UTF-8"
+Drop duplicated date_time_t struct and add millisecond handling for
+create and modify time. Also drop millisecond field for access time
+since it is not defined in the the spec.
 
-Sorry, I have only now got round to working on this. It's not complete
-yet but I have assimilated the feedback and converted subjective
-phrases, like "I think..." into objective statements or put them in
-TODO: so that someone else may verify. I have attached it to this
-email.
+Signed-off-by: Valentin Vidic <vvidic@valentin-vidic.from.hr>
+---
+ drivers/staging/exfat/exfat.h       |  38 +++---
+ drivers/staging/exfat/exfat_core.c  |  31 ++++-
+ drivers/staging/exfat/exfat_super.c | 174 ++++++++--------------------
+ 3 files changed, 92 insertions(+), 151 deletions(-)
 
-Next step will be to convert the format to match Documentation/ABI/
-requirements.
-
-Thanks,
-Okash
-
-On Wed, Aug 21, 2019 at 11:23 PM Gregory Nowak <greg@gregn.net> wrote:
->
-> On Wed, Aug 21, 2019 at 09:39:25AM -0700, Okash Khawaja wrote:
-> > Hi Greg N,
-> >
-> > Would like to send this as a patch as Greg K-H suggested? If not, I
-> > can do that with your email in Authored-by: tag?
-> >
-> > Thanks,
-> > Okash
->
-> Hi Okash and all,
-> feel free to submit the patch with my email in the Authored-by:
-> tag if that's OK. Thanks, and good luck on your presentation.
->
-> Greg
->
->
-> --
-> web site: http://www.gregn.net
-> gpg public key: http://www.gregn.net/pubkey.asc
-> skype: gregn1
-> (authorization required, add me to your contacts list first)
-> If we haven't been in touch before, e-mail me before adding me to your contacts.
->
-> --
-> Free domains: http://www.eu.org/ or mail dns-manager@EU.org
-> _______________________________________________
-> Speakup mailing list
-> Speakup@linux-speakup.org
-> http://linux-speakup.org/cgi-bin/mailman/listinfo/speakup
-
---00000000000002b3bf05920780e5
-Content-Type: text/plain; charset="US-ASCII"; name="speakup-sysfs.txt"
-Content-Disposition: attachment; filename="speakup-sysfs.txt"
-Content-Transfer-Encoding: base64
-Content-ID: <f_k0as879e0>
-X-Attachment-Id: f_k0as879e0
-
-YXR0cmliX2JsZWVwCkJlZXBzIHRoZSBQQyBzcGVha2VyIHdoZW4gdGhlcmUgaXMgYW4gYXR0cmli
-dXRlIGNoYW5nZSBzdWNoIGFzCmZvcmVncm91bmQgb3IgYmFja2dyb3VuZCBjb2xvciB3aGVuIHVz
-aW5nIHNwZWFrdXAgcmV2aWV3IGNvbW1hbmRzLiBPbmUKPSBvbiwgemVybyA9IG9mZi4KCmJlbGxf
-cG9zClRoaXMgd29ya3MgbXVjaCBsaWtlIGEgdHlwZXdyaXRlciBiZWxsLiBJZiBmb3IgZXhhbXBs
-ZSA3MiBpcyBlY2hvZWQgdG8KYmVsbF9wb3MsIGl0IHdpbGwgYmVlcCB0aGUgUEMgc3BlYWtlciB3
-aGVuIHR5cGluZyBvbiBhIGxpbmUgcGFzdCBjaGFyYWN0ZXIgNzIuCgoKYmxlZXBzClRoaXMgY29u
-dHJvbHMgd2hldGhlciBvbmUgaGVhcnMgYmVlcHMgdGhyb3VnaCB0aGUgUEMgc3BlYWtlciB3aGVu
-IHVzaW5nCnNwZWFrdXAncyByZXZpZXcgY29tbWFuZHMuCgpibGVlcF90aW1lClRoaXMgY29udHJv
-bHMgdGhlIGR1cmF0aW9uIG9mIHRoZSBQQyBzcGVha2VyIGJlZXBzIHNwZWFrdXAgcHJvZHVjZXMu
-ClRPRE86IFdoYXQgYXJlIHRoZSB1bml0cz8gSmlmZmllcz8KCmN1cnNvcl90aW1lClRoaXMgY29u
-dHJvbHMgY3Vyc29yIGRlbGF5IHdoZW4gdXNpbmcgYXJyb3cga2V5cy4gV2hlbiBhIGNvbm5lY3Rp
-b24gaXMgdmVyeQpzbG93LCB3aXRoIHRoZSBkZWZhdWx0IHNldHRpbmcsIHdoZW4gbW92aW5nIHdp
-dGggIHRoZSBhcnJvd3MsIG9yIGJhY2tzcGFjaW5nCmV0Yy4gc3BlYWt1cCBzYXlzIHRoZSBpbmNv
-cnJlY3QgY2hhcmFjdGVycy4gU2V0IHRoaXMgdG8gYSBoaWdoZXIgdmFsdWUgdG8KYWRqdXN0IGZv
-ciB0aGUgZGVsYXkgYW5kIGJldHRlciBzeW5jaHJvbmlzYXRpb24gYmV0d2VlbiBjdXJzb3IgcG9z
-aXRpb24gYW5kCnNwZWVjaC4KCmRlbGltaXRlcnMKRGVsaW1pdCBhIHdvcmQgZnJvbSBzcGVha3Vw
-LgpUT0RPOiBhZGQgbW9yZSBpbmZvCgpleF9udW0KVE9ETzoKCmtleV9lY2hvCkNvbnRyb2xzIGlm
-IHNwZWFrdXAgc3BlYWtzIGtleXMgd2hlbiB0aGV5IGFyZSB0eXBlZC4gT25lID0gb24sIHplcm8g
-PQpvZmYgb3IgZG9uJ3QgZWNobyBrZXlzLgoKa2V5bWFwClNwZWFrdXAga2V5bWFwIHJlbWFwcyBr
-ZXlzIHRvIFNwZWFrdXAgZnVuY3RpbnMuIEl0IHVzZXMgYSBiaW5hcnkgZm9ybWF0LiBBCnNwZWNp
-YWwgcHJvZ3JhbSBjYWxsZWQgZ2VubWFwIGlzIG5lZWRlZCB0byBjb21waWxlIGEgdGV4dHVhbCBr
-ZXltYXAgaW50byB0aGUKYmluYXJ5IGZvcm1hdCB3aGljaCBpcyB0aGVuIGxvYWRlZCBpbnRvIC9z
-eXMvYWNjZXNzaWJpbGl0eS9zcGVha3VwL2tleW1hcC4KCm5vX2ludGVycnVwdApDb250cm9scyBp
-ZiB0eXBpbmcgaW50ZXJydXB0cyBvdXRwdXQgZnJvbSBzcGVha3VwLiBXaXRoIG5vX2ludGVycnVw
-dApzZXQgdG8gemVybywgdHlwaW5nIG9uIHRoZSBrZXlib2FyZCB3aWxsIGludGVycnVwdCBzcGVh
-a3VwIGlmIGZvcgpleGFtcGxlIHRoZSBzYXkgc2NyZWVuIGNvbW1hbmQgaXMgdXNlZCBiZWZvcmUg
-dGhlIGVudGlyZSBzY3JlZW4gaXMKcmVhZC4gV2l0aCBub19pbnRlcnJ1cHQgc2V0IHRvIG9uZSwg
-aWYgdGhlIHNheSBzY3JlZW4gY29tbWFuZCBpcyB1c2VkLAphbmQgb25lIHRoZW4gdHlwZXMgb24g
-dGhlIGtleWJvYXJkLCBzcGVha3VwIHdpbGwgY29udGludWUgdG8gc2F5IHRoZQp3aG9sZSBzY3Jl
-ZW4gcmVnYXJkbGVzcyB1bnRpbCBpdCBmaW5pc2hlcy4KCnB1bmNfYWxsClRoaXMgaXMgYSBsaXN0
-IG9mIGFsbCB0aGUgcHVuY3R1YXRpb24gc3BlYWt1cCBzaG91bGQgc3BlYWsgd2hlbgpwdW5jX2xl
-dmVsIGlzIHNldCB0byBmb3VyLgoKcHVuY19sZXZlbApDb250cm9scyB0aGUgbGV2ZWwgb2YgcHVu
-Y3R1YXRpb24gc3Bva2VuIGFzIHRoZSBzY3JlZW4gaXMgZGlzcGxheWVkLApub3QgcmV2aWV3ZWQu
-IExldmVscyByYW5nZSBmcm9tIHplcm8gbm8gcHVuY3R1YXRpb24sIHRvIGZvdXIsIGFsbApwdW5j
-dHVhdGlvbi4gT25lIGNvcnJlc3BvbmRzIHRvIHB1bmNfc29tZSwgdHdvCmNvcnJlc3BvbmRzIHRv
-IHB1bmNfbW9zdCwgYW5kIHRocmVlIGFzIHdlbGwgYXMgZm91ciBib3RoCmNvcnJlc3BvbmQgdG8g
-cHVuY19hbGwuIFNvbWUgaGFyZHdhcmUKc3ludGhlc2l6ZXJzIG1heSBoYXZlIGRpZmZlcmVudCBs
-ZXZlbHMgZWFjaCBjb3JyZXNwb25kaW5nIHRvIHRocmVlIGFuZCBmb3VyCmZvciBwdW5jX2xldmVs
-LiBBbHNvIG5vdGUgdGhhdCBpZiBwdW5jX2xldmVsIGlzIHNldCB0byB6ZXJvLCBhbmQKa2V5X2Vj
-aG8gaXMgc2V0IHRvIG9uZSwgdHlwZWQgcHVuY3R1YXRpb24gaXMgc3RpbGwgc3Bva2VuIGFzIGl0
-IGlzCnR5cGVkLgoKcHVuY19tb3N0ClRoaXMgaXMgYSBsaXN0IG9mIGFsbCB0aGUgcHVuY3R1YXRp
-b24gc3BlYWt1cCBzaG91bGQgc3BlYWsgd2hlbgpwdW5jX2xldmVsIGlzIHNldCB0byB0d28uCgpw
-dW5jX3NvbWUKVGhpcyBpcyBhIGxpc3Qgb2YgYWxsIHRoZSBwdW5jdHVhdGlvbiBzcGVha3VwIHNo
-b3VsZCBzcGVhayB3aGVuCnB1bmNfbGV2ZWwgaXMgc2V0IHRvIG9uZS4KCnJlYWRpbmdfcHVuYwpB
-bG1vc3QgdGhlIHNhbWUgYXMgcHVuY19sZXZlbCwgdGhlIGRpZmZlcmVuY2VzIGJlaW5nIHRoYXQg
-cmVhZGluZ19wdW5jIGNvbnRyb2xzCnRoZSBsZXZlbCBvZiBwdW5jdHVhdGlvbiB3aGVuIHJldmll
-d2luZyB0aGUgc2NyZWVuIHdpdGggc3BlYWt1cCdzCnNjcmVlbiByZXZpZXcgY29tbWFuZHMuIFRo
-ZSBvdGhlciBkaWZmZXJlbmNlIGlzIHRoYXQgcmVhZGluZ19wdW5jIHNldAp0byB0aHJlZSBzcGVh
-a3MgcHVuY19hbGwsIGFuZCByZWFkaW5nX3B1bmMgc2V0IHRvIGZvdXIgc3BlYWtzIGFsbApwdW5j
-dHVhdGlvbiwgaW5jbHVkaW5nIHNwYWNlcy4KCnJlcGVhdHMKQSBsaXN0IG9mIGNoYXJhY3RlcnMg
-c3BlYWt1cCByZXBlYXRzLiBOb3JtYWxseSwgd2hlbiB0aGVyZSBhcmUKbW9yZSB0aGFuIHRocmVl
-IGNoYXJhY3RlcnMgaW4gYSByb3csIHNwZWFrdXAganVzdCByZWFkcyB0aHJlZSBvZiB0aG9zZQpj
-aGFyYWN0ZXJzLiBGb3IgZXhhbXBsZSwgIi4uLi4uLiIgd291bGQgYmUgcmVhZCBhcyBkb3QsIGRv
-dCwgZG90LiBJZiBhCi4gaXMgYWRkZWQgdG8gdGhlIGxpc3Qgb2YgY2hhcmFjdGVycyBpbiByZXBl
-YXRzLCAiLi4uLi4uIiB3b3VsZCBiZQpyZWFkIGFzIGRvdCwgZG90LCBkb3QsIHRpbWVzIHNpeC4K
-CnNheV9jb250cm9sCklmIHNldCB0byBvbmUsIHNwZWFrdXAgc3BlYWtzIHNoaWZ0LCBhbHQgYW5k
-IGNvbnRyb2wgd2hlbiB0aG9zZSBrZXlzIGFyZQpwcmVzc2VkLiBJZiBzYXlfY29udHJvbCBpcyBz
-ZXQgdG8gemVybywgc2hpZnQsIGN0cmwsIGFuZCBhbHQgYXJlIG5vdApzcG9rZW4gd2hlbiB0aGV5
-IGFyZSBwcmVzc2VkLgoKc2F5X3dvcmRfY3RsClRPRE86CgpzaWxlbnQKVE9ETzoKCnNwZWxsX2Rl
-bGF5ClRoaXMgY29udHJvbHMgaG93IGZhc3QgYSB3b3JkIGlzIHNwZWxsZWQgd2hlbgpzcGVha3Vw
-J3Mgc2F5IHdvcmQgcmV2aWV3IGNvbW1hbmQgaXMgcHJlc3NlZCB0d2ljZSBxdWlja2x5IHRvIHNw
-ZWFrCnRoZSBjdXJyZW50IHdvcmQgYmVpbmcgcmV2aWV3ZWQuIFplcm8ganVzdCBzcGVha3MgdGhl
-IGxldHRlcnMgb25lCmFmdGVyIGFub3RoZXIsIHdoaWxlIHZhbHVlcyBvbmUgdGhyb3VnaCBmb3Vy
-IHNlZW0gdG8gaW50cm9kdWNlIG1vcmUgb2YKYSBwYXVzZSBiZXR3ZWVuIHRoZSBzcGVsbGluZyBv
-ZiBlYWNoIGxldHRlciBieSBzcGVha3VwLgoKc3ludGgKR2V0cyBvciBzZXRzIHRoZSBzeW50aGVz
-aXplciBkcml2ZXIgY3VycmVudGx5IGluIHVzZS4gUmVhZGluZyBzeW50aApyZXR1cm5zIHRoZSBz
-eW50aGVzaXplciBkcml2ZXIgY3VycmVudGx5IGluIHVzZS4gV3JpdGluZyBzeW50aApzd2l0Y2hl
-cyB0byB0aGUgZ2l2ZW4gc3ludGhlc2l6ZXIgZHJpdmVyLCBwcm92aWRlZCBpdCBpcyBlaXRoZXIg
-YnVpbHQKaW50byB0aGUga2VybmVsLCBvciBhbHJlYWR5IGxvYWRlZCBhcyBhIG1vZHVsZS4KCnN5
-bnRoX2RpcmVjdApTZW5kcyB3aGF0ZXZlciBpcyB3cml0dGVuIHRvIHN5bnRoX2RpcmVjdApkaXJl
-Y3RseSB0byB0aGUgc3BlZWNoIHN5bnRoZXNpemVyIGluIHVzZSwgYnlwYXNzaW5nIHNwZWFrdXAu
-IFRoaXMKY291bGQgYmUgdXNlZCB0byBtYWtlIHRoZSBzeW50aGVzaXplciBzcGVhayBhIHN0cmlu
-Zywgb3IgdG8gc2VuZApjb250cm9sIHNlcXVlbmNlcyB0byB0aGUgc3ludGhlc2l6ZXIgdG8gY2hh
-bmdlIGhvdyB0aGUgc3ludGhlc2l6ZXIKYmVoYXZlcy4KCnZlcnNpb24KUmVhZGluZyB2ZXJzaW9u
-IHJldHVybnMgdGhlIHZlcnNpb24gb2Ygc3BlYWt1cCwgYW5kIHRoZSB2ZXJzaW9uIG9mIHRoZQpz
-eW50aGVzaXplciBkcml2ZXIgY3VycmVudGx5IGluIHVzZS4KClN5bnRoZXNpemVyIERyaXZlciBQ
-YXJhbWV0ZXJzCkluIGAvc3lzL2FjY2Vzc2liaWxpdHkvc3BlYWt1cGAgaXMgYSBkaXJlY3Rvcnkg
-Y29ycmVzcG9uZGluZyB0byB0aGUKc3ludGhlc2l6ZXIgZHJpdmVyIGN1cnJlbnRseSBpbiB1c2Ug
-KEUuRykgYHNvZnRgIGZvciB0aGUgc29mdApkcml2ZXIuIFRoaXMgZGlyZWN0b3J5IGNvbnRhaW5z
-IGZpbGVzIHdoaWNoIGNvbnRyb2wgdGhlIHNwZWVjaApzeW50aGVzaXplciBpdHNlbGYsIGFzIG9w
-cG9zZWQgdG8gY29udHJvbGxpbmcgdGhlIHNwZWFrdXAgc2NyZWVuCnJlYWRlci4gVGhlIHBhcmFt
-ZXRlcnMgaW4gdGhpcyBkaXJlY3RvcnkgaGF2ZSB0aGUKc2FtZSBuYW1lcyBhbmQgZnVuY3Rpb25z
-IGFjcm9zcyBhbGwgc3VwcG9ydGVkIHN5bnRoZXNpemVycy4gVGhlIHJhbmdlIG9mCnZhbHVlcyBm
-b3IgZnJlcSwgcGl0Y2gsIHJhdGUsIGFuZCB2b2wgaXMKdGhlIHNhbWUgZm9yIGFsbCBzdXBwb3J0
-ZWQgc3ludGhlc2l6ZXJzLAp3aXRoIHRoZSBnaXZlbiByYW5nZSBiZWluZyBpbnRlcm5hbGx5IG1h
-cHBlZCBieSB0aGUgZHJpdmVyIHRvIG1vcmUgb3IKbGVzcyBmaXQgdGhlIHJhbmdlIG9mIHZhbHVl
-cyBzdXBwb3J0ZWQgZm9yIGEgZ2l2ZW4gcGFyYW1ldGVyIGJ5IHRoZQppbmRpdmlkdWFsIHN5bnRo
-ZXNpemVyLiBCZWxvdyBpcyBhIGRlc2NyaXB0aW9uIG9mIHZhbHVlcyBhbmQgcGFyYW1ldGVycyBm
-b3IKc29mdCBzeW50aGVzaXplciwgd2hpY2ggaXMgY3VycmVudGx5IHRoZSBtb3N0IGNvbW1vbmx5
-IHVzZWQuCgpjYXBzX3N0YXJ0ClRoaXMgaXMgdGhlIHN0cmluZyB0aGF0IGlzIHNlbnQgdG8gdGhl
-IHN5bnRoZXNpemVyIHRvIGNhdXNlCml0IHRvIHN0YXJ0IHNwZWFraW5nIHVwcGVyY2FzZSBsZXR0
-ZXJzLiBGb3IgdGhlIHNvZnQgc3ludGhlc2l6ZXIgYW5kCm1vc3Qgb3RoZXJzLCB0aGlzIGNhdXNl
-cyB0aGUgcGl0Y2ggb2YgdGhlIHZvaWNlIHRvIHJpc2UgYWJvdmUgdGhlCmN1cnJlbnRseSBzZXQg
-cGl0Y2guCgpjYXBzX3N0b3AKVGhpcyBpcyB0aGUgc3RyaW5nIHNlbnQgdG8gdGhlIHN5bnRoZXNp
-emVyIHRvIGNhdXNlIGl0IHRvCnN0b3Agc3BlYWtpbmcgdXBwZXJjYXNlIGxldHRlcnMuIEluIHRo
-ZSBjYXNlIG9mIHRoZSBzb2Z0IHN5bnRoZXNpemVyCmFuZCBtb3N0IG90aGVycywgdGhpcyByZXR1
-cm5zIHRoZSBwaXRjaCBvZiB0aGUgdm9pY2UgZG93biB0byB0aGUKY3VycmVudGx5IHNldCBwaXRj
-aC4KCmRlbGF5X3RpbWUKVE9ETzoKCmRpcmVjdApDb250cm9scyBpZiBwdW5jdHVhdGlvbiBpcyBz
-cG9rZW4gYnkgc3BlYWt1cCwgb3IgYnkgdGhlCnN5bnRoZXNpemVyLiBGb3IgZXhhbXBsZSwgc3Bl
-YWt1cCBzcGVha3MgIj4iIGFzICJncmVhdGVyIiwgd2hpbGUgdGhlCmVzcGVhayBzeW50aGVzaXpl
-ciB1c2VkIGJ5IHRoZSBzb2Z0IGRyaXZlciBzcGVha3MgImdyZWF0ZXIgdGhhbiIuIFplcm8KbGV0
-cyBzcGVha3VwIHNwZWFrIHRoZSBwdW5jdHVhdGlvbi4gT25lIGxldHMgdGhlIHN5bnRoZXNpemVy
-IGl0c2VsZgpzcGVhayBwdW5jdHVhdGlvbi4KCmZyZXEKR2V0cyBvciBzZXRzIHRoZSBmcmVxdWVu
-Y3kgb2YgdGhlIHNwZWVjaCBzeW50aGVzaXplci4gUmFuZ2UgaXMgMC05LgoKZnVsbF90aW1lClRP
-RE86CgpqaWZmeV9kZWx0YQpUaGlzIGNvbnRyb2xzIGhvdyBtYW55IGppZmZ5cyB0aGUga2VybmVs
-IGdpdmVzIHRvCnRoZSBzeW50aGVzaXplci4gU2V0dGluZyB0aGlzIHRvbwpoaWdoIGNhbiBtYWtl
-IGEgc3lzdGVtIHVuc3RhYmxlLCBvciBldmVuIGNyYXNoIGl0LgoKcGl0Y2gKR2V0cyBvciBzZXRz
-IHRoZSBwaXRjaCBvZiB0aGUgc3ludGhlc2l6ZXIuIFRoZSByYW5nZSBpcyAwLTkuCgpwdW5jdApH
-ZXRzIG9yIHNldHMgdGhlIGFtb3VudCBvZiBwdW5jdHVhdGlvbiBzcG9rZW4gYnkgdGhlIHN5bnRo
-ZXNpemVyLiBUaGUKcmFuZ2UgZm9yIHRoZSBzb2Z0IGRyaXZlciBzZWVtcyB0byBiZSAwLTIuIApU
-T0RPOiBIb3cgaXMgdGhpcyByZWxhdGVkIHRvIHNwZWFrdXAncyBwdW5jX2xldmVsLCBvciByZWFk
-aW5nX3B1bmMKCnJhdGUKR2V0cyBvciBzZXRzIHRoZSByYXRlIG9mIHRoZSBzeW50aGVzaXplci4g
-UmFuZ2UgaXMgZnJvbSB6ZXJvIHNsb3dlc3QsCnRvIG5pbmUgZmFzdGVzdC4KCnRvbmUKR2V0cyBv
-ciBzZXRzIHRoZSB0b25lIG9mIHRoZSBzcGVlY2ggc3ludGhlc2l6ZXIuIFRoZSByYW5nZSBmb3Ig
-dGhlCnNvZnQgZHJpdmVyIHNlZW1zIHRvIGJlIDAtMi4gVGhpcyBzZWVtcyB0byBtYWtlIG5vIGRp
-ZmZlcmVuY2UgaWYgdXNpbmcKZXNwZWFrIGFuZCB0aGUgZXNwZWFrdXAgY29ubmVjdG9yLgpUT0RP
-OiBkb2VzIGVzcGVha3VwIHN1cHBvcnQgZGlmZmVyZW50IHRvbmFsaXRpZXM/Cgp0cmlnZ2VyX3Rp
-bWUKRG9uJ3Qga25vdy4KCnZvaWNlCkdldHMgb3Igc2V0cyB0aGUgdm9pY2UgdXNlZCBieSB0aGUg
-c3ludGhlc2l6ZXIgaWYgdGhlIHN5bnRoZXNpemVyIGNhbgpzcGVhayBpbiBtb3JlIHRoYW4gb25l
-IHZvaWNlLiBUaGUgcmFuZ2UgZm9yIHRoZSBzb2Z0IGRyaXZlciBpcwowLTcuIE5vdGUgdGhhdCB3
-aGlsZSBlc3BlYWsgc3VwcG9ydHMgbXVsdGlwbGUgdm9pY2VzLCB0aGlzIHBhcmFtZXRlcgp3aWxs
-IG5vdCBzZXQgdGhlIHZvaWNlIHdoZW4gdGhlIGVzcGVha3VwIGNvbm5lY3RvciBpcyB1c2VkIGJl
-dHdlZW4Kc3BlYWt1cCBhbmQgZXNwZWFrLgoKdm9sCkdldHMgb3Igc2V0cyB0aGUgdm9sdW1lIG9m
-IHRoZSBzcGVlY2ggc3ludGhlc2l6ZXIuIFJhbmdlIGlzIDAtOSwgd2l0aAp6ZXJvIGJlaW5nIHRo
-ZSBzb2Z0ZXN0LCBhbmQgbmluZSBiZWluZyB0aGUgbG91ZGVzdC4K
---00000000000002b3bf05920780e5
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+diff --git a/drivers/staging/exfat/exfat.h b/drivers/staging/exfat/exfat.h
+index 0aa14dea4e09..6491ea034928 100644
+--- a/drivers/staging/exfat/exfat.h
++++ b/drivers/staging/exfat/exfat.h
+@@ -241,16 +241,6 @@ static inline u16 get_row_index(u16 i)
+ #define UNI_PAR_DIR_NAME        "\0.\0."
+ #endif
+ 
+-struct date_time_t {
+-	u16      Year;
+-	u16      Month;
+-	u16      Day;
+-	u16      Hour;
+-	u16      Minute;
+-	u16      Second;
+-	u16      MilliSecond;
+-};
+-
+ struct part_info_t {
+ 	u32      Offset;    /* start sector number of the partition */
+ 	u32      Size;      /* in sectors */
+@@ -289,6 +279,16 @@ struct file_id_t {
+ 	u32      hint_last_clu;
+ };
+ 
++struct timestamp_t {
++	u16      millisec;   /* 0 ~ 999              */
++	u16      sec;        /* 0 ~ 59               */
++	u16      min;        /* 0 ~ 59               */
++	u16      hour;       /* 0 ~ 23               */
++	u16      day;        /* 1 ~ 31               */
++	u16      mon;        /* 1 ~ 12               */
++	u16      year;       /* 0 ~ 127 (since 1980) */
++};
++
+ struct dir_entry_t {
+ 	char Name[MAX_NAME_LENGTH * MAX_CHARSET_SIZE];
+ 
+@@ -298,18 +298,9 @@ struct dir_entry_t {
+ 	u32 Attr;
+ 	u64 Size;
+ 	u32 NumSubdirs;
+-	struct date_time_t CreateTimestamp;
+-	struct date_time_t ModifyTimestamp;
+-	struct date_time_t AccessTimestamp;
+-};
+-
+-struct timestamp_t {
+-	u16      sec;        /* 0 ~ 59               */
+-	u16      min;        /* 0 ~ 59               */
+-	u16      hour;       /* 0 ~ 23               */
+-	u16      day;        /* 1 ~ 31               */
+-	u16      mon;        /* 1 ~ 12               */
+-	u16      year;       /* 0 ~ 127 (since 1980) */
++	struct timestamp_t CreateTimestamp;
++	struct timestamp_t ModifyTimestamp;
++	struct timestamp_t AccessTimestamp;
+ };
+ 
+ /* MS_DOS FAT partition boot record (512 bytes) */
+@@ -453,8 +444,7 @@ struct file_dentry_t {
+ 	u8       access_date[2];
+ 	u8       create_time_ms;
+ 	u8       modify_time_ms;
+-	u8       access_time_ms;
+-	u8       reserved2[9];
++	u8       reserved2[10];
+ };
+ 
+ /* MS-DOS EXFAT stream extension directory entry (32 bytes) */
+diff --git a/drivers/staging/exfat/exfat_core.c b/drivers/staging/exfat/exfat_core.c
+index 995358cc7c79..e87119fa8c0a 100644
+--- a/drivers/staging/exfat/exfat_core.c
++++ b/drivers/staging/exfat/exfat_core.c
+@@ -1139,6 +1139,7 @@ void exfat_set_entry_size(struct dentry_t *p_entry, u64 size)
+ void fat_get_entry_time(struct dentry_t *p_entry, struct timestamp_t *tp,
+ 			u8 mode)
+ {
++	u8 ms = 0;
+ 	u16 t = 0x00, d = 0x21;
+ 	struct dos_dentry_t *ep = (struct dos_dentry_t *)p_entry;
+ 
+@@ -1146,6 +1147,7 @@ void fat_get_entry_time(struct dentry_t *p_entry, struct timestamp_t *tp,
+ 	case TM_CREATE:
+ 		t = GET16_A(ep->create_time);
+ 		d = GET16_A(ep->create_date);
++		ms = ep->create_time_ms * 10;
+ 		break;
+ 	case TM_MODIFY:
+ 		t = GET16_A(ep->modify_time);
+@@ -1159,11 +1161,17 @@ void fat_get_entry_time(struct dentry_t *p_entry, struct timestamp_t *tp,
+ 	tp->day  = (d & 0x001F);
+ 	tp->mon  = (d >> 5) & 0x000F;
+ 	tp->year = (d >> 9);
++
++	if (ms >= 1000) {
++		ms -= 1000;
++		tp->sec++;
++	}
+ }
+ 
+ void exfat_get_entry_time(struct dentry_t *p_entry, struct timestamp_t *tp,
+ 			  u8 mode)
+ {
++	u8 ms = 0;
+ 	u16 t = 0x00, d = 0x21;
+ 	struct file_dentry_t *ep = (struct file_dentry_t *)p_entry;
+ 
+@@ -1171,10 +1179,12 @@ void exfat_get_entry_time(struct dentry_t *p_entry, struct timestamp_t *tp,
+ 	case TM_CREATE:
+ 		t = GET16_A(ep->create_time);
+ 		d = GET16_A(ep->create_date);
++		ms = ep->create_time_ms * 10;
+ 		break;
+ 	case TM_MODIFY:
+ 		t = GET16_A(ep->modify_time);
+ 		d = GET16_A(ep->modify_date);
++		ms = ep->modify_time_ms * 10;
+ 		break;
+ 	case TM_ACCESS:
+ 		t = GET16_A(ep->access_time);
+@@ -1188,21 +1198,33 @@ void exfat_get_entry_time(struct dentry_t *p_entry, struct timestamp_t *tp,
+ 	tp->day  = (d & 0x001F);
+ 	tp->mon  = (d >> 5) & 0x000F;
+ 	tp->year = (d >> 9);
++
++	if (ms >= 1000) {
++		ms -= 1000;
++		tp->sec++;
++	}
+ }
+ 
+ void fat_set_entry_time(struct dentry_t *p_entry, struct timestamp_t *tp,
+ 			u8 mode)
+ {
++	u8 ms;
+ 	u16 t, d;
+ 	struct dos_dentry_t *ep = (struct dos_dentry_t *)p_entry;
+ 
+ 	t = (tp->hour << 11) | (tp->min << 5) | (tp->sec >> 1);
+ 	d = (tp->year <<  9) | (tp->mon << 5) |  tp->day;
+ 
++	ms = tp->millisec;
++	if (tp->sec & 1) {
++		ms += 1000;
++	}
++
+ 	switch (mode) {
+ 	case TM_CREATE:
+ 		SET16_A(ep->create_time, t);
+ 		SET16_A(ep->create_date, d);
++		ep->create_time_ms = ms / 10;
+ 		break;
+ 	case TM_MODIFY:
+ 		SET16_A(ep->modify_time, t);
+@@ -1214,20 +1236,28 @@ void fat_set_entry_time(struct dentry_t *p_entry, struct timestamp_t *tp,
+ void exfat_set_entry_time(struct dentry_t *p_entry, struct timestamp_t *tp,
+ 			  u8 mode)
+ {
++	u8 ms;
+ 	u16 t, d;
+ 	struct file_dentry_t *ep = (struct file_dentry_t *)p_entry;
+ 
+ 	t = (tp->hour << 11) | (tp->min << 5) | (tp->sec >> 1);
+ 	d = (tp->year <<  9) | (tp->mon << 5) |  tp->day;
+ 
++	ms = tp->millisec;
++	if (tp->sec & 1) {
++		ms += 1000;
++	}
++
+ 	switch (mode) {
+ 	case TM_CREATE:
+ 		SET16_A(ep->create_time, t);
+ 		SET16_A(ep->create_date, d);
++		ep->create_time_ms = ms / 10;
+ 		break;
+ 	case TM_MODIFY:
+ 		SET16_A(ep->modify_time, t);
+ 		SET16_A(ep->modify_date, d);
++		ep->modify_time_ms = ms / 10;
+ 		break;
+ 	case TM_ACCESS:
+ 		SET16_A(ep->access_time, t);
+@@ -1456,7 +1486,6 @@ void init_file_entry(struct file_dentry_t *ep, u32 type)
+ 	exfat_set_entry_time((struct dentry_t *)ep, tp, TM_ACCESS);
+ 	ep->create_time_ms = 0;
+ 	ep->modify_time_ms = 0;
+-	ep->access_time_ms = 0;
+ }
+ 
+ void init_strm_entry(struct strm_dentry_t *ep, u8 flags, u32 start_clu, u64 size)
+diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
+index 60dfea73a7a4..54b6c2ff3c96 100644
+--- a/drivers/staging/exfat/exfat_super.c
++++ b/drivers/staging/exfat/exfat_super.c
+@@ -56,18 +56,16 @@ static void exfat_write_super(struct super_block *sb);
+ #define UNIX_SECS_2108    4354819200L
+ 
+ /* Convert a FAT time/date pair to a UNIX date (seconds since 1 1 70). */
+-static void exfat_time_fat2unix(struct exfat_sb_info *sbi,
+-				struct timespec64 *ts, struct date_time_t *tp)
++static void exfat_time_fat2unix(struct timespec64 *ts, struct timestamp_t *tp)
+ {
+-	ts->tv_sec = mktime64(tp->Year + 1980, tp->Month + 1, tp->Day,
+-			      tp->Hour, tp->Minute, tp->Second);
++	ts->tv_sec = mktime64(tp->year + 1980, tp->mon + 1, tp->day,
++			      tp->hour, tp->min, tp->sec);
+ 
+-	ts->tv_nsec = tp->MilliSecond * NSEC_PER_MSEC;
++	ts->tv_nsec = tp->millisec * NSEC_PER_MSEC;
+ }
+ 
+ /* Convert linear UNIX date to a FAT time/date pair. */
+-static void exfat_time_unix2fat(struct exfat_sb_info *sbi,
+-				struct timespec64 *ts, struct date_time_t *tp)
++static void exfat_time_unix2fat(struct timespec64 *ts, struct timestamp_t *tp)
+ {
+ 	time64_t second = ts->tv_sec;
+ 	struct tm tm;
+@@ -75,69 +73,42 @@ static void exfat_time_unix2fat(struct exfat_sb_info *sbi,
+ 	time64_to_tm(second, 0, &tm);
+ 
+ 	if (second < UNIX_SECS_1980) {
+-		tp->MilliSecond = 0;
+-		tp->Second	= 0;
+-		tp->Minute	= 0;
+-		tp->Hour	= 0;
+-		tp->Day		= 1;
+-		tp->Month	= 1;
+-		tp->Year	= 0;
++		tp->millisec	= 0;
++		tp->sec		= 0;
++		tp->min		= 0;
++		tp->hour	= 0;
++		tp->day		= 1;
++		tp->mon		= 1;
++		tp->year	= 0;
+ 		return;
+ 	}
+ 
+ 	if (second >= UNIX_SECS_2108) {
+-		tp->MilliSecond = 999;
+-		tp->Second	= 59;
+-		tp->Minute	= 59;
+-		tp->Hour	= 23;
+-		tp->Day		= 31;
+-		tp->Month	= 12;
+-		tp->Year	= 127;
++		tp->millisec	= 999;
++		tp->sec		= 59;
++		tp->min		= 59;
++		tp->hour	= 23;
++		tp->day		= 31;
++		tp->mon		= 12;
++		tp->year	= 127;
+ 		return;
+ 	}
+ 
+-	tp->MilliSecond = ts->tv_nsec / NSEC_PER_MSEC;
+-	tp->Second	= tm.tm_sec;
+-	tp->Minute	= tm.tm_min;
+-	tp->Hour	= tm.tm_hour;
+-	tp->Day		= tm.tm_mday;
+-	tp->Month	= tm.tm_mon + 1;
+-	tp->Year	= tm.tm_year + 1900 - 1980;
++	tp->millisec	= ts->tv_nsec / NSEC_PER_MSEC;
++	tp->sec		= tm.tm_sec;
++	tp->min		= tm.tm_min;
++	tp->hour	= tm.tm_hour;
++	tp->day		= tm.tm_mday;
++	tp->mon		= tm.tm_mon + 1;
++	tp->year	= tm.tm_year + 1900 - 1980;
+ }
+ 
+ struct timestamp_t *tm_current(struct timestamp_t *tp)
+ {
+-	time64_t second = ktime_get_real_seconds();
+-	struct tm tm;
+-
+-	time64_to_tm(second, 0, &tm);
++	struct timespec64 ts;
+ 
+-	if (second < UNIX_SECS_1980) {
+-		tp->sec  = 0;
+-		tp->min  = 0;
+-		tp->hour = 0;
+-		tp->day  = 1;
+-		tp->mon  = 1;
+-		tp->year = 0;
+-		return tp;
+-	}
+-
+-	if (second >= UNIX_SECS_2108) {
+-		tp->sec  = 59;
+-		tp->min  = 59;
+-		tp->hour = 23;
+-		tp->day  = 31;
+-		tp->mon  = 12;
+-		tp->year = 127;
+-		return tp;
+-	}
+-
+-	tp->sec  = tm.tm_sec;
+-	tp->min  = tm.tm_min;
+-	tp->hour = tm.tm_hour;
+-	tp->day  = tm.tm_mday;
+-	tp->mon  = tm.tm_mon + 1;
+-	tp->year = tm.tm_year + 1900 - 1980;
++	ktime_get_real_ts64(&ts);
++	exfat_time_unix2fat(&ts, tp);
+ 
+ 	return tp;
+ }
+@@ -1502,7 +1473,6 @@ static int ffsReadStat(struct inode *inode, struct dir_entry_t *info)
+ 	int ret = FFS_SUCCESS;
+ 	struct chain_t dir;
+ 	struct uni_name_t uni_name;
+-	struct timestamp_t tm;
+ 	struct dentry_t *ep, *ep2;
+ 	struct super_block *sb = inode->i_sb;
+ 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
+@@ -1520,11 +1490,11 @@ static int ffsReadStat(struct inode *inode, struct dir_entry_t *info)
+ 		    (fid->entry == -1)) {
+ 			info->Attr = ATTR_SUBDIR;
+ 			memset((char *)&info->CreateTimestamp, 0,
+-			       sizeof(struct date_time_t));
++			       sizeof(struct timestamp_t));
+ 			memset((char *)&info->ModifyTimestamp, 0,
+-			       sizeof(struct date_time_t));
++			       sizeof(struct timestamp_t));
+ 			memset((char *)&info->AccessTimestamp, 0,
+-			       sizeof(struct date_time_t));
++			       sizeof(struct timestamp_t));
+ 			strcpy(info->ShortName, ".");
+ 			strcpy(info->Name, ".");
+ 
+@@ -1575,25 +1545,9 @@ static int ffsReadStat(struct inode *inode, struct dir_entry_t *info)
+ 	/* set FILE_INFO structure using the acquired struct dentry_t */
+ 	info->Attr = p_fs->fs_func->get_entry_attr(ep);
+ 
+-	p_fs->fs_func->get_entry_time(ep, &tm, TM_CREATE);
+-	info->CreateTimestamp.Year = tm.year;
+-	info->CreateTimestamp.Month = tm.mon;
+-	info->CreateTimestamp.Day = tm.day;
+-	info->CreateTimestamp.Hour = tm.hour;
+-	info->CreateTimestamp.Minute = tm.min;
+-	info->CreateTimestamp.Second = tm.sec;
+-	info->CreateTimestamp.MilliSecond = 0;
+-
+-	p_fs->fs_func->get_entry_time(ep, &tm, TM_MODIFY);
+-	info->ModifyTimestamp.Year = tm.year;
+-	info->ModifyTimestamp.Month = tm.mon;
+-	info->ModifyTimestamp.Day = tm.day;
+-	info->ModifyTimestamp.Hour = tm.hour;
+-	info->ModifyTimestamp.Minute = tm.min;
+-	info->ModifyTimestamp.Second = tm.sec;
+-	info->ModifyTimestamp.MilliSecond = 0;
+-
+-	memset((char *) &info->AccessTimestamp, 0, sizeof(struct date_time_t));
++	p_fs->fs_func->get_entry_time(ep, &info->CreateTimestamp, TM_CREATE);
++	p_fs->fs_func->get_entry_time(ep, &info->ModifyTimestamp, TM_MODIFY);
++	memset((char *)&info->AccessTimestamp, 0, sizeof(struct timestamp_t));
+ 
+ 	*(uni_name.name) = 0x0;
+ 	/* XXX this is very bad for exfat cuz name is already included in es.
+@@ -1652,7 +1606,6 @@ static int ffsWriteStat(struct inode *inode, struct dir_entry_t *info)
+ {
+ 	sector_t sector = 0;
+ 	int ret = FFS_SUCCESS;
+-	struct timestamp_t tm;
+ 	struct dentry_t *ep, *ep2;
+ 	struct entry_set_cache_t *es = NULL;
+ 	struct super_block *sb = inode->i_sb;
+@@ -1699,22 +1652,8 @@ static int ffsWriteStat(struct inode *inode, struct dir_entry_t *info)
+ 	p_fs->fs_func->set_entry_attr(ep, info->Attr);
+ 
+ 	/* set FILE_INFO structure using the acquired struct dentry_t */
+-	tm.sec  = info->CreateTimestamp.Second;
+-	tm.min  = info->CreateTimestamp.Minute;
+-	tm.hour = info->CreateTimestamp.Hour;
+-	tm.day  = info->CreateTimestamp.Day;
+-	tm.mon  = info->CreateTimestamp.Month;
+-	tm.year = info->CreateTimestamp.Year;
+-	p_fs->fs_func->set_entry_time(ep, &tm, TM_CREATE);
+-
+-	tm.sec  = info->ModifyTimestamp.Second;
+-	tm.min  = info->ModifyTimestamp.Minute;
+-	tm.hour = info->ModifyTimestamp.Hour;
+-	tm.day  = info->ModifyTimestamp.Day;
+-	tm.mon  = info->ModifyTimestamp.Month;
+-	tm.year = info->ModifyTimestamp.Year;
+-	p_fs->fs_func->set_entry_time(ep, &tm, TM_MODIFY);
+-
++	p_fs->fs_func->set_entry_time(ep, &info->CreateTimestamp, TM_CREATE);
++	p_fs->fs_func->set_entry_time(ep, &info->ModifyTimestamp, TM_MODIFY);
+ 	p_fs->fs_func->set_entry_size(ep2, info->Size);
+ 
+ 	if (p_fs->vol_type != EXFAT) {
+@@ -1941,7 +1880,6 @@ static int ffsReadDir(struct inode *inode, struct dir_entry_t *dir_entry)
+ 	sector_t sector;
+ 	struct chain_t dir, clu;
+ 	struct uni_name_t uni_name;
+-	struct timestamp_t tm;
+ 	struct dentry_t *ep;
+ 	struct super_block *sb = inode->i_sb;
+ 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
+@@ -2038,26 +1976,12 @@ static int ffsReadDir(struct inode *inode, struct dir_entry_t *dir_entry)
+ 			buf_lock(sb, sector);
+ 			dir_entry->Attr = fs_func->get_entry_attr(ep);
+ 
+-			fs_func->get_entry_time(ep, &tm, TM_CREATE);
+-			dir_entry->CreateTimestamp.Year = tm.year;
+-			dir_entry->CreateTimestamp.Month = tm.mon;
+-			dir_entry->CreateTimestamp.Day = tm.day;
+-			dir_entry->CreateTimestamp.Hour = tm.hour;
+-			dir_entry->CreateTimestamp.Minute = tm.min;
+-			dir_entry->CreateTimestamp.Second = tm.sec;
+-			dir_entry->CreateTimestamp.MilliSecond = 0;
+-
+-			fs_func->get_entry_time(ep, &tm, TM_MODIFY);
+-			dir_entry->ModifyTimestamp.Year = tm.year;
+-			dir_entry->ModifyTimestamp.Month = tm.mon;
+-			dir_entry->ModifyTimestamp.Day = tm.day;
+-			dir_entry->ModifyTimestamp.Hour = tm.hour;
+-			dir_entry->ModifyTimestamp.Minute = tm.min;
+-			dir_entry->ModifyTimestamp.Second = tm.sec;
+-			dir_entry->ModifyTimestamp.MilliSecond = 0;
+-
++			fs_func->get_entry_time(ep, &dir_entry->CreateTimestamp,
++						TM_CREATE);
++			fs_func->get_entry_time(ep, &dir_entry->ModifyTimestamp,
++						TM_MODIFY);
+ 			memset((char *)&dir_entry->AccessTimestamp, 0,
+-			       sizeof(struct date_time_t));
++			       sizeof(struct timestamp_t));
+ 
+ 			*(uni_name.name) = 0x0;
+ 			fs_func->get_uni_name_from_ext_entry(sb, &dir, dentry,
+@@ -3349,9 +3273,9 @@ static int exfat_fill_inode(struct inode *inode, struct file_id_t *fid)
+ 	inode->i_blocks = ((i_size_read(inode) + (p_fs->cluster_size - 1))
+ 				& ~((loff_t)p_fs->cluster_size - 1)) >> 9;
+ 
+-	exfat_time_fat2unix(sbi, &inode->i_mtime, &info.ModifyTimestamp);
+-	exfat_time_fat2unix(sbi, &inode->i_ctime, &info.CreateTimestamp);
+-	exfat_time_fat2unix(sbi, &inode->i_atime, &info.AccessTimestamp);
++	exfat_time_fat2unix(&inode->i_mtime, &info.ModifyTimestamp);
++	exfat_time_fat2unix(&inode->i_ctime, &info.CreateTimestamp);
++	exfat_time_fat2unix(&inode->i_atime, &info.AccessTimestamp);
+ 
+ 	return 0;
+ }
+@@ -3412,8 +3336,6 @@ static void exfat_destroy_inode(struct inode *inode)
+ 
+ static int exfat_write_inode(struct inode *inode, struct writeback_control *wbc)
+ {
+-	struct super_block *sb = inode->i_sb;
+-	struct exfat_sb_info *sbi = EXFAT_SB(sb);
+ 	struct dir_entry_t info;
+ 
+ 	if (inode->i_ino == EXFAT_ROOT_INO)
+@@ -3422,9 +3344,9 @@ static int exfat_write_inode(struct inode *inode, struct writeback_control *wbc)
+ 	info.Attr = exfat_make_attr(inode);
+ 	info.Size = i_size_read(inode);
+ 
+-	exfat_time_unix2fat(sbi, &inode->i_mtime, &info.ModifyTimestamp);
+-	exfat_time_unix2fat(sbi, &inode->i_ctime, &info.CreateTimestamp);
+-	exfat_time_unix2fat(sbi, &inode->i_atime, &info.AccessTimestamp);
++	exfat_time_unix2fat(&inode->i_mtime, &info.ModifyTimestamp);
++	exfat_time_unix2fat(&inode->i_ctime, &info.CreateTimestamp);
++	exfat_time_unix2fat(&inode->i_atime, &info.AccessTimestamp);
+ 
+ 	ffsWriteStat(inode, &info);
+ 
+-- 
+2.20.1
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---00000000000002b3bf05920780e5--
