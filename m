@@ -1,74 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8CCB9ACF18
-	for <lists+driverdev-devel@lfdr.de>; Sun,  8 Sep 2019 15:49:51 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0BA3FACF5E
+	for <lists+driverdev-devel@lfdr.de>; Sun,  8 Sep 2019 16:47:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 42593870A1;
-	Sun,  8 Sep 2019 13:49:49 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8432284FD5;
+	Sun,  8 Sep 2019 14:47:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Rdw3l4Cw8RMn; Sun,  8 Sep 2019 13:49:48 +0000 (UTC)
+	with ESMTP id iMn5GakJ0YGn; Sun,  8 Sep 2019 14:47:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3035F86FAF;
-	Sun,  8 Sep 2019 13:49:47 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C428A84FFF;
+	Sun,  8 Sep 2019 14:47:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2AC0C1BF40F
- for <devel@linuxdriverproject.org>; Sun,  8 Sep 2019 13:48:39 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D62521BF409
+ for <devel@linuxdriverproject.org>; Sun,  8 Sep 2019 14:47:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 2777484C2A
- for <devel@linuxdriverproject.org>; Sun,  8 Sep 2019 13:48:39 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id D1EF4203B2
+ for <devel@linuxdriverproject.org>; Sun,  8 Sep 2019 14:47:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vpAf9AkKAB1m for <devel@linuxdriverproject.org>;
- Sun,  8 Sep 2019 13:48:38 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f67.google.com (mail-io1-f67.google.com
- [209.85.166.67])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 83A7E84C23
- for <devel@driverdev.osuosl.org>; Sun,  8 Sep 2019 13:48:38 +0000 (UTC)
-Received: by mail-io1-f67.google.com with SMTP id r26so22810004ioh.8
- for <devel@driverdev.osuosl.org>; Sun, 08 Sep 2019 06:48:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=oFn65Gx0LceV9UpwBpRBxIJy0Sy+f8hyn5shhbHZwGY=;
- b=fZ1C77cALrVsEVNsgCc8SoP1kDV2VcjQckKG2yXKeZxbSTAOiSGATXDS0TkMDpYooW
- C6PjdLTYnZh0qPgKG647RSGa6U7/tDP9IhwUopPKNatbWgGl2hT5QuhSxDsh+FcrBHfJ
- dKipTfEorZhVcxWmdwmFFw5AzqTPUXdawvg+8ga81oOcH58ZxnXBmWQPrkeEn91pKJS7
- YhI3Sid3dpmiVXz8p1RNqkcpqxGoVVffGuko9jAm9UrA2h2vq3/RsEmN9LXIaRlI/isv
- pFb6DLQL9HK0z90Z1P+dkquY8wAa/RcIrv4CNwS3Q8nLoGUunkM9eibAy/789iBaDANr
- JHhA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=oFn65Gx0LceV9UpwBpRBxIJy0Sy+f8hyn5shhbHZwGY=;
- b=S4N1+3oaWuK5ekx1zkFS/7I4ChUD3b/yckups4xBK11IBE58m6+NMUDbRcvrG/8XXS
- Tp7t4x7ygumwqHlUnTW0eu66HlT28IMrYgrqkQaUHXqDiTvcbfNC6IGOleKjmhpZr79B
- OKJPkA9Pxn9L2CFGh6mxfNh3HbkfTWJzVNhD7Ya/u/zNnHi4YEfqnWUkK/4K2+rvycts
- NcNGCU79NDPqVSEfnCspwCapRMqatqYR+c96ORct+V5RbLv4HW3I4FLAsjp0EP9csxUR
- qQYaWcskY1L5y6b6LES1fNRgZF9V+jdmzxQIzrvUSA/HBY88Xbli11dR/dai6vKXcdUs
- gMhA==
-X-Gm-Message-State: APjAAAX/P5KcHEwTDQGBBZ2DJFRnorR1tv8xUOgczIkPHkVos8rxXA+S
- pyEiKfd21qHJqjTQKOYK2NU=
-X-Google-Smtp-Source: APXvYqymoIbipF+QFyqKIvFQS+3h+eR47zlB0UY9E1dU6IsNMCa2eT2KiNA0h+tsaaSp48HbhI0HUQ==
-X-Received: by 2002:a5d:9746:: with SMTP id c6mr15520437ioo.235.1567950517595; 
- Sun, 08 Sep 2019 06:48:37 -0700 (PDT)
-Received: from localhost.localdomain ([198.52.185.227])
- by smtp.gmail.com with ESMTPSA id k11sm2813251ioa.20.2019.09.08.06.48.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 08 Sep 2019 06:48:37 -0700 (PDT)
-From: thesven73@gmail.com
-X-Google-Original-From: TheSven73@gmail.com
-To: Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH] dt-bindings: anybus-controller: move to staging/ tree
-Date: Sun,  8 Sep 2019 09:48:05 -0400
-Message-Id: <20190908134805.30957-1-TheSven73@gmail.com>
-X-Mailer: git-send-email 2.17.1
+ with ESMTP id Xg3-kookNPj4 for <devel@linuxdriverproject.org>;
+ Sun,  8 Sep 2019 14:47:43 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from valentin-vidic.from.hr (valentin-vidic.from.hr [94.229.67.141])
+ by silver.osuosl.org (Postfix) with ESMTPS id EC78720022
+ for <devel@driverdev.osuosl.org>; Sun,  8 Sep 2019 14:47:42 +0000 (UTC)
+X-Virus-Scanned: Debian amavisd-new at valentin-vidic.from.hr
+Received: by valentin-vidic.from.hr (Postfix, from userid 1000)
+ id 7B1A3214; Sun,  8 Sep 2019 14:47:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=valentin-vidic.from.hr; s=2017; t=1567954055;
+ bh=iMps8Hv8V4ycg9xT22lBI+Z06VFOIDLw6qNSazuJrT0=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Cx4tVznfdjeZdz28aPWZ3k9UBKvN6GBRXxF72OBawL83EUURclkIuwlD3DK+vphOz
+ wHMUZAMncttgL5exHo3NW72E7kQLhRTz1J3VKSzVlImZoxrTPPQbZQIWyx+RYkbE0/
+ NkbYoTewDhJxhrK24z4LSw5Acfy8eVJxx2ls8BI75hFXThx16wGvJIBNSC/9AaQ42S
+ WG5DM4+VvzMeFFlzFoG6NVUbbIhnSGeC2UetULCFalu1EiUvom496NV2hMEfLDvJf9
+ yIMUBUV35FvlWxPu7iH/P8QyJWDrvDcfUyzj2pVBiqShavMUPlanMw06M5iTGPT8le
+ 1ckjQN4qs2a6A==
+Date: Sun, 8 Sep 2019 14:47:35 +0000
+From: Valentin =?utf-8?B?VmlkacSH?= <vvidic@valentin-vidic.from.hr>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH] staging: exfat: add millisecond support
+Message-ID: <20190908144735.GA7664@valentin-vidic.from.hr>
+References: <20190908124808.23739-1-vvidic@valentin-vidic.from.hr>
+ <20190908130337.GA9056@kroah.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190908130337.GA9056@kroah.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,36 +67,73 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- devel@driverdev.osuosl.org, Sven Van Asbroeck <TheSven73@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, Valdis Kletnieks <valdis.kletnieks@vt.edu>,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Sven Van Asbroeck <TheSven73@gmail.com>
+On Sun, Sep 08, 2019 at 02:03:37PM +0100, Greg Kroah-Hartman wrote:
+> Please run checkpatch on your patches so that we don't have to go and
+> fix up those issues later on.
 
-The devicetree bindings for anybus-controller were mistakenly
-merged into the main Linux tree. Its driver resides in
-staging/, so the bindings belong in staging/ too.
+Strange, it did not report anything for me:
 
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Fixes: 20a980e957bf ("dt-bindings: anybus-controller: document devicetree binding")
-Signed-off-by: Sven Van Asbroeck <TheSven73@gmail.com>
----
- .../devicetree/bindings/fieldbus/arcx,anybus-controller.txt       | 0
- 1 file changed, 0 insertions(+), 0 deletions(-)
- rename {Documentation => drivers/staging/fieldbus/Documentation}/devicetree/bindings/fieldbus/arcx,anybus-controller.txt (100%)
+total: 0 errors, 0 warnings, 0 checks, 439 lines checked
+0001-staging-exfat-add-millisecond-support.patch has no obvious style problems and is ready for submission.
 
-diff --git a/Documentation/devicetree/bindings/fieldbus/arcx,anybus-controller.txt b/drivers/staging/fieldbus/Documentation/devicetree/bindings/fieldbus/arcx,anybus-controller.txt
-similarity index 100%
-rename from Documentation/devicetree/bindings/fieldbus/arcx,anybus-controller.txt
-rename to drivers/staging/fieldbus/Documentation/devicetree/bindings/fieldbus/arcx,anybus-controller.txt
+> Also, can you break this up into smaller patches please?  You are doing
+> multiple things all at once.
+
+Sure, I was just trying to improve the code a bit :)
+
+> And, are you sure about the millisecond field for access time stuff?  It
+> was obviously added for some reason (there are lots in the spec that the
+> code does not yet cover, this seems odd being the other way around).
+> Did you test it against any other operating system exfat images to
+> ensure that it really is not being used at all?  If so, which ones?
+
+Don't really have access to another OS, but here is what exfat-fuse has:
+
+struct exfat_entry_meta1                        /* file or directory info (part 1) */
+{
+        uint8_t type;                                   /* EXFAT_ENTRY_FILE */
+        uint8_t continuations;
+        le16_t checksum;
+        le16_t attrib;                                  /* combination of EXFAT_ATTRIB_xxx */
+        le16_t __unknown1;
+        le16_t crtime, crdate;                  /* creation date and time */
+        le16_t mtime, mdate;                    /* latest modification date and time */
+        le16_t atime, adate;                    /* latest access date and time */
+        uint8_t crtime_cs;                              /* creation time in cs (centiseconds) */
+        uint8_t mtime_cs;                               /* latest modification time in cs */
+        uint8_t __unknown2[10];
+}
+
+The spec matches this and defines 3 additional UtcOffset fields that we don't use:
+
+EntryType
+SecondaryCount
+SetChecksum
+FileAttributes
+Reserved1
+CreateTimestamp
+LastModifiedTimestamp
+LastAccessedTimestamp
+Create10msIncrement
+LastModified10msIncrement
+
+CreateUtcOffset (1 byte)
+LastModifiedUtcOffset (1 byte)
+LastAccessedUtcOffset (1 byte)
+Reserved2 (7 bytes)
+
+So I'm not sure where access_time_ms came from. In any case it was always set to
+0 so it should not matter much?
+
 -- 
-2.17.1
-
+Valentin
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
