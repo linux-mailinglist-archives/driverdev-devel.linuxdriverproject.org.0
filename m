@@ -1,52 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6211AADEC6
-	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Sep 2019 20:22:41 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6972CADFEC
+	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Sep 2019 22:28:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7DB848592F;
-	Mon,  9 Sep 2019 18:22:39 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 469722078D;
+	Mon,  9 Sep 2019 20:28:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id T2duVK2Gt4Uh; Mon,  9 Sep 2019 18:22:38 +0000 (UTC)
+	with ESMTP id c1LdTM1GW70t; Mon,  9 Sep 2019 20:28:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9DEE6858D4;
-	Mon,  9 Sep 2019 18:22:37 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5ECC12078B;
+	Mon,  9 Sep 2019 20:28:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C89061BF39F
- for <devel@linuxdriverproject.org>; Mon,  9 Sep 2019 18:22:35 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4F90F1BF384
+ for <devel@linuxdriverproject.org>; Mon,  9 Sep 2019 20:28:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C5606858DA
- for <devel@linuxdriverproject.org>; Mon,  9 Sep 2019 18:22:35 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4C6A285A5A
+ for <devel@linuxdriverproject.org>; Mon,  9 Sep 2019 20:28:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3t9pzNu2HfuQ for <devel@linuxdriverproject.org>;
- Mon,  9 Sep 2019 18:22:34 +0000 (UTC)
-X-Greylist: delayed 00:07:38 by SQLgrey-1.7.6
-Received: from mout02.posteo.de (mout02.posteo.de [185.67.36.142])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 63B1F858D4
- for <devel@driverdev.osuosl.org>; Mon,  9 Sep 2019 18:22:34 +0000 (UTC)
-Received: from submission (posteo.de [89.146.220.130]) 
- by mout02.posteo.de (Postfix) with ESMTPS id C9B312400E5
- for <devel@driverdev.osuosl.org>; Mon,  9 Sep 2019 20:14:53 +0200 (CEST)
-Received: from customer (localhost [127.0.0.1])
- by submission (posteo.de) with ESMTPSA id 46RxCH3tqVz9rxH;
- Mon,  9 Sep 2019 20:14:51 +0200 (CEST)
-Date: Mon, 9 Sep 2019 20:14:50 +0200 (CEST)
-From: Marc Dietrich <marvin24@gmx.de>
-X-X-Sender: lucile@macbook-pro.fritz.box
-To: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-Subject: Re: [PATCH] staging: nvec: make use of devm_platform_ioremap_resource
-In-Reply-To: <1567935662-8006-1-git-send-email-hariprasad.kelam@gmail.com>
-Message-ID: <alpine.OSX.2.21.1909092010430.4245@macbook-pro.fritz.box>
-References: <1567935662-8006-1-git-send-email-hariprasad.kelam@gmail.com>
-User-Agent: Alpine 2.21 (OSX 202 2017-01-01)
+ with ESMTP id uH-g03GjISwt for <devel@linuxdriverproject.org>;
+ Mon,  9 Sep 2019 20:28:27 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mxout017.mail.hostpoint.ch (mxout017.mail.hostpoint.ch
+ [217.26.49.177])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E359585A22
+ for <devel@driverdev.osuosl.org>; Mon,  9 Sep 2019 20:28:26 +0000 (UTC)
+Received: from [10.0.2.46] (helo=asmtp013.mail.hostpoint.ch)
+ by mxout017.mail.hostpoint.ch with esmtp (Exim 4.92.2 (FreeBSD))
+ (envelope-from <sandro@volery.com>)
+ id 1i7QGs-000PaI-EH; Mon, 09 Sep 2019 22:28:22 +0200
+Received: from 145-126.cable.senselan.ch ([83.222.145.126] helo=volery)
+ by asmtp013.mail.hostpoint.ch with esmtpsa
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2 (FreeBSD))
+ (envelope-from <sandro@volery.com>)
+ id 1i7QGs-0000vJ-A9; Mon, 09 Sep 2019 22:28:22 +0200
+X-Authenticated-Sender-Id: sandro@volery.com
+Date: Mon, 9 Sep 2019 22:28:20 +0200
+From: Sandro Volery <sandro@volery.com>
+To: rspringer@google.com, toddpoynor@google.com, benchan@chromium.org,
+ gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] Staging: gasket: Use temporaries to reduce line length.
+Message-ID: <20190909202820.GA5060@volery>
 MIME-Version: 1.0
+Content-Disposition: inline
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,64 +64,72 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-tegra@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, ac100@lists.launchpad.net
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Hariprased,
+Using temporaries for gasket_page_table entries to remove scnprintf()
+statements and reduce line length, as suggested by Joe Perches. Thanks!
 
-On Sun, 8 Sep 2019, hariprasad@MISSING_DOMAIN wrote:
-                              ^^^^^^^^^^^^^^^^^^
-something is wrong with your git mail config...
+Signed-off-by: Sandro Volery <sandro@volery.com>
+---
+ drivers/staging/gasket/apex_driver.c | 20 +++++++++-----------
+ 1 file changed, 9 insertions(+), 11 deletions(-)
 
-> From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
->
-> fix below issue reported by coccicheck
-> drivers/staging//nvec/nvec.c:794:1-5: WARNING: Use
-> devm_platform_ioremap_resource for base
->
-> Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+diff --git a/drivers/staging/gasket/apex_driver.c b/drivers/staging/gasket/apex_driver.c
+index 2973bb920a26..16ac4329d65f 100644
+--- a/drivers/staging/gasket/apex_driver.c
++++ b/drivers/staging/gasket/apex_driver.c
+@@ -509,6 +509,8 @@ static ssize_t sysfs_show(struct device *device, struct device_attribute *attr,
+ 	struct gasket_dev *gasket_dev;
+ 	struct gasket_sysfs_attribute *gasket_attr;
+ 	enum sysfs_attribute_type type;
++	struct gasket_page_table *gpt;
++	uint val;
+ 
+ 	gasket_dev = gasket_sysfs_get_device_data(device);
+ 	if (!gasket_dev) {
+@@ -524,29 +526,25 @@ static ssize_t sysfs_show(struct device *device, struct device_attribute *attr,
+ 	}
+ 
+ 	type = (enum sysfs_attribute_type)gasket_attr->data.attr_type;
++	gpt = gasket_dev->page_table[0];
+ 	switch (type) {
+ 	case ATTR_KERNEL_HIB_PAGE_TABLE_SIZE:
+-		ret = scnprintf(buf, PAGE_SIZE, "%u\n",
+-				gasket_page_table_num_entries(
+-					gasket_dev->page_table[0]));
++		val = gasket_page_table_num_simple_entries(gpt);
+ 		break;
+ 	case ATTR_KERNEL_HIB_SIMPLE_PAGE_TABLE_SIZE:
+-		ret = scnprintf(buf, PAGE_SIZE, "%u\n",
+-				gasket_page_table_num_simple_entries(
+-					gasket_dev->page_table[0]));
++		val = gasket_page_table_num_simple_entries(gpt);
+ 		break;
+ 	case ATTR_KERNEL_HIB_NUM_ACTIVE_PAGES:
+-		ret = scnprintf(buf, PAGE_SIZE, "%u\n",
+-				gasket_page_table_num_active_pages(
+-					gasket_dev->page_table[0]));
++		val = gasket_page_table_num_active_pages(gpt);
+ 		break;
+ 	default:
+ 		dev_dbg(gasket_dev->dev, "Unknown attribute: %s\n",
+ 			attr->attr.name);
+ 		ret = 0;
+-		break;
++		goto exit;
+ 	}
+-
++	ret = scnprintf(buf, PAGE_SIZE, "%u\n", val);
++exit:
+ 	gasket_sysfs_put_attr(device, gasket_attr);
+ 	gasket_sysfs_put_device_data(device, gasket_dev);
+ 	return ret;
+-- 
+2.23.0
 
-Acked-by: Marc Dietrich <marvin24@gmx.de>
-
-Thanks!
-
-Marc
-
-> ---
-> drivers/staging/nvec/nvec.c | 4 +---
-> 1 file changed, 1 insertion(+), 3 deletions(-)
->
-> diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
-> index 1cbd7b7..360ec04 100644
-> --- a/drivers/staging/nvec/nvec.c
-> +++ b/drivers/staging/nvec/nvec.c
-> @@ -767,7 +767,6 @@ static int tegra_nvec_probe(struct platform_device *pdev)
-> 	struct device *dev = &pdev->dev;
-> 	struct nvec_chip *nvec;
-> 	struct nvec_msg *msg;
-> -	struct resource *res;
-> 	void __iomem *base;
-> 	char	get_firmware_version[] = { NVEC_CNTL, GET_FIRMWARE_VERSION },
-> 		unmute_speakers[] = { NVEC_OEM0, 0x10, 0x59, 0x95 },
-> @@ -790,8 +789,7 @@ static int tegra_nvec_probe(struct platform_device *pdev)
-> 		return -ENODEV;
-> 	}
->
-> -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -	base = devm_ioremap_resource(dev, res);
-> +	base = devm_platform_ioremap_resource(pdev, 0);
-> 	if (IS_ERR(base))
-> 		return PTR_ERR(base);
->
-> -- 
-> 2.7.4
->
->
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
