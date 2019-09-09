@@ -1,80 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 451C0AD164
-	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Sep 2019 02:28:26 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 86FF1AD189
+	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Sep 2019 03:26:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 8FBC920517;
-	Mon,  9 Sep 2019 00:28:24 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A465084EB0;
+	Mon,  9 Sep 2019 01:26:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Hot-+Xu9+BA4; Mon,  9 Sep 2019 00:28:23 +0000 (UTC)
+	with ESMTP id 9d4600Imj5zT; Mon,  9 Sep 2019 01:26:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 54CB0204D1;
-	Mon,  9 Sep 2019 00:28:22 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4AFC184B36;
+	Mon,  9 Sep 2019 01:26:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C1C3A1BF3CB
- for <devel@linuxdriverproject.org>; Mon,  9 Sep 2019 00:28:19 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1E9D91BF2B0
+ for <devel@linuxdriverproject.org>; Mon,  9 Sep 2019 01:26:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id BE677204A3
- for <devel@linuxdriverproject.org>; Mon,  9 Sep 2019 00:28:19 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1B29986C7A
+ for <devel@linuxdriverproject.org>; Mon,  9 Sep 2019 01:26:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 09dDftfK8bZE for <devel@linuxdriverproject.org>;
- Mon,  9 Sep 2019 00:28:19 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from omr1.cc.vt.edu (outbound.smtp.vt.edu [198.82.183.121])
- by silver.osuosl.org (Postfix) with ESMTPS id DBD2820478
- for <devel@driverdev.osuosl.org>; Mon,  9 Sep 2019 00:28:18 +0000 (UTC)
-Received: from mr4.cc.vt.edu (inbound.smtp.ipv6.vt.edu
- [IPv6:2607:b400:92:9:0:9d:8fcb:4116])
- by omr1.cc.vt.edu (8.14.4/8.14.4) with ESMTP id x890SIuY028326
- for <devel@driverdev.osuosl.org>; Sun, 8 Sep 2019 20:28:18 -0400
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198])
- by mr4.cc.vt.edu (8.14.7/8.14.7) with ESMTP id x890SC1K011279
- for <devel@driverdev.osuosl.org>; Sun, 8 Sep 2019 20:28:18 -0400
-Received: by mail-qk1-f198.google.com with SMTP id o133so14369561qke.4
- for <devel@driverdev.osuosl.org>; Sun, 08 Sep 2019 17:28:18 -0700 (PDT)
+ with ESMTP id TlRXlVLV4Swy for <devel@linuxdriverproject.org>;
+ Mon,  9 Sep 2019 01:26:17 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ot1-f65.google.com (mail-ot1-f65.google.com
+ [209.85.210.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9002F864E9
+ for <devel@driverdev.osuosl.org>; Mon,  9 Sep 2019 01:26:17 +0000 (UTC)
+Received: by mail-ot1-f65.google.com with SMTP id b2so10892633otq.10
+ for <devel@driverdev.osuosl.org>; Sun, 08 Sep 2019 18:26:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=5Ov2d6Pnm9u+Qu6MuAf8jhV3xMMR4SjQUGOpB2HvBj0=;
+ b=jeBGCxRNn+pUIGhwRwVpQqdTM/IILqqr3/4As4imoqUasPXfypeW3HUH1otXbg9JYv
+ 52fimVWUxuIKNuYMya5fLjh0r0X0AJ5nPFSRsCiM3UYxsE8f3xv+iyJ0zhdvrxBjYSNW
+ iQzYT1+lVrbyzlaWpWOwWET0fSPBpZ3ic4F9V+KlNoXmwKA94nVgdj0je7ZZiaPQ6KuQ
+ WucSJpugiVN84M01w7/gTq4VyAt6SbNlFkfy3xPRGy4bRp4BPP3xRDY3V2ddEYknnngU
+ HXbuBusFEpN6kMfHXwJbobmpEAAkQd4vKgZ5h2kurvofmG/jlM3dIH+mu5rlItBQtWQU
+ kVMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:in-reply-to:references
- :mime-version:content-transfer-encoding:date:message-id;
- bh=2qj3aNALrf/f9RF7uRhfWtV/evjrLhtA15jCcsHYHxU=;
- b=OEt+2fWR3eNcwMq4y36l1HAjZsGQb3LFGsRKtPaQU6BB/+Un4FV253PIndqNdF3GpR
- X2qXPHWeSLSZ4D29azWREgiaL2zlxC9lIqnFfy97uxa+SoSJFp8KNZXrbEV7KofuvqBO
- qx/MDvGwUKFI1ldVPQDL6ElXpW+ywxovqfyyRFdCY8Y4NT7igyVSOrU9IvumcRrzH1N3
- Iu3ydhYCvg+WtziU9cwOugavXWG9eSeTx0OG7F4zZCUnT4UzMTxPt5Wua+ZWMvzzQBlq
- Ko1UxYl5a1aLmViPztL5Dofgou1Wri532GbkeiDmVXg5qooBN7OSgTx9vCwJ39jzuztF
- L/bA==
-X-Gm-Message-State: APjAAAVkOP/DMfBrdaicobCD2gVFDz0YEx+oySQkZIplfLwtHeqDOGi7
- KNe1m42UEzG/OW4I/U8TAoRW/HWiReE/a2jhqhoOcq3cdO4U8XrFMSUmZQZpAIWku3/xOOWPTTI
- /M/8nvlpm98g98KoDdixbdAAlEdrkYpin
-X-Received: by 2002:a37:a8b:: with SMTP id 133mr19973969qkk.365.1567988892836; 
- Sun, 08 Sep 2019 17:28:12 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzIPph+Hs7rM0sGOPlTKO9sE3dnlz13RZ/elpHjIRjiMU3X9F2wd1DsQawuYESSYZVup/Me/w==
-X-Received: by 2002:a37:a8b:: with SMTP id 133mr19973956qkk.365.1567988892613; 
- Sun, 08 Sep 2019 17:28:12 -0700 (PDT)
-Received: from turing-police ([2601:5c0:c001:4341::359])
- by smtp.gmail.com with ESMTPSA id f2sm5566650qkj.58.2019.09.08.17.28.10
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=5Ov2d6Pnm9u+Qu6MuAf8jhV3xMMR4SjQUGOpB2HvBj0=;
+ b=Zhz9C05UobjajFpk2KY08oLJd3ah/6nl2EfIWkla456bmwzB5VcDY0G3DiX53EXVGY
+ y4aIilT22igbpLXcQKNfWQm9bfbKlFzgpFi52EEBbFs/F1FvB2pePGDH/d00pLhfsRE+
+ TFwzfnoHFZy9RpohjMfL9pG3igXXWU1dI8XE6IkxEwD4neaLvN2gKOutWdVaWwyiIbq2
+ CZ1mIAkMiFdgVJjXuajmb1Pf5hoDCu94KCrfI+P1sviQcAqYWJbyVvR9q0/us+o7XHE6
+ hIQ2fmWED5XiGs0cVqGNGJoxMqV/LZG01OxBGXGuEDuQuJEL0ehrMS54fazjfZ+VHQmD
+ TO9Q==
+X-Gm-Message-State: APjAAAUP5ONtieaGvXwkAb+acvjEg4HNUCJDtOV5cU+fh+chKHOz+YpQ
+ XTk0wcPwMNOkgD5hVf3BvWs=
+X-Google-Smtp-Source: APXvYqxREF5U+6iLM0y+RqBU1gb9iyKo78SFJJdiLHDsba6Zy60Pv8GzxsKEmTWJ0FnmUHdON9IdBA==
+X-Received: by 2002:a9d:7ac8:: with SMTP id m8mr13140172otn.172.1567992376680; 
+ Sun, 08 Sep 2019 18:26:16 -0700 (PDT)
+Received: from sreeram-MS-7B98 (cpe-173-174-83-82.austin.res.rr.com.
+ [173.174.83.82])
+ by smtp.gmail.com with ESMTPSA id d24sm4898419otf.78.2019.09.08.18.26.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 08 Sep 2019 17:28:11 -0700 (PDT)
-From: "Valdis Kl=?utf-8?Q?=c4=93?=tnieks" <valdis.kletnieks@vt.edu>
-X-Google-Original-From: "Valdis Kl=?utf-8?Q?=c4=93?=tnieks"
- <Valdis.Kletnieks@vt.edu>
-X-Mailer: exmh version 2.9.0 11/07/2018 with nmh-1.7+dev
-To: Valentin Vidic <vvidic@valentin-vidic.from.hr>
-Subject: Re: [PATCH v3 1/4] staging: exfat: drop unused function parameter
-In-Reply-To: <20190908173539.26963-1-vvidic@valentin-vidic.from.hr>
-References: <20190908173539.26963-1-vvidic@valentin-vidic.from.hr>
-Mime-Version: 1.0
-Date: Sun, 08 Sep 2019 20:28:10 -0400
-Message-ID: <1050051.1567988890@turing-police>
+ Sun, 08 Sep 2019 18:26:16 -0700 (PDT)
+From: Sreeram Veluthakkal <srrmvlt@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] FBTFT: fb_agm1264k: usleep_range is preferred over udelay
+Date: Sun,  8 Sep 2019 20:26:05 -0500
+Message-Id: <20190909012605.15051-1-srrmvlt@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,65 +81,43 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============0041898663477616697=="
+Cc: devel@driverdev.osuosl.org, linux-fbdev@vger.kernel.org,
+ nishadkamdar@gmail.com, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, payal.s.kshirsagar.98@gmail.com,
+ Sreeram Veluthakkal <srrmvlt@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
---===============0041898663477616697==
-Content-Type: multipart/signed; boundary="==_Exmh_1567988890_4251P";
-	 micalg=pgp-sha1; protocol="application/pgp-signature"
-Content-Transfer-Encoding: 7bit
+This patch fixes the issue:
+FILE: drivers/staging/fbtft/fb_agm1264k-fl.c:88:
+CHECK: usleep_range is preferred over udelay; see Documentation/timers/timers-howto.rst
++       udelay(20);
 
---==_Exmh_1567988890_4251P
-Content-Type: text/plain; charset=us-ascii
+Signed-off-by: Sreeram Veluthakkal <srrmvlt@gmail.com>
+---
+ drivers/staging/fbtft/fb_agm1264k-fl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On Sun, 08 Sep 2019 17:35:36 -0000, Valentin Vidic said:
-> sbi parameter not used inside the function so remove it.
-> Also cleanup unused variables generated by this change.
-
-Tread carefully with this sort of patch - there's still a lot of places in the code
-where we have matching pairs of exfat_foo() and fat_foo() functions which need
-to have the same signatures because they're called through a function pointer.
-
-This particular one looks OK, but there's other functions that come in pairs that
-you need to watch out for...
-
-
-
---==_Exmh_1567988890_4251P
-Content-Type: application/pgp-signature
-
------BEGIN PGP SIGNATURE-----
-Comment: Exmh version 2.9.0 11/07/2018
-
-iQIVAwUBXXWcmQdmEQWDXROgAQJCng/8CeSZINMSRLpC4Gdwu5ZZVwb78Vt8Filw
-yK514YilCPGy4/6BcfJasIL9fXy1slV70sB0M5cup5pfExfkx5fAUConuZjvZNMt
-Nr3BPLvXONO/F4Ke+tipEchub130gzxZ47ztkk8/JsFB5dymzyV2Kx/i8h5LVWLA
-m+VnIgrs8ZTeYdci+a5HtWNUDnz+G0wjki6GHNFCyKhWFxaC7FvTiFRM0gPZB3g+
-MSafpcGC7Mg7UTA23nj8tYZf1goWtpCLiXYN71dUy21vyRQToISnyKffuL+zGS/m
-fp1cl5/5xQPMF5wrzhYdkVFQJP4CUutP5EGoELzfX9DTgQNbs0S12NXa861+ispM
-Woebtr6xNQk5nZdU/Zm+GlCUJWRu+uiFTTUWQyfSZ/UPton0zixOPX6IIADCfK6a
-+SBcP4Upp/Eks2Wzgr+SsRodxxv9NDWWCU8R9ApDHtvqi4eCLX4KWyG/6QXbPTFB
-Z7kr9J3LRr8vvSK6cO0DW1tfvE9Y3PbsGpl8d9mphGMxHlV3nWr58FxOWga9J1wm
-1+4qiXny97+QEJwy9oVtw7fRLhzILAlU57v7I2rzcAacZ006q9Xz5V8MO/rHZBKF
-rctgjt5bXZHRnW0qeKMf/N0sw+0YB1j5s0/zJWbk29fBAFQo3zvnX1CZ0jx7SdT+
-zQGWFyRUVzU=
-=mv4+
------END PGP SIGNATURE-----
-
---==_Exmh_1567988890_4251P--
-
---===============0041898663477616697==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+diff --git a/drivers/staging/fbtft/fb_agm1264k-fl.c b/drivers/staging/fbtft/fb_agm1264k-fl.c
+index eeeeec97ad27..2dece71fd3b5 100644
+--- a/drivers/staging/fbtft/fb_agm1264k-fl.c
++++ b/drivers/staging/fbtft/fb_agm1264k-fl.c
+@@ -85,7 +85,7 @@ static void reset(struct fbtft_par *par)
+ 	dev_dbg(par->info->device, "%s()\n", __func__);
+ 
+ 	gpiod_set_value(par->gpio.reset, 0);
+-	udelay(20);
++	usleep_range(20, 40);
+ 	gpiod_set_value(par->gpio.reset, 1);
+ 	mdelay(120);
+ }
+-- 
+2.17.1
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============0041898663477616697==--
