@@ -1,81 +1,149 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 935CEAD843
-	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Sep 2019 13:50:13 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8262AADAE1
+	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Sep 2019 16:12:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 74701875D8;
-	Mon,  9 Sep 2019 11:50:11 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 48267204C5;
+	Mon,  9 Sep 2019 14:12:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SVXNMqF4nrh3; Mon,  9 Sep 2019 11:50:11 +0000 (UTC)
+	with ESMTP id VHc9aTy7ux19; Mon,  9 Sep 2019 14:12:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D655285C12;
-	Mon,  9 Sep 2019 11:50:10 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B5EB320460;
+	Mon,  9 Sep 2019 14:12:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0BE271BF398
- for <devel@linuxdriverproject.org>; Mon,  9 Sep 2019 11:50:09 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 37BE01BF3AD
+ for <devel@linuxdriverproject.org>; Mon,  9 Sep 2019 14:12:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 083FB846F4
- for <devel@linuxdriverproject.org>; Mon,  9 Sep 2019 11:50:09 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 31D9384E38
+ for <devel@linuxdriverproject.org>; Mon,  9 Sep 2019 14:12:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yIniIgXs_31c for <devel@linuxdriverproject.org>;
- Mon,  9 Sep 2019 11:50:08 +0000 (UTC)
+ with ESMTP id f9Q+M1-XZCN0 for <devel@linuxdriverproject.org>;
+ Mon,  9 Sep 2019 14:12:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f65.google.com (mail-ot1-f65.google.com
- [209.85.210.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7783784691
- for <devel@driverdev.osuosl.org>; Mon,  9 Sep 2019 11:50:08 +0000 (UTC)
-Received: by mail-ot1-f65.google.com with SMTP id s28so12114222otd.4
- for <devel@driverdev.osuosl.org>; Mon, 09 Sep 2019 04:50:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=tYnsX9gd/pntTIlgQ4B4VyJYL3dGeU36BYiNg93weko=;
- b=Lf7NSQawSCbhe/k3IJI1TCfhjpU0Y50olZ8SjBlQ9hCwUy6fpOWWBbCPNR+hH4nrVz
- Hwxk/Tj2RIJhqJgPHUYalGiHKyto6UmbF7nSjZhaSuTalrDaESOrIi4flyE7pjp00Zmo
- NxUnJaORjgsp6P6ixx7vEhCmzYyCXctFDkPqWKKK1hKrvq6fU4W/vAJqYnXiiucZV4JL
- 68bLHtzxBU1oEEaIt+GfrSrh4hsKV4uvo6OUrzebd/+9wWDCOi3nes1rCtyfokF0TQRJ
- vYJdeTYOggNaey5ZVKYmMslDrVxRrzbfGO2rCm2tENMJZik9pQbW5QGQlrJmO+ZAMVvM
- NcPA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=tYnsX9gd/pntTIlgQ4B4VyJYL3dGeU36BYiNg93weko=;
- b=fGRkMfSr2mam97oTq70caQXEFNuiwKEg23vwQ8VErmOON+yJJJM/muTHSY78FJvK+i
- FUmfeRaJxKCjIlnBfxVBE6oYjvBHfX/2iaZMjdHyiaiAn3tCcpu6vfHFq5jVNwIjiKDi
- jBUfvvuT5Z/X/IphpFBp9zw1r7cfonyuRJZcqDTIOWa1baqbLOFxExIqo+pSFiuqQcPH
- lBOHcKGX5a3zJPQlrhaXh+Wbj+ET3GD+Co8p8uhrbmJfCBqqVmHQBJVZGO/qRZyVzw9Z
- wHVn+08Nuxm/jFR5ZLkMhLZobrqZunzsECpLR1M7hu9eLN4A579uQ13vv/F2bZMwWl4Q
- DP2g==
-X-Gm-Message-State: APjAAAWNaW+MuC5WOTgEW7t9o6P1rMipr4TdH77j8svgEiK+B25WO2Dh
- ton8qCxxw5N3QfDj9XqeLyw=
-X-Google-Smtp-Source: APXvYqz81/sZ3Pkc0lWDmNidgRCXz5Zv7nL6cj+W80+6srRNn+yisnyhjFJfvIBGQa2+i/z6zOhiWw==
-X-Received: by 2002:a9d:3f4b:: with SMTP id m69mr19038806otc.301.1568029807760; 
- Mon, 09 Sep 2019 04:50:07 -0700 (PDT)
-Received: from sreeram-MS-7B98 (cpe-173-174-83-82.austin.res.rr.com.
- [173.174.83.82])
- by smtp.gmail.com with ESMTPSA id o4sm5379170otp.43.2019.09.09.04.50.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Sep 2019 04:50:07 -0700 (PDT)
-Date: Mon, 9 Sep 2019 06:50:06 -0500
-From: Sreeram Veluthakkal <srrmvlt@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH] FBTFT: fb_agm1264k: usleep_range is preferred over udelay
-Message-ID: <20190909115006.GB3437@sreeram-MS-7B98>
-References: <20190909012605.15051-1-srrmvlt@gmail.com>
- <20190909095625.GB17624@kroah.com>
+Received: from esa5.microchip.iphmx.com (esa5.microchip.iphmx.com
+ [216.71.150.166])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7AEAE833C6
+ for <devel@driverdev.osuosl.org>; Mon,  9 Sep 2019 14:12:29 +0000 (UTC)
+Received-SPF: Pass (esa5.microchip.iphmx.com: domain of
+ Eugen.Hristev@microchip.com designates 198.175.253.82 as
+ permitted sender) identity=mailfrom;
+ client-ip=198.175.253.82; receiver=esa5.microchip.iphmx.com;
+ envelope-from="Eugen.Hristev@microchip.com";
+ x-sender="Eugen.Hristev@microchip.com";
+ x-conformance=spf_only; x-record-type="v=spf1";
+ x-record-text="v=spf1 mx a:ushub1.microchip.com
+ a:smtpout.microchip.com a:mx1.microchip.iphmx.com
+ a:mx2.microchip.iphmx.com include:servers.mcsv.net
+ include:mktomail.com include:spf.protection.outlook.com ~all"
+Received-SPF: None (esa5.microchip.iphmx.com: no sender
+ authenticity information available from domain of
+ postmaster@email.microchip.com) identity=helo;
+ client-ip=198.175.253.82; receiver=esa5.microchip.iphmx.com;
+ envelope-from="Eugen.Hristev@microchip.com";
+ x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
+Authentication-Results: esa5.microchip.iphmx.com;
+ spf=Pass smtp.mailfrom=Eugen.Hristev@microchip.com;
+ spf=None smtp.helo=postmaster@email.microchip.com;
+ dkim=pass (signature verified) header.i=@microchiptechnology.onmicrosoft.com;
+ dmarc=pass (p=none dis=none) d=microchip.com
+IronPort-SDR: 5kiwmUK8Ewd45hWfyo2pA6INogFRY+uVi7RbOvNKZVk4p4jLRiy2jqm/QF1lrAgZz7TtUlrzlA
+ D6EPnt3NLsBiVVRR8yfS2vEbeq6qnlnnnVO2p0p5DDR9YqEsTOy3oNDl4SxV5sDOkcYp2GGWP3
+ mQHRJLEnksJADVcGxHgs0iIjzco2iXvHb3Vw7g6ytfS11SE5sKId2pMKkfmJYE5lBbNfLIOhoy
+ Wg8mz0Pq/yUuYLjmx6Svlt47xIB9WG3YCcNs2pquI9H5iCKmnAiEcqCAaHQOBxQCUjBmfGWfEc
+ C7g=
+X-IronPort-AV: E=Sophos;i="5.64,484,1559545200"; d="scan'208";a="46739463"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa5.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 09 Sep 2019 07:12:28 -0700
+Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
+ chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Mon, 9 Sep 2019 07:12:27 -0700
+Received: from NAM01-SN1-obe.outbound.protection.outlook.com (10.10.215.89) by
+ email.microchip.com (10.10.87.152) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
+ via Frontend Transport; Mon, 9 Sep 2019 07:12:26 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=STxf0lcmzjrOspVCVvB7hZV4M+/zklmPJnR0Twc39ef3bQR/fMc0MO7kIIxnw80JGviemgj8PSuIDQBwLV6w+aZuZHiPacgsAW+savfWNivNWmrNCQoQAkru+UFrqCNhMmgFoA8tXPqSrsXps+duj3ewCevCmnTgs+1MQXZYU4knl+kT+j8+TCah4iYdQunC1eyBFNiRri4NOp/WVpI6NvXGp0NTtEjzCFx+2Uy4a6BGt7QGHlfKwAdignTeF2Z4iaPVS22pZLg0YDFttiknGhsUTKR2KmNLemO4v2lLg5vK+Vkwew4wjRPyp2nqd80RJVNywyKv8eM5hXf7kiuAhA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=+6Lh24QEQmaHqB01e3FpfPH0zlF9cF7bsFyhwHxyBUY=;
+ b=R2HNqoCpuOxcRZRmvYKAYNFTL3ns57TZvK04kf6Kopv0C9u5mU9mktUENf0wbEZOKbmS1odzwpwqBE8LC/qHNp/D2O94b87kMG6sqrG6XDZf/T8ARFPUFvEMmWUv4uSB9p/nhf/rf9F/tTRZcIryzxiIfh4zaH+VyMl/Nun3EVjwb93DVB/ZSokqqAXjjitUbuUao2R5Z5dj3meFMusFuZOT9Ln0POnXC9JveSUA9v/6j/6FdUE4eHVERucK87+gLy51ezn4jfp9M1ugmT9zp+5FadUKZxAiTzxsleeEo+fNQMwJqNG1rcrSVg0HEkXRoYfYBW2CowYQunwNluMc9A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=microchip.com; dmarc=pass action=none
+ header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=microchiptechnology.onmicrosoft.com;
+ s=selector2-microchiptechnology-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=+6Lh24QEQmaHqB01e3FpfPH0zlF9cF7bsFyhwHxyBUY=;
+ b=lOHNYexDFczOxmLoBPHYDyV7VFe0nhv0HBX8yhhLmnyIVafsizjfDE+5ntyIEtCNBDhRmORkXJsT8HV+k6pEJ+vefj3FZDjWBHjcsvjtOpvh0sq3ezgpN2Nx9oK1Q2X8hBv0m7axFP5/FlWeyNiWSgl4KvfQqzWTmO0JRNHQpeo=
+Received: from DM5PR11MB1242.namprd11.prod.outlook.com (10.168.108.8) by
+ DM5PR11MB1596.namprd11.prod.outlook.com (10.172.37.145) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2241.18; Mon, 9 Sep 2019 14:12:25 +0000
+Received: from DM5PR11MB1242.namprd11.prod.outlook.com
+ ([fe80::a141:1974:9668:fbe2]) by DM5PR11MB1242.namprd11.prod.outlook.com
+ ([fe80::a141:1974:9668:fbe2%12]) with mapi id 15.20.2241.018; Mon, 9 Sep 2019
+ 14:12:25 +0000
+From: <Eugen.Hristev@microchip.com>
+To: <Adham.Abozaeid@microchip.com>, <Ajay.Kathat@microchip.com>,
+ <gregkh@linuxfoundation.org>, <linux-wireless@vger.kernel.org>,
+ <devel@driverdev.osuosl.org>, <linux-kernel@vger.kernel.org>
+Subject: [PATCH v2 1/2] staging: dt-bindings: wilc1000: add optional rtc_clk
+ property
+Thread-Topic: [PATCH v2 1/2] staging: dt-bindings: wilc1000: add optional
+ rtc_clk property
+Thread-Index: AQHVZxiavmpLh0KgOECjW3gs9jSV7g==
+Date: Mon, 9 Sep 2019 14:12:25 +0000
+Message-ID: <1568037993-4646-1-git-send-email-eugen.hristev@microchip.com>
+Accept-Language: en-US, ro-RO
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-clientproxiedby: VI1PR09CA0080.eurprd09.prod.outlook.com
+ (2603:10a6:802:29::24) To DM5PR11MB1242.namprd11.prod.outlook.com
+ (2603:10b6:3:14::8)
+x-mailer: git-send-email 2.7.4
+x-ms-exchange-messagesentrepresentingtype: 1
+x-originating-ip: [94.177.32.156]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 57d44e7b-29ce-4306-c272-08d7352fbd0d
+x-microsoft-antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600166)(711020)(4605104)(1401327)(2017052603328)(7193020);
+ SRVR:DM5PR11MB1596; 
+x-ms-traffictypediagnostic: DM5PR11MB1596:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <DM5PR11MB159670C85EE8D5B5C9E00D27E8B70@DM5PR11MB1596.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:5797;
+x-forefront-prvs: 01559F388D
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(396003)(366004)(136003)(346002)(376002)(39860400002)(199004)(189003)(2501003)(3846002)(6116002)(4326008)(81166006)(50226002)(186003)(26005)(8936002)(2616005)(476003)(486006)(71200400001)(71190400001)(81156014)(8676002)(66476007)(66556008)(64756008)(66446008)(25786009)(7736002)(66066001)(66946007)(305945005)(102836004)(6506007)(386003)(5660300002)(316002)(99286004)(54906003)(110136005)(14454004)(256004)(14444005)(36756003)(2906002)(6436002)(107886003)(2201001)(53936002)(86362001)(6512007)(52116002)(478600001)(6486002);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:DM5PR11MB1596;
+ H:DM5PR11MB1242.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+received-spf: None (protection.outlook.com: microchip.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam-message-info: 8OG3VdMYesZikVrNSRD/62AefmtM8ExVlQwAqrcQn++Zm4lOWGx6wJJroWRQ/lJu0N46q4J1ACj1D235w4EYhyG3mvgppzIR1+uRjAWyI2If+ZZMJPhxamsywkj8HZCzCWgI7rmptAHilRSeg7xFNTGR/33EAAMObxbjfRkV4O3F4ZhUHjJ5ijzNi7mBYzZqD3n4n+zOydR2QC5n6aXijZ4M2VUmhj9U2hgQIPVsKH001jERSoqUCXag07W7/FGlEK/sprMclkFkAKStq8iyI9cKkW+Bzf9bcEtVjaClMEdB2nTkCtSOk9Akwm90HtRuM9qYw8Iq21qurqLq/o509ZlKtJFtrWUZ4luYF4TCX/hYzwnEcaUZkT0DTQ7K6cG5L0AfX/5aC6XgPhM+p32XIXwRUlRUY+3mGeZKl5M6PuA=
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190909095625.GB17624@kroah.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 57d44e7b-29ce-4306-c272-08d7352fbd0d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Sep 2019 14:12:25.1363 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: kXczfmnkTgxMbvnIXpyhbXM5MutSu3nYYLOyH0s+bv3qItZ51ponnEbedDelNxi9JwCIyaE6/K+eBImVaJwfqdXTAYWZTtK9T63NWPNBI/0=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR11MB1596
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,60 +156,82 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-fbdev@vger.kernel.org,
- nishadkamdar@gmail.com, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, payal.s.kshirsagar.98@gmail.com
+Cc: Eugen.Hristev@microchip.com, Nicolas.Ferre@microchip.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Sep 09, 2019 at 10:56:25AM +0100, Greg KH wrote:
-> On Sun, Sep 08, 2019 at 08:26:05PM -0500, Sreeram Veluthakkal wrote:
-> > This patch fixes the issue:
-> > FILE: drivers/staging/fbtft/fb_agm1264k-fl.c:88:
-> > CHECK: usleep_range is preferred over udelay; see Documentation/timers/timers-howto.rst
-> > +       udelay(20);
-> > 
-> > Signed-off-by: Sreeram Veluthakkal <srrmvlt@gmail.com>
-> > ---
-> >  drivers/staging/fbtft/fb_agm1264k-fl.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/staging/fbtft/fb_agm1264k-fl.c b/drivers/staging/fbtft/fb_agm1264k-fl.c
-> > index eeeeec97ad27..2dece71fd3b5 100644
-> > --- a/drivers/staging/fbtft/fb_agm1264k-fl.c
-> > +++ b/drivers/staging/fbtft/fb_agm1264k-fl.c
-> > @@ -85,7 +85,7 @@ static void reset(struct fbtft_par *par)
-> >  	dev_dbg(par->info->device, "%s()\n", __func__);
-> >  
-> >  	gpiod_set_value(par->gpio.reset, 0);
-> > -	udelay(20);
-> > +	usleep_range(20, 40);
-> 
-> Is it "safe" to wait 40?  This kind of change you can only do if you
-> know this is correct.  Have you tested this with hardware?
-> 
-> thanks,
-> 
-> greg k-h
+From: Eugen Hristev <eugen.hristev@microchip.com>
 
-Hi Greg, No I haven't tested it, I don't have the hw. I dug depeer in to the usleep_range
+Add bindings for optional rtc clock pin.
 
-https://github.com/torvalds/linux/blob/master/kernel/time/timer.c#L1993
-	u64 delta = (u64)(max - min) * NSEC_PER_USEC;
+Signed-off-by: Eugen Hristev <eugen.hristev@microchip.com>
+Acked-by: Ajay Singh <ajay.kathat@microchip.com>
+---
 
- * The @delta argument gives the kernel the freedom to schedule the
- * actual wakeup to a time that is both power and performance friendly.
- * The kernel give the normal best effort behavior for "@expires+@delta",
- * but may decide to fire the timer earlier, but no earlier than @expires.
+Changes in v2:
+- none
 
-My understanding is that keeping delta 0 (min=max=20) would be equivalent. 
-I can revise the patch to usleep_range(20, 20) or usleep_range(20, 21) for a 1 usec delta.
-What do you suggest?
+ drivers/staging/wilc1000/microchip,wilc1000,sdio.txt | 8 +++++++-
+ drivers/staging/wilc1000/microchip,wilc1000,spi.txt  | 8 ++++++++
+ 2 files changed, 15 insertions(+), 1 deletion(-)
 
-thanks,
-Sreeram
+diff --git a/drivers/staging/wilc1000/microchip,wilc1000,sdio.txt b/drivers/staging/wilc1000/microchip,wilc1000,sdio.txt
+index 4f7d1c2..da52359 100644
+--- a/drivers/staging/wilc1000/microchip,wilc1000,sdio.txt
++++ b/drivers/staging/wilc1000/microchip,wilc1000,sdio.txt
+@@ -10,7 +10,9 @@ Required properties:
+ 
+ Optional:
+ - bus-width	:	Number of data lines wired up the slot. Default 1 bit.
+-
++- rtc_clk	:	Clock connected on the rtc clock line. Must be assigned
++			a frequency with assigned-clocks property, and must be
++			connected to a clock provider.
+ 
+ Examples:
+ mmc1: mmc@fc000000 {
+@@ -24,6 +26,10 @@ mmc1: mmc@fc000000 {
+ 		wilc_sdio@0 {
+ 			compatible = "microchip,wilc1000-sdio";
+ 			irq-gpios = <&pioC 27 0>;
++			clocks = <&pck1>;
++			clock-names = "rtc_clk";
++			assigned-clocks = <&pck1>;
++			assigned-clock-rates = <32768>;
+ 			status = "okay";
+ 			reg = <0>;
+ 			bus-width = <4>;
+diff --git a/drivers/staging/wilc1000/microchip,wilc1000,spi.txt b/drivers/staging/wilc1000/microchip,wilc1000,spi.txt
+index 87db87b..3423693 100644
+--- a/drivers/staging/wilc1000/microchip,wilc1000,spi.txt
++++ b/drivers/staging/wilc1000/microchip,wilc1000,spi.txt
+@@ -9,6 +9,10 @@ Required properties:
+ - reg			: Chip select address of device
+ - irq-gpios		: Connect to a host IRQ
+ 
++Optional:
++- rtc_clk	:	Clock connected on the rtc clock line. Must be assigned
++			a frequency with assigned-clocks property, and must be
++			connected to a clock provider.
+ 
+ Examples:
+ 
+@@ -21,6 +25,10 @@ spi1: spi@fc018000 {
+ 			spi-max-frequency = <48000000>;
+ 			reg = <0>;
+ 			irq-gpios = <&pioC 27 0>;
++			clocks = <&pck1>;
++			clock-names = "rtc_clk";
++			assigned-clocks = <&pck1>;
++			assigned-clock-rates = <32768>;
+ 			status = "okay";
+ 		};
+ };
+-- 
+2.7.4
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
