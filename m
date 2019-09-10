@@ -1,151 +1,65 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2C522AE4D9
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Sep 2019 09:46:19 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5BF2BAE502
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Sep 2019 10:00:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id ABF182151E;
-	Tue, 10 Sep 2019 07:46:16 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3958385D3F;
+	Tue, 10 Sep 2019 08:00:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QmOy03no3oed; Tue, 10 Sep 2019 07:46:15 +0000 (UTC)
+	with ESMTP id IAHKClf2-aVH; Tue, 10 Sep 2019 08:00:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 9BE3C204A6;
-	Tue, 10 Sep 2019 07:46:13 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BE69085C4F;
+	Tue, 10 Sep 2019 08:00:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0A0A31BF309
- for <devel@linuxdriverproject.org>; Tue, 10 Sep 2019 07:46:12 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id F220A1BF309
+ for <devel@linuxdriverproject.org>; Tue, 10 Sep 2019 08:00:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 0425D85C10
- for <devel@linuxdriverproject.org>; Tue, 10 Sep 2019 07:46:12 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E57BA204A0
+ for <devel@linuxdriverproject.org>; Tue, 10 Sep 2019 08:00:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KLIQ8Ff2xnOc for <devel@linuxdriverproject.org>;
- Tue, 10 Sep 2019 07:46:11 +0000 (UTC)
+ with ESMTP id dMDiGRO3MhMO for <devel@linuxdriverproject.org>;
+ Tue, 10 Sep 2019 08:00:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa1.microchip.iphmx.com (esa1.microchip.iphmx.com
- [68.232.147.91])
- by whitealder.osuosl.org (Postfix) with ESMTPS id F38F084AFB
- for <devel@driverdev.osuosl.org>; Tue, 10 Sep 2019 07:46:10 +0000 (UTC)
-Received-SPF: Pass (esa1.microchip.iphmx.com: domain of
- Ajay.Kathat@microchip.com designates 198.175.253.82 as
- permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa1.microchip.iphmx.com;
- envelope-from="Ajay.Kathat@microchip.com";
- x-sender="Ajay.Kathat@microchip.com"; x-conformance=spf_only;
- x-record-type="v=spf1"; x-record-text="v=spf1 mx
- a:ushub1.microchip.com a:smtpout.microchip.com
- a:mx1.microchip.iphmx.com a:mx2.microchip.iphmx.com
- include:servers.mcsv.net include:mktomail.com
- include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa1.microchip.iphmx.com: no sender
- authenticity information available from domain of
- postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa1.microchip.iphmx.com;
- envelope-from="Ajay.Kathat@microchip.com";
- x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa1.microchip.iphmx.com;
- spf=Pass smtp.mailfrom=Ajay.Kathat@microchip.com;
- spf=None smtp.helo=postmaster@email.microchip.com;
- dkim=pass (signature verified) header.i=@microchiptechnology.onmicrosoft.com;
- dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: EY2HDGgTI7tpHJoJ7NzGC8RMehU2Eu5foxmbkpuJWRJuFrIJnJphhjz3uv0H8zbJUh+sTGTm36
- RQX0a4mDAC++vAAbQuTkzvSQGk1qKhd/BsbS0SiNoNnoHXFGjfsvT8FwO7UeJQHVrmb1B4sxnG
- FHwGBoMRcRp77LJKKKAGbVeLBiAO4VGOcOVa2As7iSvgiOsFx0XfezSoq6bqv+hrNYBKbqyAsz
- yYRzqkW8A9+m3vNTCaJveETNEYCDmcUuGkI4yA900LgWFIFxh9h7vtQuXp8swiiURr0dNFHItq
- S40=
-X-IronPort-AV: E=Sophos;i="5.64,487,1559545200"; d="scan'208";a="49856980"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa1.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 10 Sep 2019 00:46:09 -0700
-Received: from chn-vm-ex02.mchp-main.com (10.10.85.144) by
- chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Tue, 10 Sep 2019 00:46:09 -0700
-Received: from NAM03-DM3-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.72) with Microsoft SMTP Server
- (version=TLS1_2, 
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5 via Frontend
- Transport; Tue, 10 Sep 2019 00:46:09 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=MYPrUMk7Hki4TTVi2SWhvtFWZ3UlelO/p+xO81GAG/r67MCyZ65HxOP1Hrnt5GJA3lDqg6kOxlU02rKYdDPYUxvhlo6S6bkpLO2YRKJquWJdT9q0lWzDzyBPWuo1MzJTVP5fiK75H68jjnf/xkD5KEFNnfXf2u7DiQmT9j0qAIJp7N/DtDf9E9PhwCvdj0RabKmTcZMcXVeOVBF0IDPAWgkULUCf+BLGB4aM0GS8d3ABSObc4JxM63OOB2mYiHoaQuMULQ1cSN0LL4kVmW/ukz7gs6hJuRgxhCaewajZpbZkJ05ND5qDNhlnL4BXQQdoXLOfGW8jz2htuDmG4085Cw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ZitsTgT7/DVZDIBDg0XpL7bClgr9eqjd4AiNqpzHhAY=;
- b=VEHpRGXxmiJVm7L2uuT/zPPEeMy4ymz1qqVUZgbWjHn6NEF8cUCTh3G7gsq/A4Jg836zrm2VcqastqAA+hEI0Q7BWhQNBQystHbYu0hEwixLVwoRxEGDGWqjquZGGX3Ghn1RxDIkyCM2eCLfoGApbsNdgE4ULdIRdTKs3MLbQPX4ljCigMQdxdo8K2SWzSMQvLBzfCFALMRp/YfV9Id11D53efFTMeIzjZEK1LY0lbwAP6eJz/PIeI3s7/MPxFfp6Qrq9qayPO89Isr7YCSgJQXAR9+jqV/u9WUWX57ekb3qySJBlaAQ/mplkWWmUVBJd4kfO9pvZxhjKxvLhkVlGQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microchip.com; dmarc=pass action=none
- header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector2-microchiptechnology-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ZitsTgT7/DVZDIBDg0XpL7bClgr9eqjd4AiNqpzHhAY=;
- b=RmbjdixaEly90GdYL6EQAZIQrIHaEqnCdOoP3fbM/nvS72vlpd01lxCNpf9rTYPE4gpYSKwRTAdTTwptG8VXlN5Aibi8bDzg7s9Qxn7LZkLq3es2muHA3AxsBGBnUKz++HPFpoB124k/iDffSIzpwqCym9FQx8U0cGl60n4PgAI=
-Received: from BN6PR11MB3985.namprd11.prod.outlook.com (10.255.129.78) by
- BN6PR11MB1985.namprd11.prod.outlook.com (10.173.31.22) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2241.15; Tue, 10 Sep 2019 07:46:08 +0000
-Received: from BN6PR11MB3985.namprd11.prod.outlook.com
- ([fe80::5864:dae1:9b7e:ff83]) by BN6PR11MB3985.namprd11.prod.outlook.com
- ([fe80::5864:dae1:9b7e:ff83%4]) with mapi id 15.20.2241.018; Tue, 10 Sep 2019
- 07:46:08 +0000
-From: <Ajay.Kathat@microchip.com>
-To: <linux-wireless@vger.kernel.org>
-Subject: [PATCH 2/2] staging: wilc1000: avoid twice IRQ handler execution for
- each single interrupt
-Thread-Topic: [PATCH 2/2] staging: wilc1000: avoid twice IRQ handler execution
- for each single interrupt
-Thread-Index: AQHVZ6vOQhEXwUqqEECS+kD89ZsUxA==
-Date: Tue, 10 Sep 2019 07:46:07 +0000
-Message-ID: <20190910074514.3073-2-ajay.kathat@microchip.com>
-References: <20190910074514.3073-1-ajay.kathat@microchip.com>
-In-Reply-To: <20190910074514.3073-1-ajay.kathat@microchip.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: MAXPR0101CA0002.INDPRD01.PROD.OUTLOOK.COM
- (2603:1096:a00:c::12) To BN6PR11MB3985.namprd11.prod.outlook.com
- (2603:10b6:405:7b::14)
-x-mailer: git-send-email 2.22.0
-x-ms-exchange-messagesentrepresentingtype: 1
-x-originating-ip: [27.59.41.188]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 610f095f-60f0-4e2a-b0c1-08d735c2f0ba
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600166)(711020)(4605104)(1401327)(2017052603328)(7193020);
- SRVR:BN6PR11MB1985; 
-x-ms-traffictypediagnostic: BN6PR11MB1985:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BN6PR11MB19856332958C336F0371E585E3B60@BN6PR11MB1985.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:5516;
-x-forefront-prvs: 01565FED4C
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(376002)(366004)(396003)(136003)(346002)(39860400002)(189003)(199004)(3846002)(6506007)(11346002)(6486002)(25786009)(476003)(7736002)(1076003)(71190400001)(71200400001)(446003)(6116002)(2501003)(2616005)(305945005)(5660300002)(486006)(52116002)(2351001)(4744005)(2906002)(14454004)(99286004)(26005)(186003)(478600001)(256004)(14444005)(50226002)(102836004)(66946007)(66476007)(66556008)(64756008)(66446008)(5640700003)(6916009)(76176011)(81156014)(81166006)(86362001)(8676002)(8936002)(316002)(36756003)(66066001)(53936002)(107886003)(6436002)(54906003)(4326008)(386003)(6512007);
- DIR:OUT; SFP:1101; SCL:1; SRVR:BN6PR11MB1985;
- H:BN6PR11MB3985.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: microchip.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: jmqg+jN3T4bT5oBkI2iXZ5uAaI86cvyO5JEnasERXxMVsjDoXNUoodjrhxH9y1msLp8AJw9UwfuHchglxxuA1RJkg8guRSFi/Lx4EV4k0mSV0Qvr9smnL4l48GpeucUXfaQvgqR3jfKm+fNV7SJ8yGFVZFR+msi2ugSauipR6mS30PorIT3C4v+Lx4r4xVGqSBQykGBb194HhkH0d938RTVDKxm6DvmFzuW2Tamw0NNmLt07OA8aTo5+3Yu8CL8EX5fyR3ahUg7u5RGax9HJKU9rjUmtb+kTlsfvxHZU1F2XyowXuwaE2DsXR/RhkmwOxrRx1RfUqH6CSh8oYop6U22egaSWElbGWyvo7wAaN8+j7G0aG99cWUZWc9wCj8DFCVG4Qy+jijQOA/880FAO+yD6hgRAayCyIb6/AgQ7lDA=
-Content-ID: <305B38B0D662BF4F97BCD7AE005AB44C@namprd11.prod.outlook.com>
+Received: from mail-ot1-f65.google.com (mail-ot1-f65.google.com
+ [209.85.210.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9BA0020468
+ for <devel@driverdev.osuosl.org>; Tue, 10 Sep 2019 08:00:02 +0000 (UTC)
+Received: by mail-ot1-f65.google.com with SMTP id 67so17060714oto.3
+ for <devel@driverdev.osuosl.org>; Tue, 10 Sep 2019 01:00:02 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=7L737Jm0wUHbnu/Pe3llxROQ1ln1ETh1uPMKDGHXXWU=;
+ b=CEXjeC8FV4Jt2NVCow0T+UIJxCTZQaEiVdNzspOwPl2a8SsjZMWkv/1W4E7C2vU3DG
+ eygx//c5lMjX1SlqGU9OHUhY/YBWHfkzFKdSPDtkSOlkoJrJGB7lPsbkxezlcxiNp9EQ
+ Y8KjLcw1GzzsOBjN4iS76YYK4pizCaMO5BZ/ZKJzK5pk9qSu7sRpk4tA6csfKnKCyd3i
+ P5pf3TobyULr1yTD9+NcuQwa0sN+wytlhRPC0NrpkLxekSVb1kXDGGQYq+lQiCgaH1iQ
+ QOI0wdpPavkwasV/+t/xLDhLHYHJ0R8z0qwKGM09sHUmqMCvSioKMncCtNwZdl1khKFG
+ CQuw==
+X-Gm-Message-State: APjAAAWtN/4ntu6w0lA35StOSPGvLea3Q/T5OCf4E1sl5SV6nWdkyZMq
+ kM0vuWlhkcDlXrjK3cQb23P0EQWGLEgOAja1ghg=
+X-Google-Smtp-Source: APXvYqx+ZYhRUi69F2qvCMAq3GzxxBTk+IErSzk0oKplNMkzm1lwOtKf9GkZhd5n8JtQlhUnVL2qrnsx8/SENkFM0f0=
+X-Received: by 2002:a9d:32a1:: with SMTP id u30mr19940081otb.107.1568102401646; 
+ Tue, 10 Sep 2019 01:00:01 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 610f095f-60f0-4e2a-b0c1-08d735c2f0ba
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Sep 2019 07:46:07.8436 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: e1eLjeja8mgmiy4Gl0eLCzEE8y34jSpH6YDJi/82u0FD4cK4QQOltSj8OnCk3E1bLhBE8pVygPih0sDH6NkoP4xobi3aK2rjSja7PjeYtqY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB1985
+References: <20190909012605.15051-1-srrmvlt@gmail.com>
+ <20190909095625.GB17624@kroah.com>
+ <20190909115006.GB3437@sreeram-MS-7B98>
+In-Reply-To: <20190909115006.GB3437@sreeram-MS-7B98>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Tue, 10 Sep 2019 09:59:50 +0200
+Message-ID: <CAMuHMdXz568p=GFJmz6MfuxDxA_QkLMrGcK2hG3C99ReL1fH5A@mail.gmail.com>
+Subject: Re: [PATCH] FBTFT: fb_agm1264k: usleep_range is preferred over udelay
+To: Sreeram Veluthakkal <srrmvlt@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -158,34 +72,88 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- johannes@sipsolutions.net, Ajay.Kathat@microchip.com,
- Adham.Abozaeid@microchip.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: driverdevel <devel@driverdev.osuosl.org>,
+ Linux Fbdev development list <linux-fbdev@vger.kernel.org>,
+ nishadkamdar@gmail.com, Greg KH <gregkh@linuxfoundation.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ payal.s.kshirsagar.98@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RnJvbTogQWpheSBTaW5naCA8YWpheS5rYXRoYXRAbWljcm9jaGlwLmNvbT4NCg0KVGhlIElSUSBo
-YW5kbGVyKGlzcl9iaF9yb3V0aW5lKCkpIHdhcyBjYWxsZWQgdHdpY2UgZm9yIGVhY2ggaW50ZXJy
-dXB0DQpmcm9tIGZpcm13YXJlLiBUaGUgZGF0YSB3YXMgcmVhZCBjb21wbGV0ZWx5IGR1cmluZyB0
-aGUgZmlyc3QgY2FsbCBhbmQNCnRoZSBzZWNvbmQgY2FsbCB3YXMgZG9pbmcgbm90aGluZy4NCk5v
-dyBjaGFuZ2VkIHRoZSBJUlEgZmxhZyBmcm9tIOKAmGxldmVs4oCZIHRvIOKAmGVkZ2XigJkgdHJp
-Z2dlciBpLmUNCklSUUZfVFJJR0dFUl9MT1cgdG8gSVJRRl9UUklHR0VSX0ZBTExJTkcgdG8gYXZv
-aWQgZXh0cmEgaW50ZXJydXB0DQp0cmlnZ2VyLg0KDQpTaWduZWQtb2ZmLWJ5OiBBamF5IFNpbmdo
-IDxhamF5LmthdGhhdEBtaWNyb2NoaXAuY29tPg0KLS0tDQogZHJpdmVycy9zdGFnaW5nL3dpbGMx
-MDAwL3dpbGNfbmV0ZGV2LmMgfCAyICstDQogMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCsp
-LCAxIGRlbGV0aW9uKC0pDQoNCmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvd2lsYzEwMDAv
-d2lsY19uZXRkZXYuYyBiL2RyaXZlcnMvc3RhZ2luZy93aWxjMTAwMC93aWxjX25ldGRldi5jDQpp
-bmRleCBjZDExYzM1YWRjZmUuLjUwOGFjYjhiYjA4OSAxMDA2NDQNCi0tLSBhL2RyaXZlcnMvc3Rh
-Z2luZy93aWxjMTAwMC93aWxjX25ldGRldi5jDQorKysgYi9kcml2ZXJzL3N0YWdpbmcvd2lsYzEw
-MDAvd2lsY19uZXRkZXYuYw0KQEAgLTYwLDcgKzYwLDcgQEAgc3RhdGljIGludCBpbml0X2lycShz
-dHJ1Y3QgbmV0X2RldmljZSAqZGV2KQ0KIA0KIAlyZXQgPSByZXF1ZXN0X3RocmVhZGVkX2lycSh3
-bC0+ZGV2X2lycV9udW0sIGlzcl91aF9yb3V0aW5lLA0KIAkJCQkgICBpc3JfYmhfcm91dGluZSwN
-Ci0JCQkJICAgSVJRRl9UUklHR0VSX0xPVyB8IElSUUZfT05FU0hPVCwNCisJCQkJICAgSVJRRl9U
-UklHR0VSX0ZBTExJTkcgfCBJUlFGX09ORVNIT1QsDQogCQkJCSAgICJXSUxDX0lSUSIsIGRldik7
-DQogCWlmIChyZXQgPCAwKQ0KIAkJbmV0ZGV2X2VycihkZXYsICJGYWlsZWQgdG8gcmVxdWVzdCBJ
-UlFcbiIpOw0KLS0gDQoyLjIyLjANCg0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVj
-dC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlz
-dGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+Hi Sreeram,
+
+On Tue, Sep 10, 2019 at 2:25 AM Sreeram Veluthakkal <srrmvlt@gmail.com> wrote:
+> On Mon, Sep 09, 2019 at 10:56:25AM +0100, Greg KH wrote:
+> > On Sun, Sep 08, 2019 at 08:26:05PM -0500, Sreeram Veluthakkal wrote:
+> > > This patch fixes the issue:
+> > > FILE: drivers/staging/fbtft/fb_agm1264k-fl.c:88:
+> > > CHECK: usleep_range is preferred over udelay; see Documentation/timers/timers-howto.rst
+> > > +       udelay(20);
+> > >
+> > > Signed-off-by: Sreeram Veluthakkal <srrmvlt@gmail.com>
+
+Thanks for your patch!
+
+> > > --- a/drivers/staging/fbtft/fb_agm1264k-fl.c
+> > > +++ b/drivers/staging/fbtft/fb_agm1264k-fl.c
+> > > @@ -85,7 +85,7 @@ static void reset(struct fbtft_par *par)
+> > >     dev_dbg(par->info->device, "%s()\n", __func__);
+> > >
+> > >     gpiod_set_value(par->gpio.reset, 0);
+> > > -   udelay(20);
+> > > +   usleep_range(20, 40);
+> >
+> > Is it "safe" to wait 40?  This kind of change you can only do if you
+> > know this is correct.  Have you tested this with hardware?
+> >
+> > thanks,
+> >
+> > greg k-h
+>
+> Hi Greg, No I haven't tested it, I don't have the hw. I dug depeer in to the usleep_range
+>
+> https://github.com/torvalds/linux/blob/master/kernel/time/timer.c#L1993
+>         u64 delta = (u64)(max - min) * NSEC_PER_USEC;
+>
+>  * The @delta argument gives the kernel the freedom to schedule the
+>  * actual wakeup to a time that is both power and performance friendly.
+>  * The kernel give the normal best effort behavior for "@expires+@delta",
+>  * but may decide to fire the timer earlier, but no earlier than @expires.
+>
+> My understanding is that keeping delta 0 (min=max=20) would be equivalent.
+> I can revise the patch to usleep_range(20, 20) or usleep_range(20, 21) for a 1 usec delta.
+> What do you suggest?
+
+Please read the comment above the line you're referring to:
+
+ * In non-atomic context where the exact wakeup time is flexible, use
+ * usleep_range() instead of udelay().  The sleep improves responsiveness
+ * by avoiding the CPU-hogging busy-wait of udelay(), and the range reduces
+ * power usage by allowing hrtimers to take advantage of an already-
+ * scheduled interrupt instead of scheduling a new one just for this sleep.
+
+Is this function always called in non-atomic context?
+If it  may be called in atomic context, replacing the udelay() call by a
+usleep*() call will break the driver.
+
+See also "the first and most important question" in
+Documentation/timers/timers-howto.rst, as referred to by the checkpatch.pl
+message.
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+-- 
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
