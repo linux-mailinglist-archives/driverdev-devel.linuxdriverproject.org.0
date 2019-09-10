@@ -1,74 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E697AAF0FD
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Sep 2019 20:24:31 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AC2A2AF142
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Sep 2019 20:49:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 37C2521563;
-	Tue, 10 Sep 2019 18:24:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C68578636A;
+	Tue, 10 Sep 2019 18:49:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EZS2fn3PTqeZ; Tue, 10 Sep 2019 18:24:28 +0000 (UTC)
+	with ESMTP id wJ1ux4s1snFE; Tue, 10 Sep 2019 18:49:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 10C5D2202C;
-	Tue, 10 Sep 2019 18:24:25 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9E1CD862D2;
+	Tue, 10 Sep 2019 18:49:40 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B1BC81BF294
- for <devel@linuxdriverproject.org>; Tue, 10 Sep 2019 18:24:22 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 136C11BF294
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 10 Sep 2019 18:49:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BBF7E875A7
- for <devel@linuxdriverproject.org>; Tue, 10 Sep 2019 18:24:22 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 10DB98622A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 10 Sep 2019 18:49:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uWy0NtsLDl4G for <devel@linuxdriverproject.org>;
- Tue, 10 Sep 2019 18:24:22 +0000 (UTC)
+ with ESMTP id der-rrgCWnQY
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 10 Sep 2019 18:49:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
- [209.85.215.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 400F186D92
- for <devel@driverdev.osuosl.org>; Tue, 10 Sep 2019 18:24:22 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id u17so10154603pgi.6
- for <devel@driverdev.osuosl.org>; Tue, 10 Sep 2019 11:24:22 -0700 (PDT)
+Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
+ [209.85.214.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 1FA8D86225
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 10 Sep 2019 18:49:37 +0000 (UTC)
+Received: by mail-pl1-f195.google.com with SMTP id x3so8987774plr.12
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 10 Sep 2019 11:49:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=0I346vx91sUiAeUkNi54oztkGxRJ6TRG5+oqyFk02bY=;
- b=Tek+1ZjhvQoukKmunz9oWSi7ehimuA5KNE4USUlNH47zOHVd7hK0lshi8vdBQQkbft
- Y+iykjcmDFByvT0DrQj25tk3pbgmrZ1AcmvSU8+8z2lSWZLPwQWvSuVxWC21ApMyga2A
- yG+q1sDyeQ6DN+YIJUtFgFBoE3iV+h8EvN++Y3O+9vAiayxcmUZwiloMHp0ijIqcaF0r
- Hy1BK9ziX1IvLaq7/XZ5KN9NmyX+QBXkuIlC665PpUyuLLdIVS8LHHvCVe9DEuNUxJtE
- UuW59djanWpWgRWGAdhnyGGGyTKYYvRDzhuPP6gynSHQZGjd208Vs/hTeflWpKMNYWt/
- nv8g==
+ :user-agent; bh=RX5bDF6yS4bhQJzlmBGEdlT2LaTp8OsRgQ45nIqHhvo=;
+ b=l4uNnxOaD3tfJ2ZerLOwA1Id9+StSuEcRPbMi9j7kAIednufXVkulKDXiiFrSTD3+5
+ N7w2GCRIwSJY8UC71SL7ctjOWtmXPiOH1qBQprr7IDZt+VbqdNAInX5bi+VlKBEu649T
+ CUUUmOeAIQ8GkBVr36F1nR3GY1bsyZXRZe6Uwi8cf3KSkHAUYwts11HadNUmPwuaiNR5
+ rIVqsAyxHxGto7RNAgoGIfhJ+r1HkkLRPYekzqK/tCvUUdxIvO4+wjUa7UnSS0tilUFU
+ GglXX0N9lctS7pwlajnfuOeMp/bmrXzAynmV7OgtNM4/e5rYiJ6OnuJYOwy4qwQenDox
+ Kgdg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=0I346vx91sUiAeUkNi54oztkGxRJ6TRG5+oqyFk02bY=;
- b=uN1XgxsJkVVmeKuacISy84Gb72c7ZSeJRIQuA1huVASQRnmy3GBQM+AqIO520T/itp
- LaNrqFyvVpiXY2n775Mp1HiUOwVy/WNSgXBGuMHQKM6DTOnlOjazrlwomDD0hB9dwFOI
- mQKJBt6SxKF+xD/ZHRnRqtzcQVDXbIvCSQWDsMWHe2sYgQGb+N2g6xNJEofTZJ7P/P3m
- i6n+m5EoBcWVgWfYQW/7ZEF/D8pd5sFk2Pjc83tBvQx2i8Vxpv9wkGkUjCG8MHrgcwwh
- v/aKBy6jNBpxMOpc+u9tnsS8F5uq9JDQ/ISdpNIQoLz1VVgP5U2YUCA6wZ9/48Cs5nwX
- Xkog==
-X-Gm-Message-State: APjAAAU7NzO57BUs6ho68D9OC6azXBcdU9lKHrZrCQOpDMwWxFcOH/FU
- URwR/oBxV73U/aIXVgn3/e0=
-X-Google-Smtp-Source: APXvYqxa8LiqtCxiVtBgng/u1HVtbAH6tYazztOwvGiOc/JeuqbxpUEnR4B5jfyPSEnwhlrgw3VhAw==
-X-Received: by 2002:a17:90a:1c01:: with SMTP id s1mr930789pjs.76.1568139861681; 
- Tue, 10 Sep 2019 11:24:21 -0700 (PDT)
+ bh=RX5bDF6yS4bhQJzlmBGEdlT2LaTp8OsRgQ45nIqHhvo=;
+ b=oxIMYkK85iA7QdRhCyHh8GsEn7+f7vjIbI8q9890XfWuPV6TB4axf1vXN/xHTjIo5c
+ exMcISUbQeimn2metiLhvb0ThI6/ipcr9kRmw/91q9q7GAZ3GsISFfCe40RXcbxTOiN6
+ X2OjcjQe1gRtkwVboPcigt87L8QbPMe0e6LRKWeixanPy8F98CEkFNzbqIC+4Ty8tk4S
+ 3jsh3O3Ii8QaF2Z4DezK43fDmbc+pJ9kKecba8J8j5YhCB/KAPuIDQU+uLDuCzIJOEFM
+ AATDgOhIDBY4wTcW4L+tTV4v5ONrKFdLXGiNpe2mnyOY62iAXmRst7dUYJAy6JQS9BJ1
+ K5ng==
+X-Gm-Message-State: APjAAAXzsV/tWFzVwyoudUADTXe2DwOHBcjYwaEARJW2fyYh1961UKG2
+ TcQs2HzyOAROl3Ua37ifGw4=
+X-Google-Smtp-Source: APXvYqz+wwDiZZ4j7SkNl9lnJdAHbbjyzx8aOsHfimDdalsyIvISmf1Pb7trhWKxX7TUJ/g8+4HDHQ==
+X-Received: by 2002:a17:902:a705:: with SMTP id
+ w5mr3656252plq.228.1568141376654; 
+ Tue, 10 Sep 2019 11:49:36 -0700 (PDT)
 Received: from SARKAR ([1.186.12.73])
- by smtp.gmail.com with ESMTPSA id u1sm14384025pgi.28.2019.09.10.11.24.20
+ by smtp.gmail.com with ESMTPSA id y138sm7656304pfb.174.2019.09.10.11.49.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Sep 2019 11:24:21 -0700 (PDT)
-Date: Tue, 10 Sep 2019 23:54:15 +0530
+ Tue, 10 Sep 2019 11:49:36 -0700 (PDT)
+Date: Wed, 11 Sep 2019 00:19:31 +0530
 From: Rohit Sarkar <rohitsarkar5398@gmail.com>
-To: gregkh@linuxfoundation.org, johnfwhitmore@gmail.com,
- devel@driverdev.osuosl.org
-Subject: [PATCH] staging: rtl8192u: ieee80211: Replace snprintf with scnprintf
-Message-ID: <20190910182415.GA5768@SARKAR>
+To: gregkh@linuxfoundation.org, larry.finger@lwfiner.net,
+ florian.c.schilhabel@googlemail.com, driverdev-devel@linuxdriverproject.org
+Subject: [PATCH] staging: rtl8712: Replace snprintf with scnprintf
+Message-ID: <20190910184931.GA8228@SARKAR>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.9.4 (2018-02-28)
@@ -84,7 +90,6 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
@@ -97,69 +102,31 @@ returns the actual number of bytes printed to buffer always.
 
 Signed-off-by: Rohit Sarkar <rohitsarkar5398@gmail.com>
 ---
- drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c | 4 ++--
- drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c | 8 ++++----
- 2 files changed, 6 insertions(+), 6 deletions(-)
+ drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-index 0a3e478fccd6..b0a78508f378 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-@@ -1647,7 +1647,7 @@ int ieee80211_parse_info_param(struct ieee80211_device *ieee,
- 			for (i = 0; i < network->rates_len; i++) {
- 				network->rates[i] = info_element->data[i];
- #ifdef CONFIG_IEEE80211_DEBUG
--				p += snprintf(p, sizeof(rates_str) -
-+				p += scnprintf(p, sizeof(rates_str) -
- 					      (p - rates_str), "%02X ",
- 					      network->rates[i]);
- #endif
-@@ -1674,7 +1674,7 @@ int ieee80211_parse_info_param(struct ieee80211_device *ieee,
- 			for (i = 0; i < network->rates_ex_len; i++) {
- 				network->rates_ex[i] = info_element->data[i];
- #ifdef CONFIG_IEEE80211_DEBUG
--				p += snprintf(p, sizeof(rates_str) -
-+				p += scnprintf(p, sizeof(rates_str) -
- 					      (p - rates_str), "%02X ",
- 					      network->rates_ex[i]);
- #endif
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c
-index be08cd1d37a7..8f378ba0e62a 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c
-@@ -109,7 +109,7 @@ static inline char *rtl819x_translate_scan(struct ieee80211_device *ieee,
- 	/* Add basic and extended rates */
- 	max_rate = 0;
- 	p = custom;
--	p += snprintf(p, MAX_CUSTOM_LEN - (p - custom), " Rates (Mb/s): ");
-+	p += scnprintf(p, MAX_CUSTOM_LEN - (p - custom), " Rates (Mb/s): ");
- 	for (i = 0, j = 0; i < network->rates_len; ) {
- 		if (j < network->rates_ex_len &&
- 		    ((network->rates_ex[j] & 0x7F) <
-@@ -119,12 +119,12 @@ static inline char *rtl819x_translate_scan(struct ieee80211_device *ieee,
- 			rate = network->rates[i++] & 0x7F;
- 		if (rate > max_rate)
- 			max_rate = rate;
--		p += snprintf(p, MAX_CUSTOM_LEN - (p - custom),
-+		p += scnprintf(p, MAX_CUSTOM_LEN - (p - custom),
- 			      "%d%s ", rate >> 1, (rate & 1) ? ".5" : "");
- 	}
- 	for (; j < network->rates_ex_len; j++) {
- 		rate = network->rates_ex[j] & 0x7F;
--		p += snprintf(p, MAX_CUSTOM_LEN - (p - custom),
-+		p += scnprintf(p, MAX_CUSTOM_LEN - (p - custom),
- 			      "%d%s ", rate >> 1, (rate & 1) ? ".5" : "");
- 		if (rate > max_rate)
- 			max_rate = rate;
-@@ -215,7 +215,7 @@ static inline char *rtl819x_translate_scan(struct ieee80211_device *ieee,
- 	 * for given network. */
- 	iwe.cmd = IWEVCUSTOM;
- 	p = custom;
--	p += snprintf(p, MAX_CUSTOM_LEN - (p - custom),
-+	p += scnprintf(p, MAX_CUSTOM_LEN - (p - custom),
- 		      " Last beacon: %lums ago", (jiffies - network->last_scanned) / (HZ / 100));
- 	iwe.u.data.length = p - custom;
- 	if (iwe.u.data.length)
+diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+index b08b9a191a34..ff5edcaba64d 100644
+--- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
++++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+@@ -142,7 +142,7 @@ static noinline_for_stack char *translate_scan_wpa(struct iw_request_info *info,
+ 		memset(buf, 0, MAX_WPA_IE_LEN);
+ 		n = sprintf(buf, "wpa_ie=");
+ 		for (i = 0; i < wpa_len; i++) {
+-			n += snprintf(buf + n, MAX_WPA_IE_LEN - n,
++			n += scnprintf(buf + n, MAX_WPA_IE_LEN - n,
+ 						"%02x", wpa_ie[i]);
+ 			if (n >= MAX_WPA_IE_LEN)
+ 				break;
+@@ -162,7 +162,7 @@ static noinline_for_stack char *translate_scan_wpa(struct iw_request_info *info,
+ 		memset(buf, 0, MAX_WPA_IE_LEN);
+ 		n = sprintf(buf, "rsn_ie=");
+ 		for (i = 0; i < rsn_len; i++) {
+-			n += snprintf(buf + n, MAX_WPA_IE_LEN - n,
++			n += scnprintf(buf + n, MAX_WPA_IE_LEN - n,
+ 						"%02x", rsn_ie[i]);
+ 			if (n >= MAX_WPA_IE_LEN)
+ 				break;
 -- 
 2.17.1
 
