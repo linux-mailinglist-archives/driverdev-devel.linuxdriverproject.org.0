@@ -1,41 +1,41 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 788BDAE4D5
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Sep 2019 09:46:12 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2C522AE4D9
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Sep 2019 09:46:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 58F7C8789C;
-	Tue, 10 Sep 2019 07:46:10 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id ABF182151E;
+	Tue, 10 Sep 2019 07:46:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NORut2LXsEi2; Tue, 10 Sep 2019 07:46:10 +0000 (UTC)
+	with ESMTP id QmOy03no3oed; Tue, 10 Sep 2019 07:46:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B5424877B1;
-	Tue, 10 Sep 2019 07:46:09 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9BE3C204A6;
+	Tue, 10 Sep 2019 07:46:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5B5CA1BF309
- for <devel@linuxdriverproject.org>; Tue, 10 Sep 2019 07:46:08 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0A0A31BF309
+ for <devel@linuxdriverproject.org>; Tue, 10 Sep 2019 07:46:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 580E6877E4
- for <devel@linuxdriverproject.org>; Tue, 10 Sep 2019 07:46:08 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 0425D85C10
+ for <devel@linuxdriverproject.org>; Tue, 10 Sep 2019 07:46:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YjdqM3RjLNiv for <devel@linuxdriverproject.org>;
- Tue, 10 Sep 2019 07:46:07 +0000 (UTC)
+ with ESMTP id KLIQ8Ff2xnOc for <devel@linuxdriverproject.org>;
+ Tue, 10 Sep 2019 07:46:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa5.microchip.iphmx.com (esa5.microchip.iphmx.com
- [216.71.150.166])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 94800877B1
- for <devel@driverdev.osuosl.org>; Tue, 10 Sep 2019 07:46:07 +0000 (UTC)
-Received-SPF: Pass (esa5.microchip.iphmx.com: domain of
+Received: from esa1.microchip.iphmx.com (esa1.microchip.iphmx.com
+ [68.232.147.91])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id F38F084AFB
+ for <devel@driverdev.osuosl.org>; Tue, 10 Sep 2019 07:46:10 +0000 (UTC)
+Received-SPF: Pass (esa1.microchip.iphmx.com: domain of
  Ajay.Kathat@microchip.com designates 198.175.253.82 as
  permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa5.microchip.iphmx.com;
+ client-ip=198.175.253.82; receiver=esa1.microchip.iphmx.com;
  envelope-from="Ajay.Kathat@microchip.com";
  x-sender="Ajay.Kathat@microchip.com"; x-conformance=spf_only;
  x-record-type="v=spf1"; x-record-text="v=spf1 mx
@@ -43,42 +43,43 @@ Received-SPF: Pass (esa5.microchip.iphmx.com: domain of
  a:mx1.microchip.iphmx.com a:mx2.microchip.iphmx.com
  include:servers.mcsv.net include:mktomail.com
  include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa5.microchip.iphmx.com: no sender
+Received-SPF: None (esa1.microchip.iphmx.com: no sender
  authenticity information available from domain of
  postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa5.microchip.iphmx.com;
+ client-ip=198.175.253.82; receiver=esa1.microchip.iphmx.com;
  envelope-from="Ajay.Kathat@microchip.com";
  x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa5.microchip.iphmx.com;
+Authentication-Results: esa1.microchip.iphmx.com;
  spf=Pass smtp.mailfrom=Ajay.Kathat@microchip.com;
  spf=None smtp.helo=postmaster@email.microchip.com;
  dkim=pass (signature verified) header.i=@microchiptechnology.onmicrosoft.com;
  dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: KBLrEDd4NihuoDaLFp10Gg5WQT/rZWxxQ2bJZwnvN9yaTs5yU0nUeWdm66QCTlKHi/UfYYYNbE
- ur32h7xTU42dFsu00rs5j35XNyXGOcdmUA2Lttszs/tT1p/VGei6NelIjoFSyRoXSt+bXlT44o
- dBMjVT7nVtIHujbkqVqT25+4yHrkp57Yx4dRdSKZhV01Jxh8XicFucQ25BRao90bA+4Cm3UPbm
- Kj8rk/rPwef3JOTBOGUVhMy1sXdBSaHDBTrnq75Us3sMRlepb+pJQ3LRn2buD8JvPF3oiODjwF
- ci0=
-X-IronPort-AV: E=Sophos;i="5.64,487,1559545200"; d="scan'208";a="46867018"
+IronPort-SDR: EY2HDGgTI7tpHJoJ7NzGC8RMehU2Eu5foxmbkpuJWRJuFrIJnJphhjz3uv0H8zbJUh+sTGTm36
+ RQX0a4mDAC++vAAbQuTkzvSQGk1qKhd/BsbS0SiNoNnoHXFGjfsvT8FwO7UeJQHVrmb1B4sxnG
+ FHwGBoMRcRp77LJKKKAGbVeLBiAO4VGOcOVa2As7iSvgiOsFx0XfezSoq6bqv+hrNYBKbqyAsz
+ yYRzqkW8A9+m3vNTCaJveETNEYCDmcUuGkI4yA900LgWFIFxh9h7vtQuXp8swiiURr0dNFHItq
+ S40=
+X-IronPort-AV: E=Sophos;i="5.64,487,1559545200"; d="scan'208";a="49856980"
 Received: from smtpout.microchip.com (HELO email.microchip.com)
  ([198.175.253.82])
- by esa5.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 10 Sep 2019 00:46:07 -0700
-Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
- chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
+ by esa1.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 10 Sep 2019 00:46:09 -0700
+Received: from chn-vm-ex02.mchp-main.com (10.10.85.144) by
+ chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Tue, 10 Sep 2019 00:46:06 -0700
+ 15.1.1713.5; Tue, 10 Sep 2019 00:46:09 -0700
 Received: from NAM03-DM3-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
- via Frontend Transport; Tue, 10 Sep 2019 00:46:06 -0700
+ email.microchip.com (10.10.87.72) with Microsoft SMTP Server
+ (version=TLS1_2, 
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5 via Frontend
+ Transport; Tue, 10 Sep 2019 00:46:09 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=IsQVRW0sFnxVEmqfUYYFwWpCthMGcke4lIx1oYYNqrDp4/HMNZLcy4Tz/2fdNlz7RiEnaCsf9W3fcX+w3a8iVVdLnCFEXMZOZQAKOAJ8BV602dNEhyeosAu3/XtE/uN31aLCaPnv7RRrv43sTrOSxhw8dXC4Iv/pCwDxWgsAJX/9IKMl8BonAUbw6pPaoHiY1/QkyuZ6Sj0OFncVcImkYqIGIiTasNSuhapJivMUQc7qEMF00ZOdTTpwUPIPrPW2uwCjL+1GXjjJYiBk6hHS477jAwR1HlnISnPAosZ9yAjoo/m/bfdEuIwVt+F6l/+0Wn7uuw66OlyNNTH5jshsig==
+ b=MYPrUMk7Hki4TTVi2SWhvtFWZ3UlelO/p+xO81GAG/r67MCyZ65HxOP1Hrnt5GJA3lDqg6kOxlU02rKYdDPYUxvhlo6S6bkpLO2YRKJquWJdT9q0lWzDzyBPWuo1MzJTVP5fiK75H68jjnf/xkD5KEFNnfXf2u7DiQmT9j0qAIJp7N/DtDf9E9PhwCvdj0RabKmTcZMcXVeOVBF0IDPAWgkULUCf+BLGB4aM0GS8d3ABSObc4JxM63OOB2mYiHoaQuMULQ1cSN0LL4kVmW/ukz7gs6hJuRgxhCaewajZpbZkJ05ND5qDNhlnL4BXQQdoXLOfGW8jz2htuDmG4085Cw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8ANFPoGNQGzKup1MLOP76wohv2h6FEkfMHrsonsw4Mg=;
- b=Y1yuQCKcqTwAv2A3uAFQJKuKXopB1jBgUgNh/YoFs1ydadExOyifKkkI3C5lobpQST39tQi2p/CxnokuTyctulcHLDqzevxcmKTWcBFIHGox7V8itX7sdXfBBM24rZQAuf/KnGIl6ytNJo3+tIQk6LiUPwy3yXDuf3l3nzkDcsyhtgI3GFhZzLYr9G9AODO6fCkN9Dc2GoP4+rA0wofg7eO9vhSyLFXokssJ3AYjFIYX9bS4COwHMWV1UFwg7NVpiVXrsDw/CZh/UqtR8M8xzBa2gF3kGWXt5u64AMgDigtxil6KQnQwmPKNZdvh/S3P+Wing/txLyr8xu+fprqyNQ==
+ bh=ZitsTgT7/DVZDIBDg0XpL7bClgr9eqjd4AiNqpzHhAY=;
+ b=VEHpRGXxmiJVm7L2uuT/zPPEeMy4ymz1qqVUZgbWjHn6NEF8cUCTh3G7gsq/A4Jg836zrm2VcqastqAA+hEI0Q7BWhQNBQystHbYu0hEwixLVwoRxEGDGWqjquZGGX3Ghn1RxDIkyCM2eCLfoGApbsNdgE4ULdIRdTKs3MLbQPX4ljCigMQdxdo8K2SWzSMQvLBzfCFALMRp/YfV9Id11D53efFTMeIzjZEK1LY0lbwAP6eJz/PIeI3s7/MPxFfp6Qrq9qayPO89Isr7YCSgJQXAR9+jqV/u9WUWX57ekb3qySJBlaAQ/mplkWWmUVBJd4kfO9pvZxhjKxvLhkVlGQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=microchip.com; dmarc=pass action=none
  header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
@@ -86,25 +87,27 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=microchiptechnology.onmicrosoft.com;
  s=selector2-microchiptechnology-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8ANFPoGNQGzKup1MLOP76wohv2h6FEkfMHrsonsw4Mg=;
- b=fLJAudKmPxD/M1+Vh5GCP+YsBRnvONw96Y3qtnwtCZ2OUPTb6VjW9yY/1UZxxwUFEaxbhbtG9b24z2qPo+WZ8SKNM1JhzmY1WrKX98J88U5uZNaUydcb9mEdAbK4mxm45rfpqwvsfpOVrHmSZCuR+yhtDSWqr/A1W3PAMFSdiBc=
+ bh=ZitsTgT7/DVZDIBDg0XpL7bClgr9eqjd4AiNqpzHhAY=;
+ b=RmbjdixaEly90GdYL6EQAZIQrIHaEqnCdOoP3fbM/nvS72vlpd01lxCNpf9rTYPE4gpYSKwRTAdTTwptG8VXlN5Aibi8bDzg7s9Qxn7LZkLq3es2muHA3AxsBGBnUKz++HPFpoB124k/iDffSIzpwqCym9FQx8U0cGl60n4PgAI=
 Received: from BN6PR11MB3985.namprd11.prod.outlook.com (10.255.129.78) by
  BN6PR11MB1985.namprd11.prod.outlook.com (10.173.31.22) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2241.15; Tue, 10 Sep 2019 07:46:04 +0000
+ 15.20.2241.15; Tue, 10 Sep 2019 07:46:08 +0000
 Received: from BN6PR11MB3985.namprd11.prod.outlook.com
  ([fe80::5864:dae1:9b7e:ff83]) by BN6PR11MB3985.namprd11.prod.outlook.com
  ([fe80::5864:dae1:9b7e:ff83%4]) with mapi id 15.20.2241.018; Tue, 10 Sep 2019
- 07:46:04 +0000
+ 07:46:08 +0000
 From: <Ajay.Kathat@microchip.com>
 To: <linux-wireless@vger.kernel.org>
-Subject: [PATCH 1/2] staging: wilc1000: remove unused interrupt status
- handling code
-Thread-Topic: [PATCH 1/2] staging: wilc1000: remove unused interrupt status
- handling code
-Thread-Index: AQHVZ6vMJxNkB4UPSE+yElL8DxZzpw==
-Date: Tue, 10 Sep 2019 07:46:04 +0000
-Message-ID: <20190910074514.3073-1-ajay.kathat@microchip.com>
+Subject: [PATCH 2/2] staging: wilc1000: avoid twice IRQ handler execution for
+ each single interrupt
+Thread-Topic: [PATCH 2/2] staging: wilc1000: avoid twice IRQ handler execution
+ for each single interrupt
+Thread-Index: AQHVZ6vOQhEXwUqqEECS+kD89ZsUxA==
+Date: Tue, 10 Sep 2019 07:46:07 +0000
+Message-ID: <20190910074514.3073-2-ajay.kathat@microchip.com>
+References: <20190910074514.3073-1-ajay.kathat@microchip.com>
+In-Reply-To: <20190910074514.3073-1-ajay.kathat@microchip.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -116,31 +119,32 @@ x-mailer: git-send-email 2.22.0
 x-ms-exchange-messagesentrepresentingtype: 1
 x-originating-ip: [27.59.41.188]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 961d2cef-aa9d-474f-01fa-08d735c2eeaf
+x-ms-office365-filtering-correlation-id: 610f095f-60f0-4e2a-b0c1-08d735c2f0ba
 x-microsoft-antispam: BCL:0; PCL:0;
  RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600166)(711020)(4605104)(1401327)(2017052603328)(7193020);
  SRVR:BN6PR11MB1985; 
 x-ms-traffictypediagnostic: BN6PR11MB1985:
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BN6PR11MB19856B7A1566045E99246721E3B60@BN6PR11MB1985.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:7691;
+x-microsoft-antispam-prvs: <BN6PR11MB19856332958C336F0371E585E3B60@BN6PR11MB1985.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:5516;
 x-forefront-prvs: 01565FED4C
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(376002)(366004)(396003)(136003)(346002)(39860400002)(189003)(199004)(3846002)(6506007)(6486002)(25786009)(476003)(7736002)(1076003)(71190400001)(71200400001)(6116002)(2501003)(2616005)(305945005)(5660300002)(486006)(52116002)(2351001)(2906002)(14454004)(99286004)(26005)(186003)(478600001)(256004)(14444005)(50226002)(102836004)(66946007)(66476007)(66556008)(64756008)(66446008)(5640700003)(6916009)(81156014)(81166006)(86362001)(8676002)(8936002)(316002)(36756003)(66066001)(53936002)(107886003)(6436002)(54906003)(4326008)(386003)(6512007);
+ SFS:(10009020)(376002)(366004)(396003)(136003)(346002)(39860400002)(189003)(199004)(3846002)(6506007)(11346002)(6486002)(25786009)(476003)(7736002)(1076003)(71190400001)(71200400001)(446003)(6116002)(2501003)(2616005)(305945005)(5660300002)(486006)(52116002)(2351001)(4744005)(2906002)(14454004)(99286004)(26005)(186003)(478600001)(256004)(14444005)(50226002)(102836004)(66946007)(66476007)(66556008)(64756008)(66446008)(5640700003)(6916009)(76176011)(81156014)(81166006)(86362001)(8676002)(8936002)(316002)(36756003)(66066001)(53936002)(107886003)(6436002)(54906003)(4326008)(386003)(6512007);
  DIR:OUT; SFP:1101; SCL:1; SRVR:BN6PR11MB1985;
  H:BN6PR11MB3985.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
  PTR:InfoNoRecords; MX:1; A:1; 
 received-spf: None (protection.outlook.com: microchip.com does not designate
  permitted sender hosts)
 x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: GoGmPLCoCBKJ9ALGcBE0uj5yEHZZ4kYVBgrwjohTvjQHeSKUvHRuAYtUZOvni5kbWY+43RyXp9SGy5mqlzX0ZfOJ7iU52i+N3RwR5SLylb2vFtVWTsEzWCn6UVBKzG+dsaKckHa+iHk5++BHbPqjoWXf2Lu7LWUIjS+C+otHOElMacMlxgh0X3ZDYWWkqQh65jR1CQ8E4R0Plqgn41cl79eymHY4hOcEzmpwlL4n6enSGCMYe6OuUX6pfujuYXnTqfNtOgO9NDmTCxBYlLkQorCmhq3Yt35orclSwXKqx+EuUqEqfJa9b8LY3bIZF62LC5JhhttYlcfr5dQ+ZLlJZzRvXYNauUWuW19Z6ZOAj6rSO+euUSxMOP34wOYFV907/Thy21GJjPlif0iw1yv/NvS7gbrSn2OqowVTmKsiZwM=
+x-microsoft-antispam-message-info: jmqg+jN3T4bT5oBkI2iXZ5uAaI86cvyO5JEnasERXxMVsjDoXNUoodjrhxH9y1msLp8AJw9UwfuHchglxxuA1RJkg8guRSFi/Lx4EV4k0mSV0Qvr9smnL4l48GpeucUXfaQvgqR3jfKm+fNV7SJ8yGFVZFR+msi2ugSauipR6mS30PorIT3C4v+Lx4r4xVGqSBQykGBb194HhkH0d938RTVDKxm6DvmFzuW2Tamw0NNmLt07OA8aTo5+3Yu8CL8EX5fyR3ahUg7u5RGax9HJKU9rjUmtb+kTlsfvxHZU1F2XyowXuwaE2DsXR/RhkmwOxrRx1RfUqH6CSh8oYop6U22egaSWElbGWyvo7wAaN8+j7G0aG99cWUZWc9wCj8DFCVG4Qy+jijQOA/880FAO+yD6hgRAayCyIb6/AgQ7lDA=
+Content-ID: <305B38B0D662BF4F97BCD7AE005AB44C@namprd11.prod.outlook.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 961d2cef-aa9d-474f-01fa-08d735c2eeaf
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Sep 2019 07:46:04.5316 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 610f095f-60f0-4e2a-b0c1-08d735c2f0ba
+X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Sep 2019 07:46:07.8436 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 1ahRJROMkPMUxnxboLdXiFlInmxNyNne/o5op7cT7KozCfTg8y5CeYKEJn1u8a38/J9GvJRklBHn30sJdbAqHBRrdZYIajK00ueeeMqG++o=
+X-MS-Exchange-CrossTenant-userprincipalname: e1eLjeja8mgmiy4Gl0eLCzEE8y34jSpH6YDJi/82u0FD4cK4QQOltSj8OnCk3E1bLhBE8pVygPih0sDH6NkoP4xobi3aK2rjSja7PjeYtqY=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB1985
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -157,104 +161,31 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
  johannes@sipsolutions.net, Ajay.Kathat@microchip.com,
  Adham.Abozaeid@microchip.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Ajay Singh <ajay.kathat@microchip.com>
-
-Remove interrupt handling for unused interrupt status(PLL update and
-Sleep). The firmware only initiates the interrupt for the data transfer
-to host and rest are not used anymore.
-
-Signed-off-by: Ajay Singh <ajay.kathat@microchip.com>
----
- drivers/staging/wilc1000/wilc_wlan.c | 26 --------------------------
- drivers/staging/wilc1000/wilc_wlan.h | 10 ++--------
- 2 files changed, 2 insertions(+), 34 deletions(-)
-
-diff --git a/drivers/staging/wilc1000/wilc_wlan.c b/drivers/staging/wilc1000/wilc_wlan.c
-index 2bbb359d2119..771d8cb68dc1 100644
---- a/drivers/staging/wilc1000/wilc_wlan.c
-+++ b/drivers/staging/wilc1000/wilc_wlan.c
-@@ -758,26 +758,6 @@ static void wilc_unknown_isr_ext(struct wilc *wilc)
- 	wilc->hif_func->hif_clear_int_ext(wilc, 0);
- }
- 
--static void wilc_pllupdate_isr_ext(struct wilc *wilc, u32 int_stats)
--{
--	int trials = 10;
--
--	wilc->hif_func->hif_clear_int_ext(wilc, PLL_INT_CLR);
--
--	if (wilc->io_type == WILC_HIF_SDIO)
--		mdelay(WILC_PLL_TO_SDIO);
--	else
--		mdelay(WILC_PLL_TO_SPI);
--
--	while (!(is_wilc1000(wilc_get_chipid(wilc, true)) && --trials))
--		mdelay(1);
--}
--
--static void wilc_sleeptimer_isr_ext(struct wilc *wilc, u32 int_stats1)
--{
--	wilc->hif_func->hif_clear_int_ext(wilc, SLEEP_INT_CLR);
--}
--
- static void wilc_wlan_handle_isr_ext(struct wilc *wilc, u32 int_status)
- {
- 	u32 offset = wilc->rx_buffer_offset;
-@@ -827,15 +807,9 @@ void wilc_handle_isr(struct wilc *wilc)
- 	acquire_bus(wilc, WILC_BUS_ACQUIRE_AND_WAKEUP);
- 	wilc->hif_func->hif_read_int(wilc, &int_status);
- 
--	if (int_status & PLL_INT_EXT)
--		wilc_pllupdate_isr_ext(wilc, int_status);
--
- 	if (int_status & DATA_INT_EXT)
- 		wilc_wlan_handle_isr_ext(wilc, int_status);
- 
--	if (int_status & SLEEP_INT_EXT)
--		wilc_sleeptimer_isr_ext(wilc, int_status);
--
- 	if (!(int_status & (ALL_INT_EXT)))
- 		wilc_unknown_isr_ext(wilc);
- 
-diff --git a/drivers/staging/wilc1000/wilc_wlan.h b/drivers/staging/wilc1000/wilc_wlan.h
-index f566d040bb72..7469fa47d588 100644
---- a/drivers/staging/wilc1000/wilc_wlan.h
-+++ b/drivers/staging/wilc1000/wilc_wlan.h
-@@ -128,8 +128,6 @@
- #define WILC_CFG_RSP_STATUS	2
- #define WILC_CFG_RSP_SCAN	3
- 
--#define WILC_PLL_TO_SDIO	4
--#define WILC_PLL_TO_SPI		2
- #define WILC_ABORT_REQ_BIT		BIT(31)
- 
- #define WILC_RX_BUFF_SIZE	(96 * 1024)
-@@ -185,14 +183,10 @@
- #define EN_VMM			BIT(8)
- 
- #define DATA_INT_EXT		INT_0
--#define PLL_INT_EXT		INT_1
--#define SLEEP_INT_EXT		INT_2
--#define ALL_INT_EXT		(DATA_INT_EXT | PLL_INT_EXT | SLEEP_INT_EXT)
--#define NUM_INT_EXT		3
-+#define ALL_INT_EXT		DATA_INT_EXT
-+#define NUM_INT_EXT		1
- 
- #define DATA_INT_CLR		CLR_INT0
--#define PLL_INT_CLR		CLR_INT1
--#define SLEEP_INT_CLR		CLR_INT2
- 
- #define ENABLE_RX_VMM		(SEL_VMM_TBL1 | EN_VMM)
- #define ENABLE_TX_VMM		(SEL_VMM_TBL0 | EN_VMM)
--- 
-2.22.0
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RnJvbTogQWpheSBTaW5naCA8YWpheS5rYXRoYXRAbWljcm9jaGlwLmNvbT4NCg0KVGhlIElSUSBo
+YW5kbGVyKGlzcl9iaF9yb3V0aW5lKCkpIHdhcyBjYWxsZWQgdHdpY2UgZm9yIGVhY2ggaW50ZXJy
+dXB0DQpmcm9tIGZpcm13YXJlLiBUaGUgZGF0YSB3YXMgcmVhZCBjb21wbGV0ZWx5IGR1cmluZyB0
+aGUgZmlyc3QgY2FsbCBhbmQNCnRoZSBzZWNvbmQgY2FsbCB3YXMgZG9pbmcgbm90aGluZy4NCk5v
+dyBjaGFuZ2VkIHRoZSBJUlEgZmxhZyBmcm9tIOKAmGxldmVs4oCZIHRvIOKAmGVkZ2XigJkgdHJp
+Z2dlciBpLmUNCklSUUZfVFJJR0dFUl9MT1cgdG8gSVJRRl9UUklHR0VSX0ZBTExJTkcgdG8gYXZv
+aWQgZXh0cmEgaW50ZXJydXB0DQp0cmlnZ2VyLg0KDQpTaWduZWQtb2ZmLWJ5OiBBamF5IFNpbmdo
+IDxhamF5LmthdGhhdEBtaWNyb2NoaXAuY29tPg0KLS0tDQogZHJpdmVycy9zdGFnaW5nL3dpbGMx
+MDAwL3dpbGNfbmV0ZGV2LmMgfCAyICstDQogMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCsp
+LCAxIGRlbGV0aW9uKC0pDQoNCmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvd2lsYzEwMDAv
+d2lsY19uZXRkZXYuYyBiL2RyaXZlcnMvc3RhZ2luZy93aWxjMTAwMC93aWxjX25ldGRldi5jDQpp
+bmRleCBjZDExYzM1YWRjZmUuLjUwOGFjYjhiYjA4OSAxMDA2NDQNCi0tLSBhL2RyaXZlcnMvc3Rh
+Z2luZy93aWxjMTAwMC93aWxjX25ldGRldi5jDQorKysgYi9kcml2ZXJzL3N0YWdpbmcvd2lsYzEw
+MDAvd2lsY19uZXRkZXYuYw0KQEAgLTYwLDcgKzYwLDcgQEAgc3RhdGljIGludCBpbml0X2lycShz
+dHJ1Y3QgbmV0X2RldmljZSAqZGV2KQ0KIA0KIAlyZXQgPSByZXF1ZXN0X3RocmVhZGVkX2lycSh3
+bC0+ZGV2X2lycV9udW0sIGlzcl91aF9yb3V0aW5lLA0KIAkJCQkgICBpc3JfYmhfcm91dGluZSwN
+Ci0JCQkJICAgSVJRRl9UUklHR0VSX0xPVyB8IElSUUZfT05FU0hPVCwNCisJCQkJICAgSVJRRl9U
+UklHR0VSX0ZBTExJTkcgfCBJUlFGX09ORVNIT1QsDQogCQkJCSAgICJXSUxDX0lSUSIsIGRldik7
+DQogCWlmIChyZXQgPCAwKQ0KIAkJbmV0ZGV2X2VycihkZXYsICJGYWlsZWQgdG8gcmVxdWVzdCBJ
+UlFcbiIpOw0KLS0gDQoyLjIyLjANCg0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVj
+dC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlz
+dGluZm8vZHJpdmVyZGV2LWRldmVsCg==
