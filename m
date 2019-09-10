@@ -1,92 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D37D8AEB25
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Sep 2019 15:09:54 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 23D7AAEB46
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Sep 2019 15:18:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C012585DD1;
-	Tue, 10 Sep 2019 13:09:52 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 910F420457;
+	Tue, 10 Sep 2019 13:18:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id b6j0M-G6FlPK; Tue, 10 Sep 2019 13:09:52 +0000 (UTC)
+	with ESMTP id dWH2sBdD7wNP; Tue, 10 Sep 2019 13:18:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7D52A85DF7;
-	Tue, 10 Sep 2019 13:09:50 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6ED0C20415;
+	Tue, 10 Sep 2019 13:18:49 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 363701BF5F8
- for <devel@linuxdriverproject.org>; Tue, 10 Sep 2019 13:09:48 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 160111BF97F
+ for <devel@linuxdriverproject.org>; Tue, 10 Sep 2019 13:18:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 329CF2153E
- for <devel@linuxdriverproject.org>; Tue, 10 Sep 2019 13:09:48 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 1314620415
+ for <devel@linuxdriverproject.org>; Tue, 10 Sep 2019 13:18:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2C4E-jZKaYJb for <devel@linuxdriverproject.org>;
- Tue, 10 Sep 2019 13:09:46 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by silver.osuosl.org (Postfix) with ESMTPS id 053AB21543
- for <devel@driverdev.osuosl.org>; Tue, 10 Sep 2019 13:09:45 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x8AD53Gk090352;
- Tue, 10 Sep 2019 13:09:43 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=X4keng+SV8htc9lC32w1O4BuTKJIF/NsoIR24KWO7zQ=;
- b=VLTTQqwLTVsY9lb7KTSQHBL9WkSftyI9Lr1Rwvf+i2LtXfDoIfiAhzCM/2w9eiNaGBiz
- vM5Xmq4mxN7zigSBscwLNUAUhvA6dr6h4ZgvNXXqGtiTvnqI6NzUfYV8Vsee7lOi5wma
- RCxeP9J2rmPdME0yqL5yCEGZ5hFZ4K57kFroYxs42TKf8ezo/gV59i2tESLGra46+YK5
- x9qjYEjgcxpyXW1GvEs69M7zrjII2hObnm5BmNijxYzRmjMmEwVgNToP8SW9wPCy+9nY
- FPc7XWaTgaf/XtIHwpBKcUdsmulOUBeq9dsZsCmzDWARxTUnxvN82YaU/J3HEKdW2FUf cw== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by userp2120.oracle.com with ESMTP id 2uw1jkb9p3-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 10 Sep 2019 13:09:43 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x8AD8baY062125;
- Tue, 10 Sep 2019 13:09:42 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by aserp3020.oracle.com with ESMTP id 2uwqktq3dv-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 10 Sep 2019 13:09:42 +0000
-Received: from abhmp0020.oracle.com (abhmp0020.oracle.com [141.146.116.26])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x8AD9fAe031237;
- Tue, 10 Sep 2019 13:09:41 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 10 Sep 2019 06:09:41 -0700
-Date: Tue, 10 Sep 2019 16:09:35 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Colin Ian King <colin.king@canonical.com>
+ with ESMTP id i-E5LqPTtiIo for <devel@linuxdriverproject.org>;
+ Tue, 10 Sep 2019 13:18:47 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from omr2.cc.vt.edu (outbound.smtp.vt.edu [198.82.183.121])
+ by silver.osuosl.org (Postfix) with ESMTPS id 5788C1FDFB
+ for <devel@driverdev.osuosl.org>; Tue, 10 Sep 2019 13:18:47 +0000 (UTC)
+Received: from mr4.cc.vt.edu (mr4.cc.ipv6.vt.edu
+ [IPv6:2607:b400:92:8300:0:7b:e2b1:6a29])
+ by omr2.cc.vt.edu (8.14.4/8.14.4) with ESMTP id x8ADIkJU020713
+ for <devel@driverdev.osuosl.org>; Tue, 10 Sep 2019 09:18:46 -0400
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
+ [209.85.222.200])
+ by mr4.cc.vt.edu (8.14.7/8.14.7) with ESMTP id x8ADIfUP018326
+ for <devel@driverdev.osuosl.org>; Tue, 10 Sep 2019 09:18:46 -0400
+Received: by mail-qk1-f200.google.com with SMTP id p6so20675614qkk.6
+ for <devel@driverdev.osuosl.org>; Tue, 10 Sep 2019 06:18:46 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:in-reply-to:references
+ :mime-version:content-transfer-encoding:date:message-id;
+ bh=7kNO9uDNvugTv3H3koO6iBR61aeWq1IakC0dWAwZ414=;
+ b=RAfrCbr2CtZoFZOBThy8rtU0gZ8M15sBAlh4q/58nEQAySj6fksYdtTpYuXvM65lHo
+ Iob/Uz3PIa6fnrfwNGdDVk5Hoc1tox3PwM4nP5thAe//TH5KuDP7fDAJe60VjT3DF9k1
+ 5YchCPVtp+nMT7AisXg8OzPxWNLM4zmSDajFJDJJV4A1lbxlSz6a5rSobDhM5JpClDQy
+ UDMm6m0wjgT7Dkx3jvUtusKY6Zm1U2unT41ym9ifxZjJGiq3Tlom0tTzN7MU1oXlZffw
+ FbQB34+WBSsBo0J3/fespCptCuwjRh3DifAqabhaUAuWQKWhT/a8Ds1pKef7bKP5uliR
+ NKuQ==
+X-Gm-Message-State: APjAAAWJ98EcrZAwImFBv8cXTbOL8EMK9YsK8r+IGve/V+xAXaUG0fo/
+ gsWsoodnlvpKtGBOioCrIjJ6vagRbv9gi16K+2mCnYFQrvbqih63F7zQ03jytrnGdzkGdU7SpX5
+ hBzHM3Ed+uDyVlWcy01cGMVNobmIRXJ+x
+X-Received: by 2002:a37:c0f:: with SMTP id 15mr23232184qkm.73.1568121520894;
+ Tue, 10 Sep 2019 06:18:40 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyHLmfoD+Kv5Ihhcunz/PPRO8HiNM4sdOJhK03/Lv6eRrYrNyPTStg6jFzCIG8lLRtsiz/hKA==
+X-Received: by 2002:a37:c0f:: with SMTP id 15mr23232151qkm.73.1568121520625;
+ Tue, 10 Sep 2019 06:18:40 -0700 (PDT)
+Received: from turing-police ([2601:5c0:c001:4341::359])
+ by smtp.gmail.com with ESMTPSA id g45sm2907548qtc.9.2019.09.10.06.18.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 10 Sep 2019 06:18:39 -0700 (PDT)
+From: "Valdis Kl=?utf-8?Q?=c4=93?=tnieks" <valdis.kletnieks@vt.edu>
+X-Google-Original-From: "Valdis Kl=?utf-8?Q?=c4=93?=tnieks"
+ <Valdis.Kletnieks@vt.edu>
+X-Mailer: exmh version 2.9.0 11/07/2018 with nmh-1.7+dev
+To: Dan Carpenter <dan.carpenter@oracle.com>
 Subject: Re: staging: exfat: issue with FFS_MEDIAERR error return assignment
-Message-ID: <20190910130934.GE15977@kadam>
+In-Reply-To: <20190910130934.GE15977@kadam>
 References: <c569b04c-2959-c8eb-0d38-628e8c5ff7ac@canonical.com>
  <20190910124443.GD15977@kadam>
  <aefa4806-af3c-1757-59c2-72e7d1663d66@canonical.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <aefa4806-af3c-1757-59c2-72e7d1663d66@canonical.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9375
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1906280000 definitions=main-1909100128
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9375
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1906280000
- definitions=main-1909100128
+ <20190910130934.GE15977@kadam>
+Mime-Version: 1.0
+Date: Tue, 10 Sep 2019 09:18:38 -0400
+Message-ID: <1146681.1568121518@turing-police>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,41 +91,81 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Valdis Kletnieks <valdis.kletnieks@vt.edu>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ Colin Ian King <colin.king@canonical.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Content-Type: multipart/mixed; boundary="===============6330645557359815085=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Sep 10, 2019 at 01:58:35PM +0100, Colin Ian King wrote:
-> On 10/09/2019 13:44, Dan Carpenter wrote:
-> > On Fri, Aug 30, 2019 at 07:38:00PM +0100, Colin Ian King wrote:
-> >> Hi,
-> >>
-> >> Static analysis on exfat with Coverity has picked up an assignment of
-> >> FFS_MEDIAERR that gets over-written:
-> >>
-> >>
-> >> 1750        if (is_dir) {
-> >> 1751                if ((fid->dir.dir == p_fs->root_dir) &&
-> >> 1752                    (fid->entry == -1)) {
-> >> 1753                        if (p_fs->dev_ejected)
-> > 
-> > Idealy we would have both a filename and a function name but this email
-> > doesn't have either so no one knows what code you are talking about.  :P
-> 
-> Oops, my bad.
-> 
-> drivers/staging/exfat/exfat_super.c ffsWriteStat()
+--===============6330645557359815085==
+Content-Type: multipart/signed; boundary="==_Exmh_1568121518_4251P";
+	 micalg=pgp-sha1; protocol="application/pgp-signature"
+Content-Transfer-Encoding: 7bit
 
-Yes, your solution is correct.
+--==_Exmh_1568121518_4251P
+Content-Type: text/plain; charset=us-ascii
 
-regards,
-dan carpenter
+On Tue, 10 Sep 2019 16:09:35 +0300, Dan Carpenter said:
+> On Tue, Sep 10, 2019 at 01:58:35PM +0100, Colin Ian King wrote:
+> > On 10/09/2019 13:44, Dan Carpenter wrote:
+> > > On Fri, Aug 30, 2019 at 07:38:00PM +0100, Colin Ian King wrote:
+> > >> Hi,
+> > >>
+> > >> Static analysis on exfat with Coverity has picked up an assignment of
+> > >> FFS_MEDIAERR that gets over-written:
+> > >>
+> > >>
+> > >> 1750        if (is_dir) {
+> > >> 1751                if ((fid->dir.dir == p_fs->root_dir) &&
+> > >> 1752                    (fid->entry == -1)) {
+> > >> 1753                        if (p_fs->dev_ejected)
+> > >
+> > > Idealy we would have both a filename and a function name but this email
+> > > doesn't have either so no one knows what code you are talking about.  :P
+> >
+> > Oops, my bad.
+> >
+> > drivers/staging/exfat/exfat_super.c ffsWriteStat()
+>
+> Yes, your solution is correct.
+
+Actually, you can skip the else, because we initialized 'ret' at the start of the function.
+
+The *bigger* issue - what should 'ret' be if dev_ejected is *false*?
+
+--==_Exmh_1568121518_4251P
+Content-Type: application/pgp-signature
+
+-----BEGIN PGP SIGNATURE-----
+Comment: Exmh version 2.9.0 11/07/2018
+
+iQIVAwUBXXeirQdmEQWDXROgAQL5wA/+PPHOGEmDV504BFRLn9srgqIa56tfpmot
+Ja0n16HXiCIc/z1N2QQ1yTCN1HR387EPagxgMoiIcNV4rlJ8vKFDXzxg8BA4xUKK
+8ikDLD0pwq5jR+ghYKYrjHxMs1OClbH0dUvlzra7TOOJpdaPL91MezH4fhJH5Ybj
+MPjwNb+MjNLcC5rEYO6BY4TMVuBUES1w4BgQr0cpsvFZWfLoOHs6l8jHyHmnxJ8O
+GeE0yMX4THplzc7pWAbyYnm08kXBc4spMcziXRWfJtNtg8JjTYBNC1jYAH41THGO
+zf0Bp3n1BtdrIr93000EsmQNrdXTSoogIisJ6tg+5GauE1WbJAUSLuyWwqLKSQk/
+gWd7aWO1COCNJS7887iKimSxntiCH4ExjoZigDStvWSMprqCPDefuSefOlkWU53Q
+d6TLu3zqicuqiIqp/z9V+kkf3TUMedLHPosvzbhC2WQaHr5MiaBUjDDx8n4zJ+JS
+vJyHuWeqFuoGxwdg8viDrPATRJOkgQFPGupGyfVZGQpTxBYu9Ooyl3XgNxtJJIbz
+w6OOrrJm9PS9bllSVlEbKHQtiRi8eM2R4gNQQHow5klY6FNIV39dUiQHXwf+OAlp
+2GQ63Cv6WLgJakMBRzHcpfpUVayLn2WozSD5TEJx8VsIwqTU2rswLtKpSF47j1hu
+y21iQgn12Q8=
+=gwNw
+-----END PGP SIGNATURE-----
+
+--==_Exmh_1568121518_4251P--
+
+--===============6330645557359815085==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============6330645557359815085==--
