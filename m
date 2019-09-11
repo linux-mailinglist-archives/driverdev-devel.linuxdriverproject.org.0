@@ -2,90 +2,55 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8BCE0AF8B0
-	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Sep 2019 11:17:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DE01BAF8C7
+	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Sep 2019 11:22:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 784A08653D;
-	Wed, 11 Sep 2019 09:17:24 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 823D88653D;
+	Wed, 11 Sep 2019 09:21:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id STiXuT0cGDz8; Wed, 11 Sep 2019 09:17:24 +0000 (UTC)
+	with ESMTP id 73135OtgktGt; Wed, 11 Sep 2019 09:21:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2FD7C822CA;
-	Wed, 11 Sep 2019 09:17:23 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CB56684AB8;
+	Wed, 11 Sep 2019 09:21:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 374251BF2A6
- for <devel@linuxdriverproject.org>; Wed, 11 Sep 2019 09:17:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 546871BF2A6
+ for <devel@linuxdriverproject.org>; Wed, 11 Sep 2019 09:21:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3438887B69
- for <devel@linuxdriverproject.org>; Wed, 11 Sep 2019 09:17:21 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 50B5E87AC9
+ for <devel@linuxdriverproject.org>; Wed, 11 Sep 2019 09:21:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vHyaunXhv6-t for <devel@linuxdriverproject.org>;
- Wed, 11 Sep 2019 09:17:20 +0000 (UTC)
+ with ESMTP id xXt4zW3OKuLy for <devel@linuxdriverproject.org>;
+ Wed, 11 Sep 2019 09:21:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 502D587B65
- for <devel@driverdev.osuosl.org>; Wed, 11 Sep 2019 09:17:20 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x8B99LT8057317;
- Wed, 11 Sep 2019 09:17:11 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- content-transfer-encoding : in-reply-to; s=corp-2019-08-05;
- bh=zrFAZD9A5dGz2+B318YMzx/6IL2OQM9UN9vWaQkSluw=;
- b=PpOdGDMl3XXCdBFHPow6gWL+3GVNU2Y8XwCJCRLXbh7+jqCTJhDdevSYFf4sP+jCNCGX
- PZl8yhYY11j/KBwnkY1MxfB4YtsKv7t4mPTDkjeHoXR/BIYLI3oAF3l9uUpvlAKVUK1D
- QvvAgcPw/kfQP8kcrMRRC8YopU2+AL/GsLrxjylo0BFloYWxC/8FCsZ5Z72DRXJuyKoX
- 3wkxBlDS/9LOUNLD+TxxE++CDkkDHhCaSPFwyr5jLatFNDeYZFIt933Kk3BvoBZ0/PSa
- OvYrIFcgw3/BClJcJ6U/SbR2LxMVuaO/SB35DkvjRT34dhXCq0UzPZgfnRdecjpCnyDY 6A== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by aserp2120.oracle.com with ESMTP id 2uw1jy8mbc-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 11 Sep 2019 09:17:11 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x8B999YH069125;
- Wed, 11 Sep 2019 09:17:10 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by aserp3030.oracle.com with ESMTP id 2uxj88k493-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 11 Sep 2019 09:17:10 +0000
-Received: from abhmp0007.oracle.com (abhmp0007.oracle.com [141.146.116.13])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x8B9H8CA012840;
- Wed, 11 Sep 2019 09:17:09 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 11 Sep 2019 02:17:08 -0700
-Date: Wed, 11 Sep 2019 12:16:59 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Sandro Volery <sandro@volery.com>
+Received: from mxout017.mail.hostpoint.ch (mxout017.mail.hostpoint.ch
+ [217.26.49.177])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 3409687A80
+ for <devel@driverdev.osuosl.org>; Wed, 11 Sep 2019 09:21:51 +0000 (UTC)
+Received: from [10.0.2.46] (helo=asmtp013.mail.hostpoint.ch)
+ by mxout017.mail.hostpoint.ch with esmtp (Exim 4.92.2 (FreeBSD))
+ (envelope-from <sandro@volery.com>)
+ id 1i7yor-000O7j-Ec; Wed, 11 Sep 2019 11:21:45 +0200
+Received: from [213.55.220.251] (helo=[100.66.103.90])
+ by asmtp013.mail.hostpoint.ch with esmtpsa
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2 (FreeBSD))
+ (envelope-from <sandro@volery.com>)
+ id 1i7yor-000El9-4u; Wed, 11 Sep 2019 11:21:45 +0200
+X-Authenticated-Sender-Id: sandro@volery.com
+From: Sandro Volery <sandro@volery.com>
+Mime-Version: 1.0 (1.0)
 Subject: Re: [PATCH] Staging: octeon: Avoid several usecases of strcpy
-Message-ID: <20190911091659.GI15977@kadam>
-References: <20190911084956.GH15977@kadam>
- <39D8B984-479C-42D5-8431-9FF7BD3A96D6@volery.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <39D8B984-479C-42D5-8431-9FF7BD3A96D6@volery.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9376
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1906280000 definitions=main-1909110088
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9376
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1906280000
- definitions=main-1909110088
+Date: Wed, 11 Sep 2019 11:21:44 +0200
+Message-Id: <C1B40FAD-9F8F-449D-B10C-334BAC76797D@volery.com>
+References: <20190911091659.GI15977@kadam>
+In-Reply-To: <20190911091659.GI15977@kadam>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+X-Mailer: iPhone Mail (17A5831c)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,33 +70,35 @@ Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gV2VkLCBTZXAgMTEsIDIwMTkgYXQgMTE6MDQ6MzhBTSArMDIwMCwgU2FuZHJvIFZvbGVyeSB3
-cm90ZToKPiAKPiAKPiA+IE9uIDExIFNlcCAyMDE5LCBhdCAxMDo1MiwgRGFuIENhcnBlbnRlciA8
-ZGFuLmNhcnBlbnRlckBvcmFjbGUuY29tPiB3cm90ZToKPiA+IAo+ID4g77u/T24gV2VkLCBTZXAg
-MTEsIDIwMTkgYXQgMDg6MjM6NTlBTSArMDIwMCwgU2FuZHJvIFZvbGVyeSB3cm90ZToKPiA+PiBz
-dHJjcHkgd2FzIHVzZWQgbXVsdGlwbGUgdGltZXMgaW4gc3RyY3B5IHRvIHdyaXRlIGludG8gZGV2
-LT5uYW1lLgo+ID4+IEkgcmVwbGFjZWQgdGhlbSB3aXRoIHN0cnNjcHkuCj4gPj4gCj4gPj4gU2ln
-bmVkLW9mZi1ieTogU2FuZHJvIFZvbGVyeSA8c2FuZHJvQHZvbGVyeS5jb20+Cj4gPj4gLS0tCj4g
-Pj4gZHJpdmVycy9zdGFnaW5nL29jdGVvbi9ldGhlcm5ldC5jIHwgMTYgKysrKysrKystLS0tLS0t
-LQo+ID4+IDEgZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKyksIDggZGVsZXRpb25zKC0pCj4g
-Pj4gCj4gPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9vY3Rlb24vZXRoZXJuZXQuYyBi
-L2RyaXZlcnMvc3RhZ2luZy9vY3Rlb24vZXRoZXJuZXQuYwo+ID4+IGluZGV4IDg4ODk0OTRhZGYx
-Zi4uY2Y4ZTlhMjNlYmY5IDEwMDY0NAo+ID4+IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy9vY3Rlb24v
-ZXRoZXJuZXQuYwo+ID4+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9vY3Rlb24vZXRoZXJuZXQuYwo+
-ID4+IEBAIC03ODQsNyArNzg0LDcgQEAgc3RhdGljIGludCBjdm1fb2N0X3Byb2JlKHN0cnVjdCBw
-bGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gPj4gICAgICAgICAgICBwcml2LT5pbW9kZSA9IENWTVhf
-SEVMUEVSX0lOVEVSRkFDRV9NT0RFX0RJU0FCTEVEOwo+ID4+ICAgICAgICAgICAgcHJpdi0+cG9y
-dCA9IENWTVhfUElQX05VTV9JTlBVVF9QT1JUUzsKPiA+PiAgICAgICAgICAgIHByaXYtPnF1ZXVl
-ID0gLTE7Cj4gPj4gLSAgICAgICAgICAgIHN0cmNweShkZXYtPm5hbWUsICJwb3clZCIpOwo+ID4+
-ICsgICAgICAgICAgICBzdHJzY3B5KGRldi0+bmFtZSwgInBvdyVkIiwgc2l6ZW9mKGRldi0+bmFt
-ZSkpOwo+ID4gCj4gPiBJcyB0aGVyZSBhIHByb2dyYW0gd2hpY2ggaXMgZ2VuZXJhdGluZyBhIHdh
-cm5pbmcgZm9yIHRoaXMgY29kZT8gIFdlIGtub3cKPiA+IHRoYXQgInBvdyVkIiBpcyA2IGNoYXJh
-Y3RlcnMgYW5kIHN0YXRpYyBhbmFseXNpcyB0b29scyBjYW4gdW5kZXJzdGFuZAo+ID4gdGhpcyBj
-b2RlIGZpbmUgc28gd2Uga25vdyBpdCdzIHNhZmUuCj4gCj4gV2VsbCBJIHdhcyBjb25mdXNlZCB0
-b28gYnV0IGNoZWNrcGF0Y2ggY29tcGxhaW5lZCBhYm91dCAKPiBpdCBzbyBJIGZpZ3VyZWQgSSdk
-IGNsZWFuIGl0IHVwIHF1aWNrCgpBaC4gIEl0J3MgYSBuZXcgY2hlY2twYXRjaCB3YXJuaW5nLiAg
-SSBkb24ndCBjYXJlIGluIHRoYXQgY2FzZS4gIEknbQpmaW5lIHdpdGggcmVwbGFjaW5nIGFsbCBv
-ZiB0aGVzZSBpbiB0aGF0IGNhc2UuCgpyZWdhcmRzLApkYW4gY2FycGVudGVyCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QK
-ZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVy
-cHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+Ck9uIDExIFNlcCAyMDE5LCBhdCAxMToxNywgRGFuIENhcnBlbnRlciA8ZGFuLmNhcnBlbnRlckBv
+cmFjbGUuY29tPiB3cm90ZToKPiAKPiDvu79PbiBXZWQsIFNlcCAxMSwgMjAxOSBhdCAxMTowNDoz
+OEFNICswMjAwLCBTYW5kcm8gVm9sZXJ5IHdyb3RlOgo+PiAKPj4gCj4+Pj4gT24gMTEgU2VwIDIw
+MTksIGF0IDEwOjUyLCBEYW4gQ2FycGVudGVyIDxkYW4uY2FycGVudGVyQG9yYWNsZS5jb20+IHdy
+b3RlOgo+Pj4gCj4+PiDvu79PbiBXZWQsIFNlcCAxMSwgMjAxOSBhdCAwODoyMzo1OUFNICswMjAw
+LCBTYW5kcm8gVm9sZXJ5IHdyb3RlOgo+Pj4+IHN0cmNweSB3YXMgdXNlZCBtdWx0aXBsZSB0aW1l
+cyBpbiBzdHJjcHkgdG8gd3JpdGUgaW50byBkZXYtPm5hbWUuCj4+Pj4gSSByZXBsYWNlZCB0aGVt
+IHdpdGggc3Ryc2NweS4KPj4+PiAKPj4+PiBTaWduZWQtb2ZmLWJ5OiBTYW5kcm8gVm9sZXJ5IDxz
+YW5kcm9Adm9sZXJ5LmNvbT4KPj4+PiAtLS0KPj4+PiBkcml2ZXJzL3N0YWdpbmcvb2N0ZW9uL2V0
+aGVybmV0LmMgfCAxNiArKysrKysrKy0tLS0tLS0tCj4+Pj4gMSBmaWxlIGNoYW5nZWQsIDggaW5z
+ZXJ0aW9ucygrKSwgOCBkZWxldGlvbnMoLSkKPj4+PiAKPj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9zdGFnaW5nL29jdGVvbi9ldGhlcm5ldC5jIGIvZHJpdmVycy9zdGFnaW5nL29jdGVvbi9ldGhl
+cm5ldC5jCj4+Pj4gaW5kZXggODg4OTQ5NGFkZjFmLi5jZjhlOWEyM2ViZjkgMTAwNjQ0Cj4+Pj4g
+LS0tIGEvZHJpdmVycy9zdGFnaW5nL29jdGVvbi9ldGhlcm5ldC5jCj4+Pj4gKysrIGIvZHJpdmVy
+cy9zdGFnaW5nL29jdGVvbi9ldGhlcm5ldC5jCj4+Pj4gQEAgLTc4NCw3ICs3ODQsNyBAQCBzdGF0
+aWMgaW50IGN2bV9vY3RfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPj4+PiAg
+ICAgICAgICAgcHJpdi0+aW1vZGUgPSBDVk1YX0hFTFBFUl9JTlRFUkZBQ0VfTU9ERV9ESVNBQkxF
+RDsKPj4+PiAgICAgICAgICAgcHJpdi0+cG9ydCA9IENWTVhfUElQX05VTV9JTlBVVF9QT1JUUzsK
+Pj4+PiAgICAgICAgICAgcHJpdi0+cXVldWUgPSAtMTsKPj4+PiAtICAgICAgICAgICAgc3RyY3B5
+KGRldi0+bmFtZSwgInBvdyVkIik7Cj4+Pj4gKyAgICAgICAgICAgIHN0cnNjcHkoZGV2LT5uYW1l
+LCAicG93JWQiLCBzaXplb2YoZGV2LT5uYW1lKSk7Cj4+PiAKPj4+IElzIHRoZXJlIGEgcHJvZ3Jh
+bSB3aGljaCBpcyBnZW5lcmF0aW5nIGEgd2FybmluZyBmb3IgdGhpcyBjb2RlPyAgV2Uga25vdwo+
+Pj4gdGhhdCAicG93JWQiIGlzIDYgY2hhcmFjdGVycyBhbmQgc3RhdGljIGFuYWx5c2lzIHRvb2xz
+IGNhbiB1bmRlcnN0YW5kCj4+PiB0aGlzIGNvZGUgZmluZSBzbyB3ZSBrbm93IGl0J3Mgc2FmZS4K
+Pj4gCj4+IFdlbGwgSSB3YXMgY29uZnVzZWQgdG9vIGJ1dCBjaGVja3BhdGNoIGNvbXBsYWluZWQg
+YWJvdXQgCj4+IGl0IHNvIEkgZmlndXJlZCBJJ2QgY2xlYW4gaXQgdXAgcXVpY2sKPiAKPiBBaC4g
+IEl0J3MgYSBuZXcgY2hlY2twYXRjaCB3YXJuaW5nLiAgSSBkb24ndCBjYXJlIGluIHRoYXQgY2Fz
+ZS4gIEknbQo+IGZpbmUgd2l0aCByZXBsYWNpbmcgYWxsIG9mIHRoZXNlIGluIHRoYXQgY2FzZS4K
+CkFscmlnaHQgdGhhbmtzLiBDYW4geW91IHJldmlldyB0aGlzPwoKVGhhbmtzLApTYW5kcm8gVgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWls
+aW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2Lmxp
+bnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
