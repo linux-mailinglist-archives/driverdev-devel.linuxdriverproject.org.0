@@ -2,76 +2,92 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 327FCB023C
-	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Sep 2019 18:57:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A64BB029D
+	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Sep 2019 19:24:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0622987E17;
-	Wed, 11 Sep 2019 16:57:09 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 934E787E36;
+	Wed, 11 Sep 2019 17:24:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2Lw4GK9-mOaj; Wed, 11 Sep 2019 16:57:08 +0000 (UTC)
+	with ESMTP id bW+K+pQrUu4U; Wed, 11 Sep 2019 17:24:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6E58287DB1;
-	Wed, 11 Sep 2019 16:57:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 29C5D83DD9;
+	Wed, 11 Sep 2019 17:24:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A39D91BF379
- for <devel@linuxdriverproject.org>; Wed, 11 Sep 2019 16:56:58 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E644B1BF59B
+ for <devel@linuxdriverproject.org>; Wed, 11 Sep 2019 17:24:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9C8DE87D9F
- for <devel@linuxdriverproject.org>; Wed, 11 Sep 2019 16:56:58 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E0D41815E3
+ for <devel@linuxdriverproject.org>; Wed, 11 Sep 2019 17:24:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XLSaTwqs1fCh for <devel@linuxdriverproject.org>;
- Wed, 11 Sep 2019 16:56:58 +0000 (UTC)
+ with ESMTP id eG5Qmq4q3-fw for <devel@linuxdriverproject.org>;
+ Wed, 11 Sep 2019 17:24:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f194.google.com (mail-qt1-f194.google.com
- [209.85.160.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 0A42387D9D
- for <devel@driverdev.osuosl.org>; Wed, 11 Sep 2019 16:56:58 +0000 (UTC)
-Received: by mail-qt1-f194.google.com with SMTP id g4so26129478qtq.7
- for <devel@driverdev.osuosl.org>; Wed, 11 Sep 2019 09:56:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=XDbZC3bZF8XpaYb842hmO7yVtcVxNizf0TkhRdb4yTk=;
- b=rVV9XS/4n7H2anFF9L1lNCNAafr+hk0uEihHOz+hRzTLef7wnIA9vnzKj2/KkNQbqa
- 9HnYOl9stj2kk070wkUJLbJq2j9PhpzQJ9fo04rtXMNi6F7IHTUFuoo/djNcyIR7CIBJ
- UVQbzGyVqks8MdZ/OH58a7xftUdt8/47KRCKyT44eTG6oUjys2NRz/wcOED0qmrn0S4H
- jmvt5HjzxuXiabL2lU4jXXlXcfwACrdgmTrjcklvnR/7N4kDuH+kdv2lS0z5YSAAK4nD
- GFtF6NyogU6UwBJRyeYGL80O5qmzLdHwXoydkd+3hukR1HKDdqVJStbvaaeKFjZOf0Qu
- ixUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=XDbZC3bZF8XpaYb842hmO7yVtcVxNizf0TkhRdb4yTk=;
- b=gqrVBkAx5zE/aEiGpb+if58DZCY1MyZQ5LMUvOGvbhtos35DRbP3CeCDhIki5OS/Tx
- ysXbO7m6LWNESMrrr9YpMi7TStOrx9B6CGtk0OzLwyaScq8Tbgrs9l9piHmZjYYyq4va
- VktWUBkyDG9RpieZ+rKiirXqkdS0kP+6kD/Dx1DxeiuuQB59U4zKI5Q3pb+9fv63oHIq
- ernr59j3I2qwQwHymMjRmzBrLX5qAVtLlXeuSpmwHOUOGkVyMpg5RZjoLjtrsmBMxMcm
- PbcE5i4eVNbj/1yyJ8vRfha8qH37HmFDQGVwyo2Doj7E4dgtL/gvBanty5CU++JSXYwI
- HDSw==
-X-Gm-Message-State: APjAAAXCl45X+x+USbRx7txjc+FQ84hvoeXUQLj7/0AYoDy0k+yGxabp
- I1OR+TBWyBX1jpNs44zxUKY=
-X-Google-Smtp-Source: APXvYqxAf+YKCqdV0BFUy0qCOEjs4Yx9hU9Tt9M9uTLF5LH5uEZ3a8uBzOA/oLI8SwPl5DaRqi4aTg==
-X-Received: by 2002:ac8:5353:: with SMTP id d19mr36361769qto.231.1568221017076; 
- Wed, 11 Sep 2019 09:56:57 -0700 (PDT)
-Received: from Debian.gxnx00eri1wudnlrc5f3ppaydc.bx.internal.cloudapp.net
- ([40.71.170.81])
- by smtp.gmail.com with ESMTPSA id m22sm9665103qkk.28.2019.09.11.09.56.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 Sep 2019 09:56:56 -0700 (PDT)
-Date: Wed, 11 Sep 2019 16:56:55 +0000
-From: Amol Grover <frextrite@gmail.com>
-To: Steve Longerbeam <slongerbeam@gmail.com>
-Subject: [PATCH] staging: media: Fix alignment to match open parenthesis
-Message-ID: <20190911165655.GA22041@Debian.gxnx00eri1wudnlrc5f3ppaydc.bx.internal.cloudapp.net>
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 57EAD860D6
+ for <devel@driverdev.osuosl.org>; Wed, 11 Sep 2019 17:24:36 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x8BHNx0G181328;
+ Wed, 11 Sep 2019 17:24:34 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=VWik13ipRm/Hq5xXs2BO/ZA9+psKkHTYcDciUtPvFGk=;
+ b=FOlnkmNMYpZSJciKOEf8UOquN/Ieu7QWq/eYhP/64U5tZ9Iu+grNzpsOT+coBCCeEZh4
+ CGQL8IGXTgfhYUfzN3MpgDhpsFtXT4YctwTm7oeWfyp0cJBkyFjHgfovfGYKR7Z9TFBD
+ djSYrBNLrxdO2XrVOKKo+rWTeSiQXOzu4r5W7MlQJK+k++D0P/ChjuwX3+V4ZhQVylPA
+ nCKRY4EmjYj4J+yAIL1vl0F92EGefDDHq7q8jliqgpCgQZ2/HPeSkoaYnbymHTZKC1Mb
+ G5CRwH0arIsyUxrnH8l10geCt9CHrGPSNz81dxE6+Dx6BVrtc/Wa+GlST4njo5Htqxzh 4g== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by userp2130.oracle.com with ESMTP id 2uw1m93nwb-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 11 Sep 2019 17:24:34 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x8BHOL9V006379;
+ Wed, 11 Sep 2019 17:24:33 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by aserp3020.oracle.com with ESMTP id 2uxk0tfbpr-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 11 Sep 2019 17:24:33 +0000
+Received: from abhmp0007.oracle.com (abhmp0007.oracle.com [141.146.116.13])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x8BHOTtE032582;
+ Wed, 11 Sep 2019 17:24:30 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Wed, 11 Sep 2019 10:24:29 -0700
+Date: Wed, 11 Sep 2019 20:24:22 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Rohit Sarkar <rohitsarkar5398@gmail.com>
+Subject: Re: [PATCH] staging: vhciq_core: replace snprintf with scnprintf
+Message-ID: <20190911172422.GK20699@kadam>
+References: <20190911135112.GA5569@SARKAR>
+ <7bf3c74d-e690-1ef1-dd74-ac98667e42ef@i2se.com>
+ <20190911142543.GA9873@SARKAR> <20190911144312.GL15977@kadam>
+ <20190911150300.GA12027@SARKAR>
 MIME-Version: 1.0
 Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20190911150300.GA12027@SARKAR>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9377
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=693
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1906280000 definitions=main-1909110160
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9377
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=763 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1906280000
+ definitions=main-1909110160
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,48 +100,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Sascha Hauer <s.hauer@pengutronix.de>,
- linux-kernel@vger.kernel.org, Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
- linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ kernel-janitors@vger.kernel.org,
+ Tobias =?iso-8859-1?Q?B=FCttner?= <tobias.buettner@fau.de>,
+ Eric Anholt <eric@anholt.net>, Stefan Wahren <wahrenst@gmx.net>,
+ Dominic Braun <inf.braun@fau.de>, linux-rpi-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-CHECK: Alignment should match open parenthesis
+On Wed, Sep 11, 2019 at 08:33:00PM +0530, Rohit Sarkar wrote:
+> There are a lot of usages of "snprintf" throughout the staging
+> directory (315 to be exact)
+> Would it be worthwhile to find ones that may cause an information leak
+> and replace them with "scnprintf"?
 
-Signed-off-by: Amol Grover <frextrite@gmail.com>
----
- drivers/staging/media/imx/imx-media-csi.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+A lot of times it's really easy to see that the uses are safe, so
+snprintf() is fine in that case.  If it's not obviously safe then change
+it.
 
-diff --git a/drivers/staging/media/imx/imx-media-csi.c b/drivers/staging/media/imx/imx-media-csi.c
-index 367e39f5b382..773b3d6964cf 100644
---- a/drivers/staging/media/imx/imx-media-csi.c
-+++ b/drivers/staging/media/imx/imx-media-csi.c
-@@ -627,8 +627,8 @@ static int csi_idmac_start(struct csi_priv *priv)
- 	}
- 
- 	priv->nfb4eof_irq = ipu_idmac_channel_irq(priv->ipu,
--						 priv->idmac_ch,
--						 IPU_IRQ_NFB4EOF);
-+						  priv->idmac_ch,
-+						  IPU_IRQ_NFB4EOF);
- 	ret = devm_request_irq(priv->dev, priv->nfb4eof_irq,
- 			       csi_idmac_nfb4eof_interrupt, 0,
- 			       "imx-smfc-nfb4eof", priv);
-@@ -1472,7 +1472,7 @@ static void csi_try_fmt(struct csi_priv *priv,
- 			imx_media_enum_mbus_format(&code, 0,
- 						   CS_SEL_ANY, false);
- 			*cc = imx_media_find_mbus_format(code,
--							CS_SEL_ANY, false);
-+							 CS_SEL_ANY, false);
- 			sdformat->format.code = (*cc)->codes[0];
- 		}
- 
--- 
-2.20.1
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
