@@ -1,76 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 24FE6B1185
-	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Sep 2019 16:54:07 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8365FB15F1
+	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Sep 2019 23:40:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D58888733E;
-	Thu, 12 Sep 2019 14:54:04 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 576B788188;
+	Thu, 12 Sep 2019 21:40:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jRKjgFEW4TLL; Thu, 12 Sep 2019 14:54:04 +0000 (UTC)
+	with ESMTP id PEbB46KBFg+m; Thu, 12 Sep 2019 21:40:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DF75B85BDF;
-	Thu, 12 Sep 2019 14:54:02 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id EAFD288056;
+	Thu, 12 Sep 2019 21:40:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B0C8C1BF389
- for <devel@linuxdriverproject.org>; Thu, 12 Sep 2019 14:54:00 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 844961BF2FD
+ for <devel@linuxdriverproject.org>; Thu, 12 Sep 2019 21:40:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id AD8102051A
- for <devel@linuxdriverproject.org>; Thu, 12 Sep 2019 14:54:00 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 816B288056
+ for <devel@linuxdriverproject.org>; Thu, 12 Sep 2019 21:40:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OCWz1ZYNursg for <devel@linuxdriverproject.org>;
- Thu, 12 Sep 2019 14:53:59 +0000 (UTC)
+ with ESMTP id x4Z3lyaagjnh for <devel@linuxdriverproject.org>;
+ Thu, 12 Sep 2019 21:40:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
- [209.85.210.196])
- by silver.osuosl.org (Postfix) with ESMTPS id 91B3C2047A
- for <devel@driverdev.osuosl.org>; Thu, 12 Sep 2019 14:53:59 +0000 (UTC)
-Received: by mail-pf1-f196.google.com with SMTP id y22so16195536pfr.3
- for <devel@driverdev.osuosl.org>; Thu, 12 Sep 2019 07:53:59 -0700 (PDT)
+Received: from mail-qk1-f195.google.com (mail-qk1-f195.google.com
+ [209.85.222.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2E3A288046
+ for <devel@driverdev.osuosl.org>; Thu, 12 Sep 2019 21:40:03 +0000 (UTC)
+Received: by mail-qk1-f195.google.com with SMTP id s18so26131869qkj.3
+ for <devel@driverdev.osuosl.org>; Thu, 12 Sep 2019 14:40:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=IoVQbDWNnJatefEpHqNwx0WsYWf336HdB6z2aMcmRsw=;
- b=nw349E/CNvfCA91fOtroRLu+ZJo+CKztPvu3Kd+BEV3y/QPUx0cqnfwUrpGXx9uoD/
- qYiY151cKeJ0lhdAL5e7KOAs0ZXVT/aiFrDqZ0wiFE8k43zZtb4Zdczi4e0pPGGId63c
- aXJTcJPQEeGUS7+/cEHLhUGUCQD93FstTWCFv8RCuR7WqavU9q6uwNZ+qBQVtpoFGXJR
- AH/2Lg/fellVghCHMFAz9y3vwKSzXhnhi8ldUgXrkVYLgrVQVe8lrtM9nz3VbN70E6D2
- 8ANSwz3VHRbXdizNqgRwUqHapo7PLk+rUKBQxIaQimpvO9bikMLi89M50aKKNMLdUZRV
- 3EfQ==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=L5+jAMtI1CIAC/4kswIhxg+hTT5z+UEj9oJQQaJeISg=;
+ b=c16+RQYnxW6kaB0EHeYyU3adxGtPcgSkk1gXJPAcMW9cWmQKgM6GrLxoyWul4Dpcst
+ W4wNft32yrnZBJ8n/THumcMc7kY6L7JeUHLgC5kBsrU/EmexYRfFzw97nQHjue+PSuoL
+ IaEkXLIMj/NB2NzhtYDMTzautfhL/udKh6ZNQvCE0TCgRxQ8QXmVHD24iZFDTF+EZafA
+ U+JUzkBnrSlbC+lkKHoNX8kzbCS6wFEFpsGQLKfW9e4wTb/90KjU3Igr5O6votzCyMix
+ I2ZDRMlDt4Qj6pnyRrnv50vRit53anrXOvRLzD7UgQ/mdqILJklFBuETzuVzlNhl63mn
+ 8zlA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=IoVQbDWNnJatefEpHqNwx0WsYWf336HdB6z2aMcmRsw=;
- b=RY6MhK03jc0b+CfgSOZECfDgy6r5TPMaRmLmbfh1sulmo2a1++M6c8eK2rPkf0xmuE
- UBWpfBD3LJayHKbXHmrseA75YbFYcRjWl79dVUPxOcSAsKGcJYuttFQAMankbtgriNuR
- 7TP6Rkn13mOA5XMnSGi3AGl98o8Q6zfjAzJ6bqlQhab6hVDU9ToLrALWWH1ee97CsPjN
- RbHElziXIduIlzMyPnK4YYZPKjpuaGYhIe99Dja4a2maFHlVq01XpIgT8LnpxeIH5QKw
- YqZkdVVEwbEKcDmro8xC58xHTbuCBjcabbp9DCj+DoT6VfsvsquTFMWGotI0wnxBh6KC
- K1Ig==
-X-Gm-Message-State: APjAAAU2dPwxbERLRd3OdeqHkuKa5MuVtMrYPf+/DfRsBi7jTTR6L66J
- aKmxo6tdLA5JU1G+hTsJGqM=
-X-Google-Smtp-Source: APXvYqw1F2M79KnIG0E626caFbEoEpZa3O4KYrHAsA4ii2llTtOrrjSee5SYWTpqc46st16qwPZJLQ==
-X-Received: by 2002:a62:d4:: with SMTP id 203mr49117982pfa.210.1568300039107; 
- Thu, 12 Sep 2019 07:53:59 -0700 (PDT)
-Received: from SD.eic.com ([106.222.12.153])
- by smtp.gmail.com with ESMTPSA id x20sm12871036pfa.153.2019.09.12.07.53.56
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=L5+jAMtI1CIAC/4kswIhxg+hTT5z+UEj9oJQQaJeISg=;
+ b=OTrf4qR8ZhclW4gmA4qRhyplLkwTbBNV6lMlNTwCqlhborFgMe4KQdqDyGsd0/ZAy9
+ nTXkABCujh6jK49lIOdSfoWHgY3nk57I6thV9V/HKSy5t7coTAg7QfhnJZ6QaJtU6k2p
+ Hw7cTVjak2PLXeTL+uoOZWYBbrzTN9J6GiypesIvT4wb+IrKB/RqFSrOn+Hs3mobXE4x
+ rrXG+k0xXDFcIkBVT+1giNU/a3VjZOI4i/j3Ax15JTaiBR9Nck2ZVx2rAR0LAi/eQ2rx
+ 7NBMLzrBnTYdvCH3UzFFQ9c/CaPuWnXB5woN/pH4OZGyEeEMvBty5bH6u7tc+Fz5Bo+D
+ Sqfw==
+X-Gm-Message-State: APjAAAUma+cJbVHvqg4u7Tvh9Pr+l4q1vimCX13kRA7oMXi2ONq9P/qq
+ w84Ta0yKRDciNmqhvAOREU0=
+X-Google-Smtp-Source: APXvYqzKsEsyelFpRkqcom+4qOub5t05/y+CoXTvPvu3De/EusIO+CgjIUrZ5OJPNNgoxn3e3Io2gg==
+X-Received: by 2002:a37:6554:: with SMTP id z81mr13856107qkb.107.1568324402181; 
+ Thu, 12 Sep 2019 14:40:02 -0700 (PDT)
+Received: from localhost.localdomain (201-93-93-180.dial-up.telesp.net.br.
+ [201.93.93.180])
+ by smtp.gmail.com with ESMTPSA id v2sm9318509qtv.22.2019.09.12.14.39.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 12 Sep 2019 07:53:58 -0700 (PDT)
-Date: Thu, 12 Sep 2019 20:23:46 +0530
-From: Saiyam Doshi <saiyamdoshi.in@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rtl8723bs: remove unneeded conversion to bool
-Message-ID: <20190912145346.GA9013@SD.eic.com>
+ Thu, 12 Sep 2019 14:40:01 -0700 (PDT)
+From: Rodrigo Carvalho <rodrigorsdc@gmail.com>
+To: Lars-Peter Clausen <lars@metafoo.de>,
+ Michael Hennerich <Michael.Hennerich@analog.com>,
+ Stefan Popa <stefan.popa@analog.com>, Jonathan Cameron <jic23@kernel.org>,
+ Hartmut Knaack <knaack.h@gmx.de>,
+ Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH v2] dt-bindings: iio: accel: add binding documentation for
+ ADIS16240
+Date: Thu, 12 Sep 2019 18:39:29 -0300
+Message-Id: <20190912213929.3664-1-rodrigorsdc@gmail.com>
+X-Mailer: git-send-email 2.23.0.rc1
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,65 +90,95 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, Rodrigo Carvalho <rodrigorsdc@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Relational and logical operators evaluate to bool,
-explicit conversion is overly verbose and unneeded.
+This patch add device tree binding documentation for ADIS16240.
 
-This issue found using - Coccinelle (http://coccinelle.lip6.fr)
-
-Signed-off-by: Saiyam Doshi <saiyamdoshi.in@gmail.com>
+Signed-off-by: Rodrigo Ribeiro Carvalho <rodrigorsdc@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+V2:
+  - Remove true constant for spi-cpha and spi-cpol
+  - Add description field for spi-cpha and spi-cpol
+  - Add maxItems field for spi-cpha and spi-cpol
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index 2128886c9924..3bca37e70f5f 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -2922,7 +2922,8 @@ int issue_probereq_ex(struct adapter *padapter, struct ndis_802_11_ssid *pssid,
- 	int i = 0;
- 
- 	do {
--		ret = _issue_probereq(padapter, pssid, da, ch, append_wps, wait_ms > 0?true:false);
-+		ret = _issue_probereq(padapter, pssid, da, ch, append_wps,
-+				      wait_ms > 0);
- 
- 		i++;
- 
-@@ -3513,7 +3514,7 @@ int issue_nulldata(struct adapter *padapter, unsigned char *da, unsigned int pow
- 	}
- 
- 	do {
--		ret = _issue_nulldata(padapter, da, power_mode, wait_ms > 0?true:false);
-+		ret = _issue_nulldata(padapter, da, power_mode, wait_ms > 0);
- 
- 		i++;
- 
-@@ -3661,7 +3662,7 @@ int issue_qos_nulldata(struct adapter *padapter, unsigned char *da, u16 tid, int
- 		da = get_my_bssid(&(pmlmeinfo->network));
- 
- 	do {
--		ret = _issue_qos_nulldata(padapter, da, tid, wait_ms > 0?true:false);
-+		ret = _issue_qos_nulldata(padapter, da, tid, wait_ms > 0);
- 
- 		i++;
- 
-@@ -3769,7 +3770,7 @@ int issue_deauth_ex(struct adapter *padapter, u8 *da, unsigned short reason, int
- 	int i = 0;
- 
- 	do {
--		ret = _issue_deauth(padapter, da, reason, wait_ms > 0?true:false);
-+		ret = _issue_deauth(padapter, da, reason, wait_ms > 0);
- 
- 		i++;
- 
+ .../bindings/iio/accel/adi,adis16240.yaml     | 61 +++++++++++++++++++
+ 1 file changed, 61 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/iio/accel/adi,adis16240.yaml
+
+diff --git a/Documentation/devicetree/bindings/iio/accel/adi,adis16240.yaml b/Documentation/devicetree/bindings/iio/accel/adi,adis16240.yaml
+new file mode 100644
+index 000000000000..4b1bd2419604
+--- /dev/null
++++ b/Documentation/devicetree/bindings/iio/accel/adi,adis16240.yaml
+@@ -0,0 +1,61 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/iio/accel/adi,adis16240.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: ADIS16240 Programmable Impact Sensor and Recorder driver
++
++maintainers:
++  - Alexandru Ardelean <alexandru.ardelean@analog.com>
++
++description: |
++  ADIS16240 Programmable Impact Sensor and Recorder driver that supports
++  SPI interface.
++    https://www.analog.com/en/products/adis16240.html
++
++properties:
++  compatible:
++    enum:
++      - adi,adis16240
++
++  reg:
++    maxItems: 1
++
++  spi-cpha:
++    description: |
++      See Documentation/devicetree/bindings/spi/spi-controller.yaml
++    maxItems: 1
++
++  spi-cpol: |
++    description: |
++      See Documentation/devicetree/bindings/spi/spi-controller.yaml
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - interrupts
++
++examples:
++  - |
++    #include <dt-bindings/gpio/gpio.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    spi0 {
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        /* Example for a SPI device node */
++        accelerometer@0 {
++            compatible = "adi,adis16240";
++            reg = <0>;
++            spi-max-frequency = <2500000>;
++            spi-cpol;
++            spi-cpha;
++            interrupt-parent = <&gpio0>;
++            interrupts = <0 IRQ_TYPE_LEVEL_HIGH>;
++        };
++    };
 -- 
-2.20.1
+2.23.0.rc1
 
 _______________________________________________
 devel mailing list
