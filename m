@@ -1,77 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 833ECB2D15
-	for <lists+driverdev-devel@lfdr.de>; Sat, 14 Sep 2019 23:06:34 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 45498B2D17
+	for <lists+driverdev-devel@lfdr.de>; Sat, 14 Sep 2019 23:06:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 14CE4868FF;
-	Sat, 14 Sep 2019 21:06:33 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DF14F20519;
+	Sat, 14 Sep 2019 21:06:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 X-Amavis-Alert: BAD HEADER SECTION, Duplicate header field: "References"
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 857xBIoZyUS3; Sat, 14 Sep 2019 21:06:32 +0000 (UTC)
+	with ESMTP id inRNi+S3XSZs; Sat, 14 Sep 2019 21:06:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EF6DA864B8;
-	Sat, 14 Sep 2019 21:06:31 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C5BB620510;
+	Sat, 14 Sep 2019 21:06:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0F31C1BF300
- for <devel@linuxdriverproject.org>; Sat, 14 Sep 2019 21:06:30 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 609D11BF300
+ for <devel@linuxdriverproject.org>; Sat, 14 Sep 2019 21:06:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0C82087C70
- for <devel@linuxdriverproject.org>; Sat, 14 Sep 2019 21:06:30 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 51DD3204E3
+ for <devel@linuxdriverproject.org>; Sat, 14 Sep 2019 21:06:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 X-Amavis-Alert: BAD HEADER SECTION, Duplicate header field: "References"
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qPJ+oqZSovvW for <devel@linuxdriverproject.org>;
- Sat, 14 Sep 2019 21:06:28 +0000 (UTC)
+ with ESMTP id qDOc3EWN4c9r for <devel@linuxdriverproject.org>;
+ Sat, 14 Sep 2019 21:06:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f193.google.com (mail-pl1-f193.google.com
- [209.85.214.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id DFD7D87C89
- for <devel@driverdev.osuosl.org>; Sat, 14 Sep 2019 21:06:28 +0000 (UTC)
-Received: by mail-pl1-f193.google.com with SMTP id d3so14819154plr.1
- for <devel@driverdev.osuosl.org>; Sat, 14 Sep 2019 14:06:28 -0700 (PDT)
+Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
+ [209.85.215.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id E482E20517
+ for <devel@driverdev.osuosl.org>; Sat, 14 Sep 2019 21:06:32 +0000 (UTC)
+Received: by mail-pg1-f195.google.com with SMTP id n9so17115919pgc.1
+ for <devel@driverdev.osuosl.org>; Sat, 14 Sep 2019 14:06:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :in-reply-to:references;
- bh=cpkWTtgvsMgGFxwLXx7dTtk9tynt14yIShb7rKXrntc=;
- b=tzYnbYI93ze6iUZI9C7TzFhAngzJo7LebIaCecq71UPGMtK3Y3FZ4gjRq2YJBbvbz2
- NKZX3FV9biixac0tD0gds1ukDsWEJj1wwF1HIKVp0cVVHOzy6nRFnX5MLIbgQJ6HtiEI
- o8yimoCeBHJqNsLu+UyNlOqYEQ37+jteDbKpaLT0bLWMBwgMp9wTOBynvuI6I0w4o2cG
- olQ0PMxSyxYwyeSZt0UAaWJFwf1EM93Oaz5TYB7gLY+MHlyCEY9/if/Bn6UNdHtDdHEi
- oi2ZUqY78iGN+xWDBIqXAjmoS5DI+mqy4CGrgnffN58GB3B+AexqPZPqFIELrbFc4jeo
- Z+4w==
+ bh=jc8E/+KBTZE4VsqxlK25C8aQEeXge4zh1VW5pLpYeBk=;
+ b=Mk14/m7PduY6ea8HO9lwzBKo6+vpB+gqU472fpu4RJTft39t71wR3+4WXUEwzOQPK+
+ ucOWQtyXsWMmX/IbPewAcor//6FQc/l7DAAscug87/Vv0P9JbY6wCKvaItDviEj9jVnI
+ BGy9RfCFusao9m9eAYXgs0tzizZ6t3rtVEez+jY1+rP3lIsL3LchJz0uQ1PeFy2A3HbW
+ kOC1FbHQHuSGH2+C1d4kb1F+cmTBVcl3O/El/qUP3EwBJ/teEIRLVzjFmfqFiVw7Ce4r
+ mGywOd7Ksn1Sp/HI1RI+L+aynMT8VTaz12i1b2qc3DnBAsyuj1oZiBF6eqVgp9IppEyd
+ Vt1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:in-reply-to:references;
- bh=cpkWTtgvsMgGFxwLXx7dTtk9tynt14yIShb7rKXrntc=;
- b=H/uirLrPnvpLJiVX2lATpGjOgYchpvFKT25tjJLlD3GnchB03omU5U3Acvt2T4CPqx
- u9cKk1UXcuMUPnul93U4Ovz9UCtWZpUD/jlSbbD2L4XAwx2PcZ8/VG9j+ESdPr+O4wCd
- g+2jO3Hy1hzQENdEQZ3gvE2MGgfnw2TaM408uqu31xYuXAyuET0E0bMR2FtmCWO/wtV1
- UEwtFub24tmbR9ij1ibaUSWXsJuvg1CqKTn7zv+FfO+of7pNFCrUonf06rqmVOR2U82v
- qRAxQaxpcw5U8aOVXH6xdMkWUanGnFmJzvqqWcP8lpDaykTPErq9hGReUUFsV8t4aTnf
- KfBA==
-X-Gm-Message-State: APjAAAUvqZeX5CO6HbcryvcP9wJHZMgVz4j9Hnbr/tw3RhQJy8wctFQr
- hnb1kVZwDBCG3dZ1g7IVBrI=
-X-Google-Smtp-Source: APXvYqzlX2BIeQ/7rlo8IBCAWAyx1NJnpamnFXEPFOjsCkBDLnAtqlzLTjscZlcgiXqybaRNQUhLuA==
-X-Received: by 2002:a17:902:23:: with SMTP id
- 32mr57117935pla.214.1568495188538; 
- Sat, 14 Sep 2019 14:06:28 -0700 (PDT)
+ bh=jc8E/+KBTZE4VsqxlK25C8aQEeXge4zh1VW5pLpYeBk=;
+ b=s27+HdDni3WR5Q5xDDwhCJa5FEjB2oxPOOtVwhvrlKdxqQ7rL3CV/sJhojcf+Wkig2
+ Z/hwPVSv38Ot+00Djcv79ek0CSvD6aulEf6SW7UWJdxh+U6X5WXITof8BFh8WF5jd9sa
+ JvB1G3VDaReRT+f4/wgfrvUdoRvHHdV7zDOHskgx5U7bsgIUWsHhAKcYxgbCU7QFPtgh
+ AT0K6+CGXq5kgqC7HdK6O/AExDejK0jy603PlfVnnA1tLNZtTDkfZGO1Wzh1yN0lUSxF
+ 7EMC3IBR7QUdqtticzPTeuuXoKJZS6K1wQjMX/mVYJweIoDcWlW1vtpqairzLmNgdJaW
+ iTqA==
+X-Gm-Message-State: APjAAAWCoAcW/zVipS1SqA55F6GlDYGOajImJDU2G4RQSq88B7nxYU9u
+ Toe1xMntv/3zL+2Hmv9f96U=
+X-Google-Smtp-Source: APXvYqynTGa7VjAy8dC61Jhjr+kCqJ3Puo9YwexUNnSDexvgxRuqI/nDdJXlEYeoSC/EVXadYh5eog==
+X-Received: by 2002:a65:60d3:: with SMTP id r19mr5841867pgv.91.1568495192406; 
+ Sat, 14 Sep 2019 14:06:32 -0700 (PDT)
 Received: from localhost.localdomain ([117.248.166.236])
- by smtp.gmail.com with ESMTPSA id 62sm30895275pfg.164.2019.09.14.14.06.26
+ by smtp.gmail.com with ESMTPSA id 62sm30895275pfg.164.2019.09.14.14.06.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 14 Sep 2019 14:06:28 -0700 (PDT)
+ Sat, 14 Sep 2019 14:06:32 -0700 (PDT)
 From: Sumera Priyadarsini <sylphrenadin@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 2/3] staging: rtl8192u: Fix alignment to match open parenthesis
-Date: Sun, 15 Sep 2019 02:35:48 +0530
-Message-Id: <07a4311b70ed22833a01a9067418639905041cb7.1568494288.git.sylphrenadin@gmail.com>
+Subject: [PATCH 3/3] staging: rtl8192u: Remove unnecessary line-breaks in
+ function signatures
+Date: Sun, 15 Sep 2019 02:35:49 +0530
+Message-Id: <ed06fc34eecd883f02bb9a037522b65c63a5eec4.1568494288.git.sylphrenadin@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <cover.1568494288.git.sylphrenadin@gmail.com>
 References: <cover.1568494288.git.sylphrenadin@gmail.com>
@@ -96,45 +96,91 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch fixes the file r8192U_core.c to avoid the checkpatch.pl
-warning:
-	CHECK: Alignment should match open parenthesis
+This patch fixes the function signatures for rtl8192_handle_assoc_response,
+rtl8192_record_rxdesc_forlateruse, rtl819xusb_process_received_packet
+and other relevant code blocks to avoid the checkpatch.pl warning:
+
+	CHECK: Lines should not end with a '('
 
 Signed-off-by: Sumera Priyadarsini <sylphrenadin@gmail.com>
 ---
- drivers/staging/rtl8192u/r8192U_core.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/rtl8192u/r8192U_core.c | 28 ++++++++++----------------
+ 1 file changed, 11 insertions(+), 17 deletions(-)
 
 diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
-index ecdd4b1e95c5..f361cae78106 100644
+index f361cae78106..f0f755f8d8a1 100644
 --- a/drivers/staging/rtl8192u/r8192U_core.c
 +++ b/drivers/staging/rtl8192u/r8192U_core.c
-@@ -614,13 +614,13 @@ static void rtl8192_proc_init_one(struct net_device *dev)
- 		return;
- 
- 	proc_create_single("stats-rx", S_IFREG | S_IRUGO, dir,
--			proc_get_stats_rx);
-+			   proc_get_stats_rx);
- 	proc_create_single("stats-tx", S_IFREG | S_IRUGO, dir,
--			proc_get_stats_tx);
-+			   proc_get_stats_tx);
- 	proc_create_single("stats-ap", S_IFREG | S_IRUGO, dir,
--			proc_get_stats_ap);
-+			   proc_get_stats_ap);
- 	proc_create_single("registers", S_IFREG | S_IRUGO, dir,
--			proc_get_registers);
-+			   proc_get_registers);
+@@ -1893,10 +1893,9 @@ static int rtl8192_qos_association_resp(struct r8192_priv *priv,
+ 	return 0;
  }
  
- static void rtl8192_proc_remove_one(struct net_device *dev)
-@@ -4508,7 +4508,7 @@ static void query_rxdesc_status(struct sk_buff *skb,
- 		/* Rx A-MPDU */
- 		if (driver_info->FirstAGGR == 1 || driver_info->PartAggr == 1)
- 			RT_TRACE(COMP_RXDESC,
--				"driver_info->FirstAGGR = %d, driver_info->PartAggr = %d\n",
-+				 "driver_info->FirstAGGR = %d, driver_info->PartAggr = %d\n",
- 				 driver_info->FirstAGGR, driver_info->PartAggr);
+-static int rtl8192_handle_assoc_response(
+-		struct net_device *dev,
+-		struct ieee80211_assoc_response_frame *resp,
+-		struct ieee80211_network *network)
++static int rtl8192_handle_assoc_response(struct net_device *dev,
++					 struct ieee80211_assoc_response_frame *resp,
++					 struct ieee80211_network *network)
+ {
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
+ 
+@@ -3808,10 +3807,9 @@ static void rtl8192_process_phyinfo(struct r8192_priv *priv, u8 *buffer,
+ 	if (!pprevious_stats->bIsCCK &&
+ 	    (pprevious_stats->bPacketToSelf || pprevious_stats->bToSelfBA)) {
+ 		for (rfpath = RF90_PATH_A; rfpath < priv->NumTotalRFPath; rfpath++) {
+-			if (!rtl8192_phy_CheckIsLegalRFPath(
+-					priv->ieee80211->dev, rfpath))
++			if (!rtl8192_phy_CheckIsLegalRFPath(priv->ieee80211->dev,
++							    rfpath))
+ 				continue;
+-
+ 			if (priv->stats.rx_rssi_percentage[rfpath] == 0)
+ 				priv->stats.rx_rssi_percentage[rfpath] =
+ 					pprevious_stats->RxMIMOSignalStrength[rfpath];
+@@ -4139,8 +4137,7 @@ static void rtl8192_query_rxphystatus(struct r8192_priv *priv,
+ 			else
+ 				continue;
+ 
+-			if (!rtl8192_phy_CheckIsLegalRFPath(
+-					priv->ieee80211->dev, i))
++			if (!rtl8192_phy_CheckIsLegalRFPath(priv->ieee80211->dev, i))
+ 				continue;
+ 
+ 			rx_pwr[i] =
+@@ -4233,9 +4230,8 @@ static void rtl8192_query_rxphystatus(struct r8192_priv *priv,
  	}
+ }	/* QueryRxPhyStatus8190Pci */
+ 
+-static void rtl8192_record_rxdesc_forlateruse(
+-		struct ieee80211_rx_stats *psrc_stats,
+-		struct ieee80211_rx_stats *ptarget_stats)
++static void rtl8192_record_rxdesc_forlateruse(struct ieee80211_rx_stats *psrc_stats,
++					      struct ieee80211_rx_stats *ptarget_stats)
+ {
+ 	ptarget_stats->bIsAMPDU = psrc_stats->bIsAMPDU;
+ 	ptarget_stats->bFirstMPDU = psrc_stats->bFirstMPDU;
+@@ -4466,8 +4462,7 @@ static void query_rxdesc_status(struct sk_buff *skb,
+ 	 * Driver info are written to the RxBuffer following rx desc
+ 	 */
+ 	if (stats->RxDrvInfoSize != 0) {
+-		driver_info = (struct rx_drvinfo_819x_usb *)(
+-				skb->data
++		driver_info = (struct rx_drvinfo_819x_usb *)(skb->data
+ 				+ sizeof(struct rx_desc_819x_usb)
+ 				+ stats->RxBufShift
+ 			      );
+@@ -4575,9 +4570,8 @@ static void rtl8192_rx_nomal(struct sk_buff *skb)
+ 	}
+ }
+ 
+-static void rtl819xusb_process_received_packet(
+-		struct net_device *dev,
+-		struct ieee80211_rx_stats *pstats)
++static void rtl819xusb_process_received_packet(struct net_device *dev,
++					       struct ieee80211_rx_stats *pstats)
+ {
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
  
 -- 
 2.17.1
