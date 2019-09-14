@@ -1,82 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 45498B2D17
-	for <lists+driverdev-devel@lfdr.de>; Sat, 14 Sep 2019 23:06:50 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 87896B2D19
+	for <lists+driverdev-devel@lfdr.de>; Sat, 14 Sep 2019 23:08:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id DF14F20519;
-	Sat, 14 Sep 2019 21:06:48 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9EBE88578B;
+	Sat, 14 Sep 2019 21:08:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-X-Amavis-Alert: BAD HEADER SECTION, Duplicate header field: "References"
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id inRNi+S3XSZs; Sat, 14 Sep 2019 21:06:47 +0000 (UTC)
+	with ESMTP id hQonGRP_cyX9; Sat, 14 Sep 2019 21:08:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C5BB620510;
-	Sat, 14 Sep 2019 21:06:40 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 00D4B85758;
+	Sat, 14 Sep 2019 21:08:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 609D11BF300
- for <devel@linuxdriverproject.org>; Sat, 14 Sep 2019 21:06:39 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5FDA71BF300
+ for <devel@linuxdriverproject.org>; Sat, 14 Sep 2019 21:08:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 51DD3204E3
- for <devel@linuxdriverproject.org>; Sat, 14 Sep 2019 21:06:39 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5B754867FF
+ for <devel@linuxdriverproject.org>; Sat, 14 Sep 2019 21:08:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-X-Amavis-Alert: BAD HEADER SECTION, Duplicate header field: "References"
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qDOc3EWN4c9r for <devel@linuxdriverproject.org>;
- Sat, 14 Sep 2019 21:06:35 +0000 (UTC)
+ with ESMTP id wcj6gUGg4ziK for <devel@linuxdriverproject.org>;
+ Sat, 14 Sep 2019 21:08:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
- [209.85.215.195])
- by silver.osuosl.org (Postfix) with ESMTPS id E482E20517
- for <devel@driverdev.osuosl.org>; Sat, 14 Sep 2019 21:06:32 +0000 (UTC)
-Received: by mail-pg1-f195.google.com with SMTP id n9so17115919pgc.1
- for <devel@driverdev.osuosl.org>; Sat, 14 Sep 2019 14:06:32 -0700 (PDT)
+Received: from mail-oi1-f172.google.com (mail-oi1-f172.google.com
+ [209.85.167.172])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 1D53984EB0
+ for <devel@driverdev.osuosl.org>; Sat, 14 Sep 2019 21:08:47 +0000 (UTC)
+Received: by mail-oi1-f172.google.com with SMTP id v16so5391544oiv.13
+ for <devel@driverdev.osuosl.org>; Sat, 14 Sep 2019 14:08:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :in-reply-to:references;
- bh=jc8E/+KBTZE4VsqxlK25C8aQEeXge4zh1VW5pLpYeBk=;
- b=Mk14/m7PduY6ea8HO9lwzBKo6+vpB+gqU472fpu4RJTft39t71wR3+4WXUEwzOQPK+
- ucOWQtyXsWMmX/IbPewAcor//6FQc/l7DAAscug87/Vv0P9JbY6wCKvaItDviEj9jVnI
- BGy9RfCFusao9m9eAYXgs0tzizZ6t3rtVEez+jY1+rP3lIsL3LchJz0uQ1PeFy2A3HbW
- kOC1FbHQHuSGH2+C1d4kb1F+cmTBVcl3O/El/qUP3EwBJ/teEIRLVzjFmfqFiVw7Ce4r
- mGywOd7Ksn1Sp/HI1RI+L+aynMT8VTaz12i1b2qc3DnBAsyuj1oZiBF6eqVgp9IppEyd
- Vt1g==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=jMW5QQfqB3GgO3Rwut+y8ooMRK6oMNFBtSgXBDuvbgY=;
+ b=HvZan/wTdVlLNfNBct/c1zeuudQeshyJ69LVka0uJo6QZJZo61cdvd+XXNRN0uAfcd
+ mNzatB28Ta5FEYbS5cfOJzsSDH5QkOqZN4x+d1vF6pcackIOVqwSvfheY2l+MUlNueE0
+ lf7pi3eDjXxGYy9rATo0prNP0WfwnDS27R/Ode++EuNQ3wgXCZs0L5t2GetmQmWVa05z
+ 8hPCTxflzywUPju7Uf5g4+PZtS+rzmSL+dgiNENDhkTEd5xIZtzLPfvewT4Q2i8Bn3mr
+ 1b+qVHom0OkoHtSK7Y5ZxhaA5JvsACyQ2uu5alvI/SIf2NNKBq6GlFfA7ZqB4RIuf6yf
+ Cr9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:in-reply-to:references;
- bh=jc8E/+KBTZE4VsqxlK25C8aQEeXge4zh1VW5pLpYeBk=;
- b=s27+HdDni3WR5Q5xDDwhCJa5FEjB2oxPOOtVwhvrlKdxqQ7rL3CV/sJhojcf+Wkig2
- Z/hwPVSv38Ot+00Djcv79ek0CSvD6aulEf6SW7UWJdxh+U6X5WXITof8BFh8WF5jd9sa
- JvB1G3VDaReRT+f4/wgfrvUdoRvHHdV7zDOHskgx5U7bsgIUWsHhAKcYxgbCU7QFPtgh
- AT0K6+CGXq5kgqC7HdK6O/AExDejK0jy603PlfVnnA1tLNZtTDkfZGO1Wzh1yN0lUSxF
- 7EMC3IBR7QUdqtticzPTeuuXoKJZS6K1wQjMX/mVYJweIoDcWlW1vtpqairzLmNgdJaW
- iTqA==
-X-Gm-Message-State: APjAAAWCoAcW/zVipS1SqA55F6GlDYGOajImJDU2G4RQSq88B7nxYU9u
- Toe1xMntv/3zL+2Hmv9f96U=
-X-Google-Smtp-Source: APXvYqynTGa7VjAy8dC61Jhjr+kCqJ3Puo9YwexUNnSDexvgxRuqI/nDdJXlEYeoSC/EVXadYh5eog==
-X-Received: by 2002:a65:60d3:: with SMTP id r19mr5841867pgv.91.1568495192406; 
- Sat, 14 Sep 2019 14:06:32 -0700 (PDT)
-Received: from localhost.localdomain ([117.248.166.236])
- by smtp.gmail.com with ESMTPSA id 62sm30895275pfg.164.2019.09.14.14.06.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 14 Sep 2019 14:06:32 -0700 (PDT)
-From: Sumera Priyadarsini <sylphrenadin@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH 3/3] staging: rtl8192u: Remove unnecessary line-breaks in
- function signatures
-Date: Sun, 15 Sep 2019 02:35:49 +0530
-Message-Id: <ed06fc34eecd883f02bb9a037522b65c63a5eec4.1568494288.git.sylphrenadin@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <cover.1568494288.git.sylphrenadin@gmail.com>
-References: <cover.1568494288.git.sylphrenadin@gmail.com>
-In-Reply-To: <cover.1568494288.git.sylphrenadin@gmail.com>
-References: <cover.1568494288.git.sylphrenadin@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=jMW5QQfqB3GgO3Rwut+y8ooMRK6oMNFBtSgXBDuvbgY=;
+ b=mSbqtkZ7z++9Q2oKpUajBufTa8O47ERc7xbnKgRiK+DnM4UaCieOSPwM29DYTHku2+
+ OULDfgNqhSh92QLI4SrewBjCxl0mnWkoMVFWB0ZJArMd3WIlyIZvA8nbTn7jNmjFP3wP
+ rUFJVEZGkf5cfwAqYjuxUy0A5AfFnkNv3a+O1mC0ADvrCrDYiKcSua2G4tI3fDmqIi6s
+ xe9VGyCUn5HLwcPtajxFqvAKX5M5umTELSzJja0E7oF5UTLO/VXg52y4iQgwvOmUHHbx
+ rMs1J305MkiaolNKcfv4SEQZTUdunrjZBdLOQbhMItnji9g4OrJBTF/j2FrVQuGJAwGz
+ kt7w==
+X-Gm-Message-State: APjAAAW9E6a73N/uBzCTPGTbn4jDzR1eBKyz94tel23nWXQn+S9RBb8C
+ a7wNxdisRgfr2hepl3t1DtlrEyaiK54ODihS9dQ=
+X-Google-Smtp-Source: APXvYqzfdOCMLTAlz0b2bARRrW5zytkIb1s5zlrSoVgDJNzlQtpbzvMiBem0XyrOtygyCcs/mxPD4cgAbfUaj5V97r0=
+X-Received: by 2002:aca:7509:: with SMTP id q9mr8093677oic.111.1568495326122; 
+ Sat, 14 Sep 2019 14:08:46 -0700 (PDT)
+MIME-Version: 1.0
+References: <20190707065710.GA5560@kroah.com> <20190712083819.GA8862@kroah.com>
+ <20190712092319.wmke4i7zqzr26tly@function> <20190713004623.GA9159@gregn.net>
+ <20190725035352.GA7717@gregn.net>
+ <875znqhia0.fsf@cmbmachine.messageid.invalid>
+ <m3sgqucs1x.wl-covici@ccs.covici.com>
+ <CAOtcWM0qynSjnF6TtY_s7a51B7JweDb7jwdxStEmPvB9tJFU4Q@mail.gmail.com>
+ <20190821222209.GA4577@gregn.net>
+ <CAOtcWM0Jzo+wew-uiOmde+eZXEWZ310L8wXscWjJv5OXqXJe6Q@mail.gmail.com>
+ <20190909025429.GA4144@gregn.net>
+In-Reply-To: <20190909025429.GA4144@gregn.net>
+From: Okash Khawaja <okash.khawaja@gmail.com>
+Date: Sat, 14 Sep 2019 22:08:35 +0100
+Message-ID: <CAOtcWM0P=w-iBZzwekVrSpp7t2WO9RA5WP956zgDrNKvzA+4ZA@mail.gmail.com>
+Subject: Re: [HELP REQUESTED from the community] Was: Staging status of speakup
+To: Gregory Nowak <greg@gregn.net>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,102 +87,91 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, Simon Dickson <simonhdickson@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "Speakup is a screen review system for Linux." <speakup@linux-speakup.org>,
+ linux-kernel@vger.kernel.org, John Covici <covici@ccs.covici.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch fixes the function signatures for rtl8192_handle_assoc_response,
-rtl8192_record_rxdesc_forlateruse, rtl819xusb_process_received_packet
-and other relevant code blocks to avoid the checkpatch.pl warning:
+On Mon, Sep 9, 2019 at 3:55 AM Gregory Nowak <greg@gregn.net> wrote:
+>
+> On Sun, Sep 08, 2019 at 10:43:02AM +0100, Okash Khawaja wrote:
+> > Sorry, I have only now got round to working on this. It's not complete
+> > yet but I have assimilated the feedback and converted subjective
+> > phrases, like "I think..." into objective statements or put them in
+> > TODO: so that someone else may verify. I have attached it to this
+> > email.
+>
+> I think bleeps needs a TODO, since we don't know what values it accepts, or
+> what difference those values make. Also, to keep things uniform, we
+> should replace my "don't know" for trigger_time with a TODO. Looks
+> good to me otherwise. Thanks.
 
-	CHECK: Lines should not end with a '('
+Great thanks. I have updated.
 
-Signed-off-by: Sumera Priyadarsini <sylphrenadin@gmail.com>
----
- drivers/staging/rtl8192u/r8192U_core.c | 28 ++++++++++----------------
- 1 file changed, 11 insertions(+), 17 deletions(-)
+I have two questions:
 
-diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
-index f361cae78106..f0f755f8d8a1 100644
---- a/drivers/staging/rtl8192u/r8192U_core.c
-+++ b/drivers/staging/rtl8192u/r8192U_core.c
-@@ -1893,10 +1893,9 @@ static int rtl8192_qos_association_resp(struct r8192_priv *priv,
- 	return 0;
- }
- 
--static int rtl8192_handle_assoc_response(
--		struct net_device *dev,
--		struct ieee80211_assoc_response_frame *resp,
--		struct ieee80211_network *network)
-+static int rtl8192_handle_assoc_response(struct net_device *dev,
-+					 struct ieee80211_assoc_response_frame *resp,
-+					 struct ieee80211_network *network)
- {
- 	struct r8192_priv *priv = ieee80211_priv(dev);
- 
-@@ -3808,10 +3807,9 @@ static void rtl8192_process_phyinfo(struct r8192_priv *priv, u8 *buffer,
- 	if (!pprevious_stats->bIsCCK &&
- 	    (pprevious_stats->bPacketToSelf || pprevious_stats->bToSelfBA)) {
- 		for (rfpath = RF90_PATH_A; rfpath < priv->NumTotalRFPath; rfpath++) {
--			if (!rtl8192_phy_CheckIsLegalRFPath(
--					priv->ieee80211->dev, rfpath))
-+			if (!rtl8192_phy_CheckIsLegalRFPath(priv->ieee80211->dev,
-+							    rfpath))
- 				continue;
--
- 			if (priv->stats.rx_rssi_percentage[rfpath] == 0)
- 				priv->stats.rx_rssi_percentage[rfpath] =
- 					pprevious_stats->RxMIMOSignalStrength[rfpath];
-@@ -4139,8 +4137,7 @@ static void rtl8192_query_rxphystatus(struct r8192_priv *priv,
- 			else
- 				continue;
- 
--			if (!rtl8192_phy_CheckIsLegalRFPath(
--					priv->ieee80211->dev, i))
-+			if (!rtl8192_phy_CheckIsLegalRFPath(priv->ieee80211->dev, i))
- 				continue;
- 
- 			rx_pwr[i] =
-@@ -4233,9 +4230,8 @@ static void rtl8192_query_rxphystatus(struct r8192_priv *priv,
- 	}
- }	/* QueryRxPhyStatus8190Pci */
- 
--static void rtl8192_record_rxdesc_forlateruse(
--		struct ieee80211_rx_stats *psrc_stats,
--		struct ieee80211_rx_stats *ptarget_stats)
-+static void rtl8192_record_rxdesc_forlateruse(struct ieee80211_rx_stats *psrc_stats,
-+					      struct ieee80211_rx_stats *ptarget_stats)
- {
- 	ptarget_stats->bIsAMPDU = psrc_stats->bIsAMPDU;
- 	ptarget_stats->bFirstMPDU = psrc_stats->bFirstMPDU;
-@@ -4466,8 +4462,7 @@ static void query_rxdesc_status(struct sk_buff *skb,
- 	 * Driver info are written to the RxBuffer following rx desc
- 	 */
- 	if (stats->RxDrvInfoSize != 0) {
--		driver_info = (struct rx_drvinfo_819x_usb *)(
--				skb->data
-+		driver_info = (struct rx_drvinfo_819x_usb *)(skb->data
- 				+ sizeof(struct rx_desc_819x_usb)
- 				+ stats->RxBufShift
- 			      );
-@@ -4575,9 +4570,8 @@ static void rtl8192_rx_nomal(struct sk_buff *skb)
- 	}
- }
- 
--static void rtl819xusb_process_received_packet(
--		struct net_device *dev,
--		struct ieee80211_rx_stats *pstats)
-+static void rtl819xusb_process_received_packet(struct net_device *dev,
-+					       struct ieee80211_rx_stats *pstats)
- {
- 	struct r8192_priv *priv = ieee80211_priv(dev);
- 
--- 
-2.17.1
+1. Is it okay for these descriptions to go inside
+Documentation/ABI/stable? They have been around since 2.6 (2010). Or
+would we prefer Documentation/ABI/testing/?
+2. We are still missing descriptions for i18n/ directory. I have added
+filenames below. can someone can add description please:
 
+What:           /sys/accessibility/speakup/i18n/announcements
+KernelVersion:  2.6
+Contact:        speakup@linux-speakup.org
+Description:
+                TODO
+
+What:           /sys/accessibility/speakup/i18n/chartab
+KernelVersion:  2.6
+Contact:        speakup@linux-speakup.org
+Description:
+                TODO
+
+What:           /sys/accessibility/speakup/i18n/ctl_keys
+KernelVersion:  2.6
+Contact:        speakup@linux-speakup.org
+Description:
+                TODO
+
+What:           /sys/accessibility/speakup/i18n/function_names
+KernelVersion:  2.6
+Contact:        speakup@linux-speakup.org
+Description:
+                TODO
+
+What:           /sys/accessibility/speakup/i18n/states
+KernelVersion:  2.6
+Contact:        speakup@linux-speakup.org
+Description:
+                TODO
+What:           /sys/accessibility/speakup/i18n/characters
+KernelVersion:  2.6
+Contact:        speakup@linux-speakup.org
+Description:
+                TODO
+What:           /sys/accessibility/speakup/i18n/colors
+KernelVersion:  2.6
+Contact:        speakup@linux-speakup.org
+Description:
+                TODO
+What:           /sys/accessibility/speakup/i18n/formatted
+KernelVersion:  2.6
+Contact:        speakup@linux-speakup.org
+Description:
+                TODO
+What:           /sys/accessibility/speakup/i18n/key_names
+KernelVersion:  2.6
+Contact:        speakup@linux-speakup.org
+Description:
+                TODO
+
+Thanks,
+Okash
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
