@@ -1,93 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DE608B2CD6
-	for <lists+driverdev-devel@lfdr.de>; Sat, 14 Sep 2019 21:52:21 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A82EEB2D14
+	for <lists+driverdev-devel@lfdr.de>; Sat, 14 Sep 2019 23:06:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D1DE585A0E;
-	Sat, 14 Sep 2019 19:52:18 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id F1B58868FF;
+	Sat, 14 Sep 2019 21:06:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PnnCBEgaNSqx; Sat, 14 Sep 2019 19:52:18 +0000 (UTC)
+	with ESMTP id lwnjFVUeJXzU; Sat, 14 Sep 2019 21:06:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 80C17857CE;
-	Sat, 14 Sep 2019 19:52:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B6DF986841;
+	Sat, 14 Sep 2019 21:06:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 568401BF574
- for <devel@linuxdriverproject.org>; Sat, 14 Sep 2019 19:52:15 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 15E231BF300
+ for <devel@linuxdriverproject.org>; Sat, 14 Sep 2019 21:06:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 4F9FF86354
- for <devel@linuxdriverproject.org>; Sat, 14 Sep 2019 19:52:15 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 0BB7C86841
+ for <devel@linuxdriverproject.org>; Sat, 14 Sep 2019 21:06:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oHPywJjiv8M2 for <devel@linuxdriverproject.org>;
- Sat, 14 Sep 2019 19:52:14 +0000 (UTC)
+ with ESMTP id 6aojShh86itj for <devel@linuxdriverproject.org>;
+ Sat, 14 Sep 2019 21:06:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A50448632F
- for <devel@driverdev.osuosl.org>; Sat, 14 Sep 2019 19:52:14 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x8EJo3Xt055018;
- Sat, 14 Sep 2019 19:52:13 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=eRMSfxxBJy3lxRksyJII4ggz6OzzD4otLOcp22ycFzw=;
- b=F/wmmZogBu4j5tq2csph+1zj8ghwfFXZ87vNKKkkhGU18z49ktTES8pld7utkJIYlu7e
- S2s3g/0eqAmaHcAgDWsYbhCd8lydTPZtlGhUu/yvcRkYVCy1Gwz3dfrW5MsTniNh7Ol0
- KJJSf64tgzaRBR+bSKw+/E3UoCTO1KdDnpkvKAdeiB2NalYSgUe8fpkmq3Vv99c6YdJn
- 2BnMvOyp4uGq7Ljbgeqbq3Nr3SgcGPaQi7s/UYxAuhKNj1xgg8tNIv9wKKtSAwQAdcsv
- 0Kknc9daOo7CKZjcvQdkWJdqIbFZeIkA1TzNPPgH7aLL8r8uWB+gWa753Jc5VD0sS/tt 5A== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by userp2120.oracle.com with ESMTP id 2v0ruq9t91-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Sat, 14 Sep 2019 19:52:13 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x8EJn6qc109785;
- Sat, 14 Sep 2019 19:52:12 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by aserp3020.oracle.com with ESMTP id 2v0r1etkeq-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Sat, 14 Sep 2019 19:52:12 +0000
-Received: from abhmp0009.oracle.com (abhmp0009.oracle.com [141.146.116.15])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x8EJqApr027926;
- Sat, 14 Sep 2019 19:52:12 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Sat, 14 Sep 2019 12:52:10 -0700
-Date: Sat, 14 Sep 2019 22:52:02 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Ivan Safonov <insafonov@gmail.com>
-Subject: Re: [PATCH] staging: r8188eu: replace rtw_malloc() with it's
- definition
-Message-ID: <20190914195202.GC18977@kadam>
-References: <20190908090026.2656-1-insafonov@gmail.com>
- <20190910115932.GB15977@kadam>
- <47674485-194b-0b09-81ed-5d855284ebd9@gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <47674485-194b-0b09-81ed-5d855284ebd9@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9380
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=675
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1908290000 definitions=main-1909140209
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9380
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=731 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
- definitions=main-1909140209
+Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
+ [209.85.214.194])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4E8488685D
+ for <devel@driverdev.osuosl.org>; Sat, 14 Sep 2019 21:06:05 +0000 (UTC)
+Received: by mail-pl1-f194.google.com with SMTP id t11so14787605plo.0
+ for <devel@driverdev.osuosl.org>; Sat, 14 Sep 2019 14:06:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=96+3Yk0DProrggwJcMsGZWA+XIv/wTqfIDAX2YQU1U8=;
+ b=fA+QRAOk/8ftWbHvV2gjusRS/crTFbn68elHPryU3OzU4kFgs2w2hbp6KnTMa9Q/03
+ ZNq3/3dWnqJMtpku10rXYHtiIy8jGJK3s8zAWdib1xEmRMMyF4L5nl/RLT/fy9G/Vryj
+ x6ajZkUmOs7LFu9jLaw9KqHW6xsTcXlKRN1OM2tt7D1FcmLQV+QrtIGjoHG4AssserGx
+ /2cRb/+/ODFBMfr7LXRb3pP/0k0iLHNJ1EEn2XWLn5/bqX1EEl7Fc+hMgBi6VKGGpr3H
+ OQk+uSArrhElZ1aRZR6FGfaKDrU4NvAj7Ta1X2tzyuUXouZt3fKXbLoAOrvbItjsKJbV
+ dXqg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=96+3Yk0DProrggwJcMsGZWA+XIv/wTqfIDAX2YQU1U8=;
+ b=m9vp0F9f9udQNM50RErBvmYrpY9zRnX61Fq3FUlhA54XUD3IptGTkyo0OgelzBizbR
+ zdTwsbRM5b+Q+UWyGmtunqFqqjhzYXguW200U3plmktbmuC2eCc4SxM/38fKAqfeiGbq
+ hSoI9WzVT7yA2VMxAE2r6ZQeWzKTTOKYcggSU/N3bHWAwT6VplvxsvXVOTUJyzdRoECD
+ XCqFZbycPgRn0yC0mvuZgLcQIBG1yerRt4trH9nDTUzdJ/gwomURScQS+rHYfmnRFN73
+ KbTSvNOG3QblcVH8eVJEX885nHSNQziqopE1gE8e5iRmGoWRwX71WGhEs6RP2fqirI8M
+ O3lQ==
+X-Gm-Message-State: APjAAAXYvqEg1y+CUQqXgsJvsKaLYcUvyyx7AQFlT0q14sfi9NX+PDAU
+ WYWY7FpQChd0a0mOXJm+IJg=
+X-Google-Smtp-Source: APXvYqwRaAORUc4b6EsqVE0rMD8oXhoVtAfhJVGcCtydyuPY123o300yCsOKopL597w8bH+r8CL8dA==
+X-Received: by 2002:a17:902:b115:: with SMTP id
+ q21mr57187445plr.241.1568495164893; 
+ Sat, 14 Sep 2019 14:06:04 -0700 (PDT)
+Received: from localhost.localdomain ([117.248.166.236])
+ by smtp.gmail.com with ESMTPSA id 62sm30895275pfg.164.2019.09.14.14.06.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 14 Sep 2019 14:06:04 -0700 (PDT)
+From: Sumera Priyadarsini <sylphrenadin@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH 0/3] rtl8192u: Fix checkpatch warnings in r8192U_core.c
+Date: Sun, 15 Sep 2019 02:35:46 +0530
+Message-Id: <cover.1568494288.git.sylphrenadin@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,51 +81,27 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Florian =?iso-8859-1?Q?B=FCstgens?= <flbue@gmx.de>,
- Nishka Dasgupta <nishkadg.linux@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Robert =?utf-8?B?V8SZY8WCYXdza2k=?= <r.weclawski@gmail.com>,
- Larry Finger <Larry.Finger@lwfinger.net>
+Cc: devel@driverdev.osuosl.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, Sep 14, 2019 at 06:18:03PM +0300, Ivan Safonov wrote:
-> On 9/10/19 2:59 PM, Dan Carpenter wrote:
-> > On Sun, Sep 08, 2019 at 12:00:26PM +0300, Ivan Safonov wrote >> rtw_malloc prevents the use of kmemdup/kzalloc and others.
-> > > 
-> > > Signed-off-by: Ivan Safonov <insafonov@gmail.com>
-> > > ---
-> > >   drivers/staging/rtl8188eu/core/rtw_ap.c        |  4 ++--
-> > >   drivers/staging/rtl8188eu/core/rtw_mlme_ext.c  |  2 +-
-> > >   .../staging/rtl8188eu/include/osdep_service.h  |  3 ---
-> > >   drivers/staging/rtl8188eu/os_dep/ioctl_linux.c | 18 +++++++++---------
-> > >   drivers/staging/rtl8188eu/os_dep/mlme_linux.c  |  2 +-
-> > >   .../staging/rtl8188eu/os_dep/osdep_service.c   |  7 +------
-> > >   6 files changed, 14 insertions(+), 22 deletions(-)
-> > > 
-> > > diff --git a/drivers/staging/rtl8188eu/core/rtw_ap.c b/drivers/staging/rtl8188eu/core/rtw_ap.c
-> > > index 51a5b71f8c25..c9c57379b7a2 100644
-> > > --- a/drivers/staging/rtl8188eu/core/rtw_ap.c
-> > > +++ b/drivers/staging/rtl8188eu/core/rtw_ap.c
-> > > @@ -104,7 +104,7 @@ static void update_BCNTIM(struct adapter *padapter)
-> > >   	}
-> > >   	if (remainder_ielen > 0) {
-> > > -		pbackup_remainder_ie = rtw_malloc(remainder_ielen);
-> > > +		pbackup_remainder_ie = kmalloc(remainder_ielen, in_interrupt() ? GFP_ATOMIC : GFP_KERNEL);
-> >                                                                  ^^^^^^^^^^^^^
-> > This stuff isn't right.  It really should be checking if spinlocks are
-> > held or IRQs are disabled.  And the only way to do that is by auditing
-> > the callers.
-> I hope to make these changes later as separate independent patches.
-> This patch do only one thing - remove rtw_malloc().
+This patch series fixes several checkpatch.pl warnings in r8192U_core.c
+related to unwanted blank lines, line-breaks and alignment issues.
 
-No, just do that in one step.
+Sumera Priyadarsini (3):
+  staging: rtl8192u: Remove unnecessary blank lines
+  staging: rtl8192u: Fix alignment to match open parenthesis
+  staging: rtl8192u: Remove unnecessary line-breaks in function
+    signatures
 
-regards,
-dan carpenter
+ drivers/staging/rtl8192u/r8192U_core.c | 108 ++++---------------------
+ 1 file changed, 16 insertions(+), 92 deletions(-)
+
+-- 
+2.17.1
 
 _______________________________________________
 devel mailing list
