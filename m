@@ -1,78 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A6A5DB2B66
-	for <lists+driverdev-devel@lfdr.de>; Sat, 14 Sep 2019 15:40:26 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2BAF5B2BC8
+	for <lists+driverdev-devel@lfdr.de>; Sat, 14 Sep 2019 17:15:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4189C85B04;
-	Sat, 14 Sep 2019 13:40:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9077E87FF7;
+	Sat, 14 Sep 2019 15:14:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id C71nzgDApT8a; Sat, 14 Sep 2019 13:40:23 +0000 (UTC)
+	with ESMTP id SChim4+CuVj6; Sat, 14 Sep 2019 15:14:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BA1A185B4A;
-	Sat, 14 Sep 2019 13:40:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0E80A87E37;
+	Sat, 14 Sep 2019 15:14:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 443F21BF2E4
- for <devel@linuxdriverproject.org>; Sat, 14 Sep 2019 13:40:21 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3663F1BF421
+ for <devel@linuxdriverproject.org>; Sat, 14 Sep 2019 15:14:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 377A88443F
- for <devel@linuxdriverproject.org>; Sat, 14 Sep 2019 13:40:21 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 32D8B85E60
+ for <devel@linuxdriverproject.org>; Sat, 14 Sep 2019 15:14:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id f8Dmh6czixcL for <devel@linuxdriverproject.org>;
- Sat, 14 Sep 2019 13:40:20 +0000 (UTC)
+ with ESMTP id tPa-qU4xBCZn for <devel@linuxdriverproject.org>;
+ Sat, 14 Sep 2019 15:14:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
- [209.85.210.193])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 8C71786AB6
- for <devel@driverdev.osuosl.org>; Sat, 14 Sep 2019 13:40:20 +0000 (UTC)
-Received: by mail-pf1-f193.google.com with SMTP id i1so10957431pfa.6
- for <devel@driverdev.osuosl.org>; Sat, 14 Sep 2019 06:40:20 -0700 (PDT)
+Received: from mail-lf1-f67.google.com (mail-lf1-f67.google.com
+ [209.85.167.67])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2E3D785E47
+ for <devel@driverdev.osuosl.org>; Sat, 14 Sep 2019 15:14:55 +0000 (UTC)
+Received: by mail-lf1-f67.google.com with SMTP id r134so24230283lff.12
+ for <devel@driverdev.osuosl.org>; Sat, 14 Sep 2019 08:14:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=UGd0Nsf8r1SfWs/Ru1bBbfL8JHhL34BqVq++qP9ktxo=;
- b=gr/af5E7uh/eclxKy3/AKgBeqQlB+53jhLBMucilUiHjS1JUk00+CEHijqFKWuHjvG
- M2uwYHq2JyEVYYzUrpAGp5FvpcIGL3Gy4w3stGtsVEhu66pSfKeU5JR8avuE/qJA6Tv2
- 2EmZtq8H4HrvhxAV54U4J+K7FK68Q5UNsr6pXKZTlfQz2BDqFJLJQat9+ohrKeIK+Ci4
- oU0ijH4lPXb05FPq6NHcUOt2DamTTODNSnv4W9zvrJgzEa86nxd6nqAjr9fqgc6p47ST
- Mu05OFXb+qLgGAj2oOvkFRJ7qKIfwDSRaAxhdKSXMWizl5zmH9VllUGroPLu1scnSPj/
- J2DQ==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=u2Jr691WU0i7md2pkpE4rxMCd/3y9PfDz8VipZrdHZ8=;
+ b=swjgOi4jIz5RzgB0fsz+9fWb28xGtSoVv7CP3TwcBmJLxCDBFlj8f54D/LN7jG3QzY
+ MlQKzJl3qyTjdZ9mbtp9Ofw3YJrZMt+PJd8VYZeF3Wj8eHTE8POJG4Lq1G1TBZS5NCYI
+ kAbRaF+0HlHPhcY+/34h2Q0W7ipiwDO2u9EPuUjuU7ARuQdEexY//QTAcDi8APeh1BN0
+ J09TE+SvO/NAqnEPrSuZzA+OLH9s1QqAGRuLSHjvdwS3qnzVyekcWfcVNF23uPSZs72R
+ pALO3FUcEARB18+wkfZRKhLeyhClMu1bfWQeAQd6dwi4zPwQd0dob0JaiM6N+WYVHDwK
+ kkeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=UGd0Nsf8r1SfWs/Ru1bBbfL8JHhL34BqVq++qP9ktxo=;
- b=jBP0I9aFPL3Mh7qTKQLWyS5vYYcOzFqD7QHc3iz+l26FqKfQtHPG87DS4ApmHl1TIf
- SCLPrCF1MM+vYoFuKbQgglHR+cU3+5tdJboCpt2k6vHD33PaGLmkZ/tICew9mCez1bZh
- zU2zc3+xAi109zAaR8iUlj75xCpYyrghs3nPgOSD1ih/y/xlmka/OXoteQRmXSoqWFV9
- WXfSatRCqL1S9RvedWc+z0irmbKTuCLmy5GCI9HryMt0WEMy+iGOAlD9O9wN0Cb8wQQs
- /RQgzK01XqxjGwVvjKuAxiDbskIBvqtPrHofuEeSauGE91KoodM8caZ9GQ8e7SuDat06
- Q3dQ==
-X-Gm-Message-State: APjAAAU3kEkzpcxfuhuBX1zBDp3cBdYHj56djZbO0cc3fnjqH54c2yQf
- RQq8OLXPp9yW1+EUhPNPt5o=
-X-Google-Smtp-Source: APXvYqzPBdEMLarV6HxcOp/P3+qDK4rs/ZTQxq3kCZlCdJc64XysdI4AUcwdx8zzGLH6WkwHmLlQng==
-X-Received: by 2002:a63:5a0a:: with SMTP id o10mr48642930pgb.282.1568468419959; 
- Sat, 14 Sep 2019 06:40:19 -0700 (PDT)
-Received: from localhost.localdomain ([211.34.238.221])
- by smtp.gmail.com with ESMTPSA id h70sm26992902pgc.36.2019.09.14.06.40.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 14 Sep 2019 06:40:19 -0700 (PDT)
-From: Park Ju Hyung <qkrwngud825@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: Re: [PATCH] staging: exfat: add exfat filesystem code to 
-Date: Sat, 14 Sep 2019 22:39:51 +0900
-Message-Id: <20190914133951.16501-1-qkrwngud825@gmail.com>
-X-Mailer: git-send-email 2.23.0
-In-Reply-To: <20190828160817.6250-1-gregkh@linuxfoundation.org>
-References: <20190828160817.6250-1-gregkh@linuxfoundation.org>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=u2Jr691WU0i7md2pkpE4rxMCd/3y9PfDz8VipZrdHZ8=;
+ b=Ger0mJGgMsS6zG3vQ5wA827RLr75cGreuwVkg5dZJ+4EYEGB1DS3BiMypOE9sIHgVP
+ DOix6LM1L+hkUb8z+XeU+BPmtR9imuuf8ZU6FDJOwougxPLB1QamqfWAKWlVvyaGJaP/
+ c+OXBqozRzxnuSLX0ifVvqMiiFY8tAQ1ihPgGgJSqA/CqQobqqiluWut2RPZJGW8G3SY
+ hC6bUG77CQrRERd+eV4fAVZHhkJ46QD5djQlx1J3hRL5YIbzbpcN7tvlJV5LhtiKGRfK
+ utjn9tovoikPw9adj83DUq3a7Q0HACDtnlyizekdKV3TyQWFEGrlBeckqmAboAE/5PHC
+ HW8Q==
+X-Gm-Message-State: APjAAAXp118AizG31kw8pf3id3TxvXfLaw9kwlj+LZMmMueOjACGxy0e
+ Ze7zLOn89EpuqE+xbA//cCs=
+X-Google-Smtp-Source: APXvYqzZ3vRMZ5a9QHA5G/h1przDDlsilKdNII8W6MBk+gi7r87YY3ZTYSCJLUcFW5xs0+zhMS9QZw==
+X-Received: by 2002:a19:6008:: with SMTP id u8mr30927503lfb.12.1568474092982; 
+ Sat, 14 Sep 2019 08:14:52 -0700 (PDT)
+Received: from [192.168.0.160] (pppoe.178-66-214-228.dynamic.avangarddsl.ru.
+ [178.66.214.228])
+ by smtp.gmail.com with ESMTPSA id y22sm7763898lfb.75.2019.09.14.08.14.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 14 Sep 2019 08:14:52 -0700 (PDT)
+Subject: Re: [PATCH] staging: r8188eu: replace rtw_malloc() with it's
+ definition
+To: Dan Carpenter <dan.carpenter@oracle.com>
+References: <20190908090026.2656-1-insafonov@gmail.com>
+ <20190910115932.GB15977@kadam>
+From: Ivan Safonov <insafonov@gmail.com>
+Message-ID: <47674485-194b-0b09-81ed-5d855284ebd9@gmail.com>
+Date: Sat, 14 Sep 2019 18:18:03 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
+In-Reply-To: <20190910115932.GB15977@kadam>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,39 +91,55 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: alexander.levin@microsoft.com, devel@driverdev.osuosl.org,
- linux-fsdevel@vger.kernel.org, valdis.kletnieks@vt.edu,
- linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: devel@driverdev.osuosl.org,
+ =?UTF-8?Q?Florian_B=c3=bcstgens?= <flbue@gmx.de>,
+ Nishka Dasgupta <nishkadg.linux@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ =?UTF-8?B?Um9iZXJ0IFfEmWPFgmF3c2tp?= <r.weclawski@gmail.com>,
+ Larry Finger <Larry.Finger@lwfinger.net>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi.
+On 9/10/19 2:59 PM, Dan Carpenter wrote:
+> On Sun, Sep 08, 2019 at 12:00:26PM +0300, Ivan Safonov wrote >> rtw_malloc prevents the use of kmemdup/kzalloc and others.
+>>
+>> Signed-off-by: Ivan Safonov <insafonov@gmail.com>
+>> ---
+>>   drivers/staging/rtl8188eu/core/rtw_ap.c        |  4 ++--
+>>   drivers/staging/rtl8188eu/core/rtw_mlme_ext.c  |  2 +-
+>>   .../staging/rtl8188eu/include/osdep_service.h  |  3 ---
+>>   drivers/staging/rtl8188eu/os_dep/ioctl_linux.c | 18 +++++++++---------
+>>   drivers/staging/rtl8188eu/os_dep/mlme_linux.c  |  2 +-
+>>   .../staging/rtl8188eu/os_dep/osdep_service.c   |  7 +------
+>>   6 files changed, 14 insertions(+), 22 deletions(-)
+>>
+>> diff --git a/drivers/staging/rtl8188eu/core/rtw_ap.c b/drivers/staging/rtl8188eu/core/rtw_ap.c
+>> index 51a5b71f8c25..c9c57379b7a2 100644
+>> --- a/drivers/staging/rtl8188eu/core/rtw_ap.c
+>> +++ b/drivers/staging/rtl8188eu/core/rtw_ap.c
+>> @@ -104,7 +104,7 @@ static void update_BCNTIM(struct adapter *padapter)
+>>   	}
+>>   
+>>   	if (remainder_ielen > 0) {
+>> -		pbackup_remainder_ie = rtw_malloc(remainder_ielen);
+>> +		pbackup_remainder_ie = kmalloc(remainder_ielen, in_interrupt() ? GFP_ATOMIC : GFP_KERNEL);
+>                                                                  ^^^^^^^^^^^^^
+> This stuff isn't right.  It really should be checking if spinlocks are
+> held or IRQs are disabled.  And the only way to do that is by auditing
+> the callers.
+I hope to make these changes later as separate independent patches.
+This patch do only one thing - remove rtw_malloc().
 
-I just noticed that this exfat-staging drivers are based on the old 
-Samsung's 1.x exFAT drivers.
+> 
+> (The original rtw_malloc() implementation is buggy nonsense).
+> 
+> regards,
+> dan carpenter
+> 
 
-I've been working to get the newer Samsung's driver(now named "sdFAT") 
-to fit better for general Linux users, and I believe it can provide a 
-better base for the community to work on(and hopefully complies better 
-to the mainline coding standard).
-
-GitHub link
-https://github.com/arter97/exfat-linux
-
-I also included some rudimentary benchmark results.
-
-I encourage mainline developers to explore this driver base and see if 
-it's worth to switch, since it's the early days of exfat-staging.
-
-To others watching this thread:
-It's more than likely that you can start using exFAT reliably right 
-away by following the link above. It's tested on all major LTS kernels 
-ranging from 3.4 to 4.19 and the ones Canonical uses for Ubuntu: 3.4, 
-3.10, 3.18, 4.1, 4.4, 4.9, 4.14, 4.19 and 4.15, 5.0, 5.2, and 5.3-rc.
-
-Thanks.
+Ivan Safonov.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
