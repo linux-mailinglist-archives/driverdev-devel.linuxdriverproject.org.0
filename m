@@ -1,58 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 72615B2F75
-	for <lists+driverdev-devel@lfdr.de>; Sun, 15 Sep 2019 11:53:14 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id E86082052E;
-	Sun, 15 Sep 2019 09:53:12 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BFFjIZuoyi+y; Sun, 15 Sep 2019 09:53:12 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id DB5912051D;
-	Sun, 15 Sep 2019 09:53:10 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 782271BF863
- for <devel@linuxdriverproject.org>; Sun, 15 Sep 2019 09:53:08 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 81D5BB3051
+	for <lists+driverdev-devel@lfdr.de>; Sun, 15 Sep 2019 15:43:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 70CF0859CD
- for <devel@linuxdriverproject.org>; Sun, 15 Sep 2019 09:53:08 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0764587158;
+	Sun, 15 Sep 2019 13:43:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id cq6TWj95rut2; Sun, 15 Sep 2019 13:43:07 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 61D0985A1D;
+	Sun, 15 Sep 2019 13:43:07 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id A31D61BF3A6
+ for <devel@linuxdriverproject.org>; Sun, 15 Sep 2019 13:43:04 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 9728E816E6
+ for <devel@linuxdriverproject.org>; Sun, 15 Sep 2019 13:43:04 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GOdKxBw6fm4D for <devel@linuxdriverproject.org>;
- Sun, 15 Sep 2019 09:53:06 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+ with ESMTP id 6KhGk+F3MkcM for <devel@linuxdriverproject.org>;
+ Sun, 15 Sep 2019 13:43:03 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 7B1A685930
- for <devel@driverdev.osuosl.org>; Sun, 15 Sep 2019 09:53:06 +0000 (UTC)
-Received: from archlinux (cpc149474-cmbg20-2-0-cust94.5-4.cable.virginm.net
- [82.4.196.95])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 458B6815F4
+ for <devel@driverdev.osuosl.org>; Sun, 15 Sep 2019 13:43:03 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id EC8F42077C;
- Sun, 15 Sep 2019 09:53:03 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 89E34214DA;
+ Sun, 15 Sep 2019 13:43:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1568541186;
- bh=eY/svIwzWeTPEPLCh0a5G9JGZm+IqSfCU4uCCdA91NE=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=S3NIcyIyIRUhGkWWEzuE2IAuk2NIx7FVAcZfiTht66CwamPfJ3fnV+Jv8Z/Uccw9G
- G6b0SLa4Jqh8xf1gP07alHNNodK87mirrmaiC/FA8zK2O5OnS31axNpQ4Ojw4+op/m
- wnMBAzLIYfPfgF+e/0m9TZ9A5c/Po/FHeXCr5og4=
-Date: Sun, 15 Sep 2019 10:53:00 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Rohit Sarkar <rohitsarkar5398@gmail.com>
-Subject: Re: [PATCH] staging: iio: ADIS16240: Remove unused include
-Message-ID: <20190915105300.12cc105f@archlinux>
-In-Reply-To: <20190913203627.GA1320@SARKAR>
-References: <20190913203627.GA1320@SARKAR>
-X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
+ s=default; t=1568554983;
+ bh=K2IkYFtvJjpi7oAgR3T2CvTC1SYGP8XAj1GcMabF28c=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=mjBmx+26gUMDBXZWv2skoKgp7iiWBOHv14UDOZX7DUqFOvkPHe5wavy0w0JI4V8De
+ jGMTZLlqE2zhaHaN2vCw/7WJwcKO7RPz+wLb5IgWNQv/22Xn4Mf6J2pCkTMsO9sCQV
+ BDKTELwulVTLE269VOpIvSP+NBTnLF6nOAlLapAw=
+Date: Sun, 15 Sep 2019 15:43:00 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Okash Khawaja <okash.khawaja@gmail.com>
+Subject: Re: [HELP REQUESTED from the community] Was: Staging status of speakup
+Message-ID: <20190915134300.GA552892@kroah.com>
+References: <20190712092319.wmke4i7zqzr26tly@function>
+ <20190713004623.GA9159@gregn.net> <20190725035352.GA7717@gregn.net>
+ <875znqhia0.fsf@cmbmachine.messageid.invalid>
+ <m3sgqucs1x.wl-covici@ccs.covici.com>
+ <CAOtcWM0qynSjnF6TtY_s7a51B7JweDb7jwdxStEmPvB9tJFU4Q@mail.gmail.com>
+ <20190821222209.GA4577@gregn.net>
+ <CAOtcWM0Jzo+wew-uiOmde+eZXEWZ310L8wXscWjJv5OXqXJe6Q@mail.gmail.com>
+ <20190909025429.GA4144@gregn.net>
+ <CAOtcWM0P=w-iBZzwekVrSpp7t2WO9RA5WP956zgDrNKvzA+4ZA@mail.gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAOtcWM0P=w-iBZzwekVrSpp7t2WO9RA5WP956zgDrNKvzA+4ZA@mail.gmail.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,52 +74,43 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Lars-Peter Clausen <lars@metafoo.de>,
- Stefan Popa <stefan.popa@analog.com>,
- Michael Hennerich <Michael.Hennerich@analog.com>, linux-iio@vger.kernel.org,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
- Rodrigo Carvalho <rodrigorsdc@gmail.com>,
- Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Hartmut Knaack <knaack.h@gmx.de>
+Cc: devel@driverdev.osuosl.org, Simon Dickson <simonhdickson@gmail.com>,
+ Gregory Nowak <greg@gregn.net>,
+ "Speakup is a screen review system for Linux." <speakup@linux-speakup.org>,
+ linux-kernel@vger.kernel.org, John Covici <covici@ccs.covici.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, 14 Sep 2019 02:06:27 +0530
-Rohit Sarkar <rohitsarkar5398@gmail.com> wrote:
-
-> Bcc: 
-> Subject: [PATCH] staging: iio: adis16240: remove unused include
-> Reply-To: 
-Something odd happened here with patch formatting.  I fixed it up and
-applied to the togreg branch of iio.git and pushed out as testing
-for the autobuilders to play with it.
-
-Thanks,
-
-Jonathan
-
+On Sat, Sep 14, 2019 at 10:08:35PM +0100, Okash Khawaja wrote:
+> On Mon, Sep 9, 2019 at 3:55 AM Gregory Nowak <greg@gregn.net> wrote:
+> >
+> > On Sun, Sep 08, 2019 at 10:43:02AM +0100, Okash Khawaja wrote:
+> > > Sorry, I have only now got round to working on this. It's not complete
+> > > yet but I have assimilated the feedback and converted subjective
+> > > phrases, like "I think..." into objective statements or put them in
+> > > TODO: so that someone else may verify. I have attached it to this
+> > > email.
+> >
+> > I think bleeps needs a TODO, since we don't know what values it accepts, or
+> > what difference those values make. Also, to keep things uniform, we
+> > should replace my "don't know" for trigger_time with a TODO. Looks
+> > good to me otherwise. Thanks.
 > 
-> '#include<linux/gpio.h>' isn't being used anywhere. Remove it.
+> Great thanks. I have updated.
 > 
-> Signed-off-by: Rohit Sarkar <rohitsarkar5398@gmail.com>
-> ---
->  drivers/staging/iio/accel/adis16240.c | 1 -
->  1 file changed, 1 deletion(-)
+> I have two questions:
 > 
-> diff --git a/drivers/staging/iio/accel/adis16240.c b/drivers/staging/iio/accel/adis16240.c
-> index 82099db4bf0c..a480409090c0 100644
-> --- a/drivers/staging/iio/accel/adis16240.c
-> +++ b/drivers/staging/iio/accel/adis16240.c
-> @@ -7,7 +7,6 @@
->  
->  #include <linux/interrupt.h>
->  #include <linux/irq.h>
-> -#include <linux/gpio.h>
->  #include <linux/delay.h>
->  #include <linux/device.h>
->  #include <linux/kernel.h>
+> 1. Is it okay for these descriptions to go inside
+> Documentation/ABI/stable? They have been around since 2.6 (2010). Or
+> would we prefer Documentation/ABI/testing/?
 
+stable is fine.
+
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
