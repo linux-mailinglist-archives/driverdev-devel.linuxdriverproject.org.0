@@ -1,66 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 40C58B420C
-	for <lists+driverdev-devel@lfdr.de>; Mon, 16 Sep 2019 22:42:26 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3574CB424B
+	for <lists+driverdev-devel@lfdr.de>; Mon, 16 Sep 2019 22:47:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D3C7487985;
-	Mon, 16 Sep 2019 20:42:23 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 89CD384EF0;
+	Mon, 16 Sep 2019 20:47:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R0QOav4TrqnC; Mon, 16 Sep 2019 20:42:23 +0000 (UTC)
+	with ESMTP id QgXGI8H-XQ-L; Mon, 16 Sep 2019 20:47:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 55CE98749A;
-	Mon, 16 Sep 2019 20:42:23 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0641284EC1;
+	Mon, 16 Sep 2019 20:47:43 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A8A2A1BF284
- for <devel@linuxdriverproject.org>; Mon, 16 Sep 2019 20:42:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E25D61BF284
+ for <devel@linuxdriverproject.org>; Mon, 16 Sep 2019 20:47:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A13188749A
- for <devel@linuxdriverproject.org>; Mon, 16 Sep 2019 20:42:20 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id DF70B87816
+ for <devel@linuxdriverproject.org>; Mon, 16 Sep 2019 20:47:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hgA5PL1MFwUC for <devel@linuxdriverproject.org>;
- Mon, 16 Sep 2019 20:42:19 +0000 (UTC)
+ with ESMTP id F7aUH4LJeTad for <devel@linuxdriverproject.org>;
+ Mon, 16 Sep 2019 20:47:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
- [209.85.221.68])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 578058744A
- for <devel@driverdev.osuosl.org>; Mon, 16 Sep 2019 20:42:19 +0000 (UTC)
-Received: by mail-wr1-f68.google.com with SMTP id h7so807536wrw.8
- for <devel@driverdev.osuosl.org>; Mon, 16 Sep 2019 13:42:19 -0700 (PDT)
+Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
+ [209.85.128.66])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 3F6DE876C3
+ for <devel@driverdev.osuosl.org>; Mon, 16 Sep 2019 20:47:37 +0000 (UTC)
+Received: by mail-wm1-f66.google.com with SMTP id v17so698223wml.4
+ for <devel@driverdev.osuosl.org>; Mon, 16 Sep 2019 13:47:37 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=/vjA3feuVjhECJGCJlv7w7hKdoWzVAzTRzB0psX8g5s=;
- b=sTMc0pmfM75AmUULbMk9xXpgQyaURO/mFTis4SZkuBS3/VsuiV2j0BtDuTHakFcKRg
- elFj3yc221T89CMNKx3LKrrqnLf9yH9yEI1JpuWNe+rA6s5OgPH73Km80RiYFu4tPf6n
- jIWJPoixoW6EYmP2lhNNouX4zvICDgZnsrxqVacOhqRnTMHuIN0AxChnypNDg774SsPt
- +47EP7AjyI/Ez5rDGxtYw/Zd1kfVZJgK4jrBmJcKCFNDBxMh7gvAOaTojKVWylQoiJSq
- yaBCpqLMfCePdTy9jIfAGfAk7opUpVfXV5Rt/QpbFaZ90LE28RWaj3p4gbHd4d1HuShw
- FwWQ==
-X-Gm-Message-State: APjAAAXOLSbt9ZhSCFSzyzeti5c5QcUwnFlIn7Pd7COp8eiKjd92hINk
- FT2s8GkEhwkrGHVh8V/HKVg=
-X-Google-Smtp-Source: APXvYqypC5CK1RreMiVVdKfR5kFfLc3pMXf+TiQnzlE0QSLxBBAa2qalemOOQxKeTH0j0ilQ1JNKCA==
-X-Received: by 2002:a5d:430e:: with SMTP id h14mr221968wrq.18.1568666537790;
- Mon, 16 Sep 2019 13:42:17 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=hIaCxdmc4Mv8gjZ6OZgOWrffbO/JWGkLQPEVsPVt/ms=;
+ b=X2UIHb9eXLPGBMvWfW2/dHqH6C9U380xCKQZWxGXEpJnRcUmke7aHmnFYqRoEtu2am
+ exxaENjpG1QlmTPUQwUHuxsQsg23RaKih95l1MCpdxddFExW4Gyl1WnAc6PLLPhD2ksW
+ xQLGvIsVo3z8hXQu7CeTYH2NdXW7H0i8sN6UVgRN+ZGBW3miV9rcy8iU0qCzaDw6B4F1
+ 2VjK9STHVx2H+23vdvDQyy7r7AHZVGMWvVzTd6pj47SMLZWKc4WrUFn4rxrKN1r/F14g
+ K4mj/Bm89xhffEds4Qer8fx0vaVe0S6wtHVcmGj2jRAZu3LPVVLZY8UZvt/8rROCP1So
+ aJQg==
+X-Gm-Message-State: APjAAAXFYbbXlxM8sKr4jr+gQ7/QtRDL6YGfxZyM0/9gsJrjT4C8Avw9
+ TOFKkSZUtCAviI8rtmrfnWI=
+X-Google-Smtp-Source: APXvYqxV54TN6lC5/Jcuj+mDUpfWm3xDMt+2fNrtKXU0IdKBO73RRVso0NF9z88qEsbkVDCd7KhnGw==
+X-Received: by 2002:a7b:cc0a:: with SMTP id f10mr778750wmh.6.1568666855820;
+ Mon, 16 Sep 2019 13:47:35 -0700 (PDT)
 Received: from black.home (broadband-188-32-48-208.ip.moscow.rt.ru.
  [188.32.48.208])
- by smtp.googlemail.com with ESMTPSA id x6sm231437wmf.38.2019.09.16.13.42.13
+ by smtp.googlemail.com with ESMTPSA id x6sm231437wmf.38.2019.09.16.13.47.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 Sep 2019 13:42:17 -0700 (PDT)
+ Mon, 16 Sep 2019 13:47:35 -0700 (PDT)
 From: Denis Efremov <efremov@linux.com>
 To: Bjorn Helgaas <bhelgaas@google.com>
-Subject: [PATCH v3 00/26] Add definition for the number of standard PCI BARs
-Date: Mon, 16 Sep 2019 23:41:32 +0300
-Message-Id: <20190916204158.6889-1-efremov@linux.com>
+Subject: [PATCH v3 20/26] staging: gasket: Use PCI_STD_NUM_BARS
+Date: Mon, 16 Sep 2019 23:41:52 +0300
+Message-Id: <20190916204158.6889-21-efremov@linux.com>
 X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20190916204158.6889-1-efremov@linux.com>
+References: <20190916204158.6889-1-efremov@linux.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -74,144 +76,122 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, linux-usb@vger.kernel.org,
- linux-ia64@vger.kernel.org, Sebastian Ott <sebott@linux.ibm.com>,
- linux-pci@vger.kernel.org, devel@driverdev.osuosl.org,
- linux-hyperv@vger.kernel.org, linux-ide@vger.kernel.org,
- Peter Jones <pjones@redhat.com>, "H . Peter Anvin" <hpa@zytor.com>,
- netdev@vger.kernel.org, Sasha Levin <sashal@kernel.org>,
- linux-s390@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Stephen Hemminger <sthemmin@microsoft.com>,
- Maxim Levitsky <maximlevitsky@gmail.com>, linux-scsi@vger.kernel.org,
- x86@kernel.org, Kishon Vijay Abraham I <kishon@ti.com>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>, linux-serial@vger.kernel.org,
- Daniel Vetter <daniel.vetter@ffwll.ch>, Matt Turner <mattst88@gmail.com>,
- Jack Wang <jinpu.wang@cloud.ionos.com>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- linux-arm-kernel@lists.infradead.org, Jose Abreu <Jose.Abreu@synopsys.com>,
- Fenghua Yu <fenghua.yu@intel.com>, linux-alpha@vger.kernel.org,
- Alexandre Torgue <alexandre.torgue@st.com>, Alex Dubov <oakad@yahoo.com>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- Haiyang Zhang <haiyangz@microsoft.com>, Jiri Slaby <jslaby@suse.com>,
- Denis Efremov <efremov@linux.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Ivan Kokshaysky <ink@jurassic.park.msu.ru>, linux-fbdev@vger.kernel.org,
- kvm@vger.kernel.org, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- Thomas Gleixner <tglx@linutronix.de>, Todd Poynor <toddpoynor@google.com>,
- Matt Porter <mporter@kernel.crashing.org>,
- Gerald Schaefer <gerald.schaefer@de.ibm.com>,
- Richard Henderson <rth@twiddle.net>, Jens Axboe <axboe@kernel.dk>,
- Tony Luck <tony.luck@intel.com>,
- Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
- Cornelia Huck <cohuck@redhat.com>, linux-mmc@vger.kernel.org,
- linux-kernel@vger.kernel.org, Rob Springer <rspringer@google.com>,
- Alexandre Bounine <alex.bou9@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Andrew Murray <andrew.murray@arm.com>, "David S. Miller" <davem@davemloft.net>,
- Mathias Nyman <mathias.nyman@intel.com>
+Cc: devel@driverdev.osuosl.org, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Denis Efremov <efremov@linux.com>,
+ Rob Springer <rspringer@google.com>, Andrew Murray <andrew.murray@arm.com>,
+ Todd Poynor <toddpoynor@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Code that iterates over all standard PCI BARs typically uses
-PCI_STD_RESOURCE_END, but this is error-prone because it requires
-"i <= PCI_STD_RESOURCE_END" rather than something like
-"i < PCI_STD_NUM_BARS". We could add such a definition and use it the same
-way PCI_SRIOV_NUM_BARS is used. The patchset also replaces constant (6)
-with new define PCI_STD_NUM_BARS where appropriate and removes local
-declarations for the number of PCI BARs.
+Remove local definition GASKET_NUM_BARS for the number of PCI BARs and use
+global one PCI_STD_NUM_BARS instead.
 
-Changes in v3:
-  - Updated commits description.
-  - Refactored "< PCI_ROM_RESOURCE" with "< PCI_STD_NUM_BARS" in loops.
-  - Refactored "<= BAR_5" with "< PCI_STD_NUM_BARS" in loops.
-  - Removed local define GASKET_NUM_BARS.
-  - Removed local define PCI_NUM_BAR_RESOURCES.
+Cc: Rob Springer <rspringer@google.com>
+Cc: Todd Poynor <toddpoynor@google.com>
+Cc: Ben Chan <benchan@chromium.org>
+Signed-off-by: Denis Efremov <efremov@linux.com>
+---
+ drivers/staging/gasket/gasket_constants.h |  3 ---
+ drivers/staging/gasket/gasket_core.c      | 12 ++++++------
+ drivers/staging/gasket/gasket_core.h      |  4 ++--
+ 3 files changed, 8 insertions(+), 11 deletions(-)
 
-Changes in v2:
-  - Reversed checks in pci_iomap_range,pci_iomap_wc_range.
-  - Refactored loops in vfio_pci to keep PCI_STD_RESOURCES.
-  - Added 2 new patches to replace the magic constant with new define.
-  - Splitted net patch in v1 to separate stmmac and dwc-xlgmac patches.
-
-Denis Efremov (26):
-  PCI: Add define for the number of standard PCI BARs
-  PCI: hv: Use PCI_STD_NUM_BARS
-  PCI: dwc: Use PCI_STD_NUM_BARS
-  PCI: endpoint: Use PCI_STD_NUM_BARS
-  misc: pci_endpoint_test: Use PCI_STD_NUM_BARS
-  s390/pci: Use PCI_STD_NUM_BARS
-  x86/PCI: Loop using PCI_STD_NUM_BARS
-  alpha/PCI: Use PCI_STD_NUM_BARS
-  ia64: Use PCI_STD_NUM_BARS
-  stmmac: pci: Loop using PCI_STD_NUM_BARS
-  net: dwc-xlgmac: Loop using PCI_STD_NUM_BARS
-  ixgb: use PCI_STD_NUM_BARS
-  e1000: Use PCI_STD_NUM_BARS
-  rapidio/tsi721: Loop using PCI_STD_NUM_BARS
-  efifb: Loop using PCI_STD_NUM_BARS
-  fbmem: use PCI_STD_NUM_BARS
-  vfio_pci: Loop using PCI_STD_NUM_BARS
-  scsi: pm80xx: Use PCI_STD_NUM_BARS
-  ata: sata_nv: Use PCI_STD_NUM_BARS
-  staging: gasket: Use PCI_STD_NUM_BARS
-  serial: 8250_pci: Use PCI_STD_NUM_BARS
-  pata_atp867x: Use PCI_STD_NUM_BARS
-  memstick: use PCI_STD_NUM_BARS
-  USB: core: Use PCI_STD_NUM_BARS
-  usb: pci-quirks: Use PCI_STD_NUM_BARS
-  devres: use PCI_STD_NUM_BARS
-
- arch/alpha/kernel/pci-sysfs.c                 |  8 ++---
- arch/ia64/sn/pci/pcibr/pcibr_dma.c            |  4 +--
- arch/s390/include/asm/pci.h                   |  5 +--
- arch/s390/include/asm/pci_clp.h               |  6 ++--
- arch/s390/pci/pci.c                           | 16 +++++-----
- arch/s390/pci/pci_clp.c                       |  6 ++--
- arch/x86/pci/common.c                         |  2 +-
- arch/x86/pci/intel_mid_pci.c                  |  2 +-
- drivers/ata/pata_atp867x.c                    |  2 +-
- drivers/ata/sata_nv.c                         |  2 +-
- drivers/memstick/host/jmb38x_ms.c             |  2 +-
- drivers/misc/pci_endpoint_test.c              |  8 ++---
- drivers/net/ethernet/intel/e1000/e1000.h      |  1 -
- drivers/net/ethernet/intel/e1000/e1000_main.c |  2 +-
- drivers/net/ethernet/intel/ixgb/ixgb.h        |  1 -
- drivers/net/ethernet/intel/ixgb/ixgb_main.c   |  2 +-
- .../net/ethernet/stmicro/stmmac/stmmac_pci.c  |  4 +--
- .../net/ethernet/synopsys/dwc-xlgmac-pci.c    |  2 +-
- drivers/pci/controller/dwc/pci-dra7xx.c       |  2 +-
- .../pci/controller/dwc/pci-layerscape-ep.c    |  2 +-
- drivers/pci/controller/dwc/pcie-artpec6.c     |  2 +-
- .../pci/controller/dwc/pcie-designware-plat.c |  2 +-
- drivers/pci/controller/dwc/pcie-designware.h  |  2 +-
- drivers/pci/controller/pci-hyperv.c           | 10 +++---
- drivers/pci/endpoint/functions/pci-epf-test.c | 10 +++---
- drivers/pci/pci-sysfs.c                       |  4 +--
- drivers/pci/pci.c                             | 13 ++++----
- drivers/pci/proc.c                            |  4 +--
- drivers/pci/quirks.c                          |  4 +--
- drivers/rapidio/devices/tsi721.c              |  2 +-
- drivers/scsi/pm8001/pm8001_hwi.c              |  2 +-
- drivers/scsi/pm8001/pm8001_init.c             |  2 +-
- drivers/staging/gasket/gasket_constants.h     |  3 --
- drivers/staging/gasket/gasket_core.c          | 12 +++----
- drivers/staging/gasket/gasket_core.h          |  4 +--
- drivers/tty/serial/8250/8250_pci.c            |  8 ++---
- drivers/usb/core/hcd-pci.c                    |  2 +-
- drivers/usb/host/pci-quirks.c                 |  2 +-
- drivers/vfio/pci/vfio_pci.c                   | 11 ++++---
- drivers/vfio/pci/vfio_pci_config.c            | 32 ++++++++++---------
- drivers/vfio/pci/vfio_pci_private.h           |  4 +--
- drivers/video/fbdev/core/fbmem.c              |  4 +--
- drivers/video/fbdev/efifb.c                   |  2 +-
- include/linux/pci-epc.h                       |  2 +-
- include/linux/pci.h                           |  2 +-
- include/uapi/linux/pci_regs.h                 |  1 +
- lib/devres.c                                  |  2 +-
- 47 files changed, 112 insertions(+), 115 deletions(-)
-
+diff --git a/drivers/staging/gasket/gasket_constants.h b/drivers/staging/gasket/gasket_constants.h
+index 50d87c7b178c..9ea9c8833f27 100644
+--- a/drivers/staging/gasket/gasket_constants.h
++++ b/drivers/staging/gasket/gasket_constants.h
+@@ -13,9 +13,6 @@
+ /* The maximum devices per each type. */
+ #define GASKET_DEV_MAX 256
+ 
+-/* The number of supported (and possible) PCI BARs. */
+-#define GASKET_NUM_BARS 6
+-
+ /* The number of supported Gasket page tables per device. */
+ #define GASKET_MAX_NUM_PAGE_TABLES 1
+ 
+diff --git a/drivers/staging/gasket/gasket_core.c b/drivers/staging/gasket/gasket_core.c
+index 13179f063a61..cd8be80d2076 100644
+--- a/drivers/staging/gasket/gasket_core.c
++++ b/drivers/staging/gasket/gasket_core.c
+@@ -371,7 +371,7 @@ static int gasket_setup_pci(struct pci_dev *pci_dev,
+ {
+ 	int i, mapped_bars, ret;
+ 
+-	for (i = 0; i < GASKET_NUM_BARS; i++) {
++	for (i = 0; i < PCI_STD_NUM_BARS; i++) {
+ 		ret = gasket_map_pci_bar(gasket_dev, i);
+ 		if (ret) {
+ 			mapped_bars = i;
+@@ -393,7 +393,7 @@ static void gasket_cleanup_pci(struct gasket_dev *gasket_dev)
+ {
+ 	int i;
+ 
+-	for (i = 0; i < GASKET_NUM_BARS; i++)
++	for (i = 0; i < PCI_STD_NUM_BARS; i++)
+ 		gasket_unmap_pci_bar(gasket_dev, i);
+ }
+ 
+@@ -493,7 +493,7 @@ static ssize_t gasket_sysfs_data_show(struct device *device,
+ 		(enum gasket_sysfs_attribute_type)gasket_attr->data.attr_type;
+ 	switch (sysfs_type) {
+ 	case ATTR_BAR_OFFSETS:
+-		for (i = 0; i < GASKET_NUM_BARS; i++) {
++		for (i = 0; i < PCI_STD_NUM_BARS; i++) {
+ 			bar_desc = &driver_desc->bar_descriptions[i];
+ 			if (bar_desc->size == 0)
+ 				continue;
+@@ -505,7 +505,7 @@ static ssize_t gasket_sysfs_data_show(struct device *device,
+ 		}
+ 		break;
+ 	case ATTR_BAR_SIZES:
+-		for (i = 0; i < GASKET_NUM_BARS; i++) {
++		for (i = 0; i < PCI_STD_NUM_BARS; i++) {
+ 			bar_desc = &driver_desc->bar_descriptions[i];
+ 			if (bar_desc->size == 0)
+ 				continue;
+@@ -556,7 +556,7 @@ static ssize_t gasket_sysfs_data_show(struct device *device,
+ 		ret = snprintf(buf, PAGE_SIZE, "%d\n", gasket_dev->reset_count);
+ 		break;
+ 	case ATTR_USER_MEM_RANGES:
+-		for (i = 0; i < GASKET_NUM_BARS; ++i) {
++		for (i = 0; i < PCI_STD_NUM_BARS; ++i) {
+ 			current_written =
+ 				gasket_write_mappable_regions(buf, driver_desc,
+ 							      i);
+@@ -736,7 +736,7 @@ static int gasket_get_bar_index(const struct gasket_dev *gasket_dev,
+ 	const struct gasket_driver_desc *driver_desc;
+ 
+ 	driver_desc = gasket_dev->internal_desc->driver_desc;
+-	for (i = 0; i < GASKET_NUM_BARS; ++i) {
++	for (i = 0; i < PCI_STD_NUM_BARS; ++i) {
+ 		struct gasket_bar_desc bar_desc =
+ 			driver_desc->bar_descriptions[i];
+ 
+diff --git a/drivers/staging/gasket/gasket_core.h b/drivers/staging/gasket/gasket_core.h
+index be44ac1e3118..c417acadb0d5 100644
+--- a/drivers/staging/gasket/gasket_core.h
++++ b/drivers/staging/gasket/gasket_core.h
+@@ -268,7 +268,7 @@ struct gasket_dev {
+ 	char kobj_name[GASKET_NAME_MAX];
+ 
+ 	/* Virtual address of mapped BAR memory range. */
+-	struct gasket_bar_data bar_data[GASKET_NUM_BARS];
++	struct gasket_bar_data bar_data[PCI_STD_NUM_BARS];
+ 
+ 	/* Coherent buffer. */
+ 	struct gasket_coherent_buffer coherent_buffer;
+@@ -369,7 +369,7 @@ struct gasket_driver_desc {
+ 	/* Set of 6 bar descriptions that describe all PCIe bars.
+ 	 * Note that BUS/AXI devices (i.e. non PCI devices) use those.
+ 	 */
+-	struct gasket_bar_desc bar_descriptions[GASKET_NUM_BARS];
++	struct gasket_bar_desc bar_descriptions[PCI_STD_NUM_BARS];
+ 
+ 	/*
+ 	 * Coherent buffer description.
 -- 
 2.21.0
 
