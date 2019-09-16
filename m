@@ -2,79 +2,66 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 57752B41B0
-	for <lists+driverdev-devel@lfdr.de>; Mon, 16 Sep 2019 22:21:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 40C58B420C
+	for <lists+driverdev-devel@lfdr.de>; Mon, 16 Sep 2019 22:42:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A7274879CC;
-	Mon, 16 Sep 2019 20:21:54 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D3C7487985;
+	Mon, 16 Sep 2019 20:42:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yeXTFKL9XGJw; Mon, 16 Sep 2019 20:21:54 +0000 (UTC)
+	with ESMTP id R0QOav4TrqnC; Mon, 16 Sep 2019 20:42:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EC13387410;
-	Mon, 16 Sep 2019 20:21:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 55CE98749A;
+	Mon, 16 Sep 2019 20:42:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4DC411BF284
- for <devel@linuxdriverproject.org>; Mon, 16 Sep 2019 20:21:52 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A8A2A1BF284
+ for <devel@linuxdriverproject.org>; Mon, 16 Sep 2019 20:42:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 4A56784D24
- for <devel@linuxdriverproject.org>; Mon, 16 Sep 2019 20:21:52 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id A13188749A
+ for <devel@linuxdriverproject.org>; Mon, 16 Sep 2019 20:42:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IkUisMoxzF9B for <devel@linuxdriverproject.org>;
- Mon, 16 Sep 2019 20:21:51 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from vserver.gregn.net (vserver.gregn.net [174.136.110.154])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B26F884D09
- for <devel@driverdev.osuosl.org>; Mon, 16 Sep 2019 20:21:51 +0000 (UTC)
-Received: from vbox.gregn.net (unknown
- [IPv6:2001:470:d:6c5:2128:c4cd:3fb7:de37])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by vserver.gregn.net (Postfix) with ESMTPSA id 11CB5475;
- Mon, 16 Sep 2019 13:22:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=gregn.net; s=default;
- t=1568665348; bh=Z5YoCFCZAbbuBK9ewLTtgYrPH/+8EchQI47YundeH+8=;
- h=Date:From:To:Subject:References:In-Reply-To:From;
- b=SHX4qgNtfYNvxvsJlX4nnnXDtfLWEB3uXQ+ND2Wsz3ECgEcA6gZGuJ5elaDheO6Gn
- mnJ29ca5QyPtF1wFL+qvhkWnz9lYW9d1y1M+vbKKgmfiveaEYDTu7UN8CBiqJXh5Pv
- 6qnljnixXqnGzJfFcFAQymqD4bkuw2cdgThKyrir/YciqemCGj5uVP4SHITUKMNoAO
- c9ZZnFzLSdbB7HvKSTZgMtEL+suOtPawV1pMy0LAGhPYa4cvOmqtVWB3wTbTmfdNdQ
- /4O68a51/S7VQhriUM7Ko0kZMYf6Rt1qzTG3pNLjmnvJdS6xnIw9oR0LfnmhHQf0WX
- lcS5k9UFQaqrw==
-Received: from greg by vbox.gregn.net with local (Exim 4.84_2)
- (envelope-from <greg@gregn.net>)
- id 1i9xVL-0001BB-CN; Mon, 16 Sep 2019 13:21:47 -0700
-Date: Mon, 16 Sep 2019 13:21:47 -0700
-From: Gregory Nowak <greg@gregn.net>
-To: Samuel Thibault <samuel.thibault@ens-lyon.org>,
- "Speakup is a screen review system for Linux." <speakup@linux-speakup.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- devel@driverdev.osuosl.org, Simon Dickson <simonhdickson@gmail.com>,
- linux-kernel@vger.kernel.org, John Covici <covici@ccs.covici.com>
-Subject: Re: [HELP REQUESTED from the community] Was: Staging status of speakup
-Message-ID: <20190916202146.GA4145@gregn.net>
-References: <875znqhia0.fsf@cmbmachine.messageid.invalid>
- <m3sgqucs1x.wl-covici@ccs.covici.com>
- <CAOtcWM0qynSjnF6TtY_s7a51B7JweDb7jwdxStEmPvB9tJFU4Q@mail.gmail.com>
- <20190821222209.GA4577@gregn.net>
- <CAOtcWM0Jzo+wew-uiOmde+eZXEWZ310L8wXscWjJv5OXqXJe6Q@mail.gmail.com>
- <20190909025429.GA4144@gregn.net>
- <CAOtcWM0P=w-iBZzwekVrSpp7t2WO9RA5WP956zgDrNKvzA+4ZA@mail.gmail.com>
- <20190915134300.GA552892@kroah.com>
- <CAOtcWM2MD-Z1tg7gdgzrXiv7y62JrV7eHnTgXpv-LFW7zRApjg@mail.gmail.com>
- <20190916134727.4gi6rvz4sm6znrqc@function>
+ with ESMTP id hgA5PL1MFwUC for <devel@linuxdriverproject.org>;
+ Mon, 16 Sep 2019 20:42:19 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
+ [209.85.221.68])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 578058744A
+ for <devel@driverdev.osuosl.org>; Mon, 16 Sep 2019 20:42:19 +0000 (UTC)
+Received: by mail-wr1-f68.google.com with SMTP id h7so807536wrw.8
+ for <devel@driverdev.osuosl.org>; Mon, 16 Sep 2019 13:42:19 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=/vjA3feuVjhECJGCJlv7w7hKdoWzVAzTRzB0psX8g5s=;
+ b=sTMc0pmfM75AmUULbMk9xXpgQyaURO/mFTis4SZkuBS3/VsuiV2j0BtDuTHakFcKRg
+ elFj3yc221T89CMNKx3LKrrqnLf9yH9yEI1JpuWNe+rA6s5OgPH73Km80RiYFu4tPf6n
+ jIWJPoixoW6EYmP2lhNNouX4zvICDgZnsrxqVacOhqRnTMHuIN0AxChnypNDg774SsPt
+ +47EP7AjyI/Ez5rDGxtYw/Zd1kfVZJgK4jrBmJcKCFNDBxMh7gvAOaTojKVWylQoiJSq
+ yaBCpqLMfCePdTy9jIfAGfAk7opUpVfXV5Rt/QpbFaZ90LE28RWaj3p4gbHd4d1HuShw
+ FwWQ==
+X-Gm-Message-State: APjAAAXOLSbt9ZhSCFSzyzeti5c5QcUwnFlIn7Pd7COp8eiKjd92hINk
+ FT2s8GkEhwkrGHVh8V/HKVg=
+X-Google-Smtp-Source: APXvYqypC5CK1RreMiVVdKfR5kFfLc3pMXf+TiQnzlE0QSLxBBAa2qalemOOQxKeTH0j0ilQ1JNKCA==
+X-Received: by 2002:a5d:430e:: with SMTP id h14mr221968wrq.18.1568666537790;
+ Mon, 16 Sep 2019 13:42:17 -0700 (PDT)
+Received: from black.home (broadband-188-32-48-208.ip.moscow.rt.ru.
+ [188.32.48.208])
+ by smtp.googlemail.com with ESMTPSA id x6sm231437wmf.38.2019.09.16.13.42.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 16 Sep 2019 13:42:17 -0700 (PDT)
+From: Denis Efremov <efremov@linux.com>
+To: Bjorn Helgaas <bhelgaas@google.com>
+Subject: [PATCH v3 00/26] Add definition for the number of standard PCI BARs
+Date: Mon, 16 Sep 2019 23:41:32 +0300
+Message-Id: <20190916204158.6889-1-efremov@linux.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190916134727.4gi6rvz4sm6znrqc@function>
-X-PGP-Key: http://www.gregn.net/pubkey.asc
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Virus-Scanned: clamav-milter 0.101.4 at vserver
-X-Virus-Status: Clean
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,34 +74,147 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, linux-usb@vger.kernel.org,
+ linux-ia64@vger.kernel.org, Sebastian Ott <sebott@linux.ibm.com>,
+ linux-pci@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-hyperv@vger.kernel.org, linux-ide@vger.kernel.org,
+ Peter Jones <pjones@redhat.com>, "H . Peter Anvin" <hpa@zytor.com>,
+ netdev@vger.kernel.org, Sasha Levin <sashal@kernel.org>,
+ linux-s390@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Stephen Hemminger <sthemmin@microsoft.com>,
+ Maxim Levitsky <maximlevitsky@gmail.com>, linux-scsi@vger.kernel.org,
+ x86@kernel.org, Kishon Vijay Abraham I <kishon@ti.com>,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>, linux-serial@vger.kernel.org,
+ Daniel Vetter <daniel.vetter@ffwll.ch>, Matt Turner <mattst88@gmail.com>,
+ Jack Wang <jinpu.wang@cloud.ionos.com>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ linux-arm-kernel@lists.infradead.org, Jose Abreu <Jose.Abreu@synopsys.com>,
+ Fenghua Yu <fenghua.yu@intel.com>, linux-alpha@vger.kernel.org,
+ Alexandre Torgue <alexandre.torgue@st.com>, Alex Dubov <oakad@yahoo.com>,
+ Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
+ Haiyang Zhang <haiyangz@microsoft.com>, Jiri Slaby <jslaby@suse.com>,
+ Denis Efremov <efremov@linux.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Ivan Kokshaysky <ink@jurassic.park.msu.ru>, linux-fbdev@vger.kernel.org,
+ kvm@vger.kernel.org, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Thomas Gleixner <tglx@linutronix.de>, Todd Poynor <toddpoynor@google.com>,
+ Matt Porter <mporter@kernel.crashing.org>,
+ Gerald Schaefer <gerald.schaefer@de.ibm.com>,
+ Richard Henderson <rth@twiddle.net>, Jens Axboe <axboe@kernel.dk>,
+ Tony Luck <tony.luck@intel.com>,
+ Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
+ Cornelia Huck <cohuck@redhat.com>, linux-mmc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Rob Springer <rspringer@google.com>,
+ Alexandre Bounine <alex.bou9@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Andrew Murray <andrew.murray@arm.com>, "David S. Miller" <davem@davemloft.net>,
+ Mathias Nyman <mathias.nyman@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Sep 16, 2019 at 03:47:28PM +0200, Samuel Thibault wrote:
-> Okash Khawaja, le dim. 15 sept. 2019 19:41:30 +0100, a ecrit:
-> > I have attached the descriptions.
-> 
-> Attachment is missing :)
-> 
-> Samuel
+Code that iterates over all standard PCI BARs typically uses
+PCI_STD_RESOURCE_END, but this is error-prone because it requires
+"i <= PCI_STD_RESOURCE_END" rather than something like
+"i < PCI_STD_NUM_BARS". We could add such a definition and use it the same
+way PCI_SRIOV_NUM_BARS is used. The patchset also replaces constant (6)
+with new define PCI_STD_NUM_BARS where appropriate and removes local
+declarations for the number of PCI BARs.
 
-Samuel, check the message that came to you directly, and it should be
-there. The speakup list rejects attachments.
+Changes in v3:
+  - Updated commits description.
+  - Refactored "< PCI_ROM_RESOURCE" with "< PCI_STD_NUM_BARS" in loops.
+  - Refactored "<= BAR_5" with "< PCI_STD_NUM_BARS" in loops.
+  - Removed local define GASKET_NUM_BARS.
+  - Removed local define PCI_NUM_BAR_RESOURCES.
 
-Greg
+Changes in v2:
+  - Reversed checks in pci_iomap_range,pci_iomap_wc_range.
+  - Refactored loops in vfio_pci to keep PCI_STD_RESOURCES.
+  - Added 2 new patches to replace the magic constant with new define.
+  - Splitted net patch in v1 to separate stmmac and dwc-xlgmac patches.
 
+Denis Efremov (26):
+  PCI: Add define for the number of standard PCI BARs
+  PCI: hv: Use PCI_STD_NUM_BARS
+  PCI: dwc: Use PCI_STD_NUM_BARS
+  PCI: endpoint: Use PCI_STD_NUM_BARS
+  misc: pci_endpoint_test: Use PCI_STD_NUM_BARS
+  s390/pci: Use PCI_STD_NUM_BARS
+  x86/PCI: Loop using PCI_STD_NUM_BARS
+  alpha/PCI: Use PCI_STD_NUM_BARS
+  ia64: Use PCI_STD_NUM_BARS
+  stmmac: pci: Loop using PCI_STD_NUM_BARS
+  net: dwc-xlgmac: Loop using PCI_STD_NUM_BARS
+  ixgb: use PCI_STD_NUM_BARS
+  e1000: Use PCI_STD_NUM_BARS
+  rapidio/tsi721: Loop using PCI_STD_NUM_BARS
+  efifb: Loop using PCI_STD_NUM_BARS
+  fbmem: use PCI_STD_NUM_BARS
+  vfio_pci: Loop using PCI_STD_NUM_BARS
+  scsi: pm80xx: Use PCI_STD_NUM_BARS
+  ata: sata_nv: Use PCI_STD_NUM_BARS
+  staging: gasket: Use PCI_STD_NUM_BARS
+  serial: 8250_pci: Use PCI_STD_NUM_BARS
+  pata_atp867x: Use PCI_STD_NUM_BARS
+  memstick: use PCI_STD_NUM_BARS
+  USB: core: Use PCI_STD_NUM_BARS
+  usb: pci-quirks: Use PCI_STD_NUM_BARS
+  devres: use PCI_STD_NUM_BARS
+
+ arch/alpha/kernel/pci-sysfs.c                 |  8 ++---
+ arch/ia64/sn/pci/pcibr/pcibr_dma.c            |  4 +--
+ arch/s390/include/asm/pci.h                   |  5 +--
+ arch/s390/include/asm/pci_clp.h               |  6 ++--
+ arch/s390/pci/pci.c                           | 16 +++++-----
+ arch/s390/pci/pci_clp.c                       |  6 ++--
+ arch/x86/pci/common.c                         |  2 +-
+ arch/x86/pci/intel_mid_pci.c                  |  2 +-
+ drivers/ata/pata_atp867x.c                    |  2 +-
+ drivers/ata/sata_nv.c                         |  2 +-
+ drivers/memstick/host/jmb38x_ms.c             |  2 +-
+ drivers/misc/pci_endpoint_test.c              |  8 ++---
+ drivers/net/ethernet/intel/e1000/e1000.h      |  1 -
+ drivers/net/ethernet/intel/e1000/e1000_main.c |  2 +-
+ drivers/net/ethernet/intel/ixgb/ixgb.h        |  1 -
+ drivers/net/ethernet/intel/ixgb/ixgb_main.c   |  2 +-
+ .../net/ethernet/stmicro/stmmac/stmmac_pci.c  |  4 +--
+ .../net/ethernet/synopsys/dwc-xlgmac-pci.c    |  2 +-
+ drivers/pci/controller/dwc/pci-dra7xx.c       |  2 +-
+ .../pci/controller/dwc/pci-layerscape-ep.c    |  2 +-
+ drivers/pci/controller/dwc/pcie-artpec6.c     |  2 +-
+ .../pci/controller/dwc/pcie-designware-plat.c |  2 +-
+ drivers/pci/controller/dwc/pcie-designware.h  |  2 +-
+ drivers/pci/controller/pci-hyperv.c           | 10 +++---
+ drivers/pci/endpoint/functions/pci-epf-test.c | 10 +++---
+ drivers/pci/pci-sysfs.c                       |  4 +--
+ drivers/pci/pci.c                             | 13 ++++----
+ drivers/pci/proc.c                            |  4 +--
+ drivers/pci/quirks.c                          |  4 +--
+ drivers/rapidio/devices/tsi721.c              |  2 +-
+ drivers/scsi/pm8001/pm8001_hwi.c              |  2 +-
+ drivers/scsi/pm8001/pm8001_init.c             |  2 +-
+ drivers/staging/gasket/gasket_constants.h     |  3 --
+ drivers/staging/gasket/gasket_core.c          | 12 +++----
+ drivers/staging/gasket/gasket_core.h          |  4 +--
+ drivers/tty/serial/8250/8250_pci.c            |  8 ++---
+ drivers/usb/core/hcd-pci.c                    |  2 +-
+ drivers/usb/host/pci-quirks.c                 |  2 +-
+ drivers/vfio/pci/vfio_pci.c                   | 11 ++++---
+ drivers/vfio/pci/vfio_pci_config.c            | 32 ++++++++++---------
+ drivers/vfio/pci/vfio_pci_private.h           |  4 +--
+ drivers/video/fbdev/core/fbmem.c              |  4 +--
+ drivers/video/fbdev/efifb.c                   |  2 +-
+ include/linux/pci-epc.h                       |  2 +-
+ include/linux/pci.h                           |  2 +-
+ include/uapi/linux/pci_regs.h                 |  1 +
+ lib/devres.c                                  |  2 +-
+ 47 files changed, 112 insertions(+), 115 deletions(-)
 
 -- 
-web site: http://www.gregn.net
-gpg public key: http://www.gregn.net/pubkey.asc
-skype: gregn1
-(authorization required, add me to your contacts list first)
-If we haven't been in touch before, e-mail me before adding me to your contacts.
+2.21.0
 
---
-Free domains: http://www.eu.org/ or mail dns-manager@EU.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
