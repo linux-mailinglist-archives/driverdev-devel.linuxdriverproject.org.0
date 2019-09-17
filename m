@@ -1,61 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 18684B51C1
-	for <lists+driverdev-devel@lfdr.de>; Tue, 17 Sep 2019 17:45:30 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2CBAEB540E
+	for <lists+driverdev-devel@lfdr.de>; Tue, 17 Sep 2019 19:24:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C3CA88759E;
-	Tue, 17 Sep 2019 15:45:27 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0F1DE84187;
+	Tue, 17 Sep 2019 17:24:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id X3K+YgqnCnj7; Tue, 17 Sep 2019 15:45:27 +0000 (UTC)
+	with ESMTP id 2u4uX-zEZhZw; Tue, 17 Sep 2019 17:24:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 559BA87100;
-	Tue, 17 Sep 2019 15:45:27 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A154F844A5;
+	Tue, 17 Sep 2019 17:24:05 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C0C841BF42E
- for <devel@linuxdriverproject.org>; Tue, 17 Sep 2019 15:45:25 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 80E6A1BF298
+ for <devel@linuxdriverproject.org>; Tue, 17 Sep 2019 17:24:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id BD94984DDD
- for <devel@linuxdriverproject.org>; Tue, 17 Sep 2019 15:45:25 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7B61A815E9
+ for <devel@linuxdriverproject.org>; Tue, 17 Sep 2019 17:24:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ah9g+LYkICK4 for <devel@linuxdriverproject.org>;
- Tue, 17 Sep 2019 15:45:25 +0000 (UTC)
-X-Greylist: delayed 04:50:33 by SQLgrey-1.7.6
-Received: from server.jpc-chicago.com (unknown [188.93.125.228])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 307D684DB8
- for <devel@driverdev.osuosl.org>; Tue, 17 Sep 2019 15:45:25 +0000 (UTC)
-Received: from localhost ([127.0.0.1]:40607 helo=server.jpc-chicago.com)
- by server.jpc-chicago.com with esmtpa (Exim 4.92)
- (envelope-from <info@printingserviceschicago.com>)
- id 1iAB7y-0004ir-H4; Tue, 17 Sep 2019 12:54:34 +0200
+ with ESMTP id 3qnrfoqEPgDs for <devel@linuxdriverproject.org>;
+ Tue, 17 Sep 2019 17:24:03 +0000 (UTC)
+X-Greylist: delayed 00:05:01 by SQLgrey-1.7.6
+Received: from smtp.domeneshop.no (smtp.domeneshop.no [194.63.252.55])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9EDF98610B
+ for <devel@driverdev.osuosl.org>; Tue, 17 Sep 2019 17:24:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=tronnes.org
+ ; s=ds201810;
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+ Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=MfZrMCUAMeA7TQrw3rrOPzZCfpWaDHz40znbVYjtSGc=; b=EvJiObe6F1J/NU4cwdHtBQJwsm
+ tvzmF3ckxOYGz+xxC9Ww9cA012m3X9wxOJDmTpO+fHNEia9zU+Ri/A281pBzwDXPobT3IU0krwt4X
+ alAZ+n/0vNuBuTXAUUjm9weACND2AVMYeUyQR6I8okjancFCIYym1nKGjY2n2JBQSd/lSJ81T+YHh
+ O4yhfdtmmOiJRWAIpCY0tnYTeQzMaEy/s4sd06EBdIxbGdBMGx5AxnFFTo+yjDMdAEazFbGzrgpeC
+ CW2xSkPJiA8ZYIinPttIfGvRV3KC2sPXFl5MrHdo7nkHe/3BJYT1jOf+XhKX/8wujlh8xTNVwJPhg
+ DmdH4DTg==;
+Received: from 211.81-166-168.customer.lyse.net ([81.166.168.211]:60392
+ helo=localhost.localdomain)
+ by smtp.domeneshop.no with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_CBC_SHA1:128)
+ (Exim 4.89) (envelope-from <noralf@tronnes.org>)
+ id 1iAH7z-0005yL-Lc; Tue, 17 Sep 2019 19:18:59 +0200
+From: =?UTF-8?q?Noralf=20Tr=C3=B8nnes?= <noralf@tronnes.org>
+To: devel@driverdev.osuosl.org
+Subject: [PATCH 1/3] staging/fbtft: Depend on OF
+Date: Tue, 17 Sep 2019 19:18:41 +0200
+Message-Id: <20190917171843.10334-1-noralf@tronnes.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Date: Tue, 17 Sep 2019 12:54:34 +0200
-From: Clifford Ordia <info@printingserviceschicago.com>
-To: undisclosed-recipients:;
-Subject: Clifford Ordia
-Mail-Reply-To: committee-chairmain@outlook.com
-Message-ID: <0bf43b07a1ea99a2de5f84ae595e7abd@printingserviceschicago.com>
-X-Sender: info@printingserviceschicago.com
-User-Agent: Roundcube Webmail/1.3.8
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - server.jpc-chicago.com
-X-AntiAbuse: Original Domain - driverdev.osuosl.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - printingserviceschicago.com
-X-Get-Message-Sender-Via: server.jpc-chicago.com: authenticated_id:
- info@printingserviceschicago.com
-X-Authenticated-Sender: server.jpc-chicago.com: info@printingserviceschicago.com
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,42 +68,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: committee-chairmain@outlook.com
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: gregkh@linuxfoundation.org,
+ =?UTF-8?q?Noralf=20Tr=C3=B8nnes?= <noralf@tronnes.org>,
+ stable <stable@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-
-Sir,
-
-This is to let you know that your payment file has been brought to this 
-committee for the final decision to be made.
-
- From all observations made in your file concerning this payment, we have 
-reached a conclusion of assisting you in making sure that you receive 
-this payment.
-
-There are some issues that had posed against this payment in the past, 
-we have discovered all, and we intend to take a decision based on your 
-understanding to make sure you receive this payment without further 
-delay.
-
-You must understand that this committee will have an interest which we 
-must protect in making sure that you receive this payment this time.
-
-We will approve this payment, guide you and also mediate within you, 
-your bank and the paying bank to make sure you receive this payment 
-without any hitch even in your country.
-
-Get back to me immediately for full details/instruction.
-
-Thanks
-
-Clifford Ordia
-
-(Senate Chairman on Local and Foreign Debts)
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+Q29tbWl0IGM0NDBlZWUxYTdhMSAoIlN0YWdpbmc6IGZidGZ0OiBTd2l0Y2ggdG8gdGhlIGdwaW8g
+ZGVzY3JpcHRvcgppbnRlcmZhY2UiKSByZW1vdmVkIHNldHRpbmcgZ3Bpb3MgdmlhIHBsYXRmb3Jt
+IGRhdGEuIFRoaXMgbWVhbnMgdGhhdApmYnRmdCB3aWxsIG5vdyBvbmx5IHdvcmsgd2l0aCBEZXZp
+Y2UgVHJlZSBzbyBzZXQgdGhlIGRlcGVuZGVuY3kuCgpUaGlzIGFsc28gcHJldmVudHMgYSBOVUxM
+IHBvaW50ZXIgZGVyZWYgb24gbm9uLURUIHBsYXRmb3JtIGJlY2F1c2UKZmJ0ZnRvcHMucmVxdWVz
+dF9ncGlvcyBpcyBub3Qgc2V0IGluIHRoYXQgY2FzZSBhbnltb3JlLgoKRml4ZXM6IGM0NDBlZWUx
+YTdhMSAoIlN0YWdpbmc6IGZidGZ0OiBTd2l0Y2ggdG8gdGhlIGdwaW8gZGVzY3JpcHRvciBpbnRl
+cmZhY2UiKQpDYzogc3RhYmxlIDxzdGFibGVAdmdlci5rZXJuZWwub3JnPgpTaWduZWQtb2ZmLWJ5
+OiBOb3JhbGYgVHLDuG5uZXMgPG5vcmFsZkB0cm9ubmVzLm9yZz4KLS0tCiBkcml2ZXJzL3N0YWdp
+bmcvZmJ0ZnQvS2NvbmZpZyB8IDIgKy0KIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwg
+MSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9mYnRmdC9LY29uZmln
+IGIvZHJpdmVycy9zdGFnaW5nL2ZidGZ0L0tjb25maWcKaW5kZXggOGVjNTI0YTk1ZWM4Li40ZTVk
+ODYwZmQ3ODggMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy9mYnRmdC9LY29uZmlnCisrKyBi
+L2RyaXZlcnMvc3RhZ2luZy9mYnRmdC9LY29uZmlnCkBAIC0xLDcgKzEsNyBAQAogIyBTUERYLUxp
+Y2Vuc2UtSWRlbnRpZmllcjogR1BMLTIuMAogbWVudWNvbmZpZyBGQl9URlQKIAl0cmlzdGF0ZSAi
+U3VwcG9ydCBmb3Igc21hbGwgVEZUIExDRCBkaXNwbGF5IG1vZHVsZXMiCi0JZGVwZW5kcyBvbiBG
+QiAmJiBTUEkKKwlkZXBlbmRzIG9uIEZCICYmIFNQSSAmJiBPRgogCWRlcGVuZHMgb24gR1BJT0xJ
+QiB8fCBDT01QSUxFX1RFU1QKIAlzZWxlY3QgRkJfU1lTX0ZJTExSRUNUCiAJc2VsZWN0IEZCX1NZ
+U19DT1BZQVJFQQotLSAKMi4yMC4xCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0
+Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9kcml2ZXJkZXYtZGV2ZWwK
