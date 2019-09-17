@@ -1,73 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 93A6EB4BAD
-	for <lists+driverdev-devel@lfdr.de>; Tue, 17 Sep 2019 12:13:25 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A4CC3B5064
+	for <lists+driverdev-devel@lfdr.de>; Tue, 17 Sep 2019 16:32:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 23C5D84B88;
-	Tue, 17 Sep 2019 10:13:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2AC1B1FE2F;
+	Tue, 17 Sep 2019 14:32:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id a612mLtM-Ggl; Tue, 17 Sep 2019 10:13:22 +0000 (UTC)
+	with ESMTP id tOYE6w0y3Md3; Tue, 17 Sep 2019 14:32:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C01A681B87;
-	Tue, 17 Sep 2019 10:13:21 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DAB9920781;
+	Tue, 17 Sep 2019 14:32:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 495571BF3D4
- for <devel@linuxdriverproject.org>; Tue, 17 Sep 2019 10:13:19 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 226191BF3F3
+ for <devel@linuxdriverproject.org>; Tue, 17 Sep 2019 14:32:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 431FB817F4
- for <devel@linuxdriverproject.org>; Tue, 17 Sep 2019 10:13:19 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1DDAF85C9F
+ for <devel@linuxdriverproject.org>; Tue, 17 Sep 2019 14:32:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8o+t6NJra13b for <devel@linuxdriverproject.org>;
- Tue, 17 Sep 2019 10:13:18 +0000 (UTC)
+ with ESMTP id WMk-AO6xWyrG for <devel@linuxdriverproject.org>;
+ Tue, 17 Sep 2019 14:32:07 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtp110.ord1d.emailsrvr.com (smtp110.ord1d.emailsrvr.com
- [184.106.54.110])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1E01081724
- for <devel@driverdev.osuosl.org>; Tue, 17 Sep 2019 10:13:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=g001.emailsrvr.com;
- s=20190322-9u7zjiwi; t=1568715197;
- bh=zBaogtQ3EoCF+64rfNf65r5QvbzLx7Mg3lSrFpdGkKM=;
- h=Subject:To:From:Date:From;
- b=wYi+F6cbUf1Dx7LxP18BTN7foALesFpO4vw1cBLHFIXjXV1yE1nNG+UUpDTp+YKc7
- yDqWPYZ006BYB/SGiIiMwpWl8fqEM6FUPCtQ+zaeRCOJx2DMyGEE2MaGRE0s4JQYFN
- 8eNdS+C0H8gileZARkOSf2OIeGtODFmcF7rWbnOQ=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
- s=20190130-41we5z8j; t=1568715197;
- bh=zBaogtQ3EoCF+64rfNf65r5QvbzLx7Mg3lSrFpdGkKM=;
- h=Subject:To:From:Date:From;
- b=Cj4hTj+xdzZchVGk7I1Oy9l9SCo4BouxiUFno5o12V9+6w+9QwOEKp7FoZs+GbzPf
- wcpRFNmNZZrl87+eW8IaNAk6/xua2APpNk7s+Q+J3NSNaXz93ERMQKUV+Ws7WDgTrK
- p/d8kliycVsrWrj4CuNa+l4Eva6Q0DVkDly9+APg=
-X-Auth-ID: abbotti@mev.co.uk
-Received: by smtp22.relay.ord1d.emailsrvr.com (Authenticated sender:
- abbotti-AT-mev.co.uk) with ESMTPSA id 6209AE0173; 
- Tue, 17 Sep 2019 06:13:16 -0400 (EDT)
-X-Sender-Id: abbotti@mev.co.uk
-Received: from [10.0.0.173] (remote.quintadena.com [81.133.34.160])
- (using TLSv1.2 with cipher AES128-SHA) by 0.0.0.0:465 (trex/5.7.12);
- Tue, 17 Sep 2019 06:13:17 -0400
-Subject: Re: [PATCH] staging: comedi: drivers: prevent memory leak
-To: Dan Carpenter <dan.carpenter@oracle.com>,
- Navid Emamdoost <navid.emamdoost@gmail.com>
-References: <20190917024147.26290-1-navid.emamdoost@gmail.com>
- <20190917063004.GG18977@kadam>
-From: Ian Abbott <abbotti@mev.co.uk>
-Organization: MEV Ltd.
-Message-ID: <86a2ceb0-cc59-2b57-e2b0-f620a42e9ac1@mev.co.uk>
-Date: Tue, 17 Sep 2019 11:13:15 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
-In-Reply-To: <20190917063004.GG18977@kadam>
-Content-Language: en-GB
+Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
+ [209.85.210.194])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id A31DE85008
+ for <devel@driverdev.osuosl.org>; Tue, 17 Sep 2019 14:32:07 +0000 (UTC)
+Received: by mail-pf1-f194.google.com with SMTP id y22so2291470pfr.3
+ for <devel@driverdev.osuosl.org>; Tue, 17 Sep 2019 07:32:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=8SUrqUEd8vhNQrC/UhQr9xGaonvbAM/B+mpfw/Rhjzs=;
+ b=dtq2O9sKrO75cEIEu+YdsYP4ioxcIInMpQkLYsEJsng6xTiFCZiuhrn5QCnNfmL6jU
+ 72e543i04pnFy/CNhLfmBlC7d4PRYfGormxemji2+w+RD8Veu0OAJoGOhGvb7d3GistU
+ x0x9BSuV3KJXcvoPfUQB3WFEWJVbHwsMrnreRA1c9+0hpWbmIuZQkECTnFLzA5t19JS4
+ Y0TlxBptNV5EUygEMX+3ljLUZHETzqhTRj/dtMyfMMG3fbiKRNbJugwI2SLh8EhOMD39
+ v71rqeoi8MLOS45GOJ4zxESGxSWLqaGabBxa3103IiSc46BYArkVMFbbL46blrJvy8xx
+ UYbw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=8SUrqUEd8vhNQrC/UhQr9xGaonvbAM/B+mpfw/Rhjzs=;
+ b=WuC5hxTllIA4S1FuPfowbgz20f152mEx9dg2nxlElEaNP+qJGIfYWi32/G4WXGqfwG
+ cy+pYKa7nvDlwdtSU5wuVXPCT7n8JSr06pxpmxeXD1sM4xzze7MV9SdocyEO+6tK55aD
+ lNTPxK9zLp4XgfOq5388Gj7diT3XP2jtcppFnG727dbXoeOEy8ISDaEAkR2xlEhVqmsZ
+ zpo9HoOUlM62Oaatm6ab3fLWWxrigNSbXiWVQLLzpUTL3LOwvvZID1N9DP8FJ9Z/+1XL
+ e4ckNQaBMEEt8w8A9WKXBCKnMT+I94wvnP1lz5+vT60PdnsWmHdiyoT0X4vGb/yOW8LP
+ RtPA==
+X-Gm-Message-State: APjAAAUD3KpbH7uSUxf1oVIjdYL5ptrHineVtopD8v9c+ehhItGZYsQr
+ XQfvmnNIEyrHKsXLYj2r+x1fSs4FmbY=
+X-Google-Smtp-Source: APXvYqy472moAZ9uDaULskoS3Ol1soIvaM24WFqIFB3L85JOB7yXFaGSnQBICSQYnApViT6D3mKIRQ==
+X-Received: by 2002:a62:61c5:: with SMTP id v188mr4671549pfb.194.1568730726902; 
+ Tue, 17 Sep 2019 07:32:06 -0700 (PDT)
+Received: from localhost.localdomain
+ ([2401:4900:1951:77d6:cd84:5e38:4d0a:8c08])
+ by smtp.gmail.com with ESMTPSA id s7sm2520335pjr.23.2019.09.17.07.32.04
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Tue, 17 Sep 2019 07:32:06 -0700 (PDT)
+From: Aliasgar Surti <aliasgar.surti500@gmail.com>
+X-Google-Original-From: Aliasgar Surti
+To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] drivers:staging:rtl8723bs: Removed unneeded variables
+Date: Tue, 17 Sep 2019 20:01:31 +0530
+Message-Id: <1568730691-954-1-git-send-email-aliasgar.surti500@gmail.com>
+X-Mailer: git-send-email 2.7.4
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,59 +83,79 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- kjlu@umn.edu, linux-kernel@vger.kernel.org, emamd001@umn.edu, smccaman@umn.edu
+Cc: Aliasgar Surti <aliasgar.surti500@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 17/09/2019 07:33, Dan Carpenter wrote:
-> On Mon, Sep 16, 2019 at 09:41:43PM -0500, Navid Emamdoost wrote:
->> In das1800_attach, the buffer allocated via kmalloc_array needs to be
->> released if an error happens.
->>
->> Signed-off-by: Navid Emamdoost <navid.emamdoost@gmail.com>
-> 
-> Commedit calls ->detach() if the ->attach() fails so this patch would
-> lead to a double free.  See comedi_device_attach():
-> 
-> drivers/staging/comedi/drivers.c
->     983          }
->     984          if (!driv->attach) {
->     985                  /* driver does not support manual configuration */
->     986                  dev_warn(dev->class_dev,
->     987                           "driver '%s' does not support attach using comedi_config\n",
->     988                           driv->driver_name);
->     989                  module_put(driv->module);
->     990                  ret = -EIO;
->     991                  goto out;
->     992          }
->     993          dev->driver = driv;
->     994          dev->board_name = dev->board_ptr ? *(const char **)dev->board_ptr
->     995                                           : dev->driver->driver_name;
->     996          ret = driv->attach(dev, it);
->                        ^^^^^^^^^^^^^^^^^^^^^
->     997          if (ret >= 0)
->     998                  ret = comedi_device_postconfig(dev);
->     999          if (ret < 0) {
->    1000                  comedi_device_detach(dev);
->                          ^^^^^^^^^^^^^^^^^^^^^^^^^
-> 
->    1001                  module_put(driv->module);
->    1002          }
->    1003          /* On success, the driver module count has been incremented. */
+From: Aliasgar Surti <aliasgar.surti500@gmail.com>
 
-Yes, everything should be freed properly by comedi_device_detach(). 
- From comedi_device_detach(), some of the stuff is freed by 
-dev->driver->detach(), and the remainder is freed by 
-comedi_device_detach_cleanup().
+coccicheck reported warning for unneeded variable used.
 
+This patch removes the unneeded variables.
+
+Signed-off-by: Aliasgar Surti <aliasgar.surti500@gmail.com>
+---
+ drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 15 +++++----------
+ 1 file changed, 5 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+index d1b199e..fa3ffc3 100644
+--- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
++++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+@@ -2428,8 +2428,7 @@ static  int rtw_drvext_hdl(struct net_device *dev, struct iw_request_info *info,
+ static int rtw_mp_ioctl_hdl(struct net_device *dev, struct iw_request_info *info,
+ 						union iwreq_data *wrqu, char *extra)
+ {
+-	int ret = 0;
+-	return ret;
++	return 0;
+ }
+ 
+ static int rtw_get_ap_info(struct net_device *dev,
+@@ -4462,24 +4461,21 @@ static int rtw_mp_efuse_get(struct net_device *dev,
+ 			struct iw_request_info *info,
+ 			union iwreq_data *wdata, char *extra)
+ {
+-	int err = 0;
+-	return err;
++	return 0;
+ }
+ 
+ static int rtw_mp_efuse_set(struct net_device *dev,
+ 			struct iw_request_info *info,
+ 			union iwreq_data *wdata, char *extra)
+ {
+-	int err = 0;
+-	return err;
++	return 0;
+ }
+ 
+ static int rtw_tdls(struct net_device *dev,
+ 				struct iw_request_info *info,
+ 				union iwreq_data *wrqu, char *extra)
+ {
+-	int ret = 0;
+-	return ret;
++	return 0;
+ }
+ 
+ 
+@@ -4487,8 +4483,7 @@ static int rtw_tdls_get(struct net_device *dev,
+ 				struct iw_request_info *info,
+ 				union iwreq_data *wrqu, char *extra)
+ {
+-	int ret = 0;
+-	return ret;
++	return 0;
+ }
+ 
+ 
 -- 
--=( Ian Abbott <abbotti@mev.co.uk> || Web: www.mev.co.uk )=-
--=( MEV Ltd. is a company registered in England & Wales. )=-
--=( Registered number: 02862268.  Registered address:    )=-
--=( 15 West Park Road, Bramhall, STOCKPORT, SK7 3JZ, UK. )=-
+2.7.4
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
