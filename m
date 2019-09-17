@@ -1,79 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9121DB46C3
-	for <lists+driverdev-devel@lfdr.de>; Tue, 17 Sep 2019 07:15:33 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6F9F7B46DD
+	for <lists+driverdev-devel@lfdr.de>; Tue, 17 Sep 2019 07:31:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 738C9879A5;
-	Tue, 17 Sep 2019 05:15:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8518D84FD5;
+	Tue, 17 Sep 2019 05:31:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 503q0yTMwayl; Tue, 17 Sep 2019 05:15:31 +0000 (UTC)
+	with ESMTP id 8QB4MdMQYiX2; Tue, 17 Sep 2019 05:31:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 77C7A87918;
-	Tue, 17 Sep 2019 05:15:30 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8045585B9A;
+	Tue, 17 Sep 2019 05:31:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 987341BF97E
- for <devel@linuxdriverproject.org>; Tue, 17 Sep 2019 05:15:27 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id DAD131BF313
+ for <devel@linuxdriverproject.org>; Tue, 17 Sep 2019 05:31:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 924CB85B00
- for <devel@linuxdriverproject.org>; Tue, 17 Sep 2019 05:15:27 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id D128820490
+ for <devel@linuxdriverproject.org>; Tue, 17 Sep 2019 05:31:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3Ztavo0tObAK for <devel@linuxdriverproject.org>;
- Tue, 17 Sep 2019 05:15:26 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic301-20.consmr.mail.gq1.yahoo.com
- (sonic301-20.consmr.mail.gq1.yahoo.com [98.137.64.146])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 788A981F34
- for <devel@driverdev.osuosl.org>; Tue, 17 Sep 2019 05:15:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aol.com; s=a2048;
- t=1568697326; bh=AhwlOckvccyE4ysmUMD5BMK/gwbKT5/hEQb6y+cMRsY=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From:Subject;
- b=doCGybcdMUHL4nqHBB//ks8M0OG08uDUHfElj/xYQPCoROM0iy5ee3zmF8iUqyETv0ZAo2ou0ojaVJJQAcwi0AviI7XR+immJkdWXcu6l6hB+7DT/yeuOF4AK4G1wxKD1E7Gnz9HvBNlXJQwIhqwtSrWgBUqEdf1W1EO0c+kILu8MW4SQ3NzYpmD/dnTNukqp6UKbGjdLFPW9Dw9UOBABvFKEE3DY6tPYNYu8NedmXX3Kh2DYiAyxYPMuX7NUatFHYCrSkt5Rta/ho/6LmZz3bhpssmGLb5WaeIQGFS7wQpPYaeD6HLeT23dtUZwlmrdqAKNEurC0Y6OoAongs2RcA==
-X-YMail-OSG: GxorC3EVM1nHmDVxUdfLQlpFhahMbf_7tT23iP7NgeCDiuXTyF9f8pZ5HSC1.xN
- gdHvQRdKK7kCEaIreg9_KhtRHesRMXHrm8YNJK3PL2_Zy0ufZlHm3tkUt30BSEsv9yINSIDBdCZn
- 9EwGrFBnT106nEEdpH8vvtLpVhd3ET5yt6.aJbDQoMhlTbBZB2ETxcbyf4cQpO_n099_mFvZggqk
- 4ytnmtcU.sBcY10bZGc3Y338GuImDwAkGyPmQqgLgOh7vzNJPC4FIjdKTW4FOhr2Unm7pZ85ZF5E
- hZhMeLJXgNn9lx9RepSili.L.2aNCODwIsERJp_5jE4SR13kPjZRQ2joXanyCbH8tTcw3jYuym4s
- RrZYIMLc09oqO9yv5n9CEOQjGTZZStlxXjMxNqpYZbSyp6W1D.ZFP_xImEPHE.iA0dLEiRBGX6a_
- tAsEAeDXcd_HKhi4C41BwlV9bDpHxxkHHHHeZgBGmwPp8JJpWLtgUZkCF4oKXgARxNi7pBUpXnEw
- lG0FF7NJ8clVJun.lFdtAvwnecqFtZx4f65u2yMUsP4.apd8PiT1nrYfRS73M0UY3pYjAV2Mot82
- E83rGo8yBU8wkwZG0APbB8.uDDj88.7JNm_mKsQFn6qmOdYfVnbkOy9OHjszmjNFXREa8EKrGXIV
- ByZHt3ePjBY3jncIWnMAOaf2o.QWPdNZGsb77WQGdvYLxvj3aRDP2aW_Is3wfgOCj_z.Q4oQ7vR3
- OA6sJXU2yLx3GbJS_mWheW5TmBWCd...iZMzgL7TIgjPmLN3Ve5YgEMddLhMXn.2UYBEAUyjVF.t
- fzK98ndiMAKdzIIAD5UM_CRS9mYZqsOXehl9_3cqly1bHaqqb2UysgDHbgLUoLLz4toDcBvguLn2
- Iox5eWfTmoW3H7.DCxdHSWx9DooL_8Ij6y_R9kGvUtlzTjkIJtNzK0p567NkTjwm5vE._OLJJIGV
- McPpTHZ8DtCiD2ALEtHDYm2qx6xBflaIpxv.3twuKvy9eu1k1zQd3ZPlOCMOItNu.URYPXpzRgSQ
- 7fW3aLoBjspLl2tkA5mjrGtTr3jtkUxXCS6nEsHhrWZzr.B6njPiZRm2mCzd1cp8XW9YPjbt_ZX0
- 8O9mxnd.shlapPDJsVS2jw4THp6lAeWhE6lTRz8AjMP5wq.ywEsjMvC1BvNNRYpJnlgmLQNNwtjs
- H3zrHEhdLYlSdiF4x3AZvvwVDguro3Us9FVnkmdW5xR00fxg2XznYrbrD6djxargI8YMnArS.u4X
- eapxsIbCE272sbMkyZON6l4I4XGcvPFrZ1_inJRV02GqZCL1O3Fq._hyoQ7fxOZFL8v6Iv2yg8wL
- e3y.zgenDvwhbggKUENe0FDnqIeSm69pdIarjhg--
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic301.consmr.mail.gq1.yahoo.com with HTTP; Tue, 17 Sep 2019 05:15:26 +0000
-Received: by smtp405.mail.ir2.yahoo.com (Oath Hermes SMTP Server) with ESMTPA
- ID 426117e608ffd8534b66767bfb4416c3; 
- Tue, 17 Sep 2019 05:15:22 +0000 (UTC)
-Date: Tue, 17 Sep 2019 13:15:15 +0800
-From: Gao Xiang <hsiangkao@aol.com>
-To: Namjae Jeon <namjae.jeon@samsung.com>
+ with ESMTP id XyhOMwY2Q3Yf for <devel@linuxdriverproject.org>;
+ Tue, 17 Sep 2019 05:31:40 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id B4F732000B
+ for <devel@driverdev.osuosl.org>; Tue, 17 Sep 2019 05:31:40 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id q5so1412150pfg.13
+ for <devel@driverdev.osuosl.org>; Mon, 16 Sep 2019 22:31:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=EQ0acRLPRiNkuyWsFFHOV/6xwzk+wEWY0J/gcpntvHs=;
+ b=TeorArZ8kq/CR+J83TcgIcoMMXb0AYK6talNwdUHRJVyf9VikpQmWsGf7w3UTHfQny
+ pDINeP/EhlRnYY9sMv2fum/y2ArzqdmeDG6hxpTklbaUPRN7YV9s+U7mOiT0H/fgCQDm
+ KIxM9/+sDhNZpzPWn/c7afHOZPoV/5MgIDG31sTYYhJmzI7Ej8GSRGomCI5/6RQ9WiLr
+ Nvki95KG/xig1NrsLMbSId2FLFpvMbvTlBNBD0ED8BG2PooD4xBLZK9Rg5ULlGRAP60L
+ zaD45mDMcL2jwgoEcrUVWYTZN+cQdMEJJTuMS/Vxl5SJayjoOQjwbgRoHqPhCPuFKmUG
+ psIg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=EQ0acRLPRiNkuyWsFFHOV/6xwzk+wEWY0J/gcpntvHs=;
+ b=sIVRsFbg0Eopm/PaTEkPLU2EH6RkX+n6f5sZQBhgKbtHyU1RI8n4DXZqmvjTx9ndhE
+ 0EeU0jCrVDDhHvgQe2YZrz5d3Mk/4q/MkHG//ocvRKemxrXIBJ3SWehHVZL1SFdFXLAx
+ c0a3uv94Mbjx4C8d8GPcMUwY3wNVifJiUopv3CO6FH8UnbFFIuDx1LYom/0X6JcasPg1
+ wj7yxJXZ6ljCocUVj7UE9j/+4j0/HHuQ6vO4JqmeB/VeAn/Qb8hOGVKetLxSgZV6T9CD
+ p8ee3R7yKn5tG5/ZjJ3G4ElBoRAP3VOVD+JcePPfbG8kUtsioFJZdxYr1wbcQrDrkjHG
+ /zug==
+X-Gm-Message-State: APjAAAXZCQBzqmW+S/HRfRDXh51TcHpt99SLLF7lao1q+mH5Trjg2EGU
+ QYxaqX/m3xzpkoIooMNHsm4=
+X-Google-Smtp-Source: APXvYqxR+x7zzJVajUqecslzP05unUQObpLjtCGBNhxJZNrfm+ZY01XHEVbEv4NirSM8n8X1LdMWug==
+X-Received: by 2002:aa7:8f08:: with SMTP id x8mr2368896pfr.48.1568698300250;
+ Mon, 16 Sep 2019 22:31:40 -0700 (PDT)
+Received: from arter97-x1.inha.ac.kr ([165.246.242.140])
+ by smtp.gmail.com with ESMTPSA id h2sm964076pfq.108.2019.09.16.22.31.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 16 Sep 2019 22:31:39 -0700 (PDT)
+From: Park Ju Hyung <qkrwngud825@gmail.com>
+To: valdis.kletnieks@vt.edu, gregkh@linuxfoundation.org,
+ namjae.jeon@samsung.com
 Subject: Re: [PATCH] staging: exfat: add exfat filesystem code to
-Message-ID: <20190917051510.GA22891@hsiangkao-HP-ZHAN-66-Pro-G1>
-References: <CGME20190917025738epcas1p1f1dd21ca50df2392b0f84f0340d82bcd@epcas1p1.samsung.com>
- <003601d56d03$aa04fa00$fe0eee00$@samsung.com>
- <003701d56d04$470def50$d529cdf0$@samsung.com>
+Date: Tue, 17 Sep 2019 14:31:34 +0900
+Message-Id: <20190917053134.27926-1-qkrwngud825@gmail.com>
+X-Mailer: git-send-email 2.23.0
+In-Reply-To: <8998.1568693976@turing-police>
+References: <8998.1568693976@turing-police>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <003701d56d04$470def50$d529cdf0$@samsung.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Mailer: WebService/1.1.14303 hermes Apache-HttpAsyncClient/4.1.4
- (Java/1.8.0_181)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,179 +86,63 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Namjae Jeon <linkinjeon@gmail.com>,
- 'Valdis Kletnieks' <valdis.kletnieks@vt.edu>,
- 'Greg KH' <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- alexander.levin@microsoft.com, sergey.senozhatsky@gmail.com,
- linux-fsdevel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, linkinjeon@gmail.com,
+ linux-kernel@vger.kernel.org, alexander.levin@microsoft.com,
+ sergey.senozhatsky@gmail.com, linux-fsdevel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi,
-
-On Tue, Sep 17, 2019 at 12:02:01PM +0900, Namjae Jeon wrote:
-> We are excited to see this happening and would like to state that we appreciate
-> time and
-> effort which people put into upstreaming exfat. Thank you!
-> 
-> However, if possible, can we step back a little bit and re-consider it? We
-> would prefer to
-> see upstream the code which we are currently using in our products - sdfat - as
-> this can
-> be mutually benefitial from various points of view.
-
-(Only represent my personal views)
-
-I'd like to know the detailed commit history as an individual Android hobbyist.
-
-I noticed sdfat years ago and there is a difference from the previous exfat driver.
-
-I have no idea it's a good way to blindly keep the code from some opensource tar
-on some website. and so many forks on github (hard to know which one is more stable,
-cleaner or latest)... someone could take more time and play a role in that actively
-in the community and maybe draw a roadmap of this so I could study more and maybe
-contribute a little in my spare time.
-
-And I think if it permits, development on multiple branches could be avoided...
-If I am wrong, please ignore me...
-
-Thanks,
-Gao Xiang
-
-> 
-> Thanks!
-> 
-> > ---------- Forwarded message ---------
-> > ????????: Ju Hyung Park <qkrwngud825@gmail.com>
-> > Date: 2019?? 9?? 16?? (??) ???? 3:49
-> > Subject: Re: [PATCH] staging: exfat: add exfat filesystem code to
-> > To: Greg KH <gregkh@linuxfoundation.org>
-> > Cc: <alexander.levin@microsoft.com>, <devel@driverdev.osuosl.org>, <linux-
-> > fsdevel@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Valdis Kletnieks
-> > <valdis.kletnieks@vt.edu>
-> > 
-> > 
-> > Hi Greg,
-> > 
-> > On Sun, Sep 15, 2019 at 10:54 PM Greg KH <gregkh@linuxfoundation.org> wrote:
-> > > Note, this just showed up publically on August 12, where were you with
-> > > all of this new code before then?  :)
-> > 
-> > My sdFAT port, exfat-nofuse and the one on the staging tree, were all
-> > made by Samsung.
-> > And unless you guys had a chance to talk to Samsung developers
-> > directly, those all share the same faith of lacking proper development
-> > history.
-> > 
-> > The source I used was from http://opensource.samsung.com, which
-> > provides kernel sources as tar.gz files.
-> > There is no code history available.
-> > 
-> > > For the in-kernel code, we would have to rip out all of the work you did
-> > > for all older kernels, so that's a non-starter right there.
-> > 
-> > I'm aware.
-> > I'm just letting mainline know that there is potentially another (much
-> > better) base that could be upstreamed.
-> > 
-> > If you want me to rip out older kernel support for upstreaming, I'm
-> > more than happy to do so.
-> > 
-> > > As for what codebase to work off of, I don't want to say it is too late,
-> > > but really, this shows up from nowhere and we had to pick something so
-> > > we found the best we could at that point in time.
-> > 
-> > To be honest, whole public exFAT sources are all from nowhere unless
-> > you had internal access to Samsung's development archive.
-> > The one in the current staging tree isn't any better.
-> > 
-> > I'm not even sure where the staging driver is from, actually.
-> > 
-> > Samsung used the 1.2.x versioning until they switched to a new code
-> > base - sdFAT.
-> > The one in the staging tree is marked version 1.3.0(exfat_super.c).
-> > I failed to find anything 1.3.x from Samsung's public kernel sources.
-> > 
-> > The last time exFAT 1.2.x was used was in Galaxy S7(released in 2016).
-> > Mine was originally based on sdFAT 2.1.10, used in Galaxy S10(released
-> > in March 2019) and it just got updated to 2.2.0, used in Galaxy
-> > Note10(released in August 2019).
-> > 
-> > > Is there anything specific in the codebase you have now, that is lacking
-> > > in the in-kernel code?  Old-kernel-support doesn't count here, as we
-> > > don't care about that as it is not applicable.  But functionality does
-> > > matter, what has been added here that we can make use of?
-> > 
-> > This is more of a suggestion of
-> > "Let's base on a *much more recent* snapshot for the community to work on",
-> > since the current one on the staging tree also lacks development history.
-> > 
-> > The diff is way too big to even start understanding the difference.
-> > 
-> > 
-> > With that said though, I do have some vague but real reason as to why
-> > sdFAT base is better.
-> > 
-> > With some major Android vendors showing interests in supporting exFAT,
-> > Motorola notably published their work on public Git repository with
-> > full development history(the only vendor to do this that I'm aware
-> > of).
-> > Commits like this:
-> > https://github.com/MotorolaMobilityLLC/kernel-msm/commit/7ab1657 is
-> > not merged to exFAT(including the current staging tree one) while it
-> > did for sdFAT.
-> > 
-> > 
-> > The only thing I regret is not working on porting sdFAT sooner.
-> > I definitely didn't anticipate Microsoft to suddenly lift legal issues
-> > on upstreaming exFAT just around when I happen to gain interest in
-> > porting sdFAT.
-> > 
-> > If my port happened sooner, it would have been a no-brainer for it to
-> > be considered as a top candidate for upstreaming.
-> > 
-> > > And do you have any "real" development history to look at instead of the
-> > > "one giant commit" of the initial code drop?  That is where we could
-> > > actually learn what has changed over time.  Your repo as-is shows none
-> > > of the interesting bits :(
-> > 
-> > As I mentioned, development history is unobtainable, even for the
-> > current staging tree or exfat-nofuse.
-> > (If you guys took exfat-nofuse, you can also see that there's barely
-> > any real exFAT-related development done in that tree. Everything is
-> > basically fixes for newer kernel versions.)
-> > 
-> > The best I could do, if someone's interested, is to diff all versions
-> > of exFAT/sdFAT throughout the Samsung's kernel versions, but that
-> > still won't give us reasons as to why the changes were made.
-> > 
-> > TL;DR
-> > My suggestion - Let's base on a much newer driver that's matured more,
-> > contains more fixes, gives (slightly?) better performance and
-> > hopefully has better code quality.
-> > 
-> > Both drivers are horrible.
-> > You said it yourself(for the current staging one), and even for my new
-> > sdFAT-base proposal, I'm definitely not comfortable seeing this kind
-> > of crap in mainline:
-> > https://github.com/arter97/exfat-linux/commit/0f1ddde
-> > 
-> > However, it's clear to me that the sdFAT base is less-horrible.
-> > 
-> > Please let me know what you think.
-> > 
-> > > thanks,
-> > >
-> > > greg kh
-> > 
-> > Thanks.
-> > 
-> 
-> 
-> 
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gVHVlLCAxNyBTZXAgMjAxOSAwMDoxOTozNiAtMDQwMCwgIlZhbGRpcyBLbMSTdG5pZWtzIiBz
+YWlkOgo+IEknbSB3b3JraW5nIG9mZiBhIHNvbWV3aGF0IGNsZWFuZWQgdXAgY29weSBvZiBTYW1z
+dW5nJ3Mgb3JpZ2luYWwgZHJpdmVyLAo+IGJlY2F1c2UgdGhhdCdzIHdoYXQgSSBoYWQga25vd2xl
+ZGdlIG9mLiAgSWYgdGhlIHNkZmF0IGRyaXZlciBpcyBjbG9zZXIgdG8gYmVpbmcKPiBtZXJnZWFi
+bGUsIEknZCBub3Qgb2JqZWN0IGlmIHRoYXQgZ290IG1lcmdlZCBpbnN0ZWFkLgoKR3JlZywgYXMg
+VmFsZGlzIG1lbnRpb25lZCBoZXJlLCB0aGUgc3RhZ2luZyB0cmVlIGRyaXZlciBpcyBqdXN0IGFu
+b3RoZXIgZXhGQVQgZm9yawpmcm9tIFNhbXN1bmcuCldoYXQncyB0aGUgcG9pbnQgb2YgdXNpbmcg
+YSBtdWNoIG9sZGVyIGRyaXZlcj8KCnNkRkFUIGlzIGNsZWFybHkgbW9yZSBtYXR1cmVkIGFuZCBi
+ZWVuIHB1dCBpbnRvIG1vcmUgcmVjZW50IHByb2R1Y3Rpb24gc29mdHdhcmVzLgpBbmQgYXMgSSB3
+cm90ZSBpbiBwcmV2aW91cyBlbWFpbCwgaXQgZG9lcyBpbmNsdWRlIHNvbWUgcmVhbCBmaXhlcy4K
+CkFzIE5hbWphZSBzYWlkIHRvbywgU2Ftc3VuZyB3b3VsZCBiZSBtb3JlIGludGVyZXN0ZWQgaW4g
+bWVyZ2luZyBzZEZBVCB0byB1cHN0cmVhbS4KSWYgd2UgZGl2ZXJnZSwgU2Ftc3VuZyB3aWxsIGhh
+dmUgbGVzcyByZWFzb25zIHRvIGNvbnRyaWJ1dGUgdGhlaXIgcGF0Y2hlcyB0byB1cHN0cmVhbS4K
+CkFsc28sIEkgdGhpbmsgaXQgbWFrZXMgbXVjaCBtb3JlIHNlbnNlIHRvIG1ha2UgU2Ftc3VuZyB0
+aGUgbWFpbnRhaW5lciBvZiB0aGlzIGRyaXZlcgooaWYgdGhleSdyZSB3aWxsaW5nIHRvIHB1dCBp
+biB0aGUgbWFucG93ZXIgdG8gZG8gc28pLiBBc2tpbmcgdGhlbSB3b3VsZCBiZSB0aGUgZmlyc3QK
+c3RlcCBpbiBkb2luZyBzby4KCj4gQnV0IGhlcmUncyB0aGUgcHJvYmxlbS4uLiBTYW1zdW5nIGhh
+cyB0aGVpciBpbnRlcm5hbCBzZGZhdCBjb2RlLCBQYXJrIFl1IEh5dW5nCj4gaGFzIHdoYXQgYXBw
+ZWFycyB0byBiZSBhIGZvcmsgb2YgdGhhdCBjb2RlIGZyb20gc29tZSBwb2ludCAoYW5kIGl0J3Mg
+dW5jbGVhciAsCj4gYW5kIGl0J3MgdW5jbGVhciB3aGljaCBvbmUgaGFzIGhhZCBtb3JlIGJ1Z2Zp
+eGVzIGFuZCBjbGVhbnVwcyB0byBnZXQgaXQgdG8KPiBzb21ld2hlcmUgbmVhciBtYWlubGluZSBt
+ZXJnZWFibGUuCgpJIG1hZGUgaXQgZXh0cmVtZWx5IGNsZWFyIG9uIHdoZXJlIEkgdG9vayB0aGUg
+Y29kZS4KClRoZSBpbml0aWFsIGNvbW1pdDogInNkZmF0OiBpbXBvcnQgZnJvbSBHOTczRlhYVTNB
+U0c4IiBzdGF0ZXMgd2hpY2gga2VybmVsIHNvdXJjZQpJIHVzZWQuCgpZb3UgY2FuIHNpbXBseSBz
+ZWFyY2ggIkc5NzNGWFhVM0FTRzgiIG9uIGh0dHA6Ly9vcGVuc291cmNlLnNhbXN1bmcuY29tIGFu
+ZCBkb3dubG9hZAp0aGUgc291cmNlIGNvZGUuIEl0J2xsIG1hdGNoIGV4YWN0bHkgd2l0aCBteSBp
+bml0aWFsIGNvbW1pdC4KCk15IHJlcG9zaXRvcnkgaXMgYmFzaWNhbGx5IHJlbmFtZSArIGNsZWFu
+LXVwICsgb2xkZXIga2VybmVsIGNvbXBhdC4KCkkgdGhpbmsgd2UgY2FuIGFsbCBhZ3JlZSB0aGF0
+IHVzaW5nIHRoZSBzZEZBVCBuYW1pbmcgb24gbm9uLUFuZHJvaWQgaXMgdmVyeQptaXNsZWFkaW5n
+LCB3aGljaCBpcyB3aHkgSSByZW5hbWVkIGl0IHRvIGV4RkFULgoKc2RGQVQgaW5jbHVkZXMgc3Vw
+cG9ydCBmb3IgZmF0MTYvMzIsIGFuZCBhcyBhbHNvIG1lbnRpb25lZCBpbgpodHRwczovL2dpdC5r
+ZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9ncmVna2gvc3RhZ2luZy5naXQvY29t
+bWl0Lz9oPXN0YWdpbmctbmV4dCZpZD01ODk4NWE5ZDJkMDNlOTc3ZGI5M2JmNTc0YTE2MTYyNzY2
+YTMxOGZlCnRoaXMgaXNuJ3QgZGVzaXJhYmxlLCBlc3BlY2lhbGx5IGluIG1haW5saW5lLgpJIGNs
+ZWFuZWQgaXQgdXAgYW5kIHJlbW92ZWQgc29tZSBvdGhlciBTYW1zdW5nJ3MgY29kZSB0aGF0IHJl
+bGllcyBvbiBwcm9wcmlldGFyeQp1c2Vyc3BhY2UgdG9vbHMgc3VjaCBhcyBkZWZyYWcuCgpJIGJl
+bGlldmUgbXkgcmVwb3NpdG9yeSBpcyBpbiB0aGUgY2xlYW5lc3Qgc3RhdGUgZm9yIGdldHRpbmcg
+bWVyZ2VkIHRvIG1haW5saW5lLApjb21wYXJlZCB0byBvdGhlciBkcml2ZXJzIGF2aWxhYmxlIG91
+dCB0aGVyZS4KCklmIHdlIGhhcHBlbiB0byBwaWNrIGl0IHRvIG1haW5saW5lLCBJIHRoaW5rIGl0
+J2xsIGFsc28gYmUgcXVpdGUgdHJpdmlhbCBmb3IgU2Ftc3VuZwp0byBwaWNrIG1haW5saW5lIHBh
+dGNoZXMgYmFjayB0byB0aGVpciBzZEZBVCBkcml2ZXJzIHVzZWQgaW4gR2FsYXh5IGRldmljZXMu
+Cgo+IENhbiB5b3UgcHJvdmlkZSBhIHBvaW50ZXIgdG8gd2hhdCBTYW1zdW5nIGlzICpjdXJyZW50
+bHkqIHVzaW5nPyBXZSBwcm9iYWJseQo+IG5lZWQgdG8gc3RvcCBhbmQgYWN0dWFsbHkgbG9vayBh
+dCB0aGUgY29kZSBiYXNlcyBhbmQgc2VlIHdoYXQncyBpbiB0aGUgYmVzdAo+IHNoYXBlIGN1cnJl
+bnRseS4KCk5hbWphZSBjb3VsZCBwcm9iYWJseSBlbGFib3JhdGUgaGVyZSwgYnV0IGlmIEkgd2Vy
+ZSB0byBndWVzcywgdGhlcmUgd2Fzbid0IGEKbm90aWNlYWJsZSBkaWZmZXJlbmNlIGluIHJlY2Vu
+dCBzZEZBVCByZWxlYXNlcy4gRXZlbiB0aGUgbGFzdGVzdCBOb3RlMTAga2VybmVsIG9ubHkKaGFk
+IHNvbWUgdWV2ZW50IGNoYW5nZXMuCgpJIHRoaW5rIHRoZSBjdXJyZW50IGxhdGVzdCBwdWJsaWMg
+c291cmNlJ3MgZHJpdmVyIGlzIHRoZSBiZXN0IG9uZSBhdmFpbGFibGUuCgpUaGFua3MuCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcg
+bGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhk
+cml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
