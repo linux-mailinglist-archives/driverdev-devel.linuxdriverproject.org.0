@@ -1,52 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0316AB5198
-	for <lists+driverdev-devel@lfdr.de>; Tue, 17 Sep 2019 17:33:50 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 18684B51C1
+	for <lists+driverdev-devel@lfdr.de>; Tue, 17 Sep 2019 17:45:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 57AE285D87;
-	Tue, 17 Sep 2019 15:33:48 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C3CA88759E;
+	Tue, 17 Sep 2019 15:45:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id l0K6eD4FtnYn; Tue, 17 Sep 2019 15:33:47 +0000 (UTC)
+	with ESMTP id X3K+YgqnCnj7; Tue, 17 Sep 2019 15:45:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5F02985A5A;
-	Tue, 17 Sep 2019 15:33:47 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 559BA87100;
+	Tue, 17 Sep 2019 15:45:27 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6252A1BF42E
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 17 Sep 2019 15:33:44 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C0C841BF42E
+ for <devel@linuxdriverproject.org>; Tue, 17 Sep 2019 15:45:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 5F9A32047A
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 17 Sep 2019 15:33:44 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id BD94984DDD
+ for <devel@linuxdriverproject.org>; Tue, 17 Sep 2019 15:45:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xVUBkwlH2gaO
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 17 Sep 2019 15:33:44 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from fukushima.med.or.jp (unknown [163.44.2.180])
- by silver.osuosl.org (Postfix) with ESMTP id 061B520015
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 17 Sep 2019 15:33:44 +0000 (UTC)
-Received: from User (unknown [109.180.135.180])
- by fukushima.med.or.jp (Postfix) with ESMTPA id 5DFEF2D1C60;
- Tue, 17 Sep 2019 10:03:25 +0900 (JST)
-From: "From Dr Chien Raymond Hang Seng"<pg2018428@gmail.com>
-Subject: REPLY AS SOON AS POSSIBLE  
-Date: Tue, 17 Sep 2019 02:03:38 +0100
+ with ESMTP id Ah9g+LYkICK4 for <devel@linuxdriverproject.org>;
+ Tue, 17 Sep 2019 15:45:25 +0000 (UTC)
+X-Greylist: delayed 04:50:33 by SQLgrey-1.7.6
+Received: from server.jpc-chicago.com (unknown [188.93.125.228])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 307D684DB8
+ for <devel@driverdev.osuosl.org>; Tue, 17 Sep 2019 15:45:25 +0000 (UTC)
+Received: from localhost ([127.0.0.1]:40607 helo=server.jpc-chicago.com)
+ by server.jpc-chicago.com with esmtpa (Exim 4.92)
+ (envelope-from <info@printingserviceschicago.com>)
+ id 1iAB7y-0004ir-H4; Tue, 17 Sep 2019 12:54:34 +0200
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20190917153344.5F9A32047A@silver.osuosl.org>
+Date: Tue, 17 Sep 2019 12:54:34 +0200
+From: Clifford Ordia <info@printingserviceschicago.com>
+To: undisclosed-recipients:;
+Subject: Clifford Ordia
+Mail-Reply-To: committee-chairmain@outlook.com
+Message-ID: <0bf43b07a1ea99a2de5f84ae595e7abd@printingserviceschicago.com>
+X-Sender: info@printingserviceschicago.com
+User-Agent: Roundcube Webmail/1.3.8
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - server.jpc-chicago.com
+X-AntiAbuse: Original Domain - driverdev.osuosl.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - printingserviceschicago.com
+X-Get-Message-Sender-Via: server.jpc-chicago.com: authenticated_id:
+ info@printingserviceschicago.com
+X-Authenticated-Sender: server.jpc-chicago.com: info@printingserviceschicago.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,16 +68,41 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: draymndch@yahoo.co.jp
-Content-Type: text/plain; charset="us-ascii"
+Reply-To: committee-chairmain@outlook.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-I am Vice Chairman of Hang Seng Bank, I have Important Matter to Discuss with you concerning my late client. Died without a NEXT OF KIN. Send me your private email for full details information. email me at E-Mail: draymdm@gmail.com
 
-Regards 
-Mr.Fung
+Sir,
+
+This is to let you know that your payment file has been brought to this 
+committee for the final decision to be made.
+
+ From all observations made in your file concerning this payment, we have 
+reached a conclusion of assisting you in making sure that you receive 
+this payment.
+
+There are some issues that had posed against this payment in the past, 
+we have discovered all, and we intend to take a decision based on your 
+understanding to make sure you receive this payment without further 
+delay.
+
+You must understand that this committee will have an interest which we 
+must protect in making sure that you receive this payment this time.
+
+We will approve this payment, guide you and also mediate within you, 
+your bank and the paying bank to make sure you receive this payment 
+without any hitch even in your country.
+
+Get back to me immediately for full details/instruction.
+
+Thanks
+
+Clifford Ordia
+
+(Senate Chairman on Local and Foreign Debts)
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
