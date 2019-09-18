@@ -1,74 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DECC1B5D47
-	for <lists+driverdev-devel@lfdr.de>; Wed, 18 Sep 2019 08:33:15 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3860DB5F4D
+	for <lists+driverdev-devel@lfdr.de>; Wed, 18 Sep 2019 10:34:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A2F5E857A2;
-	Wed, 18 Sep 2019 06:33:13 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1400E84E5A;
+	Wed, 18 Sep 2019 08:34:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JBVDerLqG1kY; Wed, 18 Sep 2019 06:33:13 +0000 (UTC)
+	with ESMTP id dhlOk4GyUVHI; Wed, 18 Sep 2019 08:34:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DC793847B8;
-	Wed, 18 Sep 2019 06:33:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4B313845CB;
+	Wed, 18 Sep 2019 08:34:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5E7C71BF5F6
- for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 06:33:10 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3B9E81BF48D
+ for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 08:33:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 5B99B20336
- for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 06:33:10 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 38C1985BE4
+ for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 08:33:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0ue-DFZBd-iL for <devel@linuxdriverproject.org>;
- Wed, 18 Sep 2019 06:33:09 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
- [209.85.215.195])
- by silver.osuosl.org (Postfix) with ESMTPS id D0E7B20117
- for <devel@driverdev.osuosl.org>; Wed, 18 Sep 2019 06:33:09 +0000 (UTC)
-Received: by mail-pg1-f195.google.com with SMTP id n9so3412260pgc.1
- for <devel@driverdev.osuosl.org>; Tue, 17 Sep 2019 23:33:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=4NRHniZPjEfTKvj18POaDeXjVS6m4zvsqMwOtmFk3z0=;
- b=r3C+u3/BB++MIH+IsmGmDFs2M0PdO8Pau3WSslLy1WJtLJ3S7piwCY3PHTNxaBHfF0
- 4ms7Nh5DunKVrPLSEg5PphOgFpwy7xXtIAwixb738v0lzn0t2u/6COg2bvxa8azBVXWs
- QYIkYpT1OVRIZOvfysvnbaCeri03UJY8KotnUrAAfySUN86jCxk243As4uNuVzbR60eo
- x+GFT1forrnz6r38ro+RZtuK6NXLnNos8WcySSUJV+yJSub2Cmv6+VJSg7KG0yeMnj7V
- JJb/We+Px/j7j8JPH+3lqnYZtxz6QdupO4RzerpyBEpznnp39WLjQv6Wu/4mOBnitfD1
- NK0g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=4NRHniZPjEfTKvj18POaDeXjVS6m4zvsqMwOtmFk3z0=;
- b=TuXkcA3NdubR4bpt4+Y1w/kTbbdJ/tAYyzMxF58alGfu152DUkocS0Dt/OcE6w5o4m
- 19d896RcXNtX/9QUYbDp3VmVqbTFhIEaidxefHKYlGmkqp3hOEprnlJyEDYodyHid0OM
- S2XW3XLyBFBFD8PpX5kzCtEsBY74p7bqvyERC0pWFNYPAHT5NkT6uwwfK2+u+ySmDS7l
- +7VY3IFTWpeIrcbH/Gtq9aCfU+tBYyW2wuobMnVvPkLERGC6LxoyjSQmtbCuqR8DgyFg
- 0sNhim1EodqLW+JLOAwLKX98IjAL6ARhcg3HHZOVGBJpUAuBUMBezSlfDzc7y4AyMSB4
- p6vg==
-X-Gm-Message-State: APjAAAW7sHd2B6gmkWB8jzAj4/FXMO+YVpJEKs7S7ttYzW8KqvBlqH7t
- NGpAAbiTr7NOuMzUY86ehAs=
-X-Google-Smtp-Source: APXvYqxbYV70nhx6LQt0f1LP4Q/8C+7DUVaCoQwC8bHmHjNOPx3Cn+Y7wUTauxXkxk/8TXzoWnjcVQ==
-X-Received: by 2002:aa7:93b7:: with SMTP id x23mr2433584pff.250.1568788389488; 
- Tue, 17 Sep 2019 23:33:09 -0700 (PDT)
-Received: from localhost ([175.223.34.14])
- by smtp.gmail.com with ESMTPSA id r185sm6685309pfr.68.2019.09.17.23.33.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 17 Sep 2019 23:33:08 -0700 (PDT)
-Date: Wed, 18 Sep 2019 15:33:04 +0900
-From: Sergey Senozhatsky <sergey.senozhatsky.work@gmail.com>
-To: 'Greg KH' <gregkh@linuxfoundation.org>
+ with ESMTP id WjFtgdZI9Rgd for <devel@linuxdriverproject.org>;
+ Wed, 18 Sep 2019 08:33:22 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B517F851AA
+ for <devel@driverdev.osuosl.org>; Wed, 18 Sep 2019 08:33:22 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0600621907;
+ Wed, 18 Sep 2019 08:33:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1568795602;
+ bh=NqU0W2Yzv3UbIZ/LoZ5afKn1xMHhi3IOmFcr8fQlT/E=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=0Bi1ciZS8CADVRReo5sJsAAq3cfNvE7TBoaPAUcDiz5vLuo5ufwdRY30aDUrPbKGB
+ UKIetcpxGcOJ1IfpmBLOb8J5VqnbOSjPRkKFpfuB6e9Fh6OGgL1uE6aeeSwmhd1g2B
+ k4IScLKYJHA5uV8wlAwGZfsHGokNYE/Y2pNxwcgY=
+Date: Wed, 18 Sep 2019 10:26:58 +0200
+From: 'Greg KH' <gregkh@linuxfoundation.org>
+To: Sergey Senozhatsky <sergey.senozhatsky.work@gmail.com>
 Subject: Re: [PATCH] staging: exfat: add exfat filesystem code to
-Message-ID: <20190918063304.GA8354@jagdpanzerIV>
+Message-ID: <20190918082658.GA1861850@kroah.com>
 References: <8998.1568693976@turing-police>
  <20190917053134.27926-1-qkrwngud825@gmail.com>
  <20190917054726.GA2058532@kroah.com>
@@ -76,9 +56,10 @@ References: <8998.1568693976@turing-police>
  <CAD14+f1adJPRTvk8awgPJwCoHXSngqoKcAze1xbHVVvrhSMGrQ@mail.gmail.com>
  <004401d56dc9$b00fd7a0$102f86e0$@samsung.com>
  <20190918061605.GA1832786@kroah.com>
+ <20190918063304.GA8354@jagdpanzerIV>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190918061605.GA1832786@kroah.com>
+In-Reply-To: <20190918063304.GA8354@jagdpanzerIV>
 User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -102,24 +83,34 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On (09/18/19 08:16), 'Greg KH' wrote:
-[..]
-> > Note, that Samsung is still improving sdfat driver. For instance,
-> > what will be realeased soon is sdfat v2.3.0, which will include support
-> > for "UtcOffset" of "File Directory Entry", in order to satisfy
-> > exFAT specification 7.4.
->
-[..]
-> If Samsung wishes to use their sdfat codebase as the "seed" to work from
-> for this, please submit a patch adding the latest version to the kernel
-> tree and we can compare and work from there.
+On Wed, Sep 18, 2019 at 03:33:04PM +0900, Sergey Senozhatsky wrote:
+> On (09/18/19 08:16), 'Greg KH' wrote:
+> [..]
+> > > Note, that Samsung is still improving sdfat driver. For instance,
+> > > what will be realeased soon is sdfat v2.3.0, which will include support
+> > > for "UtcOffset" of "File Directory Entry", in order to satisfy
+> > > exFAT specification 7.4.
+> >
+> [..]
+> > If Samsung wishes to use their sdfat codebase as the "seed" to work from
+> > for this, please submit a patch adding the latest version to the kernel
+> > tree and we can compare and work from there.
+> 
+> Isn't it what Ju Hyung did? He took sdfat codebase (the most recent
+> among publicly available) as the seed, cleaned it up a bit and submitted
+> as a patch.
 
-Isn't it what Ju Hyung did? He took sdfat codebase (the most recent
-among publicly available) as the seed, cleaned it up a bit and submitted
-as a patch. Well, technically, Valdis did the same, it's just he forked
-a slightly more outdated (and not anymore used by Samsung) codebase.
+He did?  I do not see a patch anywhere, what is the message-id of it?
 
-	-ss
+> Well, technically, Valdis did the same, it's just he forked a slightly
+> more outdated (and not anymore used by Samsung) codebase.
+
+He took the "best known at the time" codebase, as we had nothing else to
+work with.
+
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
