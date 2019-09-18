@@ -2,98 +2,76 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 15BF0B6016
-	for <lists+driverdev-devel@lfdr.de>; Wed, 18 Sep 2019 11:27:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 315D8B6015
+	for <lists+driverdev-devel@lfdr.de>; Wed, 18 Sep 2019 11:26:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8AF6686499;
-	Wed, 18 Sep 2019 09:27:14 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 593348646F;
+	Wed, 18 Sep 2019 09:26:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mQbPtBEo5lya; Wed, 18 Sep 2019 09:27:14 +0000 (UTC)
+	with ESMTP id TMix0X8lXS1k; Wed, 18 Sep 2019 09:26:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8E4D984C20;
-	Wed, 18 Sep 2019 09:27:13 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 34A8084B37;
+	Wed, 18 Sep 2019 09:26:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 238E21BF41E
- for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 09:27:11 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E3F3D1BF41E
+ for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 09:26:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1F75E84C20
- for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 09:27:11 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E0F9D203CF
+ for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 09:26:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vE7tbdeJ5yBQ for <devel@linuxdriverproject.org>;
- Wed, 18 Sep 2019 09:27:10 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 8FC5384B37
- for <devel@driverdev.osuosl.org>; Wed, 18 Sep 2019 09:27:10 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x8I98uK0036001;
- Wed, 18 Sep 2019 09:27:09 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=5W1fcvEd99/AIOIxEczHb9EgxxrI9ZKCVn9mLpgE1DY=;
- b=lMkuL9E22/fDHGZGYGdq4UeC5SmsvGJPm1jemC461wOrRlCJRuuu/+/JcgNExra+s8Mf
- Z/tF3XlJX6OyYs2M7n7ZaUo2Z5fZgUgou5AYx75K0JBluBD3nmV1ot/5EEKrIUJV6esR
- dD/0NnDsuB6Duc2+tQrLR79ZpIcpuENYTvDGuvJfYFVWswA5ALy/O9+jdGXfFzRo2raa
- 4tv4hudsFVUcsQd47Wwf0ZX90JmZXCOtKpR/pWEp8zA2e/CqqoT0piBKKTps2IMbCvRA
- wjd4xIIL6HUeWEKOxR3ffNdvNazYCzbbkwvM2MM9y6mi9ZLva+mZ8s9zuW1GvvLMWWw1 fA== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by userp2130.oracle.com with ESMTP id 2v385dtj58-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 18 Sep 2019 09:27:09 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x8I994QC176154;
- Wed, 18 Sep 2019 09:25:08 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3020.oracle.com with ESMTP id 2v37mm8fts-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 18 Sep 2019 09:25:08 +0000
-Received: from abhmp0009.oracle.com (abhmp0009.oracle.com [141.146.116.15])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x8I9P56v026455;
- Wed, 18 Sep 2019 09:25:05 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 18 Sep 2019 02:25:04 -0700
-Date: Wed, 18 Sep 2019 12:24:06 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Ju Hyung Park <qkrwngud825@gmail.com>
-Subject: Re: [PATCH] staging: exfat: add exfat filesystem code to
-Message-ID: <20190918092405.GC2959@kadam>
-References: <8998.1568693976@turing-police>
- <20190917053134.27926-1-qkrwngud825@gmail.com>
- <20190917054726.GA2058532@kroah.com>
- <CGME20190917060433epcas2p4b12d7581d0ac5477d8f26ec74e634f0a@epcas2p4.samsung.com>
- <CAD14+f1adJPRTvk8awgPJwCoHXSngqoKcAze1xbHVVvrhSMGrQ@mail.gmail.com>
- <004401d56dc9$b00fd7a0$102f86e0$@samsung.com>
- <20190918061605.GA1832786@kroah.com>
- <20190918063304.GA8354@jagdpanzerIV>
- <20190918082658.GA1861850@kroah.com>
- <CAD14+f24gujg3S41ARYn3CvfCq9_v+M2kot=RR3u7sNsBGte0Q@mail.gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAD14+f24gujg3S41ARYn3CvfCq9_v+M2kot=RR3u7sNsBGte0Q@mail.gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9383
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1908290000 definitions=main-1909180094
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9383
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
- definitions=main-1909180094
+ with ESMTP id JiFPl9JejoWp for <devel@linuxdriverproject.org>;
+ Wed, 18 Sep 2019 09:26:16 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
+ [209.85.214.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id 743A0203C9
+ for <devel@driverdev.osuosl.org>; Wed, 18 Sep 2019 09:26:16 +0000 (UTC)
+Received: by mail-pl1-f195.google.com with SMTP id t10so2843157plr.8
+ for <devel@driverdev.osuosl.org>; Wed, 18 Sep 2019 02:26:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=TP5u6Ukr8naGDCwUgGDGagSd1luSKaVAHPd6/hA2Lxc=;
+ b=BQyCXC4uNCAIjoc6ev5sISLgargq7BoavxCTsf+ZXZA/3MRVJm6DE8cNuUu1er+7LE
+ g/uRuoy5CYC0InQssHzLPQdsPpqdDOFBC2ETNyaiJgR5JIbtEzXrer/bfNK3fgtO74WY
+ TWCHxcgI63IHQFZKGU5l3NNMYrBlSSndSIyO0hbjBMDFtrxbVBfNTD7F2Dfyu+CH6zN/
+ uDEZC0HHw+uSO0meiDOucKi5DYimCHKvbUWFE/Ju886VeMe4GEXm1duuQ35P1cAvvs8F
+ hbyvqDGWtmXdvz9KdsUQmA6EpSxpspLfxkObA8Ev5bFTbMN7Whp/NmFRDWXfvZDfArRq
+ pXSg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=TP5u6Ukr8naGDCwUgGDGagSd1luSKaVAHPd6/hA2Lxc=;
+ b=dmWXBZ/GYh46+j4+GsBotHl257j+h9baNsUE4F3iyLptAI8r3UWP3AHqAfyMR7sVk1
+ gC2YEIx+a2M3hbqrRzshgs8YuM++mc90rQidN++2/NvaYLEJgA9rhmWX/wfjR+4BYVK0
+ lyvKokGYUB824VXF2ypNUSIdtju0TcvKBdj5OFA5TqHZsgaXXozEvmhiES1hruJHashy
+ fikMLgEApb1gypr7FBsqFmCoAgFiv2jePM1I3p8cf7JfmqWnSdyUEEVpRmvxIOSE9RYS
+ /f3SGbHzCNXDPOcXzqfDj8E/A2qHqDh74rNkkBxiPOqzd/TVjk2BqiIdLKrEEznelzZ2
+ jURQ==
+X-Gm-Message-State: APjAAAWYU1O/VLRDiv2D/em84AhMqtZrI4qXuTNx78pPol7OgL6uVXQr
+ Zhmw7aSxKXrKrKZicGeinwA=
+X-Google-Smtp-Source: APXvYqxxS5VPHg7voF/W/ZYyqfHN3XOErQ3eBbbKzxzjP8Q+m9zU5TQ5ykTgwHCm2au4U5JqDnIBsg==
+X-Received: by 2002:a17:902:9698:: with SMTP id
+ n24mr3268424plp.238.1568798775771; 
+ Wed, 18 Sep 2019 02:26:15 -0700 (PDT)
+Received: from localhost.localdomain
+ ([2401:4900:1951:77d6:5858:909b:a968:2d14])
+ by smtp.gmail.com with ESMTPSA id m12sm9270654pff.66.2019.09.18.02.26.12
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Wed, 18 Sep 2019 02:26:14 -0700 (PDT)
+From: Aliasgar Surti <aliasgar.surti500@gmail.com>
+X-Google-Original-From: Aliasgar Surti
+To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v2] drivers:staging:rtl8723bs: Removed unneeded variables
+Date: Wed, 18 Sep 2019 14:55:49 +0530
+Message-Id: <1568798749-9855-1-git-send-email-aliasgar.surti500@gmail.com>
+X-Mailer: git-send-email 2.7.4
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,40 +84,119 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linkinjeon@gmail.com,
- Valdis Kletnieks <valdis.kletnieks@vt.edu>,
- Sergey Senozhatsky <sergey.senozhatsky.work@gmail.com>,
- Namjae Jeon <namjae.jeon@samsung.com>, Greg KH <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org, alexander.levin@microsoft.com,
- sergey.senozhatsky@gmail.com, linux-fsdevel@vger.kernel.org,
- sj1557.seo@samsung.com
+Cc: Aliasgar Surti <aliasgar.surti500@gmail.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Sep 18, 2019 at 06:01:09PM +0900, Ju Hyung Park wrote:
-> On Wed, Sep 18, 2019 at 5:33 PM Greg KH <gregkh@linuxfoundation.org> wrote:
-> > He did?  I do not see a patch anywhere, what is the message-id of it?
-> 
-> I'm just repeating myself at this point, but again, I'm more than
-> willing to work on a patch.
-> I just want to make it clear on how should I.
+From: Aliasgar Surti <aliasgar.surti500@gmail.com>
 
-Put it in drivers/staging/sdfat/.
+coccicheck reported warning for unneeded variable used.
 
-But really we want someone from Samsung to say that they will treat
-the staging version as upstream.  It doesn't work when people apply
-fixes to their version and a year later back port the fixes into
-staging.  The staging tree is going to have tons and tons of white space
-fixes so backports are a pain.  All development needs to be upstream
-first where the staging driver is upstream.  Otherwise we should just
-wait for Samsung to get it read to be merged in fs/ and not through the
-staging tree.
+This patch removes the unneeded variables.
 
-regards,
-dan carpenter
+Signed-off-by: Aliasgar Surti <aliasgar.surti500@gmail.com>
+---
+v2: removed unneeded functions and replaced them with NULL in function array.
+---
+ drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 54 +++-----------------------
+ 1 file changed, 5 insertions(+), 49 deletions(-)
 
+diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+index d1b199e..55c6e45 100644
+--- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
++++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+@@ -2425,13 +2425,6 @@ static  int rtw_drvext_hdl(struct net_device *dev, struct iw_request_info *info,
+ 	return 0;
+ }
+ 
+-static int rtw_mp_ioctl_hdl(struct net_device *dev, struct iw_request_info *info,
+-						union iwreq_data *wrqu, char *extra)
+-{
+-	int ret = 0;
+-	return ret;
+-}
+-
+ static int rtw_get_ap_info(struct net_device *dev,
+                                struct iw_request_info *info,
+                                union iwreq_data *wrqu, char *extra)
+@@ -4458,43 +4451,6 @@ static int rtw_pm_set(struct net_device *dev,
+ 	return ret;
+ }
+ 
+-static int rtw_mp_efuse_get(struct net_device *dev,
+-			struct iw_request_info *info,
+-			union iwreq_data *wdata, char *extra)
+-{
+-	int err = 0;
+-	return err;
+-}
+-
+-static int rtw_mp_efuse_set(struct net_device *dev,
+-			struct iw_request_info *info,
+-			union iwreq_data *wdata, char *extra)
+-{
+-	int err = 0;
+-	return err;
+-}
+-
+-static int rtw_tdls(struct net_device *dev,
+-				struct iw_request_info *info,
+-				union iwreq_data *wrqu, char *extra)
+-{
+-	int ret = 0;
+-	return ret;
+-}
+-
+-
+-static int rtw_tdls_get(struct net_device *dev,
+-				struct iw_request_info *info,
+-				union iwreq_data *wrqu, char *extra)
+-{
+-	int ret = 0;
+-	return ret;
+-}
+-
+-
+-
+-
+-
+ static int rtw_test(
+ 	struct net_device *dev,
+ 	struct iw_request_info *info,
+@@ -4744,7 +4700,7 @@ static iw_handler rtw_private_handler[] = {
+ 	rtw_wx_write32,					/* 0x00 */
+ 	rtw_wx_read32,					/* 0x01 */
+ 	rtw_drvext_hdl,					/* 0x02 */
+-	rtw_mp_ioctl_hdl,				/* 0x03 */
++	NULL,						/* 0x03 */
+ 
+ /*  for MM DTV platform */
+ 	rtw_get_ap_info,					/* 0x04 */
+@@ -4771,15 +4727,15 @@ static iw_handler rtw_private_handler[] = {
+ 	NULL,							/* 0x12 */
+ 	rtw_p2p_get2,					/* 0x13 */
+ 
+-	rtw_tdls,						/* 0x14 */
+-	rtw_tdls_get,					/* 0x15 */
++	NULL,						/* 0x14 */
++	NULL,						/* 0x15 */
+ 
+ 	rtw_pm_set,						/* 0x16 */
+ 	rtw_wx_priv_null,				/* 0x17 */
+ 	rtw_rereg_nd_name,				/* 0x18 */
+ 	rtw_wx_priv_null,				/* 0x19 */
+-	rtw_mp_efuse_set,				/* 0x1A */
+-	rtw_mp_efuse_get,				/* 0x1B */
++	NULL,						/* 0x1A */
++	NULL,						/* 0x1B */
+ 	NULL,							/*  0x1C is reserved for hostapd */
+ 	rtw_test,						/*  0x1D */
+ };
+-- 
+2.7.4
 
 _______________________________________________
 devel mailing list
