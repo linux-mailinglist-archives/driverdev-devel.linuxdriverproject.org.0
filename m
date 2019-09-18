@@ -2,125 +2,79 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E7AD5B59B5
-	for <lists+driverdev-devel@lfdr.de>; Wed, 18 Sep 2019 04:35:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4F41EB5BB3
+	for <lists+driverdev-devel@lfdr.de>; Wed, 18 Sep 2019 08:15:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id BBCFE21515;
-	Wed, 18 Sep 2019 02:35:22 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5D38E2107F;
+	Wed, 18 Sep 2019 06:15:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YePuZGd8F+dx; Wed, 18 Sep 2019 02:35:22 +0000 (UTC)
+	with ESMTP id tC3EDHCp9dea; Wed, 18 Sep 2019 06:15:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0AF5F2107D;
-	Wed, 18 Sep 2019 02:35:19 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 95454203CC;
+	Wed, 18 Sep 2019 06:14:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 19A691BF290
- for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 02:35:16 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B4D661BF5F6
+ for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 06:14:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 167092049F
- for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 02:35:16 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id AD5EC203BB
+ for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 06:14:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id c847VagfRBfm for <devel@linuxdriverproject.org>;
- Wed, 18 Sep 2019 02:35:14 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mailout1.samsung.com (mailout1.samsung.com [203.254.224.24])
- by silver.osuosl.org (Postfix) with ESMTPS id 304F72049A
- for <devel@driverdev.osuosl.org>; Wed, 18 Sep 2019 02:35:14 +0000 (UTC)
-Received: from epcas1p3.samsung.com (unknown [182.195.41.47])
- by mailout1.samsung.com (KnoxPortal) with ESMTP id
- 20190918023511epoutp01b3ddbc772098155c68a9fb6c3b48826f~FZ74NvRmZ1741917419epoutp01D
- for <devel@driverdev.osuosl.org>; Wed, 18 Sep 2019 02:35:11 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.samsung.com
- 20190918023511epoutp01b3ddbc772098155c68a9fb6c3b48826f~FZ74NvRmZ1741917419epoutp01D
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1568774111;
- bh=Z8B4t6x2SThW7y10AxlkdXvg/95O7AxZFmJlnEcGh/E=;
- h=From:To:Cc:In-Reply-To:Subject:Date:References:From;
- b=V1xa2vhAHd2HeXrf8KlughqQfLSj4soigQcNIBfwqP/6T9MioVCPypQLRsq4FnUmr
- x1Mx9CmK4y8f5FW7JW9soR5LVfBcesSGkuFu2yzcs/S3H1/56Wh8vjMzTup/vddxLN
- hbIW5ijOEfHyXeWxa64T5lA4budaFHMO/7lxAaLs=
-Received: from epsnrtp6.localdomain (unknown [182.195.42.167]) by
- epcas1p2.samsung.com (KnoxPortal) with ESMTP id
- 20190918023510epcas1p2a0ad8f9794f47da39fdaf11820901605~FZ73tUebs1969819698epcas1p2s;
- Wed, 18 Sep 2019 02:35:10 +0000 (GMT)
-Received: from epsmges1p1.samsung.com (unknown [182.195.40.160]) by
- epsnrtp6.localdomain (Postfix) with ESMTP id 46Y3ws3mHjzMqYkf; Wed, 18 Sep
- 2019 02:35:09 +0000 (GMT)
-Received: from epcas1p2.samsung.com ( [182.195.41.46]) by
- epsmges1p1.samsung.com (Symantec Messaging Gateway) with SMTP id
- F2.27.04088.DD7918D5; Wed, 18 Sep 2019 11:35:09 +0900 (KST)
-Received: from epsmtrp2.samsung.com (unknown [182.195.40.14]) by
- epcas1p1.samsung.com (KnoxPortal) with ESMTPA id
- 20190918023508epcas1p1940b2b59fce55f7c1332b7d2aefd2bd4~FZ72DcvP52200622006epcas1p1j;
- Wed, 18 Sep 2019 02:35:08 +0000 (GMT)
-Received: from epsmgms1p1new.samsung.com (unknown [182.195.42.41]) by
- epsmtrp2.samsung.com (KnoxPortal) with ESMTP id
- 20190918023508epsmtrp289a18dc9cc88b153781a6a2d0f3be25b~FZ72CnLmL0361903619epsmtrp2b;
- Wed, 18 Sep 2019 02:35:08 +0000 (GMT)
-X-AuditID: b6c32a35-845ff70000000ff8-42-5d8197dd36d8
-Received: from epsmtip1.samsung.com ( [182.195.34.30]) by
- epsmgms1p1new.samsung.com (Symantec Messaging Gateway) with SMTP id
- 5F.C4.03706.CD7918D5; Wed, 18 Sep 2019 11:35:08 +0900 (KST)
-Received: from DONAMJAEJEO06 (unknown [10.88.104.63]) by
- epsmtip1.samsung.com (KnoxPortal) with ESMTPA id
- 20190918023508epsmtip103e760208fab5fe6118943268f992655~FZ71387dc3265732657epsmtip1k;
- Wed, 18 Sep 2019 02:35:08 +0000 (GMT)
-From: "Namjae Jeon" <namjae.jeon@samsung.com>
-To: "'Ju Hyung Park'" <qkrwngud825@gmail.com>, "'Greg KH'"
- <gregkh@linuxfoundation.org>, "'Valdis	Kletnieks'" <valdis.kletnieks@vt.edu>
-In-Reply-To: <CAD14+f1adJPRTvk8awgPJwCoHXSngqoKcAze1xbHVVvrhSMGrQ@mail.gmail.com>
-Subject: RE: [PATCH] staging: exfat: add exfat filesystem code to
-Date: Wed, 18 Sep 2019 11:35:08 +0900
-Message-ID: <004401d56dc9$b00fd7a0$102f86e0$@samsung.com>
+ with ESMTP id yNPczAAEwR0j for <devel@linuxdriverproject.org>;
+ Wed, 18 Sep 2019 06:14:56 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
+ [209.85.215.193])
+ by silver.osuosl.org (Postfix) with ESMTPS id 42B292039C
+ for <devel@driverdev.osuosl.org>; Wed, 18 Sep 2019 06:14:56 +0000 (UTC)
+Received: by mail-pg1-f193.google.com with SMTP id c17so3373240pgg.4
+ for <devel@driverdev.osuosl.org>; Tue, 17 Sep 2019 23:14:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=/VLD4T4j6CkFnw+yLOSt4lxWLxJlglbtXkL6PJrDavs=;
+ b=DH4Z8wwFPfwMMvrzBvq7aENKUnQTudeD8psgUXMgs8wQbs/3KHt2oQ30ar5PknDbkK
+ 1Ejs0D3Q5wT+WPpbySeeiCUzvmrlt8k7QMHVu9wxfmw79u6nQBKmsZj9m6bmYYe/9wvi
+ BAmQ5sr5esPjfMTGdzbJ+WPOkv6mqJQJfyd1o9D0o+YxgnIEJJKMSmu/T+d0iBdPck+D
+ tl4x3u450xj1o0fwmTqEPgq10UFjPQD4IqY43epcbGGAW0fMHANWD7WKOk97uOAFHxyQ
+ vBDxi5bZX5pbCZN3ViBmuMYQikDsFXT3gNqsM8IfZPsCWFrcF8tKcNRo5eqiwF2zvlKy
+ He0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=/VLD4T4j6CkFnw+yLOSt4lxWLxJlglbtXkL6PJrDavs=;
+ b=j1LMZW9AatSj3PMdoHPJcysgC0BuqpHmVpKFS9w2fcpOYg0emZr+N/og7g+SyfmxA7
+ 3pv89pg+UcBkbjC8UVe8Th74Lnx7Q0T5NOZ4n10X243vpo/Le7UhGveH9MiEQ02mGdJv
+ ju6JukUajUNIVEeWkJjuUunackjHdl+QSJd9/2sOZ6qwPJWj7CtzqCWYeP/SiLjJzC7X
+ 5MkGZHYsq4gYOr9noQ1jV65fWC+GvJ6INAElCfoDAPi01AK23aasq2f8T/4UTizfV9Hr
+ BzxJ20piF66Jr5argMKIClnUJRK6AfQF9ZWNlHGL4gbRf5lkG/0hIGw6PjxwIiybw99Z
+ L3zw==
+X-Gm-Message-State: APjAAAVrCdCXvToUcTHzxPI4Vo6VvZi35DVjWIS9CCXJyyWRSPb9EYY7
+ yNZ4YaFNJdtLpsv7MHMzJEo=
+X-Google-Smtp-Source: APXvYqwfsvwJhZB79moBclIo4UaUxsph4fJCrX8oQCQXsE0B5QQJdahsPtdE8Lon4onl9hUMl2lXPA==
+X-Received: by 2002:a63:2a87:: with SMTP id q129mr2485393pgq.101.1568787295612; 
+ Tue, 17 Sep 2019 23:14:55 -0700 (PDT)
+Received: from aliasgar ([219.65.62.52])
+ by smtp.gmail.com with ESMTPSA id f14sm7424905pfq.187.2019.09.17.23.14.53
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 17 Sep 2019 23:14:54 -0700 (PDT)
+Date: Wed, 18 Sep 2019 11:44:50 +0530
+From: ABC XYZ <aliasgar.surti500@gmail.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [PATCH] drivers:staging:rtl8723bs: Removed unneeded variables
+Message-ID: <20190918061450.GB8416@aliasgar>
+References: <1568730691-954-1-git-send-email-aliasgar.surti500@gmail.com>
+ <20190917144432.GB2959@kadam>
 MIME-Version: 1.0
-X-Mailer: Microsoft Outlook 14.0
-Thread-Index: AQGT5RAmYrUvbIdPV5wSdu6UWeOkRAHEPqcjASg+jxcBWaTXGQHGgTvdp4Nh1VA=
-Content-Language: ko
-X-Brightmail-Tracker: H4sIAAAAAAAAA01TWUwTURTNY9qZQqx5VMRLTbSO4UMj2KEWBwPELWaIxGD8MSqpE5i0hG52
- WiMYYxULAu5LxApG8MMlGggSrChLwCUQVAJG1Agad1FxAXdFp50a+Tv33nPuPfctKkLTSmpV
- eXa34LLzVpqMUjR2zEpMGDiyLVt/ujGWbTnynGCvdP+g2KKTtSTbP/BACps7FWxfUyXJXnta
- TbLnR55SbMPYVSXb+/6DYmEUN9jSoeAu+QcorrXqHMX5Ar8pbk/DWcSN1E/j2i++JbOoNdZU
- i8DnCi6dYM9x5ObZzWn08lWmJSZjsp5JYFLY+bTOztuENHppZlbCsjyr5I/WbeStHimVxYsi
- PTc91eXwuAWdxSG602jBmWt1MnpnosjbRI/dnJjjsC1g9Poko8Rcb7Uc9Q4SztIZm3ZUPCK8
- qCauDEWqAM+D7y87I8pQlEqDAwj+eL3h4BOC4Y8V4eALguPl9Yp/Ep+vm5ALzQgOj/YogwUN
- HkLQ25QRxCROgLFfrWSQFINLEVwuv6wMBgR+gODr6DAKsiLxSmipbAqpJ+FF8K2vLSKIFTge
- GlveUUGsxinQ96REKeNo6Dz6LGSDwNPh4rtKQrakg8DNN6GeMXgF/PAdJGVODBwrLQ5ZBbyX
- gsf+IkoWLIXdgwfD4kkwdKMhnNfCyHCzJFZJeDN8bA1TdiJ49TVNxga4X1unDFIIPAtqm+bK
- 6Rlw6WcVksdOhOHPu5RyFzXsLNbIlHjY09sRIeOpUFbygdqHaP+4xfzjFvOPW8D/f9gJpDiL
- YgWnaDMLIuNkxt92PQo93tnGADp0K7MdYRWiJ6jhpjdbo+Q3igW2dgQqgo5RZ23Zmq1R5/IF
- hYLLYXJ5rILYjozSue8ntJNzHNJXsLtNjDHJYDCw85LnJxsN9BQ1Z5b6YDPvFvIFwSm4/uki
- VJFaL1pQXHKhKuXcAX9PYeWK8rGJkTWmfh+Xaquv+xYdZyF9p3YXBl4M7f9SvWn1J+0Ep2P5
- 4q7E6qk1a69Pi5vye3AkI920t2JHz7qcz0xbXeztwLU7PeaMzDNzGpO2d42emf42n79379X5
- As+VaEdg5kM+fZ3tLj49Z8PJ1wP9Re/Tb3e30QrRwjOzCZfI/wVKHiGF0gMAAA==
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFlrNIsWRmVeSWpSXmKPExsWy7bCSnO6d6Y2xBicaDCz2TX/KbLHnzC92
- i+bF69ksrt+9BeTuPclicXnXHDaLo48Xslms/fyY3WLLvyOsFpfef2Bx4PK4t+8wi8fOWXfZ
- PfbPXcPu0brjL7tH35ZVjB6fN8l5HNr+hi2APYrLJiU1J7MstUjfLoErY2bDPeaCTsWKlhn3
- mRsYF0l2MXJySAiYSLS2nmHuYuTiEBLYzSixdvleFoiEtMSxEyAJDiBbWOLw4WKImheMElfa
- PzGB1LAJ6Er8+7OfDSQhItANlJj7mAXEYRZ4wCjxds8UdoiWaUwSH1u2g7VwCgRK7JuzixXE
- FhZwlPhx+QBYnEVAVWLbvrfsIDavgKXE5UftrBC2oMTJmU/ATmIW0JbofdjKCGHLS2x/O4cZ
- 4lQFiR1nX4PFRQT8JH61TmaDqBGRmN3ZxjyBUXgWklGzkIyahWTULCQtCxhZVjFKphYU56bn
- FhsWGOallusVJ+YWl+al6yXn525iBEehluYOxstL4g8xCnAwKvHwHjjVECvEmlhWXJl7iFGC
- g1lJhDegtj5WiDclsbIqtSg/vqg0J7X4EKM0B4uSOO/TvGORQgLpiSWp2ampBalFMFkmDk6p
- BsZIUW22xo1y6XavUyapa7xQzdzRxzsrv4351JS4zc7liyv4d573bNQoOZRuu+DpJbdVL6Wq
- inRfl1aWh1lM05ij+ZXPjeHjm+89rf4cCYcmHGn6+KstoLJ0y005/tB5Zx9q/FRor266l9/7
- KmL3zKjHffkrb8zKV4nVdAjqu6Pyuu7m4xz5YCWW4oxEQy3mouJEADULHNW+AgAA
-X-CMS-MailID: 20190918023508epcas1p1940b2b59fce55f7c1332b7d2aefd2bd4
-X-Msg-Generator: CA
-X-Sendblock-Type: SVC_REQ_APPROVE
-CMS-TYPE: 101P
-DLP-Filter: Pass
-X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20190917060433epcas2p4b12d7581d0ac5477d8f26ec74e634f0a
-References: <8998.1568693976@turing-police>
- <20190917053134.27926-1-qkrwngud825@gmail.com>
- <20190917054726.GA2058532@kroah.com>
- <CGME20190917060433epcas2p4b12d7581d0ac5477d8f26ec74e634f0a@epcas2p4.samsung.com>
- <CAD14+f1adJPRTvk8awgPJwCoHXSngqoKcAze1xbHVVvrhSMGrQ@mail.gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20190917144432.GB2959@kadam>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -133,126 +87,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linkinjeon@gmail.com,
- linux-kernel@vger.kernel.org, alexander.levin@microsoft.com,
- sergey.senozhatsky@gmail.com, linux-fsdevel@vger.kernel.org,
- sj1557.seo@samsung.com
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-I've summarized some of the big differences between sdfat and exfat
-in linux-next.
+On Tue, Sep 17, 2019 at 05:44:32PM +0300, Dan Carpenter wrote:
+> On Tue, Sep 17, 2019 at 08:01:31PM +0530, Aliasgar Surti wrote:
+> > From: Aliasgar Surti <aliasgar.surti500@gmail.com>
+> > 
+> > coccicheck reported warning for unneeded variable used.
+> > 
+> > This patch removes the unneeded variables.
+> > 
+> > Signed-off-by: Aliasgar Surti <aliasgar.surti500@gmail.com>
+> > ---
+> >  drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 15 +++++----------
+> >  1 file changed, 5 insertions(+), 10 deletions(-)
+> > 
+> > diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+> > index d1b199e..fa3ffc3 100644
+> > --- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+> > +++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+> > @@ -2428,8 +2428,7 @@ static  int rtw_drvext_hdl(struct net_device *dev, struct iw_request_info *info,
+> >  static int rtw_mp_ioctl_hdl(struct net_device *dev, struct iw_request_info *info,
+> >  						union iwreq_data *wrqu, char *extra)
+> >  {
+> > -	int ret = 0;
+> > -	return ret;
+> > +	return 0;
+> >  }
+> 
+> Just get rid of the whole function.  Replace the pointer in the function
+> array with a NULL.
+Okay, I will get rid of unneeded functions and replace them with NULL in
+function array.
 
-1. sdfat has been refactored to improve compatibility, readability and
-to be linux friendly.(included support mass storages larger than 2TB.)
-
-2. sdfat has been optimized for the performance of SD-cards.
-  - Support SD-card friendly block allocation and delayed allocation
-    for vfat-fs only.
-  - Support aligned_mpage_write for both vfat-fs and exfat-fs
-
-3. sdfat has been optimized for the performance of general operations
-    like create,lookup and readdir.
-
-4. Fix many critical and minor bugs
- - Handle many kinds of error conditions gracefully to prevent panic.
- - Fix critical bugs related to rmdir, truncate behavior and so on...
-
-5. Fix NLS functions
-
-Note, that Samsung is still improving sdfat driver. For instance,
-what will be realeased soon is sdfat v2.3.0, which will include support
-for "UtcOffset" of "File Directory Entry", in order to satisfy
-exFAT specification 7.4.
-
-Thanks!
-
-> -----Original Message-----
-> From: Ju Hyung Park [mailto:qkrwngud825@gmail.com]
-> Sent: Tuesday, September 17, 2019 3:04 PM
-> To: Greg KH; namjae.jeon@samsung.com; Valdis Kletnieks
-> Cc: devel@driverdev.osuosl.org; linkinjeon@gmail.com; linux-
-> kernel@vger.kernel.org; alexander.levin@microsoft.com;
-> sergey.senozhatsky@gmail.com; linux-fsdevel@vger.kernel.org
-> Subject: Re: [PATCH] staging: exfat: add exfat filesystem code to
+Thanks,
+Aliasgar
 > 
-> On Tue, Sep 17, 2019 at 2:47 PM Greg KH <gregkh@linuxfoundation.org> wrote:
-> > It's the fact that it actually was in a form that could be merged, no
-> > one has done that with the sdfat code :)
+> regards,
+> dan carpenter
 > 
-> Well, I'm more than happy to help if you guys are happy with merging
-> the new base.
-> 
-> > What fixes?  That's what I'm asking here.
-> 
-> I gave this as an example in my previous email:
-> https://github.com/MotorolaMobilityLLC/kernel-msm/commit/7ab1657
-> 
-> > How do we "know" that this is better than what we currently have today?
-> > We don't, so it's a bit hard to tell someone, "delete the work you did
-> > and replace it with this other random chunk of code, causing you a bunch
-> > more work in the process for no specific reason other than it looks
-> > 'newer'." :(
-> 
-> The new sdFAT base I'm suggesting, is just as "random" as the one
-> staging tree is based on.
-> 
-> If exFAT gets merged to Torvald's tree, there will be a lot more eyes
-> interested in it.
-> If there's a better base, we better switch to it now and prevent
-> further headaches long-term.
-> 
-> It's really hard to compare those 2 drivers base and extract
-> meaningful changelogs.
-> 
-> But regardless, here are some diff stats:
-> <Full diff stat>
->  Kconfig      |   79 +-
->  Makefile     |   46 +-
->  api.c        |  423 ----
->  api.h        |  310 ---
->  blkdev.c     |  409 +---
->  cache.c      | 1142 ++++-----
->  config.h     |   49 -
->  core.c       | 5583 ++++++++++++++++++++++++--------------------
->  core.h       |  196 --
->  core_exfat.c | 1553 ------------
->  exfat.h      | 1309 +++++++----
->  exfat_fs.h   |  417 ----
->  extent.c     |  351 ---
->  fatent.c     |  182 --
->  misc.c       |  401 ----
->  nls.c        |  490 ++--
->  super.c      | 5103 +++++++++++++++++++++-------------------
->  upcase.c     |  740 ++++++
->  upcase.h     |  407 ----
->  version.h    |   29 -
->  xattr.c      |  136 --
->  21 files changed, 8186 insertions(+), 11169 deletions(-)
-> 
-> <diff-filter=M>
->  Kconfig  |   79 +-
->  Makefile |   46 +-
->  blkdev.c |  409 +---
->  cache.c  | 1142 +++++-----
->  core.c   | 5583 ++++++++++++++++++++++++++----------------------
->  exfat.h  | 1309 ++++++++----
->  nls.c    |  490 ++---
->  super.c  | 5103 ++++++++++++++++++++++---------------------
->  8 files changed, 7446 insertions(+), 6715 deletions(-)
-> 
-> > I recommend looking at what we have in the tree now, and seeing what is
-> > missing compared to "sdfat".  I know a lot of places in the exfat code
-> > that needs to be fixed up, odds are they are the same stuff that needs
-> > to be resolved in sdfat as well.
-> 
-> Would there be any more data that I can provide?
-> It's really hard to go through the full diff :(
-> 
-> Thanks.
-
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
