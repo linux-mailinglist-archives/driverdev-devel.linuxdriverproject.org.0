@@ -1,63 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 89D32B6A7A
-	for <lists+driverdev-devel@lfdr.de>; Wed, 18 Sep 2019 20:24:21 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E814EB6ADE
+	for <lists+driverdev-devel@lfdr.de>; Wed, 18 Sep 2019 20:50:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2D5BF867D0;
-	Wed, 18 Sep 2019 18:24:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 30CB522008;
+	Wed, 18 Sep 2019 18:50:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HIZ2EFisJr1u; Wed, 18 Sep 2019 18:24:19 +0000 (UTC)
+	with ESMTP id str0Y91nu2Xv; Wed, 18 Sep 2019 18:50:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A295D867AC;
-	Wed, 18 Sep 2019 18:24:18 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 767A02002D;
+	Wed, 18 Sep 2019 18:50:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id AD7551BF2BC
- for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 18:24:16 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id EDB2A1BF988
+ for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 18:50:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A9E5B867A8
- for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 18:24:16 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E8023867C0
+ for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 18:50:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ICvmzDlqgslX for <devel@linuxdriverproject.org>;
- Wed, 18 Sep 2019 18:24:15 +0000 (UTC)
+ with ESMTP id LZWAnxJaNP2s for <devel@linuxdriverproject.org>;
+ Wed, 18 Sep 2019 18:50:18 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from bombadil.infradead.org (bombadil.infradead.org
- [198.137.202.133])
- by whitealder.osuosl.org (Postfix) with ESMTPS id C9B4D816D8
- for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 18:24:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20170209; h=In-Reply-To:Content-Type:MIME-Version
- :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=wyclBAhLGTUISnYVlcWzGC24WmHGZKrQOXN5phZ/Nf4=; b=QSEo2lNK2OFM0t3mHSJ+VX6Wl
- nu23w9dBQYbchoaYzWewSepOEs+S5RBbIgoC3/E6UN00rGkioOK4qvUrySXmw9BmFlJaaSnffZnHK
- LF2Hz7DjkASMtJ3hFxPYyk98yhPIt6hxZ8+ATGWRPjIaQ8vipzTwhXsHJaHSLQ91WDDQ3pA6N3uDM
- N7KFX35NKSts2qLCMUO+LTXc3emZWENCKakH19mIOpMd3BS5T3iUeRf4uqnFLbHmEL/ThXh+0x+SP
- 2QUocLufhJ/V5/pCraKRcckZY+78atNbFGRNCY83N60iARiF2I10VQuIU8jDkyuSwyFN3iwrtffGX
- elqgtqT2Q==;
-Received: from hch by bombadil.infradead.org with local (Exim 4.92.2 #3 (Red
- Hat Linux)) id 1iAece-0003ss-ER; Wed, 18 Sep 2019 18:24:12 +0000
-Date: Wed, 18 Sep 2019 11:24:12 -0700
-From: Christoph Hellwig <hch@infradead.org>
-To: Greg KH <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 25BDD867CC
+ for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 18:50:14 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 85E4921897;
+ Wed, 18 Sep 2019 18:50:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1568832613;
+ bh=6PhX5srdvtJmEHVj/KpalpakQF+YsaIEeJPCRUAPdoc=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=jP24yQmJzdVumGF2v7fLA0B87w3NT/5EC4wIhMKzhsbgYCviAYhVNiu0cYlsEGogM
+ tJGpW6jbC7jmc/E+4mX2ED4QMR1H4miCsAkCpjPq0jI0I1Ri/og7NtJFTXpuiDlVTr
+ /p5jk5iUMw6fKVtFuVGCjxOX9naf4WBjNWhMjVZk=
+Date: Wed, 18 Sep 2019 20:50:10 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Christoph Hellwig <hch@infradead.org>
 Subject: Re: [GIT PULL] Staging/IIO driver patches for 5.4-rc1
-Message-ID: <20190918182412.GA9924@infradead.org>
+Message-ID: <20190918185010.GA1933470@kroah.com>
 References: <20190918114754.GA1899504@kroah.com>
+ <20190918182412.GA9924@infradead.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190918114754.GA1899504@kroah.com>
+In-Reply-To: <20190918182412.GA9924@infradead.org>
 User-Agent: Mutt/1.12.1 (2019-06-15)
-X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
- bombadil.infradead.org. See http://www.infradead.org/rpr.html
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,14 +76,52 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Just as a note of record:  I don't think either file system move
-is a good idea.  erofs still needs a lot of work, especially in
-interacting with the mm code like abusing page->mapping.
+On Wed, Sep 18, 2019 at 11:24:12AM -0700, Christoph Hellwig wrote:
+> Just as a note of record:  I don't think either file system move
+> is a good idea.  erofs still needs a lot of work, especially in
+> interacting with the mm code like abusing page->mapping.
 
-exfat is just a random old code drop from Samsung hastily picked up,
-and also duplicating the fat16/32 functionality, and without
-consultation of the developes of that who are trying to work through
-their process of contributing the uptodate and official version of it.
+At least it is special-purpose "read only" filesystem currently shipping
+on a few million phones, so the fall-out isn't a big deal :)
+
+Also, the erofs developers have been asking for reviews for a very long
+time and only now got them.  Which goes back to the issue of vfs reviews
+we all discussed last week (see below).
+
+> exfat is just a random old code drop from Samsung hastily picked up,
+> and also duplicating the fat16/32 functionality, and without
+> consultation of the developes of that who are trying to work through
+> their process of contributing the uptodate and official version of it.
+
+Those developers are still yet to be found, we only got a "drop" of the
+samsung code _after_ this code was merged, from non-samsung people.  No
+samsung developers have said they would actually help with any of this
+work, and when asked what differed from the in-tree stuff, I got a list,
+but no specifics.  I'll be working through that list over the next month
+to resolve those issues.
+
+Also the fat16/32 code is disabled, so that shouldn't be a problem for
+anyone.
+
+Again, this is a special-purpose filesystem that will be under heavy
+development for a while.  There was no common out-of-tree place that
+everyone could actually work on this, just inumerable forks on github,
+my own included.  Now we have that common place for this all to be
+worked on, and also there is a very good legal benefit for this to be
+in-tree, which always is a nice win.
+
+To get back to the meta-problem here, we need a common "vfs/filesystem"
+tree somewhere with reviewers.  I'm glad to set up the tree and handle
+patches, but I am not a vfs expert by any means (I only understand the
+virtual half, not the backing half), so I can't be the only one to do
+reviews.  Do you know of anyone that we can drag in as reviewers to help
+make it easier for new filesystems to get reviews as well as existing
+ones to have their patches collected and forwarded on to Linus at the
+proper times?
+
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
