@@ -1,75 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 76BA8B6A2E
-	for <lists+driverdev-devel@lfdr.de>; Wed, 18 Sep 2019 20:01:54 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A689AB6A5D
+	for <lists+driverdev-devel@lfdr.de>; Wed, 18 Sep 2019 20:20:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CC920867AC;
-	Wed, 18 Sep 2019 18:01:52 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id ECB7522005;
+	Wed, 18 Sep 2019 18:20:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HnoTbY50RHbc; Wed, 18 Sep 2019 18:01:52 +0000 (UTC)
+	with ESMTP id sO0tqlBot8DL; Wed, 18 Sep 2019 18:20:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3173386745;
-	Wed, 18 Sep 2019 18:01:51 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by silver.osuosl.org (Postfix) with ESMTP id 4DC0F21F76;
+	Wed, 18 Sep 2019 18:20:29 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 627CA1BF28B
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 18 Sep 2019 18:01:49 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E46EE1BF2BC
+ for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 18:20:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5ED96865D6
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 18 Sep 2019 18:01:49 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id DD8D284477
+ for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 18:20:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5Gyew14AaVnl
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 18 Sep 2019 18:01:46 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from host.netwaveinteractive.com (host.netwaveinteractive.com
- [72.52.138.12])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 84F6186214
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 18 Sep 2019 18:01:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=adagencynj.com; s=default; h=Content-Transfer-Encoding:Content-Type:
- MIME-Version:Date:Subject:From:Reply-To:Sender:Message-ID:To:Cc:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=zsKpLvbsrLldhyyhAK4a639o7V6l15VR17kOuzujzzs=; b=XjoVIt/I2olFL+JxGYQb3DNf1H
- I194stbVtbm+BHkrPxCnl+m0/ffqZOpgeq/GzhVqYy5LK09hqTHS4t4aMSNCK8VSFspA3MHI/90qo
- RkGE0sHyngL6fm6Mru1jJIr+9;
-Received: from [13.88.242.187] (port=62807 helo=User)
- by host.netwaveinteractive.com with esmtpa (Exim 4.92)
- (envelope-from <manilov@gorodkirov.ru>)
- id 1iAeGc-002V7E-7g; Wed, 18 Sep 2019 14:01:26 -0400
-From: "WBF"<manilov@gorodkirov.ru>
-Subject: 18/09/2019
-Date: Wed, 18 Sep 2019 18:01:27 -0000
-MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - host.netwaveinteractive.com
-X-AntiAbuse: Original Domain - linuxdriverproject.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - gorodkirov.ru
-X-Get-Message-Sender-Via: host.netwaveinteractive.com: authenticated_id:
- sales@adagencynj.com
-X-Authenticated-Sender: host.netwaveinteractive.com: sales@adagencynj.com
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-Message-Id: <20190918180149.5ED96865D6@whitealder.osuosl.org>
+ with ESMTP id u24QUXRERpRw for <devel@linuxdriverproject.org>;
+ Wed, 18 Sep 2019 18:20:25 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id BA7E984471
+ for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 18:20:25 +0000 (UTC)
+Subject: Re: [GIT PULL] Staging/IIO driver patches for 5.4-rc1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1568830825;
+ bh=lpTLlt8KBVO05bSuzAoOwZEDrfqDTb+2mrWqDmZiOsk=;
+ h=From:In-Reply-To:References:Date:To:Cc:From;
+ b=qY8vtRABIXfQ3NohD6CXdfAhAacR7f0LxwG77P2TV0l9zas+UCGlUshk+nwxWPZYd
+ dwPIs5AXk1KEqyE1HqMGCF7nKcIOGzLhunWqaSXcMcB3fFD8JATFPJfsJ7/UFZuEM1
+ iSC74iCwWDhR6oQn6sLcqcjEtf/5buAErBfits+A=
+From: pr-tracker-bot@kernel.org
+In-Reply-To: <20190918114754.GA1899504@kroah.com>
+References: <20190918114754.GA1899504@kroah.com>
+X-PR-Tracked-List-Id: <linux-kernel.vger.kernel.org>
+X-PR-Tracked-Message-Id: <20190918114754.GA1899504@kroah.com>
+X-PR-Tracked-Remote: git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
+ tags/staging-5.4-rc1
+X-PR-Tracked-Commit-Id: 3fb73eddba106ad2a265a5c5c29d14b0ed6aaee1
+X-PR-Merge-Tree: torvalds/linux.git
+X-PR-Merge-Refname: refs/heads/master
+X-PR-Merge-Commit-Id: e6874fc29410fabfdbc8c12b467f41a16cbcfd2b
+Message-Id: <156883082558.23903.18107326281784968321.pr-tracker-bot@kernel.org>
+Date: Wed, 18 Sep 2019 18:20:25 +0000
+To: Greg KH <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,21 +65,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: wbfefft@aim.com
+Cc: Stephen Rothwell <sfr@canb.auug.org.au>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Linus Torvalds <torvalds@linux-foundation.org>, linux-kernel@vger.kernel.org,
+ devel@linuxdriverproject.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Good day to you.
+The pull request you sent on Wed, 18 Sep 2019 13:47:54 +0200:
 
-We sent you an email yesterday about foundation project funding.
+> git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/staging-5.4-rc1
 
-Do let me know if you received it so further details can be advised.
+has been merged into torvalds/linux.git:
+https://git.kernel.org/torvalds/c/e6874fc29410fabfdbc8c12b467f41a16cbcfd2b
 
-kindest regards,
-fred Anderson
-Email:wbfefft@aim.com
+Thank you!
+
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.wiki.kernel.org/userdoc/prtracker
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
