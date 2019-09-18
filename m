@@ -1,72 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A03BB6189
-	for <lists+driverdev-devel@lfdr.de>; Wed, 18 Sep 2019 12:38:37 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5C0F42151F;
-	Wed, 18 Sep 2019 10:38:35 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id M0fCA145sl+y; Wed, 18 Sep 2019 10:38:34 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id DDEA921513;
-	Wed, 18 Sep 2019 10:38:33 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BA6901BF3D4
- for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 10:38:31 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id DE100B61A6
+	for <lists+driverdev-devel@lfdr.de>; Wed, 18 Sep 2019 12:46:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B399484067
- for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 10:38:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 76C8A85E85;
+	Wed, 18 Sep 2019 10:46:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id K_3-UmHuSRa5; Wed, 18 Sep 2019 10:46:42 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7EA5084812;
+	Wed, 18 Sep 2019 10:46:41 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id F2FBA1BF962
+ for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 10:46:38 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id F024F203B8
+ for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 10:46:38 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zpuU_txFE-CU for <devel@linuxdriverproject.org>;
- Wed, 18 Sep 2019 10:38:31 +0000 (UTC)
+ with ESMTP id b9Jbb2AAN9QO for <devel@linuxdriverproject.org>;
+ Wed, 18 Sep 2019 10:46:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f66.google.com (mail-io1-f66.google.com
- [209.85.166.66])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3AB338395C
- for <devel@driverdev.osuosl.org>; Wed, 18 Sep 2019 10:38:31 +0000 (UTC)
-Received: by mail-io1-f66.google.com with SMTP id j4so14874755iog.11
- for <devel@driverdev.osuosl.org>; Wed, 18 Sep 2019 03:38:31 -0700 (PDT)
+Received: from mail-ua1-f65.google.com (mail-ua1-f65.google.com
+ [209.85.222.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id 810782039C
+ for <devel@driverdev.osuosl.org>; Wed, 18 Sep 2019 10:46:38 +0000 (UTC)
+Received: by mail-ua1-f65.google.com with SMTP id r25so2176502uam.3
+ for <devel@driverdev.osuosl.org>; Wed, 18 Sep 2019 03:46:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=FmGHNpejQ29nIiQ+vBc6/ce+Q7SqcsDKzIUla6egsaM=;
- b=sYmpxKsgWLn+4SmMFn6oPgwqGFSsjioO5J9FnGTp4La/3jxAbfTrMez2Qg1AAMfcW/
- K4vDXcvklrNGfmBv8Jrg+EG8AfBvcMoY5WxG4gJTfXsvJ7x8AAeYuHXJ473QSMakj1sJ
- pbTNT2+NkRqUPLbxt0KQybC84Gqm/JOqcI9ci4Ah1Ss12oFF/1WQzBVrsEq+mj3BGQ5z
- V77ksOWZHS61l1RIjieCWcVTUooOSi1Qpz9EoL7UvZBZspB3ptILLzBECpi/oRwqcSAk
- y/WIOToxh+ZW33iBfP93IbNnAXI/OFMvvoeSIJrlHKnGfqozSsDIUTbXDqD0ihkbm1lC
- P4ng==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=BrhjnjM/XptL/cFMvLE/Y5Ttnqqp6IMVWZhIN4+ypyQ=;
+ b=PXCOCYZLhjJjZhE0mCL7O99pzsqv5a9ePHsS5rpMpNEI66tHMcwkt6QXk6xsoRFdnX
+ 5xGiHw/Gq49SKAqf4iYSz+w/1DwypCsVdYkNzpMGceTRdxpzhk8epbsMm5g8Vhp0qgu0
+ f4Gfg4dN+IDjBLnrk813NbLfH/un016KuQeOfs3ol+qbLgNt9wD4UZ1k+ns6Rh8DfLUb
+ COOV5Sjf5+a33CIabIm4SZZfN7T4C1VbzYvwPZneQLdUxApH1uUnjIyavc8Ok9YwDiWA
+ KOLH2G1jDo+JzZD/gzTPSh9TrxVelvjKdbYIFktwsLhftDuNpYvSRZfS1Aq5BrYg856k
+ BKjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=FmGHNpejQ29nIiQ+vBc6/ce+Q7SqcsDKzIUla6egsaM=;
- b=HobeOxdbK6kGZpjNtDRkUYWnd5FBoe9qQ3Dz7vWqYUVHPJeQrkoLKXtVE+AIunarRc
- hyWkn4vcc6CIyVgibBQFBCaV3j7VHUQZrrs37kalf9kT5prVqZ0f0vRa5518tLES6XC3
- 9noJVeMYeaHvc8p1X6J5DLY426fUMQS7GTEA+QgW3W1jW+2LbRoKq7xrv/ini6OThHLP
- 0JiMeGphkZSTzGdTy1pa6Opr5C+/FDgIMaKVO0ADkunvOb2v5R+WRE6mmaQARdkki5xG
- yH2GejJZbraMHSlH39uYyOneXon1g0XKsiTynN587obhwpWyWf/PDJZOBCPzvj1FDMmX
- qYsQ==
-X-Gm-Message-State: APjAAAWHxfMjpniV/7lincXQqnLUfYg7X6jpMyk5rZuNPK/QLgSS2OKW
- AZfazlFD95Tqn4UFibs3krHhBRpfaNFhdsT8ntA=
-X-Google-Smtp-Source: APXvYqyma2M1yftzYKc92yVepDBICfDQb3GPzfSBYgKUu7/NDro8z31JxiXaVEFsCdiEqsrLuah6UPRvNl2YvWGlbfU=
-X-Received: by 2002:a05:6638:928:: with SMTP id
- 8mr3989260jak.124.1568803110525; 
- Wed, 18 Sep 2019 03:38:30 -0700 (PDT)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=BrhjnjM/XptL/cFMvLE/Y5Ttnqqp6IMVWZhIN4+ypyQ=;
+ b=Mj4SJrs//d2U5rRjuqjPK+ovf8a++svIQTcwdz4VZEhDBzBcCdUizpbUZV7tp9nMF7
+ aZKOnGOEr3VmyUQYQdOFwFSVLaLRXR41Mc0NmRjJ+zS6XpQ49PT0mytALAdhvE4VgUmT
+ ABowDt3GIhCGvF1UyeLRryOdOnNoBfqF7gQ22v4lOZEy2I6D3CH3M88AoCs2qnVdReF3
+ 5gViV1Ny33NZH9WSlBJ1x/M9EfkEhKu68DZ1W3AXbPPQFSlicwetJ16YOFWUX6WujxoH
+ vfmyTVESCg1+okcQbmrWgMISk68ky+4/RMK+yc5ypoGmxMYttygLPvWQhJoC+qcJgqv4
+ 0EpA==
+X-Gm-Message-State: APjAAAUtWu8kJujMusXR45RnwGOAGcgMoqLlNImVy6rzmmyuofJZ6mCK
+ TdF1u+SC46WmdDrxe6Ml2n4/HR66dtwK3jJ0cjY=
+X-Google-Smtp-Source: APXvYqwIg2lHMqtsEN5dzTh1ZkxryX4kas0pMBnOy6W/Vn/g0zZ7QGhTYumeAnuCciJllbWcyxE3Z6bF4YyOBG+Ro2A=
+X-Received: by 2002:ab0:2808:: with SMTP id w8mr1785489uap.75.1568803597279;
+ Wed, 18 Sep 2019 03:46:37 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a02:9403:0:0:0:0:0 with HTTP; Wed, 18 Sep 2019 03:38:30
- -0700 (PDT)
-From: Amidal Serge <sergeamidal01@gmail.com>
-Date: Wed, 18 Sep 2019 11:38:30 +0100
-Message-ID: <CA+aY+6r3J6mCDu6xKMASYw9RtMs3aO5y1+7QA5aZUO2iXCUHhw@mail.gmail.com>
-Subject: Bonjour
-To: undisclosed-recipients:;
+References: <20190917054726.GA2058532@kroah.com>
+ <CGME20190917060433epcas2p4b12d7581d0ac5477d8f26ec74e634f0a@epcas2p4.samsung.com>
+ <CAD14+f1adJPRTvk8awgPJwCoHXSngqoKcAze1xbHVVvrhSMGrQ@mail.gmail.com>
+ <004401d56dc9$b00fd7a0$102f86e0$@samsung.com>
+ <20190918061605.GA1832786@kroah.com>
+ <20190918063304.GA8354@jagdpanzerIV> <20190918082658.GA1861850@kroah.com>
+ <CAD14+f24gujg3S41ARYn3CvfCq9_v+M2kot=RR3u7sNsBGte0Q@mail.gmail.com>
+ <20190918092405.GC2959@kadam>
+ <CAD14+f1yQWoZH4onJwbt1kezxyoHW147HA-1p+U0dVo3r=mqBw@mail.gmail.com>
+ <20190918100803.GD2959@kadam>
+In-Reply-To: <20190918100803.GD2959@kadam>
+From: Ju Hyung Park <qkrwngud825@gmail.com>
+Date: Wed, 18 Sep 2019 19:46:25 +0900
+Message-ID: <CAD14+f1yT2_d8RP2a2NqAVYAkmB4ti6KjSsV2sM8SVCOQ_M=RQ@mail.gmail.com>
+Subject: Re: [PATCH] staging: exfat: add exfat filesystem code to
+To: Dan Carpenter <dan.carpenter@oracle.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,18 +88,31 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, linkinjeon@gmail.com,
+ Valdis Kletnieks <valdis.kletnieks@vt.edu>,
+ Sergey Senozhatsky <sergey.senozhatsky.work@gmail.com>,
+ Namjae Jeon <namjae.jeon@samsung.com>, Greg KH <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, alexander.levin@microsoft.com,
+ sergey.senozhatsky@gmail.com, linux-fsdevel@vger.kernel.org,
+ sj1557.seo@samsung.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello
- I need your urgent assistance in the transfer of an abandoned funds
-on your account within 10-14 days if you are interested, respond to me
-with your information for more details. your name and surname:-. your
-country:-. your phone number. :- .
- Please respond to this email address (sergeamidal@gmail.com)
- Best regards Amidal
+On Wed, Sep 18, 2019 at 7:09 PM Dan Carpenter <dan.carpenter@oracle.com> wrote:
+> Use Kconfig.
+
+Not just that.
+There are a lot of non-static functions that's not marked ex/sdfat-specific.
+(which we would have to clean it up eventually)
+
+Even with sdFAT base, there are some non-static functions named as exfat.
+
+Figuring out a solution for this is pretty pointless imho when one of
+the drivers will be dropped soon(ish) anyways.
+
+Thanks.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
