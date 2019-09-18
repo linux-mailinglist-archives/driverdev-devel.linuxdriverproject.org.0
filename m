@@ -1,73 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E652B6F4B
-	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Sep 2019 00:17:28 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 17E028695B;
-	Wed, 18 Sep 2019 22:17:26 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id y0e1xwlW3hRY; Wed, 18 Sep 2019 22:17:25 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4009886970;
-	Wed, 18 Sep 2019 22:17:24 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 48ACC1BF34F
- for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 22:17:22 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5CF07B6F6A
+	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Sep 2019 00:44:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 439FE860C2
- for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 22:17:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 34B7886132;
+	Wed, 18 Sep 2019 22:44:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XzVkGjFrpRL7; Wed, 18 Sep 2019 22:44:50 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0C2BF86103;
+	Wed, 18 Sep 2019 22:44:50 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B9FC51BF988
+ for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 22:44:47 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id B758B21FAC
+ for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 22:44:47 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IKwE2CHRTFIr for <devel@linuxdriverproject.org>;
- Wed, 18 Sep 2019 22:17:21 +0000 (UTC)
+ with ESMTP id YeS7ejDlcYqw for <devel@linuxdriverproject.org>;
+ Wed, 18 Sep 2019 22:44:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ua1-f68.google.com (mail-ua1-f68.google.com
- [209.85.222.68])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A1C96860B2
- for <devel@driverdev.osuosl.org>; Wed, 18 Sep 2019 22:17:21 +0000 (UTC)
-Received: by mail-ua1-f68.google.com with SMTP id r19so409084uap.9
- for <devel@driverdev.osuosl.org>; Wed, 18 Sep 2019 15:17:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=fvyK6cOQSVAg+pYnospWHicPx4sekfGX7Yi8JoZJ894=;
- b=RQqY6qxStYD6GrM+3jvoM7UqPq/BBlPGOnsRl8/61T8a4RBMc166iouDxrMerp5XJq
- yp9im9pXXkI0a5IeS1reX/+bPGNUHz5jyYNW1ORYOhKcvAd6kb2oXTWCpOPREuUlqzr4
- Gds9kNT0NxZ4U9njJUGxd4U7HFL1yxOWD9nbkSpJKNk5GIyjVVN2FQR81CrRh9lzDroH
- aPPA+0XrG4kCcNZ+cgwl3HFVlZZW28ItUHhbSbDUP3XD58dBmuKo07uctb1NhwQdyzlR
- 15egksXX+lF/OLrytz2U/Dkkgrj7NVYhHxdgfFo6nK+eCMLpMvT5I2eMpXxzNqzocIOP
- Pvcg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=fvyK6cOQSVAg+pYnospWHicPx4sekfGX7Yi8JoZJ894=;
- b=p0pkM8iJChIgOOequaGzkXnkFdxGYm49WKWaTPnS7za14QOL4mDScaXXx/qdKK9ph1
- YPyE3+E4OloAhGk46zeoAmtl34kDfMcMW26niO5D/WMMO3ldtFqB5LlzcN9Rrz1XMtCr
- L4L0f7TN0qd2CKvuH2AbXhJ0x/XA5zkMxi+bdhh6c5wbB+sA0P9CDNg3jDnr/eWKT4a1
- gi2WkRkLvRXPvymztAD5LIwM9UfLX15xKTMJpxsRyZ9eTWM8hJxOqfh7ISIH+nkHKZ6w
- UAzjjY7L+HSgE3RsP0v65w1PUl9e4qP86mmeVDJxnyDMk8TcqlB/EYeHC1rJ6qR2bBFq
- YauQ==
-X-Gm-Message-State: APjAAAXzT+W9UgccIOQoZpBMt7GS/QenvPWxx1SXbXjVJoyFR1V20dYa
- z2zbonSkS4fC08vhDQJ6XaZ8K2GY7CQVO2PE+ag=
-X-Google-Smtp-Source: APXvYqxr6YANlJ2C8oJKmxha7piyJuTYMt0okrOTrbCDI/e1c9lkVDzuxCa2GvYTvrdzw+znKPnsKc9jWeGrUTmw3V4=
-X-Received: by 2002:ab0:7816:: with SMTP id x22mr3891970uaq.97.1568845040262; 
- Wed, 18 Sep 2019 15:17:20 -0700 (PDT)
+Received: from sonic302-22.consmr.mail.gq1.yahoo.com
+ (sonic302-22.consmr.mail.gq1.yahoo.com [98.137.68.148])
+ by silver.osuosl.org (Postfix) with ESMTPS id 191AD21F69
+ for <devel@linuxdriverproject.org>; Wed, 18 Sep 2019 22:44:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aol.com; s=a2048;
+ t=1568846686; bh=qeWM3clNU3uJNRLTBgPkz0oq23aWLhRpnv07nYVU28A=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From:Subject;
+ b=bNa8B5zMNrhPfbC8eYyT9//9+mIlw8wpsDjvtdrD5IsaAetmdK6fWPrZtrzm2bAvTRreurVTOg1zJhintRJEeGhGf47vgysXD+cHMi6YFI5H3svEZ+LzZ3t/B+BhhXXCD6dsSyMBXPqXlOXnXsGWwgUfjHbb8xZTJ/RwZhLRHSggnCiUys9x599xgfuRiijCOURe8cqnjM+wXNngYp1wYdt2c10q1sZo5cGSeNI9+NUmsoevY+wdeThFE931s6AKBqfEEkC7yyijtl1l7j62A4x5Qx0IGNwrmuGkoni+n77qyBQUBvHL3/9Izymjrb/U7i45oHsYxaZs3IYa5X6QXg==
+X-YMail-OSG: 3BwkIqwVM1kY_qtQ.9X84HAiACEg9mMdyPXHUG9kqjWOJZPdJMknKXzAYSlJXE0
+ Y4mH79kc1pjtuJCp7t_KRm4yC2bJxjP.WPfoNtFKsoEoJQz4C7nCCk_evUoTHXAZO7_6C_kwLRR9
+ qHgv9WjRbd9wy8MXRmltBEBDdgZ1RDbFIh_SE0H3UD_GHy1sNbl2pVNO6UsORsPxHhTBX2eagRpY
+ 6jQyVlw21bVJYEDQDv4B3Lv0f6BWf15aEv7.It7UvTIwZS11143Fd63_htwV0xXXXhuXqo8iwEMk
+ vfBjkHRqfbVMKGIlFHs8BzKRIZ3a7vG3BfHSBZ7536AWJNNHLf3epV3TC41Zf8FevnHBYWRwSZzB
+ hC9pGeNY1G3sGNRc0TeTwtWyNcNGag8GR48EX2f7_DecfELx54fKqJOLwHAj44M47mj2n0QBO2LU
+ DTziHVxkK48cECb5thoMdilFmaTNPGxES08B.ooGINds.GhmDOcvClqwYXca2sphU8jPOyAz1U9N
+ MIi1iUg3xpBxoBIR3499h2vSRwCRQHuqpjvczVW_Hiotl._Ueh9Pkup3t92lwUSgtUxMBVV3dXqP
+ QiCIUBIOWIVhbCgXIj_WvF.spJM.WWc2eDbtCArRBSRbIYopUqEr5fIW1HQwSZVedc.4AXOjNvAK
+ soT5_uYj6pmBBiWYK12Dweo51K4D0KLi1WL7EkVTv_WC.8KcQ9LByWWo7.B94I6vYo1Wij4h1L.W
+ NKo9gaxJRSR1xtqbK0V2dpZBhLpTk2MYxvsCABIJV.gR8IQYY2IUWp_cZULzmQkA_jXIL37NkbIl
+ pYqYNGDLqHS9LeEQ11naxMz8Q8ADyxX3zgQlLMmE3NLJ.niuJkkCLP4mkS49dvKQbSEf.C3zeB6M
+ l3z2kiqdG5izpKlifH3xYKS7fANnvmNtqFf4PCqLY4Bf1zgVtr95ynhY0SCV.R_3ErfGBDkg9JIE
+ hZEqpsfDqa1aLTSLX_ajISNuFI81wBEa7rvtyyHiiDWY6evP5J50lyImALLWctR53cbvAKblysMr
+ onRMP4KmMeUzLainlUsu6Suu4kLVJw1qFmIF5vGl8jAUJ5qLyRBtuozE4gX817Y0EngbWOkS.ume
+ kYQdeYfB51zXhbDBWXI6XnozeA_ZRzsNFK_HS0sX.a8_7HypdC9S1XxeV.wUfYh9CWr8RgBZ8peb
+ owUVeOUdozwoUtuzWX2ENyw43cQPWp4SIe3TUUnOwVAJCVe0j62MlRfceb3K393VWSf9S77DiWQd
+ 3qBOygO6qKtMhkW7gnrARGwMJTuSO_CVoWdDukbe8PrRmE3LYuvQnkzruGiggw44awI7XXRpGN1P
+ oBrtCbUJ.pJUdKljyFTcTrQGYAqXKIHiW3d8rL4Y-
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic302.consmr.mail.gq1.yahoo.com with HTTP; Wed, 18 Sep 2019 22:44:46 +0000
+Received: by smtp431.mail.gq1.yahoo.com (Oath Hermes SMTP Server) with ESMTPA
+ ID 70c22b09dff901a0cf446ffa2243c519; 
+ Wed, 18 Sep 2019 22:44:44 +0000 (UTC)
+Date: Thu, 19 Sep 2019 06:44:39 +0800
+From: Gao Xiang <hsiangkao@aol.com>
+To: Christoph Hellwig <hch@infradead.org>
+Subject: Re: [GIT PULL] Staging/IIO driver patches for 5.4-rc1
+Message-ID: <20190918224435.GA25175@hsiangkao-HP-ZHAN-66-Pro-G1>
+References: <20190918114754.GA1899504@kroah.com>
+ <20190918182412.GA9924@infradead.org>
+ <20190918211123.GA22600@hsiangkao-HP-ZHAN-66-Pro-G1>
 MIME-Version: 1.0
-References: <20190918195920.25210-1-qkrwngud825@gmail.com>
- <201909190546.Al3zu1Yd%lkp@intel.com>
-In-Reply-To: <201909190546.Al3zu1Yd%lkp@intel.com>
-From: Ju Hyung Park <qkrwngud825@gmail.com>
-Date: Thu, 19 Sep 2019 07:17:09 +0900
-Message-ID: <CAD14+f2b=eTOZqhfa-KGp+w8i1GfGhpzY9yWKWvh+wRRp9BUDw@mail.gmail.com>
-Subject: Re: [PATCH] staging: exfat: rebase to sdFAT v2.2.0
-To: kbuild test robot <lkp@intel.com>
+Content-Disposition: inline
+In-Reply-To: <20190918211123.GA22600@hsiangkao-HP-ZHAN-66-Pro-G1>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Mailer: WebService/1.1.14303 hermes Apache-HttpAsyncClient/4.1.4
+ (Java/1.8.0_181)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,91 +86,55 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linkinjeon@gmail.com,
- Valdis Kletnieks <valdis.kletnieks@vt.edu>,
- Sergey Senozhatsky <sergey.senozhatsky.work@gmail.com>,
- Namjae Jeon <namjae.jeon@samsung.com>, Greg KH <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org, alexander.levin@microsoft.com,
- sergey.senozhatsky@gmail.com, kbuild-all@01.org, linux-fsdevel@vger.kernel.org,
- sj1557.seo@samsung.com, Dan Carpenter <dan.carpenter@oracle.com>
+Cc: Stephen Rothwell <sfr@canb.auug.org.au>,
+ Greg KH <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ devel@linuxdriverproject.org, Andrew Morton <akpm@linux-foundation.org>,
+ Linus Torvalds <torvalds@linux-foundation.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Welp, looks like I didn't test debug configs properly.
+On Thu, Sep 19, 2019 at 05:11:28AM +0800, Gao Xiang wrote:
+> Hi Christoph,
+> 
+> On Wed, Sep 18, 2019 at 11:24:12AM -0700, Christoph Hellwig wrote:
+> > Just as a note of record:  I don't think either file system move
+> > is a good idea.  erofs still needs a lot of work, especially in
+> > interacting with the mm code like abusing page->mapping.
+> 
+> I know what you mean, that is a known stuff in the TODO list,
+> Z_EROFS_MAPPING_STAGING page->mapping just be used as a temporary
+> page mark since page->private is already pointed to another
+> structure, It's now be marked as an non-movable and anon pseudo
+> mapping and most mm code just skip this case.
 
-Allow me 1-2 days to work on fixing it for v2.
+Add a word, these pages are all non-LRU and short lifetime temporary
+pages (and need to differentiate with other NULL mapping pages [a lot
+of different type pages could have this intermediate state]).
 
-Thanks in advance.
+Alternate way is to use some page flag but that is what I really
+want to avoid this limited resource.
 
-On Thu, Sep 19, 2019 at 6:31 AM kbuild test robot <lkp@intel.com> wrote:
->
-> Hi Park,
->
-> Thank you for the patch! Yet something to improve:
->
-> [auto build test ERROR on linus/master]
-> [cannot apply to v5.3 next-20190917]
-> [if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
->
-> url:    https://github.com/0day-ci/linux/commits/Park-Ju-Hyung/staging-exfat-rebase-to-sdFAT-v2-2-0/20190919-040526
-> config: x86_64-allyesconfig (attached as .config)
-> compiler: gcc-7 (Debian 7.4.0-13) 7.4.0
-> reproduce:
->         # save the attached .config to linux build tree
->         make ARCH=x86_64
->
-> If you fix the issue, kindly add following tag
-> Reported-by: kbuild test robot <lkp@intel.com>
->
-> All errors (new ones prefixed by >>):
->
->    drivers/staging/exfat/super.c: In function 'exfat_debug_kill_sb':
-> >> drivers/staging/exfat/super.c:3079:4: error: implicit declaration of function 'exfat_cache_release'; did you mean 'exfat_dcache_release'? [-Werror=implicit-function-declaration]
->        exfat_cache_release(sb);
->        ^~~~~~~~~~~~~~~~~~~
->        exfat_dcache_release
->    cc1: some warnings being treated as errors
-> --
->    drivers/staging/exfat/misc.c: In function 'exfat_uevent_ro_remount':
-> >> drivers/staging/exfat/misc.c:57:2: error: implicit declaration of function 'ST_LOG'; did you mean 'DT_REG'? [-Werror=implicit-function-declaration]
->      ST_LOG("[EXFAT](%s[%d:%d]): Uevent triggered\n",
->      ^~~~~~
->      DT_REG
->    cc1: some warnings being treated as errors
->
-> vim +3079 drivers/staging/exfat/super.c
->
->   3063
->   3064  #ifdef CONFIG_EXFAT_DBG_IOCTL
->   3065  static void exfat_debug_kill_sb(struct super_block *sb)
->   3066  {
->   3067          struct exfat_sb_info *sbi = EXFAT_SB(sb);
->   3068          struct block_device *bdev = sb->s_bdev;
->   3069
->   3070          long flags;
->   3071
->   3072          if (sbi) {
->   3073                  flags = sbi->debug_flags;
->   3074
->   3075                  if (flags & EXFAT_DEBUGFLAGS_INVALID_UMOUNT) {
->   3076                          /* invalidate_bdev drops all device cache include dirty.
->   3077                           * we use this to simulate device removal
->   3078                           */
-> > 3079                          exfat_cache_release(sb);
->   3080                          invalidate_bdev(bdev);
->   3081                  }
->   3082          }
->   3083
->   3084          kill_block_super(sb);
->   3085  }
->   3086  #endif /* CONFIG_EXFAT_DBG_IOCTL */
->   3087
->
-> ---
-> 0-DAY kernel test infrastructure                Open Source Technology Center
-> https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+For EROFS, it's widely deployment on each new HUAWEI mobile phones
+on the market this year and all old HUAWEI modile phones are still
+supported by upgrading to EROFS version and there are many pending
+new features for EROFS and a mature fixed-sized output compression
+subsystem in the future if more fs users have interested in that
+and I think it's good for whole linux ecosystem not just on a single
+filesystem upstreaming basis and we will continue working on this area.
+
+Thanks,
+Gao Xiang
+
+> 
+> I think a better way is to use a real address_space structure for
+> page->mapping to point. It's easy to update but I need some time
+> to verify. If I am wrong, please point it out...
+> 
+> Thanks,
+> Gao Xiang
+> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
