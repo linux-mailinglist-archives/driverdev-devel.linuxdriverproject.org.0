@@ -1,36 +1,36 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8C86FB75B6
-	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Sep 2019 11:09:10 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1BDC1B75B7
+	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Sep 2019 11:09:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2AEDF868B2;
-	Thu, 19 Sep 2019 09:09:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5876A20402;
+	Thu, 19 Sep 2019 09:09:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FHz7AYX5B+S2; Thu, 19 Sep 2019 09:09:07 +0000 (UTC)
+	with ESMTP id PB1CrKcWoDpr; Thu, 19 Sep 2019 09:09:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B9C7886812;
-	Thu, 19 Sep 2019 09:09:06 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DB0DC20449;
+	Thu, 19 Sep 2019 09:09:05 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DF7011BF5F4
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id A5FFF1BF5F4
  for <devel@linuxdriverproject.org>; Thu, 19 Sep 2019 09:09:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D5FCD87D9C
+ by whitealder.osuosl.org (Postfix) with ESMTP id A21F286833
  for <devel@linuxdriverproject.org>; Thu, 19 Sep 2019 09:09:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fPeWGvE3beL0 for <devel@linuxdriverproject.org>;
+ with ESMTP id QNyEAQPE61rK for <devel@linuxdriverproject.org>;
  Thu, 19 Sep 2019 09:09:01 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from rajiweb.com (mta147.atlashoster.net [5.39.37.51])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D57E487CCB
- for <devel@driverdev.osuosl.org>; Thu, 19 Sep 2019 09:09:00 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C7DF9867DF
+ for <devel@linuxdriverproject.org>; Thu, 19 Sep 2019 09:09:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=noudeu.com; 
  s=default; h=Message-ID:Reply-To:Subject:To:From:Date:
  Content-Transfer-Encoding:Content-Type:MIME-Version:Sender:Cc:Content-ID:
@@ -59,7 +59,7 @@ User-Agent: Roundcube Webmail/1.3.8
 X-AntiAbuse: This header was added to track abuse,
  please include it with any abuse report
 X-AntiAbuse: Primary Hostname - hosting.atlashoster.net
-X-AntiAbuse: Original Domain - driverdev.osuosl.org
+X-AntiAbuse: Original Domain - linuxdriverproject.org
 X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
 X-AntiAbuse: Sender Address Domain - yandex.com
 X-Get-Message-Sender-Via: hosting.atlashoster.net: authenticated_id:
