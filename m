@@ -1,74 +1,138 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id F0799B7226
-	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Sep 2019 06:20:58 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8A83BB7390
+	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Sep 2019 08:56:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id EDD4921FF8;
-	Thu, 19 Sep 2019 04:20:56 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0CF3987E17;
+	Thu, 19 Sep 2019 06:56:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CnAljzsONEZc; Thu, 19 Sep 2019 04:20:56 +0000 (UTC)
+	with ESMTP id wquxzn4VbXf7; Thu, 19 Sep 2019 06:56:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7116220505;
-	Thu, 19 Sep 2019 04:20:54 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1D3BC87D98;
+	Thu, 19 Sep 2019 06:56:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B80F71BF5F5
- for <devel@linuxdriverproject.org>; Thu, 19 Sep 2019 04:20:51 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 4030A1BF39E
+ for <devel@linuxdriverproject.org>; Thu, 19 Sep 2019 06:56:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id AF7DD868FF
- for <devel@linuxdriverproject.org>; Thu, 19 Sep 2019 04:20:51 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3CDF985F93
+ for <devel@linuxdriverproject.org>; Thu, 19 Sep 2019 06:56:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XOl-YUPLwV64 for <devel@linuxdriverproject.org>;
- Thu, 19 Sep 2019 04:20:51 +0000 (UTC)
+ with ESMTP id 9LJbpfqdyXaf for <devel@linuxdriverproject.org>;
+ Thu, 19 Sep 2019 06:56:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f65.google.com (mail-ot1-f65.google.com
- [209.85.210.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0899181B86
- for <devel@driverdev.osuosl.org>; Thu, 19 Sep 2019 04:20:51 +0000 (UTC)
-Received: by mail-ot1-f65.google.com with SMTP id k32so1902613otc.4
- for <devel@driverdev.osuosl.org>; Wed, 18 Sep 2019 21:20:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=j6ktaKerA6qNCNUVOJpqP9XS7SoRgjTBYtdJRVNyhcw=;
- b=B5ZuP2QirBOxP8R4Vuk7t6QPgJAudPXy3O8bZJY+rcApaDVAU+jgjaU9a1iluML0DJ
- 3qAi/Gww7GqOOou2O1sYCeFnsWz5mKYSrbCsdVhWdJ5cpO29uBNTWp7wIOZIlHVLEtvy
- klTgBbplg4XmhPpFOIM0us0oSVRyUOaHlum3QlZ1iM2mHWzGZvHVMWiJUMXv8Qjdsxfc
- v+N8xVfUHouGPsbNQePXKRLwRmCRFVSdLKkvntP2TZsa3CSHyRbEBhfeB6gVSH52yi8V
- PrgXhQlB2flQV6fz+YY3NY+e2glt88lyUd2qwncGUCTiySGRTEoNwVn4Qvf7h4MG5cIy
- sC7A==
+Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
+ [209.85.128.66])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9E42C85B0D
+ for <devel@driverdev.osuosl.org>; Thu, 19 Sep 2019 06:56:04 +0000 (UTC)
+Received: by mail-wm1-f66.google.com with SMTP id p7so2911621wmp.4
+ for <devel@driverdev.osuosl.org>; Wed, 18 Sep 2019 23:56:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=subject:to:cc:references:from:openpgp:autocrypt:organization
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=k+5ikMfQkrkWjV+8BM5My0YRzyXVw2lhdvo+uZelhc0=;
+ b=e9Z0dQcBvm8KkwpK3j3U3k17B1BH50dCD90O8CiT8CDTPJl03Oo3iqfUeuKpCuSL/P
+ Qb8BbLu3BmihTeaK292U/8CG639fsuep6t0kBAuPmgjvnns8F807Sb/exN1C/8EgrFFW
+ 81CwFIx/I+pIUs4rqujAjNHqXSAfzA9ngrBeWfdbFjAq3ujXHpIdX6GklV/uB8psG30p
+ B1zTg+rrO6MBJAREbLLcHgkSfsgGFY2mG8T/BzQxvN7Uq076TlzBd/983pYMomNoqc16
+ aI5DFaO/EtMD4mxjsArW5KPUoie/4wEGG288S6s5b1Bsmzjth8jrQVpIFovqZe0FwsGX
+ cGng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=j6ktaKerA6qNCNUVOJpqP9XS7SoRgjTBYtdJRVNyhcw=;
- b=boQ5NGkwXfqoycdLVueWRwJHycChYMiPGcW00QPmDNkVclXkr2l9kh2QtXRyxC1fc7
- syFxdvrMuQN2nwStL1OFxGhSh/YClyj6a7oAEp5j9xyB1A8kZA7vx6jsmKuaDkdPz0SM
- G4i5J/BtsYiQRCbRzxW6qzDbxAipfAp266+gZ9D45Wn7/Z3Q/qp5iQq3tNxj7lE1b39y
- 2TqtZkb0TUSNW1kTMpUQu093VTtuGhCkoUdOjGbT79E/4bIx+/Wb8jrRhde4tyvvWynt
- 6key1Gp278KLcuRsfyD3FTXEFQhLiM9d0ETMLzzz7ROgafEq/6xnGOQ5zfquRz9Rm9JE
- ASRA==
-X-Gm-Message-State: APjAAAXaph7TLzxuGFpQGjPE3bI51X9uyz7vQPP5xNwwr+pxUXMkhwNk
- xlo60zY8HlwACgpRUyWoUsTakSAI+YpAOK7nHPc=
-X-Google-Smtp-Source: APXvYqxjyCXBVLXbbc37aFrdNvvbQpskLVO+apNEFZ3ayPK48X288HghyPp33qNmLTr3e8fC29soNN0avIt7kWpkVFQ=
-X-Received: by 2002:a05:6830:1f0f:: with SMTP id
- u15mr5581667otg.34.1568866850204; 
- Wed, 18 Sep 2019 21:20:50 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:autocrypt
+ :organization:message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=k+5ikMfQkrkWjV+8BM5My0YRzyXVw2lhdvo+uZelhc0=;
+ b=nC8zQIOScd7OhsylFzgFz9kuOzbnl4S3NQ2CbbYJw42yiDL2zR3Sz9UJo6Dwdxe/3U
+ 1O2c75MOHJ5Ge21wrjLG4y9X4YusQdfwrMwJi3cEcao9kp9db2cig9zZtsVk/5ImQANP
+ WhxWW9YAZrea2DniIWAkl8Gd9PLf1t2Df5aRMYGT7w/GVSo2cMe7laNyUOLwSeTRkuDe
+ nkeU+x8caMLPJ9EaeWSUTFakD/oAaW7R+mdKF4MKchgBM8jjLKcDlGv44gktbIbK2Z+7
+ IHMyz9ITaK9RfHD3/SMPDF7TS1jHpIodJ1CYzwJ7aemG/Leoz7NZyG0IfrbuecPSRz2Z
+ Jecw==
+X-Gm-Message-State: APjAAAWGjv/h5BwAlUCZ9PQ1ASZIP63qkjgvk4nEK56RRhQO4YSAZDbY
+ opEoJn5WVB6sdZkYcTk0s5wJEg==
+X-Google-Smtp-Source: APXvYqzkRqs6C0FY3pL3x8QyN0bcyv5Q9Y3H3gsxobS7QwJ2ODFKdWYVeX1wU/QATOKazsNse2DhFQ==
+X-Received: by 2002:a1c:1b58:: with SMTP id b85mr1451450wmb.95.1568876162628; 
+ Wed, 18 Sep 2019 23:56:02 -0700 (PDT)
+Received: from [192.168.1.62] (176-150-251-154.abo.bbox.fr. [176.150.251.154])
+ by smtp.gmail.com with ESMTPSA id
+ y186sm8160010wmd.26.2019.09.18.23.56.01
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 18 Sep 2019 23:56:01 -0700 (PDT)
+Subject: Re: [PATCH v1 0/2] Add initial support for slimport anx7625
+To: Xin Ji <xji@analogixsemi.com>,
+ "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Andrzej Hajda <a.hajda@samsung.com>
+References: <cover.1568858880.git.xji@analogixsemi.com>
+From: Neil Armstrong <narmstrong@baylibre.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=narmstrong@baylibre.com; prefer-encrypt=mutual; keydata=
+ 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
+ ZaTUOEkgIor5losDrePdPgE=
+Organization: Baylibre
+Message-ID: <8bb69c72-50bf-c499-ff92-9e3662b4fe87@baylibre.com>
+Date: Thu, 19 Sep 2019 08:56:01 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-References: <1c16a43c-3a01-8a86-02b0-1941ab7321dd@web.de>
-In-Reply-To: <1c16a43c-3a01-8a86-02b0-1941ab7321dd@web.de>
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Thu, 19 Sep 2019 06:20:39 +0200
-Message-ID: <CAMhs-H9q16kGOse9pMbj3O9hoOO5de_wa9VRi_HcPo0_GbTw1g@mail.gmail.com>
-Subject: Re: [PATCH] staging: mt7621-pci-phy: Use
- devm_platform_ioremap_resource() in mt7621_pci_phy_probe()
-To: Markus Elfring <Markus.Elfring@web.de>
+In-Reply-To: <cover.1568858880.git.xji@analogixsemi.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,70 +145,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- kernel-janitors@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
- Neil Brown <neil@brown.name>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-mediatek@lists.infradead.org, Himanshu Jha <himanshujha199640@gmail.com>,
- Emanuel Bennici <benniciemanuel78@gmail.com>,
- =?UTF-8?Q?Antti_Ker=C3=A4nen?= <detegr@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: Jernej Skrabec <jernej.skrabec@siol.net>, Jonas Karlman <jonas@kwiboo.se>,
+ David Airlie <airlied@linux.ie>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Sheng Pan <span@analogixsemi.com>, Daniel Vetter <daniel@ffwll.ch>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Markus,
+Hi,
 
-Thanks for the patch. It looks good to me.
+Please Cc dri-devel@lists.freedesktop.org
 
-On Wed, Sep 18, 2019 at 9:12 PM Markus Elfring <Markus.Elfring@web.de> wrote:
->
-> From: Markus Elfring <elfring@users.sourceforge.net>
-> Date: Wed, 18 Sep 2019 21:01:32 +0200
->
-> Simplify this function implementation by using a known wrapper function.
->
-> This issue was detected by using the Coccinelle software.
->
-> Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
-> ---
->  drivers/staging/mt7621-pci-phy/pci-mt7621-phy.c | 10 +---------
->  1 file changed, 1 insertion(+), 9 deletions(-)
->
-> diff --git a/drivers/staging/mt7621-pci-phy/pci-mt7621-phy.c b/drivers/staging/mt7621-pci-phy/pci-mt7621-phy.c
-> index d2a07f145143..6ca4a33d13c3 100644
-> --- a/drivers/staging/mt7621-pci-phy/pci-mt7621-phy.c
-> +++ b/drivers/staging/mt7621-pci-phy/pci-mt7621-phy.c
-> @@ -324,7 +324,6 @@ static int mt7621_pci_phy_probe(struct platform_device *pdev)
->         const struct soc_device_attribute *attr;
->         struct phy_provider *provider;
->         struct mt7621_pci_phy *phy;
-> -       struct resource *res;
->         int port;
->         void __iomem *port_base;
->
-> @@ -344,14 +343,7 @@ static int mt7621_pci_phy_probe(struct platform_device *pdev)
->
->         phy->dev = dev;
->         platform_set_drvdata(pdev, phy);
-> -
-> -       res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -       if (!res) {
-> -               dev_err(dev, "failed to get address resource\n");
-> -               return -ENXIO;
-> -       }
-> -
-> -       port_base = devm_ioremap_resource(dev, res);
-> +       port_base = devm_platform_ioremap_resource(pdev, 0);
->         if (IS_ERR(port_base)) {
->                 dev_err(dev, "failed to remap phy regs\n");
->                 return PTR_ERR(port_base);
-> --
-> 2.23.0
->
+Thanks,
+Neil
 
-Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+On 19/09/2019 08:51, Xin Ji wrote:
+> Hi all,
+> 
+> The following series add initial support for the Slimport ANX7625 transmitter, a
+> ultra-low power Full-HD 4K MIPI to DP transmitter designed for portable device.
+> 
+> This is the first version upload, any mistakes, please let me know, I will fix
+> it in the next series.
+> 
+> Thanks,
+> Xin
+> 
+> 
+> Xin Ji (2):
+>   dt-bindings: drm/bridge: anx7625: MIPI to DP transmitter binding
+>   drm/bridge: anx7625: Add anx7625 MIPI to DP bridge driver
+> 
+>  .../devicetree/bindings/display/bridge/anx7625.txt |   42 +
+>  drivers/gpu/drm/bridge/Makefile                    |    2 +-
+>  drivers/gpu/drm/bridge/analogix/Kconfig            |    6 +
+>  drivers/gpu/drm/bridge/analogix/Makefile           |    1 +
+>  drivers/gpu/drm/bridge/analogix/anx7625.c          | 2086 ++++++++++++++++++++
+>  drivers/gpu/drm/bridge/analogix/anx7625.h          |  397 ++++
+>  6 files changed, 2533 insertions(+), 1 deletion(-)
+>  create mode 100644 Documentation/devicetree/bindings/display/bridge/anx7625.txt
+>  create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.c
+>  create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.h
+> 
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
