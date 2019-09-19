@@ -2,51 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 32CC7B76AE
-	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Sep 2019 11:50:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5A1A8B76D2
+	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Sep 2019 11:59:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B42C7860D5;
-	Thu, 19 Sep 2019 09:50:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7D3B484494;
+	Thu, 19 Sep 2019 09:59:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LpsjfYqK9Kl7; Thu, 19 Sep 2019 09:50:30 +0000 (UTC)
+	with ESMTP id V6KuSXpeAr_G; Thu, 19 Sep 2019 09:59:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 39FCF8606C;
-	Thu, 19 Sep 2019 09:50:30 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 11A5B844CC;
+	Thu, 19 Sep 2019 09:59:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9571C1BF27E
- for <devel@linuxdriverproject.org>; Thu, 19 Sep 2019 09:50:27 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 51C971BF20B
+ for <devel@linuxdriverproject.org>; Thu, 19 Sep 2019 09:59:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 922F620429
- for <devel@linuxdriverproject.org>; Thu, 19 Sep 2019 09:50:27 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 48FD187E6C
+ for <devel@linuxdriverproject.org>; Thu, 19 Sep 2019 09:59:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dJR1wEx7kWFw for <devel@linuxdriverproject.org>;
- Thu, 19 Sep 2019 09:50:26 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from laurent.telenet-ops.be (laurent.telenet-ops.be [195.130.137.89])
- by silver.osuosl.org (Postfix) with ESMTPS id 571B92041F
- for <devel@driverdev.osuosl.org>; Thu, 19 Sep 2019 09:50:26 +0000 (UTC)
-Received: from ramsan ([84.194.98.4]) by laurent.telenet-ops.be with bizsmtp
- id 3MqP2100X05gfCL01MqPoi; Thu, 19 Sep 2019 11:50:24 +0200
-Received: from rox.of.borg ([192.168.97.57]) by ramsan with esmtp (Exim 4.90_1)
- (envelope-from <geert@linux-m68k.org>)
- id 1iAt4x-00040H-JK; Thu, 19 Sep 2019 11:50:23 +0200
-Received: from geert by rox.of.borg with local (Exim 4.90_1)
- (envelope-from <geert@linux-m68k.org>)
- id 1iAt4x-0007aD-GF; Thu, 19 Sep 2019 11:50:23 +0200
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-To: Matthew Wilcox <willy@infradead.org>,
- "David S . Miller" <davem@davemloft.net>
-Subject: [PATCH v2] staging: octeon: Use "(uintptr_t)" to cast from pointer to
- int
-Date: Thu, 19 Sep 2019 11:50:22 +0200
-Message-Id: <20190919095022.29099-1-geert@linux-m68k.org>
-X-Mailer: git-send-email 2.17.1
+ with ESMTP id Zc4aZlbYClQJ for <devel@linuxdriverproject.org>;
+ Thu, 19 Sep 2019 09:59:18 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
+ [209.85.221.66])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 5020687E5F
+ for <devel@driverdev.osuosl.org>; Thu, 19 Sep 2019 09:59:18 +0000 (UTC)
+Received: by mail-wr1-f66.google.com with SMTP id i1so2413954wro.4
+ for <devel@driverdev.osuosl.org>; Thu, 19 Sep 2019 02:59:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=6YboXs4mQIylOrMolQVGgl1HM0og05CGlsxjYW+iH7k=;
+ b=qTu9xgntVL5lvm8X1qZsU5crk286GN6BEL/GGXbnJf64rW/GM+EUt0Bu8yDv8CmWWY
+ xf0qCzH/cdoopyoFtP/Nv/TeXDYeGJxg0hymnHWeAaLlbsdi9PxQqls0t0Ek9aHE6ckI
+ Z2nVvxM8HFr6f/UQnaS98vIMA6blz3OI/WrfnjnqmMSLgissuunGJuxSX6gYsOncqqYV
+ 2jnlCNy1rNjflyG2FVCfGJoO94M7K49xiCoQqGZAIQrjjbOQTNxEBaLMv50mhDFDVXFu
+ d8OwtzzZxwiBCV6Njl4tkOyRZCJlIZpC2MEZc4ROjPr3vEy8WmweZfDpx80RBJT3ZyID
+ 64Cw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=6YboXs4mQIylOrMolQVGgl1HM0og05CGlsxjYW+iH7k=;
+ b=KUQVJxiLgCRiUJ2R6jfYG9aIgW+/DoTqn7q8cvNI6hRhcE41aSexLh890L/Vz7dp23
+ yC+UdVTb+T6Ttl/P5YB1e2sK5nQMZU+CiG9KykLFd1omjsrEbEKJUbfDoEiSIVIzUbws
+ IjLooJN3z8MpMJZa6c2xLI5BysxYraZgH6qLD8TfdLk4PBzWwiA0Low4y9P8Y91NvPSb
+ tMVCweQzWDYrZbtI9kw3Mtfm1I/0eY3YulKpZZfunfBO9pS2+uG74DiDHffgCCCNCyKt
+ jPNBEwyh1mta0SAfvozhTjiWVk9JtFYaKeqw2j1u5lZsPbsrbxmC2MQqnjZUG+VCPT0U
+ VKug==
+X-Gm-Message-State: APjAAAX9QS9to9IGPSwnqUNaR4u8jU1iF9IborLc8YNaI3bsHMDQAVwZ
+ e+W5ooRXY+rAB6pVs9jo2Bo=
+X-Google-Smtp-Source: APXvYqwkccDuJHbaNPpKriH1ct1LstdVeisfChkzu85ct1d5VdtuJTBELwZtNELGqXp7JiqyE7uhWA==
+X-Received: by 2002:a5d:4745:: with SMTP id o5mr6250925wrs.125.1568887156690; 
+ Thu, 19 Sep 2019 02:59:16 -0700 (PDT)
+Received: from localhost.localdomain ([213.86.25.14])
+ by smtp.googlemail.com with ESMTPSA id
+ y186sm10037704wmb.41.2019.09.19.02.59.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 19 Sep 2019 02:59:15 -0700 (PDT)
+From: Alexander Gordeev <a.gordeev.box@gmail.com>
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH RFC 0/2] staging: Support Avalon-MM DMA Interface for PCIe
+Date: Thu, 19 Sep 2019 11:59:11 +0200
+Message-Id: <cover.1568817357.git.a.gordeev.box@gmail.com>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -60,90 +84,122 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Geert Uytterhoeven <geert@linux-m68k.org>, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, Michael Chen <micchen@altera.com>,
+ Alexander Gordeev <a.gordeev.box@gmail.com>, dmaengine@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gMzItYml0OgoKICAgIEluIGZpbGUgaW5jbHVkZWQgZnJvbSBkcml2ZXJzL3N0YWdpbmcvb2N0
-ZW9uL29jdGVvbi1ldGhlcm5ldC5oOjQxLAoJCSAgICAgZnJvbSBkcml2ZXJzL3N0YWdpbmcvb2N0
-ZW9uL2V0aGVybmV0LXR4LmM6MjU6CiAgICBkcml2ZXJzL3N0YWdpbmcvb2N0ZW9uL29jdGVvbi1z
-dHVicy5oOiBJbiBmdW5jdGlvbiDigJhjdm14X3BoeXNfdG9fcHRy4oCZOgogICAgZHJpdmVycy9z
-dGFnaW5nL29jdGVvbi9vY3Rlb24tc3R1YnMuaDoxMjA1Ojk6IHdhcm5pbmc6IGNhc3QgdG8gcG9p
-bnRlciBmcm9tIGludGVnZXIgb2YgZGlmZmVyZW50IHNpemUgWy1XaW50LXRvLXBvaW50ZXItY2Fz
-dF0KICAgICAgcmV0dXJuICh2b2lkICopKHBoeXNpY2FsX2FkZHJlc3MpOwoJICAgICBeCiAgICBk
-cml2ZXJzL3N0YWdpbmcvb2N0ZW9uL2V0aGVybmV0LXR4LmM6IEluIGZ1bmN0aW9uIOKAmGN2bV9v
-Y3RfeG1pdOKAmToKICAgIGRyaXZlcnMvc3RhZ2luZy9vY3Rlb24vZXRoZXJuZXQtdHguYzoyNjQ6
-Mzc6IHdhcm5pbmc6IGNhc3QgZnJvbSBwb2ludGVyIHRvIGludGVnZXIgb2YgZGlmZmVyZW50IHNp
-emUgWy1XcG9pbnRlci10by1pbnQtY2FzdF0KICAgICAgIGh3X2J1ZmZlci5zLmFkZHIgPSBYS1BI
-WVNfVE9fUEhZUygodTY0KXNrYi0+ZGF0YSk7CgkJCQkJIF4KICAgIGRyaXZlcnMvc3RhZ2luZy9v
-Y3Rlb24vb2N0ZW9uLXN0dWJzLmg6MjozMDogbm90ZTogaW4gZGVmaW5pdGlvbiBvZiBtYWNybyDi
-gJhYS1BIWVNfVE9fUEhZU+KAmQogICAgICNkZWZpbmUgWEtQSFlTX1RPX1BIWVMocCkgICAocCkK
-CQkJCSAgXgogICAgZHJpdmVycy9zdGFnaW5nL29jdGVvbi9ldGhlcm5ldC10eC5jOjI2ODozNzog
-d2FybmluZzogY2FzdCBmcm9tIHBvaW50ZXIgdG8gaW50ZWdlciBvZiBkaWZmZXJlbnQgc2l6ZSBb
-LVdwb2ludGVyLXRvLWludC1jYXN0XQogICAgICAgaHdfYnVmZmVyLnMuYWRkciA9IFhLUEhZU19U
-T19QSFlTKCh1NjQpc2tiLT5kYXRhKTsKCQkJCQkgXgogICAgZHJpdmVycy9zdGFnaW5nL29jdGVv
-bi9vY3Rlb24tc3R1YnMuaDoyOjMwOiBub3RlOiBpbiBkZWZpbml0aW9uIG9mIG1hY3JvIOKAmFhL
-UEhZU19UT19QSFlT4oCZCiAgICAgI2RlZmluZSBYS1BIWVNfVE9fUEhZUyhwKSAgIChwKQoJCQkJ
-ICBeCiAgICBkcml2ZXJzL3N0YWdpbmcvb2N0ZW9uL2V0aGVybmV0LXR4LmM6Mjc2OjIwOiB3YXJu
-aW5nOiBjYXN0IGZyb20gcG9pbnRlciB0byBpbnRlZ2VyIG9mIGRpZmZlcmVudCBzaXplIFstV3Bv
-aW50ZXItdG8taW50LWNhc3RdCgkgWEtQSFlTX1RPX1BIWVMoKHU2NClza2JfZnJhZ19hZGRyZXNz
-KGZzKSk7CgkJCV4KICAgIGRyaXZlcnMvc3RhZ2luZy9vY3Rlb24vb2N0ZW9uLXN0dWJzLmg6Mjoz
-MDogbm90ZTogaW4gZGVmaW5pdGlvbiBvZiBtYWNybyDigJhYS1BIWVNfVE9fUEhZU+KAmQogICAg
-ICNkZWZpbmUgWEtQSFlTX1RPX1BIWVMocCkgICAocCkKCQkJCSAgXgogICAgZHJpdmVycy9zdGFn
-aW5nL29jdGVvbi9ldGhlcm5ldC10eC5jOjI4MDozNzogd2FybmluZzogY2FzdCBmcm9tIHBvaW50
-ZXIgdG8gaW50ZWdlciBvZiBkaWZmZXJlbnQgc2l6ZSBbLVdwb2ludGVyLXRvLWludC1jYXN0XQog
-ICAgICAgaHdfYnVmZmVyLnMuYWRkciA9IFhLUEhZU19UT19QSFlTKCh1NjQpQ1ZNX09DVF9TS0Jf
-Q0Ioc2tiKSk7CgkJCQkJIF4KICAgIGRyaXZlcnMvc3RhZ2luZy9vY3Rlb24vb2N0ZW9uLXN0dWJz
-Lmg6MjozMDogbm90ZTogaW4gZGVmaW5pdGlvbiBvZiBtYWNybyDigJhYS1BIWVNfVE9fUEhZU+KA
-mQogICAgICNkZWZpbmUgWEtQSFlTX1RPX1BIWVMocCkgICAocCkKCQkJCSAgXgoKRml4IHRoaXMg
-YnkgcmVwbGFjaW5nIGNhc3RzIHRvICJ1NjQiIGJ5IGNhc3RzIHRvICJ1aW50cHRyX3QiLCB3aGlj
-aCBpcwplaXRoZXIgMzItYml0IG9yIDY0LWJpdCwgYW5kIGFkZGluZyBhbiBpbnRlcm1lZGlhdGUg
-Y2FzdCB0byAidWludHB0cl90Igp3aGVyZSBuZWVkZWQuCgpFeHBvc2VkIGJ5IGNvbW1pdCAxNzFh
-OWJhZTY4YzcyZjJkICgic3RhZ2luZy9vY3Rlb246IEFsbG93IHRlc3QgYnVpbGQgb24KIU1JUFMi
-KS4KClNpZ25lZC1vZmYtYnk6IEdlZXJ0IFV5dHRlcmhvZXZlbiA8Z2VlcnRAbGludXgtbTY4ay5v
-cmc+Ci0tLQp2MjoKICAtIEZpeCBzaWxseSB0eXBvIGluIG9uZWxpbmUtc3VtbWFyeS4KLS0tCiBk
-cml2ZXJzL3N0YWdpbmcvb2N0ZW9uL2V0aGVybmV0LXR4LmMgIHwgOSArKysrKy0tLS0KIGRyaXZl
-cnMvc3RhZ2luZy9vY3Rlb24vb2N0ZW9uLXN0dWJzLmggfCAyICstCiAyIGZpbGVzIGNoYW5nZWQs
-IDYgaW5zZXJ0aW9ucygrKSwgNSBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0
-YWdpbmcvb2N0ZW9uL2V0aGVybmV0LXR4LmMgYi9kcml2ZXJzL3N0YWdpbmcvb2N0ZW9uL2V0aGVy
-bmV0LXR4LmMKaW5kZXggYzY0NzI4ZmMyMWYyMjlkOC4uNzAyMWZmMDdiYTJhMGI3MCAxMDA2NDQK
-LS0tIGEvZHJpdmVycy9zdGFnaW5nL29jdGVvbi9ldGhlcm5ldC10eC5jCisrKyBiL2RyaXZlcnMv
-c3RhZ2luZy9vY3Rlb24vZXRoZXJuZXQtdHguYwpAQCAtMjYxLDExICsyNjEsMTEgQEAgaW50IGN2
-bV9vY3RfeG1pdChzdHJ1Y3Qgc2tfYnVmZiAqc2tiLCBzdHJ1Y3QgbmV0X2RldmljZSAqZGV2KQog
-CS8qIEJ1aWxkIHRoZSBQS08gYnVmZmVyIHBvaW50ZXIgKi8KIAlod19idWZmZXIudTY0ID0gMDsK
-IAlpZiAoc2tiX3NoaW5mbyhza2IpLT5ucl9mcmFncyA9PSAwKSB7Ci0JCWh3X2J1ZmZlci5zLmFk
-ZHIgPSBYS1BIWVNfVE9fUEhZUygodTY0KXNrYi0+ZGF0YSk7CisJCWh3X2J1ZmZlci5zLmFkZHIg
-PSBYS1BIWVNfVE9fUEhZUygodWludHB0cl90KXNrYi0+ZGF0YSk7CiAJCWh3X2J1ZmZlci5zLnBv
-b2wgPSAwOwogCQlod19idWZmZXIucy5zaXplID0gc2tiLT5sZW47CiAJfSBlbHNlIHsKLQkJaHdf
-YnVmZmVyLnMuYWRkciA9IFhLUEhZU19UT19QSFlTKCh1NjQpc2tiLT5kYXRhKTsKKwkJaHdfYnVm
-ZmVyLnMuYWRkciA9IFhLUEhZU19UT19QSFlTKCh1aW50cHRyX3Qpc2tiLT5kYXRhKTsKIAkJaHdf
-YnVmZmVyLnMucG9vbCA9IDA7CiAJCWh3X2J1ZmZlci5zLnNpemUgPSBza2JfaGVhZGxlbihza2Ip
-OwogCQlDVk1fT0NUX1NLQl9DQihza2IpWzBdID0gaHdfYnVmZmVyLnU2NDsKQEAgLTI3MywxMSAr
-MjczLDEyIEBAIGludCBjdm1fb2N0X3htaXQoc3RydWN0IHNrX2J1ZmYgKnNrYiwgc3RydWN0IG5l
-dF9kZXZpY2UgKmRldikKIAkJCXNrYl9mcmFnX3QgKmZzID0gc2tiX3NoaW5mbyhza2IpLT5mcmFn
-cyArIGk7CiAKIAkJCWh3X2J1ZmZlci5zLmFkZHIgPQotCQkJCVhLUEhZU19UT19QSFlTKCh1NjQp
-c2tiX2ZyYWdfYWRkcmVzcyhmcykpOworCQkJCVhLUEhZU19UT19QSFlTKCh1aW50cHRyX3Qpc2ti
-X2ZyYWdfYWRkcmVzcyhmcykpOwogCQkJaHdfYnVmZmVyLnMuc2l6ZSA9IHNrYl9mcmFnX3NpemUo
-ZnMpOwogCQkJQ1ZNX09DVF9TS0JfQ0Ioc2tiKVtpICsgMV0gPSBod19idWZmZXIudTY0OwogCQl9
-Ci0JCWh3X2J1ZmZlci5zLmFkZHIgPSBYS1BIWVNfVE9fUEhZUygodTY0KUNWTV9PQ1RfU0tCX0NC
-KHNrYikpOworCQlod19idWZmZXIucy5hZGRyID0KKwkJCVhLUEhZU19UT19QSFlTKCh1aW50cHRy
-X3QpQ1ZNX09DVF9TS0JfQ0Ioc2tiKSk7CiAJCWh3X2J1ZmZlci5zLnNpemUgPSBza2Jfc2hpbmZv
-KHNrYiktPm5yX2ZyYWdzICsgMTsKIAkJcGtvX2NvbW1hbmQucy5zZWdzID0gc2tiX3NoaW5mbyhz
-a2IpLT5ucl9mcmFncyArIDE7CiAJCXBrb19jb21tYW5kLnMuZ2F0aGVyID0gMTsKZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvc3RhZ2luZy9vY3Rlb24vb2N0ZW9uLXN0dWJzLmggYi9kcml2ZXJzL3N0YWdp
-bmcvb2N0ZW9uL29jdGVvbi1zdHVicy5oCmluZGV4IGE0YWMzYmZiNjJhODVlNjUuLmI3OGNlOWVh
-YWI4NWQzMTAgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy9vY3Rlb24vb2N0ZW9uLXN0dWJz
-LmgKKysrIGIvZHJpdmVycy9zdGFnaW5nL29jdGVvbi9vY3Rlb24tc3R1YnMuaApAQCAtMTIwMiw3
-ICsxMjAyLDcgQEAgc3RhdGljIGlubGluZSBpbnQgY3ZteF93cWVfZ2V0X2dycChjdm14X3dxZV90
-ICp3b3JrKQogCiBzdGF0aWMgaW5saW5lIHZvaWQgKmN2bXhfcGh5c190b19wdHIodWludDY0X3Qg
-cGh5c2ljYWxfYWRkcmVzcykKIHsKLQlyZXR1cm4gKHZvaWQgKikocGh5c2ljYWxfYWRkcmVzcyk7
-CisJcmV0dXJuICh2b2lkICopKHVpbnRwdHJfdCkocGh5c2ljYWxfYWRkcmVzcyk7CiB9CiAKIHN0
-YXRpYyBpbmxpbmUgdWludDY0X3QgY3ZteF9wdHJfdG9fcGh5cyh2b2lkICpwdHIpCi0tIAoyLjE3
-LjEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVs
-IG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJk
-ZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZl
-bAo=
+The Avalon-MM DMA Interface for PCIe is a design found in hard IPs for
+Intel Arria, Cyclone or Stratix FPGAs. It transfers data between on-chip
+memory and system memory. This RFC is an attempt to provide a generic API:
+
+	typedef void (*avalon_dma_xfer_callback)(void *dma_async_param);
+ 
+	int avalon_dma_submit_xfer(
+		struct avalon_dma *avalon_dma,
+		enum dma_data_direction direction,
+		dma_addr_t dev_addr, dma_addr_t host_addr,
+		unsigned int size,
+		avalon_dma_xfer_callback callback,
+		void *callback_param);
+ 
+	int avalon_dma_submit_xfer_sg(struct avalon_dma *avalon_dma,
+		enum dma_data_direction direction,
+		dma_addr_t dev_addr,
+		struct sg_table *sg_table,
+		avalon_dma_xfer_callback callback,
+		void *callback_param);
+ 
+	int avalon_dma_issue_pending(struct avalon_dma *avalon_dma);
+
+Patch 1 introduces "avalon-dma" driver that provides the above-mentioned
+generic interface.
+
+Patch 2 adds "avalon-drv" driver using "avalon-dma" to transfer user-
+provided data. This driver was used to debug and stress "avalon-dma"
+and could be used as a code base for other implementations. Strictly
+speaking, it does not need to be part of the kernel tree.
+A companion tool using "avalon-drv" to DMA files (not part of this
+patchset) is located at git@github.com:a-gordeev/avalon-drv-tool.git
+
+The suggested interface is developed with the standard "dmaengine"
+in mind and could be reworked to suit it. I would appreciate, however
+gathering some feedback on the implemenation first - as the hardware-
+specific code would persist. It is also a call for testing - I only
+have access to a single Arria 10 device to try on.
+
+This series is against v5.3 and could be found at
+git@github.com:a-gordeev/linux.git avalon-dma-engine
+
+
+CC: Michael Chen <micchen@altera.com>
+CC: devel@driverdev.osuosl.org
+CC: dmaengine@vger.kernel.org
+
+Alexander Gordeev (2):
+  staging: avalon-dma: Avalon DMA engine
+  staging: avalon-drv: Avalon DMA driver
+
+ drivers/staging/Kconfig                       |   4 +
+ drivers/staging/Makefile                      |   2 +
+ drivers/staging/avalon-dma/Kconfig            |  45 ++
+ drivers/staging/avalon-dma/Makefile           |  11 +
+ drivers/staging/avalon-dma/avalon-dma-core.c  | 515 ++++++++++++++
+ drivers/staging/avalon-dma/avalon-dma-core.h  |  52 ++
+ .../staging/avalon-dma/avalon-dma-interrupt.c | 118 ++++
+ .../staging/avalon-dma/avalon-dma-interrupt.h |  13 +
+ drivers/staging/avalon-dma/avalon-dma-util.c  | 196 ++++++
+ drivers/staging/avalon-dma/avalon-dma-util.h  |  25 +
+ drivers/staging/avalon-drv/Kconfig            |  34 +
+ drivers/staging/avalon-drv/Makefile           |  14 +
+ drivers/staging/avalon-drv/avalon-drv-dev.c   | 193 ++++++
+ drivers/staging/avalon-drv/avalon-drv-ioctl.c | 137 ++++
+ drivers/staging/avalon-drv/avalon-drv-ioctl.h |  12 +
+ drivers/staging/avalon-drv/avalon-drv-mmap.c  |  93 +++
+ drivers/staging/avalon-drv/avalon-drv-mmap.h  |  12 +
+ .../staging/avalon-drv/avalon-drv-sg-buf.c    | 132 ++++
+ .../staging/avalon-drv/avalon-drv-sg-buf.h    |  26 +
+ drivers/staging/avalon-drv/avalon-drv-util.c  |  54 ++
+ drivers/staging/avalon-drv/avalon-drv-util.h  |  12 +
+ drivers/staging/avalon-drv/avalon-drv-xfer.c  | 655 ++++++++++++++++++
+ drivers/staging/avalon-drv/avalon-drv-xfer.h  |  24 +
+ drivers/staging/avalon-drv/avalon-drv.h       |  22 +
+ include/linux/avalon-dma-hw.h                 |  72 ++
+ include/linux/avalon-dma.h                    |  68 ++
+ include/uapi/linux/avalon-drv-ioctl.h         |  30 +
+ 27 files changed, 2571 insertions(+)
+ create mode 100644 drivers/staging/avalon-dma/Kconfig
+ create mode 100644 drivers/staging/avalon-dma/Makefile
+ create mode 100644 drivers/staging/avalon-dma/avalon-dma-core.c
+ create mode 100644 drivers/staging/avalon-dma/avalon-dma-core.h
+ create mode 100644 drivers/staging/avalon-dma/avalon-dma-interrupt.c
+ create mode 100644 drivers/staging/avalon-dma/avalon-dma-interrupt.h
+ create mode 100644 drivers/staging/avalon-dma/avalon-dma-util.c
+ create mode 100644 drivers/staging/avalon-dma/avalon-dma-util.h
+ create mode 100644 drivers/staging/avalon-drv/Kconfig
+ create mode 100644 drivers/staging/avalon-drv/Makefile
+ create mode 100644 drivers/staging/avalon-drv/avalon-drv-dev.c
+ create mode 100644 drivers/staging/avalon-drv/avalon-drv-ioctl.c
+ create mode 100644 drivers/staging/avalon-drv/avalon-drv-ioctl.h
+ create mode 100644 drivers/staging/avalon-drv/avalon-drv-mmap.c
+ create mode 100644 drivers/staging/avalon-drv/avalon-drv-mmap.h
+ create mode 100644 drivers/staging/avalon-drv/avalon-drv-sg-buf.c
+ create mode 100644 drivers/staging/avalon-drv/avalon-drv-sg-buf.h
+ create mode 100644 drivers/staging/avalon-drv/avalon-drv-util.c
+ create mode 100644 drivers/staging/avalon-drv/avalon-drv-util.h
+ create mode 100644 drivers/staging/avalon-drv/avalon-drv-xfer.c
+ create mode 100644 drivers/staging/avalon-drv/avalon-drv-xfer.h
+ create mode 100644 drivers/staging/avalon-drv/avalon-drv.h
+ create mode 100644 include/linux/avalon-dma-hw.h
+ create mode 100644 include/linux/avalon-dma.h
+ create mode 100644 include/uapi/linux/avalon-drv-ioctl.h
+
+-- 
+2.22.0
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
