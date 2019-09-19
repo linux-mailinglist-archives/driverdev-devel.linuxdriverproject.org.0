@@ -1,79 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8A83BB7390
-	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Sep 2019 08:56:12 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D1327B7394
+	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Sep 2019 08:57:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0CF3987E17;
-	Thu, 19 Sep 2019 06:56:10 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E1CF62206E;
+	Thu, 19 Sep 2019 06:57:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wquxzn4VbXf7; Thu, 19 Sep 2019 06:56:09 +0000 (UTC)
+	with ESMTP id Z3eXylf0CT1o; Thu, 19 Sep 2019 06:57:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1D3BC87D98;
-	Thu, 19 Sep 2019 06:56:09 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2715521FAC;
+	Thu, 19 Sep 2019 06:57:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4030A1BF39E
- for <devel@linuxdriverproject.org>; Thu, 19 Sep 2019 06:56:06 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E264A1BF39E
+ for <devel@linuxdriverproject.org>; Thu, 19 Sep 2019 06:57:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3CDF985F93
- for <devel@linuxdriverproject.org>; Thu, 19 Sep 2019 06:56:06 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id DA1B187D9D
+ for <devel@linuxdriverproject.org>; Thu, 19 Sep 2019 06:57:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9LJbpfqdyXaf for <devel@linuxdriverproject.org>;
- Thu, 19 Sep 2019 06:56:04 +0000 (UTC)
+ with ESMTP id 6mNS4PJ+EKxe for <devel@linuxdriverproject.org>;
+ Thu, 19 Sep 2019 06:57:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
- [209.85.128.66])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 9E42C85B0D
- for <devel@driverdev.osuosl.org>; Thu, 19 Sep 2019 06:56:04 +0000 (UTC)
-Received: by mail-wm1-f66.google.com with SMTP id p7so2911621wmp.4
- for <devel@driverdev.osuosl.org>; Wed, 18 Sep 2019 23:56:04 -0700 (PDT)
+Received: from mail-wm1-f67.google.com (mail-wm1-f67.google.com
+ [209.85.128.67])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 67DC987D98
+ for <devel@driverdev.osuosl.org>; Thu, 19 Sep 2019 06:57:15 +0000 (UTC)
+Received: by mail-wm1-f67.google.com with SMTP id m18so124075wmc.1
+ for <devel@driverdev.osuosl.org>; Wed, 18 Sep 2019 23:57:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
  h=subject:to:cc:references:from:openpgp:autocrypt:organization
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=k+5ikMfQkrkWjV+8BM5My0YRzyXVw2lhdvo+uZelhc0=;
- b=e9Z0dQcBvm8KkwpK3j3U3k17B1BH50dCD90O8CiT8CDTPJl03Oo3iqfUeuKpCuSL/P
- Qb8BbLu3BmihTeaK292U/8CG639fsuep6t0kBAuPmgjvnns8F807Sb/exN1C/8EgrFFW
- 81CwFIx/I+pIUs4rqujAjNHqXSAfzA9ngrBeWfdbFjAq3ujXHpIdX6GklV/uB8psG30p
- B1zTg+rrO6MBJAREbLLcHgkSfsgGFY2mG8T/BzQxvN7Uq076TlzBd/983pYMomNoqc16
- aI5DFaO/EtMD4mxjsArW5KPUoie/4wEGG288S6s5b1Bsmzjth8jrQVpIFovqZe0FwsGX
- cGng==
+ bh=H6mdaYx5irFz1dKycBPlcNWUBlWg7UpLZ2wQ0axK7Z8=;
+ b=mS/QIMJUn2U3A4W3Ug/Cuwf6BQQLJeQlY8zoMtZLQ1w4OmgFQBHMsOi3krQgcdR8tK
+ kzHw2mWT4Fxmh7y2NR/vE2MoPDBzzjcVFInGoHfFSu8lkyiQXV6x9n0rLsWuV4dgrJdW
+ vEIZuqcgna2TwGxLbnRnJUsRzsrXC01AxZdbAIP9wRCbtwCEiQ2gpqX/MSlCiGGiELrz
+ fe2M+TlNlvqzqskyucQE+CMm4pThbIhm6n9OjHQMh7Oyehx5vfN/b6MckvWZ3ZO+v1a6
+ skFQtf/FwCSJfaC4RU5qJwXwpYHH8FwyCPME7rorNokFhNkcgPs/GtDjNr2JgPlJ7Q6E
+ Ti+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:openpgp:autocrypt
  :organization:message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=k+5ikMfQkrkWjV+8BM5My0YRzyXVw2lhdvo+uZelhc0=;
- b=nC8zQIOScd7OhsylFzgFz9kuOzbnl4S3NQ2CbbYJw42yiDL2zR3Sz9UJo6Dwdxe/3U
- 1O2c75MOHJ5Ge21wrjLG4y9X4YusQdfwrMwJi3cEcao9kp9db2cig9zZtsVk/5ImQANP
- WhxWW9YAZrea2DniIWAkl8Gd9PLf1t2Df5aRMYGT7w/GVSo2cMe7laNyUOLwSeTRkuDe
- nkeU+x8caMLPJ9EaeWSUTFakD/oAaW7R+mdKF4MKchgBM8jjLKcDlGv44gktbIbK2Z+7
- IHMyz9ITaK9RfHD3/SMPDF7TS1jHpIodJ1CYzwJ7aemG/Leoz7NZyG0IfrbuecPSRz2Z
- Jecw==
-X-Gm-Message-State: APjAAAWGjv/h5BwAlUCZ9PQ1ASZIP63qkjgvk4nEK56RRhQO4YSAZDbY
- opEoJn5WVB6sdZkYcTk0s5wJEg==
-X-Google-Smtp-Source: APXvYqzkRqs6C0FY3pL3x8QyN0bcyv5Q9Y3H3gsxobS7QwJ2ODFKdWYVeX1wU/QATOKazsNse2DhFQ==
-X-Received: by 2002:a1c:1b58:: with SMTP id b85mr1451450wmb.95.1568876162628; 
- Wed, 18 Sep 2019 23:56:02 -0700 (PDT)
+ bh=H6mdaYx5irFz1dKycBPlcNWUBlWg7UpLZ2wQ0axK7Z8=;
+ b=jEKfrQw+TvRG22qIpNfteu6AjaQWMdmE7hJQEw+zj0E/29wn7vqGAK9pN/bj2MsU4w
+ 61yTvWcBt/pN4azSqLns9Ftfo2kr1OxSeVAzNN14Zy6v+0ieTz+hfRMWkTbmzoHq6UPS
+ aI2NoXMvsz2OHJpTbGJqPVveGLA8yY/ergPsUJDvQZSAVg60fsq+poEVfvohOaaBYVx7
+ /cGgZ13HWzJBqizfZd4wgeFAbTBRiv7Hk0qgZR7F+78FNBhKnnfR5ESE+01TsvnUQguy
+ 1q83yt+3BpZz534eBAkIMAjbmJask7jzxkRSxuQG1ziZmrsG5o63ecLjQ2SkCSLnPNTZ
+ nIAg==
+X-Gm-Message-State: APjAAAU3Bi5jtveeloZqdqb8svt52I+UoW9jXWM8sqU/eZZiinhwrN1P
+ MCSxjX6YDgSixeX5XwwOo0UY3w==
+X-Google-Smtp-Source: APXvYqz6FGwaKbs4wUddwO8P8nj2r+dQVUlAjhvcPIaT7WYVNhNVIhcmuCCXJqGe6mqrfmmzPtUbng==
+X-Received: by 2002:a1c:4c12:: with SMTP id z18mr1363862wmf.45.1568876233569; 
+ Wed, 18 Sep 2019 23:57:13 -0700 (PDT)
 Received: from [192.168.1.62] (176-150-251-154.abo.bbox.fr. [176.150.251.154])
  by smtp.gmail.com with ESMTPSA id
- y186sm8160010wmd.26.2019.09.18.23.56.01
+ c132sm6485686wme.27.2019.09.18.23.57.12
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 18 Sep 2019 23:56:01 -0700 (PDT)
-Subject: Re: [PATCH v1 0/2] Add initial support for slimport anx7625
+ Wed, 18 Sep 2019 23:57:13 -0700 (PDT)
+Subject: Re: [PATCH v1 1/2] dt-bindings: drm/bridge: anx7625: MIPI to DP
+ transmitter binding
 To: Xin Ji <xji@analogixsemi.com>,
  "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
  Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
  Andrzej Hajda <a.hajda@samsung.com>
 References: <cover.1568858880.git.xji@analogixsemi.com>
+ <e41d10504b7d1e977a1f53663c287e4e7d53011a.1568858880.git.xji@analogixsemi.com>
 From: Neil Armstrong <narmstrong@baylibre.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=narmstrong@baylibre.com; prefer-encrypt=mutual; keydata=
@@ -126,12 +128,12 @@ Autocrypt: addr=narmstrong@baylibre.com; prefer-encrypt=mutual; keydata=
  VsbXrP9BZ6snXyHfebPnno/te5XRqZTL9aJOytB/1iUna+1MAwBxGFPvqeEUUyT+gx1l3Acl
  ZaTUOEkgIor5losDrePdPgE=
 Organization: Baylibre
-Message-ID: <8bb69c72-50bf-c499-ff92-9e3662b4fe87@baylibre.com>
-Date: Thu, 19 Sep 2019 08:56:01 +0200
+Message-ID: <446ff66c-8097-fca8-8371-9223679f16bb@baylibre.com>
+Date: Thu, 19 Sep 2019 08:57:12 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <cover.1568858880.git.xji@analogixsemi.com>
+In-Reply-To: <e41d10504b7d1e977a1f53663c287e4e7d53011a.1568858880.git.xji@analogixsemi.com>
 Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -156,38 +158,91 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 Hi,
 
-Please Cc dri-devel@lists.freedesktop.org
+On 19/09/2019 08:55, Xin Ji wrote:
+> The ANX7625 is an ultra-low power 4K Mobile HD Transmitter designed
+> for portable device. It converts MIPI to DisplayPort 1.3 4K.
+> 
+> You can add support to your board with binding.
+> 
+> Example:
+> 	anx_bridge: anx7625@58 {
+> 		compatible = "analogix,anx7625";
+> 		reg = <0x58>;
+> 		anx,low_power_mode = <1>;
+> 		anx,dsi_supported = <1>;
+> 		anx,dsi_channel = <1>;
+> 		anx,dsi_lanes = <4>;
+> 		anx,internal_pannel = <1>;
+> 		anx,p-on-gpio = <&gpio0 45 GPIO_ACTIVE_LOW>;
+> 		anx,reset-gpio = <&gpio0 73 GPIO_ACTIVE_LOW>;
+> 		status = "okay";
+> 		port {
+> 			anx7625_1_in: endpoint {
+> 				remote-endpoint = <&mipi_dsi_bridge_1>;
+> 			};
+> 		};
+> 	};
+> 
+> Signed-off-by: Xin Ji <xji@analogixsemi.com>
+> ---
+>  .../devicetree/bindings/display/bridge/anx7625.txt | 42 ++++++++++++++++++++++
+>  1 file changed, 42 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/bridge/anx7625.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/display/bridge/anx7625.txt b/Documentation/devicetree/bindings/display/bridge/anx7625.txt
+> new file mode 100644
+> index 0000000..f2a1c2a
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/display/bridge/anx7625.txt
+> @@ -0,0 +1,42 @@
+> +Analogix ANX7625 SlimPort (4K Mobile HD Transmitter)
+> +-----------------------------------------------
 
-Thanks,
+New bindings should use yaml format:
+https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/example-schema.yaml
+
 Neil
 
-On 19/09/2019 08:51, Xin Ji wrote:
-> Hi all,
-> 
-> The following series add initial support for the Slimport ANX7625 transmitter, a
-> ultra-low power Full-HD 4K MIPI to DP transmitter designed for portable device.
-> 
-> This is the first version upload, any mistakes, please let me know, I will fix
-> it in the next series.
-> 
-> Thanks,
-> Xin
-> 
-> 
-> Xin Ji (2):
->   dt-bindings: drm/bridge: anx7625: MIPI to DP transmitter binding
->   drm/bridge: anx7625: Add anx7625 MIPI to DP bridge driver
-> 
->  .../devicetree/bindings/display/bridge/anx7625.txt |   42 +
->  drivers/gpu/drm/bridge/Makefile                    |    2 +-
->  drivers/gpu/drm/bridge/analogix/Kconfig            |    6 +
->  drivers/gpu/drm/bridge/analogix/Makefile           |    1 +
->  drivers/gpu/drm/bridge/analogix/anx7625.c          | 2086 ++++++++++++++++++++
->  drivers/gpu/drm/bridge/analogix/anx7625.h          |  397 ++++
->  6 files changed, 2533 insertions(+), 1 deletion(-)
->  create mode 100644 Documentation/devicetree/bindings/display/bridge/anx7625.txt
->  create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.c
->  create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.h
+> +
+> +The ANX7625 is an ultra-low power 4K Mobile HD Transmitter
+> +designed for portable devices.
+> +
+> +Required properties:
+> +
+> + - compatible		: "analogix,anx7625"
+> + - reg			: I2C address of the device
+> + - anx,low_power_mode	: Low power mode support feature
+> + - anx,dsi_supported	: DSI or DPI
+> + - anx,dsi_channel	: DSI channel index
+> + - anx,dsi_lanes	: DSI lane count
+> + - anx,intr-hpd-gpio	: Which GPIO to use for interrupt
+> +
+> +Optional properties:
+> +
+> + - anx,extcon_supported
+> +	external connector interface support flag
+> + - anx,internal_pannel
+> +	Which indicate internal pannel
+> + - anx,p-on-gpio
+> +	Which GPIO to use for Power On chip
+> + - anx,reset-gpio
+> +	Which GPIO to use for RESET
+> + - port
+> +	SoC specific port nodes with endpoint definitions as defined in
+> +	Documentation/devicetree/bindings/media/video-interfaces.txt,
+> +
+> +Example:
+> +
+> +	anx_bridge: anx7625@58 {
+> +		compatible = "analogix,anx7625";
+> +		reg = <0x58>;
+> +		anx,low_power_mode = <0>;
+> +		anx,dsi_supported = <1>;
+> +		anx,dsi_channel = <1>;
+> +		anx,dsi_lanes = <4>;
+> +		anx,intr-hpd-gpio = <&gpio1 19 IRQ_TYPE_LEVEL_LOW>;
+> +		status = "okay";
+> +	};
 > 
 
 _______________________________________________
