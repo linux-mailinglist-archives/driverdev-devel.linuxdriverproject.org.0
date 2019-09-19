@@ -2,76 +2,108 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 065D8B75E8
-	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Sep 2019 11:14:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1B98DB762B
+	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Sep 2019 11:23:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 347D984469;
-	Thu, 19 Sep 2019 09:14:17 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 36875860C8;
+	Thu, 19 Sep 2019 09:23:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PErjJF78rr2u; Thu, 19 Sep 2019 09:14:15 +0000 (UTC)
+	with ESMTP id aJWVBXYgChZI; Thu, 19 Sep 2019 09:23:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A92A984032;
-	Thu, 19 Sep 2019 09:14:14 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8958F8605E;
+	Thu, 19 Sep 2019 09:23:49 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8782F1BF5F4
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 19 Sep 2019 09:14:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2182F1BF27E
+ for <devel@linuxdriverproject.org>; Thu, 19 Sep 2019 09:23:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 81A3021FFB
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 19 Sep 2019 09:14:12 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 1E3C62040A
+ for <devel@linuxdriverproject.org>; Thu, 19 Sep 2019 09:23:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rqL8GS5eDngt
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 19 Sep 2019 09:14:10 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from rajiweb.com (mta147.atlashoster.net [5.39.37.51])
- by silver.osuosl.org (Postfix) with ESMTPS id EE08220440
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 19 Sep 2019 09:14:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=noudeu.com; 
- s=default; h=Message-ID:Reply-To:Subject:To:From:Date:
- Content-Transfer-Encoding:Content-Type:MIME-Version:Sender:Cc:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=YfW+noOdClC1aGko2lS9prxVDV6euJq9AOVQNpC+QTY=; b=isAcBZoUdaJoMMRUmUArRNkVAG
- S10rC7QfzoLdhAxJ4i0Fat11y6SbAL1KI1D2FK5lJGGHZUq1O0ZCgHlSz+Yfevm7gOphrAtbDaODa
- U9CdVt+j+AqBM0gjXOOHDTiUleWBDU0ZDaggwDthltxR2NgqyCsn7QqoDs2X8Rqf5OEsZmRUBV7Dj
- i8H9RR3cU4SvuwKS6SQhtWqu84u5Zthl7arX8Qbi72MV8G0QFXUHHdJKCszjT0XkyAJ1ufdCjJ5iM
- 3LuE4xakqdSsjuWI7gI5AWqT/lrTuup73uJz1BNIwtcIARtnGuGQyuZWSWjjT9lPGXbypi6/ZwgrR
- mvfIyTGw==;
-Received: from [::1] (port=50268 helo=hosting.atlashoster.net)
- by hosting.atlashoster.net with esmtpa (Exim 4.92)
- (envelope-from <mrandrewkabore@yandex.com>)
- id 1iAsVJ-0004mi-F3; Thu, 19 Sep 2019 11:13:33 +0200
+ with ESMTP id c-kCkNTVqK-b for <devel@linuxdriverproject.org>;
+ Thu, 19 Sep 2019 09:23:38 +0000 (UTC)
+X-Greylist: delayed 00:50:26 by SQLgrey-1.7.6
+Received: from NAM05-BY2-obe.outbound.protection.outlook.com
+ (mail-eopbgr710139.outbound.protection.outlook.com [40.107.71.139])
+ by silver.osuosl.org (Postfix) with ESMTPS id ED7D820130
+ for <devel@driverdev.osuosl.org>; Thu, 19 Sep 2019 09:23:37 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=hEBIwwxgTiwU6HuSCRrgRY/mnICp1eWDrzw7xpodAXe6/HDMo6UnL0npfpAZ8ofoVMNzn+IXiFG8RCHc5xz4X8FlEimiwU1oLlwAEH9HZMdJBnoZuiyQTL1ntTO5xPboRCsr05aNpSPIdAMrSXbAwEwRhajK6k4fUxcmcXCtdtfSVQrDG6QfN56rdtejPGWpgAdsF+LpQAqHi9WkAoEEpPhscfZgZJGacVaSqKLlNRc8Trw440tbcpB3gn3AM6PE+Htp9O73RhNnc4HIpyNKH7+PrNZ+2dPWVjzYc3lvjcxKy9M+F9EXM8v2OQEfMRDkBYFTz1C+0cTy0IHHrBymtw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=UvpG01b5uUUfNexLvTcA7V96skH48+f6K2cjRXoDswY=;
+ b=nOW+7U/m7b7D0tiDEa5nzKC1drNGbkR/AvdStSIQ1DBDSD3u9PCbqv6ZsD7SvCq9pYeo3wHx+k7Fj0BQAB/pzbQRwKaLXNFY9UZMzgRg0mdAurpuATlW6WVYOkkR4y75dDT29w6S7GNj40xrb3tWCr07Drk7/Cs7FAwYgRCNgil/wBcpkvc06/r20XuacQVpbiTSJXLthFzMy4VufTuZNeOK8RSzWSgtW2GzgT/UZgBRFo4YOROlyPLXybEEcMiIy6YxBc36lxAjkV0cnzMcHcxXK0/xdEAJ1ybeXe1X/yXm8aF99RtCvsf7Lfjuz68Ske9nSNrlrOZ3fUCEd9+dUA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
+ header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=UvpG01b5uUUfNexLvTcA7V96skH48+f6K2cjRXoDswY=;
+ b=vBBJr4NrDiPQZ3/dXeTIoirc04ILlXtQ0uIDUdR8uhIeeV8sUo+GVQLINNo2vE3b27TFSEEmEc9HUlaS3rjrm2THtwcCyR7BJfyXbvrOwPjjtLNfVJSXHCV/4Xus4cH3ilgpV0XCTmrN3tWjD07VBnernTy158R3hOUPhzipNWs=
+Received: from MN2PR04MB5886.namprd04.prod.outlook.com (20.179.22.213) by
+ MN2PR04MB6207.namprd04.prod.outlook.com (20.178.247.160) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2263.17; Thu, 19 Sep 2019 06:51:03 +0000
+Received: from MN2PR04MB5886.namprd04.prod.outlook.com
+ ([fe80::8520:f80f:ae9:63cd]) by MN2PR04MB5886.namprd04.prod.outlook.com
+ ([fe80::8520:f80f:ae9:63cd%6]) with mapi id 15.20.2284.009; Thu, 19 Sep 2019
+ 06:51:03 +0000
+From: Xin Ji <xji@analogixsemi.com>
+To: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>, Laurent
+ Pinchart <laurent.pinchart@ideasonboard.com>, Andrzej Hajda
+ <a.hajda@samsung.com>
+Subject: [PATCH v1 0/2] Add initial support for slimport anx7625
+Thread-Topic: [PATCH v1 0/2] Add initial support for slimport anx7625
+Thread-Index: AQHVbraamL8O6Yx7zE+wmPglROjXrw==
+Date: Thu, 19 Sep 2019 06:51:03 +0000
+Message-ID: <cover.1568858880.git.xji@analogixsemi.com>
+Accept-Language: zh-CN, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-clientproxiedby: HK0PR03CA0035.apcprd03.prod.outlook.com
+ (2603:1096:203:2f::23) To MN2PR04MB5886.namprd04.prod.outlook.com
+ (2603:10b6:208:a3::21)
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=xji@analogixsemi.com; 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-originating-ip: [114.247.245.252]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 81cd9dfe-7e5b-469d-8254-08d73ccdbcb9
+x-microsoft-antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(5600167)(711020)(4605104)(1401327)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7193020);
+ SRVR:MN2PR04MB6207; 
+x-ms-traffictypediagnostic: MN2PR04MB6207:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <MN2PR04MB6207FDB95C7DE1B20E0F5F2DC7890@MN2PR04MB6207.namprd04.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:8273;
+x-forefront-prvs: 016572D96D
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(366004)(376002)(346002)(396003)(39850400004)(136003)(199004)(53754006)(189003)(8936002)(6436002)(71200400001)(3846002)(4744005)(54906003)(107886003)(26005)(81156014)(102836004)(6506007)(8676002)(6512007)(7736002)(386003)(81166006)(2501003)(52116002)(99286004)(71190400001)(6116002)(186003)(486006)(66446008)(6486002)(36756003)(4326008)(2616005)(316002)(64756008)(66476007)(305945005)(2906002)(476003)(86362001)(14444005)(66946007)(478600001)(66556008)(256004)(25786009)(66066001)(14454004)(5660300002)(110136005);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:MN2PR04MB6207;
+ H:MN2PR04MB5886.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+received-spf: None (protection.outlook.com: analogixsemi.com does not
+ designate permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam-message-info: v09CYL4OLIxyOUUxm5zN+LS7SKogoo4clle4mbuWnalrbgla8CeX3zf+oF0LIFDss1dWov8PuOM1gdfIePDn3dwhRnpuYTbAKPWLqkbTkNmRrKjhKzLP7hQ6sCfi1mtPfqGCRu3iEJzNgy8nBEd68QbUJhSy7h9MnyfFKFt7HKvqxUwgFfjWDgc+V7OFXeeSMWThsF/U0l++GWL4SmyfE5HaQ+RUn2YZ+jdG98zDWy3oPs+OZIqkksHK0Pwwdm0RX5gAHa5hroLT23wzNlDOracfHAL4EbRRUHvinpW+g/s4iSk63oJVfI45OGidEsV3NmYgm8qotosLvI150qHU+5tWP58aE2Zmo0BTILmK868ohSa6MdLRXPPwLCDBhfIHKsb7nzRZNmHkfEX4npupWOf6r5lpbu+EqxyJ/dyg6F8=
+Content-ID: <CD96B94B9246F6488F14E64BFECE21FE@namprd04.prod.outlook.com>
 MIME-Version: 1.0
-Date: Thu, 19 Sep 2019 11:13:33 +0200
-From: Mr Andrew Kabore <mrandrewkabore@yandex.com>
-To: undisclosed-recipients:;
-Subject: dear friend
-Mail-Reply-To: andrewkabore1@gmail.com
-Message-ID: <48e32ba87d73f20cbecf190055a5b4f4@yandex.com>
-X-Sender: mrandrewkabore@yandex.com
-User-Agent: Roundcube Webmail/1.3.8
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - hosting.atlashoster.net
-X-AntiAbuse: Original Domain - linuxdriverproject.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - yandex.com
-X-Get-Message-Sender-Via: hosting.atlashoster.net: authenticated_id:
- contact@noudeu.com
-X-Authenticated-Sender: hosting.atlashoster.net: contact@noudeu.com
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
+X-OriginatorOrg: analogixsemi.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 81cd9dfe-7e5b-469d-8254-08d73ccdbcb9
+X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Sep 2019 06:51:03.0669 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: oW9R/EWnC4n8cIUNf5w1zK9csqTqOyJyPKn0KGQVWQVr2dt+/30nVcwZrCKeImuadpAibaC9y7bcKoDdoX8Mkw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR04MB6207
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,87 +116,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: andrewkabore1@gmail.com
+Cc: Jernej Skrabec <jernej.skrabec@siol.net>, Jonas Karlman <jonas@kwiboo.se>,
+ David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Sheng Pan <span@analogixsemi.com>, Daniel Vetter <daniel@ffwll.ch>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+Hi all,
 
+The following series add initial support for the Slimport ANX7625 transmitter, a
+ultra-low power Full-HD 4K MIPI to DP transmitter designed for portable device.
+
+This is the first version upload, any mistakes, please let me know, I will fix
+it in the next series.
+
+Thanks,
+Xin
+
+
+Xin Ji (2):
+  dt-bindings: drm/bridge: anx7625: MIPI to DP transmitter binding
+  drm/bridge: anx7625: Add anx7625 MIPI to DP bridge driver
+
+ .../devicetree/bindings/display/bridge/anx7625.txt |   42 +
+ drivers/gpu/drm/bridge/Makefile                    |    2 +-
+ drivers/gpu/drm/bridge/analogix/Kconfig            |    6 +
+ drivers/gpu/drm/bridge/analogix/Makefile           |    1 +
+ drivers/gpu/drm/bridge/analogix/anx7625.c          | 2086 ++++++++++++++++++++
+ drivers/gpu/drm/bridge/analogix/anx7625.h          |  397 ++++
+ 6 files changed, 2533 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/display/bridge/anx7625.txt
+ create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.c
+ create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.h
 
 -- 
-Dear Friend,
+2.7.4
 
-With due respect to your person and much sincerity of purpose, I make
-this contact with you as I believe that you can be of great assistance
-to me. My name is Mr Andrew Kabore, from Ouagadougou Republic of BURKINA
-FASO, West Africa . Presently i work in the African development Bank as
-telex manager. I have been searching for your contact since you left our
-country some years ago.
-
-I do not know whether this is your correct email address or not because
-I only used your name initials to search for your contact .In case you
-are not the person I am supposed to contact, please see this as a
-confidential message and do not reveal it to another person but if you
-are not the intended receiver, do let me know whether you can be of
-assistance regarding my proposal below because it is top secret.
-
-I am about to retire from active Bank service to start a new life but I
-am sceptical to reveal this particular secret to a stranger. You must
-assure me that everything will be handled confidentially because we are
-not going to suffer again in life.
-
-It has been 10 years now that most of the greedy African Politicians
-used our bank to launder money overseas through the help of their
-Political advisers. Most of the funds which they transferred out of the
-shores of Africa were gold and oil money that was supposed to have been
-used to develop the continent. Their Political advisers always inflated
-the amounts before transfer to foreign accounts so I also used the
-opportunity to divert part of the funds hence I am aware that there is
-no official trace of how much was transferred as all the accounts used
-for such transfers were being closed after transfer.
-
-I acted as the Bank Officer to most of the politicians and when I
-discovered that they were using me to succeed in their greedy act; I
-also cleaned some of their banking records from the Bank files and no
-one cared to ask me because the money was too much for them to control.
-They laundered over $5b Dollars during the process .As I am sending this
-message to you, I was able to divert thirty five million united state
-dollars ($35m) to an escrow account belonging to no one in the bank. The
-bank is anxious now to know who the beneficiary to the funds is because
-they have made a lot of profits with the funds.
-
-It is more than Eight years now and most of the politicians are no
-longer using our bank to transfer funds overseas. The ($35) Million
-Dollars has been laying waste but I don't want to retire from the bank
-without transferring the funds to a foreign account to enable me share
-the proceeds with the receiver. The money will be shared 60% for me and
-40% for you..
-
-There is no one coming to ask you about the funds because I secured
-everything. I only want you to assist me by providing a bank account
-where the funds can be transferred. You are not to face any difficulties
-or legal implications as I am going to handle the transfer personally.
-If you are capable of receiving the funds, do let me know immediately to
-enable me give you a detailed information on what to do.
-
-For me, I have not stolen the money from anyone because the other people
-that took the whole money did not face any problems. This is my chance
-also to grab my own but you must keep the details of the funds secret to
-avoid any leakages as no one in the bank knows about the funds.
-
-Please get back to me if you are interested and capable to handle this
-project
-
-I shall intimate you on what to do when I hear from your confirmation
-and acceptance. If you are capable of being my trusted associate, do
-declare your consent to me .
-
-Waiting for your urgent response.
-Yours Faithfully,
-
-
-Mr Andrew Kabore
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
