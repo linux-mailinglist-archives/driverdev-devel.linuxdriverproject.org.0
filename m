@@ -1,59 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1BDC1B75B7
-	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Sep 2019 11:09:12 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 065D8B75E8
+	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Sep 2019 11:14:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5876A20402;
-	Thu, 19 Sep 2019 09:09:09 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 347D984469;
+	Thu, 19 Sep 2019 09:14:17 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PErjJF78rr2u; Thu, 19 Sep 2019 09:14:15 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A92A984032;
+	Thu, 19 Sep 2019 09:14:14 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 8782F1BF5F4
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 19 Sep 2019 09:14:12 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 81A3021FFB
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 19 Sep 2019 09:14:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PB1CrKcWoDpr; Thu, 19 Sep 2019 09:09:08 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id DB0DC20449;
-	Thu, 19 Sep 2019 09:09:05 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A5FFF1BF5F4
- for <devel@linuxdriverproject.org>; Thu, 19 Sep 2019 09:09:03 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A21F286833
- for <devel@linuxdriverproject.org>; Thu, 19 Sep 2019 09:09:03 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QNyEAQPE61rK for <devel@linuxdriverproject.org>;
- Thu, 19 Sep 2019 09:09:01 +0000 (UTC)
+ with ESMTP id rqL8GS5eDngt
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 19 Sep 2019 09:14:10 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from rajiweb.com (mta147.atlashoster.net [5.39.37.51])
- by whitealder.osuosl.org (Postfix) with ESMTPS id C7DF9867DF
- for <devel@linuxdriverproject.org>; Thu, 19 Sep 2019 09:09:00 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id EE08220440
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 19 Sep 2019 09:14:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=noudeu.com; 
  s=default; h=Message-ID:Reply-To:Subject:To:From:Date:
  Content-Transfer-Encoding:Content-Type:MIME-Version:Sender:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=YfW+noOdClC1aGko2lS9prxVDV6euJq9AOVQNpC+QTY=; b=mJRSUv7HC2HvOr2lmGzSVFmdm4
- qxj4oJq3tc/hvxg0Fo++c4RomhGWIoU4D6S06O6MmKYtWYn5PD0sE+HN9RAi3ly2ZPSxlUn/Qes3F
- VsPTBkxUfBf6R1BY7pUo8Nw7LT/XMkqSCHNGdzdOCyPc2ChArHkCgeSOhWVFwulLkTkR/rFjPKKxp
- jmRchVFpoIyHW6V/eYd05jD8lgc4YrBol/94PBR3bjdPFEPlKJnqxhXcR5uU/0gqoqMJNQZFQjSv0
- z0D+O3RFNWOVseMYMfNujl81zlmndHEgE4K0VRcF+6FeYxl//HjrGueLtALS73Fe7uTXgGjDPSvtG
- Qwo7lCsw==;
-Received: from [::1] (port=49554 helo=hosting.atlashoster.net)
+ bh=YfW+noOdClC1aGko2lS9prxVDV6euJq9AOVQNpC+QTY=; b=isAcBZoUdaJoMMRUmUArRNkVAG
+ S10rC7QfzoLdhAxJ4i0Fat11y6SbAL1KI1D2FK5lJGGHZUq1O0ZCgHlSz+Yfevm7gOphrAtbDaODa
+ U9CdVt+j+AqBM0gjXOOHDTiUleWBDU0ZDaggwDthltxR2NgqyCsn7QqoDs2X8Rqf5OEsZmRUBV7Dj
+ i8H9RR3cU4SvuwKS6SQhtWqu84u5Zthl7arX8Qbi72MV8G0QFXUHHdJKCszjT0XkyAJ1ufdCjJ5iM
+ 3LuE4xakqdSsjuWI7gI5AWqT/lrTuup73uJz1BNIwtcIARtnGuGQyuZWSWjjT9lPGXbypi6/ZwgrR
+ mvfIyTGw==;
+Received: from [::1] (port=50268 helo=hosting.atlashoster.net)
  by hosting.atlashoster.net with esmtpa (Exim 4.92)
  (envelope-from <mrandrewkabore@yandex.com>)
- id 1iAsQf-0003nZ-UY; Thu, 19 Sep 2019 11:08:45 +0200
+ id 1iAsVJ-0004mi-F3; Thu, 19 Sep 2019 11:13:33 +0200
 MIME-Version: 1.0
-Date: Thu, 19 Sep 2019 11:08:45 +0200
+Date: Thu, 19 Sep 2019 11:13:33 +0200
 From: Mr Andrew Kabore <mrandrewkabore@yandex.com>
 To: undisclosed-recipients:;
 Subject: dear friend
 Mail-Reply-To: andrewkabore1@gmail.com
-Message-ID: <68e89784bfa416573ab6c636f24130d9@yandex.com>
+Message-ID: <48e32ba87d73f20cbecf190055a5b4f4@yandex.com>
 X-Sender: mrandrewkabore@yandex.com
 User-Agent: Roundcube Webmail/1.3.8
 X-AntiAbuse: This header was added to track abuse,
