@@ -1,66 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8F52FB75AD
-	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Sep 2019 11:06:22 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C86FB75B6
+	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Sep 2019 11:09:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 001F6860C0;
-	Thu, 19 Sep 2019 09:06:20 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2AEDF868B2;
+	Thu, 19 Sep 2019 09:09:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2Ku_QREMV6bH; Thu, 19 Sep 2019 09:06:19 +0000 (UTC)
+	with ESMTP id FHz7AYX5B+S2; Thu, 19 Sep 2019 09:09:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 647698606C;
-	Thu, 19 Sep 2019 09:06:18 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B9C7886812;
+	Thu, 19 Sep 2019 09:09:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0213D1BF5F4
- for <devel@linuxdriverproject.org>; Thu, 19 Sep 2019 09:06:13 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DF7011BF5F4
+ for <devel@linuxdriverproject.org>; Thu, 19 Sep 2019 09:09:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id F350D2041B
- for <devel@linuxdriverproject.org>; Thu, 19 Sep 2019 09:06:12 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D5FCD87D9C
+ for <devel@linuxdriverproject.org>; Thu, 19 Sep 2019 09:09:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ew9vxMiYVdua for <devel@linuxdriverproject.org>;
- Thu, 19 Sep 2019 09:06:12 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f65.google.com (mail-ot1-f65.google.com
- [209.85.210.65])
- by silver.osuosl.org (Postfix) with ESMTPS id 0795520402
- for <devel@driverdev.osuosl.org>; Thu, 19 Sep 2019 09:06:12 +0000 (UTC)
-Received: by mail-ot1-f65.google.com with SMTP id m19so585782otp.1
- for <devel@driverdev.osuosl.org>; Thu, 19 Sep 2019 02:06:11 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=wDQS67j3lG7TwomTYu6phRtQVo+Lq0+3xuq57RPV6D8=;
- b=bvGx00XzE1HezMIAJuKlTf/XXu2Mn/aoN3XQ5UgWUxyxf3DlqrW7tmiDi6gtoFK6fO
- Pmgky+A+Z0kF7KcpNNqXwWanVEyGugc/xDOGp7pnNmAutORYDPpxJcuLpLF6z+7K5S4/
- MIrNR7ny10w91XqFN1Hrou5+CuPQta06VsQkeMXFyGKUqDJIg2zJCAQjC6In98VcIndL
- obdIvaLR+QhtC1lfMXQAU3vjZbFiYN2I5cCep8dDykKCt66NIlhjr9fTmRdfPup6WMnQ
- O39HgEsHfo0Qn11lB7xQfkZkwj+HNabv2Ba8wx3bjsp9CwGXJDDAwORAvyEmWfFkNSo/
- kNuQ==
-X-Gm-Message-State: APjAAAWOIMc8xdZ5ttrfL6inEFwYRZ28ndaUeF9NLq3rQncxolZsRQLA
- SfpCQgS/d7o1qTo7z07GDbsAJ5MpsuIUXMiJUb4=
-X-Google-Smtp-Source: APXvYqzkCVuzCTBNypl4Lg61PDxEIAb1NQVdXkZR4+Hm131qcRPrUobeyAbVKE3pL8YI02rUdNiF6OshW6FylYOc9ac=
-X-Received: by 2002:a9d:4d0d:: with SMTP id n13mr5907611otf.297.1568883971244; 
- Thu, 19 Sep 2019 02:06:11 -0700 (PDT)
+ with ESMTP id fPeWGvE3beL0 for <devel@linuxdriverproject.org>;
+ Thu, 19 Sep 2019 09:09:01 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from rajiweb.com (mta147.atlashoster.net [5.39.37.51])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D57E487CCB
+ for <devel@driverdev.osuosl.org>; Thu, 19 Sep 2019 09:09:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=noudeu.com; 
+ s=default; h=Message-ID:Reply-To:Subject:To:From:Date:
+ Content-Transfer-Encoding:Content-Type:MIME-Version:Sender:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=YfW+noOdClC1aGko2lS9prxVDV6euJq9AOVQNpC+QTY=; b=mJRSUv7HC2HvOr2lmGzSVFmdm4
+ qxj4oJq3tc/hvxg0Fo++c4RomhGWIoU4D6S06O6MmKYtWYn5PD0sE+HN9RAi3ly2ZPSxlUn/Qes3F
+ VsPTBkxUfBf6R1BY7pUo8Nw7LT/XMkqSCHNGdzdOCyPc2ChArHkCgeSOhWVFwulLkTkR/rFjPKKxp
+ jmRchVFpoIyHW6V/eYd05jD8lgc4YrBol/94PBR3bjdPFEPlKJnqxhXcR5uU/0gqoqMJNQZFQjSv0
+ z0D+O3RFNWOVseMYMfNujl81zlmndHEgE4K0VRcF+6FeYxl//HjrGueLtALS73Fe7uTXgGjDPSvtG
+ Qwo7lCsw==;
+Received: from [::1] (port=49554 helo=hosting.atlashoster.net)
+ by hosting.atlashoster.net with esmtpa (Exim 4.92)
+ (envelope-from <mrandrewkabore@yandex.com>)
+ id 1iAsQf-0003nZ-UY; Thu, 19 Sep 2019 11:08:45 +0200
 MIME-Version: 1.0
-References: <20190731.094150.851749535529247096.davem@davemloft.net>
- <20190731185023.20954-1-natechancellor@gmail.com>
- <b3444283-7a77-ece8-7ac6-41756aa7dc60@infradead.org>
- <64f7ef68-c373-5ff5-ff6d-8a7ce0e30798@infradead.org>
-In-Reply-To: <64f7ef68-c373-5ff5-ff6d-8a7ce0e30798@infradead.org>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Thu, 19 Sep 2019 11:06:00 +0200
-Message-ID: <CAMuHMdXya55UJttU1xvX5+-N658Xqfa0k8sSKTGbtdBHgPEFcg@mail.gmail.com>
-Subject: Re: [PATCH] net: mdio-octeon: Fix build error and Kconfig warning
-To: Randy Dunlap <rdunlap@infradead.org>
+Date: Thu, 19 Sep 2019 11:08:45 +0200
+From: Mr Andrew Kabore <mrandrewkabore@yandex.com>
+To: undisclosed-recipients:;
+Subject: dear friend
+Mail-Reply-To: andrewkabore1@gmail.com
+Message-ID: <68e89784bfa416573ab6c636f24130d9@yandex.com>
+X-Sender: mrandrewkabore@yandex.com
+User-Agent: Roundcube Webmail/1.3.8
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - hosting.atlashoster.net
+X-AntiAbuse: Original Domain - driverdev.osuosl.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - yandex.com
+X-Get-Message-Sender-Via: hosting.atlashoster.net: authenticated_id:
+ contact@noudeu.com
+X-Authenticated-Sender: hosting.atlashoster.net: contact@noudeu.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,42 +80,88 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: driverdevel <devel@driverdev.osuosl.org>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>, kernel-build-reports@lists.linaro.org,
- Greg KH <gregkh@linuxfoundation.org>, Matthew Wilcox <willy@infradead.org>,
- Mark Brown <broonie@kernel.org>, Linux-Next <linux-next@vger.kernel.org>,
- netdev <netdev@vger.kernel.org>, Nathan Chancellor <natechancellor@gmail.com>,
- "David S. Miller" <davem@davemloft.net>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Heiner Kallweit <hkallweit1@gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: andrewkabore1@gmail.com
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gVGh1LCBBdWcgMSwgMjAxOSBhdCAxOjUyIEFNIFJhbmR5IER1bmxhcCA8cmR1bmxhcEBpbmZy
-YWRlYWQub3JnPiB3cm90ZToKPiBIb3dldmVyLCB0aGVyZSBhcmUgbG90cyBvZiB0eXBlL2Nhc3Qg
-d2FybmluZ3MgaW4gYm90aCBtZGlvLW9jdGVvbiBhbmQgbWRpby1jYXZpdW06Cj4KPiAuLi9kcml2
-ZXJzL25ldC9waHkvbWRpby1vY3Rlb24uYzogSW4gZnVuY3Rpb24g4oCYb2N0ZW9uX21kaW9idXNf
-cHJvYmXigJk6Cj4gLi4vZHJpdmVycy9uZXQvcGh5L21kaW8tb2N0ZW9uLmM6NDg6Mzogd2Fybmlu
-ZzogY2FzdCBmcm9tIHBvaW50ZXIgdG8gaW50ZWdlciBvZiBkaWZmZXJlbnQgc2l6ZSBbLVdwb2lu
-dGVyLXRvLWludC1jYXN0XQo+ICAgICh1NjQpZGV2bV9pb3JlbWFwKCZwZGV2LT5kZXYsIG1kaW9f
-cGh5cywgcmVnc2l6ZSk7Cj4gICAgXgoKY2F2aXVtX21kaW9idXMucmVnaXN0ZXJfYmFzZSBzaG91
-bGQgYmUgInZvaWQgX19pb21lbSAqIiBpbnN0ZWFkIG9mICJ1NjQiLAphbmQgdGhlIGNhc3Qgc2hv
-dWxkIGJlIGRyb3BwZWQuCgo+IEluIGZpbGUgaW5jbHVkZWQgZnJvbSAuLi9kcml2ZXJzL25ldC9w
-aHkvbWRpby1vY3Rlb24uYzoxNDowOgo+IC4uL2RyaXZlcnMvbmV0L3BoeS9tZGlvLWNhdml1bS5o
-OjExMzo0ODogd2FybmluZzogY2FzdCB0byBwb2ludGVyIGZyb20gaW50ZWdlciBvZiBkaWZmZXJl
-bnQgc2l6ZSBbLVdpbnQtdG8tcG9pbnRlci1jYXN0XQo+ICAjZGVmaW5lIG9jdF9tZGlvX3dyaXRl
-cSh2YWwsIGFkZHIpIHdyaXRlcSh2YWwsICh2b2lkICopYWRkcikKPiAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBeCgouLi4gd2hpY2ggYWxsb3dzIHRvIGRy
-b3AgdGhpcyBjYXN0IGFzIHdlbGwuCgpDYXN0cyBhcmUgZXZpbCwgYW5kIHVzdWFsbHkgYSBzaWdu
-IHRoYXQgeW91J3JlIGRvaW5nIHNvbWV0aGluZyB3cm9uZy4KCkdye29ldGplLGVldGluZ31zLAoK
-ICAgICAgICAgICAgICAgICAgICAgICAgR2VlcnQKCi0tIApHZWVydCBVeXR0ZXJob2V2ZW4gLS0g
-VGhlcmUncyBsb3RzIG9mIExpbnV4IGJleW9uZCBpYTMyIC0tIGdlZXJ0QGxpbnV4LW02OGsub3Jn
-CgpJbiBwZXJzb25hbCBjb252ZXJzYXRpb25zIHdpdGggdGVjaG5pY2FsIHBlb3BsZSwgSSBjYWxs
-IG15c2VsZiBhIGhhY2tlci4gQnV0CndoZW4gSSdtIHRhbGtpbmcgdG8gam91cm5hbGlzdHMgSSBq
-dXN0IHNheSAicHJvZ3JhbW1lciIgb3Igc29tZXRoaW5nIGxpa2UgdGhhdC4KICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAtLSBMaW51cyBUb3J2YWxkcwpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGlu
-dXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+
+
+-- 
+Dear Friend,
+
+With due respect to your person and much sincerity of purpose, I make
+this contact with you as I believe that you can be of great assistance
+to me. My name is Mr Andrew Kabore, from Ouagadougou Republic of BURKINA
+FASO, West Africa . Presently i work in the African development Bank as
+telex manager. I have been searching for your contact since you left our
+country some years ago.
+
+I do not know whether this is your correct email address or not because
+I only used your name initials to search for your contact .In case you
+are not the person I am supposed to contact, please see this as a
+confidential message and do not reveal it to another person but if you
+are not the intended receiver, do let me know whether you can be of
+assistance regarding my proposal below because it is top secret.
+
+I am about to retire from active Bank service to start a new life but I
+am sceptical to reveal this particular secret to a stranger. You must
+assure me that everything will be handled confidentially because we are
+not going to suffer again in life.
+
+It has been 10 years now that most of the greedy African Politicians
+used our bank to launder money overseas through the help of their
+Political advisers. Most of the funds which they transferred out of the
+shores of Africa were gold and oil money that was supposed to have been
+used to develop the continent. Their Political advisers always inflated
+the amounts before transfer to foreign accounts so I also used the
+opportunity to divert part of the funds hence I am aware that there is
+no official trace of how much was transferred as all the accounts used
+for such transfers were being closed after transfer.
+
+I acted as the Bank Officer to most of the politicians and when I
+discovered that they were using me to succeed in their greedy act; I
+also cleaned some of their banking records from the Bank files and no
+one cared to ask me because the money was too much for them to control.
+They laundered over $5b Dollars during the process .As I am sending this
+message to you, I was able to divert thirty five million united state
+dollars ($35m) to an escrow account belonging to no one in the bank. The
+bank is anxious now to know who the beneficiary to the funds is because
+they have made a lot of profits with the funds.
+
+It is more than Eight years now and most of the politicians are no
+longer using our bank to transfer funds overseas. The ($35) Million
+Dollars has been laying waste but I don't want to retire from the bank
+without transferring the funds to a foreign account to enable me share
+the proceeds with the receiver. The money will be shared 60% for me and
+40% for you..
+
+There is no one coming to ask you about the funds because I secured
+everything. I only want you to assist me by providing a bank account
+where the funds can be transferred. You are not to face any difficulties
+or legal implications as I am going to handle the transfer personally.
+If you are capable of receiving the funds, do let me know immediately to
+enable me give you a detailed information on what to do.
+
+For me, I have not stolen the money from anyone because the other people
+that took the whole money did not face any problems. This is my chance
+also to grab my own but you must keep the details of the funds secret to
+avoid any leakages as no one in the bank knows about the funds.
+
+Please get back to me if you are interested and capable to handle this
+project
+
+I shall intimate you on what to do when I hear from your confirmation
+and acceptance. If you are capable of being my trusted associate, do
+declare your consent to me .
+
+Waiting for your urgent response.
+Yours Faithfully,
+
+
+Mr Andrew Kabore
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
