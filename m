@@ -1,74 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 67E23B8E03
-	for <lists+driverdev-devel@lfdr.de>; Fri, 20 Sep 2019 11:48:17 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 24312B8E63
+	for <lists+driverdev-devel@lfdr.de>; Fri, 20 Sep 2019 12:19:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 58A5981B71;
-	Fri, 20 Sep 2019 09:48:15 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6BC1387F52;
+	Fri, 20 Sep 2019 10:19:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OrMk9GGQz-e8; Fri, 20 Sep 2019 09:48:14 +0000 (UTC)
+	with ESMTP id a+nSImfftfNG; Fri, 20 Sep 2019 10:19:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C6828815EF;
-	Fri, 20 Sep 2019 09:48:13 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CC10887BFF;
+	Fri, 20 Sep 2019 10:19:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DD72A1BF399
- for <devel@linuxdriverproject.org>; Fri, 20 Sep 2019 09:48:11 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 18A731BF39D
+ for <devel@linuxdriverproject.org>; Fri, 20 Sep 2019 10:19:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D9BE32037B
- for <devel@linuxdriverproject.org>; Fri, 20 Sep 2019 09:48:11 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1300A81F20
+ for <devel@linuxdriverproject.org>; Fri, 20 Sep 2019 10:19:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EFlJZ0MCBCTh for <devel@linuxdriverproject.org>;
- Fri, 20 Sep 2019 09:48:11 +0000 (UTC)
+ with ESMTP id e063lrDGBpBh for <devel@linuxdriverproject.org>;
+ Fri, 20 Sep 2019 10:19:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by silver.osuosl.org (Postfix) with ESMTPS id 4A21420343
- for <devel@driverdev.osuosl.org>; Fri, 20 Sep 2019 09:48:11 +0000 (UTC)
-Received: from mail-wm1-f71.google.com ([209.85.128.71])
- by youngberry.canonical.com with esmtps
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <connor.kuehl@canonical.com>) id 1iBFWL-0005B3-51
- for devel@driverdev.osuosl.org; Fri, 20 Sep 2019 09:48:09 +0000
-Received: by mail-wm1-f71.google.com with SMTP id h6so974647wmb.2
- for <devel@driverdev.osuosl.org>; Fri, 20 Sep 2019 02:48:09 -0700 (PDT)
+Received: from mail-ot1-f48.google.com (mail-ot1-f48.google.com
+ [209.85.210.48])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 57FE286D53
+ for <devel@driverdev.osuosl.org>; Fri, 20 Sep 2019 10:19:05 +0000 (UTC)
+Received: by mail-ot1-f48.google.com with SMTP id g25so5786871otl.0
+ for <devel@driverdev.osuosl.org>; Fri, 20 Sep 2019 03:19:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=BMy5oZwzaSi5YDfs1liS0DaI7vPop4R9fEaoU4PLnkE=;
+ b=u+dOqgXqwLIk4ijIcH+Lh2Xp7CRSFHdQtnuAf3xgmziguzmDOjjbBtSHpMNmIP5mAH
+ zW4CMOH0Pj+C0XhoqeX9X6iDvuE3nrtGZis4ernkiiBftEmJ6E450hVDs328gTpLzCx3
+ UAOwihCQO1rxiQp8tj5HHaNOULxyVu7UbpTGWZrvGEvDzCmQAjuUOX6qmf4EI+MrURyA
+ nGJA2LBD+Y+csBQVHe1zc7sGi6vP1jvXRmUA1xR468Wfa/NVftgqoVCCtwEvwIvVH82h
+ VD02sc2aAQ1xhfYCSQ8q5Uquzt6VN/w68szq6rk/bLQUF72Vy+VYuFH7AHmxxiHdEKao
+ g4uQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=B0gRBX2sU0Z6OKmHo7Z4yIU03olB4csImxHyIILBwAA=;
- b=GMBXYUlEbHIUUSEEQEnsrOLNLYgHoTG72xyDQcI/m9VvNJiMKPAsUEoC49EvOvznQX
- luTSBU0Fhvl2oHeQn4uGVIhQc+WGYyGvFJkiTXZ2HgKf/cgyvYXmtdKEq7xQhdZHvpWQ
- x7RURu81B7Tsdtjl9Djy+TuEKjMvl8bZswFujp+UBGRWT8MQw/wf8cD0avzpz9qGkTQo
- 4tFvpdkUeUbff0JbLBFqxwSVSBYashQJ84ZFNe5fIJXtxpsAsXuM7nX/zrFXKSLKB71D
- MK+RqUvh6tw2Wg13uMxtQN3FUqCLiouD6xpmV0cS0Kk+SAu14vj8YOCf3jAQb/Vh7Ss1
- w7sw==
-X-Gm-Message-State: APjAAAVlLy5P8XrbKOudEy4jKFOOl/pFvvjVmIGTMz0y/6yDSOrQRP4S
- Xb0VSL7Z5BU6no5Jrqd73RUTFkz6bi2EJ/pbGXKXwRoMhcmFbLQHf7VmnaXuBQkw6RTC5sF/8dy
- nYJOGYUwsz/8GHazgVloMVBDg3tq9ysRuD2uTqDo=
-X-Received: by 2002:a5d:430f:: with SMTP id h15mr11239568wrq.177.1568972888916; 
- Fri, 20 Sep 2019 02:48:08 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxVRY04L0KSUugiU+ntxgo+Wvpl8BGaO0LusgrffrFde1j3tGSNP2BDAc7riJC99gqoaqgZaw==
-X-Received: by 2002:a5d:430f:: with SMTP id h15mr11239545wrq.177.1568972888657; 
- Fri, 20 Sep 2019 02:48:08 -0700 (PDT)
-Received: from canonical.c.hoisthospitality.com
- (static-dcd-cqq-121001.business.bouyguestelecom.com. [212.194.121.1])
- by smtp.gmail.com with ESMTPSA id z9sm2104375wrp.26.2019.09.20.02.48.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Sep 2019 02:48:07 -0700 (PDT)
-From: Connor Kuehl <connor.kuehl@canonical.com>
-To: Larry.Finger@lwfinger.net, gregkh@linuxfoundation.org,
- straube.linux@gmail.com, devel@driverdev.osuosl.org
-Subject: [PATCH] staging: rtl8188eu: remove unnecessary self-assignment
-Date: Fri, 20 Sep 2019 11:48:07 +0200
-Message-Id: <20190920094807.9217-1-connor.kuehl@canonical.com>
-X-Mailer: git-send-email 2.17.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=BMy5oZwzaSi5YDfs1liS0DaI7vPop4R9fEaoU4PLnkE=;
+ b=YNn9wPosBFwL8yXxhcnEZbjx4OE6Kb26CJTRbQouHNJib/g1NHL4VC62Z79H1rNg30
+ SgD27hiuzNJIeXf17X0gUoPCfWXwcV5qMrs6UcQU4Bij2RY5LJ7qEBfDsBuAAUwRAg0c
+ 0F+ssDwZQdbpyAHq/tzoIHqbh1QHD8r1Fe9m7Y4YpLnuClsyE2mfj9tCKp35u7rwF2fM
+ sE2lz/uWLm/3E250wmzOV4yDFxx2VHXjmr/74aBtzKSL99vgMptVu+vzsCpkF8J9AREr
+ 548WEWhwKIxnoSYuZl0ExMQ/zWMgzrJPCqNgcxcmtl02tLIUDgO7cQ1KUu0qLlR5qSW2
+ Sp3Q==
+X-Gm-Message-State: APjAAAUSNMWLs6veUdTdhzNq6Of7FtRmMsKaPyqQmn2je9kBNejG/IiQ
+ 7WO1pv8O/crdy6PIyVZaJb0dQI+V7aZ8ZomJ89M=
+X-Google-Smtp-Source: APXvYqzS1DBqjwuNikUvKoQL0j2CZpd6p+BrdFHsj/I9aTB8Jig4txY6GcSj0J9XA9WKUheSk03PzvdnBVOM28gIPys=
+X-Received: by 2002:a05:6830:1e84:: with SMTP id
+ n4mr9719021otr.141.1568974744502; 
+ Fri, 20 Sep 2019 03:19:04 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAOtcWM0P=w-iBZzwekVrSpp7t2WO9RA5WP956zgDrNKvzA+4ZA@mail.gmail.com>
+ <20190915134300.GA552892@kroah.com>
+ <CAOtcWM2MD-Z1tg7gdgzrXiv7y62JrV7eHnTgXpv-LFW7zRApjg@mail.gmail.com>
+ <20190916134727.4gi6rvz4sm6znrqc@function>
+ <20190916141100.GA1595107@kroah.com>
+ <20190916223848.GA8679@gregn.net> <20190917080118.GC2075173@kroah.com>
+ <20190918010351.GA10455@gregn.net> <20190918061642.GB1832786@kroah.com>
+ <20190918203032.GA3987@gregn.net> <20190920074611.GB518462@kroah.com>
+In-Reply-To: <20190920074611.GB518462@kroah.com>
+From: Okash Khawaja <okash.khawaja@gmail.com>
+Date: Fri, 20 Sep 2019 11:18:53 +0100
+Message-ID: <CAOtcWM2271YEVCc=0O8QApyUhSJx+uA_vfnXyUnGHfjugzGoyg@mail.gmail.com>
+Subject: Re: [HELP REQUESTED from the community] Was: Staging status of speakup
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,38 +87,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, Simon Dickson <simonhdickson@gmail.com>,
+ Gregory Nowak <greg@gregn.net>, Didier Spaier <didier@slint.fr>,
+ "Speakup is a screen review system for Linux." <speakup@linux-speakup.org>,
+ linux-kernel@vger.kernel.org, John Covici <covici@ccs.covici.com>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This is a self-assignment which is redundant. Fix this by removing the
-self-assignment.
+On Fri, Sep 20, 2019 at 8:46 AM Greg Kroah-Hartman
+<gregkh@linuxfoundation.org> wrote:
+>
+> On Wed, Sep 18, 2019 at 01:30:33PM -0700, Gregory Nowak wrote:
+> > > Extra line between each attribute (before the "What:" line) would be
+> > > nice.
+> >
+> > In a previous post above, you wrote:
+> > On Mon, Sep 16, 2019 at 04:11:00PM +0200, Greg Kroah-Hartman wrote:
+> > > Anyway, please put the Description: lines without a blank after that,
+> > > with the description text starting on that same line.
+> >
+> > I understood that to mean that the description text should start on
+> > the same line, and the blank lines after the description text should
+> > be removed. I've put them back in. Someone more familiar with the
+> > speakup code will have to dig into it to resolve the TODO items I
+> > suppose.
+>
+> No problem, this looks good to me.  If someone wants to turn this into a
+> patch adding it to the drivers/staging/speakup/ directory, I'll be glad
+> to take it and it will allow others to fill in the TODO entries easier.
 
-Addresses-Coverity: ("Self assignment")
-
-Signed-off-by: Connor Kuehl <connor.kuehl@canonical.com>
----
- drivers/staging/rtl8188eu/hal/rtl8188e_hal_init.c | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/drivers/staging/rtl8188eu/hal/rtl8188e_hal_init.c b/drivers/staging/rtl8188eu/hal/rtl8188e_hal_init.c
-index 086f98d38cba..57ae0e83dd3e 100644
---- a/drivers/staging/rtl8188eu/hal/rtl8188e_hal_init.c
-+++ b/drivers/staging/rtl8188eu/hal/rtl8188e_hal_init.c
-@@ -552,7 +552,6 @@ void Hal_ReadAntennaDiversity88E(struct adapter *pAdapter, u8 *PROMContent, bool
- 			pHalData->AntDivCfg = 1; /*  0xC1[3] is ignored. */
- 	} else {
- 		pHalData->AntDivCfg = 0;
--		pHalData->TRxAntDivType = pHalData->TRxAntDivType; /*  The value in the driver setting of device manager. */
- 	}
- 	DBG_88E("EEPROM : AntDivCfg = %x, TRxAntDivType = %x\n", pHalData->AntDivCfg, pHalData->TRxAntDivType);
- }
--- 
-2.17.1
-
+Thank you. I'll create a patch soon.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
