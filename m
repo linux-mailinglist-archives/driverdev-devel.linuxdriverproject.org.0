@@ -2,55 +2,55 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC73FB9E33
-	for <lists+driverdev-devel@lfdr.de>; Sat, 21 Sep 2019 16:24:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8F071B9E36
+	for <lists+driverdev-devel@lfdr.de>; Sat, 21 Sep 2019 16:30:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CBE60859EF;
-	Sat, 21 Sep 2019 14:24:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2DD97855CC;
+	Sat, 21 Sep 2019 14:30:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DwhmmtEyV69a; Sat, 21 Sep 2019 14:24:36 +0000 (UTC)
+	with ESMTP id o-x6Yt2lFflE; Sat, 21 Sep 2019 14:30:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 80389857C1;
-	Sat, 21 Sep 2019 14:24:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4D46D84D56;
+	Sat, 21 Sep 2019 14:30:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1CACB1BF40B
- for <devel@linuxdriverproject.org>; Sat, 21 Sep 2019 14:24:25 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 51DFD1BF40B
+ for <devel@linuxdriverproject.org>; Sat, 21 Sep 2019 14:30:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 19C8D84076
- for <devel@linuxdriverproject.org>; Sat, 21 Sep 2019 14:24:25 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4ED6086354
+ for <devel@linuxdriverproject.org>; Sat, 21 Sep 2019 14:30:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id d3VldQyCzZeu for <devel@linuxdriverproject.org>;
- Sat, 21 Sep 2019 14:24:23 +0000 (UTC)
+ with ESMTP id CmM4ywlK4mls for <devel@linuxdriverproject.org>;
+ Sat, 21 Sep 2019 14:30:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B80C584034
- for <devel@driverdev.osuosl.org>; Sat, 21 Sep 2019 14:24:23 +0000 (UTC)
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id F126A8633E
+ for <devel@driverdev.osuosl.org>; Sat, 21 Sep 2019 14:30:10 +0000 (UTC)
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 21 Sep 2019 07:24:22 -0700
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 21 Sep 2019 07:30:09 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,532,1559545200"; d="scan'208";a="271816837"
+X-IronPort-AV: E=Sophos;i="5.64,532,1559545200"; d="scan'208";a="188638616"
 Received: from xsang-optiplex-9020.sh.intel.com (HELO xsang-OptiPlex-9020)
  ([10.239.159.135])
- by orsmga001.jf.intel.com with ESMTP; 21 Sep 2019 07:24:20 -0700
-Date: Sat, 21 Sep 2019 22:30:13 +0800
+ by fmsmga007.fm.intel.com with ESMTP; 21 Sep 2019 07:30:06 -0700
+Date: Sat, 21 Sep 2019 22:36:00 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Xin Ji <xji@analogixsemi.com>
-Subject: Re: [PATCH v1 2/2] drm/bridge: anx7625: Add anx7625 MIPI to DP
- bridge driver
-Message-ID: <20190921143013.GA13011@xsang-OptiPlex-9020>
+Subject: [PATCH] drm/bridge: anx7625: fix platform_no_drv_owner.cocci warnings
+Message-ID: <20190921143600.GB13011@xsang-OptiPlex-9020>
+References: <201909191657.R8guVsYh%lkp@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <30c40beb3dce1e9ede3abff73761ea6b9d7aabd2.1568858880.git.xji@analogixsemi.com>
+In-Reply-To: <201909191657.R8guVsYh%lkp@intel.com>
 user-agent: NeoMutt/20170113 (1.7.2)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -78,30 +78,36 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Xin,
+From: kbuild test robot <lkp@intel.com>
 
-Thank you for the patch! Perhaps something to improve:
+drivers/gpu/drm/bridge/analogix/anx7625.c:2070:3-8: No need to set .owner here. The core will do it.
 
-[auto build test WARNING on linus/master]
-[cannot apply to v5.3 next-20190918]
-[if your patch is applied to the wrong git tree, please drop us a note to help
-improve the system. BTW, we also suggest to use '--base' option to specify the
-base tree in git format-patch, please see https://stackoverflow.com/a/37406982]
+ Remove .owner field if calls are used which set it automatically
+
+Generated by: scripts/coccinelle/api/platform_no_drv_owner.cocci
+
+Fixes: a6c1b1bd5c95 ("drm/bridge: anx7625: Add anx7625 MIPI to DP bridge driver")
+CC: Xin Ji <xji@analogixsemi.com>
+Signed-off-by: kbuild test robot <lkp@intel.com>
+---
 
 url:    https://github.com/0day-ci/linux/commits/Xin-Ji/Add-initial-support-for-slimport-anx7625/20190919-150647
 :::::: branch date: 73 minutes ago
 :::::: commit date: 73 minutes ago
 
-If you fix the issue, kindly add following tag
-Reported-by: kbuild test robot <lkp@intel.com>
+ anx7625.c |    1 -
+ 1 file changed, 1 deletion(-)
 
->> drivers/gpu/drm/bridge/analogix/anx7625.c:2070:3-8: No need to set .owner here. The core will do it.
-
-Please review and possibly fold the followup patch.
-
----
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+--- a/drivers/gpu/drm/bridge/analogix/anx7625.c
++++ b/drivers/gpu/drm/bridge/analogix/anx7625.c
+@@ -2067,7 +2067,6 @@ static const struct of_device_id anx_mat
+ static struct i2c_driver anx7625_driver = {
+ 	.driver = {
+ 		.name = "anx7625",
+-		.owner = THIS_MODULE,
+ #ifdef CONFIG_OF
+ 		.of_match_table = anx_match_table,
+ #endif
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
