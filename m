@@ -1,85 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 76B5EB99A8
-	for <lists+driverdev-devel@lfdr.de>; Sat, 21 Sep 2019 00:26:38 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 15811B9D66
+	for <lists+driverdev-devel@lfdr.de>; Sat, 21 Sep 2019 12:23:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 79703880C2;
-	Fri, 20 Sep 2019 22:26:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B40658625F;
+	Sat, 21 Sep 2019 10:23:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vrSvdElG23HX; Fri, 20 Sep 2019 22:26:36 +0000 (UTC)
+	with ESMTP id Gf62jC_wAlFJ; Sat, 21 Sep 2019 10:23:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D34B187BC2;
-	Fri, 20 Sep 2019 22:26:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B87D285D9B;
+	Sat, 21 Sep 2019 10:23:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0EEDE1BF2B7
- for <devel@linuxdriverproject.org>; Fri, 20 Sep 2019 22:26:34 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 043AC1BF2EA
+ for <devel@linuxdriverproject.org>; Sat, 21 Sep 2019 10:23:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0ACDA204D6
- for <devel@linuxdriverproject.org>; Fri, 20 Sep 2019 22:26:34 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 00D6720025
+ for <devel@linuxdriverproject.org>; Sat, 21 Sep 2019 10:23:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aYsk9jR58h1v for <devel@linuxdriverproject.org>;
- Fri, 20 Sep 2019 22:26:33 +0000 (UTC)
+ with ESMTP id AsCw3hnNNOyO for <devel@linuxdriverproject.org>;
+ Sat, 21 Sep 2019 10:23:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lj1-f194.google.com (mail-lj1-f194.google.com
- [209.85.208.194])
- by silver.osuosl.org (Postfix) with ESMTPS id C186D204A6
- for <devel@driverdev.osuosl.org>; Fri, 20 Sep 2019 22:26:32 +0000 (UTC)
-Received: by mail-lj1-f194.google.com with SMTP id n14so3458209ljj.10
- for <devel@driverdev.osuosl.org>; Fri, 20 Sep 2019 15:26:32 -0700 (PDT)
+Received: from mail-wr1-f50.google.com (mail-wr1-f50.google.com
+ [209.85.221.50])
+ by silver.osuosl.org (Postfix) with ESMTPS id 0FB7B2000F
+ for <devel@driverdev.osuosl.org>; Sat, 21 Sep 2019 10:23:17 +0000 (UTC)
+Received: by mail-wr1-f50.google.com with SMTP id l11so9146534wrx.5
+ for <devel@driverdev.osuosl.org>; Sat, 21 Sep 2019 03:23:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=NCRwLUskdzV7gHTBmxNv4l39hBOLgSQ0mOSFdrxw3Z4=;
- b=oiX3xeQ0MNmmn5mM3EZkkEJkRlIy3l6sUSK6Bc0T7crcx0ziuZGRkuXypQJh7ZEOrh
- 7ZSAWAE6uudRQPD2YI6d2gfbd90BQUiwsd7uBebVi75hQCxyMivAibyE/WPyRAS3Pzap
- +1/MgjgILz5Wvj3+ljs2MLCY1VVW4JTbBlscBmSsoo2tggbLnFAejToXHF6qQYgwBdnt
- HsSOSNQ+sAchY3R2WETinc0jkM0L+x8Ol6V3C4crjqeHX5o1LrZ55KEz7/4AzZu7CpZ9
- 95+C7zJOYF6wZBBqmPwuaZcdT5ykBAtX+TjGX+NHq+vj9ioJiLl2qtVxB91+3O5ulNYO
- nzRw==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=twvI4M3FlUB+nesQ3Gr/CSH5n5uFvc1DnucjMK56czU=;
+ b=I5U+HrVgxpbqNhF/fGj2EBZQFFklGG0AqZS4p50vv79SiBS5c/cWYwyqHJmJo2rbgI
+ ccA5KN1BPsWA61ZP4eA/FlefQo4P6CMoEr1qC/0XqMPBVRhEPhjnMsFxMIZYKsys6cr3
+ PZt2KMfKP82wvngn+COXT69VFk+z4x0ySx6J4tCyeWkq9yXcZcFn6cIlSUiaiGCJHSqg
+ uK9YyuqWCNUPdmqeJLHmDJsrPEdbJ+/1bPY20pCG5M2ugLV4I9Z9by5OMvgASIm6Kpzj
+ +0M94Hnh3L9ud6XULSYFWN/nIr0dyBr//coezGqBhUbWIg8qUgLubh/lkEo9R0SMXci3
+ RWwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=NCRwLUskdzV7gHTBmxNv4l39hBOLgSQ0mOSFdrxw3Z4=;
- b=GthQLclOyEZzSFAYjQo2kG+E94q7fOri2NTL3yVmv+KpIOhTXaivenCTSsvNhGTwsY
- NBfKiEXnrGg+j3S4rKX8zWiNvlhoRIyccrdimcY3tm2dVspSb9PZc5ONll/3vkfCxuI5
- m6z6kLBPtYjPg+pkIl6lvY34MLybDQgEm9Ud9T8SIO/vJq5IuBLkybDg9z6ZoFz6IWEO
- vdbOOBVMYOybKFfBP6XUmS+Hh9TEtsSaG8ArYiksUB/HE/QCONtSP9pnXGm6hbvPpZu1
- 3AZbyPUzlGZsvg4vg1y/lKnTGqNQjv11Y2Dt3dr1ml6+bk97JcIF/CX4vgf08oLhZywu
- IhVg==
-X-Gm-Message-State: APjAAAWKckMmzLlGpv+oSWQ1JUo/2oQNkqmyEB4vCXOLNJ0wdR/XagPW
- rGN/SknGDsIQp//8ivnr/co=
-X-Google-Smtp-Source: APXvYqwxm/7zrCbHka/7eCQpm/oQUiH78xadO7fAr2TpiKXlOB/a4hiVWmiEHeHIi9DYOPMS0IXkVw==
-X-Received: by 2002:a05:651c:110f:: with SMTP id
- d15mr10653261ljo.43.1569018390799; 
- Fri, 20 Sep 2019 15:26:30 -0700 (PDT)
-Received: from [192.168.2.145] ([94.29.45.178])
- by smtp.googlemail.com with ESMTPSA id z30sm806218lfj.63.2019.09.20.15.26.29
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 20 Sep 2019 15:26:29 -0700 (PDT)
-Subject: Re: [PATCH] media: staging: tegra-vde: Fix build error
-To: Arnd Bergmann <arnd@arndb.de>
-References: <dc354ede-5963-cd7f-ee53-f3df3061d39a@gmail.com>
- <20190725024129.22664-1-yuehaibing@huawei.com>
- <dd547b44-7abb-371f-aeee-a82b96f824e2@gmail.com>
- <CAK8P3a2Lxv6Wz3jv0eeNc7mfvNzSvh37QEx51W39eUnYPsxaYw@mail.gmail.com>
-From: Dmitry Osipenko <digetx@gmail.com>
-Message-ID: <ed818d0c-2d5a-d9a4-e99d-43fe4eba4357@gmail.com>
-Date: Sat, 21 Sep 2019 01:26:28 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ bh=twvI4M3FlUB+nesQ3Gr/CSH5n5uFvc1DnucjMK56czU=;
+ b=gFGCcBsJE6D7cdnR9q5gOT5m7lSlQilNjjOIWoWCVfviC8E9Ku3iihY9/G1pvHHs/n
+ kArRfWty0EIaNG9wh++9okqJN29fTS8QVwIz52QBDfmZlrFkG7sz4LdRLVyOY/wUuraj
+ rr1U2Xr4jxGASygt0VnAyQEy2IS/nVIzukChpH+j1chFajllPtgmHrFc6aclY8y2cusm
+ x2wf9xZ8LRjsDt/9KYFWivH1ROew8QtZbod+H9clbnvVa/TOyT0mSqoJaYYIXbxhgKWE
+ 4ENro0smkbCZfhv6atPzlKu04VsauEMf+QZt2rqhSsUns9m97EL/zynPRuokqRC9+Tkb
+ yPKQ==
+X-Gm-Message-State: APjAAAVUtIB7oZk/A0vh+paSl+o6YT6WlxwiyZZMF6kF2yDFpxxN9e1r
+ iFgGs6q6EEFBPADUTbPexC0=
+X-Google-Smtp-Source: APXvYqy/3r7K0cnZK7rcsyDqfgvdmTadPttDei1Gfi/H2FzXxSWzC2hW9nVkld7ojRSSBZsy/I12rw==
+X-Received: by 2002:adf:ed05:: with SMTP id a5mr14893808wro.35.1569061395190; 
+ Sat, 21 Sep 2019 03:23:15 -0700 (PDT)
+Received: from narunkot.lan (97e01db8.skybroadband.com. [151.224.29.184])
+ by smtp.gmail.com with ESMTPSA id r9sm6870287wra.19.2019.09.21.03.23.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 21 Sep 2019 03:23:14 -0700 (PDT)
+From: Okash Khawaja <okash.khawaja@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ Gregory Nowak <greg@gregn.net>, linux-kernel@vger.kernel.org
+Subject: [PATCH] staging: speakup: document sysfs attributes
+Date: Sat, 21 Sep 2019 11:22:14 +0100
+Message-Id: <20190921102214.2983-1-okash.khawaja@gmail.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-In-Reply-To: <CAK8P3a2Lxv6Wz3jv0eeNc7mfvNzSvh37QEx51W39eUnYPsxaYw@mail.gmail.com>
-Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,66 +85,407 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: driverdevel <devel@driverdev.osuosl.org>,
- gregkh <gregkh@linuxfoundation.org>, YueHaibing <yuehaibing@huawei.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- "open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- "open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, Kirk Reiser <kirk@reisers.ca>,
+ Okash Khawaja <okash.khawaja@gmail.com>, Jiri Slaby <jslaby@suse.com>,
+ speakup@linux-speakup.org, John Covici <covici@ccs.covici.com>,
+ Chris Brannon <chris@the-brannons.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-MjAuMDkuMjAxOSAyMjozMiwgQXJuZCBCZXJnbWFubiDQv9C40YjQtdGCOgo+IE9uIFRodSwgSnVs
-IDI1LCAyMDE5IGF0IDI6MjQgUE0gRG1pdHJ5IE9zaXBlbmtvIDxkaWdldHhAZ21haWwuY29tPiB3
-cm90ZToKPj4KPj4gMjUuMDcuMjAxOSA1OjQxLCBZdWVIYWliaW5nINC/0LjRiNC10YI6Cj4+PiBJ
-ZiBJT01NVV9TVVBQT1JUIGlzIG5vdCBzZXQsIGFuZCBDT01QSUxFX1RFU1QgaXMgeSwKPj4+IElP
-TU1VX0lPVkEgbWF5IGJlIHNldCB0byBtLiBTbyBidWlsZGluZyB3aWxsIGZhaWxzOgo+Pj4KPj4+
-IGRyaXZlcnMvc3RhZ2luZy9tZWRpYS90ZWdyYS12ZGUvaW9tbXUubzogSW4gZnVuY3Rpb24gYHRl
-Z3JhX3ZkZV9pb21tdV9tYXAnOgo+Pj4gaW9tbXUuYzooLnRleHQrMHg0MSk6IHVuZGVmaW5lZCBy
-ZWZlcmVuY2UgdG8gYGFsbG9jX2lvdmEnCj4+PiBpb21tdS5jOigudGV4dCsweDU2KTogdW5kZWZp
-bmVkIHJlZmVyZW5jZSB0byBgX19mcmVlX2lvdmEnCj4+Pgo+Pj4gU2VsZWN0IElPTU1VX0lPVkEg
-d2hpbGUgQ09NUElMRV9URVNUIGlzIHNldCB0byBmaXggdGhpcy4KPiAKPj4+IEBAIC0zLDcgKzMs
-NyBAQCBjb25maWcgVEVHUkFfVkRFCj4+PiAgICAgICB0cmlzdGF0ZSAiTlZJRElBIFRlZ3JhIFZp
-ZGVvIERlY29kZXIgRW5naW5lIGRyaXZlciIKPj4+ICAgICAgIGRlcGVuZHMgb24gQVJDSF9URUdS
-QSB8fCBDT01QSUxFX1RFU1QKPj4+ICAgICAgIHNlbGVjdCBETUFfU0hBUkVEX0JVRkZFUgo+Pj4g
-LSAgICAgc2VsZWN0IElPTU1VX0lPVkEgaWYgSU9NTVVfU1VQUE9SVAo+Pj4gKyAgICAgc2VsZWN0
-IElPTU1VX0lPVkEgaWYgKElPTU1VX1NVUFBPUlQgfHwgQ09NUElMRV9URVNUKQo+Pj4gICAgICAg
-c2VsZWN0IFNSQU0KPj4+ICAgICAgIGhlbHAKPj4+ICAgICAgICAgICBTYXkgWSBoZXJlIHRvIGVu
-YWJsZSBzdXBwb3J0IGZvciB0aGUgTlZJRElBIFRlZ3JhIHZpZGVvIGRlY29kZXIKPj4+Cj4+Cj4+
-IFRoaXMgcmVzdWx0cyBpbiBtaXNzaW5nIHRoZSBjYXNlIG9mIGNvbXBpbGUtdGVzdGluZyAhSU9N
-TVVfSU9WQSBmb3IgdGhlCj4+IGRyaXZlciwgYnV0IHByb2JhYmx5IHRoYXQncyBub3QgYSBiaWcg
-ZGVhbC4KPj4KPj4gQWNrZWQtYnk6IERtaXRyeSBPc2lwZW5rbyA8ZGlnZXR4QGdtYWlsLmNvbT4K
-PiAKPiBJIGRvbid0IGtub3cgd2hhdCBoYXBwZW5lZCBoZXJlLCBidXQgdGhlIHBhdGNoIGZyb20g
-WXVlSGFpYmluZyBjYXVzZWQgdGhpcwo+IGVycm9yIGZvciBtZSwgd2hpY2ggaXMgdmVyeSBtdWNo
-IGxpa2UgdGhlIHByb2JsZW0gaXQgd2FzIG1lYW50IHRvIGZpeDoKPiAKPiBkcml2ZXJzL2dwdS9o
-b3N0MXgvZGV2Lm86IEluIGZ1bmN0aW9uIGBob3N0MXhfcHJvYmUnOgo+IGRldi5jOigudGV4dCsw
-eDE3MzQpOiB1bmRlZmluZWQgcmVmZXJlbmNlIHRvIGBwdXRfaW92YV9kb21haW4nCj4gZGV2LmM6
-KC50ZXh0KzB4MTc0NCk6IHVuZGVmaW5lZCByZWZlcmVuY2UgdG8gYGlvdmFfY2FjaGVfcHV0Jwo+
-IGRyaXZlcnMvZ3B1L2hvc3QxeC9kZXYubzogSW4gZnVuY3Rpb24gYGhvc3QxeF9yZW1vdmUnOgo+
-IGRldi5jOigudGV4dCsweDE4OTQpOiB1bmRlZmluZWQgcmVmZXJlbmNlIHRvIGBwdXRfaW92YV9k
-b21haW4nCj4gZGV2LmM6KC50ZXh0KzB4MTg5OCk6IHVuZGVmaW5lZCByZWZlcmVuY2UgdG8gYGlv
-dmFfY2FjaGVfcHV0Jwo+IGRyaXZlcnMvZ3B1L2hvc3QxeC9jZG1hLm86IEluIGZ1bmN0aW9uIGBo
-b3N0MXhfY2RtYV9pbml0JzoKPiBjZG1hLmM6KC50ZXh0KzB4NWQwKTogdW5kZWZpbmVkIHJlZmVy
-ZW5jZSB0byBgYWxsb2NfaW92YScKPiBjZG1hLmM6KC50ZXh0KzB4NjFjKTogdW5kZWZpbmVkIHJl
-ZmVyZW5jZSB0byBgX19mcmVlX2lvdmEnCj4gZHJpdmVycy9ncHUvaG9zdDF4L2NkbWEubzogSW4g
-ZnVuY3Rpb24gYGhvc3QxeF9jZG1hX2RlaW5pdCc6Cj4gY2RtYS5jOigudGV4dCsweDZjOCk6IHVu
-ZGVmaW5lZCByZWZlcmVuY2UgdG8gYGZyZWVfaW92YScKPiBkcml2ZXJzL2dwdS9ob3N0MXgvam9i
-Lm86IEluIGZ1bmN0aW9uIGBob3N0MXhfam9iX3Bpbic6Cj4gam9iLmM6KC50ZXh0KzB4NTE0KTog
-dW5kZWZpbmVkIHJlZmVyZW5jZSB0byBgYWxsb2NfaW92YScKPiBqb2IuYzooLnRleHQrMHg1Mjgp
-OiB1bmRlZmluZWQgcmVmZXJlbmNlIHRvIGBfX2ZyZWVfaW92YScKPiBkcml2ZXJzL2dwdS9ob3N0
-MXgvam9iLm86IEluIGZ1bmN0aW9uIGBob3N0MXhfam9iX3VucGluJzoKPiBqb2IuYzooLnRleHQr
-MHg1YmMpOiB1bmRlZmluZWQgcmVmZXJlbmNlIHRvIGBmcmVlX2lvdmEnCj4gCj4gQWZ0ZXIgcmV2
-ZXJ0aGluZyBjb21taXQgNmIyMjY1OTc1MjM5ICgibWVkaWE6IHN0YWdpbmc6Cj4gdGVncmEtdmRl
-OiBGaXggYnVpbGQgZXJyb3IiKSwgSSBjYW4gbm8gbG9uZ2VyIHJlcHJvZHVjZSB0aGUKPiBpc3N1
-ZS4KClRoZXJlIGlzIGEgZm9sbG93IHVwIGhlcmU6IGh0dHBzOi8vcGF0Y2h3b3JrLm96bGFicy5v
-cmcvcGF0Y2gvMTE1MzE3Ni8KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcK
-aHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8v
-ZHJpdmVyZGV2LWRldmVsCg==
+Speakup exposes a set of sysfs attributes under
+/sys/accessibility/speakup/ for user-space to interact with and
+configure speakup's kernel modules. This patch describes those
+attributes. Some attributes either lack a description or contain
+incomplete description. They are marked wit TODO.
+
+Authored-by: Gregory Nowak <greg@gregn.net>
+Submitted-by: Okash Khawaja <okash.khawaja@gmail.com>
+---
+ drivers/staging/speakup/sysfs-driver-speakup | 369 +++++++++++++++++++
+ 1 file changed, 369 insertions(+)
+ create mode 100644 drivers/staging/speakup/sysfs-driver-speakup
+
+diff --git a/drivers/staging/speakup/sysfs-driver-speakup b/drivers/staging/speakup/sysfs-driver-speakup
+new file mode 100644
+index 000000000000..be3f5d6962e9
+--- /dev/null
++++ b/drivers/staging/speakup/sysfs-driver-speakup
+@@ -0,0 +1,369 @@
++What:		/sys/accessibility/speakup/attrib_bleep
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	Beeps the PC speaker when there is an attribute change such as
++		foreground or background color when using speakup review
++		commands. One = on, zero = off.
++
++What:		/sys/accessibility/speakup/bell_pos
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	This works much like a typewriter bell. If for example 72 is
++		echoed to bell_pos, it will beep the PC speaker when typing on
++		a line past character 72.
++
++What:		/sys/accessibility/speakup/bleeps
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	This controls whether one hears beeps through the PC speaker
++		when using speakup's review commands.
++		TODO: what values does it accept?
++
++What:		/sys/accessibility/speakup/bleep_time
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	This controls the duration of the PC speaker beeps speakup
++		produces.
++		TODO: What are the units? Jiffies?
++
++What:		/sys/accessibility/speakup/cursor_time
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	This controls cursor delay when using arrow keys. When a
++		connection is very slow, with the default setting, when moving
++		with  the arrows, or backspacing etc. speakup says the incorrect
++		characters. Set this to a higher value to adjust for the delay
++		and better synchronisation between cursor position and speech.
++
++What:		/sys/accessibility/speakup/delimiters
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	Delimit a word from speakup.
++		TODO: add more info
++
++What:		/sys/accessibility/speakup/ex_num
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	TODO:
++
++What:		/sys/accessibility/speakup/key_echo
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	Controls if speakup speaks keys when they are typed. One = on,
++		zero = off or don't echo keys.
++
++What:		/sys/accessibility/speakup/keymap
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	Speakup keymap remaps keys to Speakup functions.
++		It uses a binary
++		format. A special program called genmap is needed to compile a
++		textual  keymap into the binary format which is then loaded into
++		/sys/accessibility/speakup/keymap.
++
++What:		/sys/accessibility/speakup/no_interrupt
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	Controls if typing interrupts output from speakup. With
++		no_interrupt set to zero, typing on the keyboard will interrupt
++		speakup if for example
++		the say screen command is used before the
++		entire screen  is read.
++		With no_interrupt set to one, if the say
++		screen command is used, and one then types on the keyboard,
++		speakup will continue to say the whole screen regardless until
++		it finishes.
++
++What:		/sys/accessibility/speakup/punc_all
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	This is a list of all the punctuation speakup should speak when
++		punc_level is set to four.
++
++What:		/sys/accessibility/speakup/punc_level
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	Controls the level of punctuation spoken as the screen is
++		displayed, not reviewed. Levels range from zero no punctuation,
++		to four, all punctuation. One corresponds to punc_some, two
++		corresponds to punc_most, and three as well as four both
++		correspond to punc_all. Some hardware synthesizers may have
++		different levels each corresponding to  three and four for
++		punc_level. Also note that if punc_level is set to zero, and
++		key_echo is set to one, typed punctuation is still spoken as it
++		is typed.
++
++What:		/sys/accessibility/speakup/punc_most
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	This is a list of all the punctuation speakup should speak when
++		punc_level is set to two.
++
++What:		/sys/accessibility/speakup/punc_some
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	This is a list of all the punctuation speakup should speak when
++		punc_level is set to one.
++
++What:		/sys/accessibility/speakup/reading_punc
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	Almost the same as punc_level, the differences being that
++		reading_punc controls the level of punctuation when reviewing
++		the screen with speakup's screen review commands. The other
++		difference is that reading_punc set to three speaks punc_all,
++		and reading_punc set to four speaks all punctuation, including
++		spaces.
++
++What:		/sys/accessibility/speakup/repeats
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	A list of characters speakup repeats. Normally, when there are
++		more than three characters in a row, speakup
++		just reads three of
++		those characters. For example, "......" would be read as dot,
++		dot, dot. If a . is added to the list of characters in repeats,
++		"......" would be read as dot, dot, dot, times six.
++
++What:		/sys/accessibility/speakup/say_control
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	If set to one, speakup speaks shift, alt and control when those
++		keys are pressed. If say_control is set to zero, shift, ctrl,
++		and alt are not spoken when they are pressed.
++
++What:		/sys/accessibility/speakup/say_word_ctl
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	TODO:
++
++What:		/sys/accessibility/speakup/silent
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	TODO:
++
++What:		/sys/accessibility/speakup/spell_delay
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	This controls how fast a word is spelled
++		when speakup's say word
++		review command is pressed twice quickly to speak the current
++		word being reviewed. Zero just speaks the letters one after
++		another, while values one through four
++		seem to introduce more of
++		a pause between the spelling of each letter by speakup.
++
++What:		/sys/accessibility/speakup/synth
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	Gets or sets the synthesizer driver currently in use. Reading
++		synth returns the synthesizer driver currently in use. Writing
++		synth switches to the given synthesizer driver, provided it is
++		either built into the kernel, or already loaded as a module.
++
++What:		/sys/accessibility/speakup/synth_direct
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	Sends whatever is written to synth_direct
++		directly to the speech synthesizer in use, bypassing speakup.
++		This could be used to make the synthesizer speak
++		a string, or to
++		send control sequences to the synthesizer to change how the
++		synthesizer behaves.
++
++What:		/sys/accessibility/speakup/version
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	Reading version returns the version of speakup, and the version
++		of the synthesizer driver currently in use.
++
++What:		/sys/accessibility/speakup/i18n/announcements
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	This file contains various general announcements, most of which
++		cannot be categorized.  You will find messages such as "You
++		killed Speakup", "I'm alive", "leaving help", "parked",
++		"unparked", and others. You will also find the names of the
++		screen edges and cursor tracking modes here.
++
++What:		/sys/accessibility/speakup/i18n/chartab
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	TODO
++
++What:		/sys/accessibility/speakup/i18n/ctl_keys
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	Here, you will find names of control keys.  These are used with
++		Speakup's say_control feature.
++
++What:		/sys/accessibility/speakup/i18n/function_names
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	Here, you will find a list of names for Speakup functions.
++		These are used by the help system.  For example, suppose that
++		you have activated help mode, and you pressed
++		keypad 3.  Speakup
++		says: "keypad 3 is character, say next."
++		The message "character, say next" names a Speakup function, and
++		it comes from this function_names file.
++
++What:		/sys/accessibility/speakup/i18n/states
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	This file contains names for key states.
++		Again, these are part of the help system.  For instance, if you
++		had pressed speakup + keypad 3, you would hear:
++		"speakup keypad 3 is go to bottom edge."
++		The speakup key is depressed, so the name of the key state is
++		speakup.
++		This part of the message comes from the states collection.
++
++What:		/sys/accessibility/speakup/i18n/characters
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	Through this sys entry, Speakup gives you the ability to change
++		how Speakup pronounces a given character. You could, for
++		example, change how some punctuation characters are spoken. You
++		can even change how Speakup will pronounce certain letters. For
++		further details see '12.  Changing the Pronunciation of
++		Characters' in Speakup User's Guide (file spkguide.txt in
++		source).
++
++What:		/sys/accessibility/speakup/i18n/colors
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	When you use the "say attributes" function, Speakup says the
++		name of the foreground and background colors.  These names come
++		from the i18n/colors file.
++
++What:		/sys/accessibility/speakup/i18n/formatted
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	This group of messages contains embedded formatting codes, to
++		specify the type and width of displayed data.  If you change
++		these, you must preserve all of the formatting codes, and they
++		must appear in the order used by the default messages.
++
++What:		/sys/accessibility/speakup/i18n/key_names
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	Again, key_names is used by Speakup's help system.  In the
++		previous example, Speakup said that you pressed "keypad 3."
++		This name came from the key_names file.
++
++What:		/sys/accessibility/speakup/<synth-name>/
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	In `/sys/accessibility/speakup` is a directory corresponding to
++		the synthesizer driver currently in use (E.G) `soft` for the
++		soft driver. This directory contains files which control the
++		speech synthesizer itself,
++		as opposed to controlling the speakup
++		screen reader. The parameters in this directory have the same
++		names and functions across all
++		supported synthesizers. The range
++		of values for freq, pitch, rate, and vol is the same for all
++		supported synthesizers, with the given range being internally
++		mapped by the driver to  more or less fit the range of values
++		supported for a given parameter by the individual synthesizer.
++		Below is a description of values and  parameters for soft
++		synthesizer, which is currently the most commonly used.
++
++What:		/sys/accessibility/speakup/soft/caps_start
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	This is the string that is sent to the synthesizer to cause it
++		to start speaking uppercase letters. For the soft synthesizer
++		and most others, this causes the pitch of the voice to rise
++		above the currently set pitch.
++
++What:		/sys/accessibility/speakup/soft/caps_stop
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	This is the string sent to the synthesizer to cause it to stop
++		speaking uppercase letters. In the case of the soft synthesizer
++		and most others, this returns the pitch of the voice
++		down to the
++		currently set pitch.
++
++What:		/sys/accessibility/speakup/soft/delay_time
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	TODO:
++
++What:		/sys/accessibility/speakup/soft/direct
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	Controls if punctuation is spoken by speakup, or by the
++		synthesizer.
++		For example, speakup speaks ">" as "greater", while
++		the espeak synthesizer used by the soft driver speaks "greater
++		than". Zero lets speakup speak the punctuation. One lets the
++		synthesizer itself speak punctuation.
++
++What:		/sys/accessibility/speakup/soft/freq
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	Gets or sets the frequency of the speech synthesizer. Range is
++		0-9.
++
++What:		/sys/accessibility/speakup/soft/full_time
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	TODO:
++
++What:		/sys/accessibility/speakup/soft/jiffy_delta
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	This controls how many jiffys the kernel gives to the
++		synthesizer. Setting this too high can make a system unstable,
++		or even crash it.
++
++What:		/sys/accessibility/speakup/soft/pitch
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	Gets or sets the pitch of the synthesizer. The range is 0-9.
++
++What:		/sys/accessibility/speakup/soft/punct
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	Gets or sets the amount of punctuation spoken by the
++		synthesizer. The range for the soft driver seems to be 0-2.
++		TODO: How is this related to speakup's punc_level, or
++		reading_punc.
++
++What:		/sys/accessibility/speakup/soft/rate
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	Gets or sets the rate of the synthesizer. Range is from zero
++		slowest, to nine fastest.
++
++What:		/sys/accessibility/speakup/soft/tone
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	Gets or sets the tone of the speech synthesizer. The range for
++		the soft driver seems to be 0-2. This seems to make no
++		difference if using espeak and the espeakup connector.
++		TODO: does espeakup support different tonalities?
++
++What:		/sys/accessibility/speakup/soft/trigger_time
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	TODO:
++
++What:		/sys/accessibility/speakup/soft/voice
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	Gets or sets the voice used by the synthesizer if the
++		synthesizer can speak in more than one voice. The range for the
++		soft driver is 0-7. Note that while espeak supports multiple
++		voices, this parameter will not set the voice when the espeakup
++		connector is used  between speakup and espeak.
++
++What:		/sys/accessibility/speakup/soft/vol
++KernelVersion:	2.6
++Contact:	speakup@linux-speakup.org
++Description:	Gets or sets the volume of the speech synthesizer. Range is 0-9,
++		with zero being the softest, and nine being the loudest.
++
+-- 
+2.21.0
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
