@@ -2,58 +2,58 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E0ADABA3F2
-	for <lists+driverdev-devel@lfdr.de>; Sun, 22 Sep 2019 20:46:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D34ACBA408
+	for <lists+driverdev-devel@lfdr.de>; Sun, 22 Sep 2019 20:51:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 857FE857C5;
-	Sun, 22 Sep 2019 18:46:38 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B11AF85868;
+	Sun, 22 Sep 2019 18:51:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QuRnE6yKqndR; Sun, 22 Sep 2019 18:46:37 +0000 (UTC)
+	with ESMTP id buUN-diqN-RO; Sun, 22 Sep 2019 18:51:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4039C85010;
-	Sun, 22 Sep 2019 18:46:37 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 50A1185010;
+	Sun, 22 Sep 2019 18:51:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D146A1BF475
- for <devel@linuxdriverproject.org>; Sun, 22 Sep 2019 18:46:34 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 483071BF475
+ for <devel@linuxdriverproject.org>; Sun, 22 Sep 2019 18:51:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id CDF4F86F13
- for <devel@linuxdriverproject.org>; Sun, 22 Sep 2019 18:46:34 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 44F2385209
+ for <devel@linuxdriverproject.org>; Sun, 22 Sep 2019 18:51:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aMn7eVT06wio for <devel@linuxdriverproject.org>;
- Sun, 22 Sep 2019 18:46:34 +0000 (UTC)
+ with ESMTP id DZAwYNRWG88o for <devel@linuxdriverproject.org>;
+ Sun, 22 Sep 2019 18:51:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5372386BE2
- for <devel@driverdev.osuosl.org>; Sun, 22 Sep 2019 18:46:34 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A8A0184E97
+ for <devel@driverdev.osuosl.org>; Sun, 22 Sep 2019 18:51:45 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 16C9E21971;
- Sun, 22 Sep 2019 18:46:33 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id D415C21BE5;
+ Sun, 22 Sep 2019 18:51:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1569177994;
+ s=default; t=1569178305;
  bh=UgYhas+Ne82pUddsBnQzmIKiDCnGAB4Tisqknu33vB4=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=DcnKPPdNE+BwCuiKQhiUe420xuiDnPZ3hGZFdMXEgg+iswj0Et8ceIpu66PhIyzS4
- 9xtwaJ6NkhT0RBkG1Nq/g2pbFX/3u1QSX67vNOGW/HcDoI5mNfoLsFyoo0fvN3zM+u
- Ep6ot950ljYLPJxa4SZI3p4tLdyeq10YARz0n5NY=
+ b=noLYj7ie6c+p+EmE10P075hB5XLE7lEotGIqV7+SysfO5iWafAbqizP/SFvvrWK1Y
+ A7pnwDTgDH2yV3s/5M8tr3O4R8RSJdFTSpSmRSZ9gHrZswvu6ad4iKKbQZIUthis8V
+ H9nKqkRDjOW0Bk/CE8SY+sg7hXPxy2wzlsKqzDAo=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.3 085/203] media: imx: mipi csi-2: Don't fail if
+Subject: [PATCH AUTOSEL 5.2 076/185] media: imx: mipi csi-2: Don't fail if
  initial state times-out
-Date: Sun, 22 Sep 2019 14:41:51 -0400
-Message-Id: <20190922184350.30563-85-sashal@kernel.org>
+Date: Sun, 22 Sep 2019 14:47:34 -0400
+Message-Id: <20190922184924.32534-76-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190922184350.30563-1-sashal@kernel.org>
-References: <20190922184350.30563-1-sashal@kernel.org>
+In-Reply-To: <20190922184924.32534-1-sashal@kernel.org>
+References: <20190922184924.32534-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
