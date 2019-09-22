@@ -2,54 +2,55 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7A6A9BA3D9
-	for <lists+driverdev-devel@lfdr.de>; Sun, 22 Sep 2019 20:45:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E0ADABA3F2
+	for <lists+driverdev-devel@lfdr.de>; Sun, 22 Sep 2019 20:46:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0B77E85010;
-	Sun, 22 Sep 2019 18:45:52 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 857FE857C5;
+	Sun, 22 Sep 2019 18:46:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 177MdOaffomZ; Sun, 22 Sep 2019 18:45:50 +0000 (UTC)
+	with ESMTP id QuRnE6yKqndR; Sun, 22 Sep 2019 18:46:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5286D850E6;
-	Sun, 22 Sep 2019 18:45:49 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4039C85010;
+	Sun, 22 Sep 2019 18:46:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B1FE11BF475
- for <devel@linuxdriverproject.org>; Sun, 22 Sep 2019 18:45:47 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D146A1BF475
+ for <devel@linuxdriverproject.org>; Sun, 22 Sep 2019 18:46:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9E8A386F13
- for <devel@linuxdriverproject.org>; Sun, 22 Sep 2019 18:45:47 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id CDF4F86F13
+ for <devel@linuxdriverproject.org>; Sun, 22 Sep 2019 18:46:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hW4Rc5+HBtAS for <devel@linuxdriverproject.org>;
- Sun, 22 Sep 2019 18:45:47 +0000 (UTC)
+ with ESMTP id aMn7eVT06wio for <devel@linuxdriverproject.org>;
+ Sun, 22 Sep 2019 18:46:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 037B286BE2
- for <devel@driverdev.osuosl.org>; Sun, 22 Sep 2019 18:45:47 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 5372386BE2
+ for <devel@driverdev.osuosl.org>; Sun, 22 Sep 2019 18:46:34 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B961D20830;
- Sun, 22 Sep 2019 18:45:45 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 16C9E21971;
+ Sun, 22 Sep 2019 18:46:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1569177946;
- bh=BhJwqG++4J9wEY2L8CXnAV4u3Z2d3St1190j766FZvE=;
+ s=default; t=1569177994;
+ bh=UgYhas+Ne82pUddsBnQzmIKiDCnGAB4Tisqknu33vB4=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=1lMdRP75UG5V9xtGKJQ9mWYBgtgvzgZibQ8BMh27FB72G4g1v2FS84iuu7wCsvLGD
- xopA+W4/t87gbqUAI7Xctq0kHmSEt+bVfphJs6foYZB6XgPXfdBhIf80V979Kyxi4q
- LUyN1wnLB3Vz5CwYyCT+4EspieEFIwS1us9u2wrY=
+ b=DcnKPPdNE+BwCuiKQhiUe420xuiDnPZ3hGZFdMXEgg+iswj0Et8ceIpu66PhIyzS4
+ 9xtwaJ6NkhT0RBkG1Nq/g2pbFX/3u1QSX67vNOGW/HcDoI5mNfoLsFyoo0fvN3zM+u
+ Ep6ot950ljYLPJxa4SZI3p4tLdyeq10YARz0n5NY=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.3 054/203] media: staging: tegra-vde: Fix build error
-Date: Sun, 22 Sep 2019 14:41:20 -0400
-Message-Id: <20190922184350.30563-54-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.3 085/203] media: imx: mipi csi-2: Don't fail if
+ initial state times-out
+Date: Sun, 22 Sep 2019 14:41:51 -0400
+Message-Id: <20190922184350.30563-85-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190922184350.30563-1-sashal@kernel.org>
 References: <20190922184350.30563-1-sashal@kernel.org>
@@ -69,54 +70,84 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: Sasha Levin <sashal@kernel.org>, devel@driverdev.osuosl.org,
- linux-tegra@vger.kernel.org,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Ezequiel Garcia <ezequiel@collabora.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Steve Longerbeam <slongerbeam@gmail.com>,
  Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- YueHaibing <yuehaibing@huawei.com>, Hulk Robot <hulkci@huawei.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Dmitry Osipenko <digetx@gmail.com>,
  linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: YueHaibing <yuehaibing@huawei.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
 
-[ Upstream commit 6b2265975239ab655069d796b822835a593e1cc7 ]
+[ Upstream commit 0d5078c7172c46db6c58718d817b9fcf769554b4 ]
 
-If IOMMU_SUPPORT is not set, and COMPILE_TEST is y,
-IOMMU_IOVA may be set to m. So building will fails:
+Not all sensors will be able to guarantee a proper initial state.
+This may be either because the driver is not properly written,
+or (probably unlikely) because the hardware won't support it.
 
-drivers/staging/media/tegra-vde/iommu.o: In function `tegra_vde_iommu_map':
-iommu.c:(.text+0x41): undefined reference to `alloc_iova'
-iommu.c:(.text+0x56): undefined reference to `__free_iova'
+While the right solution in the former case is to fix the sensor
+driver, the real world not always allows right solutions, due to lack
+of available documentation and support on these sensors.
 
-Select IOMMU_IOVA while COMPILE_TEST is set to fix this.
+Let's relax this requirement, and allow the driver to support stream start,
+even if the sensor initial sequence wasn't the expected.
 
-Reported-by: Hulk Robot <hulkci@huawei.com>
-Suggested-by: Dmitry Osipenko <digetx@gmail.com>
-Fixes: b301f8de1925 ("media: staging: media: tegra-vde: Add IOMMU support")
-Signed-off-by: YueHaibing <yuehaibing@huawei.com>
-Acked-by: Dmitry Osipenko <digetx@gmail.com>
-Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Also improve the warning message to better explain the problem and provide
+a hint that the sensor driver needs to be fixed.
+
+Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+Signed-off-by: Fabio Estevam <festevam@gmail.com>
+Reviewed-by: Steve Longerbeam <slongerbeam@gmail.com>
+Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
+Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
 Signed-off-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/staging/media/tegra-vde/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/media/imx/imx6-mipi-csi2.c | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/staging/media/tegra-vde/Kconfig b/drivers/staging/media/tegra-vde/Kconfig
-index 2e7f644ae5911..ba49ea50b8c0b 100644
---- a/drivers/staging/media/tegra-vde/Kconfig
-+++ b/drivers/staging/media/tegra-vde/Kconfig
-@@ -3,7 +3,7 @@ config TEGRA_VDE
- 	tristate "NVIDIA Tegra Video Decoder Engine driver"
- 	depends on ARCH_TEGRA || COMPILE_TEST
- 	select DMA_SHARED_BUFFER
--	select IOMMU_IOVA if IOMMU_SUPPORT
-+	select IOMMU_IOVA if (IOMMU_SUPPORT || COMPILE_TEST)
- 	select SRAM
- 	help
- 	    Say Y here to enable support for the NVIDIA Tegra video decoder
+diff --git a/drivers/staging/media/imx/imx6-mipi-csi2.c b/drivers/staging/media/imx/imx6-mipi-csi2.c
+index f29e28df36ed8..bfa4b254c4e48 100644
+--- a/drivers/staging/media/imx/imx6-mipi-csi2.c
++++ b/drivers/staging/media/imx/imx6-mipi-csi2.c
+@@ -243,7 +243,7 @@ static int __maybe_unused csi2_dphy_wait_ulp(struct csi2_dev *csi2)
+ }
+ 
+ /* Waits for low-power LP-11 state on data and clock lanes. */
+-static int csi2_dphy_wait_stopstate(struct csi2_dev *csi2)
++static void csi2_dphy_wait_stopstate(struct csi2_dev *csi2)
+ {
+ 	u32 mask, reg;
+ 	int ret;
+@@ -254,11 +254,9 @@ static int csi2_dphy_wait_stopstate(struct csi2_dev *csi2)
+ 	ret = readl_poll_timeout(csi2->base + CSI2_PHY_STATE, reg,
+ 				 (reg & mask) == mask, 0, 500000);
+ 	if (ret) {
+-		v4l2_err(&csi2->sd, "LP-11 timeout, phy_state = 0x%08x\n", reg);
+-		return ret;
++		v4l2_warn(&csi2->sd, "LP-11 wait timeout, likely a sensor driver bug, expect capture failures.\n");
++		v4l2_warn(&csi2->sd, "phy_state = 0x%08x\n", reg);
+ 	}
+-
+-	return 0;
+ }
+ 
+ /* Wait for active clock on the clock lane. */
+@@ -316,9 +314,7 @@ static int csi2_start(struct csi2_dev *csi2)
+ 	csi2_enable(csi2, true);
+ 
+ 	/* Step 5 */
+-	ret = csi2_dphy_wait_stopstate(csi2);
+-	if (ret)
+-		goto err_assert_reset;
++	csi2_dphy_wait_stopstate(csi2);
+ 
+ 	/* Step 6 */
+ 	ret = v4l2_subdev_call(csi2->src_sd, video, s_stream, 1);
 -- 
 2.20.1
 
