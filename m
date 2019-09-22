@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D34ACBA408
-	for <lists+driverdev-devel@lfdr.de>; Sun, 22 Sep 2019 20:51:54 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B1C7CBA41A
+	for <lists+driverdev-devel@lfdr.de>; Sun, 22 Sep 2019 20:55:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B11AF85868;
-	Sun, 22 Sep 2019 18:51:52 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 978E587598;
+	Sun, 22 Sep 2019 18:55:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id buUN-diqN-RO; Sun, 22 Sep 2019 18:51:51 +0000 (UTC)
+	with ESMTP id p-8AYaVPvp44; Sun, 22 Sep 2019 18:55:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 50A1185010;
-	Sun, 22 Sep 2019 18:51:50 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E018987522;
+	Sun, 22 Sep 2019 18:55:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 483071BF475
- for <devel@linuxdriverproject.org>; Sun, 22 Sep 2019 18:51:46 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E909D1BF475
+ for <devel@linuxdriverproject.org>; Sun, 22 Sep 2019 18:55:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 44F2385209
- for <devel@linuxdriverproject.org>; Sun, 22 Sep 2019 18:51:46 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E5451204DE
+ for <devel@linuxdriverproject.org>; Sun, 22 Sep 2019 18:55:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DZAwYNRWG88o for <devel@linuxdriverproject.org>;
- Sun, 22 Sep 2019 18:51:45 +0000 (UTC)
+ with ESMTP id vGTSRnaOZnX2 for <devel@linuxdriverproject.org>;
+ Sun, 22 Sep 2019 18:55:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A8A0184E97
- for <devel@driverdev.osuosl.org>; Sun, 22 Sep 2019 18:51:45 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 5B341204BE
+ for <devel@driverdev.osuosl.org>; Sun, 22 Sep 2019 18:55:34 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id D415C21BE5;
- Sun, 22 Sep 2019 18:51:43 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0FE6521D7A;
+ Sun, 22 Sep 2019 18:55:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1569178305;
- bh=UgYhas+Ne82pUddsBnQzmIKiDCnGAB4Tisqknu33vB4=;
+ s=default; t=1569178534;
+ bh=DgPK/T0HZnKx0FixGTBXeg0NyxeriDAR+9mR7HWK4XU=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=noLYj7ie6c+p+EmE10P075hB5XLE7lEotGIqV7+SysfO5iWafAbqizP/SFvvrWK1Y
- A7pnwDTgDH2yV3s/5M8tr3O4R8RSJdFTSpSmRSZ9gHrZswvu6ad4iKKbQZIUthis8V
- H9nKqkRDjOW0Bk/CE8SY+sg7hXPxy2wzlsKqzDAo=
+ b=0Uc4kDDq2ZtdtV1v3I6LYFJQYgD3Vx/3IqplSdwO8sa1LCoM3W4Ctzi31ZKaM2sER
+ s8EEA9HLqt3f7o8k6AVNn3vAAbAZ7oWvWh6V+NK36YtpNNUYU3gR/mdYG/nHqA2vQa
+ ewQrqCLjzT8MvGbmSlLYfu5g1oxk2JyDiIXPqCRY=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.2 076/185] media: imx: mipi csi-2: Don't fail if
+Subject: [PATCH AUTOSEL 4.19 056/128] media: imx: mipi csi-2: Don't fail if
  initial state times-out
-Date: Sun, 22 Sep 2019 14:47:34 -0400
-Message-Id: <20190922184924.32534-76-sashal@kernel.org>
+Date: Sun, 22 Sep 2019 14:53:06 -0400
+Message-Id: <20190922185418.2158-56-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190922184924.32534-1-sashal@kernel.org>
-References: <20190922184924.32534-1-sashal@kernel.org>
+In-Reply-To: <20190922185418.2158-1-sashal@kernel.org>
+References: <20190922185418.2158-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
@@ -111,10 +111,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 4 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/staging/media/imx/imx6-mipi-csi2.c b/drivers/staging/media/imx/imx6-mipi-csi2.c
-index f29e28df36ed8..bfa4b254c4e48 100644
+index ceeeb3069a024..212fa06f7c57c 100644
 --- a/drivers/staging/media/imx/imx6-mipi-csi2.c
 +++ b/drivers/staging/media/imx/imx6-mipi-csi2.c
-@@ -243,7 +243,7 @@ static int __maybe_unused csi2_dphy_wait_ulp(struct csi2_dev *csi2)
+@@ -247,7 +247,7 @@ static int __maybe_unused csi2_dphy_wait_ulp(struct csi2_dev *csi2)
  }
  
  /* Waits for low-power LP-11 state on data and clock lanes. */
@@ -123,7 +123,7 @@ index f29e28df36ed8..bfa4b254c4e48 100644
  {
  	u32 mask, reg;
  	int ret;
-@@ -254,11 +254,9 @@ static int csi2_dphy_wait_stopstate(struct csi2_dev *csi2)
+@@ -258,11 +258,9 @@ static int csi2_dphy_wait_stopstate(struct csi2_dev *csi2)
  	ret = readl_poll_timeout(csi2->base + CSI2_PHY_STATE, reg,
  				 (reg & mask) == mask, 0, 500000);
  	if (ret) {
@@ -137,7 +137,7 @@ index f29e28df36ed8..bfa4b254c4e48 100644
  }
  
  /* Wait for active clock on the clock lane. */
-@@ -316,9 +314,7 @@ static int csi2_start(struct csi2_dev *csi2)
+@@ -320,9 +318,7 @@ static int csi2_start(struct csi2_dev *csi2)
  	csi2_enable(csi2, true);
  
  	/* Step 5 */
