@@ -1,80 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 178A4BA2BA
-	for <lists+driverdev-devel@lfdr.de>; Sun, 22 Sep 2019 14:52:15 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C600FBA2E4
+	for <lists+driverdev-devel@lfdr.de>; Sun, 22 Sep 2019 16:24:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B7A3D87522;
-	Sun, 22 Sep 2019 12:52:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A8544845C3;
+	Sun, 22 Sep 2019 14:24:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id F2U6LFJKkeCE; Sun, 22 Sep 2019 12:52:12 +0000 (UTC)
+	with ESMTP id vsD5T3Qal3p5; Sun, 22 Sep 2019 14:24:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 25D5486E1D;
-	Sun, 22 Sep 2019 12:52:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 84DB384520;
+	Sun, 22 Sep 2019 14:24:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B9DE61BF86B
- for <devel@linuxdriverproject.org>; Sun, 22 Sep 2019 12:52:08 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 47B651BF3BB
+ for <devel@linuxdriverproject.org>; Sun, 22 Sep 2019 14:24:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id A8C7120356
- for <devel@linuxdriverproject.org>; Sun, 22 Sep 2019 12:52:08 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3F6228547F
+ for <devel@linuxdriverproject.org>; Sun, 22 Sep 2019 14:24:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uOEDSSlBizPt for <devel@linuxdriverproject.org>;
- Sun, 22 Sep 2019 12:52:07 +0000 (UTC)
+ with ESMTP id VAkNxkLvYHpP for <devel@linuxdriverproject.org>;
+ Sun, 22 Sep 2019 14:24:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
- [209.85.214.196])
- by silver.osuosl.org (Postfix) with ESMTPS id 522C020017
- for <devel@driverdev.osuosl.org>; Sun, 22 Sep 2019 12:52:07 +0000 (UTC)
-Received: by mail-pl1-f196.google.com with SMTP id 4so5210383pld.10
- for <devel@driverdev.osuosl.org>; Sun, 22 Sep 2019 05:52:07 -0700 (PDT)
+Received: from mail-qk1-f193.google.com (mail-qk1-f193.google.com
+ [209.85.222.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 6B3818547B
+ for <devel@driverdev.osuosl.org>; Sun, 22 Sep 2019 14:24:34 +0000 (UTC)
+Received: by mail-qk1-f193.google.com with SMTP id z67so12609241qkb.12
+ for <devel@driverdev.osuosl.org>; Sun, 22 Sep 2019 07:24:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=sKLhScCWgOfsDXVlInbrZuKIpT4hRH+qtOuuqQUDEG4=;
- b=lyQj8ZJbgU9JzaUunvCjn5Y+xu8s74D5ExHqVym68YZt8gJWEf3GXWuQdzSrNbdvUm
- v7b90YeniA8RYbZPA57OnT0A/GgUtykLzEFXY3sFFbZ4HFVfZgGQs83aydDN7atNLsna
- t6Ff+OaAzm1+tbhL/PSM6/bod5qSUwRXwEdNaSr6NcyM4Ir4UFZq8rnFfWzeclAOfsHW
- 1qEQyeFHW12L7leNo4E42ayYpEILF3fheyXaBr1Mecbl6bCYofJrGb/hdUwP6RBw6/jH
- L6OVh/D4/ONeboKADMDST6cWfaSC7hbnWdVPM2BsNw8JskfG4Yz4G/480KC5w3ZUnzsP
- 63jw==
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=nxamFfzGQMxVC3EoWkNOqWdCNC3v4cbH3EQQXhPiNiE=;
+ b=DV3REy4+SHrXWdyEh87oENW6rR5K+oTdjpXgEyuCztS12cFPnnyBGQbGNMknV9/JU+
+ G5Ok+mCTRMf8SKO/fmTum9NX9l4h2Ug9SniKjboSpWVn9UVz+KtRLtiEy0joNTcfayWb
+ 9QaDOpF68IyPJ4+1z0JBLj6vLDOL1sYo+UiWHvZvHyGxeWaIoWPLCGR+OkwsKDxvXMsl
+ VZwNuvFIYx1LG+k4Fxkex89EZS3hGecMIib5knXkg3UHlMYePMH7Kfy5k5yylqb3synp
+ v4T3PcBG8/6fJAq2AXBWrhIJfZhOa26XEiS+/TEoqnuqc/1hWZBPpb/kBXdLOqZoxWEp
+ QK2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=sKLhScCWgOfsDXVlInbrZuKIpT4hRH+qtOuuqQUDEG4=;
- b=eSTuYvdiTY5UvwdYHuhKKNnJ+piDnKC7rPr7B4BjGuyLHvRGJJy1LFFZdwxbbE+Pje
- 4vgwyb5DR90SyzqdOB9pnb03MIRMy7RHKwyAeI9BGqs5Q0cbNFyeIN26LZy3xuFi6USr
- QCk+Sen5BjBZSfZfTqepJe2EBrTOZ2PxBdAli5l9IuX4zJbWo2L1GWbIrCXF8YZoXIJg
- e6XQsQhdYG7MymSaNwGNt8hKtJq5C3mo3M2BqyV/du2siPbS1pyQ3QoLaego9HZfA6U6
- Phn/0qZ3gfb4x5Z4URgxnEfera1VARPZ7AIHc1GleEhWX1UeB3d1w6tD4ZFNRPXds8DB
- XXjQ==
-X-Gm-Message-State: APjAAAVbpiB9PuelCLaaRstW5NBDSiQZZBXShUDVR1vKld7lLByt9MDj
- fvWq+aU4QgWofCi/gYBaDms=
-X-Google-Smtp-Source: APXvYqzMwSECk5c8LD5zaFuzap+XiIEElaF8lk/6/i9scd9+C4tiGmxZbeWrY56oEfcXcbEOfOr/5Q==
-X-Received: by 2002:a17:902:8f88:: with SMTP id
- z8mr13445780plo.232.1569156726765; 
- Sun, 22 Sep 2019 05:52:06 -0700 (PDT)
-Received: from saurav ([219.91.183.19])
- by smtp.gmail.com with ESMTPSA id n8sm13548552pgt.40.2019.09.22.05.52.03
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=nxamFfzGQMxVC3EoWkNOqWdCNC3v4cbH3EQQXhPiNiE=;
+ b=oyoMBTJHdzK81R4gy/rgeH2/oQZl9YzoMFJ7Ubm/5/U+b+OHoKXLCwldWeKZ7zkrmn
+ w7Inznd09DayfiASJDljjZ7wH9cEX+UCGSXNZ4CuPDobBvPqOVNE61Om4C0Mt5doNre0
+ lIJb6kgkL9YogCtxiVOkW6U/Tn1M7jm0BCh3VpE8cM/AfoJX+tIkMyzbHjPwLFyeCkwd
+ lEd3yH7QClRffSv/SNiH22Co9+KBU8hcfgQm/XXV0kqeGYklfNmDowusDEY/e6fzp0q1
+ CeqMeMeaAeDw1Yf2wMCOUot7QzBlv8Hrg2RC3JnJ/JxLnvPHNWfw4BlHHXS5N6yM6J//
+ XlFA==
+X-Gm-Message-State: APjAAAVe1vUi3bQnY0fQ5k5ZRQRIVUe0wPs+mOe5hexoTizgSLk0DaN8
+ kZS8VzVkB2OpPn2yDQ5a0kI=
+X-Google-Smtp-Source: APXvYqyAeQ3D9FeXd1t/Nw4Ex4oo7+jyyA2oK+Qa3fWHeTAaH411jn4fGI4DJ2uh25/+IhTyIVAdVA==
+X-Received: by 2002:a37:af02:: with SMTP id y2mr13178890qke.305.1569162273352; 
+ Sun, 22 Sep 2019 07:24:33 -0700 (PDT)
+Received: from smtp.gmail.com ([143.107.45.1])
+ by smtp.gmail.com with ESMTPSA id 63sm1835495qkh.82.2019.09.22.07.24.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 22 Sep 2019 05:52:06 -0700 (PDT)
-Date: Sun, 22 Sep 2019 18:22:00 +0530
-From: Saurav Girepunje <saurav.girepunje@gmail.com>
-To: gregkh@linuxfoundation.org;, nishkadg.linux@gmail.com;,
- mamtashukla555@gmail.com;, benniciemanuel78@gmail.com;,
- shobhitkukreti@gmail.com;, puranjay12@gmail.com;,
- devel@driverdev.osuosl.org;, linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: rtl8723bs: os_dep: Remove unused variable
-Message-ID: <20190922125156.GA31623@saurav>
+ Sun, 22 Sep 2019 07:24:32 -0700 (PDT)
+Date: Sun, 22 Sep 2019 11:24:27 -0300
+From: Marcelo Schmitt <marcelo.schmitt1@gmail.com>
+To: "Ardelean, Alexandru" <alexandru.Ardelean@analog.com>
+Subject: Re: [PATCH v2] dt-bindings: iio: accel: add binding documentation
+ for ADIS16240
+Message-ID: <20190922142426.jzodybftlgui3hgx@smtp.gmail.com>
+References: <20190912213929.3664-1-rodrigorsdc@gmail.com>
+ <448e180cc41bfc748d729f3269376b14ba6d3ac9.camel@analog.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <448e180cc41bfc748d729f3269376b14ba6d3ac9.camel@analog.com>
+User-Agent: NeoMutt/20180716
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,75 +88,146 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: saurav.girepunje@hotmail.com
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ "lars@metafoo.de" <lars@metafoo.de>, "Hennerich,
+ Michael" <Michael.Hennerich@analog.com>,
+ "linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "rodrigorsdc@gmail.com" <rodrigorsdc@gmail.com>, kernel-usp@googlegroups.com,
+ "pmeerw@pmeerw.net" <pmeerw@pmeerw.net>, "knaack.h@gmx.de" <knaack.h@gmx.de>,
+ "Popa, Stefan Serban" <StefanSerban.Popa@analog.com>,
+ "jic23@kernel.org" <jic23@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove unused variable ret from functions rtw_mp_ioctl_hdl,
-rtw_get_ap_info, rtw_mp_efuse_set, rtw_tdls, rtw_tdls_get .
+Hi,
 
-Signed-off-by: Saurav Girepunje <saurav.girepunje@gmail.com>
----
- drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 15 +++++----------
- 1 file changed, 5 insertions(+), 10 deletions(-)
+Could anyone with some experience in devicetree give us a hint on what
+to do here?
 
-diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-index 90c2997256b7..a51009963295 100644
---- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-+++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-@@ -2433,8 +2433,7 @@ static  int rtw_drvext_hdl(struct net_device *dev, struct iw_request_info *info,
- static int rtw_mp_ioctl_hdl(struct net_device *dev, struct iw_request_info *info,
- 						union iwreq_data *wrqu, char *extra)
- {
--	int ret = 0;
--	return ret;
-+	return 0;
- }
- 
- static int rtw_get_ap_info(struct net_device *dev,
-@@ -4467,24 +4466,21 @@ static int rtw_mp_efuse_get(struct net_device *dev,
- 			struct iw_request_info *info,
- 			union iwreq_data *wdata, char *extra)
- {
--	int err = 0;
--	return err;
-+	return 0;
- }
- 
- static int rtw_mp_efuse_set(struct net_device *dev,
- 			struct iw_request_info *info,
- 			union iwreq_data *wdata, char *extra)
- {
--	int err = 0;
--	return err;
-+	return 0;
- }
- 
- static int rtw_tdls(struct net_device *dev,
- 				struct iw_request_info *info,
- 				union iwreq_data *wrqu, char *extra)
- {
--	int ret = 0;
--	return ret;
-+	return 0;
- }
- 
- 
-@@ -4492,8 +4488,7 @@ static int rtw_tdls_get(struct net_device *dev,
- 				struct iw_request_info *info,
- 				union iwreq_data *wrqu, char *extra)
- {
--	int ret = 0;
--	return ret;
-+	return 0;
- }
- 
- 
--- 
-2.20.1
+I have built a binding doc using the same spi-cpha property.
+https://github.com/analogdevicesinc/linux/commit/bb2945e489dfdf2faa0255dd2cf09ae4ee77d826
 
+On 09/13, Ardelean, Alexandru wrote:
+> On Thu, 2019-09-12 at 18:39 -0300, Rodrigo Carvalho wrote:
+> > This patch add device tree binding documentation for ADIS16240.
+> > 
+> > Signed-off-by: Rodrigo Ribeiro Carvalho <rodrigorsdc@gmail.com>
+> > ---
+> > V2:
+> >   - Remove true constant for spi-cpha and spi-cpol
+> >   - Add description field for spi-cpha and spi-cpol
+> >   - Add maxItems field for spi-cpha and spi-cpol
+> > 
+> >  .../bindings/iio/accel/adi,adis16240.yaml     | 61 +++++++++++++++++++
+> >  1 file changed, 61 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/iio/accel/adi,adis16240.yaml
+> > 
+> > diff --git a/Documentation/devicetree/bindings/iio/accel/adi,adis16240.yaml
+> > b/Documentation/devicetree/bindings/iio/accel/adi,adis16240.yaml
+> > new file mode 100644
+> > index 000000000000..4b1bd2419604
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/iio/accel/adi,adis16240.yaml
+> > @@ -0,0 +1,61 @@
+> > +# SPDX-License-Identifier: GPL-2.0
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/iio/accel/adi,adis16240.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: ADIS16240 Programmable Impact Sensor and Recorder driver
+> > +
+> > +maintainers:
+> > +  - Alexandru Ardelean <alexandru.ardelean@analog.com>
+> > +
+> > +description: |
+> > +  ADIS16240 Programmable Impact Sensor and Recorder driver that supports
+> > +  SPI interface.
+> > +    https://www.analog.com/en/products/adis16240.html
+> > +
+> > +properties:
+> > +  compatible:
+> > +    enum:
+> > +      - adi,adis16240
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  spi-cpha:
+> > +    description: |
+> > +      See Documentation/devicetree/bindings/spi/spi-controller.yaml
+> > +    maxItems: 1
+> 
+> Description for standard properties is not required.
+> 
+> For spi-cpha/cpol just "true" seems sufficient.
+> 
+> So
+> 
+>      spi-cpha: true
+> 
+>      spi-cpol: true
+> 
+I'm not Rob, but I think it is not necessary to explicitly say the
+property is true. In this case, it should be enough if it is present. If
+needed to know whether some property is "true" or not, one can use the
+of_property_read_bool function. For the AD7292 driver on it was enough
+to just add the property names. The spi-chpa did not need any further
+care. Without the spi-cpha property, the AD7292 vendor ID came as 0x0C
+(one bit shifted to the right).
+
+Rodrigo is participating at FLUSP students group. It would be good if we
+could test whether these properties are really needed. However, I don't
+think we have the ADIS16240 part. Would anyone test it?
+
+> > +
+> > +  spi-cpol: |
+> > +    description: |
+> > +      See Documentation/devicetree/bindings/spi/spi-controller.yaml
+> > +    maxItems: 1
+> > +
+> > +  interrupts:
+> > +    maxItems: 1
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +  - interrupts
+> > +
+> 
+> If spi-cpha & spi-cpol are true, they should typically be also required.
+> Though, I think Rob would answer things better here.
+> 
+Some feedback about the need (or not) to link to the spi-controller doc
+would also be appreciated.
+
+> > +examples:
+> > +  - |
+> > +    #include <dt-bindings/gpio/gpio.h>
+> > +    #include <dt-bindings/interrupt-controller/irq.h>
+> > +    spi0 {
+> > +        #address-cells = <1>;
+> > +        #size-cells = <0>;
+> > +
+> > +        /* Example for a SPI device node */
+> > +        accelerometer@0 {
+> > +            compatible = "adi,adis16240";
+> > +            reg = <0>;
+> > +            spi-max-frequency = <2500000>;
+> > +            spi-cpol;
+> > +            spi-cpha;
+> > +            interrupt-parent = <&gpio0>;
+> > +            interrupts = <0 IRQ_TYPE_LEVEL_HIGH>;
+> > +        };
+> > +    };
+
+Thanks,
+
+Marcelo
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
