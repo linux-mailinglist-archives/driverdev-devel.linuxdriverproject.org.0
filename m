@@ -2,89 +2,78 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4C35CBB6F5
-	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Sep 2019 16:39:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 64613BB740
+	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Sep 2019 16:55:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8C2FF85A03;
-	Mon, 23 Sep 2019 14:39:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B5C16875A7;
+	Mon, 23 Sep 2019 14:55:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id G1lkAyfG6cUH; Mon, 23 Sep 2019 14:39:14 +0000 (UTC)
+	with ESMTP id KoUooQgHCKZa; Mon, 23 Sep 2019 14:55:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0FBED82261;
-	Mon, 23 Sep 2019 14:39:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3BDE186B58;
+	Mon, 23 Sep 2019 14:55:03 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1FC3C1BF2E3
- for <devel@linuxdriverproject.org>; Mon, 23 Sep 2019 14:39:12 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 480B31BF2E3
+ for <devel@linuxdriverproject.org>; Mon, 23 Sep 2019 14:55:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0C17E843FE
- for <devel@linuxdriverproject.org>; Mon, 23 Sep 2019 14:39:12 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 44EC32010B
+ for <devel@linuxdriverproject.org>; Mon, 23 Sep 2019 14:55:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id K-C93Kh72QDo for <devel@linuxdriverproject.org>;
- Mon, 23 Sep 2019 14:39:11 +0000 (UTC)
+ with ESMTP id AUFdn-lHCjGn for <devel@linuxdriverproject.org>;
+ Mon, 23 Sep 2019 14:55:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 867C485778
- for <devel@driverdev.osuosl.org>; Mon, 23 Sep 2019 14:39:11 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x8NEU0rI120863;
- Mon, 23 Sep 2019 14:39:10 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=0EFJp6viAxl+bCsyNdwq6n+ZjY+/kgHFC58awXMJkVs=;
- b=UinXJXmRjS57q+vMuDSdMHY7HUrzliWYxsngxzYIXhTS2PwIX6Kdt5nshkwKH67eGHFH
- 0Xa0FYg3b8fhQkFUdOBlyzHfi+c5kswiKQiwBBD88wdhY9xR6hUD+SQ8DG4JhzlwuXtG
- GetIKc74bJ++nO/4faaVeh3flH9lhUIDb47YujFXCJs1QDD6u5INU8d7g+Z4LXjPcPri
- X6OjPyv7aji79K5DRjtwThFC7s76OSg7joJiiPJhGHs33iIdubSQ5mQ4RGf9XWBkJsCz
- eOxw49QQvAbXl0aatR8a4JDPZ+qdCeLEcJNe+wEymrp8CZATqGfMDUaPok4pKRDvl3S3 0Q== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by userp2130.oracle.com with ESMTP id 2v5b9tfct6-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 23 Sep 2019 14:39:10 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x8NEcvq8181499;
- Mon, 23 Sep 2019 14:39:09 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by aserp3020.oracle.com with ESMTP id 2v6yvpg8cd-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 23 Sep 2019 14:39:09 +0000
-Received: from abhmp0011.oracle.com (abhmp0011.oracle.com [141.146.116.17])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x8NEcNDL018730;
- Mon, 23 Sep 2019 14:38:23 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 23 Sep 2019 07:38:22 -0700
-Date: Mon, 23 Sep 2019 17:38:12 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Saurav Girepunje <saurav.girepunje@gmail.com>
-Subject: Re: [PATCH] staging: rtl8723bs: os_dep: Remove unused variable
-Message-ID: <20190923143812.GJ2959@kadam>
-References: <20190922125156.GA31623@saurav>
+Received: from mail-ed1-f66.google.com (mail-ed1-f66.google.com
+ [209.85.208.66])
+ by silver.osuosl.org (Postfix) with ESMTPS id 69898203CC
+ for <devel@driverdev.osuosl.org>; Mon, 23 Sep 2019 14:55:00 +0000 (UTC)
+Received: by mail-ed1-f66.google.com with SMTP id r4so13174953edy.4
+ for <devel@driverdev.osuosl.org>; Mon, 23 Sep 2019 07:55:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=SlUYkwpj6yu5lfNnzsV0ggIvbULgs9iiQHnWd1Afxa0=;
+ b=HYb0F+L8Uu70AC2b7u/vm9E/UTCUBNxWVvqGtZojbim+5mMU74lFioo671pSDz9P2L
+ W+nJL0RP82Xr2FDuvZimleCdEWnExfBYatWkPRtrlhOCSTl8VeZkgOlu/qwF7YoROd5D
+ P9uqdhVdBlNRlUmMX0mjCx2pQyHbkZgdqDq7bj/9V4K8TxOUB6ReswkEPWhSZ6lhY7pp
+ 8NRA9YLsV0jEazqSmB89y3bzvAFp+0X8fxwsWucNCxNcSFOitHYQKRW9yl8BiWVv79QH
+ EM9Tw4iWZoWXUqI5Q2GpWkV2CYg0GtBk1eha7V2ZCTavuhulrKLfSpTn4HX941Scutf2
+ ZyHA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=SlUYkwpj6yu5lfNnzsV0ggIvbULgs9iiQHnWd1Afxa0=;
+ b=oaJMDgVQTR2eNjVMkUEriEB9uG4hmuFiWUe8NJxjRDIJvieMtztD1EspN4Cx30HgLm
+ pTzb/CNYrneXqJzj4owSIpwLV/oKUdv2X7r7IxsezM71NqQDfYzh7J8s+NmbimEbXhk5
+ 8n3npOvic/sA5RAdwKnfjN22syhJFxufWop0AEmXEFQceueLhcdVZkmX9vqUmfVKh8/a
+ /lVje7F6JdcANRwYQqDzE/7mpkKHEnfBS4WB4aP1O+vFhVTZ2yb6LWpE+93qrzhwK/dE
+ c3rDK74qfduhZWTDrdCvBabG7hbSoJPLHuIHQ8BHoIxC3Mo8DmAB00bQGJShjBhq1UlQ
+ dHSA==
+X-Gm-Message-State: APjAAAXrzTQ/AGZlvW/sWl70Dd/cYPMX2r506i4ETPaMlcP1dB/BDioN
+ qHdtygGsKB4Z4fgBBkiYbRM=
+X-Google-Smtp-Source: APXvYqxdsHr1OP7HdBc78VihnThRuQ0b2LN5hfAfeWkJmkwSi8pr/cq+zIEZpMtI27Sa3oIeCrc5cg==
+X-Received: by 2002:a17:906:5c16:: with SMTP id
+ e22mr256576ejq.105.1569250498627; 
+ Mon, 23 Sep 2019 07:54:58 -0700 (PDT)
+Received: from linux.fritz.box
+ (200116b864096d0082c6903ef0ca246b.dip.versatel-1u1.de.
+ [2001:16b8:6409:6d00:82c6:903e:f0ca:246b])
+ by smtp.googlemail.com with ESMTPSA id n6sm2418866edr.27.2019.09.23.07.54.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 23 Sep 2019 07:54:58 -0700 (PDT)
+From: "Christopher N. Hesse" <raymanfx@gmail.com>
+To: 
+Subject: [PATCH] staging: android: ashmem: Fix zero area size return code
+Date: Mon, 23 Sep 2019 16:54:51 +0200
+Message-Id: <20190923145451.13341-1-raymanfx@gmail.com>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190922125156.GA31623@saurav>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9389
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1908290000 definitions=main-1909230141
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9389
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
- definitions=main-1909230141
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,43 +86,62 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: , devel@driverdev.osuosl.org, puranjay12@gmail.com,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
- mamtashukla555@gmail.com, saurav.girepunje@hotmail.com,
- nishkadg.linux@gmail.com, benniciemanuel78@gmail.com, shobhitkukreti@gmail.com
+Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
+ penguin-kernel@I-love.SAKURA.ne.jp,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ =?UTF-8?q?Arve=20Hj=C3=B8nnev=C3=A5g?= <arve@android.com>,
+ "Christopher N. Hesse" <raymanfx@gmail.com>,
+ Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
+ Christian Brauner <christian@brauner.io>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Sep 22, 2019 at 06:22:00PM +0530, Saurav Girepunje wrote:
-> Remove unused variable ret from functions rtw_mp_ioctl_hdl,
-> rtw_get_ap_info, rtw_mp_efuse_set, rtw_tdls, rtw_tdls_get .
-> 
-> Signed-off-by: Saurav Girepunje <saurav.girepunje@gmail.com>
-> ---
->  drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 15 +++++----------
->  1 file changed, 5 insertions(+), 10 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-> index 90c2997256b7..a51009963295 100644
-> --- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-> +++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-> @@ -2433,8 +2433,7 @@ static  int rtw_drvext_hdl(struct net_device *dev, struct iw_request_info *info,
->  static int rtw_mp_ioctl_hdl(struct net_device *dev, struct iw_request_info *info,
->  						union iwreq_data *wrqu, char *extra)
->  {
-> -	int ret = 0;
-> -	return ret;
-> +	return 0;
+The previous inline comment stated that a size of zero would make the
+ashmem_read_iter function return EOF, but it returned 0 instead.
 
-Someone already sent a better patch which just deletes the whole
-function.
+Looking at other functions, such as ashmem_llseek or ashmem_mmap, it
+appears the convention is to return -EINVAL if the region size is unset or
+zero.
 
-https://marc.info/?l=linux-kernel&m=156879878226402&w=2
+To be consistent with the checks, I changed the one occurrence that used
+the ! operator to compare the size to check against equal-to-zero instead.
 
-regards,
-dan carpenter
+Signed-off-by: Christopher N. Hesse <raymanfx@gmail.com>
+---
+ drivers/staging/android/ashmem.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/android/ashmem.c b/drivers/staging/android/ashmem.c
+index 74d497d39c5a..6af8130db0d7 100644
+--- a/drivers/staging/android/ashmem.c
++++ b/drivers/staging/android/ashmem.c
+@@ -291,9 +291,11 @@ static ssize_t ashmem_read_iter(struct kiocb *iocb, struct iov_iter *iter)
+ 
+ 	mutex_lock(&ashmem_mutex);
+ 
+-	/* If size is not set, or set to 0, always return EOF. */
+-	if (asma->size == 0)
++	/* If size is not set, or set to 0, always return EINVAL. */
++	if (asma->size == 0) {
++		ret = -EINVAL;
+ 		goto out_unlock;
++	}
+ 
+ 	if (!asma->file) {
+ 		ret = -EBADF;
+@@ -359,7 +361,7 @@ static int ashmem_mmap(struct file *file, struct vm_area_struct *vma)
+ 	mutex_lock(&ashmem_mutex);
+ 
+ 	/* user needs to SET_SIZE before mapping */
+-	if (!asma->size) {
++	if (asma->size == 0) {
+ 		ret = -EINVAL;
+ 		goto out;
+ 	}
+-- 
+2.23.0
 
 _______________________________________________
 devel mailing list
