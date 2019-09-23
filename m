@@ -1,74 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 84841BB6D9
-	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Sep 2019 16:34:51 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9C4DE20798;
-	Mon, 23 Sep 2019 14:34:48 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PyD5Lsy07au9; Mon, 23 Sep 2019 14:34:47 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 3F37820762;
-	Mon, 23 Sep 2019 14:34:46 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E4BE81BF2E3
- for <devel@linuxdriverproject.org>; Mon, 23 Sep 2019 14:34:43 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4C35CBB6F5
+	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Sep 2019 16:39:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id DE23686887
- for <devel@linuxdriverproject.org>; Mon, 23 Sep 2019 14:34:43 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8C2FF85A03;
+	Mon, 23 Sep 2019 14:39:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id G1lkAyfG6cUH; Mon, 23 Sep 2019 14:39:14 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0FBED82261;
+	Mon, 23 Sep 2019 14:39:14 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1FC3C1BF2E3
+ for <devel@linuxdriverproject.org>; Mon, 23 Sep 2019 14:39:12 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0C17E843FE
+ for <devel@linuxdriverproject.org>; Mon, 23 Sep 2019 14:39:12 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id h9vInQsF6I9B for <devel@linuxdriverproject.org>;
- Mon, 23 Sep 2019 14:34:42 +0000 (UTC)
+ with ESMTP id K-C93Kh72QDo for <devel@linuxdriverproject.org>;
+ Mon, 23 Sep 2019 14:39:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B3F9186631
- for <devel@driverdev.osuosl.org>; Mon, 23 Sep 2019 14:34:42 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x8NEUVDN112812;
- Mon, 23 Sep 2019 14:34:36 GMT
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 867C485778
+ for <devel@driverdev.osuosl.org>; Mon, 23 Sep 2019 14:39:11 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x8NEU0rI120863;
+ Mon, 23 Sep 2019 14:39:10 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=date : from : to : cc
  : subject : message-id : references : mime-version : content-type :
  in-reply-to; s=corp-2019-08-05;
- bh=alcsSLa68E513tKJ2O0MRtcf47+VLX8X4uBbyUtq6NU=;
- b=GIvqpUG36+mWu6jeiG7tikuOcEOJUNWnPVKyVX8pP1VUfGypbxbezH0IxtO+tI0MKgPc
- X9TB7FAM6NVetD87fBFC9vdHk5M/wLA3cPh5RPzcHhhun2K3Mtbb+bLWQfzvKNDqaeD7
- U0uRXdGC1xYEEzvXE9/fsWc2jjegrXcQ9rqlRJWLNcaJ1bdOHgD8d6vU9Fcj8P1FCcUQ
- U0WS+IuW6bhPBJp3B0RN6COka0lDOPUinjGf2EuojQtzNHuaA0J27Ua1sZ6V3AF1ijwb
- v/sFrtz1gVP52KrAHWmAZTrRRGeaFaRviSM8c2dEFk8IHo8labPG+OZda+m4TMZK5evH 3w== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by userp2120.oracle.com with ESMTP id 2v5cgqq80g-1
+ bh=0EFJp6viAxl+bCsyNdwq6n+ZjY+/kgHFC58awXMJkVs=;
+ b=UinXJXmRjS57q+vMuDSdMHY7HUrzliWYxsngxzYIXhTS2PwIX6Kdt5nshkwKH67eGHFH
+ 0Xa0FYg3b8fhQkFUdOBlyzHfi+c5kswiKQiwBBD88wdhY9xR6hUD+SQ8DG4JhzlwuXtG
+ GetIKc74bJ++nO/4faaVeh3flH9lhUIDb47YujFXCJs1QDD6u5INU8d7g+Z4LXjPcPri
+ X6OjPyv7aji79K5DRjtwThFC7s76OSg7joJiiPJhGHs33iIdubSQ5mQ4RGf9XWBkJsCz
+ eOxw49QQvAbXl0aatR8a4JDPZ+qdCeLEcJNe+wEymrp8CZATqGfMDUaPok4pKRDvl3S3 0Q== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by userp2130.oracle.com with ESMTP id 2v5b9tfct6-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 23 Sep 2019 14:34:36 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x8NEXQ9E098200;
- Mon, 23 Sep 2019 14:34:36 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by userp3030.oracle.com with ESMTP id 2v6yvgr6gh-1
+ Mon, 23 Sep 2019 14:39:10 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x8NEcvq8181499;
+ Mon, 23 Sep 2019 14:39:09 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by aserp3020.oracle.com with ESMTP id 2v6yvpg8cd-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 23 Sep 2019 14:34:36 +0000
-Received: from abhmp0004.oracle.com (abhmp0004.oracle.com [141.146.116.10])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x8NEYXpE017120;
- Mon, 23 Sep 2019 14:34:33 GMT
+ Mon, 23 Sep 2019 14:39:09 +0000
+Received: from abhmp0011.oracle.com (abhmp0011.oracle.com [141.146.116.17])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x8NEcNDL018730;
+ Mon, 23 Sep 2019 14:38:23 GMT
 Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 23 Sep 2019 07:34:33 -0700
-Date: Mon, 23 Sep 2019 17:34:25 +0300
+ with ESMTP ; Mon, 23 Sep 2019 07:38:22 -0700
+Date: Mon, 23 Sep 2019 17:38:12 +0300
 From: Dan Carpenter <dan.carpenter@oracle.com>
 To: Saurav Girepunje <saurav.girepunje@gmail.com>
-Subject: Re: [PATCH] staging: rtl8723bs: core: Drop condition with no effect
-Message-ID: <20190923143339.GI2959@kadam>
-References: <20190922032552.GA9204@saurav>
+Subject: Re: [PATCH] staging: rtl8723bs: os_dep: Remove unused variable
+Message-ID: <20190923143812.GJ2959@kadam>
+References: <20190922125156.GA31623@saurav>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190922032552.GA9204@saurav>
+In-Reply-To: <20190922125156.GA31623@saurav>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9389
  signatures=668685
@@ -97,42 +97,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: , devel@driverdev.osuosl.org, arnd@arndb.de, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, hardiksingh.k@gmail.com, madhumithabiw@gmail.com,
- hdegoede@redhat.com, saurav.girepunje@hotmail.com, nishkadg.linux@gmail.com
+Cc: , devel@driverdev.osuosl.org, puranjay12@gmail.com,
+ gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+ mamtashukla555@gmail.com, saurav.girepunje@hotmail.com,
+ nishkadg.linux@gmail.com, benniciemanuel78@gmail.com, shobhitkukreti@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Sep 22, 2019 at 08:55:56AM +0530, Saurav Girepunje wrote:
-> As the "else if" and "else" branch body are identical the condition
-> has no effect. So drop the "else if" condition
+On Sun, Sep 22, 2019 at 06:22:00PM +0530, Saurav Girepunje wrote:
+> Remove unused variable ret from functions rtw_mp_ioctl_hdl,
+> rtw_get_ap_info, rtw_mp_efuse_set, rtw_tdls, rtw_tdls_get .
 > 
 > Signed-off-by: Saurav Girepunje <saurav.girepunje@gmail.com>
 > ---
->  drivers/staging/rtl8723bs/core/rtw_cmd.c | 10 ----------
->  1 file changed, 10 deletions(-)
+>  drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 15 +++++----------
+>  1 file changed, 5 insertions(+), 10 deletions(-)
 > 
-> diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-> index c6565b0e502c..3f2f9b12cb61 100644
-> --- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
-> +++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-> @@ -507,19 +507,9 @@ int rtw_cmd_thread(void *context)
->  
->  		cmd_process_time = jiffies_to_msecs(jiffies - cmd_start_time);
->  		if (cmd_process_time > 1000) {
-> -			if (pcmd->cmdcode == GEN_CMD_CODE(_Set_Drv_Extra)) {
-> -				DBG_871X(ADPT_FMT" cmd =%d process_time =%lu > 1 sec\n",
-> -					ADPT_ARG(pcmd->padapter), pcmd->cmdcode, cmd_process_time);
-> -				/* rtw_warn_on(1); */
-> -			} else if (pcmd->cmdcode == GEN_CMD_CODE(_Set_MLME_EVT)) {
->  				DBG_871X(ADPT_FMT" cmd =%d, process_time =%lu > 1 sec\n",
->  					ADPT_ARG(pcmd->padapter), pcmd->cmdcode, cmd_process_time);
->  				/* rtw_warn_on(1); */
+> diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+> index 90c2997256b7..a51009963295 100644
+> --- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+> +++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+> @@ -2433,8 +2433,7 @@ static  int rtw_drvext_hdl(struct net_device *dev, struct iw_request_info *info,
+>  static int rtw_mp_ioctl_hdl(struct net_device *dev, struct iw_request_info *info,
+>  						union iwreq_data *wrqu, char *extra)
+>  {
+> -	int ret = 0;
+> -	return ret;
+> +	return 0;
 
-This is indented too far now.  You may was well delete the /* rtw_warn_on(1); */
-line as well.
+Someone already sent a better patch which just deletes the whole
+function.
+
+https://marc.info/?l=linux-kernel&m=156879878226402&w=2
 
 regards,
 dan carpenter
