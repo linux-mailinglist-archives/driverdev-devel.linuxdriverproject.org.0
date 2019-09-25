@@ -1,80 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2487EBD948
-	for <lists+driverdev-devel@lfdr.de>; Wed, 25 Sep 2019 09:42:59 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 66FE1BD9AF
+	for <lists+driverdev-devel@lfdr.de>; Wed, 25 Sep 2019 10:18:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EEA1586645;
-	Wed, 25 Sep 2019 07:42:56 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A7BA485F2D;
+	Wed, 25 Sep 2019 08:18:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8cpwoarfPfUC; Wed, 25 Sep 2019 07:42:56 +0000 (UTC)
+	with ESMTP id KnLWHy-2VtNT; Wed, 25 Sep 2019 08:18:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 937F286429;
-	Wed, 25 Sep 2019 07:42:55 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C1A6184520;
+	Wed, 25 Sep 2019 08:18:46 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 934011BF3D6
- for <devel@linuxdriverproject.org>; Wed, 25 Sep 2019 07:42:53 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C08E01BF3EC
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 25 Sep 2019 08:18:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8FB9586429
- for <devel@linuxdriverproject.org>; Wed, 25 Sep 2019 07:42:53 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 8DC9C879A3
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 25 Sep 2019 08:18:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id u5qRLkNizBOA for <devel@linuxdriverproject.org>;
- Wed, 25 Sep 2019 07:42:51 +0000 (UTC)
+ with ESMTP id npWhuecyBjix
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 25 Sep 2019 08:18:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f170.google.com (mail-pg1-f170.google.com
- [209.85.215.170])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A1A5486410
- for <devel@driverdev.osuosl.org>; Wed, 25 Sep 2019 07:42:51 +0000 (UTC)
-Received: by mail-pg1-f170.google.com with SMTP id a24so2741455pgj.2
- for <devel@driverdev.osuosl.org>; Wed, 25 Sep 2019 00:42:51 -0700 (PDT)
+Received: from mail-pf1-f182.google.com (mail-pf1-f182.google.com
+ [209.85.210.182])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1E23687889
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 25 Sep 2019 08:18:43 +0000 (UTC)
+Received: by mail-pf1-f182.google.com with SMTP id q10so2948980pfl.0
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 25 Sep 2019 01:18:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=puF3UNYaJSZMgESC66NJjpK9rhx4xQJhi0e+qQB9l2E=;
- b=GoMqTIieZ8SyZHDOYFDZjiSJ1Q0+ttpr9XBdWpqkHXC6f8iZwjejVQjwmtF1e/eR9S
- KYPnjF4TqQZExSS1xQIRCwTipc8F67nVv5gUt7Q5OMlBxnnsObBkGXCyso/3AtYfEt18
- NIxfXNPEDTWz2Xf+AyKsf6GzKFnXNrWmd0XmactZH8lcp6ijuCho5QQ7a9MR6YQ71T1C
- oTwPL62B057CtHlSR8s9d3wVve2pMp33fX/DTCO6x0DBTrJvftT00eAn3pCjHlCx63EN
- WybPM5C2BnK42hdPz8HPg41fl6/t1ZvzKjJaKGm5DNSRzsCiGRurK4pwPZtcNWS1hsiw
- DCIA==
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=MBIv4exBMsbFSU5ZS4hQ7aZv5Y8krcLJtoEmNe+3N4A=;
+ b=NJcpkrKl3GW6YHN9/inzdAa5eQvIAG4CgUP37EjpPaxhz/NWcnjzqhxcPXB2lHoqVN
+ 7KEzy7w8+WYf8jobfIXPiewuppcLUjHBm6rWtb8u3abR/sPacZLIdrxKAGti0C82NqvA
+ zebEGOT7W6tmw863P75ccsQgwQMR5tt+VQbjtC3b5+qoOt+2HpCVVl0v99MtLliYWpg9
+ 70wfP0J+Nd5oTec7dKzTsnvfXODIviXd25SXABfrVRXGFilBLtR/aOT1DPjm3PGczStv
+ 23feoeCzP4Dba5qAE4tBuZbgWk6mNMw4Q2bBlizjb65YCfIXr29nbS+qlJ5g9UWWty9y
+ gEpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=puF3UNYaJSZMgESC66NJjpK9rhx4xQJhi0e+qQB9l2E=;
- b=FIJsyhkzgVZFXmH7Yg6C6adH0KNaO0G9k9fb6hi0FCAfxqrKYLje3kY1dpK2wJPKvD
- DYcp5jNichyoZO3fN8g+RBBDmuBjjg7/ZKCM+8uQu9JHC8sFACcAJX9t8D0psEC0k/Fa
- L/IAqC2J9149gK16UK4AxggLmKYSocDKLwHKeyING0loAHXC9yBDz1A2oVtUQZqIIove
- KBWyFCFFqSualFuriyAwRg20aaZ0IpJ7rMJyxLP3YAbyaf8QtoTPGHUoDcrx28Qtb2sD
- dAaSH4McLFG7hfJSflad6u/ZJf6AUzuVE3hUuUYZWc5NNXUkIZ0s2lotYuUFAn8ZxH0P
- 55OA==
-X-Gm-Message-State: APjAAAVr1jdxDYZQYo/cRL9i4jMg3+26AjaYF6GHezekvp3NSp+9xu6e
- 1DvG8Uz3NSv9ZB//q40hOqU=
-X-Google-Smtp-Source: APXvYqwUSHV12jCHjZxOw7gvGkcSMh0LGzZ9s7Q+jQ9p7Rthi1qBOlQRrXjdXbDjtrSI4faXBe7oZA==
-X-Received: by 2002:a62:27c3:: with SMTP id n186mr8057476pfn.58.1569397371038; 
- Wed, 25 Sep 2019 00:42:51 -0700 (PDT)
-Received: from compute1 ([210.200.12.126])
- by smtp.gmail.com with ESMTPSA id l189sm4896907pgd.46.2019.09.25.00.42.49
- (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Wed, 25 Sep 2019 00:42:50 -0700 (PDT)
-Date: Wed, 25 Sep 2019 15:42:43 +0800
-From: Jerry Lin <wahahab11@gmail.com>
-To: Jens Frederich <jfrederich@gmail.com>, Daniel Drake <dsd@laptop.org>,
- Jon Nettleton <jon.nettleton@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Jerry Lin <wahahab11@gmail.com>
-Subject: [PATCH v2] staging: olpc_dcon: fix wrong dependencies in Kconfig file
-Message-ID: <20190925074243.GA24947@compute1>
+ bh=MBIv4exBMsbFSU5ZS4hQ7aZv5Y8krcLJtoEmNe+3N4A=;
+ b=OQA5txFQOo9f3w670cDMbf8nNslndBYpG2dhr9MwrQwGV7xkw62eB5GTGzAEtbzMkv
+ +MOallw2l8CTrJqQW9l9N0Hw8znPO6wSwbqj1/ozwVZ37o8zcWHccxGM1jmjNGf7vPSr
+ Q2nVUmfK91mW+eOg90w4mch1jtobuEhiE+PgH1tgB2GL9peeUWjMGSICzQ8Bvra8UccX
+ Ckr4Ea5WiFDUIBbC6PvR+NDJ9cAEpix0X7xLbl9SCIEBWlWrIdfWMPVOB4PuO8l8xqXZ
+ AF3ShOnaZU5hIbCGmQo5Giecyb+CtMe67AAYuGWN/kND5NIuE6PQYy/I3HNRhfX/GEmU
+ IrLA==
+X-Gm-Message-State: APjAAAUPlODKNcML32/UqJ7KnjaEVSPySTBgp8OjR++Ry345hEkxOkaR
+ Ftx5ecaT6ZSj5EdVDjujnMx7sY780M8jhw==
+X-Google-Smtp-Source: APXvYqxDsuIHmJIhwyamewaH/a7m0g1m8Ql6oJRGy8hWgRKodPlhvFNhT3klu7XG9iBpAh9VFAPGFg==
+X-Received: by 2002:a63:d909:: with SMTP id r9mr7522331pgg.381.1569399522114; 
+ Wed, 25 Sep 2019 01:18:42 -0700 (PDT)
+Received: from SARKAR ([1.186.12.91])
+ by smtp.gmail.com with ESMTPSA id q132sm4877466pfq.16.2019.09.25.01.18.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 25 Sep 2019 01:18:41 -0700 (PDT)
+Date: Wed, 25 Sep 2019 13:48:37 +0530
+From: Rohit Sarkar <rohitsarkar5398@gmail.com>
+To: linux-iio@vger.kernel.org
+Subject: Hardware prerequisites for driver development
+Message-ID: <20190925081836.GA22717@SARKAR>
 MIME-Version: 1.0
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,39 +88,22 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: driverdev-devel@linuxdriverproject.org, linux-newbie@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-To allow simultaneous support for XO-1 and XO-1.5.
-This module require GPIO_CS5535 (for 1.0) and ACPI (for 1.5) now.
+Hi,
+This is probably a real rookie question.
+I have been interested in contributing to the driver subsystems such as
+iio. I have submitted some minor patches but nothing substantial.
+I feel that I need some hardware to be able to contribute more.
+What hardware would I need to get started?
+Where would I get this from?
 
-Reported-by: kbuild test robot <lkp@intel.com>
-Signed-off-by: Jerry Lin <wahahab11@gmail.com>
----
-Changes in v2:
-    - Remove the parentheses
----
- drivers/staging/olpc_dcon/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/olpc_dcon/Kconfig b/drivers/staging/olpc_dcon/Kconfig
-index 4ae271f..d1a0dea 100644
---- a/drivers/staging/olpc_dcon/Kconfig
-+++ b/drivers/staging/olpc_dcon/Kconfig
-@@ -3,7 +3,7 @@ config FB_OLPC_DCON
- 	tristate "One Laptop Per Child Display CONtroller support"
- 	depends on OLPC && FB
- 	depends on I2C
--	depends on (GPIO_CS5535 || ACPI)
-+	depends on GPIO_CS5535 && ACPI
- 	select BACKLIGHT_CLASS_DEVICE
- 	help
- 	  In order to support very low power operation, the XO laptop uses a
--- 
-2.7.4
-
+Thanks,
+Rohit
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
