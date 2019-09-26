@@ -2,78 +2,82 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC05BBF647
-	for <lists+driverdev-devel@lfdr.de>; Thu, 26 Sep 2019 17:55:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 28619BF74F
+	for <lists+driverdev-devel@lfdr.de>; Thu, 26 Sep 2019 19:04:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D9D36862D4;
-	Thu, 26 Sep 2019 15:55:47 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 417A581E6F;
+	Thu, 26 Sep 2019 17:04:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yqgrq9KOmkqh; Thu, 26 Sep 2019 15:55:47 +0000 (UTC)
+	with ESMTP id Q-mtR-zWQRkU; Thu, 26 Sep 2019 17:04:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BA9AF86287;
-	Thu, 26 Sep 2019 15:55:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 03B41844D4;
+	Thu, 26 Sep 2019 17:04:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3DCDA1BF3E8
- for <devel@linuxdriverproject.org>; Thu, 26 Sep 2019 15:55:45 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 18BB91BF326
+ for <devel@linuxdriverproject.org>; Thu, 26 Sep 2019 17:04:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3A5A686092
- for <devel@linuxdriverproject.org>; Thu, 26 Sep 2019 15:55:45 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 14C76862D4
+ for <devel@linuxdriverproject.org>; Thu, 26 Sep 2019 17:04:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tv2d0QU_z93y for <devel@linuxdriverproject.org>;
- Thu, 26 Sep 2019 15:55:44 +0000 (UTC)
+ with ESMTP id BZSdS8AJTDg1 for <devel@linuxdriverproject.org>;
+ Thu, 26 Sep 2019 17:04:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
- [209.85.128.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id BA8DE86079
- for <devel@driverdev.osuosl.org>; Thu, 26 Sep 2019 15:55:43 +0000 (UTC)
-Received: by mail-wm1-f65.google.com with SMTP id r19so3381899wmh.2
- for <devel@driverdev.osuosl.org>; Thu, 26 Sep 2019 08:55:43 -0700 (PDT)
+Received: from mail-oi1-f194.google.com (mail-oi1-f194.google.com
+ [209.85.167.194])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id CF9B38629C
+ for <devel@driverdev.osuosl.org>; Thu, 26 Sep 2019 17:04:08 +0000 (UTC)
+Received: by mail-oi1-f194.google.com with SMTP id k9so2732016oib.7
+ for <devel@driverdev.osuosl.org>; Thu, 26 Sep 2019 10:04:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=+pFOILDteLs1G9dcmBbAs9+Xx43dXKfMhbXX78aolpU=;
- b=ocEzXFyrDMDNNTqDxb6k2SzrmJrAsPAnZirHH3Kvzd5rbCXfsxdIOtsIGnd+UTNRNM
- yahWX2QAcH4oGusJldWBOlivyIYR0Nug8t8JiTTsmd9XY9ICKH9D8nbfTOpA665/ex5U
- hKOlqQk2mxrR9K4rCC0pztbWeO5xjwYrYhqK6voqQ11h9RnIUDN7C+9UWe4f4bbiiSa+
- /yeFFm2RhU3cdlaBUYWoVQlJ603zASrg32UWVaDKXU0mERpCqcEtyzUz2RkvvghMwDYW
- DwQhLl+grXBeqP0l8jFnctZuYTt2X4uE8DFsqQgdeIj4kJtNxnXTFtbW51MLCKpsJGNG
- lHxQ==
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=D+LB+cTP0kzVzafxVlKyUQOuNnEa52qRrfQZbeKZv2U=;
+ b=eekWS5lE0DEQysy5LMYTYo7Y0ZzMtbnZiPmwZTS4naNU+utBj+QKWIesS1sNHebz6W
+ kiPm4JsvCkwRxJ2Qyp+XfYRj48qNx2zCp3yheawU2JYak4QWtngTLpOG/3Lkwu2YhCbF
+ WB3UkEQgqgFLdo8jgBvozlHLJb95vk9wWFd/PX800jxDsF4haTrd4K0kr5wmw2DjObP6
+ fqcSFjSxNFzq160Z4l4LyEXMOtnw3zrnw1PcLcHuCUY+8kWAzksCTIXjgg1eIUWvDR4f
+ VT+CfYzsfVOCnnT/UCNPHvkgRNCyyPP46gerUwmi1lgxfsoIysvW1I6HaX0RTNz+RVP/
+ upRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=+pFOILDteLs1G9dcmBbAs9+Xx43dXKfMhbXX78aolpU=;
- b=OhL9CNIkU8a0+q2wxo5WkrEWu8PwE1I4In6pv9SI1YS2/Sc1Ga9ZQW4etvw9bqDKZH
- gUlcU+q8A4rx8wgm/gHYZ0huElS5YNDFXCLfkrWqoQmHkSeRjId6VfxpP5aYhD8QRNon
- WtSBKQTDYPNZ4MEeCv8hN0hsX2dNPty9usGVpRZywu4bR5iFwQ+6/oeS0ZG52tttBPNT
- 37Ed21AlGBp3OsimNc0yP34Ja+zp8duGxAPCXoDKb10A/8kc8xjr5sdez4eXlE1GaCqF
- 3OQxVU2cRKyi293Ns2ZDJlMKdM92Lsepg+LP97FlH3Evu1KYOvnoG1Z4OI1EoMZpP+aA
- 48YA==
-X-Gm-Message-State: APjAAAUbtm1CuUb26Y+xApYKjfJVLHmJDYVkdNrFnLp37i73pfH++s00
- 0fZT1PJBPdRmE9gBc9aRYX8=
-X-Google-Smtp-Source: APXvYqxJR/GW0YsDT3R3ajEjRVC+xU5wALlX3bWVdIz9CTZ5KKgsTQGUDT72X5cUhJGh7HwgBkbQIw==
-X-Received: by 2002:a1c:c1cc:: with SMTP id r195mr3854113wmf.50.1569513342192; 
- Thu, 26 Sep 2019 08:55:42 -0700 (PDT)
-Received: from sausagefarm (31-34-101-110.abo.bbox.fr. [31.34.101.110])
- by smtp.gmail.com with ESMTPSA id p7sm3902157wma.34.2019.09.26.08.55.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 26 Sep 2019 08:55:41 -0700 (PDT)
-Date: Thu, 26 Sep 2019 17:55:39 +0200
-From: Jeeeun Evans <jeeeunevans@gmail.com>
-To: rmfrfs@gmail.com, slongerbeam@gmail.com, p.zabel@pengutronix.de,
- mchehab@kernel.org, gregkh@linuxfoundation.org, shawnguo@kernel.org,
- s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
- linux-imx@nxp.com
-Subject: [PATCH] staging: media: imx: Use devm_platform_ioremap_resource().
-Message-ID: <20190926155539.GA20744@sausagefarm>
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=D+LB+cTP0kzVzafxVlKyUQOuNnEa52qRrfQZbeKZv2U=;
+ b=m9hze/Eos05GIvUfL+gTFeU0GP7PC5oLjq/tm04xUr4lK+80A3MoUeLIc6Gov+ysJo
+ xizYfOTbHgSUGWtnNML4fEsKHWLfFS3xZsMF72u8LunovLefszso5Tk1nrUTkZxFkgGJ
+ 6ktce4e4HdyisVHynqDZLg14/OZkMoNsMU9WAMkjUG/KxHsStInquLhjlOQnHJvGWbnr
+ KD7UDeb0CKclmWdnk6icaxAeaNHlzksEpT5hIR/mJcHTcoJwwumufBDq0UF0cMCXiS6R
+ 310vEagv/p12NNaUikc2W0liOFokaUIcpvr/UF14am0/HSsrLMLRCZC2y9m5cTynNfgC
+ Os3g==
+X-Gm-Message-State: APjAAAVSQSrJsnlMJsOALUJK56ScKUXgoZMlzpFym2KmmqhPrKXO/uUk
+ QsvOIfifZQjV6nk2vdIcC1U=
+X-Google-Smtp-Source: APXvYqywEhZq0Xx3WldtoPkbK7Ztka7DxSjmPgb7/bZ+Y4ZuXoDcNgiezqv9mvFy9PUMLzLL8ENXjQ==
+X-Received: by 2002:aca:c505:: with SMTP id v5mr3284814oif.79.1569517447893;
+ Thu, 26 Sep 2019 10:04:07 -0700 (PDT)
+Received: from [192.168.1.112] (cpe-24-31-245-230.kc.res.rr.com.
+ [24.31.245.230])
+ by smtp.gmail.com with ESMTPSA id y16sm803729otg.7.2019.09.26.10.04.06
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 26 Sep 2019 10:04:06 -0700 (PDT)
+Subject: Re: [PATCH v2] staging: rtl8188eu: fix possible null dereference
+To: Connor Kuehl <connor.kuehl@canonical.com>, gregkh@linuxfoundation.org,
+ straube.linux@gmail.com, devel@driverdev.osuosl.org
+References: <20190926150317.5894-1-connor.kuehl@canonical.com>
+From: Larry Finger <Larry.Finger@lwfinger.net>
+Message-ID: <c0601b1f-9366-fbc7-7da8-9b00df94483a@lwfinger.net>
+Date: Thu, 26 Sep 2019 12:04:05 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.0
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20190926150317.5894-1-connor.kuehl@canonical.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,48 +90,61 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch fixes a warning by coccicheck:
-drivers/staging/media/imx/imx7-mipi-csis.c:973:1-12: WARNING: Use devm_platform_ioremap_resource for state -> regs
+On 9/26/19 10:03 AM, Connor Kuehl wrote:
+> Inside a nested 'else' block at the beginning of this function is a
+> call that assigns 'psta' to the return value of 'rtw_get_stainfo()'.
+> If 'rtw_get_stainfo()' returns NULL and the flow of control reaches
+> the 'else if' where 'psta' is dereferenced, then we will dereference
+> a NULL pointer.
+> 
+> Fix this by checking if 'psta' is not NULL before reading its
+> 'psta->qos_option' data member.
+> 
+> Addresses-Coverity: ("Dereference null return value")
+> 
+> Signed-off-by: Connor Kuehl <connor.kuehl@canonical.com>
+> ---
+> v1 -> v2:
+>    - Add the same null check to line 779
+> 
+>   drivers/staging/rtl8188eu/core/rtw_xmit.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8188eu/core/rtw_xmit.c b/drivers/staging/rtl8188eu/core/rtw_xmit.c
+> index 952f2ab51347..c37591657bac 100644
+> --- a/drivers/staging/rtl8188eu/core/rtw_xmit.c
+> +++ b/drivers/staging/rtl8188eu/core/rtw_xmit.c
+> @@ -776,7 +776,7 @@ s32 rtw_make_wlanhdr(struct adapter *padapter, u8 *hdr, struct pkt_attrib *pattr
+>   			memcpy(pwlanhdr->addr2, get_bssid(pmlmepriv), ETH_ALEN);
+>   			memcpy(pwlanhdr->addr3, pattrib->src, ETH_ALEN);
+>   
+> -			if (psta->qos_option)
+> +			if (psta && psta->qos_option)
+>   				qos_option = true;
+>   		} else if (check_fwstate(pmlmepriv, WIFI_ADHOC_STATE) ||
+>   			   check_fwstate(pmlmepriv, WIFI_ADHOC_MASTER_STATE)) {
+> @@ -784,7 +784,7 @@ s32 rtw_make_wlanhdr(struct adapter *padapter, u8 *hdr, struct pkt_attrib *pattr
+>   			memcpy(pwlanhdr->addr2, pattrib->src, ETH_ALEN);
+>   			memcpy(pwlanhdr->addr3, get_bssid(pmlmepriv), ETH_ALEN);
+>   
+> -			if (psta->qos_option)
+> +			if (psta && psta->qos_option)
+>   				qos_option = true;
+>   		} else {
+>   			RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("fw_state:%x is not allowed to xmit frame\n", get_fwstate(pmlmepriv)));
+> 
 
-Use devm_platform_ioremap_resource helper which wraps platform_get_resource()
-and devm_ioremap_resource() together.
+Acked-by: Larry Finger <Larry.Finger@lwfinger.net>
 
-Signed-off-by: Jeeeun Evans <jeeeunevans@gmail.com>
----
- drivers/staging/media/imx/imx7-mipi-csis.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+Thanks,
 
-diff --git a/drivers/staging/media/imx/imx7-mipi-csis.c b/drivers/staging/media/imx/imx7-mipi-csis.c
-index 73d8354e618c..bf21db38441f 100644
---- a/drivers/staging/media/imx/imx7-mipi-csis.c
-+++ b/drivers/staging/media/imx/imx7-mipi-csis.c
-@@ -947,7 +947,6 @@ static void mipi_csis_debugfs_exit(struct csi_state *state)
- static int mipi_csis_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
--	struct resource *mem_res;
- 	struct csi_state *state;
- 	int ret;
- 
-@@ -969,8 +968,7 @@ static int mipi_csis_probe(struct platform_device *pdev)
- 	mipi_csis_phy_init(state);
- 	mipi_csis_phy_reset(state);
- 
--	mem_res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	state->regs = devm_ioremap_resource(dev, mem_res);
-+	state->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(state->regs))
- 		return PTR_ERR(state->regs);
- 
--- 
-2.20.1
+Larry
 
 _______________________________________________
 devel mailing list
