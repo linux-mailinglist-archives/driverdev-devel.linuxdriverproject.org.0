@@ -1,63 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 114D2BF0D9
-	for <lists+driverdev-devel@lfdr.de>; Thu, 26 Sep 2019 13:08:58 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 12D43BF282
+	for <lists+driverdev-devel@lfdr.de>; Thu, 26 Sep 2019 14:07:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6E52A86168;
-	Thu, 26 Sep 2019 11:08:56 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id F2C1D87E3F;
+	Thu, 26 Sep 2019 12:07:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id urH29KGSUn-3; Thu, 26 Sep 2019 11:08:55 +0000 (UTC)
+	with ESMTP id ERzsyYtKJ7EC; Thu, 26 Sep 2019 12:07:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A741386169;
-	Thu, 26 Sep 2019 11:08:54 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 702DB87DAF;
+	Thu, 26 Sep 2019 12:07:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2447F1BF857
- for <devel@linuxdriverproject.org>; Thu, 26 Sep 2019 11:08:50 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 45B7D1BF33C
+ for <devel@linuxdriverproject.org>; Thu, 26 Sep 2019 12:07:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 09BFC86169
- for <devel@linuxdriverproject.org>; Thu, 26 Sep 2019 11:08:50 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 40163861F9
+ for <devel@linuxdriverproject.org>; Thu, 26 Sep 2019 12:07:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MieoUFqpMM49 for <devel@linuxdriverproject.org>;
- Thu, 26 Sep 2019 11:08:48 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.sp2multi.com.br (mail.sp2multi.com.br [138.185.4.13])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D860B86168
- for <devel@driverdev.osuosl.org>; Thu, 26 Sep 2019 11:08:47 +0000 (UTC)
-Received: from User (unknown [185.112.248.252])
- (Authenticated sender: victor@sp2multi.com.br)
- by mail.sp2multi.com.br (Postfix) with ESMTPA id CF0044AC97;
- Wed, 25 Sep 2019 22:24:42 -0300 (-03)
-From: "Ms Albe"<manuel.joya@napresa.com.mx>
-Subject: {Spam?} Ask:
-Date: Wed, 25 Sep 2019 18:24:59 -0700
+ with ESMTP id 3iv7i0TXoFHe for <devel@linuxdriverproject.org>;
+ Thu, 26 Sep 2019 12:07:32 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ed1-f65.google.com (mail-ed1-f65.google.com
+ [209.85.208.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 8A472861F1
+ for <devel@linuxdriverproject.org>; Thu, 26 Sep 2019 12:07:32 +0000 (UTC)
+Received: by mail-ed1-f65.google.com with SMTP id h33so1723177edh.12
+ for <devel@linuxdriverproject.org>; Thu, 26 Sep 2019 05:07:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=4kdRQh2RBnKVNiw/sK5zF5fAJlJg/+xzw8chsJkNqc4=;
+ b=IneNk5tCbi1MKMZHwTC00RMq+guMvzSW34OwZg33wFqDweihOVhHhA9yHYodyxLoOn
+ fQWGMC0yqNwV7qptENM0guLu9VyzC8siNHJKojkKjrxPRT3QRqfdWZomvy/dMC0aKsKN
+ UuaHmUTmLCM0F1rj8inzzq6+YO6Y7VqUgxiTWHly2xbA/b1O9/C6Y9cUX+ZYxopeB1OX
+ eqFk7QxMCyocysB3ZuA8BnHdmazLejpRo3nSJKZnVt6LlOkYZzGvJtVMnfQKuY9vhToe
+ 0VzJgzaKVwMlg21f/Li08nVk2QdOHCiGlXrCY241uTRTffh7d5SE41553v/wuhlTqEyv
+ gj7w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=4kdRQh2RBnKVNiw/sK5zF5fAJlJg/+xzw8chsJkNqc4=;
+ b=jtjFyFwbl1pVfj2IWUqyGGK8QJzrzw+5s5SuvjDUvLVTX+ZZ1tuZRqpVpwtPb16eJn
+ mcRbDgEBpBsj8Bg3gEtGOV6+P+05VP7Z8PeoW5rUTUSd8bkZ4Yy+jW9cwO3uGf6+D+VD
+ H3tBp1On91h3JKX9QJqO4R0nZltOYNXZ0LcTL5N5E00LgL7nOMyY3YVzaTnp3Iz0kcWt
+ n5JxY80liLrfL1KSQEfkxoGErLBNDtKyieeXXEA1m69dEcT/wYQli2XyJJliIVbyh7jo
+ +TApW67QxBoKxKDJXg/CUMNZC3TWEHEMVIlaKvVsu9dpUkV5Iu0Y5nV0qoVyRNB7O0na
+ TtQA==
+X-Gm-Message-State: APjAAAUqRHxaBYGo09ZywvCwreP+FuA5gYgI1vf+BsvYYWsl9p+LgvuN
+ kHUNxRPiqIs0Uzn0LYduu7tu0nbdpkDR9dhKUXs=
+X-Google-Smtp-Source: APXvYqzwYV7HXMsXQP1GY4i8eNYOb0XSS7XJaWGhs+CvoQKsJn4ZKg5XGMczGhOZQpSY/IMOEEgZnQG47cI4ZtJIjKM=
+X-Received: by 2002:a50:a939:: with SMTP id l54mr3167834edc.214.1569499650960; 
+ Thu, 26 Sep 2019 05:07:30 -0700 (PDT)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20190926012442.CF0044AC97@mail.sp2multi.com.br>
-X-SP2Max-MailScanner-Information: Please contact the ISP for more information
-X-SP2Max-MailScanner-ID: CF0044AC97.AF88D
-X-SP2Max-MailScanner: Sem Virus encontrado
-X-SP2Max-MailScanner-SpamCheck: spam, SpamAssassin (escore=27.906,
- requerido 6, ALL_TRUSTED -1.00, AXB_XMAILER_MIMEOLE_OL_024C2 3.62,
- BAYES_20 -0.00, FORGED_MUA_OUTLOOK 1.93,
- FREEMAIL_FORGED_REPLYTO 2.10, FROM_MISSPACED 2.00,
- FROM_MISSP_MSFT 1.22, FROM_MISSP_USER 0.78, FROM_MISSP_XPRIO 2.50,
- FSL_CTYPE_WIN1251 3.40, FSL_NEW_HELO_USER 1.70, MISSING_HEADERS 1.02,
- MSM_PRIO_REPTO 1.65, MSOE_MID_WRONG_CASE 2.58,
- NSL_RCVD_FROM_USER 0.35, REPLYTO_WITHOUT_TO_CC 1.55,
- TO_NO_BRKTS_FROM_MSSP 2.50)
-X-SP2Max-MailScanner-SpamScore: sssssssssssssssssssssssssss
-X-SP2Max-MailScanner-From: manuel.joya@napresa.com.mx
+Received: by 2002:a50:ef03:0:0:0:0:0 with HTTP; Thu, 26 Sep 2019 05:07:30
+ -0700 (PDT)
+From: "Dr.JOHN DAVIDSON Dir IMF Benin." <eco.bank1204@gmail.com>
+Date: Thu, 26 Sep 2019 13:07:30 +0100
+Message-ID: <CAOE+jACD4qkECQnak8N196AhhJeZQcA37=vY7zM8cn=77hiJTw@mail.gmail.com>
+Subject: CONTACT,JP Morgan Chase Bank NY USA for your funds transfer
+ US$16.5million Dollars deposited this morning,
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,17 +80,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: mosabah.mutairy@gmail.com
-Content-Type: text/plain; charset="cp1251"
-Content-Transfer-Encoding: base64
+Reply-To: jpmorganchasebank.ny13@yahoo.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-U2llIGJlbvZ0aWdlbiBlaW4gUHJpdmF0ZGFybGVoZW4gb2RlciBlaW4gZ2V3ZXJibGljaGVzIERh
-cmxlaGVuLCBqZXR6dCBr9m5uZW4gU2llIGVpbiBsZWdpdGltZXMgRGFybGVoZW4g/GJlciB1bnNl
-cmUgRS1NYWlsIGFuZm9yZGVybi4gRGVua2VuIFNpZSBkYXJhbiwgZGFzcyBkaWVzZXMgQW5nZWJv
-dCBm/HIgc2Nod2Vyd2llZ2VuZGUgUGVyc29uZW4gbnVyIGVpbiBmaW5hbnppZWxsZXMgVW50ZXJz
-dPx0enVuZ3NkYXJsZWhlbiBlcmZvcmRlcnQuCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnBy
-b2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+ATTN,DEAR
+CONTACT,JP Morgan Chase Bank NY USA for your funds transfer
+US$16.5million Dollars deposited this morning,
+Director, MS.Linda B. Bammann
+The Bank is waiting to hear from you before transfer release to your
+bank. This is to avoid any hitch problems. CONTACT this bank once to
+receive your transfer today.
+Director, MS.Linda B. Bammann
+Emails/ jpmorganchasebank.ny13@yahoo.com
+Telephone. (603) 636-4063
+
+Note,you can only text JP Morgan Chase Bank Ny USA Director, MS.Linda B. Bammann
+On her telephone No#. She refuse to receive calls due to numerous
+conversations from outside of the Country, So you had done well text
+her on the given phone number or email. Finally For your
+informations,I have paid the related transaction service fees for
+you,such as Deposit and confirmations charges, so small money you been
+required to pay is your funds transfer fees, sum of $90.00.only to
+enable the bank complete transfer to your bank account immediately.
+God bless you,
+Dr.JOHN DAVIDSON
+Dir IMF Benin.
+
+Chase Bank is considered as one of the biggest and leading service provider
+in the United States. The bank is a top listed national bank located in
+Manhattan New York City. It is also one of the most trusted commercial and
+consumer banking services on the planet.
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
