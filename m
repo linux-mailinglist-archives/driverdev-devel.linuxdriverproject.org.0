@@ -1,75 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 35EE7BF5BE
-	for <lists+driverdev-devel@lfdr.de>; Thu, 26 Sep 2019 17:19:50 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CC05BBF647
+	for <lists+driverdev-devel@lfdr.de>; Thu, 26 Sep 2019 17:55:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A613386AFF;
-	Thu, 26 Sep 2019 15:19:47 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D9D36862D4;
+	Thu, 26 Sep 2019 15:55:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VJCRsMP3oi1r; Thu, 26 Sep 2019 15:19:47 +0000 (UTC)
+	with ESMTP id yqgrq9KOmkqh; Thu, 26 Sep 2019 15:55:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 89FBD86959;
-	Thu, 26 Sep 2019 15:19:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BA9AF86287;
+	Thu, 26 Sep 2019 15:55:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CFA811BF334
- for <devel@linuxdriverproject.org>; Thu, 26 Sep 2019 15:19:44 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3DCDA1BF3E8
+ for <devel@linuxdriverproject.org>; Thu, 26 Sep 2019 15:55:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id CA11586970
- for <devel@linuxdriverproject.org>; Thu, 26 Sep 2019 15:19:44 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3A5A686092
+ for <devel@linuxdriverproject.org>; Thu, 26 Sep 2019 15:55:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id C74lWdgdnzqg for <devel@linuxdriverproject.org>;
- Thu, 26 Sep 2019 15:19:44 +0000 (UTC)
+ with ESMTP id tv2d0QU_z93y for <devel@linuxdriverproject.org>;
+ Thu, 26 Sep 2019 15:55:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
- [209.85.128.66])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 07C168695C
- for <devel@driverdev.osuosl.org>; Thu, 26 Sep 2019 15:19:44 +0000 (UTC)
-Received: by mail-wm1-f66.google.com with SMTP id a6so3227426wma.5
- for <devel@driverdev.osuosl.org>; Thu, 26 Sep 2019 08:19:43 -0700 (PDT)
+Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
+ [209.85.128.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id BA8DE86079
+ for <devel@driverdev.osuosl.org>; Thu, 26 Sep 2019 15:55:43 +0000 (UTC)
+Received: by mail-wm1-f65.google.com with SMTP id r19so3381899wmh.2
+ for <devel@driverdev.osuosl.org>; Thu, 26 Sep 2019 08:55:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:message-id:mime-version:content-disposition
- :user-agent; bh=lCXAwCC0+Jd5Yo76APgU+nxrjhUlmGrglJVTlf8nMxE=;
- b=XorwWKCX+ksw+jaR7Cfe6jDt+Qn4xDxQPKD7NKga4hrtDVBlar5i5ol4I6YagKvJRe
- bS4xDpSc4gP+nFklah84/GF0o0hxDjY4LGtMe7dTQ3YQWhtg0UKKpgVcW3nxvqv3sJmg
- z5YfXbMVtb9vMNAHyaiAFeqV4AIt856QHbFCC3rJQqcyGzxltBb1M+nvIIHD6vYlqE70
- ianQnQqflOzjf2G9J26YDsBLvn2/YxZeix0OAhZ6pmJWd9alABagj3avaCA2971HC2an
- 7obNNfwcL+Ve3p3BDvz1T8Q44356X4zSPatBicHvFPdM/RXDi6RnMOhPPg8lEWPe+4v6
- hQcA==
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=+pFOILDteLs1G9dcmBbAs9+Xx43dXKfMhbXX78aolpU=;
+ b=ocEzXFyrDMDNNTqDxb6k2SzrmJrAsPAnZirHH3Kvzd5rbCXfsxdIOtsIGnd+UTNRNM
+ yahWX2QAcH4oGusJldWBOlivyIYR0Nug8t8JiTTsmd9XY9ICKH9D8nbfTOpA665/ex5U
+ hKOlqQk2mxrR9K4rCC0pztbWeO5xjwYrYhqK6voqQ11h9RnIUDN7C+9UWe4f4bbiiSa+
+ /yeFFm2RhU3cdlaBUYWoVQlJ603zASrg32UWVaDKXU0mERpCqcEtyzUz2RkvvghMwDYW
+ DwQhLl+grXBeqP0l8jFnctZuYTt2X4uE8DFsqQgdeIj4kJtNxnXTFtbW51MLCKpsJGNG
+ lHxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:message-id:mime-version
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=lCXAwCC0+Jd5Yo76APgU+nxrjhUlmGrglJVTlf8nMxE=;
- b=uLSQ9OGALPA6ofu8lWkdeSkYa6bnJ65ims2B2Eo8DN0H3SyzjHsowzldR6G4Smnz+q
- QYvoFp0gUdLrx/25Y6VtIEvc4zfRjhoE6B8jlOdFj/U5SFRDl7PC3tCPY0aC73Fk586X
- rABXo8xQpfmGSZyfcWWaelp/wIHsZMKLz2wz9zppIb+Kbn5U3g0NmI7eKLYHWVRDNEuM
- oXDK68QvEXsq8xN2GZGCCold8lAO0t6rFD3UDBMlUFR1OzeAwbhtTP5GJei1vGTfPApt
- 4AZIUnZkp8lESO9lZKhmx830/JxOP/7vXlXfXKMe1j+QYaNn7aQs1lcYxhzadrH3zwXv
- FpwQ==
-X-Gm-Message-State: APjAAAUZA6XAHAzW9HVHmY/CMG7xF2aKtp/uaPkpIVho3ZGZnA1LPRjT
- rOda7neo7o8g/BKy1nJxVFs=
-X-Google-Smtp-Source: APXvYqza4b6vqN8e+IhkomoX940+gJ45UTuvRU78z9/iaNiHFvC88ThuuX9R0j61xW18b9TORsXaMA==
-X-Received: by 2002:a1c:f602:: with SMTP id w2mr3349895wmc.145.1569511182305; 
- Thu, 26 Sep 2019 08:19:42 -0700 (PDT)
-Received: from sausagefarm ([65.39.69.237])
- by smtp.gmail.com with ESMTPSA id g4sm4174095wrw.9.2019.09.26.08.19.41
+ bh=+pFOILDteLs1G9dcmBbAs9+Xx43dXKfMhbXX78aolpU=;
+ b=OhL9CNIkU8a0+q2wxo5WkrEWu8PwE1I4In6pv9SI1YS2/Sc1Ga9ZQW4etvw9bqDKZH
+ gUlcU+q8A4rx8wgm/gHYZ0huElS5YNDFXCLfkrWqoQmHkSeRjId6VfxpP5aYhD8QRNon
+ WtSBKQTDYPNZ4MEeCv8hN0hsX2dNPty9usGVpRZywu4bR5iFwQ+6/oeS0ZG52tttBPNT
+ 37Ed21AlGBp3OsimNc0yP34Ja+zp8duGxAPCXoDKb10A/8kc8xjr5sdez4eXlE1GaCqF
+ 3OQxVU2cRKyi293Ns2ZDJlMKdM92Lsepg+LP97FlH3Evu1KYOvnoG1Z4OI1EoMZpP+aA
+ 48YA==
+X-Gm-Message-State: APjAAAUbtm1CuUb26Y+xApYKjfJVLHmJDYVkdNrFnLp37i73pfH++s00
+ 0fZT1PJBPdRmE9gBc9aRYX8=
+X-Google-Smtp-Source: APXvYqxJR/GW0YsDT3R3ajEjRVC+xU5wALlX3bWVdIz9CTZ5KKgsTQGUDT72X5cUhJGh7HwgBkbQIw==
+X-Received: by 2002:a1c:c1cc:: with SMTP id r195mr3854113wmf.50.1569513342192; 
+ Thu, 26 Sep 2019 08:55:42 -0700 (PDT)
+Received: from sausagefarm (31-34-101-110.abo.bbox.fr. [31.34.101.110])
+ by smtp.gmail.com with ESMTPSA id p7sm3902157wma.34.2019.09.26.08.55.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 26 Sep 2019 08:19:41 -0700 (PDT)
-Date: Thu, 26 Sep 2019 17:19:39 +0200
+ Thu, 26 Sep 2019 08:55:41 -0700 (PDT)
+Date: Thu, 26 Sep 2019 17:55:39 +0200
 From: Jeeeun Evans <jeeeunevans@gmail.com>
 To: rmfrfs@gmail.com, slongerbeam@gmail.com, p.zabel@pengutronix.de,
  mchehab@kernel.org, gregkh@linuxfoundation.org, shawnguo@kernel.org,
  s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
  linux-imx@nxp.com
-Message-ID: <20190926151939.GA20175@sausagefarm>
+Subject: [PATCH] staging: media: imx: Use devm_platform_ioremap_resource().
+Message-ID: <20190926155539.GA20744@sausagefarm>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.10.1 (2018-07-13)
@@ -85,16 +86,12 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
-
-linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org 
-Bcc: jeeeun.evans@codethink.co.uk
-Subject: [PATCH] staging: media: imx: Use devm_platform_ioremap_resource().
-Reply-To: 
 
 This patch fixes a warning by coccicheck:
 drivers/staging/media/imx/imx7-mipi-csis.c:973:1-12: WARNING: Use devm_platform_ioremap_resource for state -> regs
