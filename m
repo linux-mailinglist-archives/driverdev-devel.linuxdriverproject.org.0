@@ -1,82 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 01309BF569
-	for <lists+driverdev-devel@lfdr.de>; Thu, 26 Sep 2019 17:01:30 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 06492BF577
+	for <lists+driverdev-devel@lfdr.de>; Thu, 26 Sep 2019 17:03:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D997287E5E;
-	Thu, 26 Sep 2019 15:01:27 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BD4D42265B;
+	Thu, 26 Sep 2019 15:03:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZX11IBT0bFcw; Thu, 26 Sep 2019 15:01:27 +0000 (UTC)
+	with ESMTP id CV5oJsyEiOPo; Thu, 26 Sep 2019 15:03:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4A72A87BC2;
-	Thu, 26 Sep 2019 15:01:27 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 81AE820515;
+	Thu, 26 Sep 2019 15:03:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B81FB1BF2F6
- for <devel@linuxdriverproject.org>; Thu, 26 Sep 2019 15:01:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 587501BF2F6
+ for <devel@linuxdriverproject.org>; Thu, 26 Sep 2019 15:03:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id B5516204DF
- for <devel@linuxdriverproject.org>; Thu, 26 Sep 2019 15:01:24 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 5516F204DF
+ for <devel@linuxdriverproject.org>; Thu, 26 Sep 2019 15:03:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vwxSD5G+kUFp for <devel@linuxdriverproject.org>;
- Thu, 26 Sep 2019 15:01:24 +0000 (UTC)
+ with ESMTP id l4yxTMkY2t2J for <devel@linuxdriverproject.org>;
+ Thu, 26 Sep 2019 15:03:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from youngberry.canonical.com (youngberry.canonical.com
  [91.189.89.112])
- by silver.osuosl.org (Postfix) with ESMTPS id 39C522002B
- for <devel@driverdev.osuosl.org>; Thu, 26 Sep 2019 15:01:24 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 8DBFE2002B
+ for <devel@driverdev.osuosl.org>; Thu, 26 Sep 2019 15:03:22 +0000 (UTC)
 Received: from mail-pl1-f199.google.com ([209.85.214.199])
  by youngberry.canonical.com with esmtps
  (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <connor.kuehl@canonical.com>) id 1iDVGk-0007Pu-0O
- for devel@driverdev.osuosl.org; Thu, 26 Sep 2019 15:01:22 +0000
-Received: by mail-pl1-f199.google.com with SMTP id v4so1642895plp.23
- for <devel@driverdev.osuosl.org>; Thu, 26 Sep 2019 08:01:21 -0700 (PDT)
+ (envelope-from <connor.kuehl@canonical.com>) id 1iDVIf-0007Xk-1z
+ for devel@driverdev.osuosl.org; Thu, 26 Sep 2019 15:03:21 +0000
+Received: by mail-pl1-f199.google.com with SMTP id p8so1656226plo.16
+ for <devel@driverdev.osuosl.org>; Thu, 26 Sep 2019 08:03:20 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=xtkPkpjPrpLQmsDNk7AeQ5yhyxjhIB2F104oGv/w96M=;
- b=YNfvjrSuOOjNuwM0Bpx4HroT6xDwqJP/Hf1fQRuIXj4qQBx8GAr38lwTKBMNuvTCQE
- VrVqDOydqYHX/ru/2MvC6VLubFkP3jmj5SMBMgG+fJVqKmDQwmHDftXy2gSs7BljU9Do
- kYh2jIkLrxO0x4oGBYulB/Wv+YbD/9jofa+T2fzBD+I//elBxQMxi8ATf2yvRlpmpQSz
- Vwze1/h+aM1kTks8miE7NN9AP8LYB0V/60E0Yx63VyeH9XSn95cOgQ/rR1p05akdzPJM
- /x9d70mOf3g84TtIY07rTGsFgw8n+B4LV9OB6aeQ9uFNA0rnc3a6N7TIQ5K4mon50BBH
- xE4w==
-X-Gm-Message-State: APjAAAVFO5Bq2Fjuo30s4mcAoBFbYQ70g6xbhPQu8BxTGiYGolpKH2CD
- BYMQ/2TQDSIaet5eltzsOd5egPlVKDHDImJHvbORlneJCN+OcQt47SOtqXCXgihCVX0GOCaG/p/
- TqEZ4sa2nLO9KyqtxpiDXt8bKdoFNWRTKLlBEOKQ=
-X-Received: by 2002:a63:cf0a:: with SMTP id j10mr3759961pgg.388.1569510080735; 
- Thu, 26 Sep 2019 08:01:20 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy+KG/m+nUPYl05tzsMpdfhCOOO+3WkdwpahkeH8luyF61fGMjp2KK5Rg8NNxKKg+mI1gcMgw==
-X-Received: by 2002:a63:cf0a:: with SMTP id j10mr3759931pgg.388.1569510080411; 
- Thu, 26 Sep 2019 08:01:20 -0700 (PDT)
-Received: from [192.168.0.179] (c-24-20-45-88.hsd1.or.comcast.net.
- [24.20.45.88])
- by smtp.gmail.com with ESMTPSA id q3sm2650205pgj.54.2019.09.26.08.01.19
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 26 Sep 2019 08:01:19 -0700 (PDT)
-Subject: Re: [PATCH] staging: rtl8188eu: fix possible null dereference
-To: Larry Finger <Larry.Finger@lwfinger.net>, gregkh@linuxfoundation.org,
- straube.linux@gmail.com, devel@driverdev.osuosl.org
-References: <20190925213215.25082-1-connor.kuehl@canonical.com>
- <b725820f-525c-519b-4474-476abf004985@lwfinger.net>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=FVKRXmx8SRBsU+0IWvQgA4/r5KeBrIiQqcBDYIkxnNs=;
+ b=ms19qKbW6js6I6boYyNdMKNu/QjHptpMxcdHfu5NGGcfBtqS/Dy6VF/YqROm9Snwww
+ zd83RKnIy4aXG8rxkTeTSyTzsSMa3Dvm03wObY4kQ6zq1bS3BdDYJDm7dPtJJ7SznJNf
+ 2x5LKBkLx4OWKexrbmXNcao8+BOj3C2yEsxA97Dse0lz2qba8ZaISw5ywD/TyNS7HgNk
+ EQ6b/9wFQ381eJ5fn6p8ba1h3McTvSnaKv5YrQ43gQY8CWN8ysB65bZH/DF/HQb6KYlC
+ +TX4UmsKMY/o6Ra2nS+riHIM64xQVG0CKsbSf/8fsBd6DqAlTGIE1SExCzafnOxVHUH5
+ eVVw==
+X-Gm-Message-State: APjAAAUZvOeH3L1wr9T9WjJrvs6DiUGWDD1LJ3M2xD/kjXxHlzThMoB8
+ Rcqtc+l6/GSEOZBNJurmwlCCaD6DF0ZsJyqvuzTkhTwQA0zzqoNnvPpbJF4rCz3nyiXzhnwin16
+ rKZD80gt1bJcuk/bMoDOUSADY3o8PqBFvJb/ATG4=
+X-Received: by 2002:a63:205:: with SMTP id 5mr3768387pgc.77.1569510199731;
+ Thu, 26 Sep 2019 08:03:19 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwGYVioB4IbG1XfNiYKe+o084bQp5nriB3OlDVYJz5tA7ZRgTZbV6cYI1c8SsKqVdfHhAab3g==
+X-Received: by 2002:a63:205:: with SMTP id 5mr3768358pgc.77.1569510199466;
+ Thu, 26 Sep 2019 08:03:19 -0700 (PDT)
+Received: from canonical.lan (c-24-20-45-88.hsd1.or.comcast.net. [24.20.45.88])
+ by smtp.gmail.com with ESMTPSA id 4sm2174992pja.29.2019.09.26.08.03.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 26 Sep 2019 08:03:18 -0700 (PDT)
 From: Connor Kuehl <connor.kuehl@canonical.com>
-Message-ID: <2f07d7cb-23a1-f5c0-af9f-1c3e19a7082c@canonical.com>
-Date: Thu, 26 Sep 2019 08:01:18 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
-In-Reply-To: <b725820f-525c-519b-4474-476abf004985@lwfinger.net>
-Content-Language: en-US
+To: Larry.Finger@lwfinger.net, gregkh@linuxfoundation.org,
+ straube.linux@gmail.com, devel@driverdev.osuosl.org
+Subject: [PATCH v2] staging: rtl8188eu: fix possible null dereference
+Date: Thu, 26 Sep 2019 08:03:17 -0700
+Message-Id: <20190926150317.5894-1-connor.kuehl@canonical.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,24 +81,55 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 9/25/19 5:05 PM, Larry Finger wrote:
-> This change is a good one, but why not get the same fix at line 779?
+Inside a nested 'else' block at the beginning of this function is a
+call that assigns 'psta' to the return value of 'rtw_get_stainfo()'.
+If 'rtw_get_stainfo()' returns NULL and the flow of control reaches
+the 'else if' where 'psta' is dereferenced, then we will dereference
+a NULL pointer.
 
-Ah yes! Thanks for pointing that out. I missed that. I will send a V2 
-shortly.
+Fix this by checking if 'psta' is not NULL before reading its
+'psta->qos_option' data member.
 
-Thank you,
+Addresses-Coverity: ("Dereference null return value")
 
-Connor
+Signed-off-by: Connor Kuehl <connor.kuehl@canonical.com>
+---
+v1 -> v2:
+  - Add the same null check to line 779
 
-> 
-> Larry
-> 
+ drivers/staging/rtl8188eu/core/rtw_xmit.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/rtl8188eu/core/rtw_xmit.c b/drivers/staging/rtl8188eu/core/rtw_xmit.c
+index 952f2ab51347..c37591657bac 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_xmit.c
++++ b/drivers/staging/rtl8188eu/core/rtw_xmit.c
+@@ -776,7 +776,7 @@ s32 rtw_make_wlanhdr(struct adapter *padapter, u8 *hdr, struct pkt_attrib *pattr
+ 			memcpy(pwlanhdr->addr2, get_bssid(pmlmepriv), ETH_ALEN);
+ 			memcpy(pwlanhdr->addr3, pattrib->src, ETH_ALEN);
+ 
+-			if (psta->qos_option)
++			if (psta && psta->qos_option)
+ 				qos_option = true;
+ 		} else if (check_fwstate(pmlmepriv, WIFI_ADHOC_STATE) ||
+ 			   check_fwstate(pmlmepriv, WIFI_ADHOC_MASTER_STATE)) {
+@@ -784,7 +784,7 @@ s32 rtw_make_wlanhdr(struct adapter *padapter, u8 *hdr, struct pkt_attrib *pattr
+ 			memcpy(pwlanhdr->addr2, pattrib->src, ETH_ALEN);
+ 			memcpy(pwlanhdr->addr3, get_bssid(pmlmepriv), ETH_ALEN);
+ 
+-			if (psta->qos_option)
++			if (psta && psta->qos_option)
+ 				qos_option = true;
+ 		} else {
+ 			RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("fw_state:%x is not allowed to xmit frame\n", get_fwstate(pmlmepriv)));
+-- 
+2.17.1
 
 _______________________________________________
 devel mailing list
