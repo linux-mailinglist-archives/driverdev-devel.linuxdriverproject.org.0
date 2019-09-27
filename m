@@ -1,45 +1,45 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 541A4C0348
-	for <lists+driverdev-devel@lfdr.de>; Fri, 27 Sep 2019 12:16:23 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B8E37C0323
+	for <lists+driverdev-devel@lfdr.de>; Fri, 27 Sep 2019 12:15:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 01080862FC;
-	Fri, 27 Sep 2019 10:16:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 527F487FDE;
+	Fri, 27 Sep 2019 10:15:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hVDyc1b0syJr; Fri, 27 Sep 2019 10:16:21 +0000 (UTC)
+	with ESMTP id Eg7q8EmH+bce; Fri, 27 Sep 2019 10:15:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0EB81858B6;
-	Fri, 27 Sep 2019 10:16:21 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A23F487F92;
+	Fri, 27 Sep 2019 10:15:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9C9F21BF2F4
- for <devel@linuxdriverproject.org>; Fri, 27 Sep 2019 10:16:18 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E39701BF2F4
+ for <devel@linuxdriverproject.org>; Fri, 27 Sep 2019 10:15:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9063722795
- for <devel@linuxdriverproject.org>; Fri, 27 Sep 2019 10:16:18 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D456187F8E
+ for <devel@linuxdriverproject.org>; Fri, 27 Sep 2019 10:15:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id naYb4s6+i64s for <devel@linuxdriverproject.org>;
- Fri, 27 Sep 2019 10:16:15 +0000 (UTC)
+ with ESMTP id KzYOzJhcBJDj for <devel@linuxdriverproject.org>;
+ Fri, 27 Sep 2019 10:15:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mx1.suse.de (mx2.suse.de [195.135.220.15])
- by silver.osuosl.org (Postfix) with ESMTPS id F1EA7227AA
- for <devel@driverdev.osuosl.org>; Fri, 27 Sep 2019 10:15:32 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 469AA87F92
+ for <devel@driverdev.osuosl.org>; Fri, 27 Sep 2019 10:15:36 +0000 (UTC)
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 83A38AF92;
- Fri, 27 Sep 2019 10:15:31 +0000 (UTC)
+ by mx1.suse.de (Postfix) with ESMTP id C30C2B023;
+ Fri, 27 Sep 2019 10:15:34 +0000 (UTC)
 From: Benjamin Poirier <bpoirier@suse.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v2 13/17] staging: qlge: Remove useless memset
-Date: Fri, 27 Sep 2019 19:12:07 +0900
-Message-Id: <20190927101210.23856-14-bpoirier@suse.com>
+Subject: [PATCH v2 14/17] staging: qlge: Replace memset with assignment
+Date: Fri, 27 Sep 2019 19:12:08 +0900
+Message-Id: <20190927101210.23856-15-bpoirier@suse.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20190927101210.23856-1-bpoirier@suse.com>
 References: <20190927101210.23856-1-bpoirier@suse.com>
@@ -64,22 +64,29 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This just repeats what the other memset a few lines above did.
+Instead of clearing the structure wholesale, it is sufficient to initialize
+the skb member which is used to manage sbq instances. lbq instances are
+managed according to curr_idx and clean_idx.
 
 Signed-off-by: Benjamin Poirier <bpoirier@suse.com>
 ---
- drivers/staging/qlge/qlge_main.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/staging/qlge/qlge_main.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/drivers/staging/qlge/qlge_main.c b/drivers/staging/qlge/qlge_main.c
-index ef33db118aa1..8da596922582 100644
+index 8da596922582..009934bcb515 100644
 --- a/drivers/staging/qlge/qlge_main.c
 +++ b/drivers/staging/qlge/qlge_main.c
-@@ -2812,7 +2812,6 @@ static int qlge_init_bq(struct qlge_bq *bq)
+@@ -2807,11 +2807,10 @@ static int qlge_init_bq(struct qlge_bq *bq)
+ 	if (!bq->queue)
+ 		return -ENOMEM;
+ 
+-	memset(bq->queue, 0, QLGE_BQ_LEN * sizeof(struct qlge_bq_desc));
+-
  	buf_ptr = bq->base;
  	bq_desc = &bq->queue[0];
  	for (i = 0; i < QLGE_BQ_LEN; i++, buf_ptr++, bq_desc++) {
--		memset(bq_desc, 0, sizeof(*bq_desc));
++		bq_desc->p.skb = NULL;
  		bq_desc->index = i;
  		bq_desc->buf_ptr = buf_ptr;
  	}
