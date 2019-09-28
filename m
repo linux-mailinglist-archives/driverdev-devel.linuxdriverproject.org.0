@@ -1,65 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C623CC11E3
-	for <lists+driverdev-devel@lfdr.de>; Sat, 28 Sep 2019 20:58:03 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 70C58C126E
+	for <lists+driverdev-devel@lfdr.de>; Sun, 29 Sep 2019 01:19:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1493E86742;
-	Sat, 28 Sep 2019 18:58:01 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DE8E620555;
+	Sat, 28 Sep 2019 23:19:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fzP8boYBziGw; Sat, 28 Sep 2019 18:58:00 +0000 (UTC)
+	with ESMTP id iCNRHCNWRhY1; Sat, 28 Sep 2019 23:19:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8135D861D5;
-	Sat, 28 Sep 2019 18:57:59 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5AE4420500;
+	Sat, 28 Sep 2019 23:19:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0936F1BF291
- for <devel@linuxdriverproject.org>; Sat, 28 Sep 2019 18:57:58 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6D4C11BF59A
+ for <devel@linuxdriverproject.org>; Sat, 28 Sep 2019 23:19:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id F2450861D5
- for <devel@linuxdriverproject.org>; Sat, 28 Sep 2019 18:57:57 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 6096184F98
+ for <devel@linuxdriverproject.org>; Sat, 28 Sep 2019 23:19:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hI0SmmGaAvPJ for <devel@linuxdriverproject.org>;
- Sat, 28 Sep 2019 18:57:57 +0000 (UTC)
+ with ESMTP id T+rnbgz6bYsC for <devel@linuxdriverproject.org>;
+ Sat, 28 Sep 2019 23:19:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic312-21.consmr.mail.bf2.yahoo.com
- (sonic312-21.consmr.mail.bf2.yahoo.com [74.6.128.83])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 26D80860A2
- for <devel@driverdev.osuosl.org>; Sat, 28 Sep 2019 18:57:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1569697076; bh=gYf327hTZ5oy2Nwv6GcnG+WY9C1Pm43n1pS4vSoUB00=;
- h=Date:From:Reply-To:Subject:From:Subject;
- b=ky9GqAojLd2SPswowAP0FWQR01XFZQ50ItroWJ1pXg07KYF2mg/xcnzyTVk4rk0IeTNOghQqdaPxj+sGnuO/Nu9VTsLpt6P9hMDCgSq4vINDXAmIwHChzoHCkqjJwvE96+Yo3FrLA6sdsHS14d+YxWs4OroP55drbzjNI8RuiRreUWxU/8RBagcGLToU5nYH0vBzxGEP5SSk3lX0PQLhDjzC/9V+bnkPibQSh/nHm6XgJ00N7AdqxCAO4Yo28qIanfIadc+s1AMG5uAc3iPAyUFmazPkgyN4ozHe22uInmMUfqYuuk/OEv9jdRqgu5N7YPASziXoFi+L4NLyi5yiyg==
-X-YMail-OSG: 0vP.7EMVM1kmhADuuiF6ZHag_7KP5gfS9d28Kk9Xax4MdP704DvjThSC5tVec1w
- rGV_w.mnOuACxV2PCPxnZQuSTW2fHZPPJDR8nzjnfE3RfLxzauWbOC1eTt7RNxZdEf13QFJEEyCZ
- uhxLXVOv51FLZP4mxYplC31K4nKYCogDbzdn0QeYJnmQV0tEWYtPxfmgVnaOhNxCeWQ6N06UHB3e
- Io_Kg12.fGsv8ANzf3OVgfF4Klg7ZjI6n23.bMjrUFxvtEwtSyuD27bJkcV.PnEwWizZOyCXXgeM
- DOuY.8B2cj1ipasUItnKXddgiBXPCgxEwIVGkTS0kSvqZGsMeCLVEeXdXZ3uLSfNHdiAZ2ZWvxaE
- R7jrDlcOQGMVs24YGp_EhEkKGh2_UwwqpGOtxc438yWpCHLraL.8.G93HgM0bupPCwVjyMcWNxqE
- .YYQuMQaB4QIOPTcsNIp2dYkJwFzzNpuxlpTyOP_n3nJsMyXNVwFzam2lDm3msfjj8m_OsbN_9F7
- ZLL61K5i9rLYB8RER0ot6wVmWkhd9SC818ewhvx2UDYARKrRlSeufiQEfPVMsr57trJyDFCy8gox
- llMmKmqKKB_i5LcBQ2Q4kSTv.a_SWQqt3TJ09vPG3GO7uC2uR3xqPk_TmzFtGuMPbPdIHQERuCvW
- Qv8euOEr9Drnqr7g5y6iTqhVseRrYluWYG6HFW43OyAtF6a183XPBT.K1Tj8qAhKT8uSVuXOQJIo
- UGxxreENnTyFMQSeksc45cidDVs3HPBPFVWJdvwpyRTv0rOqpRtyYTsreCQdVq42qemjYSCDrd49
- oq.KZ5Cru2a0BvE3VJPuYBAqsU7LcJG24B0MybK9L8fggLGhZH.t.zja_ZKfRbUWKyENP7HEqaZO
- 4RAOfoAsksqGP9dr44nBxXSdFvzZX.BSXwSSjZbp6VUwVoIPRwfbCqEDWSH4YiX79rZeMWfWNSML
- 6tqfmE8XMCzS1JjpZLaNTaXokvWpBLwf8U2Nx9Nc52c1X73ICxTF4sCa8yVn6ki9VfFmbk6zSEPs
- oTFtRRBYVOBAslBYu8sWFO1EuILf4oQrGho_ix1K.8M9v.Cd3_k3u2zhmLBW.QFZJrpFfnkW9O1_
- 0ar71BLI3NUMfoEdFFq5U91UQAV0qlPva6Rgxcq9HTyRaxqyUjruZ0VLYy_QCwlrpK31IeRXWUq9
- HbBdciTlyIeIpe3QLd.n6SVHAWhHjhcHoqf.iZ2GQQXsldTFijGy8hj7ZdzIZKkxOA9TkUmWtKDb
- CQHHisNz_4OpY_.4QRFGrbXsKqA--
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic312.consmr.mail.bf2.yahoo.com with HTTP; Sat, 28 Sep 2019 18:57:56 +0000
-Date: Sat, 28 Sep 2019 18:57:52 +0000 (UTC)
-From: Arthur Adam <ah77900432@gmail.com>
-Message-ID: <519594519.483689.1569697072316@mail.yahoo.com>
-Subject: With due respect
+Received: from mail-oi1-f196.google.com (mail-oi1-f196.google.com
+ [209.85.167.196])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id B7F3B8442F
+ for <devel@driverdev.osuosl.org>; Sat, 28 Sep 2019 23:19:16 +0000 (UTC)
+Received: by mail-oi1-f196.google.com with SMTP id w6so8127193oie.11
+ for <devel@driverdev.osuosl.org>; Sat, 28 Sep 2019 16:19:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=08U8kTj+7ryuF4wWVDEoa5n7c+9tXfifBOgV/g1kdoc=;
+ b=dBsWkQDFUaMjDerdVT/Mn5JeLyErILKZRtAfzEfKowY1YhLX2EVfCBVw7FXBqL7JNm
+ 8Gfc4/RTKsIkbEyyYaOTWcnCB/g3JoRQhrzb4ObT0CjzvkwkBbF2V5xL50yHK+ZZWR6U
+ mNvYu7+7eEK89SyK9WP83EmXd0LxO1QwIEttJw8WiHtk5zx/+UCF8h9kiHprefS/C4kU
+ f9mjEky6rPeUrOgPt+3CVbqYI7HG+ErIq5uN1wgnEn9Tfl3qVg0bQBLDr0r6xbfKyu+l
+ b0zZa0XvJGHi6fS8BqJfln4MrzjZyxM2GvA9aJYHUEmId7K928+LB6T+pGS5OEZrXUnA
+ WwOA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=08U8kTj+7ryuF4wWVDEoa5n7c+9tXfifBOgV/g1kdoc=;
+ b=uZiwe6ePA3WFLQAD6oCogN2UTY++sUe/xcU+3/KPSR2ySKV4CtdYDzSFRHaS1SCBxf
+ O8wtFmniTKfdTMX1gdxtMyM1uu/I+EoQ0ECMOITYOyfg5Aes+ATyVrFSR8ruZBPaCDkT
+ TXbtdoKG2eYczmg4HjKOch9O+Jv2Rxfb1HzpoUXrnp3iYzTPOiviG8QU9j/pmjEQjh6L
+ VcwVMHhbGHVCCbIMhI6AOGe5wMRn1KSTXwygfgvqU2rvGXFxxhoS35yhnaCJNwlvRHR9
+ UFdyjoO4n+o8wQjOjcnYRulWBatx15A/5vM6gc8TKqN3+nT3wPribm6DTFmit1BPFoh0
+ tipg==
+X-Gm-Message-State: APjAAAVp9K3LD74msh3upS72Ma4xPwfdDo5fE1rf50r5SA4H3q3T7OS+
+ nMJJMbsFccyrN/4/HosYvCdQfEGjjigWiQ==
+X-Google-Smtp-Source: APXvYqwl2Lec9Lxg2DpYBKwaU2Wgo4r5Hpw9nW1el6IAIrmMXTIJq3uWZb62eQWuZZ+0ufrYVOzP/A==
+X-Received: by 2002:aca:d708:: with SMTP id o8mr12667771oig.68.1569712755799; 
+ Sat, 28 Sep 2019 16:19:15 -0700 (PDT)
+Received: from localhost (ip72-210-101-152.tu.ok.cox.net. [72.210.101.152])
+ by smtp.gmail.com with ESMTPSA id 34sm2402154otf.55.2019.09.28.16.19.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 28 Sep 2019 16:19:15 -0700 (PDT)
+From: Jesse Barton <jessebarton95@gmail.com>
+To: valdis.kletnieks@vt.edu
+Subject: [PATCH] Staging: exfat: exfat_super.c: fixed camelcase coding style
+ issue
+Date: Sat, 28 Sep 2019 18:19:10 -0500
+Message-Id: <20190928231910.16898-1-jessebarton95@gmail.com>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -73,26 +84,112 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: arthuradam01@yahoo.com
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Jesse Barton <jessebarton95@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+Fixed a coding style issue.
 
+Signed-off-by: Jesse Barton <jessebarton95@gmail.com>
+---
+ drivers/staging/exfat/exfat_super.c | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
-Greetings,
+diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
+index 5f6caee819a6..665eb25e318d 100644
+--- a/drivers/staging/exfat/exfat_super.c
++++ b/drivers/staging/exfat/exfat_super.c
+@@ -342,7 +342,7 @@ static inline void exfat_save_attr(struct inode *inode, u32 attr)
+ 		EXFAT_I(inode)->fid.attr = attr & (ATTR_RWMASK | ATTR_READONLY);
+ }
+ 
+-static int ffsMountVol(struct super_block *sb)
++static int ffs_mount_vol(struct super_block *sb)
+ {
+ 	int i, ret;
+ 	struct pbr_sector_t *p_pbr;
+@@ -446,7 +446,7 @@ static int ffsMountVol(struct super_block *sb)
+ 	return ret;
+ }
+ 
+-static int ffsUmountVol(struct super_block *sb)
++static int ffs_umount_vol(struct super_block *sb)
+ {
+ 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
+ 	int err = FFS_SUCCESS;
+@@ -518,7 +518,7 @@ static int ffsGetVolInfo(struct super_block *sb, struct vol_info_t *info)
+ 	return err;
+ }
+ 
+-static int ffsSyncVol(struct super_block *sb, bool do_sync)
++static int ffs_sync_vol(struct super_block *sb, bool do_sync)
+ {
+ 	int err = FFS_SUCCESS;
+ 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
+@@ -3043,7 +3043,7 @@ static int exfat_file_release(struct inode *inode, struct file *filp)
+ 	struct super_block *sb = inode->i_sb;
+ 
+ 	EXFAT_I(inode)->fid.size = i_size_read(inode);
+-	ffsSyncVol(sb, false);
++	ffs_sync_vol(sb, false);
+ 	return 0;
+ }
+ 
+@@ -3460,7 +3460,7 @@ static void exfat_put_super(struct super_block *sb)
+ 	if (__is_sb_dirty(sb))
+ 		exfat_write_super(sb);
+ 
+-	ffsUmountVol(sb);
++	ffs_umount_vol(sb);
+ 
+ 	sb->s_fs_info = NULL;
+ 	exfat_free_super(sbi);
+@@ -3473,7 +3473,7 @@ static void exfat_write_super(struct super_block *sb)
+ 	__set_sb_clean(sb);
+ 
+ 	if (!sb_rdonly(sb))
+-		ffsSyncVol(sb, true);
++		ffs_sync_vol(sb, true);
+ 
+ 	__unlock_super(sb);
+ }
+@@ -3485,7 +3485,7 @@ static int exfat_sync_fs(struct super_block *sb, int wait)
+ 	if (__is_sb_dirty(sb)) {
+ 		__lock_super(sb);
+ 		__set_sb_clean(sb);
+-		err = ffsSyncVol(sb, true);
++		err = ffs_sync_vol(sb, true);
+ 		__unlock_super(sb);
+ 	}
+ 
+@@ -3865,10 +3865,10 @@ static int exfat_fill_super(struct super_block *sb, void *data, int silent)
+ 	sb_min_blocksize(sb, 512);
+ 	sb->s_maxbytes = 0x7fffffffffffffffLL;    /* maximum file size */
+ 
+-	ret = ffsMountVol(sb);
++	ret = ffs_mount_vol(sb);
+ 	if (ret) {
+ 		if (!silent)
+-			pr_err("[EXFAT] ffsMountVol failed\n");
++			pr_err("[EXFAT] ffs_mount_vol failed\n");
+ 
+ 		goto out_fail;
+ 	}
+@@ -3919,7 +3919,7 @@ static int exfat_fill_super(struct super_block *sb, void *data, int silent)
+ 	return 0;
+ 
+ out_fail2:
+-	ffsUmountVol(sb);
++	ffs_umount_vol(sb);
+ out_fail:
+ 	if (root_inode)
+ 		iput(root_inode);
+-- 
+2.23.0
 
-I know that this mail will come to you as a surprise as we have never met before, but need not to worry as I am contacting you independently of my investigation and no one is informed of this communication. I need your urgent assistance in transferring the sum of $11.3million immediately to your private account.The money has been here in our Bank lying dormant for years now without anybody coming for the claim of it.
-
-I want to release the money to you as the relative to our deceased customer (the account owner) who died a long with his supposed NEXT OF KIN since 16th October 2005. The Banking laws here does not allow such money to stay more than 14 years, because the money will be recalled to the Bank treasury account as unclaimed fund.
-
-By indicating your interest I will send you the full details on how the business will be executed.
-
-Please respond urgently and delete if you are not interested.
-
-Best Regards,
-Arthur Adam
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
