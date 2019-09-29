@@ -1,59 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2ECD6C1944
-	for <lists+driverdev-devel@lfdr.de>; Sun, 29 Sep 2019 22:01:13 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 88390C1942
+	for <lists+driverdev-devel@lfdr.de>; Sun, 29 Sep 2019 22:01:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6FE8885D7E;
-	Sun, 29 Sep 2019 20:01:10 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C80E8875AD;
+	Sun, 29 Sep 2019 20:01:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wMINbefcTRwQ; Sun, 29 Sep 2019 20:01:09 +0000 (UTC)
+	with ESMTP id 6Y32VlTt4zvN; Sun, 29 Sep 2019 20:01:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A98C085D54;
-	Sun, 29 Sep 2019 20:01:08 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BEBB28634E;
+	Sun, 29 Sep 2019 20:01:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 20A731BF389
- for <devel@linuxdriverproject.org>; Sun, 29 Sep 2019 20:01:05 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9A4521BF389
+ for <devel@linuxdriverproject.org>; Sun, 29 Sep 2019 20:01:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1A3AC8610A
- for <devel@linuxdriverproject.org>; Sun, 29 Sep 2019 20:01:05 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 9482E86005
+ for <devel@linuxdriverproject.org>; Sun, 29 Sep 2019 20:01:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qM3UraRyDutQ for <devel@linuxdriverproject.org>;
+ with ESMTP id 3Txg5+w1O-Va for <devel@linuxdriverproject.org>;
  Sun, 29 Sep 2019 20:01:02 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.siol.net (mailoutvs27.siol.net [185.57.226.218])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 86ABD86497
- for <devel@driverdev.osuosl.org>; Sun, 29 Sep 2019 20:00:59 +0000 (UTC)
+Received: from mail.siol.net (mailoutvs17.siol.net [185.57.226.208])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id DED8787595
+ for <devel@driverdev.osuosl.org>; Sun, 29 Sep 2019 20:01:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by mail.siol.net (Postfix) with ESMTP id 80D195225ED;
- Sun, 29 Sep 2019 22:00:57 +0200 (CEST)
+ by mail.siol.net (Postfix) with ESMTP id 113EC5226F2;
+ Sun, 29 Sep 2019 22:01:00 +0200 (CEST)
 X-Virus-Scanned: amavisd-new at psrvmta10.zcs-production.pri
 Received: from mail.siol.net ([127.0.0.1])
  by localhost (psrvmta10.zcs-production.pri [127.0.0.1]) (amavisd-new,
  port 10032)
- with ESMTP id ksOlhXI3NIxK; Sun, 29 Sep 2019 22:00:57 +0200 (CEST)
+ with ESMTP id fCy5jAs5IWsj; Sun, 29 Sep 2019 22:00:59 +0200 (CEST)
 Received: from mail.siol.net (localhost [127.0.0.1])
- by mail.siol.net (Postfix) with ESMTPS id 202F452233F;
- Sun, 29 Sep 2019 22:00:57 +0200 (CEST)
+ by mail.siol.net (Postfix) with ESMTPS id 8A3685226EA;
+ Sun, 29 Sep 2019 22:00:59 +0200 (CEST)
 Received: from localhost.localdomain (cpe-86-58-59-25.static.triera.net
  [86.58.59.25]) (Authenticated sender: 031275009)
- by mail.siol.net (Postfix) with ESMTPSA id 7196F5225ED;
- Sun, 29 Sep 2019 22:00:54 +0200 (CEST)
+ by mail.siol.net (Postfix) with ESMTPSA id 27537522639;
+ Sun, 29 Sep 2019 22:00:57 +0200 (CEST)
 From: Jernej Skrabec <jernej.skrabec@siol.net>
 To: mchehab@kernel.org, hverkuil-cisco@xs4all.nl,
  paul.kocialkowski@bootlin.com, mripard@kernel.org, pawel@osciak.com,
  m.szyprowski@samsung.com, kyungmin.park@samsung.com, tfiga@chromium.org,
  wens@csie.org
-Subject: [PATCH v2 2/6] videodev2.h: add V4L2_DEC_CMD_FLUSH
-Date: Sun, 29 Sep 2019 22:00:19 +0200
-Message-Id: <20190929200023.215831-3-jernej.skrabec@siol.net>
+Subject: [PATCH v2 3/6] media: v4l2-mem2mem: add stateless_(try_)decoder_cmd
+ ioctl helpers
+Date: Sun, 29 Sep 2019 22:00:20 +0200
+Message-Id: <20190929200023.215831-4-jernej.skrabec@siol.net>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20190929200023.215831-1-jernej.skrabec@siol.net>
 References: <20190929200023.215831-1-jernej.skrabec@siol.net>
@@ -70,8 +71,7 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, jernej.skrabec@siol.net,
- Alexandre Courbot <acourbot@chromium.org>, jonas@kwiboo.se,
+Cc: devel@driverdev.osuosl.org, jernej.skrabec@siol.net, jonas@kwiboo.se,
  gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
  boris.brezillon@collabora.com, ezequiel@collabora.com,
  linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
@@ -80,66 +80,77 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+These helpers are used by stateless codecs when they support multiple
+slices per frame and hold capture buffer flag is set. It's expected that
+all such codecs will use this code.
 
-Add this new V4L2_DEC_CMD_FLUSH decoder command and document it.
-
-Reviewed-by: Boris Brezillon <boris.brezillon@collabora.com>
-Reviewed-by: Alexandre Courbot <acourbot@chromium.org>
-Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-[Adjusted description]
 Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
 ---
- Documentation/media/uapi/v4l/vidioc-decoder-cmd.rst | 10 +++++++++-
- Documentation/media/videodev2.h.rst.exceptions      |  1 +
- include/uapi/linux/videodev2.h                      |  1 +
- 3 files changed, 11 insertions(+), 1 deletion(-)
+ drivers/media/v4l2-core/v4l2-mem2mem.c | 35 ++++++++++++++++++++++++++
+ include/media/v4l2-mem2mem.h           |  4 +++
+ 2 files changed, 39 insertions(+)
 
-diff --git a/Documentation/media/uapi/v4l/vidioc-decoder-cmd.rst b/Documentation/media/uapi/v4l/vidioc-decoder-cmd.rst
-index 57f0066f4cff..f1a504836f31 100644
---- a/Documentation/media/uapi/v4l/vidioc-decoder-cmd.rst
-+++ b/Documentation/media/uapi/v4l/vidioc-decoder-cmd.rst
-@@ -208,7 +208,15 @@ introduced in Linux 3.3. They are, however, mandatory for stateful mem2mem decod
- 	been started yet, the driver will return an ``EPERM`` error code. When
- 	the decoder is already running, this command does nothing. No
- 	flags are defined for this command.
--
-+    * - ``V4L2_DEC_CMD_FLUSH``
-+      - 4
-+      - Flush any held capture buffers. Only valid for stateless decoders.
-+	This command is typically used when the application reached the
-+	end of the stream and the last output buffer had the
-+	``V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF`` flag set. This would prevent
-+	dequeueing the capture buffer containing the last decoded frame.
-+	So this command can be used to explicitly flush that final decoded
-+	frame. This command does nothing if there are no held capture buffers.
+diff --git a/drivers/media/v4l2-core/v4l2-mem2mem.c b/drivers/media/v4l2-core/v4l2-mem2mem.c
+index 19937dd3c6f6..2677a07e4c9b 100644
+--- a/drivers/media/v4l2-core/v4l2-mem2mem.c
++++ b/drivers/media/v4l2-core/v4l2-mem2mem.c
+@@ -1154,6 +1154,41 @@ int v4l2_m2m_ioctl_try_decoder_cmd(struct file *file, void *fh,
+ }
+ EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_try_decoder_cmd);
  
- Return Value
- ============
-diff --git a/Documentation/media/videodev2.h.rst.exceptions b/Documentation/media/videodev2.h.rst.exceptions
-index adeb6b7a15cb..a79028e4d929 100644
---- a/Documentation/media/videodev2.h.rst.exceptions
-+++ b/Documentation/media/videodev2.h.rst.exceptions
-@@ -434,6 +434,7 @@ replace define V4L2_DEC_CMD_START decoder-cmds
- replace define V4L2_DEC_CMD_STOP decoder-cmds
- replace define V4L2_DEC_CMD_PAUSE decoder-cmds
- replace define V4L2_DEC_CMD_RESUME decoder-cmds
-+replace define V4L2_DEC_CMD_FLUSH decoder-cmds
++int v4l2_m2m_ioctl_stateless_try_decoder_cmd(struct file *file, void *fh,
++					     struct v4l2_decoder_cmd *dc)
++{
++	if (dc->cmd != V4L2_DEC_CMD_FLUSH)
++		return -EINVAL;
++
++	dc->flags = 0;
++
++	return 0;
++}
++EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_stateless_try_decoder_cmd);
++
++int v4l2_m2m_ioctl_stateless_decoder_cmd(struct file *file, void *priv,
++					 struct v4l2_decoder_cmd *dc)
++{
++	struct v4l2_fh *fh = file->private_data;
++	struct vb2_v4l2_buffer *out_vb, *cap_vb;
++	int ret;
++
++	ret = v4l2_m2m_ioctl_stateless_try_decoder_cmd(file, priv, dc);
++	if (ret < 0)
++		return ret;
++
++	out_vb = v4l2_m2m_last_src_buf(fh->m2m_ctx);
++	cap_vb = v4l2_m2m_last_dst_buf(fh->m2m_ctx);
++
++	if (out_vb)
++		out_vb->flags &= ~V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF;
++	else if (cap_vb && cap_vb->is_held)
++		v4l2_m2m_buf_done(cap_vb, VB2_BUF_STATE_DONE);
++
++	return 0;
++}
++EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_stateless_decoder_cmd);
++
+ /*
+  * v4l2_file_operations helpers. It is assumed here same lock is used
+  * for the output and the capture buffer queue.
+diff --git a/include/media/v4l2-mem2mem.h b/include/media/v4l2-mem2mem.h
+index c9fa96c8eed1..8ae2f56c7fa3 100644
+--- a/include/media/v4l2-mem2mem.h
++++ b/include/media/v4l2-mem2mem.h
+@@ -714,6 +714,10 @@ int v4l2_m2m_ioctl_try_encoder_cmd(struct file *file, void *fh,
+ 				   struct v4l2_encoder_cmd *ec);
+ int v4l2_m2m_ioctl_try_decoder_cmd(struct file *file, void *fh,
+ 				   struct v4l2_decoder_cmd *dc);
++int v4l2_m2m_ioctl_stateless_try_decoder_cmd(struct file *file, void *fh,
++					     struct v4l2_decoder_cmd *dc);
++int v4l2_m2m_ioctl_stateless_decoder_cmd(struct file *file, void *priv,
++					 struct v4l2_decoder_cmd *dc);
+ int v4l2_m2m_fop_mmap(struct file *file, struct vm_area_struct *vma);
+ __poll_t v4l2_m2m_fop_poll(struct file *file, poll_table *wait);
  
- replace define V4L2_DEC_CMD_START_MUTE_AUDIO decoder-cmds
- replace define V4L2_DEC_CMD_PAUSE_TO_BLACK decoder-cmds
-diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index 4fa9f543742d..91a79e16089c 100644
---- a/include/uapi/linux/videodev2.h
-+++ b/include/uapi/linux/videodev2.h
-@@ -1978,6 +1978,7 @@ struct v4l2_encoder_cmd {
- #define V4L2_DEC_CMD_STOP        (1)
- #define V4L2_DEC_CMD_PAUSE       (2)
- #define V4L2_DEC_CMD_RESUME      (3)
-+#define V4L2_DEC_CMD_FLUSH       (4)
- 
- /* Flags for V4L2_DEC_CMD_START */
- #define V4L2_DEC_CMD_START_MUTE_AUDIO	(1 << 0)
 -- 
 2.23.0
 
