@@ -1,66 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 390B4C14A6
-	for <lists+driverdev-devel@lfdr.de>; Sun, 29 Sep 2019 15:57:08 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 71336C15DB
+	for <lists+driverdev-devel@lfdr.de>; Sun, 29 Sep 2019 16:51:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 39EA1853E5;
-	Sun, 29 Sep 2019 13:57:06 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5265A20509;
+	Sun, 29 Sep 2019 14:51:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fVK5t_bSfU26; Sun, 29 Sep 2019 13:57:05 +0000 (UTC)
+	with ESMTP id KMYEfDdF+cl1; Sun, 29 Sep 2019 14:51:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DBED28535F;
-	Sun, 29 Sep 2019 13:57:04 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7299D20452;
+	Sun, 29 Sep 2019 14:51:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 81EC61BF2FC
- for <devel@linuxdriverproject.org>; Sun, 29 Sep 2019 13:57:02 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A554F1BF35F
+ for <devel@linuxdriverproject.org>; Sun, 29 Sep 2019 14:51:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7EE158535F
- for <devel@linuxdriverproject.org>; Sun, 29 Sep 2019 13:57:02 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id A213D8788B
+ for <devel@linuxdriverproject.org>; Sun, 29 Sep 2019 14:51:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8QDIM8JKdFeH for <devel@linuxdriverproject.org>;
- Sun, 29 Sep 2019 13:57:01 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f193.google.com (mail-pl1-f193.google.com
- [209.85.214.193])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 81B528532E
- for <devel@driverdev.osuosl.org>; Sun, 29 Sep 2019 13:57:01 +0000 (UTC)
-Received: by mail-pl1-f193.google.com with SMTP id u12so2807272pls.12
- for <devel@driverdev.osuosl.org>; Sun, 29 Sep 2019 06:57:01 -0700 (PDT)
+ with ESMTP id qLz8DP-NUgLj for <devel@linuxdriverproject.org>;
+ Sun, 29 Sep 2019 14:51:20 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ot1-f67.google.com (mail-ot1-f67.google.com
+ [209.85.210.67])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 074EC87852
+ for <devel@driverdev.osuosl.org>; Sun, 29 Sep 2019 14:51:20 +0000 (UTC)
+Received: by mail-ot1-f67.google.com with SMTP id c10so6189217otd.9
+ for <devel@driverdev.osuosl.org>; Sun, 29 Sep 2019 07:51:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Hib8D+V0D3BwDwwAI6M1zboYoKRedpSshNbRty1BMwY=;
+ b=p9XjC7YYvytpt5fNNzOG7FTyKwNqeSFc+8kmsrM2he3vm/hDflFhlNmKel5L47Cspk
+ m0Gce0izFndyhDBiKDkR92pSysRmayOwxTbQeRIhHs5qgRPd6p355ip+hubpwnF5rzYJ
+ SPMFQeOkjA353XzgNEtvGN4oZmu5WYJXaC6pnPKFY5lzzsZd6+Rr4kGjxnTL4ONysni6
+ M2kgg0pWMyXff1idIiuBmSOPqjirAx79d8qwfWKeeoOR8NFVSto5WU5Up1DP81kNIb2M
+ BfMUaoauQfa/2pW947YkcBek8d2HqpNgPjt4rg22gtgVxtfPwDyDa+Hrq2571E6CqtFX
+ VYGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=sqiQlC/JcSBFnMM2msWbIXxT+/YDAu1aTFAsRz/Kcs0=;
- b=qoVIBSNiu78ICPNnQNFK6ZPBk/MLLMd082Qwn2hpHnJiqfZ39Hsny90V4dZIWVwnAd
- 5OwNBFqvA/m0pI1IryVmfJ0WadEdF9FwdQORC7kxR1bpDQYxFQAHpf4I60lpncDUZzHM
- Gc87UTjUiffogY/9BtEUvXFsBPNBaWNv2SG6RWRfphWJYHexvSoIUZK9893kyoKiNa8G
- WOQJuKvJrb1PUEWgBPcpNp6vNT1T/W9JVEG5HDD9I7iZZtWZi7QP3qO+sp/uw7YW+OEr
- kZQFJMQh+9dj+/Z+8qGeCytY0zARUQGBXaRDJt2qLuK8oN2g2SLiq4pgZBbBammBwUYW
- yfkA==
-X-Gm-Message-State: APjAAAV3tpRPPwPwifUOJDWgKv0jwoy8TMyo3Vqi9TyFn3AGKXvabBb0
- gjGITJaBAQr1hvw8cYliHSk=
-X-Google-Smtp-Source: APXvYqwRxUzhY6JjCGdm7UyFt138PnjAoGyKnzlwTP4M6iVzjvd8Wd88OkPeg+iuy9sgI67dB2mchw==
-X-Received: by 2002:a17:902:6bcc:: with SMTP id
- m12mr15498850plt.280.1569765420757; 
- Sun, 29 Sep 2019 06:57:00 -0700 (PDT)
-Received: from localhost.localdomain ([183.83.93.91])
- by smtp.gmail.com with ESMTPSA id b5sm9993348pgb.68.2019.09.29.06.56.57
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Sun, 29 Sep 2019 06:56:59 -0700 (PDT)
-From: hariprasad@osuosl.org, Kelam@osuosl.org,
-	hariprasad.kelam@gmail.com
-To: 
-Subject: [PATCH] rtl8723bs: core: Remove code valid only for 5GHZ
-Date: Sun, 29 Sep 2019 19:24:57 +0530
-Message-Id: <1569765348-20417-1-git-send-email-hariprasad.kelam@gmail.com>
-X-Mailer: git-send-email 2.7.4
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Hib8D+V0D3BwDwwAI6M1zboYoKRedpSshNbRty1BMwY=;
+ b=SaE10v6sQCaoXpqPKKICm8yw7RYkpFosBn2OOoVxi/iFHRMrpwlmd/GzO6AaVcgxdJ
+ 55GzrKkxKGHx6M6l5HVakecUCLwhgMMdjvobjxTjE3Ziau7YbWp7x5kY6O2rOAVGfd6U
+ qPbH+IhXVJ/R/4erB6sec3zSJQbPYSMQSJE3dOyvRmnxq8rUb7kW7wz0uJBByHDoMcsc
+ g8I4zBhRia2t6Q5QlULceSxClnGnSA21bbtDZptogVJ4NLZTvzB4fFXt8ufiQxppQpti
+ PbLXAwOaWtGECDnRtcuLma55nYtGcX2VRZJL64FoICF/+3//37zDabOC+bkIa5DcMie+
+ Jyng==
+X-Gm-Message-State: APjAAAULWZAcMHnnaYH1UTthsTqKTskl5EL0XQWKTPFYvjKKbPDdnqY3
+ XZE0u+czT3r33pDME4IAG7A=
+X-Google-Smtp-Source: APXvYqxjzs5Kyrha7Xjrwqr58WyZM+Qr/hyb4dghv7D24eCTAOnBAFh27BJBoLNItWXw/x4/rA35Iw==
+X-Received: by 2002:a05:6830:2059:: with SMTP id
+ f25mr10285704otp.137.1569768679166; 
+ Sun, 29 Sep 2019 07:51:19 -0700 (PDT)
+Received: from localhost (ip72-210-101-152.tu.ok.cox.net. [72.210.101.152])
+ by smtp.gmail.com with ESMTPSA id r19sm2765149ota.79.2019.09.29.07.51.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 29 Sep 2019 07:51:18 -0700 (PDT)
+From: Jesse Barton <jessebarton95@gmail.com>
+To: valdis.kletnieks@vt.edu
+Subject: [PATCH 1/3] Staging: exfat: exfat_super.c: fixed camelcase coding
+ style issue
+Date: Sun, 29 Sep 2019 09:50:57 -0500
+Message-Id: <20190929145057.37752-1-jessebarton95@gmail.com>
+X-Mailer: git-send-email 2.23.0
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,58 +85,115 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Hariprasad Kelam <hariprasad.kelam@gmail.com>,
- Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Hardik Singh Rathore <hardiksingh.k@gmail.com>,
- Nishka Dasgupta <nishkadg.linux@gmail.com>
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Jesse Barton <jessebarton95@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+Changed function names:
+ffsUmountVol to ffs_umount_vol
+ffsMountVol to ffs_mount_vol
+ffsSyncVol to ffs_sync_vol
 
-As per TODO ,remove code valid only for 5 GHz(channel > 14).
 
-Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+Signed-off-by: Jesse Barton <jessebarton95@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_ieee80211.c | 19 ++++++-------------
- 1 file changed, 6 insertions(+), 13 deletions(-)
+ drivers/staging/exfat/exfat_super.c | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_ieee80211.c b/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-index 6018d87..679f98b 100644
---- a/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-@@ -94,19 +94,12 @@ bool rtw_is_cckratesonly_included(u8 *rate)
- 
- int rtw_check_network_type(unsigned char *rate, int ratelen, int channel)
- {
--	if (channel > 14) {
--		if (rtw_is_cckrates_included(rate))
--			return WIRELESS_INVALID;
--		else
--			return WIRELESS_11A;
--	} else { /*  could be pure B, pure G, or B/G */
--		if (rtw_is_cckratesonly_included(rate))
--			return WIRELESS_11B;
--		else if (rtw_is_cckrates_included(rate))
--			return	WIRELESS_11BG;
--		else
--			return WIRELESS_11G;
--	}
-+	if (rtw_is_cckratesonly_included(rate))
-+		return WIRELESS_11B;
-+	else if (rtw_is_cckrates_included(rate))
-+		return	WIRELESS_11BG;
-+	else
-+		return WIRELESS_11G;
+diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
+index 5f6caee819a6..665eb25e318d 100644
+--- a/drivers/staging/exfat/exfat_super.c
++++ b/drivers/staging/exfat/exfat_super.c
+@@ -342,7 +342,7 @@ static inline void exfat_save_attr(struct inode *inode, u32 attr)
+ 		EXFAT_I(inode)->fid.attr = attr & (ATTR_RWMASK | ATTR_READONLY);
  }
  
- u8 *rtw_set_fixed_ie(unsigned char *pbuf, unsigned int len, unsigned char *source,
+-static int ffsMountVol(struct super_block *sb)
++static int ffs_mount_vol(struct super_block *sb)
+ {
+ 	int i, ret;
+ 	struct pbr_sector_t *p_pbr;
+@@ -446,7 +446,7 @@ static int ffsMountVol(struct super_block *sb)
+ 	return ret;
+ }
+ 
+-static int ffsUmountVol(struct super_block *sb)
++static int ffs_umount_vol(struct super_block *sb)
+ {
+ 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
+ 	int err = FFS_SUCCESS;
+@@ -518,7 +518,7 @@ static int ffsGetVolInfo(struct super_block *sb, struct vol_info_t *info)
+ 	return err;
+ }
+ 
+-static int ffsSyncVol(struct super_block *sb, bool do_sync)
++static int ffs_sync_vol(struct super_block *sb, bool do_sync)
+ {
+ 	int err = FFS_SUCCESS;
+ 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
+@@ -3043,7 +3043,7 @@ static int exfat_file_release(struct inode *inode, struct file *filp)
+ 	struct super_block *sb = inode->i_sb;
+ 
+ 	EXFAT_I(inode)->fid.size = i_size_read(inode);
+-	ffsSyncVol(sb, false);
++	ffs_sync_vol(sb, false);
+ 	return 0;
+ }
+ 
+@@ -3460,7 +3460,7 @@ static void exfat_put_super(struct super_block *sb)
+ 	if (__is_sb_dirty(sb))
+ 		exfat_write_super(sb);
+ 
+-	ffsUmountVol(sb);
++	ffs_umount_vol(sb);
+ 
+ 	sb->s_fs_info = NULL;
+ 	exfat_free_super(sbi);
+@@ -3473,7 +3473,7 @@ static void exfat_write_super(struct super_block *sb)
+ 	__set_sb_clean(sb);
+ 
+ 	if (!sb_rdonly(sb))
+-		ffsSyncVol(sb, true);
++		ffs_sync_vol(sb, true);
+ 
+ 	__unlock_super(sb);
+ }
+@@ -3485,7 +3485,7 @@ static int exfat_sync_fs(struct super_block *sb, int wait)
+ 	if (__is_sb_dirty(sb)) {
+ 		__lock_super(sb);
+ 		__set_sb_clean(sb);
+-		err = ffsSyncVol(sb, true);
++		err = ffs_sync_vol(sb, true);
+ 		__unlock_super(sb);
+ 	}
+ 
+@@ -3865,10 +3865,10 @@ static int exfat_fill_super(struct super_block *sb, void *data, int silent)
+ 	sb_min_blocksize(sb, 512);
+ 	sb->s_maxbytes = 0x7fffffffffffffffLL;    /* maximum file size */
+ 
+-	ret = ffsMountVol(sb);
++	ret = ffs_mount_vol(sb);
+ 	if (ret) {
+ 		if (!silent)
+-			pr_err("[EXFAT] ffsMountVol failed\n");
++			pr_err("[EXFAT] ffs_mount_vol failed\n");
+ 
+ 		goto out_fail;
+ 	}
+@@ -3919,7 +3919,7 @@ static int exfat_fill_super(struct super_block *sb, void *data, int silent)
+ 	return 0;
+ 
+ out_fail2:
+-	ffsUmountVol(sb);
++	ffs_umount_vol(sb);
+ out_fail:
+ 	if (root_inode)
+ 		iput(root_inode);
 -- 
-2.7.4
+2.23.0
 
 _______________________________________________
 devel mailing list
