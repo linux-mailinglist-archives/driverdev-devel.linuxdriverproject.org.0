@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 70C58C126E
-	for <lists+driverdev-devel@lfdr.de>; Sun, 29 Sep 2019 01:19:24 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id DE8E620555;
-	Sat, 28 Sep 2019 23:19:21 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iCNRHCNWRhY1; Sat, 28 Sep 2019 23:19:21 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 5AE4420500;
-	Sat, 28 Sep 2019 23:19:19 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6D4C11BF59A
- for <devel@linuxdriverproject.org>; Sat, 28 Sep 2019 23:19:17 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 30440C128A
+	for <lists+driverdev-devel@lfdr.de>; Sun, 29 Sep 2019 02:21:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6096184F98
- for <devel@linuxdriverproject.org>; Sat, 28 Sep 2019 23:19:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 08EE58804A;
+	Sun, 29 Sep 2019 00:21:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id QtSkdWijFTeb; Sun, 29 Sep 2019 00:21:40 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 35B7A87CC4;
+	Sun, 29 Sep 2019 00:21:39 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 85C3A1BF3A9
+ for <devel@linuxdriverproject.org>; Sun, 29 Sep 2019 00:21:37 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 7C95B20418
+ for <devel@linuxdriverproject.org>; Sun, 29 Sep 2019 00:21:37 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id T+rnbgz6bYsC for <devel@linuxdriverproject.org>;
- Sat, 28 Sep 2019 23:19:16 +0000 (UTC)
+ with ESMTP id h9sGpZ1S3Lez for <devel@linuxdriverproject.org>;
+ Sun, 29 Sep 2019 00:21:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f196.google.com (mail-oi1-f196.google.com
- [209.85.167.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B7F3B8442F
- for <devel@driverdev.osuosl.org>; Sat, 28 Sep 2019 23:19:16 +0000 (UTC)
-Received: by mail-oi1-f196.google.com with SMTP id w6so8127193oie.11
- for <devel@driverdev.osuosl.org>; Sat, 28 Sep 2019 16:19:16 -0700 (PDT)
+Received: from mail-ot1-f66.google.com (mail-ot1-f66.google.com
+ [209.85.210.66])
+ by silver.osuosl.org (Postfix) with ESMTPS id 962C520341
+ for <devel@driverdev.osuosl.org>; Sun, 29 Sep 2019 00:21:36 +0000 (UTC)
+Received: by mail-ot1-f66.google.com with SMTP id o9so4634664otl.0
+ for <devel@driverdev.osuosl.org>; Sat, 28 Sep 2019 17:21:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=08U8kTj+7ryuF4wWVDEoa5n7c+9tXfifBOgV/g1kdoc=;
- b=dBsWkQDFUaMjDerdVT/Mn5JeLyErILKZRtAfzEfKowY1YhLX2EVfCBVw7FXBqL7JNm
- 8Gfc4/RTKsIkbEyyYaOTWcnCB/g3JoRQhrzb4ObT0CjzvkwkBbF2V5xL50yHK+ZZWR6U
- mNvYu7+7eEK89SyK9WP83EmXd0LxO1QwIEttJw8WiHtk5zx/+UCF8h9kiHprefS/C4kU
- f9mjEky6rPeUrOgPt+3CVbqYI7HG+ErIq5uN1wgnEn9Tfl3qVg0bQBLDr0r6xbfKyu+l
- b0zZa0XvJGHi6fS8BqJfln4MrzjZyxM2GvA9aJYHUEmId7K928+LB6T+pGS5OEZrXUnA
- WwOA==
+ bh=GqKNHe2wxsr8Qfpq+KczXDkRcW1icZtTDLdjOK6prOA=;
+ b=rkkWX21c/g/bofwKmv/UhUhH+4tZu8Krt+PvQUQ937ByXHDcCrQQqzYm+2m17mmTDO
+ 9JgJHnDp3lHz52uEu1yPv5T0/rsug6ziYxcQUcs4668QGfFcmqipxjP2nu5lTdx7Bjie
+ cZuJe0f8sJf8OVE4d5u+NLixduE7Ojodl/MWxKAc6YDxKAaADTH+b5mtE5X+dccxLSVa
+ 3cKaFVWs+RWS7VVn7/PzVPYpa6pkfVj8wV1j0r0wcW+uOTBa0PeuouXrtJaHxKslK12P
+ WuBkLJqbAQfQovjWRc0C37od7hhZELCes6S5ximmORHIKk3ktFQZQ2XOHtmyS++A4xRK
+ 98Tg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=08U8kTj+7ryuF4wWVDEoa5n7c+9tXfifBOgV/g1kdoc=;
- b=uZiwe6ePA3WFLQAD6oCogN2UTY++sUe/xcU+3/KPSR2ySKV4CtdYDzSFRHaS1SCBxf
- O8wtFmniTKfdTMX1gdxtMyM1uu/I+EoQ0ECMOITYOyfg5Aes+ATyVrFSR8ruZBPaCDkT
- TXbtdoKG2eYczmg4HjKOch9O+Jv2Rxfb1HzpoUXrnp3iYzTPOiviG8QU9j/pmjEQjh6L
- VcwVMHhbGHVCCbIMhI6AOGe5wMRn1KSTXwygfgvqU2rvGXFxxhoS35yhnaCJNwlvRHR9
- UFdyjoO4n+o8wQjOjcnYRulWBatx15A/5vM6gc8TKqN3+nT3wPribm6DTFmit1BPFoh0
- tipg==
-X-Gm-Message-State: APjAAAVp9K3LD74msh3upS72Ma4xPwfdDo5fE1rf50r5SA4H3q3T7OS+
- nMJJMbsFccyrN/4/HosYvCdQfEGjjigWiQ==
-X-Google-Smtp-Source: APXvYqwl2Lec9Lxg2DpYBKwaU2Wgo4r5Hpw9nW1el6IAIrmMXTIJq3uWZb62eQWuZZ+0ufrYVOzP/A==
-X-Received: by 2002:aca:d708:: with SMTP id o8mr12667771oig.68.1569712755799; 
- Sat, 28 Sep 2019 16:19:15 -0700 (PDT)
+ bh=GqKNHe2wxsr8Qfpq+KczXDkRcW1icZtTDLdjOK6prOA=;
+ b=FVv8IDJCjuenyimVluMSN6cTA2WrLXdyuqux9xBxlWEJg3MOB8R7xWvB0BgD3rRhOi
+ MjHMUIiNam3WzQxj1SwmBCYBVgQnrpfBPYMm1YsVAUiRHc8IK5fnAw9hO2g9eeJvi4JA
+ PwoUG5tllxPnpXr0KEVEHYRcj9Y1GE7V/YAQhN6iRU2k3HfH8Hy+yonL6CzXywGVDQck
+ 39OBBD2jH7lcPAQ49fMCdMrj6RlkUi8ddMHtoQWKzaeXfpv/+VoGPqynN+kdqwHAqZxA
+ 2BsJ/yS0InPVvWlnZ5Wp/kmoissyAcR2Z7IMCLMKj5lURVuujfJb0up9J0xS70mDPJNW
+ eaag==
+X-Gm-Message-State: APjAAAW1Ln7S9CJ3XoRSpUMvJtWd6xy8se7VW+cohVyVgH0WMDvAvTEu
+ fOQp4oFDSc6omOGUw0UV8Vw=
+X-Google-Smtp-Source: APXvYqzunT2cgNroASE9kGPGmeQRn8lHIBqVUI7AU2JDZ3gtrWVijQBqi/73fwX9AwkS6dmTcFveAw==
+X-Received: by 2002:a05:6830:1617:: with SMTP id
+ g23mr8417269otr.366.1569716495534; 
+ Sat, 28 Sep 2019 17:21:35 -0700 (PDT)
 Received: from localhost (ip72-210-101-152.tu.ok.cox.net. [72.210.101.152])
- by smtp.gmail.com with ESMTPSA id 34sm2402154otf.55.2019.09.28.16.19.15
+ by smtp.gmail.com with ESMTPSA id 8sm2503637oti.41.2019.09.28.17.21.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 28 Sep 2019 16:19:15 -0700 (PDT)
+ Sat, 28 Sep 2019 17:21:35 -0700 (PDT)
 From: Jesse Barton <jessebarton95@gmail.com>
 To: valdis.kletnieks@vt.edu
-Subject: [PATCH] Staging: exfat: exfat_super.c: fixed camelcase coding style
- issue
-Date: Sat, 28 Sep 2019 18:19:10 -0500
-Message-Id: <20190928231910.16898-1-jessebarton95@gmail.com>
+Subject: [PATCH 3/3] Staging: exfat: exfat_super.c Fixed coding style issues.
+Date: Sat, 28 Sep 2019 19:21:19 -0500
+Message-Id: <20190929002119.20689-1-jessebarton95@gmail.com>
 X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -91,102 +91,102 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fixed a coding style issue.
+Fixed Coding Style issues
 
 Signed-off-by: Jesse Barton <jessebarton95@gmail.com>
 ---
- drivers/staging/exfat/exfat_super.c | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+ drivers/staging/exfat/exfat_super.c | 29 +++++++++--------------------
+ 1 file changed, 9 insertions(+), 20 deletions(-)
 
 diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
-index 5f6caee819a6..665eb25e318d 100644
+index 3c7e2b7c2195..b9656ec06144 100644
 --- a/drivers/staging/exfat/exfat_super.c
 +++ b/drivers/staging/exfat/exfat_super.c
-@@ -342,7 +342,7 @@ static inline void exfat_save_attr(struct inode *inode, u32 attr)
- 		EXFAT_I(inode)->fid.attr = attr & (ATTR_RWMASK | ATTR_READONLY);
- }
- 
--static int ffsMountVol(struct super_block *sb)
-+static int ffs_mount_vol(struct super_block *sb)
- {
- 	int i, ret;
- 	struct pbr_sector_t *p_pbr;
-@@ -446,7 +446,7 @@ static int ffsMountVol(struct super_block *sb)
+@@ -640,8 +640,7 @@ static int ffs_lookup_file(struct inode *inode, char *path, struct file_id_t *fi
  	return ret;
  }
  
--static int ffsUmountVol(struct super_block *sb)
-+static int ffs_umount_vol(struct super_block *sb)
+-static int ffs_create_file(struct inode *inode, char *path, u8 mode,
+-			 struct file_id_t *fid)
++static int ffs_create_file(struct inode *inode, char *path, u8 mode, struct file_id_t *fid)
  {
- 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
- 	int err = FFS_SUCCESS;
-@@ -518,7 +518,7 @@ static int ffsGetVolInfo(struct super_block *sb, struct vol_info_t *info)
- 	return err;
+ 	struct chain_t dir;
+ 	struct uni_name_t uni_name;
+@@ -681,8 +680,7 @@ static int ffs_create_file(struct inode *inode, char *path, u8 mode,
+ 	return ret;
  }
  
--static int ffsSyncVol(struct super_block *sb, bool do_sync)
-+static int ffs_sync_vol(struct super_block *sb, bool do_sync)
+-static int ffs_read_file(struct inode *inode, struct file_id_t *fid, void *buffer,
+-		       u64 count, u64 *rcount)
++static int ffs_read_file(struct inode *inode, struct file_id_t *fid, void *buffer, u64 count, u64 *rcount)
  {
- 	int err = FFS_SUCCESS;
- 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
-@@ -3043,7 +3043,7 @@ static int exfat_file_release(struct inode *inode, struct file *filp)
- 	struct super_block *sb = inode->i_sb;
- 
- 	EXFAT_I(inode)->fid.size = i_size_read(inode);
--	ffsSyncVol(sb, false);
-+	ffs_sync_vol(sb, false);
- 	return 0;
+ 	s32 offset, sec_offset, clu_offset;
+ 	u32 clu;
+@@ -805,8 +803,7 @@ static int ffs_read_file(struct inode *inode, struct file_id_t *fid, void *buffe
+ 	return ret;
  }
  
-@@ -3460,7 +3460,7 @@ static void exfat_put_super(struct super_block *sb)
- 	if (__is_sb_dirty(sb))
- 		exfat_write_super(sb);
- 
--	ffsUmountVol(sb);
-+	ffs_umount_vol(sb);
- 
- 	sb->s_fs_info = NULL;
- 	exfat_free_super(sbi);
-@@ -3473,7 +3473,7 @@ static void exfat_write_super(struct super_block *sb)
- 	__set_sb_clean(sb);
- 
- 	if (!sb_rdonly(sb))
--		ffsSyncVol(sb, true);
-+		ffs_sync_vol(sb, true);
- 
- 	__unlock_super(sb);
+-static int ffs_write_file(struct inode *inode, struct file_id_t *fid,
+-			void *buffer, u64 count, u64 *wcount)
++static int ffs_write_file(struct inode *inode, struct file_id_t *fid, void *buffer, u64 count, u64 *wcount)
+ {
+ 	bool modified = false;
+ 	s32 offset, sec_offset, clu_offset;
+@@ -1212,8 +1209,7 @@ static void update_parent_info(struct file_id_t *fid,
+ 	}
  }
-@@ -3485,7 +3485,7 @@ static int exfat_sync_fs(struct super_block *sb, int wait)
- 	if (__is_sb_dirty(sb)) {
- 		__lock_super(sb);
- 		__set_sb_clean(sb);
--		err = ffsSyncVol(sb, true);
-+		err = ffs_sync_vol(sb, true);
- 		__unlock_super(sb);
+ 
+-static int ffs_move_file(struct inode *old_parent_inode, struct file_id_t *fid,
+-		       struct inode *new_parent_inode, struct dentry *new_dentry)
++static int ffs_move_file(struct inode *old_parent_inode, struct file_id_t *fid, struct inode *new_parent_inode, struct dentry *new_dentry)
+ {
+ 	s32 ret;
+ 	s32 dentry;
+@@ -2061,9 +2057,7 @@ static int ffs_read_dir(struct inode *inode, struct dir_entry_t *dir_entry)
+ 			fs_func->get_uni_name_from_ext_entry(sb, &dir, dentry,
+ 							     uni_name.name);
+ 			if (*uni_name.name == 0x0 && p_fs->vol_type != EXFAT)
+-				get_uni_name_from_dos_entry(sb,
+-						(struct dos_dentry_t *)ep,
+-						&uni_name, 0x1);
++				get_uni_name_from_dos_entry(sb, (struct dos_dentry_t *)ep, &uni_name, 0x1);
+ 			nls_uniname_to_cstring(sb, dir_entry->Name, &uni_name);
+ 			buf_unlock(sb, sector);
+ 
+@@ -2074,11 +2068,8 @@ static int ffs_read_dir(struct inode *inode, struct dir_entry_t *dir_entry)
+ 					goto out;
+ 				}
+ 			} else {
+-				get_uni_name_from_dos_entry(sb,
+-						(struct dos_dentry_t *)ep,
+-						&uni_name, 0x0);
+-				nls_uniname_to_cstring(sb, dir_entry->ShortName,
+-						       &uni_name);
++				get_uni_name_from_dos_entry(sb, (struct dos_dentry_t *)ep, &uni_name, 0x0);
++				nls_uniname_to_cstring(sb, dir_entry->ShortName, &uni_name);
+ 			}
+ 
+ 			dir_entry->Size = fs_func->get_entry_size(ep);
+@@ -2460,8 +2451,7 @@ static struct dentry *exfat_lookup(struct inode *dir, struct dentry *dentry,
+ 			err = -ENOMEM;
+ 			goto error;
+ 		}
+-		ffs_read_file(dir, &fid, EXFAT_I(inode)->target,
+-			    i_size_read(inode), &ret);
++		ffs_read_file(dir, &fid, EXFAT_I(inode)->target, i_size_read(inode), &ret);
+ 		*(EXFAT_I(inode)->target + i_size_read(inode)) = '\0';
  	}
  
-@@ -3865,10 +3865,10 @@ static int exfat_fill_super(struct super_block *sb, void *data, int silent)
- 	sb_min_blocksize(sb, 512);
- 	sb->s_maxbytes = 0x7fffffffffffffffLL;    /* maximum file size */
+@@ -2748,8 +2738,7 @@ static int exfat_rename(struct inode *old_dir, struct dentry *old_dentry,
  
--	ret = ffsMountVol(sb);
-+	ret = ffs_mount_vol(sb);
- 	if (ret) {
- 		if (!silent)
--			pr_err("[EXFAT] ffsMountVol failed\n");
-+			pr_err("[EXFAT] ffs_mount_vol failed\n");
+ 	EXFAT_I(old_inode)->fid.size = i_size_read(old_inode);
  
- 		goto out_fail;
- 	}
-@@ -3919,7 +3919,7 @@ static int exfat_fill_super(struct super_block *sb, void *data, int silent)
- 	return 0;
- 
- out_fail2:
--	ffsUmountVol(sb);
-+	ffs_umount_vol(sb);
- out_fail:
- 	if (root_inode)
- 		iput(root_inode);
+-	err = ffs_move_file(old_dir, &(EXFAT_I(old_inode)->fid), new_dir,
+-			  new_dentry);
++	err = ffs_move_file(old_dir, &(EXFAT_I(old_inode)->fid), new_dir, new_dentry);
+ 	if (err) {
+ 		if (err == FFS_PERMISSIONERR)
+ 			err = -EPERM;
 -- 
 2.23.0
 
