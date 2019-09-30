@@ -1,73 +1,133 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D1360C1A4C
-	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Sep 2019 05:10:06 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 91900C1A90
+	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Sep 2019 06:25:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7E0AF87404;
-	Mon, 30 Sep 2019 03:10:04 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 44C9920428;
+	Mon, 30 Sep 2019 04:25:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UPRTd5qw2QfZ; Mon, 30 Sep 2019 03:10:04 +0000 (UTC)
+	with ESMTP id BaWjvQk9M9p7; Mon, 30 Sep 2019 04:25:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 75E4A87371;
-	Mon, 30 Sep 2019 03:10:03 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 682B2203E8;
+	Mon, 30 Sep 2019 04:25:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6B87C1BF33A
- for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 03:10:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7CABE1BF2CF
+ for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 04:25:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 677EF85A8B
- for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 03:10:01 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7910A857EB
+ for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 04:25:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4f6S2JryxWKM for <devel@linuxdriverproject.org>;
- Mon, 30 Sep 2019 03:10:00 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f65.google.com (mail-io1-f65.google.com
- [209.85.166.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1507685802
- for <devel@driverdev.osuosl.org>; Mon, 30 Sep 2019 03:10:00 +0000 (UTC)
-Received: by mail-io1-f65.google.com with SMTP id n26so5797181ioj.8
- for <devel@driverdev.osuosl.org>; Sun, 29 Sep 2019 20:10:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=JdWTb1V4IhUUMb47mN6yAdg27zy2bK0W+qF3wp30fYo=;
- b=hetnKUgsD2zSGDpE7xOLnzeBpXHQYJEYYEqnzJSwcvWeNhdWPsdlC6/Pbtswtb+2tg
- ReMBVDCg9wXGCrev7wYoFfActSDTXjhCrs0vGHKXQNlzmnTvodwpgC8GReVyUTL0cUH6
- jPTCtsx6gOP9iFcUzUyy2V77UQAkJPNLpN/9ZFmSxBsi6rCppsNdoC3ciTBBpVHYGV8Z
- Myyx7ePbg+RWklM9om4+N+eOelSbT4G5BFWA9tPOKtxcimECtmLWNhuAU4sZY3PA7GSi
- 2E2BiHEuooVd+tzXxgBWNKKeiMaqgI0bZFAkItESu2W1K44vsybFpfUDwksMtW2XWFcq
- p/mg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=JdWTb1V4IhUUMb47mN6yAdg27zy2bK0W+qF3wp30fYo=;
- b=VOTgYEJV3x+AzPsOAkWvbI6zUnYgtOjT7vBfiHlQLdrhfvzOWms9sqN4wCGVObuofi
- Pfu9KcjwsAQYK9SPSxfQxWMnWM/xzqf6Se4aqoucxUtMmP6p/aV4jL2qpvrmIXdf2m6g
- WLaJgM8hmYHr7ZbRuXHZYX/BpIYZfABNyjpFWmzHPJDVE/gMMLID9oHd8gO+zmpOyiX4
- xVSKjb4HEmY9hw8mRVmUxHKaDmOJ5Gx6YZumV7K0Ko455jEa0nay+pqowy1f+x6sYSdO
- rRYezmwOZ29DvO9dNmbM4f/G+8QnZBIC0HVXFs4KM5Yap0/rEOxiFUqLLc+wjcS0MrPo
- mLRw==
-X-Gm-Message-State: APjAAAVgsY+Pxu1cUir5Gtq+adFIyAOwYudujizNzGmwKghORAl5RwQg
- TJe2SjIBiiet0Ekew89qXJY=
-X-Google-Smtp-Source: APXvYqw9S4icJAA3Iim6bEKEOhPYCZHJFDUjRkHAKLayY1qZ/8t7tcsSVHOGYMUZdwQB5yUeCahPEQ==
-X-Received: by 2002:a5d:9349:: with SMTP id i9mr3190833ioo.101.1569812999347; 
- Sun, 29 Sep 2019 20:09:59 -0700 (PDT)
-Received: from cs-dulles.cs.umn.edu (cs-dulles.cs.umn.edu. [128.101.35.54])
- by smtp.googlemail.com with ESMTPSA id r22sm5444086ilb.85.2019.09.29.20.09.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 29 Sep 2019 20:09:58 -0700 (PDT)
-From: Navid Emamdoost <navid.emamdoost@gmail.com>
-To: 
-Subject: [PATCH] Staging: fbtft: fix memory leak in fbtft_framebuffer_alloc
-Date: Sun, 29 Sep 2019 22:09:45 -0500
-Message-Id: <20190930030949.28615-1-navid.emamdoost@gmail.com>
-X-Mailer: git-send-email 2.17.1
+ with ESMTP id RpR1pxP80WjI for <devel@linuxdriverproject.org>;
+ Mon, 30 Sep 2019 04:25:19 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mailout4.samsung.com (mailout4.samsung.com [203.254.224.34])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 65E68857C2
+ for <devel@driverdev.osuosl.org>; Mon, 30 Sep 2019 04:25:19 +0000 (UTC)
+Received: from epcas1p2.samsung.com (unknown [182.195.41.46])
+ by mailout4.samsung.com (KnoxPortal) with ESMTP id
+ 20190930042516epoutp04068739db36b97af2924cc269271a1040~JHLbJEgOa2802628026epoutp04v
+ for <devel@driverdev.osuosl.org>; Mon, 30 Sep 2019 04:25:16 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout4.samsung.com
+ 20190930042516epoutp04068739db36b97af2924cc269271a1040~JHLbJEgOa2802628026epoutp04v
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1569817516;
+ bh=nVneqrk5OtQyfdwPW2jy83LD/8hRdMLPttKZv89DwO4=;
+ h=From:To:Cc:In-Reply-To:Subject:Date:References:From;
+ b=P14Ylkfquq13esnEC0kOvoCh1oBNVKfnY6gQ5YAZ3c1JjTb4m1JxLJSr5Nly3ZkQ4
+ aNAEvpkdHXp9Zd1AcY1rESZnHdznv9bODLZWSgUPBaJswg1fk0t3GyF0RQdow/UaFT
+ 15J24DMn9+BWswsQktVuOqyhe/PZgo8eD9mT/xbQ=
+Received: from epsnrtp3.localdomain (unknown [182.195.42.164]) by
+ epcas1p1.samsung.com (KnoxPortal) with ESMTP id
+ 20190930042516epcas1p18b18c31dfdfb2227362ca637555ac350~JHLa2H1uo3267932679epcas1p14;
+ Mon, 30 Sep 2019 04:25:16 +0000 (GMT)
+Received: from epsmges1p4.samsung.com (unknown [182.195.40.160]) by
+ epsnrtp3.localdomain (Postfix) with ESMTP id 46hTpL49QtzMqYkl; Mon, 30 Sep
+ 2019 04:25:14 +0000 (GMT)
+Received: from epcas1p4.samsung.com ( [182.195.41.48]) by
+ epsmges1p4.samsung.com (Symantec Messaging Gateway) with SMTP id
+ 67.B3.04224.AA3819D5; Mon, 30 Sep 2019 13:25:14 +0900 (KST)
+Received: from epsmtrp2.samsung.com (unknown [182.195.40.14]) by
+ epcas1p2.samsung.com (KnoxPortal) with ESMTPA id
+ 20190930042514epcas1p2c78cc8af0a5010cd8ec4cd163d43f778~JHLZFJc0l1630216302epcas1p2U;
+ Mon, 30 Sep 2019 04:25:14 +0000 (GMT)
+Received: from epsmgms1p2new.samsung.com (unknown [182.195.42.42]) by
+ epsmtrp2.samsung.com (KnoxPortal) with ESMTP id
+ 20190930042514epsmtrp289a4f3a26c19b527615b04d65a847d41~JHLZEaRk40526005260epsmtrp2H;
+ Mon, 30 Sep 2019 04:25:14 +0000 (GMT)
+X-AuditID: b6c32a38-d43ff70000001080-31-5d9183aa41ed
+Received: from epsmtip1.samsung.com ( [182.195.34.30]) by
+ epsmgms1p2new.samsung.com (Symantec Messaging Gateway) with SMTP id
+ B8.02.03889.AA3819D5; Mon, 30 Sep 2019 13:25:14 +0900 (KST)
+Received: from DONAMJAEJEO06 (unknown [10.88.104.63]) by
+ epsmtip1.samsung.com (KnoxPortal) with ESMTPA id
+ 20190930042514epsmtip124614efe1392bd87f24f39ed4f2e609c~JHLY1lwkx3163431634epsmtip1T;
+ Mon, 30 Sep 2019 04:25:14 +0000 (GMT)
+From: "Namjae Jeon" <namjae.jeon@samsung.com>
+To: "'Dan Carpenter'" <dan.carpenter@oracle.com>, "'Greg KH'"
+ <gregkh@linuxfoundation.org>
+In-Reply-To: 
+Subject: RE: [PATCH] staging: exfat: add exfat filesystem code to
+Date: Mon, 30 Sep 2019 13:25:13 +0900
+Message-ID: <042701d57747$0e200320$2a600960$@samsung.com>
+MIME-Version: 1.0
+X-Mailer: Microsoft Outlook 14.0
+Thread-Index: AQGT5RAmYrUvbIdPV5wSdu6UWeOkRAHEPqcjASg+jxcBWaTXGQHGgTvdAmfpepEChGr/QAIs0XV3AVAC8PIBuUjzQAFD/owypymulmCAEXiQ0A==
+Content-Language: ko
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFjrNJsWRmVeSWpSXmKPExsWy7bCmge6q5omxBkduKVjsm/6U2eL1v+ks
+ FnvO/GK3aF68ns3i+t1bzBZ79p5ksbi8aw6bxdHHC9ksHk2YxGSx9vNjdost/46wWlx6/4HF
+ gcfj3r7DLB47Z91l99g/dw27R+uOv+weH5/eYvHo27KK0ePzJjmPQ9vfsAVwROXYZKQmpqQW
+ KaTmJeenZOal2yp5B8c7x5uaGRjqGlpamCsp5CXmptoqufgE6Lpl5gCdq6RQlphTChQKSCwu
+ VtK3synKLy1JVcjILy6xVUotSMkpMDQo0CtOzC0uzUvXS87PtTI0MDAyBapMyMl4vPkje8Fh
+ roqG7k7WBsZFHF2MnBwSAiYSp5q+sXUxcnEICexglLi66QgThPOJUeLo1LksIFVCAt8YJf5d
+ CILp2HtxKitE0V5Gid17zkC1v2KUWLZ/LStIFZuArsS/P/uBEhwcIgIxEl2P3UFqmAW+MklM
+ WDyRHSTOKcArMeGfNUi5sICjxI/LB5hAbBYBVYkN5y6AjeEVsJT4OWs+lC0ocXLmE7CDmAXk
+ Jba/ncMMcZCCxI6zrxlBbBGBOolNB88xQdSISMzubGMG2SshsIld4kzDTEaIBheJv1+7WCFs
+ YYlXx7ewQ9hSEp/f7QW7WUKgWuLjfqj5HYwSL77bQtjGEjfXb2AFKWEW0JRYv0sfIqwosfP3
+ XEaItXwS7772sEJM4ZXoaBOCKFGV6Lt0mAnClpboav/APoFRaRaSx2YheWwWkgdmISxbwMiy
+ ilEstaA4Nz212LDABDmqNzGCE7KWxQ7GPed8DjEKcDAq8fA+YJ4YK8SaWFZcmXuIUYKDWUmE
+ V5xhQqwQb0piZVVqUX58UWlOavEhRlNguE9klhJNzgdmi7ySeENTI2NjYwsTM3MzU2MlcV6P
+ 9IZYIYH0xJLU7NTUgtQimD4mDk6pBsYg2bnTclf8itkaF33oliRT2b/vkybV/9R5uv5Gz8dH
+ /AKrlkVXp5WWPp1d9T/HTri17EHxifI65ns75qY5zpxdtXjBinM+0UquL/VFOrd6vzIu2GWl
+ 9S+s3MuVy/Kkv83Ho+y+JUGtK89o3/WZeCq1TfDZ/CMhqut2Ct4/xNDd2/ln4xmBXA8lluKM
+ REMt5qLiRADxJUew3gMAAA==
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFtrKIsWRmVeSWpSXmKPExsWy7bCSnO6q5omxBuu/cljsm/6U2eL1v+ks
+ FnvO/GK3aF68ns3i+t1bzBZ79p5ksbi8aw6bxdHHC9ksHk2YxGSx9vNjdost/46wWlx6/4HF
+ gcfj3r7DLB47Z91l99g/dw27R+uOv+weH5/eYvHo27KK0ePzJjmPQ9vfsAVwRHHZpKTmZJal
+ FunbJXBlPN78kb3gMFdFQ3cnawPjIo4uRk4OCQETib0Xp7J2MXJxCAnsZpS4dvETC0RCWuLY
+ iTPMXYwcQLawxOHDxRA1Lxglnh3azgZSwyagK/Hvz342kBoRgRiJE5cEQGqYBf4ySUzsesQG
+ 0TCdRWLn51awIk4BXokJ/6xBeoUFHCV+XD7ABGKzCKhKbDh3gRXE5hWwlPg5az6ULShxcuYT
+ FpBWZgE9ibaNjCBhZgF5ie1v5zBDnKkgsePsa7C4iECdxKaD55ggakQkZne2MU9gFJ6FZNIs
+ hEmzkEyahaRjASPLKkbJ1ILi3PTcYsMCo7zUcr3ixNzi0rx0veT83E2M4MjU0trBeOJE/CFG
+ AQ5GJR7eB8wTY4VYE8uKK3MPMUpwMCuJ8IozTIgV4k1JrKxKLcqPLyrNSS0+xCjNwaIkziuf
+ fyxSSCA9sSQ1OzW1ILUIJsvEwSnVwOgq6miu8ymsejrP7topk/+LTNhRs3BHrGx3+mqNl2fO
+ Xxd/yLhukn1o6DXb4JpLp9nVp+QW5XOs6Ii4aHp/irXenYtvu5ytH715EGMb4rv5n/zZl/fD
+ M58lndyxUanud+aFVA3NeS0dd1xMrDu0TTNCNBm2dJwz+JwVdHnF61e58urFdleZNyuxFGck
+ GmoxFxUnAgCETFiryAIAAA==
+X-CMS-MailID: 20190930042514epcas1p2c78cc8af0a5010cd8ec4cd163d43f778
+X-Msg-Generator: CA
+X-Sendblock-Type: SVC_REQ_APPROVE
+CMS-TYPE: 101P
+DLP-Filter: Pass
+X-CFilter-Loop: Reflected
+X-CMS-RootMailID: 20190917060433epcas2p4b12d7581d0ac5477d8f26ec74e634f0a
+References: <8998.1568693976@turing-police>
+ <20190917053134.27926-1-qkrwngud825@gmail.com>
+ <20190917054726.GA2058532@kroah.com>
+ <CGME20190917060433epcas2p4b12d7581d0ac5477d8f26ec74e634f0a@epcas2p4.samsung.com>
+ <CAD14+f1adJPRTvk8awgPJwCoHXSngqoKcAze1xbHVVvrhSMGrQ@mail.gmail.com>
+ <004401d56dc9$b00fd7a0$102f86e0$@samsung.com>
+ <20190918061605.GA1832786@kroah.com> <20190918063304.GA8354@jagdpanzerIV>
+ <20190918082658.GA1861850@kroah.com>
+ <CAD14+f24gujg3S41ARYn3CvfCq9_v+M2kot=RR3u7sNsBGte0Q@mail.gmail.com>
+ <20190918092405.GC2959@kadam> 
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,66 +140,49 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: =?UTF-8?q?Jan=20Sebastian=20G=C3=B6tte?= <linux@jaseg.net>,
- devel@driverdev.osuosl.org, linux-fbdev@vger.kernel.org,
- Nishad Kamdar <nishadkamdar@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, kjlu@umn.edu,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Daniel Vetter <daniel.vetter@ffwll.ch>, emamd001@umn.edu,
- Bhanusree Pola <bhanusreemahesh@gmail.com>, smccaman@umn.edu,
- Phil Reid <preid@electromag.com.au>, Sam Ravnborg <sam@ravnborg.org>,
- Navid Emamdoost <navid.emamdoost@gmail.com>
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, linkinjeon@gmail.com, 'Valdis
+ Kletnieks' <valdis.kletnieks@vt.edu>,
+ 'Sergey	Senozhatsky' <sergey.senozhatsky.work@gmail.com>,
+ 'Ju Hyung Park' <qkrwngud825@gmail.com>, linux-kernel@vger.kernel.org,
+ alexander.levin@microsoft.com, sergey.senozhatsky@gmail.com,
+ linux-fsdevel@vger.kernel.org, sj1557.seo@samsung.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-In fbtft_framebuffer_alloc the error handling path should take care of
-releasing frame buffer after it is allocated via framebuffer_alloc, too.
-Therefore, in two failure cases the goto destination is changed to
-address this issue.
 
-Fixes: c296d5f9957c ("staging: fbtft: core support")
-Signed-off-by: Navid Emamdoost <navid.emamdoost@gmail.com>
----
- drivers/staging/fbtft/fbtft-core.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+> [..]
+> > Put it in drivers/staging/sdfat/.
+> >
+> > But really we want someone from Samsung to say that they will treat
+> > the staging version as upstream.  It doesn't work when people apply
+> > fixes to their version and a year later back port the fixes into
+> > staging.  The staging tree is going to have tons and tons of white space
+> > fixes so backports are a pain.  All development needs to be upstream
+> > first where the staging driver is upstream.  Otherwise we should just
+> > wait for Samsung to get it read to be merged in fs/ and not through the
+> > staging tree.
+> Quite frankly,
+> This whole thing came as a huge-huge surprise to us, we did not initiate
+> upstreaming of exfat/sdfat code and, as of this moment, I'm not exactly
+> sure that we are prepared for any immediate radical changes to our internal
+> development process which people all of a sudden want from us. I need to
+> discuss with related people on internal thread.
+> please wait a while:)
+We decide to contribute sdfat directly and treat upstream exfat.
+Perhaps more time is needed for patch preparation(exfat rename + vfat removal
++ clean-up) and internal processes. After contributing sdfat v2.2.0 as the base,
+We will also provide change-set of sdfat v2.3.0 later.
 
-diff --git a/drivers/staging/fbtft/fbtft-core.c b/drivers/staging/fbtft/fbtft-core.c
-index cf5700a2ea66..a0a67aa517f0 100644
---- a/drivers/staging/fbtft/fbtft-core.c
-+++ b/drivers/staging/fbtft/fbtft-core.c
-@@ -714,7 +714,7 @@ struct fb_info *fbtft_framebuffer_alloc(struct fbtft_display *display,
- 	if (par->gamma.curves && gamma) {
- 		if (fbtft_gamma_parse_str(par, par->gamma.curves, gamma,
- 					  strlen(gamma)))
--			goto alloc_fail;
-+			goto release_framebuf;
- 	}
- 
- 	/* Transmit buffer */
-@@ -731,7 +731,7 @@ struct fb_info *fbtft_framebuffer_alloc(struct fbtft_display *display,
- 	if (txbuflen > 0) {
- 		txbuf = devm_kzalloc(par->info->device, txbuflen, GFP_KERNEL);
- 		if (!txbuf)
--			goto alloc_fail;
-+			goto release_framebuf;
- 		par->txbuf.buf = txbuf;
- 		par->txbuf.len = txbuflen;
- 	}
-@@ -753,6 +753,9 @@ struct fb_info *fbtft_framebuffer_alloc(struct fbtft_display *display,
- 
- 	return info;
- 
-+release_framebuf:
-+	framebuffer_release(info);
-+
- alloc_fail:
- 	vfree(vmem);
- 
--- 
-2.17.1
+Thanks!
+> 
+> Thanks!
+> >
+> > regards,
+> > dan carpenter
+> >
+
 
 _______________________________________________
 devel mailing list
