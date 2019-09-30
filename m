@@ -1,63 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 35E4EC19A2
-	for <lists+driverdev-devel@lfdr.de>; Sun, 29 Sep 2019 23:41:11 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D1360C1A4C
+	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Sep 2019 05:10:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1A7218542A;
-	Sun, 29 Sep 2019 21:41:09 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7E0AF87404;
+	Mon, 30 Sep 2019 03:10:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vFIVUkO-lzbg; Sun, 29 Sep 2019 21:41:08 +0000 (UTC)
+	with ESMTP id UPRTd5qw2QfZ; Mon, 30 Sep 2019 03:10:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E1A9F851AA;
-	Sun, 29 Sep 2019 21:41:06 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 75E4A87371;
+	Mon, 30 Sep 2019 03:10:03 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8ECEC1BF2A7
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 29 Sep 2019 21:41:04 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6B87C1BF33A
+ for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 03:10:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 86AF0203BA
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 29 Sep 2019 21:41:04 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 677EF85A8B
+ for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 03:10:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id znGveV4lecVi
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 29 Sep 2019 21:41:00 +0000 (UTC)
-X-Greylist: delayed 00:05:45 by SQLgrey-1.7.6
-Received: from mail.webmail.cn (www4076uf.sakura.ne.jp [49.212.128.90])
- by silver.osuosl.org (Postfix) with ESMTPS id 5D508203A8
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 29 Sep 2019 21:41:00 +0000 (UTC)
-Received: from mail.webmail.cn (localhost [127.0.0.1])
- by mail.webmail.cn (Postfix) with ESMTP id 553CAD82A5E2
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 30 Sep 2019 06:35:11 +0900 (JST)
-X-Virus-Scanned: amavisd-new at mail.webmail.cn
-Received: from mail.webmail.cn ([127.0.0.1])
- by mail.webmail.cn (mail.webmail.cn [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id gNBY00U_gkZO
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 30 Sep 2019 06:35:10 +0900 (JST)
-Received: from webmail.cn (localhost [127.0.0.1])
- by mail.webmail.cn (Postfix) with ESMTPSA id C9FC0D81A81D;
- Mon, 30 Sep 2019 06:35:07 +0900 (JST)
-MIME-Version: 1.0
-Date: Mon, 30 Sep 2019 06:35:07 +0900
-From: Kiba Ibrahim <esther.laboso45@gmail.com>
-To: undisclosed-recipients:;
-Subject: ***Spam*** IRREVOCABLE COMPENSATION PAYMENT OF US$750, 000.00 VIA ATM
- VISA CARD
-Mail-Reply-To: UNII2019MF2020@gmx.com
-Message-ID: <3b3068634db059160a1b778cea7bce10@webmail.cn>
-X-Sender: esther.laboso45@gmail.com
-User-Agent: Roundcube Webmail
+ with ESMTP id 4f6S2JryxWKM for <devel@linuxdriverproject.org>;
+ Mon, 30 Sep 2019 03:10:00 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-io1-f65.google.com (mail-io1-f65.google.com
+ [209.85.166.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 1507685802
+ for <devel@driverdev.osuosl.org>; Mon, 30 Sep 2019 03:10:00 +0000 (UTC)
+Received: by mail-io1-f65.google.com with SMTP id n26so5797181ioj.8
+ for <devel@driverdev.osuosl.org>; Sun, 29 Sep 2019 20:10:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=JdWTb1V4IhUUMb47mN6yAdg27zy2bK0W+qF3wp30fYo=;
+ b=hetnKUgsD2zSGDpE7xOLnzeBpXHQYJEYYEqnzJSwcvWeNhdWPsdlC6/Pbtswtb+2tg
+ ReMBVDCg9wXGCrev7wYoFfActSDTXjhCrs0vGHKXQNlzmnTvodwpgC8GReVyUTL0cUH6
+ jPTCtsx6gOP9iFcUzUyy2V77UQAkJPNLpN/9ZFmSxBsi6rCppsNdoC3ciTBBpVHYGV8Z
+ Myyx7ePbg+RWklM9om4+N+eOelSbT4G5BFWA9tPOKtxcimECtmLWNhuAU4sZY3PA7GSi
+ 2E2BiHEuooVd+tzXxgBWNKKeiMaqgI0bZFAkItESu2W1K44vsybFpfUDwksMtW2XWFcq
+ p/mg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=JdWTb1V4IhUUMb47mN6yAdg27zy2bK0W+qF3wp30fYo=;
+ b=VOTgYEJV3x+AzPsOAkWvbI6zUnYgtOjT7vBfiHlQLdrhfvzOWms9sqN4wCGVObuofi
+ Pfu9KcjwsAQYK9SPSxfQxWMnWM/xzqf6Se4aqoucxUtMmP6p/aV4jL2qpvrmIXdf2m6g
+ WLaJgM8hmYHr7ZbRuXHZYX/BpIYZfABNyjpFWmzHPJDVE/gMMLID9oHd8gO+zmpOyiX4
+ xVSKjb4HEmY9hw8mRVmUxHKaDmOJ5Gx6YZumV7K0Ko455jEa0nay+pqowy1f+x6sYSdO
+ rRYezmwOZ29DvO9dNmbM4f/G+8QnZBIC0HVXFs4KM5Yap0/rEOxiFUqLLc+wjcS0MrPo
+ mLRw==
+X-Gm-Message-State: APjAAAVgsY+Pxu1cUir5Gtq+adFIyAOwYudujizNzGmwKghORAl5RwQg
+ TJe2SjIBiiet0Ekew89qXJY=
+X-Google-Smtp-Source: APXvYqw9S4icJAA3Iim6bEKEOhPYCZHJFDUjRkHAKLayY1qZ/8t7tcsSVHOGYMUZdwQB5yUeCahPEQ==
+X-Received: by 2002:a5d:9349:: with SMTP id i9mr3190833ioo.101.1569812999347; 
+ Sun, 29 Sep 2019 20:09:59 -0700 (PDT)
+Received: from cs-dulles.cs.umn.edu (cs-dulles.cs.umn.edu. [128.101.35.54])
+ by smtp.googlemail.com with ESMTPSA id r22sm5444086ilb.85.2019.09.29.20.09.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 29 Sep 2019 20:09:58 -0700 (PDT)
+From: Navid Emamdoost <navid.emamdoost@gmail.com>
+To: 
+Subject: [PATCH] Staging: fbtft: fix memory leak in fbtft_framebuffer_alloc
+Date: Sun, 29 Sep 2019 22:09:45 -0500
+Message-Id: <20190930030949.28615-1-navid.emamdoost@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,74 +80,67 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: UNII2019MF2020@gmx.com
+Cc: =?UTF-8?q?Jan=20Sebastian=20G=C3=B6tte?= <linux@jaseg.net>,
+ devel@driverdev.osuosl.org, linux-fbdev@vger.kernel.org,
+ Nishad Kamdar <nishadkamdar@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, kjlu@umn.edu,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Daniel Vetter <daniel.vetter@ffwll.ch>, emamd001@umn.edu,
+ Bhanusree Pola <bhanusreemahesh@gmail.com>, smccaman@umn.edu,
+ Phil Reid <preid@electromag.com.au>, Sam Ravnborg <sam@ravnborg.org>,
+ Navid Emamdoost <navid.emamdoost@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+In fbtft_framebuffer_alloc the error handling path should take care of
+releasing frame buffer after it is allocated via framebuffer_alloc, too.
+Therefore, in two failure cases the goto destination is changed to
+address this issue.
 
+Fixes: c296d5f9957c ("staging: fbtft: core support")
+Signed-off-by: Navid Emamdoost <navid.emamdoost@gmail.com>
+---
+ drivers/staging/fbtft/fbtft-core.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
+diff --git a/drivers/staging/fbtft/fbtft-core.c b/drivers/staging/fbtft/fbtft-core.c
+index cf5700a2ea66..a0a67aa517f0 100644
+--- a/drivers/staging/fbtft/fbtft-core.c
++++ b/drivers/staging/fbtft/fbtft-core.c
+@@ -714,7 +714,7 @@ struct fb_info *fbtft_framebuffer_alloc(struct fbtft_display *display,
+ 	if (par->gamma.curves && gamma) {
+ 		if (fbtft_gamma_parse_str(par, par->gamma.curves, gamma,
+ 					  strlen(gamma)))
+-			goto alloc_fail;
++			goto release_framebuf;
+ 	}
+ 
+ 	/* Transmit buffer */
+@@ -731,7 +731,7 @@ struct fb_info *fbtft_framebuffer_alloc(struct fbtft_display *display,
+ 	if (txbuflen > 0) {
+ 		txbuf = devm_kzalloc(par->info->device, txbuflen, GFP_KERNEL);
+ 		if (!txbuf)
+-			goto alloc_fail;
++			goto release_framebuf;
+ 		par->txbuf.buf = txbuf;
+ 		par->txbuf.len = txbuflen;
+ 	}
+@@ -753,6 +753,9 @@ struct fb_info *fbtft_framebuffer_alloc(struct fbtft_display *display,
+ 
+ 	return info;
+ 
++release_framebuf:
++	framebuffer_release(info);
++
+ alloc_fail:
+ 	vfree(vmem);
+ 
 -- 
+2.17.1
 
-
-Dear Beneficiary
-
-IRREVOCABLE COMPENSATION PAYMENT OF US$750,000.00 VIA ATM VISA CARD
-
-We have actually been authorized by the newly appointed Minister of
-finance and the governing body of the United Nations Monetary Unit to
-investigate the unnecessary delay on your payment, recommended and
-approved in your favour. During the course of our investigation, we
-discovered with dismay that your payment has been unnecessarily
-delayed by corrupt officials of the Bank in attempt to swindle your
-fund which has lead to so many losses from your end and unnecessary
-delay in the receipt of your payment.
-
-The United Nations and the International Monetary Fund (IMF) has
-chosen to pay out all the compensation funds to 150 Beneficiaries from
-U.S.A, Europe, Canada, United Arab Emirates,Bahrain, Qatar, Saudi
-Arabia, South America, Australia and Asia and Africa Continent through
-ATM Visa Card as this is a global payments technology that enables
-consumers, businesses, financial institutions and governments to use
-digital currency instead of Cash and Cheques.
-
-We have arranged your payment to be paid to you through ATM Visa Card
-and this will be issued on your Name and shall be posted directly to
-your address via DHL or any courier services available in your
-country. Upon your contact with us, the sum of US$750,000.00 will be
-credited into the ATM Visa Card and this will enable you to withdraw
-your funds in any ATM Machines in your country with a minimum
-withdrawal of US$5000.00 per day. Your limit can be increase to any
-amount upon your request.
-
-In this regards, you are to contact and furnish the requested
-information to the Directorate of International Payment and Transfer
-with the followings;
-
-1. Your Name:
-2. Country :
-3. Age and Sex:
-4. Occupation :
-5. Mobile Telephone:
-6. Delivery Address:
-7. Id Card Identification:
-
-Endeavour to furnish the above information to the officers below for
-the issuance and delivery of your ATM Visa Card;
-
-MRS. KIBA IBRAHIM
-Director of International Payment
-E-mail: U.N.imfbfouaga@gmx.us
-Telephone: +22673385984
-
-We required your urgent response to this email as directed to avoid
-further delay.
-
-Yours faithfully,
-
-UNITED NATIONS
-Public Information Office
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
