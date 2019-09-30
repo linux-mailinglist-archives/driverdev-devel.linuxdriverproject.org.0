@@ -2,72 +2,59 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 13B17C28DF
-	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Sep 2019 23:35:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 68DB9C2976
+	for <lists+driverdev-devel@lfdr.de>; Tue,  1 Oct 2019 00:27:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AE78685F0B;
-	Mon, 30 Sep 2019 21:35:33 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0F738868E4;
+	Mon, 30 Sep 2019 22:27:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZxzP-8iAdtkq; Mon, 30 Sep 2019 21:35:32 +0000 (UTC)
+	with ESMTP id eKvw1t8tnv7C; Mon, 30 Sep 2019 22:27:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 156C585FB0;
-	Mon, 30 Sep 2019 21:35:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9D88486931;
+	Mon, 30 Sep 2019 22:27:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 815701BF2EF
- for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 21:35:29 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 902311BF2B9
+ for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 22:27:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 63DC981B76
- for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 21:35:29 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 8D0BF85965
+ for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 22:27:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1qbl3tbu-O5M for <devel@linuxdriverproject.org>;
- Mon, 30 Sep 2019 21:35:26 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f66.google.com (mail-io1-f66.google.com
- [209.85.166.66])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 00C2F8758F
- for <devel@driverdev.osuosl.org>; Mon, 30 Sep 2019 21:35:25 +0000 (UTC)
-Received: by mail-io1-f66.google.com with SMTP id b19so14238224iob.4
- for <devel@driverdev.osuosl.org>; Mon, 30 Sep 2019 14:35:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=5l+n2rw/iAlqfIRxbZZeFy6DYtAwztBk8k/LJBt7oE8=;
- b=bJTIq76UANeq3zxz1NT4vFNcGC1oVXaZtF7S8x6HgJyDLCgRYDzz5c88Qv/omqOG5f
- cOeKqWKbkd02ZUThbCe3A4aO/IZCJNqafo6/DoxsIQgdho+/6t05W6F7l23nB2qSEjv3
- Who5JsO3zs1gw9OyojdLC/aeK7NfZZq6jKbvsiEUVDYz7eatGoSl6vbO6Z7mL6TMDwYu
- F//sviWkyXOtVbnYJfg6WSpK48M4m3C9SjOh9TZp2vR7Cb42TUS3CQo5/CjidK1Rkoqn
- Nj2/IryA3j2VhqtGo+AUHQE5edmWEVBeiDFfe3dZMArTum2CobOQZ+yK9WQJzVne9UXf
- xBew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=5l+n2rw/iAlqfIRxbZZeFy6DYtAwztBk8k/LJBt7oE8=;
- b=dIoK7kdClo5GSs9hxyMl753UKkGjJcbhaflAkyB5QygkgwqbYYFR4rC4DiuhSoRRGA
- cxWwY4/kyFfk7S2+pRlr36N3YlWAOjOLxLFD9GRS0JfsziZZQvXgILoV0gN0dV8aujwj
- YF7EFq+wFpRaBGkCd7OPthpzlTduhPTawrATmeDrC1jYzlVQkU85Fhx6QcMxIzR6Ogdr
- c0g+Pks+rq8YAL3Um4TLIapaTwUddh1DRhf33JXxeiCz9oZr+MFD6l1XtC6LUps+STW2
- QlM0rQR79O6Kr+JUrPOdbs6N9moUbcvHdJ7kEJILSH1ra7S4EbokSh7+M2tiFUMQMW4s
- SQyw==
-X-Gm-Message-State: APjAAAXFQJ2FnYF+tcbzwi0zCwMmujyShKMkiTz5sjTRLbp6mTX7LL3Z
- NtZmHPB07nYsYSDG6S+Km250arBMwTiAvaAOCxM=
-X-Google-Smtp-Source: APXvYqz1tiK1Mxs3XfkgoniEC/dVCuoTbK/zeberVMZesyTKbgE8Rvrf6VbiQHdPCYTWFzQmSDeN8oktc8Q6CO/4N+k=
-X-Received: by 2002:a02:ac82:: with SMTP id x2mr21524721jan.34.1569879324942; 
- Mon, 30 Sep 2019 14:35:24 -0700 (PDT)
+ with ESMTP id 9irQ9AGt8GIj for <devel@linuxdriverproject.org>;
+ Mon, 30 Sep 2019 22:27:38 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.siol.net (mailoutvs18.siol.net [185.57.226.209])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 5B89C87B45
+ for <devel@driverdev.osuosl.org>; Mon, 30 Sep 2019 22:27:38 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.siol.net (Postfix) with ESMTP id 4E1E9521949;
+ Tue,  1 Oct 2019 00:27:35 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at psrvmta10.zcs-production.pri
+Received: from mail.siol.net ([127.0.0.1])
+ by localhost (psrvmta10.zcs-production.pri [127.0.0.1]) (amavisd-new,
+ port 10032)
+ with ESMTP id ptcGB7QC91-1; Tue,  1 Oct 2019 00:27:34 +0200 (CEST)
+Received: from mail.siol.net (localhost [127.0.0.1])
+ by mail.siol.net (Postfix) with ESMTPS id A502F522D91;
+ Tue,  1 Oct 2019 00:27:34 +0200 (CEST)
+Received: from jernej-laptop.localnet (cpe-86-58-59-25.static.triera.net
+ [86.58.59.25]) (Authenticated sender: jernej.skrabec@siol.net)
+ by mail.siol.net (Postfix) with ESMTPA id 19572521949;
+ Tue,  1 Oct 2019 00:27:33 +0200 (CEST)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@siol.net>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Subject: Re: [PATCH v2 0/6] media: cedrus: h264: Support multi-slice frames
+Date: Tue, 01 Oct 2019 00:27:32 +0200
+Message-ID: <4342181.Ehiz7mZe5m@jernej-laptop>
+In-Reply-To: <9ec1c07e-b0e8-f50c-7f46-df7ca303a5bc@xs4all.nl>
+References: <20190929200023.215831-1-jernej.skrabec@siol.net>
+ <9ec1c07e-b0e8-f50c-7f46-df7ca303a5bc@xs4all.nl>
 MIME-Version: 1.0
-References: <20190920025137.29407-1-navid.emamdoost@gmail.com>
-In-Reply-To: <20190920025137.29407-1-navid.emamdoost@gmail.com>
-From: Navid Emamdoost <navid.emamdoost@gmail.com>
-Date: Mon, 30 Sep 2019 16:35:14 -0500
-Message-ID: <CAEkB2EQJDdE=0HDzL14WDHHuwuaNNjSXEGVm1p7MBopyDvzTzQ@mail.gmail.com>
-Subject: Re: [PATCH] staging: rtl8192u: fix multiple memory leaks on error path
-To: Colin Ian King <colin.king@canonical.com>,
- Nishka Dasgupta <nishkadg.linux@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,83 +67,116 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- kjlu@umn.edu, linux-kernel@vger.kernel.org, Navid Emamdoost <emamd001@umn.edu>,
- Stephen McCamant <smccaman@umn.edu>
+Cc: devel@driverdev.osuosl.org, linux-media@vger.kernel.org, pawel@osciak.com,
+ jonas@kwiboo.se, gregkh@linuxfoundation.org, wens@csie.org, mripard@kernel.org,
+ tfiga@chromium.org, paul.kocialkowski@bootlin.com, kyungmin.park@samsung.com,
+ boris.brezillon@collabora.com, linux-arm-kernel@lists.infradead.org,
+ mchehab@kernel.org, ezequiel@collabora.com, linux-kernel@vger.kernel.org,
+ m.szyprowski@samsung.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Could you take a look at this patch and confirm it, please?
+Dne ponedeljek, 30. september 2019 ob 10:10:48 CEST je Hans Verkuil 
+napisal(a):
+> On 9/29/19 10:00 PM, Jernej Skrabec wrote:
+> > This series adds support for decoding multi-slice H264 frames along with
+> > support for V4L2_DEC_CMD_FLUSH and V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF.
+> > 
+> > Code was tested by modified ffmpeg, which can be found here:
+> > https://github.com/jernejsk/FFmpeg, branch mainline-test
+> > It has to be configured with at least following options:
+> > --enable-v4l2-request --enable-libudev --enable-libdrm
+> > 
+> > Samples used for testing:
+> > http://jernej.libreelec.tv/videos/h264/BA1_FT_C.mp4
+> > http://jernej.libreelec.tv/videos/h264/h264.mp4
+> > 
+> > Command line used for testing:
+> > ffmpeg -hwaccel drm -hwaccel_device /dev/dri/card0 -i h264.mp4 -pix_fmt
+> > bgra -f fbdev /dev/fb0
+> > 
+> > Please note that V4L2_DEC_CMD_FLUSH was not tested because I'm
+> > not sure how. ffmpeg follows exactly which slice is last in frame
+> > and sets hold flag accordingly. Improper usage of hold flag would
+> > corrupt ffmpeg assumptions and it would probably crash. Any ideas
+> > how to test this are welcome!
+> 
+> It can be tested partially at least: if ffmpeg tells you it is the last
+> slice, then queue the slice with the HOLD flag set, then call FLUSH
+> afterwards. This should clear the HOLD flag again. In this case the queued
+> buffer is probably not yet processed, so the flag is cleared before the
+> decode job starts.
+> 
+> You can also try to add a sleep before calling FLUSH to see what happens
+> if the last queued buffer is already decoded.
 
-On Thu, Sep 19, 2019 at 9:51 PM Navid Emamdoost
-<navid.emamdoost@gmail.com> wrote:
->
-> In rtl8192_tx on error handling path allocated urbs and also skb should
-> be released.
->
-> Signed-off-by: Navid Emamdoost <navid.emamdoost@gmail.com>
-> ---
->  drivers/staging/rtl8192u/r8192U_core.c | 17 ++++++++++++-----
->  1 file changed, 12 insertions(+), 5 deletions(-)
->
-> diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
-> index fe1f279ca368..b62b03802b1b 100644
-> --- a/drivers/staging/rtl8192u/r8192U_core.c
-> +++ b/drivers/staging/rtl8192u/r8192U_core.c
-> @@ -1422,7 +1422,7 @@ short rtl8192_tx(struct net_device *dev, struct sk_buff *skb)
->                 (struct tx_fwinfo_819x_usb *)(skb->data + USB_HWDESC_HEADER_LEN);
->         struct usb_device *udev = priv->udev;
->         int pend;
-> -       int status;
-> +       int status, rt = -1;
->         struct urb *tx_urb = NULL, *tx_urb_zero = NULL;
->         unsigned int idx_pipe;
->
-> @@ -1566,8 +1566,10 @@ short rtl8192_tx(struct net_device *dev, struct sk_buff *skb)
->                 }
->                 if (bSend0Byte) {
->                         tx_urb_zero = usb_alloc_urb(0, GFP_ATOMIC);
-> -                       if (!tx_urb_zero)
-> -                               return -ENOMEM;
-> +                       if (!tx_urb_zero) {
-> +                               rt = -ENOMEM;
-> +                               goto error;
-> +                       }
->                         usb_fill_bulk_urb(tx_urb_zero, udev,
->                                           usb_sndbulkpipe(udev, idx_pipe),
->                                           &zero, 0, tx_zero_isr, dev);
-> @@ -1577,7 +1579,7 @@ short rtl8192_tx(struct net_device *dev, struct sk_buff *skb)
->                                          "Error TX URB for zero byte %d, error %d",
->                                          atomic_read(&priv->tx_pending[tcb_desc->queue_index]),
->                                          status);
-> -                               return -1;
-> +                               goto error;
->                         }
->                 }
->                 netif_trans_update(dev);
-> @@ -1588,7 +1590,12 @@ short rtl8192_tx(struct net_device *dev, struct sk_buff *skb)
->         RT_TRACE(COMP_ERR, "Error TX URB %d, error %d",
->                  atomic_read(&priv->tx_pending[tcb_desc->queue_index]),
->                  status);
-> -       return -1;
-> +
-> +error:
-> +       dev_kfree_skb_any(skb);
-> +       usb_free_urb(tx_urb);
-> +       usb_free_urb(tx_urb_zero);
-> +       return rt;
->  }
->
->  static short rtl8192_usb_initendpoints(struct net_device *dev)
-> --
-> 2.17.1
->
+Ok, I tried following code:
+https://github.com/jernejsk/FFmpeg/blob/flush_test/libavcodec/
+v4l2_request.c#L220-L233
+
+But results are not good. It seems that out_vb in flush command is always NULL 
+and so it always marks capture buffer as done, which leads to kernel warnings.
+
+dmesg output with debugging messages is here: http://ix.io/1Ks8
+
+Currently I'm not sure what is going on. Shouldn't be output buffer queued and 
+waiting to MEDIA_REQUEST_IOC_QUEUE which is executed after flush command as it 
+can be seen from ffmpeg code linked above?
+
+Best regards,
+Jernej
+
+> 
+> Regards,
+> 
+> 	Hans
+> 
+> > Thanks to Jonas for adjusting ffmpeg.
+> > 
+> > Please let me know what you think.
+> > 
+> > Best regards,
+> > Jernej
+> > 
+> > Changes from v1:
+> > - added Rb tags
+> > - updated V4L2_DEC_CMD_FLUSH documentation
+> > - updated first slice detection in Cedrus
+> > - hold capture buffer flag is set according to source format
+> > - added v4l m2m stateless_(try_)decoder_cmd ioctl helpers
+> > 
+> > Hans Verkuil (2):
+> >   vb2: add V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF
+> >   videodev2.h: add V4L2_DEC_CMD_FLUSH
+> > 
+> > Jernej Skrabec (4):
+> >   media: v4l2-mem2mem: add stateless_(try_)decoder_cmd ioctl helpers
+> >   media: cedrus: Detect first slice of a frame
+> >   media: cedrus: h264: Support multiple slices per frame
+> >   media: cedrus: Add support for holding capture buffer
+> >  
+> >  Documentation/media/uapi/v4l/buffer.rst       | 13 ++++++
+> >  .../media/uapi/v4l/vidioc-decoder-cmd.rst     | 10 +++-
+> >  .../media/uapi/v4l/vidioc-reqbufs.rst         |  6 +++
+> >  .../media/videodev2.h.rst.exceptions          |  1 +
+> >  .../media/common/videobuf2/videobuf2-v4l2.c   |  8 +++-
+> >  drivers/media/v4l2-core/v4l2-mem2mem.c        | 35 ++++++++++++++
+> >  drivers/staging/media/sunxi/cedrus/cedrus.h   |  1 +
+> >  .../staging/media/sunxi/cedrus/cedrus_dec.c   | 11 +++++
+> >  .../staging/media/sunxi/cedrus/cedrus_h264.c  | 11 ++++-
+> >  .../staging/media/sunxi/cedrus/cedrus_hw.c    |  8 ++--
+> >  .../staging/media/sunxi/cedrus/cedrus_video.c | 14 ++++++
+> >  include/media/v4l2-mem2mem.h                  | 46 +++++++++++++++++++
+> >  include/media/videobuf2-core.h                |  3 ++
+> >  include/media/videobuf2-v4l2.h                |  5 ++
+> >  include/uapi/linux/videodev2.h                | 14 ++++--
+> >  15 files changed, 175 insertions(+), 11 deletions(-)
 
 
--- 
-Navid.
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
