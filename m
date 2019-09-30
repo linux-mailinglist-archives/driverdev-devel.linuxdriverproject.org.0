@@ -1,133 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91900C1A90
-	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Sep 2019 06:25:28 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 907F1C1C96
+	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Sep 2019 10:11:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 44C9920428;
-	Mon, 30 Sep 2019 04:25:26 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2B51A85683;
+	Mon, 30 Sep 2019 08:11:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BaWjvQk9M9p7; Mon, 30 Sep 2019 04:25:25 +0000 (UTC)
+	with ESMTP id gQLLXcVruSOp; Mon, 30 Sep 2019 08:11:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 682B2203E8;
-	Mon, 30 Sep 2019 04:25:23 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BAAB385549;
+	Mon, 30 Sep 2019 08:11:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7CABE1BF2CF
- for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 04:25:21 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B13EE1BF228
+ for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 08:11:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 7910A857EB
- for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 04:25:21 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id AD2F585549
+ for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 08:11:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RpR1pxP80WjI for <devel@linuxdriverproject.org>;
- Mon, 30 Sep 2019 04:25:19 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mailout4.samsung.com (mailout4.samsung.com [203.254.224.34])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 65E68857C2
- for <devel@driverdev.osuosl.org>; Mon, 30 Sep 2019 04:25:19 +0000 (UTC)
-Received: from epcas1p2.samsung.com (unknown [182.195.41.46])
- by mailout4.samsung.com (KnoxPortal) with ESMTP id
- 20190930042516epoutp04068739db36b97af2924cc269271a1040~JHLbJEgOa2802628026epoutp04v
- for <devel@driverdev.osuosl.org>; Mon, 30 Sep 2019 04:25:16 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout4.samsung.com
- 20190930042516epoutp04068739db36b97af2924cc269271a1040~JHLbJEgOa2802628026epoutp04v
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1569817516;
- bh=nVneqrk5OtQyfdwPW2jy83LD/8hRdMLPttKZv89DwO4=;
- h=From:To:Cc:In-Reply-To:Subject:Date:References:From;
- b=P14Ylkfquq13esnEC0kOvoCh1oBNVKfnY6gQ5YAZ3c1JjTb4m1JxLJSr5Nly3ZkQ4
- aNAEvpkdHXp9Zd1AcY1rESZnHdznv9bODLZWSgUPBaJswg1fk0t3GyF0RQdow/UaFT
- 15J24DMn9+BWswsQktVuOqyhe/PZgo8eD9mT/xbQ=
-Received: from epsnrtp3.localdomain (unknown [182.195.42.164]) by
- epcas1p1.samsung.com (KnoxPortal) with ESMTP id
- 20190930042516epcas1p18b18c31dfdfb2227362ca637555ac350~JHLa2H1uo3267932679epcas1p14;
- Mon, 30 Sep 2019 04:25:16 +0000 (GMT)
-Received: from epsmges1p4.samsung.com (unknown [182.195.40.160]) by
- epsnrtp3.localdomain (Postfix) with ESMTP id 46hTpL49QtzMqYkl; Mon, 30 Sep
- 2019 04:25:14 +0000 (GMT)
-Received: from epcas1p4.samsung.com ( [182.195.41.48]) by
- epsmges1p4.samsung.com (Symantec Messaging Gateway) with SMTP id
- 67.B3.04224.AA3819D5; Mon, 30 Sep 2019 13:25:14 +0900 (KST)
-Received: from epsmtrp2.samsung.com (unknown [182.195.40.14]) by
- epcas1p2.samsung.com (KnoxPortal) with ESMTPA id
- 20190930042514epcas1p2c78cc8af0a5010cd8ec4cd163d43f778~JHLZFJc0l1630216302epcas1p2U;
- Mon, 30 Sep 2019 04:25:14 +0000 (GMT)
-Received: from epsmgms1p2new.samsung.com (unknown [182.195.42.42]) by
- epsmtrp2.samsung.com (KnoxPortal) with ESMTP id
- 20190930042514epsmtrp289a4f3a26c19b527615b04d65a847d41~JHLZEaRk40526005260epsmtrp2H;
- Mon, 30 Sep 2019 04:25:14 +0000 (GMT)
-X-AuditID: b6c32a38-d43ff70000001080-31-5d9183aa41ed
-Received: from epsmtip1.samsung.com ( [182.195.34.30]) by
- epsmgms1p2new.samsung.com (Symantec Messaging Gateway) with SMTP id
- B8.02.03889.AA3819D5; Mon, 30 Sep 2019 13:25:14 +0900 (KST)
-Received: from DONAMJAEJEO06 (unknown [10.88.104.63]) by
- epsmtip1.samsung.com (KnoxPortal) with ESMTPA id
- 20190930042514epsmtip124614efe1392bd87f24f39ed4f2e609c~JHLY1lwkx3163431634epsmtip1T;
- Mon, 30 Sep 2019 04:25:14 +0000 (GMT)
-From: "Namjae Jeon" <namjae.jeon@samsung.com>
-To: "'Dan Carpenter'" <dan.carpenter@oracle.com>, "'Greg KH'"
- <gregkh@linuxfoundation.org>
-In-Reply-To: 
-Subject: RE: [PATCH] staging: exfat: add exfat filesystem code to
-Date: Mon, 30 Sep 2019 13:25:13 +0900
-Message-ID: <042701d57747$0e200320$2a600960$@samsung.com>
+ with ESMTP id J8Nccv_0AMTC for <devel@linuxdriverproject.org>;
+ Mon, 30 Sep 2019 08:11:05 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from lb3-smtp-cloud7.xs4all.net (lb3-smtp-cloud7.xs4all.net
+ [194.109.24.31])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B7ABA83F11
+ for <devel@driverdev.osuosl.org>; Mon, 30 Sep 2019 08:11:04 +0000 (UTC)
+Received: from [192.168.2.10] ([46.9.232.237])
+ by smtp-cloud7.xs4all.net with ESMTPA
+ id EqldicaL79D4hEqlgiKoVb; Mon, 30 Sep 2019 10:11:02 +0200
+Subject: Re: [PATCH v2 0/6] media: cedrus: h264: Support multi-slice frames
+To: Jernej Skrabec <jernej.skrabec@siol.net>, mchehab@kernel.org,
+ paul.kocialkowski@bootlin.com, mripard@kernel.org, pawel@osciak.com,
+ m.szyprowski@samsung.com, kyungmin.park@samsung.com, tfiga@chromium.org,
+ wens@csie.org
+References: <20190929200023.215831-1-jernej.skrabec@siol.net>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Message-ID: <9ec1c07e-b0e8-f50c-7f46-df7ca303a5bc@xs4all.nl>
+Date: Mon, 30 Sep 2019 10:10:48 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-X-Mailer: Microsoft Outlook 14.0
-Thread-Index: AQGT5RAmYrUvbIdPV5wSdu6UWeOkRAHEPqcjASg+jxcBWaTXGQHGgTvdAmfpepEChGr/QAIs0XV3AVAC8PIBuUjzQAFD/owypymulmCAEXiQ0A==
-Content-Language: ko
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFjrNJsWRmVeSWpSXmKPExsWy7bCmge6q5omxBkduKVjsm/6U2eL1v+ks
- FnvO/GK3aF68ns3i+t1bzBZ79p5ksbi8aw6bxdHHC9ksHk2YxGSx9vNjdost/46wWlx6/4HF
- gcfj3r7DLB47Z91l99g/dw27R+uOv+weH5/eYvHo27KK0ePzJjmPQ9vfsAVwROXYZKQmpqQW
- KaTmJeenZOal2yp5B8c7x5uaGRjqGlpamCsp5CXmptoqufgE6Lpl5gCdq6RQlphTChQKSCwu
- VtK3synKLy1JVcjILy6xVUotSMkpMDQo0CtOzC0uzUvXS87PtTI0MDAyBapMyMl4vPkje8Fh
- roqG7k7WBsZFHF2MnBwSAiYSp5q+sXUxcnEICexglLi66QgThPOJUeLo1LksIFVCAt8YJf5d
- CILp2HtxKitE0V5Gid17zkC1v2KUWLZ/LStIFZuArsS/P/uBEhwcIgIxEl2P3UFqmAW+MklM
- WDyRHSTOKcArMeGfNUi5sICjxI/LB5hAbBYBVYkN5y6AjeEVsJT4OWs+lC0ocXLmE7CDmAXk
- Jba/ncMMcZCCxI6zrxlBbBGBOolNB88xQdSISMzubGMG2SshsIld4kzDTEaIBheJv1+7WCFs
- YYlXx7ewQ9hSEp/f7QW7WUKgWuLjfqj5HYwSL77bQtjGEjfXb2AFKWEW0JRYv0sfIqwosfP3
- XEaItXwS7772sEJM4ZXoaBOCKFGV6Lt0mAnClpboav/APoFRaRaSx2YheWwWkgdmISxbwMiy
- ilEstaA4Nz212LDABDmqNzGCE7KWxQ7GPed8DjEKcDAq8fA+YJ4YK8SaWFZcmXuIUYKDWUmE
- V5xhQqwQb0piZVVqUX58UWlOavEhRlNguE9klhJNzgdmi7ySeENTI2NjYwsTM3MzU2MlcV6P
- 9IZYIYH0xJLU7NTUgtQimD4mDk6pBsYg2bnTclf8itkaF33oliRT2b/vkybV/9R5uv5Gz8dH
- /AKrlkVXp5WWPp1d9T/HTri17EHxifI65ns75qY5zpxdtXjBinM+0UquL/VFOrd6vzIu2GWl
- 9S+s3MuVy/Kkv83Ho+y+JUGtK89o3/WZeCq1TfDZ/CMhqut2Ct4/xNDd2/ln4xmBXA8lluKM
- REMt5qLiRADxJUew3gMAAA==
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFtrKIsWRmVeSWpSXmKPExsWy7bCSnO6q5omxBuu/cljsm/6U2eL1v+ks
- FnvO/GK3aF68ns3i+t1bzBZ79p5ksbi8aw6bxdHHC9ksHk2YxGSx9vNjdost/46wWlx6/4HF
- gcfj3r7DLB47Z91l99g/dw27R+uOv+weH5/eYvHo27KK0ePzJjmPQ9vfsAVwRHHZpKTmZJal
- FunbJXBlPN78kb3gMFdFQ3cnawPjIo4uRk4OCQETib0Xp7J2MXJxCAnsZpS4dvETC0RCWuLY
- iTPMXYwcQLawxOHDxRA1Lxglnh3azgZSwyagK/Hvz342kBoRgRiJE5cEQGqYBf4ySUzsesQG
- 0TCdRWLn51awIk4BXokJ/6xBeoUFHCV+XD7ABGKzCKhKbDh3gRXE5hWwlPg5az6ULShxcuYT
- FpBWZgE9ibaNjCBhZgF5ie1v5zBDnKkgsePsa7C4iECdxKaD55ggakQkZne2MU9gFJ6FZNIs
- hEmzkEyahaRjASPLKkbJ1ILi3PTcYsMCo7zUcr3ixNzi0rx0veT83E2M4MjU0trBeOJE/CFG
- AQ5GJR7eB8wTY4VYE8uKK3MPMUpwMCuJ8IozTIgV4k1JrKxKLcqPLyrNSS0+xCjNwaIkziuf
- fyxSSCA9sSQ1OzW1ILUIJsvEwSnVwOgq6miu8ymsejrP7topk/+LTNhRs3BHrGx3+mqNl2fO
- Xxd/yLhukn1o6DXb4JpLp9nVp+QW5XOs6Ii4aHp/irXenYtvu5ytH715EGMb4rv5n/zZl/fD
- M58lndyxUanud+aFVA3NeS0dd1xMrDu0TTNCNBm2dJwz+JwVdHnF61e58urFdleZNyuxFGck
- GmoxFxUnAgCETFiryAIAAA==
-X-CMS-MailID: 20190930042514epcas1p2c78cc8af0a5010cd8ec4cd163d43f778
-X-Msg-Generator: CA
-X-Sendblock-Type: SVC_REQ_APPROVE
-CMS-TYPE: 101P
-DLP-Filter: Pass
-X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20190917060433epcas2p4b12d7581d0ac5477d8f26ec74e634f0a
-References: <8998.1568693976@turing-police>
- <20190917053134.27926-1-qkrwngud825@gmail.com>
- <20190917054726.GA2058532@kroah.com>
- <CGME20190917060433epcas2p4b12d7581d0ac5477d8f26ec74e634f0a@epcas2p4.samsung.com>
- <CAD14+f1adJPRTvk8awgPJwCoHXSngqoKcAze1xbHVVvrhSMGrQ@mail.gmail.com>
- <004401d56dc9$b00fd7a0$102f86e0$@samsung.com>
- <20190918061605.GA1832786@kroah.com> <20190918063304.GA8354@jagdpanzerIV>
- <20190918082658.GA1861850@kroah.com>
- <CAD14+f24gujg3S41ARYn3CvfCq9_v+M2kot=RR3u7sNsBGte0Q@mail.gmail.com>
- <20190918092405.GC2959@kadam> 
+In-Reply-To: <20190929200023.215831-1-jernej.skrabec@siol.net>
+Content-Language: en-US
+X-CMAE-Envelope: MS4wfK9IKuZNeGFEGO1ipU974FZ/22u7b0eHb52sOVTjDWar12s23xSk7+3/qAGZaBOAOIslIwDo31TGsQr/hao3CJLYeYsH4Skz//+KsV/33q5632Vxor0Q
+ t4Tkji1xtcf7hwG67KNTFDYRdVo2uQ591OX3mZdbTCca6XOdpC8VVuMTh7WHjR1TyD8qtLrp7HxYqYrHrN7Id71XtQFBpCIyo3sJid0lBgcxoo25VBmoKBy9
+ Nr046jks4iF//5HfqDbwQPEgRiIX5bNmxSrECW+67UpopUihzusX4rRYXiQHZrc/2IIBA3exeyT7hkDTPK+LSkNKvAvsUC00Ylj5E5HFK+YHAn282Va1G7zX
+ AMGknbLA17cEeMbREFO3L00c0zbhFlkMBxnEQBe3eHIbRlJMPYAbqIgfiWbgB5ahz2oG/8cj1DBSJGr48iIVTTi4YvbLyHaUd/qqnTi6qVk4ss4CWSWj7LZ9
+ 2JLc5F5cvfY3UcBm7Wk8fRs755HtOtRvInPRLIp8QzIo6NGStiPvvUa0DUs6ThUOtRqnMT8zW4AsTHgA/RZulXK+to07S+YIoqABQm9bbruKx9iguqi1/yuW
+ gM+TE6g2gkwUPnyhQFcjEmcn4Vq+7FFc+ea4oWewNURg2iOd/VI2LAYlp5pkVoT4acMj6GXO9ZIpDcXe5uj7NSOSesvXygOeGdF7iS+OGu30cdPW1FWrKzPH
+ ZexuRooJtfNwe+g2S6wzE5DBMEVIH9zp9ihXMvzqzEY3nNjvp51hhQ==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -140,49 +68,91 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linkinjeon@gmail.com, 'Valdis
- Kletnieks' <valdis.kletnieks@vt.edu>,
- 'Sergey	Senozhatsky' <sergey.senozhatsky.work@gmail.com>,
- 'Ju Hyung Park' <qkrwngud825@gmail.com>, linux-kernel@vger.kernel.org,
- alexander.levin@microsoft.com, sergey.senozhatsky@gmail.com,
- linux-fsdevel@vger.kernel.org, sj1557.seo@samsung.com
+Cc: devel@driverdev.osuosl.org, jonas@kwiboo.se, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, boris.brezillon@collabora.com,
+ ezequiel@collabora.com, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-
-> [..]
-> > Put it in drivers/staging/sdfat/.
-> >
-> > But really we want someone from Samsung to say that they will treat
-> > the staging version as upstream.  It doesn't work when people apply
-> > fixes to their version and a year later back port the fixes into
-> > staging.  The staging tree is going to have tons and tons of white space
-> > fixes so backports are a pain.  All development needs to be upstream
-> > first where the staging driver is upstream.  Otherwise we should just
-> > wait for Samsung to get it read to be merged in fs/ and not through the
-> > staging tree.
-> Quite frankly,
-> This whole thing came as a huge-huge surprise to us, we did not initiate
-> upstreaming of exfat/sdfat code and, as of this moment, I'm not exactly
-> sure that we are prepared for any immediate radical changes to our internal
-> development process which people all of a sudden want from us. I need to
-> discuss with related people on internal thread.
-> please wait a while:)
-We decide to contribute sdfat directly and treat upstream exfat.
-Perhaps more time is needed for patch preparation(exfat rename + vfat removal
-+ clean-up) and internal processes. After contributing sdfat v2.2.0 as the base,
-We will also provide change-set of sdfat v2.3.0 later.
-
-Thanks!
+On 9/29/19 10:00 PM, Jernej Skrabec wrote:
+> This series adds support for decoding multi-slice H264 frames along with
+> support for V4L2_DEC_CMD_FLUSH and V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF.
 > 
-> Thanks!
-> >
-> > regards,
-> > dan carpenter
-> >
+> Code was tested by modified ffmpeg, which can be found here:
+> https://github.com/jernejsk/FFmpeg, branch mainline-test
+> It has to be configured with at least following options:
+> --enable-v4l2-request --enable-libudev --enable-libdrm
+> 
+> Samples used for testing:
+> http://jernej.libreelec.tv/videos/h264/BA1_FT_C.mp4
+> http://jernej.libreelec.tv/videos/h264/h264.mp4
+> 
+> Command line used for testing:
+> ffmpeg -hwaccel drm -hwaccel_device /dev/dri/card0 -i h264.mp4 -pix_fmt bgra -f fbdev /dev/fb0
+> 
+> Please note that V4L2_DEC_CMD_FLUSH was not tested because I'm
+> not sure how. ffmpeg follows exactly which slice is last in frame
+> and sets hold flag accordingly. Improper usage of hold flag would
+> corrupt ffmpeg assumptions and it would probably crash. Any ideas
+> how to test this are welcome!
 
+It can be tested partially at least: if ffmpeg tells you it is the last
+slice, then queue the slice with the HOLD flag set, then call FLUSH afterwards.
+This should clear the HOLD flag again. In this case the queued buffer is
+probably not yet processed, so the flag is cleared before the decode job starts.
+
+You can also try to add a sleep before calling FLUSH to see what happens
+if the last queued buffer is already decoded.
+
+Regards,
+
+	Hans
+
+> 
+> Thanks to Jonas for adjusting ffmpeg.
+> 
+> Please let me know what you think.
+> 
+> Best regards,
+> Jernej
+> 
+> Changes from v1:
+> - added Rb tags
+> - updated V4L2_DEC_CMD_FLUSH documentation
+> - updated first slice detection in Cedrus
+> - hold capture buffer flag is set according to source format
+> - added v4l m2m stateless_(try_)decoder_cmd ioctl helpers
+> 
+> Hans Verkuil (2):
+>   vb2: add V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF
+>   videodev2.h: add V4L2_DEC_CMD_FLUSH
+> 
+> Jernej Skrabec (4):
+>   media: v4l2-mem2mem: add stateless_(try_)decoder_cmd ioctl helpers
+>   media: cedrus: Detect first slice of a frame
+>   media: cedrus: h264: Support multiple slices per frame
+>   media: cedrus: Add support for holding capture buffer
+> 
+>  Documentation/media/uapi/v4l/buffer.rst       | 13 ++++++
+>  .../media/uapi/v4l/vidioc-decoder-cmd.rst     | 10 +++-
+>  .../media/uapi/v4l/vidioc-reqbufs.rst         |  6 +++
+>  .../media/videodev2.h.rst.exceptions          |  1 +
+>  .../media/common/videobuf2/videobuf2-v4l2.c   |  8 +++-
+>  drivers/media/v4l2-core/v4l2-mem2mem.c        | 35 ++++++++++++++
+>  drivers/staging/media/sunxi/cedrus/cedrus.h   |  1 +
+>  .../staging/media/sunxi/cedrus/cedrus_dec.c   | 11 +++++
+>  .../staging/media/sunxi/cedrus/cedrus_h264.c  | 11 ++++-
+>  .../staging/media/sunxi/cedrus/cedrus_hw.c    |  8 ++--
+>  .../staging/media/sunxi/cedrus/cedrus_video.c | 14 ++++++
+>  include/media/v4l2-mem2mem.h                  | 46 +++++++++++++++++++
+>  include/media/videobuf2-core.h                |  3 ++
+>  include/media/videobuf2-v4l2.h                |  5 ++
+>  include/uapi/linux/videodev2.h                | 14 ++++--
+>  15 files changed, 175 insertions(+), 11 deletions(-)
+> 
 
 _______________________________________________
 devel mailing list
