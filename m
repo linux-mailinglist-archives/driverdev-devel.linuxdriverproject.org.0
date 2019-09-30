@@ -2,79 +2,64 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8E71AC2156
-	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Sep 2019 15:05:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CAFDEC21E8
+	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Sep 2019 15:25:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 844CF85E2B;
-	Mon, 30 Sep 2019 13:05:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D412A85EC6;
+	Mon, 30 Sep 2019 13:25:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DMqjYK0a0Wx4; Mon, 30 Sep 2019 13:05:22 +0000 (UTC)
+	with ESMTP id 4DsX4SzOW8tE; Mon, 30 Sep 2019 13:25:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 731D285AE4;
-	Mon, 30 Sep 2019 13:05:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 92B7085C97;
+	Mon, 30 Sep 2019 13:25:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4D21A1BF3B1
- for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 13:05:10 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6C1221BF3B1
+ for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 13:25:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 4754684CBC
- for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 13:05:10 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6852820242
+ for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 13:25:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EYsv5BBR2oeE for <devel@linuxdriverproject.org>;
- Mon, 30 Sep 2019 13:05:09 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f193.google.com (mail-pl1-f193.google.com
- [209.85.214.193])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D052B8461B
- for <devel@driverdev.osuosl.org>; Mon, 30 Sep 2019 13:05:09 +0000 (UTC)
-Received: by mail-pl1-f193.google.com with SMTP id y10so3898566plp.2
- for <devel@driverdev.osuosl.org>; Mon, 30 Sep 2019 06:05:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=bK6MZWr6w6FAJdtYkaWJFSK0yuqaC12S3EefYxnzoEs=;
- b=Knqv4i8+ZXR2OCiNHFHexifplYe5hJkj0cZoff3qmNP1hBi9gO9mkM3O/JC0xCaAWl
- xgDLFFzkS+hn20TfrAdwktWc64NrJq7P9xOK/9k4cwLKJXO/T5ae59MhcUjuAU1PK9mm
- B4wU4Ztuhl3SctfdBEE21H9bTqvPA9rCYsjlnA9zrcMSVRZyCaq6oA/opLB5tBOZ09eD
- cemM7vFg9fPasjRKf8q/j5J/j6q+ckmTP5tIjiTDUQfU/hh7ihbDOGjwPRbfgZf3/hDm
- sCjB5QTNzaGT1k7ToDrQG0Fk38fg+F9Q38gYCy1Dw2W6WpkjP3DMlVJmYqv4miOLmfh4
- RyTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=bK6MZWr6w6FAJdtYkaWJFSK0yuqaC12S3EefYxnzoEs=;
- b=jfq5FzWA8rjNZcjXH7qNyNmCEQgow3BqE1xhGrIoDQEqbC4nL83nUbGuJEGmwyzMaS
- PMUK/iWLGJ/UqQffND2dvY6QTEbRoArUtmoZUNH1tTLB9FnfHn1MaDPdSTSJ93/f6JZB
- /SCjcKaKmVLsgc3cspBeVvSgSt3ddhSofWi92E9pm1VYxK+0B67rGTLRSDnht23a71k6
- JqO6f91/7fDwoxIKju+pFOd8bA9ZonrSKuHb8AnYqaYfXKSU/noen5tRbYBV5nC1P0fY
- 8srSnQ2Jyp+OWqFlxgRry+7rL8U+x1+0bfA112XxYrqhxLWyZAIDyHsEpl7r0URcdpHG
- a+MQ==
-X-Gm-Message-State: APjAAAWrS+TF8BU3X7pyZXyHrjNkAssRC2Ff1wKOrBVBLyI7JLEMj7qq
- OziJIRYKs608IdkPBC5xMhkcVZzx
-X-Google-Smtp-Source: APXvYqzFrheD9iRIOM5AGnrOqazLAlu0eRDin8o2r2cvC5uhiD4ntPY1J0weH2MFxRKW4uaScLjgGA==
-X-Received: by 2002:a17:902:201:: with SMTP id
- 1mr18757795plc.276.1569848709401; 
- Mon, 30 Sep 2019 06:05:09 -0700 (PDT)
-Received: from masabert ([210.161.134.36])
- by smtp.gmail.com with ESMTPSA id q14sm26181571pgf.74.2019.09.30.06.05.07
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 30 Sep 2019 06:05:08 -0700 (PDT)
-Received: by masabert (Postfix, from userid 1000)
- id B118F20119E; Mon, 30 Sep 2019 22:05:05 +0900 (JST)
-From: Masanari Iida <standby24x7@gmail.com>
-To: valdis.kletnieks@vt.edu, gregkh@linuxfoundation.org,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: exfat: Fix a typo in Kconfig
-Date: Mon, 30 Sep 2019 22:05:04 +0900
-Message-Id: <20190930130504.21994-1-standby24x7@gmail.com>
-X-Mailer: git-send-email 2.23.0.256.g4c86140027f4
+ with ESMTP id 3N+7uXIgvNUk for <devel@linuxdriverproject.org>;
+ Mon, 30 Sep 2019 13:25:17 +0000 (UTC)
+X-Greylist: delayed 00:06:39 by SQLgrey-1.7.6
+Received: from eu-smtp-delivery-151.mimecast.com
+ (eu-smtp-delivery-151.mimecast.com [146.101.78.151])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9227020130
+ for <devel@driverdev.osuosl.org>; Mon, 30 Sep 2019 13:25:16 +0000 (UTC)
+Received: from AcuMS.aculab.com (156.67.243.126 [156.67.243.126]) (Using
+ TLS) by relay.mimecast.com with ESMTP id
+ uk-mta-207-hnslXOvPO-C_5kCPTbZeHQ-1; Mon, 30 Sep 2019 14:18:32 +0100
+Received: from AcuMS.Aculab.com (fd9f:af1c:a25b:0:43c:695e:880f:8750) by
+ AcuMS.aculab.com (fd9f:af1c:a25b:0:43c:695e:880f:8750) with Microsoft SMTP
+ Server (TLS) id 15.0.1347.2; Mon, 30 Sep 2019 14:18:32 +0100
+Received: from AcuMS.Aculab.com ([fe80::43c:695e:880f:8750]) by
+ AcuMS.aculab.com ([fe80::43c:695e:880f:8750%12]) with mapi id 15.00.1347.000; 
+ Mon, 30 Sep 2019 14:18:32 +0100
+From: David Laight <David.Laight@ACULAB.COM>
+To: 'Denis Efremov' <efremov@linux.com>, "devel@driverdev.osuosl.org"
+ <devel@driverdev.osuosl.org>
+Subject: RE: [PATCH] staging: rtl8723bs: hal: Fix memcpy calls
+Thread-Topic: [PATCH] staging: rtl8723bs: hal: Fix memcpy calls
+Thread-Index: AQHVd36LU5ikVLKK6EuvH5wLNYQtMKdEMyLw
+Date: Mon, 30 Sep 2019 13:18:32 +0000
+Message-ID: <37b195b700394e95aa8329afc9f60431@AcuMS.aculab.com>
+References: <20190930110141.29271-1-efremov@linux.com>
+In-Reply-To: <20190930110141.29271-1-efremov@linux.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.202.205.107]
 MIME-Version: 1.0
+X-MC-Unique: hnslXOvPO-C_5kCPTbZeHQ-1
+X-Mimecast-Spam-Score: 0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,33 +72,61 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: Jes Sorensen <jes.sorensen@gmail.com>, Greg
+ Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "stable@vger.kernel.org" <stable@vger.kernel.org>,
+ Hans de Goede <hdegoede@redhat.com>, Bastien Nocera <hadess@hadess.net>,
+ Larry Finger <Larry.Finger@lwfinger.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch fix a spelling typo in Kconfig.
+From: Denis Efremov
+> Sent: 30 September 2019 12:02
+> memcpy() in phy_ConfigBBWithParaFile() and PHY_ConfigRFWithParaFile() is
+> called with "src == NULL && len == 0". This is an undefined behavior.
 
-Signed-off-by: Masanari Iida <standby24x7@gmail.com>
----
- drivers/staging/exfat/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+I'm pretty certain it is well defined (to do nothing).
 
-diff --git a/drivers/staging/exfat/Kconfig b/drivers/staging/exfat/Kconfig
-index 290dbfc7ace1..12f7af346c9b 100644
---- a/drivers/staging/exfat/Kconfig
-+++ b/drivers/staging/exfat/Kconfig
-@@ -6,7 +6,7 @@ config EXFAT_FS
- 	  This adds support for the exFAT file system.
- 
- config EXFAT_DONT_MOUNT_VFAT
--	bool "Prohibit mounting of fat/vfat filesysems by exFAT"
-+	bool "Prohibit mounting of fat/vfat filesystems by exFAT"
- 	depends on EXFAT_FS
- 	default y
- 	help
--- 
-2.23.0.256.g4c86140027f4
+> Moreover this if pre-condition "pBufLen && (*pBufLen == 0) && !pBuf"
+> is constantly false because it is a nested if in the else brach, i.e.,
+> "if (cond) { ... } else { if (cond) {...} }". This patch alters the
+> if condition to check "pBufLen && pBuf" pointers are not NULL.
+> 
+...
+> ---
+> Not tested. I don't have the hardware. The fix is based on my guess.
+> 
+>  drivers/staging/rtl8723bs/hal/hal_com_phycfg.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8723bs/hal/hal_com_phycfg.c b/drivers/staging/rtl8723bs/hal/hal_com_phycfg.c
+> index 6539bee9b5ba..0902dc3c1825 100644
+> --- a/drivers/staging/rtl8723bs/hal/hal_com_phycfg.c
+> +++ b/drivers/staging/rtl8723bs/hal/hal_com_phycfg.c
+> @@ -2320,7 +2320,7 @@ int phy_ConfigBBWithParaFile(
+>  			}
+>  		}
+>  	} else {
+> -		if (pBufLen && (*pBufLen == 0) && !pBuf) {
+> +		if (pBufLen && pBuf) {
+>  			memcpy(pHalData->para_file_buf, pBuf, *pBufLen);
+
+The existing code is clearly garbage.
+It only ever does memcpy(tgt, NULL, 0).
+
+Under the assumption that the code has been tested the copy clearly isn't needed at all
+and can be deleted completely!
+
+OTOH if the code hasn't been tested maybe the entire source file should be removed :-)
+
+	David
+
+-
+Registered Address Lakeside, Bramley Road, Mount Farm, Milton Keynes, MK1 1PT, UK
+Registration No: 1397386 (Wales)
 
 _______________________________________________
 devel mailing list
