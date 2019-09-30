@@ -1,68 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 13234C2328
-	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Sep 2019 16:25:53 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0958BC248B
+	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Sep 2019 17:40:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 723C5864DA;
-	Mon, 30 Sep 2019 14:25:51 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B62DE88193;
+	Mon, 30 Sep 2019 15:40:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Jz7ai84-THpS; Mon, 30 Sep 2019 14:25:50 +0000 (UTC)
+	with ESMTP id REkTRhG0-to1; Mon, 30 Sep 2019 15:40:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EDCAA86447;
-	Mon, 30 Sep 2019 14:25:49 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2BB1D8786C;
+	Mon, 30 Sep 2019 15:40:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id AC7EF1BF4E3
- for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 14:25:47 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CFF681BF5A0
+ for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 15:40:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id A959820390
- for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 14:25:47 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E886D20412
+ for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 15:40:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NM2ZYgpm1Xcc for <devel@linuxdriverproject.org>;
- Mon, 30 Sep 2019 14:25:46 +0000 (UTC)
+ with ESMTP id T9W0QQYz9t-b for <devel@linuxdriverproject.org>;
+ Mon, 30 Sep 2019 15:40:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-ed1-f65.google.com (mail-ed1-f65.google.com
  [209.85.208.65])
- by silver.osuosl.org (Postfix) with ESMTPS id 96F9A20104
- for <devel@driverdev.osuosl.org>; Mon, 30 Sep 2019 14:25:46 +0000 (UTC)
-Received: by mail-ed1-f65.google.com with SMTP id h33so8799097edh.12
- for <devel@driverdev.osuosl.org>; Mon, 30 Sep 2019 07:25:46 -0700 (PDT)
+ by silver.osuosl.org (Postfix) with ESMTPS id ABB562002A
+ for <devel@driverdev.osuosl.org>; Mon, 30 Sep 2019 15:40:37 +0000 (UTC)
+Received: by mail-ed1-f65.google.com with SMTP id l21so9067062edr.5
+ for <devel@driverdev.osuosl.org>; Mon, 30 Sep 2019 08:40:37 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:reply-to:subject:to:cc:references:from
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=OpLZCxVJpBgsNbMjEaZfq3+E0DlE1NH8zVCBJHO9OVs=;
- b=F73HPcz1uucw1+KnKNlluKdu27aW0sqhvR64FYGAzDNKd1ne2QvtOx2yMFUfAuQv1M
- 7edb3MmtTHktSzl3AcUuXud3nJR0nrghYtIUzJI1bDip1hoUQfExwmjiPxmIuaErzqEK
- Xtbh6yiuQkbvZ4eFeVhfufjW9QYMc6kvmw6qD1n9Lbo7HKawKVlkxmvguNf1Nd8UuvJf
- AFi/yeyN5JoCZTdXf7C3k7Age5zC6JCFb8e6TYmoy+UGLUsntw5bfHv5hJ+RT1WkUYwD
- tnTlmQzipwRyWwkVj52NXmIjWwQmEZ3GT5wzjy6Z1TUbMlRq0RBx1avVzBgiFTFFuzC/
- b4yw==
-X-Gm-Message-State: APjAAAXod11P8DWD210NbcIPE9uV1fEqwTgA/Bhriw/GcriTZziY+HvB
- aNZIKjGDjPAHGpRLHcfEeu1rvNgp
-X-Google-Smtp-Source: APXvYqwpxhHy2gun3EIxWoTehrjW4QdbA9X0fp1k2JMKaG57RiLYZFUHvA44EtXZdKvFBSaSgKIdEQ==
-X-Received: by 2002:a50:9e26:: with SMTP id z35mr19911245ede.265.1569853545116; 
- Mon, 30 Sep 2019 07:25:45 -0700 (PDT)
+ bh=l0yUcGu9MFmSuUJVKJXvSt9KSqYrsEKkvHYxaWpAOwY=;
+ b=KSxDaLMPHkq4Bu6qF8Pz+E638S2X3uAsUMvA54nxl+JRqty8AuvV5advBK8blMS88H
+ bnpwEqOBL71Z2ZK9gIjTl1SetYmMx6hG4cW2tEdK/hWxCcyuRmsBjjzEXUj41fQwbtnQ
+ H0FtzSrXYC30mfZxBfVUkuPXvm8ceMmIPq9EYa9I7WBwnOGD8xJqcp7mGY5WyE5A0NZR
+ Ma55/jRUempWfpV9Lm19BUZGJWS4P5lfT4WSFRlchXZ1I+QCMA/4cMgn2zvzQwQH0GyN
+ 8Fgb6lMbwCOXfQJmQhIVHg0eANFCyRGPPbyU9tFIFFPksvXmh7yeKH6MsiG5jv8qOGgo
+ hAYg==
+X-Gm-Message-State: APjAAAWEaZ37ORSl9ubaomJoq+jf6A2k1+iapcsYpj7GVJort5IRTVY3
+ 4H0hFFC3p1N1GL5HBJvPuYA=
+X-Google-Smtp-Source: APXvYqyGk9jEUdaFH3KevIMNskTk1I0chh4w+dn+1QHkHkE06xOO0cPwtJ0brhNDj0onn++FITIqDg==
+X-Received: by 2002:a50:f09d:: with SMTP id v29mr20047749edl.4.1569858036234; 
+ Mon, 30 Sep 2019 08:40:36 -0700 (PDT)
 Received: from [10.10.2.174] (bran.ispras.ru. [83.149.199.196])
- by smtp.gmail.com with ESMTPSA id rl4sm1390000ejb.27.2019.09.30.07.25.43
+ by smtp.gmail.com with ESMTPSA id j5sm2513357edj.62.2019.09.30.08.40.35
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 30 Sep 2019 07:25:44 -0700 (PDT)
+ Mon, 30 Sep 2019 08:40:35 -0700 (PDT)
 Subject: Re: [PATCH] staging: rtl8723bs: hal: Fix memcpy calls
 To: David Laight <David.Laight@ACULAB.COM>,
  "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>
 References: <20190930110141.29271-1-efremov@linux.com>
  <37b195b700394e95aa8329afc9f60431@AcuMS.aculab.com>
 From: Denis Efremov <efremov@linux.com>
-Message-ID: <e4051dcb-10dc-ff17-ec0b-6f51dccdb5bf@linux.com>
-Date: Mon, 30 Sep 2019 17:25:43 +0300
+Message-ID: <b3a92ac3-b097-3359-8729-ad353fac2a0d@linux.com>
+Date: Mon, 30 Sep 2019 18:40:34 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.0
 MIME-Version: 1.0
@@ -99,19 +99,6 @@ On 9/30/19 4:18 PM, David Laight wrote:
 >> called with "src == NULL && len == 0". This is an undefined behavior.
 > 
 > I'm pretty certain it is well defined (to do nothing).
-
-Well, technically you are right. However, UBSAN warns about passing NULL
-to memcpy and from the formal point of view this is an undefined behavior [1].
-There were a discussion [2] about interesting implication of assuming that
-memcpy with 0 size and NULL pointer is fine. This could result in that compiler
-assume that pointer is not NULL. However, this is not the case here since
-this "if then" branch is a dead code in it's current form. I just find this
-piece of code very funny regarding this patch [3].
-
-[1] https://stackoverflow.com/questions/5243012/is-it-guaranteed-to-be-safe-to-perform-memcpy0-0-0
-[2] https://groups.google.com/forum/#!msg/syzkaller-netbsd-bugs/8B4CIKN0Xz8/wRvIUWxiAgAJ
-[3] https://github.com/torvalds/linux/commit/8f884e76cae65af65c6bec759a17cb0527c54a15#diff-a476c238511f9374c2f1b947fdaffbbcL2339
-
 > 
 >> Moreover this if pre-condition "pBufLen && (*pBufLen == 0) && !pBuf"
 >> is constantly false because it is a nested if in the else brach, i.e.,
@@ -142,6 +129,26 @@ piece of code very funny regarding this patch [3].
 > 
 > Under the assumption that the code has been tested the copy clearly isn't needed at all
 > and can be deleted completely!
+
+Initially I also thought that this is just a dead code and it could be simply removed. However, if
+we look at it more carefully, this if condition looks like a copy-paste error:
+
+if (pBufLen && (*pBufLen == 0) && !pBuf) {
+	// get proper len
+	// allocate pBuf
+	...
+	memcpy(pBuf, pHalData->para_file_buf, rlen);
+	...
+} else {
+	if (pBufLen && (*pBufLen == 0) && !pBuf) { // <== condition in patch
+		memcpy(pHalData->para_file_buf, pBuf, *pBufLen);
+		rtStatus = _SUCCESS;
+	} else
+		DBG_871X("%s(): Critical Error !!!\n", __func__);
+}
+
+Thus, I think it will be incorrect to delete the second memcpy.
+
 > 
 > OTOH if the code hasn't been tested maybe the entire source file should be removed :-)
 > 
