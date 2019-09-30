@@ -2,61 +2,57 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CFB4FC2560
-	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Sep 2019 18:44:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B16BAC265C
+	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Sep 2019 21:59:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0128A878CD;
-	Mon, 30 Sep 2019 16:44:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 76DAE88223;
+	Mon, 30 Sep 2019 19:59:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ksTVUUD6EwG6; Mon, 30 Sep 2019 16:44:15 +0000 (UTC)
+	with ESMTP id gUODT1qZE5tN; Mon, 30 Sep 2019 19:59:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7B0E785A2E;
-	Mon, 30 Sep 2019 16:44:15 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9B3F688072;
+	Mon, 30 Sep 2019 19:59:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4A4361BF42D
- for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 16:44:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4A0411BF2B9
+ for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 19:59:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 468D920767
- for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 16:44:12 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 44EB121507
+ for <devel@linuxdriverproject.org>; Mon, 30 Sep 2019 19:59:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9AF87vys4slT for <devel@linuxdriverproject.org>;
- Mon, 30 Sep 2019 16:44:10 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.siol.net (mailoutvs53.siol.net [185.57.226.244])
- by silver.osuosl.org (Postfix) with ESMTPS id B0BF920520
- for <devel@driverdev.osuosl.org>; Mon, 30 Sep 2019 16:44:09 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.siol.net (Postfix) with ESMTP id B709D522D81;
- Mon, 30 Sep 2019 18:44:06 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at psrvmta10.zcs-production.pri
-Received: from mail.siol.net ([127.0.0.1])
- by localhost (psrvmta10.zcs-production.pri [127.0.0.1]) (amavisd-new,
- port 10032)
- with ESMTP id vqC7iU5JIcxQ; Mon, 30 Sep 2019 18:44:06 +0200 (CEST)
-Received: from mail.siol.net (localhost [127.0.0.1])
- by mail.siol.net (Postfix) with ESMTPS id 29769522DC4;
- Mon, 30 Sep 2019 18:44:06 +0200 (CEST)
-Received: from jernej-laptop.localnet (cpe-86-58-59-25.static.triera.net
- [86.58.59.25]) (Authenticated sender: jernej.skrabec@siol.net)
- by mail.siol.net (Postfix) with ESMTPA id 4CE41522DBF;
- Mon, 30 Sep 2019 18:44:03 +0200 (CEST)
-From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@siol.net>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Subject: Re: [PATCH v2 6/6] media: cedrus: Add support for holding capture
- buffer
-Date: Mon, 30 Sep 2019 18:44:02 +0200
-Message-ID: <2089312.Gnm7pnLf18@jernej-laptop>
-In-Reply-To: <4fb20c41-7cc1-32c9-b5b9-2e86b5e74201@xs4all.nl>
-References: <20190929200023.215831-1-jernej.skrabec@siol.net>
- <20190929200023.215831-7-jernej.skrabec@siol.net>
- <4fb20c41-7cc1-32c9-b5b9-2e86b5e74201@xs4all.nl>
+ with ESMTP id 3VfgAhkYVhJh for <devel@linuxdriverproject.org>;
+ Mon, 30 Sep 2019 19:58:57 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id F17C420532
+ for <devel@driverdev.osuosl.org>; Mon, 30 Sep 2019 19:58:56 +0000 (UTC)
+Received: from localhost (unknown [69.71.4.100])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 67EDD224D7;
+ Mon, 30 Sep 2019 19:58:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1569873536;
+ bh=5YkIavbcZo/fLAlcbxRAjN/RrUGTMkGP8SzMSvE3lfY=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=eQ2EwAbhTnIoCao80RsHAjyuX0FiFTAlEN6giJaMJlAygtJFtLFebghluVb1IgARK
+ QJIQQXZWBQEH68It6VK2j2PAMzsVDbeK0hNpsI8f9l+BsiWY2zGIHPbIo8lDV07B5v
+ nuE1LfjWC+uyDHhdEx/TeJU/HbfFo2GBNRL7OTVo=
+Date: Mon, 30 Sep 2019 14:58:55 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Denis Efremov <efremov@linux.com>
+Subject: Re: [PATCH RESEND v3 00/26] Add definition for the number of
+ standard PCI BARs
+Message-ID: <20190930195855.GA191519@google.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190927234026.23342-1-efremov@linux.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,171 +65,121 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-media@vger.kernel.org, pawel@osciak.com,
- jonas@kwiboo.se, gregkh@linuxfoundation.org, wens@csie.org, mripard@kernel.org,
- tfiga@chromium.org, paul.kocialkowski@bootlin.com, kyungmin.park@samsung.com,
- boris.brezillon@collabora.com, linux-arm-kernel@lists.infradead.org,
- mchehab@kernel.org, ezequiel@collabora.com, linux-kernel@vger.kernel.org,
- m.szyprowski@samsung.com
+Cc: devel@driverdev.osuosl.org, linux-s390@vger.kernel.org,
+ linux-hyperv@vger.kernel.org, linux-usb@vger.kernel.org,
+ linux-ia64@vger.kernel.org, linux-scsi@vger.kernel.org, kvm@vger.kernel.org,
+ linux-serial@vger.kernel.org, linux-pci@vger.kernel.org, x86@kernel.org,
+ linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-ide@vger.kernel.org, netdev@vger.kernel.org, linux-fbdev@vger.kernel.org,
+ linux-alpha@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dne ponedeljek, 30. september 2019 ob 10:14:32 CEST je Hans Verkuil 
-napisal(a):
-> On 9/29/19 10:00 PM, Jernej Skrabec wrote:
-> > When frame contains multiple slices and driver works in slice mode, it's
-> > more efficient to hold capture buffer in queue until all slices of a
-> > same frame are decoded.
-> > 
-> > Add support for that to Cedrus driver by exposing and implementing
-> > V4L2_BUF_CAP_SUPPORTS_M2M_HOLD_CAPTURE_BUF capability.
-> > 
-> > Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
-> > ---
-> > 
-> >  drivers/staging/media/sunxi/cedrus/cedrus_dec.c   |  9 +++++++++
-> >  drivers/staging/media/sunxi/cedrus/cedrus_hw.c    |  8 +++++---
-> >  drivers/staging/media/sunxi/cedrus/cedrus_video.c | 14 ++++++++++++++
-> >  3 files changed, 28 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
-> > b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c index
-> > e49c3396ca4d..67f7d4326fc1 100644
-> > --- a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
-> > +++ b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
-> > @@ -31,6 +31,14 @@ void cedrus_device_run(void *priv)
-> > 
-> >  	run.src = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
-> >  	run.dst = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
-> > 
-> > +
-> > +	if (v4l2_m2m_release_capture_buf(run.src, run.dst)) {
-> > +		v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
-> > +		v4l2_m2m_buf_done(run.dst, VB2_BUF_STATE_DONE);
-> > +		run.dst = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
-> > +	}
-> > +	run.dst->is_held = run.src->flags & 
-V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF;
-> > +
-> > 
-> >  	run.first_slice = !run.dst->vb2_buf.copied_timestamp ||
-> >  	
-> >  		run.src->vb2_buf.timestamp != run.dst-
->vb2_buf.timestamp;
-> > 
-> > @@ -46,6 +54,7 @@ void cedrus_device_run(void *priv)
-> > 
-> >  			V4L2_CID_MPEG_VIDEO_MPEG2_SLICE_PARAMS);
-> >  		
-> >  		run.mpeg2.quantization = cedrus_find_control_data(ctx,
-> >  		
-> >  			V4L2_CID_MPEG_VIDEO_MPEG2_QUANTIZATION);
-> > 
-> > +		run.dst->is_held = false;
-> > 
-> >  		break;
-> >  	
-> >  	case V4L2_PIX_FMT_H264_SLICE:
-> > diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
-> > b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c index
-> > fc8579b90dab..b466041c25db 100644
-> > --- a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
-> > +++ b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
-> > @@ -122,7 +122,7 @@ static irqreturn_t cedrus_irq(int irq, void *data)
-> > 
-> >  	dev->dec_ops[ctx->current_codec]->irq_clear(ctx);
-> >  	
-> >  	src_buf = v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
-> > 
-> > -	dst_buf = v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
-> > +	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
-> > 
-> >  	if (!src_buf || !dst_buf) {
-> >  	
-> >  		v4l2_err(&dev->v4l2_dev,
-> > 
-> > @@ -136,8 +136,10 @@ static irqreturn_t cedrus_irq(int irq, void *data)
-> > 
-> >  		state = VB2_BUF_STATE_DONE;
-> >  	
-> >  	v4l2_m2m_buf_done(src_buf, state);
-> > 
-> > -	v4l2_m2m_buf_done(dst_buf, state);
-> > -
-> > +	if (!dst_buf->is_held) {
-> > +		v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
-> > +		v4l2_m2m_buf_done(dst_buf, state);
-> > +	}
-> > 
-> >  	v4l2_m2m_job_finish(ctx->dev->m2m_dev, ctx->fh.m2m_ctx);
-> >  	
-> >  	return IRQ_HANDLED;
-> > 
-> > diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_video.c
-> > b/drivers/staging/media/sunxi/cedrus/cedrus_video.c index
-> > 3ec3a2db790c..82198b2bb081 100644
-> > --- a/drivers/staging/media/sunxi/cedrus/cedrus_video.c
-> > +++ b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
-> > @@ -303,6 +303,17 @@ static int cedrus_s_fmt_vid_out(struct file *file,
-> > void *priv,> 
-> >  	ctx->src_fmt = f->fmt.pix;
-> > 
-> > +	switch (ctx->src_fmt.pixelformat) {
-> > +	case V4L2_PIX_FMT_H264_SLICE:
-> > +		vq->subsystem_flags |=
-> > +			VB2_V4L2_FL_SUPPORTS_M2M_HOLD_CAPTURE_BUF;
-> > +		break;
-> > +	default:
-> > +		vq->subsystem_flags &=
-> > +			
-(u32)~VB2_V4L2_FL_SUPPORTS_M2M_HOLD_CAPTURE_BUF;
+On Sat, Sep 28, 2019 at 02:40:26AM +0300, Denis Efremov wrote:
+> Code that iterates over all standard PCI BARs typically uses
+> PCI_STD_RESOURCE_END, but this is error-prone because it requires
+> "i <= PCI_STD_RESOURCE_END" rather than something like
+> "i < PCI_STD_NUM_BARS". We could add such a definition and use it the same
+> way PCI_SRIOV_NUM_BARS is used. The patchset also replaces constant (6)
+> with new define PCI_STD_NUM_BARS where appropriate and removes local
+> declarations for the number of PCI BARs.
 > 
-> Why the u32 cast?
-
-To prevent warnings on arm64 such as reported here:
-https://www.mail-archive.com/linux-kernel@vger.kernel.org/msg1620796.html
-
-But I'm not sure if this aplies for this case. I compiled kernel for arm64 but 
-there is no warning without this cast with my configuration. I guess I can 
-remove it.
-
-Best regards,
-Jernej
-
+> Changes in v3:
+>   - Updated commits description.
+>   - Refactored "< PCI_ROM_RESOURCE" with "< PCI_STD_NUM_BARS" in loops.
+>   - Refactored "<= BAR_5" with "< PCI_STD_NUM_BARS" in loops.
+>   - Removed local define GASKET_NUM_BARS.
+>   - Removed local define PCI_NUM_BAR_RESOURCES.
 > 
-> Regards,
+> Changes in v2:
+>   - Reversed checks in pci_iomap_range,pci_iomap_wc_range.
+>   - Refactored loops in vfio_pci to keep PCI_STD_RESOURCES.
+>   - Added 2 new patches to replace the magic constant with new define.
+>   - Splitted net patch in v1 to separate stmmac and dwc-xlgmac patches.
 > 
-> 	Hans
+> Denis Efremov (26):
+>   PCI: Add define for the number of standard PCI BARs
+>   PCI: hv: Use PCI_STD_NUM_BARS
+>   PCI: dwc: Use PCI_STD_NUM_BARS
+>   PCI: endpoint: Use PCI_STD_NUM_BARS
+>   misc: pci_endpoint_test: Use PCI_STD_NUM_BARS
+>   s390/pci: Use PCI_STD_NUM_BARS
+>   x86/PCI: Loop using PCI_STD_NUM_BARS
+>   alpha/PCI: Use PCI_STD_NUM_BARS
+>   ia64: Use PCI_STD_NUM_BARS
+>   stmmac: pci: Loop using PCI_STD_NUM_BARS
+>   net: dwc-xlgmac: Loop using PCI_STD_NUM_BARS
+>   ixgb: use PCI_STD_NUM_BARS
+>   e1000: Use PCI_STD_NUM_BARS
+>   rapidio/tsi721: Loop using PCI_STD_NUM_BARS
+>   efifb: Loop using PCI_STD_NUM_BARS
+>   fbmem: use PCI_STD_NUM_BARS
+>   vfio_pci: Loop using PCI_STD_NUM_BARS
+>   scsi: pm80xx: Use PCI_STD_NUM_BARS
+>   ata: sata_nv: Use PCI_STD_NUM_BARS
+>   staging: gasket: Use PCI_STD_NUM_BARS
+>   serial: 8250_pci: Use PCI_STD_NUM_BARS
+>   pata_atp867x: Use PCI_STD_NUM_BARS
+>   memstick: use PCI_STD_NUM_BARS
+>   USB: core: Use PCI_STD_NUM_BARS
+>   usb: pci-quirks: Use PCI_STD_NUM_BARS
+>   devres: use PCI_STD_NUM_BARS
 > 
-> > +		break;
-> > +	}
-> > +
-> > 
-> >  	/* Propagate colorspace information to capture. */
-> >  	ctx->dst_fmt.colorspace = f->fmt.pix.colorspace;
-> >  	ctx->dst_fmt.xfer_func = f->fmt.pix.xfer_func;
-> > 
-> > @@ -336,6 +347,9 @@ const struct v4l2_ioctl_ops cedrus_ioctl_ops = {
-> > 
-> >  	.vidioc_streamon		= v4l2_m2m_ioctl_streamon,
-> >  	.vidioc_streamoff		= v4l2_m2m_ioctl_streamoff,
-> > 
-> > +	.vidioc_try_decoder_cmd		= 
-v4l2_m2m_ioctl_stateless_try_decoder_cmd,
-> > +	.vidioc_decoder_cmd		= 
-v4l2_m2m_ioctl_stateless_decoder_cmd,
-> > +
-> > 
-> >  	.vidioc_subscribe_event		= v4l2_ctrl_subscribe_event,
-> >  	.vidioc_unsubscribe_event	= v4l2_event_unsubscribe,
-> >  
-> >  };
+>  arch/alpha/kernel/pci-sysfs.c                 |  8 ++---
+>  arch/ia64/sn/pci/pcibr/pcibr_dma.c            |  4 +--
+>  arch/s390/include/asm/pci.h                   |  5 +--
+>  arch/s390/include/asm/pci_clp.h               |  6 ++--
+>  arch/s390/pci/pci.c                           | 16 +++++-----
+>  arch/s390/pci/pci_clp.c                       |  6 ++--
+>  arch/x86/pci/common.c                         |  2 +-
+>  arch/x86/pci/intel_mid_pci.c                  |  2 +-
+>  drivers/ata/pata_atp867x.c                    |  2 +-
+>  drivers/ata/sata_nv.c                         |  2 +-
+>  drivers/memstick/host/jmb38x_ms.c             |  2 +-
+>  drivers/misc/pci_endpoint_test.c              |  8 ++---
+>  drivers/net/ethernet/intel/e1000/e1000.h      |  1 -
+>  drivers/net/ethernet/intel/e1000/e1000_main.c |  2 +-
+>  drivers/net/ethernet/intel/ixgb/ixgb.h        |  1 -
+>  drivers/net/ethernet/intel/ixgb/ixgb_main.c   |  2 +-
+>  .../net/ethernet/stmicro/stmmac/stmmac_pci.c  |  4 +--
+>  .../net/ethernet/synopsys/dwc-xlgmac-pci.c    |  2 +-
+>  drivers/pci/controller/dwc/pci-dra7xx.c       |  2 +-
+>  .../pci/controller/dwc/pci-layerscape-ep.c    |  2 +-
+>  drivers/pci/controller/dwc/pcie-artpec6.c     |  2 +-
+>  .../pci/controller/dwc/pcie-designware-plat.c |  2 +-
+>  drivers/pci/controller/dwc/pcie-designware.h  |  2 +-
+>  drivers/pci/controller/pci-hyperv.c           | 10 +++---
+>  drivers/pci/endpoint/functions/pci-epf-test.c | 10 +++---
+>  drivers/pci/pci-sysfs.c                       |  4 +--
+>  drivers/pci/pci.c                             | 13 ++++----
+>  drivers/pci/proc.c                            |  4 +--
+>  drivers/pci/quirks.c                          |  4 +--
+>  drivers/rapidio/devices/tsi721.c              |  2 +-
+>  drivers/scsi/pm8001/pm8001_hwi.c              |  2 +-
+>  drivers/scsi/pm8001/pm8001_init.c             |  2 +-
+>  drivers/staging/gasket/gasket_constants.h     |  3 --
+>  drivers/staging/gasket/gasket_core.c          | 12 +++----
+>  drivers/staging/gasket/gasket_core.h          |  4 +--
+>  drivers/tty/serial/8250/8250_pci.c            |  8 ++---
+>  drivers/usb/core/hcd-pci.c                    |  2 +-
+>  drivers/usb/host/pci-quirks.c                 |  2 +-
+>  drivers/vfio/pci/vfio_pci.c                   | 11 ++++---
+>  drivers/vfio/pci/vfio_pci_config.c            | 32 ++++++++++---------
+>  drivers/vfio/pci/vfio_pci_private.h           |  4 +--
+>  drivers/video/fbdev/core/fbmem.c              |  4 +--
+>  drivers/video/fbdev/efifb.c                   |  2 +-
+>  include/linux/pci-epc.h                       |  2 +-
+>  include/linux/pci.h                           |  2 +-
+>  include/uapi/linux/pci_regs.h                 |  1 +
+>  lib/devres.c                                  |  2 +-
+>  47 files changed, 112 insertions(+), 115 deletions(-)
 
+Applied to pci/resource for v5.5, thanks!
 
-
-
+I ended up squashing these all together because they're all related
+and tiny.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
