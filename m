@@ -1,95 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D0DBC36CE
-	for <lists+driverdev-devel@lfdr.de>; Tue,  1 Oct 2019 16:15:31 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EA27485F9C;
-	Tue,  1 Oct 2019 14:15:29 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CQuLgUy8i9l4; Tue,  1 Oct 2019 14:15:29 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7192585F69;
-	Tue,  1 Oct 2019 14:15:28 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E76D61BF981
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  1 Oct 2019 14:15:25 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id CC774C378A
+	for <lists+driverdev-devel@lfdr.de>; Tue,  1 Oct 2019 16:36:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id DCDDE86CB6
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  1 Oct 2019 14:15:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 23D8D879A6;
+	Tue,  1 Oct 2019 14:36:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id dgY4edEQkpYi; Tue,  1 Oct 2019 14:36:25 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 65A0685308;
+	Tue,  1 Oct 2019 14:36:25 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 3DA0F1BF592
+ for <devel@linuxdriverproject.org>; Tue,  1 Oct 2019 14:36:23 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 284EC20462
+ for <devel@linuxdriverproject.org>; Tue,  1 Oct 2019 14:36:23 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vZdCX5rRLPKQ
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  1 Oct 2019 14:15:25 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3F07881DBB
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  1 Oct 2019 14:15:25 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x91EEAZ4101151;
- Tue, 1 Oct 2019 14:15:22 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=JM3Jzer4jzPlygvMfCNkvGVx68wpltbOgm9qKx9g1Oo=;
- b=Q0mQxxM5KMB0HmrfXU7b2Dt3/asMdnmpNm5HjOo/lIf02BR3g+16Jx9mkQXjQRLm6Npn
- Ze2XPN3Q3YJJh0Zz8j65enDpeNXWZfbF9Q/2wHEy9OYzpMyG0IUJDGunjo0ClDstu5Ak
- 1yT5MiiTIFMwRrMp43YIpNyY4VYCavrnC9xpNPMk2xPF9kMuoVDH7HE098kMmiOTCsiz
- hneCJh81O5urXyIYv/3dVSaYRMmggHb0s/pn85G9DFmSPY4AXkb3Ib6XbXbpo0oBV7SZ
- 7sTKdm+PqxDzthxKY9e1IEVDOdIkb5e9sfVqfyynHgLPqpm/hCsjW21b1J5qSB40DiAh Fw== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by userp2130.oracle.com with ESMTP id 2v9xxup939-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 01 Oct 2019 14:15:22 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x91EEn58128509;
- Tue, 1 Oct 2019 14:15:22 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by userp3030.oracle.com with ESMTP id 2vbmpynfjn-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 01 Oct 2019 14:15:20 +0000
-Received: from abhmp0004.oracle.com (abhmp0004.oracle.com [141.146.116.10])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x91EEqu9025530;
- Tue, 1 Oct 2019 14:14:52 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 01 Oct 2019 07:14:51 -0700
-Date: Tue, 1 Oct 2019 17:14:45 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Rohit Sarkar <rohitsarkar5398@gmail.com>
-Subject: Re: [PATCH] staging: rtl8712: Replace snprintf with scnprintf
-Message-ID: <20191001141445.GI22609@kadam>
-References: <20190910184931.GA8228@SARKAR>
- <20190910185503.GA8541@SARKAR>
+ with ESMTP id x4PR2Uk3529M for <devel@linuxdriverproject.org>;
+ Tue,  1 Oct 2019 14:36:19 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from eu-smtp-delivery-151.mimecast.com
+ (eu-smtp-delivery-151.mimecast.com [146.101.78.151])
+ by silver.osuosl.org (Postfix) with ESMTPS id E479820763
+ for <devel@driverdev.osuosl.org>; Tue,  1 Oct 2019 14:36:14 +0000 (UTC)
+Received: from AcuMS.aculab.com (156.67.243.126 [156.67.243.126]) (Using
+ TLS) by relay.mimecast.com with ESMTP id
+ uk-mta-217-OO_eyhEkOW2W7nALFS7WXw-1; Tue, 01 Oct 2019 15:36:10 +0100
+Received: from AcuMS.Aculab.com (fd9f:af1c:a25b:0:43c:695e:880f:8750) by
+ AcuMS.aculab.com (fd9f:af1c:a25b:0:43c:695e:880f:8750) with Microsoft SMTP
+ Server (TLS) id 15.0.1347.2; Tue, 1 Oct 2019 15:36:09 +0100
+Received: from AcuMS.Aculab.com ([fe80::43c:695e:880f:8750]) by
+ AcuMS.aculab.com ([fe80::43c:695e:880f:8750%12]) with mapi id 15.00.1347.000; 
+ Tue, 1 Oct 2019 15:36:09 +0100
+From: David Laight <David.Laight@ACULAB.COM>
+To: 'Dan Carpenter' <dan.carpenter@oracle.com>, Denis Efremov
+ <efremov@linux.com>
+Subject: RE: [PATCH] staging: rtl8723bs: hal: Fix memcpy calls
+Thread-Topic: [PATCH] staging: rtl8723bs: hal: Fix memcpy calls
+Thread-Index: AQHVd36LU5ikVLKK6EuvH5wLNYQtMKdEMyLwgAGeKE+AAAh2kA==
+Date: Tue, 1 Oct 2019 14:36:09 +0000
+Message-ID: <8d2e8196cae74ec4ae20e9c23e898207@AcuMS.aculab.com>
+References: <20190930110141.29271-1-efremov@linux.com>
+ <37b195b700394e95aa8329afc9f60431@AcuMS.aculab.com>
+ <e4051dcb-10dc-ff17-ec0b-6f51dccdb5bf@linux.com>
+ <20191001135649.GH22609@kadam>
+In-Reply-To: <20191001135649.GH22609@kadam>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.202.205.107]
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190910185503.GA8541@SARKAR>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9396
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=776
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1908290000 definitions=main-1910010128
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9396
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=853 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
- definitions=main-1910010128
+X-MC-Unique: OO_eyhEkOW2W7nALFS7WXw-1
+X-Mimecast-Spam-Score: 0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,22 +75,48 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: gregkh@linuxfoundation.org, driverdev-devel@linuxdriverproject.org,
- florian.c.schilhabel@googlemail.com, Larry.Finger@lwfinger.net
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ Jes Sorensen <jes.sorensen@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "stable@vger.kernel.org" <stable@vger.kernel.org>,
+ Hans de Goede <hdegoede@redhat.com>, Bastien Nocera <hadess@hadess.net>,
+ Dmitry Vyukov <dvyukov@google.com>, Larry Finger <Larry.Finger@lwfinger.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Sep 11, 2019 at 12:25:03AM +0530, Rohit Sarkar wrote:
-> Resending as I made a typo in Larry's email id.
-> 
+> From: Dan Carpenter
+> Sent: 01 October 2019 14:57
+> Subject: Re: [PATCH] staging: rtl8723bs: hal: Fix memcpy calls
+...
+> That's true for glibc memcpy() but not for the kernel memcpy().  In the
+> kernel there are lots of places which do a zero size memcpy().
 
-I commented on the earlier email, but this email doesn't apply with
-`git am` so it would be difficult for Larry to review it.
+And probably from NULL (or even garbage) pointers.
 
-regards,
-dan carpenter
+After all a pointer to the end of an array (a + ARRAY_SIZE(a)) is valid
+but must not be dereferenced - so memcpy() can't dereference it's
+source address when the length is zero.
+
+> The glibc attitude is "the standard allows us to put knives here" so
+> let's put knives everywhere in the path.  And the GCC attitude is let's
+> silently remove NULL checks instead of just printing a warning that the
+> NULL check isn't required...  It could really make someone despondent.
+
+gcc is the one that add knives...
+
+This reminds me of me of a compiler that decided to optimise away
+checks for function addresses being NULL.
+At almost exactly the same time that ELF allowed for undefined weak symbols.
+Checking whether a function was actually present was non-trivial.
+
+	David
+
+-
+Registered Address Lakeside, Bramley Road, Mount Farm, Milton Keynes, MK1 1PT, UK
+Registration No: 1397386 (Wales)
 
 _______________________________________________
 devel mailing list
