@@ -1,74 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AA2EBC2CE6
-	for <lists+driverdev-devel@lfdr.de>; Tue,  1 Oct 2019 07:28:20 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 934BAC2CEF
+	for <lists+driverdev-devel@lfdr.de>; Tue,  1 Oct 2019 07:33:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 63AC186403;
-	Tue,  1 Oct 2019 05:28:19 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 079D086959;
+	Tue,  1 Oct 2019 05:33:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yV6LZNw_jAce; Tue,  1 Oct 2019 05:28:16 +0000 (UTC)
+	with ESMTP id GAcAXh6ojkdT; Tue,  1 Oct 2019 05:33:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AD19686936;
-	Tue,  1 Oct 2019 05:28:14 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id EB0CE86C11;
+	Tue,  1 Oct 2019 05:33:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1992E1BF332
- for <devel@linuxdriverproject.org>; Tue,  1 Oct 2019 05:28:12 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 501FF1BF332
+ for <devel@linuxdriverproject.org>; Tue,  1 Oct 2019 05:33:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 1699B87B69
- for <devel@linuxdriverproject.org>; Tue,  1 Oct 2019 05:28:12 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4BF9686ACB
+ for <devel@linuxdriverproject.org>; Tue,  1 Oct 2019 05:33:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aOPBMa2hSYwo for <devel@linuxdriverproject.org>;
- Tue,  1 Oct 2019 05:28:11 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 32081875F9
- for <devel@driverdev.osuosl.org>; Tue,  1 Oct 2019 05:28:11 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 30 Sep 2019 22:28:10 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,570,1559545200"; d="scan'208";a="190478749"
-Received: from fmsmsx105.amr.corp.intel.com ([10.18.124.203])
- by fmsmga008.fm.intel.com with ESMTP; 30 Sep 2019 22:28:10 -0700
-Received: from fmsmsx119.amr.corp.intel.com (10.18.124.207) by
- FMSMSX105.amr.corp.intel.com (10.18.124.203) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Mon, 30 Sep 2019 22:28:10 -0700
-Received: from shsmsx106.ccr.corp.intel.com (10.239.4.159) by
- FMSMSX119.amr.corp.intel.com (10.18.124.207) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Mon, 30 Sep 2019 22:28:09 -0700
-Received: from shsmsx104.ccr.corp.intel.com ([169.254.5.166]) by
- SHSMSX106.ccr.corp.intel.com ([169.254.10.119]) with mapi id 14.03.0439.000;
- Tue, 1 Oct 2019 13:28:08 +0800
-From: "Zhang, Jun" <jun.zhang@intel.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: RE: [PATCH] ion_system_heap: support X86 archtecture
-Thread-Topic: [PATCH] ion_system_heap: support X86 archtecture
-Thread-Index: AQHVdppyYu/UDgwp3kCa1tCveaZ4I6dB6ZkAgANY4IA=
-Date: Tue, 1 Oct 2019 05:28:07 +0000
-Message-ID: <88DC34334CA3444C85D647DBFA962C2735B662D8@SHSMSX104.ccr.corp.intel.com>
-References: <20190929072841.14848-1-jun.zhang@intel.com>
- <20190929101254.GA1907778@kroah.com>
-In-Reply-To: <20190929101254.GA1907778@kroah.com>
-Accept-Language: zh-CN, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNjViOGZjNzEtZDcxOS00YTFjLTk4NGUtYTUzYzBjOGNmMjUwIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoic25ZeGlQekh3WlRQa1RtNTVxa0VvSEpzV2RmaU5SdG41eWxkbm4reU1Ta3c0aTJpQVEwTUdPODZqUCtsdTNiRiJ9
-x-ctpclassification: CTP_NT
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [10.239.127.40]
+ with ESMTP id pTZYelMZ3Dus for <devel@linuxdriverproject.org>;
+ Tue,  1 Oct 2019 05:33:24 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.siol.net (mailoutvs40.siol.net [185.57.226.231])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C71D48680D
+ for <devel@driverdev.osuosl.org>; Tue,  1 Oct 2019 05:33:23 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.siol.net (Postfix) with ESMTP id 01FBE5214A7;
+ Tue,  1 Oct 2019 07:33:19 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at psrvmta10.zcs-production.pri
+Received: from mail.siol.net ([127.0.0.1])
+ by localhost (psrvmta10.zcs-production.pri [127.0.0.1]) (amavisd-new,
+ port 10032)
+ with ESMTP id C3Ar8QFXxW9r; Tue,  1 Oct 2019 07:33:19 +0200 (CEST)
+Received: from mail.siol.net (localhost [127.0.0.1])
+ by mail.siol.net (Postfix) with ESMTPS id 4E5C25214C3;
+ Tue,  1 Oct 2019 07:33:19 +0200 (CEST)
+Received: from jernej-laptop.localnet (cpe-86-58-59-25.static.triera.net
+ [86.58.59.25]) (Authenticated sender: jernej.skrabec@siol.net)
+ by mail.siol.net (Postfix) with ESMTPA id E624C5214A7;
+ Tue,  1 Oct 2019 07:33:17 +0200 (CEST)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@siol.net>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Subject: Re: [PATCH v2 0/6] media: cedrus: h264: Support multi-slice frames
+Date: Tue, 01 Oct 2019 07:33:17 +0200
+Message-ID: <1947541.RCUY4WSgCv@jernej-laptop>
+In-Reply-To: <eb127b9a-e226-d230-67b5-069795bd76fb@xs4all.nl>
+References: <20190929200023.215831-1-jernej.skrabec@siol.net>
+ <4342181.Ehiz7mZe5m@jernej-laptop>
+ <eb127b9a-e226-d230-67b5-069795bd76fb@xs4all.nl>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -82,112 +68,104 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- "tkjos@android.com" <tkjos@android.com>, "Bai@osuosl.org" <Bai@osuosl.org>,
- "Bai, Jie A" <jie.a.bai@intel.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>,
- "he@osuosl.org" <he@osuosl.org>, "arve@android.com" <arve@android.com>, "He,
- Bo" <bo.he@intel.com>, "joel@joelfernandes.org" <joel@joelfernandes.org>,
- "maco@android.com" <maco@android.com>,
- "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>,
- "christian@brauner.io" <christian@brauner.io>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, linux-media@vger.kernel.org, pawel@osciak.com,
+ jonas@kwiboo.se, gregkh@linuxfoundation.org, wens@csie.org, mripard@kernel.org,
+ tfiga@chromium.org, paul.kocialkowski@bootlin.com, kyungmin.park@samsung.com,
+ boris.brezillon@collabora.com, linux-arm-kernel@lists.infradead.org,
+ mchehab@kernel.org, ezequiel@collabora.com, linux-kernel@vger.kernel.org,
+ m.szyprowski@samsung.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello, Greg
-
-Sorry, I am newcomer, and I don't know why couldn't use #ifdefs?  I only refer some kernel code(V4.19) in drivers/hwtracing/intel_th/msu.c.
-Could you tell me why? And I tell my workmate to avoid the same case.
-
-If I define a config in Kconfig, and static inline function in .h file, then call it? Could you accept it?
-
-If not, Could you give me a sample?
-
-Thanks,
-Jun
-
------Original Message-----
-From: Greg KH <gregkh@linuxfoundation.org> 
-Sent: Sunday, September 29, 2019 6:13 PM
-To: Zhang, Jun <jun.zhang@intel.com>
-Cc: labbott@redhat.com; sumit.semwal@linaro.org; arve@android.com; tkjos@android.com; maco@android.com; joel@joelfernandes.org; christian@brauner.io; devel@driverdev.osuosl.org; Bai, Jie A <jie.a.bai@intel.com>; linux-kernel@vger.kernel.org; dri-devel@lists.freedesktop.org; linaro-mm-sig@lists.linaro.org; he@osuosl.org; Bai@osuosl.org; He, Bo <bo.he@intel.com>
-Subject: Re: [PATCH] ion_system_heap: support X86 archtecture
-
-On Sun, Sep 29, 2019 at 03:28:41PM +0800, jun.zhang@intel.com wrote:
-> From: zhang jun <jun.zhang@intel.com>
-> 
-> we see tons of warning like:
-> [   45.846872] x86/PAT: NDK MediaCodec_:3753 map pfn RAM range req
-> write-combining for [mem 0x1e7a80000-0x1e7a87fff], got write-back
-> [   45.848827] x86/PAT: .vorbis.decoder:4088 map pfn RAM range req
-> write-combining for [mem 0x1e7a58000-0x1e7a58fff], got write-back
-> [   45.848875] x86/PAT: NDK MediaCodec_:3753 map pfn RAM range req
-> write-combining for [mem 0x1e7a48000-0x1e7a4ffff], got write-back
-> [   45.849403] x86/PAT: .vorbis.decoder:4088 map pfn RAM range
-> req write-combining for [mem 0x1e7a70000-0x1e7a70fff], got write-back
-> 
-> check the kernel Documentation/x86/pat.txt, it says:
-> A. Exporting pages to users with remap_pfn_range, io_remap_pfn_range, 
-> vm_insert_pfn Drivers wanting to export some pages to userspace do it 
-> by using mmap interface and a combination of
-> 1) pgprot_noncached()
-> 2) io_remap_pfn_range() or remap_pfn_range() or vm_insert_pfn() With 
-> PAT support, a new API pgprot_writecombine is being added.
-> So, drivers can continue to use the above sequence, with either
-> pgprot_noncached() or pgprot_writecombine() in step 1, followed by step 2.
-> 
-> In addition, step 2 internally tracks the region as UC or WC in 
-> memtype list in order to ensure no conflicting mapping.
-> 
-> Note that this set of APIs only works with IO (non RAM) regions.
-> If driver ants to export a RAM region, it has to do set_memory_uc() or
-> set_memory_wc() as step 0 above and also track the usage of those 
-> pages and use set_memory_wb() before the page is freed to free pool.
-> 
-> the fix follow the pat document, do set_memory_wc() as step 0 and use 
-> the set_memory_wb() before the page is freed.
-> 
-> Signed-off-by: he, bo <bo.he@intel.com>
-> Signed-off-by: zhang jun <jun.zhang@intel.com>
-> Signed-off-by: Bai, Jie A <jie.a.bai@intel.com>
-> ---
->  drivers/staging/android/ion/ion_system_heap.c | 28 
-> ++++++++++++++++++-
->  1 file changed, 27 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/android/ion/ion_system_heap.c 
-> b/drivers/staging/android/ion/ion_system_heap.c
-> index b83a1d16bd89..d298b8194820 100644
-> --- a/drivers/staging/android/ion/ion_system_heap.c
-> +++ b/drivers/staging/android/ion/ion_system_heap.c
-> @@ -13,6 +13,7 @@
->  #include <linux/scatterlist.h>
->  #include <linux/slab.h>
->  #include <linux/vmalloc.h>
-> +#include <asm/set_memory.h>
->  
->  #include "ion.h"
->  
-> @@ -134,6 +135,13 @@ static int ion_system_heap_allocate(struct ion_heap *heap,
->  	sg = table->sgl;
->  	list_for_each_entry_safe(page, tmp_page, &pages, lru) {
->  		sg_set_page(sg, page, page_size(page), 0);
-> +
-> +#ifdef CONFIG_X86
-> +	if (!(buffer->flags & ION_FLAG_CACHED))
-> +		set_memory_wc((unsigned long)page_address(sg_page(sg)),
-> +			      PAGE_ALIGN(sg->length) >> PAGE_SHIFT); #endif
-
-There is no way to do this without these #ifdefs?  That feels odd, why can't you just always test for this?
-
-thanks,
-
-greg k-h
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RG5lIHRvcmVrLCAwMS4gb2t0b2JlciAyMDE5IG9iIDAwOjQzOjM0IENFU1QgamUgSGFucyBWZXJr
+dWlsIG5hcGlzYWwoYSk6Cj4gT24gMTAvMS8xOSAxMjoyNyBBTSwgSmVybmVqIMWga3JhYmVjIHdy
+b3RlOgo+ID4gRG5lIHBvbmVkZWxqZWssIDMwLiBzZXB0ZW1iZXIgMjAxOSBvYiAxMDoxMDo0OCBD
+RVNUIGplIEhhbnMgVmVya3VpbAo+ID4gCj4gPiBuYXBpc2FsKGEpOgo+ID4+IE9uIDkvMjkvMTkg
+MTA6MDAgUE0sIEplcm5laiBTa3JhYmVjIHdyb3RlOgo+ID4+PiBUaGlzIHNlcmllcyBhZGRzIHN1
+cHBvcnQgZm9yIGRlY29kaW5nIG11bHRpLXNsaWNlIEgyNjQgZnJhbWVzIGFsb25nIHdpdGgKPiA+
+Pj4gc3VwcG9ydCBmb3IgVjRMMl9ERUNfQ01EX0ZMVVNIIGFuZCBWNEwyX0JVRl9GTEFHX00yTV9I
+T0xEX0NBUFRVUkVfQlVGLgo+ID4+PiAKPiA+Pj4gQ29kZSB3YXMgdGVzdGVkIGJ5IG1vZGlmaWVk
+IGZmbXBlZywgd2hpY2ggY2FuIGJlIGZvdW5kIGhlcmU6Cj4gPj4+IGh0dHBzOi8vZ2l0aHViLmNv
+bS9qZXJuZWpzay9GRm1wZWcsIGJyYW5jaCBtYWlubGluZS10ZXN0Cj4gPj4+IEl0IGhhcyB0byBi
+ZSBjb25maWd1cmVkIHdpdGggYXQgbGVhc3QgZm9sbG93aW5nIG9wdGlvbnM6Cj4gPj4+IC0tZW5h
+YmxlLXY0bDItcmVxdWVzdCAtLWVuYWJsZS1saWJ1ZGV2IC0tZW5hYmxlLWxpYmRybQo+ID4+PiAK
+PiA+Pj4gU2FtcGxlcyB1c2VkIGZvciB0ZXN0aW5nOgo+ID4+PiBodHRwOi8vamVybmVqLmxpYnJl
+ZWxlYy50di92aWRlb3MvaDI2NC9CQTFfRlRfQy5tcDQKPiA+Pj4gaHR0cDovL2plcm5lai5saWJy
+ZWVsZWMudHYvdmlkZW9zL2gyNjQvaDI2NC5tcDQKPiA+Pj4gCj4gPj4+IENvbW1hbmQgbGluZSB1
+c2VkIGZvciB0ZXN0aW5nOgo+ID4+PiBmZm1wZWcgLWh3YWNjZWwgZHJtIC1od2FjY2VsX2Rldmlj
+ZSAvZGV2L2RyaS9jYXJkMCAtaSBoMjY0Lm1wNCAtcGl4X2ZtdAo+ID4+PiBiZ3JhIC1mIGZiZGV2
+IC9kZXYvZmIwCj4gPj4+IAo+ID4+PiBQbGVhc2Ugbm90ZSB0aGF0IFY0TDJfREVDX0NNRF9GTFVT
+SCB3YXMgbm90IHRlc3RlZCBiZWNhdXNlIEknbQo+ID4+PiBub3Qgc3VyZSBob3cuIGZmbXBlZyBm
+b2xsb3dzIGV4YWN0bHkgd2hpY2ggc2xpY2UgaXMgbGFzdCBpbiBmcmFtZQo+ID4+PiBhbmQgc2V0
+cyBob2xkIGZsYWcgYWNjb3JkaW5nbHkuIEltcHJvcGVyIHVzYWdlIG9mIGhvbGQgZmxhZyB3b3Vs
+ZAo+ID4+PiBjb3JydXB0IGZmbXBlZyBhc3N1bXB0aW9ucyBhbmQgaXQgd291bGQgcHJvYmFibHkg
+Y3Jhc2guIEFueSBpZGVhcwo+ID4+PiBob3cgdG8gdGVzdCB0aGlzIGFyZSB3ZWxjb21lIQo+ID4+
+IAo+ID4+IEl0IGNhbiBiZSB0ZXN0ZWQgcGFydGlhbGx5IGF0IGxlYXN0OiBpZiBmZm1wZWcgdGVs
+bHMgeW91IGl0IGlzIHRoZSBsYXN0Cj4gPj4gc2xpY2UsIHRoZW4gcXVldWUgdGhlIHNsaWNlIHdp
+dGggdGhlIEhPTEQgZmxhZyBzZXQsIHRoZW4gY2FsbCBGTFVTSAo+ID4+IGFmdGVyd2FyZHMuIFRo
+aXMgc2hvdWxkIGNsZWFyIHRoZSBIT0xEIGZsYWcgYWdhaW4uIEluIHRoaXMgY2FzZSB0aGUKPiA+
+PiBxdWV1ZWQKPiA+PiBidWZmZXIgaXMgcHJvYmFibHkgbm90IHlldCBwcm9jZXNzZWQsIHNvIHRo
+ZSBmbGFnIGlzIGNsZWFyZWQgYmVmb3JlIHRoZQo+ID4+IGRlY29kZSBqb2Igc3RhcnRzLgo+ID4+
+IAo+ID4+IFlvdSBjYW4gYWxzbyB0cnkgdG8gYWRkIGEgc2xlZXAgYmVmb3JlIGNhbGxpbmcgRkxV
+U0ggdG8gc2VlIHdoYXQgaGFwcGVucwo+ID4+IGlmIHRoZSBsYXN0IHF1ZXVlZCBidWZmZXIgaXMg
+YWxyZWFkeSBkZWNvZGVkLgo+ID4gCj4gPiBPaywgSSB0cmllZCBmb2xsb3dpbmcgY29kZToKPiA+
+IGh0dHBzOi8vZ2l0aHViLmNvbS9qZXJuZWpzay9GRm1wZWcvYmxvYi9mbHVzaF90ZXN0L2xpYmF2
+Y29kZWMvCj4gPiB2NGwyX3JlcXVlc3QuYyNMMjIwLUwyMzMKPiA+IAo+ID4gQnV0IHJlc3VsdHMg
+YXJlIG5vdCBnb29kLiBJdCBzZWVtcyB0aGF0IG91dF92YiBpbiBmbHVzaCBjb21tYW5kIGlzIGFs
+d2F5cwo+ID4gTlVMTCBhbmQgc28gaXQgYWx3YXlzIG1hcmtzIGNhcHR1cmUgYnVmZmVyIGFzIGRv
+bmUsIHdoaWNoIGxlYWRzIHRvIGtlcm5lbAo+ID4gd2FybmluZ3MuCj4gPiAKPiA+IGRtZXNnIG91
+dHB1dCB3aXRoIGRlYnVnZ2luZyBtZXNzYWdlcyBpcyBoZXJlOiBodHRwOi8vaXguaW8vMUtzOAo+
+ID4gCj4gPiBDdXJyZW50bHkgSSdtIG5vdCBzdXJlIHdoYXQgaXMgZ29pbmcgb24uIFNob3VsZG4n
+dCBiZSBvdXRwdXQgYnVmZmVyIHF1ZXVlZAo+ID4gYW5kIHdhaXRpbmcgdG8gTUVESUFfUkVRVUVT
+VF9JT0NfUVVFVUUgd2hpY2ggaXMgZXhlY3V0ZWQgYWZ0ZXIgZmx1c2gKPiA+IGNvbW1hbmQgYXMg
+aXQgY2FuIGJlIHNlZW4gZnJvbSBmZm1wZWcgY29kZSBsaW5rZWQgYWJvdmU/Cj4gCj4gQXJnaCwg
+SSBmb3Jnb3QgYWJvdXQgdGhlIGZhY3QgdGhhdCB0aGlzIHVzZXMgcmVxdWVzdHMuCj4gCj4gVGhl
+IEZMVVNIIHNob3VsZCBoYXBwZW4gKmFmdGVyKiB0aGUgTUVESUFfUkVRVUVTVF9JT0NfUVVFVUUg
+aW9jdGwuIE90aGVyd2lzZQo+IGl0IGhhcyBubyBlZmZlY3QuIEFzIGxvbmcgYXMgdGhlIHJlcXVl
+c3QgaGFzbid0IGJlZW4gcXVldWVkLCB0aGUgYnVmZmVyIGlzCj4gYWxzbyBub3QgcXVldWVkIHRv
+IHRoZSBkcml2ZXIsIHNvIG91dF92YiB3aWxsIGluZGVlZCBiZSBOVUxMLgoKSXQncyBiZXR0ZXIs
+IGJ1dCBzdGlsbCBub3Qgd29ya2luZy4gQ3VycmVudGx5IGZmbXBlZyBzb21ldGltZXMgcmVwb3J0
+cyBzdWNoIAptZXNzYWdlczogaHR0cHM6Ly9wYXN0ZWJpbi5jb20vcmF3Lzl0VlZ0YzIwIFRoaXMg
+aXMgZG1lc2cgb3V0cHV0OiBodHRwOi8vCml4LmlvLzFMMUwKCkl0IHNlZW1zIHRvIG1lIGxpa2Ug
+YSByYWNlIGNvbmRpdGlvbi4gU29tZXRpbWVzIGZsdXNoIHdvcmtzIGFzIGluZGVuZGVudCBhbmQg
+CnNvbWV0aW1lcyBpdCBpbmZsdWVuY2VzIG5leHQgZnJhbWUuCgpCZXN0IHJlZ2FyZHMsCkplcm5q
+ZQoKPiAKPiBTb3JyeSBmb3IgdGhlIGNvbmZ1c2lvbi4KPiAKPiBSZWdhcmRzLAo+IAo+IAlIYW5z
+Cj4gCj4gPiBCZXN0IHJlZ2FyZHMsCj4gPiBKZXJuZWoKPiA+IAo+ID4+IFJlZ2FyZHMsCj4gPj4g
+Cj4gPj4gCUhhbnMKPiA+PiAJCj4gPj4+IFRoYW5rcyB0byBKb25hcyBmb3IgYWRqdXN0aW5nIGZm
+bXBlZy4KPiA+Pj4gCj4gPj4+IFBsZWFzZSBsZXQgbWUga25vdyB3aGF0IHlvdSB0aGluay4KPiA+
+Pj4gCj4gPj4+IEJlc3QgcmVnYXJkcywKPiA+Pj4gSmVybmVqCj4gPj4+IAo+ID4+PiBDaGFuZ2Vz
+IGZyb20gdjE6Cj4gPj4+IC0gYWRkZWQgUmIgdGFncwo+ID4+PiAtIHVwZGF0ZWQgVjRMMl9ERUNf
+Q01EX0ZMVVNIIGRvY3VtZW50YXRpb24KPiA+Pj4gLSB1cGRhdGVkIGZpcnN0IHNsaWNlIGRldGVj
+dGlvbiBpbiBDZWRydXMKPiA+Pj4gLSBob2xkIGNhcHR1cmUgYnVmZmVyIGZsYWcgaXMgc2V0IGFj
+Y29yZGluZyB0byBzb3VyY2UgZm9ybWF0Cj4gPj4+IC0gYWRkZWQgdjRsIG0ybSBzdGF0ZWxlc3Nf
+KHRyeV8pZGVjb2Rlcl9jbWQgaW9jdGwgaGVscGVycwo+ID4+PiAKPiA+Pj4gSGFucyBWZXJrdWls
+ICgyKToKPiA+Pj4gICB2YjI6IGFkZCBWNEwyX0JVRl9GTEFHX00yTV9IT0xEX0NBUFRVUkVfQlVG
+Cj4gPj4+ICAgdmlkZW9kZXYyLmg6IGFkZCBWNEwyX0RFQ19DTURfRkxVU0gKPiA+Pj4gCj4gPj4+
+IEplcm5laiBTa3JhYmVjICg0KToKPiA+Pj4gICBtZWRpYTogdjRsMi1tZW0ybWVtOiBhZGQgc3Rh
+dGVsZXNzXyh0cnlfKWRlY29kZXJfY21kIGlvY3RsIGhlbHBlcnMKPiA+Pj4gICBtZWRpYTogY2Vk
+cnVzOiBEZXRlY3QgZmlyc3Qgc2xpY2Ugb2YgYSBmcmFtZQo+ID4+PiAgIG1lZGlhOiBjZWRydXM6
+IGgyNjQ6IFN1cHBvcnQgbXVsdGlwbGUgc2xpY2VzIHBlciBmcmFtZQo+ID4+PiAgIG1lZGlhOiBj
+ZWRydXM6IEFkZCBzdXBwb3J0IGZvciBob2xkaW5nIGNhcHR1cmUgYnVmZmVyCj4gPj4+ICAKPiA+
+Pj4gIERvY3VtZW50YXRpb24vbWVkaWEvdWFwaS92NGwvYnVmZmVyLnJzdCAgICAgICB8IDEzICsr
+KysrKwo+ID4+PiAgLi4uL21lZGlhL3VhcGkvdjRsL3ZpZGlvYy1kZWNvZGVyLWNtZC5yc3QgICAg
+IHwgMTAgKysrLQo+ID4+PiAgLi4uL21lZGlhL3VhcGkvdjRsL3ZpZGlvYy1yZXFidWZzLnJzdCAg
+ICAgICAgIHwgIDYgKysrCj4gPj4+ICAuLi4vbWVkaWEvdmlkZW9kZXYyLmgucnN0LmV4Y2VwdGlv
+bnMgICAgICAgICAgfCAgMSArCj4gPj4+ICAuLi4vbWVkaWEvY29tbW9uL3ZpZGVvYnVmMi92aWRl
+b2J1ZjItdjRsMi5jICAgfCAgOCArKystCj4gPj4+ICBkcml2ZXJzL21lZGlhL3Y0bDItY29yZS92
+NGwyLW1lbTJtZW0uYyAgICAgICAgfCAzNSArKysrKysrKysrKysrKwo+ID4+PiAgZHJpdmVycy9z
+dGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXMuaCAgIHwgIDEgKwo+ID4+PiAgLi4uL3N0
+YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1c19kZWMuYyAgIHwgMTEgKysrKysKPiA+Pj4g
+IC4uLi9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXNfaDI2NC5jICB8IDExICsrKyst
+Cj4gPj4+ICAuLi4vc3RhZ2luZy9tZWRpYS9zdW54aS9jZWRydXMvY2VkcnVzX2h3LmMgICAgfCAg
+OCArKy0tCj4gPj4+ICAuLi4vc3RhZ2luZy9tZWRpYS9zdW54aS9jZWRydXMvY2VkcnVzX3ZpZGVv
+LmMgfCAxNCArKysrKysKPiA+Pj4gIGluY2x1ZGUvbWVkaWEvdjRsMi1tZW0ybWVtLmggICAgICAg
+ICAgICAgICAgICB8IDQ2ICsrKysrKysrKysrKysrKysrKysKPiA+Pj4gIGluY2x1ZGUvbWVkaWEv
+dmlkZW9idWYyLWNvcmUuaCAgICAgICAgICAgICAgICB8ICAzICsrCj4gPj4+ICBpbmNsdWRlL21l
+ZGlhL3ZpZGVvYnVmMi12NGwyLmggICAgICAgICAgICAgICAgfCAgNSArKwo+ID4+PiAgaW5jbHVk
+ZS91YXBpL2xpbnV4L3ZpZGVvZGV2Mi5oICAgICAgICAgICAgICAgIHwgMTQgKysrKy0tCj4gPj4+
+ICAxNSBmaWxlcyBjaGFuZ2VkLCAxNzUgaW5zZXJ0aW9ucygrKSwgMTEgZGVsZXRpb25zKC0pCgoK
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBt
+YWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2
+LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
