@@ -1,67 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 48D68C9013
-	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Oct 2019 19:41:26 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A916A226D0;
-	Wed,  2 Oct 2019 17:41:23 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MI69vlJhjWJd; Wed,  2 Oct 2019 17:41:22 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7FCC42268C;
-	Wed,  2 Oct 2019 17:41:20 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4ADFB1BF5F4
- for <devel@linuxdriverproject.org>; Wed,  2 Oct 2019 17:41:17 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 91356C9143
+	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Oct 2019 21:02:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 45EA98364D
- for <devel@linuxdriverproject.org>; Wed,  2 Oct 2019 17:41:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 97863876B8;
+	Wed,  2 Oct 2019 19:02:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ikAKEIVu9oC8; Wed,  2 Oct 2019 19:01:59 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id D5AC386D67;
+	Wed,  2 Oct 2019 19:01:47 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C0EFB1BF5B4
+ for <devel@linuxdriverproject.org>; Wed,  2 Oct 2019 19:01:45 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id BE2D087DCC
+ for <devel@linuxdriverproject.org>; Wed,  2 Oct 2019 19:01:45 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 21JbngSX+b7i for <devel@linuxdriverproject.org>;
- Wed,  2 Oct 2019 17:41:14 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
- [209.85.221.68])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B2B9B83883
- for <devel@driverdev.osuosl.org>; Wed,  2 Oct 2019 17:41:13 +0000 (UTC)
-Received: by mail-wr1-f68.google.com with SMTP id n14so20618050wrw.9
- for <devel@driverdev.osuosl.org>; Wed, 02 Oct 2019 10:41:13 -0700 (PDT)
+ with ESMTP id BGlxpcX3olSm for <devel@linuxdriverproject.org>;
+ Wed,  2 Oct 2019 19:01:45 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from omr2.cc.vt.edu (outbound.smtp.vt.edu [198.82.183.121])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id CAD748155A
+ for <devel@driverdev.osuosl.org>; Wed,  2 Oct 2019 19:01:44 +0000 (UTC)
+Received: from mr4.cc.vt.edu (mr4.cc.ipv6.vt.edu
+ [IPv6:2607:b400:92:8300:0:7b:e2b1:6a29])
+ by omr2.cc.vt.edu (8.14.4/8.14.4) with ESMTP id x92J1hrB019859
+ for <devel@driverdev.osuosl.org>; Wed, 2 Oct 2019 15:01:43 -0400
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
+ [209.85.160.200])
+ by mr4.cc.vt.edu (8.14.7/8.14.7) with ESMTP id x92J1cqu012515
+ for <devel@driverdev.osuosl.org>; Wed, 2 Oct 2019 15:01:43 -0400
+Received: by mail-qt1-f200.google.com with SMTP id d24so203692qtn.17
+ for <devel@driverdev.osuosl.org>; Wed, 02 Oct 2019 12:01:43 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=mUZyNZheTJw4GC5851yKEfVpxUBc4f7pMP1DSM9q8jg=;
- b=B4aJ4X2xKW1tUZdS+Kgm4tbtVlOXSTiywfDe3qLBNTyEaI2SAeoTybXkY8fOcZWwQ1
- Y+CQx2v9AzEhq9fHb0ZHBgQIzk8r6aTIzhik1Jfi4HNM+j0wSEB9GGSrNqAZZgLIwfW9
- sTp3cuTcEbQ+G5fLZ/kJZacBf1TmGNPAQ29Ji2yCmOUxBDEnOdsM26HO29mbE89yzHWK
- N5AY9DamQeyBOvXdwjuBdCKNd3wS1poBRzCETxGIy/KlZ9LADMoU+qaw3LqqZgYyPvel
- bNx9g60T07qFe8jLcpsHNa6qM119ZANl7wJm3z61cAJ0Di5pXMBDWbdhN7PZuo9/paPY
- S62A==
-X-Gm-Message-State: APjAAAVTg+QB4xtmoM5WJWpNiB302dmmaD2ohBV986Ek0kqWekH0jBlz
- 1ctEEjDH1mSpVqnk/00xEmBzWSTgTsw=
-X-Google-Smtp-Source: APXvYqzWaLLj84b5DPgMGqOH66TFh2UVD9sMvffhg/6fPjFOWddMdm6yky7HGz0wVtcCSZ6uiKB5pg==
-X-Received: by 2002:adf:e689:: with SMTP id r9mr3970235wrm.62.1570038072117;
- Wed, 02 Oct 2019 10:41:12 -0700 (PDT)
-Received: from green.intra.ispras.ru (bran.ispras.ru. [83.149.199.196])
- by smtp.googlemail.com with ESMTPSA id f186sm7879628wmg.21.2019.10.02.10.41.10
+ h=x-gm-message-state:sender:from:to:cc:subject:mime-version:date
+ :message-id;
+ bh=aK+dlxh4aWZdy/McFZvh8C645g1tT1N+aiJMD9e/VE4=;
+ b=Eb2oiQNWkGCePiZnXCltkpPbMDg6C18zTsnxZg97ueOpQhfdyoOWJnU9MrRVOEvPlw
+ qQRZp8EiLJGSASgdGqmndr6kXba3nqXETrJQLeMD0LnzNM6DmwD7pKYD5NHliZ7M4+nd
+ ZPY1OohtOco4ESXWdx4lyY2+/7mpkT8EE1dnuo0ibfFQp4TVgPGyXvHX7LuEABkWNgwD
+ k/seBDSoFHq8eqhH9R10nkeMucwDreea3De1J5deFTGHLcnoiVrGGnEjSAE7HLIoRkPJ
+ Z/p9JgzE6MYw+oSzoCsjyhkWesu2MJ5usGkUxod6HpV0/FmNvOlUKNos1bT8ZczSARVL
+ db0g==
+X-Gm-Message-State: APjAAAWI9VsyyupmPTSJle0ArZhA95qbsopoqD6WTFqI1/6bMwxL0o3Y
+ epIVe521OxXWlio35x+6vlSqeElpEC6rsYinqlAR9nnn4AkKkyIxPsDr3IqqpXQL7frkQ/U14pF
+ hL/8VdGo+HZ6T2MVaq8YhRfSa5PuBnAdP
+X-Received: by 2002:ac8:6658:: with SMTP id j24mr5949603qtp.364.1570042898278; 
+ Wed, 02 Oct 2019 12:01:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxtfMNWCtc5hidqz4lQIF71wwyWtG81Px7YNTfqRMWzh6KooZ1G7po3RNaHOVP2tbEWtMjLWg==
+X-Received: by 2002:ac8:6658:: with SMTP id j24mr5949578qtp.364.1570042897998; 
+ Wed, 02 Oct 2019 12:01:37 -0700 (PDT)
+Received: from turing-police ([2601:5c0:c001:4341::9ca])
+ by smtp.gmail.com with ESMTPSA id h10sm155063qtk.18.2019.10.02.12.01.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Oct 2019 10:41:11 -0700 (PDT)
-From: Denis Efremov <efremov@linux.com>
-To: devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: wlan-ng: fix uninitialized variable
-Date: Wed,  2 Oct 2019 20:41:03 +0300
-Message-Id: <20191002174103.1274-1-efremov@linux.com>
-X-Mailer: git-send-email 2.21.0
-MIME-Version: 1.0
+ Wed, 02 Oct 2019 12:01:36 -0700 (PDT)
+From: "Valdis =?utf-8?Q?Kl=c4=93tnieks?=" <valdis.kletnieks@vt.edu>
+X-Google-Original-From: "Valdis =?utf-8?Q?Kl=c4=93tnieks?="
+ <Valdis.Kletnieks@vt.edu>
+X-Mailer: exmh version 2.9.0 11/07/2018 with nmh-1.7+dev
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] drivers/staging/exfat - explain the fs_sync() issue in TODO
+Mime-Version: 1.0
+Date: Wed, 02 Oct 2019 15:01:35 -0400
+Message-ID: <9837.1570042895@turing-police>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,39 +85,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, stable@vger.kernel.org,
- Denis Efremov <efremov@linux.com>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The result variable in prism2_connect() can be used uninitialized on path
-!channel --> ... --> is_wep --> sme->key --> sme->key_idx >= NUM_WEPKEYS.
-This patch initializes result with 0.
+We've seen several incorrect patches for fs_sync() calls in the exfat driver.
+Add code to the TODO that explains this isn't just a delete code and refactor,
+but that actual analysis of when the filesystem should be flushed to disk
+needs to be done.
 
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: stable@vger.kernel.org
-Signed-off-by: Denis Efremov <efremov@linux.com>
+Signed-off-by: Valdis Kletnieks <valdis.kletnieks@vt.edu>
+
 ---
- drivers/staging/wlan-ng/cfg80211.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/wlan-ng/cfg80211.c b/drivers/staging/wlan-ng/cfg80211.c
-index eee1998c4b18..d426905e187e 100644
---- a/drivers/staging/wlan-ng/cfg80211.c
-+++ b/drivers/staging/wlan-ng/cfg80211.c
-@@ -441,7 +441,7 @@ static int prism2_connect(struct wiphy *wiphy, struct net_device *dev,
- 	int chan = -1;
- 	int is_wep = (sme->crypto.cipher_group == WLAN_CIPHER_SUITE_WEP40) ||
- 	    (sme->crypto.cipher_group == WLAN_CIPHER_SUITE_WEP104);
--	int result;
-+	int result = 0;
- 	int err = 0;
+diff --git a/drivers/staging/exfat/TODO b/drivers/staging/exfat/TODO
+index a3eb282f9efc..77c302acfcb8 100644
+--- a/drivers/staging/exfat/TODO
++++ b/drivers/staging/exfat/TODO
+@@ -3,6 +3,15 @@ same for ffsWriteFile.
  
- 	/* Set the channel */
--- 
-2.21.0
+ exfat_core.c - fs_sync(sb,0) all over the place looks fishy as hell.
+ There's only one place that calls it with a non-zero argument.
++Randomly removing fs_sync() calls is *not* the right answer, especially
++if the removal then leaves a call to fs_set_vol_flags(VOL_CLEAN), as that
++says the file system is clean and synced when we *know* it isn't.
++The proper fix here is to go through and actually analyze how DELAYED_SYNC
++should work, and any time we're setting VOL_CLEAN, ensure the file system
++has in fact been synced to disk.  In other words, changing the 'false' to
++'true' is probably more correct. Also, it's likely that the one current
++place where it actually does an bdev_sync isn't sufficient in the DELAYED_SYNC
++case.
+ 
+ ffsTruncateFile -  if (old_size <= new_size) {
+ That doesn't look right. How did it ever work? Are they relying on lazy
 
 _______________________________________________
 devel mailing list
