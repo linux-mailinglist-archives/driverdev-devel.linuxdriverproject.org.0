@@ -1,92 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3AF23C9DBF
-	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Oct 2019 13:49:24 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A2A74C9E5A
+	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Oct 2019 14:25:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 715312281E;
-	Thu,  3 Oct 2019 11:49:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B14F186910;
+	Thu,  3 Oct 2019 12:25:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iwQiaUfl-1sb; Thu,  3 Oct 2019 11:49:21 +0000 (UTC)
+	with ESMTP id 9WSgDvhe74si; Thu,  3 Oct 2019 12:25:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D2020203AB;
-	Thu,  3 Oct 2019 11:49:18 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 96B068648E;
+	Thu,  3 Oct 2019 12:25:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 376911BF9C8
- for <devel@linuxdriverproject.org>; Thu,  3 Oct 2019 11:49:13 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 9F6B91BF9B6
+ for <devel@linuxdriverproject.org>; Thu,  3 Oct 2019 12:25:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 1673D86C6D
- for <devel@linuxdriverproject.org>; Thu,  3 Oct 2019 11:49:13 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9441620512
+ for <devel@linuxdriverproject.org>; Thu,  3 Oct 2019 12:25:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SiDViCNFI8RY for <devel@linuxdriverproject.org>;
- Thu,  3 Oct 2019 11:49:06 +0000 (UTC)
+ with ESMTP id J35FWiKzurIB for <devel@linuxdriverproject.org>;
+ Thu,  3 Oct 2019 12:25:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3F55088157
- for <devel@driverdev.osuosl.org>; Thu,  3 Oct 2019 11:49:05 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x93Bmwdw145482;
- Thu, 3 Oct 2019 11:49:04 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=Tv6Whr37flpQTMvhxJZIqkHc+lxYrgsVpf1GQKff1Sw=;
- b=LZgmVx8KaQGtkpBJF9UrrqOYKnhh9kcTdp/dWzAb7kk/Ley2JoPIG4FRas2yYWL0m7oU
- VoRTNQUdYq5XGPpp9TsJXoc0K/Z48Erxq3WVgRsStH6P3FywjY5B0t/o1M/dVSjzGbl3
- /3h5Qfz6bh7jVm3gYVx2VH0LrLUUuMHJ1yi8XV8ETgPfRAMD89ZcP6iRFC2OVTGTlepj
- TdYOwUeW4uTzE7tBbfAMAag8CT+7ywjB1vDSXpMUNV3Q99fHxRBDktfSZgj0caFgb+Mi
- xfMHdgWiT2E2RMAyjoDG1Jw7k8y53Y+4CYdSd5TtoaRMyur97dOW8aOP1v4G675/7Exo mQ== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2130.oracle.com with ESMTP id 2v9xxv3ec6-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 03 Oct 2019 11:49:04 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x93BmiKJ174495;
- Thu, 3 Oct 2019 11:49:03 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by aserp3030.oracle.com with ESMTP id 2vcx72b91s-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 03 Oct 2019 11:49:03 +0000
-Received: from abhmp0011.oracle.com (abhmp0011.oracle.com [141.146.116.17])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x93Bn1JR026187;
- Thu, 3 Oct 2019 11:49:01 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 03 Oct 2019 04:49:01 -0700
-Date: Thu, 3 Oct 2019 14:48:52 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Valdis =?utf-8?Q?Kl=C4=93tnieks?= <valdis.kletnieks@vt.edu>
-Subject: Re: [PATCH] staging: exfat: use bdev_sync function directly where
- needed
-Message-ID: <20191003114852.GR29696@kadam>
-References: <20191002151703.GA6594@SD> <9938.1570043055@turing-police>
- <20191003114654.GT22609@kadam>
+Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
+ [209.85.221.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2720A2076F
+ for <devel@driverdev.osuosl.org>; Thu,  3 Oct 2019 12:25:35 +0000 (UTC)
+Received: by mail-wr1-f65.google.com with SMTP id z9so2657635wrl.11
+ for <devel@driverdev.osuosl.org>; Thu, 03 Oct 2019 05:25:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=kV9zD3uPi2Di+JDBMvIhoGzUBhhzE8EsX3G3Pd160Mg=;
+ b=V8DW/BVJzXo83wv+ti+YBzIQbU/EjZU8jXLzTaUOimwwfAdnB7yMfiY/2u0Zp/8J/n
+ OO9VWqoqqFB9/uPCgkJ//TsbKC88/NPnTEiITwUP4dWbSYYolhylZude1ZhxhAiZnrWX
+ wUqNUhmmlcnNSqW03PI2RVjA/dDT+Dcv8sbu3+L1S7H6TFwzotYP2kLef2ETDL43Tb9L
+ pKGRQ53KW3YOs0KbfMZpgTb4paCq87eCwcMq9pBAtB0CX54YoZ11cEczGui/XnGRDxu4
+ bdhsxCl3fl3a9D6BHElIEnCm66/7Y3iB4spRPBd/PESr+4XPpiyDAMUUEWSZH9TMJsVF
+ 8/PQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=kV9zD3uPi2Di+JDBMvIhoGzUBhhzE8EsX3G3Pd160Mg=;
+ b=JPfKzBAoQnbOtZHPaZv+sXsOnzST8mUATO0fB9TkRMasHCygh63zjA8hfaS6UJM8b0
+ GT2dXyJlU1U87uWVXjD9yJ+grGLp82VmFJHKDacOZaoyeahPJYoZnnQ4HPyzXU5Rpha2
+ m+Ubg6hM1mYDxVUmHPS9/UZyruOPbcEqgsF6DoSviGPH6LZ54e+dUQVoZS0NOCddRA2Q
+ 2P20CciHSP4AjTVH/oN/EEjnaz/SNENZVS8qgZC7ATRP/zYKnP+2LBnyMmCLs/PfPt78
+ WIEd2SAAhv9JsrKUtvsKr23qUEUQsahaROlrbixYpt88Pj3cYXhR4jk2kJ0fwLm5h7PF
+ O9Mg==
+X-Gm-Message-State: APjAAAVIGJ0urLunKPPq4SPqekCbRn1Wz6iqpeiNUP3MRCe0AN8OcodV
+ llChBUboHwJjyWiXRb/Hfxw=
+X-Google-Smtp-Source: APXvYqyI7O5U6bzRp+8a31fdCe0kFkw+s+Pm1GROZezzzHsmTS6VCjKEMIo458h06THaxOS6yJNOng==
+X-Received: by 2002:a5d:42cb:: with SMTP id t11mr6541793wrr.99.1570105533510; 
+ Thu, 03 Oct 2019 05:25:33 -0700 (PDT)
+Received: from localhost.localdomain
+ ([2a02:8108:96bf:e0ab:2b68:5d76:a12a:e6ba])
+ by smtp.gmail.com with ESMTPSA id f17sm2699322wru.29.2019.10.03.05.25.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 03 Oct 2019 05:25:33 -0700 (PDT)
+From: Michael Straube <straube.linux@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH 0/4] staging: rtl8188eu: cleanups in update_hw_ht_param()
+Date: Thu,  3 Oct 2019 14:25:10 +0200
+Message-Id: <20191003122514.1760-1-straube.linux@gmail.com>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191003114654.GT22609@kadam>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9398
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=710
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1908290000 definitions=main-1910030111
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9398
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=792 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
- definitions=main-1910030111
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,18 +84,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Saiyam Doshi <saiyamdoshi.in@gmail.com>,
- linux-kernel@vger.kernel.org, gregkh@linuxfoundation.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Larry.Finger@lwfinger.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Or we could apply your other patch which trumps both this patch and the
-patch to the TODO.
+Cleanup code in function update_hw_ht_param(). 
 
-regards,
-dan carpenter
+Michael Straube (4):
+  staging: rtl8188eu: convert variables from unsigned char to u8
+  staging: rtl8188eu: rename variables to avoid mixed case
+  staging: rtl8188eu: cleanup whitespace in update_hw_ht_param
+  staging: rtl8188eu: cleanup comments in update_hw_ht_param
+
+ drivers/staging/rtl8188eu/core/rtw_ap.c | 31 +++++++++++--------------
+ 1 file changed, 13 insertions(+), 18 deletions(-)
+
+-- 
+2.23.0
 
 _______________________________________________
 devel mailing list
