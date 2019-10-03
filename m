@@ -1,74 +1,117 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 334E0CADB1
-	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Oct 2019 20:03:31 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 55E76CAEB9
+	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Oct 2019 21:03:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1D39D877AB;
-	Thu,  3 Oct 2019 18:03:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2C65088320;
+	Thu,  3 Oct 2019 19:03:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Q268uR3rCaqH; Thu,  3 Oct 2019 18:03:28 +0000 (UTC)
+	with ESMTP id 8nut6PcGv+Df; Thu,  3 Oct 2019 19:03:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 45E78876D4;
-	Thu,  3 Oct 2019 18:03:27 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id F1BCD88281;
+	Thu,  3 Oct 2019 19:03:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 84E121BF3DA
- for <devel@linuxdriverproject.org>; Thu,  3 Oct 2019 18:03:24 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id AAD251BF2F7
+ for <devel@linuxdriverproject.org>; Thu,  3 Oct 2019 19:03:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 64CCB22654
- for <devel@linuxdriverproject.org>; Thu,  3 Oct 2019 18:03:24 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7ECCE88265
+ for <devel@linuxdriverproject.org>; Thu,  3 Oct 2019 19:03:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kk8ngQWh3lGu for <devel@linuxdriverproject.org>;
- Thu,  3 Oct 2019 18:03:23 +0000 (UTC)
+ with ESMTP id OIJtCUg0GYwi for <devel@linuxdriverproject.org>;
+ Thu,  3 Oct 2019 19:03:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-yb1-f195.google.com (mail-yb1-f195.google.com
- [209.85.219.195])
- by silver.osuosl.org (Postfix) with ESMTPS id 2884E22775
- for <devel@driverdev.osuosl.org>; Thu,  3 Oct 2019 18:03:23 +0000 (UTC)
-Received: by mail-yb1-f195.google.com with SMTP id y204so1212994yby.10
- for <devel@driverdev.osuosl.org>; Thu, 03 Oct 2019 11:03:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=gMkIJc7maLpy0B0IUU0rr4pEq6kA8K3pEg41oVgYte4=;
- b=uqAm2Q9KjozDkJChmIhh46MJKv2R/HMaT9yXsy8sP1tiSMN4wUUMzluOG7WA6NQVUi
- TGZh5OWPOEvYk+sUc8iDMziJN2sYg15VQXGOib+0lOk3DBItu/p6jXnKwwgxU31PRlYa
- s6Zvm3m4V+l92G9WeOhBCXQjLCPxB9jneZf3opg8uKaU7QBbHtHYMEETmCbsCQJYNsRf
- iHVvFGGTesGIdqYHy0ZJCT18CfkoEVCMEiLMDAOYEnYuz5/FacrjxUwYKNb+dPXLk5Lm
- lPtZQ0cOIXPKShYVHaQ+VJuxzmJ5FzbSnlDaY21E4+iAuBPRunS3RnMX7nZWTqV/BnGv
- 6H6g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=gMkIJc7maLpy0B0IUU0rr4pEq6kA8K3pEg41oVgYte4=;
- b=AOe7gNcwbifs1Ez5gBAZzaSZG5SmIszfutgwXLC1VQKz1q85lXgp09iKSOzdAa/7C7
- PsumfFZdFS1vajTXY1AknS/HC+q5811JBTljqVeFHKbcYmPCSYmy2+SbuRTv3g18xfa/
- EOEjJ5xrw0vs0tpv7rJD3h9AFvCpbhd0tJ+8KAKy4x6UWpy/zZr6thx+3w4PZcRIizFP
- hyqw6PvrP11O0/qU8QIZ+PwxkYEnogJWZkqx6toz9IW7mB3SP3ptBsoLZFEAkAAalcGt
- SpbPjRkAy/RZaj5z0jvdf+Eo4sXfvNH+/WB3D2wicOFUunX4Pe/hgyhofPEXfoH7GO7A
- Q8Dw==
-X-Gm-Message-State: APjAAAVscjnRovH+Svi1o06CgYBMy2LMHcdvnn9fiHIN5eQEFQWKcaeD
- pjZX9gzyHwiPJvwMKBah2hk=
-X-Google-Smtp-Source: APXvYqxpA458ce2lykz3M1HCMxMOnpA3nJj6sD14buNi86BRg3Su0Ziht6Dd8JTQ9bcdJA5WIpJZHQ==
-X-Received: by 2002:a25:6fc1:: with SMTP id k184mr7088466ybc.8.1570125802097; 
- Thu, 03 Oct 2019 11:03:22 -0700 (PDT)
-Received: from ubuntu ([107.15.113.108])
- by smtp.gmail.com with ESMTPSA id u69sm830273ywu.93.2019.10.03.11.03.20
- (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Thu, 03 Oct 2019 11:03:21 -0700 (PDT)
-From: Nachammai Karuppiah <nachukannan@gmail.com>
-To: Eric Anholt <eric@anholt.net>, Stefan Wahren <wahrenst@gmx.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: vc04_services: Avoid typedef
-Date: Thu,  3 Oct 2019 11:03:17 -0700
-Message-Id: <1570125797-24410-1-git-send-email-nachukannan@gmail.com>
-X-Mailer: git-send-email 2.7.4
+Received: from NAM04-CO1-obe.outbound.protection.outlook.com
+ (mail-eopbgr690110.outbound.protection.outlook.com [40.107.69.110])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 3EF8588222
+ for <devel@linuxdriverproject.org>; Thu,  3 Oct 2019 19:03:15 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=e0qpsDHPsQNVionp4ZUWJRIZnb1oym8R7miYzQySi8VAl4lQYjiUsfDCQ+33ycFYFeoAFVqBffkMKc/sBx4DaMXUb6102uuCNW5gL/LkzeMI41Sr2a5DtA1PLt5TiFP035yYGJDsMCYuErwYR9G71oBJFqwowGKSF2WZpPPn6OtePgG9I/8KAgMxQKCUYiGrz833DUqlO13HAnE0IEFxgG/L40gdvUehmg0/rgdl4ozP0LCbgS8NcBK3xcgpLDCpDsjax2X+rgigJQuZdZmdid0mB+lnCHSorVxVHDjYGbC6jIB/XUgegvCNVmw9cRwoLo/EQDxjrje+EdoTpIAHKA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=fovXt1QDNlRsK0aZo4Y06n5WhGtx8m0fIh3k1QoPcRg=;
+ b=FXh+uFD6UP1yxvjz6FsQ8wwkgLQiNjX4j/l5gg+fGFpCtl3JKQ53SIBQoK3otoYhW71lew9u0JHdN7qTCziWRqxIXDT0gOOqnnTd42OOT3VzFeBOGBdmWXxmf26v6fr9gz2mOnHlqIGVpqqbwfVTmiEuPM2mfUSHRuhIY6Tbb5etaRbCMpfwSEUOXYLiE7E9UT37Vqrb0IP/1/bnegGEt8sQAl4gp7rVUeY56ktTO7ChaBOKmM6XU6XeqJ8hyfiH6AvvqgLdGUzQ+yAgmFaitwpKko6892S75U56Dy7PCmqQ2l9uJcZDje9uF4CMxIzeqjzJl0GSovOo4+lJ0+LRmg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=microsoft.com; dmarc=pass action=none
+ header.from=microsoft.com; dkim=pass header.d=microsoft.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=fovXt1QDNlRsK0aZo4Y06n5WhGtx8m0fIh3k1QoPcRg=;
+ b=P/YzzdSrEJu5caWaxIRC6qkoIoIUsfOSYE0ZBu0JUAhaa0dTXyiraoKndA9BDIm14HYrrd89JQH+4XGjAZ/WH0Rqt1ER+CZ41lzI3PWbS8kWQihD/mgfUe0h7syrw5/F52X4yaZraeBFq1UnzgiDuyRAdum+KNfELXrHUbzEPV0=
+Received: from SN6PR2101MB1135.namprd21.prod.outlook.com (52.132.114.24) by
+ SN6PR2101MB1102.namprd21.prod.outlook.com (52.132.115.27) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2327.7; Thu, 3 Oct 2019 19:03:13 +0000
+Received: from SN6PR2101MB1135.namprd21.prod.outlook.com
+ ([fe80::7d4a:b5b3:1062:e62]) by SN6PR2101MB1135.namprd21.prod.outlook.com
+ ([fe80::7d4a:b5b3:1062:e62%5]) with mapi id 15.20.2327.004; Thu, 3 Oct 2019
+ 19:03:13 +0000
+From: Michael Kelley <mikelley@microsoft.com>
+To: "will@kernel.org" <will@kernel.org>, "catalin.marinas@arm.com"
+ <catalin.marinas@arm.com>, "mark.rutland@arm.com" <mark.rutland@arm.com>,
+ "maz@kernel.org" <maz@kernel.org>, "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, "gregkh@linuxfoundation.org"
+ <gregkh@linuxfoundation.org>, "linux-kernel@vger.kernel.org"
+ <linux-kernel@vger.kernel.org>, "linux-hyperv@vger.kernel.org"
+ <linux-hyperv@vger.kernel.org>, "devel@linuxdriverproject.org"
+ <devel@linuxdriverproject.org>, "olaf@aepfle.de" <olaf@aepfle.de>,
+ "apw@canonical.com" <apw@canonical.com>, vkuznets <vkuznets@redhat.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>, "marcelo.cerri@canonical.com"
+ <marcelo.cerri@canonical.com>, KY Srinivasan <kys@microsoft.com>
+Subject: [PATCH v5 0/8] Enable Linux guests on Hyper-V on ARM64
+Thread-Topic: [PATCH v5 0/8] Enable Linux guests on Hyper-V on ARM64
+Thread-Index: AQHVeh00xDZvxhcb5kqKmxiC2yP7xQ==
+Date: Thu, 3 Oct 2019 19:03:13 +0000
+Message-ID: <1570129355-16005-1-git-send-email-mikelley@microsoft.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-clientproxiedby: MWHPR10CA0006.namprd10.prod.outlook.com (2603:10b6:301::16)
+ To SN6PR2101MB1135.namprd21.prod.outlook.com
+ (2603:10b6:805:4::24)
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=mikelley@microsoft.com; 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-mailer: git-send-email 1.8.3.1
+x-originating-ip: [131.107.159.247]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: ffda2be7-2373-4391-b95b-08d7483456db
+x-ms-office365-filtering-ht: Tenant
+x-ms-traffictypediagnostic: SN6PR2101MB1102:|SN6PR2101MB1102:|SN6PR2101MB1102:
+x-ms-exchange-transport-forked: True
+x-ld-processed: 72f988bf-86f1-41af-91ab-2d7cd011db47,ExtAddr
+x-microsoft-antispam-prvs: <SN6PR2101MB1102D3472F11273F92C7DF4AD79F0@SN6PR2101MB1102.namprd21.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:5236;
+x-forefront-prvs: 01792087B6
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(4636009)(39860400002)(396003)(136003)(366004)(376002)(346002)(199004)(189003)(486006)(102836004)(81156014)(5660300002)(64756008)(6512007)(66476007)(66556008)(4326008)(1511001)(66946007)(256004)(52116002)(6436002)(386003)(6116002)(305945005)(476003)(8676002)(99286004)(7416002)(4720700003)(66446008)(2501003)(22452003)(6636002)(316002)(2616005)(66066001)(26005)(71200400001)(478600001)(86362001)(54906003)(2201001)(36756003)(10090500001)(81166006)(71190400001)(8936002)(6486002)(186003)(10290500003)(14454004)(25786009)(7736002)(6506007)(50226002)(3846002)(14444005)(110136005)(2906002)(921003)(1121003);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:SN6PR2101MB1102;
+ H:SN6PR2101MB1135.namprd21.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+received-spf: None (protection.outlook.com: microsoft.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: wNdzY0cM0zzpwFKI1lilol+/8e5iZ9BZzMY7CUnYZXvKDkcxssRMjHruxA1Q7Ftte5aDAin8nM601KIAr9k9qFkwOA5I8oFtc1RNBwzM+O7hmfye28SkImp5kpumEE5A8uF5t56ksmOVsEVv2RUGdOEZUzV+/zgTXDxU3PXCKkr4ZrazXJACqKiV79NyDjdTznDOU0RA1xnErm3raV8RuKlvFJDwSp2O9o4CYBhr8ZjD9+8Bv1Tuju7h5MxAfa1bhCMeLQY+ItjPrA75kJ/3gdrdEBTT8PqZoqjaTwTeT4mV8GsEIfLfdSfMJVvtOSh4JdAoxDc9TJXVHcggVl5fMSTVflEdA8kv4mbIaQs3i8kl4V4jEIp5zigGnC0PlL5kPhi9OXkzgFbQ376iNHzFAhNefQ7DwtTfrL8Bsy8AQv8=
+MIME-Version: 1.0
+X-OriginatorOrg: microsoft.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ffda2be7-2373-4391-b95b-08d7483456db
+X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Oct 2019 19:03:13.0443 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: zm47svxF59onvlp+Xnzr/BPgmfwY1UjNfFEW4GH6eG+vLjY5Cozc6sEjidsnHAfUSYlDDG2/QCRSg0f5HF/Mkw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR2101MB1102
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,149 +124,129 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com,
- Nachammai Karuppiah <nachukannan@gmail.com>
-MIME-Version: 1.0
+Cc: Sunil Muthuswamy <sunilmut@microsoft.com>,
+ "boqun.feng" <boqun.feng@gmail.com>, Michael Kelley <mikelley@microsoft.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Avoid typedefs to maintain kernel coding style. Issue found by
-checkpatch.pl
+This series enables Linux guests running on Hyper-V on ARM64
+hardware. New ARM64-specific code in arch/arm64/hyperv initializes
+Hyper-V, including its interrupts and hypercall mechanism.
+Existing architecture independent drivers for Hyper-V's VMbus and
+synthetic devices just work when built for ARM64. Hyper-V code is
+built and included in the image and modules only if CONFIG_HYPERV
+is enabled.
 
-Replace the enum typedef VCHIQ_REASON_T with vchiq_reason.
+The eight patches are organized as follows:
+1) Add include files that define the Hyper-V interface as
+   described in the Hyper-V Top Level Functional Spec (TLFS), plus
+   additional definitions specific to Linux running on Hyper-V.
 
-Signed-off-by: Nachammai Karuppiah <nachukannan@gmail.com>
----
- drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c   | 8 ++++----
- drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c  | 4 ++--
- drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h    | 6 +++---
- drivers/staging/vc04_services/interface/vchiq_arm/vchiq_ioctl.h | 2 +-
- drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c  | 2 +-
- 5 files changed, 11 insertions(+), 11 deletions(-)
+2 thru 6) Add core Hyper-V support on ARM64, including hypercalls,
+   interrupt handlers, kexec & panic handlers, and core hypervisor
+   initialization.
 
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-index b1595b1..280e237 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-@@ -516,7 +516,7 @@ vchiq_blocking_bulk_transfer(VCHIQ_SERVICE_HANDLE_T handle, void *data,
- ***************************************************************************/
- 
- static VCHIQ_STATUS_T
--add_completion(VCHIQ_INSTANCE_T instance, VCHIQ_REASON_T reason,
-+add_completion(VCHIQ_INSTANCE_T instance, enum vchiq_reason reason,
- 	       struct vchiq_header *header, struct user_service *user_service,
- 	       void *bulk_userdata)
- {
-@@ -583,7 +583,7 @@ add_completion(VCHIQ_INSTANCE_T instance, VCHIQ_REASON_T reason,
- ***************************************************************************/
- 
- static VCHIQ_STATUS_T
--service_callback(VCHIQ_REASON_T reason, struct vchiq_header *header,
-+service_callback(enum vchiq_reason reason, struct vchiq_header *header,
- 		 VCHIQ_SERVICE_HANDLE_T handle, void *bulk_userdata)
- {
- 	/* How do we ensure the callback goes to the right client?
-@@ -1666,7 +1666,7 @@ vchiq_compat_ioctl_queue_bulk(struct file *file,
- }
- 
- struct vchiq_completion_data32 {
--	VCHIQ_REASON_T reason;
-+	enum vchiq_reason reason;
- 	compat_uptr_t header;
- 	compat_uptr_t service_userdata;
- 	compat_uptr_t bulk_userdata;
-@@ -2271,7 +2271,7 @@ vchiq_videocore_wanted(struct vchiq_state *state)
- }
- 
- static VCHIQ_STATUS_T
--vchiq_keepalive_vchiq_callback(VCHIQ_REASON_T reason,
-+vchiq_keepalive_vchiq_callback(enum vchiq_reason reason,
- 	struct vchiq_header *header,
- 	VCHIQ_SERVICE_HANDLE_T service_user,
- 	void *bulk_user)
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-index 56a23a2..b0e0653 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-@@ -355,7 +355,7 @@ mark_service_closing(struct vchiq_service *service)
- }
- 
- static inline VCHIQ_STATUS_T
--make_service_callback(struct vchiq_service *service, VCHIQ_REASON_T reason,
-+make_service_callback(struct vchiq_service *service, enum vchiq_reason reason,
- 		      struct vchiq_header *header, void *bulk_userdata)
- {
- 	VCHIQ_STATUS_T status;
-@@ -1230,7 +1230,7 @@ notify_bulks(struct vchiq_service *service, struct vchiq_bulk_queue *queue,
- 					spin_unlock(&bulk_waiter_spinlock);
- 				} else if (bulk->mode ==
- 					VCHIQ_BULK_MODE_CALLBACK) {
--					VCHIQ_REASON_T reason = (bulk->dir ==
-+					enum vchiq_reason reason = (bulk->dir ==
- 						VCHIQ_BULK_TRANSMIT) ?
- 						((bulk->actual ==
- 						VCHIQ_BULK_ACTUAL_ABORTED) ?
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h
-index c23bd10..f911612 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h
-@@ -15,7 +15,7 @@
- #define VCHIQ_GET_SERVICE_USERDATA(service) vchiq_get_service_userdata(service)
- #define VCHIQ_GET_SERVICE_FOURCC(service)   vchiq_get_service_fourcc(service)
- 
--typedef enum {
-+enum vchiq_reason {
- 	VCHIQ_SERVICE_OPENED,         /* service, -, -             */
- 	VCHIQ_SERVICE_CLOSED,         /* service, -, -             */
- 	VCHIQ_MESSAGE_AVAILABLE,      /* service, header, -        */
-@@ -23,7 +23,7 @@ typedef enum {
- 	VCHIQ_BULK_RECEIVE_DONE,      /* service, -, bulk_userdata */
- 	VCHIQ_BULK_TRANSMIT_ABORTED,  /* service, -, bulk_userdata */
- 	VCHIQ_BULK_RECEIVE_ABORTED    /* service, -, bulk_userdata */
--} VCHIQ_REASON_T;
-+};
- 
- typedef enum {
- 	VCHIQ_ERROR   = -1,
-@@ -63,7 +63,7 @@ struct vchiq_element {
- 
- typedef unsigned int VCHIQ_SERVICE_HANDLE_T;
- 
--typedef VCHIQ_STATUS_T (*VCHIQ_CALLBACK_T)(VCHIQ_REASON_T,
-+typedef VCHIQ_STATUS_T (*VCHIQ_CALLBACK_T)(enum vchiq_reason,
- 					   struct vchiq_header *,
- 					   VCHIQ_SERVICE_HANDLE_T, void *);
- 
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_ioctl.h b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_ioctl.h
-index 460ccea..c2343a1 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_ioctl.h
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_ioctl.h
-@@ -32,7 +32,7 @@ struct vchiq_queue_bulk_transfer {
- };
- 
- struct vchiq_completion_data {
--	VCHIQ_REASON_T reason;
-+	enum vchiq_reason reason;
- 	struct vchiq_header *header;
- 	void *service_userdata;
- 	void *bulk_userdata;
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-index a2268d5..e02518d 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-@@ -509,7 +509,7 @@ EXPORT_SYMBOL(vchi_disconnect);
-  *
-  ***********************************************************/
- 
--static VCHIQ_STATUS_T shim_callback(VCHIQ_REASON_T reason,
-+static VCHIQ_STATUS_T shim_callback(enum vchiq_reason reason,
- 				    struct vchiq_header *header,
- 				    VCHIQ_SERVICE_HANDLE_T handle,
- 				    void *bulk_user)
+7) Update the existing VMbus driver to generalize interrupt
+   management across x86/x64 and ARM64.
+
+8) Make CONFIG_HYPERV selectable on ARM64 in addition to x86/x64.
+
+Some areas of Linux guests on Hyper-V on ARM64 are a work-
+in-progress:
+
+* Hyper-V on ARM64 currently runs with a 4 Kbyte page size, but
+  allows guests with 16K/64K page size. However, the Linux drivers
+  for Hyper-V synthetic devices assume the guest page size is 4K.
+  This patch set lays the groundwork for larger guest page sizes,
+  but the main page size changes are in a different patch stream
+  that is underway to update these drivers.
+
+* The Hyper-V vPCI driver at drivers/pci/host/pci-hyperv.c has
+  x86/x64-specific code and is not being built for ARM64. Fixing
+  this driver to enable vPCI devices on ARM64 will be done later.
+
+In a few cases, terminology from the x86/x64 world has been carried
+over into the ARM64 code ("MSR", "TSC").  Hyper-V still uses the
+x86/x64 terminology and has not replaced it with something more
+generic, so the code uses the Hyper-V terminology.  This will be
+fixed when Hyper-V updates the usage in the TLFS.
+
+This patch set is based on the 5.4-rc1-next-20191001 tree.
+
+Changes in v5:
+* Minor fixups to rebase to 5.4-rc1 linux-next
+
+Changes in v4:
+* Moved clock-related code into an architecture independent
+  Hyper-V clocksource driver that is already upstream. Clock
+  related code is removed from this patch set except for the
+  ARM64 specific interrupt handler. [Marc Zyngier]
+* Separately upstreamed the split of mshyperv.h into arch independent
+  and arch dependent portions. The arch independent portion has been
+  removed from this patch set.
+* Divided patch #2 of the series into multiple smaller patches
+  [Marc Zyngier]
+* Changed a dozen or so smaller things based on feedback
+  [Marc Zyngier, Will Deacon]
+* Added functions to alloc/free Hyper-V size pages for use by
+  drivers for Hyper-V synthetic devices when updated to not assume
+  guest page size and Hyper-v page size are the same
+
+Changes in v3:
+* Added initialization of hv_vp_index array like was recently
+  added on x86 branch [KY Srinivasan]
+* Changed Hyper-V ARM64 register symbols to be all uppercase
+  instead of mixed case [KY Srinivasan]
+* Separated mshyperv.h into two files, one architecture
+  independent and one architecture dependent. After this code
+  is upstream, will make changes to the x86 code to use the
+  architecture independent file and remove duplication. And
+  once we have a multi-architecture Hyper-V TLFS, will do a
+  separate patch to split hyperv-tlfs.h in the same way.
+  [KY Srinivasan]
+* Minor tweaks to rebase to latest linux-next code
+
+Changes in v2:
+* Removed patch to implement slow_virt_to_phys() on ARM64.
+  Use of slow_virt_to_phys() in arch independent Hyper-V
+  drivers has been eliminated by commit 6ba34171bcbd
+  ("Drivers: hv: vmbus: Remove use of slow_virt_to_phys()")
+* Minor tweaks to rebase to latest linux-next code
+
+Michael Kelley (8):
+  arm64: hyperv: Add core Hyper-V include files
+  arm64: hyperv: Add hypercall and register access functions
+  arm64: hyperv: Add memory alloc/free functions for Hyper-V size pages
+  arm64: hyperv: Add interrupt handlers for VMbus and stimer
+  arm64: hyperv: Add kexec and panic handlers
+  arm64: hyperv: Initialize hypervisor on boot
+  Drivers: hv: vmbus: Add hooks for per-CPU IRQ
+  Drivers: hv: Enable Hyper-V code to be built on ARM64
+
+ MAINTAINERS                          |   3 +
+ arch/arm64/Kbuild                    |   1 +
+ arch/arm64/hyperv/Makefile           |   2 +
+ arch/arm64/hyperv/hv_hvc.S           |  44 ++++
+ arch/arm64/hyperv/hv_init.c          | 415 +++++++++++++++++++++++++++++++++++
+ arch/arm64/hyperv/mshyperv.c         | 165 ++++++++++++++
+ arch/arm64/include/asm/hyperv-tlfs.h | 408 ++++++++++++++++++++++++++++++++++
+ arch/arm64/include/asm/mshyperv.h    | 105 +++++++++
+ arch/x86/include/asm/mshyperv.h      |   4 +
+ drivers/hv/Kconfig                   |   3 +-
+ drivers/hv/hv.c                      |   3 +
+ include/asm-generic/mshyperv.h       |   5 +
+ 12 files changed, 1157 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm64/hyperv/Makefile
+ create mode 100644 arch/arm64/hyperv/hv_hvc.S
+ create mode 100644 arch/arm64/hyperv/hv_init.c
+ create mode 100644 arch/arm64/hyperv/mshyperv.c
+ create mode 100644 arch/arm64/include/asm/hyperv-tlfs.h
+ create mode 100644 arch/arm64/include/asm/mshyperv.h
+
 -- 
-2.7.4
+1.8.3.1
 
 _______________________________________________
 devel mailing list
