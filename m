@@ -1,94 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 64613C9F65
-	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Oct 2019 15:28:16 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A763C9F94
+	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Oct 2019 15:39:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9683585E14;
-	Thu,  3 Oct 2019 13:28:14 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D9C0486A00;
+	Thu,  3 Oct 2019 13:39:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kWmsnaUUXr4r; Thu,  3 Oct 2019 13:28:13 +0000 (UTC)
+	with ESMTP id GGPMwjJgXk9j; Thu,  3 Oct 2019 13:39:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E7E31810F3;
-	Thu,  3 Oct 2019 13:28:05 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 76B568699B;
+	Thu,  3 Oct 2019 13:39:53 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 57BD61BF399
- for <driverdev-devel@linuxdriverproject.org>;
- Thu,  3 Oct 2019 13:28:04 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 52D471BF399
+ for <devel@linuxdriverproject.org>; Thu,  3 Oct 2019 13:39:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 52E6284CF3
- for <driverdev-devel@linuxdriverproject.org>;
- Thu,  3 Oct 2019 13:28:04 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 439E822B20
+ for <devel@linuxdriverproject.org>; Thu,  3 Oct 2019 13:39:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kFXjRVX8C-mB
- for <driverdev-devel@linuxdriverproject.org>;
- Thu,  3 Oct 2019 13:28:01 +0000 (UTC)
+ with ESMTP id xHksCLPHa4lU for <devel@linuxdriverproject.org>;
+ Thu,  3 Oct 2019 13:39:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 29FAA87814
- for <driverdev-devel@linuxdriverproject.org>;
- Thu,  3 Oct 2019 13:27:54 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x93DO5lT025634;
- Thu, 3 Oct 2019 13:27:50 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=fqT32RdXr4sfOyqBhbEU5KGdseY8nZRgIWSz+Ok001w=;
- b=RHgPDrKmyQJh7XOWPvd/Fd2wAZPL16smIP/kcWrzbS0zPeSWbpucXVhei954sCQsC0lD
- iPE3plMNzd88iXE4o869U2XSOpCNJ0n+DLvNo5I0+ZQddiF6N2EtJPozBYkCE3K0LzQk
- 8F70qlVDmLLI3bhIh9pe9qlgEGoV+QpZxNm5r81jHttvZgSnhZBaeEUtFda631I5lrtX
- Q85cDSCT7waFsvBKka3z3dr3gFAOyLtkTL4b2qpRuVurNLQ7HfhRi6XUrawP8ftu7Dyq
- ZxSiHG/1U6NXwENhGOgNXe1y4nEOChCHheOt6SWRjSXoaHN4piYE+OWX3XpcYWsAiUqw CQ== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by userp2120.oracle.com with ESMTP id 2va05s3xff-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 03 Oct 2019 13:27:50 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x93DOW94058030;
- Thu, 3 Oct 2019 13:27:50 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by userp3020.oracle.com with ESMTP id 2vc9dnu5bn-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 03 Oct 2019 13:27:49 +0000
-Received: from abhmp0012.oracle.com (abhmp0012.oracle.com [141.146.116.18])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x93DQntO016149;
- Thu, 3 Oct 2019 13:26:49 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 03 Oct 2019 06:26:49 -0700
-Date: Thu, 3 Oct 2019 16:26:43 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Rohit Sarkar <rohitsarkar5398@gmail.com>
-Subject: Re: [PATCH] staging: rtl8712: fix boundary condition for n
-Message-ID: <20191003132642.GS29696@kadam>
-References: <20191002170518.GA1688@SARKAR>
+Received: from mail-ed1-f66.google.com (mail-ed1-f66.google.com
+ [209.85.208.66])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9E85F20474
+ for <devel@driverdev.osuosl.org>; Thu,  3 Oct 2019 13:39:48 +0000 (UTC)
+Received: by mail-ed1-f66.google.com with SMTP id p10so2534497edq.1
+ for <devel@driverdev.osuosl.org>; Thu, 03 Oct 2019 06:39:48 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:reply-to:subject:to:cc:references:from
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=RhaZOkcAwmULT8u7N7kowltYRpwtVwSoOJwHBuJuEoY=;
+ b=aDX6XfhSRpIT01/hpcn5aeBwsaiEzENHy8KUbAu//YkaO+sICKCHYgwlZ+srUK6AjI
+ yV+F/6UyRcEXcM6LtjIINbVTCubzVcNXTotGm1V0nHRvuXmF1skPt56oEzJHpWbtXzw9
+ afrtQHB8Uoy3jeJPsS3zPzSodA8PLVFXrpuBvPZTDhT5mlCSplnjsMXFh92G92Up9X83
+ l9uQ+eYbylb1jsD+HnqERb5SYHFHaZFnyfddByf0I6VqRRd7RBRSoA4TjNt68/wZUzLZ
+ Mt17J6yaUiktZhIKFiKO0ovyyiDwLx7BWo8Q3yY6YjDZPo+X3j1kYPOIuOBVDVwmbEEx
+ aGig==
+X-Gm-Message-State: APjAAAWMJIk14zHuK1BnhnfCPYw30AGLVcc3ZXa4QD09mkJ+WCM4Pykg
+ sBI5B/GUlLBfSHq3caOXmQQ=
+X-Google-Smtp-Source: APXvYqzyiC0cLLXBzdvi0NlDNe67GEOoU0CKLkdTaT+S6oxWh7OVAQM1ybREoGXS2HDQdcobj1lsMg==
+X-Received: by 2002:a17:906:944b:: with SMTP id
+ z11mr7507866ejx.46.1570109986998; 
+ Thu, 03 Oct 2019 06:39:46 -0700 (PDT)
+Received: from [10.10.2.174] (bran.ispras.ru. [83.149.199.196])
+ by smtp.gmail.com with ESMTPSA id y25sm255019eju.39.2019.10.03.06.39.45
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 03 Oct 2019 06:39:46 -0700 (PDT)
+Subject: Re: [PATCH] staging: wlan-ng: fix uninitialized variable
+To: Dan Carpenter <dan.carpenter@oracle.com>
+References: <20191002174103.1274-1-efremov@linux.com>
+ <20191003112649.GR22609@kadam>
+From: Denis Efremov <efremov@linux.com>
+Message-ID: <c5b92b25-e66c-77b4-3f33-91f7002ef75e@linux.com>
+Date: Thu, 3 Oct 2019 16:39:45 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191002170518.GA1688@SARKAR>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9398
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=893
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1908290000 definitions=main-1910030126
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9398
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=991 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
- definitions=main-1910030126
+In-Reply-To: <20191003112649.GR22609@kadam>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,27 +80,56 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: gregkh@linuxfoundation.org, driverdev-devel@linuxdriverproject.org,
- florian.c.schilhabel@googlemail.com, Larry.Finger@lwfinger.net
+Reply-To: efremov@linux.com
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, stable@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Oct 02, 2019 at 10:35:19PM +0530, Rohit Sarkar wrote:
-> Now that snprintf is replaced by scnprintf n >= MAX_WPA_IE_LEN doesn't
-> make sense as the maximum value n can take is MAX_WPA_IE_LEN.
+Hi,
+
+On 10/3/19 2:26 PM, Dan Carpenter wrote:
+> On Wed, Oct 02, 2019 at 08:41:03PM +0300, Denis Efremov wrote:
+>> The result variable in prism2_connect() can be used uninitialized on path
+>> !channel --> ... --> is_wep --> sme->key --> sme->key_idx >= NUM_WEPKEYS.
+>> This patch initializes result with 0.
+>>
+>> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+>> Cc: stable@vger.kernel.org
+>> Signed-off-by: Denis Efremov <efremov@linux.com>
+>> ---
+>>  drivers/staging/wlan-ng/cfg80211.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/staging/wlan-ng/cfg80211.c b/drivers/staging/wlan-ng/cfg80211.c
+>> index eee1998c4b18..d426905e187e 100644
+>> --- a/drivers/staging/wlan-ng/cfg80211.c
+>> +++ b/drivers/staging/wlan-ng/cfg80211.c
+>> @@ -441,7 +441,7 @@ static int prism2_connect(struct wiphy *wiphy, struct net_device *dev,
+>>  	int chan = -1;
+>>  	int is_wep = (sme->crypto.cipher_group == WLAN_CIPHER_SUITE_WEP40) ||
+>>  	    (sme->crypto.cipher_group == WLAN_CIPHER_SUITE_WEP104);
+>> -	int result;
+>> +	int result = 0;
+>>  	int err = 0;
+>>  
 > 
-> Signed-off-by: Rohit Sarkar <rohitsarkar5398@gmail.com>
-> ---
+> I can't see any reason why we should have both "err" and "result".
+> Maybe in olden times "result" used to save positive error codes instead
+> of negative error codes but now it's just negatives and zero on success.
+> There is no reason for the exit label either, we could just return
+> directly.
+> 
+> So could you redo it and get rid of "result" entirely?  Otherwise it
+> just causes more bugs like this.
+> 
 
-Thanks!
+Yes, of course. I will prepare v2.
 
-Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
-
-regards,
-dan carpenter
-
+Thanks,
+Denis
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
