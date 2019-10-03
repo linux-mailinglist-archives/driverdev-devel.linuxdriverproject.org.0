@@ -1,73 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7A763C9F94
-	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Oct 2019 15:39:56 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 334E0CADB1
+	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Oct 2019 20:03:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D9C0486A00;
-	Thu,  3 Oct 2019 13:39:54 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1D39D877AB;
+	Thu,  3 Oct 2019 18:03:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GGPMwjJgXk9j; Thu,  3 Oct 2019 13:39:54 +0000 (UTC)
+	with ESMTP id Q268uR3rCaqH; Thu,  3 Oct 2019 18:03:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 76B568699B;
-	Thu,  3 Oct 2019 13:39:53 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 45E78876D4;
+	Thu,  3 Oct 2019 18:03:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 52D471BF399
- for <devel@linuxdriverproject.org>; Thu,  3 Oct 2019 13:39:51 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 84E121BF3DA
+ for <devel@linuxdriverproject.org>; Thu,  3 Oct 2019 18:03:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 439E822B20
- for <devel@linuxdriverproject.org>; Thu,  3 Oct 2019 13:39:51 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 64CCB22654
+ for <devel@linuxdriverproject.org>; Thu,  3 Oct 2019 18:03:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xHksCLPHa4lU for <devel@linuxdriverproject.org>;
- Thu,  3 Oct 2019 13:39:48 +0000 (UTC)
+ with ESMTP id kk8ngQWh3lGu for <devel@linuxdriverproject.org>;
+ Thu,  3 Oct 2019 18:03:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ed1-f66.google.com (mail-ed1-f66.google.com
- [209.85.208.66])
- by silver.osuosl.org (Postfix) with ESMTPS id 9E85F20474
- for <devel@driverdev.osuosl.org>; Thu,  3 Oct 2019 13:39:48 +0000 (UTC)
-Received: by mail-ed1-f66.google.com with SMTP id p10so2534497edq.1
- for <devel@driverdev.osuosl.org>; Thu, 03 Oct 2019 06:39:48 -0700 (PDT)
+Received: from mail-yb1-f195.google.com (mail-yb1-f195.google.com
+ [209.85.219.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2884E22775
+ for <devel@driverdev.osuosl.org>; Thu,  3 Oct 2019 18:03:23 +0000 (UTC)
+Received: by mail-yb1-f195.google.com with SMTP id y204so1212994yby.10
+ for <devel@driverdev.osuosl.org>; Thu, 03 Oct 2019 11:03:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=gMkIJc7maLpy0B0IUU0rr4pEq6kA8K3pEg41oVgYte4=;
+ b=uqAm2Q9KjozDkJChmIhh46MJKv2R/HMaT9yXsy8sP1tiSMN4wUUMzluOG7WA6NQVUi
+ TGZh5OWPOEvYk+sUc8iDMziJN2sYg15VQXGOib+0lOk3DBItu/p6jXnKwwgxU31PRlYa
+ s6Zvm3m4V+l92G9WeOhBCXQjLCPxB9jneZf3opg8uKaU7QBbHtHYMEETmCbsCQJYNsRf
+ iHVvFGGTesGIdqYHy0ZJCT18CfkoEVCMEiLMDAOYEnYuz5/FacrjxUwYKNb+dPXLk5Lm
+ lPtZQ0cOIXPKShYVHaQ+VJuxzmJ5FzbSnlDaY21E4+iAuBPRunS3RnMX7nZWTqV/BnGv
+ 6H6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:reply-to:subject:to:cc:references:from
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=RhaZOkcAwmULT8u7N7kowltYRpwtVwSoOJwHBuJuEoY=;
- b=aDX6XfhSRpIT01/hpcn5aeBwsaiEzENHy8KUbAu//YkaO+sICKCHYgwlZ+srUK6AjI
- yV+F/6UyRcEXcM6LtjIINbVTCubzVcNXTotGm1V0nHRvuXmF1skPt56oEzJHpWbtXzw9
- afrtQHB8Uoy3jeJPsS3zPzSodA8PLVFXrpuBvPZTDhT5mlCSplnjsMXFh92G92Up9X83
- l9uQ+eYbylb1jsD+HnqERb5SYHFHaZFnyfddByf0I6VqRRd7RBRSoA4TjNt68/wZUzLZ
- Mt17J6yaUiktZhIKFiKO0ovyyiDwLx7BWo8Q3yY6YjDZPo+X3j1kYPOIuOBVDVwmbEEx
- aGig==
-X-Gm-Message-State: APjAAAWMJIk14zHuK1BnhnfCPYw30AGLVcc3ZXa4QD09mkJ+WCM4Pykg
- sBI5B/GUlLBfSHq3caOXmQQ=
-X-Google-Smtp-Source: APXvYqzyiC0cLLXBzdvi0NlDNe67GEOoU0CKLkdTaT+S6oxWh7OVAQM1ybREoGXS2HDQdcobj1lsMg==
-X-Received: by 2002:a17:906:944b:: with SMTP id
- z11mr7507866ejx.46.1570109986998; 
- Thu, 03 Oct 2019 06:39:46 -0700 (PDT)
-Received: from [10.10.2.174] (bran.ispras.ru. [83.149.199.196])
- by smtp.gmail.com with ESMTPSA id y25sm255019eju.39.2019.10.03.06.39.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 03 Oct 2019 06:39:46 -0700 (PDT)
-Subject: Re: [PATCH] staging: wlan-ng: fix uninitialized variable
-To: Dan Carpenter <dan.carpenter@oracle.com>
-References: <20191002174103.1274-1-efremov@linux.com>
- <20191003112649.GR22609@kadam>
-From: Denis Efremov <efremov@linux.com>
-Message-ID: <c5b92b25-e66c-77b4-3f33-91f7002ef75e@linux.com>
-Date: Thu, 3 Oct 2019 16:39:45 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.0
-MIME-Version: 1.0
-In-Reply-To: <20191003112649.GR22609@kadam>
-Content-Language: en-US
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=gMkIJc7maLpy0B0IUU0rr4pEq6kA8K3pEg41oVgYte4=;
+ b=AOe7gNcwbifs1Ez5gBAZzaSZG5SmIszfutgwXLC1VQKz1q85lXgp09iKSOzdAa/7C7
+ PsumfFZdFS1vajTXY1AknS/HC+q5811JBTljqVeFHKbcYmPCSYmy2+SbuRTv3g18xfa/
+ EOEjJ5xrw0vs0tpv7rJD3h9AFvCpbhd0tJ+8KAKy4x6UWpy/zZr6thx+3w4PZcRIizFP
+ hyqw6PvrP11O0/qU8QIZ+PwxkYEnogJWZkqx6toz9IW7mB3SP3ptBsoLZFEAkAAalcGt
+ SpbPjRkAy/RZaj5z0jvdf+Eo4sXfvNH+/WB3D2wicOFUunX4Pe/hgyhofPEXfoH7GO7A
+ Q8Dw==
+X-Gm-Message-State: APjAAAVscjnRovH+Svi1o06CgYBMy2LMHcdvnn9fiHIN5eQEFQWKcaeD
+ pjZX9gzyHwiPJvwMKBah2hk=
+X-Google-Smtp-Source: APXvYqxpA458ce2lykz3M1HCMxMOnpA3nJj6sD14buNi86BRg3Su0Ziht6Dd8JTQ9bcdJA5WIpJZHQ==
+X-Received: by 2002:a25:6fc1:: with SMTP id k184mr7088466ybc.8.1570125802097; 
+ Thu, 03 Oct 2019 11:03:22 -0700 (PDT)
+Received: from ubuntu ([107.15.113.108])
+ by smtp.gmail.com with ESMTPSA id u69sm830273ywu.93.2019.10.03.11.03.20
+ (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Thu, 03 Oct 2019 11:03:21 -0700 (PDT)
+From: Nachammai Karuppiah <nachukannan@gmail.com>
+To: Eric Anholt <eric@anholt.net>, Stefan Wahren <wahrenst@gmx.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: vc04_services: Avoid typedef
+Date: Thu,  3 Oct 2019 11:03:17 -0700
+Message-Id: <1570125797-24410-1-git-send-email-nachukannan@gmail.com>
+X-Mailer: git-send-email 2.7.4
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,56 +81,150 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: efremov@linux.com
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org, stable@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com,
+ Nachammai Karuppiah <nachukannan@gmail.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi,
+Avoid typedefs to maintain kernel coding style. Issue found by
+checkpatch.pl
 
-On 10/3/19 2:26 PM, Dan Carpenter wrote:
-> On Wed, Oct 02, 2019 at 08:41:03PM +0300, Denis Efremov wrote:
->> The result variable in prism2_connect() can be used uninitialized on path
->> !channel --> ... --> is_wep --> sme->key --> sme->key_idx >= NUM_WEPKEYS.
->> This patch initializes result with 0.
->>
->> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
->> Cc: stable@vger.kernel.org
->> Signed-off-by: Denis Efremov <efremov@linux.com>
->> ---
->>  drivers/staging/wlan-ng/cfg80211.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/drivers/staging/wlan-ng/cfg80211.c b/drivers/staging/wlan-ng/cfg80211.c
->> index eee1998c4b18..d426905e187e 100644
->> --- a/drivers/staging/wlan-ng/cfg80211.c
->> +++ b/drivers/staging/wlan-ng/cfg80211.c
->> @@ -441,7 +441,7 @@ static int prism2_connect(struct wiphy *wiphy, struct net_device *dev,
->>  	int chan = -1;
->>  	int is_wep = (sme->crypto.cipher_group == WLAN_CIPHER_SUITE_WEP40) ||
->>  	    (sme->crypto.cipher_group == WLAN_CIPHER_SUITE_WEP104);
->> -	int result;
->> +	int result = 0;
->>  	int err = 0;
->>  
-> 
-> I can't see any reason why we should have both "err" and "result".
-> Maybe in olden times "result" used to save positive error codes instead
-> of negative error codes but now it's just negatives and zero on success.
-> There is no reason for the exit label either, we could just return
-> directly.
-> 
-> So could you redo it and get rid of "result" entirely?  Otherwise it
-> just causes more bugs like this.
-> 
+Replace the enum typedef VCHIQ_REASON_T with vchiq_reason.
 
-Yes, of course. I will prepare v2.
+Signed-off-by: Nachammai Karuppiah <nachukannan@gmail.com>
+---
+ drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c   | 8 ++++----
+ drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c  | 4 ++--
+ drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h    | 6 +++---
+ drivers/staging/vc04_services/interface/vchiq_arm/vchiq_ioctl.h | 2 +-
+ drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c  | 2 +-
+ 5 files changed, 11 insertions(+), 11 deletions(-)
 
-Thanks,
-Denis
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+index b1595b1..280e237 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+@@ -516,7 +516,7 @@ vchiq_blocking_bulk_transfer(VCHIQ_SERVICE_HANDLE_T handle, void *data,
+ ***************************************************************************/
+ 
+ static VCHIQ_STATUS_T
+-add_completion(VCHIQ_INSTANCE_T instance, VCHIQ_REASON_T reason,
++add_completion(VCHIQ_INSTANCE_T instance, enum vchiq_reason reason,
+ 	       struct vchiq_header *header, struct user_service *user_service,
+ 	       void *bulk_userdata)
+ {
+@@ -583,7 +583,7 @@ add_completion(VCHIQ_INSTANCE_T instance, VCHIQ_REASON_T reason,
+ ***************************************************************************/
+ 
+ static VCHIQ_STATUS_T
+-service_callback(VCHIQ_REASON_T reason, struct vchiq_header *header,
++service_callback(enum vchiq_reason reason, struct vchiq_header *header,
+ 		 VCHIQ_SERVICE_HANDLE_T handle, void *bulk_userdata)
+ {
+ 	/* How do we ensure the callback goes to the right client?
+@@ -1666,7 +1666,7 @@ vchiq_compat_ioctl_queue_bulk(struct file *file,
+ }
+ 
+ struct vchiq_completion_data32 {
+-	VCHIQ_REASON_T reason;
++	enum vchiq_reason reason;
+ 	compat_uptr_t header;
+ 	compat_uptr_t service_userdata;
+ 	compat_uptr_t bulk_userdata;
+@@ -2271,7 +2271,7 @@ vchiq_videocore_wanted(struct vchiq_state *state)
+ }
+ 
+ static VCHIQ_STATUS_T
+-vchiq_keepalive_vchiq_callback(VCHIQ_REASON_T reason,
++vchiq_keepalive_vchiq_callback(enum vchiq_reason reason,
+ 	struct vchiq_header *header,
+ 	VCHIQ_SERVICE_HANDLE_T service_user,
+ 	void *bulk_user)
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+index 56a23a2..b0e0653 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+@@ -355,7 +355,7 @@ mark_service_closing(struct vchiq_service *service)
+ }
+ 
+ static inline VCHIQ_STATUS_T
+-make_service_callback(struct vchiq_service *service, VCHIQ_REASON_T reason,
++make_service_callback(struct vchiq_service *service, enum vchiq_reason reason,
+ 		      struct vchiq_header *header, void *bulk_userdata)
+ {
+ 	VCHIQ_STATUS_T status;
+@@ -1230,7 +1230,7 @@ notify_bulks(struct vchiq_service *service, struct vchiq_bulk_queue *queue,
+ 					spin_unlock(&bulk_waiter_spinlock);
+ 				} else if (bulk->mode ==
+ 					VCHIQ_BULK_MODE_CALLBACK) {
+-					VCHIQ_REASON_T reason = (bulk->dir ==
++					enum vchiq_reason reason = (bulk->dir ==
+ 						VCHIQ_BULK_TRANSMIT) ?
+ 						((bulk->actual ==
+ 						VCHIQ_BULK_ACTUAL_ABORTED) ?
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h
+index c23bd10..f911612 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h
+@@ -15,7 +15,7 @@
+ #define VCHIQ_GET_SERVICE_USERDATA(service) vchiq_get_service_userdata(service)
+ #define VCHIQ_GET_SERVICE_FOURCC(service)   vchiq_get_service_fourcc(service)
+ 
+-typedef enum {
++enum vchiq_reason {
+ 	VCHIQ_SERVICE_OPENED,         /* service, -, -             */
+ 	VCHIQ_SERVICE_CLOSED,         /* service, -, -             */
+ 	VCHIQ_MESSAGE_AVAILABLE,      /* service, header, -        */
+@@ -23,7 +23,7 @@ typedef enum {
+ 	VCHIQ_BULK_RECEIVE_DONE,      /* service, -, bulk_userdata */
+ 	VCHIQ_BULK_TRANSMIT_ABORTED,  /* service, -, bulk_userdata */
+ 	VCHIQ_BULK_RECEIVE_ABORTED    /* service, -, bulk_userdata */
+-} VCHIQ_REASON_T;
++};
+ 
+ typedef enum {
+ 	VCHIQ_ERROR   = -1,
+@@ -63,7 +63,7 @@ struct vchiq_element {
+ 
+ typedef unsigned int VCHIQ_SERVICE_HANDLE_T;
+ 
+-typedef VCHIQ_STATUS_T (*VCHIQ_CALLBACK_T)(VCHIQ_REASON_T,
++typedef VCHIQ_STATUS_T (*VCHIQ_CALLBACK_T)(enum vchiq_reason,
+ 					   struct vchiq_header *,
+ 					   VCHIQ_SERVICE_HANDLE_T, void *);
+ 
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_ioctl.h b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_ioctl.h
+index 460ccea..c2343a1 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_ioctl.h
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_ioctl.h
+@@ -32,7 +32,7 @@ struct vchiq_queue_bulk_transfer {
+ };
+ 
+ struct vchiq_completion_data {
+-	VCHIQ_REASON_T reason;
++	enum vchiq_reason reason;
+ 	struct vchiq_header *header;
+ 	void *service_userdata;
+ 	void *bulk_userdata;
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
+index a2268d5..e02518d 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
+@@ -509,7 +509,7 @@ EXPORT_SYMBOL(vchi_disconnect);
+  *
+  ***********************************************************/
+ 
+-static VCHIQ_STATUS_T shim_callback(VCHIQ_REASON_T reason,
++static VCHIQ_STATUS_T shim_callback(enum vchiq_reason reason,
+ 				    struct vchiq_header *header,
+ 				    VCHIQ_SERVICE_HANDLE_T handle,
+ 				    void *bulk_user)
+-- 
+2.7.4
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
