@@ -1,55 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E7611CB0A3
-	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Oct 2019 22:59:13 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0016286B15;
-	Thu,  3 Oct 2019 20:59:11 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GxQB1A2oFNw2; Thu,  3 Oct 2019 20:59:10 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 14C0F86B1A;
-	Thu,  3 Oct 2019 20:59:09 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6188C1BF369
- for <devel@linuxdriverproject.org>; Thu,  3 Oct 2019 20:59:06 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9E34ACB0C5
+	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Oct 2019 23:05:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 5A8E788334
- for <devel@linuxdriverproject.org>; Thu,  3 Oct 2019 20:59:06 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1EEC28835A;
+	Thu,  3 Oct 2019 21:04:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id YQRUUMQU4uoF; Thu,  3 Oct 2019 21:04:58 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8B2FF88350;
+	Thu,  3 Oct 2019 21:04:57 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 4F9851BF383
+ for <devel@linuxdriverproject.org>; Thu,  3 Oct 2019 21:04:55 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 4A8D722F4C
+ for <devel@linuxdriverproject.org>; Thu,  3 Oct 2019 21:04:55 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IWUf55o72gzD for <devel@linuxdriverproject.org>;
- Thu,  3 Oct 2019 20:59:04 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from relay3-d.mail.gandi.net (relay3-d.mail.gandi.net
- [217.70.183.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 87CE7882DB
- for <devel@driverdev.osuosl.org>; Thu,  3 Oct 2019 20:59:03 +0000 (UTC)
-X-Originating-IP: 132.205.230.8
-Received: from aptenodytes (unknown [132.205.230.8])
- (Authenticated sender: paul.kocialkowski@bootlin.com)
- by relay3-d.mail.gandi.net (Postfix) with ESMTPSA id 4335D60005;
- Thu,  3 Oct 2019 20:58:59 +0000 (UTC)
-Date: Thu, 3 Oct 2019 16:58:57 -0400
-From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-To: Jernej =?utf-8?Q?=C5=A0krabec?= <jernej.skrabec@siol.net>
-Subject: Re: [PATCH v2 2/3] media: cedrus: Fix H264 default reference index
- count
-Message-ID: <20191003205857.GA3927@aptenodytes>
-References: <20191002193553.1633467-1-jernej.skrabec@siol.net>
- <12199603.8LrTjBMqpV@jernej-laptop>
- <20191003202846.GA2800@aptenodytes>
- <3413755.LxPTGpI9pz@jernej-laptop>
+ with ESMTP id vV+VeLS7GUgx for <devel@linuxdriverproject.org>;
+ Thu,  3 Oct 2019 21:04:53 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail2-relais-roc.national.inria.fr
+ (mail2-relais-roc.national.inria.fr [192.134.164.83])
+ by silver.osuosl.org (Postfix) with ESMTPS id 33C02204B1
+ for <devel@driverdev.osuosl.org>; Thu,  3 Oct 2019 21:04:52 +0000 (UTC)
+X-IronPort-AV: E=Sophos;i="5.67,253,1566856800"; d="scan'208";a="404639639"
+Received: from 81-65-53-202.rev.numericable.fr (HELO hadrien) ([81.65.53.202])
+ by mail2-relais-roc.national.inria.fr with
+ ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 03 Oct 2019 23:04:50 +0200
+Date: Thu, 3 Oct 2019 23:04:50 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Nachammai Karuppiah <nachukannan@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: vc04_services: Avoid typedef
+In-Reply-To: <1570125797-24410-1-git-send-email-nachukannan@gmail.com>
+Message-ID: <alpine.DEB.2.21.1910032253270.3451@hadrien>
+References: <1570125797-24410-1-git-send-email-nachukannan@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-In-Reply-To: <3413755.LxPTGpI9pz@jernej-laptop>
-User-Agent: Mutt/1.12.2 (2019-09-21)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,204 +58,169 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, mripard@kernel.org, wens@csie.org,
- hverkuil-cisco@xs4all.nl, mchehab@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============6526338994185659654=="
+Cc: devel@driverdev.osuosl.org, Eric Anholt <eric@anholt.net>,
+ outreachy-kernel@googlegroups.com, Stefan Wahren <wahrenst@gmx.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---===============6526338994185659654==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="zYM0uCDKw75PZbzx"
-Content-Disposition: inline
 
+On Thu, 3 Oct 2019, Nachammai Karuppiah wrote:
 
---zYM0uCDKw75PZbzx
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> Avoid typedefs to maintain kernel coding style. Issue found by
+> checkpatch.pl
+>
+> Replace the enum typedef VCHIQ_REASON_T with vchiq_reason.
 
-Hi,
+Would it be possible to get rid of them all?  They seem to all go
+together, since they start with the same prefix, and they all don't look
+nice at all.
 
-On Thu 03 Oct 19, 22:44, Jernej =C5=A0krabec wrote:
-> Dne =C4=8Detrtek, 03. oktober 2019 ob 22:28:46 CEST je Paul Kocialkowski=
-=20
-> napisal(a):
-> > Hi,
-> >=20
-> > On Thu 03 Oct 19, 07:16, Jernej =C5=A0krabec wrote:
-> > > Dne =C4=8Detrtek, 03. oktober 2019 ob 00:06:50 CEST je Paul Kocialkow=
-ski
-> > >=20
-> > > napisal(a):
-> > > > Hi,
-> > > >=20
-> > > > On Wed 02 Oct 19, 21:35, Jernej Skrabec wrote:
-> > > > > Reference index count in VE_H264_PPS should come from PPS control.
-> > > > > However, this is not really important, because reference index co=
-unt
-> > > > > is
-> > > > > in our case always overridden by that from slice header.
-> > > >=20
-> > > > Thanks for the fixup!
-> > > >=20
-> > > > Our libva userspace and v4l2-request testing tool currently don't
-> > > > provide
-> > > > this, but I have a pending merge request adding it for the hantro so
-> > > > it's
-> > > > good to go.
-> > >=20
-> > > Actually, I think this is just cosmetic and it would work even if it =
-would
-> > > be always 0. We always override this number in SHS2 register with
-> > > VE_H264_SHS2_NUM_REF_IDX_ACTIVE_OVRD flag and recently there was a pa=
-tch
-> > > merged to clarify that value in slice parameters should be the one th=
-at's
-> > > set on default value if override flag is not set in bitstream:
-> > > https://git.linuxtv.org/media_tree.git/commit/?
-> > > id=3D187ef7c5c78153acdce8c8714e5918b1018c710b
-> > >=20
-> > > Well, we could always compare default and value in slice parameters, =
-but I
-> > > really don't see the benefit of doing that extra work.
-> >=20
-> > Thanks for the detailed explanation! So I just realized that for HEVC, I
-> > didn't even include the default value in PPS and only went for the
-> > per-slice value. The HEVC hardware block apparently only needs the fiel=
-ds
-> > once at slice level, and by looking at the spec, only one of the two se=
-t of
-> > fields will be used.
-> >=20
-> > So perhaps we could do the same for H.264 and only have the set of fiel=
-ds
-> > once in the slice params, so that both codecs are consistent. Userspace=
- can
-> > just check the flag to know whether it should put the PPS default or
-> > slice-specific value in the slice-specific control.
-> >=20
-> > What do you think?
->=20
-> I think that there would be less confusion if only value in slice params =
-would=20
-> exists. But since Philipp rather made clarification in documentation, may=
-be he=20
-> sees benefit having both values?
+The changes so far seem to be going in the right direction.
 
-Actually I just caught up with the discussion from thread:
-media: uapi: h264: Add num_ref_idx_active_override_flag
+julia
 
-which explains that we need to pass the default fields for hardware that pa=
-rses
-the slice header itself and we need the non-default fields and flag for oth=
-er
-cases.
-
-To cover the case of hardware that does slice header parsing, I guess it wo=
-uld
-also work to use the slice-specific values in place of the pps default valu=
-es
-in the hardware register for that. But it feels quite confusing and a lot l=
-ess
-straightforward than having all the fields and the override flag exposed.
-
-So I think I should fix HEVC support accordingly, just in case the same
-situation arises for HEVC.
-
-Cheers,
-
-Paul
-
-> Best regards,
-> Jernej
->=20
-> >=20
-> > Cheers,
-> >=20
-> > Paul
-> >=20
-> > > Best regards,
-> > > Jernej
-> > >=20
-> > > > Acked-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-> > > >=20
-> > > > Cheers,
-> > > >=20
-> > > > Paul
-> > > >=20
-> > > > > Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
-> > > > > ---
-> > > > >=20
-> > > > >  drivers/staging/media/sunxi/cedrus/cedrus_h264.c | 8 ++------
-> > > > >  1 file changed, 2 insertions(+), 6 deletions(-)
-> > > > >=20
-> > > > > diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
-> > > > > b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c index
-> > > > > bd848146eada..4a0e69855c7f 100644
-> > > > > --- a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
-> > > > > +++ b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
-> > > > > @@ -364,12 +364,8 @@ static void cedrus_set_params(struct cedrus_=
-ctx
-> > > > > *ctx,
-> > > > >=20
-> > > > >  	// picture parameters
-> > > > >  	reg =3D 0;
-> > > > >=20
-> > > > > -	/*
-> > > > > -	 * FIXME: the kernel headers are allowing the default value to
-> > > > > -	 * be passed, but the libva doesn't give us that.
-> > > > > -	 */
-> > > > > -	reg |=3D (slice->num_ref_idx_l0_active_minus1 & 0x1f) << 10;
-> > > > > -	reg |=3D (slice->num_ref_idx_l1_active_minus1 & 0x1f) << 5;
-> > > > > +	reg |=3D (pps->num_ref_idx_l0_default_active_minus1 & 0x1f) << =
-10;
-> > > > > +	reg |=3D (pps->num_ref_idx_l1_default_active_minus1 & 0x1f) << =
-5;
-> > > > >=20
-> > > > >  	reg |=3D (pps->weighted_bipred_idc & 0x3) << 2;
-> > > > >  	if (pps->flags & V4L2_H264_PPS_FLAG_ENTROPY_CODING_MODE)
-> > > > >  =09
-> > > > >  		reg |=3D VE_H264_PPS_ENTROPY_CODING_MODE;
->=20
->=20
->=20
->=20
-
---=20
-Paul Kocialkowski, Bootlin
-Embedded Linux and kernel engineering
-https://bootlin.com
-
---zYM0uCDKw75PZbzx
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAl2WYREACgkQ3cLmz3+f
-v9EBxwf/STm4CrHMrCGTCK309+Egn7wh84ZC5dcfEQFxjIN7Aemkg5ODVe3Kk3CM
-vTU9fm1Z9sedQe8M9RKDxHwmZUmh174xYEJs8YKCZHSmp2d2cIgd7iGlok8RSNfv
-KGNmeiki9mongQhyFtCayolXR0hmQrBzK60X4QLbDz063kqnptMUlkPYicUIeQdt
-872pX6UpQJ+Nox/Jrp9uKPtb0hfJ/SuVQJko6egjL5g0HvTVB3c2RpBJS1Vf3FB1
-TsDW6v63yhu9nwK0Q74NASofG0d9HBScvzvUmV316uo8ckl7rm5gUO3oV/94yrWv
-pJm6Za/zJIYSY2iuhULsbQTCJKt+UA==
-=p0Ab
------END PGP SIGNATURE-----
-
---zYM0uCDKw75PZbzx--
-
---===============6526338994185659654==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+>
+> Signed-off-by: Nachammai Karuppiah <nachukannan@gmail.com>
+> ---
+>  drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c   | 8 ++++----
+>  drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c  | 4 ++--
+>  drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h    | 6 +++---
+>  drivers/staging/vc04_services/interface/vchiq_arm/vchiq_ioctl.h | 2 +-
+>  drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c  | 2 +-
+>  5 files changed, 11 insertions(+), 11 deletions(-)
+>
+> diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+> index b1595b1..280e237 100644
+> --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+> +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+> @@ -516,7 +516,7 @@ vchiq_blocking_bulk_transfer(VCHIQ_SERVICE_HANDLE_T handle, void *data,
+>  ***************************************************************************/
+>
+>  static VCHIQ_STATUS_T
+> -add_completion(VCHIQ_INSTANCE_T instance, VCHIQ_REASON_T reason,
+> +add_completion(VCHIQ_INSTANCE_T instance, enum vchiq_reason reason,
+>  	       struct vchiq_header *header, struct user_service *user_service,
+>  	       void *bulk_userdata)
+>  {
+> @@ -583,7 +583,7 @@ add_completion(VCHIQ_INSTANCE_T instance, VCHIQ_REASON_T reason,
+>  ***************************************************************************/
+>
+>  static VCHIQ_STATUS_T
+> -service_callback(VCHIQ_REASON_T reason, struct vchiq_header *header,
+> +service_callback(enum vchiq_reason reason, struct vchiq_header *header,
+>  		 VCHIQ_SERVICE_HANDLE_T handle, void *bulk_userdata)
+>  {
+>  	/* How do we ensure the callback goes to the right client?
+> @@ -1666,7 +1666,7 @@ vchiq_compat_ioctl_queue_bulk(struct file *file,
+>  }
+>
+>  struct vchiq_completion_data32 {
+> -	VCHIQ_REASON_T reason;
+> +	enum vchiq_reason reason;
+>  	compat_uptr_t header;
+>  	compat_uptr_t service_userdata;
+>  	compat_uptr_t bulk_userdata;
+> @@ -2271,7 +2271,7 @@ vchiq_videocore_wanted(struct vchiq_state *state)
+>  }
+>
+>  static VCHIQ_STATUS_T
+> -vchiq_keepalive_vchiq_callback(VCHIQ_REASON_T reason,
+> +vchiq_keepalive_vchiq_callback(enum vchiq_reason reason,
+>  	struct vchiq_header *header,
+>  	VCHIQ_SERVICE_HANDLE_T service_user,
+>  	void *bulk_user)
+> diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+> index 56a23a2..b0e0653 100644
+> --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+> +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+> @@ -355,7 +355,7 @@ mark_service_closing(struct vchiq_service *service)
+>  }
+>
+>  static inline VCHIQ_STATUS_T
+> -make_service_callback(struct vchiq_service *service, VCHIQ_REASON_T reason,
+> +make_service_callback(struct vchiq_service *service, enum vchiq_reason reason,
+>  		      struct vchiq_header *header, void *bulk_userdata)
+>  {
+>  	VCHIQ_STATUS_T status;
+> @@ -1230,7 +1230,7 @@ notify_bulks(struct vchiq_service *service, struct vchiq_bulk_queue *queue,
+>  					spin_unlock(&bulk_waiter_spinlock);
+>  				} else if (bulk->mode ==
+>  					VCHIQ_BULK_MODE_CALLBACK) {
+> -					VCHIQ_REASON_T reason = (bulk->dir ==
+> +					enum vchiq_reason reason = (bulk->dir ==
+>  						VCHIQ_BULK_TRANSMIT) ?
+>  						((bulk->actual ==
+>  						VCHIQ_BULK_ACTUAL_ABORTED) ?
+> diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h
+> index c23bd10..f911612 100644
+> --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h
+> +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h
+> @@ -15,7 +15,7 @@
+>  #define VCHIQ_GET_SERVICE_USERDATA(service) vchiq_get_service_userdata(service)
+>  #define VCHIQ_GET_SERVICE_FOURCC(service)   vchiq_get_service_fourcc(service)
+>
+> -typedef enum {
+> +enum vchiq_reason {
+>  	VCHIQ_SERVICE_OPENED,         /* service, -, -             */
+>  	VCHIQ_SERVICE_CLOSED,         /* service, -, -             */
+>  	VCHIQ_MESSAGE_AVAILABLE,      /* service, header, -        */
+> @@ -23,7 +23,7 @@ typedef enum {
+>  	VCHIQ_BULK_RECEIVE_DONE,      /* service, -, bulk_userdata */
+>  	VCHIQ_BULK_TRANSMIT_ABORTED,  /* service, -, bulk_userdata */
+>  	VCHIQ_BULK_RECEIVE_ABORTED    /* service, -, bulk_userdata */
+> -} VCHIQ_REASON_T;
+> +};
+>
+>  typedef enum {
+>  	VCHIQ_ERROR   = -1,
+> @@ -63,7 +63,7 @@ struct vchiq_element {
+>
+>  typedef unsigned int VCHIQ_SERVICE_HANDLE_T;
+>
+> -typedef VCHIQ_STATUS_T (*VCHIQ_CALLBACK_T)(VCHIQ_REASON_T,
+> +typedef VCHIQ_STATUS_T (*VCHIQ_CALLBACK_T)(enum vchiq_reason,
+>  					   struct vchiq_header *,
+>  					   VCHIQ_SERVICE_HANDLE_T, void *);
+>
+> diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_ioctl.h b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_ioctl.h
+> index 460ccea..c2343a1 100644
+> --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_ioctl.h
+> +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_ioctl.h
+> @@ -32,7 +32,7 @@ struct vchiq_queue_bulk_transfer {
+>  };
+>
+>  struct vchiq_completion_data {
+> -	VCHIQ_REASON_T reason;
+> +	enum vchiq_reason reason;
+>  	struct vchiq_header *header;
+>  	void *service_userdata;
+>  	void *bulk_userdata;
+> diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
+> index a2268d5..e02518d 100644
+> --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
+> +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
+> @@ -509,7 +509,7 @@ EXPORT_SYMBOL(vchi_disconnect);
+>   *
+>   ***********************************************************/
+>
+> -static VCHIQ_STATUS_T shim_callback(VCHIQ_REASON_T reason,
+> +static VCHIQ_STATUS_T shim_callback(enum vchiq_reason reason,
+>  				    struct vchiq_header *header,
+>  				    VCHIQ_SERVICE_HANDLE_T handle,
+>  				    void *bulk_user)
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1570125797-24410-1-git-send-email-nachukannan%40gmail.com.
+>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============6526338994185659654==--
