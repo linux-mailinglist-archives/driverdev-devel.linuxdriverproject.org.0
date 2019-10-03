@@ -2,50 +2,61 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2026AC9441
-	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Oct 2019 00:23:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 537AEC97DA
+	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Oct 2019 07:16:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9063C85459;
-	Wed,  2 Oct 2019 22:23:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8D35688154;
+	Thu,  3 Oct 2019 05:16:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jug0j6BPXytn; Wed,  2 Oct 2019 22:23:29 +0000 (UTC)
+	with ESMTP id u4kWOPhovtr9; Thu,  3 Oct 2019 05:16:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A9C5F81B40;
-	Wed,  2 Oct 2019 22:23:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DD65588081;
+	Thu,  3 Oct 2019 05:16:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 87DA01BF380
- for <devel@linuxdriverproject.org>; Wed,  2 Oct 2019 22:23:26 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 279521BF9C7
+ for <devel@linuxdriverproject.org>; Thu,  3 Oct 2019 05:16:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 80CBD86ADB
- for <devel@linuxdriverproject.org>; Wed,  2 Oct 2019 22:23:26 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 2453F84491
+ for <devel@linuxdriverproject.org>; Thu,  3 Oct 2019 05:16:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hVtIuDu1rhdh for <devel@linuxdriverproject.org>;
- Wed,  2 Oct 2019 22:23:16 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from relay3-d.mail.gandi.net (relay3-d.mail.gandi.net
- [217.70.183.195])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A6BBC86D03
- for <devel@driverdev.osuosl.org>; Wed,  2 Oct 2019 22:23:15 +0000 (UTC)
-X-Originating-IP: 132.205.230.6
-Received: from aptenodytes (unknown [132.205.230.6])
- (Authenticated sender: paul.kocialkowski@bootlin.com)
- by relay3-d.mail.gandi.net (Postfix) with ESMTPSA id 1D20E60002;
- Wed,  2 Oct 2019 22:23:09 +0000 (UTC)
-Date: Wed, 2 Oct 2019 18:23:07 -0400
-From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-To: Jernej Skrabec <jernej.skrabec@siol.net>
-Subject: Re: [PATCH v2 0/3] media: cedrus: improvements
-Message-ID: <20191002222307.GD24151@aptenodytes>
+ with ESMTP id DHPCKaLBvDX1 for <devel@linuxdriverproject.org>;
+ Thu,  3 Oct 2019 05:16:14 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.siol.net (mailoutvs63.siol.net [185.57.226.254])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 0CD73864D0
+ for <devel@driverdev.osuosl.org>; Thu,  3 Oct 2019 05:16:13 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.siol.net (Postfix) with ESMTP id 2941F520E78;
+ Thu,  3 Oct 2019 07:16:11 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at psrvmta11.zcs-production.pri
+Received: from mail.siol.net ([127.0.0.1])
+ by localhost (psrvmta11.zcs-production.pri [127.0.0.1]) (amavisd-new,
+ port 10032)
+ with ESMTP id uo2TMQr76LRD; Thu,  3 Oct 2019 07:16:10 +0200 (CEST)
+Received: from mail.siol.net (localhost [127.0.0.1])
+ by mail.siol.net (Postfix) with ESMTPS id C1F2D521B43;
+ Thu,  3 Oct 2019 07:16:10 +0200 (CEST)
+Received: from jernej-laptop.localnet (cpe-86-58-59-25.static.triera.net
+ [86.58.59.25]) (Authenticated sender: jernej.skrabec@siol.net)
+ by mail.siol.net (Postfix) with ESMTPA id 35AA5521111;
+ Thu,  3 Oct 2019 07:16:10 +0200 (CEST)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@siol.net>
+To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+Subject: Re: [PATCH v2 2/3] media: cedrus: Fix H264 default reference index
+ count
+Date: Thu, 03 Oct 2019 07:16:09 +0200
+Message-ID: <12199603.8LrTjBMqpV@jernej-laptop>
+In-Reply-To: <20191002220650.GB24151@aptenodytes>
 References: <20191002193553.1633467-1-jernej.skrabec@siol.net>
+ <20191002193553.1633467-3-jernej.skrabec@siol.net>
+ <20191002220650.GB24151@aptenodytes>
 MIME-Version: 1.0
-In-Reply-To: <20191002193553.1633467-1-jernej.skrabec@siol.net>
-User-Agent: Mutt/1.12.2 (2019-09-21)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,90 +73,54 @@ Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
  linux-kernel@vger.kernel.org, mripard@kernel.org, wens@csie.org,
  hverkuil-cisco@xs4all.nl, mchehab@kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============8982305718807557562=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-
---===============8982305718807557562==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="k4f25fnPtRuIRUb3"
-Content-Disposition: inline
-
-
---k4f25fnPtRuIRUb3
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi,
-
-On Wed 02 Oct 19, 21:35, Jernej Skrabec wrote:
-> This is continuation of https://lkml.org/lkml/2019/5/30/1459 with several
-> patches removed (2 merged, others needs redesign) and one added.
-
-Thanks for the continued effort on this, these fixes are greatly appreciated
-(and more generally, all the work you are putting into cedrus)!
-
-Although I've been out of the loop on cedrus, it is very nice to see
-development happening. Keep up the good work!
-
-Cheers,
-
-Paul
-
-> Patch 1 fixes h264 playback issue which happens in rare cases.
->=20
-> Patch 2 sets PPS default reference index count in register from PPS
-> control. Currently it was set to values from slice control.
->=20
-> Patch 3 replaces direct accesses to capture queue from m2m contex with
-> helpers which was designed exactly for that. It's also safer since
-> helpers do some checks.
->=20
-> Best regards,
-> Jernej
->=20
-> Jernej Skrabec (3):
->   media: cedrus: Fix decoding for some H264 videos
->   media: cedrus: Fix H264 default reference index count
->   media: cedrus: Use helpers to access capture queue
->=20
->  drivers/staging/media/sunxi/cedrus/cedrus.h   |  8 +++-
->  .../staging/media/sunxi/cedrus/cedrus_h264.c  | 46 ++++++++++++++-----
->  .../staging/media/sunxi/cedrus/cedrus_regs.h  |  3 ++
->  3 files changed, 44 insertions(+), 13 deletions(-)
->=20
-> --=20
-> 2.23.0
->=20
-
---k4f25fnPtRuIRUb3
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAl2VI0sACgkQ3cLmz3+f
-v9EcCQf/dp1ZJ98xtDjBSFeOTicLLmTSYPEL4psHHVW8+VSMna6ZSZtO4ClTTBGZ
-tDrKjeCHhy0yri5j2/e+adLJP/qa0IMu0/5Nmoe7Tr6VN2DztUUjfGs50+l4ZcOF
-M9Zyuy18MuRWDflAksGRfp49eiH8vPKWbY8svsunL3SDPF+WWtuIjpUBwArhk7vH
-Xm5NG55KJdbb2rUd/DhGzgueb1eZQ3EVQe25wNL3RozTeZB03IrNSaRz+QqAVCm/
-rAFWSYJn+RzrVKmGa1/LpT8UwzNJ6oXlpX8M6jHnN/OicIXEMzyXy1xQVgJCYMT8
-9PbndGZKpiunBcFHh64bHoPk5Fn5gg==
-=jxCu
------END PGP SIGNATURE-----
-
---k4f25fnPtRuIRUb3--
-
---===============8982305718807557562==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============8982305718807557562==--
+RG5lIMSNZXRydGVrLCAwMy4gb2t0b2JlciAyMDE5IG9iIDAwOjA2OjUwIENFU1QgamUgUGF1bCBL
+b2NpYWxrb3dza2kgCm5hcGlzYWwoYSk6Cj4gSGksCj4gCj4gT24gV2VkIDAyIE9jdCAxOSwgMjE6
+MzUsIEplcm5laiBTa3JhYmVjIHdyb3RlOgo+ID4gUmVmZXJlbmNlIGluZGV4IGNvdW50IGluIFZF
+X0gyNjRfUFBTIHNob3VsZCBjb21lIGZyb20gUFBTIGNvbnRyb2wuCj4gPiBIb3dldmVyLCB0aGlz
+IGlzIG5vdCByZWFsbHkgaW1wb3J0YW50LCBiZWNhdXNlIHJlZmVyZW5jZSBpbmRleCBjb3VudCBp
+cwo+ID4gaW4gb3VyIGNhc2UgYWx3YXlzIG92ZXJyaWRkZW4gYnkgdGhhdCBmcm9tIHNsaWNlIGhl
+YWRlci4KPiAKPiBUaGFua3MgZm9yIHRoZSBmaXh1cCEKPiAKPiBPdXIgbGlidmEgdXNlcnNwYWNl
+IGFuZCB2NGwyLXJlcXVlc3QgdGVzdGluZyB0b29sIGN1cnJlbnRseSBkb24ndCBwcm92aWRlCj4g
+dGhpcywgYnV0IEkgaGF2ZSBhIHBlbmRpbmcgbWVyZ2UgcmVxdWVzdCBhZGRpbmcgaXQgZm9yIHRo
+ZSBoYW50cm8gc28gaXQncwo+IGdvb2QgdG8gZ28uCgpBY3R1YWxseSwgSSB0aGluayB0aGlzIGlz
+IGp1c3QgY29zbWV0aWMgYW5kIGl0IHdvdWxkIHdvcmsgZXZlbiBpZiBpdCB3b3VsZCBiZSAKYWx3
+YXlzIDAuIFdlIGFsd2F5cyBvdmVycmlkZSB0aGlzIG51bWJlciBpbiBTSFMyIHJlZ2lzdGVyIHdp
+dGggClZFX0gyNjRfU0hTMl9OVU1fUkVGX0lEWF9BQ1RJVkVfT1ZSRCBmbGFnIGFuZCByZWNlbnRs
+eSB0aGVyZSB3YXMgYSBwYXRjaCBtZXJnZWQgCnRvIGNsYXJpZnkgdGhhdCB2YWx1ZSBpbiBzbGlj
+ZSBwYXJhbWV0ZXJzIHNob3VsZCBiZSB0aGUgb25lIHRoYXQncyBzZXQgb24gCmRlZmF1bHQgdmFs
+dWUgaWYgb3ZlcnJpZGUgZmxhZyBpcyBub3Qgc2V0IGluIGJpdHN0cmVhbToKaHR0cHM6Ly9naXQu
+bGludXh0di5vcmcvbWVkaWFfdHJlZS5naXQvY29tbWl0Lz8KaWQ9MTg3ZWY3YzVjNzgxNTNhY2Rj
+ZThjODcxNGU1OTE4YjEwMThjNzEwYgoKV2VsbCwgd2UgY291bGQgYWx3YXlzIGNvbXBhcmUgZGVm
+YXVsdCBhbmQgdmFsdWUgaW4gc2xpY2UgcGFyYW1ldGVycywgYnV0IEkgCnJlYWxseSBkb24ndCBz
+ZWUgdGhlIGJlbmVmaXQgb2YgZG9pbmcgdGhhdCBleHRyYSB3b3JrLgoKQmVzdCByZWdhcmRzLApK
+ZXJuZWoKCj4gCj4gQWNrZWQtYnk6IFBhdWwgS29jaWFsa293c2tpIDxwYXVsLmtvY2lhbGtvd3Nr
+aUBib290bGluLmNvbT4KPiAKPiBDaGVlcnMsCj4gCj4gUGF1bAo+IAo+ID4gU2lnbmVkLW9mZi1i
+eTogSmVybmVqIFNrcmFiZWMgPGplcm5lai5za3JhYmVjQHNpb2wubmV0Pgo+ID4gLS0tCj4gPiAK
+PiA+ICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1c19oMjY0LmMgfCA4
+ICsrLS0tLS0tCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgNiBkZWxldGlv
+bnMoLSkKPiA+IAo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9zdW54aS9j
+ZWRydXMvY2VkcnVzX2gyNjQuYwo+ID4gYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2Vk
+cnVzL2NlZHJ1c19oMjY0LmMgaW5kZXgKPiA+IGJkODQ4MTQ2ZWFkYS4uNGEwZTY5ODU1YzdmIDEw
+MDY0NAo+ID4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXNf
+aDI2NC5jCj4gPiArKysgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1
+c19oMjY0LmMKPiA+IEBAIC0zNjQsMTIgKzM2NCw4IEBAIHN0YXRpYyB2b2lkIGNlZHJ1c19zZXRf
+cGFyYW1zKHN0cnVjdCBjZWRydXNfY3R4ICpjdHgsCj4gPiAKPiA+ICAJLy8gcGljdHVyZSBwYXJh
+bWV0ZXJzCj4gPiAgCXJlZyA9IDA7Cj4gPiAKPiA+IC0JLyoKPiA+IC0JICogRklYTUU6IHRoZSBr
+ZXJuZWwgaGVhZGVycyBhcmUgYWxsb3dpbmcgdGhlIGRlZmF1bHQgdmFsdWUgdG8KPiA+IC0JICog
+YmUgcGFzc2VkLCBidXQgdGhlIGxpYnZhIGRvZXNuJ3QgZ2l2ZSB1cyB0aGF0Lgo+ID4gLQkgKi8K
+PiA+IC0JcmVnIHw9IChzbGljZS0+bnVtX3JlZl9pZHhfbDBfYWN0aXZlX21pbnVzMSAmIDB4MWYp
+IDw8IDEwOwo+ID4gLQlyZWcgfD0gKHNsaWNlLT5udW1fcmVmX2lkeF9sMV9hY3RpdmVfbWludXMx
+ICYgMHgxZikgPDwgNTsKPiA+ICsJcmVnIHw9IChwcHMtPm51bV9yZWZfaWR4X2wwX2RlZmF1bHRf
+YWN0aXZlX21pbnVzMSAmIDB4MWYpIDw8IDEwOwo+ID4gKwlyZWcgfD0gKHBwcy0+bnVtX3JlZl9p
+ZHhfbDFfZGVmYXVsdF9hY3RpdmVfbWludXMxICYgMHgxZikgPDwgNTsKPiA+IAo+ID4gIAlyZWcg
+fD0gKHBwcy0+d2VpZ2h0ZWRfYmlwcmVkX2lkYyAmIDB4MykgPDwgMjsKPiA+ICAJaWYgKHBwcy0+
+ZmxhZ3MgJiBWNEwyX0gyNjRfUFBTX0ZMQUdfRU5UUk9QWV9DT0RJTkdfTU9ERSkKPiA+ICAJCj4g
+PiAgCQlyZWcgfD0gVkVfSDI2NF9QUFNfRU5UUk9QWV9DT0RJTkdfTU9ERTsKCgoKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlz
+dApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2
+ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
