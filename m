@@ -2,59 +2,81 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 65D0ECB610
-	for <lists+driverdev-devel@lfdr.de>; Fri,  4 Oct 2019 10:23:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 02D81CB726
+	for <lists+driverdev-devel@lfdr.de>; Fri,  4 Oct 2019 11:16:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8B9608833C;
-	Fri,  4 Oct 2019 08:23:54 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 59E5D883C8;
+	Fri,  4 Oct 2019 09:15:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id V6qrqqG1sIPq; Fri,  4 Oct 2019 08:23:54 +0000 (UTC)
+	with ESMTP id Nd4o-JxKDtc7; Fri,  4 Oct 2019 09:15:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4468B88379;
-	Fri,  4 Oct 2019 08:23:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 26E7F883A6;
+	Fri,  4 Oct 2019 09:15:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 244341BF865
- for <devel@linuxdriverproject.org>; Fri,  4 Oct 2019 08:23:46 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 59E651BF317
+ for <devel@linuxdriverproject.org>; Fri,  4 Oct 2019 09:15:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 07633878EA
- for <devel@linuxdriverproject.org>; Fri,  4 Oct 2019 08:23:46 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5454E87C24
+ for <devel@linuxdriverproject.org>; Fri,  4 Oct 2019 09:15:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dMrc3Aq6rGHW for <devel@linuxdriverproject.org>;
- Fri,  4 Oct 2019 08:23:45 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 797A3878DE
- for <devel@driverdev.osuosl.org>; Fri,  4 Oct 2019 08:23:45 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id D49FA215EA;
- Fri,  4 Oct 2019 08:23:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1570177425;
- bh=y0a26l5BoLt6LDIhhczFXqNAIo+MU2bPPx6nwZoc6ew=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=pc7kKbLNjQ60Htp2grrbUQKS6/ezg4x7E2dvUqm7GjZwB/+c01cbuC/1jTgthnBwS
- FYO0NB/mrWJG5TxGokI8FzLZf56xeesfHRx/lS98REBrATcIqoZBTxyVbvyC4JHiQS
- eAlEvYuj7lqvu3QDYCyPIxqk3KM0oRlAMRi6A2Kg=
-Date: Fri, 4 Oct 2019 10:23:42 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
-Subject: Re: [PATCH v3 01/20] staging: wfx: add infrastructure for new driver
-Message-ID: <20191004082342.GA94454@kroah.com>
-References: <20190919142527.31797-1-Jerome.Pouiller@silabs.com>
- <20190919142527.31797-2-Jerome.Pouiller@silabs.com>
+ with ESMTP id JviyxoQQjMGB for <devel@linuxdriverproject.org>;
+ Fri,  4 Oct 2019 09:15:52 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4AA9987C30
+ for <devel@driverdev.osuosl.org>; Fri,  4 Oct 2019 09:15:52 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id q5so3483043pfg.13
+ for <devel@driverdev.osuosl.org>; Fri, 04 Oct 2019 02:15:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=s8tqsqMy+G0/tcU7luJERjELtm00m1qaFN1WnG1XMF0=;
+ b=Hkj0H1a17gfTA4IBRSDEr6jhOfHZKhPzQr7hTppiuNBr3rWcHa/1fVLIkJ7nLgY4MS
+ rpwqpba5HkFXM8g3eza+y2a9Z5Fu8jqQM8g61sED46Fzj8LDnDTTOtLerEFsicimyY9u
+ wtPARiHwWAULUZ0lDo8Ismp0mWIJJD0Z7yKJqRL+4uqQ062DbR9/y+6sQfqTxvaD1/Ps
+ 77pPN3urY0mkMJ0KY4uN63apCjxPV482S+HU7GTuU9JfEPT75wb8JWK8L4yzI3jflByi
+ iPhYVTjwxRUhjQyKDNmCSrhynfidTWyls8p5tlPx4fz+TMCLYc0nH+at53J0y8lQMafG
+ wOVA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=s8tqsqMy+G0/tcU7luJERjELtm00m1qaFN1WnG1XMF0=;
+ b=qvMNoOTX/ehrmcBpLIw00VTmfaVCjZgjpY0eVydln/r6pk2ogeIDy5XWZsxW9HLp4U
+ 9BRUcqgMJgSZuKsldmIuL1pB9/FMHFm4YKMFFUXnEb1w/4DDzNVJhPexSzRuQe1bs2oe
+ dYCDtCLaArfnIBJAWggfrVczqXLW3oRRbjCbXpDhe+iUdEjeqqQZb/xB7YgEo1bHGkCi
+ 3i3IcTQSRsseueyQlItwDXlCSkwwGGXeeU+FUr9UTpFUufvE6cvTM98bw3m5Kb+PzWG+
+ b4LwTuXa9gC1I8GOAj/MjYxqccGovyTVmdj46mLaaqUAKDTz12t8r4pld32L2dWvYXur
+ igKg==
+X-Gm-Message-State: APjAAAXnQGFg0TX7jD5QFLNmoZlkrj4qsssWCgK89NI4O+ixilZbCq6p
+ MO13ce+uWTmWHeHbGP6zJBc=
+X-Google-Smtp-Source: APXvYqx9jVrJypPIFTpq5omupfOySz1o3av2IBN3FGqG+lYUCL6l0UwNhhdXupVN4qNFWjnTwQYi8w==
+X-Received: by 2002:a17:90a:e50b:: with SMTP id
+ t11mr15594108pjy.50.1570180551460; 
+ Fri, 04 Oct 2019 02:15:51 -0700 (PDT)
+Received: from f1 (ag061063.dynamic.ppp.asahi-net.or.jp. [157.107.61.63])
+ by smtp.gmail.com with ESMTPSA id bb15sm3451428pjb.2.2019.10.04.02.15.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 04 Oct 2019 02:15:50 -0700 (PDT)
+Date: Fri, 4 Oct 2019 18:15:45 +0900
+From: Benjamin Poirier <benjamin.poirier@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH v2 0/17] staging: qlge: Fix rx stall in case of
+ allocation failures
+Message-ID: <20191004091545.GA29467@f1>
+References: <20190927101210.23856-1-bpoirier@suse.com>
+ <20191004081931.GA67764@kroah.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190919142527.31797-2-Jerome.Pouiller@silabs.com>
-User-Agent: Mutt/1.12.2 (2019-09-21)
+In-Reply-To: <20191004081931.GA67764@kroah.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,58 +89,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- David Le Goff <David.Legoff@silabs.com>,
- "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
+ GR-Linux-NIC-Dev@marvell.com, linux-kernel@vger.kernel.org,
+ Manish Chopra <manishc@marvell.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Sep 19, 2019 at 02:25:36PM +0000, Jerome Pouiller wrote:
-> From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
-> =
+On 2019/10/04 10:19, Greg Kroah-Hartman wrote:
+> On Fri, Sep 27, 2019 at 07:11:54PM +0900, Benjamin Poirier wrote:
+[...]
+> 
+> As this code got moved to staging with the goal to drop it from the
+> tree, why are you working on fixing it up?  Do you want it moved back
+> out of staging into the "real" part of the tree, or are you just fixing
+> things that you find in order to make it cleaner before we delete it?
+> 
+> confused,
+> 
 
-> Instantiate build infrastructure WFx driver. This driver provides support
-> for Wifi chipset Silicon Labs WF200 and further:
-> =
+I expected one of two possible outcomes after moving the qlge driver to
+staging:
+1) it gets the attention of people looking for something to work on and
+the driver is improved and submitted for normal inclusion in the future
+2) it doesn't get enough attention and the driver is removed
 
->    https://www.silabs.com/documents/public/data-sheets/wf200-datasheet.pdf
-> =
+I don't plan to do further work on it and I'm admittedly not holding my
+breath for others to rush in but I already had those patches; it wasn't
+a big effort to submit them as a first step towards outcome #1.
 
-> This chip support SPI and SDIO bus.
-> =
-
-> SDIO interface has two particularities:
->     1. Some parameters may be useful for end user (I will talk about
->        gpio_wakeup later).
->     2. The SDIO VID and PID of WF200 are 0000:0001 which are too much
->        generic to rely on.
-> =
-
-> So, current code checks VID/PID and looks for a node in DT (since WF200
-> targets embedded platforms, I don't think it is a problem to rely on
-> DT). DT can also be used to define to parameters for driver. Currently,
-> if no node is found, a warning is emitted, but it could be changed in
-> error.
-> =
-
-> Signed-off-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
-
-Personally, I think you are going to find that this is going to take
-more work to get this cleaned up in the staging tree and then out of it
-into the "real" part of the kernel, instead of just doing the needed
-work out of the tree now and then submitting it "properly" to the right
-part of the tree.
-
-But hey, who am I to judge people who like to do extra work!  :)
-
-I'll go queue this up now, good luck!
-
-greg k-h
+If #2 is a foregone conclusion, then there's little point in applying
+the patches. The only benefit I can think of that if the complete
+removal is reverted in the future, this specific problem will at least
+be fixed.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
