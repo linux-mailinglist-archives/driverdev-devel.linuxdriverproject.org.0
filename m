@@ -1,54 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B97FCB12C
-	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Oct 2019 23:32:34 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CB5E7CB5DE
+	for <lists+driverdev-devel@lfdr.de>; Fri,  4 Oct 2019 10:19:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5E1F4231A8;
-	Thu,  3 Oct 2019 21:32:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AFFF086BA3;
+	Fri,  4 Oct 2019 08:19:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FVFsOF9V84FH; Thu,  3 Oct 2019 21:32:31 +0000 (UTC)
+	with ESMTP id HFNli3gu_96m; Fri,  4 Oct 2019 08:19:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7B59F22DC7;
-	Thu,  3 Oct 2019 21:32:30 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 120BF86B77;
+	Fri,  4 Oct 2019 08:19:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 812911BF383
- for <devel@linuxdriverproject.org>; Thu,  3 Oct 2019 21:32:27 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 421491BF865
+ for <devel@linuxdriverproject.org>; Fri,  4 Oct 2019 08:19:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7D2C686D92
- for <devel@linuxdriverproject.org>; Thu,  3 Oct 2019 21:32:27 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3EB5D87610
+ for <devel@linuxdriverproject.org>; Fri,  4 Oct 2019 08:19:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MWczvA5UNynI for <devel@linuxdriverproject.org>;
- Thu,  3 Oct 2019 21:32:25 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from relay3-d.mail.gandi.net (relay3-d.mail.gandi.net
- [217.70.183.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 6A9B186D37
- for <devel@driverdev.osuosl.org>; Thu,  3 Oct 2019 21:32:25 +0000 (UTC)
-X-Originating-IP: 132.205.230.8
-Received: from aptenodytes (unknown [132.205.230.8])
- (Authenticated sender: paul.kocialkowski@bootlin.com)
- by relay3-d.mail.gandi.net (Postfix) with ESMTPSA id 3AAE260004;
- Thu,  3 Oct 2019 21:32:20 +0000 (UTC)
-Date: Thu, 3 Oct 2019 17:32:18 -0400
-From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-To: Jernej =?utf-8?Q?=C5=A0krabec?= <jernej.skrabec@siol.net>
-Subject: Re: [PATCH v2 2/3] media: cedrus: Fix H264 default reference index
- count
-Message-ID: <20191003213218.GE3927@aptenodytes>
-References: <20191002193553.1633467-1-jernej.skrabec@siol.net>
- <3413755.LxPTGpI9pz@jernej-laptop>
- <20191003205857.GA3927@aptenodytes>
- <1700094.IKIOnZr010@jernej-laptop>
+ with ESMTP id VSq4TF1ZQgCX for <devel@linuxdriverproject.org>;
+ Fri,  4 Oct 2019 08:19:33 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9287A87587
+ for <devel@driverdev.osuosl.org>; Fri,  4 Oct 2019 08:19:33 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id DE9F2215EA;
+ Fri,  4 Oct 2019 08:19:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1570177173;
+ bh=GxopqWkMPnX4PDxovWbl/0V6OfSe6w4tJYkwPukRQIc=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=EC5IFH4mlbfu5EfK7PR2Ciq+QCbnSL0dhulXcds2lfI8s1mUXDvuX5nZWPVeMPnHf
+ U3uQhgAQNhxlqBd6Shlryzzn8PHtiZpeuklTH1XzNc8yJkJ7gtxnbLTCW7MIVdaEZk
+ ZfS3Se+2JNQhTEndF3v0ZARZdtl5rDjtUcUlt3lI=
+Date: Fri, 4 Oct 2019 10:19:31 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Benjamin Poirier <bpoirier@suse.com>
+Subject: Re: [PATCH v2 0/17] staging: qlge: Fix rx stall in case of
+ allocation failures
+Message-ID: <20191004081931.GA67764@kroah.com>
+References: <20190927101210.23856-1-bpoirier@suse.com>
 MIME-Version: 1.0
-In-Reply-To: <1700094.IKIOnZr010@jernej-laptop>
+Content-Disposition: inline
+In-Reply-To: <20190927101210.23856-1-bpoirier@suse.com>
 User-Agent: Mutt/1.12.2 (2019-09-21)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -62,250 +67,80 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, mripard@kernel.org, wens@csie.org,
- hverkuil-cisco@xs4all.nl, mchehab@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============9075896358699752585=="
+Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
+ GR-Linux-NIC-Dev@marvell.com, linux-kernel@vger.kernel.org,
+ Manish Chopra <manishc@marvell.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Fri, Sep 27, 2019 at 07:11:54PM +0900, Benjamin Poirier wrote:
+> qlge refills rx buffers from napi context. In case of allocation failure,
+> allocation will be retried the next time napi runs. If a receive queue runs
+> out of free buffers (possibly after subsequent allocation failures), it
+> drops all traffic, no longer raises interrupts and napi is no longer
+> scheduled; reception is stalled until manual admin intervention.
+> 
+> This patch series adds a fallback mechanism for rx buffer allocation. If an
+> rx buffer queue becomes empty, a workqueue is scheduled to refill it from
+> process context where allocation can block until mm has freed some pages
+> (hopefully). This approach was inspired by the virtio_net driver (commit
+> 3161e453e496 "virtio: net refill on out-of-memory").
+> 
+> I've compared this with how some other devices with a similar allocation
+> scheme handle this situation:
+> mlx4 relies on a periodic watchdog, sfc uses a timer, e1000e and fm10k rely
+> on periodic hardware interrupts (IIUC). In all cases, they use this to
+> schedule napi periodically at a fixed interval (10-250ms) until allocations
+> succeed. This kind of approach simplifies allocations because only one
+> context may refill buffers, however it is inefficient because of the fixed
+> interval: either the interval was too short, the allocation fails again and
+> work was done without forward progress; or the interval was too long,
+> buffers could've been allocated earlier and rx restarted earlier, instead
+> traffic was dropped while the system was idle.
+> 
+> Note that the qlge driver (and device) uses two kinds of buffers for
+> received data, so-called "small buffers" and "large buffers". The two are
+> arranged in ring pairs, the sbq and lbq. Depending on frame size, protocol
+> content and header splitting, data can go in either type of buffers.
+> Because of buffer size, lbq allocations are more likely to fail and lead to
+> stall, however I've reproduced the problem with sbq as well. The problem
+> was originally found when running jumbo frames. In that case, qlge uses
+> order-1 allocations for the large buffers. Although the two kinds of
+> buffers are managed similarly, the qlge driver duplicates most data
+> structures and code for their handling. In fact, even a casual look at the
+> qlge driver shows it to be in a state of disrepair, to put it kindly...
+> 
+> Patches 1-14 are cleanups that remove, fix and deduplicate code related to
+> sbq and lbq handling. Regarding those cleanups, patches 2 ("Remove
+> irq_cnt") and 8 ("Deduplicate rx buffer queue management") are the most
+> important. Finally, patches 15-17 fix the actual problem of rx stalls in
+> case of allocation failures by implementing the fallback of allocations to
+> a workqueue.
+> 
+> I've tested these patches using two different approaches:
+> 1) A sender uses pktgen to send udp traffic. The receiver has a large swap,
+> a large net.core.rmem_max, runs a program that dirties all free memory in a
+> loop and runs a program that opens as many udp sockets as possible but
+> doesn't read from them. Since received data is all queued in the sockets
+> rather than freed, qlge is allocating receive buffers as quickly as
+> possible and faces allocation failures if the swap is slower than the
+> network.
+> 2) A sender uses super_netperf. Likewise, the receiver has a large swap, a
+> large net.core.rmem_max and runs a program that dirties all free memory in
+> a loop. After the netperf send test is started, `killall -s SIGSTOP
+> netserver` on the receiver leads to the same situation as above.
 
---===============9075896358699752585==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="PGNNI9BzQDUtgA2J"
-Content-Disposition: inline
+As this code got moved to staging with the goal to drop it from the
+tree, why are you working on fixing it up?  Do you want it moved back
+out of staging into the "real" part of the tree, or are you just fixing
+things that you find in order to make it cleaner before we delete it?
 
+confused,
 
---PGNNI9BzQDUtgA2J
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu 03 Oct 19, 23:19, Jernej =C5=A0krabec wrote:
-> Dne =C4=8Detrtek, 03. oktober 2019 ob 22:58:57 CEST je Paul Kocialkowski=
-=20
-> napisal(a):
-> > Hi,
-> >=20
-> > On Thu 03 Oct 19, 22:44, Jernej =C5=A0krabec wrote:
-> > > Dne =C4=8Detrtek, 03. oktober 2019 ob 22:28:46 CEST je Paul Kocialkow=
-ski
-> > >=20
-> > > napisal(a):
-> > > > Hi,
-> > > >=20
-> > > > On Thu 03 Oct 19, 07:16, Jernej =C5=A0krabec wrote:
-> > > > > Dne =C4=8Detrtek, 03. oktober 2019 ob 00:06:50 CEST je Paul Kocia=
-lkowski
-> > > > >=20
-> > > > > napisal(a):
-> > > > > > Hi,
-> > > > > >=20
-> > > > > > On Wed 02 Oct 19, 21:35, Jernej Skrabec wrote:
-> > > > > > > Reference index count in VE_H264_PPS should come from PPS con=
-trol.
-> > > > > > > However, this is not really important, because reference index
-> > > > > > > count
-> > > > > > > is
-> > > > > > > in our case always overridden by that from slice header.
-> > > > > >=20
-> > > > > > Thanks for the fixup!
-> > > > > >=20
-> > > > > > Our libva userspace and v4l2-request testing tool currently don=
-'t
-> > > > > > provide
-> > > > > > this, but I have a pending merge request adding it for the hant=
-ro so
-> > > > > > it's
-> > > > > > good to go.
-> > > > >=20
-> > > > > Actually, I think this is just cosmetic and it would work even if=
- it
-> > > > > would
-> > > > > be always 0. We always override this number in SHS2 register with
-> > > > > VE_H264_SHS2_NUM_REF_IDX_ACTIVE_OVRD flag and recently there was a
-> > > > > patch
-> > > > > merged to clarify that value in slice parameters should be the one
-> > > > > that's
-> > > > > set on default value if override flag is not set in bitstream:
-> > > > > https://git.linuxtv.org/media_tree.git/commit/?
-> > > > > id=3D187ef7c5c78153acdce8c8714e5918b1018c710b
-> > > > >=20
-> > > > > Well, we could always compare default and value in slice paramete=
-rs,
-> > > > > but I
-> > > > > really don't see the benefit of doing that extra work.
-> > > >=20
-> > > > Thanks for the detailed explanation! So I just realized that for HE=
-VC, I
-> > > > didn't even include the default value in PPS and only went for the
-> > > > per-slice value. The HEVC hardware block apparently only needs the
-> > > > fields
-> > > > once at slice level, and by looking at the spec, only one of the tw=
-o set
-> > > > of
-> > > > fields will be used.
-> > > >=20
-> > > > So perhaps we could do the same for H.264 and only have the set of
-> > > > fields
-> > > > once in the slice params, so that both codecs are consistent. Users=
-pace
-> > > > can
-> > > > just check the flag to know whether it should put the PPS default or
-> > > > slice-specific value in the slice-specific control.
-> > > >=20
-> > > > What do you think?
-> > >=20
-> > > I think that there would be less confusion if only value in slice par=
-ams
-> > > would exists. But since Philipp rather made clarification in
-> > > documentation, maybe he sees benefit having both values?
-> >=20
-> > Actually I just caught up with the discussion from thread:
-> > media: uapi: h264: Add num_ref_idx_active_override_flag
-> >=20
-> > which explains that we need to pass the default fields for hardware that
-> > parses the slice header itself and we need the non-default fields and f=
-lag
-> > for other cases.
-> >=20
-> > To cover the case of hardware that does slice header parsing, I guess it
-> > would also work to use the slice-specific values in place of the pps
-> > default values in the hardware register for that. But it feels quite
-> > confusing and a lot less straightforward than having all the fields and=
- the
-> > override flag exposed.
->=20
-> I wasn't aware of that patch and related discussion. Ok, so it make sense=
- to=20
-> have both values. However, does it make sense to use default values in Ce=
-drus?
-
-Well, since the hardware exposes fields for both and the flag for H264, let=
-'s do
-the straightforward thing and just pass the values through, even though we =
-can
-easily predict which will get used in the end.
-
-For HEVC, we'll just have to check for the flag and put the right set of va=
-lues
-in the slice-specific register.
-
-> > So I think I should fix HEVC support accordingly, just in case the same
-> > situation arises for HEVC.
->=20
-> Seems reasonable. Does that mean there will be another revision of HEVC=
-=20
-> patches?  If so, I think slice_segment_addr should also be included in sl=
-ice=20
-> params, so multi-slice frames can be supported at later time.
-
-I would be in favor of fixing this as a follow-up patch instead, so that we
-don't delay getting the series in. As you said, more work will be needed an=
-yway
-for multi-slice support, so I don't see the point of holding the series for=
- this
-particular improvment.
-
-Cheers,
-
-Paul
-
-> Best regards,
-> Jernej=20
->=20
-> >=20
-> > Cheers,
-> >=20
-> > Paul
-> >=20
-> > > Best regards,
-> > > Jernej
-> > >=20
-> > > > Cheers,
-> > > >=20
-> > > > Paul
-> > > >=20
-> > > > > Best regards,
-> > > > > Jernej
-> > > > >=20
-> > > > > > Acked-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-> > > > > >=20
-> > > > > > Cheers,
-> > > > > >=20
-> > > > > > Paul
-> > > > > >=20
-> > > > > > > Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
-> > > > > > > ---
-> > > > > > >=20
-> > > > > > >  drivers/staging/media/sunxi/cedrus/cedrus_h264.c | 8 ++------
-> > > > > > >  1 file changed, 2 insertions(+), 6 deletions(-)
-> > > > > > >=20
-> > > > > > > diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
-> > > > > > > b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c index
-> > > > > > > bd848146eada..4a0e69855c7f 100644
-> > > > > > > --- a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
-> > > > > > > +++ b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
-> > > > > > > @@ -364,12 +364,8 @@ static void cedrus_set_params(struct
-> > > > > > > cedrus_ctx
-> > > > > > > *ctx,
-> > > > > > >=20
-> > > > > > >  	// picture parameters
-> > > > > > >  	reg =3D 0;
-> > > > > > >=20
-> > > > > > > -	/*
-> > > > > > > -	 * FIXME: the kernel headers are allowing the default value=
- to
-> > > > > > > -	 * be passed, but the libva doesn't give us that.
-> > > > > > > -	 */
-> > > > > > > -	reg |=3D (slice->num_ref_idx_l0_active_minus1 & 0x1f) << 10;
-> > > > > > > -	reg |=3D (slice->num_ref_idx_l1_active_minus1 & 0x1f) << 5;
-> > > > > > > +	reg |=3D (pps->num_ref_idx_l0_default_active_minus1 & 0x1f)=
- << 10;
-> > > > > > > +	reg |=3D (pps->num_ref_idx_l1_default_active_minus1 & 0x1f)=
- << 5;
-> > > > > > >=20
-> > > > > > >  	reg |=3D (pps->weighted_bipred_idc & 0x3) << 2;
-> > > > > > >  	if (pps->flags & V4L2_H264_PPS_FLAG_ENTROPY_CODING_MODE)
-> > > > > > >  =09
-> > > > > > >  		reg |=3D VE_H264_PPS_ENTROPY_CODING_MODE;
->=20
->=20
->=20
->=20
-
---=20
-Paul Kocialkowski, Bootlin
-Embedded Linux and kernel engineering
-https://bootlin.com
-
---PGNNI9BzQDUtgA2J
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAl2WaOIACgkQ3cLmz3+f
-v9EA+wf/ekHmBtBvJhAORdriiY5xvorCVVe+x97wAdmtuicrv64I/52a//PGeOiX
-DB3hlBjSls/SdNhoIFYMTbBay5hGl8ZFxsdHgyFfZ5QztP14XWJJMzTwIXDbCFCc
-kWpU8tJopeAyrcW/o81oWyXaI+1DcyF/2mXjv7gjSZ4cbe1w+5jnE36/rsG7wr+L
-V0zlBxjFfDnRLIpLH3NqNCJXHyrcsL6wc9coGPdBd5olAzXk0Y9cCW7zoJ+V8aFi
-agpE8vHT4/FPinNdKGQ1vtfHiJ6pR8cHQ+skBoEmjvESCbOaIHGKiHmVnOW5AINR
-Z7R/MDMbE3GjMMiYfltNPKDgU+aOgA==
-=Uw7X
------END PGP SIGNATURE-----
-
---PGNNI9BzQDUtgA2J--
-
---===============9075896358699752585==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============9075896358699752585==--
