@@ -1,59 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 96AB1CB899
-	for <lists+driverdev-devel@lfdr.de>; Fri,  4 Oct 2019 12:48:34 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4AB01CB8FB
+	for <lists+driverdev-devel@lfdr.de>; Fri,  4 Oct 2019 13:18:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id CE02220516;
-	Fri,  4 Oct 2019 10:48:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 11AC986BB5;
+	Fri,  4 Oct 2019 11:18:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nQMbhlKAAUYh; Fri,  4 Oct 2019 10:48:32 +0000 (UTC)
+	with ESMTP id LKYyo5mW4jGJ; Fri,  4 Oct 2019 11:18:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id AF9BB204EA;
-	Fri,  4 Oct 2019 10:48:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AB5E686BBB;
+	Fri,  4 Oct 2019 11:18:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9DB5A1BF313
- for <devel@linuxdriverproject.org>; Fri,  4 Oct 2019 10:48:28 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C8D551BF3F7
+ for <devel@linuxdriverproject.org>; Fri,  4 Oct 2019 11:18:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9A96C87AB6
- for <devel@linuxdriverproject.org>; Fri,  4 Oct 2019 10:48:28 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id C552A86BB3
+ for <devel@linuxdriverproject.org>; Fri,  4 Oct 2019 11:18:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dV1dQpLww19q for <devel@linuxdriverproject.org>;
- Fri,  4 Oct 2019 10:48:27 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B7F7487942
- for <devel@driverdev.osuosl.org>; Fri,  4 Oct 2019 10:48:27 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 04 Oct 2019 03:48:26 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.67,256,1566889200"; d="scan'208";a="182665062"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga007.jf.intel.com with ESMTP; 04 Oct 2019 03:48:25 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1iGL8K-0002ZA-GH; Fri, 04 Oct 2019 18:48:24 +0800
-Date: Fri, 4 Oct 2019 18:48:12 +0800
-From: kbuild test robot <lkp@intel.com>
-To: =?iso-8859-1?B?Suly9G1l?= Pouiller <jerome.pouiller@silabs.com>
-Subject: [staging:staging-testing 41/59] drivers/staging/wfx/main.c:47:14-21:
- ERROR: PTR_ERR applied after initialization to constant on line 42
-Message-ID: <201910041809.W4MyUT1q%lkp@intel.com>
+ with ESMTP id j6d6-k3_w_jW for <devel@linuxdriverproject.org>;
+ Fri,  4 Oct 2019 11:18:14 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail3-relais-sop.national.inria.fr
+ (mail3-relais-sop.national.inria.fr [192.134.164.104])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D455F86BB2
+ for <devel@driverdev.osuosl.org>; Fri,  4 Oct 2019 11:18:13 +0000 (UTC)
+X-IronPort-AV: E=Sophos;i="5.67,256,1566856800"; d="scan'208";a="321625499"
+Received: from portablejulia.rsr.lip6.fr ([132.227.76.63])
+ by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 04 Oct 2019 13:18:10 +0200
+Date: Fri, 4 Oct 2019 13:18:11 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: julia@hadrien
+To: =?ISO-8859-15?Q?J=E9r=F4me_Pouiller?= <jerome.pouiller@silabs.com>
+Subject: [staging:staging-testing 50/59] drivers/staging/wfx/hif_tx.c:53:2-8:
+ preceding lock on line 38 (fwd)
+Message-ID: <alpine.DEB.2.21.1910041317381.2992@hadrien>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Disposition: inline
-X-Patchwork-Hint: ignore
-User-Agent: NeoMutt/20170113 (1.7.2)
+Content-Type: multipart/mixed; boundary="8323329-392352371-1570187891=:2992"
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,58 +60,97 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  kbuild-all@01.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
+
+--8323329-392352371-1570187891=:2992
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8BIT
+
+Hello,
+
+Is an unlock needed on line 53?
+
+julia
+
+---------- Forwarded message ----------
+Date: Fri, 4 Oct 2019 19:14:33 +0800
+From: kbuild test robot <lkp@intel.com>
+To: kbuild@01.org
+Cc: Julia Lawall <julia.lawall@lip6.fr>
+Subject: [staging:staging-testing 50/59] drivers/staging/wfx/hif_tx.c:53:2-8:
+    preceding lock on line 38
+
+CC: kbuild-all@01.org
+CC: devel@driverdev.osuosl.org
+TO: "Jérôme Pouiller" <jerome.pouiller@silabs.com>
+CC: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+
 tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
 head:   40115bbc40e2fd2de0e01ef2a28e0d09a1b5d0d1
-commit: 0096214a59a72b3c3c943e27bd03307324d3ce0f [41/59] staging: wfx: add support for I/O access
+commit: 4f8b7fabb15df3658564a98971fc67029be1815d [50/59] staging: wfx: allow to send commands to chip
+:::::: branch date: 2 hours ago
+:::::: commit date: 2 hours ago
 
 If you fix the issue, kindly add following tag
 Reported-by: kbuild test robot <lkp@intel.com>
+Reported-by: Julia Lawall <julia.lawall@lip6.fr>
 
+>> drivers/staging/wfx/hif_tx.c:53:2-8: preceding lock on line 38
 
-coccinelle warnings: (new ones prefixed by >>)
+# https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/commit/?id=4f8b7fabb15df3658564a98971fc67029be1815d
+git remote add staging https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
+git remote update staging
+git checkout 4f8b7fabb15df3658564a98971fc67029be1815d
+vim +53 drivers/staging/wfx/hif_tx.c
 
->> drivers/staging/wfx/main.c:47:14-21: ERROR: PTR_ERR applied after initialization to constant on line 42
-
-vim +47 drivers/staging/wfx/main.c
-
-    30	
-    31	struct gpio_desc *wfx_get_gpio(struct device *dev, int override, const char *label)
-    32	{
-    33		struct gpio_desc *ret;
-    34		char label_buf[256];
-    35	
-    36		if (override >= 0) {
-    37			snprintf(label_buf, sizeof(label_buf), "wfx_%s", label);
-    38			ret = ERR_PTR(devm_gpio_request_one(dev, override, GPIOF_OUT_INIT_LOW, label_buf));
-    39			if (!ret)
-    40				ret = gpio_to_desc(override);
-    41		} else if (override == -1) {
-  > 42			ret = NULL;
-    43		} else {
-    44			ret = devm_gpiod_get(dev, label, GPIOD_OUT_LOW);
-    45		}
-    46		if (IS_ERR(ret) || !ret) {
-  > 47			if (!ret || PTR_ERR(ret) == -ENOENT)
-    48				dev_warn(dev, "gpio %s is not defined\n", label);
-    49			else
-    50				dev_warn(dev, "error while requesting gpio %s\n", label);
-    51			ret = NULL;
-    52		} else {
-    53			dev_dbg(dev, "using gpio %d for %s\n", desc_to_gpio(ret), label);
-    54		}
-    55		return ret;
-    56	}
-    57	
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  23
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  24  int wfx_cmd_send(struct wfx_dev *wdev, struct hif_msg *request, void *reply, size_t reply_len, bool async)
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  25  {
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  26  	const char *mib_name = "";
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  27  	const char *mib_sep = "";
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  28  	int cmd = request->id;
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  29  	int vif = request->interface;
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  30  	int ret;
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  31
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  32  	WARN(wdev->hif_cmd.buf_recv && wdev->hif_cmd.async, "API usage error");
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  33
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  34  	// Do not wait for any reply if chip is frozen
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  35  	if (wdev->chip_frozen)
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  36  		return -ETIMEDOUT;
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  37
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19 @38  	mutex_lock(&wdev->hif_cmd.lock);
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  39  	WARN(wdev->hif_cmd.buf_send, "data locking error");
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  40
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  41  	// Note: call to complete() below has an implicit memory barrier that
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  42  	// hopefully protect buf_send
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  43  	wdev->hif_cmd.buf_send = request;
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  44  	wdev->hif_cmd.buf_recv = reply;
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  45  	wdev->hif_cmd.len_recv = reply_len;
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  46  	wdev->hif_cmd.async = async;
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  47  	complete(&wdev->hif_cmd.ready);
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  48
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  49  	wfx_bh_request_tx(wdev);
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  50
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  51  	// NOTE: no timeout is catched async is enabled
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19  52  	if (async)
+4f8b7fabb15df3 Jérôme Pouiller 2019-09-19 @53  		return 0;
 
 ---
 0-DAY kernel test infrastructure                Open Source Technology Center
 https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+--8323329-392352371-1570187891=:2992
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--8323329-392352371-1570187891=:2992--
