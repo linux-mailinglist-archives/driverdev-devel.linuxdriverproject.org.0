@@ -2,60 +2,59 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B0D72CBF2B
-	for <lists+driverdev-devel@lfdr.de>; Fri,  4 Oct 2019 17:29:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7D8B1CBFBD
+	for <lists+driverdev-devel@lfdr.de>; Fri,  4 Oct 2019 17:50:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6AC2524074;
-	Fri,  4 Oct 2019 15:29:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AA87023C58;
+	Fri,  4 Oct 2019 15:50:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VOSHpggCfKfb; Fri,  4 Oct 2019 15:29:56 +0000 (UTC)
+	with ESMTP id SIoaZKF6AHBR; Fri,  4 Oct 2019 15:50:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7D83723B81;
-	Fri,  4 Oct 2019 15:29:53 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8B8D02046E;
+	Fri,  4 Oct 2019 15:50:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7946C1BF38E
- for <devel@linuxdriverproject.org>; Fri,  4 Oct 2019 15:29:51 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5D5001BF38E
+ for <devel@linuxdriverproject.org>; Fri,  4 Oct 2019 15:50:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6A165883EB
- for <devel@linuxdriverproject.org>; Fri,  4 Oct 2019 15:29:51 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 592AA87C24
+ for <devel@linuxdriverproject.org>; Fri,  4 Oct 2019 15:50:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CmBQQzSTTwnK for <devel@linuxdriverproject.org>;
- Fri,  4 Oct 2019 15:29:47 +0000 (UTC)
+ with ESMTP id N1-BM7fpmQLc for <devel@linuxdriverproject.org>;
+ Fri,  4 Oct 2019 15:50:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 73E7B883E6
- for <devel@driverdev.osuosl.org>; Fri,  4 Oct 2019 15:29:47 +0000 (UTC)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3638987C17
+ for <devel@driverdev.osuosl.org>; Fri,  4 Oct 2019 15:50:49 +0000 (UTC)
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 04 Oct 2019 08:29:46 -0700
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 04 Oct 2019 08:50:48 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.67,256,1566889200"; 
- d="gz'50?scan'50,208,50";a="198892076"
+ d="gz'50?scan'50,208,50";a="192465004"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by FMSMGA003.fm.intel.com with ESMTP; 04 Oct 2019 08:29:44 -0700
+ by fmsmga007.fm.intel.com with ESMTP; 04 Oct 2019 08:50:45 -0700
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1iGPWZ-000ErZ-Pm; Fri, 04 Oct 2019 23:29:43 +0800
-Date: Fri, 4 Oct 2019 23:28:55 +0800
+ id 1iGPqv-00041I-4U; Fri, 04 Oct 2019 23:50:45 +0800
+Date: Fri, 4 Oct 2019 23:50:24 +0800
 From: kbuild test robot <lkp@intel.com>
 To: =?iso-8859-1?B?Suly9G1l?= Pouiller <jerome.pouiller@silabs.com>
-Subject: [staging:staging-testing 53/59]
- drivers/staging/wfx/hif_tx_mib.h:139:2: note: in expansion of macro
- 'cpu_to_le32s'
-Message-ID: <201910042323.JzTJIKcT%lkp@intel.com>
+Subject: [staging:staging-testing 55/59]
+ drivers/staging/wfx/data_tx.c:619:16: note: in expansion of macro
+ 'cpu_to_le16'
+Message-ID: <201910042315.ZeymFThG%lkp@intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="lnilu4wxbox4s76m"
+Content-Type: multipart/mixed; boundary="wyqynujus2v3q4l6"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
 X-Patchwork-Hint: ignore
 User-Agent: NeoMutt/20170113 (1.7.2)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -76,27 +75,26 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---lnilu4wxbox4s76m
-Content-Type: text/plain; charset=iso-8859-1
+--wyqynujus2v3q4l6
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
 
 tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
 head:   40115bbc40e2fd2de0e01ef2a28e0d09a1b5d0d1
-commit: c7ff39dd8b5393c55b0a8a5dedb5ba13f4c838a8 [53/59] staging: wfx: setup initial chip configuration
+commit: 9bca45f3d6924f19f29c0d019e961af3f41bdc9e [55/59] staging: wfx: allow to send 802.11 frames
 config: sparc64-allmodconfig (attached as .config)
 compiler: sparc64-linux-gcc (GCC) 7.4.0
 reproduce:
         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
         chmod +x ~/bin/make.cross
-        git checkout c7ff39dd8b5393c55b0a8a5dedb5ba13f4c838a8
+        git checkout 9bca45f3d6924f19f29c0d019e961af3f41bdc9e
         # save the attached .config to linux build tree
         GCC_VERSION=7.4.0 make.cross ARCH=sparc64 
 
 If you fix the issue, kindly add following tag
 Reported-by: kbuild test robot <lkp@intel.com>
 
-All error/warnings (new ones prefixed by >>):
+All warnings (new ones prefixed by >>):
 
    In file included from include/linux/byteorder/big_endian.h:5:0,
                     from arch/sparc/include/uapi/asm/byteorder.h:5,
@@ -104,17 +102,19 @@ All error/warnings (new ones prefixed by >>):
                     from arch/sparc/include/asm/bitops.h:5,
                     from include/linux/bitops.h:19,
                     from include/linux/kernel.h:12,
-                    from include/linux/list.h:9,
-                    from include/linux/module.h:9,
-                    from drivers/staging/wfx/main.c:13:
+                    from include/asm-generic/bug.h:19,
+                    from arch/sparc/include/asm/bug.h:25,
+                    from include/linux/bug.h:5,
+                    from include/net/mac80211.h:16,
+                    from drivers/staging/wfx/data_tx.c:8:
    drivers/staging/wfx/hif_tx_mib.h: In function 'hif_set_mfp':
->> include/uapi/linux/byteorder/big_endian.h:94:37: error: passing argument 1 of '__swab32s' from incompatible pointer type [-Werror=incompatible-pointer-types]
+   include/uapi/linux/byteorder/big_endian.h:94:37: error: passing argument 1 of '__swab32s' from incompatible pointer type [-Werror=incompatible-pointer-types]
     #define __cpu_to_le32s(x) __swab32s((x))
                                         ^
->> include/linux/byteorder/generic.h:112:22: note: in expansion of macro '__cpu_to_le32s'
+   include/linux/byteorder/generic.h:112:22: note: in expansion of macro '__cpu_to_le32s'
     #define cpu_to_le32s __cpu_to_le32s
                          ^~~~~~~~~~~~~~
->> drivers/staging/wfx/hif_tx_mib.h:139:2: note: in expansion of macro 'cpu_to_le32s'
+   drivers/staging/wfx/hif_tx_mib.h:139:2: note: in expansion of macro 'cpu_to_le32s'
      cpu_to_le32s(&val);
      ^~~~~~~~~~~~
    In file included from include/linux/swab.h:5:0,
@@ -125,51 +125,114 @@ All error/warnings (new ones prefixed by >>):
                     from arch/sparc/include/asm/bitops.h:5,
                     from include/linux/bitops.h:19,
                     from include/linux/kernel.h:12,
-                    from include/linux/list.h:9,
-                    from include/linux/module.h:9,
-                    from drivers/staging/wfx/main.c:13:
+                    from include/asm-generic/bug.h:19,
+                    from arch/sparc/include/asm/bug.h:25,
+                    from include/linux/bug.h:5,
+                    from include/net/mac80211.h:16,
+                    from drivers/staging/wfx/data_tx.c:8:
    include/uapi/linux/swab.h:242:29: note: expected '__u32 * {aka unsigned int *}' but argument is of type 'struct hif_mib_protected_mgmt_policy *'
     static __always_inline void __swab32s(__u32 *p)
                                 ^~~~~~~~~
+   In file included from include/linux/byteorder/big_endian.h:5:0,
+                    from arch/sparc/include/uapi/asm/byteorder.h:5,
+                    from arch/sparc/include/asm/bitops_64.h:16,
+                    from arch/sparc/include/asm/bitops.h:5,
+                    from include/linux/bitops.h:19,
+                    from include/linux/kernel.h:12,
+                    from include/asm-generic/bug.h:19,
+                    from arch/sparc/include/asm/bug.h:25,
+                    from include/linux/bug.h:5,
+                    from include/net/mac80211.h:16,
+                    from drivers/staging/wfx/data_tx.c:8:
+   drivers/staging/wfx/data_tx.c: In function 'wfx_tx_inner':
+   include/uapi/linux/byteorder/big_endian.h:35:26: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+    #define __cpu_to_le16(x) ((__force __le16)__swab16((x)))
+                             ^
+   include/linux/byteorder/generic.h:90:21: note: in expansion of macro '__cpu_to_le16'
+    #define cpu_to_le16 __cpu_to_le16
+                        ^~~~~~~~~~~~~
+>> drivers/staging/wfx/data_tx.c:619:16: note: in expansion of macro 'cpu_to_le16'
+     hif_msg->id = cpu_to_le16(HIF_REQ_ID_TX);
+                   ^~~~~~~~~~~
    cc1: some warnings being treated as errors
 
-vim +/cpu_to_le32s +139 drivers/staging/wfx/hif_tx_mib.h
+vim +/cpu_to_le16 +619 drivers/staging/wfx/data_tx.c
 
-f95a29d40782f4 Jérôme Pouiller 2019-09-19  127  
-f95a29d40782f4 Jérôme Pouiller 2019-09-19  128  static inline int hif_set_mfp(struct wfx_vif *wvif, bool capable, bool required)
-f95a29d40782f4 Jérôme Pouiller 2019-09-19  129  {
-f95a29d40782f4 Jérôme Pouiller 2019-09-19  130  	struct hif_mib_protected_mgmt_policy val = { };
-f95a29d40782f4 Jérôme Pouiller 2019-09-19  131  
-f95a29d40782f4 Jérôme Pouiller 2019-09-19  132  	WARN_ON(required && !capable);
-f95a29d40782f4 Jérôme Pouiller 2019-09-19  133  	if (capable) {
-f95a29d40782f4 Jérôme Pouiller 2019-09-19  134  		val.pmf_enable = 1;
-f95a29d40782f4 Jérôme Pouiller 2019-09-19  135  		val.host_enc_auth_frames = 1;
-f95a29d40782f4 Jérôme Pouiller 2019-09-19  136  	}
-f95a29d40782f4 Jérôme Pouiller 2019-09-19  137  	if (!required)
-f95a29d40782f4 Jérôme Pouiller 2019-09-19  138  		val.unpmf_allowed = 1;
-f95a29d40782f4 Jérôme Pouiller 2019-09-19 @139  	cpu_to_le32s(&val);
-f95a29d40782f4 Jérôme Pouiller 2019-09-19  140  	return hif_write_mib(wvif->wdev, wvif->id,
-f95a29d40782f4 Jérôme Pouiller 2019-09-19  141  			     HIF_MIB_ID_PROTECTED_MGMT_POLICY,
-f95a29d40782f4 Jérôme Pouiller 2019-09-19  142  			     &val, sizeof(val));
-f95a29d40782f4 Jérôme Pouiller 2019-09-19  143  }
-f95a29d40782f4 Jérôme Pouiller 2019-09-19  144  
-
-:::::: The code at line 139 was first introduced by commit
-:::::: f95a29d40782f4f0052a692a822de3ba044b19ff staging: wfx: add HIF commands helpers
-
-:::::: TO: Jérôme Pouiller <jerome.pouiller@silabs.com>
-:::::: CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+   581	
+   582	static int wfx_tx_inner(struct wfx_vif *wvif, struct ieee80211_sta *sta, struct sk_buff *skb)
+   583	{
+   584		struct hif_msg *hif_msg;
+   585		struct hif_req_tx *req;
+   586		struct wfx_tx_priv *tx_priv;
+   587		struct ieee80211_tx_info *tx_info = IEEE80211_SKB_CB(skb);
+   588		struct ieee80211_key_conf *hw_key = tx_info->control.hw_key;
+   589		struct ieee80211_hdr *hdr = (struct ieee80211_hdr *) skb->data;
+   590		int queue_id = tx_info->hw_queue;
+   591		size_t offset = (size_t) skb->data & 3;
+   592		int wmsg_len = sizeof(struct hif_msg) + sizeof(struct hif_req_tx) + offset;
+   593	
+   594		WARN(queue_id >= IEEE80211_NUM_ACS, "unsupported queue_id");
+   595		wfx_tx_fixup_rates(tx_info->driver_rates);
+   596	
+   597		// From now tx_info->control is unusable
+   598		memset(tx_info->rate_driver_data, 0, sizeof(struct wfx_tx_priv));
+   599		// Fill tx_priv
+   600		tx_priv = (struct wfx_tx_priv *) tx_info->rate_driver_data;
+   601		tx_priv->tid = wfx_tx_get_tid(hdr);
+   602		tx_priv->raw_link_id = wfx_tx_get_raw_link_id(wvif, sta, hdr);
+   603		tx_priv->link_id = tx_priv->raw_link_id;
+   604		if (ieee80211_has_protected(hdr->frame_control))
+   605			tx_priv->hw_key = hw_key;
+   606		if (tx_info->flags & IEEE80211_TX_CTL_SEND_AFTER_DTIM)
+   607			tx_priv->link_id = WFX_LINK_ID_AFTER_DTIM;
+   608		if (sta && (sta->uapsd_queues & BIT(queue_id)))
+   609			tx_priv->link_id = WFX_LINK_ID_UAPSD;
+   610	
+   611		// Fill hif_msg
+   612		WARN(skb_headroom(skb) < wmsg_len, "not enough space in skb");
+   613		WARN(offset & 1, "attempt to transmit an unaligned frame");
+   614		skb_put(skb, wfx_tx_get_icv_len(tx_priv->hw_key));
+   615		skb_push(skb, wmsg_len);
+   616		memset(skb->data, 0, wmsg_len);
+   617		hif_msg = (struct hif_msg *) skb->data;
+   618		hif_msg->len = cpu_to_le16(skb->len);
+ > 619		hif_msg->id = cpu_to_le16(HIF_REQ_ID_TX);
+   620		hif_msg->interface = wvif->id;
+   621		if (skb->len > wvif->wdev->hw_caps.size_inp_ch_buf) {
+   622			dev_warn(wvif->wdev->dev, "requested frame size (%d) is larger than maximum supported (%d)\n",
+   623				 skb->len, wvif->wdev->hw_caps.size_inp_ch_buf);
+   624			skb_pull(skb, wmsg_len);
+   625			return -EIO;
+   626		}
+   627	
+   628		// Fill tx request
+   629		req = (struct hif_req_tx *) hif_msg->body;
+   630		req->packet_id = queue_id << 16 | IEEE80211_SEQ_TO_SN(le16_to_cpu(hdr->seq_ctrl));
+   631		req->data_flags.fc_offset = offset;
+   632		req->queue_id.peer_sta_id = tx_priv->raw_link_id;
+   633		// Queue index are inverted between firmware and Linux
+   634		req->queue_id.queue_id = 3 - queue_id;
+   635		req->ht_tx_parameters = wfx_tx_get_tx_parms(wvif->wdev, tx_info);
+   636		req->tx_flags.retry_policy_index = wfx_tx_get_rate_id(wvif, tx_info);
+   637	
+   638		// Auxilliary operations
+   639		wfx_tx_manage_pm(wvif, hdr, tx_priv, sta);
+   640		wfx_tx_queue_put(wvif->wdev, &wvif->wdev->tx_queue[queue_id], skb);
+   641		wfx_bh_request_tx(wvif->wdev);
+   642		return 0;
+   643	}
+   644	
 
 ---
 0-DAY kernel test infrastructure                Open Source Technology Center
 https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 
---lnilu4wxbox4s76m
+--wyqynujus2v3q4l6
 Content-Type: application/gzip
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICAZgl10AAy5jb25maWcAjFxbc+M2sn7Pr1BNXpKqM4kvM052T/kBJEEJEUlwAFCy/MJS
+H4sICBxpl10AAy5jb25maWcAjFxbc+M2sn7Pr1BNXpKqM4kvM052T/kBJEEJEUlwAFCy/MJS
 NJqJK7blleScnX9/usEbbqSnamtjft1o3Bp9AzQ//vDjjLyeD0/b88Nu+/j4bfZ1/7w/bs/7
 z7MvD4/7/50lfFZwNaMJU78Ac/bw/PrfX08v2+Pu5sPs4y8ffrl4f9xdzpb74/P+cRYfnr88
 fH0FAQ+H5x9+/AH+9yOATy8g6/jvWdvu/SNKef91t5v9NI/jn2e/oRzgjXmRsnkdxzWTNVBu
@@ -1265,7 +1328,7 @@ ji+GROuk3WPofjOn4gWh4XuJntB/fTiMN+PR6ANj27NShOt37tOBqjoIw1TzNCBJxlkN7mwr
 IUFfdRcH/XVRvZb04hJ/wmW3SOJtBg77yDaHQwX5rc3HHPRdMbH1FhZskpqqjXSStGuAyLWd
 8HIA4yiAFVoe1Gkrcvw/InR48L6vAwA=
 
---lnilu4wxbox4s76m
+--wyqynujus2v3q4l6
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -1276,4 +1339,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---lnilu4wxbox4s76m--
+--wyqynujus2v3q4l6--
