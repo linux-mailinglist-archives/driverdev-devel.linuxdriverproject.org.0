@@ -1,78 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4F3D6CCBBA
-	for <lists+driverdev-devel@lfdr.de>; Sat,  5 Oct 2019 19:38:59 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6266BCCC59
+	for <lists+driverdev-devel@lfdr.de>; Sat,  5 Oct 2019 20:40:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AB42186031;
-	Sat,  5 Oct 2019 17:38:57 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 606FC8776E;
+	Sat,  5 Oct 2019 18:40:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hK1DJkMaNDTt; Sat,  5 Oct 2019 17:38:57 +0000 (UTC)
+	with ESMTP id jBm97pCwKKxe; Sat,  5 Oct 2019 18:40:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7B4DA85EF1;
-	Sat,  5 Oct 2019 17:38:56 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id EE5608773E;
+	Sat,  5 Oct 2019 18:40:42 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 357BB1BF25B
- for <driverdev-devel@linuxdriverproject.org>;
- Sat,  5 Oct 2019 17:38:34 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 734F31BF30D
+ for <devel@linuxdriverproject.org>; Sat,  5 Oct 2019 18:40:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 15AD485ECE
- for <driverdev-devel@linuxdriverproject.org>;
- Sat,  5 Oct 2019 17:38:34 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6FF6486208
+ for <devel@linuxdriverproject.org>; Sat,  5 Oct 2019 18:40:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 40RLshygChL5
- for <driverdev-devel@linuxdriverproject.org>;
- Sat,  5 Oct 2019 17:38:32 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f68.google.com (mail-io1-f68.google.com
- [209.85.166.68])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1F3E485EC4
- for <driverdev-devel@linuxdriverproject.org>;
- Sat,  5 Oct 2019 17:38:32 +0000 (UTC)
-Received: by mail-io1-f68.google.com with SMTP id b136so20302608iof.3
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 05 Oct 2019 10:38:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=JdxTjZHOYunTMtiHW4RMA9FUy7l6bYMn8x9aB5OphDw=;
- b=tq/RZ4haJJGk2RcsmH8o068rKZh6Ym6iJfqJQm8ixICT4FJ8PQYj51yFptTVo/pOLS
- iggn8chGb9wiNMRVV6oWvWY60DppRBjjJjWVRqZd2IINeQAeViGyu/YZGKzhb/N9NxF5
- ivzdbcosSaET0WfOA7Byw8ZdGPbsglGcebIohfFvnJ/8rfVOxk0dmRUdqy+TIMdANlZu
- cle4J7Z8DaQ9bgUiKa5/YcpzLqAjPKBD/qErXA92olrJD339f8OWZDngrMtjcrEdTHfd
- 0OfRnMBfTIUwtd8EoxtOtIL1GVS4EVIcQEYJ8JSZEzpSUhfj4k5Oeqg9MRfyIjH6qeV5
- 5dfg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=JdxTjZHOYunTMtiHW4RMA9FUy7l6bYMn8x9aB5OphDw=;
- b=udZG0k4SjntSyIxSnl2MvXQdoGrHNLqK0zAKsNP9q0cZkvmnHlJbz5+yPaeXHZjw1a
- fz0j8llmTvLPlXsWc+MDfrimFqWOHEJUM26/LGgTbA7a5nyKjy8uFiR+gtPKahc6xDiY
- i3LGK63twOx6rFrsLA75+7UyClOsiE+Gf+bu407ocL0FFUMv//ZdstLOzu+mYTulRIhc
- 7XNMimP6U8Ta4t54bwCEwMtjORZWVdqsdFafRCUyHDtk4ks0EjK2vk6LRaF/uKYgV2B9
- bPE0lMxHZUhor/pF9bFtrlDejBFr2yNe9ezF2P01oeheTUeaViVem7UFa+C0XvtqEKve
- kocA==
-X-Gm-Message-State: APjAAAU73YzWThIsZEBo4BEIxK2zvIX9sA9Ystq4JDxtRH8qJUY819eb
- +o3pjXyN8WzKG58ur9kRfWr1YF+ztvoEQxmg2w==
-X-Google-Smtp-Source: APXvYqxnP+95IANajqjOGebCm5WUv/cbd83HQTNMTIZjRdMEUmMQO4/jS6pBPIoCqkYXSAuZlSo8SQBcqJ/1pUFsI9A=
-X-Received: by 2002:a5d:8247:: with SMTP id n7mr9562032ioo.35.1570297111470;
- Sat, 05 Oct 2019 10:38:31 -0700 (PDT)
+ with ESMTP id CXeHByJWoAYp for <devel@linuxdriverproject.org>;
+ Sat,  5 Oct 2019 18:40:38 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 5E7A385F53
+ for <devel@driverdev.osuosl.org>; Sat,  5 Oct 2019 18:40:38 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id A3478222CA;
+ Sat,  5 Oct 2019 18:40:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1570300838;
+ bh=RWuY0RSvkUj2zaP9FkesiWE2O7HQPq1rvX2ddcue8vk=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=GuDQBTf27tJ/syv9eY4jSxOcMtKfYqkusdHd0rK27nz/xQvJbJ0PKX5ktBzm9RAwY
+ +60XGaBoNV66J2AKN5x/aokPrI+lzXEpNe6Jf0M5DsyuSLJGXS+FHra9LbCqE3EPYT
+ 0NCtMa+xZZWjnpRhaqWQodNHEn/NUGr5xqOTJ8oE=
+Date: Sat, 5 Oct 2019 20:40:35 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Markus Elfring <Markus.Elfring@web.de>
+Subject: Re: [PATCH] staging: vt6655: Fix memory leak in vt6655_probe
+Message-ID: <20191005184035.GA2062613@kroah.com>
+References: <20191004200319.22394-1-navid.emamdoost@gmail.com>
+ <1d0ba4c6-99ed-e2c9-48a2-ce34b0042876@web.de>
 MIME-Version: 1.0
-Received: by 2002:a02:242f:0:0:0:0:0 with HTTP;
- Sat, 5 Oct 2019 10:38:31 -0700 (PDT)
-From: "DR.Mike Benz" <info.zennitbankplcnigerian@gmail.com>
-Date: Sat, 5 Oct 2019 18:38:31 +0100
-Message-ID: <CABHzvrm1FRqaCkGUKEDwjR_5hGvmpSe6WB1UFKuZ4U5b=3O3Bw@mail.gmail.com>
-Subject: Happy to inform you, CONTACT WALMART TRANSFER To pick up $8000.00
- sent to you this morning.
-To: undisclosed-recipients:;
+Content-Disposition: inline
+In-Reply-To: <1d0ba4c6-99ed-e2c9-48a2-ce34b0042876@web.de>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,50 +67,25 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: walmart.b100263@gmail.com
+Cc: devel@driverdev.osuosl.org, Malcolm Priestley <tvboxspy@gmail.com>,
+ kernel-janitors@vger.kernel.org, Kangjie Lu <kjlu@umn.edu>,
+ linux-kernel@vger.kernel.org, Madhumitha Prabakaran <madhumithabiw@gmail.com>,
+ Luis Chamberlain <mcgrof@kernel.org>, Navid Emamdoost <emamd001@umn.edu>,
+ Forest Bond <forest@alittletooquiet.net>, Stephen McCamant <smccaman@umn.edu>,
+ Navid Emamdoost <navid.emamdoost@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Attn Dear Beneficiary.
-Happy to inform you, CONTACT WALMART TRANSFER To pick up $8000.00 sent
-to you this morning.
+On Sat, Oct 05, 2019 at 06:30:13PM +0200, Markus Elfring wrote:
+> > In vt6655_probe, if vnt_init() fails the cleanup code needs to be called
+> > like other error handling cases. The call to device_free_info() is
+> > added.
+> 
+> Please improve this change description.
 
-I have deposited your payment funds $2.500,000MillionUS Dollars
-With Walmart international money transfers.
-Receive the Money with Walmart | MoneyGram service.
-Walmart partners with MoneyGram to allow customers
-easily receive money transfers abroad,
-Contact Walmart international money transfers office -Benin
-Receive your approval payment funds $10.500,000MillionUS Dollars
-HERE IS WALMART CONTACT INFORMATIONS.
-Contact person. Mrs. Mary Anderson,Dir. Walmart transfers-Benin
-Email: walmart.b100263@gmail.com
-Telephone. +229 68823234
-Text Her on this international phone line. (256) 284-4886
-
-Ask Mrs. Mary Anderson,Dir. Walmart transfers-Benin to send the transfer
-as i instructed.
-we agreed to keep sending the transfer to you $8000.00 daily.
-Until you received your total payment $10.500,000 from the office
-Once again,
-make sure you contact Mrs. Mary Anderson,Dir. Walmart transfers-Benin
-today including your infos.
-(1) Your  Full Name==============
-(2) house address=============
-(3) Your Phone Numbers=============
-Urgent to receive your transfer now without any further delay.
-Finally, Send your first payment transfer fees to Walmart office on
-below address
-Receiver's Name====== ALAN UDE
-Country=====BENIN
-City=======COTONOU
-AMOUNT =====$58.00 only. Your first payment $8000.00 transfer fee.
-Question======God
-Answer=========Creator
-Thanks
-DR.Mike Benz
+It is fine as-is, please do not confuse people.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
