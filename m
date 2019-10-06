@@ -1,38 +1,38 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 80425CCFC3
-	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Oct 2019 11:03:10 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 261CBCCFC1
+	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Oct 2019 11:03:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A8B1320444;
-	Sun,  6 Oct 2019 09:03:08 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 51E888798A;
+	Sun,  6 Oct 2019 09:03:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tXarqhy8gqTZ; Sun,  6 Oct 2019 09:03:07 +0000 (UTC)
+	with ESMTP id d-wNIWucmU2h; Sun,  6 Oct 2019 09:03:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id B755C20372;
-	Sun,  6 Oct 2019 09:03:06 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 857E287916;
+	Sun,  6 Oct 2019 09:03:04 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DDA941BF20D
+ by ash.osuosl.org (Postfix) with ESMTP id B1FF01BF20D
  for <devel@linuxdriverproject.org>; Sun,  6 Oct 2019 09:03:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D950D87916
+ by hemlock.osuosl.org (Postfix) with ESMTP id AEAFB87917
  for <devel@linuxdriverproject.org>; Sun,  6 Oct 2019 09:03:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id n3e7SDC23E3R for <devel@linuxdriverproject.org>;
- Sun,  6 Oct 2019 09:03:00 +0000 (UTC)
+ with ESMTP id blDbdy51DuY6 for <devel@linuxdriverproject.org>;
+ Sun,  6 Oct 2019 09:02:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 2E94687918
- for <devel@driverdev.osuosl.org>; Sun,  6 Oct 2019 09:03:00 +0000 (UTC)
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 459283D0521C78BB1622;
+Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9D95A87916
+ for <devel@driverdev.osuosl.org>; Sun,  6 Oct 2019 09:02:59 +0000 (UTC)
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 1358768513F59F69730F;
  Sun,  6 Oct 2019 17:02:56 +0800 (CST)
 Received: from huawei.com (10.90.53.225) by DGGEMS402-HUB.china.huawei.com
  (10.3.19.202) with Microsoft SMTP Server id 14.3.439.0; Sun, 6 Oct 2019
@@ -41,10 +41,10 @@ From: zhengbin <zhengbin13@huawei.com>
 To: <gregkh@linuxfoundation.org>, <colin.king@canonical.com>,
  <hdegoede@redhat.com>, <hardiksingh.k@gmail.com>,
  <devel@driverdev.osuosl.org>
-Subject: [PATCH 2/5] staging: rtl8723bs: Remove set but not used variable
- 'tmp_aid'
-Date: Sun, 6 Oct 2019 17:09:56 +0800
-Message-ID: <1570352999-45790-3-git-send-email-zhengbin13@huawei.com>
+Subject: [PATCH 3/5] staging: rtl8723bs: Remove set but not used variable
+ 'prwskeylen'
+Date: Sun, 6 Oct 2019 17:09:57 +0800
+Message-ID: <1570352999-45790-4-git-send-email-zhengbin13@huawei.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1570352999-45790-1-git-send-email-zhengbin13@huawei.com>
 References: <1570352999-45790-1-git-send-email-zhengbin13@huawei.com>
@@ -71,8 +71,12 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 Fixes gcc '-Wunused-but-set-variable' warning:
 
-drivers/staging/rtl8723bs/core/rtw_sta_mgt.c: In function rtw_alloc_stainfo:
-drivers/staging/rtl8723bs/core/rtw_sta_mgt.c:190:7: warning: variable tmp_aid set but not used [-Wunused-but-set-variable]
+drivers/staging/rtl8723bs/core/rtw_security.c: In function rtw_tkip_encrypt:
+drivers/staging/rtl8723bs/core/rtw_security.c:660:6: warning: variable prwskeylen set but not used [-Wunused-but-set-variable]
+drivers/staging/rtl8723bs/core/rtw_security.c: In function rtw_tkip_decrypt:
+drivers/staging/rtl8723bs/core/rtw_security.c:768:6: warning: variable prwskeylen set but not used [-Wunused-but-set-variable]
+drivers/staging/rtl8723bs/core/rtw_security.c: In function rtw_aes_encrypt:
+drivers/staging/rtl8723bs/core/rtw_security.c:1528:6: warning: variable prwskeylen set but not used [-Wunused-but-set-variable]
 
 It is not used since commit 554c0a3abf21 ("staging:
 Add rtl8723bs sdio wifi driver")
@@ -80,30 +84,66 @@ Add rtl8723bs sdio wifi driver")
 Reported-by: Hulk Robot <hulkci@huawei.com>
 Signed-off-by: zhengbin <zhengbin13@huawei.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_sta_mgt.c | 3 ---
- 1 file changed, 3 deletions(-)
+ drivers/staging/rtl8723bs/core/rtw_security.c | 9 ---------
+ 1 file changed, 9 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_sta_mgt.c b/drivers/staging/rtl8723bs/core/rtw_sta_mgt.c
-index bdc52d8..09d2ca3 100644
---- a/drivers/staging/rtl8723bs/core/rtw_sta_mgt.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_sta_mgt.c
-@@ -187,7 +187,6 @@ u32 _rtw_free_sta_priv(struct	sta_priv *pstapriv)
- /* struct	sta_info *rtw_alloc_stainfo(_queue *pfree_sta_queue, unsigned char *hwaddr) */
- struct	sta_info *rtw_alloc_stainfo(struct	sta_priv *pstapriv, u8 *hwaddr)
- {
--	uint tmp_aid;
- 	s32	index;
- 	struct list_head	*phash_list;
- 	struct sta_info *psta;
-@@ -211,8 +210,6 @@ struct	sta_info *rtw_alloc_stainfo(struct	sta_priv *pstapriv, u8 *hwaddr)
+diff --git a/drivers/staging/rtl8723bs/core/rtw_security.c b/drivers/staging/rtl8723bs/core/rtw_security.c
+index 5ffaf9b..ed1d854 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_security.c
++++ b/drivers/staging/rtl8723bs/core/rtw_security.c
+@@ -656,7 +656,6 @@ u32 rtw_tkip_encrypt(struct adapter *padapter, u8 *pxmitframe)
+ 	u8   hw_hdr_offset = 0;
+ 	struct arc4context mycontext;
+ 	sint			curfragnum, length;
+-	u32 prwskeylen;
 
- 		/* spin_unlock_bh(&(pfree_sta_queue->lock)); */
+ 	u8 *pframe, *payload, *iv, *prwskey;
+ 	union pn48 dot11txpn;
+@@ -703,8 +702,6 @@ u32 rtw_tkip_encrypt(struct adapter *padapter, u8 *pxmitframe)
+ 				/* prwskey =&stainfo->dot118021x_UncstKey.skey[0]; */
+ 				prwskey = pattrib->dot118021x_UncstKey.skey;
 
--		tmp_aid = psta->aid;
+-			prwskeylen = 16;
 -
- 		_rtw_init_stainfo(psta);
+ 			for (curfragnum = 0; curfragnum < pattrib->nr_frags; curfragnum++) {
+ 				iv = pframe+pattrib->hdrlen;
+ 				payload = pframe+pattrib->iv_len+pattrib->hdrlen;
+@@ -764,7 +761,6 @@ u32 rtw_tkip_decrypt(struct adapter *padapter, u8 *precvframe)
+ 	u8 crc[4];
+ 	struct arc4context mycontext;
+ 	sint			length;
+-	u32 prwskeylen;
 
- 		psta->padapter = pstapriv->padapter;
+ 	u8 *pframe, *payload, *iv, *prwskey;
+ 	union pn48 dot11txpn;
+@@ -819,10 +815,8 @@ u32 rtw_tkip_decrypt(struct adapter *padapter, u8 *precvframe)
+ 				/* DBG_871X("rx bc/mc packets, to perform sw rtw_tkip_decrypt\n"); */
+ 				/* prwskey = psecuritypriv->dot118021XGrpKey[psecuritypriv->dot118021XGrpKeyid].skey; */
+ 				prwskey = psecuritypriv->dot118021XGrpKey[prxattrib->key_index].skey;
+-				prwskeylen = 16;
+ 			} else {
+ 				prwskey = &stainfo->dot118021x_UncstKey.skey[0];
+-				prwskeylen = 16;
+ 			}
+
+ 			iv = pframe+prxattrib->hdrlen;
+@@ -1524,7 +1518,6 @@ u32 rtw_aes_encrypt(struct adapter *padapter, u8 *pxmitframe)
+
+ 	/* Intermediate Buffers */
+ 	sint	curfragnum, length;
+-	u32 prwskeylen;
+ 	u8 *pframe, *prwskey;	/*  *payload,*iv */
+ 	u8   hw_hdr_offset = 0;
+ 	/* struct	sta_info 	*stainfo = NULL; */
+@@ -1551,8 +1544,6 @@ u32 rtw_aes_encrypt(struct adapter *padapter, u8 *pxmitframe)
+ 			/* prwskey =&stainfo->dot118021x_UncstKey.skey[0]; */
+ 			prwskey = pattrib->dot118021x_UncstKey.skey;
+
+-		prwskeylen = 16;
+-
+ 		for (curfragnum = 0; curfragnum < pattrib->nr_frags; curfragnum++) {
+ 			if ((curfragnum+1) == pattrib->nr_frags) {	/* 4 the last fragment */
+ 				length = pattrib->last_txcmdsz-pattrib->hdrlen-pattrib->iv_len-pattrib->icv_len;
 --
 2.7.4
 
