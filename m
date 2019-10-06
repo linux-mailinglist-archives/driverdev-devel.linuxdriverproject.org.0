@@ -1,77 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5F14ECD906
-	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Oct 2019 21:59:08 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0D95A8788D;
-	Sun,  6 Oct 2019 19:59:06 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mU+OTT3niCXx; Sun,  6 Oct 2019 19:59:05 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4951F87552;
-	Sun,  6 Oct 2019 19:59:05 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3BAC31BF23B
- for <devel@linuxdriverproject.org>; Sun,  6 Oct 2019 19:59:03 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9DA04CD92C
+	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Oct 2019 22:34:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 332CE203FF
- for <devel@linuxdriverproject.org>; Sun,  6 Oct 2019 19:59:03 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2A45B204E6;
+	Sun,  6 Oct 2019 20:34:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id KP--Zepkw+-O; Sun,  6 Oct 2019 20:34:36 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 18C75203D9;
+	Sun,  6 Oct 2019 20:34:36 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 4C3C61BF47A
+ for <devel@linuxdriverproject.org>; Sun,  6 Oct 2019 20:34:34 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4436A866BD
+ for <devel@linuxdriverproject.org>; Sun,  6 Oct 2019 20:34:34 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SQwJD5xIPDyS for <devel@linuxdriverproject.org>;
- Sun,  6 Oct 2019 19:59:02 +0000 (UTC)
+ with ESMTP id dHtP+40Sip2A for <devel@linuxdriverproject.org>;
+ Sun,  6 Oct 2019 20:34:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f193.google.com (mail-qt1-f193.google.com
- [209.85.160.193])
- by silver.osuosl.org (Postfix) with ESMTPS id C09D5203D9
- for <devel@driverdev.osuosl.org>; Sun,  6 Oct 2019 19:59:02 +0000 (UTC)
-Received: by mail-qt1-f193.google.com with SMTP id m15so16323397qtq.2
- for <devel@driverdev.osuosl.org>; Sun, 06 Oct 2019 12:59:02 -0700 (PDT)
+Received: from mail-qt1-f195.google.com (mail-qt1-f195.google.com
+ [209.85.160.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id F34BB8653D
+ for <devel@driverdev.osuosl.org>; Sun,  6 Oct 2019 20:34:32 +0000 (UTC)
+Received: by mail-qt1-f195.google.com with SMTP id r5so16420035qtd.0
+ for <devel@driverdev.osuosl.org>; Sun, 06 Oct 2019 13:34:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=VIkpy/BTy4mETTGYhXyFaeQ00CMXQeC2LlAguquFlNU=;
- b=pDwKgK4YdK/MSdTSfrC/TmAWkbMFvvFSShd8fVkQMfx3aAXzSj8hex2s7n1x7COIIt
- h4KQdh2r+KpzkQ0A3CKgE7jJEsLD2LTpKHEBf4z70qBU16XRy5AySI6bgtzj6q+T0v7n
- LCGTtoVf28CCk2wij8bzGt4CX0DQS4Uh/GI7/UEqg3wEjj8NAlti8YamJ9Mt3bHxzU8P
- Q4VrFiuo7EoO9Yw68JbP7n7MEVO5UhsID7REX6KWnCk/DwDApBMGvzxLybTTauqcTJDi
- QPjIRW2HwX04ziBiFo4jNELLUkWuOZ4KOrkNBxfvYYcuAUYprjEPLlI6xrlkd0IvZz3a
- +AEg==
+ bh=2c8ZK7szNdI0lwDgcSx/BNDVw8gIfjfayd7qp8p7o20=;
+ b=s4tUadj3B648+EYQH1tuz/RvaBZDjoG0+kAO5HR4hlh8tSGsE+hWmx1nPDgr2D8bE6
+ D1gQFKTsgg+l+nCYrMeZyw4ZmyY5eTGKX6aexG8nPEhg0fiFvb8UQHoMNOij6CnjnFwh
+ 4qTlMkRpSyeELHYaPoLC3k7+BeDLByBzeSm57DaO8sCsgKLv5get/gV6WqCfP1GxJ97K
+ gu7M/7ttrXBPPwRkyQsHPMH1vloPrZ8nfu/R76Vq4asyz3bt+oH5cao6y4B8S0hm7GwC
+ Orb8FKF2ykjp0ssRYSjh0p/rMk8r24ori7KfoDIL0PXeG8oNRMLUfZkKhllPtFAF6HWN
+ 1MUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=VIkpy/BTy4mETTGYhXyFaeQ00CMXQeC2LlAguquFlNU=;
- b=uoRvbWGGFrdjBjgczkXFhHCg6nM8TJjrgDAZ0419gI0XNUBCF/wGUbSui8pXYjst3v
- 6YC8FJLHENziB+/hUOBt31caWxI5rKYEGAeLpBvYnu7L6vfiGPQI/vZdikteHmoh4fT9
- TlzpBfBOqDmRwgAlXA32vVMJaj39CTjdlUlYNvbGSqNXAiVqhE9p2Y98mnC5J0PcvZcV
- sAL1okYNmJk5f1gu3wLdp7vzUB1C7XsTv+2NrZ46eiAKJDj/L4nXFDIky7auXSTgZH2C
- UlSncA4n3CnD4I/IZEeDZn4tRXCFMLhFypX9M1u60avmgOVAXvy27uw61x4zo1XCEhct
- vokQ==
-X-Gm-Message-State: APjAAAUHlIqoPhW4KrPi6qda1rnFbMf1ZpjYE7OXgQ4wj/HHsyp51krS
- bx0+voCwhYFaLtqM4VcgGu4=
-X-Google-Smtp-Source: APXvYqx7veuDUF0aEJ2IVMT+VXi/lM3pCmKBg1TD15llbzkY0LhmaMrCug97yL5C8QkcY+WsZnYp/g==
-X-Received: by 2002:a0c:db94:: with SMTP id m20mr24595199qvk.142.1570391941678; 
- Sun, 06 Oct 2019 12:59:01 -0700 (PDT)
+ bh=2c8ZK7szNdI0lwDgcSx/BNDVw8gIfjfayd7qp8p7o20=;
+ b=gimf9du0ZHns+82uWveyXTpv47QmW/ux6orh/67CnnzRoaHkqoruDEAtX55CfvSwtx
+ L0xyZDXExJaU+JNGpe7BoeH0FAGuYnagDMF+BCZp6dL5DFH1bngOWVtAU/zrw133HHqW
+ NaWcMvigRkmll89X6Mad9DzqP5IZvejxGbOIUXfhIU1OCA9UN9tYI7JTsjUJH6n79mkq
+ hew5NqS3u8qSPcvQL5obcnF5xaQZ8YQ53bJRvnKqev5pYRgCaBPXu06BPFEWT4UjeMkw
+ NoZ+dg9DugI0U2XkfQsdD8fiIuEtjAXfJVADmIwZF8Ismzxlcb/IJoIgtMKNA5vfunmx
+ t6tg==
+X-Gm-Message-State: APjAAAX0yQaN4nL/f6NzWnyJQtNOzkjO5bXaSeRWipbwBFizndPdaZ5k
+ uWj2uLYVfvQK0zUAhT82VLc=
+X-Google-Smtp-Source: APXvYqynzUAAjBGQc81jeNQJq/G9gH18HPFL1aO5LqR1PPvEgM967i2OpTzvS7vzSFO7Z7U01h6EAg==
+X-Received: by 2002:ac8:1289:: with SMTP id y9mr26464313qti.201.1570394071917; 
+ Sun, 06 Oct 2019 13:34:31 -0700 (PDT)
 Received: from GBdebian.terracota.local ([177.103.155.130])
- by smtp.gmail.com with ESMTPSA id k54sm9623911qtf.28.2019.10.06.12.58.58
+ by smtp.gmail.com with ESMTPSA id n125sm6690999qkn.129.2019.10.06.13.34.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 06 Oct 2019 12:59:01 -0700 (PDT)
+ Sun, 06 Oct 2019 13:34:31 -0700 (PDT)
 From: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-To: outreachy-kernel@googlegroups.com, forest@alittletooquiet.net,
- gregkh@linuxfoundation.org, quentin.deslandes@itdev.co.uk,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+To: outreachy-kernel@googlegroups.com, Larry.Finger@lwfinger.net,
+ florian.c.schilhabel@googlemail.com, gregkh@linuxfoundation.org,
+ nishkadg.linux@gmail.com, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, lkcamp@lists.libreplanetbr.org,
  trivial@kernel.org
-Subject: [PATCH] staging: vt6656: remove duplicated blank line
-Date: Sun,  6 Oct 2019 16:58:54 -0300
-Message-Id: <20191006195854.9843-1-gabrielabittencourt00@gmail.com>
+Subject: [PATCH] staging: rtl8712: align block comments
+Date: Sun,  6 Oct 2019 17:34:20 -0300
+Message-Id: <20191006203420.11202-1-gabrielabittencourt00@gmail.com>
 X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -92,25 +93,28 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Cleans up checks of "don't use multiple blank line"
+Cleans up warnings of "Block comments should align the * on each line"
 
 Signed-off-by: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
 ---
- drivers/staging/vt6656/main_usb.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/staging/rtl8712/recv_linux.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
-index 856ba97aec4f..a1884b5cc915 100644
---- a/drivers/staging/vt6656/main_usb.c
-+++ b/drivers/staging/vt6656/main_usb.c
-@@ -362,7 +362,6 @@ static int vnt_init_registers(struct vnt_private *priv)
- 			goto end;
- 	}
- 
--
- 	ret = vnt_mac_set_led(priv, LEDSTS_TMLEN, 0x38);
- 	if (ret)
- 		goto end;
+diff --git a/drivers/staging/rtl8712/recv_linux.c b/drivers/staging/rtl8712/recv_linux.c
+index 84c4c8580f9a..70a4dcd4a1e5 100644
+--- a/drivers/staging/rtl8712/recv_linux.c
++++ b/drivers/staging/rtl8712/recv_linux.c
+@@ -115,8 +115,8 @@ void r8712_recv_indicatepkt(struct _adapter *adapter,
+ 	skb->protocol = eth_type_trans(skb, adapter->pnetdev);
+ 	netif_rx(skb);
+ 	recvframe->u.hdr.pkt = NULL; /* pointers to NULL before
+-					* r8712_free_recvframe()
+-					*/
++				      * r8712_free_recvframe()
++				      */
+ 	r8712_free_recvframe(recvframe, free_recv_queue);
+ 	return;
+ _recv_indicatepkt_drop:
 -- 
 2.20.1
 
