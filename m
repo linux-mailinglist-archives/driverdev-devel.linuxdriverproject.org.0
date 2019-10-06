@@ -1,55 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 66B00CD23B
-	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Oct 2019 16:26:02 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 769D186B67;
-	Sun,  6 Oct 2019 14:26:00 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7n0VVuj7LIvO; Sun,  6 Oct 2019 14:26:00 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A76B38698E;
-	Sun,  6 Oct 2019 14:25:58 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 747001BF5A5
- for <devel@linuxdriverproject.org>; Sun,  6 Oct 2019 14:25:56 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 58096CD889
+	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Oct 2019 20:10:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 70B8E87134
- for <devel@linuxdriverproject.org>; Sun,  6 Oct 2019 14:25:56 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3498D85ACD;
+	Sun,  6 Oct 2019 18:10:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id L5IsagVxtCLW; Sun,  6 Oct 2019 18:10:40 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 512FF81E1D;
+	Sun,  6 Oct 2019 18:10:40 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id BBED91BF5A2
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun,  6 Oct 2019 18:10:37 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id B8C158643F
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun,  6 Oct 2019 18:10:37 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zSrnQQIbHa9Q for <devel@linuxdriverproject.org>;
- Sun,  6 Oct 2019 14:25:54 +0000 (UTC)
-X-Greylist: delayed 00:15:58 by SQLgrey-1.7.6
-Received: from www17.your-server.de (www17.your-server.de [213.133.104.17])
- by hemlock.osuosl.org (Postfix) with ESMTPS id BE38586FB0
- for <devel@driverdev.osuosl.org>; Sun,  6 Oct 2019 14:25:54 +0000 (UTC)
-Received: from sslproxy06.your-server.de ([78.46.172.3])
- by www17.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
- (Exim 4.89_1) (envelope-from <thomas@m3y3r.de>)
- id 1iH7EO-0002Ge-W4; Sun, 06 Oct 2019 16:09:53 +0200
-Received: from [2a02:908:4c22:ec00:8ad5:993:4cda:a89f]
- (helo=localhost.localdomain)
- by sslproxy06.your-server.de with esmtpsa
- (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256) (Exim 4.89)
- (envelope-from <thomas@m3y3r.de>)
- id 1iH7EO-000Aak-PT; Sun, 06 Oct 2019 16:09:52 +0200
-From: Thomas Meyer <thomas@m3y3r.de>
+ with ESMTP id leOCabcqHaje
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun,  6 Oct 2019 18:10:37 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wm1-f67.google.com (mail-wm1-f67.google.com
+ [209.85.128.67])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id AE89C86096
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun,  6 Oct 2019 18:10:36 +0000 (UTC)
+Received: by mail-wm1-f67.google.com with SMTP id r17so13212479wme.0
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 06 Oct 2019 11:10:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=nUc7j07G1K5gP3ruJjbXvjHvNURmkCH15Hqpb8iyvzg=;
+ b=T37td21a4mAHOw30EnhvJbSSJE8n98qXDA8GbN7acu9mOdy1x0BIpsOjdfxntBvkpL
+ VgbvoazTEXOUlwXhTWw3fCO2weNs6COhNODeYbPsB6VDUltbDNRd3PqxEo6FnXsGmGty
+ eD4VAktURGhO8bHBJHX3qwk/wvYZ5SV91Kwb1eVPpLfHOvQdLvyOhNXi7RjdjaGHMDKc
+ XrN/q1VxS45buHK37C5SFFLuigx6o0tVZO6K6U+o+0yhFNyZPdTfLjZ/L/cEzsoazmca
+ bA5Yz4eofqHboDwzmbaT96A9tI3EpdSYh4RAwo8XEbZeroC7ct6ljnJMeX3NY6d3tjhs
+ dWUA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=nUc7j07G1K5gP3ruJjbXvjHvNURmkCH15Hqpb8iyvzg=;
+ b=cXwHhkumW5FHQ8n38ScOlMqmwvmG7nClZy4HIKlgqgE49oenPLP4APa5+0JUo8t2RW
+ wXQIyo3icLrCLarzSA7gzB84zALkH2eRX/AICJcP5gPEX4Y6fnATrU9GgguZOugYZN7m
+ cvr4wnA2SSzosg7OTzs28Wr/N1F6It6V/XWuBHHIMd+OOrlW3nhFqWy3DN+mSUOMbBY0
+ MBm5GxyKKh8gxY21GRTtBIqbz0DUHNgee46RWHfObdrvMmh+NBOzHfQrN1Olw5vppQR2
+ 7UDdqAoHRxKeEk0HvzewtLenZ3hiA/Jrl9cV6lLV0QwUmCvZn0DJ+mj3MLcdQmS/vn81
+ FFtw==
+X-Gm-Message-State: APjAAAVMgdHJctEfvcbGhyvVUIwyCDyl3JRxrRhZPRat29ZBPlSddF3Y
+ RCeGcl3CDnv75zfz2Zt/yzY=
+X-Google-Smtp-Source: APXvYqx9NLtn0nrhm1ynLF/M9mHOKfYsgzrH970iCI+SxMFLkAArzfLrXbdFgof4n1cE5JCdg3IuFQ==
+X-Received: by 2002:a7b:c34e:: with SMTP id l14mr16433659wmj.123.1570385435142; 
+ Sun, 06 Oct 2019 11:10:35 -0700 (PDT)
+Received: from localhost.localdomain (101.red-81-44-86.dynamicip.rima-tde.net.
+ [81.44.86.101])
+ by smtp.gmail.com with ESMTPSA id d78sm15469308wmd.47.2019.10.06.11.10.33
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Sun, 06 Oct 2019 11:10:34 -0700 (PDT)
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: wlan-ng: p80211wep.c: use lib/crc32
-Date: Sun,  6 Oct 2019 16:07:45 +0200
-Message-Id: <20191006140745.9952-1-thomas@m3y3r.de>
-X-Mailer: git-send-email 2.21.0
+Subject: [PATCH] staging: mt7621-pci: add quirks for 'E2' revision using
+ 'soc_device_attribute'
+Date: Sun,  6 Oct 2019 20:10:32 +0200
+Message-Id: <20191006181032.19112-1-sergio.paracuellos@gmail.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-X-Authenticated-Sender: thomas@m3y3r.de
-X-Virus-Scanned: Clear (ClamAV 0.101.4/25594/Sun Oct  6 10:32:09 2019)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,133 +90,110 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Thomas Meyer <thomas@m3y3r.de>
+Cc: neil@brown.name, driverdev-devel@linuxdriverproject.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Use lib/crc32 instead of another implementation.
+Depending on revision of the chip, reset lines are inverted. Make code
+more readable making use of 'soc_device_match' in driver probe function.
 
-Signed-off-by: Thomas Meyer <thomas@m3y3r.de>
+Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 ---
- drivers/staging/wlan-ng/p80211wep.c | 64 ++---------------------------
- 1 file changed, 3 insertions(+), 61 deletions(-)
+ drivers/staging/mt7621-pci/pci-mt7621.c | 23 +++++++++++++++++------
+ 1 file changed, 17 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/wlan-ng/p80211wep.c b/drivers/staging/wlan-ng/p80211wep.c
-index 8bd92bba0ac15..51d917c8cdc82 100644
---- a/drivers/staging/wlan-ng/p80211wep.c
-+++ b/drivers/staging/wlan-ng/p80211wep.c
-@@ -49,6 +49,7 @@
- /*================================================================*/
- /* System Includes */
+diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt7621-pci/pci-mt7621.c
+index 6b98827da57f..3633c924848e 100644
+--- a/drivers/staging/mt7621-pci/pci-mt7621.c
++++ b/drivers/staging/mt7621-pci/pci-mt7621.c
+@@ -29,15 +29,14 @@
+ #include <linux/phy/phy.h>
+ #include <linux/platform_device.h>
+ #include <linux/reset.h>
++#include <linux/sys_soc.h>
+ #include <mt7621.h>
+ #include <ralink_regs.h>
  
-+#include <linux/crc32.h>
- #include <linux/netdevice.h>
- #include <linux/wireless.h>
- #include <linux/random.h>
-@@ -61,61 +62,6 @@
+ #include "../../pci/pci.h"
  
- #define WEP_KEY(x)       (((x) & 0xC0) >> 6)
+ /* sysctl */
+-#define MT7621_CHIP_REV_ID		0x0c
+ #define MT7621_GPIO_MODE		0x60
+-#define CHIP_REV_MT7621_E2		0x0101
  
--static const u32 wep_crc32_table[256] = {
--	0x00000000L, 0x77073096L, 0xee0e612cL, 0x990951baL, 0x076dc419L,
--	0x706af48fL, 0xe963a535L, 0x9e6495a3L, 0x0edb8832L, 0x79dcb8a4L,
--	0xe0d5e91eL, 0x97d2d988L, 0x09b64c2bL, 0x7eb17cbdL, 0xe7b82d07L,
--	0x90bf1d91L, 0x1db71064L, 0x6ab020f2L, 0xf3b97148L, 0x84be41deL,
--	0x1adad47dL, 0x6ddde4ebL, 0xf4d4b551L, 0x83d385c7L, 0x136c9856L,
--	0x646ba8c0L, 0xfd62f97aL, 0x8a65c9ecL, 0x14015c4fL, 0x63066cd9L,
--	0xfa0f3d63L, 0x8d080df5L, 0x3b6e20c8L, 0x4c69105eL, 0xd56041e4L,
--	0xa2677172L, 0x3c03e4d1L, 0x4b04d447L, 0xd20d85fdL, 0xa50ab56bL,
--	0x35b5a8faL, 0x42b2986cL, 0xdbbbc9d6L, 0xacbcf940L, 0x32d86ce3L,
--	0x45df5c75L, 0xdcd60dcfL, 0xabd13d59L, 0x26d930acL, 0x51de003aL,
--	0xc8d75180L, 0xbfd06116L, 0x21b4f4b5L, 0x56b3c423L, 0xcfba9599L,
--	0xb8bda50fL, 0x2802b89eL, 0x5f058808L, 0xc60cd9b2L, 0xb10be924L,
--	0x2f6f7c87L, 0x58684c11L, 0xc1611dabL, 0xb6662d3dL, 0x76dc4190L,
--	0x01db7106L, 0x98d220bcL, 0xefd5102aL, 0x71b18589L, 0x06b6b51fL,
--	0x9fbfe4a5L, 0xe8b8d433L, 0x7807c9a2L, 0x0f00f934L, 0x9609a88eL,
--	0xe10e9818L, 0x7f6a0dbbL, 0x086d3d2dL, 0x91646c97L, 0xe6635c01L,
--	0x6b6b51f4L, 0x1c6c6162L, 0x856530d8L, 0xf262004eL, 0x6c0695edL,
--	0x1b01a57bL, 0x8208f4c1L, 0xf50fc457L, 0x65b0d9c6L, 0x12b7e950L,
--	0x8bbeb8eaL, 0xfcb9887cL, 0x62dd1ddfL, 0x15da2d49L, 0x8cd37cf3L,
--	0xfbd44c65L, 0x4db26158L, 0x3ab551ceL, 0xa3bc0074L, 0xd4bb30e2L,
--	0x4adfa541L, 0x3dd895d7L, 0xa4d1c46dL, 0xd3d6f4fbL, 0x4369e96aL,
--	0x346ed9fcL, 0xad678846L, 0xda60b8d0L, 0x44042d73L, 0x33031de5L,
--	0xaa0a4c5fL, 0xdd0d7cc9L, 0x5005713cL, 0x270241aaL, 0xbe0b1010L,
--	0xc90c2086L, 0x5768b525L, 0x206f85b3L, 0xb966d409L, 0xce61e49fL,
--	0x5edef90eL, 0x29d9c998L, 0xb0d09822L, 0xc7d7a8b4L, 0x59b33d17L,
--	0x2eb40d81L, 0xb7bd5c3bL, 0xc0ba6cadL, 0xedb88320L, 0x9abfb3b6L,
--	0x03b6e20cL, 0x74b1d29aL, 0xead54739L, 0x9dd277afL, 0x04db2615L,
--	0x73dc1683L, 0xe3630b12L, 0x94643b84L, 0x0d6d6a3eL, 0x7a6a5aa8L,
--	0xe40ecf0bL, 0x9309ff9dL, 0x0a00ae27L, 0x7d079eb1L, 0xf00f9344L,
--	0x8708a3d2L, 0x1e01f268L, 0x6906c2feL, 0xf762575dL, 0x806567cbL,
--	0x196c3671L, 0x6e6b06e7L, 0xfed41b76L, 0x89d32be0L, 0x10da7a5aL,
--	0x67dd4accL, 0xf9b9df6fL, 0x8ebeeff9L, 0x17b7be43L, 0x60b08ed5L,
--	0xd6d6a3e8L, 0xa1d1937eL, 0x38d8c2c4L, 0x4fdff252L, 0xd1bb67f1L,
--	0xa6bc5767L, 0x3fb506ddL, 0x48b2364bL, 0xd80d2bdaL, 0xaf0a1b4cL,
--	0x36034af6L, 0x41047a60L, 0xdf60efc3L, 0xa867df55L, 0x316e8eefL,
--	0x4669be79L, 0xcb61b38cL, 0xbc66831aL, 0x256fd2a0L, 0x5268e236L,
--	0xcc0c7795L, 0xbb0b4703L, 0x220216b9L, 0x5505262fL, 0xc5ba3bbeL,
--	0xb2bd0b28L, 0x2bb45a92L, 0x5cb36a04L, 0xc2d7ffa7L, 0xb5d0cf31L,
--	0x2cd99e8bL, 0x5bdeae1dL, 0x9b64c2b0L, 0xec63f226L, 0x756aa39cL,
--	0x026d930aL, 0x9c0906a9L, 0xeb0e363fL, 0x72076785L, 0x05005713L,
--	0x95bf4a82L, 0xe2b87a14L, 0x7bb12baeL, 0x0cb61b38L, 0x92d28e9bL,
--	0xe5d5be0dL, 0x7cdcefb7L, 0x0bdbdf21L, 0x86d3d2d4L, 0xf1d4e242L,
--	0x68ddb3f8L, 0x1fda836eL, 0x81be16cdL, 0xf6b9265bL, 0x6fb077e1L,
--	0x18b74777L, 0x88085ae6L, 0xff0f6a70L, 0x66063bcaL, 0x11010b5cL,
--	0x8f659effL, 0xf862ae69L, 0x616bffd3L, 0x166ccf45L, 0xa00ae278L,
--	0xd70dd2eeL, 0x4e048354L, 0x3903b3c2L, 0xa7672661L, 0xd06016f7L,
--	0x4969474dL, 0x3e6e77dbL, 0xaed16a4aL, 0xd9d65adcL, 0x40df0b66L,
--	0x37d83bf0L, 0xa9bcae53L, 0xdebb9ec5L, 0x47b2cf7fL, 0x30b5ffe9L,
--	0xbdbdf21cL, 0xcabac28aL, 0x53b39330L, 0x24b4a3a6L, 0xbad03605L,
--	0xcdd70693L, 0x54de5729L, 0x23d967bfL, 0xb3667a2eL, 0xc4614ab8L,
--	0x5d681b02L, 0x2a6f2b94L, 0xb40bbe37L, 0xc30c8ea1L, 0x5a05df1bL,
--	0x2d02ef8dL
--};
--
- /* keylen in bytes! */
+ /* MediaTek specific configuration registers */
+ #define PCIE_FTS_NUM			0x70c
+@@ -126,6 +125,8 @@ struct mt7621_pcie_port {
+  * @ports: pointer to PCIe port information
+  * @perst: gpio reset
+  * @rst: pointer to pcie reset
++ * @resets_inverted: depends on chip revision
++ * reset lines are inverted.
+  */
+ struct mt7621_pcie {
+ 	void __iomem *base;
+@@ -140,6 +141,7 @@ struct mt7621_pcie {
+ 	struct list_head ports;
+ 	struct gpio_desc *perst;
+ 	struct reset_control *rst;
++	bool resets_inverted;
+ };
  
- int wep_change_key(struct wlandevice *wlandev, int keynum, u8 *key, int keylen)
-@@ -184,7 +130,6 @@ int wep_decrypt(struct wlandevice *wlandev, u8 *buf, u32 len, int key_override,
- 	}
+ static inline u32 pcie_read(struct mt7621_pcie *pcie, u32 reg)
+@@ -229,9 +231,9 @@ static inline void mt7621_pcie_port_clk_disable(struct mt7621_pcie_port *port)
  
- 	/* Apply the RC4 to the data, update the CRC32 */
--	crc = ~0;
- 	i = 0;
- 	j = 0;
- 	for (k = 0; k < len; k++) {
-@@ -192,9 +137,8 @@ int wep_decrypt(struct wlandevice *wlandev, u8 *buf, u32 len, int key_override,
- 		j = (j + s[i]) & 0xff;
- 		swap(i, j);
- 		buf[k] ^= s[(s[i] + s[j]) & 0xff];
--		crc = wep_crc32_table[(crc ^ buf[k]) & 0xff] ^ (crc >> 8);
- 	}
--	crc = ~crc;
-+	crc = ~crc32_le(~0, buf, len);
+ static inline void mt7621_control_assert(struct mt7621_pcie_port *port)
+ {
+-	u32 chip_rev_id = rt_sysc_r32(MT7621_CHIP_REV_ID);
++	struct mt7621_pcie *pcie = port->pcie;
  
- 	/* now let's check the crc */
- 	c_crc[0] = crc;
-@@ -257,17 +201,15 @@ int wep_encrypt(struct wlandevice *wlandev, u8 *buf,
- 	}
+-	if ((chip_rev_id & 0xFFFF) == CHIP_REV_MT7621_E2)
++	if (pcie->resets_inverted)
+ 		reset_control_assert(port->pcie_rst);
+ 	else
+ 		reset_control_deassert(port->pcie_rst);
+@@ -239,9 +241,9 @@ static inline void mt7621_control_assert(struct mt7621_pcie_port *port)
  
- 	/* Update CRC32 then apply RC4 to the data */
--	crc = ~0;
- 	i = 0;
- 	j = 0;
- 	for (k = 0; k < len; k++) {
--		crc = wep_crc32_table[(crc ^ buf[k]) & 0xff] ^ (crc >> 8);
- 		i = (i + 1) & 0xff;
- 		j = (j + s[i]) & 0xff;
- 		swap(i, j);
- 		dst[k] = buf[k] ^ s[(s[i] + s[j]) & 0xff];
- 	}
--	crc = ~crc;
-+	crc = ~crc32_le(~0, buf, len);
+ static inline void mt7621_control_deassert(struct mt7621_pcie_port *port)
+ {
+-	u32 chip_rev_id = rt_sysc_r32(MT7621_CHIP_REV_ID);
++	struct mt7621_pcie *pcie = port->pcie;
  
- 	/* now let's encrypt the crc */
- 	icv[0] = crc;
+-	if ((chip_rev_id & 0xFFFF) == CHIP_REV_MT7621_E2)
++	if (pcie->resets_inverted)
+ 		reset_control_deassert(port->pcie_rst);
+ 	else
+ 		reset_control_assert(port->pcie_rst);
+@@ -641,9 +643,14 @@ static int mt7621_pcie_register_host(struct pci_host_bridge *host,
+ 	return pci_host_probe(host);
+ }
+ 
++static const struct soc_device_attribute mt7621_pci_quirks_match[] = {
++	{ .soc_id = "mt7621", .revision = "E2" }
++};
++
+ static int mt7621_pci_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
++	const struct soc_device_attribute *attr;
+ 	struct mt7621_pcie *pcie;
+ 	struct pci_host_bridge *bridge;
+ 	int err;
+@@ -661,6 +668,10 @@ static int mt7621_pci_probe(struct platform_device *pdev)
+ 	platform_set_drvdata(pdev, pcie);
+ 	INIT_LIST_HEAD(&pcie->ports);
+ 
++	attr = soc_device_match(mt7621_pci_quirks_match);
++	if (attr)
++		pcie->resets_inverted = true;
++
+ 	err = mt7621_pcie_parse_dt(pcie);
+ 	if (err) {
+ 		dev_err(dev, "Parsing DT failed\n");
 -- 
-2.21.0
+2.19.1
 
 _______________________________________________
 devel mailing list
