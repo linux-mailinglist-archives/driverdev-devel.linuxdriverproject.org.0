@@ -1,78 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9DA04CD92C
-	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Oct 2019 22:34:39 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5DA9FCD940
+	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Oct 2019 22:51:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2A45B204E6;
-	Sun,  6 Oct 2019 20:34:37 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 497F487874;
+	Sun,  6 Oct 2019 20:51:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KP--Zepkw+-O; Sun,  6 Oct 2019 20:34:36 +0000 (UTC)
+	with ESMTP id hJVp40ifAx8o; Sun,  6 Oct 2019 20:51:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 18C75203D9;
-	Sun,  6 Oct 2019 20:34:36 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 48D33877E6;
+	Sun,  6 Oct 2019 20:51:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4C3C61BF47A
- for <devel@linuxdriverproject.org>; Sun,  6 Oct 2019 20:34:34 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5EDE41BF47A
+ for <devel@linuxdriverproject.org>; Sun,  6 Oct 2019 20:51:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 4436A866BD
- for <devel@linuxdriverproject.org>; Sun,  6 Oct 2019 20:34:34 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5942F856CB
+ for <devel@linuxdriverproject.org>; Sun,  6 Oct 2019 20:51:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dHtP+40Sip2A for <devel@linuxdriverproject.org>;
- Sun,  6 Oct 2019 20:34:33 +0000 (UTC)
+ with ESMTP id kJsE25akiGQ2 for <devel@linuxdriverproject.org>;
+ Sun,  6 Oct 2019 20:51:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f195.google.com (mail-qt1-f195.google.com
- [209.85.160.195])
- by whitealder.osuosl.org (Postfix) with ESMTPS id F34BB8653D
- for <devel@driverdev.osuosl.org>; Sun,  6 Oct 2019 20:34:32 +0000 (UTC)
-Received: by mail-qt1-f195.google.com with SMTP id r5so16420035qtd.0
- for <devel@driverdev.osuosl.org>; Sun, 06 Oct 2019 13:34:32 -0700 (PDT)
+Received: from mail-qt1-f196.google.com (mail-qt1-f196.google.com
+ [209.85.160.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2FFF185618
+ for <devel@driverdev.osuosl.org>; Sun,  6 Oct 2019 20:51:44 +0000 (UTC)
+Received: by mail-qt1-f196.google.com with SMTP id 3so16430427qta.1
+ for <devel@driverdev.osuosl.org>; Sun, 06 Oct 2019 13:51:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=2c8ZK7szNdI0lwDgcSx/BNDVw8gIfjfayd7qp8p7o20=;
- b=s4tUadj3B648+EYQH1tuz/RvaBZDjoG0+kAO5HR4hlh8tSGsE+hWmx1nPDgr2D8bE6
- D1gQFKTsgg+l+nCYrMeZyw4ZmyY5eTGKX6aexG8nPEhg0fiFvb8UQHoMNOij6CnjnFwh
- 4qTlMkRpSyeELHYaPoLC3k7+BeDLByBzeSm57DaO8sCsgKLv5get/gV6WqCfP1GxJ97K
- gu7M/7ttrXBPPwRkyQsHPMH1vloPrZ8nfu/R76Vq4asyz3bt+oH5cao6y4B8S0hm7GwC
- Orb8FKF2ykjp0ssRYSjh0p/rMk8r24ori7KfoDIL0PXeG8oNRMLUfZkKhllPtFAF6HWN
- 1MUQ==
+ bh=QkysCBSB9fGqKPV8g/1PIAYcEKj+5HCVtkPSug6S7x4=;
+ b=cOcOfoux4Df7/s9EkUQGrbPexSBOt3WXuQ6fU4InY9ASkZfOT1H4oszYBQao6riw/k
+ VXTm3ZxkLndtrobWYJ6Wpm2gLJtAPc+YeDdEU+Vzea9fblEzy8iPj25BZtesJ3Ym0iYU
+ oelu7zpxaomQ0gRsFoW7JhZbb+sLgJgpfMykiu1tRPDtIs9bb482IsrozXiDSKZFdzNc
+ 0llDAebPCIEeb6kNpWPRnSR8KRk14Vb+7cNCMLhJULK+PfNS6LGwgvgOul0UqBTL/nKs
+ UX1himK/rZtQPOMeIbSr56wvOpIUGvy737VYgOB+puIXTKwoHvSUNXoso2N3zdTWPaID
+ qanQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=2c8ZK7szNdI0lwDgcSx/BNDVw8gIfjfayd7qp8p7o20=;
- b=gimf9du0ZHns+82uWveyXTpv47QmW/ux6orh/67CnnzRoaHkqoruDEAtX55CfvSwtx
- L0xyZDXExJaU+JNGpe7BoeH0FAGuYnagDMF+BCZp6dL5DFH1bngOWVtAU/zrw133HHqW
- NaWcMvigRkmll89X6Mad9DzqP5IZvejxGbOIUXfhIU1OCA9UN9tYI7JTsjUJH6n79mkq
- hew5NqS3u8qSPcvQL5obcnF5xaQZ8YQ53bJRvnKqev5pYRgCaBPXu06BPFEWT4UjeMkw
- NoZ+dg9DugI0U2XkfQsdD8fiIuEtjAXfJVADmIwZF8Ismzxlcb/IJoIgtMKNA5vfunmx
- t6tg==
-X-Gm-Message-State: APjAAAX0yQaN4nL/f6NzWnyJQtNOzkjO5bXaSeRWipbwBFizndPdaZ5k
- uWj2uLYVfvQK0zUAhT82VLc=
-X-Google-Smtp-Source: APXvYqynzUAAjBGQc81jeNQJq/G9gH18HPFL1aO5LqR1PPvEgM967i2OpTzvS7vzSFO7Z7U01h6EAg==
-X-Received: by 2002:ac8:1289:: with SMTP id y9mr26464313qti.201.1570394071917; 
- Sun, 06 Oct 2019 13:34:31 -0700 (PDT)
+ bh=QkysCBSB9fGqKPV8g/1PIAYcEKj+5HCVtkPSug6S7x4=;
+ b=iXXGWGEN3xDT+Uzg6Q4w+8wrRb+eKM/SMlTQuPe0VG5ySpk7b8IufqE1IvktEpdr4E
+ tzNqUhX+RNuGRpUDqkl2a5oGmCvruEg07kTTqGFBaorXtsHcdn78K7fT5hUcWdLlbs6D
+ S10jQRmOLcbjBai4Cj/TvG/asZXnGNKBBWhliZkEy8Pkj7TX0Mtgxspto3C1kdiwORmf
+ oxm263dwAr3lDAQPZPTE+wiJuVQByx9RrNsAe5cUdNsrmf2S6jYJ74KQ3TYd97RnDzR8
+ 4f65cgwlfYZpNf05ZWZ4VYoQQZ0QYubU6ofhafzBSd4qI6XC1c21EzHgFi76fR1ZR1Vj
+ iVzg==
+X-Gm-Message-State: APjAAAWtc//4cDstva+kwpLWS1w0XWCa7fl8mxhTPE8CQgjJW4MQjmVP
+ RY4NcW11bX6TeKZ7l19IIfM=
+X-Google-Smtp-Source: APXvYqwR0q1/blUrqYR+XMlkhidWKj/s2ojzVV8263BY2FCeizUcrqO88TL/aFATj4L8kqpsqpyA4g==
+X-Received: by 2002:aed:2448:: with SMTP id s8mr27213725qtc.173.1570395102993; 
+ Sun, 06 Oct 2019 13:51:42 -0700 (PDT)
 Received: from GBdebian.terracota.local ([177.103.155.130])
- by smtp.gmail.com with ESMTPSA id n125sm6690999qkn.129.2019.10.06.13.34.28
+ by smtp.gmail.com with ESMTPSA id a36sm6949492qtk.21.2019.10.06.13.51.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 06 Oct 2019 13:34:31 -0700 (PDT)
+ Sun, 06 Oct 2019 13:51:42 -0700 (PDT)
 From: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
 To: outreachy-kernel@googlegroups.com, Larry.Finger@lwfinger.net,
  florian.c.schilhabel@googlemail.com, gregkh@linuxfoundation.org,
  nishkadg.linux@gmail.com, devel@driverdev.osuosl.org,
  linux-kernel@vger.kernel.org, lkcamp@lists.libreplanetbr.org,
  trivial@kernel.org
-Subject: [PATCH] staging: rtl8712: align block comments
-Date: Sun,  6 Oct 2019 17:34:20 -0300
-Message-Id: <20191006203420.11202-1-gabrielabittencourt00@gmail.com>
+Subject: [PATCH] staging: rtl8712: align arguments with open parenthesis
+Date: Sun,  6 Oct 2019 17:51:35 -0300
+Message-Id: <20191006205135.11791-1-gabrielabittencourt00@gmail.com>
 X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -93,28 +93,26 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Cleans up warnings of "Block comments should align the * on each line"
+Cleans up checks of "Alignment should match open parenthesis"
 
 Signed-off-by: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
 ---
- drivers/staging/rtl8712/recv_linux.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/rtl8712/recv_linux.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/staging/rtl8712/recv_linux.c b/drivers/staging/rtl8712/recv_linux.c
-index 84c4c8580f9a..70a4dcd4a1e5 100644
+index 70a4dcd4a1e5..808f21c5767a 100644
 --- a/drivers/staging/rtl8712/recv_linux.c
 +++ b/drivers/staging/rtl8712/recv_linux.c
-@@ -115,8 +115,8 @@ void r8712_recv_indicatepkt(struct _adapter *adapter,
- 	skb->protocol = eth_type_trans(skb, adapter->pnetdev);
- 	netif_rx(skb);
- 	recvframe->u.hdr.pkt = NULL; /* pointers to NULL before
--					* r8712_free_recvframe()
--					*/
-+				      * r8712_free_recvframe()
-+				      */
- 	r8712_free_recvframe(recvframe, free_recv_queue);
- 	return;
- _recv_indicatepkt_drop:
+@@ -61,7 +61,7 @@ int r8712_os_recvbuf_resource_alloc(struct _adapter *padapter,
+ 
+ /*free os related resource in struct recv_buf*/
+ int r8712_os_recvbuf_resource_free(struct _adapter *padapter,
+-			     struct recv_buf *precvbuf)
++				   struct recv_buf *precvbuf)
+ {
+ 	if (precvbuf->pskb)
+ 		dev_kfree_skb_any(precvbuf->pskb);
 -- 
 2.20.1
 
