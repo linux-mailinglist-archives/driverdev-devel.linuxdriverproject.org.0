@@ -1,76 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 56E5ECD8B6
-	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Oct 2019 20:45:45 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id AB8B3CD8BD
+	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Oct 2019 20:48:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id B2ECF204D4;
-	Sun,  6 Oct 2019 18:45:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 308CD85D11;
+	Sun,  6 Oct 2019 18:48:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id x17d0jtsV33x; Sun,  6 Oct 2019 18:45:42 +0000 (UTC)
+	with ESMTP id 4NZ66kjFfR0j; Sun,  6 Oct 2019 18:48:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7945420401;
-	Sun,  6 Oct 2019 18:45:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AACC285C77;
+	Sun,  6 Oct 2019 18:48:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4D8261BF46A
- for <devel@linuxdriverproject.org>; Sun,  6 Oct 2019 18:45:38 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E85A11BF46A
+ for <devel@linuxdriverproject.org>; Sun,  6 Oct 2019 18:48:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 44BAF86D11
- for <devel@linuxdriverproject.org>; Sun,  6 Oct 2019 18:45:38 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id DE5D386252
+ for <devel@linuxdriverproject.org>; Sun,  6 Oct 2019 18:48:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5tbcjSutGi2a for <devel@linuxdriverproject.org>;
- Sun,  6 Oct 2019 18:45:36 +0000 (UTC)
+ with ESMTP id rsznLiBNnHKo for <devel@linuxdriverproject.org>;
+ Sun,  6 Oct 2019 18:48:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
- [209.85.128.66])
- by hemlock.osuosl.org (Postfix) with ESMTPS id EA2068660A
- for <devel@driverdev.osuosl.org>; Sun,  6 Oct 2019 18:45:35 +0000 (UTC)
-Received: by mail-wm1-f66.google.com with SMTP id a6so10284301wma.5
- for <devel@driverdev.osuosl.org>; Sun, 06 Oct 2019 11:45:35 -0700 (PDT)
+Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
+ [209.85.221.68])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E120385F6D
+ for <devel@driverdev.osuosl.org>; Sun,  6 Oct 2019 18:48:43 +0000 (UTC)
+Received: by mail-wr1-f68.google.com with SMTP id p14so11723597wro.4
+ for <devel@driverdev.osuosl.org>; Sun, 06 Oct 2019 11:48:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
  bh=7Ryt44dYF+Okzl6PcwuHu8tX6xIio9b6pLvqbXSxoGw=;
- b=eNEXFy16//OMOnrla/5phF7B1i2UyMD183QB619gmOb+MsXwdp1G559C7zzNZmcgxj
- GbO+xuCd92PDKL62/aD+UD1zMeMlYW0muQ8yUvpttSLZV98WVt8BTRVquIUc7kvWpa2c
- LnCrKDh0Tyg66hkOa78rSS8AGAZA1hFns8tPkvhBRYDR4148qBtIdUanzj6Z90mdV5dn
- HVZtQdLHHXbA+BqZa+tdC1pd+0BG5TdcmIrdbbp4yx3lSCzrnmzOO0o7nJNI/ZebbbGN
- wKv8XaX4Mh0MjxQ6ZGXATGBX34RhGs9iqwTcW4Xv7XN6dR2OMzP9svdgUoeP0NLcyOA+
- TudA==
+ b=IUMJUuDSyGC30dYtWcqFZg0pw9BmW0YroviA+PkfOUjpUqkXlTZf2vIVVdoizOTW7V
+ wzob5JK8fY1kNAJ68SVj5tqVoP75rcrjuOK4ds/K5OM4bokrur8UbAUIm4cNB6h7QMrQ
+ 41WWskkUWLDuZtF6Hq7jzTyWcuFBMIIQsq2dPzxO4n/IVtiLGHO+Q6RAZV2Ae1Qu8H2f
+ f7EMyUZ2bf/JKN6gjZI/iBahHCLcSwp3lVgihL5CUptJ5YY9sDgqsE7S1BnvwREIv95U
+ Lq3u98GiNKtIFr+wJZncX4/zPMZVqECmE4zTig8t5Wnry35aIYLbBL2nM+QrQmdEfVVs
+ c3UQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
  bh=7Ryt44dYF+Okzl6PcwuHu8tX6xIio9b6pLvqbXSxoGw=;
- b=RROAyT7FEzvznGdpX4N3O5xwYHNzf5U+3BOBYvGJShy/KO1HRq7Ge/odeGxIWNvdYH
- a+0ljto/C1LQ+MmhW+zO1kk1Y6NNkgx6aZmmu+5l9wbIk9ZqUeWvbKjX99qAs+5ICd9F
- r/GyFkfAeMsXzukrLRkZkxKu7rxWzGwpF5BrSK2H7LxhULobifFdbUF1zqlc8Ux4CxIb
- /PBJfP5deHOte1J35gej1y0aQ4fnjiN9SNRwqDvNCqj4AhMOwIgXQN8/1nlwictpSoxw
- Avy9FMgU8kPvZrx8xghKKqAXu1GQs5hV0IkF0RfRD/QLe2qs7yqOUm+uoeLGtvuEs3m/
- DRSw==
-X-Gm-Message-State: APjAAAVemw2GkIFZ3IQo6PBlg8AnVmb29zDLMUBndPHY3GsiDbD6KdG2
- wHRBBxlcH5kgbGjvFGcK2Q==
-X-Google-Smtp-Source: APXvYqy0PZGhtELWmehD0sPE/LxSPcKpneJR6YQHUlQlmztU96zitOq8IboYZm4dEaPbMiO7XR09yw==
-X-Received: by 2002:a7b:c0d4:: with SMTP id s20mr18622742wmh.101.1570387533861; 
- Sun, 06 Oct 2019 11:45:33 -0700 (PDT)
+ b=D6gcDveBdM0hrfWaT5rYY2sb2JqQxEadfQUTAPWnetLmI+489pcYv9rR9wBvem7GT0
+ dUV2KXrASBCR5nlSd0V5/fj3OCLOwbntQMImRkqyaACtHjgXE7vmGdpUInlIMc6M11ce
+ ce/m+nrKibl5Ll5PoVnDTkxzCxUKr3BmcqTtV1v6cAcRgcX1+RZ7dxR15Ej3C5qg7TWL
+ +zldzm5G9gWMS/HldG7xohPjK0eRYArM73PXubyAw5ifJT68INfwCGmfw3ZhMRq2sKdt
+ txT8z8qGmoE2Xo8CMv2dx3AeWar6DC8QygcDlaGST4Eyp36hXGXLEi90pmLXuglQ7QqM
+ ndXA==
+X-Gm-Message-State: APjAAAUVA+RoCFTBaoVOxEg90lSbPCEu+ID3I1/wqDtu3DcPH7UGiCD+
+ xs0qBwlZtoNDbxylfeYcTg==
+X-Google-Smtp-Source: APXvYqzCBjsK1nC7SNMpJBVqz0t+NbklCve6YAHvcZWceoftzU2Xe1HU8R+hrIXURuVcgrGGurkZpQ==
+X-Received: by 2002:a05:6000:1632:: with SMTP id
+ v18mr20634231wrb.61.1570387722052; 
+ Sun, 06 Oct 2019 11:48:42 -0700 (PDT)
 Received: from ninjahub.lan (host-92-15-175-166.as43234.net. [92.15.175.166])
  by smtp.googlemail.com with ESMTPSA id
- t17sm28212757wrp.72.2019.10.06.11.45.32
+ a3sm23689372wmc.3.2019.10.06.11.48.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 06 Oct 2019 11:45:33 -0700 (PDT)
+ Sun, 06 Oct 2019 11:48:41 -0700 (PDT)
 From: Jules Irenge <jbi.octave@gmail.com>
-To: outreachy@googlegroups.com
+To: outreachy-kernel@googlegroups.com
 Subject: [PATCH] staging: comedi: Capitalize macro name to fix camelcase
  checkpatch warning
-Date: Sun,  6 Oct 2019 19:45:21 +0100
-Message-Id: <20191006184521.11849-1-jbi.octave@gmail.com>
+Date: Sun,  6 Oct 2019 19:48:27 +0100
+Message-Id: <20191006184827.12021-1-jbi.octave@gmail.com>
 X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
