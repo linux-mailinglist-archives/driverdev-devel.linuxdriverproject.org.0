@@ -1,75 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8C9EFCEE02
-	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Oct 2019 22:50:37 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C91CCEE0C
+	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Oct 2019 22:53:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 96459842F6;
-	Mon,  7 Oct 2019 20:50:34 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C292A87C69;
+	Mon,  7 Oct 2019 20:53:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aVPlflqccmlh; Mon,  7 Oct 2019 20:50:33 +0000 (UTC)
+	with ESMTP id grNUJJBHuSIT; Mon,  7 Oct 2019 20:53:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D13CC811F6;
-	Mon,  7 Oct 2019 20:50:30 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1D0D587BEE;
+	Mon,  7 Oct 2019 20:53:03 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8A7631BF387
- for <devel@linuxdriverproject.org>; Mon,  7 Oct 2019 20:50:26 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2432A1BF387
+ for <devel@linuxdriverproject.org>; Mon,  7 Oct 2019 20:53:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6AE1F85FAD
- for <devel@linuxdriverproject.org>; Mon,  7 Oct 2019 20:50:26 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1C0CE81B82
+ for <devel@linuxdriverproject.org>; Mon,  7 Oct 2019 20:53:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id C5HJ1wJXPRMe for <devel@linuxdriverproject.org>;
- Mon,  7 Oct 2019 20:50:25 +0000 (UTC)
+ with ESMTP id BtjmyxGcCusD for <devel@linuxdriverproject.org>;
+ Mon,  7 Oct 2019 20:53:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f194.google.com (mail-oi1-f194.google.com
- [209.85.167.194])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3D029859BA
- for <devel@driverdev.osuosl.org>; Mon,  7 Oct 2019 20:50:25 +0000 (UTC)
-Received: by mail-oi1-f194.google.com with SMTP id m16so12946788oic.5
- for <devel@driverdev.osuosl.org>; Mon, 07 Oct 2019 13:50:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to:cc
+Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
+ [209.85.128.66])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id EC24E816D2
+ for <devel@driverdev.osuosl.org>; Mon,  7 Oct 2019 20:52:59 +0000 (UTC)
+Received: by mail-wm1-f66.google.com with SMTP id p7so866906wmp.4
+ for <devel@driverdev.osuosl.org>; Mon, 07 Oct 2019 13:52:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=fcK8OAMj1NXGHtsn+eBL0qYf9+gr3KEaFJ+KVKmEmZY=;
- b=DODjiraLf068HcX29CyMdrHKMVss5CMwF3IF6QSTNwHG3cxEEFKnCyo/jxIY41DmIY
- CUxftEANh/zrUwxvo8s71HTSMFLS2tpW2SYBhiKrCvzcLanFoeIN7fQTqCx0Zjdi3NeN
- pEGc6y6mnqrjKvNhBmRZQlzwohGgeioeQq4XNF73gro5w26vRZf5C8Fdo8pTu+pVY+HL
- A+PaUClT0zoSqUVw+J+ALCaB9CGOQGO87q+NpGkyue7bduAEU56SPVdETQz1UzPQSt/v
- hO8f1T4z45WWslhN6/d7dNJG3WqrwktpOGuuOSlXh0i0mYAw5e72r0uQllYsN8HBxgOq
- 58Fw==
+ bh=yGegubLDgRiHrQ9zNZeb9rG5UTn4EJm1O9mdTVGELtA=;
+ b=o3TB8/x9LdCW2ttzTgWs1cgKCyWgZZ63WidwsCumjLdEXwnyo32PE0M53V8e5qz8ja
+ cdiW/YmEW1QTPJTrJKK/AXCXz1sO4SJASGxG+ZRcvZnaLEVp/xPOMJL7YmjP0iPbBkjx
+ L0Bpt/efowGvzV+TciIYTqOhQDBtLgdsIpYJfkckpTB45E67kz+t7Ta1KOOM+0rhiJcd
+ fZy7hkZyRcwEE2BVXppOT1tPGk2w2KUf97b6IoaYCEdApLsMZipo18JKHQAfgyNLorol
+ JycYwndVNqkkL9Hgem2dgVAfOVylD89MffWBqrpKtwvJVf2muSjQPD7HDm678mB7m5p/
+ LNiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=fcK8OAMj1NXGHtsn+eBL0qYf9+gr3KEaFJ+KVKmEmZY=;
- b=lx86nKsyECTuOusv22zkqm5qtHmuRZiQolKkhIUkIIJqIDuhVkzj7dnz10d0kzoWWz
- ICL7dY3XsZ1oVAaAa7ZzoXjuCoG9MOVL6GY+oV15OhQGR4jZZQpLY+tIbX0uPIqp6TdT
- k3YXnaPil+rGixdXCEhAs9oYOZ4uZ+p8+q6NgFdHrIUfCyMAJVQMwoUimOnS0TDOyaL2
- d+bkZM3E1JTVvolfGn5kH5HOZvuhQ0mNQutRtQwRQ2lBRL19Xq0kLCqVxk2lGuZNr4k2
- hlW2Yf3i6NWPbCdu/GaMiqpn27BX0XSeSd3uf0JiHnwIFhrMQ0VxLXC0V9772P0e2PF6
- C5Sw==
-X-Gm-Message-State: APjAAAUVB40OYOqrqZLzYhAKS8678N7Ab7OgvMP0kaLoInSlfL+1dqNk
- hw9XeCltArF2XQkVyJO3vn5RlmLhKlZoCvvJnJv/gw==
-X-Google-Smtp-Source: APXvYqxIHGh7mfNuVHXTLRJFNp9/uJzd7RruBHZ/ws9o8/h7q7R8934FeS+oWLKpbxCd5p43woxfMY4PUqH60G0l9qE=
-X-Received: by 2002:aca:da41:: with SMTP id r62mr938855oig.47.1570481423969;
- Mon, 07 Oct 2019 13:50:23 -0700 (PDT)
+ bh=yGegubLDgRiHrQ9zNZeb9rG5UTn4EJm1O9mdTVGELtA=;
+ b=m8AL1xCLJ6+j4395Bf6Se0hPTOzGYiM6h61Q2o3Hm20FcA3dPIkxQX7IbSBl2cZutO
+ xa8emFEKe75wHqmXS7Xt1l8cxZRojmpurncYkP+QUM13AzHl+eK9Nnp+8501neFqXpsY
+ DJ29kS7RxNikHEpA7sgHyc3M4+Td93Gnsv3XI9nus+vjWJBlIYTyG3K8XdE2lANCjzkd
+ 0uRwxr5D9iEzBbzFvFXLh1qjm2MSdigCwtktcJ3yJWlHgrQnxxF/57MSjx78S4OL80uA
+ ym4XF/Z7GMq0eRu9DP3FgJNcOOG2TqaN9bXuTF/33Mx4vbib9XjmnOQHYkQUgjvvs01R
+ SL+w==
+X-Gm-Message-State: APjAAAXjaHHm7wPp3mO6pP1PhQ9IaYc5zu8PDFqK+u+gGh5iyFIsk7Lj
+ RdhmEgFiOHGzSLfwsvdDxA==
+X-Google-Smtp-Source: APXvYqxx/YEbzYqqGs2Fsl4qXw42a0w/gpz+TYtf+1oUyOQG1GGDhH7ruMO1XUXTfdXr0n8XHx5DTQ==
+X-Received: by 2002:a7b:c10b:: with SMTP id w11mr854529wmi.108.1570481578097; 
+ Mon, 07 Oct 2019 13:52:58 -0700 (PDT)
+Received: from ninjahub.lan (host-92-15-175-166.as43234.net. [92.15.175.166])
+ by smtp.googlemail.com with ESMTPSA id
+ a2sm22961867wrt.45.2019.10.07.13.52.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 07 Oct 2019 13:52:57 -0700 (PDT)
+From: Jules Irenge <jbi.octave@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: rtl8712: Add comment to lock declaration
+Date: Mon,  7 Oct 2019 21:52:48 +0100
+Message-Id: <20191007205248.24466-1-jbi.octave@gmail.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-From: Jann Horn <jannh@google.com>
-Date: Mon, 7 Oct 2019 22:49:57 +0200
-Message-ID: <CAG48ez14Q0-F8LqsvcNbyR2o6gPW8SHXsm4u5jmD9MpsteM2Tw@mail.gmail.com>
-Subject: UAF read in print_binder_transaction_log_entry() on ANDROID_BINDERFS
- kernels
-To: Todd Kjos <tkjos@google.com>, Martijn Coenen <maco@android.com>, 
- =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>, 
- Joel Fernandes <joel@joelfernandes.org>,
- Christian Brauner <christian@brauner.io>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,149 +84,38 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- kernel list <linux-kernel@vger.kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ Jules Irenge <jbi.octave@gmail.com>, Larry.Finger@lwfinger.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SGkhCgpUaGVyZSBpcyBhIHVzZS1hZnRlci1mcmVlIHJlYWQgaW4gcHJpbnRfYmluZGVyX3RyYW5z
-YWN0aW9uX2xvZ19lbnRyeSgpCm9uIEFORFJPSURfQklOREVSRlMga2VybmVscyBiZWNhdXNlCnBy
-aW50X2JpbmRlcl90cmFuc2FjdGlvbl9sb2dfZW50cnkoKSBwcmludHMgdGhlIGNoYXIqIGUtPmNv
-bnRleHRfbmFtZQphcyBzdHJpbmcsIGFuZCBpZiB0aGUgdHJhbnNhY3Rpb24gb2NjdXJyZWQgb24g
-YSBiaW5kZXIgZGV2aWNlIGZyb20KYmluZGVyZnMsIGUtPmNvbnRleHRfbmFtZSBiZWxvbmdzIHRv
-IHRoZSBiaW5kZXIgZGV2aWNlIGFuZCBpcyBmcmVlZAp3aGVuIHRoZSBpbm9kZSBkaXNhcHBlYXJz
-LgoKTHVja2lseSB0aGlzIHNob3VsZG4ndCBoYXZlIHNlY3VyaXR5IGltcGxpY2F0aW9ucywgc2lu
-Y2U6CgphKSByZWFkaW5nIHRoZSBiaW5kZXIgdHJhbnNhY3Rpb24gbG9nIGlzIGFscmVhZHkgYSBw
-cmV0dHkgcHJpdmlsZWdlZCBvcGVyYXRpb24KYikgSSBjYW4ndCBmaW5kIGFueSBhY3R1YWwgdXNl
-cnMgb2YgQU5EUk9JRF9CSU5ERVJGUwoKSSBndWVzcyB0aGVyZSBhcmUgdGhyZWUgd2F5cyB0byBm
-aXggaXQ6CjEpIENyZWF0ZSBhIG5ldyBzaGFyZWQgZ2xvYmFsIHNwaW5sb2NrIGZvciBiaW5kZXJm
-c19ldmljdF9pbm9kZSgpIGFuZApiaW5kZXJfdHJhbnNhY3Rpb25fbG9nX3Nob3coKSwgYW5kIGxl
-dCBiaW5kZXJmc19ldmljdF9pbm9kZSgpIHNjYW4gdGhlCnRyYW5zYWN0aW9uIGxvZyBmb3IgcG9p
-bnRlcnMgdG8gaXRzIG5hbWUgYW5kIHJlcGxhY2UgdGhlbSB3aXRoCnBvaW50ZXJzIHRvIGEgc3Rh
-dGljYWxseS1hbGxvY2F0ZWQgc3RyaW5nICJ7REVMRVRFRH0iIG9yIHNvbWV0aGluZwpsaWtlIHRo
-YXQuCjIpIExldCB0aGUgdHJhbnNhY3Rpb24gbG9nIGNvbnRhaW4gbm9uLXJldXNhYmxlIGRldmlj
-ZSBpZGVudGlmaWVycwppbnN0ZWFkIG9mIG5hbWUgcG9pbnRlcnMsIGFuZCBsZXQgcHJpbnRfYmlu
-ZGVyX3RyYW5zYWN0aW9uX2xvZ19lbnRyeSgpCmxvb2sgdGhlbSB1cCBpbiBzb21ldGhpbmcgbGlr
-ZSBhIGhhc2h0YWJsZS4KMykgSnVzdCBjb3B5IHRoZSBuYW1lIGludG8gdGhlIHRyYW5zYWN0aW9u
-IGxvZyBldmVyeSB0aW1lLgoKSSdtIG5vdCBzdXJlIHdoaWNoIG9uZSBpcyBiZXR0ZXIsIG9yIHdo
-ZXRoZXIgdGhlcmUncyBhIG5pY2VyIGZvdXJ0aApvcHRpb24sIHNvIEknbSBsZWF2aW5nIHdyaXRp
-bmcgYSBwYXRjaCBmb3IgdGhpcyB0byB5J2FsbC4KCgpUcmlnZ2VyIGluc3RydWN0aW9ucyAocmVx
-dWlyZXMgeW91IHRvIGhhdmUgc29tZSBoZWxwZXJzIHRoYXQgY2FuCnJlZ2lzdGVyIGEgY29udGV4
-dCBtYW5hZ2VyIGFuZCBzZW5kIHNvbWUgdHJhbnNhY3Rpb24gdG8gaXQpOgo9PT09PT09PT09PT09
-PQpyb290QHRlc3Q6L2hvbWUvdXNlciMgbWtkaXIgL3RtcC9iaW5kZXIKcm9vdEB0ZXN0Oi9ob21l
-L3VzZXIjIG1vdW50IC10IGJpbmRlciAtbyBzdGF0cz1nbG9iYWwgL2Rldi9udWxsIC90bXAvYmlu
-ZGVyCnJvb3RAdGVzdDovaG9tZS91c2VyIyBscyAtbCAvdG1wL2JpbmRlcgp0b3RhbCAwCmNydy0t
-LS0tLS0gMSByb290IHJvb3QgMjQ4LCAxIE9jdCAgNyAyMDozNCBiaW5kZXIKY3J3LS0tLS0tLSAx
-IHJvb3Qgcm9vdCAyNDgsIDAgT2N0ICA3IDIwOjM0IGJpbmRlci1jb250cm9sCmRyd3hyLXhyLXgg
-MyByb290IHJvb3QgICAgICAwIE9jdCAgNyAyMDozNCBiaW5kZXJfbG9ncwpjcnctLS0tLS0tIDEg
-cm9vdCByb290IDI0OCwgMiBPY3QgIDcgMjA6MzQgaHdiaW5kZXIKY3J3LS0tLS0tLSAxIHJvb3Qg
-cm9vdCAyNDgsIDMgT2N0ICA3IDIwOjM0IHZuZGJpbmRlcgpyb290QHRlc3Q6L2hvbWUvdXNlciMg
-bG4gLXMgL3RtcC9iaW5kZXIvYmluZGVyIC9kZXYvYmluZGVyCltydW4gc29tZSBzaW1wbGUgYmlu
-ZGVyIGRlbW8gY29kZSB0byB0ZW1wb3JhcmlseSByZWdpc3RlciBhIGNvbnRleHQKbWFuYWdlciBh
-bmQgc2VuZCBhIGJpbmRlciB0cmFuc2FjdGlvbl0Kcm9vdEB0ZXN0Oi9ob21lL3VzZXIjIHJtIC90
-bXAvYmluZGVyL2JpbmRlcgpyb290QHRlc3Q6L2hvbWUvdXNlciMgY2F0IC90bXAvYmluZGVyL2Jp
-bmRlcl9sb2dzL3RyYW5zYWN0aW9uX2xvZwoyOiBjYWxsICBmcm9tIDIyNzc6MjI3NyB0byAyMjcz
-OjAgY29udGV4dCBA77+977+977+977+977+977+977+9IG5vZGUgMSBoYW5kbGUgMApzaXplIDI0
-OjggcmV0IDAvMCBsPTAKNTogY2FsbCAgZnJvbSAyMjczOjIyNzMgdG8gMjI3NzoyMjc3IGNvbnRl
-eHQgQO+/ve+/ve+/ve+/ve+/ve+/ve+/vSBub2RlIDMgaGFuZGxlIDEKc2l6ZSAwOjAgcmV0IDAv
-MCBsPTAKNjogcmVwbHkgZnJvbSAyMjc3OjIyNzcgdG8gMjI3MzoyMjczIGNvbnRleHQgQO+/ve+/
-ve+/ve+/ve+/ve+/ve+/vSBub2RlIDAgaGFuZGxlIDAKc2l6ZSA0OjAgcmV0IDAvMCBsPTAKNzog
-cmVwbHkgZnJvbSAyMjczOjIyNzMgdG8gMjI3NzoyMjc3IGNvbnRleHQgQO+/ve+/ve+/ve+/ve+/
-ve+/ve+/vSBub2RlIDAgaGFuZGxlIDAKc2l6ZSA0OjAgcmV0IDAvMCBsPTAKcm9vdEB0ZXN0Oi9o
-b21lL3VzZXIjCj09PT09PT09PT09PT09CgpBU0FOIHNwbGF0OgpbICAzMzMuMzAwNzUzXSA9PT09
-PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
-PT09PT0KWyAgMzMzLjMwMzE5N10gQlVHOiBLQVNBTjogdXNlLWFmdGVyLWZyZWUgaW4gc3RyaW5n
-X25vY2hlY2srMHg5ZC8weDE2MApbICAzMzMuMzA1MDgxXSBSZWFkIG9mIHNpemUgMSBhdCBhZGRy
-IGZmZmY4ODgwYjA5ODEyNTggYnkgdGFzayBjYXQvMjI3OQoKWyAgMzMzLjMwNzQxNV0gQ1BVOiAx
-IFBJRDogMjI3OSBDb21tOiBjYXQgTm90IHRhaW50ZWQgNS40LjAtcmMxKyAjNTEzClsgIDMzMy4z
-MDkzMDRdIEhhcmR3YXJlIG5hbWU6IFFFTVUgU3RhbmRhcmQgUEMgKGk0NDBGWCArIFBJSVgsIDE5
-OTYpLApCSU9TIDEuMTIuMC0xIDA0LzAxLzIwMTQKWyAgMzMzLjMxMDk4N10gQ2FsbCBUcmFjZToK
-WyAgMzMzLjMxMjAzMl0gIGR1bXBfc3RhY2srMHg3Yy8weGMwClsgIDMzMy4zMTI1ODFdICA/IHN0
-cmluZ19ub2NoZWNrKzB4OWQvMHgxNjAKWyAgMzMzLjMxMzE1N10gIHByaW50X2FkZHJlc3NfZGVz
-Y3JpcHRpb24uY29uc3Rwcm9wLjcrMHgzNi8weDUwClsgIDMzMy4zMTQwMzBdICA/IHN0cmluZ19u
-b2NoZWNrKzB4OWQvMHgxNjAKWyAgMzMzLjMxNDYwM10gID8gc3RyaW5nX25vY2hlY2srMHg5ZC8w
-eDE2MApbICAzMzMuMzE1MjM2XSAgX19rYXNhbl9yZXBvcnQuY29sZC4xMCsweDFhLzB4MzUKWyAg
-MzMzLjMxNTk3Ml0gID8gc3RyaW5nX25vY2hlY2srMHg5ZC8weDE2MApbICAzMzMuMzE2NTQ1XSAg
-a2FzYW5fcmVwb3J0KzB4ZS8weDIwClsgIDMzMy4zMTcxMDRdICBzdHJpbmdfbm9jaGVjaysweDlk
-LzB4MTYwClsgIDMzMy4zMTc2NTJdICA/IHdpZGVuX3N0cmluZysweDE2MC8weDE2MApbICAzMzMu
-MzE4MjcwXSAgPyBzdHJpbmdfbm9jaGVjaysweDE2MC8weDE2MApbICAzMzMuMzE4ODU3XSAgPyB1
-bndpbmRfZ2V0X3JldHVybl9hZGRyZXNzKzB4MmEvMHg0MApbICAzMzMuMzE5NjM2XSAgPyBwcm9m
-aWxlX3NldHVwLmNvbGQuOSsweDk2LzB4OTYKWyAgMzMzLjMyMDM1OV0gIHN0cmluZysweGI2LzB4
-YzAKWyAgMzMzLjMyMDgwMF0gID8gaGV4X3N0cmluZysweDI4MC8weDI4MApbICAzMzMuMzIxMzk4
-XSAgdnNucHJpbnRmKzB4MjBjLzB4NzgwClsgIDMzMy4zMjE4OThdICA/IG51bV90b19zdHIrMHgx
-ODAvMHgxODAKWyAgMzMzLjMyMjUwM10gID8gX19rYXNhbl9rbWFsbG9jLmNvbnN0cHJvcC42KzB4
-YzEvMHhkMApbICAzMzMuMzIzMjM1XSAgPyB2ZnNfcmVhZCsweGJjLzB4MWUwClsgIDMzMy4zMjM4
-MTRdICA/IGtzeXNfcmVhZCsweGI1LzB4MTUwClsgIDMzMy4zMjQzMjNdICA/IGRvX3N5c2NhbGxf
-NjQrMHhiOS8weDNiMApbICAzMzMuMzI0OTQ4XSAgPyBlbnRyeV9TWVNDQUxMXzY0X2FmdGVyX2h3
-ZnJhbWUrMHg0OS8weGJlClsgIDMzMy4zMjU3NTZdICBzZXFfdnByaW50ZisweDc4LzB4YjAKWyAg
-MzMzLjMyNjI1M10gIHNlcV9wcmludGYrMHg5Ni8weGMwClsgIDMzMy4zMjcxMzJdICA/IHNlcV92
-cHJpbnRmKzB4YjAvMHhiMApbICAzMzMuMzI3Njc4XSAgPyBtYXRjaF9oZWxkX2xvY2srMHgyZS8w
-eDI0MApbICAzMzMuMzI4NDUwXSAgYmluZGVyX3RyYW5zYWN0aW9uX2xvZ19zaG93KzB4MjM3LzB4
-MmQwClsgIDMzMy4zMjkxNjNdICBzZXFfcmVhZCsweDI2Ni8weDY5MApbICAzMzMuMzI5NzA1XSAg
-dmZzX3JlYWQrMHhiYy8weDFlMApbICAzMzMuMzMwMTc4XSAga3N5c19yZWFkKzB4YjUvMHgxNTAK
-WyAgMzMzLjMzMDcyNF0gID8ga2VybmVsX3dyaXRlKzB4YjAvMHhiMApbICAzMzMuMzMxMjU3XSAg
-PyB0cmFjZV9oYXJkaXJxc19vZmZfY2FsbGVyKzB4NTcvMHgxMzAKWyAgMzMzLjMzMjA0NV0gID8g
-bWFya19oZWxkX2xvY2tzKzB4MjkvMHhhMApbICAzMzMuMzMyNjc4XSAgPyBkb19zeXNjYWxsXzY0
-KzB4NmIvMHgzYjAKWyAgMzMzLjMzMzIzNV0gIGRvX3N5c2NhbGxfNjQrMHhiOS8weDNiMApbICAz
-MzMuMzMzODU2XSAgZW50cnlfU1lTQ0FMTF82NF9hZnRlcl9od2ZyYW1lKzB4NDkvMHhiZQpbICAz
-MzMuMzM0NjM1XSBSSVA6IDAwMzM6MHg3ZmJiYjk1ZDQ0NjEKWyAgMzMzLjMzNTE1M10gQ29kZTog
-ZmUgZmYgZmYgNTAgNDggOGQgM2QgZmUgZDAgMDkgMDAgZTggZTkgMDMgMDIgMDAKNjYgMGYgMWYg
-ODQgMDAgMDAgMDAgMDAgMDAgNDggOGQgMDUgOTkgNjIgMGQgMDAgOGIgMDAgODUgYzAgNzUgMTMg
-MzEKYzAgMGYgMDUgPDQ4PiAzZCAwMCBmMCBmZiBmZiA3NyA1NyBjMyA2NiAwZiAxZiA0NCAwMCAw
-MCA0MSA1NCA0OSA4OSBkNAo1NSA0OApbICAzMzMuMzM3OTUwXSBSU1A6IDAwMmI6MDAwMDdmZmNi
-ZTY0MzhlOCBFRkxBR1M6IDAwMDAwMjQ2IE9SSUdfUkFYOgowMDAwMDAwMDAwMDAwMDAwClsgIDMz
-My4zMzkwNzJdIFJBWDogZmZmZmZmZmZmZmZmZmZkYSBSQlg6IDAwMDAwMDAwMDAwMjAwMDAgUkNY
-OiAwMDAwN2ZiYmI5NWQ0NDYxClsgIDMzMy4zNDAxNTddIFJEWDogMDAwMDAwMDAwMDAyMDAwMCBS
-U0k6IDAwMDA3ZmJiYjkzMjQwMDAgUkRJOiAwMDAwMDAwMDAwMDAwMDAzClsgIDMzMy4zNDEzMjBd
-IFJCUDogMDAwMDdmYmJiOTMyNDAwMCBSMDg6IDAwMDAwMDAwZmZmZmZmZmYgUjA5OiAwMDAwMDAw
-MDAwMDAwMDAwClsgIDMzMy4zNDI0NTRdIFIxMDogZmZmZmZmZmZmZmZmZmI5YyBSMTE6IDAwMDAw
-MDAwMDAwMDAyNDYgUjEyOiAwMDAwN2ZiYmI5MzI0MDAwClsgIDMzMy4zNDM1NTBdIFIxMzogMDAw
-MDAwMDAwMDAwMDAwMyBSMTQ6IDAwMDAwMDAwMDAwMDBmZmYgUjE1OiAwMDAwMDAwMDAwMDIwMDAw
-CgpbICAzMzMuMzQ0ODQ1XSBBbGxvY2F0ZWQgYnkgdGFzayAyMjU5OgpbICAzMzMuMzQ1NDE2XSAg
-c2F2ZV9zdGFjaysweDE5LzB4ODAKWyAgMzMzLjM0NTg5OV0gIF9fa2FzYW5fa21hbGxvYy5jb25z
-dHByb3AuNisweGMxLzB4ZDAKWyAgMzMzLjM0NjYzNl0gIF9fa21hbGxvY190cmFja19jYWxsZXIr
-MHhmNC8weDJlMApbICAzMzMuMzQ3MjcxXSAga21lbWR1cCsweDE3LzB4NDAKWyAgMzMzLjM0Nzc5
-Nl0gIGJpbmRlcmZzX2JpbmRlcl9kZXZpY2VfY3JlYXRlLmlzcmEuNisweDIxNy8weDUzMApbICAz
-MzMuMzQ4Njc0XSAgYmluZGVyZnNfZmlsbF9zdXBlcisweDQ4Ni8weDgxZQpbICAzMzMuMzQ5MzA5
-XSAgbW91bnRfbm9kZXYrMHg0MS8weGIwClsgIDMzMy4zNDk4NjBdICBsZWdhY3lfZ2V0X3RyZWUr
-MHg3Yi8weGMwClsgIDMzMy4zNTAzOThdICB2ZnNfZ2V0X3RyZWUrMHg0MC8weDEzMApbICAzMzMu
-MzUwOTcwXSAgZG9fbW91bnQrMHhhY2IvMHhlYTAKWyAgMzMzLjM1MTQ0OV0gIGtzeXNfbW91bnQr
-MHhiMS8weGQwClsgIDMzMy4zNTIwMDddICBfX3g2NF9zeXNfbW91bnQrMHg1ZC8weDcwClsgIDMz
-My4zNTI1NDVdICBkb19zeXNjYWxsXzY0KzB4YjkvMHgzYjAKWyAgMzMzLjM1MzE0NF0gIGVudHJ5
-X1NZU0NBTExfNjRfYWZ0ZXJfaHdmcmFtZSsweDQ5LzB4YmUKClsgIDMzMy4zNTQxNDRdIEZyZWVk
-IGJ5IHRhc2sgMjI3ODoKWyAgMzMzLjM1NDU5OF0gIHNhdmVfc3RhY2srMHgxOS8weDgwClsgIDMz
-My4zNTUxMzVdICBfX2thc2FuX3NsYWJfZnJlZSsweDEyZS8weDE4MApbICAzMzMuMzU1NzM0XSAg
-a2ZyZWUrMHhlNi8weDMxMApbICAzMzMuMzU2MjM0XSAgYmluZGVyZnNfZXZpY3RfaW5vZGUrMHhi
-OC8weGQwClsgIDMzMy4zNTY4MzFdICBldmljdCsweDE2Zi8weDI5MApbICAzMzMuMzU4MDgxXSAg
-ZG9fdW5saW5rYXQrMHgyZjYvMHg0MjAKWyAgMzMzLjM1ODU5M10gIGRvX3N5c2NhbGxfNjQrMHhi
-OS8weDNiMApbICAzMzMuMzU5MTc2XSAgZW50cnlfU1lTQ0FMTF82NF9hZnRlcl9od2ZyYW1lKzB4
-NDkvMHhiZQoKWyAgMzMzLjM2MDE5Nl0gVGhlIGJ1Z2d5IGFkZHJlc3MgYmVsb25ncyB0byB0aGUg
-b2JqZWN0IGF0IGZmZmY4ODgwYjA5ODEyNTgKICAgICAgICAgICAgICAgIHdoaWNoIGJlbG9uZ3Mg
-dG8gdGhlIGNhY2hlIGttYWxsb2MtOCBvZiBzaXplIDgKWyAgMzMzLjM2MTk5MV0gVGhlIGJ1Z2d5
-IGFkZHJlc3MgaXMgbG9jYXRlZCAwIGJ5dGVzIGluc2lkZSBvZgogICAgICAgICAgICAgICAgOC1i
-eXRlIHJlZ2lvbiBbZmZmZjg4ODBiMDk4MTI1OCwgZmZmZjg4ODBiMDk4MTI2MCkKWyAgMzMzLjM2
-Mzc5Nl0gVGhlIGJ1Z2d5IGFkZHJlc3MgYmVsb25ncyB0byB0aGUgcGFnZToKWyAgMzMzLjM2NDUz
-OF0gcGFnZTpmZmZmZWEwMDAyYzI2MDQwIHJlZmNvdW50OjEgbWFwY291bnQ6MAptYXBwaW5nOmZm
-ZmY4ODgwYjZjMDNjODAgaW5kZXg6MHgwClsgIDMzMy4zNjU3NjVdIGZsYWdzOiAweDFmZmZjMDAw
-MDAwMDIwMChzbGFiKQpbICAzMzMuMzY2NDAyXSByYXc6IDAxZmZmYzAwMDAwMDAyMDAgZmZmZmVh
-MDAwMmNiMWQ4MCAwMDAwMDAxNDAwMDAwMDE0CmZmZmY4ODgwYjZjMDNjODAKWyAgMzMzLjM2NzU0
-Nl0gcmF3OiAwMDAwMDAwMDAwMDAwMDAwIDAwMDAwMDAwMDBhYTAwYWEgMDAwMDAwMDFmZmZmZmZm
-ZgowMDAwMDAwMDAwMDAwMDAwClsgIDMzMy4zNjkwMzBdIHBhZ2UgZHVtcGVkIGJlY2F1c2U6IGth
-c2FuOiBiYWQgYWNjZXNzIGRldGVjdGVkCgpbICAzMzMuMzcwMDk1XSBNZW1vcnkgc3RhdGUgYXJv
-dW5kIHRoZSBidWdneSBhZGRyZXNzOgpbICAzMzMuMzcwODI0XSAgZmZmZjg4ODBiMDk4MTEwMDog
-ZmMgZmIgZmMgZmMgZmIgZmMgZmMgZmIgZmMgZmMgZmIgZmMKZmMgZmIgZmMgZmMKWyAgMzMzLjM3
-MTkwN10gIGZmZmY4ODgwYjA5ODExODA6IGZiIGZjIGZjIGZiIGZjIGZjIGZiIGZjIGZjIGZiIGZj
-IGZjCmZiIGZjIGZjIGZiClsgIDMzMy4zNzI5NjldID5mZmZmODg4MGIwOTgxMjAwOiBmYyBmYyBm
-YiBmYyBmYyBmYiBmYyBmYyBmYiBmYyBmYyBmYgpmYyBmYyBmYiBmYwpbICAzMzMuMzc0MDMzXSAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXgpbICAz
-MzMuMzc0ODg0XSAgZmZmZjg4ODBiMDk4MTI4MDogZmMgZmIgZmMgZmMgZmIgZmMgZmMgZmIgZmMg
-ZmMgZmIgZmMKZmMgZmIgZmMgZmMKWyAgMzMzLjM3NTk1N10gIGZmZmY4ODgwYjA5ODEzMDA6IGZi
-IGZjIGZjIGZiIGZjIGZjIGZiIGZjIGZjIGZiIGZjIGZjCmZiIGZjIGZjIGZiClsgIDMzMy4zNzcw
-MTNdID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
-PT09PT09PT09PT09PQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRw
-Oi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2
-ZXJkZXYtZGV2ZWwK
+Add comment to spinlock declaration to fix warning issued by checkpatch.pl
+"CHECK: spinlock_t definition without comment".
+
+Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+---
+ drivers/staging/rtl8712/drv_types.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/rtl8712/drv_types.h b/drivers/staging/rtl8712/drv_types.h
+index 0c4325073c63..960d8709aada 100644
+--- a/drivers/staging/rtl8712/drv_types.h
++++ b/drivers/staging/rtl8712/drv_types.h
+@@ -160,7 +160,7 @@ struct _adapter {
+ 	int pid; /*process id from UI*/
+ 	struct work_struct wk_filter_rx_ff0;
+ 	u8 blnEnableRxFF0Filter;
+-	spinlock_t lock_rx_ff0_filter;
++	spinlock_t lock_rx_ff0_filter; /*spinlock to protect interrupt request*/
+ 	const struct firmware *fw;
+ 	struct usb_interface *pusb_intf;
+ 	struct mutex mutex_start;
+-- 
+2.21.0
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
