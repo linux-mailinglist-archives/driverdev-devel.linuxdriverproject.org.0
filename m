@@ -1,121 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E35C8CEC40
-	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Oct 2019 20:57:57 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9BE6DCEC63
+	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Oct 2019 21:01:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 841EA2154A;
-	Mon,  7 Oct 2019 18:57:54 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 627F987A5E;
+	Mon,  7 Oct 2019 19:01:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yM3Swm9gRJbq; Mon,  7 Oct 2019 18:57:53 +0000 (UTC)
+	with ESMTP id asAavYpXLWio; Mon,  7 Oct 2019 19:01:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 17E3B204CF;
-	Mon,  7 Oct 2019 18:57:52 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9CB1886FAE;
+	Mon,  7 Oct 2019 19:01:17 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A37571BF3EE
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  7 Oct 2019 18:57:50 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 3AE381BF3EE
+ for <devel@linuxdriverproject.org>; Mon,  7 Oct 2019 19:01:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9B7C92046D
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  7 Oct 2019 18:57:50 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 35D4E84AE7
+ for <devel@linuxdriverproject.org>; Mon,  7 Oct 2019 19:01:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SLlIXAwoiAJC
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  7 Oct 2019 18:57:49 +0000 (UTC)
+ with ESMTP id TgjCRjrgAIZA for <devel@linuxdriverproject.org>;
+ Mon,  7 Oct 2019 19:01:12 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from APC01-SG2-obe.outbound.protection.outlook.com
- (mail-eopbgr1310121.outbound.protection.outlook.com [40.107.131.121])
- by silver.osuosl.org (Postfix) with ESMTPS id D75A7203F7
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  7 Oct 2019 18:57:48 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=cnoAuCuU5iiyu+FvHWOat7bQh+To8Ev2xBkCYFYX2oex0ojAPk9vrg7aJdrdvxw5CkutA6h27zcKX/0toVTnumO1JihOzi9RPoU5b+NxlnbdDQ7BWfBTnmP0Vd7FXjWuRS2Sb/AJ68Z26xcN42AeKpjdMqTPLmuftXC4lEmQ7iP5gwyoxHwCXpgFuZZRCZuMirENDRu1j4Oc5QfbZsMpbIIAL6MjYLk9veDju477Ei4FUEsMbdORTd5bvkQ5UmgHVnZAxMIRpJGyJs5Q/hDUD4i7JCB0oyYsgB9+OYtXqKi83VM2dEzSJjM73GyaVZx+3WWWDRWRTO5A8mlvTKUa4g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=KxoqGK84eMrAv8yOZ6WvCDlnwhKQS/d7aPRzIFy6ffg=;
- b=bVqQkstc1Ef45sR8jCjszoY/NyPOnNXgGqw9HjmxnQV2SbkVI/1Jbf8DikGloUzd6loWviqIfWJKka8wsQ61U94RxLJlxc4gEvAQdulyaNDmt9/49K4wNXLJNeSkocp6p+xqXdMzowmU4qokj2oFu56jqZ8EYAyJSWCJAbVBIwWPxuQaPvvZ8iCJeKQlPID1ywScOtp+oLvSXxY40Jgk4E9sc7r03YlQwKhURMD3TYjr9AAmPf6UgJs4LWCI3BxRvAPyu66Dfv5x9ljPhL4obD1IIo7gmKboj3M0tFe1+0N86s2vGivmzSK/ZxoaKMytCnAwAfkRo/I4cSNw0OFMhg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microsoft.com; dmarc=pass action=none
- header.from=microsoft.com; dkim=pass header.d=microsoft.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=KxoqGK84eMrAv8yOZ6WvCDlnwhKQS/d7aPRzIFy6ffg=;
- b=bth3kC50hjrl7Tky59UBoBTPVS661UR8BPWFzTFL4OkPyoqKF1ljeDN6yNmUKwaqqQzgEetfrCseRleh948mtLJ2YPcBiXKx5mK9hr4tLtZAigUIpn0gZtuKSAs5fSDFgrdStaoauXQdG0IdntP2q1iqbF15/utsTc9I1orCQFU=
-Received: from PU1P153MB0169.APCP153.PROD.OUTLOOK.COM (10.170.189.13) by
- PU1P153MB0203.APCP153.PROD.OUTLOOK.COM (52.133.194.146) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2347.11; Mon, 7 Oct 2019 18:57:39 +0000
-Received: from PU1P153MB0169.APCP153.PROD.OUTLOOK.COM
- ([fe80::fc44:a784:73e6:c1c2]) by PU1P153MB0169.APCP153.PROD.OUTLOOK.COM
- ([fe80::fc44:a784:73e6:c1c2%7]) with mapi id 15.20.2367.004; Mon, 7 Oct 2019
- 18:57:39 +0000
-From: Dexuan Cui <decui@microsoft.com>
-To: Bjorn Helgaas <helgaas@kernel.org>, "Rafael J. Wysocki"
- <rafael.j.wysocki@intel.com>
-Subject: RE: [PATCH v2] PCI: PM: Move to D0 before calling
- pci_legacy_resume_early()
-Thread-Topic: [PATCH v2] PCI: PM: Move to D0 before calling
- pci_legacy_resume_early()
-Thread-Index: AdVSPER5d22rbcvgTV28JV77HSffhgq1j6kAAAuTThA=
-Date: Mon, 7 Oct 2019 18:57:38 +0000
-Message-ID: <PU1P153MB016996765F9BB827256D05DEBF9B0@PU1P153MB0169.APCP153.PROD.OUTLOOK.COM>
-References: <KU1P153MB016637CAEAD346F0AA8E3801BFAD0@KU1P153MB0166.APCP153.PROD.OUTLOOK.COM>
- <20191007132414.GA19294@google.com>
-In-Reply-To: <20191007132414.GA19294@google.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Enabled=True;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SiteId=72f988bf-86f1-41af-91ab-2d7cd011db47;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Owner=decui@microsoft.com;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SetDate=2019-10-07T18:57:35.7748996Z;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Name=General;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Application=Microsoft Azure
- Information Protection;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_ActionId=c4882525-48f5-4a48-9b5c-a0913e3efe36;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Extended_MSFT_Method=Automatic
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=decui@microsoft.com; 
-x-originating-ip: [2601:600:a280:7f70:44a6:f3e:a757:ee91]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 3abe572f-7505-468e-c5f3-08d74b58398a
-x-ms-office365-filtering-ht: Tenant
-x-ms-traffictypediagnostic: PU1P153MB0203:|PU1P153MB0203:|PU1P153MB0203:
-x-ms-exchange-transport-forked: True
-x-ld-processed: 72f988bf-86f1-41af-91ab-2d7cd011db47,ExtAddr
-x-microsoft-antispam-prvs: <PU1P153MB020385FEBA02F7FA8C1F3468BF9B0@PU1P153MB0203.APCP153.PROD.OUTLOOK.COM>
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
-x-forefront-prvs: 01834E39B7
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(39860400002)(396003)(376002)(136003)(346002)(366004)(189003)(199004)(13464003)(54534003)(14444005)(256004)(76116006)(33656002)(99286004)(4326008)(229853002)(71190400001)(71200400001)(66446008)(64756008)(66556008)(6436002)(66476007)(66946007)(9686003)(55016002)(81156014)(81166006)(5660300002)(8936002)(52536014)(6246003)(7416002)(7736002)(305945005)(8676002)(74316002)(54906003)(316002)(22452003)(186003)(6116002)(102836004)(8990500004)(10090500001)(25786009)(6506007)(53546011)(478600001)(486006)(476003)(86362001)(2906002)(46003)(14454004)(446003)(11346002)(7696005)(76176011)(110136005)(10290500003);
- DIR:OUT; SFP:1102; SCL:1; SRVR:PU1P153MB0203;
- H:PU1P153MB0169.APCP153.PROD.OUTLOOK.COM; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: microsoft.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: a0xm1bFRcZBw6bqIvE+y38Z66eRP1eWgdX4H2yOVXFKN4xQVMz+NmGWVs/gaKuOP9l5CprUnQrzvEqtpSgr9GinGejOq4CyLz9efjRuPYA9P4TeT8yzKdG01J0PbyiaYR4WBQMCNm+Z4LCCty09Fj5819rIFdfS5A6MXMWcww60mRUqAv2aSs2OGg9TpjLYuE5nfNJZBCbeZ2n8dPkU6yHh+owHfT2CNaDDuLJGQecUcTfCTLe+Bg/sgFmFCD0JO4Hq40d437Xdt2MJtnKY7n/JUfnFtMfap5LhUtO56hUQ7JDm2JOnZMsxTQ/vUuc33To9j3iUTn5frwsM4Jyly50Juvm4Soxy95rv7VcTku5j5+6SJ6N48E/xceiv0xrAjXdAfTwJ3mJaG7iYB4qnHqUdnH7rh16vgimxufHvCF3U=
+Received: from mail.siol.net (mailoutvs34.siol.net [185.57.226.225])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 1CD8686566
+ for <devel@driverdev.osuosl.org>; Mon,  7 Oct 2019 19:01:11 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.siol.net (Postfix) with ESMTP id EA424521E2F;
+ Mon,  7 Oct 2019 21:01:08 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at psrvmta09.zcs-production.pri
+Received: from mail.siol.net ([127.0.0.1])
+ by localhost (psrvmta09.zcs-production.pri [127.0.0.1]) (amavisd-new,
+ port 10032)
+ with ESMTP id dW8YKP7WwunV; Mon,  7 Oct 2019 21:01:08 +0200 (CEST)
+Received: from mail.siol.net (localhost [127.0.0.1])
+ by mail.siol.net (Postfix) with ESMTPS id E446852208F;
+ Mon,  7 Oct 2019 21:01:07 +0200 (CEST)
+Received: from jernej-laptop.localnet (cpe-86-58-59-25.static.triera.net
+ [86.58.59.25]) (Authenticated sender: jernej.skrabec@siol.net)
+ by mail.siol.net (Postfix) with ESMTPA id C766E521E2F;
+ Mon,  7 Oct 2019 21:01:06 +0200 (CEST)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@siol.net>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Subject: Re: [PATCH v2 0/6] media: cedrus: h264: Support multi-slice frames
+Date: Mon, 07 Oct 2019 21:01:06 +0200
+Message-ID: <2785635.uIalc63MVP@jernej-laptop>
+In-Reply-To: <5ec43907-cb6f-1527-f6ec-9fffc768d9ef@xs4all.nl>
+References: <20190929200023.215831-1-jernej.skrabec@siol.net>
+ <5ec43907-cb6f-1527-f6ec-9fffc768d9ef@xs4all.nl>
 MIME-Version: 1.0
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3abe572f-7505-468e-c5f3-08d74b58398a
-X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Oct 2019 18:57:38.6778 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: u106Cx2vLaZg/uaamZ+mWDcW/fOpAwG+Tbe4TZ9x5HQq8EFPQ6oClWpBwO1wElq4mvro/iGnFJHgon3BDWrtAw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PU1P153MB0203
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -128,128 +67,437 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "linux-hyperv@vger.kernel.org" <linux-hyperv@vger.kernel.org>,
- "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>,
- Stephen Hemminger <sthemmin@microsoft.com>,
- "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
- Haiyang Zhang <haiyangz@microsoft.com>,
- "driverdev-devel@linuxdriverproject.org"
- <driverdev-devel@linuxdriverproject.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Michael Kelley <mikelley@microsoft.com>,
- Sasha Levin <Alexander.Levin@microsoft.com>,
- "marcelo.cerri@canonical.com" <marcelo.cerri@canonical.com>,
- "olaf@aepfle.de" <olaf@aepfle.de>, "apw@canonical.com" <apw@canonical.com>,
- vkuznets <vkuznets@redhat.com>, "jasowang@redhat.com" <jasowang@redhat.com>,
- "jackm@mellanox.com" <jackm@mellanox.com>
+Cc: devel@driverdev.osuosl.org, linux-media@vger.kernel.org, pawel@osciak.com,
+ jonas@kwiboo.se, gregkh@linuxfoundation.org, wens@csie.org, mripard@kernel.org,
+ tfiga@chromium.org, paul.kocialkowski@bootlin.com, kyungmin.park@samsung.com,
+ boris.brezillon@collabora.com, linux-arm-kernel@lists.infradead.org,
+ mchehab@kernel.org, ezequiel@collabora.com, linux-kernel@vger.kernel.org,
+ m.szyprowski@samsung.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-> -----Original Message-----
-> From: Bjorn Helgaas <helgaas@kernel.org>
-> Sent: Monday, October 7, 2019 6:24 AM
-> To: Dexuan Cui <decui@microsoft.com>
-> Cc: lorenzo.pieralisi@arm.com; linux-pci@vger.kernel.org; Michael Kelley
-> <mikelley@microsoft.com>; linux-hyperv@vger.kernel.org;
-> linux-kernel@vger.kernel.org; driverdev-devel@linuxdriverproject.org; Sasha
-> Levin <Alexander.Levin@microsoft.com>; Haiyang Zhang
-> <haiyangz@microsoft.com>; KY Srinivasan <kys@microsoft.com>;
-> olaf@aepfle.de; apw@canonical.com; jasowang@redhat.com; vkuznets
-> <vkuznets@redhat.com>; marcelo.cerri@canonical.com; Stephen Hemminger
-> <sthemmin@microsoft.com>; jackm@mellanox.com
-> Subject: Re: [PATCH v2] PCI: PM: Move to D0 before calling
-> pci_legacy_resume_early()
+Dne ponedeljek, 07. oktober 2019 ob 12:44:24 CEST je Hans Verkuil napisal(a):
+> Hi Jernej,
 > 
-> On Wed, Aug 14, 2019 at 01:06:55AM +0000, Dexuan Cui wrote:
-> >
-> > In pci_legacy_suspend_late(), the device state is moved to PCI_UNKNOWN.
-> >
-> > In pci_pm_thaw_noirq(), the state is supposed to be moved back to PCI_D0,
-> > but the current code misses the pci_legacy_resume_early() path, so the
-> > state remains in PCI_UNKNOWN in that path. As a result, in the resume
-> > phase of hibernation, this causes an error for the Mellanox VF driver,
-> > which fails to enable MSI-X because pci_msi_supported() is false due
-> > to dev->current_state != PCI_D0:
-> >
-> > mlx4_core a6d1:00:02.0: Detected virtual function - running in slave mode
-> > mlx4_core a6d1:00:02.0: Sending reset
-> > mlx4_core a6d1:00:02.0: Sending vhcr0
-> > mlx4_core a6d1:00:02.0: HCA minimum page size:512
-> > mlx4_core a6d1:00:02.0: Timestamping is not supported in slave mode
-> > mlx4_core a6d1:00:02.0: INTx is not supported in multi-function mode,
-> aborting
-> > PM: dpm_run_callback(): pci_pm_thaw+0x0/0xd7 returns -95
-> > PM: Device a6d1:00:02.0 failed to thaw: error -95
-> >
-> > To be more accurate, the "resume" phase means the "thaw" callbacks which
-> > run before the system enters hibernation: when the user runs the command
-> > "echo disk > /sys/power/state" for hibernation, first the kernel "freezes"
-> > all the devices and creates a hibernation image, then the kernel "thaws"
-> > the devices including the disk/NIC, writes the memory to the disk, and
-> > powers down. This patch fixes the error message for the Mellanox VF driver
-> > in this phase.
-> >
-> > When the system starts again, a fresh kernel starts to run, and when the
-> > kernel detects that a hibernation image was saved, the kernel "quiesces"
-> > the devices, and then "restores" the devices from the saved image. In this
-> > path:
-> > device_resume_noirq() -> ... ->
-> >   pci_pm_restore_noirq() ->
-> >     pci_pm_default_resume_early() ->
-> >       pci_power_up() moves the device states back to PCI_D0. This path is
-> > not broken and doesn't need my patch.
-> >
-> > Signed-off-by: Dexuan Cui <decui@microsoft.com>
+> On 9/29/19 10:00 PM, Jernej Skrabec wrote:
+> > This series adds support for decoding multi-slice H264 frames along with
+> > support for V4L2_DEC_CMD_FLUSH and V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF.
+> > 
+> > Code was tested by modified ffmpeg, which can be found here:
+> > https://github.com/jernejsk/FFmpeg, branch mainline-test
+> > It has to be configured with at least following options:
+> > --enable-v4l2-request --enable-libudev --enable-libdrm
+> > 
+> > Samples used for testing:
+> > http://jernej.libreelec.tv/videos/h264/BA1_FT_C.mp4
+> > http://jernej.libreelec.tv/videos/h264/h264.mp4
+> > 
+> > Command line used for testing:
+> > ffmpeg -hwaccel drm -hwaccel_device /dev/dri/card0 -i h264.mp4 -pix_fmt
+> > bgra -f fbdev /dev/fb0
+> > 
+> > Please note that V4L2_DEC_CMD_FLUSH was not tested because I'm
+> > not sure how. ffmpeg follows exactly which slice is last in frame
+> > and sets hold flag accordingly. Improper usage of hold flag would
+> > corrupt ffmpeg assumptions and it would probably crash. Any ideas
+> > how to test this are welcome!
+> > 
+> > Thanks to Jonas for adjusting ffmpeg.
+> > 
+> > Please let me know what you think.
+> > 
+> > Best regards,
+> > Jernej
+> > 
+> > Changes from v1:
+> > - added Rb tags
+> > - updated V4L2_DEC_CMD_FLUSH documentation
+> > - updated first slice detection in Cedrus
+> > - hold capture buffer flag is set according to source format
+> > - added v4l m2m stateless_(try_)decoder_cmd ioctl helpers
+> > 
+> > Hans Verkuil (2):
+> >   vb2: add V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF
+> >   videodev2.h: add V4L2_DEC_CMD_FLUSH
+> > 
+> > Jernej Skrabec (4):
+> >   media: v4l2-mem2mem: add stateless_(try_)decoder_cmd ioctl helpers
+> >   media: cedrus: Detect first slice of a frame
+> >   media: cedrus: h264: Support multiple slices per frame
+> >   media: cedrus: Add support for holding capture buffer
+> >  
+> >  Documentation/media/uapi/v4l/buffer.rst       | 13 ++++++
+> >  .../media/uapi/v4l/vidioc-decoder-cmd.rst     | 10 +++-
+> >  .../media/uapi/v4l/vidioc-reqbufs.rst         |  6 +++
+> >  .../media/videodev2.h.rst.exceptions          |  1 +
+> >  .../media/common/videobuf2/videobuf2-v4l2.c   |  8 +++-
+> >  drivers/media/v4l2-core/v4l2-mem2mem.c        | 35 ++++++++++++++
+> >  drivers/staging/media/sunxi/cedrus/cedrus.h   |  1 +
+> >  .../staging/media/sunxi/cedrus/cedrus_dec.c   | 11 +++++
+> >  .../staging/media/sunxi/cedrus/cedrus_h264.c  | 11 ++++-
+> >  .../staging/media/sunxi/cedrus/cedrus_hw.c    |  8 ++--
+> >  .../staging/media/sunxi/cedrus/cedrus_video.c | 14 ++++++
+> >  include/media/v4l2-mem2mem.h                  | 46 +++++++++++++++++++
+> >  include/media/videobuf2-core.h                |  3 ++
+> >  include/media/videobuf2-v4l2.h                |  5 ++
+> >  include/uapi/linux/videodev2.h                | 14 ++++--
+> >  15 files changed, 175 insertions(+), 11 deletions(-)
 > 
-> This looks like a bugfix for 5839ee7389e8 ("PCI / PM: Force devices to
-> D0 in pci_pm_thaw_noirq()") so maybe it should be marked for stable as
-> 5839ee7389e8 was?
+> I didn't want to make a v3 of this series, instead I hacked this patch that
+> will hopefully do all the locking right.
 > 
-> Rafael, could you confirm?
+> Basically I moved all the 'held' related code into v4l2-mem2mem under
+> job_spinlock. This simplifies the driver code as well.
 > 
-> > ---
-> >
-> > changes in v2:
-> > 	Updated the changelog with more details.
-> >
-> >  drivers/pci/pci-driver.c | 7 ++++---
-> >  1 file changed, 4 insertions(+), 3 deletions(-)
-> >
-> > diff --git a/drivers/pci/pci-driver.c b/drivers/pci/pci-driver.c
-> > index 36dbe960306b..27dfc68db9e7 100644
-> > --- a/drivers/pci/pci-driver.c
-> > +++ b/drivers/pci/pci-driver.c
-> > @@ -1074,15 +1074,16 @@ static int pci_pm_thaw_noirq(struct device
-> *dev)
-> >  			return error;
-> >  	}
-> >
-> > -	if (pci_has_legacy_pm_support(pci_dev))
-> > -		return pci_legacy_resume_early(dev);
-> > -
-> >  	/*
-> >  	 * pci_restore_state() requires the device to be in D0 (because of MSI
-> >  	 * restoration among other things), so force it into D0 in case the
-> >  	 * driver's "freeze" callbacks put it into a low-power state directly.
-> >  	 */
-> >  	pci_set_power_state(pci_dev, PCI_D0);
-> > +
-> > +	if (pci_has_legacy_pm_support(pci_dev))
-> > +		return pci_legacy_resume_early(dev);
-> > +
-> >  	pci_restore_state(pci_dev);
-> >
-> >  	if (drv && drv->pm && drv->pm->thaw_noirq)
-> > --
-> > 2.19.1
-> >
+> But this is a hack that sits on top of this series. If your ffmpeg tests are
+> now successful, then I'll turn this into a proper series with correct
+> documentation (a lot of the comments are now wrong with this patch, so just
+> ignore that).
 
-Added Rafael to "To".
+Thanks for looking into this! With small fix mentioned below, it works! Note 
+that both scenarios I tested (flushing during decoding and flushing after 
+decoding is finished) are focused on capture queue. In order to trigger output 
+queue flush, ffmpeg would need to queue multiple jobs and call flush before they 
+are all processed. This is not something I can do at this time. Maybe Jonas 
+can help with modifying ffmpeg appropriately. However, code for case seems 
+correct to me.
 
-Thanks,
--- Dexuan
+> 
+> Regards,
+> 
+> 	Hans
+> 
+> diff --git a/drivers/media/v4l2-core/v4l2-mem2mem.c
+> b/drivers/media/v4l2-core/v4l2-mem2mem.c index 2677a07e4c9b..f81a8f2465ab
+> 100644
+> --- a/drivers/media/v4l2-core/v4l2-mem2mem.c
+> +++ b/drivers/media/v4l2-core/v4l2-mem2mem.c
+> @@ -412,25 +412,24 @@ static void v4l2_m2m_cancel_job(struct v4l2_m2m_ctx
+> *m2m_ctx) }
+>  }
+> 
+> -void v4l2_m2m_job_finish(struct v4l2_m2m_dev *m2m_dev,
+> -			 struct v4l2_m2m_ctx *m2m_ctx)
+> +static bool _v4l2_m2m_job_finish(struct v4l2_m2m_dev *m2m_dev,
+> +			  struct v4l2_m2m_ctx *m2m_ctx)
+>  {
+> -	unsigned long flags;
+> -
+> -	spin_lock_irqsave(&m2m_dev->job_spinlock, flags);
+>  	if (!m2m_dev->curr_ctx || m2m_dev->curr_ctx != m2m_ctx) {
+> -		spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
+>  		dprintk("Called by an instance not currently 
+running\n");
+> -		return;
+> +		return false;
+>  	}
+> 
+>  	list_del(&m2m_dev->curr_ctx->queue);
+>  	m2m_dev->curr_ctx->job_flags &= ~(TRANS_QUEUED | TRANS_RUNNING);
+>  	wake_up(&m2m_dev->curr_ctx->finished);
+>  	m2m_dev->curr_ctx = NULL;
+> +	return true;
+> +}
+> 
+> -	spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
+> -
+> +static void v4l2_m2m_job_next(struct v4l2_m2m_dev *m2m_dev,
+> +		       struct v4l2_m2m_ctx *m2m_ctx)
+> +{
+>  	/* This instance might have more buffers ready, but since we do not
+>  	 * allow more than one job on the job_queue per instance, each has
+>  	 * to be scheduled separately after the previous one finishes. */
+> @@ -441,8 +440,113 @@ void v4l2_m2m_job_finish(struct v4l2_m2m_dev *m2m_dev,
+> */
+>  	schedule_work(&m2m_dev->job_work);
+>  }
+> +
+> +void v4l2_m2m_job_finish(struct v4l2_m2m_dev *m2m_dev,
+> +			 struct v4l2_m2m_ctx *m2m_ctx)
+> +{
+> +	unsigned long flags;
+> +
+> +	spin_lock_irqsave(&m2m_dev->job_spinlock, flags);
+> +	if (!_v4l2_m2m_job_finish(m2m_dev, m2m_ctx)) {
+> +		spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
+> +		return;
+> +	}
+> +	spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
+> +
+> +	v4l2_m2m_job_next(m2m_dev, m2m_ctx);
+> +}
+>  EXPORT_SYMBOL(v4l2_m2m_job_finish);
+> 
+> +void v4l2_m2m_job_finish_held(struct v4l2_m2m_dev *m2m_dev,
+> +			 struct v4l2_m2m_ctx *m2m_ctx,
+> +			 enum vb2_buffer_state state)
+> +{
+> +	struct vb2_v4l2_buffer *src_buf, *dst_buf;
+> +	unsigned long flags;
+> +
+> +	spin_lock_irqsave(&m2m_dev->job_spinlock, flags);
+> +	src_buf = v4l2_m2m_src_buf_remove(m2m_ctx);
+> +	dst_buf = v4l2_m2m_next_dst_buf(m2m_ctx);
+> +
+> +	if (!src_buf || !dst_buf) {
+> +		pr_err("Missing source and/or destination buffers\n");
+> +		spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
+> +		return;
+> +	}
+> +	v4l2_m2m_buf_done(src_buf, state);
+> +	if (!dst_buf->is_held) {
+> +		v4l2_m2m_dst_buf_remove(m2m_ctx);
+> +		v4l2_m2m_buf_done(dst_buf, state);
+> +	}
+> +	if (!_v4l2_m2m_job_finish(m2m_dev, m2m_ctx)) {
+> +		spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
+> +		return;
+> +	}
+> +	spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
+> +
+> +	v4l2_m2m_job_next(m2m_dev, m2m_ctx);
+> +}
+> +EXPORT_SYMBOL(v4l2_m2m_job_finish_held);
+> +
+> +/**
+> + * v4l2_m2m_release_capture_buf() - check if the capture buffer should be
+> + * released
+> + *
+> + * @out_vb: the output buffer
+> + * @cap_vb: the capture buffer
+> + *
+> + * This helper function returns true if the current capture buffer should
+> + * be released to vb2. This is the case if the output buffer specified that
+> + * the capture buffer should be held (i.e. not returned to vb2) AND if the
+> + * timestamp of the capture buffer differs from the output buffer
+> timestamp. + *
+> + * This helper is to be called at the start of the device_run callback:
+> + *
+> + * .. code-block:: c
+> + *
+> + *	if (v4l2_m2m_release_capture_buf(out_vb, cap_vb)) {
+> + *		v4l2_m2m_dst_buf_remove(m2m_ctx);
+> + *		v4l2_m2m_buf_done(cap_vb, VB2_BUF_STATE_DONE);
+> + *		cap_vb = v4l2_m2m_next_dst_buf(m2m_ctx);
+> + *	}
+> + *	cap_vb->is_held = out_vb->flags & 
+V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF;
+> + *
+> + *	...
+> + *
+> + *	v4l2_m2m_buf_done(out_vb, VB2_BUF_STATE_DONE);
+> + *	if (!cap_vb->is_held) {
+> + *		v4l2_m2m_dst_buf_remove(m2m_ctx);
+> + *		v4l2_m2m_buf_done(cap_vb, VB2_BUF_STATE_DONE);
+> + *	}
+> + *
+> + * This allows for multiple output buffers to be used to fill in a single
+> + * capture buffer. This is typically used by stateless decoders where
+> + * multiple e.g. H.264 slices contribute to a single decoded frame.
+> + */
+> +struct vb2_v4l2_buffer *v4l2_m2m_release_capture_buf(struct v4l2_m2m_ctx
+> *m2m_ctx) +{
+> +	struct v4l2_m2m_dev *m2m_dev = m2m_ctx->m2m_dev;
+> +	struct vb2_v4l2_buffer *src, *dst;
+> +	unsigned long flags;
+> +
+> +	spin_lock_irqsave(&m2m_dev->job_spinlock, flags);
+> +	src = v4l2_m2m_next_src_buf(m2m_ctx);
+> +	dst = v4l2_m2m_next_dst_buf(m2m_ctx);
+> +
+> +	if (dst->is_held && dst->vb2_buf.copied_timestamp &&
+> +	    src->vb2_buf.timestamp != dst->vb2_buf.timestamp) {
+> +		dst->is_held = false;
+> +		v4l2_m2m_dst_buf_remove(m2m_ctx);
+> +		v4l2_m2m_buf_done(dst, VB2_BUF_STATE_DONE);
+> +		dst = v4l2_m2m_next_dst_buf(m2m_ctx);
+> +	}
+> +	dst->is_held = src->flags & V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF;
+> +	src->flags &= ~V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF;
+> +	spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
+> +	return dst;
+> +}
+> +EXPORT_SYMBOL(v4l2_m2m_release_capture_buf);
+> +
+>  int v4l2_m2m_reqbufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
+>  		     struct v4l2_requestbuffers *reqbufs)
+>  {
+> @@ -1171,19 +1275,28 @@ int v4l2_m2m_ioctl_stateless_decoder_cmd(struct file
+> *file, void *priv, {
+>  	struct v4l2_fh *fh = file->private_data;
+>  	struct vb2_v4l2_buffer *out_vb, *cap_vb;
+> +	struct v4l2_m2m_dev *m2m_dev = fh->m2m_ctx->m2m_dev;
+> +	unsigned long flags;
+>  	int ret;
+> 
+>  	ret = v4l2_m2m_ioctl_stateless_try_decoder_cmd(file, priv, dc);
+>  	if (ret < 0)
+>  		return ret;
+> 
+> +	spin_lock_irqsave(&m2m_dev->job_spinlock, flags);
+>  	out_vb = v4l2_m2m_last_src_buf(fh->m2m_ctx);
+>  	cap_vb = v4l2_m2m_last_dst_buf(fh->m2m_ctx);
+> 
+> -	if (out_vb)
+> +	if (out_vb && (out_vb->flags & V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF)) 
+{
+>  		out_vb->flags &= ~V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF;
+> -	else if (cap_vb && cap_vb->is_held)
+> -		v4l2_m2m_buf_done(cap_vb, VB2_BUF_STATE_DONE);
+> +	} else if (cap_vb && cap_vb->is_held) {
+> +		cap_vb->is_held = false;
+> +		if (m2m_dev->curr_ctx) {
+
+Above condition should be negated.
+
+Best regards,
+Jernej
+
+> +			v4l2_m2m_dst_buf_remove(fh->m2m_ctx);
+> +			v4l2_m2m_buf_done(cap_vb, 
+VB2_BUF_STATE_DONE);
+> +		}
+> +	}
+> +	spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
+> 
+>  	return 0;
+>  }
+> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+> b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c index
+> 67f7d4326fc1..4e30f263b427 100644
+> --- a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+> @@ -30,14 +30,7 @@ void cedrus_device_run(void *priv)
+>  	struct media_request *src_req;
+> 
+>  	run.src = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+> -	run.dst = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+> -
+> -	if (v4l2_m2m_release_capture_buf(run.src, run.dst)) {
+> -		v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+> -		v4l2_m2m_buf_done(run.dst, VB2_BUF_STATE_DONE);
+> -		run.dst = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+> -	}
+> -	run.dst->is_held = run.src->flags & 
+V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF;
+> +	run.dst = v4l2_m2m_release_capture_buf(ctx->fh.m2m_ctx);
+> 
+>  	run.first_slice = !run.dst->vb2_buf.copied_timestamp ||
+>  		run.src->vb2_buf.timestamp != run.dst-
+>vb2_buf.timestamp;
+> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
+> b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c index
+> 99fedec80224..242cad82cc8c 100644
+> --- a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
+> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
+> @@ -103,7 +103,6 @@ static irqreturn_t cedrus_irq(int irq, void *data)
+>  {
+>  	struct cedrus_dev *dev = data;
+>  	struct cedrus_ctx *ctx;
+> -	struct vb2_v4l2_buffer *src_buf, *dst_buf;
+>  	enum vb2_buffer_state state;
+>  	enum cedrus_irq_status status;
+> 
+> @@ -121,26 +120,12 @@ static irqreturn_t cedrus_irq(int irq, void *data)
+>  	dev->dec_ops[ctx->current_codec]->irq_disable(ctx);
+>  	dev->dec_ops[ctx->current_codec]->irq_clear(ctx);
+> 
+> -	src_buf = v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+> -	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+> -
+> -	if (!src_buf || !dst_buf) {
+> -		v4l2_err(&dev->v4l2_dev,
+> -			 "Missing source and/or destination 
+buffers\n");
+> -		return IRQ_HANDLED;
+> -	}
+> -
+>  	if (status == CEDRUS_IRQ_ERROR)
+>  		state = VB2_BUF_STATE_ERROR;
+>  	else
+>  		state = VB2_BUF_STATE_DONE;
+> 
+> -	v4l2_m2m_buf_done(src_buf, state);
+> -	if (!dst_buf->is_held) {
+> -		v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+> -		v4l2_m2m_buf_done(dst_buf, state);
+> -	}
+> -	v4l2_m2m_job_finish(ctx->dev->m2m_dev, ctx->fh.m2m_ctx);
+> +	v4l2_m2m_job_finish_held(ctx->dev->m2m_dev, ctx->fh.m2m_ctx, state);
+> 
+>  	return IRQ_HANDLED;
+>  }
+> diff --git a/include/media/v4l2-mem2mem.h b/include/media/v4l2-mem2mem.h
+> index 8ae2f56c7fa3..48ca7d3eaa3d 100644
+> --- a/include/media/v4l2-mem2mem.h
+> +++ b/include/media/v4l2-mem2mem.h
+> @@ -173,6 +173,10 @@ void v4l2_m2m_try_schedule(struct v4l2_m2m_ctx
+> *m2m_ctx); void v4l2_m2m_job_finish(struct v4l2_m2m_dev *m2m_dev,
+>  			 struct v4l2_m2m_ctx *m2m_ctx);
+> 
+> +void v4l2_m2m_job_finish_held(struct v4l2_m2m_dev *m2m_dev,
+> +			 struct v4l2_m2m_ctx *m2m_ctx,
+> +			 enum vb2_buffer_state state);
+> +
+>  static inline void
+>  v4l2_m2m_buf_done(struct vb2_v4l2_buffer *buf, enum vb2_buffer_state state)
+> {
+> @@ -644,47 +648,7 @@ void v4l2_m2m_buf_copy_metadata(const struct
+> vb2_v4l2_buffer *out_vb, struct vb2_v4l2_buffer *cap_vb,
+>  				bool copy_frame_flags);
+> 
+> -/**
+> - * v4l2_m2m_release_capture_buf() - check if the capture buffer should be
+> - * released
+> - *
+> - * @out_vb: the output buffer
+> - * @cap_vb: the capture buffer
+> - *
+> - * This helper function returns true if the current capture buffer should
+> - * be released to vb2. This is the case if the output buffer specified that
+> - * the capture buffer should be held (i.e. not returned to vb2) AND if the
+> - * timestamp of the capture buffer differs from the output buffer
+> timestamp. - *
+> - * This helper is to be called at the start of the device_run callback:
+> - *
+> - * .. code-block:: c
+> - *
+> - *	if (v4l2_m2m_release_capture_buf(out_vb, cap_vb)) {
+> - *		v4l2_m2m_dst_buf_remove(m2m_ctx);
+> - *		v4l2_m2m_buf_done(cap_vb, VB2_BUF_STATE_DONE);
+> - *		cap_vb = v4l2_m2m_next_dst_buf(m2m_ctx);
+> - *	}
+> - *	cap_vb->is_held = out_vb->flags & 
+V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF;
+> - *
+> - *	...
+> - *
+> - *	v4l2_m2m_buf_done(out_vb, VB2_BUF_STATE_DONE);
+> - *	if (!cap_vb->is_held) {
+> - *		v4l2_m2m_dst_buf_remove(m2m_ctx);
+> - *		v4l2_m2m_buf_done(cap_vb, VB2_BUF_STATE_DONE);
+> - *	}
+> - *
+> - * This allows for multiple output buffers to be used to fill in a single
+> - * capture buffer. This is typically used by stateless decoders where
+> - * multiple e.g. H.264 slices contribute to a single decoded frame.
+> - */
+> -static inline bool v4l2_m2m_release_capture_buf(const struct
+> vb2_v4l2_buffer *out_vb, -					
+	const struct vb2_v4l2_buffer *cap_vb)
+> -{
+> -	return cap_vb->is_held && cap_vb->vb2_buf.copied_timestamp &&
+> -	       out_vb->vb2_buf.timestamp != cap_vb->vb2_buf.timestamp;
+> -}
+> +struct vb2_v4l2_buffer *v4l2_m2m_release_capture_buf(struct v4l2_m2m_ctx
+> *m2m_ctx);
+> 
+>  /* v4l2 request helper */
+
+
+
 
 _______________________________________________
 devel mailing list
