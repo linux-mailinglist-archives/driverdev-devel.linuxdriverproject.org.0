@@ -1,60 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9BE6DCEC63
-	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Oct 2019 21:01:23 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 627F987A5E;
-	Mon,  7 Oct 2019 19:01:20 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id asAavYpXLWio; Mon,  7 Oct 2019 19:01:19 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9CB1886FAE;
-	Mon,  7 Oct 2019 19:01:17 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3AE381BF3EE
- for <devel@linuxdriverproject.org>; Mon,  7 Oct 2019 19:01:15 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C9EFCEE02
+	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Oct 2019 22:50:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 35D4E84AE7
- for <devel@linuxdriverproject.org>; Mon,  7 Oct 2019 19:01:15 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 96459842F6;
+	Mon,  7 Oct 2019 20:50:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TgjCRjrgAIZA for <devel@linuxdriverproject.org>;
- Mon,  7 Oct 2019 19:01:12 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.siol.net (mailoutvs34.siol.net [185.57.226.225])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1CD8686566
- for <devel@driverdev.osuosl.org>; Mon,  7 Oct 2019 19:01:11 +0000 (UTC)
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id aVPlflqccmlh; Mon,  7 Oct 2019 20:50:33 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id D13CC811F6;
+	Mon,  7 Oct 2019 20:50:30 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8A7631BF387
+ for <devel@linuxdriverproject.org>; Mon,  7 Oct 2019 20:50:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by mail.siol.net (Postfix) with ESMTP id EA424521E2F;
- Mon,  7 Oct 2019 21:01:08 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at psrvmta09.zcs-production.pri
-Received: from mail.siol.net ([127.0.0.1])
- by localhost (psrvmta09.zcs-production.pri [127.0.0.1]) (amavisd-new,
- port 10032)
- with ESMTP id dW8YKP7WwunV; Mon,  7 Oct 2019 21:01:08 +0200 (CEST)
-Received: from mail.siol.net (localhost [127.0.0.1])
- by mail.siol.net (Postfix) with ESMTPS id E446852208F;
- Mon,  7 Oct 2019 21:01:07 +0200 (CEST)
-Received: from jernej-laptop.localnet (cpe-86-58-59-25.static.triera.net
- [86.58.59.25]) (Authenticated sender: jernej.skrabec@siol.net)
- by mail.siol.net (Postfix) with ESMTPA id C766E521E2F;
- Mon,  7 Oct 2019 21:01:06 +0200 (CEST)
-From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@siol.net>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Subject: Re: [PATCH v2 0/6] media: cedrus: h264: Support multi-slice frames
-Date: Mon, 07 Oct 2019 21:01:06 +0200
-Message-ID: <2785635.uIalc63MVP@jernej-laptop>
-In-Reply-To: <5ec43907-cb6f-1527-f6ec-9fffc768d9ef@xs4all.nl>
-References: <20190929200023.215831-1-jernej.skrabec@siol.net>
- <5ec43907-cb6f-1527-f6ec-9fffc768d9ef@xs4all.nl>
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6AE1F85FAD
+ for <devel@linuxdriverproject.org>; Mon,  7 Oct 2019 20:50:26 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id C5HJ1wJXPRMe for <devel@linuxdriverproject.org>;
+ Mon,  7 Oct 2019 20:50:25 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-oi1-f194.google.com (mail-oi1-f194.google.com
+ [209.85.167.194])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3D029859BA
+ for <devel@driverdev.osuosl.org>; Mon,  7 Oct 2019 20:50:25 +0000 (UTC)
+Received: by mail-oi1-f194.google.com with SMTP id m16so12946788oic.5
+ for <devel@driverdev.osuosl.org>; Mon, 07 Oct 2019 13:50:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to:cc
+ :content-transfer-encoding;
+ bh=fcK8OAMj1NXGHtsn+eBL0qYf9+gr3KEaFJ+KVKmEmZY=;
+ b=DODjiraLf068HcX29CyMdrHKMVss5CMwF3IF6QSTNwHG3cxEEFKnCyo/jxIY41DmIY
+ CUxftEANh/zrUwxvo8s71HTSMFLS2tpW2SYBhiKrCvzcLanFoeIN7fQTqCx0Zjdi3NeN
+ pEGc6y6mnqrjKvNhBmRZQlzwohGgeioeQq4XNF73gro5w26vRZf5C8Fdo8pTu+pVY+HL
+ A+PaUClT0zoSqUVw+J+ALCaB9CGOQGO87q+NpGkyue7bduAEU56SPVdETQz1UzPQSt/v
+ hO8f1T4z45WWslhN6/d7dNJG3WqrwktpOGuuOSlXh0i0mYAw5e72r0uQllYsN8HBxgOq
+ 58Fw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc
+ :content-transfer-encoding;
+ bh=fcK8OAMj1NXGHtsn+eBL0qYf9+gr3KEaFJ+KVKmEmZY=;
+ b=lx86nKsyECTuOusv22zkqm5qtHmuRZiQolKkhIUkIIJqIDuhVkzj7dnz10d0kzoWWz
+ ICL7dY3XsZ1oVAaAa7ZzoXjuCoG9MOVL6GY+oV15OhQGR4jZZQpLY+tIbX0uPIqp6TdT
+ k3YXnaPil+rGixdXCEhAs9oYOZ4uZ+p8+q6NgFdHrIUfCyMAJVQMwoUimOnS0TDOyaL2
+ d+bkZM3E1JTVvolfGn5kH5HOZvuhQ0mNQutRtQwRQ2lBRL19Xq0kLCqVxk2lGuZNr4k2
+ hlW2Yf3i6NWPbCdu/GaMiqpn27BX0XSeSd3uf0JiHnwIFhrMQ0VxLXC0V9772P0e2PF6
+ C5Sw==
+X-Gm-Message-State: APjAAAUVB40OYOqrqZLzYhAKS8678N7Ab7OgvMP0kaLoInSlfL+1dqNk
+ hw9XeCltArF2XQkVyJO3vn5RlmLhKlZoCvvJnJv/gw==
+X-Google-Smtp-Source: APXvYqxIHGh7mfNuVHXTLRJFNp9/uJzd7RruBHZ/ws9o8/h7q7R8934FeS+oWLKpbxCd5p43woxfMY4PUqH60G0l9qE=
+X-Received: by 2002:aca:da41:: with SMTP id r62mr938855oig.47.1570481423969;
+ Mon, 07 Oct 2019 13:50:23 -0700 (PDT)
 MIME-Version: 1.0
+From: Jann Horn <jannh@google.com>
+Date: Mon, 7 Oct 2019 22:49:57 +0200
+Message-ID: <CAG48ez14Q0-F8LqsvcNbyR2o6gPW8SHXsm4u5jmD9MpsteM2Tw@mail.gmail.com>
+Subject: UAF read in print_binder_transaction_log_entry() on ANDROID_BINDERFS
+ kernels
+To: Todd Kjos <tkjos@google.com>, Martijn Coenen <maco@android.com>, 
+ =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>, 
+ Joel Fernandes <joel@joelfernandes.org>,
+ Christian Brauner <christian@brauner.io>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,439 +82,149 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-media@vger.kernel.org, pawel@osciak.com,
- jonas@kwiboo.se, gregkh@linuxfoundation.org, wens@csie.org, mripard@kernel.org,
- tfiga@chromium.org, paul.kocialkowski@bootlin.com, kyungmin.park@samsung.com,
- boris.brezillon@collabora.com, linux-arm-kernel@lists.infradead.org,
- mchehab@kernel.org, ezequiel@collabora.com, linux-kernel@vger.kernel.org,
- m.szyprowski@samsung.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ kernel list <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dne ponedeljek, 07. oktober 2019 ob 12:44:24 CEST je Hans Verkuil napisal(a):
-> Hi Jernej,
-> 
-> On 9/29/19 10:00 PM, Jernej Skrabec wrote:
-> > This series adds support for decoding multi-slice H264 frames along with
-> > support for V4L2_DEC_CMD_FLUSH and V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF.
-> > 
-> > Code was tested by modified ffmpeg, which can be found here:
-> > https://github.com/jernejsk/FFmpeg, branch mainline-test
-> > It has to be configured with at least following options:
-> > --enable-v4l2-request --enable-libudev --enable-libdrm
-> > 
-> > Samples used for testing:
-> > http://jernej.libreelec.tv/videos/h264/BA1_FT_C.mp4
-> > http://jernej.libreelec.tv/videos/h264/h264.mp4
-> > 
-> > Command line used for testing:
-> > ffmpeg -hwaccel drm -hwaccel_device /dev/dri/card0 -i h264.mp4 -pix_fmt
-> > bgra -f fbdev /dev/fb0
-> > 
-> > Please note that V4L2_DEC_CMD_FLUSH was not tested because I'm
-> > not sure how. ffmpeg follows exactly which slice is last in frame
-> > and sets hold flag accordingly. Improper usage of hold flag would
-> > corrupt ffmpeg assumptions and it would probably crash. Any ideas
-> > how to test this are welcome!
-> > 
-> > Thanks to Jonas for adjusting ffmpeg.
-> > 
-> > Please let me know what you think.
-> > 
-> > Best regards,
-> > Jernej
-> > 
-> > Changes from v1:
-> > - added Rb tags
-> > - updated V4L2_DEC_CMD_FLUSH documentation
-> > - updated first slice detection in Cedrus
-> > - hold capture buffer flag is set according to source format
-> > - added v4l m2m stateless_(try_)decoder_cmd ioctl helpers
-> > 
-> > Hans Verkuil (2):
-> >   vb2: add V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF
-> >   videodev2.h: add V4L2_DEC_CMD_FLUSH
-> > 
-> > Jernej Skrabec (4):
-> >   media: v4l2-mem2mem: add stateless_(try_)decoder_cmd ioctl helpers
-> >   media: cedrus: Detect first slice of a frame
-> >   media: cedrus: h264: Support multiple slices per frame
-> >   media: cedrus: Add support for holding capture buffer
-> >  
-> >  Documentation/media/uapi/v4l/buffer.rst       | 13 ++++++
-> >  .../media/uapi/v4l/vidioc-decoder-cmd.rst     | 10 +++-
-> >  .../media/uapi/v4l/vidioc-reqbufs.rst         |  6 +++
-> >  .../media/videodev2.h.rst.exceptions          |  1 +
-> >  .../media/common/videobuf2/videobuf2-v4l2.c   |  8 +++-
-> >  drivers/media/v4l2-core/v4l2-mem2mem.c        | 35 ++++++++++++++
-> >  drivers/staging/media/sunxi/cedrus/cedrus.h   |  1 +
-> >  .../staging/media/sunxi/cedrus/cedrus_dec.c   | 11 +++++
-> >  .../staging/media/sunxi/cedrus/cedrus_h264.c  | 11 ++++-
-> >  .../staging/media/sunxi/cedrus/cedrus_hw.c    |  8 ++--
-> >  .../staging/media/sunxi/cedrus/cedrus_video.c | 14 ++++++
-> >  include/media/v4l2-mem2mem.h                  | 46 +++++++++++++++++++
-> >  include/media/videobuf2-core.h                |  3 ++
-> >  include/media/videobuf2-v4l2.h                |  5 ++
-> >  include/uapi/linux/videodev2.h                | 14 ++++--
-> >  15 files changed, 175 insertions(+), 11 deletions(-)
-> 
-> I didn't want to make a v3 of this series, instead I hacked this patch that
-> will hopefully do all the locking right.
-> 
-> Basically I moved all the 'held' related code into v4l2-mem2mem under
-> job_spinlock. This simplifies the driver code as well.
-> 
-> But this is a hack that sits on top of this series. If your ffmpeg tests are
-> now successful, then I'll turn this into a proper series with correct
-> documentation (a lot of the comments are now wrong with this patch, so just
-> ignore that).
-
-Thanks for looking into this! With small fix mentioned below, it works! Note 
-that both scenarios I tested (flushing during decoding and flushing after 
-decoding is finished) are focused on capture queue. In order to trigger output 
-queue flush, ffmpeg would need to queue multiple jobs and call flush before they 
-are all processed. This is not something I can do at this time. Maybe Jonas 
-can help with modifying ffmpeg appropriately. However, code for case seems 
-correct to me.
-
-> 
-> Regards,
-> 
-> 	Hans
-> 
-> diff --git a/drivers/media/v4l2-core/v4l2-mem2mem.c
-> b/drivers/media/v4l2-core/v4l2-mem2mem.c index 2677a07e4c9b..f81a8f2465ab
-> 100644
-> --- a/drivers/media/v4l2-core/v4l2-mem2mem.c
-> +++ b/drivers/media/v4l2-core/v4l2-mem2mem.c
-> @@ -412,25 +412,24 @@ static void v4l2_m2m_cancel_job(struct v4l2_m2m_ctx
-> *m2m_ctx) }
->  }
-> 
-> -void v4l2_m2m_job_finish(struct v4l2_m2m_dev *m2m_dev,
-> -			 struct v4l2_m2m_ctx *m2m_ctx)
-> +static bool _v4l2_m2m_job_finish(struct v4l2_m2m_dev *m2m_dev,
-> +			  struct v4l2_m2m_ctx *m2m_ctx)
->  {
-> -	unsigned long flags;
-> -
-> -	spin_lock_irqsave(&m2m_dev->job_spinlock, flags);
->  	if (!m2m_dev->curr_ctx || m2m_dev->curr_ctx != m2m_ctx) {
-> -		spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
->  		dprintk("Called by an instance not currently 
-running\n");
-> -		return;
-> +		return false;
->  	}
-> 
->  	list_del(&m2m_dev->curr_ctx->queue);
->  	m2m_dev->curr_ctx->job_flags &= ~(TRANS_QUEUED | TRANS_RUNNING);
->  	wake_up(&m2m_dev->curr_ctx->finished);
->  	m2m_dev->curr_ctx = NULL;
-> +	return true;
-> +}
-> 
-> -	spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
-> -
-> +static void v4l2_m2m_job_next(struct v4l2_m2m_dev *m2m_dev,
-> +		       struct v4l2_m2m_ctx *m2m_ctx)
-> +{
->  	/* This instance might have more buffers ready, but since we do not
->  	 * allow more than one job on the job_queue per instance, each has
->  	 * to be scheduled separately after the previous one finishes. */
-> @@ -441,8 +440,113 @@ void v4l2_m2m_job_finish(struct v4l2_m2m_dev *m2m_dev,
-> */
->  	schedule_work(&m2m_dev->job_work);
->  }
-> +
-> +void v4l2_m2m_job_finish(struct v4l2_m2m_dev *m2m_dev,
-> +			 struct v4l2_m2m_ctx *m2m_ctx)
-> +{
-> +	unsigned long flags;
-> +
-> +	spin_lock_irqsave(&m2m_dev->job_spinlock, flags);
-> +	if (!_v4l2_m2m_job_finish(m2m_dev, m2m_ctx)) {
-> +		spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
-> +		return;
-> +	}
-> +	spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
-> +
-> +	v4l2_m2m_job_next(m2m_dev, m2m_ctx);
-> +}
->  EXPORT_SYMBOL(v4l2_m2m_job_finish);
-> 
-> +void v4l2_m2m_job_finish_held(struct v4l2_m2m_dev *m2m_dev,
-> +			 struct v4l2_m2m_ctx *m2m_ctx,
-> +			 enum vb2_buffer_state state)
-> +{
-> +	struct vb2_v4l2_buffer *src_buf, *dst_buf;
-> +	unsigned long flags;
-> +
-> +	spin_lock_irqsave(&m2m_dev->job_spinlock, flags);
-> +	src_buf = v4l2_m2m_src_buf_remove(m2m_ctx);
-> +	dst_buf = v4l2_m2m_next_dst_buf(m2m_ctx);
-> +
-> +	if (!src_buf || !dst_buf) {
-> +		pr_err("Missing source and/or destination buffers\n");
-> +		spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
-> +		return;
-> +	}
-> +	v4l2_m2m_buf_done(src_buf, state);
-> +	if (!dst_buf->is_held) {
-> +		v4l2_m2m_dst_buf_remove(m2m_ctx);
-> +		v4l2_m2m_buf_done(dst_buf, state);
-> +	}
-> +	if (!_v4l2_m2m_job_finish(m2m_dev, m2m_ctx)) {
-> +		spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
-> +		return;
-> +	}
-> +	spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
-> +
-> +	v4l2_m2m_job_next(m2m_dev, m2m_ctx);
-> +}
-> +EXPORT_SYMBOL(v4l2_m2m_job_finish_held);
-> +
-> +/**
-> + * v4l2_m2m_release_capture_buf() - check if the capture buffer should be
-> + * released
-> + *
-> + * @out_vb: the output buffer
-> + * @cap_vb: the capture buffer
-> + *
-> + * This helper function returns true if the current capture buffer should
-> + * be released to vb2. This is the case if the output buffer specified that
-> + * the capture buffer should be held (i.e. not returned to vb2) AND if the
-> + * timestamp of the capture buffer differs from the output buffer
-> timestamp. + *
-> + * This helper is to be called at the start of the device_run callback:
-> + *
-> + * .. code-block:: c
-> + *
-> + *	if (v4l2_m2m_release_capture_buf(out_vb, cap_vb)) {
-> + *		v4l2_m2m_dst_buf_remove(m2m_ctx);
-> + *		v4l2_m2m_buf_done(cap_vb, VB2_BUF_STATE_DONE);
-> + *		cap_vb = v4l2_m2m_next_dst_buf(m2m_ctx);
-> + *	}
-> + *	cap_vb->is_held = out_vb->flags & 
-V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF;
-> + *
-> + *	...
-> + *
-> + *	v4l2_m2m_buf_done(out_vb, VB2_BUF_STATE_DONE);
-> + *	if (!cap_vb->is_held) {
-> + *		v4l2_m2m_dst_buf_remove(m2m_ctx);
-> + *		v4l2_m2m_buf_done(cap_vb, VB2_BUF_STATE_DONE);
-> + *	}
-> + *
-> + * This allows for multiple output buffers to be used to fill in a single
-> + * capture buffer. This is typically used by stateless decoders where
-> + * multiple e.g. H.264 slices contribute to a single decoded frame.
-> + */
-> +struct vb2_v4l2_buffer *v4l2_m2m_release_capture_buf(struct v4l2_m2m_ctx
-> *m2m_ctx) +{
-> +	struct v4l2_m2m_dev *m2m_dev = m2m_ctx->m2m_dev;
-> +	struct vb2_v4l2_buffer *src, *dst;
-> +	unsigned long flags;
-> +
-> +	spin_lock_irqsave(&m2m_dev->job_spinlock, flags);
-> +	src = v4l2_m2m_next_src_buf(m2m_ctx);
-> +	dst = v4l2_m2m_next_dst_buf(m2m_ctx);
-> +
-> +	if (dst->is_held && dst->vb2_buf.copied_timestamp &&
-> +	    src->vb2_buf.timestamp != dst->vb2_buf.timestamp) {
-> +		dst->is_held = false;
-> +		v4l2_m2m_dst_buf_remove(m2m_ctx);
-> +		v4l2_m2m_buf_done(dst, VB2_BUF_STATE_DONE);
-> +		dst = v4l2_m2m_next_dst_buf(m2m_ctx);
-> +	}
-> +	dst->is_held = src->flags & V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF;
-> +	src->flags &= ~V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF;
-> +	spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
-> +	return dst;
-> +}
-> +EXPORT_SYMBOL(v4l2_m2m_release_capture_buf);
-> +
->  int v4l2_m2m_reqbufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
->  		     struct v4l2_requestbuffers *reqbufs)
->  {
-> @@ -1171,19 +1275,28 @@ int v4l2_m2m_ioctl_stateless_decoder_cmd(struct file
-> *file, void *priv, {
->  	struct v4l2_fh *fh = file->private_data;
->  	struct vb2_v4l2_buffer *out_vb, *cap_vb;
-> +	struct v4l2_m2m_dev *m2m_dev = fh->m2m_ctx->m2m_dev;
-> +	unsigned long flags;
->  	int ret;
-> 
->  	ret = v4l2_m2m_ioctl_stateless_try_decoder_cmd(file, priv, dc);
->  	if (ret < 0)
->  		return ret;
-> 
-> +	spin_lock_irqsave(&m2m_dev->job_spinlock, flags);
->  	out_vb = v4l2_m2m_last_src_buf(fh->m2m_ctx);
->  	cap_vb = v4l2_m2m_last_dst_buf(fh->m2m_ctx);
-> 
-> -	if (out_vb)
-> +	if (out_vb && (out_vb->flags & V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF)) 
-{
->  		out_vb->flags &= ~V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF;
-> -	else if (cap_vb && cap_vb->is_held)
-> -		v4l2_m2m_buf_done(cap_vb, VB2_BUF_STATE_DONE);
-> +	} else if (cap_vb && cap_vb->is_held) {
-> +		cap_vb->is_held = false;
-> +		if (m2m_dev->curr_ctx) {
-
-Above condition should be negated.
-
-Best regards,
-Jernej
-
-> +			v4l2_m2m_dst_buf_remove(fh->m2m_ctx);
-> +			v4l2_m2m_buf_done(cap_vb, 
-VB2_BUF_STATE_DONE);
-> +		}
-> +	}
-> +	spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
-> 
->  	return 0;
->  }
-> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
-> b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c index
-> 67f7d4326fc1..4e30f263b427 100644
-> --- a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
-> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
-> @@ -30,14 +30,7 @@ void cedrus_device_run(void *priv)
->  	struct media_request *src_req;
-> 
->  	run.src = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
-> -	run.dst = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
-> -
-> -	if (v4l2_m2m_release_capture_buf(run.src, run.dst)) {
-> -		v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
-> -		v4l2_m2m_buf_done(run.dst, VB2_BUF_STATE_DONE);
-> -		run.dst = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
-> -	}
-> -	run.dst->is_held = run.src->flags & 
-V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF;
-> +	run.dst = v4l2_m2m_release_capture_buf(ctx->fh.m2m_ctx);
-> 
->  	run.first_slice = !run.dst->vb2_buf.copied_timestamp ||
->  		run.src->vb2_buf.timestamp != run.dst-
->vb2_buf.timestamp;
-> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
-> b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c index
-> 99fedec80224..242cad82cc8c 100644
-> --- a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
-> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
-> @@ -103,7 +103,6 @@ static irqreturn_t cedrus_irq(int irq, void *data)
->  {
->  	struct cedrus_dev *dev = data;
->  	struct cedrus_ctx *ctx;
-> -	struct vb2_v4l2_buffer *src_buf, *dst_buf;
->  	enum vb2_buffer_state state;
->  	enum cedrus_irq_status status;
-> 
-> @@ -121,26 +120,12 @@ static irqreturn_t cedrus_irq(int irq, void *data)
->  	dev->dec_ops[ctx->current_codec]->irq_disable(ctx);
->  	dev->dec_ops[ctx->current_codec]->irq_clear(ctx);
-> 
-> -	src_buf = v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
-> -	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
-> -
-> -	if (!src_buf || !dst_buf) {
-> -		v4l2_err(&dev->v4l2_dev,
-> -			 "Missing source and/or destination 
-buffers\n");
-> -		return IRQ_HANDLED;
-> -	}
-> -
->  	if (status == CEDRUS_IRQ_ERROR)
->  		state = VB2_BUF_STATE_ERROR;
->  	else
->  		state = VB2_BUF_STATE_DONE;
-> 
-> -	v4l2_m2m_buf_done(src_buf, state);
-> -	if (!dst_buf->is_held) {
-> -		v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
-> -		v4l2_m2m_buf_done(dst_buf, state);
-> -	}
-> -	v4l2_m2m_job_finish(ctx->dev->m2m_dev, ctx->fh.m2m_ctx);
-> +	v4l2_m2m_job_finish_held(ctx->dev->m2m_dev, ctx->fh.m2m_ctx, state);
-> 
->  	return IRQ_HANDLED;
->  }
-> diff --git a/include/media/v4l2-mem2mem.h b/include/media/v4l2-mem2mem.h
-> index 8ae2f56c7fa3..48ca7d3eaa3d 100644
-> --- a/include/media/v4l2-mem2mem.h
-> +++ b/include/media/v4l2-mem2mem.h
-> @@ -173,6 +173,10 @@ void v4l2_m2m_try_schedule(struct v4l2_m2m_ctx
-> *m2m_ctx); void v4l2_m2m_job_finish(struct v4l2_m2m_dev *m2m_dev,
->  			 struct v4l2_m2m_ctx *m2m_ctx);
-> 
-> +void v4l2_m2m_job_finish_held(struct v4l2_m2m_dev *m2m_dev,
-> +			 struct v4l2_m2m_ctx *m2m_ctx,
-> +			 enum vb2_buffer_state state);
-> +
->  static inline void
->  v4l2_m2m_buf_done(struct vb2_v4l2_buffer *buf, enum vb2_buffer_state state)
-> {
-> @@ -644,47 +648,7 @@ void v4l2_m2m_buf_copy_metadata(const struct
-> vb2_v4l2_buffer *out_vb, struct vb2_v4l2_buffer *cap_vb,
->  				bool copy_frame_flags);
-> 
-> -/**
-> - * v4l2_m2m_release_capture_buf() - check if the capture buffer should be
-> - * released
-> - *
-> - * @out_vb: the output buffer
-> - * @cap_vb: the capture buffer
-> - *
-> - * This helper function returns true if the current capture buffer should
-> - * be released to vb2. This is the case if the output buffer specified that
-> - * the capture buffer should be held (i.e. not returned to vb2) AND if the
-> - * timestamp of the capture buffer differs from the output buffer
-> timestamp. - *
-> - * This helper is to be called at the start of the device_run callback:
-> - *
-> - * .. code-block:: c
-> - *
-> - *	if (v4l2_m2m_release_capture_buf(out_vb, cap_vb)) {
-> - *		v4l2_m2m_dst_buf_remove(m2m_ctx);
-> - *		v4l2_m2m_buf_done(cap_vb, VB2_BUF_STATE_DONE);
-> - *		cap_vb = v4l2_m2m_next_dst_buf(m2m_ctx);
-> - *	}
-> - *	cap_vb->is_held = out_vb->flags & 
-V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF;
-> - *
-> - *	...
-> - *
-> - *	v4l2_m2m_buf_done(out_vb, VB2_BUF_STATE_DONE);
-> - *	if (!cap_vb->is_held) {
-> - *		v4l2_m2m_dst_buf_remove(m2m_ctx);
-> - *		v4l2_m2m_buf_done(cap_vb, VB2_BUF_STATE_DONE);
-> - *	}
-> - *
-> - * This allows for multiple output buffers to be used to fill in a single
-> - * capture buffer. This is typically used by stateless decoders where
-> - * multiple e.g. H.264 slices contribute to a single decoded frame.
-> - */
-> -static inline bool v4l2_m2m_release_capture_buf(const struct
-> vb2_v4l2_buffer *out_vb, -					
-	const struct vb2_v4l2_buffer *cap_vb)
-> -{
-> -	return cap_vb->is_held && cap_vb->vb2_buf.copied_timestamp &&
-> -	       out_vb->vb2_buf.timestamp != cap_vb->vb2_buf.timestamp;
-> -}
-> +struct vb2_v4l2_buffer *v4l2_m2m_release_capture_buf(struct v4l2_m2m_ctx
-> *m2m_ctx);
-> 
->  /* v4l2 request helper */
-
-
-
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+SGkhCgpUaGVyZSBpcyBhIHVzZS1hZnRlci1mcmVlIHJlYWQgaW4gcHJpbnRfYmluZGVyX3RyYW5z
+YWN0aW9uX2xvZ19lbnRyeSgpCm9uIEFORFJPSURfQklOREVSRlMga2VybmVscyBiZWNhdXNlCnBy
+aW50X2JpbmRlcl90cmFuc2FjdGlvbl9sb2dfZW50cnkoKSBwcmludHMgdGhlIGNoYXIqIGUtPmNv
+bnRleHRfbmFtZQphcyBzdHJpbmcsIGFuZCBpZiB0aGUgdHJhbnNhY3Rpb24gb2NjdXJyZWQgb24g
+YSBiaW5kZXIgZGV2aWNlIGZyb20KYmluZGVyZnMsIGUtPmNvbnRleHRfbmFtZSBiZWxvbmdzIHRv
+IHRoZSBiaW5kZXIgZGV2aWNlIGFuZCBpcyBmcmVlZAp3aGVuIHRoZSBpbm9kZSBkaXNhcHBlYXJz
+LgoKTHVja2lseSB0aGlzIHNob3VsZG4ndCBoYXZlIHNlY3VyaXR5IGltcGxpY2F0aW9ucywgc2lu
+Y2U6CgphKSByZWFkaW5nIHRoZSBiaW5kZXIgdHJhbnNhY3Rpb24gbG9nIGlzIGFscmVhZHkgYSBw
+cmV0dHkgcHJpdmlsZWdlZCBvcGVyYXRpb24KYikgSSBjYW4ndCBmaW5kIGFueSBhY3R1YWwgdXNl
+cnMgb2YgQU5EUk9JRF9CSU5ERVJGUwoKSSBndWVzcyB0aGVyZSBhcmUgdGhyZWUgd2F5cyB0byBm
+aXggaXQ6CjEpIENyZWF0ZSBhIG5ldyBzaGFyZWQgZ2xvYmFsIHNwaW5sb2NrIGZvciBiaW5kZXJm
+c19ldmljdF9pbm9kZSgpIGFuZApiaW5kZXJfdHJhbnNhY3Rpb25fbG9nX3Nob3coKSwgYW5kIGxl
+dCBiaW5kZXJmc19ldmljdF9pbm9kZSgpIHNjYW4gdGhlCnRyYW5zYWN0aW9uIGxvZyBmb3IgcG9p
+bnRlcnMgdG8gaXRzIG5hbWUgYW5kIHJlcGxhY2UgdGhlbSB3aXRoCnBvaW50ZXJzIHRvIGEgc3Rh
+dGljYWxseS1hbGxvY2F0ZWQgc3RyaW5nICJ7REVMRVRFRH0iIG9yIHNvbWV0aGluZwpsaWtlIHRo
+YXQuCjIpIExldCB0aGUgdHJhbnNhY3Rpb24gbG9nIGNvbnRhaW4gbm9uLXJldXNhYmxlIGRldmlj
+ZSBpZGVudGlmaWVycwppbnN0ZWFkIG9mIG5hbWUgcG9pbnRlcnMsIGFuZCBsZXQgcHJpbnRfYmlu
+ZGVyX3RyYW5zYWN0aW9uX2xvZ19lbnRyeSgpCmxvb2sgdGhlbSB1cCBpbiBzb21ldGhpbmcgbGlr
+ZSBhIGhhc2h0YWJsZS4KMykgSnVzdCBjb3B5IHRoZSBuYW1lIGludG8gdGhlIHRyYW5zYWN0aW9u
+IGxvZyBldmVyeSB0aW1lLgoKSSdtIG5vdCBzdXJlIHdoaWNoIG9uZSBpcyBiZXR0ZXIsIG9yIHdo
+ZXRoZXIgdGhlcmUncyBhIG5pY2VyIGZvdXJ0aApvcHRpb24sIHNvIEknbSBsZWF2aW5nIHdyaXRp
+bmcgYSBwYXRjaCBmb3IgdGhpcyB0byB5J2FsbC4KCgpUcmlnZ2VyIGluc3RydWN0aW9ucyAocmVx
+dWlyZXMgeW91IHRvIGhhdmUgc29tZSBoZWxwZXJzIHRoYXQgY2FuCnJlZ2lzdGVyIGEgY29udGV4
+dCBtYW5hZ2VyIGFuZCBzZW5kIHNvbWUgdHJhbnNhY3Rpb24gdG8gaXQpOgo9PT09PT09PT09PT09
+PQpyb290QHRlc3Q6L2hvbWUvdXNlciMgbWtkaXIgL3RtcC9iaW5kZXIKcm9vdEB0ZXN0Oi9ob21l
+L3VzZXIjIG1vdW50IC10IGJpbmRlciAtbyBzdGF0cz1nbG9iYWwgL2Rldi9udWxsIC90bXAvYmlu
+ZGVyCnJvb3RAdGVzdDovaG9tZS91c2VyIyBscyAtbCAvdG1wL2JpbmRlcgp0b3RhbCAwCmNydy0t
+LS0tLS0gMSByb290IHJvb3QgMjQ4LCAxIE9jdCAgNyAyMDozNCBiaW5kZXIKY3J3LS0tLS0tLSAx
+IHJvb3Qgcm9vdCAyNDgsIDAgT2N0ICA3IDIwOjM0IGJpbmRlci1jb250cm9sCmRyd3hyLXhyLXgg
+MyByb290IHJvb3QgICAgICAwIE9jdCAgNyAyMDozNCBiaW5kZXJfbG9ncwpjcnctLS0tLS0tIDEg
+cm9vdCByb290IDI0OCwgMiBPY3QgIDcgMjA6MzQgaHdiaW5kZXIKY3J3LS0tLS0tLSAxIHJvb3Qg
+cm9vdCAyNDgsIDMgT2N0ICA3IDIwOjM0IHZuZGJpbmRlcgpyb290QHRlc3Q6L2hvbWUvdXNlciMg
+bG4gLXMgL3RtcC9iaW5kZXIvYmluZGVyIC9kZXYvYmluZGVyCltydW4gc29tZSBzaW1wbGUgYmlu
+ZGVyIGRlbW8gY29kZSB0byB0ZW1wb3JhcmlseSByZWdpc3RlciBhIGNvbnRleHQKbWFuYWdlciBh
+bmQgc2VuZCBhIGJpbmRlciB0cmFuc2FjdGlvbl0Kcm9vdEB0ZXN0Oi9ob21lL3VzZXIjIHJtIC90
+bXAvYmluZGVyL2JpbmRlcgpyb290QHRlc3Q6L2hvbWUvdXNlciMgY2F0IC90bXAvYmluZGVyL2Jp
+bmRlcl9sb2dzL3RyYW5zYWN0aW9uX2xvZwoyOiBjYWxsICBmcm9tIDIyNzc6MjI3NyB0byAyMjcz
+OjAgY29udGV4dCBA77+977+977+977+977+977+977+9IG5vZGUgMSBoYW5kbGUgMApzaXplIDI0
+OjggcmV0IDAvMCBsPTAKNTogY2FsbCAgZnJvbSAyMjczOjIyNzMgdG8gMjI3NzoyMjc3IGNvbnRl
+eHQgQO+/ve+/ve+/ve+/ve+/ve+/ve+/vSBub2RlIDMgaGFuZGxlIDEKc2l6ZSAwOjAgcmV0IDAv
+MCBsPTAKNjogcmVwbHkgZnJvbSAyMjc3OjIyNzcgdG8gMjI3MzoyMjczIGNvbnRleHQgQO+/ve+/
+ve+/ve+/ve+/ve+/ve+/vSBub2RlIDAgaGFuZGxlIDAKc2l6ZSA0OjAgcmV0IDAvMCBsPTAKNzog
+cmVwbHkgZnJvbSAyMjczOjIyNzMgdG8gMjI3NzoyMjc3IGNvbnRleHQgQO+/ve+/ve+/ve+/ve+/
+ve+/ve+/vSBub2RlIDAgaGFuZGxlIDAKc2l6ZSA0OjAgcmV0IDAvMCBsPTAKcm9vdEB0ZXN0Oi9o
+b21lL3VzZXIjCj09PT09PT09PT09PT09CgpBU0FOIHNwbGF0OgpbICAzMzMuMzAwNzUzXSA9PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT0KWyAgMzMzLjMwMzE5N10gQlVHOiBLQVNBTjogdXNlLWFmdGVyLWZyZWUgaW4gc3RyaW5n
+X25vY2hlY2srMHg5ZC8weDE2MApbICAzMzMuMzA1MDgxXSBSZWFkIG9mIHNpemUgMSBhdCBhZGRy
+IGZmZmY4ODgwYjA5ODEyNTggYnkgdGFzayBjYXQvMjI3OQoKWyAgMzMzLjMwNzQxNV0gQ1BVOiAx
+IFBJRDogMjI3OSBDb21tOiBjYXQgTm90IHRhaW50ZWQgNS40LjAtcmMxKyAjNTEzClsgIDMzMy4z
+MDkzMDRdIEhhcmR3YXJlIG5hbWU6IFFFTVUgU3RhbmRhcmQgUEMgKGk0NDBGWCArIFBJSVgsIDE5
+OTYpLApCSU9TIDEuMTIuMC0xIDA0LzAxLzIwMTQKWyAgMzMzLjMxMDk4N10gQ2FsbCBUcmFjZToK
+WyAgMzMzLjMxMjAzMl0gIGR1bXBfc3RhY2srMHg3Yy8weGMwClsgIDMzMy4zMTI1ODFdICA/IHN0
+cmluZ19ub2NoZWNrKzB4OWQvMHgxNjAKWyAgMzMzLjMxMzE1N10gIHByaW50X2FkZHJlc3NfZGVz
+Y3JpcHRpb24uY29uc3Rwcm9wLjcrMHgzNi8weDUwClsgIDMzMy4zMTQwMzBdICA/IHN0cmluZ19u
+b2NoZWNrKzB4OWQvMHgxNjAKWyAgMzMzLjMxNDYwM10gID8gc3RyaW5nX25vY2hlY2srMHg5ZC8w
+eDE2MApbICAzMzMuMzE1MjM2XSAgX19rYXNhbl9yZXBvcnQuY29sZC4xMCsweDFhLzB4MzUKWyAg
+MzMzLjMxNTk3Ml0gID8gc3RyaW5nX25vY2hlY2srMHg5ZC8weDE2MApbICAzMzMuMzE2NTQ1XSAg
+a2FzYW5fcmVwb3J0KzB4ZS8weDIwClsgIDMzMy4zMTcxMDRdICBzdHJpbmdfbm9jaGVjaysweDlk
+LzB4MTYwClsgIDMzMy4zMTc2NTJdICA/IHdpZGVuX3N0cmluZysweDE2MC8weDE2MApbICAzMzMu
+MzE4MjcwXSAgPyBzdHJpbmdfbm9jaGVjaysweDE2MC8weDE2MApbICAzMzMuMzE4ODU3XSAgPyB1
+bndpbmRfZ2V0X3JldHVybl9hZGRyZXNzKzB4MmEvMHg0MApbICAzMzMuMzE5NjM2XSAgPyBwcm9m
+aWxlX3NldHVwLmNvbGQuOSsweDk2LzB4OTYKWyAgMzMzLjMyMDM1OV0gIHN0cmluZysweGI2LzB4
+YzAKWyAgMzMzLjMyMDgwMF0gID8gaGV4X3N0cmluZysweDI4MC8weDI4MApbICAzMzMuMzIxMzk4
+XSAgdnNucHJpbnRmKzB4MjBjLzB4NzgwClsgIDMzMy4zMjE4OThdICA/IG51bV90b19zdHIrMHgx
+ODAvMHgxODAKWyAgMzMzLjMyMjUwM10gID8gX19rYXNhbl9rbWFsbG9jLmNvbnN0cHJvcC42KzB4
+YzEvMHhkMApbICAzMzMuMzIzMjM1XSAgPyB2ZnNfcmVhZCsweGJjLzB4MWUwClsgIDMzMy4zMjM4
+MTRdICA/IGtzeXNfcmVhZCsweGI1LzB4MTUwClsgIDMzMy4zMjQzMjNdICA/IGRvX3N5c2NhbGxf
+NjQrMHhiOS8weDNiMApbICAzMzMuMzI0OTQ4XSAgPyBlbnRyeV9TWVNDQUxMXzY0X2FmdGVyX2h3
+ZnJhbWUrMHg0OS8weGJlClsgIDMzMy4zMjU3NTZdICBzZXFfdnByaW50ZisweDc4LzB4YjAKWyAg
+MzMzLjMyNjI1M10gIHNlcV9wcmludGYrMHg5Ni8weGMwClsgIDMzMy4zMjcxMzJdICA/IHNlcV92
+cHJpbnRmKzB4YjAvMHhiMApbICAzMzMuMzI3Njc4XSAgPyBtYXRjaF9oZWxkX2xvY2srMHgyZS8w
+eDI0MApbICAzMzMuMzI4NDUwXSAgYmluZGVyX3RyYW5zYWN0aW9uX2xvZ19zaG93KzB4MjM3LzB4
+MmQwClsgIDMzMy4zMjkxNjNdICBzZXFfcmVhZCsweDI2Ni8weDY5MApbICAzMzMuMzI5NzA1XSAg
+dmZzX3JlYWQrMHhiYy8weDFlMApbICAzMzMuMzMwMTc4XSAga3N5c19yZWFkKzB4YjUvMHgxNTAK
+WyAgMzMzLjMzMDcyNF0gID8ga2VybmVsX3dyaXRlKzB4YjAvMHhiMApbICAzMzMuMzMxMjU3XSAg
+PyB0cmFjZV9oYXJkaXJxc19vZmZfY2FsbGVyKzB4NTcvMHgxMzAKWyAgMzMzLjMzMjA0NV0gID8g
+bWFya19oZWxkX2xvY2tzKzB4MjkvMHhhMApbICAzMzMuMzMyNjc4XSAgPyBkb19zeXNjYWxsXzY0
+KzB4NmIvMHgzYjAKWyAgMzMzLjMzMzIzNV0gIGRvX3N5c2NhbGxfNjQrMHhiOS8weDNiMApbICAz
+MzMuMzMzODU2XSAgZW50cnlfU1lTQ0FMTF82NF9hZnRlcl9od2ZyYW1lKzB4NDkvMHhiZQpbICAz
+MzMuMzM0NjM1XSBSSVA6IDAwMzM6MHg3ZmJiYjk1ZDQ0NjEKWyAgMzMzLjMzNTE1M10gQ29kZTog
+ZmUgZmYgZmYgNTAgNDggOGQgM2QgZmUgZDAgMDkgMDAgZTggZTkgMDMgMDIgMDAKNjYgMGYgMWYg
+ODQgMDAgMDAgMDAgMDAgMDAgNDggOGQgMDUgOTkgNjIgMGQgMDAgOGIgMDAgODUgYzAgNzUgMTMg
+MzEKYzAgMGYgMDUgPDQ4PiAzZCAwMCBmMCBmZiBmZiA3NyA1NyBjMyA2NiAwZiAxZiA0NCAwMCAw
+MCA0MSA1NCA0OSA4OSBkNAo1NSA0OApbICAzMzMuMzM3OTUwXSBSU1A6IDAwMmI6MDAwMDdmZmNi
+ZTY0MzhlOCBFRkxBR1M6IDAwMDAwMjQ2IE9SSUdfUkFYOgowMDAwMDAwMDAwMDAwMDAwClsgIDMz
+My4zMzkwNzJdIFJBWDogZmZmZmZmZmZmZmZmZmZkYSBSQlg6IDAwMDAwMDAwMDAwMjAwMDAgUkNY
+OiAwMDAwN2ZiYmI5NWQ0NDYxClsgIDMzMy4zNDAxNTddIFJEWDogMDAwMDAwMDAwMDAyMDAwMCBS
+U0k6IDAwMDA3ZmJiYjkzMjQwMDAgUkRJOiAwMDAwMDAwMDAwMDAwMDAzClsgIDMzMy4zNDEzMjBd
+IFJCUDogMDAwMDdmYmJiOTMyNDAwMCBSMDg6IDAwMDAwMDAwZmZmZmZmZmYgUjA5OiAwMDAwMDAw
+MDAwMDAwMDAwClsgIDMzMy4zNDI0NTRdIFIxMDogZmZmZmZmZmZmZmZmZmI5YyBSMTE6IDAwMDAw
+MDAwMDAwMDAyNDYgUjEyOiAwMDAwN2ZiYmI5MzI0MDAwClsgIDMzMy4zNDM1NTBdIFIxMzogMDAw
+MDAwMDAwMDAwMDAwMyBSMTQ6IDAwMDAwMDAwMDAwMDBmZmYgUjE1OiAwMDAwMDAwMDAwMDIwMDAw
+CgpbICAzMzMuMzQ0ODQ1XSBBbGxvY2F0ZWQgYnkgdGFzayAyMjU5OgpbICAzMzMuMzQ1NDE2XSAg
+c2F2ZV9zdGFjaysweDE5LzB4ODAKWyAgMzMzLjM0NTg5OV0gIF9fa2FzYW5fa21hbGxvYy5jb25z
+dHByb3AuNisweGMxLzB4ZDAKWyAgMzMzLjM0NjYzNl0gIF9fa21hbGxvY190cmFja19jYWxsZXIr
+MHhmNC8weDJlMApbICAzMzMuMzQ3MjcxXSAga21lbWR1cCsweDE3LzB4NDAKWyAgMzMzLjM0Nzc5
+Nl0gIGJpbmRlcmZzX2JpbmRlcl9kZXZpY2VfY3JlYXRlLmlzcmEuNisweDIxNy8weDUzMApbICAz
+MzMuMzQ4Njc0XSAgYmluZGVyZnNfZmlsbF9zdXBlcisweDQ4Ni8weDgxZQpbICAzMzMuMzQ5MzA5
+XSAgbW91bnRfbm9kZXYrMHg0MS8weGIwClsgIDMzMy4zNDk4NjBdICBsZWdhY3lfZ2V0X3RyZWUr
+MHg3Yi8weGMwClsgIDMzMy4zNTAzOThdICB2ZnNfZ2V0X3RyZWUrMHg0MC8weDEzMApbICAzMzMu
+MzUwOTcwXSAgZG9fbW91bnQrMHhhY2IvMHhlYTAKWyAgMzMzLjM1MTQ0OV0gIGtzeXNfbW91bnQr
+MHhiMS8weGQwClsgIDMzMy4zNTIwMDddICBfX3g2NF9zeXNfbW91bnQrMHg1ZC8weDcwClsgIDMz
+My4zNTI1NDVdICBkb19zeXNjYWxsXzY0KzB4YjkvMHgzYjAKWyAgMzMzLjM1MzE0NF0gIGVudHJ5
+X1NZU0NBTExfNjRfYWZ0ZXJfaHdmcmFtZSsweDQ5LzB4YmUKClsgIDMzMy4zNTQxNDRdIEZyZWVk
+IGJ5IHRhc2sgMjI3ODoKWyAgMzMzLjM1NDU5OF0gIHNhdmVfc3RhY2srMHgxOS8weDgwClsgIDMz
+My4zNTUxMzVdICBfX2thc2FuX3NsYWJfZnJlZSsweDEyZS8weDE4MApbICAzMzMuMzU1NzM0XSAg
+a2ZyZWUrMHhlNi8weDMxMApbICAzMzMuMzU2MjM0XSAgYmluZGVyZnNfZXZpY3RfaW5vZGUrMHhi
+OC8weGQwClsgIDMzMy4zNTY4MzFdICBldmljdCsweDE2Zi8weDI5MApbICAzMzMuMzU4MDgxXSAg
+ZG9fdW5saW5rYXQrMHgyZjYvMHg0MjAKWyAgMzMzLjM1ODU5M10gIGRvX3N5c2NhbGxfNjQrMHhi
+OS8weDNiMApbICAzMzMuMzU5MTc2XSAgZW50cnlfU1lTQ0FMTF82NF9hZnRlcl9od2ZyYW1lKzB4
+NDkvMHhiZQoKWyAgMzMzLjM2MDE5Nl0gVGhlIGJ1Z2d5IGFkZHJlc3MgYmVsb25ncyB0byB0aGUg
+b2JqZWN0IGF0IGZmZmY4ODgwYjA5ODEyNTgKICAgICAgICAgICAgICAgIHdoaWNoIGJlbG9uZ3Mg
+dG8gdGhlIGNhY2hlIGttYWxsb2MtOCBvZiBzaXplIDgKWyAgMzMzLjM2MTk5MV0gVGhlIGJ1Z2d5
+IGFkZHJlc3MgaXMgbG9jYXRlZCAwIGJ5dGVzIGluc2lkZSBvZgogICAgICAgICAgICAgICAgOC1i
+eXRlIHJlZ2lvbiBbZmZmZjg4ODBiMDk4MTI1OCwgZmZmZjg4ODBiMDk4MTI2MCkKWyAgMzMzLjM2
+Mzc5Nl0gVGhlIGJ1Z2d5IGFkZHJlc3MgYmVsb25ncyB0byB0aGUgcGFnZToKWyAgMzMzLjM2NDUz
+OF0gcGFnZTpmZmZmZWEwMDAyYzI2MDQwIHJlZmNvdW50OjEgbWFwY291bnQ6MAptYXBwaW5nOmZm
+ZmY4ODgwYjZjMDNjODAgaW5kZXg6MHgwClsgIDMzMy4zNjU3NjVdIGZsYWdzOiAweDFmZmZjMDAw
+MDAwMDIwMChzbGFiKQpbICAzMzMuMzY2NDAyXSByYXc6IDAxZmZmYzAwMDAwMDAyMDAgZmZmZmVh
+MDAwMmNiMWQ4MCAwMDAwMDAxNDAwMDAwMDE0CmZmZmY4ODgwYjZjMDNjODAKWyAgMzMzLjM2NzU0
+Nl0gcmF3OiAwMDAwMDAwMDAwMDAwMDAwIDAwMDAwMDAwMDBhYTAwYWEgMDAwMDAwMDFmZmZmZmZm
+ZgowMDAwMDAwMDAwMDAwMDAwClsgIDMzMy4zNjkwMzBdIHBhZ2UgZHVtcGVkIGJlY2F1c2U6IGth
+c2FuOiBiYWQgYWNjZXNzIGRldGVjdGVkCgpbICAzMzMuMzcwMDk1XSBNZW1vcnkgc3RhdGUgYXJv
+dW5kIHRoZSBidWdneSBhZGRyZXNzOgpbICAzMzMuMzcwODI0XSAgZmZmZjg4ODBiMDk4MTEwMDog
+ZmMgZmIgZmMgZmMgZmIgZmMgZmMgZmIgZmMgZmMgZmIgZmMKZmMgZmIgZmMgZmMKWyAgMzMzLjM3
+MTkwN10gIGZmZmY4ODgwYjA5ODExODA6IGZiIGZjIGZjIGZiIGZjIGZjIGZiIGZjIGZjIGZiIGZj
+IGZjCmZiIGZjIGZjIGZiClsgIDMzMy4zNzI5NjldID5mZmZmODg4MGIwOTgxMjAwOiBmYyBmYyBm
+YiBmYyBmYyBmYiBmYyBmYyBmYiBmYyBmYyBmYgpmYyBmYyBmYiBmYwpbICAzMzMuMzc0MDMzXSAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXgpbICAz
+MzMuMzc0ODg0XSAgZmZmZjg4ODBiMDk4MTI4MDogZmMgZmIgZmMgZmMgZmIgZmMgZmMgZmIgZmMg
+ZmMgZmIgZmMKZmMgZmIgZmMgZmMKWyAgMzMzLjM3NTk1N10gIGZmZmY4ODgwYjA5ODEzMDA6IGZi
+IGZjIGZjIGZiIGZjIGZjIGZiIGZjIGZjIGZiIGZjIGZjCmZiIGZjIGZjIGZiClsgIDMzMy4zNzcw
+MTNdID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRw
+Oi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2
+ZXJkZXYtZGV2ZWwK
