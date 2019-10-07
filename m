@@ -1,62 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6DB5FCDBB7
-	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Oct 2019 08:02:26 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 896928790D;
-	Mon,  7 Oct 2019 06:02:24 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aronwkEywacE; Mon,  7 Oct 2019 06:02:24 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A4830876C3;
-	Mon,  7 Oct 2019 06:02:23 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A9DA81BF3FF
- for <devel@linuxdriverproject.org>; Mon,  7 Oct 2019 06:02:21 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id C0DC7CDD3B
+	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Oct 2019 10:27:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A68FE85C9F
- for <devel@linuxdriverproject.org>; Mon,  7 Oct 2019 06:02:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A88CC85E27;
+	Mon,  7 Oct 2019 08:27:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0_Pz7RtUt-Or for <devel@linuxdriverproject.org>;
- Mon,  7 Oct 2019 06:02:19 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.siol.net (mailoutvs34.siol.net [185.57.226.225])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id AEC188557E
- for <devel@driverdev.osuosl.org>; Mon,  7 Oct 2019 06:02:19 +0000 (UTC)
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id nIVZ7EXKa2aA; Mon,  7 Oct 2019 08:27:07 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9E6A685DFF;
+	Mon,  7 Oct 2019 08:27:05 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 46C421BF85D
+ for <devel@linuxdriverproject.org>; Mon,  7 Oct 2019 08:27:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by mail.siol.net (Zimbra) with ESMTP id 9592A521630;
- Mon,  7 Oct 2019 08:02:16 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at psrvmta12.zcs-production.pri
-Received: from mail.siol.net ([127.0.0.1])
- by localhost (psrvmta12.zcs-production.pri [127.0.0.1]) (amavisd-new,
- port 10032)
- with ESMTP id vcF-zkhEbduB; Mon,  7 Oct 2019 08:02:16 +0200 (CEST)
-Received: from mail.siol.net (localhost [127.0.0.1])
- by mail.siol.net (Zimbra) with ESMTPS id 2224752160B;
- Mon,  7 Oct 2019 08:02:16 +0200 (CEST)
-Received: from jernej-laptop.localnet (cpe-86-58-59-25.static.triera.net
- [86.58.59.25]) (Authenticated sender: jernej.skrabec@siol.net)
- by mail.siol.net (Zimbra) with ESMTPA id 4A222521630;
- Mon,  7 Oct 2019 08:02:13 +0200 (CEST)
-From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@siol.net>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Subject: Re: [PATCH v2 3/6] media: v4l2-mem2mem: add
- stateless_(try_)decoder_cmd ioctl helpers
-Date: Mon, 07 Oct 2019 08:02:12 +0200
-Message-ID: <2840939.OS9t7MgvnY@jernej-laptop>
-In-Reply-To: <6c7eeaf1-18bb-1c7e-7938-a3eb5af100b6@xs4all.nl>
-References: <20190929200023.215831-1-jernej.skrabec@siol.net>
- <20190929200023.215831-4-jernej.skrabec@siol.net>
- <6c7eeaf1-18bb-1c7e-7938-a3eb5af100b6@xs4all.nl>
+ by silver.osuosl.org (Postfix) with ESMTP id 4150620397
+ for <devel@linuxdriverproject.org>; Mon,  7 Oct 2019 08:27:03 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id DjTbqp5FcCgc for <devel@linuxdriverproject.org>;
+ Mon,  7 Oct 2019 08:27:02 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ot1-f66.google.com (mail-ot1-f66.google.com
+ [209.85.210.66])
+ by silver.osuosl.org (Postfix) with ESMTPS id 1FAA720395
+ for <devel@driverdev.osuosl.org>; Mon,  7 Oct 2019 08:27:02 +0000 (UTC)
+Received: by mail-ot1-f66.google.com with SMTP id 67so10247312oto.3
+ for <devel@driverdev.osuosl.org>; Mon, 07 Oct 2019 01:27:02 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=VKymJxaLp2SF18G9ExdMOsAdXsmgBDVfrU/If3JZGxo=;
+ b=TWYoEhnJhUsmQM4vwHRk5wJFbp2Z4g83Er0zqNqxMflg+Wx7r/djSma00t1i3Iod3r
+ G0X4vTeP69qqlFClhvfexhm+0sgEg/jZeA/K32r41YtSN9ss1B+oUMDD8W4HmSzllhmR
+ f/3pRXLipQGTZC1UBOq6+joZvSGZ7OfwkPSJ/bhObDP7PdwVzrlLtw5xlDKPsqeS4vUn
+ wdnVff/RX9PH50GvMu0mjJjY6sHjfaEEi4qozhXBCZwhYVvLsXt40UPkWzvyh158+e0W
+ ujWVuy4O6UNsfaGNY1fsczhgDdBTpmXlgZU2GPLLMGJA9/pH0o16v5f3SXTbofAw7hbE
+ l1WA==
+X-Gm-Message-State: APjAAAUbFE9I/CnTSMsFb58+dqm6g+6eGPVEh6xc8XClWMtf6I9VXuyj
+ 15P4GTCtFteqCNoRjmx/ywNaFq5iOCQ51XV9c8A=
+X-Google-Smtp-Source: APXvYqxEOkV8nJCSllSqxdkQVypo90wcNgBvYDBNSKRgpoLJCvXTnmOdSLlUAojqzzfR9rCgupdlwodIFF5kpYpgt28=
+X-Received: by 2002:a9d:17e6:: with SMTP id j93mr20339687otj.297.1570436821298; 
+ Mon, 07 Oct 2019 01:27:01 -0700 (PDT)
 MIME-Version: 1.0
+References: <20191004145544.5066-1-krzk@kernel.org>
+ <20191004145544.5066-3-krzk@kernel.org>
+In-Reply-To: <20191004145544.5066-3-krzk@kernel.org>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Mon, 7 Oct 2019 10:26:49 +0200
+Message-ID: <CAMuHMdW0DSujexoGq4CJAYP40DvMcigk08aEnyQ72haY6jds5Q@mail.gmail.com>
+Subject: Re: [RESEND TRIVIAL 3/3] treewide: arch: Fix Kconfig indentation
+To: Krzysztof Kozlowski <krzk@kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,132 +71,81 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-media@vger.kernel.org, pawel@osciak.com,
- jonas@kwiboo.se, gregkh@linuxfoundation.org, wens@csie.org, mripard@kernel.org,
- tfiga@chromium.org, paul.kocialkowski@bootlin.com, kyungmin.park@samsung.com,
- boris.brezillon@collabora.com, linux-arm-kernel@lists.infradead.org,
- mchehab@kernel.org, ezequiel@collabora.com, linux-kernel@vger.kernel.org,
- m.szyprowski@samsung.com
+Cc: Linux Fbdev development list <linux-fbdev@vger.kernel.org>,
+ linux-efi <linux-efi@vger.kernel.org>,
+ Linux-sh list <linux-sh@vger.kernel.org>, linux-iio@vger.kernel.org,
+ linux-pci <linux-pci@vger.kernel.org>,
+ "open list:REMOTE PROCESSOR \(REMOTEPROC\) SUBSYSTEM"
+ <linux-remoteproc@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ platform-driver-x86@vger.kernel.org, linux-ide@vger.kernel.org,
+ dm-devel@redhat.com, keyrings@vger.kernel.org,
+ MTD Maling List <linux-mtd@lists.infradead.org>,
+ Linux I2C <linux-i2c@vger.kernel.org>, linux-riscv@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, ac100@lists.launchpad.net,
+ linux-rtc@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+ scsi <linux-scsi@vger.kernel.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ linux-rdma <linux-rdma@vger.kernel.org>, esc.storagedev@microsemi.com,
+ linux-security-module@vger.kernel.org, linux-clk <linux-clk@vger.kernel.org>,
+ ACPI Devel Maling List <linux-acpi@vger.kernel.org>,
+ bcm-kernel-feedback-list@broadcom.com,
+ "open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>,
+ linux-input@vger.kernel.org, xen-devel@lists.xenproject.org,
+ virtualization@lists.linux-foundation.org,
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ "moderated list:H8/300 ARCHITECTURE" <uclinux-h8-devel@lists.sourceforge.jp>,
+ driverdevel <devel@driverdev.osuosl.org>,
+ Linux PM list <linux-pm@vger.kernel.org>,
+ linux-arm-msm <linux-arm-msm@vger.kernel.org>, linux-um@lists.infradead.org,
+ linux-block@vger.kernel.org,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ linux-m68k <linux-m68k@lists.linux-m68k.org>,
+ Openrisc <openrisc@lists.librecores.org>, linux-mediatek@lists.infradead.org,
+ linux-rpi-kernel <linux-rpi-kernel@lists.infradead.org>,
+ linux-tegra <linux-tegra@vger.kernel.org>,
+ openipmi-developer@lists.sourceforge.net,
+ "open list:TI ETHERNET SWITCH DRIVER \(CPSW\)" <linux-omap@vger.kernel.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-edac@vger.kernel.org,
+ linux-hwmon@vger.kernel.org, linux-raid@vger.kernel.org,
+ Jiri Kosina <trivial@kernel.org>, Linux MM <linux-mm@kvack.org>,
+ netdev <netdev@vger.kernel.org>, Linux MMC List <linux-mmc@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-spi <linux-spi@vger.kernel.org>,
+ Linux IOMMU <iommu@lists.linux-foundation.org>,
+ Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
+ alpha <linux-alpha@vger.kernel.org>, dmaengine@vger.kernel.org,
+ linux-integrity <linux-integrity@vger.kernel.org>,
+ linuxppc-dev <linuxppc-dev@lists.ozlabs.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dne petek, 04. oktober 2019 ob 11:21:12 CEST je Hans Verkuil napisal(a):
-> On 9/29/19 10:00 PM, Jernej Skrabec wrote:
-> > These helpers are used by stateless codecs when they support multiple
-> > slices per frame and hold capture buffer flag is set. It's expected that
-> > all such codecs will use this code.
-> > 
-> > Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
-> > ---
-> > 
-> >  drivers/media/v4l2-core/v4l2-mem2mem.c | 35 ++++++++++++++++++++++++++
-> >  include/media/v4l2-mem2mem.h           |  4 +++
-> >  2 files changed, 39 insertions(+)
-> > 
-> > diff --git a/drivers/media/v4l2-core/v4l2-mem2mem.c
-> > b/drivers/media/v4l2-core/v4l2-mem2mem.c index 19937dd3c6f6..2677a07e4c9b
-> > 100644
-> > --- a/drivers/media/v4l2-core/v4l2-mem2mem.c
-> > +++ b/drivers/media/v4l2-core/v4l2-mem2mem.c
-> > @@ -1154,6 +1154,41 @@ int v4l2_m2m_ioctl_try_decoder_cmd(struct file
-> > *file, void *fh,> 
-> >  }
-> >  EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_try_decoder_cmd);
-> > 
-> > +int v4l2_m2m_ioctl_stateless_try_decoder_cmd(struct file *file, void *fh,
-> > +					     struct 
-v4l2_decoder_cmd *dc)
-> > +{
-> > +	if (dc->cmd != V4L2_DEC_CMD_FLUSH)
-> > +		return -EINVAL;
-> > +
-> > +	dc->flags = 0;
-> > +
-> > +	return 0;
-> > +}
-> > +EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_stateless_try_decoder_cmd);
-> > +
-> > +int v4l2_m2m_ioctl_stateless_decoder_cmd(struct file *file, void *priv,
-> > +					 struct 
-v4l2_decoder_cmd *dc)
-> > +{
-> > +	struct v4l2_fh *fh = file->private_data;
-> > +	struct vb2_v4l2_buffer *out_vb, *cap_vb;
-> > +	int ret;
-> > +
-> > +	ret = v4l2_m2m_ioctl_stateless_try_decoder_cmd(file, priv, dc);
-> > +	if (ret < 0)
-> > +		return ret;
-> > +
-> > +	out_vb = v4l2_m2m_last_src_buf(fh->m2m_ctx);
-> > +	cap_vb = v4l2_m2m_last_dst_buf(fh->m2m_ctx);
-> 
-> I think this should be v4l2_m2m_next_dst_buf. If multiple capture buffers
-> were queued up, then it can only be the first capture buffer that can be
-> 'HELD'.
+On Fri, Oct 4, 2019 at 4:57 PM Krzysztof Kozlowski <krzk@kernel.org> wrote:
+> Adjust indentation from spaces to tab (+optional two spaces) as in
+> coding style with command like:
+>     $ sed -e 's/^        /\t/' -i */Kconfig
+>
+> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 
-I'm pretty sure v4l2_m2m_last_dst_buf() is correct. We want to affect last job 
-in the queue, all jobs before are already properly handled by comparing 
-timestamps.
+>  arch/m68k/Kconfig.bus                  |  2 +-
+>  arch/m68k/Kconfig.debug                | 16 ++++++++--------
+>  arch/m68k/Kconfig.machine              |  8 ++++----
 
-> 
-> This might solve the race condition you saw with ffmpeg.
+For m68k:
+Acked-by: Geert Uytterhoeven <geert@linux-m68k.org>
 
-This actually doesn't change anything. ffmpeg currently queues only one job and 
-then waits until it's executed. In this case it actually doesn't matter if 
-"last" or "next" variant is used.
+Gr{oetje,eeting}s,
 
-Best regards,
-Jernej
+                        Geert
 
-> 
-> Regards,
-> 
-> 	Hans
-> 
-> > +
-> > +	if (out_vb)
-> > +		out_vb->flags &= ~V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF;
-> > +	else if (cap_vb && cap_vb->is_held)
-> > +		v4l2_m2m_buf_done(cap_vb, VB2_BUF_STATE_DONE);
-> > +
-> > +	return 0;
-> > +}
-> > +EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_stateless_decoder_cmd);
-> > +
-> > 
-> >  /*
-> >  
-> >   * v4l2_file_operations helpers. It is assumed here same lock is used
-> >   * for the output and the capture buffer queue.
-> > 
-> > diff --git a/include/media/v4l2-mem2mem.h b/include/media/v4l2-mem2mem.h
-> > index c9fa96c8eed1..8ae2f56c7fa3 100644
-> > --- a/include/media/v4l2-mem2mem.h
-> > +++ b/include/media/v4l2-mem2mem.h
-> > @@ -714,6 +714,10 @@ int v4l2_m2m_ioctl_try_encoder_cmd(struct file *file,
-> > void *fh,> 
-> >  				   struct v4l2_encoder_cmd *ec);
-> >  
-> >  int v4l2_m2m_ioctl_try_decoder_cmd(struct file *file, void *fh,
-> >  
-> >  				   struct v4l2_decoder_cmd *dc);
-> > 
-> > +int v4l2_m2m_ioctl_stateless_try_decoder_cmd(struct file *file, void *fh,
-> > +					     struct 
-v4l2_decoder_cmd *dc);
-> > +int v4l2_m2m_ioctl_stateless_decoder_cmd(struct file *file, void *priv,
-> > +					 struct 
-v4l2_decoder_cmd *dc);
-> > 
-> >  int v4l2_m2m_fop_mmap(struct file *file, struct vm_area_struct *vma);
-> >  __poll_t v4l2_m2m_fop_poll(struct file *file, poll_table *wait);
+-- 
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
 
-
-
-
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
