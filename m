@@ -1,63 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DE5F8CDF8D
-	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Oct 2019 12:44:37 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 93DFA85565;
-	Mon,  7 Oct 2019 10:44:35 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id D+TCM8kiW2aH; Mon,  7 Oct 2019 10:44:34 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 79F5086B38;
-	Mon,  7 Oct 2019 10:44:32 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CB0A81BF3C2
- for <devel@linuxdriverproject.org>; Mon,  7 Oct 2019 10:44:30 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 79716CE356
+	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Oct 2019 15:24:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BF5498767B
- for <devel@linuxdriverproject.org>; Mon,  7 Oct 2019 10:44:30 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6E78687A60;
+	Mon,  7 Oct 2019 13:24:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id edkjIzdINlTh; Mon,  7 Oct 2019 13:24:21 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id A16C786597;
+	Mon,  7 Oct 2019 13:24:20 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D2CAC1BF4DB
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  7 Oct 2019 13:24:17 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id CEE6920020
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  7 Oct 2019 13:24:17 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3p+cAYiXXXIv for <devel@linuxdriverproject.org>;
- Mon,  7 Oct 2019 10:44:27 +0000 (UTC)
+ with ESMTP id Lx8Xc+25F1ZU
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  7 Oct 2019 13:24:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from lb3-smtp-cloud7.xs4all.net (lb3-smtp-cloud7.xs4all.net
- [194.109.24.31])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 797BF87592
- for <devel@driverdev.osuosl.org>; Mon,  7 Oct 2019 10:44:27 +0000 (UTC)
-Received: from [IPv6:2001:983:e9a7:1:3d61:cdd2:8085:cc8]
- ([IPv6:2001:983:e9a7:1:3d61:cdd2:8085:cc8])
- by smtp-cloud7.xs4all.net with ESMTPA
- id HQV6iLkEqjZ8vHQV7i6A6G; Mon, 07 Oct 2019 12:44:25 +0200
-Subject: Re: [PATCH v2 0/6] media: cedrus: h264: Support multi-slice frames
-To: Jernej Skrabec <jernej.skrabec@siol.net>, mchehab@kernel.org,
- paul.kocialkowski@bootlin.com, mripard@kernel.org, pawel@osciak.com,
- m.szyprowski@samsung.com, kyungmin.park@samsung.com, tfiga@chromium.org,
- wens@csie.org
-References: <20190929200023.215831-1-jernej.skrabec@siol.net>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Message-ID: <5ec43907-cb6f-1527-f6ec-9fffc768d9ef@xs4all.nl>
-Date: Mon, 7 Oct 2019 12:44:24 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id C232420013
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  7 Oct 2019 13:24:16 +0000 (UTC)
+Received: from localhost (173-25-83-245.client.mchsi.com [173.25.83.245])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 57A5B2084D;
+ Mon,  7 Oct 2019 13:24:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1570454656;
+ bh=VihV6dbAFqYapoc2NQzCD6WaB/LSQjIdFqbcjmbSvH4=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=zqA6UiTXH1B2jUHHJ7cyZ2HETPfjBI5GZ7X74v1prqwaIHNu2sNw+CCVDmfs4r24i
+ dCWhA5QhGg7SpBELP4QjMEZc5I3exypt1HpSigICcpmCJLgE1fUwojjrefSUxT5SA9
+ 2sj0tITXpHw7U4pvJFajGOQh2FmfyD1XXetT6BZo=
+Date: Mon, 7 Oct 2019 08:24:14 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Dexuan Cui <decui@microsoft.com>
+Subject: Re: [PATCH v2] PCI: PM: Move to D0 before calling
+ pci_legacy_resume_early()
+Message-ID: <20191007132414.GA19294@google.com>
 MIME-Version: 1.0
-In-Reply-To: <20190929200023.215831-1-jernej.skrabec@siol.net>
-Content-Language: en-US
-X-CMAE-Envelope: MS4wfANHW6J2gkPO117kDZXf5yDUcUJpglFXHitfq3K2FSScJT6hlDKpngcExIXrn90M2ntaAEF/ThIzDpBqBa7H7nUokHArpVVKI8UXUpSAuVKY3M1gIKZJ
- 6L6UYkA94icSShhntbaau0r3qRLPR4TNhzX3RnFqSl4KvNAZP2o8g5Rp7jSlJnhFWh7MsDuy1Mq3sabc9JF/L9Up3pRLVFbs/gal5EdjGwbn/4wcbX0QEGGw
- W8jcCicDUrEInJuoEZtZ42QxNA6h2RTFL4RfPUoK4LL1zM1AElwE/54ByZmnkoDghmloby8E+aW3g13+5g44gxWAowH35fNOhbSA2fPme966Vi53DA1DSisW
- BWUO80RSTVyQUthkGFLgI1DnkKDENCJC83EDjvWeI2uGeDyCzCvSbLpQWD49pg848LMJ16ZriUa4YzwyTufauMku8zJIms4rU16ZuTPoCO840pRYmX7xP3+Z
- GVgF3qd8F2USKCuO3GBDJO3FJASQWJ9MeXaAz/owTDjMmFEG+DqZgse6BfqNGfXZQKK37HuYpUrp0vxI4r/GeACxB2GvIb+zkQGTIshk79yVQWt15atEynDY
- FUtefLXSrX8DVh2hq3jDhx4uJEzcUgyphE1iGMkRjdG+B09PgKBujIhmbHisCn6oDr/m887+Dg8IoB2ijGH5ckbQjUfcr6zpr2uuikB+gZVYlhdXNfg6nH/3
- CxAqFH6YPQzy422yNP7PiqVcirXS1Bh115m0tH89TQalsijsTLaeunxnic/ILexVq9drpl9lSfY9tgIv6vsKQ+KqaMuRka/xGN7wj7u+GDloyk8LxvNGoQ8W
- rBvgYwevYBJEnZTRP0Y=
+Content-Disposition: inline
+In-Reply-To: <KU1P153MB016637CAEAD346F0AA8E3801BFAD0@KU1P153MB0166.APCP153.PROD.OUTLOOK.COM>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,403 +69,106 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, jonas@kwiboo.se, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, boris.brezillon@collabora.com,
- ezequiel@collabora.com, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
+Cc: "linux-hyperv@vger.kernel.org" <linux-hyperv@vger.kernel.org>,
+ "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>,
+ Stephen Hemminger <sthemmin@microsoft.com>,
+ "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
+ Haiyang Zhang <haiyangz@microsoft.com>,
+ "driverdev-devel@linuxdriverproject.org"
+ <driverdev-devel@linuxdriverproject.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Michael Kelley <mikelley@microsoft.com>,
+ Sasha Levin <Alexander.Levin@microsoft.com>,
+ "marcelo.cerri@canonical.com" <marcelo.cerri@canonical.com>,
+ "olaf@aepfle.de" <olaf@aepfle.de>, "apw@canonical.com" <apw@canonical.com>,
+ vkuznets <vkuznets@redhat.com>, "jasowang@redhat.com" <jasowang@redhat.com>,
+ "jackm@mellanox.com" <jackm@mellanox.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Jernej,
-
-On 9/29/19 10:00 PM, Jernej Skrabec wrote:
-> This series adds support for decoding multi-slice H264 frames along with
-> support for V4L2_DEC_CMD_FLUSH and V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF.
+On Wed, Aug 14, 2019 at 01:06:55AM +0000, Dexuan Cui wrote:
 > 
-> Code was tested by modified ffmpeg, which can be found here:
-> https://github.com/jernejsk/FFmpeg, branch mainline-test
-> It has to be configured with at least following options:
-> --enable-v4l2-request --enable-libudev --enable-libdrm
+> In pci_legacy_suspend_late(), the device state is moved to PCI_UNKNOWN.
 > 
-> Samples used for testing:
-> http://jernej.libreelec.tv/videos/h264/BA1_FT_C.mp4
-> http://jernej.libreelec.tv/videos/h264/h264.mp4
+> In pci_pm_thaw_noirq(), the state is supposed to be moved back to PCI_D0,
+> but the current code misses the pci_legacy_resume_early() path, so the
+> state remains in PCI_UNKNOWN in that path. As a result, in the resume
+> phase of hibernation, this causes an error for the Mellanox VF driver,
+> which fails to enable MSI-X because pci_msi_supported() is false due
+> to dev->current_state != PCI_D0:
 > 
-> Command line used for testing:
-> ffmpeg -hwaccel drm -hwaccel_device /dev/dri/card0 -i h264.mp4 -pix_fmt bgra -f fbdev /dev/fb0
+> mlx4_core a6d1:00:02.0: Detected virtual function - running in slave mode
+> mlx4_core a6d1:00:02.0: Sending reset
+> mlx4_core a6d1:00:02.0: Sending vhcr0
+> mlx4_core a6d1:00:02.0: HCA minimum page size:512
+> mlx4_core a6d1:00:02.0: Timestamping is not supported in slave mode
+> mlx4_core a6d1:00:02.0: INTx is not supported in multi-function mode, aborting
+> PM: dpm_run_callback(): pci_pm_thaw+0x0/0xd7 returns -95
+> PM: Device a6d1:00:02.0 failed to thaw: error -95
 > 
-> Please note that V4L2_DEC_CMD_FLUSH was not tested because I'm
-> not sure how. ffmpeg follows exactly which slice is last in frame
-> and sets hold flag accordingly. Improper usage of hold flag would
-> corrupt ffmpeg assumptions and it would probably crash. Any ideas
-> how to test this are welcome!
+> To be more accurate, the "resume" phase means the "thaw" callbacks which
+> run before the system enters hibernation: when the user runs the command
+> "echo disk > /sys/power/state" for hibernation, first the kernel "freezes"
+> all the devices and creates a hibernation image, then the kernel "thaws"
+> the devices including the disk/NIC, writes the memory to the disk, and
+> powers down. This patch fixes the error message for the Mellanox VF driver
+> in this phase.
 > 
-> Thanks to Jonas for adjusting ffmpeg.
+> When the system starts again, a fresh kernel starts to run, and when the
+> kernel detects that a hibernation image was saved, the kernel "quiesces"
+> the devices, and then "restores" the devices from the saved image. In this
+> path:
+> device_resume_noirq() -> ... ->
+>   pci_pm_restore_noirq() ->
+>     pci_pm_default_resume_early() ->
+>       pci_power_up() moves the device states back to PCI_D0. This path is
+> not broken and doesn't need my patch.
 > 
-> Please let me know what you think.
+> Signed-off-by: Dexuan Cui <decui@microsoft.com>
+
+This looks like a bugfix for 5839ee7389e8 ("PCI / PM: Force devices to
+D0 in pci_pm_thaw_noirq()") so maybe it should be marked for stable as
+5839ee7389e8 was?
+
+Rafael, could you confirm?
+
+> ---
 > 
-> Best regards,
-> Jernej
+> changes in v2:
+> 	Updated the changelog with more details.
 > 
-> Changes from v1:
-> - added Rb tags
-> - updated V4L2_DEC_CMD_FLUSH documentation
-> - updated first slice detection in Cedrus
-> - hold capture buffer flag is set according to source format
-> - added v4l m2m stateless_(try_)decoder_cmd ioctl helpers
+>  drivers/pci/pci-driver.c | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
 > 
-> Hans Verkuil (2):
->   vb2: add V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF
->   videodev2.h: add V4L2_DEC_CMD_FLUSH
+> diff --git a/drivers/pci/pci-driver.c b/drivers/pci/pci-driver.c
+> index 36dbe960306b..27dfc68db9e7 100644
+> --- a/drivers/pci/pci-driver.c
+> +++ b/drivers/pci/pci-driver.c
+> @@ -1074,15 +1074,16 @@ static int pci_pm_thaw_noirq(struct device *dev)
+>  			return error;
+>  	}
+>  
+> -	if (pci_has_legacy_pm_support(pci_dev))
+> -		return pci_legacy_resume_early(dev);
+> -
+>  	/*
+>  	 * pci_restore_state() requires the device to be in D0 (because of MSI
+>  	 * restoration among other things), so force it into D0 in case the
+>  	 * driver's "freeze" callbacks put it into a low-power state directly.
+>  	 */
+>  	pci_set_power_state(pci_dev, PCI_D0);
+> +
+> +	if (pci_has_legacy_pm_support(pci_dev))
+> +		return pci_legacy_resume_early(dev);
+> +
+>  	pci_restore_state(pci_dev);
+>  
+>  	if (drv && drv->pm && drv->pm->thaw_noirq)
+> -- 
+> 2.19.1
 > 
-> Jernej Skrabec (4):
->   media: v4l2-mem2mem: add stateless_(try_)decoder_cmd ioctl helpers
->   media: cedrus: Detect first slice of a frame
->   media: cedrus: h264: Support multiple slices per frame
->   media: cedrus: Add support for holding capture buffer
-> 
->  Documentation/media/uapi/v4l/buffer.rst       | 13 ++++++
->  .../media/uapi/v4l/vidioc-decoder-cmd.rst     | 10 +++-
->  .../media/uapi/v4l/vidioc-reqbufs.rst         |  6 +++
->  .../media/videodev2.h.rst.exceptions          |  1 +
->  .../media/common/videobuf2/videobuf2-v4l2.c   |  8 +++-
->  drivers/media/v4l2-core/v4l2-mem2mem.c        | 35 ++++++++++++++
->  drivers/staging/media/sunxi/cedrus/cedrus.h   |  1 +
->  .../staging/media/sunxi/cedrus/cedrus_dec.c   | 11 +++++
->  .../staging/media/sunxi/cedrus/cedrus_h264.c  | 11 ++++-
->  .../staging/media/sunxi/cedrus/cedrus_hw.c    |  8 ++--
->  .../staging/media/sunxi/cedrus/cedrus_video.c | 14 ++++++
->  include/media/v4l2-mem2mem.h                  | 46 +++++++++++++++++++
->  include/media/videobuf2-core.h                |  3 ++
->  include/media/videobuf2-v4l2.h                |  5 ++
->  include/uapi/linux/videodev2.h                | 14 ++++--
->  15 files changed, 175 insertions(+), 11 deletions(-)
-> 
-
-I didn't want to make a v3 of this series, instead I hacked this patch that will
-hopefully do all the locking right.
-
-Basically I moved all the 'held' related code into v4l2-mem2mem under job_spinlock.
-This simplifies the driver code as well.
-
-But this is a hack that sits on top of this series. If your ffmpeg tests are now
-successful, then I'll turn this into a proper series with correct documentation
-(a lot of the comments are now wrong with this patch, so just ignore that).
-
-Regards,
-
-	Hans
-
-diff --git a/drivers/media/v4l2-core/v4l2-mem2mem.c b/drivers/media/v4l2-core/v4l2-mem2mem.c
-index 2677a07e4c9b..f81a8f2465ab 100644
---- a/drivers/media/v4l2-core/v4l2-mem2mem.c
-+++ b/drivers/media/v4l2-core/v4l2-mem2mem.c
-@@ -412,25 +412,24 @@ static void v4l2_m2m_cancel_job(struct v4l2_m2m_ctx *m2m_ctx)
- 	}
- }
-
--void v4l2_m2m_job_finish(struct v4l2_m2m_dev *m2m_dev,
--			 struct v4l2_m2m_ctx *m2m_ctx)
-+static bool _v4l2_m2m_job_finish(struct v4l2_m2m_dev *m2m_dev,
-+			  struct v4l2_m2m_ctx *m2m_ctx)
- {
--	unsigned long flags;
--
--	spin_lock_irqsave(&m2m_dev->job_spinlock, flags);
- 	if (!m2m_dev->curr_ctx || m2m_dev->curr_ctx != m2m_ctx) {
--		spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
- 		dprintk("Called by an instance not currently running\n");
--		return;
-+		return false;
- 	}
-
- 	list_del(&m2m_dev->curr_ctx->queue);
- 	m2m_dev->curr_ctx->job_flags &= ~(TRANS_QUEUED | TRANS_RUNNING);
- 	wake_up(&m2m_dev->curr_ctx->finished);
- 	m2m_dev->curr_ctx = NULL;
-+	return true;
-+}
-
--	spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
--
-+static void v4l2_m2m_job_next(struct v4l2_m2m_dev *m2m_dev,
-+		       struct v4l2_m2m_ctx *m2m_ctx)
-+{
- 	/* This instance might have more buffers ready, but since we do not
- 	 * allow more than one job on the job_queue per instance, each has
- 	 * to be scheduled separately after the previous one finishes. */
-@@ -441,8 +440,113 @@ void v4l2_m2m_job_finish(struct v4l2_m2m_dev *m2m_dev,
- 	 */
- 	schedule_work(&m2m_dev->job_work);
- }
-+
-+void v4l2_m2m_job_finish(struct v4l2_m2m_dev *m2m_dev,
-+			 struct v4l2_m2m_ctx *m2m_ctx)
-+{
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&m2m_dev->job_spinlock, flags);
-+	if (!_v4l2_m2m_job_finish(m2m_dev, m2m_ctx)) {
-+		spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
-+		return;
-+	}
-+	spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
-+
-+	v4l2_m2m_job_next(m2m_dev, m2m_ctx);
-+}
- EXPORT_SYMBOL(v4l2_m2m_job_finish);
-
-+void v4l2_m2m_job_finish_held(struct v4l2_m2m_dev *m2m_dev,
-+			 struct v4l2_m2m_ctx *m2m_ctx,
-+			 enum vb2_buffer_state state)
-+{
-+	struct vb2_v4l2_buffer *src_buf, *dst_buf;
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&m2m_dev->job_spinlock, flags);
-+	src_buf = v4l2_m2m_src_buf_remove(m2m_ctx);
-+	dst_buf = v4l2_m2m_next_dst_buf(m2m_ctx);
-+
-+	if (!src_buf || !dst_buf) {
-+		pr_err("Missing source and/or destination buffers\n");
-+		spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
-+		return;
-+	}
-+	v4l2_m2m_buf_done(src_buf, state);
-+	if (!dst_buf->is_held) {
-+		v4l2_m2m_dst_buf_remove(m2m_ctx);
-+		v4l2_m2m_buf_done(dst_buf, state);
-+	}
-+	if (!_v4l2_m2m_job_finish(m2m_dev, m2m_ctx)) {
-+		spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
-+		return;
-+	}
-+	spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
-+
-+	v4l2_m2m_job_next(m2m_dev, m2m_ctx);
-+}
-+EXPORT_SYMBOL(v4l2_m2m_job_finish_held);
-+
-+/**
-+ * v4l2_m2m_release_capture_buf() - check if the capture buffer should be
-+ * released
-+ *
-+ * @out_vb: the output buffer
-+ * @cap_vb: the capture buffer
-+ *
-+ * This helper function returns true if the current capture buffer should
-+ * be released to vb2. This is the case if the output buffer specified that
-+ * the capture buffer should be held (i.e. not returned to vb2) AND if the
-+ * timestamp of the capture buffer differs from the output buffer timestamp.
-+ *
-+ * This helper is to be called at the start of the device_run callback:
-+ *
-+ * .. code-block:: c
-+ *
-+ *	if (v4l2_m2m_release_capture_buf(out_vb, cap_vb)) {
-+ *		v4l2_m2m_dst_buf_remove(m2m_ctx);
-+ *		v4l2_m2m_buf_done(cap_vb, VB2_BUF_STATE_DONE);
-+ *		cap_vb = v4l2_m2m_next_dst_buf(m2m_ctx);
-+ *	}
-+ *	cap_vb->is_held = out_vb->flags & V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF;
-+ *
-+ *	...
-+ *
-+ *	v4l2_m2m_buf_done(out_vb, VB2_BUF_STATE_DONE);
-+ *	if (!cap_vb->is_held) {
-+ *		v4l2_m2m_dst_buf_remove(m2m_ctx);
-+ *		v4l2_m2m_buf_done(cap_vb, VB2_BUF_STATE_DONE);
-+ *	}
-+ *
-+ * This allows for multiple output buffers to be used to fill in a single
-+ * capture buffer. This is typically used by stateless decoders where
-+ * multiple e.g. H.264 slices contribute to a single decoded frame.
-+ */
-+struct vb2_v4l2_buffer *v4l2_m2m_release_capture_buf(struct v4l2_m2m_ctx *m2m_ctx)
-+{
-+	struct v4l2_m2m_dev *m2m_dev = m2m_ctx->m2m_dev;
-+	struct vb2_v4l2_buffer *src, *dst;
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&m2m_dev->job_spinlock, flags);
-+	src = v4l2_m2m_next_src_buf(m2m_ctx);
-+	dst = v4l2_m2m_next_dst_buf(m2m_ctx);
-+
-+	if (dst->is_held && dst->vb2_buf.copied_timestamp &&
-+	    src->vb2_buf.timestamp != dst->vb2_buf.timestamp) {
-+		dst->is_held = false;
-+		v4l2_m2m_dst_buf_remove(m2m_ctx);
-+		v4l2_m2m_buf_done(dst, VB2_BUF_STATE_DONE);
-+		dst = v4l2_m2m_next_dst_buf(m2m_ctx);
-+	}
-+	dst->is_held = src->flags & V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF;
-+	src->flags &= ~V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF;
-+	spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
-+	return dst;
-+}
-+EXPORT_SYMBOL(v4l2_m2m_release_capture_buf);
-+
- int v4l2_m2m_reqbufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- 		     struct v4l2_requestbuffers *reqbufs)
- {
-@@ -1171,19 +1275,28 @@ int v4l2_m2m_ioctl_stateless_decoder_cmd(struct file *file, void *priv,
- {
- 	struct v4l2_fh *fh = file->private_data;
- 	struct vb2_v4l2_buffer *out_vb, *cap_vb;
-+	struct v4l2_m2m_dev *m2m_dev = fh->m2m_ctx->m2m_dev;
-+	unsigned long flags;
- 	int ret;
-
- 	ret = v4l2_m2m_ioctl_stateless_try_decoder_cmd(file, priv, dc);
- 	if (ret < 0)
- 		return ret;
-
-+	spin_lock_irqsave(&m2m_dev->job_spinlock, flags);
- 	out_vb = v4l2_m2m_last_src_buf(fh->m2m_ctx);
- 	cap_vb = v4l2_m2m_last_dst_buf(fh->m2m_ctx);
-
--	if (out_vb)
-+	if (out_vb && (out_vb->flags & V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF)) {
- 		out_vb->flags &= ~V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF;
--	else if (cap_vb && cap_vb->is_held)
--		v4l2_m2m_buf_done(cap_vb, VB2_BUF_STATE_DONE);
-+	} else if (cap_vb && cap_vb->is_held) {
-+		cap_vb->is_held = false;
-+		if (m2m_dev->curr_ctx) {
-+			v4l2_m2m_dst_buf_remove(fh->m2m_ctx);
-+			v4l2_m2m_buf_done(cap_vb, VB2_BUF_STATE_DONE);
-+		}
-+	}
-+	spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
-
- 	return 0;
- }
-diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
-index 67f7d4326fc1..4e30f263b427 100644
---- a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
-+++ b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
-@@ -30,14 +30,7 @@ void cedrus_device_run(void *priv)
- 	struct media_request *src_req;
-
- 	run.src = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
--	run.dst = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
--
--	if (v4l2_m2m_release_capture_buf(run.src, run.dst)) {
--		v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
--		v4l2_m2m_buf_done(run.dst, VB2_BUF_STATE_DONE);
--		run.dst = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
--	}
--	run.dst->is_held = run.src->flags & V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF;
-+	run.dst = v4l2_m2m_release_capture_buf(ctx->fh.m2m_ctx);
-
- 	run.first_slice = !run.dst->vb2_buf.copied_timestamp ||
- 		run.src->vb2_buf.timestamp != run.dst->vb2_buf.timestamp;
-diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
-index 99fedec80224..242cad82cc8c 100644
---- a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
-+++ b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
-@@ -103,7 +103,6 @@ static irqreturn_t cedrus_irq(int irq, void *data)
- {
- 	struct cedrus_dev *dev = data;
- 	struct cedrus_ctx *ctx;
--	struct vb2_v4l2_buffer *src_buf, *dst_buf;
- 	enum vb2_buffer_state state;
- 	enum cedrus_irq_status status;
-
-@@ -121,26 +120,12 @@ static irqreturn_t cedrus_irq(int irq, void *data)
- 	dev->dec_ops[ctx->current_codec]->irq_disable(ctx);
- 	dev->dec_ops[ctx->current_codec]->irq_clear(ctx);
-
--	src_buf = v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
--	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
--
--	if (!src_buf || !dst_buf) {
--		v4l2_err(&dev->v4l2_dev,
--			 "Missing source and/or destination buffers\n");
--		return IRQ_HANDLED;
--	}
--
- 	if (status == CEDRUS_IRQ_ERROR)
- 		state = VB2_BUF_STATE_ERROR;
- 	else
- 		state = VB2_BUF_STATE_DONE;
-
--	v4l2_m2m_buf_done(src_buf, state);
--	if (!dst_buf->is_held) {
--		v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
--		v4l2_m2m_buf_done(dst_buf, state);
--	}
--	v4l2_m2m_job_finish(ctx->dev->m2m_dev, ctx->fh.m2m_ctx);
-+	v4l2_m2m_job_finish_held(ctx->dev->m2m_dev, ctx->fh.m2m_ctx, state);
-
- 	return IRQ_HANDLED;
- }
-diff --git a/include/media/v4l2-mem2mem.h b/include/media/v4l2-mem2mem.h
-index 8ae2f56c7fa3..48ca7d3eaa3d 100644
---- a/include/media/v4l2-mem2mem.h
-+++ b/include/media/v4l2-mem2mem.h
-@@ -173,6 +173,10 @@ void v4l2_m2m_try_schedule(struct v4l2_m2m_ctx *m2m_ctx);
- void v4l2_m2m_job_finish(struct v4l2_m2m_dev *m2m_dev,
- 			 struct v4l2_m2m_ctx *m2m_ctx);
-
-+void v4l2_m2m_job_finish_held(struct v4l2_m2m_dev *m2m_dev,
-+			 struct v4l2_m2m_ctx *m2m_ctx,
-+			 enum vb2_buffer_state state);
-+
- static inline void
- v4l2_m2m_buf_done(struct vb2_v4l2_buffer *buf, enum vb2_buffer_state state)
- {
-@@ -644,47 +648,7 @@ void v4l2_m2m_buf_copy_metadata(const struct vb2_v4l2_buffer *out_vb,
- 				struct vb2_v4l2_buffer *cap_vb,
- 				bool copy_frame_flags);
-
--/**
-- * v4l2_m2m_release_capture_buf() - check if the capture buffer should be
-- * released
-- *
-- * @out_vb: the output buffer
-- * @cap_vb: the capture buffer
-- *
-- * This helper function returns true if the current capture buffer should
-- * be released to vb2. This is the case if the output buffer specified that
-- * the capture buffer should be held (i.e. not returned to vb2) AND if the
-- * timestamp of the capture buffer differs from the output buffer timestamp.
-- *
-- * This helper is to be called at the start of the device_run callback:
-- *
-- * .. code-block:: c
-- *
-- *	if (v4l2_m2m_release_capture_buf(out_vb, cap_vb)) {
-- *		v4l2_m2m_dst_buf_remove(m2m_ctx);
-- *		v4l2_m2m_buf_done(cap_vb, VB2_BUF_STATE_DONE);
-- *		cap_vb = v4l2_m2m_next_dst_buf(m2m_ctx);
-- *	}
-- *	cap_vb->is_held = out_vb->flags & V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF;
-- *
-- *	...
-- *
-- *	v4l2_m2m_buf_done(out_vb, VB2_BUF_STATE_DONE);
-- *	if (!cap_vb->is_held) {
-- *		v4l2_m2m_dst_buf_remove(m2m_ctx);
-- *		v4l2_m2m_buf_done(cap_vb, VB2_BUF_STATE_DONE);
-- *	}
-- *
-- * This allows for multiple output buffers to be used to fill in a single
-- * capture buffer. This is typically used by stateless decoders where
-- * multiple e.g. H.264 slices contribute to a single decoded frame.
-- */
--static inline bool v4l2_m2m_release_capture_buf(const struct vb2_v4l2_buffer *out_vb,
--						const struct vb2_v4l2_buffer *cap_vb)
--{
--	return cap_vb->is_held && cap_vb->vb2_buf.copied_timestamp &&
--	       out_vb->vb2_buf.timestamp != cap_vb->vb2_buf.timestamp;
--}
-+struct vb2_v4l2_buffer *v4l2_m2m_release_capture_buf(struct v4l2_m2m_ctx *m2m_ctx);
-
- /* v4l2 request helper */
-
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
