@@ -1,75 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CAA66CEE45
-	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Oct 2019 23:17:41 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 44F15CEF0E
+	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Oct 2019 00:30:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8874587CC4;
-	Mon,  7 Oct 2019 21:17:39 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BDE6786D72;
+	Mon,  7 Oct 2019 22:30:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sjWZXrZ-O1tz; Mon,  7 Oct 2019 21:17:39 +0000 (UTC)
+	with ESMTP id bj9hwwajxEAg; Mon,  7 Oct 2019 22:30:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2936087C30;
-	Mon,  7 Oct 2019 21:17:38 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DF34586B33;
+	Mon,  7 Oct 2019 22:30:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C0A8C1BF34C
- for <devel@linuxdriverproject.org>; Mon,  7 Oct 2019 21:17:35 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id AEF3E1BF2C6
+ for <devel@linuxdriverproject.org>; Mon,  7 Oct 2019 22:29:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id B613D20109
- for <devel@linuxdriverproject.org>; Mon,  7 Oct 2019 21:17:35 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id A5C5C869E1
+ for <devel@linuxdriverproject.org>; Mon,  7 Oct 2019 22:29:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rXz0pZ-B8m6W for <devel@linuxdriverproject.org>;
- Mon,  7 Oct 2019 21:17:34 +0000 (UTC)
+ with ESMTP id NiW8W3Ky+se1 for <devel@linuxdriverproject.org>;
+ Mon,  7 Oct 2019 22:29:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f196.google.com (mail-oi1-f196.google.com
- [209.85.167.196])
- by silver.osuosl.org (Postfix) with ESMTPS id 268D4203AC
- for <devel@driverdev.osuosl.org>; Mon,  7 Oct 2019 21:17:34 +0000 (UTC)
-Received: by mail-oi1-f196.google.com with SMTP id 83so13031746oii.1
- for <devel@driverdev.osuosl.org>; Mon, 07 Oct 2019 14:17:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=ZSMyQ7xLH+GcRUXwNxgSuFrHvKm75AJR1R0SR7xGkU8=;
- b=NhaXuRQ+1lwQRBvuCMxNTwsQOV5ZRV4A88SVR8jE0hYUdyhq2KjbbKhmGvDcxjoCWJ
- TOdSuPR5UqU7YK2ka/NfsTqMPhIcY2g5J3waNtuzbd0ArlYc+oYBl9/hpCK6SAuVsYfH
- Ibqr8uRhY7EpKpf5IA0MQEQW1KwD2rPPNZve9B3lIrrq8BofY7qxIQt3mPQk7mqNYBZy
- e8QPoDYRduBhMprFzF87HPWDNQml1lwg2zj39ps+LQvLA+lR11L544bdISS20A9AXZh+
- FeRlwBBorczhI9yQZLNAbXGW7ty8Y1DkberCHQUtgOk6/giVDL4cuuUkKeLfIyfp/vA+
- A39A==
+Received: from mail-yw1-f67.google.com (mail-yw1-f67.google.com
+ [209.85.161.67])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A2B458693D
+ for <devel@driverdev.osuosl.org>; Mon,  7 Oct 2019 22:29:37 +0000 (UTC)
+Received: by mail-yw1-f67.google.com with SMTP id x64so5748787ywg.3
+ for <devel@driverdev.osuosl.org>; Mon, 07 Oct 2019 15:29:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=Vh/BXioQ6oy7rRWMvrPF2n3H3tPYXp6LKVPTrcmyM0Y=;
+ b=UPufEnk+whbcuyeXgcOySlxDnPOKp6HR8pcmu/+YFHCmYCIDej+rKuWwfLBHa17+XT
+ xm/ZugK8V8kHF+V6g57nicwe/cu9Q2k9L7oWMMOViVP7ykplODU1cmxSwyYWCb0yNUH5
+ Rf1Pqj1YD8JyI8ufcd7pBpoSTr7XGF4jg7tlogFcaT5nB9nEsA555EUXYR1oMeVNVR57
+ S6bTM8fnSCWDC9VoXgtRKaSsW2HL9DpYGnunJYKoRxn6KSbI1qOZ7A6go0PR/tRiTSD2
+ IKxRUVGoUYj6sZnUBXlS70tOtb1eLG3QgCn29SRKKrm5IdyYkk3H2DtWFTKOE2z6rrAu
+ 6fjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=ZSMyQ7xLH+GcRUXwNxgSuFrHvKm75AJR1R0SR7xGkU8=;
- b=lrNbBBpH9hIakCBOlgKrllcHN+WaPe/zVkDnPUcImC0MKYh0+8EKZyOWnuWJBRsFcc
- WrZ25DDYVWu5eYHixlYmEUXbXDC5AVDADSY0qlGGCnRAFg48nH3OsNjHUXm9ddZagdU1
- YJTXxzBK6br8O9Fxo775mMzngBagne4ja1wa7ReEjzdAQnFVfDZAcgf9iXJaL7KZGzLz
- d7wZ0kmxdA64Ez3wkocc/Wag6GPibX0CMxDlHc74u84nI5i3QlYE3qy8QOg1XEPDAlWF
- +5RJQMTcnFRLXXg9Iog5sO1l5RrNRl0iIw372LKEL4Gadx8EZZozjXF+E45OHe4TRnx+
- TPNA==
-X-Gm-Message-State: APjAAAVqy/giwJOEiaKHvRBlP+FbQ4iq2pExd7tO9GHrszd4AFLOf+Oj
- OHAa+TCX22Y99dGgMAxJm1niHdwuajGEBOLeBuPJsQ==
-X-Google-Smtp-Source: APXvYqxUdaPg+YopXAfujEkqQp9wrGs8XF5tm/6/RYNVkpfv+iOOElNN6Vr/P6jdoomRjEiV9n1Zy5HGmcrNOxfXKVw=
-X-Received: by 2002:aca:f403:: with SMTP id s3mr1098471oih.23.1570483052799;
- Mon, 07 Oct 2019 14:17:32 -0700 (PDT)
-MIME-Version: 1.0
-References: <CAG48ez14Q0-F8LqsvcNbyR2o6gPW8SHXsm4u5jmD9MpsteM2Tw@mail.gmail.com>
- <CAHRSSExnOcwWWPd9osH=MU_WGaqxL4+7aXkf9=srwYFRa7c2eQ@mail.gmail.com>
-In-Reply-To: <CAHRSSExnOcwWWPd9osH=MU_WGaqxL4+7aXkf9=srwYFRa7c2eQ@mail.gmail.com>
-From: Hridya Valsaraju <hridya@google.com>
-Date: Mon, 7 Oct 2019 14:16:56 -0700
-Message-ID: <CA+wgaPP7=NMy91P8JK6skSc9s3J1uFJJcmGLQ6RBdjH-OVpKNQ@mail.gmail.com>
-Subject: Re: UAF read in print_binder_transaction_log_entry() on
- ANDROID_BINDERFS kernels
-To: Todd Kjos <tkjos@google.com>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=Vh/BXioQ6oy7rRWMvrPF2n3H3tPYXp6LKVPTrcmyM0Y=;
+ b=dE0UchvvQl//XNcPCIKByIrSXnQdn0ptyU920MWceAyFsS3SXRIh+i8goeaHepBGXz
+ WvZNbsdepLJ7jw8D6BiLoUkZhYI3+lc+EgzLJ/hS4DfTHpeg7mmwUyNiAc25TuHddwE7
+ RMHAYOexBH0omYeHOSJ0mbS/YQoZ/MDc4e0QecnWDqHHQTuR8PNMbpmnoEfrPfAKK2MC
+ ORR6CwJ6mf3VnXHR7JJq7lDM9I0XyEeDdfB2ZShmWcBCA/Zilo5nmqmjKgq6+ru4i3uS
+ l8vnjkLwpjOOr1gaaEllm75W8KOfPgP3MCUuT6Cs9L3KA8Dvg7QjI+zYMBHIWtnafICR
+ SK9A==
+X-Gm-Message-State: APjAAAWIgxC0FIh4bFYym9nfxzgBQabFmgGFeTQ1XjEvU8PIsGBx2JHQ
+ 3nCK2xcBOU8oGsgU52tua64=
+X-Google-Smtp-Source: APXvYqy9ON5hfbol3ID3uuJpDMRN6iuGha/Q0jx0MKfnfMEvbBRtfE+MgY2/dPRnM58NOtiRbGSmRA==
+X-Received: by 2002:a81:994a:: with SMTP id q71mr20313699ywg.266.1570487376637; 
+ Mon, 07 Oct 2019 15:29:36 -0700 (PDT)
+Received: from ubuntu ([107.15.113.108])
+ by smtp.gmail.com with ESMTPSA id l2sm4026015ywd.16.2019.10.07.15.29.35
+ (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Mon, 07 Oct 2019 15:29:35 -0700 (PDT)
+From: Nachammai Karuppiah <nachukannan@gmail.com>
+To: Eric Anholt <eric@anholt.net>, Stefan Wahren <wahrenst@gmx.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH v2] staging: vc04_services: Avoid NULL comparison
+Date: Mon,  7 Oct 2019 15:29:28 -0700
+Message-Id: <1570487369-35454-1-git-send-email-nachukannan@gmail.com>
+X-Mailer: git-send-email 2.7.4
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,169 +81,189 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- Jann Horn <jannh@google.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- kernel list <linux-kernel@vger.kernel.org>,
- =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
- Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
- Christian Brauner <christian@brauner.io>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com,
+ Nachammai Karuppiah <nachukannan@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-VGhhbmsgeW91IGZvciBsZXR0aW5nIHVzIGtub3cgYWJvdXQgdGhlIGlzc3VlIEphbm4uIEkgd2ls
-bCB3b3JrIG9uIGEKZml4IGFuZCBzZW5kIG91dCB0aGUgc2FtZSBmb3IgcmV2aWV3IG9uY2UgcmVh
-ZHkuCgpSZWdhcmRzLApIcmlkeWEKCgpPbiBNb24sIE9jdCA3LCAyMDE5IGF0IDI6MDQgUE0gVG9k
-ZCBLam9zIDx0a2pvc0Bnb29nbGUuY29tPiB3cm90ZToKPgo+ICtIcmlkeWEgVmFsc2FyYWp1Cj4K
-Pgo+IE9uIE1vbiwgT2N0IDcsIDIwMTkgYXQgMTo1MCBQTSBKYW5uIEhvcm4gPGphbm5oQGdvb2ds
-ZS5jb20+IHdyb3RlOgo+ID4KPiA+IEhpIQo+ID4KPiA+IFRoZXJlIGlzIGEgdXNlLWFmdGVyLWZy
-ZWUgcmVhZCBpbiBwcmludF9iaW5kZXJfdHJhbnNhY3Rpb25fbG9nX2VudHJ5KCkKPiA+IG9uIEFO
-RFJPSURfQklOREVSRlMga2VybmVscyBiZWNhdXNlCj4gPiBwcmludF9iaW5kZXJfdHJhbnNhY3Rp
-b25fbG9nX2VudHJ5KCkgcHJpbnRzIHRoZSBjaGFyKiBlLT5jb250ZXh0X25hbWUKPiA+IGFzIHN0
-cmluZywgYW5kIGlmIHRoZSB0cmFuc2FjdGlvbiBvY2N1cnJlZCBvbiBhIGJpbmRlciBkZXZpY2Ug
-ZnJvbQo+ID4gYmluZGVyZnMsIGUtPmNvbnRleHRfbmFtZSBiZWxvbmdzIHRvIHRoZSBiaW5kZXIg
-ZGV2aWNlIGFuZCBpcyBmcmVlZAo+ID4gd2hlbiB0aGUgaW5vZGUgZGlzYXBwZWFycy4KPiA+Cj4g
-PiBMdWNraWx5IHRoaXMgc2hvdWxkbid0IGhhdmUgc2VjdXJpdHkgaW1wbGljYXRpb25zLCBzaW5j
-ZToKPiA+Cj4gPiBhKSByZWFkaW5nIHRoZSBiaW5kZXIgdHJhbnNhY3Rpb24gbG9nIGlzIGFscmVh
-ZHkgYSBwcmV0dHkgcHJpdmlsZWdlZCBvcGVyYXRpb24KPiA+IGIpIEkgY2FuJ3QgZmluZCBhbnkg
-YWN0dWFsIHVzZXJzIG9mIEFORFJPSURfQklOREVSRlMKPiA+Cj4gPiBJIGd1ZXNzIHRoZXJlIGFy
-ZSB0aHJlZSB3YXlzIHRvIGZpeCBpdDoKPiA+IDEpIENyZWF0ZSBhIG5ldyBzaGFyZWQgZ2xvYmFs
-IHNwaW5sb2NrIGZvciBiaW5kZXJmc19ldmljdF9pbm9kZSgpIGFuZAo+ID4gYmluZGVyX3RyYW5z
-YWN0aW9uX2xvZ19zaG93KCksIGFuZCBsZXQgYmluZGVyZnNfZXZpY3RfaW5vZGUoKSBzY2FuIHRo
-ZQo+ID4gdHJhbnNhY3Rpb24gbG9nIGZvciBwb2ludGVycyB0byBpdHMgbmFtZSBhbmQgcmVwbGFj
-ZSB0aGVtIHdpdGgKPiA+IHBvaW50ZXJzIHRvIGEgc3RhdGljYWxseS1hbGxvY2F0ZWQgc3RyaW5n
-ICJ7REVMRVRFRH0iIG9yIHNvbWV0aGluZwo+ID4gbGlrZSB0aGF0Lgo+ID4gMikgTGV0IHRoZSB0
-cmFuc2FjdGlvbiBsb2cgY29udGFpbiBub24tcmV1c2FibGUgZGV2aWNlIGlkZW50aWZpZXJzCj4g
-PiBpbnN0ZWFkIG9mIG5hbWUgcG9pbnRlcnMsIGFuZCBsZXQgcHJpbnRfYmluZGVyX3RyYW5zYWN0
-aW9uX2xvZ19lbnRyeSgpCj4gPiBsb29rIHRoZW0gdXAgaW4gc29tZXRoaW5nIGxpa2UgYSBoYXNo
-dGFibGUuCj4gPiAzKSBKdXN0IGNvcHkgdGhlIG5hbWUgaW50byB0aGUgdHJhbnNhY3Rpb24gbG9n
-IGV2ZXJ5IHRpbWUuCj4gPgo+ID4gSSdtIG5vdCBzdXJlIHdoaWNoIG9uZSBpcyBiZXR0ZXIsIG9y
-IHdoZXRoZXIgdGhlcmUncyBhIG5pY2VyIGZvdXJ0aAo+ID4gb3B0aW9uLCBzbyBJJ20gbGVhdmlu
-ZyB3cml0aW5nIGEgcGF0Y2ggZm9yIHRoaXMgdG8geSdhbGwuCj4gPgo+ID4KPiA+IFRyaWdnZXIg
-aW5zdHJ1Y3Rpb25zIChyZXF1aXJlcyB5b3UgdG8gaGF2ZSBzb21lIGhlbHBlcnMgdGhhdCBjYW4K
-PiA+IHJlZ2lzdGVyIGEgY29udGV4dCBtYW5hZ2VyIGFuZCBzZW5kIHNvbWUgdHJhbnNhY3Rpb24g
-dG8gaXQpOgo+ID4gPT09PT09PT09PT09PT0KPiA+IHJvb3RAdGVzdDovaG9tZS91c2VyIyBta2Rp
-ciAvdG1wL2JpbmRlcgo+ID4gcm9vdEB0ZXN0Oi9ob21lL3VzZXIjIG1vdW50IC10IGJpbmRlciAt
-byBzdGF0cz1nbG9iYWwgL2Rldi9udWxsIC90bXAvYmluZGVyCj4gPiByb290QHRlc3Q6L2hvbWUv
-dXNlciMgbHMgLWwgL3RtcC9iaW5kZXIKPiA+IHRvdGFsIDAKPiA+IGNydy0tLS0tLS0gMSByb290
-IHJvb3QgMjQ4LCAxIE9jdCAgNyAyMDozNCBiaW5kZXIKPiA+IGNydy0tLS0tLS0gMSByb290IHJv
-b3QgMjQ4LCAwIE9jdCAgNyAyMDozNCBiaW5kZXItY29udHJvbAo+ID4gZHJ3eHIteHIteCAzIHJv
-b3Qgcm9vdCAgICAgIDAgT2N0ICA3IDIwOjM0IGJpbmRlcl9sb2dzCj4gPiBjcnctLS0tLS0tIDEg
-cm9vdCByb290IDI0OCwgMiBPY3QgIDcgMjA6MzQgaHdiaW5kZXIKPiA+IGNydy0tLS0tLS0gMSBy
-b290IHJvb3QgMjQ4LCAzIE9jdCAgNyAyMDozNCB2bmRiaW5kZXIKPiA+IHJvb3RAdGVzdDovaG9t
-ZS91c2VyIyBsbiAtcyAvdG1wL2JpbmRlci9iaW5kZXIgL2Rldi9iaW5kZXIKPiA+IFtydW4gc29t
-ZSBzaW1wbGUgYmluZGVyIGRlbW8gY29kZSB0byB0ZW1wb3JhcmlseSByZWdpc3RlciBhIGNvbnRl
-eHQKPiA+IG1hbmFnZXIgYW5kIHNlbmQgYSBiaW5kZXIgdHJhbnNhY3Rpb25dCj4gPiByb290QHRl
-c3Q6L2hvbWUvdXNlciMgcm0gL3RtcC9iaW5kZXIvYmluZGVyCj4gPiByb290QHRlc3Q6L2hvbWUv
-dXNlciMgY2F0IC90bXAvYmluZGVyL2JpbmRlcl9sb2dzL3RyYW5zYWN0aW9uX2xvZwo+ID4gMjog
-Y2FsbCAgZnJvbSAyMjc3OjIyNzcgdG8gMjI3MzowIGNvbnRleHQgQO+/ve+/ve+/ve+/ve+/ve+/
-ve+/vSBub2RlIDEgaGFuZGxlIDAKPiA+IHNpemUgMjQ6OCByZXQgMC8wIGw9MAo+ID4gNTogY2Fs
-bCAgZnJvbSAyMjczOjIyNzMgdG8gMjI3NzoyMjc3IGNvbnRleHQgQO+/ve+/ve+/ve+/ve+/ve+/
-ve+/vSBub2RlIDMgaGFuZGxlIDEKPiA+IHNpemUgMDowIHJldCAwLzAgbD0wCj4gPiA2OiByZXBs
-eSBmcm9tIDIyNzc6MjI3NyB0byAyMjczOjIyNzMgY29udGV4dCBA77+977+977+977+977+977+9
-77+9IG5vZGUgMCBoYW5kbGUgMAo+ID4gc2l6ZSA0OjAgcmV0IDAvMCBsPTAKPiA+IDc6IHJlcGx5
-IGZyb20gMjI3MzoyMjczIHRvIDIyNzc6MjI3NyBjb250ZXh0IEDvv73vv73vv73vv73vv73vv73v
-v70gbm9kZSAwIGhhbmRsZSAwCj4gPiBzaXplIDQ6MCByZXQgMC8wIGw9MAo+ID4gcm9vdEB0ZXN0
-Oi9ob21lL3VzZXIjCj4gPiA9PT09PT09PT09PT09PQo+ID4KPiA+IEFTQU4gc3BsYXQ6Cj4gPiBb
-ICAzMzMuMzAwNzUzXSA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
-PT09PT09PT09PT09PT09PT09PT09PT0KPiA+IFsgIDMzMy4zMDMxOTddIEJVRzogS0FTQU46IHVz
-ZS1hZnRlci1mcmVlIGluIHN0cmluZ19ub2NoZWNrKzB4OWQvMHgxNjAKPiA+IFsgIDMzMy4zMDUw
-ODFdIFJlYWQgb2Ygc2l6ZSAxIGF0IGFkZHIgZmZmZjg4ODBiMDk4MTI1OCBieSB0YXNrIGNhdC8y
-Mjc5Cj4gPgo+ID4gWyAgMzMzLjMwNzQxNV0gQ1BVOiAxIFBJRDogMjI3OSBDb21tOiBjYXQgTm90
-IHRhaW50ZWQgNS40LjAtcmMxKyAjNTEzCj4gPiBbICAzMzMuMzA5MzA0XSBIYXJkd2FyZSBuYW1l
-OiBRRU1VIFN0YW5kYXJkIFBDIChpNDQwRlggKyBQSUlYLCAxOTk2KSwKPiA+IEJJT1MgMS4xMi4w
-LTEgMDQvMDEvMjAxNAo+ID4gWyAgMzMzLjMxMDk4N10gQ2FsbCBUcmFjZToKPiA+IFsgIDMzMy4z
-MTIwMzJdICBkdW1wX3N0YWNrKzB4N2MvMHhjMAo+ID4gWyAgMzMzLjMxMjU4MV0gID8gc3RyaW5n
-X25vY2hlY2srMHg5ZC8weDE2MAo+ID4gWyAgMzMzLjMxMzE1N10gIHByaW50X2FkZHJlc3NfZGVz
-Y3JpcHRpb24uY29uc3Rwcm9wLjcrMHgzNi8weDUwCj4gPiBbICAzMzMuMzE0MDMwXSAgPyBzdHJp
-bmdfbm9jaGVjaysweDlkLzB4MTYwCj4gPiBbICAzMzMuMzE0NjAzXSAgPyBzdHJpbmdfbm9jaGVj
-aysweDlkLzB4MTYwCj4gPiBbICAzMzMuMzE1MjM2XSAgX19rYXNhbl9yZXBvcnQuY29sZC4xMCsw
-eDFhLzB4MzUKPiA+IFsgIDMzMy4zMTU5NzJdICA/IHN0cmluZ19ub2NoZWNrKzB4OWQvMHgxNjAK
-PiA+IFsgIDMzMy4zMTY1NDVdICBrYXNhbl9yZXBvcnQrMHhlLzB4MjAKPiA+IFsgIDMzMy4zMTcx
-MDRdICBzdHJpbmdfbm9jaGVjaysweDlkLzB4MTYwCj4gPiBbICAzMzMuMzE3NjUyXSAgPyB3aWRl
-bl9zdHJpbmcrMHgxNjAvMHgxNjAKPiA+IFsgIDMzMy4zMTgyNzBdICA/IHN0cmluZ19ub2NoZWNr
-KzB4MTYwLzB4MTYwCj4gPiBbICAzMzMuMzE4ODU3XSAgPyB1bndpbmRfZ2V0X3JldHVybl9hZGRy
-ZXNzKzB4MmEvMHg0MAo+ID4gWyAgMzMzLjMxOTYzNl0gID8gcHJvZmlsZV9zZXR1cC5jb2xkLjkr
-MHg5Ni8weDk2Cj4gPiBbICAzMzMuMzIwMzU5XSAgc3RyaW5nKzB4YjYvMHhjMAo+ID4gWyAgMzMz
-LjMyMDgwMF0gID8gaGV4X3N0cmluZysweDI4MC8weDI4MAo+ID4gWyAgMzMzLjMyMTM5OF0gIHZz
-bnByaW50ZisweDIwYy8weDc4MAo+ID4gWyAgMzMzLjMyMTg5OF0gID8gbnVtX3RvX3N0cisweDE4
-MC8weDE4MAo+ID4gWyAgMzMzLjMyMjUwM10gID8gX19rYXNhbl9rbWFsbG9jLmNvbnN0cHJvcC42
-KzB4YzEvMHhkMAo+ID4gWyAgMzMzLjMyMzIzNV0gID8gdmZzX3JlYWQrMHhiYy8weDFlMAo+ID4g
-WyAgMzMzLjMyMzgxNF0gID8ga3N5c19yZWFkKzB4YjUvMHgxNTAKPiA+IFsgIDMzMy4zMjQzMjNd
-ICA/IGRvX3N5c2NhbGxfNjQrMHhiOS8weDNiMAo+ID4gWyAgMzMzLjMyNDk0OF0gID8gZW50cnlf
-U1lTQ0FMTF82NF9hZnRlcl9od2ZyYW1lKzB4NDkvMHhiZQo+ID4gWyAgMzMzLjMyNTc1Nl0gIHNl
-cV92cHJpbnRmKzB4NzgvMHhiMAo+ID4gWyAgMzMzLjMyNjI1M10gIHNlcV9wcmludGYrMHg5Ni8w
-eGMwCj4gPiBbICAzMzMuMzI3MTMyXSAgPyBzZXFfdnByaW50ZisweGIwLzB4YjAKPiA+IFsgIDMz
-My4zMjc2NzhdICA/IG1hdGNoX2hlbGRfbG9jaysweDJlLzB4MjQwCj4gPiBbICAzMzMuMzI4NDUw
-XSAgYmluZGVyX3RyYW5zYWN0aW9uX2xvZ19zaG93KzB4MjM3LzB4MmQwCj4gPiBbICAzMzMuMzI5
-MTYzXSAgc2VxX3JlYWQrMHgyNjYvMHg2OTAKPiA+IFsgIDMzMy4zMjk3MDVdICB2ZnNfcmVhZCsw
-eGJjLzB4MWUwCj4gPiBbICAzMzMuMzMwMTc4XSAga3N5c19yZWFkKzB4YjUvMHgxNTAKPiA+IFsg
-IDMzMy4zMzA3MjRdICA/IGtlcm5lbF93cml0ZSsweGIwLzB4YjAKPiA+IFsgIDMzMy4zMzEyNTdd
-ICA/IHRyYWNlX2hhcmRpcnFzX29mZl9jYWxsZXIrMHg1Ny8weDEzMAo+ID4gWyAgMzMzLjMzMjA0
-NV0gID8gbWFya19oZWxkX2xvY2tzKzB4MjkvMHhhMAo+ID4gWyAgMzMzLjMzMjY3OF0gID8gZG9f
-c3lzY2FsbF82NCsweDZiLzB4M2IwCj4gPiBbICAzMzMuMzMzMjM1XSAgZG9fc3lzY2FsbF82NCsw
-eGI5LzB4M2IwCj4gPiBbICAzMzMuMzMzODU2XSAgZW50cnlfU1lTQ0FMTF82NF9hZnRlcl9od2Zy
-YW1lKzB4NDkvMHhiZQo+ID4gWyAgMzMzLjMzNDYzNV0gUklQOiAwMDMzOjB4N2ZiYmI5NWQ0NDYx
-Cj4gPiBbICAzMzMuMzM1MTUzXSBDb2RlOiBmZSBmZiBmZiA1MCA0OCA4ZCAzZCBmZSBkMCAwOSAw
-MCBlOCBlOSAwMyAwMiAwMAo+ID4gNjYgMGYgMWYgODQgMDAgMDAgMDAgMDAgMDAgNDggOGQgMDUg
-OTkgNjIgMGQgMDAgOGIgMDAgODUgYzAgNzUgMTMgMzEKPiA+IGMwIDBmIDA1IDw0OD4gM2QgMDAg
-ZjAgZmYgZmYgNzcgNTcgYzMgNjYgMGYgMWYgNDQgMDAgMDAgNDEgNTQgNDkgODkgZDQKPiA+IDU1
-IDQ4Cj4gPiBbICAzMzMuMzM3OTUwXSBSU1A6IDAwMmI6MDAwMDdmZmNiZTY0MzhlOCBFRkxBR1M6
-IDAwMDAwMjQ2IE9SSUdfUkFYOgo+ID4gMDAwMDAwMDAwMDAwMDAwMAo+ID4gWyAgMzMzLjMzOTA3
-Ml0gUkFYOiBmZmZmZmZmZmZmZmZmZmRhIFJCWDogMDAwMDAwMDAwMDAyMDAwMCBSQ1g6IDAwMDA3
-ZmJiYjk1ZDQ0NjEKPiA+IFsgIDMzMy4zNDAxNTddIFJEWDogMDAwMDAwMDAwMDAyMDAwMCBSU0k6
-IDAwMDA3ZmJiYjkzMjQwMDAgUkRJOiAwMDAwMDAwMDAwMDAwMDAzCj4gPiBbICAzMzMuMzQxMzIw
-XSBSQlA6IDAwMDA3ZmJiYjkzMjQwMDAgUjA4OiAwMDAwMDAwMGZmZmZmZmZmIFIwOTogMDAwMDAw
-MDAwMDAwMDAwMAo+ID4gWyAgMzMzLjM0MjQ1NF0gUjEwOiBmZmZmZmZmZmZmZmZmYjljIFIxMTog
-MDAwMDAwMDAwMDAwMDI0NiBSMTI6IDAwMDA3ZmJiYjkzMjQwMDAKPiA+IFsgIDMzMy4zNDM1NTBd
-IFIxMzogMDAwMDAwMDAwMDAwMDAwMyBSMTQ6IDAwMDAwMDAwMDAwMDBmZmYgUjE1OiAwMDAwMDAw
-MDAwMDIwMDAwCj4gPgo+ID4gWyAgMzMzLjM0NDg0NV0gQWxsb2NhdGVkIGJ5IHRhc2sgMjI1OToK
-PiA+IFsgIDMzMy4zNDU0MTZdICBzYXZlX3N0YWNrKzB4MTkvMHg4MAo+ID4gWyAgMzMzLjM0NTg5
-OV0gIF9fa2FzYW5fa21hbGxvYy5jb25zdHByb3AuNisweGMxLzB4ZDAKPiA+IFsgIDMzMy4zNDY2
-MzZdICBfX2ttYWxsb2NfdHJhY2tfY2FsbGVyKzB4ZjQvMHgyZTAKPiA+IFsgIDMzMy4zNDcyNzFd
-ICBrbWVtZHVwKzB4MTcvMHg0MAo+ID4gWyAgMzMzLjM0Nzc5Nl0gIGJpbmRlcmZzX2JpbmRlcl9k
-ZXZpY2VfY3JlYXRlLmlzcmEuNisweDIxNy8weDUzMAo+ID4gWyAgMzMzLjM0ODY3NF0gIGJpbmRl
-cmZzX2ZpbGxfc3VwZXIrMHg0ODYvMHg4MWUKPiA+IFsgIDMzMy4zNDkzMDldICBtb3VudF9ub2Rl
-disweDQxLzB4YjAKPiA+IFsgIDMzMy4zNDk4NjBdICBsZWdhY3lfZ2V0X3RyZWUrMHg3Yi8weGMw
-Cj4gPiBbICAzMzMuMzUwMzk4XSAgdmZzX2dldF90cmVlKzB4NDAvMHgxMzAKPiA+IFsgIDMzMy4z
-NTA5NzBdICBkb19tb3VudCsweGFjYi8weGVhMAo+ID4gWyAgMzMzLjM1MTQ0OV0gIGtzeXNfbW91
-bnQrMHhiMS8weGQwCj4gPiBbICAzMzMuMzUyMDA3XSAgX194NjRfc3lzX21vdW50KzB4NWQvMHg3
-MAo+ID4gWyAgMzMzLjM1MjU0NV0gIGRvX3N5c2NhbGxfNjQrMHhiOS8weDNiMAo+ID4gWyAgMzMz
-LjM1MzE0NF0gIGVudHJ5X1NZU0NBTExfNjRfYWZ0ZXJfaHdmcmFtZSsweDQ5LzB4YmUKPiA+Cj4g
-PiBbICAzMzMuMzU0MTQ0XSBGcmVlZCBieSB0YXNrIDIyNzg6Cj4gPiBbICAzMzMuMzU0NTk4XSAg
-c2F2ZV9zdGFjaysweDE5LzB4ODAKPiA+IFsgIDMzMy4zNTUxMzVdICBfX2thc2FuX3NsYWJfZnJl
-ZSsweDEyZS8weDE4MAo+ID4gWyAgMzMzLjM1NTczNF0gIGtmcmVlKzB4ZTYvMHgzMTAKPiA+IFsg
-IDMzMy4zNTYyMzRdICBiaW5kZXJmc19ldmljdF9pbm9kZSsweGI4LzB4ZDAKPiA+IFsgIDMzMy4z
-NTY4MzFdICBldmljdCsweDE2Zi8weDI5MAo+ID4gWyAgMzMzLjM1ODA4MV0gIGRvX3VubGlua2F0
-KzB4MmY2LzB4NDIwCj4gPiBbICAzMzMuMzU4NTkzXSAgZG9fc3lzY2FsbF82NCsweGI5LzB4M2Iw
-Cj4gPiBbICAzMzMuMzU5MTc2XSAgZW50cnlfU1lTQ0FMTF82NF9hZnRlcl9od2ZyYW1lKzB4NDkv
-MHhiZQo+ID4KPiA+IFsgIDMzMy4zNjAxOTZdIFRoZSBidWdneSBhZGRyZXNzIGJlbG9uZ3MgdG8g
-dGhlIG9iamVjdCBhdCBmZmZmODg4MGIwOTgxMjU4Cj4gPiAgICAgICAgICAgICAgICAgd2hpY2gg
-YmVsb25ncyB0byB0aGUgY2FjaGUga21hbGxvYy04IG9mIHNpemUgOAo+ID4gWyAgMzMzLjM2MTk5
-MV0gVGhlIGJ1Z2d5IGFkZHJlc3MgaXMgbG9jYXRlZCAwIGJ5dGVzIGluc2lkZSBvZgo+ID4gICAg
-ICAgICAgICAgICAgIDgtYnl0ZSByZWdpb24gW2ZmZmY4ODgwYjA5ODEyNTgsIGZmZmY4ODgwYjA5
-ODEyNjApCj4gPiBbICAzMzMuMzYzNzk2XSBUaGUgYnVnZ3kgYWRkcmVzcyBiZWxvbmdzIHRvIHRo
-ZSBwYWdlOgo+ID4gWyAgMzMzLjM2NDUzOF0gcGFnZTpmZmZmZWEwMDAyYzI2MDQwIHJlZmNvdW50
-OjEgbWFwY291bnQ6MAo+ID4gbWFwcGluZzpmZmZmODg4MGI2YzAzYzgwIGluZGV4OjB4MAo+ID4g
-WyAgMzMzLjM2NTc2NV0gZmxhZ3M6IDB4MWZmZmMwMDAwMDAwMjAwKHNsYWIpCj4gPiBbICAzMzMu
-MzY2NDAyXSByYXc6IDAxZmZmYzAwMDAwMDAyMDAgZmZmZmVhMDAwMmNiMWQ4MCAwMDAwMDAxNDAw
-MDAwMDE0Cj4gPiBmZmZmODg4MGI2YzAzYzgwCj4gPiBbICAzMzMuMzY3NTQ2XSByYXc6IDAwMDAw
-MDAwMDAwMDAwMDAgMDAwMDAwMDAwMGFhMDBhYSAwMDAwMDAwMWZmZmZmZmZmCj4gPiAwMDAwMDAw
-MDAwMDAwMDAwCj4gPiBbICAzMzMuMzY5MDMwXSBwYWdlIGR1bXBlZCBiZWNhdXNlOiBrYXNhbjog
-YmFkIGFjY2VzcyBkZXRlY3RlZAo+ID4KPiA+IFsgIDMzMy4zNzAwOTVdIE1lbW9yeSBzdGF0ZSBh
-cm91bmQgdGhlIGJ1Z2d5IGFkZHJlc3M6Cj4gPiBbICAzMzMuMzcwODI0XSAgZmZmZjg4ODBiMDk4
-MTEwMDogZmMgZmIgZmMgZmMgZmIgZmMgZmMgZmIgZmMgZmMgZmIgZmMKPiA+IGZjIGZiIGZjIGZj
-Cj4gPiBbICAzMzMuMzcxOTA3XSAgZmZmZjg4ODBiMDk4MTE4MDogZmIgZmMgZmMgZmIgZmMgZmMg
-ZmIgZmMgZmMgZmIgZmMgZmMKPiA+IGZiIGZjIGZjIGZiCj4gPiBbICAzMzMuMzcyOTY5XSA+ZmZm
-Zjg4ODBiMDk4MTIwMDogZmMgZmMgZmIgZmMgZmMgZmIgZmMgZmMgZmIgZmMgZmMgZmIKPiA+IGZj
-IGZjIGZiIGZjCj4gPiBbICAzMzMuMzc0MDMzXSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgXgo+ID4gWyAgMzMzLjM3NDg4NF0gIGZmZmY4ODgwYjA5
-ODEyODA6IGZjIGZiIGZjIGZjIGZiIGZjIGZjIGZiIGZjIGZjIGZiIGZjCj4gPiBmYyBmYiBmYyBm
-Ywo+ID4gWyAgMzMzLjM3NTk1N10gIGZmZmY4ODgwYjA5ODEzMDA6IGZiIGZjIGZjIGZiIGZjIGZj
-IGZiIGZjIGZjIGZiIGZjIGZjCj4gPiBmYiBmYyBmYyBmYgo+ID4gWyAgMzMzLjM3NzAxM10gPT09
-PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
-PT09PT09Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRl
-dmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2
-ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1k
-ZXZlbAo=
+Remove NULL comparison. Issue found using checkpatch.pl
+
+Signed-off-by: Nachammai Karuppiah <nachukannan@gmail.com>
+
+---
+
+Changes in V2
+   - Remove all NULL comparisons in vc04_services/interface directory.
+---
+ .../interface/vchiq_arm/vchiq_2835_arm.c           |  4 ++--
+ .../vc04_services/interface/vchiq_arm/vchiq_arm.c  | 28 +++++++++++-----------
+ .../vc04_services/interface/vchiq_arm/vchiq_core.c |  4 ++--
+ .../vc04_services/interface/vchiq_arm/vchiq_shim.c |  2 +-
+ 4 files changed, 19 insertions(+), 19 deletions(-)
+
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
+index 8dc730c..7cdb21e 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
+@@ -526,11 +526,11 @@ create_pagelist(char __user *buf, size_t count, unsigned short type)
+ 			return NULL;
+ 		}
+ 
+-		WARN_ON(g_free_fragments == NULL);
++		WARN_ON(!g_free_fragments);
+ 
+ 		down(&g_free_fragments_mutex);
+ 		fragments = g_free_fragments;
+-		WARN_ON(fragments == NULL);
++		WARN_ON(!fragments);
+ 		g_free_fragments = *(char **) g_free_fragments;
+ 		up(&g_free_fragments_mutex);
+ 		pagelist->type = PAGELIST_READ_WITH_FRAGMENTS +
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+index b1595b1..b930148 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+@@ -826,8 +826,8 @@ vchiq_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+ 
+ 		/* Remove all services */
+ 		i = 0;
+-		while ((service = next_service_by_instance(instance->state,
+-			instance, &i)) != NULL) {
++		while (service = next_service_by_instance(instance->state,
++			instance, &i)) {
+ 			status = vchiq_remove_service(service->handle);
+ 			unlock_service(service);
+ 			if (status != VCHIQ_SUCCESS)
+@@ -907,7 +907,7 @@ vchiq_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+ 				&args.params, srvstate,
+ 				instance, user_service_free);
+ 
+-		if (service != NULL) {
++		if (service) {
+ 			user_service->service = service;
+ 			user_service->userdata = userdata;
+ 			user_service->instance = instance;
+@@ -988,7 +988,7 @@ vchiq_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+ 		VCHIQ_SERVICE_HANDLE_T handle = (VCHIQ_SERVICE_HANDLE_T)arg;
+ 
+ 		service = find_service_for_instance(instance, handle);
+-		if (service != NULL) {
++		if (service) {
+ 			status = (cmd == VCHIQ_IOC_USE_SERVICE)	?
+ 				vchiq_use_service_internal(service) :
+ 				vchiq_release_service_internal(service);
+@@ -1021,7 +1021,7 @@ vchiq_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+ 
+ 		service = find_service_for_instance(instance, args.handle);
+ 
+-		if ((service != NULL) && (args.count <= MAX_ELEMENTS)) {
++		if (service && (args.count <= MAX_ELEMENTS)) {
+ 			/* Copy elements into kernel space */
+ 			struct vchiq_element elements[MAX_ELEMENTS];
+ 
+@@ -1343,11 +1343,11 @@ vchiq_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+ 		spin_unlock(&msg_queue_spinlock);
+ 
+ 		complete(&user_service->remove_event);
+-		if (header == NULL)
++		if (!header)
+ 			ret = -ENOTCONN;
+ 		else if (header->size <= args.bufsize) {
+ 			/* Copy to user space if msgbuf is not NULL */
+-			if ((args.buf == NULL) ||
++			if (!args.buf ||
+ 				(copy_to_user((void __user *)args.buf,
+ 				header->data,
+ 				header->size) == 0)) {
+@@ -1426,7 +1426,7 @@ vchiq_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+ 		VCHIQ_SERVICE_HANDLE_T handle = (VCHIQ_SERVICE_HANDLE_T)arg;
+ 
+ 		service = find_closed_service_for_instance(instance, handle);
+-		if (service != NULL) {
++		if (service) {
+ 			struct user_service *user_service =
+ 				(struct user_service *)service->base.userdata;
+ 			close_delivered(user_service);
+@@ -2223,13 +2223,13 @@ struct vchiq_state *
+ vchiq_get_state(void)
+ {
+ 
+-	if (g_state.remote == NULL)
++	if (!g_state.remote)
+ 		printk(KERN_ERR "%s: g_state.remote == NULL\n", __func__);
+ 	else if (g_state.remote->initialised != 1)
+ 		printk(KERN_NOTICE "%s: g_state.remote->initialised != 1 (%d)\n",
+ 			__func__, g_state.remote->initialised);
+ 
+-	return ((g_state.remote != NULL) &&
++	return (g_state.remote &&
+ 		(g_state.remote->initialised == 1)) ? &g_state : NULL;
+ }
+ 
+@@ -2923,8 +2923,8 @@ vchiq_instance_get_use_count(VCHIQ_INSTANCE_T instance)
+ 	int use_count = 0, i;
+ 
+ 	i = 0;
+-	while ((service = next_service_by_instance(instance->state,
+-		instance, &i)) != NULL) {
++	while (service = next_service_by_instance(instance->state,
++		instance, &i)) {
+ 		use_count += service->service_use_count;
+ 		unlock_service(service);
+ 	}
+@@ -2950,8 +2950,8 @@ vchiq_instance_set_trace(VCHIQ_INSTANCE_T instance, int trace)
+ 	int i;
+ 
+ 	i = 0;
+-	while ((service = next_service_by_instance(instance->state,
+-		instance, &i)) != NULL) {
++	while (service = next_service_by_instance(instance->state,
++		instance, &i)) {
+ 		service->trace = trace;
+ 		unlock_service(service);
+ 	}
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+index 56a23a2..4c375cd 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+@@ -542,7 +542,7 @@ reserve_space(struct vchiq_state *state, size_t space, int is_blocking)
+ 	if (space > slot_space) {
+ 		struct vchiq_header *header;
+ 		/* Fill the remaining space with padding */
+-		WARN_ON(state->tx_data == NULL);
++		WARN_ON(!state->tx_data);
+ 		header = (struct vchiq_header *)
+ 			(state->tx_data + (tx_pos & VCHIQ_SLOT_MASK));
+ 		header->msgid = VCHIQ_MSGID_PADDING;
+@@ -3578,7 +3578,7 @@ void vchiq_log_dump_mem(const char *label, u32 addr, const void *void_mem,
+ 		}
+ 		*s++ = '\0';
+ 
+-		if ((label != NULL) && (*label != '\0'))
++		if (label && (*label != '\0'))
+ 			vchiq_log_trace(VCHIQ_LOG_TRACE,
+ 				"%s: %08x: %s", label, addr, line_buf);
+ 		else
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
+index 17a4f2c..10be23e 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
+@@ -628,7 +628,7 @@ int32_t vchi_service_open(VCHI_INSTANCE_T instance_handle,
+ 		}
+ 	}
+ 
+-	return (service != NULL) ? 0 : -1;
++	return service ? 0 : -1;
+ }
+ EXPORT_SYMBOL(vchi_service_open);
+ 
+-- 
+2.7.4
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
