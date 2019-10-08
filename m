@@ -1,80 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 924FBD006D
-	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Oct 2019 20:05:25 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B9BCD00DC
+	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Oct 2019 20:52:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1A54C85C92;
-	Tue,  8 Oct 2019 18:05:23 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 91CA8880C3;
+	Tue,  8 Oct 2019 18:52:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id igyglnbiXjNY; Tue,  8 Oct 2019 18:05:22 +0000 (UTC)
+	with ESMTP id dHwBXyEQ-TuY; Tue,  8 Oct 2019 18:52:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D6889838CD;
-	Tue,  8 Oct 2019 18:05:21 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8928587C30;
+	Tue,  8 Oct 2019 18:52:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id AFA971BF5A4
- for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 18:05:19 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 329571BF5A4
+ for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 18:52:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id A539C22797
- for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 18:05:19 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 2EF09204D7
+ for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 18:52:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id I+6sXdOLy5RN for <devel@linuxdriverproject.org>;
- Tue,  8 Oct 2019 18:05:18 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
- [209.85.210.193])
- by silver.osuosl.org (Postfix) with ESMTPS id 8C7D0204FF
- for <devel@driverdev.osuosl.org>; Tue,  8 Oct 2019 18:05:18 +0000 (UTC)
-Received: by mail-pf1-f193.google.com with SMTP id x127so11224909pfb.7
- for <devel@driverdev.osuosl.org>; Tue, 08 Oct 2019 11:05:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=joelfernandes.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=ELxAahh6Yu3vLwEO8PoffGoqAdx+X0u75FdVW3JY1Sg=;
- b=gI2w8LEiuJ8QiTz0qaKjrFj29ovgQqape9UrwF8PgqhKY5YLEnDL2d7vZ6bRaaDCMO
- ACwTwDvSBazaHtOHX/3gUREFksyAHhJMuT9PitspDDM9DWXZ7M4x8/d5Gwd2O3uZytRD
- eo9WymPXThG/wamCnCsvWSs8pwN+w6PUuy2n0=
+ with ESMTP id 5rDnQUtUxE8c for <devel@linuxdriverproject.org>;
+ Tue,  8 Oct 2019 18:52:35 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-lj1-f196.google.com (mail-lj1-f196.google.com
+ [209.85.208.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id F15E9203AF
+ for <devel@driverdev.osuosl.org>; Tue,  8 Oct 2019 18:52:34 +0000 (UTC)
+Received: by mail-lj1-f196.google.com with SMTP id l21so18723455lje.4
+ for <devel@driverdev.osuosl.org>; Tue, 08 Oct 2019 11:52:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=4ttC9Qk38rpEvRKxSWa+eMhwRul6btb0043polx//lc=;
+ b=SUbmozDe2X2ao0PY/uZdB+ZQ4aJnY+MeTvsd7f+Tn0cwGFbO3kvj2x74oGnu2ZtVfl
+ 7C3/WscpU66LIwJnimGpX5FCDpu6KKyGbJfTZA5vkNAt+kHiAf26N0qviyHfzeEcHFUK
+ wg3kskdJfC0AsDMju45spea05k8Xhm6YUxwrwuQUnBSqwZhwbD8zig6e4vO/mmLgdLTy
+ WU5OR1qQXHV/m7LvN+RyTELTMG5YiWus1rCf7quFv5vd8WLZah2J8lIS/RDqraz0vYwv
+ 2/8/HA890PurFicnF/XVln9imVqjTu5aPmFQPPxVd9om5YFIH+bx+iKh73jQQS5AK4Q2
+ xh/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=ELxAahh6Yu3vLwEO8PoffGoqAdx+X0u75FdVW3JY1Sg=;
- b=WYKIIkCRNP8/6NioHsEA3ThNnGgC0tRcZj2auy5sXAAyU5ymAay2xVPolBD2wzOPZM
- YEG/vCcEXleNb+OEOFHMCYYue4a0LtYECC/UUKlDRUMR1VfZl7LzQS7GSmOjIOoXNQu6
- sVz8Bcek3faRACZdiD0/t/Fm1VFXScZPhnWcQyyQDspKX10P/HSi3mHpQholW1bhupED
- RUMp8XUTsxCKnx7fdDD+UgRyZhcdN71uqUdRFvST9pUkSzJjGOR5gXPRJM3BGIeYKDv3
- tCz1rFGhwWINU8Nxl0hZq8Z9V4A+AaBq02QLpuPcXiKRkgoojCwV7bWFBfi+jz2ncHvu
- ZIXQ==
-X-Gm-Message-State: APjAAAVov+MmIK+P1LFDmeB1uBk+39N8W+JutXcFM205JpdnPklgpgC1
- JckSx25wfmxe3nBNJ2QM7Fb08g==
-X-Google-Smtp-Source: APXvYqx9Yy4rF5ZGPbnFM8um+WCTgOQ2VEF8Ceziv6hXyFbR88Ad4Mvbu6bXH2//Ti5CUkovB742/g==
-X-Received: by 2002:a17:90a:3d08:: with SMTP id
- h8mr7434521pjc.12.1570557917832; 
- Tue, 08 Oct 2019 11:05:17 -0700 (PDT)
-Received: from localhost ([2620:15c:6:12:9c46:e0da:efbf:69cc])
- by smtp.gmail.com with ESMTPSA id h26sm18536212pgh.7.2019.10.08.11.05.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Oct 2019 11:05:17 -0700 (PDT)
-Date: Tue, 8 Oct 2019 14:05:16 -0400
-From: Joel Fernandes <joel@joelfernandes.org>
-To: Christian Brauner <christian.brauner@ubuntu.com>
-Subject: Re: [PATCH] binder: prevent UAF read in
- print_binder_transaction_log_entry()
-Message-ID: <20191008180516.GB143258@google.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=4ttC9Qk38rpEvRKxSWa+eMhwRul6btb0043polx//lc=;
+ b=TaqknI5oh5CR/xY5seRHQexhbIHzaIAk46Cnj4GQHxvJGEnBCmlwKrryo7YSNpDzyq
+ zjskeA9lNWnuikiVQoJxXkAaO25FSehlXy48aQ870MFxu8LvQEPyme84OdjVkuMQsi99
+ PoOLNstq90dYAp+cXb3KIjorPLDUe8Cm5zV1qU2PasheYDNSRJtvuENnoT/vCU93s4zY
+ ThZGBOIAVdCtD/fFnROehIsqjivPQwBP60lQeYzNZMqH2njYEK7c9ZWqkEDG/hl7UhYc
+ Yfs/l7Pih5j0Kq3z92PHw+y1eKJ4Q4LTzFWOtXxQgObgbaW3slCsgm3ymDS9bamR+shW
+ E5NA==
+X-Gm-Message-State: APjAAAVBzK2LmPpEa0dTZtKPQQtyJfHMpnBVmPXHCodvrYrSjrQ30hjQ
+ Y3Tt86t0iH9jV3rZdabMGNE1KQnscF2kBJCWGAYebw==
+X-Google-Smtp-Source: APXvYqxCk2wL5SmvjWie8G/3HUzvf7LJ63re3Ebs0TK50UJmvniQje7a/3Inx/xfJB9wZGEbhBcSCpvTO3k5nCfL1tA=
+X-Received: by 2002:a2e:85d2:: with SMTP id h18mr23471467ljj.18.1570560752527; 
+ Tue, 08 Oct 2019 11:52:32 -0700 (PDT)
+MIME-Version: 1.0
 References: <CAG48ez14Q0-F8LqsvcNbyR2o6gPW8SHXsm4u5jmD9MpsteM2Tw@mail.gmail.com>
  <20191008130159.10161-1-christian.brauner@ubuntu.com>
-MIME-Version: 1.0
-Content-Disposition: inline
 In-Reply-To: <20191008130159.10161-1-christian.brauner@ubuntu.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+From: Todd Kjos <tkjos@google.com>
+Date: Tue, 8 Oct 2019 11:52:18 -0700
+Message-ID: <CAHRSSExHMx5Xd79yBnQGKzeJg6+ucy9reZF=7_e_UM0BGrNC-w@mail.gmail.com>
+Subject: Re: [PATCH] binder: prevent UAF read in
+ print_binder_transaction_log_entry()
+To: Christian Brauner <christian.brauner@ubuntu.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,16 +81,21 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>, jannh@google.com,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, arve@android.com,
- Hridya Valsaraju <hridya@google.com>, maco@android.com, christian@brauner.io,
- tkjos@google.com
+Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
+ Todd Kjos <tkjos@android.com>, Jann Horn <jannh@google.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ LKML <linux-kernel@vger.kernel.org>, Hridya Valsaraju <hridya@google.com>,
+ =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
+ "Joel Fernandes \(Google\)" <joel@joelfernandes.org>,
+ Martijn Coenen <maco@android.com>, Christian Brauner <christian@brauner.io>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Oct 08, 2019 at 03:01:59PM +0200, Christian Brauner wrote:
+On Tue, Oct 8, 2019 at 6:02 AM Christian Brauner
+<christian.brauner@ubuntu.com> wrote:
+>
 > When a binder transaction is initiated on a binder device coming from a
 > binderfs instance, a pointer to the name of the binder device is stashed
 > in the binder_transaction_log_entry's context_name member. Later on it
@@ -105,7 +104,7 @@ On Tue, Oct 08, 2019 at 03:01:59PM +0200, Christian Brauner wrote:
 > binderfs_evict_inode() might have already freed the associated memory
 > thereby causing a UAF. Do the simple thing and prevent this by copying
 > the name of the binder device instead of stashing a pointer to it.
-> 
+>
 > Reported-by: Jann Horn <jannh@google.com>
 > Fixes: 03e2e07e3814 ("binder: Make transaction_log available in binderfs")
 > Link: https://lore.kernel.org/r/CAG48ez14Q0-F8LqsvcNbyR2o6gPW8SHXsm4u5jmD9MpsteM2Tw@mail.gmail.com
@@ -117,7 +116,7 @@ On Tue, Oct 08, 2019 at 03:01:59PM +0200, Christian Brauner wrote:
 >  drivers/android/binder.c          | 4 +++-
 >  drivers/android/binder_internal.h | 2 +-
 >  2 files changed, 4 insertions(+), 2 deletions(-)
-> 
+>
 > diff --git a/drivers/android/binder.c b/drivers/android/binder.c
 > index c0a491277aca..5b9ac2122e89 100644
 > --- a/drivers/android/binder.c
@@ -132,66 +131,39 @@ On Tue, Oct 08, 2019 at 03:01:59PM +0200, Christian Brauner wrote:
 >  #include <linux/security.h>
 > @@ -66,6 +67,7 @@
 >  #include <linux/task_work.h>
->  
+>
 >  #include <uapi/linux/android/binder.h>
 > +#include <uapi/linux/android/binderfs.h>
->  
+>
 >  #include <asm/cacheflush.h>
->  
+>
 > @@ -2876,7 +2878,7 @@ static void binder_transaction(struct binder_proc *proc,
->  	e->target_handle = tr->target.handle;
->  	e->data_size = tr->data_size;
->  	e->offsets_size = tr->offsets_size;
-> -	e->context_name = proc->context->name;
-> +	strscpy(e->context_name, proc->context->name, BINDERFS_MAX_NAME);
-
-Strictly speaking, proc-context->name can also be initialized for !BINDERFS
-so the BINDERFS in the MAX_NAME macro is misleading. So probably there should
-be a BINDER_MAX_NAME (and associated checks for whether non BINDERFS names
-fit within the MAX.
-
->  	if (reply) {
-
->  		binder_inner_proc_lock(proc);
+>         e->target_handle = tr->target.handle;
+>         e->data_size = tr->data_size;
+>         e->offsets_size = tr->offsets_size;
+> -       e->context_name = proc->context->name;
+> +       strscpy(e->context_name, proc->context->name, BINDERFS_MAX_NAME);
+>
+>         if (reply) {
+>                 binder_inner_proc_lock(proc);
 > diff --git a/drivers/android/binder_internal.h b/drivers/android/binder_internal.h
 > index bd47f7f72075..ae991097d14d 100644
 > --- a/drivers/android/binder_internal.h
 > +++ b/drivers/android/binder_internal.h
 > @@ -130,7 +130,7 @@ struct binder_transaction_log_entry {
->  	int return_error_line;
->  	uint32_t return_error;
->  	uint32_t return_error_param;
-> -	const char *context_name;
-> +	char context_name[BINDERFS_MAX_NAME + 1];
-
-Same comment here, context_name can be used for non-BINDERFS transactions as
-well such as default binder devices.
-
-One more thought, this can be made dependent on CONFIG_BINDERFS since regular
-binder devices cannot be unregistered AFAICS and as Jann said, the problem is
-BINDERFS specific. That way we avoid the memcpy for _every_ transaction.
-These can be thundering when Android starts up.
-
-(I secretly wish C strings could be refcounted to avoid exactly this issue,
-that should not be hard to develop but I am not sure if it is worth it for
-this problem :) - For one, it will avoid having to do the strcpy for _every_
-transaction).
-
-Other than these nits, please add my tag on whichever is the final solution:
-
-Reviewed-by: Joel Fernandes (Google) <joel@joelfernandes.org>
-
-thanks,
-
- - Joel
-
-
+>         int return_error_line;
+>         uint32_t return_error;
+>         uint32_t return_error_param;
+> -       const char *context_name;
+> +       char context_name[BINDERFS_MAX_NAME + 1];
 >  };
->  
+>
 >  struct binder_transaction_log {
-> -- 
+> --
 > 2.23.0
-> 
+>
+
+Acked-by: Todd Kjos <tkjos@google.com>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
