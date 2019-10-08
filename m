@@ -1,93 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 53AFECF271
-	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Oct 2019 08:09:07 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7B708CF275
+	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Oct 2019 08:11:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F177B86141;
-	Tue,  8 Oct 2019 06:09:05 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 13BAF8731C;
+	Tue,  8 Oct 2019 06:11:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id njOaolRTuDrr; Tue,  8 Oct 2019 06:09:04 +0000 (UTC)
+	with ESMTP id P-TVaGqEEdMq; Tue,  8 Oct 2019 06:11:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 46BBD860FC;
-	Tue,  8 Oct 2019 06:09:04 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6D6F68757D;
+	Tue,  8 Oct 2019 06:11:49 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D796B1BF289
- for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 06:09:00 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 511D61BF289
+ for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 06:11:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C577387E5D
- for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 06:09:00 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 4D3D7221CC
+ for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 06:11:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hHCDnFNUP0Jt for <devel@linuxdriverproject.org>;
- Tue,  8 Oct 2019 06:08:59 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A919A87E58
- for <devel@driverdev.osuosl.org>; Tue,  8 Oct 2019 06:08:59 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9868o5R018791;
- Tue, 8 Oct 2019 06:08:56 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=MkIeK/NE+mv6GpgnXpwtutIQIlvEhfelSc1zDPiPEsk=;
- b=XdkRE63Rpr/F81Hx6pv1SNKN9b3ff78qJqgZRk5/PUhZ533H2YhZ/CxCBuZ2LFOHifln
- IfdkWFObArPJL0xEsJ7DvuQUcmpV5t5z9gpM/i+UjDzDdCZFWxJulrqeqEqvXsXAkpH2
- o0JFujWeVRPF3vDzGcDkKHmdgJm/O7BtyIlFMqJzhc9bU0zWGtidihgFIOtTDg/ZUild
- 9nqLAJ9+CAIvpUdCAivXChyNPQg0hEd/eaCldMsfS/d98SZuT7GSmpQsLBgOA6gYat3Y
- dcoYOKxOTE9K+VWkQoEc2aLLMwvS4m+Kooq7gcZGM13f5GsMxbyKJ4Ks7Ra5hcwen9sB cA== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by aserp2120.oracle.com with ESMTP id 2vek4qb4by-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 08 Oct 2019 06:08:56 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9868pN2085372;
- Tue, 8 Oct 2019 06:08:55 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by userp3030.oracle.com with ESMTP id 2vgeux4hcn-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 08 Oct 2019 06:08:53 +0000
-Received: from abhmp0006.oracle.com (abhmp0006.oracle.com [141.146.116.12])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x9868Eec025867;
- Tue, 8 Oct 2019 06:08:15 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 07 Oct 2019 23:08:13 -0700
-Date: Tue, 8 Oct 2019 09:08:06 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: zhengbin <zhengbin13@huawei.com>
-Subject: Re: [PATCH 2/6] staging: sm750fb: Remove set but not used variable
- 'uiActualPixelClk'
-Message-ID: <20191008060806.GM21515@kadam>
-References: <1570513142-60177-1-git-send-email-zhengbin13@huawei.com>
- <1570513142-60177-3-git-send-email-zhengbin13@huawei.com>
- <20191008060610.GB12948@kadam>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191008060610.GB12948@kadam>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9403
- signatures=668684
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1908290000 definitions=main-1910080063
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9403
- signatures=668684
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
- definitions=main-1910080063
+ with ESMTP id tvuXDtoW-K9v for <devel@linuxdriverproject.org>;
+ Tue,  8 Oct 2019 06:11:44 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
+ [209.85.215.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id A679022091
+ for <devel@driverdev.osuosl.org>; Tue,  8 Oct 2019 06:11:44 +0000 (UTC)
+Received: by mail-pg1-f195.google.com with SMTP id t3so3845560pga.8
+ for <devel@driverdev.osuosl.org>; Mon, 07 Oct 2019 23:11:44 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=tt6fX4ZbTYJ2jV1VGfYVgC8sSI3b0LxMvDVETzkC3TM=;
+ b=a9yvqb2xceXqNgp0rl/WhIxXmtPeCfyIh39xPV4krE75I2WFUeJh9ALucp5DaNi9fx
+ H/eXTEExmhbwYM5AgUITHc/09bLwrYJSNK14pfF+wp3md4rZyX00khVqC52fCS1TGgwA
+ QH1kjNYPKe5nuhdgYJKfDKhNo6FrxglBdLARqwOjjyMFxHO/H5vsg7E3jnmk2vukYj5o
+ J35JfLl60zvMlkmpjVO99XXS8wVmlfC/14OT3MfRO56BoTuLnqgiosLXLJCDb3lz6cXS
+ xh6WHDCXoFG7u3rEtLVfLkcKDp6iUjj/GJR18GtCFCFiv27MTIFSQy7/7knUSrDyWFio
+ spyw==
+X-Gm-Message-State: APjAAAVkbb1SgYn+CDVYeroLhYSOG4SW2rIXRi2k3lskwnVHjlKn2jGO
+ fhVtW6exc+y18S3R35FYvqg=
+X-Google-Smtp-Source: APXvYqwCofqHMB9pX6UaUuliDsNjGf5pEeD0vAlenC8QXHUweaH0WJlOkWdBWZhZ9Yoep+pSCeSRUQ==
+X-Received: by 2002:a17:90a:380a:: with SMTP id
+ w10mr3831900pjb.104.1570515104139; 
+ Mon, 07 Oct 2019 23:11:44 -0700 (PDT)
+Received: from localhost.localdomain ([183.83.78.173])
+ by smtp.gmail.com with ESMTPSA id 2sm16483811pfo.91.2019.10.07.23.11.41
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Mon, 07 Oct 2019 23:11:43 -0700 (PDT)
+From: hariprasad@osuosl.org, Kelam@osuosl.org,
+	hariprasad.kelam@gmail.com
+To: 
+Subject: [PATCH] staging: fieldbus: make use of devm_platform_ioremap_resource
+Date: Tue,  8 Oct 2019 11:40:56 +0530
+Message-Id: <1570515056-23589-1-git-send-email-hariprasad.kelam@gmail.com>
+X-Mailer: git-send-email 2.7.4
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,37 +73,67 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, eric@anholt.net, gregkh@linuxfoundation.org,
- abbotti@mev.co.uk, wahrenst@gmx.net
+Cc: devel@driverdev.osuosl.org, Sven Van Asbroeck <TheSven73@gmail.com>,
+ Hariprasad Kelam <hariprasad.kelam@gmail.com>, linux-kernel@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Oct 08, 2019 at 09:06:11AM +0300, Dan Carpenter wrote:
-> On Tue, Oct 08, 2019 at 01:38:58PM +0800, zhengbin wrote:
-> > diff --git a/drivers/staging/sm750fb/ddk750_mode.c b/drivers/staging/sm750fb/ddk750_mode.c
-> > index 9722692..e0230f4 100644
-> > --- a/drivers/staging/sm750fb/ddk750_mode.c
-> > +++ b/drivers/staging/sm750fb/ddk750_mode.c
-> > @@ -209,12 +209,11 @@ static int programModeRegisters(struct mode_parameter *pModeParam,
-> >  int ddk750_setModeTiming(struct mode_parameter *parm, enum clock_type clock)
-> >  {
-> >  	struct pll_value pll;
-> > -	unsigned int uiActualPixelClk;
-> > 
-> >  	pll.input_freq = DEFAULT_INPUT_CLOCK;
-> >  	pll.clock_type = clock;
-> > 
-> > -	uiActualPixelClk = sm750_calc_pll_value(parm->pixel_clock, &pll);
-> > +	sm750_calc_pll_value(parm->pixel_clock, &pll);
-> 
-> Get rid of this function as well.
+From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 
-Oops.  I'm wrong.  Sorry for the noise.  Leave the function.
+fix below issues reported by coccicheck
+drivers/staging//fieldbus/anybuss/arcx-anybus.c:135:1-5: WARNING: Use
+devm_platform_ioremap_resource for base
+drivers/staging//fieldbus/anybuss/arcx-anybus.c:248:1-14: WARNING: Use
+devm_platform_ioremap_resource for cd -> cpld_base
 
-regards,
-dan carpenter
+Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+---
+ drivers/staging/fieldbus/anybuss/arcx-anybus.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/staging/fieldbus/anybuss/arcx-anybus.c b/drivers/staging/fieldbus/anybuss/arcx-anybus.c
+index 2ecffa4..5b8d0ba 100644
+--- a/drivers/staging/fieldbus/anybuss/arcx-anybus.c
++++ b/drivers/staging/fieldbus/anybuss/arcx-anybus.c
+@@ -127,12 +127,10 @@ static const struct regmap_config arcx_regmap_cfg = {
+ static struct regmap *create_parallel_regmap(struct platform_device *pdev,
+ 					     int idx)
+ {
+-	struct resource *res;
+ 	void __iomem *base;
+ 	struct device *dev = &pdev->dev;
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, idx + 1);
+-	base = devm_ioremap_resource(dev, res);
++	base = devm_platform_ioremap_resource(pdev, idx + 1);
+ 	if (IS_ERR(base))
+ 		return ERR_CAST(base);
+ 	return devm_regmap_init_mmio(dev, base, &arcx_regmap_cfg);
+@@ -230,7 +228,6 @@ static int controller_probe(struct platform_device *pdev)
+ 	struct regulator_config config = { };
+ 	struct regulator_dev *regulator;
+ 	int err, id;
+-	struct resource *res;
+ 	struct anybuss_host *host;
+ 	u8 status1, cap;
+ 
+@@ -244,8 +241,7 @@ static int controller_probe(struct platform_device *pdev)
+ 		return PTR_ERR(cd->reset_gpiod);
+ 
+ 	/* CPLD control memory, sits at index 0 */
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	cd->cpld_base = devm_ioremap_resource(dev, res);
++	cd->cpld_base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(cd->cpld_base)) {
+ 		dev_err(dev,
+ 			"failed to map cpld base address\n");
+-- 
+2.7.4
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
