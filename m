@@ -2,90 +2,89 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 693C2CF94E
-	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Oct 2019 14:08:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D503ECF9DE
+	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Oct 2019 14:34:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3E3E28768C;
-	Tue,  8 Oct 2019 12:08:03 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9291D8769F;
+	Tue,  8 Oct 2019 12:34:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6sznM3Y14gnm; Tue,  8 Oct 2019 12:08:02 +0000 (UTC)
+	with ESMTP id Lgs0XXFvAZY3; Tue,  8 Oct 2019 12:34:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C662D87635;
-	Tue,  8 Oct 2019 12:08:01 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 99FD68764B;
+	Tue,  8 Oct 2019 12:34:05 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E54D51BF35A
- for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 12:07:59 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B99851BF35A
+ for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 12:33:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E12AE86109
- for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 12:07:59 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B2E6C86C5C
+ for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 12:33:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HKwUK63PTQUt for <devel@linuxdriverproject.org>;
- Tue,  8 Oct 2019 12:07:58 +0000 (UTC)
+ with ESMTP id MIpoCfmqZxaq for <devel@linuxdriverproject.org>;
+ Tue,  8 Oct 2019 12:33:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 988F0860F2
- for <devel@driverdev.osuosl.org>; Tue,  8 Oct 2019 12:07:58 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x98C44fR110712;
- Tue, 8 Oct 2019 12:07:57 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=TmaPSvdLAAUjYycK4fTb+QYPszkTpvdMZGFtiACntoM=;
- b=XqWFclf1lZMoy0jmXDUtiLEMRFE1+Q3zUx6XXoqvGz7wkIOWZWQzVZsev519bWaIVyQd
- RnIOQvKPXcON5u7i6G8pmXEwXBtJTVzZOaph8iORMOwFb9g4ozSS36D2aZBcgoaQMori
- 6fur+kvxL7eW4B/GH0oxS5q5GH+zoahiaJJLUYXcedIU5VDs0Ph6D7nStiwQ+h4glxhs
- Jdj6nU0xJ0LhrZQdsRFHWuU43KNrMhoplcI4mf5flPrkfaaN8dMK1r5QK/peEgEzRF67
- Cy84SbyY2PtHb69i0BzsVRw3ohSupCyJoI0GtyRSk3nJRHPKwySdynL3ZKYYYcNWzTw0 uw== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by aserp2120.oracle.com with ESMTP id 2vek4qctby-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 08 Oct 2019 12:07:57 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x98C7riF131307;
- Tue, 8 Oct 2019 12:07:57 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by aserp3020.oracle.com with ESMTP id 2vgefagb3u-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 08 Oct 2019 12:07:57 +0000
-Received: from abhmp0013.oracle.com (abhmp0013.oracle.com [141.146.116.19])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x98C7uD6004566;
- Tue, 8 Oct 2019 12:07:56 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 08 Oct 2019 05:07:55 -0700
-Date: Tue, 8 Oct 2019 15:07:49 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
-Subject: Re: [PATCH 6/7] staging: wfx: drop calls to BUG_ON()
-Message-ID: <20191008120749.GG25098@kadam>
-References: <20191008094232.10014-1-Jerome.Pouiller@silabs.com>
- <20191008094232.10014-7-Jerome.Pouiller@silabs.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
+ [207.211.31.81])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 6293F86B50
+ for <devel@driverdev.osuosl.org>; Tue,  8 Oct 2019 12:33:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1570538036;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=vxNxzGS1YL2pIRA3iElWkbMg1T80wDQcjG/i1PxznHk=;
+ b=JCYHzXstchS2RvyMJGzaoaBGCDcO78PBMka7HfmlMbQvdLRXoTOMrTJk6FWjHPr8eCDyvQ
+ /geJPujJy6WHqDxGJpZuABiffOaLuMRrh+AtsFgdtIvN9cov7NKEonqdQXM7YoE6vNdC6d
+ zq3IBv1D6TU0MT4CJrMIOSvpswtwqyg=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-117-fmRy4v_vPfO0mUJ1PnMzBQ-1; Tue, 08 Oct 2019 08:33:52 -0400
+Received: by mail-wr1-f69.google.com with SMTP id w10so9082365wrl.5
+ for <devel@driverdev.osuosl.org>; Tue, 08 Oct 2019 05:33:52 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=J4guI5W+JBy2/Wk9QmpICIZphEUf2I9ZwikXlS8M7Tk=;
+ b=P4rdB6x3RWLbCFfWkYGaKzImoCUFAPnBU5xTkTCCt+O+BH1HNqN67lYCXpLSDGux7V
+ zTlgnlXrTwizRkegzzTG8QFe+MZgSdOzlqmYIG/xHDdBfonSNrF8y8lIRXpskt4dHygl
+ O1e0509Bz9+pw11k3gwAZga2KH3NsvmvgkA7zjp6NTpVZi1LrZv/V5vGZwa+pxG8Fd/P
+ M5nc+iKLOXBrkgPRPN+SRu+NUmuPUHtHFSktINuUej84o3pfVhBIjRPjfFku0mRV5SOb
+ 6jum9GdujnjI9kDrmERl42GUsRefS98929dxI6cCr8f/Vqt4SRPWV/v2J9pbbo+ngCQc
+ FKVQ==
+X-Gm-Message-State: APjAAAX7my5rkWUsfmoKOqA22CvwMhKFzuMF07OWUDc/XeBuw5r7aln7
+ 4p985r/VPmPUNZvuLpzNGAC8o/JIgvbsvnmLZtn7GjGvDay20qvLag50Tfmsgd3xwnNqrmYi0Fw
+ aSLyHTvlESJxpvSptxAZAWQ==
+X-Received: by 2002:a05:600c:2207:: with SMTP id
+ z7mr3714160wml.149.1570538031448; 
+ Tue, 08 Oct 2019 05:33:51 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyAKI2iZTVbZl4t588qZfShH353mJjPntH73s4tdZMg33tqt9c0kisZMYYS3sNnU0yf2q5GQA==
+X-Received: by 2002:a05:600c:2207:: with SMTP id
+ z7mr3714148wml.149.1570538031223; 
+ Tue, 08 Oct 2019 05:33:51 -0700 (PDT)
+Received: from mcroce-redhat.mxp.redhat.com (nat-pool-mxp-t.redhat.com.
+ [149.6.153.186])
+ by smtp.gmail.com with ESMTPSA id u68sm4361842wmu.12.2019.10.08.05.33.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 08 Oct 2019 05:33:50 -0700 (PDT)
+From: Matteo Croce <mcroce@redhat.com>
+To: Eric Anholt <eric@anholt.net>, Stefan Wahren <wahrenst@gmx.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ bcm-kernel-feedback-list@broadcom.com,
+ linux-rpi-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devel@driverdev.osuosl.org
+Subject: [PATCH] staging: vchiq: don't leak kernel address
+Date: Tue,  8 Oct 2019 14:33:46 +0200
+Message-Id: <20191008123346.3931-1-mcroce@redhat.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191008094232.10014-7-Jerome.Pouiller@silabs.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9403
- signatures=668684
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=960
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1908290000 definitions=main-1910080119
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9403
- signatures=668684
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
- definitions=main-1910080118
+X-MC-Unique: fmRy4v_vPfO0mUJ1PnMzBQ-1
+X-Mimecast-Spam-Score: 0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,40 +97,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Andrew Lunn <andrew@lunn.ch>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Oct 08, 2019 at 09:43:01AM +0000, Jerome Pouiller wrote:
-> @@ -56,9 +56,9 @@ static uint8_t fill_tkip_pair(struct hif_tkip_pairwise_key *msg,
->  {
->  	uint8_t *keybuf = key->key;
->  
-> -	WARN_ON(key->keylen != sizeof(msg->tkip_key_data)
-> -			       + sizeof(msg->tx_mic_key)
-> -			       + sizeof(msg->rx_mic_key));
-> +	WARN(key->keylen != sizeof(msg->tkip_key_data)
-> +			    + sizeof(msg->tx_mic_key)
-> +			    + sizeof(msg->rx_mic_key), "inconsistent data");
+Since commit ad67b74d2469d9b8 ("printk: hash addresses printed with %p"),
+an obfuscated kernel pointer is printed at boot:
 
-This is not a comment on the patch since the code was like that
-originally, but the " +" should go of the first line:
+    vchiq: vchiq_init_state: slot_zero = (____ptrval____)
 
-	WARN(key->keylen != sizeof(msg->tkip_key_data) +
-			    sizeof(msg->tx_mic_key) +
-			    sizeof(msg->rx_mic_key),
-	     "inconsistent data");
+Remove the the print completely, as it's useless without the address.
 
-That doesn't look too good still...  The error message is sort of
-rubbish also.  Anyway the operator goes on the first line.
+Signed-off-by: Matteo Croce <mcroce@redhat.com>
+---
+ drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-regards,
-dan carpenter
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+index 56a23a297fa4..084cd4b0f07c 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+@@ -2132,9 +2132,6 @@ vchiq_init_state(struct vchiq_state *state, struct vchiq_slot_zero *slot_zero)
+ 	char threadname[16];
+ 	int i;
+ 
+-	vchiq_log_warning(vchiq_core_log_level,
+-		"%s: slot_zero = %pK", __func__, slot_zero);
+-
+ 	if (vchiq_states[0]) {
+ 		pr_err("%s: VCHIQ state already initialized\n", __func__);
+ 		return VCHIQ_ERROR;
+-- 
+2.21.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
