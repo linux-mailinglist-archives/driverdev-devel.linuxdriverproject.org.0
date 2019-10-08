@@ -1,62 +1,105 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A2EF6D01CC
-	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Oct 2019 21:56:35 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3964CD01F5
+	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Oct 2019 22:15:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3DE8622816;
-	Tue,  8 Oct 2019 19:56:32 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 10D64867C5;
+	Tue,  8 Oct 2019 20:15:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qMTSL6zU0d3n; Tue,  8 Oct 2019 19:56:31 +0000 (UTC)
+	with ESMTP id i5TSrdfo8jAl; Tue,  8 Oct 2019 20:15:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D074D2282E;
-	Tue,  8 Oct 2019 19:56:29 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id 104BA8648E;
+	Tue,  8 Oct 2019 20:15:08 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 97B711BF40B
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  8 Oct 2019 19:56:27 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id DF70B1BF429
+ for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 20:15:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 93E7C88098
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  8 Oct 2019 19:56:27 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id CAAFE81419
+ for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 20:15:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2VpY+aHU02kM
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  8 Oct 2019 19:56:26 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A6E4187020
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  8 Oct 2019 19:56:26 +0000 (UTC)
-Received: from localhost (unknown [69.71.4.100])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 396C1218AC;
- Tue,  8 Oct 2019 19:56:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1570564586;
- bh=0nMoZ85ygsNBdXAqiyinbiqycG88Jyb222PyEdKvVZs=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=W+XNfzlCwDwF/rOZTOeXFXdurCTiWoV+D11WBIR8XNAeA7u65Uvob10IiWDRcKjgf
- NrAkCOWJ3b+14JRjZSChaUDrEM7Nlgdd1djEPtzdyY7tHjlHYMM2fLQpvMu6M6wu28
- PyFWqx81e8Wea3yueHk+1u/LJXENK2w7kqKN5Nkg=
-Date: Tue, 8 Oct 2019 14:56:24 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>
-Subject: Re: [PATCH v2] PCI: PM: Move to D0 before calling
- pci_legacy_resume_early()
-Message-ID: <20191008195624.GA198287@google.com>
+ with ESMTP id SDGno-U3JQea for <devel@linuxdriverproject.org>;
+ Tue,  8 Oct 2019 20:15:05 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from NAM03-CO1-obe.outbound.protection.outlook.com
+ (mail-eopbgr790084.outbound.protection.outlook.com [40.107.79.84])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C5E7F875B6
+ for <devel@driverdev.osuosl.org>; Tue,  8 Oct 2019 20:15:04 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=T/refwxS4YmPJrdgT9cE6E3KKXji+htPx/DtQHFg40jaqDZo76cp3vWFQxezb2Nr956vIOJA5wD1H7Ed71ZdITH/hO6lq8Ds3OUGWH/1aToOm/WMWKEO+NGTFwJOvAmQN7tghDTMgP5D/pAFXkpUgp8jbsJuoN017RJWWRN0I+Nx+Ic6cK7sHTkQ+zt3a+zN4CBDAlm+dThjMX9AAPbCBYoHwpYa3WVRaHBgQEJTihO8G2+cvH0iRAnd1hvZJiPCzrYNKSsNwL5qXua29zRDVVdhW7o6w977M4toUoBreTpz/HVUtda61t16h4v/0pokXU0tcj+2mpgZKuKlIqJiPw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Da1uRaGpRlmD90PzlN4IHUnhIZRtYhz7Ge90kOaFyT4=;
+ b=NkTPckjhZ1gaCrjYCEC1tVn1G0ogFM6tJxsj3DjIAcno9m0iOwpeKLlLpY5XU6Zn5Xcl+EHmwQMIwqfWB7PojJjC7Q3vZ/CgtFORRBc227Y1Z0+51P9xTZhy2CtR+bKAfqvrLwWMw0cJ3B47wfhT6RgE7gwZXoOV1JIBPPt1qZOTCLUr3whHNte8/wCV6eeVyD2fpD1VYEhRbVISlF2poFHlM7isdWdv7aDThZ/encKOHZjYQtyLab4S40Vi+VTx1kJCeeLZB4qHeHNtOqFHTIrIH3AMui4enDzP2HEp6zyxGsbo3Kmk7mc2QaHXdI4UDhulZvNp4qi4pAxHIZBgWA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
+ dkim=pass header.d=silabs.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Da1uRaGpRlmD90PzlN4IHUnhIZRtYhz7Ge90kOaFyT4=;
+ b=WDxsQuMeADjImgajNTrUXQxniMGh4PKzVBAxyEPLDbZQxt8GZl9HxT8FhBklDe8pICnAbmF2wAi4/J+3EUHJGMXwR5X7wcV7H1xXTD6vSG9TO1OHfaW64YR3JMhygLsA+IsPm2LM/S10XJbvYVaeA9kPflTcF4aZacOKptfSbMc=
+Received: from MN2PR11MB4063.namprd11.prod.outlook.com (10.255.180.22) by
+ MN2PR11MB3966.namprd11.prod.outlook.com (10.255.180.29) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2327.24; Tue, 8 Oct 2019 20:14:54 +0000
+Received: from MN2PR11MB4063.namprd11.prod.outlook.com
+ ([fe80::ac8c:fc55:d1e2:465f]) by MN2PR11MB4063.namprd11.prod.outlook.com
+ ([fe80::ac8c:fc55:d1e2:465f%5]) with mapi id 15.20.2347.016; Tue, 8 Oct 2019
+ 20:14:54 +0000
+From: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+To: Colin King <colin.king@canonical.com>
+Subject: Re: [PATCH][next] staging: wfx: fix spelling mistake "hexdecimal" ->
+ "hexadecimal"
+Thread-Topic: [PATCH][next] staging: wfx: fix spelling mistake "hexdecimal" ->
+ "hexadecimal"
+Thread-Index: AQHVfbF7tlMEUCQYGUGsoNSNkuDlradRLrIA
+Date: Tue, 8 Oct 2019 20:14:53 +0000
+Message-ID: <5156069.1LFZ7Sz98S@pc-42>
+References: <20191008082205.19740-1-colin.king@canonical.com>
+In-Reply-To: <20191008082205.19740-1-colin.king@canonical.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Jerome.Pouiller@silabs.com; 
+x-originating-ip: [88.191.86.106]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: ea10c52f-2334-4852-a185-08d74c2c2eba
+x-ms-traffictypediagnostic: MN2PR11MB3966:
+x-microsoft-antispam-prvs: <MN2PR11MB39665FD25EE76394364BA20F939A0@MN2PR11MB3966.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:6790;
+x-forefront-prvs: 01842C458A
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(7916004)(366004)(376002)(396003)(346002)(39850400004)(136003)(199004)(189003)(6116002)(99286004)(76176011)(478600001)(102836004)(476003)(446003)(316002)(11346002)(66066001)(33716001)(6506007)(66946007)(26005)(91956017)(186003)(3846002)(76116006)(66446008)(64756008)(66476007)(66556008)(14454004)(256004)(54906003)(71200400001)(71190400001)(4326008)(25786009)(7736002)(486006)(2906002)(9686003)(8936002)(6512007)(6916009)(6486002)(305945005)(81166006)(81156014)(229853002)(6246003)(5660300002)(86362001)(8676002)(6436002)(39026011);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:MN2PR11MB3966;
+ H:MN2PR11MB4063.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+received-spf: None (protection.outlook.com: silabs.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: UzQ9pcKgU3FwMaQnj9bjRB7RE+VTS771kIPFw0qM4XLonJOXrHLGm2GKYtaqB2wX4xpttdrErcI//W+3+DhFoA7Bf/oVovjRbZRKR1UXfKoyYkZ6B6M3v4LS+hp6QHDIy6ROcB0P60O5XjPEcAtLHzz3pQpsyWXSeWSH5C0EF8KDD3xPCAPsqpb98is0ncNCF4brIWIMF+WVSSTVsYvQVkXtr06VTAOSmVD4BBtpioxnYJXQ7KaurLFOAkge1xpia8ecgVNMEKua4FCcv+VULK+pZwLtODEjAZYV+eEgFEr85mnunr9y7DXCVtcMbusR8Z4VF9MipY0bf3Jg7+JhDkf5bkEJN1IkCXQ3XW4wDGLPdS7i3k2SmpUpTlWsYWlHj5XurEYqfB27YlL5LIEd+Tgh/4lkZTYk1PDuhS+NC4o=
+x-ms-exchange-transport-forked: True
+Content-ID: <BE44F4135B32A7449C258128A9C2FF1A@namprd11.prod.outlook.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <a2d8ad9f-b59d-57e4-f014-645e7b796cc4@intel.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-OriginatorOrg: silabs.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ea10c52f-2334-4852-a185-08d74c2c2eba
+X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Oct 2019 20:14:54.0130 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 54dbd822-5231-4b20-944d-6f4abcd541fb
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 3pofBwV1XRbrbzt5y/ZqhF2TGp0HE8o530H/He87yfBqpHzwFrDuD7eWqknBG2SLqlG/UE4gPxks3PgBn2/4Kg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB3966
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,278 +112,84 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "linux-hyperv@vger.kernel.org" <linux-hyperv@vger.kernel.org>,
- "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>,
- Stephen Hemminger <sthemmin@microsoft.com>,
- "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
- Haiyang Zhang <haiyangz@microsoft.com>,
- "driverdev-devel@linuxdriverproject.org"
- <driverdev-devel@linuxdriverproject.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Michael Kelley <mikelley@microsoft.com>,
- Sasha Levin <Alexander.Levin@microsoft.com>,
- "marcelo.cerri@canonical.com" <marcelo.cerri@canonical.com>,
- "olaf@aepfle.de" <olaf@aepfle.de>, "apw@canonical.com" <apw@canonical.com>,
- vkuznets <vkuznets@redhat.com>, "jasowang@redhat.com" <jasowang@redhat.com>,
- "jackm@mellanox.com" <jackm@mellanox.com>
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "kernel-janitors@vger.kernel.org" <kernel-janitors@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Oct 08, 2019 at 07:32:27PM +0200, Rafael J. Wysocki wrote:
-> On 10/7/2019 8:57 PM, Dexuan Cui wrote:
-> > > -----Original Message-----
-> > > From: Bjorn Helgaas <helgaas@kernel.org>
-> > > Sent: Monday, October 7, 2019 6:24 AM
-> > > To: Dexuan Cui <decui@microsoft.com>
-> > > Cc: lorenzo.pieralisi@arm.com; linux-pci@vger.kernel.org; Michael Kel=
-ley
-> > > <mikelley@microsoft.com>; linux-hyperv@vger.kernel.org;
-> > > linux-kernel@vger.kernel.org; driverdev-devel@linuxdriverproject.org;=
- Sasha
-> > > Levin <Alexander.Levin@microsoft.com>; Haiyang Zhang
-> > > <haiyangz@microsoft.com>; KY Srinivasan <kys@microsoft.com>;
-> > > olaf@aepfle.de; apw@canonical.com; jasowang@redhat.com; vkuznets
-> > > <vkuznets@redhat.com>; marcelo.cerri@canonical.com; Stephen Hemminger
-> > > <sthemmin@microsoft.com>; jackm@mellanox.com
-> > > Subject: Re: [PATCH v2] PCI: PM: Move to D0 before calling
-> > > pci_legacy_resume_early()
-> > > =
-
-> > > On Wed, Aug 14, 2019 at 01:06:55AM +0000, Dexuan Cui wrote:
-> > > > In pci_legacy_suspend_late(), the device state is moved to PCI_UNKN=
-OWN.
-> > > > =
-
-> > > > In pci_pm_thaw_noirq(), the state is supposed to be moved back to P=
-CI_D0,
-> > > > but the current code misses the pci_legacy_resume_early() path, so =
-the
-> > > > state remains in PCI_UNKNOWN in that path. As a result, in the resu=
-me
-> > > > phase of hibernation, this causes an error for the Mellanox VF driv=
-er,
-> > > > which fails to enable MSI-X because pci_msi_supported() is false due
-> > > > to dev->current_state !=3D PCI_D0:
-> > > > =
-
-> > > > mlx4_core a6d1:00:02.0: Detected virtual function - running in slav=
-e mode
-> > > > mlx4_core a6d1:00:02.0: Sending reset
-> > > > mlx4_core a6d1:00:02.0: Sending vhcr0
-> > > > mlx4_core a6d1:00:02.0: HCA minimum page size:512
-> > > > mlx4_core a6d1:00:02.0: Timestamping is not supported in slave mode
-> > > > mlx4_core a6d1:00:02.0: INTx is not supported in multi-function mod=
-e,
-> > > aborting
-> > > > PM: dpm_run_callback(): pci_pm_thaw+0x0/0xd7 returns -95
-> > > > PM: Device a6d1:00:02.0 failed to thaw: error -95
-> > > > =
-
-> > > > To be more accurate, the "resume" phase means the "thaw" callbacks =
-which
-> > > > run before the system enters hibernation: when the user runs the co=
-mmand
-> > > > "echo disk > /sys/power/state" for hibernation, first the kernel "f=
-reezes"
-> > > > all the devices and creates a hibernation image, then the kernel "t=
-haws"
-> > > > the devices including the disk/NIC, writes the memory to the disk, =
-and
-> > > > powers down. This patch fixes the error message for the Mellanox VF=
- driver
-> > > > in this phase.
-
-Wordsmithing nit: what the patch does is not "fix the error message";
-what it does is fix the *problem*, i.e., the fact that we can't
-operate the device because we can't enable MSI-X.  The message is only
-a symptom.
-
-IIUC the relevant part of the system hibernation sequence is:
-
-  pci_pm_freeze_noirq
-  pci_pm_thaw_noirq
-  pci_pm_thaw
-
-And the execution flow is:
-
-  pci_pm_freeze_noirq
-    if (pci_has_legacy_pm_support(pci_dev)) # true for mlx4
-      pci_legacy_suspend_late(dev, PMSG_FREEZE)
-	pci_pm_set_unknown_state
-	  dev->current_state =3D PCI_UNKNOWN  # <---
-  pci_pm_thaw_noirq
-    if (pci_has_legacy_pm_support(pci_dev)) # true
-      pci_legacy_resume_early(dev)          # noop; mlx4 doesn't implement
-  pci_pm_thaw                               # returns -95 EOPNOTSUPP
-    if (pci_has_legacy_pm_support(pci_dev)) # true
-      pci_legacy_resume
-	drv->resume
-	  mlx4_resume                       # mlx4_driver.resume (legacy)
-	    mlx4_load_one
-	      mlx4_enable_msi_x
-		pci_enable_msix_range
-		  __pci_enable_msix_range
-		    __pci_enable_msix
-		      if (!pci_msi_supported())
-			if (dev->current_state !=3D PCI_D0)  # <---
-			  return 0
-			return -EINVAL
-		err =3D -EOPNOTSUPP
-		"INTx is not supported ..."
-
-(These are just my notes; you don't need to put them all into the
-commit message.  I'm just sharing them in case I'm not understanding
-correctly.)
-
-> > > > When the system starts again, a fresh kernel starts to run, and whe=
-n the
-> > > > kernel detects that a hibernation image was saved, the kernel "quie=
-sces"
-> > > > the devices, and then "restores" the devices from the saved image. =
-In this
-> > > > path:
-> > > > device_resume_noirq() -> ... ->
-> > > >    pci_pm_restore_noirq() ->
-> > > >      pci_pm_default_resume_early() ->
-> > > >        pci_power_up() moves the device states back to PCI_D0. This =
-path is
-> > > > not broken and doesn't need my patch.
-> > > > =
-
-
-The cc list suggests that this might be a fix for a user-reported
-problem.  Is there a launchpad or similar link you could include here?
-
-Should this be marked for stable?
-
-> > > > Signed-off-by: Dexuan Cui <decui@microsoft.com>
-> > > This looks like a bugfix for 5839ee7389e8 ("PCI / PM: Force devices to
-> > > D0 in pci_pm_thaw_noirq()") so maybe it should be marked for stable as
-> > > 5839ee7389e8 was?
-> > > =
-
-> > > Rafael, could you confirm?
+On Tuesday 8 October 2019 10:22:05 CEST Colin King wrote:
+> From: Colin Ian King <colin.king@canonical.com>
 > =
 
-> No, it is not a bug fix for that commit.=A0 The underlying issue would be
-> there without that commit too.
+> There is a spelling mistake in the documentation and a module parameter
+> description. Fix these.
+> =
 
-Oh, right, I dunno what I was thinking, sorry.
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+> ---
+>  .../devicetree/bindings/net/wireless/siliabs,wfx.txt            | 2 +-
+>  drivers/staging/wfx/main.c                                      | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+> =
 
-> > > > --- a/drivers/pci/pci-driver.c
-> > > > +++ b/drivers/pci/pci-driver.c
-> > > > @@ -1074,15 +1074,16 @@ static int pci_pm_thaw_noirq(struct device
-> > > *dev)
-> > > >   			return error;
-> > > >   	}
-> > > > =
+> diff --git a/drivers/staging/wfx/Documentation/devicetree/bindings/net/wi=
+reless/siliabs,wfx.txt b/drivers/staging/wfx/Documentation/devicetree/bindi=
+ngs/net/wireless/siliabs,wfx.txt
+> index 15965c9b4180..26de6762b942 100644
+> --- a/drivers/staging/wfx/Documentation/devicetree/bindings/net/wireless/=
+siliabs,wfx.txt
+> +++ b/drivers/staging/wfx/Documentation/devicetree/bindings/net/wireless/=
+siliabs,wfx.txt
+> @@ -89,7 +89,7 @@ Some properties are recognized either by SPI and SDIO v=
+ersions:
+>     this property, driver will disable most of power saving features.
+>   - config-file: Use an alternative file as PDS. Default is `wf200.pds`. =
+Only
+>     necessary for development/debug purpose.
+> - - slk_key: String representing hexdecimal value of secure link key to u=
+se.
+> + - slk_key: String representing hexadecimal value of secure link key to =
+use.
+>     Must contains 64 hexadecimal digits. Not supported in current version.
+> =
 
-> > > > -	if (pci_has_legacy_pm_support(pci_dev))
-> > > > -		return pci_legacy_resume_early(dev);
-> > > > -
-> > > >   	/*
-> > > >   	 * pci_restore_state() requires the device to be in D0 (because =
-of MSI
-> > > >   	 * restoration among other things), so force it into D0 in case =
-the
-> > > >   	 * driver's "freeze" callbacks put it into a low-power state dir=
-ectly.
-> > > >   	 */
-> > > >   	pci_set_power_state(pci_dev, PCI_D0);
-> > > > +
-> > > > +	if (pci_has_legacy_pm_support(pci_dev))
-> > > > +		return pci_legacy_resume_early(dev);
-> > > > +
-> > > >   	pci_restore_state(pci_dev);
-> > > > =
+>  WFx driver also supports `mac-address` and `local-mac-address` as descri=
+bed in
+> diff --git a/drivers/staging/wfx/main.c b/drivers/staging/wfx/main.c
+> index fe9a89703897..d2508bc950fa 100644
+> --- a/drivers/staging/wfx/main.c
+> +++ b/drivers/staging/wfx/main.c
+> @@ -48,7 +48,7 @@ MODULE_PARM_DESC(gpio_wakeup, "gpio number for wakeup. =
+-1 for none.");
+> =
 
-> > > >   	if (drv && drv->pm && drv->pm->thaw_noirq)
-> > > > --
-> > > > 2.19.1
-> > > > =
+>  static char *slk_key;
+>  module_param(slk_key, charp, 0600);
+> -MODULE_PARM_DESC(slk_key, "secret key for secure link (expect 64 hexdeci=
+mal digits).");
+> +MODULE_PARM_DESC(slk_key, "secret key for secure link (expect 64 hexadec=
+imal digits).");
+> =
 
-> The patch looks reasonable to me, but the comment above the
-> pci_set_power_state() call needs to be updated too IMO.
-
-Hmm.
-
-1) pci_restore_state() mainly writes config space, which doesn't
-require the device to be in D0.  The only thing I see that would
-require D0 is the MSI-X MMIO space, so to be more specific, the
-comment could say "restoring the MSI-X *MMIO* state requires the
-device to be in D0".
-
-But I think you meant some other comment change.  Did you mean
-something along the lines of "a legacy drv->resume_early() callback
-and pci_restore_state() both require the device to be in D0"?
-
-If something else, maybe you could propose some text?
-
-2) I assume pci_pm_thaw_noirq() should leave the device in a
-functionally equivalent state, whether it uses legacy PM or not.  Do
-we want something like the patch below instead?  If we *do* want to
-skip pci_restore_state() for legacy PM, maybe we should add a comment.
-
-3) Documentation/power/pci.rst says:
-
-  ... devices have to be brought back to the fully functional
-  state ...
-
-  pci_pm_thaw_noirq() ... doesn't put the device into the full power
-  state and doesn't attempt to restore its standard configuration
-  registers.
-
-That doesn't seem consistent, and it looks like pci_pm_thaw_noirq()
-actually *does* put the device in full power (D0) state and restore
-config registers.
+>  #define RATETAB_ENT(_rate, _rateid, _flags) { \
+>         .bitrate  =3D (_rate),   \
+> --
+> 2.20.1
+> =
 
 
-diff --git a/drivers/pci/pci-driver.c b/drivers/pci/pci-driver.c
-index a8124e47bf6e..30c721fd6bcf 100644
---- a/drivers/pci/pci-driver.c
-+++ b/drivers/pci/pci-driver.c
-@@ -1068,7 +1068,7 @@ static int pci_pm_thaw_noirq(struct device *dev)
- {
- 	struct pci_dev *pci_dev =3D to_pci_dev(dev);
- 	struct device_driver *drv =3D dev->driver;
--	int error =3D 0;
-+	int error;
- =
+Thank you!
 
- 	if (pcibios_pm_ops.thaw_noirq) {
- 		error =3D pcibios_pm_ops.thaw_noirq(dev);
-@@ -1076,9 +1076,6 @@ static int pci_pm_thaw_noirq(struct device *dev)
- 			return error;
- 	}
- =
+Acked-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
 
--	if (pci_has_legacy_pm_support(pci_dev))
--		return pci_legacy_resume_early(dev);
--
- 	/*
- 	 * pci_restore_state() requires the device to be in D0 (because of MSI
- 	 * restoration among other things), so force it into D0 in case the
-@@ -1087,10 +1084,13 @@ static int pci_pm_thaw_noirq(struct device *dev)
- 	pci_set_power_state(pci_dev, PCI_D0);
- 	pci_restore_state(pci_dev);
- =
+-- =
 
-+	if (pci_has_legacy_pm_support(pci_dev))
-+		return pci_legacy_resume_early(dev);
-+
- 	if (drv && drv->pm && drv->pm->thaw_noirq)
--		error =3D drv->pm->thaw_noirq(dev);
-+		return drv->pm->thaw_noirq(dev);
- =
+J=E9r=F4me Pouiller
 
--	return error;
-+	return 0;
- }
- =
-
- static int pci_pm_thaw(struct device *dev)
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
