@@ -1,103 +1,92 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 58A3ECF6D9
-	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Oct 2019 12:17:18 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9C3A5CF90C
+	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Oct 2019 13:59:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2A66187EC4;
-	Tue,  8 Oct 2019 10:17:16 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AF11A87683;
+	Tue,  8 Oct 2019 11:59:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5Uh9YSOmVtU7; Tue,  8 Oct 2019 10:17:15 +0000 (UTC)
+	with ESMTP id p0WFoBRzlCAn; Tue,  8 Oct 2019 11:59:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 23DB787E4A;
-	Tue,  8 Oct 2019 10:17:15 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 797338765A;
+	Tue,  8 Oct 2019 11:59:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 19FD91BF857
- for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 10:17:13 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 272DC1BF255
+ for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 11:59:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 133E885DC0
- for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 10:17:13 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 241EF85585
+ for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 11:59:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bSAk1SROdB33 for <devel@linuxdriverproject.org>;
- Tue,  8 Oct 2019 10:17:12 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM04-CO1-obe.outbound.protection.outlook.com
- (mail-eopbgr690079.outbound.protection.outlook.com [40.107.69.79])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 41FDE85CAA
- for <devel@driverdev.osuosl.org>; Tue,  8 Oct 2019 10:17:12 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=it5B2MC8JFLZs68Fc+1gvdNOrD4vzPY61SrsC043drCvVQ74hGQFPg4tXGiu5KnZjfK/NY6Ck7ziHtCUe84TatXXNx8oGqcLiEPtUR7dR6ZHdWdOQDqdracU34btznWYGS627Rph0KutPAkPnS+Rl+g830G3wRCRLyQkRoO830lAd/5nMRfkpEy4DxZjij1e7fV52mJEINBvCRk1Rj9Y7uJL5Uob2wYpondKpOlMC7dj9XerHv68OWuYd5NRBwl5nX62wXYIO35dM+BEMCOJvd6VjVaBGfF7ssjVrzJ06/Li0XmjJp7TmomdWPZqHCVSO08Gh5DSgqlgaSduQIHFoA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=7JZ/ZaacqA+PC2LuP7EAYGymeEFas1nwHpW3809ZMtM=;
- b=dB8rsJa+n5Eu13S2aaGxXeG0Z9QlSJf43f9Qe2Eca180F3I9LVXXQFLg7Vi41YIOHuKGvqjCPA5DFysNo5CRexBwIQCxJOjy5LTnV+PSdaahefl874uiJyySmqCOWWU7ni3Tu0oi9EW4bLFXjsi+ydm0MeeGPgrRuxOfx9xRwx+T5QstMgRPsc9npvzmPY50Dviz4NSCJZqTj2mf+7BiOBIE/KRIvvnyPTPEUJelG3gUFidbtbv1zxzL1u63g+xZBiTvezU7ynEQeEUOAVLaoF6DxLBmu3VKw1iF3DhFRj7fFz9JB2q3ZJ750H2FMidW9UqLLqM6loTaobWaRWKT2g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
- dkim=pass header.d=silabs.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=7JZ/ZaacqA+PC2LuP7EAYGymeEFas1nwHpW3809ZMtM=;
- b=GaidHqASUcols+DNdCUpwJNKguyH8fLPD30edTx5wOXBRFhsrqAO+3oml2ca0O9SNbwXzCptsf8xa+rk8nOExgnsHPsHGrQEpkR/20RC5zY+QWfsP0DBuTUaxyjT+RHrAruk5XwSqPIdU6z/eCYnLIjJ/KAmioE39B+AbDaV+KY=
-Received: from MN2PR11MB4063.namprd11.prod.outlook.com (10.255.180.22) by
- MN2PR11MB4333.namprd11.prod.outlook.com (10.255.90.25) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2347.16; Tue, 8 Oct 2019 09:43:03 +0000
-Received: from MN2PR11MB4063.namprd11.prod.outlook.com
- ([fe80::ac8c:fc55:d1e2:465f]) by MN2PR11MB4063.namprd11.prod.outlook.com
- ([fe80::ac8c:fc55:d1e2:465f%5]) with mapi id 15.20.2347.016; Tue, 8 Oct 2019
- 09:43:03 +0000
-From: Jerome Pouiller <Jerome.Pouiller@silabs.com>
-To: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>
-Subject: [PATCH 7/7] staging: wfx: avoid namespace contamination
-Thread-Topic: [PATCH 7/7] staging: wfx: avoid namespace contamination
-Thread-Index: AQHVfbzGkqwXR4+nz0ShTAKEPSVbeA==
-Date: Tue, 8 Oct 2019 09:43:01 +0000
-Message-ID: <20191008094232.10014-8-Jerome.Pouiller@silabs.com>
+ with ESMTP id MAzXNKUAPUlI for <devel@linuxdriverproject.org>;
+ Tue,  8 Oct 2019 11:59:38 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id EF6B584FF9
+ for <devel@driverdev.osuosl.org>; Tue,  8 Oct 2019 11:59:37 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x98BxFBu106757;
+ Tue, 8 Oct 2019 11:59:37 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=OGOkAlNA6LggrLMDrHaCp6Y9p8n1TBUDmTBrqzZFoKM=;
+ b=k2VwK7WqwLKkuGuaRfBfCvZQeMRUdCvQU97XC2c3kZ3B3Ba2X0NLSnlTk0p/OXCt6B/t
+ h8YN8s8oZ15p7KwDb3ad2OR1q0Q8HRvgCRgKcoSU92zBCqUGic9I9dTDjEUzaXucgUQp
+ V5lU4KfX9svKnb78g7ZS30XfPboP3FI8Tbe6c0QsXnFtLvxGJe7GAolIoih+QHagYiZ0
+ B8gR9gNHRyq4WFGBCjr1Ji0EC8CMBshjxOjIYbxXNDPUtEJCzwOCsRrsoSHYgYlm0fWX
+ SZ4hw8fFCgxk9s2kBSeH8mjBIri34256M1YAC19F8Zh9grHG4mS4cPSkiUxNo+y4tXIm jQ== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by aserp2120.oracle.com with ESMTP id 2vek4qcs64-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 08 Oct 2019 11:59:36 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x98BwEXI022092;
+ Tue, 8 Oct 2019 11:59:36 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by userp3020.oracle.com with ESMTP id 2vg20652rh-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 08 Oct 2019 11:59:35 +0000
+Received: from abhmp0007.oracle.com (abhmp0007.oracle.com [141.146.116.13])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x98BxYQe002725;
+ Tue, 8 Oct 2019 11:59:34 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 08 Oct 2019 04:59:34 -0700
+Date: Tue, 8 Oct 2019 14:59:27 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+Subject: Re: [PATCH 1/7] staging: wfx: simplify memory allocation in
+ wfx_update_filtering()
+Message-ID: <20191008115927.GE25098@kadam>
 References: <20191008094232.10014-1-Jerome.Pouiller@silabs.com>
-In-Reply-To: <20191008094232.10014-1-Jerome.Pouiller@silabs.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Jerome.Pouiller@silabs.com; 
-x-originating-ip: [37.71.187.125]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 0ee29b41-2093-47ab-666e-08d74bd3e9ff
-x-ms-traffictypediagnostic: MN2PR11MB4333:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <MN2PR11MB433374A7AAB283CD791F1434939A0@MN2PR11MB4333.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:4941;
-x-forefront-prvs: 01842C458A
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(979002)(376002)(136003)(396003)(366004)(346002)(39850400004)(199004)(189003)(54906003)(66574012)(1076003)(6436002)(6512007)(5640700003)(25786009)(305945005)(66066001)(316002)(7736002)(99286004)(76176011)(2351001)(6506007)(8936002)(86362001)(2501003)(71200400001)(71190400001)(102836004)(6486002)(14454004)(8676002)(6916009)(81166006)(81156014)(478600001)(1730700003)(4326008)(76116006)(26005)(446003)(14444005)(64756008)(66556008)(476003)(256004)(66476007)(66446008)(186003)(3846002)(66946007)(2616005)(6116002)(486006)(11346002)(2906002)(36756003)(91956017)(5660300002)(969003)(989001)(999001)(1009001)(1019001);
- DIR:OUT; SFP:1101; SCL:1; SRVR:MN2PR11MB4333;
- H:MN2PR11MB4063.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: silabs.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: u9JKAvrsBE8+aP4etv7Grm+l+ARHNgMFi+drscpEg1+32zJOzm7PO+qDRf+7VR0WLaHLJahUootjk53ZEXU69PpOt8JpoDLsSfBHJKcn0Su/qXL3PbN3HnVjEC6mNBhSnVLu0TlzsrtqnIKiE4Q6fLQEkUG/8gzO+/gG6zzRVoe05FhImLHLLU4ngFbeWgwpP3/ndLHHD/pYVOoM7JfonF8JSTt/73jS1XXYSB9e0/8tjM6mzUjBFPUQ6O0BOTbvE2P0Nr8SsuKc5IxK5LlL1n4Pzz3l01kw7v++jEoundkqhCnYKQXsIyCbLvyGslJ4WdXoZ1mMTG6HEWrGOwboPJp3vlpmVF2vpSoNj0bfD9A6hZfrqIXmaAziNEALLlNeTn070ssGxfNlOpdbOXlLKKEgzmyr2hZDG0sRPtlATUM=
-Content-ID: <01B6EE9E65D5824FB5CE6EF93FD1FA98@namprd11.prod.outlook.com>
+ <20191008094232.10014-2-Jerome.Pouiller@silabs.com>
 MIME-Version: 1.0
-X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0ee29b41-2093-47ab-666e-08d74bd3e9ff
-X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Oct 2019 09:43:01.4186 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 54dbd822-5231-4b20-944d-6f4abcd541fb
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: HRisoS0TEifHICnX5kRdmHH+6FlJ7q7M007cuwqBvGCGqgdGug/DyUSb5SgfX8H1RrVIZxmbAwXwP/wHbsChjw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4333
+Content-Disposition: inline
+In-Reply-To: <20191008094232.10014-2-Jerome.Pouiller@silabs.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9403
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1908290000 definitions=main-1910080117
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9403
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
+ definitions=main-1910080117
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,137 +99,72 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPg0KDQp0
-eF9wb2xpY3lfaW5pdCgpIHdhcyBhbHJlYWR5IGRlZmluZWQgaW4gZHJpdmVyIGN3MTIwMC4gU28s
-IGNvbXBpbGF0aW9uDQpmYWlsZWQgd2hlbiB3ZnggYW5kIGN3MTIwMCB3ZXJlIGJvdGggYnVpbHQt
-aW4uDQoNCkluIG9yZGVyIHRvIGtlZXAgYSBjb2hlcmVudCBuYW1pbmcgc2NoZW1lLCB0aGlzIHBh
-dGNoIHByZWZpeGVzIGFsbA0KInR4X3BvbGljeV8qIiBmdW5jdGlvbnMgd2l0aCAid2Z4XyIuDQoN
-CkZpeGVzOiA5YmNhNDVmM2Q2OTIgKCJzdGFnaW5nOiB3Zng6IGFsbG93IHRvIHNlbmQgODAyLjEx
-IGZyYW1lcyIpDQpSZXBvcnRlZC1ieToga2J1aWxkIHRlc3Qgcm9ib3QgPGxrcEBpbnRlbC5jb20+
-DQpTaWduZWQtb2ZmLWJ5OiBKw6lyw7RtZSBQb3VpbGxlciA8amVyb21lLnBvdWlsbGVyQHNpbGFi
-cy5jb20+DQotLS0NCiBkcml2ZXJzL3N0YWdpbmcvd2Z4L2RhdGFfdHguYyB8IDM0ICsrKysrKysr
-KysrKysrKysrLS0tLS0tLS0tLS0tLS0tLS0NCiBkcml2ZXJzL3N0YWdpbmcvd2Z4L2RhdGFfdHgu
-aCB8ICAyICstDQogZHJpdmVycy9zdGFnaW5nL3dmeC9zdGEuYyAgICAgfCAgMiArLQ0KIDMgZmls
-ZXMgY2hhbmdlZCwgMTkgaW5zZXJ0aW9ucygrKSwgMTkgZGVsZXRpb25zKC0pDQoNCmRpZmYgLS1n
-aXQgYS9kcml2ZXJzL3N0YWdpbmcvd2Z4L2RhdGFfdHguYyBiL2RyaXZlcnMvc3RhZ2luZy93Zngv
-ZGF0YV90eC5jDQppbmRleCBiMmNhMzk4NmM2ZDAuLjZlNGRkNGFjNTU0NCAxMDA2NDQNCi0tLSBh
-L2RyaXZlcnMvc3RhZ2luZy93ZngvZGF0YV90eC5jDQorKysgYi9kcml2ZXJzL3N0YWdpbmcvd2Z4
-L2RhdGFfdHguYw0KQEAgLTM3LDcgKzM3LDcgQEAgc3RhdGljIGludCB3ZnhfZ2V0X2h3X3JhdGUo
-c3RydWN0IHdmeF9kZXYgKndkZXYsIGNvbnN0IHN0cnVjdCBpZWVlODAyMTFfdHhfcmF0ZQ0KIA0K
-IC8qIFRYIHBvbGljeSBjYWNoZSBpbXBsZW1lbnRhdGlvbiAqLw0KIA0KLXN0YXRpYyB2b2lkIHR4
-X3BvbGljeV9idWlsZChzdHJ1Y3Qgd2Z4X3ZpZiAqd3ZpZiwgc3RydWN0IHR4X3BvbGljeSAqcG9s
-aWN5LA0KK3N0YXRpYyB2b2lkIHdmeF90eF9wb2xpY3lfYnVpbGQoc3RydWN0IHdmeF92aWYgKnd2
-aWYsIHN0cnVjdCB0eF9wb2xpY3kgKnBvbGljeSwNCiAJCQkgICAgc3RydWN0IGllZWU4MDIxMV90
-eF9yYXRlICpyYXRlcykNCiB7DQogCWludCBpOw0KQEAgLTEyNCw3ICsxMjQsNyBAQCBzdGF0aWMg
-Ym9vbCB0eF9wb2xpY3lfaXNfZXF1YWwoY29uc3Qgc3RydWN0IHR4X3BvbGljeSAqYSwgY29uc3Qg
-c3RydWN0IHR4X3BvbGljeQ0KIAlyZXR1cm4gIW1lbWNtcChhLT5yYXRlcywgYi0+cmF0ZXMsIHNp
-emVvZihhLT5yYXRlcykpOw0KIH0NCiANCi1zdGF0aWMgaW50IHR4X3BvbGljeV9maW5kKHN0cnVj
-dCB0eF9wb2xpY3lfY2FjaGUgKmNhY2hlLCBzdHJ1Y3QgdHhfcG9saWN5ICp3YW50ZWQpDQorc3Rh
-dGljIGludCB3ZnhfdHhfcG9saWN5X2ZpbmQoc3RydWN0IHR4X3BvbGljeV9jYWNoZSAqY2FjaGUs
-IHN0cnVjdCB0eF9wb2xpY3kgKndhbnRlZCkNCiB7DQogCXN0cnVjdCB0eF9wb2xpY3kgKml0Ow0K
-IA0KQEAgLTEzNywxMyArMTM3LDEzIEBAIHN0YXRpYyBpbnQgdHhfcG9saWN5X2ZpbmQoc3RydWN0
-IHR4X3BvbGljeV9jYWNoZSAqY2FjaGUsIHN0cnVjdCB0eF9wb2xpY3kgKndhbnRlDQogCXJldHVy
-biAtMTsNCiB9DQogDQotc3RhdGljIHZvaWQgdHhfcG9saWN5X3VzZShzdHJ1Y3QgdHhfcG9saWN5
-X2NhY2hlICpjYWNoZSwgc3RydWN0IHR4X3BvbGljeSAqZW50cnkpDQorc3RhdGljIHZvaWQgd2Z4
-X3R4X3BvbGljeV91c2Uoc3RydWN0IHR4X3BvbGljeV9jYWNoZSAqY2FjaGUsIHN0cnVjdCB0eF9w
-b2xpY3kgKmVudHJ5KQ0KIHsNCiAJKytlbnRyeS0+dXNhZ2VfY291bnQ7DQogCWxpc3RfbW92ZSgm
-ZW50cnktPmxpbmssICZjYWNoZS0+dXNlZCk7DQogfQ0KIA0KLXN0YXRpYyBpbnQgdHhfcG9saWN5
-X3JlbGVhc2Uoc3RydWN0IHR4X3BvbGljeV9jYWNoZSAqY2FjaGUsIHN0cnVjdCB0eF9wb2xpY3kg
-KmVudHJ5KQ0KK3N0YXRpYyBpbnQgd2Z4X3R4X3BvbGljeV9yZWxlYXNlKHN0cnVjdCB0eF9wb2xp
-Y3lfY2FjaGUgKmNhY2hlLCBzdHJ1Y3QgdHhfcG9saWN5ICplbnRyeSkNCiB7DQogCWludCByZXQg
-PSAtLWVudHJ5LT51c2FnZV9jb3VudDsNCiANCkBAIC0xNTIsMjEgKzE1MiwyMSBAQCBzdGF0aWMg
-aW50IHR4X3BvbGljeV9yZWxlYXNlKHN0cnVjdCB0eF9wb2xpY3lfY2FjaGUgKmNhY2hlLCBzdHJ1
-Y3QgdHhfcG9saWN5ICplbg0KIAlyZXR1cm4gcmV0Ow0KIH0NCiANCi1zdGF0aWMgaW50IHR4X3Bv
-bGljeV9nZXQoc3RydWN0IHdmeF92aWYgKnd2aWYsIHN0cnVjdCBpZWVlODAyMTFfdHhfcmF0ZSAq
-cmF0ZXMsDQorc3RhdGljIGludCB3ZnhfdHhfcG9saWN5X2dldChzdHJ1Y3Qgd2Z4X3ZpZiAqd3Zp
-Ziwgc3RydWN0IGllZWU4MDIxMV90eF9yYXRlICpyYXRlcywNCiAJCQkgYm9vbCAqcmVuZXcpDQog
-ew0KIAlpbnQgaWR4Ow0KIAlzdHJ1Y3QgdHhfcG9saWN5X2NhY2hlICpjYWNoZSA9ICZ3dmlmLT50
-eF9wb2xpY3lfY2FjaGU7DQogCXN0cnVjdCB0eF9wb2xpY3kgd2FudGVkOw0KIA0KLQl0eF9wb2xp
-Y3lfYnVpbGQod3ZpZiwgJndhbnRlZCwgcmF0ZXMpOw0KKwl3ZnhfdHhfcG9saWN5X2J1aWxkKHd2
-aWYsICZ3YW50ZWQsIHJhdGVzKTsNCiANCiAJc3Bpbl9sb2NrX2JoKCZjYWNoZS0+bG9jayk7DQog
-CWlmIChXQVJOX09OKGxpc3RfZW1wdHkoJmNhY2hlLT5mcmVlKSkpIHsNCiAJCXNwaW5fdW5sb2Nr
-X2JoKCZjYWNoZS0+bG9jayk7DQogCQlyZXR1cm4gV0ZYX0lOVkFMSURfUkFURV9JRDsNCiAJfQ0K
-LQlpZHggPSB0eF9wb2xpY3lfZmluZChjYWNoZSwgJndhbnRlZCk7DQorCWlkeCA9IHdmeF90eF9w
-b2xpY3lfZmluZChjYWNoZSwgJndhbnRlZCk7DQogCWlmIChpZHggPj0gMCkgew0KIAkJKnJlbmV3
-ID0gZmFsc2U7DQogCX0gZWxzZSB7DQpAQCAtMTgxLDcgKzE4MSw3IEBAIHN0YXRpYyBpbnQgdHhf
-cG9saWN5X2dldChzdHJ1Y3Qgd2Z4X3ZpZiAqd3ZpZiwgc3RydWN0IGllZWU4MDIxMV90eF9yYXRl
-ICpyYXRlcywNCiAJCWVudHJ5LT51c2FnZV9jb3VudCA9IDA7DQogCQlpZHggPSBlbnRyeSAtIGNh
-Y2hlLT5jYWNoZTsNCiAJfQ0KLQl0eF9wb2xpY3lfdXNlKGNhY2hlLCAmY2FjaGUtPmNhY2hlW2lk
-eF0pOw0KKwl3ZnhfdHhfcG9saWN5X3VzZShjYWNoZSwgJmNhY2hlLT5jYWNoZVtpZHhdKTsNCiAJ
-aWYgKGxpc3RfZW1wdHkoJmNhY2hlLT5mcmVlKSkgew0KIAkJLyogTG9jayBUWCBxdWV1ZXMuICov
-DQogCQl3ZnhfdHhfcXVldWVzX2xvY2sod3ZpZi0+d2Rldik7DQpAQCAtMTkwLDE0ICsxOTAsMTQg
-QEAgc3RhdGljIGludCB0eF9wb2xpY3lfZ2V0KHN0cnVjdCB3ZnhfdmlmICp3dmlmLCBzdHJ1Y3Qg
-aWVlZTgwMjExX3R4X3JhdGUgKnJhdGVzLA0KIAlyZXR1cm4gaWR4Ow0KIH0NCiANCi1zdGF0aWMg
-dm9pZCB0eF9wb2xpY3lfcHV0KHN0cnVjdCB3ZnhfdmlmICp3dmlmLCBpbnQgaWR4KQ0KK3N0YXRp
-YyB2b2lkIHdmeF90eF9wb2xpY3lfcHV0KHN0cnVjdCB3ZnhfdmlmICp3dmlmLCBpbnQgaWR4KQ0K
-IHsNCiAJaW50IHVzYWdlLCBsb2NrZWQ7DQogCXN0cnVjdCB0eF9wb2xpY3lfY2FjaGUgKmNhY2hl
-ID0gJnd2aWYtPnR4X3BvbGljeV9jYWNoZTsNCiANCiAJc3Bpbl9sb2NrX2JoKCZjYWNoZS0+bG9j
-ayk7DQogCWxvY2tlZCA9IGxpc3RfZW1wdHkoJmNhY2hlLT5mcmVlKTsNCi0JdXNhZ2UgPSB0eF9w
-b2xpY3lfcmVsZWFzZShjYWNoZSwgJmNhY2hlLT5jYWNoZVtpZHhdKTsNCisJdXNhZ2UgPSB3Znhf
-dHhfcG9saWN5X3JlbGVhc2UoY2FjaGUsICZjYWNoZS0+Y2FjaGVbaWR4XSk7DQogCWlmIChsb2Nr
-ZWQgJiYgIXVzYWdlKSB7DQogCQkvKiBVbmxvY2sgVFggcXVldWVzLiAqLw0KIAkJd2Z4X3R4X3F1
-ZXVlc191bmxvY2sod3ZpZi0+d2Rldik7DQpAQCAtMjA1LDcgKzIwNSw3IEBAIHN0YXRpYyB2b2lk
-IHR4X3BvbGljeV9wdXQoc3RydWN0IHdmeF92aWYgKnd2aWYsIGludCBpZHgpDQogCXNwaW5fdW5s
-b2NrX2JoKCZjYWNoZS0+bG9jayk7DQogfQ0KIA0KLXN0YXRpYyBpbnQgdHhfcG9saWN5X3VwbG9h
-ZChzdHJ1Y3Qgd2Z4X3ZpZiAqd3ZpZikNCitzdGF0aWMgaW50IHdmeF90eF9wb2xpY3lfdXBsb2Fk
-KHN0cnVjdCB3ZnhfdmlmICp3dmlmKQ0KIHsNCiAJaW50IGk7DQogCXN0cnVjdCB0eF9wb2xpY3lf
-Y2FjaGUgKmNhY2hlID0gJnd2aWYtPnR4X3BvbGljeV9jYWNoZTsNCkBAIC0yMzgsMTggKzIzOCwx
-OCBAQCBzdGF0aWMgaW50IHR4X3BvbGljeV91cGxvYWQoc3RydWN0IHdmeF92aWYgKnd2aWYpDQog
-CXJldHVybiAwOw0KIH0NCiANCi1zdGF0aWMgdm9pZCB0eF9wb2xpY3lfdXBsb2FkX3dvcmsoc3Ry
-dWN0IHdvcmtfc3RydWN0ICp3b3JrKQ0KK3N0YXRpYyB2b2lkIHdmeF90eF9wb2xpY3lfdXBsb2Fk
-X3dvcmsoc3RydWN0IHdvcmtfc3RydWN0ICp3b3JrKQ0KIHsNCiAJc3RydWN0IHdmeF92aWYgKnd2
-aWYgPQ0KIAkJY29udGFpbmVyX29mKHdvcmssIHN0cnVjdCB3ZnhfdmlmLCB0eF9wb2xpY3lfdXBs
-b2FkX3dvcmspOw0KIA0KLQl0eF9wb2xpY3lfdXBsb2FkKHd2aWYpOw0KKwl3ZnhfdHhfcG9saWN5
-X3VwbG9hZCh3dmlmKTsNCiANCiAJd2Z4X3R4X3VubG9jayh3dmlmLT53ZGV2KTsNCiAJd2Z4X3R4
-X3F1ZXVlc191bmxvY2sod3ZpZi0+d2Rldik7DQogfQ0KIA0KLXZvaWQgdHhfcG9saWN5X2luaXQo
-c3RydWN0IHdmeF92aWYgKnd2aWYpDQordm9pZCB3ZnhfdHhfcG9saWN5X2luaXQoc3RydWN0IHdm
-eF92aWYgKnd2aWYpDQogew0KIAlzdHJ1Y3QgdHhfcG9saWN5X2NhY2hlICpjYWNoZSA9ICZ3dmlm
-LT50eF9wb2xpY3lfY2FjaGU7DQogCWludCBpOw0KQEAgLTI1OSw3ICsyNTksNyBAQCB2b2lkIHR4
-X3BvbGljeV9pbml0KHN0cnVjdCB3ZnhfdmlmICp3dmlmKQ0KIAlzcGluX2xvY2tfaW5pdCgmY2Fj
-aGUtPmxvY2spOw0KIAlJTklUX0xJU1RfSEVBRCgmY2FjaGUtPnVzZWQpOw0KIAlJTklUX0xJU1Rf
-SEVBRCgmY2FjaGUtPmZyZWUpOw0KLQlJTklUX1dPUksoJnd2aWYtPnR4X3BvbGljeV91cGxvYWRf
-d29yaywgdHhfcG9saWN5X3VwbG9hZF93b3JrKTsNCisJSU5JVF9XT1JLKCZ3dmlmLT50eF9wb2xp
-Y3lfdXBsb2FkX3dvcmssIHdmeF90eF9wb2xpY3lfdXBsb2FkX3dvcmspOw0KIA0KIAlmb3IgKGkg
-PSAwOyBpIDwgSElGX01JQl9OVU1fVFhfUkFURV9SRVRSWV9QT0xJQ0lFUzsgKytpKQ0KIAkJbGlz
-dF9hZGQoJmNhY2hlLT5jYWNoZVtpXS5saW5rLCAmY2FjaGUtPmZyZWUpOw0KQEAgLTUyNyw3ICs1
-MjcsNyBAQCBzdGF0aWMgdWludDhfdCB3ZnhfdHhfZ2V0X3JhdGVfaWQoc3RydWN0IHdmeF92aWYg
-Knd2aWYsIHN0cnVjdCBpZWVlODAyMTFfdHhfaW5mbw0KIAlib29sIHR4X3BvbGljeV9yZW5ldyA9
-IGZhbHNlOw0KIAl1aW50OF90IHJhdGVfaWQ7DQogDQotCXJhdGVfaWQgPSB0eF9wb2xpY3lfZ2V0
-KHd2aWYsIHR4X2luZm8tPmRyaXZlcl9yYXRlcywgJnR4X3BvbGljeV9yZW5ldyk7DQorCXJhdGVf
-aWQgPSB3ZnhfdHhfcG9saWN5X2dldCh3dmlmLCB0eF9pbmZvLT5kcml2ZXJfcmF0ZXMsICZ0eF9w
-b2xpY3lfcmVuZXcpOw0KIAlXQVJOKHJhdGVfaWQgPT0gV0ZYX0lOVkFMSURfUkFURV9JRCwgInVu
-YWJsZSB0byBnZXQgYSB2YWxpZCBUeCBwb2xpY3kiKTsNCiANCiAJaWYgKHR4X3BvbGljeV9yZW5l
-dykgew0KQEAgLTc5NCw2ICs3OTQsNiBAQCB2b2lkIHdmeF9za2JfZHRvcihzdHJ1Y3Qgd2Z4X2Rl
-diAqd2Rldiwgc3RydWN0IHNrX2J1ZmYgKnNrYikNCiAJV0FSTl9PTighd3ZpZik7DQogCXNrYl9w
-dWxsKHNrYiwgb2Zmc2V0KTsNCiAJd2Z4X25vdGlmeV9idWZmZXJlZF90eCh3dmlmLCBza2IsIHJl
-cSk7DQotCXR4X3BvbGljeV9wdXQod3ZpZiwgcmVxLT50eF9mbGFncy5yZXRyeV9wb2xpY3lfaW5k
-ZXgpOw0KKwl3ZnhfdHhfcG9saWN5X3B1dCh3dmlmLCByZXEtPnR4X2ZsYWdzLnJldHJ5X3BvbGlj
-eV9pbmRleCk7DQogCWllZWU4MDIxMV90eF9zdGF0dXNfaXJxc2FmZSh3ZGV2LT5odywgc2tiKTsN
-CiB9DQpkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL3dmeC9kYXRhX3R4LmggYi9kcml2ZXJz
-L3N0YWdpbmcvd2Z4L2RhdGFfdHguaA0KaW5kZXggZjU5YTI1OWJiNzQ0Li4wYTE5ZWYxMGE0YWIg
-MTAwNjQ0DQotLS0gYS9kcml2ZXJzL3N0YWdpbmcvd2Z4L2RhdGFfdHguaA0KKysrIGIvZHJpdmVy
-cy9zdGFnaW5nL3dmeC9kYXRhX3R4LmgNCkBAIC02MCw3ICs2MCw3IEBAIHN0cnVjdCB3ZnhfdHhf
-cHJpdiB7DQogCXVpbnQ4X3QgdGlkOw0KIH0gX19wYWNrZWQ7DQogDQotdm9pZCB0eF9wb2xpY3lf
-aW5pdChzdHJ1Y3Qgd2Z4X3ZpZiAqd3ZpZik7DQordm9pZCB3ZnhfdHhfcG9saWN5X2luaXQoc3Ry
-dWN0IHdmeF92aWYgKnd2aWYpOw0KIA0KIHZvaWQgd2Z4X3R4KHN0cnVjdCBpZWVlODAyMTFfaHcg
-Kmh3LCBzdHJ1Y3QgaWVlZTgwMjExX3R4X2NvbnRyb2wgKmNvbnRyb2wsDQogCSAgICBzdHJ1Y3Qg
-c2tfYnVmZiAqc2tiKTsNCmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvd2Z4L3N0YS5jIGIv
-ZHJpdmVycy9zdGFnaW5nL3dmeC9zdGEuYw0KaW5kZXggNzMzYjkzYThmODMwLi4zYzcxNWNjODhh
-YjIgMTAwNjQ0DQotLS0gYS9kcml2ZXJzL3N0YWdpbmcvd2Z4L3N0YS5jDQorKysgYi9kcml2ZXJz
-L3N0YWdpbmcvd2Z4L3N0YS5jDQpAQCAtMTUzNCw3ICsxNTM0LDcgQEAgaW50IHdmeF9hZGRfaW50
-ZXJmYWNlKHN0cnVjdCBpZWVlODAyMTFfaHcgKmh3LCBzdHJ1Y3QgaWVlZTgwMjExX3ZpZiAqdmlm
-KQ0KIAl9DQogCXdmeF9zZXRfdWFwc2RfcGFyYW0od3ZpZiwgJnd2aWYtPmVkY2EpOw0KIA0KLQl0
-eF9wb2xpY3lfaW5pdCh3dmlmKTsNCisJd2Z4X3R4X3BvbGljeV9pbml0KHd2aWYpOw0KIAl3dmlm
-ID0gTlVMTDsNCiAJd2hpbGUgKCh3dmlmID0gd3ZpZl9pdGVyYXRlKHdkZXYsIHd2aWYpKSAhPSBO
-VUxMKSB7DQogCQkvLyBDb21ibyBtb2RlIGRvZXMgbm90IHN1cHBvcnQgQmxvY2sgQWNrcy4gV2Ug
-Y2FuIHJlLWVuYWJsZSB0aGVtDQotLSANCjIuMjAuMQ0KX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJp
-dmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21h
-aWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+These patches are good.  I just have a few nits to point out for future
+reference.
+
+On Tue, Oct 08, 2019 at 09:42:58AM +0000, Jerome Pouiller wrote:
+>  static inline int hif_set_beacon_filter_table(struct wfx_vif *wvif,
+> -					      struct hif_mib_bcn_filter_table *ft)
+> +					      int tbl_len,
+> +					      struct hif_ie_table_entry *tbl)
+>  {
+> -	size_t buf_len = struct_size(ft, ie_table, ft->num_of_info_elmts);
+> +	int ret;
+> +	struct hif_mib_bcn_filter_table *val;
+> +	int buf_len = struct_size(val, ie_table, tbl_len);
+
+This is fine for now, but since this is networking code, in the future
+could you write your declarations in reverse Christmas tree order?
+
+	long laskdfjasldfj asldfkj aslkdfj alskdfj askldfj;
+	mid asdfasdflkajdflasjdf lkasjdf;
+	short asdfasd;
+	shortest i;
+
+>  
+> -	cpu_to_le32s(&ft->num_of_info_elmts);
+> -	return hif_write_mib(wvif->wdev, wvif->id,
+> -			     HIF_MIB_ID_BEACON_FILTER_TABLE, ft, buf_len);
+
+[ snip ]
+
+> diff --git a/drivers/staging/wfx/sta.c b/drivers/staging/wfx/sta.c
+> index 2855d14a709c..12198b8f3685 100644
+> --- a/drivers/staging/wfx/sta.c
+> +++ b/drivers/staging/wfx/sta.c
+> @@ -217,14 +217,13 @@ void wfx_update_filtering(struct wfx_vif *wvif)
+>  	bool filter_bssid = wvif->filter_bssid;
+>  	bool fwd_probe_req = wvif->fwd_probe_req;
+>  	struct hif_mib_bcn_filter_enable bf_ctrl;
+> -	struct hif_mib_bcn_filter_table *bf_tbl;
+> -	struct hif_ie_table_entry ie_tbl[] = {
+> +	struct hif_ie_table_entry filter_ies[] = {
+>  		{
+>  			.ie_id        = WLAN_EID_VENDOR_SPECIFIC,
+>  			.has_changed  = 1,
+>  			.no_longer    = 1,
+>  			.has_appeared = 1,
+> -			.oui         = { 0x50, 0x6F, 0x9A},
+> +			.oui          = { 0x50, 0x6F, 0x9A },
+
+Please don't do unrelated white space changes in their own patches.
+
+>  		}, {
+>  			.ie_id        = WLAN_EID_HT_OPERATION,
+>  			.has_changed  = 1,
+
+regards,
+dan carpenter
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
