@@ -1,52 +1,92 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A3CD9CF23C
-	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Oct 2019 07:45:58 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7D35BCF26F
+	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Oct 2019 08:07:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D1E6C847D5;
-	Tue,  8 Oct 2019 05:45:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C470E22270;
+	Tue,  8 Oct 2019 06:07:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6mXaEQfvrIxo; Tue,  8 Oct 2019 05:45:55 +0000 (UTC)
+	with ESMTP id fay5mXYP-EL1; Tue,  8 Oct 2019 06:07:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7E94F8480D;
-	Tue,  8 Oct 2019 05:45:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 77A4322201;
+	Tue,  8 Oct 2019 06:07:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 905531BF2A4
- for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 05:45:51 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DDD8D1BF289
+ for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 06:07:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8C7AB87592
- for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 05:45:51 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id DA7CF87E58
+ for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 06:07:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id psyCJtmkFzpG for <devel@linuxdriverproject.org>;
- Tue,  8 Oct 2019 05:45:49 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail3-relais-sop.national.inria.fr
- (mail3-relais-sop.national.inria.fr [192.134.164.104])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 73E6C87591
- for <devel@driverdev.osuosl.org>; Tue,  8 Oct 2019 05:45:49 +0000 (UTC)
-X-IronPort-AV: E=Sophos;i="5.67,269,1566856800"; d="scan'208";a="321940414"
-Received: from 81-65-53-202.rev.numericable.fr (HELO hadrien) ([81.65.53.202])
- by mail3-relais-sop.national.inria.fr with
- ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 08 Oct 2019 07:45:46 +0200
-Date: Tue, 8 Oct 2019 07:45:45 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Nachammai Karuppiah <nachukannan@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v2] staging: vc04_services: Avoid NULL
- comparison
-In-Reply-To: <1570487369-35454-1-git-send-email-nachukannan@gmail.com>
-Message-ID: <alpine.DEB.2.21.1910080745260.2638@hadrien>
-References: <1570487369-35454-1-git-send-email-nachukannan@gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+ with ESMTP id B5NcvPwyIWoK for <devel@linuxdriverproject.org>;
+ Tue,  8 Oct 2019 06:07:07 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 6568F87E4C
+ for <devel@driverdev.osuosl.org>; Tue,  8 Oct 2019 06:07:07 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x98655at054961;
+ Tue, 8 Oct 2019 06:07:05 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=Ps4m7+iwy0Cq1NylW91zJRtqMaHi73Broexx2ci+AkA=;
+ b=sRL+AVjv8mEyXCvSH2GvU/H3AtyPqm2fGYkVHpfgxQBGpWilqUjMXU7yAcdHKpDP7T6W
+ 8Hpk4cJ/E3VBoOwxKNjGgbJpjmwynkTcommVwJj2ewUHGZqrtDzJ1BwlHjxFbWqQ4X+T
+ vMuCL8Lntc7rlEUX+3KFnDiIWLBfdo5M+nhx3IEN+umPd5ihmyi555EFWLZlzplMYudC
+ yV1JwHhW7LDbTdthcyY0pkBIb70xX040J6p0fWLhRkxVKehHbxKsYBwcemhjNffe71US
+ QPynWJNQo/1KF7ss6tFdYthlyLYeRA+m1J9FgjNz3uMeRRYDod6PgoPXM30LJeRJRXht 0w== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by userp2130.oracle.com with ESMTP id 2vejkub5kt-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 08 Oct 2019 06:07:05 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9862gSM165845;
+ Tue, 8 Oct 2019 06:05:04 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by aserp3020.oracle.com with ESMTP id 2vgefa0kkh-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 08 Oct 2019 06:05:04 +0000
+Received: from abhmp0003.oracle.com (abhmp0003.oracle.com [141.146.116.9])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x9864wjN016374;
+ Tue, 8 Oct 2019 06:04:59 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Mon, 07 Oct 2019 23:04:58 -0700
+Date: Tue, 8 Oct 2019 09:04:49 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: zhengbin <zhengbin13@huawei.com>
+Subject: Re: [PATCH 1/6] staging: bcm2835-audio: Remove set but not used
+ variable 'status'
+Message-ID: <20191008060449.GA12948@kadam>
+References: <1570513142-60177-1-git-send-email-zhengbin13@huawei.com>
+ <1570513142-60177-2-git-send-email-zhengbin13@huawei.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1570513142-60177-2-git-send-email-zhengbin13@huawei.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9403
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1908290000 definitions=main-1910080062
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9403
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
+ definitions=main-1910080062
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,203 +99,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Eric Anholt <eric@anholt.net>,
- outreachy-kernel@googlegroups.com, Stefan Wahren <wahrenst@gmx.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: devel@driverdev.osuosl.org, eric@anholt.net, gregkh@linuxfoundation.org,
+ abbotti@mev.co.uk, wahrenst@gmx.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Tue, Oct 08, 2019 at 01:38:57PM +0800, zhengbin wrote:
+> diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
+> index c6f9cf1..8a94c5b 100644
+> --- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
+> +++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
+> @@ -96,13 +96,12 @@ static void audio_vchi_callback(void *param,
+>  	struct bcm2835_audio_instance *instance = param;
+>  	struct vc_audio_msg m;
+>  	int msg_len;
+> -	int status;
+> 
+>  	if (reason != VCHI_CALLBACK_MSG_AVAILABLE)
+>  		return;
+> 
+> -	status = vchi_msg_dequeue(instance->vchi_handle,
+> -				  &m, sizeof(m), &msg_len, VCHI_FLAGS_NONE);
+> +	vchi_msg_dequeue(instance->vchi_handle,
+> +			 &m, sizeof(m), &msg_len, VCHI_FLAGS_NONE);
 
+This looks like a bug in the code.  flags is VCHI_FLAGS_NONE so it can
+return -1 and we should check for that.
 
-On Mon, 7 Oct 2019, Nachammai Karuppiah wrote:
+>  	if (m.type == VC_AUDIO_MSG_TYPE_RESULT) {
 
-> Remove NULL comparison. Issue found using checkpatch.pl
+regards,
+dan carpenter
 
-This introduces compiler warnings, which you should try very hard not to
-do.
-
-julia
-
->
-> Signed-off-by: Nachammai Karuppiah <nachukannan@gmail.com>
->
-> ---
->
-> Changes in V2
->    - Remove all NULL comparisons in vc04_services/interface directory.
-> ---
->  .../interface/vchiq_arm/vchiq_2835_arm.c           |  4 ++--
->  .../vc04_services/interface/vchiq_arm/vchiq_arm.c  | 28 +++++++++++-----------
->  .../vc04_services/interface/vchiq_arm/vchiq_core.c |  4 ++--
->  .../vc04_services/interface/vchiq_arm/vchiq_shim.c |  2 +-
->  4 files changed, 19 insertions(+), 19 deletions(-)
->
-> diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-> index 8dc730c..7cdb21e 100644
-> --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-> +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-> @@ -526,11 +526,11 @@ create_pagelist(char __user *buf, size_t count, unsigned short type)
->  			return NULL;
->  		}
->
-> -		WARN_ON(g_free_fragments == NULL);
-> +		WARN_ON(!g_free_fragments);
->
->  		down(&g_free_fragments_mutex);
->  		fragments = g_free_fragments;
-> -		WARN_ON(fragments == NULL);
-> +		WARN_ON(!fragments);
->  		g_free_fragments = *(char **) g_free_fragments;
->  		up(&g_free_fragments_mutex);
->  		pagelist->type = PAGELIST_READ_WITH_FRAGMENTS +
-> diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-> index b1595b1..b930148 100644
-> --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-> +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-> @@ -826,8 +826,8 @@ vchiq_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
->
->  		/* Remove all services */
->  		i = 0;
-> -		while ((service = next_service_by_instance(instance->state,
-> -			instance, &i)) != NULL) {
-> +		while (service = next_service_by_instance(instance->state,
-> +			instance, &i)) {
->  			status = vchiq_remove_service(service->handle);
->  			unlock_service(service);
->  			if (status != VCHIQ_SUCCESS)
-> @@ -907,7 +907,7 @@ vchiq_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
->  				&args.params, srvstate,
->  				instance, user_service_free);
->
-> -		if (service != NULL) {
-> +		if (service) {
->  			user_service->service = service;
->  			user_service->userdata = userdata;
->  			user_service->instance = instance;
-> @@ -988,7 +988,7 @@ vchiq_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
->  		VCHIQ_SERVICE_HANDLE_T handle = (VCHIQ_SERVICE_HANDLE_T)arg;
->
->  		service = find_service_for_instance(instance, handle);
-> -		if (service != NULL) {
-> +		if (service) {
->  			status = (cmd == VCHIQ_IOC_USE_SERVICE)	?
->  				vchiq_use_service_internal(service) :
->  				vchiq_release_service_internal(service);
-> @@ -1021,7 +1021,7 @@ vchiq_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
->
->  		service = find_service_for_instance(instance, args.handle);
->
-> -		if ((service != NULL) && (args.count <= MAX_ELEMENTS)) {
-> +		if (service && (args.count <= MAX_ELEMENTS)) {
->  			/* Copy elements into kernel space */
->  			struct vchiq_element elements[MAX_ELEMENTS];
->
-> @@ -1343,11 +1343,11 @@ vchiq_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
->  		spin_unlock(&msg_queue_spinlock);
->
->  		complete(&user_service->remove_event);
-> -		if (header == NULL)
-> +		if (!header)
->  			ret = -ENOTCONN;
->  		else if (header->size <= args.bufsize) {
->  			/* Copy to user space if msgbuf is not NULL */
-> -			if ((args.buf == NULL) ||
-> +			if (!args.buf ||
->  				(copy_to_user((void __user *)args.buf,
->  				header->data,
->  				header->size) == 0)) {
-> @@ -1426,7 +1426,7 @@ vchiq_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
->  		VCHIQ_SERVICE_HANDLE_T handle = (VCHIQ_SERVICE_HANDLE_T)arg;
->
->  		service = find_closed_service_for_instance(instance, handle);
-> -		if (service != NULL) {
-> +		if (service) {
->  			struct user_service *user_service =
->  				(struct user_service *)service->base.userdata;
->  			close_delivered(user_service);
-> @@ -2223,13 +2223,13 @@ struct vchiq_state *
->  vchiq_get_state(void)
->  {
->
-> -	if (g_state.remote == NULL)
-> +	if (!g_state.remote)
->  		printk(KERN_ERR "%s: g_state.remote == NULL\n", __func__);
->  	else if (g_state.remote->initialised != 1)
->  		printk(KERN_NOTICE "%s: g_state.remote->initialised != 1 (%d)\n",
->  			__func__, g_state.remote->initialised);
->
-> -	return ((g_state.remote != NULL) &&
-> +	return (g_state.remote &&
->  		(g_state.remote->initialised == 1)) ? &g_state : NULL;
->  }
->
-> @@ -2923,8 +2923,8 @@ vchiq_instance_get_use_count(VCHIQ_INSTANCE_T instance)
->  	int use_count = 0, i;
->
->  	i = 0;
-> -	while ((service = next_service_by_instance(instance->state,
-> -		instance, &i)) != NULL) {
-> +	while (service = next_service_by_instance(instance->state,
-> +		instance, &i)) {
->  		use_count += service->service_use_count;
->  		unlock_service(service);
->  	}
-> @@ -2950,8 +2950,8 @@ vchiq_instance_set_trace(VCHIQ_INSTANCE_T instance, int trace)
->  	int i;
->
->  	i = 0;
-> -	while ((service = next_service_by_instance(instance->state,
-> -		instance, &i)) != NULL) {
-> +	while (service = next_service_by_instance(instance->state,
-> +		instance, &i)) {
->  		service->trace = trace;
->  		unlock_service(service);
->  	}
-> diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-> index 56a23a2..4c375cd 100644
-> --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-> +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-> @@ -542,7 +542,7 @@ reserve_space(struct vchiq_state *state, size_t space, int is_blocking)
->  	if (space > slot_space) {
->  		struct vchiq_header *header;
->  		/* Fill the remaining space with padding */
-> -		WARN_ON(state->tx_data == NULL);
-> +		WARN_ON(!state->tx_data);
->  		header = (struct vchiq_header *)
->  			(state->tx_data + (tx_pos & VCHIQ_SLOT_MASK));
->  		header->msgid = VCHIQ_MSGID_PADDING;
-> @@ -3578,7 +3578,7 @@ void vchiq_log_dump_mem(const char *label, u32 addr, const void *void_mem,
->  		}
->  		*s++ = '\0';
->
-> -		if ((label != NULL) && (*label != '\0'))
-> +		if (label && (*label != '\0'))
->  			vchiq_log_trace(VCHIQ_LOG_TRACE,
->  				"%s: %08x: %s", label, addr, line_buf);
->  		else
-> diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-> index 17a4f2c..10be23e 100644
-> --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-> +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-> @@ -628,7 +628,7 @@ int32_t vchi_service_open(VCHI_INSTANCE_T instance_handle,
->  		}
->  	}
->
-> -	return (service != NULL) ? 0 : -1;
-> +	return service ? 0 : -1;
->  }
->  EXPORT_SYMBOL(vchi_service_open);
->
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1570487369-35454-1-git-send-email-nachukannan%40gmail.com.
->
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
