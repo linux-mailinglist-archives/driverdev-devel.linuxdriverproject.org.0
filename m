@@ -1,38 +1,38 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 63FA4CF224
-	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Oct 2019 07:32:11 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A555D875AD;
-	Tue,  8 Oct 2019 05:32:08 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id U93P5W7KvAyw; Tue,  8 Oct 2019 05:32:08 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 76AF186FFF;
-	Tue,  8 Oct 2019 05:32:07 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A61591BF2A4
- for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 05:32:04 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A75BCF229
+	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Oct 2019 07:32:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9D3BF87E43
- for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 05:32:04 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 20F0987E63;
+	Tue,  8 Oct 2019 05:32:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id POzbUyOV6BDJ; Tue,  8 Oct 2019 05:32:14 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 397D587D7C;
+	Tue,  8 Oct 2019 05:32:14 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id AD9571BF9B3
+ for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 05:32:06 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id A51402052F
+ for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 05:32:06 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6mOD9uu9KARz for <devel@linuxdriverproject.org>;
- Tue,  8 Oct 2019 05:32:03 +0000 (UTC)
+ with ESMTP id pLTGB63hOjTR for <devel@linuxdriverproject.org>;
+ Tue,  8 Oct 2019 05:32:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B547087DBB
- for <devel@driverdev.osuosl.org>; Tue,  8 Oct 2019 05:32:03 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id DCDA92050D
+ for <devel@driverdev.osuosl.org>; Tue,  8 Oct 2019 05:32:05 +0000 (UTC)
 Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id D0DFFFDC051DF426E9E4;
+ by Forcepoint Email with ESMTP id E541C2427A60BC08B288;
  Tue,  8 Oct 2019 13:31:59 +0800 (CST)
 Received: from huawei.com (10.90.53.225) by DGGEMS407-HUB.china.huawei.com
  (10.3.19.207) with Microsoft SMTP Server id 14.3.439.0; Tue, 8 Oct 2019
@@ -41,10 +41,13 @@ From: zhengbin <zhengbin13@huawei.com>
 To: <gregkh@linuxfoundation.org>, <eric@anholt.net>, <wahrenst@gmx.net>,
  <abbotti@mev.co.uk>, <hsweeten@visionengravers.com>,
  <devel@driverdev.osuosl.org>
-Subject: [PATCH 0/6] staging: Remove a bounch set of set but not used variables
-Date: Tue, 8 Oct 2019 13:38:56 +0800
-Message-ID: <1570513142-60177-1-git-send-email-zhengbin13@huawei.com>
+Subject: [PATCH 1/6] staging: bcm2835-audio: Remove set but not used variable
+ 'status'
+Date: Tue, 8 Oct 2019 13:38:57 +0800
+Message-ID: <1570513142-60177-2-git-send-email-zhengbin13@huawei.com>
 X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1570513142-60177-1-git-send-email-zhengbin13@huawei.com>
+References: <1570513142-60177-1-git-send-email-zhengbin13@huawei.com>
 MIME-Version: 1.0
 X-Originating-IP: [10.90.53.225]
 X-CFilter-Loop: Reflected
@@ -66,22 +69,40 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-zhengbin (6):
-  staging: bcm2835-audio: Remove set but not used variable 'status'
-  staging: sm750fb: Remove set but not used variable 'uiActualPixelClk'
-  staging: sm750fb: Remove set but not used variable 'actual_mx_clk'
-  staging: comedi: Remove set but not used variable 'data'
-  staging: comedi: Remove set but not used variable 'hi'
-  staging: comedi: Remove set but not used variable 'aref'
+Fixes gcc '-Wunused-but-set-variable' warning:
 
- drivers/staging/comedi/drivers/dt2814.c                     | 3 ---
- drivers/staging/comedi/drivers/dt2815.c                     | 3 +--
- drivers/staging/comedi/drivers/dt3000.c                     | 3 +--
- drivers/staging/sm750fb/ddk750_chip.c                       | 3 +--
- drivers/staging/sm750fb/ddk750_mode.c                       | 3 +--
+drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c: In function audio_vchi_callback:
+drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c:99:6: warning: variable status set but not used [-Wunused-but-set-variable]
+
+It is not used since commit 23b028c871e1 ("staging:
+bcm2835-audio: initial staging submission")
+
+Reported-by: Hulk Robot <hulkci@huawei.com>
+Signed-off-by: zhengbin <zhengbin13@huawei.com>
+---
  drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c | 5 ++---
- 6 files changed, 6 insertions(+), 14 deletions(-)
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
+diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
+index c6f9cf1..8a94c5b 100644
+--- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
++++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
+@@ -96,13 +96,12 @@ static void audio_vchi_callback(void *param,
+ 	struct bcm2835_audio_instance *instance = param;
+ 	struct vc_audio_msg m;
+ 	int msg_len;
+-	int status;
+
+ 	if (reason != VCHI_CALLBACK_MSG_AVAILABLE)
+ 		return;
+
+-	status = vchi_msg_dequeue(instance->vchi_handle,
+-				  &m, sizeof(m), &msg_len, VCHI_FLAGS_NONE);
++	vchi_msg_dequeue(instance->vchi_handle,
++			 &m, sizeof(m), &msg_len, VCHI_FLAGS_NONE);
+ 	if (m.type == VC_AUDIO_MSG_TYPE_RESULT) {
+ 		instance->result = m.result.success;
+ 		complete(&instance->msg_avail_comp);
 --
 2.7.4
 
