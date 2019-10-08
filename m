@@ -1,52 +1,90 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3EEB5CFAD5
-	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Oct 2019 15:02:16 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E53FECFB1D
+	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Oct 2019 15:15:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8B446861F2;
-	Tue,  8 Oct 2019 13:02:14 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DB428876C7;
+	Tue,  8 Oct 2019 13:15:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dWCEKb_URBzx; Tue,  8 Oct 2019 13:02:13 +0000 (UTC)
+	with ESMTP id NLCATeFuwbI8; Tue,  8 Oct 2019 13:15:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 233DC861AA;
-	Tue,  8 Oct 2019 13:02:13 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4B8FB864A4;
+	Tue,  8 Oct 2019 13:15:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C0B5D1BF35A
- for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 13:02:11 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id EC3B51BF2A6
+ for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 13:15:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BC17B87F9C
- for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 13:02:11 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id D775620513
+ for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 13:15:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5KOcXjh2lXJ2 for <devel@linuxdriverproject.org>;
- Tue,  8 Oct 2019 13:02:09 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by hemlock.osuosl.org (Postfix) with ESMTPS id EBEC887FC3
- for <devel@driverdev.osuosl.org>; Tue,  8 Oct 2019 13:02:08 +0000 (UTC)
-Received: from p2e585ebf.dip0.t-ipconnect.de ([46.88.94.191]
- helo=localhost.localdomain) by youngberry.canonical.com with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <christian.brauner@ubuntu.com>)
- id 1iHp7t-0001iX-2O; Tue, 08 Oct 2019 13:02:05 +0000
-From: Christian Brauner <christian.brauner@ubuntu.com>
-To: jannh@google.com
-Subject: [PATCH] binder: prevent UAF read in
- print_binder_transaction_log_entry()
-Date: Tue,  8 Oct 2019 15:01:59 +0200
-Message-Id: <20191008130159.10161-1-christian.brauner@ubuntu.com>
-X-Mailer: git-send-email 2.23.0
-In-Reply-To: <CAG48ez14Q0-F8LqsvcNbyR2o6gPW8SHXsm4u5jmD9MpsteM2Tw@mail.gmail.com>
-References: <CAG48ez14Q0-F8LqsvcNbyR2o6gPW8SHXsm4u5jmD9MpsteM2Tw@mail.gmail.com>
+ with ESMTP id yNfArBhSDydO for <devel@linuxdriverproject.org>;
+ Tue,  8 Oct 2019 13:15:32 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by silver.osuosl.org (Postfix) with ESMTPS id AAA07204C6
+ for <devel@driverdev.osuosl.org>; Tue,  8 Oct 2019 13:15:32 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x98D8tM7163596;
+ Tue, 8 Oct 2019 13:15:29 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=ipRechiw780jXrMMe1Cvbd53h+EID/P4q8QMm+dXalk=;
+ b=gZW3cLAgKrXSuzptNZ7Mb5WsgSLw26Jgv6KrU9O/bnmrM1eBHtFfC4J4b64MlEt4h6mv
+ 8N53EfvlYBA/Sn0I3ULitLnsj7mQ229AIlhQ1iYS1FDSw+JTXkdILNizyiOUcCmOlyBH
+ qZYcuRUlWYlNxTx30BzDt5hss0p2MCm7YU1xa1xj1C+RKbcyy/LmYa8EvNsEclyw07Un
+ ZOi8boC2mOM/C7PsQ2s1uBIr3Mme+GEG/kOCLSO0LFSMIvpkys6g39vhCft5g977jr2I
+ h91zRyCScDAxiBlZ7au8CLSU9tBlJfitIosFnX5kozLFZoF0KMavPI18f44uMrdn5mso GQ== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by aserp2120.oracle.com with ESMTP id 2vek4qd51y-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 08 Oct 2019 13:15:29 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x98DDQEC001904;
+ Tue, 8 Oct 2019 13:15:28 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by userp3020.oracle.com with ESMTP id 2vg206963q-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 08 Oct 2019 13:15:28 +0000
+Received: from abhmp0014.oracle.com (abhmp0014.oracle.com [141.146.116.20])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x98DFQsL027920;
+ Tue, 8 Oct 2019 13:15:26 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 08 Oct 2019 06:15:25 -0700
+Date: Tue, 8 Oct 2019 16:15:18 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Matteo Croce <mcroce@redhat.com>
+Subject: Re: [PATCH] staging: vchiq: don't leak kernel address
+Message-ID: <20191008131518.GH25098@kadam>
+References: <20191008123346.3931-1-mcroce@redhat.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20191008123346.3931-1-mcroce@redhat.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9403
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=674
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1908290000 definitions=main-1910080127
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9403
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=755 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
+ definitions=main-1910080127
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,81 +97,20 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
- Hridya Valsaraju <hridya@google.com>, arve@android.com, joel@joelfernandes.org,
- Christian Brauner <christian.brauner@ubuntu.com>, maco@android.com,
- christian@brauner.io, tkjos@google.com
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, Eric Anholt <eric@anholt.net>,
+ bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org,
+ Stefan Wahren <wahrenst@gmx.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-When a binder transaction is initiated on a binder device coming from a
-binderfs instance, a pointer to the name of the binder device is stashed
-in the binder_transaction_log_entry's context_name member. Later on it
-is used to print the name in print_binder_transaction_log_entry(). By
-the time print_binder_transaction_log_entry() accesses context_name
-binderfs_evict_inode() might have already freed the associated memory
-thereby causing a UAF. Do the simple thing and prevent this by copying
-the name of the binder device instead of stashing a pointer to it.
+The subject doesn't match the patch.  It should just be "remove useless
+printk".
 
-Reported-by: Jann Horn <jannh@google.com>
-Fixes: 03e2e07e3814 ("binder: Make transaction_log available in binderfs")
-Link: https://lore.kernel.org/r/CAG48ez14Q0-F8LqsvcNbyR2o6gPW8SHXsm4u5jmD9MpsteM2Tw@mail.gmail.com
-Cc: Joel Fernandes <joel@joelfernandes.org>
-Cc: Todd Kjos <tkjos@android.com>
-Cc: Hridya Valsaraju <hridya@google.com>
-Signed-off-by: Christian Brauner <christian.brauner@ubuntu.com>
----
- drivers/android/binder.c          | 4 +++-
- drivers/android/binder_internal.h | 2 +-
- 2 files changed, 4 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-index c0a491277aca..5b9ac2122e89 100644
---- a/drivers/android/binder.c
-+++ b/drivers/android/binder.c
-@@ -57,6 +57,7 @@
- #include <linux/sched/signal.h>
- #include <linux/sched/mm.h>
- #include <linux/seq_file.h>
-+#include <linux/string.h>
- #include <linux/uaccess.h>
- #include <linux/pid_namespace.h>
- #include <linux/security.h>
-@@ -66,6 +67,7 @@
- #include <linux/task_work.h>
- 
- #include <uapi/linux/android/binder.h>
-+#include <uapi/linux/android/binderfs.h>
- 
- #include <asm/cacheflush.h>
- 
-@@ -2876,7 +2878,7 @@ static void binder_transaction(struct binder_proc *proc,
- 	e->target_handle = tr->target.handle;
- 	e->data_size = tr->data_size;
- 	e->offsets_size = tr->offsets_size;
--	e->context_name = proc->context->name;
-+	strscpy(e->context_name, proc->context->name, BINDERFS_MAX_NAME);
- 
- 	if (reply) {
- 		binder_inner_proc_lock(proc);
-diff --git a/drivers/android/binder_internal.h b/drivers/android/binder_internal.h
-index bd47f7f72075..ae991097d14d 100644
---- a/drivers/android/binder_internal.h
-+++ b/drivers/android/binder_internal.h
-@@ -130,7 +130,7 @@ struct binder_transaction_log_entry {
- 	int return_error_line;
- 	uint32_t return_error;
- 	uint32_t return_error_param;
--	const char *context_name;
-+	char context_name[BINDERFS_MAX_NAME + 1];
- };
- 
- struct binder_transaction_log {
--- 
-2.23.0
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
