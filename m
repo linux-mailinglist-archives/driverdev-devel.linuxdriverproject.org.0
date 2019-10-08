@@ -2,56 +2,56 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B9CCDCF9EA
-	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Oct 2019 14:35:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CE6ACCFA02
+	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Oct 2019 14:38:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5B66587692;
-	Tue,  8 Oct 2019 12:35:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AD0B7876A5;
+	Tue,  8 Oct 2019 12:38:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1bInev6JW5FM; Tue,  8 Oct 2019 12:35:29 +0000 (UTC)
+	with ESMTP id U4vxxeORBMEe; Tue,  8 Oct 2019 12:38:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5D45A8569B;
-	Tue,  8 Oct 2019 12:35:28 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 93911810FF;
+	Tue,  8 Oct 2019 12:38:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 537711BF35A
- for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 12:35:24 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 386C71BF35A
+ for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 12:38:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 44BF184ECD
- for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 12:35:24 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3313C87EE8
+ for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 12:38:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Xb7DldjEPIRR for <devel@linuxdriverproject.org>;
- Tue,  8 Oct 2019 12:35:22 +0000 (UTC)
+ with ESMTP id 96I0XGsS9swZ for <devel@linuxdriverproject.org>;
+ Tue,  8 Oct 2019 12:38:04 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 2A17A840D2
- for <devel@driverdev.osuosl.org>; Tue,  8 Oct 2019 12:35:22 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id AE1FD87EC4
+ for <devel@driverdev.osuosl.org>; Tue,  8 Oct 2019 12:38:04 +0000 (UTC)
 Received: from localhost (unknown [89.205.136.155])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 300B520679;
- Tue,  8 Oct 2019 12:35:20 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id BBC79206B6;
+ Tue,  8 Oct 2019 12:38:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1570538121;
- bh=x89XuxCaWsC1Su850MEDVbN32v1ny2s8AIlMM9GY+ks=;
+ s=default; t=1570538284;
+ bh=Z0BM+J1jAE5H0wQdt5a1vbyjRdwVrmzryIUyKBCtl3Q=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=vZck+p7P+X9lm/umDkwfQ5CC4Ll9ifBVvtw925R9M5E6vYrlNZbnamN9O7dAOykbR
- LtBXbJLLZAu35WNKnpOeGB6TW0hyC6PuJzrMIxEu4EgBZFKU3pXc5fxGvooX3zgn4D
- QH/PBIjkorxkvM0nIZjIKLSf0XcXAm27M3DX2ipw=
-Date: Tue, 8 Oct 2019 14:35:18 +0200
+ b=gMmYkIDQkXBAhT88J0DPoQhQa4/8/x1OJpjv/bSYL3sGwlo8OzAsWSGRts5rkxYH/
+ JRm5cZPceseeNf7sgVx8jaBQCA47z9UOwFoKutVPZvJc67E/z9Jzn1fcggH3XR+tSi
+ Mywm3N5DGPb+UWbdbivk2qoxN44CAZlSC8z7ejPQ=
+Date: Tue, 8 Oct 2019 14:38:01 +0200
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Nachammai Karuppiah <nachukannan@gmail.com>
-Subject: Re: [PATCH v2] staging: vc04_services: Avoid NULL comparison
-Message-ID: <20191008123518.GA2763989@kroah.com>
-References: <1570487369-35454-1-git-send-email-nachukannan@gmail.com>
+To: hariprasad@osuosl.org, Kelam@osuosl.org, hariprasad.kelam@gmail.com
+Subject: Re: [PATCH] rtl8723bs: core: Remove code valid only for 5GHZ
+Message-ID: <20191008123801.GB2763989@kroah.com>
+References: <1569765348-20417-1-git-send-email-hariprasad.kelam@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1570487369-35454-1-git-send-email-nachukannan@gmail.com>
+In-Reply-To: <1569765348-20417-1-git-send-email-hariprasad.kelam@gmail.com>
 User-Agent: Mutt/1.12.2 (2019-09-21)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -65,64 +65,27 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Eric Anholt <eric@anholt.net>,
- Stefan Wahren <wahrenst@gmx.net>, outreachy-kernel@googlegroups.com
+Cc: devel@driverdev.osuosl.org, Nishka Dasgupta <nishkadg.linux@gmail.com>,
+ linux-kernel@vger.kernel.org,
+ Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>,
+ Hardik Singh Rathore <hardiksingh.k@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Oct 07, 2019 at 03:29:28PM -0700, Nachammai Karuppiah wrote:
-> Remove NULL comparison. Issue found using checkpatch.pl
+On Sun, Sep 29, 2019 at 07:24:57PM +0530, hariprasad@osuosl.org wrote:
+> From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 > 
-> Signed-off-by: Nachammai Karuppiah <nachukannan@gmail.com>
+> As per TODO ,remove code valid only for 5 GHz(channel > 14).
 > 
+> Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 > ---
-> 
-> Changes in V2
->    - Remove all NULL comparisons in vc04_services/interface directory.
-> ---
->  .../interface/vchiq_arm/vchiq_2835_arm.c           |  4 ++--
->  .../vc04_services/interface/vchiq_arm/vchiq_arm.c  | 28 +++++++++++-----------
->  .../vc04_services/interface/vchiq_arm/vchiq_core.c |  4 ++--
->  .../vc04_services/interface/vchiq_arm/vchiq_shim.c |  2 +-
->  4 files changed, 19 insertions(+), 19 deletions(-)
-> 
-> diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-> index 8dc730c..7cdb21e 100644
-> --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-> +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-> @@ -526,11 +526,11 @@ create_pagelist(char __user *buf, size_t count, unsigned short type)
->  			return NULL;
->  		}
->  
-> -		WARN_ON(g_free_fragments == NULL);
-> +		WARN_ON(!g_free_fragments);
->  
->  		down(&g_free_fragments_mutex);
->  		fragments = g_free_fragments;
-> -		WARN_ON(fragments == NULL);
-> +		WARN_ON(!fragments);
->  		g_free_fragments = *(char **) g_free_fragments;
->  		up(&g_free_fragments_mutex);
->  		pagelist->type = PAGELIST_READ_WITH_FRAGMENTS +
-> diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-> index b1595b1..b930148 100644
-> --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-> +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-> @@ -826,8 +826,8 @@ vchiq_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
->  
->  		/* Remove all services */
->  		i = 0;
-> -		while ((service = next_service_by_instance(instance->state,
-> -			instance, &i)) != NULL) {
-> +		while (service = next_service_by_instance(instance->state,
-> +			instance, &i)) {
+>  drivers/staging/rtl8723bs/core/rtw_ieee80211.c | 19 ++++++-------------
+>  1 file changed, 6 insertions(+), 13 deletions(-)
 
-As you can see, this added a build warning.  Please always be careful
-about your patches to not have them do that :(
-
-Please fix up and resend.
+Your email client is really messed up and got the From: line wrong in
+your tool.  Please fix up and resend.
 
 thanks,
 
