@@ -1,66 +1,90 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7B708CF275
-	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Oct 2019 08:11:52 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 48896CF294
+	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Oct 2019 08:16:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 13BAF8731C;
-	Tue,  8 Oct 2019 06:11:51 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5129D87E7D;
+	Tue,  8 Oct 2019 06:16:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id P-TVaGqEEdMq; Tue,  8 Oct 2019 06:11:50 +0000 (UTC)
+	with ESMTP id XcRWpD7ClXfk; Tue,  8 Oct 2019 06:16:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6D6F68757D;
-	Tue,  8 Oct 2019 06:11:49 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 97C3B87E5B;
+	Tue,  8 Oct 2019 06:16:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 511D61BF289
- for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 06:11:47 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E2DB21BF289
+ for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 06:16:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4D3D7221CC
- for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 06:11:47 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id DF7408731C
+ for <devel@linuxdriverproject.org>; Tue,  8 Oct 2019 06:16:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tvuXDtoW-K9v for <devel@linuxdriverproject.org>;
- Tue,  8 Oct 2019 06:11:44 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
- [209.85.215.195])
- by silver.osuosl.org (Postfix) with ESMTPS id A679022091
- for <devel@driverdev.osuosl.org>; Tue,  8 Oct 2019 06:11:44 +0000 (UTC)
-Received: by mail-pg1-f195.google.com with SMTP id t3so3845560pga.8
- for <devel@driverdev.osuosl.org>; Mon, 07 Oct 2019 23:11:44 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=tt6fX4ZbTYJ2jV1VGfYVgC8sSI3b0LxMvDVETzkC3TM=;
- b=a9yvqb2xceXqNgp0rl/WhIxXmtPeCfyIh39xPV4krE75I2WFUeJh9ALucp5DaNi9fx
- H/eXTEExmhbwYM5AgUITHc/09bLwrYJSNK14pfF+wp3md4rZyX00khVqC52fCS1TGgwA
- QH1kjNYPKe5nuhdgYJKfDKhNo6FrxglBdLARqwOjjyMFxHO/H5vsg7E3jnmk2vukYj5o
- J35JfLl60zvMlkmpjVO99XXS8wVmlfC/14OT3MfRO56BoTuLnqgiosLXLJCDb3lz6cXS
- xh6WHDCXoFG7u3rEtLVfLkcKDp6iUjj/GJR18GtCFCFiv27MTIFSQy7/7knUSrDyWFio
- spyw==
-X-Gm-Message-State: APjAAAVkbb1SgYn+CDVYeroLhYSOG4SW2rIXRi2k3lskwnVHjlKn2jGO
- fhVtW6exc+y18S3R35FYvqg=
-X-Google-Smtp-Source: APXvYqwCofqHMB9pX6UaUuliDsNjGf5pEeD0vAlenC8QXHUweaH0WJlOkWdBWZhZ9Yoep+pSCeSRUQ==
-X-Received: by 2002:a17:90a:380a:: with SMTP id
- w10mr3831900pjb.104.1570515104139; 
- Mon, 07 Oct 2019 23:11:44 -0700 (PDT)
-Received: from localhost.localdomain ([183.83.78.173])
- by smtp.gmail.com with ESMTPSA id 2sm16483811pfo.91.2019.10.07.23.11.41
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Mon, 07 Oct 2019 23:11:43 -0700 (PDT)
-From: hariprasad@osuosl.org, Kelam@osuosl.org,
-	hariprasad.kelam@gmail.com
-To: 
-Subject: [PATCH] staging: fieldbus: make use of devm_platform_ioremap_resource
-Date: Tue,  8 Oct 2019 11:40:56 +0530
-Message-Id: <1570515056-23589-1-git-send-email-hariprasad.kelam@gmail.com>
-X-Mailer: git-send-email 2.7.4
+ with ESMTP id 0-0dSJMwFmMl for <devel@linuxdriverproject.org>;
+ Tue,  8 Oct 2019 06:16:45 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 2ED2A868B2
+ for <devel@driverdev.osuosl.org>; Tue,  8 Oct 2019 06:16:45 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9868lpt047627;
+ Tue, 8 Oct 2019 06:16:44 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=WOAWpGPGsMCVMWlZusp6LKiV+o/kNd1Up7mpuXvb7Pw=;
+ b=cFqtHMzhNfdQWwMSnfcw6SKoIErRWWi3wmMrjF6IytZu2j1KZEn7m4+b968WN+t75Q+7
+ LB1z3u/+8R7e1t74po6wVX7zgQ9wxmmKC5j0efAl+rk2jL8uGPKSF9wNspybtHau/5iq
+ 1YW/9uA3u5nzW+akUhq2+3eLCQ/GRkb6ygc+wc4UOoxN6aqZ8JCTLpEPrSccOBY90417
+ p8nf9HVqQ6hngyL+8wTW9VObNYQDwtqlLi/dhX3d4sm8t6CGxCIPBTgSbogFjC2EmbNA
+ +8lg9U89YqtzzXCZU0MnQDhze1RoSn0DJho0xWjG6eKse3iubkViUliFoKAQ1UJ9dUXZ Tw== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by userp2120.oracle.com with ESMTP id 2vektraypa-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 08 Oct 2019 06:16:44 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9868qtm085443;
+ Tue, 8 Oct 2019 06:16:43 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by userp3030.oracle.com with ESMTP id 2vgeux4vx1-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 08 Oct 2019 06:16:43 +0000
+Received: from abhmp0007.oracle.com (abhmp0007.oracle.com [141.146.116.13])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x986GgoU023479;
+ Tue, 8 Oct 2019 06:16:42 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Mon, 07 Oct 2019 23:16:41 -0700
+Date: Tue, 8 Oct 2019 09:16:36 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Jules Irenge <jbi.octave@gmail.com>
+Subject: Re: [PATCH] staging: rtl8712: Add comment to lock declaration
+Message-ID: <20191008061455.GC12948@kadam>
+References: <20191007205248.24466-1-jbi.octave@gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20191007205248.24466-1-jbi.octave@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9403
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1908290000 definitions=main-1910080063
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9403
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
+ definitions=main-1910080063
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,66 +97,68 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Sven Van Asbroeck <TheSven73@gmail.com>,
- Hariprasad Kelam <hariprasad.kelam@gmail.com>, linux-kernel@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com,
+ Larry.Finger@lwfinger.net, gregkh@linuxfoundation.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+On Mon, Oct 07, 2019 at 09:52:48PM +0100, Jules Irenge wrote:
+> Add comment to spinlock declaration to fix warning issued by checkpatch.pl
+> "CHECK: spinlock_t definition without comment".
+> 
+> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> ---
+>  drivers/staging/rtl8712/drv_types.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/rtl8712/drv_types.h b/drivers/staging/rtl8712/drv_types.h
+> index 0c4325073c63..960d8709aada 100644
+> --- a/drivers/staging/rtl8712/drv_types.h
+> +++ b/drivers/staging/rtl8712/drv_types.h
+> @@ -160,7 +160,7 @@ struct _adapter {
+>  	int pid; /*process id from UI*/
+>  	struct work_struct wk_filter_rx_ff0;
+>  	u8 blnEnableRxFF0Filter;
+> -	spinlock_t lock_rx_ff0_filter;
+> +	spinlock_t lock_rx_ff0_filter; /*spinlock to protect interrupt request*/
 
-fix below issues reported by coccicheck
-drivers/staging//fieldbus/anybuss/arcx-anybus.c:135:1-5: WARNING: Use
-devm_platform_ioremap_resource for base
-drivers/staging//fieldbus/anybuss/arcx-anybus.c:248:1-14: WARNING: Use
-devm_platform_ioremap_resource for cd -> cpld_base
+This spinlock seems to be nonsense.  It's only used one time:
 
-Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
----
- drivers/staging/fieldbus/anybuss/arcx-anybus.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+drivers/staging/rtl8712/xmit_linux.c
+    94  void r8712_SetFilter(struct work_struct *work)
+    95  {
+    96          struct _adapter *adapter = container_of(work, struct _adapter,
+    97                                                  wk_filter_rx_ff0);
+    98          u8  oldvalue = 0x00, newvalue = 0x00;
+    99          unsigned long irqL;
+   100  
+   101          oldvalue = r8712_read8(adapter, 0x117);
+   102          newvalue = oldvalue & 0xfe;
+   103          r8712_write8(adapter, 0x117, newvalue);
+   104  
+   105          spin_lock_irqsave(&adapter->lock_rx_ff0_filter, irqL);
+   106          adapter->blnEnableRxFF0Filter = 1;
 
-diff --git a/drivers/staging/fieldbus/anybuss/arcx-anybus.c b/drivers/staging/fieldbus/anybuss/arcx-anybus.c
-index 2ecffa4..5b8d0ba 100644
---- a/drivers/staging/fieldbus/anybuss/arcx-anybus.c
-+++ b/drivers/staging/fieldbus/anybuss/arcx-anybus.c
-@@ -127,12 +127,10 @@ static const struct regmap_config arcx_regmap_cfg = {
- static struct regmap *create_parallel_regmap(struct platform_device *pdev,
- 					     int idx)
- {
--	struct resource *res;
- 	void __iomem *base;
- 	struct device *dev = &pdev->dev;
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, idx + 1);
--	base = devm_ioremap_resource(dev, res);
-+	base = devm_platform_ioremap_resource(pdev, idx + 1);
- 	if (IS_ERR(base))
- 		return ERR_CAST(base);
- 	return devm_regmap_init_mmio(dev, base, &arcx_regmap_cfg);
-@@ -230,7 +228,6 @@ static int controller_probe(struct platform_device *pdev)
- 	struct regulator_config config = { };
- 	struct regulator_dev *regulator;
- 	int err, id;
--	struct resource *res;
- 	struct anybuss_host *host;
- 	u8 status1, cap;
- 
-@@ -244,8 +241,7 @@ static int controller_probe(struct platform_device *pdev)
- 		return PTR_ERR(cd->reset_gpiod);
- 
- 	/* CPLD control memory, sits at index 0 */
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	cd->cpld_base = devm_ioremap_resource(dev, res);
-+	cd->cpld_base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(cd->cpld_base)) {
- 		dev_err(dev,
- 			"failed to map cpld base address\n");
--- 
-2.7.4
+It only protects writing to ->blnEnableRxFF0Filter but it doesn't
+protect reading so it can't possibly work.
+
+   107          spin_unlock_irqrestore(&adapter->lock_rx_ff0_filter, irqL);
+   108          do {
+   109                  msleep(100);
+   110          } while (adapter->blnEnableRxFF0Filter == 1);
+   111          r8712_write8(adapter, 0x117, oldvalue);
+   112  }
+
+Also put a space after /* and before */ so the comment looks like:
+	/* spinlock to protect interrupt request */
+
+But in this case, the comment isn't correct so please just leave it
+as-is until someone can fix the locking.
+
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
