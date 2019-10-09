@@ -2,89 +2,92 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B517CD0A7A
-	for <lists+driverdev-devel@lfdr.de>; Wed,  9 Oct 2019 11:01:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2CB45D0B57
+	for <lists+driverdev-devel@lfdr.de>; Wed,  9 Oct 2019 11:35:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A93D88654C;
-	Wed,  9 Oct 2019 09:01:03 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C017F864E6;
+	Wed,  9 Oct 2019 09:35:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FiqwHtYvcdSC; Wed,  9 Oct 2019 09:01:03 +0000 (UTC)
+	with ESMTP id Redhb0ZuevQK; Wed,  9 Oct 2019 09:35:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0B1AC8648E;
-	Wed,  9 Oct 2019 09:01:02 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 07A598625E;
+	Wed,  9 Oct 2019 09:35:43 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8A3121BF593
- for <devel@linuxdriverproject.org>; Wed,  9 Oct 2019 09:00:59 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A56561BF404
+ for <devel@linuxdriverproject.org>; Wed,  9 Oct 2019 09:35:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8693C8660D
- for <devel@linuxdriverproject.org>; Wed,  9 Oct 2019 09:00:59 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9FEBC227A0
+ for <devel@linuxdriverproject.org>; Wed,  9 Oct 2019 09:35:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xk03yPNnIMWO for <devel@linuxdriverproject.org>;
- Wed,  9 Oct 2019 09:00:58 +0000 (UTC)
+ with ESMTP id aTy9CH4gUCfh for <devel@linuxdriverproject.org>;
+ Wed,  9 Oct 2019 09:35:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by whitealder.osuosl.org (Postfix) with ESMTPS id CD64686439
- for <devel@driverdev.osuosl.org>; Wed,  9 Oct 2019 09:00:58 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x998xQb1143308;
- Wed, 9 Oct 2019 09:00:57 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : mime-version : content-type :
- content-transfer-encoding; s=corp-2019-08-05;
- bh=OhdyKt4+TAbOsTAghvzAKAsk/Da/BqDj0mmBnOZc3lM=;
- b=cIIE7xU+fUibmd6UCGHqvqvRJPtS4/9JeEFC3RhWFIMHAnxlXp14cu8EXXFs05XTe0X9
- hqH4mVE466xPAlHJigTeu1aVHAnVa3Oco8XeY/+Z7yZ3m7LHGJxjx3h0F1Idx0N1jA+k
- Ymeq1+WmPV6WTgMC2EPr875aRUTIh9i/EsLbVdhgyX3lLt8AUtvp5+pIz+1RtRBVnHLv
- +UDFoFr3S4DGt3ttZpQlk6AQfUBxKiC1XgzSo5dn947jEMoslFxLLOEtBg3D9oNS9Qas
- ilCkxPnkCjVyJRFW02mQqFbfcSMIdyWtTJf7ud6JsvNCcVtFN2pAUChjXUFE5juQCWE0 ZQ== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by aserp2120.oracle.com with ESMTP id 2vek4qjq4h-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 09 Oct 2019 09:00:56 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x998s2t8067610;
- Wed, 9 Oct 2019 09:00:56 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by userp3020.oracle.com with ESMTP id 2vh5ca3kva-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 09 Oct 2019 09:00:55 +0000
-Received: from abhmp0003.oracle.com (abhmp0003.oracle.com [141.146.116.9])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x9990spk016373;
- Wed, 9 Oct 2019 09:00:54 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 09 Oct 2019 02:00:54 -0700
-Date: Wed, 9 Oct 2019 12:00:48 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: kbuild@01.org,
- =?iso-8859-1?B?Suly9G1l?= Pouiller <jerome.pouiller@silabs.com>
-Subject: [staging:staging-testing 55/111] drivers/staging/wfx/wfx.h:91
- wdev_to_wvif() warn: potential spectre issue 'wdev->vif' [r] (local cap)
-Message-ID: <20191009090048.GA13286@kadam>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
+ [207.211.31.120])
+ by silver.osuosl.org (Postfix) with ESMTPS id 3106A214EC
+ for <devel@driverdev.osuosl.org>; Wed,  9 Oct 2019 09:35:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1570613737;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=wIiSU13TZ9jZ/7OA/RD49mIlEHsSk7raamqZN0rBDDk=;
+ b=E/1OMMUuOzElkBnJiAfN4juycfEMlbX9OPxGO0axzktLaGZdo4PXPTq5I5NaWiClAAoLQA
+ OQJ0NZOQMZ5e6JUU7FiLKZZFdw7PK9h+m9DUC/yaYPkk3ewpXz5nqSX5NmAfL340ckXyfH
+ Kdlpo4rdzp9ndU+Vs8Z73+m9sC6blrg=
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-309-FBd8nEsoOYW-echf8A6vlg-1; Wed, 09 Oct 2019 05:35:35 -0400
+Received: by mail-ed1-f72.google.com with SMTP id p55so1027270edc.5
+ for <devel@driverdev.osuosl.org>; Wed, 09 Oct 2019 02:35:35 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=m+EOjV/VuUDotBWP2JnVujV9Hl44RjnHb49OdTmGiVo=;
+ b=Mxjeq5iYd42YnFdxmWUGb6vjqK/8Ye3WFy/wqaN3Krj+FUrTOrlCvWxzLCsbP9vtPV
+ cfMQqkRa9dFCbOVqbSuEPwynz5tD5PcyQeZuF3gZ/i9/W/cCMazg8jB1jpRzyxXvC/tX
+ Q8zqxJKs1eU4xtTGQk89Fhh32bmJ2RrLZp991CRuwE09pYIPVWC0Hvr6OrJKphrpL9nM
+ PkdTGGFLubjF9jvTICQht3yI6hUDiBYuP+5inVruLrz/i8yPeg9lagsy5NJJZShBnNwh
+ H6OXIoHM4eCiQ+PEiRjqOG02DvJAdLQilV0br8Qm36Ct9ToxB6Qqpn37gXPNSFA3ERwf
+ OVVw==
+X-Gm-Message-State: APjAAAVsFqOqiy6eYtiVW7RN8HRx5/MeuqErKP+zOuzHq/Q0X2ZtuEJZ
+ A/h2XdFDo5Ss26blAJ7zsPsbv/h9vGTuMevPrMZyWg0/DcNnhM0uBt8/BixWBpmWHzQvKXzCmyP
+ otgthpQbAHHLXeitOw7cpig==
+X-Received: by 2002:a05:6402:88d:: with SMTP id
+ e13mr1973739edy.246.1570613734720; 
+ Wed, 09 Oct 2019 02:35:34 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxZmm9V3I2YhZskIm1cKbboIQy+yXFRdaHYKIvjJsZB5tj/g9zi5Ehci5uDueRmNCpIZouewQ==
+X-Received: by 2002:a05:6402:88d:: with SMTP id
+ e13mr1973726edy.246.1570613734526; 
+ Wed, 09 Oct 2019 02:35:34 -0700 (PDT)
+Received: from shalem.localdomain
+ (2001-1c00-0c14-2800-ec23-a060-24d5-2453.cable.dynamic.v6.ziggo.nl.
+ [2001:1c00:c14:2800:ec23:a060:24d5:2453])
+ by smtp.gmail.com with ESMTPSA id l7sm271377edv.84.2019.10.09.02.35.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 09 Oct 2019 02:35:33 -0700 (PDT)
+Subject: Re: [PATCH] staging: rtl8723bs: hal: Fix memcpy calls
+To: Denis Efremov <efremov@linux.com>, devel@driverdev.osuosl.org
+References: <20190930110141.29271-1-efremov@linux.com>
+From: Hans de Goede <hdegoede@redhat.com>
+Message-ID: <94af475e-dd7a-6066-146a-30a9915cd325@redhat.com>
+Date: Wed, 9 Oct 2019 11:35:32 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9404
- signatures=668684
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1908290000 definitions=main-1910090085
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9404
- signatures=668684
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
- definitions=main-1910090086
+In-Reply-To: <20190930110141.29271-1-efremov@linux.com>
+Content-Language: en-US
+X-MC-Unique: FBd8nEsoOYW-echf8A6vlg-1
+X-Mimecast-Spam-Score: 0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,66 +100,92 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- kbuild-all@01.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: Jes Sorensen <jes.sorensen@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ stable@vger.kernel.org, Bastien Nocera <hadess@hadess.net>,
+ Larry Finger <Larry.Finger@lwfinger.net>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git =
-staging-testing
-head:   d49d1c76b96ebf39539e93d5ab7943a01ef70e4f
-commit: 9bca45f3d6924f19f29c0d019e961af3f41bdc9e [55/111] staging: wfx: all=
-ow to send 802.11 frames
+Hi Denis,
 
-If you fix the issue, kindly add following tag
-Reported-by: kbuild test robot <lkp@intel.com>
-Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+On 30-09-2019 13:01, Denis Efremov wrote:
+> memcpy() in phy_ConfigBBWithParaFile() and PHY_ConfigRFWithParaFile() is
+> called with "src == NULL && len == 0". This is an undefined behavior.
+> Moreover this if pre-condition "pBufLen && (*pBufLen == 0) && !pBuf"
+> is constantly false because it is a nested if in the else brach, i.e.,
+> "if (cond) { ... } else { if (cond) {...} }". This patch alters the
+> if condition to check "pBufLen && pBuf" pointers are not NULL.
+> 
+> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> Cc: Hans de Goede <hdegoede@redhat.com>
+> Cc: Bastien Nocera <hadess@hadess.net>
+> Cc: Larry Finger <Larry.Finger@lwfinger.net>
+> Cc: Jes Sorensen <jes.sorensen@gmail.com>
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Denis Efremov <efremov@linux.com>
+> ---
+> Not tested. I don't have the hardware. The fix is based on my guess.
 
-New smatch warnings:
-drivers/staging/wfx/wfx.h:91 wdev_to_wvif() warn: potential spectre issue '=
-wdev->vif' [r] (local cap)
-drivers/staging/wfx/data_tx.c:479 wfx_tx_get_raw_link_id() warn: signedness=
- bug returning '(-2)'
+Thsnk you for your patch.
 
-# https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/commit=
-/?id=3D9bca45f3d6924f19f29c0d019e961af3f41bdc9e
-git remote add staging https://git.kernel.org/pub/scm/linux/kernel/git/greg=
-kh/staging.git
-git remote update staging
-git checkout 9bca45f3d6924f19f29c0d019e961af3f41bdc9e
-vim +91 drivers/staging/wfx/wfx.h
+So I've been doing some digging and this code normally never executes.
 
-e16e7f0716a6ba J=E9r=F4me Pouiller 2019-09-19  80  =
+For this to execute the user would need to change the rtw_load_phy_file module
+param from its default of 0x44 (LOAD_BB_PG_PARA_FILE | LOAD_RF_TXPWR_LMT_PARA_FILE)
+to something which includes 0x02 (LOAD_BB_PARA_FILE) as mask.
 
-f4a71ba8753d94 J=E9r=F4me Pouiller 2019-09-19  81  static inline struct wfx=
-_vif *wdev_to_wvif(struct wfx_dev *wdev, int vif_id)
-f4a71ba8753d94 J=E9r=F4me Pouiller 2019-09-19  82  {
-f4a71ba8753d94 J=E9r=F4me Pouiller 2019-09-19  83  	if (vif_id >=3D ARRAY_S=
-IZE(wdev->vif)) {
-f4a71ba8753d94 J=E9r=F4me Pouiller 2019-09-19  84  		dev_dbg(wdev->dev, "re=
-questing non-existent vif: %d\n", vif_id);
-f4a71ba8753d94 J=E9r=F4me Pouiller 2019-09-19  85  		return NULL;
-f4a71ba8753d94 J=E9r=F4me Pouiller 2019-09-19  86  	}
+And even with that param set for this code to actually do something /
+for pBuf to ever not be NULL the following conditions would have to
+be true:
 
-		vaf_id =3D array_index_nospec(wdev->vif, ARRAY_SIZE(wdev->vif)); ?
+1) Set the rtw_load_phy_file module param from its default of
+    0x44 (LOAD_BB_PG_PARA_FILE | LOAD_RF_TXPWR_LMT_PARA_FILE) to something
+    which includes 0x02 as mask; and
+2) Set rtw_phy_file_path module parameter to say "/lib/firmware/"; and
+3) Store a /lib/firmware/rtl8723b/PHY_REG.txt file in the expected format.
 
-f4a71ba8753d94 J=E9r=F4me Pouiller 2019-09-19  87  	if (!wdev->vif[vif_id])=
- {
-f4a71ba8753d94 J=E9r=F4me Pouiller 2019-09-19  88  		dev_dbg(wdev->dev, "re=
-questing non-allocated vif: %d\n", vif_id);
-f4a71ba8753d94 J=E9r=F4me Pouiller 2019-09-19  89  		return NULL;
-f4a71ba8753d94 J=E9r=F4me Pouiller 2019-09-19  90  	}
-f4a71ba8753d94 J=E9r=F4me Pouiller 2019-09-19 @91  	return (struct wfx_vif =
-*) wdev->vif[vif_id]->drv_priv;
-f4a71ba8753d94 J=E9r=F4me Pouiller 2019-09-19  92  }
+So I've come to the conclusion that all the phy_Config*WithParaFile functions
+(and a bunch of stuff they use) can be removed.
 
----
-0-DAY kernel test infrastructure                Open Source Technology Cent=
-er
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporati=
-on
+I will prepare and submit a patch for this.
+
+Regards,
+
+Hans
+
+
+
+> 
+>   drivers/staging/rtl8723bs/hal/hal_com_phycfg.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8723bs/hal/hal_com_phycfg.c b/drivers/staging/rtl8723bs/hal/hal_com_phycfg.c
+> index 6539bee9b5ba..0902dc3c1825 100644
+> --- a/drivers/staging/rtl8723bs/hal/hal_com_phycfg.c
+> +++ b/drivers/staging/rtl8723bs/hal/hal_com_phycfg.c
+> @@ -2320,7 +2320,7 @@ int phy_ConfigBBWithParaFile(
+>   			}
+>   		}
+>   	} else {
+> -		if (pBufLen && (*pBufLen == 0) && !pBuf) {
+> +		if (pBufLen && pBuf) {
+>   			memcpy(pHalData->para_file_buf, pBuf, *pBufLen);
+>   			rtStatus = _SUCCESS;
+>   		} else
+> @@ -2752,7 +2752,7 @@ int PHY_ConfigRFWithParaFile(
+>   			}
+>   		}
+>   	} else {
+> -		if (pBufLen && (*pBufLen == 0) && !pBuf) {
+> +		if (pBufLen && pBuf) {
+>   			memcpy(pHalData->para_file_buf, pBuf, *pBufLen);
+>   			rtStatus = _SUCCESS;
+>   		} else
+> 
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
