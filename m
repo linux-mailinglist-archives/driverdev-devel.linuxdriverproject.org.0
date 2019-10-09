@@ -1,90 +1,92 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF4FDD0FA8
-	for <lists+driverdev-devel@lfdr.de>; Wed,  9 Oct 2019 15:08:27 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id CB6A8D0FB8
+	for <lists+driverdev-devel@lfdr.de>; Wed,  9 Oct 2019 15:13:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 625098692F;
-	Wed,  9 Oct 2019 13:08:26 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DCBFD8834D;
+	Wed,  9 Oct 2019 13:13:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2ZLiyZEMTMbD; Wed,  9 Oct 2019 13:08:25 +0000 (UTC)
+	with ESMTP id oKuVa8t78PnR; Wed,  9 Oct 2019 13:13:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 432B286916;
-	Wed,  9 Oct 2019 13:08:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E32CA8832C;
+	Wed,  9 Oct 2019 13:13:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9A0281BF2B4
- for <devel@linuxdriverproject.org>; Wed,  9 Oct 2019 13:08:22 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 73B751BF2B4
+ for <devel@linuxdriverproject.org>; Wed,  9 Oct 2019 13:12:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9633422F22
- for <devel@linuxdriverproject.org>; Wed,  9 Oct 2019 13:08:22 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6FFDC86645
+ for <devel@linuxdriverproject.org>; Wed,  9 Oct 2019 13:12:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mSCnIhvwSKs4 for <devel@linuxdriverproject.org>;
- Wed,  9 Oct 2019 13:08:21 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from out3-smtp.messagingengine.com (out3-smtp.messagingengine.com
- [66.111.4.27])
- by silver.osuosl.org (Postfix) with ESMTPS id CCB5222F05
- for <devel@driverdev.osuosl.org>; Wed,  9 Oct 2019 13:08:21 +0000 (UTC)
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
- by mailout.nyi.internal (Postfix) with ESMTP id D2C992214A;
- Wed,  9 Oct 2019 09:08:20 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute6.internal (MEProxy); Wed, 09 Oct 2019 09:08:20 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
- date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm2; bh=mLKOTL/8x5gDgJFUJhb3gNI98kn
- LsTJTiu2myd2FUm8=; b=hNhbcpxLBrllawZD05Fou1XENFBUs9M6EKGJmP4Lia4
- 2hV2LzodIvo7MnT4LRFkfJQ8g5gs7Ss0xDmYBBWeFVQ6tgjYZpUz/a00tB0ECRj9
- HkGgu2TAgCjblJ/ug9PHHWL0wdd4KJpKIHhuaC7ixOR6y0dMNIWeK8qyecwFpb1n
- oeebZ4/6ziYTpYERWG6XsTu3foxkZHH1IQBvewgNvSZZm71T0EI0pTMBEp1oYfSt
- 9VkuAyrQ5oqw9x91KFSWOW+rdo9gbRncM2IgB9YC5l6Kf73+WfugJFhKni6PN59j
- GfIHXlGhzKMg0HrV7+7QlaLVFI1w1URjL6VD3McV8cg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=mLKOTL
- /8x5gDgJFUJhb3gNI98knLsTJTiu2myd2FUm8=; b=jNBGiYbuvNrXUM4MjX81uU
- GqFuP/jUuo+oP39GYep1haEv3KEBTJUppsZy+ldyhL9ievsDhTVMctzaiK8312wE
- wVae1trfvEv7z/dhmOsZaQx61FD/UG4cR+re8BhTJy2axrc0ylJZUtS6S+nsj8pB
- h32gG2eBsmbJCkJTdgo7yDL5w9w3Vnj6/GV7wiqs1FdcnIANr3gCRRV7Qn3Yvv6C
- 6sUI4Yxxu+VfM3F8LUg78jkkTlKHN4oKxQ9yALbVQhgfhG0OMkriQ1k6gL7q3PY5
- fWn0aH3awOhySosC65uD9Ma/9w62AGIsq9bWT2PyOYXcbBneS7w0ilB3/g31lXBQ
- ==
-X-ME-Sender: <xms:xNudXXcK6dMPpKj0_oxaG-bTWJHiqmRyhVsvG5kvUGntUJTAD3AOhQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedriedugdefiecutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
- fjughrpeffhffvuffkfhggtggujggfsehttdertddtredvnecuhfhrohhmpefirhgvghcu
- mffjuceoghhrvghgsehkrhhorghhrdgtohhmqeenucfkphepkeefrdekiedrkeelrddutd
- ejnecurfgrrhgrmhepmhgrihhlfhhrohhmpehgrhgvgheskhhrohgrhhdrtghomhenucev
- lhhushhtvghrufhiiigvpedt
-X-ME-Proxy: <xmx:xNudXRcrfEORuG5dl9z9rmsHxSj7qQS_5iwoIpoRpJp4H1tGnwVjKA>
- <xmx:xNudXde6sP8rTqO2F8bQ7AC5iZXUI4sdMa9qL6dXp5o6MyHHm0-RsQ>
- <xmx:xNudXXo44Dl4h4BbC7pwG61Q1B-UfEyrgZkvuaxbR_M5PRCwyA53uA>
- <xmx:xNudXQFZNblyOfLkPG8IKhwn39aidh-ucqUngk2RVygeY0Ii-6868Q>
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- by mail.messagingengine.com (Postfix) with ESMTPA id 4253ED6005D;
- Wed,  9 Oct 2019 09:08:20 -0400 (EDT)
-Date: Wed, 9 Oct 2019 15:08:18 +0200
-From: Greg KH <greg@kroah.com>
-To: Alexander Gordeev <a.gordeev.box@gmail.com>
-Subject: Re: [PATCH RFC v2 2/2] dmaengine: avalon: Intel Avalon-MM DMA
- Interface for PCIe test
-Message-ID: <20191009130818.GB4148375@kroah.com>
-References: <cover.1570558807.git.a.gordeev.box@gmail.com>
- <6b540aeae71112154836003f2356703df2b36333.1570558807.git.a.gordeev.box@gmail.com>
+ with ESMTP id q6R15F-WRP0e for <devel@linuxdriverproject.org>;
+ Wed,  9 Oct 2019 13:12:57 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3C50F865C1
+ for <devel@driverdev.osuosl.org>; Wed,  9 Oct 2019 13:12:57 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x99D957W177865;
+ Wed, 9 Oct 2019 13:12:56 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=T+KjUFnyFRXsMSb3ZxB9pQU7J6ab0vTyDBWPFQaIV6c=;
+ b=aXm8OtCXXr42y5Xj0DxQKs5At7SOq3wPe2r0kRioNRqb1L0Vf7+G8K8MUYihqy6OQe1r
+ adl5O/+uYPwURQUudvCFWD4szgiZtCVIRGi5vUZwilIoDAV7bMIHryFj634aHz/kiWBV
+ j51mwrISTZc4FvXCWEDwn9F6CVWmSpjlvjtPemY7yyLzNFv37XIU5pB7ZIGXso7Gmfic
+ BaA2tW766MeGDDivkUli1TAsF91YTzAm+vTDytueVafxYxyeKFmeIxKvFcxu4Xy3KIPC
+ 69y/M9Y+UbXXbLkQ5t1Vh/nMTrBJoOt+xRCCnK2QUmvnYhnBdBRYEcHAnm02PyMga6Ci Xg== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by aserp2120.oracle.com with ESMTP id 2vek4qmade-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 09 Oct 2019 13:12:55 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x99D42xl179120;
+ Wed, 9 Oct 2019 13:12:55 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3030.oracle.com with ESMTP id 2vgev1byf1-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 09 Oct 2019 13:12:55 +0000
+Received: from abhmp0013.oracle.com (abhmp0013.oracle.com [141.146.116.19])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x99DCrUW003330;
+ Wed, 9 Oct 2019 13:12:53 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Wed, 09 Oct 2019 06:12:52 -0700
+Date: Wed, 9 Oct 2019 16:12:40 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: zhengbin <zhengbin13@huawei.com>
+Subject: Re: [PATCH 1/3] staging: wfx: Make function 'sram_write_dma_safe',
+ 'load_firmware_secure' static
+Message-ID: <20191009131240.GO25098@kadam>
+References: <1570626219-37733-1-git-send-email-zhengbin13@huawei.com>
+ <1570626219-37733-2-git-send-email-zhengbin13@huawei.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <6b540aeae71112154836003f2356703df2b36333.1570558807.git.a.gordeev.box@gmail.com>
-User-Agent: Mutt/1.12.2 (2019-09-21)
+In-Reply-To: <1570626219-37733-2-git-send-email-zhengbin13@huawei.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9404
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1908290000 definitions=main-1910090125
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9404
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
+ definitions=main-1910090126
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,29 +99,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Michael Chen <micchen@altera.com>,
- dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Oct 09, 2019 at 12:12:31PM +0200, Alexander Gordeev wrote:
-> +config AVALON_TEST_TARGET_BASE
-> +	hex "Target device base address"
-> +	default "0x70000000"
-> +
-> +config AVALON_TEST_TARGET_SIZE
-> +	hex "Target device memory size"
-> +	default "0x10000000"
+On Wed, Oct 09, 2019 at 09:03:37PM +0800, zhengbin wrote:
+> -int sram_write_dma_safe(struct wfx_dev *wdev, u32 addr, const u8 *buf, size_t len)
+> +static int
+> +sram_write_dma_safe(struct wfx_dev *wdev, u32 addr, const u8 *buf, size_t len)
 
-Don't put stuff like this as a configuration option, requiring the
-kernel to be rebuilt.  Make it dynamic, or from device tree, but not
-like this.
+Either declaration style is fine, but keep it consistent within the
+file.  Here the style should be:
 
-thanks,
+static int sram_write_dma_safe(struct wfx_dev *wdev, u32 addr, const u8 *buf,
+			       size_t len)
 
-greg k-h
+regards,
+dan carpenter
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
