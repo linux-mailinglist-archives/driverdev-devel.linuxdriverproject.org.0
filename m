@@ -2,53 +2,56 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 16943D0F42
-	for <lists+driverdev-devel@lfdr.de>; Wed,  9 Oct 2019 14:56:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C010ED0F7C
+	for <lists+driverdev-devel@lfdr.de>; Wed,  9 Oct 2019 15:02:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E73E487475;
-	Wed,  9 Oct 2019 12:56:47 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B361A8832D;
+	Wed,  9 Oct 2019 13:02:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id n73-HeqeUbP7; Wed,  9 Oct 2019 12:56:47 +0000 (UTC)
+	with ESMTP id N2u8ny-IVQnY; Wed,  9 Oct 2019 13:02:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3D2FC86E64;
-	Wed,  9 Oct 2019 12:56:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0A45B87A2E;
+	Wed,  9 Oct 2019 13:02:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 39BB81BF2B3
- for <devel@linuxdriverproject.org>; Wed,  9 Oct 2019 12:56:44 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 7A77F1BF2B3
+ for <devel@linuxdriverproject.org>; Wed,  9 Oct 2019 13:02:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 312B486916
- for <devel@linuxdriverproject.org>; Wed,  9 Oct 2019 12:56:44 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 771B587A2E
+ for <devel@linuxdriverproject.org>; Wed,  9 Oct 2019 13:02:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rT20qq0QpIbh for <devel@linuxdriverproject.org>;
- Wed,  9 Oct 2019 12:56:43 +0000 (UTC)
+ with ESMTP id OfirzjEBK-bY for <devel@linuxdriverproject.org>;
+ Wed,  9 Oct 2019 13:02:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga05-in.huawei.com [45.249.212.191])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id F335286914
- for <devel@driverdev.osuosl.org>; Wed,  9 Oct 2019 12:56:42 +0000 (UTC)
-Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 5021CE55AE1F567155ED;
- Wed,  9 Oct 2019 20:56:39 +0800 (CST)
-Received: from huawei.com (10.90.53.225) by DGGEMS407-HUB.china.huawei.com
- (10.3.19.207) with Microsoft SMTP Server id 14.3.439.0; Wed, 9 Oct 2019
- 20:56:29 +0800
-From: zhengbin <zhengbin13@huawei.com>
-To: <jerome.pouiller@silabs.com>, <gregkh@linuxfoundation.org>,
- <devel@driverdev.osuosl.org>
-Subject: [PATCH 3/3] staging: wfx: Make some functions static in sta.c
-Date: Wed, 9 Oct 2019 21:03:39 +0800
-Message-ID: <1570626219-37733-4-git-send-email-zhengbin13@huawei.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1570626219-37733-1-git-send-email-zhengbin13@huawei.com>
-References: <1570626219-37733-1-git-send-email-zhengbin13@huawei.com>
+Received: from lb1-smtp-cloud7.xs4all.net (lb1-smtp-cloud7.xs4all.net
+ [194.109.24.24])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id BD7DF87554
+ for <devel@driverdev.osuosl.org>; Wed,  9 Oct 2019 13:02:15 +0000 (UTC)
+Received: from [IPv6:2001:983:e9a7:1:2801:e038:f2c3:e060]
+ ([IPv6:2001:983:e9a7:1:2801:e038:f2c3:e060])
+ by smtp-cloud7.xs4all.net with ESMTPA
+ id IBbYigmgKjZ8vIBbZiI1pc; Wed, 09 Oct 2019 15:02:13 +0200
+Subject: Re: [PATCH] staging: media: Fix alignment to match open parenthesis
+To: Amol Grover <frextrite@gmail.com>, Steve Longerbeam <slongerbeam@gmail.com>
+References: <20190911165655.GA22041@Debian.gxnx00eri1wudnlrc5f3ppaydc.bx.internal.cloudapp.net>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <27da1d8b-09fc-8d23-5213-f0c352ee615d@xs4all.nl>
+Date: Wed, 9 Oct 2019 15:02:12 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-X-Originating-IP: [10.90.53.225]
-X-CFilter-Loop: Reflected
+In-Reply-To: <20190911165655.GA22041@Debian.gxnx00eri1wudnlrc5f3ppaydc.bx.internal.cloudapp.net>
+Content-Language: en-US
+X-CMAE-Envelope: MS4wfD9xGs8YOYZuV2WnHUMHNDzu/rb3+CIh2AtNp5uss+ux5BI/fVCKdjPT2bWBacECXDWhk3Hf31un/fG+RhxxTg16tusrwCrpOJ0ZB00szu2mhkTClY/7
+ 4f/V7rNk74jiJaH6t5+c8ix9wYWAf6YeUbzUkHV2JnW+cTZPHuPJ3lVFR3i/jv61sKvcaLlKjl/tzm5D9yporFfLKj2nBVr2IrmBak8yeIsFkuhAj9xiCM91
+ Z+cRkBjrpP8E2WbB4vAqd75vw430EJLKXor3vg9m3ojfPtWHJ/v2eMboHFtgpWQr0tAGn8xY9Q5cFFsmQqiPkqptDi2B3Y/+PRKEJ0p2ZD/8ycjSPdIyfaQe
+ htaGq53QKeHef36+PMxMMCqaowIiuqtRuscWoIXQrw6JYJrNfbXFu6w57kVcLWUJDZG8uPDX8NUJhncy+TLQwnp5XfxTV3uKA1y+PKQb8x9P0yUzbdFnkE9F
+ qUEN4JH7dJojP8BJmCY4Fnfu4lhGPkhATd2J2d9LbzXXqW3iQAA7kw2N2wt7BhA6uavtrk6fXcPkokAZ
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,106 +64,59 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: zhengbin13@huawei.com
+Cc: devel@driverdev.osuosl.org, Sascha Hauer <s.hauer@pengutronix.de>,
+ linux-kernel@vger.kernel.org, Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix sparse warnings:
+Hi Amol,
 
-drivers/staging/wfx/sta.c:269:6: warning: symbol 'wfx_update_filtering_work' was not declared. Should it be static?
-drivers/staging/wfx/sta.c:475:6: warning: symbol 'wfx_event_handler_work' was not declared. Should it be static?
-drivers/staging/wfx/sta.c:521:6: warning: symbol 'wfx_bss_loss_work' was not declared. Should it be static?
-drivers/staging/wfx/sta.c:528:6: warning: symbol 'wfx_bss_params_work' was not declared. Should it be static?
-drivers/staging/wfx/sta.c:539:6: warning: symbol 'wfx_set_beacon_wakeup_period_work' was not declared. Should it be static?
-drivers/staging/wfx/sta.c:732:6: warning: symbol 'wfx_unjoin_work' was not declared. Should it be static?
-drivers/staging/wfx/sta.c:794:6: warning: symbol 'wfx_set_cts_work' was not declared. Should it be static?
-drivers/staging/wfx/sta.c:1234:6: warning: symbol 'wfx_set_tim_work' was not declared. Should it be static?
+For future reference: always include the driver name in the subject.
 
-Reported-by: Hulk Robot <hulkci@huawei.com>
-Signed-off-by: zhengbin <zhengbin13@huawei.com>
----
- drivers/staging/wfx/sta.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+I've added "imx: " to the subject for you, so no need to resend, but
+the driver name is important information.
 
-diff --git a/drivers/staging/wfx/sta.c b/drivers/staging/wfx/sta.c
-index 2855d14..d19bab6 100644
---- a/drivers/staging/wfx/sta.c
-+++ b/drivers/staging/wfx/sta.c
-@@ -269,7 +269,7 @@ void wfx_update_filtering(struct wfx_vif *wvif)
- 	kfree(bf_tbl);
- }
+Regards,
 
--void wfx_update_filtering_work(struct work_struct *work)
-+static void wfx_update_filtering_work(struct work_struct *work)
- {
- 	struct wfx_vif *wvif = container_of(work, struct wfx_vif, update_filtering_work);
+	Hans
 
-@@ -475,7 +475,7 @@ static void wfx_event_report_rssi(struct wfx_vif *wvif, uint8_t raw_rcpi_rssi)
- 	ieee80211_cqm_rssi_notify(wvif->vif, cqm_evt, rcpi_rssi, GFP_KERNEL);
- }
-
--void wfx_event_handler_work(struct work_struct *work)
-+static void wfx_event_handler_work(struct work_struct *work)
- {
- 	struct wfx_vif *wvif =
- 		container_of(work, struct wfx_vif, event_handler_work);
-@@ -521,14 +521,14 @@ void wfx_event_handler_work(struct work_struct *work)
- 	__wfx_free_event_queue(&list);
- }
-
--void wfx_bss_loss_work(struct work_struct *work)
-+static void wfx_bss_loss_work(struct work_struct *work)
- {
- 	struct wfx_vif *wvif = container_of(work, struct wfx_vif, bss_loss_work.work);
-
- 	ieee80211_connection_loss(wvif->vif);
- }
-
--void wfx_bss_params_work(struct work_struct *work)
-+static void wfx_bss_params_work(struct work_struct *work)
- {
- 	struct wfx_vif *wvif = container_of(work, struct wfx_vif, bss_params_work);
-
-@@ -539,7 +539,7 @@ void wfx_bss_params_work(struct work_struct *work)
- 	mutex_unlock(&wvif->wdev->conf_mutex);
- }
-
--void wfx_set_beacon_wakeup_period_work(struct work_struct *work)
-+static void wfx_set_beacon_wakeup_period_work(struct work_struct *work)
- {
- 	struct wfx_vif *wvif = container_of(work, struct wfx_vif, set_beacon_wakeup_period_work);
-
-@@ -732,7 +732,7 @@ static void wfx_do_join(struct wfx_vif *wvif)
- 		cfg80211_put_bss(wvif->wdev->hw->wiphy, bss);
- }
-
--void wfx_unjoin_work(struct work_struct *work)
-+static void wfx_unjoin_work(struct work_struct *work)
- {
- 	struct wfx_vif *wvif = container_of(work, struct wfx_vif, unjoin_work);
-
-@@ -794,7 +794,7 @@ int wfx_sta_remove(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 	return 0;
- }
-
--void wfx_set_cts_work(struct work_struct *work)
-+static void wfx_set_cts_work(struct work_struct *work)
- {
- 	struct wfx_vif *wvif = container_of(work, struct wfx_vif, set_cts_work);
- 	u8 erp_ie[3] = { WLAN_EID_ERP_INFO, 1, 0 };
-@@ -1234,7 +1234,7 @@ static int wfx_set_tim_impl(struct wfx_vif *wvif, bool aid0_bit_set)
- 	return 0;
- }
-
--void wfx_set_tim_work(struct work_struct *work)
-+static void wfx_set_tim_work(struct work_struct *work)
- {
- 	struct wfx_vif *wvif = container_of(work, struct wfx_vif, set_tim_work);
-
---
-2.7.4
+On 9/11/19 6:56 PM, Amol Grover wrote:
+> CHECK: Alignment should match open parenthesis
+> 
+> Signed-off-by: Amol Grover <frextrite@gmail.com>
+> ---
+>  drivers/staging/media/imx/imx-media-csi.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/staging/media/imx/imx-media-csi.c b/drivers/staging/media/imx/imx-media-csi.c
+> index 367e39f5b382..773b3d6964cf 100644
+> --- a/drivers/staging/media/imx/imx-media-csi.c
+> +++ b/drivers/staging/media/imx/imx-media-csi.c
+> @@ -627,8 +627,8 @@ static int csi_idmac_start(struct csi_priv *priv)
+>  	}
+>  
+>  	priv->nfb4eof_irq = ipu_idmac_channel_irq(priv->ipu,
+> -						 priv->idmac_ch,
+> -						 IPU_IRQ_NFB4EOF);
+> +						  priv->idmac_ch,
+> +						  IPU_IRQ_NFB4EOF);
+>  	ret = devm_request_irq(priv->dev, priv->nfb4eof_irq,
+>  			       csi_idmac_nfb4eof_interrupt, 0,
+>  			       "imx-smfc-nfb4eof", priv);
+> @@ -1472,7 +1472,7 @@ static void csi_try_fmt(struct csi_priv *priv,
+>  			imx_media_enum_mbus_format(&code, 0,
+>  						   CS_SEL_ANY, false);
+>  			*cc = imx_media_find_mbus_format(code,
+> -							CS_SEL_ANY, false);
+> +							 CS_SEL_ANY, false);
+>  			sdformat->format.code = (*cc)->codes[0];
+>  		}
+>  
+> 
 
 _______________________________________________
 devel mailing list
