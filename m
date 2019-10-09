@@ -1,70 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E711D110B
-	for <lists+driverdev-devel@lfdr.de>; Wed,  9 Oct 2019 16:20:00 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id DBF5ED1110
+	for <lists+driverdev-devel@lfdr.de>; Wed,  9 Oct 2019 16:20:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1FB1E878F4;
-	Wed,  9 Oct 2019 14:19:59 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1DBE486914;
+	Wed,  9 Oct 2019 14:20:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jGvDNcexy2yA; Wed,  9 Oct 2019 14:19:58 +0000 (UTC)
+	with ESMTP id ux07ydRT-fOQ; Wed,  9 Oct 2019 14:20:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4B8FE878D8;
-	Wed,  9 Oct 2019 14:19:57 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B7F9585495;
+	Wed,  9 Oct 2019 14:20:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0F0901BF423
- for <devel@linuxdriverproject.org>; Wed,  9 Oct 2019 14:19:55 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 4CBA01BF423
+ for <devel@linuxdriverproject.org>; Wed,  9 Oct 2019 14:20:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0B66223026
- for <devel@linuxdriverproject.org>; Wed,  9 Oct 2019 14:19:55 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 49BEF85B7C
+ for <devel@linuxdriverproject.org>; Wed,  9 Oct 2019 14:20:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CZtz268ubr78 for <devel@linuxdriverproject.org>;
- Wed,  9 Oct 2019 14:19:54 +0000 (UTC)
+ with ESMTP id zCTiRrDfD5BY for <devel@linuxdriverproject.org>;
+ Wed,  9 Oct 2019 14:20:51 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM01-BY2-obe.outbound.protection.outlook.com
- (mail-eopbgr810051.outbound.protection.outlook.com [40.107.81.51])
- by silver.osuosl.org (Postfix) with ESMTPS id 9ECCB20764
- for <devel@driverdev.osuosl.org>; Wed,  9 Oct 2019 14:19:53 +0000 (UTC)
+Received: from NAM01-SN1-obe.outbound.protection.outlook.com
+ (mail-eopbgr820080.outbound.protection.outlook.com [40.107.82.80])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C076F85ADB
+ for <devel@driverdev.osuosl.org>; Wed,  9 Oct 2019 14:20:51 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=kkMtahAziFvRwejlM92uTbr6ino61btvmHbKzoRyg0zebVWIHklVykovQQEsYAUBMhDSyFQj43grChlORCkNEDm+ab7f5MWr+taYOeUF2SaQP2vPY3ctN/yDMyv8nAQDr5R7iWxY3N5BQiaeJwZ0inbk5oawZvglEECzz1KnfbOi/tQ0k+0KkMG5t1ZX4/TYUghqXuvsKdfy0SCnktxRBbgaT0ZmPbW9+/i2IVzznDCwN4+Aa/PkymUz26kmJHAtZj0ouJY3k+pSiuEc9eT2V2qzOlo2SOQ3Bwvab+UUjdobRWTtTYlZKPAhDu/wqdhBab5wrp6TxhGveRFW0VBJ3A==
+ b=n+QpuxuqWpHNa9vpNkQR4mjP3Q7A9YT5dwD9A6HDqLO1+E8O7O6qgYqWDNC0F6IDRU29i4MTV/va9ZRtCfpb6baYMiFWm4uCKiOvsI4uMjHwHFUW30/Hn6RgoOCT6EEj7z6Vn/WQIJiFR25GJbR7Xe1k3Ituq/CYxoPmp6j2emQfJiT2lwhqETwwFtJTs3OUsORE5x1GWNMCTSWqhtN7+B79m853C81zVs7TR55UxERO+teKKktBgmCKLcmilhoHkzQsAPgS/kPsdcM1iK9CosUIVE1ya8Qx3bgIkxn/jtqOP4CCBk9wHH05zpPKvSsgBn90X4+Gaxt1lEh37nFl4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=M/+Xt9PzJ+jQT8C6Us0sx9ZbFJ7itA7UqjU6jYo5kAo=;
- b=P2BIsG1MqpZxZxCvsYl4ilFs4XzaGNhSJ/SDpZEo6VwgaoaqhBWODYUL2Ijp8egYM0lhzxSJkQnIoO0w9dUlAc5kzFxvwKJp1JRD3SSeigHXE+4vYX4kTQz5GslsH9q5SS2Ir4rYIDsJ9etw8H8GCvY9hyfd/3PtY4qzE2pvtDVn+ZXsd99Y9ZcIA7f39ZfLS+Yw6yafd3lswdhZY78JX+74y0e6Msx/NKfbouS21k4YijXSOz7gxl6I0/nD1GXtoeZjv2DiG6E1/DLkcB2DJdKedfiPRdOdmDQ88dsBBpSY5oeM0zLF76W8Hf6XoeMHbo7ttMvxSpsgr2+W63sfKg==
+ bh=4FnLmmYGOFuTlGOnQ5tOTIeTQviOmqsqv8TyD+ZaiuU=;
+ b=ZSe3+Twe01utAvvt8ItzI8dPP0IaCXYkEe05Yei+LjDzw9xox6glRooLMriB7oQZgQlrpdRSlDdQwD4OF4hcPCrolh7ApFSeCjvwtbiTPJ8wlRGt7tFQf++Ls04ltFrzgMMKI7qDTEKbvdyMgNZgWeUd5tp4+fuqhAZJnrlzc3kRFUxUwKCoOl4+H00EVIriqad5LDafmvruRx1JU8RJ3sZTTAF/JZvqeO7/jOx6qg7wfC+ko5vxi6g4YfS/dCO+VK1vk5K8gWDca0q8S5g9CW4BHvRRXE0o8xpbTJbqDm9BPok+UvyABifJNVRgvb3XAnal1sf6NC3oOLUNZ6auUA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
  dkim=pass header.d=silabs.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=M/+Xt9PzJ+jQT8C6Us0sx9ZbFJ7itA7UqjU6jYo5kAo=;
- b=LbD2UcyMsY14/mkWZDTNk+mseauCJiu2y10otJH78Uon92/1/IGvDQr9IhdmKw5oByUmoZlckx6BU+736Sa3bsPEsRRIiUwIlvJ9m2Mz0TIHFWpOXNcvZJPAKCkjBwdqxPDhmnDiSBUSYMwRTkPxqtnlbrWf0VZmvQH9eGJ/HfA=
+ bh=4FnLmmYGOFuTlGOnQ5tOTIeTQviOmqsqv8TyD+ZaiuU=;
+ b=k1jrhDMJY4laLokaHZ/P3sFvapDhefOcyCbmpQXrHjIYgRbONd99FO+sANlwOZ48iAG4JctelXyAWk9F7NpQCAU7rr3Rg80t4w/afV0PfDvWWut1mlIil3/Kn2txTr8JwxqeIAmhLkng7li9u2H7aKbN06teDMqh2DItrQhGjRU=
 Received: from MN2PR11MB4063.namprd11.prod.outlook.com (10.255.180.22) by
  MN2PR11MB3645.namprd11.prod.outlook.com (20.178.254.13) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2327.24; Wed, 9 Oct 2019 14:05:23 +0000
+ 15.20.2327.24; Wed, 9 Oct 2019 14:05:00 +0000
 Received: from MN2PR11MB4063.namprd11.prod.outlook.com
  ([fe80::ac8c:fc55:d1e2:465f]) by MN2PR11MB4063.namprd11.prod.outlook.com
  ([fe80::ac8c:fc55:d1e2:465f%5]) with mapi id 15.20.2347.016; Wed, 9 Oct 2019
- 14:05:23 +0000
+ 14:05:00 +0000
 From: Jerome Pouiller <Jerome.Pouiller@silabs.com>
 To: zhengbin <zhengbin13@huawei.com>
-Subject: Re: [PATCH v2 3/3] staging: wfx: Make some functions static in sta.c
-Thread-Topic: [PATCH v2 3/3] staging: wfx: Make some functions static in sta.c
-Thread-Index: AQHVfqeMUjq/wiw0DESOFdHci5Rsx6dSV94A
-Date: Wed, 9 Oct 2019 14:05:23 +0000
-Message-ID: <1924991.0e3bHXHc7a@pc-42>
+Subject: Re: [PATCH v2 2/3] staging: wfx: Make function 'wfx_tx_queue_get'
+ static
+Thread-Topic: [PATCH v2 2/3] staging: wfx: Make function 'wfx_tx_queue_get'
+ static
+Thread-Index: AQHVfqeMHiyKfRsDpUiFC7RN8fbpWKdSV8OA
+Date: Wed, 9 Oct 2019 14:05:00 +0000
+Message-ID: <6064386.gearTuvasE@pc-42>
 References: <1570629030-29888-1-git-send-email-zhengbin13@huawei.com>
- <1570629030-29888-4-git-send-email-zhengbin13@huawei.com>
-In-Reply-To: <1570629030-29888-4-git-send-email-zhengbin13@huawei.com>
+ <1570629030-29888-3-git-send-email-zhengbin13@huawei.com>
+In-Reply-To: <1570629030-29888-3-git-send-email-zhengbin13@huawei.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -73,13 +75,13 @@ authentication-results: spf=none (sender IP is )
  smtp.mailfrom=Jerome.Pouiller@silabs.com; 
 x-originating-ip: [37.71.187.125]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 4c86aae2-0bb9-4880-1bd1-08d74cc1ba27
+x-ms-office365-filtering-correlation-id: e14f43c1-ce64-4ade-1fc2-08d74cc1accd
 x-ms-traffictypediagnostic: MN2PR11MB3645:
-x-microsoft-antispam-prvs: <MN2PR11MB36456DC63E9567FCD3BC601C93950@MN2PR11MB3645.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:108;
+x-microsoft-antispam-prvs: <MN2PR11MB3645351517DD888EAA351C5F93950@MN2PR11MB3645.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:1775;
 x-forefront-prvs: 018577E36E
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(7916004)(136003)(366004)(346002)(376002)(39850400004)(396003)(189003)(199004)(99286004)(86362001)(25786009)(229853002)(6436002)(478600001)(76176011)(6246003)(64756008)(71190400001)(66446008)(71200400001)(305945005)(14454004)(66476007)(66556008)(446003)(11346002)(66946007)(66066001)(9686003)(5660300002)(8676002)(6512007)(316002)(81166006)(76116006)(8936002)(256004)(66574012)(6506007)(6916009)(81156014)(91956017)(14444005)(4326008)(102836004)(33716001)(26005)(2906002)(7736002)(476003)(6116002)(3846002)(486006)(6486002)(54906003)(186003);
+ SFS:(10009020)(7916004)(136003)(366004)(346002)(376002)(39850400004)(396003)(189003)(199004)(99286004)(86362001)(25786009)(229853002)(6436002)(478600001)(76176011)(6246003)(64756008)(71190400001)(66446008)(71200400001)(305945005)(14454004)(66476007)(66556008)(446003)(11346002)(66946007)(66066001)(9686003)(5660300002)(8676002)(6512007)(316002)(81166006)(76116006)(8936002)(256004)(66574012)(6506007)(6916009)(81156014)(91956017)(5024004)(14444005)(4326008)(102836004)(33716001)(26005)(2906002)(7736002)(476003)(6116002)(3846002)(486006)(6486002)(54906003)(186003);
  DIR:OUT; SFP:1101; SCL:1; SRVR:MN2PR11MB3645;
  H:MN2PR11MB4063.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
  PTR:InfoNoRecords; MX:1; A:1; 
@@ -87,17 +89,17 @@ received-spf: None (protection.outlook.com: silabs.com does not designate
  permitted sender hosts)
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: OGpBah5pbgAwaVh7mWT7ubovYY8jLzRbGcDf6KGya5xMxVaqj4uVnLEaP0+hMFPNjl2/oc2YtyteADatFJju42FLeHQRXk88mY+yCGv0X8v0bW1OkiZS6+G/r8Jws3zPHuH/HkNkUt0vpt8Oqp8p8MvHJ5d3t4XM2c5qyd5PRGo8x/SE6ypO0jWGJGrCrK88iGaAx/kdZVpZDRsVBqw5cg51v76GbhohGZkkJOcJM1OJk9fNi4eWjJXJBP/+RxTKKBNj9xr6gma5dHjLNUqAVaW6TBRPGYgQYpSik/05M7i531/WEJdywIKaXjMWP6Xy2dEnByLrniVXq6jfpGLlqz4SgTotMCm+NlH4Lhw2ZA1Kx9HLrqpJ9MHXlRXNdxAd85e8eXtfJtTI+p4neJkz8NR23vB1antMPPhlBmF92XQ=
+x-microsoft-antispam-message-info: fg8+bMDNATstZHKpKdbQbmzedQkOkSYaeQDll2NUk2WDkf8Rwp2cF/IIq9NJfZjqAA90WglkRcm7Wt9lqCEernQcL4LcIIFqVrkvDuldL648bkwaZNGScpAhGeUAQyM5cWr+SP/8y7VWlBS4K3sJokMoj8WozHr7h5J0KpsaguJu3IR5k9ifA6TCYGWmtYGtqlb4Dc56PZJ2Coo5jQH1bqQo6VuU70NGOoWwlSCAAUueyrL1bMbqD1gv1b4vHJezO+kelcpv/8JHC+o1I0OzNBrnzrqVt+jLALZOEyi4lTJ6Y6e75qVlUXewWm1+0m9cdphN5XnE1LQLzYPy6HrMVYlCqbpfcG8BxEILTFHhzvg+TuA6wv/3zPcXH6cZ0WaGfPN/Mf7pppgsNuVfWEuYzago1GagF92HvHi4t7m35Hk=
 x-ms-exchange-transport-forked: True
-Content-ID: <D88A6A4924D74143B78F4A6EC727AF07@namprd11.prod.outlook.com>
+Content-ID: <A73B836C8E1C3148B54FB9E964932A5C@namprd11.prod.outlook.com>
 MIME-Version: 1.0
 X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4c86aae2-0bb9-4880-1bd1-08d74cc1ba27
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Oct 2019 14:05:23.0219 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: e14f43c1-ce64-4ade-1fc2-08d74cc1accd
+X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Oct 2019 14:05:00.5998 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 54dbd822-5231-4b20-944d-6f4abcd541fb
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 6HLupnegkjdDvXS8hh2krSxmx0yepjMJIMxbS6Rz++IsMmuuA9Z6Sfym7yI9OwOa4+mogIDzk0aQoUhDbi95uQ==
+X-MS-Exchange-CrossTenant-userprincipalname: N0ctssEhLBoR02z6anFEDzqcLivgCxVN6/4EzDIHa/8pwlX0ke8p+4BMnUS2d2kifJAckKYJTdPdrVpQntbh8A==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB3645
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -120,135 +122,45 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 On Wednesday 9 October 2019 15:43:35 CEST zhengbin wrote:
+> CAUTION: This email originated from outside of the organization. Do not c=
+lick links or open attachments unless you recognize the sender and know the=
+ content is safe.
+> =
+
+> =
+
 > Fix sparse warnings:
 > =
 
-> drivers/staging/wfx/sta.c:269:6: warning: symbol 'wfx_update_filtering_wo=
-rk' was not declared. Should it be static?
-> drivers/staging/wfx/sta.c:475:6: warning: symbol 'wfx_event_handler_work'=
- was not declared. Should it be static?
-> drivers/staging/wfx/sta.c:521:6: warning: symbol 'wfx_bss_loss_work' was =
-not declared. Should it be static?
-> drivers/staging/wfx/sta.c:528:6: warning: symbol 'wfx_bss_params_work' wa=
+> drivers/staging/wfx/queue.c:218:16: warning: symbol 'wfx_tx_queue_get' wa=
 s not declared. Should it be static?
-> drivers/staging/wfx/sta.c:539:6: warning: symbol 'wfx_set_beacon_wakeup_p=
-eriod_work' was not declared. Should it be static?
-> drivers/staging/wfx/sta.c:732:6: warning: symbol 'wfx_unjoin_work' was no=
-t declared. Should it be static?
-> drivers/staging/wfx/sta.c:794:6: warning: symbol 'wfx_set_cts_work' was n=
-ot declared. Should it be static?
-> drivers/staging/wfx/sta.c:1234:6: warning: symbol 'wfx_set_tim_work' was =
-not declared. Should it be static?
 > =
 
 > Reported-by: Hulk Robot <hulkci@huawei.com>
 > Signed-off-by: zhengbin <zhengbin13@huawei.com>
 > ---
->  drivers/staging/wfx/sta.c | 16 ++++++++--------
->  1 file changed, 8 insertions(+), 8 deletions(-)
+>  drivers/staging/wfx/queue.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
 > =
 
-> diff --git a/drivers/staging/wfx/sta.c b/drivers/staging/wfx/sta.c
-> index 2855d14..d19bab6 100644
-> --- a/drivers/staging/wfx/sta.c
-> +++ b/drivers/staging/wfx/sta.c
-> @@ -269,7 +269,7 @@ void wfx_update_filtering(struct wfx_vif *wvif)
->         kfree(bf_tbl);
+> diff --git a/drivers/staging/wfx/queue.c b/drivers/staging/wfx/queue.c
+> index 6f1be4f..c44ffdf 100644
+> --- a/drivers/staging/wfx/queue.c
+> +++ b/drivers/staging/wfx/queue.c
+> @@ -215,7 +215,9 @@ void wfx_tx_queue_put(struct wfx_dev *wdev, struct wf=
+x_queue *queue, struct sk_b
+>         spin_unlock_bh(&queue->queue.lock);
 >  }
 > =
 
-> -void wfx_update_filtering_work(struct work_struct *work)
-> +static void wfx_update_filtering_work(struct work_struct *work)
+> -struct sk_buff *wfx_tx_queue_get(struct wfx_dev *wdev, struct wfx_queue =
+*queue, u32 link_id_map)
+> +static struct sk_buff *wfx_tx_queue_get(struct wfx_dev *wdev,
+> +                                       struct wfx_queue *queue,
+> +                                       u32 link_id_map)
 >  {
->         struct wfx_vif *wvif =3D container_of(work, struct wfx_vif, updat=
-e_filtering_work);
-> =
-
-> @@ -475,7 +475,7 @@ static void wfx_event_report_rssi(struct wfx_vif *wvi=
-f, uint8_t raw_rcpi_rssi)
->         ieee80211_cqm_rssi_notify(wvif->vif, cqm_evt, rcpi_rssi, GFP_KERN=
-EL);
->  }
-> =
-
-> -void wfx_event_handler_work(struct work_struct *work)
-> +static void wfx_event_handler_work(struct work_struct *work)
->  {
->         struct wfx_vif *wvif =3D
->                 container_of(work, struct wfx_vif, event_handler_work);
-> @@ -521,14 +521,14 @@ void wfx_event_handler_work(struct work_struct *wor=
-k)
->         __wfx_free_event_queue(&list);
->  }
-> =
-
-> -void wfx_bss_loss_work(struct work_struct *work)
-> +static void wfx_bss_loss_work(struct work_struct *work)
->  {
->         struct wfx_vif *wvif =3D container_of(work, struct wfx_vif, bss_l=
-oss_work.work);
-> =
-
->         ieee80211_connection_loss(wvif->vif);
->  }
-> =
-
-> -void wfx_bss_params_work(struct work_struct *work)
-> +static void wfx_bss_params_work(struct work_struct *work)
->  {
->         struct wfx_vif *wvif =3D container_of(work, struct wfx_vif, bss_p=
-arams_work);
-> =
-
-> @@ -539,7 +539,7 @@ void wfx_bss_params_work(struct work_struct *work)
->         mutex_unlock(&wvif->wdev->conf_mutex);
->  }
-> =
-
-> -void wfx_set_beacon_wakeup_period_work(struct work_struct *work)
-> +static void wfx_set_beacon_wakeup_period_work(struct work_struct *work)
->  {
->         struct wfx_vif *wvif =3D container_of(work, struct wfx_vif, set_b=
-eacon_wakeup_period_work);
-> =
-
-> @@ -732,7 +732,7 @@ static void wfx_do_join(struct wfx_vif *wvif)
->                 cfg80211_put_bss(wvif->wdev->hw->wiphy, bss);
->  }
-> =
-
-> -void wfx_unjoin_work(struct work_struct *work)
-> +static void wfx_unjoin_work(struct work_struct *work)
->  {
->         struct wfx_vif *wvif =3D container_of(work, struct wfx_vif, unjoi=
-n_work);
-> =
-
-> @@ -794,7 +794,7 @@ int wfx_sta_remove(struct ieee80211_hw *hw, struct ie=
-ee80211_vif *vif,
->         return 0;
->  }
-> =
-
-> -void wfx_set_cts_work(struct work_struct *work)
-> +static void wfx_set_cts_work(struct work_struct *work)
->  {
->         struct wfx_vif *wvif =3D container_of(work, struct wfx_vif, set_c=
-ts_work);
->         u8 erp_ie[3] =3D { WLAN_EID_ERP_INFO, 1, 0 };
-> @@ -1234,7 +1234,7 @@ static int wfx_set_tim_impl(struct wfx_vif *wvif, b=
-ool aid0_bit_set)
->         return 0;
->  }
-> =
-
-> -void wfx_set_tim_work(struct work_struct *work)
-> +static void wfx_set_tim_work(struct work_struct *work)
->  {
->         struct wfx_vif *wvif =3D container_of(work, struct wfx_vif, set_t=
-im_work);
-> =
-
+>         struct sk_buff *skb =3D NULL;
+>         struct sk_buff *item;
 > --
 > 2.7.4
 > =
