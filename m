@@ -1,52 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EBB9DD17DC
-	for <lists+driverdev-devel@lfdr.de>; Wed,  9 Oct 2019 20:55:17 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id F200AD17EA
+	for <lists+driverdev-devel@lfdr.de>; Wed,  9 Oct 2019 20:58:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EB1358692B;
-	Wed,  9 Oct 2019 18:55:15 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A40B4234AC;
+	Wed,  9 Oct 2019 18:58:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NkekJAQR762D; Wed,  9 Oct 2019 18:55:15 +0000 (UTC)
+	with ESMTP id SBUgUUcJYl3U; Wed,  9 Oct 2019 18:58:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 62D9586A24;
-	Wed,  9 Oct 2019 18:55:14 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3E662204EA;
+	Wed,  9 Oct 2019 18:58:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E80821BF3FD
- for <devel@linuxdriverproject.org>; Wed,  9 Oct 2019 18:55:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A16C31BF3FD
+ for <devel@linuxdriverproject.org>; Wed,  9 Oct 2019 18:58:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id E44BC233B9
- for <devel@linuxdriverproject.org>; Wed,  9 Oct 2019 18:55:12 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9C524204EA
+ for <devel@linuxdriverproject.org>; Wed,  9 Oct 2019 18:58:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CNGQL+xRqDdH for <devel@linuxdriverproject.org>;
- Wed,  9 Oct 2019 18:55:11 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail2-relais-roc.national.inria.fr
- (mail2-relais-roc.national.inria.fr [192.134.164.83])
- by silver.osuosl.org (Postfix) with ESMTPS id 2FDBE204EA
- for <devel@driverdev.osuosl.org>; Wed,  9 Oct 2019 18:55:10 +0000 (UTC)
-X-IronPort-AV: E=Sophos;i="5.67,277,1566856800"; d="scan'208";a="405482097"
-Received: from 81-65-53-202.rev.numericable.fr (HELO hadrien) ([81.65.53.202])
- by mail2-relais-roc.national.inria.fr with
- ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 09 Oct 2019 20:55:08 +0200
-Date: Wed, 9 Oct 2019 20:55:08 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Wambui Karuga <wambui.karugax@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: kpc2000: Remove unnecessary
- return variable
-In-Reply-To: <20191009170703.GA2869@wambui>
-Message-ID: <alpine.DEB.2.21.1910092054540.2570@hadrien>
-References: <20191009170703.GA2869@wambui>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+ with ESMTP id z2Uq3W2QU1Tg for <devel@linuxdriverproject.org>;
+ Wed,  9 Oct 2019 18:58:17 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by silver.osuosl.org (Postfix) with ESMTPS id 924DD204DA
+ for <devel@driverdev.osuosl.org>; Wed,  9 Oct 2019 18:58:17 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x99ImqCW142489;
+ Wed, 9 Oct 2019 18:58:16 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ content-transfer-encoding : in-reply-to; s=corp-2019-08-05;
+ bh=P+/ghBe4HEy3gT/gHu/XLIQ7wMnVX6Y2sBI1mZRANTs=;
+ b=PoYxF+L2FSYq/4fntDJ+pUMOqr7X/igLOyqhcv9gmAcueiiFUBKR4R4CCC5qLlUh3LwZ
+ QhSA9pGNREiLsxD4iJmG9JyE1UlsmJTvn1NSGEw+FOhUH8DXSPy8qlcMiR9lHWtZ9/Ii
+ 7sLLObGyby5kLWkWM64pW7tV9UcPnxqQk3IW036zJJpWnKQH5S3N29f4/1fuBHt+/7i5
+ +RbgIhe9uh7R4UKx+iNESuiTxJCsuDO6x/Umx5iOAkwia82+Px2SZKoUK5tl2XZ6wLyh
+ gWoGw2wjCrAiSDyAu7qJLzWqoJ5ylpb57kPd5p/JfvXtjb2hAauszv9Tqc+niAFVSdMT 1Q== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by userp2130.oracle.com with ESMTP id 2vejkuppur-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 09 Oct 2019 18:58:16 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x99InBPk069950;
+ Wed, 9 Oct 2019 18:58:15 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by aserp3030.oracle.com with ESMTP id 2vh8k1atss-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 09 Oct 2019 18:58:15 +0000
+Received: from abhmp0004.oracle.com (abhmp0004.oracle.com [141.146.116.10])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x99IwEMv023925;
+ Wed, 9 Oct 2019 18:58:14 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Wed, 09 Oct 2019 11:58:13 -0700
+Date: Wed, 9 Oct 2019 21:58:07 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+Subject: Re: [PATCH 0/7] Fix various compilation issues with wfx driver
+Message-ID: <20191009185807.GB20470@kadam>
+References: <20191008094232.10014-1-Jerome.Pouiller@silabs.com>
+ <20191008151046.GA2862250@kroah.com> <6487016.ESlEkJNu7c@pc-42>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <6487016.ESlEkJNu7c@pc-42>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9405
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1908290000 definitions=main-1910090153
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9405
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
+ definitions=main-1910090153
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,68 +98,59 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com,
- linux-kernel@vger.kernel.org, gregkh@linuxfoundation.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Wed, Oct 09, 2019 at 03:13:14PM +0000, Jerome Pouiller wrote:
+> On Tuesday 8 October 2019 17:10:56 CEST Greg Kroah-Hartman wrote:
+> > On Tue, Oct 08, 2019 at 09:42:47AM +0000, Jerome Pouiller wrote:
+> > > From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> > >
+> > > Most of problems are related to big-endian architectures.
+> > =
 
+> > kbuild still reports 2 errors with these patches applied:
+> > =
 
-On Wed, 9 Oct 2019, Wambui Karuga wrote:
+> > Regressions in current branch:
+> > =
 
-> Remove unnecessary variable `val` in kp_spi_read_reg() that only holds
-> the return value from readq().
-> Issue found by coccinelle using the script:
->
-> @@
-> local idexpression ret;
-> expression e;
-> @@
->
-> -ret =
-> +return
->      e;
-> -return ret;
->
-> Signed-off-by: Wambui Karuga <wambui.karugax@gmail.com>
+> > drivers/staging/wfx/hif_tx.c:82:2-8: preceding lock on line 65
+> =
 
-Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+> As I replied to Julia, this behavior is intended.
+> =
 
+> > drivers/staging/wfx/main.c:188:14-21: ERROR: PTR_ERR applied after init=
+ialization to constant on line 183
+> =
 
-> ---
->  drivers/staging/kpc2000/kpc2000_spi.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
->
-> diff --git a/drivers/staging/kpc2000/kpc2000_spi.c b/drivers/staging/kpc2000/kpc2000_spi.c
-> index 3be33c450cab..6ba94b0131da 100644
-> --- a/drivers/staging/kpc2000/kpc2000_spi.c
-> +++ b/drivers/staging/kpc2000/kpc2000_spi.c
-> @@ -162,14 +162,12 @@ union kp_spi_ffctrl {
->  kp_spi_read_reg(struct kp_spi_controller_state *cs, int idx)
->  {
->  	u64 __iomem *addr = cs->base;
-> -	u64 val;
->
->  	addr += idx;
->  	if ((idx == KP_SPI_REG_CONFIG) && (cs->conf_cache >= 0))
->  		return cs->conf_cache;
->
-> -	val = readq(addr);
-> -	return val;
-> +	return readq(addr);
->  }
->
->  	static inline void
-> --
-> 2.23.0
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191009170703.GA2869%40wambui.
->
+> This is a false positive, as confirmed by Dan.
+> =
+
+> You may also notice:
+> =
+
+>   drivers/staging/wfx/scan.c:207 wfx_scan_work() warn: inconsistent retur=
+ns 'sem:&wvif->scan.lock'
+> =
+
+> I also consider it as a false positive.
+
+Yeah.  I thought it might be.  The beauty of 0day bot is that normally
+the warnings come really quick after the original author wrote the code
+so it's fresh in their heads.  I suspected it might be a false positive
+but I wasn't sure either way and I try not to spend a lot of time
+reviewing those warnings.
+
+regards,
+dan carpenter
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
