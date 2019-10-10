@@ -1,51 +1,96 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A1288D26D2
-	for <lists+driverdev-devel@lfdr.de>; Thu, 10 Oct 2019 11:57:58 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9C05AD27FA
+	for <lists+driverdev-devel@lfdr.de>; Thu, 10 Oct 2019 13:31:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6E93287DC8;
-	Thu, 10 Oct 2019 09:57:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E561124B99;
+	Thu, 10 Oct 2019 11:31:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DhR1BgcO4R9y; Thu, 10 Oct 2019 09:57:55 +0000 (UTC)
+	with ESMTP id CSCIPjUAcsgy; Thu, 10 Oct 2019 11:31:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CB9CE87DC2;
-	Thu, 10 Oct 2019 09:57:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8206E24856;
+	Thu, 10 Oct 2019 11:31:49 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9B6FB1BF3FC
- for <devel@linuxdriverproject.org>; Thu, 10 Oct 2019 09:57:52 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 66EF31BF3C0
+ for <devel@linuxdriverproject.org>; Thu, 10 Oct 2019 11:31:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9676786909
- for <devel@linuxdriverproject.org>; Thu, 10 Oct 2019 09:57:52 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 59D6585CE6
+ for <devel@linuxdriverproject.org>; Thu, 10 Oct 2019 11:31:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1Olwl7bimpct for <devel@linuxdriverproject.org>;
- Thu, 10 Oct 2019 09:57:52 +0000 (UTC)
+ with ESMTP id NENyEEsEhx1s for <devel@linuxdriverproject.org>;
+ Thu, 10 Oct 2019 11:31:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1723F868DC
- for <devel@driverdev.osuosl.org>; Thu, 10 Oct 2019 09:57:52 +0000 (UTC)
-Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
- by youngberry.canonical.com with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <colin.king@canonical.com>)
- id 1iIVCf-0001GB-5Y; Thu, 10 Oct 2019 09:57:49 +0000
-From: Colin King <colin.king@canonical.com>
-To: =?UTF-8?q?J=C3=A9r=C3=B4me=20Pouiller?= <jerome.pouiller@silabs.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org
-Subject: [PATCH][next] staging: wfx: fix spelling mistake "non existant" ->
- "non-existent"
-Date: Thu, 10 Oct 2019 10:57:48 +0100
-Message-Id: <20191010095748.17047-1-colin.king@canonical.com>
-X-Mailer: git-send-email 2.20.1
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9C36E85B48
+ for <devel@driverdev.osuosl.org>; Thu, 10 Oct 2019 11:31:46 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9ABTRun106466;
+ Thu, 10 Oct 2019 11:30:43 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=p9WbR0dM77WKACvOXHaAs6Uq3LQwLedHdNpHjAHMW8A=;
+ b=p9Wy5RieNe/GN/fEG+J4DAt8eFi9Zim3eaUJS0Mh9TzeFuhfPtaj0naj57FJkEl3npZY
+ Su+yziOblZPOTH0UFed4YHxVSppZLI7RqKBqyhIBMl0jbmYfPiVlufFYayQmIKh18wP1
+ 1D3F6fGjybOFDMdNP0P0mzFos2401ntNhdpUzr7a78yHWz1NUCqIBUYsTUUdCBNrZR1O
+ ERHGVL5rpIsRksinOM1DKSabsvHNnvdTYjrXkRG5xStc6W4K8tvt0hQ9UQXOsO9dYmbQ
+ A6akrOj2duAHzuBtOD8DnNz5bvLx11jTFBxoFqyeXpsMmUlOlStlj+8bU1+5EhLsCfvo sw== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by userp2130.oracle.com with ESMTP id 2vejkutg37-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 10 Oct 2019 11:30:43 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9ABRp3x054573;
+ Thu, 10 Oct 2019 11:30:43 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3030.oracle.com with ESMTP id 2vhrxdj78u-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 10 Oct 2019 11:30:43 +0000
+Received: from abhmp0022.oracle.com (abhmp0022.oracle.com [141.146.116.28])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x9ABUfns026696;
+ Thu, 10 Oct 2019 11:30:42 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 10 Oct 2019 04:30:40 -0700
+Date: Thu, 10 Oct 2019 14:30:34 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Alexander Gordeev <a.gordeev.box@gmail.com>
+Subject: Re: [PATCH v2 1/2] dmaengine: avalon: Intel Avalon-MM DMA Interface
+ for PCIe
+Message-ID: <20191010113034.GN13286@kadam>
+References: <cover.1570558807.git.a.gordeev.box@gmail.com>
+ <3ed3c016b7fbe69e36023e7ee09c53acac8a064c.1570558807.git.a.gordeev.box@gmail.com>
+ <20191009121441.GM25098@kadam>
+ <20191009145811.GA3823@AlexGordeev-DPT-VI0092>
+ <20191009185323.GG13286@kadam>
+ <20191010085144.GA14197@AlexGordeev-DPT-VI0092>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20191010085144.GA14197@AlexGordeev-DPT-VI0092>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9405
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1908290000 definitions=main-1910100105
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9405
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
+ definitions=main-1910100106
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,36 +103,79 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Michael Chen <micchen@altera.com>,
+ dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Colin Ian King <colin.king@canonical.com>
+On Thu, Oct 10, 2019 at 10:51:45AM +0200, Alexander Gordeev wrote:
+> On Wed, Oct 09, 2019 at 09:53:23PM +0300, Dan Carpenter wrote:
+> > > > > +	u32 *rd_flags = hw->dma_desc_table_rd.cpu_addr->flags;
+> > > > > +	u32 *wr_flags = hw->dma_desc_table_wr.cpu_addr->flags;
+> > > > > +	struct avalon_dma_desc *desc;
+> > > > > +	struct virt_dma_desc *vdesc;
+> > > > > +	bool rd_done;
+> > > > > +	bool wr_done;
+> > > > > +
+> > > > > +	spin_lock(lock);
+> > > > > +
+> > > > > +	rd_done = (hw->h2d_last_id < 0);
+> > > > > +	wr_done = (hw->d2h_last_id < 0);
+> > > > > +
+> > > > > +	if (rd_done && wr_done) {
+> > > > > +		spin_unlock(lock);
+> > > > > +		return IRQ_NONE;
+> > > > > +	}
+> > > > > +
+> > > > > +	do {
+> > > > > +		if (!rd_done && rd_flags[hw->h2d_last_id])
+> > > > > +			rd_done = true;
+> > > > > +
+> > > > > +		if (!wr_done && wr_flags[hw->d2h_last_id])
+> > > > > +			wr_done = true;
+> > > > > +	} while (!rd_done || !wr_done);
+> > > > 
+> > > > This loop is very strange.  It feels like the last_id indexes needs
+> > > > to atomic or protected from racing somehow so we don't do an out of
+> > > > bounds read.
+> 
+> [...]
+> 
+> > You're missing my point.  When we set
+> > hw->d2h_last_id = 1;
+> [1]
+> > ...
+> > hw->d2h_last_id = 2;
+> [2]
+> 
+> > There is a tiny moment where ->d2h_last_id is transitioning from 1 to 2
+> > where its value is unknown.  We're in a busy loop here so we have a
+> > decent chance of hitting that 1/1000,000th of a second.  If we happen to
+> > hit it at exactly the right time then we're reading from a random
+> > address and it will cause an oops.
+> > 
+> > We have to use atomic_t types or something to handle race conditions.
+> 
+> Err.. I am still missing the point :( In your example I do see a chance
+> for a reader to read out 1 at point in time [2] - because of SMP race.
+> But what could it be other than 1 or 2?
+> 
 
-There is a spelling mistake in a dev_warn message. Fix it.
+The 1 to 2 transition was a poorly chosen example, but a -1 to 1
+trasition is better.  The cpu could write a byte at a time.  So maybe
+it only wrote the two highest bytes so now it's 0xffff.  It's not -1 and
+it's not 1 and it's not a valid index.
 
-Signed-off-by: Colin Ian King <colin.king@canonical.com>
----
- drivers/staging/wfx/hif_rx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> Anyways, all code paths dealing with h2d_last_id and d2h_last_id indexes
+> are protected with a spinlock.
 
-diff --git a/drivers/staging/wfx/hif_rx.c b/drivers/staging/wfx/hif_rx.c
-index 52db02d3aa41..36e171b27ae2 100644
---- a/drivers/staging/wfx/hif_rx.c
-+++ b/drivers/staging/wfx/hif_rx.c
-@@ -137,7 +137,7 @@ static int hif_receive_indication(struct wfx_dev *wdev, struct hif_msg *hif, voi
- 	struct hif_ind_rx *body = buf;
- 
- 	if (!wvif) {
--		dev_warn(wdev->dev, "ignore rx data for non existant vif %d\n", hif->interface);
-+		dev_warn(wdev->dev, "ignore rx data for non-existent vif %d\n", hif->interface);
- 		return 0;
- 	}
- 	skb_pull(skb, sizeof(struct hif_msg) + sizeof(struct hif_ind_rx));
--- 
-2.20.1
+You have to protect both the writer and the reader.  (That's why this
+bug is so easy to spot).  https://lwn.net/Articles/793253/
+
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
