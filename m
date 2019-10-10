@@ -1,73 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 271CAD1EC7
-	for <lists+driverdev-devel@lfdr.de>; Thu, 10 Oct 2019 05:09:50 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6646BD1ECC
+	for <lists+driverdev-devel@lfdr.de>; Thu, 10 Oct 2019 05:12:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9109087CAC;
-	Thu, 10 Oct 2019 03:09:48 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AAC9986B15;
+	Thu, 10 Oct 2019 03:11:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PsxDPMIUVTzT; Thu, 10 Oct 2019 03:09:47 +0000 (UTC)
+	with ESMTP id H2O8HHLADGRT; Thu, 10 Oct 2019 03:11:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E1D3387ABB;
-	Thu, 10 Oct 2019 03:09:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7E30A85A58;
+	Thu, 10 Oct 2019 03:11:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 61F8C1BF282
- for <devel@linuxdriverproject.org>; Thu, 10 Oct 2019 03:09:44 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 15FF61BF9B9
+ for <devel@linuxdriverproject.org>; Thu, 10 Oct 2019 03:11:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5EBA187B07
- for <devel@linuxdriverproject.org>; Thu, 10 Oct 2019 03:09:44 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1231085FE4
+ for <devel@linuxdriverproject.org>; Thu, 10 Oct 2019 03:11:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sTcmo23jzr8s for <devel@linuxdriverproject.org>;
- Thu, 10 Oct 2019 03:09:43 +0000 (UTC)
+ with ESMTP id B6zLKABVhbof for <devel@linuxdriverproject.org>;
+ Thu, 10 Oct 2019 03:11:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
- [209.85.214.195])
- by whitealder.osuosl.org (Postfix) with ESMTPS id C903087ABB
- for <devel@driverdev.osuosl.org>; Thu, 10 Oct 2019 03:09:43 +0000 (UTC)
-Received: by mail-pl1-f195.google.com with SMTP id e5so2041005pls.9
- for <devel@driverdev.osuosl.org>; Wed, 09 Oct 2019 20:09:43 -0700 (PDT)
+Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
+ [209.85.214.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9893B85A58
+ for <devel@driverdev.osuosl.org>; Thu, 10 Oct 2019 03:11:54 +0000 (UTC)
+Received: by mail-pl1-f196.google.com with SMTP id d22so2068043pls.0
+ for <devel@driverdev.osuosl.org>; Wed, 09 Oct 2019 20:11:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id;
- bh=suMFKZQEGEwZr8PRAVj7Gyv2/NzjvEqwMzv67rGfm+k=;
- b=Bmua95JQ8Gp4DKSJGPuU+V73PT1xBrJUUOEmk+MkDx6be98iCs8yRGHFL+rdSgDoa5
- 2w5BmBLPT5T43AREMJjHkYI5WusYapm2Pixdd7QtJ925mTNYfEyXtHH1RtQ3+6UuxJUT
- sPs9HoAYW3iG2UjgkMBPPJ0tEnYFxuKsOcthVfXRQtZ0vn0J+6JmbmEzQPLAJ8hyuaCR
- TN/iuNtKagXlnzyhsqClpAHp9KkpNELImOQFYdxZl3U0AIHenVm4dcUa2VEJ3zy1zF5w
- NX1k8hbf+nUOnommX5uL8Z3JA5zTrb8CejvAwaE4lm17MOacaZ2ECFWmOmYGQ+CzPyVl
- wvSA==
+ bh=D/KNHz5BwPe8IYjqa/nxA57E4GIlBboQkvtK/MCahh0=;
+ b=fKK7M6r9XMD030uB0tGC5Zm7u+1xds6ICaE53rNv9XP+LRFFf/mM1qekxlWcYwAFBC
+ 7/o6L3mHz+Q5AW21AL7tdt96KczaCJjPls/tB/twdyFiBeeJgyfjKMBMHE4I+XH3DVw7
+ S35xJL7EuNrf9zYy1kJYghMW8R2COu2qQYq1EeI2DisV2nuiWTnxg7HpsZeJ/e89+5Cr
+ TA+0/yPWcZ/ui57oygr00sIxDRFqZJs3xxKITsj+WqR424AQgTa6dbKCi6u4BNTWULgQ
+ LMvLKVNRv7LuhCOEdTiB8iUgtGKVbDBE2/v+Hpw5Bj47UKc6fqGqmVhoJ4J7j0z2xfic
+ vYkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=suMFKZQEGEwZr8PRAVj7Gyv2/NzjvEqwMzv67rGfm+k=;
- b=arFzfk8GelMuEHWj40ZQrkPmTAKApR3nwSZwsFTlJuQZORkCEyL79sntfZNdM2OPrY
- aM9PLsXcm+TFuGGmG5Pl+Ue1Zsj7f6Z8nFf9m7uMV0QP0gIqyXO718/f2uKM0ALcgSHn
- vie1unKntUOpJIBDaVYBRmIK9+q5sq0uIpUABV8BdymvDJ2WUUsTNhU6QdTn6Fn0wn88
- b0d43RRD2S2sp/Ki1NkvlmxHv8h4njJZuNVM6hU2vMN9Bx51JtUByi81GigoRhuGM/Hy
- NC0BANITiXkrF8fQ+c+tmPBkI4LDgjjluqQhHa2X3Bscw5KbNSc8TtGASYVGQkkNaJRd
- Ek+w==
-X-Gm-Message-State: APjAAAXszxxPI+aZaWxCVDozUHEh+T9rGlEuRuP9pjoAbLkgjjpDULKs
- /1y2DitbC3N4jG9I4+k36bQ=
-X-Google-Smtp-Source: APXvYqwyj4UgbldcCqsMP605uHyuy2dA8ef1zfiZvkS6zJoecbO4KkZkKGNsoDshNSSb2DIv4dbGkA==
-X-Received: by 2002:a17:902:d90e:: with SMTP id
- c14mr6652911plz.91.1570676983514; 
- Wed, 09 Oct 2019 20:09:43 -0700 (PDT)
+ bh=D/KNHz5BwPe8IYjqa/nxA57E4GIlBboQkvtK/MCahh0=;
+ b=lHFD4vRoJjG5WIhsygmWUBjMR6Q2jl+51NyqWj5wX/2y678ag63W0r0byQ87IxPkyC
+ dWvQDIr51ieJn0KucOWYFJv6PSAxdTmgIko6K0i7XBP68TE7lhhQ6Nc0EsyOfCCLEp4q
+ MzNb8iTAYEjJ7CTTHM96aS7d3zx01p4tNyZR5YM9+DK7bBUUx6xpKJpnqqHNNMtxjtK4
+ BLjJe7xaBri+7due/zfVNyg8fSIC6aK1ISCDLnOsaeiX9nkS/WepYj8NeesSXya+vhfo
+ vCfAaP5Wu2v3FDuhh4+28Nim41hBNYyWURixIEo82+7UH1VBmgWabFB86iSIJG4Rfz+6
+ 9Jjw==
+X-Gm-Message-State: APjAAAURybwRRbLwtinu1ELta6WZNlZ4kjN0qsEcKFCEUt8XiqJkB7nm
+ kQPihWHHsXnRgF+1fFh8KM8=
+X-Google-Smtp-Source: APXvYqzCw7q+QR6Sb72KBCYSpYvYD5cC8rr/pEpNA+HHhXTr9aH++Si0CSkNaSI6dP4NRceJ+X6fNQ==
+X-Received: by 2002:a17:902:848e:: with SMTP id
+ c14mr6732262plo.217.1570677114247; 
+ Wed, 09 Oct 2019 20:11:54 -0700 (PDT)
 Received: from panther.hsd1.or.comcast.net ([45.52.215.209])
- by smtp.gmail.com with ESMTPSA id v8sm9713196pje.6.2019.10.09.20.09.42
+ by smtp.gmail.com with ESMTPSA id b4sm2810934pju.16.2019.10.09.20.11.52
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Wed, 09 Oct 2019 20:09:42 -0700 (PDT)
+ Wed, 09 Oct 2019 20:11:53 -0700 (PDT)
 From: Chandra Annamaneni <chandra627@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH] KPC2000: kpc2000_spi.c: Fix style issues (missing blank line)
-Date: Wed,  9 Oct 2019 20:09:32 -0700
-Message-Id: <1570676972-4032-1-git-send-email-chandra627@gmail.com>
+Subject: [PATCH] KPC2000: kpc2000_spi.c: Fix style issues (alignment)
+Date: Wed,  9 Oct 2019 20:11:45 -0700
+Message-Id: <1570677105-4151-1-git-send-email-chandra627@gmail.com>
 X-Mailer: git-send-email 2.7.4
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -90,25 +90,44 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Resolved: "CHECK: Please use a blank line after.." from checkpatch.pl
+Resolved: "CHECK: Alignment should match open parenthesis" from checkpatch.pl
 
 Signed-off-by: Chandra Annamaneni <chandra627@gmail.com>
 ---
- drivers/staging/kpc2000/kpc2000_spi.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/staging/kpc2000/kpc2000_spi.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/staging/kpc2000/kpc2000_spi.c b/drivers/staging/kpc2000/kpc2000_spi.c
-index ef78b6d..0d510f0 100644
+index 0d510f0..ccf88b8 100644
 --- a/drivers/staging/kpc2000/kpc2000_spi.c
 +++ b/drivers/staging/kpc2000/kpc2000_spi.c
-@@ -50,6 +50,7 @@ static struct flash_platform_data p2kr0_spi0_pdata = {
- 	.nr_parts =	ARRAY_SIZE(p2kr0_spi0_parts),
- 	.parts =	p2kr0_spi0_parts,
- };
-+
- static struct flash_platform_data p2kr0_spi1_pdata = {
- 	.name =		"SPI1",
- 	.nr_parts =	ARRAY_SIZE(p2kr0_spi1_parts),
+@@ -316,19 +316,19 @@ kp_spi_transfer_one_message(struct spi_master *master, struct spi_message *m)
+ 		if (transfer->speed_hz > KP_SPI_CLK ||
+ 		    (len && !(rx_buf || tx_buf))) {
+ 			dev_dbg(kpspi->dev, "  transfer: %d Hz, %d %s%s, %d bpw\n",
+-					transfer->speed_hz,
+-					len,
+-					tx_buf ? "tx" : "",
+-					rx_buf ? "rx" : "",
+-					transfer->bits_per_word);
++				transfer->speed_hz,
++				len,
++				tx_buf ? "tx" : "",
++				rx_buf ? "rx" : "",
++				transfer->bits_per_word);
+ 			dev_dbg(kpspi->dev, "  transfer -EINVAL\n");
+ 			return -EINVAL;
+ 		}
+ 		if (transfer->speed_hz &&
+ 		    transfer->speed_hz < (KP_SPI_CLK >> 15)) {
+ 			dev_dbg(kpspi->dev, "speed_hz %d below minimum %d Hz\n",
+-					transfer->speed_hz,
+-					KP_SPI_CLK >> 15);
++				transfer->speed_hz,
++				KP_SPI_CLK >> 15);
+ 			dev_dbg(kpspi->dev, "  speed_hz -EINVAL\n");
+ 			return -EINVAL;
+ 		}
 -- 
 2.7.4
 
