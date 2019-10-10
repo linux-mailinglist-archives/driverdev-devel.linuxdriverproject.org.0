@@ -2,63 +2,102 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EA633D2EC1
-	for <lists+driverdev-devel@lfdr.de>; Thu, 10 Oct 2019 18:45:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7FE91D3364
+	for <lists+driverdev-devel@lfdr.de>; Thu, 10 Oct 2019 23:27:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id EDF0424DFD;
-	Thu, 10 Oct 2019 16:45:12 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 71960253CA;
+	Thu, 10 Oct 2019 21:27:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6yDniJAencxI; Thu, 10 Oct 2019 16:45:12 +0000 (UTC)
+	with ESMTP id qdq6Ce6qtxDu; Thu, 10 Oct 2019 21:27:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E10E424C93;
-	Thu, 10 Oct 2019 16:45:10 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by silver.osuosl.org (Postfix) with ESMTP id 63802252B7;
+	Thu, 10 Oct 2019 21:27:20 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6EACF1BF599
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 10 Oct 2019 16:45:08 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AA31E1BF3AF
+ for <devel@linuxdriverproject.org>; Thu, 10 Oct 2019 21:27:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6997386C99
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 10 Oct 2019 16:45:08 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A466086DD4
+ for <devel@linuxdriverproject.org>; Thu, 10 Oct 2019 21:27:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id djTDzYpZWMHf
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 10 Oct 2019 16:45:07 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 6DA9886B7C
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 10 Oct 2019 16:45:07 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 10 Oct 2019 09:45:06 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.67,280,1566889200"; d="scan'208";a="395454754"
-Received: from rjwysock-mobl1.ger.corp.intel.com (HELO [10.249.147.245])
- ([10.249.147.245])
- by fmsmga006.fm.intel.com with ESMTP; 10 Oct 2019 09:45:03 -0700
-Subject: Re: [PATCH v2] PCI: PM: Move to D0 before calling
- pci_legacy_resume_early()
-To: Bjorn Helgaas <helgaas@kernel.org>
-References: <20191008195624.GA198287@google.com>
-From: "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>
-Organization: Intel Technology Poland Sp. z o. o., KRS 101882, ul. Slowackiego
- 173, 80-298 Gdansk
-Message-ID: <b64aaaf0-7959-d429-2ee3-bfde07ed811e@intel.com>
-Date: Thu, 10 Oct 2019 18:45:02 +0200
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
-MIME-Version: 1.0
-In-Reply-To: <20191008195624.GA198287@google.com>
+ with ESMTP id PjhJRjEUamAG for <devel@linuxdriverproject.org>;
+ Thu, 10 Oct 2019 21:27:15 +0000 (UTC)
+X-Greylist: delayed 00:59:20 by SQLgrey-1.7.6
+Received: from NAM04-BN3-obe.outbound.protection.outlook.com
+ (mail-eopbgr680049.outbound.protection.outlook.com [40.107.68.49])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3DD5686DC6
+ for <devel@driverdev.osuosl.org>; Thu, 10 Oct 2019 21:27:15 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=KTWh3CDqdCaUcqQcwmC7w+LSBu2mmUyn9E+iw+PXHhe9sI2cYYeGwyq2ZMW4fLuX1CALLp/cJNDbrFIa/hzJBN9rLNgM2tglQR47lxj4y6Lyq8mVJSx0bbYBcGtXdIjlQsrGnDHPfeMh/Vd/J5s+TgmPE/98BPmYUZYWweR2WRPhk2Y7QJVgqab/AkB7w+d33d9EI6/Tg98I9aWVe8tGxmxYvcjFNRxAkEL+HPtW7Sw16Xde4NsjNp8tyNw9d3mXfx0zfuta3b+eJMxcQY2B8O6+zM7gxzF5uR1G86GPCkVPzASiumkFpXFvFV+47QBdGpIBsvhMaqDp0gsvyMFDMg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=YvG0EKYDYGz3Y40vwwpNNVOPf2vKPpDUfqp+eN24uCI=;
+ b=AxnVDMVeiN1Igx9thbq1CIwTBeSGtjemrsAL0Ui15wU+WgThLk7/rCXpqVX/jPALFWiH5ZNJOuPxh02eMtXvHRJ8cS0hebVBwLkVnXWNeyogrbA9XWcM+/gKELspibJuwFMvNtV5KE2ALY2nKFnRxIck/hgWJeACw8WNgOoXH8fjF7xS94oF7mV35rIuK3rRHEqCxDg+krLbDtMMJVftAcAW1A4sPX63C3N2krKaHZicYkW1zTJasXtcb9a4UVmJWOW0YvyHXBjIC9jshY9DTyC5znKkIHMyiYEfAPzGPB2h+a6SPxHAxb3mklORYODQ2DtJXCs6t3k8sj9iQ2Al9g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=daktronics.com; dmarc=pass action=none
+ header.from=daktronics.com; dkim=pass header.d=daktronics.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=daktronics.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=YvG0EKYDYGz3Y40vwwpNNVOPf2vKPpDUfqp+eN24uCI=;
+ b=hKGTBtrzr3jCuG5Ky25C18akGT8pnQGLyCFB5a1NOHUCSdlsmJgHNP+in8LGBLa1WkNi3zKLobBIPLqMuX1qBAl+lYCP9J0d2EgRmBy/WCbrL7+vL8kX77R6PUXcWwJPzKwtppJNXmD98X8wfvprrMPfwUYN0685A09EqtOYiG0=
+Received: from SN6PR02MB4016.namprd02.prod.outlook.com (52.135.69.145) by
+ SN6PR02MB4669.namprd02.prod.outlook.com (52.135.113.202) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2347.16; Thu, 10 Oct 2019 14:54:59 +0000
+Received: from SN6PR02MB4016.namprd02.prod.outlook.com
+ ([fe80::ec31:ae9d:c354:319a]) by SN6PR02MB4016.namprd02.prod.outlook.com
+ ([fe80::ec31:ae9d:c354:319a%5]) with mapi id 15.20.2347.016; Thu, 10 Oct 2019
+ 14:54:59 +0000
+From: Matt Sickler <Matt.Sickler@daktronics.com>
+To: Chandra Annamaneni <chandra627@gmail.com>, "gregkh@linuxfoundation.org"
+ <gregkh@linuxfoundation.org>
+Subject: RE: [PATCH] KPC2000: kpc2000_spi.c: Fix style issues (line length)
+Thread-Topic: [PATCH] KPC2000: kpc2000_spi.c: Fix style issues (line length)
+Thread-Index: AQHVfxglkDfKSozqZkux2cu69VsGV6dT8Nnw
+Date: Thu, 10 Oct 2019 14:54:59 +0000
+Message-ID: <SN6PR02MB40166D599A07440D26EBE7F1EE940@SN6PR02MB4016.namprd02.prod.outlook.com>
+References: <1570676937-3975-1-git-send-email-chandra627@gmail.com>
+In-Reply-To: <1570676937-3975-1-git-send-email-chandra627@gmail.com>
+Accept-Language: en-US
 Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Matt.Sickler@daktronics.com; 
+x-originating-ip: [2620:9b:8000:6046:fb0a:2a78:c036:e564]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 8679d0e5-cfcc-4600-5ba5-08d74d91d2bc
+x-ms-traffictypediagnostic: SN6PR02MB4669:
+x-microsoft-antispam-prvs: <SN6PR02MB466914554C7E8A4CC3F92D96EE940@SN6PR02MB4669.namprd02.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:949;
+x-forefront-prvs: 018632C080
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(4636009)(396003)(376002)(346002)(366004)(39850400004)(136003)(13464003)(189003)(199004)(102836004)(2501003)(6246003)(71200400001)(71190400001)(11346002)(446003)(6506007)(76116006)(46003)(5660300002)(66946007)(476003)(33656002)(486006)(4326008)(66476007)(66556008)(64756008)(66446008)(52536014)(74316002)(2906002)(54906003)(8676002)(7696005)(305945005)(81166006)(7736002)(256004)(81156014)(14454004)(316002)(478600001)(186003)(86362001)(110136005)(25786009)(76176011)(6116002)(6436002)(9686003)(8936002)(55016002)(229853002)(14444005)(99286004);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:SN6PR02MB4669;
+ H:SN6PR02MB4016.namprd02.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+received-spf: None (protection.outlook.com: daktronics.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: okZ0Zb8hJ2XoseC8OPSx304xZ9Az7jeeURDcQl1/AW+jpgksHl8s+FzL0Ly+9uniVwcFiaqLSABSS+yfOraiF++A2FvxBUyr3TayozI+n4BbJCnwc5noJrmwEzrGFLrFtvzzeqcC2NPEqeYRqrXl3+gsItuHiDDxqjlFuLnx/DL4Jj0SI/bGsAinySIZQa6vyf7SzG2wdL1aYm6AGD87WKqAE5xVXMHfqLOJPG7Of1vH2bxj70b7YkXKuso+/91+Ma5Kl2AiYQKK+Cj7y07SSTKHDvBauPTbvdoLYDZqBUFBcHlktDsT2WYse+VdVFFSks4r/uUf0L1HgDHxANoVzjELBn2LXShKN9QQPLow4AtIQU6xtbymdRRcZtRGxrIs+h2zjIrLDQbxNJNvboInzpTZ3j/rugdddBdf964cU+8=
+x-ms-exchange-transport-forked: True
+MIME-Version: 1.0
+X-OriginatorOrg: daktronics.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8679d0e5-cfcc-4600-5ba5-08d74d91d2bc
+X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Oct 2019 14:54:59.6980 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: be88af81-0945-42aa-a3d2-b122777351a2
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: ns6lBsKwPmNFzsbNld3jb6cjgpfXq4GCaFC2Z4Nt9T8AcCeqCQJCgQnB4QHuFmVg+DQHkD6fmqXOjq4j4n/gBFd1KnbA2+c2AuPAKOy/1pM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR02MB4669
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,141 +110,69 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "linux-hyperv@vger.kernel.org" <linux-hyperv@vger.kernel.org>,
- "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>,
- Stephen Hemminger <sthemmin@microsoft.com>,
- "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
- Haiyang Zhang <haiyangz@microsoft.com>,
- "driverdev-devel@linuxdriverproject.org"
- <driverdev-devel@linuxdriverproject.org>,
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ "gneukum1@gmail.com" <gneukum1@gmail.com>,
+ "fabian.krueger@fau.de" <fabian.krueger@fau.de>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Michael Kelley <mikelley@microsoft.com>,
- Sasha Levin <Alexander.Levin@microsoft.com>,
- "marcelo.cerri@canonical.com" <marcelo.cerri@canonical.com>,
- "olaf@aepfle.de" <olaf@aepfle.de>, "apw@canonical.com" <apw@canonical.com>,
- vkuznets <vkuznets@redhat.com>, "jasowang@redhat.com" <jasowang@redhat.com>,
- "jackm@mellanox.com" <jackm@mellanox.com>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+ "simon@nikanor.nu" <simon@nikanor.nu>,
+ "dan.carpenter@oracle.com" <dan.carpenter@oracle.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gMTAvOC8yMDE5IDk6NTYgUE0sIEJqb3JuIEhlbGdhYXMgd3JvdGU6Cj4gT24gVHVlLCBPY3Qg
-MDgsIDIwMTkgYXQgMDc6MzI6MjdQTSArMDIwMCwgUmFmYWVsIEouIFd5c29ja2kgd3JvdGU6Cj4+
-IE9uIDEwLzcvMjAxOSA4OjU3IFBNLCBEZXh1YW4gQ3VpIHdyb3RlOgo+Pj4+IC0tLS0tT3JpZ2lu
-YWwgTWVzc2FnZS0tLS0tCj4+Pj4gRnJvbTogQmpvcm4gSGVsZ2FhcyA8aGVsZ2Fhc0BrZXJuZWwu
-b3JnPgo+Pj4+IFNlbnQ6IE1vbmRheSwgT2N0b2JlciA3LCAyMDE5IDY6MjQgQU0KPj4+PiBUbzog
-RGV4dWFuIEN1aSA8ZGVjdWlAbWljcm9zb2Z0LmNvbT4KPj4+PiBDYzogbG9yZW56by5waWVyYWxp
-c2lAYXJtLmNvbTsgbGludXgtcGNpQHZnZXIua2VybmVsLm9yZzsgTWljaGFlbCBLZWxsZXkKPj4+
-PiA8bWlrZWxsZXlAbWljcm9zb2Z0LmNvbT47IGxpbnV4LWh5cGVydkB2Z2VyLmtlcm5lbC5vcmc7
-Cj4+Pj4gbGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZzsgZHJpdmVyZGV2LWRldmVsQGxpbnV4
-ZHJpdmVycHJvamVjdC5vcmc7IFNhc2hhCj4+Pj4gTGV2aW4gPEFsZXhhbmRlci5MZXZpbkBtaWNy
-b3NvZnQuY29tPjsgSGFpeWFuZyBaaGFuZwo+Pj4+IDxoYWl5YW5nekBtaWNyb3NvZnQuY29tPjsg
-S1kgU3Jpbml2YXNhbiA8a3lzQG1pY3Jvc29mdC5jb20+Owo+Pj4+IG9sYWZAYWVwZmxlLmRlOyBh
-cHdAY2Fub25pY2FsLmNvbTsgamFzb3dhbmdAcmVkaGF0LmNvbTsgdmt1em5ldHMKPj4+PiA8dmt1
-em5ldHNAcmVkaGF0LmNvbT47IG1hcmNlbG8uY2VycmlAY2Fub25pY2FsLmNvbTsgU3RlcGhlbiBI
-ZW1taW5nZXIKPj4+PiA8c3RoZW1taW5AbWljcm9zb2Z0LmNvbT47IGphY2ttQG1lbGxhbm94LmNv
-bQo+Pj4+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggdjJdIFBDSTogUE06IE1vdmUgdG8gRDAgYmVmb3Jl
-IGNhbGxpbmcKPj4+PiBwY2lfbGVnYWN5X3Jlc3VtZV9lYXJseSgpCj4+Pj4KPj4+PiBPbiBXZWQs
-IEF1ZyAxNCwgMjAxOSBhdCAwMTowNjo1NUFNICswMDAwLCBEZXh1YW4gQ3VpIHdyb3RlOgo+Pj4+
-PiBJbiBwY2lfbGVnYWN5X3N1c3BlbmRfbGF0ZSgpLCB0aGUgZGV2aWNlIHN0YXRlIGlzIG1vdmVk
-IHRvIFBDSV9VTktOT1dOLgo+Pj4+Pgo+Pj4+PiBJbiBwY2lfcG1fdGhhd19ub2lycSgpLCB0aGUg
-c3RhdGUgaXMgc3VwcG9zZWQgdG8gYmUgbW92ZWQgYmFjayB0byBQQ0lfRDAsCj4+Pj4+IGJ1dCB0
-aGUgY3VycmVudCBjb2RlIG1pc3NlcyB0aGUgcGNpX2xlZ2FjeV9yZXN1bWVfZWFybHkoKSBwYXRo
-LCBzbyB0aGUKPj4+Pj4gc3RhdGUgcmVtYWlucyBpbiBQQ0lfVU5LTk9XTiBpbiB0aGF0IHBhdGgu
-IEFzIGEgcmVzdWx0LCBpbiB0aGUgcmVzdW1lCj4+Pj4+IHBoYXNlIG9mIGhpYmVybmF0aW9uLCB0
-aGlzIGNhdXNlcyBhbiBlcnJvciBmb3IgdGhlIE1lbGxhbm94IFZGIGRyaXZlciwKPj4+Pj4gd2hp
-Y2ggZmFpbHMgdG8gZW5hYmxlIE1TSS1YIGJlY2F1c2UgcGNpX21zaV9zdXBwb3J0ZWQoKSBpcyBm
-YWxzZSBkdWUKPj4+Pj4gdG8gZGV2LT5jdXJyZW50X3N0YXRlICE9IFBDSV9EMDoKPj4+Pj4KPj4+
-Pj4gbWx4NF9jb3JlIGE2ZDE6MDA6MDIuMDogRGV0ZWN0ZWQgdmlydHVhbCBmdW5jdGlvbiAtIHJ1
-bm5pbmcgaW4gc2xhdmUgbW9kZQo+Pj4+PiBtbHg0X2NvcmUgYTZkMTowMDowMi4wOiBTZW5kaW5n
-IHJlc2V0Cj4+Pj4+IG1seDRfY29yZSBhNmQxOjAwOjAyLjA6IFNlbmRpbmcgdmhjcjAKPj4+Pj4g
-bWx4NF9jb3JlIGE2ZDE6MDA6MDIuMDogSENBIG1pbmltdW0gcGFnZSBzaXplOjUxMgo+Pj4+PiBt
-bHg0X2NvcmUgYTZkMTowMDowMi4wOiBUaW1lc3RhbXBpbmcgaXMgbm90IHN1cHBvcnRlZCBpbiBz
-bGF2ZSBtb2RlCj4+Pj4+IG1seDRfY29yZSBhNmQxOjAwOjAyLjA6IElOVHggaXMgbm90IHN1cHBv
-cnRlZCBpbiBtdWx0aS1mdW5jdGlvbiBtb2RlLAo+Pj4+IGFib3J0aW5nCj4+Pj4+IFBNOiBkcG1f
-cnVuX2NhbGxiYWNrKCk6IHBjaV9wbV90aGF3KzB4MC8weGQ3IHJldHVybnMgLTk1Cj4+Pj4+IFBN
-OiBEZXZpY2UgYTZkMTowMDowMi4wIGZhaWxlZCB0byB0aGF3OiBlcnJvciAtOTUKPj4+Pj4KPj4+
-Pj4gVG8gYmUgbW9yZSBhY2N1cmF0ZSwgdGhlICJyZXN1bWUiIHBoYXNlIG1lYW5zIHRoZSAidGhh
-dyIgY2FsbGJhY2tzIHdoaWNoCj4+Pj4+IHJ1biBiZWZvcmUgdGhlIHN5c3RlbSBlbnRlcnMgaGli
-ZXJuYXRpb246IHdoZW4gdGhlIHVzZXIgcnVucyB0aGUgY29tbWFuZAo+Pj4+PiAiZWNobyBkaXNr
-ID4gL3N5cy9wb3dlci9zdGF0ZSIgZm9yIGhpYmVybmF0aW9uLCBmaXJzdCB0aGUga2VybmVsICJm
-cmVlemVzIgo+Pj4+PiBhbGwgdGhlIGRldmljZXMgYW5kIGNyZWF0ZXMgYSBoaWJlcm5hdGlvbiBp
-bWFnZSwgdGhlbiB0aGUga2VybmVsICJ0aGF3cyIKPj4+Pj4gdGhlIGRldmljZXMgaW5jbHVkaW5n
-IHRoZSBkaXNrL05JQywgd3JpdGVzIHRoZSBtZW1vcnkgdG8gdGhlIGRpc2ssIGFuZAo+Pj4+PiBw
-b3dlcnMgZG93bi4gVGhpcyBwYXRjaCBmaXhlcyB0aGUgZXJyb3IgbWVzc2FnZSBmb3IgdGhlIE1l
-bGxhbm94IFZGIGRyaXZlcgo+Pj4+PiBpbiB0aGlzIHBoYXNlLgo+IFdvcmRzbWl0aGluZyBuaXQ6
-IHdoYXQgdGhlIHBhdGNoIGRvZXMgaXMgbm90ICJmaXggdGhlIGVycm9yIG1lc3NhZ2UiOwo+IHdo
-YXQgaXQgZG9lcyBpcyBmaXggdGhlICpwcm9ibGVtKiwgaS5lLiwgdGhlIGZhY3QgdGhhdCB3ZSBj
-YW4ndAo+IG9wZXJhdGUgdGhlIGRldmljZSBiZWNhdXNlIHdlIGNhbid0IGVuYWJsZSBNU0ktWC4g
-IFRoZSBtZXNzYWdlIGlzIG9ubHkKPiBhIHN5bXB0b20uCj4KPiBJSVVDIHRoZSByZWxldmFudCBw
-YXJ0IG9mIHRoZSBzeXN0ZW0gaGliZXJuYXRpb24gc2VxdWVuY2UgaXM6Cj4KPiAgICBwY2lfcG1f
-ZnJlZXplX25vaXJxCj4gICAgcGNpX3BtX3RoYXdfbm9pcnEKPiAgICBwY2lfcG1fdGhhdwo+Cj4g
-QW5kIHRoZSBleGVjdXRpb24gZmxvdyBpczoKPgo+ICAgIHBjaV9wbV9mcmVlemVfbm9pcnEKPiAg
-ICAgIGlmIChwY2lfaGFzX2xlZ2FjeV9wbV9zdXBwb3J0KHBjaV9kZXYpKSAjIHRydWUgZm9yIG1s
-eDQKPiAgICAgICAgcGNpX2xlZ2FjeV9zdXNwZW5kX2xhdGUoZGV2LCBQTVNHX0ZSRUVaRSkKPiAJ
-cGNpX3BtX3NldF91bmtub3duX3N0YXRlCj4gCSAgZGV2LT5jdXJyZW50X3N0YXRlID0gUENJX1VO
-S05PV04gICMgPC0tLQo+ICAgIHBjaV9wbV90aGF3X25vaXJxCj4gICAgICBpZiAocGNpX2hhc19s
-ZWdhY3lfcG1fc3VwcG9ydChwY2lfZGV2KSkgIyB0cnVlCj4gICAgICAgIHBjaV9sZWdhY3lfcmVz
-dW1lX2Vhcmx5KGRldikgICAgICAgICAgIyBub29wOyBtbHg0IGRvZXNuJ3QgaW1wbGVtZW50Cj4g
-ICAgcGNpX3BtX3RoYXcgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIyByZXR1cm5zIC05
-NSBFT1BOT1RTVVBQCj4gICAgICBpZiAocGNpX2hhc19sZWdhY3lfcG1fc3VwcG9ydChwY2lfZGV2
-KSkgIyB0cnVlCj4gICAgICAgIHBjaV9sZWdhY3lfcmVzdW1lCj4gCWRydi0+cmVzdW1lCj4gCSAg
-bWx4NF9yZXN1bWUgICAgICAgICAgICAgICAgICAgICAgICMgbWx4NF9kcml2ZXIucmVzdW1lIChs
-ZWdhY3kpCj4gCSAgICBtbHg0X2xvYWRfb25lCj4gCSAgICAgIG1seDRfZW5hYmxlX21zaV94Cj4g
-CQlwY2lfZW5hYmxlX21zaXhfcmFuZ2UKPiAJCSAgX19wY2lfZW5hYmxlX21zaXhfcmFuZ2UKPiAJ
-CSAgICBfX3BjaV9lbmFibGVfbXNpeAo+IAkJICAgICAgaWYgKCFwY2lfbXNpX3N1cHBvcnRlZCgp
-KQo+IAkJCWlmIChkZXYtPmN1cnJlbnRfc3RhdGUgIT0gUENJX0QwKSAgIyA8LS0tCj4gCQkJICBy
-ZXR1cm4gMAo+IAkJCXJldHVybiAtRUlOVkFMCj4gCQllcnIgPSAtRU9QTk9UU1VQUAo+IAkJIklO
-VHggaXMgbm90IHN1cHBvcnRlZCAuLi4iCj4KPiAoVGhlc2UgYXJlIGp1c3QgbXkgbm90ZXM7IHlv
-dSBkb24ndCBuZWVkIHRvIHB1dCB0aGVtIGFsbCBpbnRvIHRoZQo+IGNvbW1pdCBtZXNzYWdlLiAg
-SSdtIGp1c3Qgc2hhcmluZyB0aGVtIGluIGNhc2UgSSdtIG5vdCB1bmRlcnN0YW5kaW5nCj4gY29y
-cmVjdGx5LikKPgo+Pj4+PiBXaGVuIHRoZSBzeXN0ZW0gc3RhcnRzIGFnYWluLCBhIGZyZXNoIGtl
-cm5lbCBzdGFydHMgdG8gcnVuLCBhbmQgd2hlbiB0aGUKPj4+Pj4ga2VybmVsIGRldGVjdHMgdGhh
-dCBhIGhpYmVybmF0aW9uIGltYWdlIHdhcyBzYXZlZCwgdGhlIGtlcm5lbCAicXVpZXNjZXMiCj4+
-Pj4+IHRoZSBkZXZpY2VzLCBhbmQgdGhlbiAicmVzdG9yZXMiIHRoZSBkZXZpY2VzIGZyb20gdGhl
-IHNhdmVkIGltYWdlLiBJbiB0aGlzCj4+Pj4+IHBhdGg6Cj4+Pj4+IGRldmljZV9yZXN1bWVfbm9p
-cnEoKSAtPiAuLi4gLT4KPj4+Pj4gICAgIHBjaV9wbV9yZXN0b3JlX25vaXJxKCkgLT4KPj4+Pj4g
-ICAgICAgcGNpX3BtX2RlZmF1bHRfcmVzdW1lX2Vhcmx5KCkgLT4KPj4+Pj4gICAgICAgICBwY2lf
-cG93ZXJfdXAoKSBtb3ZlcyB0aGUgZGV2aWNlIHN0YXRlcyBiYWNrIHRvIFBDSV9EMC4gVGhpcyBw
-YXRoIGlzCj4+Pj4+IG5vdCBicm9rZW4gYW5kIGRvZXNuJ3QgbmVlZCBteSBwYXRjaC4KPj4+Pj4K
-PiBUaGUgY2MgbGlzdCBzdWdnZXN0cyB0aGF0IHRoaXMgbWlnaHQgYmUgYSBmaXggZm9yIGEgdXNl
-ci1yZXBvcnRlZAo+IHByb2JsZW0uICBJcyB0aGVyZSBhIGxhdW5jaHBhZCBvciBzaW1pbGFyIGxp
-bmsgeW91IGNvdWxkIGluY2x1ZGUgaGVyZT8KPgo+IFNob3VsZCB0aGlzIGJlIG1hcmtlZCBmb3Ig
-c3RhYmxlPwo+Cj4+Pj4+IFNpZ25lZC1vZmYtYnk6IERleHVhbiBDdWkgPGRlY3VpQG1pY3Jvc29m
-dC5jb20+Cj4+Pj4gVGhpcyBsb29rcyBsaWtlIGEgYnVnZml4IGZvciA1ODM5ZWU3Mzg5ZTggKCJQ
-Q0kgLyBQTTogRm9yY2UgZGV2aWNlcyB0bwo+Pj4+IEQwIGluIHBjaV9wbV90aGF3X25vaXJxKCki
-KSBzbyBtYXliZSBpdCBzaG91bGQgYmUgbWFya2VkIGZvciBzdGFibGUgYXMKPj4+PiA1ODM5ZWU3
-Mzg5ZTggd2FzPwo+Pj4+Cj4+Pj4gUmFmYWVsLCBjb3VsZCB5b3UgY29uZmlybT8KPj4gTm8sIGl0
-IGlzIG5vdCBhIGJ1ZyBmaXggZm9yIHRoYXQgY29tbWl0LsKgIFRoZSB1bmRlcmx5aW5nIGlzc3Vl
-IHdvdWxkIGJlCj4+IHRoZXJlIHdpdGhvdXQgdGhhdCBjb21taXQgdG9vLgo+IE9oLCByaWdodCwg
-SSBkdW5ubyB3aGF0IEkgd2FzIHRoaW5raW5nLCBzb3JyeS4KPgo+Pj4+PiAtLS0gYS9kcml2ZXJz
-L3BjaS9wY2ktZHJpdmVyLmMKPj4+Pj4gKysrIGIvZHJpdmVycy9wY2kvcGNpLWRyaXZlci5jCj4+
-Pj4+IEBAIC0xMDc0LDE1ICsxMDc0LDE2IEBAIHN0YXRpYyBpbnQgcGNpX3BtX3RoYXdfbm9pcnEo
-c3RydWN0IGRldmljZQo+Pj4+ICpkZXYpCj4+Pj4+ICAgIAkJCXJldHVybiBlcnJvcjsKPj4+Pj4g
-ICAgCX0KPj4+Pj4KPj4+Pj4gLQlpZiAocGNpX2hhc19sZWdhY3lfcG1fc3VwcG9ydChwY2lfZGV2
-KSkKPj4+Pj4gLQkJcmV0dXJuIHBjaV9sZWdhY3lfcmVzdW1lX2Vhcmx5KGRldik7Cj4+Pj4+IC0K
-Pj4+Pj4gICAgCS8qCj4+Pj4+ICAgIAkgKiBwY2lfcmVzdG9yZV9zdGF0ZSgpIHJlcXVpcmVzIHRo
-ZSBkZXZpY2UgdG8gYmUgaW4gRDAgKGJlY2F1c2Ugb2YgTVNJCj4+Pj4+ICAgIAkgKiByZXN0b3Jh
-dGlvbiBhbW9uZyBvdGhlciB0aGluZ3MpLCBzbyBmb3JjZSBpdCBpbnRvIEQwIGluIGNhc2UgdGhl
-Cj4+Pj4+ICAgIAkgKiBkcml2ZXIncyAiZnJlZXplIiBjYWxsYmFja3MgcHV0IGl0IGludG8gYSBs
-b3ctcG93ZXIgc3RhdGUgZGlyZWN0bHkuCj4+Pj4+ICAgIAkgKi8KPj4+Pj4gICAgCXBjaV9zZXRf
-cG93ZXJfc3RhdGUocGNpX2RldiwgUENJX0QwKTsKPj4+Pj4gKwo+Pj4+PiArCWlmIChwY2lfaGFz
-X2xlZ2FjeV9wbV9zdXBwb3J0KHBjaV9kZXYpKQo+Pj4+PiArCQlyZXR1cm4gcGNpX2xlZ2FjeV9y
-ZXN1bWVfZWFybHkoZGV2KTsKPj4+Pj4gKwo+Pj4+PiAgICAJcGNpX3Jlc3RvcmVfc3RhdGUocGNp
-X2Rldik7Cj4+Pj4+Cj4+Pj4+ICAgIAlpZiAoZHJ2ICYmIGRydi0+cG0gJiYgZHJ2LT5wbS0+dGhh
-d19ub2lycSkKPj4+Pj4gLS0KPj4+Pj4gMi4xOS4xCj4+Pj4+Cj4+IFRoZSBwYXRjaCBsb29rcyBy
-ZWFzb25hYmxlIHRvIG1lLCBidXQgdGhlIGNvbW1lbnQgYWJvdmUgdGhlCj4+IHBjaV9zZXRfcG93
-ZXJfc3RhdGUoKSBjYWxsIG5lZWRzIHRvIGJlIHVwZGF0ZWQgdG9vIElNTy4KPiBIbW0uCj4KPiAx
-KSBwY2lfcmVzdG9yZV9zdGF0ZSgpIG1haW5seSB3cml0ZXMgY29uZmlnIHNwYWNlLCB3aGljaCBk
-b2Vzbid0Cj4gcmVxdWlyZSB0aGUgZGV2aWNlIHRvIGJlIGluIEQwLiAgVGhlIG9ubHkgdGhpbmcg
-SSBzZWUgdGhhdCB3b3VsZAo+IHJlcXVpcmUgRDAgaXMgdGhlIE1TSS1YIE1NSU8gc3BhY2UsIHNv
-IHRvIGJlIG1vcmUgc3BlY2lmaWMsIHRoZQo+IGNvbW1lbnQgY291bGQgc2F5ICJyZXN0b3Jpbmcg
-dGhlIE1TSS1YICpNTUlPKiBzdGF0ZSByZXF1aXJlcyB0aGUKPiBkZXZpY2UgdG8gYmUgaW4gRDAi
-Lgo+Cj4gQnV0IEkgdGhpbmsgeW91IG1lYW50IHNvbWUgb3RoZXIgY29tbWVudCBjaGFuZ2UuICBE
-aWQgeW91IG1lYW4KPiBzb21ldGhpbmcgYWxvbmcgdGhlIGxpbmVzIG9mICJhIGxlZ2FjeSBkcnYt
-PnJlc3VtZV9lYXJseSgpIGNhbGxiYWNrCj4gYW5kIHBjaV9yZXN0b3JlX3N0YXRlKCkgYm90aCBy
-ZXF1aXJlIHRoZSBkZXZpY2UgdG8gYmUgaW4gRDAiPwoKWWVzLCBJIGRpZC4KCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QK
-ZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVy
-cHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+>-----Original Message-----
+>From: devel <driverdev-devel-bounces@linuxdriverproject.org> On Behalf Of Chandra Annamaneni
+>Sent: Wednesday, October 09, 2019 10:09 PM
+>To: gregkh@linuxfoundation.org
+>Cc: devel@driverdev.osuosl.org; gneukum1@gmail.com; chandra627@gmail.com; fabian.krueger@fau.de; linux-
+>kernel@vger.kernel.org; simon@nikanor.nu; dan.carpenter@oracle.com
+>Subject: [PATCH] KPC2000: kpc2000_spi.c: Fix style issues (line length)
+>
+>Resoved: "WARNING: line over 80 characters" from checkpatch.pl
+>
+>Signed-off-by: Chandra Annamaneni <chandra627@gmail.com>
+>---
+> drivers/staging/kpc2000/kpc2000_spi.c | 20 ++++++++++----------
+> 1 file changed, 10 insertions(+), 10 deletions(-)
+>
+>diff --git a/drivers/staging/kpc2000/kpc2000_spi.c b/drivers/staging/kpc2000/kpc2000_spi.c
+>index 3be33c4..ef78b6d 100644
+>--- a/drivers/staging/kpc2000/kpc2000_spi.c
+>+++ b/drivers/staging/kpc2000/kpc2000_spi.c
+>@@ -30,19 +30,19 @@
+> #include "kpc.h"
+>
+> static struct mtd_partition p2kr0_spi0_parts[] = {
+>-       { .name = "SLOT_0",     .size = 7798784,                .offset = 0,                },
+>-       { .name = "SLOT_1",     .size = 7798784,                .offset = MTDPART_OFS_NXTBLK},
+>-       { .name = "SLOT_2",     .size = 7798784,                .offset = MTDPART_OFS_NXTBLK},
+>-       { .name = "SLOT_3",     .size = 7798784,                .offset = MTDPART_OFS_NXTBLK},
+>-       { .name = "CS0_EXTRA",  .size = MTDPART_SIZ_FULL,       .offset = MTDPART_OFS_NXTBLK},
+>+       { .name = "SLOT_0",  .size = 7798784,  .offset = 0,},
+>+       { .name = "SLOT_1",  .size = 7798784,  .offset = MTDPART_OFS_NXTBLK},
+>+       { .name = "SLOT_2",  .size = 7798784,  .offset = MTDPART_OFS_NXTBLK},
+>+       { .name = "SLOT_3",  .size = 7798784,  .offset = MTDPART_OFS_NXTBLK},
+>+       { .name = "CS0_EXTRA", .size = MTDPART_SIZ_FULL, .offset = MTDPART_OFS_NXTBLK},
+> };
+>
+> static struct mtd_partition p2kr0_spi1_parts[] = {
+>-       { .name = "SLOT_4",     .size = 7798784,                .offset = 0,                },
+>-       { .name = "SLOT_5",     .size = 7798784,                .offset = MTDPART_OFS_NXTBLK},
+>-       { .name = "SLOT_6",     .size = 7798784,                .offset = MTDPART_OFS_NXTBLK},
+>-       { .name = "SLOT_7",     .size = 7798784,                .offset = MTDPART_OFS_NXTBLK},
+>-       { .name = "CS1_EXTRA",  .size = MTDPART_SIZ_FULL,       .offset = MTDPART_OFS_NXTBLK},
+>+       { .name = "SLOT_4",  .size = 7798784,  .offset = 0,},
+>+       { .name = "SLOT_5",  .size = 7798784,  .offset = MTDPART_OFS_NXTBLK},
+>+       { .name = "SLOT_6",  .size = 7798784,  .offset = MTDPART_OFS_NXTBLK},
+>+       { .name = "SLOT_7",  .size = 7798784,  .offset = MTDPART_OFS_NXTBLK},
+>+       { .name = "CS1_EXTRA",  .size = MTDPART_SIZ_FULL, .offset = MTDPART_OFS_NXTBLK},
+> };
+>
+> static struct flash_platform_data p2kr0_spi0_pdata = {
+
+Is the line length limit a hard rule or can exceptions be made?  I really feel that these data tables are more easily read when they're formatted like tables...
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
