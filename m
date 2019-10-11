@@ -2,116 +2,110 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 65FDED3677
-	for <lists+driverdev-devel@lfdr.de>; Fri, 11 Oct 2019 02:44:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 04AF2D3765
+	for <lists+driverdev-devel@lfdr.de>; Fri, 11 Oct 2019 04:09:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BDB698504B;
-	Fri, 11 Oct 2019 00:44:33 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 057AA86E51;
+	Fri, 11 Oct 2019 02:09:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mro9SdEZXamV; Fri, 11 Oct 2019 00:44:33 +0000 (UTC)
+	with ESMTP id MeoyO_VEXJbv; Fri, 11 Oct 2019 02:08:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 81A2D84828;
-	Fri, 11 Oct 2019 00:44:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A5AA686E2B;
+	Fri, 11 Oct 2019 02:08:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A68C91BF9C1
- for <devel@linuxdriverproject.org>; Fri, 11 Oct 2019 00:44:29 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 01E711BF325
+ for <devel@linuxdriverproject.org>; Fri, 11 Oct 2019 02:08:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A13ED8630A
- for <devel@linuxdriverproject.org>; Fri, 11 Oct 2019 00:44:29 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id F08B620465
+ for <devel@linuxdriverproject.org>; Fri, 11 Oct 2019 02:08:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uTg1V+Sl+sXE for <devel@linuxdriverproject.org>;
- Fri, 11 Oct 2019 00:44:29 +0000 (UTC)
-X-Greylist: delayed 00:07:06 by SQLgrey-1.7.6
-Received: from mx2.ucr.edu (mx2.ucr.edu [138.23.62.3])
- by whitealder.osuosl.org (Postfix) with ESMTPS id EF71D8758A
- for <devel@driverdev.osuosl.org>; Fri, 11 Oct 2019 00:44:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=ucr.edu; i=@ucr.edu; q=dns/txt; s=selector3;
- t=1570754668; x=1602290668;
- h=mime-version:references:in-reply-to:from:date:message-id:
- subject:to:cc; bh=uXv2UQ3LODrzT9UfKJz+VhFwzGfiQWvz0Klpty0YInQ=;
- b=mtSrArx/S2WSp9V9RlU0j21gxZxxyhDpzaoB/HxrBh6WawpGOtXrSeq8
- M1xjdklK046RfU0RXzxghIKG9isGlmbbnVdaXEbHy7JrUJCAME4+EFiGG
- 7eueMRDpjbJrRqz0Jt+N6yB4GSSW/nMndWkAt57CnNH5NUduXlI+I7/6J
- bP2aj4e9YQkjK0Sxgep3CLPLE2V0Jn0EK0TOrqZu1MiyuoRYgbOlKcx2h
- YpluieCC2qfVu3ZpXskcnllG+M7YG7x6dNmg921CO8wriegbBvSVgHcMK
- TgxJfbkFKE9wbR0odkGFx5NjwSnUdKgWLyo6TVRT1fS4EnZ7rwLGv4H7E g==;
-IronPort-SDR: Ep4AO7tzrHjV9GcHte+2Ii4FUzBS62Ly8WYAFn2hTjFFvPUJi8v7W6YrqpnPCPHPhad8TDInQX
- 8QtAUORq3go1kRyx4I2ggBcmnSUbif3OUNfy4CzlojTgKhxgH0shIz3c41iDxB/AP8S7Jf7MIo
- puIgjAgxVQuFbFTsswin0/znxhmbo2UkrNLPNbmJSN+PTu//OIxqdz9ROVrmIfLf0HdPbvRSdv
- eWocI7lnQ+7E3BVCawzRCeyM0bSa8IWn50QxxkAtLeKRo3LX/OwTLmQ5E8GFIHRctDLbH7cxzQ
- aZE=
-IronPort-PHdr: =?us-ascii?q?9a23=3Ah7T9kR+M2Zel9/9uRHKM819IXTAuvvDOBiVQ1K?=
- =?us-ascii?q?B41O8cTK2v8tzYMVDF4r011RmVBN6dta4P0LeempujcFRI2YyGvnEGfc4EfD?=
- =?us-ascii?q?4+ouJSoTYdBtWYA1bwNv/gYn9yNs1DUFh44yPzahANS47xaFLIv3K98yMZFA?=
- =?us-ascii?q?nhOgppPOT1HZPZg9iq2+yo9JDffgtFiCC8bL59Ixm7owXcvdQKjIV/Lao81g?=
- =?us-ascii?q?HHqWZSdeRMwmNoK1OTnxLi6cq14ZVu7Sdete8/+sBZSan1cLg2QrJeDDQ9Lm?=
- =?us-ascii?q?A6/9brugXZTQuO/XQTTGMbmQdVDgff7RH6WpDxsjbmtud4xSKXM9H6QawyVD?=
- =?us-ascii?q?+/9KpgVgPmhzkbOD446GHXi9J/jKRHoBK6uhdzx5fYbJyJOPZie6/Qe84RS2?=
- =?us-ascii?q?hcUcZLTyFODY28YIkPAeQPPuhWspfzqEcVoBuiGQWhHv/jxiNUinL026Axzu?=
- =?us-ascii?q?QvERvB3AwlB98BsnXUrdT1NKcPVuC+0arHzTXZYPNXxDzw74jJcxEhof6WXL?=
- =?us-ascii?q?J8bdbdxEc0GgPYklqQs5bpMC2I2eQQqmWW6fdrW+G3i2M/tQ19vjyiyt0vh4?=
- =?us-ascii?q?TJnI4Z11HJ+CdjzIs0IdC1TlNwb8S+H5tKrS6aMpN7QsYlQ251pik30qYGuZ?=
- =?us-ascii?q?unfCgSz5Qn2gLfZ+SHc4eW5hLjU/6cITJii3JkfLKznhKy8Ua9xuHlWMm50V?=
- =?us-ascii?q?JHojBKktnLsXAN2BjT5dadRvRh+Ueh3C6D1wHV6u5aPUA5jbTXJ4Ilz7IqlZ?=
- =?us-ascii?q?cesV7PEjL3lUj0lqObd0Ep9vCt6+v9Y7XmopGcN5VzigH7Kqkvms2+AeQiPQ?=
- =?us-ascii?q?gPQ2SX5eqx2ab+/ULlWrVGlOM5nbTEsJzCP8QUura5AxNJ0oYk8xuwEimp0M?=
- =?us-ascii?q?oGknkDN19KZQiHj4n3O17QOvD3EOmwg0q2nDds3PDGI7rhAo7JLnTZl7fhZ7?=
- =?us-ascii?q?l9uAZgz18fxNYXzJtOErwHPP/pEhv9vdqeBRYjKwGy3+v9INJn34gaVCSEBa?=
- =?us-ascii?q?rPY43Itlrd1+M9I/SLLL0VsTe1f+k35/fv1SdisUIWZ++k0YZBOyPwJehvP0?=
- =?us-ascii?q?jMOSmkudwGC2pf+1NmFOE=3D?=
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-Anti-Spam-Result: =?us-ascii?q?A2F7AAAwzp9dh0WnVdFmHAEBAQEBBwE?=
- =?us-ascii?q?BEQEEBAEBgWoEAQELAYQQKoQjjl2CD5slAQgBAQEOLwEBhEACgl0jNwYOAgM?=
- =?us-ascii?q?JAQEFAQEBAQEFBAEBAhABAQEIDQkIKYVAgjopAYM9AQEBAxIRVhALCw0CAiY?=
- =?us-ascii?q?CAiISAQUBHAYTIoMAgnilS4EDPIsmgTKIYgEJDYFIEnooAYwNgheEIz6HUoJ?=
- =?us-ascii?q?eBIE5AQEBlS+WVwEGAoIQFIxUiEUbmUCnfA8jgUWBfDMaJX8GZ4FOUBAUgWm?=
- =?us-ascii?q?OTCQwkHYBAQ?=
-X-IPAS-Result: =?us-ascii?q?A2F7AAAwzp9dh0WnVdFmHAEBAQEBBwEBEQEEBAEBgWoEA?=
- =?us-ascii?q?QELAYQQKoQjjl2CD5slAQgBAQEOLwEBhEACgl0jNwYOAgMJAQEFAQEBAQEFB?=
- =?us-ascii?q?AEBAhABAQEIDQkIKYVAgjopAYM9AQEBAxIRVhALCw0CAiYCAiISAQUBHAYTI?=
- =?us-ascii?q?oMAgnilS4EDPIsmgTKIYgEJDYFIEnooAYwNgheEIz6HUoJeBIE5AQEBlS+WV?=
- =?us-ascii?q?wEGAoIQFIxUiEUbmUCnfA8jgUWBfDMaJX8GZ4FOUBAUgWmOTCQwkHYBAQ?=
-X-IronPort-AV: E=Sophos;i="5.67,282,1566889200"; d="scan'208";a="14356900"
-Received: from mail-lf1-f69.google.com ([209.85.167.69])
- by smtp2.ucr.edu with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256;
- 10 Oct 2019 17:37:17 -0700
-Received: by mail-lf1-f69.google.com with SMTP id x20so1693033lfe.14
- for <devel@driverdev.osuosl.org>; Thu, 10 Oct 2019 17:37:17 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ZcWxfPlnGPAO2yo7t6F26rix4NWYfye93UCn2ZNXKJ8=;
- b=BwUq5IK6UE3LH7rGbWvS/qNcb0sX+wnmN6xJWXeyvp0TvFL1sVLoDdKB2CC8g3MEGY
- LwoyYxMf0fuu3/5DsMFlNw+SX/nNoGOBe9iI9sWs8qYtMMEdcpYV3MFRQQWL2kGvbKvt
- Cl8TxRyGRAb6A8oO5kRGPvzZdhe4RcXMtpb4n4vaKx+gT8mAV2feumn8NuMc1rl3DHDj
- AkQkDZVCrOyEKAqRu3brVb0ec9PTAhcG3B+5Un+WkuzlqcPN/OSDfS1+tdy9cvmJn/R1
- y62eaZ2b/jHSpmatSu3GhhIfPpVgq8TD2kYh4KN4g4dL6DwemRDaX2XE0f1ESfRUR3gx
- TaNQ==
-X-Gm-Message-State: APjAAAXD7A9JS50nDlx8eIQLxDmxZHlp+2YSIZsSxTPmLEg4mkGud2fq
- MBnpYW3NByZo6W1KC87jQo49Kx9Fg6BA3CmI7Cil6Bmv3pv9UYNtI5lnY5mdQHQN6AYZPph0d+y
- /M43Om3P7bzIwbA5ls/Kpq/kfnlXLHkSbOD7Osfg=
-X-Received: by 2002:a19:ee08:: with SMTP id g8mr2680859lfb.117.1570754235351; 
- Thu, 10 Oct 2019 17:37:15 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwbqzp9i04wuktQmil7d0bMJlOGaeRnmQG5uBtRDRKLB00XbM3BrsBPCdcJjoQsH+RggVfxOXKBguWYLkvp+gg=
-X-Received: by 2002:a19:ee08:: with SMTP id g8mr2680852lfb.117.1570754235067; 
- Thu, 10 Oct 2019 17:37:15 -0700 (PDT)
-MIME-Version: 1.0
-References: <20191010043809.27594-1-yzhai003@ucr.edu>
- <20191010091834.GG20470@kadam>
-In-Reply-To: <20191010091834.GG20470@kadam>
-From: Yizhuo Zhai <yzhai003@ucr.edu>
-Date: Thu, 10 Oct 2019 17:37:56 -0700
-Message-ID: <CABvMjLQ+_rRJT_yeKE9AKJaxhSU5LbcZdenbOr8CdPoD+4Oprw@mail.gmail.com>
-Subject: Re: [PATCH] staging: sm750fb: Potential uninitialized field in "pll"
+ with ESMTP id LJJUXHwGwwNU for <devel@linuxdriverproject.org>;
+ Fri, 11 Oct 2019 02:08:54 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from NAM02-BL2-obe.outbound.protection.outlook.com
+ (mail-eopbgr750120.outbound.protection.outlook.com [40.107.75.120])
+ by silver.osuosl.org (Postfix) with ESMTPS id CACB5203E8
+ for <devel@driverdev.osuosl.org>; Fri, 11 Oct 2019 02:08:54 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=EHouel33XLD/253E+RRq9qXmiBq5oCwak8C0jdNJiBLSN2F86rwmga1QDbsZZL3w5y8gJtzP2CvcN8VK966ehYsDzmT/fFwPxINnPb2OYdzY+A6CD/lNgsgp7a+M4sOb/8kCfeM3Gb7HsoHi4/LNHGv4vZaQuZ/Oou+hs3BulphReo6kVbV/J7OVH23VFnCJHA6/I39qA7SW2ZJT4pdH8whzJbE0eVBGnBTVmejMrIgFjnromSTswDMXFAIUx4XiWmuMOPdtDv3vNOl5YESAYzkJP7VKxdQMxhfPO9xLpanjjAIho3NKB4/h0f7O+Xv2J8b0LY+Y4wz+Y6JFsgO3ow==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ZkWLf+lwpa3bNkDStcFz/F4MOFOX2bq/N3ayqRSYRPs=;
+ b=B277/Oy/3iOig9doSJsrkR7EtZaTGYLRmBYl4F7xlevIvewAcI2yzn9ZXHaVqoBKxBDB80CiGHWFqD8FH0C768brWk2NQb4t/GyW7LcmYmN3kFoB+yPRoZfU4O5TfIrFyYPz4ktclpR8ZZBWmHdb7Ho/2QibliKF7rkbnStNCSW3Kow1ZUuPQQy1mfFWMuoQ6yK2cF2/7zzeZ2J/3SHbsn/11ZdAzvQGjGLQAB6NQQvTAhrvFv443/7FvkNUfFVhowljFAavF6tdc0oQHSof8K/E8aq4dIUTnDP2EWtwN9Mi4JgeNzYAq6bNJKiezCvKYlNA3Qsw8v+sugccJiLCYg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
+ header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ZkWLf+lwpa3bNkDStcFz/F4MOFOX2bq/N3ayqRSYRPs=;
+ b=O1Y84+iZXk9pFKFmzv0LBXXjaw5psV7qvRtUBi56UgRl1/U2WVsklDU6AMiFIVNssw5nwcMmXsb2WomUG43gAxldYUH4PMNjJblq9kM/4S/fgWzSLcvtx3dE3d1SZdYn5xckE4CLshNy6MqKvh/YpzU6KUUnAVWOUF8Vi46u7bU=
+Received: from BL0PR04MB4532.namprd04.prod.outlook.com (10.167.181.144) by
+ BL0PR04MB4516.namprd04.prod.outlook.com (10.167.172.23) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2347.16; Fri, 11 Oct 2019 02:08:51 +0000
+Received: from BL0PR04MB4532.namprd04.prod.outlook.com
+ ([fe80::c184:37a4:7e6e:aa42]) by BL0PR04MB4532.namprd04.prod.outlook.com
+ ([fe80::c184:37a4:7e6e:aa42%7]) with mapi id 15.20.2347.016; Fri, 11 Oct 2019
+ 02:08:51 +0000
+From: Xin Ji <xji@analogixsemi.com>
 To: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [PATCH v2 2/2] drm/bridge: anx7625: Add anx7625 MIPI DSI/DPI to
+ DP bridge driver
+Thread-Topic: [PATCH v2 2/2] drm/bridge: anx7625: Add anx7625 MIPI DSI/DPI to
+ DP bridge driver
+Thread-Index: AQHVf00oAsK7Lki4wU2Sq6LUBIfyh6dToneAgAAA2YCAAQ+sAA==
+Date: Fri, 11 Oct 2019 02:08:50 +0000
+Message-ID: <20191011020838.GA24665@xin-VirtualBox>
+References: <cover.1570699576.git.xji@analogixsemi.com>
+ <43f48a7036e5a2991bd6bd8a7361107b27e48c54.1570699576.git.xji@analogixsemi.com>
+ <20191010095315.GK13286@kadam> <20191010095617.GL13286@kadam>
+In-Reply-To: <20191010095617.GL13286@kadam>
+Accept-Language: zh-CN, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-clientproxiedby: HK0PR03CA0024.apcprd03.prod.outlook.com
+ (2603:1096:203:2e::36) To BL0PR04MB4532.namprd04.prod.outlook.com
+ (2603:10b6:208:4f::16)
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=xji@analogixsemi.com; 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-originating-ip: [114.247.245.252]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 71e79915-43f9-455f-ef12-08d74deff547
+x-ms-traffictypediagnostic: BL0PR04MB4516:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BL0PR04MB451612E1E6A2646508F9E663C7970@BL0PR04MB4516.namprd04.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:4125;
+x-forefront-prvs: 0187F3EA14
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(7916004)(346002)(136003)(366004)(396003)(39850400004)(376002)(199004)(189003)(33716001)(33656002)(7736002)(14454004)(6116002)(71190400001)(478600001)(7416002)(6512007)(9686003)(305945005)(1076003)(4326008)(3846002)(256004)(71200400001)(8676002)(8936002)(54906003)(2906002)(316002)(81156014)(81166006)(6916009)(26005)(76176011)(6506007)(386003)(186003)(102836004)(66066001)(6486002)(25786009)(86362001)(486006)(52116002)(99286004)(476003)(6436002)(66446008)(66946007)(66556008)(66476007)(64756008)(229853002)(5660300002)(6246003)(107886003)(11346002)(446003);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:BL0PR04MB4516;
+ H:BL0PR04MB4532.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+received-spf: None (protection.outlook.com: analogixsemi.com does not
+ designate permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: usKS3wylebWlSSkYQwC9iMZVGVwMnI012B776Vij0BVDqfOxn0a0FvRxSuJO8ImmKg9nZz7u0x71qaV062uqiVJNZBH4JDTd8LJR3q4U8C0zsPlYmFlJkz87G7lisXuxHgXcJLNk+alDnuhRS96MKnElCH09SXySr5GJ8SKIvd4VTjHUePB+uC/YElie1r0sWKXNEKInE3WQHY633U0uaY81+wm8HwCa+8MiWtkPYSrn45yKsW5RDJeoPD/65Jn2PBBm+Fik2D+obp+SeG1gFgWdJOIl6NS7bETWAa7hZRex3Tf3J53KzjcBmGumgdOoeWibMtp2wGiUtREFKlCPFFkW4v4s/Fl+qG5xvh7GGYvstMbVPxXyES3KvX8WEWOpRyvuJ2pUxCKXSSJXA27gj1fp9GZxK24+HfsCZ/zH+HU=
+Content-ID: <74774DB8CEF834469574AC2BF8907A4B@namprd04.prod.outlook.com>
+MIME-Version: 1.0
+X-OriginatorOrg: analogixsemi.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 71e79915-43f9-455f-ef12-08d74deff547
+X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Oct 2019 02:08:50.9675 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: OZYKiGDEgQL4ZvGLttVYYMI25yzDrRuHuXYsq4+zpzheDHegNEpbpKN5eqw4uPG1uYAnMYOzaLB3lbokuf8hww==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL0PR04MB4516
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -124,43 +118,59 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-fbdev@vger.kernel.org,
- Teddy Wang <teddy.wang@siliconmotion.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ Jernej Skrabec <jernej.skrabec@siol.net>, Jonas Karlman <jonas@kwiboo.se>,
+ David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ Andrzej Hajda <a.hajda@samsung.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Sheng Pan <span@analogixsemi.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Sorry about that, let me resend it .
+Hi Dan Carpenter,
 
-On Thu, Oct 10, 2019 at 2:53 AM Dan Carpenter <dan.carpenter@oracle.com> wrote:
->
-> On Wed, Oct 09, 2019 at 09:38:08PM -0700, Yizhuo wrote:
-> > Inside function set_chip_clock(), struct pll is supposed to be
-> > initialized in sm750_calc_pll_value(), if condition
-> > "diff < mini_diff" in sm750_calc_pll_value() cannot be fulfilled,
-> > then some field of pll will not be initialized but used in
-> > function sm750_format_pll_reg(), which is potentially unsafe.
-> >
-> > Signed-off-by: Yizhuo <yzhai003@ucr.edu>
->
-> The patch is correct, but it doesn't apply to linux-next any more.  Can
-> you re-write it on top of the most recent staging-next and resend?
->
+This is a bug, I'll fix it right now.
+
+The coding is much nicer than before, thanks for your comments,
+it is very helpful for me.
+
+Thanks,
+Xin
+
+
+On Thu, Oct 10, 2019 at 12:56:17PM +0300, Dan Carpenter wrote:
+> On Thu, Oct 10, 2019 at 12:53:15PM +0300, Dan Carpenter wrote:
+> > This code is *so* much nicer than before.  I hope you feel good about
+> > the changes.  It makes me happy to look at this code now.
+> > 
+> > On Thu, Oct 10, 2019 at 09:34:19AM +0000, Xin Ji wrote:
+> > > +static int edid_read(struct anx7625_data *ctx,
+> > > +		     u8 offset, u8 *pblock_buf)
+> > > +{
+> > > +	int ret, cnt;
+> > > +	struct device *dev = &ctx->client->dev;
+> > > +
+> > > +	for (cnt = 0; cnt < EDID_TRY_CNT; cnt++) {
+>                                           ^^^^^
+> 
+> > > +		sp_tx_aux_wr(ctx, offset);
+> > > +		/* set I2C read com 0x01 mot = 0 and read 16 bytes */
+> > > +		ret = sp_tx_aux_rd(ctx, 0xf1);
+> > > +
+> > > +		if (ret) {
+> > > +			sp_tx_rst_aux(ctx);
+> > > +			DRM_DEV_DEBUG_DRIVER(dev, "edid read failed, reset!\n");
+> > > +			cnt++;
+>                         ^^^^^
+> 
+> I mean that it's incremented twice, yeah?
+> 
 > regards,
 > dan carpenter
->
-
-
--- 
-Kind Regards,
-
-Yizhuo Zhai
-
-Computer Science, Graduate Student
-University of California, Riverside
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
