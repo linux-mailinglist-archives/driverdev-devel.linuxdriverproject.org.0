@@ -1,103 +1,117 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7FE91D3364
-	for <lists+driverdev-devel@lfdr.de>; Thu, 10 Oct 2019 23:27:25 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 71960253CA;
-	Thu, 10 Oct 2019 21:27:22 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qdq6Ce6qtxDu; Thu, 10 Oct 2019 21:27:22 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 63802252B7;
-	Thu, 10 Oct 2019 21:27:20 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AA31E1BF3AF
- for <devel@linuxdriverproject.org>; Thu, 10 Oct 2019 21:27:18 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 65FDED3677
+	for <lists+driverdev-devel@lfdr.de>; Fri, 11 Oct 2019 02:44:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A466086DD4
- for <devel@linuxdriverproject.org>; Thu, 10 Oct 2019 21:27:18 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BDB698504B;
+	Fri, 11 Oct 2019 00:44:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id mro9SdEZXamV; Fri, 11 Oct 2019 00:44:33 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 81A2D84828;
+	Fri, 11 Oct 2019 00:44:32 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id A68C91BF9C1
+ for <devel@linuxdriverproject.org>; Fri, 11 Oct 2019 00:44:29 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id A13ED8630A
+ for <devel@linuxdriverproject.org>; Fri, 11 Oct 2019 00:44:29 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PjhJRjEUamAG for <devel@linuxdriverproject.org>;
- Thu, 10 Oct 2019 21:27:15 +0000 (UTC)
-X-Greylist: delayed 00:59:20 by SQLgrey-1.7.6
-Received: from NAM04-BN3-obe.outbound.protection.outlook.com
- (mail-eopbgr680049.outbound.protection.outlook.com [40.107.68.49])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3DD5686DC6
- for <devel@driverdev.osuosl.org>; Thu, 10 Oct 2019 21:27:15 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=KTWh3CDqdCaUcqQcwmC7w+LSBu2mmUyn9E+iw+PXHhe9sI2cYYeGwyq2ZMW4fLuX1CALLp/cJNDbrFIa/hzJBN9rLNgM2tglQR47lxj4y6Lyq8mVJSx0bbYBcGtXdIjlQsrGnDHPfeMh/Vd/J5s+TgmPE/98BPmYUZYWweR2WRPhk2Y7QJVgqab/AkB7w+d33d9EI6/Tg98I9aWVe8tGxmxYvcjFNRxAkEL+HPtW7Sw16Xde4NsjNp8tyNw9d3mXfx0zfuta3b+eJMxcQY2B8O6+zM7gxzF5uR1G86GPCkVPzASiumkFpXFvFV+47QBdGpIBsvhMaqDp0gsvyMFDMg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=YvG0EKYDYGz3Y40vwwpNNVOPf2vKPpDUfqp+eN24uCI=;
- b=AxnVDMVeiN1Igx9thbq1CIwTBeSGtjemrsAL0Ui15wU+WgThLk7/rCXpqVX/jPALFWiH5ZNJOuPxh02eMtXvHRJ8cS0hebVBwLkVnXWNeyogrbA9XWcM+/gKELspibJuwFMvNtV5KE2ALY2nKFnRxIck/hgWJeACw8WNgOoXH8fjF7xS94oF7mV35rIuK3rRHEqCxDg+krLbDtMMJVftAcAW1A4sPX63C3N2krKaHZicYkW1zTJasXtcb9a4UVmJWOW0YvyHXBjIC9jshY9DTyC5znKkIHMyiYEfAPzGPB2h+a6SPxHAxb3mklORYODQ2DtJXCs6t3k8sj9iQ2Al9g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=daktronics.com; dmarc=pass action=none
- header.from=daktronics.com; dkim=pass header.d=daktronics.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=daktronics.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=YvG0EKYDYGz3Y40vwwpNNVOPf2vKPpDUfqp+eN24uCI=;
- b=hKGTBtrzr3jCuG5Ky25C18akGT8pnQGLyCFB5a1NOHUCSdlsmJgHNP+in8LGBLa1WkNi3zKLobBIPLqMuX1qBAl+lYCP9J0d2EgRmBy/WCbrL7+vL8kX77R6PUXcWwJPzKwtppJNXmD98X8wfvprrMPfwUYN0685A09EqtOYiG0=
-Received: from SN6PR02MB4016.namprd02.prod.outlook.com (52.135.69.145) by
- SN6PR02MB4669.namprd02.prod.outlook.com (52.135.113.202) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2347.16; Thu, 10 Oct 2019 14:54:59 +0000
-Received: from SN6PR02MB4016.namprd02.prod.outlook.com
- ([fe80::ec31:ae9d:c354:319a]) by SN6PR02MB4016.namprd02.prod.outlook.com
- ([fe80::ec31:ae9d:c354:319a%5]) with mapi id 15.20.2347.016; Thu, 10 Oct 2019
- 14:54:59 +0000
-From: Matt Sickler <Matt.Sickler@daktronics.com>
-To: Chandra Annamaneni <chandra627@gmail.com>, "gregkh@linuxfoundation.org"
- <gregkh@linuxfoundation.org>
-Subject: RE: [PATCH] KPC2000: kpc2000_spi.c: Fix style issues (line length)
-Thread-Topic: [PATCH] KPC2000: kpc2000_spi.c: Fix style issues (line length)
-Thread-Index: AQHVfxglkDfKSozqZkux2cu69VsGV6dT8Nnw
-Date: Thu, 10 Oct 2019 14:54:59 +0000
-Message-ID: <SN6PR02MB40166D599A07440D26EBE7F1EE940@SN6PR02MB4016.namprd02.prod.outlook.com>
-References: <1570676937-3975-1-git-send-email-chandra627@gmail.com>
-In-Reply-To: <1570676937-3975-1-git-send-email-chandra627@gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Matt.Sickler@daktronics.com; 
-x-originating-ip: [2620:9b:8000:6046:fb0a:2a78:c036:e564]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 8679d0e5-cfcc-4600-5ba5-08d74d91d2bc
-x-ms-traffictypediagnostic: SN6PR02MB4669:
-x-microsoft-antispam-prvs: <SN6PR02MB466914554C7E8A4CC3F92D96EE940@SN6PR02MB4669.namprd02.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:949;
-x-forefront-prvs: 018632C080
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(4636009)(396003)(376002)(346002)(366004)(39850400004)(136003)(13464003)(189003)(199004)(102836004)(2501003)(6246003)(71200400001)(71190400001)(11346002)(446003)(6506007)(76116006)(46003)(5660300002)(66946007)(476003)(33656002)(486006)(4326008)(66476007)(66556008)(64756008)(66446008)(52536014)(74316002)(2906002)(54906003)(8676002)(7696005)(305945005)(81166006)(7736002)(256004)(81156014)(14454004)(316002)(478600001)(186003)(86362001)(110136005)(25786009)(76176011)(6116002)(6436002)(9686003)(8936002)(55016002)(229853002)(14444005)(99286004);
- DIR:OUT; SFP:1101; SCL:1; SRVR:SN6PR02MB4669;
- H:SN6PR02MB4016.namprd02.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: daktronics.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: okZ0Zb8hJ2XoseC8OPSx304xZ9Az7jeeURDcQl1/AW+jpgksHl8s+FzL0Ly+9uniVwcFiaqLSABSS+yfOraiF++A2FvxBUyr3TayozI+n4BbJCnwc5noJrmwEzrGFLrFtvzzeqcC2NPEqeYRqrXl3+gsItuHiDDxqjlFuLnx/DL4Jj0SI/bGsAinySIZQa6vyf7SzG2wdL1aYm6AGD87WKqAE5xVXMHfqLOJPG7Of1vH2bxj70b7YkXKuso+/91+Ma5Kl2AiYQKK+Cj7y07SSTKHDvBauPTbvdoLYDZqBUFBcHlktDsT2WYse+VdVFFSks4r/uUf0L1HgDHxANoVzjELBn2LXShKN9QQPLow4AtIQU6xtbymdRRcZtRGxrIs+h2zjIrLDQbxNJNvboInzpTZ3j/rugdddBdf964cU+8=
-x-ms-exchange-transport-forked: True
+ with ESMTP id uTg1V+Sl+sXE for <devel@linuxdriverproject.org>;
+ Fri, 11 Oct 2019 00:44:29 +0000 (UTC)
+X-Greylist: delayed 00:07:06 by SQLgrey-1.7.6
+Received: from mx2.ucr.edu (mx2.ucr.edu [138.23.62.3])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id EF71D8758A
+ for <devel@driverdev.osuosl.org>; Fri, 11 Oct 2019 00:44:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=ucr.edu; i=@ucr.edu; q=dns/txt; s=selector3;
+ t=1570754668; x=1602290668;
+ h=mime-version:references:in-reply-to:from:date:message-id:
+ subject:to:cc; bh=uXv2UQ3LODrzT9UfKJz+VhFwzGfiQWvz0Klpty0YInQ=;
+ b=mtSrArx/S2WSp9V9RlU0j21gxZxxyhDpzaoB/HxrBh6WawpGOtXrSeq8
+ M1xjdklK046RfU0RXzxghIKG9isGlmbbnVdaXEbHy7JrUJCAME4+EFiGG
+ 7eueMRDpjbJrRqz0Jt+N6yB4GSSW/nMndWkAt57CnNH5NUduXlI+I7/6J
+ bP2aj4e9YQkjK0Sxgep3CLPLE2V0Jn0EK0TOrqZu1MiyuoRYgbOlKcx2h
+ YpluieCC2qfVu3ZpXskcnllG+M7YG7x6dNmg921CO8wriegbBvSVgHcMK
+ TgxJfbkFKE9wbR0odkGFx5NjwSnUdKgWLyo6TVRT1fS4EnZ7rwLGv4H7E g==;
+IronPort-SDR: Ep4AO7tzrHjV9GcHte+2Ii4FUzBS62Ly8WYAFn2hTjFFvPUJi8v7W6YrqpnPCPHPhad8TDInQX
+ 8QtAUORq3go1kRyx4I2ggBcmnSUbif3OUNfy4CzlojTgKhxgH0shIz3c41iDxB/AP8S7Jf7MIo
+ puIgjAgxVQuFbFTsswin0/znxhmbo2UkrNLPNbmJSN+PTu//OIxqdz9ROVrmIfLf0HdPbvRSdv
+ eWocI7lnQ+7E3BVCawzRCeyM0bSa8IWn50QxxkAtLeKRo3LX/OwTLmQ5E8GFIHRctDLbH7cxzQ
+ aZE=
+IronPort-PHdr: =?us-ascii?q?9a23=3Ah7T9kR+M2Zel9/9uRHKM819IXTAuvvDOBiVQ1K?=
+ =?us-ascii?q?B41O8cTK2v8tzYMVDF4r011RmVBN6dta4P0LeempujcFRI2YyGvnEGfc4EfD?=
+ =?us-ascii?q?4+ouJSoTYdBtWYA1bwNv/gYn9yNs1DUFh44yPzahANS47xaFLIv3K98yMZFA?=
+ =?us-ascii?q?nhOgppPOT1HZPZg9iq2+yo9JDffgtFiCC8bL59Ixm7owXcvdQKjIV/Lao81g?=
+ =?us-ascii?q?HHqWZSdeRMwmNoK1OTnxLi6cq14ZVu7Sdete8/+sBZSan1cLg2QrJeDDQ9Lm?=
+ =?us-ascii?q?A6/9brugXZTQuO/XQTTGMbmQdVDgff7RH6WpDxsjbmtud4xSKXM9H6QawyVD?=
+ =?us-ascii?q?+/9KpgVgPmhzkbOD446GHXi9J/jKRHoBK6uhdzx5fYbJyJOPZie6/Qe84RS2?=
+ =?us-ascii?q?hcUcZLTyFODY28YIkPAeQPPuhWspfzqEcVoBuiGQWhHv/jxiNUinL026Axzu?=
+ =?us-ascii?q?QvERvB3AwlB98BsnXUrdT1NKcPVuC+0arHzTXZYPNXxDzw74jJcxEhof6WXL?=
+ =?us-ascii?q?J8bdbdxEc0GgPYklqQs5bpMC2I2eQQqmWW6fdrW+G3i2M/tQ19vjyiyt0vh4?=
+ =?us-ascii?q?TJnI4Z11HJ+CdjzIs0IdC1TlNwb8S+H5tKrS6aMpN7QsYlQ251pik30qYGuZ?=
+ =?us-ascii?q?unfCgSz5Qn2gLfZ+SHc4eW5hLjU/6cITJii3JkfLKznhKy8Ua9xuHlWMm50V?=
+ =?us-ascii?q?JHojBKktnLsXAN2BjT5dadRvRh+Ueh3C6D1wHV6u5aPUA5jbTXJ4Ilz7IqlZ?=
+ =?us-ascii?q?cesV7PEjL3lUj0lqObd0Ep9vCt6+v9Y7XmopGcN5VzigH7Kqkvms2+AeQiPQ?=
+ =?us-ascii?q?gPQ2SX5eqx2ab+/ULlWrVGlOM5nbTEsJzCP8QUura5AxNJ0oYk8xuwEimp0M?=
+ =?us-ascii?q?oGknkDN19KZQiHj4n3O17QOvD3EOmwg0q2nDds3PDGI7rhAo7JLnTZl7fhZ7?=
+ =?us-ascii?q?l9uAZgz18fxNYXzJtOErwHPP/pEhv9vdqeBRYjKwGy3+v9INJn34gaVCSEBa?=
+ =?us-ascii?q?rPY43Itlrd1+M9I/SLLL0VsTe1f+k35/fv1SdisUIWZ++k0YZBOyPwJehvP0?=
+ =?us-ascii?q?jMOSmkudwGC2pf+1NmFOE=3D?=
+X-IronPort-Anti-Spam-Filtered: true
+X-IronPort-Anti-Spam-Result: =?us-ascii?q?A2F7AAAwzp9dh0WnVdFmHAEBAQEBBwE?=
+ =?us-ascii?q?BEQEEBAEBgWoEAQELAYQQKoQjjl2CD5slAQgBAQEOLwEBhEACgl0jNwYOAgM?=
+ =?us-ascii?q?JAQEFAQEBAQEFBAEBAhABAQEIDQkIKYVAgjopAYM9AQEBAxIRVhALCw0CAiY?=
+ =?us-ascii?q?CAiISAQUBHAYTIoMAgnilS4EDPIsmgTKIYgEJDYFIEnooAYwNgheEIz6HUoJ?=
+ =?us-ascii?q?eBIE5AQEBlS+WVwEGAoIQFIxUiEUbmUCnfA8jgUWBfDMaJX8GZ4FOUBAUgWm?=
+ =?us-ascii?q?OTCQwkHYBAQ?=
+X-IPAS-Result: =?us-ascii?q?A2F7AAAwzp9dh0WnVdFmHAEBAQEBBwEBEQEEBAEBgWoEA?=
+ =?us-ascii?q?QELAYQQKoQjjl2CD5slAQgBAQEOLwEBhEACgl0jNwYOAgMJAQEFAQEBAQEFB?=
+ =?us-ascii?q?AEBAhABAQEIDQkIKYVAgjopAYM9AQEBAxIRVhALCw0CAiYCAiISAQUBHAYTI?=
+ =?us-ascii?q?oMAgnilS4EDPIsmgTKIYgEJDYFIEnooAYwNgheEIz6HUoJeBIE5AQEBlS+WV?=
+ =?us-ascii?q?wEGAoIQFIxUiEUbmUCnfA8jgUWBfDMaJX8GZ4FOUBAUgWmOTCQwkHYBAQ?=
+X-IronPort-AV: E=Sophos;i="5.67,282,1566889200"; d="scan'208";a="14356900"
+Received: from mail-lf1-f69.google.com ([209.85.167.69])
+ by smtp2.ucr.edu with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256;
+ 10 Oct 2019 17:37:17 -0700
+Received: by mail-lf1-f69.google.com with SMTP id x20so1693033lfe.14
+ for <devel@driverdev.osuosl.org>; Thu, 10 Oct 2019 17:37:17 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ZcWxfPlnGPAO2yo7t6F26rix4NWYfye93UCn2ZNXKJ8=;
+ b=BwUq5IK6UE3LH7rGbWvS/qNcb0sX+wnmN6xJWXeyvp0TvFL1sVLoDdKB2CC8g3MEGY
+ LwoyYxMf0fuu3/5DsMFlNw+SX/nNoGOBe9iI9sWs8qYtMMEdcpYV3MFRQQWL2kGvbKvt
+ Cl8TxRyGRAb6A8oO5kRGPvzZdhe4RcXMtpb4n4vaKx+gT8mAV2feumn8NuMc1rl3DHDj
+ AkQkDZVCrOyEKAqRu3brVb0ec9PTAhcG3B+5Un+WkuzlqcPN/OSDfS1+tdy9cvmJn/R1
+ y62eaZ2b/jHSpmatSu3GhhIfPpVgq8TD2kYh4KN4g4dL6DwemRDaX2XE0f1ESfRUR3gx
+ TaNQ==
+X-Gm-Message-State: APjAAAXD7A9JS50nDlx8eIQLxDmxZHlp+2YSIZsSxTPmLEg4mkGud2fq
+ MBnpYW3NByZo6W1KC87jQo49Kx9Fg6BA3CmI7Cil6Bmv3pv9UYNtI5lnY5mdQHQN6AYZPph0d+y
+ /M43Om3P7bzIwbA5ls/Kpq/kfnlXLHkSbOD7Osfg=
+X-Received: by 2002:a19:ee08:: with SMTP id g8mr2680859lfb.117.1570754235351; 
+ Thu, 10 Oct 2019 17:37:15 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwbqzp9i04wuktQmil7d0bMJlOGaeRnmQG5uBtRDRKLB00XbM3BrsBPCdcJjoQsH+RggVfxOXKBguWYLkvp+gg=
+X-Received: by 2002:a19:ee08:: with SMTP id g8mr2680852lfb.117.1570754235067; 
+ Thu, 10 Oct 2019 17:37:15 -0700 (PDT)
 MIME-Version: 1.0
-X-OriginatorOrg: daktronics.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8679d0e5-cfcc-4600-5ba5-08d74d91d2bc
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Oct 2019 14:54:59.6980 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: be88af81-0945-42aa-a3d2-b122777351a2
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: ns6lBsKwPmNFzsbNld3jb6cjgpfXq4GCaFC2Z4Nt9T8AcCeqCQJCgQnB4QHuFmVg+DQHkD6fmqXOjq4j4n/gBFd1KnbA2+c2AuPAKOy/1pM=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR02MB4669
+References: <20191010043809.27594-1-yzhai003@ucr.edu>
+ <20191010091834.GG20470@kadam>
+In-Reply-To: <20191010091834.GG20470@kadam>
+From: Yizhuo Zhai <yzhai003@ucr.edu>
+Date: Thu, 10 Oct 2019 17:37:56 -0700
+Message-ID: <CABvMjLQ+_rRJT_yeKE9AKJaxhSU5LbcZdenbOr8CdPoD+4Oprw@mail.gmail.com>
+Subject: Re: [PATCH] staging: sm750fb: Potential uninitialized field in "pll"
+To: Dan Carpenter <dan.carpenter@oracle.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,68 +124,43 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- "gneukum1@gmail.com" <gneukum1@gmail.com>,
- "fabian.krueger@fau.de" <fabian.krueger@fau.de>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "simon@nikanor.nu" <simon@nikanor.nu>,
- "dan.carpenter@oracle.com" <dan.carpenter@oracle.com>
+Cc: devel@driverdev.osuosl.org, linux-fbdev@vger.kernel.org,
+ Teddy Wang <teddy.wang@siliconmotion.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Sudip Mukherjee <sudipm.mukherjee@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
->-----Original Message-----
->From: devel <driverdev-devel-bounces@linuxdriverproject.org> On Behalf Of Chandra Annamaneni
->Sent: Wednesday, October 09, 2019 10:09 PM
->To: gregkh@linuxfoundation.org
->Cc: devel@driverdev.osuosl.org; gneukum1@gmail.com; chandra627@gmail.com; fabian.krueger@fau.de; linux-
->kernel@vger.kernel.org; simon@nikanor.nu; dan.carpenter@oracle.com
->Subject: [PATCH] KPC2000: kpc2000_spi.c: Fix style issues (line length)
->
->Resoved: "WARNING: line over 80 characters" from checkpatch.pl
->
->Signed-off-by: Chandra Annamaneni <chandra627@gmail.com>
->---
-> drivers/staging/kpc2000/kpc2000_spi.c | 20 ++++++++++----------
-> 1 file changed, 10 insertions(+), 10 deletions(-)
->
->diff --git a/drivers/staging/kpc2000/kpc2000_spi.c b/drivers/staging/kpc2000/kpc2000_spi.c
->index 3be33c4..ef78b6d 100644
->--- a/drivers/staging/kpc2000/kpc2000_spi.c
->+++ b/drivers/staging/kpc2000/kpc2000_spi.c
->@@ -30,19 +30,19 @@
-> #include "kpc.h"
->
-> static struct mtd_partition p2kr0_spi0_parts[] = {
->-       { .name = "SLOT_0",     .size = 7798784,                .offset = 0,                },
->-       { .name = "SLOT_1",     .size = 7798784,                .offset = MTDPART_OFS_NXTBLK},
->-       { .name = "SLOT_2",     .size = 7798784,                .offset = MTDPART_OFS_NXTBLK},
->-       { .name = "SLOT_3",     .size = 7798784,                .offset = MTDPART_OFS_NXTBLK},
->-       { .name = "CS0_EXTRA",  .size = MTDPART_SIZ_FULL,       .offset = MTDPART_OFS_NXTBLK},
->+       { .name = "SLOT_0",  .size = 7798784,  .offset = 0,},
->+       { .name = "SLOT_1",  .size = 7798784,  .offset = MTDPART_OFS_NXTBLK},
->+       { .name = "SLOT_2",  .size = 7798784,  .offset = MTDPART_OFS_NXTBLK},
->+       { .name = "SLOT_3",  .size = 7798784,  .offset = MTDPART_OFS_NXTBLK},
->+       { .name = "CS0_EXTRA", .size = MTDPART_SIZ_FULL, .offset = MTDPART_OFS_NXTBLK},
-> };
->
-> static struct mtd_partition p2kr0_spi1_parts[] = {
->-       { .name = "SLOT_4",     .size = 7798784,                .offset = 0,                },
->-       { .name = "SLOT_5",     .size = 7798784,                .offset = MTDPART_OFS_NXTBLK},
->-       { .name = "SLOT_6",     .size = 7798784,                .offset = MTDPART_OFS_NXTBLK},
->-       { .name = "SLOT_7",     .size = 7798784,                .offset = MTDPART_OFS_NXTBLK},
->-       { .name = "CS1_EXTRA",  .size = MTDPART_SIZ_FULL,       .offset = MTDPART_OFS_NXTBLK},
->+       { .name = "SLOT_4",  .size = 7798784,  .offset = 0,},
->+       { .name = "SLOT_5",  .size = 7798784,  .offset = MTDPART_OFS_NXTBLK},
->+       { .name = "SLOT_6",  .size = 7798784,  .offset = MTDPART_OFS_NXTBLK},
->+       { .name = "SLOT_7",  .size = 7798784,  .offset = MTDPART_OFS_NXTBLK},
->+       { .name = "CS1_EXTRA",  .size = MTDPART_SIZ_FULL, .offset = MTDPART_OFS_NXTBLK},
-> };
->
-> static struct flash_platform_data p2kr0_spi0_pdata = {
+Sorry about that, let me resend it .
 
-Is the line length limit a hard rule or can exceptions be made?  I really feel that these data tables are more easily read when they're formatted like tables...
+On Thu, Oct 10, 2019 at 2:53 AM Dan Carpenter <dan.carpenter@oracle.com> wrote:
+>
+> On Wed, Oct 09, 2019 at 09:38:08PM -0700, Yizhuo wrote:
+> > Inside function set_chip_clock(), struct pll is supposed to be
+> > initialized in sm750_calc_pll_value(), if condition
+> > "diff < mini_diff" in sm750_calc_pll_value() cannot be fulfilled,
+> > then some field of pll will not be initialized but used in
+> > function sm750_format_pll_reg(), which is potentially unsafe.
+> >
+> > Signed-off-by: Yizhuo <yzhai003@ucr.edu>
+>
+> The patch is correct, but it doesn't apply to linux-next any more.  Can
+> you re-write it on top of the most recent staging-next and resend?
+>
+> regards,
+> dan carpenter
+>
+
+
+-- 
+Kind Regards,
+
+Yizhuo Zhai
+
+Computer Science, Graduate Student
+University of California, Riverside
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
