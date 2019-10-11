@@ -2,73 +2,74 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 14104D38DF
-	for <lists+driverdev-devel@lfdr.de>; Fri, 11 Oct 2019 07:52:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id AF8CBD38E0
+	for <lists+driverdev-devel@lfdr.de>; Fri, 11 Oct 2019 07:52:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3B2018883D;
-	Fri, 11 Oct 2019 05:52:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1B2CB88843;
+	Fri, 11 Oct 2019 05:52:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id P-Ax5oSxWuwm; Fri, 11 Oct 2019 05:52:16 +0000 (UTC)
+	with ESMTP id 5hlf4B6B7L95; Fri, 11 Oct 2019 05:52:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8BA9B887FC;
-	Fri, 11 Oct 2019 05:52:15 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7BBC1883AD;
+	Fri, 11 Oct 2019 05:52:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 19E751BF841
- for <devel@linuxdriverproject.org>; Fri, 11 Oct 2019 05:52:13 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 839891BF841
+ for <devel@linuxdriverproject.org>; Fri, 11 Oct 2019 05:52:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id EA49086E96
- for <devel@linuxdriverproject.org>; Fri, 11 Oct 2019 05:52:12 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7C98D887F8
+ for <devel@linuxdriverproject.org>; Fri, 11 Oct 2019 05:52:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uAeqdnvawRWN for <devel@linuxdriverproject.org>;
- Fri, 11 Oct 2019 05:52:12 +0000 (UTC)
+ with ESMTP id J4Ogzj+a7Zlb for <devel@linuxdriverproject.org>;
+ Fri, 11 Oct 2019 05:52:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
- [209.85.210.193])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 698AF86EA2
- for <devel@driverdev.osuosl.org>; Fri, 11 Oct 2019 05:52:12 +0000 (UTC)
-Received: by mail-pf1-f193.google.com with SMTP id q10so5412927pfl.0
- for <devel@driverdev.osuosl.org>; Thu, 10 Oct 2019 22:52:12 -0700 (PDT)
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A5470883AD
+ for <devel@driverdev.osuosl.org>; Fri, 11 Oct 2019 05:52:15 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id a2so5388180pfo.10
+ for <devel@driverdev.osuosl.org>; Thu, 10 Oct 2019 22:52:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=wIIpGdRKdT3hjAKKgnZBguQ5qXVsyW6bN9Y5XxQyxMc=;
- b=f+xUOeyOxacA45AwVn6sWUl+nSjKToduHdjQ+uhdJXgZ5vDxI1PRqSYX1lw+ZMCkU7
- wYjqHjc2YKujq2ge4STL0e5L0T7NQFwhWALEIreIitrVqC8wBD9JLVIrSCBokHtGpOPl
- MkeXRtNA9ax/jHKMw43w+TfeEW4rLUcVZDZRembiQC4kGyGmknyUR/ytxOGHBr09Yipq
- fhvyLQrXKPkfylVen9kET2YYqq+6Si2tuLoXkBY0wrPrcH5QZX1ZKz9DED84dllM/O5C
- VpXPubFh3YP+HCgV/pwY9U8UZE6EZyWcihWKQUu32pu5xQAQrQCN7O4pdR65wbUDEWGV
- QdpA==
+ bh=i1L51lOnWKHW5TJeL5qfRnIenvgB0vCtd5X2cYOSU8A=;
+ b=bNxAVXrY9EW23UPXRaicX+62+nvRJdhzdaDPzBHW6vpX0KAU2wBy3YYpxoeqh1i8dE
+ RM9seEvHE+LRr6/UGMxf0tZ+bnw07J52e3bXE27x2qTvztZ41P/vY9CHSA1mkPs1yURT
+ ElVLEpQI0iLDsh+6FgsUFaxmR0H9n+OkkNbwBelSbuT6l44GI2pIiFSJUwytkB/jSVxm
+ 9vg+/VIdeQtpbZWopmEOhAfviYqAW12t7ebAVgu3AB4ukBuzgoTZvfp4rHvzFNXiuVC4
+ ePSXJFNwVdB0gw8oJy93B4eb85dVgAbtsDMCJYMTXWeTLVAlBicsJbykpiLnYyP02/9L
+ IEig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=wIIpGdRKdT3hjAKKgnZBguQ5qXVsyW6bN9Y5XxQyxMc=;
- b=rkXCkdDTdt07fUvUqhvmvmsJzpWfkmccm+xclsLVDZ7IDQl+K0A6uTsmVaH7oUDjjp
- sbtM3YzDHRNduGX2ulg0pswoV/EfUPZiQKZ2p7me3t7G6/y/YG0EiFSVE0yG2jIT7RIY
- f5Om8uQd8/YaVjeZU3n0XE1L3xZo/R70ABYOGfveMczZMYkEYNWI4o+lIPOjGAdKlut4
- WG5kLzRRiQNYOb1eLTisyHqytgGPlo7M53/iLmw/A0wFLFBy8zTjfyojUbe0xiLVAnc2
- yXQNqro6aZ62h+Mv7I65A+gSu7As13c9tA5F9/KNpmwmY2ohzo4gCM9A6mwLpKRDVv86
- F0fA==
-X-Gm-Message-State: APjAAAW+cGY4qA9zt76A5PBc9Xp0RA00PiQCwFPJt3kggfS2BRuOXDok
- cEtaRzjt5ijulWPfzx9J7LU=
-X-Google-Smtp-Source: APXvYqx5m5kGl2cgcGxoUukHl4f6QgvVCu68CUW1beVrc8BTbmcRRiJC01ouu48zZfiRd7z3Z994Hg==
-X-Received: by 2002:a65:498a:: with SMTP id r10mr15531549pgs.131.1570773131968; 
- Thu, 10 Oct 2019 22:52:11 -0700 (PDT)
+ bh=i1L51lOnWKHW5TJeL5qfRnIenvgB0vCtd5X2cYOSU8A=;
+ b=RI6tWvDhJ1+nxXwYzxSNL7yxUK7CAksJincqMD7St5j4NNY2UJaraPBU6jIscJBpi6
+ R+orAIvMBHdq3onb8X2ZT/rwj+/Q8i3KybaiHPmzIgpTshNCmO0ASZCS9mKF468JBmUy
+ 7+eNmZ5JqOkN51RZFoKSAUoMSNOGYaADuRt8xTOEr+vQY0g2pNjCvSdgKYphX0Oxws4y
+ qo8tqgK9L/T/oRXrgcwEbjIfyEjAeJPuGC/51W2STVs7Y4hQAMQDAiOyyLL9+pQ2id92
+ qhRbDbRuHkAQwtCE0hC1nUUonse2UrvddTeAdYIFbk45clYqzegH+0XOkj2Z5x6XNc85
+ U1Rg==
+X-Gm-Message-State: APjAAAWef9JGQGz0CgytOVpA4xytEXenP15WMMFF/GSqeGlBbRcXU52c
+ QiKsHtWsHm0pKxQYNdhkCYg=
+X-Google-Smtp-Source: APXvYqwVZHzHwUMl8BA+E2Napohfu3FQGxNVsf6mi0nHXnuX8HAf8mpJAHyP1ymwqePr/diSzaRVLA==
+X-Received: by 2002:a63:44f:: with SMTP id 76mr15328817pge.164.1570773135204; 
+ Thu, 10 Oct 2019 22:52:15 -0700 (PDT)
 Received: from localhost.localdomain ([45.52.215.209])
- by smtp.gmail.com with ESMTPSA id i184sm10257782pge.5.2019.10.10.22.52.11
+ by smtp.gmail.com with ESMTPSA id i184sm10257782pge.5.2019.10.10.22.52.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 10 Oct 2019 22:52:11 -0700 (PDT)
+ Thu, 10 Oct 2019 22:52:14 -0700 (PDT)
 From: Chandra Annamaneni <chandra627@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 4/5] KPC2000: kpc2000_spi.c: Fix style issues (alignment)
-Date: Thu, 10 Oct 2019 22:51:54 -0700
-Message-Id: <20191011055155.4985-4-chandra627@gmail.com>
+Subject: [PATCH 5/5] KPC2000: kpc2000_spi.c: Fix style issues (Unnecessary
+ parenthesis)
+Date: Thu, 10 Oct 2019 22:51:55 -0700
+Message-Id: <20191011055155.4985-5-chandra627@gmail.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191011055155.4985-1-chandra627@gmail.com>
 References: <20191011055155.4985-1-chandra627@gmail.com>
@@ -93,44 +94,26 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Resolved: "CHECK: Alignment should match open parenthesis" from checkpatch
+Resolved: CHECK: Unnecessary parentheses around table[i]
 
 Signed-off-by: Chandra Annamaneni <chandra627@gmail.com>
 ---
- drivers/staging/kpc2000/kpc2000_spi.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ drivers/staging/kpc2000/kpc2000_spi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/staging/kpc2000/kpc2000_spi.c b/drivers/staging/kpc2000/kpc2000_spi.c
-index 66cfa5202690..26e1e8466fb2 100644
+index 26e1e8466fb2..8cd6936eda17 100644
 --- a/drivers/staging/kpc2000/kpc2000_spi.c
 +++ b/drivers/staging/kpc2000/kpc2000_spi.c
-@@ -315,19 +315,19 @@ kp_spi_transfer_one_message(struct spi_master *master, struct spi_message *m)
- 		if (transfer->speed_hz > KP_SPI_CLK ||
- 		    (len && !(rx_buf || tx_buf))) {
- 			dev_dbg(kpspi->dev, "  transfer: %d Hz, %d %s%s, %d bpw\n",
--					transfer->speed_hz,
--					len,
--					tx_buf ? "tx" : "",
--					rx_buf ? "rx" : "",
--					transfer->bits_per_word);
-+				transfer->speed_hz,
-+				len,
-+				tx_buf ? "tx" : "",
-+				rx_buf ? "rx" : "",
-+				transfer->bits_per_word);
- 			dev_dbg(kpspi->dev, "  transfer -EINVAL\n");
- 			return -EINVAL;
- 		}
- 		if (transfer->speed_hz &&
- 		    transfer->speed_hz < (KP_SPI_CLK >> 15)) {
- 			dev_dbg(kpspi->dev, "speed_hz %d below minimum %d Hz\n",
--					transfer->speed_hz,
--					KP_SPI_CLK >> 15);
-+				transfer->speed_hz,
-+				KP_SPI_CLK >> 15);
- 			dev_dbg(kpspi->dev, "  speed_hz -EINVAL\n");
- 			return -EINVAL;
- 		}
+@@ -478,7 +478,7 @@ kp_spi_probe(struct platform_device *pldev)
+ 	/* register the slave boards */
+ #define NEW_SPI_DEVICE_FROM_BOARD_INFO_TABLE(table) \
+ 	for (i = 0 ; i < ARRAY_SIZE(table) ; i++) { \
+-		spi_new_device(master, &(table[i])); \
++		spi_new_device(master, &table[i]); \
+ 	}
+ 
+ 	switch ((drvdata->card_id & 0xFFFF0000) >> 16) {
 -- 
 2.20.1
 
