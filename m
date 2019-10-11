@@ -1,122 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 917CFD393A
-	for <lists+driverdev-devel@lfdr.de>; Fri, 11 Oct 2019 08:13:09 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 470F0D3945
+	for <lists+driverdev-devel@lfdr.de>; Fri, 11 Oct 2019 08:18:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EA5A686EB3;
-	Fri, 11 Oct 2019 06:13:07 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D9AAC8800A;
+	Fri, 11 Oct 2019 06:18:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fRoCNJUCmKj5; Fri, 11 Oct 2019 06:13:07 +0000 (UTC)
+	with ESMTP id 7AKanwHnRaeW; Fri, 11 Oct 2019 06:18:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8AF0686EAA;
-	Fri, 11 Oct 2019 06:13:06 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id F27E987FDA;
+	Fri, 11 Oct 2019 06:18:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B4BAD1BF2F8
- for <devel@linuxdriverproject.org>; Fri, 11 Oct 2019 06:13:00 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0E1AE1BF2F8
+ for <devel@linuxdriverproject.org>; Fri, 11 Oct 2019 06:18:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id AD28D25518
- for <devel@linuxdriverproject.org>; Fri, 11 Oct 2019 06:13:00 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id EAFB38883D
+ for <devel@linuxdriverproject.org>; Fri, 11 Oct 2019 06:18:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Mf0jjppYjj17 for <devel@linuxdriverproject.org>;
- Fri, 11 Oct 2019 06:12:59 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mailout2.w1.samsung.com (mailout2.w1.samsung.com
- [210.118.77.12])
- by silver.osuosl.org (Postfix) with ESMTPS id D8DE02039C
- for <devel@driverdev.osuosl.org>; Fri, 11 Oct 2019 06:12:58 +0000 (UTC)
-Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
- by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id
- 20191011061256euoutp02b3c953179d18f4b9a2331b9d54f2697a~MgvkMgHy32354523545euoutp02k
- for <devel@driverdev.osuosl.org>; Fri, 11 Oct 2019 06:12:56 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com
- 20191011061256euoutp02b3c953179d18f4b9a2331b9d54f2697a~MgvkMgHy32354523545euoutp02k
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1570774376;
- bh=BFlpL/9spCtVhk+j4FpstZKi3lH6fRukIoRfiZqbsYM=;
- h=Subject:To:Cc:From:Date:In-Reply-To:References:From;
- b=RioP0gsDSl3g7CxJ/FwuIsN46YiMhQRBqnjT+XZEz0NXTrk/+56mJhecVow7o2igu
- 7mJUHOL3qEyIRxJzPKrRIDtV1K4Lfg4cF3+K6fJpe9KkB+r3URf38eY4aMTAQuRSNV
- TEd//DLlajASDQWnRQKVQsRX00GgoCLXjfAIhaHQ=
-Received: from eusmges3new.samsung.com (unknown [203.254.199.245]) by
- eucas1p1.samsung.com (KnoxPortal) with ESMTP id
- 20191011061255eucas1p147055b1a6c8c3ce9bcc67fd4fdc23cab~MgvjwMMpp2546625466eucas1p1G;
- Fri, 11 Oct 2019 06:12:55 +0000 (GMT)
-Received: from eucas1p2.samsung.com ( [182.198.249.207]) by
- eusmges3new.samsung.com (EUCPMTA) with SMTP id 67.18.04374.76D10AD5; Fri, 11
- Oct 2019 07:12:55 +0100 (BST)
-Received: from eusmtrp2.samsung.com (unknown [182.198.249.139]) by
- eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
- 20191011061255eucas1p264f567f307d35aba723ce008d14147c0~MgvjasKWm2882228822eucas1p2j;
- Fri, 11 Oct 2019 06:12:55 +0000 (GMT)
-Received: from eusmgms2.samsung.com (unknown [182.198.249.180]) by
- eusmtrp2.samsung.com (KnoxPortal) with ESMTP id
- 20191011061255eusmtrp23eac7f98043aef9e24e7789f84a64933~MgvjZ-m633227932279eusmtrp2H;
- Fri, 11 Oct 2019 06:12:55 +0000 (GMT)
-X-AuditID: cbfec7f5-4ddff70000001116-f8-5da01d67f5a3
-Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
- eusmgms2.samsung.com (EUCPMTA) with SMTP id 67.EA.04117.76D10AD5; Fri, 11
- Oct 2019 07:12:55 +0100 (BST)
-Received: from [106.120.51.74] (unknown [106.120.51.74]) by
- eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
- 20191011061254eusmtip1c0643197afb588d6c9f765ab14d367fd~MgviyY5Q42292522925eusmtip1P;
- Fri, 11 Oct 2019 06:12:54 +0000 (GMT)
-Subject: Re: [PATCH v2 0/2] Add initial support for slimport anx7625
-To: Xin Ji <xji@analogixsemi.com>, "devel@driverdev.osuosl.org"
- <devel@driverdev.osuosl.org>, Laurent Pinchart
- <laurent.pinchart@ideasonboard.com>
-From: Andrzej Hajda <a.hajda@samsung.com>
-Message-ID: <1544211b-d2c7-601c-93b3-a130178b8697@samsung.com>
-Date: Fri, 11 Oct 2019 08:12:53 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ with ESMTP id dwmYe6rOYGar for <devel@linuxdriverproject.org>;
+ Fri, 11 Oct 2019 06:18:28 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail2-relais-roc.national.inria.fr
+ (mail2-relais-roc.national.inria.fr [192.134.164.83])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id F1F0888837
+ for <devel@driverdev.osuosl.org>; Fri, 11 Oct 2019 06:18:27 +0000 (UTC)
+X-IronPort-AV: E=Sophos;i="5.67,283,1566856800"; d="scan'208";a="405698121"
+Received: from 81-65-53-202.rev.numericable.fr (HELO hadrien) ([81.65.53.202])
+ by mail2-relais-roc.national.inria.fr with
+ ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 11 Oct 2019 08:18:25 +0200
+Date: Fri, 11 Oct 2019 08:18:25 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Wambui Karuga <wambui.karugax@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 1/5] staging: octeon: remove typedef
+ declaration for cvmx_wqe_t
+In-Reply-To: <1b16bc880fee5711f96ed82741f8268e4dac1ae6.1570773209.git.wambui.karugax@gmail.com>
+Message-ID: <alpine.DEB.2.21.1910110817340.2662@hadrien>
+References: <cover.1570773209.git.wambui.karugax@gmail.com>
+ <1b16bc880fee5711f96ed82741f8268e4dac1ae6.1570773209.git.wambui.karugax@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-In-Reply-To: <cover.1570760115.git.xji@analogixsemi.com>
-Content-Language: en-US
-X-Brightmail-Tracker: H4sIAAAAAAAAA01Sa1BMYRju2++c3bM7dufYMvtOorEzKEMYZhyDpmb6cf4wTDFoGp04itrK
- Hov4YaNMJV1EabsyqpXcSlFDyzaslbuaiZCZ3Gs12S5KSruH0b/nfd7nvTzvvBRW95De1K74
- vbw+novTShVEw/2Rp4uiZ5VHLHmQtYA58cQuYXrGCwhmoiEXM7cejcqYtsE+KXOxzUww7cNf
- MWPvbSeY9NzzMuZlU7GUsWaFM58uVZBM6dufOEjJltxuwmxfR6qMLTI+J9h3zS0Ee3uonGCL
- 0gpJ9kHOCwl7Y+g9yXYdt0nY/o+vCfbOiTyCddbOXj9tq2L1Dj5u1z5evzgwUhEz+igLJ5Yo
- DtjGh7ER9ckykJwCejmkd5eQGUhBqWkzgrb004QYDCA4VpsqEQMngpQBpzQDUe4S+zsvka9C
- kDFqRWLgQFB3tBK7+nrSIWD8ki1zJbzofATXuofcrTBtwWDtP0u6VFLaH37XvZK6sJIOBGOV
- 080T9FxI/WQmXeNm0JuhdZATJdPBXviBcGE5zUB+9RG3HNO+cMNRjEWsgdcfytyzgC6kwHIv
- jxSdhkDBKzMSsSd8s13/ewEfmGh0FbjwYegyp2CxOA1B/dVGLCZWQYvtuXshPLn0labFIh0M
- zyx1SDyLCjoc08UdVHCyoQCLtBLSjqlF9Rzoelz/t6EGKp4NSnOQ1jTFmWmKG9MUN6b/c8sR
- UY00vEHQRfPCsnh+f4DA6QRDfHTA9gRdLZp8wdZx2+BN1DwWZUU0hbTTlGd8yyLUJLdPSNJZ
- EVBY66U8ZyqOUCt3cEkHeX3CNr0hjhesaCZFaDXKQx7vw9V0NLeXj+X5RF7/Lyuh5N5G9NCn
- s9Ehz8/OLgntDlvo+cPHsLbKu9TIlYYmO150xspbNgSrTIJi5orEjSM5QZkrv2+b57Mn+bzA
- +l02JFlio5L9/APQlsgZOz/Pb07OvOCosviq6iplu9eF6TaNOU95nEm4W9M2d+eat/rw+o5f
- rbEm05vDmrAfRcG1Nb0x+5+otIQQwy1dgPUC9wcCV3Y6fgMAAA==
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFvrHIsWRmVeSWpSXmKPExsVy+t/xu7rpsgtiDQ5OFLHoPXeSyeL1v+ks
- Fv+3TWS22HPmF7vFla/v2SxWX1nBYnH1+0tmi5NvrrJYdE5cwm5xedccNotDfdEWz9YuZbWY
- d/cHswOvx9y9u5g93t9oZfeY3XCRxePevsMsHnu/LWDxmN0xk9XjxIRLTB7bvz1g9bjffZzJ
- 4+PTWyweB3ons3h83iQXwBOlZ1OUX1qSqpCRX1xiqxRtaGGkZ2hpoWdkYqlnaGwea2VkqqRv
- Z5OSmpNZllqkb5egl/HrTB9zwVyuiuP/vjM3ML5n72Lk4JAQMJE4eU+ki5GTQ0hgKaPEz4ex
- ILaEgLjE7vlvmSFsYYk/17rYuhi5gGpeM0r8OPODFSQhLOAi0fCinx0kISIwjVFiw9TXzCAO
- s8BBZomHE/4wQ7R0M0rMfnaHDaSFTUBT4u/mm2A2r4CdRMPyz2CjWARUJVqfrQCzRQUiJJ5v
- v8EIUSMocXLmExYQm1PAQmLaqiawGmYBdYk/8y4xQ9jyEtvfzoGyxSVuPZnPNIFRaBaS9llI
- WmYhaZmFpGUBI8sqRpHU0uLc9NxiI73ixNzi0rx0veT83E2MwLjfduznlh2MXe+CDzEKcDAq
- 8fDOkJ8fK8SaWFZcmXuIUYKDWUmEd9GsObFCvCmJlVWpRfnxRaU5qcWHGE2BnpvILCWanA9M
- SXkl8YamhuYWlobmxubGZhZK4rwdAgdjhATSE0tSs1NTC1KLYPqYODilGhirF7B95Gh32aWo
- bffS+tu6nAXL1vUvtK+7P/WHa9fKa367b0cfXdDQZ6bCmSBVzcKVzvfpR/YK9fXZD6S8E9oX
- um/hlYi6IbIxznXB0sdNl0/JK93p1V/xS2lT6GYPra8n17RMDPxxyJH/AHfVFYO4F5eVNS6w
- mfHW7eqb+nbxcWmVWcUm1YuUWIozEg21mIuKEwGisOoEEQMAAA==
-X-CMS-MailID: 20191011061255eucas1p264f567f307d35aba723ce008d14147c0
-X-Msg-Generator: CA
-X-RootMTR: 20191011022055epcas5p37790ed31cbe63d0be0f6b5786ce1392a
-X-EPHeader: CA
-CMS-TYPE: 201P
-X-CMS-RootMailID: 20191011022055epcas5p37790ed31cbe63d0be0f6b5786ce1392a
-References: <CGME20191011022055epcas5p37790ed31cbe63d0be0f6b5786ce1392a@epcas5p3.samsung.com>
- <cover.1570760115.git.xji@analogixsemi.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -129,58 +60,178 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Jernej Skrabec <jernej.skrabec@siol.net>,
- Nicolas Boichat <drinkcat@chromium.org>, Jonas Karlman <jonas@kwiboo.se>,
- David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- Sheng Pan <span@analogixsemi.com>, Daniel Vetter <daniel@ffwll.ch>,
- Dan Carpenter <dan.carpenter@oracle.com>
+Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com,
+ linux-kernel@vger.kernel.org, gregkh@linuxfoundation.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 11.10.2019 04:20, Xin Ji wrote:
-> Hi all,
+
+
+On Fri, 11 Oct 2019, Wambui Karuga wrote:
+
+> Remove typedef declaration from struct cvmx_wqe_t in
+
+You can remove the _t from the name as well.
+
+> drivers/staging/octeon/octeon-stubs.h.
+
+It's not really necessary to give the name of the file in the log message,
+as it can easily be seen below.
+
+julia
+
+> Also replace its previous uses with new struct declaration.
+> Issue found by checkpatch.pl
 >
-> The following series add initial support for the Slimport ANX7625 transmitter, a
-> ultra-low power Full-HD 4K MIPI to DP transmitter designed for portable device.
+> Signed-off-by: Wambui Karuga <wambui.karugax@gmail.com>
+> ---
+>  drivers/staging/octeon/ethernet-rx.c  |  6 +++---
+>  drivers/staging/octeon/ethernet-tx.c  |  2 +-
+>  drivers/staging/octeon/ethernet.c     |  2 +-
+>  drivers/staging/octeon/octeon-stubs.h | 22 +++++++++++-----------
+>  4 files changed, 16 insertions(+), 16 deletions(-)
 >
-> This is the initial version, any mistakes, please let me know, I will fix it in
-> the next series.
+> diff --git a/drivers/staging/octeon/ethernet-rx.c b/drivers/staging/octeon/ethernet-rx.c
+> index 0e65955c746b..63e15a70f3e7 100644
+> --- a/drivers/staging/octeon/ethernet-rx.c
+> +++ b/drivers/staging/octeon/ethernet-rx.c
+> @@ -60,7 +60,7 @@ static irqreturn_t cvm_oct_do_interrupt(int irq, void *napi_id)
+>   *
+>   * Returns Non-zero if the packet can be dropped, zero otherwise.
+>   */
+> -static inline int cvm_oct_check_rcv_error(cvmx_wqe_t *work)
+> +static inline int cvm_oct_check_rcv_error(struct cvmx_wqe_t *work)
+>  {
+>  	int port;
 >
-> Thanks,
-> Xin
-
-
-Next time please increment patchset version number - this is third
-iteration of v2.
-
-
-Regards
-
-Andrzej
-
-
+> @@ -135,7 +135,7 @@ static inline int cvm_oct_check_rcv_error(cvmx_wqe_t *work)
+>  	return 0;
+>  }
 >
+> -static void copy_segments_to_skb(cvmx_wqe_t *work, struct sk_buff *skb)
+> +static void copy_segments_to_skb(struct cvmx_wqe_t *work, struct sk_buff *skb)
+>  {
+>  	int segments = work->word2.s.bufs;
+>  	union cvmx_buf_ptr segment_ptr = work->packet_ptr;
+> @@ -215,7 +215,7 @@ static int cvm_oct_poll(struct oct_rx_group *rx_group, int budget)
+>  		struct sk_buff *skb = NULL;
+>  		struct sk_buff **pskb = NULL;
+>  		int skb_in_hw;
+> -		cvmx_wqe_t *work;
+> +		struct cvmx_wqe_t *work;
+>  		int port;
 >
-> Xin Ji (2):
->   dt-bindings: drm/bridge: anx7625: MIPI to DP transmitter binding
->   drm/bridge: anx7625: Add anx7625 MIPI DSI/DPI to DP bridge driver
+>  		if (USE_ASYNC_IOBDMA && did_work_request)
+> diff --git a/drivers/staging/octeon/ethernet-tx.c b/drivers/staging/octeon/ethernet-tx.c
+> index c64728fc21f2..7ececfac0701 100644
+> --- a/drivers/staging/octeon/ethernet-tx.c
+> +++ b/drivers/staging/octeon/ethernet-tx.c
+> @@ -515,7 +515,7 @@ int cvm_oct_xmit_pow(struct sk_buff *skb, struct net_device *dev)
+>  	void *copy_location;
 >
->  .../bindings/display/bridge/anx7625.yaml           |   96 +
->  drivers/gpu/drm/bridge/Makefile                    |    2 +-
->  drivers/gpu/drm/bridge/analogix/Kconfig            |    6 +
->  drivers/gpu/drm/bridge/analogix/Makefile           |    1 +
->  drivers/gpu/drm/bridge/analogix/anx7625.c          | 2153 ++++++++++++++++++++
->  drivers/gpu/drm/bridge/analogix/anx7625.h          |  406 ++++
->  6 files changed, 2663 insertions(+), 1 deletion(-)
->  create mode 100644 Documentation/devicetree/bindings/display/bridge/anx7625.yaml
->  create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.c
->  create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.h
+>  	/* Get a work queue entry */
+> -	cvmx_wqe_t *work = cvmx_fpa_alloc(CVMX_FPA_WQE_POOL);
+> +	struct cvmx_wqe_t *work = cvmx_fpa_alloc(CVMX_FPA_WQE_POOL);
 >
-
+>  	if (unlikely(!work)) {
+>  		printk_ratelimited("%s: Failed to allocate a work queue entry\n",
+> diff --git a/drivers/staging/octeon/ethernet.c b/drivers/staging/octeon/ethernet.c
+> index cf8e9a23ebf9..3de209b7d0ec 100644
+> --- a/drivers/staging/octeon/ethernet.c
+> +++ b/drivers/staging/octeon/ethernet.c
+> @@ -172,7 +172,7 @@ static void cvm_oct_configure_common_hw(void)
+>   */
+>  int cvm_oct_free_work(void *work_queue_entry)
+>  {
+> -	cvmx_wqe_t *work = work_queue_entry;
+> +	struct cvmx_wqe_t *work = work_queue_entry;
+>
+>  	int segments = work->word2.s.bufs;
+>  	union cvmx_buf_ptr segment_ptr = work->packet_ptr;
+> diff --git a/drivers/staging/octeon/octeon-stubs.h b/drivers/staging/octeon/octeon-stubs.h
+> index b2e3c72205dd..fd7522f70f7e 100644
+> --- a/drivers/staging/octeon/octeon-stubs.h
+> +++ b/drivers/staging/octeon/octeon-stubs.h
+> @@ -183,13 +183,13 @@ union cvmx_buf_ptr {
+>  	} s;
+>  };
+>
+> -typedef struct {
+> +struct cvmx_wqe_t {
+>  	union cvmx_wqe_word0 word0;
+>  	union cvmx_wqe_word1 word1;
+>  	union cvmx_pip_wqe_word2 word2;
+>  	union cvmx_buf_ptr packet_ptr;
+>  	uint8_t packet_data[96];
+> -} cvmx_wqe_t;
+> +};
+>
+>  typedef union {
+>  	uint64_t u64;
+> @@ -1198,7 +1198,7 @@ static inline uint64_t cvmx_scratch_read64(uint64_t address)
+>  static inline void cvmx_scratch_write64(uint64_t address, uint64_t value)
+>  { }
+>
+> -static inline int cvmx_wqe_get_grp(cvmx_wqe_t *work)
+> +static inline int cvmx_wqe_get_grp(struct cvmx_wqe_t *work)
+>  {
+>  	return 0;
+>  }
+> @@ -1345,14 +1345,14 @@ static inline void cvmx_pow_work_request_async(int scr_addr,
+>  						       cvmx_pow_wait_t wait)
+>  { }
+>
+> -static inline cvmx_wqe_t *cvmx_pow_work_response_async(int scr_addr)
+> +static inline struct cvmx_wqe_t *cvmx_pow_work_response_async(int scr_addr)
+>  {
+> -	cvmx_wqe_t *wqe = (void *)(unsigned long)scr_addr;
+> +	struct cvmx_wqe_t *wqe = (void *)(unsigned long)scr_addr;
+>
+>  	return wqe;
+>  }
+>
+> -static inline cvmx_wqe_t *cvmx_pow_work_request_sync(cvmx_pow_wait_t wait)
+> +static inline struct cvmx_wqe_t *cvmx_pow_work_request_sync(cvmx_pow_wait_t wait)
+>  {
+>  	return (void *)(unsigned long)wait;
+>  }
+> @@ -1390,21 +1390,21 @@ static inline cvmx_pko_status_t cvmx_pko_send_packet_finish(uint64_t port,
+>  	return ret;
+>  }
+>
+> -static inline void cvmx_wqe_set_port(cvmx_wqe_t *work, int port)
+> +static inline void cvmx_wqe_set_port(struct cvmx_wqe_t *work, int port)
+>  { }
+>
+> -static inline void cvmx_wqe_set_qos(cvmx_wqe_t *work, int qos)
+> +static inline void cvmx_wqe_set_qos(struct cvmx_wqe_t *work, int qos)
+>  { }
+>
+> -static inline int cvmx_wqe_get_qos(cvmx_wqe_t *work)
+> +static inline int cvmx_wqe_get_qos(struct cvmx_wqe_t *work)
+>  {
+>  	return 0;
+>  }
+>
+> -static inline void cvmx_wqe_set_grp(cvmx_wqe_t *work, int grp)
+> +static inline void cvmx_wqe_set_grp(struct cvmx_wqe_t *work, int grp)
+>  { }
+>
+> -static inline void cvmx_pow_work_submit(cvmx_wqe_t *wqp, uint32_t tag,
+> +static inline void cvmx_pow_work_submit(struct cvmx_wqe_t *wqp, uint32_t tag,
+>  					enum cvmx_pow_tag_type tag_type,
+>  					uint64_t qos, uint64_t grp)
+>  { }
+> --
+> 2.23.0
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1b16bc880fee5711f96ed82741f8268e4dac1ae6.1570773209.git.wambui.karugax%40gmail.com.
+>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
