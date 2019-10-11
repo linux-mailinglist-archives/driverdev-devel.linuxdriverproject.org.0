@@ -1,82 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 09E85D3C3F
-	for <lists+driverdev-devel@lfdr.de>; Fri, 11 Oct 2019 11:27:06 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id F3A6ED3CF1
+	for <lists+driverdev-devel@lfdr.de>; Fri, 11 Oct 2019 12:02:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 15056258CF;
-	Fri, 11 Oct 2019 09:27:04 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C4CA1880A5;
+	Fri, 11 Oct 2019 10:02:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lkFcKodZqREa; Fri, 11 Oct 2019 09:27:03 +0000 (UTC)
+	with ESMTP id CyZL4aZLhtNa; Fri, 11 Oct 2019 10:02:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id B219F2012D;
-	Fri, 11 Oct 2019 09:27:02 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 71ED288071;
+	Fri, 11 Oct 2019 10:02:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 273E51BF330
- for <devel@linuxdriverproject.org>; Fri, 11 Oct 2019 09:27:01 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 84BF81BF83C
+ for <devel@linuxdriverproject.org>; Fri, 11 Oct 2019 10:02:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 2156486E36
- for <devel@linuxdriverproject.org>; Fri, 11 Oct 2019 09:27:01 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 81B75204C7
+ for <devel@linuxdriverproject.org>; Fri, 11 Oct 2019 10:02:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xVjMlCxaBJc2 for <devel@linuxdriverproject.org>;
- Fri, 11 Oct 2019 09:27:00 +0000 (UTC)
+ with ESMTP id fb-YTA+tcHwS for <devel@linuxdriverproject.org>;
+ Fri, 11 Oct 2019 10:02:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
- [209.85.221.66])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 72B3D86E34
- for <devel@driverdev.osuosl.org>; Fri, 11 Oct 2019 09:27:00 +0000 (UTC)
-Received: by mail-wr1-f66.google.com with SMTP id v8so11073865wrt.2
- for <devel@driverdev.osuosl.org>; Fri, 11 Oct 2019 02:27:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=dLVl3DsGhkxOyBDwhPCeN0ImQMXW3n75XQjG9mYAy/o=;
- b=t8s5bxx7C+fKPIIBPy949vMQclzBJ+lBKteDR4GyXhkirQvH5DZIeVDG9zdkq19UIj
- ge/gUM99tjtSovZSaFz1fPJBkubQkbXlg6Uh/bo3FTQpV3CIULT4EByCiGdNmK3/3Ysb
- /rDdqb8G5kinD39QAALmikeVvfBzJ0D4C/cIpzyY/jvtsu05VpUUYVFV8UqjiAeFjDHo
- +2mJzPoENqtE6XcC6LEcO0WFFs68/QioX7eQevfQQ11W5e2TfFzkSr8KJZyrwMedKhGv
- Ek4dE4/4lOlR4NiAEGmiB5RmFZ1ihMYUdlZ7fx/gzBJ5/fOqFSjrgRp4NXWW2+hGMLiU
- cUTQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
- :references:mime-version:content-disposition:in-reply-to:user-agent;
- bh=dLVl3DsGhkxOyBDwhPCeN0ImQMXW3n75XQjG9mYAy/o=;
- b=NV14jbDGI6Z3D4JfZA7e+6W87bwTrqwTqMD3rfaJitgzxPIM305+1DyMY+ZpJMc53j
- /L75cJfJls31NRE99IDZ/BQ5x6jKFNeFB/0ZS3wYAFP9Kq6li3GnjPd3FzDLPb1vBWsh
- TdiAW4hCz4G0D54s/zwoKX/+30Btc4G7o0JCVNO8Kvt2kqD/xmSPAtHqAGl6UW+TLPCH
- //KYni6imHgI2ERo32OgKKXDhhmoyhRABKKz89wNzOmHVW/1zsEOaSa8bGSlAu/hjQoB
- aIDc+6301VRrVlJA+EjNCfOSCeh/IqIdEjWlyc15dP9lyHp8HcjJVPRBX9+nhjsbpR/9
- DgEg==
-X-Gm-Message-State: APjAAAWsZ+TqXzJhO6pF3mv9iOUPQERG3wnqLBKtly6bE+E5xHUBmAjT
- KAmyRefWyQ2EwGCaVbmjvpA=
-X-Google-Smtp-Source: APXvYqzX3dd/RoeyFYvYk+GNyWdHr5uGU99lkXoKfWbntpFWSTl5Y+aqSM1VIJmypj0Ou8DxbmOiLA==
-X-Received: by 2002:adf:fecd:: with SMTP id q13mr11450759wrs.224.1570786018961; 
- Fri, 11 Oct 2019 02:26:58 -0700 (PDT)
-Received: from wambui ([197.237.61.225])
- by smtp.gmail.com with ESMTPSA id 36sm12179547wrp.30.2019.10.11.02.26.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 11 Oct 2019 02:26:58 -0700 (PDT)
-Date: Fri, 11 Oct 2019 12:26:52 +0300
-From: Wambui Karuga <wambui.karugax@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH 2/5] staging: octeon: remove typedef declaration for
- cvmx_helper_link_info_t
-Message-ID: <20191011092652.GB10328@wambui>
-References: <cover.1570773209.git.wambui.karugax@gmail.com>
- <78e2c3a4089261e416e9b890cdf81ef029966b75.1570773209.git.wambui.karugax@gmail.com>
- <20191011090213.GB1076760@kroah.com>
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by silver.osuosl.org (Postfix) with ESMTPS id D81C320370
+ for <devel@driverdev.osuosl.org>; Fri, 11 Oct 2019 10:02:32 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9B9scC2162644;
+ Fri, 11 Oct 2019 10:02:30 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=+GPs3yD7k8TANwLI8v1G3L+HkQq52VFBQSkyO/JfTyE=;
+ b=odX5tTsJa0N71+IkxfdmUXvmEusAA53/PDqRxAan/RFa/hmwkroe1IkemC7cVLrTpbgq
+ Ntc4hHrHkT494iiN4RvosRl592XT44LaXQq86Z/hU1mcciF1BwxQcL1L2AtTHowHwMTG
+ Db4GWZiJijm8y2pk2QJkucjCu86u/H53uUkZqRghIK+dnwfXNerMZPFS7j4fKDSE1MbJ
+ Murg+1L0S9gJBkgW5Ap9LT3gacnXJ6sr0PHqNmzyBE+lv80nPLwVtCmZsSbGzpI4bgca
+ 48oFMirO25Aon5imzxEqwMdoxyUmI7TPNHL5RyLXHnn4wozC5daoapKAKeUcIseIG5fF TA== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by aserp2120.oracle.com with ESMTP id 2vek4r0hy0-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 11 Oct 2019 10:02:30 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9B9rWsx027913;
+ Fri, 11 Oct 2019 10:02:29 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by userp3030.oracle.com with ESMTP id 2vhrxg5gm9-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 11 Oct 2019 10:02:29 +0000
+Received: from abhmp0010.oracle.com (abhmp0010.oracle.com [141.146.116.16])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x9BA2LJL020372;
+ Fri, 11 Oct 2019 10:02:21 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Fri, 11 Oct 2019 03:02:20 -0700
+Date: Fri, 11 Oct 2019 13:02:14 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Matt Sickler <Matt.Sickler@daktronics.com>
+Subject: Re: [PATCH] KPC2000: kpc2000_spi.c: Fix style issues (line length)
+Message-ID: <20191011100214.GO13286@kadam>
+References: <1570676937-3975-1-git-send-email-chandra627@gmail.com>
+ <SN6PR02MB40166D599A07440D26EBE7F1EE940@SN6PR02MB4016.namprd02.prod.outlook.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20191011090213.GB1076760@kroah.com>
-User-Agent: Mutt/1.12.2 (2019-09-21)
+In-Reply-To: <SN6PR02MB40166D599A07440D26EBE7F1EE940@SN6PR02MB4016.namprd02.prod.outlook.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9406
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1908290000 definitions=main-1910110094
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9406
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
+ definitions=main-1910110094
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,29 +98,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: 20191011090213.GB1076760@kroah.com
-Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com,
- linux-kernel@vger.kernel.org, Julia Lawall <julia.lawall@lip6.fr>
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ "gneukum1@gmail.com" <gneukum1@gmail.com>,
+ Chandra Annamaneni <chandra627@gmail.com>,
+ "fabian.krueger@fau.de" <fabian.krueger@fau.de>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "simon@nikanor.nu" <simon@nikanor.nu>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Oct 11, 2019 at 11:02:13AM +0200, Greg KH wrote:
-> On Fri, Oct 11, 2019 at 09:02:39AM +0300, Wambui Karuga wrote:
-> > -typedef union {
-> > +union cvmx_helper_link_info_t {
+On Thu, Oct 10, 2019 at 02:54:59PM +0000, Matt Sickler wrote:
+> > static struct mtd_partition p2kr0_spi1_parts[] = {
+> >-       { .name = "SLOT_4",     .size = 7798784,                .offset = 0,                },
+> >-       { .name = "SLOT_5",     .size = 7798784,                .offset = MTDPART_OFS_NXTBLK},
+> >-       { .name = "SLOT_6",     .size = 7798784,                .offset = MTDPART_OFS_NXTBLK},
+> >-       { .name = "SLOT_7",     .size = 7798784,                .offset = MTDPART_OFS_NXTBLK},
+> >-       { .name = "CS1_EXTRA",  .size = MTDPART_SIZ_FULL,       .offset = MTDPART_OFS_NXTBLK},
+> >+       { .name = "SLOT_4",  .size = 7798784,  .offset = 0,},
+> >+       { .name = "SLOT_5",  .size = 7798784,  .offset = MTDPART_OFS_NXTBLK},
+> >+       { .name = "SLOT_6",  .size = 7798784,  .offset = MTDPART_OFS_NXTBLK},
+> >+       { .name = "SLOT_7",  .size = 7798784,  .offset = MTDPART_OFS_NXTBLK},
+> >+       { .name = "CS1_EXTRA",  .size = MTDPART_SIZ_FULL, .offset = MTDPART_OFS_NXTBLK},
+> > };
+> >
+> > static struct flash_platform_data p2kr0_spi0_pdata = {
 > 
-> I agree with Julia, all of the "_t" needs to be dropped as that is
-> pointless.  It's a holdover from the original name where "_t" was trying
-> to say that this is a typedef.  Gotta love abuse of hungarian notation
-> :(
-> 
-> Please redo this patch series and resend.
-> 
-Great, I'll send an updated patch.
-Thanks,
-Wambui
+> Is the line length limit a hard rule or can exceptions be made?  I
+> really feel that these data tables are more easily read when they're
+> formatted like tables...
+
+Exceptions can be made.  It's probably not worth it though because
+you have to be really aggressive about shooting down patches.  Ask
+yourself if there aren't more important battles to fight when human
+lifespans are so short?  I already rejected one change for you.  To me
+the new table looks okay, though.
+
+regards,
+dan carpenter
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
