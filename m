@@ -2,77 +2,57 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C5FA1D50A3
-	for <lists+driverdev-devel@lfdr.de>; Sat, 12 Oct 2019 17:18:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D950FD50E9
+	for <lists+driverdev-devel@lfdr.de>; Sat, 12 Oct 2019 18:16:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EE47E87CAE;
-	Sat, 12 Oct 2019 15:18:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A45D7877D0;
+	Sat, 12 Oct 2019 16:16:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KAJh+7Of7FBy; Sat, 12 Oct 2019 15:18:36 +0000 (UTC)
+	with ESMTP id w29mg2UMHJlz; Sat, 12 Oct 2019 16:16:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 954E0874CD;
-	Sat, 12 Oct 2019 15:18:35 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 33E4C86E9E;
+	Sat, 12 Oct 2019 16:16:49 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7EFE41BF339
- for <devel@linuxdriverproject.org>; Sat, 12 Oct 2019 15:18:32 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 76FDE1BF584
+ for <devel@linuxdriverproject.org>; Sat, 12 Oct 2019 16:16:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 76BA0874CD
- for <devel@linuxdriverproject.org>; Sat, 12 Oct 2019 15:18:32 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7399187A62
+ for <devel@linuxdriverproject.org>; Sat, 12 Oct 2019 16:16:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jV04ea2dp0N6 for <devel@linuxdriverproject.org>;
- Sat, 12 Oct 2019 15:18:31 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
- [209.85.128.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 694D887475
- for <devel@driverdev.osuosl.org>; Sat, 12 Oct 2019 15:18:31 +0000 (UTC)
-Received: by mail-wm1-f65.google.com with SMTP id p7so13057654wmp.4
- for <devel@driverdev.osuosl.org>; Sat, 12 Oct 2019 08:18:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=00wbDsxYMw5kLcHoK10nqGz2XPnCpxBhd7bVGwk+FAw=;
- b=Waq0KdUP+gUillAGvOrqIDV7D5eG2F9ALA4QqXAzfIOgYzTT56gi3H2MpNWLS/L+SM
- oOuw+//6TfcIPR8s3qgncPPOF+LCmyAP8DjyoVmVFrqocGMgZhcCBhnTAqtYxy465J3M
- 7AFMTO8KgBXIjw4NxeolNqSmoUamAFYABqIfno1lzjodIxUvpMz2Dnu4wgonaBEWeoEF
- zd116TwtaRxUIkE6ens1iMVMs0m9HfGR9qy7EC9mBihL5cO9040fojglCebTZ5AnElyx
- QeYHcf+EZUiFEcSJsN+EYAOOfvL/rBXKD/0JsM1BgAdNMuksdQSKn8eja89736elYizz
- 24FA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=00wbDsxYMw5kLcHoK10nqGz2XPnCpxBhd7bVGwk+FAw=;
- b=jwipy0dF6rFqNdTb8bWTftUmCy40W/ddWFHIQVUF+IiJ5uG0lVM0DOHUl9M0i8cPlR
- e61eV6wmzexn/I/XbgoGxj400G6g2a2vTseluuCX9rDt2xEt5ysv6sfgyVBUqE7nyPiA
- YmFo8hsdlT9zZWg6cD1/W26TTvtGccz/1U/gvjMqcqokN9vVFMxU06VgUrXOsO1OxLBq
- s1hSPkS7WN/vgnU4fVMxpn8rG/KlPVQB0dIpcKakkffNxgPieQADRjtygsq+Z4XAInj0
- f2Mi3aUw8Yzn2aI4MLKKkn/hGjxiYCEsAlcNd6KUHYdNKns+BMUy1BY0UpDKBp/VSuO/
- RrsA==
-X-Gm-Message-State: APjAAAVRi3hY8QOphhiI/nz33jf4Muf6KmbpDMlEKOinsCOeN5GQaPfP
- KRWP68Q4E3sfkFq9PNvnsA==
-X-Google-Smtp-Source: APXvYqxdj2hI3aRsv91CVNxyxSaFgMHBIQAShwl9NmW/jf+ZJ/6OMqamZpcspf8MkIU6rGhvDZebHA==
-X-Received: by 2002:a05:600c:2185:: with SMTP id
- e5mr7887447wme.78.1570893509733; 
- Sat, 12 Oct 2019 08:18:29 -0700 (PDT)
-Received: from ninjahub.lan (host-2-102-13-201.as13285.net. [2.102.13.201])
- by smtp.googlemail.com with ESMTPSA id r6sm13905017wmh.38.2019.10.12.08.18.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 12 Oct 2019 08:18:29 -0700 (PDT)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: vc04_services: place the AND operator at the end
- of the previous line
-Date: Sat, 12 Oct 2019 16:18:05 +0100
-Message-Id: <20191012151805.17988-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.21.0
+ with ESMTP id jN6EmIx8uupt for <devel@linuxdriverproject.org>;
+ Sat, 12 Oct 2019 16:16:46 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9C57487A0A
+ for <devel@linuxdriverproject.org>; Sat, 12 Oct 2019 16:16:46 +0000 (UTC)
+Received: from localhost (unknown [62.119.166.9])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 599AA2190F;
+ Sat, 12 Oct 2019 16:16:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1570897006;
+ bh=pXshyxxGscE0pxiId3p1pRQLZygTthV934U804pN8xU=;
+ h=Date:From:To:Cc:Subject:From;
+ b=XFRYSInYXGIbjq7lVOuQwqw7PcSk3vgW+GQyPI9dqs34zJhh86R3SM3vZuCrLPrDG
+ wmasCg/GL7QDZuX8xe+gjEFUXAaGXWNenNRQHNFxsJLSzeiBWyCqOpILC0XgmTuJJ8
+ YMwh3HvmTdqSF9Dqq4WFuDoBu/JFp4+KU8C+4N5o=
+Date: Sat, 12 Oct 2019 18:16:38 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Linus Torvalds <torvalds@linux-foundation.org>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Stephen Rothwell <sfr@canb.auug.org.au>
+Subject: [GIT PULL] Staging/IIO driver fixes for 5.4-rc3
+Message-ID: <20191012161638.GA2191707@kroah.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+User-Agent: Mutt/1.12.2 (2019-09-21)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,45 +65,166 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Jules Irenge <jbi.octave@gmail.com>,
- f.fainelli@gmail.com, sbranden@broadcom.com, mchehab+samsung@kernel.org,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, eric@anholt.net,
- daniela.mormocea@gmail.com, bcm-kernel-feedback-list@broadcom.com,
- wahrenst@gmx.net, dave.stevenson@raspberrypi.org, rjui@broadcom.com,
- hverkuil-cisco@xs4all.nl, linux-arm-kernel@lists.infradead.org,
- linux-rpi-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@linuxdriverproject.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Place the AND logical operator at the end of the previous line;
-to fix warning of "Logical continuations should be on the previous line".
- Issue detected by checkpatch tool.
+The following changes since commit 54ecb8f7028c5eb3d740bb82b0f1d90f2df63c5c:
 
-Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
----
- drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+  Linux 5.4-rc1 (2019-09-30 10:35:40 -0700)
 
-diff --git a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-index d4d1e44b16b2..beb6a0063bb8 100644
---- a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-+++ b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-@@ -1090,8 +1090,8 @@ static int mmal_setup_components(struct bm2835_mmal_dev *dev,
- 
- 	ret = vchiq_mmal_port_set_format(dev->instance, camera_port);
- 
--	if (!ret
--	    && camera_port ==
-+	if (!ret &&
-+	    camera_port ==
- 	    &dev->component[COMP_CAMERA]->output[CAM_PORT_VIDEO]) {
- 		bool overlay_enabled =
- 		    !!dev->component[COMP_PREVIEW]->enabled;
--- 
-2.21.0
+are available in the Git repository at:
 
+  git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/sta=
+ging-5.4-rc3
+
+for you to fetch changes up to 3f3d31622a2c18b644328965925110dd7638b376:
+
+  Merge tag 'iio-fixes-for-5.4a' of https://git.kernel.org/pub/scm/linux/ke=
+rnel/git/jic23/iio into staging-linus (2019-10-10 11:18:37 +0200)
+
+----------------------------------------------------------------
+Staging/IIO driver fixes for 5.4-rc3
+
+Here are some staging and IIO driver fixes for 5.4-rc3.
+
+The "biggest" thing here is a removal of the fbtft device and flexfb
+code as they have been abandoned by their authors and are no longer
+needed for that hardware.
+
+Other than that, the usual amount of staging driver and iio driver fixes
+for reported issues, and some speakup sysfs file documentation, which
+has been long awaited for.
+
+All have been in linux-next with no reported issues.
+
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+----------------------------------------------------------------
+Andreas Klinger (1):
+      iio: adc: hx711: fix bug in sampling of data
+
+Connor Kuehl (1):
+      staging: rtl8188eu: fix null dereference when kzalloc fails
+
+David Frey (1):
+      iio: light: opt3001: fix mutex unlock race
+
+Denis Efremov (1):
+      staging: rtl8188eu: fix HighestRate check in odm_ARFBRefresh_8188E()
+
+Fabrice Gasnier (2):
+      iio: adc: stm32-adc: move registers definitions
+      iio: adc: stm32-adc: fix a race when using several adcs with dma and =
+irq
+
+Geert Uytterhoeven (1):
+      staging: octeon: Use "(uintptr_t)" to cast from pointer to int
+
+Greg Kroah-Hartman (1):
+      Merge tag 'iio-fixes-for-5.4a' of https://git.kernel.org/.../jic23/ii=
+o into staging-linus
+
+Hans de Goede (1):
+      iio: adc: axp288: Override TS pin bias current for some models
+
+Jia-Ye Li (1):
+      staging: exfat: Use kvzalloc() instead of kzalloc() for exfat_sb_info
+
+Lorenzo Bianconi (2):
+      iio: imu: st_lsm6dsx: forbid 0 sensor sensitivity
+      iio: imu: st_lsm6dsx: fix waitime for st_lsm6dsx i2c controller
+
+Marco Felsch (3):
+      iio: light: fix vcnl4000 devicetree hooks
+      iio: light: add missing vcnl4040 of_compatible
+      iio: adc: ad799x: fix probe error handling
+
+Masanari Iida (1):
+      staging: exfat: Fix a typo in Kconfig
+
+Michael Straube (1):
+      staging: exfat: add missing SPDX line to Kconfig
+
+Navid Emamdoost (4):
+      Staging: fbtft: fix memory leak in fbtft_framebuffer_alloc
+      staging: vt6655: Fix memory leak in vt6655_probe
+      iio: imu: adis16400: release allocated memory on failure
+      iio: imu: adis16400: fix memory leak
+
+Noralf Tr=F8nnes (3):
+      staging/fbtft: Depend on OF
+      staging/fbtft: Remove fbtft_device
+      staging/fbtft: Remove flexfb
+
+Okash Khawaja (1):
+      staging: speakup: document sysfs attributes
+
+Pascal Bouwmann (1):
+      iio: fix center temperature of bmc150-accel-core
+
+Remi Pommarel (1):
+      iio: adc: meson_saradc: Fix memory allocation order
+
+Stefan Popa (3):
+      iio: accel: adxl372: Fix/remove limitation for FIFO samples
+      iio: accel: adxl372: Fix push to buffers lost samples
+      iio: accel: adxl372: Perform a reset at start up
+
+Takashi Iwai (1):
+      staging: bcm2835-audio: Fix draining behavior regression
+
+Valdis Kletnieks (1):
+      staging: exfat - fix SPDX tags..
+
+zhong jiang (1):
+      iio: Fix an undefied reference error in noa1305_probe
+
+ drivers/iio/accel/adxl372.c                        |   22 +-
+ drivers/iio/accel/bmc150-accel-core.c              |    2 +-
+ drivers/iio/adc/ad799x.c                           |    4 +-
+ drivers/iio/adc/axp288_adc.c                       |   32 +
+ drivers/iio/adc/hx711.c                            |   10 +-
+ drivers/iio/adc/meson_saradc.c                     |   10 +-
+ drivers/iio/adc/stm32-adc-core.c                   |   70 +-
+ drivers/iio/adc/stm32-adc-core.h                   |  137 +++
+ drivers/iio/adc/stm32-adc.c                        |  109 --
+ drivers/iio/imu/adis_buffer.c                      |   10 +-
+ drivers/iio/imu/st_lsm6dsx/st_lsm6dsx.h            |    2 +
+ drivers/iio/imu/st_lsm6dsx/st_lsm6dsx_core.c       |   28 +-
+ drivers/iio/imu/st_lsm6dsx/st_lsm6dsx_shub.c       |   15 +-
+ drivers/iio/light/Kconfig                          |    1 +
+ drivers/iio/light/opt3001.c                        |    6 +-
+ drivers/iio/light/vcnl4000.c                       |   14 +-
+ drivers/staging/exfat/Kconfig                      |    3 +-
+ drivers/staging/exfat/Makefile                     |    2 +-
+ drivers/staging/exfat/exfat.h                      |    2 +-
+ drivers/staging/exfat/exfat_blkdev.c               |    2 +-
+ drivers/staging/exfat/exfat_cache.c                |    2 +-
+ drivers/staging/exfat/exfat_core.c                 |    2 +-
+ drivers/staging/exfat/exfat_nls.c                  |    2 +-
+ drivers/staging/exfat/exfat_super.c                |    7 +-
+ drivers/staging/exfat/exfat_upcase.c               |    2 +-
+ drivers/staging/fbtft/Kconfig                      |   12 +-
+ drivers/staging/fbtft/Makefile                     |    4 -
+ drivers/staging/fbtft/fbtft-core.c                 |    7 +-
+ drivers/staging/fbtft/fbtft_device.c               | 1261 ----------------=
+----
+ drivers/staging/fbtft/flexfb.c                     |  851 -------------
+ drivers/staging/octeon/ethernet-tx.c               |    9 +-
+ drivers/staging/octeon/octeon-stubs.h              |    2 +-
+ .../staging/rtl8188eu/hal/hal8188e_rate_adaptive.c |    2 +-
+ drivers/staging/rtl8188eu/os_dep/usb_intf.c        |    6 +-
+ drivers/staging/speakup/sysfs-driver-speakup       |  369 ++++++
+ .../vc04_services/bcm2835-audio/bcm2835-pcm.c      |    4 +-
+ .../vc04_services/bcm2835-audio/bcm2835-vchiq.c    |    1 +
+ drivers/staging/vt6655/device_main.c               |    4 +-
+ 38 files changed, 695 insertions(+), 2333 deletions(-)
+ delete mode 100644 drivers/staging/fbtft/fbtft_device.c
+ delete mode 100644 drivers/staging/fbtft/flexfb.c
+ create mode 100644 drivers/staging/speakup/sysfs-driver-speakup
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
