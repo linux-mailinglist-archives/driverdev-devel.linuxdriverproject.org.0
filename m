@@ -1,50 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BFA73D51A8
-	for <lists+driverdev-devel@lfdr.de>; Sat, 12 Oct 2019 20:35:50 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E39ABD51AC
+	for <lists+driverdev-devel@lfdr.de>; Sat, 12 Oct 2019 20:38:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 408A4204BB;
-	Sat, 12 Oct 2019 18:35:48 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A1D1187695;
+	Sat, 12 Oct 2019 18:38:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CsKMWjEMmxRW; Sat, 12 Oct 2019 18:35:47 +0000 (UTC)
+	with ESMTP id fQzf5D9RHIuk; Sat, 12 Oct 2019 18:38:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 9696320117;
-	Sat, 12 Oct 2019 18:35:45 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8AC4286C7B;
+	Sat, 12 Oct 2019 18:38:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9058F1BF28C
- for <devel@linuxdriverproject.org>; Sat, 12 Oct 2019 18:35:43 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 2D3C01BF28C
+ for <devel@linuxdriverproject.org>; Sat, 12 Oct 2019 18:37:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 8934C20031
- for <devel@linuxdriverproject.org>; Sat, 12 Oct 2019 18:35:43 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 275E785EE9
+ for <devel@linuxdriverproject.org>; Sat, 12 Oct 2019 18:37:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3e4BTNrFvQuN for <devel@linuxdriverproject.org>;
- Sat, 12 Oct 2019 18:35:42 +0000 (UTC)
+ with ESMTP id lsTuyemKz4dv for <devel@linuxdriverproject.org>;
+ Sat, 12 Oct 2019 18:37:22 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail3-relais-sop.national.inria.fr
  (mail3-relais-sop.national.inria.fr [192.134.164.104])
- by silver.osuosl.org (Postfix) with ESMTPS id B999220025
- for <devel@driverdev.osuosl.org>; Sat, 12 Oct 2019 18:35:41 +0000 (UTC)
-X-IronPort-AV: E=Sophos;i="5.67,288,1566856800"; d="scan'208";a="322499627"
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 8676885886
+ for <devel@driverdev.osuosl.org>; Sat, 12 Oct 2019 18:37:21 +0000 (UTC)
+X-IronPort-AV: E=Sophos;i="5.67,288,1566856800"; d="scan'208";a="322499662"
 Received: from 81-65-53-202.rev.numericable.fr (HELO hadrien) ([81.65.53.202])
  by mail3-relais-sop.national.inria.fr with
- ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 12 Oct 2019 20:35:19 +0200
-Date: Sat, 12 Oct 2019 20:35:19 +0200 (CEST)
+ ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 12 Oct 2019 20:37:19 +0200
+Date: Sat, 12 Oct 2019 20:37:18 +0200 (CEST)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
 To: Wambui Karuga <wambui.karugax@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v2 0/5] Remove typedef declarations
- in staging: octeon
-In-Reply-To: <cover.1570821661.git.wambui.karugax@gmail.com>
-Message-ID: <alpine.DEB.2.21.1910122034390.3049@hadrien>
+Subject: Re: [Outreachy kernel] [PATCH v2 3/5] staging: octeon: remove typedef
+ declaration for cvmx_fau_reg_32
+In-Reply-To: <b7216f423d8e06b2ed7ac2df643a9215cd95be32.1570821661.git.wambui.karugax@gmail.com>
+Message-ID: <alpine.DEB.2.21.1910122035380.3049@hadrien>
 References: <cover.1570821661.git.wambui.karugax@gmail.com>
+ <b7216f423d8e06b2ed7ac2df643a9215cd95be32.1570821661.git.wambui.karugax@gmail.com>
 User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -70,31 +71,67 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 On Sat, 12 Oct 2019, Wambui Karuga wrote:
 
-> This patchset removes the addition of new typedefs data types in octeon,
-> along with replacing the previous uses with the new declaration format.
+> Remove typedef declaration for enum cvmx_fau_reg_32.
+> Also replace its previous uses with new declaration format.
+> Issue found by checkpatch.pl
 >
-> v2 of the series removes the obsolete "_t" notation in the named types.
+> Signed-off-by: Wambui Karuga <wambui.karugax@gmail.com>
+> ---
+>  drivers/staging/octeon/octeon-stubs.h | 14 ++++++++------
+>  1 file changed, 8 insertions(+), 6 deletions(-)
 >
-> Wambui Karuga (5):
->   staging: octeon: remove typedef declaration for cvmx_wqe
->   staging: octeon: remove typedef declaration for cvmx_helper_link_info
->   staging: octeon: remove typedef declaration for cvmx_fau_reg_32
->   staging: octeon: remove typedef declartion for cvmx_pko_command_word0
->   staging: octeon: remove typedef declaration for cvmx_fau_op_size
+> diff --git a/drivers/staging/octeon/octeon-stubs.h b/drivers/staging/octeon/octeon-stubs.h
+> index 0991be329139..40f0cfee0dff 100644
+> --- a/drivers/staging/octeon/octeon-stubs.h
+> +++ b/drivers/staging/octeon/octeon-stubs.h
+> @@ -201,9 +201,9 @@ union cvmx_helper_link_info {
+>  	} s;
+>  };
 >
->  drivers/staging/octeon/ethernet-mdio.c   |  6 +--
->  drivers/staging/octeon/ethernet-rgmii.c  |  4 +-
->  drivers/staging/octeon/ethernet-rx.c     |  6 +--
->  drivers/staging/octeon/ethernet-tx.c     |  4 +-
->  drivers/staging/octeon/ethernet.c        |  6 +--
->  drivers/staging/octeon/octeon-ethernet.h |  2 +-
->  drivers/staging/octeon/octeon-stubs.h    | 56 ++++++++++++------------
->  7 files changed, 43 insertions(+), 41 deletions(-)
+> -typedef enum {
+> +enum cvmx_fau_reg_32 {
+>  	CVMX_FAU_REG_32_START	= 0,
+> -} cvmx_fau_reg_32_t;
+> +};
+>
+>  typedef enum {
+>  	CVMX_FAU_OP_SIZE_8 = 0,
+> @@ -1178,16 +1178,18 @@ union cvmx_gmxx_rxx_rx_inbnd {
+>  	} s;
+>  };
+>
+> -static inline int32_t cvmx_fau_fetch_and_add32(cvmx_fau_reg_32_t reg,
+> +static inline int32_t cvmx_fau_fetch_and_add32(enum cvmx_fau_reg_32 reg,
+>  					       int32_t value)
 
-For the series:
+These int32_t's don't look very desirable either.  If there is only one
+possible definition, you can just replace it by what it is defined to be.
 
-Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+julia
 
+>  {
+>  	return value;
+>  }
+>
+> -static inline void cvmx_fau_atomic_add32(cvmx_fau_reg_32_t reg, int32_t value)
+> +static inline void cvmx_fau_atomic_add32(enum cvmx_fau_reg_32 reg,
+> +					 int32_t value)
+>  { }
+>
+> -static inline void cvmx_fau_atomic_write32(cvmx_fau_reg_32_t reg, int32_t value)
+> +static inline void cvmx_fau_atomic_write32(enum cvmx_fau_reg_32 reg,
+> +					   int32_t value)
+>  { }
+>
+>  static inline uint64_t cvmx_scratch_read64(uint64_t address)
+> @@ -1364,7 +1366,7 @@ static inline int cvmx_spi_restart_interface(int interface,
+>  }
+>
+>  static inline void cvmx_fau_async_fetch_and_add32(uint64_t scraddr,
+> -						  cvmx_fau_reg_32_t reg,
+> +						  enum cvmx_fau_reg_32 reg,
+>  						  int32_t value)
+>  { }
 >
 > --
 > 2.23.0
@@ -102,7 +139,7 @@ Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 > --
 > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
 > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/cover.1570821661.git.wambui.karugax%40gmail.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/b7216f423d8e06b2ed7ac2df643a9215cd95be32.1570821661.git.wambui.karugax%40gmail.com.
 >
 _______________________________________________
 devel mailing list
