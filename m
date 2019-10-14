@@ -2,54 +2,53 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 374A0D5D4A
-	for <lists+driverdev-devel@lfdr.de>; Mon, 14 Oct 2019 10:21:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CA5BDD5D4D
+	for <lists+driverdev-devel@lfdr.de>; Mon, 14 Oct 2019 10:21:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 1DC4A21F76;
-	Mon, 14 Oct 2019 08:21:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 47F0321FAD;
+	Mon, 14 Oct 2019 08:21:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JKGtCICjgloZ; Mon, 14 Oct 2019 08:21:19 +0000 (UTC)
+	with ESMTP id ImyA+V5ldn+r; Mon, 14 Oct 2019 08:21:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id BE5A62155D;
-	Mon, 14 Oct 2019 08:21:18 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 05F2021574;
+	Mon, 14 Oct 2019 08:21:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 326031BF20F
+ by ash.osuosl.org (Postfix) with ESMTP id AEF9B1BF20F
  for <devel@linuxdriverproject.org>; Mon, 14 Oct 2019 08:21:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2D66D87AA1
+ by hemlock.osuosl.org (Postfix) with ESMTP id AC2158790D
  for <devel@linuxdriverproject.org>; Mon, 14 Oct 2019 08:21:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1TTqeYNwDmEf for <devel@linuxdriverproject.org>;
- Mon, 14 Oct 2019 08:21:16 +0000 (UTC)
+ with ESMTP id rJWRerK6lyQG for <devel@linuxdriverproject.org>;
+ Mon, 14 Oct 2019 08:21:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 70AB58790D
- for <devel@driverdev.osuosl.org>; Mon, 14 Oct 2019 08:21:16 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0F845879F5
+ for <devel@driverdev.osuosl.org>; Mon, 14 Oct 2019 08:21:17 +0000 (UTC)
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 14 Oct 2019 01:21:15 -0700
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 14 Oct 2019 01:21:16 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.67,295,1566889200"; d="scan'208";a="185427916"
+X-IronPort-AV: E=Sophos;i="5.67,295,1566889200"; d="scan'208";a="199341831"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga007.jf.intel.com with ESMTP; 14 Oct 2019 01:21:12 -0700
+ by orsmga006.jf.intel.com with ESMTP; 14 Oct 2019 01:21:13 -0700
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1iJvbM-000AQz-Ag; Mon, 14 Oct 2019 16:21:12 +0800
-Date: Mon, 14 Oct 2019 16:20:35 +0800
+ id 1iJvbM-000AU2-MO; Mon, 14 Oct 2019 16:21:12 +0800
+Date: Mon, 14 Oct 2019 16:20:37 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Xin Ji <xji@analogixsemi.com>
-Subject: Re: [PATCH v2 2/2] drm/bridge: anx7625: Add anx7625 MIPI DSI/DPI to
- DP bridge driver
-Message-ID: <201910141613.yQjiYkB1%lkp@intel.com>
+Subject: [RFC PATCH] drm/bridge: anx7625: ANX_OUI[] can be static
+Message-ID: <20191014082037.crfdamwf3jcqcsit@332d0cec05f4>
 References: <55295c49503a963f3417b917fd7163feb26ed0b6.1570760115.git.xji@analogixsemi.com>
 MIME-Version: 1.0
 Content-Disposition: inline
@@ -84,36 +83,26 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Xin,
 
-Thank you for the patch! Perhaps something to improve:
-
-[auto build test WARNING on linus/master]
-[cannot apply to v5.4-rc3 next-20191011]
-[if your patch is applied to the wrong git tree, please drop us a note to help
-improve the system. BTW, we also suggest to use '--base' option to specify the
-base tree in git format-patch, please see https://stackoverflow.com/a/37406982]
-
-url:    https://github.com/0day-ci/linux/commits/Xin-Ji/dt-bindings-drm-bridge-anx7625-MIPI-to-DP-transmitter-binding/20191014-043019
-reproduce:
-        # apt-get install sparse
-        # sparse version: v0.6.1-rc1-43-g0ccb3b4-dirty
-        make ARCH=x86_64 allmodconfig
-        make C=1 CF='-fdiagnostic-prefix -D__CHECK_ENDIAN__'
-
-If you fix the issue, kindly add following tag
-Reported-by: kbuild test robot <lkp@intel.com>
-
-
-sparse warnings: (new ones prefixed by >>)
-
->> drivers/gpu/drm/bridge/analogix/anx7625.c:731:10: sparse: sparse: symbol 'ANX_OUI' was not declared. Should it be static?
-
-Please review and possibly fold the followup patch.
-
+Fixes: 152a82b6747f ("drm/bridge: anx7625: Add anx7625 MIPI DSI/DPI to DP bridge driver")
+Signed-off-by: kbuild test robot <lkp@intel.com>
 ---
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+ anx7625.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.c b/drivers/gpu/drm/bridge/analogix/anx7625.c
+index 96adf3b89d7f0..a261f4d31ea88 100644
+--- a/drivers/gpu/drm/bridge/analogix/anx7625.c
++++ b/drivers/gpu/drm/bridge/analogix/anx7625.c
+@@ -728,7 +728,7 @@ static int anx7625_dpi_config(struct anx7625_data *ctx)
+ 	return ret;
+ }
+ 
+-const u8 ANX_OUI[3] = { 0x00, 0x22, 0xB9 };
++static const u8 ANX_OUI[3] = { 0x00, 0x22, 0xB9 };
+ static int is_anx_dongle(struct anx7625_data *ctx)
+ {
+ 	u8 buf[3];
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
