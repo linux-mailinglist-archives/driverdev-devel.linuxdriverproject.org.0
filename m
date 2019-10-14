@@ -1,60 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC2FAD6B2C
-	for <lists+driverdev-devel@lfdr.de>; Mon, 14 Oct 2019 23:22:30 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 542A2D6B97
+	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Oct 2019 00:13:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 33F9922797;
-	Mon, 14 Oct 2019 21:22:29 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 33FC686432;
+	Mon, 14 Oct 2019 22:13:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DGP3V3YgCafu; Mon, 14 Oct 2019 21:22:28 +0000 (UTC)
+	with ESMTP id O2sj5nBDHIsV; Mon, 14 Oct 2019 22:13:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D7A052274B;
-	Mon, 14 Oct 2019 21:22:27 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0D0A7863DC;
+	Mon, 14 Oct 2019 22:13:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6F2101BF3E5
- for <devel@linuxdriverproject.org>; Mon, 14 Oct 2019 21:22:25 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9C77D1BF392
+ for <devel@linuxdriverproject.org>; Mon, 14 Oct 2019 22:13:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 64FB3204EA
- for <devel@linuxdriverproject.org>; Mon, 14 Oct 2019 21:22:25 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 9974386371
+ for <devel@linuxdriverproject.org>; Mon, 14 Oct 2019 22:13:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aBx1RbGd+T40 for <devel@linuxdriverproject.org>;
- Mon, 14 Oct 2019 21:22:23 +0000 (UTC)
-X-Greylist: delayed 01:14:10 by SQLgrey-1.7.6
-Received: from mail.tukebusz.hu (mail.tukebusz.hu [109.61.67.253])
- by silver.osuosl.org (Postfix) with ESMTP id B3A2A2045F
- for <devel@driverdev.osuosl.org>; Mon, 14 Oct 2019 21:22:23 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.tukebusz.hu (Postfix) with ESMTP id 6DB1E4A3077;
- Mon, 14 Oct 2019 21:55:19 +0200 (CEST)
-Received: from mail.tukebusz.hu ([127.0.0.1])
- by localhost (mail.intra.net [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rquo6+xA9UCm; Mon, 14 Oct 2019 21:55:19 +0200 (CEST)
-Received: from kas30pipe.localhost (localhost [127.0.0.1])
- by mail.tukebusz.hu (Postfix) with ESMTP id 65470497E34;
- Mon, 14 Oct 2019 21:46:22 +0200 (CEST)
-Received: from User (unknown [188.207.86.53])
- by mail.tukebusz.hu (Postfix) with ESMTPA id 3EEEA497E39;
- Mon, 14 Oct 2019 21:37:30 +0200 (CEST)
+ with ESMTP id BNN_dIuwIjaH for <devel@linuxdriverproject.org>;
+ Mon, 14 Oct 2019 22:13:43 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.c21landstation.com (mail.c21landstation.com [167.99.68.61])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E28798632D
+ for <devel@driverdev.osuosl.org>; Mon, 14 Oct 2019 22:13:42 +0000 (UTC)
+Received: from ip-213-127-106-25.ip.prioritytelecom.net ([213.127.106.25]
+ helo=User) by c21landstation.com with esmtpa (Exim 4.86_2)
+ (envelope-from <financedirector5@aim.com>)
+ id 1iK3zO-0003sR-EY; Tue, 15 Oct 2019 00:18:34 +0700
 From: "Award dept."<financedirector5@aim.com>
-Subject: 20-02-2019-09MSW
-Date: Mon, 14 Oct 2019 21:37:35 +0200
+Subject: 20-02-2019-09MSW.
+Date: Mon, 14 Oct 2019 19:18:34 +0200
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2800.1081
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1081
-X-SpamTest-Version: SMTP-Filter Version 3.0.0 [0284], KAS30/Release
-X-SpamTest-Info: Not protected
-Message-Id: <20191014194622.65470497E34@mail.tukebusz.hu>
-To: undisclosed-recipients:;
+Message-Id: <E1iK3zO-0003sR-EY@c21landstation.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
