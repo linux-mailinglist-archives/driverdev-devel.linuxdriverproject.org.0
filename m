@@ -1,76 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 269D9D6A3A
-	for <lists+driverdev-devel@lfdr.de>; Mon, 14 Oct 2019 21:36:04 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id CC2FAD6B2C
+	for <lists+driverdev-devel@lfdr.de>; Mon, 14 Oct 2019 23:22:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3473587EC5;
-	Mon, 14 Oct 2019 19:36:01 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 33F9922797;
+	Mon, 14 Oct 2019 21:22:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7Xkj2bndIz7I; Mon, 14 Oct 2019 19:36:01 +0000 (UTC)
+	with ESMTP id DGP3V3YgCafu; Mon, 14 Oct 2019 21:22:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 62D1287935;
-	Mon, 14 Oct 2019 19:36:00 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D7A052274B;
+	Mon, 14 Oct 2019 21:22:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1AA771BF32A
- for <devel@linuxdriverproject.org>; Mon, 14 Oct 2019 19:35:59 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6F2101BF3E5
+ for <devel@linuxdriverproject.org>; Mon, 14 Oct 2019 21:22:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id DD09387935
- for <devel@linuxdriverproject.org>; Mon, 14 Oct 2019 19:35:58 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 64FB3204EA
+ for <devel@linuxdriverproject.org>; Mon, 14 Oct 2019 21:22:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wiHtYhFnrSvN for <devel@linuxdriverproject.org>;
- Mon, 14 Oct 2019 19:35:58 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f68.google.com (mail-ot1-f68.google.com
- [209.85.210.68])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4DDCB87933
- for <devel@driverdev.osuosl.org>; Mon, 14 Oct 2019 19:35:58 +0000 (UTC)
-Received: by mail-ot1-f68.google.com with SMTP id 21so14781060otj.11
- for <devel@driverdev.osuosl.org>; Mon, 14 Oct 2019 12:35:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=XrWcyp1buzweQbMvYgKZmE2h0wYSbiCvDrJ+ITMmwAc=;
- b=IJFXJjCibwKfNUOiQCp1JlGMkAtgvORwOi6fntAkmdXV7TAwwnpvaaFCjdTORnzFRQ
- mrmc27Pefqh5bqAq/aqfeXOcM5cy4gaIqkOeD/butl4CuorwZ6n6bQxP5QyGnMkbCw3m
- R9tGK7fIZyyCYHKBHUA3lqZVHt6kax2el+WpHGHLmkOnW/hNrlSY+6Y5q6G7eLq/7ogl
- B8xjA3BLnldSklthJd4STJn9cZYlDYwfNkx+NbRQsSOL7/0z3R0WP8e1nW7XOwQXzQ1B
- 9u95uhgqJp3zCE9up+1EqEkfWNojZ+TclzSFpgIL5ENLTOwD4wxGNQMATLmDsuYVuNhb
- GiDg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=XrWcyp1buzweQbMvYgKZmE2h0wYSbiCvDrJ+ITMmwAc=;
- b=aTcTqzdvG9sxsvL1z0GN7zYEhdAqtRYf0QgBVf2ZFUuDduSPabEeI67Jcn0jxQbki4
- +s+B87Izsdi4LPf5pjgoKloFXKbg2+mdpwCNlSafvCmxRdk4odnp5wxSF4Wh7dJQek2S
- yBqp0gP0dtaghnoJgYwm7OUlJjEe/j7eiVp9dGNBkyvjMrGL2msB3J7Rs9ZL7lVCiReY
- jDvK5IKdAcCaQrltSTD95ZqsGqTCdXVyI5O3Itvq0jahTURkyaAOXI1R7m/1ai36nF+y
- ChQqXXm3/sseJqBooFW+2oKfa2qIHrCU4rzPhBdBe7C/stILXMJdgtttxmyW3sHebTy1
- 6kFw==
-X-Gm-Message-State: APjAAAVo0ZHgTz1tPNrX6NUACf82rxx3CZT4snmEos2hi7ESM/myHjFy
- xTZz3kRug/05O/Rl9E3zYT0f7Hs0uPnSG7kUNST4Ug==
-X-Google-Smtp-Source: APXvYqwzoS/csv409X8Yf9La00JPxKWIxu4wbj0FyCwv2f8S5eKwddkMYEcCIX/87xgRi3XqvhpLLQDlG3a6xO+8SK8=
-X-Received: by 2002:a9d:75d0:: with SMTP id c16mr10442901otl.32.1571081757198; 
- Mon, 14 Oct 2019 12:35:57 -0700 (PDT)
+ with ESMTP id aBx1RbGd+T40 for <devel@linuxdriverproject.org>;
+ Mon, 14 Oct 2019 21:22:23 +0000 (UTC)
+X-Greylist: delayed 01:14:10 by SQLgrey-1.7.6
+Received: from mail.tukebusz.hu (mail.tukebusz.hu [109.61.67.253])
+ by silver.osuosl.org (Postfix) with ESMTP id B3A2A2045F
+ for <devel@driverdev.osuosl.org>; Mon, 14 Oct 2019 21:22:23 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.tukebusz.hu (Postfix) with ESMTP id 6DB1E4A3077;
+ Mon, 14 Oct 2019 21:55:19 +0200 (CEST)
+Received: from mail.tukebusz.hu ([127.0.0.1])
+ by localhost (mail.intra.net [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id rquo6+xA9UCm; Mon, 14 Oct 2019 21:55:19 +0200 (CEST)
+Received: from kas30pipe.localhost (localhost [127.0.0.1])
+ by mail.tukebusz.hu (Postfix) with ESMTP id 65470497E34;
+ Mon, 14 Oct 2019 21:46:22 +0200 (CEST)
+Received: from User (unknown [188.207.86.53])
+ by mail.tukebusz.hu (Postfix) with ESMTPA id 3EEEA497E39;
+ Mon, 14 Oct 2019 21:37:30 +0200 (CEST)
+From: "Award dept."<financedirector5@aim.com>
+Subject: 20-02-2019-09MSW
+Date: Mon, 14 Oct 2019 21:37:35 +0200
 MIME-Version: 1.0
-References: <20190715191804.112933-1-hridya@google.com>
- <CAG48ez0dSd4q06YXOnkzmM8BkfQGTtYE6j60_YRdC5fmrTm8jw@mail.gmail.com>
- <CAG48ez2ez1bb=3o3h1KSahPU6QcdXhbh=Z2aX4Mte24H4901_g@mail.gmail.com>
- <CA+wgaPNPSOzEf-p8wsorqGe=eEbhFLkW6gYfYP1MaCqhQBvrnw@mail.gmail.com>
-In-Reply-To: <CA+wgaPNPSOzEf-p8wsorqGe=eEbhFLkW6gYfYP1MaCqhQBvrnw@mail.gmail.com>
-From: Jann Horn <jannh@google.com>
-Date: Mon, 14 Oct 2019 21:35:30 +0200
-Message-ID: <CAG48ez1w0MGaQdssdX7nZamPF_JmwR4g_Aj6cmHuojLfXAigfA@mail.gmail.com>
-Subject: Re: [PATCH] binder: prevent transactions to context manager from its
- own process.
-To: Hridya Valsaraju <hridya@google.com>
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2800.1081
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1081
+X-SpamTest-Version: SMTP-Filter Version 3.0.0 [0284], KAS30/Release
+X-SpamTest-Info: Not protected
+Message-Id: <20191014194622.65470497E34@mail.tukebusz.hu>
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,42 +67,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- kernel-team <kernel-team@android.com>, Todd Kjos <tkjos@android.com>,
- syzbot+8b3c354d33c4ac78bfad@syzkaller.appspotmail.com,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- kernel list <linux-kernel@vger.kernel.org>,
- =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
- Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
- Christian Brauner <christian@brauner.io>
+Reply-To: claimsdirector10@aim.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Oct 14, 2019 at 7:38 PM Hridya Valsaraju <hridya@google.com> wrote:
-> On Fri, Oct 11, 2019 at 3:11 PM Jann Horn <jannh@google.com> wrote:
-> > On Fri, Oct 11, 2019 at 11:59 PM Jann Horn <jannh@google.com> wrote:
-> > > (I think you could also let A receive a handle
-> > > to itself and then transact with itself, but I haven't tested that.)
-> >
-> > Ignore this sentence, that's obviously wrong because same-binder_proc
-> > nodes will always show up as a binder, not a handle.
->
-> Thank you for the email and steps to reproduce the issue Jann. I need
-> some time to take a look at the same and I will get back to you once I
-> understand it and hopefully have a fix. We do want to disallow
-> same-process transactions. Here is a little bit more of context for
-> the patch: https://lkml.org/lkml/2018/3/28/173
+LOTTO NETHERLANDS!!!
+WINNER!!!
 
-That patch (commit 7aa135fcf26377f92dc0680a57566b4c7f3e281b) prevented
-transactions within one *binder_proc*, which makes sense to me; that
-still allows same-process transactions, so long as they are between
-different binder_proc instances. What I don't understand is your
-follow-up in commit 49ed96943a8e0c62cc5a9b0a6cfc88be87d1fcec, where
-you try to block transactions within the same process (well, kind of,
-the semantics of the term "process" are quite fuzzy here and don't map
-onto binder well).
+We are pleased to inform you of the announcement of the winners of the Lotto Netherlands 
+Promotion which took place on the 7th October, 2019 in the Netherlands. Your e-mail address 
+attached to winning number 20-02-2019-09MSW and lucky numbers 210-12-865-50 won in the first 
+category of 1,500,000.00 Euros.
+
+Email Participants from all over the world were selected through our new global Microsoft Email generator 
+and your e-mail address come up as one of the lucky winners. To begin the process you are advise
+to contact our claims department by email or call for the processing of your winning money. 
+
+CONTACT DETAILS:
+
+Name: Mr. James Keller
+Email: claimsdirector10@aim.com
+Tel: 0031-687-482-376
+
+Please keep your wining number 20-02-2019-09MSW from the public, until your winnings has been processed. 
+
+Best Regards, 
+
+Mrs. Rose Adams
+International Relation officer.
+
+...........................................................................................................................................................
+PROPERTY OF LOTTO NETHERLANDS
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
