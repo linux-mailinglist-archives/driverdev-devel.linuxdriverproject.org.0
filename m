@@ -1,77 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 34FD3D805B
-	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Oct 2019 21:32:28 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 28D92D8065
+	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Oct 2019 21:37:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id AC12022E89;
-	Tue, 15 Oct 2019 19:32:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id ED3E08830F;
+	Tue, 15 Oct 2019 19:37:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5rM5hb-BbrRF; Tue, 15 Oct 2019 19:32:25 +0000 (UTC)
+	with ESMTP id DP2IyqTSJyuG; Tue, 15 Oct 2019 19:37:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 91B2C22CC6;
-	Tue, 15 Oct 2019 19:32:24 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 42AE488222;
+	Tue, 15 Oct 2019 19:37:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3F7D91BF309
- for <devel@linuxdriverproject.org>; Tue, 15 Oct 2019 19:32:22 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8FE9E1BF309
+ for <devel@linuxdriverproject.org>; Tue, 15 Oct 2019 19:37:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 385F920464
- for <devel@linuxdriverproject.org>; Tue, 15 Oct 2019 19:32:22 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 8C90C88222
+ for <devel@linuxdriverproject.org>; Tue, 15 Oct 2019 19:37:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0OzLvEhm3Ht4 for <devel@linuxdriverproject.org>;
- Tue, 15 Oct 2019 19:32:21 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
- [209.85.221.65])
- by silver.osuosl.org (Postfix) with ESMTPS id B824F203E0
- for <devel@driverdev.osuosl.org>; Tue, 15 Oct 2019 19:32:20 +0000 (UTC)
-Received: by mail-wr1-f65.google.com with SMTP id z9so25241632wrl.11
- for <devel@driverdev.osuosl.org>; Tue, 15 Oct 2019 12:32:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=pka8MZciE1uXdvlPGsnSN2mfafkuH+B/p1WIBzC4Ucw=;
- b=SDsSL+4LynUfiX5Q5WLqJPRY1/eneAjTyWB1ipJUsrsIK4l91EPqjXHbjx2B/ENSjD
- 9wCDPP6Am/vxS6lYevbV/gtVGHtu+Rz1uUe3YXQHeCyMaxI9hk1BKRhpFaJiGuxSGlL+
- OI59nmWpVZkgXPfzAhbOCV5azSJsusC9RKgZovVcZ89zKJ1cexnAoVlPHyd7SK02PwZI
- 6cvdgbaDok61/i/PtWZSvzJrxRvnovpQ0apZ5an98thbte78QBEtmF56NBYuRo9V/Sif
- XLu/LU0IM80C2awIndFBtHL37BwoLCpcGbgDfCQ6A2bn3DInE9/Vz77rMHRhlgiOAj4S
- kDTQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=pka8MZciE1uXdvlPGsnSN2mfafkuH+B/p1WIBzC4Ucw=;
- b=NnmpcHEi91bdAGTgCW3jtU97thKN4wLusVaPwdz3ryeWe/6gG6B2PYTFloGK7APjpF
- U/D16PaMcWEC+DZyKsDW8yYIpVjLVdxT2IOelX+KmMt03W90DMbMiRURmgGUjIywGgCz
- tSwMx+rKS98DpeLOrJ5oDnsXG6xsTcdqPbGIjdD6ZW+jv46wydTgyYbTT26W/BRBvziJ
- 6Ewda/eqPirjmFOR8txVQuFEAOed1X4Mrs2mHacChH/pouAaBzFFYnNIS55u98kfaXJj
- YSvgOKNNBmc2lRQv0s6qhriR78t47jwOYdDgXmosMq4tUFpew5HEwZU+54RrowGnxSzv
- 3Ejg==
-X-Gm-Message-State: APjAAAXYWLg5sagCrfTeW+Q/FQwIRcxxtzdQMughg5Vhw8U2kCfYkscj
- CvkJI1yZ+tXobUDZQ3/m5ic=
-X-Google-Smtp-Source: APXvYqwOG2BhIWkKve+GHAXVaPzespIOcqR4qXJxUaHrSxi1VC6m5L50gkmrJIoSrpBe4J6LAXgx9A==
-X-Received: by 2002:a5d:4302:: with SMTP id h2mr22881854wrq.35.1571167939204; 
- Tue, 15 Oct 2019 12:32:19 -0700 (PDT)
-Received: from debian (212-127-136-25.cable.dynamic.v4.ziggo.nl.
- [212.127.136.25])
- by smtp.gmail.com with ESMTPSA id l18sm24290823wrn.48.2019.10.15.12.32.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Oct 2019 12:32:18 -0700 (PDT)
-From: Michiel Schuurmans <michielschuurmans@gmail.com>
-To: 
-Subject: [PATCH] [PATCH] staging: rtl8192e: Fix checkpatch errors
-Date: Tue, 15 Oct 2019 21:32:08 +0200
-Message-Id: <20191015193210.20146-1-michielschuurmans@gmail.com>
-X-Mailer: git-send-email 2.23.0
+ with ESMTP id G0ezWLw0MtHC for <devel@linuxdriverproject.org>;
+ Tue, 15 Oct 2019 19:37:25 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id F392088236
+ for <devel@driverdev.osuosl.org>; Tue, 15 Oct 2019 19:37:24 +0000 (UTC)
+Received: from localhost (unknown [38.98.37.135])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id A830320872;
+ Tue, 15 Oct 2019 19:37:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1571168244;
+ bh=lcpIP2gdDDciuXOla/dQcSyYcp9/lx8ELrq6YY97BrU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=OAAIQqb4CEp/F11NqfFBJEnj6jRgBQD9V7wmM2CEM+TlE6qwRTnFpg8nNUyaVP87D
+ f+eoaflEQTcvdejOyGx4eBzOCVZcSvSz5gkc+NPkVTiYuMreSSs9Y8tAY0DCWVUgEr
+ bGfr3z/YQzJL2pEL0ieP1pcZPvC2xVwMkcbm3Ky0=
+Date: Tue, 15 Oct 2019 21:36:35 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Michiel Schuurmans <michielschuurmans@gmail.com>
+Subject: Re: [PATCH] [PATCH] staging: rtl8192e: Fix checkpatch errors
+Message-ID: <20191015193635.GA1153895@kroah.com>
+References: <20191015193210.20146-1-michielschuurmans@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20191015193210.20146-1-michielschuurmans@gmail.com>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,58 +65,64 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, michielschuurmans@gmail.com,
- Christina Quast <contact@christina-quast.de>,
- Herbert Xu <herbert@gondor.apana.org.au>,
- Ard Biesheuvel <ard.biesheuvel@linaro.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Eric Biggers <ebiggers@google.com>, YueHaibing <yuehaibing@huawei.com>,
+Cc: devel@driverdev.osuosl.org, Christina Quast <contact@christina-quast.de>,
+ Herbert Xu <herbert@gondor.apana.org.au>, Eric Biggers <ebiggers@google.com>,
+ Ard Biesheuvel <ard.biesheuvel@linaro.org>, YueHaibing <yuehaibing@huawei.com>,
  linux-kernel@vger.kernel.org, Zach Turner <turnerzdp@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Replace formatting as suggested by checkpatch.
+On Tue, Oct 15, 2019 at 09:32:08PM +0200, Michiel Schuurmans wrote:
+> Replace formatting as suggested by checkpatch.
+> 
+> Signed-off-by: Michiel Schuurmans <michielschuurmans@gmail.com>
+> ---
+>  drivers/staging/rtl8192e/rtllib_crypt_ccmp.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
 
-Signed-off-by: Michiel Schuurmans <michielschuurmans@gmail.com>
----
- drivers/staging/rtl8192e/rtllib_crypt_ccmp.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+Hi,
 
-diff --git a/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c b/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c
-index 0cbf4a1a326b..e7478a1c204e 100644
---- a/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c
-+++ b/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c
-@@ -218,7 +218,6 @@ static int rtllib_ccmp_encrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 	return 0;
- }
- 
--
- static int rtllib_ccmp_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
- {
- 	struct rtllib_ccmp_data *key = priv;
-@@ -233,7 +232,7 @@ static int rtllib_ccmp_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 		return -1;
- 	}
- 
--	hdr = (struct rtllib_hdr_4addr *) skb->data;
-+	hdr = (struct rtllib_hdr_4addr *)skb->data;
- 	pos = skb->data + hdr_len;
- 	keyidx = pos[3];
- 	if (!(keyidx & (1 << 5))) {
-@@ -278,7 +277,7 @@ static int rtllib_ccmp_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 		int aad_len, ret;
- 
- 		req = aead_request_alloc(key->tfm, GFP_ATOMIC);
--		if(!req)
-+		if (!req)
- 			return -ENOMEM;
- 
- 		aad_len = ccmp_init_iv_and_aad(hdr, pn, iv, aad);
--- 
-2.23.0
+This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
+a patch that has triggered this response.  He used to manually respond
+to these common problems, but in order to save his sanity (he kept
+writing the same thing over and over, yet to different people), I was
+created.  Hopefully you will not take offence and will fix the problem
+in your patch and resubmit it so that it can be accepted into the Linux
+kernel tree.
 
+You are receiving this message because of the following common error(s)
+as indicated below:
+
+- Your patch did many different things all at once, making it difficult
+  to review.  All Linux kernel patches need to only do one thing at a
+  time.  If you need to do multiple things (such as clean up all coding
+  style issues in a file/driver), do it in a sequence of patches, each
+  one doing only one thing.  This will make it easier to review the
+  patches to ensure that they are correct, and to help alleviate any
+  merge issues that larger patches can cause.
+
+- You did not specify a description of why the patch is needed, or
+  possibly, any description at all, in the email body.  Please read the
+  section entitled "The canonical patch format" in the kernel file,
+  Documentation/SubmittingPatches for what is needed in order to
+  properly describe the change.
+
+- You did not write a descriptive Subject: for the patch, allowing Greg,
+  and everyone else, to know what this patch is all about.  Please read
+  the section entitled "The canonical patch format" in the kernel file,
+  Documentation/SubmittingPatches for what a proper Subject: line should
+  look like.
+
+If you wish to discuss this problem further, or you have questions about
+how to resolve this issue, please feel free to respond to this email and
+Greg will reply once he has dug out from the pending patches received
+from other developers.
+
+thanks,
+
+greg k-h's patch email bot
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
