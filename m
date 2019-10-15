@@ -1,53 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E1A8FD7D84
-	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Oct 2019 19:23:37 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8768286516;
-	Tue, 15 Oct 2019 17:23:36 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3TVdJWbOnKOE; Tue, 15 Oct 2019 17:23:35 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 10B98864E6;
-	Tue, 15 Oct 2019 17:23:35 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0FE531BF2B6
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 15 Oct 2019 17:23:33 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id EC478D7D92
+	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Oct 2019 19:24:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 09F8C87662
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 15 Oct 2019 17:23:33 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8371B8608B;
+	Tue, 15 Oct 2019 17:24:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GOcxi9t5vf7y
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id rJW6ZEcW2o0N; Tue, 15 Oct 2019 17:24:25 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7D3728602E;
+	Tue, 15 Oct 2019 17:24:24 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D75481BF2B6
  for <driverdev-devel@linuxdriverproject.org>;
- Tue, 15 Oct 2019 17:23:31 +0000 (UTC)
+ Tue, 15 Oct 2019 17:24:22 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id D39D5882B2
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 15 Oct 2019 17:24:22 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 3F+9iPuLJUVM
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 15 Oct 2019 17:24:22 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from cloudserver094114.home.pl (cloudserver094114.home.pl
  [79.96.170.134])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 7D43087646
+ by hemlock.osuosl.org (Postfix) with ESMTPS id EF46188268
  for <driverdev-devel@linuxdriverproject.org>;
- Tue, 15 Oct 2019 17:23:31 +0000 (UTC)
+ Tue, 15 Oct 2019 17:24:21 +0000 (UTC)
 Received: from 79.184.254.38.ipv4.supernova.orange.pl (79.184.254.38) (HELO
  kreacher.localnet)
  by serwer1319399.home.pl (79.96.170.134) with SMTP (IdeaSmtpServer 0.83.292)
- id dfec6fccedf7956f; Tue, 15 Oct 2019 19:23:29 +0200
+ id 01cfd58c3730d6c7; Tue, 15 Oct 2019 19:24:19 +0200
 From: "Rafael J. Wysocki" <rjw@rjwysocki.net>
 To: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH 6/7] PCI/PM: Wrap long lines in documentation
-Date: Tue, 15 Oct 2019 19:23:28 +0200
-Message-ID: <2150193.0kpVmk06vr@kreacher>
-In-Reply-To: <20191014230016.240912-7-helgaas@kernel.org>
+Subject: Re: [PATCH 7/7] PCI/MSI: Move power state check out of
+ pci_msi_supported()
+Date: Tue, 15 Oct 2019 19:24:19 +0200
+Message-ID: <12092576.0PD7RdXzXY@kreacher>
+In-Reply-To: <20191014230016.240912-8-helgaas@kernel.org>
 References: <20191014230016.240912-1-helgaas@kernel.org>
- <20191014230016.240912-7-helgaas@kernel.org>
+ <20191014230016.240912-8-helgaas@kernel.org>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -76,76 +77,62 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tuesday, October 15, 2019 1:00:15 AM CEST Bjorn Helgaas wrote:
+On Tuesday, October 15, 2019 1:00:16 AM CEST Bjorn Helgaas wrote:
 > From: Bjorn Helgaas <bhelgaas@google.com>
 > 
-> Documentation/power/pci.rst is wrapped to fit in 80 columns, but directory
-> structure changes made a few lines longer.  Wrap them so they all fit in 80
-> columns again.
+> 27e20603c54b ("PCI/MSI: Move D0 check into pci_msi_check_device()")
+> moved the power state check into pci_msi_check_device(), which was
+> subsequently renamed to pci_msi_supported().  This didn't change the
+> behavior, since both callers checked the power state.
+> 
+> However, it doesn't fit the current "pci_msi_supported()" name, which
+> should return what the device is capable of, independent of the power
+> state.
+> 
+> Move the power state check back into the callers for readability.  No
+> functional change intended.
 > 
 > Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
 
-Well, looks better this way. :-)
+No issues found, so
 
 Reviewed-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
 
 > ---
->  Documentation/power/pci.rst | 28 ++++++++++++++--------------
->  1 file changed, 14 insertions(+), 14 deletions(-)
+>  drivers/pci/msi.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 > 
-> diff --git a/Documentation/power/pci.rst b/Documentation/power/pci.rst
-> index 1525c594d631..db41a770a2f5 100644
-> --- a/Documentation/power/pci.rst
-> +++ b/Documentation/power/pci.rst
-> @@ -426,12 +426,12 @@ pm->runtime_idle() callback.
->  2.4. System-Wide Power Transitions
->  ----------------------------------
->  There are a few different types of system-wide power transitions, described in
-> -Documentation/driver-api/pm/devices.rst.  Each of them requires devices to be handled
-> -in a specific way and the PM core executes subsystem-level power management
-> -callbacks for this purpose.  They are executed in phases such that each phase
-> -involves executing the same subsystem-level callback for every device belonging
-> -to the given subsystem before the next phase begins.  These phases always run
-> -after tasks have been frozen.
-> +Documentation/driver-api/pm/devices.rst.  Each of them requires devices to be
-> +handled in a specific way and the PM core executes subsystem-level power
-> +management callbacks for this purpose.  They are executed in phases such that
-> +each phase involves executing the same subsystem-level callback for every device
-> +belonging to the given subsystem before the next phase begins.  These phases
-> +always run after tasks have been frozen.
+> diff --git a/drivers/pci/msi.c b/drivers/pci/msi.c
+> index 0884bedcfc7a..20e9c729617c 100644
+> --- a/drivers/pci/msi.c
+> +++ b/drivers/pci/msi.c
+> @@ -861,7 +861,7 @@ static int pci_msi_supported(struct pci_dev *dev, int nvec)
+>  	if (!pci_msi_enable)
+>  		return 0;
 >  
->  2.4.1. System Suspend
->  ^^^^^^^^^^^^^^^^^^^^^
-> @@ -636,12 +636,12 @@ System restore requires a hibernation image to be loaded into memory and the
->  pre-hibernation memory contents to be restored before the pre-hibernation system
->  activity can be resumed.
+> -	if (!dev || dev->no_msi || dev->current_state != PCI_D0)
+> +	if (!dev || dev->no_msi)
+>  		return 0;
 >  
-> -As described in Documentation/driver-api/pm/devices.rst, the hibernation image is loaded
-> -into memory by a fresh instance of the kernel, called the boot kernel, which in
-> -turn is loaded and run by a boot loader in the usual way.  After the boot kernel
-> -has loaded the image, it needs to replace its own code and data with the code
-> -and data of the "hibernated" kernel stored within the image, called the image
-> -kernel.  For this purpose all devices are frozen just like before creating
-> +As described in Documentation/driver-api/pm/devices.rst, the hibernation image
-> +is loaded into memory by a fresh instance of the kernel, called the boot kernel,
-> +which in turn is loaded and run by a boot loader in the usual way.  After the
-> +boot kernel has loaded the image, it needs to replace its own code and data with
-> +the code and data of the "hibernated" kernel stored within the image, called the
-> +image kernel.  For this purpose all devices are frozen just like before creating
->  the image during hibernation, in the
+>  	/*
+> @@ -972,7 +972,7 @@ static int __pci_enable_msix(struct pci_dev *dev, struct msix_entry *entries,
+>  	int nr_entries;
+>  	int i, j;
 >  
->  	prepare, freeze, freeze_noirq
-> @@ -691,8 +691,8 @@ controlling the runtime power management of their devices.
+> -	if (!pci_msi_supported(dev, nvec))
+> +	if (!pci_msi_supported(dev, nvec) || dev->current_state != PCI_D0)
+>  		return -EINVAL;
 >  
->  At the time of this writing there are two ways to define power management
->  callbacks for a PCI device driver, the recommended one, based on using a
-> -dev_pm_ops structure described in Documentation/driver-api/pm/devices.rst, and the
-> -"legacy" one, in which the .suspend(), .suspend_late(), .resume_early(), and
-> +dev_pm_ops structure described in Documentation/driver-api/pm/devices.rst, and
-> +the "legacy" one, in which the .suspend(), .suspend_late(), .resume_early(), and
->  .resume() callbacks from struct pci_driver are used.  The legacy approach,
->  however, doesn't allow one to define runtime power management callbacks and is
->  not really suitable for any new drivers.  Therefore it is not covered by this
+>  	nr_entries = pci_msix_vec_count(dev);
+> @@ -1058,7 +1058,7 @@ static int __pci_enable_msi_range(struct pci_dev *dev, int minvec, int maxvec,
+>  	int nvec;
+>  	int rc;
+>  
+> -	if (!pci_msi_supported(dev, minvec))
+> +	if (!pci_msi_supported(dev, minvec) || dev->current_state != PCI_D0)
+>  		return -EINVAL;
+>  
+>  	/* Check whether driver already requested MSI-X IRQs */
 > 
 
 
