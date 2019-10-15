@@ -1,98 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 088BCD7754
-	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Oct 2019 15:20:16 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id ED04ED77D1
+	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Oct 2019 15:59:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2B355204A5;
-	Tue, 15 Oct 2019 13:20:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D2C76882A1;
+	Tue, 15 Oct 2019 13:59:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id elmv2Yj8jDNn; Tue, 15 Oct 2019 13:20:13 +0000 (UTC)
+	with ESMTP id i2DpNEcwlMxL; Tue, 15 Oct 2019 13:59:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 01E762042C;
-	Tue, 15 Oct 2019 13:20:13 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CCAF188292;
+	Tue, 15 Oct 2019 13:59:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id EB54A1BF4D5
- for <devel@linuxdriverproject.org>; Tue, 15 Oct 2019 13:20:09 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 178441BF20B
+ for <devel@linuxdriverproject.org>; Tue, 15 Oct 2019 13:59:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E5C768602E
- for <devel@linuxdriverproject.org>; Tue, 15 Oct 2019 13:20:09 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 143FE88277
+ for <devel@linuxdriverproject.org>; Tue, 15 Oct 2019 13:59:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OcuHjmO2akvc for <devel@linuxdriverproject.org>;
- Tue, 15 Oct 2019 13:20:09 +0000 (UTC)
+ with ESMTP id h7MhvRxSPjEG for <devel@linuxdriverproject.org>;
+ Tue, 15 Oct 2019 13:59:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5A46285567
- for <devel@driverdev.osuosl.org>; Tue, 15 Oct 2019 13:20:09 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9FDDloE033460;
- Tue, 15 Oct 2019 13:20:07 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=XydGK+DnXk+HJwtjcNs2n1Ce29OSzKN9TF1Ft61aa2s=;
- b=Z5GmOLq/mRJgLZh6Hg95jHqOKzywJChEbilo19CWRjZJEb1zN1F8qHK/RDSK/UxJoNAJ
- uuzPtP5T6H+QjbQK+BAmw1b+4boHC9g9VVQgzxRxJF18MJ8ijaBx0yBKnXOyu6ctj5Zg
- yyilFbWT704s4AaBXg7dMVpWKY3+vsv8heJ2m58Ci9rpePN/g1WUQPYmSAsX21AvSTiS
- IUs02776R9zU4YuqR8FQMG5o0+/e0xThxcd98k06rhpox5Cbz4//Mo+CDjN1pAIMTGU2
- zvI8OyE3OpKceDeqiEP9DQRTFI64JdGufloVhcwoOl6l149evvIZEmfcEsGEFr5KHHJI 6A== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2130.oracle.com with ESMTP id 2vk68ufxmt-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 15 Oct 2019 13:20:06 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9FDDHOt018164;
- Tue, 15 Oct 2019 13:20:06 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by aserp3030.oracle.com with ESMTP id 2vks08ukt2-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 15 Oct 2019 13:20:06 +0000
-Received: from abhmp0003.oracle.com (abhmp0003.oracle.com [141.146.116.9])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x9FDK3Re005456;
- Tue, 15 Oct 2019 13:20:03 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 15 Oct 2019 13:20:03 +0000
-Date: Tue, 15 Oct 2019 16:19:55 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Alexander Gordeev <a.gordeev.box@gmail.com>
-Subject: Re: [PATCH v2 1/2] dmaengine: avalon: Intel Avalon-MM DMA Interface
- for PCIe
-Message-ID: <20191015131955.GH4774@kadam>
-References: <cover.1570558807.git.a.gordeev.box@gmail.com>
- <3ed3c016b7fbe69e36023e7ee09c53acac8a064c.1570558807.git.a.gordeev.box@gmail.com>
- <20191009121441.GM25098@kadam>
- <20191009145811.GA3823@AlexGordeev-DPT-VI0092>
- <20191009185323.GG13286@kadam>
- <20191010085144.GA14197@AlexGordeev-DPT-VI0092>
- <20191010113034.GN13286@kadam>
- <20191015112449.GA28852@AlexGordeev-DPT-VI0092>
+Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
+ [209.85.210.193])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9BD0988249
+ for <devel@driverdev.osuosl.org>; Tue, 15 Oct 2019 13:59:36 +0000 (UTC)
+Received: by mail-pf1-f193.google.com with SMTP id y5so12565843pfo.4
+ for <devel@driverdev.osuosl.org>; Tue, 15 Oct 2019 06:59:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=OQHiqCpXSZVn47ppjdn/hXFH8fLHSyXwnH+G+uWWB+o=;
+ b=PG4f7wI6q1dk3mWzLjlecyFFuvz+MvCpjU3+a7kNFzGR7+KG8pztW0pVXuGsU77+pv
+ Tg8rtN7LMGYs4zKs5btLmvUm9LQLkZFr1ldniygmnAf3ZgCm9oFHL6dB761IEtafw71x
+ r3p2EZl05GyvwaCibRuHibodBjLm20HnBo6IOoMtdRGvCnJioNod0RqSRazny9zmXdhC
+ Uny2R0HlAZj0hbtVf7G6mF+mVYMM3XRrXP+dOS/N5qdk8e4e5Kl+fi2fD7iP3JkslAfb
+ w3FCwwCDNbH/NTKTNlx57+tap11uYFOB8Lf2DKSvM/LBpQb/kx/Wf/o/vIupQc7uS0MP
+ DnaQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=OQHiqCpXSZVn47ppjdn/hXFH8fLHSyXwnH+G+uWWB+o=;
+ b=OJwPhwqJ16yxA3cNjk45aetk+SmSeV+48xKiCq9xm2m/wiskjGCGWBtfolf4WNWVDj
+ G/KxsouwGfRWybfLin9J1PSdOKxSWmGojiUTHBmis68WKRt4hCSyDuuvc/5jiOsUwTEP
+ wap4vBSot4NtqiRjoVD+7UhDAkNVXEhZtnCllXIqR84Y6WHpdzcC8+KR4C5YJmHc5/b+
+ FXfrj7Z8CmoXJeKM4m536X05aF5NuKTlubc9l5wkfH68HIVEZSpiRrPylRMkTw4FdPCu
+ 3kMJcf4K8Y8dUipEpW1FeGC1ZO0asMbz4DyRKPjBRINir5KVMUL5jfgpA18u232TUZAc
+ 7kEA==
+X-Gm-Message-State: APjAAAXeQW+no6oBdlJEDqPW6NSFPE8HE/1Iy2cVVQgVf4f+ug1iwj0D
+ Q3qCye2JMSPmFFwqxJXaap1Xz6YBEtI=
+X-Google-Smtp-Source: APXvYqyXWaPbhXkHRvEhA4Oc8Ytcwswmvg4C2Aw1yEvsNR9Wkx6j5txbHhxZQ54W+B9d7pRnyjZ1/g==
+X-Received: by 2002:a17:90a:1617:: with SMTP id
+ n23mr43135972pja.75.1571147976272; 
+ Tue, 15 Oct 2019 06:59:36 -0700 (PDT)
+Received: from suzukaze.ipads-lab.se.sjtu.edu.cn ([89.31.126.54])
+ by smtp.gmail.com with ESMTPSA id m123sm24503127pfb.133.2019.10.15.06.59.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 15 Oct 2019 06:59:35 -0700 (PDT)
+From: Chuhong Yuan <hslester96@gmail.com>
+To: 
+Subject: [PATCH v2] media: imx7-mipi-csis: Add a check for devm_regulator_get
+Date: Tue, 15 Oct 2019 21:59:15 +0800
+Message-Id: <20191015135915.6530-1-hslester96@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191015112449.GA28852@AlexGordeev-DPT-VI0092>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9410
- signatures=668684
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1908290000 definitions=main-1910150121
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9410
- signatures=668684
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
- definitions=main-1910150121
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,53 +84,60 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Michael Chen <micchen@altera.com>,
- dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Chuhong Yuan <hslester96@gmail.com>,
+ linux-kernel@vger.kernel.org, NXP Linux Team <linux-imx@nxp.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Steve Longerbeam <slongerbeam@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Oct 15, 2019 at 01:24:50PM +0200, Alexander Gordeev wrote:
-> On Thu, Oct 10, 2019 at 02:30:34PM +0300, Dan Carpenter wrote:
-> > On Thu, Oct 10, 2019 at 10:51:45AM +0200, Alexander Gordeev wrote:
-> > > On Wed, Oct 09, 2019 at 09:53:23PM +0300, Dan Carpenter wrote:
-> > > > > > > +	u32 *rd_flags = hw->dma_desc_table_rd.cpu_addr->flags;
-> > > > > > > +	u32 *wr_flags = hw->dma_desc_table_wr.cpu_addr->flags;
-> > > > > > > +	struct avalon_dma_desc *desc;
-> > > > > > > +	struct virt_dma_desc *vdesc;
-> > > > > > > +	bool rd_done;
-> > > > > > > +	bool wr_done;
-> > > > > > > +
-> > > > > > > +	spin_lock(lock);
-> 
-> [*]
-> 
-> > > > > > > +
-> > > > > > > +	rd_done = (hw->h2d_last_id < 0);
-> > > > > > > +	wr_done = (hw->d2h_last_id < 0);
-> > > > > > > +
-> > > > > > > +	if (rd_done && wr_done) {
-> > > > > > > +		spin_unlock(lock);
-> > > > > > > +		return IRQ_NONE;
-> > > > > > > +	}
-> > > > > > > +
-> > > > > > > +	do {
-> > > > > > > +		if (!rd_done && rd_flags[hw->h2d_last_id])
-> > > > > > > +			rd_done = true;
-> > > > > > > +
-> > > > > > > +		if (!wr_done && wr_flags[hw->d2h_last_id])
-> > > > > > > +			wr_done = true;
-> > > > > > > +	} while (!rd_done || !wr_done);
+devm_regulator_get may return an error but mipi_csis_phy_init misses
+a check for it.
+This may lead to problems when regulator_set_voltage uses the unchecked
+pointer.
+This patch adds a check for devm_regulator_get to avoid potential risk.
 
+Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
+---
+Changes in v2:
+  - Add a check in mipi_csis_probe for the modified mipi_csis_phy_init.
 
-Thinking about this some more, my initial instinct was still correct
-actually.  If we're holding the lock to prevent the CPU from writing
-to it then how is hw->d2h_last_id updated in the other thread?  Either
-it must deadlock or it must be a race condition.
+ drivers/staging/media/imx/imx7-mipi-csis.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
-regards,
-dan carpenter
+diff --git a/drivers/staging/media/imx/imx7-mipi-csis.c b/drivers/staging/media/imx/imx7-mipi-csis.c
+index 73d8354e618c..e8a6acaa969e 100644
+--- a/drivers/staging/media/imx/imx7-mipi-csis.c
++++ b/drivers/staging/media/imx/imx7-mipi-csis.c
+@@ -350,6 +350,8 @@ static void mipi_csis_sw_reset(struct csi_state *state)
+ static int mipi_csis_phy_init(struct csi_state *state)
+ {
+ 	state->mipi_phy_regulator = devm_regulator_get(state->dev, "phy");
++	if (IS_ERR(state->mipi_phy_regulator))
++		return PTR_ERR(state->mipi_phy_regulator);
+ 
+ 	return regulator_set_voltage(state->mipi_phy_regulator, 1000000,
+ 				     1000000);
+@@ -966,7 +968,10 @@ static int mipi_csis_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
+ 
+-	mipi_csis_phy_init(state);
++	ret = mipi_csis_phy_init(state);
++	if (ret < 0)
++		return ret;
++
+ 	mipi_csis_phy_reset(state);
+ 
+ 	mem_res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-- 
+2.20.1
 
 _______________________________________________
 devel mailing list
