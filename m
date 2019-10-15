@@ -2,75 +2,79 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4C130D7A4C
-	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Oct 2019 17:45:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3DF6DD7A4D
+	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Oct 2019 17:46:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D70CA8666C;
-	Tue, 15 Oct 2019 15:45:56 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C3E34864DA;
+	Tue, 15 Oct 2019 15:45:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ApGH_GGS03Nb; Tue, 15 Oct 2019 15:45:55 +0000 (UTC)
+	with ESMTP id kx_ex8U2XeRd; Tue, 15 Oct 2019 15:45:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 75D57864AB;
-	Tue, 15 Oct 2019 15:45:54 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 593D28672E;
+	Tue, 15 Oct 2019 15:45:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8E2F21BF296
- for <devel@linuxdriverproject.org>; Tue, 15 Oct 2019 15:45:51 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 4F9DB1BF296
+ for <devel@linuxdriverproject.org>; Tue, 15 Oct 2019 15:45:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 85490875D6
- for <devel@linuxdriverproject.org>; Tue, 15 Oct 2019 15:45:51 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 49A1A864AB
+ for <devel@linuxdriverproject.org>; Tue, 15 Oct 2019 15:45:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZLq8IZrQRUmZ for <devel@linuxdriverproject.org>;
- Tue, 15 Oct 2019 15:45:50 +0000 (UTC)
+ with ESMTP id bjtgZYKQTdAE for <devel@linuxdriverproject.org>;
+ Tue, 15 Oct 2019 15:45:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ed1-f67.google.com (mail-ed1-f67.google.com
- [209.85.208.67])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 822AB854D8
- for <devel@driverdev.osuosl.org>; Tue, 15 Oct 2019 15:45:50 +0000 (UTC)
-Received: by mail-ed1-f67.google.com with SMTP id f20so18476742edv.8
- for <devel@driverdev.osuosl.org>; Tue, 15 Oct 2019 08:45:50 -0700 (PDT)
+Received: from mail-ed1-f66.google.com (mail-ed1-f66.google.com
+ [209.85.208.66])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7C214860DE
+ for <devel@driverdev.osuosl.org>; Tue, 15 Oct 2019 15:45:51 +0000 (UTC)
+Received: by mail-ed1-f66.google.com with SMTP id f20so18476789edv.8
+ for <devel@driverdev.osuosl.org>; Tue, 15 Oct 2019 08:45:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=yW8xr8iEic65XnjxnmqB+HKy0i7WjaAMK2VRQT1VESQ=;
- b=jCnleJWNSIE6p0EcgwHM3yORVXMJoYM/2LPUBJjrKgux6TXMBSTKOSPnGXf8NFx2Cc
- s2eimFJRZDKbwhktq7J7s3MJQgYlJH1uuuoKWAnQWEKn7oatw7PEGZ33hUIMy5LEJGOQ
- V3vnNOwgKGUFXOZ7ii2HeSUT91GMcSuMAjjFqM+JLWg1MpGB7mIYYBd0UXP8a7z/zBD5
- /dHXdiSIPMvASWDL8Yks1QpPQ5S+8UvzP4CBNzmvzNtvdzpckOfb4biOKZ2Fq0j8MZY7
- 48LFtRHc7k9o9iYc1Q6N5VYfjxmxd66Hq9IjF3vH2joUFSmAk3ryw8jX25DxcvXQ60jq
- UUGw==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=BUcJdIWqrr+IZvPOnEuHNqfscKpmA1S5L5Mn3MxIjpA=;
+ b=Rjs4uSR6HFoaUox/Lyrg5MAheF9DPnt2lhYu5CkHrJ6jknC33tce11zjNl/X2LT1H/
+ 4KBE7KXgFPBIp6pznnl1o2vLj8wiZMJ8wZ/ahjdrwcqTM/PaWBUbxcpom2z4mG6iut8E
+ G2vvBApfArbEbU0HlJcRvSQraFVjlS2Vqo/oqYkajspXVJRTaAjzzJ+tXhh/tUmXZsq6
+ j6OvcYoc2jRSsMDQnZ2Ln/yEYVe2pInA8y8fFBaUNorGBq0lG1Ak7TW1luj7Ot6ipCIf
+ u0mV7dxukL1ChzoPEPJgYLCJBs/jfMMNvAzn4ANTQQA6iNmqlFmsuL86ScXDJSWVj71d
+ s+fQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=yW8xr8iEic65XnjxnmqB+HKy0i7WjaAMK2VRQT1VESQ=;
- b=uTV32KTq2MMRygsemAXmeH8V0TFm5o8XoXEqgT9zjBS6NQeSfzCcJn0SPNAZXLe3QF
- 4Yj7ErjZrO4Hq+ezpZHu9rzMc4fusLzwJKs/RhxnIqoV9iu6VQd6oY1z0NQBHuhXUgW/
- XqQRwr9VdQLRlF2Y5N8VVf24LoNAGerC7hktJnFRFmryqNs9lDbPHYZKudlP2vHEoxp2
- bvLxICYHzZ1DqknjCrxL8/zfpgPjbW8rgwXL/53AnzFFqyA+KlhKYy04JPrc7LCE2t9h
- ZNf1VjbNewGMLR0YhL9nl4Niz82Oc7pwtFOqgidgrzHgt4nqL1puWMt+GdZ4DVAvRedB
- V9Pg==
-X-Gm-Message-State: APjAAAWosIM1ULzyhQ5h6dXKeDvSj3wGrrWc2Sc9a6ht54LsGlnZ3yTD
- E81lGBm2NGlMd0z63gfOsR8=
-X-Google-Smtp-Source: APXvYqwg1840dcStG/Lyyi7CGNktO56vi0k0C8rD7IJp4SzHStR1FGBIcW+3VqNE9H8E6ugcq93UfQ==
-X-Received: by 2002:a50:ace1:: with SMTP id x88mr34603745edc.132.1571154348846; 
- Tue, 15 Oct 2019 08:45:48 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=BUcJdIWqrr+IZvPOnEuHNqfscKpmA1S5L5Mn3MxIjpA=;
+ b=OInz4rzsHB9rNBS2TVxyXZKeRWkV+vzvQhXwQXXco33WYzKWvacqQODWOCRrYmxIlt
+ jtFNB5oOsPL3x56PBR6XkoZHVdr5S6HNMnVO/eMfwQPCHyoRsKTn1m0mYLSYq+sOmuiH
+ sNg5o2Rg0Pc03o+0IyjpW2UWXfz+gHUgUAzZ2iSowIOjOEhHVSHqTiOqJZ2ibpH2xhlS
+ v8ArUNdq/86vnQ8j14eM4BcNj0hklZ1gNjtYYswommrfQ5Whw5Y5nmSJtTieO+P5TPY5
+ Hcl9nLpJyZnS76p3wmExkNps8iKsu0RA3MxOS6vt4c4SdGBho0SVfJHsfgJNBtWcUBik
+ b8gA==
+X-Gm-Message-State: APjAAAUKK5520BcCvJGEzHNXc5/mIJEaw6s6YkFw17535nNVYWPF0fa0
+ 1Zrl0svAoblk82ca+0NyhRk=
+X-Google-Smtp-Source: APXvYqyPqKBY6p0jGAoXx34Ep7cXaNbnu9p/U+zEyRaY/bKXmWHPd2LYIPpLryRMPOdrm2JMNWc/8w==
+X-Received: by 2002:a17:906:3949:: with SMTP id
+ g9mr5091433eje.171.1571154349774; 
+ Tue, 15 Oct 2019 08:45:49 -0700 (PDT)
 Received: from localhost.localdomain
  ([2a02:8108:96bf:e0ab:2b68:5d76:a12a:e6ba])
  by smtp.gmail.com with ESMTPSA id nq1sm2807787ejb.75.2019.10.15.08.45.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Oct 2019 08:45:48 -0700 (PDT)
+ Tue, 15 Oct 2019 08:45:49 -0700 (PDT)
 From: Michael Straube <straube.linux@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 1/3] staging: rtl8188eu: rename variables to avoid mixed case
-Date: Tue, 15 Oct 2019 17:45:33 +0200
-Message-Id: <20191015154535.27979-1-straube.linux@gmail.com>
+Subject: [PATCH 2/3] staging: rtl8188eu: convert variables from unsigned char
+ to u8
+Date: Tue, 15 Oct 2019 17:45:34 +0200
+Message-Id: <20191015154535.27979-2-straube.linux@gmail.com>
 X-Mailer: git-send-email 2.23.0
+In-Reply-To: <20191015154535.27979-1-straube.linux@gmail.com>
+References: <20191015154535.27979-1-straube.linux@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -91,77 +95,38 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Rename local variables to avoid mixed case.
-
-max_AMPDU_len -> max_ampdu_len
-min_MPDU_spacing -> min_mpdu_spacing
+Convert the local variables max_ampdu_len and min_mpdu_spacing from
+unsigned char to u8 and remove unnecessary castings to u8 pointer.
 
 Signed-off-by: Michael Straube <straube.linux@gmail.com>
 ---
- .../staging/rtl8188eu/core/rtw_wlan_util.c    | 24 +++++++++----------
- 1 file changed, 12 insertions(+), 12 deletions(-)
+ drivers/staging/rtl8188eu/core/rtw_wlan_util.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/staging/rtl8188eu/core/rtw_wlan_util.c b/drivers/staging/rtl8188eu/core/rtw_wlan_util.c
-index c985b1468d41..6d56ca7ee7b4 100644
+index 6d56ca7ee7b4..1e261ff8f0a0 100644
 --- a/drivers/staging/rtl8188eu/core/rtw_wlan_util.c
 +++ b/drivers/staging/rtl8188eu/core/rtw_wlan_util.c
-@@ -667,7 +667,7 @@ static void bwmode_update_check(struct adapter *padapter, struct ndis_802_11_var
- void HT_caps_handler(struct adapter *padapter, struct ndis_802_11_var_ie *pIE)
- {
- 	unsigned int i;
--	u8 max_AMPDU_len, min_MPDU_spacing;
-+	u8 max_ampdu_len, min_mpdu_spacing;
- 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
- 	struct mlme_ext_info *pmlmeinfo = &pmlmeext->mlmext_info;
- 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
-@@ -689,16 +689,16 @@ void HT_caps_handler(struct adapter *padapter, struct ndis_802_11_var_ie *pIE)
- 		} else {
- 			/* modify from  fw by Thomas 2010/11/17 */
- 			if ((pmlmeinfo->HT_caps.ampdu_params_info & 0x3) > (pIE->data[i] & 0x3))
--				max_AMPDU_len = pIE->data[i] & 0x3;
-+				max_ampdu_len = pIE->data[i] & 0x3;
- 			else
--				max_AMPDU_len = pmlmeinfo->HT_caps.ampdu_params_info & 0x3;
-+				max_ampdu_len = pmlmeinfo->HT_caps.ampdu_params_info & 0x3;
- 
- 			if ((pmlmeinfo->HT_caps.ampdu_params_info & 0x1c) > (pIE->data[i] & 0x1c))
--				min_MPDU_spacing = pmlmeinfo->HT_caps.ampdu_params_info & 0x1c;
-+				min_mpdu_spacing = pmlmeinfo->HT_caps.ampdu_params_info & 0x1c;
- 			else
--				min_MPDU_spacing = pIE->data[i] & 0x1c;
-+				min_mpdu_spacing = pIE->data[i] & 0x1c;
- 
--			pmlmeinfo->HT_caps.ampdu_params_info = max_AMPDU_len | min_MPDU_spacing;
-+			pmlmeinfo->HT_caps.ampdu_params_info = max_ampdu_len | min_mpdu_spacing;
- 		}
- 	}
- 
 @@ -729,8 +729,8 @@ void HT_info_handler(struct adapter *padapter, struct ndis_802_11_var_ie *pIE)
  
  void HTOnAssocRsp(struct adapter *padapter)
  {
--	unsigned char max_AMPDU_len;
--	unsigned char min_MPDU_spacing;
-+	unsigned char max_ampdu_len;
-+	unsigned char min_mpdu_spacing;
+-	unsigned char max_ampdu_len;
+-	unsigned char min_mpdu_spacing;
++	u8 max_ampdu_len;
++	u8 min_mpdu_spacing;
  	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
  	struct mlme_ext_info *pmlmeinfo = &pmlmeext->mlmext_info;
  
-@@ -748,13 +748,13 @@ void HTOnAssocRsp(struct adapter *padapter)
- 	 * AMPDU_para [1:0]:Max AMPDU Len => 0:8k , 1:16k, 2:32k, 3:64k
- 	 * AMPDU_para [4:2]:Min MPDU Start Spacing
- 	 */
--	max_AMPDU_len = pmlmeinfo->HT_caps.ampdu_params_info & 0x03;
-+	max_ampdu_len = pmlmeinfo->HT_caps.ampdu_params_info & 0x03;
+@@ -752,9 +752,9 @@ void HTOnAssocRsp(struct adapter *padapter)
  
--	min_MPDU_spacing = (pmlmeinfo->HT_caps.ampdu_params_info & 0x1c) >> 2;
-+	min_mpdu_spacing = (pmlmeinfo->HT_caps.ampdu_params_info & 0x1c) >> 2;
+ 	min_mpdu_spacing = (pmlmeinfo->HT_caps.ampdu_params_info & 0x1c) >> 2;
  
--	rtw_hal_set_hwreg(padapter, HW_VAR_AMPDU_MIN_SPACE, (u8 *)(&min_MPDU_spacing));
-+	rtw_hal_set_hwreg(padapter, HW_VAR_AMPDU_MIN_SPACE, (u8 *)(&min_mpdu_spacing));
+-	rtw_hal_set_hwreg(padapter, HW_VAR_AMPDU_MIN_SPACE, (u8 *)(&min_mpdu_spacing));
++	rtw_hal_set_hwreg(padapter, HW_VAR_AMPDU_MIN_SPACE, &min_mpdu_spacing);
  
--	rtw_hal_set_hwreg(padapter, HW_VAR_AMPDU_FACTOR, (u8 *)(&max_AMPDU_len));
-+	rtw_hal_set_hwreg(padapter, HW_VAR_AMPDU_FACTOR, (u8 *)(&max_ampdu_len));
+-	rtw_hal_set_hwreg(padapter, HW_VAR_AMPDU_FACTOR, (u8 *)(&max_ampdu_len));
++	rtw_hal_set_hwreg(padapter, HW_VAR_AMPDU_FACTOR, &max_ampdu_len);
  }
  
  void ERP_IE_handler(struct adapter *padapter, struct ndis_802_11_var_ie *pIE)
