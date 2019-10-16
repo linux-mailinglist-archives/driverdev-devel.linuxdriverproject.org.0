@@ -2,82 +2,85 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DAB66D9651
-	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Oct 2019 18:04:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 164A0D965B
+	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Oct 2019 18:06:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C139E87865;
-	Wed, 16 Oct 2019 16:03:58 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D5E8787872;
+	Wed, 16 Oct 2019 16:05:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id avEVcB6SdL+n; Wed, 16 Oct 2019 16:03:58 +0000 (UTC)
+	with ESMTP id p18I8CxRjIGs; Wed, 16 Oct 2019 16:05:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 658AD87851;
-	Wed, 16 Oct 2019 16:03:57 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BFDAE810E7;
+	Wed, 16 Oct 2019 16:05:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 34DAA1BF38B
- for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 16:03:55 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 632491BF30E
+ for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 16:05:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 2E77C2333F
- for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 16:03:55 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 5D8DA1FEE0
+ for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 16:05:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Mb9voNbEQnkz for <devel@linuxdriverproject.org>;
- Wed, 16 Oct 2019 16:03:54 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
- [209.85.221.66])
- by silver.osuosl.org (Postfix) with ESMTPS id 23A2A203C7
- for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 16:03:54 +0000 (UTC)
-Received: by mail-wr1-f66.google.com with SMTP id y19so28733935wrd.3
- for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 09:03:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=8tAzClyAvZpUSFyKG/Pk8kSHQbTC3odRRyjL8/E0mfM=;
- b=jFfug13xCcYliAOTf69yFMA+Mvkx2HeD406hyp5ifiYivCZzu8FiEQT3ZOpIA84Chh
- 0FY/HX9TwYPGyTEeUFsmmggPMZkAeFiG7Mt4J+SLrc/qAi1T4SS424uou1WjRSTZ7EQQ
- Gbyp1NXVXQuh79XtuibNDc5/Ou8lTJw6yK2JcU1D8HG63Vqji3b5xuuZuL/Rq88D6CFR
- Wd3wCrt2IC68NbIpkNs9YfOTh5J1lfRbz/gPmizn3QI2zP5n4DcmmA+xp0UIxaw//Y0A
- +GGLOSekVHF5TjrTBJUknP9lKJsE2DHQyId85UBAjdqcEB0Z5M28/30pAlLX8aw3/OWp
- ZBRg==
+ with ESMTP id kSasRYN-bWnJ for <devel@linuxdriverproject.org>;
+ Wed, 16 Oct 2019 16:05:54 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from omr1.cc.vt.edu (outbound.smtp.vt.edu [198.82.183.121])
+ by silver.osuosl.org (Postfix) with ESMTPS id 8C8B81FEAB
+ for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 16:05:54 +0000 (UTC)
+Received: from mr2.cc.vt.edu (mr2.cc.ipv6.vt.edu
+ [IPv6:2607:b400:92:8400:0:90:e077:bf22])
+ by omr1.cc.vt.edu (8.14.4/8.14.4) with ESMTP id x9GG5rOn004178
+ for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 12:05:53 -0400
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199])
+ by mr2.cc.vt.edu (8.14.7/8.14.7) with ESMTP id x9GG5m7a005198
+ for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 12:05:53 -0400
+Received: by mail-qk1-f199.google.com with SMTP id q80so24147880qke.22
+ for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 09:05:53 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=8tAzClyAvZpUSFyKG/Pk8kSHQbTC3odRRyjL8/E0mfM=;
- b=Ga3T1SopS7gTx+P2W1pslgyIcly/1M8031NFgnIZDZYooqwo+6kVF+9yFUdm28z06M
- B3yiNhkHbRXKUpfNvy5iIbLxUFUXdxDJe01KFszqS318kOECS5SDpU5cH0DSkMFedJbz
- Ubvw5z5EDhzeNT+xXti4idyOAh5C+PnE9XDmUGr+yiC7RUgqKxUe4u79zQH7LBzmhrAm
- ZxCVI4JJD2uGJyEoeWkDn3h4CdRG6TRDClWRQxkB2TIf3wT3lzV+ckW/UcpqjAln1JtJ
- 2HQmTSX3bewacXaUGSvK5SzMkqhD4UkNolCuMDzfbkP9e8MnQ59V8gl54oijzOJQrol1
- Q5lg==
-X-Gm-Message-State: APjAAAUCmSQVQx5oTPwHBbDux5JJy437HhvbqI/Ia514Zo7QnrU3P9I3
- +RqqLq1vUqdJo/qX6qGdCVA=
-X-Google-Smtp-Source: APXvYqx2fq3WUjV1DN0JFZChxKVkSK4kwdX+hTuiRYccS4yHQC2WgV0minWbd47ga5S1YMqawMGn6g==
-X-Received: by 2002:adf:c641:: with SMTP id u1mr3427669wrg.361.1571241832723; 
- Wed, 16 Oct 2019 09:03:52 -0700 (PDT)
-Received: from pali ([2a02:2b88:2:1::5cc6:2f])
- by smtp.gmail.com with ESMTPSA id p7sm2684570wma.34.2019.10.16.09.03.50
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Wed, 16 Oct 2019 09:03:51 -0700 (PDT)
-Date: Wed, 16 Oct 2019 18:03:49 +0200
-From: Pali =?utf-8?B?Um9ow6Fy?= <pali.rohar@gmail.com>
+ h=x-gm-message-state:sender:from:to:cc:subject:in-reply-to:references
+ :mime-version:content-transfer-encoding:date:message-id;
+ bh=Cc00vF+ZmzoZk3aEyCGrhUsksukEBOoMGKgFpD+Z/O8=;
+ b=MebPaO1wdcSs1XVgHX8r6EPC7D6AYRgFbWRe1uYlV1CH9yfT65GVh/sI9DsDj6lwMJ
+ awo6JNJLY/hiE+dPRiq5qM5QT9cnhtIKOZF5tsOZrHisio8xGnQt97dfDhPwzqVHACSt
+ 4JCxVVPy2Jw7M5aNRv81cLloNfWDHp9+lq5BkxPXPB53S3kMCOvD4djZA2w9NxW6yVGs
+ UyRgpdV6ytDBtAlX0fwpL5zQj/8nmqpHBDyTR7GvshXjbMAOqIKn86k3qNjm9ZTZJw9J
+ EiaP8vsHTsq6+vmm2jiCAbynObhi8DOwE6cn7bULRH7+4hfACDTG8X53Sv8U21axQLnL
+ E6Pg==
+X-Gm-Message-State: APjAAAXAKyOXx2QkzbunUFhJMgASX+4FJO9GteblIQwRN5qqyNGd98CG
+ lrHaWXiIYFodkPRfd2Ynq4Xwyli1W/c4JSAiPg2DIt4MKr3iZU+naD8G/M88DMwMJV0VZzuZvSk
+ ihxD1eUnPWw4KyA2uGGZEXgpVGpoIZ9pw
+X-Received: by 2002:a05:620a:89d:: with SMTP id
+ b29mr5064578qka.266.1571241947964; 
+ Wed, 16 Oct 2019 09:05:47 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyxFqltsKGrKtwqF17O9iibdxSM9S5WlrJxC+GCESGrDZgAo+ncpxnY/6mYmIUe2vm9OOVKfg==
+X-Received: by 2002:a05:620a:89d:: with SMTP id
+ b29mr5064547qka.266.1571241947613; 
+ Wed, 16 Oct 2019 09:05:47 -0700 (PDT)
+Received: from turing-police ([2601:5c0:c001:4341::9ca])
+ by smtp.gmail.com with ESMTPSA id e5sm15152719qtk.35.2019.10.16.09.05.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 16 Oct 2019 09:05:46 -0700 (PDT)
+From: "Valdis Kl=?utf-8?Q?=c4=93?=tnieks" <valdis.kletnieks@vt.edu>
+X-Google-Original-From: "Valdis Kl=?utf-8?Q?=c4=93?=tnieks"
+ <Valdis.Kletnieks@vt.edu>
+X-Mailer: exmh version 2.9.0 11/07/2018 with nmh-1.7+dev
 To: Sasha Levin <sashal@kernel.org>
 Subject: Re: [PATCH] staging: exfat: add exfat filesystem code to staging
-Message-ID: <20191016160349.pwghlg566hh2o7id@pali>
+In-Reply-To: <20191016143113.GS31224@sasha-vm>
 References: <20190828160817.6250-1-gregkh@linuxfoundation.org>
- <20190829205631.uhz6jdboneej3j3c@pali>
- <184209.1567120696@turing-police> <20190829233506.GT5281@sasha-vm>
- <20190830075647.wvhrx4asnkrfkkwk@pali>
+ <20190829205631.uhz6jdboneej3j3c@pali> <184209.1567120696@turing-police>
+ <20190829233506.GT5281@sasha-vm> <20190830075647.wvhrx4asnkrfkkwk@pali>
  <20191016140353.4hrncxa5wkx47oau@pali>
  <20191016143113.GS31224@sasha-vm>
-MIME-Version: 1.0
-In-Reply-To: <20191016143113.GS31224@sasha-vm>
-User-Agent: NeoMutt/20170113 (1.7.2)
+Mime-Version: 1.0
+Date: Wed, 16 Oct 2019 12:05:45 -0400
+Message-ID: <158801.1571241945@turing-police>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,82 +94,68 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, Christoph Hellwig <hch@infradead.org>,
- Valdis =?utf-8?Q?Kl=C4=93tnieks?= <valdis.kletnieks@vt.edu>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Sasha Levin <alexander.levin@microsoft.com>, linux-fsdevel@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============3189595666969579158=="
+ Sasha Levin <alexander.levin@microsoft.com>,
+ Pali =?iso-8859-1?Q?Roh=E1r?= <pali.rohar@gmail.com>,
+ linux-fsdevel@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============1904593909730113466=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+--===============1904593909730113466==
+Content-Type: multipart/signed; boundary="==_Exmh_1571241945_33600P";
+	 micalg=pgp-sha1; protocol="application/pgp-signature"
+Content-Transfer-Encoding: 7bit
 
---===============3189595666969579158==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="xtpjukghalsmqwao"
-Content-Disposition: inline
-
-
---xtpjukghalsmqwao
+--==_Exmh_1571241945_33600P
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wednesday 16 October 2019 10:31:13 Sasha Levin wrote:
-> On Wed, Oct 16, 2019 at 04:03:53PM +0200, Pali Roh=C3=A1r wrote:
-> > On Friday 30 August 2019 09:56:47 Pali Roh=C3=A1r wrote:
-> > > On Thursday 29 August 2019 19:35:06 Sasha Levin wrote:
-> > > > With regards to missing specs/docs/whatever - our main concern with=
- this
-> > > > release was that we want full interoperability, which is why the sp=
-ec
-> > > > was made public as-is without modifications from what was used
-> > > > internally. There's no "secret sauce" that Microsoft is hiding here.
-> > >=20
-> > > Ok, if it was just drop of "current version" of documentation then it
-> > > makes sense.
-> > >=20
-> > > > How about we give this spec/code time to get soaked and reviewed fo=
-r a
-> > > > bit, and if folks still feel (in a month or so?) that there are mis=
-sing
-> > > > bits of information related to exfat, I'll be happy to go back and =
-try
-> > > > to get them out as well.
-> >=20
-> > Hello Sasha!
-> >=20
-> > Now one month passed, so do you have some information when missing parts
-> > of documentation like TexFAT would be released to public?
->=20
+On Wed, 16 Oct 2019 10:31:13 -0400, Sasha Levin said:
+> On Wed, Oct 16, 2019 at 04:03:53PM +0200, Pali Roh=E1r wrote:
+
+> >Now one month passed, so do you have some information when missing par=
+ts
+> >of documentation like TexFAT would be released to public?
+>
 > Sure, I'll see if I can get an approval to open it up.
-
-Ok!
-
+>
 > Can I assume you will be implementing TexFAT support once the spec is
 > available?
 
-I cannot promise that I would implement something which I do not know
-how is working... It depends on how complicated TexFAT is and also how
-future exfat support in kernel would look like.
+It's certainly something that *should* be supported. The exact timeframe,=
+ and
+who the =22you=22 that actually writes the patch is of course up in the a=
+ir (and
+will likely end up being a collaborative effort between the first author =
+and
+corrections from others).
 
-But I'm interesting in implementing it.
 
---=20
-Pali Roh=C3=A1r
-pali.rohar@gmail.com
-
---xtpjukghalsmqwao
-Content-Type: application/pgp-signature; name="signature.asc"
+--==_Exmh_1571241945_33600P
+Content-Type: application/pgp-signature
 
 -----BEGIN PGP SIGNATURE-----
+Comment: Exmh version 2.9.0 11/07/2018
 
-iF0EABECAB0WIQS4VrIQdKium2krgIWL8Mk9A+RDUgUCXac/ZAAKCRCL8Mk9A+RD
-Up63AJ9RWDz74lfxmFMyPt68AQrr18x87wCfW3K+Im689OPplqjLk3mnz6YAHp0=
-=8o6F
+iQIVAwUBXac/2AdmEQWDXROgAQL74w/+PBT69vQpDRQ38D0E+OMJwMnyCoXnCUU8
+8xVZjGM3mGHPtChb9+wO2l8NjtT9XBiDm5r53Yr5GN53Vh1awdp1A2LaK8ba//SA
+cQxNjDeVK1aKpJ+mxBAkVsic+h38rR9ajMfGWHtQ/+PT2Co3OmQHmKvyb5VGSXbC
+UlTZjfyEpNofW2QjAFPyurkRHD3HS8DiA4e58t9Pm1VavQAr0NgIb8DclCOF2mVj
+9HluyEcc9WoYceCqnWwkmT6k0KynYgtouJjteBMMdNlfStdvWOsdmrOvrKnUL3Y1
+e+KmwXxg4mOjvlet0FjRtm48HSDIeA8o7kiB697KPSFa/oD9XPcLmg1ck1u/b7M0
+HoHJ9fuPHkafe0OOW6T0ZQWWbcouOZh+jhoniakz+sfMrNpDWEcJklWfrs34hJty
+6Sy9xQ4fRf3U7eVJTbbNImU4kc+ByHhcvcxkCOJKunKVP5DIliOjstIX2UXSRKGo
+RhVTIWmS0Ds8+yuu2p4rpNfnab40G7KCMopq3gIGLEu/feYrUSWSMg0SqhbRsJ3e
+gJGhKiUUnLDkiISt3fl8flb1XpbFZJ5OIUcguJGVEv7rpco5ovcgGTsdnXC9IFjS
+X2vnUi44X5r/JX5hyBzxHxuUacQdtimzz12sRHCMIJSd0873lqKyTANgeWlYo1He
+O0opOSTeAyE=
+=QAWJ
 -----END PGP SIGNATURE-----
 
---xtpjukghalsmqwao--
+--==_Exmh_1571241945_33600P--
 
---===============3189595666969579158==
+--===============1904593909730113466==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -177,4 +166,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---===============3189595666969579158==--
+--===============1904593909730113466==--
