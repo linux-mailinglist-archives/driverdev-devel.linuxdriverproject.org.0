@@ -1,75 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 43577D9359
-	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Oct 2019 16:08:35 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id EEEEBD93BE
+	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Oct 2019 16:26:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 25E44233A6;
-	Wed, 16 Oct 2019 14:08:33 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9683F8780A;
+	Wed, 16 Oct 2019 14:25:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WvXBqENgLHDY; Wed, 16 Oct 2019 14:08:32 +0000 (UTC)
+	with ESMTP id 3b27RMXvcmBZ; Wed, 16 Oct 2019 14:25:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 5BE9C203BF;
-	Wed, 16 Oct 2019 14:08:31 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5A2E6877E7;
+	Wed, 16 Oct 2019 14:25:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DFE7F1BF2BF
- for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 14:08:27 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 43AE41BF2BF
+ for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 14:25:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id AA6B0878E3
- for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 14:08:27 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4047D8772F
+ for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 14:25:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5FJrDzvP3NqH for <devel@linuxdriverproject.org>;
- Wed, 16 Oct 2019 14:08:27 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id ED8A387524
- for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 14:08:26 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id p12so5038407pgn.6
- for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 07:08:26 -0700 (PDT)
+ with ESMTP id 3NYw4T8uNGbh for <devel@linuxdriverproject.org>;
+ Wed, 16 Oct 2019 14:25:54 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C9229877BA
+ for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 14:25:54 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id q7so14827302pfh.8
+ for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 07:25:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=2VuW3uJV+8y57xUfrCigIkJJtF1hNZLZEkCSqQtkuZw=;
- b=laSipHEAy8rtoZaHhB9FGwlJ4wytviwdeMPPFd2q0AanSXLl6Si0ACNEAlFScEgr5W
- qQYz/BP5XBpdT9rykmKuJfaqAbzdF6p4zEpWc41uu1GcVAg1waq9l0ugTIjQ1WfYXF2p
- brPvEDf0pxmBYhhvsNsFR5kE0lIzUWu4v1GKgfuxm3p3MHPJCtaWCxUmyRWW3JBYpVpr
- qZvvFNP498X/TG6twsFwGZktC3nlp/taGOKXzZC4Lx8ha8sS8VT1f4+QGwMiYhba3VV8
- i8ZyMGd1+8H54G86U4N5tkyCb7bjhedXfDRxN5sCV/LB6s1ZF0NFioOFNA41NkGXftnV
- DyFw==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ujGILVS8EOVsDFzbe0iajn+DjkCITaKLgBibceQs4Qk=;
+ b=a6bOoh9WX6DTprd6X00EX+6JfgBs7ui/aqTCQjRQtKjuicevk+q6uytkW0NbwJxVil
+ cSBlwFT21oiOer9Khli6iBMoxHsCgyGRBpGjpJk+lxnhnrKW/ZqNrJhL9TEF3OvzcsFR
+ 4MQ15Eo/+o+PGv428dqqGP0V5khaisyqzTNF0ePtA5zZcOq4h2o+ArfnRMwqnyVgJgZ9
+ GQKSOxEck+QcA6uHMJtr4lU8JpWTf3MEMjBXLCsmoDLa2SxUtFNM1kvXrDsValCbcDC9
+ siH/D7L3PtTo1yqpzChH0dcb4/Ewf2aS6tyPau+NaSijx8sqvyai1t05WTVlsIi1VrC1
+ nRMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=2VuW3uJV+8y57xUfrCigIkJJtF1hNZLZEkCSqQtkuZw=;
- b=NO7hrJMIBgfSQ0liQPnHBgv3IVuxMUxWLLlTBO36PvdwBjJPVgB5nIJDViS7tDa8x/
- zKerVLxtbz1qC5+qwNtrhppbERe1r9Z83xnez13zgOnG1+bQtlTXtJ8F3v32CNS8/Rc8
- 0NSmwBzJXaRHbeXIX87hRdqXlnm1grJp24PncmPdpq7U+mt03usbXAtH+e+BgeUoTxWQ
- 2ZrsMqjAoi4fS/KVHs1gnvTrPw4QnOTTqzjn77RrcjLDCpwYyFZJ9JHr5RGvMnl3ifhU
- vwxDPpuJtHuvUiVgsuV96Ljey/m9K9G8eY1xSs+9qnlx83AJqMTDdV3B/Zy/86Pu22fN
- flKA==
-X-Gm-Message-State: APjAAAW52Vkq1EJqVZ7Tdw/MTKrB1W3LmY0OQTTdaJyzXoEsIx9ocmb4
- /uprpx4npi6LgDkHmVsNWiI=
-X-Google-Smtp-Source: APXvYqz9itctxy+ki4KPqxkttjrt67Pe64jP3Yjvls3ZfzJwhLqdPFUzStrg46wAup6ZtcZVuTJvXA==
-X-Received: by 2002:a65:4c03:: with SMTP id u3mr45041967pgq.440.1571234906186; 
- Wed, 16 Oct 2019 07:08:26 -0700 (PDT)
-Received: from localhost.localdomain ([2401:4900:16a0:2e1e:94b2:db45:7585:e0c])
- by smtp.gmail.com with ESMTPSA id p17sm23810365pfn.50.2019.10.16.07.08.23
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Wed, 16 Oct 2019 07:08:25 -0700 (PDT)
-From: Aliasgar Surti <aliasgar.surti500@gmail.com>
-X-Google-Original-From: Aliasgar Surti
-To: gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org
-Subject: [PATCH] staging:rtl8723bs: removed unwanted if..else condition
-Date: Wed, 16 Oct 2019 19:37:53 +0530
-Message-Id: <1571234873-13847-1-git-send-email-aliasgar.surti500@gmail.com>
-X-Mailer: git-send-email 2.7.4
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ujGILVS8EOVsDFzbe0iajn+DjkCITaKLgBibceQs4Qk=;
+ b=aW4cOg2CZGNz35OnLY0E7Fy1p+EpmGtYhgi4MAwcwYttBsLFiHfzzBg2qYuCkGWyOL
+ UfZwPwlTmtpw/K0rjDj80vHXCPGavBz5e9jCv9iec0xT85YnD2s6iPxNovQ9sReAaGWk
+ 3smxmj04So/252F+RfNrRSANjS3IuCUGMf/PC1FcCPvptkwQpuUnl07lO+sTH+KRah2d
+ hGqnRGzn0+ZorgpHlcF6pnReF4YvytW6+JQd0JnQhjtsIAZWnuT+wk51m/Lik3WvbDXj
+ T8+OgSrtLkzjUEd0+LrPjHCRr5edLf3sgHcSaHcZNPQPBIFupvRE1bmqRbVs07QpIuGV
+ g/tw==
+X-Gm-Message-State: APjAAAUeBM3qeWZCWPxapDJBzhLIsmSpERUKgv3XBbX4GPu2LLRLjEfO
+ 2Jf8BJqAt6SW01VZ/QWCjT8=
+X-Google-Smtp-Source: APXvYqxIYy2Qv9i2kyVFd/IvVJK02XNDYI0j0LNVdMEsCydz62Z+SlEJeTndXygi/WhaU4LEtTD7PA==
+X-Received: by 2002:a63:3f86:: with SMTP id m128mr910929pga.404.1571235954263; 
+ Wed, 16 Oct 2019 07:25:54 -0700 (PDT)
+Received: from suzukaze.ipads-lab.se.sjtu.edu.cn ([89.31.126.54])
+ by smtp.gmail.com with ESMTPSA id i1sm30371683pfg.2.2019.10.16.07.25.47
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 16 Oct 2019 07:25:53 -0700 (PDT)
+From: Chuhong Yuan <hslester96@gmail.com>
+To: 
+Subject: [PATCH] staging: iio: ad9834: add a check for devm_clk_get
+Date: Wed, 16 Oct 2019 22:25:40 +0800
+Message-Id: <20191016142540.26450-1-hslester96@gmail.com>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,53 +83,43 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Aliasgar Surti <aliasgar.surti500@gmail.com>
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, Lars-Peter Clausen <lars@metafoo.de>,
+ Stefan Popa <stefan.popa@analog.com>,
+ Michael Hennerich <Michael.Hennerich@analog.com>, linux-iio@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Chuhong Yuan <hslester96@gmail.com>, linux-kernel@vger.kernel.org,
+ Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Hartmut Knaack <knaack.h@gmx.de>,
+ Jonathan Cameron <jic23@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Aliasgar Surti <aliasgar.surti500@gmail.com>
+ad9834_probe misses a check for devm_clk_get and may cause problems.
+Add a check like what ad9832 does to fix it.
 
-There is use of if..elseif..else condition which has same logic
-in all three blocks.
-Removed if..else block and placed log message instead that.
-
-Signed-off-by: Aliasgar Surti <aliasgar.surti500@gmail.com>
+Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_cmd.c | 16 +++-------------
- 1 file changed, 3 insertions(+), 13 deletions(-)
+ drivers/staging/iio/frequency/ad9834.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-index e6fea96..fc1d243 100644
---- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-@@ -507,19 +507,9 @@ int rtw_cmd_thread(void *context)
+diff --git a/drivers/staging/iio/frequency/ad9834.c b/drivers/staging/iio/frequency/ad9834.c
+index 038d6732c3fd..23026978a5a5 100644
+--- a/drivers/staging/iio/frequency/ad9834.c
++++ b/drivers/staging/iio/frequency/ad9834.c
+@@ -417,6 +417,10 @@ static int ad9834_probe(struct spi_device *spi)
+ 	st = iio_priv(indio_dev);
+ 	mutex_init(&st->lock);
+ 	st->mclk = devm_clk_get(&spi->dev, NULL);
++	if (IS_ERR(st->mclk)) {
++		ret = PTR_ERR(st->mclk);
++		goto error_disable_reg;
++	}
  
- 		cmd_process_time = jiffies_to_msecs(jiffies - cmd_start_time);
- 		if (cmd_process_time > 1000) {
--			if (pcmd->cmdcode == GEN_CMD_CODE(_Set_Drv_Extra)) {
--				DBG_871X(ADPT_FMT" cmd =%d process_time =%lu > 1 sec\n",
--					ADPT_ARG(pcmd->padapter), pcmd->cmdcode, cmd_process_time);
--				/* rtw_warn_on(1); */
--			} else if (pcmd->cmdcode == GEN_CMD_CODE(_Set_MLME_EVT)) {
--				DBG_871X(ADPT_FMT" cmd =%d, process_time =%lu > 1 sec\n",
--					ADPT_ARG(pcmd->padapter), pcmd->cmdcode, cmd_process_time);
--				/* rtw_warn_on(1); */
--			} else {
--				DBG_871X(ADPT_FMT" cmd =%d, process_time =%lu > 1 sec\n",
--					ADPT_ARG(pcmd->padapter), pcmd->cmdcode, cmd_process_time);
--				/* rtw_warn_on(1); */
--			}
-+			DBG_871X(ADPT_FMT "cmd= %d process_time= %lu > 1 sec\n",
-+				 ADPT_ARG(pcmd->padapter), pcmd->cmdcode,
-+					  cmd_process_time);
- 		}
- 
- 		/* call callback function for post-processed */
+ 	ret = clk_prepare_enable(st->mclk);
+ 	if (ret) {
 -- 
-2.7.4
+2.20.1
 
 _______________________________________________
 devel mailing list
