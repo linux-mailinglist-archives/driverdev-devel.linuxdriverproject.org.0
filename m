@@ -2,61 +2,91 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EC84ED93EA
-	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Oct 2019 16:31:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8A2C8D9466
+	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Oct 2019 16:55:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2E96F869E1;
-	Wed, 16 Oct 2019 14:31:18 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6C1C7869C0;
+	Wed, 16 Oct 2019 14:55:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id De0Ty9RCXN3b; Wed, 16 Oct 2019 14:31:17 +0000 (UTC)
+	with ESMTP id mpCW2Mn55WYH; Wed, 16 Oct 2019 14:54:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0A081869C0;
-	Wed, 16 Oct 2019 14:31:17 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6B683869C9;
+	Wed, 16 Oct 2019 14:54:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7214A1BF2BF
- for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 14:31:15 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E99FD1BF2BF
+ for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 14:54:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6EB4B2046B
- for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 14:31:15 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E648686969
+ for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 14:54:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sodxBc795Oye for <devel@linuxdriverproject.org>;
- Wed, 16 Oct 2019 14:31:14 +0000 (UTC)
+ with ESMTP id 7V0XHpBCwLK6 for <devel@linuxdriverproject.org>;
+ Wed, 16 Oct 2019 14:54:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id D3DEF203BF
- for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 14:31:14 +0000 (UTC)
-Received: from localhost (c-73-47-72-35.hsd1.nh.comcast.net [73.47.72.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 64E2E20650;
- Wed, 16 Oct 2019 14:31:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1571236274;
- bh=tK6PEB/vdqs3D5dK7xuBVC/lJ+4FHfCBB+s4yE3ld+I=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=TkTD/cTAgZVUpecgbl5rcJGUqwspFVHGHQ85pwloVeiHDEP+ZjGU4NWtpoBNyPXN0
- xLdLRKj53+aT8+MFBw9Ib+vH1bZxV9DoT0DOdUukov23iaba3oOGlRmtL/GH+iMU2i
- cyVp5wcaxcov0DtfVkAkGiRWEP4B0p1voXlWsMF4=
-Date: Wed, 16 Oct 2019 10:31:13 -0400
-From: Sasha Levin <sashal@kernel.org>
-To: Pali =?iso-8859-1?Q?Roh=E1r?= <pali.rohar@gmail.com>
-Subject: Re: [PATCH] staging: exfat: add exfat filesystem code to staging
-Message-ID: <20191016143113.GS31224@sasha-vm>
-References: <20190828160817.6250-1-gregkh@linuxfoundation.org>
- <20190829205631.uhz6jdboneej3j3c@pali>
- <184209.1567120696@turing-police> <20190829233506.GT5281@sasha-vm>
- <20190830075647.wvhrx4asnkrfkkwk@pali>
- <20191016140353.4hrncxa5wkx47oau@pali>
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7486184C9F
+ for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 14:54:56 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9GElKxc124421;
+ Wed, 16 Oct 2019 14:54:54 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=r44O34qzc0k+ZTr+o+pUijPkcyNeplDRN6mlyThNKVk=;
+ b=gW2jvxqheJFSkpJbARyXyrxAYhwam+IiUHrBI7xDdX3mqpAyXrVaL07mJLXBog92q36K
+ hcMKXJVeWZbeSshxVzb8ZGeWb16w595Q+aitLnyIdiOyIXkYHFxdprtnn86iWpDSaWkG
+ jvBafqQ+mfPqUDcg9BohYEmetrmmQqyWg+ftVj9NtZSpPH6Vov4BRq7tyfRgpsa2NUQo
+ vsoJvBleBKrttZq5IPjW1KRXPPkarOsgVFE9CFfihBIBFk9xSJIJf7xmkzs6kQa4ftm9
+ wWU6K4bwQE2YDYR9nGW0Wp+dtU2BhODq+wp3F2gNyzFW+0fZKfFCEqpE7k5SfsYfevsR +g== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by aserp2120.oracle.com with ESMTP id 2vk6sqqjs3-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 16 Oct 2019 14:54:54 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9GEmnaj194932;
+ Wed, 16 Oct 2019 14:54:53 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by aserp3030.oracle.com with ESMTP id 2vnf7thbn4-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 16 Oct 2019 14:54:53 +0000
+Received: from abhmp0008.oracle.com (abhmp0008.oracle.com [141.146.116.14])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x9GEsi97027860;
+ Wed, 16 Oct 2019 14:54:45 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Wed, 16 Oct 2019 14:54:40 +0000
+Date: Wed, 16 Oct 2019 17:54:32 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Chandra Annamaneni <chandra627@gmail.com>
+Subject: Re: [PATCH 2/4] staging: KPC2000: kpc2000_spi.c: Fix style issues
+ (alignment)
+Message-ID: <20191016145354.GB24678@kadam>
+References: <20191016074927.20056-1-chandra627@gmail.com>
+ <20191016074927.20056-2-chandra627@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20191016140353.4hrncxa5wkx47oau@pali>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20191016074927.20056-2-chandra627@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9412
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1908290000 definitions=main-1910160129
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9412
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
+ definitions=main-1910160129
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,46 +99,24 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Christoph Hellwig <hch@infradead.org>,
- Valdis =?utf-8?Q?Kl=C4=93tnieks?= <valdis.kletnieks@vt.edu>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Sasha Levin <alexander.levin@microsoft.com>, linux-fsdevel@vger.kernel.org
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="iso-8859-1"; Format="flowed"
+Cc: devel@driverdev.osuosl.org, gneukum1@gmail.com, michael.scheiderer@fau.de,
+ fabian.krueger@fau.de, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, simon@nikanor.nu
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Oct 16, 2019 at 04:03:53PM +0200, Pali Roh=E1r wrote:
->On Friday 30 August 2019 09:56:47 Pali Roh=E1r wrote:
->> On Thursday 29 August 2019 19:35:06 Sasha Levin wrote:
->> > With regards to missing specs/docs/whatever - our main concern with th=
-is
->> > release was that we want full interoperability, which is why the spec
->> > was made public as-is without modifications from what was used
->> > internally. There's no "secret sauce" that Microsoft is hiding here.
->>
->> Ok, if it was just drop of "current version" of documentation then it
->> makes sense.
->>
->> > How about we give this spec/code time to get soaked and reviewed for a
->> > bit, and if folks still feel (in a month or so?) that there are missing
->> > bits of information related to exfat, I'll be happy to go back and try
->> > to get them out as well.
->
->Hello Sasha!
->
->Now one month passed, so do you have some information when missing parts
->of documentation like TexFAT would be released to public?
+On Wed, Oct 16, 2019 at 12:49:25AM -0700, Chandra Annamaneni wrote:
+> Resolved: "CHECK: Alignment should match open parenthesis" from checkpatch
+> 
 
-Sure, I'll see if I can get an approval to open it up.
+I think you accidentally copied the wrong commit message.  This one
+and the next are the same.  This description doesn't match the patch.
 
-Can I assume you will be implementing TexFAT support once the spec is
-available?
+regards,
+dan carpenter
 
--- =
-
-Thanks,
-Sasha
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
