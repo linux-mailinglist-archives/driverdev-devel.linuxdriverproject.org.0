@@ -1,80 +1,96 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 015DDD92C3
-	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Oct 2019 15:44:18 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 973A0D9308
+	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Oct 2019 15:52:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9D73086990;
-	Wed, 16 Oct 2019 13:44:15 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 837F088302;
+	Wed, 16 Oct 2019 13:52:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lWnyzQy_wjlg; Wed, 16 Oct 2019 13:44:15 +0000 (UTC)
+	with ESMTP id Ka9gCf2NOvjj; Wed, 16 Oct 2019 13:52:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6C90C86975;
-	Wed, 16 Oct 2019 13:44:12 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id C2E77877B5;
+	Wed, 16 Oct 2019 13:52:34 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D313E1BF2AA
- for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 13:44:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C1EC81BF2AA
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 16 Oct 2019 13:52:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id CF3FF203C7
- for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 13:44:09 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id BD16720361
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 16 Oct 2019 13:52:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yUhhID2fZEjR for <devel@linuxdriverproject.org>;
- Wed, 16 Oct 2019 13:44:09 +0000 (UTC)
+ with ESMTP id BG8QFZ7nxO6x
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 16 Oct 2019 13:52:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f67.google.com (mail-wm1-f67.google.com
- [209.85.128.67])
- by silver.osuosl.org (Postfix) with ESMTPS id F316320425
- for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 13:44:08 +0000 (UTC)
-Received: by mail-wm1-f67.google.com with SMTP id y135so4725600wmc.1
- for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 06:44:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=references:user-agent:from:to:cc:subject:in-reply-to:date
- :message-id:mime-version;
- bh=Bafgp4jYGnLo/xet8UtFIBOpzKesPTarPqBx8mm1ghI=;
- b=PR02Gxdt3nLUj5CA3FhgPxpb2Pejo0uJv6oewhFi4gFnZfhfQLk1KDR6cRT5Bg1Y8G
- b0Z8H6bCwhLBqk5nevl2yYyz3hmUxRfSO0R3TlgGrw3CLY/hcpwBPOgP9lX9wfc3GgV2
- 9oF7evBFpNZl8hoN5ENCFZ7nFmZNRJ2bSfKgR3P4NqbOKqz7XTgNkaa1w0fOZqroxfQy
- FRpBjAUAO4h3dChpTRrnH6DYycnW8hLiOjGTgK5sHDL5oRtptBl6QspTY1ITso1CmtmR
- 58U2hXO6xsWqgSwp1aQt2TqWCNyDO2UX0pP6hPm7zLbV9oQp8M93Tq8VqCMREHy0toHv
- PRsQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:references:user-agent:from:to:cc:subject
- :in-reply-to:date:message-id:mime-version;
- bh=Bafgp4jYGnLo/xet8UtFIBOpzKesPTarPqBx8mm1ghI=;
- b=JOc9p/Uo27Gjk8mR6Wvaj/q33hapDiyE1Li9wK54YC0ipS2Npt3mNML+Nz2et/zKCl
- F+llPmbZprzJAm7Ksb3ZQTi56VdhttMx5EtAFvyTGRHZBVdYvK8MxMzHQ75hVpYMI1fG
- qjjuNO9rdCGt/Cr1Dt+ESHXQ8Tp7UxTSPN8rA5RTQC+Oig32r2CbiNKGwlGNMKZSrQbl
- tb99l+CyRqoguEbHObbZTZBGaxQWaxFk1nOkAewBRMoLrC+beC2GYWjuWrFv7LVBTEJF
- W25gu8PSIpKF3h8+Gl0RcxqTWU7exBCMewnBlJY2/Gy4EHTS4aApCW+Wb8/iBi5L3dCd
- 1iyw==
-X-Gm-Message-State: APjAAAXCQyLsqq1kJaHSkOwKFTlZBU9RLHw387eDLwi8VqMMPSzOOjFy
- DCrWygGz15h7ieIajyN700I=
-X-Google-Smtp-Source: APXvYqyB+z261XSi/xNHUTIkW7HCqAaCgNNk5jZlZTw9o+jzwNhtu889hivFUMlUicQi2ELvoiv9yA==
-X-Received: by 2002:a1c:c90f:: with SMTP id f15mr3723254wmb.127.1571233447045; 
- Wed, 16 Oct 2019 06:44:07 -0700 (PDT)
-Received: from arch-late (87-196-73-205.net.novis.pt. [87.196.73.205])
- by smtp.gmail.com with ESMTPSA id r13sm37949311wrn.0.2019.10.16.06.44.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Oct 2019 06:44:06 -0700 (PDT)
-References: <20191015135915.6530-1-hslester96@gmail.com>
- <20191016090628.7l5u4ytdqr2jlasg@pengutronix.de>
-User-agent: mu4e 1.2.0; emacs 27.0.50
-From: Rui Miguel Silva <rmfrfs@gmail.com>
-To: Marco Felsch <m.felsch@pengutronix.de>
-Subject: Re: [PATCH v2] media: imx7-mipi-csis: Add a check for
- devm_regulator_get
-In-reply-to: <20191016090628.7l5u4ytdqr2jlasg@pengutronix.de>
-Date: Wed, 16 Oct 2019 14:43:59 +0100
-Message-ID: <m336fsst40.fsf@gmail.com>
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by silver.osuosl.org (Postfix) with ESMTPS id 06E8120357
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 16 Oct 2019 13:52:31 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9GDnadY072397;
+ Wed, 16 Oct 2019 13:52:19 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=RT6WwgIAQ124uGpiC/zTSw0NchbyOlxzq3SDduZSmwQ=;
+ b=GpxV3Yir75uCm3qsU+Be3dsU9hcQLqlHxSI7TTBBgJvFi3qCwuLgRQqusnTNlQ0DwTc5
+ 3qreNb1hE3cR/gUZcmRBJkwDecgLG5+8XQgaK1/JTxuNokpgNbaLdDQHEkqr+/K9WNT+
+ 4MyrAXXwZVmp8i4htnPgz0Rh9z0EtfQY08NlCaSkKqW+j8W8bpWvlXI0mtA5rAOGFdLy
+ 26yZuj4J/kBzHdO4aXZAdqLgX+Vi/d4RAPD3nVtWqZixfKh9/mUFcgQ9K4N/YLoU99iS
+ QfArAsSoEWq+SlO6LTwpscHVdGNP0eRGavGAWaDNUtwFiu/pArHO7YFHCs+Fhwm8HTVF xg== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by userp2120.oracle.com with ESMTP id 2vk7frewux-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 16 Oct 2019 13:52:19 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9GDgrMt186456;
+ Wed, 16 Oct 2019 13:50:18 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by aserp3030.oracle.com with ESMTP id 2vnf7tdyed-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 16 Oct 2019 13:50:18 +0000
+Received: from abhmp0004.oracle.com (abhmp0004.oracle.com [141.146.116.10])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x9GDoDs6029673;
+ Wed, 16 Oct 2019 13:50:13 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Wed, 16 Oct 2019 06:50:13 -0700
+Date: Wed, 16 Oct 2019 16:50:02 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH 5/7] PCI/PM: Make power management op coding style
+ consistent
+Message-ID: <20191016135002.GA24678@kadam>
+References: <20191014230016.240912-1-helgaas@kernel.org>
+ <20191014230016.240912-6-helgaas@kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20191014230016.240912-6-helgaas@kernel.org>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9411
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=931
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1908290000 definitions=main-1910160121
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9411
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
+ definitions=main-1910160122
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,85 +103,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Philipp Zabel <p.zabel@pengutronix.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Chuhong Yuan <hslester96@gmail.com>,
- linux-kernel@vger.kernel.org, NXP Linux Team <linux-imx@nxp.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Steve Longerbeam <slongerbeam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: olaf@aepfle.de, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Stephen Hemminger <sthemmin@microsoft.com>,
+ "Rafael J . Wysocki" <rafael.j.wysocki@intel.com>, linux-pci@vger.kernel.org,
+ Haiyang Zhang <haiyangz@microsoft.com>, driverdev-devel@linuxdriverproject.org,
+ linux-hyperv@vger.kernel.org, jackm@mellanox.com,
+ Sasha Levin <Alexander.Levin@microsoft.com>, apw@canonical.com,
+ marcelo.cerri@canonical.com, vkuznets@redhat.com,
+ Michael Kelley <mikelley@microsoft.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ jasowang@redhat.com, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Marco,
-On Wed 16 Oct 2019 at 10:06, Marco Felsch wrote:
-> Hi Chuhong,
->
-> On 19-10-15 21:59, Chuhong Yuan wrote:
->> devm_regulator_get may return an error but mipi_csis_phy_init misses
->> a check for it.
->> This may lead to problems when regulator_set_voltage uses the unchecked
->> pointer.
->> This patch adds a check for devm_regulator_get to avoid potential risk.
->>
->> Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
->> ---
->> Changes in v2:
->>   - Add a check in mipi_csis_probe for the modified mipi_csis_phy_init.
->
-> Did you miss the check for -EPROBE_DEFER?
->
+On Mon, Oct 14, 2019 at 06:00:14PM -0500, Bjorn Helgaas wrote:
+> From: Bjorn Helgaas <bhelgaas@google.com>
+> 
+> Some of the power management ops use this style:
+> 
+>   struct device_driver *drv = dev->driver;
+>   if (drv && drv->pm && drv->pm->prepare(dev))
+>     drv->pm->prepare(dev);
+> 
+> while others use this:
+> 
+>   const struct dev_pm_ops *pm = dev->driver ? dev->driver->pm : NULL;
 
-I think nothing special is really needed to do in case of
-EPROBE_DEFER, or am I missing something?
-It just return to probe and probe returns also. I just talked
-about it because it was not cover in the original code.
+I like this patch a lot, especially the direct returns.  But it
+occurs to me that in the future this conditional would look better as
 
----
-Cheers,
-	Rui
+	const struct dev_pm_ops *pm = driver_to_pm(dev->driver);
 
->
-> Regards,
->   Marco
->
->>
->>  drivers/staging/media/imx/imx7-mipi-csis.c | 8 +++++++-
->>  1 file changed, 7 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/staging/media/imx/imx7-mipi-csis.c b/drivers/staging/media/imx/imx7-mipi-csis.c
->> index 73d8354e618c..e8a6acaa969e 100644
->> --- a/drivers/staging/media/imx/imx7-mipi-csis.c
->> +++ b/drivers/staging/media/imx/imx7-mipi-csis.c
->> @@ -350,6 +350,8 @@ static void mipi_csis_sw_reset(struct csi_state *state)
->>  static int mipi_csis_phy_init(struct csi_state *state)
->>  {
->>  	state->mipi_phy_regulator = devm_regulator_get(state->dev, "phy");
->> +	if (IS_ERR(state->mipi_phy_regulator))
->> +		return PTR_ERR(state->mipi_phy_regulator);
->>
->>  	return regulator_set_voltage(state->mipi_phy_regulator, 1000000,
->>  				     1000000);
->> @@ -966,7 +968,10 @@ static int mipi_csis_probe(struct platform_device *pdev)
->>  		return ret;
->>  	}
->>
->> -	mipi_csis_phy_init(state);
->> +	ret = mipi_csis_phy_init(state);
->> +	if (ret < 0)
->> +		return ret;
->> +
->>  	mipi_csis_phy_reset(state);
->>
->>  	mem_res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
->> --
->> 2.20.1
->>
->>
->>
+or something.
+
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
