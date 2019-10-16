@@ -1,59 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 898B2D8D1A
-	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Oct 2019 11:58:58 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 421B6D90AD
+	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Oct 2019 14:21:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EBA5F88185;
-	Wed, 16 Oct 2019 09:58:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E14EC23337;
+	Wed, 16 Oct 2019 12:21:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CwNsVdpZcSmt; Wed, 16 Oct 2019 09:58:56 +0000 (UTC)
+	with ESMTP id awRw-cw34jNx; Wed, 16 Oct 2019 12:21:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EA877879FF;
-	Wed, 16 Oct 2019 09:58:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7ECFA231C8;
+	Wed, 16 Oct 2019 12:21:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5F0C91BF681
- for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 09:58:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 886411BF3BC
+ for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 12:21:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 56A4585D55
- for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 09:58:54 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 84F53851CC
+ for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 12:21:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id W1x8QbeR6fsj for <devel@linuxdriverproject.org>;
- Wed, 16 Oct 2019 09:58:53 +0000 (UTC)
+ with ESMTP id Mo3-W-G8N-Xp for <devel@linuxdriverproject.org>;
+ Wed, 16 Oct 2019 12:21:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from perceval.ideasonboard.com (perceval.ideasonboard.com
- [213.167.242.64])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 4298C8501A
- for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 09:58:53 +0000 (UTC)
-Received: from pendragon.ideasonboard.com (81-175-216-236.bb.dnainternet.fi
- [81.175.216.236])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id AFF5E43E;
- Wed, 16 Oct 2019 11:58:50 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1571219930;
- bh=WcoU1rgkgfqck3Sixg1f5PWiV0VMExUEKXAuCwDKFlA=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=pVj4hmDAfQUZ32V/hQgFbhsQSVDs5bKAe3nKkT2Zpmjt7bkGF9yascohgHlwmSQdu
- DgBXeW9qdQYvf1u0dvdke62X8RBvclto0p9mYDQuWe2Duulvh4v1ljjGwtWswjcmcY
- sJl5LJGL59qhrS9V5JmNbPkd6Pjp/7TqymSToksY=
-Date: Wed, 16 Oct 2019 12:58:48 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: YueHaibing <yuehaibing@huawei.com>
-Subject: Re: [PATCH -next] staging: media: omap4iss: use
- devm_platform_ioremap_resource() to simplify code
-Message-ID: <20191016095848.GC5175@pendragon.ideasonboard.com>
-References: <20191016085136.22812-1-yuehaibing@huawei.com>
+Received: from lb3-smtp-cloud8.xs4all.net (lb3-smtp-cloud8.xs4all.net
+ [194.109.24.29])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E5C1585193
+ for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 12:21:33 +0000 (UTC)
+Received: from [192.168.2.10] ([46.9.232.237])
+ by smtp-cloud8.xs4all.net with ESMTPA
+ id KiIuiHSeVPduvKiIxiquC1; Wed, 16 Oct 2019 14:21:31 +0200
+Subject: Re: [PATCH] staging: meson: add space to fix check warning
+To: Jules Irenge <jbi.octave@gmail.com>, outreachy-kernel@googlegroups.com
+References: <20191015223433.18784-1-jbi.octave@gmail.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <f855f544-e546-eb3d-6346-242eb3435e35@xs4all.nl>
+Date: Wed, 16 Oct 2019 14:21:24 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191016085136.22812-1-yuehaibing@huawei.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20191015223433.18784-1-jbi.octave@gmail.com>
+Content-Language: en-US
+X-CMAE-Envelope: MS4wfHsIZxW8/J7+DHm0y77EjQKA9TDKkipmz/iz2ou5vQkcABiVz0wD2N9hiUJUO5Qx9SjJqf18AoTsRI0bf0iJGgCmY6wDtzHNVBgUWcNqB6OL1/cbZbOP
+ DcGNv3faNnW4Gs0IsWlHmeVwyzNThU2fpY4N6Tno5jU8R7clio/iJfTcV7LTojz1sYlUCTtj2MquZ805HHw5+UV2xeistkVER1JR/xWjYQi+KmQ6Xr7vElI5
+ 7xtYGyBG0DrC9jb4mcLXDjHZ24GlAZXssVO7m+nBFiWzh/9AGGUvgGV/Gs4htWUjbaYqXUXzN+Sz7R8jUywUtD/wBgQjptycUy0ZxzK/7dwbBLFTbsIenyvq
+ 7f+S9k/uBvl/Znh9Cy9icsI1A/bjqgDGdL4gN3xRlbcv1RKWDTFLxPbd+11BFJ8ddLjjz0T5JQM0rdUmirDgeXTyfunyBwIuze2Cf4VgMom1O4YGu8iW14uu
+ ftTg44AK0vfCQvdp
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,52 +63,48 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org, mchehab@kernel.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
+Cc: mjourdan@baylibre.com, devel@driverdev.osuosl.org,
+ gregkh@linuxfoundation.org, khilman@baylibre.com,
+ linux-amlogic@lists.infradead.org, mchehab@kernel.org,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello YueHaibing,
-
-Thank you for the patch.
-
-The same fix has already been submitted a week ago, and I have sent a
-pull request today that includes it. I'm afraid I thus can't take this
-patch. The good news is that the change was good :-)
-
-On Wed, Oct 16, 2019 at 04:51:36PM +0800, YueHaibing wrote:
-> Use devm_platform_ioremap_resource() to simplify the code a bit.
-> This is detected by coccinelle.
+On 10/16/19 12:34 AM, Jules Irenge wrote:
+> Fix "alignment should mactch open parenthesis" check.
+> Issue detected by checkpatch tool
 > 
-> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
 > ---
->  drivers/staging/media/omap4iss/iss.c | 6 +-----
->  1 file changed, 1 insertion(+), 5 deletions(-)
+>  drivers/staging/media/meson/vdec/codec_mpeg12.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/drivers/staging/media/omap4iss/iss.c b/drivers/staging/media/omap4iss/iss.c
-> index 1a966cb..6fb60b5 100644
-> --- a/drivers/staging/media/omap4iss/iss.c
-> +++ b/drivers/staging/media/omap4iss/iss.c
-> @@ -908,11 +908,7 @@ static int iss_map_mem_resource(struct platform_device *pdev,
->  				struct iss_device *iss,
->  				enum iss_mem_resources res)
->  {
-> -	struct resource *mem;
-> -
-> -	mem = platform_get_resource(pdev, IORESOURCE_MEM, res);
-> -
-> -	iss->regs[res] = devm_ioremap_resource(iss->dev, mem);
-> +	iss->regs[res] = devm_platform_ioremap_resource(pdev, res);
+> diff --git a/drivers/staging/media/meson/vdec/codec_mpeg12.c b/drivers/staging/media/meson/vdec/codec_mpeg12.c
+> index 48869cc3d973..21e93a13356c 100644
+> --- a/drivers/staging/media/meson/vdec/codec_mpeg12.c
+> +++ b/drivers/staging/media/meson/vdec/codec_mpeg12.c
+> @@ -81,7 +81,7 @@ static int codec_mpeg12_start(struct amvdec_session *sess)
+>  	}
 >  
->  	return PTR_ERR_OR_ZERO(iss->regs[res]);
->  }
+>  	ret = amvdec_set_canvases(sess, (u32[]){ AV_SCRATCH_0, 0 },
+> -					(u32[]){ 8, 0 });
 
--- 
+This is clearly intended to be aligned with the (u32[]) prefix for readability.
+
+So this is one checkpatch issue where I prefer to keep the original.
+
 Regards,
 
-Laurent Pinchart
+	Hans
+
+> +				  (u32[]){ 8, 0 });
+>  	if (ret)
+>  		goto free_workspace;
+>  
+> 
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
