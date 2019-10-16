@@ -1,49 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 672B2D8BEA
-	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Oct 2019 10:56:49 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id AE4198763B;
-	Wed, 16 Oct 2019 08:56:47 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Hxus3Gu7UxWD; Wed, 16 Oct 2019 08:56:47 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 55D3987722;
-	Wed, 16 Oct 2019 08:56:46 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id AA5351BF82B
- for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 08:56:44 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id C1CD2D8BFA
+	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Oct 2019 10:59:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A727D86CF0
- for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 08:56:44 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4020687E6E;
+	Wed, 16 Oct 2019 08:59:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id WyRalnVLglrk; Wed, 16 Oct 2019 08:59:44 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8207D878A0;
+	Wed, 16 Oct 2019 08:59:43 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3BC431BF277
+ for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 08:59:41 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 38CEA84494
+ for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 08:59:41 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Mr9kEGRnML1K for <devel@linuxdriverproject.org>;
- Wed, 16 Oct 2019 08:56:43 +0000 (UTC)
+ with ESMTP id 38qyuxTDscgf for <devel@linuxdriverproject.org>;
+ Wed, 16 Oct 2019 08:59:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga05-in.huawei.com [45.249.212.191])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 86A0186CDC
- for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 08:56:43 +0000 (UTC)
-Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 452EDFC2962ADAF91686;
- Wed, 16 Oct 2019 16:56:41 +0800 (CST)
-Received: from localhost (10.133.213.239) by DGGEMS413-HUB.china.huawei.com
- (10.3.19.213) with Microsoft SMTP Server id 14.3.439.0; Wed, 16 Oct 2019
- 16:56:30 +0800
+Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 5577C84415
+ for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 08:59:40 +0000 (UTC)
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 0D8C0BE2ADF6A9344CCD;
+ Wed, 16 Oct 2019 16:59:38 +0800 (CST)
+Received: from localhost (10.133.213.239) by DGGEMS414-HUB.china.huawei.com
+ (10.3.19.214) with Microsoft SMTP Server id 14.3.439.0; Wed, 16 Oct 2019
+ 16:59:30 +0800
 From: YueHaibing <yuehaibing@huawei.com>
-To: <mripard@kernel.org>, <paul.kocialkowski@bootlin.com>,
- <mchehab@kernel.org>, <gregkh@linuxfoundation.org>, <wens@csie.org>
-Subject: [PATCH -next] staging: media: cedrus: use
+To: <gregkh@linuxfoundation.org>, <matthias.bgg@gmail.com>,
+ <bhanusreemahesh@gmail.com>, <jbi.octave@gmail.com>, <swboyd@chromium.org>,
+ <yuehaibing@huawi.com>, <sergio.paracuellos@gmail.com>,
+ <puranjay12@gmail.com>, <arma2ff0@gmail.com>, <kimbrownkd@gmail.com>
+Subject: [PATCH -next] staging: mt7621-dma: use
  devm_platform_ioremap_resource() to simplify code
-Date: Wed, 16 Oct 2019 16:56:04 +0800
-Message-ID: <20191016085604.21076-1-yuehaibing@huawei.com>
+Date: Wed, 16 Oct 2019 16:58:33 +0800
+Message-ID: <20191016085833.26376-1-yuehaibing@huawei.com>
 X-Mailer: git-send-email 2.10.2.windows.1
 MIME-Version: 1.0
 X-Originating-IP: [10.133.213.239]
@@ -61,8 +63,8 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, YueHaibing <yuehaibing@huawei.com>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.ifradead.org,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
@@ -73,31 +75,31 @@ This is detected by coccinelle.
 
 Signed-off-by: YueHaibing <yuehaibing@huawei.com>
 ---
- drivers/staging/media/sunxi/cedrus/cedrus_hw.c | 4 +---
+ drivers/staging/mt7621-dma/mtk-hsdma.c | 4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
-index a942cd9..f19b87c 100644
---- a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
-+++ b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
-@@ -146,7 +146,6 @@ static irqreturn_t cedrus_irq(int irq, void *data)
- int cedrus_hw_probe(struct cedrus_dev *dev)
- {
- 	const struct cedrus_variant *variant;
+diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
+index d964642..4d541c4 100644
+--- a/drivers/staging/mt7621-dma/mtk-hsdma.c
++++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
+@@ -650,7 +650,6 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
+ 	struct mtk_hsdma_chan *chan;
+ 	struct mtk_hsdam_engine *hsdma;
+ 	struct dma_device *dd;
 -	struct resource *res;
- 	int irq_dec;
  	int ret;
+ 	int irq;
+ 	void __iomem *base;
+@@ -667,8 +666,7 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
+ 	if (!hsdma)
+ 		return -EINVAL;
  
-@@ -225,8 +224,7 @@ int cedrus_hw_probe(struct cedrus_dev *dev)
- 		goto err_sram;
- 	}
- 
--	res = platform_get_resource(dev->pdev, IORESOURCE_MEM, 0);
--	dev->base = devm_ioremap_resource(dev->dev, res);
-+	dev->base = devm_platform_ioremap_resource(dev->pdev, 0);
- 	if (IS_ERR(dev->base)) {
- 		dev_err(dev->dev, "Failed to map registers\n");
- 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	base = devm_ioremap_resource(&pdev->dev, res);
++	base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(base))
+ 		return PTR_ERR(base);
+ 	hsdma->base = base + HSDMA_BASE_OFFSET;
 -- 
 2.7.4
 
