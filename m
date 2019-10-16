@@ -1,68 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 44757D8C75
-	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Oct 2019 11:23:40 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id AD56BD8D00
+	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Oct 2019 11:54:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A9F8B8822A;
-	Wed, 16 Oct 2019 09:23:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3FF1E23115;
+	Wed, 16 Oct 2019 09:54:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KIMjjieB78u0; Wed, 16 Oct 2019 09:23:38 +0000 (UTC)
+	with ESMTP id Ftq2a9Ste4L9; Wed, 16 Oct 2019 09:54:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 035D18789D;
-	Wed, 16 Oct 2019 09:23:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id F0FDE203DE;
+	Wed, 16 Oct 2019 09:54:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 706241BF681
- for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 09:23:34 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id ED0551BF681
+ for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 09:54:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 698428789D
- for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 09:23:34 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id EAC3E203D0
+ for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 09:54:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id V3UuAY7P9WmM for <devel@linuxdriverproject.org>;
- Wed, 16 Oct 2019 09:23:32 +0000 (UTC)
-X-Greylist: delayed 00:16:53 by SQLgrey-1.7.6
-Received: from metis.ext.pengutronix.de (metis.ext.pengutronix.de
- [85.220.165.71])
- by hemlock.osuosl.org (Postfix) with ESMTPS id BFD9886C8B
- for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 09:23:32 +0000 (UTC)
-Received: from pty.hi.pengutronix.de ([2001:67c:670:100:1d::c5])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <mfe@pengutronix.de>)
- id 1iKfGO-0005Bp-Li; Wed, 16 Oct 2019 11:06:36 +0200
-Received: from mfe by pty.hi.pengutronix.de with local (Exim 4.89)
- (envelope-from <mfe@pengutronix.de>)
- id 1iKfGG-00081t-Jv; Wed, 16 Oct 2019 11:06:28 +0200
-Date: Wed, 16 Oct 2019 11:06:28 +0200
-From: Marco Felsch <m.felsch@pengutronix.de>
-To: Chuhong Yuan <hslester96@gmail.com>
-Subject: Re: [PATCH v2] media: imx7-mipi-csis: Add a check for
- devm_regulator_get
-Message-ID: <20191016090628.7l5u4ytdqr2jlasg@pengutronix.de>
-References: <20191015135915.6530-1-hslester96@gmail.com>
+ with ESMTP id pGBeoAjAe0-O for <devel@linuxdriverproject.org>;
+ Wed, 16 Oct 2019 09:53:59 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from perceval.ideasonboard.com (perceval.ideasonboard.com
+ [213.167.242.64])
+ by silver.osuosl.org (Postfix) with ESMTPS id E2BBA203CF
+ for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 09:53:58 +0000 (UTC)
+Received: from pendragon.ideasonboard.com (81-175-216-236.bb.dnainternet.fi
+ [81.175.216.236])
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id 8361443E;
+ Wed, 16 Oct 2019 11:53:55 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+ s=mail; t=1571219635;
+ bh=gjcnDXgTaHH8i0rQWIk9tmPvMqWjkUNsCfrg0iTzX/U=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=BjNRpsJlVWhEN2gh2yeS7XLz3wM+GhoW+gTtqVPxOvthF6gcJDbUAfd6owFXi7IBC
+ M+7+h31pY9s8i/nlfZWjSj92dvu1HLAOw+5QWPHnmHlrS1q1wmxsFBuIw33JDUOugs
+ o9CqGq9H5Oy1FnBCXb+66ZIBJfklmfTCCa8cK9ws=
+Date: Wed, 16 Oct 2019 12:53:52 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+Subject: Re: [PATCH] staging: media: make use of devm_platform_ioremap_resource
+Message-ID: <20191016095352.GA5175@pendragon.ideasonboard.com>
+References: <1570517752-30991-1-git-send-email-hariprasad.kelam@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20191015135915.6530-1-hslester96@gmail.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 11:05:27 up 151 days, 15:23, 101 users,  load average: 0.19, 0.20,
- 0.10
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c5
-X-SA-Exim-Mail-From: mfe@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: devel@driverdev.osuosl.org
+In-Reply-To: <1570517752-30991-1-git-send-email-hariprasad.kelam@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,78 +65,63 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Philipp Zabel <p.zabel@pengutronix.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org,
- NXP Linux Team <linux-imx@nxp.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Steve Longerbeam <slongerbeam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Chuhong,
+Hello Hariprasad,
 
-On 19-10-15 21:59, Chuhong Yuan wrote:
-> devm_regulator_get may return an error but mipi_csis_phy_init misses
-> a check for it.
-> This may lead to problems when regulator_set_voltage uses the unchecked
-> pointer.
-> This patch adds a check for devm_regulator_get to avoid potential risk.
+Thank you for the patch.
+
+As the patch only touches the omap4iss driver, you could have made the
+subject line a bit more specific, for instance "staging: media:
+omap4iss: Use devm_platform_ioremap_resource". No big deal though.
+
+On Tue, Oct 08, 2019 at 12:25:51PM +0530, hariprasadKelamhariprasad.kelam@gmail.com wrote:
+> From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
 > 
-> Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
+> fix below issue reported by coccicheck
+> drivers/staging//media/omap4iss/iss.c:915:1-15: WARNING: Use
+> devm_platform_ioremap_resource for iss -> regs [ res ]
+> 
+> Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+
+The change looks good to me.
+
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+
+and applied to my tree for v5.5.
+
 > ---
-> Changes in v2:
->   - Add a check in mipi_csis_probe for the modified mipi_csis_phy_init.
-
-Did you miss the check for -EPROBE_DEFER?
-
-Regards,
-  Marco
-
+>  drivers/staging/media/omap4iss/iss.c | 6 +-----
+>  1 file changed, 1 insertion(+), 5 deletions(-)
 > 
->  drivers/staging/media/imx/imx7-mipi-csis.c | 8 +++++++-
->  1 file changed, 7 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/media/imx/imx7-mipi-csis.c b/drivers/staging/media/imx/imx7-mipi-csis.c
-> index 73d8354e618c..e8a6acaa969e 100644
-> --- a/drivers/staging/media/imx/imx7-mipi-csis.c
-> +++ b/drivers/staging/media/imx/imx7-mipi-csis.c
-> @@ -350,6 +350,8 @@ static void mipi_csis_sw_reset(struct csi_state *state)
->  static int mipi_csis_phy_init(struct csi_state *state)
+> diff --git a/drivers/staging/media/omap4iss/iss.c b/drivers/staging/media/omap4iss/iss.c
+> index 1a966cb..6fb60b5 100644
+> --- a/drivers/staging/media/omap4iss/iss.c
+> +++ b/drivers/staging/media/omap4iss/iss.c
+> @@ -908,11 +908,7 @@ static int iss_map_mem_resource(struct platform_device *pdev,
+>  				struct iss_device *iss,
+>  				enum iss_mem_resources res)
 >  {
->  	state->mipi_phy_regulator = devm_regulator_get(state->dev, "phy");
-> +	if (IS_ERR(state->mipi_phy_regulator))
-> +		return PTR_ERR(state->mipi_phy_regulator);
+> -	struct resource *mem;
+> -
+> -	mem = platform_get_resource(pdev, IORESOURCE_MEM, res);
+> -
+> -	iss->regs[res] = devm_ioremap_resource(iss->dev, mem);
+> +	iss->regs[res] = devm_platform_ioremap_resource(pdev, res);
 >  
->  	return regulator_set_voltage(state->mipi_phy_regulator, 1000000,
->  				     1000000);
-> @@ -966,7 +968,10 @@ static int mipi_csis_probe(struct platform_device *pdev)
->  		return ret;
->  	}
->  
-> -	mipi_csis_phy_init(state);
-> +	ret = mipi_csis_phy_init(state);
-> +	if (ret < 0)
-> +		return ret;
-> +
->  	mipi_csis_phy_reset(state);
->  
->  	mem_res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -- 
-> 2.20.1
-> 
-> 
-> 
+>  	return PTR_ERR_OR_ZERO(iss->regs[res]);
+>  }
 
 -- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+Regards,
+
+Laurent Pinchart
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
