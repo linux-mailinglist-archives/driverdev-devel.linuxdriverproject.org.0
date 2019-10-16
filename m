@@ -1,80 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 04F74D8A39
-	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Oct 2019 09:49:58 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B5D70D8BB9
+	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Oct 2019 10:51:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1EB6087EE9;
-	Wed, 16 Oct 2019 07:49:56 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5309D868C4;
+	Wed, 16 Oct 2019 08:51:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lx+OSeKIu9Qm; Wed, 16 Oct 2019 07:49:55 +0000 (UTC)
+	with ESMTP id cbi6TB5NJVqe; Wed, 16 Oct 2019 08:51:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 45BEE878F0;
-	Wed, 16 Oct 2019 07:49:55 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 226BB85232;
+	Wed, 16 Oct 2019 08:51:04 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2BA7C1BF386
- for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 07:49:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D0BD41BF82B
+ for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 08:50:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 15A1E23086
- for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 07:49:53 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 8CBE8203DD
+ for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 08:50:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7QNmdIianYfj for <devel@linuxdriverproject.org>;
- Wed, 16 Oct 2019 07:49:52 +0000 (UTC)
+ with ESMTP id vqZpUhQuZ5DQ for <devel@linuxdriverproject.org>;
+ Wed, 16 Oct 2019 08:50:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
- [209.85.214.195])
- by silver.osuosl.org (Postfix) with ESMTPS id 690AC204A8
- for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 07:49:52 +0000 (UTC)
-Received: by mail-pl1-f195.google.com with SMTP id c3so10872897plo.2
- for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 00:49:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=EVOYj/Re7UhdcN0oIEXqQ3IhVWkoZflbo7uyXKIkqvQ=;
- b=kzag0KZSyiLX53Ov+HKOMerf8wmhmV7RvNdjh7Z3wK9k+y5eP2DRWD3eNeQfi59yIY
- 3GQ2+rGmEAw85UShHP/w8mXxD1zC6s7SJ53zNFQu4Zigrb3n7cVguPz7xshFYyQ9sgxc
- Lr6KtM/W5nANRAMJ6corxdhprzQqEjPFp5jkb6qhZKWetrMQF6g5B4o4eJLaihQlYSKC
- lS6/uMQpeF7fzM4GrBVqOzbZXAmGuMTvtAjTgyrz0SZDRWZ366AWj8rJ89hMZvoF+Wuu
- iIvaw8855QDIoFLQmN4Ke5yvHseFQOG8QBdNpuv0XxcHdprkIQE/u2iPVuh/Q2tD7mMF
- F4eA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=EVOYj/Re7UhdcN0oIEXqQ3IhVWkoZflbo7uyXKIkqvQ=;
- b=nK3enkBXGsCFwPbnidIVcnSIS9G88QyJBLTz2GQN5wO3X77vFCm8/BvEs5Vz3alBCU
- X9FjAAvudkkwzNoEUu8lZVPozvn3ign9NPm0LrJmQNcdpsXpq4te9huBx4CqmszKDhwO
- VgQwnJD0Gm5n22tdvMycV3Q6HaPPjiseJygq8CmaenS8sdeCIn4WKYE++cIfND8dwf00
- vRTTSevYE7rqFpi5laHqKtJEZm2+8TAIlNTxCR62JMFgdgDNZA+kMeGmeafhQO/nD8JM
- +1O97lzINJXtcAzyjmr7e10lpCAJr58CSrOotvFZGn9wal92pXY6/4esSSTQLohvalwl
- Yo2A==
-X-Gm-Message-State: APjAAAXhd2ZFQl5zbPIIKDr7JkXJDkT+O8lYtOnNL0RSfmhRgP/jHraa
- vzEYtlheAyUgTLm+F3T1+gg=
-X-Google-Smtp-Source: APXvYqzJb4X0OYeJAduEFOae7Gy3vFiHhuOFfj8yAKi2YmXFJUC6mnybVaqcdj1MkyzT5Ghsj0B0LA==
-X-Received: by 2002:a17:902:9a41:: with SMTP id
- x1mr38983505plv.331.1571212191868; 
- Wed, 16 Oct 2019 00:49:51 -0700 (PDT)
-Received: from localhost.localdomain ([45.52.215.209])
- by smtp.gmail.com with ESMTPSA id d1sm25185522pfc.98.2019.10.16.00.49.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Oct 2019 00:49:51 -0700 (PDT)
-From: Chandra Annamaneni <chandra627@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH 4/4] staging: KPC2000: kpc2000_spi.c: Fix style issues
- (Unnecessary parenthesis)
-Date: Wed, 16 Oct 2019 00:49:27 -0700
-Message-Id: <20191016074927.20056-4-chandra627@gmail.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20191016074927.20056-1-chandra627@gmail.com>
-References: <20191016074927.20056-1-chandra627@gmail.com>
+Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
+ by silver.osuosl.org (Postfix) with ESMTPS id C7685203CC
+ for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 08:50:34 +0000 (UTC)
+Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 654FF79F726037B6E36F;
+ Wed, 16 Oct 2019 16:50:29 +0800 (CST)
+Received: from localhost (10.133.213.239) by DGGEMS404-HUB.china.huawei.com
+ (10.3.19.204) with Microsoft SMTP Server id 14.3.439.0; Wed, 16 Oct 2019
+ 16:50:21 +0800
+From: YueHaibing <yuehaibing@huawei.com>
+To: <TheSven73@gmail.com>, <gregkh@linuxfoundation.org>
+Subject: [PATCH -next] staging: fieldbus: arcx-anybus:use
+ devm_platform_ioremap_resource() to simplify code
+Date: Wed, 16 Oct 2019 16:50:16 +0800
+Message-ID: <20191016085016.23676-1-yuehaibing@huawei.com>
+X-Mailer: git-send-email 2.10.2.windows.1
 MIME-Version: 1.0
+X-Originating-IP: [10.133.213.239]
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,39 +59,60 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gneukum1@gmail.com, chandra627@gmail.com,
- michael.scheiderer@fau.de, fabian.krueger@fau.de, linux-kernel@vger.kernel.org,
- simon@nikanor.nu, dan.carpenter@oracle.com
+Cc: devel@driverdev.osuosl.org, YueHaibing <yuehaibing@huawei.com>,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Resolved: CHECK: Unnecessary parentheses around table[i]
+Use devm_platform_ioremap_resource() to simplify the code a bit.
+This is detected by coccinelle.
 
-Signed-off-by: Chandra Annamaneni <chandra627@gmail.com>
+Signed-off-by: YueHaibing <yuehaibing@huawei.com>
 ---
-Previous versions of these patches were not split into different 
-patches, did not have different patch numbers and did not have the
-keyword staging.
- drivers/staging/kpc2000/kpc2000_spi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/fieldbus/anybuss/arcx-anybus.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/kpc2000/kpc2000_spi.c b/drivers/staging/kpc2000/kpc2000_spi.c
-index 24de8d63f504..8becf972af9c 100644
---- a/drivers/staging/kpc2000/kpc2000_spi.c
-+++ b/drivers/staging/kpc2000/kpc2000_spi.c
-@@ -476,7 +476,7 @@ kp_spi_probe(struct platform_device *pldev)
- 	/* register the slave boards */
- #define NEW_SPI_DEVICE_FROM_BOARD_INFO_TABLE(table) \
- 	for (i = 0 ; i < ARRAY_SIZE(table) ; i++) { \
--		spi_new_device(master, &(table[i])); \
-+		spi_new_device(master, &table[i]); \
- 	}
+diff --git a/drivers/staging/fieldbus/anybuss/arcx-anybus.c b/drivers/staging/fieldbus/anybuss/arcx-anybus.c
+index 2ecffa4..5b8d0ba 100644
+--- a/drivers/staging/fieldbus/anybuss/arcx-anybus.c
++++ b/drivers/staging/fieldbus/anybuss/arcx-anybus.c
+@@ -127,12 +127,10 @@ static const struct regmap_config arcx_regmap_cfg = {
+ static struct regmap *create_parallel_regmap(struct platform_device *pdev,
+ 					     int idx)
+ {
+-	struct resource *res;
+ 	void __iomem *base;
+ 	struct device *dev = &pdev->dev;
  
- 	switch ((drvdata->card_id & 0xFFFF0000) >> 16) {
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, idx + 1);
+-	base = devm_ioremap_resource(dev, res);
++	base = devm_platform_ioremap_resource(pdev, idx + 1);
+ 	if (IS_ERR(base))
+ 		return ERR_CAST(base);
+ 	return devm_regmap_init_mmio(dev, base, &arcx_regmap_cfg);
+@@ -230,7 +228,6 @@ static int controller_probe(struct platform_device *pdev)
+ 	struct regulator_config config = { };
+ 	struct regulator_dev *regulator;
+ 	int err, id;
+-	struct resource *res;
+ 	struct anybuss_host *host;
+ 	u8 status1, cap;
+ 
+@@ -244,8 +241,7 @@ static int controller_probe(struct platform_device *pdev)
+ 		return PTR_ERR(cd->reset_gpiod);
+ 
+ 	/* CPLD control memory, sits at index 0 */
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	cd->cpld_base = devm_ioremap_resource(dev, res);
++	cd->cpld_base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(cd->cpld_base)) {
+ 		dev_err(dev,
+ 			"failed to map cpld base address\n");
 -- 
-2.20.1
+2.7.4
+
 
 _______________________________________________
 devel mailing list
