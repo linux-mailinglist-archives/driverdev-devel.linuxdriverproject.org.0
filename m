@@ -1,66 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A6804D97E3
-	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Oct 2019 18:51:08 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 95933883D8;
-	Wed, 16 Oct 2019 16:51:06 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id k5eH2Kc2pvrw; Wed, 16 Oct 2019 16:51:06 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0BA06883C0;
-	Wed, 16 Oct 2019 16:51:06 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1A3481BF30E
- for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 16:51:04 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id A3BD8D98C7
+	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Oct 2019 19:58:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 13D28877DF
- for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 16:51:04 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3B09A878F1;
+	Wed, 16 Oct 2019 17:58:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id L3-RtURS70+3; Wed, 16 Oct 2019 17:58:15 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 41CD287895;
+	Wed, 16 Oct 2019 17:58:15 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 57DBE1BF2BE
+ for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 17:58:10 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 52A26204C2
+ for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 17:58:10 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id htots99Tcvzl for <devel@linuxdriverproject.org>;
- Wed, 16 Oct 2019 16:51:03 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id DBF14877D1
- for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 16:50:08 +0000 (UTC)
-Received: from localhost (li1825-44.members.linode.com [172.104.248.44])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 131FF2168B;
- Wed, 16 Oct 2019 16:50:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1571244608;
- bh=sqgHreqTi1i3Tx4fYKNWwFE1NCar570i6YUyioSamHs=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=y3KxXTSgx0HNgc35dznykNn4WPs1cwbSSyV+Q1ROXqEcuEFScltR+kjzdA2h+9Axi
- cqWgql0vuRPvZUZ6PEIJ0aoWK9dsazJYz5R58UeQSGUJDGnCXZMvwzb6qIn1mu+jVc
- NRC+CMy1wZpIRpf2cY0QchC8+5TcfEdz7W4AF528=
-Date: Wed, 16 Oct 2019 09:50:01 -0700
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Pali =?iso-8859-1?Q?Roh=E1r?= <pali.rohar@gmail.com>
-Subject: Re: [PATCH] staging: exfat: add exfat filesystem code to staging
-Message-ID: <20191016165001.GA639209@kroah.com>
-References: <20190828160817.6250-1-gregkh@linuxfoundation.org>
- <20190829205631.uhz6jdboneej3j3c@pali>
- <184209.1567120696@turing-police> <20190829233506.GT5281@sasha-vm>
- <20190830075647.wvhrx4asnkrfkkwk@pali>
- <20191016140353.4hrncxa5wkx47oau@pali>
- <20191016143113.GS31224@sasha-vm>
- <20191016160349.pwghlg566hh2o7id@pali>
- <20191016162211.GA505532@kroah.com>
- <20191016163231.dgvurzdqcifunw35@pali>
+ with ESMTP id oQrFGUxhf54M for <devel@linuxdriverproject.org>;
+ Wed, 16 Oct 2019 17:58:09 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wm1-f67.google.com (mail-wm1-f67.google.com
+ [209.85.128.67])
+ by silver.osuosl.org (Postfix) with ESMTPS id 91552204D9
+ for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 17:58:09 +0000 (UTC)
+Received: by mail-wm1-f67.google.com with SMTP id 3so3747214wmi.3
+ for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 10:58:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:date:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=nFz4T0vFX9I/roldji38Wknwl/JNJ6KhqR7kFUGrr+8=;
+ b=MG8kkB/maSXdkwrwZNVgc+Xt3j8g2HWexcftmSC0vzdBO837oFQKzV2Hlniy6PE0yH
+ WI40Q0LAOwT9M9yDnx6e0NCvpSy4g4fh8iUCaLzH/ciRPfS9YHMPj6bgX234D+yhGdse
+ ZYMPpMe5M3HTAg6sMw0/Jw/gVWMTJCypdNTDrqjnLixFJIQT3uvbrEfcWCHPxuFfMcwi
+ kRwt4w2lZLppVnDv6jcrUjfbaaRIZFEqlJj/qA0AazdcIEf8bOsvGhUCdpB2RRrexIMC
+ PlRL465867YiyQtZ8NfvBTsriVq6F11OzW1hvwIB/JKliHP5V8RHHXIpJjyolospeWtQ
+ r9Zg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:date:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=nFz4T0vFX9I/roldji38Wknwl/JNJ6KhqR7kFUGrr+8=;
+ b=Ui99AdAv45ZMpJSnO6Nu6iGKY1wtOSrV9NyclJyZRWs8qJgFCVuWZ3Ze9ZcgCUAKz1
+ jCA11tQYLbjVgaAe8a5J0mNJuCrkkc4QOWW65Hs591jEiK/8IhoLWj9p3dAmy+XjDm6B
+ xUwdC3WtMkB1LXY0k46OCPLpMMDA2o1hrT9y1+vaHrVHkq4lf2ucRg1LZ6Stzf1FG6fY
+ pbYrzUSVa4JsU0FVnvPt424ov9ggR1P2yMAIKgi402tsYd+6YZLaIPpSUH9WjaRKpgpH
+ yv9uEfqdnTWtbbkCR4rKGTuVHVdrwWe/F9zJYG6u/zdTyakswWRvJCqSfwkQXF6KQFIo
+ If/A==
+X-Gm-Message-State: APjAAAX4WYzrTAg3DJHKp8D392gU01YN6iu/9YpTLMBMi+D7RM8qy+Ul
+ 6fx9vFlZ7uqnbq4XYD4zcA==
+X-Google-Smtp-Source: APXvYqzhSei8ojosNKz5bE95s1ODgdjfle9rj/9SqQgQEUrQ7Cy8VxXIGgT84Tsi1e8CY5tQ6SuylQ==
+X-Received: by 2002:a1c:e455:: with SMTP id b82mr4444588wmh.41.1571248687904; 
+ Wed, 16 Oct 2019 10:58:07 -0700 (PDT)
+Received: from ninjabhubz.org (host-2-102-13-201.as13285.net. [2.102.13.201])
+ by smtp.gmail.com with ESMTPSA id
+ 143sm4430952wmb.33.2019.10.16.10.58.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 16 Oct 2019 10:58:06 -0700 (PDT)
+From: Jules Irenge <jbi.octave@gmail.com>
+X-Google-Original-From: Jules Irenge <maxx@ninjahub.org>
+Date: Wed, 16 Oct 2019 18:57:42 +0100 (BST)
+To: Julia Lawall <julia.lawall@lip6.fr>
+Subject: Re: [Outreachy kernel] [PATCH] staging: vc04_services: fix line over
+ 80 characters checks warning
+In-Reply-To: <alpine.DEB.2.21.1910160713140.2732@hadrien>
+Message-ID: <alpine.LFD.2.21.1910161855320.8071@ninjahub.org>
+References: <20191015225716.10563-1-jbi.octave@gmail.com>
+ <alpine.DEB.2.21.1910160713140.2732@hadrien>
+User-Agent: Alpine 2.21 (LFD 202 2017-01-01)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191016163231.dgvurzdqcifunw35@pali>
-User-Agent: Mutt/1.12.2 (2019-09-21)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,64 +89,35 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, devel@driverdev.osuosl.org,
- Valdis =?utf-8?Q?Kl=C4=93tnieks?= <valdis.kletnieks@vt.edu>,
- Christoph Hellwig <hch@infradead.org>, linux-kernel@vger.kernel.org,
- Sasha Levin <alexander.levin@microsoft.com>, linux-fsdevel@vger.kernel.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: devel@driverdev.osuosl.org, Jules Irenge <jbi.octave@gmail.com>,
+ eric@anholt.net, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+ outreachy-kernel@googlegroups.com, bcm-kernel-feedback-list@broadcom.com,
+ wahrenst@gmx.net, linux-arm-kernel@lists.infradead.org,
+ linux-rpi-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Oct 16, 2019 at 06:32:31PM +0200, Pali Roh=E1r wrote:
-> On Wednesday 16 October 2019 09:22:11 Greg Kroah-Hartman wrote:
-> > On Wed, Oct 16, 2019 at 06:03:49PM +0200, Pali Roh=E1r wrote:
-> > > > Can I assume you will be implementing TexFAT support once the spec =
-is
-> > > > available?
-> > > =
 
-> > > I cannot promise that I would implement something which I do not know
-> > > how is working... It depends on how complicated TexFAT is and also how
-> > > future exfat support in kernel would look like.
-> > > =
 
-> > > But I'm interesting in implementing it.
-> > =
+On Wed, 16 Oct 2019, Julia Lawall wrote:
 
-> > What devices need TexFAT?  I thought it the old devices that used it are
-> > long obsolete and gone.  How is this feature going to be tested/used?
-> =
+> >  #ifndef VCHI_BULK_GRANULARITY
+> >  #   if __VCCOREVER__ >= 0x04000000
+> > -#       define VCHI_BULK_GRANULARITY 32 // Allows for the need to do cache cleans
+> > +#	define VCHI_BULK_GRANULARITY 32 // Allows for the need of cache cleans
+> >  #   else
+> >  #       define VCHI_BULK_GRANULARITY 16
+> >  #   endif
+> 
+> The branches should be indented to the same degree.
+> 
+> julia
+> 
+> -- 
 
-> Hi Greg! Per 3.1.16 of exFAT specification [1], TexFAT extension is the
-> only way how to use more FAT tables, like in FAT32 (where you normally
-> have two FATs). Secondary FAT table can be used e.g. for redundancy or
-> data recovery. For FAT32 volumes, e.g. fsck.fat uses secondary FAT table
-> when first one is corrupted.
-> =
-
-> Usage of just one FAT table in exFAT is just step backward from FAT32 as
-> secondary FAT table is sometimes the only way how to recover broken FAT
-> fs. So I do not think that exFAT is for old devices, but rather
-> non-exFAT is for old devices. Modern filesystems have journal or other
-> technique to do (fast|some) recovery, exFAT has nothing.
-> =
-
-> And how is this feature going to be used? That depends on specification.
-> =
-
-> [1] - https://docs.microsoft.com/en-us/windows/win32/fileio/exfat-specifi=
-cation#3116-numberoffats-field
-
-Ok, but given that the "only" os that can read/write the TexFAT
-extension is WinCE, and that os is obsolete these days, it might be hard
-to find images to test/validate against :)
-
-But hey, I'll take the patch if you write it, no objection!
-
-thanks,
-
-greg k-h
+Thanks, I have just  updated. 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
