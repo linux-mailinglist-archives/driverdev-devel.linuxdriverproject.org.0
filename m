@@ -1,80 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B6415D8A02
-	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Oct 2019 09:42:23 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F158D8A34
+	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Oct 2019 09:49:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E4C2F86D90;
-	Wed, 16 Oct 2019 07:42:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 83A5C230BD;
+	Wed, 16 Oct 2019 07:49:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BqW-sNYbtoeW; Wed, 16 Oct 2019 07:42:20 +0000 (UTC)
+	with ESMTP id eomGh4ul22Cl; Wed, 16 Oct 2019 07:49:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2C752865B0;
-	Wed, 16 Oct 2019 07:42:19 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 48099204A4;
+	Wed, 16 Oct 2019 07:49:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 05FB91BF386
- for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 07:42:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 08C4B1BF386
+ for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 07:49:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id F11022043C
- for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 07:42:17 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 0544B204A4
+ for <devel@linuxdriverproject.org>; Wed, 16 Oct 2019 07:49:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BVe6y4taVycB for <devel@linuxdriverproject.org>;
- Wed, 16 Oct 2019 07:42:16 +0000 (UTC)
+ with ESMTP id FZyN5e5zlUpm for <devel@linuxdriverproject.org>;
+ Wed, 16 Oct 2019 07:49:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
- [209.85.215.193])
- by silver.osuosl.org (Postfix) with ESMTPS id E73FA2040A
- for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 07:42:16 +0000 (UTC)
-Received: by mail-pg1-f193.google.com with SMTP id f14so8654970pgi.9
- for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 00:42:16 -0700 (PDT)
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7E17220454
+ for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 07:49:46 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id 205so14199673pfw.2
+ for <devel@driverdev.osuosl.org>; Wed, 16 Oct 2019 00:49:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=THg5AIRpzEMlPPt8spygiynKMTygfSswC7awShDdMxU=;
- b=LobMO/1OtmSkqdhcKBbbKNeFpMIP4hoHsRV4p1VCHldVwZ2SRicw5VVUb6sNSwKbnq
- VByBnG30mUKPa/sgQ5CddllExySAv+bvMVNglTtD02F6r/aDtsrzrTAgwHu3zs7ZLp8f
- Ox3OUs2ZqdmEiLFIbVVhkh42diPZLCX/I+lrtQrwBYWJhpU3cQBLQYIv9Cz3rptDcT5m
- fYV0Fsei2nCyxuIJ9V8Vlq6W5+zaQ0Y33nz2ONgz3gKrXj61WzD2nGF8Po5T2ka0L5Nm
- Qq13EyOESKDZy6N8pv7QrCTbJTovR+g3W19r+3CyBaK8dvnlZiGju/7rWMIqhQDXchV1
- ulew==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=QxVCTrKNjWhjlkyA4a4PjlbJLD0+omh4Y9cUtwpdEOA=;
+ b=OMn/uozybDyJ9qIacgsKR5i2xsl4C51c37saVXfjn6GamJRMlpOt5MAVHteJ1qGRro
+ dGXg6ajSh5gn8ytw2CfWKPLyjAaHXxeeHUmr69I1/WUcU/Mku5vCUpDSar4dvWjH4lWR
+ 8W+9/5zn8OQfsHaf9u/WlpOYHIr4dmcbjXL2cU8SxnA1NG8RlLt5gjP4pHUt1hdQ9UtC
+ tg9b2qqCGM+ispJa/kUI9KR3OxMNniw1JasulRBP61OzWup2N8r8vGplEnQ4i93njAxE
+ ITcJH252Lg48dZ7YGSbF6VV5nsUQ5i01X7iF2FhCs7b/2bcZvVWdQajXpkFWXHzSMEYH
+ mNjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=THg5AIRpzEMlPPt8spygiynKMTygfSswC7awShDdMxU=;
- b=OgHOsSrromvC6B9Yv9fVsvfJ90U3xWBzF2IeMFxxQMZx7sTsFBVV+liOt0TRj/rfb2
- 6cv8uBjUp5vDWOHqPQEHluBJ848jSvbYtXRSpqg06gkwigA0ptnyVc46JwERHtsmeTmV
- Mf12S+zjkR0ZXQ9zDD1mBbHrxJEvlHJNlElwymZ5kuSzhgOInfKyfxIER+D+hm7VHNx9
- 98YUwPQklZ1SjRK/87yjtOPUUTtjpbhdhFPRBTTE/i3Y89k8v9iVtW+44pXqWdcsuBoD
- MWBNzW5I3cQXrjxIAY3hGsUxWwdKOC3khlEpVV9sThr9Qj9kqsmqPRSHoUZme92rlmd5
- J6NA==
-X-Gm-Message-State: APjAAAVUJlDxh6AuZu19yK8SLu85keNIfpGpb8JJglnP0Xt4dId+RKgu
- xwet/dp6I3KYELW0fY09Pao=
-X-Google-Smtp-Source: APXvYqzIecCR/3jU0SEKcTA9DhO74LXXfPo/HAnU2KYPgcgmmYd6QrNsRetxpjZrJLuPuTrJuFZDMQ==
-X-Received: by 2002:a63:f453:: with SMTP id p19mr41882831pgk.433.1571211736414; 
- Wed, 16 Oct 2019 00:42:16 -0700 (PDT)
-Received: from whale ([45.52.215.209])
- by smtp.gmail.com with ESMTPSA id ce16sm2148561pjb.29.2019.10.16.00.42.15
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=QxVCTrKNjWhjlkyA4a4PjlbJLD0+omh4Y9cUtwpdEOA=;
+ b=A4cgGq+P/W7gjJkAUkBqItupZ3lxTJiyprBlBnOi6LG+kjFg+ZnPADxXEX4VTdt/TC
+ h56EwZ81IQFE/wCYXQeAuOzEUhDJm2u19aQCeJRzUeuhMsyigXGpZY1UdcyRYdrnS5qj
+ bt1W7ByZooE2XCDgqiJp0Rswei8WwuvHIiKVGAhc9hZRN6y2qblevGn+9dYzM7axceNi
+ v0YDnuzy/VkwY94DT8fz9kfZ59obmE+yTlGYXoVRGXLo9/R1VbervgPrA39m09eVzjKS
+ OYeGRGaveIiZvewvVOnCPmBoxtq+eLuGJg8EbE1/zzHrAs8+wac8xwzJlJ3gbMA5rWot
+ BoOw==
+X-Gm-Message-State: APjAAAVc6yqJ9Hzcxg4eSgbgHk2p/wYHMBHgOpMmiW2n3keQKEzE08MF
+ 6mkiKWAU/3hVAhRTyIjelBk=
+X-Google-Smtp-Source: APXvYqyBIWi1fibA5NNpBIjOsULSY9vDiRqs7yaMjVWMqDHldO6QZCr82BIUx4zsyleI3ZT7gX8YFA==
+X-Received: by 2002:a62:e312:: with SMTP id g18mr136443pfh.250.1571212186003; 
+ Wed, 16 Oct 2019 00:49:46 -0700 (PDT)
+Received: from localhost.localdomain ([45.52.215.209])
+ by smtp.gmail.com with ESMTPSA id d1sm25185522pfc.98.2019.10.16.00.49.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Oct 2019 00:42:15 -0700 (PDT)
-Date: Wed, 16 Oct 2019 00:42:13 -0700
-From: "<Chandra Annamaneni>" <chandra627@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH 1/5] KPC2000: kpc2000_spi.c: Fix style issues (line length)
-Message-ID: <20191016074213.GB19148@whale>
-References: <20191011055155.4985-1-chandra627@gmail.com>
- <20191011063219.GA986093@kroah.com>
+ Wed, 16 Oct 2019 00:49:45 -0700 (PDT)
+From: Chandra Annamaneni <chandra627@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH 1/4] staging: KPC2000: kpc2000_spi.c: Fix style issues
+ (missing blank line)
+Date: Wed, 16 Oct 2019 00:49:24 -0700
+Message-Id: <20191016074927.20056-1-chandra627@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191011063219.GA986093@kroah.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,63 +84,38 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gneukum1@gmail.com, michael.scheiderer@fau.de,
- fabian.krueger@fau.de, linux-kernel@vger.kernel.org, simon@nikanor.nu,
- dan.carpenter@oracle.com
+Cc: devel@driverdev.osuosl.org, gneukum1@gmail.com, chandra627@gmail.com,
+ michael.scheiderer@fau.de, fabian.krueger@fau.de, linux-kernel@vger.kernel.org,
+ simon@nikanor.nu, dan.carpenter@oracle.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Oct 11, 2019 at 08:32:19AM +0200, Greg KH wrote:
-> On Thu, Oct 10, 2019 at 10:51:51PM -0700, Chandra Annamaneni wrote:
-> > Resoved: "WARNING: line over 80 characters" from checkpatch.pl
-> 
-> Please put "staging:" in your subject line, makes it easier to sort and
-> handle.  It should look something like:
-> 	staging: kpc2000_spi: fix line length issues
-> 
-> Looks a lot cleaner, right?
-> 
-> > 
-> > Signed-off-by: Chandra Annamaneni <chandra627@gmail.com>
-> > ---
-> >  drivers/staging/kpc2000/kpc2000_spi.c | 20 ++++++++++----------
-> >  1 file changed, 10 insertions(+), 10 deletions(-)
-> > 
-> > diff --git a/drivers/staging/kpc2000/kpc2000_spi.c b/drivers/staging/kpc2000/kpc2000_spi.c
-> > index 3be33c450cab..81d79b116ce0 100644
-> > --- a/drivers/staging/kpc2000/kpc2000_spi.c
-> > +++ b/drivers/staging/kpc2000/kpc2000_spi.c
-> > @@ -30,19 +30,19 @@
-> >  #include "kpc.h"
-> >  
-> >  static struct mtd_partition p2kr0_spi0_parts[] = {
-> > -	{ .name = "SLOT_0",	.size = 7798784,		.offset = 0,                },
-> > -	{ .name = "SLOT_1",	.size = 7798784,		.offset = MTDPART_OFS_NXTBLK},
-> > -	{ .name = "SLOT_2",	.size = 7798784,		.offset = MTDPART_OFS_NXTBLK},
-> > -	{ .name = "SLOT_3",	.size = 7798784,		.offset = MTDPART_OFS_NXTBLK},
-> > -	{ .name = "CS0_EXTRA",	.size = MTDPART_SIZ_FULL,	.offset = MTDPART_OFS_NXTBLK},
-> > +	{ .name = "SLOT_0",  .size = 7798784,  .offset = 0,                },
-> > +	{ .name = "SLOT_1",  .size = 7798784,  .offset = MTDPART_OFS_NXTBLK},
-> > +	{ .name = "SLOT_2",  .size = 7798784,  .offset = MTDPART_OFS_NXTBLK},
-> > +	{ .name = "SLOT_3",  .size = 7798784,  .offset = MTDPART_OFS_NXTBLK},
-> > +	{ .name = "CS0_EXTRA",  .size = MTDPART_SIZ_FULL,  .offset = MTDPART_OFS_NXTBLK},
-> 
-> Why did you pick 2 spaces here as a random choice of padding?  That's
-> very odd, please don't.
-> 
-> Either leave this alone (as it lines everything up nicely), or only use
-> one space.  I would suggest just leaving it alone.
-> 
-> thanks,
-> 
-> greg k-h
+Resolved: "CHECK: Please use a blank line after.." from checkpatch.pl
 
-I am going to leave it as is at your and Dan C's suggestion. 
+Signed-off-by: Chandra Annamaneni <chandra627@gmail.com>
+---
+Previous versions of these patches were not split into different 
+patches, did not have different patch numbers and did not have the
+keyword staging.
+ drivers/staging/kpc2000/kpc2000_spi.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Thanks!
-Chandra
+diff --git a/drivers/staging/kpc2000/kpc2000_spi.c b/drivers/staging/kpc2000/kpc2000_spi.c
+index 6ba94b0131da..5712a88c8788 100644
+--- a/drivers/staging/kpc2000/kpc2000_spi.c
++++ b/drivers/staging/kpc2000/kpc2000_spi.c
+@@ -50,6 +50,7 @@ static struct flash_platform_data p2kr0_spi0_pdata = {
+ 	.nr_parts =	ARRAY_SIZE(p2kr0_spi0_parts),
+ 	.parts =	p2kr0_spi0_parts,
+ };
++
+ static struct flash_platform_data p2kr0_spi1_pdata = {
+ 	.name =		"SPI1",
+ 	.nr_parts =	ARRAY_SIZE(p2kr0_spi1_parts),
+-- 
+2.20.1
 
 _______________________________________________
 devel mailing list
