@@ -2,69 +2,88 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6526FDA6F8
-	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Oct 2019 10:10:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 41A79DA826
+	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Oct 2019 11:19:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DBDFC86CDF;
-	Thu, 17 Oct 2019 08:10:39 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1C97285C5E;
+	Thu, 17 Oct 2019 09:19:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id COTd1xc93V5q; Thu, 17 Oct 2019 08:10:39 +0000 (UTC)
+	with ESMTP id 1nIUwMDc3Fpe; Thu, 17 Oct 2019 09:19:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7196A86CDB;
-	Thu, 17 Oct 2019 08:10:38 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E09B284EEB;
+	Thu, 17 Oct 2019 09:19:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 32EEE1BF362
- for <devel@linuxdriverproject.org>; Thu, 17 Oct 2019 08:10:36 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 812771BF2CF
+ for <devel@linuxdriverproject.org>; Thu, 17 Oct 2019 09:19:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 1E354885D3
- for <devel@linuxdriverproject.org>; Thu, 17 Oct 2019 08:10:36 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7A6DD87C51
+ for <devel@linuxdriverproject.org>; Thu, 17 Oct 2019 09:19:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZY4sd3Pu-1fX for <devel@linuxdriverproject.org>;
- Thu, 17 Oct 2019 08:10:35 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from metis.ext.pengutronix.de (metis.ext.pengutronix.de
- [85.220.165.71])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C423D885C8
- for <devel@driverdev.osuosl.org>; Thu, 17 Oct 2019 08:10:34 +0000 (UTC)
-Received: from pty.hi.pengutronix.de ([2001:67c:670:100:1d::c5])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <mfe@pengutronix.de>)
- id 1iL0rg-0005Vf-3w; Thu, 17 Oct 2019 10:10:32 +0200
-Received: from mfe by pty.hi.pengutronix.de with local (Exim 4.89)
- (envelope-from <mfe@pengutronix.de>)
- id 1iL0rd-0005p9-Jl; Thu, 17 Oct 2019 10:10:29 +0200
-Date: Thu, 17 Oct 2019 10:10:29 +0200
-From: Marco Felsch <m.felsch@pengutronix.de>
-To: Rui Miguel Silva <rmfrfs@gmail.com>
-Subject: Re: [PATCH v2] media: imx7-mipi-csis: Add a check for
- devm_regulator_get
-Message-ID: <20191017081029.q2czy7y5zlbj4ogr@pengutronix.de>
-References: <20191015135915.6530-1-hslester96@gmail.com>
- <20191016090628.7l5u4ytdqr2jlasg@pengutronix.de>
- <m336fsst40.fsf@gmail.com>
+ with ESMTP id BeYOEzimldlZ for <devel@linuxdriverproject.org>;
+ Thu, 17 Oct 2019 09:19:35 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7CA2585C57
+ for <devel@driverdev.osuosl.org>; Thu, 17 Oct 2019 09:19:35 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9H9JPHW067550;
+ Thu, 17 Oct 2019 09:19:33 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : mime-version : content-type; s=corp-2019-08-05;
+ bh=HqGJrXdDr+L2vzzi8nOpmT45hooIBj7pFx6NpAJ8pDE=;
+ b=BTMIIGNB03tk7WGXihAsFPeRnJ76O2/dqzqyHVYfNWH1N+cG9z6Mln3g/mUaehMXg0qZ
+ /Zk2e2k04mP6i5aAIbgAwyju+bLOPy/VBusfKsHP3Fz2w4gCKTEUmwNFMDHNYaVco5NJ
+ wASfbLRYvMZxn7wpnbb1aIk0lB3Ox8jfGN+kSPo2KhzcrnMEbUjC84oMvc185wH1JGvL
+ Djohj9Zv0k8ZBevP64KNhFqJNPvpfWGWnanVWnq9gvhhEy1GF2PhpSeZ0CBJn6wf6MzD
+ BdF6uojNyMKFqBvzoTQXbjrynQ2bW6vtgzhzEf/OOFQP/fzD/tO9auO1tTYnr9OixFS9 IA== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by aserp2120.oracle.com with ESMTP id 2vk6sqw2ft-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 17 Oct 2019 09:19:33 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9H9JVcZ106375;
+ Thu, 17 Oct 2019 09:19:32 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3030.oracle.com with ESMTP id 2vp3bk9y52-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 17 Oct 2019 09:19:32 +0000
+Received: from abhmp0002.oracle.com (abhmp0002.oracle.com [141.146.116.8])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x9H9IdLa028892;
+ Thu, 17 Oct 2019 09:18:40 GMT
+Received: from mwanda (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 17 Oct 2019 09:18:39 +0000
+Date: Thu, 17 Oct 2019 12:18:32 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Adham Abozaeid <adham.abozaeid@microchip.com>
+Subject: [PATCH] staging: wilc1000: potential corruption in
+ wilc_parse_join_bss_param()
+Message-ID: <20191017091832.GB31278@mwanda>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <m336fsst40.fsf@gmail.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 10:04:20 up 152 days, 14:22, 99 users,  load average: 0.12, 0.11,
- 0.05
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c5
-X-SA-Exim-Mail-From: mfe@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: devel@driverdev.osuosl.org
+X-Mailer: git-send-email haha only kidding
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9412
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1908290000 definitions=main-1910170084
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9412
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
+ definitions=main-1910170084
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,102 +96,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Philipp Zabel <p.zabel@pengutronix.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Chuhong Yuan <hslester96@gmail.com>,
- linux-kernel@vger.kernel.org, NXP Linux Team <linux-imx@nxp.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Steve Longerbeam <slongerbeam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Ajay Singh <ajay.kathat@microchip.com>, kernel-janitors@vger.kernel.org,
+ linux-wireless@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Rui,
+The "rates_len" value needs to be capped so that the memcpy() doesn't
+copy beyond the end of the array.
 
-On 19-10-16 14:43, Rui Miguel Silva wrote:
-> Hi Marco,
-> On Wed 16 Oct 2019 at 10:06, Marco Felsch wrote:
-> > Hi Chuhong,
-> >
-> > On 19-10-15 21:59, Chuhong Yuan wrote:
-> >> devm_regulator_get may return an error but mipi_csis_phy_init misses
-> >> a check for it.
-> >> This may lead to problems when regulator_set_voltage uses the unchecked
-> >> pointer.
-> >> This patch adds a check for devm_regulator_get to avoid potential risk.
-> >>
-> >> Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
-> >> ---
-> >> Changes in v2:
-> >>   - Add a check in mipi_csis_probe for the modified mipi_csis_phy_init.
-> >
-> > Did you miss the check for -EPROBE_DEFER?
-> >
-> 
-> I think nothing special is really needed to do in case of
-> EPROBE_DEFER, or am I missing something?
-> It just return to probe and probe returns also. I just talked
-> about it because it was not cover in the original code.
+Fixes: c5c77ba18ea6 ("staging: wilc1000: Add SDIO/SPI 802.11 driver")
+Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+---
+ drivers/staging/wilc1000/wilc_hif.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Yes, your are right... I shouldn't comment on anything I read with one
-eye. Sorry.
-
-Regards,
-  Marco
-
-> ---
-> Cheers,
-> 	Rui
-> 
-> >
-> > Regards,
-> >   Marco
-> >
-> >>
-> >>  drivers/staging/media/imx/imx7-mipi-csis.c | 8 +++++++-
-> >>  1 file changed, 7 insertions(+), 1 deletion(-)
-> >>
-> >> diff --git a/drivers/staging/media/imx/imx7-mipi-csis.c b/drivers/staging/media/imx/imx7-mipi-csis.c
-> >> index 73d8354e618c..e8a6acaa969e 100644
-> >> --- a/drivers/staging/media/imx/imx7-mipi-csis.c
-> >> +++ b/drivers/staging/media/imx/imx7-mipi-csis.c
-> >> @@ -350,6 +350,8 @@ static void mipi_csis_sw_reset(struct csi_state *state)
-> >>  static int mipi_csis_phy_init(struct csi_state *state)
-> >>  {
-> >>  	state->mipi_phy_regulator = devm_regulator_get(state->dev, "phy");
-> >> +	if (IS_ERR(state->mipi_phy_regulator))
-> >> +		return PTR_ERR(state->mipi_phy_regulator);
-> >>
-> >>  	return regulator_set_voltage(state->mipi_phy_regulator, 1000000,
-> >>  				     1000000);
-> >> @@ -966,7 +968,10 @@ static int mipi_csis_probe(struct platform_device *pdev)
-> >>  		return ret;
-> >>  	}
-> >>
-> >> -	mipi_csis_phy_init(state);
-> >> +	ret = mipi_csis_phy_init(state);
-> >> +	if (ret < 0)
-> >> +		return ret;
-> >> +
-> >>  	mipi_csis_phy_reset(state);
-> >>
-> >>  	mem_res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> >> --
-> >> 2.20.1
-> >>
-> >>
-> >>
-> 
-> 
-
+diff --git a/drivers/staging/wilc1000/wilc_hif.c b/drivers/staging/wilc1000/wilc_hif.c
+index 0ac2b6ac50b0..e0a95c5cc0d5 100644
+--- a/drivers/staging/wilc1000/wilc_hif.c
++++ b/drivers/staging/wilc1000/wilc_hif.c
+@@ -479,6 +479,8 @@ void *wilc_parse_join_bss_param(struct cfg80211_bss *bss,
+ 	rates_ie = cfg80211_find_ie(WLAN_EID_SUPP_RATES, ies->data, ies->len);
+ 	if (rates_ie) {
+ 		rates_len = rates_ie[1];
++		if (rates_len > WILC_MAX_RATES_SUPPORTED)
++			rates_len = WILC_MAX_RATES_SUPPORTED;
+ 		param->supp_rates[0] = rates_len;
+ 		memcpy(&param->supp_rates[1], rates_ie + 2, rates_len);
+ 	}
 -- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+2.20.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
