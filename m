@@ -1,145 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 70BF2DB2D0
-	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Oct 2019 18:51:50 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A060DB2ED
+	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Oct 2019 19:02:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 80F1287CAC;
-	Thu, 17 Oct 2019 16:51:48 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 20A452034A;
+	Thu, 17 Oct 2019 17:02:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XTme+45GCltm; Thu, 17 Oct 2019 16:51:47 +0000 (UTC)
+	with ESMTP id hVKC69LCCx-z; Thu, 17 Oct 2019 17:02:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BA36F87BC0;
-	Thu, 17 Oct 2019 16:51:46 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4939920395;
+	Thu, 17 Oct 2019 17:02:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DDC1A1BF4E3
- for <devel@linuxdriverproject.org>; Thu, 17 Oct 2019 16:51:44 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5C92B1BF4E3
+ for <devel@linuxdriverproject.org>; Thu, 17 Oct 2019 17:02:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id DA4A986B6C
- for <devel@linuxdriverproject.org>; Thu, 17 Oct 2019 16:51:44 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 565CB880C4
+ for <devel@linuxdriverproject.org>; Thu, 17 Oct 2019 17:02:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lQ7MO4h_AtpK for <devel@linuxdriverproject.org>;
- Thu, 17 Oct 2019 16:51:44 +0000 (UTC)
+ with ESMTP id 9BO9Nrwn753t for <devel@linuxdriverproject.org>;
+ Thu, 17 Oct 2019 17:02:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa6.microchip.iphmx.com (esa6.microchip.iphmx.com
- [216.71.154.253])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E042686B66
- for <devel@driverdev.osuosl.org>; Thu, 17 Oct 2019 16:51:42 +0000 (UTC)
-Received-SPF: Pass (esa6.microchip.iphmx.com: domain of
- Adham.Abozaeid@microchip.com designates 198.175.253.82 as
- permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa6.microchip.iphmx.com;
- envelope-from="Adham.Abozaeid@microchip.com";
- x-sender="Adham.Abozaeid@microchip.com";
- x-conformance=spf_only; x-record-type="v=spf1";
- x-record-text="v=spf1 mx a:ushub1.microchip.com
- a:smtpout.microchip.com a:mx1.microchip.iphmx.com
- a:mx2.microchip.iphmx.com include:servers.mcsv.net
- include:mktomail.com include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa6.microchip.iphmx.com: no sender
- authenticity information available from domain of
- postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa6.microchip.iphmx.com;
- envelope-from="Adham.Abozaeid@microchip.com";
- x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa6.microchip.iphmx.com;
- spf=Pass smtp.mailfrom=Adham.Abozaeid@microchip.com;
- spf=None smtp.helo=postmaster@email.microchip.com;
- dkim=pass (signature verified) header.i=@microchiptechnology.onmicrosoft.com;
- dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: uvn7lLkC7e3dMkjYVusv3qRWEGTc7Oa4l6HOVoH8wibRWPr/55UucKr18m0rQmLu5ayis6fI+a
- n1xVG1WXz/EoocnrbE63PMcJ6chk1t5rFl9Wj1RNSsGARlFW5umMGMYZ1DUueyWPfO1q7R5Hw6
- vSMqQxlThH5mq6mg1TExs0pf6KeLXApwUgg3F7s9WHlPD9C0l9Ofod5NXPIVETlRTfeUfJrCA/
- N9IcBcZHfkMeyti5xtuQUSqCwnkIDsLWyEgnVINV/MHjo/Hzwp3o/6eOwevruIStqVK615wzdD
- lug=
-X-IronPort-AV: E=Sophos;i="5.67,308,1566889200"; d="scan'208";a="50501594"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa6.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 17 Oct 2019 09:51:24 -0700
-Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
- chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Thu, 17 Oct 2019 09:51:19 -0700
-Received: from NAM04-BN3-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
- via Frontend Transport; Thu, 17 Oct 2019 09:51:19 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=LL+VBPNwo63Ym1bqBApDsK6++NE32lP3/i9Yp7TNpxPdUgwkKcZ/oZk/XnqsXMhp15HTJsrejLPCo4yACftl7wMVitmZtSou6ONOOaDYDwCe83iMe2B4dymibcU00Rh6q+RkZOL4U5QCG2Hr/kQfVwoMXxHFaMv5FT8XxnZOFfwaNDM43fvQDzgFl2o19VF+DmJCt5RZAYzlqtslf1etxLDFA1HBcCRyTC/l87sG/Hiy5eCpVMKapbgv75nM+uxyxXLiSUSIqvGRFZp10etGLPiSb/SgS0W1nBB1ryfGB1Q3BKi7qLguTuyilKIVUCA4dbj8R1/7/wtUrX3shqR2dQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=VBgVcD9J+4PoSSL9VBltVWz2IhrllOh5gqW6P7Q99rw=;
- b=SESaM67+Kj+sor7aBpeV41/VHmYGgLRMVdZpDlDdtxNfzPyNuqLOZtcuztVdBcVdYq1Z/nzeqaYdlQVo62jjeATA69BUVhwhOZtBT0UUF5hMB6V29PvJhOIWH84FFyKZllooIT1HuVwIJcLGoowEez/peABjUmiWjMaqXe3oynwzyrwEaGXbSBoMATXfBq8aV9mF6n0mYaHXp+MFjbhB7DLZgG9xLXiFRv52f+0RnwTMkKOjZ8NtCde+7GpCTtcD34PyalsvFJy3mua9oJQNMr3Np4OO1LX5G9+ymzw6+i5p2Vm8oYri8t/YBAJ4AGKlJXTlU2hTIeSCNG+RIH5/UQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microchip.com; dmarc=pass action=none
- header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector2-microchiptechnology-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=VBgVcD9J+4PoSSL9VBltVWz2IhrllOh5gqW6P7Q99rw=;
- b=Ph43YWXMRcm5XsodjKknjdxYCkPVF1FmpDPcUVgeJC3WzhVvyCCOyViLoeCw0j4YugLpRs0IGWQgSvpX5iSvLObVISEUQGt6h01l1/3xi5N089RECoLVqxeTV0YlVaKMRszLM+cfnRzmpSrysXSERkBVus/aLlw6ocvEHT0rLpE=
-Received: from MWHPR11MB1373.namprd11.prod.outlook.com (10.169.234.141) by
- MWHPR11MB1550.namprd11.prod.outlook.com (10.172.53.146) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2347.17; Thu, 17 Oct 2019 16:51:13 +0000
-Received: from MWHPR11MB1373.namprd11.prod.outlook.com
- ([fe80::c518:fad3:68fe:ce20]) by MWHPR11MB1373.namprd11.prod.outlook.com
- ([fe80::c518:fad3:68fe:ce20%12]) with mapi id 15.20.2347.024; Thu, 17 Oct
- 2019 16:51:13 +0000
-From: <Adham.Abozaeid@microchip.com>
-To: <linux-wireless@vger.kernel.org>
-Subject: [PATCH] staging: wilc1000: store bss object and use
- cfg80211_connect_bss()
-Thread-Topic: [PATCH] staging: wilc1000: store bss object and use
- cfg80211_connect_bss()
-Thread-Index: AQHVhQsVMd2NT3C/iUqvOe3blPViIg==
-Date: Thu, 17 Oct 2019 16:51:13 +0000
-Message-ID: <20191017165105.27429-1-adham.abozaeid@microchip.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [198.175.253.81]
-x-clientproxiedby: BYAPR06CA0018.namprd06.prod.outlook.com
- (2603:10b6:a03:d4::31) To MWHPR11MB1373.namprd11.prod.outlook.com
- (2603:10b6:300:25::13)
-x-ms-exchange-messagesentrepresentingtype: 1
-x-mailer: git-send-email 2.17.1
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 49432f3c-9cc7-4c28-39ae-08d75322383a
-x-ms-traffictypediagnostic: MWHPR11MB1550:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <MWHPR11MB1550969C06A2111A25CF57E38D6D0@MWHPR11MB1550.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:4941;
-x-forefront-prvs: 01930B2BA8
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(136003)(366004)(376002)(346002)(396003)(39860400002)(199004)(189003)(81166006)(36756003)(3846002)(7736002)(486006)(86362001)(2616005)(2501003)(476003)(50226002)(1076003)(66066001)(14454004)(6916009)(8936002)(5660300002)(6116002)(316002)(8676002)(478600001)(81156014)(14444005)(54906003)(305945005)(2906002)(6512007)(25786009)(256004)(66446008)(107886003)(386003)(99286004)(52116002)(2351001)(6506007)(64756008)(66556008)(66476007)(66946007)(4326008)(26005)(186003)(71200400001)(71190400001)(6486002)(5640700003)(6436002)(102836004);
- DIR:OUT; SFP:1101; SCL:1; SRVR:MWHPR11MB1550;
- H:MWHPR11MB1373.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: microchip.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 1X9CM9L23bqU2ZMxLwT8+ydnJg/fA8f896efmDgipG4yIFBidgsZvfKfRxD+TkVJZwSmXLKUAtiJQJ0IpXH39Oh3kOuVHYl2a8cVYn5XwckekZoeup89q68qX7QVnXvw+nwD43e6f41rcyzkecsg+QBGEiErijJzq4ZiZ3nPr31EB1LzKYFXAySNGyulNUO6zetx1ToVhYLuYX2YMjLbmmPDS2pBy0Gr0rIjllE9NzXvb/oSWNVZb2bdwokSRHxfX+o2jHh6BDy2CeKzyzEb6HTSRVJk046aQ8cR5KbiEC8iK2Mk5+uyXUmb5XlIl8dSgIDDikDpy3BVqW5uKTJH6urdY5dLnmusGQOsJARxLAC0SFH+DNyz51/ob8+4zdG3DdmQXSaAcMX4dEBXYHymyf+pTO5dl6jsofiBNQVC/qc=
+Received: from mail-io1-f71.google.com (mail-io1-f71.google.com
+ [209.85.166.71])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 820C9877B5
+ for <devel@driverdev.osuosl.org>; Thu, 17 Oct 2019 17:02:08 +0000 (UTC)
+Received: by mail-io1-f71.google.com with SMTP id g8so4036933iop.19
+ for <devel@driverdev.osuosl.org>; Thu, 17 Oct 2019 10:02:08 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:date:message-id:subject:from:to
+ :content-transfer-encoding;
+ bh=EnYsU47HL2XSkkVZREiAvQYTdM81+PHfRCGT/VEHxcI=;
+ b=fwrOBTIig4i0d5sAF9xpp+CUxtBkAdwTiwTXrTSzZcf0ObJZzA1LLjjcPjI/y4GeXq
+ yjWto84vIC69mxIHEp+sfkzmj+7DO4kJYZRCXUvleF19+qv/oDV1e47uu2hRgheedO2y
+ yp/Wi8SsLh2QNFOuQhgdHyNwfGrM+C3qr6wlm1PqyL9xmfUDN5SCaPaJ5MVZyT7iycuK
+ NUxzPmfsfkOn6LznDa9zn539BUGr77gm+yQW3dM0tqjaXHNoetZBzTyY9h35l+BUAatf
+ fBks81RSWQzO/DNg9h0OGrVnuN9cwwEPkebvyoa7FMJMHprqGdv0KROHa9Dhjw3p1v2T
+ jkDw==
+X-Gm-Message-State: APjAAAUhDi8FvuWJrFiSBeCIDd+uZbofGUHCyzuFhM6IDUjRKJFKF+qb
+ zpxZJoIt4MgHVTcp+LKhYSqeRs66X2uX+rAasmdgiD/Otkxi
+X-Google-Smtp-Source: APXvYqxen8Of1iSDjpw3u7bRKKCDhaZk8HxXleczjhHf6mM3uT90OG6ex9Ks5pxcps8gIp67wNIVq58SkyVZB3BZG/oAX0RMPhuA
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 49432f3c-9cc7-4c28-39ae-08d75322383a
-X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Oct 2019 16:51:13.5057 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: bG3fRbMTx+OV8RxBYw8epoQIpxSXw4dr7LjfHOE9cGW2tJJKx+4z+lDMNXCm/dsgMa1hiS18YW50ZwaW+vyRuBL615+MNvr4Fa9Uka1b8tY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1550
+X-Received: by 2002:a02:3081:: with SMTP id q123mr4311612jaq.24.1571331727632; 
+ Thu, 17 Oct 2019 10:02:07 -0700 (PDT)
+Date: Thu, 17 Oct 2019 10:02:07 -0700
+X-Google-Appengine-App-Id: s~syzkaller
+X-Google-Appengine-App-Id-Alias: syzkaller
+Message-ID: <00000000000073309e05951e2dc1@google.com>
+Subject: WARNING in bdev_read
+From: syzbot <syzbot+787bcbef9b5fec61944b@syzkaller.appspotmail.com>
+To: alexander.levin@microsoft.com, davem@davemloft.net, 
+ devel@driverdev.osuosl.org, gregkh@linuxfoundation.org, 
+ linux-kernel@vger.kernel.org, mchehab+samsung@kernel.org, 
+ paulmck@linux.ibm.com, syzkaller-bugs@googlegroups.com, 
+ valdis.kletnieks@vt.edu
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -152,110 +74,97 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- johannes@sipsolutions.net, Ajay.Kathat@microchip.com,
- Adham.Abozaeid@microchip.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"; DelSp="yes"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Adham Abozaeid <adham.abozaeid@microchip.com>
-
-In a fast disconnect/connect sequence, cfg80211_connect_result() can
-fail to find the bss object which the driver is connecting to. Detailed
-sequence of events:
-* Driver is connected in STA mode
-* Disconnect request arrives from user space. Driver disconnects and
-  calls cfg80211_disconnected() which adds new event to the
-  cfg80211_wq worker thread
-* Connect request arrives from user space. cfg80211_connect() stores
-  ssid/ssid_len and calls rdev_connect()
-* __cfg80211_disconnected() runs in worker thread and zero
-  wdev->ssid_len
-* Connect succeeds. Driver calls cfg80211_connect_result() which fails
-  to find the bss because wdev->ssid_len is zero
-
-To overcome this, upon connect request, store the bss object in the
-driver and upon connect completion pass it to kernel using
-cfg80211_connect_bss().
-
-Ref: bcdd49b074d0 ("store bss object and use cfg80211_connect_bss()")
-
-Signed-off-by: Adham Abozaeid <adham.abozaeid@microchip.com>
----
- .../staging/wilc1000/wilc_wfi_cfgoperations.c | 20 +++++++++++++------
- drivers/staging/wilc1000/wilc_wfi_netdevice.h |  1 +
- 2 files changed, 15 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-index cc56abc2fe37..6422f6f5eadb 100644
---- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-+++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-@@ -137,6 +137,7 @@ static void cfg_connect_result(enum conn_event conn_disconn_evt, u8 mac_status,
- 	struct wilc *wl = vif->wilc;
- 	struct host_if_drv *wfi_drv = priv->hif_drv;
- 	struct wilc_conn_info *conn_info = &wfi_drv->conn_info;
-+	struct wiphy *wiphy = dev->ieee80211_ptr->wiphy;
- 
- 	vif->connecting = false;
- 
-@@ -158,12 +159,16 @@ static void cfg_connect_result(enum conn_event conn_disconn_evt, u8 mac_status,
- 			memcpy(priv->associated_bss, conn_info->bssid,
- 			       ETH_ALEN);
- 
--		cfg80211_connect_result(dev, conn_info->bssid,
--					conn_info->req_ies,
--					conn_info->req_ies_len,
--					conn_info->resp_ies,
--					conn_info->resp_ies_len, connect_status,
--					GFP_KERNEL);
-+		cfg80211_ref_bss(wiphy, vif->bss);
-+		cfg80211_connect_bss(dev, conn_info->bssid, vif->bss,
-+				     conn_info->req_ies,
-+				     conn_info->req_ies_len,
-+				     conn_info->resp_ies,
-+				     conn_info->resp_ies_len,
-+				     connect_status, GFP_KERNEL,
-+				     NL80211_TIMEOUT_UNSPECIFIED);
-+
-+		vif->bss = NULL;
- 	} else if (conn_disconn_evt == CONN_DISCONN_EVENT_DISCONN_NOTIF) {
- 		u16 reason = 0;
- 
-@@ -406,6 +411,7 @@ static int connect(struct wiphy *wiphy, struct net_device *dev,
- 		goto out_put_bss;
- 	}
- 	kfree(join_params);
-+	vif->bss = bss;
- 	cfg80211_put_bss(wiphy, bss);
- 	return 0;
- 
-@@ -451,6 +457,8 @@ static int disconnect(struct wiphy *wiphy, struct net_device *dev,
- 		ret = -EINVAL;
- 	}
- 
-+	vif->bss = NULL;
-+
- 	return ret;
- }
- 
-diff --git a/drivers/staging/wilc1000/wilc_wfi_netdevice.h b/drivers/staging/wilc1000/wilc_wfi_netdevice.h
-index fa41b46eb245..d94a4808bdf9 100644
---- a/drivers/staging/wilc1000/wilc_wfi_netdevice.h
-+++ b/drivers/staging/wilc1000/wilc_wfi_netdevice.h
-@@ -209,6 +209,7 @@ struct wilc_vif {
- 	bool connecting;
- 	struct wilc_priv priv;
- 	struct list_head list;
-+	struct cfg80211_bss *bss;
- };
- 
- struct wilc {
--- 
-2.17.1
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+SGVsbG8sDQoNCnN5emJvdCBmb3VuZCB0aGUgZm9sbG93aW5nIGNyYXNoIG9uOg0KDQpIRUFEIGNv
+bW1pdDogICAgYmM4OGY4NWMga3RocmVhZDogbWFrZSBfX2t0aHJlYWRfcXVldWVfZGVsYXllZF93
+b3JrIHN0YXRpYw0KZ2l0IHRyZWU6ICAgICAgIHVwc3RyZWFtDQpjb25zb2xlIG91dHB1dDogaHR0
+cHM6Ly9zeXprYWxsZXIuYXBwc3BvdC5jb20veC9sb2cudHh0P3g9MTRlMjU2MDhlMDAwMDANCmtl
+cm5lbCBjb25maWc6ICBodHRwczovL3N5emthbGxlci5hcHBzcG90LmNvbS94Ly5jb25maWc/eD1l
+MGFjNGQ5YjM1MDQ2MzQzDQpkYXNoYm9hcmQgbGluazogaHR0cHM6Ly9zeXprYWxsZXIuYXBwc3Bv
+dC5jb20vYnVnP2V4dGlkPTc4N2JjYmVmOWI1ZmVjNjE5NDRiDQpjb21waWxlcjogICAgICAgZ2Nj
+IChHQ0MpIDkuMC4wIDIwMTgxMjMxIChleHBlcmltZW50YWwpDQpzeXogcmVwcm86ICAgICAgaHR0
+cHM6Ly9zeXprYWxsZXIuYXBwc3BvdC5jb20veC9yZXByby5zeXo/eD0xNTlmZDM1MzYwMDAwMA0K
+QyByZXByb2R1Y2VyOiAgIGh0dHBzOi8vc3l6a2FsbGVyLmFwcHNwb3QuY29tL3gvcmVwcm8uYz94
+PTE3ZTgyMTczNjAwMDAwDQoNClRoZSBidWcgd2FzIGJpc2VjdGVkIHRvOg0KDQpjb21taXQgYzQ4
+YzlmN2ZmMzJiOGIzOTY1YTA4ZTQwZWI2NzYzNjgyZDkwNWI1ZA0KQXV0aG9yOiBWYWxkaXMgS2zE
+k3RuaWVrcyA8dmFsZGlzLmtsZXRuaWVrc0B2dC5lZHU+DQpEYXRlOiAgIFdlZCBBdWcgMjggMTY6
+MDg6MTcgMjAxOSArMDAwMA0KDQogICAgIHN0YWdpbmc6IGV4ZmF0OiBhZGQgZXhmYXQgZmlsZXN5
+c3RlbSBjb2RlIHRvIHN0YWdpbmcNCg0KYmlzZWN0aW9uIGxvZzogIGh0dHBzOi8vc3l6a2FsbGVy
+LmFwcHNwb3QuY29tL3gvYmlzZWN0LnR4dD94PTE1NGEzMjI3NjAwMDAwDQpmaW5hbCBjcmFzaDog
+ICAgaHR0cHM6Ly9zeXprYWxsZXIuYXBwc3BvdC5jb20veC9yZXBvcnQudHh0P3g9MTc0YTMyMjc2
+MDAwMDANCmNvbnNvbGUgb3V0cHV0OiBodHRwczovL3N5emthbGxlci5hcHBzcG90LmNvbS94L2xv
+Zy50eHQ/eD0xMzRhMzIyNzYwMDAwMA0KDQpJTVBPUlRBTlQ6IGlmIHlvdSBmaXggdGhlIGJ1Zywg
+cGxlYXNlIGFkZCB0aGUgZm9sbG93aW5nIHRhZyB0byB0aGUgY29tbWl0Og0KUmVwb3J0ZWQtYnk6
+IHN5emJvdCs3ODdiY2JlZjliNWZlYzYxOTQ0YkBzeXprYWxsZXIuYXBwc3BvdG1haWwuY29tDQpG
+aXhlczogYzQ4YzlmN2ZmMzJiICgic3RhZ2luZzogZXhmYXQ6IGFkZCBleGZhdCBmaWxlc3lzdGVt
+IGNvZGUgdG8gc3RhZ2luZyIpDQoNCltFWEZBVF0gdHJ5aW5nIHRvIG1vdW50Li4uDQotLS0tLS0t
+LS0tLS1bIGN1dCBoZXJlIF0tLS0tLS0tLS0tLS0NCltFWEZBVF0gTm8gYmgsIGRldmljZSBzZWVt
+cyB3cm9uZyBvciB0byBiZSBlamVjdGVkLg0KV0FSTklORzogQ1BVOiAwIFBJRDogOTQyNSBhdCBk
+cml2ZXJzL3N0YWdpbmcvZXhmYXQvZXhmYXRfYmxrZGV2LmM6NjIgIA0KYmRldl9yZWFkKzB4MjU4
+LzB4MmIwIGRyaXZlcnMvc3RhZ2luZy9leGZhdC9leGZhdF9ibGtkZXYuYzo2Mg0KS2VybmVsIHBh
+bmljIC0gbm90IHN5bmNpbmc6IHBhbmljX29uX3dhcm4gc2V0IC4uLg0KQ1BVOiAwIFBJRDogOTQy
+NSBDb21tOiBzeXotZXhlY3V0b3IwNDAgTm90IHRhaW50ZWQgNS40LjAtcmMzKyAjMA0KSGFyZHdh
+cmUgbmFtZTogR29vZ2xlIEdvb2dsZSBDb21wdXRlIEVuZ2luZS9Hb29nbGUgQ29tcHV0ZSBFbmdp
+bmUsIEJJT1MgIA0KR29vZ2xlIDAxLzAxLzIwMTENCkNhbGwgVHJhY2U6DQogIF9fZHVtcF9zdGFj
+ayBsaWIvZHVtcF9zdGFjay5jOjc3IFtpbmxpbmVdDQogIGR1bXBfc3RhY2srMHgxNzIvMHgxZjAg
+bGliL2R1bXBfc3RhY2suYzoxMTMNCiAgcGFuaWMrMHgyZTMvMHg3NWMga2VybmVsL3BhbmljLmM6
+MjIxDQogIF9fd2Fybi5jb2xkKzB4MmYvMHgzNSBrZXJuZWwvcGFuaWMuYzo1ODINCiAgcmVwb3J0
+X2J1ZysweDI4OS8weDMwMCBsaWIvYnVnLmM6MTk1DQogIGZpeHVwX2J1ZyBhcmNoL3g4Ni9rZXJu
+ZWwvdHJhcHMuYzoxNzkgW2lubGluZV0NCiAgZml4dXBfYnVnIGFyY2gveDg2L2tlcm5lbC90cmFw
+cy5jOjE3NCBbaW5saW5lXQ0KICBkb19lcnJvcl90cmFwKzB4MTFiLzB4MjAwIGFyY2gveDg2L2tl
+cm5lbC90cmFwcy5jOjI3Mg0KICBkb19pbnZhbGlkX29wKzB4MzcvMHg1MCBhcmNoL3g4Ni9rZXJu
+ZWwvdHJhcHMuYzoyOTENCiAgaW52YWxpZF9vcCsweDIzLzB4MzAgYXJjaC94ODYvZW50cnkvZW50
+cnlfNjQuUzoxMDI4DQpSSVA6IDAwMTA6YmRldl9yZWFkKzB4MjU4LzB4MmIwIGRyaXZlcnMvc3Rh
+Z2luZy9leGZhdC9leGZhdF9ibGtkZXYuYzo2Mg0KQ29kZTogZmYgZGYgODAgM2MgMDIgMDAgMGYg
+ODQgNTEgZmYgZmYgZmYgNGMgODkgZTcgZTggOWUgMDUgM2EgZmMgZTkgNDQgZmYgIA0KZmYgZmYg
+ZTggMTQgYTggZmUgZmIgNDggYzcgYzcgMjAgMGIgM2QgODggZTggYzAgZWEgY2YgZmIgPDBmPiAw
+YiBlYiA4YSBlOCAgDQo3ZiAwNCAzYSBmYyBlOSAxNyBmZSBmZiBmZiBlOCBiNSAwNCAzYSBmYyBl
+OSA5OSBmZQ0KUlNQOiAwMDE4OmZmZmY4ODgwYTRkNzdhZDAgRUZMQUdTOiAwMDAxMDI4Mg0KUkFY
+OiAwMDAwMDAwMDAwMDAwMDAwIFJCWDogMDAwMDAwMDAwMDAwMDAwMCBSQ1g6IDAwMDAwMDAwMDAw
+MDAwMDANClJEWDogMDAwMDAwMDAwMDAwMDAwMCBSU0k6IGZmZmZmZmZmODE1Y2I2NDYgUkRJOiBm
+ZmZmZWQxMDE0OWFlZjRjDQpSQlA6IGZmZmY4ODgwYTRkNzdiMTAgUjA4OiBmZmZmODg4MDk5YmE0
+NDAwIFIwOTogZmZmZmVkMTAxNWQwNDEwMQ0KUjEwOiBmZmZmZWQxMDE1ZDA0MTAwIFIxMTogZmZm
+Zjg4ODBhZTgyMDgwNyBSMTI6IDAwMDAwMDAwMDAwMDAwMDANClIxMzogZmZmZjg4ODA4N2Q0MDAw
+MCBSMTQ6IDAwMDAwMDAwMDAwMDAwMDEgUjE1OiAwMDAwMDAwMDAwMDAwMjAwDQogIHNlY3Rvcl9y
+ZWFkKzB4MTU2LzB4MWUwIGRyaXZlcnMvc3RhZ2luZy9leGZhdC9leGZhdF9jb3JlLmM6MzYxNQ0K
+ICBmZnNNb3VudFZvbCBkcml2ZXJzL3N0YWdpbmcvZXhmYXQvZXhmYXRfc3VwZXIuYzozNzQgW2lu
+bGluZV0NCiAgZXhmYXRfZmlsbF9zdXBlci5jb2xkKzB4NGQ2LzB4ZGJhIGRyaXZlcnMvc3RhZ2lu
+Zy9leGZhdC9leGZhdF9zdXBlci5jOjM4NjkNCiAgbW91bnRfYmRldisweDMwNC8weDNjMCBmcy9z
+dXBlci5jOjE0MTUNCiAgZXhmYXRfZnNfbW91bnQrMHgzNS8weDQwIGRyaXZlcnMvc3RhZ2luZy9l
+eGZhdC9leGZhdF9zdXBlci5jOjM5MzYNCiAgbGVnYWN5X2dldF90cmVlKzB4MTA4LzB4MjIwIGZz
+L2ZzX2NvbnRleHQuYzo2NDcNCiAgdmZzX2dldF90cmVlKzB4OGUvMHgzMDAgZnMvc3VwZXIuYzox
+NTQ1DQogIGRvX25ld19tb3VudCBmcy9uYW1lc3BhY2UuYzoyODIzIFtpbmxpbmVdDQogIGRvX21v
+dW50KzB4MTQzZC8weDFkMTAgZnMvbmFtZXNwYWNlLmM6MzE0Mw0KICBrc3lzX21vdW50KzB4ZGIv
+MHgxNTAgZnMvbmFtZXNwYWNlLmM6MzM1Mg0KICBfX2RvX3N5c19tb3VudCBmcy9uYW1lc3BhY2Uu
+YzozMzY2IFtpbmxpbmVdDQogIF9fc2Vfc3lzX21vdW50IGZzL25hbWVzcGFjZS5jOjMzNjMgW2lu
+bGluZV0NCiAgX194NjRfc3lzX21vdW50KzB4YmUvMHgxNTAgZnMvbmFtZXNwYWNlLmM6MzM2Mw0K
+ICBkb19zeXNjYWxsXzY0KzB4ZmEvMHg3NjAgYXJjaC94ODYvZW50cnkvY29tbW9uLmM6MjkwDQog
+IGVudHJ5X1NZU0NBTExfNjRfYWZ0ZXJfaHdmcmFtZSsweDQ5LzB4YmUNClJJUDogMDAzMzoweDQ0
+MDE3OQ0KQ29kZTogMTggODkgZDAgYzMgNjYgMmUgMGYgMWYgODQgMDAgMDAgMDAgMDAgMDAgMGYg
+MWYgMDAgNDggODkgZjggNDggODkgZjcgIA0KNDggODkgZDYgNDggODkgY2EgNGQgODkgYzIgNGQg
+ODkgYzggNGMgOGIgNGMgMjQgMDggMGYgMDUgPDQ4PiAzZCAwMSBmMCBmZiAgDQpmZiAwZiA4MyBm
+YiAxMyBmYyBmZiBjMyA2NiAyZSAwZiAxZiA4NCAwMCAwMCAwMCAwMA0KUlNQOiAwMDJiOjAwMDA3
+ZmZmMGY5MDI5OTggRUZMQUdTOiAwMDAwMDI0NiBPUklHX1JBWDogMDAwMDAwMDAwMDAwMDBhNQ0K
+UkFYOiBmZmZmZmZmZmZmZmZmZmRhIFJCWDogMDAzMDY1NmM2OTY2MmYyZSBSQ1g6IDAwMDAwMDAw
+MDA0NDAxNzkNClJEWDogMDAwMDAwMDAyMDAwMDIwMCBSU0k6IDAwMDAwMDAwMjAwMDAxYzAgUkRJ
+OiAwMDAwMDAwMDIwMDAwNDAwDQpSQlA6IDAwMDAwMDAwMDA2Y2EwMTggUjA4OiAwMDAwMDAwMDAw
+MDAwMDAwIFIwOTogMDAwMDAwMDAwMDAwMDAwMA0KUjEwOiAwMDAwMDAwMDAyODAwMDAxIFIxMTog
+MDAwMDAwMDAwMDAwMDI0NiBSMTI6IDAwMDAwMDAwMDA0MDFhMDANClIxMzogMDAwMDAwMDAwMDQw
+MWE5MCBSMTQ6IDAwMDAwMDAwMDAwMDAwMDAgUjE1OiAwMDAwMDAwMDAwMDAwMDAwDQpLZXJuZWwg
+T2Zmc2V0OiBkaXNhYmxlZA0KUmVib290aW5nIGluIDg2NDAwIHNlY29uZHMuLg0KDQoNCi0tLQ0K
+VGhpcyBidWcgaXMgZ2VuZXJhdGVkIGJ5IGEgYm90LiBJdCBtYXkgY29udGFpbiBlcnJvcnMuDQpT
+ZWUgaHR0cHM6Ly9nb28uZ2wvdHBzbUVKIGZvciBtb3JlIGluZm9ybWF0aW9uIGFib3V0IHN5emJv
+dC4NCnN5emJvdCBlbmdpbmVlcnMgY2FuIGJlIHJlYWNoZWQgYXQgc3l6a2FsbGVyQGdvb2dsZWdy
+b3Vwcy5jb20uDQoNCnN5emJvdCB3aWxsIGtlZXAgdHJhY2sgb2YgdGhpcyBidWcgcmVwb3J0LiBT
+ZWU6DQpodHRwczovL2dvby5nbC90cHNtRUojc3RhdHVzIGZvciBob3cgdG8gY29tbXVuaWNhdGUg
+d2l0aCBzeXpib3QuDQpGb3IgaW5mb3JtYXRpb24gYWJvdXQgYmlzZWN0aW9uIHByb2Nlc3Mgc2Vl
+OiBodHRwczovL2dvby5nbC90cHNtRUojYmlzZWN0aW9uDQpzeXpib3QgY2FuIHRlc3QgcGF0Y2hl
+cyBmb3IgdGhpcyBidWcsIGZvciBkZXRhaWxzIHNlZToNCmh0dHBzOi8vZ29vLmdsL3Rwc21FSiN0
+ZXN0aW5nLXBhdGNoZXMNCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0
+dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
+aXZlcmRldi1kZXZlbAo=
