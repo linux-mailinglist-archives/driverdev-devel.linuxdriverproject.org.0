@@ -1,103 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A9B35DA880
-	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Oct 2019 11:40:21 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 949A9DA8C9
+	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Oct 2019 11:44:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0AB5386D04;
-	Thu, 17 Oct 2019 09:40:20 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 750F686174;
+	Thu, 17 Oct 2019 09:44:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FkbyyWdw6v0O; Thu, 17 Oct 2019 09:40:19 +0000 (UTC)
+	with ESMTP id tk6KfdxTwsxD; Thu, 17 Oct 2019 09:44:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C263F86AEC;
-	Thu, 17 Oct 2019 09:40:18 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 129F285BC9;
+	Thu, 17 Oct 2019 09:44:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 41C8B1BF9C8
- for <devel@linuxdriverproject.org>; Thu, 17 Oct 2019 09:40:10 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id EFA5F1BF2CF
+ for <devel@linuxdriverproject.org>; Thu, 17 Oct 2019 09:44:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3D69D20368
- for <devel@linuxdriverproject.org>; Thu, 17 Oct 2019 09:40:10 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id EA19784F27
+ for <devel@linuxdriverproject.org>; Thu, 17 Oct 2019 09:44:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Vw3dGkWxqdrz for <devel@linuxdriverproject.org>;
- Thu, 17 Oct 2019 09:40:09 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM02-SN1-obe.outbound.protection.outlook.com
- (mail-eopbgr770071.outbound.protection.outlook.com [40.107.77.71])
- by silver.osuosl.org (Postfix) with ESMTPS id E5EC7204EB
- for <devel@driverdev.osuosl.org>; Thu, 17 Oct 2019 09:40:08 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=etJD0pZoNVUB1m1DVBYP6+n3bvHG6p2BerSUNalD5aE+cZihLmjcFGGYkt2+3Sx3/ijYk0mlawwI00dl+gW8XtDTBJ03diA1dqAB+WDk0JnXK/ehGnr4fNTG5wrnI5jKiNSVsQT8xJD3E8dTr4ATf17Feibj6RTGkP8YplD/0gmv8nWb3sa5gT/APgd5iBuyIXgnPncmWi2WhDpq/NuHlylALZJpJoxiPkz1GheKOBEnEgOIDHC9HbFIb2hze0+iPTMqtZEHIZZqjHLQathqyG1prNiITF+0CaF7IoCpRW5BBYkb9CDvi+hV+KopMzFGqZQ8U/NWh5IIelSdGreoQQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sBfu57JjS8nFaunujv25TmdDZE1MWzqoxvIUIPXSe6w=;
- b=M2VzC4rAu3SPRxVG7Qd3iP6SpAgr0gtfPKSlDoDoTQS/Bv1ChiveaWUIYthGCmt1jxTXzsMHQmHD48S3EIwYG9aC9XY30FHBuksfgQdXfelS6BrC+tQRScHRmdkZ7RBbWhPYH8HvoxRxbr7UyTys1DTzmnQdnTTKv1qX2PNnUEowrtDAahlUzwns5vLobM+R3Z/nMPQlJb3QzxhoTlwzdWM0mMcEautpo0t9533BFjlyIariu9b6shd2BOZaFfrBHE2YEulk7Hr97qsuCD8ZwPyrIHO/6U1nQ9w/9sxzsiukKFHO/2WjEbCGrd9biPoEA5d26+mwyaWKShW0OxaYAA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
- dkim=pass header.d=silabs.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sBfu57JjS8nFaunujv25TmdDZE1MWzqoxvIUIPXSe6w=;
- b=UNxKg8mBPnR/pcN95mJvq85MIX3oSpElT477RwfW75BTMsZ153/La1AyGTG9soXAwTekbUspCrPv3EwhM57puQBtQ8eNZTQX7tKuo0ecHgldTMFn8Qm/D1ogs855QC+k3MqDYDMHDa2vmPw3tVrW3HOIi4dxiRt8zBtwcGfs67E=
-Received: from MN2PR11MB4063.namprd11.prod.outlook.com (10.255.180.22) by
- MN2PR11MB4254.namprd11.prod.outlook.com (52.135.38.157) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2347.19; Thu, 17 Oct 2019 09:40:08 +0000
-Received: from MN2PR11MB4063.namprd11.prod.outlook.com
- ([fe80::ac8c:fc55:d1e2:465f]) by MN2PR11MB4063.namprd11.prod.outlook.com
- ([fe80::ac8c:fc55:d1e2:465f%5]) with mapi id 15.20.2347.023; Thu, 17 Oct 2019
- 09:40:08 +0000
-From: Jerome Pouiller <Jerome.Pouiller@silabs.com>
-To: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>
-Subject: [PATCH 5/6] staging: wfx: fix setting MAC address from DT
-Thread-Topic: [PATCH 5/6] staging: wfx: fix setting MAC address from DT
-Thread-Index: AQHVhM7cr0qswBTq+0aWlmB4+MVUXw==
-Date: Thu, 17 Oct 2019 09:40:06 +0000
-Message-ID: <20191017093954.657-5-Jerome.Pouiller@silabs.com>
-References: <20191017093954.657-1-Jerome.Pouiller@silabs.com>
-In-Reply-To: <20191017093954.657-1-Jerome.Pouiller@silabs.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Jerome.Pouiller@silabs.com; 
-x-originating-ip: [37.71.187.125]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 0d5abb27-36d4-4b89-497a-08d752e5ff48
-x-ms-traffictypediagnostic: MN2PR11MB4254:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <MN2PR11MB4254F9A6D6CC6DBE16E86572936D0@MN2PR11MB4254.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:262;
-x-forefront-prvs: 01930B2BA8
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(39850400004)(136003)(396003)(366004)(346002)(376002)(189003)(199004)(91956017)(76116006)(4744005)(54906003)(71190400001)(66946007)(26005)(86362001)(186003)(305945005)(99286004)(66476007)(5660300002)(2501003)(64756008)(36756003)(14454004)(66574012)(66556008)(1076003)(7736002)(71200400001)(66066001)(66446008)(2906002)(2351001)(478600001)(6512007)(76176011)(6116002)(3846002)(6506007)(14444005)(6916009)(256004)(316002)(446003)(11346002)(2616005)(6486002)(25786009)(476003)(486006)(81156014)(1730700003)(107886003)(102836004)(81166006)(5640700003)(4326008)(6436002)(8676002)(8936002);
- DIR:OUT; SFP:1101; SCL:1; SRVR:MN2PR11MB4254;
- H:MN2PR11MB4063.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: silabs.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: m6PjRn0rXrZXoXElITU/ty5E/RRnByNstRpCwZ0V9ij31vjYNpOx1IU6AIO4ylko2B28FrzxcV63wE1iGtl8teI1/PS9Eu+YMep+C5i59jMfe+j9LZJxruthOdoMF5PQvB++XA73ZXqTI56jrx0EL1T+ty6DWiSa336OfvycZReNNMVvPTa9v3isKfBXJmvi18Tdph2/CoF2Plr28KUc0duf6VsYju2BkBkkzAuzHS5zVAI7Osioq1kFpfzTl5jMNQolKF61lI9rf1RoOHX0IEDqOQfF+uVrG3USq70hMij05YlNzWPpTf4i2SFIaVm65KySxi3XFiPlSZGHo1HYpz8RNh9avk2aszZ+Y8YdLTSWC4J/CWrqmXHB01Rzz4mAt4phC3M8q23crlyQSZRSyrx6iC5AkJ9cLJAFyU+CkV0=
-Content-ID: <8D6A557B7770C844800A72022B2ADD0C@namprd11.prod.outlook.com>
+ with ESMTP id dTy4XWEsOvos for <devel@linuxdriverproject.org>;
+ Thu, 17 Oct 2019 09:44:05 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
+ [209.85.221.67])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 1F84F84ED7
+ for <devel@driverdev.osuosl.org>; Thu, 17 Oct 2019 09:44:05 +0000 (UTC)
+Received: by mail-wr1-f67.google.com with SMTP id o18so1517016wrv.13
+ for <devel@driverdev.osuosl.org>; Thu, 17 Oct 2019 02:44:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=references:user-agent:from:to:cc:subject:in-reply-to:date
+ :message-id:mime-version;
+ bh=WPP8fM4BAgo7I+1NaWLWc92Edu33AT6FVJmg54ang5E=;
+ b=oFG2LIf7gajsb1vY737nWpSi1k5VHzfQkzRpD7x3c85lOQJ6Jkt2T8u3kcOc9nOhE+
+ TgBvPebcdlDPtp2ZRqFXNlrPxycI1gNkzCBSweqroMK8j97AfkcTQt4c7LWCfv242Hvo
+ KUMfDyaw+dDGWKZzYClD5adoZGlbE0cAI5hwIdturEeAOvGiXij34J8DtVby5JLcwGKt
+ XfdtGRzNjLxoxGNJiYpjjb5YITtSF90Y4bYVBLiCuj6czPEytj4GVNyHotyb4kqtDFi9
+ TImjph6EFB1tCC/7muPqBrGqoxzX9ry1d5IcbKnvE1k5+1pS1TXgSIs7hCvJf4Ml/h5H
+ BWIQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:references:user-agent:from:to:cc:subject
+ :in-reply-to:date:message-id:mime-version;
+ bh=WPP8fM4BAgo7I+1NaWLWc92Edu33AT6FVJmg54ang5E=;
+ b=cPxtyha4OwpflOs1kuRnnbg5zYlNbsWnKbOfD5oTzvvtIocu6hgDWhN1XcGnoYGYGh
+ D0YUyVwLTn7TYDU7uIJ3SpYWFWyWDEYaxBg7kesNE0d2pcCt3OmKMmyVfiBRVkb1EoL6
+ k7+ZTGxCkmvVauzQ/wwAuiu2rV8yt58oKTdI2+a9c8zLq+9lldvkX50H7oSXkOiF4G5t
+ IH8aOydxwHLFaKbwZ7GYo6Ku1xiT8hPuKOcmYl5tCZwTJNt3nB3tf2leE4zQA0N8rMNf
+ jmfOWPZli4iVI9g+ZR6zrqoTNE0Vx6AaSCXQ5moQlbUJAVTbE8bnCgZrGdPcifEEPC5S
+ 9u4w==
+X-Gm-Message-State: APjAAAW13F2dkyUUGwa6tuPiY1GbQFJFKteeln72JCon28+FFxON/AQS
+ l65TN7e6EvHGseOb097E1tY=
+X-Google-Smtp-Source: APXvYqyKkWTNWIuO9WZL6fxrNNqgIZcALneckDsL6VuBs7BrD8IMByxj+/XAJIzCKjHSblzF1dV5dw==
+X-Received: by 2002:adf:d848:: with SMTP id k8mr2241596wrl.189.1571305442983; 
+ Thu, 17 Oct 2019 02:44:02 -0700 (PDT)
+Received: from arch-late (a109-49-46-234.cpe.netcabo.pt. [109.49.46.234])
+ by smtp.gmail.com with ESMTPSA id z13sm1591519wrq.51.2019.10.17.02.44.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 17 Oct 2019 02:44:02 -0700 (PDT)
+References: <20191015135915.6530-1-hslester96@gmail.com>
+ <20191016090628.7l5u4ytdqr2jlasg@pengutronix.de>
+ <m336fsst40.fsf@gmail.com>
+ <20191017081029.q2czy7y5zlbj4ogr@pengutronix.de>
+User-agent: mu4e 1.2.0; emacs 27.0.50
+From: Rui Miguel Silva <rmfrfs@gmail.com>
+To: Marco Felsch <m.felsch@pengutronix.de>
+Subject: Re: [PATCH v2] media: imx7-mipi-csis: Add a check for
+ devm_regulator_get
+In-reply-to: <20191017081029.q2czy7y5zlbj4ogr@pengutronix.de>
+Date: Thu, 17 Oct 2019 10:43:59 +0100
+Message-ID: <m31rvbso4g.fsf@gmail.com>
 MIME-Version: 1.0
-X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0d5abb27-36d4-4b89-497a-08d752e5ff48
-X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Oct 2019 09:40:06.7427 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 54dbd822-5231-4b20-944d-6f4abcd541fb
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: EfJmRlkB/Uk6X7gpi9ogYori/F9JM0wm0aJGOnuzz7cUdEqSMzMG4sz9vJMSBN415snOPTJlcj942FORLqeWfA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4254
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,34 +89,108 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Marc Dorval <Marc.Dorval@silabs.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, Philipp Zabel <p.zabel@pengutronix.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Chuhong Yuan <hslester96@gmail.com>,
+ linux-kernel@vger.kernel.org, NXP Linux Team <linux-imx@nxp.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Steve Longerbeam <slongerbeam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPg0KDQpN
-QUMgYWRkcmVzcyByZWFkIGZyb20gY2hpcCBpcyB1bmNvbmRpdGlvbmFsbHkgdXNlZCBldmVuIGlm
-IGEgTUFDDQphZGRyZXNzIGlzIGNvbmZpZ3VyZWQgaW4gZGV2aWNlIHRyZWUuDQoNClJlcG9ydGVk
-LWJ5OiBNYXJjIERvcnZhbCA8bWFyYy5kb3J2YWxAc2lsYWJzLmNvbT4NClNpZ25lZC1vZmYtYnk6
-IErDqXLDtG1lIFBvdWlsbGVyIDxqZXJvbWUucG91aWxsZXJAc2lsYWJzLmNvbT4NCi0tLQ0KIGRy
-aXZlcnMvc3RhZ2luZy93ZngvbWFpbi5jIHwgMyArKy0NCiAxIGZpbGUgY2hhbmdlZCwgMiBpbnNl
-cnRpb25zKCspLCAxIGRlbGV0aW9uKC0pDQoNCmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcv
-d2Z4L21haW4uYyBiL2RyaXZlcnMvc3RhZ2luZy93ZngvbWFpbi5jDQppbmRleCAyMDViNWJjODg3
-MmUuLjE4ZjA3ZjdhZDM0NyAxMDA2NDQNCi0tLSBhL2RyaXZlcnMvc3RhZ2luZy93ZngvbWFpbi5j
-DQorKysgYi9kcml2ZXJzL3N0YWdpbmcvd2Z4L21haW4uYw0KQEAgLTQxMCw4ICs0MTAsOSBAQCBp
-bnQgd2Z4X3Byb2JlKHN0cnVjdCB3ZnhfZGV2ICp3ZGV2KQ0KIAkJaWYgKCFJU19FUlJfT1JfTlVM
-TChtYWNhZGRyKSkgew0KIAkJCWV0aGVyX2FkZHJfY29weSh3ZGV2LT5hZGRyZXNzZXNbaV0uYWRk
-ciwgbWFjYWRkcik7DQogCQkJd2Rldi0+YWRkcmVzc2VzW2ldLmFkZHJbRVRIX0FMRU4gLSAxXSAr
-PSBpOw0KKwkJfSBlbHNlIHsNCisJCQlldGhlcl9hZGRyX2NvcHkod2Rldi0+YWRkcmVzc2VzW2ld
-LmFkZHIsIHdkZXYtPmh3X2NhcHMubWFjX2FkZHJbaV0pOw0KIAkJfQ0KLQkJZXRoZXJfYWRkcl9j
-b3B5KHdkZXYtPmFkZHJlc3Nlc1tpXS5hZGRyLCB3ZGV2LT5od19jYXBzLm1hY19hZGRyW2ldKTsN
-CiAJCWlmICghaXNfdmFsaWRfZXRoZXJfYWRkcih3ZGV2LT5hZGRyZXNzZXNbaV0uYWRkcikpIHsN
-CiAJCQlkZXZfd2Fybih3ZGV2LT5kZXYsICJ1c2luZyByYW5kb20gTUFDIGFkZHJlc3NcbiIpOw0K
-IAkJCWV0aF9yYW5kb21fYWRkcih3ZGV2LT5hZGRyZXNzZXNbaV0uYWRkcik7DQotLSANCjIuMjAu
-MQ0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwg
-bWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRl
-di5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVs
-Cg==
+Hi Marco,
+On Thu 17 Oct 2019 at 09:10, Marco Felsch wrote:
+> Hi Rui,
+>
+> On 19-10-16 14:43, Rui Miguel Silva wrote:
+>> Hi Marco,
+>> On Wed 16 Oct 2019 at 10:06, Marco Felsch wrote:
+>> > Hi Chuhong,
+>> >
+>> > On 19-10-15 21:59, Chuhong Yuan wrote:
+>> >> devm_regulator_get may return an error but mipi_csis_phy_init misses
+>> >> a check for it.
+>> >> This may lead to problems when regulator_set_voltage uses the unchecked
+>> >> pointer.
+>> >> This patch adds a check for devm_regulator_get to avoid potential risk.
+>> >>
+>> >> Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
+>> >> ---
+>> >> Changes in v2:
+>> >>   - Add a check in mipi_csis_probe for the modified mipi_csis_phy_init.
+>> >
+>> > Did you miss the check for -EPROBE_DEFER?
+>> >
+>>
+>> I think nothing special is really needed to do in case of
+>> EPROBE_DEFER, or am I missing something?
+>> It just return to probe and probe returns also. I just talked
+>> about it because it was not cover in the original code.
+>
+> Yes, your are right... I shouldn't comment on anything I read with one
+> eye. Sorry.
+>
+
+ehehe, no problem and thanks for your inputs.
+
+---
+Cheers,
+	Rui
+
+>
+> Regards,
+>   Marco
+>
+>> ---
+>> Cheers,
+>> 	Rui
+>>
+>> >
+>> > Regards,
+>> >   Marco
+>> >
+>> >>
+>> >>  drivers/staging/media/imx/imx7-mipi-csis.c | 8 +++++++-
+>> >>  1 file changed, 7 insertions(+), 1 deletion(-)
+>> >>
+>> >> diff --git a/drivers/staging/media/imx/imx7-mipi-csis.c b/drivers/staging/media/imx/imx7-mipi-csis.c
+>> >> index 73d8354e618c..e8a6acaa969e 100644
+>> >> --- a/drivers/staging/media/imx/imx7-mipi-csis.c
+>> >> +++ b/drivers/staging/media/imx/imx7-mipi-csis.c
+>> >> @@ -350,6 +350,8 @@ static void mipi_csis_sw_reset(struct csi_state *state)
+>> >>  static int mipi_csis_phy_init(struct csi_state *state)
+>> >>  {
+>> >>  	state->mipi_phy_regulator = devm_regulator_get(state->dev, "phy");
+>> >> +	if (IS_ERR(state->mipi_phy_regulator))
+>> >> +		return PTR_ERR(state->mipi_phy_regulator);
+>> >>
+>> >>  	return regulator_set_voltage(state->mipi_phy_regulator, 1000000,
+>> >>  				     1000000);
+>> >> @@ -966,7 +968,10 @@ static int mipi_csis_probe(struct platform_device *pdev)
+>> >>  		return ret;
+>> >>  	}
+>> >>
+>> >> -	mipi_csis_phy_init(state);
+>> >> +	ret = mipi_csis_phy_init(state);
+>> >> +	if (ret < 0)
+>> >> +		return ret;
+>> >> +
+>> >>  	mipi_csis_phy_reset(state);
+>> >>
+>> >>  	mem_res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>> >> --
+>> >> 2.20.1
+>> >>
+>> >>
+>> >>
+>>
+>>
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
