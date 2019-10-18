@@ -1,71 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 47CCFDD0B9
-	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Oct 2019 22:56:55 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 822FE24D71;
-	Fri, 18 Oct 2019 20:56:53 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Bszy3AB9rfE7; Fri, 18 Oct 2019 20:56:53 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 3707222795;
-	Fri, 18 Oct 2019 20:56:52 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CE5BD1BF5F6
- for <devel@linuxdriverproject.org>; Fri, 18 Oct 2019 20:56:49 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 57139DD0D4
+	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Oct 2019 23:05:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C61C2878EA
- for <devel@linuxdriverproject.org>; Fri, 18 Oct 2019 20:56:49 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 882BE87F34;
+	Fri, 18 Oct 2019 21:05:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id vIMUzDDj2F3K; Fri, 18 Oct 2019 21:05:15 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8D49685BA3;
+	Fri, 18 Oct 2019 21:05:14 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E5AC31BF5F5
+ for <devel@linuxdriverproject.org>; Fri, 18 Oct 2019 21:05:12 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E110D868C7
+ for <devel@linuxdriverproject.org>; Fri, 18 Oct 2019 21:05:12 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7HzG-AltdEcy for <devel@linuxdriverproject.org>;
- Fri, 18 Oct 2019 20:56:49 +0000 (UTC)
+ with ESMTP id X8IiFXZ5USm0 for <devel@linuxdriverproject.org>;
+ Fri, 18 Oct 2019 21:05:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-wr1-f74.google.com (mail-wr1-f74.google.com
  [209.85.221.74])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E902B878C1
- for <devel@driverdev.osuosl.org>; Fri, 18 Oct 2019 20:56:48 +0000 (UTC)
-Received: by mail-wr1-f74.google.com with SMTP id 67so3235891wrm.18
- for <devel@driverdev.osuosl.org>; Fri, 18 Oct 2019 13:56:48 -0700 (PDT)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id BE8DD85D54
+ for <devel@driverdev.osuosl.org>; Fri, 18 Oct 2019 21:05:11 +0000 (UTC)
+Received: by mail-wr1-f74.google.com with SMTP id e14so3234882wrm.21
+ for <devel@driverdev.osuosl.org>; Fri, 18 Oct 2019 14:05:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=rSf3nIyWZKMYSfUuilEe+uzzHebaBT4JOp0k6bHBoK4=;
- b=U4NpAEXN5/lXUpumdw+t+ry2JvKAgZeKwdGqMbAo6/rXn4uR382MxTVjKHE0cLCRV+
- ziWtm7ZLVF8hfqGcaNpAxuklijBqedBaJcqOliX/xZfPJ4AFojVNO5lRmCdGP4HWFCj3
- Pdvb6C6YL58kLovWjY2w0bmcIWjRiUsWvMps7w9g4o6JGPH+/F0LEFdCCnl8pe6NsttV
- yAi5SMuNYc31z1Y+ZSEDZmzIuzQahY2kkHG0vDG/Pllz2u3etqP52KytyCIUZYdhSr4A
- EWT2UKHjWyh5UVgLhlHHVHIfXQAFRonY0uSifEdh2REYnWiqaQxVgiPJ3YOQoWQDYfEf
- iPNQ==
+ :cc; bh=2yGsXMIwSm/Oms9K6hm98bhT5jbYAusnTPbiHrrYad0=;
+ b=ib8rONFiSdw0BDSG+fxUDZtXMMwPngNeUEA6AjlPYGXaxYKaIGNXfGuedTpaJhacz3
+ gWcNXXKa7OPTQXI0awBSIQLQc2NnAlHK3JYKKA1ClYrxoNCNyrmKk6CfE2ZGKCGUWQYg
+ x3DQ8eg/T78rQFgfpTotHKHcF+p3HTsr7LwQEfk/a9hmFpyPgSrn4G5HQa8ks8I64jXy
+ HEl7wNLMJRNSNi3tN/jIklfJzsAEm1bkWGLbGuKP/qS63rAhQSJr/NKULm1MnFcUHEIu
+ SorZARfImxD2SAWZcXHZfp4F76N/wiZdxPenIfXHj4Sqs9iZy4j8D9flN7sigoLW05PH
+ 6zXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:in-reply-to:message-id:mime-version
  :references:subject:from:to:cc;
- bh=rSf3nIyWZKMYSfUuilEe+uzzHebaBT4JOp0k6bHBoK4=;
- b=oupiQaXwvA+Qj1YuTF5reylowaUKshU39DxxN/hkcGGDZ+fB3jaUZ2YTjRST/f9oZV
- 2UGk7KDFD7bP/wuglGJLFNS2TwgscDtk0gl2EmT9hYH9v6irpKZGwjk2dCEqSME8kRas
- m6uPuPefrRPdYikT9O0mGegVIhjaDlDx+pnFLKrZZvcAVHWG1I60WxbYU39s8KW1liIL
- 49gNjk1YWT5gEFbmnJuMvq6gCvF9b4JCRlC4MULOP/9qpwIo98JYHKix/rpn9G28hnR/
- 0HvLC2SGQMPca4mUFctcwBN29UJhOpt/rnfO6uzy3/Rc2nmPNaMGdoMTNT+fWVdJ7Nhg
- y0Kg==
-X-Gm-Message-State: APjAAAWDc6VQKZnWZEZAuGqvotAnPWQZrHEd4TkkYLTdFh38l+ntUGdO
- nhzl+QLwtQFn6E2igejaUTxMwUajCw==
-X-Google-Smtp-Source: APXvYqzlSay8l7D7nwGmRtoHF5tVY73mNeqS/VnG/mqmfszIKt2jJP8+W/12gpolZeK4d18GXwIjV/BR7g==
-X-Received: by 2002:adf:e28f:: with SMTP id v15mr9028179wri.130.1571432206880; 
- Fri, 18 Oct 2019 13:56:46 -0700 (PDT)
-Date: Fri, 18 Oct 2019 22:56:30 +0200
+ bh=2yGsXMIwSm/Oms9K6hm98bhT5jbYAusnTPbiHrrYad0=;
+ b=cc6ieTDCLbYdZmjVe5i3XPgJ7VgwyIqoLnBRuGnDhp8t2z2l4jbGHqFW71Qq8Llo4g
+ GikuDOR9uhi2vqvfTcEg0JE25wEy57+4Y2BilEfMcosKhapZAHI9IujFg2NyPN1wNUY5
+ Zn3b+EHkSOpPmrqGq7IRMTPDKFGKR8x3QnasdH7D5fDf7V675M0jhkDiOocojekqlAG0
+ KmS+swsPV12+PxqNhQ+uzu1GEg60H2UPH0e0pj3OJy/nfzdY4B/dXo4EtJC03JAJ5NUg
+ IZC28PavursWGPNNulqCENKO0shRvi/bMcRmYrABogC5Ao/ujxxyFktqR2tPZ1372If1
+ e4hQ==
+X-Gm-Message-State: APjAAAUQEFkezbWx7u/yK1PadMcv3T0wY/vU0sOpiDT3mG0LMt/uqqJ9
+ PB2uEK13/8+Ibrs0flvzd6JX+pWE5w==
+X-Google-Smtp-Source: APXvYqwm/CSefU1WSdV1bcQP44CWNwDtbRYPxtlsoSCbHb/sBn682/brX+Qi6nmw4KJj+tq8Ei8AzOxerQ==
+X-Received: by 2002:adf:e38a:: with SMTP id e10mr9805449wrm.348.1571432210347; 
+ Fri, 18 Oct 2019 13:56:50 -0700 (PDT)
+Date: Fri, 18 Oct 2019 22:56:31 +0200
 In-Reply-To: <20191018205631.248274-1-jannh@google.com>
-Message-Id: <20191018205631.248274-2-jannh@google.com>
+Message-Id: <20191018205631.248274-3-jannh@google.com>
 Mime-Version: 1.0
 References: <20191018205631.248274-1-jannh@google.com>
 X-Mailer: git-send-email 2.23.0.866.gb869b98d4c-goog
-Subject: [PATCH 2/3] binder: Prevent repeated use of ->mmap() via NULL mapping
+Subject: [PATCH 3/3] binder: Handle start==NULL in binder_update_page_range()
 From: Jann Horn <jannh@google.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
  "=?UTF-8?q?Arve=20Hj=C3=B8nnev=C3=A5g?=" <arve@android.com>,
@@ -90,67 +90,60 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-binder_alloc_mmap_handler() attempts to detect the use of ->mmap() on a
-binder_proc whose binder_alloc has already been initialized by checking
-whether alloc->buffer is non-zero.
+The old loop wouldn't stop when reaching `start` if `start==NULL`, instead
+continuing backwards to index -1 and crashing.
 
-Before commit 880211667b20 ("binder: remove kernel vm_area for buffer
-space"), alloc->buffer was a kernel mapping address, which is always
-non-zero, but since that commit, it is a userspace mapping address.
+Luckily you need to be highly privileged to map things at NULL, so it's not
+a big problem.
 
-A sufficiently privileged user can map /dev/binder at NULL, tricking
-binder_alloc_mmap_handler() into assuming that the binder_proc has not been
-mapped yet. This leads to memory unsafety.
-Luckily, no context on Android has such privileges, and on a typical Linux
-desktop system, you need to be root to do that.
+Fix it by adjusting the loop so that the loop variable is always in bounds.
 
-Fix it by using the mapping size instead of the mapping address to
-distinguish the mapped case. A valid VMA can't have size zero.
+This patch is deliberately minimal to simplify backporting, but IMO this
+function could use a refactor. The jump labels in the second loop body are
+horrible (the error gotos should be jumping to free_range instead), and
+both loops would look nicer if they just iterated upwards through indices.
+And the up_read()+mmput() shouldn't be duplicated like that.
 
-Fixes: 880211667b20 ("binder: remove kernel vm_area for buffer space")
 Cc: stable@vger.kernel.org
+Fixes: 457b9a6f09f0 ("Staging: android: add binder driver")
 Signed-off-by: Jann Horn <jannh@google.com>
 ---
- drivers/android/binder_alloc.c | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
+ drivers/android/binder_alloc.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/android/binder_alloc.c b/drivers/android/binder_alloc.c
-index 21952dfa147d..539385634151 100644
+index 539385634151..7067d5542a82 100644
 --- a/drivers/android/binder_alloc.c
 +++ b/drivers/android/binder_alloc.c
-@@ -681,17 +681,17 @@ int binder_alloc_mmap_handler(struct binder_alloc *alloc,
- 	struct binder_buffer *buffer;
+@@ -277,8 +277,7 @@ static int binder_update_page_range(struct binder_alloc *alloc, int allocate,
+ 	return 0;
  
- 	mutex_lock(&binder_alloc_mmap_lock);
--	if (alloc->buffer) {
-+	if (alloc->buffer_size) {
- 		ret = -EBUSY;
- 		failure_string = "already mapped";
- 		goto err_already_mapped;
+ free_range:
+-	for (page_addr = end - PAGE_SIZE; page_addr >= start;
+-	     page_addr -= PAGE_SIZE) {
++	for (page_addr = end - PAGE_SIZE; 1; page_addr -= PAGE_SIZE) {
+ 		bool ret;
+ 		size_t index;
+ 
+@@ -291,6 +290,8 @@ static int binder_update_page_range(struct binder_alloc *alloc, int allocate,
+ 		WARN_ON(!ret);
+ 
+ 		trace_binder_free_lru_end(alloc, index);
++		if (page_addr == start)
++			break;
+ 		continue;
+ 
+ err_vm_insert_page_failed:
+@@ -298,7 +299,8 @@ static int binder_update_page_range(struct binder_alloc *alloc, int allocate,
+ 		page->page_ptr = NULL;
+ err_alloc_page_failed:
+ err_page_ptr_cleared:
+-		;
++		if (page_addr == start)
++			break;
  	}
-+	alloc->buffer_size = min_t(unsigned long, vma->vm_end - vma->vm_start,
-+				   SZ_4M);
-+	mutex_unlock(&binder_alloc_mmap_lock);
- 
- 	alloc->buffer = (void __user *)vma->vm_start;
--	mutex_unlock(&binder_alloc_mmap_lock);
- 
--	alloc->buffer_size = min_t(unsigned long, vma->vm_end - vma->vm_start,
--				   SZ_4M);
- 	alloc->pages = kcalloc(alloc->buffer_size / PAGE_SIZE,
- 			       sizeof(alloc->pages[0]),
- 			       GFP_KERNEL);
-@@ -722,8 +722,9 @@ int binder_alloc_mmap_handler(struct binder_alloc *alloc,
- 	kfree(alloc->pages);
- 	alloc->pages = NULL;
- err_alloc_pages_failed:
--	mutex_lock(&binder_alloc_mmap_lock);
- 	alloc->buffer = NULL;
-+	mutex_lock(&binder_alloc_mmap_lock);
-+	alloc->buffer_size = 0;
- err_already_mapped:
- 	mutex_unlock(&binder_alloc_mmap_lock);
- 	binder_alloc_debug(BINDER_DEBUG_USER_ERROR,
+ err_no_vma:
+ 	if (mm) {
 -- 
 2.23.0.866.gb869b98d4c-goog
 
