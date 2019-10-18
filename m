@@ -1,90 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1573CDBEB2
-	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Oct 2019 09:48:21 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id EFDEBDC30A
+	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Oct 2019 12:48:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 651EC207A2;
-	Fri, 18 Oct 2019 07:48:19 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B6BB586F16;
+	Fri, 18 Oct 2019 10:48:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kAaz4og68lw6; Fri, 18 Oct 2019 07:48:19 +0000 (UTC)
+	with ESMTP id 0rtdSEi4FB3I; Fri, 18 Oct 2019 10:48:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 332352052C;
-	Fri, 18 Oct 2019 07:48:18 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 879B986EFE;
+	Fri, 18 Oct 2019 10:48:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7F5001BF293
- for <devel@linuxdriverproject.org>; Fri, 18 Oct 2019 07:48:12 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E063C1BF5A7
+ for <devel@linuxdriverproject.org>; Fri, 18 Oct 2019 10:48:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 70AA88870B
- for <devel@linuxdriverproject.org>; Fri, 18 Oct 2019 07:48:12 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id DC0CB20483
+ for <devel@linuxdriverproject.org>; Fri, 18 Oct 2019 10:48:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id L07kuKZgE-BF for <devel@linuxdriverproject.org>;
- Fri, 18 Oct 2019 07:48:11 +0000 (UTC)
+ with ESMTP id 34rYx5Kg7qgn for <devel@linuxdriverproject.org>;
+ Fri, 18 Oct 2019 10:48:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by hemlock.osuosl.org (Postfix) with ESMTPS id E1DCF8842A
- for <devel@driverdev.osuosl.org>; Fri, 18 Oct 2019 07:48:10 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9I7iBwq174622;
- Fri, 18 Oct 2019 07:48:05 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=HDsYmxCIfhFTmMCndsVkdI9l3Qm8CX4mTlTcHOffK8I=;
- b=qaH62j2vDJwxe08T3kn0T/6YhfwIngpnpLd9azY/Q6ePgfGICFA7BVmMhZlCdVhwmm1y
- KK08Te821XYPhX+oL15mC8Qy5ybHnJMNcwu0ij4kcwNuqCaMEEZSmI4zAw3fUaO461nt
- IpgF2LSZRtkXMhINSb1wdVii5kSCak0fissoB9sTews17o8e9ZSAHgTOIoDOJSlAAkeT
- j/JFBoHt8F6qp7ww3lw3oUnJa+Y0LaXzPymyWU+QZTmp8qguE46eUqhqCaTRc5MjT04f
- B69Q1RWCeFUJWaHFW3tHrbCC2BeHq2V9h2zR1C5OEjxmIMeVh6B8fHNRKUz8rg5i6zlT Iw== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2120.oracle.com with ESMTP id 2vq0q424dd-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 18 Oct 2019 07:48:05 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9I7loCp019672;
- Fri, 18 Oct 2019 07:48:04 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by aserp3030.oracle.com with ESMTP id 2vq0dxau8s-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 18 Oct 2019 07:48:04 +0000
-Received: from abhmp0006.oracle.com (abhmp0006.oracle.com [141.146.116.12])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x9I7m00t000577;
- Fri, 18 Oct 2019 07:48:00 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Fri, 18 Oct 2019 07:48:00 +0000
-Date: Fri, 18 Oct 2019 10:47:51 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Kangjie Lu <kjlu@umn.edu>
-Subject: Re: [PATCH] staging: rtl8192e: initializing the wep buffer
-Message-ID: <20191018074751.GF24678@kadam>
-References: <20191018045800.10909-1-kjlu@umn.edu>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191018045800.10909-1-kjlu@umn.edu>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9413
- signatures=668684
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1908290000 definitions=main-1910180076
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9413
- signatures=668684
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
- definitions=main-1910180075
+Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
+ [209.85.128.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id ED79C2038D
+ for <devel@driverdev.osuosl.org>; Fri, 18 Oct 2019 10:48:40 +0000 (UTC)
+Received: by mail-wm1-f65.google.com with SMTP id 3so5625458wmi.3
+ for <devel@driverdev.osuosl.org>; Fri, 18 Oct 2019 03:48:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=hMmhoG1hFboF7DXkU4ekkYimIsKSAcCusM/Xte7xdI8=;
+ b=lgdlRz+uSVGQVaS3PxFgm2wIGiadmtRDfXH4cABLh/YbO7etdfmz5DmXZB5Bx5qV1v
+ KNDekQflg+C0kb0PfbI807MJXfTfnMesPIP3j8PbUAn90aiwpUruLOm/FOtRYhieCvMg
+ w5zFrYpSZqIRiuI95nwo57sPAqvLCsiZGTQeiRzzHsziQYrlVfSfyKiVOOoJv1R5BJD3
+ RVCtCXjDfkZl2Dqc9++XDZYIWfIFoeTAvKw+FKnzs38pIxJhXwGo8BiEJNfXkjdeSTK3
+ ZhiKQh+MtqupHax5yYUza9WO9RKgGdTBFyQT3WfFSuHwKJ07PM7AaN8ncUY7k03XCESB
+ HxEg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=hMmhoG1hFboF7DXkU4ekkYimIsKSAcCusM/Xte7xdI8=;
+ b=Qkqp5aAuKCxG4ITS10VgtS9+bpoj/pnG9/drPh66yvl2VWyB7fTaxnp/07C2gCsLSi
+ +7Ds1sZjHI1EaSbKQqEfozCOgPB5r8JXFHqXYukeYfqFlnPjVrRWpD3exxytDGnY09iX
+ w6eeOk1r+T/yTjNzGzFBvm30JWbH1vISw64gPrZ/RZUuKNBlS7P/vcDh6plCjd+lL1jI
+ MpT65duLy9exurEZdjPshGZ+vT5gBBhxHd7BVeTxdMKNnMgqf8FappkdoRdExPoHe9kI
+ rGrjHZQGIBU8Pb2KXrCsPVdil7r8jzvBIfwc2J6zKAdyOA+v3zNgtprFDoN3Ux3qu6j+
+ RfuA==
+X-Gm-Message-State: APjAAAU0M8/ESWAt9nWAgUQ0biQE4RDMndpuD89nzCT5xjHMDXnXRAUM
+ 0z+UKctuZ1pVd1c2PN8wMGs=
+X-Google-Smtp-Source: APXvYqywrEmGtcfgiQCvsqP6fhxcZBflw6vimfyggHqVCGb4ju5EOaYdktfQNQtHNaT+OeGvm2eXMA==
+X-Received: by 2002:a1c:6089:: with SMTP id u131mr7149905wmb.60.1571395719401; 
+ Fri, 18 Oct 2019 03:48:39 -0700 (PDT)
+Received: from debian.office.codethink.co.uk. ([78.40.148.180])
+ by smtp.gmail.com with ESMTPSA id z13sm4894356wrq.51.2019.10.18.03.48.38
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 18 Oct 2019 03:48:38 -0700 (PDT)
+From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: rtl8723bs: reduce stack usage of
+ rtw_cfg80211_unlink_bss
+Date: Fri, 18 Oct 2019 11:48:37 +0100
+Message-Id: <20191018104837.23246-1-sudipm.mukherjee@gmail.com>
+X-Mailer: git-send-email 2.11.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,45 +81,54 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Oct 17, 2019 at 11:57:58PM -0500, Kangjie Lu wrote:
-> The "wep" buffer is not initialized. To avoid memory disclosures,
-> the fix initializes it, as peer functions like rtllib_ccmp_set_key
-> do.
-> 
-> Signed-off-by: Kangjie Lu <kjlu@umn.edu>
-> ---
->  drivers/staging/rtl8192e/rtllib_crypt_wep.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/staging/rtl8192e/rtllib_crypt_wep.c b/drivers/staging/rtl8192e/rtllib_crypt_wep.c
-> index b1ea650036d2..0931777ed157 100644
-> --- a/drivers/staging/rtl8192e/rtllib_crypt_wep.c
-> +++ b/drivers/staging/rtl8192e/rtllib_crypt_wep.c
-> @@ -232,6 +232,7 @@ static int prism2_wep_set_key(void *key, int len, u8 *seq, void *priv)
->  	if (len < 0 || len > WEP_KEY_LEN)
->  		return -1;
->  
-> +	memset(wep, 0, sizeof(*wep));
->  	memcpy(wep->key, key, len);
->  	wep->key_len = len;
+The build of xtensa allmodconfig gives warning of:
+In function 'rtw_cfg80211_unlink_bss':
+warning: the frame size of 1136 bytes is larger than 1024 bytes
 
-If we read beyond wep->key_len then it's probably a bug, right?  It
-doesn't matter whether it's zeroed out or not.  Fortunately we never
-do:
+Instead of having 'select_network' structure as a variable use it as a
+pointer.
 
-	memcpy(key, wep->key, wep->key_len);
+Signed-off-by: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+---
+ drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-So this change isn't required.
-
-regards,
-dan carpenter
+diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
+index 59ea4fce9a08..a25c535b6b4f 100644
+--- a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
++++ b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
+@@ -1410,16 +1410,17 @@ void rtw_cfg80211_unlink_bss(struct adapter *padapter, struct wlan_network *pnet
+ 	struct wireless_dev *pwdev = padapter->rtw_wdev;
+ 	struct wiphy *wiphy = pwdev->wiphy;
+ 	struct cfg80211_bss *bss = NULL;
+-	struct wlan_bssid_ex select_network = pnetwork->network;
++	struct wlan_bssid_ex *select_network = &pnetwork->network;
+ 
+ 	bss = cfg80211_get_bss(wiphy, NULL/*notify_channel*/,
+-		select_network.MacAddress, select_network.Ssid.Ssid,
+-		select_network.Ssid.SsidLength, 0/*WLAN_CAPABILITY_ESS*/,
++		select_network->MacAddress, select_network->Ssid.Ssid,
++		select_network->Ssid.SsidLength, 0/*WLAN_CAPABILITY_ESS*/,
+ 		0/*WLAN_CAPABILITY_ESS*/);
+ 
+ 	if (bss) {
+ 		cfg80211_unlink_bss(wiphy, bss);
+-		DBG_8192C("%s(): cfg80211_unlink %s!! () ", __func__, select_network.Ssid.Ssid);
++		DBG_8192C("%s(): cfg80211_unlink %s!! () ", __func__,
++			  select_network->Ssid.Ssid);
+ 		cfg80211_put_bss(padapter->rtw_wdev->wiphy, bss);
+ 	}
+ }
+-- 
+2.11.0
 
 _______________________________________________
 devel mailing list
