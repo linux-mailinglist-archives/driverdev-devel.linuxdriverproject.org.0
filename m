@@ -2,65 +2,57 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 601A5DCCF3
-	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Oct 2019 19:41:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7B770DCF19
+	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Oct 2019 21:10:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7EA082286F;
-	Fri, 18 Oct 2019 17:41:22 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3C81524EA2;
+	Fri, 18 Oct 2019 19:10:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dtV-g+1mRB1w; Fri, 18 Oct 2019 17:41:22 +0000 (UTC)
+	with ESMTP id Km3gEzFE-OUA; Fri, 18 Oct 2019 19:10:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 67D5E2094B;
-	Fri, 18 Oct 2019 17:41:21 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D8D7822795;
+	Fri, 18 Oct 2019 19:10:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A836C1BF373
- for <devel@linuxdriverproject.org>; Fri, 18 Oct 2019 17:41:18 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 441891BF592
+ for <devel@linuxdriverproject.org>; Fri, 18 Oct 2019 19:10:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id A41832094B
- for <devel@linuxdriverproject.org>; Fri, 18 Oct 2019 17:41:18 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 39E608776C
+ for <devel@linuxdriverproject.org>; Fri, 18 Oct 2019 19:10:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dijdlyeenvHP for <devel@linuxdriverproject.org>;
- Fri, 18 Oct 2019 17:41:18 +0000 (UTC)
-X-Greylist: delayed 00:10:01 by SQLgrey-1.7.6
-Received: from sonic311-14.consmr.mail.bf2.yahoo.com
- (sonic311-14.consmr.mail.bf2.yahoo.com [74.6.131.124])
- by silver.osuosl.org (Postfix) with ESMTPS id E3AD0207B0
- for <devel@driverdev.osuosl.org>; Fri, 18 Oct 2019 17:41:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1571420477; bh=ZkSLcXkg1xPrFHtzBsy9ipALcIc7hyyhd9T7GsQ9zU4=;
- h=Date:From:Reply-To:Subject:From:Subject;
- b=F1z4YwmAEk3xL+MpMGzYMgH9Kf/lQ2FmFz4n9kJTy4KoRexAqZk/SfyVIqKX+uTI26TLc/nrOx9POxJXjHD/ZOaoj/N25m8ShOBwJHoVykcYOa1BZeXhFfIaHu0GaiG6rXkfEB68aNO/67RPtV0OgRwIuQWlHoJGC0Kcr/fINBUMvJEc1JLFDVOsrlKjRFMZRhzykqwPgtKDeTJkcHcE9d/iPd4ptxqpOFZmj4nKqrxRjSxl25zzkY9sv7/cgSw7Dhk8Yrl2MZqwR1ahtMD9xv7qNzYr9Ql04tyN4ZrXdUvMYk4j/o/YaYI3KZGXyA6lBzCywQD6RaNkduKG7hJbMA==
-X-YMail-OSG: DbZuhJQVM1nO1REfDX8KXmh6flEsjTZIdjCOFKo8Bg.zxggQWVWC1gP83JbJ7IH
- gXBJBjlgidyCWfUEdG1z9mECcvXJ2HTIO3a8itMmg9mh55UvByq2H2bVxZCtMUm4jt_B54N2.aWX
- H0NuvhtKxUgJ3RRi6DV2VLccbraRaOBc_hr33wIq_bltvjwrOg_V44SD3I.LqYsyUbhnMLs0uopT
- CgIiMRpwZOtGOMNsarmKDl_ZPnlD71AjNIMc_i.Vjj.dZ1LVUlXz0v4AcJtiXkwr6SqwlWBBkM.D
- K7FNmDOSefeI2HCgeSciQl.pGSx2_KkmGr2u9JmbIZdCd6FOILomIwLyqFDkyvqsNJqOw6hrlQh9
- ggEaLP2Ax2Y3Bqt4rUs5PPryah9vK9uZOWlMNALVoqXn60c1ljskvNc1CsrYMmTXDbz7jQSho_jW
- evArxL0BdyjUqQqohsDzpBRkCiWHpKnsjnlBporJOcmm3C9qL.GD3Bpec_0U86trE7Q8xzwuU4xf
- Rqe7ZDY1pzykm9gJafYVlxBCRlEffLRMIJovvZ2ZlEGaOBrdSfrJl_IL_pdEnKLvTFWxhzifrp23
- vY.SHKbs8Mwwa7TZU1BqupRJY6sK0uVv9YBhO6AfsBkFzgIYvckvLHJFK1QCPNksoF03HYWS1DKA
- u4lTPGy7W7zBfNZE8fDOJKE1SBTc7.APY2ExkHXHiy7d.oLeXB_vRJTzXrCbOI6rWfXRWp8KL76n
- .vJmbUvWskrrteCaPAJMxY7hEa2XdKxzQXh747KooP4RJERIBrL7COLLQuIcKBiIzchntSTMGSKO
- nUoFBEVZ2eLBqNlq5wQGGXj4qhta8AFcErzzln5Zd.dDfcR5Y0Lnk5n7kDfYIn83MXkgFDv.cCsg
- PJqsd3uN7oeXjCRg1zufLdcmsPKyjVpworFklCfsrVolNBeT_Xilolga5eGTrUUdBzPvz3GXgZtH
- oxvu1sgRZemPBo_9bXkQUtOX4GlHY7NvPa1_Q.LvJ2ZgUcDQl_i8YFfFqZk1ZqpTqhGQWmFZBvKR
- kQa51EAvGBw7g_Cwxp1XdrMCh9SfUw9ESz7vR2hArmLt0RcgZZ0DZy1RyZr0lwvXUavKNZtcKKNM
- YO_ilPGI6k8oiOV4SkFGNV0AG5hauT02v85mDFoBsL3mHWvvGj1.T_l87HgTk6EbTGtEOKP3QuI7
- 1Jc8zUBp6FhdcWAmPM3GdmsE_L9EqYeJjbUAzUHjssNiZ2EAKd8ix.mf.k0r37oTIfzxCRu4o5Or
- rZpdYVScTTzdz.0U11eoJ66AInnSZxBbZKevaQ75ON2s.XY2ISipfVUlQ_f0SW_A2rbyDfGPcd1.
- TNkH4tdzlFg--
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic311.consmr.mail.bf2.yahoo.com with HTTP; Fri, 18 Oct 2019 17:41:17 +0000
-Date: Fri, 18 Oct 2019 17:31:15 +0000 (UTC)
-From: Ms Lisa Hugh <lisa.hugh222@gmail.com>
-Message-ID: <611589264.2389848.1571419875310@mail.yahoo.com>
-Subject: BUSINESS CO-OPERATION CLAIM.
+ with ESMTP id WScs5ngQb++n for <devel@linuxdriverproject.org>;
+ Fri, 18 Oct 2019 19:10:22 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 8626E86064
+ for <devel@driverdev.osuosl.org>; Fri, 18 Oct 2019 19:10:22 +0000 (UTC)
+Received: from archlinux (cpc149474-cmbg20-2-0-cust94.5-4.cable.virginm.net
+ [82.4.196.95])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 137B62070B;
+ Fri, 18 Oct 2019 19:10:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1571425822;
+ bh=SV8Vv5FvDe2SpzdgeslYgVDRdktvHpA3+HZ2ioDyY+k=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=swhyE8aXu2rhXWjbH/OHfscJsQ35cA/seBvUbMpUNbtKhE6uEg+ooPdTHIn/fqOm9
+ akfk2pq6oEpcUrKZ2+HIEo42KVYyLI9KfAOgia7b9WcPt74QZDAq6gEldz8FbJVEp+
+ TRLMggQbp7cGYYbX3I+sQSHRXpapijDGul+f6OMc=
+Date: Fri, 18 Oct 2019 20:10:16 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: "Ardelean, Alexandru" <alexandru.Ardelean@analog.com>
+Subject: Re: [PATCH] staging: iio: ad9834: add a check for devm_clk_get
+Message-ID: <20191018201016.0a7fde4f@archlinux>
+In-Reply-To: <3acc69aceb04667ba34200f54c59b3d160ab2f5d.camel@analog.com>
+References: <20191016142540.26450-1-hslester96@gmail.com>
+ <3acc69aceb04667ba34200f54c59b3d160ab2f5d.camel@analog.com>
+X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -74,38 +66,66 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: ms.lisahugh000@gmail.com
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ "lars@metafoo.de" <lars@metafoo.de>, "Hennerich,
+ Michael" <Michael.Hennerich@analog.com>,
+ "linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "hslester96@gmail.com" <hslester96@gmail.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "pmeerw@pmeerw.net" <pmeerw@pmeerw.net>, "knaack.h@gmx.de" <knaack.h@gmx.de>,
+ "Popa, Stefan Serban" <StefanSerban.Popa@analog.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Thu, 17 Oct 2019 12:56:33 +0000
+"Ardelean, Alexandru" <alexandru.Ardelean@analog.com> wrote:
 
+> On Wed, 2019-10-16 at 22:25 +0800, Chuhong Yuan wrote:
+> > ad9834_probe misses a check for devm_clk_get and may cause problems.
+> > Add a check like what ad9832 does to fix it.
+> >   
+> 
+> This could also use a Fixes tag, but not a big deal.
+> 
+> Reviewed-by: Alexandru Ardelean <alexandru.ardelean@analog.com>
 
-Dear Friend,
+Applied to the togreg branch of iio.git and pushed out as testing for
+the autobuilders to play with it.
 
-I am Ms Lisa Hugh work with the department of Audit and accounting manager here in the Bank(B.O.A).
+As a general point though, the fact that a devm error handler
+actually has things to do suggests this code doesn't pass
+the obviously correct test.
 
-Please i need your assistance for the transferring of thIs fund to your bank account for both of us benefit for life time investment, amount (US$4.5M DOLLARS).
+Nothing to do with this patch mind you!
 
-I have every inquiry details to make the bank believe you and release the fund in within 5 banking working days with your full co-operation with me forsuccess.
+Jonathan
 
-Note/ 50% for you why 50% for me after success of the transfer to your bank
-account.
+> 
+> > Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
+> > ---
+> >  drivers/staging/iio/frequency/ad9834.c | 4 ++++
+> >  1 file changed, 4 insertions(+)
+> > 
+> > diff --git a/drivers/staging/iio/frequency/ad9834.c
+> > b/drivers/staging/iio/frequency/ad9834.c
+> > index 038d6732c3fd..23026978a5a5 100644
+> > --- a/drivers/staging/iio/frequency/ad9834.c
+> > +++ b/drivers/staging/iio/frequency/ad9834.c
+> > @@ -417,6 +417,10 @@ static int ad9834_probe(struct spi_device *spi)
+> >  	st = iio_priv(indio_dev);
+> >  	mutex_init(&st->lock);
+> >  	st->mclk = devm_clk_get(&spi->dev, NULL);
+> > +	if (IS_ERR(st->mclk)) {
+> > +		ret = PTR_ERR(st->mclk);
+> > +		goto error_disable_reg;
+> > +	}
+> >  
+> >  	ret = clk_prepare_enable(st->mclk);
+> >  	if (ret) {  
 
-Below information is what i need from you so will can be reaching each
-other
-
-1)Full name ...
-2)Private telephone number...
-3)Age...
-4)Nationality...
-5)Occupation ...
-
-
-Thanks.
-
-Ms Lisa Hugh.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
