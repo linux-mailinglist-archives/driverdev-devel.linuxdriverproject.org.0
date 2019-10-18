@@ -2,89 +2,88 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0AB76DB63C
-	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Oct 2019 20:33:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6B2E0DBC25
+	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Oct 2019 06:58:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 8058720520;
-	Thu, 17 Oct 2019 18:33:29 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 860D320524;
+	Fri, 18 Oct 2019 04:58:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id u-AjvVweztfU; Thu, 17 Oct 2019 18:33:29 +0000 (UTC)
+	with ESMTP id 52rff-zwwRDW; Fri, 18 Oct 2019 04:58:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 52A1120415;
-	Thu, 17 Oct 2019 18:33:28 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 41BB42041A;
+	Fri, 18 Oct 2019 04:58:15 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A81871BF3B1
- for <devel@linuxdriverproject.org>; Thu, 17 Oct 2019 18:33:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9F4F01BF361
+ for <devel@linuxdriverproject.org>; Fri, 18 Oct 2019 04:58:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9165A20415
- for <devel@linuxdriverproject.org>; Thu, 17 Oct 2019 18:33:21 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9912720356
+ for <devel@linuxdriverproject.org>; Fri, 18 Oct 2019 04:58:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uWtPldTJZTUN for <devel@linuxdriverproject.org>;
- Thu, 17 Oct 2019 18:33:20 +0000 (UTC)
+ with ESMTP id QoExn-XFRLZe for <devel@linuxdriverproject.org>;
+ Fri, 18 Oct 2019 04:58:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by silver.osuosl.org (Postfix) with ESMTPS id 44DE7203EA
- for <devel@driverdev.osuosl.org>; Thu, 17 Oct 2019 18:33:20 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9HISYTS181581;
- Thu, 17 Oct 2019 18:33:19 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=95YGDHIucp9+p40wpkc2Q2qCHSVjKQI1bUdWjvpo5T8=;
- b=C3wijMRSxM2cvMqGQPMT1NwDeJvb5fsS19xmf+LGUJPJ4wq3Mmhtl2+UEQ6MsbgP19pg
- rvYHDkpJgXVMcbFJ0r6xxj/yUdWDyErcwbPa/UT64o2niMkzzYQUpl9UBO/xG6BiZYuV
- 7Z807Ch+M73dnr7DzQcfWa76kRH864a1MAIONM1DQAIy6mrDUzfxdzsXxsKhccogB1+l
- 36pBpCUzvvMbbf1qKbTNSDAUqYY3Wg0QPV9nx92s1cTJ1zgTJnJs/ohYJMDfZy8MI798
- NOdHhXzhRzbYVIQ7NNKiJFIy6nJa06Z1BjwwpKKjNKm7RyklwIFR50uVoXUAEeS5bEf1 YA== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2130.oracle.com with ESMTP id 2vk68v09cm-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 17 Oct 2019 18:33:19 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9HIXBtL052383;
- Thu, 17 Oct 2019 18:33:18 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3030.oracle.com with ESMTP id 2vpcm3d3nn-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 17 Oct 2019 18:33:18 +0000
-Received: from abhmp0008.oracle.com (abhmp0008.oracle.com [141.146.116.14])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x9HIXFIX030100;
- Thu, 17 Oct 2019 18:33:16 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 17 Oct 2019 18:33:15 +0000
-Date: Thu, 17 Oct 2019 21:33:08 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Aliasgar Surti <aliasgar.surti500@gmail.com>
-Subject: Re: [PATCH v2] staging:rtl8723bs: removed unwanted if..else condition
-Message-ID: <20191017183308.GE24678@kadam>
-References: <1571321906-15074-1-git-send-email-aliasgar.surti500@gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1571321906-15074-1-git-send-email-aliasgar.surti500@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9413
- signatures=668684
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1908290000 definitions=main-1910170166
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9413
- signatures=668684
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
- definitions=main-1910170165
+Received: from mta-p8.oit.umn.edu (mta-p8.oit.umn.edu [134.84.196.208])
+ by silver.osuosl.org (Postfix) with ESMTPS id DCD3920358
+ for <devel@driverdev.osuosl.org>; Fri, 18 Oct 2019 04:58:07 +0000 (UTC)
+Received: from localhost (unknown [127.0.0.1])
+ by mta-p8.oit.umn.edu (Postfix) with ESMTP id 3B1BEC97
+ for <devel@driverdev.osuosl.org>; Fri, 18 Oct 2019 04:58:07 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at umn.edu
+Received: from mta-p8.oit.umn.edu ([127.0.0.1])
+ by localhost (mta-p8.oit.umn.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id jfkAUuvhhGQU for <devel@driverdev.osuosl.org>;
+ Thu, 17 Oct 2019 23:58:07 -0500 (CDT)
+Received: from mail-io1-f72.google.com (mail-io1-f72.google.com
+ [209.85.166.72])
+ (using TLSv1.2 with cipher AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mta-p8.oit.umn.edu (Postfix) with ESMTPS id 12861CBC
+ for <devel@driverdev.osuosl.org>; Thu, 17 Oct 2019 23:58:06 -0500 (CDT)
+Received: by mail-io1-f72.google.com with SMTP id w8so6968895iol.20
+ for <devel@driverdev.osuosl.org>; Thu, 17 Oct 2019 21:58:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=umn.edu; s=google;
+ h=from:to:cc:subject:date:message-id;
+ bh=DvCdMzTpfcgTdM5FNIL3SmoCatqgS5bfknocDxp/cjQ=;
+ b=I3KLTDHTGjfBbu0VTQnqOAqkus9ZWIle+c83vxb65BuPr+SnL0WXvRA0zgd9pSbhZY
+ /jWnlNxJKkwZFARVmcNBBMBPS2G6RcmJNJL8kMRNIoxE6AK8gOXt3Mi8mrBZAwdhPK7s
+ clBOJbFg40XKT+cjSUutDThqhI5tnTWaTsnwPiyDi/vNGAMdzvyyNJ6jml0YAqxekaOE
+ 2Rjt7GWqH26CUYDPcBS0QReinF6ejqKrB5o2tECtDc5yQOsFxdQbzomV8cfMG8ZVUbXv
+ BdCPdThNmHEamWpFrHf1n7Hu9+Fupw2xuTj1R0Ffpto77qLteWEIqilNOLD0uaigZ1SQ
+ AGHg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=DvCdMzTpfcgTdM5FNIL3SmoCatqgS5bfknocDxp/cjQ=;
+ b=hIw2wI5aa2jVqTVvTE4gLEAbbSMWiJGFjAuSRZohd6LucCl/iKwzWCzonHW+8oih1L
+ B7jdK+Or+/0zItF+JHS8LpzQ7c+zgjljHLc6kvDFM3DQ04rqLjrHNnr5Sdiaf2K79Pyi
+ Q0Dh1xMghJ3FuR4D/ZxnUwY12K+GnTldrfKUPmEdebNwJj0qjqJcteg43x5xcAzfZCve
+ t6m2vSEzLI4Xd4x/v/RNMeESVSiPvNXHWtI1cgwMB+iSMdJrmsHa/AcnRhbtqM/+i/B0
+ Bt1n+pungsKZS1Y8MkQEVs0YL/QsQ4RyAEuEsDlLrUqjgFMtJz2LD4RTxHZ7elN/en06
+ YhiQ==
+X-Gm-Message-State: APjAAAXi3tV9HYMi0RzYlg24UpTEeM3ewPSXfq2VYkQmCBn5sZ390Az6
+ F0e6M6Q5n/Q0fAqXpd4ZQhwprOu1mUyYVs+lbcxvnb0L392HbF7EyjpBgJtAJWzL0TVMbUNPYrG
+ VecZuOhklBk29yPpcSfT4af5qCA==
+X-Received: by 2002:a6b:e401:: with SMTP id u1mr6900816iog.1.1571374686575;
+ Thu, 17 Oct 2019 21:58:06 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwK5CXIQFUEytsTQuW9pdgHMGv2efU6PTSg8JPovkgAAk1DVOm6KhHkLb7Z8PtjN5RTRM3UfQ==
+X-Received: by 2002:a6b:e401:: with SMTP id u1mr6900805iog.1.1571374686323;
+ Thu, 17 Oct 2019 21:58:06 -0700 (PDT)
+Received: from bee.dtc.umn.edu (cs-bee-u.cs.umn.edu. [128.101.106.63])
+ by smtp.gmail.com with ESMTPSA id v17sm1688965ilg.1.2019.10.17.21.58.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 17 Oct 2019 21:58:05 -0700 (PDT)
+From: Kangjie Lu <kjlu@umn.edu>
+To: kjlu@umn.edu
+Subject: [PATCH] staging: rtl8192e: initializing the wep buffer
+Date: Thu, 17 Oct 2019 23:57:58 -0500
+Message-Id: <20191018045800.10909-1-kjlu@umn.edu>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,29 +96,37 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Oct 17, 2019 at 07:48:26PM +0530, Aliasgar Surti wrote:
-> From: Aliasgar Surti <aliasgar.surti500@gmail.com>
-> 
-> There is use of if..elseif..else condition which has same logic
-> in all three blocks.
-> Removed if..else block and placed log message instead that.
-> 
-> Signed-off-by: Aliasgar Surti <aliasgar.surti500@gmail.com>
-> ---
-> v2: Fixed alignment problem.
+The "wep" buffer is not initialized. To avoid memory disclosures,
+the fix initializes it, as peer functions like rtllib_ccmp_set_key
+do.
 
-Thanks!
+Signed-off-by: Kangjie Lu <kjlu@umn.edu>
+---
+ drivers/staging/rtl8192e/rtllib_crypt_wep.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
-
-regards,
-dan carpenter
+diff --git a/drivers/staging/rtl8192e/rtllib_crypt_wep.c b/drivers/staging/rtl8192e/rtllib_crypt_wep.c
+index b1ea650036d2..0931777ed157 100644
+--- a/drivers/staging/rtl8192e/rtllib_crypt_wep.c
++++ b/drivers/staging/rtl8192e/rtllib_crypt_wep.c
+@@ -232,6 +232,7 @@ static int prism2_wep_set_key(void *key, int len, u8 *seq, void *priv)
+ 	if (len < 0 || len > WEP_KEY_LEN)
+ 		return -1;
+ 
++	memset(wep, 0, sizeof(*wep));
+ 	memcpy(wep->key, key, len);
+ 	wep->key_len = len;
+ 
+-- 
+2.17.1
 
 _______________________________________________
 devel mailing list
