@@ -1,77 +1,90 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0DA8BDBE08
-	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Oct 2019 09:10:07 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1573CDBEB2
+	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Oct 2019 09:48:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BA81487E1F;
-	Fri, 18 Oct 2019 07:10:04 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 651EC207A2;
+	Fri, 18 Oct 2019 07:48:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EZbx7N6C-EiH; Fri, 18 Oct 2019 07:10:04 +0000 (UTC)
+	with ESMTP id kAaz4og68lw6; Fri, 18 Oct 2019 07:48:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8097387E2B;
-	Fri, 18 Oct 2019 07:10:03 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 332352052C;
+	Fri, 18 Oct 2019 07:48:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9625F1BF293
- for <devel@linuxdriverproject.org>; Fri, 18 Oct 2019 07:10:01 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 7F5001BF293
+ for <devel@linuxdriverproject.org>; Fri, 18 Oct 2019 07:48:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 91D5C8650A
- for <devel@linuxdriverproject.org>; Fri, 18 Oct 2019 07:10:01 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 70AA88870B
+ for <devel@linuxdriverproject.org>; Fri, 18 Oct 2019 07:48:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Mi25ERHC_AsY for <devel@linuxdriverproject.org>;
- Fri, 18 Oct 2019 07:10:01 +0000 (UTC)
+ with ESMTP id L07kuKZgE-BF for <devel@linuxdriverproject.org>;
+ Fri, 18 Oct 2019 07:48:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
- [209.85.210.193])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 0C5AE86E28
- for <devel@driverdev.osuosl.org>; Fri, 18 Oct 2019 07:10:01 +0000 (UTC)
-Received: by mail-pf1-f193.google.com with SMTP id x127so3281596pfb.7
- for <devel@driverdev.osuosl.org>; Fri, 18 Oct 2019 00:10:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=aUKSB/eobGAaYzA+zetYK7qwC81TH5UGLLG8mpvrqjM=;
- b=IK3Ai6M2vww5v5zDqMVx2Y5Ux3F2JnNbcrzWeRo30ZlpTw/YxKGRFm5dPAXISnId2K
- LUWF/zq8wvhnBjW1sgSnfDfDCqSvxFALW1h/kZFJG+U6kfujlc5CLhE2+gvUrYIYFLyF
- eYQbv0KgtyRC03j5YNpvQHy4YWzrw9/v5m4U4iurnbFirv8SLE43Ls6jgVGAdTeTNZeQ
- TJP6IPJpuWU4YtkwYL3o0qYlasjzi57kp9+cmR9IpAQvIjoBtnnC3DPmEQeaqAusnGcb
- ZRae5QAaF5VL/IjzD4UHIeSDiqqqaPtfwmoriJTp7xN5z/F29hwErInQVeEHmxtTc7mJ
- QwBw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=aUKSB/eobGAaYzA+zetYK7qwC81TH5UGLLG8mpvrqjM=;
- b=O2IkYkdHJs4oX++qR8e1vL9bhVohJCACqLa1RvN2DwOPc63b3bgaEuGp9pNM9n8bKp
- dHiOt5/m9YEAW3ugfEk1fjugf+eBKO8TucaQBTvyROnIpAnUGXKom3ApB1vs66SZ/ZXg
- CNqVdgNSta3WCsSpD4OdPiQREVRNr/JBdu+COJOySVcCVXlIcUItw4WI9+6StMiEL0bL
- iNE10mNA0s+1ItZBIBoD9tteMPMXkF1ocQpGrx6JnJMNYsExJub8ETTKagvArC8nfi2O
- rbBmHx8y2KmqI80q4K23f+Nj1YXgE4ey+dE5cEPwrNNXk2R74IKL+wnhsQmEyFvTzv/6
- Y3fQ==
-X-Gm-Message-State: APjAAAXhKAdyJeldg3pbHWHnqFNpvgrMLhvEK05eF2M6TN6oKNl7Rj5W
- 2gRFZRMqYb4tplKcphz+oXk=
-X-Google-Smtp-Source: APXvYqwG6pgWoLTskuPSqA1ZK0IIJIG9b5lF34gkizyFXbN0bJnAbqjQXy5U4vUskXlAmbg0A2NDFA==
-X-Received: by 2002:aa7:9907:: with SMTP id z7mr4977952pff.133.1571382600635; 
- Fri, 18 Oct 2019 00:10:00 -0700 (PDT)
-Received: from localhost.localdomain ([45.52.215.209])
- by smtp.gmail.com with ESMTPSA id s97sm6974508pjc.4.2019.10.18.00.09.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 18 Oct 2019 00:09:59 -0700 (PDT)
-From: Chandra Annamaneni <chandra627@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH 2/4] staging: KPC2000: kpc2000_spi.c: Fix style issues
- (misaligned brace)
-Date: Fri, 18 Oct 2019 00:09:48 -0700
-Message-Id: <20191018070948.22279-1-chandra627@gmail.com>
-X-Mailer: git-send-email 2.20.1
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id E1DCF8842A
+ for <devel@driverdev.osuosl.org>; Fri, 18 Oct 2019 07:48:10 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9I7iBwq174622;
+ Fri, 18 Oct 2019 07:48:05 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=HDsYmxCIfhFTmMCndsVkdI9l3Qm8CX4mTlTcHOffK8I=;
+ b=qaH62j2vDJwxe08T3kn0T/6YhfwIngpnpLd9azY/Q6ePgfGICFA7BVmMhZlCdVhwmm1y
+ KK08Te821XYPhX+oL15mC8Qy5ybHnJMNcwu0ij4kcwNuqCaMEEZSmI4zAw3fUaO461nt
+ IpgF2LSZRtkXMhINSb1wdVii5kSCak0fissoB9sTews17o8e9ZSAHgTOIoDOJSlAAkeT
+ j/JFBoHt8F6qp7ww3lw3oUnJa+Y0LaXzPymyWU+QZTmp8qguE46eUqhqCaTRc5MjT04f
+ B69Q1RWCeFUJWaHFW3tHrbCC2BeHq2V9h2zR1C5OEjxmIMeVh6B8fHNRKUz8rg5i6zlT Iw== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by userp2120.oracle.com with ESMTP id 2vq0q424dd-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 18 Oct 2019 07:48:05 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9I7loCp019672;
+ Fri, 18 Oct 2019 07:48:04 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by aserp3030.oracle.com with ESMTP id 2vq0dxau8s-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 18 Oct 2019 07:48:04 +0000
+Received: from abhmp0006.oracle.com (abhmp0006.oracle.com [141.146.116.12])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x9I7m00t000577;
+ Fri, 18 Oct 2019 07:48:00 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Fri, 18 Oct 2019 07:48:00 +0000
+Date: Fri, 18 Oct 2019 10:47:51 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Kangjie Lu <kjlu@umn.edu>
+Subject: Re: [PATCH] staging: rtl8192e: initializing the wep buffer
+Message-ID: <20191018074751.GF24678@kadam>
+References: <20191018045800.10909-1-kjlu@umn.edu>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20191018045800.10909-1-kjlu@umn.edu>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9413
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1908290000 definitions=main-1910180076
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9413
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
+ definitions=main-1910180075
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,41 +97,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gneukum1@gmail.com, chandra627@gmail.com,
- michael.scheiderer@fau.de, fabian.krueger@fau.de, linux-kernel@vger.kernel.org,
- simon@nikanor.nu, dan.carpenter@oracle.com
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Resolved: ERROR: else should follow close brace '}'
+On Thu, Oct 17, 2019 at 11:57:58PM -0500, Kangjie Lu wrote:
+> The "wep" buffer is not initialized. To avoid memory disclosures,
+> the fix initializes it, as peer functions like rtllib_ccmp_set_key
+> do.
+> 
+> Signed-off-by: Kangjie Lu <kjlu@umn.edu>
+> ---
+>  drivers/staging/rtl8192e/rtllib_crypt_wep.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/staging/rtl8192e/rtllib_crypt_wep.c b/drivers/staging/rtl8192e/rtllib_crypt_wep.c
+> index b1ea650036d2..0931777ed157 100644
+> --- a/drivers/staging/rtl8192e/rtllib_crypt_wep.c
+> +++ b/drivers/staging/rtl8192e/rtllib_crypt_wep.c
+> @@ -232,6 +232,7 @@ static int prism2_wep_set_key(void *key, int len, u8 *seq, void *priv)
+>  	if (len < 0 || len > WEP_KEY_LEN)
+>  		return -1;
+>  
+> +	memset(wep, 0, sizeof(*wep));
+>  	memcpy(wep->key, key, len);
+>  	wep->key_len = len;
 
-Signed-off-by: Chandra Annamaneni <chandra627@gmail.com>
----
-Previous versions of these patches were not split into different 
-patches, did not have different patch numbers and did not have the
-keyword staging. The previous version of this patch had the wrong 
-description and subject.
- drivers/staging/kpc2000/kpc2000_spi.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+If we read beyond wep->key_len then it's probably a bug, right?  It
+doesn't matter whether it's zeroed out or not.  Fortunately we never
+do:
 
-diff --git a/drivers/staging/kpc2000/kpc2000_spi.c b/drivers/staging/kpc2000/kpc2000_spi.c
-index 5712a88c8788..929136cdc3e1 100644
---- a/drivers/staging/kpc2000/kpc2000_spi.c
-+++ b/drivers/staging/kpc2000/kpc2000_spi.c
-@@ -226,8 +226,7 @@ kp_spi_txrx_pio(struct spi_device *spidev, struct spi_transfer *transfer)
- 			kp_spi_write_reg(cs, KP_SPI_REG_TXDATA, val);
- 			processed++;
- 		}
--	}
--	else if (rx) {
-+	} else if (rx) {
- 		for (i = 0 ; i < c ; i++) {
- 			char test = 0;
- 
--- 
-2.20.1
+	memcpy(key, wep->key, wep->key_len);
+
+So this change isn't required.
+
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
