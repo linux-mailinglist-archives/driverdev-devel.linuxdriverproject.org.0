@@ -1,74 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 96E0CDD8F7
-	for <lists+driverdev-devel@lfdr.de>; Sat, 19 Oct 2019 16:08:09 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B1816DD8F9
+	for <lists+driverdev-devel@lfdr.de>; Sat, 19 Oct 2019 16:08:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4EDAE85EAC;
-	Sat, 19 Oct 2019 14:08:08 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 31B4387BD3;
+	Sat, 19 Oct 2019 14:08:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id weZl2lUwA3oJ; Sat, 19 Oct 2019 14:08:07 +0000 (UTC)
+	with ESMTP id COmpOxcXng1z; Sat, 19 Oct 2019 14:08:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1AC5785EA4;
-	Sat, 19 Oct 2019 14:08:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C865F87B9B;
+	Sat, 19 Oct 2019 14:08:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 04AD11BF334
- for <devel@linuxdriverproject.org>; Sat, 19 Oct 2019 14:07:53 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C88781BF334
+ for <devel@linuxdriverproject.org>; Sat, 19 Oct 2019 14:07:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DA3A385727
- for <devel@linuxdriverproject.org>; Sat, 19 Oct 2019 14:07:52 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id AF5F587B5E
+ for <devel@linuxdriverproject.org>; Sat, 19 Oct 2019 14:07:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ewo0g+kTV4bP for <devel@linuxdriverproject.org>;
- Sat, 19 Oct 2019 14:07:52 +0000 (UTC)
+ with ESMTP id aOTHTqg5udwB for <devel@linuxdriverproject.org>;
+ Sat, 19 Oct 2019 14:07:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
- [209.85.128.68])
- by whitealder.osuosl.org (Postfix) with ESMTPS id F1C468557B
- for <devel@driverdev.osuosl.org>; Sat, 19 Oct 2019 14:07:51 +0000 (UTC)
-Received: by mail-wm1-f68.google.com with SMTP id y135so11279296wmc.1
- for <devel@driverdev.osuosl.org>; Sat, 19 Oct 2019 07:07:51 -0700 (PDT)
+Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
+ [209.85.128.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 6491787BD3
+ for <devel@driverdev.osuosl.org>; Sat, 19 Oct 2019 14:07:53 +0000 (UTC)
+Received: by mail-wm1-f65.google.com with SMTP id v17so8614300wml.4
+ for <devel@driverdev.osuosl.org>; Sat, 19 Oct 2019 07:07:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=KnTNLw2zsQ+5FjLMZo6V27teAR8omoAiJIuKZyNFMzg=;
- b=Ada3B9dY1uk12JQ19eWuDMptg1aPGMH0mO3rVcZ8Q0JJ0dJfgYJlGo64uNHpgbj+bS
- sHMFewjUMl7apRYWPCrz682VekIr/DxSmGu+HZ3nTzA3apqlFW7twjiqhaRIiBc4SFK0
- 3V+RvOE13cJm3Xuc8NdauZ0Jc3HBhciuA2XeXwIPd9yFSMLyk6ebn1Zs1eSsDrNxt1LX
- p/4ypmiwwGvGjH4C9LClKX1bEgQhaBPTnYEaBcZYVkwYMEdC5zT1YUI7uc9Sh4eDMHHn
- vzAEaU4J/DkTJlMvwg4haXWG+SM1XsDGBoq1ws45kbkB4o/BAs6Dj5VhmTNIvDiF7mcF
- cQuQ==
+ bh=rzESKhvNCTT5RhFCFcaQxIFkB4Hb29h8Yzywkz7FpuM=;
+ b=ZSfm+/fzTL4ZRtIdnUiIR1EvTUPJZO7WwqsR8jUvw3wGgIcIwQOTEjvTWJVI8IcOCk
+ +ei9PZnUiNIA+avq6qq7Pl2oZdkxUhn6jfV0qApzlixXh2SAX8YZJjM1PFSwcDD3Em+J
+ dV64V4W2ncc4XUJL+buTOeLqJIBzaYKrB5jTvp67/Ee2I0l2bgXLY6Wa+RTQipBGEnMQ
+ hChNCc3U6+snFJka4AFt90jIV2DEJoHe/MikXtJJoZvOFeeDaYy99uexZAbFgQd4ayrH
+ cMJj+zzNS3v3hmmz1ULZo5/KrrsicsjEayg6yM4PYZNeveC3d/QS3FeoVvkBgRzVwjS5
+ eA2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=KnTNLw2zsQ+5FjLMZo6V27teAR8omoAiJIuKZyNFMzg=;
- b=SXTDYebSGC5amM8qzrwJHp+He55A8OJ/t1LdW4k3gsRgMEmTfDhMMTiT4hKokWgTiu
- z68aGlUbVSTHRofW98iCB3y8+7E4Su4aTMGXe2WwHc6Wus41FOLqBr5wHdMXojnb1+K2
- kU5gmFb6qDwitKCk054eLQh17/NFfbWBlW7oc2IYrRx+MDTe3UhxsBoaVnJpv6LXHpjH
- hVbZqiEUvwK0Eb/Mkns0FW0FDLdBb7nHmloEUmE5KlMaQHBllwxt2HqNpIRXdUQYfHM6
- UlAZhzekQ5l1/O5QcyXw4hhyxGoKowNXsEIo5P34JxPBkz6wiheQ00gH1gWDanI8EpC4
- +nbw==
-X-Gm-Message-State: APjAAAXEQpWr8DiM2ZdVBHJ7kz9peI2XLqCVq0gMjA/oUv7oZInp6q/i
- tDzKx6fXFFa7apXiGuGhUA==
-X-Google-Smtp-Source: APXvYqyyZFhcAjD+pH849bBLedrj+1FxuREkCnHl+gYSWWl2csv5twqCEmCZkzI3wEALyplnRMejWA==
-X-Received: by 2002:a1c:f417:: with SMTP id z23mr12232552wma.77.1571494070148; 
- Sat, 19 Oct 2019 07:07:50 -0700 (PDT)
+ bh=rzESKhvNCTT5RhFCFcaQxIFkB4Hb29h8Yzywkz7FpuM=;
+ b=sFbsPqYENmcs+hKtdRgfx083A5q3suYE6uDQM/XGbruXJsPn636HsM5JLk7PCopHLc
+ vQMTQrgvZkfWJE9JyRnnZLv/K32Ox77vfypwUdVktt2Io0hbSxGM6WtbMC9yWe8fXbmR
+ GvD/lCK0xNnkoUG1c/BuOPU6HQxUXkgRXTOwQ++H+iYSaYAUzzJWyxsD02ecsjd+W7f7
+ CyeDuKt/MtSfZ+vPorCjNCXZLn0E2cpw1ZhAv9v/l1KpUuF72NbYcWLI0+zcrmhbarJM
+ exw7d0mOfd63OtpT3gxgdc+LVm+K5qjNejgZgMqFNqQK9p7fG/GdF2JugUd2nxH8+iDu
+ l62w==
+X-Gm-Message-State: APjAAAVVO0ltJD10zQW3tYEFdMYvkZThrmwf1ox6wp6BEt5X+FYetZzp
+ z3waZEbbG82OLY4xP962Nw==
+X-Google-Smtp-Source: APXvYqz26o6r1pVSl6JlbZf0CO9bG56M5BlJitbLvwW+UXmYOXO+4vdZpI+Yf8IfkmVVIyBHsNMErw==
+X-Received: by 2002:a1c:dc83:: with SMTP id t125mr12384486wmg.50.1571494071661; 
+ Sat, 19 Oct 2019 07:07:51 -0700 (PDT)
 Received: from ninjahub.lan (host-92-23-80-57.as13285.net. [92.23.80.57])
- by smtp.googlemail.com with ESMTPSA id t4sm7893080wrm.13.2019.10.19.07.07.47
+ by smtp.googlemail.com with ESMTPSA id t4sm7893080wrm.13.2019.10.19.07.07.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 19 Oct 2019 07:07:49 -0700 (PDT)
+ Sat, 19 Oct 2019 07:07:51 -0700 (PDT)
 From: Jules Irenge <jbi.octave@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v1 3/5] staging: wfx: fix warnings of logical continuation
-Date: Sat, 19 Oct 2019 15:07:17 +0100
-Message-Id: <20191019140719.2542-4-jbi.octave@gmail.com>
+Subject: [PATCH v1 4/5] staging: wfx: correct misspelled words
+Date: Sat, 19 Oct 2019 15:07:18 +0100
+Message-Id: <20191019140719.2542-5-jbi.octave@gmail.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191019140719.2542-1-jbi.octave@gmail.com>
 References: <20191019140719.2542-1-jbi.octave@gmail.com>
@@ -92,41 +92,36 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix check warnings of logical continuations
-should be on the previous line.
+Correct misspelled words: retrieved and auxiliary.
 Issue detected by checkpatch tool.
 
 Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
 ---
- drivers/staging/wfx/data_rx.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ drivers/staging/wfx/data_tx.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/wfx/data_rx.c b/drivers/staging/wfx/data_rx.c
-index 522592d71aac..52fb0f255dcd 100644
---- a/drivers/staging/wfx/data_rx.c
-+++ b/drivers/staging/wfx/data_rx.c
-@@ -163,14 +163,14 @@ void wfx_rx_cb(struct wfx_vif *wvif, struct hif_ind_rx *arg,
+diff --git a/drivers/staging/wfx/data_tx.c b/drivers/staging/wfx/data_tx.c
+index 619ab2cac5fc..a02692f3210d 100644
+--- a/drivers/staging/wfx/data_tx.c
++++ b/drivers/staging/wfx/data_tx.c
+@@ -32,7 +32,7 @@ static int wfx_get_hw_rate(struct wfx_dev *wdev,
+ 		}
+ 		return rate->idx + 14;
  	}
+-	// WFx only support 2GHz, else band information should be retreived
++	// WFx only support 2GHz, else band information should be retrieved
+ 	// from ieee80211_tx_info
+ 	return wdev->hw->wiphy->bands[NL80211_BAND_2GHZ]->bitrates[rate->idx].hw_value;
+ }
+@@ -664,7 +664,7 @@ static int wfx_tx_inner(struct wfx_vif *wvif, struct ieee80211_sta *sta,
+ 	req->ht_tx_parameters = wfx_tx_get_tx_parms(wvif->wdev, tx_info);
+ 	req->tx_flags.retry_policy_index = wfx_tx_get_rate_id(wvif, tx_info);
  
- 	/* Filter block ACK negotiation: fully controlled by firmware */
--	if (ieee80211_is_action(frame->frame_control)
--	    && arg->rx_flags.match_uc_addr
--	    && mgmt->u.action.category == WLAN_CATEGORY_BACK)
-+	if (ieee80211_is_action(frame->frame_control) &&
-+	    arg->rx_flags.match_uc_addr &&
-+	    mgmt->u.action.category == WLAN_CATEGORY_BACK)
- 		goto drop;
--	if (ieee80211_is_beacon(frame->frame_control)
--	    && !arg->status && wvif->vif
--	    && ether_addr_equal(ieee80211_get_SA(frame),
--				wvif->vif->bss_conf.bssid)) {
-+	if (ieee80211_is_beacon(frame->frame_control) &&
-+	    !arg->status && wvif->vif &&
-+	    ether_addr_equal(ieee80211_get_SA(frame),
-+			     wvif->vif->bss_conf.bssid)) {
- 		const u8 *tim_ie;
- 		u8 *ies = mgmt->u.beacon.variable;
- 		size_t ies_len = skb->len - (ies - skb->data);
+-	// Auxilliary operations
++	// Auxiliary operations
+ 	wfx_tx_manage_pm(wvif, hdr, tx_priv, sta);
+ 	wfx_tx_queue_put(wvif->wdev, &wvif->wdev->tx_queue[queue_id], skb);
+ 	wfx_bh_request_tx(wvif->wdev);
 -- 
 2.21.0
 
