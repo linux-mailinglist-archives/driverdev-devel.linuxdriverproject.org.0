@@ -1,79 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D0038DD8FA
-	for <lists+driverdev-devel@lfdr.de>; Sat, 19 Oct 2019 16:08:26 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 60503DD913
+	for <lists+driverdev-devel@lfdr.de>; Sat, 19 Oct 2019 16:27:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 786D185F0F;
-	Sat, 19 Oct 2019 14:08:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2AC35870A1;
+	Sat, 19 Oct 2019 14:26:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dNsUNmkBLQaO; Sat, 19 Oct 2019 14:08:24 +0000 (UTC)
+	with ESMTP id 0SgH2LVi6k26; Sat, 19 Oct 2019 14:26:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3D94585EAF;
-	Sat, 19 Oct 2019 14:08:24 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 679D187082;
+	Sat, 19 Oct 2019 14:26:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 505981BF334
- for <devel@linuxdriverproject.org>; Sat, 19 Oct 2019 14:08:00 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id EA66A1BF334
+ for <devel@linuxdriverproject.org>; Sat, 19 Oct 2019 14:26:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 1177D87BD3
- for <devel@linuxdriverproject.org>; Sat, 19 Oct 2019 14:08:00 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E38D487089
+ for <devel@linuxdriverproject.org>; Sat, 19 Oct 2019 14:26:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 86b-KaWYMQig for <devel@linuxdriverproject.org>;
- Sat, 19 Oct 2019 14:07:54 +0000 (UTC)
+ with ESMTP id 3ooovBuYUrr5 for <devel@linuxdriverproject.org>;
+ Sat, 19 Oct 2019 14:26:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
- [209.85.221.68])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8705C87CDD
- for <devel@driverdev.osuosl.org>; Sat, 19 Oct 2019 14:07:54 +0000 (UTC)
-Received: by mail-wr1-f68.google.com with SMTP id q13so4113554wrs.12
- for <devel@driverdev.osuosl.org>; Sat, 19 Oct 2019 07:07:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=4oUvDhII8vHajj9ZiQGmAkvxzCNzCrUqcLrW308wtI8=;
- b=OTlhg+47jcB5gxIcILG5r1UG97FdYGTVDsDnYGGZzjNvG7bjVyaqz7jPqyXCAghaa3
- LPi48tzw2hDyfkJrpTf8k4P0ElQgwXzrX4OReDd0ltxCXyToQTTrF5JXgYNV6PeI0F22
- bx1KPArFHLdDDVfqmRDKt1PTpNa4oC9B7knY+yo2+W9/tFK4PJccfZf4YkRWrGkY7d0P
- FaUflFfKc2jwnPyrE5SAd8sdn7GvQY9m12+tyUbRReLoy1Xt9AbotZtxIhsA02FH6E5g
- M2+ddw4Ev4EMGIF48SQBBFdvJFC6O1cMV/uz6K1IRW3ciuqXsijFtYc2Seyyw3bYBnPD
- 70zQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=4oUvDhII8vHajj9ZiQGmAkvxzCNzCrUqcLrW308wtI8=;
- b=nYQGA7wC8og5EmBAGKhmxUMRIQIpCVOkfSicXknaVFneosZ+IR+YoEVI8wUTbp2Wgo
- 2nyABxmJUwl+bW3fKB8cE/U791GjhYcTl+K/hPaVW2xlD93tmtv123BQrJmjOi4tVzjE
- do3IHw7MQ1lZuS3f9CR/FJoZBtnBE3SQjoGDm0qpnq4HtF4B5IEv1kDde1xR6s8u8OFD
- b0/dJaonRYIfPKsNPGHD3u77RBHeDwXUGIBC0gxJpKSiaFY0SBGlvOoaILf6ZhuExjBx
- m+Y+EweYVQghH7bifQDO95dJRZe8pwJkKY2cCeIQFB2S/seMaet0tEm8THG9tZUIi+1m
- 58jg==
-X-Gm-Message-State: APjAAAUhLLqdGbDB6j5Oyr2RBNOtKTTWHiJH3rEWrrEViGm5ZZ6BVqLf
- skVlNZdtzy4PcU0H3yLPuw==
-X-Google-Smtp-Source: APXvYqxE4GeJX/ZROGt0CXiJsmc0ZNTDAM07dTSILyQQIQcj3WZUbVCgaiSa15PgD61gFKs78uaSbg==
-X-Received: by 2002:adf:f7c6:: with SMTP id a6mr11513756wrq.272.1571494072579; 
- Sat, 19 Oct 2019 07:07:52 -0700 (PDT)
-Received: from ninjahub.lan (host-92-23-80-57.as13285.net. [92.23.80.57])
- by smtp.googlemail.com with ESMTPSA id t4sm7893080wrm.13.2019.10.19.07.07.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 19 Oct 2019 07:07:52 -0700 (PDT)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v1 5/5] staging: wfx: fix warnings of alignment should match
- open parenthesis
-Date: Sat, 19 Oct 2019 15:07:19 +0100
-Message-Id: <20191019140719.2542-6-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20191019140719.2542-1-jbi.octave@gmail.com>
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 3457D87082
+ for <devel@driverdev.osuosl.org>; Sat, 19 Oct 2019 14:26:55 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9JEP3eE122196;
+ Sat, 19 Oct 2019 14:26:53 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=0s+wv1EkxEvpCtNNuYFyVgb9qMOKWevUFl0DIEAY7C8=;
+ b=jZDrWAT+y74mh/cq3RI1MfxtJuS1a9ZoqDJiryoWPiWtEBDQf0krl2MrutLcUn+whuST
+ D9ejZaJaH8Z8OWgPR7EWQyVQlie4Su5sFiE1GmaAjRtKnLKkAfrpu7QGIWP7jSe4CXJL
+ 5FRVSV2kLc29+Fqr/Dx/9iNvOrHFZIHg2PxsHADsOqGahzsaDFvuILq4Kxp5d4swQJ8w
+ WMIAiomp1NWRjT87S9UA9+1KLVZN0Ic+E1M/FiMLPVAN/+EFCnv7C56ufBnnj3l4kwJJ
+ wCyx2+5lt3mxD9OZXbfOBWgSMwwbWQnRf1vk4xJxCnvw0fqd1oMrX3pVM2Q4536VmR/F pg== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by aserp2120.oracle.com with ESMTP id 2vqtep998s-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sat, 19 Oct 2019 14:26:53 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9JEN23m010124;
+ Sat, 19 Oct 2019 14:24:52 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3020.oracle.com with ESMTP id 2vqsu81mnq-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sat, 19 Oct 2019 14:24:52 +0000
+Received: from abhmp0008.oracle.com (abhmp0008.oracle.com [141.146.116.14])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x9JEOou9008585;
+ Sat, 19 Oct 2019 14:24:51 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Sat, 19 Oct 2019 14:24:50 +0000
+Date: Sat, 19 Oct 2019 17:24:43 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Jules Irenge <jbi.octave@gmail.com>
+Subject: Re: [PATCH v1 1/5] staging: wfx: fix warnings of no space is necessary
+Message-ID: <20191019142443.GH24678@kadam>
 References: <20191019140719.2542-1-jbi.octave@gmail.com>
+ <20191019140719.2542-2-jbi.octave@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20191019140719.2542-2-jbi.octave@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9414
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1908290000 definitions=main-1910190133
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9414
+ signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
+ definitions=main-1910190133
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,84 +98,57 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- Jules Irenge <jbi.octave@gmail.com>, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com,
+ linux-kernel@vger.kernel.org, gregkh@linuxfoundation.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-: Fix warnings of alignment should match open parenthesis.
-Issue detected by checkpatch tool.
+On Sat, Oct 19, 2019 at 03:07:15PM +0100, Jules Irenge wrote:
+> diff --git a/drivers/staging/wfx/bh.c b/drivers/staging/wfx/bh.c
+> index 3355183fc86c..573216b08042 100644
+> --- a/drivers/staging/wfx/bh.c
+> +++ b/drivers/staging/wfx/bh.c
+> @@ -69,13 +69,13 @@ static int rx_helper(struct wfx_dev *wdev, size_t read_len, int *is_cnf)
+>  	if (wfx_data_read(wdev, skb->data, alloc_len))
+>  		goto err;
+>  
+> -	piggyback = le16_to_cpup((u16 *) (skb->data + alloc_len - 2));
+> +	piggyback = le16_to_cpup((u16 *)(skb->data + alloc_len - 2));
+>  	_trace_piggyback(piggyback, false);
+>  
+> -	hif = (struct hif_msg *) skb->data;
+> +	hif = (struct hif_msg *)skb->data;
+>  	WARN(hif->encrypted & 0x1, "unsupported encryption type");
+>  	if (hif->encrypted == 0x2) {
+> -		if (wfx_sl_decode(wdev, (void *) hif)) {
+> +		if (wfx_sl_decode(wdev, (void *)hif)) {
 
-Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
----
- drivers/staging/wfx/data_rx.c |  2 +-
- drivers/staging/wfx/data_tx.c |  2 +-
- drivers/staging/wfx/debug.c   | 14 ++++++++------
- 3 files changed, 10 insertions(+), 8 deletions(-)
+In the future you may want to go through and remove the (void *) casts.
+It's not required here.
 
-diff --git a/drivers/staging/wfx/data_rx.c b/drivers/staging/wfx/data_rx.c
-index 52fb0f255dcd..e7fcce8d0cc4 100644
---- a/drivers/staging/wfx/data_rx.c
-+++ b/drivers/staging/wfx/data_rx.c
-@@ -77,7 +77,7 @@ static int wfx_drop_encrypt_data(struct wfx_dev *wdev, struct hif_ind_rx *arg, s
- 		break;
- 	default:
- 		dev_err(wdev->dev, "unknown encryption type %d\n",
--			 arg->rx_flags.encryp);
-+			arg->rx_flags.encryp);
- 		return -EIO;
- 	}
- 
-diff --git a/drivers/staging/wfx/data_tx.c b/drivers/staging/wfx/data_tx.c
-index a02692f3210d..ea4205ac2149 100644
---- a/drivers/staging/wfx/data_tx.c
-+++ b/drivers/staging/wfx/data_tx.c
-@@ -40,7 +40,7 @@ static int wfx_get_hw_rate(struct wfx_dev *wdev,
- /* TX policy cache implementation */
- 
- static void wfx_tx_policy_build(struct wfx_vif *wvif, struct tx_policy *policy,
--			    struct ieee80211_tx_rate *rates)
-+				struct ieee80211_tx_rate *rates)
- {
- 	int i;
- 	size_t count;
-diff --git a/drivers/staging/wfx/debug.c b/drivers/staging/wfx/debug.c
-index 761ad9b4f27e..0a9ca109039c 100644
---- a/drivers/staging/wfx/debug.c
-+++ b/drivers/staging/wfx/debug.c
-@@ -141,10 +141,11 @@ static int wfx_rx_stats_show(struct seq_file *seq, void *v)
- 	mutex_lock(&wdev->rx_stats_lock);
- 	seq_printf(seq, "Timestamp: %dus\n", st->date);
- 	seq_printf(seq, "Low power clock: frequency %uHz, external %s\n",
--		st->pwr_clk_freq,
--		st->is_ext_pwr_clk ? "yes" : "no");
--	seq_printf(seq, "Num. of frames: %d, PER (x10e4): %d, Throughput: %dKbps/s\n",
--		st->nb_rx_frame, st->per_total, st->throughput);
-+		   st->pwr_clk_freq,
-+		   st->is_ext_pwr_clk ? "yes" : "no");
-+	seq_printf(seq,
-+		   "N. of frames: %d, PER (x10e4): %d, Throughput: %dKbps/s\n",
-+		   st->nb_rx_frame, st->per_total, st->throughput);
- 	seq_puts(seq, "       Num. of      PER     RSSI      SNR      CFO\n");
- 	seq_puts(seq, "        frames  (x10e4)    (dBm)     (dB)    (kHz)\n");
- 	for (i = 0; i < ARRAY_SIZE(channel_names); i++) {
-@@ -160,8 +161,9 @@ static int wfx_rx_stats_show(struct seq_file *seq, void *v)
- }
- DEFINE_SHOW_ATTRIBUTE(wfx_rx_stats);
- 
--static ssize_t wfx_send_pds_write(struct file *file, const char __user *user_buf,
--			     size_t count, loff_t *ppos)
-+static ssize_t wfx_send_pds_write(struct file *file,
-+				  const char __user *user_buf,
-+				  size_t count, loff_t *ppos)
- {
- 	struct wfx_dev *wdev = file->private_data;
- 	char *buf;
--- 
-2.21.0
+> diff --git a/drivers/staging/wfx/bus_spi.c b/drivers/staging/wfx/bus_spi.c
+> index f65f7d75e731..effd07957753 100644
+> --- a/drivers/staging/wfx/bus_spi.c
+> +++ b/drivers/staging/wfx/bus_spi.c
+> @@ -90,7 +90,7 @@ static int wfx_spi_copy_to_io(void *priv, unsigned int addr,
+>  	struct wfx_spi_priv *bus = priv;
+>  	u16 regaddr = (addr << 12) | (count / 2);
+>  	// FIXME: use a bounce buffer
+> -	u16 *src16 = (void *) src;
+> +	u16 *src16 = (void *)src;
 
+Here we are just getting rid of the constness.  Apparently we are doing
+that so we can modify it without GCC pointing out the bug!!  I don't
+know the code but this seems very wrong.
+
+>  	int ret, i;
+>  	struct spi_message      m;
+>  	struct spi_transfer     t_addr = {
+
+regards,
+dan carpenter
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
