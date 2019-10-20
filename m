@@ -1,50 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4F94DDE043
-	for <lists+driverdev-devel@lfdr.de>; Sun, 20 Oct 2019 21:48:22 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 13561DE047
+	for <lists+driverdev-devel@lfdr.de>; Sun, 20 Oct 2019 21:52:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2232085D72;
-	Sun, 20 Oct 2019 19:48:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3801020490;
+	Sun, 20 Oct 2019 19:52:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hEijG3QTCGd6; Sun, 20 Oct 2019 19:48:19 +0000 (UTC)
+	with ESMTP id 8swWUf2-mL8M; Sun, 20 Oct 2019 19:52:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D93DC85BD3;
-	Sun, 20 Oct 2019 19:48:18 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0CCB120107;
+	Sun, 20 Oct 2019 19:52:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 494B51BF470
- for <devel@linuxdriverproject.org>; Sun, 20 Oct 2019 19:48:12 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 215671BF470
+ for <devel@linuxdriverproject.org>; Sun, 20 Oct 2019 19:52:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 2039486411
- for <devel@linuxdriverproject.org>; Sun, 20 Oct 2019 19:48:12 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1CB8E878CD
+ for <devel@linuxdriverproject.org>; Sun, 20 Oct 2019 19:52:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HS87MMrS3IlQ for <devel@linuxdriverproject.org>;
- Sun, 20 Oct 2019 19:48:11 +0000 (UTC)
+ with ESMTP id a6LoK+oFCmZE for <devel@linuxdriverproject.org>;
+ Sun, 20 Oct 2019 19:52:51 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail2-relais-roc.national.inria.fr
  (mail2-relais-roc.national.inria.fr [192.134.164.83])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 8D97A863B2
- for <devel@driverdev.osuosl.org>; Sun, 20 Oct 2019 19:48:10 +0000 (UTC)
-X-IronPort-AV: E=Sophos;i="5.67,320,1566856800"; d="scan'208";a="407081194"
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9A4C087774
+ for <devel@driverdev.osuosl.org>; Sun, 20 Oct 2019 19:52:50 +0000 (UTC)
+X-IronPort-AV: E=Sophos;i="5.67,320,1566856800"; d="scan'208";a="407081613"
 Received: from ip-121.net-89-2-166.rev.numericable.fr (HELO hadrien)
  ([89.2.166.121])
  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 20 Oct 2019 21:48:08 +0200
-Date: Sun, 20 Oct 2019 21:48:07 +0200 (CEST)
+ 20 Oct 2019 21:52:48 +0200
+Date: Sun, 20 Oct 2019 21:52:48 +0200 (CEST)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
 To: Joe Perches <joe@perches.com>
 Subject: Re: [Outreachy kernel] Re: [PATCH v1 1/5] staging: wfx: fix warnings
  of no space is necessary
 In-Reply-To: <6e6bc92cac0858fe5bd37b28f688d3da043f4bef.camel@perches.com>
-Message-ID: <alpine.DEB.2.21.1910202147530.10441@hadrien>
+Message-ID: <alpine.DEB.2.21.1910202149140.10441@hadrien>
 References: <20191019140719.2542-1-jbi.octave@gmail.com>
  <20191019140719.2542-2-jbi.octave@gmail.com> <20191019142443.GH24678@kadam>
  <alpine.LFD.2.21.1910191603520.6740@ninjahub.org>
@@ -94,11 +94,6 @@ On Sun, 20 Oct 2019, Joe Perches wrote:
 > drivers/staging/rtl8723bs/include/sta_info.h:151:       unsigned char chg_txt[128];
 >
 > I think the cocci transforms for an array do not match a pointer
-
-This is also correct.
-
-julia
-
 > and I wrote the cocci script without much care.
 >
 > btw;
@@ -106,6 +101,35 @@ julia
 > There's probably a generic cocci mechanism to check function
 > prototypes and then remove uses of unnecessary void pointer casts
 > in function calls.  I'm not going to try to figure out that syntax.
+
+With the --recursive-includes option, perhaps:
+
+@r@
+identifier f;
+parameter list[n] ps;
+type T;
+identifier i;
+@@
+
+T f(ps, void *i, ...);
+
+@@
+expression e;
+identifier r.f;
+expression list[r.n] es;
+@@
+
+f(es,
+- (void *)(e)
++ e
+  ,...)
+
+This of course only works for functions that have prototypes, and not for
+macros.  It will also run slowly.
+
+julia
+
+
 >
 > > [ The rest of the email is bonus comments for outreachy developers ].
 > >
