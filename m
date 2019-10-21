@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2D00BDE727
-	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Oct 2019 10:54:30 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 110A184D3B;
-	Mon, 21 Oct 2019 08:54:28 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id C+pnqa87XMGo; Mon, 21 Oct 2019 08:54:27 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CC5C484AD8;
-	Mon, 21 Oct 2019 08:54:24 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 874441BF355
- for <devel@linuxdriverproject.org>; Mon, 21 Oct 2019 08:54:22 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1A722DEC1F
+	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Oct 2019 14:25:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 817252040A
- for <devel@linuxdriverproject.org>; Mon, 21 Oct 2019 08:54:22 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 045FD204D0;
+	Mon, 21 Oct 2019 12:25:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 34tlFcB2Bo+U; Mon, 21 Oct 2019 12:25:12 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 9177E2049D;
+	Mon, 21 Oct 2019 12:25:11 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 087E31BF32C
+ for <devel@linuxdriverproject.org>; Mon, 21 Oct 2019 12:25:09 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 05AC384E34
+ for <devel@linuxdriverproject.org>; Mon, 21 Oct 2019 12:25:09 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aNp-IwYXzzXp for <devel@linuxdriverproject.org>;
- Mon, 21 Oct 2019 08:54:21 +0000 (UTC)
-X-Greylist: delayed 12:01:42 by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0136.hostedemail.com
- [216.40.44.136])
- by silver.osuosl.org (Postfix) with ESMTPS id 7F2E0203E8
- for <devel@driverdev.osuosl.org>; Mon, 21 Oct 2019 08:54:21 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave07.hostedemail.com (Postfix) with ESMTP id 651EC18045D2E
- for <devel@driverdev.osuosl.org>; Mon, 21 Oct 2019 08:54:19 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay08.hostedemail.com (Postfix) with ESMTP id BB416182CF665;
- Mon, 21 Oct 2019 08:54:16 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, :::::::::::::,
- RULES_HIT:41:355:379:599:967:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1539:1593:1594:1711:1730:1747:1777:1792:2393:2525:2559:2563:2682:2685:2828:2859:2895:2933:2937:2939:2942:2945:2947:2951:2954:3022:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3868:3870:3871:3873:3874:3934:3936:3938:3941:3944:3947:3950:3953:3956:3959:4321:5007:6119:7903:8985:9025:10004:10400:10903:11232:11658:11914:12043:12297:12663:12740:12760:12895:13069:13311:13357:13439:14096:14097:14181:14659:14721:21080:21451:21627:21788:30012:30054:30091,
- 0,
- RBL:47.151.135.224:@perches.com:.lbl8.mailshell.net-62.14.0.100 64.201.201.201,
- CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none, DomainCache:0,
- MSF:not bulk, SPF:fn, MSBL:0, DNSBL:neutral, Custom_rules:0:0:0, LFtime:25,
- LUA_SUMMARY:none
-X-HE-Tag: plate39_8105bbb6e644
-X-Filterd-Recvd-Size: 2086
-Received: from XPS-9350.home (unknown [47.151.135.224])
- (Authenticated sender: joe@perches.com)
- by omf07.hostedemail.com (Postfix) with ESMTPA;
- Mon, 21 Oct 2019 08:54:15 +0000 (UTC)
-Message-ID: <c6d923e10359746095d820ef19bd82cacc523b79.camel@perches.com>
-Subject: Re: [PATCH v1 1/5] staging: wfx: fix warnings of no space is necessary
-From: Joe Perches <joe@perches.com>
-To: Julia Lawall <julia.lawall@lip6.fr>
-Date: Mon, 21 Oct 2019 01:54:14 -0700
-In-Reply-To: <alpine.DEB.2.21.1910210850080.2959@hadrien>
-References: <20191019140719.2542-1-jbi.octave@gmail.com>
- <20191019140719.2542-2-jbi.octave@gmail.com>
- <20191019142443.GH24678@kadam>
- <alpine.LFD.2.21.1910191603520.6740@ninjahub.org>
- <20191019180514.GI24678@kadam>
- <336960fdf88dbed69dd3ed2689a5fb1d2892ace8.camel@perches.com>
- <20191020191759.GJ24678@kadam>
- <6e6bc92cac0858fe5bd37b28f688d3da043f4bef.camel@perches.com>
- <alpine.DEB.2.21.1910210850080.2959@hadrien>
-User-Agent: Evolution 3.32.1-2 
+ with ESMTP id aR-FpGb4EV1N for <devel@linuxdriverproject.org>;
+ Mon, 21 Oct 2019 12:25:08 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
+ [209.85.128.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1F4B484D7A
+ for <devel@driverdev.osuosl.org>; Mon, 21 Oct 2019 12:25:08 +0000 (UTC)
+Received: by mail-wm1-f65.google.com with SMTP id r141so2995000wme.4
+ for <devel@driverdev.osuosl.org>; Mon, 21 Oct 2019 05:25:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Nh5sBzVBgqyKBuCJZ6LigmAs7UuZG6Sg46DNMoy2vwE=;
+ b=SkFLoDUS8YE06hJOPyAETAJqLJvTI9G0UOA9I183JtgYYfriY52dnLfRx8pDpqgsWX
+ zxEEoGwJtlITUIQZ+DhLrHbL7o3NNhKz2z27+I1ytCYFbBxKw2e9wc2TxERj2190DFL+
+ p9v0D1AH7+s7BWWk4KZ+zmWc6303tV+gmPs3NuCv3yqaEXDK9eDChyGUNtLkIyz3ee01
+ DbhFJkosejFxL89pih35Nc6cnafiVUQJAg9RadmsMW2Qo6OLr9cxnH6tlglI2HIhwGlY
+ 7LbaA26UQN7XZfw6UL54+YRD3pSgNzTNOaoYR/xj9fXnTRsZrwOH2mcfX6yMC6T9ozTQ
+ 1HKQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Nh5sBzVBgqyKBuCJZ6LigmAs7UuZG6Sg46DNMoy2vwE=;
+ b=BuEqWssa3nWYCkivMrsV2yYZBbxvX3BaPPvUkXL/qs5w/5m1WcvdvL2Vn9ym+aQFay
+ yYOFy24ARJD86v/DN1+LC8UJPb3/Y/3HKZmw2R+7ndcdSNAm8NklSMfgWZy20lsG/xei
+ RYgDfFqiAuxOlydCAfPnLvz/KHVLJqAwnxxgUhtHGIm97EGa6LuzgW1hGgw8XNSskec8
+ LfSqxjjCdIIMkpLOR8sNa3nTET2t8FfUrc+qAwpngTabt/HXlv5pSjkdoAYgUGrs1Day
+ RJibDa0y40/o7dAgMdVddwGghhroHyuMEz3WP9P+YN3hFIMQr0eoKLhGJ3zmzKfCHFPO
+ C+fQ==
+X-Gm-Message-State: APjAAAWBHUw5y8a7q1AejRzs2IXOwrRWqMYa7XyIJgew5nWHQ4U9jrCY
+ rMwIbNu/RVHXrtIMg0fDmg==
+X-Google-Smtp-Source: APXvYqzTefd3lTR4BxwtOCsD9jrvC3t0VFTKdMuVz/ojOKxfzFQ8R8eFfXKqfxw39+lRx90nM7/RIQ==
+X-Received: by 2002:a7b:c8c5:: with SMTP id f5mr18811907wml.170.1571660706405; 
+ Mon, 21 Oct 2019 05:25:06 -0700 (PDT)
+Received: from ninjahub.lan (host-92-23-80-57.as13285.net. [92.23.80.57])
+ by smtp.googlemail.com with ESMTPSA id 200sm4285874wme.32.2019.10.21.05.25.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 21 Oct 2019 05:25:05 -0700 (PDT)
+From: Jules Irenge <jbi.octave@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: wfx: remove unnecessary void pointer
+Date: Mon, 21 Oct 2019 13:24:49 +0100
+Message-Id: <20191021122449.19343-1-jbi.octave@gmail.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -83,40 +83,83 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Jules Irenge <jbi.octave@gmail.com>,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
- outreachy-kernel@googlegroups.com, Dan Carpenter <dan.carpenter@oracle.com>
+Cc: devel@driverdev.osuosl.org, julia.lawall@lip6.fr,
+ Jules Irenge <jbi.octave@gmail.com>, jerome.puiller@silabs.com,
+ gregkh@linuxfoundation.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, 2019-10-21 at 08:52 +0200, Julia Lawall wrote:
-> > btw2:
-> > 
-> > I really dislike all the code inconsistencies and
-> > unnecessary code duplication with miscellaneous changes
-> > in the rtl staging drivers....
-> > 
-> > Horrid stuff.
-> 
-> I'm not sure what you mean by "miscellaneous changes".  Do you mean that
-> all issues should be fixed for one file before moving on to another one?
-> 
-> Or that there are code clones, and all of the clones should be updated at
-> the same time?
+Remove unnecessary void pointers.
+Issue detected and solved by coccinelle tool.
+semantic use
+@@expression e ;@@
+-(void*)(e)
++e
 
-Neither really.
+Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+---
+ drivers/staging/wfx/bh.c       | 2 +-
+ drivers/staging/wfx/bus_sdio.c | 2 +-
+ drivers/staging/wfx/bus_spi.c  | 2 +-
+ drivers/staging/wfx/sta.c      | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
 
-But realtek drivers are basically code clones where
-realtek should prefer to have a single library used
-for multiple drivers.
-
-And staging is basically a dumping ground for realtek
-wireless drivers.
-
-https://lkml.org/lkml/2019/5/15/1405
-
+diff --git a/drivers/staging/wfx/bh.c b/drivers/staging/wfx/bh.c
+index 955ed3a1dd73..d7ad9227c9c4 100644
+--- a/drivers/staging/wfx/bh.c
++++ b/drivers/staging/wfx/bh.c
+@@ -76,7 +76,7 @@ static int rx_helper(struct wfx_dev *wdev, size_t read_len, int *is_cnf)
+ 	hif = (struct hif_msg *)skb->data;
+ 	WARN(hif->encrypted & 0x1, "unsupported encryption type");
+ 	if (hif->encrypted == 0x2) {
+-		if (wfx_sl_decode(wdev, (void *)hif)) {
++		if (wfx_sl_decode(wdev, hif)) {
+ 			dev_kfree_skb(skb);
+ 			// If frame was a confirmation, expect trouble in next
+ 			// exchange. However, it is harmless to fail to decode
+diff --git a/drivers/staging/wfx/bus_sdio.c b/drivers/staging/wfx/bus_sdio.c
+index 375e07d6d9ae..237a19b5fd16 100644
+--- a/drivers/staging/wfx/bus_sdio.c
++++ b/drivers/staging/wfx/bus_sdio.c
+@@ -66,7 +66,7 @@ static int wfx_sdio_copy_to_io(void *priv, unsigned int reg_id,
+ 	if (reg_id == WFX_REG_IN_OUT_QUEUE)
+ 		sdio_addr |= bus->buf_id_tx << 7;
+ 	// FIXME: discards 'const' qualifier for src
+-	ret = sdio_memcpy_toio(bus->func, sdio_addr, (void *)src, count);
++	ret = sdio_memcpy_toio(bus->func, sdio_addr, src, count);
+ 	if (!ret && reg_id == WFX_REG_IN_OUT_QUEUE)
+ 		bus->buf_id_tx = (bus->buf_id_tx + 1) % 32;
+ 
+diff --git a/drivers/staging/wfx/bus_spi.c b/drivers/staging/wfx/bus_spi.c
+index ab0cda1e124f..bd74801e7461 100644
+--- a/drivers/staging/wfx/bus_spi.c
++++ b/drivers/staging/wfx/bus_spi.c
+@@ -90,7 +90,7 @@ static int wfx_spi_copy_to_io(void *priv, unsigned int addr,
+ 	struct wfx_spi_priv *bus = priv;
+ 	u16 regaddr = (addr << 12) | (count / 2);
+ 	// FIXME: use a bounce buffer
+-	u16 *src16 = (void *)src;
++	u16 *src16 = src;
+ 	int ret, i;
+ 	struct spi_message      m;
+ 	struct spi_transfer     t_addr = {
+diff --git a/drivers/staging/wfx/sta.c b/drivers/staging/wfx/sta.c
+index 688586e823c0..842158b7e805 100644
+--- a/drivers/staging/wfx/sta.c
++++ b/drivers/staging/wfx/sta.c
+@@ -896,7 +896,7 @@ static int wfx_upload_beacon(struct wfx_vif *wvif)
+ 	/* TODO: Distill probe resp; remove TIM and any other beacon-specific
+ 	 * IEs
+ 	 */
+-	mgmt = (void *)skb->data;
++	mgmt = skb->data;
+ 	mgmt->frame_control =
+ 		cpu_to_le16(IEEE80211_FTYPE_MGMT | IEEE80211_STYPE_PROBE_RESP);
+ 
+-- 
+2.21.0
 
 _______________________________________________
 devel mailing list
