@@ -1,108 +1,127 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id F2B39DED35
-	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Oct 2019 15:14:24 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E8C7F85B4A;
-	Mon, 21 Oct 2019 13:14:22 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rLn8w_EXzuCG; Mon, 21 Oct 2019 13:14:22 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3101885C00;
-	Mon, 21 Oct 2019 13:14:21 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 31AB71BF2FE
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 21 Oct 2019 13:14:19 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 45EFBDEEC9
+	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Oct 2019 16:07:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 2B60881420
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 21 Oct 2019 13:14:19 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9786286AF9;
+	Mon, 21 Oct 2019 14:06:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8Olp5sfAo-6F; Mon, 21 Oct 2019 14:06:56 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6409286ADD;
+	Mon, 21 Oct 2019 14:06:54 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 65FF81BF9B0
+ for <devel@linuxdriverproject.org>; Mon, 21 Oct 2019 14:06:52 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id ADA7081EFD
+ for <devel@linuxdriverproject.org>; Mon, 21 Oct 2019 14:06:43 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RPK5kY4zkHJ2
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 21 Oct 2019 13:14:18 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM05-DM3-obe.outbound.protection.outlook.com
- (mail-eopbgr730081.outbound.protection.outlook.com [40.107.73.81])
- by whitealder.osuosl.org (Postfix) with ESMTPS id EF7E4813E5
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 21 Oct 2019 13:14:17 +0000 (UTC)
+ with ESMTP id Jj7MTLILu3hV for <devel@linuxdriverproject.org>;
+ Mon, 21 Oct 2019 14:06:32 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mx0a-00128a01.pphosted.com (mx0a-00128a01.pphosted.com
+ [148.163.135.77])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C236487BDE
+ for <devel@driverdev.osuosl.org>; Mon, 21 Oct 2019 14:06:12 +0000 (UTC)
+Received: from pps.filterd (m0167089.ppops.net [127.0.0.1])
+ by mx0a-00128a01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ x9LE31Ye013898; Mon, 21 Oct 2019 10:06:08 -0400
+Received: from nam04-bn3-obe.outbound.protection.outlook.com
+ (mail-bn3nam04lp2057.outbound.protection.outlook.com [104.47.46.57])
+ by mx0a-00128a01.pphosted.com with ESMTP id 2vqyd6ubtg-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 21 Oct 2019 10:06:07 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=QTEjsqCLWY63hNSu7xx6uGyJFkbW0M0tI+hV002IgwcBc9bH7IaTeHkTDguj7GIBRX0fvZWBMln1Fg+spRmuWtXbMt8+S97KpJUc8mXGxF2hL26PBAUT7UnU5gMNEktGiN+vngGtlyl8UA4p9Je5dhokDUcK3o/k7cMqivl8ud7TH73z4OqQkytesyX3WVeuelkjOtbIL+dqWBqLjzUa/5HQtZpa5LoPO4XfktJWNT1IjKqnwCt2VivJBHdHmuqdVHnEtcolKLYCcU+AObJxxnaXB3TK7ne4ZuYxfzMOKYy5WEXjyWCMTxnm6CUMWYIXTFK1VCJmH8kpYY6xQZjeUA==
+ b=cx+2A3RLw6x4eSoDhPjFdyWVZfiKmXAY3l9CvSc5EJW7QOKs3VMImtEqzKxBaktGH3muBT3Ph9agY57wfAx8tjQjNbgqoYZ4WP20P2bElWaLdNnpJMMFUk/4K9NBvCwZTD6zbz8IE+FlBZnWu/tXk5mJ/wJvSJcvb6f/0udlo8wlL2ZnFz/ie8F4JxZBKEHpfRZ8z5MgqIUR7heeGt2H8YRumrVTRIbnLauwQn6ppBO7DIJwrdDF5Fz0/7GUH7jWFn6XfL+Hm9vmXr2tbbdtw7nBOJCwKbHuQJLxMTU3GFlAiUi5tsUUiDacVn5Sn0BQf003dmvfABqvWfm3awosFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0nNG51pn6lVefN68Uc9Nyk9e1fldE5cs+VAa1rGXrjc=;
- b=SEVNGkm+GaO8zrLb3x1NL7h/8M5bdqOTsegEtPeCMilpy1Hahv+cOzEl1NrP94HhEl2McRCP0IpV+cFa92kmnxEfHYIAT59nDUfVvN2FYcs/jfNMHz5SqxF29V9ntRsl54B4Fb7SsBjnTzpUd8RjqnkTMQcwftwZBrioUF9O6Or8R71xZWA3ij2Laz9ONLNFbWBO9V2cbe6f76W2v59Wedr9Ucog2Id9q7dkjJiE/XCnkQdD3BWJuEjS5oeqk7+Ke1D/keFiXmgCY29FIwSTHTtYB5EJs249h4l+EBw2MHAmNmjrthUUI/A/fmkBdlqLWKc+WaoW8RRWjXYin5yQoA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
- dkim=pass header.d=silabs.com; arc=none
+ bh=7LkLHYF9+AcgnZnsjMroP//oyqGRGXaZQlmEMitedqw=;
+ b=ASMFu83zAtyY+KSLc7Hg08M6x3UNebHTH4cYcamVac7XCFymcGomqvIS6+61InpdXxLmplPLlb39t2b3OI6zAxct1Si5Dd63qXA2Y4MrzgMZF+aVXe4RKHJ4PhODWU04oBFwzp1G4uyJShifTTeN6m7a5LakOuRSIhtKqHTq1JLL4u4+nvcme3r+YFnd1ohayYJZ+M86xHTVOds2fwIz+FIQLwkbFs2lLWpTos/cGRmOgle6K7UMGswvGNb8jbVVkFCZPVKtKjiQKGOTGlTJOi7S1iU3ndWZZFhOVPYfZRzFVv0XAX74lgopIzOMtH05biHB+SRwF+cheta+64LGyQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 137.71.25.57) smtp.rcpttodomain=vger.kernel.org smtp.mailfrom=analog.com;
+ dmarc=bestguesspass action=none header.from=analog.com; dkim=none (message
+ not signed); arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
+ d=analog.onmicrosoft.com; s=selector2-analog-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0nNG51pn6lVefN68Uc9Nyk9e1fldE5cs+VAa1rGXrjc=;
- b=h2Z67/WftlnqLvWWxBZ6I7qtTCnddq7k+Wq7dDhYTaqDA5jiU2NsmJFC04cUlFccF6iMiQHekmIr0KbXSsCa83dG5JBvNP+q72F7X95gC5tdGr0PIHF1PPfDQjlhoK6WhTj/rjfxhbwVSdgHO2yCd+/xv4qPlq8fLqKt60R0rBo=
-Received: from MN2PR11MB4063.namprd11.prod.outlook.com (10.255.180.22) by
- MN2PR11MB4366.namprd11.prod.outlook.com (52.135.38.209) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2347.21; Mon, 21 Oct 2019 13:00:05 +0000
-Received: from MN2PR11MB4063.namprd11.prod.outlook.com
- ([fe80::ac8c:fc55:d1e2:465f]) by MN2PR11MB4063.namprd11.prod.outlook.com
- ([fe80::ac8c:fc55:d1e2:465f%5]) with mapi id 15.20.2347.028; Mon, 21 Oct 2019
- 13:00:05 +0000
-From: Jerome Pouiller <Jerome.Pouiller@silabs.com>
-To: "driverdev-devel@linuxdriverproject.org"
- <driverdev-devel@linuxdriverproject.org>
-Subject: Re: [PATCH] staging: wfx: remove unnecessary void pointer
-Thread-Topic: [PATCH] staging: wfx: remove unnecessary void pointer
-Thread-Index: AQHViAqYClnli9Z4MEecbMS0wOWUF6dlDtQA
-Date: Mon, 21 Oct 2019 13:00:05 +0000
-Message-ID: <1631480.SfG2rUoJ8t@pc-42>
-References: <20191021122449.19343-1-jbi.octave@gmail.com>
-In-Reply-To: <20191021122449.19343-1-jbi.octave@gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Jerome.Pouiller@silabs.com; 
-x-originating-ip: [37.71.187.125]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 989f3913-ed49-4d6c-6de6-08d756269815
-x-ms-traffictypediagnostic: MN2PR11MB4366:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <MN2PR11MB4366C41E16E5F25DD04DA02893690@MN2PR11MB4366.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:6108;
-x-forefront-prvs: 0197AFBD92
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(7916004)(376002)(346002)(136003)(396003)(39850400004)(366004)(189003)(199004)(2501003)(8936002)(256004)(14454004)(71190400001)(71200400001)(76176011)(8676002)(14444005)(26005)(81156014)(81166006)(25786009)(5660300002)(486006)(4326008)(476003)(6916009)(11346002)(478600001)(446003)(99286004)(9686003)(6512007)(6436002)(229853002)(54906003)(2351001)(6246003)(6486002)(316002)(2906002)(66446008)(305945005)(76116006)(66946007)(33716001)(186003)(91956017)(7736002)(64756008)(5640700003)(3846002)(6116002)(66574012)(6506007)(102836004)(66476007)(66556008)(66066001)(86362001)(39026011);
- DIR:OUT; SFP:1101; SCL:1; SRVR:MN2PR11MB4366;
- H:MN2PR11MB4063.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: silabs.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: pgfe7aUuEBash2ZpEGAxAReOFgx3FAEDqZ966+JMAymj/OW3IVIkyiaAXizaHE4XMtN0ZCrOFT+xj/C11MwVA7wPXOPRKMXCrgLwQ0TFSS+/sdyz24cQXg7E1QUW6xLCOguvoscYIY2/3lkQOUBxxOHju1JeiBRF2+HtuX2ReXRTiTvknmLsE+XqRLQktziguUA/c+4qvrYVuaQh+T+sf+7EDoJZijWl9X28XRw2YD4OI8kyfoo3BVcDamKwf270JTHvKMaQCH2wRSwZQ4JHGJvy5VydRN+N9LAZZxRKg7DFuxnxvM1PdK9787RagQUHgLJVtyb5zb7rUGm/8sLUuiLSvhfYAnCrUZoKLlSN0l3Aoj+ptSm/La4tkiu5zY/ZnqA43SsHnT/usz4RwlhUYZq1EA0HKlfvq4RFXk+94/pPsTuZevFAYmthBX80sE3H
-Content-ID: <93963DF73126944489852C98FE1F2D0C@namprd11.prod.outlook.com>
+ bh=7LkLHYF9+AcgnZnsjMroP//oyqGRGXaZQlmEMitedqw=;
+ b=UuSNOG+ngwDM0dm/E635eAYi7BLmbfNLslBlZTMgIcrKuhpMYV2KnamsGa5He+eSzVvCTLiVL59tcVlkY5Jg7DTvEub0DWH/VqIo9fhBez+/npV2KrSCR97o1tTqFghjJGyWPhkRTtajyMelBnT9vad5EetPZ/mrfbdBXMY0Cn0=
+Received: from CY1PR03CA0014.namprd03.prod.outlook.com (2603:10b6:600::24) by
+ MWHPR03MB2591.namprd03.prod.outlook.com (2603:10b6:300:47::19) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2367.24; Mon, 21 Oct 2019 14:06:05 +0000
+Received: from SN1NAM02FT006.eop-nam02.prod.protection.outlook.com
+ (2a01:111:f400:7e44::206) by CY1PR03CA0014.outlook.office365.com
+ (2603:10b6:600::24) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.2367.21 via Frontend
+ Transport; Mon, 21 Oct 2019 14:06:05 +0000
+Received-SPF: Pass (protection.outlook.com: domain of analog.com designates
+ 137.71.25.57 as permitted sender) receiver=protection.outlook.com;
+ client-ip=137.71.25.57; helo=nwd2mta2.analog.com;
+Received: from nwd2mta2.analog.com (137.71.25.57) by
+ SN1NAM02FT006.mail.protection.outlook.com (10.152.72.68) with Microsoft SMTP
+ Server (version=TLS1_0, cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.2367.14
+ via Frontend Transport; Mon, 21 Oct 2019 14:06:04 +0000
+Received: from NWD2HUBCAS7.ad.analog.com (nwd2hubcas7.ad.analog.com
+ [10.64.69.107])
+ by nwd2mta2.analog.com (8.13.8/8.13.8) with ESMTP id x9LE5ug8013193
+ (version=TLSv1/SSLv3 cipher=AES256-SHA bits=256 verify=OK);
+ Mon, 21 Oct 2019 07:05:56 -0700
+Received: from ben-Latitude-E6540.ad.analog.com (10.48.65.163) by
+ NWD2HUBCAS7.ad.analog.com (10.64.69.107) with Microsoft SMTP Server id
+ 14.3.408.0; Mon, 21 Oct 2019 10:06:03 -0400
+From: Beniamin Bia <beniamin.bia@analog.com>
+To: <jic23@kernel.org>
+Subject: [PATCH 1/4] iio: adc: Add support for AD7091R5 ADC
+Date: Mon, 21 Oct 2019 20:06:05 +0300
+Message-ID: <20191021170608.26412-1-beniamin.bia@analog.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 989f3913-ed49-4d6c-6de6-08d756269815
-X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Oct 2019 13:00:05.4612 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 54dbd822-5231-4b20-944d-6f4abcd541fb
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: EWyrOpwkX/WANyiq9uer7iHjp6bltG1FDrS7kBqFSj6JpRHRLiq0ilH47BkwGf+fr4vypzkaQEwv5LPbQcjy+w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4366
+X-ADIRoutedOnPrem: True
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-HT: Tenant
+X-Forefront-Antispam-Report: CIP:137.71.25.57; IPV:NLI; CTRY:US; EFV:NLI;
+ SFV:NSPM;
+ SFS:(10009020)(396003)(136003)(346002)(39860400002)(376002)(189003)(199004)(246002)(966005)(86362001)(1076003)(356004)(50466002)(478600001)(6916009)(8936002)(8676002)(50226002)(70206006)(426003)(70586007)(44832011)(486006)(126002)(476003)(186003)(2351001)(5660300002)(14444005)(30864003)(2616005)(26005)(336012)(47776003)(51416003)(7696005)(7636002)(7416002)(305945005)(107886003)(4326008)(36756003)(6306002)(2906002)(106002)(48376002)(16586007)(54906003)(316002);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:MWHPR03MB2591; H:nwd2mta2.analog.com; FPR:;
+ SPF:Pass; LANG:en; PTR:nwd2mail11.analog.com; MX:1; A:1; 
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 83b4ae52-9ffc-432f-44f4-08d7562fd016
+X-MS-TrafficTypeDiagnostic: MWHPR03MB2591:
+X-MS-Exchange-PUrlCount: 1
+X-Microsoft-Antispam-PRVS: <MWHPR03MB25912B285F67455F16228D94F0690@MWHPR03MB2591.namprd03.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
+X-Forefront-PRVS: 0197AFBD92
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: UoO9Mzy0EFGyUK6/Qa/cxd5G9UjT5r4dtwkpB5G5JmKVQv0FsdgTWs6x1qTUOjiezlDZrUHh4gM0qFOosPauBvRQIg6X1yd7TvAP7XKLdSVvzgJkxy5h8Z2egvJJZwSSVmNM9zO7jJNiG9OtAwzCcscYIcXnSreykIrLrxBSjdkQY8G77shluya9ZhF03HYbk0GSMFe9RqiSlE6O+AZltFBWFsxGdlLCDEkdDYfifHcokj6IYEux8PIj7FyLA1D5DnTPUxu0Q+wC6WxyV59dI+11OQ+LVuBYjXRQqjPCbDklZTl0CtYaHTeWMnaURJJMcxexm2rY2MoLxATDA2XjhASagCoLdirHT7qvZJrCBljkfqqXfuciUzn7dgalOuctT42Gv0rHUEtGGvSHMchThJyYqlxQw5zqKaT15Upk++CzeIbJDFDgufOpy+JAxKCDoVQx5SDlT+WjUxC4JnkYm615gwnW/7SqluXjUtOz9Zo=
+X-OriginatorOrg: analog.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Oct 2019 14:06:04.8784 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 83b4ae52-9ffc-432f-44f4-08d7562fd016
+X-MS-Exchange-CrossTenant-Id: eaa689b4-8f87-40e0-9c6f-7228de4d754a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=eaa689b4-8f87-40e0-9c6f-7228de4d754a; Ip=[137.71.25.57];
+ Helo=[nwd2mta2.analog.com]
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR03MB2591
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.95,1.0.8
+ definitions=2019-10-21_04:2019-10-21,2019-10-21 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxscore=0 malwarescore=0
+ suspectscore=0 impostorscore=0 mlxlogscore=999 spamscore=0 phishscore=0
+ bulkscore=0 adultscore=0 clxscore=1011 priorityscore=1501
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-1908290000 definitions=main-1910210133
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,107 +134,501 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- Jules Irenge <jbi.octave@gmail.com>,
- "julia.lawall@lip6.fr" <julia.lawall@lip6.fr>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: devel@driverdev.osuosl.org, mark.rutland@arm.com, lars@metafoo.de,
+ biabeniamin@outlook.com, Michael.Hennerich@analog.com,
+ devicetree@vger.kernel.org, linux-iio@vger.kernel.org,
+ gregkh@linuxfoundation.org, linus.walleij@linaro.org,
+ linux-kernel@vger.kernel.org, nicolas.ferre@microchip.com, robh+dt@kernel.org,
+ Beniamin Bia <beniamin.bia@analog.com>, pmeerw@pmeerw.net, knaack.h@gmx.de,
+ mchehab+samsung@kernel.org, paulmck@linux.ibm.com,
+ Paul Cercueil <paul.cercueil@analog.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Monday 21 October 2019 14:24:49 CEST Jules Irenge wrote:
-> Remove unnecessary void pointers.
-> Issue detected and solved by coccinelle tool.
-> semantic use
-> @@expression e ;@@
-> -(void*)(e)
-> +e
-> =
+From: Paul Cercueil <paul.cercueil@analog.com>
 
-> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
-> ---
->  drivers/staging/wfx/bh.c       | 2 +-
->  drivers/staging/wfx/bus_sdio.c | 2 +-
->  drivers/staging/wfx/bus_spi.c  | 2 +-
->  drivers/staging/wfx/sta.c      | 2 +-
->  4 files changed, 4 insertions(+), 4 deletions(-)
-> =
+AD7091 is 4-Channel, I2C, Ultra Low Power,12-Bit ADC.
 
-> diff --git a/drivers/staging/wfx/bh.c b/drivers/staging/wfx/bh.c
-> index 955ed3a1dd73..d7ad9227c9c4 100644
-> --- a/drivers/staging/wfx/bh.c
-> +++ b/drivers/staging/wfx/bh.c
-> @@ -76,7 +76,7 @@ static int rx_helper(struct wfx_dev *wdev, size_t read_=
-len, int *is_cnf)
->         hif =3D (struct hif_msg *)skb->data;
->         WARN(hif->encrypted & 0x1, "unsupported encryption type");
->         if (hif->encrypted =3D=3D 0x2) {
-> -               if (wfx_sl_decode(wdev, (void *)hif)) {
-> +               if (wfx_sl_decode(wdev, hif)) {
->                         dev_kfree_skb(skb);
->                         // If frame was a confirmation, expect trouble in=
- next
->                         // exchange. However, it is harmless to fail to d=
-ecode
-> diff --git a/drivers/staging/wfx/bus_sdio.c b/drivers/staging/wfx/bus_sdi=
-o.c
-> index 375e07d6d9ae..237a19b5fd16 100644
-> --- a/drivers/staging/wfx/bus_sdio.c
-> +++ b/drivers/staging/wfx/bus_sdio.c
-> @@ -66,7 +66,7 @@ static int wfx_sdio_copy_to_io(void *priv, unsigned int=
- reg_id,
->         if (reg_id =3D=3D WFX_REG_IN_OUT_QUEUE)
->                 sdio_addr |=3D bus->buf_id_tx << 7;
->         // FIXME: discards 'const' qualifier for src
-> -       ret =3D sdio_memcpy_toio(bus->func, sdio_addr, (void *)src, count=
-);
-> +       ret =3D sdio_memcpy_toio(bus->func, sdio_addr, src, count);
->         if (!ret && reg_id =3D=3D WFX_REG_IN_OUT_QUEUE)
->                 bus->buf_id_tx =3D (bus->buf_id_tx + 1) % 32;
-> =
+Datasheet:
+Link: https://www.analog.com/media/en/technical-documentation/data-sheets/ad7091r-5.pdf
 
-> diff --git a/drivers/staging/wfx/bus_spi.c b/drivers/staging/wfx/bus_spi.c
-> index ab0cda1e124f..bd74801e7461 100644
-> --- a/drivers/staging/wfx/bus_spi.c
-> +++ b/drivers/staging/wfx/bus_spi.c
-> @@ -90,7 +90,7 @@ static int wfx_spi_copy_to_io(void *priv, unsigned int =
-addr,
->         struct wfx_spi_priv *bus =3D priv;
->         u16 regaddr =3D (addr << 12) | (count / 2);
->         // FIXME: use a bounce buffer
-> -       u16 *src16 =3D (void *)src;
-> +       u16 *src16 =3D src;
->         int ret, i;
->         struct spi_message      m;
->         struct spi_transfer     t_addr =3D {
-> diff --git a/drivers/staging/wfx/sta.c b/drivers/staging/wfx/sta.c
-> index 688586e823c0..842158b7e805 100644
-> --- a/drivers/staging/wfx/sta.c
-> +++ b/drivers/staging/wfx/sta.c
-> @@ -896,7 +896,7 @@ static int wfx_upload_beacon(struct wfx_vif *wvif)
->         /* TODO: Distill probe resp; remove TIM and any other beacon-spec=
-ific
->          * IEs
->          */
-> -       mgmt =3D (void *)skb->data;
-> +       mgmt =3D skb->data;
->         mgmt->frame_control =3D
->                 cpu_to_le16(IEEE80211_FTYPE_MGMT | IEEE80211_STYPE_PROBE_=
-RESP);
-> =
+Signed-off-by: Paul Cercueil <paul.cercueil@analog.com>
+Co-developed-by: Beniamin Bia <beniamin.bia@analog.com>
+Signed-off-by: Beniamin Bia <beniamin.bia@analog.com>
+---
+ drivers/iio/adc/Kconfig        |   7 +
+ drivers/iio/adc/Makefile       |   1 +
+ drivers/iio/adc/ad7091r-base.c | 273 +++++++++++++++++++++++++++++++++
+ drivers/iio/adc/ad7091r-base.h |  30 ++++
+ drivers/iio/adc/ad7091r5.c     | 108 +++++++++++++
+ 5 files changed, 419 insertions(+)
+ create mode 100644 drivers/iio/adc/ad7091r-base.c
+ create mode 100644 drivers/iio/adc/ad7091r-base.h
+ create mode 100644 drivers/iio/adc/ad7091r5.c
 
-Hello Jules,
-
-Thank you for your work.
-
-Did you check that the code continue to compile without warnings after
-applying this patch?
-
--- =
-
-J=E9r=F4me Pouiller
+diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
+index 7e3286265a38..80b1b9551749 100644
+--- a/drivers/iio/adc/Kconfig
++++ b/drivers/iio/adc/Kconfig
+@@ -22,6 +22,13 @@ config AD7124
+ 	  To compile this driver as a module, choose M here: the module will be
+ 	  called ad7124.
+ 
++config AD7091R5
++	tristate "Analog Devices AD7091R5 ADC Driver"
++	depends on I2C
++	select REGMAP_I2C
++	help
++	  Say yes here to build support for Analog Devices AD7091R-5 ADC.
++
+ config AD7266
+ 	tristate "Analog Devices AD7265/AD7266 ADC driver"
+ 	depends on SPI_MASTER
+diff --git a/drivers/iio/adc/Makefile b/drivers/iio/adc/Makefile
+index ef9cc485fb67..55e44735aaac 100644
+--- a/drivers/iio/adc/Makefile
++++ b/drivers/iio/adc/Makefile
+@@ -6,6 +6,7 @@
+ # When adding new entries keep the list in alphabetical order
+ obj-$(CONFIG_AD_SIGMA_DELTA) += ad_sigma_delta.o
+ obj-$(CONFIG_AD7124) += ad7124.o
++obj-$(CONFIG_AD7091R5) += ad7091r5.o ad7091r-base.o
+ obj-$(CONFIG_AD7266) += ad7266.o
+ obj-$(CONFIG_AD7291) += ad7291.o
+ obj-$(CONFIG_AD7298) += ad7298.o
+diff --git a/drivers/iio/adc/ad7091r-base.c b/drivers/iio/adc/ad7091r-base.c
+new file mode 100644
+index 000000000000..140413329754
+--- /dev/null
++++ b/drivers/iio/adc/ad7091r-base.c
+@@ -0,0 +1,273 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * AD7091RX Analog to Digital converter driver
++ *
++ * Copyright 2014 Analog Devices Inc.
++ *
++ */
++
++#include "ad7091r-base.h"
++
++#include <linux/bitops.h>
++#include <linux/iio/events.h>
++#include <linux/iio/iio.h>
++#include <linux/interrupt.h>
++#include <linux/module.h>
++#include <linux/regmap.h>
++
++#define AD7091R_REG_RESULT  0
++#define AD7091R_REG_CHANNEL 1
++#define AD7091R_REG_CONF    2
++#define AD7091R_REG_ALERT   3
++#define AD7091R_REG_CH_LOW_LIMIT(ch) ((ch) * 3 + 4)
++#define AD7091R_REG_CH_HIGH_LIMIT(ch) ((ch) * 3 + 5)
++#define AD7091R_REG_CH_HYSTERESIS(ch) ((ch) * 3 + 6)
++
++/* AD7091R_REG_RESULT */
++#define REG_RESULT_CH_ID(x)	    (((x) >> 13) & 0x3)
++#define REG_RESULT_CONV_RESULT(x)   ((x) & 0xfff)
++
++/* AD7091R_REG_CONF */
++#define REG_CONF_AUTO   BIT(8)
++#define REG_CONF_CMD    BIT(10)
++
++#define REG_CONF_MODE_MASK  (REG_CONF_AUTO | REG_CONF_CMD)
++
++enum ad7091r_mode {
++	AD7091R_MODE_SAMPLE,
++	AD7091R_MODE_COMMAND,
++	AD7091R_MODE_AUTOCYCLE,
++};
++
++struct ad7091r_state {
++	struct device *dev;
++	struct regmap *map;
++	const struct ad7091r_chip_info *chip_info;
++	enum ad7091r_mode mode;
++};
++
++static int ad7091r_set_mode(struct ad7091r_state *st, enum ad7091r_mode mode)
++{
++	int ret;
++
++	switch (mode) {
++	case AD7091R_MODE_SAMPLE:
++		ret = regmap_update_bits(st->map, AD7091R_REG_CONF,
++				REG_CONF_MODE_MASK, 0);
++		break;
++	case AD7091R_MODE_COMMAND:
++		ret = regmap_update_bits(st->map, AD7091R_REG_CONF,
++				REG_CONF_MODE_MASK, REG_CONF_CMD);
++		break;
++	case AD7091R_MODE_AUTOCYCLE:
++		ret = regmap_update_bits(st->map, AD7091R_REG_CONF,
++				REG_CONF_MODE_MASK, REG_CONF_AUTO);
++		break;
++	default:
++		ret = -EINVAL;
++		break;
++	}
++
++	if (!ret)
++		st->mode = mode;
++	return ret;
++}
++
++static int ad7091r_set_channel(struct ad7091r_state *st, unsigned int channel)
++{
++	unsigned int foo;
++	int ret;
++
++	/* AD7091R_REG_CHANNEL is a 8-bit register */
++	ret = regmap_write(st->map, AD7091R_REG_CHANNEL,
++			BIT(channel) | (BIT(channel) << 8));
++	if (ret)
++		return ret;
++
++	/*
++	 *  There is a latency of one conversion before the channel conversion
++	 * sequence is updated
++	 */
++	return regmap_read(st->map, AD7091R_REG_RESULT, &foo);
++}
++
++static int ad7091r_read_one(struct iio_dev *iio_dev,
++		unsigned int channel, unsigned int *read_val)
++{
++	struct ad7091r_state *st = iio_priv(iio_dev);
++	unsigned int val;
++	int ret;
++
++	/* TODO: locking */
++	ret = ad7091r_set_channel(st, channel);
++	if (ret)
++		return ret;
++
++	ret = regmap_read(st->map, AD7091R_REG_RESULT, &val);
++	if (ret)
++		return ret;
++
++	if (REG_RESULT_CH_ID(val) != channel)
++		return -EIO;
++
++	*read_val = REG_RESULT_CONV_RESULT(val);
++	return 0;
++}
++
++static int ad7091r_read_raw(struct iio_dev *iio_dev,
++			   struct iio_chan_spec const *chan,
++			   int *val, int *val2, long m)
++{
++	struct ad7091r_state *st = iio_priv(iio_dev);
++	unsigned int read_val;
++	int ret;
++
++	mutex_lock(&iio_dev->mlock);
++
++	switch (m) {
++	case IIO_CHAN_INFO_RAW:
++		if (st->mode != AD7091R_MODE_COMMAND) {
++			ret = -EBUSY;
++			goto unlock;
++		}
++
++		ret = ad7091r_read_one(iio_dev, chan->channel, &read_val);
++		if (ret)
++			goto unlock;
++
++		*val = read_val;
++		ret = IIO_VAL_INT;
++		break;
++
++	default:
++		ret = -EINVAL;
++		break;
++	}
++
++unlock:
++	mutex_unlock(&iio_dev->mlock);
++	return ret;
++}
++
++static const struct iio_info ad7091r_info = {
++	.read_raw = ad7091r_read_raw,
++};
++
++static irqreturn_t ad7091r_event_handler(int irq, void *private)
++{
++	struct ad7091r_state *st = (struct ad7091r_state *) private;
++	struct iio_dev *iio_dev = dev_get_drvdata(st->dev);
++	unsigned int i, read_val;
++	int ret;
++	s64 timestamp = iio_get_time_ns(iio_dev);
++
++	ret = regmap_read(st->map, AD7091R_REG_ALERT, &read_val);
++	if (ret)
++		return IRQ_HANDLED; /* TODO */
++
++	for (i = 0; i < st->chip_info->num_channels; i++) {
++		if (read_val & BIT(i * 2))
++			iio_push_event(iio_dev,
++					IIO_UNMOD_EVENT_CODE(IIO_VOLTAGE, i,
++						IIO_EV_TYPE_THRESH,
++						IIO_EV_DIR_RISING), timestamp);
++		if (read_val & BIT(i * 2 + 1))
++			iio_push_event(iio_dev,
++					IIO_UNMOD_EVENT_CODE(IIO_VOLTAGE, i,
++						IIO_EV_TYPE_THRESH,
++						IIO_EV_DIR_FALLING), timestamp);
++	}
++
++	return IRQ_HANDLED;
++}
++
++int ad7091r_probe(struct device *dev, const char *name,
++		const struct ad7091r_chip_info *chip_info,
++		struct regmap *map, int irq)
++{
++	struct iio_dev *iio_dev;
++	struct ad7091r_state *st;
++	int ret;
++
++	iio_dev = devm_iio_device_alloc(dev, sizeof(*st));
++	if (!iio_dev)
++		return -ENOMEM;
++
++	st = iio_priv(iio_dev);
++	st->dev = dev;
++	st->chip_info = chip_info;
++	st->map = map;
++	dev_set_drvdata(dev, iio_dev);
++
++	iio_dev->dev.parent = dev;
++	iio_dev->name = name;
++	iio_dev->info = &ad7091r_info;
++	iio_dev->modes = INDIO_DIRECT_MODE;
++
++	iio_dev->num_channels = chip_info->num_channels;
++	iio_dev->channels = chip_info->channels;
++
++	if (irq) {
++		ret = devm_request_threaded_irq(dev, irq, NULL,
++				ad7091r_event_handler,
++				IRQF_TRIGGER_FALLING | IRQF_ONESHOT, name, st);
++		if (ret)
++			return ret;
++	}
++
++	/* Use command mode by default */
++	ret = ad7091r_set_mode(st, AD7091R_MODE_COMMAND);
++	if (ret < 0)
++		return ret;
++
++	ret = iio_device_register(iio_dev);
++	if (ret)
++		return ret;
++
++	dev_dbg(dev, "Probed\n");
++	return 0;
++}
++EXPORT_SYMBOL_GPL(ad7091r_probe);
++
++int ad7091r_remove(struct device *dev)
++{
++	struct iio_dev *iio_dev = dev_get_drvdata(dev);
++
++	iio_device_unregister(iio_dev);
++	return 0;
++}
++EXPORT_SYMBOL_GPL(ad7091r_remove);
++
++static bool ad7091r_writeable_reg(struct device *dev, unsigned int reg)
++{
++	switch (reg) {
++	case AD7091R_REG_RESULT:
++	case AD7091R_REG_ALERT:
++		return false;
++	default:
++		return true;
++	}
++}
++
++static bool ad7091r_volatile_reg(struct device *dev, unsigned int reg)
++{
++	switch (reg) {
++	case AD7091R_REG_RESULT:
++	case AD7091R_REG_ALERT:
++		return true;
++	default:
++		return false;
++	}
++}
++
++const struct regmap_config ad7091r_regmap_config = {
++	.reg_bits = 8,
++	.val_bits = 16,
++	.writeable_reg = ad7091r_writeable_reg,
++	.volatile_reg = ad7091r_volatile_reg,
++};
++EXPORT_SYMBOL_GPL(ad7091r_regmap_config);
++
++//MODULE_AUTHOR("Paul Cercueil <paul.cercueil@analog.com>");
++//MODULE_DESCRIPTION("Analog Devices AD7091Rx multi-channel converters");
++//MODULE_LICENSE("GPL v2");
+diff --git a/drivers/iio/adc/ad7091r-base.h b/drivers/iio/adc/ad7091r-base.h
+new file mode 100644
+index 000000000000..7a29f86ea82b
+--- /dev/null
++++ b/drivers/iio/adc/ad7091r-base.h
+@@ -0,0 +1,30 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * AD7091RX Analog to Digital converter driver
++ *
++ * Copyright 2014 Analog Devices Inc.
++ *
++ */
++
++#ifndef __DRIVERS_IIO_DAC_AD7091R_BASE_H__
++#define __DRIVERS_IIO_DAC_AD7091R_BASE_H__
++
++#include <linux/types.h>
++#include <linux/regmap.h>
++
++struct device;
++struct ad7091r_state;
++
++struct ad7091r_chip_info {
++	unsigned int num_channels;
++	const struct iio_chan_spec *channels;
++};
++
++extern const struct regmap_config ad7091r_regmap_config;
++
++int ad7091r_probe(struct device *dev, const char *name,
++		const struct ad7091r_chip_info *chip_info,
++		struct regmap *map, int irq);
++int ad7091r_remove(struct device *dev);
++
++#endif /* __DRIVERS_IIO_DAC_AD7091R5_BASE_H__ */
+diff --git a/drivers/iio/adc/ad7091r5.c b/drivers/iio/adc/ad7091r5.c
+new file mode 100644
+index 000000000000..1ba838c58c31
+--- /dev/null
++++ b/drivers/iio/adc/ad7091r5.c
+@@ -0,0 +1,108 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * AD7091R5 Analog to Digital converter driver
++ *
++ * Copyright 2014 Analog Devices Inc.
++ *
++ */
++
++#include "ad7091r-base.h"
++
++#include <linux/i2c.h>
++#include <linux/iio/iio.h>
++#include <linux/module.h>
++
++static const struct iio_event_spec ad7091r5_events[] = {
++	{
++		.type = IIO_EV_TYPE_THRESH,
++		.dir = IIO_EV_DIR_RISING,
++		.mask_separate = BIT(IIO_EV_INFO_VALUE) |
++			BIT(IIO_EV_INFO_ENABLE),
++	},
++	{
++		.type = IIO_EV_TYPE_THRESH,
++		.dir = IIO_EV_DIR_FALLING,
++		.mask_separate = BIT(IIO_EV_INFO_VALUE) |
++			BIT(IIO_EV_INFO_ENABLE),
++	},
++	{
++		.type = IIO_EV_TYPE_THRESH,
++		.dir = IIO_EV_DIR_EITHER,
++		.mask_separate = BIT(IIO_EV_INFO_HYSTERESIS),
++	},
++};
++
++#define AD7091R_CHANNEL(idx, bits, ev, num_ev) { \
++	.type = IIO_VOLTAGE, \
++	.info_mask_separate = BIT(IIO_CHAN_INFO_RAW), \
++	.indexed = 1, \
++	.channel = idx, \
++	.event_spec = ev, \
++	.num_event_specs = num_ev, \
++}
++static const struct iio_chan_spec ad7091r5_channels_irq[] = {
++	AD7091R_CHANNEL(0, 12, ad7091r5_events, ARRAY_SIZE(ad7091r5_events)),
++	AD7091R_CHANNEL(1, 12, ad7091r5_events, ARRAY_SIZE(ad7091r5_events)),
++	AD7091R_CHANNEL(2, 12, ad7091r5_events, ARRAY_SIZE(ad7091r5_events)),
++	AD7091R_CHANNEL(3, 12, ad7091r5_events, ARRAY_SIZE(ad7091r5_events)),
++};
++
++static const struct iio_chan_spec ad7091r5_channels_noirq[] = {
++	AD7091R_CHANNEL(0, 12, NULL, 0),
++	AD7091R_CHANNEL(1, 12, NULL, 0),
++	AD7091R_CHANNEL(2, 12, NULL, 0),
++	AD7091R_CHANNEL(3, 12, NULL, 0),
++};
++#undef AD7091R_CHANNEL
++
++static const struct ad7091r_chip_info ad7091r5_chip_info_irq = {
++	.channels = ad7091r5_channels_irq,
++	.num_channels = ARRAY_SIZE(ad7091r5_channels_irq),
++};
++
++static const struct ad7091r_chip_info ad7091r5_chip_info_noirq = {
++	.channels = ad7091r5_channels_noirq,
++	.num_channels = ARRAY_SIZE(ad7091r5_channels_noirq),
++};
++
++static int ad7091r5_i2c_probe(struct i2c_client *i2c,
++		const struct i2c_device_id *id)
++{
++	const struct ad7091r_chip_info *chip_info;
++	struct regmap *map = devm_regmap_init_i2c(i2c, &ad7091r_regmap_config);
++
++	if (IS_ERR(map))
++		return PTR_ERR(map);
++
++	if (i2c->irq)
++		chip_info = &ad7091r5_chip_info_irq;
++	else
++		chip_info = &ad7091r5_chip_info_noirq;
++
++	return ad7091r_probe(&i2c->dev, id->name, chip_info, map, i2c->irq);
++}
++
++static int ad7091r5_i2c_remove(struct i2c_client *i2c)
++{
++	return ad7091r_remove(&i2c->dev);
++}
++
++static const struct i2c_device_id ad7091r5_i2c_ids[] = {
++	{"ad7091r5", 0},
++	{}
++};
++MODULE_DEVICE_TABLE(i2c, ad7091r5_i2c_ids);
++
++static struct i2c_driver ad7091r5_driver = {
++	.driver = {
++		.name = "ad7091r5",
++	},
++	.probe = ad7091r5_i2c_probe,
++	.remove = ad7091r5_i2c_remove,
++	.id_table = ad7091r5_i2c_ids,
++};
++module_i2c_driver(ad7091r5_driver);
++
++MODULE_AUTHOR("Beniamin Bia <beniamin.bia@analog.com>");
++MODULE_DESCRIPTION("Analog Devices AD7091R5 multi-channel ADC driver");
++MODULE_LICENSE("GPL v2");
+-- 
+2.17.1
 
 _______________________________________________
 devel mailing list
