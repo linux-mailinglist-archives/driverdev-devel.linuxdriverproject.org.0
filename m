@@ -1,70 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BFDC3E0A4A
-	for <lists+driverdev-devel@lfdr.de>; Tue, 22 Oct 2019 19:15:33 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 22272E0A4D
+	for <lists+driverdev-devel@lfdr.de>; Tue, 22 Oct 2019 19:15:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 08EC887FE9;
-	Tue, 22 Oct 2019 17:15:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CD3178613E;
+	Tue, 22 Oct 2019 17:15:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uiTgTLIPp+xH; Tue, 22 Oct 2019 17:15:31 +0000 (UTC)
+	with ESMTP id YN9PSHXkY2jt; Tue, 22 Oct 2019 17:15:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3EA8487861;
-	Tue, 22 Oct 2019 17:15:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8339B86126;
+	Tue, 22 Oct 2019 17:15:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 334831BF866
- for <devel@linuxdriverproject.org>; Tue, 22 Oct 2019 17:15:27 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 81EA31BF866
+ for <devel@linuxdriverproject.org>; Tue, 22 Oct 2019 17:15:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 1FAD9203EC
- for <devel@linuxdriverproject.org>; Tue, 22 Oct 2019 17:15:27 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7CA3B86126
+ for <devel@linuxdriverproject.org>; Tue, 22 Oct 2019 17:15:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9uOs5zJexXWr for <devel@linuxdriverproject.org>;
- Tue, 22 Oct 2019 17:15:26 +0000 (UTC)
+ with ESMTP id h0KOrNV-aL8c for <devel@linuxdriverproject.org>;
+ Tue, 22 Oct 2019 17:15:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
- [205.139.110.120])
- by silver.osuosl.org (Postfix) with ESMTPS id 02FB7203DE
- for <devel@driverdev.osuosl.org>; Tue, 22 Oct 2019 17:15:25 +0000 (UTC)
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
+ [205.139.110.61])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1F58B86121
+ for <devel@driverdev.osuosl.org>; Tue, 22 Oct 2019 17:15:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571764524;
+ s=mimecast20190719; t=1571764549;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=JzLCMm+xQ4R90TU2Qdv5H9QyOFSrGxYrIpM4gzVWQEQ=;
- b=fyTQ1MpL4P+GB0pZ4xHVZiSsbwDGuwz7BJ/pnkEYYG29KApqpadv3+Mvt+EE3bB8SAVSw7
- magVGCa95IOCSQYmZFWFuOI/Sj38no45NTNAAd6UWNdWKbHWnv1YofL/DSpSK/E5ZmtRnw
- vTzhtkjqCWFb9Nww1mI7fM0NMQBHmHs=
+ bh=XS/04FUnui5sNwBDedSDS4UewrsrxLUrEqpw2KoK/cQ=;
+ b=XtnhNL4hSNtUidqbt/WHcQhOjOviSnnIzHIhKxwRVmsEB1XgeaB/eZbQRsNQqdQY9f0jHx
+ CfPZmOibRO4h+sjZVHBsVaf89SCVB3r9gcvqUgX/DQu/j1KyRpX7SuvZdJT+E7GOYt0YTv
+ 8bI+xdrDj/LX1/MrV/PrKLFfe1lZ0pk=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-42-N1DsqZ8gPdiNLANKsu8dcA-1; Tue, 22 Oct 2019 13:15:22 -0400
+ us-mta-226-hQ4mXGwAP7eWs8CpMKPvnw-1; Tue, 22 Oct 2019 13:15:47 -0400
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 441A147B;
- Tue, 22 Oct 2019 17:15:17 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D9666107AD31;
+ Tue, 22 Oct 2019 17:15:41 +0000 (UTC)
 Received: from t460s.redhat.com (ovpn-116-248.ams2.redhat.com [10.36.116.248])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 026E85ED23;
- Tue, 22 Oct 2019 17:14:56 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 903AE5DA8D;
+ Tue, 22 Oct 2019 17:15:17 +0000 (UTC)
 From: David Hildenbrand <david@redhat.com>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH RFC v1 06/12] staging/gasket: Prepare gasket_release_page()
+Subject: [PATCH RFC v1 07/12] staging: kpc2000: Prepare transfer_complete_cb()
  for PG_reserved changes
-Date: Tue, 22 Oct 2019 19:12:33 +0200
-Message-Id: <20191022171239.21487-7-david@redhat.com>
+Date: Tue, 22 Oct 2019 19:12:34 +0200
+Message-Id: <20191022171239.21487-8-david@redhat.com>
 In-Reply-To: <20191022171239.21487-1-david@redhat.com>
 References: <20191022171239.21487-1-david@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: N1DsqZ8gPdiNLANKsu8dcA-1
+X-MC-Unique: hQ4mXGwAP7eWs8CpMKPvnw-1
 X-Mimecast-Spam-Score: 0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -122,43 +122,36 @@ Cc: Kate Stewart <kstewart@linuxfoundation.org>,
  Rob Springer <rspringer@google.com>, Thomas Gleixner <tglx@linutronix.de>,
  Johannes Weiner <hannes@cmpxchg.org>, Paolo Bonzini <pbonzini@redhat.com>,
  Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Right now, ZONE_DEVICE memory is always set PG_reserved. We want to
-change that.
-
-The pages are obtained via get_user_pages_fast(). I assume, these
-could be ZONE_DEVICE pages. Let's just exclude them as well explicitly.
-
-Cc: Rob Springer <rspringer@google.com>
-Cc: Todd Poynor <toddpoynor@google.com>
-Cc: Ben Chan <benchan@chromium.org>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Signed-off-by: David Hildenbrand <david@redhat.com>
----
- drivers/staging/gasket/gasket_page_table.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/gasket/gasket_page_table.c b/drivers/staging/gasket/gasket_page_table.c
-index f6d715787da8..d43fed58bf65 100644
---- a/drivers/staging/gasket/gasket_page_table.c
-+++ b/drivers/staging/gasket/gasket_page_table.c
-@@ -447,7 +447,7 @@ static bool gasket_release_page(struct page *page)
- 	if (!page)
- 		return false;
- 
--	if (!PageReserved(page))
-+	if (!PageReserved(page) && !is_zone_device_page(page))
- 		SetPageDirty(page);
- 	put_page(page);
- 
--- 
-2.21.0
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+UmlnaHQgbm93LCBaT05FX0RFVklDRSBtZW1vcnkgaXMgYWx3YXlzIHNldCBQR19yZXNlcnZlZC4g
+V2Ugd2FudCB0bwpjaGFuZ2UgdGhhdC4KClRoZSBwYWdlcyBhcmUgb2J0YWluZWQgdmlhIGdldF91
+c2VyX3BhZ2VzX2Zhc3QoKS4gSSBhc3N1bWUsIHRoZXNlCmNvdWxkIGJlIFpPTkVfREVWSUNFIHBh
+Z2VzLiBMZXQncyBqdXN0IGV4Y2x1ZGUgdGhlbSBhcyB3ZWxsIGV4cGxpY2l0bHkuCgpDYzogR3Jl
+ZyBLcm9haC1IYXJ0bWFuIDxncmVna2hAbGludXhmb3VuZGF0aW9uLm9yZz4KQ2M6IFZhbmRhbmEg
+Qk4gPGJudmFuZGFuYUBnbWFpbC5jb20+CkNjOiAiU2ltb24gU2FuZHN0csO2bSIgPHNpbW9uQG5p
+a2Fub3IubnU+CkNjOiBEYW4gQ2FycGVudGVyIDxkYW4uY2FycGVudGVyQG9yYWNsZS5jb20+CkNj
+OiBOaXNoa2EgRGFzZ3VwdGEgPG5pc2hrYWRnLmxpbnV4QGdtYWlsLmNvbT4KQ2M6IE1hZGh1bWl0
+aGEgUHJhYmFrYXJhbiA8bWFkaHVtaXRoYWJpd0BnbWFpbC5jb20+CkNjOiBGYWJpbyBFc3RldmFt
+IDxmZXN0ZXZhbUBnbWFpbC5jb20+CkNjOiBNYXR0IFNpY2tsZXIgPE1hdHQuU2lja2xlckBkYWt0
+cm9uaWNzLmNvbT4KQ2M6IEplcmVteSBTb3dkZW4gPGplcmVteUBhemF6ZWwubmV0PgpTaWduZWQt
+b2ZmLWJ5OiBEYXZpZCBIaWxkZW5icmFuZCA8ZGF2aWRAcmVkaGF0LmNvbT4KLS0tCiBkcml2ZXJz
+L3N0YWdpbmcva3BjMjAwMC9rcGNfZG1hL2ZpbGVvcHMuYyB8IDMgKystCiAxIGZpbGUgY2hhbmdl
+ZCwgMiBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9z
+dGFnaW5nL2twYzIwMDAva3BjX2RtYS9maWxlb3BzLmMgYi9kcml2ZXJzL3N0YWdpbmcva3BjMjAw
+MC9rcGNfZG1hL2ZpbGVvcHMuYwppbmRleCBjYjUyYmQ5YTZkMmYuLjQ1N2FkY2M4MWZlNiAxMDA2
+NDQKLS0tIGEvZHJpdmVycy9zdGFnaW5nL2twYzIwMDAva3BjX2RtYS9maWxlb3BzLmMKKysrIGIv
+ZHJpdmVycy9zdGFnaW5nL2twYzIwMDAva3BjX2RtYS9maWxlb3BzLmMKQEAgLTIxMiw3ICsyMTIs
+OCBAQCB2b2lkICB0cmFuc2Zlcl9jb21wbGV0ZV9jYihzdHJ1Y3QgYWlvX2NiX2RhdGEgKmFjZCwg
+c2l6ZV90IHhmcl9jb3VudCwgdTMyIGZsYWdzKQogCUJVR19PTihhY2QtPmxkZXYtPnBsZGV2ID09
+IE5VTEwpOwogCiAJZm9yIChpID0gMCA7IGkgPCBhY2QtPnBhZ2VfY291bnQgOyBpKyspIHsKLQkJ
+aWYgKCFQYWdlUmVzZXJ2ZWQoYWNkLT51c2VyX3BhZ2VzW2ldKSkgeworCQlpZiAoIVBhZ2VSZXNl
+cnZlZChhY2QtPnVzZXJfcGFnZXNbaV0pICYmCisJCSAgICAhaXNfem9uZV9kZXZpY2VfcGFnZShh
+Y2QtPnVzZXJfcGFnZXNbaV0pKSB7CiAJCQlzZXRfcGFnZV9kaXJ0eShhY2QtPnVzZXJfcGFnZXNb
+aV0pOwogCQl9CiAJfQotLSAKMi4yMS4wCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9q
+ZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
