@@ -1,60 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3279DDF08B
-	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Oct 2019 16:55:06 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BFB41DFA3C
+	for <lists+driverdev-devel@lfdr.de>; Tue, 22 Oct 2019 03:44:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 98D5686B30;
-	Mon, 21 Oct 2019 14:55:03 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D42DF840D5;
+	Tue, 22 Oct 2019 01:44:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eugZ+xIxTbEG; Mon, 21 Oct 2019 14:55:02 +0000 (UTC)
+	with ESMTP id Hs9PP0D--Df5; Tue, 22 Oct 2019 01:44:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B8EB686223;
-	Mon, 21 Oct 2019 14:55:01 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 071D284428;
+	Tue, 22 Oct 2019 01:44:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 363521BF3D8
- for <devel@linuxdriverproject.org>; Mon, 21 Oct 2019 14:54:58 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id ABC131BF364
+ for <devel@linuxdriverproject.org>; Tue, 22 Oct 2019 01:44:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 32B1985F96
- for <devel@linuxdriverproject.org>; Mon, 21 Oct 2019 14:54:58 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A7312840D2
+ for <devel@linuxdriverproject.org>; Tue, 22 Oct 2019 01:44:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id whVDmFvPfh+e for <devel@linuxdriverproject.org>;
- Mon, 21 Oct 2019 14:54:57 +0000 (UTC)
+ with ESMTP id HcsStWp4Ju5e for <devel@linuxdriverproject.org>;
+ Tue, 22 Oct 2019 01:44:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 7759A85EA8
- for <devel@driverdev.osuosl.org>; Mon, 21 Oct 2019 14:54:57 +0000 (UTC)
-Received: from archlinux (cpc149474-cmbg20-2-0-cust94.5-4.cable.virginm.net
- [82.4.196.95])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 12E1520656;
- Mon, 21 Oct 2019 14:54:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1571669697;
- bh=Ae8OHG6lZmDDwOM3SPPGHZv5YZXmtKO6eyJM3Lg9gCc=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=yVdUxHn0ayRtWCZgG2r4z6BF9YxO67CgUU/O5YziuEIz/2b4fLTzjX4STw//Gb9gZ
- dowPKbMZQWZHC6ohCe9xAjDoYFk9qMuAhGAI9WmWVU6bqgDPiVtDwNedmIU/nqX99b
- rhYuCZ5XiFF3N1gxV8wRDkuenIuMGMjWP0cJZqlY=
-Date: Mon, 21 Oct 2019 15:54:50 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Beniamin Bia <beniamin.bia@analog.com>
-Subject: Re: [PATCH 2/4] iio: adc: ad7091r5: Add scale and external VREF
- support
-Message-ID: <20191021155450.0ac9d380@archlinux>
-In-Reply-To: <20191021170608.26412-2-beniamin.bia@analog.com>
-References: <20191021170608.26412-1-beniamin.bia@analog.com>
- <20191021170608.26412-2-beniamin.bia@analog.com>
-X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
+Received: from perceval.ideasonboard.com (perceval.ideasonboard.com
+ [213.167.242.64])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id CEECC840D5
+ for <devel@driverdev.osuosl.org>; Tue, 22 Oct 2019 01:44:45 +0000 (UTC)
+Received: from pendragon.ideasonboard.com (143.121.2.93.rev.sfr.net
+ [93.2.121.143])
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id 68840595;
+ Tue, 22 Oct 2019 03:44:42 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+ s=mail; t=1571708682;
+ bh=PMpNATguH7qgE/4wF1XWU3t+P4VOhto58R8pgugBXX0=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=ZO3gUbGdUXGMBAuUfJn82B0OA1vTwt9c7swkkb8MZjP0o7OIijWuOWdxtfnytnK2Z
+ KR5fuCKjSYkbx2bTohRrinCmvvl6BC/fpt3en3tl7IicIiXkwqp6nscN3DQxCFR20N
+ LLE/kMEFI28W1IMb9zPp5RrkEjcFUkJ8wSGaANFs=
+Date: Tue, 22 Oct 2019 04:44:37 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Steve Longerbeam <slongerbeam@gmail.com>
+Subject: Re: [PATCH v8 5/5] media: imx: Try colorimetry at both sink and
+ source pads
+Message-ID: <20191022014437.GG4947@pendragon.ideasonboard.com>
+References: <20190522010317.23710-1-slongerbeam@gmail.com>
+ <20190522010317.23710-6-slongerbeam@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190522010317.23710-6-slongerbeam@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,184 +67,340 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, mark.rutland@arm.com, lars@metafoo.de,
- biabeniamin@outlook.com, Michael.Hennerich@analog.com,
- devicetree@vger.kernel.org, linux-iio@vger.kernel.org,
- gregkh@linuxfoundation.org, linus.walleij@linaro.org,
- linux-kernel@vger.kernel.org, nicolas.ferre@microchip.com, robh+dt@kernel.org,
- pmeerw@pmeerw.net, knaack.h@gmx.de, mchehab+samsung@kernel.org,
- paulmck@linux.ibm.com, Paul Cercueil <paul.cercueil@analog.com>
+Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ open list <linux-kernel@vger.kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, 21 Oct 2019 20:06:06 +0300
-Beniamin Bia <beniamin.bia@analog.com> wrote:
+Hi Steve,
 
-> From: Paul Cercueil <paul.cercueil@analog.com>
+On Tue, May 21, 2019 at 06:03:17PM -0700, Steve Longerbeam wrote:
+> Retask imx_media_fill_default_mbus_fields() to try colorimetry parameters,
+> renaming it to to imx_media_try_colorimetry(), and call it at both sink and
+> source pad try_fmt's. The unrelated check for uninitialized field value is
+> moved out to appropriate places in each subdev try_fmt.
 > 
-> The scale can now be obtained with the "in_voltage_scale" file.
-> By default, the scale returned corresponds to the internal VREF of 2.5V.
+> The IC now supports Rec.709 and BT.601 Y'CbCr encoding, and both limited
+> and full range quantization for both YUV and RGB space, so allow those
+> for pipelines that route through the IC.
 > 
-> It is possible to use an external VREF (through the REFIN/REFOUT pin of
-> the chip), by passing a regulator to the driver. The scale will then be
-> calculated according to the voltage reported by the regulator.
-> 
-> Signed-off-by: Paul Cercueil <paul.cercueil@analog.com>
-> Co-developed-by: Beniamin Bia <beniamin.bia@analog.com>
-> Signed-off-by: Beniamin Bia <beniamin.bia@analog.com>
-My only comment on this one is that you could use devm_add_action_or_reset
-to deal with the regulator clean up.
-
+> Signed-off-by: Steve Longerbeam <slongerbeam@gmail.com>
 > ---
->  drivers/iio/adc/ad7091r-base.c | 42 +++++++++++++++++++++++++++++++++-
->  drivers/iio/adc/ad7091r-base.h |  1 +
->  drivers/iio/adc/ad7091r5.c     |  5 ++++
->  3 files changed, 47 insertions(+), 1 deletion(-)
+> Changes in v7:
+> - squashed with "media: imx: Allow Rec.709 encoding for IC routes".
+> - remove the RGB full-range quantization restriction for IC routes.
+> ---
+>  drivers/staging/media/imx/imx-ic-prp.c      |  6 +-
+>  drivers/staging/media/imx/imx-ic-prpencvf.c |  8 +--
+>  drivers/staging/media/imx/imx-media-csi.c   | 19 +++---
+>  drivers/staging/media/imx/imx-media-utils.c | 73 ++++++++++-----------
+>  drivers/staging/media/imx/imx-media-vdic.c  |  5 +-
+>  drivers/staging/media/imx/imx-media.h       |  5 +-
+>  drivers/staging/media/imx/imx7-media-csi.c  |  8 +--
+>  7 files changed, 62 insertions(+), 62 deletions(-)
 > 
-> diff --git a/drivers/iio/adc/ad7091r-base.c b/drivers/iio/adc/ad7091r-base.c
-> index 140413329754..d416f0912531 100644
-> --- a/drivers/iio/adc/ad7091r-base.c
-> +++ b/drivers/iio/adc/ad7091r-base.c
-> @@ -14,6 +14,7 @@
->  #include <linux/interrupt.h>
->  #include <linux/module.h>
->  #include <linux/regmap.h>
-> +#include <linux/regulator/consumer.h>
+> diff --git a/drivers/staging/media/imx/imx-ic-prp.c b/drivers/staging/media/imx/imx-ic-prp.c
+> index 10ffe00f1a54..f87fe0203720 100644
+> --- a/drivers/staging/media/imx/imx-ic-prp.c
+> +++ b/drivers/staging/media/imx/imx-ic-prp.c
+> @@ -193,8 +193,8 @@ static int prp_set_fmt(struct v4l2_subdev *sd,
+>  			sdformat->format.code = cc->codes[0];
+>  		}
 >  
->  #define AD7091R_REG_RESULT  0
->  #define AD7091R_REG_CHANNEL 1
-> @@ -42,6 +43,7 @@ enum ad7091r_mode {
->  struct ad7091r_state {
->  	struct device *dev;
->  	struct regmap *map;
-> +	struct regulator *reg;
->  	const struct ad7091r_chip_info *chip_info;
->  	enum ad7091r_mode mode;
->  };
-> @@ -139,6 +141,21 @@ static int ad7091r_read_raw(struct iio_dev *iio_dev,
->  		ret = IIO_VAL_INT;
+> -		imx_media_fill_default_mbus_fields(&sdformat->format, infmt,
+> -						   true);
+> +		if (sdformat->format.field == V4L2_FIELD_ANY)
+> +			sdformat->format.field = V4L2_FIELD_NONE;
 >  		break;
->  
-> +	case IIO_CHAN_INFO_SCALE:
-> +		if (st->reg) {
-> +			ret = regulator_get_voltage(st->reg);
-> +			if (ret < 0)
-> +				goto unlock;
-> +
-> +			*val = ret / 1000;
-> +		} else {
-> +			*val = st->chip_info->vref_mV;
-> +		}
-> +
-> +		*val2 = chan->scan_type.realbits;
-> +		ret = IIO_VAL_FRACTIONAL_LOG2;
-> +		break;
-> +
->  	default:
->  		ret = -EINVAL;
+>  	case PRP_SRC_PAD_PRPENC:
+>  	case PRP_SRC_PAD_PRPVF:
+> @@ -203,6 +203,8 @@ static int prp_set_fmt(struct v4l2_subdev *sd,
 >  		break;
-> @@ -215,6 +232,18 @@ int ad7091r_probe(struct device *dev, const char *name,
->  			return ret;
 >  	}
 >  
-> +	st->reg = devm_regulator_get_optional(dev, "vref");
-> +	if (IS_ERR(st->reg)) {
-> +		if (PTR_ERR(st->reg) == EPROBE_DEFER)
-> +			return -EPROBE_DEFER;
+> +	imx_media_try_colorimetry(&sdformat->format, true);
 > +
-> +		st->reg = NULL;
-> +	} else {
-> +		ret = regulator_enable(st->reg);
-> +		if (ret)
-> +			return ret;
+>  	fmt = __prp_get_fmt(priv, cfg, sdformat->pad, sdformat->which);
+>  	*fmt = sdformat->format;
+>  out:
+> diff --git a/drivers/staging/media/imx/imx-ic-prpencvf.c b/drivers/staging/media/imx/imx-ic-prpencvf.c
+> index e8b36a181ccc..f2fe3c11c70e 100644
+> --- a/drivers/staging/media/imx/imx-ic-prpencvf.c
+> +++ b/drivers/staging/media/imx/imx-ic-prpencvf.c
+> @@ -907,8 +907,6 @@ static void prp_try_fmt(struct prp_priv *priv,
+>  		/* propagate colorimetry from sink */
+>  		sdformat->format.colorspace = infmt->colorspace;
+>  		sdformat->format.xfer_func = infmt->xfer_func;
+> -		sdformat->format.quantization = infmt->quantization;
+> -		sdformat->format.ycbcr_enc = infmt->ycbcr_enc;
+>  	} else {
+>  		v4l_bound_align_image(&sdformat->format.width,
+>  				      MIN_W_SINK, MAX_W_SINK, W_ALIGN_SINK,
+> @@ -916,9 +914,11 @@ static void prp_try_fmt(struct prp_priv *priv,
+>  				      MIN_H_SINK, MAX_H_SINK, H_ALIGN_SINK,
+>  				      S_ALIGN);
+>  
+> -		imx_media_fill_default_mbus_fields(&sdformat->format, infmt,
+> -						   true);
+> +		if (sdformat->format.field == V4L2_FIELD_ANY)
+> +			sdformat->format.field = V4L2_FIELD_NONE;
+>  	}
+> +
+> +	imx_media_try_colorimetry(&sdformat->format, true);
+>  }
+>  
+>  static int prp_set_fmt(struct v4l2_subdev *sd,
+> diff --git a/drivers/staging/media/imx/imx-media-csi.c b/drivers/staging/media/imx/imx-media-csi.c
+> index 1d248aca40a9..dce4addadff4 100644
+> --- a/drivers/staging/media/imx/imx-media-csi.c
+> +++ b/drivers/staging/media/imx/imx-media-csi.c
+> @@ -1375,9 +1375,15 @@ static void csi_try_field(struct csi_priv *priv,
+>  	struct v4l2_mbus_framefmt *infmt =
+>  		__csi_get_fmt(priv, cfg, CSI_SINK_PAD, sdformat->which);
+>  
+> -	/* no restrictions on sink pad field type */
+> -	if (sdformat->pad == CSI_SINK_PAD)
+> +	/*
+> +	 * no restrictions on sink pad field type except must
+> +	 * be initialized.
+> +	 */
+> +	if (sdformat->pad == CSI_SINK_PAD) {
+> +		if (sdformat->format.field == V4L2_FIELD_ANY)
+> +			sdformat->format.field = V4L2_FIELD_NONE;
+>  		return;
+> +	}
+>  
+>  	switch (infmt->field) {
+>  	case V4L2_FIELD_SEQ_TB:
+> @@ -1455,8 +1461,6 @@ static void csi_try_fmt(struct csi_priv *priv,
+>  		/* propagate colorimetry from sink */
+>  		sdformat->format.colorspace = infmt->colorspace;
+>  		sdformat->format.xfer_func = infmt->xfer_func;
+> -		sdformat->format.quantization = infmt->quantization;
+> -		sdformat->format.ycbcr_enc = infmt->ycbcr_enc;
+>  
+>  		break;
+>  	case CSI_SINK_PAD:
+> @@ -1476,10 +1480,6 @@ static void csi_try_fmt(struct csi_priv *priv,
+>  
+>  		csi_try_field(priv, cfg, sdformat);
+>  
+> -		imx_media_fill_default_mbus_fields(
+> -			&sdformat->format, infmt,
+> -			priv->active_output_pad == CSI_SRC_PAD_DIRECT);
+> -
+>  		/* Reset crop and compose rectangles */
+>  		crop->left = 0;
+>  		crop->top = 0;
+> @@ -1495,6 +1495,9 @@ static void csi_try_fmt(struct csi_priv *priv,
+>  
+>  		break;
+>  	}
+> +
+> +	imx_media_try_colorimetry(&sdformat->format,
+> +			priv->active_output_pad == CSI_SRC_PAD_DIRECT);
+>  }
+>  
+>  static int csi_set_fmt(struct v4l2_subdev *sd,
+> diff --git a/drivers/staging/media/imx/imx-media-utils.c b/drivers/staging/media/imx/imx-media-utils.c
+> index b41842dba5ec..05b63395084e 100644
+> --- a/drivers/staging/media/imx/imx-media-utils.c
+> +++ b/drivers/staging/media/imx/imx-media-utils.c
+> @@ -511,21 +511,18 @@ int imx_media_init_cfg(struct v4l2_subdev *sd,
+>  EXPORT_SYMBOL_GPL(imx_media_init_cfg);
+>  
+>  /*
+> - * Check whether the field and colorimetry parameters in tryfmt are
+> - * uninitialized, and if so fill them with the values from fmt,
+> - * or if tryfmt->colorspace has been initialized, all the default
+> - * colorimetry params can be derived from tryfmt->colorspace.
+> + * Default the colorspace in tryfmt to SRGB if set to an unsupported
+> + * colorspace or not initialized. Then set the remaining colorimetry
+> + * parameters based on the colorspace if they are uninitialized.
+>   *
+>   * tryfmt->code must be set on entry.
+>   *
+>   * If this format is destined to be routed through the Image Converter,
+> - * quantization and Y`CbCr encoding must be fixed. The IC expects and
+> - * produces fixed quantization and Y`CbCr encoding at its input and output
+> - * (full range for RGB, limited range for YUV, and V4L2_YCBCR_ENC_601).
+> + * Y`CbCr encoding must be fixed. The IC supports only BT.601 Y`CbCr
+> + * or Rec.709 Y`CbCr encoding.
+>   */
+> -void imx_media_fill_default_mbus_fields(struct v4l2_mbus_framefmt *tryfmt,
+> -					struct v4l2_mbus_framefmt *fmt,
+> -					bool ic_route)
+> +void imx_media_try_colorimetry(struct v4l2_mbus_framefmt *tryfmt,
+> +			       bool ic_route)
+>  {
+>  	const struct imx_media_pixfmt *cc;
+>  	bool is_rgb = false;
+> @@ -533,44 +530,46 @@ void imx_media_fill_default_mbus_fields(struct v4l2_mbus_framefmt *tryfmt,
+>  	cc = imx_media_find_mbus_format(tryfmt->code, CS_SEL_ANY, true);
+>  	if (!cc)
+>  		cc = imx_media_find_ipu_format(tryfmt->code, CS_SEL_ANY);
+> -	if (cc && cc->cs != IPUV3_COLORSPACE_YUV)
+> +	if (cc && cc->cs == IPUV3_COLORSPACE_RGB)
+>  		is_rgb = true;
+>  
+> -	/* fill field if necessary */
+> -	if (tryfmt->field == V4L2_FIELD_ANY)
+> -		tryfmt->field = fmt->field;
 
-I would use devm_add_action_or_reset with appropriate wrapper
-around disabling the regulator. That will get rid of the
-need to manually deal with errors or remove path.
+Have you tested this patch on i.MX7 ? It breaks pipeline validation as
+the field field isn't handled anymore in imx7_csi_try_fmt(), due to the
+removal if this code.
 
+I have a written a fix, I'll prepare a patch.
+
+> +	switch (tryfmt->colorspace) {
+> +	case V4L2_COLORSPACE_SMPTE170M:
+> +	case V4L2_COLORSPACE_REC709:
+> +	case V4L2_COLORSPACE_JPEG:
+> +	case V4L2_COLORSPACE_SRGB:
+> +	case V4L2_COLORSPACE_BT2020:
+> +	case V4L2_COLORSPACE_OPRGB:
+> +	case V4L2_COLORSPACE_DCI_P3:
+> +	case V4L2_COLORSPACE_RAW:
+> +		break;
+> +	default:
+> +		tryfmt->colorspace = V4L2_COLORSPACE_SRGB;
+> +		break;
 > +	}
 > +
->  	/* Use command mode by default */
->  	ret = ad7091r_set_mode(st, AD7091R_MODE_COMMAND);
->  	if (ret < 0)
-> @@ -222,18 +251,29 @@ int ad7091r_probe(struct device *dev, const char *name,
+> +	if (tryfmt->xfer_func == V4L2_XFER_FUNC_DEFAULT)
+> +		tryfmt->xfer_func =
+> +			V4L2_MAP_XFER_FUNC_DEFAULT(tryfmt->colorspace);
 >  
->  	ret = iio_device_register(iio_dev);
->  	if (ret)
-> -		return ret;
-> +		goto err_disable_reg;
+> -	/* fill colorimetry if necessary */
+> -	if (tryfmt->colorspace == V4L2_COLORSPACE_DEFAULT) {
+> -		tryfmt->colorspace = fmt->colorspace;
+> -		tryfmt->xfer_func = fmt->xfer_func;
+> -		tryfmt->ycbcr_enc = fmt->ycbcr_enc;
+> -		tryfmt->quantization = fmt->quantization;
+> +	if (ic_route) {
+> +		if (tryfmt->ycbcr_enc != V4L2_YCBCR_ENC_601 &&
+> +		    tryfmt->ycbcr_enc != V4L2_YCBCR_ENC_709)
+> +			tryfmt->ycbcr_enc = V4L2_YCBCR_ENC_601;
+>  	} else {
+> -		if (tryfmt->xfer_func == V4L2_XFER_FUNC_DEFAULT) {
+> -			tryfmt->xfer_func =
+> -				V4L2_MAP_XFER_FUNC_DEFAULT(tryfmt->colorspace);
+> -		}
+>  		if (tryfmt->ycbcr_enc == V4L2_YCBCR_ENC_DEFAULT) {
+>  			tryfmt->ycbcr_enc =
+>  				V4L2_MAP_YCBCR_ENC_DEFAULT(tryfmt->colorspace);
+>  		}
+> -		if (tryfmt->quantization == V4L2_QUANTIZATION_DEFAULT) {
+> -			tryfmt->quantization =
+> -				V4L2_MAP_QUANTIZATION_DEFAULT(
+> -					is_rgb, tryfmt->colorspace,
+> -					tryfmt->ycbcr_enc);
+> -		}
+>  	}
 >  
->  	dev_dbg(dev, "Probed\n");
+> -	if (ic_route) {
+> -		tryfmt->quantization = is_rgb ?
+> -			V4L2_QUANTIZATION_FULL_RANGE :
+> -			V4L2_QUANTIZATION_LIM_RANGE;
+> -		tryfmt->ycbcr_enc = V4L2_YCBCR_ENC_601;
+> -	}
+> +	if (tryfmt->quantization == V4L2_QUANTIZATION_DEFAULT)
+> +		tryfmt->quantization =
+> +			V4L2_MAP_QUANTIZATION_DEFAULT(is_rgb,
+> +						      tryfmt->colorspace,
+> +						      tryfmt->ycbcr_enc);
+>  }
+> -EXPORT_SYMBOL_GPL(imx_media_fill_default_mbus_fields);
+> +EXPORT_SYMBOL_GPL(imx_media_try_colorimetry);
+>  
+>  int imx_media_mbus_fmt_to_pix_fmt(struct v4l2_pix_format *pix,
+>  				  struct v4l2_rect *compose,
+> diff --git a/drivers/staging/media/imx/imx-media-vdic.c b/drivers/staging/media/imx/imx-media-vdic.c
+> index 4487374c9435..fbafd7fb7aeb 100644
+> --- a/drivers/staging/media/imx/imx-media-vdic.c
+> +++ b/drivers/staging/media/imx/imx-media-vdic.c
+> @@ -617,14 +617,13 @@ static void vdic_try_fmt(struct vdic_priv *priv,
+>  				      &sdformat->format.height,
+>  				      MIN_H, MAX_H_VDIC, H_ALIGN, S_ALIGN);
+>  
+> -		imx_media_fill_default_mbus_fields(&sdformat->format, infmt,
+> -						   true);
+> -
+>  		/* input must be interlaced! Choose SEQ_TB if not */
+>  		if (!V4L2_FIELD_HAS_BOTH(sdformat->format.field))
+>  			sdformat->format.field = V4L2_FIELD_SEQ_TB;
+>  		break;
+>  	}
+> +
+> +	imx_media_try_colorimetry(&sdformat->format, true);
+>  }
+>  
+>  static int vdic_set_fmt(struct v4l2_subdev *sd,
+> diff --git a/drivers/staging/media/imx/imx-media.h b/drivers/staging/media/imx/imx-media.h
+> index 6587aa49e005..23024c9bc887 100644
+> --- a/drivers/staging/media/imx/imx-media.h
+> +++ b/drivers/staging/media/imx/imx-media.h
+> @@ -172,9 +172,8 @@ int imx_media_init_mbus_fmt(struct v4l2_mbus_framefmt *mbus,
+>  			    const struct imx_media_pixfmt **cc);
+>  int imx_media_init_cfg(struct v4l2_subdev *sd,
+>  		       struct v4l2_subdev_pad_config *cfg);
+> -void imx_media_fill_default_mbus_fields(struct v4l2_mbus_framefmt *tryfmt,
+> -					struct v4l2_mbus_framefmt *fmt,
+> -					bool ic_route);
+> +void imx_media_try_colorimetry(struct v4l2_mbus_framefmt *tryfmt,
+> +			       bool ic_route);
+>  int imx_media_mbus_fmt_to_pix_fmt(struct v4l2_pix_format *pix,
+>  				  struct v4l2_rect *compose,
+>  				  const struct v4l2_mbus_framefmt *mbus,
+> diff --git a/drivers/staging/media/imx/imx7-media-csi.c b/drivers/staging/media/imx/imx7-media-csi.c
+> index a708a0340eb1..6e2f4c3eb24f 100644
+> --- a/drivers/staging/media/imx/imx7-media-csi.c
+> +++ b/drivers/staging/media/imx/imx7-media-csi.c
+> @@ -1003,8 +1003,6 @@ static int imx7_csi_try_fmt(struct imx7_csi *csi,
+>  
+>  		sdformat->format.colorspace = in_fmt->colorspace;
+>  		sdformat->format.xfer_func = in_fmt->xfer_func;
+> -		sdformat->format.quantization = in_fmt->quantization;
+> -		sdformat->format.ycbcr_enc = in_fmt->ycbcr_enc;
+>  		break;
+>  	case IMX7_CSI_PAD_SINK:
+>  		*cc = imx_media_find_mbus_format(sdformat->format.code,
+> @@ -1015,14 +1013,14 @@ static int imx7_csi_try_fmt(struct imx7_csi *csi,
+>  							 false);
+>  			sdformat->format.code = (*cc)->codes[0];
+>  		}
+> -
+> -		imx_media_fill_default_mbus_fields(&sdformat->format, in_fmt,
+> -						   false);
+>  		break;
+>  	default:
+>  		return -EINVAL;
+>  		break;
+>  	}
+> +
+> +	imx_media_try_colorimetry(&sdformat->format, false);
+> +
 >  	return 0;
-> +
-> +err_disable_reg:
-> +	if (st->reg)
-> +		regulator_disable(st->reg);
-> +
-> +	return ret;
 >  }
->  EXPORT_SYMBOL_GPL(ad7091r_probe);
 >  
->  int ad7091r_remove(struct device *dev)
->  {
->  	struct iio_dev *iio_dev = dev_get_drvdata(dev);
-> +	struct ad7091r_state *st = iio_priv(iio_dev);
->  
->  	iio_device_unregister(iio_dev);
-> +
-> +	if (st->reg)
-> +		regulator_disable(st->reg);
-> +
->  	return 0;
->  }
->  EXPORT_SYMBOL_GPL(ad7091r_remove);
-> diff --git a/drivers/iio/adc/ad7091r-base.h b/drivers/iio/adc/ad7091r-base.h
-> index 7a29f86ea82b..cec4fb75fecc 100644
-> --- a/drivers/iio/adc/ad7091r-base.h
-> +++ b/drivers/iio/adc/ad7091r-base.h
-> @@ -18,6 +18,7 @@ struct ad7091r_state;
->  struct ad7091r_chip_info {
->  	unsigned int num_channels;
->  	const struct iio_chan_spec *channels;
-> +	unsigned int vref_mV;
->  };
->  
->  extern const struct regmap_config ad7091r_regmap_config;
-> diff --git a/drivers/iio/adc/ad7091r5.c b/drivers/iio/adc/ad7091r5.c
-> index 1ba838c58c31..65bcd8bb692a 100644
-> --- a/drivers/iio/adc/ad7091r5.c
-> +++ b/drivers/iio/adc/ad7091r5.c
-> @@ -35,10 +35,13 @@ static const struct iio_event_spec ad7091r5_events[] = {
->  #define AD7091R_CHANNEL(idx, bits, ev, num_ev) { \
->  	.type = IIO_VOLTAGE, \
->  	.info_mask_separate = BIT(IIO_CHAN_INFO_RAW), \
-> +	.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_SCALE), \
->  	.indexed = 1, \
->  	.channel = idx, \
->  	.event_spec = ev, \
->  	.num_event_specs = num_ev, \
-> +	.scan_type.storagebits = 16, \
-> +	.scan_type.realbits = bits, \
->  }
->  static const struct iio_chan_spec ad7091r5_channels_irq[] = {
->  	AD7091R_CHANNEL(0, 12, ad7091r5_events, ARRAY_SIZE(ad7091r5_events)),
-> @@ -58,11 +61,13 @@ static const struct iio_chan_spec ad7091r5_channels_noirq[] = {
->  static const struct ad7091r_chip_info ad7091r5_chip_info_irq = {
->  	.channels = ad7091r5_channels_irq,
->  	.num_channels = ARRAY_SIZE(ad7091r5_channels_irq),
-> +	.vref_mV = 2500,
->  };
->  
->  static const struct ad7091r_chip_info ad7091r5_chip_info_noirq = {
->  	.channels = ad7091r5_channels_noirq,
->  	.num_channels = ARRAY_SIZE(ad7091r5_channels_noirq),
-> +	.vref_mV = 2500,
->  };
->  
->  static int ad7091r5_i2c_probe(struct i2c_client *i2c,
+> -- 
+> 2.17.1
+> 
 
+-- 
+Regards,
+
+Laurent Pinchart
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
