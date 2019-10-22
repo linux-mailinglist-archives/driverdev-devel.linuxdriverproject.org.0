@@ -1,78 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A4859E0D94
-	for <lists+driverdev-devel@lfdr.de>; Tue, 22 Oct 2019 23:02:08 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 11C16E0DFA
+	for <lists+driverdev-devel@lfdr.de>; Wed, 23 Oct 2019 00:00:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BC95386F9E;
-	Tue, 22 Oct 2019 21:02:05 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5854120534;
+	Tue, 22 Oct 2019 22:00:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id z1C7QO6768Q1; Tue, 22 Oct 2019 21:02:05 +0000 (UTC)
+	with ESMTP id Pn1uKkdeW+8N; Tue, 22 Oct 2019 22:00:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 82F7D81F17;
-	Tue, 22 Oct 2019 21:02:04 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 701B7203BE;
+	Tue, 22 Oct 2019 22:00:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D08CC1BF41E
- for <devel@linuxdriverproject.org>; Tue, 22 Oct 2019 21:02:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E8B5E1BF331
+ for <devel@linuxdriverproject.org>; Tue, 22 Oct 2019 22:00:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C803F8475D
- for <devel@linuxdriverproject.org>; Tue, 22 Oct 2019 21:02:01 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E407286378
+ for <devel@linuxdriverproject.org>; Tue, 22 Oct 2019 22:00:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oPd6AwBYyaRB for <devel@linuxdriverproject.org>;
- Tue, 22 Oct 2019 21:02:00 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com
- [205.139.110.61])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5904781F17
- for <devel@driverdev.osuosl.org>; Tue, 22 Oct 2019 21:02:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571778119;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=lDluS1kFGuVOpDajeFMqVqWUjgUNxTiQB+IGh/4U/Fc=;
- b=YHbp1u4ysqfD0tjck2+6YiEtSZ2R5k9wyS+/FWZf3hG6HFgb66fFDdhxfeye5SkumvxejE
- HQzcwyhCtyxr9Qm91UMgpA81LT2fxMMLIUHpQ/zgmvWClCt8WYqP5GaEMBGnLa/z6v/MDD
- 1OdoypBGVIqbFRPIdlLDx9pWieHkhLU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-72-nU6b3-OQN5ap8UXZu4oVWg-1; Tue, 22 Oct 2019 17:01:55 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3AB3E1005500;
- Tue, 22 Oct 2019 21:01:50 +0000 (UTC)
-Received: from [10.36.116.48] (ovpn-116-48.ams2.redhat.com [10.36.116.48])
- by smtp.corp.redhat.com (Postfix) with ESMTP id DB2D860872;
- Tue, 22 Oct 2019 21:01:24 +0000 (UTC)
-Subject: Re: [PATCH RFC v1 07/12] staging: kpc2000: Prepare
- transfer_complete_cb() for PG_reserved changes
-To: Matt Sickler <Matt.Sickler@daktronics.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-References: <20191022171239.21487-1-david@redhat.com>
- <20191022171239.21487-8-david@redhat.com>
- <SN6PR02MB4016D75C028B7A1BEA005697EE680@SN6PR02MB4016.namprd02.prod.outlook.com>
-From: David Hildenbrand <david@redhat.com>
-Organization: Red Hat GmbH
-Message-ID: <20b91026-a685-8c49-4abe-a9d0339113cb@redhat.com>
-Date: Tue, 22 Oct 2019 23:01:23 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ with ESMTP id MDdU2wWdJ897 for <devel@linuxdriverproject.org>;
+ Tue, 22 Oct 2019 22:00:10 +0000 (UTC)
+X-Greylist: delayed 00:05:07 by SQLgrey-1.7.6
+Received: from mail-ot1-f67.google.com (mail-ot1-f67.google.com
+ [209.85.210.67])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id F418784F5A
+ for <devel@driverdev.osuosl.org>; Tue, 22 Oct 2019 22:00:09 +0000 (UTC)
+Received: by mail-ot1-f67.google.com with SMTP id 60so15615965otu.0
+ for <devel@driverdev.osuosl.org>; Tue, 22 Oct 2019 15:00:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=intel-com.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=X+xhy3C7ct4Wd70Xt4OQNAyYmD6XISU1mkD27wwsH4c=;
+ b=e6GVBLMv/V4iAdkfWlAXzADW0DLH0ywch5G0LGr+6++slwJhs2ysGTULdUcotQKYgd
+ WvTyOi8z9vET1krZn1EMRocnjmPrLDAWWBl0e+DDdfTIVpda3KbYcobsSukz/xXtnWSC
+ ZQtGJrQtK05zIxxgAns0ZaO0HHZ9zxQd3iOnrg9SRoBF3dwEbgxB6kbHp1i3JTqB9Fj9
+ opopASozuNvGmtfcE2psfc/mttjRcEa+QRgxLSQdWXH9K3QGe+2rJ5AJpXwm355yEKqj
+ kWc+H/zOB1wp7gTllbz46Sbxau/Gyb16yQFt7zE0emKw99oiq7QMqumCqJj5kMsWralz
+ baBg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=X+xhy3C7ct4Wd70Xt4OQNAyYmD6XISU1mkD27wwsH4c=;
+ b=edu4eLxdi6gmraP0sxGDwoQiiQyOp4Xidsq/mXGiaJocSyotFhp3aXgO73+w08ehdl
+ lRLczfX+yZdDQefR0B62ElviQSzzf4k5/k1JeO3mKIfjlfdOO6DDApt8/se28AAz9B4M
+ af23ifKs3x+yIVMjcmNpp9jx2WYxXMZddt1VtSpA+5uX1Dc1ZlZ7o56XM8FaazQz8FRU
+ 3Ik+vHe9W8ZXobmsXWuN7VT7R83Qhs8H3fuEsj4vLoR+2PM47YlqO/VBPF/LcvF3nRjw
+ BhNri2ca+wxJegL4Ic7aCzMX3BgFbHk9S25ofJzf66ugskf5/JbVYP1Ve2JO8ygucDCn
+ oYxQ==
+X-Gm-Message-State: APjAAAWUqey4oZJtkG3Vu6L4FuU2bKz74Kl2AO3G0hHV0PY9dNaWzz6q
+ 8iLThvqWT5lPg9giZJTIBOrA0YZJWLI2FGnZkZn95A==
+X-Google-Smtp-Source: APXvYqwiQBeyg9j33QDXGkD1y7feKBrNdPRGKNKM/b+c8diEhCMBl1zIP9b9Mw2m1ljAM+dxjsHOktasSwWYIWy9hhA=
+X-Received: by 2002:a05:6830:1b78:: with SMTP id
+ d24mr4571406ote.363.1571781301217; 
+ Tue, 22 Oct 2019 14:55:01 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <SN6PR02MB4016D75C028B7A1BEA005697EE680@SN6PR02MB4016.namprd02.prod.outlook.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: nU6b3-OQN5ap8UXZu4oVWg-1
-X-Mimecast-Spam-Score: 0
+References: <20191022171239.21487-1-david@redhat.com>
+In-Reply-To: <20191022171239.21487-1-david@redhat.com>
+From: Dan Williams <dan.j.williams@intel.com>
+Date: Tue, 22 Oct 2019 14:54:47 -0700
+Message-ID: <CAPcyv4gJ+2he2E-6D0QZvkFWvRM9Fsvn9cAoPZbcU4zvsDHcEQ@mail.gmail.com>
+Subject: Re: [PATCH RFC v1 00/12] mm: Don't mark hotplugged pages PG_reserved
+ (including ZONE_DEVICE)
+To: David Hildenbrand <david@redhat.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,27 +82,23 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Kate Stewart <kstewart@linuxfoundation.org>,
- Sasha Levin <sashal@kernel.org>,
- "linux-hyperv@vger.kernel.org" <linux-hyperv@vger.kernel.org>,
+Cc: Kate Stewart <kstewart@linuxfoundation.org>, linux-hyperv@vger.kernel.org,
  Michal Hocko <mhocko@suse.com>,
  =?UTF-8?B?UmFkaW0gS3LEjW3DocWZ?= <rkrcmar@redhat.com>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- Pavel Tatashin <pavel.tatashin@microsoft.com>,
+ KVM list <kvm@vger.kernel.org>, Pavel Tatashin <pavel.tatashin@microsoft.com>,
  KarimAllah Ahmed <karahmed@amazon.de>,
  Benjamin Herrenschmidt <benh@kernel.crashing.org>,
  Dave Hansen <dave.hansen@linux.intel.com>,
  Alexander Duyck <alexander.duyck@gmail.com>, Michal Hocko <mhocko@kernel.org>,
- Paul Mackerras <paulus@ozlabs.org>, "linux-mm@kvack.org" <linux-mm@kvack.org>,
+ Paul Mackerras <paulus@ozlabs.org>, Linux MM <linux-mm@kvack.org>,
  Paul Mackerras <paulus@samba.org>, Michael Ellerman <mpe@ellerman.id.au>,
  "H. Peter Anvin" <hpa@zytor.com>, Wanpeng Li <wanpengli@tencent.com>,
  Alexander Duyck <alexander.h.duyck@linux.intel.com>,
- Kees Cook <keescook@chromium.org>,
- "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ Kees Cook <keescook@chromium.org>, devel@driverdev.osuosl.org,
  Stefano Stabellini <sstabellini@kernel.org>,
  Stephen Hemminger <sthemmin@microsoft.com>,
  "Aneesh Kumar K.V" <aneesh.kumar@linux.ibm.com>,
- Joerg Roedel <joro@8bytes.org>, "x86@kernel.org" <x86@kernel.org>,
+ Joerg Roedel <joro@8bytes.org>, X86 ML <x86@kernel.org>,
  YueHaibing <yuehaibing@huawei.com>, Mike Rapoport <rppt@linux.ibm.com>,
  Madhumitha Prabakaran <madhumithabiw@gmail.com>,
  Peter Zijlstra <peterz@infradead.org>, Ingo Molnar <mingo@redhat.com>,
@@ -115,70 +108,122 @@ Cc: Kate Stewart <kstewart@linuxfoundation.org>,
  "Isaac J. Manjarres" <isaacm@codeaurora.org>, Juergen Gross <jgross@suse.com>,
  Anshuman Khandual <anshuman.khandual@arm.com>,
  Haiyang Zhang <haiyangz@microsoft.com>,
- =?UTF-8?Q?Simon_Sandstr=c3=b6m?= <simon@nikanor.nu>,
- Dan Williams <dan.j.williams@intel.com>,
- "kvm-ppc@vger.kernel.org" <kvm-ppc@vger.kernel.org>, Qian Cai <cai@lca.pw>,
- Alex Williamson <alex.williamson@redhat.com>,
+ =?UTF-8?Q?Simon_Sandstr=C3=B6m?= <simon@nikanor.nu>,
+ Sasha Levin <sashal@kernel.org>, kvm-ppc@vger.kernel.org,
+ Qian Cai <cai@lca.pw>, Alex Williamson <alex.williamson@redhat.com>,
  Mike Rapoport <rppt@linux.vnet.ibm.com>, Borislav Petkov <bp@alien8.de>,
  Nicholas Piggin <npiggin@gmail.com>, Andy Lutomirski <luto@kernel.org>,
- "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>,
+ xen-devel <xen-devel@lists.xenproject.org>,
  Boris Ostrovsky <boris.ostrovsky@oracle.com>,
  Todd Poynor <toddpoynor@google.com>, Vitaly Kuznetsov <vkuznets@redhat.com>,
  Allison Randal <allison@lohutok.net>, Jim Mattson <jmattson@google.com>,
  Christophe Leroy <christophe.leroy@c-s.fr>, Vandana BN <bnvandana@gmail.com>,
+ Mel Gorman <mgorman@techsingularity.net>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Cornelia Huck <cohuck@redhat.com>, Pavel Tatashin <pasha.tatashin@soleen.com>,
- Mel Gorman <mgorman@techsingularity.net>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
  Sean Christopherson <sean.j.christopherson@intel.com>,
  Rob Springer <rspringer@google.com>, Thomas Gleixner <tglx@linutronix.de>,
  Johannes Weiner <hannes@cmpxchg.org>, Paolo Bonzini <pbonzini@redhat.com>,
  Andrew Morton <akpm@linux-foundation.org>,
- "linuxppc-dev@lists.ozlabs.org" <linuxppc-dev@lists.ozlabs.org>
+ linuxppc-dev <linuxppc-dev@lists.ozlabs.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 22.10.19 19:55, Matt Sickler wrote:
->> Right now, ZONE_DEVICE memory is always set PG_reserved. We want to change that.
->>
->> The pages are obtained via get_user_pages_fast(). I assume, these could be ZONE_DEVICE pages. Let's just exclude them as well explicitly.
-> 
-> I'm not sure what ZONE_DEVICE pages are, but these pages are normal system RAM, typically HugePages (but not always).
+Hi David,
 
-ZONE_DEVICE, a.k.a. devmem, are pages that bypass the pagecache (e.g., 
-DAX) completely and will therefore never get swapped. These pages are 
-not managed by any page allocator (especially not the buddy), they are 
-rather "directly mapped device memory".
+Thanks for tackling this!
 
-E.g., a NVDIMM. It is mapped into the physical address space similar to 
-ordinary RAM (a DIMM). Any write to such a PFN will directly end up on 
-the target device. In contrast to a DIMM, the memory is persistent 
-accross reboots.
+On Tue, Oct 22, 2019 at 10:13 AM David Hildenbrand <david@redhat.com> wrote:
+>
+> This series is based on [2], which should pop up in linux/next soon:
+>         https://lkml.org/lkml/2019/10/21/1034
+>
+> This is the result of a recent discussion with Michal ([1], [2]). Right
+> now we set all pages PG_reserved when initializing hotplugged memmaps. This
+> includes ZONE_DEVICE memory. In case of system memory, PG_reserved is
+> cleared again when onlining the memory, in case of ZONE_DEVICE memory
+> never. In ancient times, we needed PG_reserved, because there was no way
+> to tell whether the memmap was already properly initialized. We now have
+> SECTION_IS_ONLINE for that in the case of !ZONE_DEVICE memory. ZONE_DEVICE
+> memory is already initialized deferred, and there shouldn't be a visible
+> change in that regard.
+>
+> I remember that some time ago, we already talked about stopping to set
+> ZONE_DEVICE pages PG_reserved on the list, but I never saw any patches.
+> Also, I forgot who was part of the discussion :)
 
-Now, if you mmap such an NVDIMM into a user space process, you will end 
-up with ZONE_DEVICE pages as part of the user space mapping (VMA). 
-get_user_pages_fast() on this memory will result in "struct pages" that 
-belong to ZONE_DEVICE. This is where this patch comes into play.
+You got me, Alex, and KVM folks on the Cc, so I'd say that was it.
 
-This patch makes sure that there is absolutely no change once we stop 
-setting these ZONE_DEVICE pages PG_reserved. E.g., AFAIK, setting a 
-ZONE_DEVICE page dirty does not make too much sense (never swapped).
+> One of the biggest fear were side effects. I went ahead and audited all
+> users of PageReserved(). The ones that don't need any care (patches)
+> can be found below. I will double check and hope I am not missing something
+> important.
+>
+> I am probably a little bit too careful (but I don't want to break things).
+> In most places (besides KVM and vfio that are nuts), the
+> pfn_to_online_page() check could most probably be avoided by a
+> is_zone_device_page() check. However, I usually get suspicious when I see
+> a pfn_valid() check (especially after I learned that people mmap parts of
+> /dev/mem into user space, including memory without memmaps. Also, people
+> could memmap offline memory blocks this way :/). As long as this does not
+> hurt performance, I think we should rather do it the clean way.
 
-Yes, it might not be a likely setup, however, it is possible. In this 
-series I collect all places that *could* be affected. If that change is 
-really needed has to be decided. I can see that the two staging drivers 
-I have patches for might be able to just live with the change - but then 
-we talked about it and are aware of the change.
+I'm concerned about using is_zone_device_page() in places that are not
+known to already have a reference to the page. Here's an audit of
+current usages, and the ones I think need to cleaned up. The "unsafe"
+ones do not appear to have any protections against the device page
+being removed (get_dev_pagemap()). Yes, some of these were added by
+me. The "unsafe? HMM" ones need HMM eyes because HMM leaks device
+pages into anonymous memory paths and I'm not up to speed on how it
+guarantees 'struct page' validity vs device shutdown without using
+get_dev_pagemap().
 
-Thanks!
+smaps_pmd_entry(): unsafe
 
--- 
+put_devmap_managed_page(): safe, page reference is held
 
-Thanks,
+is_device_private_page(): safe? gpu driver manages private page lifetime
 
-David / dhildenb
+is_pci_p2pdma_page(): safe, page reference is held
 
+uncharge_page(): unsafe? HMM
+
+add_to_kill(): safe, protected by get_dev_pagemap() and dax_lock_page()
+
+soft_offline_page(): unsafe
+
+remove_migration_pte(): unsafe? HMM
+
+move_to_new_page(): unsafe? HMM
+
+migrate_vma_pages() and helpers: unsafe? HMM
+
+try_to_unmap_one(): unsafe? HMM
+
+__put_page(): safe
+
+release_pages(): safe
+
+I'm hoping all the HMM ones can be converted to
+is_device_private_page() directlly and have that routine grow a nice
+comment about how it knows it can always safely de-reference its @page
+argument.
+
+For the rest I'd like to propose that we add a facility to determine
+ZONE_DEVICE by pfn rather than page. The most straightforward why I
+can think of would be to just add another bitmap to mem_section_usage
+to indicate if a subsection is ZONE_DEVICE or not.
+
+>
+> I only gave it a quick test with DIMMs on x86-64, but didn't test the
+> ZONE_DEVICE part at all (any tips for a nice QEMU setup?). Compile-tested
+> on x86-64 and PPC.
+
+I'll give it a spin, but I don't think the kernel wants to grow more
+is_zone_device_page() users.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
