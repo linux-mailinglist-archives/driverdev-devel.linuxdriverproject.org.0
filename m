@@ -1,70 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7B973E0A3C
-	for <lists+driverdev-devel@lfdr.de>; Tue, 22 Oct 2019 19:13:46 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1A633E0A40
+	for <lists+driverdev-devel@lfdr.de>; Tue, 22 Oct 2019 19:14:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 224F5871F4;
-	Tue, 22 Oct 2019 17:13:45 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B538022802;
+	Tue, 22 Oct 2019 17:14:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Wh7LgFG8eli8; Tue, 22 Oct 2019 17:13:44 +0000 (UTC)
+	with ESMTP id QES23FjmVbl3; Tue, 22 Oct 2019 17:14:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E99CD85CA8;
-	Tue, 22 Oct 2019 17:13:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E660020354;
+	Tue, 22 Oct 2019 17:14:03 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 219871BF866
- for <devel@linuxdriverproject.org>; Tue, 22 Oct 2019 17:13:41 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 033EE1BF866
+ for <devel@linuxdriverproject.org>; Tue, 22 Oct 2019 17:14:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 161FF85CC3
- for <devel@linuxdriverproject.org>; Tue, 22 Oct 2019 17:13:41 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id EF3C4879F0
+ for <devel@linuxdriverproject.org>; Tue, 22 Oct 2019 17:14:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xcUK37M8aKbA for <devel@linuxdriverproject.org>;
- Tue, 22 Oct 2019 17:13:40 +0000 (UTC)
+ with ESMTP id 0O1AOTVV8wSj for <devel@linuxdriverproject.org>;
+ Tue, 22 Oct 2019 17:14:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
  [207.211.31.120])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2358B85CA8
- for <devel@driverdev.osuosl.org>; Tue, 22 Oct 2019 17:13:40 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C7A5787861
+ for <devel@driverdev.osuosl.org>; Tue, 22 Oct 2019 17:14:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571764419;
+ s=mimecast20190719; t=1571764439;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=AZH06pjD8CJbFdhi6tvHbczu1qJrML9IKvQHQzytrv0=;
- b=HjwTHavssJir/f35aIosF2GH9mBMREjy/yTEf/2cBJgw3Y/CJvc2mVC4q2udJV7TUDP+aD
- SEiVBUQOI9SFhqcpzzZm+gSBxu0Q3t3/FeWm20V5+CJ4/qjz6FOvJJDLb/STPXKPoqDK2Z
- BPmhDQ/SbjKrZq1zmNNMzrRT2TAvWsA=
+ bh=zGQAc5VmCetr7C7c8aFEmIaobGzhiGLNzJdeTackaIM=;
+ b=GM7WBWGanO2YELPYe2+w7yq9uXndEn8XdD7qiZeWiAo5kkslxy195tG2UJQ1o3Az3JubV9
+ JLETtGblJpHcJ+FrpUGMnXBpHkB7qdAhBI843Wc1MNw6Mwi30AcFSeJMnCldH+DWvrPeBG
+ eLTBsP/F2A5wXejD/Sz/vE491h+bMac=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-299-GNMLLVycPz2hWyHgrsFHmQ-1; Tue, 22 Oct 2019 13:13:37 -0400
+ us-mta-263-qLpykW4SPYy_CRKVfRekMA-1; Tue, 22 Oct 2019 13:13:58 -0400
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 03CD81800D6A;
- Tue, 22 Oct 2019 17:13:31 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 356831800D6A;
+ Tue, 22 Oct 2019 17:13:53 +0000 (UTC)
 Received: from t460s.redhat.com (ovpn-116-248.ams2.redhat.com [10.36.116.248])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C74C05DA8D;
- Tue, 22 Oct 2019 17:13:07 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 54CE05ED21;
+ Tue, 22 Oct 2019 17:13:31 +0000 (UTC)
 From: David Hildenbrand <david@redhat.com>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH RFC v1 01/12] mm/memory_hotplug: Don't allow to online/offline
- memory blocks with holes
-Date: Tue, 22 Oct 2019 19:12:28 +0200
-Message-Id: <20191022171239.21487-2-david@redhat.com>
+Subject: [PATCH RFC v1 02/12] mm/usercopy.c: Prepare check_page_span() for
+ PG_reserved changes
+Date: Tue, 22 Oct 2019 19:12:29 +0200
+Message-Id: <20191022171239.21487-3-david@redhat.com>
 In-Reply-To: <20191022171239.21487-1-david@redhat.com>
 References: <20191022171239.21487-1-david@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: GNMLLVycPz2hWyHgrsFHmQ-1
+X-MC-Unique: qLpykW4SPYy_CRKVfRekMA-1
 X-Mimecast-Spam-Score: 0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -127,87 +127,47 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Our onlining/offlining code is unnecessarily complicated. Only memory
-blocks added during boot can have holes. Hotplugged memory never has
-holes. That memory is already online.
+Right now, ZONE_DEVICE memory is always set PG_reserved. We want to
+change that.
 
-When we stop allowing to offline memory blocks with holes, we implicitly
-stop to online memory blocks with holes.
+Let's make sure that the logic in the function won't change. Once we no
+longer set these pages to reserved, we can rework this function to
+perform separate checks for ZONE_DEVICE (split from PG_reserved checks).
 
-This allows to simplify the code. For example, we no longer have to
-worry about marking pages that fall into memory holes PG_reserved when
-onlining memory. We can stop setting pages PG_reserved.
-
-Offlining memory blocks added during boot is usually not guranteed to work
-either way. So stopping to do that (if anybody really used and tested
-this over the years) should not really hurt. For the use case of
-offlining memory to unplug DIMMs, we should see no change. (holes on
-DIMMs would be weird)
-
+Cc: Kees Cook <keescook@chromium.org>
 Cc: Andrew Morton <akpm@linux-foundation.org>
-Cc: Michal Hocko <mhocko@suse.com>
-Cc: Oscar Salvador <osalvador@suse.de>
-Cc: Pavel Tatashin <pasha.tatashin@soleen.com>
-Cc: Dan Williams <dan.j.williams@intel.com>
+Cc: Kate Stewart <kstewart@linuxfoundation.org>
+Cc: Allison Randal <allison@lohutok.net>
+Cc: "Isaac J. Manjarres" <isaacm@codeaurora.org>
+Cc: Qian Cai <cai@lca.pw>
+Cc: Thomas Gleixner <tglx@linutronix.de>
 Signed-off-by: David Hildenbrand <david@redhat.com>
 ---
- mm/memory_hotplug.c | 26 ++++++++++++++++++++++++--
- 1 file changed, 24 insertions(+), 2 deletions(-)
+ mm/usercopy.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/mm/memory_hotplug.c b/mm/memory_hotplug.c
-index 561371ead39a..7210f4375279 100644
---- a/mm/memory_hotplug.c
-+++ b/mm/memory_hotplug.c
-@@ -1447,10 +1447,19 @@ static void node_states_clear_node(int node, struct memory_notify *arg)
- 		node_clear_state(node, N_MEMORY);
- }
+diff --git a/mm/usercopy.c b/mm/usercopy.c
+index 660717a1ea5c..a3ac4be35cde 100644
+--- a/mm/usercopy.c
++++ b/mm/usercopy.c
+@@ -203,14 +203,15 @@ static inline void check_page_span(const void *ptr, unsigned long n,
+ 	 * device memory), or CMA. Otherwise, reject since the object spans
+ 	 * several independently allocated pages.
+ 	 */
+-	is_reserved = PageReserved(page);
++	is_reserved = PageReserved(page) || is_zone_device_page(page);
+ 	is_cma = is_migrate_cma_page(page);
+ 	if (!is_reserved && !is_cma)
+ 		usercopy_abort("spans multiple pages", NULL, to_user, 0, n);
  
-+static int count_system_ram_pages_cb(unsigned long start_pfn,
-+				     unsigned long nr_pages, void *data)
-+{
-+	unsigned long *nr_system_ram_pages = data;
-+
-+	*nr_system_ram_pages += nr_pages;
-+	return 0;
-+}
-+
- static int __ref __offline_pages(unsigned long start_pfn,
- 		  unsigned long end_pfn)
- {
--	unsigned long pfn, nr_pages;
-+	unsigned long pfn, nr_pages = 0;
- 	unsigned long offlined_pages = 0;
- 	int ret, node, nr_isolate_pageblock;
- 	unsigned long flags;
-@@ -1461,6 +1470,20 @@ static int __ref __offline_pages(unsigned long start_pfn,
- 
- 	mem_hotplug_begin();
- 
-+	/*
-+	 * We don't allow to offline memory blocks that contain holes
-+	 * and consecuently don't allow to online memory blocks that contain
-+	 * holes. This allows to simplify the code quite a lot and we don't
-+	 * have to mess with PG_reserved pages for memory holes.
-+	 */
-+	walk_system_ram_range(start_pfn, end_pfn - start_pfn, &nr_pages,
-+			      count_system_ram_pages_cb);
-+	if (nr_pages != end_pfn - start_pfn) {
-+		ret = -EINVAL;
-+		reason = "memory holes";
-+		goto failed_removal;
-+	}
-+
- 	/* This makes hotplug much easier...and readable.
- 	   we assume this for now. .*/
- 	if (!test_pages_in_a_zone(start_pfn, end_pfn, &valid_start,
-@@ -1472,7 +1495,6 @@ static int __ref __offline_pages(unsigned long start_pfn,
- 
- 	zone = page_zone(pfn_to_page(valid_start));
- 	node = zone_to_nid(zone);
--	nr_pages = end_pfn - start_pfn;
- 
- 	/* set above range as isolated */
- 	ret = start_isolate_page_range(start_pfn, end_pfn,
+ 	for (ptr += PAGE_SIZE; ptr <= end; ptr += PAGE_SIZE) {
+ 		page = virt_to_head_page(ptr);
+-		if (is_reserved && !PageReserved(page))
++		if (is_reserved && !(PageReserved(page) ||
++				     is_zone_device_page(page)))
+ 			usercopy_abort("spans Reserved and non-Reserved pages",
+ 				       NULL, to_user, 0, n);
+ 		if (is_cma && !is_migrate_cma_page(page))
 -- 
 2.21.0
 
