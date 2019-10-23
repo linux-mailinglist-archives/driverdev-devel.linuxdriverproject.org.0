@@ -2,74 +2,74 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9A4A7E13E5
-	for <lists+driverdev-devel@lfdr.de>; Wed, 23 Oct 2019 10:18:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E2B22E13EE
+	for <lists+driverdev-devel@lfdr.de>; Wed, 23 Oct 2019 10:20:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4B17C20532;
-	Wed, 23 Oct 2019 08:18:25 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2A4A8204CF;
+	Wed, 23 Oct 2019 08:20:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4IcWHhH+rtTD; Wed, 23 Oct 2019 08:18:24 +0000 (UTC)
+	with ESMTP id XjFdXRrgTbv5; Wed, 23 Oct 2019 08:20:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id F05D420499;
-	Wed, 23 Oct 2019 08:18:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E35C72034F;
+	Wed, 23 Oct 2019 08:20:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id AD1EF1BF304
- for <devel@linuxdriverproject.org>; Wed, 23 Oct 2019 08:18:19 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A8A2D1BF304
+ for <devel@linuxdriverproject.org>; Wed, 23 Oct 2019 08:20:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 88CC086E5E
- for <devel@linuxdriverproject.org>; Wed, 23 Oct 2019 08:18:19 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 9EFE486919
+ for <devel@linuxdriverproject.org>; Wed, 23 Oct 2019 08:20:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EvpdOzFH9l0H for <devel@linuxdriverproject.org>;
- Wed, 23 Oct 2019 08:18:18 +0000 (UTC)
+ with ESMTP id U-chi7f+MfaN for <devel@linuxdriverproject.org>;
+ Wed, 23 Oct 2019 08:20:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com
- [205.139.110.61])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 8AB7386919
- for <devel@driverdev.osuosl.org>; Wed, 23 Oct 2019 08:18:18 +0000 (UTC)
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
+ [207.211.31.120])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id BCD9285CBB
+ for <devel@driverdev.osuosl.org>; Wed, 23 Oct 2019 08:20:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571818697;
+ s=mimecast20190719; t=1571818840;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hL0fM/kxnOlP0E/afPU3/KpnFlOZXpcmHWviuaI95cw=;
- b=acIt97G9BK7HG6zpo1xcMHP+kigxNY2jgQu8Me5CyqwBe/RRdza1uNdnXL/LJrnQ4F7SK5
- PPwqJVoAx0dvX6/E1CMqbvv+EFdXQqxhkXLpE0ahydRL6oYFE3vp8hkpaGwwirWr5q2ohX
- 0wEe3DBAGSge+kV5DxSj9UVzi8kr0Fg=
+ bh=ZYwRT87GkK/iKD1IC7yG62REkwJqyJxXRU8O7sH7WsI=;
+ b=XseFJxHLQVzFmrOvPVNELeRYAB/zQWx8lYVv2LlZvZycG8KTPa/ym2JDMxSVxQWiDdNSm4
+ faUxyQN9t4S3ln6De95Q3vHX/q0o1k2Afi+LUE/I2JBoDkSsgvRVWiScA6B84rVDY8rs3A
+ DW/epqiYHp7JF0Xd+XxFIqehJkdQ3mo=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-322-rRYwBwEuMACK3CdbHnbBiQ-1; Wed, 23 Oct 2019 04:18:13 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-61-HevUVdjDPbOvQMNsP_rCWQ-1; Wed, 23 Oct 2019 04:20:36 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6BEA5107AD31;
- Wed, 23 Oct 2019 08:18:08 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A9CFB800D54;
+ Wed, 23 Oct 2019 08:20:30 +0000 (UTC)
 Received: from [10.36.117.79] (ovpn-117-79.ams2.redhat.com [10.36.117.79])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 1E3BF19C70;
- Wed, 23 Oct 2019 08:17:45 +0000 (UTC)
-Subject: Re: [PATCH RFC v1 06/12] staging/gasket: Prepare
- gasket_release_page() for PG_reserved changes
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1CEFA5C219;
+ Wed, 23 Oct 2019 08:20:14 +0000 (UTC)
+Subject: Re: [PATCH RFC v1 02/12] mm/usercopy.c: Prepare check_page_span() for
+ PG_reserved changes
 To: linux-kernel@vger.kernel.org
 References: <20191022171239.21487-1-david@redhat.com>
- <20191022171239.21487-7-david@redhat.com>
+ <20191022171239.21487-3-david@redhat.com>
 From: David Hildenbrand <david@redhat.com>
 Organization: Red Hat GmbH
-Message-ID: <bd00455c-d030-94f4-f0ae-a160818a75de@redhat.com>
-Date: Wed, 23 Oct 2019 10:17:45 +0200
+Message-ID: <a8313fb1-50f3-9083-fd07-297ddf86658e@redhat.com>
+Date: Wed, 23 Oct 2019 10:20:14 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <20191022171239.21487-7-david@redhat.com>
+In-Reply-To: <20191022171239.21487-3-david@redhat.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: rRYwBwEuMACK3CdbHnbBiQ-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-MC-Unique: HevUVdjDPbOvQMNsP_rCWQ-1
 X-Mimecast-Spam-Score: 0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -135,38 +135,51 @@ On 22.10.19 19:12, David Hildenbrand wrote:
 > Right now, ZONE_DEVICE memory is always set PG_reserved. We want to
 > change that.
 > 
-> The pages are obtained via get_user_pages_fast(). I assume, these
-> could be ZONE_DEVICE pages. Let's just exclude them as well explicitly.
+> Let's make sure that the logic in the function won't change. Once we no
+> longer set these pages to reserved, we can rework this function to
+> perform separate checks for ZONE_DEVICE (split from PG_reserved checks).
 > 
-> Cc: Rob Springer <rspringer@google.com>
-> Cc: Todd Poynor <toddpoynor@google.com>
-> Cc: Ben Chan <benchan@chromium.org>
-> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> Cc: Kees Cook <keescook@chromium.org>
+> Cc: Andrew Morton <akpm@linux-foundation.org>
+> Cc: Kate Stewart <kstewart@linuxfoundation.org>
+> Cc: Allison Randal <allison@lohutok.net>
+> Cc: "Isaac J. Manjarres" <isaacm@codeaurora.org>
+> Cc: Qian Cai <cai@lca.pw>
+> Cc: Thomas Gleixner <tglx@linutronix.de>
 > Signed-off-by: David Hildenbrand <david@redhat.com>
 > ---
->   drivers/staging/gasket/gasket_page_table.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   mm/usercopy.c | 5 +++--
+>   1 file changed, 3 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/staging/gasket/gasket_page_table.c b/drivers/staging/gasket/gasket_page_table.c
-> index f6d715787da8..d43fed58bf65 100644
-> --- a/drivers/staging/gasket/gasket_page_table.c
-> +++ b/drivers/staging/gasket/gasket_page_table.c
-> @@ -447,7 +447,7 @@ static bool gasket_release_page(struct page *page)
->   	if (!page)
->   		return false;
+> diff --git a/mm/usercopy.c b/mm/usercopy.c
+> index 660717a1ea5c..a3ac4be35cde 100644
+> --- a/mm/usercopy.c
+> +++ b/mm/usercopy.c
+> @@ -203,14 +203,15 @@ static inline void check_page_span(const void *ptr, unsigned long n,
+>   	 * device memory), or CMA. Otherwise, reject since the object spans
+>   	 * several independently allocated pages.
+>   	 */
+> -	is_reserved = PageReserved(page);
+> +	is_reserved = PageReserved(page) || is_zone_device_page(page);
+>   	is_cma = is_migrate_cma_page(page);
+>   	if (!is_reserved && !is_cma)
+>   		usercopy_abort("spans multiple pages", NULL, to_user, 0, n);
 >   
-> -	if (!PageReserved(page))
-> +	if (!PageReserved(page) && !is_zone_device_page(page))
->   		SetPageDirty(page);
->   	put_page(page);
->   
+>   	for (ptr += PAGE_SIZE; ptr <= end; ptr += PAGE_SIZE) {
+>   		page = virt_to_head_page(ptr);
+> -		if (is_reserved && !PageReserved(page))
+> +		if (is_reserved && !(PageReserved(page) ||
+> +				     is_zone_device_page(page)))
+>   			usercopy_abort("spans Reserved and non-Reserved pages",
+>   				       NULL, to_user, 0, n);
+>   		if (is_cma && !is_migrate_cma_page(page))
 > 
 
+@Kees, would it be okay to stop checking against ZONE_DEVICE pages here 
+or is there a good rationale behind this?
 
-@Dan, is SetPageDirty() on ZONE_DEVICE pages bad or do we simply not 
-care? I think that ending up with ZONE_DEVICE pages here is very 
-unlikely. I'd like to drop this (and the next) patch and document why it 
-is okay to do so.
+(I would turn this patch into a simple update of the comment if we agree 
+that we don't care)
 
 -- 
 
