@@ -2,78 +2,78 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1C8E3E3826
-	for <lists+driverdev-devel@lfdr.de>; Thu, 24 Oct 2019 18:39:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 29A18E382E
+	for <lists+driverdev-devel@lfdr.de>; Thu, 24 Oct 2019 18:39:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 329B8878C1;
-	Thu, 24 Oct 2019 16:39:03 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BCAFB8557B;
+	Thu, 24 Oct 2019 16:39:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id i+XEmFZZP9rr; Thu, 24 Oct 2019 16:39:02 +0000 (UTC)
+	with ESMTP id J47zVB65hcvS; Thu, 24 Oct 2019 16:39:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4B1B7878A9;
-	Thu, 24 Oct 2019 16:39:01 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 99B0585074;
+	Thu, 24 Oct 2019 16:39:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8E4191BF860
- for <devel@linuxdriverproject.org>; Thu, 24 Oct 2019 16:38:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1C3A31BF860
+ for <devel@linuxdriverproject.org>; Thu, 24 Oct 2019 16:39:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 8743D88311
- for <devel@linuxdriverproject.org>; Thu, 24 Oct 2019 16:38:59 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 193348829F
+ for <devel@linuxdriverproject.org>; Thu, 24 Oct 2019 16:39:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EmYVd+tV7y+6 for <devel@linuxdriverproject.org>;
- Thu, 24 Oct 2019 16:38:59 +0000 (UTC)
+ with ESMTP id iGn1fHspiAwZ for <devel@linuxdriverproject.org>;
+ Thu, 24 Oct 2019 16:39:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f194.google.com (mail-qt1-f194.google.com
- [209.85.160.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id E90A3882B0
- for <devel@driverdev.osuosl.org>; Thu, 24 Oct 2019 16:38:58 +0000 (UTC)
-Received: by mail-qt1-f194.google.com with SMTP id c21so38738450qtj.12
- for <devel@driverdev.osuosl.org>; Thu, 24 Oct 2019 09:38:58 -0700 (PDT)
+Received: from mail-qt1-f195.google.com (mail-qt1-f195.google.com
+ [209.85.160.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 802B9882B0
+ for <devel@driverdev.osuosl.org>; Thu, 24 Oct 2019 16:39:12 +0000 (UTC)
+Received: by mail-qt1-f195.google.com with SMTP id t20so38771037qtr.10
+ for <devel@driverdev.osuosl.org>; Thu, 24 Oct 2019 09:39:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=JBkAEAHyhcMPhU/HM87Wnb8+AYbsPLYrzfZ2kbcSds4=;
- b=U77v+xrQBX5EgzRNSk0HwGcyC7fd1Fr8Ij5+E9THHVZwterT/Vq+sgvSm9y7Jabwbd
- Tj7s2JGAD73155WXh7726JQLEum1Qm6cWiJBfsWasVtT61Ts8fUaRrJiNsE0s5rS+jjV
- 7LQzcK8yaQFiODf6uh84hqCSnGxG570yDuWQRRddOZk2rgql770Hn+KEXoGfPQ0tu8NE
- 80h5rQUI14/ApIyzx15gFnmgLMZmslLqpVwBn1epXMD/34V2Y6gIRDd0esp/DgcgmUlz
- HxvKUSst3EOUNdzpLq1c9LdEgKUk5yHFzIYxL1jqlRNxXjUji/4IDbkPFXdl+NgVuSjU
- CJMg==
+ bh=PBStHmHEV5B5bW8UOdDVAaSdAsUZ6zk/15tXrG1wW9k=;
+ b=RIXq/4wfdukLU5uuWuQF2OK8a4dUMHXkUmt1Ftle/qClyK9CzBLcYC0Rm6YzufgGOQ
+ jSuqdlsNKDchwzegUeM3Bb7VhPXkL2Pff271WlEIX8eoQMSmGyjxcVfRg6U2wnBVlY5t
+ S4Z0L90uHwuHpRbim+lNpzPn7ZT9+O4F0m0ylnzgriPk4XNrie0AdQdjVSpcJwJR4zve
+ ia16euZ4t0T8cOyak/+6e+g0TDFP7VBYlvEU1Zm2TMifaulcsYHTRX42omvOdLtnSD0q
+ xMRDpyaGJZ7NAV3JU6yUvJqVhC2bCFQmoNDLEmBR5aAos8qWmT19EVhadgmioTtC29JD
+ hAfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=JBkAEAHyhcMPhU/HM87Wnb8+AYbsPLYrzfZ2kbcSds4=;
- b=hL1jrH194AVM9cYEEH6NnYCsqbPmGcXl64/Q7V62WFtYGMJDIZ26SlnXYoWg5hy6Nr
- 2KlQDfG76IyKWOoPscMTxD0pRmVu7UtRxoUWRBwkTF700FaflPiO+0qBph+9lbvDcVul
- 8vstsQs1q04Ugb94dTkpz56qBMTwyPGvGjWM2cAZbWwUBhOdqwuhpw2EpPwqVwoDbc3Q
- RyFLsfOjf9wN6xT2bDn2CaZA3kazvk3SDLGO4N2kGFjHdBT/7JmezpFX/2peVsV8OEPR
- ElqQGaAt7XKj3TXGP+CuUUhJa14P4MOmhmDwFjEuQlvBJNwTRd8Ss3DW2NL8LB8doahm
- bWKg==
-X-Gm-Message-State: APjAAAUiSpsE0vpl4GmTIgwDgrETFr6KFkdgX32zS43Xk+9WI8AvYJKY
- ozpN1YvunBFORGfXXrrrOaY=
-X-Google-Smtp-Source: APXvYqwsyAuKL1oNUlTF/saCGiUkUfhTm47TCg9IXrbcJpfJqFln8YXoQD6i5Tl5ddPVsi3KTJUoSQ==
-X-Received: by 2002:ac8:ac4:: with SMTP id g4mr5103867qti.326.1571935137807;
- Thu, 24 Oct 2019 09:38:57 -0700 (PDT)
+ bh=PBStHmHEV5B5bW8UOdDVAaSdAsUZ6zk/15tXrG1wW9k=;
+ b=PhApx4xEOJug+l4sHjJyZJjnTUtWAGeHcpL+z+ofnxz1zegtrAsLJQHYMi0WLzCtcw
+ MTEHmEqA+RzZzkMz+QvMi/FN2mdSyppQbH91PY9beBi1En6QXEFMknABfqz2skh8A+eb
+ g7boyMkq+6w9xy8SwIT4YSzt2e7J0Y4o43tobwTpq/W+yvYEMRc3MinJm1joowFA3Sxq
+ CiE8aIG7G1pcA6c8amc6rbsFnLsILYZXPKB6EmK426IGEzPcHbRxQHMbgy+CiaJfrI2e
+ yJhLl7hMD9GhtnR9pVPIxRogb26wjGSBJyOhJLdYVhB9bGJR1E8UjOnjHyLVMfcJIK2W
+ rl1w==
+X-Gm-Message-State: APjAAAWRMyycibxSbOfUn1j2IQSOHm+ygBaRRX94ssItTcHOaNjIpftr
+ DdUpIOqWaRa7hAsRGAkq2WQ=
+X-Google-Smtp-Source: APXvYqyG2CvSxVSEZAf+22TWA18DwezJJpUt3QES1hnt1261ClLqV7jx8YbDvZ0i+vCFlf+VD/Vezw==
+X-Received: by 2002:a0c:e801:: with SMTP id y1mr633274qvn.76.1571935151427;
+ Thu, 24 Oct 2019 09:39:11 -0700 (PDT)
 Received: from localhost.localdomain ([201.53.210.37])
- by smtp.gmail.com with ESMTPSA id l15sm14660121qkj.16.2019.10.24.09.38.54
+ by smtp.gmail.com with ESMTPSA id l15sm14660121qkj.16.2019.10.24.09.39.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 24 Oct 2019 09:38:57 -0700 (PDT)
+ Thu, 24 Oct 2019 09:39:10 -0700 (PDT)
 From: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
 To: outreachy-kernel@googlegroups.com, sudipm.mukherjee@gmail.com,
  teddy.wang@siliconmotion.com, gregkh@linuxfoundation.org,
  linux-fbdev@vger.kernel.org, devel@driverdev.osuosl.org,
  linux-kernel@vger.kernel.org, lkcamp@lists.libreplanetbr.org,
  trivial@kernel.org
-Subject: [PATCH 1/3] staging: sm750fb: align arguments with open parenthesis
- in ddk750_sii164.c
-Date: Thu, 24 Oct 2019 13:38:20 -0300
-Message-Id: <20191024163822.7157-2-gabrielabittencourt00@gmail.com>
+Subject: [PATCH 2/3] staging: sm750fb: align arguments with open parenthesis
+ in file sm750_accel.h
+Date: Thu, 24 Oct 2019 13:38:21 -0300
+Message-Id: <20191024163822.7157-3-gabrielabittencourt00@gmail.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191024163822.7157-1-gabrielabittencourt00@gmail.com>
 References: <20191024163822.7157-1-gabrielabittencourt00@gmail.com>
@@ -97,26 +97,30 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 Cleans up checks of "Alignment should match open parenthesis"
-in file ddk750_sii164.c
+in file sm750_accel.h
 
 Signed-off-by: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
 ---
- drivers/staging/sm750fb/ddk750_sii164.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/sm750fb/sm750_accel.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/sm750fb/ddk750_sii164.c b/drivers/staging/sm750fb/ddk750_sii164.c
-index bee58edc84e7..73e0e9f41ec5 100644
---- a/drivers/staging/sm750fb/ddk750_sii164.c
-+++ b/drivers/staging/sm750fb/ddk750_sii164.c
-@@ -141,7 +141,7 @@ long sii164InitChip(unsigned char edge_select,
+diff --git a/drivers/staging/sm750fb/sm750_accel.h b/drivers/staging/sm750fb/sm750_accel.h
+index c16350b5a310..2c79cb730a0a 100644
+--- a/drivers/staging/sm750fb/sm750_accel.h
++++ b/drivers/staging/sm750fb/sm750_accel.h
+@@ -190,9 +190,9 @@ void sm750_hw_set2dformat(struct lynx_accel *accel, int fmt);
+ void sm750_hw_de_init(struct lynx_accel *accel);
  
- 	/* Check if SII164 Chip exists */
- 	if ((sii164GetVendorID() == SII164_VENDOR_ID) &&
--			(sii164GetDeviceID() == SII164_DEVICE_ID)) {
-+	    (sii164GetDeviceID() == SII164_DEVICE_ID)) {
- 		/*
- 		 *  Initialize SII164 controller chip.
- 		 */
+ int sm750_hw_fillrect(struct lynx_accel *accel,
+-				u32 base, u32 pitch, u32 Bpp,
+-				u32 x, u32 y, u32 width, u32 height,
+-				u32 color, u32 rop);
++		      u32 base, u32 pitch, u32 Bpp,
++		      u32 x, u32 y, u32 width, u32 height,
++		      u32 color, u32 rop);
+ 
+ /**
+  * sm750_hm_copyarea
 -- 
 2.20.1
 
