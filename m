@@ -1,80 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E7F8E2DB1
-	for <lists+driverdev-devel@lfdr.de>; Thu, 24 Oct 2019 11:39:45 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 501DBE2E07
+	for <lists+driverdev-devel@lfdr.de>; Thu, 24 Oct 2019 12:00:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 824B62309D;
-	Thu, 24 Oct 2019 09:39:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4FEC8868E8;
+	Thu, 24 Oct 2019 10:00:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rs-O7-cfeq4J; Thu, 24 Oct 2019 09:39:42 +0000 (UTC)
+	with ESMTP id i6VGoHgraWyW; Thu, 24 Oct 2019 10:00:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 2FACB204AE;
-	Thu, 24 Oct 2019 09:39:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DAB0A86911;
+	Thu, 24 Oct 2019 10:00:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C81FB1BF33E
- for <devel@linuxdriverproject.org>; Thu, 24 Oct 2019 09:39:38 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A7F4E1BF33E
+ for <devel@linuxdriverproject.org>; Thu, 24 Oct 2019 10:00:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C5796876D5
- for <devel@linuxdriverproject.org>; Thu, 24 Oct 2019 09:39:38 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 9D6978788C
+ for <devel@linuxdriverproject.org>; Thu, 24 Oct 2019 10:00:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zVaowGBKcXr2 for <devel@linuxdriverproject.org>;
- Thu, 24 Oct 2019 09:39:38 +0000 (UTC)
+ with ESMTP id mTxqWJIcvtRb for <devel@linuxdriverproject.org>;
+ Thu, 24 Oct 2019 10:00:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
- [209.85.221.67])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 00743876C2
- for <devel@driverdev.osuosl.org>; Thu, 24 Oct 2019 09:39:37 +0000 (UTC)
-Received: by mail-wr1-f67.google.com with SMTP id q13so20305637wrs.12
- for <devel@driverdev.osuosl.org>; Thu, 24 Oct 2019 02:39:37 -0700 (PDT)
+Received: from mail-pf1-f171.google.com (mail-pf1-f171.google.com
+ [209.85.210.171])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 87A4E87842
+ for <devel@driverdev.osuosl.org>; Thu, 24 Oct 2019 10:00:31 +0000 (UTC)
+Received: by mail-pf1-f171.google.com with SMTP id q7so14818411pfh.8
+ for <devel@driverdev.osuosl.org>; Thu, 24 Oct 2019 03:00:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to
- :user-agent; bh=t1B4Upx5L3UHH8ve1wWiItXwI5Up+GeBea3yXsTkPvA=;
- b=qF+v9F05QVKtv5B5gUoCVvNSfVME4kV5eTlt2R1uArWbs575qU2tMEj2bC2IaydZSp
- L+xXvY2U4N9O6aOClEUC0qNZj2j9jwynyZCtnqAketOka7U2rfE0y/5usgqx98ATvYwR
- 0jizZVABaW71ijapZ6X42ho9LaJn9w0r0bfwYppe76OZKCsMQP61ZUkNOKvyaNBCWr1f
- KXpgoEQEgsr+/ik185kGem5+Zvx2EqR17W2fLWpLVEPnMr8a8JLP/IvhP/RXpFAvB220
- o37oNycOIMzVRhS8d3AJRWPy37F1+QWHlCTwQPTAoN+RunGyQxliN1pMsn4Ho/2nXR4Q
- 5zgw==
+ h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=Un8dozXGi1hBwrcyMyk9H9EF84fhz0PhjEtVbAbr1g0=;
+ b=kjCSSh2XWmvn8CMJsbBOFPWBAaUKWR6ru7vss61PnWeUShh2WEMVYstKENB7UQIP6n
+ 4JwL616OEigeu3r1FY2QMKFTVlu/abv7HIrYMnVAhB+5gnMk0qg8QZq5BhYss1FnNW/Z
+ r8JXUrOrH7f8PCaZ+S7Rd3+zr9NgYjoZdhLouR0mifoBLWzrE72lkPeHppSoGN04hL4k
+ JHY77XrfEkw1js5feDxR5f/P2ts/V0wMspJSos5JCXiycPtJBqMIA7akXdP0MkPbLtMs
+ PDeTcD69ImKjnd+k9orHMyMHRlDPzLTUV+2nwICZwbh+vCLww8YFRET5/9+4CQa0W1vw
+ dpDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to:user-agent;
- bh=t1B4Upx5L3UHH8ve1wWiItXwI5Up+GeBea3yXsTkPvA=;
- b=lOk2jhpgSrmJp3YAKmBH1duZZnpOBMNRVJcdTmb3JQBvVzj19QdzJ3LDSaUwvzGm6l
- YbxWON1u5I4TDp/fVHIhzL3oaiXMJhSz4VjTatlr3+Z8upBhg53o6IZTaAnSZFsSIkwh
- ez7Azh/+9tlORk7z508V+bZ1YUGewWIyXy+IYZXktX0NqsqsNo0TK6E6vPoMsKpUJHeK
- f5EJZbJpWbO6/hBe72r+ku8mEdeIuZnSV4meRANIIcoZw5SsSI15C1HtMCBPe5DnJBFA
- DKC23TWGXA5UzuvHIA33MXuVxMStbWnACe2kqmerJFYSR16QJD5pjEVERaL54JOr6/ce
- mt/Q==
-X-Gm-Message-State: APjAAAWUtgFuC6/SxLgsGXLqkNd08JRBkX4mLoBpn1tkwcCWX2y+Ygsz
- DYD5QJ0PbNI5vNeFcl3QuYc=
-X-Google-Smtp-Source: APXvYqyhpkr8qJ3hxhJsygaSaVXu6ia/0VFGb7Guafugca9uJFHThI8Q89EQtjL/gKMhrtk5Nt1QYQ==
-X-Received: by 2002:a5d:464f:: with SMTP id j15mr2945291wrs.366.1571909976233; 
- Thu, 24 Oct 2019 02:39:36 -0700 (PDT)
-Received: from pali ([2a02:2b88:2:1::5cc6:2f])
- by smtp.gmail.com with ESMTPSA id q22sm1895115wmj.5.2019.10.24.02.39.34
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 24 Oct 2019 02:39:35 -0700 (PDT)
-Date: Thu, 24 Oct 2019 11:39:33 +0200
-From: Pali =?utf-8?B?Um9ow6Fy?= <pali.rohar@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH] staging: exfat: add exfat filesystem code to staging
-Message-ID: <20191024093933.zocacmhle3cuq7ld@pali>
-References: <20190828160817.6250-1-gregkh@linuxfoundation.org>
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
+ :references:mime-version:content-disposition:in-reply-to:user-agent;
+ bh=Un8dozXGi1hBwrcyMyk9H9EF84fhz0PhjEtVbAbr1g0=;
+ b=T9fwkpT/+ksH8m8HrhvOLW+8KKtymCm2ngIYG+oMkmJVZSoX5A3UPiAjpRrNpXVeD1
+ GCNwGzXop8Nkxocl3Kjw1Md7KOY+rtVDqP1f1K715CpshP4FImKWLLsJDcyFvI9+sE7j
+ BrjQj1wVNhHYWvd3/xCKH3mujAt0JM5AJYJwTUk686FIS2ra04HVI6eWIry4cu+fR+z6
+ FJGoiFfWij/dVbxXwCdqpGEVopZ5WO74k6ZKixi918OesgfsEjAdKLFmKUVqMZqP1FQV
+ oqgq6n16kLUy34V0pXju+Naag1z5lOO0VlBvo5Q+T16kmC0uukD8Y69bm38FMTJTRye6
+ gaqA==
+X-Gm-Message-State: APjAAAUCwcxtE/Yvbg8Y5WO8WVZAtRv16H0kCm6ukGOuo08r9XTgNVgu
+ 2VJgxhnK29diz5WAhcXNOxk=
+X-Google-Smtp-Source: APXvYqxEyT4XClHCb2W6cq5qFcu+aP1RWWIfWj4rcME03pjh/52UE8YKoRPa0CqPdxayCPdhdMUdDg==
+X-Received: by 2002:a63:934d:: with SMTP id w13mr12839626pgm.185.1571911230923; 
+ Thu, 24 Oct 2019 03:00:30 -0700 (PDT)
+Received: from wambui ([197.254.95.38])
+ by smtp.gmail.com with ESMTPSA id j63sm10564453pfb.162.2019.10.24.03.00.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 24 Oct 2019 03:00:30 -0700 (PDT)
+Date: Thu, 24 Oct 2019 13:00:20 +0300
+From: Wambui Karuga <wambui.karugax@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Subject: Re: [Outreachy kernel] Re: [PATCH v2 1/5] staging: octeon: remove
+ typedef declaration for cvmx_wqe
+Message-ID: <20191024100020.GA13343@wambui>
+References: <cover.1570821661.git.wambui.karugax@gmail.com>
+ <fa82104ea8d7ff54dc66bfbfedb6cca541701991.1570821661.git.wambui.karugax@gmail.com>
+ <20191024050011.2ziewy6dkxkcxzvo@lantea.localdomain>
+ <alpine.DEB.2.21.1910240722070.2771@hadrien>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190828160817.6250-1-gregkh@linuxfoundation.org>
-User-Agent: NeoMutt/20170113 (1.7.2)
+In-Reply-To: <alpine.DEB.2.21.1910240722070.2771@hadrien>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,25 +90,55 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-fsdevel@vger.kernel.org,
- Sasha Levin <alexander.levin@microsoft.com>,
- Valdis =?utf-8?Q?Kl=C4=93tnieks?= <valdis.kletnieks@vt.edu>,
- linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: alpine.DEB.2.21.1910240722070.2771@hadrien.osuosl.org
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, paulburton@kernel.org,
+ outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gV2VkbmVzZGF5IDI4IEF1Z3VzdCAyMDE5IDE4OjA4OjE3IEdyZWcgS3JvYWgtSGFydG1hbiB3
-cm90ZToKPiBUaGUgZnVsbCBzcGVjaWZpY2F0aW9uIG9mIHRoZSBmaWxlc3lzdGVtIGNhbiBiZSBm
-b3VuZCBhdDoKPiAgIGh0dHBzOi8vZG9jcy5taWNyb3NvZnQuY29tL2VuLXVzL3dpbmRvd3Mvd2lu
-MzIvZmlsZWlvL2V4ZmF0LXNwZWNpZmljYXRpb24KCkZZSSwgaXQgbG9va3MgbGlrZSB0aGF0IHRo
-aXMgcmVsZWFzZWQgc3BlY2lmaWNhdGlvbiBpcyBqdXN0IGNvcHkrcGFzdGUKZnJvbSBleEZBVCBw
-YXRlbnQgaHR0cHM6Ly9wYXRlbnRzLmdvb2dsZS5jb20vcGF0ZW50L1VTMjAxNTAzNzA4MjEgd2hp
-Y2gKd2FzIHRoZXJlIHB1YmxpY2x5IGF2YWlsYWJsZSBmb3IgYSB3aGlsZS4gQW5kIHNpbWlsYXIv
-c2FtZT8gY29weSB3YXMKYXZhaWxhYmxlIG9uIHRoZSBmb2xsb3dpbmcgc2l0ZSBodHRwczovL3d3
-dy5udGZzLmNvbS9leGZhdC1vdmVydmlldy5odG0KCi0tIApQYWxpIFJvaMOhcgpwYWxpLnJvaGFy
-QGdtYWlsLmNvbQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8v
-ZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJk
-ZXYtZGV2ZWwK
+On Thu, Oct 24, 2019 at 07:26:59AM +0200, Julia Lawall wrote:
+> > If you're making significant changes to this driver, please test them
+> > using the MIPS cavium_octeon_defconfig which is where this driver is
+> > actually used.
+> >
+> > This driver has broken builds a few times recently which makes me very
+> > tempted to ask that we stop allowing it to be built with COMPILE_TEST.
+> > The whole octeon-stubs.h thing is a horrible hack anyway...
+> 
+> Wambui,
+> 
+> Please figure out what went wrong here.  Are there two sets of typedefs
+> that should have been updated?
+>
+I managed to reproduce these build errors and finally noticed that the
+"octeon-stubs.h" header is only included when CONFIG_CAVIUM_OCTEON_SOC
+is not defined, therefore compiling properly for COMPILE_TEST but will
+actually fail when compiled with CONFIG_CAVIUM_OCTEON_SOC is set since
+the functions will try to use the definitions in
+arch/mips/include/asm/octeon/ that don't have the changes.
+
+Paul, please tell me if this is correct?
+
+Thanks,
+wambui
+
+> Others,
+> 
+> Would it be reasonable to put the information about how the driver should
+> be compied in the TODO file?  git grep cavium_octeon_defconfig in the
+> octeon directory turns up nothing.
+> 
+> thanks,
+> julia
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/alpine.DEB.2.21.1910240722070.2771%40hadrien.
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
