@@ -1,83 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 501DBE2E07
-	for <lists+driverdev-devel@lfdr.de>; Thu, 24 Oct 2019 12:00:40 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4FEC8868E8;
-	Thu, 24 Oct 2019 10:00:38 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id i6VGoHgraWyW; Thu, 24 Oct 2019 10:00:37 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DAB0A86911;
-	Thu, 24 Oct 2019 10:00:36 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A7F4E1BF33E
- for <devel@linuxdriverproject.org>; Thu, 24 Oct 2019 10:00:34 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id C550DE31DF
+	for <lists+driverdev-devel@lfdr.de>; Thu, 24 Oct 2019 14:10:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9D6978788C
- for <devel@linuxdriverproject.org>; Thu, 24 Oct 2019 10:00:34 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AD362878B0;
+	Thu, 24 Oct 2019 12:10:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id CMkrsTMkGGR7; Thu, 24 Oct 2019 12:10:18 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 471558787C;
+	Thu, 24 Oct 2019 12:10:16 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1BE171BF3C1
+ for <devel@linuxdriverproject.org>; Thu, 24 Oct 2019 12:10:12 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 16CE08816A
+ for <devel@linuxdriverproject.org>; Thu, 24 Oct 2019 12:10:12 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mTxqWJIcvtRb for <devel@linuxdriverproject.org>;
- Thu, 24 Oct 2019 10:00:31 +0000 (UTC)
+ with ESMTP id 0Msd4CcI1EOm for <devel@linuxdriverproject.org>;
+ Thu, 24 Oct 2019 12:10:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f171.google.com (mail-pf1-f171.google.com
- [209.85.210.171])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 87A4E87842
- for <devel@driverdev.osuosl.org>; Thu, 24 Oct 2019 10:00:31 +0000 (UTC)
-Received: by mail-pf1-f171.google.com with SMTP id q7so14818411pfh.8
- for <devel@driverdev.osuosl.org>; Thu, 24 Oct 2019 03:00:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=Un8dozXGi1hBwrcyMyk9H9EF84fhz0PhjEtVbAbr1g0=;
- b=kjCSSh2XWmvn8CMJsbBOFPWBAaUKWR6ru7vss61PnWeUShh2WEMVYstKENB7UQIP6n
- 4JwL616OEigeu3r1FY2QMKFTVlu/abv7HIrYMnVAhB+5gnMk0qg8QZq5BhYss1FnNW/Z
- r8JXUrOrH7f8PCaZ+S7Rd3+zr9NgYjoZdhLouR0mifoBLWzrE72lkPeHppSoGN04hL4k
- JHY77XrfEkw1js5feDxR5f/P2ts/V0wMspJSos5JCXiycPtJBqMIA7akXdP0MkPbLtMs
- PDeTcD69ImKjnd+k9orHMyMHRlDPzLTUV+2nwICZwbh+vCLww8YFRET5/9+4CQa0W1vw
- dpDA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
- :references:mime-version:content-disposition:in-reply-to:user-agent;
- bh=Un8dozXGi1hBwrcyMyk9H9EF84fhz0PhjEtVbAbr1g0=;
- b=T9fwkpT/+ksH8m8HrhvOLW+8KKtymCm2ngIYG+oMkmJVZSoX5A3UPiAjpRrNpXVeD1
- GCNwGzXop8Nkxocl3Kjw1Md7KOY+rtVDqP1f1K715CpshP4FImKWLLsJDcyFvI9+sE7j
- BrjQj1wVNhHYWvd3/xCKH3mujAt0JM5AJYJwTUk686FIS2ra04HVI6eWIry4cu+fR+z6
- FJGoiFfWij/dVbxXwCdqpGEVopZ5WO74k6ZKixi918OesgfsEjAdKLFmKUVqMZqP1FQV
- oqgq6n16kLUy34V0pXju+Naag1z5lOO0VlBvo5Q+T16kmC0uukD8Y69bm38FMTJTRye6
- gaqA==
-X-Gm-Message-State: APjAAAUCwcxtE/Yvbg8Y5WO8WVZAtRv16H0kCm6ukGOuo08r9XTgNVgu
- 2VJgxhnK29diz5WAhcXNOxk=
-X-Google-Smtp-Source: APXvYqxEyT4XClHCb2W6cq5qFcu+aP1RWWIfWj4rcME03pjh/52UE8YKoRPa0CqPdxayCPdhdMUdDg==
-X-Received: by 2002:a63:934d:: with SMTP id w13mr12839626pgm.185.1571911230923; 
- Thu, 24 Oct 2019 03:00:30 -0700 (PDT)
-Received: from wambui ([197.254.95.38])
- by smtp.gmail.com with ESMTPSA id j63sm10564453pfb.162.2019.10.24.03.00.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 24 Oct 2019 03:00:30 -0700 (PDT)
-Date: Thu, 24 Oct 2019 13:00:20 +0300
-From: Wambui Karuga <wambui.karugax@gmail.com>
-To: Julia Lawall <julia.lawall@lip6.fr>
-Subject: Re: [Outreachy kernel] Re: [PATCH v2 1/5] staging: octeon: remove
- typedef declaration for cvmx_wqe
-Message-ID: <20191024100020.GA13343@wambui>
-References: <cover.1570821661.git.wambui.karugax@gmail.com>
- <fa82104ea8d7ff54dc66bfbfedb6cca541701991.1570821661.git.wambui.karugax@gmail.com>
- <20191024050011.2ziewy6dkxkcxzvo@lantea.localdomain>
- <alpine.DEB.2.21.1910240722070.2771@hadrien>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com
+ [205.139.110.61])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id E8EC488168
+ for <devel@driverdev.osuosl.org>; Thu, 24 Oct 2019 12:10:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1571919009;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=TooFwxaibKWioSMXkjdsd9KqTbD0P4TIgojllh09QfQ=;
+ b=Oi2it1KsowuABYJ1aXMvXZPMFlvHhHjGDDgHhPptmSbthR4Vw2imhnzJyHAeAysthhbndn
+ 38B2Hqugx1mvTe4ayec1IScoULyfr6jjOUOu+o89u069Z1gCChXPDsH4wB9RAPT0MRbEt8
+ 1Z3EQDYg4CDQxd3zjCRu1tEGPSrCAso=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-70-Mt5vh3dPMhmZKGgS4b6ZRA-1; Thu, 24 Oct 2019 08:10:06 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 410A4801E5C;
+ Thu, 24 Oct 2019 12:10:01 +0000 (UTC)
+Received: from t460s.redhat.com (ovpn-116-141.ams2.redhat.com [10.36.116.141])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 314413CCA;
+ Thu, 24 Oct 2019 12:09:39 +0000 (UTC)
+From: David Hildenbrand <david@redhat.com>
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH v1 00/10] mm: Don't mark hotplugged pages PG_reserved
+ (including ZONE_DEVICE)
+Date: Thu, 24 Oct 2019 14:09:28 +0200
+Message-Id: <20191024120938.11237-1-david@redhat.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.21.1910240722070.2771@hadrien>
-User-Agent: Mutt/1.12.2 (2019-09-21)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: Mt5vh3dPMhmZKGgS4b6ZRA-1
+X-Mimecast-Spam-Score: 0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,54 +75,149 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: alpine.DEB.2.21.1910240722070.2771@hadrien.osuosl.org
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, paulburton@kernel.org,
- outreachy-kernel@googlegroups.com
+Cc: linux-hyperv@vger.kernel.org, Michal Hocko <mhocko@suse.com>,
+ =?UTF-8?q?Radim=20Kr=C4=8Dm=C3=A1=C5=99?= <rkrcmar@redhat.com>,
+ kvm@vger.kernel.org, David Hildenbrand <david@redhat.com>,
+ KarimAllah Ahmed <karahmed@amazon.de>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Dave Hansen <dave.hansen@linux.intel.com>,
+ Alexander Duyck <alexander.duyck@gmail.com>, Michal Hocko <mhocko@kernel.org>,
+ Paul Mackerras <paulus@ozlabs.org>, linux-mm@kvack.org,
+ Pavel Tatashin <pavel.tatashin@microsoft.com>,
+ Paul Mackerras <paulus@samba.org>, Michael Ellerman <mpe@ellerman.id.au>,
+ "H. Peter Anvin" <hpa@zytor.com>, Wanpeng Li <wanpengli@tencent.com>,
+ Alexander Duyck <alexander.h.duyck@linux.intel.com>,
+ Dan Williams <dan.j.williams@intel.com>, Kees Cook <keescook@chromium.org>,
+ devel@driverdev.osuosl.org, Stefano Stabellini <sstabellini@kernel.org>,
+ Stephen Hemminger <sthemmin@microsoft.com>,
+ "Aneesh Kumar K.V" <aneesh.kumar@linux.ibm.com>,
+ Joerg Roedel <joro@8bytes.org>, x86@kernel.org,
+ YueHaibing <yuehaibing@huawei.com>,
+ "Matthew Wilcox \(Oracle\)" <willy@infradead.org>,
+ Mike Rapoport <rppt@linux.ibm.com>, Peter Zijlstra <peterz@infradead.org>,
+ Ingo Molnar <mingo@redhat.com>, Vlastimil Babka <vbabka@suse.cz>,
+ Anthony Yznaga <anthony.yznaga@oracle.com>, Oscar Salvador <osalvador@suse.de>,
+ "Isaac J. Manjarres" <isaacm@codeaurora.org>, Juergen Gross <jgross@suse.com>,
+ Anshuman Khandual <anshuman.khandual@arm.com>,
+ Haiyang Zhang <haiyangz@microsoft.com>, Sasha Levin <sashal@kernel.org>,
+ kvm-ppc@vger.kernel.org, Qian Cai <cai@lca.pw>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Mike Rapoport <rppt@linux.vnet.ibm.com>, Borislav Petkov <bp@alien8.de>,
+ Nicholas Piggin <npiggin@gmail.com>, Andy Lutomirski <luto@kernel.org>,
+ xen-devel@lists.xenproject.org, Boris Ostrovsky <boris.ostrovsky@oracle.com>,
+ Vitaly Kuznetsov <vkuznets@redhat.com>, Allison Randal <allison@lohutok.net>,
+ Jim Mattson <jmattson@google.com>, Christophe Leroy <christophe.leroy@c-s.fr>,
+ Mel Gorman <mgorman@techsingularity.net>, Cornelia Huck <cohuck@redhat.com>,
+ Pavel Tatashin <pasha.tatashin@soleen.com>,
+ Sean Christopherson <sean.j.christopherson@intel.com>,
+ Thomas Gleixner <tglx@linutronix.de>, Johannes Weiner <hannes@cmpxchg.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Andrew Morton <akpm@linux-foundation.org>,
+ linuxppc-dev@lists.ozlabs.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Oct 24, 2019 at 07:26:59AM +0200, Julia Lawall wrote:
-> > If you're making significant changes to this driver, please test them
-> > using the MIPS cavium_octeon_defconfig which is where this driver is
-> > actually used.
-> >
-> > This driver has broken builds a few times recently which makes me very
-> > tempted to ask that we stop allowing it to be built with COMPILE_TEST.
-> > The whole octeon-stubs.h thing is a horrible hack anyway...
-> 
-> Wambui,
-> 
-> Please figure out what went wrong here.  Are there two sets of typedefs
-> that should have been updated?
->
-I managed to reproduce these build errors and finally noticed that the
-"octeon-stubs.h" header is only included when CONFIG_CAVIUM_OCTEON_SOC
-is not defined, therefore compiling properly for COMPILE_TEST but will
-actually fail when compiled with CONFIG_CAVIUM_OCTEON_SOC is set since
-the functions will try to use the definitions in
-arch/mips/include/asm/octeon/ that don't have the changes.
+This is the result of a recent discussion with Michal ([1], [2]). Right
+now we set all pages PG_reserved when initializing hotplugged memmaps. This
+includes ZONE_DEVICE memory. In case of system memory, PG_reserved is
+cleared again when onlining the memory, in case of ZONE_DEVICE memory
+never.
 
-Paul, please tell me if this is correct?
+In ancient times, we needed PG_reserved, because there was no way to tell
+whether the memmap was already properly initialized. We now have
+SECTION_IS_ONLINE for that in the case of !ZONE_DEVICE memory. ZONE_DEVICE
+memory is already initialized deferred, and there shouldn't be a visible
+change in that regard.
 
-Thanks,
-wambui
+One of the biggest fears were side effects. I went ahead and audited all
+users of PageReserved(). The details can be found in "mm/memory_hotplug:
+Don't mark pages PG_reserved when initializing the memmap".
 
-> Others,
-> 
-> Would it be reasonable to put the information about how the driver should
-> be compied in the TODO file?  git grep cavium_octeon_defconfig in the
-> octeon directory turns up nothing.
-> 
-> thanks,
-> julia
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/alpine.DEB.2.21.1910240722070.2771%40hadrien.
+This patch set adapts all relevant users of PageReserved() to keep the
+existing behavior in respect to ZONE_DEVICE pages. The biggest part part
+that needs changes is KVM, to keep the existing behavior (that's all I
+care about in this series).
+
+Note that this series is able to rely completely on pfn_to_online_page().
+No new is_zone_device_page() calles are introduced (as requested by Dan).
+We are currently discussing a way to mark also ZONE_DEVICE memmaps as
+active/initialized - pfn_active() - and lightweight locking to make sure
+memmaps remain active (e.g., using RCU). We might later be able to convert
+some suers of pfn_to_online_page() to pfn_active(). Details can be found
+in [3], however, this represents yet another cleanup/fix we'll perform
+on top of this cleanup.
+
+I only gave it a quick test with DIMMs on x86-64, but didn't test the
+ZONE_DEVICE part at all (any tips for a nice QEMU setup?). Also, I didn't
+test the KVM parts (especially with ZONE_DEVICE pages or no memmap at all).
+Compile-tested on x86-64 and PPC.
+
+Based on next/master. The current version (kept updated) can be found at:
+    https://github.com/davidhildenbrand/linux.git online_reserved_cleanup
+
+RFC -> v1:
+- Dropped "staging/gasket: Prepare gasket_release_page() for PG_reserved
+  changes"
+- Dropped "staging: kpc2000: Prepare transfer_complete_cb() for PG_reserved
+  changes"
+- Converted "mm/usercopy.c: Prepare check_page_span() for PG_reserved
+  changes" to "mm/usercopy.c: Update comment in check_page_span()
+  regarding ZONE_DEVICE"
+- No new users of is_zone_device_page() are introduced.
+- Rephrased comments and patch descriptions.
+
+[1] https://lkml.org/lkml/2019/10/21/736
+[2] https://lkml.org/lkml/2019/10/21/1034
+[3] https://www.spinics.net/lists/linux-mm/msg194112.html
+
+Cc: Michal Hocko <mhocko@kernel.org>
+Cc: Dan Williams <dan.j.williams@intel.com
+Cc: Andrew Morton <akpm@linux-foundation.org>
+Cc: kvm-ppc@vger.kernel.org
+Cc: linuxppc-dev@lists.ozlabs.org
+Cc: kvm@vger.kernel.org
+Cc: linux-hyperv@vger.kernel.org
+Cc: devel@driverdev.osuosl.org
+Cc: xen-devel@lists.xenproject.org
+Cc: x86@kernel.org
+Cc: Alexander Duyck <alexander.duyck@gmail.com>
+
+David Hildenbrand (10):
+  mm/memory_hotplug: Don't allow to online/offline memory blocks with
+    holes
+  KVM: x86/mmu: Prepare kvm_is_mmio_pfn() for PG_reserved changes
+  KVM: Prepare kvm_is_reserved_pfn() for PG_reserved changes
+  vfio/type1: Prepare is_invalid_reserved_pfn() for PG_reserved changes
+  powerpc/book3s: Prepare kvmppc_book3s_instantiate_page() for
+    PG_reserved changes
+  powerpc/64s: Prepare hash_page_do_lazy_icache() for PG_reserved
+    changes
+  powerpc/mm: Prepare maybe_pte_to_page() for PG_reserved changes
+  x86/mm: Prepare __ioremap_check_ram() for PG_reserved changes
+  mm/memory_hotplug: Don't mark pages PG_reserved when initializing the
+    memmap
+  mm/usercopy.c: Update comment in check_page_span() regarding
+    ZONE_DEVICE
+
+ arch/powerpc/kvm/book3s_64_mmu_radix.c | 14 +++++----
+ arch/powerpc/mm/book3s64/hash_utils.c  | 10 +++---
+ arch/powerpc/mm/pgtable.c              | 10 +++---
+ arch/x86/kvm/mmu.c                     | 29 ++++++++++-------
+ arch/x86/mm/ioremap.c                  | 13 ++++++--
+ drivers/hv/hv_balloon.c                |  6 ++++
+ drivers/vfio/vfio_iommu_type1.c        | 10 ++++--
+ drivers/xen/balloon.c                  |  7 +++++
+ include/linux/page-flags.h             |  8 +----
+ mm/memory_hotplug.c                    | 43 +++++++++++++++++++-------
+ mm/page_alloc.c                        | 11 -------
+ mm/usercopy.c                          |  6 ++--
+ virt/kvm/kvm_main.c                    | 10 ++++--
+ 13 files changed, 111 insertions(+), 66 deletions(-)
+
+-- 
+2.21.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
