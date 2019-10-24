@@ -2,70 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6C8C4E3DFE
-	for <lists+driverdev-devel@lfdr.de>; Thu, 24 Oct 2019 23:12:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 860C3E3E31
+	for <lists+driverdev-devel@lfdr.de>; Thu, 24 Oct 2019 23:31:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4EF9688356;
-	Thu, 24 Oct 2019 21:12:39 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 45A618835E;
+	Thu, 24 Oct 2019 21:31:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fCNAn0SlQrlw; Thu, 24 Oct 2019 21:12:38 +0000 (UTC)
+	with ESMTP id I1sjRb7C3pHA; Thu, 24 Oct 2019 21:31:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 76A5C88246;
-	Thu, 24 Oct 2019 21:12:38 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8DE1288246;
+	Thu, 24 Oct 2019 21:31:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9C83F1BF39D
- for <devel@linuxdriverproject.org>; Thu, 24 Oct 2019 21:12:36 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id EBCB81BF39D
+ for <devel@linuxdriverproject.org>; Thu, 24 Oct 2019 21:31:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 997BA86239
- for <devel@linuxdriverproject.org>; Thu, 24 Oct 2019 21:12:36 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E8A1B868F5
+ for <devel@linuxdriverproject.org>; Thu, 24 Oct 2019 21:31:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DsRO6OGZQSty for <devel@linuxdriverproject.org>;
- Thu, 24 Oct 2019 21:12:35 +0000 (UTC)
-X-Greylist: delayed 04:30:01 by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0187.hostedemail.com
- [216.40.44.187])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C41B786207
- for <devel@driverdev.osuosl.org>; Thu, 24 Oct 2019 21:12:35 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave03.hostedemail.com (Postfix) with ESMTP id 41A281817398A
- for <devel@driverdev.osuosl.org>; Thu, 24 Oct 2019 16:23:38 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay08.hostedemail.com (Postfix) with ESMTP id AD6DC182CF665;
- Thu, 24 Oct 2019 16:23:35 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, :::::::::,
- RULES_HIT:41:355:379:599:968:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1540:1593:1594:1711:1730:1747:1777:1792:2198:2199:2393:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3867:3868:4321:5007:8957:10004:10400:11232:11658:11914:12043:12296:12297:12740:12760:12895:13069:13161:13229:13311:13357:13439:14659:14721:21080:21433:21627:21810:21939:30012:30054:30091,
- 0,
- RBL:47.151.135.224:@perches.com:.lbl8.mailshell.net-62.8.0.100 64.201.201.201,
- CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none, DomainCache:0,
- MSF:not bulk, SPF:fn, MSBL:0, DNSBL:neutral, Custom_rules:0:0:0, LFtime:25,
- LUA_SUMMARY:none
-X-HE-Tag: shade65_1f39141a68414
-X-Filterd-Recvd-Size: 1838
-Received: from XPS-9350.home (unknown [47.151.135.224])
- (Authenticated sender: joe@perches.com)
- by omf04.hostedemail.com (Postfix) with ESMTPA;
- Thu, 24 Oct 2019 16:23:34 +0000 (UTC)
-Message-ID: <915cd2a3ee58222b63c14f9f1819a0aa0b379a4f.camel@perches.com>
-Subject: Re: [PATCH 04/15] staging: exfat: Clean up return codes -
- FFS_PERMISSIONERR
-From: Joe Perches <joe@perches.com>
-To: Valdis Kletnieks <valdis.kletnieks@vt.edu>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>
-Date: Thu, 24 Oct 2019 09:23:33 -0700
-In-Reply-To: <20191024155327.1095907-5-Valdis.Kletnieks@vt.edu>
-References: <20191024155327.1095907-1-Valdis.Kletnieks@vt.edu>
- <20191024155327.1095907-5-Valdis.Kletnieks@vt.edu>
-User-Agent: Evolution 3.34.1-2 
-MIME-Version: 1.0
+ with ESMTP id Zx2uNmUpI_O1 for <devel@linuxdriverproject.org>;
+ Thu, 24 Oct 2019 21:31:11 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-lf1-f65.google.com (mail-lf1-f65.google.com
+ [209.85.167.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 37D3D868EF
+ for <devel@driverdev.osuosl.org>; Thu, 24 Oct 2019 21:31:11 +0000 (UTC)
+Received: by mail-lf1-f65.google.com with SMTP id b20so97409lfp.4
+ for <devel@driverdev.osuosl.org>; Thu, 24 Oct 2019 14:31:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=7Cs/9h6BQ5mr2xE5m4o+dl0v2QuQDBi9AGTiyIMVXlk=;
+ b=X1XLD7ZVi/THIIQkm1GcpS3OiEV7oKkA+F0+6w2sHQDACDKhUNVeAUdcs1NHCF3Ikb
+ nx9AXF8zig99Fz4BpkOQjJ8C1U2vLl16dVJIedjutjhjITpJgllU3YyZZFVZg/hRaiVh
+ hUu66W/9tXCNwmtnD1RBxXIy7jQ7gZ9Mt2RbHzeHRx4Gi+gVQDvzguLm5IiRcHNJna06
+ Qyzi1N0Hh9AVPjVVakFXwLZN953tr4RIUBS4F4ul0F/66RrunIRTW/DkRWDQTwbdlDzb
+ inTz4fPxTeq6gR0735Y51aVj5VB2EQT8nzrvJNXQ0+0YZegrYX3YfaRoC1fzY0Kk1LiW
+ dgdQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=7Cs/9h6BQ5mr2xE5m4o+dl0v2QuQDBi9AGTiyIMVXlk=;
+ b=MUSChM6IYkxOlsCt+wH+CTFI0uExb5wTVIQpyl40QKIMWeL4qGnk5ZAY58Y7C3e8GA
+ awwApDJDDjEdewR5GrY4DS6oWetl5kSdz/kU3J05CdXtciKGGntLQRjNMKLV9bJVedSa
+ Eh3A9b+hb0Fn6JMEcmVSiJdBL8S9NScK1AtIB9eVwRcQSNBaxRYOOcsNtEguCZYYhAu0
+ h0Qf2wemIlg2bKbZbAj8SEJigXszM4VrqR8S4oisIYf3peaouzC5axC4KsJ+4iKMAWw5
+ Nh0yrwI3Guh9avcRnFGfUIx5PCRJrMbx6oSdQIKKBBmLzMPi+DzAwGPI7842U8T5alUM
+ KRuw==
+X-Gm-Message-State: APjAAAXCgxdmT4VzQYUIsBBYjR8e7KeLYpCWt8ABxGc6AhcjnOhsLBlE
+ 5vCSoKAUoIjf4aKEvyoo+5E=
+X-Google-Smtp-Source: APXvYqz05umLa5MdbaOtFs2aXzGdOkSIoNg8smJyfE5Mzi2SvITTtJHnKyfu1y/butNtKpGnC94/PQ==
+X-Received: by 2002:a19:3fcd:: with SMTP id m196mr207783lfa.118.1571952669248; 
+ Thu, 24 Oct 2019 14:31:09 -0700 (PDT)
+Received: from localhost.localdomain ([93.152.168.243])
+ by smtp.gmail.com with ESMTPSA id t8sm20228336ljd.18.2019.10.24.14.31.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 24 Oct 2019 14:31:08 -0700 (PDT)
+From: Samuil Ivanov <samuil.ivanovbg@gmail.com>
+To: gregkh@linuxfoundation.org, manishc@marvell.com,
+ GR-Linux-NIC-Dev@marvell.com
+Subject: [PATCH 0/3] Staging: qlge: Rename of function prefix ql_ to qlge_
+Date: Fri, 25 Oct 2019 00:29:38 +0300
+Message-Id: <20191024212941.28149-1-samuil.ivanovbg@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,40 +81,35 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-fsdevel@vger.kernel.org, devel@driverdev.osuosl.org,
+Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
  linux-kernel@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, 2019-10-24 at 11:53 -0400, Valdis Kletnieks wrote:
-> Convert FFS_PERMISSIONERR to -EPERM
-[]
-> diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
-[]
-> @@ -2526,7 +2526,7 @@ static int exfat_unlink(struct inode *dir, struct dentry *dentry)
->  
->  	err = ffsRemoveFile(dir, &(EXFAT_I(inode)->fid));
->  	if (err) {
-> -		if (err == FFS_PERMISSIONERR)
-> +		if (err == -EPERM)
->  			err = -EPERM;
->  		else
->  			err = -EIO;
-[]
-> @@ -2746,7 +2746,7 @@ static int exfat_rename(struct inode *old_dir, struct dentry *old_dentry,
->  	err = ffsMoveFile(old_dir, &(EXFAT_I(old_inode)->fid), new_dir,
->  			  new_dentry);
->  	if (err) {
-> -		if (err == FFS_PERMISSIONERR)
-> +		if (err == -EPERM)
->  			err = -EPERM;
->  		else if (err == FFS_INVALIDPATH)
->  			err = -EINVAL;
+In terms of namespace, the driver uses either qlge_, ql_ (used by
+other qlogic drivers, with clashes, ex: ql_sem_spinlock) or nothing (with
+clashes, ex: struct ob_mac_iocb_req). Rename everything to use the "qlge_"
+prefix.
 
-These test and assign to same value blocks look kinda silly.
+So I renamed three functions to the prefered namespace "qlge",
+and updated the occurrences in the driver.
 
+Samuil Ivanov (3):
+  Staging: qlge: Rename prefix of a function to qlge
+  Staging: qlge: Rename prefix of a function to qlge
+  Staging: qlge: Rename prefix of a function to qlge
+
+ drivers/staging/qlge/qlge.h      |  6 +++---
+ drivers/staging/qlge/qlge_dbg.c  |  4 ++--
+ drivers/staging/qlge/qlge_main.c |  2 +-
+ drivers/staging/qlge/qlge_mpi.c  | 12 ++++++------
+ 4 files changed, 12 insertions(+), 12 deletions(-)
+
+-- 
+2.17.1
 
 _______________________________________________
 devel mailing list
