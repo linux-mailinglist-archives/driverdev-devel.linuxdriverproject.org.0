@@ -2,74 +2,74 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E8C4AE45F5
-	for <lists+driverdev-devel@lfdr.de>; Fri, 25 Oct 2019 10:42:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 60570E45F7
+	for <lists+driverdev-devel@lfdr.de>; Fri, 25 Oct 2019 10:42:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BAC29877E9;
-	Fri, 25 Oct 2019 08:42:01 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 06F4D88391;
+	Fri, 25 Oct 2019 08:42:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id X5BWmrQmEtf2; Fri, 25 Oct 2019 08:42:01 +0000 (UTC)
+	with ESMTP id ii9Q95eBV1du; Fri, 25 Oct 2019 08:42:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EC8AC86E1D;
-	Fri, 25 Oct 2019 08:41:58 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0321E87553;
+	Fri, 25 Oct 2019 08:42:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B9FB81BF2B7
- for <devel@linuxdriverproject.org>; Fri, 25 Oct 2019 08:41:36 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 955D51BF2B7
+ for <devel@linuxdriverproject.org>; Fri, 25 Oct 2019 08:41:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B77C68659B
- for <devel@linuxdriverproject.org>; Fri, 25 Oct 2019 08:41:36 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 92086204C9
+ for <devel@linuxdriverproject.org>; Fri, 25 Oct 2019 08:41:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oUuSL2i+cCin for <devel@linuxdriverproject.org>;
- Fri, 25 Oct 2019 08:41:36 +0000 (UTC)
+ with ESMTP id eQyMm2JkDvwO for <devel@linuxdriverproject.org>;
+ Fri, 25 Oct 2019 08:41:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
- [209.85.221.67])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D87C58619F
- for <devel@driverdev.osuosl.org>; Fri, 25 Oct 2019 08:41:35 +0000 (UTC)
-Received: by mail-wr1-f67.google.com with SMTP id q13so1280083wrs.12
- for <devel@driverdev.osuosl.org>; Fri, 25 Oct 2019 01:41:35 -0700 (PDT)
+Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
+ [209.85.221.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id C2D8D20373
+ for <devel@driverdev.osuosl.org>; Fri, 25 Oct 2019 08:41:36 +0000 (UTC)
+Received: by mail-wr1-f65.google.com with SMTP id a11so1312389wra.6
+ for <devel@driverdev.osuosl.org>; Fri, 25 Oct 2019 01:41:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=7AefCLQ4P2FXA784rctO4h0y4YIabz91rBAsM41QGC8=;
- b=W8wpPLO34XNeMbUO6mF/Gme2Q9kkyLWEPlDmAUMxoL4/fI5HWYQM6lAyxcqAFA4Np1
- v3qFT2fhRHLAk+j+d/ntaVErAL31cVWEInWTJlfkkj7xUmQhqYw4OYR6dqFNhrzzpHpY
- HP7fS6R1ft22+xPBnaevaVtXrN+qedz+4bgzfeao0Mq4pBuIRXngMjufZeJG3wRg3JH8
- WtDdERrqK6f6GjxrQ9tsdG1dxdFYkcTEmHdes60+7FBYcV7rbwlL5V+qy5M4zi7q507Q
- i9oxeZI4KQzIr0Xdhjk63Nqtl4x6RVov4QLUfuNDMOHfro+X9VYlP0xUm6t8D/u84NEN
- ITcw==
+ bh=PY6b2z5P9QoaoZCAGimZtE7w/jH/Qk8RrWQNl3pgncs=;
+ b=qw6l78oj61sRZlr9GHz6USo/TMhFMo/GTZqc/9ghI+w10SNBN9clNIR8OMj9tkAydJ
+ h/kkcj0XPu9wpje9qotLkpaeSBDD93Wf742XyLHGFg7w+Mur+EDuc+H9vr9glfxBB6MD
+ bhkwCdyTGF4xY2XLa+0OgpmRtYuD8ua5XnjJ2fgSBP3/jPGWnVe3ftCWL/ZRJjOZnCQb
+ VmhHe7DFMJWoMYkNm4D67w9w/QPiHGpkC6DrYJh9dWA41Y18ySs6qZHYZ3dRca87SEf2
+ 0rbnSbbJ+uUvYYkg3qzAHPa0xPHhDiB+Fz0YBDwIHUIr/3mxgXScvSRfI1FiSVBqhFew
+ sBvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=7AefCLQ4P2FXA784rctO4h0y4YIabz91rBAsM41QGC8=;
- b=W8MRVgyAQ0wG7oJqwwExK46aSeQJPhM1buiXCQxV/2iA8EtkRJvjDsmUFOFx0A7rUO
- JkkHRSz4Wxpt5962TsjAElNOvoe2/xa+5jOkH1FKeyX951BQ2WSc2WnM44ZKDFSflnNm
- PigcHRJAgZCSRDGBoKFQVSUX4gO8YTlggB0WdRtR+NUEmJuWtlZo0SAxlC/KeomLu7Bm
- Ehvmpi6snocOL+2D61PHe4qGY1Ln2ds08PX41yDPDp7yEEmmx0NEoY2moalaEHHA2p1w
- nvXPdWfGShSSjCBo54Ci/zrg/Aah5Q6bGv1748BAzH9JKNDXmlIufZfi2/nKrjR9xpEC
- yUlg==
-X-Gm-Message-State: APjAAAVjlIvOM24D3oxRbL+T8XnsxV/Y2+lqy9afkoNg5mQoij1L/YmT
- WTBi5sP4tnG6ApJjxgl/uWs=
-X-Google-Smtp-Source: APXvYqyDE/iOri4Y4H0SbGsnJGFZZ6850tPJJSXBRGAA/LDepnm/Z8XT29PGfpdvYXK2l+LbBiXcVA==
-X-Received: by 2002:adf:94e2:: with SMTP id 89mr1630817wrr.259.1571992894353; 
- Fri, 25 Oct 2019 01:41:34 -0700 (PDT)
+ bh=PY6b2z5P9QoaoZCAGimZtE7w/jH/Qk8RrWQNl3pgncs=;
+ b=t9YoYWk/J+FgRGhCY+MDoyy4LICkgoNRt7ssfGox+W4Zna9APGSFwPpnrOAiFLTQcL
+ cmU/nRjtwztQB3+jmrx2ZmOKJXEijW7ugUSbh6j3rorXnkh/J4t+KYHHlEr+TgdIjVlX
+ FiqDf39b6MsOxMuqsR3PHOuj2B1I4Tc4JqG9YMdKrhUFvLMpB8rUWwihSqofExg+Q6E9
+ aDacmpYgtvg57UoQDwt4VFzdQUU53XSCBYX26eCQjy84Dk4pu1yfAGLa1M1oNyJ3FwYR
+ raAgpNqOJwnklklRNA4c+9fV0nNOcTcJYE78ndctdgQyiOsXjWreBktzth41wjMwfYhh
+ t0YA==
+X-Gm-Message-State: APjAAAUA1OhK/paG4BDX3hVkrIFohe26Esjr8zrEav1aPFZvg9T8tuhC
+ Fe8NY57cznIaQWGYcNCOQm7BgBcI
+X-Google-Smtp-Source: APXvYqxAvExvwvs5NL9y15jYdH1lT/GdASLp1lWbi3Onw9dBb7b5keaSxYoKA2DVd7LHedECUCR+uA==
+X-Received: by 2002:a5d:55c2:: with SMTP id i2mr1847866wrw.176.1571992895357; 
+ Fri, 25 Oct 2019 01:41:35 -0700 (PDT)
 Received: from meriadoc.middleearth ([80.2.21.148])
- by smtp.gmail.com with ESMTPSA id 200sm2257986wme.32.2019.10.25.01.41.33
+ by smtp.gmail.com with ESMTPSA id 200sm2257986wme.32.2019.10.25.01.41.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 25 Oct 2019 01:41:33 -0700 (PDT)
+ Fri, 25 Oct 2019 01:41:34 -0700 (PDT)
 From: Tim Collier <osdevtc@gmail.com>
 To: gregkh@linuxfoundation.org,
 	devel@driverdev.osuosl.org
-Subject: [PATCH 3/5] staging: wlan-ng: correct parameter alignment in hfa384x.h
-Date: Fri, 25 Oct 2019 09:41:24 +0100
-Message-Id: <20191025084126.9181-4-osdevtc@gmail.com>
+Subject: [PATCH 4/5] staging: wlan-ng: fix compilation for USB debugging
+Date: Fri, 25 Oct 2019 09:41:25 +0100
+Message-Id: <20191025084126.9181-5-osdevtc@gmail.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191025084126.9181-1-osdevtc@gmail.com>
 References: <20191025084126.9181-1-osdevtc@gmail.com>
@@ -91,28 +91,32 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Realign parameter in function declaration to fix checkpatch.pl warning
-that parameter needed to be aligned with the opening parenthesis of
-the declaration.
+Fix compilation errors (remove references to 2 undefined fields in the
+URB struct) when DEBUG_USB is defined for the wlan-ng driver.
 
 Signed-off-by: Tim Collier <osdevtc@gmail.com>
 ---
- drivers/staging/wlan-ng/hfa384x.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/wlan-ng/hfa384x_usb.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/staging/wlan-ng/hfa384x.h b/drivers/staging/wlan-ng/hfa384x.h
-index 2d3d8b1e2c1b..86fd3fcd8a36 100644
---- a/drivers/staging/wlan-ng/hfa384x.h
-+++ b/drivers/staging/wlan-ng/hfa384x.h
-@@ -1374,7 +1374,7 @@ void hfa384x_create(struct hfa384x *hw, struct usb_device *usb);
- void hfa384x_destroy(struct hfa384x *hw);
- 
- int hfa384x_corereset(struct hfa384x *hw, int holdtime, int settletime,
--		       int genesis);
-+		      int genesis);
- int hfa384x_drvr_disable(struct hfa384x *hw, u16 macport);
- int hfa384x_drvr_enable(struct hfa384x *hw, u16 macport);
- int hfa384x_drvr_flashdl_enable(struct hfa384x *hw);
+diff --git a/drivers/staging/wlan-ng/hfa384x_usb.c b/drivers/staging/wlan-ng/hfa384x_usb.c
+index 28d372a0663a..b71756ab0394 100644
+--- a/drivers/staging/wlan-ng/hfa384x_usb.c
++++ b/drivers/staging/wlan-ng/hfa384x_usb.c
+@@ -293,13 +293,11 @@ void dbprint_urb(struct urb *urb)
+ 	pr_debug("urb->transfer_buffer_length=0x%08x\n",
+ 		 urb->transfer_buffer_length);
+ 	pr_debug("urb->actual_length=0x%08x\n", urb->actual_length);
+-	pr_debug("urb->bandwidth=0x%08x\n", urb->bandwidth);
+ 	pr_debug("urb->setup_packet(ctl)=0x%08x\n",
+ 		 (unsigned int)urb->setup_packet);
+ 	pr_debug("urb->start_frame(iso/irq)=0x%08x\n", urb->start_frame);
+ 	pr_debug("urb->interval(irq)=0x%08x\n", urb->interval);
+ 	pr_debug("urb->error_count(iso)=0x%08x\n", urb->error_count);
+-	pr_debug("urb->timeout=0x%08x\n", urb->timeout);
+ 	pr_debug("urb->context=0x%08x\n", (unsigned int)urb->context);
+ 	pr_debug("urb->complete=0x%08x\n", (unsigned int)urb->complete);
+ }
 -- 
 2.21.0
 
