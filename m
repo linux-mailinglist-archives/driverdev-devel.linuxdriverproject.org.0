@@ -1,76 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B900E45F6
-	for <lists+driverdev-devel@lfdr.de>; Fri, 25 Oct 2019 10:42:06 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E8C4AE45F5
+	for <lists+driverdev-devel@lfdr.de>; Fri, 25 Oct 2019 10:42:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B1EEC876C2;
-	Fri, 25 Oct 2019 08:42:04 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BAC29877E9;
+	Fri, 25 Oct 2019 08:42:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3jFGPGjAB5tk; Fri, 25 Oct 2019 08:42:03 +0000 (UTC)
+	with ESMTP id X5BWmrQmEtf2; Fri, 25 Oct 2019 08:42:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 04711874F7;
+	by hemlock.osuosl.org (Postfix) with ESMTP id EC8AC86E1D;
 	Fri, 25 Oct 2019 08:41:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E80141BF2B7
- for <devel@linuxdriverproject.org>; Fri, 25 Oct 2019 08:41:35 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B9FB81BF2B7
+ for <devel@linuxdriverproject.org>; Fri, 25 Oct 2019 08:41:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E4FA887586
- for <devel@linuxdriverproject.org>; Fri, 25 Oct 2019 08:41:35 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id B77C68659B
+ for <devel@linuxdriverproject.org>; Fri, 25 Oct 2019 08:41:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dhNO2ODSajfB for <devel@linuxdriverproject.org>;
- Fri, 25 Oct 2019 08:41:35 +0000 (UTC)
+ with ESMTP id oUuSL2i+cCin for <devel@linuxdriverproject.org>;
+ Fri, 25 Oct 2019 08:41:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
  [209.85.221.67])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D6894874F7
- for <devel@driverdev.osuosl.org>; Fri, 25 Oct 2019 08:41:34 +0000 (UTC)
-Received: by mail-wr1-f67.google.com with SMTP id n15so1278983wrw.13
- for <devel@driverdev.osuosl.org>; Fri, 25 Oct 2019 01:41:34 -0700 (PDT)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D87C58619F
+ for <devel@driverdev.osuosl.org>; Fri, 25 Oct 2019 08:41:35 +0000 (UTC)
+Received: by mail-wr1-f67.google.com with SMTP id q13so1280083wrs.12
+ for <devel@driverdev.osuosl.org>; Fri, 25 Oct 2019 01:41:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=vJ5sG92Ta/upeDjeKszRRrmFqGV/Y3qIhkYyJc9HkaY=;
- b=oo5Irtr7Suknd10jlrdcB397VgK1KAgOUl16rO8h1dDQN2ELottim6ODhFbTRIorJo
- Awgn6ik9XsCf2WMLly3zRnz/UCSqG7OjzbAueP56/dFEhIh3R/4a/N/97eIoQeWT5g2H
- bTYhLyb/i/SLjrFhkVx7HP+oPJZ2s/HSZERiSwRCEd6EoQCNr4y5nmoqVRd1HVFfvied
- czaWVIYbpb5y5PkvngroUyvAL8vf6OP0EtjrkpRmms0LgdOf4AG5Q/NxwT/4zPKPZYih
- lYwPYwegE9gmbahR26U4LffyJD1YmKoBYivNljM7k/hpWV83qAretfmKA9abNt/fG4oy
- 20MQ==
+ bh=7AefCLQ4P2FXA784rctO4h0y4YIabz91rBAsM41QGC8=;
+ b=W8wpPLO34XNeMbUO6mF/Gme2Q9kkyLWEPlDmAUMxoL4/fI5HWYQM6lAyxcqAFA4Np1
+ v3qFT2fhRHLAk+j+d/ntaVErAL31cVWEInWTJlfkkj7xUmQhqYw4OYR6dqFNhrzzpHpY
+ HP7fS6R1ft22+xPBnaevaVtXrN+qedz+4bgzfeao0Mq4pBuIRXngMjufZeJG3wRg3JH8
+ WtDdERrqK6f6GjxrQ9tsdG1dxdFYkcTEmHdes60+7FBYcV7rbwlL5V+qy5M4zi7q507Q
+ i9oxeZI4KQzIr0Xdhjk63Nqtl4x6RVov4QLUfuNDMOHfro+X9VYlP0xUm6t8D/u84NEN
+ ITcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=vJ5sG92Ta/upeDjeKszRRrmFqGV/Y3qIhkYyJc9HkaY=;
- b=QzwiWN2ygi36ErZRAaahU2NwAYxVtOjZZ2aJijKVZOZZFkSV1ecpFkAbYWJrE4TFws
- mgBLuz8bl7BueAysTIRCD4Is09q13x5gdcJPC5cr6Yg7ZOgYGiO0zuTS7gCF7+raUdnK
- 9aZa5Yt2Tuj6/elV9P3IvOkEEAApGFeAaGHpdupNOveFqGoPsb9ag09iyXuMSJg65ofg
- fiqzv8ecezgvtszJ1SI6nkGrUrq7NNg5OQwvIhrWn8AuXygWym6JwsPUWsqUkztrb/1D
- /hEbSt3tlSyCOwcVsgMn7M2OQBl4FO9iA2l2XnA2unkD8k1DRSCx7GTxGCTRIECfbUWS
- U1cg==
-X-Gm-Message-State: APjAAAXeZGrmtpDxWDH2gqGmnZXz404zFrkunMcmrscWft2rkVgrXdtL
- dyxlhKnGquDl+HA5a0bK6+OZPbs/
-X-Google-Smtp-Source: APXvYqxHFJ/GkgIxhXJWe076jJQAOzVcUFW7wrJKuE4UPsNiFNpEI8H+BW1AUFNZjJt1mH2H9v0rZA==
-X-Received: by 2002:adf:e585:: with SMTP id l5mr1799482wrm.156.1571992893427; 
- Fri, 25 Oct 2019 01:41:33 -0700 (PDT)
+ bh=7AefCLQ4P2FXA784rctO4h0y4YIabz91rBAsM41QGC8=;
+ b=W8MRVgyAQ0wG7oJqwwExK46aSeQJPhM1buiXCQxV/2iA8EtkRJvjDsmUFOFx0A7rUO
+ JkkHRSz4Wxpt5962TsjAElNOvoe2/xa+5jOkH1FKeyX951BQ2WSc2WnM44ZKDFSflnNm
+ PigcHRJAgZCSRDGBoKFQVSUX4gO8YTlggB0WdRtR+NUEmJuWtlZo0SAxlC/KeomLu7Bm
+ Ehvmpi6snocOL+2D61PHe4qGY1Ln2ds08PX41yDPDp7yEEmmx0NEoY2moalaEHHA2p1w
+ nvXPdWfGShSSjCBo54Ci/zrg/Aah5Q6bGv1748BAzH9JKNDXmlIufZfi2/nKrjR9xpEC
+ yUlg==
+X-Gm-Message-State: APjAAAVjlIvOM24D3oxRbL+T8XnsxV/Y2+lqy9afkoNg5mQoij1L/YmT
+ WTBi5sP4tnG6ApJjxgl/uWs=
+X-Google-Smtp-Source: APXvYqyDE/iOri4Y4H0SbGsnJGFZZ6850tPJJSXBRGAA/LDepnm/Z8XT29PGfpdvYXK2l+LbBiXcVA==
+X-Received: by 2002:adf:94e2:: with SMTP id 89mr1630817wrr.259.1571992894353; 
+ Fri, 25 Oct 2019 01:41:34 -0700 (PDT)
 Received: from meriadoc.middleearth ([80.2.21.148])
- by smtp.gmail.com with ESMTPSA id 200sm2257986wme.32.2019.10.25.01.41.32
+ by smtp.gmail.com with ESMTPSA id 200sm2257986wme.32.2019.10.25.01.41.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 25 Oct 2019 01:41:32 -0700 (PDT)
+ Fri, 25 Oct 2019 01:41:33 -0700 (PDT)
 From: Tim Collier <osdevtc@gmail.com>
 To: gregkh@linuxfoundation.org,
 	devel@driverdev.osuosl.org
-Subject: [PATCH 2/5] staging: wlan-ng: shorten lines over 80 characters in
- hfa384x.h
-Date: Fri, 25 Oct 2019 09:41:23 +0100
-Message-Id: <20191025084126.9181-3-osdevtc@gmail.com>
+Subject: [PATCH 3/5] staging: wlan-ng: correct parameter alignment in hfa384x.h
+Date: Fri, 25 Oct 2019 09:41:24 +0100
+Message-Id: <20191025084126.9181-4-osdevtc@gmail.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191025084126.9181-1-osdevtc@gmail.com>
 References: <20191025084126.9181-1-osdevtc@gmail.com>
@@ -92,59 +91,28 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Shorten several lines reported as over 80 characters by checkpatch.pl.
+Realign parameter in function declaration to fix checkpatch.pl warning
+that parameter needed to be aligned with the opening parenthesis of
+the declaration.
 
 Signed-off-by: Tim Collier <osdevtc@gmail.com>
 ---
- drivers/staging/wlan-ng/hfa384x.h | 14 ++++++++++----
- 1 file changed, 10 insertions(+), 4 deletions(-)
+ drivers/staging/wlan-ng/hfa384x.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/staging/wlan-ng/hfa384x.h b/drivers/staging/wlan-ng/hfa384x.h
-index 5ff740a8837d..2d3d8b1e2c1b 100644
+index 2d3d8b1e2c1b..86fd3fcd8a36 100644
 --- a/drivers/staging/wlan-ng/hfa384x.h
 +++ b/drivers/staging/wlan-ng/hfa384x.h
-@@ -1337,7 +1337,9 @@ struct hfa384x {
- 						  * interface
- 						  */
+@@ -1374,7 +1374,7 @@ void hfa384x_create(struct hfa384x *hw, struct usb_device *usb);
+ void hfa384x_destroy(struct hfa384x *hw);
  
--	struct hfa384x_caplevel cap_act_sta_mfi; /* sta f/w to modem interface */
-+	struct hfa384x_caplevel cap_act_sta_mfi; /*
-+						  * sta f/w to modem interface
-+						  */
- 
- 	struct hfa384x_caplevel cap_act_ap_cfi;	/*
- 						 * ap f/w to controller
-@@ -1359,7 +1361,9 @@ struct hfa384x {
- 
- 	struct hfa384x_inf_frame *scanresults;
- 
--	struct prism2sta_authlist authlist;	/* Authenticated station list. */
-+	struct prism2sta_authlist authlist;	/*
-+						 * Authenticated station list.
-+						 */
- 	unsigned int accessmode;		/* Access mode. */
- 	struct prism2sta_accesslist allow;	/* Allowed station list. */
- 	struct prism2sta_accesslist deny;	/* Denied station list. */
-@@ -1375,7 +1379,8 @@ int hfa384x_drvr_disable(struct hfa384x *hw, u16 macport);
+ int hfa384x_corereset(struct hfa384x *hw, int holdtime, int settletime,
+-		       int genesis);
++		      int genesis);
+ int hfa384x_drvr_disable(struct hfa384x *hw, u16 macport);
  int hfa384x_drvr_enable(struct hfa384x *hw, u16 macport);
  int hfa384x_drvr_flashdl_enable(struct hfa384x *hw);
- int hfa384x_drvr_flashdl_disable(struct hfa384x *hw);
--int hfa384x_drvr_flashdl_write(struct hfa384x *hw, u32 daddr, void *buf, u32 len);
-+int hfa384x_drvr_flashdl_write(struct hfa384x *hw, u32 daddr, void *buf,
-+			       u32 len);
- int hfa384x_drvr_getconfig(struct hfa384x *hw, u16 rid, void *buf, u16 len);
- int hfa384x_drvr_ramdl_enable(struct hfa384x *hw, u32 exeaddr);
- int hfa384x_drvr_ramdl_disable(struct hfa384x *hw);
-@@ -1383,7 +1388,8 @@ int hfa384x_drvr_ramdl_write(struct hfa384x *hw, u32 daddr, void *buf, u32 len);
- int hfa384x_drvr_readpda(struct hfa384x *hw, void *buf, unsigned int len);
- int hfa384x_drvr_setconfig(struct hfa384x *hw, u16 rid, void *buf, u16 len);
- 
--static inline int hfa384x_drvr_getconfig16(struct hfa384x *hw, u16 rid, void *val)
-+static inline int
-+hfa384x_drvr_getconfig16(struct hfa384x *hw, u16 rid, void *val)
- {
- 	int result = 0;
- 
 -- 
 2.21.0
 
