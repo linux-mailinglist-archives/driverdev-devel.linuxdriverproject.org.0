@@ -1,62 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 10B3BE5EB4
-	for <lists+driverdev-devel@lfdr.de>; Sat, 26 Oct 2019 20:47:25 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5CD26E5F2A
+	for <lists+driverdev-devel@lfdr.de>; Sat, 26 Oct 2019 21:11:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9574086233;
-	Sat, 26 Oct 2019 18:47:23 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 63EA187552;
+	Sat, 26 Oct 2019 19:11:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DSG1aQFMHrmU; Sat, 26 Oct 2019 18:47:23 +0000 (UTC)
+	with ESMTP id ht4nfsEYs9kG; Sat, 26 Oct 2019 19:11:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DC22085BDF;
-	Sat, 26 Oct 2019 18:47:21 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 97ACB8754B;
+	Sat, 26 Oct 2019 19:11:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8E6981BF2B3
- for <devel@linuxdriverproject.org>; Sat, 26 Oct 2019 18:47:19 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 852061BF2B4
+ for <devel@linuxdriverproject.org>; Sat, 26 Oct 2019 19:11:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8AF578544C
- for <devel@linuxdriverproject.org>; Sat, 26 Oct 2019 18:47:19 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 811348526D
+ for <devel@linuxdriverproject.org>; Sat, 26 Oct 2019 19:11:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zDlAN5rSezvv for <devel@linuxdriverproject.org>;
- Sat, 26 Oct 2019 18:47:19 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id F26EF844B2
- for <devel@driverdev.osuosl.org>; Sat, 26 Oct 2019 18:47:18 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 4F53820663;
- Sat, 26 Oct 2019 18:47:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1572115638;
- bh=ko0i0zDpitgbOfxq/GRV2PdhwP/g81WtxSssjEN3BIY=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=UkK5VxEy1Nj3AdQCch7Ewa4Iw8T65kQqJwVhCpf/0LHsbV0MvQHXZA/Xjo84toKA7
- HZoOEHkphNJIKRxtEARPs/eYIjnnP4ibZhe9grlPF2QyoM2enBxAffKuNG21Vcv1nt
- kryuBnqUS8vhjvUCSN9Ab1pPeSS+/+5ilBsoQl0U=
-Date: Sat, 26 Oct 2019 20:47:16 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Aaro Koskinen <aaro.koskinen@iki.fi>
-Subject: Re: [Outreachy kernel] [PATCH v2 0/5] Remove typedef declarations in
- staging: octeon
-Message-ID: <20191026184716.GA753584@kroah.com>
-References: <cover.1570821661.git.wambui.karugax@gmail.com>
- <alpine.DEB.2.21.1910122034390.3049@hadrien>
- <20191023174304.GD18977@darkstar.musicnaut.iki.fi>
+ with ESMTP id BZENVZAXCxl7 for <devel@linuxdriverproject.org>;
+ Sat, 26 Oct 2019 19:11:08 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-qk1-f193.google.com (mail-qk1-f193.google.com
+ [209.85.222.193])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E3D8E85188
+ for <devel@driverdev.osuosl.org>; Sat, 26 Oct 2019 19:11:07 +0000 (UTC)
+Received: by mail-qk1-f193.google.com with SMTP id e66so4866039qkf.13
+ for <devel@driverdev.osuosl.org>; Sat, 26 Oct 2019 12:11:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=4M2PPQu81RMk5nsX69ndHO0vXv7tXeNQzA+s8i3K/j0=;
+ b=nxctGgrJoLNSbguV4WSIiZryHyyuV9e4Lvv6AkOUd+N/OEu6UteDzWWerdaNpG79vL
+ jue5VXecsZTJHH3IrZBtMl34GEiwssY7I4lQxe2lnVY0A5a1GRtNi3SAms8iftHZxHzH
+ /F817JeWeytYvt1RJgQYbjpGtbZbn8knYH1fBO9ckc1K0wqK83vrEZWq8QMoplEvf4ti
+ n9yRs9zNiwzm3sxnV6dJ5HNKLmNvcwkQO9hvO/sLGlHIRh6UBYRW95a7tcUksgotx1Ah
+ yK+IEPKFLdC+lH9Xlf/xODpQgN/XB0VC9dLqjZWvBtneTaj8VCHBoNOjlGL6WFPKJ6tE
+ pQNg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=4M2PPQu81RMk5nsX69ndHO0vXv7tXeNQzA+s8i3K/j0=;
+ b=XRhxMwVFYyy8o0WbI9xJVCEVikvnMk/bKC+nFZYVAUdKTOPEdQEsn15VXehg/JfHt6
+ 5xTuVme59aJ5gyklAHbDDZpLW0rB0MHS/392hokyejR3ov8b0+lQMDK/lUiM7rJhbfgE
+ q53eAk6szFo8hEnPta58M3Mcdht4fZbewMeP0B3I5onzKuphzx0RsKIRxWXdRVKQSQJS
+ sfryou3WOiv4WeyUDA05v7QomMXx/AeHTRLJbQF5KXN/yQhwQJWJn5Ojy8dpgu6jjeaO
+ 5Bfa2ECFMDIhr7rZPW4z37z3J3dY6MDJtGpBWr5vtYlxlq5OGOFrFlBt4ffvpyKTGzO3
+ fArg==
+X-Gm-Message-State: APjAAAXU5NwILvwEr3vtfhJa/++y2TM0X6+E5BQepTwwaLWbBjp/Lnmw
+ kYbV+hdVIcsWoJ952jqfv54=
+X-Google-Smtp-Source: APXvYqzztmrBOC+SvoFFpb07U6iUNiAvUqvzeOLnRHzRvsJE/COvSKELq3ZUZ2EIJ8V7Rs+4/NO+Sg==
+X-Received: by 2002:a37:9c44:: with SMTP id f65mr8995731qke.33.1572117066929; 
+ Sat, 26 Oct 2019 12:11:06 -0700 (PDT)
+Received: from cristiane-Inspiron-5420 ([131.100.148.220])
+ by smtp.gmail.com with ESMTPSA id i5sm3004932qtb.94.2019.10.26.12.11.04
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Sat, 26 Oct 2019 12:11:06 -0700 (PDT)
+Date: Sat, 26 Oct 2019 16:11:01 -0300
+From: Cristiane Naves <cristianenavescardoso09@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH v3] staging: gasket: Fix lines ending with a '('
+Message-ID: <20191026191101.GA8973@cristiane-Inspiron-5420>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20191023174304.GD18977@darkstar.musicnaut.iki.fi>
-User-Agent: Mutt/1.12.2 (2019-09-21)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,75 +83,72 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Julia Lawall <julia.lawall@lip6.fr>,
- outreachy-kernel@googlegroups.com, linux-kernel@vger.kernel.org,
- Wambui Karuga <wambui.karugax@gmail.com>
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, Julia Lawall <julia.lawall@lip6.fr>,
+ Rob Springer <rspringer@google.com>, Todd Poynor <toddpoynor@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Oct 23, 2019 at 08:43:04PM +0300, Aaro Koskinen wrote:
-> Hi,
-> 
-> On Sat, Oct 12, 2019 at 08:35:19PM +0200, Julia Lawall wrote:
-> > On Sat, 12 Oct 2019, Wambui Karuga wrote:
-> > > This patchset removes the addition of new typedefs data types in octeon,
-> > > along with replacing the previous uses with the new declaration format.
-> > >
-> > > v2 of the series removes the obsolete "_t" notation in the named types.
-> > >
-> > > Wambui Karuga (5):
-> > >   staging: octeon: remove typedef declaration for cvmx_wqe
-> > >   staging: octeon: remove typedef declaration for cvmx_helper_link_info
-> > >   staging: octeon: remove typedef declaration for cvmx_fau_reg_32
-> > >   staging: octeon: remove typedef declartion for cvmx_pko_command_word0
-> > >   staging: octeon: remove typedef declaration for cvmx_fau_op_size
-> > >
-> > >  drivers/staging/octeon/ethernet-mdio.c   |  6 +--
-> > >  drivers/staging/octeon/ethernet-rgmii.c  |  4 +-
-> > >  drivers/staging/octeon/ethernet-rx.c     |  6 +--
-> > >  drivers/staging/octeon/ethernet-tx.c     |  4 +-
-> > >  drivers/staging/octeon/ethernet.c        |  6 +--
-> > >  drivers/staging/octeon/octeon-ethernet.h |  2 +-
-> > >  drivers/staging/octeon/octeon-stubs.h    | 56 ++++++++++++------------
-> > >  7 files changed, 43 insertions(+), 41 deletions(-)
-> > 
-> > For the series:
-> > 
-> > Acked-by: Julia Lawall <julia.lawall@lip6.fr>
-> 
-> This series breaks the build on MIPS/OCTEON (the only actual HW using this
-> driver):
-> 
-> $ make ARCH=mips CROSS_COMPILE=mips64-linux-gnu- cavium_octeon_defconfig
-> $ make ARCH=mips CROSS_COMPILE=mips64-linux-gnu-
-> [...]
->   CC      drivers/staging/octeon/ethernet.o
-> In file included from drivers/staging/octeon/ethernet.c:22:
-> drivers/staging/octeon/octeon-ethernet.h:94:12: warning: 'union cvmx_helper_link_info' declared inside parameter list will not be visible outside of this definition or declaration
->       union cvmx_helper_link_info li);  
->             ^~~~~~~~~~~~~~~~~~~~~
-> drivers/staging/octeon/ethernet.c: In function 'cvm_oct_free_work':
-> drivers/staging/octeon/ethernet.c:177:21: error: dereferencing pointer to incomplete type 'struct cvmx_wqe'
->   int segments = work->word2.s.bufs;
->                      ^~
-> drivers/staging/octeon/ethernet.c: In function 'cvm_oct_common_open':
-> drivers/staging/octeon/ethernet.c:463:30: error: storage size of 'link_info' isn't known
->   union cvmx_helper_link_info link_info;
->                               ^~~~~~~~~
-> 
-> etc.
-> 
-> Probably all these patches need to be reverted.
+Fix lines ending with a '('. Issue found by checkpatch.
 
-Ick :(
+Signed-off-by: Cristiane Naves <cristianenavescardoso09@gmail.com>
+---
+Changes since v2:
+ - Join the two similar patches staging: gasket: Fix lines ending with a
+   '('.
 
-What is the git commit ids here that should be reverted?
+Changes since v1:
+ - Arranging conflict between author name and signed-off-by.
+---
+ drivers/staging/gasket/gasket_ioctl.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-thanks,
+diff --git a/drivers/staging/gasket/gasket_ioctl.c b/drivers/staging/gasket/gasket_ioctl.c
+index 240f9bb..e3047d3 100644
+--- a/drivers/staging/gasket/gasket_ioctl.c
++++ b/drivers/staging/gasket/gasket_ioctl.c
+@@ -34,8 +34,8 @@ static int gasket_set_event_fd(struct gasket_dev *gasket_dev,
+ 
+ 	trace_gasket_ioctl_eventfd_data(die.interrupt, die.event_fd);
+ 
+-	return gasket_interrupt_set_eventfd(
+-		gasket_dev->interrupt_data, die.interrupt, die.event_fd);
++	return gasket_interrupt_set_eventfd(gasket_dev->interrupt_data,
++					    die.interrupt, die.event_fd);
+ }
+ 
+ /* Read the size of the page table. */
+@@ -54,9 +54,9 @@ static int gasket_read_page_table_size(struct gasket_dev *gasket_dev,
+ 	ibuf.size = gasket_page_table_num_entries(
+ 		gasket_dev->page_table[ibuf.page_table_index]);
+ 
+-	trace_gasket_ioctl_page_table_data(
+-		ibuf.page_table_index, ibuf.size, ibuf.host_address,
+-		ibuf.device_address);
++	trace_gasket_ioctl_page_table_data(ibuf.page_table_index, ibuf.size,
++					   ibuf.host_address,
++					   ibuf.device_address);
+ 
+ 	if (copy_to_user(argp, &ibuf, sizeof(ibuf)))
+ 		return -EFAULT;
+@@ -101,9 +101,9 @@ static int gasket_partition_page_table(struct gasket_dev *gasket_dev,
+ 	if (copy_from_user(&ibuf, argp, sizeof(struct gasket_page_table_ioctl)))
+ 		return -EFAULT;
+ 
+-	trace_gasket_ioctl_page_table_data(
+-		ibuf.page_table_index, ibuf.size, ibuf.host_address,
+-		ibuf.device_address);
++	trace_gasket_ioctl_page_table_data(ibuf.page_table_index, ibuf.size,
++					   ibuf.host_address,
++					   ibuf.device_address);
+ 
+ 	if (ibuf.page_table_index >= gasket_dev->num_page_tables)
+ 		return -EFAULT;
+-- 
+2.7.4
 
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
