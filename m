@@ -1,57 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 60F1CE5E41
-	for <lists+driverdev-devel@lfdr.de>; Sat, 26 Oct 2019 19:47:30 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 329E4E5E48
+	for <lists+driverdev-devel@lfdr.de>; Sat, 26 Oct 2019 19:47:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 08D6187541;
-	Sat, 26 Oct 2019 17:47:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E2069861A4;
+	Sat, 26 Oct 2019 17:47:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id r06pJgydmFlI; Sat, 26 Oct 2019 17:47:28 +0000 (UTC)
+	with ESMTP id mzuxjxgAXNm4; Sat, 26 Oct 2019 17:47:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8F8EB86DE2;
-	Sat, 26 Oct 2019 17:47:26 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4CA538620B;
+	Sat, 26 Oct 2019 17:47:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 718581BF44A
- for <devel@linuxdriverproject.org>; Sat, 26 Oct 2019 17:47:24 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C88F21BF44A
+ for <devel@linuxdriverproject.org>; Sat, 26 Oct 2019 17:47:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6E46286F85
- for <devel@linuxdriverproject.org>; Sat, 26 Oct 2019 17:47:24 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C5A708610A
+ for <devel@linuxdriverproject.org>; Sat, 26 Oct 2019 17:47:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7vEhHiSnqwp1 for <devel@linuxdriverproject.org>;
- Sat, 26 Oct 2019 17:47:23 +0000 (UTC)
+ with ESMTP id ofYnJY9w1Qgb for <devel@linuxdriverproject.org>;
+ Sat, 26 Oct 2019 17:47:26 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.siol.net (mailoutvs31.siol.net [185.57.226.222])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C386F86DD3
- for <devel@driverdev.osuosl.org>; Sat, 26 Oct 2019 17:47:23 +0000 (UTC)
+Received: from mail.siol.net (mailoutvs44.siol.net [185.57.226.235])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 11C10860B5
+ for <devel@driverdev.osuosl.org>; Sat, 26 Oct 2019 17:47:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by mail.siol.net (Postfix) with ESMTP id CCB19523931;
- Sat, 26 Oct 2019 19:47:21 +0200 (CEST)
+ by mail.siol.net (Postfix) with ESMTP id 2D7AE523991;
+ Sat, 26 Oct 2019 19:47:24 +0200 (CEST)
 X-Virus-Scanned: amavisd-new at psrvmta10.zcs-production.pri
 Received: from mail.siol.net ([127.0.0.1])
  by localhost (psrvmta10.zcs-production.pri [127.0.0.1]) (amavisd-new,
  port 10032)
- with ESMTP id TUmN3ZUjD4aE; Sat, 26 Oct 2019 19:47:21 +0200 (CEST)
+ with ESMTP id 78Q2iftWDMu5; Sat, 26 Oct 2019 19:47:23 +0200 (CEST)
 Received: from mail.siol.net (localhost [127.0.0.1])
- by mail.siol.net (Postfix) with ESMTPS id 6F288520606;
- Sat, 26 Oct 2019 19:47:21 +0200 (CEST)
+ by mail.siol.net (Postfix) with ESMTPS id CC977520606;
+ Sat, 26 Oct 2019 19:47:23 +0200 (CEST)
 Received: from localhost.localdomain (cpe-86-58-59-25.static.triera.net
  [86.58.59.25]) (Authenticated sender: 031275009)
- by mail.siol.net (Postfix) with ESMTPSA id F3C30523931;
- Sat, 26 Oct 2019 19:47:18 +0200 (CEST)
+ by mail.siol.net (Postfix) with ESMTPSA id 76B70523991;
+ Sat, 26 Oct 2019 19:47:21 +0200 (CEST)
 From: Jernej Skrabec <jernej.skrabec@siol.net>
 To: mripard@kernel.org,
 	paul.kocialkowski@bootlin.com
-Subject: [PATCH 3/4] media: uapi: hevc: Add segment address field
-Date: Sat, 26 Oct 2019 19:47:02 +0200
-Message-Id: <20191026174703.1120023-4-jernej.skrabec@siol.net>
+Subject: [PATCH 4/4] media: cedrus: hevc: Add support for multiple slices
+Date: Sat, 26 Oct 2019 19:47:03 +0200
+Message-Id: <20191026174703.1120023-5-jernej.skrabec@siol.net>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20191026174703.1120023-1-jernej.skrabec@siol.net>
 References: <20191026174703.1120023-1-jernej.skrabec@siol.net>
@@ -78,63 +78,73 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-If HEVC frame consists of multiple slices, segment address has to be
-known in order to properly decode it.
-
-Add segment address field to slice parameters.
+Now that segment address is available, support for multi-slice frames
+can be easily added.
 
 Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
 ---
- Documentation/media/uapi/v4l/ext-ctrls-codec.rst | 5 ++++-
- include/media/hevc-ctrls.h                       | 5 ++++-
- 2 files changed, 8 insertions(+), 2 deletions(-)
+ .../staging/media/sunxi/cedrus/cedrus_h265.c  | 21 +++++++++++++++----
+ .../staging/media/sunxi/cedrus/cedrus_video.c |  1 +
+ 2 files changed, 18 insertions(+), 4 deletions(-)
 
-diff --git a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
-index 382e85e16444..99e4a7099614 100644
---- a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
-+++ b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
-@@ -3971,6 +3971,9 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
-     * - __u32
-       - ``data_bit_offset``
-       - Offset (in bits) to the video data in the current slice data.
-+    * - __u32
-+      - ``slice_segment_addr``
-+      -
-     * - __u8
-       - ``nal_unit_type``
-       -
-@@ -4048,7 +4051,7 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
-       - ``num_rps_poc_lt_curr``
-       - The number of reference pictures in the long-term set.
-     * - __u8
--      - ``padding[7]``
-+      - ``padding[5]``
-       - Applications and drivers must set this to zero.
-     * - struct :c:type:`v4l2_hevc_dpb_entry`
-       - ``dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
-diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
-index 1592e52c3614..3e2e32098312 100644
---- a/include/media/hevc-ctrls.h
-+++ b/include/media/hevc-ctrls.h
-@@ -167,6 +167,9 @@ struct v4l2_ctrl_hevc_slice_params {
- 	__u32	bit_size;
- 	__u32	data_bit_offset;
+diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+index 888bfd5ca224..e909adf6f30f 100644
+--- a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
++++ b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+@@ -366,15 +366,28 @@ static void cedrus_h265_setup(struct cedrus_ctx *ctx,
+ 	reg = VE_DEC_H265_BITS_END_ADDR_BASE(src_buf_end_addr);
+ 	cedrus_write(dev, VE_DEC_H265_BITS_END_ADDR, reg);
  
-+	/* ISO/IEC 23008-2, ITU-T Rec. H.265: General slice segment header */
-+	__u32	slice_segment_addr;
+-	/* Coding tree block address: start at the beginning. */
++	/* Coding tree block address */
+ 	reg = VE_DEC_H265_DEC_CTB_ADDR_X(0) | VE_DEC_H265_DEC_CTB_ADDR_Y(0);
++	if (!ctx->fh.m2m_ctx->new_frame) {
++		unsigned int log2_max_luma_coding_block_size =
++			sps->log2_min_luma_coding_block_size_minus3 + 3 +
++			sps->log2_diff_max_min_luma_coding_block_size;
++		unsigned int ctb_size_luma =
++			1UL << log2_max_luma_coding_block_size;
++		unsigned int width_in_ctb_luma =
++			DIV_ROUND_UP(sps->pic_width_in_luma_samples, ctb_size_luma);
 +
- 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: NAL unit header */
- 	__u8	nal_unit_type;
- 	__u8	nuh_temporal_id_plus1;
-@@ -200,7 +203,7 @@ struct v4l2_ctrl_hevc_slice_params {
- 	__u8	num_rps_poc_st_curr_after;
- 	__u8	num_rps_poc_lt_curr;
++		reg = VE_DEC_H265_DEC_CTB_ADDR_X(slice_params->slice_segment_addr % width_in_ctb_luma);
++		reg |= VE_DEC_H265_DEC_CTB_ADDR_Y(slice_params->slice_segment_addr / width_in_ctb_luma);
++	}
+ 	cedrus_write(dev, VE_DEC_H265_DEC_CTB_ADDR, reg);
  
--	__u8	padding;
-+	__u8	padding[5];
+ 	cedrus_write(dev, VE_DEC_H265_TILE_START_CTB, 0);
+ 	cedrus_write(dev, VE_DEC_H265_TILE_END_CTB, 0);
  
- 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: General slice segment header */
- 	struct v4l2_hevc_dpb_entry dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+ 	/* Clear the number of correctly-decoded coding tree blocks. */
+-	cedrus_write(dev, VE_DEC_H265_DEC_CTB_NUM, 0);
++	if (ctx->fh.m2m_ctx->new_frame)
++		cedrus_write(dev, VE_DEC_H265_DEC_CTB_NUM, 0);
+ 
+ 	/* Initialize bitstream access. */
+ 	cedrus_write(dev, VE_DEC_H265_TRIGGER, VE_DEC_H265_TRIGGER_INIT_SWDEC);
+@@ -523,8 +536,8 @@ static void cedrus_h265_setup(struct cedrus_ctx *ctx,
+ 				V4L2_HEVC_PPS_FLAG_DEPENDENT_SLICE_SEGMENT,
+ 				pps->flags);
+ 
+-	/* FIXME: For multi-slice support. */
+-	reg |= VE_DEC_H265_DEC_SLICE_HDR_INFO0_FLAG_FIRST_SLICE_SEGMENT_IN_PIC;
++	if (ctx->fh.m2m_ctx->new_frame)
++		reg |= VE_DEC_H265_DEC_SLICE_HDR_INFO0_FLAG_FIRST_SLICE_SEGMENT_IN_PIC;
+ 
+ 	cedrus_write(dev, VE_DEC_H265_DEC_SLICE_HDR_INFO0, reg);
+ 
+diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_video.c b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+index 15cf1f10221b..497b1199d3fe 100644
+--- a/drivers/staging/media/sunxi/cedrus/cedrus_video.c
++++ b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+@@ -311,6 +311,7 @@ static int cedrus_s_fmt_vid_out(struct file *file, void *priv,
+ 
+ 	switch (ctx->src_fmt.pixelformat) {
+ 	case V4L2_PIX_FMT_H264_SLICE:
++	case V4L2_PIX_FMT_HEVC_SLICE:
+ 		vq->subsystem_flags |=
+ 			VB2_V4L2_FL_SUPPORTS_M2M_HOLD_CAPTURE_BUF;
+ 		break;
 -- 
 2.23.0
 
