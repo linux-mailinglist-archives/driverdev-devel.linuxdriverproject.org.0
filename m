@@ -1,60 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6C2FFE5E62
-	for <lists+driverdev-devel@lfdr.de>; Sat, 26 Oct 2019 20:05:14 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D557E5E94
+	for <lists+driverdev-devel@lfdr.de>; Sat, 26 Oct 2019 20:19:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0CC9987553;
-	Sat, 26 Oct 2019 18:05:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C960320412;
+	Sat, 26 Oct 2019 18:19:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4TZYPnrG3a0A; Sat, 26 Oct 2019 18:05:12 +0000 (UTC)
+	with ESMTP id blKP9BPHFYBg; Sat, 26 Oct 2019 18:19:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4415987404;
-	Sat, 26 Oct 2019 18:05:12 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5291D2041E;
+	Sat, 26 Oct 2019 18:18:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 81FDD1BF2B3
- for <devel@linuxdriverproject.org>; Sat, 26 Oct 2019 18:05:09 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0C0161BF2B3
+ for <devel@linuxdriverproject.org>; Sat, 26 Oct 2019 18:18:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7EF77873DC
- for <devel@linuxdriverproject.org>; Sat, 26 Oct 2019 18:05:09 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 0869B8559F
+ for <devel@linuxdriverproject.org>; Sat, 26 Oct 2019 18:18:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2b6RpFWBxEFJ for <devel@linuxdriverproject.org>;
- Sat, 26 Oct 2019 18:05:09 +0000 (UTC)
+ with ESMTP id O+F7Yj+ZHMLr for <devel@linuxdriverproject.org>;
+ Sat, 26 Oct 2019 18:18:42 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 14739873B6
- for <devel@driverdev.osuosl.org>; Sat, 26 Oct 2019 18:05:09 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7915986130
+ for <devel@linuxdriverproject.org>; Sat, 26 Oct 2019 18:18:42 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 72AAA20663;
- Sat, 26 Oct 2019 18:05:08 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id C213B20867;
+ Sat, 26 Oct 2019 18:18:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1572113108;
- bh=etgcI5LiCF7KlUXG0QY0IU1mwTAKTY2Jmd+J7FcUmyY=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=bqiciS92jKolql4n2q58VrGwsm+3GDw8gVT2LTI4Mforb8M1tkRxuw69b2Y0JiOUD
- y9xQLz4jfc64Ycj1ojLTrvjo8DeMtaWSFRd1kzzsEGeox9s3e4BnDd5JdQ9mJXwkKI
- bKp8zcYiz9Tzu9/YxwoG8JIymIDXELCxlgvcSw8k=
-Date: Sat, 26 Oct 2019 20:05:06 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Cristiane Naves <cristianenavescardoso09@gmail.com>
-Subject: Re: [RESEND PATCH 2/2] staging: rtl8712: Remove lines before a close
- brace
-Message-ID: <20191026180506.GC645771@kroah.com>
-References: <cover.1572051351.git.cristianenavescardoso09@gmail.com>
- <0bd6b897a5af322cf54d53bb68752d3667a7acb6.1572051351.git.cristianenavescardoso09@gmail.com>
+ s=default; t=1572113922;
+ bh=CZmIjRk7Ctzyq66+gkb1djgjSF1cIpcPpkufPg0Y7Bg=;
+ h=Date:From:To:Cc:Subject:From;
+ b=V4VPPl+lqtY5Fo81EDPAt+tbJrbMmHZcasRcgLnSlkLsj1XnLG0BAh+ET46f7u0tW
+ UuzcbRdrKJMm+ZjVZvPxmdxzm78BWdAR3Ly0tYMzETQ9AqWOayWWANDDQJfpljenrB
+ pc4JIcyVIEhRAQjvwySvHGFDW7OM55hYwFBcvZgk=
+Date: Sat, 26 Oct 2019 20:18:39 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Linus Torvalds <torvalds@linux-foundation.org>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Stephen Rothwell <sfr@canb.auug.org.au>
+Subject: [GIT PULL] Staging driver fix for 5.4-rc5
+Message-ID: <20191026181839.GA649095@kroah.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <0bd6b897a5af322cf54d53bb68752d3667a7acb6.1572051351.git.cristianenavescardoso09@gmail.com>
 User-Agent: Mutt/1.12.2 (2019-09-21)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -68,30 +66,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com,
- Larry Finger <Larry.Finger@lwfinger.net>, linux-kernel@vger.kernel.org,
- Florian Schilhabel <florian.c.schilhabel@googlemail.com>
+Cc: devel@linuxdriverproject.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Oct 25, 2019 at 10:10:04PM -0300, Cristiane Naves wrote:
-> Fix Blank lines aren't necessary before a close brace '}'. Issue found
-> by checkpatch.
-> 
-> Signed-off-by: Cristiane Naves <cristianenavescardoso09@gmail.com>
-> ---
->  drivers/staging/rtl8712/rtl8712_recv.c | 2 --
->  1 file changed, 2 deletions(-)
+The following changes since commit 4f5cafb5cb8471e54afdc9054d973535614f7675:
 
-What changed from the previous version?  This isn't a "RESEND" it is a
-new version, right?  Please properly document that and resend the whole
-series.
+  Linux 5.4-rc3 (2019-10-13 16:37:36 -0700)
 
-thanks,
+are available in the Git repository at:
 
-greg k-h
+  git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/staging-5.4-rc5
+
+for you to fetch changes up to 153c5d8191c26165dbbd2646448ca7207f7796d0:
+
+  staging: wlan-ng: fix exit return when sme->key_idx >= NUM_WEPKEYS (2019-10-14 15:40:08 +0200)
+
+----------------------------------------------------------------
+Staging driver fix for 5.4-rc5
+
+Here is a single staging driver fix, for the wlan-ng driver, that
+resolves a reported issue.
+
+It is been in linux-next for a while with no reported issues.
+
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+----------------------------------------------------------------
+Colin Ian King (1):
+      staging: wlan-ng: fix exit return when sme->key_idx >= NUM_WEPKEYS
+
+ drivers/staging/wlan-ng/cfg80211.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
