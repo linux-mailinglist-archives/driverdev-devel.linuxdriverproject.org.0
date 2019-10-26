@@ -2,78 +2,70 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E17D4E57BB
-	for <lists+driverdev-devel@lfdr.de>; Sat, 26 Oct 2019 03:10:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BBF93E57F0
+	for <lists+driverdev-devel@lfdr.de>; Sat, 26 Oct 2019 03:57:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4AF9D874A7;
-	Sat, 26 Oct 2019 01:10:14 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5D53487613;
+	Sat, 26 Oct 2019 01:57:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oA2xkeOhlPWS; Sat, 26 Oct 2019 01:10:13 +0000 (UTC)
+	with ESMTP id gPPtjAgp1hcc; Sat, 26 Oct 2019 01:57:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 332E8867A1;
-	Sat, 26 Oct 2019 01:10:13 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D4F92868AD;
+	Sat, 26 Oct 2019 01:57:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 039DD1BF40B
- for <devel@linuxdriverproject.org>; Sat, 26 Oct 2019 01:10:11 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E1CC91BF40B
+ for <devel@linuxdriverproject.org>; Sat, 26 Oct 2019 01:57:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id F100020424
- for <devel@linuxdriverproject.org>; Sat, 26 Oct 2019 01:10:10 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D76D187B48
+ for <devel@linuxdriverproject.org>; Sat, 26 Oct 2019 01:57:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TKOSrUiDbcsR for <devel@linuxdriverproject.org>;
- Sat, 26 Oct 2019 01:10:10 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f196.google.com (mail-qt1-f196.google.com
- [209.85.160.196])
- by silver.osuosl.org (Postfix) with ESMTPS id 3B1822041B
- for <devel@driverdev.osuosl.org>; Sat, 26 Oct 2019 01:10:10 +0000 (UTC)
-Received: by mail-qt1-f196.google.com with SMTP id u22so5995611qtq.13
- for <devel@driverdev.osuosl.org>; Fri, 25 Oct 2019 18:10:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=dp9VEiEAucRbcNWDDMXkM2Mcfldcw5lUeaorfPQjnfs=;
- b=MREXsrE5nPyO+vke/p/zBd8AFyJGLo7wOjrZCig9R0YwNNXfFGAqyJOO2ywvg00lK8
- lTd+M8efshpro1SFyqYKBRmXNP/GpStpF6jLUwP4pBRH1J6Qgs4iNGtK8RuW0o7kRvc6
- PGC3IXXisYHQJ4AYk829Q9E1nXxneatjFakmejD+L6qO2Z7ZOJCWcTKexZZp84SAJJyW
- FLTC0loQ0phF+UG2Ec+tU03RV2ODcnmY9FBLtsCNjcJlRpopl7Byi67BVGsm8RxKaMku
- tiBSNrLLgHxg8QgBDVZJ70PCBbP4xWu6cC4+R9hLP3CDgc8acoGagOrI3vjhHTavk6hs
- Pw8w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=dp9VEiEAucRbcNWDDMXkM2Mcfldcw5lUeaorfPQjnfs=;
- b=lRX46By8iAh2iwKQA0RUW6uyOKoBdXB7oxL9h2jLl5hcAPv+/9k9X+cizqqTDTVpOi
- Bagd5AQu4yOWiU6sIX+iFibk0P99UZJjpWdRTnCNBT7sc/GVfT8059NI6xdilYEbU8iV
- 4fjivv8qwPZdYmf81W0Hj7GC+51OGl7UT1s+s+k+e5RGLp8odJI9G1sR7XwNPHMNkpKr
- WbnCAaCLWXbrfNDJeolMa3BMZD24iOreOF3ticYB7Z6XSzl/hPExtWSUPTJhP0LJTUmn
- 8Y6XfWLqo+yHFcX/nid2hMw2wGRAsf4Z3fwCZnTRTTlIHZKG5k0kc5I6aCjFStbaPxtP
- 9BeQ==
-X-Gm-Message-State: APjAAAXRaP8B/CNtU1/LkuXuK/GJUDrY94RbFvNEMAZOqKzolgHQlqfs
- i3MoBM9ycajYuK2gSfrA2GM=
-X-Google-Smtp-Source: APXvYqytVxiRdo72TUn20/ChpM/MfBp9VIee/UBo/TYCi3RcuuQolwkzeKGazBEYn4tTmReSPKfH4Q==
-X-Received: by 2002:aed:3908:: with SMTP id l8mr6240757qte.383.1572052209133; 
- Fri, 25 Oct 2019 18:10:09 -0700 (PDT)
-Received: from cristiane-Inspiron-5420 ([131.100.148.220])
- by smtp.gmail.com with ESMTPSA id g10sm2113853qki.41.2019.10.25.18.10.06
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 25 Oct 2019 18:10:08 -0700 (PDT)
-Date: Fri, 25 Oct 2019 22:10:04 -0300
-From: Cristiane Naves <cristianenavescardoso09@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [RESEND PATCH 2/2] staging: rtl8712: Remove lines before a close brace
-Message-ID: <0bd6b897a5af322cf54d53bb68752d3667a7acb6.1572051351.git.cristianenavescardoso09@gmail.com>
+ with ESMTP id RZF42b9mVjgY for <devel@linuxdriverproject.org>;
+ Sat, 26 Oct 2019 01:57:40 +0000 (UTC)
+X-Greylist: delayed 00:07:05 by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0173.hostedemail.com
+ [216.40.44.173])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7E7DD87A9C
+ for <devel@driverdev.osuosl.org>; Sat, 26 Oct 2019 01:57:40 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave01.hostedemail.com (Postfix) with ESMTP id E60DA18034AB9
+ for <devel@driverdev.osuosl.org>; Sat, 26 Oct 2019 01:50:33 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay04.hostedemail.com (Postfix) with ESMTP id 45A38180A55F2;
+ Sat, 26 Oct 2019 01:50:31 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 80, 0, 0, , d41d8cd98f00b204, joe@perches.com, :::::::::::::,
+ RULES_HIT:41:355:379:599:966:968:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2196:2199:2393:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3868:3870:3872:4321:4385:4605:5007:6119:7903:9010:10004:10400:11026:11232:11658:11914:12043:12296:12297:12438:12740:12760:12895:13069:13311:13357:13439:14096:14097:14659:14721:21080:21627:30012:30054:30070:30091,
+ 0,
+ RBL:23.242.70.174:@perches.com:.lbl8.mailshell.net-62.14.0.180 64.201.201.201,
+ CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none, DomainCache:0,
+ MSF:not bulk, SPF:fn, MSBL:0, DNSBL:neutral, Custom_rules:0:0:0, LFtime:23,
+ LUA_SUMMARY:none
+X-HE-Tag: earth15_5ba9bbbc1535a
+X-Filterd-Recvd-Size: 2324
+Received: from XPS-9350 (cpe-23-242-70-174.socal.res.rr.com [23.242.70.174])
+ (Authenticated sender: joe@perches.com)
+ by omf08.hostedemail.com (Postfix) with ESMTPA;
+ Sat, 26 Oct 2019 01:50:29 +0000 (UTC)
+Message-ID: <25960b2a5dfe3f5f2c6579ef718f90a139ba84d7.camel@perches.com>
+Subject: Re: [RESEND PATCH 1/2] staging: rtl8712: Fix Alignment of open
+ parenthesis
+From: Joe Perches <joe@perches.com>
+To: Cristiane Naves <cristianenavescardoso09@gmail.com>, 
+ outreachy-kernel@googlegroups.com
+Date: Fri, 25 Oct 2019 18:50:25 -0700
+In-Reply-To: <e3842148b6dd01c47678f517a07772c75046c50f.1572051351.git.cristianenavescardoso09@gmail.com>
 References: <cover.1572051351.git.cristianenavescardoso09@gmail.com>
+ <e3842148b6dd01c47678f517a07772c75046c50f.1572051351.git.cristianenavescardoso09@gmail.com>
+User-Agent: Evolution 3.34.1-2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <cover.1572051351.git.cristianenavescardoso09@gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,36 +87,40 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix Blank lines aren't necessary before a close brace '}'. Issue found
-by checkpatch.
+On Fri, 2019-10-25 at 22:09 -0300, Cristiane Naves wrote:
+> Fix alignment should match open parenthesis.Issue found by checkpatch.
 
-Signed-off-by: Cristiane Naves <cristianenavescardoso09@gmail.com>
----
- drivers/staging/rtl8712/rtl8712_recv.c | 2 --
- 1 file changed, 2 deletions(-)
+Beyond doing style cleanups, please always try
+to make the code more readable.
 
-diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
-index 12a3c64..09b461c 100644
---- a/drivers/staging/rtl8712/rtl8712_recv.c
-+++ b/drivers/staging/rtl8712/rtl8712_recv.c
-@@ -289,7 +289,6 @@ union recv_frame *r8712_recvframe_chk_defrag(struct _adapter *padapter,
- 			r8712_free_recvframe(precv_frame, pfree_recv_queue);
- 			prtnframe = NULL;
- 		}
--
- 	}
- 	if ((ismfrag == 0) && (fragnum != 0)) {
- 		/* the last fragment frame
-@@ -438,7 +437,6 @@ void r8712_rxcmd_event_hdl(struct _adapter *padapter, void *prxcmdbuf)
- 		r8712_event_handle(padapter, (__le32 *)poffset);
- 		poffset += (cmd_len + 8);/*8 bytes alignment*/
- 	} while (le32_to_cpu(voffset) & BIT(31));
--
- }
- 
- static int check_indicate_seq(struct recv_reorder_ctrl *preorder_ctrl,
--- 
-2.7.4
+> diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
+[]
+> @@ -61,13 +61,13 @@ void r8712_init_recv_priv(struct recv_priv *precvpriv,
+>  		precvbuf->ref_cnt = 0;
+>  		precvbuf->adapter = padapter;
+>  		list_add_tail(&precvbuf->list,
+> -				 &(precvpriv->free_recv_buf_queue.queue));
+> +			      &(precvpriv->free_recv_buf_queue.queue));
+
+Please remove the unnecessary parentheses too
+
+>  		precvbuf++;
+>  	}
+>  	precvpriv->free_recv_buf_queue_cnt = NR_RECVBUFF;
+>  	tasklet_init(&precvpriv->recv_tasklet,
+> -	     (void(*)(unsigned long))recv_tasklet,
+> -	     (unsigned long)padapter);
+> +		     (void(*)(unsigned long))recv_tasklet,
+> +		     (unsigned long)padapter);
+
+It's probably better to change the recv_tasklet function
+declaration to
+use the more common style of
+
+static void recv_tasklet(unsigned long priv)
+
+and do the cast in the recv_tasklet function.
+
 
 _______________________________________________
 devel mailing list
