@@ -1,77 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A98D5E600E
-	for <lists+driverdev-devel@lfdr.de>; Sun, 27 Oct 2019 01:52:26 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8BB70E628B
+	for <lists+driverdev-devel@lfdr.de>; Sun, 27 Oct 2019 14:06:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C015485C28;
-	Sat, 26 Oct 2019 23:52:24 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6BEAA20471;
+	Sun, 27 Oct 2019 13:06:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2fcv3n7DQYaP; Sat, 26 Oct 2019 23:52:23 +0000 (UTC)
+	with ESMTP id VLR1xgb-NMtR; Sun, 27 Oct 2019 13:06:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0679A85B68;
-	Sat, 26 Oct 2019 23:52:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DE3B12044F;
+	Sun, 27 Oct 2019 13:06:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6E4D51BF2A9
- for <devel@linuxdriverproject.org>; Sat, 26 Oct 2019 23:52:20 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3711F1BF3E9
+ for <devel@linuxdriverproject.org>; Sun, 27 Oct 2019 13:06:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6B0E586D78
- for <devel@linuxdriverproject.org>; Sat, 26 Oct 2019 23:52:20 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 33F7B84D41
+ for <devel@linuxdriverproject.org>; Sun, 27 Oct 2019 13:06:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ADtFTBb-lw5P for <devel@linuxdriverproject.org>;
- Sat, 26 Oct 2019 23:52:19 +0000 (UTC)
+ with ESMTP id SOce_QhCUB7f for <devel@linuxdriverproject.org>;
+ Sun, 27 Oct 2019 13:06:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f196.google.com (mail-qt1-f196.google.com
- [209.85.160.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 84B6986CE0
- for <devel@driverdev.osuosl.org>; Sat, 26 Oct 2019 23:52:19 +0000 (UTC)
-Received: by mail-qt1-f196.google.com with SMTP id o49so9056774qta.7
- for <devel@driverdev.osuosl.org>; Sat, 26 Oct 2019 16:52:19 -0700 (PDT)
+Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
+ [209.85.128.66])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 5C99884589
+ for <devel@driverdev.osuosl.org>; Sun, 27 Oct 2019 13:06:29 +0000 (UTC)
+Received: by mail-wm1-f66.google.com with SMTP id n7so6682260wmc.3
+ for <devel@driverdev.osuosl.org>; Sun, 27 Oct 2019 06:06:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=7j+uiU//QQeYCq1CG42LPhKjQKtwoWPeb2LyyIljXks=;
- b=IOKlTvveHUbhXtgHNFBXvqdBfrUvS9CmCgMfpoFNJeKu9XaXVGZAijRqLAy5NyrY9d
- vPLv+nYcoTKVN6tYWYClv8SJMPo3QJcugXdmezjslmF5baou9yoE3spxGfKgE7cjDspU
- YOM/3BrePyMTk7PrrBuu7jUrcXMadq4kTMWVx9xGWcgjc10dyB8WgeTwq0Y36QUZuCw1
- 3EkyGOoHIHpBIsxc6uXdfTnTjTynVqQne7aZjxYKcI16MV/YwYzNhbrICrc59RVln20G
- H5biSihRpz89ybv+KwFFDjm61yTb/5OwGr7ajPO96NGBPSS8wKIJPpE972FtqV54Igic
- S9vw==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=E48jVCfAGOKBFgNTIr5FbZLg41IvwUd7cL0m7x4ZdGI=;
+ b=UCyAY8kshvJ/xio2kzAtDjo1XBcDV6Ptj+pV2Qj5GO+Dt1q0l9sVd0TQfFwbhzJDXF
+ 5EyS/10um7GapAjwCbynnklu2gX0d8zETV10IJb9S0FItZZm8zjFu6RJb0NcRz/lDLf3
+ HHInOXTNWOwAel0DdKeAzzC3uXO6qzM9hsxZWvIpEGf21/Ne5hxrRlJwZar3N5ankgnj
+ UsuTAmZheuce6GSEPUYeShirjZtSiKBctUHaGjS2xPIfJZNYcuzI0bl4+BxMaQGjbj8e
+ GNUM+iH7+Fs4Kx42iY3hr/DiiAKKTOfMIePSg0KXNiQ/Ar6GF7PZlKb9TgCLVFvqnOMz
+ 3SXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=7j+uiU//QQeYCq1CG42LPhKjQKtwoWPeb2LyyIljXks=;
- b=RREZqVdn4CvIim8PY7dY822haKaBdAkGZwhg/c9yBI8X6F8kVVbwFP15zRLRHNjqF6
- fc1UFfl40pKn3nWxCHDOYuR32X7/6Y/DNm2dQGDFhgWAFqGqZPFIxGMbRqQ9UDnMHoPO
- hdh4Wu7JPbziUgG7MylZ7ECAYy3wr6a16RvTvMRNiuqqW8T2uI1PmWxB+GhIu/NUpCUI
- mW7N4CbWbvzttgd03GjmeasbbLR5ja6aAghQY7re/TLnVvIV3dgBzf/W3SLJNcUINeBR
- usRWtEM+MCfmtnwJz9z23P/231aktqvUZ3uMOOu/0n5YrkPzcDKOVQ+dy6/u6fID5sQH
- ++xA==
-X-Gm-Message-State: APjAAAVcBwDMiOGvbFgqeMDdHJIofGEcCkLuFEbEfjH9K7730dliXokA
- bngoLB5b1hauNlPgj7dWbdM=
-X-Google-Smtp-Source: APXvYqx9fS+RbEgRlNhkUNkao5B6fT+Y4Wq4G+HBziDFwkvZKzRz3KaKA0qOwathSf5RxlwgiMc7RQ==
-X-Received: by 2002:ac8:34f3:: with SMTP id x48mr10944037qtb.223.1572133938564; 
- Sat, 26 Oct 2019 16:52:18 -0700 (PDT)
-Received: from cristiane-Inspiron-5420 ([131.100.148.220])
- by smtp.gmail.com with ESMTPSA id u43sm4080154qte.19.2019.10.26.16.52.16
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 26 Oct 2019 16:52:18 -0700 (PDT)
-Date: Sat, 26 Oct 2019 20:52:14 -0300
-From: Cristiane Naves <cristianenavescardoso09@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: fieldbus: anybuss: use
- devm_platform_ioremap_resource helper
-Message-ID: <20191026235214.GA11702@cristiane-Inspiron-5420>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=E48jVCfAGOKBFgNTIr5FbZLg41IvwUd7cL0m7x4ZdGI=;
+ b=UQn2JKjuKdHzOjfE3xi0gx53LDTeQToXqwz+uOSnNq6Dooy29AVS51APZ5rJcMLbPJ
+ QXxZvFbw6pmvL1/CrGUNIaxdVNrvMjVSIIVyMj1ytggcH4kDV5uoBuLUK17aCmxaniDl
+ PI9FMkYC+s6o1nwoX0MNwOZ8v37uwA0yqHn5XjKUEEwdqC8eRNY9PReS4VISNQYErywx
+ Tfx9NF65NgSCKxn4Vxd9w+ris7ryDh1k2GsoyYZ6mNqo5xJwCgwPtCNMYOTll3Ylaxlu
+ f7+51fz2TrvoCJXj+T20UImH/JAdJrShwqqhxJoyzjS0MT1LciHBzjZCrHDhqy4VIcXu
+ ohXA==
+X-Gm-Message-State: APjAAAUIgwFO73KCad19Kso3qU+fBTvOOUiMjPj7DC4CPBF54zbxqM+r
+ C/YacZ38/gVF/ztAS6/cFZY=
+X-Google-Smtp-Source: APXvYqzK3CGe68HpHPiGJCa/XaQHHGLYs3nQW1zlv+QMKy7bFZY43rXprGrWHoxwVdwMV9YeSPRagQ==
+X-Received: by 2002:a7b:cc88:: with SMTP id p8mr6132704wma.80.1572181587759;
+ Sun, 27 Oct 2019 06:06:27 -0700 (PDT)
+Received: from localhost.localdomain
+ ([2a02:8108:96bf:e0ab:2b68:5d76:a12a:e6ba])
+ by smtp.gmail.com with ESMTPSA id 126sm8127371wma.48.2019.10.27.06.06.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 27 Oct 2019 06:06:26 -0700 (PDT)
+From: Michael Straube <straube.linux@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH 1/4] staging: rtl8188eu: remove exit label from
+ rtw_alloc_stainfo
+Date: Sun, 27 Oct 2019 14:06:01 +0100
+Message-Id: <20191027130604.68379-1-straube.linux@gmail.com>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,60 +85,55 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Sven Van Asbroeck <TheSven73@gmail.com>,
- linux-kernel@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: devel@driverdev.osuosl.org, Joe Perches <joe@perches.com>,
+ linux-kernel@vger.kernel.org, Larry.Finger@lwfinger.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Use devm_platform_ioremap_resource helper which wraps
-platform_get_resource() and devm_ioremap_resource() together. Issue
-found by coccicheck.
+Remove exit label from rtw_alloc_stainfo and simply return NULL
+instead of goto exit.
 
-Signed-off-by: Cristiane Naves <cristianenavescardoso09@gmail.com>
+Suggested-by: Joe Perches <joe@perches.com>
+Signed-off-by: Michael Straube <straube.linux@gmail.com>
 ---
- drivers/staging/fieldbus/anybuss/arcx-anybus.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+ drivers/staging/rtl8188eu/core/rtw_sta_mgt.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/fieldbus/anybuss/arcx-anybus.c b/drivers/staging/fieldbus/anybuss/arcx-anybus.c
-index 2ecffa4..5b8d0ba 100644
---- a/drivers/staging/fieldbus/anybuss/arcx-anybus.c
-+++ b/drivers/staging/fieldbus/anybuss/arcx-anybus.c
-@@ -127,12 +127,10 @@ static const struct regmap_config arcx_regmap_cfg = {
- static struct regmap *create_parallel_regmap(struct platform_device *pdev,
- 					     int idx)
- {
--	struct resource *res;
- 	void __iomem *base;
- 	struct device *dev = &pdev->dev;
+diff --git a/drivers/staging/rtl8188eu/core/rtw_sta_mgt.c b/drivers/staging/rtl8188eu/core/rtw_sta_mgt.c
+index 776931b8bf72..65a824b4dfe0 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_sta_mgt.c
++++ b/drivers/staging/rtl8188eu/core/rtw_sta_mgt.c
+@@ -181,7 +181,7 @@ struct sta_info *rtw_alloc_stainfo(struct sta_priv *pstapriv, u8 *hwaddr)
+ 					struct sta_info, list);
+ 	if (!psta) {
+ 		spin_unlock_bh(&pfree_sta_queue->lock);
+-		goto exit;
++		return NULL;
+ 	}
  
--	res = platform_get_resource(pdev, IORESOURCE_MEM, idx + 1);
--	base = devm_ioremap_resource(dev, res);
-+	base = devm_platform_ioremap_resource(pdev, idx + 1);
- 	if (IS_ERR(base))
- 		return ERR_CAST(base);
- 	return devm_regmap_init_mmio(dev, base, &arcx_regmap_cfg);
-@@ -230,7 +228,6 @@ static int controller_probe(struct platform_device *pdev)
- 	struct regulator_config config = { };
- 	struct regulator_dev *regulator;
- 	int err, id;
--	struct resource *res;
- 	struct anybuss_host *host;
- 	u8 status1, cap;
+ 	list_del_init(&psta->list);
+@@ -194,8 +194,7 @@ struct sta_info *rtw_alloc_stainfo(struct sta_priv *pstapriv, u8 *hwaddr)
+ 	if (index >= NUM_STA) {
+ 		RT_TRACE(_module_rtl871x_sta_mgt_c_, _drv_err_,
+ 			 ("ERROR => %s: index >= NUM_STA", __func__));
+-		psta = NULL;
+-		goto exit;
++		return NULL;
+ 	}
+ 	phash_list = &pstapriv->sta_hash[index];
  
-@@ -244,8 +241,7 @@ static int controller_probe(struct platform_device *pdev)
- 		return PTR_ERR(cd->reset_gpiod);
+@@ -246,7 +245,6 @@ struct sta_info *rtw_alloc_stainfo(struct sta_priv *pstapriv, u8 *hwaddr)
+ 	/* init for the sequence number of received management frame */
+ 	psta->RxMgmtFrameSeqNum = 0xffff;
  
- 	/* CPLD control memory, sits at index 0 */
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	cd->cpld_base = devm_ioremap_resource(dev, res);
-+	cd->cpld_base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(cd->cpld_base)) {
- 		dev_err(dev,
- 			"failed to map cpld base address\n");
+-exit:
+ 	return psta;
+ }
+ 
 -- 
-2.7.4
+2.23.0
 
 _______________________________________________
 devel mailing list
