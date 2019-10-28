@@ -1,61 +1,90 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B8539E69CE
-	for <lists+driverdev-devel@lfdr.de>; Sun, 27 Oct 2019 22:56:57 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 73CB6E6DA4
+	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Oct 2019 08:57:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id BD728204A3;
-	Sun, 27 Oct 2019 21:56:55 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3BD1987089;
+	Mon, 28 Oct 2019 07:57:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4k0RReaGOTUj; Sun, 27 Oct 2019 21:56:55 +0000 (UTC)
+	with ESMTP id W1MkNQcR2scy; Mon, 28 Oct 2019 07:57:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id A6A7F20480;
-	Sun, 27 Oct 2019 21:56:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3EBC186DEE;
+	Mon, 28 Oct 2019 07:57:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 541661BF3D5
- for <devel@linuxdriverproject.org>; Sun, 27 Oct 2019 21:56:52 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 0C63F1BF425
+ for <devel@linuxdriverproject.org>; Mon, 28 Oct 2019 07:57:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 4D0618507B
- for <devel@linuxdriverproject.org>; Sun, 27 Oct 2019 21:56:52 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 07CDA84B23
+ for <devel@linuxdriverproject.org>; Mon, 28 Oct 2019 07:57:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 58R18K2-RF1p for <devel@linuxdriverproject.org>;
- Sun, 27 Oct 2019 21:56:50 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.siol.net (mailoutvs57.siol.net [185.57.226.248])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 28C878506D
- for <devel@driverdev.osuosl.org>; Sun, 27 Oct 2019 21:56:49 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.siol.net (Postfix) with ESMTP id 5A14A522815;
- Sun, 27 Oct 2019 22:56:47 +0100 (CET)
-X-Virus-Scanned: amavisd-new at psrvmta10.zcs-production.pri
-Received: from mail.siol.net ([127.0.0.1])
- by localhost (psrvmta10.zcs-production.pri [127.0.0.1]) (amavisd-new,
- port 10032)
- with ESMTP id HL8mW0m7ZVtU; Sun, 27 Oct 2019 22:56:47 +0100 (CET)
-Received: from mail.siol.net (localhost [127.0.0.1])
- by mail.siol.net (Postfix) with ESMTPS id DE48C522841;
- Sun, 27 Oct 2019 22:56:46 +0100 (CET)
-Received: from jernej-laptop.localnet (cpe-86-58-59-25.static.triera.net
- [86.58.59.25]) (Authenticated sender: jernej.skrabec@siol.net)
- by mail.siol.net (Postfix) with ESMTPA id 8E24B52282D;
- Sun, 27 Oct 2019 22:56:45 +0100 (CET)
-From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@siol.net>
-To: linux-sunxi@googlegroups.com
-Subject: Re: [linux-sunxi] [PATCH 4/4] media: cedrus: hevc: Add support for
- multiple slices
-Date: Sun, 27 Oct 2019 22:56:45 +0100
-Message-ID: <3093393.es1Za2YUDY@jernej-laptop>
-In-Reply-To: <20191026174703.1120023-5-jernej.skrabec@siol.net>
-References: <20191026174703.1120023-1-jernej.skrabec@siol.net>
- <20191026174703.1120023-5-jernej.skrabec@siol.net>
+ with ESMTP id dtLrUhwirpWV for <devel@linuxdriverproject.org>;
+ Mon, 28 Oct 2019 07:57:51 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 765EC844C1
+ for <devel@driverdev.osuosl.org>; Mon, 28 Oct 2019 07:57:51 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9S7s6n4177032;
+ Mon, 28 Oct 2019 07:57:50 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=jQ6PJCli6p5m7RwQspPzyqTvse7VkcpWcjvd3zOJ4+A=;
+ b=HAQhKnprpT+rni6UrLSaaxlllVPKP9qFG9g/DnYovW+Mey13732trRR/riMkNnRM66Fn
+ gl7+/0Gc0h4RVBzI/RlvZ5ewCa+Jh8JsFdLxEhMof//9KM4oWmqxuAg6Iu22b74X/Hg5
+ b325kHQWHNF2LPUsPxCy7bAdIUu6yqsZlHjduOVuIjVUEkR9w2u6qSeZGqM9IRXopZJT
+ tl25BUtCGQvLWQPAl8gIpD1LotwFU0P6kx+GMTjOEkDLAeWyzHqNozAKQHHEKnZHfarK
+ PJJOeZcQU6AkeYMFNqBs9JumOrSSdf5aqsQH78Kfl9E5zmX+aFSOgTBx1R/sE+tLebyS jA== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by userp2120.oracle.com with ESMTP id 2vvumf50na-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 28 Oct 2019 07:57:50 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9S7s07f105156;
+ Mon, 28 Oct 2019 07:57:50 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3020.oracle.com with ESMTP id 2vw09f7h59-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 28 Oct 2019 07:57:50 +0000
+Received: from abhmp0018.oracle.com (abhmp0018.oracle.com [141.146.116.24])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x9S7vmEl029995;
+ Mon, 28 Oct 2019 07:57:49 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Mon, 28 Oct 2019 00:57:47 -0700
+Date: Mon, 28 Oct 2019 10:57:38 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Cristiane Naves <cristianenavescardoso09@gmail.com>
+Subject: Re: [RESEND PATCH] staging: gasket: Fix lines ending with a '('
+Message-ID: <20191028075738.GC1944@kadam>
+References: <20191025232935.GA813@cristiane-Inspiron-5420>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20191025232935.GA813@cristiane-Inspiron-5420>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9423
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1908290000 definitions=main-1910280079
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9423
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
+ definitions=main-1910280079
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,108 +97,29 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, mripard@kernel.org,
- paul.kocialkowski@bootlin.com, wens@csie.org, boris.brezillon@collabora.com,
- p.zabel@pengutronix.de, hverkuil-cisco@xs4all.nl, mchehab@kernel.org,
- ezequiel@collabora.com, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
+ Rob Springer <rspringer@google.com>, Todd Poynor <toddpoynor@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dne sobota, 26. oktober 2019 ob 19:47:03 CET je Jernej Skrabec napisal(a):
-> Now that segment address is available, support for multi-slice frames
-> can be easily added.
-> 
-> Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
-> ---
->  .../staging/media/sunxi/cedrus/cedrus_h265.c  | 21 +++++++++++++++----
->  .../staging/media/sunxi/cedrus/cedrus_video.c |  1 +
->  2 files changed, 18 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
-> b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c index
-> 888bfd5ca224..e909adf6f30f 100644
-> --- a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
-> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
-> @@ -366,15 +366,28 @@ static void cedrus_h265_setup(struct cedrus_ctx *ctx,
->  	reg = VE_DEC_H265_BITS_END_ADDR_BASE(src_buf_end_addr);
->  	cedrus_write(dev, VE_DEC_H265_BITS_END_ADDR, reg);
-> 
-> -	/* Coding tree block address: start at the beginning. */
-> +	/* Coding tree block address */
->  	reg = VE_DEC_H265_DEC_CTB_ADDR_X(0) | 
-VE_DEC_H265_DEC_CTB_ADDR_Y(0);
-> +	if (!ctx->fh.m2m_ctx->new_frame) {
+When I see a RESEND in the subject, that means you are tell us we messed
+up and accidentally ignored your patch.  So then we have to figure out
+what went wrong with the process and so we don't mess up again.
 
-There is no reason why would this block be guarded by above if clause. I'll 
-remove it in next revision. However, it uncovered a bug where new_frame is set 
-to true for every slice. I have to debug this further. At this point I can't 
-say for sure if it is in kernel or in ffmpeg.
+It would help us if you put a note under the --- cut off like "I sent
+this a month ago and never received a response.  Here is a link to the
+email archive so I know that it made it to the list."
 
-Best regards,
-Jernej
+I recently had an issue like this where I complained that my patch
+wasn't applied and the maintainer said "Oh.  That's odd.  I have it
+written down in patchword that I emailed you to ask you do fix the bug
+in a different way."  So these sorts of mistakes happen.
 
-> +		unsigned int log2_max_luma_coding_block_size =
-> +			sps->log2_min_luma_coding_block_size_minus3 + 
-3 +
-> +			sps->log2_diff_max_min_luma_coding_block_size;
-> +		unsigned int ctb_size_luma =
-> +			1UL << log2_max_luma_coding_block_size;
-> +		unsigned int width_in_ctb_luma =
-> +			DIV_ROUND_UP(sps->pic_width_in_luma_samples, 
-ctb_size_luma);
-> +
-> +		reg = VE_DEC_H265_DEC_CTB_ADDR_X(slice_params-
->slice_segment_addr %
-> width_in_ctb_luma); +		reg |=
-> VE_DEC_H265_DEC_CTB_ADDR_Y(slice_params->slice_segment_addr /
-> width_in_ctb_luma); +	}
->  	cedrus_write(dev, VE_DEC_H265_DEC_CTB_ADDR, reg);
-> 
->  	cedrus_write(dev, VE_DEC_H265_TILE_START_CTB, 0);
->  	cedrus_write(dev, VE_DEC_H265_TILE_END_CTB, 0);
-> 
->  	/* Clear the number of correctly-decoded coding tree blocks. */
-> -	cedrus_write(dev, VE_DEC_H265_DEC_CTB_NUM, 0);
-> +	if (ctx->fh.m2m_ctx->new_frame)
-> +		cedrus_write(dev, VE_DEC_H265_DEC_CTB_NUM, 0);
-> 
->  	/* Initialize bitstream access. */
->  	cedrus_write(dev, VE_DEC_H265_TRIGGER, 
-VE_DEC_H265_TRIGGER_INIT_SWDEC);
-> @@ -523,8 +536,8 @@ static void cedrus_h265_setup(struct cedrus_ctx *ctx,
->  				
-V4L2_HEVC_PPS_FLAG_DEPENDENT_SLICE_SEGMENT,
->  				pps->flags);
-> 
-> -	/* FIXME: For multi-slice support. */
-> -	reg |= 
-VE_DEC_H265_DEC_SLICE_HDR_INFO0_FLAG_FIRST_SLICE_SEGMENT_IN_PIC;
-> +	if (ctx->fh.m2m_ctx->new_frame)
-> +		reg |= 
-VE_DEC_H265_DEC_SLICE_HDR_INFO0_FLAG_FIRST_SLICE_SEGMENT_IN_PIC;
-> 
->  	cedrus_write(dev, VE_DEC_H265_DEC_SLICE_HDR_INFO0, reg);
-> 
-> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_video.c
-> b/drivers/staging/media/sunxi/cedrus/cedrus_video.c index
-> 15cf1f10221b..497b1199d3fe 100644
-> --- a/drivers/staging/media/sunxi/cedrus/cedrus_video.c
-> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
-> @@ -311,6 +311,7 @@ static int cedrus_s_fmt_vid_out(struct file *file, void
-> *priv,
-> 
->  	switch (ctx->src_fmt.pixelformat) {
->  	case V4L2_PIX_FMT_H264_SLICE:
-> +	case V4L2_PIX_FMT_HEVC_SLICE:
->  		vq->subsystem_flags |=
->  			VB2_V4L2_FL_SUPPORTS_M2M_HOLD_CAPTURE_BUF;
->  		break;
-
-
+regards,
+dan carpenter
 
 
 _______________________________________________
