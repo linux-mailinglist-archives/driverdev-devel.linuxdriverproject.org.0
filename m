@@ -1,92 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A20F9E6E61
-	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Oct 2019 09:40:24 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7BCF9E703A
+	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Oct 2019 12:18:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DDE57844DC;
-	Mon, 28 Oct 2019 08:40:22 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4FA0885CE1;
+	Mon, 28 Oct 2019 11:18:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2S4xtn3mZft2; Mon, 28 Oct 2019 08:40:22 +0000 (UTC)
+	with ESMTP id f1+pVANkKmId; Mon, 28 Oct 2019 11:18:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 893B084480;
-	Mon, 28 Oct 2019 08:40:21 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BF7BC85CBB;
+	Mon, 28 Oct 2019 11:17:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D78FB1BF325
- for <devel@linuxdriverproject.org>; Mon, 28 Oct 2019 08:40:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1F4211BF417
+ for <devel@linuxdriverproject.org>; Mon, 28 Oct 2019 11:17:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id CBCB2854E8
- for <devel@linuxdriverproject.org>; Mon, 28 Oct 2019 08:40:18 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 15C0785A8B
+ for <devel@linuxdriverproject.org>; Mon, 28 Oct 2019 11:17:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id phWodhliZKrI for <devel@linuxdriverproject.org>;
- Mon, 28 Oct 2019 08:40:18 +0000 (UTC)
+ with ESMTP id vIXE3n6WDg7y for <devel@linuxdriverproject.org>;
+ Mon, 28 Oct 2019 11:17:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0CA5385497
- for <devel@driverdev.osuosl.org>; Mon, 28 Oct 2019 08:40:17 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9S8ShU8008098;
- Mon, 28 Oct 2019 08:40:16 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=AAreTZABI2sh5zxTgDMdtRwIgOOV26iDp41KT28HdQ0=;
- b=UNsO2OmZ6Ov72DOxYYNKxnT5P4or0VeIn9lktNKJymAjn73V43N6R9p/X7p/hIke7nUf
- eHp5Suj32ekGYYTf8IL3JTCWYpTc7Lv7nsRwE3fEHO+ZniEUuBi0eemVEk7vjFUR9OGa
- n3PJq8NXCmYbkTM/WLfnmpIo5LwreP8aij3wKnqeRhjc73z4adcUf7Q2AgjuNcatU6Vd
- G2HROdVQ3rynTQHtYi2RtZX7sRZ4h66Z/MeWIkmiEgiep+P9rYj0ERTT+/ED4Iids7Uo
- P/a8guaDSjf+8/tKqtxZrrzf67e3EuhDz30oih7tIkx99FxLsVfmhFtCIraColSugwVj UA== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2120.oracle.com with ESMTP id 2vvumf57vw-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 28 Oct 2019 08:40:16 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9S8SAHp122316;
- Mon, 28 Oct 2019 08:40:15 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by aserp3030.oracle.com with ESMTP id 2vwakxm0y3-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 28 Oct 2019 08:40:15 +0000
-Received: from abhmp0001.oracle.com (abhmp0001.oracle.com [141.146.116.7])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x9S8eE0s024446;
- Mon, 28 Oct 2019 08:40:14 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 28 Oct 2019 01:40:13 -0700
-Date: Mon, 28 Oct 2019 11:40:07 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Julia Lawall <julia.lawall@lip6.fr>
-Subject: Re: [PATCH] staging: octeon: Remove unneeded variable
-Message-ID: <20191028084007.GC1922@kadam>
-References: <20191026222453.GA14562@cristiane-Inspiron-5420>
- <20191028082732.GE1944@kadam>
- <alpine.DEB.2.21.1910280934430.2348@hadrien>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com
+ [205.139.110.61])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 528A884C3C
+ for <devel@driverdev.osuosl.org>; Mon, 28 Oct 2019 11:17:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1572261472;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=xvGy8lfSyzYT4HF73ZOXkZjMD3C1Ua03UylbZbwvVfY=;
+ b=FXsiZmCZWK3WBNnWPL1qY+zVJTT6D5HZRgKqXxX33/3Makkfqth0a3nzxgNltZ+DETG9VW
+ FWD40ZlhPVA/MBZME/Nqq+KcAc7KHjsIiYsRijgGH9uUMhuh+MB7xlRYdI8aWKcODynbXU
+ EWiNGrCYN9TuWD+Z8QGBdlHdYz85Es4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-360-WNphYuquOhybpm7TOvjMvg-1; Mon, 28 Oct 2019 07:17:49 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BF407476;
+ Mon, 28 Oct 2019 11:17:47 +0000 (UTC)
+Received: from shalem.localdomain.com (ovpn-116-64.ams2.redhat.com
+ [10.36.116.64])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B4844194B2;
+ Mon, 28 Oct 2019 11:17:45 +0000 (UTC)
+From: Hans de Goede <hdegoede@redhat.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH v17 0/1] staging: Add VirtualBox guest shared folder (vboxsf)
+ support
+Date: Mon, 28 Oct 2019 12:17:43 +0100
+Message-Id: <20191028111744.143863-1-hdegoede@redhat.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.21.1910280934430.2348@hadrien>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9423
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1908290000 definitions=main-1910280086
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9423
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
- definitions=main-1910280086
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: WNphYuquOhybpm7TOvjMvg-1
+X-Mimecast-Spam-Score: 0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,54 +76,30 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com,
- Cristiane Naves <cristianenavescardoso09@gmail.com>,
- linux-kernel@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: devel@driverdev.osuosl.org, Christoph Hellwig <hch@infradead.org>,
+ David Howells <dhowells@redhat.com>, Hans de Goede <hdegoede@redhat.com>,
+ Alexander Viro <viro@zeniv.linux.org.uk>, linux-fsdevel@vger.kernel.org,
+ Andrew Morton <akpm@linux-foundation.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Oct 28, 2019 at 09:36:04AM +0100, Julia Lawall wrote:
-> 
-> 
-> On Mon, 28 Oct 2019, Dan Carpenter wrote:
-> 
-> > On Sat, Oct 26, 2019 at 07:24:53PM -0300, Cristiane Naves wrote:
-> > > Remove unneeded variable used to store return value. Issue found by
-> > > coccicheck.
-> > >
-> > > Signed-off-by: Cristiane Naves <cristianenavescardoso09@gmail.com>
-> > > ---
-> > >  drivers/staging/octeon/octeon-stubs.h | 4 +---
-> > >  1 file changed, 1 insertion(+), 3 deletions(-)
-> > >
-> > > diff --git a/drivers/staging/octeon/octeon-stubs.h b/drivers/staging/octeon/octeon-stubs.h
-> > > index b07f5e2..d53bd801 100644
-> > > --- a/drivers/staging/octeon/octeon-stubs.h
-> > > +++ b/drivers/staging/octeon/octeon-stubs.h
-> > > @@ -1387,9 +1387,7 @@ static inline cvmx_pko_status_t cvmx_pko_send_packet_finish(uint64_t port,
-> > >  		uint64_t queue, union cvmx_pko_command_word0 pko_command,
-> > >  		union cvmx_buf_ptr packet, cvmx_pko_lock_t use_locking)
-> > >  {
-> > > -	cvmx_pko_status_t ret = 0;
-> > > -
-> > > -	return ret;
-> > > +	return 0;
-> >
-> > What is the point of this function anyway?
-> 
-> Given that it is in octeon-stubs.h, it seems that the point is to get the
-> code to compile when COMPILE_TEST is set.  There is a real definition in
-> arch/mips/include/asm/octeon/cvmx-pko.h
+Hi Greg,
 
-Oh yeah...  Duh.  I saw that it was in stubs but I just assumed that it
-was stubs for something which was never implemented or left over code...
+As discussed previously can you please take vboxsf upstream through
+drivers/staging?
 
-My bad.
+It has seen many revisions on the fsdevel list, but it seems that the
+fsdevel people are to busy to pick it up.
 
-regards,
-dan carpente
+Previous versions of this patch have been reviewed by Al Viro, David Howells
+and Christoph Hellwig (all in the Cc) and I believe that the current
+version addresses all their review remarks.
+
+Regards,
+
+Hans
 
 _______________________________________________
 devel mailing list
