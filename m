@@ -1,64 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E66AFE7094
-	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Oct 2019 12:40:03 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6602CE7233
+	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Oct 2019 13:57:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 118A485082;
-	Mon, 28 Oct 2019 11:40:02 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7A77320494;
+	Mon, 28 Oct 2019 12:57:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ploIxfKQ3nXx; Mon, 28 Oct 2019 11:40:01 +0000 (UTC)
+	with ESMTP id Ke8X0yV1H9tH; Mon, 28 Oct 2019 12:57:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 78E3A84DF6;
-	Mon, 28 Oct 2019 11:40:00 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 28F742040C;
+	Mon, 28 Oct 2019 12:57:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EDEE51BF417
- for <devel@linuxdriverproject.org>; Mon, 28 Oct 2019 11:39:56 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id DB6241BF2F8
+ for <devel@linuxdriverproject.org>; Mon, 28 Oct 2019 12:57:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id EA9D787152
- for <devel@linuxdriverproject.org>; Mon, 28 Oct 2019 11:39:56 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id D47622040C
+ for <devel@linuxdriverproject.org>; Mon, 28 Oct 2019 12:57:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id d+320ADxA8GR for <devel@linuxdriverproject.org>;
- Mon, 28 Oct 2019 11:39:56 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from bombadil.infradead.org (bombadil.infradead.org
- [198.137.202.133])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 758D98710D
- for <devel@driverdev.osuosl.org>; Mon, 28 Oct 2019 11:39:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20170209; h=In-Reply-To:Content-Type:MIME-Version
- :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=qlaRIlg2IzHlknjdR50kOOzdtwiROoikVmFM60sEtfY=; b=O+rif9bOXr8XIG1Mu1oBzvBg7
- ONF2DJt8igNpozuZHO6SFOXM7asLVC9s/240RyJ+AvKpGGX+QdsHBVcb/+AViPZyY3Bztw+D+vXOJ
- nn6abYBCb5dcDVlij63Qm1aMwITCecRR4Xwsw4LtpVGGQHZEPOtMlhNKoRczSK68vFTpnZn5YEFe8
- zZkbewymgdxB8y00NXwGSZdaarHT4T8z7N+MaLES3IxVnVEQOv8GyoqBO1IRtXyGQn0KFrWQ/uKkp
- RQC03L0x644OIvhavb/LbF03rOzd6KoDi6cLxRe1nxrPapZG4fdf04srHXqNicbbnuKh9cWd/I0eA
- 44QcBmt0g==;
-Received: from hch by bombadil.infradead.org with local (Exim 4.92.3 #3 (Red
- Hat Linux)) id 1iP3NG-0000mT-27; Mon, 28 Oct 2019 11:39:50 +0000
-Date: Mon, 28 Oct 2019 04:39:50 -0700
-From: Christoph Hellwig <hch@infradead.org>
-To: Hans de Goede <hdegoede@redhat.com>
-Subject: Re: [PATCH v17 0/1] staging: Add VirtualBox guest shared folder
- (vboxsf) support
-Message-ID: <20191028113950.GA2406@infradead.org>
-References: <20191028111744.143863-1-hdegoede@redhat.com>
+ with ESMTP id me28lK7GFQiO for <devel@linuxdriverproject.org>;
+ Mon, 28 Oct 2019 12:57:43 +0000 (UTC)
+X-Greylist: delayed 01:10:01 by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0013.hostedemail.com
+ [216.40.44.13])
+ by silver.osuosl.org (Postfix) with ESMTPS id D678620343
+ for <devel@driverdev.osuosl.org>; Mon, 28 Oct 2019 12:57:43 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave01.hostedemail.com (Postfix) with ESMTP id CD8A8180273D7
+ for <devel@driverdev.osuosl.org>; Mon, 28 Oct 2019 08:09:49 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay07.hostedemail.com (Postfix) with ESMTP id 596B3181D3052;
+ Mon, 28 Oct 2019 08:09:45 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, :::::::::::::::,
+ RULES_HIT:41:355:379:599:966:968:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2196:2199:2393:2553:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3868:3871:3874:4321:4385:4605:5007:6119:7903:9010:10004:10400:10848:11026:11232:11658:11914:12043:12296:12297:12438:12740:12760:12895:13069:13311:13357:13439:14659:14721:21080:21627:30012:30054:30090:30091,
+ 0,
+ RBL:47.151.135.224:@perches.com:.lbl8.mailshell.net-62.8.0.100 64.201.201.201,
+ CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none, DomainCache:0,
+ MSF:not bulk, SPF:fn, MSBL:0, DNSBL:neutral, Custom_rules:0:0:0, LFtime:24,
+ LUA_SUMMARY:none
+X-HE-Tag: stew80_1ac8e633b015e
+X-Filterd-Recvd-Size: 2274
+Received: from XPS-9350.home (unknown [47.151.135.224])
+ (Authenticated sender: joe@perches.com)
+ by omf12.hostedemail.com (Postfix) with ESMTPA;
+ Mon, 28 Oct 2019 08:09:43 +0000 (UTC)
+Message-ID: <67386d9dec115d8eccaa6407a29c525eafd7811c.camel@perches.com>
+Subject: Re: [RESEND PATCH 1/2] staging: rtl8712: Fix Alignment of open
+ parenthesis
+From: Joe Perches <joe@perches.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Date: Mon, 28 Oct 2019 01:09:38 -0700
+In-Reply-To: <20191028080113.GD1944@kadam>
+References: <cover.1572051351.git.cristianenavescardoso09@gmail.com>
+ <e3842148b6dd01c47678f517a07772c75046c50f.1572051351.git.cristianenavescardoso09@gmail.com>
+ <25960b2a5dfe3f5f2c6579ef718f90a139ba84d7.camel@perches.com>
+ <20191028080113.GD1944@kadam>
+User-Agent: Evolution 3.34.1-2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191028111744.143863-1-hdegoede@redhat.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
- bombadil.infradead.org. See http://www.infradead.org/rpr.html
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,32 +79,43 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Christoph Hellwig <hch@infradead.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- David Howells <dhowells@redhat.com>, Alexander Viro <viro@zeniv.linux.org.uk>,
- linux-fsdevel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>,
- Linus Torvalds <torvalds@linux-foundation.org>
+Cc: devel@driverdev.osuosl.org,
+ Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
+ Cristiane Naves <cristianenavescardoso09@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ outreachy-kernel@googlegroups.com, Larry Finger <Larry.Finger@lwfinger.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Oct 28, 2019 at 12:17:43PM +0100, Hans de Goede wrote:
-> Hi Greg,
+On Mon, 2019-10-28 at 11:01 +0300, Dan Carpenter wrote:
+> On Fri, Oct 25, 2019 at 06:50:25PM -0700, Joe Perches wrote:
+> > On Fri, 2019-10-25 at 22:09 -0300, Cristiane Naves wrote:
+> > > Fix alignment should match open parenthesis.Issue found by checkpatch.
+> > 
+> > Beyond doing style cleanups, please always try
+> > to make the code more readable.
+> > 
+> > > diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
+> > []
+> > > @@ -61,13 +61,13 @@ void r8712_init_recv_priv(struct recv_priv *precvpriv,
+> > >  		precvbuf->ref_cnt = 0;
+> > >  		precvbuf->adapter = padapter;
+> > >  		list_add_tail(&precvbuf->list,
+> > > -				 &(precvpriv->free_recv_buf_queue.queue));
+> > > +			      &(precvpriv->free_recv_buf_queue.queue));
+> > 
+> > Please remove the unnecessary parentheses too
+> > 
 > 
-> As discussed previously can you please take vboxsf upstream through
-> drivers/staging?
-> 
-> It has seen many revisions on the fsdevel list, but it seems that the
-> fsdevel people are to busy to pick it up.
-> 
-> Previous versions of this patch have been reviewed by Al Viro, David Howells
-> and Christoph Hellwig (all in the Cc) and I believe that the current
-> version addresses all their review remarks.
+> Removing the parentheses increases your chance of the patch being
+> rejected on the one thing per patch rule...
 
-Please just send it to Linus directly.  This is the equivalent of
-consumer hardware enablement and it is in a state as clean as it gets
-for the rather messed up protocol.
+Which for people that actually know how to
+read and write code is a silly rule.
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
