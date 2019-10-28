@@ -1,94 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 01FC8E78EF
-	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Oct 2019 20:08:31 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 16B8087553;
-	Mon, 28 Oct 2019 19:08:29 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HmEGOrQljBZx; Mon, 28 Oct 2019 19:08:28 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BD9A48757E;
-	Mon, 28 Oct 2019 19:08:27 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id F40451BF406
- for <devel@linuxdriverproject.org>; Mon, 28 Oct 2019 19:08:20 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 23BFDE7A41
+	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Oct 2019 21:39:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DD65185EF5
- for <devel@linuxdriverproject.org>; Mon, 28 Oct 2019 19:08:20 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A3FCD861CD;
+	Mon, 28 Oct 2019 20:38:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+X-Amavis-Alert: BAD HEADER SECTION, Non-encoded 8-bit data (char F6 hex):
+	Subject: Mikroweltf\366rderung.
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id sPiLmA+SS-UO; Mon, 28 Oct 2019 20:38:57 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1E7E68613C;
+	Mon, 28 Oct 2019 20:38:56 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 343891BF292
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 28 Oct 2019 20:38:54 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 2CE83204C3
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 28 Oct 2019 20:38:54 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+X-Amavis-Alert: BAD HEADER SECTION, Non-encoded 8-bit data (char F6 hex):
+ Subject: Mikroweltf\366rderung.
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yGd-ne2Gibcb for <devel@linuxdriverproject.org>;
- Mon, 28 Oct 2019 19:08:20 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2781485DF5
- for <devel@driverdev.osuosl.org>; Mon, 28 Oct 2019 19:08:20 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9SJ4IBK174536;
- Mon, 28 Oct 2019 19:08:18 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=z/WBdgd5CumTKSeC5lKYgmAwQ86vtbHZtOeSgLdHgTs=;
- b=EvlJKEPBs2sB/16Ae/bUSdzWs/+UiXnilYHGt8Po5EoXIHyMy70H4LnMt6mKWWEAU1iP
- 4cGTEun1iJBuCLqEsZpITSfqn6ISM/MA9Ja8DkVlSQna0tQTJgOI5yEQt6JfyxwOzZcu
- Ax++95pMpn0uH6vbDj4g0BsVNku/w1ofdBuxsZDJzaqf5kKYombNSf5VxJloHJd1wqy8
- gr6iCNVJICwToCpuXW0xey6aHBqfEul2tVpEvNk165vKg2IKy27+1Ox+kOVZ/ELHhZvV
- NemeF437t0sXSoLvmy/FunTiaJc/KwEGodzL023E81RjfZtfrVO6GzV4/3W1wty2irCV ig== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by userp2120.oracle.com with ESMTP id 2vvumf8xth-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 28 Oct 2019 19:08:18 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9SJ4H3Q014486;
- Mon, 28 Oct 2019 19:08:17 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by userp3020.oracle.com with ESMTP id 2vw09ga07k-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 28 Oct 2019 19:08:17 +0000
-Received: from abhmp0010.oracle.com (abhmp0010.oracle.com [141.146.116.16])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x9SJ8FBk003101;
- Mon, 28 Oct 2019 19:08:15 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 28 Oct 2019 12:08:15 -0700
-Date: Mon, 28 Oct 2019 22:08:04 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Davidlohr Bueso <dave@stgolabs.net>
-Subject: Re: [PATCH] staging: vc04_services: replace g_free_fragments_mutex
- with spinlock
-Message-ID: <20191028190804.GG1944@kadam>
-References: <20191027221530.12080-1-dave@stgolabs.net>
- <20191028155354.s3bgq2wazwlh32km@linux-p48b>
- <20191028162412.GA321492@kroah.com>
- <20191028163537.b2pspgdl6ceevcxv@linux-p48b>
+ with ESMTP id b6bH30kvVz1z
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 28 Oct 2019 20:38:54 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.aranzadi.es (mail.aranzadi.es [195.76.174.39])
+ by silver.osuosl.org (Postfix) with ESMTP id D502A20484
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 28 Oct 2019 20:38:53 +0000 (UTC)
+Received: from User (unknown [103.133.107.126])
+ by mail.aranzadi.es (Postfix) with ESMTP id B42ED140098;
+ Mon, 28 Oct 2019 21:26:01 +0100 (CET)
+From: "MICROWORLD CORPORATIONS:"<micropromoo@gmail.com>
+Subject: Mikroweltförderung.
+Date: Mon, 28 Oct 2019 13:26:14 -0700
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191028163537.b2pspgdl6ceevcxv@linux-p48b>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9424
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=866
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1908290000 definitions=main-1910280181
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9424
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=952 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
- definitions=main-1910280182
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20191028202601.B42ED140098@mail.aranzadi.es>
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,32 +64,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg KH <gregkh@linuxfoundation.org>,
- wahrenst@gmx.net, linux-kernel@vger.kernel.org, eric@anholt.net
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: micropromoo@gmail.com
+Content-Type: text/plain; charset="cp1251"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Oct 28, 2019 at 09:35:37AM -0700, Davidlohr Bueso wrote:
-> On Mon, 28 Oct 2019, Greg KH wrote:
-> > This is obviously not in a format I can apply it in :(
-> 
-> What are you talking about? I sent you the original patch,
-> then Cc'ed the drivers mailing list.  So you still have a
-> patch you can apply... this is quite a common way of doing
-> things (Ccing for future references to someone or another
-> ml). I don't understand why you are hairsplitting over this
-> patch.
-> 
-
-I don't have the original patch either.  Only the corrupted one...  Maybe
-you did it as html and it was rejected?
-
-regards,
-dan carpenter
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+TUlDUk9XT1JMRCBDT1JQT1JBVElPTlM6CktVTkRFTkRJRU5TVDoKTUFEUklEIC0gRVNQQU5BLgpS
+ZWZlcmVuem51bW1lcjogTUNXLTAwOS1ENTQtRVMKQ0hBUkdFTkJFWkVJQ0hOVU5HOiBNREMtMjAx
+OS0gU00tMDA1ClRJQ0tFVE5VTU1FUk46IDQsNywyMSwyNCwyOSwzNgoKICAgICAgICAgICAgICAg
+ICAgICAgICAgICBPRkZJWklFTExFIEdFV0lOTk1FTERVTkcuCldpciBmcmV1ZW4gdW5zLCBTaWUg
+/GJlciBkaWUgdmVy9mZmZW50bGljaHRlbiBFcmdlYm5pc3NlIGRlciBNaWNyb3dvcmxkIFByb21v
+dGlvbiB6dSBpbmZvcm1pZXJlbiAuLi4KRGllcyBpc3QgZWluIFdlcmJlcHJvZ3JhbW0sIGRhcyB2
+b24gTWljcm93b3JsZCBDb3Jwb3JhdGlvbnMgaW4gWnVzYW1tZW5hcmJlaXQgbWl0IGRlciBTdGlm
+dHVuZyB6dXIgRvZyZGVydW5nIHZvbiBTb2Z0d2FyZXByb2R1a3RlbiBvcmdhbmlzaWVydCB3aXJk
+Lgp1bmQgVmVyd2VuZHVuZyB2b24gRS1NYWlsLUFkcmVzc2VuLiBGaW5kZXQgYW0gU2Ftc3RhZywg
+ZGVuIDI2LiBPa3RvYmVyIDIwMTkgaW4gTWFkcmlkLCBTcGFuaWVuLCBzdGF0dC4KSWhyZSBFLU1h
+aWwtQWRyZXNzZSB3dXJkZSBtaXQgZWluZW0gUHJlaXNnZWxkIHZvbiA0OTkuMDAwLjI1MCBFdXJv
+ICg0OTkuMjUwLDAwIEV1cm8pIGF1c2dlemVpY2huZXQuCldlbmRlbiBTaWUgc2ljaCBhbiB1bnNl
+cmVuIE1hbmFnZXIgZvxyIEF1c2xhbmRz/GJlcndlaXN1bmdlbiwgdW0gSW5mb3JtYXRpb25lbiB6
+dSBJaHJlbiBHZXdpbm5lcm4gdW5kIEtvbnRha3RpbmZvcm1hdGlvbmVuIHp1IGVyaGFsdGVuLgpG
+cmF1IEhlbGVuYSBTYW5jaGV6LgpFLU1haWw6IG1pY3JvcHJvbW9AeWFob28uY29tCkhlcnpsaWNo
+ZSBHbPxja3f8bnNjaGUhIQpNaXQgZnJldW5kbGljaGVuIEdy/N9lbiwKUm9zYSBNYXJ0aW5lei4K
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFp
+bGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5s
+aW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
