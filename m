@@ -1,60 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B2E76E721D
-	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Oct 2019 13:51:08 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 09E73E7398
+	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Oct 2019 15:27:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CFAC984A92;
-	Mon, 28 Oct 2019 12:51:06 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6F8B9204B6;
+	Mon, 28 Oct 2019 14:27:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RLX9jg5IQe26; Mon, 28 Oct 2019 12:51:06 +0000 (UTC)
+	with ESMTP id NrPVTzcGCsPb; Mon, 28 Oct 2019 14:27:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7617584DB2;
-	Mon, 28 Oct 2019 12:51:05 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2B2742049C;
+	Mon, 28 Oct 2019 14:27:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9654F1BF2F8
- for <devel@linuxdriverproject.org>; Mon, 28 Oct 2019 12:50:42 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D36161BF40D
+ for <devel@linuxdriverproject.org>; Mon, 28 Oct 2019 14:27:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 926F2849A6
- for <devel@linuxdriverproject.org>; Mon, 28 Oct 2019 12:50:42 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id CE66884EE2
+ for <devel@linuxdriverproject.org>; Mon, 28 Oct 2019 14:27:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id C8hxDn7kFjuJ for <devel@linuxdriverproject.org>;
- Mon, 28 Oct 2019 12:50:42 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id CB0488489C
- for <devel@driverdev.osuosl.org>; Mon, 28 Oct 2019 12:50:40 +0000 (UTC)
-Received: from localhost (unknown [91.217.168.176])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 180E420873;
- Mon, 28 Oct 2019 12:50:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1572267040;
- bh=spK40+H3cQpvOVWI4gd7Amk1DPujXsJJrHzp96i1hRo=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=iTVRaot0Ih8qtyMS/GPUdkJeIh/LEztBESPXMuSb0JO8swZbPw/Paws4t6PcalK3V
- RrN6VuG8yeQKeU0OHE3IxQ68i7JTE2ddiTqhDanzUeM/1eAQcAqjGJR7pZM9i81lfj
- V81Xbmc2aT6Z+3NmJhrfKPslTwK6nVy66OddFsWA=
-Date: Mon, 28 Oct 2019 12:41:59 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Christoph Hellwig <hch@infradead.org>
-Subject: Re: [PATCH v17 0/1] staging: Add VirtualBox guest shared folder
- (vboxsf) support
-Message-ID: <20191028114159.GA6961@kroah.com>
-References: <20191028111744.143863-1-hdegoede@redhat.com>
- <20191028113950.GA2406@infradead.org>
+ with ESMTP id LAVYsll78OV4 for <devel@linuxdriverproject.org>;
+ Mon, 28 Oct 2019 14:27:16 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ot1-f65.google.com (mail-ot1-f65.google.com
+ [209.85.210.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D22E284ECD
+ for <devel@driverdev.osuosl.org>; Mon, 28 Oct 2019 14:27:16 +0000 (UTC)
+Received: by mail-ot1-f65.google.com with SMTP id 53so6782635otv.4
+ for <devel@driverdev.osuosl.org>; Mon, 28 Oct 2019 07:27:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=qRPcGUyjyYP3X+dNbFskpOrzjRKBib41L5MZ+6/IumQ=;
+ b=dmV0D1FpdEoza5dLoPFkgv/FDQhs15CmGwpEPlAT0j2u3NQ2wpQzX8doVJJvQLp8JI
+ Sfyln9GCLLrHiTDMC9FFAPtoCYXUkkrn8fg3vnkP0F4aygf3f7NO3lu8Np3KBwwjX0yZ
+ pJc7k0q8BWbyZAOWshLqcmfonZjCgHkNKErJnqANJ2AVg7gmRmWRvkqxo90KRjbJ8Dai
+ qvQZARVLSIAcnLYvMtXDOSAMNGQv/X31yNvWqRGx52VSt53OGmAo6QV2VHFtVEuRZNp6
+ ulx6antxyR/+qm+LVSywVNCb06FB76QI/zVpjXVy5PTJwIo8185g2OOeqJm95/BKsGD6
+ 2F5g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=qRPcGUyjyYP3X+dNbFskpOrzjRKBib41L5MZ+6/IumQ=;
+ b=Qv7CUJUg15VopW7lgk5zUIf6VjX11G6if47Ihtf49aGpF1EG2H8mWieq+9BrIL0lQ5
+ 3F52y6lWwj1Kpm+ZGCmMbRS95r7zpT8ScbQMsgvE6AtvETQG2JWers8tSuPNvJUTZcr3
+ 7xVneZ3onFjbWLZAWWwZKVrA1UkM4Q3URJUPqGUlyKMRjPe8EUbsluhoHRWq2kwMKVuw
+ Z03lGGYL0bzLdBeu7nZw8ADMlEXsdsJ+jD9gDWl3GUMlgK61HFukZEx0q90pQAT6mR/Y
+ EXcJaUw114657WqeVZOzq6PVmKHIthAKdgdMaVKsq5ye4LCnPsFeYgp22UI1eemqLZiv
+ W19g==
+X-Gm-Message-State: APjAAAXkKDdwnGSBqNlbZtRbjAzb08f17VHSGcZqw2b4+/3/QpY8nnaj
+ DR9WUBlGbyhEZCV0CFyeDFSbiyrTVGeqA7MYFcI=
+X-Google-Smtp-Source: APXvYqxIXLVM6e9Cd0PvKo8U2jwBqn1fDpadkb/s3M2zNmRTxnE/C0zaL4Y6+XA3oqXRyIcYfyzQxHt1ooMsBJciHlQ=
+X-Received: by 2002:a05:6830:237d:: with SMTP id
+ r29mr8845480oth.0.1572272835772; 
+ Mon, 28 Oct 2019 07:27:15 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191028113950.GA2406@infradead.org>
-User-Agent: Mutt/1.12.2 (2019-09-21)
+References: <20191026235214.GA11702@cristiane-Inspiron-5420>
+In-Reply-To: <20191026235214.GA11702@cristiane-Inspiron-5420>
+From: Sven Van Asbroeck <thesven73@gmail.com>
+Date: Mon, 28 Oct 2019 10:27:04 -0400
+Message-ID: <CAGngYiV0hCjXigVhijoTmwMfS4mM+hC-aVFsu6VDT-WmKsNsJQ@mail.gmail.com>
+Subject: Re: [PATCH] staging: fieldbus: anybuss: use
+ devm_platform_ioremap_resource helper
+To: Cristiane Naves <cristianenavescardoso09@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,39 +81,30 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, David Howells <dhowells@redhat.com>,
- Hans de Goede <hdegoede@redhat.com>, Alexander Viro <viro@zeniv.linux.org.uk>,
- linux-fsdevel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>,
- Linus Torvalds <torvalds@linux-foundation.org>
+Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Oct 28, 2019 at 04:39:50AM -0700, Christoph Hellwig wrote:
-> On Mon, Oct 28, 2019 at 12:17:43PM +0100, Hans de Goede wrote:
-> > Hi Greg,
-> > 
-> > As discussed previously can you please take vboxsf upstream through
-> > drivers/staging?
-> > 
-> > It has seen many revisions on the fsdevel list, but it seems that the
-> > fsdevel people are to busy to pick it up.
-> > 
-> > Previous versions of this patch have been reviewed by Al Viro, David Howells
-> > and Christoph Hellwig (all in the Cc) and I believe that the current
-> > version addresses all their review remarks.
-> 
-> Please just send it to Linus directly.  This is the equivalent of
-> consumer hardware enablement and it is in a state as clean as it gets
-> for the rather messed up protocol.
+On Sat, Oct 26, 2019 at 7:52 PM Cristiane Naves
+<cristianenavescardoso09@gmail.com> wrote:
+>
+> Use devm_platform_ioremap_resource helper which wraps
+> platform_get_resource() and devm_ioremap_resource() together. Issue
+> found by coccicheck.
+>
+> Signed-off-by: Cristiane Naves <cristianenavescardoso09@gmail.com>
 
-I can add it to my patches to go to Linus for 5.4-final if you don't
-object to it going into drivers/staging/
+This is a duplicate of:
+https://www.spinics.net/lists/linux-driver-devel/msg129526.html
+and
+https://lore.kernel.org/patchwork/patch/1140024/
 
-thanks,
-
-greg k-h
+When you find an issue, please search the mailing list(s) first to check
+if it is being discussed already.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
