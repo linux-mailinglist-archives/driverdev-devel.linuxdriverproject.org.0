@@ -1,57 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 23BFDE7A41
-	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Oct 2019 21:39:00 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2FEB0E7B2D
+	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Oct 2019 22:11:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A3FCD861CD;
-	Mon, 28 Oct 2019 20:38:57 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DF7A58539A;
+	Mon, 28 Oct 2019 21:11:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-X-Amavis-Alert: BAD HEADER SECTION, Non-encoded 8-bit data (char F6 hex):
-	Subject: Mikroweltf\366rderung.
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sPiLmA+SS-UO; Mon, 28 Oct 2019 20:38:57 +0000 (UTC)
+	with ESMTP id tiLxhztyVGJB; Mon, 28 Oct 2019 21:11:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1E7E68613C;
-	Mon, 28 Oct 2019 20:38:56 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 095CD853FD;
+	Mon, 28 Oct 2019 21:11:42 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 343891BF292
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 28 Oct 2019 20:38:54 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DAA841BF2AB
+ for <devel@linuxdriverproject.org>; Mon, 28 Oct 2019 21:11:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 2CE83204C3
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 28 Oct 2019 20:38:54 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D604882F21
+ for <devel@linuxdriverproject.org>; Mon, 28 Oct 2019 21:11:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-X-Amavis-Alert: BAD HEADER SECTION, Non-encoded 8-bit data (char F6 hex):
- Subject: Mikroweltf\366rderung.
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id b6bH30kvVz1z
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 28 Oct 2019 20:38:54 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.aranzadi.es (mail.aranzadi.es [195.76.174.39])
- by silver.osuosl.org (Postfix) with ESMTP id D502A20484
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 28 Oct 2019 20:38:53 +0000 (UTC)
-Received: from User (unknown [103.133.107.126])
- by mail.aranzadi.es (Postfix) with ESMTP id B42ED140098;
- Mon, 28 Oct 2019 21:26:01 +0100 (CET)
-From: "MICROWORLD CORPORATIONS:"<micropromoo@gmail.com>
-Subject: Mikroweltförderung.
-Date: Mon, 28 Oct 2019 13:26:14 -0700
+ with ESMTP id 9JyMtIDnSLw9 for <devel@linuxdriverproject.org>;
+ Mon, 28 Oct 2019 21:11:38 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ot1-f67.google.com (mail-ot1-f67.google.com
+ [209.85.210.67])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 236F8824E0
+ for <devel@driverdev.osuosl.org>; Mon, 28 Oct 2019 21:11:38 +0000 (UTC)
+Received: by mail-ot1-f67.google.com with SMTP id z6so7935829otb.2
+ for <devel@driverdev.osuosl.org>; Mon, 28 Oct 2019 14:11:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=cBYWQW9UvbERGywOWVvHYvLEUYwA7AlxyhS5hIUH/BQ=;
+ b=pVT5yy7n+WJeNRc6Kqv08AdoWrhHCG9vtEOvUXQif3l/WjBzZ4AhsvpYb6aZMWKLQ3
+ EecZu6Zc6mPcKxGiNDjiFaS6sg5erNopZSti0+Aza4Jd5c2mjgYvFe2zPxZq1Uqv8v5a
+ EYnQHDDHofxDoRze/I+cCAawQz8iipUPSbNswKzyCRIiLHloXHqbmVng65P+ElYkksRW
+ TxOLLJHhesY/wDtkmXY2pBmCmuD8PWE0nuVlb7iFotk7OyoySsnEVwLqeKoqOo3KuqMa
+ sXj8gBfw4Uz+r4060/NBygCj7FFw8nQxVoKBrWm9TIib5SGWW1Z6JtvuZj24KaARGNh/
+ uq5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=cBYWQW9UvbERGywOWVvHYvLEUYwA7AlxyhS5hIUH/BQ=;
+ b=n81T/s4jpzvnqIKtCIqLHxst9I1HnmcaOJGkLHXS5GxY9ialle1ywWY1ZeClgl1SEV
+ 1WVYI6gUAVO5HuO7Xa7LvrnTD1yb7V+v1VNjeqvx23ilKfiTzdUdcly2QCRtvGTKCtTC
+ c/VE7Rdtei8g/zKfsQ2IGEmRB6aXiOA873F92aAT6gv/XoquysqsGd32E2m/uqtyJU7H
+ ojJxlSFhH1igHslSvk0sg2toVGDOte9qXq36K7s64t1EKN5e756IWc7XimMF56j7Jrs0
+ fj5tpiiSp1a/9bJngYGctuIkq6eeU7YuETchqekttuLB6KQp90WrjuVf3K7SExwG3dTq
+ Pn5g==
+X-Gm-Message-State: APjAAAXLlJHf6SVnQix4quUvU+xD6H61VxCpWX+PLEGdnfR0bzowrRz2
+ docqCXQBzoBNLtca/CG9ys1rGZESZLnjCfRBUbc=
+X-Google-Smtp-Source: APXvYqzZlp/Hwl4spcTIxcPlRPWVaONev/r+vSRpbK+HYKkKdKaJOdOZ1o68YRa0duONP2nNeFRlys2UNb7JGmmxgOE=
+X-Received: by 2002:a05:6830:4c1:: with SMTP id
+ s1mr973895otd.232.1572297097075; 
+ Mon, 28 Oct 2019 14:11:37 -0700 (PDT)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20191028202601.B42ED140098@mail.aranzadi.es>
-To: undisclosed-recipients:;
+References: <1570515056-23589-1-git-send-email-hariprasad.kelam@gmail.com>
+ <CAGngYiX0zoAQB=SEoXfoMm9u_JzHu3eLErj4zmTYtSAoDwkp6Q@mail.gmail.com>
+In-Reply-To: <CAGngYiX0zoAQB=SEoXfoMm9u_JzHu3eLErj4zmTYtSAoDwkp6Q@mail.gmail.com>
+From: Sven Van Asbroeck <thesven73@gmail.com>
+Date: Mon, 28 Oct 2019 17:11:26 -0400
+Message-ID: <CAGngYiXxagQMiHA-pZupTPHfyFz4kU=QOrvM28L_jSV1VGw=jQ@mail.gmail.com>
+Subject: Re: [PATCH] staging: fieldbus: make use of
+ devm_platform_ioremap_resource
+To: hariprasad Kelam <hariprasad.kelam@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,28 +82,41 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: micropromoo@gmail.com
-Content-Type: text/plain; charset="cp1251"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-TUlDUk9XT1JMRCBDT1JQT1JBVElPTlM6CktVTkRFTkRJRU5TVDoKTUFEUklEIC0gRVNQQU5BLgpS
-ZWZlcmVuem51bW1lcjogTUNXLTAwOS1ENTQtRVMKQ0hBUkdFTkJFWkVJQ0hOVU5HOiBNREMtMjAx
-OS0gU00tMDA1ClRJQ0tFVE5VTU1FUk46IDQsNywyMSwyNCwyOSwzNgoKICAgICAgICAgICAgICAg
-ICAgICAgICAgICBPRkZJWklFTExFIEdFV0lOTk1FTERVTkcuCldpciBmcmV1ZW4gdW5zLCBTaWUg
-/GJlciBkaWUgdmVy9mZmZW50bGljaHRlbiBFcmdlYm5pc3NlIGRlciBNaWNyb3dvcmxkIFByb21v
-dGlvbiB6dSBpbmZvcm1pZXJlbiAuLi4KRGllcyBpc3QgZWluIFdlcmJlcHJvZ3JhbW0sIGRhcyB2
-b24gTWljcm93b3JsZCBDb3Jwb3JhdGlvbnMgaW4gWnVzYW1tZW5hcmJlaXQgbWl0IGRlciBTdGlm
-dHVuZyB6dXIgRvZyZGVydW5nIHZvbiBTb2Z0d2FyZXByb2R1a3RlbiBvcmdhbmlzaWVydCB3aXJk
-Lgp1bmQgVmVyd2VuZHVuZyB2b24gRS1NYWlsLUFkcmVzc2VuLiBGaW5kZXQgYW0gU2Ftc3RhZywg
-ZGVuIDI2LiBPa3RvYmVyIDIwMTkgaW4gTWFkcmlkLCBTcGFuaWVuLCBzdGF0dC4KSWhyZSBFLU1h
-aWwtQWRyZXNzZSB3dXJkZSBtaXQgZWluZW0gUHJlaXNnZWxkIHZvbiA0OTkuMDAwLjI1MCBFdXJv
-ICg0OTkuMjUwLDAwIEV1cm8pIGF1c2dlemVpY2huZXQuCldlbmRlbiBTaWUgc2ljaCBhbiB1bnNl
-cmVuIE1hbmFnZXIgZvxyIEF1c2xhbmRz/GJlcndlaXN1bmdlbiwgdW0gSW5mb3JtYXRpb25lbiB6
-dSBJaHJlbiBHZXdpbm5lcm4gdW5kIEtvbnRha3RpbmZvcm1hdGlvbmVuIHp1IGVyaGFsdGVuLgpG
-cmF1IEhlbGVuYSBTYW5jaGV6LgpFLU1haWw6IG1pY3JvcHJvbW9AeWFob28uY29tCkhlcnpsaWNo
-ZSBHbPxja3f8bnNjaGUhIQpNaXQgZnJldW5kbGljaGVuIEdy/N9lbiwKUm9zYSBNYXJ0aW5lei4K
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFp
-bGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5s
-aW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+Hi Greg, friendly reminder... Did you miss the patch review below, or
+is there a reason
+why this isn't getting queued?
+
+There seems to be a crowd chasing down this type of warnings, resulting
+in multiple duplicates.
+
+On Tue, Oct 8, 2019 at 9:31 AM Sven Van Asbroeck <thesven73@gmail.com> wrote:
+>
+> On Tue, Oct 8, 2019 at 2:11 AM hariprasad Kelam
+> <hariprasad.kelam@gmail.com> wrote:
+> >
+> > From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+> >
+> > fix below issues reported by coccicheck
+> > drivers/staging//fieldbus/anybuss/arcx-anybus.c:135:1-5: WARNING: Use
+> > devm_platform_ioremap_resource for base
+> > drivers/staging//fieldbus/anybuss/arcx-anybus.c:248:1-14: WARNING: Use
+> > devm_platform_ioremap_resource for cd -> cpld_base
+> >
+> > Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+> > ---
+> >  drivers/staging/fieldbus/anybuss/arcx-anybus.c | 8 ++------
+> >  1 file changed, 2 insertions(+), 6 deletions(-)
+>
+> Reviewed-by: Sven Van Asbroeck <TheSven73@gmail.com>
+> Tested-by: Sven Van Asbroeck <TheSven73@gmail.com>
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
