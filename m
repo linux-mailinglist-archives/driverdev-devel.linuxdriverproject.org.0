@@ -1,54 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 648471165E8
-	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Dec 2019 05:56:10 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 95BBE116723
+	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Dec 2019 07:57:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 83C7B207A9;
-	Mon,  9 Dec 2019 04:56:08 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4044887594;
+	Mon,  9 Dec 2019 06:57:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NIjI7wW7TRe7; Mon,  9 Dec 2019 04:56:08 +0000 (UTC)
+	with ESMTP id Frb2lAfy7MnY; Mon,  9 Dec 2019 06:57:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 10FF42050E;
-	Mon,  9 Dec 2019 04:56:07 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2662987568;
+	Mon,  9 Dec 2019 06:57:39 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9208A1BF40D
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  9 Dec 2019 04:56:05 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 222F81BF35E
+ for <devel@linuxdriverproject.org>; Mon,  9 Dec 2019 06:57:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8749A87605
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  9 Dec 2019 04:56:05 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1F15E87592
+ for <devel@linuxdriverproject.org>; Mon,  9 Dec 2019 06:57:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XwlhjanQXOLf
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  9 Dec 2019 04:56:04 +0000 (UTC)
+ with ESMTP id Pfh8AfcWGFUA for <devel@linuxdriverproject.org>;
+ Mon,  9 Dec 2019 06:57:36 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from ws1.yamaguchi-pu.ac.jp (ws1.yamaguchi-pu.ac.jp
- [202.245.136.130])
- by whitealder.osuosl.org (Postfix) with ESMTP id DAC7787580
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  9 Dec 2019 04:56:03 +0000 (UTC)
-Received: from User (50.109.84.34.bc.googleusercontent.com [34.84.109.50])
- by ws1.yamaguchi-pu.ac.jp (Postfix) with ESMTP id 6345D1648916;
- Mon,  9 Dec 2019 12:17:23 +0900 (JST)
-From: "Hello"<tomoko@yamaguchi-pu.ac.jp>
-Subject: Hello, 09/12/2019
-Date: Mon, 9 Dec 2019 03:17:24 -0000
+Received: from zplay.cz (unknown [188.75.131.245])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8E3E387568
+ for <devel@driverdev.osuosl.org>; Mon,  9 Dec 2019 06:57:35 +0000 (UTC)
+Received: from User (serv1.aast.co [84.38.132.165]) by zplay.cz with ESMTPA
+ ; Tue, 29 Oct 2019 21:04:32 +0100
+Message-ID: <CA425131-D9F8-4619-8CEB-3D0DE98DC267@zplay.cz>
+From: "Timothy Foreman"<info@radio3.de>
+Subject: ATTENTION: IMPORTANT INFORMATION....245
+Date: Tue, 29 Oct 2019 22:04:52 +0200
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20191209031723.6345D1648916@ws1.yamaguchi-pu.ac.jp>
-To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,29 +54,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: reemhashimymail@gmail.com
+Reply-To: timothyforeman91@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Good day,
+Dear friend,
 
-My name is Reem E. Hashimy, the Emirates Minister of State and Managing Director of the United Arab Emirates (Dubai) World Expo 2020 Committee.
- 
-I am writing you to manage my funds I received as financial gratification from various foreign companies I assisted to receive participation slot in the incoming Dubai World Expo 2020. 
+IMPORTANT INFORMATION
 
-The amount is $44,762,906.00 United States dollars.The cumulative deposit were given as an expression of appreciation from the various foreign companies whose applications received approval to participate in the in-coming Dubai Expo 2020. But I could not receive the various gratifications to my personal account in my country because my social status as a married Muslim lady with limitations to certain investment opportunities. 
- 
-For this reason, an agreement was reached with a consulting firm to keep the funds in open beneficiary account with a financial institution where it will be possible to instruct transfer of the funds to a third party account for investment purpose which is the reason I am contacting you to receive and manage the funds as my investment partner. 
+I wish to notify you that your last name were listed as a beneficiary
+to a deceased customer of our bank.
 
-The detail will be discuss on your indication of interest with your information and capacity to manage the fund.
+I contacted you because you bear the surname identity and therefore
+can present you as the beneficiary to the inheritance. I therefore
+reckoned that you could receive these funds as you are qualified by
+your name identity. All the legal papers will be processed in your
+acceptance.
 
-However, if you are not ready to take up responsibility in this partnership, do not reply to this message.
- 
-Wishing you the best in the month.
+Mr. Timothy D. Foreman
+Chief Financial Officer Axiom Bank.
 
-Reem Hashimy.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
