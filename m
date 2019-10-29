@@ -1,60 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B5071E82FD
-	for <lists+driverdev-devel@lfdr.de>; Tue, 29 Oct 2019 09:10:27 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id AC94BE840B
+	for <lists+driverdev-devel@lfdr.de>; Tue, 29 Oct 2019 10:17:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8FF7786499;
-	Tue, 29 Oct 2019 08:10:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B10CB87816;
+	Tue, 29 Oct 2019 09:17:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FoP49jfAntgA; Tue, 29 Oct 2019 08:10:25 +0000 (UTC)
+	with ESMTP id xjo5IAuGbGOZ; Tue, 29 Oct 2019 09:17:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6354B86439;
-	Tue, 29 Oct 2019 08:10:24 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1EF958712D;
+	Tue, 29 Oct 2019 09:17:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 08F2C1BF327
- for <devel@linuxdriverproject.org>; Tue, 29 Oct 2019 08:10:22 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id F30281BF307
+ for <devel@linuxdriverproject.org>; Tue, 29 Oct 2019 09:16:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 063E785725
- for <devel@linuxdriverproject.org>; Tue, 29 Oct 2019 08:10:22 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id F008284C63
+ for <devel@linuxdriverproject.org>; Tue, 29 Oct 2019 09:16:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TRM7cIfpKAoa for <devel@linuxdriverproject.org>;
- Tue, 29 Oct 2019 08:10:20 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 46387836A9
- for <devel@driverdev.osuosl.org>; Tue, 29 Oct 2019 08:10:11 +0000 (UTC)
-Received: from localhost (unknown [91.217.168.176])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 5817720663;
- Tue, 29 Oct 2019 08:10:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1572336611;
- bh=C85TGFeZCrGhOL2LSvwdwkyUtb0eIGs8u6rXwHu3r98=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=S7XWlfdDSAlv3/uYXRZvk4A1wIhOPLofg4bVvODYpmmX6GbFCtoIWF9uPFB1ALy29
- rybgZME5qU6TosYnR9W1rsrvwxEP0QgO3ZTcwIhMv1brnykO+JrIj+sGKBHmH7tGCO
- EASLpW79fQ3SwYIzI+DMOPusJhZxE3EWssqJ3dOQ=
-Date: Tue, 29 Oct 2019 09:10:07 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Samuil Ivanov <samuil.ivanovbg@gmail.com>
-Subject: Re: [PATCH 1/2] Staging: gasket: implement apex_get_status() to
- check driver status
-Message-ID: <20191029081007.GA520581@kroah.com>
-References: <20191028225926.8951-1-samuil.ivanovbg@gmail.com>
- <20191028225926.8951-2-samuil.ivanovbg@gmail.com>
+ with ESMTP id dr0mmR0LYM64 for <devel@linuxdriverproject.org>;
+ Tue, 29 Oct 2019 09:16:48 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
+ [209.85.214.196])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 52A4084B82
+ for <devel@driverdev.osuosl.org>; Tue, 29 Oct 2019 09:16:48 +0000 (UTC)
+Received: by mail-pl1-f196.google.com with SMTP id k7so7283681pll.1
+ for <devel@driverdev.osuosl.org>; Tue, 29 Oct 2019 02:16:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=QxVCTrKNjWhjlkyA4a4PjlbJLD0+omh4Y9cUtwpdEOA=;
+ b=YTT1qL4qmvHYO9gVLxUbJqc0lYWx8cwPWmKWLfFdXvGIPcSSnenZWgFrca+1x7sc43
+ 6BVik0e77zA0RyY9fp65ozg5QbUU6lsHWoTWfTIMXBmHIDMrbUkia6LAgNwKLD4mfg9K
+ cH9ZfRjJIIfYvWFYZ/sOEM0XuRzcy7V/JeTS5P1JeX3Ufjm+3GRHJfLjHiHiUvN0b2di
+ z+IAcM/Jyr3RsXRSPEWPavS0BIm2PuEdzTaORCsQBQli/Dh+q5xK/76ttc2EsBD3v4y4
+ jC3EPA0dSQ44/J47btZe3F9In6rzsWKo12ik/e82+WFHbxyrFkJ7Qdc71Bb4RgY9yFmP
+ uApg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=QxVCTrKNjWhjlkyA4a4PjlbJLD0+omh4Y9cUtwpdEOA=;
+ b=DV743s8oewOhTjKF5OYp46ThQr56nZzANK6slrw9qod/iMekSbbpCfs9PCs8h57LXz
+ Fz5ERqMFEfH4jgihtEXblFZ2TltWV7YVT6AR10NGT5N/ne+hmRMPMg7Z8WQtUh5x6/UN
+ NKh9fjo+8Iv3qwHda6tc4HWD8Rn6vSHqIGqmX9ZODNvL1UwQ0EYiCxPhPA+G5iyjfDix
+ Pt8XuClGtLXDcWuYLXb6+mWU7op5L+u6SqEPksEZ7DL0qzDQPgMBULpsoNL+nzx7h+iV
+ pippLO5k6IzsnlFWa/885vW8QLnI327EZ6BD78bigMUy1v503A7qpvC0zm0IVbRzfwQL
+ 14wQ==
+X-Gm-Message-State: APjAAAUzvIUXkKhx2SMOKeJn/w9JTEQz+wt/GFGUGY/7saGn6hB4olIn
+ WgdPdvh5Tzp9f1VdlJaluLo=
+X-Google-Smtp-Source: APXvYqykXnxVExXdjyakWUi5HwnsRYnF0kqMc578j2xedEQEESIjGpSSAd3+1QNUsJuBEWD/uoBNHA==
+X-Received: by 2002:a17:902:a717:: with SMTP id
+ w23mr2960149plq.27.1572340607796; 
+ Tue, 29 Oct 2019 02:16:47 -0700 (PDT)
+Received: from localhost.localdomain ([45.52.215.209])
+ by smtp.gmail.com with ESMTPSA id g18sm9910556pfh.51.2019.10.29.02.16.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 29 Oct 2019 02:16:47 -0700 (PDT)
+From: Chandra Annamaneni <chandra627@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH v2 1/4] staging: KPC2000: kpc2000_spi.c: Fix style issues
+ (missing blank line)
+Date: Tue, 29 Oct 2019 02:16:35 -0700
+Message-Id: <20191029091638.16101-1-chandra627@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191028225926.8951-2-samuil.ivanovbg@gmail.com>
-User-Agent: Mutt/1.12.2 (2019-09-21)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,41 +85,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, toddpoynor@google.com, rspringer@google.com,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, gneukum1@gmail.com, chandra627@gmail.com,
+ michael.scheiderer@fau.de, fabian.krueger@fau.de, linux-kernel@vger.kernel.org,
+ simon@nikanor.nu, dan.carpenter@oracle.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Oct 29, 2019 at 12:59:25AM +0200, Samuil Ivanov wrote:
-> >From the TODO:
-> - apex_get_status() should actually check status
-> 
-> The function now checkes the status of the driver
-> 
-> Signed-off-by: Samuil Ivanov <samuil.ivanovbg@gmail.com>
-> ---
->  drivers/staging/gasket/apex_driver.c | 3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/drivers/staging/gasket/apex_driver.c b/drivers/staging/gasket/apex_driver.c
-> index 46199c8ca441..a5dd6f3c367d 100644
-> --- a/drivers/staging/gasket/apex_driver.c
-> +++ b/drivers/staging/gasket/apex_driver.c
-> @@ -247,6 +247,9 @@ module_param(bypass_top_level, int, 0644);
->  static int apex_get_status(struct gasket_dev *gasket_dev)
->  {
->  	/* TODO: Check device status. */
-> +	if (gasket_dev->status == GASKET_STATUS_DEAD)
-> +		return GASKET_STATUS_DEAD;
-> +
+Resolved: "CHECK: Please use a blank line after.." from checkpatch.pl
 
-Have you tested this to verify that this is what is needed here?
+Signed-off-by: Chandra Annamaneni <chandra627@gmail.com>
+---
+Previous versions of these patches were not split into different 
+patches, did not have different patch numbers and did not have the
+keyword staging.
+ drivers/staging/kpc2000/kpc2000_spi.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-thanks,
+diff --git a/drivers/staging/kpc2000/kpc2000_spi.c b/drivers/staging/kpc2000/kpc2000_spi.c
+index 6ba94b0131da..5712a88c8788 100644
+--- a/drivers/staging/kpc2000/kpc2000_spi.c
++++ b/drivers/staging/kpc2000/kpc2000_spi.c
+@@ -50,6 +50,7 @@ static struct flash_platform_data p2kr0_spi0_pdata = {
+ 	.nr_parts =	ARRAY_SIZE(p2kr0_spi0_parts),
+ 	.parts =	p2kr0_spi0_parts,
+ };
++
+ static struct flash_platform_data p2kr0_spi1_pdata = {
+ 	.name =		"SPI1",
+ 	.nr_parts =	ARRAY_SIZE(p2kr0_spi1_parts),
+-- 
+2.20.1
 
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
