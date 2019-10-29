@@ -2,81 +2,70 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BB00CE8BB8
-	for <lists+driverdev-devel@lfdr.de>; Tue, 29 Oct 2019 16:22:33 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id EA51DE8D3B
+	for <lists+driverdev-devel@lfdr.de>; Tue, 29 Oct 2019 17:48:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BFC9D879B8;
-	Tue, 29 Oct 2019 15:22:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C68C5879CF;
+	Tue, 29 Oct 2019 16:48:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Bci-kTHbEox3; Tue, 29 Oct 2019 15:22:31 +0000 (UTC)
+	with ESMTP id 1lNcc-efw7of; Tue, 29 Oct 2019 16:48:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 05FF387934;
-	Tue, 29 Oct 2019 15:22:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 139B686038;
+	Tue, 29 Oct 2019 16:48:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5AD3C1BF3F7
- for <devel@linuxdriverproject.org>; Tue, 29 Oct 2019 15:22:29 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8AFFC1BF317
+ for <devel@linuxdriverproject.org>; Tue, 29 Oct 2019 16:48:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 5782A2051C
- for <devel@linuxdriverproject.org>; Tue, 29 Oct 2019 15:22:29 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 69A9B84452
+ for <devel@linuxdriverproject.org>; Tue, 29 Oct 2019 16:48:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5ZES0fNXR2yK for <devel@linuxdriverproject.org>;
- Tue, 29 Oct 2019 15:22:28 +0000 (UTC)
+ with ESMTP id 17lN7xwxhQE2 for <devel@linuxdriverproject.org>;
+ Tue, 29 Oct 2019 16:48:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
- [209.85.128.66])
- by silver.osuosl.org (Postfix) with ESMTPS id 533642039B
- for <devel@driverdev.osuosl.org>; Tue, 29 Oct 2019 15:22:28 +0000 (UTC)
-Received: by mail-wm1-f66.google.com with SMTP id c22so2862406wmd.1
- for <devel@driverdev.osuosl.org>; Tue, 29 Oct 2019 08:22:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=734NRPXgAYnnoaK0bvSdeqVDUGQF7yU76dpnnD5fv0Q=;
- b=tVAZyxTpjFjDlOz5gxjL+cD/NIZdzQ8iGZcBDftXC9WI/Ntnb+Ka/RGAL7slxUPV0e
- /2+oWcw0juA2F9d/FUXHnX6QHjk3qiIcBdpfBNzbid/UmtIqMliunrp9+oXi7tOwRJOW
- O7LEM3A3a9oP+8nl+oXRPVg967ViQGXIbBhPiC78JbMEBPTLDmuhQdxh2dldUOjs/lJA
- BMzWF/rRP/cUBIsAY4LGKrZnGU704+6LslLJuPHvnJxoW7/UHWxCqa/j88O9VF0sFfYe
- 0iVMmRAGoViUICUog8v6uXjg3g93KvHMXUtBq7IYu+2UQS4WZ1zH+JGRCdtafKErta8L
- +uGA==
+Received: from mail-ot1-f66.google.com (mail-ot1-f66.google.com
+ [209.85.210.66])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C95ED84413
+ for <devel@driverdev.osuosl.org>; Tue, 29 Oct 2019 16:48:32 +0000 (UTC)
+Received: by mail-ot1-f66.google.com with SMTP id z6so10366288otb.2
+ for <devel@driverdev.osuosl.org>; Tue, 29 Oct 2019 09:48:32 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=734NRPXgAYnnoaK0bvSdeqVDUGQF7yU76dpnnD5fv0Q=;
- b=N5sJP53MBfEFJzzuXk/Jy3ZEjWpGTa0W7VjZQ63NnwwGG8Ff5X/RZDuHYias8GqFWW
- phgPlF9zOrh+LeicnhOFj9Bze9LEtX3ClHU+MLZKg8bKKsZYmLQw5eSUdpQR1qK7+KVP
- 3peHX7F7yp+mjn2fufL5CJK0BV0C8VoafEknUED9Zf1Z/c5g93X4RV/RxhjFCzBwhB/E
- 87FYsQ/fDZnlW8ERazpM6TwsMw3HksP5CDaGTO8sr+wBk6FRDA2QzPPYQ4V7U3TWd2h7
- kRhfWImTaVftMW38j7n16VqaC/M3VE1WMS6W0KjFwP4Hu8CRlUeTvmpFf8pGgnN/wT63
- Lb0A==
-X-Gm-Message-State: APjAAAUyLuQL3SbJVVqUGzc28/RdiZIN/SW+j2tES7AzPponubvHJIDV
- lMGkp04zJ6Oa/+bQOb+R+eY=
-X-Google-Smtp-Source: APXvYqyzYdTNlb3awoWZWSzAlm5z0ON3TRTPeYkLuzqe71IbLTdH1gtoM2nJuROYdVkInkZ4LI+5+g==
-X-Received: by 2002:a1c:f20e:: with SMTP id s14mr4453131wmc.118.1572362546784; 
- Tue, 29 Oct 2019 08:22:26 -0700 (PDT)
-Received: from sivanov-pc ([92.247.20.94])
- by smtp.gmail.com with ESMTPSA id y128sm3474902wmg.10.2019.10.29.08.22.25
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Tue, 29 Oct 2019 08:22:26 -0700 (PDT)
-Date: Tue, 29 Oct 2019 17:22:24 +0200
-From: Samuil Ivanov <samuil.ivanovbg@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH 1/2] Staging: gasket: implement apex_get_status() to
- check driver status
-Message-ID: <20191029152224.GA9523@sivanov-pc>
-References: <20191028225926.8951-1-samuil.ivanovbg@gmail.com>
- <20191028225926.8951-2-samuil.ivanovbg@gmail.com>
- <20191029081007.GA520581@kroah.com>
+ bh=RI8zG1ufEnYzuTEZN0YEn2eCjXsRH9KIe+0owaMHLI8=;
+ b=puug+g6nirYBzynRHqNd3MnNZDG9IUOxxv1+Yj+xgalcuBnfKNBQ3t3dBM/LnfSa1n
+ Ehg9pLYjR1EoRAZfdLpGb0ZUJEC1FLOGHzgsZxeSj57spv+2bVV12yblELFpxRsQJh3z
+ Znyjai930tYlRawL1xskR8rDUyTRulnKBJsvAYNOWNrVHVqiwVwI95Dd/raeunVO5ULA
+ CLtyXNJ653h5NUrxrme7YFVdYX++Zd7jrcVmV1eFXQKx5izPjpF4igumGlHRAMoyi11j
+ YvLZ270r49jNLwMHnWBH8MEHKfPUOKunGh6WSlEjYFW2pU7b/fy5fcOZTxgyTGFhLM2K
+ 1mCQ==
+X-Gm-Message-State: APjAAAUa3TqLyqssyTuS8rDyXwurT8lUtCXDbuTpAp1GwBh2qNYSl5Jk
+ /rwThU1i0FHJS8kY5SKXaA==
+X-Google-Smtp-Source: APXvYqx+s5uJ0NhlC8JcM6u6lCZ7knvuS4ijj/TCsIhKf8B7RMJaGqDUPbcv5jvl2mAHW5AjZ8bxqg==
+X-Received: by 2002:a9d:7756:: with SMTP id t22mr11833715otl.43.1572367711861; 
+ Tue, 29 Oct 2019 09:48:31 -0700 (PDT)
+Received: from localhost (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id d27sm2365348ote.11.2019.10.29.09.48.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 29 Oct 2019 09:48:31 -0700 (PDT)
+Date: Tue, 29 Oct 2019 11:48:30 -0500
+From: Rob Herring <robh@kernel.org>
+To: Beniamin Bia <beniamin.bia@analog.com>
+Subject: Re: [PATCH 3/4] dt-binding: iio: Add documentation for AD7091R5
+Message-ID: <20191029164830.GA21417@bogus>
+References: <20191021170608.26412-1-beniamin.bia@analog.com>
+ <20191021170608.26412-3-beniamin.bia@analog.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20191029081007.GA520581@kroah.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <20191021170608.26412-3-beniamin.bia@analog.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,71 +78,112 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, toddpoynor@google.com, rspringer@google.com,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, mark.rutland@arm.com, lars@metafoo.de,
+ biabeniamin@outlook.com, Michael.Hennerich@analog.com,
+ devicetree@vger.kernel.org, linux-iio@vger.kernel.org,
+ gregkh@linuxfoundation.org, linus.walleij@linaro.org,
+ linux-kernel@vger.kernel.org, nicolas.ferre@microchip.com, pmeerw@pmeerw.net,
+ knaack.h@gmx.de, mchehab+samsung@kernel.org, paulmck@linux.ibm.com,
+ jic23@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Oct 29, 2019 at 09:10:07AM +0100, Greg KH wrote:
-> On Tue, Oct 29, 2019 at 12:59:25AM +0200, Samuil Ivanov wrote:
-> > >From the TODO:
-> > - apex_get_status() should actually check status
-> > 
-> > The function now checkes the status of the driver
-> > 
-> > Signed-off-by: Samuil Ivanov <samuil.ivanovbg@gmail.com>
-> > ---
-> >  drivers/staging/gasket/apex_driver.c | 3 +++
-> >  1 file changed, 3 insertions(+)
-> > 
-> > diff --git a/drivers/staging/gasket/apex_driver.c b/drivers/staging/gasket/apex_driver.c
-> > index 46199c8ca441..a5dd6f3c367d 100644
-> > --- a/drivers/staging/gasket/apex_driver.c
-> > +++ b/drivers/staging/gasket/apex_driver.c
-> > @@ -247,6 +247,9 @@ module_param(bypass_top_level, int, 0644);
-> >  static int apex_get_status(struct gasket_dev *gasket_dev)
-> >  {
-> >  	/* TODO: Check device status. */
-> > +	if (gasket_dev->status == GASKET_STATUS_DEAD)
-> > +		return GASKET_STATUS_DEAD;
-> > +
+On Mon, Oct 21, 2019 at 08:06:07PM +0300, Beniamin Bia wrote:
+> Documentation for AD7091R5 ADC was added.
 > 
-> Have you tested this to verify that this is what is needed here?
+> Signed-off-by: Beniamin Bia <beniamin.bia@analog.com>
+> ---
+>  .../bindings/iio/adc/adi,ad7091r5.yaml        | 53 +++++++++++++++++++
+>  1 file changed, 53 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/iio/adc/adi,ad7091r5.yaml
 > 
-> thanks,
+> diff --git a/Documentation/devicetree/bindings/iio/adc/adi,ad7091r5.yaml b/Documentation/devicetree/bindings/iio/adc/adi,ad7091r5.yaml
+> new file mode 100644
+> index 000000000000..d041cd76804e
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/iio/adc/adi,ad7091r5.yaml
+> @@ -0,0 +1,53 @@
+> +# SPDX-License-Identifier: GPL-2.0
+
+(GPL-2.0-only OR BSD-2-Clause) for new bindings please.
+
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/iio/adc/adi,ad7091r5.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Analog Devices AD7091R5 4-Channel 12-Bit ADC
+> +
+> +maintainers:
+> +  - Beniamin Bia <beniamin.bia@analog.com>
+> +
+> +description: |
+> +  Analog Devices AD7091R5 4-Channel 12-Bit ADC
+> +  https://www.analog.com/media/en/technical-documentation/data-sheets/ad7091r-5.pdf
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - adi,ad7091R5
+
+lowercase 'r' or be consistent with the filename.
+
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  avcc-supply:
+> +    description:
+> +      Phandle to the Avcc power supply
+> +    maxItems: 1
+
+Not an array, so you can drop this.
+
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +
+> +required:
+> +  - compatible
+> +  - reg
+
+Add:
+
+additionalProperties: false
+
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/gpio/gpio.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    i2c {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +
+> +        adc@0 {
+
+adc@2f
+
+> +                compatible = "adi,ad7091r5";
+
+Doesn't match the schema.
+
+> +                reg = <0x2F>;
+
+Lowercase hex.
+
+> +
+> +                interrupts = <25 IRQ_TYPE_EDGE_FALLING>;
+> +                interrupt-parent = <&gpio>;
+> +        };
+> +    };
+> +...
+> -- 
+> 2.17.1
 > 
-> greg k-h
-
-Hello Greg,
-
-After going through the code again, I am sure this not what is needed here.
-
-I thought that gasket_dev->status is already set to either
-GASKET_STATUS_ALIVE of GASKET_STATUS_DEAD,
-and all I needed to do is check it. It turns out that status
-has to be set before that.
-
-So what I found is that function gasket_get_hw_status()
-in file gasket_core.c is used to determine the health of the Gasket device,
-and other function use it to set gasket_dev->status and then check
-the device status.
-
-I think it should be something like this.
-...
-gasket_dev->status = gasket_get_hw_status(gasket_dev);
-if (gasket_dev->status == GASKET_STATUS_DEAD) {
-        dev_dbg(gasket_dev->dev, "Device reported as dead.\n");
-        return -EINVAL;
-}
-return GASKET_STATUS_ALIVE;
-...
-
-I can try this, but I have no means of testing it.
-
-Grt,
-Samuil
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
