@@ -1,80 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1D73CE937F
-	for <lists+driverdev-devel@lfdr.de>; Wed, 30 Oct 2019 00:22:24 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 74E58E9381
+	for <lists+driverdev-devel@lfdr.de>; Wed, 30 Oct 2019 00:22:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3DBAB21579;
-	Tue, 29 Oct 2019 23:22:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 99D4E836A9;
+	Tue, 29 Oct 2019 23:22:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id x62iadAEsncA; Tue, 29 Oct 2019 23:22:21 +0000 (UTC)
+	with ESMTP id 4pXevX-yfACA; Tue, 29 Oct 2019 23:22:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id ACF3C20764;
-	Tue, 29 Oct 2019 23:22:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9F99F834CC;
+	Tue, 29 Oct 2019 23:22:26 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CD6E41BF31C
- for <devel@linuxdriverproject.org>; Tue, 29 Oct 2019 23:22:18 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5366C1BF31C
+ for <devel@linuxdriverproject.org>; Tue, 29 Oct 2019 23:22:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id CA10485308
- for <devel@linuxdriverproject.org>; Tue, 29 Oct 2019 23:22:18 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 4F9D620519
+ for <devel@linuxdriverproject.org>; Tue, 29 Oct 2019 23:22:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pgc78B8uZ3Kl for <devel@linuxdriverproject.org>;
- Tue, 29 Oct 2019 23:22:18 +0000 (UTC)
+ with ESMTP id F4V138BIAQoG for <devel@linuxdriverproject.org>;
+ Tue, 29 Oct 2019 23:22:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f193.google.com (mail-qt1-f193.google.com
- [209.85.160.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 487FD847CD
- for <devel@driverdev.osuosl.org>; Tue, 29 Oct 2019 23:22:18 +0000 (UTC)
-Received: by mail-qt1-f193.google.com with SMTP id y39so686963qty.0
- for <devel@driverdev.osuosl.org>; Tue, 29 Oct 2019 16:22:18 -0700 (PDT)
+Received: from mail-qk1-f194.google.com (mail-qk1-f194.google.com
+ [209.85.222.194])
+ by silver.osuosl.org (Postfix) with ESMTPS id AC49C20516
+ for <devel@driverdev.osuosl.org>; Tue, 29 Oct 2019 23:22:23 +0000 (UTC)
+Received: by mail-qk1-f194.google.com with SMTP id 71so762880qkl.0
+ for <devel@driverdev.osuosl.org>; Tue, 29 Oct 2019 16:22:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=/RIHrM2T5t2yjqxj2JPTS71DBT+0RqAHHijTzNDzZvQ=;
- b=oVu5mhpbwaYDhSZVWLJHva8w1r3fWnI9tbf3bI81Z4kUpGcBcb2LQwxgA6rQyaaywy
- EDQZOJBJcBKsDP3+uO4LLxe+AJF9/wVa3YgYytzy/IOYHwXeAIrHkoOp+sizz3UyROHV
- 84hjPfNn2mik6aS9KauqQptgafjsGlQVFQPL28vR+jYxSWLy0kkwodlH9evs0l69znCj
- ya1lmfDMy9OnxY0ecCnUtlUZaCfVcU0iKHC7XToeqpR32y1271NCKeA2+NVwK9r8Z9Va
- Jx8bR9zQ4AsSLF6bR4tzex2O8jvJjY+avCUTU6ELAV3OVxzap4FhFChnHUyeRy6fV+6w
- r9vQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=3hCkAbcriS9RlIsXdXAS7BOo4yVJsRg6vFvTMkZt0zA=;
+ b=Iyhf2LDwrJ7hlSqQSnW+N75bzt41kj0wuqTEQk9se2IajbQTHLaDrxokn885sBN/SG
+ QDs82ykMG2hcooPX+0+ClpV4v1Ckjo55y7ad0Nb457PVcWBoxsnCaL+hsHY+Nw3mgEXr
+ jMx1I0D+pYVWIxa1C7cyLlfvHslI05QVnR+tnEjLlg4E3pybl3tLLoSecAboypaGK8fB
+ K90T5UU6H2/71o1vDPdKH6AOR6BD9TFqGT88AWiPU9C8Qk2XwxC3oU5EjMhQtztPIlFq
+ R7sSGwM9Z7gqLUxhL/OBEt3OcC88zSqQj23cH4185GKtF5GmX5FPgTgvIB1hC2fpNg3H
+ Y6Ww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=/RIHrM2T5t2yjqxj2JPTS71DBT+0RqAHHijTzNDzZvQ=;
- b=k4uIS6qdO3SuVoXZsZqZOzm6u5APvASvff3GAQhOIDhIsbur6FjEmPL/XksjiX5PHW
- yoM/AESzUNZRV77cZlgH2T3O9fU5rS2D3G9hnAkrM2x/htJ5IXS8XcgOLg00keaNJN0E
- KbqOgZFqZMonsF9ooAX5mC150xvnZRBDIgxCXDTKGWzXwg3N6+Hii4CFnd1oSFf7tXxb
- WNZpJ81Pp7dyhzOZmwSDR/jGTUKQsl2WsEvQBYgKxVJbgHPVS+DLTmNj7k1+ZEnV9X4l
- i9EEkWw1HMNgCIm71vJZU2qCSZM6JufL51i4uKDFW7pwhBAM+qzq1eURjs/10LnhmxXX
- 3lNA==
-X-Gm-Message-State: APjAAAXkbsA+USEHSho5aW/d+mZ+C+Q4UyM6Ni2JcXieN5MbUyppz1Gd
- uFlEs4D0YTl1LUQp3lAIwW8=
-X-Google-Smtp-Source: APXvYqyVtKZdQakEpy7jyH1XhEBn63IFkrC8JPdYR9oGo7S3PD9dTfWcVsiu9qgGrB00b2JedWkISg==
-X-Received: by 2002:ac8:6146:: with SMTP id d6mr1980022qtm.271.1572391337209; 
- Tue, 29 Oct 2019 16:22:17 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=3hCkAbcriS9RlIsXdXAS7BOo4yVJsRg6vFvTMkZt0zA=;
+ b=gX6VwZiSMtZZ2FAOcMtqXvhIKxPYc/Ejpy+TfS3HSqlYXSomqbXFLLelFEuAelfCU2
+ e3BxXLWZpp1Veb7GtDcGuwhl87bx1dibtMuklH1Nl4OnWRLInJLzLYX4f8gXmRiIAFz2
+ wx2PVni/oJhbgOBKF/qHMNvRDOT95RLNHl9eKq1V1nEz9VD916j9WwJN/lVa1gdDnny8
+ NB4Ay8Vq1j1Is8e3B+Exffz5WO/pbMJZCMnHXM9buspFm0+kX83GN7vdauyO5tujT2hO
+ 7TwbaLLibV6RPLKV0OS13PdswiE6DWzezJ0odndv4fUlITJMFYbxyp656Vm0dJ1Wt+z5
+ 4bBw==
+X-Gm-Message-State: APjAAAUryhweFLJWL8j+1qg4CbuiF4ya1IzPUDaJb9C8QmAt9j/L7auR
+ wsxPFs9BjR0AB7SAfEblo7w=
+X-Google-Smtp-Source: APXvYqydRj+JqzSe1lo8kT/qY5ObG6pT9Xzay4uNdB8RCD9jFojCS6cRXQU0KLWJdH2LeYyf9N/rwA==
+X-Received: by 2002:a37:6891:: with SMTP id
+ d139mr24311946qkc.213.1572391342722; 
+ Tue, 29 Oct 2019 16:22:22 -0700 (PDT)
 Received: from GBdebian.ic.unicamp.br (wifi-177-220-85-136.wifi.ic.unicamp.br.
  [177.220.85.136])
- by smtp.gmail.com with ESMTPSA id a18sm633940qkc.2.2019.10.29.16.22.13
+ by smtp.gmail.com with ESMTPSA id a18sm633940qkc.2.2019.10.29.16.22.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 29 Oct 2019 16:22:16 -0700 (PDT)
+ Tue, 29 Oct 2019 16:22:22 -0700 (PDT)
 From: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
 To: outreachy-kernel@googlegroups.com, sudipm.mukherjee@gmail.com,
  teddy.wang@siliconmotion.com, gregkh@linuxfoundation.org,
  linux-fbdev@vger.kernel.org, devel@driverdev.osuosl.org,
  linux-kernel@vger.kernel.org, lkcamp@lists.libreplanetbr.org,
  trivial@kernel.org
-Subject: [PATCH 0/2] staging: sm750fb: Fixing codestyle error 
-Date: Tue, 29 Oct 2019 20:22:05 -0300
-Message-Id: <20191029232207.4113-1-gabrielabittencourt00@gmail.com>
+Subject: [PATCH 1/2] staging: sm750fb: Fix typo in comment
+Date: Tue, 29 Oct 2019 20:22:06 -0300
+Message-Id: <20191029232207.4113-2-gabrielabittencourt00@gmail.com>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20191029232207.4113-1-gabrielabittencourt00@gmail.com>
+References: <20191029232207.4113-1-gabrielabittencourt00@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -94,15 +97,26 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fixing typo and usage of spaces/tabs in file sm750_accel.c
+Fixing typo in word 'and'.
 
-Gabriela Bittencourt (2):
-  staging: sm750fb: Fix typo in comment
-  staging: sm750fb: Replace multiple spaces with tabs when it suits
+Signed-off-by: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
+---
+ drivers/staging/sm750fb/sm750_accel.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- drivers/staging/sm750fb/sm750_accel.c | 22 +++++++++++-----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
-
+diff --git a/drivers/staging/sm750fb/sm750_accel.c b/drivers/staging/sm750fb/sm750_accel.c
+index 645813a87490..5925d7c7d464 100644
+--- a/drivers/staging/sm750fb/sm750_accel.c
++++ b/drivers/staging/sm750fb/sm750_accel.c
+@@ -224,7 +224,7 @@ int sm750_hw_copyarea(struct lynx_accel *accel,
+ 
+ 	/*
+ 	 * Note:
+-	 * DE_FOREGROUND are DE_BACKGROUND are don't care.
++	 * DE_FOREGROUND and DE_BACKGROUND are don't care.
+ 	 * DE_COLOR_COMPARE and DE_COLOR_COMPARE_MAKS
+ 	 * are set by set deSetTransparency().
+ 	 */
 -- 
 2.20.1
 
