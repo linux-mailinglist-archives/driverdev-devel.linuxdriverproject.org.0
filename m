@@ -1,74 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 75D06E9461
-	for <lists+driverdev-devel@lfdr.de>; Wed, 30 Oct 2019 02:04:57 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BE5EEE9463
+	for <lists+driverdev-devel@lfdr.de>; Wed, 30 Oct 2019 02:05:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 188A987B3C;
-	Wed, 30 Oct 2019 01:04:56 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F2C4D85C19;
+	Wed, 30 Oct 2019 01:05:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3gjwQ2vJTeU4; Wed, 30 Oct 2019 01:04:55 +0000 (UTC)
+	with ESMTP id jyJaeCLeW0aL; Wed, 30 Oct 2019 01:05:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6737587AF4;
-	Wed, 30 Oct 2019 01:04:55 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2D18985B0A;
+	Wed, 30 Oct 2019 01:05:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 18D8A1BF578
- for <devel@linuxdriverproject.org>; Wed, 30 Oct 2019 01:04:54 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id AB6A71BF578
+ for <devel@linuxdriverproject.org>; Wed, 30 Oct 2019 01:04:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 13A9A82383
- for <devel@linuxdriverproject.org>; Wed, 30 Oct 2019 01:04:54 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id A8925879F5
+ for <devel@linuxdriverproject.org>; Wed, 30 Oct 2019 01:04:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FqbKFQoGqJhY for <devel@linuxdriverproject.org>;
- Wed, 30 Oct 2019 01:04:53 +0000 (UTC)
+ with ESMTP id JRIclxSkIp1n for <devel@linuxdriverproject.org>;
+ Wed, 30 Oct 2019 01:04:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f67.google.com (mail-wm1-f67.google.com
- [209.85.128.67])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 43FE782022
- for <devel@driverdev.osuosl.org>; Wed, 30 Oct 2019 01:04:53 +0000 (UTC)
-Received: by mail-wm1-f67.google.com with SMTP id g24so283921wmh.5
- for <devel@driverdev.osuosl.org>; Tue, 29 Oct 2019 18:04:53 -0700 (PDT)
+Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
+ [209.85.221.67])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id B116C87B0A
+ for <devel@driverdev.osuosl.org>; Wed, 30 Oct 2019 01:04:56 +0000 (UTC)
+Received: by mail-wr1-f67.google.com with SMTP id e11so417326wrv.4
+ for <devel@driverdev.osuosl.org>; Tue, 29 Oct 2019 18:04:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=5BUDv5SzjoPNUH8eX9BsExMRskMoCgy1lMsq/PW/h24=;
- b=ak2pbzBRUpoVboJbNkCZO1ERrTrVyaWaoBKa+8lA6oAgYErv6PsAjO8mmvXuLy2Ium
- luyPaYstnGBJk/+RRObnX1JSiVRwptCEUDTk8MB+XsmlbF+cFeAMdcQkqDC0Apk/vWtS
- TdBC1gdnfxn3G9Jjc6Q/nvoQLEfJycRgOBDU4HnzUdldK/arQhF44uIcM1i8sXXxjOvt
- FHxrg9CJ/gC6G/l0rBbsDgmsM2MtDI/NdmbOU8R+er8WiRNS1h7z+6PfXcWHTl3JFoWu
- yJBF6IH4EB+NPQii5ZQ3GPyjTHgCUa7LAEC0hQG4QNh+rM8DI8E/qNhpXsjdZ24OucMr
- JjnA==
+ bh=XFZAes7RgqxwDdAozi0+EhyJ8wlf2q6asfkI7/l0nZQ=;
+ b=PhWOQCduAFNlpHk5otLDnS8E0eO+4NqcYc4hqHbSIRLm6MIy3cvpjxH9ti4DbTMoyI
+ 9GatfmkxLy4U0Kz0LDJwsUp2dHXUMNZwNZGdDixICgmwujo5CJHDEDyl9o4qWy0Z8VRC
+ SAPg5VqJh3v7DOt2M65ZsVZKA1/7hr0Ly4+Ga/TvGZ3TjTz++rNttLZPsriyk3e5xNI/
+ P2ppn9QqgEbZODju2Wgs1uDoN7jbF8DGFwL8qKRhYmWTSodvPESopogE3C4IATi9mmzv
+ yKsMiO/Oj7DtI5EkxIALSbEdv/itHCQpMZrat/tLSoGSrIEzS1HLcZSs+UOaRkfPlIgC
+ 1XAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=5BUDv5SzjoPNUH8eX9BsExMRskMoCgy1lMsq/PW/h24=;
- b=AsVcydF0bBD5VJZhWT9jwAKNHp2P9+kHMhAsDgSskYuXmKxxZNPRkLbllkUrohW3Jn
- Tyn1tYRyQUYKzo7AQ2GStqD1UZVISK3SNfKlccZre9f5FP1HUQzqjibsqc9BkuAcDae4
- yP7zU03PE0odetgXBs/3tQzYmhsKQBhURHK5bYwSRkylTJNaWZHxXA5NOZwI35ZkCtU5
- U2Gd8NaGKIF8bmVqLysgRJoK51++xqPtinF2cRdE26EyGxIm4tk6VTXSxZGRelZvq5Kk
- +9q+fUiVn8ud3tdc/CejyaynrZn1/4d9JIdGGPedMcgfbs90EPDCeIXilBQKYaQ/Oe6Q
- 58tQ==
-X-Gm-Message-State: APjAAAVSxEQHm54JTDh/79yHj5IZmO4JSIaw9uPf3EOhklNAcOfeXMT0
- +1GzUEL5wXttibYp+iwjl74=
-X-Google-Smtp-Source: APXvYqyzU5KWypL3dJMrEivGN/RI66W/6qw+DVzTLawdpBa+0UHs3nOhRtWi7ZGWvT0j6Gtu/3HYgw==
-X-Received: by 2002:a7b:c101:: with SMTP id w1mr6805153wmi.130.1572397491865; 
- Tue, 29 Oct 2019 18:04:51 -0700 (PDT)
+ bh=XFZAes7RgqxwDdAozi0+EhyJ8wlf2q6asfkI7/l0nZQ=;
+ b=JK3QQnD0ekgUEzOTGsme1SNXsUzwGRI6M56MKTGO9fIFaRosAC4b7AND6D2Chv+POj
+ 9NLDU6PO0irextXwq38oWGJPYCF0T5Ub5PCzU1sbAhwt3h3z7n7Mzt5aXo4FMaquW6ix
+ WmZuy8qrEixtzrqgAZG5b3DpzedgK7vPG27S9Khss8Vj2xDokRN+jwJVRQc9avVmxrM2
+ +l7ZnrimpD5CHmy9eHGrNtZ/3TAoGXDDyzF8eITs8fsYAIfZMs07o4DwpoiV2Bg1GuwM
+ /BwFl+EtB9uKh45ijI17n/oKoNez1tn/x+M2vLtVmr8nbkl8t1PV7cJ93Lw5miEGaN+b
+ oEZg==
+X-Gm-Message-State: APjAAAUmRipLzRJ1R4bf1WcZz+X4pDA1eBbwY7/5nuD+4jOv1LMw4ZpE
+ hbaOpGRDPUB/nnkBz1c6MBQ=
+X-Google-Smtp-Source: APXvYqwkVFwqr5MhwXSZX6YpuXfC+SDENrbR0rJwNfSDfXV3/y9VfPK+hEw/PXgJxE1i3qtmbl7JYQ==
+X-Received: by 2002:a05:6000:11cd:: with SMTP id
+ i13mr21519313wrx.197.1572397495128; 
+ Tue, 29 Oct 2019 18:04:55 -0700 (PDT)
 Received: from localhost ([92.177.95.83])
- by smtp.gmail.com with ESMTPSA id e15sm338461wrx.58.2019.10.29.18.04.51
+ by smtp.gmail.com with ESMTPSA id g184sm537493wma.8.2019.10.29.18.04.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 29 Oct 2019 18:04:51 -0700 (PDT)
+ Tue, 29 Oct 2019 18:04:54 -0700 (PDT)
 From: Roi Martin <jroi.martin@gmail.com>
 To: valdis.kletnieks@vt.edu
-Subject: [PATCH 2/6] staging: exfat: make alignment match open parenthesis
-Date: Wed, 30 Oct 2019 02:03:24 +0100
-Message-Id: <20191030010328.10203-3-jroi.martin@gmail.com>
+Subject: [PATCH 3/6] staging: exfat: remove unnecessary new line in if
+ condition
+Date: Wed, 30 Oct 2019 02:03:25 +0100
+Message-Id: <20191030010328.10203-4-jroi.martin@gmail.com>
 X-Mailer: git-send-email 2.24.0.rc1
 In-Reply-To: <20191030010328.10203-1-jroi.martin@gmail.com>
 References: <20191030010328.10203-1-jroi.martin@gmail.com>
@@ -94,57 +96,27 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 Fix checkpatch.pl warning:
 
-	CHECK: Alignment should match open parenthesis
+	CHECK: Logical continuations should be on the previous line
 
 Signed-off-by: Roi Martin <jroi.martin@gmail.com>
 ---
- drivers/staging/exfat/exfat_core.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ drivers/staging/exfat/exfat_core.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/drivers/staging/exfat/exfat_core.c b/drivers/staging/exfat/exfat_core.c
-index d8f4fad732c4..177787296ab9 100644
+index 177787296ab9..4d6ea5c809d3 100644
 --- a/drivers/staging/exfat/exfat_core.c
 +++ b/drivers/staging/exfat/exfat_core.c
-@@ -1703,7 +1703,7 @@ struct entry_set_cache_t *get_entry_set_in_dir(struct super_block *sb,
- 	size_t bufsize;
+@@ -1727,8 +1727,7 @@ struct entry_set_cache_t *get_entry_set_in_dir(struct super_block *sb,
+ 	ep = (struct dentry_t *)(buf + off);
+ 	entry_type = p_fs->fs_func->get_entry_type(ep);
  
- 	pr_debug("%s entered p_dir dir %u flags %x size %d\n",
--		__func__, p_dir->dir, p_dir->flags, p_dir->size);
-+		 __func__, p_dir->dir, p_dir->flags, p_dir->size);
+-	if ((entry_type != TYPE_FILE)
+-		&& (entry_type != TYPE_DIR))
++	if ((entry_type != TYPE_FILE) && (entry_type != TYPE_DIR))
+ 		goto err_out;
  
- 	byte_offset = entry << DENTRY_SIZE_BITS;
- 	ret = _walk_fat_chain(sb, p_dir, byte_offset, &clu);
-@@ -1835,8 +1835,8 @@ struct entry_set_cache_t *get_entry_set_in_dir(struct super_block *sb,
- 		*file_ep = (struct dentry_t *)&es->__buf;
- 
- 	pr_debug("%s exiting es %p sec %llu offset %d flags %d, num_entries %u buf ptr %p\n",
--		   __func__, es, (unsigned long long)es->sector, es->offset,
--		   es->alloc_flag, es->num_entries, &es->__buf);
-+		 __func__, es, (unsigned long long)es->sector, es->offset,
-+		 es->alloc_flag, es->num_entries, &es->__buf);
- 	return es;
- err_out:
- 	pr_debug("%s exited NULL (es %p)\n", __func__, es);
-@@ -1862,7 +1862,7 @@ static s32 __write_partial_entries_in_entry_set(struct super_block *sb,
- 	u8 *buf, *esbuf = (u8 *)&es->__buf;
- 
- 	pr_debug("%s entered es %p sec %llu off %d count %d\n",
--		__func__, es, (unsigned long long)sec, off, count);
-+		 __func__, es, (unsigned long long)sec, off, count);
- 	num_entries = count;
- 
- 	while (num_entries) {
-@@ -1876,8 +1876,8 @@ static s32 __write_partial_entries_in_entry_set(struct super_block *sb,
- 			goto err_out;
- 		pr_debug("es->buf %p buf_off %u\n", esbuf, buf_off);
- 		pr_debug("copying %d entries from %p to sector %llu\n",
--			copy_entries, (esbuf + buf_off),
--			(unsigned long long)sec);
-+			 copy_entries, (esbuf + buf_off),
-+			 (unsigned long long)sec);
- 		memcpy(buf + off, esbuf + buf_off,
- 		       copy_entries << DENTRY_SIZE_BITS);
- 		buf_modify(sb, sec);
+ 	if (type == ES_ALL_ENTRIES)
 -- 
 2.20.1
 
