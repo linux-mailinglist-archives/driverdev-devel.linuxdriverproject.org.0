@@ -2,78 +2,51 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5ADD5EB46D
-	for <lists+driverdev-devel@lfdr.de>; Thu, 31 Oct 2019 17:04:11 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AA891EB4E9
+	for <lists+driverdev-devel@lfdr.de>; Thu, 31 Oct 2019 17:43:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id D80CF22FD5;
-	Thu, 31 Oct 2019 16:04:09 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2C385232BD;
+	Thu, 31 Oct 2019 16:43:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rEE5tmq4CMuG; Thu, 31 Oct 2019 16:04:07 +0000 (UTC)
+	with ESMTP id OJYyZcyfiZfI; Thu, 31 Oct 2019 16:43:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4DAB823244;
-	Thu, 31 Oct 2019 16:04:07 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0C451230BD;
+	Thu, 31 Oct 2019 16:43:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A997F1BF424
- for <devel@linuxdriverproject.org>; Thu, 31 Oct 2019 16:04:04 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id EA8171BF28A
+ for <devel@linuxdriverproject.org>; Thu, 31 Oct 2019 16:43:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A06A7882A0
- for <devel@linuxdriverproject.org>; Thu, 31 Oct 2019 16:04:04 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id BFEAF87914
+ for <devel@linuxdriverproject.org>; Thu, 31 Oct 2019 16:43:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TRBV-ZzYcQUt for <devel@linuxdriverproject.org>;
- Thu, 31 Oct 2019 16:04:03 +0000 (UTC)
+ with ESMTP id EMqxJuMkc1-7 for <devel@linuxdriverproject.org>;
+ Thu, 31 Oct 2019 16:43:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
- [209.85.128.66])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 745D788182
- for <devel@driverdev.osuosl.org>; Thu, 31 Oct 2019 16:04:03 +0000 (UTC)
-Received: by mail-wm1-f66.google.com with SMTP id c12so1954284wml.4
- for <devel@driverdev.osuosl.org>; Thu, 31 Oct 2019 09:04:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=JAUaCVnXVTPu4BHWIU8/SeyN5F4/2lpyjJPrdXmye2A=;
- b=aIr27p3xRf3wx/8Ig/NxHG/TnRXX42pulbg7LBm9id8owkQ9UVVxSghoKWCMRFf1AB
- o34uMEp06rWCI0sws9XQeZrViu6n+zyLSWiA1kpH2lwz6y6HfXhOyuWGj65UHFHhZmn7
- k9quYkcXb1UwUoYAxTXpkzq1VvPXwJoIBGjaU0CkqD3mtZYYN7PiS2KoeKyuN7bRYjMP
- mL7ouFdyILHIKPhg9Kca+0aQiQMi948radfDyRVneQoUGNUHUCEhwb9MPpQbbJku9gI8
- ugFAv5LartJijjpVp+p0P4prHxQLUHBf24tZO1KaFEP5uqzr6gm57bjgUQsSy6TIQaAr
- W9DQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=JAUaCVnXVTPu4BHWIU8/SeyN5F4/2lpyjJPrdXmye2A=;
- b=FWI0iT4PI/W8TQI6ec7EgtgW14va6jOZmCBwXaj+YLqmHO3/kOAbsGKFNdQq72q2Or
- TDHIJSanvAdKIQ0wo3oU4SJoiVsQfB0ozspowtsi2EBzJdJAuf2los0MnVUMur4i5Fcm
- f3l7L06I+yUxMczg3MUMTeeVSa3YRH06UqkqCfoUYKNum1hVm6x3b7C2gCUHmSsT+x65
- a8m8GBJdfy36bC7Pux3EsptVxBh1yWE/fWx4Tht4ATD7WWrm7YlA9PG6JPtJdq4tx+yh
- kAlBOyuyDS6jLDX7LsEDrpGbxcgjYkFpziVOUY88ufLePSL1i4m1qeU2m/p1em0MG7qC
- paUg==
-X-Gm-Message-State: APjAAAXoRLvS8keinY3YE3EiXqKEwM8Q5375UV990rXlmeNawgYqy+Ok
- OLzYgWKMCs211xx6ePxvNds=
-X-Google-Smtp-Source: APXvYqwebx/lwR5sk//7d0OTnx/JnYZerIAInuf8LuhOZHdlp+WjeA/S155x0lP90Xh1d2q21GhlvQ==
-X-Received: by 2002:a7b:c84b:: with SMTP id c11mr964031wml.158.1572537841801; 
- Thu, 31 Oct 2019 09:04:01 -0700 (PDT)
-Received: from localhost ([92.177.95.83])
- by smtp.gmail.com with ESMTPSA id c14sm4234480wru.24.2019.10.31.09.04.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 31 Oct 2019 09:04:01 -0700 (PDT)
-Date: Thu, 31 Oct 2019 17:03:56 +0100
-From: Roi Martin <jroi.martin@gmail.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [PATCH v2 6/6] staging: exfat: replace kmalloc with kmalloc_array
-Message-ID: <20191031160356.GB6924@miniwopr.localdomain>
-References: <20191031123139.32361-1-jroi.martin@gmail.com>
- <20191031132503.GD1705@kadam>
+Received: from mx1.suse.de (mx2.suse.de [195.135.220.15])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 43BF087913
+ for <devel@driverdev.osuosl.org>; Thu, 31 Oct 2019 16:43:26 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx1.suse.de (Postfix) with ESMTP id 71E17B243;
+ Thu, 31 Oct 2019 16:43:23 +0000 (UTC)
+Received: by quack2.suse.cz (Postfix, from userid 1000)
+ id 5597C1E482D; Thu, 31 Oct 2019 17:43:22 +0100 (CET)
+Date: Thu, 31 Oct 2019 17:43:22 +0100
+From: Jan Kara <jack@suse.cz>
+To: Valdis Kletnieks <valdis.kletnieks@vt.edu>
+Subject: Re: [RFC] errno.h: Provide EFSCORRUPTED for everybody
+Message-ID: <20191031164322.GC13321@quack2.suse.cz>
+References: <20191031010736.113783-1-Valdis.Kletnieks@vt.edu>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20191031132503.GD1705@kadam>
+In-Reply-To: <20191031010736.113783-1-Valdis.Kletnieks@vt.edu>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,61 +59,135 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- valdis.kletnieks@vt.edu, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-arch@vger.kernel.org,
+ Theodore Ts'o <tytso@mit.edu>, Arnd Bergmann <arnd@arndb.de>,
+ "Darrick J. Wong" <darrick.wong@oracle.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Chao Yu <chao@kernel.org>,
+ linux-kernel@vger.kernel.org, linux-f2fs-devel@lists.sourceforge.net,
+ linux-xfs@vger.kernel.org, Andreas Dilger <adilger.kernel@dilger.ca>,
+ Jan Kara <jack@suse.com>, linux-fsdevel@vger.kernel.org,
+ Jaegeuk Kim <jaegeuk@kernel.org>, Gao Xiang <xiang@kernel.org>,
+ linux-ext4@vger.kernel.org, linux-erofs@lists.ozlabs.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-> > diff --git a/drivers/staging/exfat/exfat_core.c b/drivers/staging/exfat/exfat_core.c
-> > index f71235c6a338..f4f82aecc05d 100644
-> > --- a/drivers/staging/exfat/exfat_core.c
-> > +++ b/drivers/staging/exfat/exfat_core.c
-> > @@ -713,8 +713,8 @@ static s32 __load_upcase_table(struct super_block *sb, sector_t sector,
-> >  
-> >  	u32 checksum = 0;
-> >  
-> > -	upcase_table = p_fs->vol_utbl = kmalloc(UTBL_COL_COUNT * sizeof(u16 *),
-> > -						GFP_KERNEL);
-> > +	upcase_table = kmalloc_array(UTBL_COL_COUNT, sizeof(u16 *), GFP_KERNEL);
-> > +	p_fs->vol_utbl = upcase_table;
+On Wed 30-10-19 21:07:33, Valdis Kletnieks wrote:
+> Three questions: (a) ACK/NAK on this patch, (b) should it be all in one
+> patch, or one to add to errno.h and 6 patches for 6 filesystems?), and
+> (c) if one patch, who gets to shepherd it through?
 > 
-> This patch is fine, but one idea for future patches is that you could
-> remove the "upcase_table" variable and use "p_fs->vol_utbl" everywhere
-> instead.
+> 
+> There's currently 6 filesystems that have the same #define. Move it
+> into errno.h so it's defined in just one place.
+> 
+> Signed-off-by: Valdis Kletnieks <Valdis.Kletnieks@vt.edu>
 
-Thanks for the suggestion.
+Looks good to me. You can add:
 
-This is my first contribution and I tried to introduce the minimum
-number of changes necessary to fix the issues reported by checkpatch.pl.
-Also, I'm still immersed in getting familiar with the contribution
-process and the code.
+Reviewed-by: Jan Kara <jack@suse.cz>
 
-Do you think it makes sense to include this change in a future patch
-series along with other refactoring? Or, should I modify this patch?
+								Honza
 
-By the way, upcase_table is sometimes accessed in quite complex ways.
-For instance:
-
-	upcase_table[col_index][get_row_index(index)] = uni;
-
-Where having an intermediate variable instead of using the struct field
-directly seems to improve readability a bit. Otherwise:
-
-	p_fs->vol_utbl[col_index][get_row_index(index)] = uni;
-
-I assume, in cases like this, from a coding style perspective, the
-following approach is preferred:
-
-	row_index = get_row_index(index);
-	p_fs->vol_utbl[col_index][row_index] = uni;
-
-Is that correct?
-
-Regards,
-
-	Roi Martin
+> ---
+>  drivers/staging/exfat/exfat.h    | 2 --
+>  fs/erofs/internal.h              | 2 --
+>  fs/ext4/ext4.h                   | 1 -
+>  fs/f2fs/f2fs.h                   | 1 -
+>  fs/xfs/xfs_linux.h               | 1 -
+>  include/linux/jbd2.h             | 1 -
+>  include/uapi/asm-generic/errno.h | 1 +
+>  7 files changed, 1 insertion(+), 8 deletions(-)
+> 
+> diff --git a/drivers/staging/exfat/exfat.h b/drivers/staging/exfat/exfat.h
+> index 84de1123e178..3cf7e54af0b7 100644
+> --- a/drivers/staging/exfat/exfat.h
+> +++ b/drivers/staging/exfat/exfat.h
+> @@ -30,8 +30,6 @@
+>  #undef DEBUG
+>  #endif
+>  
+> -#define EFSCORRUPTED	EUCLEAN		/* Filesystem is corrupted */
+> -
+>  #define DENTRY_SIZE		32	/* dir entry size */
+>  #define DENTRY_SIZE_BITS	5
+>  
+> diff --git a/fs/erofs/internal.h b/fs/erofs/internal.h
+> index 544a453f3076..3980026a8882 100644
+> --- a/fs/erofs/internal.h
+> +++ b/fs/erofs/internal.h
+> @@ -425,7 +425,5 @@ static inline int z_erofs_init_zip_subsystem(void) { return 0; }
+>  static inline void z_erofs_exit_zip_subsystem(void) {}
+>  #endif	/* !CONFIG_EROFS_FS_ZIP */
+>  
+> -#define EFSCORRUPTED    EUCLEAN         /* Filesystem is corrupted */
+> -
+>  #endif	/* __EROFS_INTERNAL_H */
+>  
+> diff --git a/fs/ext4/ext4.h b/fs/ext4/ext4.h
+> index 03db3e71676c..a86c2585457d 100644
+> --- a/fs/ext4/ext4.h
+> +++ b/fs/ext4/ext4.h
+> @@ -3396,6 +3396,5 @@ static inline int ext4_buffer_uptodate(struct buffer_head *bh)
+>  #endif	/* __KERNEL__ */
+>  
+>  #define EFSBADCRC	EBADMSG		/* Bad CRC detected */
+> -#define EFSCORRUPTED	EUCLEAN		/* Filesystem is corrupted */
+>  
+>  #endif	/* _EXT4_H */
+> diff --git a/fs/f2fs/f2fs.h b/fs/f2fs/f2fs.h
+> index 4024790028aa..04ebe77569a3 100644
+> --- a/fs/f2fs/f2fs.h
+> +++ b/fs/f2fs/f2fs.h
+> @@ -3752,6 +3752,5 @@ static inline bool is_journalled_quota(struct f2fs_sb_info *sbi)
+>  }
+>  
+>  #define EFSBADCRC	EBADMSG		/* Bad CRC detected */
+> -#define EFSCORRUPTED	EUCLEAN		/* Filesystem is corrupted */
+>  
+>  #endif /* _LINUX_F2FS_H */
+> diff --git a/fs/xfs/xfs_linux.h b/fs/xfs/xfs_linux.h
+> index ca15105681ca..3409d02a7d21 100644
+> --- a/fs/xfs/xfs_linux.h
+> +++ b/fs/xfs/xfs_linux.h
+> @@ -123,7 +123,6 @@ typedef __u32			xfs_nlink_t;
+>  
+>  #define ENOATTR		ENODATA		/* Attribute not found */
+>  #define EWRONGFS	EINVAL		/* Mount with wrong filesystem type */
+> -#define EFSCORRUPTED	EUCLEAN		/* Filesystem is corrupted */
+>  #define EFSBADCRC	EBADMSG		/* Bad CRC detected */
+>  
+>  #define SYNCHRONIZE()	barrier()
+> diff --git a/include/linux/jbd2.h b/include/linux/jbd2.h
+> index 564793c24d12..1ecd3859d040 100644
+> --- a/include/linux/jbd2.h
+> +++ b/include/linux/jbd2.h
+> @@ -1657,6 +1657,5 @@ static inline tid_t  jbd2_get_latest_transaction(journal_t *journal)
+>  #endif	/* __KERNEL__ */
+>  
+>  #define EFSBADCRC	EBADMSG		/* Bad CRC detected */
+> -#define EFSCORRUPTED	EUCLEAN		/* Filesystem is corrupted */
+>  
+>  #endif	/* _LINUX_JBD2_H */
+> diff --git a/include/uapi/asm-generic/errno.h b/include/uapi/asm-generic/errno.h
+> index cf9c51ac49f9..1d5ffdf54cb0 100644
+> --- a/include/uapi/asm-generic/errno.h
+> +++ b/include/uapi/asm-generic/errno.h
+> @@ -98,6 +98,7 @@
+>  #define	EINPROGRESS	115	/* Operation now in progress */
+>  #define	ESTALE		116	/* Stale file handle */
+>  #define	EUCLEAN		117	/* Structure needs cleaning */
+> +#define	EFSCORRUPTED	EUCLEAN
+>  #define	ENOTNAM		118	/* Not a XENIX named type file */
+>  #define	ENAVAIL		119	/* No XENIX semaphores available */
+>  #define	EISNAM		120	/* Is a named type file */
+> -- 
+> 2.24.0.rc1
+> 
+-- 
+Jan Kara <jack@suse.com>
+SUSE Labs, CR
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
