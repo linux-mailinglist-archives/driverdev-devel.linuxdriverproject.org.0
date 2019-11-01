@@ -1,48 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49E2AEC8AD
-	for <lists+driverdev-devel@lfdr.de>; Fri,  1 Nov 2019 19:55:33 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DE10D87E3C;
-	Fri,  1 Nov 2019 18:55:31 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VsqHrn58aYFW; Fri,  1 Nov 2019 18:55:31 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2F60887E25;
-	Fri,  1 Nov 2019 18:55:30 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A9EAB1BF33C
- for <devel@linuxdriverproject.org>; Fri,  1 Nov 2019 18:55:27 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 63CF6EC90C
+	for <lists+driverdev-devel@lfdr.de>; Fri,  1 Nov 2019 20:25:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A5CD88855D
- for <devel@linuxdriverproject.org>; Fri,  1 Nov 2019 18:55:27 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id EC88988575;
+	Fri,  1 Nov 2019 19:25:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id zXWx9XdqjCju; Fri,  1 Nov 2019 19:25:53 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 563A288454;
+	Fri,  1 Nov 2019 19:25:51 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 07BF11BF95D
+ for <devel@linuxdriverproject.org>; Fri,  1 Nov 2019 19:25:49 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 02E6287DDD
+ for <devel@linuxdriverproject.org>; Fri,  1 Nov 2019 19:25:49 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VvBsU9LPdVZ7 for <devel@linuxdriverproject.org>;
- Fri,  1 Nov 2019 18:55:26 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mx1.suse.de (mx2.suse.de [195.135.220.15])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4AB6C87E79
- for <devel@driverdev.osuosl.org>; Fri,  1 Nov 2019 18:55:26 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id D61C8AB8F;
- Fri,  1 Nov 2019 18:55:23 +0000 (UTC)
-From: Davidlohr Bueso <dave@stgolabs.net>
-To: valdis.kletnieks@vt.edu,
-	gregkh@linuxfoundation.org
-Subject: [PATCH] drivers/staging/exfat: Replace more binary semaphores with
- mutexes
-Date: Fri,  1 Nov 2019 11:53:32 -0700
-Message-Id: <20191101185332.31786-1-dave@stgolabs.net>
-X-Mailer: git-send-email 2.16.4
+ with ESMTP id e+tgGUGQJZD8 for <devel@linuxdriverproject.org>;
+ Fri,  1 Nov 2019 19:25:48 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
+ [207.211.31.120])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id EAD2B87DDC
+ for <devel@driverdev.osuosl.org>; Fri,  1 Nov 2019 19:25:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1572636346;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=gjjm7Uw5loPShvkS5aQcZzMu+cIOGO3TF0cBurKv6Fo=;
+ b=hDrqjZRskOEpHOV2LA5kveI03177TyfzmHbUXtfRBT4GpD7UGodxUkTsG0p6XgchjjaEor
+ 7bSXNwVgvY9UyBaDwxAHSGlj6wzXctVMBz4W6PimhAqC1t87OpsuAEXu+AyeFgkH9xCY0o
+ KvLRnjgkACKRlmlUdrTfL51neFFrRAg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-227-GxUhE1sJOai6Nmi9ZYzjFA-1; Fri, 01 Nov 2019 15:25:37 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EAC95111;
+ Fri,  1 Nov 2019 19:25:30 +0000 (UTC)
+Received: from [10.36.116.26] (ovpn-116-26.ams2.redhat.com [10.36.116.26])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0D01719C58;
+ Fri,  1 Nov 2019 19:24:44 +0000 (UTC)
+Subject: Re: [PATCH v1 00/10] mm: Don't mark hotplugged pages PG_reserved
+ (including ZONE_DEVICE)
+To: linux-kernel@vger.kernel.org
+References: <20191024120938.11237-1-david@redhat.com>
+From: David Hildenbrand <david@redhat.com>
+Organization: Red Hat GmbH
+Message-ID: <8564fdc7-9a82-6455-50a8-6943cfd6b885@redhat.com>
+Date: Fri, 1 Nov 2019 20:24:43 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
+MIME-Version: 1.0
+In-Reply-To: <20191024120938.11237-1-david@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: GxUhE1sJOai6Nmi9ZYzjFA-1
+X-Mimecast-Spam-Score: 0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,227 +82,99 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, dave@stgolabs.net, linux-kernel@vger.kernel.org
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Cc: linux-hyperv@vger.kernel.org, Michal Hocko <mhocko@suse.com>,
+ =?UTF-8?B?UmFkaW0gS3LEjW3DocWZ?= <rkrcmar@redhat.com>, kvm@vger.kernel.org,
+ Pavel Tatashin <pavel.tatashin@microsoft.com>,
+ KarimAllah Ahmed <karahmed@amazon.de>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Dave Hansen <dave.hansen@linux.intel.com>,
+ Alexander Duyck <alexander.duyck@gmail.com>, Michal Hocko <mhocko@kernel.org>,
+ Paul Mackerras <paulus@ozlabs.org>, linux-mm@kvack.org,
+ Michael Ellerman <mpe@ellerman.id.au>, "H. Peter Anvin" <hpa@zytor.com>,
+ Wanpeng Li <wanpengli@tencent.com>,
+ Alexander Duyck <alexander.h.duyck@linux.intel.com>,
+ Dan Williams <dan.j.williams@intel.com>, Kees Cook <keescook@chromium.org>,
+ devel@driverdev.osuosl.org, Stefano Stabellini <sstabellini@kernel.org>,
+ Stephen Hemminger <sthemmin@microsoft.com>,
+ "Aneesh Kumar K.V" <aneesh.kumar@linux.ibm.com>,
+ Joerg Roedel <joro@8bytes.org>, x86@kernel.org,
+ YueHaibing <yuehaibing@huawei.com>,
+ "Matthew Wilcox \(Oracle\)" <willy@infradead.org>,
+ Mike Rapoport <rppt@linux.ibm.com>, Peter Zijlstra <peterz@infradead.org>,
+ Jeff Moyer <jmoyer@redhat.com>, Ingo Molnar <mingo@redhat.com>,
+ Vlastimil Babka <vbabka@suse.cz>, Anthony Yznaga <anthony.yznaga@oracle.com>,
+ Oscar Salvador <osalvador@suse.de>,
+ "Isaac J. Manjarres" <isaacm@codeaurora.org>, Juergen Gross <jgross@suse.com>,
+ Anshuman Khandual <anshuman.khandual@arm.com>,
+ Haiyang Zhang <haiyangz@microsoft.com>, Sasha Levin <sashal@kernel.org>,
+ kvm-ppc@vger.kernel.org, Qian Cai <cai@lca.pw>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Mike Rapoport <rppt@linux.vnet.ibm.com>, Borislav Petkov <bp@alien8.de>,
+ Nicholas Piggin <npiggin@gmail.com>, Andy Lutomirski <luto@kernel.org>,
+ xen-devel@lists.xenproject.org, Boris Ostrovsky <boris.ostrovsky@oracle.com>,
+ Vitaly Kuznetsov <vkuznets@redhat.com>, Allison Randal <allison@lohutok.net>,
+ Jim Mattson <jmattson@google.com>, Christophe Leroy <christophe.leroy@c-s.fr>,
+ Mel Gorman <mgorman@techsingularity.net>, Cornelia Huck <cohuck@redhat.com>,
+ Pavel Tatashin <pasha.tatashin@soleen.com>,
+ Sean Christopherson <sean.j.christopherson@intel.com>,
+ Thomas Gleixner <tglx@linutronix.de>, Johannes Weiner <hannes@cmpxchg.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Andrew Morton <akpm@linux-foundation.org>,
+ linuxppc-dev@lists.ozlabs.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-At a slight footprint cost (24 vs 32 bytes), mutexes are more optimal
-than semaphores; it's also a nicer interface for mutual exclusion,
-which is why they are encouraged over binary semaphores, when possible.
-There is also lockdep support.
+On 24.10.19 14:09, David Hildenbrand wrote:
+> This is the result of a recent discussion with Michal ([1], [2]). Right
+> now we set all pages PG_reserved when initializing hotplugged memmaps. This
+> includes ZONE_DEVICE memory. In case of system memory, PG_reserved is
+> cleared again when onlining the memory, in case of ZONE_DEVICE memory
+> never.
+> 
+> In ancient times, we needed PG_reserved, because there was no way to tell
+> whether the memmap was already properly initialized. We now have
+> SECTION_IS_ONLINE for that in the case of !ZONE_DEVICE memory. ZONE_DEVICE
+> memory is already initialized deferred, and there shouldn't be a visible
+> change in that regard.
+> 
+> One of the biggest fears were side effects. I went ahead and audited all
+> users of PageReserved(). The details can be found in "mm/memory_hotplug:
+> Don't mark pages PG_reserved when initializing the memmap".
+> 
+> This patch set adapts all relevant users of PageReserved() to keep the
+> existing behavior in respect to ZONE_DEVICE pages. The biggest part part
+> that needs changes is KVM, to keep the existing behavior (that's all I
+> care about in this series).
+> 
+> Note that this series is able to rely completely on pfn_to_online_page().
+> No new is_zone_device_page() calles are introduced (as requested by Dan).
+> We are currently discussing a way to mark also ZONE_DEVICE memmaps as
+> active/initialized - pfn_active() - and lightweight locking to make sure
+> memmaps remain active (e.g., using RCU). We might later be able to convert
+> some suers of pfn_to_online_page() to pfn_active(). Details can be found
+> in [3], however, this represents yet another cleanup/fix we'll perform
+> on top of this cleanup.
+> 
+> I only gave it a quick test with DIMMs on x86-64, but didn't test the
+> ZONE_DEVICE part at all (any tips for a nice QEMU setup?). Also, I didn't
+> test the KVM parts (especially with ZONE_DEVICE pages or no memmap at all).
+> Compile-tested on x86-64 and PPC.
+> 
 
-For both f_sem and b_sem, their semantics imply traditional lock
-ownership; that is, the lock owner is the same for both lock/unlock
-operations and not under irq contexts (ie for trylock/unlock scenarios).
-Therefore it is safe to convert.
+Jeff Moyer ran some NVDIMM test cases for me (thanks!!!), including 
+xfstests, pmdk, and ndctl. No regressions found.
 
-Signed-off-by: Davidlohr Bueso <dave@stgolabs.net>
----
-This is part of further reducing semaphore users in the kernel.
+I will run some KVM tests, especially NDIMM passthrough, but will have 
+to setup a test environment first.
 
-This is a followup to the patch that converted the v and z sems, which
-arguably could have been a single patch, but I just ran into these, and
-it's probably easier to review, albeit trivial critical regions/lock usage.
+I would appreciate some review in the meantime. :)
 
- drivers/staging/exfat/exfat_cache.c | 48 ++++++++++++++++++-------------------
- 1 file changed, 24 insertions(+), 24 deletions(-)
-
-diff --git a/drivers/staging/exfat/exfat_cache.c b/drivers/staging/exfat/exfat_cache.c
-index 1565ce65d39f..546a08fb26cc 100644
---- a/drivers/staging/exfat/exfat_cache.c
-+++ b/drivers/staging/exfat/exfat_cache.c
-@@ -12,8 +12,8 @@
- #define DIRTYBIT	0x02
- 
- /* Local variables */
--static DEFINE_SEMAPHORE(f_sem);
--static DEFINE_SEMAPHORE(b_sem);
-+static DEFINE_MUTEX(f_mutex);
-+static DEFINE_MUTEX(b_mutex);
- 
- static struct buf_cache_t *FAT_cache_find(struct super_block *sb, sector_t sec)
- {
-@@ -315,9 +315,9 @@ int FAT_read(struct super_block *sb, u32 loc, u32 *content)
- {
- 	s32 ret;
- 
--	down(&f_sem);
-+	mutex_lock(&f_mutex);
- 	ret = __FAT_read(sb, loc, content);
--	up(&f_sem);
-+	mutex_unlock(&f_mutex);
- 
- 	return ret;
- }
-@@ -434,9 +434,9 @@ int FAT_write(struct super_block *sb, u32 loc, u32 content)
- {
- 	s32 ret;
- 
--	down(&f_sem);
-+	mutex_lock(&f_mutex);
- 	ret = __FAT_write(sb, loc, content);
--	up(&f_sem);
-+	mutex_unlock(&f_mutex);
- 
- 	return ret;
- }
-@@ -490,7 +490,7 @@ void FAT_release_all(struct super_block *sb)
- 	struct buf_cache_t *bp;
- 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
- 
--	down(&f_sem);
-+	mutex_lock(&f_mutex);
- 
- 	bp = p_fs->FAT_cache_lru_list.next;
- 	while (bp != &p_fs->FAT_cache_lru_list) {
-@@ -507,7 +507,7 @@ void FAT_release_all(struct super_block *sb)
- 		bp = bp->next;
- 	}
- 
--	up(&f_sem);
-+	mutex_unlock(&f_mutex);
- }
- 
- void FAT_sync(struct super_block *sb)
-@@ -515,7 +515,7 @@ void FAT_sync(struct super_block *sb)
- 	struct buf_cache_t *bp;
- 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
- 
--	down(&f_sem);
-+	mutex_lock(&f_mutex);
- 
- 	bp = p_fs->FAT_cache_lru_list.next;
- 	while (bp != &p_fs->FAT_cache_lru_list) {
-@@ -526,7 +526,7 @@ void FAT_sync(struct super_block *sb)
- 		bp = bp->next;
- 	}
- 
--	up(&f_sem);
-+	mutex_unlock(&f_mutex);
- }
- 
- static struct buf_cache_t *buf_cache_find(struct super_block *sb, sector_t sec)
-@@ -600,9 +600,9 @@ u8 *buf_getblk(struct super_block *sb, sector_t sec)
- {
- 	u8 *buf;
- 
--	down(&b_sem);
-+	mutex_lock(&b_mutex);
- 	buf = __buf_getblk(sb, sec);
--	up(&b_sem);
-+	mutex_unlock(&b_mutex);
- 
- 	return buf;
- }
-@@ -611,7 +611,7 @@ void buf_modify(struct super_block *sb, sector_t sec)
- {
- 	struct buf_cache_t *bp;
- 
--	down(&b_sem);
-+	mutex_lock(&b_mutex);
- 
- 	bp = buf_cache_find(sb, sec);
- 	if (likely(bp))
-@@ -620,14 +620,14 @@ void buf_modify(struct super_block *sb, sector_t sec)
- 	WARN(!bp, "[EXFAT] failed to find buffer_cache(sector:%llu).\n",
- 	     (unsigned long long)sec);
- 
--	up(&b_sem);
-+	mutex_unlock(&b_mutex);
- }
- 
- void buf_lock(struct super_block *sb, sector_t sec)
- {
- 	struct buf_cache_t *bp;
- 
--	down(&b_sem);
-+	mutex_lock(&b_mutex);
- 
- 	bp = buf_cache_find(sb, sec);
- 	if (likely(bp))
-@@ -636,14 +636,14 @@ void buf_lock(struct super_block *sb, sector_t sec)
- 	WARN(!bp, "[EXFAT] failed to find buffer_cache(sector:%llu).\n",
- 	     (unsigned long long)sec);
- 
--	up(&b_sem);
-+	mutex_unlock(&b_mutex);
- }
- 
- void buf_unlock(struct super_block *sb, sector_t sec)
- {
- 	struct buf_cache_t *bp;
- 
--	down(&b_sem);
-+	mutex_lock(&b_mutex);
- 
- 	bp = buf_cache_find(sb, sec);
- 	if (likely(bp))
-@@ -652,7 +652,7 @@ void buf_unlock(struct super_block *sb, sector_t sec)
- 	WARN(!bp, "[EXFAT] failed to find buffer_cache(sector:%llu).\n",
- 	     (unsigned long long)sec);
- 
--	up(&b_sem);
-+	mutex_unlock(&b_mutex);
- }
- 
- void buf_release(struct super_block *sb, sector_t sec)
-@@ -660,7 +660,7 @@ void buf_release(struct super_block *sb, sector_t sec)
- 	struct buf_cache_t *bp;
- 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
- 
--	down(&b_sem);
-+	mutex_lock(&b_mutex);
- 
- 	bp = buf_cache_find(sb, sec);
- 	if (likely(bp)) {
-@@ -676,7 +676,7 @@ void buf_release(struct super_block *sb, sector_t sec)
- 		move_to_lru(bp, &p_fs->buf_cache_lru_list);
- 	}
- 
--	up(&b_sem);
-+	mutex_unlock(&b_mutex);
- }
- 
- void buf_release_all(struct super_block *sb)
-@@ -684,7 +684,7 @@ void buf_release_all(struct super_block *sb)
- 	struct buf_cache_t *bp;
- 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
- 
--	down(&b_sem);
-+	mutex_lock(&b_mutex);
- 
- 	bp = p_fs->buf_cache_lru_list.next;
- 	while (bp != &p_fs->buf_cache_lru_list) {
-@@ -701,7 +701,7 @@ void buf_release_all(struct super_block *sb)
- 		bp = bp->next;
- 	}
- 
--	up(&b_sem);
-+	mutex_unlock(&b_mutex);
- }
- 
- void buf_sync(struct super_block *sb)
-@@ -709,7 +709,7 @@ void buf_sync(struct super_block *sb)
- 	struct buf_cache_t *bp;
- 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
- 
--	down(&b_sem);
-+	mutex_lock(&b_mutex);
- 
- 	bp = p_fs->buf_cache_lru_list.next;
- 	while (bp != &p_fs->buf_cache_lru_list) {
-@@ -720,5 +720,5 @@ void buf_sync(struct super_block *sb)
- 		bp = bp->next;
- 	}
- 
--	up(&b_sem);
-+	mutex_unlock(&b_mutex);
- }
 -- 
-2.16.4
+
+Thanks,
+
+David / dhildenb
 
 _______________________________________________
 devel mailing list
