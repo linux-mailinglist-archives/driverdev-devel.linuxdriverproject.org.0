@@ -1,66 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D2E8FEBB6A
-	for <lists+driverdev-devel@lfdr.de>; Fri,  1 Nov 2019 01:22:45 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1C64AEBB59
+	for <lists+driverdev-devel@lfdr.de>; Fri,  1 Nov 2019 01:03:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CE8E987C0A;
-	Fri,  1 Nov 2019 00:22:42 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 75BFF234BD;
+	Fri,  1 Nov 2019 00:03:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DtO1ow+6wghy; Fri,  1 Nov 2019 00:22:42 +0000 (UTC)
+	with ESMTP id 0VcaB8obN7S8; Fri,  1 Nov 2019 00:03:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EE61487B07;
-	Fri,  1 Nov 2019 00:22:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 532F5233B8;
+	Fri,  1 Nov 2019 00:03:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6207E1BF9D2
- for <devel@linuxdriverproject.org>; Fri,  1 Nov 2019 00:22:39 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C30251BF9CD
+ for <devel@linuxdriverproject.org>; Fri,  1 Nov 2019 00:03:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 5E8968831F
- for <devel@linuxdriverproject.org>; Fri,  1 Nov 2019 00:22:39 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B561987B08
+ for <devel@linuxdriverproject.org>; Fri,  1 Nov 2019 00:03:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aLYTom3gqoWS for <devel@linuxdriverproject.org>;
- Fri,  1 Nov 2019 00:22:38 +0000 (UTC)
-X-Greylist: delayed 05:20:01 by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0076.hostedemail.com
- [216.40.44.76])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 22AF588176
- for <devel@driverdev.osuosl.org>; Fri,  1 Nov 2019 00:22:38 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave03.hostedemail.com (Postfix) with ESMTP id 2B1F0180F68A3
- for <devel@driverdev.osuosl.org>; Thu, 31 Oct 2019 18:23:52 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay03.hostedemail.com (Postfix) with ESMTP id 0AF5A8384360;
- Thu, 31 Oct 2019 18:23:49 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, :::::::::::,
- RULES_HIT:41:355:379:541:800:960:966:973:988:989:1260:1311:1314:1345:1437:1515:1534:1544:1711:1730:1747:1777:1792:1801:2196:2199:2393:2559:2562:3138:3139:3140:3141:3142:3354:3865:3866:3867:3868:3870:3872:4321:4385:4605:5007:6261:7996:10004:11026:11232:11473:11657:11658:11914:12043:12050:12297:12438:12555:12679:12895:12986:13894:14096:14181:14394:14721:21080:21451:21627:21740:21810:30054:30055,
- 0,
- RBL:47.151.135.224:@perches.com:.lbl8.mailshell.net-62.8.0.100 64.201.201.201,
- CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none, DomainCache:0,
- MSF:not bulk, SPF:fn, MSBL:0, DNSBL:neutral, Custom_rules:0:0:0, LFtime:26,
- LUA_SUMMARY:none
-X-HE-Tag: plane01_21290db56310d
-X-Filterd-Recvd-Size: 4792
-Received: from joe-laptop.perches.com (unknown [47.151.135.224])
- (Authenticated sender: joe@perches.com)
- by omf01.hostedemail.com (Postfix) with ESMTPA;
- Thu, 31 Oct 2019 18:23:47 +0000 (UTC)
-From: Joe Perches <joe@perches.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Jaroslav Kysela <perex@perex.cz>
-Subject: [PATCH] hp100: Move 100BaseVG AnyLAN driver to staging
-Date: Thu, 31 Oct 2019 11:23:37 -0700
-Message-Id: <4024b52c917975cebde58afc094eed1a107622c2.1572545956.git.joe@perches.com>
-X-Mailer: git-send-email 2.24.0.rc2
+ with ESMTP id euDQHMwTlWm8 for <devel@linuxdriverproject.org>;
+ Fri,  1 Nov 2019 00:03:32 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-qt1-f193.google.com (mail-qt1-f193.google.com
+ [209.85.160.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D2FD387A2F
+ for <devel@driverdev.osuosl.org>; Fri,  1 Nov 2019 00:03:31 +0000 (UTC)
+Received: by mail-qt1-f193.google.com with SMTP id g50so10934572qtb.4
+ for <devel@driverdev.osuosl.org>; Thu, 31 Oct 2019 17:03:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=VKxv5zSXLT1ehgNKTex+0kSfIDKsNz1FYp7ELOBKXaw=;
+ b=uQ+7UtyjG5GA1UQaFEr6n72Aa3Q4dGYJnOftfMff/8zzfTXCojzeL74N5S4ghYJsk4
+ oDU8oZ0+M0n6yy2h9bQoVd5OZQ+tOc46ZzkgEoh4NC4WjF4w3pfGBZFXyKb5akkGCT37
+ fpJ0WYT4Y50xOk1AkIfDharSR6bHEfRupZQlC1zOzt7tSZKpsX22Snk6jq9MEctd5ehM
+ jtKGS8hXO4BTODlIVlZRodLYBUMuntTj2eXCd0DH2/DGPy4lRwV6DybOvc0lLiPgAKMw
+ hj3IhtwhiPqO1kFbc9gyl3876rMWhuN5qClB/zhaZMM6f6pGa8lryvbb7ONdyjVy0yTt
+ 4MxQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=VKxv5zSXLT1ehgNKTex+0kSfIDKsNz1FYp7ELOBKXaw=;
+ b=k/TaZ7FsTs+hnlJ3sk0sD2ULV51jWvc4+3e7a+v3MSVlcbzkjhqfhWxSCoi19Q8FB+
+ 4g2ZY+AzF1z+jrPpvl8V/rK8okEye8j6dHS6jAq/XJGH6r96LlmaDH+D1FqrDKOc+57p
+ ANKwf4UpGUz4KlHqj0YQX40qg0KHeEc29CH2fRa9qWCTuAdVui3WNCGYCOFqiwIYXt10
+ BCqzAzhBXuAPUUmKSBjqizQhfh6Gt1yaT/7QRVmViQIlJ1yJy0ST41Ky3ue4KpTOr/1h
+ KRffDf72eL4ZsiAZ6hpNPYLDQBV0agUAuuGadYPY3ozFWLacYiXzvXoKdQ2PMpy1LYRY
+ +EvQ==
+X-Gm-Message-State: APjAAAX1PKtiaMRoo0oddbUqCm4lWU50SGaQrMhPUL98uhc/ls77AakM
+ B6mjmizSyySBe849/FgwNIM=
+X-Google-Smtp-Source: APXvYqymy6b+iU9I+tawyTCVvYzzlBX02xlrg519Yb/4Rlqrui7DJhFfgNwIGWHab1ijOZsnqjWQSg==
+X-Received: by 2002:ac8:549:: with SMTP id c9mr769668qth.178.1572566610732;
+ Thu, 31 Oct 2019 17:03:30 -0700 (PDT)
+Received: from localhost.localdomain ([187.34.252.37])
+ by smtp.gmail.com with ESMTPSA id n5sm2693959qke.74.2019.10.31.17.03.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 31 Oct 2019 17:03:30 -0700 (PDT)
+From: Rodrigo Carvalho <rodrigorsdc@gmail.com>
+To: Lars-Peter Clausen <lars@metafoo.de>,
+ Michael Hennerich <Michael.Hennerich@analog.com>,
+ Stefan Popa <stefan.popa@analog.com>, Jonathan Cameron <jic23@kernel.org>,
+ Hartmut Knaack <knaack.h@gmx.de>,
+ Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH v3] dt-bindings: iio: accel: add binding documentation for
+ ADIS16240
+Date: Thu, 31 Oct 2019 21:03:01 -0300
+Message-Id: <20191101000301.12901-1-rodrigorsdc@gmail.com>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -74,113 +89,83 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
- "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Rodrigo Carvalho <rodrigorsdc@gmail.com>, kernel-usp@googlegroups.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-100BaseVG AnyLAN hasn't been useful since 1996 or so and even then
-didn't sell many devices.  It's unlikely any are still in use.
+This patch add device tree binding documentation for ADIS16240.
 
-Move the driver to staging with the intent of removing it altogether
-one day.
-
-Signed-off-by: Joe Perches <joe@perches.com>
+Signed-off-by: Rodrigo Ribeiro Carvalho <rodrigorsdc@gmail.com>
 ---
- MAINTAINERS                                   | 4 ++--
- drivers/net/ethernet/Kconfig                  | 1 -
- drivers/net/ethernet/Makefile                 | 1 -
- drivers/staging/Kconfig                       | 2 ++
- drivers/staging/Makefile                      | 1 +
- drivers/{net/ethernet => staging}/hp/Kconfig  | 0
- drivers/{net/ethernet => staging}/hp/Makefile | 0
- drivers/{net/ethernet => staging}/hp/hp100.c  | 0
- drivers/{net/ethernet => staging}/hp/hp100.h  | 0
- 9 files changed, 5 insertions(+), 4 deletions(-)
- rename drivers/{net/ethernet => staging}/hp/Kconfig (100%)
- rename drivers/{net/ethernet => staging}/hp/Makefile (100%)
- rename drivers/{net/ethernet => staging}/hp/hp100.c (100%)
- rename drivers/{net/ethernet => staging}/hp/hp100.h (100%)
+V3:
+   - Remove spi-cpol and spi-cpha field. They don't seem necessary
+ .../bindings/iio/accel/adi,adis16240.yaml     | 51 +++++++++++++++++++
+ 1 file changed, 51 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/iio/accel/adi,adis16240.yaml
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index c6c34d..bea725 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -7444,8 +7444,8 @@ F:	drivers/platform/x86/tc1100-wmi.c
- 
- HP100:	Driver for HP 10/100 Mbit/s Voice Grade Network Adapter Series
- M:	Jaroslav Kysela <perex@perex.cz>
--S:	Maintained
--F:	drivers/net/ethernet/hp/hp100.*
-+S:	Obsolete
-+F:	drivers/staging/hp/hp100.*
- 
- HPET:	High Precision Event Timers driver
- M:	Clemens Ladisch <clemens@ladisch.de>
-diff --git a/drivers/net/ethernet/Kconfig b/drivers/net/ethernet/Kconfig
-index e8e9c16..4ded81 100644
---- a/drivers/net/ethernet/Kconfig
-+++ b/drivers/net/ethernet/Kconfig
-@@ -78,7 +78,6 @@ source "drivers/net/ethernet/freescale/Kconfig"
- source "drivers/net/ethernet/fujitsu/Kconfig"
- source "drivers/net/ethernet/google/Kconfig"
- source "drivers/net/ethernet/hisilicon/Kconfig"
--source "drivers/net/ethernet/hp/Kconfig"
- source "drivers/net/ethernet/huawei/Kconfig"
- source "drivers/net/ethernet/i825xx/Kconfig"
- source "drivers/net/ethernet/ibm/Kconfig"
-diff --git a/drivers/net/ethernet/Makefile b/drivers/net/ethernet/Makefile
-index 05abeb..f8f38d 100644
---- a/drivers/net/ethernet/Makefile
-+++ b/drivers/net/ethernet/Makefile
-@@ -41,7 +41,6 @@ obj-$(CONFIG_NET_VENDOR_FREESCALE) += freescale/
- obj-$(CONFIG_NET_VENDOR_FUJITSU) += fujitsu/
- obj-$(CONFIG_NET_VENDOR_GOOGLE) += google/
- obj-$(CONFIG_NET_VENDOR_HISILICON) += hisilicon/
--obj-$(CONFIG_NET_VENDOR_HP) += hp/
- obj-$(CONFIG_NET_VENDOR_HUAWEI) += huawei/
- obj-$(CONFIG_NET_VENDOR_IBM) += ibm/
- obj-$(CONFIG_NET_VENDOR_INTEL) += intel/
-diff --git a/drivers/staging/Kconfig b/drivers/staging/Kconfig
-index 6f1fa4..333308 100644
---- a/drivers/staging/Kconfig
-+++ b/drivers/staging/Kconfig
-@@ -125,4 +125,6 @@ source "drivers/staging/exfat/Kconfig"
- 
- source "drivers/staging/qlge/Kconfig"
- 
-+source "drivers/staging/hp/Kconfig"
+diff --git a/Documentation/devicetree/bindings/iio/accel/adi,adis16240.yaml b/Documentation/devicetree/bindings/iio/accel/adi,adis16240.yaml
+new file mode 100644
+index 000000000000..9a4cd12c4818
+--- /dev/null
++++ b/Documentation/devicetree/bindings/iio/accel/adi,adis16240.yaml
+@@ -0,0 +1,51 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/iio/accel/adi,adis16240.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
- endif # STAGING
-diff --git a/drivers/staging/Makefile b/drivers/staging/Makefile
-index a90f9b3..e4943c 100644
---- a/drivers/staging/Makefile
-+++ b/drivers/staging/Makefile
-@@ -53,3 +53,4 @@ obj-$(CONFIG_UWB)		+= uwb/
- obj-$(CONFIG_USB_WUSB)		+= wusbcore/
- obj-$(CONFIG_EXFAT_FS)		+= exfat/
- obj-$(CONFIG_QLGE)		+= qlge/
-+obj-$(CONFIG_NET_VENDOR_HP)	+= hp/
-diff --git a/drivers/net/ethernet/hp/Kconfig b/drivers/staging/hp/Kconfig
-similarity index 100%
-rename from drivers/net/ethernet/hp/Kconfig
-rename to drivers/staging/hp/Kconfig
-diff --git a/drivers/net/ethernet/hp/Makefile b/drivers/staging/hp/Makefile
-similarity index 100%
-rename from drivers/net/ethernet/hp/Makefile
-rename to drivers/staging/hp/Makefile
-diff --git a/drivers/net/ethernet/hp/hp100.c b/drivers/staging/hp/hp100.c
-similarity index 100%
-rename from drivers/net/ethernet/hp/hp100.c
-rename to drivers/staging/hp/hp100.c
-diff --git a/drivers/net/ethernet/hp/hp100.h b/drivers/staging/hp/hp100.h
-similarity index 100%
-rename from drivers/net/ethernet/hp/hp100.h
-rename to drivers/staging/hp/hp100.h
++title: ADIS16240 Programmable Impact Sensor and Recorder driver
++
++maintainers:
++  - Alexandru Ardelean <alexandru.ardelean@analog.com>
++
++description: |
++  ADIS16240 Programmable Impact Sensor and Recorder driver that supports
++  SPI interface.
++    https://www.analog.com/en/products/adis16240.html
++
++properties:
++  compatible:
++    enum:
++      - adi,adis16240
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - interrupts
++
++examples:
++  - |
++    #include <dt-bindings/gpio/gpio.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    spi0 {
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        /* Example for a SPI device node */
++        accelerometer@0 {
++            compatible = "adi,adis16240";
++            reg = <0>;
++            spi-max-frequency = <2500000>;
++            spi-cpol;
++            spi-cpha;
++            interrupt-parent = <&gpio0>;
++            interrupts = <0 IRQ_TYPE_LEVEL_HIGH>;
++        };
++    };
 -- 
-2.24.0.rc2
+2.23.0
 
 _______________________________________________
 devel mailing list
