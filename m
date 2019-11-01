@@ -1,79 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id F07CFEC6CF
-	for <lists+driverdev-devel@lfdr.de>; Fri,  1 Nov 2019 17:31:42 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 35EF7EC78A
+	for <lists+driverdev-devel@lfdr.de>; Fri,  1 Nov 2019 18:29:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 8EAE124B04;
-	Fri,  1 Nov 2019 16:31:41 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CF85787E01;
+	Fri,  1 Nov 2019 17:29:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eNoHQO5o-E7R; Fri,  1 Nov 2019 16:31:41 +0000 (UTC)
+	with ESMTP id rvsh9hGYMvY5; Fri,  1 Nov 2019 17:29:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id B0B472474E;
-	Fri,  1 Nov 2019 16:31:40 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id D01A587846;
+	Fri,  1 Nov 2019 17:29:47 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A63E41BF306
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  1 Nov 2019 16:31:38 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C10061BF5AA
+ for <devel@linuxdriverproject.org>; Fri,  1 Nov 2019 17:29:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A134F86B20
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  1 Nov 2019 16:31:38 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id BD6F187622
+ for <devel@linuxdriverproject.org>; Fri,  1 Nov 2019 17:29:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LQ7snKaXoTgP
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  1 Nov 2019 16:31:38 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ed1-f66.google.com (mail-ed1-f66.google.com
- [209.85.208.66])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E8BC686B1C
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  1 Nov 2019 16:31:37 +0000 (UTC)
-Received: by mail-ed1-f66.google.com with SMTP id f25so7959435edw.10
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 01 Nov 2019 09:31:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=latS+LOZUfL1yiiuFRKw1aKCiSm5Bt/9vWdEAhPRwuM=;
- b=QhV2skXhxRQTHu3K7BGATa7S/eBd2R29m8d87/BzlCSmWk1bsymeqzkrSxzWTosfAe
- 3YIVId3V9lgUNLaUU0Xqkejju7nIwHNfiBCZcW+oX10gJRolVrUoI2K9scee+Wv02fHl
- UEJicxBgVAvWAtFO7/5Iz9+myiGLlbKs8xxEMTyfm7rj0BVTPZshdtyw92azm/5VfgJp
- tH64KGtJS4p60xCkBo9Xu85eOLcnd9ubVOC7NCjlzcwdqAdPJAhKOfvP9O+DXn7yD/H5
- 1JVM+vk3PuBVH0QF1qU44pdoB2zMQ/cjGBCk1qOhGSw+NlWrEMXGIgpKpUDKmTDiBpdd
- kgZw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=latS+LOZUfL1yiiuFRKw1aKCiSm5Bt/9vWdEAhPRwuM=;
- b=rnfg4/wy+2pOIuttL31XfpvIEtZcn3VFdfqVM2TR70+i1YbxN7XDdPLiCwE/99ULEj
- NuMmwHo4fSn67uNks7J9OajFqzAGHsj/WYQr4DHoutNHVH2QdHGaYinOZKqalILCAGy2
- XkmUsXqOmiOSx11v9gM+LoyAwyozc5TDJAFzuvNK8DHWQfg4xT+LHtl5v1WzAa87SKo6
- zfrulvLXulNqm4mXeEgSg+5/Ast5HoGdETU6AOiP+r798aytCxsCEbyuCW+fw8jF9KFH
- Zn7eQBPu6qKTKPEUDfBo0YAi4r7HkIMJsAP4KZNBJvYERjO8fvXDS9tHrwa/HnyxdfdU
- 8ofQ==
-X-Gm-Message-State: APjAAAU2OQGxgwpkLTtpzcltw2xijGTczmXyu+fdiYC3g8uI06d1EAvq
- DryEnUsVpiOQiUP2pDTiCA6I+sLSR58/3FSAtfs=
-X-Google-Smtp-Source: APXvYqwGWuMH94vfqKzrw+H3XXGqKga+v5QwYYKiMsAyR3hj26eiMeo7mmTXKMU5Qpi0wGXjotaEwKxR4EyNvZaNjOY=
-X-Received: by 2002:a17:906:f2d4:: with SMTP id
- gz20mr10695917ejb.215.1572625896197; 
- Fri, 01 Nov 2019 09:31:36 -0700 (PDT)
+ with ESMTP id Y40j1G8yI7k0 for <devel@linuxdriverproject.org>;
+ Fri,  1 Nov 2019 17:29:43 +0000 (UTC)
+X-Greylist: delayed 00:07:39 by SQLgrey-1.7.6
+Received: from smtp.smtpout.orange.fr (smtp05.smtpout.orange.fr
+ [80.12.242.127])
+ by whitealder.osuosl.org (Postfix) with ESMTP id B0B498761E
+ for <devel@driverdev.osuosl.org>; Fri,  1 Nov 2019 17:29:42 +0000 (UTC)
+Received: from localhost.localdomain ([93.22.132.57]) by mwinf5d40 with ME
+ id LhMz210031ETPpp03hMzam; Fri, 01 Nov 2019 18:22:00 +0100
+X-ME-Helo: localhost.localdomain
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Fri, 01 Nov 2019 18:22:00 +0100
+X-ME-IP: 93.22.132.57
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: jerome.pouiller@silabs.com,
+	gregkh@linuxfoundation.org
+Subject: [PATCH] staging: wfx: Fix a memory leak in 'wfx_upload_beacon'
+Date: Fri,  1 Nov 2019 18:21:51 +0100
+Message-Id: <20191101172151.14295-1-christophe.jaillet@wanadoo.fr>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Received: by 2002:a05:6402:1118:0:0:0:0 with HTTP; Fri, 1 Nov 2019 09:31:35
- -0700 (PDT)
-From: "Mary Coster, I.M.F director-Benin" <eco.bank1204@gmail.com>
-Date: Fri, 1 Nov 2019 17:31:35 +0100
-Message-ID: <CAOE+jADviugiqpraL3AHycDGuFR8=vm0xYL9JoO9iz4W0SutLg@mail.gmail.com>
-Subject: Contact Money Gram international service-Benin to receive your
- payment funds US$2.500,000 Million
-To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,31 +58,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: moneygram.1820@outlook.fr
+Cc: devel@driverdev.osuosl.org,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Attn Dear,Funds Beneficiary.
-Contact Money Gram international service-Benin to receive your payment
-funds US$2.500,000 Million approved this morning through the UN
-payment settlement organization.
-Contact Person, Mr. John Dave.
-Official Director.Money Gram-Benin
-Email: moneygram.1820@outlook.fr
-Telephone +229 62619517
-Once you get intouch with Mr. John Dave, Money Gram Director, send to
-him your address including your phone numbers. He will be sending the
-transfer to you  $5000.00 USD daily until you received your complete
-payment $2.5m
-from the office.
-Note,I have paid the whole service fees for you but only small money
-you been required to send to this office is $23.00 only via Money Gram
-transfer.
-God bless
-Mary Coster, I.M.F director-Benin
-m.coster@aol.com
+The current code is a no-op, because all it can do is 'dev_kfree_skb(NULL)'
+Revert the test to free skb, if not NULL.
+
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+---
+This patch is purely speculative.
+
+The 'if  (...)' could also be removed completely if we refactor the code
+and return directly at the beginning of the function.
+Or the 'return -ENOMEM' should be 'err = -ENOMEM; goto done;' in order to
+avoid a mixup of goto and direct return.
+---
+ drivers/staging/wfx/sta.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/wfx/sta.c b/drivers/staging/wfx/sta.c
+index 688586e823c0..e14da8dce388 100644
+--- a/drivers/staging/wfx/sta.c
++++ b/drivers/staging/wfx/sta.c
+@@ -906,7 +906,7 @@ static int wfx_upload_beacon(struct wfx_vif *wvif)
+ 	wfx_fwd_probe_req(wvif, false);
+ 
+ done:
+-	if (!skb)
++	if (skb)
+ 		dev_kfree_skb(skb);
+ 	return ret;
+ }
+-- 
+2.20.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
