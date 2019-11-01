@@ -1,69 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B4C6BECA71
-	for <lists+driverdev-devel@lfdr.de>; Fri,  1 Nov 2019 22:43:11 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8EFCE87E81;
-	Fri,  1 Nov 2019 21:43:09 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UzS-4mUaCUe9; Fri,  1 Nov 2019 21:43:09 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7458587C99;
-	Fri,  1 Nov 2019 21:43:08 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B53811BF3CB
- for <devel@linuxdriverproject.org>; Fri,  1 Nov 2019 21:42:59 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4F912ECA72
+	for <lists+driverdev-devel@lfdr.de>; Fri,  1 Nov 2019 22:43:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B1C7286AE2
- for <devel@linuxdriverproject.org>; Fri,  1 Nov 2019 21:42:59 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A5F2386BEC;
+	Fri,  1 Nov 2019 21:43:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XF1sOs9LAxyJ; Fri,  1 Nov 2019 21:43:12 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3456E86AD2;
+	Fri,  1 Nov 2019 21:43:12 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 997D71BF3CB
+ for <devel@linuxdriverproject.org>; Fri,  1 Nov 2019 21:43:02 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 7C3FB24BF8
+ for <devel@linuxdriverproject.org>; Fri,  1 Nov 2019 21:43:02 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KjW0iu7q7uxr for <devel@linuxdriverproject.org>;
- Fri,  1 Nov 2019 21:42:57 +0000 (UTC)
+ with ESMTP id LyQWW0JtwPOk for <devel@linuxdriverproject.org>;
+ Fri,  1 Nov 2019 21:43:01 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from EUR03-AM5-obe.outbound.protection.outlook.com
  (mail-eopbgr30058.outbound.protection.outlook.com [40.107.3.58])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 99B2686AD2
- for <devel@driverdev.osuosl.org>; Fri,  1 Nov 2019 21:42:57 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 532FC24B59
+ for <devel@driverdev.osuosl.org>; Fri,  1 Nov 2019 21:43:01 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=P4wdwB22G4ATggMFR9ucwgMtRoL9kY7wzmkltozVRc8WxfFrSsOeCBrJeZHBOzRbt46xcuf35F+5BlcJ+4M2TF5AoIrABdCuqxVPzzoXFa7t4lOeZqx0kzKpHzmpAFqMHve4FX5eoI6z7TPsdcSegjWQkayTKP/FVWI3r1UTCnyKe45Fp8B4t6SckFp9dX4lnJfoRcIPmhDglYk/8ouo8dbpRqEoXf2EMEKa2cP/3D/hKmAQOrWXi7nVvsVRw6Lh16q464B3wLU2roIri+yYHD56I0zYSdKaUlDJNkpFslTQZks6HVmn6VgW/1e9KXZ5XbKfgvWujNem2ACqzOJ2yQ==
+ b=a8gWy9t3tTdY6mMyjGyEF3LvbGVwKq4DWan1lp6165+1uXLnqHG72exhUSmhmAVYZqBsHBoeC0H28+OfCw2AEO08/piYucJehCddxz6yBzIbcUVxfn9N1yKntM9y3EqvcaPSgytjNQo8jhO3OeAmjUfLjJyVtkNDHU2uJXCW0GYZnp48v+tpnZB75ONQ1oSU0E8f4eeqDP8UcP5ndSRwyTLwIpYazHqbsG1iHZVKFHl1R9w+NNFbs+cgLUwlYg5J3bh22QTB2nZUKfTB2Wg5zY+lobOv+ebko/Wk8eRb1EvNnBcvLc3Us8RAky1CEqenZKyi+zDcmP42OGeFdsfu6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=I1asZxG7iy1G+ohx5StQOK1UeIf1kysj2FMuZhcOMis=;
- b=dzH/0S8TOwRDhL+9pfKxJ7Q9mUffuWjpK/mxncV6VwEg67gq6Zmi4VlAo9fTU9yzG/OjhvcZk4xRixuXAFRKp63WjBRoQnBP1edt95FejPjUfWuk5ZyyQsR+C7we7qlV7o8+i9DCjj+Otti98H0ivm+H/P2O6Sa9EKfRjFmo9xUOi49E1lYWurcT2EpFAyedJ2OrbRSkEUdhEga/ebQakTI5xawoiE4hk7nEl1P32Otmh6kKZ0A7qc191CiH+lnj9y2nVmxoNMqIav9BILDFuF+dFaJOWt2s5pKJyA8NKlzanxGU1R+EcLF/DEwQJ+MsOnwqs/7JCjRpAwgjJsGPjw==
+ bh=6tbDgwYm7i3M2kgWjGD06NtwTINNoD5Qp0G0Z5fm1fI=;
+ b=LIA/RI3s3+5Scr2RFFW5b1XjOhv1lhGt+7J2Kiwqe3en0znezR3uc0akr7NDDsWhcbQfszXtJNxCj+3LByQ9BsVoctnQ0BiqhvZoPkbrGdWab1OhEtqHnCPCh8W6q3p5x2p1pEH01wq3obPFNmB80yKRcQa+x6xno6ZP7vWhReYoq0ZhAAnYIRUMIb8mva7xPXwQ5lM17nzsY8kGzQF/rJt/0RAQyKSN3dVpfEhMYw9cViz98v0xfwA7mYKwO/867yr/iZyR9dzGkWMNwrrkGA9hBaxWnZdD8z18QDLtDcegjBEyxQ9iYSpWjy4rqVDc5jhtEN0Wi39C7V6DrBZGtw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=itdev.co.uk; dmarc=pass action=none header.from=itdev.co.uk;
  dkim=pass header.d=itdev.co.uk; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=itdevltd.onmicrosoft.com; s=selector2-itdevltd-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=I1asZxG7iy1G+ohx5StQOK1UeIf1kysj2FMuZhcOMis=;
- b=XLj19cNiaSsYNj73vR7njmYWcXc6eFvOHfHmC33qNQRYGoISSlHyzwDsDriOfSYJN8j+enKaWxSLLReTNrYuDTIgy4QaL9ejF5zMK4IC8TCzTKYQfCwaEfGZGb4wawAAxmgjN2buWLA7PNquakOAdEUnyP3Je3DfauGgPQmRPEY=
+ bh=6tbDgwYm7i3M2kgWjGD06NtwTINNoD5Qp0G0Z5fm1fI=;
+ b=VWkOgbShV8v+r5Pzup4XkkUu7dHdlaHUyr3nzxOTwjHYzz3n2vO9oDJmt+pR93hOejFhJGT7E4IWYrJjtAivCm7kQUZBEk6euZwBsuC4wz4yTp/DAEsmdXJ6VIYFDiDsG7lqcO0/PZdpgL8VAZr6Wg6LNnyUUQk6m63I5vvhVt8=
 Received: from DBBPR08MB4491.eurprd08.prod.outlook.com (20.179.44.144) by
  DBBPR08MB4679.eurprd08.prod.outlook.com (20.179.47.21) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2387.24; Fri, 1 Nov 2019 21:42:55 +0000
+ 15.20.2387.24; Fri, 1 Nov 2019 21:42:59 +0000
 Received: from DBBPR08MB4491.eurprd08.prod.outlook.com
  ([fe80::4c2f:e455:fb07:bdee]) by DBBPR08MB4491.eurprd08.prod.outlook.com
  ([fe80::4c2f:e455:fb07:bdee%6]) with mapi id 15.20.2387.031; Fri, 1 Nov 2019
- 21:42:55 +0000
+ 21:42:59 +0000
 From: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
 To: "kernel-janitors@vger.kernel.org" <kernel-janitors@vger.kernel.org>
-Subject: [PATCH 2/3] staging: axis-fifo: request resources using managed
- functions
-Thread-Topic: [PATCH 2/3] staging: axis-fifo: request resources using managed
- functions
-Thread-Index: AQHVkP1RD3//gI2KB0K7rhYWv+gNHA==
-Date: Fri, 1 Nov 2019 21:42:54 +0000
-Message-ID: <20191101214232.16960-3-quentin.deslandes@itdev.co.uk>
+Subject: [PATCH 3/3] staging: axis-fifo: remove unused pointer to memory
+ resource
+Thread-Topic: [PATCH 3/3] staging: axis-fifo: remove unused pointer to memory
+ resource
+Thread-Index: AQHVkP1UzicuaAAUZk66MpcyAj/NRw==
+Date: Fri, 1 Nov 2019 21:42:59 +0000
+Message-ID: <20191101214232.16960-4-quentin.deslandes@itdev.co.uk>
 References: <20191101214232.16960-1-quentin.deslandes@itdev.co.uk>
 In-Reply-To: <20191101214232.16960-1-quentin.deslandes@itdev.co.uk>
 Accept-Language: en-GB, en-US
@@ -79,11 +79,11 @@ x-ms-exchange-messagesentrepresentingtype: 1
 x-mailer: git-send-email 2.23.0
 x-originating-ip: [81.98.213.45]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: fc08792d-75f5-4db2-81dd-08d75f147421
+x-ms-office365-filtering-correlation-id: dfae3b0e-75ab-46d4-269d-08d75f14769b
 x-ms-traffictypediagnostic: DBBPR08MB4679:
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <DBBPR08MB4679C71FE2DAFC331361E3D6B3620@DBBPR08MB4679.eurprd08.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:431;
+x-microsoft-antispam-prvs: <DBBPR08MB46799E5C11E255F745E5E9ACB3620@DBBPR08MB4679.eurprd08.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:421;
 x-forefront-prvs: 020877E0CB
 x-forefront-antispam-report: SFV:NSPM;
  SFS:(10009020)(39830400003)(376002)(136003)(346002)(396003)(366004)(199004)(189003)(36756003)(2351001)(86362001)(186003)(66066001)(6916009)(14444005)(66556008)(476003)(486006)(71200400001)(64756008)(5640700003)(2501003)(6512007)(66946007)(6486002)(44832011)(71190400001)(2906002)(6436002)(11346002)(6116002)(3846002)(50226002)(66476007)(4326008)(305945005)(8936002)(25786009)(5660300002)(7736002)(81166006)(256004)(386003)(8676002)(6506007)(54906003)(81156014)(66446008)(2616005)(508600001)(14454004)(76176011)(52116002)(446003)(99286004)(102836004)(316002)(1076003)(26005);
@@ -94,15 +94,15 @@ received-spf: None (protection.outlook.com: itdev.co.uk does not designate
  permitted sender hosts)
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: mYpin8wDLP/q3qXHhJb1uWZ12ZF/zNRdUh6c3yRQQJmMUw24heRDJ9pLPq+QvficTuOUkwJW9d1cH5MVAsZVj3QNCnbuGMcQhTGWryF2onWC/rF5ad/JrRHGfC+ZSnP0NkkU15Ln3SKGe65akL3p81GkwyiM/bq/+Vg850DkChf7VA7cvNCT3rw4AeJWNR5mFVpQGyG3TkEx1O763WMaFOD+Fm1avJHZOHRaxD4Nl/8oep6rrXsghEWqVp9NM4spo3bPMY6a8TrekJMki/ABw2zgDmfG/b2SiY+aZQ0gL3DS5pcnHo7O6J75U0Elv44uYHMY/251qfy1AcXa9HdG8Hrs8eQ9QLnuaGRFd/Y0mgBKZfQkheo7+CsAzKC0bMaa4a+Dmwb6smyFxUeW+yngUoX0GbYaOZ1hzYvYs6u6UFgpvgsHM6YlIFRo33Z57ag2
+x-microsoft-antispam-message-info: jDwTgDFKNic/y0hKd407ooVPIbb++FMSEHnNS/JuMhQ57q1bVI4TB7tYp2YZ1f2kH/hUFEkis8dhX0ljF825LEvsvuqBa63wUFLA3LqXg/yXF6h3yS9H0LnfFyhoJWyQYMYUi179l61Sjm33bQSlL1Y49LN3HyDRUB7xD+lLXr0qeSJ4ls+sh8WyCwa3ET7MTm8JuG8U2w+G8G1EmY5PKiBjdrvhpQrOlQxUmeoZ465hgVYQ5ZIv1zLPaT8ArLdLIuwhECDcSwVCEsJ61X+51WHNuOcmtF7Eh8SBbrnq1gYAI4Gn7wGDy0ZMzfnFk2rg21toSwZdseir9BgYlTwhdiP5SRv4vc7ZgGP1RBwccDOx3QsugBipXoNz0UVzP2QqOztFFs6lBQfT1zH1SRH+fwO9wknlGWIJVb5f0zyD+t28vJSFt/CorLQeYyIA903a
 MIME-Version: 1.0
 X-OriginatorOrg: itdev.co.uk
-X-MS-Exchange-CrossTenant-Network-Message-Id: fc08792d-75f5-4db2-81dd-08d75f147421
-X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Nov 2019 21:42:54.9921 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: dfae3b0e-75ab-46d4-269d-08d75f14769b
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Nov 2019 21:42:59.1557 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 2d2930c4-2251-45b4-ad79-3582c5f41740
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Yt2gU9z4S1/rg72Ka1DeOZP26dkwp45LPufwwWRkNrb7qb7K9fL9j+Lk+/zR3tJ2ZortZb0ZEFV1yOeqtMScFO4DChcqn0PjEUx0OAk7OEQ=
+X-MS-Exchange-CrossTenant-userprincipalname: 5NiYWv3V8QjHwkgJ0dtpl2G6s2fiNUb5B1AwfHPnyNDgj4BdXGEr+AVc+S797WdcXlC2aslSuwmTh9p7mltlQSPBBTFXoWRbeb3ap0q5p3s=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBBPR08MB4679
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -126,126 +126,64 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Request device's resources (memory, interrupt...) using managed
-function.
+Remove unused resource pointer from the device's internal structure.
 
 Signed-off-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
 ---
- drivers/staging/axis-fifo/axis-fifo.c | 45 ++++++++-------------------
- 1 file changed, 13 insertions(+), 32 deletions(-)
+ drivers/staging/axis-fifo/axis-fifo.c | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/staging/axis-fifo/axis-fifo.c b/drivers/staging/axis-fifo/axis-fifo.c
-index b436f48a9d50..2e6e2f149a26 100644
+index 2e6e2f149a26..39e6c59df1e9 100644
 --- a/drivers/staging/axis-fifo/axis-fifo.c
 +++ b/drivers/staging/axis-fifo/axis-fifo.c
-@@ -809,24 +809,13 @@ static int axis_fifo_probe(struct platform_device *pdev)
- 	fifo->mem = r_mem;
+@@ -125,7 +125,6 @@ MODULE_PARM_DESC(write_timeout, "ms to wait before blocking write() timing out;
  
- 	/* request physical memory */
--	if (!request_mem_region(fifo->mem->start, resource_size(fifo->mem),
--				DRIVER_NAME)) {
--		dev_err(fifo->dt_device,
--			"couldn't lock memory region at 0x%pa\n",
--			&fifo->mem->start);
--		rc = -EBUSY;
-+	fifo->base_addr = devm_ioremap_resource(fifo->dt_device, fifo->mem);
-+	if (IS_ERR(fifo->base_addr)) {
-+		rc = PTR_ERR(fifo->base_addr);
-+		dev_err(fifo->dt_device, "can't remap IO resource (%d)\n", rc);
+ struct axis_fifo {
+ 	int irq; /* interrupt */
+-	struct resource *mem; /* physical memory */
+ 	void __iomem *base_addr; /* kernel space memory */
+ 
+ 	unsigned int rx_fifo_depth; /* max words in the receive fifo */
+@@ -806,10 +805,8 @@ static int axis_fifo_probe(struct platform_device *pdev)
  		goto err_initial;
  	}
--	dev_dbg(fifo->dt_device, "got memory location [0x%pa - 0x%pa]\n",
--		&fifo->mem->start, &fifo->mem->end);
+ 
+-	fifo->mem = r_mem;
 -
--	/* map physical memory to kernel virtual address space */
--	fifo->base_addr = ioremap(fifo->mem->start, resource_size(fifo->mem));
--	if (!fifo->base_addr) {
--		dev_err(fifo->dt_device, "couldn't map physical memory\n");
--		rc = -ENOMEM;
--		goto err_mem;
--	}
-+
- 	dev_dbg(fifo->dt_device, "remapped memory to 0x%p\n", fifo->base_addr);
+ 	/* request physical memory */
+-	fifo->base_addr = devm_ioremap_resource(fifo->dt_device, fifo->mem);
++	fifo->base_addr = devm_ioremap_resource(fifo->dt_device, r_mem);
+ 	if (IS_ERR(fifo->base_addr)) {
+ 		rc = PTR_ERR(fifo->base_addr);
+ 		dev_err(fifo->dt_device, "can't remap IO resource (%d)\n", rc);
+@@ -820,7 +817,7 @@ static int axis_fifo_probe(struct platform_device *pdev)
  
  	/* create unique device name */
-@@ -842,7 +831,7 @@ static int axis_fifo_probe(struct platform_device *pdev)
+ 	snprintf(device_name, sizeof(device_name), "%s_%pa",
+-		 DRIVER_NAME, &fifo->mem->start);
++		 DRIVER_NAME, &r_mem->start);
  
- 	rc = axis_fifo_parse_dt(fifo);
- 	if (rc)
--		goto err_unmap;
-+		goto err_initial;
+ 	dev_dbg(fifo->dt_device, "device name [%s]\n", device_name);
  
- 	reset_ip_core(fifo);
- 
-@@ -857,16 +846,17 @@ static int axis_fifo_probe(struct platform_device *pdev)
+@@ -844,7 +841,7 @@ static int axis_fifo_probe(struct platform_device *pdev)
+ 	r_irq = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
+ 	if (!r_irq) {
  		dev_err(fifo->dt_device, "no IRQ found for 0x%pa\n",
- 			&fifo->mem->start);
+-			&fifo->mem->start);
++			&r_mem->start);
  		rc = -EIO;
--		goto err_unmap;
-+		goto err_initial;
+ 		goto err_initial;
+ 	}
+@@ -898,7 +895,7 @@ static int axis_fifo_probe(struct platform_device *pdev)
  	}
  
- 	/* request IRQ */
- 	fifo->irq = r_irq->start;
--	rc = request_irq(fifo->irq, &axis_fifo_irq, 0, DRIVER_NAME, fifo);
-+	rc = devm_request_irq(fifo->dt_device, fifo->irq, &axis_fifo_irq, 0,
-+			      DRIVER_NAME, fifo);
- 	if (rc) {
- 		dev_err(fifo->dt_device, "couldn't allocate interrupt %i\n",
- 			fifo->irq);
--		goto err_unmap;
-+		goto err_initial;
- 	}
+ 	dev_info(fifo->dt_device, "axis-fifo created at %pa mapped to 0x%pa, irq=%i, major=%i, minor=%i\n",
+-		 &fifo->mem->start, &fifo->base_addr, fifo->irq,
++		 &r_mem->start, &fifo->base_addr, fifo->irq,
+ 		 MAJOR(fifo->devt), MINOR(fifo->devt));
  
- 	/* ----------------------------
-@@ -877,7 +867,7 @@ static int axis_fifo_probe(struct platform_device *pdev)
- 	/* allocate device number */
- 	rc = alloc_chrdev_region(&fifo->devt, 0, 1, DRIVER_NAME);
- 	if (rc < 0)
--		goto err_irq;
-+		goto err_initial;
- 	dev_dbg(fifo->dt_device, "allocated device number major %i minor %i\n",
- 		MAJOR(fifo->devt), MINOR(fifo->devt));
- 
-@@ -901,7 +891,7 @@ static int axis_fifo_probe(struct platform_device *pdev)
- 	}
- 
- 	/* create sysfs entries */
--	rc = sysfs_create_group(&fifo->device->kobj, &axis_fifo_attrs_group);
-+	rc = devm_device_add_group(fifo->device, &axis_fifo_attrs_group);
- 	if (rc < 0) {
- 		dev_err(fifo->dt_device, "couldn't register sysfs group\n");
- 		goto err_cdev;
-@@ -919,12 +909,6 @@ static int axis_fifo_probe(struct platform_device *pdev)
- 	device_destroy(axis_fifo_driver_class, fifo->devt);
- err_chrdev_region:
- 	unregister_chrdev_region(fifo->devt, 1);
--err_irq:
--	free_irq(fifo->irq, fifo);
--err_unmap:
--	iounmap(fifo->base_addr);
--err_mem:
--	release_mem_region(fifo->mem->start, resource_size(fifo->mem));
- err_initial:
- 	dev_set_drvdata(dev, NULL);
- 	return rc;
-@@ -935,15 +919,12 @@ static int axis_fifo_remove(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct axis_fifo *fifo = dev_get_drvdata(dev);
- 
--	sysfs_remove_group(&fifo->device->kobj, &axis_fifo_attrs_group);
- 	cdev_del(&fifo->char_device);
- 	dev_set_drvdata(fifo->device, NULL);
- 	device_destroy(axis_fifo_driver_class, fifo->devt);
- 	unregister_chrdev_region(fifo->devt, 1);
--	free_irq(fifo->irq, fifo);
--	iounmap(fifo->base_addr);
--	release_mem_region(fifo->mem->start, resource_size(fifo->mem));
- 	dev_set_drvdata(dev, NULL);
-+
  	return 0;
- }
- 
 -- 
 2.23.0
 
