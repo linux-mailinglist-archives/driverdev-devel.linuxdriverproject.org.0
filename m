@@ -2,90 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 65143EC510
-	for <lists+driverdev-devel@lfdr.de>; Fri,  1 Nov 2019 15:51:37 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9B653EC6CA
+	for <lists+driverdev-devel@lfdr.de>; Fri,  1 Nov 2019 17:31:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 28209203BD;
-	Fri,  1 Nov 2019 14:51:35 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 97FFC24AFE;
+	Fri,  1 Nov 2019 16:31:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IhDpVfLTVn6N; Fri,  1 Nov 2019 14:51:34 +0000 (UTC)
+	with ESMTP id 80lU7nuvhPRD; Fri,  1 Nov 2019 16:31:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id DDA8F203D9;
-	Fri,  1 Nov 2019 14:51:33 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B69B824074;
+	Fri,  1 Nov 2019 16:31:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B6AE21BF5AE
- for <devel@linuxdriverproject.org>; Fri,  1 Nov 2019 14:51:31 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A978C1BF9D4
+ for <devel@linuxdriverproject.org>; Fri,  1 Nov 2019 16:31:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id B2D60203B2
- for <devel@linuxdriverproject.org>; Fri,  1 Nov 2019 14:51:31 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A5F9224074
+ for <devel@linuxdriverproject.org>; Fri,  1 Nov 2019 16:31:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cSfluk3r36y8 for <devel@linuxdriverproject.org>;
- Fri,  1 Nov 2019 14:51:31 +0000 (UTC)
+ with ESMTP id P6p9HF66XF1J for <devel@linuxdriverproject.org>;
+ Fri,  1 Nov 2019 16:31:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by silver.osuosl.org (Postfix) with ESMTPS id D6A2A20396
- for <devel@driverdev.osuosl.org>; Fri,  1 Nov 2019 14:51:30 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id xA1Emgab177701;
- Fri, 1 Nov 2019 14:51:28 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=nGNBEJDch3Fb1hcyWxzKpmeeNUrixQaYxfvmOjhwZ7Q=;
- b=B12Obcd5aCXe1B6pres9tgUw8b9PDsx8kbAtwAnM64iuhhEm2gzIqPgoMIm1VBOEJfY5
- 6DftQp9m3KHqNuTJFY+Mjj1VYzfnF2SLI7hZ2nVmH7cO7yede6/5JwyWfeR4gpJyi09w
- 0LHoDquzr0Lc4o6q/NhNQlsSMpZwxrIHkQwSVniSCXIc4ZRvWDNsgBPevbIeYg9cYP8g
- BDLgIJNsKfmFgIjQ4q0bfEMFRmNPI33cApn0XpXTmfu684BhnBmRL4FMISQBIVezooCH
- lq+8dpHkDUJpXqxYrPvJNb61tVCGQ/AyX24wUNXEHV9/fTXV+fthONzJlHiZNITgc7Fm hA== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2130.oracle.com with ESMTP id 2vxwhg29wg-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 01 Nov 2019 14:51:27 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id xA1EmMrD084671;
- Fri, 1 Nov 2019 14:51:27 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3030.oracle.com with ESMTP id 2vykw3fqaf-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 01 Nov 2019 14:51:26 +0000
-Received: from abhmp0017.oracle.com (abhmp0017.oracle.com [141.146.116.23])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id xA1EpP9D012233;
- Fri, 1 Nov 2019 14:51:25 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Fri, 01 Nov 2019 07:51:24 -0700
-Date: Fri, 1 Nov 2019 17:51:17 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Colin King <colin.king@canonical.com>
-Subject: Re: [PATCH] staging: rtl8192u: fix potential infinite loop because
- loop counter being too small
-Message-ID: <20191101145117.GB10409@kadam>
-References: <20191101142604.17610-1-colin.king@canonical.com>
+Received: from mail-ed1-f66.google.com (mail-ed1-f66.google.com
+ [209.85.208.66])
+ by silver.osuosl.org (Postfix) with ESMTPS id EAD401FD16
+ for <devel@driverdev.osuosl.org>; Fri,  1 Nov 2019 16:31:21 +0000 (UTC)
+Received: by mail-ed1-f66.google.com with SMTP id b72so7998248edf.1
+ for <devel@driverdev.osuosl.org>; Fri, 01 Nov 2019 09:31:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=latS+LOZUfL1yiiuFRKw1aKCiSm5Bt/9vWdEAhPRwuM=;
+ b=fwkUK5/Mx8m+fwqWZDtZ9Ze1D3ASVNZCBd8Flny2fB/BbJlegW8Bx2Fo9P1xDpYreQ
+ AuVXUkKqnA34K1QY+52AuM9F+XAba09nJHRwEvCoN/37Q4tVJc1Os5vG0Y+/FhwrF0md
+ P0vCS1Uv4d8CcYAyXAyb4mViewRHLuSimfVnM/9RY1X70pWuk2Ki+kdfCOdaszR3avmy
+ LtZuE7bSHk4vJt6njc2usOrSs2IAPDgOaDk9w3o+HOshBwdnqt0nCYC9Qeid0ifn9ndk
+ vdRGfsgB+XEFOpHFxAnVv2var5mOKeF5aVFI5i6rA0Bi0vapPEEYNQP1r4c62CYJgZWC
+ D8Ww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=latS+LOZUfL1yiiuFRKw1aKCiSm5Bt/9vWdEAhPRwuM=;
+ b=YLNgfYAM26S470y5RKAmXMcSGkvA8I2uRHOTGuW6EaIpTmlP/JEzewwK6nPY6Y4oNq
+ gEjOpDz2mNDnRTjlmNKulBonstOyz0zFRWosZ0VDMmyURNC7Bo5M6StLhdhcG4LNPcuY
+ 8dBP5GzokNxw9CFms1Kc+4ywdcN8QGhx5T22cZwepa9MsqP0qLWhm2sQkABBL5TjMX+o
+ 7JQ42QWmOJpPf6anW7BY6JB4l+uflia3mYHvT8O4UbQOW6zHU13FSZP/M+ThPbb1Ossb
+ unDj+A8G57goXlT+rWJUHfBjaA5GguSPeyqkOV65B7ocnte18qL3fCHkoRwWyV9F7n+9
+ dD5w==
+X-Gm-Message-State: APjAAAWGGTazu15WEJYJQwKPLM3H2tOB0ZSZmE9POMtmOJ64vaFZIERX
+ N1NtYo7GYrrZs+VghjrGL10lYX94uX1Pqwlj2s0=
+X-Google-Smtp-Source: APXvYqwCyf1tY3xU9Mi1yDltLJlfnLVadt/IduUQEiizPw6sdvVa8a2Ql4Kd03Qc0aPQZKGnt/M4WkrZ8FOZeQGcDCY=
+X-Received: by 2002:a17:906:4554:: with SMTP id
+ s20mr10769825ejq.283.1572625880017; 
+ Fri, 01 Nov 2019 09:31:20 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191101142604.17610-1-colin.king@canonical.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9427
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1908290000 definitions=main-1911010148
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9427
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
- definitions=main-1911010149
+Received: by 2002:a05:6402:1118:0:0:0:0 with HTTP; Fri, 1 Nov 2019 09:31:19
+ -0700 (PDT)
+From: "Mary Coster, I.M.F director-Benin" <eco.bank1204@gmail.com>
+Date: Fri, 1 Nov 2019 17:31:19 +0100
+Message-ID: <CAOE+jADXjDFS9YKzeE0eTp0coH9epA=xaXydAoOYHbo5uu7GGw@mail.gmail.com>
+Subject: Contact Money Gram international service-Benin to receive your
+ payment funds US$2.500,000 Million
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,47 +81,31 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, kernel-janitors@vger.kernel.org,
- linux-kernel@vger.kernel.org
+Reply-To: moneygram.1820@outlook.fr
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Nov 01, 2019 at 02:26:04PM +0000, Colin King wrote:
-> From: Colin Ian King <colin.king@canonical.com>
-> 
-> Currently the for-loop counter i is a u8 however it is being checked
-> against a maximum value priv->ieee80211->LinkDetectInfo.SlotNum which is a
-> u16. Hence there is a potential wrap-around of counter i back to zero if
-> priv->ieee80211->LinkDetectInfo.SlotNum is greater than 255.  Fix this by
-> making i a u16.
-> 
-> Addresses-Coverity: ("Infinite loop")
-> Fixes: 8fc8598e61f6 ("Staging: Added Realtek rtl8192u driver to staging")
-> Signed-off-by: Colin Ian King <colin.king@canonical.com>
-> ---
->  drivers/staging/rtl8192u/r8192U_core.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
-> index 48f1591ed5b4..fd91b7c5ca81 100644
-> --- a/drivers/staging/rtl8192u/r8192U_core.c
-> +++ b/drivers/staging/rtl8192u/r8192U_core.c
-> @@ -3210,7 +3210,7 @@ static void rtl819x_update_rxcounts(struct r8192_priv *priv, u32 *TotalRxBcnNum,
->  			     u32 *TotalRxDataNum)
->  {
->  	u16			SlotIndex;
-> -	u8			i;
-> +	u16			i;
-
-The iterator "i" should just be an int unless we know that it needs to
-be an unsigned long long.
-
-regards,
-dan carpenter
-
+Attn Dear,Funds Beneficiary.
+Contact Money Gram international service-Benin to receive your payment
+funds US$2.500,000 Million approved this morning through the UN
+payment settlement organization.
+Contact Person, Mr. John Dave.
+Official Director.Money Gram-Benin
+Email: moneygram.1820@outlook.fr
+Telephone +229 62619517
+Once you get intouch with Mr. John Dave, Money Gram Director, send to
+him your address including your phone numbers. He will be sending the
+transfer to you  $5000.00 USD daily until you received your complete
+payment $2.5m
+from the office.
+Note,I have paid the whole service fees for you but only small money
+you been required to send to this office is $23.00 only via Money Gram
+transfer.
+God bless
+Mary Coster, I.M.F director-Benin
+m.coster@aol.com
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
