@@ -2,60 +2,70 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 858CBECE04
-	for <lists+driverdev-devel@lfdr.de>; Sat,  2 Nov 2019 11:35:24 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 48F37ECE9B
+	for <lists+driverdev-devel@lfdr.de>; Sat,  2 Nov 2019 13:14:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 22E3F8AB78;
-	Sat,  2 Nov 2019 10:35:23 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5E159853F8;
+	Sat,  2 Nov 2019 12:14:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rOiMy8kY3l00; Sat,  2 Nov 2019 10:35:22 +0000 (UTC)
+	with ESMTP id i7w9sSEfPWAL; Sat,  2 Nov 2019 12:14:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 08B748AB66;
-	Sat,  2 Nov 2019 10:35:22 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4FC2C841E3;
+	Sat,  2 Nov 2019 12:14:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id F34451BF287
- for <devel@linuxdriverproject.org>; Sat,  2 Nov 2019 10:35:19 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 938C21BF426
+ for <devel@linuxdriverproject.org>; Sat,  2 Nov 2019 12:14:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id EDE5F89FB4
- for <devel@linuxdriverproject.org>; Sat,  2 Nov 2019 10:35:19 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9040D303A6
+ for <devel@linuxdriverproject.org>; Sat,  2 Nov 2019 12:14:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oZtUytF2stZ5 for <devel@linuxdriverproject.org>;
- Sat,  2 Nov 2019 10:35:18 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D044E89D41
- for <devel@driverdev.osuosl.org>; Sat,  2 Nov 2019 10:35:18 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 577EA20679;
- Sat,  2 Nov 2019 10:35:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1572690917;
- bh=mbxbLsNycQLuE8Rszlxz5umA/C2he7utVAFoZom6eio=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=mnnZp8cgHwOL3Bklw15NKTAPy0z0ECSizzfhfDLGYPmHX8YE6yC4hExGqCyYunR2/
- wfcqjzLuC8+/U1jXFDDHTPo996opRuMc04Iw41Ox8Xot2gY+Ef+llKYx45ZvyzYnd5
- OetJZrUISpIrSB6ZYWKL8fkhh8dBRKx9lX1XU7xE=
-Date: Sat, 2 Nov 2019 11:35:15 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Davidlohr Bueso <dave@stgolabs.net>
-Subject: Re: [PATCH resend] staging: vc04_services: replace
- g_free_fragments_mutex with spinlock
-Message-ID: <20191102103515.GA135926@kroah.com>
-References: <20191028165909.GA469472@kroah.com>
- <20191101182949.21225-1-dave@stgolabs.net>
+ with ESMTP id kY+ZZiyYsZvg for <devel@linuxdriverproject.org>;
+ Sat,  2 Nov 2019 12:14:45 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-il1-f193.google.com (mail-il1-f193.google.com
+ [209.85.166.193])
+ by silver.osuosl.org (Postfix) with ESMTPS id A77D32F44B
+ for <devel@linuxdriverproject.org>; Sat,  2 Nov 2019 12:14:45 +0000 (UTC)
+Received: by mail-il1-f193.google.com with SMTP id d83so10916389ilk.7
+ for <devel@linuxdriverproject.org>; Sat, 02 Nov 2019 05:14:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=9x0D56ZwARqyAJI59crbpwifItY15fznRZNu+zcNOLw=;
+ b=SwQWVFR1/aE/3p6eCOZAcbYlIkRyOhX4OMmCqZfL1VeinYOBeyQ14hJG6/GPUfLYIF
+ wXYVOdKh5wx/zl5mEArZ/b64U3K7z9a/7O4hVJqXrYarYQqgwNNypM+4u9GsnZXqkJYl
+ qQpFSDE4SY/D0c0fF+sfGPMSRAoJFrRXdV+o3geUykNqdNwT7dvc4zfUX/QOKCHHYs4b
+ jGSVPUxSzGk1p8jOOrifILb2IdU5Aetr36hg08lF25T0ZcV93SqH3rU/2mhrKfCyKMBH
+ oXB9Iy9fZ9Wp0jRCmw9bieNGxWWkm3r0Gv9BFCKxmU5ZGKuFKFcYDV/EoEz0ffYZ2sOM
+ WQwA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=9x0D56ZwARqyAJI59crbpwifItY15fznRZNu+zcNOLw=;
+ b=aQHn7kCl/qaNzTox3PdMrCwklnrGphjZyEO/iAzuUHTwWu7B49tiSCn5EoXbQPcQJy
+ +qqzNaljULZ7920Q+WE+U7QIR8feWVEob6m/Jj5+acOvxG89l+oAQoCFb7MNTHetKkpN
+ QcdpBts7DUTJa4lpLX3s2aceK0I0RRNBLvgXK7Qlhw8tpYXi8+L/16czXZ56xhEVoM7f
+ jMK+aL00RbbaJJ/DVIqZuVCjhWZMCXYfc8bshtGtjV6X2Yi4HUhEtUvKzCAiDlOjuSx1
+ tcsDOG3dK+E2lde5o/hHWnHW4vob0l3yQnxiJYB7vqLwIOqS9yy8BbBgoVVwr1UZ/IYL
+ ds3Q==
+X-Gm-Message-State: APjAAAWFkESmDqdUmKhV7G7+fxOx1BKK+bkQE59jDJO92E5kPVR+DZHP
+ hG1mdIqnUXy8F7LKKVZLaEj9NN/94fMPACeSxbw=
+X-Google-Smtp-Source: APXvYqydWOFmlgUWCtiXqdMfpXOeyDwsLAltin1mq8/skfwwwlGgciuOwdCcMSwu7434Uh7EulrWDeLfFilWBPdE0ic=
+X-Received: by 2002:a92:6501:: with SMTP id z1mr9081699ilb.125.1572696884936; 
+ Sat, 02 Nov 2019 05:14:44 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191101182949.21225-1-dave@stgolabs.net>
-User-Agent: Mutt/1.12.2 (2019-09-21)
+Received: by 2002:a6b:4a10:0:0:0:0:0 with HTTP;
+ Sat, 2 Nov 2019 05:14:43 -0700 (PDT)
+From: Miss Basirat Ibrahim <tarhouni805@gmail.com>
+Date: Sat, 2 Nov 2019 13:14:43 +0100
+Message-ID: <CAGD2OuYKkn-cShxMMf1GvFdGxKu=sLsxDdeVYXNmUKz2gOE6=g@mail.gmail.com>
+Subject: With due respect From Miss Basirat Ibrahim
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,38 +78,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, eric@anholt.net, wahrenst@gmx.net,
- linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Nov 01, 2019 at 11:29:49AM -0700, Davidlohr Bueso wrote:
-> There is no need to be using a semaphore, or a sleeping lock
-> in the first place: critical region is extremely short, does not
-> call into any blocking calls and furthermore lock and unlocking
-> operations occur in the same context.
-> 
-> Get rid of another semaphore user by replacing it with a spinlock.
-> 
-> Signed-off-by: Davidlohr Bueso <dave@stgolabs.net>
-> ---
-> This is in an effort to further reduce semaphore users in the kernel.
-> 
-> This is a resend, which just seems simpler given the confusions.
-> 
->  .../staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
+Hi
 
-This patch does not apply to my tree at all, what did you make it
-against?
+My Name is Miss.Basirat Ibrahim from Libya, am 23 years old, am
+presently in St.Christopher's Parish for refugee in Burkina Faso under
+United Nations High commission for Refugee,
 
-Please fix up and resend.
+ I lost my parents in the recent war in  Libya, right now I am in
+Burkina Faso, please save my life i am in danger need your help in
+transferring my inheritance, my father left behind for me in a Bank in
+Burkina Faso here,
 
-thanks,
+ i have every necessary document for the fund, all i needed is a
+foreigner who will
+stand as the foreign partner to my father and beneficiary of the fund.
 
-greg k-h
+The money deposited in the Bank is US10.5 MILLION UNITED STATES
+DOLLAR) I just need this fund to be transfer to your bank account so
+that i will come over to your country and complete my education as you
+know that my country have been in deep crisis due to the war .And I
+cannot go back there again because I have nobody again all of my
+family were killed in the war. If you are interested to save me and
+help me receive my inheritance fund into your bank account with utmost
+good faith
+
+Please get back to me.through my private Email    hm36813999@gmail.com
+
+
+
+Miss.Basirat Ibrahim.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
