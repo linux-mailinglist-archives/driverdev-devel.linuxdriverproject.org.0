@@ -1,77 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 29050EE4B9
-	for <lists+driverdev-devel@lfdr.de>; Mon,  4 Nov 2019 17:34:30 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 331C8EE4B4
+	for <lists+driverdev-devel@lfdr.de>; Mon,  4 Nov 2019 17:34:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6E33A8AB2C;
-	Mon,  4 Nov 2019 16:34:27 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 21C70895F1;
+	Mon,  4 Nov 2019 16:34:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RYQjlXerFaCb; Mon,  4 Nov 2019 16:34:27 +0000 (UTC)
+	with ESMTP id C1bP_JLCKvDD; Mon,  4 Nov 2019 16:34:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A03118A792;
-	Mon,  4 Nov 2019 16:34:26 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9D75F895FB;
+	Mon,  4 Nov 2019 16:34:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 340971BF4D6
- for <devel@linuxdriverproject.org>; Mon,  4 Nov 2019 16:34:25 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 15AF81BF4D6
+ for <devel@linuxdriverproject.org>; Mon,  4 Nov 2019 16:33:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 2E41A85B95
- for <devel@linuxdriverproject.org>; Mon,  4 Nov 2019 16:34:25 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 0ACC68A7DB
+ for <devel@linuxdriverproject.org>; Mon,  4 Nov 2019 16:33:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7wjfoWeHTDaz for <devel@linuxdriverproject.org>;
- Mon,  4 Nov 2019 16:34:24 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
- [209.85.221.66])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4A842852C7
- for <devel@driverdev.osuosl.org>; Mon,  4 Nov 2019 16:34:24 +0000 (UTC)
-Received: by mail-wr1-f66.google.com with SMTP id a11so17838568wra.6
- for <devel@driverdev.osuosl.org>; Mon, 04 Nov 2019 08:34:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=JFkDbKsSeI6+K0jBeMW0GZTEnXuZ3ZSW0WVBKac1tL0=;
- b=fHz/KuqTSjH1izmh/ecYcpUWqeTHp/VgGOXvyKCgSKmsswFECT92U4eKMGjaGAy+OT
- /tc9SGYjnxdtRNm2HJWQRlncZ1OC6fiIgewfXPUui7RtjX7JdHFlyAD49OXwpUZpHQOk
- oKzQl6uS7XOdjODe5L1F5F9IHfev2jx7af3Vk2RLk9GwAz8NpLOBOvT5cU/FFdGPDXRX
- JXxx1+3IFgsEbv0SddcXvfxU9PQVT1dNWZvjPUXMZ4c79QFCTVmYA8Zj13B0EZHSgDd9
- i+TUaElLH7kHRSALqMTdd8huDBv6X6bZvajsUFWdxsdpD+qhETk3e8xofis9JSLksRoG
- bQsg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=JFkDbKsSeI6+K0jBeMW0GZTEnXuZ3ZSW0WVBKac1tL0=;
- b=jKK91a57tdtowODT4NyzyNBpgtj6WaJXVAzoYNvgKyXzViy/z6FaPnvXyODu2B9ZA4
- TL+dHMeY40yQcMPIvHnS8GvF9sIZhGC3a1JwI+US5cUC+/TxlVfLlBEpjLdIEpeflpRw
- Q7xH7kz3H5ydrqieeCT+3JIT3mFFcOnvRpUulXcdzpZnBhcDBSkkzNfvU0eqsgy90BKl
- F2wUW/YhNKx8x6KOuFDbPjTQSKQ21NgWR285Cy6WUSIJrIrqcOtelHNHyI48F/lyGEAh
- FbSRxr6r6TuByu8RQqsfHsHI5De9llpnh6AM7U1yfeBH1Hn0FgsGFepeDRgPL6aeK97K
- A86g==
-X-Gm-Message-State: APjAAAUCqKmgCAO/btMoyERrOFJ44Y7Lwcwyo0XiVTM7lOxbLDkvsSYO
- RoAICEwUORzHI1uogGLSnA==
-X-Google-Smtp-Source: APXvYqwER7eASKzqK/tmsjOMIJJXcnS/K0BnACQLnfZ/F7fsD/zr+ZXQ8+brh4pdwMcZEMoVpzdIBQ==
-X-Received: by 2002:adf:f4c9:: with SMTP id h9mr19343427wrp.354.1572885262526; 
- Mon, 04 Nov 2019 08:34:22 -0800 (PST)
-Received: from ninjahub.lan (79-73-36-243.dynamic.dsl.as9105.com.
- [79.73.36.243]) by smtp.googlemail.com with ESMTPSA id
- h124sm18573509wmf.30.2019.11.04.08.34.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 Nov 2019 08:34:22 -0800 (PST)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: comedi: rewrite macro function with GNU extension
- typeof
-Date: Mon,  4 Nov 2019 16:33:31 +0000
-Message-Id: <20191104163331.68173-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.23.0
+ with ESMTP id sBDka8MQhFUM for <devel@linuxdriverproject.org>;
+ Mon,  4 Nov 2019 16:33:54 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.siol.net (mailoutvs35.siol.net [185.57.226.226])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 463A18A794
+ for <devel@driverdev.osuosl.org>; Mon,  4 Nov 2019 16:33:54 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.siol.net (Postfix) with ESMTP id 94E61525106;
+ Mon,  4 Nov 2019 17:33:51 +0100 (CET)
+X-Virus-Scanned: amavisd-new at psrvmta10.zcs-production.pri
+Received: from mail.siol.net ([127.0.0.1])
+ by localhost (psrvmta10.zcs-production.pri [127.0.0.1]) (amavisd-new,
+ port 10032)
+ with ESMTP id cL8U28b3yVhv; Mon,  4 Nov 2019 17:33:51 +0100 (CET)
+Received: from mail.siol.net (localhost [127.0.0.1])
+ by mail.siol.net (Postfix) with ESMTPS id E8F185250EB;
+ Mon,  4 Nov 2019 17:33:50 +0100 (CET)
+Received: from jernej-laptop.localnet (cpe-86-58-102-7.static.triera.net
+ [86.58.102.7]) (Authenticated sender: jernej.skrabec@siol.net)
+ by mail.siol.net (Postfix) with ESMTPA id EA0315251A3;
+ Mon,  4 Nov 2019 17:33:46 +0100 (CET)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@siol.net>
+To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+Subject: Re: [PATCH 1/3] media: cedrus: Properly signal size in mode register
+Date: Mon, 04 Nov 2019 17:33:46 +0100
+Message-ID: <7309638.L6IRxaGt1L@jernej-laptop>
+In-Reply-To: <20191104100228.GD502900@aptenodytes>
+References: <20191026074959.1073512-1-jernej.skrabec@siol.net>
+ <20191026074959.1073512-2-jernej.skrabec@siol.net>
+ <20191104100228.GD502900@aptenodytes>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -85,45 +68,188 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Jules Irenge <jbi.octave@gmail.com>,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, abbotti@mev.co.uk
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-sunxi@googlegroups.com, linux-kernel@vger.kernel.org, mripard@kernel.org,
+ wens@csie.org, hverkuil-cisco@xs4all.nl, mchehab@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Rewrite macro function with the GNU extension typeof
-to remove a possible side-effects of MACRO argument reuse "x".
- - Problem could rise if arguments have different types
-and different use though.
+Dne ponedeljek, 04. november 2019 ob 11:02:28 CET je Paul Kocialkowski 
+napisal(a):
+> Hi Jernej,
+> 
+> On Sat 26 Oct 19, 09:49, Jernej Skrabec wrote:
+> > Mode register also holds information if video width is bigger than 2048
+> > and if it is equal to 4096.
+> > 
+> > Rework cedrus_engine_enable() to properly signal this properties.
+> 
+> Thanks for the patch, looks good to me!
+> 
+> Acked-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+> 
+> One minor thing: maybe we should have a way to set the maximum dimensions
+> depending on the generation of the engine in use and the actual maximum
+> supported by the hardware.
+> 
+> Maybe either as dedicated new fields in struct cedrus_variant or as
+> capability flags.
 
-Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
----
-v1 - had no full commit log message, with changes not intended to be in the patch 
-v2 - remove some changes not intended to be in this driver
-     include note of a potential problem
- drivers/staging/comedi/comedi.h | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+I was thinking about first solution, but after going trough manuals, it was 
+unclear what are real limitations. For example, H3 manual states that it is 
+capable of decoding H264 1080p@60Hz. However, I know for a fact that it is 
+also capable of decoding 4k videos, but probably not at 60 Hz. I don't own 
+anything older that A83T, so I don't know what are capabilities of those SoCs. 
+Anyway, being slow is still ok for some tasks, like transcoding, so we can't 
+limit decoding to 1080p just because it's slow. It is probably still faster 
+than doing it in SW. Not to mention that it's still ok for some videos, a lot 
+of them uses 24 fps.
 
-diff --git a/drivers/staging/comedi/comedi.h b/drivers/staging/comedi/comedi.h
-index 09a940066c0e..a57691a2e8d8 100644
---- a/drivers/staging/comedi/comedi.h
-+++ b/drivers/staging/comedi/comedi.h
-@@ -1103,8 +1103,10 @@ enum ni_common_signal_names {
- 
- /* *** END GLOBALLY-NAMED NI TERMINALS/SIGNALS *** */
- 
--#define NI_USUAL_PFI_SELECT(x)	(((x) < 10) ? (0x1 + (x)) : (0xb + (x)))
--#define NI_USUAL_RTSI_SELECT(x)	(((x) < 7) ? (0xb + (x)) : 0x1b)
-+#define NI_USUAL_PFI_SELECT(x)\
-+	({typeof(x) x_ = (x); (x_ < 10) ? (0x1 + x_) : (0xb + x_); })
-+#define NI_USUAL_RTSI_SELECT(x)\
-+	({typeof(x) x_ = (x); (x_ < 7) ? (0xb + x_) : 0x1b; })
- 
- /*
-  * mode bits for NI general-purpose counters, set with
--- 
-2.23.0
+Best regards,
+Jernej
+
+> 
+> Anyway that can be done later since we were already hardcoding this.
+> 
+> Cheers,
+> 
+> Paul
+> 
+> > Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
+> > ---
+> > 
+> >  drivers/staging/media/sunxi/cedrus/cedrus_h264.c  | 2 +-
+> >  drivers/staging/media/sunxi/cedrus/cedrus_h265.c  | 2 +-
+> >  drivers/staging/media/sunxi/cedrus/cedrus_hw.c    | 9 +++++++--
+> >  drivers/staging/media/sunxi/cedrus/cedrus_hw.h    | 2 +-
+> >  drivers/staging/media/sunxi/cedrus/cedrus_mpeg2.c | 2 +-
+> >  drivers/staging/media/sunxi/cedrus/cedrus_regs.h  | 2 ++
+> >  6 files changed, 13 insertions(+), 6 deletions(-)
+> > 
+> > diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
+> > b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c index
+> > 7487f6ab7576..d2c854ecdf15 100644
+> > --- a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
+> > +++ b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
+> > @@ -485,7 +485,7 @@ static void cedrus_h264_setup(struct cedrus_ctx *ctx,
+> > 
+> >  {
+> >  
+> >  	struct cedrus_dev *dev = ctx->dev;
+> > 
+> > -	cedrus_engine_enable(dev, CEDRUS_CODEC_H264);
+> > +	cedrus_engine_enable(ctx, CEDRUS_CODEC_H264);
+> > 
+> >  	cedrus_write(dev, VE_H264_SDROT_CTRL, 0);
+> >  	cedrus_write(dev, VE_H264_EXTRA_BUFFER1,
+> > 
+> > diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+> > b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c index
+> > 9bc921866f70..6945dc74e1d7 100644
+> > --- a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+> > +++ b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+> > @@ -276,7 +276,7 @@ static void cedrus_h265_setup(struct cedrus_ctx *ctx,
+> > 
+> >  	}
+> >  	
+> >  	/* Activate H265 engine. */
+> > 
+> > -	cedrus_engine_enable(dev, CEDRUS_CODEC_H265);
+> > +	cedrus_engine_enable(ctx, CEDRUS_CODEC_H265);
+> > 
+> >  	/* Source offset and length in bits. */
+> > 
+> > diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
+> > b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c index
+> > 570a9165dd5d..3acfa21bc124 100644
+> > --- a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
+> > +++ b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
+> > @@ -30,7 +30,7 @@
+> > 
+> >  #include "cedrus_hw.h"
+> >  #include "cedrus_regs.h"
+> > 
+> > -int cedrus_engine_enable(struct cedrus_dev *dev, enum cedrus_codec codec)
+> > +int cedrus_engine_enable(struct cedrus_ctx *ctx, enum cedrus_codec codec)
+> > 
+> >  {
+> >  
+> >  	u32 reg = 0;
+> > 
+> > @@ -58,7 +58,12 @@ int cedrus_engine_enable(struct cedrus_dev *dev, enum
+> > cedrus_codec codec)> 
+> >  		return -EINVAL;
+> >  	
+> >  	}
+> > 
+> > -	cedrus_write(dev, VE_MODE, reg);
+> > +	if (ctx->src_fmt.width == 4096)
+> > +		reg |= VE_MODE_PIC_WIDTH_IS_4096;
+> > +	if (ctx->src_fmt.width > 2048)
+> > +		reg |= VE_MODE_PIC_WIDTH_MORE_2048;
+> > +
+> > +	cedrus_write(ctx->dev, VE_MODE, reg);
+> > 
+> >  	return 0;
+> >  
+> >  }
+> > 
+> > diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_hw.h
+> > b/drivers/staging/media/sunxi/cedrus/cedrus_hw.h index
+> > 27d0882397aa..604ff932fbf5 100644
+> > --- a/drivers/staging/media/sunxi/cedrus/cedrus_hw.h
+> > +++ b/drivers/staging/media/sunxi/cedrus/cedrus_hw.h
+> > @@ -16,7 +16,7 @@
+> > 
+> >  #ifndef _CEDRUS_HW_H_
+> >  #define _CEDRUS_HW_H_
+> > 
+> > -int cedrus_engine_enable(struct cedrus_dev *dev, enum cedrus_codec
+> > codec);
+> > +int cedrus_engine_enable(struct cedrus_ctx *ctx, enum cedrus_codec
+> > codec);
+> > 
+> >  void cedrus_engine_disable(struct cedrus_dev *dev);
+> >  
+> >  void cedrus_dst_format_set(struct cedrus_dev *dev,
+> > 
+> > diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_mpeg2.c
+> > b/drivers/staging/media/sunxi/cedrus/cedrus_mpeg2.c index
+> > 13c34927bad5..8bcd6b8f9e2d 100644
+> > --- a/drivers/staging/media/sunxi/cedrus/cedrus_mpeg2.c
+> > +++ b/drivers/staging/media/sunxi/cedrus/cedrus_mpeg2.c
+> > @@ -96,7 +96,7 @@ static void cedrus_mpeg2_setup(struct cedrus_ctx *ctx,
+> > struct cedrus_run *run)> 
+> >  	quantization = run->mpeg2.quantization;
+> >  	
+> >  	/* Activate MPEG engine. */
+> > 
+> > -	cedrus_engine_enable(dev, CEDRUS_CODEC_MPEG2);
+> > +	cedrus_engine_enable(ctx, CEDRUS_CODEC_MPEG2);
+> > 
+> >  	/* Set intra quantization matrix. */
+> > 
+> > diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_regs.h
+> > b/drivers/staging/media/sunxi/cedrus/cedrus_regs.h index
+> > 4275a307d282..ace3d49fcd82 100644
+> > --- a/drivers/staging/media/sunxi/cedrus/cedrus_regs.h
+> > +++ b/drivers/staging/media/sunxi/cedrus/cedrus_regs.h
+> > @@ -35,6 +35,8 @@
+> > 
+> >  #define VE_MODE					0x00
+> > 
+> > +#define VE_MODE_PIC_WIDTH_IS_4096		BIT(22)
+> > +#define VE_MODE_PIC_WIDTH_MORE_2048		BIT(21)
+> > 
+> >  #define VE_MODE_REC_WR_MODE_2MB			(0x01 << 20)
+> >  #define VE_MODE_REC_WR_MODE_1MB			(0x00 << 20)
+> >  #define VE_MODE_DDR_MODE_BW_128			(0x03 << 16)
+
+
+
 
 _______________________________________________
 devel mailing list
