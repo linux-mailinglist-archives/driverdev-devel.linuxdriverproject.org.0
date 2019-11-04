@@ -1,83 +1,93 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AA666EDCF3
-	for <lists+driverdev-devel@lfdr.de>; Mon,  4 Nov 2019 11:54:12 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4B4BAEDD2D
+	for <lists+driverdev-devel@lfdr.de>; Mon,  4 Nov 2019 11:58:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 315D921538;
-	Mon,  4 Nov 2019 10:54:10 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 66CB3895A9;
+	Mon,  4 Nov 2019 10:58:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MkOUWiVDnocf; Mon,  4 Nov 2019 10:54:09 +0000 (UTC)
+	with ESMTP id gwKAGByLr6e9; Mon,  4 Nov 2019 10:58:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id BB9D920530;
-	Mon,  4 Nov 2019 10:54:08 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 29E98890AB;
+	Mon,  4 Nov 2019 10:58:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 697FB1BF361
- for <devel@linuxdriverproject.org>; Mon,  4 Nov 2019 10:54:06 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C57981BF361
+ for <devel@linuxdriverproject.org>; Mon,  4 Nov 2019 10:58:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 636AA8A9C9
- for <devel@linuxdriverproject.org>; Mon,  4 Nov 2019 10:54:06 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id AF68C20526
+ for <devel@linuxdriverproject.org>; Mon,  4 Nov 2019 10:58:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DtHDU1wD2lke for <devel@linuxdriverproject.org>;
- Mon,  4 Nov 2019 10:54:04 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from omr2.cc.vt.edu (outbound.smtp.vt.edu [198.82.183.121])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 504CF8A9FE
- for <devel@driverdev.osuosl.org>; Mon,  4 Nov 2019 10:54:04 +0000 (UTC)
-Received: from mr5.cc.vt.edu (junk.cc.ipv6.vt.edu
- [IPv6:2607:b400:92:9:0:9d:8fcb:4116])
- by omr2.cc.vt.edu (8.14.4/8.14.4) with ESMTP id xA4As3mK023483
- for <devel@driverdev.osuosl.org>; Mon, 4 Nov 2019 05:54:03 -0500
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197])
- by mr5.cc.vt.edu (8.14.7/8.14.7) with ESMTP id xA4Arwj9007203
- for <devel@driverdev.osuosl.org>; Mon, 4 Nov 2019 05:54:03 -0500
-Received: by mail-qk1-f197.google.com with SMTP id d144so17147881qke.16
- for <devel@driverdev.osuosl.org>; Mon, 04 Nov 2019 02:54:03 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:in-reply-to:references
- :mime-version:content-transfer-encoding:date:message-id;
- bh=O4sSEohI+9ePFu7NIh17h34X06dA5Ss7wezIrk0/sMM=;
- b=loV2e7gJICtqhASFkwKkNz3X7JfzCeYNESRmPfeY+Cr1hH5fWVtPYAjmODOAyvi99m
- vGlm42L3ZRI85/ykZvCPhHwPXorMTWKVR68WnO4S2SIW2nlyGmUG4m6CIVK/8jn6goY5
- 6i3v/WgZ7gtiRiCuzdbUprDnrq/ziKROJBx2XfkbpiJunocZRiSh9ZZ9DfQzbmYNirju
- s9ZVdDUN8zjQ1P9WXV25be2JBNC27zXlRoVvptm3tY88sVP1lGANxljduyfVg269XJCx
- s3FroZpT2olg73L1U5fYgiTcs8kTkpFYw91Pmk2irEJXdJ6y/7YYYIFMmSF0+B0QmyVr
- hMWw==
-X-Gm-Message-State: APjAAAWv0y9F6Z9Mhaqys+72TQsB9g950K1Q77a5BF1DYtbO76duZHbL
- uYobHIxj+ucZQjXupP2KlQ9ardbFQnkbwjgk0MGWM18NpRwfu3ju+VaElRUrhgHxTTXUEhBmtGC
- twcSJESZmvGpAf4Sjmq5oICLvMDYTsxV6
-X-Received: by 2002:ad4:5349:: with SMTP id v9mr19958009qvs.55.1572864837971; 
- Mon, 04 Nov 2019 02:53:57 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwstpqpeboZZUEmIXv+bMXs6fTpFWmQmyQJOF4uLfKs2q0utFPvv23/qq1PCoH4UlOCj6735g==
-X-Received: by 2002:ad4:5349:: with SMTP id v9mr19957995qvs.55.1572864837661; 
- Mon, 04 Nov 2019 02:53:57 -0800 (PST)
-Received: from turing-police ([2601:5c0:c001:c9e1::359])
- by smtp.gmail.com with ESMTPSA id l124sm193608qkf.122.2019.11.04.02.53.55
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 Nov 2019 02:53:56 -0800 (PST)
-From: "Valdis Kl=?utf-8?Q?=c4=93?=tnieks" <valdis.kletnieks@vt.edu>
-X-Google-Original-From: "Valdis Kl=?utf-8?Q?=c4=93?=tnieks"
- <Valdis.Kletnieks@vt.edu>
-X-Mailer: exmh version 2.9.0 11/07/2018 with nmh-1.7+dev
-To: Dan Carpenter <dan.carpenter@oracle.com>
+ with ESMTP id KPWYXrPe8I-2 for <devel@linuxdriverproject.org>;
+ Mon,  4 Nov 2019 10:58:25 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by silver.osuosl.org (Postfix) with ESMTPS id 0040520523
+ for <devel@driverdev.osuosl.org>; Mon,  4 Nov 2019 10:58:24 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id xA4AtrM6192477;
+ Mon, 4 Nov 2019 10:58:21 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ content-transfer-encoding : in-reply-to; s=corp-2019-08-05;
+ bh=4Huoh6wIugbFZjm22QuBBMKrcUJPLMn8KTchxHNOYUs=;
+ b=Us4rdO0EZAqnQE6q0ebNjGiLk/WCjwlneykewTNpgc7fSmdinOhKH/ZQeXpBmQOxxi7J
+ 51gnEg3dU75yEIGmH5ni4BnLMp5p2dNq0oyY6eqSyLUrBL7gc4XXdT3eKg65IQqgiNsl
+ 98ahwAuAyY8CqGaT4c+ITllsOKkqByJrJNr0yMTFTW4vGIBM+ezl/9Jl+ss9SwIIv7Ca
+ 30D6y0HsjcePt7sGVfu1Sv+TMS7GTmGSXFsqNW2ZfZDJQQFZx4Gu7/HX6tXyl7g6lIwZ
+ H1GmnuusRDTQa4uRFSAiWkAzNBYYVClL7XOv2VD8KodLu/ZSPyWg3smrrldWf8AKcdiU uQ== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by userp2120.oracle.com with ESMTP id 2w12eqxa8e-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 04 Nov 2019 10:58:21 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id xA4AssUd142627;
+ Mon, 4 Nov 2019 10:56:20 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by userp3020.oracle.com with ESMTP id 2w1kxd1qcm-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 04 Nov 2019 10:56:20 +0000
+Received: from abhmp0022.oracle.com (abhmp0022.oracle.com [141.146.116.28])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id xA4AuJ7s000754;
+ Mon, 4 Nov 2019 10:56:19 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Mon, 04 Nov 2019 02:56:19 -0800
+Date: Mon, 4 Nov 2019 13:56:12 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Valdis =?utf-8?Q?Kl=C4=93tnieks?= <valdis.kletnieks@vt.edu>
 Subject: Re: [PATCH v2 07/10] staging: exfat: Clean up return codes -
  FFS_SUCCESS
-In-Reply-To: <20191104100413.GC10409@kadam>
+Message-ID: <20191104105612.GG21796@kadam>
 References: <20191104014510.102356-1-Valdis.Kletnieks@vt.edu>
  <20191104014510.102356-8-Valdis.Kletnieks@vt.edu>
- <20191104100413.GC10409@kadam>
-Mime-Version: 1.0
-Date: Mon, 04 Nov 2019 05:53:55 -0500
-Message-ID: <128761.1572864835@turing-police>
+ <20191104100413.GC10409@kadam> <128761.1572864835@turing-police>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <128761.1572864835@turing-police>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9430
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1908290000 definitions=main-1911040109
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9430
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
+ definitions=main-1911040109
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,71 +103,28 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: linux-fsdevel@vger.kernel.org,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
  linux-kernel@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============2694761270742122735=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
---===============2694761270742122735==
-Content-Type: multipart/signed; boundary="==_Exmh_1572864835_14215P";
-	 micalg=pgp-sha1; protocol="application/pgp-signature"
-Content-Transfer-Encoding: 7bit
-
---==_Exmh_1572864835_14215P
-Content-Type: text/plain; charset=us-ascii
-
-On Mon, 04 Nov 2019 13:04:14 +0300, Dan Carpenter said:
-> On Sun, Nov 03, 2019 at 08:45:03PM -0500, Valdis Kletnieks wrote:
-> > -	if (sector_read(sb, sec, &bp->buf_bh, 1) != FFS_SUCCESS) {
-> > +	if (sector_read(sb, sec, &bp->buf_bh, 1) != 0) {
->
-> It's better to just remove the "!= 0" double negative.  != 0 should be
-> used when we are talking about the number zero as in "cnt != 0" and for
-> "strcmp(foo, bar) != 0" where it means that "foo != bar".
-
-"Fix up ==0 and !=0" is indeed on the to-do list.
-
-This patch converted 82 uses of FFS_SUCCESS, of which 33 had the != idiom in
-use.  Meanwhile, overall there's 53 '!= 0' and 95 '== 0' uses.
-
-In other words, even if I fixed all of those that were involved in this patch,
-there would *still* be more patching to do.
-
-
-
-
-
---==_Exmh_1572864835_14215P
-Content-Type: application/pgp-signature
-
------BEGIN PGP SIGNATURE-----
-Comment: Exmh version 2.9.0 11/07/2018
-
-iQIVAwUBXcADQgdmEQWDXROgAQKAchAAtemIJM4rEnk/fzHoPM8wtbMrApsfS8oQ
-xZk0xQ6DGVGwCR67LvNuy3qU5sgSXDuI6+0Egf/63qzQdyZ4C87x49m0p3J6dctU
-wFwVlDwlr49ZbCcHDWD/lI7B3cc+1iwxAcMYVXQGMsF4dNckVLzHXjP7PEq0eMnP
-xZKkGxU9pvJLpiuCckiJTda+qG9xPJDh9BqsT6L3XQD/yN8ajurYPVkv1FXRiiBY
-Xzxw1Vd3vM8lxLyE2KtSB2VVlWGxK8HC9fw49p1RkKpcdXLBYPnf9dy7umSpTM4U
-7nPYVj/MMvis4pDb7dRDBicSqgoQd+Np3dz0bHRvHCmq5i3zrxhaYuCaJ+RreRXi
-3i4nanOeI43RZ5qfUkUZJm2AthINcNCRLysmprSherVa7jvCr7QJXtkizJgVeYou
-Kx/ND16wpQe96G8TzyQXHQx1Ki+0jnjkQLOp1xZ+I4/Zua8KPqrKXafIfzBhQSOx
-5FJCXe07qrjJUAfKR/oVTtlzqOQl6tbRNIjClPiJRwfocpEaZi5XBi8Og3cfEi44
-+RR9euNuePOCK4wpTOn9u5GBlCIy8IpRdOfMaU3Amh1uzo3rS8cU7fRQYfovmySI
-Js1wW1Jc4vdXm6Zx9ijVxxECcK/DfjxGKSTeCqt3Hlo3JxbBX2Q7jvGm4fu066bq
-/etC95DRebU=
-=E3XH
------END PGP SIGNATURE-----
-
---==_Exmh_1572864835_14215P--
-
---===============2694761270742122735==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============2694761270742122735==--
+T24gTW9uLCBOb3YgMDQsIDIwMTkgYXQgMDU6NTM6NTVBTSAtMDUwMCwgVmFsZGlzIEtsxJN0bmll
+a3Mgd3JvdGU6Cj4gT24gTW9uLCAwNCBOb3YgMjAxOSAxMzowNDoxNCArMDMwMCwgRGFuIENhcnBl
+bnRlciBzYWlkOgo+ID4gT24gU3VuLCBOb3YgMDMsIDIwMTkgYXQgMDg6NDU6MDNQTSAtMDUwMCwg
+VmFsZGlzIEtsZXRuaWVrcyB3cm90ZToKPiA+ID4gLQlpZiAoc2VjdG9yX3JlYWQoc2IsIHNlYywg
+JmJwLT5idWZfYmgsIDEpICE9IEZGU19TVUNDRVNTKSB7Cj4gPiA+ICsJaWYgKHNlY3Rvcl9yZWFk
+KHNiLCBzZWMsICZicC0+YnVmX2JoLCAxKSAhPSAwKSB7Cj4gPgo+ID4gSXQncyBiZXR0ZXIgdG8g
+anVzdCByZW1vdmUgdGhlICIhPSAwIiBkb3VibGUgbmVnYXRpdmUuICAhPSAwIHNob3VsZCBiZQo+
+ID4gdXNlZCB3aGVuIHdlIGFyZSB0YWxraW5nIGFib3V0IHRoZSBudW1iZXIgemVybyBhcyBpbiAi
+Y250ICE9IDAiIGFuZCBmb3IKPiA+ICJzdHJjbXAoZm9vLCBiYXIpICE9IDAiIHdoZXJlIGl0IG1l
+YW5zIHRoYXQgImZvbyAhPSBiYXIiLgo+IAo+ICJGaXggdXAgPT0wIGFuZCAhPTAiIGlzIGluZGVl
+ZCBvbiB0aGUgdG8tZG8gbGlzdC4KPiAKPiBUaGlzIHBhdGNoIGNvbnZlcnRlZCA4MiB1c2VzIG9m
+IEZGU19TVUNDRVNTLCBvZiB3aGljaCAzMyBoYWQgdGhlICE9IGlkaW9tIGluCj4gdXNlLiAgTWVh
+bndoaWxlLCBvdmVyYWxsIHRoZXJlJ3MgNTMgJyE9IDAnIGFuZCA5NSAnPT0gMCcgdXNlcy4KPiAK
+PiBJbiBvdGhlciB3b3JkcywgZXZlbiBpZiBJIGZpeGVkIGFsbCBvZiB0aG9zZSB0aGF0IHdlcmUg
+aW52b2x2ZWQgaW4gdGhpcyBwYXRjaCwKPiB0aGVyZSB3b3VsZCAqc3RpbGwqIGJlIG1vcmUgcGF0
+Y2hpbmcgdG8gZG8uCgpWZXJ5IGdvb2QuICBTb3VuZHMgbGlrZSB0aGUgcGxhbi4KCnJlZ2FyZHMs
+CmRhbiBjYXJwZW50ZXIKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0
+dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
+aXZlcmRldi1kZXZlbAo=
