@@ -1,56 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B4109EE827
-	for <lists+driverdev-devel@lfdr.de>; Mon,  4 Nov 2019 20:19:52 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A735EEA0B
+	for <lists+driverdev-devel@lfdr.de>; Mon,  4 Nov 2019 21:46:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B309984471;
-	Mon,  4 Nov 2019 19:19:50 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DEFDE875C2;
+	Mon,  4 Nov 2019 20:46:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NezPQhYNjDL1; Mon,  4 Nov 2019 19:19:50 +0000 (UTC)
+	with ESMTP id lzXecl2O-e3l; Mon,  4 Nov 2019 20:46:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 24DC284545;
-	Mon,  4 Nov 2019 19:19:48 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9E24286FB0;
+	Mon,  4 Nov 2019 20:46:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id BFDEE1BF33D
- for <devel@linuxdriverproject.org>; Mon,  4 Nov 2019 19:19:46 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 747BF1BF2C5
+ for <devel@linuxdriverproject.org>; Mon,  4 Nov 2019 20:46:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id BC948204AF
- for <devel@linuxdriverproject.org>; Mon,  4 Nov 2019 19:19:46 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 710EF8945A
+ for <devel@linuxdriverproject.org>; Mon,  4 Nov 2019 20:46:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id E88cdDf-WrWr for <devel@linuxdriverproject.org>;
- Mon,  4 Nov 2019 19:19:44 +0000 (UTC)
+ with ESMTP id 3RwyTIkSIg1s for <devel@linuxdriverproject.org>;
+ Mon,  4 Nov 2019 20:46:38 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from shards.monkeyblade.net (shards.monkeyblade.net [23.128.96.9])
- by silver.osuosl.org (Postfix) with ESMTPS id 52AA820472
- for <devel@driverdev.osuosl.org>; Mon,  4 Nov 2019 19:19:44 +0000 (UTC)
-Received: from localhost (unknown [IPv6:2601:601:9f00:1e2::d71])
- (using TLSv1 with cipher AES256-SHA (256/256 bits))
- (Client did not present a certificate)
- (Authenticated sender: davem-davemloft)
- by shards.monkeyblade.net (Postfix) with ESMTPSA id 53E03151D3D7E;
- Mon,  4 Nov 2019 11:19:43 -0800 (PST)
-Date: Mon, 04 Nov 2019 11:19:42 -0800 (PST)
-Message-Id: <20191104.111942.674044184836510706.davem@davemloft.net>
-To: gregkh@linuxfoundation.org
-Subject: Re: [PATCH v1] staging: intel-dpa: gswip: Introduce Gigabit
- Ethernet Switch (GSWIP) device driver
-From: David Miller <davem@davemloft.net>
-In-Reply-To: <20191104122009.GA2126921@kroah.com>
-References: <03832ecb6a34876ef26a24910816f22694c0e325.1572863013.git.jack.ping.chng@intel.com>
- <20191104122009.GA2126921@kroah.com>
-X-Mailer: Mew version 6.8 on Emacs 26.1
-Mime-Version: 1.0
-X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.5.12
- (shards.monkeyblade.net [149.20.54.216]);
- Mon, 04 Nov 2019 11:19:43 -0800 (PST)
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 974F589459
+ for <devel@driverdev.osuosl.org>; Mon,  4 Nov 2019 20:46:38 +0000 (UTC)
+Received: from localhost (6.204-14-84.ripe.coltfrance.com [84.14.204.6])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id E88F020679;
+ Mon,  4 Nov 2019 20:46:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1572900398;
+ bh=iId+7Mf9N878uMPp7QnhpaRhi2VZhgetrbRgL8S6wjc=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=0c3pb4MjyGgppSaUthsGGhz/HsDyOvxejGnjxLh0lmfgJKM8F4B1RDWenlNBmL01V
+ c2jOzeb3e/ko2ZLd59fGrzNyXO7IsZWYJWHD9lPQfXjmHZSA5yzmGf+K5pWe2g+TDP
+ jy3intsVPe2j9DXqSZTKPZg96odIi8vtrnaExJXU=
+Date: Mon, 4 Nov 2019 21:46:36 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Ian Abbott <abbotti@mev.co.uk>
+Subject: Re: [PATCH v2] staging: comedi: rewrite macro function with GNU
+ extension typeof
+Message-ID: <20191104204636.GA2359379@kroah.com>
+References: <20191104163331.68173-1-jbi.octave@gmail.com>
+ <84a2d50f-a1ac-bdc5-989c-b0294e9dea22@mev.co.uk>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <84a2d50f-a1ac-bdc5-989c-b0294e9dea22@mev.co.uk>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,21 +67,58 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, cheol.yong.kim@intel.com,
- jack.ping.chng@intel.com, andriy.shevchenko@intel.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, mallikarjunax.reddy@linux.intel.com
+Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com,
+ Jules Irenge <jbi.octave@gmail.com>, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Greg KH <gregkh@linuxfoundation.org>
-Date: Mon, 4 Nov 2019 13:20:09 +0100
+On Mon, Nov 04, 2019 at 05:03:04PM +0000, Ian Abbott wrote:
+> On 04/11/2019 16:33, Jules Irenge wrote:
+> > Rewrite macro function with the GNU extension typeof
+> > to remove a possible side-effects of MACRO argument reuse "x".
+> >   - Problem could rise if arguments have different types
+> > and different use though.
+> > 
+> > Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> > ---
+> > v1 - had no full commit log message, with changes not intended to be in the patch
+> > v2 - remove some changes not intended to be in this driver
+> >       include note of a potential problem
+> >   drivers/staging/comedi/comedi.h | 6 ++++--
+> >   1 file changed, 4 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/staging/comedi/comedi.h b/drivers/staging/comedi/comedi.h
+> > index 09a940066c0e..a57691a2e8d8 100644
+> > --- a/drivers/staging/comedi/comedi.h
+> > +++ b/drivers/staging/comedi/comedi.h
+> > @@ -1103,8 +1103,10 @@ enum ni_common_signal_names {
+> >   /* *** END GLOBALLY-NAMED NI TERMINALS/SIGNALS *** */
+> > -#define NI_USUAL_PFI_SELECT(x)	(((x) < 10) ? (0x1 + (x)) : (0xb + (x)))
+> > -#define NI_USUAL_RTSI_SELECT(x)	(((x) < 7) ? (0xb + (x)) : 0x1b)
+> > +#define NI_USUAL_PFI_SELECT(x)\
+> > +	({typeof(x) x_ = (x); (x_ < 10) ? (0x1 + x_) : (0xb + x_); })
+> > +#define NI_USUAL_RTSI_SELECT(x)\
+> > +	({typeof(x) x_ = (x); (x_ < 7) ? (0xb + x_) : 0x1b; })
+> >   /*
+> >    * mode bits for NI general-purpose counters, set with
+> > 
+> 
+> I wasn't sure about this the first time around due to the use of GNU
+> extensions in uapi header files, but I see there are a few, rare instances
+> of this GNU extension elsewhere in other uapi headers (mainly in netfilter
+> stuff), so I guess it's OK.  However, it  does mean that user code that uses
+> these macros will no longer compile unless GNU extensions are enabled.
+> 
+> Does anyone know any "best practices" regarding use of GNU extensions in
+> user header files under Linux?
 
-> Why is this being submitted to staging?  What is wrong with the "real"
-> part of the kernel for this?
+We try to never do it if at all possible :)
 
-Agreed, this makes no sense at all.
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
