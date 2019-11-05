@@ -1,74 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E4FE4EF2E0
-	for <lists+driverdev-devel@lfdr.de>; Tue,  5 Nov 2019 02:36:04 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9C91AEF2E5
+	for <lists+driverdev-devel@lfdr.de>; Tue,  5 Nov 2019 02:37:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 982B68918A;
-	Tue,  5 Nov 2019 01:36:02 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2E2738A206;
+	Tue,  5 Nov 2019 01:37:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FB0H9sDLZtYv; Tue,  5 Nov 2019 01:36:01 +0000 (UTC)
+	with ESMTP id 3ZGbXoag+War; Tue,  5 Nov 2019 01:37:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 78B398917E;
-	Tue,  5 Nov 2019 01:36:00 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8CC158A1EF;
+	Tue,  5 Nov 2019 01:37:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E84161BF471
- for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 01:35:58 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 168BF1BF471
+ for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 01:37:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E3BFD8A9F1
- for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 01:35:58 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 12C6B89047
+ for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 01:37:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AWN8Iklbgqsy for <devel@linuxdriverproject.org>;
- Tue,  5 Nov 2019 01:35:57 +0000 (UTC)
-X-Greylist: delayed 00:05:19 by SQLgrey-1.7.6
-Received: from mail-qt1-f193.google.com (mail-qt1-f193.google.com
- [209.85.160.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 50B6B8A9EF
- for <devel@driverdev.osuosl.org>; Tue,  5 Nov 2019 01:35:57 +0000 (UTC)
-Received: by mail-qt1-f193.google.com with SMTP id o3so27045827qtj.8
- for <devel@driverdev.osuosl.org>; Mon, 04 Nov 2019 17:35:57 -0800 (PST)
+ with ESMTP id Bhe_2EQFBZfc for <devel@linuxdriverproject.org>;
+ Tue,  5 Nov 2019 01:37:39 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-qt1-f195.google.com (mail-qt1-f195.google.com
+ [209.85.160.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 15EAB8917A
+ for <devel@driverdev.osuosl.org>; Tue,  5 Nov 2019 01:37:39 +0000 (UTC)
+Received: by mail-qt1-f195.google.com with SMTP id t20so11410171qtn.9
+ for <devel@driverdev.osuosl.org>; Mon, 04 Nov 2019 17:37:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=intel-com.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=aR+2eBnDheAMkwOXsNXJUEiyYXIkOGnGgWNkPzd4tdQ=;
- b=qktoZDnmGaINw22JlCwMcZG1PDeQczipLlMB42AGNsv72JUru4Yl1D6oIEjBA38dzh
- ZS2PnoJ0nLiGYI/i2K3YUYXaOLydyfU1Nh9OJDcQC7tLDTMa0R1lDv4ems+WcI//b7L2
- wR2dAsnPnZxJaxO7jVkMEQp5o3ksMp8LZBvOc6NF8jCZcTkkpEBzr7Bf+awpNyVVG6Ua
- qooyd6G9st5lQ4zbkKWFjUk8VEjPyKkcrE3NKGhOt3BMQgdbeqhbp+AtPIgHxyLjREHU
- SGLgLVGJs/nQldloF34in/meweNbuplR476f3VH7ViKAcI+PvQUy3TCespjZxP2iYT+N
- 0/3g==
+ :cc:content-transfer-encoding;
+ bh=W2L5Wt9vAPwi2DADGCrJo4/gpgrXJ/vHj0hp5uT1/6w=;
+ b=qw3wPwnJQEPIsA7f/w0mDIf51WQSqHZtNBtHkQ+a6qdpUzMOEXt/OAxm9io3JhbfP6
+ vTne7iEDoazWXW5xBbihS1O0cnamLcICRUtMB42yA1LqBFurawpARa+pI/loQ7TZozCS
+ muNK+/gOteA/6DrrAtwCv6qzAGFDNLrT4lxpVufIgKeSiYXHaqk5RVXbSWJ1ueKtHuiv
+ oOY+F9gg4Xa4vW+/ls61g41NWotER0Buor3x0J0NDaC4S7Hry/ZYzIQIeOoT7pjyK/9n
+ KejzKKo5jxtmx28oPc0/OrVyt4Yy1MBj0AZXomNXumyf6TV3OJA/dy91Qa7O4iQ+cyCX
+ +Lwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=aR+2eBnDheAMkwOXsNXJUEiyYXIkOGnGgWNkPzd4tdQ=;
- b=tNFkTB2dhx9IdttyXZhiD+5GT1/ffbRJntBFrCHm0FbmjHKc88FyG/QRuD7G3t7BQY
- kYLjN2LjdT0OYDMHazwe9pNK0+JMzzDtWTVmHIbcbAh535incAfTRW+PjMHYiZRmkZz4
- GoYXVGpp4WfuYOSLkELflTWx4IDov13XbIAxvq5JnaTgOXNqaDLMGTojUv1CwEdaQl3F
- kYzLUQD//hqm0ZHOJMpVmy5AFaE1AD8ldSgbKL4sFoiwTeZJd9Oo3qjwIGUtRF20jYyi
- T/NlTqpyrz+BbgB1BkG3sV7GLM5n0VmJ5F6MguSW6U1YaHAVpLgp3z81IxHlqbf9Cfsc
- Me6Q==
-X-Gm-Message-State: APjAAAUfvz8gc7GvSzOuZVCd2w7HjaCCOdWrADLWl7bSBLlq8Smh0YHf
- QVdLiP2FNNesshwqmbya5FjrpzVJKcp2QxjlxjI4HQ==
-X-Google-Smtp-Source: APXvYqz7Bk4kRduwfrclstPYyEuP//nuwTqg9TTsoV0HtiW5xPO5/4utgjFzQW53c0oeh/hiUJTxgAj86G8lI66LWNo=
-X-Received: by 2002:ac8:424d:: with SMTP id r13mr15689594qtm.111.1572917436967; 
- Mon, 04 Nov 2019 17:30:36 -0800 (PST)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=W2L5Wt9vAPwi2DADGCrJo4/gpgrXJ/vHj0hp5uT1/6w=;
+ b=oYqLbBVfxpKfE6UIoiHEffR8BNkp20qzfW1Cz0a8ulwtjX5pRiEs28NaID5nU73cCi
+ GN8+YxX4QWVUSZnkpJ599A7B3rxCx2/tZ5CBQtbZeohby+fDFf/wTJmabJT+Orgh1V17
+ dJnqWDefBjW37M++y8XJu+34aFphT0k/1i+fkgMp7VQM+YXcLt0grvybWAR4Ovp9qQzq
+ 4Yix+SNlqafhx73uwnbR6JXREizRI4u9PFpXMKoky0ociAISA0v9LPIk/p1ZXkAX3T1I
+ JTC1XTI+B9W59NCs6eiVVkMqkFipjCcPS3ZzcI8O5aNSH5/6dCWdXhbS9qFoAz6YFCW6
+ c2mQ==
+X-Gm-Message-State: APjAAAXL3xaPNgKQTwbKtSo5S2apjNFkXi6LAurmDk38ZjHQQO2+lxIQ
+ gw2FRqAm+9f4EH4dX3uSzS0lEwoe7URZBknTumkGfw==
+X-Google-Smtp-Source: APXvYqxf5b5k2/XEh51ut95Lrfer14ii/6Y4WgnKt5ObxWvYMWg+IxU5wRUlwhcOOGIDRGfOdEah46THNJk1jv52R/0=
+X-Received: by 2002:a0c:a910:: with SMTP id y16mr12413788qva.89.1572917858090; 
+ Mon, 04 Nov 2019 17:37:38 -0800 (PST)
 MIME-Version: 1.0
 References: <20191024120938.11237-1-david@redhat.com>
- <20191024120938.11237-2-david@redhat.com>
-In-Reply-To: <20191024120938.11237-2-david@redhat.com>
+ <20191024120938.11237-3-david@redhat.com>
+In-Reply-To: <20191024120938.11237-3-david@redhat.com>
 From: Dan Williams <dan.j.williams@intel.com>
-Date: Mon, 4 Nov 2019 17:30:25 -0800
-Message-ID: <CAPcyv4hT58=SDWYO2vrktdFOnDfWveVwN4ZBxNQ8=500_Zu7tQ@mail.gmail.com>
-Subject: Re: [PATCH v1 01/10] mm/memory_hotplug: Don't allow to online/offline
- memory blocks with holes
+Date: Mon, 4 Nov 2019 17:37:27 -0800
+Message-ID: <CAPcyv4iFJgtcx56g+Le2DccgvoncvVZuaEBRSOyv-=52YNqJug@mail.gmail.com>
+Subject: Re: [PATCH v1 02/10] KVM: x86/mmu: Prepare kvm_is_mmio_pfn() for
+ PG_reserved changes
 To: David Hildenbrand <david@redhat.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -121,125 +122,53 @@ Cc: linux-hyperv@vger.kernel.org, Michal Hocko <mhocko@suse.com>,
  Johannes Weiner <hannes@cmpxchg.org>, Paolo Bonzini <pbonzini@redhat.com>,
  Andrew Morton <akpm@linux-foundation.org>,
  linuxppc-dev <linuxppc-dev@lists.ozlabs.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Oct 24, 2019 at 5:10 AM David Hildenbrand <david@redhat.com> wrote:
->
-> Our onlining/offlining code is unnecessarily complicated. Only memory
-> blocks added during boot can have holes (a range that is not
-> IORESOURCE_SYSTEM_RAM). Hotplugged memory never has holes (e.g., see
-> add_memory_resource()). All boot memory is alread online.
-
-s/alread/already/
-
-...also perhaps clarify "already online" by what point in time and why
-that is relevant. For example a description of the difference between
-the SetPageReserved() in the bootmem path and the one in the hotplug
-path.
-
-> Therefore, when we stop allowing to offline memory blocks with holes, we
-> implicitly no longer have to deal with onlining memory blocks with holes.
-
-Maybe an explicit reference of the code areas that deal with holes
-would help to back up that assertion. Certainly it would have saved me
-some time for the review.
-
-> This allows to simplify the code. For example, we no longer have to
-> worry about marking pages that fall into memory holes PG_reserved when
-> onlining memory. We can stop setting pages PG_reserved.
-
-...but not for bootmem, right?
-
->
-> Offlining memory blocks added during boot is usually not guranteed to work
-
-s/guranteed/guaranteed/
-
-> either way (unmovable data might have easily ended up on that memory during
-> boot). So stopping to do that should not really hurt (+ people are not
-> even aware of a setup where that used to work
-
-Maybe put a "Link: https://lkml.kernel.org/r/$msg_id" to that discussion?
-
-> and that the existing code
-> still works correctly with memory holes). For the use case of offlining
-> memory to unplug DIMMs, we should see no change. (holes on DIMMs would be
-> weird).
-
-However, less memory can be offlined than was theoretically allowed
-previously, so I don't understand the "we should see no change"
-comment. I still agree that's a price worth paying to get the code
-cleanups and if someone screams we can look at adding it back, but the
-fact that it was already fragile seems decent enough protection.
-
->
-> Please note that hardware errors (PG_hwpoison) are not memory holes and
-> not affected by this change when offlining.
->
-> Cc: Andrew Morton <akpm@linux-foundation.org>
-> Cc: Michal Hocko <mhocko@suse.com>
-> Cc: Oscar Salvador <osalvador@suse.de>
-> Cc: Pavel Tatashin <pasha.tatashin@soleen.com>
-> Cc: Dan Williams <dan.j.williams@intel.com>
-> Cc: Anshuman Khandual <anshuman.khandual@arm.com>
-> Signed-off-by: David Hildenbrand <david@redhat.com>
-> ---
->  mm/memory_hotplug.c | 26 ++++++++++++++++++++++++--
->  1 file changed, 24 insertions(+), 2 deletions(-)
->
-> diff --git a/mm/memory_hotplug.c b/mm/memory_hotplug.c
-> index 561371ead39a..8d81730cf036 100644
-> --- a/mm/memory_hotplug.c
-> +++ b/mm/memory_hotplug.c
-> @@ -1447,10 +1447,19 @@ static void node_states_clear_node(int node, struct memory_notify *arg)
->                 node_clear_state(node, N_MEMORY);
->  }
->
-> +static int count_system_ram_pages_cb(unsigned long start_pfn,
-> +                                    unsigned long nr_pages, void *data)
-> +{
-> +       unsigned long *nr_system_ram_pages = data;
-> +
-> +       *nr_system_ram_pages += nr_pages;
-> +       return 0;
-> +}
-> +
->  static int __ref __offline_pages(unsigned long start_pfn,
->                   unsigned long end_pfn)
->  {
-> -       unsigned long pfn, nr_pages;
-> +       unsigned long pfn, nr_pages = 0;
->         unsigned long offlined_pages = 0;
->         int ret, node, nr_isolate_pageblock;
->         unsigned long flags;
-> @@ -1461,6 +1470,20 @@ static int __ref __offline_pages(unsigned long start_pfn,
->
->         mem_hotplug_begin();
->
-> +       /*
-> +        * Don't allow to offline memory blocks that contain holes.
-> +        * Consecuently, memory blocks with holes can never get onlined
-
-s/Consecuently/Consequently/
-
-> +        * (hotplugged memory has no holes and all boot memory is online).
-> +        * This allows to simplify the onlining/offlining code quite a lot.
-> +        */
-
-The last sentence of this comment makes sense in the context of this
-patch, but I don't think it stands by itself in the code base after
-the fact. The person reading the comment can't see the simplifications
-because the code is already gone. I'd clarify it to talk about why it
-is safe to not mess around with PG_Reserved in the hotplug path
-because of this check.
-
-After those clarifications you can add:
-
-Reviewed-by: Dan Williams <dan.j.williams@intel.com>
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gVGh1LCBPY3QgMjQsIDIwMTkgYXQgNToxMCBBTSBEYXZpZCBIaWxkZW5icmFuZCA8ZGF2aWRA
+cmVkaGF0LmNvbT4gd3JvdGU6Cj4KPiBSaWdodCBub3csIFpPTkVfREVWSUNFIG1lbW9yeSBpcyBh
+bHdheXMgc2V0IFBHX3Jlc2VydmVkLiBXZSB3YW50IHRvCj4gY2hhbmdlIHRoYXQuCj4KPiBLVk0g
+aGFzIHRoaXMgd2VpcmQgdXNlIGNhc2UgdGhhdCB5b3UgY2FuIG1hcCBhbnl0aGluZyBmcm9tIC9k
+ZXYvbWVtCj4gaW50byB0aGUgZ3Vlc3QuIHBmbl92YWxpZCgpIGlzIG5vdCBhIHJlbGlhYmxlIGNo
+ZWNrIHdoZXRoZXIgdGhlIG1lbW1hcAo+IHdhcyBpbml0aWFsaXplZCBhbmQgY2FuIGJlIHRvdWNo
+ZWQuIHBmbl90b19vbmxpbmVfcGFnZSgpIG1ha2VzIHN1cmUKPiB0aGF0IHdlIGhhdmUgYW4gaW5p
+dGlhbGl6ZWQgbWVtbWFwIChhbmQgZG9uJ3QgaGF2ZSBaT05FX0RFVklDRSBtZW1vcnkpLgo+Cj4g
+UmV3cml0ZSBrdm1faXNfbW1pb19wZm4oKSB0byBtYWtlIHN1cmUgdGhlIGZ1bmN0aW9uIHByb2R1
+Y2VzIHRoZQo+IHNhbWUgcmVzdWx0IG9uY2Ugd2Ugc3RvcCBzZXR0aW5nIFpPTkVfREVWSUNFIHBh
+Z2VzIFBHX3Jlc2VydmVkLgo+Cj4gQ2M6IFBhb2xvIEJvbnppbmkgPHBib256aW5pQHJlZGhhdC5j
+b20+Cj4gQ2M6ICJSYWRpbSBLcsSNbcOhxZkiIDxya3JjbWFyQHJlZGhhdC5jb20+Cj4gQ2M6IFNl
+YW4gQ2hyaXN0b3BoZXJzb24gPHNlYW4uai5jaHJpc3RvcGhlcnNvbkBpbnRlbC5jb20+Cj4gQ2M6
+IFZpdGFseSBLdXpuZXRzb3YgPHZrdXpuZXRzQHJlZGhhdC5jb20+Cj4gQ2M6IFdhbnBlbmcgTGkg
+PHdhbnBlbmdsaUB0ZW5jZW50LmNvbT4KPiBDYzogSmltIE1hdHRzb24gPGptYXR0c29uQGdvb2ds
+ZS5jb20+Cj4gQ2M6IEpvZXJnIFJvZWRlbCA8am9yb0A4Ynl0ZXMub3JnPgo+IENjOiBUaG9tYXMg
+R2xlaXhuZXIgPHRnbHhAbGludXRyb25peC5kZT4KPiBDYzogSW5nbyBNb2xuYXIgPG1pbmdvQHJl
+ZGhhdC5jb20+Cj4gQ2M6IEJvcmlzbGF2IFBldGtvdiA8YnBAYWxpZW44LmRlPgo+IENjOiAiSC4g
+UGV0ZXIgQW52aW4iIDxocGFAenl0b3IuY29tPgo+IENjOiBLYXJpbUFsbGFoIEFobWVkIDxrYXJh
+aG1lZEBhbWF6b24uZGU+Cj4gQ2M6IE1pY2hhbCBIb2NrbyA8bWhvY2tvQGtlcm5lbC5vcmc+Cj4g
+Q2M6IERhbiBXaWxsaWFtcyA8ZGFuLmoud2lsbGlhbXNAaW50ZWwuY29tPgo+IFNpZ25lZC1vZmYt
+Ynk6IERhdmlkIEhpbGRlbmJyYW5kIDxkYXZpZEByZWRoYXQuY29tPgo+IC0tLQo+ICBhcmNoL3g4
+Ni9rdm0vbW11LmMgfCAyOSArKysrKysrKysrKysrKysrKy0tLS0tLS0tLS0tLQo+ICAxIGZpbGUg
+Y2hhbmdlZCwgMTcgaW5zZXJ0aW9ucygrKSwgMTIgZGVsZXRpb25zKC0pCj4KPiBkaWZmIC0tZ2l0
+IGEvYXJjaC94ODYva3ZtL21tdS5jIGIvYXJjaC94ODYva3ZtL21tdS5jCj4gaW5kZXggMjRjMjNj
+NjZiMjI2Li5mMDMwODlhMzM2ZGUgMTAwNjQ0Cj4gLS0tIGEvYXJjaC94ODYva3ZtL21tdS5jCj4g
+KysrIGIvYXJjaC94ODYva3ZtL21tdS5jCj4gQEAgLTI5NjIsMjAgKzI5NjIsMjUgQEAgc3RhdGlj
+IGJvb2wgbW11X25lZWRfd3JpdGVfcHJvdGVjdChzdHJ1Y3Qga3ZtX3ZjcHUgKnZjcHUsIGdmbl90
+IGdmbiwKPgo+ICBzdGF0aWMgYm9vbCBrdm1faXNfbW1pb19wZm4oa3ZtX3Bmbl90IHBmbikKPiAg
+ewo+ICsgICAgICAgc3RydWN0IHBhZ2UgKnBhZ2UgPSBwZm5fdG9fb25saW5lX3BhZ2UocGZuKTsK
+PiArCj4gKyAgICAgICAvKgo+ICsgICAgICAgICogWk9ORV9ERVZJQ0UgcGFnZXMgYXJlIG5ldmVy
+IG9ubGluZS4gT25saW5lIHBhZ2VzIHRoYXQgYXJlIHJlc2VydmVkCj4gKyAgICAgICAgKiBlaXRo
+ZXIgaW5kaWNhdGUgdGhlIHplcm8gcGFnZSBvciBNTUlPIHBhZ2VzLgo+ICsgICAgICAgICovCj4g
+KyAgICAgICBpZiAocGFnZSkKPiArICAgICAgICAgICAgICAgcmV0dXJuICFpc196ZXJvX3Bmbihw
+Zm4pICYmIFBhZ2VSZXNlcnZlZChwZm5fdG9fcGFnZShwZm4pKTsKPiArCj4gKyAgICAgICAvKgo+
+ICsgICAgICAgICogQW55dGhpbmcgd2l0aCBhIHZhbGlkIChidXQgbm90IG9ubGluZSkgbWVtbWFw
+IGNvdWxkIGJlIFpPTkVfREVWSUNFLgo+ICsgICAgICAgICogVHJlYXQgb25seSBVQy9VQy0vV0Mg
+cGFnZXMgYXMgTU1JTy4KCllvdSBtaWdodCBjbGFyaWZ5IHRoYXQgWk9ORV9ERVZJQ0UgcGFnZXMg
+dGhhdCBiZWxvbmcgdG8gV0IgY2FjaGVhYmxlCnBtZW0gaGF2ZSB0aGUgY29ycmVjdCBtZW10eXBl
+IGVzdGFibGlzaGVkIGJ5IGRldm1fbWVtcmVtYXBfcGFnZXMoKS4KCk90aGVyIHRoYW4gdGhhdCwg
+ZmVlbCBmcmVlIHRvIGFkZDoKClJldmlld2VkLWJ5OiBEYW4gV2lsbGlhbXMgPGRhbi5qLndpbGxp
+YW1zQGludGVsLmNvbT4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0
+cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
+dmVyZGV2LWRldmVsCg==
