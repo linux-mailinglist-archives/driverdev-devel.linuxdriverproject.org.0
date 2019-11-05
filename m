@@ -1,81 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3F8ECF06F1
-	for <lists+driverdev-devel@lfdr.de>; Tue,  5 Nov 2019 21:31:31 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8D287F0939
+	for <lists+driverdev-devel@lfdr.de>; Tue,  5 Nov 2019 23:21:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 85C322226B;
-	Tue,  5 Nov 2019 20:31:29 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B150689160;
+	Tue,  5 Nov 2019 22:21:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id r15sAq45jq3K; Tue,  5 Nov 2019 20:31:29 +0000 (UTC)
+	with ESMTP id 5pV8GyC0uxw0; Tue,  5 Nov 2019 22:21:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7AF3020432;
-	Tue,  5 Nov 2019 20:31:27 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8199388D2A;
+	Tue,  5 Nov 2019 22:21:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 097121BF334
- for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 20:31:26 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B66CC1BF2A0
+ for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 22:21:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 04FF189DEE
- for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 20:31:26 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id AA2C920386
+ for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 22:21:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2CM5eGT3w4o6 for <devel@linuxdriverproject.org>;
- Tue,  5 Nov 2019 20:31:25 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
- [207.211.31.120])
- by whitealder.osuosl.org (Postfix) with ESMTPS id CE19289DE9
- for <devel@driverdev.osuosl.org>; Tue,  5 Nov 2019 20:31:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1572985883;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=bBpsVnOm2Iw9vk68TEBuezjUdaQ9ObuSYB51z2SdbAc=;
- b=avVVbuWKuWyvx+yal7SAP6oh+VGhL5N0goZq0Sf+fiZd9aX4ikQ87BpENVB7cXFXahUMKD
- 0GYmGYsh9HkkBelHUznw1Njcq98f6em2pgTyWGWK1xvyo8I70rVMzvFQy8y0sGQatcQU9X
- ukeEZENDs3M3Df14i+BpncwZWKuxajw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-269-zTK-3plmNT2sFf3o-zKI6g-1; Tue, 05 Nov 2019 15:31:21 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A09A18064D1;
- Tue,  5 Nov 2019 20:31:12 +0000 (UTC)
-Received: from [10.36.116.98] (ovpn-116-98.ams2.redhat.com [10.36.116.98])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 564CE3CC6;
- Tue,  5 Nov 2019 20:30:54 +0000 (UTC)
-Subject: Re: [PATCH v1 03/10] KVM: Prepare kvm_is_reserved_pfn() for
- PG_reserved changes
-To: Sean Christopherson <sean.j.christopherson@intel.com>
-References: <20191024120938.11237-1-david@redhat.com>
- <20191024120938.11237-4-david@redhat.com>
- <CAPcyv4jyTxEpw5ep5Noy0YRV7Dybzj+8OTVMwRK_zeFigF-LsQ@mail.gmail.com>
- <bbe59155-24ae-f229-e182-107730423c47@redhat.com>
- <01adb4cb-6092-638c-0bab-e61322be7cf5@redhat.com>
- <613f3606-748b-0e56-a3ad-1efaffa1a67b@redhat.com>
- <20191105160000.GC8128@linux.intel.com>
-From: David Hildenbrand <david@redhat.com>
-Organization: Red Hat GmbH
-Message-ID: <ed89cd61-7c45-8c9c-ffeb-f27b1872bd7a@redhat.com>
-Date: Tue, 5 Nov 2019 21:30:53 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
-MIME-Version: 1.0
-In-Reply-To: <20191105160000.GC8128@linux.intel.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: zTK-3plmNT2sFf3o-zKI6g-1
-X-Mimecast-Spam-Score: 0
+ with ESMTP id 3usLalrkikPf for <devel@linuxdriverproject.org>;
+ Tue,  5 Nov 2019 22:21:08 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from omr2.cc.vt.edu (outbound.smtp.vt.edu [198.82.183.121])
+ by silver.osuosl.org (Postfix) with ESMTPS id C5E8E2036C
+ for <devel@driverdev.osuosl.org>; Tue,  5 Nov 2019 22:21:08 +0000 (UTC)
+Received: from mr4.cc.vt.edu (mr4.cc.ipv6.vt.edu
+ [IPv6:2607:b400:92:8300:0:7b:e2b1:6a29])
+ by omr2.cc.vt.edu (8.14.4/8.14.4) with ESMTP id xA5ML7w6021529
+ for <devel@driverdev.osuosl.org>; Tue, 5 Nov 2019 17:21:07 -0500
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
+ [209.85.222.198])
+ by mr4.cc.vt.edu (8.14.7/8.14.7) with ESMTP id xA5ML2En009580
+ for <devel@driverdev.osuosl.org>; Tue, 5 Nov 2019 17:21:07 -0500
+Received: by mail-qk1-f198.google.com with SMTP id d144so22715424qke.16
+ for <devel@driverdev.osuosl.org>; Tue, 05 Nov 2019 14:21:07 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:in-reply-to:references
+ :mime-version:content-transfer-encoding:date:message-id;
+ bh=vyZgv1MiU+dLASUlz/w5fhHaWpJco8awE8e8/l18HM8=;
+ b=jzkUivxcNcDMyviiSsFRr0PlSHzEGaviF4jEM5X+8M0PV4j6o0J17rZbejRwZlxg0U
+ O9bMukL/zXMKAip5o/Lhe3iF5kkvpVgIFs2tgOWTJ7cR6S4k7P+WUZCjZ6H+8YLkjYWw
+ 8HJuhWq5pp9Xpq2wkmxBRjiIWeFXE6HLEzk4Vb1Ii7fMpKfVW49D3mH5+Ppu4KwMr1ql
+ nyeaMsE3ja00HG03U58fSBvC65pIYMUDpEXtEqB3VAF9ZR07+lUehuu4OcLzT3mU9Udf
+ 7edGcnlaZFZR4ZmQJfKglPyFLWlUhfj+qXvFayFmJPfzM/phUS2tHbqhYrlmUxqdUGfP
+ X3vw==
+X-Gm-Message-State: APjAAAVEs5/dsNAiGim8g4n1qOl9JAajbUhpgeMM33nMv12w1eVhS9Ze
+ 2pDri9UgTRAkEZTPG3eEnzEpdNm/RY24Y+oMZazVpznYtlNX840KiItCfwWr05mbTLS3rOBv6ds
+ ujj5Jw1wKjJqgt+EVAvZVPsGB+FDRUJ6y
+X-Received: by 2002:a37:4a03:: with SMTP id x3mr8462589qka.301.1572992462005; 
+ Tue, 05 Nov 2019 14:21:02 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyPsD33kXaQMHPELEvfE/dIKy+dRschpRCQh2Q7Ve/jTW1IiTuRxbnvGU6B68MwsWvRCSASsA==
+X-Received: by 2002:a37:4a03:: with SMTP id x3mr8462563qka.301.1572992461718; 
+ Tue, 05 Nov 2019 14:21:01 -0800 (PST)
+Received: from turing-police ([2601:5c0:c001:c9e1::359])
+ by smtp.gmail.com with ESMTPSA id w30sm7962787qtc.47.2019.11.05.14.20.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 05 Nov 2019 14:21:00 -0800 (PST)
+From: "Valdis Kl=?utf-8?Q?=c4=93?=tnieks" <valdis.kletnieks@vt.edu>
+X-Google-Original-From: "Valdis Kl=?utf-8?Q?=c4=93?=tnieks"
+ <Valdis.Kletnieks@vt.edu>
+X-Mailer: exmh version 2.9.0 11/07/2018 with nmh-1.7+dev
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH v2 01/10] staging: exfat: Clean up return codes -
+ FFS_FORMATERR
+In-Reply-To: <20191105170515.GA2788121@kroah.com>
+References: <20191104014510.102356-1-Valdis.Kletnieks@vt.edu>
+ <20191104014510.102356-2-Valdis.Kletnieks@vt.edu>
+ <20191105170515.GA2788121@kroah.com>
+Mime-Version: 1.0
+Date: Tue, 05 Nov 2019 17:20:59 -0500
+Message-ID: <254569.1572992459@turing-police>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,183 +90,82 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-hyperv@vger.kernel.org, Michal Hocko <mhocko@suse.com>,
- =?UTF-8?B?UmFkaW0gS3LEjW3DocWZ?= <rkrcmar@redhat.com>,
- KVM list <kvm@vger.kernel.org>, Pavel Tatashin <pavel.tatashin@microsoft.com>,
- KarimAllah Ahmed <karahmed@amazon.de>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Dave Hansen <dave.hansen@linux.intel.com>,
- Alexander Duyck <alexander.duyck@gmail.com>, Michal Hocko <mhocko@kernel.org>,
- Paul Mackerras <paulus@ozlabs.org>, Linux MM <linux-mm@kvack.org>,
- Paul Mackerras <paulus@samba.org>, Michael Ellerman <mpe@ellerman.id.au>,
- "H. Peter Anvin" <hpa@zytor.com>, Wanpeng Li <wanpengli@tencent.com>,
- Alexander Duyck <alexander.h.duyck@linux.intel.com>,
- Boris Ostrovsky <boris.ostrovsky@oracle.com>,
- Kees Cook <keescook@chromium.org>, devel@driverdev.osuosl.org,
- Stefano Stabellini <sstabellini@kernel.org>,
- Stephen Hemminger <sthemmin@microsoft.com>,
- "Aneesh Kumar K.V" <aneesh.kumar@linux.ibm.com>,
- Joerg Roedel <joro@8bytes.org>, X86 ML <x86@kernel.org>,
- YueHaibing <yuehaibing@huawei.com>,
- "Matthew Wilcox \(Oracle\)" <willy@infradead.org>,
- Mike Rapoport <rppt@linux.ibm.com>, Peter Zijlstra <peterz@infradead.org>,
- Ingo Molnar <mingo@redhat.com>, Vlastimil Babka <vbabka@suse.cz>,
- Anthony Yznaga <anthony.yznaga@oracle.com>, Oscar Salvador <osalvador@suse.de>,
- "Isaac J. Manjarres" <isaacm@codeaurora.org>, Juergen Gross <jgross@suse.com>,
- Anshuman Khandual <anshuman.khandual@arm.com>,
- Haiyang Zhang <haiyangz@microsoft.com>, Sasha Levin <sashal@kernel.org>,
- kvm-ppc@vger.kernel.org, Qian Cai <cai@lca.pw>,
- Alex Williamson <alex.williamson@redhat.com>,
- Mike Rapoport <rppt@linux.vnet.ibm.com>, Borislav Petkov <bp@alien8.de>,
- Nicholas Piggin <npiggin@gmail.com>, Andy Lutomirski <luto@kernel.org>,
- xen-devel <xen-devel@lists.xenproject.org>,
- Dan Williams <dan.j.williams@intel.com>,
- Vitaly Kuznetsov <vkuznets@redhat.com>, Allison Randal <allison@lohutok.net>,
- Jim Mattson <jmattson@google.com>, Christophe Leroy <christophe.leroy@c-s.fr>,
- Mel Gorman <mgorman@techsingularity.net>, Adam Borowski <kilobyte@angband.pl>,
- Cornelia Huck <cohuck@redhat.com>, Pavel Tatashin <pasha.tatashin@soleen.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Thomas Gleixner <tglx@linutronix.de>, Johannes Weiner <hannes@cmpxchg.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev <linuxppc-dev@lists.ozlabs.org>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: linux-fsdevel@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============0941451013291083208=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
->>> I think I know what's going wrong:
->>>
->>> Pages that are pinned via gfn_to_pfn() and friends take a references,
->>> however are often released via
->>> kvm_release_pfn_clean()/kvm_release_pfn_dirty()/kvm_release_page_clean()...
->>>
->>>
->>> E.g., in arch/x86/kvm/x86.c:reexecute_instruction()
->>>
->>> ...
->>> pfn = gfn_to_pfn(vcpu->kvm, gpa_to_gfn(gpa));
->>> ...
->>> kvm_release_pfn_clean(pfn);
->>>
->>>
->>>
->>> void kvm_release_pfn_clean(kvm_pfn_t pfn)
->>> {
->>> 	if (!is_error_noslot_pfn(pfn) && !kvm_is_reserved_pfn(pfn))
->>> 		put_page(pfn_to_page(pfn));
->>> }
->>>
->>> This function makes perfect sense as the counterpart for kvm_get_pfn():
->>>
->>> void kvm_get_pfn(kvm_pfn_t pfn)
->>> {
->>> 	if (!kvm_is_reserved_pfn(pfn))
->>> 		get_page(pfn_to_page(pfn));
->>> }
->>>
->>>
->>> As all ZONE_DEVICE pages are currently reserved, pages pinned via
->>> gfn_to_pfn() and friends will often not see a put_page() AFAIKS.
-> 
-> Assuming gup() takes a reference for ZONE_DEVICE pages, yes, this is a
-> KVM bug.
+--===============0941451013291083208==
+Content-Type: multipart/signed; boundary="==_Exmh_1572992459_14215P";
+	 micalg=pgp-sha1; protocol="application/pgp-signature"
+Content-Transfer-Encoding: 7bit
 
-Yes, it does take a reference AFAIKs. E.g.,
+--==_Exmh_1572992459_14215P
+Content-Type: text/plain; charset=us-ascii
 
-mm/gup.c:gup_pte_range():
-...
-		if (pte_devmap(pte)) {
-			if (unlikely(flags & FOLL_LONGTERM))
-				goto pte_unmap;
+On Tue, 05 Nov 2019 18:05:15 +0100, Greg Kroah-Hartman said:
 
-			pgmap = get_dev_pagemap(pte_pfn(pte), pgmap);
-			if (unlikely(!pgmap)) {
-				undo_dev_pagemap(nr, nr_start, pages);
-				goto pte_unmap;
-			}
-		} else if (pte_special(pte))
-			goto pte_unmap;
+> This patch breaks the build:
+>
+> drivers/staging/exfat/exfat_super.c: In function ‘ffsMountVol’:
+> drivers/staging/exfat/exfat_super.c:387:9: error: ‘FFS_FORMATERR’ undeclared
+(first use in this function)
+>   387 |   ret = FFS_FORMATERR;
+>       |         ^~~~~~~~~~~~~
+>
+>
+> Did you test-build this thing?
 
-		VM_BUG_ON(!pfn_valid(pte_pfn(pte)));
-		page = pte_page(pte);
+Yes.
 
-		head = try_get_compound_head(page, 1);
+And in my tree, that section of code has:
 
-try_get_compound_head() will increment the reference count.
+ 385         /* check the validity of PBR */
+ 386         if (GET16_A(p_pbr->signature) != PBR_SIGNATURE) {
+ 387                 brelse(tmp_bh);
+ 388                 bdev_close(sb);
+ 389                 ret = -EFSCORRUPTED;
+ 390                 goto out;
+ 391         }
 
-> 
->>> Now, my patch does not change that, the result of
->>> kvm_is_reserved_pfn(pfn) will be unchanged. A proper fix for that would
->>> probably be
->>>
->>> a) To drop the reference to ZONE_DEVICE pages in gfn_to_pfn() and
->>> friends, after you successfully pinned the pages. (not sure if that's
->>> the right thing to do but you're the expert)
->>>
->>> b) To not use kvm_release_pfn_clean() and friends on pages that were
->>> definitely pinned.
-> 
-> This is already KVM's intent, i.e. the purpose of the PageReserved() check
-> is simply to avoid putting a non-existent reference.  The problem is that
-> KVM assumes pages with PG_reserved set are never pinned, which AFAICT was
-> true when the code was first added.
-> 
->> (talking to myself, sorry)
->>
->> Thinking again, dropping this patch from this series could effectively also
->> fix that issue. E.g., kvm_release_pfn_clean() and friends would always do a
->> put_page() if "pfn_valid() and !PageReserved()", so after patch 9 also on
->> ZONDE_DEVICE pages.
-> 
-> Yeah, this appears to be the correct fix.
-> 
->> But it would have side effects that might not be desired. E.g.,:
->>
->> 1. kvm_pfn_to_page() would also return ZONE_DEVICE pages (might even be the
->> right thing to do).
-> 
-> This should be ok, at least on x86.  There are only three users of
-> kvm_pfn_to_page().  Two of those are on allocations that are controlled by
-> KVM and are guaranteed to be vanilla MAP_ANONYMOUS.  The third is on guest
-> memory when running a nested guest, and in that case supporting ZONE_DEVICE
-> memory is desirable, i.e. KVM should play nice with a guest that is backed
-> by ZONE_DEVICE memory.
-> 
->> 2. kvm_set_pfn_dirty() would also set ZONE_DEVICE pages dirty (might be
->> okay)
-> 
-> This is ok from a KVM perspective.
+but 'git blame' says that was changed in patch 02/10 not 01/10, most likely
+due to a miscue with 'git add'.
 
-What about
+Will fix and resend.
 
-void kvm_get_pfn(kvm_pfn_t pfn)
-{
-	if (!kvm_is_reserved_pfn(pfn))
-		get_page(pfn_to_page(pfn));
-}
+--==_Exmh_1572992459_14215P
+Content-Type: application/pgp-signature
 
-Is a pure get_page() sufficient in case of ZONE_DEVICE?
-(asking because of the live references obtained via 
-get_dev_pagemap(pte_pfn(pte), pgmap) in mm/gup.c:gup_pte_range() 
-somewhat confuse me :) )
+-----BEGIN PGP SIGNATURE-----
+Comment: Exmh version 2.9.0 11/07/2018
 
+iQIVAwUBXcH1ygdmEQWDXROgAQI1kA//Rfa96SA6XLx+Daor411E3eDVKUZtliYZ
+g+je1j8mXFOcy3OfO7yWz6d9LFZ7/NIWIif7veH3RMe0inn9iLDuxNUKF0Pw3Ceu
+yy1NMnS+UT7YbO2PZuiWf/mmjW5FJ9nQ8zyHbiNhF886+5FWAmygDyHJzzNP90pQ
+ZaCSTlMPHCviDPPJIwOCiw66sT6loNLRJPiYAzjhgRgQ5QMNpH32413GGKx+DQFj
+34LAI7SAVJWGOEK6dE3HRAn+jmTayN2o/9SMqewgaTFh9JNVYHytH24mDLLQFDYu
+IdbCK5zU6/IDFJn5TcPbzkH+K6R/2ZY3RU8MFZFaJ/jrtR54gG40MX/8BdHqVp1/
+nsMhHaBLnh1GAmZy7QRGHhCsCCvJOozMzL25k9943hC7WBw9hhR0XgT6UDsiFhNU
+i/YqUu5KN7gzjuflDHvQ+9ot4YL6sreuTM5Oq7MaQsS6UhHWLGK7f2K0dhrokvVC
+cSLedpOuqgXZ7CWt9X7ZPWf/W3LzX6URoJi4ou+CJHjAX3/bRCeUCiPXdFoKFLGl
+yo4Xe2jxuellQ3HHgBEVkKTDMw63gGFY2/pRMT8LmHYn/36A36DI6UDB88snqu9U
+vHtS1JpXq32lEzcidLSLB7Kobn8vM85ZutaiV+L1eB6hPuy6mo1qXDVLauKGxc3p
+UesLLDPlgn4=
+=ZmFx
+-----END PGP SIGNATURE-----
 
-> 
-> The scarier code (for me) is transparent_hugepage_adjust() and
-> kvm_mmu_zap_collapsible_spte(), as I don't at all understand the
-> interaction between THP and _PAGE_DEVMAP.
+--==_Exmh_1572992459_14215P--
 
-The x86 KVM MMU code is one of the ugliest code I know (sorry, but it 
-had to be said :/ ). Luckily, this should be independent of the 
-PG_reserved thingy AFAIKs.
-
--- 
-
-Thanks,
-
-David / dhildenb
+--===============0941451013291083208==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============0941451013291083208==--
