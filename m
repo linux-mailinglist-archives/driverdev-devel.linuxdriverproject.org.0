@@ -2,76 +2,79 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E4BEBEFC0F
-	for <lists+driverdev-devel@lfdr.de>; Tue,  5 Nov 2019 12:10:09 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C6ACEFC10
+	for <lists+driverdev-devel@lfdr.de>; Tue,  5 Nov 2019 12:10:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1405685EF3;
-	Tue,  5 Nov 2019 11:10:08 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3BE6B89309;
+	Tue,  5 Nov 2019 11:10:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ByYcL9aWCeRb; Tue,  5 Nov 2019 11:10:07 +0000 (UTC)
+	with ESMTP id zIwcsxkELCph; Tue,  5 Nov 2019 11:10:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 144E785D30;
-	Tue,  5 Nov 2019 11:10:06 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9356F85EAE;
+	Tue,  5 Nov 2019 11:10:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4CD451BF574
- for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 11:10:04 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 819D01BF574
+ for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 11:10:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 482C389B07
- for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 11:10:04 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7716C8A669
+ for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 11:10:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FqTjbHMO414g for <devel@linuxdriverproject.org>;
- Tue,  5 Nov 2019 11:10:02 +0000 (UTC)
+ with ESMTP id tlXjQERtmJhR for <devel@linuxdriverproject.org>;
+ Tue,  5 Nov 2019 11:10:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com
- [207.211.31.81])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0586889A3B
- for <devel@driverdev.osuosl.org>; Tue,  5 Nov 2019 11:10:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1572952200;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=FREnvreZ0DXlMswNBUBVaTmUA3OlcxYKpKYODf+ZHzI=;
- b=WttzqtvScM34sSHJCeqzftEiuUfyBlP8Bts8+PBSOJBJTCBgEDenhqtojWzPd82lKoKtsK
- uPg3XN+uFHn9Vn6AExd/XuXYrZnGkT4oAl32O9/gY0i97l4g/NRa8cRAiI6PRRFWqJqybQ
- EvLMV+k7qH9a/pVp9Zj7/vGwzvRh4ag=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-219-JwYfLl3JMpuPum529BzIzg-1; Tue, 05 Nov 2019 06:09:58 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2C6EC801FCB;
- Tue,  5 Nov 2019 11:09:52 +0000 (UTC)
-Received: from [10.36.117.253] (ovpn-117-253.ams2.redhat.com [10.36.117.253])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 15277608B5;
- Tue,  5 Nov 2019 11:09:33 +0000 (UTC)
-Subject: Re: [PATCH v1 02/10] KVM: x86/mmu: Prepare kvm_is_mmio_pfn() for
- PG_reserved changes
-To: Dan Williams <dan.j.williams@intel.com>
-References: <20191024120938.11237-1-david@redhat.com>
- <20191024120938.11237-3-david@redhat.com>
- <CAPcyv4iFJgtcx56g+Le2DccgvoncvVZuaEBRSOyv-=52YNqJug@mail.gmail.com>
-From: David Hildenbrand <david@redhat.com>
-Organization: Red Hat GmbH
-Message-ID: <91df87ad-bbc5-aa9e-653f-d68c3c322978@redhat.com>
-Date: Tue, 5 Nov 2019 12:09:33 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
+ [209.85.128.68])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8EA318A623
+ for <devel@driverdev.osuosl.org>; Tue,  5 Nov 2019 11:10:30 +0000 (UTC)
+Received: by mail-wm1-f68.google.com with SMTP id q70so20380959wme.1
+ for <devel@driverdev.osuosl.org>; Tue, 05 Nov 2019 03:10:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:date:to:cc:subject:in-reply-to:message-id:references
+ :mime-version; bh=y2qxlg9/WxYNrodQutppo1itEPPVt4haSvgHKc6Nv0U=;
+ b=fQwTMSPfRFIr9Xsxooeb+ZdrmMotEymjjH3x72bOkSt6I5ppLg3TGDl6JXUCh79wZY
+ nwh/hKrc9OI6tvuJ3Il5RdP4wXlfboHsTUlrqY+mzOEuVxVneFmlh4SUGwJe+KaZDMNB
+ rJdSD17SV2fe77NLKdviMNLnHXDZlJX4ZUMOiKT8zQKBkNvomvt9TNizP4d3BLe2tRVI
+ LL147AeUfVtjMz8qzIHGvcYoTWtIY6NptFe0e9xVWgwJJ198Dum5OrMRu/pMFflk1Gc5
+ yA3SRUMgnJkIUX4pxomzJf/l5e7jgD3QWhfXtLQjHnD4vzPwScNRBHkdfcc1r/GyZzfZ
+ P12A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:date:to:cc:subject:in-reply-to:message-id
+ :references:mime-version;
+ bh=y2qxlg9/WxYNrodQutppo1itEPPVt4haSvgHKc6Nv0U=;
+ b=o8GvPw39Zb6mBreBcPXJrhvDwZ4ayVdwk1Lk1ZG03Vl4LQozzdHr2t79G8rsqQHK0d
+ mAaUgnhqSfiMxg/GgVORwFqii/XPpjuPqqd1IAbuHst3M/0mVHwb1ppAPROMFyne7Uza
+ U/sEAgB+J3XcouTBrXaCCMXlgxu6JHniaCVSxFqjIEoWZVR12KoVG9llIBQ6BKe/YUye
+ kuVsXDk8Wmy0bzLSCt1ZTLCv1FLFzY/TpX3XhGkbZrLTWf7p3gaOiLbP3SKPGSjnBrBF
+ GIShLsYdS1k9nOfQVpEawITlJMaNTGWlP3P4TDDqVfHmnHzEUoA8YEFONj5yVUEmgCyc
+ XHsg==
+X-Gm-Message-State: APjAAAUdOWD74nz9WBlHk64lPJrCxQrpjkdH1iHz7bSAWXDRCHFQkYHM
+ K0cWpj3RysK68UIF0J3pXg==
+X-Google-Smtp-Source: APXvYqyvvSKLAZakm9eFYTOjJ3YOmB1B6VsR9rqH+5wCmZ7zKBaZ55nBL4aPq0HmDNVMb8XotKN8LQ==
+X-Received: by 2002:a05:600c:c5:: with SMTP id u5mr3526268wmm.35.1572952228869; 
+ Tue, 05 Nov 2019 03:10:28 -0800 (PST)
+Received: from ninjahub.lan (79-73-36-243.dynamic.dsl.as9105.com.
+ [79.73.36.243])
+ by smtp.gmail.com with ESMTPSA id y67sm1366175wmb.38.2019.11.05.03.10.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 05 Nov 2019 03:10:28 -0800 (PST)
+From: Jules Irenge <jbi.octave@gmail.com>
+X-Google-Original-From: Jules Irenge <maxx@ninjahub.org>
+Date: Tue, 5 Nov 2019 11:09:44 +0000 (GMT)
+To: Greg KH <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH] staging: rts5208: rewrite macro with GNU extension
+ __auto_type
+In-Reply-To: <20191104165148.GA2293059@kroah.com>
+Message-ID: <alpine.LFD.2.21.1911051107590.11074@ninjahub.org>
+References: <20191104164400.9935-1-jbi.octave@gmail.com>
+ <20191104165148.GA2293059@kroah.com>
 MIME-Version: 1.0
-In-Reply-To: <CAPcyv4iFJgtcx56g+Le2DccgvoncvVZuaEBRSOyv-=52YNqJug@mail.gmail.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: JwYfLl3JMpuPum529BzIzg-1
-X-Mimecast-Spam-Score: 0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,98 +87,114 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-hyperv@vger.kernel.org, Michal Hocko <mhocko@suse.com>,
- =?UTF-8?B?UmFkaW0gS3LEjW3DocWZ?= <rkrcmar@redhat.com>,
- KVM list <kvm@vger.kernel.org>, Pavel Tatashin <pavel.tatashin@microsoft.com>,
- KarimAllah Ahmed <karahmed@amazon.de>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Dave Hansen <dave.hansen@linux.intel.com>,
- Alexander Duyck <alexander.duyck@gmail.com>, Michal Hocko <mhocko@kernel.org>,
- Paul Mackerras <paulus@ozlabs.org>, Linux MM <linux-mm@kvack.org>,
- Paul Mackerras <paulus@samba.org>, Michael Ellerman <mpe@ellerman.id.au>,
- "H. Peter Anvin" <hpa@zytor.com>, Wanpeng Li <wanpengli@tencent.com>,
- Alexander Duyck <alexander.h.duyck@linux.intel.com>,
- Thomas Gleixner <tglx@linutronix.de>, Kees Cook <keescook@chromium.org>,
- devel@driverdev.osuosl.org, Stefano Stabellini <sstabellini@kernel.org>,
- Stephen Hemminger <sthemmin@microsoft.com>,
- "Aneesh Kumar K.V" <aneesh.kumar@linux.ibm.com>,
- Joerg Roedel <joro@8bytes.org>, X86 ML <x86@kernel.org>,
- YueHaibing <yuehaibing@huawei.com>,
- "Matthew Wilcox \(Oracle\)" <willy@infradead.org>,
- Mike Rapoport <rppt@linux.ibm.com>, Peter Zijlstra <peterz@infradead.org>,
- Ingo Molnar <mingo@redhat.com>, Vlastimil Babka <vbabka@suse.cz>,
- Anthony Yznaga <anthony.yznaga@oracle.com>, Oscar Salvador <osalvador@suse.de>,
- "Isaac J. Manjarres" <isaacm@codeaurora.org>, Juergen Gross <jgross@suse.com>,
- Anshuman Khandual <anshuman.khandual@arm.com>,
- Haiyang Zhang <haiyangz@microsoft.com>, Sasha Levin <sashal@kernel.org>,
- kvm-ppc@vger.kernel.org, Qian Cai <cai@lca.pw>,
- Alex Williamson <alex.williamson@redhat.com>,
- Mike Rapoport <rppt@linux.vnet.ibm.com>, Borislav Petkov <bp@alien8.de>,
- Nicholas Piggin <npiggin@gmail.com>, Andy Lutomirski <luto@kernel.org>,
- xen-devel <xen-devel@lists.xenproject.org>,
- Boris Ostrovsky <boris.ostrovsky@oracle.com>,
- Vitaly Kuznetsov <vkuznets@redhat.com>, Allison Randal <allison@lohutok.net>,
- Jim Mattson <jmattson@google.com>, Christophe Leroy <christophe.leroy@c-s.fr>,
- Mel Gorman <mgorman@techsingularity.net>, Cornelia Huck <cohuck@redhat.com>,
- Pavel Tatashin <pasha.tatashin@soleen.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Sean Christopherson <sean.j.christopherson@intel.com>,
- Johannes Weiner <hannes@cmpxchg.org>, Paolo Bonzini <pbonzini@redhat.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev <linuxppc-dev@lists.ozlabs.org>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com,
+ Jules Irenge <jbi.octave@gmail.com>, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gMDUuMTEuMTkgMDI6MzcsIERhbiBXaWxsaWFtcyB3cm90ZToKPiBPbiBUaHUsIE9jdCAyNCwg
-MjAxOSBhdCA1OjEwIEFNIERhdmlkIEhpbGRlbmJyYW5kIDxkYXZpZEByZWRoYXQuY29tPiB3cm90
-ZToKPj4KPj4gUmlnaHQgbm93LCBaT05FX0RFVklDRSBtZW1vcnkgaXMgYWx3YXlzIHNldCBQR19y
-ZXNlcnZlZC4gV2Ugd2FudCB0bwo+PiBjaGFuZ2UgdGhhdC4KPj4KPj4gS1ZNIGhhcyB0aGlzIHdl
-aXJkIHVzZSBjYXNlIHRoYXQgeW91IGNhbiBtYXAgYW55dGhpbmcgZnJvbSAvZGV2L21lbQo+PiBp
-bnRvIHRoZSBndWVzdC4gcGZuX3ZhbGlkKCkgaXMgbm90IGEgcmVsaWFibGUgY2hlY2sgd2hldGhl
-ciB0aGUgbWVtbWFwCj4+IHdhcyBpbml0aWFsaXplZCBhbmQgY2FuIGJlIHRvdWNoZWQuIHBmbl90
-b19vbmxpbmVfcGFnZSgpIG1ha2VzIHN1cmUKPj4gdGhhdCB3ZSBoYXZlIGFuIGluaXRpYWxpemVk
-IG1lbW1hcCAoYW5kIGRvbid0IGhhdmUgWk9ORV9ERVZJQ0UgbWVtb3J5KS4KPj4KPj4gUmV3cml0
-ZSBrdm1faXNfbW1pb19wZm4oKSB0byBtYWtlIHN1cmUgdGhlIGZ1bmN0aW9uIHByb2R1Y2VzIHRo
-ZQo+PiBzYW1lIHJlc3VsdCBvbmNlIHdlIHN0b3Agc2V0dGluZyBaT05FX0RFVklDRSBwYWdlcyBQ
-R19yZXNlcnZlZC4KPj4KPj4gQ2M6IFBhb2xvIEJvbnppbmkgPHBib256aW5pQHJlZGhhdC5jb20+
-Cj4+IENjOiAiUmFkaW0gS3LEjW3DocWZIiA8cmtyY21hckByZWRoYXQuY29tPgo+PiBDYzogU2Vh
-biBDaHJpc3RvcGhlcnNvbiA8c2Vhbi5qLmNocmlzdG9waGVyc29uQGludGVsLmNvbT4KPj4gQ2M6
-IFZpdGFseSBLdXpuZXRzb3YgPHZrdXpuZXRzQHJlZGhhdC5jb20+Cj4+IENjOiBXYW5wZW5nIExp
-IDx3YW5wZW5nbGlAdGVuY2VudC5jb20+Cj4+IENjOiBKaW0gTWF0dHNvbiA8am1hdHRzb25AZ29v
-Z2xlLmNvbT4KPj4gQ2M6IEpvZXJnIFJvZWRlbCA8am9yb0A4Ynl0ZXMub3JnPgo+PiBDYzogVGhv
-bWFzIEdsZWl4bmVyIDx0Z2x4QGxpbnV0cm9uaXguZGU+Cj4+IENjOiBJbmdvIE1vbG5hciA8bWlu
-Z29AcmVkaGF0LmNvbT4KPj4gQ2M6IEJvcmlzbGF2IFBldGtvdiA8YnBAYWxpZW44LmRlPgo+PiBD
-YzogIkguIFBldGVyIEFudmluIiA8aHBhQHp5dG9yLmNvbT4KPj4gQ2M6IEthcmltQWxsYWggQWht
-ZWQgPGthcmFobWVkQGFtYXpvbi5kZT4KPj4gQ2M6IE1pY2hhbCBIb2NrbyA8bWhvY2tvQGtlcm5l
-bC5vcmc+Cj4+IENjOiBEYW4gV2lsbGlhbXMgPGRhbi5qLndpbGxpYW1zQGludGVsLmNvbT4KPj4g
-U2lnbmVkLW9mZi1ieTogRGF2aWQgSGlsZGVuYnJhbmQgPGRhdmlkQHJlZGhhdC5jb20+Cj4+IC0t
-LQo+PiAgIGFyY2gveDg2L2t2bS9tbXUuYyB8IDI5ICsrKysrKysrKysrKysrKysrLS0tLS0tLS0t
-LS0tCj4+ICAgMSBmaWxlIGNoYW5nZWQsIDE3IGluc2VydGlvbnMoKyksIDEyIGRlbGV0aW9ucygt
-KQo+Pgo+PiBkaWZmIC0tZ2l0IGEvYXJjaC94ODYva3ZtL21tdS5jIGIvYXJjaC94ODYva3ZtL21t
-dS5jCj4+IGluZGV4IDI0YzIzYzY2YjIyNi4uZjAzMDg5YTMzNmRlIDEwMDY0NAo+PiAtLS0gYS9h
-cmNoL3g4Ni9rdm0vbW11LmMKPj4gKysrIGIvYXJjaC94ODYva3ZtL21tdS5jCj4+IEBAIC0yOTYy
-LDIwICsyOTYyLDI1IEBAIHN0YXRpYyBib29sIG1tdV9uZWVkX3dyaXRlX3Byb3RlY3Qoc3RydWN0
-IGt2bV92Y3B1ICp2Y3B1LCBnZm5fdCBnZm4sCj4+Cj4+ICAgc3RhdGljIGJvb2wga3ZtX2lzX21t
-aW9fcGZuKGt2bV9wZm5fdCBwZm4pCj4+ICAgewo+PiArICAgICAgIHN0cnVjdCBwYWdlICpwYWdl
-ID0gcGZuX3RvX29ubGluZV9wYWdlKHBmbik7Cj4+ICsKPj4gKyAgICAgICAvKgo+PiArICAgICAg
-ICAqIFpPTkVfREVWSUNFIHBhZ2VzIGFyZSBuZXZlciBvbmxpbmUuIE9ubGluZSBwYWdlcyB0aGF0
-IGFyZSByZXNlcnZlZAo+PiArICAgICAgICAqIGVpdGhlciBpbmRpY2F0ZSB0aGUgemVybyBwYWdl
-IG9yIE1NSU8gcGFnZXMuCj4+ICsgICAgICAgICovCj4+ICsgICAgICAgaWYgKHBhZ2UpCj4+ICsg
-ICAgICAgICAgICAgICByZXR1cm4gIWlzX3plcm9fcGZuKHBmbikgJiYgUGFnZVJlc2VydmVkKHBm
-bl90b19wYWdlKHBmbikpOwo+PiArCj4+ICsgICAgICAgLyoKPj4gKyAgICAgICAgKiBBbnl0aGlu
-ZyB3aXRoIGEgdmFsaWQgKGJ1dCBub3Qgb25saW5lKSBtZW1tYXAgY291bGQgYmUgWk9ORV9ERVZJ
-Q0UuCj4+ICsgICAgICAgICogVHJlYXQgb25seSBVQy9VQy0vV0MgcGFnZXMgYXMgTU1JTy4KPiAK
-PiBZb3UgbWlnaHQgY2xhcmlmeSB0aGF0IFpPTkVfREVWSUNFIHBhZ2VzIHRoYXQgYmVsb25nIHRv
-IFdCIGNhY2hlYWJsZQo+IHBtZW0gaGF2ZSB0aGUgY29ycmVjdCBtZW10eXBlIGVzdGFibGlzaGVk
-IGJ5IGRldm1fbWVtcmVtYXBfcGFnZXMoKS4KCi8qCiAgKiBBbnl0aGluZyB3aXRoIGEgdmFsaWQg
-KGJ1dCBub3Qgb25saW5lKSBtZW1tYXAgY291bGQgYmUgWk9ORV9ERVZJQ0UuCiAgKiBUcmVhdCBv
-bmx5IFVDL1VDLS9XQyBwYWdlcyBhcyBNTUlPLiBkZXZtX21lbXJlbWFwX3BhZ2VzKCkgZXN0YWJs
-aXNoZWQKICAqIHRoZSBjb3JyZWN0IG1lbXR5cGUgZm9yIFdCIGNhY2hlYWJsZSBaT05FX0RFVklD
-RSBwYWdlcy4KICAqLwoKVGhhbmtzIQoKPiAKPiBPdGhlciB0aGFuIHRoYXQsIGZlZWwgZnJlZSB0
-byBhZGQ6Cj4gCj4gUmV2aWV3ZWQtYnk6IERhbiBXaWxsaWFtcyA8ZGFuLmoud2lsbGlhbXNAaW50
-ZWwuY29tPgo+IAoKCi0tIAoKVGhhbmtzLAoKRGF2aWQgLyBkaGlsZGVuYgoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRl
-dmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnBy
-b2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+
+
+On Mon, 4 Nov 2019, Greg KH wrote:
+
+> On Mon, Nov 04, 2019 at 04:44:00PM +0000, Jules Irenge wrote:
+> > Rewrite macro function with GNU extension __auto_type
+> > to remove issue detected by checkpatch tool.
+> > CHECK: MACRO argument reuse - possible side-effects?
+> > 
+> > Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> > ---
+> >  drivers/staging/rts5208/rtsx_chip.h | 92 +++++++++++++++++------------
+> >  1 file changed, 55 insertions(+), 37 deletions(-)
+> > 
+> > diff --git a/drivers/staging/rts5208/rtsx_chip.h b/drivers/staging/rts5208/rtsx_chip.h
+> > index bac65784d4a1..4b986d5c68da 100644
+> > --- a/drivers/staging/rts5208/rtsx_chip.h
+> > +++ b/drivers/staging/rts5208/rtsx_chip.h
+> > @@ -386,23 +386,31 @@ struct zone_entry {
+> >  
+> >  /* SD card */
+> >  #define CHK_SD(sd_card)			(((sd_card)->sd_type & 0xFF) == TYPE_SD)
+> > -#define CHK_SD_HS(sd_card)		(CHK_SD(sd_card) && \
+> > -					 ((sd_card)->sd_type & SD_HS))
+> > -#define CHK_SD_SDR50(sd_card)		(CHK_SD(sd_card) && \
+> > -					 ((sd_card)->sd_type & SD_SDR50))
+> > -#define CHK_SD_DDR50(sd_card)		(CHK_SD(sd_card) && \
+> > -					 ((sd_card)->sd_type & SD_DDR50))
+> > -#define CHK_SD_SDR104(sd_card)		(CHK_SD(sd_card) && \
+> > -					 ((sd_card)->sd_type & SD_SDR104))
+> > -#define CHK_SD_HCXC(sd_card)		(CHK_SD(sd_card) && \
+> > -					 ((sd_card)->sd_type & SD_HCXC))
+> > -#define CHK_SD_HC(sd_card)		(CHK_SD_HCXC(sd_card) && \
+> > -					 ((sd_card)->capacity <= 0x4000000))
+> > -#define CHK_SD_XC(sd_card)		(CHK_SD_HCXC(sd_card) && \
+> > -					 ((sd_card)->capacity > 0x4000000))
+> > -#define CHK_SD30_SPEED(sd_card)		(CHK_SD_SDR50(sd_card) || \
+> > -					 CHK_SD_DDR50(sd_card) || \
+> > -					 CHK_SD_SDR104(sd_card))
+> > +#define CHK_SD_HS(sd_card)\
+> > +	({__auto_type _sd = sd_card; CHK_SD(_sd) && \
+> > +					 (_sd->sd_type & SD_HS); })
+> > +#define CHK_SD_SDR50(sd_card)\
+> > +	({__auto_type _sd = sd_card; CHK_SD(_sd) && \
+> > +					 (_sd->sd_type & SD_SDR50); })
+> > +#define CHK_SD_DDR50(sd_card)\
+> > +	({__auto_type _sd = sd_card; CHK_SD(_sd) && \
+> > +					 (_sd->sd_type & SD_DDR50); })
+> > +#define CHK_SD_SDR104(sd_card)\
+> > +	({__auto_type _sd = sd_card; CHK_SD(_sd) && \
+> > +					 (_sd->sd_type & SD_SDR104); })
+> > +#define CHK_SD_HCXC(sd_card)\
+> > +	({__auto_type _sd = sd_card; CHK_SD(_sd) && \
+> > +					 (_sd->sd_type & SD_HCXC); })
+> > +#define CHK_SD_HC(sd_card)\
+> > +	({__auto_type _sd = sd_card; CHK_SD_HCXC(_sd) && \
+> > +					(_sd->capacity <= 0x4000000); })
+> > +#define CHK_SD_XC(sd_card)\
+> > +	({__auto_type _sd = sd_card; CHK_SD_HCXC(_sd) && \
+> > +					 (_sd->capacity > 0x4000000); })
+> > +#define CHK_SD30_SPEED(sd_card)\
+> > +	({__auto_type _sd = sd_card; CHK_SD_SDR50(_sd) || \
+> > +					CHK_SD_DDR50(_sd) || \
+> > +					CHK_SD_SDR104(_sd); })
+> >  
+> >  #define SET_SD(sd_card)			((sd_card)->sd_type = TYPE_SD)
+> >  #define SET_SD_HS(sd_card)		((sd_card)->sd_type |= SD_HS)
+> > @@ -420,18 +428,24 @@ struct zone_entry {
+> >  /* MMC card */
+> >  #define CHK_MMC(sd_card)		(((sd_card)->sd_type & 0xFF) == \
+> >  					 TYPE_MMC)
+> > -#define CHK_MMC_26M(sd_card)		(CHK_MMC(sd_card) && \
+> > -					 ((sd_card)->sd_type & MMC_26M))
+> > -#define CHK_MMC_52M(sd_card)		(CHK_MMC(sd_card) && \
+> > -					 ((sd_card)->sd_type & MMC_52M))
+> > -#define CHK_MMC_4BIT(sd_card)		(CHK_MMC(sd_card) && \
+> > -					 ((sd_card)->sd_type & MMC_4BIT))
+> > -#define CHK_MMC_8BIT(sd_card)		(CHK_MMC(sd_card) && \
+> > -					 ((sd_card)->sd_type & MMC_8BIT))
+> > -#define CHK_MMC_SECTOR_MODE(sd_card)	(CHK_MMC(sd_card) && \
+> > -					 ((sd_card)->sd_type & MMC_SECTOR_MODE))
+> > -#define CHK_MMC_DDR52(sd_card)		(CHK_MMC(sd_card) && \
+> > -					 ((sd_card)->sd_type & MMC_DDR52))
+> > +#define CHK_MMC_26M(sd_card)\
+> > +	({__auto_type _sd = sd_card; CHK_MMC(_sd) && \
+> > +					 (_sd->sd_type & MMC_26M); })
+> 
+> Ick, no.  These are obviously pointers, which can not be "evaluated
+> twice" so this whole thing is just fine.
+> 
+> checkpatch is just a "hint" that you might want to look at the code.
+> This stuff is just fine, look at how it is being used for proof of that.
+> 
+> thanks,
+> 
+> greg k-h
+> 
+Thanks for the feedback. It's good to know. I really appreciate.
+Kind regards,
+Jules
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
