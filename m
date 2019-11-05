@@ -1,91 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B6E35F0021
-	for <lists+driverdev-devel@lfdr.de>; Tue,  5 Nov 2019 15:44:33 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CB837F0045
+	for <lists+driverdev-devel@lfdr.de>; Tue,  5 Nov 2019 15:49:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id CC491221FB;
-	Tue,  5 Nov 2019 14:44:30 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 51A108965D;
+	Tue,  5 Nov 2019 14:49:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DEBFzA93pozO; Tue,  5 Nov 2019 14:44:30 +0000 (UTC)
+	with ESMTP id dselj3BYOFWr; Tue,  5 Nov 2019 14:49:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 01A742210F;
-	Tue,  5 Nov 2019 14:44:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 08DAD895C5;
+	Tue,  5 Nov 2019 14:49:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7457E1BF354
- for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 14:44:27 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6DDA01BF354
+ for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 14:49:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7038D89036
- for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 14:44:27 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 66CC384415
+ for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 14:49:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8959UxC-0Hez for <devel@linuxdriverproject.org>;
- Tue,  5 Nov 2019 14:44:26 +0000 (UTC)
+ with ESMTP id a4_dLPksxW3s for <devel@linuxdriverproject.org>;
+ Tue,  5 Nov 2019 14:49:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id AA58289030
- for <devel@driverdev.osuosl.org>; Tue,  5 Nov 2019 14:44:26 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id xA5EhvXr189911;
- Tue, 5 Nov 2019 14:44:25 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=cnDpTqKYig+iH0LVqI9Gl2wReEqnuaD2T/o9SmZyNkk=;
- b=qtVA+cdrShb6jSyaz3UziS7FJjEn6W9l/Z7maw3KFMiehu/eftD9aUi6wV3ovSZ2Diae
- O8ho90M0Ir7Zjk4L/dmt7nFIZG3cgcIzP0fRgkNbsPjeIaJ1v+qECcvIDS+dtjJs6Fl5
- 61DqipYaASuAa/wSdO0bBpadc2cRFyVAUl6waG8u5yw4QhVU5OqeZ6g1TThFQFgeckzK
- G+oYN6OoTehDayxfaUQqUvmR3Y0tFyvdeRSVDJPeHGLEcJSXwXXFPhJpUIVEPGsc0ZYm
- sTkqUPgCmLBCUI3cBaFSNHoOwdj1A1qOggUXz9dLeOiWo5+jlGod7sEtup9HGdX55ls/ fQ== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by aserp2120.oracle.com with ESMTP id 2w11rpxuyv-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 05 Nov 2019 14:44:25 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id xA5EiIGJ040820;
- Tue, 5 Nov 2019 14:44:24 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by userp3020.oracle.com with ESMTP id 2w3161e8jj-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 05 Nov 2019 14:44:23 +0000
-Received: from abhmp0012.oracle.com (abhmp0012.oracle.com [141.146.116.18])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id xA5Ehe9v011602;
- Tue, 5 Nov 2019 14:43:40 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 05 Nov 2019 06:43:39 -0800
-Date: Tue, 5 Nov 2019 17:43:29 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Chen Wandun <chenwandun@huawei.com>
-Subject: Re: [PATCH v2] hp100: remove set but not used variable val
-Message-ID: <20191105144329.GG10409@kadam>
-References: <20191105133554.6C01F9A06CB85816F399@huawei.com>
- <1572964619-76671-1-git-send-email-chenwandun@huawei.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1572964619-76671-1-git-send-email-chenwandun@huawei.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9431
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=774
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1908290000 definitions=main-1911050123
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9431
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=860 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
- definitions=main-1911050123
+Received: from mail-m975.mail.163.com (mail-m975.mail.163.com [123.126.97.5])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 918D4843ED
+ for <devel@driverdev.osuosl.org>; Tue,  5 Nov 2019 14:49:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+ s=s110527; h=From:Subject:Date:Message-Id; bh=fmCmuOAiEUwEwfeCcX
+ FYBqOu7taXOPv5Mn5DJrGyiqw=; b=S55SVB4XKcW2KybHxCblxfDEYjf39VXJHa
+ 9PxmKcMsjybQcsDcQjhwRDdgN6mLTwVVNX4CTcbIApI9QLE3jRBQZADnNtizuIkh
+ bGbz570JGl7Ns+z6jp2Rj1ub4+do+qBEKtdk51uzr4WLAIuGDQDSiZhGQP2W92Be
+ +6L1Zee4k=
+Received: from localhost.localdomain (unknown [202.112.113.212])
+ by smtp5 (Coremail) with SMTP id HdxpCgD3iCLvi8FdNofqJw--.256S3;
+ Tue, 05 Nov 2019 22:49:23 +0800 (CST)
+From: Pan Bian <bianpan2016@163.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Himadri Pandya <himadri18.07@gmail.com>,
+ YueHaibing <yuehaibing@huawei.com>,
+ Colin Ian King <colin.king@canonical.com>
+Subject: [PATCH] staging: rtl8192e: fix potential use after free
+Date: Tue,  5 Nov 2019 22:49:11 +0800
+Message-Id: <1572965351-6745-1-git-send-email-bianpan2016@163.com>
+X-Mailer: git-send-email 2.7.4
+X-CM-TRANSID: HdxpCgD3iCLvi8FdNofqJw--.256S3
+X-Coremail-Antispam: 1Uf129KBjvJXoW7tr48JF48Ww4fAw1xXrWxXrb_yoW8Jw1UpF
+ 4rGwnIyrWUZr48u3ykAFWIgryFka1SgF9agay3X3yrZrZxCw1rXryqvFyjqr45CrZ3CF4a
+ qFn5Kr15uan8WaDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UXeOXUUUUU=
+X-Originating-IP: [202.112.113.212]
+X-CM-SenderInfo: held01tdqsiiqw6rljoofrz/xtbBURNkclaD5I2j7AAAsn
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,32 +68,49 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, kstewart@linuxfoundation.org,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, perex@perex.cz,
- joe@perches.com, tglx@linutronix.de, allison@lohutok.net
+Cc: devel@driverdev.osuosl.org, Pan Bian <bianpan2016@163.com>,
+ linux-kernel@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Nov 05, 2019 at 10:36:59PM +0800, Chen Wandun wrote:
-> From: Chenwandun <chenwandun@huawei.com>
-> 
-> Fixes gcc '-Wunused-but-set-variable' warning:
-> 
-> drivers/staging/hp/hp100.c: In function hp100_start_xmit:
-> drivers/staging/hp/hp100.c:1629:10: warning: variable val set but not used [-Wunused-but-set-variable]
-> 
-> Signed-off-by: Chenwandun <chenwandun@huawei.com>
-> ---
+The variable skb is released via kfree_skb() when the return value of
+_rtl92e_tx is not zero. However, after that, skb is accessed again to
+read its length, which may result in a use after free bug. This patch
+fixes the bug by moving the release operation to where skb is never
+used later.
 
-You should explain why you are sending a v2 under the --- cut off line.
+Signed-off-by: Pan Bian <bianpan2016@163.com>
+---
+ drivers/staging/rtl8192e/rtl8192e/rtl_core.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-The v1 was the correct patch, but this driver is going to be deleted
-soon so I don't think we are accepting this sort of cleanup.
-
-regards,
-dan carpenter
+diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
+index f932cb15e4e5..cdcb22f96ed9 100644
+--- a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
++++ b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
+@@ -1616,14 +1616,15 @@ static void _rtl92e_hard_data_xmit(struct sk_buff *skb, struct net_device *dev,
+ 	memcpy((unsigned char *)(skb->cb), &dev, sizeof(dev));
+ 	skb_push(skb, priv->rtllib->tx_headroom);
+ 	ret = _rtl92e_tx(dev, skb);
+-	if (ret != 0)
+-		kfree_skb(skb);
+ 
+ 	if (queue_index != MGNT_QUEUE) {
+ 		priv->rtllib->stats.tx_bytes += (skb->len -
+ 						 priv->rtllib->tx_headroom);
+ 		priv->rtllib->stats.tx_packets++;
+ 	}
++
++	if (ret != 0)
++		kfree_skb(skb);
+ }
+ 
+ static int _rtl92e_hard_start_xmit(struct sk_buff *skb, struct net_device *dev)
+-- 
+2.7.4
 
 _______________________________________________
 devel mailing list
