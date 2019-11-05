@@ -1,53 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B4E12F0A19
-	for <lists+driverdev-devel@lfdr.de>; Wed,  6 Nov 2019 00:13:40 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6F808F0A35
+	for <lists+driverdev-devel@lfdr.de>; Wed,  6 Nov 2019 00:30:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id ABD198A6E6;
-	Tue,  5 Nov 2019 23:13:38 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D58D286169;
+	Tue,  5 Nov 2019 23:30:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id k9y-mHeSje3c; Tue,  5 Nov 2019 23:13:38 +0000 (UTC)
+	with ESMTP id KS4sU8srlPzj; Tue,  5 Nov 2019 23:30:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E28B98834C;
-	Tue,  5 Nov 2019 23:13:37 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 90DDD85E65;
+	Tue,  5 Nov 2019 23:30:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 773621BF33F
- for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 23:13:30 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 09EF41BF33F
+ for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 23:30:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 4D45D87D41
- for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 23:13:30 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0609085E65
+ for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 23:30:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JnbuozlS0E6t for <devel@linuxdriverproject.org>;
- Tue,  5 Nov 2019 23:13:29 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 7789987D05
- for <devel@driverdev.osuosl.org>; Tue,  5 Nov 2019 23:13:29 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 05 Nov 2019 15:13:18 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,271,1569308400"; d="scan'208";a="403533470"
-Received: from sjchrist-coffee.jf.intel.com (HELO linux.intel.com)
- ([10.54.74.41])
- by fmsmga006.fm.intel.com with ESMTP; 05 Nov 2019 15:13:16 -0800
-Date: Tue, 5 Nov 2019 15:13:16 -0800
-From: Sean Christopherson <sean.j.christopherson@intel.com>
-To: Dan Williams <dan.j.williams@intel.com>
-Subject: Re: [PATCH v1 03/10] KVM: Prepare kvm_is_reserved_pfn() for
- PG_reserved changes
-Message-ID: <20191105231316.GE23297@linux.intel.com>
+ with ESMTP id 9jNsZBh0crvX for <devel@linuxdriverproject.org>;
+ Tue,  5 Nov 2019 23:30:11 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ot1-f66.google.com (mail-ot1-f66.google.com
+ [209.85.210.66])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D850585DF6
+ for <devel@driverdev.osuosl.org>; Tue,  5 Nov 2019 23:30:11 +0000 (UTC)
+Received: by mail-ot1-f66.google.com with SMTP id z6so19243162otb.2
+ for <devel@driverdev.osuosl.org>; Tue, 05 Nov 2019 15:30:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=intel-com.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=R3DmgtbuDvl/nfkrniY8Ba73gr9pACG77rpNCqLOyTA=;
+ b=ax5HR98WH4xqZvWHcyzuHRNGmZvT7I9m7xhGJ1uY8PDybcgBe1VmfyCLXrE48zy0BX
+ vWcIHu6UYoH8HknqTIdU6Y+LYlECfapFpwLBsIAucTcvwTRYHtKiZpX6HfdTzXXEPEnk
+ HWjqS+gQejFktk2XITcuM0n+yeF5sQPBkc+kK/6meBz8x9VvLBJ24hrRrJof+Z2QZCIS
+ ZvRSXKB24+uJoWcJtAJmQHL6SW1XP2EN8QixZwZsl13dmEYE2GJMvXzgHqy355aGvDQ3
+ F0zrp/0LqNIWlZiKW6TlpU1rB2bmBt1brju1GqeiJ5NinFlVYYEE2UC84COw1zeJ61L+
+ MXMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=R3DmgtbuDvl/nfkrniY8Ba73gr9pACG77rpNCqLOyTA=;
+ b=iZuUCiwHLr73i/qTo+yiSoMtgDIq2qWt4R7q0KpYfvqjKvSK+aFc9TClefuSnuObUx
+ heH5P89C3z4zqnJRH7eFa7qy97xlbcN2VydIcFy8cmoNRLwckkQuWo4OaevCeu7BbHOT
+ d+EgXEINnnuE6UAt2XWDKwlHZywvbcNQXsWAGMNxNrwcrIgENamtz1ckaR52wsGgMDKP
+ 7DADZ2ZRQfPrcvXnCqVVRTJdFcL1tzGU+qr53O/i/VGlfYRBVLvfItHIEbrhhQleQJT+
+ XOynLrmZYfbx5JJ2MmdWQVCBcCW5ZO8D62qWT1q7JLkqYUc3cyHwIH3ScsrBq/tpKq1g
+ WT+Q==
+X-Gm-Message-State: APjAAAW4pPQit9EbUhmms2f15ocIRfmdHY4C4v+0mYPoGKAng/SGwB6+
+ E4dvE6dE5XG0fz/5jPQ1L9PhPui/0TqoxCS7Zv00ag==
+X-Google-Smtp-Source: APXvYqyxc+DmPQQN5aSk0dtRzKoWLg9GygXu/1AciWksnhJhFNdAydFP0T3vz9JQ5vwewxa4ElAmJqPI0FG8eQ5kblQ=
+X-Received: by 2002:a9d:5f11:: with SMTP id f17mr24157383oti.207.1572996611041; 
+ Tue, 05 Nov 2019 15:30:11 -0800 (PST)
+MIME-Version: 1.0
 References: <20191024120938.11237-1-david@redhat.com>
  <20191024120938.11237-4-david@redhat.com>
  <CAPcyv4jyTxEpw5ep5Noy0YRV7Dybzj+8OTVMwRK_zeFigF-LsQ@mail.gmail.com>
@@ -57,10 +70,14 @@ References: <20191024120938.11237-1-david@redhat.com>
  <20191105160000.GC8128@linux.intel.com>
  <ed89cd61-7c45-8c9c-ffeb-f27b1872bd7a@redhat.com>
  <CAPcyv4htPCeui80fOOno+7AFo3V-=VEiWkAv8j+-Kkad+UnFGQ@mail.gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAPcyv4htPCeui80fOOno+7AFo3V-=VEiWkAv8j+-Kkad+UnFGQ@mail.gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+ <20191105231316.GE23297@linux.intel.com>
+In-Reply-To: <20191105231316.GE23297@linux.intel.com>
+From: Dan Williams <dan.j.williams@intel.com>
+Date: Tue, 5 Nov 2019 15:30:00 -0800
+Message-ID: <CAPcyv4iRP0Sz=mcT+iuoVaD4-o2q1nCH2Hixc5OkfWu+SBQmkg@mail.gmail.com>
+Subject: Re: [PATCH v1 03/10] KVM: Prepare kvm_is_reserved_pfn() for
+ PG_reserved changes
+To: Sean Christopherson <sean.j.christopherson@intel.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,7 +91,7 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: linux-hyperv@vger.kernel.org, Michal Hocko <mhocko@suse.com>,
- Radim =?utf-8?B?S3LEjW3DocWZ?= <rkrcmar@redhat.com>,
+ =?UTF-8?B?UmFkaW0gS3LEjW3DocWZ?= <rkrcmar@redhat.com>,
  KVM list <kvm@vger.kernel.org>, David Hildenbrand <david@redhat.com>,
  KarimAllah Ahmed <karahmed@amazon.de>,
  Benjamin Herrenschmidt <benh@kernel.crashing.org>,
@@ -117,28 +134,37 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Nov 05, 2019 at 03:02:40PM -0800, Dan Williams wrote:
-> On Tue, Nov 5, 2019 at 12:31 PM David Hildenbrand <david@redhat.com> wrote:
-> > > The scarier code (for me) is transparent_hugepage_adjust() and
-> > > kvm_mmu_zap_collapsible_spte(), as I don't at all understand the
-> > > interaction between THP and _PAGE_DEVMAP.
+On Tue, Nov 5, 2019 at 3:13 PM Sean Christopherson
+<sean.j.christopherson@intel.com> wrote:
+>
+> On Tue, Nov 05, 2019 at 03:02:40PM -0800, Dan Williams wrote:
+> > On Tue, Nov 5, 2019 at 12:31 PM David Hildenbrand <david@redhat.com> wrote:
+> > > > The scarier code (for me) is transparent_hugepage_adjust() and
+> > > > kvm_mmu_zap_collapsible_spte(), as I don't at all understand the
+> > > > interaction between THP and _PAGE_DEVMAP.
+> > >
+> > > The x86 KVM MMU code is one of the ugliest code I know (sorry, but it
+> > > had to be said :/ ). Luckily, this should be independent of the
+> > > PG_reserved thingy AFAIKs.
 > >
-> > The x86 KVM MMU code is one of the ugliest code I know (sorry, but it
-> > had to be said :/ ). Luckily, this should be independent of the
-> > PG_reserved thingy AFAIKs.
-> 
-> Both transparent_hugepage_adjust() and kvm_mmu_zap_collapsible_spte()
-> are honoring kvm_is_reserved_pfn(), so again I'm missing where the
-> page count gets mismanaged and leads to the reported hang.
+> > Both transparent_hugepage_adjust() and kvm_mmu_zap_collapsible_spte()
+> > are honoring kvm_is_reserved_pfn(), so again I'm missing where the
+> > page count gets mismanaged and leads to the reported hang.
+>
+> When mapping pages into the guest, KVM gets the page via gup(), which
+> increments the page count for ZONE_DEVICE pages.  But KVM puts the page
+> using kvm_release_pfn_clean(), which skips put_page() if PageReserved()
+> and so never puts its reference to ZONE_DEVICE pages.
 
-When mapping pages into the guest, KVM gets the page via gup(), which
-increments the page count for ZONE_DEVICE pages.  But KVM puts the page
-using kvm_release_pfn_clean(), which skips put_page() if PageReserved()
-and so never puts its reference to ZONE_DEVICE pages.
+Oh, yeah, that's busted.
 
-My transparent_hugepage_adjust() and kvm_mmu_zap_collapsible_spte()
-comments were for a post-patch/series scenario wheren PageReserved() is
-no longer true for ZONE_DEVICE pages.
+> My transparent_hugepage_adjust() and kvm_mmu_zap_collapsible_spte()
+> comments were for a post-patch/series scenario wheren PageReserved() is
+> no longer true for ZONE_DEVICE pages.
+
+Ah, ok, for that David is preserving kvm_is_reserved_pfn() returning
+true for ZONE_DEVICE because pfn_to_online_page() will fail for
+ZONE_DEVICE.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
