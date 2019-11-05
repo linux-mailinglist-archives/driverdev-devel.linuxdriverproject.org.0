@@ -1,70 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id F2979F0515
-	for <lists+driverdev-devel@lfdr.de>; Tue,  5 Nov 2019 19:30:32 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 70E938A4AF;
-	Tue,  5 Nov 2019 18:30:30 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vj8Mk2wJwvNN; Tue,  5 Nov 2019 18:30:30 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4CC4C8A3FD;
-	Tue,  5 Nov 2019 18:30:29 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 299401BF31F
- for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 18:30:27 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 061B6F06C1
+	for <lists+driverdev-devel@lfdr.de>; Tue,  5 Nov 2019 21:19:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 25794227FA
- for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 18:30:27 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5F56422621;
+	Tue,  5 Nov 2019 20:19:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id I5nS4wcPLCfN; Tue,  5 Nov 2019 20:19:38 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 09F5B204D0;
+	Tue,  5 Nov 2019 20:19:37 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 324881BF334
+ for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 20:19:35 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2721288EE6
+ for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 20:19:35 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UrNtzRZ9GChz for <devel@linuxdriverproject.org>;
- Tue,  5 Nov 2019 18:30:25 +0000 (UTC)
-X-Greylist: delayed 01:10:00 by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0201.hostedemail.com
- [216.40.44.201])
- by silver.osuosl.org (Postfix) with ESMTPS id C7E81227F7
- for <devel@driverdev.osuosl.org>; Tue,  5 Nov 2019 18:30:23 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave06.hostedemail.com (Postfix) with ESMTP id D5568800CBCE
- for <devel@driverdev.osuosl.org>; Tue,  5 Nov 2019 17:13:46 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay02.hostedemail.com (Postfix) with ESMTP id E6B174DA7;
- Tue,  5 Nov 2019 17:13:43 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, :::::::::::::::,
- RULES_HIT:41:355:379:599:800:960:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2393:2553:2559:2562:2828:3138:3139:3140:3141:3142:3353:3622:3865:3866:3867:3868:3870:3871:3872:3873:3874:4250:4321:4552:5007:6119:6691:7576:7775:7903:10004:10400:11026:11232:11473:11658:11914:12043:12296:12297:12679:12740:12760:12895:13069:13311:13357:13439:13618:14093:14096:14097:14181:14659:14721:14777:21080:21433:21451:21627:21819:30012:30022:30029:30054:30070:30090:30091,
- 0,
- RBL:47.151.135.224:@perches.com:.lbl8.mailshell.net-62.8.0.100 64.201.201.201,
- CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none, DomainCache:0,
- MSF:not bulk, SPF:fn, MSBL:0, DNSBL:neutral, Custom_rules:0:0:0, LFtime:25,
- LUA_SUMMARY:none
-X-HE-Tag: mist27_345d099eb123
-X-Filterd-Recvd-Size: 2930
-Received: from XPS-9350.home (unknown [47.151.135.224])
- (Authenticated sender: joe@perches.com)
- by omf08.hostedemail.com (Postfix) with ESMTPA;
- Tue,  5 Nov 2019 17:13:42 +0000 (UTC)
-Message-ID: <3a6d170b616eb52735dc6dbf985377b1c836b9e6.camel@perches.com>
-Subject: Re: [PATCH v2] hp100: remove set but not used variable val
-From: Joe Perches <joe@perches.com>
-To: Greg KH <gregkh@linuxfoundation.org>, Chen Wandun <chenwandun@huawei.com>
-Date: Tue, 05 Nov 2019 09:13:31 -0800
-In-Reply-To: <20191105155024.GA2677365@kroah.com>
-References: <20191105133554.6C01F9A06CB85816F399@huawei.com>
- <1572964619-76671-1-git-send-email-chenwandun@huawei.com>
- <20191105155024.GA2677365@kroah.com>
-User-Agent: Evolution 3.34.1-2 
+ with ESMTP id 3ORTC+i8idET for <devel@linuxdriverproject.org>;
+ Tue,  5 Nov 2019 20:19:34 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-oi1-f196.google.com (mail-oi1-f196.google.com
+ [209.85.167.196])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 85E5388E3E
+ for <devel@driverdev.osuosl.org>; Tue,  5 Nov 2019 20:19:34 +0000 (UTC)
+Received: by mail-oi1-f196.google.com with SMTP id m193so18809376oig.0
+ for <devel@driverdev.osuosl.org>; Tue, 05 Nov 2019 12:19:34 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=Nx7kJTn3OdCopAIR7Uif4GRlSRK0moBADISBNdcfrTs=;
+ b=N8UaqeWpEjGd+9OqyLp17+dUX5biodywCYDfl0W3icWTZu8iRsTHoISkr2HPb9s9nj
+ c+P8XlxsZeWzDNhkA261iJ0ZieSR0OyWruLqfjjPz/WhD/pVCz8sR2qjXV8Nbw47q3Xl
+ n3yf0JUdg6DZi3SUhTZdnlTz3nXKizqPLGah0LZt/mQXep86ddROzaretKKbLBLVupEf
+ 8vNCRcAqlbGC1xoYsjmsVyaCD3MIUND+vyXCOWlqDEL8efUV2/bBmqs7aPHntRq6WY6C
+ ema7jX/XgCg7WL/6rjAB3b2qLcE14S1OFnDgWtQee3E3/4XdSBnB8+f4tnADRfQl8lOb
+ in4w==
+X-Gm-Message-State: APjAAAV2gAqAduI4+yu/yzyIbuv4okhkJ8gikDTyLavKbrosaFxPwanC
+ vQePAwoGkwuNeR6P77Zegg==
+X-Google-Smtp-Source: APXvYqzcwQTTuh/ucjVOm77Dw2qQBBOp4x78YLgbH+mDcvDa5vMIG9/s7Mrn5jjgeZmF/Hy7tj1Clw==
+X-Received: by 2002:aca:dd0a:: with SMTP id u10mr766731oig.130.1572985173589; 
+ Tue, 05 Nov 2019 12:19:33 -0800 (PST)
+Received: from localhost (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id v26sm2778262oic.5.2019.11.05.12.19.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 05 Nov 2019 12:19:32 -0800 (PST)
+Date: Tue, 5 Nov 2019 14:19:32 -0600
+From: Rob Herring <robh@kernel.org>
+To: Rodrigo Carvalho <rodrigorsdc@gmail.com>
+Subject: Re: [PATCH v3] dt-bindings: iio: accel: add binding documentation
+ for ADIS16240
+Message-ID: <20191105201932.GA24515@bogus>
+References: <20191101000301.12901-1-rodrigorsdc@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20191101000301.12901-1-rodrigorsdc@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,68 +78,97 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, kstewart@linuxfoundation.org,
- linux-kernel@vger.kernel.org, perex@perex.cz, tglx@linutronix.de,
- allison@lohutok.net
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ Lars-Peter Clausen <lars@metafoo.de>, Stefan Popa <stefan.popa@analog.com>,
+ Michael Hennerich <Michael.Hennerich@analog.com>, linux-iio@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ kernel-usp@googlegroups.com, Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+ Hartmut Knaack <knaack.h@gmx.de>, Jonathan Cameron <jic23@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, 2019-11-05 at 16:50 +0100, Greg KH wrote:
-> On Tue, Nov 05, 2019 at 10:36:59PM +0800, Chen Wandun wrote:
-> > From: Chenwandun <chenwandun@huawei.com>
-> > 
-> > Fixes gcc '-Wunused-but-set-variable' warning:
-> > 
-> > drivers/staging/hp/hp100.c: In function hp100_start_xmit:
-> > drivers/staging/hp/hp100.c:1629:10: warning: variable val set but not used [-Wunused-but-set-variable]
-> > 
-> > Signed-off-by: Chenwandun <chenwandun@huawei.com>
+On Thu, Oct 31, 2019 at 09:03:01PM -0300, Rodrigo Carvalho wrote:
+> This patch add device tree binding documentation for ADIS16240.
 > 
-> I need a "full" name here, like the one on your email "From:" line.
+> Signed-off-by: Rodrigo Ribeiro Carvalho <rodrigorsdc@gmail.com>
+> ---
+> V3:
+>    - Remove spi-cpol and spi-cpha field. They don't seem necessary
 
-You also need the submitter to run checkpatch on the patch
-and not just the file.
+Not necessary to document or use? The latter requires the former.
 
-WARNING: drivers/staging/hp/hp100.c is marked as 'obsolete' in the MAINTAINERS hierarchy.  No unnecessary modifications please.
+If your device only supports one timing mode, then you don't need them 
+because it should be implied and the driver can just tell the SPI 
+subsystem what mode it requires. If the device can support multiple 
+timing modes, then you should document that you are using the 
+properties.
 
-WARNING: drivers/staging/hp/hp100.c is marked as 'obsolete' in the MAINTAINERS hierarchy.  No unnecessary modifications please.
-total: 0 errors, 2 warnings, 0 checks, 18 lines checked
-
-> > diff --git a/drivers/staging/hp/hp100.c b/drivers/staging/hp/hp100.c
-[]
-> > @@ -1626,7 +1626,9 @@ static netdev_tx_t hp100_start_xmit(struct sk_buff *skb,
-> >  	unsigned long flags;
-> >  	int i, ok_flag;
-> >  	int ioaddr = dev->base_addr;
-> > +#ifdef HP100_DEBUG_TX
-> >  	u_short val;
-> > +#endif
+>  .../bindings/iio/accel/adi,adis16240.yaml     | 51 +++++++++++++++++++
+>  1 file changed, 51 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/iio/accel/adi,adis16240.yaml
 > 
-> #ifdefs are not ok in .c code, sorry.
+> diff --git a/Documentation/devicetree/bindings/iio/accel/adi,adis16240.yaml b/Documentation/devicetree/bindings/iio/accel/adi,adis16240.yaml
+> new file mode 100644
+> index 000000000000..9a4cd12c4818
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/iio/accel/adi,adis16240.yaml
+> @@ -0,0 +1,51 @@
+> +# SPDX-License-Identifier: GPL-2.0
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/iio/accel/adi,adis16240.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: ADIS16240 Programmable Impact Sensor and Recorder driver
+> +
+> +maintainers:
+> +  - Alexandru Ardelean <alexandru.ardelean@analog.com>
+> +
+> +description: |
+> +  ADIS16240 Programmable Impact Sensor and Recorder driver that supports
+> +  SPI interface.
+> +    https://www.analog.com/en/products/adis16240.html
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - adi,adis16240
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/gpio/gpio.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    spi0 {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +
+> +        /* Example for a SPI device node */
+> +        accelerometer@0 {
+> +            compatible = "adi,adis16240";
+> +            reg = <0>;
+> +            spi-max-frequency = <2500000>;
+> +            spi-cpol;
+> +            spi-cpha;
+> +            interrupt-parent = <&gpio0>;
+> +            interrupts = <0 IRQ_TYPE_LEVEL_HIGH>;
+> +        };
+> +    };
+> -- 
+> 2.23.0
 > 
-> >  	struct hp100_private *lp = netdev_priv(dev);
-> >  
-> >  #ifdef HP100_DEBUG_B
-> > @@ -1695,7 +1697,9 @@ static netdev_tx_t hp100_start_xmit(struct sk_buff *skb,
-> >  
-> >  	spin_lock_irqsave(&lp->lock, flags);
-> >  	hp100_ints_off();
-> > +#ifdef HP100_DEBUG_TX
-> >  	val = hp100_inw(IRQ_STATUS);
-> 
-> Are you sure that this doesn't actually change the hardware in some way?
-
-If anyone still _has_ the hardware, please let me know.
-
-I have the only VG test equipment I know of in a box
-somewhere in my basement and it's yours for the asking
-and the postage.
-
-It hasn't been powered on in 25 years, no guarantees...
-
-
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
