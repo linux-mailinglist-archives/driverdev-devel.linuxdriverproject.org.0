@@ -1,67 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DFE40F1AD4
-	for <lists+driverdev-devel@lfdr.de>; Wed,  6 Nov 2019 17:10:14 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1510DF1CA4
+	for <lists+driverdev-devel@lfdr.de>; Wed,  6 Nov 2019 18:41:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 031FA85D92;
-	Wed,  6 Nov 2019 16:10:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id F16722047C;
+	Wed,  6 Nov 2019 17:41:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KkMWi6xnHrlR; Wed,  6 Nov 2019 16:10:11 +0000 (UTC)
+	with ESMTP id iFKDwQG4i0q9; Wed,  6 Nov 2019 17:41:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4CBDD80EAD;
-	Wed,  6 Nov 2019 16:10:11 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E103620472;
+	Wed,  6 Nov 2019 17:41:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4AF0B1BF4D8
- for <devel@linuxdriverproject.org>; Wed,  6 Nov 2019 16:09:17 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id DB7441BF580
+ for <devel@linuxdriverproject.org>; Wed,  6 Nov 2019 17:41:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 42FF68A771
- for <devel@linuxdriverproject.org>; Wed,  6 Nov 2019 16:09:17 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id D820188C7A
+ for <devel@linuxdriverproject.org>; Wed,  6 Nov 2019 17:41:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6X00sSU7w014 for <devel@linuxdriverproject.org>;
- Wed,  6 Nov 2019 16:09:16 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 64D928A6FF
- for <devel@driverdev.osuosl.org>; Wed,  6 Nov 2019 16:09:16 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 06 Nov 2019 08:09:15 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,275,1569308400"; d="scan'208";a="200752952"
-Received: from sjchrist-coffee.jf.intel.com (HELO linux.intel.com)
- ([10.54.74.41])
- by fmsmga008.fm.intel.com with ESMTP; 06 Nov 2019 08:09:13 -0800
-Date: Wed, 6 Nov 2019 08:09:13 -0800
-From: Sean Christopherson <sean.j.christopherson@intel.com>
-To: David Hildenbrand <david@redhat.com>
-Subject: Re: [PATCH v1 03/10] KVM: Prepare kvm_is_reserved_pfn() for
- PG_reserved changes
-Message-ID: <20191106160913.GD16249@linux.intel.com>
-References: <613f3606-748b-0e56-a3ad-1efaffa1a67b@redhat.com>
- <20191105160000.GC8128@linux.intel.com>
- <ed89cd61-7c45-8c9c-ffeb-f27b1872bd7a@redhat.com>
- <CAPcyv4htPCeui80fOOno+7AFo3V-=VEiWkAv8j+-Kkad+UnFGQ@mail.gmail.com>
- <20191105231316.GE23297@linux.intel.com>
- <CAPcyv4iRP0Sz=mcT+iuoVaD4-o2q1nCH2Hixc5OkfWu+SBQmkg@mail.gmail.com>
- <CAPcyv4i7tnjyghYhSjK8fxUu8Qkdc2RuD9kUwJcKEMDzOf51ng@mail.gmail.com>
- <20191106000315.GI23297@linux.intel.com>
- <CAPcyv4hppbefem9pHiQV5-djriGrzcuo0hxVnJwqB=+2iuOh2w@mail.gmail.com>
- <694202e7-d8e6-6ac8-6e47-3553b298bbcc@redhat.com>
+ with ESMTP id FHLPhgd5uEGd for <devel@linuxdriverproject.org>;
+ Wed,  6 Nov 2019 17:41:06 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.siol.net (mailoutvs14.siol.net [185.57.226.205])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3F5D489022
+ for <devel@driverdev.osuosl.org>; Wed,  6 Nov 2019 17:41:06 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.siol.net (Postfix) with ESMTP id 68EB352577B;
+ Wed,  6 Nov 2019 18:41:03 +0100 (CET)
+X-Virus-Scanned: amavisd-new at psrvmta09.zcs-production.pri
+Received: from mail.siol.net ([127.0.0.1])
+ by localhost (psrvmta09.zcs-production.pri [127.0.0.1]) (amavisd-new,
+ port 10032)
+ with ESMTP id NCiG5pzMJs0s; Wed,  6 Nov 2019 18:41:02 +0100 (CET)
+Received: from mail.siol.net (localhost [127.0.0.1])
+ by mail.siol.net (Postfix) with ESMTPS id C13EF525B2D;
+ Wed,  6 Nov 2019 18:41:02 +0100 (CET)
+Received: from jernej-laptop.localnet (cpe-86-58-102-7.static.triera.net
+ [86.58.102.7]) (Authenticated sender: jernej.skrabec@siol.net)
+ by mail.siol.net (Postfix) with ESMTPA id C54A6525AED;
+ Wed,  6 Nov 2019 18:41:01 +0100 (CET)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@siol.net>
+To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+Subject: Re: [PATCH 1/3] media: cedrus: Properly signal size in mode register
+Date: Wed, 06 Nov 2019 18:41:01 +0100
+Message-ID: <2224545.8hcbHn5fu6@jernej-laptop>
+In-Reply-To: <20191105081034.GC584930@aptenodytes>
+References: <20191026074959.1073512-1-jernej.skrabec@siol.net>
+ <7309638.L6IRxaGt1L@jernej-laptop> <20191105081034.GC584930@aptenodytes>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <694202e7-d8e6-6ac8-6e47-3553b298bbcc@redhat.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,142 +67,151 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-hyperv@vger.kernel.org, Michal Hocko <mhocko@suse.com>,
- Radim =?utf-8?B?S3LEjW3DocWZ?= <rkrcmar@redhat.com>,
- KVM list <kvm@vger.kernel.org>, Pavel Tatashin <pavel.tatashin@microsoft.com>,
- KarimAllah Ahmed <karahmed@amazon.de>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Dave Hansen <dave.hansen@linux.intel.com>,
- Alexander Duyck <alexander.duyck@gmail.com>, Michal Hocko <mhocko@kernel.org>,
- Paul Mackerras <paulus@ozlabs.org>, Linux MM <linux-mm@kvack.org>,
- Paul Mackerras <paulus@samba.org>, Michael Ellerman <mpe@ellerman.id.au>,
- "H. Peter Anvin" <hpa@zytor.com>, Wanpeng Li <wanpengli@tencent.com>,
- Alexander Duyck <alexander.h.duyck@linux.intel.com>,
- Boris Ostrovsky <boris.ostrovsky@oracle.com>,
- Kees Cook <keescook@chromium.org>, devel@driverdev.osuosl.org,
- Stefano Stabellini <sstabellini@kernel.org>,
- Stephen Hemminger <sthemmin@microsoft.com>,
- "Aneesh Kumar K.V" <aneesh.kumar@linux.ibm.com>,
- Joerg Roedel <joro@8bytes.org>, X86 ML <x86@kernel.org>,
- YueHaibing <yuehaibing@huawei.com>,
- "Matthew Wilcox \(Oracle\)" <willy@infradead.org>,
- Mike Rapoport <rppt@linux.ibm.com>, Peter Zijlstra <peterz@infradead.org>,
- Ingo Molnar <mingo@redhat.com>, Vlastimil Babka <vbabka@suse.cz>,
- Anthony Yznaga <anthony.yznaga@oracle.com>, Oscar Salvador <osalvador@suse.de>,
- "Isaac J. Manjarres" <isaacm@codeaurora.org>, Juergen Gross <jgross@suse.com>,
- Anshuman Khandual <anshuman.khandual@arm.com>,
- Haiyang Zhang <haiyangz@microsoft.com>, Sasha Levin <sashal@kernel.org>,
- kvm-ppc@vger.kernel.org, Qian Cai <cai@lca.pw>,
- Alex Williamson <alex.williamson@redhat.com>,
- Mike Rapoport <rppt@linux.vnet.ibm.com>, Borislav Petkov <bp@alien8.de>,
- Nicholas Piggin <npiggin@gmail.com>, Andy Lutomirski <luto@kernel.org>,
- xen-devel <xen-devel@lists.xenproject.org>,
- Dan Williams <dan.j.williams@intel.com>,
- Vitaly Kuznetsov <vkuznets@redhat.com>, Allison Randal <allison@lohutok.net>,
- Jim Mattson <jmattson@google.com>, Christophe Leroy <christophe.leroy@c-s.fr>,
- Mel Gorman <mgorman@techsingularity.net>, Adam Borowski <kilobyte@angband.pl>,
- Cornelia Huck <cohuck@redhat.com>, Pavel Tatashin <pasha.tatashin@soleen.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Thomas Gleixner <tglx@linutronix.de>, Johannes Weiner <hannes@cmpxchg.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev <linuxppc-dev@lists.ozlabs.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-sunxi@googlegroups.com, linux-kernel@vger.kernel.org, mripard@kernel.org,
+ wens@csie.org, hverkuil-cisco@xs4all.nl, mchehab@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Nov 06, 2019 at 07:56:34AM +0100, David Hildenbrand wrote:
-> On 06.11.19 01:08, Dan Williams wrote:
-> >On Tue, Nov 5, 2019 at 4:03 PM Sean Christopherson
-> >>But David's proposed fix for the above refcount bug is to omit the patch
-> >>so that KVM no longer treats ZONE_DEVICE pages as reserved.  That seems
-> >>like the right thing to do, including for thp_adjust(), e.g. it would
-> >>naturally let KVM use 2mb pages for the guest when a ZONE_DEVICE page is
-> >>mapped with a huge page (2mb or above) in the host.  The only hiccup is
-> >>figuring out how to correctly transfer the reference.
-> >
-> >That might not be the only hiccup. There's currently no such thing as
-> >huge pages for ZONE_DEVICE, there are huge *mappings* (pmd and pud),
-> >but the result of pfn_to_page() on such a mapping does not yield a
-> >huge 'struct page'. It seems there are other paths in KVM that assume
-> >that more typical page machinery is active like SetPageDirty() based
-> >on kvm_is_reserved_pfn(). While I told David that I did not want to
-> >see more usage of is_zone_device_page(), this patch below (untested)
-> >seems a cleaner path with less surprises:
-> >
-> >diff --git a/virt/kvm/kvm_main.c b/virt/kvm/kvm_main.c
-> >index 4df0aa6b8e5c..fbea17c1810c 100644
-> >--- a/virt/kvm/kvm_main.c
-> >+++ b/virt/kvm/kvm_main.c
-> >@@ -1831,7 +1831,8 @@ EXPORT_SYMBOL_GPL(kvm_release_page_clean);
-> >
-> >  void kvm_release_pfn_clean(kvm_pfn_t pfn)
-> >  {
-> >-       if (!is_error_noslot_pfn(pfn) && !kvm_is_reserved_pfn(pfn))
-> >+       if ((!is_error_noslot_pfn(pfn) && !kvm_is_reserved_pfn(pfn)) ||
-
-The is_error_noslot_pfn() check shouldn't be overriden by zone_device.
-
-> >+           (pfn_valid(pfn) && is_zone_device_page(pfn_to_page(pfn))))
-
-But rather than special case kvm_release_pfn_clean(), I'd rather KVM
-explicitly handle ZONE_DEVICE pages, there are other flows where KVM
-really should be aware of ZONE_DEVICE pages, e.g. for sanity checks and
-whatnot.  There are surprisingly few callers of kvm_is_reserved_pfn(), so
-it's actually not too big of a change. 
-
-> >                 put_page(pfn_to_page(pfn));
-> >  }
-> >  EXPORT_SYMBOL_GPL(kvm_release_pfn_clean);
-> 
-> I had the same thought, but I do wonder about the kvm_get_pfn() users,
-> e.g.,:
-> 
-> hva_to_pfn_remapped():
-> 	r = follow_pfn(vma, addr, &pfn);
-> 	...
-> 	kvm_get_pfn(pfn);
-> 	...
-> 
-> We would not take a reference for ZONE_DEVICE, but later drop one reference
-> via kvm_release_pfn_clean(). IOW, kvm_get_pfn() gets *really* dangerous to
-> use. I can't tell if this can happen right now.
-> 
-> We do have 3 users of kvm_get_pfn() that we have to audit before this
-> change. Also, we should add a comment to kvm_get_pfn() that it should never
-> be used with possible ZONE_DEVICE pages.
-> 
-> Also, we should add a comment to kvm_release_pfn_clean(), describing why we
-> treat ZONE_DEVICE in a special way here.
-> 
-> 
-> We can then progress like this
-> 
-> 1. Get this fix upstream, it's somewhat unrelated to this series.
-> 2. This patch here remains as is in this series (+/- documentation update)
-> 3. Long term, rework KVM to not have to not treat ZONE_DEVICE like reserved
-> pages. E.g., get rid of kvm_get_pfn(). Then, this special zone check can go.
-
-Dropping kvm_get_pfn() is less than ideal, and at this point unnecessary.
-I'm 99% sure the existing call sites for kvm_get_pfn() can never be
-reached with ZONE_DEVICE pages.  I think we can do:
-
-  1. Get a fix upstream to have KVM stop treating ZONE_DEVICE pages as
-     reserved PFNs, i.e. exempt them in kvm_is_reserved_pfn() and change
-     the callers of kvm_is_reserved_pfn() to handle ZONE_DEVICE pages.
-  2. Drop this patch from the series, and instead remove the special
-     treatment of ZONE_DEVICE pages from kvm_is_reserved_pfn().
-
-Give me a few minutes to prep a patch.
-
-> 
-> -- 
-> 
-> Thanks,
-> 
-> David / dhildenb
-> 
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RG5lIHRvcmVrLCAwNS4gbm92ZW1iZXIgMjAxOSBvYiAwOToxMDozNCBDRVQgamUgUGF1bCBLb2Np
+YWxrb3dza2kgbmFwaXNhbChhKToKPiBIaSwKPiAKPiBPbiBNb24gMDQgTm92IDE5LCAxNzozMywg
+SmVybmVqIMWga3JhYmVjIHdyb3RlOgo+ID4gRG5lIHBvbmVkZWxqZWssIDA0LiBub3ZlbWJlciAy
+MDE5IG9iIDExOjAyOjI4IENFVCBqZSBQYXVsIEtvY2lhbGtvd3NraQo+ID4gCj4gPiBuYXBpc2Fs
+KGEpOgo+ID4gPiBIaSBKZXJuZWosCj4gPiA+IAo+ID4gPiBPbiBTYXQgMjYgT2N0IDE5LCAwOTo0
+OSwgSmVybmVqIFNrcmFiZWMgd3JvdGU6Cj4gPiA+ID4gTW9kZSByZWdpc3RlciBhbHNvIGhvbGRz
+IGluZm9ybWF0aW9uIGlmIHZpZGVvIHdpZHRoIGlzIGJpZ2dlciB0aGFuCj4gPiA+ID4gMjA0OAo+
+ID4gPiA+IGFuZCBpZiBpdCBpcyBlcXVhbCB0byA0MDk2Lgo+ID4gPiA+IAo+ID4gPiA+IFJld29y
+ayBjZWRydXNfZW5naW5lX2VuYWJsZSgpIHRvIHByb3Blcmx5IHNpZ25hbCB0aGlzIHByb3BlcnRp
+ZXMuCj4gPiA+IAo+ID4gPiBUaGFua3MgZm9yIHRoZSBwYXRjaCwgbG9va3MgZ29vZCB0byBtZSEK
+PiA+ID4gCj4gPiA+IEFja2VkLWJ5OiBQYXVsIEtvY2lhbGtvd3NraSA8cGF1bC5rb2NpYWxrb3dz
+a2lAYm9vdGxpbi5jb20+Cj4gPiA+IAo+ID4gPiBPbmUgbWlub3IgdGhpbmc6IG1heWJlIHdlIHNo
+b3VsZCBoYXZlIGEgd2F5IHRvIHNldCB0aGUgbWF4aW11bQo+ID4gPiBkaW1lbnNpb25zCj4gPiA+
+IGRlcGVuZGluZyBvbiB0aGUgZ2VuZXJhdGlvbiBvZiB0aGUgZW5naW5lIGluIHVzZSBhbmQgdGhl
+IGFjdHVhbCBtYXhpbXVtCj4gPiA+IHN1cHBvcnRlZCBieSB0aGUgaGFyZHdhcmUuCj4gPiA+IAo+
+ID4gPiBNYXliZSBlaXRoZXIgYXMgZGVkaWNhdGVkIG5ldyBmaWVsZHMgaW4gc3RydWN0IGNlZHJ1
+c192YXJpYW50IG9yIGFzCj4gPiA+IGNhcGFiaWxpdHkgZmxhZ3MuCj4gPiAKPiA+IEkgd2FzIHRo
+aW5raW5nIGFib3V0IGZpcnN0IHNvbHV0aW9uLCBidXQgYWZ0ZXIgZ29pbmcgdHJvdWdoIG1hbnVh
+bHMsIGl0Cj4gPiB3YXMKPiA+IHVuY2xlYXIgd2hhdCBhcmUgcmVhbCBsaW1pdGF0aW9ucy4gRm9y
+IGV4YW1wbGUsIEgzIG1hbnVhbCBzdGF0ZXMgdGhhdCBpdAo+ID4gaXMKPiA+IGNhcGFibGUgb2Yg
+ZGVjb2RpbmcgSDI2NCAxMDgwcEA2MEh6LiBIb3dldmVyLCBJIGtub3cgZm9yIGEgZmFjdCB0aGF0
+IGl0IGlzCj4gPiBhbHNvIGNhcGFibGUgb2YgZGVjb2RpbmcgNGsgdmlkZW9zLCBidXQgcHJvYmFi
+bHkgbm90IGF0IDYwIEh6LiBJIGRvbid0IG93bgo+ID4gYW55dGhpbmcgb2xkZXIgdGhhdCBBODNU
+LCBzbyBJIGRvbid0IGtub3cgd2hhdCBhcmUgY2FwYWJpbGl0aWVzIG9mIHRob3NlCj4gPiBTb0Nz
+Lgo+IFNvIEkgZ3Vlc3MgaW4gdGhpcyBjYXNlIHdlIHNob3VsZCB0cnkgYW5kIHNlZS4gSSBjb3Vs
+ZCB0cnkgdG8gbG9vayBpbnRvIGl0Cj4gYXQgc29tZSBwb2ludCBpbiB0aGUgZnV0dXJlIHRvbyBp
+ZiB5b3UncmUgbm90IHBhcnRpY3VsYXJ5IGludGVyZXN0ZWQuCgpXZWxsLCBJIGNhbiB0YWtlIGEg
+bG9vayBhdCBteSBIVywgYnV0IEkgaGF2ZSBvbmx5IGZldyBTb0NzIHdpdGggbW9yZSBvciBsZXNz
+IApzYW1lIGNhcGFiaWxpdHkuCgo+ID4gQW55d2F5LCBiZWluZyBzbG93IGlzIHN0aWxsIG9rIGZv
+ciBzb21lIHRhc2tzLCBsaWtlIHRyYW5zY29kaW5nLCBzbyB3ZQo+ID4gY2FuJ3QgbGltaXQgZGVj
+b2RpbmcgdG8gMTA4MHAganVzdCBiZWNhdXNlIGl0J3Mgc2xvdy4gSXQgaXMgcHJvYmFibHkKPiA+
+IHN0aWxsIGZhc3RlciB0aGFuIGRvaW5nIGl0IGluIFNXLiBOb3QgdG8gbWVudGlvbiB0aGF0IGl0
+J3Mgc3RpbGwgb2sgZm9yCj4gPiBzb21lIHZpZGVvcywgYSBsb3Qgb2YgdGhlbSB1c2VzIDI0IGZw
+cy4KPiAKPiBJIGFncmVlLCBpdCdzIGJlc3QgdG8gZXhwb3NlIHRoZSBtYXhpbXVtIHN1cHBvcnRl
+ZCByZXNvbHV0aW9uIGJ5IHRoZQo+IGhhcmR3YXJlLCBldmVuIGlmIGl0IG1lYW5zIHJ1bm5pbmcg
+YXQgYSBsb3dlciBmcHMuCj4gCj4gRG8geW91IGtub3cgaWYgd2UgaGF2ZSBhIHdheSB0byByZXBv
+cnQgc29tZSBlc3RpbWF0aW9uIG9mIHRoZSBtYXhpbXVtCj4gc3VwcG9ydGVkIGZwcyB0byB1c2Vy
+c3BhY2U/IEl0IHdvdWxkIGJlIHVzZWZ1bCB0byBsZXQgdXNlcnNwYWNlIGRlY2lkZQo+IHdoZXRo
+ZXIgaXQncyBhIGJldHRlciBmaXQgdGhhbiBzb2Z0d2FyZSBkZWNvZGluZy4KCkkgdG9vayBhIHF1
+aWNrIGxvb2sgYXQgZXhpc3RpbmcgY29udHJvbHMsIGJ1dCBJIGRvbid0IHNlZSBhbnl0aGluZyAK
+YXBwcm9wcmlhdGUuCgpCZXN0IHJlZ2FyZHMsCkplcm5lagoKPiAKPiBDaGVlcnMsCj4gCj4gUGF1
+bAo+IAo+ID4gQmVzdCByZWdhcmRzLAo+ID4gSmVybmVqCj4gPiAKPiA+ID4gQW55d2F5IHRoYXQg
+Y2FuIGJlIGRvbmUgbGF0ZXIgc2luY2Ugd2Ugd2VyZSBhbHJlYWR5IGhhcmRjb2RpbmcgdGhpcy4K
+PiA+ID4gCj4gPiA+IENoZWVycywKPiA+ID4gCj4gPiA+IFBhdWwKPiA+ID4gCj4gPiA+ID4gU2ln
+bmVkLW9mZi1ieTogSmVybmVqIFNrcmFiZWMgPGplcm5lai5za3JhYmVjQHNpb2wubmV0Pgo+ID4g
+PiA+IC0tLQo+ID4gPiA+IAo+ID4gPiA+ICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2Vk
+cnVzL2NlZHJ1c19oMjY0LmMgIHwgMiArLQo+ID4gPiA+ICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEv
+c3VueGkvY2VkcnVzL2NlZHJ1c19oMjY1LmMgIHwgMiArLQo+ID4gPiA+ICBkcml2ZXJzL3N0YWdp
+bmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1c19ody5jICAgIHwgOSArKysrKysrLS0KPiA+ID4g
+PiAgZHJpdmVycy9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXNfaHcuaCAgICB8IDIg
+Ky0KPiA+ID4gPiAgZHJpdmVycy9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXNfbXBl
+ZzIuYyB8IDIgKy0KPiA+ID4gPiAgZHJpdmVycy9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9j
+ZWRydXNfcmVncy5oICB8IDIgKysKPiA+ID4gPiAgNiBmaWxlcyBjaGFuZ2VkLCAxMyBpbnNlcnRp
+b25zKCspLCA2IGRlbGV0aW9ucygtKQo+ID4gPiA+IAo+ID4gPiA+IGRpZmYgLS1naXQgYS9kcml2
+ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1c19oMjY0LmMKPiA+ID4gPiBiL2Ry
+aXZlcnMvc3RhZ2luZy9tZWRpYS9zdW54aS9jZWRydXMvY2VkcnVzX2gyNjQuYyBpbmRleAo+ID4g
+PiA+IDc0ODdmNmFiNzU3Ni4uZDJjODU0ZWNkZjE1IDEwMDY0NAo+ID4gPiA+IC0tLSBhL2RyaXZl
+cnMvc3RhZ2luZy9tZWRpYS9zdW54aS9jZWRydXMvY2VkcnVzX2gyNjQuYwo+ID4gPiA+ICsrKyBi
+L2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9zdW54aS9jZWRydXMvY2VkcnVzX2gyNjQuYwo+ID4gPiA+
+IEBAIC00ODUsNyArNDg1LDcgQEAgc3RhdGljIHZvaWQgY2VkcnVzX2gyNjRfc2V0dXAoc3RydWN0
+IGNlZHJ1c19jdHgKPiA+ID4gPiAqY3R4LAo+ID4gPiA+IAo+ID4gPiA+ICB7Cj4gPiA+ID4gIAo+
+ID4gPiA+ICAJc3RydWN0IGNlZHJ1c19kZXYgKmRldiA9IGN0eC0+ZGV2Owo+ID4gPiA+IAo+ID4g
+PiA+IC0JY2VkcnVzX2VuZ2luZV9lbmFibGUoZGV2LCBDRURSVVNfQ09ERUNfSDI2NCk7Cj4gPiA+
+ID4gKwljZWRydXNfZW5naW5lX2VuYWJsZShjdHgsIENFRFJVU19DT0RFQ19IMjY0KTsKPiA+ID4g
+PiAKPiA+ID4gPiAgCWNlZHJ1c193cml0ZShkZXYsIFZFX0gyNjRfU0RST1RfQ1RSTCwgMCk7Cj4g
+PiA+ID4gIAljZWRydXNfd3JpdGUoZGV2LCBWRV9IMjY0X0VYVFJBX0JVRkZFUjEsCj4gPiA+ID4g
+Cj4gPiA+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9zdW54aS9jZWRydXMv
+Y2VkcnVzX2gyNjUuYwo+ID4gPiA+IGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1
+cy9jZWRydXNfaDI2NS5jIGluZGV4Cj4gPiA+ID4gOWJjOTIxODY2ZjcwLi42OTQ1ZGM3NGUxZDcg
+MTAwNjQ0Cj4gPiA+ID4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9j
+ZWRydXNfaDI2NS5jCj4gPiA+ID4gKysrIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL3N1bnhpL2Nl
+ZHJ1cy9jZWRydXNfaDI2NS5jCj4gPiA+ID4gQEAgLTI3Niw3ICsyNzYsNyBAQCBzdGF0aWMgdm9p
+ZCBjZWRydXNfaDI2NV9zZXR1cChzdHJ1Y3QgY2VkcnVzX2N0eAo+ID4gPiA+ICpjdHgsCj4gPiA+
+ID4gCj4gPiA+ID4gIAl9Cj4gPiA+ID4gIAkKPiA+ID4gPiAgCS8qIEFjdGl2YXRlIEgyNjUgZW5n
+aW5lLiAqLwo+ID4gPiA+IAo+ID4gPiA+IC0JY2VkcnVzX2VuZ2luZV9lbmFibGUoZGV2LCBDRURS
+VVNfQ09ERUNfSDI2NSk7Cj4gPiA+ID4gKwljZWRydXNfZW5naW5lX2VuYWJsZShjdHgsIENFRFJV
+U19DT0RFQ19IMjY1KTsKPiA+ID4gPiAKPiA+ID4gPiAgCS8qIFNvdXJjZSBvZmZzZXQgYW5kIGxl
+bmd0aCBpbiBiaXRzLiAqLwo+ID4gPiA+IAo+ID4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0
+YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1c19ody5jCj4gPiA+ID4gYi9kcml2ZXJzL3N0
+YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1c19ody5jIGluZGV4Cj4gPiA+ID4gNTcwYTkx
+NjVkZDVkLi4zYWNmYTIxYmMxMjQgMTAwNjQ0Cj4gPiA+ID4gLS0tIGEvZHJpdmVycy9zdGFnaW5n
+L21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXNfaHcuYwo+ID4gPiA+ICsrKyBiL2RyaXZlcnMvc3Rh
+Z2luZy9tZWRpYS9zdW54aS9jZWRydXMvY2VkcnVzX2h3LmMKPiA+ID4gPiBAQCAtMzAsNyArMzAs
+NyBAQAo+ID4gPiA+IAo+ID4gPiA+ICAjaW5jbHVkZSAiY2VkcnVzX2h3LmgiCj4gPiA+ID4gICNp
+bmNsdWRlICJjZWRydXNfcmVncy5oIgo+ID4gPiA+IAo+ID4gPiA+IC1pbnQgY2VkcnVzX2VuZ2lu
+ZV9lbmFibGUoc3RydWN0IGNlZHJ1c19kZXYgKmRldiwgZW51bSBjZWRydXNfY29kZWMKPiA+ID4g
+PiBjb2RlYykKPiA+ID4gPiAraW50IGNlZHJ1c19lbmdpbmVfZW5hYmxlKHN0cnVjdCBjZWRydXNf
+Y3R4ICpjdHgsIGVudW0gY2VkcnVzX2NvZGVjCj4gPiA+ID4gY29kZWMpCj4gPiA+ID4gCj4gPiA+
+ID4gIHsKPiA+ID4gPiAgCj4gPiA+ID4gIAl1MzIgcmVnID0gMDsKPiA+ID4gPiAKPiA+ID4gPiBA
+QCAtNTgsNyArNTgsMTIgQEAgaW50IGNlZHJ1c19lbmdpbmVfZW5hYmxlKHN0cnVjdCBjZWRydXNf
+ZGV2ICpkZXYsCj4gPiA+ID4gZW51bQo+ID4gPiA+IGNlZHJ1c19jb2RlYyBjb2RlYyk+Cj4gPiA+
+ID4gCj4gPiA+ID4gIAkJcmV0dXJuIC1FSU5WQUw7Cj4gPiA+ID4gIAkKPiA+ID4gPiAgCX0KPiA+
+ID4gPiAKPiA+ID4gPiAtCWNlZHJ1c193cml0ZShkZXYsIFZFX01PREUsIHJlZyk7Cj4gPiA+ID4g
+KwlpZiAoY3R4LT5zcmNfZm10LndpZHRoID09IDQwOTYpCj4gPiA+ID4gKwkJcmVnIHw9IFZFX01P
+REVfUElDX1dJRFRIX0lTXzQwOTY7Cj4gPiA+ID4gKwlpZiAoY3R4LT5zcmNfZm10LndpZHRoID4g
+MjA0OCkKPiA+ID4gPiArCQlyZWcgfD0gVkVfTU9ERV9QSUNfV0lEVEhfTU9SRV8yMDQ4Owo+ID4g
+PiA+ICsKPiA+ID4gPiArCWNlZHJ1c193cml0ZShjdHgtPmRldiwgVkVfTU9ERSwgcmVnKTsKPiA+
+ID4gPiAKPiA+ID4gPiAgCXJldHVybiAwOwo+ID4gPiA+ICAKPiA+ID4gPiAgfQo+ID4gPiA+IAo+
+ID4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2Nl
+ZHJ1c19ody5oCj4gPiA+ID4gYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2Nl
+ZHJ1c19ody5oIGluZGV4Cj4gPiA+ID4gMjdkMDg4MjM5N2FhLi42MDRmZjkzMmZiZjUgMTAwNjQ0
+Cj4gPiA+ID4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXNf
+aHcuaAo+ID4gPiA+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9zdW54aS9jZWRydXMvY2Vk
+cnVzX2h3LmgKPiA+ID4gPiBAQCAtMTYsNyArMTYsNyBAQAo+ID4gPiA+IAo+ID4gPiA+ICAjaWZu
+ZGVmIF9DRURSVVNfSFdfSF8KPiA+ID4gPiAgI2RlZmluZSBfQ0VEUlVTX0hXX0hfCj4gPiA+ID4g
+Cj4gPiA+ID4gLWludCBjZWRydXNfZW5naW5lX2VuYWJsZShzdHJ1Y3QgY2VkcnVzX2RldiAqZGV2
+LCBlbnVtIGNlZHJ1c19jb2RlYwo+ID4gPiA+IGNvZGVjKTsKPiA+ID4gPiAraW50IGNlZHJ1c19l
+bmdpbmVfZW5hYmxlKHN0cnVjdCBjZWRydXNfY3R4ICpjdHgsIGVudW0gY2VkcnVzX2NvZGVjCj4g
+PiA+ID4gY29kZWMpOwo+ID4gPiA+IAo+ID4gPiA+ICB2b2lkIGNlZHJ1c19lbmdpbmVfZGlzYWJs
+ZShzdHJ1Y3QgY2VkcnVzX2RldiAqZGV2KTsKPiA+ID4gPiAgCj4gPiA+ID4gIHZvaWQgY2VkcnVz
+X2RzdF9mb3JtYXRfc2V0KHN0cnVjdCBjZWRydXNfZGV2ICpkZXYsCj4gPiA+ID4gCj4gPiA+ID4g
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9zdW54aS9jZWRydXMvY2VkcnVzX21w
+ZWcyLmMKPiA+ID4gPiBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9zdW54aS9jZWRydXMvY2VkcnVz
+X21wZWcyLmMgaW5kZXgKPiA+ID4gPiAxM2MzNDkyN2JhZDUuLjhiY2Q2YjhmOWUyZCAxMDA2NDQK
+PiA+ID4gPiAtLS0gYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1c19t
+cGVnMi5jCj4gPiA+ID4gKysrIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9j
+ZWRydXNfbXBlZzIuYwo+ID4gPiA+IEBAIC05Niw3ICs5Niw3IEBAIHN0YXRpYyB2b2lkIGNlZHJ1
+c19tcGVnMl9zZXR1cChzdHJ1Y3QgY2VkcnVzX2N0eAo+ID4gPiA+ICpjdHgsCj4gPiA+ID4gc3Ry
+dWN0IGNlZHJ1c19ydW4gKnJ1bik+Cj4gPiA+ID4gCj4gPiA+ID4gIAlxdWFudGl6YXRpb24gPSBy
+dW4tPm1wZWcyLnF1YW50aXphdGlvbjsKPiA+ID4gPiAgCQo+ID4gPiA+ICAJLyogQWN0aXZhdGUg
+TVBFRyBlbmdpbmUuICovCj4gPiA+ID4gCj4gPiA+ID4gLQljZWRydXNfZW5naW5lX2VuYWJsZShk
+ZXYsIENFRFJVU19DT0RFQ19NUEVHMik7Cj4gPiA+ID4gKwljZWRydXNfZW5naW5lX2VuYWJsZShj
+dHgsIENFRFJVU19DT0RFQ19NUEVHMik7Cj4gPiA+ID4gCj4gPiA+ID4gIAkvKiBTZXQgaW50cmEg
+cXVhbnRpemF0aW9uIG1hdHJpeC4gKi8KPiA+ID4gPiAKPiA+ID4gPiBkaWZmIC0tZ2l0IGEvZHJp
+dmVycy9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXNfcmVncy5oCj4gPiA+ID4gYi9k
+cml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1c19yZWdzLmggaW5kZXgKPiA+
+ID4gPiA0Mjc1YTMwN2QyODIuLmFjZTNkNDlmY2Q4MiAxMDA2NDQKPiA+ID4gPiAtLS0gYS9kcml2
+ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1c19yZWdzLmgKPiA+ID4gPiArKysg
+Yi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1c19yZWdzLmgKPiA+ID4g
+PiBAQCAtMzUsNiArMzUsOCBAQAo+ID4gPiA+IAo+ID4gPiA+ICAjZGVmaW5lIFZFX01PREUJCQkJ
+CTB4MDAKPiA+ID4gPiAKPiA+ID4gPiArI2RlZmluZSBWRV9NT0RFX1BJQ19XSURUSF9JU180MDk2
+CQlCSVQoMjIpCj4gPiA+ID4gKyNkZWZpbmUgVkVfTU9ERV9QSUNfV0lEVEhfTU9SRV8yMDQ4CQlC
+SVQoMjEpCj4gPiA+ID4gCj4gPiA+ID4gICNkZWZpbmUgVkVfTU9ERV9SRUNfV1JfTU9ERV8yTUIJ
+CQkoMHgwMSA8PCAyMCkKPiA+ID4gPiAgI2RlZmluZSBWRV9NT0RFX1JFQ19XUl9NT0RFXzFNQgkJ
+CSgweDAwIDw8IDIwKQo+ID4gPiA+ICAjZGVmaW5lIFZFX01PREVfRERSX01PREVfQldfMTI4CQkJ
+KDB4MDMgPDwgMTYpCgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpo
+dHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
+cml2ZXJkZXYtZGV2ZWwK
