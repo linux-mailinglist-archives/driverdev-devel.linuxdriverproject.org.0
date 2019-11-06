@@ -1,60 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2307DF2060
-	for <lists+driverdev-devel@lfdr.de>; Wed,  6 Nov 2019 22:06:51 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D6294F20F4
+	for <lists+driverdev-devel@lfdr.de>; Wed,  6 Nov 2019 22:46:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 649F58921C;
-	Wed,  6 Nov 2019 21:06:48 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D39A38A2A1;
+	Wed,  6 Nov 2019 21:46:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OjiSvQdQXx-4; Wed,  6 Nov 2019 21:06:47 +0000 (UTC)
+	with ESMTP id 6yrWwwo9wnWw; Wed,  6 Nov 2019 21:46:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C116588F8C;
-	Wed,  6 Nov 2019 21:06:44 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 36F85896DB;
+	Wed,  6 Nov 2019 21:46:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7C0331BF999
- for <devel@linuxdriverproject.org>; Wed,  6 Nov 2019 21:06:11 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 748FC1BF488
+ for <devel@linuxdriverproject.org>; Wed,  6 Nov 2019 21:46:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6C06288F8C
- for <devel@linuxdriverproject.org>; Wed,  6 Nov 2019 21:06:11 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 707C1203FD
+ for <devel@linuxdriverproject.org>; Wed,  6 Nov 2019 21:46:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JYNSN8UQRWTT for <devel@linuxdriverproject.org>;
- Wed,  6 Nov 2019 21:06:10 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.siol.net (mailoutvs58.siol.net [185.57.226.249])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id BA32F88F86
- for <devel@driverdev.osuosl.org>; Wed,  6 Nov 2019 21:06:10 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.siol.net (Postfix) with ESMTP id E672B524D2D;
- Wed,  6 Nov 2019 22:06:08 +0100 (CET)
-X-Virus-Scanned: amavisd-new at psrvmta10.zcs-production.pri
-Received: from mail.siol.net ([127.0.0.1])
- by localhost (psrvmta10.zcs-production.pri [127.0.0.1]) (amavisd-new,
- port 10032)
- with ESMTP id oc7mCy0JEW4Q; Wed,  6 Nov 2019 22:06:08 +0100 (CET)
-Received: from mail.siol.net (localhost [127.0.0.1])
- by mail.siol.net (Postfix) with ESMTPS id A792F524A72;
- Wed,  6 Nov 2019 22:06:08 +0100 (CET)
-Received: from localhost.localdomain (cpe-86-58-102-7.static.triera.net
- [86.58.102.7]) (Authenticated sender: 031275009)
- by mail.siol.net (Postfix) with ESMTPSA id 629A2524D2D;
- Wed,  6 Nov 2019 22:06:06 +0100 (CET)
-From: Jernej Skrabec <jernej.skrabec@siol.net>
-To: mripard@kernel.org, paul.kocialkowski@bootlin.com, hverkuil-cisco@xs4all.nl
-Subject: [PATCH v2 3/3] media: cedrus: Increase maximum supported size
-Date: Wed,  6 Nov 2019 22:05:38 +0100
-Message-Id: <20191106210538.3474-4-jernej.skrabec@siol.net>
-X-Mailer: git-send-email 2.24.0
-In-Reply-To: <20191106210538.3474-1-jernej.skrabec@siol.net>
-References: <20191106210538.3474-1-jernej.skrabec@siol.net>
+ with ESMTP id 03dnHbL5Psrv for <devel@linuxdriverproject.org>;
+ Wed,  6 Nov 2019 21:46:08 +0000 (UTC)
+X-Greylist: delayed 00:08:38 by SQLgrey-1.7.6
+Received: from jabberwock.ucw.cz (jabberwock.ucw.cz [46.255.230.98])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7258C2044F
+ for <devel@driverdev.osuosl.org>; Wed,  6 Nov 2019 21:46:08 +0000 (UTC)
+Received: by jabberwock.ucw.cz (Postfix, from userid 1017)
+ id 36D4F1C09B6; Wed,  6 Nov 2019 22:37:26 +0100 (CET)
+Date: Wed, 6 Nov 2019 22:37:25 +0100
+From: Pavel Machek <pavel@denx.de>
+To: Chao Yu <yuchao0@huawei.com>
+Subject: Re: [PATCH 10/10] errno.h: Provide EFSCORRUPTED for everybody
+Message-ID: <20191106213725.GB7020@amd>
+References: <20191104014510.102356-1-Valdis.Kletnieks@vt.edu>
+ <20191104014510.102356-11-Valdis.Kletnieks@vt.edu>
+ <5c441427-7e65-fcae-3518-eb37cea5f875@huawei.com>
 MIME-Version: 1.0
+In-Reply-To: <5c441427-7e65-fcae-3518-eb37cea5f875@huawei.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,44 +56,82 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-sunxi@googlegroups.com, linux-kernel@vger.kernel.org, wens@csie.org,
- mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, linux-arch@vger.kernel.org,
+ Jan Kara <jack@suse.cz>, Arnd Bergmann <arnd@arndb.de>,
+ "Darrick J . Wong" <darrick.wong@oracle.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Chao Yu <chao@kernel.org>,
+ linux-kernel@vger.kernel.org, linux-f2fs-devel@lists.sourceforge.net,
+ linux-xfs@vger.kernel.org, Andreas Dilger <adilger.kernel@dilger.ca>,
+ Theodore Ts'o <tytso@mit.edu>, Jaegeuk Kim <jaegeuk@kernel.org>,
+ linux-fsdevel@vger.kernel.org, Valdis Kletnieks <valdis.kletnieks@vt.edu>,
+ Gao Xiang <xiang@kernel.org>, linux-ext4@vger.kernel.org,
+ linux-erofs@lists.ozlabs.org, Jan Kara <jack@suse.com>
+Content-Type: multipart/mixed; boundary="===============5752533297273032913=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-There are few variations of 4k resolutions. The biggest one is
-4096x2304 which is also supported by HW. It has also nice property that
-both width and size are divisible by maximum HEVC CTB size, which is 64.
 
-Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
-Acked-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
----
- drivers/staging/media/sunxi/cedrus/cedrus_video.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+--===============5752533297273032913==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="jq0ap7NbKX2Kqbes"
+Content-Disposition: inline
 
-diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_video.c b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
-index cc15a5cf107d..15cf1f10221b 100644
---- a/drivers/staging/media/sunxi/cedrus/cedrus_video.c
-+++ b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
-@@ -29,8 +29,8 @@
- 
- #define CEDRUS_MIN_WIDTH	16U
- #define CEDRUS_MIN_HEIGHT	16U
--#define CEDRUS_MAX_WIDTH	3840U
--#define CEDRUS_MAX_HEIGHT	2160U
-+#define CEDRUS_MAX_WIDTH	4096U
-+#define CEDRUS_MAX_HEIGHT	2304U
- 
- static struct cedrus_format cedrus_formats[] = {
- 	{
--- 
-2.24.0
+
+--jq0ap7NbKX2Kqbes
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi!
+
+> > There's currently 6 filesystems that have the same #define. Move it
+> > into errno.h so it's defined in just one place.
+> >=20
+> > Signed-off-by: Valdis Kletnieks <Valdis.Kletnieks@vt.edu>
+> > Acked-by: Darrick J. Wong <darrick.wong@oracle.com>
+> > Reviewed-by: Jan Kara <jack@suse.cz>
+> > Acked-by: Theodore Ts'o <tytso@mit.edu>
+>=20
+> >  fs/erofs/internal.h              | 2 --
+>=20
+> >  fs/f2fs/f2fs.h                   | 1 -
+>=20
+> Acked-by: Chao Yu <yuchao0@huawei.com>
+
+Are we still using EUCLEAN for something else than EFSCORRUPTED? Could
+we perhaps change the glibc definiton to "your filesystem is
+corrupted" in the long run?
+
+Best regards,
+								Pavel
+--=20
+(english) http://www.livejournal.com/~pavelmachek
+(cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blo=
+g.html
+
+--jq0ap7NbKX2Kqbes
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iEYEARECAAYFAl3DPRUACgkQMOfwapXb+vIeLACgumqpgUAXyu1qs1LlH4i+wJ+u
+sPEAn0YdeU4hDroZD6g3yLDme7o5MHbL
+=nCbA
+-----END PGP SIGNATURE-----
+
+--jq0ap7NbKX2Kqbes--
+
+--===============5752533297273032913==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============5752533297273032913==--
