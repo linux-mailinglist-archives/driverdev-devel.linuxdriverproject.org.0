@@ -2,68 +2,53 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A264FF0A54
-	for <lists+driverdev-devel@lfdr.de>; Wed,  6 Nov 2019 00:43:48 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E813F0AD7
+	for <lists+driverdev-devel@lfdr.de>; Wed,  6 Nov 2019 01:03:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E8FDD890E6;
-	Tue,  5 Nov 2019 23:43:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4635089191;
+	Wed,  6 Nov 2019 00:03:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ptl2wwSgsohV; Tue,  5 Nov 2019 23:43:45 +0000 (UTC)
+	with ESMTP id F3eszJ_TE9Eu; Wed,  6 Nov 2019 00:03:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 39E6288DBD;
-	Tue,  5 Nov 2019 23:43:44 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DB9F38912E;
+	Wed,  6 Nov 2019 00:03:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A6D1F1BF33F
- for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 23:43:42 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B72641BF995
+ for <devel@linuxdriverproject.org>; Wed,  6 Nov 2019 00:03:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9F21322650
- for <devel@linuxdriverproject.org>; Tue,  5 Nov 2019 23:43:42 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 916578A1E7
+ for <devel@linuxdriverproject.org>; Wed,  6 Nov 2019 00:03:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id P-R8QLWeViLc for <devel@linuxdriverproject.org>;
- Tue,  5 Nov 2019 23:43:41 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f68.google.com (mail-ot1-f68.google.com
- [209.85.210.68])
- by silver.osuosl.org (Postfix) with ESMTPS id 810832262F
- for <devel@driverdev.osuosl.org>; Tue,  5 Nov 2019 23:43:41 +0000 (UTC)
-Received: by mail-ot1-f68.google.com with SMTP id n23so8996460otr.13
- for <devel@driverdev.osuosl.org>; Tue, 05 Nov 2019 15:43:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=intel-com.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=WqF5WeWUkV8OSvmMn1NqVj3O1bVUGhAU7UxRwoOyQkQ=;
- b=R8Alj67iPtwWeE3roElZW+pYOh4ky6ik6lq6w2YDqxXxftHuL4xvlbGp/AuCb0KSF4
- fF4h2qKN/xAR7aB4QOjGG/Km9vamjGEGd5EWQf2UCkUQ7094fLn60YrhxpB59rWSuuj7
- 7nYcFIzc4zA9efWctufgYQhIDnEfkoqphQsH8BEqo2jLW6Hzf3tWn5AOfjrJFaUwi37b
- mD+ZMfV0bhs0NXJ88Ult28HQhN/DXV2PO1Ue8zzlYMbfoUo9D38/0PdeApkFIZBhNMdh
- OAPGecXpyJFc4c5KNcOLo/Tij1p7AqQxiKKMhOsGDsUROf+iLWTtTImhk4GgDWDE2fAg
- 1QdA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=WqF5WeWUkV8OSvmMn1NqVj3O1bVUGhAU7UxRwoOyQkQ=;
- b=jd1EvPl03Gf/RqzUGfTNuZadyQQdEMAfmpIoDqVS5LPWn8MvgllQRE1DGuvwUEfcKY
- e3WnkUvDT1TsKeg7xRXFUKG1RCmCEl2yEkftQm+gcuFLI9A7LgamPPXI+bQU//yomGTo
- 5Qg0xUNXGL9+/MFDEDj0IpKYiKI0kDpO79b1GwBA4oBtztUk2OoFE+Cy4FUlW3+OyVT7
- JkC8a6LFxiZLh50Ecy5VTPxPi4F9rpU+M0/o+3y20zbnpI6a7ifwoBMv04evjipycEPQ
- qNo9AedI3bil0JbJsj34xtKTe/AnY+WGSvywKJ4y6e1a8LzTD5zWvF4lhcng2Sf/FnI1
- uDCw==
-X-Gm-Message-State: APjAAAUskaeI7HpwwxH2HR78FkGeWi3XrLzLUkxpR0ZcM8zvruKS2R1x
- k87ORMEMEtMMnlMHigtDBmYu3nyI7fAUdgq6ltfY1A==
-X-Google-Smtp-Source: APXvYqyIc0AZHvfDAJRxs8BSUdGdJvbmvdIf2oP2r6ZSIdEGqlYbdICndzlbJrs4CN9R6UBYQWP9X3frciT2ip5IH08=
-X-Received: by 2002:a9d:5f11:: with SMTP id f17mr24190398oti.207.1572997420669; 
- Tue, 05 Nov 2019 15:43:40 -0800 (PST)
-MIME-Version: 1.0
-References: <20191024120938.11237-1-david@redhat.com>
- <20191024120938.11237-4-david@redhat.com>
- <CAPcyv4jyTxEpw5ep5Noy0YRV7Dybzj+8OTVMwRK_zeFigF-LsQ@mail.gmail.com>
+ with ESMTP id YvoJXVv8aoxN for <devel@linuxdriverproject.org>;
+ Wed,  6 Nov 2019 00:03:20 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id E9C748A039
+ for <devel@driverdev.osuosl.org>; Wed,  6 Nov 2019 00:03:19 +0000 (UTC)
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 05 Nov 2019 16:03:18 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.68,271,1569308400"; d="scan'208";a="200547335"
+Received: from sjchrist-coffee.jf.intel.com (HELO linux.intel.com)
+ ([10.54.74.41])
+ by fmsmga008.fm.intel.com with ESMTP; 05 Nov 2019 16:03:15 -0800
+Date: Tue, 5 Nov 2019 16:03:15 -0800
+From: Sean Christopherson <sean.j.christopherson@intel.com>
+To: Dan Williams <dan.j.williams@intel.com>
+Subject: Re: [PATCH v1 03/10] KVM: Prepare kvm_is_reserved_pfn() for
+ PG_reserved changes
+Message-ID: <20191106000315.GI23297@linux.intel.com>
+References: <CAPcyv4jyTxEpw5ep5Noy0YRV7Dybzj+8OTVMwRK_zeFigF-LsQ@mail.gmail.com>
  <bbe59155-24ae-f229-e182-107730423c47@redhat.com>
  <01adb4cb-6092-638c-0bab-e61322be7cf5@redhat.com>
  <613f3606-748b-0e56-a3ad-1efaffa1a67b@redhat.com>
@@ -72,13 +57,11 @@ References: <20191024120938.11237-1-david@redhat.com>
  <CAPcyv4htPCeui80fOOno+7AFo3V-=VEiWkAv8j+-Kkad+UnFGQ@mail.gmail.com>
  <20191105231316.GE23297@linux.intel.com>
  <CAPcyv4iRP0Sz=mcT+iuoVaD4-o2q1nCH2Hixc5OkfWu+SBQmkg@mail.gmail.com>
-In-Reply-To: <CAPcyv4iRP0Sz=mcT+iuoVaD4-o2q1nCH2Hixc5OkfWu+SBQmkg@mail.gmail.com>
-From: Dan Williams <dan.j.williams@intel.com>
-Date: Tue, 5 Nov 2019 15:43:29 -0800
-Message-ID: <CAPcyv4i7tnjyghYhSjK8fxUu8Qkdc2RuD9kUwJcKEMDzOf51ng@mail.gmail.com>
-Subject: Re: [PATCH v1 03/10] KVM: Prepare kvm_is_reserved_pfn() for
- PG_reserved changes
-To: Sean Christopherson <sean.j.christopherson@intel.com>
+ <CAPcyv4i7tnjyghYhSjK8fxUu8Qkdc2RuD9kUwJcKEMDzOf51ng@mail.gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAPcyv4i7tnjyghYhSjK8fxUu8Qkdc2RuD9kUwJcKEMDzOf51ng@mail.gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,7 +75,7 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: linux-hyperv@vger.kernel.org, Michal Hocko <mhocko@suse.com>,
- =?UTF-8?B?UmFkaW0gS3LEjW3DocWZ?= <rkrcmar@redhat.com>,
+ Radim =?utf-8?B?S3LEjW3DocWZ?= <rkrcmar@redhat.com>,
  KVM list <kvm@vger.kernel.org>, David Hildenbrand <david@redhat.com>,
  KarimAllah Ahmed <karahmed@amazon.de>,
  Benjamin Herrenschmidt <benh@kernel.crashing.org>,
@@ -135,39 +118,57 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Nov 5, 2019 at 3:30 PM Dan Williams <dan.j.williams@intel.com> wrote:
->
-> On Tue, Nov 5, 2019 at 3:13 PM Sean Christopherson
-> <sean.j.christopherson@intel.com> wrote:
+On Tue, Nov 05, 2019 at 03:43:29PM -0800, Dan Williams wrote:
+> On Tue, Nov 5, 2019 at 3:30 PM Dan Williams <dan.j.williams@intel.com> wrote:
 > >
-> > On Tue, Nov 05, 2019 at 03:02:40PM -0800, Dan Williams wrote:
-> > > On Tue, Nov 5, 2019 at 12:31 PM David Hildenbrand <david@redhat.com> wrote:
-> > > > > The scarier code (for me) is transparent_hugepage_adjust() and
-> > > > > kvm_mmu_zap_collapsible_spte(), as I don't at all understand the
-> > > > > interaction between THP and _PAGE_DEVMAP.
-> > > >
-> > > > The x86 KVM MMU code is one of the ugliest code I know (sorry, but it
-> > > > had to be said :/ ). Luckily, this should be independent of the
-> > > > PG_reserved thingy AFAIKs.
+> > On Tue, Nov 5, 2019 at 3:13 PM Sean Christopherson
+> > <sean.j.christopherson@intel.com> wrote:
 > > >
-> > > Both transparent_hugepage_adjust() and kvm_mmu_zap_collapsible_spte()
-> > > are honoring kvm_is_reserved_pfn(), so again I'm missing where the
-> > > page count gets mismanaged and leads to the reported hang.
+> > > On Tue, Nov 05, 2019 at 03:02:40PM -0800, Dan Williams wrote:
+> > > > On Tue, Nov 5, 2019 at 12:31 PM David Hildenbrand <david@redhat.com> wrote:
+> > > > > > The scarier code (for me) is transparent_hugepage_adjust() and
+> > > > > > kvm_mmu_zap_collapsible_spte(), as I don't at all understand the
+> > > > > > interaction between THP and _PAGE_DEVMAP.
+> > > > >
+> > > > > The x86 KVM MMU code is one of the ugliest code I know (sorry, but it
+> > > > > had to be said :/ ). Luckily, this should be independent of the
+> > > > > PG_reserved thingy AFAIKs.
+> > > >
+> > > > Both transparent_hugepage_adjust() and kvm_mmu_zap_collapsible_spte()
+> > > > are honoring kvm_is_reserved_pfn(), so again I'm missing where the
+> > > > page count gets mismanaged and leads to the reported hang.
+> > >
+> > > When mapping pages into the guest, KVM gets the page via gup(), which
+> > > increments the page count for ZONE_DEVICE pages.  But KVM puts the page
+> > > using kvm_release_pfn_clean(), which skips put_page() if PageReserved()
+> > > and so never puts its reference to ZONE_DEVICE pages.
 > >
-> > When mapping pages into the guest, KVM gets the page via gup(), which
-> > increments the page count for ZONE_DEVICE pages.  But KVM puts the page
-> > using kvm_release_pfn_clean(), which skips put_page() if PageReserved()
-> > and so never puts its reference to ZONE_DEVICE pages.
->
-> Oh, yeah, that's busted.
+> > Oh, yeah, that's busted.
+> 
+> Ugh, it's extra busted because every other gup user in the kernel
+> tracks the pages resulting from gup and puts them (put_page()) when
+> they are done. KVM wants to forget about whether it did a gup to get
+> the page and optionally trigger put_page() based purely on the pfn.
+> Outside of VFIO device assignment that needs pages pinned for DMA, why
+> does KVM itself need to pin pages? If pages are pinned over a return
+> to userspace that needs to be a FOLL_LONGTERM gup.
 
-Ugh, it's extra busted because every other gup user in the kernel
-tracks the pages resulting from gup and puts them (put_page()) when
-they are done. KVM wants to forget about whether it did a gup to get
-the page and optionally trigger put_page() based purely on the pfn.
-Outside of VFIO device assignment that needs pages pinned for DMA, why
-does KVM itself need to pin pages? If pages are pinned over a return
-to userspace that needs to be a FOLL_LONGTERM gup.
+Short answer, KVM pins the page to ensure correctness with respect to the
+primary MMU invalidating the associated host virtual address, e.g. when
+the page is being migrated or unmapped from host userspace.
+
+The main use of gup() is to handle guest page faults and map pages into
+the guest, i.e. into KVM's secondary MMU.  KVM uses gup() to both get the
+PFN and to temporarily pin the page.  The pin is held just long enough to
+guaranteed that any invalidation via the mmu_notifier will be stalled
+until after KVM finishes installing the page into the secondary MMU, i.e.
+the pin is short-term and not held across a return to userspace or entry
+into the guest.  When a subsequent mmu_notifier invalidation occurs, KVM
+pulls the PFN from the secondary MMU and uses that to update accessed
+and dirty bits in the host.
+
+There are a few other KVM flows that eventually call into gup(), but those
+are "traditional" short-term pins and use put_page() directly.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
