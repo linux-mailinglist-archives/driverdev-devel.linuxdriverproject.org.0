@@ -1,75 +1,147 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 46DC8F33B3
-	for <lists+driverdev-devel@lfdr.de>; Thu,  7 Nov 2019 16:45:41 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E5E7DF33FE
+	for <lists+driverdev-devel@lfdr.de>; Thu,  7 Nov 2019 16:59:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2828A203DF;
-	Thu,  7 Nov 2019 15:45:39 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CE01485582;
+	Thu,  7 Nov 2019 15:59:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KgVfG0Vl3guh; Thu,  7 Nov 2019 15:45:38 +0000 (UTC)
+	with ESMTP id thQAMKVV3JAL; Thu,  7 Nov 2019 15:59:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id DD714203D0;
-	Thu,  7 Nov 2019 15:45:37 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 27EC685462;
+	Thu,  7 Nov 2019 15:59:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 901E71BF484
- for <devel@linuxdriverproject.org>; Thu,  7 Nov 2019 15:45:35 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8C5AC1BF484
+ for <devel@linuxdriverproject.org>; Thu,  7 Nov 2019 15:59:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 78F8E87670
- for <devel@linuxdriverproject.org>; Thu,  7 Nov 2019 15:45:35 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8889785567
+ for <devel@linuxdriverproject.org>; Thu,  7 Nov 2019 15:59:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id J65Df-g16PpC for <devel@linuxdriverproject.org>;
- Thu,  7 Nov 2019 15:45:34 +0000 (UTC)
-X-Greylist: delayed 00:05:05 by SQLgrey-1.7.6
-Received: from mail-oi1-f196.google.com (mail-oi1-f196.google.com
- [209.85.167.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id AAC078766C
- for <devel@driverdev.osuosl.org>; Thu,  7 Nov 2019 15:45:34 +0000 (UTC)
-Received: by mail-oi1-f196.google.com with SMTP id i185so2333374oif.9
- for <devel@driverdev.osuosl.org>; Thu, 07 Nov 2019 07:45:34 -0800 (PST)
+ with ESMTP id KpGv1uNjMA38 for <devel@linuxdriverproject.org>;
+ Thu,  7 Nov 2019 15:58:59 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from esa1.microchip.iphmx.com (esa1.microchip.iphmx.com
+ [68.232.147.91])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 10825821DD
+ for <devel@driverdev.osuosl.org>; Thu,  7 Nov 2019 15:58:58 +0000 (UTC)
+Received-SPF: Pass (esa1.microchip.iphmx.com: domain of
+ Ajay.Kathat@microchip.com designates 198.175.253.82 as
+ permitted sender) identity=mailfrom;
+ client-ip=198.175.253.82; receiver=esa1.microchip.iphmx.com;
+ envelope-from="Ajay.Kathat@microchip.com";
+ x-sender="Ajay.Kathat@microchip.com"; x-conformance=spf_only;
+ x-record-type="v=spf1"; x-record-text="v=spf1 mx
+ a:ushub1.microchip.com a:smtpout.microchip.com
+ a:mx1.microchip.iphmx.com a:mx2.microchip.iphmx.com
+ include:servers.mcsv.net include:mktomail.com
+ include:spf.protection.outlook.com ~all"
+Received-SPF: None (esa1.microchip.iphmx.com: no sender
+ authenticity information available from domain of
+ postmaster@email.microchip.com) identity=helo;
+ client-ip=198.175.253.82; receiver=esa1.microchip.iphmx.com;
+ envelope-from="Ajay.Kathat@microchip.com";
+ x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
+Authentication-Results: esa1.microchip.iphmx.com;
+ spf=Pass smtp.mailfrom=Ajay.Kathat@microchip.com;
+ spf=None smtp.helo=postmaster@email.microchip.com;
+ dkim=pass (signature verified) header.i=@microchiptechnology.onmicrosoft.com;
+ dmarc=pass (p=none dis=none) d=microchip.com
+IronPort-SDR: iDqErHCYxDgVjGsSHKGOVcXMBuZZMkufeqIKkI3AuEl2xBsEZbR/yd0zaXjsmakQNAApSV6Ne9
+ /iqg5OYUHdly/5p/aLTb6peyf+fMOcorKN4wlv3IyT+DX6NQapt9VfG1dHcwlIi82KcXD6INiI
+ jPH+Ku8jqCdLoLsZyaQCrnNUGBYKzLbAxWQpBdD7R3XeMhoKmhaxrLPaMMLgDzzuYp9/oWh0GT
+ JlV4f0ML5KF4jiD2prVHspTrq1XqJ+hYKm+tFDlWseM3hJGf98lvDKdTdR0SWMif9aQxe5xr03
+ Pj0=
+X-IronPort-AV: E=Sophos;i="5.68,278,1569308400"; d="scan'208";a="57421992"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa1.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 07 Nov 2019 08:58:57 -0700
+Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
+ chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Thu, 7 Nov 2019 08:58:57 -0700
+Received: from NAM05-CO1-obe.outbound.protection.outlook.com (10.10.215.89) by
+ email.microchip.com (10.10.87.71) with Microsoft SMTP Server
+ (version=TLS1_2, 
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.1713.5 via Frontend
+ Transport; Thu, 7 Nov 2019 08:58:57 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Z62EsLjQQwWmyHCIQWQbHn+YS8mVcfmkWu3w+jF9NhIxFADdh0yMFx7P02iNbQc77uFyTlDr0GmHIsHHXLIl/ZbEMqy+BPo8msrW6vTahRetwmQuhXWNmeWLh42VNyBWRL1OWVHbjyTy4C1V+tL0+pyH8CUYNAfPqHZhhPZYzvPO3M49Ec6lwwnROeaINDUfsFw1FUPZ4YEOa2ceUC1Nd18NIUbCM+0Pu3iMHzu17HaTFaaTxU3IkJNpXEb9+0Pn5B082ZSq6fMnH8oGGjI9GblLl46BBHITubK27h4cdSZ5ck4Dz7NPqTj3RkyqSR1buNCNKZ23Ato2EFGXkr/r1w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=I83/5dTDtpC7K2/pL9W4A67isONxm8Y4Le/jrKOiwvY=;
+ b=i7ExFuXwocBMlMlQqHEH+A3E2Gm85db4dM6dh6m6VX8kYBbY29Axx8R+G1kt49lUl47/NIyp5rUjeWCqH2Ka8M+yymPZ2EFQWApXESXxOCI+492FAnrQPm4wxVkBpI/JRbG5/84lUaznRU2pdafLEBdPozXjZubDjKn+p1VpmTnpfo9GbKlVM2z72X4ySsKrhSQ8Kx7gmwbnPFzl3JQBYG+dPlbIcjv+kp3jMvRdGU62tBEnfPyCTcHvyM46MXnzZa7LHNi3xTNC0Uv7UfskCA5HtWcqNKvtPOksTG4NdjUUrfm8UymwqoWKZhn/fAZxmSPiE0O3fW+Bo53o+WBjiw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=microchip.com; dmarc=pass action=none
+ header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=intel-com.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Q58dgR5BjEdLFCMc/OF3RFMdn955E8grbP7luNA8CNY=;
- b=oKCc36Mb9fip+zU5tGKr6J+l4XlDcFUtvr2mmmCNv6TF0HlwkicRCrTT1sQlx12vxa
- UY8S81D7tBut+V/4ZkpyJtSVYco9A0bQaPWztNxHQubXXDgTxmJGos9WA1uUQELcy96J
- T6Bh3rJMvXgSo4xERJ53HxifVFLgwy/o3viVP+9B0CbTTzJLC88VhXkF2cZ+0Tuobk14
- zVNN5QACqwe5KWkIPC4t1TSKEn6spSMULzAANECJfJo6fn8JsC5HEU9YsPR/FcLvIWCT
- HseWP/zMGzW78EfAwZAkw31fNd4FCq5eyjs4aTOmObHRdvGMJcGjHaaY5l49bbOdcFbv
- BxLA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Q58dgR5BjEdLFCMc/OF3RFMdn955E8grbP7luNA8CNY=;
- b=OdMCM03fx0oBp0z5f3R59q8HxC+zjgW0AkmOy57KO5H+acrjd+nHFtzZUXCqLXZqU6
- fUHHrQiXeJVdpPJpqwn6rIZMlMOScr21ciNLPUJSdNqteUPPBcszckQ/UIiGdOcBHBYg
- 2FLF/5JZRBvmhS4vWBRdfOoqz9oBOoULCegekWlEsjWN269cNLxFlnCqHevFUJ18sffN
- QXN1aW61kbKcfZIm+SAqthuAvxngL3emcNjx7m9IMZEtjbrgH8pTjL49+jEmveWRgg64
- hEpOIMzgL8okNxxB14MGLdxnuqL2NnWn664sOSby8VXVX0qOXIE9qZZKfWffhu6Q08Zc
- M2Ow==
-X-Gm-Message-State: APjAAAU3PskDWMzQfdoxkRSZ9My1C4Tfu8QAfo5uOF7KIEMQSxSkcmBm
- IsYn2jLgF3xYXAHprhNd1CPtrttfgybLfhiRPq5t3WwI
-X-Google-Smtp-Source: APXvYqzlAbNtEQcnOULhGp1Ld3ejpyCy6BqfHWE8h+548I8goxJKdozDEoUnp7xCpHOKMURL2hHkCxlnCDsp6qKvW2g=
-X-Received: by 2002:aca:ad52:: with SMTP id w79mr3140190oie.149.1573141228551; 
- Thu, 07 Nov 2019 07:40:28 -0800 (PST)
+ d=microchiptechnology.onmicrosoft.com;
+ s=selector2-microchiptechnology-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=I83/5dTDtpC7K2/pL9W4A67isONxm8Y4Le/jrKOiwvY=;
+ b=jAk8wKJ0jEoy5e6SLL8stKl8lRIyBr2Mhk+hGyCZXRJilEO99ghuLr2OodSYX0p3/kEg3pn955Rzx/jBP2gQGlXXtfFHy67T1DEmfVa91temWQULt9mX03yM2heUUFHQd2n9MUZavdQZ6HLBOvEsj+bWejnhgjJI4sjXRiNSlbc=
+Received: from BN6PR11MB3985.namprd11.prod.outlook.com (10.255.129.78) by
+ BN6PR11MB1633.namprd11.prod.outlook.com (10.172.23.22) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2430.20; Thu, 7 Nov 2019 15:58:54 +0000
+Received: from BN6PR11MB3985.namprd11.prod.outlook.com
+ ([fe80::b4df:e09b:f8cc:c433]) by BN6PR11MB3985.namprd11.prod.outlook.com
+ ([fe80::b4df:e09b:f8cc:c433%7]) with mapi id 15.20.2430.023; Thu, 7 Nov 2019
+ 15:58:54 +0000
+From: <Ajay.Kathat@microchip.com>
+To: <linux-wireless@vger.kernel.org>
+Subject: [PATCH] staging: wilc1000: fix illegal memory access in
+ wilc_parse_join_bss_param()
+Thread-Topic: [PATCH] staging: wilc1000: fix illegal memory access in
+ wilc_parse_join_bss_param()
+Thread-Index: AQHVlYRBZn0zvrMBv0qGwCKphmJx7g==
+Date: Thu, 7 Nov 2019 15:58:54 +0000
+Message-ID: <20191106062127.3165-1-ajay.kathat@microchip.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-clientproxiedby: MAXPR0101CA0043.INDPRD01.PROD.OUTLOOK.COM
+ (2603:1096:a00:d::29) To BN6PR11MB3985.namprd11.prod.outlook.com
+ (2603:10b6:405:7b::14)
+x-mailer: git-send-email 2.22.0
+x-ms-exchange-messagesentrepresentingtype: 1
+x-originating-ip: [121.244.27.38]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: b6c5303e-2c6e-4f68-f842-08d7639b63f8
+x-ms-traffictypediagnostic: BN6PR11MB1633:
+x-ms-exchange-purlcount: 1
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BN6PR11MB1633979F4FC7CAAD6C36FA62E3780@BN6PR11MB1633.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:6430;
+x-forefront-prvs: 0214EB3F68
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(396003)(136003)(366004)(376002)(346002)(39850400004)(199004)(189003)(476003)(7736002)(102836004)(99286004)(64756008)(66476007)(66556008)(26005)(71200400001)(71190400001)(186003)(66946007)(2616005)(3846002)(6116002)(2351001)(6916009)(66446008)(81166006)(2906002)(6506007)(486006)(14444005)(6512007)(386003)(256004)(50226002)(5640700003)(6436002)(1076003)(8936002)(316002)(81156014)(25786009)(478600001)(6306002)(54906003)(966005)(66066001)(6486002)(36756003)(52116002)(86362001)(4326008)(5660300002)(2501003)(14454004)(8676002)(305945005)(6606295002);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:BN6PR11MB1633;
+ H:BN6PR11MB3985.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+received-spf: None (protection.outlook.com: microchip.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: EgkkMYDoga+0HkiSJBdVD9Gq4eHrwIXD3GAcTmoWDAHeYq8hfZzTD9nKQBV3D5T0vBROxDHg5j66nOvHE74EcO1ayFlrgHb6QtAZAR0z4+PbDHY2hxgPx50xn0KjssI/SqOALQ5HgjSTWu8gFKUg/WDdcI5WkdNLKQcMWiS6jfiq/k4sAhjzWs4Xmq/VRbN/Z0oM6muL2xkRFV09aeDvNm7SescbbOUkSaY0tu4xMIDMGQZT5q8XMyfDz+DbeBgrG+aL2ACbJrn7Ia7J8/N7Hse9ufleoyteRtGEFQ6Rwt65V3GALu4Z25ox75nf3amBxdzUOT3gXAq6vOa1TOoa5VH330QvqEGPWDR+zKLOv1rb0wGXxPeaaaYu3LUFV1L+DABB5ZDeb8eCCQTUrTwR3/XlrrVerkVGs5HLG9czr6wh3UDtrrGfzgGDUJ1b2TQWW10wTCxS8DP55OTtI70VZYlqlbtGPPN9tBKHZgZHKSI=
 MIME-Version: 1.0
-References: <20191024120938.11237-1-david@redhat.com>
- <20191024120938.11237-5-david@redhat.com>
-In-Reply-To: <20191024120938.11237-5-david@redhat.com>
-From: Dan Williams <dan.j.williams@intel.com>
-Date: Thu, 7 Nov 2019 07:40:17 -0800
-Message-ID: <CAPcyv4hxs+KqY5gU8Ds1a73eub1imvm9Qo8KdKGiDD1e-p0cww@mail.gmail.com>
-Subject: Re: [PATCH v1 04/10] vfio/type1: Prepare is_invalid_reserved_pfn()
- for PG_reserved changes
-To: David Hildenbrand <david@redhat.com>
+X-MS-Exchange-CrossTenant-Network-Message-Id: b6c5303e-2c6e-4f68-f842-08d7639b63f8
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Nov 2019 15:58:54.6584 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: FCLW25wbHpJi8HZdiqzwIsuWSK8zcM8ZGyO0TJ+z4iahUG8ZZ+uZP8vBbms52ZBgBotYmxwx6mI7oaazLWzEw6mOeRyppsf3kXuV9XPz2Ck=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB1633
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,87 +154,72 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-hyperv@vger.kernel.org, Michal Hocko <mhocko@suse.com>,
- =?UTF-8?B?UmFkaW0gS3LEjW3DocWZ?= <rkrcmar@redhat.com>,
- KVM list <kvm@vger.kernel.org>, Pavel Tatashin <pavel.tatashin@microsoft.com>,
- KarimAllah Ahmed <karahmed@amazon.de>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Dave Hansen <dave.hansen@linux.intel.com>,
- Alexander Duyck <alexander.duyck@gmail.com>, Michal Hocko <mhocko@kernel.org>,
- Paul Mackerras <paulus@ozlabs.org>, Linux MM <linux-mm@kvack.org>,
- Paul Mackerras <paulus@samba.org>, Michael Ellerman <mpe@ellerman.id.au>,
- "H. Peter Anvin" <hpa@zytor.com>, Wanpeng Li <wanpengli@tencent.com>,
- Alexander Duyck <alexander.h.duyck@linux.intel.com>,
- Thomas Gleixner <tglx@linutronix.de>, Kees Cook <keescook@chromium.org>,
- devel@driverdev.osuosl.org, Stefano Stabellini <sstabellini@kernel.org>,
- Stephen Hemminger <sthemmin@microsoft.com>,
- "Aneesh Kumar K.V" <aneesh.kumar@linux.ibm.com>,
- Joerg Roedel <joro@8bytes.org>, X86 ML <x86@kernel.org>,
- YueHaibing <yuehaibing@huawei.com>,
- "Matthew Wilcox \(Oracle\)" <willy@infradead.org>,
- Mike Rapoport <rppt@linux.ibm.com>, Peter Zijlstra <peterz@infradead.org>,
- Ingo Molnar <mingo@redhat.com>, Vlastimil Babka <vbabka@suse.cz>,
- Anthony Yznaga <anthony.yznaga@oracle.com>, Oscar Salvador <osalvador@suse.de>,
- "Isaac J. Manjarres" <isaacm@codeaurora.org>, Juergen Gross <jgross@suse.com>,
- Anshuman Khandual <anshuman.khandual@arm.com>,
- Haiyang Zhang <haiyangz@microsoft.com>, Sasha Levin <sashal@kernel.org>,
- kvm-ppc@vger.kernel.org, Qian Cai <cai@lca.pw>,
- Alex Williamson <alex.williamson@redhat.com>,
- Mike Rapoport <rppt@linux.vnet.ibm.com>, Borislav Petkov <bp@alien8.de>,
- Nicholas Piggin <npiggin@gmail.com>, Andy Lutomirski <luto@kernel.org>,
- xen-devel <xen-devel@lists.xenproject.org>,
- Boris Ostrovsky <boris.ostrovsky@oracle.com>,
- Vitaly Kuznetsov <vkuznets@redhat.com>, Allison Randal <allison@lohutok.net>,
- Jim Mattson <jmattson@google.com>, Christophe Leroy <christophe.leroy@c-s.fr>,
- Mel Gorman <mgorman@techsingularity.net>, Cornelia Huck <cohuck@redhat.com>,
- Pavel Tatashin <pasha.tatashin@soleen.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Sean Christopherson <sean.j.christopherson@intel.com>,
- Johannes Weiner <hannes@cmpxchg.org>, Paolo Bonzini <pbonzini@redhat.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev <linuxppc-dev@lists.ozlabs.org>
+Cc: devel@driverdev.osuosl.org, Ajay.Kathat@microchip.com,
+ gregkh@linuxfoundation.org, keescook+coverity-bot@chromium.org,
+ stable@vger.kernel.org, Adham.Abozaeid@microchip.com,
+ johannes@sipsolutions.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Oct 24, 2019 at 5:12 AM David Hildenbrand <david@redhat.com> wrote:
->
-> Right now, ZONE_DEVICE memory is always set PG_reserved. We want to
-> change that.
->
-> KVM has this weird use case that you can map anything from /dev/mem
-> into the guest. pfn_valid() is not a reliable check whether the memmap
-> was initialized and can be touched. pfn_to_online_page() makes sure
-> that we have an initialized memmap (and don't have ZONE_DEVICE memory).
->
-> Rewrite is_invalid_reserved_pfn() similar to kvm_is_reserved_pfn() to make
-> sure the function produces the same result once we stop setting ZONE_DEVICE
-> pages PG_reserved.
->
-> Cc: Alex Williamson <alex.williamson@redhat.com>
-> Cc: Cornelia Huck <cohuck@redhat.com>
-> Signed-off-by: David Hildenbrand <david@redhat.com>
-> ---
->  drivers/vfio/vfio_iommu_type1.c | 10 ++++++++--
->  1 file changed, 8 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/vfio/vfio_iommu_type1.c b/drivers/vfio/vfio_iommu_type1.c
-> index 2ada8e6cdb88..f8ce8c408ba8 100644
-> --- a/drivers/vfio/vfio_iommu_type1.c
-> +++ b/drivers/vfio/vfio_iommu_type1.c
-> @@ -299,9 +299,15 @@ static int vfio_lock_acct(struct vfio_dma *dma, long npage, bool async)
->   */
->  static bool is_invalid_reserved_pfn(unsigned long pfn)
->  {
-> -       if (pfn_valid(pfn))
-> -               return PageReserved(pfn_to_page(pfn));
-> +       struct page *page = pfn_to_online_page(pfn);
+From: Ajay Singh <ajay.kathat@microchip.com>
 
-Ugh, I just realized this is not a safe conversion until
-pfn_to_online_page() is moved over to subsection granularity. As it
-stands it will return true for any ZONE_DEVICE pages that share a
-section with boot memory.
+Do not copy the extended supported rates in 'param->supp_rates' if the
+array is already full with basic rates values. The array size check
+helped to avoid possible illegal memory access [1] while copying to
+'param->supp_rates' array.
+
+1. https://marc.info/?l=linux-next&m=157301720517456&w=2
+
+Reported-by: coverity-bot <keescook+coverity-bot@chromium.org>
+Addresses-Coverity-ID: 1487400 ("Memory - illegal accesses")
+Fixes: 4e0b0f42c9c7 ("staging: wilc1000: use struct to pack join parameters for FW")
+Cc: stable@vger.kernel.org
+Signed-off-by: Ajay Singh <ajay.kathat@microchip.com>
+---
+ drivers/staging/wilc1000/hif.c | 25 +++++++++++++++----------
+ 1 file changed, 15 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/staging/wilc1000/hif.c b/drivers/staging/wilc1000/hif.c
+index 5f6706bcedf6..349e45d58ec9 100644
+--- a/drivers/staging/wilc1000/hif.c
++++ b/drivers/staging/wilc1000/hif.c
+@@ -485,16 +485,21 @@ void *wilc_parse_join_bss_param(struct cfg80211_bss *bss,
+ 		memcpy(&param->supp_rates[1], rates_ie + 2, rates_len);
+ 	}
+ 
+-	supp_rates_ie = cfg80211_find_ie(WLAN_EID_EXT_SUPP_RATES, ies->data,
+-					 ies->len);
+-	if (supp_rates_ie) {
+-		if (supp_rates_ie[1] > (WILC_MAX_RATES_SUPPORTED - rates_len))
+-			param->supp_rates[0] = WILC_MAX_RATES_SUPPORTED;
+-		else
+-			param->supp_rates[0] += supp_rates_ie[1];
+-
+-		memcpy(&param->supp_rates[rates_len + 1], supp_rates_ie + 2,
+-		       (param->supp_rates[0] - rates_len));
++	if (rates_len < WILC_MAX_RATES_SUPPORTED) {
++		supp_rates_ie = cfg80211_find_ie(WLAN_EID_EXT_SUPP_RATES,
++						 ies->data, ies->len);
++		if (supp_rates_ie) {
++			u8 ext_rates = supp_rates_ie[1];
++
++			if (ext_rates > (WILC_MAX_RATES_SUPPORTED - rates_len))
++				param->supp_rates[0] = WILC_MAX_RATES_SUPPORTED;
++			else
++				param->supp_rates[0] += ext_rates;
++
++			memcpy(&param->supp_rates[rates_len + 1],
++			       supp_rates_ie + 2,
++			       (param->supp_rates[0] - rates_len));
++		}
+ 	}
+ 
+ 	ht_ie = cfg80211_find_ie(WLAN_EID_HT_CAPABILITY, ies->data, ies->len);
+-- 
+2.22.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
