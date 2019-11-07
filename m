@@ -1,60 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7F229F2952
-	for <lists+driverdev-devel@lfdr.de>; Thu,  7 Nov 2019 09:40:17 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2974CF2A47
+	for <lists+driverdev-devel@lfdr.de>; Thu,  7 Nov 2019 10:10:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6826E87568;
-	Thu,  7 Nov 2019 08:40:14 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 092B685F8D;
+	Thu,  7 Nov 2019 09:10:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hT7+e4NvJcnl; Thu,  7 Nov 2019 08:40:14 +0000 (UTC)
+	with ESMTP id qIuqa1EBTFtC; Thu,  7 Nov 2019 09:10:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8AD6C8738B;
-	Thu,  7 Nov 2019 08:40:13 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D86D985C57;
+	Thu,  7 Nov 2019 09:10:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id BF6C51BF867
- for <devel@linuxdriverproject.org>; Thu,  7 Nov 2019 08:40:11 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5E5B01BF2E4
+ for <devel@linuxdriverproject.org>; Thu,  7 Nov 2019 09:10:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BC8B087590
- for <devel@linuxdriverproject.org>; Thu,  7 Nov 2019 08:40:11 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 542DA85B95
+ for <devel@linuxdriverproject.org>; Thu,  7 Nov 2019 09:10:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pq18KNb88Plq for <devel@linuxdriverproject.org>;
- Thu,  7 Nov 2019 08:40:10 +0000 (UTC)
+ with ESMTP id pr1WiQ1avkHp for <devel@linuxdriverproject.org>;
+ Thu,  7 Nov 2019 09:10:43 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 90D118731E
- for <devel@driverdev.osuosl.org>; Thu,  7 Nov 2019 08:40:10 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id D1E0C21D79;
- Thu,  7 Nov 2019 08:40:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1573116010;
- bh=UXQJazaBfJV0zIWW7UEoQWPynSR/yhlKvrGLJ29hpro=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=omokBRfofB53Ei3yMrIzwz9Z22Rrk3t3SpYs1IPksEG+BpBfYj+fTGT/pWzSe0Ks3
- 8X1yjKW9hshlFJG0yVB3Zc98K0aegYpbp+yWGQ2hAjswx6P1cLApcvNc4jaVcFeV2w
- UydpvdtPxRASerQVo0BvKeoXCBM8TaJsia3ZLpzM=
-Date: Thu, 7 Nov 2019 09:40:07 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: gerg@kernel.org
-Subject: Re: [PATCH] mtd: rawnand: driver for Mediatek MT7621 SoC NAND flash
- controller
-Message-ID: <20191107084007.GA1203521@kroah.com>
-References: <20191107073521.11413-1-gerg@kernel.org>
+Received: from inca-roads.misterjones.org (inca-roads.misterjones.org
+ [213.251.177.50])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 2879685C57
+ for <devel@linuxdriverproject.org>; Thu,  7 Nov 2019 09:10:43 +0000 (UTC)
+Received: from www-data by cheepnis.misterjones.org with local (Exim 4.80)
+ (envelope-from <maz@kernel.org>)
+ id 1iSdoJ-0002WC-Ai; Thu, 07 Nov 2019 10:10:35 +0100
+To: Michael Kelley <mikelley@microsoft.com>
+Subject: RE: [PATCH v5 2/8] arm64: hyperv: Add hypercall and register access
+ functions
+X-PHP-Originating-Script: 0:main.inc
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191107073521.11413-1-gerg@kernel.org>
-User-Agent: Mutt/1.12.2 (2019-09-21)
+Date: Thu, 07 Nov 2019 10:19:56 +0109
+From: Marc Zyngier <maz@kernel.org>
+In-Reply-To: <DM5PR21MB013730D09CB8BA7658DE57F7D7790@DM5PR21MB0137.namprd21.prod.outlook.com>
+References: <1570129355-16005-1-git-send-email-mikelley@microsoft.com>
+ <1570129355-16005-3-git-send-email-mikelley@microsoft.com>
+ <8cdc86e5bcf861c74069e0d349910c94@www.loen.fr>
+ <DM5PR21MB013730D09CB8BA7658DE57F7D7790@DM5PR21MB0137.namprd21.prod.outlook.com>
+Message-ID: <c8403255bf874856c10f07189e27080a@www.loen.fr>
+X-Sender: maz@kernel.org
+User-Agent: Roundcube Webmail/0.7.2
+X-SA-Exim-Connect-IP: <locally generated>
+X-SA-Exim-Rcpt-To: mikelley@microsoft.com, will@kernel.org,
+ catalin.marinas@arm.com, mark.rutland@arm.com,
+ linux-arm-kernel@lists.infradead.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, linux-hyperv@vger.kernel.org,
+ devel@linuxdriverproject.org, olaf@aepfle.de, apw@canonical.com,
+ vkuznets@redhat.com, jasowang@redhat.com, marcelo.cerri@canonical.com,
+ kys@microsoft.com, sunilmut@microsoft.com, boqun.feng@gmail.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on cheepnis.misterjones.org);
+ SAEximRunCond expanded to false
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,47 +73,65 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- linux-mtd@lists.infradead.org, neil@brown.name,
- linux-mediatek@lists.infradead.org, blogic@openwrt.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: mark.rutland@arm.com, linux-hyperv@vger.kernel.org,
+ "boqun.feng" <boqun.feng@gmail.com>, catalin.marinas@arm.com,
+ jasowang@redhat.com, linux-kernel@vger.kernel.org, marcelo.cerri@canonical.com,
+ olaf@aepfle.de, gregkh@linuxfoundation.org, apw@canonical.com,
+ devel@linuxdriverproject.org, vkuznets <vkuznets@redhat.com>, will@kernel.org,
+ Sunil Muthuswamy <sunilmut@microsoft.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Nov 07, 2019 at 05:35:21PM +1000, gerg@kernel.org wrote:
-> From: Greg Ungerer <gerg@kernel.org>
-> 
-> Add a driver to support the NAND flash controller of the MediaTek MT7621
-> System-on-Chip device. (This one is the MIPS based parts from Mediatek).
-> 
-> This code is a re-working of the earlier patches for this hardware that
-> have been floating around the internet for years:
-> 
-> https://github.com/ReclaimYourPrivacy/cloak/blob/master/target/linux/ramips/patches-3.18/0045-mtd-add-mt7621-nand-support.patch
-> 
-> This is a much cleaned up version, put in staging to start with.
-> It does still have some problems, mainly that it still uses a lot of the
-> mtd raw nand legacy support.
+On 2019-11-06 19:08, Michael Kelley wrote:
+> From: Marc Zyngier <maz@kernel.org>  Sent: Wednesday, November 6,
+> 2019 2:20 AM
+>>
+>> On 2019-10-03 20:12, Michael Kelley wrote:
+>> > Add ARM64-specific code to make Hyper-V hypercalls and to
+>> > access virtual processor synthetic registers via hypercalls.
+>> > Hypercalls use a Hyper-V specific calling sequence with a non-zero
+>> > immediate value per Section 2.9 of the SMC Calling Convention
+>> > spec.
+>>
+>> I find this "following the spec by actively sidestepping it" counter
+>> productive. You (or rather the Hyper-V people) are reinventing the
+>> wheel (of the slightly square variety) instead of using the standard
+>> that the whole of the ARM ecosystem seems happy to take advantage
+>> of.
+>>
+>> I wonder what is the rational for this. If something doesn't quite
+>> work for Hyper-V, I think we'd all like to know.
+>>
+>
+> I'll go another round internally with the Hyper-V people on this
+> topic and impress upon them the desire of the Linux community to
+> have Hyper-V adopt the true spirit of the spec.  But I know they are
+> fairly set in their approach at this point, regardless of the 
+> technical
+> merits or lack thereof.  Hyper-V is shipping and in use as a 
+> commercial
+> product on ARM64 hardware, which makes it harder to change.  I
+> hope we can find a way to avoid a complete impasse ....
 
-Is that an issue?  Why not just put it in the "real" part of the kernel
-then, if those apis are still in use?
+Hyper-V shipping with their own calling convention is fine by me. Linux
+having to implement multiple calling conventions because the Hyper-V
+folks refuse (for undisclosed reason) to adopt the standard isn't fine 
+at
+all.
 
-> The driver not only compiles, but it works well on the small range of
-> hardware platforms that it has been used on so far. I have been using
-> for quite a while now, cleaning up as I get time.
-> 
-> So... I am looking for comments on the best approach forward with this.
-> At least in staging it can get some more eyeballs going over it.
+HV can perfectly retain its interface for Windows or other things, but
+please *at least* implement the standard interface on which all 
+existing
+operating systems rely.
 
-staging will just nit-pick it to death for coding style issues, it's not
-going to be get any major api changes/cleanups there usually.  I'd
-recommend just merging this to the "real" part of the kernel now if it's
-working for you.
+Thanks,
 
-thanks,
-
-greg k-h
+         M.
+-- 
+Jazz is not dead. It just smells funny...
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
