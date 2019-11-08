@@ -1,117 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 38042F582B
-	for <lists+driverdev-devel@lfdr.de>; Fri,  8 Nov 2019 21:34:10 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 75A11F5A0C
+	for <lists+driverdev-devel@lfdr.de>; Fri,  8 Nov 2019 22:43:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CC04687FD8;
-	Fri,  8 Nov 2019 20:34:07 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1393586FFF;
+	Fri,  8 Nov 2019 21:43:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KyRkdL72He04; Fri,  8 Nov 2019 20:34:07 +0000 (UTC)
+	with ESMTP id 6MQmqFSUSUvh; Fri,  8 Nov 2019 21:43:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0ED5787EA1;
-	Fri,  8 Nov 2019 20:34:07 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B01A586EAC;
+	Fri,  8 Nov 2019 21:43:04 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 489CD1BF350
- for <devel@linuxdriverproject.org>; Fri,  8 Nov 2019 20:34:04 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 690591BF990
+ for <devel@linuxdriverproject.org>; Fri,  8 Nov 2019 21:43:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 4537686381
- for <devel@linuxdriverproject.org>; Fri,  8 Nov 2019 20:34:04 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 4EACA23B2B
+ for <devel@linuxdriverproject.org>; Fri,  8 Nov 2019 21:43:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UKw6ZxITiZGg for <devel@linuxdriverproject.org>;
- Fri,  8 Nov 2019 20:34:03 +0000 (UTC)
-X-Greylist: delayed 01:19:09 by SQLgrey-1.7.6
-Received: from NAM05-CO1-obe.outbound.protection.outlook.com
- (mail-eopbgr720109.outbound.protection.outlook.com [40.107.72.109])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 2949C86371
- for <devel@linuxdriverproject.org>; Fri,  8 Nov 2019 20:34:03 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=H4JTphZsB60UhzJe+UHUig8WdU0yh9d08zBjzgI8tWw0f83DhSetnFcugBJyFtdOdcstbf+Q1z89PtCBKgH5hjQ+H96vzV0dITxzS6NWIaCos+ANJu7oHc+nDJsjPTQU9NFSoKtkcmfRsV2ulLmeVcuavwhx/i4P0/UI8Gv9wKdz+dyguVC/2VrusBBkuM+UPoTlMz853ewiAtFgBod2dHPUYQfqS2wOFrjiwAfGzUHEq+su07AOOlkZWeZttlQj8BF/fDNWmYsP7WMIW4pJ+Z0hZFfo7WOWsCZoe8HQldGnACJ5AdGj340B4OQyJHsxu+KtKuda6++7MVUl/9R+bQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=VO2S6M1qY9fe2w8cZycs0IX2ND6j/pja58mAe0o9mNs=;
- b=ldK9AxuOxR30P2r+i4MFijZTah7HPWxbC9rMkD+N+6uFxQtZGdyL8zAoZ3INlIxIk6u1L7ZRxD0844jUM97/bTsiUjIA0PSWvY5f+s4P6cmyQe6c5YvjpMpHW3JclWndTCLM3tahkc0UPhjtciqyuNd97e0xWK0EvgTYjySK4tlVHhP8/h4g3E5GIlJUPmB9SLeqDW2TmRrNj5v89DabcRbTSehqaD99IRsE2NaMRBW3p6j2aSNP+V5Pn8/PsqH9PIHpgkFEQ1Ly8e+hxRspfUCl+iYUt4rF6OOLYnkw+pnkto79BmclnaFol1sdG6xydwM9/yqLzkUmuOjPRZxKPA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microsoft.com; dmarc=pass action=none
- header.from=microsoft.com; dkim=pass header.d=microsoft.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=VO2S6M1qY9fe2w8cZycs0IX2ND6j/pja58mAe0o9mNs=;
- b=f3Vb2th8iqAyraFJHZ5rg1Lj6MMEf2YKRedo98CqjvqOgNBPZf+s2Jnp9Aec8ARkAdnwxpzI+W1pKijJu/jSRvimqHQEEM7dvHsctS7Z9Rz8h9N6PTLy3yMDsXUWUIYI8EbeKK7v21hEGNIJtIe6W9PFBHxYzgGvOk98SjuG5T8=
-Received: from DM5PR21MB0137.namprd21.prod.outlook.com (10.173.173.12) by
- DM5PR21MB0138.namprd21.prod.outlook.com (10.173.173.13) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2451.15; Fri, 8 Nov 2019 19:00:24 +0000
-Received: from DM5PR21MB0137.namprd21.prod.outlook.com
- ([fe80::9cc3:f167:bb63:799]) by DM5PR21MB0137.namprd21.prod.outlook.com
- ([fe80::9cc3:f167:bb63:799%5]) with mapi id 15.20.2451.013; Fri, 8 Nov 2019
- 19:00:24 +0000
-From: Michael Kelley <mikelley@microsoft.com>
-To: Marc Zyngier <maz@kernel.org>
-Subject: RE: [PATCH v5 3/8] arm64: hyperv: Add memory alloc/free functions
- for Hyper-V size pages
-Thread-Topic: [PATCH v5 3/8] arm64: hyperv: Add memory alloc/free functions
- for Hyper-V size pages
-Thread-Index: AQHVlXZk8k578k16NE+4oE6DGxisXqeBnxIw
-Date: Fri, 8 Nov 2019 19:00:24 +0000
-Message-ID: <DM5PR21MB0137C1D8C235CE8D6B26E3E4D77B0@DM5PR21MB0137.namprd21.prod.outlook.com>
-References: <1570129355-16005-1-git-send-email-mikelley@microsoft.com>
- <1570129355-16005-4-git-send-email-mikelley@microsoft.com>
- <43d53ebd2637bd9106137103028a4f0e@www.loen.fr>
-In-Reply-To: <43d53ebd2637bd9106137103028a4f0e@www.loen.fr>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Enabled=True;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SiteId=72f988bf-86f1-41af-91ab-2d7cd011db47;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Owner=mikelley@ntdev.microsoft.com;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SetDate=2019-11-08T19:00:22.7576236Z;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Name=General;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Application=Microsoft Azure
- Information Protection;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_ActionId=1a82cc3b-5f0f-413f-80da-a4b461a15203;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Extended_MSFT_Method=Automatic
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=mikelley@microsoft.com; 
-x-originating-ip: [24.22.167.197]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: b2798357-1728-4501-478c-08d7647de99b
-x-ms-traffictypediagnostic: DM5PR21MB0138:|DM5PR21MB0138:|DM5PR21MB0138:
-x-ms-exchange-transport-forked: True
-x-ld-processed: 72f988bf-86f1-41af-91ab-2d7cd011db47,ExtAddr
-x-microsoft-antispam-prvs: <DM5PR21MB01382E31E38EF625F764AB1AD77B0@DM5PR21MB0138.namprd21.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:7691;
-x-forefront-prvs: 0215D7173F
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(346002)(396003)(39860400002)(136003)(376002)(366004)(189003)(199004)(22452003)(54906003)(8936002)(316002)(6436002)(81156014)(4326008)(81166006)(55016002)(8676002)(446003)(7696005)(186003)(11346002)(25786009)(10290500003)(478600001)(33656002)(6506007)(74316002)(9686003)(486006)(6246003)(476003)(26005)(99286004)(86362001)(76176011)(14454004)(102836004)(3846002)(6116002)(6916009)(66066001)(2906002)(7416002)(10090500001)(305945005)(52536014)(7736002)(66476007)(66946007)(66556008)(64756008)(66446008)(5660300002)(229853002)(256004)(71200400001)(71190400001)(76116006)(8990500004);
- DIR:OUT; SFP:1102; SCL:1; SRVR:DM5PR21MB0138;
- H:DM5PR21MB0137.namprd21.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: microsoft.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: Wi7mKc93AP6t9t/asy7vx44CfuCem0Nh1XJDYES3n/DtYVDFUza3BJbKkXmvQJ2q4oXzhfIBmP6yqKH+wrYUUu0Y9hpunYYiD/l5AwsUqudxNc9T68aXNuJKNCVY4D4ec8EMDJJtwwzWyVX1mvAJp9aWTZFILw6zHUbXZWPR/2cSHN5HaIbmdqauBpe5Hu/1mENVg2MGNOF6Pk1ipTfHVgLxwrqUlh23Ekl24a8iXLIekyaIDaaCFeXGdL7UIkzP/oh8vRkmCps9CbLj/3VTWIsAdRMt7mfqloqrKOTpKRk6l2RcVtHc+zhRj0VjaQhfEwzpz22YLfApyLgN3BYI7wUrREqu9PCZnCa9XnsEILakR/zE1CI4g6+L8xCUh8fy9JOgGmlj3uqq5sLQbwluALv/OieHi3SgkcwKFuggb8nhyNn2rCUhfbdUhCHPWN61
+ with ESMTP id O7ydIiGmk+Fg for <devel@linuxdriverproject.org>;
+ Fri,  8 Nov 2019 21:42:58 +0000 (UTC)
+X-Greylist: delayed 00:09:13 by SQLgrey-1.7.6
+Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.134])
+ by silver.osuosl.org (Postfix) with ESMTPS id B307B237C8
+ for <devel@driverdev.osuosl.org>; Fri,  8 Nov 2019 21:42:57 +0000 (UTC)
+Received: from threadripper.lan ([149.172.19.189]) by mrelayeu.kundenserver.de
+ (mreue011 [212.227.15.129]) with ESMTPA (Nemesis) id
+ 1MXXdn-1iQ6AP0R4R-00YveV; Fri, 08 Nov 2019 22:33:06 +0100
+From: Arnd Bergmann <arnd@arndb.de>
+To: y2038@lists.linaro.org
+Subject: [PATCH 00/16] drivers: y2038 updates
+Date: Fri,  8 Nov 2019 22:32:38 +0100
+Message-Id: <20191108213257.3097633-1-arnd@arndb.de>
+X-Mailer: git-send-email 2.20.0
 MIME-Version: 1.0
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b2798357-1728-4501-478c-08d7647de99b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Nov 2019 19:00:24.8442 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Czto9UJuOD9dwKru99cZq6G2KmuAPdjqOMRHnbreqRp3fPfJsSdg6hTU+oIMwfrTLzhcpZMtYCDZckvywTrSu3do0+wYCH7jhfrYZffOtsE=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR21MB0138
+X-Provags-ID: V03:K1:cC60oL5qW9T6f3VnEX4IUPUnbZtH58Z5jHTCkfEP3lSVCyJMvvf
+ nXa+3lb+MuvX4UyJFUN+jNUJOtYV6vEdBeRluSdOxKcMLTIRW/MA2X5WNg5vjL4h5VMaMqq
+ bNkxydHkOOB1gWSeiigewsSsL+Ope/gjBqLstKOktXFNHvIvAI8OyB16Bh3/KHWq5bI5gbP
+ ttyknhIOC7MVt+zSJY39Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:5jQbtdfzcj4=:RnyJUGIamtYUR32gZjgFxZ
+ A58onXp4NOUdmESgNh0FJcJNwdIigFoifHmFMoCdgsAHwrANnqg84/6GFc4fR66xngOSjxW8E
+ mUXN5xmbPaGcLDMSTN7U3kVyeVl314jkZeiDUaKSkoL29/7Ik3zEhj+4TJkkZ98+rkd5gjawr
+ mPZjV20RoG05jtv+a9sLwcbqduudFwMKWky0LgF+UWAp6KALxGvqRMtKij/C0dGOAtPHtXjn9
+ jLOGdH2wRDxm4MevgucscvmAOSLubnEc3QRm5/QsqxgDDXZTqoDPuOfXLfplyHlKYz5M8aUV1
+ II/40/WLpwrX2M1u//jWLOl8IPkOxLSgFsfCKurYPp10UqKwtYZd85/+vo1M5ZsoL+S+FELAh
+ vzG82YbCoa41t2xGV+QjZb7y+o8E4lM5fE/TsV2LI26hQdjiy+tr98aAJ9JWVTD0WVUL7IjxV
+ SXTfKqqLdGvvfk7fRcDQW8BF2TasouAZdfIvia4cEye1z+U/fUhGYrdd7Zg18EKkqKlWx5rtZ
+ olghhJk1DwQShBj+0K82RNjx+0/Pa/JOxGeOkM6y9oJzMaxAkzaYqrxpvzmy/m7eWh71ibssM
+ 7LfURdClVCaW+nHxggwTtCKnvn9u4b18A5myvq4zva5h/XiwhDLyZkw6kSXHLqChggjYbTRD9
+ GnmRyXnbjHTHj0BaK+Ax3tuhpFHxM7cKWRn8qGVMLBRkSlAsryys+LiR03Aekxh4AxAiZMYxJ
+ XFbh+/ppaYsd17sLuVZd4UWpSaCL7eDqcM+SB/ae7We87iO2k5eoYZuL+CXUxBtgkrcbR9k67
+ /p1vmUEVxqwpuD53Wl+rjSPM7EVswRZtSXse5OM03qXguoKAO6TkOEq8XhhxeoP5HE1cDGE7A
+ gNzRt/ivOC+74lIYg2tA==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -124,49 +71,141 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
- "linux-hyperv@vger.kernel.org" <linux-hyperv@vger.kernel.org>,
- "boqun.feng" <boqun.feng@gmail.com>,
- "catalin.marinas@arm.com" <catalin.marinas@arm.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "marcelo.cerri@canonical.com" <marcelo.cerri@canonical.com>,
- "olaf@aepfle.de" <olaf@aepfle.de>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "apw@canonical.com" <apw@canonical.com>,
- "devel@linuxdriverproject.org" <devel@linuxdriverproject.org>,
- vkuznets <vkuznets@redhat.com>, "will@kernel.org" <will@kernel.org>,
- Sunil Muthuswamy <sunilmut@microsoft.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: airlied@linux.ie, dri-devel@lists.freedesktop.org, jcmvbkbc@gmail.com,
+ edumazet@google.com, netdev@vger.kernel.org,
+ linux1394-devel@lists.sourceforge.net, devel@driverdev.osuosl.org,
+ richard@nod.at, kadlec@netfilter.org, cluster-devel@redhat.com,
+ ccaulfie@redhat.com, coreteam@netfilter.org, linux+etnaviv@armlinux.org.uk,
+ pablo@netfilter.org, Arnd Bergmann <arnd@arndb.de>,
+ linux-arm-msm@vger.kernel.org, jdike@addtoit.com, linux-um@lists.infradead.org,
+ etnaviv@lists.freedesktop.org, christian.gmeiner@gmail.com,
+ teigland@redhat.com, viro@zeniv.linux.org.uk, tglx@linutronix.de,
+ sean@poorly.run, hirofumi@mail.parknet.co.jp, willemb@google.com,
+ valdis.kletnieks@vt.edu, rfontana@redhat.com, gregkh@linuxfoundation.org,
+ fw@strlen.de, linux-kernel@vger.kernel.org, robdclark@gmail.com,
+ stefanr@s5r6.in-berlin.de, netfilter-devel@vger.kernel.org, daniel@ffwll.ch,
+ jack@suse.com, linux-fsdevel@vger.kernel.org, freedreno@lists.freedesktop.org,
+ davem@davemloft.net, l.stach@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Marc Zyngier <maz@kernel.org>  Sent: Thursday, November 7, 2019 6:20 AM
-> > +/*
-> > + * Functions for allocating and freeing memory with size and
-> > + * alignment HV_HYP_PAGE_SIZE. These functions are needed because
-> > + * the guest page size may not be the same as the Hyper-V page
-> > + * size. And while kalloc() could allocate the memory, it does not
-> > + * guarantee the required alignment. So a separate small memory
-> > + * allocator is needed.  The free function is rarely used, so it
-> > + * does not try to combine freed pages into larger chunks.
-> 
-> Is this still needed now that kmalloc has alignment guarantees
-> (see 59bb47985c1d)?
-> 
+These are updates to devidce drivers and file systems that for some
+reason or another were not included in the kernel in the previous
+y2038 series.
 
-The new kmalloc alignment guarantee is good news, and at least
-for now would allow these implementations to collapse to just
-kmalloc/kzalloc/kfree calls.  My inclination is to keep the function calls
-as wrappers, since ISA neutral Hyper-V drivers are starting to use
-them, and future work on memory encryption in virtual environments
-may require special handling of pages like these that are shared
-between the host and guest.  But they probably can be moved into
-the ISA neutral Hyper-V drivers instead of per arch.
+I've gone through all users of time_t again to make sure the
+kernel is in a long-term maintainable state.
 
-Michael
+Posting these as a series for better organization, but each change
+here is applicable standalone.
+
+Please merge, review, ack/nack etc as you see fit. My plan is to
+include any patches that don't get a reply this time around in
+a future pull request, probably for linux-5.6.
+
+As mentioned before, the full series of 90 patches is available at
+https://git.kernel.org/pub/scm/linux/kernel/git/arnd/playground.git/log/?h=y2038-endgame
+
+    Arnd
+
+Arnd Bergmann (16):
+  staging: exfat: use prandom_u32() for i_generation
+  fat: use prandom_u32() for i_generation
+  net: sock: use __kernel_old_timespec instead of timespec
+  dlm: use SO_SNDTIMEO_NEW instead of SO_SNDTIMEO_OLD
+  xtensa: ISS: avoid struct timeval
+  um: ubd: use 64-bit time_t where possible
+  acct: stop using get_seconds()
+  tsacct: add 64-bit btime field
+  netfilter: nft_meta: use 64-bit time arithmetic
+  packet: clarify timestamp overflow
+  quota: avoid time_t in v1_disk_dqblk definition
+  hostfs: pass 64-bit timestamps to/from user space
+  hfs/hfsplus: use 64-bit inode timestamps
+  drm/msm: avoid using 'timespec'
+  drm/etnaviv: use ktime_t for timeouts
+  firewire: ohci: stop using get_seconds() for BUS_TIME
+
+ arch/um/drivers/cow.h                         |  2 +-
+ arch/um/drivers/cow_user.c                    |  7 +++--
+ arch/um/drivers/ubd_kern.c                    | 10 +++----
+ arch/um/include/shared/os.h                   |  2 +-
+ arch/um/os-Linux/file.c                       |  2 +-
+ .../platforms/iss/include/platform/simcall.h  |  4 +--
+ drivers/firewire/ohci.c                       |  2 +-
+ drivers/gpu/drm/etnaviv/etnaviv_drv.c         | 19 ++++++-------
+ drivers/gpu/drm/etnaviv/etnaviv_drv.h         | 21 ++++++--------
+ drivers/gpu/drm/etnaviv/etnaviv_gem.c         |  5 ++--
+ drivers/gpu/drm/etnaviv/etnaviv_gem.h         |  2 +-
+ drivers/gpu/drm/etnaviv/etnaviv_gpu.c         |  4 +--
+ drivers/gpu/drm/etnaviv/etnaviv_gpu.h         |  4 +--
+ drivers/gpu/drm/msm/msm_drv.h                 |  3 +-
+ drivers/staging/exfat/exfat_super.c           |  4 +--
+ fs/dlm/lowcomms.c                             |  6 ++--
+ fs/fat/inode.c                                |  3 +-
+ fs/hfs/hfs_fs.h                               | 26 +++++++++++++----
+ fs/hfs/inode.c                                |  4 +--
+ fs/hfsplus/hfsplus_fs.h                       | 26 +++++++++++++----
+ fs/hfsplus/inode.c                            | 12 ++++----
+ fs/hostfs/hostfs.h                            | 22 +++++++++------
+ fs/hostfs/hostfs_kern.c                       | 15 ++++++----
+ fs/quota/quotaio_v1.h                         |  6 ++--
+ include/linux/skbuff.h                        |  7 +++--
+ include/uapi/linux/acct.h                     |  2 ++
+ include/uapi/linux/taskstats.h                |  6 +++-
+ kernel/acct.c                                 |  4 ++-
+ kernel/tsacct.c                               |  9 ++++--
+ net/compat.c                                  |  2 +-
+ net/ipv4/tcp.c                                | 28 +++++++++++--------
+ net/netfilter/nft_meta.c                      | 10 +++----
+ net/packet/af_packet.c                        | 27 +++++++++++-------
+ net/socket.c                                  |  2 +-
+ 34 files changed, 184 insertions(+), 124 deletions(-)
+
+-- 
+2.20.0
+
+Cc: jdike@addtoit.com
+Cc: richard@nod.at
+Cc: jcmvbkbc@gmail.com
+Cc: stefanr@s5r6.in-berlin.de
+Cc: l.stach@pengutronix.de
+Cc: linux+etnaviv@armlinux.org.uk
+Cc: christian.gmeiner@gmail.com
+Cc: airlied@linux.ie
+Cc: daniel@ffwll.ch
+Cc: robdclark@gmail.com
+Cc: sean@poorly.run
+Cc: valdis.kletnieks@vt.edu
+Cc: gregkh@linuxfoundation.org
+Cc: ccaulfie@redhat.com
+Cc: teigland@redhat.com
+Cc: hirofumi@mail.parknet.co.jp
+Cc: jack@suse.com
+Cc: davem@davemloft.net
+Cc: edumazet@google.com
+Cc: pablo@netfilter.org
+Cc: kadlec@netfilter.org
+Cc: fw@strlen.de
+Cc: willemb@google.com
+Cc: viro@zeniv.linux.org.uk
+Cc: rfontana@redhat.com
+Cc: tglx@linutronix.de
+Cc: linux-um@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+Cc: linux1394-devel@lists.sourceforge.net
+Cc: etnaviv@lists.freedesktop.org
+Cc: dri-devel@lists.freedesktop.org>
+Cc: linux-arm-msm@vger.kernel.org>
+Cc: freedreno@lists.freedesktop.org>
+Cc: devel@driverdev.osuosl.org>
+Cc: cluster-devel@redhat.com>
+Cc: linux-fsdevel@vger.kernel.org>
+Cc: netdev@vger.kernel.org>
+Cc: netfilter-devel@vger.kernel.org>
+Cc: coreteam@netfilter.org>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
