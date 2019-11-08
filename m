@@ -2,87 +2,116 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B31CBF549F
-	for <lists+driverdev-devel@lfdr.de>; Fri,  8 Nov 2019 20:42:54 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 38042F582B
+	for <lists+driverdev-devel@lfdr.de>; Fri,  8 Nov 2019 21:34:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B64DD87E45;
-	Fri,  8 Nov 2019 19:42:52 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CC04687FD8;
+	Fri,  8 Nov 2019 20:34:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id i4J1ot3KPSDt; Fri,  8 Nov 2019 19:42:52 +0000 (UTC)
+	with ESMTP id KyRkdL72He04; Fri,  8 Nov 2019 20:34:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DA94587BD4;
-	Fri,  8 Nov 2019 19:42:51 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0ED5787EA1;
+	Fri,  8 Nov 2019 20:34:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B34DB1BF3A7
- for <devel@linuxdriverproject.org>; Fri,  8 Nov 2019 19:42:49 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 489CD1BF350
+ for <devel@linuxdriverproject.org>; Fri,  8 Nov 2019 20:34:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id AF3788631C
- for <devel@linuxdriverproject.org>; Fri,  8 Nov 2019 19:42:49 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4537686381
+ for <devel@linuxdriverproject.org>; Fri,  8 Nov 2019 20:34:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1hOAFPzm2o2r for <devel@linuxdriverproject.org>;
- Fri,  8 Nov 2019 19:42:48 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 57FB086311
- for <devel@driverdev.osuosl.org>; Fri,  8 Nov 2019 19:42:48 +0000 (UTC)
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 7679E4E83C
- for <devel@driverdev.osuosl.org>; Fri,  8 Nov 2019 19:42:47 +0000 (UTC)
-Received: by mail-wr1-f69.google.com with SMTP id w9so3008912wrn.9
- for <devel@driverdev.osuosl.org>; Fri, 08 Nov 2019 11:42:47 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=hC59yqiltYn4vvyKnCEG+/GKT1N5JkWniSQcOQlyHmc=;
- b=Cjh8Lzzf3Hob422lgdY8g3x/zezsAssoQKi/vd1G5v8P06sJfisQRHdhGCbPlu3eGJ
- RrapbOo9cwQ4RkbXZx3ACoEFsDzJ26OTPHT9Y8190srLtCZRm3X1+HA17fKTNST8t1Sc
- BxdCqr0J5ZCSATfnba1ykcAUiMv0ZDtdembaVHh9aDgQ6p7wNM05rEW9FxzVauyUnUxL
- LEVw6z6W3ht61LHz/kfzInPD1QmVEiCP2uTOXrtkznc319VJHhx8GJnOE1ODsZRO2n1T
- IUyTzRKEM8bYTTjfze9oOLCaDJMOtHm6NDhArrvLQqqdmjClrUiol04qaZyyp+iJaXnB
- ReEw==
-X-Gm-Message-State: APjAAAUrdyssR3XwR3yzmhiL3nGSPtYf94deEAiJzHg767GuGibQUjBL
- ocslfhiZetWgKmck9RXOFdincSFtiGI3GTlt9bl9f00NYRwR2cj/gLMFuWOT27COzLrSwqvweqs
- JW2uboVBnuoxDQO1Im9S7lw==
-X-Received: by 2002:a5d:4ecd:: with SMTP id s13mr10490061wrv.216.1573242166032; 
- Fri, 08 Nov 2019 11:42:46 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzZrG7rZe8SIDZ8LBTBdzCrruPtLQvP7N7cD4A29kVchgyhUWiqVUhF8K4meBoi8TlF+y75AA==
-X-Received: by 2002:a5d:4ecd:: with SMTP id s13mr10490028wrv.216.1573242165669; 
- Fri, 08 Nov 2019 11:42:45 -0800 (PST)
-Received: from ?IPv6:2001:b07:6468:f312:e8cd:9f0f:a5dc:7ad5?
- ([2001:b07:6468:f312:e8cd:9f0f:a5dc:7ad5])
- by smtp.gmail.com with ESMTPSA id 16sm10182438wmf.0.2019.11.08.11.42.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 08 Nov 2019 11:42:45 -0800 (PST)
-Subject: Re: kernel BUG at arch/x86/kvm/mmu.c:LINE! (2)
-To: syzbot <syzbot+824609cfabee9c6e153c@syzkaller.appspotmail.com>,
- abbotti@mev.co.uk, bp@alien8.de, devel@driverdev.osuosl.org,
- gregkh@linuxfoundation.org, hpa@zytor.com, hsweeten@visionengravers.com,
- jmattson@google.com, joro@8bytes.org, kvm@vger.kernel.org,
- linux-kernel@vger.kernel.org, mingo@redhat.com, olsonse@umich.edu,
- rkrcmar@redhat.com, sean.j.christopherson@intel.com,
- syzkaller-bugs@googlegroups.com, tglx@linutronix.de, vkuznets@redhat.com,
- wanpengli@tencent.com, x86@kernel.org
-References: <00000000000018f5440596da964b@google.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <dd6b9b2c-a6d7-43a3-2e71-2cc5e2066673@redhat.com>
-Date: Fri, 8 Nov 2019 20:42:43 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
-In-Reply-To: <00000000000018f5440596da964b@google.com>
+ with ESMTP id UKw6ZxITiZGg for <devel@linuxdriverproject.org>;
+ Fri,  8 Nov 2019 20:34:03 +0000 (UTC)
+X-Greylist: delayed 01:19:09 by SQLgrey-1.7.6
+Received: from NAM05-CO1-obe.outbound.protection.outlook.com
+ (mail-eopbgr720109.outbound.protection.outlook.com [40.107.72.109])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2949C86371
+ for <devel@linuxdriverproject.org>; Fri,  8 Nov 2019 20:34:03 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=H4JTphZsB60UhzJe+UHUig8WdU0yh9d08zBjzgI8tWw0f83DhSetnFcugBJyFtdOdcstbf+Q1z89PtCBKgH5hjQ+H96vzV0dITxzS6NWIaCos+ANJu7oHc+nDJsjPTQU9NFSoKtkcmfRsV2ulLmeVcuavwhx/i4P0/UI8Gv9wKdz+dyguVC/2VrusBBkuM+UPoTlMz853ewiAtFgBod2dHPUYQfqS2wOFrjiwAfGzUHEq+su07AOOlkZWeZttlQj8BF/fDNWmYsP7WMIW4pJ+Z0hZFfo7WOWsCZoe8HQldGnACJ5AdGj340B4OQyJHsxu+KtKuda6++7MVUl/9R+bQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=VO2S6M1qY9fe2w8cZycs0IX2ND6j/pja58mAe0o9mNs=;
+ b=ldK9AxuOxR30P2r+i4MFijZTah7HPWxbC9rMkD+N+6uFxQtZGdyL8zAoZ3INlIxIk6u1L7ZRxD0844jUM97/bTsiUjIA0PSWvY5f+s4P6cmyQe6c5YvjpMpHW3JclWndTCLM3tahkc0UPhjtciqyuNd97e0xWK0EvgTYjySK4tlVHhP8/h4g3E5GIlJUPmB9SLeqDW2TmRrNj5v89DabcRbTSehqaD99IRsE2NaMRBW3p6j2aSNP+V5Pn8/PsqH9PIHpgkFEQ1Ly8e+hxRspfUCl+iYUt4rF6OOLYnkw+pnkto79BmclnaFol1sdG6xydwM9/yqLzkUmuOjPRZxKPA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=microsoft.com; dmarc=pass action=none
+ header.from=microsoft.com; dkim=pass header.d=microsoft.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=VO2S6M1qY9fe2w8cZycs0IX2ND6j/pja58mAe0o9mNs=;
+ b=f3Vb2th8iqAyraFJHZ5rg1Lj6MMEf2YKRedo98CqjvqOgNBPZf+s2Jnp9Aec8ARkAdnwxpzI+W1pKijJu/jSRvimqHQEEM7dvHsctS7Z9Rz8h9N6PTLy3yMDsXUWUIYI8EbeKK7v21hEGNIJtIe6W9PFBHxYzgGvOk98SjuG5T8=
+Received: from DM5PR21MB0137.namprd21.prod.outlook.com (10.173.173.12) by
+ DM5PR21MB0138.namprd21.prod.outlook.com (10.173.173.13) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2451.15; Fri, 8 Nov 2019 19:00:24 +0000
+Received: from DM5PR21MB0137.namprd21.prod.outlook.com
+ ([fe80::9cc3:f167:bb63:799]) by DM5PR21MB0137.namprd21.prod.outlook.com
+ ([fe80::9cc3:f167:bb63:799%5]) with mapi id 15.20.2451.013; Fri, 8 Nov 2019
+ 19:00:24 +0000
+From: Michael Kelley <mikelley@microsoft.com>
+To: Marc Zyngier <maz@kernel.org>
+Subject: RE: [PATCH v5 3/8] arm64: hyperv: Add memory alloc/free functions
+ for Hyper-V size pages
+Thread-Topic: [PATCH v5 3/8] arm64: hyperv: Add memory alloc/free functions
+ for Hyper-V size pages
+Thread-Index: AQHVlXZk8k578k16NE+4oE6DGxisXqeBnxIw
+Date: Fri, 8 Nov 2019 19:00:24 +0000
+Message-ID: <DM5PR21MB0137C1D8C235CE8D6B26E3E4D77B0@DM5PR21MB0137.namprd21.prod.outlook.com>
+References: <1570129355-16005-1-git-send-email-mikelley@microsoft.com>
+ <1570129355-16005-4-git-send-email-mikelley@microsoft.com>
+ <43d53ebd2637bd9106137103028a4f0e@www.loen.fr>
+In-Reply-To: <43d53ebd2637bd9106137103028a4f0e@www.loen.fr>
+Accept-Language: en-US
 Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Enabled=True;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SiteId=72f988bf-86f1-41af-91ab-2d7cd011db47;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Owner=mikelley@ntdev.microsoft.com;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SetDate=2019-11-08T19:00:22.7576236Z;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Name=General;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Application=Microsoft Azure
+ Information Protection;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_ActionId=1a82cc3b-5f0f-413f-80da-a4b461a15203;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Extended_MSFT_Method=Automatic
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=mikelley@microsoft.com; 
+x-originating-ip: [24.22.167.197]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: b2798357-1728-4501-478c-08d7647de99b
+x-ms-traffictypediagnostic: DM5PR21MB0138:|DM5PR21MB0138:|DM5PR21MB0138:
+x-ms-exchange-transport-forked: True
+x-ld-processed: 72f988bf-86f1-41af-91ab-2d7cd011db47,ExtAddr
+x-microsoft-antispam-prvs: <DM5PR21MB01382E31E38EF625F764AB1AD77B0@DM5PR21MB0138.namprd21.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:7691;
+x-forefront-prvs: 0215D7173F
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(346002)(396003)(39860400002)(136003)(376002)(366004)(189003)(199004)(22452003)(54906003)(8936002)(316002)(6436002)(81156014)(4326008)(81166006)(55016002)(8676002)(446003)(7696005)(186003)(11346002)(25786009)(10290500003)(478600001)(33656002)(6506007)(74316002)(9686003)(486006)(6246003)(476003)(26005)(99286004)(86362001)(76176011)(14454004)(102836004)(3846002)(6116002)(6916009)(66066001)(2906002)(7416002)(10090500001)(305945005)(52536014)(7736002)(66476007)(66946007)(66556008)(64756008)(66446008)(5660300002)(229853002)(256004)(71200400001)(71190400001)(76116006)(8990500004);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:DM5PR21MB0138;
+ H:DM5PR21MB0137.namprd21.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+received-spf: None (protection.outlook.com: microsoft.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: Wi7mKc93AP6t9t/asy7vx44CfuCem0Nh1XJDYES3n/DtYVDFUza3BJbKkXmvQJ2q4oXzhfIBmP6yqKH+wrYUUu0Y9hpunYYiD/l5AwsUqudxNc9T68aXNuJKNCVY4D4ec8EMDJJtwwzWyVX1mvAJp9aWTZFILw6zHUbXZWPR/2cSHN5HaIbmdqauBpe5Hu/1mENVg2MGNOF6Pk1ipTfHVgLxwrqUlh23Ekl24a8iXLIekyaIDaaCFeXGdL7UIkzP/oh8vRkmCps9CbLj/3VTWIsAdRMt7mfqloqrKOTpKRk6l2RcVtHc+zhRj0VjaQhfEwzpz22YLfApyLgN3BYI7wUrREqu9PCZnCa9XnsEILakR/zE1CI4g6+L8xCUh8fy9JOgGmlj3uqq5sLQbwluALv/OieHi3SgkcwKFuggb8nhyNn2rCUhfbdUhCHPWN61
+MIME-Version: 1.0
+X-OriginatorOrg: microsoft.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b2798357-1728-4501-478c-08d7647de99b
+X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Nov 2019 19:00:24.8442 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Czto9UJuOD9dwKru99cZq6G2KmuAPdjqOMRHnbreqRp3fPfJsSdg6hTU+oIMwfrTLzhcpZMtYCDZckvywTrSu3do0+wYCH7jhfrYZffOtsE=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR21MB0138
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,116 +124,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
+ "linux-hyperv@vger.kernel.org" <linux-hyperv@vger.kernel.org>,
+ "boqun.feng" <boqun.feng@gmail.com>,
+ "catalin.marinas@arm.com" <catalin.marinas@arm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "marcelo.cerri@canonical.com" <marcelo.cerri@canonical.com>,
+ "olaf@aepfle.de" <olaf@aepfle.de>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "apw@canonical.com" <apw@canonical.com>,
+ "devel@linuxdriverproject.org" <devel@linuxdriverproject.org>,
+ vkuznets <vkuznets@redhat.com>, "will@kernel.org" <will@kernel.org>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-I3N5eiBkdXA6ICBLQVNBTjogc2xhYi1vdXQtb2YtYm91bmRzIFJlYWQgaW4gaGFuZGxlX3ZtcHRy
-bGQKCk9uIDA4LzExLzE5IDIwOjE0LCBzeXpib3Qgd3JvdGU6Cj4gSGVsbG8sCj4gCj4gc3l6Ym90
-IGZvdW5kIHRoZSBmb2xsb3dpbmcgY3Jhc2ggb246Cj4gCj4gSEVBRCBjb21taXQ6wqDCoMKgIDg0
-NzEyMGY4IE1lcmdlIGJyYW5jaCAnZm9yLWxpbnVzJyBvZgo+IGdpdDovL2dpdC5rZXJuZWwub3Jn
-Ly4uCj4gZ2l0IHRyZWU6wqDCoMKgwqDCoMKgIHVwc3RyZWFtCj4gY29uc29sZSBvdXRwdXQ6IGh0
-dHBzOi8vc3l6a2FsbGVyLmFwcHNwb3QuY29tL3gvbG9nLnR4dD94PTEyZDYwMTY0ZTAwMDAwCj4g
-a2VybmVsIGNvbmZpZzrCoCBodHRwczovL3N5emthbGxlci5hcHBzcG90LmNvbS94Ly5jb25maWc/
-eD04YzVlMmVjYTNmMzFmOWJmCj4gZGFzaGJvYXJkIGxpbms6Cj4gaHR0cHM6Ly9zeXprYWxsZXIu
-YXBwc3BvdC5jb20vYnVnP2V4dGlkPTgyNDYwOWNmYWJlZTljNmUxNTNjCj4gY29tcGlsZXI6wqDC
-oMKgwqDCoMKgIGdjYyAoR0NDKSA5LjAuMCAyMDE4MTIzMSAoZXhwZXJpbWVudGFsKQo+IHN5eiBy
-ZXBybzrCoMKgwqDCoMKgIGh0dHBzOi8vc3l6a2FsbGVyLmFwcHNwb3QuY29tL3gvcmVwcm8uc3l6
-P3g9MTZlMmExMmNlMDAwMDAKPiBDIHJlcHJvZHVjZXI6wqDCoCBodHRwczovL3N5emthbGxlci5h
-cHBzcG90LmNvbS94L3JlcHJvLmM/eD0xMzMxNDk5NGUwMDAwMAo+IAo+IFRoZSBidWcgd2FzIGJp
-c2VjdGVkIHRvOgo+IAo+IGNvbW1pdCAxZmZlOGJkYzA5ZjhiZmNhYWQ3NmQ3MWFlNjhiNjIzYzdl
-MDNmMjBmCj4gQXV0aG9yOiBTcGVuY2VyIEUuIE9sc29uIDxvbHNvbnNlQHVtaWNoLmVkdT4KPiBE
-YXRlOsKgwqAgTW9uIE9jdCAxMCAxNDoxNDoxOSAyMDE2ICswMDAwCj4gCj4gwqDCoMKgIHN0YWdp
-bmc6IGNvbWVkaTogbmlfbWlvX2NvbW1vbjogc3BsaXQgb3V0IGFvIGFybWluZyBmcm9tIG5pX2Fv
-X2ludHRyaWcKPiAKPiBiaXNlY3Rpb24gbG9nOsKgIGh0dHBzOi8vc3l6a2FsbGVyLmFwcHNwb3Qu
-Y29tL3gvYmlzZWN0LnR4dD94PTEyMjk3N2ZhZTAwMDAwCj4gY29uc29sZSBvdXRwdXQ6IGh0dHBz
-Oi8vc3l6a2FsbGVyLmFwcHNwb3QuY29tL3gvbG9nLnR4dD94PTE2Mjk3N2ZhZTAwMDAwCj4gCj4g
-SU1QT1JUQU5UOiBpZiB5b3UgZml4IHRoZSBidWcsIHBsZWFzZSBhZGQgdGhlIGZvbGxvd2luZyB0
-YWcgdG8gdGhlIGNvbW1pdDoKPiBSZXBvcnRlZC1ieTogc3l6Ym90KzgyNDYwOWNmYWJlZTljNmUx
-NTNjQHN5emthbGxlci5hcHBzcG90bWFpbC5jb20KPiBGaXhlczogMWZmZThiZGMwOWY4ICgic3Rh
-Z2luZzogY29tZWRpOiBuaV9taW9fY29tbW9uOiBzcGxpdCBvdXQgYW8KPiBhcm1pbmcgZnJvbSBu
-aV9hb19pbnR0cmlnIikKPiAKPiBMMVRGIENQVSBidWcgcHJlc2VudCBhbmQgU01UIG9uLCBkYXRh
-IGxlYWsgcG9zc2libGUuIFNlZSBDVkUtMjAxOC0zNjQ2Cj4gYW5kIGh0dHBzOi8vd3d3Lmtlcm5l
-bC5vcmcvZG9jL2h0bWwvbGF0ZXN0L2FkbWluLWd1aWRlL2h3LXZ1bG4vbDF0Zi5odG1sCj4gZm9y
-IGRldGFpbHMuCj4gLS0tLS0tLS0tLS0tWyBjdXQgaGVyZSBdLS0tLS0tLS0tLS0tCj4ga2VybmVs
-IEJVRyBhdCBhcmNoL3g4Ni9rdm0vbW11LmM6MzMyNCEKPiBpbnZhbGlkIG9wY29kZTogMDAwMCBb
-IzFdIFBSRUVNUFQgU01QIEtBU0FOCj4gQ1BVOiAwIFBJRDogODY4OCBDb21tOiBzeXotZXhlY3V0
-b3I5MDYgTm90IHRhaW50ZWQgNS40LjAtcmM2KyAjMAo+IEhhcmR3YXJlIG5hbWU6IEdvb2dsZSBH
-b29nbGUgQ29tcHV0ZSBFbmdpbmUvR29vZ2xlIENvbXB1dGUgRW5naW5lLCBCSU9TCj4gR29vZ2xl
-IDAxLzAxLzIwMTEKPiBSSVA6IDAwMTA6dHJhbnNwYXJlbnRfaHVnZXBhZ2VfYWRqdXN0KzB4NDkw
-LzB4NTMwIGFyY2gveDg2L2t2bS9tbXUuYzozMzI0Cj4gQ29kZTogNjMgMDAgNDggOGIgNDUgYjgg
-NDggODMgZTggMDEgZTkgMTkgZmQgZmYgZmYgZTggMzYgM2MgNjMgMDAgNDggOGIKPiA0NSBiOCA0
-OCA4MyBlOCAwMSA0OCA4OSA0NSBjOCBlOSBhMSBmZCBmZiBmZiBlOCAyMCAzYyA2MyAwMCA8MGY+
-IDBiIDQ4Cj4gODkgZGYgZTggNjYgOWUgOWUgMDAgZTkgOWYgZmIgZmYgZmYgNGMgODkgZmYgZTgg
-NTkgOWUgOWUKPiBSU1A6IDAwMTg6ZmZmZjg4ODA5NzUzZjY5MCBFRkxBR1M6IDAwMDEwMjkzCj4g
-UkFYOiBmZmZmODg4MDk1NDllNmMwIFJCWDogZmZmZjg4ODA5NzUzZjc3OCBSQ1g6IGZmZmZmZmZm
-ODEwZmU3ODcKPiBSRFg6IDAwMDAwMDAwMDAwMDAwMDAgUlNJOiBmZmZmZmZmZjgxMGZlOGMwIFJE
-STogMDAwMDAwMDAwMDAwMDAwNwo+IFJCUDogZmZmZjg4ODA5NzUzZjZkOCBSMDg6IGZmZmY4ODgw
-OTU0OWU2YzAgUjA5OiBmZmZmZWQxMDEzMWVkNjgyCj4gUjEwOiBmZmZmZWQxMDEzMWVkNjgxIFIx
-MTogZmZmZjg4ODA5OGY2YjQwYiBSMTI6IGZmZmY4ODgwOTc1M2Y3NjgKPiBSMTM6IDAwMDAwMDAw
-MDAwMDAwODMgUjE0OiAwMDAwMDAwMDAwMDhmZTgxIFIxNTogMDAwMDAwMDAwMDAwMDAwMAo+IEZT
-OsKgIDAwMDAwMDAwMDE1OGU4ODAoMDAwMCkgR1M6ZmZmZjg4ODBhZTgwMDAwMCgwMDAwKQo+IGtu
-bEdTOjAwMDAwMDAwMDAwMDAwMDAKPiBDUzrCoCAwMDEwIERTOiAwMDAwIEVTOiAwMDAwIENSMDog
-MDAwMDAwMDA4MDA1MDAzMwo+IENSMjogMDAwMDAwMDAwMDAwMDAwMCBDUjM6IDAwMDAwMDAwOWYy
-YTQwMDAgQ1I0OiAwMDAwMDAwMDAwMTQyNmYwCj4gRFIwOiAwMDAwMDAwMDAwMDAwMDAwIERSMTog
-MDAwMDAwMDAwMDAwMDAwMCBEUjI6IDAwMDAwMDAwMDAwMDAwMDAKPiBEUjM6IDAwMDAwMDAwMDAw
-MDAwMDAgRFI2OiAwMDAwMDAwMGZmZmUwZmYwIERSNzogMDAwMDAwMDAwMDAwMDQwMAo+IENhbGwg
-VHJhY2U6Cj4gwqB0ZHBfcGFnZV9mYXVsdCsweDU2ZS8weDY1MCBhcmNoL3g4Ni9rdm0vbW11LmM6
-NDIxNgo+IMKga3ZtX21tdV9wYWdlX2ZhdWx0KzB4MWRkLzB4MTgwMCBhcmNoL3g4Ni9rdm0vbW11
-LmM6NTQzOQo+IMKgaGFuZGxlX2VwdF92aW9sYXRpb24rMHgyNTkvMHg1NjAgYXJjaC94ODYva3Zt
-L3ZteC92bXguYzo1MTg1Cj4gwqB2bXhfaGFuZGxlX2V4aXQrMHgyOWYvMHgxNzMwIGFyY2gveDg2
-L2t2bS92bXgvdm14LmM6NTkyOQo+IMKgdmNwdV9lbnRlcl9ndWVzdCBhcmNoL3g4Ni9rdm0veDg2
-LmM6ODIyNyBbaW5saW5lXQo+IMKgdmNwdV9ydW4gYXJjaC94ODYva3ZtL3g4Ni5jOjgyOTEgW2lu
-bGluZV0KPiDCoGt2bV9hcmNoX3ZjcHVfaW9jdGxfcnVuKzB4MWNiOC8weDcwZDAgYXJjaC94ODYv
-a3ZtL3g4Ni5jOjg0OTgKPiDCoGt2bV92Y3B1X2lvY3RsKzB4NGRjLzB4ZmMwIGFyY2gveDg2L2t2
-bS8uLi8uLi8uLi92aXJ0L2t2bS9rdm1fbWFpbi5jOjI3NzIKPiDCoHZmc19pb2N0bCBmcy9pb2N0
-bC5jOjQ2IFtpbmxpbmVdCj4gwqBmaWxlX2lvY3RsIGZzL2lvY3RsLmM6NTA5IFtpbmxpbmVdCj4g
-wqBkb192ZnNfaW9jdGwrMHhkYjYvMHgxM2UwIGZzL2lvY3RsLmM6Njk2Cj4gwqBrc3lzX2lvY3Rs
-KzB4YWIvMHhkMCBmcy9pb2N0bC5jOjcxMwo+IMKgX19kb19zeXNfaW9jdGwgZnMvaW9jdGwuYzo3
-MjAgW2lubGluZV0KPiDCoF9fc2Vfc3lzX2lvY3RsIGZzL2lvY3RsLmM6NzE4IFtpbmxpbmVdCj4g
-wqBfX3g2NF9zeXNfaW9jdGwrMHg3My8weGIwIGZzL2lvY3RsLmM6NzE4Cj4gwqBkb19zeXNjYWxs
-XzY0KzB4ZmEvMHg3NjAgYXJjaC94ODYvZW50cnkvY29tbW9uLmM6MjkwCj4gwqBlbnRyeV9TWVND
-QUxMXzY0X2FmdGVyX2h3ZnJhbWUrMHg0OS8weGJlCj4gUklQOiAwMDMzOjB4NDQzZjQ5Cj4gQ29k
-ZTogMTggODkgZDAgYzMgNjYgMmUgMGYgMWYgODQgMDAgMDAgMDAgMDAgMDAgMGYgMWYgMDAgNDgg
-ODkgZjggNDggODkKPiBmNyA0OCA4OSBkNiA0OCA4OSBjYSA0ZCA4OSBjMiA0ZCA4OSBjOCA0YyA4
-YiA0YyAyNCAwOCAwZiAwNSA8NDg+IDNkIDAxCj4gZjAgZmYgZmYgMGYgODMgN2IgZDggZmIgZmYg
-YzMgNjYgMmUgMGYgMWYgODQgMDAgMDAgMDAgMDAKPiBSU1A6IDAwMmI6MDAwMDdmZmQ5OTFkNjdk
-OCBFRkxBR1M6IDAwMDAwMjQ2IE9SSUdfUkFYOiAwMDAwMDAwMDAwMDAwMDEwCj4gUkFYOiBmZmZm
-ZmZmZmZmZmZmZmRhIFJCWDogMDAwMDAwMDAwMDQwMDJlMCBSQ1g6IDAwMDAwMDAwMDA0NDNmNDkK
-PiBSRFg6IDAwMDAwMDAwMDAwMDAwMDAgUlNJOiAwMDAwMDAwMDAwMDBhZTgwIFJESTogMDAwMDAw
-MDAwMDAwMDAwNgo+IFJCUDogMDAwMDAwMDAwMDZjZTAxOCBSMDg6IDAwMDAwMDAwMDA0MDAyZTAg
-UjA5OiAwMDAwMDAwMDAwNDAwMmUwCj4gUjEwOiAwMDAwMDAwMDAwNDAwMmUwIFIxMTogMDAwMDAw
-MDAwMDAwMDI0NiBSMTI6IDAwMDAwMDAwMDA0MDFjNTAKPiBSMTM6IDAwMDAwMDAwMDA0MDFjZTAg
-UjE0OiAwMDAwMDAwMDAwMDAwMDAwIFIxNTogMDAwMDAwMDAwMDAwMDAwMAo+IE1vZHVsZXMgbGlu
-a2VkIGluOgo+IC0tLVsgZW5kIHRyYWNlIDkxMTA5NWJhZTU2ODA0YmMgXS0tLQo+IFJJUDogMDAx
-MDp0cmFuc3BhcmVudF9odWdlcGFnZV9hZGp1c3QrMHg0OTAvMHg1MzAgYXJjaC94ODYva3ZtL21t
-dS5jOjMzMjQKPiBDb2RlOiA2MyAwMCA0OCA4YiA0NSBiOCA0OCA4MyBlOCAwMSBlOSAxOSBmZCBm
-ZiBmZiBlOCAzNiAzYyA2MyAwMCA0OCA4Ygo+IDQ1IGI4IDQ4IDgzIGU4IDAxIDQ4IDg5IDQ1IGM4
-IGU5IGExIGZkIGZmIGZmIGU4IDIwIDNjIDYzIDAwIDwwZj4gMGIgNDgKPiA4OSBkZiBlOCA2NiA5
-ZSA5ZSAwMCBlOSA5ZiBmYiBmZiBmZiA0YyA4OSBmZiBlOCA1OSA5ZSA5ZQo+IFJTUDogMDAxODpm
-ZmZmODg4MDk3NTNmNjkwIEVGTEFHUzogMDAwMTAyOTMKPiBSQVg6IGZmZmY4ODgwOTU0OWU2YzAg
-UkJYOiBmZmZmODg4MDk3NTNmNzc4IFJDWDogZmZmZmZmZmY4MTBmZTc4Nwo+IFJEWDogMDAwMDAw
-MDAwMDAwMDAwMCBSU0k6IGZmZmZmZmZmODEwZmU4YzAgUkRJOiAwMDAwMDAwMDAwMDAwMDA3Cj4g
-UkJQOiBmZmZmODg4MDk3NTNmNmQ4IFIwODogZmZmZjg4ODA5NTQ5ZTZjMCBSMDk6IGZmZmZlZDEw
-MTMxZWQ2ODIKPiBSMTA6IGZmZmZlZDEwMTMxZWQ2ODEgUjExOiBmZmZmODg4MDk4ZjZiNDBiIFIx
-MjogZmZmZjg4ODA5NzUzZjc2OAo+IFIxMzogMDAwMDAwMDAwMDAwMDA4MyBSMTQ6IDAwMDAwMDAw
-MDAwOGZlODEgUjE1OiAwMDAwMDAwMDAwMDAwMDAwCj4gRlM6wqAgMDAwMDAwMDAwMTU4ZTg4MCgw
-MDAwKSBHUzpmZmZmODg4MGFlODAwMDAwKDAwMDApCj4ga25sR1M6MDAwMDAwMDAwMDAwMDAwMAo+
-IENTOsKgIDAwMTAgRFM6IDAwMDAgRVM6IDAwMDAgQ1IwOiAwMDAwMDAwMDgwMDUwMDMzCj4gQ1Iy
-OiAwMDAwMDAwMDAwMDAwMDAwIENSMzogMDAwMDAwMDA5ZjJhNDAwMCBDUjQ6IDAwMDAwMDAwMDAx
-NDI2ZjAKPiBEUjA6IDAwMDAwMDAwMDAwMDAwMDAgRFIxOiAwMDAwMDAwMDAwMDAwMDAwIERSMjog
-MDAwMDAwMDAwMDAwMDAwMAo+IERSMzogMDAwMDAwMDAwMDAwMDAwMCBEUjY6IDAwMDAwMDAwZmZm
-ZTBmZjAgRFI3OiAwMDAwMDAwMDAwMDAwNDAwCj4gCj4gCj4gLS0tCj4gVGhpcyBidWcgaXMgZ2Vu
-ZXJhdGVkIGJ5IGEgYm90LiBJdCBtYXkgY29udGFpbiBlcnJvcnMuCj4gU2VlIGh0dHBzOi8vZ29v
-LmdsL3Rwc21FSiBmb3IgbW9yZSBpbmZvcm1hdGlvbiBhYm91dCBzeXpib3QuCj4gc3l6Ym90IGVu
-Z2luZWVycyBjYW4gYmUgcmVhY2hlZCBhdCBzeXprYWxsZXJAZ29vZ2xlZ3JvdXBzLmNvbS4KPiAK
-PiBzeXpib3Qgd2lsbCBrZWVwIHRyYWNrIG9mIHRoaXMgYnVnIHJlcG9ydC4gU2VlOgo+IGh0dHBz
-Oi8vZ29vLmdsL3Rwc21FSiNzdGF0dXMgZm9yIGhvdyB0byBjb21tdW5pY2F0ZSB3aXRoIHN5emJv
-dC4KPiBGb3IgaW5mb3JtYXRpb24gYWJvdXQgYmlzZWN0aW9uIHByb2Nlc3Mgc2VlOgo+IGh0dHBz
-Oi8vZ29vLmdsL3Rwc21FSiNiaXNlY3Rpb24KPiBzeXpib3QgY2FuIHRlc3QgcGF0Y2hlcyBmb3Ig
-dGhpcyBidWcsIGZvciBkZXRhaWxzIHNlZToKPiBodHRwczovL2dvby5nbC90cHNtRUojdGVzdGlu
-Zy1wYXRjaGVzCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8v
-ZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJk
-ZXYtZGV2ZWwK
+From: Marc Zyngier <maz@kernel.org>  Sent: Thursday, November 7, 2019 6:20 AM
+> > +/*
+> > + * Functions for allocating and freeing memory with size and
+> > + * alignment HV_HYP_PAGE_SIZE. These functions are needed because
+> > + * the guest page size may not be the same as the Hyper-V page
+> > + * size. And while kalloc() could allocate the memory, it does not
+> > + * guarantee the required alignment. So a separate small memory
+> > + * allocator is needed.  The free function is rarely used, so it
+> > + * does not try to combine freed pages into larger chunks.
+> 
+> Is this still needed now that kmalloc has alignment guarantees
+> (see 59bb47985c1d)?
+> 
+
+The new kmalloc alignment guarantee is good news, and at least
+for now would allow these implementations to collapse to just
+kmalloc/kzalloc/kfree calls.  My inclination is to keep the function calls
+as wrappers, since ISA neutral Hyper-V drivers are starting to use
+them, and future work on memory encryption in virtual environments
+may require special handling of pages like these that are shared
+between the host and guest.  But they probably can be moved into
+the ISA neutral Hyper-V drivers instead of per arch.
+
+Michael
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
