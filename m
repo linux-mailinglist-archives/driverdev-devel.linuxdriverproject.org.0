@@ -2,76 +2,60 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E43DF3F75
-	for <lists+driverdev-devel@lfdr.de>; Fri,  8 Nov 2019 06:10:06 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E4618F404C
+	for <lists+driverdev-devel@lfdr.de>; Fri,  8 Nov 2019 07:17:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D81618630A;
-	Fri,  8 Nov 2019 05:10:03 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DE8FE867F2;
+	Fri,  8 Nov 2019 06:17:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id imhxX2ybDaBY; Fri,  8 Nov 2019 05:10:03 +0000 (UTC)
+	with ESMTP id MnXdy9ZDBsUS; Fri,  8 Nov 2019 06:17:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3E64086174;
-	Fri,  8 Nov 2019 05:10:02 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6DF9A867C6;
+	Fri,  8 Nov 2019 06:17:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 70D7D1BF866
- for <devel@linuxdriverproject.org>; Fri,  8 Nov 2019 05:10:00 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id CC1131BF313
+ for <devel@linuxdriverproject.org>; Fri,  8 Nov 2019 06:16:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6BBE820482
- for <devel@linuxdriverproject.org>; Fri,  8 Nov 2019 05:10:00 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id C859187B4A
+ for <devel@linuxdriverproject.org>; Fri,  8 Nov 2019 06:16:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id J+tsAujU4Ee9 for <devel@linuxdriverproject.org>;
- Fri,  8 Nov 2019 05:09:59 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f193.google.com (mail-oi1-f193.google.com
- [209.85.167.193])
- by silver.osuosl.org (Postfix) with ESMTPS id E79E820472
- for <devel@driverdev.osuosl.org>; Fri,  8 Nov 2019 05:09:58 +0000 (UTC)
-Received: by mail-oi1-f193.google.com with SMTP id n14so4160030oie.13
- for <devel@driverdev.osuosl.org>; Thu, 07 Nov 2019 21:09:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=intel-com.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=5hxLqM7wbQepnmpAkx3kQrqUx9W7V5kbuct3VgNLCfE=;
- b=RkTDhtjykB7j2cuaWtNSU3sVjWoWCIze54YYFBujyaWCIQJkapqLD4MeV2dhxoJWMC
- 7xv0dkRHVnZYw3zW1L+ru2fry1bNNwjg7RgLcYQ3R76p8RcKcd+8i/rDWNxpbJmoe0cP
- mnziZ7Pb+0gfzkkbAysW5E2nHGmXIzy3yuQyUw867guN3bcJNvAgOPmHzqtFqwetCnH/
- e8probWK/BURthbe/OQp8zpLcy69QDF3nmw/997epMxX6jS1VTwSL6XvfsYPUS4fTA1T
- BXUEKElSBd6VBrdE1u2lF9amw29zsQk0lrhqLqMzdjSSMdojeG9wjbJQfzg4/TSptXIp
- GJXA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=5hxLqM7wbQepnmpAkx3kQrqUx9W7V5kbuct3VgNLCfE=;
- b=XC2HsJggZCba7e7YXhFKxKDGTK7SAmHF97j6tWsAA7DNb4urjetA08RGAxHkOH9/Vf
- zFCbU3YIzpGNv11L+PAsn1hRZ1o2L7tcEaw2qJyYBvhJxPce0y9nU+qGi2BJQyzNKzhA
- fs06tA6dqSlYSNhSCkPxcGdSkvDcQmaHhghqQD2b96wZZDXyXkKerrIVY5uF+JkLefmN
- EHbvLW70dASzFirxEG5nOMhQxw9vOImZGZ/oDCOn0AuHk+WjAkP3jX3qoaGfgIShCaGb
- vHFl6pyJR/Ria8etd/KyHgFlcJ4HKweO07UuWn3qt2Q6NDQ/I+ABFypD/FlJR3/6Kf/2
- UoFQ==
-X-Gm-Message-State: APjAAAVhBiu2/7uOr88u+n62/rXG4Mh+7Vo3AvS1QqghsRJQXpepXuLz
- 4E1QBo1z0vXZq6umXbXwLsoUrBy+Jge/MOF5YHTiyA==
-X-Google-Smtp-Source: APXvYqykH4Y+YpdJn/i8XOAkjaabFQF8UbaSg/jnSgqkUxCA1/ca81jEPmL8H19fMIeKE0KMVQC/PCci0jvS512PO8A=
-X-Received: by 2002:aca:55c1:: with SMTP id j184mr7906855oib.105.1573189797950; 
- Thu, 07 Nov 2019 21:09:57 -0800 (PST)
+ with ESMTP id 5NaU-a-ozTHG for <devel@linuxdriverproject.org>;
+ Fri,  8 Nov 2019 06:16:46 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4652587ADF
+ for <devel@driverdev.osuosl.org>; Fri,  8 Nov 2019 06:16:46 +0000 (UTC)
+Received: from [10.44.0.22] (unknown [103.48.210.53])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1C3AD2087E;
+ Fri,  8 Nov 2019 06:16:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1573193806;
+ bh=hEwzNqHV9iX6kk8rMJng04CmvHw23091nhUTIx4jlsg=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=wovGkvC0scH48qvcBkA5PINR9EQ2Z+8Vq7zNJyM208Ca1jmKzW7pzgqhw9x+uBS3E
+ hWbW/8IKqWywzdKk7P6ECFjjs977HePXPoN3R5aoFOeZx+Ezyos975LpQvEmHFzd8b
+ lXJJCTakQTYc8lCQIUQ/KC+BOtCQLiWIeAbmH8TY=
+Subject: Re: [PATCH] mtd: rawnand: driver for Mediatek MT7621 SoC NAND flash
+ controller
+To: Dan Carpenter <dan.carpenter@oracle.com>
+References: <20191107073521.11413-1-gerg@kernel.org>
+ <20191107111506.GO10409@kadam>
+From: Greg Ungerer <gerg@kernel.org>
+Message-ID: <18fbe5ea-b3e3-db3d-1755-0a7728173b8c@kernel.org>
+Date: Fri, 8 Nov 2019 16:16:41 +1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-References: <CAPcyv4hxs+KqY5gU8Ds1a73eub1imvm9Qo8KdKGiDD1e-p0cww@mail.gmail.com>
- <DF536BED-6F4F-4351-AC7E-3C9FC8545332@redhat.com>
- <0eb001e0-bb26-59bb-c514-d2f8a86a7eab@redhat.com>
-In-Reply-To: <0eb001e0-bb26-59bb-c514-d2f8a86a7eab@redhat.com>
-From: Dan Williams <dan.j.williams@intel.com>
-Date: Thu, 7 Nov 2019 21:09:46 -0800
-Message-ID: <CAPcyv4h0yX4g6ETymQEpp52FFLaOmps_hO7w_yuYGk7BqQQcMQ@mail.gmail.com>
-Subject: Re: [PATCH v1 04/10] vfio/type1: Prepare is_invalid_reserved_pfn()
- for PG_reserved changes
-To: David Hildenbrand <david@redhat.com>
+In-Reply-To: <20191107111506.GO10409@kadam>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,116 +68,1566 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-hyperv@vger.kernel.org, Michal Hocko <mhocko@suse.com>,
- =?UTF-8?B?UmFkaW0gS3LEjW3DocWZ?= <rkrcmar@redhat.com>,
- KVM list <kvm@vger.kernel.org>, Pavel Tatashin <pavel.tatashin@microsoft.com>,
- KarimAllah Ahmed <karahmed@amazon.de>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Dave Hansen <dave.hansen@linux.intel.com>,
- Alexander Duyck <alexander.duyck@gmail.com>, Michal Hocko <mhocko@kernel.org>,
- Paul Mackerras <paulus@ozlabs.org>, Linux MM <linux-mm@kvack.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Paul Mackerras <paulus@samba.org>,
- Michael Ellerman <mpe@ellerman.id.au>, "H. Peter Anvin" <hpa@zytor.com>,
- Wanpeng Li <wanpengli@tencent.com>,
- Alexander Duyck <alexander.h.duyck@linux.intel.com>,
- Thomas Gleixner <tglx@linutronix.de>, Kees Cook <keescook@chromium.org>,
- devel@driverdev.osuosl.org, Stefano Stabellini <sstabellini@kernel.org>,
- Stephen Hemminger <sthemmin@microsoft.com>,
- "Aneesh Kumar K.V" <aneesh.kumar@linux.ibm.com>,
- Joerg Roedel <joro@8bytes.org>, X86 ML <x86@kernel.org>,
- YueHaibing <yuehaibing@huawei.com>,
- "Matthew Wilcox \(Oracle\)" <willy@infradead.org>,
- Mike Rapoport <rppt@linux.ibm.com>, Peter Zijlstra <peterz@infradead.org>,
- Ingo Molnar <mingo@redhat.com>, Vlastimil Babka <vbabka@suse.cz>,
- Anthony Yznaga <anthony.yznaga@oracle.com>, Oscar Salvador <osalvador@suse.de>,
- "Isaac J. Manjarres" <isaacm@codeaurora.org>, Juergen Gross <jgross@suse.com>,
- Anshuman Khandual <anshuman.khandual@arm.com>,
- Haiyang Zhang <haiyangz@microsoft.com>, Sasha Levin <sashal@kernel.org>,
- kvm-ppc@vger.kernel.org, Qian Cai <cai@lca.pw>,
- Alex Williamson <alex.williamson@redhat.com>,
- Mike Rapoport <rppt@linux.vnet.ibm.com>,
- David Hildenbrand <dhildenb@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
- Andy Lutomirski <luto@kernel.org>, xen-devel <xen-devel@lists.xenproject.org>,
- Boris Ostrovsky <boris.ostrovsky@oracle.com>,
- Vitaly Kuznetsov <vkuznets@redhat.com>, Allison Randal <allison@lohutok.net>,
- Jim Mattson <jmattson@google.com>, Christophe Leroy <christophe.leroy@c-s.fr>,
- Mel Gorman <mgorman@techsingularity.net>, Cornelia Huck <cohuck@redhat.com>,
- Pavel Tatashin <pasha.tatashin@soleen.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Sean Christopherson <sean.j.christopherson@intel.com>,
- Johannes Weiner <hannes@cmpxchg.org>, Borislav Petkov <bp@alien8.de>,
- Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev <linuxppc-dev@lists.ozlabs.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ neil@brown.name, linux-mtd@lists.infradead.org
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gVGh1LCBOb3YgNywgMjAxOSBhdCAyOjA3IFBNIERhdmlkIEhpbGRlbmJyYW5kIDxkYXZpZEBy
-ZWRoYXQuY29tPiB3cm90ZToKPgo+IE9uIDA3LjExLjE5IDE5OjIyLCBEYXZpZCBIaWxkZW5icmFu
-ZCB3cm90ZToKPiA+Cj4gPgo+ID4+IEFtIDA3LjExLjIwMTkgdW0gMTY6NDAgc2NocmllYiBEYW4g
-V2lsbGlhbXMgPGRhbi5qLndpbGxpYW1zQGludGVsLmNvbT46Cj4gPj4KPiA+PiDvu79PbiBUaHUs
-IE9jdCAyNCwgMjAxOSBhdCA1OjEyIEFNIERhdmlkIEhpbGRlbmJyYW5kIDxkYXZpZEByZWRoYXQu
-Y29tPiB3cm90ZToKPiA+Pj4KPiA+Pj4gUmlnaHQgbm93LCBaT05FX0RFVklDRSBtZW1vcnkgaXMg
-YWx3YXlzIHNldCBQR19yZXNlcnZlZC4gV2Ugd2FudCB0bwo+ID4+PiBjaGFuZ2UgdGhhdC4KPiA+
-Pj4KPiA+Pj4gS1ZNIGhhcyB0aGlzIHdlaXJkIHVzZSBjYXNlIHRoYXQgeW91IGNhbiBtYXAgYW55
-dGhpbmcgZnJvbSAvZGV2L21lbQo+ID4+PiBpbnRvIHRoZSBndWVzdC4gcGZuX3ZhbGlkKCkgaXMg
-bm90IGEgcmVsaWFibGUgY2hlY2sgd2hldGhlciB0aGUgbWVtbWFwCj4gPj4+IHdhcyBpbml0aWFs
-aXplZCBhbmQgY2FuIGJlIHRvdWNoZWQuIHBmbl90b19vbmxpbmVfcGFnZSgpIG1ha2VzIHN1cmUK
-PiA+Pj4gdGhhdCB3ZSBoYXZlIGFuIGluaXRpYWxpemVkIG1lbW1hcCAoYW5kIGRvbid0IGhhdmUg
-Wk9ORV9ERVZJQ0UgbWVtb3J5KS4KPiA+Pj4KPiA+Pj4gUmV3cml0ZSBpc19pbnZhbGlkX3Jlc2Vy
-dmVkX3BmbigpIHNpbWlsYXIgdG8ga3ZtX2lzX3Jlc2VydmVkX3BmbigpIHRvIG1ha2UKPiA+Pj4g
-c3VyZSB0aGUgZnVuY3Rpb24gcHJvZHVjZXMgdGhlIHNhbWUgcmVzdWx0IG9uY2Ugd2Ugc3RvcCBz
-ZXR0aW5nIFpPTkVfREVWSUNFCj4gPj4+IHBhZ2VzIFBHX3Jlc2VydmVkLgo+ID4+Pgo+ID4+PiBD
-YzogQWxleCBXaWxsaWFtc29uIDxhbGV4LndpbGxpYW1zb25AcmVkaGF0LmNvbT4KPiA+Pj4gQ2M6
-IENvcm5lbGlhIEh1Y2sgPGNvaHVja0ByZWRoYXQuY29tPgo+ID4+PiBTaWduZWQtb2ZmLWJ5OiBE
-YXZpZCBIaWxkZW5icmFuZCA8ZGF2aWRAcmVkaGF0LmNvbT4KPiA+Pj4gLS0tCj4gPj4+IGRyaXZl
-cnMvdmZpby92ZmlvX2lvbW11X3R5cGUxLmMgfCAxMCArKysrKysrKy0tCj4gPj4+IDEgZmlsZSBj
-aGFuZ2VkLCA4IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCj4gPj4+Cj4gPj4+IGRpZmYg
-LS1naXQgYS9kcml2ZXJzL3ZmaW8vdmZpb19pb21tdV90eXBlMS5jIGIvZHJpdmVycy92ZmlvL3Zm
-aW9faW9tbXVfdHlwZTEuYwo+ID4+PiBpbmRleCAyYWRhOGU2Y2RiODguLmY4Y2U4YzQwOGJhOCAx
-MDA2NDQKPiA+Pj4gLS0tIGEvZHJpdmVycy92ZmlvL3ZmaW9faW9tbXVfdHlwZTEuYwo+ID4+PiAr
-KysgYi9kcml2ZXJzL3ZmaW8vdmZpb19pb21tdV90eXBlMS5jCj4gPj4+IEBAIC0yOTksOSArMjk5
-LDE1IEBAIHN0YXRpYyBpbnQgdmZpb19sb2NrX2FjY3Qoc3RydWN0IHZmaW9fZG1hICpkbWEsIGxv
-bmcgbnBhZ2UsIGJvb2wgYXN5bmMpCj4gPj4+ICAgKi8KPiA+Pj4gc3RhdGljIGJvb2wgaXNfaW52
-YWxpZF9yZXNlcnZlZF9wZm4odW5zaWduZWQgbG9uZyBwZm4pCj4gPj4+IHsKPiA+Pj4gLSAgICAg
-ICBpZiAocGZuX3ZhbGlkKHBmbikpCj4gPj4+IC0gICAgICAgICAgICAgICByZXR1cm4gUGFnZVJl
-c2VydmVkKHBmbl90b19wYWdlKHBmbikpOwo+ID4+PiArICAgICAgIHN0cnVjdCBwYWdlICpwYWdl
-ID0gcGZuX3RvX29ubGluZV9wYWdlKHBmbik7Cj4gPj4KPiA+PiBVZ2gsIEkganVzdCByZWFsaXpl
-ZCB0aGlzIGlzIG5vdCBhIHNhZmUgY29udmVyc2lvbiB1bnRpbAo+ID4+IHBmbl90b19vbmxpbmVf
-cGFnZSgpIGlzIG1vdmVkIG92ZXIgdG8gc3Vic2VjdGlvbiBncmFudWxhcml0eS4gQXMgaXQKPiA+
-PiBzdGFuZHMgaXQgd2lsbCByZXR1cm4gdHJ1ZSBmb3IgYW55IFpPTkVfREVWSUNFIHBhZ2VzIHRo
-YXQgc2hhcmUgYQo+ID4+IHNlY3Rpb24gd2l0aCBib290IG1lbW9yeS4KPiA+Cj4gPiBUaGF0IHNo
-b3VsZCBub3QgaGFwcGVuIHJpZ2h0IG5vdyBhbmQgSSBjb21tZW50ZWQgYmFjayB3aGVuIHlvdSBp
-bnRyb2R1Y2VkIHN1YnNlY3Rpb24gc3VwcG9ydCB0aGF0IEkgZG9u4oCZdCB3YW50IHRvIGhhdmUg
-Wk9ORV9ERVZJQ0UgbWl4ZWQgd2l0aCBvbmxpbmUgcGFnZXMgaW4gYSBzZWN0aW9uLiBIYXZpbmcg
-bWVtb3J5IGJsb2NrIGRldmljZXMgdGhhdCBwYXJ0aWFsbHkgc3BhbiBaT05FX0RFVklDRSB3b3Vs
-ZCBiZSAuLi4gcmVhbGx5IHdlaXJkLiBXaXRoIHNvbWV0aGluZyBsaWtlIHBmbl9hY3RpdmUoKSAt
-IGFzIGRpc2N1c3NlZCAtIHdlIGNvdWxkIGF0IGxlYXN0IG1ha2UgdGhpcyBjaGVjayB3b3JrIC0g
-YnV0IEkgYW0gbm90IHN1cmUgaWYgd2UgcmVhbGx5IHdhbnQgdG8gZ28gZG93biB0aGF0IHBhdGgu
-IEluIHRoZSB3b3JzdCBjYXNlLCBzb21lIE1CIG9mIFJBTSBhcmUgbG9zdCAuLi4gSSBndWVzcyB0
-aGlzIG5lZWRzIG1vcmUgdGhvdWdodC4KPiA+Cj4KPiBJIGp1c3QgcmVhbGl6ZWQgdGhlICJib290
-IG1lbW9yeSIgcGFydC4gSXMgdGhhdCBhIHJlYWwgdGhpbmc/IElPVywgY2FuCj4gd2UgaGF2ZSBa
-T05FX0RFVklDRSBmYWxsaW5nIGludG8gYSBtZW1vcnkgYmxvY2sgKHdpdGggaG9sZXMpPyBJIHNv
-bWV3aGF0Cj4gaGF2ZSBkb3VidHMgdGhhdCB0aGlzIHdvdWxkIHdvcmsgLi4uCgpPbmUgb2YgdGhl
-IHJlYWwgd29ybGQgZmFpbHVyZSBjYXNlcyB0aGF0IHN0YXJ0ZWQgdGhlIHN1YnNlY3Rpb24gZWZm
-ZWN0CmlzIHRoYXQgUGVyc2lzdGVudCBNZW1vcnkgY29sbGlkZXMgd2l0aCBTeXN0ZW0gUkFNIG9u
-IGEgNjRNQiBib3VuZGFyeQpvbiBzaGlwcGluZyBwbGF0Zm9ybXMuIFN5c3RlbSBSQU0gZW5kcyBv
-biBhIDY0TUIgYm91bmRhcnkgYW5kIGR1ZSB0byBhCmxhY2sgb2YgbWVtb3J5IGNvbnRyb2xsZXIg
-cmVzb3VyY2VzIFBNRU0gaXMgbWFwcGVkIGNvbnRpZ3VvdXNseSBhdCB0aGUKZW5kIG9mIHRoYXQg
-Ym91bmRhcnkuIFNvbWUgbW9yZSBkZXRhaWxzIGluIHRoZSBzdWJzZWN0aW9uIGNvdmVyIGxldHRl
-cgovIGNoYW5nZWxvZ3MgWzFdIFsyXS4gSXQncyBub3Qgc3VmZmljaWVudCB0byBqdXN0IGxvc2Ug
-c29tZSBtZW1vcnksCnRoYXQncyB0aGUgYnJva2VuIGltcGxlbWVudGF0aW9uIHRoYXQgbGVhZCB0
-byB0aGUgc3Vic2VjdGlvbiB3b3JrCmJlY2F1c2UgdGhlIGxvc3QgbWVtb3J5IG1heSBjaGFuZ2Ug
-ZnJvbSBvbmUgYm9vdCB0byB0aGUgbmV4dCBhbmQKc29mdHdhcmUgY2FuJ3QgcmVsaWFibHkgaW5q
-ZWN0IGEgcGFkZGluZyB0aGF0IGNvbmZvcm1zIHRvIHRoZSB4ODYKMTI4TUIgc2VjdGlvbiBjb25z
-dHJhaW50LgoKU3VmZmljZSB0byBzYXkgSSB0aGluayB3ZSBuZWVkIHlvdXIgcGZuX2FjdGl2ZSgp
-IHRvIGdldCBzdWJzZWN0aW9uCmdyYW51bGFyaXR5IHBmbl90b19vbmxpbmVfcGFnZSgpIGJlZm9y
-ZSBQYWdlUmVzZXJ2ZWQoKSBjYW4gYmUgcmVtb3ZlZC4KClsxXTogaHR0cHM6Ly9sb3JlLmtlcm5l
-bC5vcmcvbGludXgtbW0vMTU2MDkyMzQ5MzAwLjk3OTk1OS4xNzYwMzcxMDcxMTk1NzczNTEzNS5z
-dGdpdEBkd2lsbGlhMi1kZXNrMy5hbXIuY29ycC5pbnRlbC5jb20vClsyXTogaHR0cHM6Ly9sb3Jl
-Lmtlcm5lbC5vcmcvbGludXgtbW0vMTU2MDkyMzU0MzY4Ljk3OTk1OS42MjMyNDQzOTIzNDQwOTUy
-MzU5LnN0Z2l0QGR3aWxsaWEyLWRlc2szLmFtci5jb3JwLmludGVsLmNvbS8KX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRl
-dmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnBy
-b2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+Hi Dan,
+
+On 7/11/19 9:15 pm, Dan Carpenter wrote:
+> This driver seems like it could be fixed up and go directly into
+> drivers/nand/ instead of staging.  Other comments below.
+
+Thanks for the feedback, much appreciated.
+I'll work through it and send out a v2.
+
+Regards
+Greg
+
+
+> On Thu, Nov 07, 2019 at 05:35:21PM +1000, gerg@kernel.org wrote:
+>> +static int check_bch_error(struct mtd_info *mtd, u8 *buf, u32 sector, u32 page)
+>> +{
+>> +	struct nand_chip *chip = mtd_to_nand(mtd);
+>> +	struct host *host = nand_get_controller_data(chip);
+>> +	u16 sectormask = 1 << sector;
+>> +	u32 errdebug, i, errnum;
+>> +	u32 timeout = 0xffff;
+>> +	u32 byte, bitoffset, bit1, bit2;
+>> +	u32 bit[6];
+>> +	int corrected = 0;
+>> +
+>> +	/* Wait for Decode Done */
+>> +	while ((sectormask & ecc_read16(ECC_DECDONE_REG16)) == 0) {
+>> +		timeout--;
+>> +		if (timeout == 0)
+>> +			return -EIO;
+> 
+> Could we do these on one line like:
+> 
+> 		if (--timeout == 0)
+> 			return -EIO;
+> 
+> Later instead of counting down we count up.  Let's do it consistently
+> throughout.  I really wish timeout were an int instead of a u32.  There
+> are too many u32s in this code for no reason.  Making things unsigned
+> doesn't make it safer.  Generally things like iterators and small
+> counters like this should just be int.
+> 
+>> +	}
+>> +
+>> +	/*
+>> +	 * We will manually correct the error bits in the last sector,
+>> +	 * not all the sectors of the page!
+>> +	 */
+>> +	memset(bit, 0, sizeof(bit));
+>> +	errdebug = ecc_read32(ECC_DECENUM_REG32);
+>> +	errnum = ecc_read32(ECC_DECENUM_REG32) >> (sector << 2);
+>> +	errnum &= 0xf;
+>> +
+>> +	if (errnum == 0)
+>> +		return 0;
+>> +
+>> +	if (errnum == 0xf) {
+>> +		/*
+>> +		 * Increment the last read's failed counter only. The
+>> +		 * caller supposed to check if it is a blank page with
+>                          ^^^
+> Missing *is*.
+> 
+> 
+>> +		 * bit-flips, or a real ECC error. If the latter, it
+>> +		 * should increment the failed counter with this last
+>> +		 * read's failed counter
+>> +		 */
+>> +		host->last_failed++;
+>> +		corrected = -EBADMSG;
+> 
+> 
+> If the next ecc_read16(ECC_DECFER_REG16) fails then we set "corrected"
+> to -EIO.  Should we just return -EBADMSG here?
+> 
+>> +	} else {
+>> +		corrected = errnum;
+>> +
+>> +		for (i = 0; i < ((errnum + 1) >> 1); ++i) {
+>> +			bit[i] = ecc_read32(ECC_DECEL0_REG32 + i);
+>> +			bit1 = bit[i] & 0x1FFF;
+>> +			/*
+>> +			 * Check if bitflip is in data block (< 0x1000)
+>> +			 * or OOB. Fix it only in data block.
+>> +			 */
+>> +			if (bit1 < 0x1000) {
+>> +				byte = bit1 / 8;
+>> +				bitoffset = bit1 % 8;
+>> +				buf[byte] = buf[byte] ^ (1 << bitoffset);
+>> +			}
+>> +
+>> +			mtd->ecc_stats.corrected++;
+>> +
+>> +			bit2 = (bit[i] >> 16) & 0x1FFF;
+>> +			if (bit2 != 0) {
+>> +				/*
+>> +				 * Check if bitflip is in data block
+>> +				 * (< 0x1000) or OOB. Fix it only in
+>> +				 * data block.
+>> +				 */
+>> +				if (bit2 < 0x1000) {
+>> +					byte = bit2 / 8;
+>> +					bitoffset = bit2 % 8;
+>> +					buf[byte] = buf[byte] ^
+>> +						    (1 << bitoffset);
+>> +				}
+>> +
+>> +				mtd->ecc_stats.corrected++;
+>> +			}
+>> +		}
+>> +	}
+>> +	if ((ecc_read16(ECC_DECFER_REG16) & (1 << sector)) == 0)
+>> +		corrected = -EIO;
+>> +
+>> +	return corrected;
+>> +}
+>> +
+>> +static bool RFIFOValidSize(u16 size)
+>> +{
+>> +	u32 timeout = 0xffff;
+>> +
+>> +	while (FIFO_RD_REMAIN(regread16(NFI_FIFOSTA_REG16)) < size) {
+>> +		timeout--;
+>> +		if (timeout == 0)
+>> +			return false;
+> 
+> 	if (--timeout == 0)
+> 		return false;
+> 
+>> +	}
+>> +	return true;
+>> +}
+>> +
+>> +static bool WFIFOValidSize(u16 size)
+>> +{
+>> +	u32 timeout = 0xffff;
+>> +
+>> +	while (FIFO_WR_REMAIN(regread16(NFI_FIFOSTA_REG16)) > size) {
+>> +		timeout--;
+>> +		if (timeout == 0)
+>> +			return false;
+> 
+> 	if (--timeout == 0)
+> 		return false;
+> 
+> 
+>> +	}
+>> +	return true;
+>> +}
+>> +
+>> +static bool status_ready(u32 status)
+>> +{
+>> +	u32 timeout = 0xffff;
+>> +
+>> +	while ((regread32(NFI_STA_REG32) & status) != 0) {
+>> +		timeout--;
+>> +		if (timeout == 0)
+>> +			return false;
+> 
+> 	if (--timeout == 0)
+> 		return false;
+> 
+> 
+>> +	}
+>> +	return true;
+>> +}
+>> +
+>> +static bool reset(void)
+>> +{
+>> +	int timeout = 0xffff;
+>> +
+>> +	if (regread16(NFI_MASTERSTA_REG16)) {
+>> +		regwrite16(NFI_CON_REG16, CON_FIFO_FLUSH | CON_NFI_RST);
+>> +		while (regread16(NFI_MASTERSTA_REG16)) {
+>> +			timeout--;
+>> +			if (!timeout)
+>> +				pr_err("mt7621-nand: %s timeout\n", __func__);
+> 
+> 	if (--timeout == 0)
+> 		pr_err("mt7621-nand: %s timeout\n", __func__);
+> 
+> We may as well return after a timeout instead of looping forever.  The
+> system is hosed, but maybe it will be limping enough to collect some
+> debug information.
+> 
+> 
+>> +		}
+>> +	}
+>> +
+>> +	/* issue reset operation */
+>> +	regwrite16(NFI_CON_REG16, CON_FIFO_FLUSH | CON_NFI_RST);
+>> +
+>> +	return status_ready(STA_NFI_FSM_MASK | STA_NAND_BUSY) &&
+>> +			    RFIFOValidSize(0) &&
+>> +			    WFIFOValidSize(0);
+>> +}
+>> +
+>> +static void set_mode(u16 mode)
+>> +{
+>> +	u16 v = regread16(NFI_CNFG_REG16);
+>> +
+>> +	v &= ~CNFG_OP_MODE_MASK;
+>> +	v |= mode;
+>> +	regwrite16(NFI_CNFG_REG16, v);
+>> +}
+>> +
+>> +static void set_autoformat(bool enable)
+>> +{
+>> +	if (enable)
+>> +		regset16(NFI_CNFG_REG16, CNFG_AUTO_FMT_EN);
+>> +	else
+>> +		regclr16(NFI_CNFG_REG16, CNFG_AUTO_FMT_EN);
+>> +}
+>> +
+>> +static void configure_fdm(u16 size)
+>> +{
+>> +	regclr16(NFI_PAGEFMT_REG16, PAGEFMT_FDM_MASK | PAGEFMT_FDM_ECC_MASK);
+>> +	regset16(NFI_PAGEFMT_REG16, size << PAGEFMT_FDM_SHIFT);
+>> +	regset16(NFI_PAGEFMT_REG16, size << PAGEFMT_FDM_ECC_SHIFT);
+>> +}
+>> +
+>> +static void configure_lock(void)
+>> +{
+>> +	const u32 write_col = 2;
+>> +	const u32 write_row = 3;
+>> +	const u32 erase_col = 0;
+>> +	const u32 erase_row = 3;
+>> +
+>> +	regwrite16(NFI_LOCKANOB_REG16,
+>> +		   (write_col << PROG_CADD_NOB_SHIFT) |
+>> +		   (write_row << PROG_RADD_NOB_SHIFT) |
+>> +		   (erase_col << ERASE_CADD_NOB_SHIFT) |
+>> +		   (erase_row << ERASE_RADD_NOB_SHIFT));
+>> +}
+>> +
+>> +static bool pio_ready(void)
+>> +{
+>> +	int count = 0;
+>> +
+>> +	while (!(regread16(NFI_PIO_DIRDY_REG16) & 1)) {
+>> +		count++;
+>> +		if (count > 0xffff) {
+>> +			pr_err("mt7621-nand: %s timeout\n", __func__);
+>> +			return false;
+>> +		}
+> 
+> 	if (--timeout == 0)
+> 
+>> +	}
+>> +	return true;
+>> +}
+>> +
+>> +static bool set_command(u16 command)
+>> +{
+>> +	regwrite16(NFI_CMD_REG16, command);
+>> +	return status_ready(STA_CMD_STATE);
+>> +}
+>> +
+>> +static bool set_address(u32 column, u32 row, u16 colnob, u16 rownob)
+>> +{
+>> +	regwrite32(NFI_COLADDR_REG32, column);
+>> +	regwrite32(NFI_ROWADDR_REG32, row);
+>> +	regwrite16(NFI_ADDRNOB_REG16, colnob | (rownob << ADDR_ROW_NOB_SHIFT));
+>> +	return status_ready(STA_ADDR_STATE);
+>> +}
+>> +
+>> +static void mt7621_cmd_ctrl(struct nand_chip *chip, int dat, unsigned int ctrl)
+>> +{
+>> +	if (ctrl & NAND_ALE) {
+>> +		set_address(dat, 0, 1, 0);
+>> +	} else if (ctrl & NAND_CLE) {
+>> +		reset();
+>> +		set_mode(0x6000);
+>> +		set_command(dat);
+>> +	}
+>> +}
+>> +
+>> +static bool check_RW_count(u16 writesize)
+>> +{
+>> +	u32 timeout = 0xffff;
+>> +	u16 sec = writesize >> 9;
+>> +
+>> +	while (ADDRCNTR_CNTR(regread16(NFI_ADDRCNTR_REG16)) < sec) {
+>> +		timeout--;
+>> +		if (timeout == 0) {
+>> +			pr_warn("mt7621-nand: %s timeout\n", __func__);
+>> +			return false;
+>> +		}
+> 
+> 		if (--timeout == 0) {
+> 
+>> +	}
+>> +	return true;
+>> +}
+>> +
+>> +/*
+>> + * Reset NFI HW internal state machine and flush NFI in/out FIFO
+>> + */
+>> +static bool ready_for_read(struct nand_chip *chip, u32 row,
+>> +			   u32 column, bool full, u8 *buf)
+>> +{
+>> +	u16 sec = 1 << (chip->page_shift - 9);
+>> +	u32 colnob = 2, rownob = host->addr_cycles - 2;
+>> +	bool ret = false;
+>> +
+>> +	if (chip->options & NAND_BUSWIDTH_16)
+>> +		column /= 2;
+>> +
+>> +	if (!reset())
+>> +		goto cleanup;
+> 
+> There is no cleanup.  Misleading label name.  Just say "return false;
+> 
+>> +
+>> +	regset16(NFI_CNFG_REG16, CNFG_HW_ECC_EN);
+>> +	set_mode(CNFG_OP_READ);
+>> +	regset16(NFI_CNFG_REG16, CNFG_READ_EN);
+>> +	regwrite16(NFI_CON_REG16, sec << CON_NFI_SEC_SHIFT);
+>> +
+>> +	if (full) {
+>> +		regclr16(NFI_CNFG_REG16, CNFG_AHB);
+>> +		regset16(NFI_CNFG_REG16, CNFG_HW_ECC_EN);
+>> +	} else {
+>> +		regclr16(NFI_CNFG_REG16, CNFG_HW_ECC_EN);
+>> +		regclr16(NFI_CNFG_REG16, CNFG_AHB);
+>> +	}
+>> +
+>> +	set_autoformat(full);
+>> +	if (full)
+>> +		ecc_decode_start();
+>> +	if (!set_command(NAND_CMD_READ0))
+>> +		goto cleanup;
+>> +	if (!set_address(column, row, colnob, rownob))
+>> +		goto cleanup;
+>> +	if (!set_command(NAND_CMD_READSTART))
+>> +		goto cleanup;
+>> +	if (!status_ready(STA_NAND_BUSY))
+>> +		goto cleanup;
+>> +
+>> +	ret = true;
+>> +
+>> +cleanup:
+>> +	return ret;
+>> +}
+>> +
+>> +static bool ready_for_write(struct nand_chip *chip, u32 row,
+>> +			    u32 column, bool full, u8 *buf)
+>> +{
+>> +	u32 sec = 1 << (chip->page_shift - 9);
+>> +	u32 colnob = 2, rownob = host->addr_cycles - 2;
+>> +	bool ret = false;
+>> +
+>> +	if (chip->options & NAND_BUSWIDTH_16)
+>> +		column /= 2;
+>> +
+>> +	/* Reset NFI HW internal state machine and flush NFI in/out FIFO */
+>> +	if (!reset())
+>> +		return false;
+>> +
+>> +	set_mode(CNFG_OP_PRGM);
+>> +
+>> +	regclr16(NFI_CNFG_REG16, CNFG_READ_EN);
+>> +
+>> +	regwrite16(NFI_CON_REG16, sec << CON_NFI_SEC_SHIFT);
+>> +
+>> +	if (full) {
+>> +		regclr16(NFI_CNFG_REG16, CNFG_AHB);
+>> +		regset16(NFI_CNFG_REG16, CNFG_HW_ECC_EN);
+>> +	} else {
+>> +		regclr16(NFI_CNFG_REG16, CNFG_HW_ECC_EN);
+>> +		regclr16(NFI_CNFG_REG16, CNFG_AHB);
+>> +	}
+>> +
+>> +	set_autoformat(full);
+>> +
+>> +	if (full)
+>> +		ecc_encode_start();
+>> +
+>> +	if (!set_command(NAND_CMD_SEQIN))
+>> +		goto cleanup;
+> 
+> There isn't any cleanup.
+> 
+>> +	/* FIX ME: For Any Kind of AddrCycle */
+>> +	if (!set_address(column, row, colnob, rownob))
+>> +		goto cleanup;
+>> +
+>> +	if (!status_ready(STA_NAND_BUSY))
+>> +		goto cleanup;
+>> +
+>> +	ret = true;
+>> +
+>> +cleanup:
+>> +	return ret;
+>> +}
+>> +
+>> +static bool check_dececc_done(u32 sec)
+>> +{
+>> +	u32 timeout, dec_mask;
+>> +
+>> +	timeout = 0xffff;
+> 
+> Move this to the declaration like before.
+> 
+>> +	dec_mask = (1 << sec) - 1;
+>> +	while ((dec_mask != ecc_read16(ECC_DECDONE_REG16)) && timeout > 0)
+>> +		timeout--;
+> 
+> 		if (--timeout == 0) {
+> 			pr_err("mt7621-nand: ECC_DECDONE: timeout\n");
+> 			return false;
+> 		}
+> 
+> 
+>> +	if (timeout == 0) {
+>> +		pr_err("mt7621-nand: ECC_DECDONE: timeout\n");
+>> +		return false;
+>> +	}
+>> +	return true;
+>> +}
+>> +
+>> +static bool mcu_read_data(u8 *buf, u32 length)
+>> +{
+>> +	int timeout = 0xffff;
+>> +	u32 *buf32 = (u32 *)buf;
+>> +	u32 i;
+>> +
+>> +	if ((u32)buf % 4 || length % 4)
+>               ^^^^^^^
+> I'm so surprised that this cast doesn't generate a "cast from pointer to
+> integer of different size" compile warning...  Did you want to cast to
+> unsigned long?
+> 
+>> +		regset16(NFI_CNFG_REG16, CNFG_BYTE_RW);
+>> +	else
+>> +		regclr16(NFI_CNFG_REG16, CNFG_BYTE_RW);
+>> +
+>> +	/* regwrite32(NFI_STRADDR_REG32, 0); */
+>> +	regset16(NFI_CON_REG16, CON_NFI_BRD);
+>> +
+>> +	if ((u32)buf % 4 || length % 4) {
+>              ^^^^^^^^^^^^
+> 
+>> +		for (i = 0; (i < (length)) && (timeout > 0);) {
+>> +			if (regread16(NFI_PIO_DIRDY_REG16) & 1) {
+>> +				*buf++ = (u8)regread32(NFI_DATAR_REG32);
+>> +				i++;
+>> +			} else {
+>> +				timeout--;
+>> +			}
+>> +			if (timeout == 0) {
+>> +				pr_warn("mt7621-nand: %s timeout\n", __func__);
+>> +				return false;
+>> +			}
+> 
+> 
+> 		i = 0;
+> 		while (i < length) {
+> 			if (regread16(NFI_PIO_DIRDY_REG16) & 1) {
+> 				*buf++ = (u8)regread32(NFI_DATAR_REG32);
+> 				i++;
+> 			} else {
+> 				if (--timeout == 0) {
+> 					pr_warn("mt7621-nand: %s timeout\n", __func__);
+> 					return false;
+> 				}
+> 			}
+> 		}
+> 
+> 
+> Except looking a bit lower, I think you only want to do that for the
+> first mod four bits, then you can start doing 4 byte reads.  Probably
+> it's a little faster.
+> 
+> 
+>> +		}
+>> +	} else {
+>> +		for (i = 0; (i < (length >> 2)) && (timeout > 0);) {
+> 
+> Use (length / sizeof(u32)) instead of the shift.
+> 
+>> +			if (regread16(NFI_PIO_DIRDY_REG16) & 1) {
+>> +				*buf32++ = regread32(NFI_DATAR_REG32);
+>> +				i++;
+>> +			} else {
+>> +				timeout--;
+>> +			}
+>> +			if (timeout == 0) {
+>> +				pr_warn("mt7621-nand: %s timeout\n", __func__);
+>> +				return false;
+>> +			}
+>> +		}
+>> +	}
+>> +
+>> +	return true;
+>> +}
+>> +
+>> +static bool mcu_write_data(struct mtd_info *mtd, const u8 *buf, u32 length)
+>> +{
+>> +	u32 timeout = 0xffff;
+>> +	u32 *buf32;
+>> +	u32 i;
+>> +
+>> +	regclr16(NFI_CNFG_REG16, CNFG_BYTE_RW);
+>> +	regset16(NFI_CON_REG16, CON_NFI_BWR);
+>> +	buf32 = (u32 *)buf;
+>> +
+>> +	if ((u32)buf % 4 || length % 4)
+>> +		regset16(NFI_CNFG_REG16, CNFG_BYTE_RW);
+>> +	else
+>> +		regclr16(NFI_CNFG_REG16, CNFG_BYTE_RW);
+>> +
+>> +	if ((u32)buf % 4 || length % 4) {
+>> +		for (i = 0; (i < (length)) && (timeout > 0);) {
+>> +			if (regread16(NFI_PIO_DIRDY_REG16) & 1) {
+>> +				regwrite32(NFI_DATAW_REG32, *buf++);
+>> +				i++;
+>> +			} else {
+>> +				timeout--;
+>> +			}
+>> +			if (timeout == 0) {
+>> +				pr_warn("mt7621-nand: %s timeout\n", __func__);
+>> +				return false;
+>> +			}
+>> +		}
+>> +	} else {
+>> +		for (i = 0; (i < (length >> 2)) && (timeout > 0);) {
+>> +			if (regread16(NFI_PIO_DIRDY_REG16) & 1) {
+>> +				regwrite32(NFI_DATAW_REG32, *buf32++);
+>> +				i++;
+>> +			} else {
+>> +				timeout--;
+>> +			}
+>> +			if (timeout == 0) {
+>> +				pr_warn("mt7621-nand: %s timeout\n", __func__);
+>> +				return false;
+>> +			}
+>> +		}
+>> +	}
+> 
+> Same stuff.
+> 
+>> +
+>> +	return true;
+>> +}
+>> +
+>> +static void read_fdm_data(u8 *buf, u32 sec)
+>> +{
+>> +	u32 *buf32 = (u32 *)buf;
+>> +	u32 i;
+>> +
+>> +	if (buf32) {
+> 
+> Can this really be NULL?  It doesn't appear to be checked consistently
+> at first glance.
+> 
+>> +		for (i = 0; i < sec; ++i) {
+>> +			*buf32++ = regread32(NFI_FDM0L_REG32 + (i << 3));
+>> +			*buf32++ = regread32(NFI_FDM0M_REG32 + (i << 3));
+>> +		}
+>> +	}
+>> +}
+>> +
+>> +static u8 fdm_buf[64];
+> 
+> Why is this static and why is outside the scope of the function?  It
+> raises concerns about race conditions.  It's not large, so it could
+> be declared on the stack, no?
+> 
+>> +
+>> +static void write_fdm_data(struct nand_chip *chip, u8 *buf, u32 sec)
+>> +{
+>> +	struct nand_oobfree *free_entry;
+>> +	bool empty = true;
+>> +	u8 checksum = 0;
+>> +	u32 *buf32;
+>> +	u32 i, j;
+>> +
+>> +	memcpy(fdm_buf, buf, sec * 8);
+>> +
+>> +	free_entry = layout->oobfree;
+>> +	for (i = 0; i < MTD_MAX_OOBFREE_ENTRIES && free_entry[i].length; i++) {
+>> +		for (j = 0; j < free_entry[i].length; j++) {
+>> +			if (buf[free_entry[i].offset + j] != 0xff)
+>> +				empty = false;
+>> +			checksum ^= buf[free_entry[i].offset + j];
+>> +		}
+>> +	}
+>> +
+>> +	if (!empty)
+>> +		fdm_buf[free_entry[i - 1].offset + free_entry[i - 1].length] =
+>> +			checksum;
+>> +
+>> +	buf32 = (u32 *)fdm_buf;
+>> +	for (i = 0; i < sec; ++i) {
+>> +		regwrite32(NFI_FDM0L_REG32 + (i << 3), *buf32++);
+>> +		regwrite32(NFI_FDM0M_REG32 + (i << 3), *buf32++);
+>> +	}
+>> +}
+>> +
+>> +static void stop_read(void)
+>> +{
+>> +	regclr16(NFI_CON_REG16, CON_NFI_BRD);
+>> +	reset();
+>> +	ecc_decode_end();
+>> +	regwrite16(NFI_INTR_EN_REG16, 0);
+>> +}
+>> +
+>> +static void stop_write(void)
+>> +{
+>> +	regclr16(NFI_CON_REG16, CON_NFI_BWR);
+>> +	ecc_encode_end();
+>> +	regwrite16(NFI_INTR_EN_REG16, 0);
+>> +}
+>> +
+>> +/*
+>> + * This is a copy of the nand_check_erased_buf() function from nand_base.c, to
+>> + * keep the nand_base.c clean
+>> + */
+>> +static int check_erased_buf(void *buf, int len, int bitflips_threshold)
+>> +{
+>> +	const unsigned char *bitmap = buf;
+>> +	int bitflips = 0;
+>> +	int weight;
+>> +
+>> +	for (; len && ((uintptr_t)bitmap) % sizeof(long);
+>> +	     len--, bitmap++) {
+>> +		weight = hweight8(*bitmap);
+>> +		bitflips += BITS_PER_BYTE - weight;
+>> +		if (unlikely(bitflips > bitflips_threshold))
+>> +			return -EBADMSG;
+>> +	}
+>> +
+>> +	for (; len >= sizeof(long);
+>> +	     len -= sizeof(long), bitmap += sizeof(long)) {
+>> +		unsigned long d = *((unsigned long *)bitmap);
+>> +
+>> +		if (d == ~0UL)
+>> +			continue;
+>> +		weight = hweight_long(d);
+>> +		bitflips += BITS_PER_LONG - weight;
+>> +		if (unlikely(bitflips > bitflips_threshold))
+>> +			return -EBADMSG;
+>> +	}
+>> +
+>> +	for (; len > 0; len--, bitmap++) {
+>> +		weight = hweight8(*bitmap);
+>> +		bitflips += BITS_PER_BYTE - weight;
+>> +		if (unlikely(bitflips > bitflips_threshold))
+>> +			return -EBADMSG;
+>> +	}
+>> +
+>> +	return bitflips;
+>> +}
+>> +
+>> +/*
+>> + * This is the modified version of the nand_check_erased_ecc_chunk() in
+>> + * nand_base.c. This driver cannot use the generic function, as the ECC layout
+>> + * is slightly different (the 2k(data)+64(OOB) page is split up in to 4
+>> + * (512-byte data + 16-byte OOB) pages. Each of these sectors have 4-bit ECC,
+>> + * so we check them separately, and allow 4 bitflips / sector.
+>> + * We'll fix up the page to all-0xff only if all sectors in the page appears to
+>> + * be blank
+>> + */
+>> +static int check_erased_ecc_chunk(void *data, int datalen, void *oob,
+>> +				  int ooblen, int bitflips_threshold)
+>> +{
+>> +	int data_bitflips = 0, oob_bitflips = 0;
+> 
+> These initializers can be deleted.
+> 
+>> +
+>> +	data_bitflips = check_erased_buf(data, datalen, bitflips_threshold);
+>> +	if (data_bitflips < 0)
+>> +		return data_bitflips;
+>> +
+>> +	bitflips_threshold -= data_bitflips;
+>> +
+>> +	oob_bitflips = check_erased_buf(oob, ooblen, bitflips_threshold);
+>> +	if (oob_bitflips < 0)
+>> +		return oob_bitflips;
+>> +
+>> +	bitflips_threshold -= oob_bitflips;
+> 
+> No need for this.  It's a no-op.
+> 
+>> +	return data_bitflips + oob_bitflips;
+>> +}
+>> +
+>> +static int read_oob_raw(struct mtd_info *mtd, u8 *buf, int page, int len)
+>> +{
+>> +	struct nand_chip *chip = mtd_to_nand(mtd);
+>> +	int sec_num = 1 << (chip->page_shift - 9);
+>> +	int spare_per_sector = mtd->oobsize / sec_num;
+>> +	u32 column = 0;
+>> +	u32 sector = 0;
+>> +	int res = 0;
+>> +	int read_len = 0;
+>> +
+>> +	if (len > NAND_MAX_OOBSIZE || len % OOB_AVAI_PER_SECTOR || !buf) {
+>> +		pr_warn("mt7621-nand: invalid parameter, len: %d, buf: %p\n",
+>> +			len, buf);
+>> +		return -EINVAL;
+>> +	}
+>> +
+>> +	while (len > 0) {
+>> +		read_len = min(len, spare_per_sector);
+>> +		column = NAND_SECTOR_SIZE +
+>> +			 sector * (NAND_SECTOR_SIZE + spare_per_sector);
+>> +		if (!ready_for_read(chip, page, column, false, NULL)) {
+>> +			pr_warn("mt7621-nand: ready_for_read() failed\n");
+>> +			res = -EIO;
+>> +			goto error;
+>> +		}
+>> +		if (!mcu_read_data(buf + spare_per_sector * sector, read_len)) {
+>> +			pr_warn("mt7621-nand: mcu_read_data() failed\n");
+>> +			res = -EIO;
+>> +			goto error;
+>> +		}
+>> +		check_RW_count(read_len);
+>> +		stop_read();
+>> +		sector++;
+>> +		len -= read_len;
+>> +	}
+>> +
+>> +error:
+>> +	regclr16(NFI_CON_REG16, CON_NFI_BRD);
+>> +	return res;
+>> +}
+>> +
+>> +static int write_oob_raw(struct mtd_info *mtd, const u8 *buf, int page, int len)
+>> +{
+>> +	struct nand_chip *chip = mtd_to_nand(mtd);
+>> +	int sec_num = 1 << (chip->page_shift - 9);
+>> +	int spare_per_sector = mtd->oobsize / sec_num;
+>> +	u32 column = 0;
+>> +	u32 sector = 0;
+>> +	int write_len = 0;
+>> +	int status;
+>> +
+>> +	if (len > NAND_MAX_OOBSIZE || len % OOB_AVAI_PER_SECTOR || !buf) {
+>> +		pr_warn("mt7621-nand: invalid parameter, len: %d, buf: %p\n",
+>> +			len, buf);
+>> +		return -EINVAL;
+>> +	}
+>> +
+>> +	while (len > 0) {
+>> +		write_len = min(len, spare_per_sector);
+>> +		column = sector * (NAND_SECTOR_SIZE + spare_per_sector) +
+>> +			 NAND_SECTOR_SIZE;
+>> +		if (!ready_for_write(chip, page, column, false, NULL))
+>> +			return -EIO;
+>> +		if (!mcu_write_data(mtd, buf + sector * spare_per_sector,
+>> +				    write_len))
+>> +			return -EIO;
+>> +		check_RW_count(write_len);
+>> +		regclr16(NFI_CON_REG16, CON_NFI_BWR);
+>> +		set_command(NAND_CMD_PAGEPROG);
+>> +		while (regread32(NFI_STA_REG32) & STA_NAND_BUSY)
+>> +			;
+>> +		status = chip->legacy.waitfunc(chip);
+>> +		if (status & NAND_STATUS_FAIL) {
+>> +			pr_warn("mt7621-nand: failed status: %d\n", status);
+>> +			return -EIO;
+>> +		}
+>> +		len -= write_len;
+>> +		sector++;
+>> +	}
+>> +
+>> +	return 0;
+>> +}
+>> +
+>> +static int exec_read_page(struct mtd_info *mtd, u32 row, u32 page_size,
+>> +			  u8 *buf, u8 *fdmbuf)
+>> +{
+>> +	struct nand_chip *chip = mtd_to_nand(mtd);
+>> +	struct host *host = nand_get_controller_data(chip);
+>> +	u32 sec = page_size >> 9;
+>> +	int corrected = 0;
+>> +
+>> +	host->last_failed = 0;
+>> +
+>> +	if (ready_for_read(chip, row, 0, true, buf)) {
+> 
+> Flip this around:
+> 
+> 	if (!ready_for_read(chip, row, 0, true, buf))
+> 		return -EIO;
+> 
+> 
+>> +		int j;
+>> +
+>> +		for (j = 0; j < sec; j++) {
+>> +			int ret;
+>> +
+>> +			if (!mcu_read_data(buf + j * 512, 512)) {
+>> +				corrected = -EIO;
+>> +				break;
+>> +			}
+>> +			if (!check_dececc_done(j + 1)) {
+>> +				corrected = -EIO;
+>> +				break;
+>> +			}
+>> +			ret = check_bch_error(mtd, buf + j * 512, j, row);
+>> +			if (ret < 0) {
+>> +				corrected = ret;
+>> +				if (ret != -EBADMSG)
+>> +					break;
+>> +			} else if (corrected >= 0) {
+>> +				corrected = max_t(int, corrected, ret);
+>> +			}
+>> +		}
+>> +		if (!status_ready(STA_NAND_BUSY))
+>> +			corrected = -EIO;
+>> +
+>> +		read_fdm_data(fdmbuf, sec);
+>> +		stop_read();
+>> +	} else {
+>> +		corrected = -EIO;
+>> +	}
+>> +
+>> +	if (corrected == -EBADMSG) {
+>> +		u32 local_oob_aligned[NAND_MAX_OOBSIZE / sizeof(u32)];
+>> +		u8 *local_oob = (u8 *)local_oob_aligned;
+>> +		int ret;
+>> +
+>> +		/*
+>> +		 * If there was an uncorrectable ECC error, check if it is a
+>> +		 * blank page with bit-flips. For this, we check the number of
+>> +		 * 0s in each sector (including the OOB), which should not
+>> +		 * exceed the ECC strength. Until the number of 0s is lower or
+>> +		 * equal, we consider it as a blank page
+>> +		 */
+>> +		ret = read_oob_raw(mtd, local_oob, row, mtd->oobsize);
+>> +		if (ret == 0) {
+> 
+> Flip this around and do a direct return.
+> 
+> 		if (ret) {
+> 			mtd->ecc_stats.failed += host->last_failed;
+> 			pr_warn("mt7621-nand: %s failed to read oob after ECC error\n",
+> 				__func__);
+> 			return -EBADMSG;
+> 		}
+> 
+> 
+> 
+>> +			int spare_per_sector = mtd->oobsize / sec;
+>> +			int sector_size = page_size / sec;
+>> +			int max_bitflips = 0;
+>> +			u32 corrected = 0;
+> 
+> This "corrected" shadows the earlier "corrected" variable and it's
+> confusing to have two variables in the same function with the same name.
+> 
+>> +			int i;
+>> +
+>> +			for (i = 0; i < sec; i++) {
+>> +				ret = check_erased_ecc_chunk(
+>> +					&buf[i * sector_size], sector_size,
+>> +					&local_oob[i * spare_per_sector],
+>> +					spare_per_sector, chip->ecc.strength);
+>> +				if (ret < 0)
+>> +					break;
+> 
+> Change this break to a return.
+> 
+> 			if (ret < 0) {
+> 				mtd->ecc_stats.failed += host->last_failed;
+> 				pr_err("mt7621-nand: uncorrectable ECC errors at page=%d\n",
+> 				       row);
+> 				return -EBADMSG;
+> 			}
+> 
+> 
+> 
+>> +
+>> +				max_bitflips = max_t(int, max_bitflips, ret);
+>> +				corrected += ret;
+>> +			}
+>> +
+>> +			if (ret >= 0) {
+>> +				mtd->ecc_stats.corrected += corrected;
+>> +
+>> +				memset(buf, 0xff, page_size);
+>> +				memset(fdmbuf, 0xff, sizeof(u32) * 2 * sec);
+>> +
+>> +				corrected = max_bitflips;
+> 
+> This looks like a bug caused by the two "corrected" variables.  Just do
+> 
+> 			return max_bitflips;
+> 
+> 
+>> +			} else {
+>> +				mtd->ecc_stats.failed += host->last_failed;
+>> +				pr_err("mt7621-nand: uncorrectable ECC errors at page=%d\n",
+>> +				       row);
+>> +			}
+>> +		} else {
+>> +			mtd->ecc_stats.failed += host->last_failed;
+>> +			pr_warn("mt7621-nand: %s failed to read oob after ECC error\n",
+>> +				__func__);
+>> +			/* Keep return value as -EBADMSG */
+>> +		}
+>> +	}
+>> +
+>> +	return corrected;
+>> +}
+>> +
+>> +static int exec_write_page(struct mtd_info *mtd, u32 row,
+>> +			   u32 page_size, u8 *buf, u8 *fdmbuf)
+>> +{
+>> +	struct nand_chip *chip = mtd_to_nand(mtd);
+>> +	u32 sec = page_size >> 9;
+>> +	u8 status;
+>> +
+>> +	if (ready_for_write(chip, row, 0, true, buf)) {
+> 
+> Shouldn't we return -EIO if we're not ready?
+> 
+>> +		write_fdm_data(chip, fdmbuf, sec);
+>> +		mcu_write_data(mtd, buf, page_size);
+>> +		check_RW_count(page_size);
+>> +		stop_write();
+>> +		set_command(NAND_CMD_PAGEPROG);
+>> +		while (regread32(NFI_STA_REG32) & STA_NAND_BUSY)
+>> +			;
+>> +	}
+>> +
+>> +	status = chip->legacy.waitfunc(chip);
+>> +	if (status & NAND_STATUS_FAIL)
+>> +		return -EIO;
+>> +	return 0;
+>> +}
+>> +
+>> +static void command_bp(struct nand_chip *chip, unsigned int command,
+>> +		       int column, int page)
+>> +{
+>> +	struct mtd_info *mtd = nand_to_mtd(chip);
+>> +
+>> +	switch (command) {
+>> +	case NAND_CMD_SEQIN:
+>> +		memset(host->OOB, 0xff, sizeof(host->OOB));
+>> +		host->data_buf = NULL;
+>> +		host->row = page;
+>> +		host->column = column;
+>> +		break;
+>> +
+>> +	case NAND_CMD_PAGEPROG:
+>> +		if (host->data_buf || (host->OOB[0] != 0xff)) {
+>> +			u8 *buf = host->data_buf ? host->data_buf
+>> +						 : chip->data_buf;
+>> +
+>> +			exec_write_page(mtd, host->row, mtd->writesize,
+>> +					buf, host->OOB);
+>> +			host->row = (u32)-1;
+>> +			host->OOBrow = (u32)-1;
+>> +		}
+>> +		break;
+>> +
+>> +	case NAND_CMD_READOOB:
+>> +		host->row = page;
+>> +		host->column = column + mtd->writesize;
+>> +		break;
+>> +
+>> +	case NAND_CMD_READ0:
+>> +		host->row = page;
+>> +		host->column = column;
+>> +		break;
+>> +
+>> +	case NAND_CMD_ERASE1:
+>> +		reset();
+>> +		set_mode(CNFG_OP_ERASE);
+>> +		set_command(NAND_CMD_ERASE1);
+>> +		set_address(0, page, 0, host->addr_cycles - 2);
+>> +		break;
+>> +
+>> +	case NAND_CMD_ERASE2:
+>> +		set_command(NAND_CMD_ERASE2);
+>> +		while (regread32(NFI_STA_REG32) & STA_NAND_BUSY)
+>> +			;
+>> +		break;
+>> +
+>> +	case NAND_CMD_STATUS:
+>> +		reset();
+>> +		regclr16(NFI_CNFG_REG16, CNFG_BYTE_RW);
+>> +		set_mode(CNFG_OP_SRD);
+>> +		set_mode(CNFG_READ_EN);
+>> +		regclr16(NFI_CNFG_REG16, CNFG_AHB);
+>> +		regclr16(NFI_CNFG_REG16, CNFG_HW_ECC_EN);
+>> +		set_command(NAND_CMD_STATUS);
+>> +		regclr16(NFI_CON_REG16, CON_NFI_NOB_MASK);
+>> +		regwrite16(NFI_CON_REG16,
+>> +			   CON_NFI_SRD | (1 << CON_NFI_NOB_SHIFT));
+>> +		host->cmdstatus = true;
+>> +		break;
+>> +
+>> +	case NAND_CMD_RESET:
+>> +		reset();
+>> +		regwrite16(NFI_INTR_EN_REG16, INTR_RST_DONE_EN);
+>> +		set_command(NAND_CMD_RESET);
+>> +		regwrite16(NFI_CNRNB_REG16, 0xf1);
+>> +		while (!(regread16(NFI_INTR_REG16) & INTR_RST_DONE_EN))
+>> +			;
+>> +		break;
+>> +
+>> +	case NAND_CMD_READID:
+>> +		reset();
+>> +		/* Disable HW ECC */
+>> +		regclr16(NFI_CNFG_REG16, CNFG_HW_ECC_EN);
+>> +		regclr16(NFI_CNFG_REG16, CNFG_AHB);
+>> +		regset16(NFI_CNFG_REG16, CNFG_READ_EN | CNFG_BYTE_RW);
+>> +		reset();
+>> +		set_mode(CNFG_OP_SRD);
+>> +		set_command(NAND_CMD_READID);
+>> +		set_address(0, 0, 1, 0);
+>> +		regwrite16(NFI_CON_REG16, CON_NFI_SRD);
+>> +		while (regread32(NFI_STA_REG32) & STA_DATAR_STATE)
+>> +			;
+>> +		break;
+>> +
+>> +	default:
+>> +		pr_err("mt7621-nand: unknown NAND command, 0x%x\n", command);
+>> +		break;
+>> +	}
+>> +}
+>> +
+>> +static void set_ecc_mode(struct mtd_info *mtd)
+>> +{
+>> +	struct nand_chip *chip = mtd_to_nand(mtd);
+>> +	u32 spare_per_sector = mtd->oobsize / (mtd->writesize / 512);
+>> +	u32 spare_bit = PAGEFMT_SPARE_16;
+>> +	u32 ecc_bit = 4;
+>> +
+>> +	if (spare_per_sector >= 28) {
+>> +		spare_bit = PAGEFMT_SPARE_28;
+>> +		ecc_bit = 12;
+>> +		spare_per_sector = 28;
+>> +	} else if (spare_per_sector >= 27) {
+>> +		spare_bit = PAGEFMT_SPARE_27;
+>> +		ecc_bit = 8;
+>> +		spare_per_sector = 27;
+>> +	} else if (spare_per_sector >= 26) {
+>> +		spare_bit = PAGEFMT_SPARE_26;
+>> +		ecc_bit = 8;
+>> +		spare_per_sector = 26;
+>> +	} else if (spare_per_sector >= 16) {
+>> +		spare_bit = PAGEFMT_SPARE_16;
+>> +		ecc_bit = 4;
+>> +		spare_per_sector = 16;
+>> +	} else {
+>> +		pr_warn("mt7621-nand: NFI not support oobsize: %x\n",
+>> +			spare_per_sector);
+>> +	}
+>> +	chip->ecc.strength = ecc_bit;
+>> +	mtd->oobsize = spare_per_sector * (mtd->writesize / 512);
+>> +	pr_info("mt7621-nand: ecc bit: %d, spare_per_sector: %d\n",
+>> +		ecc_bit, spare_per_sector);
+>> +
+>> +	/* Setup PageFormat */
+>> +	if (mtd->writesize == 4096) {
+>> +		regset16(NFI_PAGEFMT_REG16,
+>> +			 (spare_bit << PAGEFMT_SPARE_SHIFT) | PAGEFMT_4K);
+>> +		chip->legacy.cmdfunc = command_bp;
+>> +	} else if (mtd->writesize == 2048) {
+>> +		regset16(NFI_PAGEFMT_REG16,
+>> +			 (spare_bit << PAGEFMT_SPARE_SHIFT) | PAGEFMT_2K);
+>> +		chip->legacy.cmdfunc = command_bp;
+>> +	}
+>> +	ecc_config(ecc_bit);
+>> +}
+>> +
+>> +static void select_chip(struct nand_chip *chip, int nr)
+>> +{
+>> +	switch (nr) {
+>> +	case -1:
+>> +		break;
+>> +	case 0:
+>> +	case 1:
+>> +		/* Jun Shen, 2011.04.13 */
+> 
+> These sorts of dates comments aren't useful.
+> 
+>> +		/* Note: MT6577 EVB NAND is mounted on CS0, but FPGA is CS1 */
+>> +		regwrite16(NFI_CSEL_REG16, nr);
+>> +		/* Jun Shen, 2011.04.13 */
+> 
+> Delete.
+> 
+>> +		break;
+>> +	}
+>> +}
+>> +
+>> +static u8 read_byte(struct nand_chip *chip)
+>> +{
+>> +	u8 retval = 0;
+> 
+> Delete initializer.  This is just turning off GCC's check for
+> uninitialized variables.  It also turns on an unused assignment warning.
+> We haven't enabled it but we'd like to.  I haven't commented on every
+> bogus initializer that I saw, but I probably should have... :/
+> 
+>> +
+>> +	if (!pio_ready()) {
+>> +		pr_err("mt7621-nand: pio ready timeout\n");
+>> +		retval = false;
+> 
+> Return here?  Unused assignment.  This bug would have been caught if
+> we could turn on that GCC warning I was just mentioning.  :P
+> 
+> False is sort of weird here because this function returns a u8 instead
+> of a bool.
+> 
+>> +	}
+>> +
+>> +	if (host->cmdstatus) {
+> 
+> Flip this around:
+> 
+> 	if (!host->cmdstatus)
+> 		return regread8(NFI_DATAR_REG32);
+> 
+>> +		retval = regread8(NFI_DATAR_REG32);
+>> +		regclr16(NFI_CON_REG16, CON_NFI_NOB_MASK);
+>> +		reset();
+>> +		regset16(NFI_CNFG_REG16, CNFG_HW_ECC_EN);
+>> +		host->cmdstatus = false;
+>> +	} else {
+>> +		retval = regread8(NFI_DATAR_REG32);
+>> +	}
+>> +
+>> +	return retval;
+>> +}
+>> +
+>> +static void read_buf(struct nand_chip *chip, u8 *buf, int len)
+>> +{
+>> +	struct mtd_info *mtd = nand_to_mtd(chip);
+>> +	u32 page_size = mtd->writesize;
+>> +	u32 column = host->column;
+>> +
+>> +	if (column < page_size) {
+>> +		if ((column == 0) && (len >= page_size)) {
+>> +			exec_read_page(mtd, host->row, page_size, buf,
+>> +				       host->OOB);
+>> +			if (len > page_size) {
+>> +				u32 size;
+>> +
+>> +				size = min(len - page_size, sizeof(host->OOB));
+>> +				memcpy(buf + page_size, host->OOB, size);
+>> +			}
+>> +		} else {
+>> +			exec_read_page(mtd, host->row, page_size,
+>> +				       chip->data_buf, host->OOB);
+>> +			memcpy(buf, chip->data_buf + column, len);
+>> +		}
+>> +		host->OOBrow = host->row;
+>> +	} else {
+>> +		u32 offset = column - page_size;
+>> +		u32 size = min(len - offset, sizeof(host->OOB));
+>> +
+>> +		if (host->OOBrow != host->row) {
+>> +			exec_read_page(mtd, host->row, page_size,
+>> +				       chip->data_buf, host->OOB);
+>> +			host->OOBrow = host->row;
+>> +		}
+>> +		memcpy(buf, host->OOB + offset, size);
+>> +	}
+>> +	host->column += len;
+>> +}
+>> +
+>> +static void write_buf(struct nand_chip *chip, const u8 *buf, int len)
+>> +{
+>> +	struct mtd_info *mtd = nand_to_mtd(chip);
+>> +	u32 page_size = mtd->writesize;
+>> +	u32 column = host->column;
+>> +	int size, i;
+>> +
+>> +	if (column >= page_size) {
+>> +		u32 offset = column - page_size;
+>> +		u8 *OOB = host->OOB + offset;
+>> +
+>> +		size = min(len, (int)(sizeof(host->OOB) - offset));
+>> +		for (i = 0; i < size; i++)
+>> +			OOB[i] &= buf[i];
+>> +	} else {
+>> +		host->data_buf = (u8 *)buf;
+>> +	}
+>> +
+>> +	host->column += len;
+>> +}
+>> +
+>> +static int write_page_hwecc(struct nand_chip *chip, const u8 *buf,
+>> +			    int oob_required, int page)
+>> +{
+>> +	struct mtd_info *mtd = nand_to_mtd(chip);
+>> +
+>> +	nand_prog_page_begin_op(chip, page, 0, buf, mtd->writesize);
+>> +	write_buf(chip, chip->oob_poi, mtd->oobsize);
+>> +	return nand_prog_page_end_op(chip);
+>> +}
+>> +
+>> +static int read_page_hwecc(struct nand_chip *chip, u8 *buf,
+>> +			   int oob_required, int page)
+>> +{
+>> +	struct mtd_info *mtd = nand_to_mtd(chip);
+>> +	int corrected;
+>> +
+>> +	corrected = exec_read_page(mtd, page, mtd->writesize,
+>> +				   buf, chip->oob_poi);
+>> +
+>> +	return (corrected == -EBADMSG) ? 0 : corrected;
+>> +}
+>> +
+>> +static int write_oob_hw(struct nand_chip *chip, int page)
+>> +{
+>> +	struct mtd_info *mtd = nand_to_mtd(chip);
+>> +	int sec_num = 1 << (chip->page_shift - 9);
+>> +	int spare_per_sector = mtd->oobsize / sec_num;
+>> +	int i, iter;
+>> +
+>> +	memcpy(local_oob_buf, chip->oob_poi, mtd->oobsize);
+> 
+> The concern with this buffer would be locking again.  But I haven't
+> looked at it.
+> 
+>> +
+>> +	/* copy ecc data */
+>> +	for (i = 0; i < layout->eccbytes; i++) {
+>> +		iter = (i / (spare_per_sector - OOB_AVAI_PER_SECTOR)) *
+>> +		       spare_per_sector +
+>> +		       OOB_AVAI_PER_SECTOR +
+>> +		       i % (spare_per_sector - OOB_AVAI_PER_SECTOR);
+>> +		local_oob_buf[iter] = chip->oob_poi[layout->eccpos[i]];
+>> +	}
+>> +
+>> +	/* copy FDM data */
+>> +	for (i = 0; i < sec_num; i++)
+>> +		memcpy(&local_oob_buf[i * spare_per_sector],
+>> +		       &chip->oob_poi[i * OOB_AVAI_PER_SECTOR],
+>> +		       OOB_AVAI_PER_SECTOR);
+>> +
+>> +	return write_oob_raw(mtd, local_oob_buf, page, mtd->oobsize);
+>> +}
+>> +
+>> +static int write_oob(struct nand_chip *chip, int page)
+>> +{
+>> +	int page_per_block = 1 << (chip->phys_erase_shift - chip->page_shift);
+>> +	int block = page / page_per_block;
+>> +	int page_in_block = page % page_per_block;
+>> +
+>> +	if (write_oob_hw(chip, page_in_block + block * page_per_block)) {
+>> +		pr_warn("mt7621-nand: write oob fail at block: 0x%x, page: 0x%x\n",
+>> +			block, page_in_block);
+>> +		return NAND_STATUS_FAIL;
+>> +	}
+>> +
+>> +	return 0;
+>> +}
+>> +
+>> +static int read_oob_hw(struct nand_chip *chip, int page)
+>> +{
+>> +	struct mtd_info *mtd = nand_to_mtd(chip);
+>> +	int sec_num = 1 << (chip->page_shift - 9);
+>> +	int spare_per_sector = mtd->oobsize / sec_num;
+>> +	int i;
+>> +	u8 iter = 0;
+>> +
+>> +	if (read_oob_raw(mtd, chip->oob_poi, page, mtd->oobsize)) {
+>> +		pr_err("mt7621-nand: read_oob_raw() return failed\n");
+>> +		return -EIO;
+>> +	}
+>> +
+>> +	/* adjust to ecc physical layout to memory layout */
+>> +	/*********************************************************/
+>> +	/* FDM0 | ECC0 | FDM1 | ECC1 | FDM2 | ECC2 | FDM3 | ECC3 */
+>> +	/*  8B  |  8B  |  8B  |  8B  |  8B  |  8B  |  8B  |  8B  */
+>> +	/*********************************************************/
+>> +
+>> +	memcpy(local_oob_buf, chip->oob_poi, mtd->oobsize);
+>> +
+>> +	/* copy ecc data */
+>> +	for (i = 0; i < layout->eccbytes; i++) {
+>> +		iter = (i / (spare_per_sector - OOB_AVAI_PER_SECTOR)) *
+>> +		       spare_per_sector +
+>> +		       OOB_AVAI_PER_SECTOR +
+>> +		       i % (spare_per_sector - OOB_AVAI_PER_SECTOR);
+>> +		chip->oob_poi[layout->eccpos[i]] = local_oob_buf[iter];
+>> +	}
+>> +
+>> +	/* copy FDM data */
+>> +	for (i = 0; i < sec_num; i++)
+>> +		memcpy(&chip->oob_poi[i * OOB_AVAI_PER_SECTOR],
+>> +		       &local_oob_buf[i * spare_per_sector],
+>> +		       OOB_AVAI_PER_SECTOR);
+>> +
+>> +	return 0;
+>> +}
+>> +
+>> +static int read_oob(struct nand_chip *chip, int page)
+>> +{
+>> +	int page_per_block = 1 << (chip->phys_erase_shift - chip->page_shift);
+>> +	int block = page / page_per_block;
+>> +	int page_in_block = page % page_per_block;
+>> +
+>> +	if (read_oob_hw(chip, page_in_block + block * page_per_block) != 0)
+>> +		return -1;
+> 
+> It would be better to preserve the error code from read_oob_hw()
+> 
+>> +	return 0;
+>> +}
+>> +
+>> +static int block_bad_hw(struct nand_chip *chip, loff_t ofs)
+>> +{
+>> +	struct mtd_info *mtd = nand_to_mtd(chip);
+>> +	int page = (int)(ofs >> chip->page_shift);
+>> +	unsigned int page_per_block;
+>> +	u8 oob_buf[8];
+>> +
+>> +	page_per_block = 1 << (chip->phys_erase_shift - chip->page_shift);
+>> +	page &= ~(page_per_block - 1);
+>> +	if (read_oob_raw(mtd, oob_buf, page, sizeof(oob_buf))) {
+>> +		pr_warn("mt7621-nand: read_oob_raw() failed\n");
+>> +		return 1;
+>> +	}
+>> +
+>> +	if (oob_buf[0] != 0xff) {
+>> +		pr_warn("mt7621-nand: bad block detected at page=%d\n", page);
+>> +		return 1;
+>> +	}
+>> +
+>> +	return 0;
+>> +}
+>> +
+>> +static int block_bad(struct nand_chip *chip, loff_t ofs)
+>> +{
+>> +	int block = (int)ofs >> chip->phys_erase_shift;
+>> +
+>> +	return block_bad_hw(chip, block << chip->phys_erase_shift);
+>> +}
+>> +
+>> +static void init_hw(struct host *host)
+>> +{
+>> +	host->OOBrow = (u32)-1;
+>> +
+>> +	/* Set default NFI access timing control */
+>> +	regwrite32(NFI_ACCCON_REG32, host->access_timing);
+>> +	regwrite16(NFI_CNFG_REG16, 0);
+>> +	regwrite16(NFI_PAGEFMT_REG16, 0);
+>> +
+>> +	/* Reset the state machine and data FIFO, because flushing FIFO */
+>> +	reset();
+>> +
+>> +	/* Set the ECC engine */
+>> +	if (host->nand_chip.ecc.mode == NAND_ECC_HW) {
+>> +		regset16(NFI_CNFG_REG16, CNFG_HW_ECC_EN);
+>> +		ecc_config(4);
+>> +		configure_fdm(8);
+>> +		configure_lock();
+>> +	}
+>> +
+>> +	regset16(NFI_IOCON_REG16, 0x47);
+>> +}
+>> +
+>> +static int dev_ready(struct nand_chip *chip)
+>> +{
+>> +	return !(regread32(NFI_STA_REG32) & STA_NAND_BUSY);
+>> +}
+>> +
+>> +static int oob_mt7621_ooblayout_ecc(struct mtd_info *mtd, int section,
+>> +				    struct mtd_oob_region *oobregion)
+>> +{
+>> +	oobregion->length = 8;
+>> +	oobregion->offset = layout->eccpos[section * 8];
+>> +	return 0;
+>> +}
+>> +
+>> +static int oob_mt7621_ooblayout_free(struct mtd_info *mtd, int section,
+>> +				     struct mtd_oob_region *oobregion)
+>> +{
+>> +	if (section >= (layout->eccbytes / 8))
+>> +		return -ERANGE;
+>> +	oobregion->offset = layout->oobfree[section].offset;
+>> +	oobregion->length = layout->oobfree[section].length;
+>> +	return 0;
+>> +}
+>> +
+>> +/*
+>> + * Code to support the legacy mediatek nand flash bad block table.
+>> + * The default for this driver is to use the standard Linux bad block
+>> + * table format. However you need a new boot loader that supports that.
+>> + * The old (and most often used) medaitek boot loaders use their own
+>> + * BBT format, and this code implements that. There is a devicetree
+>> + * binding that enables use of this.
+>> + */
+>> +#define BBT_BLOCK_NUM_DEFAULT	32
+>> +#define BBT_OOB_SIGNATURE	1
+>> +#define BBT_SIGNATURE_LEN	7
+>> +
+>> +static const u8 oob_signature[] = "mtknand";
+>> +static u32 bbt_size;
+>> +
+>> +static int read_legacy_bbt_page(struct mtd_info *mtd, unsigned int page)
+>> +{
+>> +	struct nand_chip *chip = mtd_to_nand(mtd);
+>> +
+>> +	if (read_oob_hw(chip, page) == 0) {
+> 
+> Flip this around.  Preserve the error code.
+> 
+>> +		int corrected;
+>> +
+>> +		if (chip->oob_poi[0] != 0xff) {
+>> +			pr_info("mt7621-nand: Bad Block on page=%d\n", page);
+>> +			return -ENODEV;
+>> +		}
+>> +		if (memcmp(&chip->oob_poi[BBT_OOB_SIGNATURE], oob_signature,
+>> +			   BBT_SIGNATURE_LEN) != 0) {
+>> +			pr_info("mt7621-nand: no BBT signature, page=%d\n",
+>> +				page);
+>> +			return -EINVAL;
+>> +		}
+>> +		corrected = exec_read_page(mtd, page, mtd->writesize,
+>> +					   chip->data_buf, chip->oob_poi);
+>> +		if (corrected >= 0) {
+> 
+> Flip this.  Always to error handling instead of success handling.  The
+> error path should be indented two tabs and the success path one tab.
+> 
+> 		if (corrected < 0)
+> 			return -EIO;
+> 
+> 
+> 
+> 
+>> +			int bbt_bytes = (bbt_size <= mtd->writesize)
+>> +					? bbt_size
+>> +					: mtd->writesize;
+>> +
+>> +			pr_info("mt7621-nand: BBT signature match, page=%d\n",
+>> +				page);
+>> +			memcpy(chip->bbt, chip->data_buf, bbt_bytes);
+>> +			return 0;
+>> +		}
+>> +	}
+>> +
+>> +	pr_err("mt7621-nand: legacy BBT read failed at page %d\n", page);
+>> +	return -EIO;
+>> +}
+>> +
+>> +static int load_legacy_bbt(struct mtd_info *mtd)
+>> +{
+>> +	struct nand_chip *chip = mtd_to_nand(mtd);
+>> +	struct host *host = nand_get_controller_data(chip);
+>> +	u32 blocks;
+>> +	int i;
+>> +
+>> +	blocks = 0x1 << (chip->chip_shift - chip->phys_erase_shift);
+>> +	bbt_size = blocks >> 2;
+> 
+> Why are we dividing by four here?  I would have thought that this was
+> supposed to be a multply by sizeof(u32) or something.
+> 
+> Normal divide and multiply are more readable than shifts.
+> 
+> I hate these globals.  It should be saved as chip->bbt_size = size;
+> 
+>> +
+>> +	if (!chip->bbt) {
+>> +		chip->bbt = kzalloc(bbt_size, GFP_KERNEL);
+>> +		if (!chip->bbt)
+>> +			return -ENOMEM;
+>> +	}
+>> +
+>> +	for (i = blocks - 1; i >= (blocks - host->legacybbt_block_num); i--) {
+>> +		int page = i << (chip->phys_erase_shift - chip->page_shift);
+>> +
+>> +		if (read_legacy_bbt_page(mtd, page) == 0) {
+> 
+> It's weird that this only has to succeed once instead of every time but
+> I don't know this code well.
+> 
+>> +			pr_info("mt7621-nand: loading BBT success (%d)\n",
+>> +				page);
+>> +			return 0;
+>> +		}
+>> +	}
+>> +
+>> +	pr_err("mt7621-nand: loading Bad Block Table failed\n");
+>> +	return -ENODEV;
+>> +}
+>> +
+>> +static int mt7621_nand_attach(struct nand_chip *chip)
+>> +{
+>> +	struct mtd_info *mtd = nand_to_mtd(chip);
+>> +	int i;
+>> +
+>> +	set_ecc_mode(mtd);
+>> +
+>> +	if (nanddev_target_size(&chip->base) < (256 * 1024 * 1024))
+>> +		host->addr_cycles = 4;
+>> +
+>> +	/* allocate buffers or call select_chip here or a bit earlier*/
+>> +	chip->data_buf = kzalloc(mtd->writesize + mtd->oobsize, GFP_KERNEL);
+>> +	chip->ecc.calc_buf = kzalloc(mtd->oobsize, GFP_KERNEL);
+>> +	chip->ecc.code_buf = kzalloc(mtd->oobsize, GFP_KERNEL);
+>> +	if (!chip->data_buf || !chip->ecc.calc_buf || !chip->ecc.code_buf)
+>> +		return -ENOMEM;
+> 
+> This seems leaky.  Do it like this?
+> 
+> 	chip->data_buf = kzalloc(mtd->writesize + mtd->oobsize, GFP_KERNEL);
+> 	if (!chip->data_buf)
+> 		return -ENOMEM;
+> 
+> 	hip->ecc.calc_buf = kzalloc(mtd->oobsize, GFP_KERNEL);
+> 	if (!hip->ecc.calc_buf) {
+> 		ret = -ENOMEM;
+> 		goto free_data_buf;
+> 	}
+> 
+> 	chip->ecc.code_buf = kzalloc(mtd->oobsize, GFP_KERNEL);
+> 	if (!chip->ecc.code_buf) {
+> 		ret = -ENOMEM;
+> 		goto free_calc_buf;
+> 	}
+> 
+> 	.... // <-- other code
+> 
+> 	return 0;
+> 
+> free_calc_buf:
+> 	kfree(chip->ecc.calc_buf);
+> free_data_buf:
+> 	kfree(chip->data_buf);
+> 
+> 	return ret;
+> 
+> Is there no detach function?
+> 
+> void mt7621_nand_dettach()
+> {
+> 	kfree(chip->ecc.code_buf);
+> 	kfree(chip->ecc.calc_buf);
+> 	kfree(chip->data_buf);
+> }
+> 
+> regards,
+> dan carpenter
+> 
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
