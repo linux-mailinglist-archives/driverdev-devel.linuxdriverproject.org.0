@@ -1,68 +1,88 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B1C54F5483
-	for <lists+driverdev-devel@lfdr.de>; Fri,  8 Nov 2019 20:14:16 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B31CBF549F
+	for <lists+driverdev-devel@lfdr.de>; Fri,  8 Nov 2019 20:42:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id B0967235AE;
-	Fri,  8 Nov 2019 19:14:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B64DD87E45;
+	Fri,  8 Nov 2019 19:42:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sFYok68DWgWN; Fri,  8 Nov 2019 19:14:14 +0000 (UTC)
+	with ESMTP id i4J1ot3KPSDt; Fri,  8 Nov 2019 19:42:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id CD8BB23528;
-	Fri,  8 Nov 2019 19:14:12 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DA94587BD4;
+	Fri,  8 Nov 2019 19:42:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8BD6C1BF2C8
- for <devel@linuxdriverproject.org>; Fri,  8 Nov 2019 19:14:10 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B34DB1BF3A7
+ for <devel@linuxdriverproject.org>; Fri,  8 Nov 2019 19:42:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 889FF23504
- for <devel@linuxdriverproject.org>; Fri,  8 Nov 2019 19:14:10 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id AF3788631C
+ for <devel@linuxdriverproject.org>; Fri,  8 Nov 2019 19:42:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vRM5juB5f3Tk for <devel@linuxdriverproject.org>;
- Fri,  8 Nov 2019 19:14:09 +0000 (UTC)
+ with ESMTP id 1hOAFPzm2o2r for <devel@linuxdriverproject.org>;
+ Fri,  8 Nov 2019 19:42:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f197.google.com (mail-il1-f197.google.com
- [209.85.166.197])
- by silver.osuosl.org (Postfix) with ESMTPS id 93FD121503
- for <devel@driverdev.osuosl.org>; Fri,  8 Nov 2019 19:14:09 +0000 (UTC)
-Received: by mail-il1-f197.google.com with SMTP id x17so7880386ill.7
- for <devel@driverdev.osuosl.org>; Fri, 08 Nov 2019 11:14:09 -0800 (PST)
+Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 57FB086311
+ for <devel@driverdev.osuosl.org>; Fri,  8 Nov 2019 19:42:48 +0000 (UTC)
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 7679E4E83C
+ for <devel@driverdev.osuosl.org>; Fri,  8 Nov 2019 19:42:47 +0000 (UTC)
+Received: by mail-wr1-f69.google.com with SMTP id w9so3008912wrn.9
+ for <devel@driverdev.osuosl.org>; Fri, 08 Nov 2019 11:42:47 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:date:message-id:subject:from:to;
- bh=m6WBr8JhldJsCHGo+l8MVKtDCmIYXLcSEAEq3QAgNQM=;
- b=faoL94fZuaLSDUKgq6W824wICXC9u8SHh1YL7ViBCrejmyB2Wn6Y0iHj2iyaykVCdU
- mvHr6lQyC5drHT3S6E8u4PeEIFv98sDtuUmLpb25sGttXAK8AlKxZwCY0M0P/FdGjS4O
- YtZoAkEZc92lAxLpqzM5MUxKjupcjJ2Z/QyA5X7jWBCycnvtmJGVmUkpl0HXSpq7aJEn
- GX+7khzfPZtRdnrhRbNOGBOCQ0ph3pQFNtVyaM0HeHRA3Tn4hwqg2AiPolzFAw+eAbo9
- X4das+GDwMxht+NfcK0IW+b55RDJhlhPQA/gKwZ/uY7R56q6Bbp2YB7ZhmZwbMlJPQqK
- yHFQ==
-X-Gm-Message-State: APjAAAWlxKMcKQXzWz0b5et0GkFDR98a/DozcF+JItUoubYkKeL3SpAA
- adHpjrayJpWeg147FOt6kCxPbgVa6qxUixXEe4Kfqqpne03b
-X-Google-Smtp-Source: APXvYqzxESX9ewsNLy+icmQIbXyev1khcj7aj6dMItQPL8fJwi+pRBvozfPDfP8OAHURCedOOa9RY/LUPnbXMBy/L8hH+RuegjFJ
-MIME-Version: 1.0
-X-Received: by 2002:a92:5fd3:: with SMTP id i80mr3594383ill.275.1573240448805; 
- Fri, 08 Nov 2019 11:14:08 -0800 (PST)
-Date: Fri, 08 Nov 2019 11:14:08 -0800
-X-Google-Appengine-App-Id: s~syzkaller
-X-Google-Appengine-App-Id-Alias: syzkaller
-Message-ID: <00000000000018f5440596da964b@google.com>
-Subject: kernel BUG at arch/x86/kvm/mmu.c:LINE! (2)
-From: syzbot <syzbot+824609cfabee9c6e153c@syzkaller.appspotmail.com>
-To: abbotti@mev.co.uk, bp@alien8.de, devel@driverdev.osuosl.org, 
- gregkh@linuxfoundation.org, hpa@zytor.com, hsweeten@visionengravers.com, 
- jmattson@google.com, joro@8bytes.org, kvm@vger.kernel.org, 
- linux-kernel@vger.kernel.org, mingo@redhat.com, olsonse@umich.edu, 
- pbonzini@redhat.com, rkrcmar@redhat.com, sean.j.christopherson@intel.com, 
- syzkaller-bugs@googlegroups.com, tglx@linutronix.de, vkuznets@redhat.com, 
+ h=x-gm-message-state:subject:to:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=hC59yqiltYn4vvyKnCEG+/GKT1N5JkWniSQcOQlyHmc=;
+ b=Cjh8Lzzf3Hob422lgdY8g3x/zezsAssoQKi/vd1G5v8P06sJfisQRHdhGCbPlu3eGJ
+ RrapbOo9cwQ4RkbXZx3ACoEFsDzJ26OTPHT9Y8190srLtCZRm3X1+HA17fKTNST8t1Sc
+ BxdCqr0J5ZCSATfnba1ykcAUiMv0ZDtdembaVHh9aDgQ6p7wNM05rEW9FxzVauyUnUxL
+ LEVw6z6W3ht61LHz/kfzInPD1QmVEiCP2uTOXrtkznc319VJHhx8GJnOE1ODsZRO2n1T
+ IUyTzRKEM8bYTTjfze9oOLCaDJMOtHm6NDhArrvLQqqdmjClrUiol04qaZyyp+iJaXnB
+ ReEw==
+X-Gm-Message-State: APjAAAUrdyssR3XwR3yzmhiL3nGSPtYf94deEAiJzHg767GuGibQUjBL
+ ocslfhiZetWgKmck9RXOFdincSFtiGI3GTlt9bl9f00NYRwR2cj/gLMFuWOT27COzLrSwqvweqs
+ JW2uboVBnuoxDQO1Im9S7lw==
+X-Received: by 2002:a5d:4ecd:: with SMTP id s13mr10490061wrv.216.1573242166032; 
+ Fri, 08 Nov 2019 11:42:46 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzZrG7rZe8SIDZ8LBTBdzCrruPtLQvP7N7cD4A29kVchgyhUWiqVUhF8K4meBoi8TlF+y75AA==
+X-Received: by 2002:a5d:4ecd:: with SMTP id s13mr10490028wrv.216.1573242165669; 
+ Fri, 08 Nov 2019 11:42:45 -0800 (PST)
+Received: from ?IPv6:2001:b07:6468:f312:e8cd:9f0f:a5dc:7ad5?
+ ([2001:b07:6468:f312:e8cd:9f0f:a5dc:7ad5])
+ by smtp.gmail.com with ESMTPSA id 16sm10182438wmf.0.2019.11.08.11.42.43
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 08 Nov 2019 11:42:45 -0800 (PST)
+Subject: Re: kernel BUG at arch/x86/kvm/mmu.c:LINE! (2)
+To: syzbot <syzbot+824609cfabee9c6e153c@syzkaller.appspotmail.com>,
+ abbotti@mev.co.uk, bp@alien8.de, devel@driverdev.osuosl.org,
+ gregkh@linuxfoundation.org, hpa@zytor.com, hsweeten@visionengravers.com,
+ jmattson@google.com, joro@8bytes.org, kvm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, mingo@redhat.com, olsonse@umich.edu,
+ rkrcmar@redhat.com, sean.j.christopherson@intel.com,
+ syzkaller-bugs@googlegroups.com, tglx@linutronix.de, vkuznets@redhat.com,
  wanpengli@tencent.com, x86@kernel.org
+References: <00000000000018f5440596da964b@google.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <dd6b9b2c-a6d7-43a3-2e71-2cc5e2066673@redhat.com>
+Date: Fri, 8 Nov 2019 20:42:43 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
+MIME-Version: 1.0
+In-Reply-To: <00000000000018f5440596da964b@google.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,122 +95,116 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"; DelSp="yes"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,
-
-syzbot found the following crash on:
-
-HEAD commit:    847120f8 Merge branch 'for-linus' of git://git.kernel.org/..
-git tree:       upstream
-console output: https://syzkaller.appspot.com/x/log.txt?x=12d60164e00000
-kernel config:  https://syzkaller.appspot.com/x/.config?x=8c5e2eca3f31f9bf
-dashboard link: https://syzkaller.appspot.com/bug?extid=824609cfabee9c6e153c
-compiler:       gcc (GCC) 9.0.0 20181231 (experimental)
-syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=16e2a12ce00000
-C reproducer:   https://syzkaller.appspot.com/x/repro.c?x=13314994e00000
-
-The bug was bisected to:
-
-commit 1ffe8bdc09f8bfcaad76d71ae68b623c7e03f20f
-Author: Spencer E. Olson <olsonse@umich.edu>
-Date:   Mon Oct 10 14:14:19 2016 +0000
-
-     staging: comedi: ni_mio_common: split out ao arming from ni_ao_inttrig
-
-bisection log:  https://syzkaller.appspot.com/x/bisect.txt?x=122977fae00000
-console output: https://syzkaller.appspot.com/x/log.txt?x=162977fae00000
-
-IMPORTANT: if you fix the bug, please add the following tag to the commit:
-Reported-by: syzbot+824609cfabee9c6e153c@syzkaller.appspotmail.com
-Fixes: 1ffe8bdc09f8 ("staging: comedi: ni_mio_common: split out ao arming  
-from ni_ao_inttrig")
-
-L1TF CPU bug present and SMT on, data leak possible. See CVE-2018-3646 and  
-https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/l1tf.html for  
-details.
-------------[ cut here ]------------
-kernel BUG at arch/x86/kvm/mmu.c:3324!
-invalid opcode: 0000 [#1] PREEMPT SMP KASAN
-CPU: 0 PID: 8688 Comm: syz-executor906 Not tainted 5.4.0-rc6+ #0
-Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS  
-Google 01/01/2011
-RIP: 0010:transparent_hugepage_adjust+0x490/0x530 arch/x86/kvm/mmu.c:3324
-Code: 63 00 48 8b 45 b8 48 83 e8 01 e9 19 fd ff ff e8 36 3c 63 00 48 8b 45  
-b8 48 83 e8 01 48 89 45 c8 e9 a1 fd ff ff e8 20 3c 63 00 <0f> 0b 48 89 df  
-e8 66 9e 9e 00 e9 9f fb ff ff 4c 89 ff e8 59 9e 9e
-RSP: 0018:ffff88809753f690 EFLAGS: 00010293
-RAX: ffff88809549e6c0 RBX: ffff88809753f778 RCX: ffffffff810fe787
-RDX: 0000000000000000 RSI: ffffffff810fe8c0 RDI: 0000000000000007
-RBP: ffff88809753f6d8 R08: ffff88809549e6c0 R09: ffffed10131ed682
-R10: ffffed10131ed681 R11: ffff888098f6b40b R12: ffff88809753f768
-R13: 0000000000000083 R14: 000000000008fe81 R15: 0000000000000000
-FS:  000000000158e880(0000) GS:ffff8880ae800000(0000) knlGS:0000000000000000
-CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-CR2: 0000000000000000 CR3: 000000009f2a4000 CR4: 00000000001426f0
-DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
-Call Trace:
-  tdp_page_fault+0x56e/0x650 arch/x86/kvm/mmu.c:4216
-  kvm_mmu_page_fault+0x1dd/0x1800 arch/x86/kvm/mmu.c:5439
-  handle_ept_violation+0x259/0x560 arch/x86/kvm/vmx/vmx.c:5185
-  vmx_handle_exit+0x29f/0x1730 arch/x86/kvm/vmx/vmx.c:5929
-  vcpu_enter_guest arch/x86/kvm/x86.c:8227 [inline]
-  vcpu_run arch/x86/kvm/x86.c:8291 [inline]
-  kvm_arch_vcpu_ioctl_run+0x1cb8/0x70d0 arch/x86/kvm/x86.c:8498
-  kvm_vcpu_ioctl+0x4dc/0xfc0 arch/x86/kvm/../../../virt/kvm/kvm_main.c:2772
-  vfs_ioctl fs/ioctl.c:46 [inline]
-  file_ioctl fs/ioctl.c:509 [inline]
-  do_vfs_ioctl+0xdb6/0x13e0 fs/ioctl.c:696
-  ksys_ioctl+0xab/0xd0 fs/ioctl.c:713
-  __do_sys_ioctl fs/ioctl.c:720 [inline]
-  __se_sys_ioctl fs/ioctl.c:718 [inline]
-  __x64_sys_ioctl+0x73/0xb0 fs/ioctl.c:718
-  do_syscall_64+0xfa/0x760 arch/x86/entry/common.c:290
-  entry_SYSCALL_64_after_hwframe+0x49/0xbe
-RIP: 0033:0x443f49
-Code: 18 89 d0 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 00 48 89 f8 48 89 f7  
-48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff  
-ff 0f 83 7b d8 fb ff c3 66 2e 0f 1f 84 00 00 00 00
-RSP: 002b:00007ffd991d67d8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
-RAX: ffffffffffffffda RBX: 00000000004002e0 RCX: 0000000000443f49
-RDX: 0000000000000000 RSI: 000000000000ae80 RDI: 0000000000000006
-RBP: 00000000006ce018 R08: 00000000004002e0 R09: 00000000004002e0
-R10: 00000000004002e0 R11: 0000000000000246 R12: 0000000000401c50
-R13: 0000000000401ce0 R14: 0000000000000000 R15: 0000000000000000
-Modules linked in:
----[ end trace 911095bae56804bc ]---
-RIP: 0010:transparent_hugepage_adjust+0x490/0x530 arch/x86/kvm/mmu.c:3324
-Code: 63 00 48 8b 45 b8 48 83 e8 01 e9 19 fd ff ff e8 36 3c 63 00 48 8b 45  
-b8 48 83 e8 01 48 89 45 c8 e9 a1 fd ff ff e8 20 3c 63 00 <0f> 0b 48 89 df  
-e8 66 9e 9e 00 e9 9f fb ff ff 4c 89 ff e8 59 9e 9e
-RSP: 0018:ffff88809753f690 EFLAGS: 00010293
-RAX: ffff88809549e6c0 RBX: ffff88809753f778 RCX: ffffffff810fe787
-RDX: 0000000000000000 RSI: ffffffff810fe8c0 RDI: 0000000000000007
-RBP: ffff88809753f6d8 R08: ffff88809549e6c0 R09: ffffed10131ed682
-R10: ffffed10131ed681 R11: ffff888098f6b40b R12: ffff88809753f768
-R13: 0000000000000083 R14: 000000000008fe81 R15: 0000000000000000
-FS:  000000000158e880(0000) GS:ffff8880ae800000(0000) knlGS:0000000000000000
-CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-CR2: 0000000000000000 CR3: 000000009f2a4000 CR4: 00000000001426f0
-DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
-
-
----
-This bug is generated by a bot. It may contain errors.
-See https://goo.gl/tpsmEJ for more information about syzbot.
-syzbot engineers can be reached at syzkaller@googlegroups.com.
-
-syzbot will keep track of this bug report. See:
-https://goo.gl/tpsmEJ#status for how to communicate with syzbot.
-For information about bisection process see: https://goo.gl/tpsmEJ#bisection
-syzbot can test patches for this bug, for details see:
-https://goo.gl/tpsmEJ#testing-patches
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+I3N5eiBkdXA6ICBLQVNBTjogc2xhYi1vdXQtb2YtYm91bmRzIFJlYWQgaW4gaGFuZGxlX3ZtcHRy
+bGQKCk9uIDA4LzExLzE5IDIwOjE0LCBzeXpib3Qgd3JvdGU6Cj4gSGVsbG8sCj4gCj4gc3l6Ym90
+IGZvdW5kIHRoZSBmb2xsb3dpbmcgY3Jhc2ggb246Cj4gCj4gSEVBRCBjb21taXQ6wqDCoMKgIDg0
+NzEyMGY4IE1lcmdlIGJyYW5jaCAnZm9yLWxpbnVzJyBvZgo+IGdpdDovL2dpdC5rZXJuZWwub3Jn
+Ly4uCj4gZ2l0IHRyZWU6wqDCoMKgwqDCoMKgIHVwc3RyZWFtCj4gY29uc29sZSBvdXRwdXQ6IGh0
+dHBzOi8vc3l6a2FsbGVyLmFwcHNwb3QuY29tL3gvbG9nLnR4dD94PTEyZDYwMTY0ZTAwMDAwCj4g
+a2VybmVsIGNvbmZpZzrCoCBodHRwczovL3N5emthbGxlci5hcHBzcG90LmNvbS94Ly5jb25maWc/
+eD04YzVlMmVjYTNmMzFmOWJmCj4gZGFzaGJvYXJkIGxpbms6Cj4gaHR0cHM6Ly9zeXprYWxsZXIu
+YXBwc3BvdC5jb20vYnVnP2V4dGlkPTgyNDYwOWNmYWJlZTljNmUxNTNjCj4gY29tcGlsZXI6wqDC
+oMKgwqDCoMKgIGdjYyAoR0NDKSA5LjAuMCAyMDE4MTIzMSAoZXhwZXJpbWVudGFsKQo+IHN5eiBy
+ZXBybzrCoMKgwqDCoMKgIGh0dHBzOi8vc3l6a2FsbGVyLmFwcHNwb3QuY29tL3gvcmVwcm8uc3l6
+P3g9MTZlMmExMmNlMDAwMDAKPiBDIHJlcHJvZHVjZXI6wqDCoCBodHRwczovL3N5emthbGxlci5h
+cHBzcG90LmNvbS94L3JlcHJvLmM/eD0xMzMxNDk5NGUwMDAwMAo+IAo+IFRoZSBidWcgd2FzIGJp
+c2VjdGVkIHRvOgo+IAo+IGNvbW1pdCAxZmZlOGJkYzA5ZjhiZmNhYWQ3NmQ3MWFlNjhiNjIzYzdl
+MDNmMjBmCj4gQXV0aG9yOiBTcGVuY2VyIEUuIE9sc29uIDxvbHNvbnNlQHVtaWNoLmVkdT4KPiBE
+YXRlOsKgwqAgTW9uIE9jdCAxMCAxNDoxNDoxOSAyMDE2ICswMDAwCj4gCj4gwqDCoMKgIHN0YWdp
+bmc6IGNvbWVkaTogbmlfbWlvX2NvbW1vbjogc3BsaXQgb3V0IGFvIGFybWluZyBmcm9tIG5pX2Fv
+X2ludHRyaWcKPiAKPiBiaXNlY3Rpb24gbG9nOsKgIGh0dHBzOi8vc3l6a2FsbGVyLmFwcHNwb3Qu
+Y29tL3gvYmlzZWN0LnR4dD94PTEyMjk3N2ZhZTAwMDAwCj4gY29uc29sZSBvdXRwdXQ6IGh0dHBz
+Oi8vc3l6a2FsbGVyLmFwcHNwb3QuY29tL3gvbG9nLnR4dD94PTE2Mjk3N2ZhZTAwMDAwCj4gCj4g
+SU1QT1JUQU5UOiBpZiB5b3UgZml4IHRoZSBidWcsIHBsZWFzZSBhZGQgdGhlIGZvbGxvd2luZyB0
+YWcgdG8gdGhlIGNvbW1pdDoKPiBSZXBvcnRlZC1ieTogc3l6Ym90KzgyNDYwOWNmYWJlZTljNmUx
+NTNjQHN5emthbGxlci5hcHBzcG90bWFpbC5jb20KPiBGaXhlczogMWZmZThiZGMwOWY4ICgic3Rh
+Z2luZzogY29tZWRpOiBuaV9taW9fY29tbW9uOiBzcGxpdCBvdXQgYW8KPiBhcm1pbmcgZnJvbSBu
+aV9hb19pbnR0cmlnIikKPiAKPiBMMVRGIENQVSBidWcgcHJlc2VudCBhbmQgU01UIG9uLCBkYXRh
+IGxlYWsgcG9zc2libGUuIFNlZSBDVkUtMjAxOC0zNjQ2Cj4gYW5kIGh0dHBzOi8vd3d3Lmtlcm5l
+bC5vcmcvZG9jL2h0bWwvbGF0ZXN0L2FkbWluLWd1aWRlL2h3LXZ1bG4vbDF0Zi5odG1sCj4gZm9y
+IGRldGFpbHMuCj4gLS0tLS0tLS0tLS0tWyBjdXQgaGVyZSBdLS0tLS0tLS0tLS0tCj4ga2VybmVs
+IEJVRyBhdCBhcmNoL3g4Ni9rdm0vbW11LmM6MzMyNCEKPiBpbnZhbGlkIG9wY29kZTogMDAwMCBb
+IzFdIFBSRUVNUFQgU01QIEtBU0FOCj4gQ1BVOiAwIFBJRDogODY4OCBDb21tOiBzeXotZXhlY3V0
+b3I5MDYgTm90IHRhaW50ZWQgNS40LjAtcmM2KyAjMAo+IEhhcmR3YXJlIG5hbWU6IEdvb2dsZSBH
+b29nbGUgQ29tcHV0ZSBFbmdpbmUvR29vZ2xlIENvbXB1dGUgRW5naW5lLCBCSU9TCj4gR29vZ2xl
+IDAxLzAxLzIwMTEKPiBSSVA6IDAwMTA6dHJhbnNwYXJlbnRfaHVnZXBhZ2VfYWRqdXN0KzB4NDkw
+LzB4NTMwIGFyY2gveDg2L2t2bS9tbXUuYzozMzI0Cj4gQ29kZTogNjMgMDAgNDggOGIgNDUgYjgg
+NDggODMgZTggMDEgZTkgMTkgZmQgZmYgZmYgZTggMzYgM2MgNjMgMDAgNDggOGIKPiA0NSBiOCA0
+OCA4MyBlOCAwMSA0OCA4OSA0NSBjOCBlOSBhMSBmZCBmZiBmZiBlOCAyMCAzYyA2MyAwMCA8MGY+
+IDBiIDQ4Cj4gODkgZGYgZTggNjYgOWUgOWUgMDAgZTkgOWYgZmIgZmYgZmYgNGMgODkgZmYgZTgg
+NTkgOWUgOWUKPiBSU1A6IDAwMTg6ZmZmZjg4ODA5NzUzZjY5MCBFRkxBR1M6IDAwMDEwMjkzCj4g
+UkFYOiBmZmZmODg4MDk1NDllNmMwIFJCWDogZmZmZjg4ODA5NzUzZjc3OCBSQ1g6IGZmZmZmZmZm
+ODEwZmU3ODcKPiBSRFg6IDAwMDAwMDAwMDAwMDAwMDAgUlNJOiBmZmZmZmZmZjgxMGZlOGMwIFJE
+STogMDAwMDAwMDAwMDAwMDAwNwo+IFJCUDogZmZmZjg4ODA5NzUzZjZkOCBSMDg6IGZmZmY4ODgw
+OTU0OWU2YzAgUjA5OiBmZmZmZWQxMDEzMWVkNjgyCj4gUjEwOiBmZmZmZWQxMDEzMWVkNjgxIFIx
+MTogZmZmZjg4ODA5OGY2YjQwYiBSMTI6IGZmZmY4ODgwOTc1M2Y3NjgKPiBSMTM6IDAwMDAwMDAw
+MDAwMDAwODMgUjE0OiAwMDAwMDAwMDAwMDhmZTgxIFIxNTogMDAwMDAwMDAwMDAwMDAwMAo+IEZT
+OsKgIDAwMDAwMDAwMDE1OGU4ODAoMDAwMCkgR1M6ZmZmZjg4ODBhZTgwMDAwMCgwMDAwKQo+IGtu
+bEdTOjAwMDAwMDAwMDAwMDAwMDAKPiBDUzrCoCAwMDEwIERTOiAwMDAwIEVTOiAwMDAwIENSMDog
+MDAwMDAwMDA4MDA1MDAzMwo+IENSMjogMDAwMDAwMDAwMDAwMDAwMCBDUjM6IDAwMDAwMDAwOWYy
+YTQwMDAgQ1I0OiAwMDAwMDAwMDAwMTQyNmYwCj4gRFIwOiAwMDAwMDAwMDAwMDAwMDAwIERSMTog
+MDAwMDAwMDAwMDAwMDAwMCBEUjI6IDAwMDAwMDAwMDAwMDAwMDAKPiBEUjM6IDAwMDAwMDAwMDAw
+MDAwMDAgRFI2OiAwMDAwMDAwMGZmZmUwZmYwIERSNzogMDAwMDAwMDAwMDAwMDQwMAo+IENhbGwg
+VHJhY2U6Cj4gwqB0ZHBfcGFnZV9mYXVsdCsweDU2ZS8weDY1MCBhcmNoL3g4Ni9rdm0vbW11LmM6
+NDIxNgo+IMKga3ZtX21tdV9wYWdlX2ZhdWx0KzB4MWRkLzB4MTgwMCBhcmNoL3g4Ni9rdm0vbW11
+LmM6NTQzOQo+IMKgaGFuZGxlX2VwdF92aW9sYXRpb24rMHgyNTkvMHg1NjAgYXJjaC94ODYva3Zt
+L3ZteC92bXguYzo1MTg1Cj4gwqB2bXhfaGFuZGxlX2V4aXQrMHgyOWYvMHgxNzMwIGFyY2gveDg2
+L2t2bS92bXgvdm14LmM6NTkyOQo+IMKgdmNwdV9lbnRlcl9ndWVzdCBhcmNoL3g4Ni9rdm0veDg2
+LmM6ODIyNyBbaW5saW5lXQo+IMKgdmNwdV9ydW4gYXJjaC94ODYva3ZtL3g4Ni5jOjgyOTEgW2lu
+bGluZV0KPiDCoGt2bV9hcmNoX3ZjcHVfaW9jdGxfcnVuKzB4MWNiOC8weDcwZDAgYXJjaC94ODYv
+a3ZtL3g4Ni5jOjg0OTgKPiDCoGt2bV92Y3B1X2lvY3RsKzB4NGRjLzB4ZmMwIGFyY2gveDg2L2t2
+bS8uLi8uLi8uLi92aXJ0L2t2bS9rdm1fbWFpbi5jOjI3NzIKPiDCoHZmc19pb2N0bCBmcy9pb2N0
+bC5jOjQ2IFtpbmxpbmVdCj4gwqBmaWxlX2lvY3RsIGZzL2lvY3RsLmM6NTA5IFtpbmxpbmVdCj4g
+wqBkb192ZnNfaW9jdGwrMHhkYjYvMHgxM2UwIGZzL2lvY3RsLmM6Njk2Cj4gwqBrc3lzX2lvY3Rs
+KzB4YWIvMHhkMCBmcy9pb2N0bC5jOjcxMwo+IMKgX19kb19zeXNfaW9jdGwgZnMvaW9jdGwuYzo3
+MjAgW2lubGluZV0KPiDCoF9fc2Vfc3lzX2lvY3RsIGZzL2lvY3RsLmM6NzE4IFtpbmxpbmVdCj4g
+wqBfX3g2NF9zeXNfaW9jdGwrMHg3My8weGIwIGZzL2lvY3RsLmM6NzE4Cj4gwqBkb19zeXNjYWxs
+XzY0KzB4ZmEvMHg3NjAgYXJjaC94ODYvZW50cnkvY29tbW9uLmM6MjkwCj4gwqBlbnRyeV9TWVND
+QUxMXzY0X2FmdGVyX2h3ZnJhbWUrMHg0OS8weGJlCj4gUklQOiAwMDMzOjB4NDQzZjQ5Cj4gQ29k
+ZTogMTggODkgZDAgYzMgNjYgMmUgMGYgMWYgODQgMDAgMDAgMDAgMDAgMDAgMGYgMWYgMDAgNDgg
+ODkgZjggNDggODkKPiBmNyA0OCA4OSBkNiA0OCA4OSBjYSA0ZCA4OSBjMiA0ZCA4OSBjOCA0YyA4
+YiA0YyAyNCAwOCAwZiAwNSA8NDg+IDNkIDAxCj4gZjAgZmYgZmYgMGYgODMgN2IgZDggZmIgZmYg
+YzMgNjYgMmUgMGYgMWYgODQgMDAgMDAgMDAgMDAKPiBSU1A6IDAwMmI6MDAwMDdmZmQ5OTFkNjdk
+OCBFRkxBR1M6IDAwMDAwMjQ2IE9SSUdfUkFYOiAwMDAwMDAwMDAwMDAwMDEwCj4gUkFYOiBmZmZm
+ZmZmZmZmZmZmZmRhIFJCWDogMDAwMDAwMDAwMDQwMDJlMCBSQ1g6IDAwMDAwMDAwMDA0NDNmNDkK
+PiBSRFg6IDAwMDAwMDAwMDAwMDAwMDAgUlNJOiAwMDAwMDAwMDAwMDBhZTgwIFJESTogMDAwMDAw
+MDAwMDAwMDAwNgo+IFJCUDogMDAwMDAwMDAwMDZjZTAxOCBSMDg6IDAwMDAwMDAwMDA0MDAyZTAg
+UjA5OiAwMDAwMDAwMDAwNDAwMmUwCj4gUjEwOiAwMDAwMDAwMDAwNDAwMmUwIFIxMTogMDAwMDAw
+MDAwMDAwMDI0NiBSMTI6IDAwMDAwMDAwMDA0MDFjNTAKPiBSMTM6IDAwMDAwMDAwMDA0MDFjZTAg
+UjE0OiAwMDAwMDAwMDAwMDAwMDAwIFIxNTogMDAwMDAwMDAwMDAwMDAwMAo+IE1vZHVsZXMgbGlu
+a2VkIGluOgo+IC0tLVsgZW5kIHRyYWNlIDkxMTA5NWJhZTU2ODA0YmMgXS0tLQo+IFJJUDogMDAx
+MDp0cmFuc3BhcmVudF9odWdlcGFnZV9hZGp1c3QrMHg0OTAvMHg1MzAgYXJjaC94ODYva3ZtL21t
+dS5jOjMzMjQKPiBDb2RlOiA2MyAwMCA0OCA4YiA0NSBiOCA0OCA4MyBlOCAwMSBlOSAxOSBmZCBm
+ZiBmZiBlOCAzNiAzYyA2MyAwMCA0OCA4Ygo+IDQ1IGI4IDQ4IDgzIGU4IDAxIDQ4IDg5IDQ1IGM4
+IGU5IGExIGZkIGZmIGZmIGU4IDIwIDNjIDYzIDAwIDwwZj4gMGIgNDgKPiA4OSBkZiBlOCA2NiA5
+ZSA5ZSAwMCBlOSA5ZiBmYiBmZiBmZiA0YyA4OSBmZiBlOCA1OSA5ZSA5ZQo+IFJTUDogMDAxODpm
+ZmZmODg4MDk3NTNmNjkwIEVGTEFHUzogMDAwMTAyOTMKPiBSQVg6IGZmZmY4ODgwOTU0OWU2YzAg
+UkJYOiBmZmZmODg4MDk3NTNmNzc4IFJDWDogZmZmZmZmZmY4MTBmZTc4Nwo+IFJEWDogMDAwMDAw
+MDAwMDAwMDAwMCBSU0k6IGZmZmZmZmZmODEwZmU4YzAgUkRJOiAwMDAwMDAwMDAwMDAwMDA3Cj4g
+UkJQOiBmZmZmODg4MDk3NTNmNmQ4IFIwODogZmZmZjg4ODA5NTQ5ZTZjMCBSMDk6IGZmZmZlZDEw
+MTMxZWQ2ODIKPiBSMTA6IGZmZmZlZDEwMTMxZWQ2ODEgUjExOiBmZmZmODg4MDk4ZjZiNDBiIFIx
+MjogZmZmZjg4ODA5NzUzZjc2OAo+IFIxMzogMDAwMDAwMDAwMDAwMDA4MyBSMTQ6IDAwMDAwMDAw
+MDAwOGZlODEgUjE1OiAwMDAwMDAwMDAwMDAwMDAwCj4gRlM6wqAgMDAwMDAwMDAwMTU4ZTg4MCgw
+MDAwKSBHUzpmZmZmODg4MGFlODAwMDAwKDAwMDApCj4ga25sR1M6MDAwMDAwMDAwMDAwMDAwMAo+
+IENTOsKgIDAwMTAgRFM6IDAwMDAgRVM6IDAwMDAgQ1IwOiAwMDAwMDAwMDgwMDUwMDMzCj4gQ1Iy
+OiAwMDAwMDAwMDAwMDAwMDAwIENSMzogMDAwMDAwMDA5ZjJhNDAwMCBDUjQ6IDAwMDAwMDAwMDAx
+NDI2ZjAKPiBEUjA6IDAwMDAwMDAwMDAwMDAwMDAgRFIxOiAwMDAwMDAwMDAwMDAwMDAwIERSMjog
+MDAwMDAwMDAwMDAwMDAwMAo+IERSMzogMDAwMDAwMDAwMDAwMDAwMCBEUjY6IDAwMDAwMDAwZmZm
+ZTBmZjAgRFI3OiAwMDAwMDAwMDAwMDAwNDAwCj4gCj4gCj4gLS0tCj4gVGhpcyBidWcgaXMgZ2Vu
+ZXJhdGVkIGJ5IGEgYm90LiBJdCBtYXkgY29udGFpbiBlcnJvcnMuCj4gU2VlIGh0dHBzOi8vZ29v
+LmdsL3Rwc21FSiBmb3IgbW9yZSBpbmZvcm1hdGlvbiBhYm91dCBzeXpib3QuCj4gc3l6Ym90IGVu
+Z2luZWVycyBjYW4gYmUgcmVhY2hlZCBhdCBzeXprYWxsZXJAZ29vZ2xlZ3JvdXBzLmNvbS4KPiAK
+PiBzeXpib3Qgd2lsbCBrZWVwIHRyYWNrIG9mIHRoaXMgYnVnIHJlcG9ydC4gU2VlOgo+IGh0dHBz
+Oi8vZ29vLmdsL3Rwc21FSiNzdGF0dXMgZm9yIGhvdyB0byBjb21tdW5pY2F0ZSB3aXRoIHN5emJv
+dC4KPiBGb3IgaW5mb3JtYXRpb24gYWJvdXQgYmlzZWN0aW9uIHByb2Nlc3Mgc2VlOgo+IGh0dHBz
+Oi8vZ29vLmdsL3Rwc21FSiNiaXNlY3Rpb24KPiBzeXpib3QgY2FuIHRlc3QgcGF0Y2hlcyBmb3Ig
+dGhpcyBidWcsIGZvciBkZXRhaWxzIHNlZToKPiBodHRwczovL2dvby5nbC90cHNtRUojdGVzdGlu
+Zy1wYXRjaGVzCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8v
+ZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJk
+ZXYtZGV2ZWwK
