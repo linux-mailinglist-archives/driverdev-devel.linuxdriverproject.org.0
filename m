@@ -1,39 +1,39 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4D6B1F50F3
-	for <lists+driverdev-devel@lfdr.de>; Fri,  8 Nov 2019 17:21:20 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 96DB4F50F4
+	for <lists+driverdev-devel@lfdr.de>; Fri,  8 Nov 2019 17:21:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B234386204;
-	Fri,  8 Nov 2019 16:21:18 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 73C3B23459;
+	Fri,  8 Nov 2019 16:21:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kmPBKgzhmvmM; Fri,  8 Nov 2019 16:21:18 +0000 (UTC)
+	with ESMTP id 27SRMYhAGlEL; Fri,  8 Nov 2019 16:21:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BBB6B85F0E;
-	Fri,  8 Nov 2019 16:21:17 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B6BB52341A;
+	Fri,  8 Nov 2019 16:21:18 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 231811BF370
+ by ash.osuosl.org (Postfix) with ESMTP id A3C4B1BF370
  for <driverdev-devel@linuxdriverproject.org>;
  Fri,  8 Nov 2019 16:21:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 1B10A87E6C
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9F1C087E63
  for <driverdev-devel@linuxdriverproject.org>;
  Fri,  8 Nov 2019 16:21:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id p1f-lTCt5e7p
+ with ESMTP id q3gKYSFJWHj6
  for <driverdev-devel@linuxdriverproject.org>;
- Fri,  8 Nov 2019 16:21:14 +0000 (UTC)
+ Fri,  8 Nov 2019 16:21:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from esa3.microchip.iphmx.com (esa3.microchip.iphmx.com
  [68.232.153.233])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 343AE87E63
+ by hemlock.osuosl.org (Postfix) with ESMTPS id AE8C887E65
  for <driverdev-devel@linuxdriverproject.org>;
  Fri,  8 Nov 2019 16:21:14 +0000 (UTC)
 Received-SPF: Pass (esa3.microchip.iphmx.com: domain of
@@ -58,30 +58,32 @@ Authentication-Results: esa3.microchip.iphmx.com;
  spf=Pass smtp.mailfrom=Christian.Gromm@microchip.com;
  spf=None smtp.helo=postmaster@email.microchip.com;
  dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: BH62hnAHu1QIvC3Og46mI5QH1qTpYChmTZPtu5aJRvkjtebPW0iUe4wZsTYASt6lBKdna4Yuc6
- obYSABFJJKij1hOnVRYr4LK4XN2llvn0gWF7xdtTbaiU1kFuVYwpd0Phnmu4Kx+F/lOeKLDn52
- lI5K9jWF/+t3k0+0LQeDi1tJBXCYZcjIL/xdL/PWtJMdxd2kCZEaBa4oXFdKzTOIOk/QXxVM0Q
- O3xlTRk01NOuY7srFMfjhBac9H4a7x8pVZjEq0DQh0ylpuRpx4P/jwHfFlUgKZ2pqORmsShXe8
- SBw=
-X-IronPort-AV: E=Sophos;i="5.68,282,1569308400"; d="scan'208";a="56257993"
+IronPort-SDR: eVUlL6O9l3wpbRlMl+WaR78iUrojrRwewUDRF6uClW1WUKXGGmqPNIvjhCa30DRQyikX28Z4qr
+ BgsNic7Wumg0+muiWGa/OXmTBIHYjQk36568a/uiLH2HshRPeHwqgigpi1W3NdCZ/FaBQAjkE5
+ xhKkUZJG1BwFdfhaQFukORSiohqIPiBN54zDe5Ds6opZYea96KQypr747Vx0IOW1btnLVQgsU3
+ ysvvh3eJRQToPT4P2bYdLQm1wTt7QicgcwHhDtz2olDUmb66YAv4L+aKd10/RDwVSm3LKdWg4v
+ pV4=
+X-IronPort-AV: E=Sophos;i="5.68,282,1569308400"; d="scan'208";a="56257998"
 Received: from smtpout.microchip.com (HELO email.microchip.com)
  ([198.175.253.82])
  by esa3.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 08 Nov 2019 09:21:13 -0700
+ 08 Nov 2019 09:21:14 -0700
 Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
  chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Fri, 8 Nov 2019 09:21:12 -0700
+ 15.1.1713.5; Fri, 8 Nov 2019 09:21:13 -0700
 Received: from kar-sv-agl01.mchp-main.com (10.10.85.251) by
  chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server id
- 15.1.1713.5 via Frontend Transport; Fri, 8 Nov 2019 09:21:11 -0700
+ 15.1.1713.5 via Frontend Transport; Fri, 8 Nov 2019 09:21:13 -0700
 From: Christian Gromm <christian.gromm@microchip.com>
 To: <gregkh@linuxfoundation.org>
-Subject: [PATCH 0/2] staging: most: prevent module removal if configfs
- directory is populated
-Date: Fri, 8 Nov 2019 17:21:06 +0100
-Message-ID: <1573230068-27658-1-git-send-email-christian.gromm@microchip.com>
+Subject: [PATCH 1/2] staging: most: configfs: move configfs subsystems to
+ container struct
+Date: Fri, 8 Nov 2019 17:21:07 +0100
+Message-ID: <1573230068-27658-2-git-send-email-christian.gromm@microchip.com>
 X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1573230068-27658-1-git-send-email-christian.gromm@microchip.com>
+References: <1573230068-27658-1-git-send-email-christian.gromm@microchip.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -102,28 +104,158 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Currently the core module does not hold any reference to component modules.
-Hence, a component could be unloaded from the system anytime. Even if the
-configuration interface is still being populated with configfs
-items/groups.
-User space then has no chance to fix the usage count by calling rmdir on
-such a config item/group, as the respective directory does not exist
-anymore. In this situation the core module cannot be unloaded anymore.
-This patch set fixes this issue by holding a reference as long as the
-configfs items exist.
+This patch moves the declarations of the configfs subsystems to
+a superordinate container structure. This is done to get access
+to private subsystem data.
 
-Christian Gromm (2):
-  staging: most: configfs: move configfs subsystems to container struct
-  staging: most: block module removal while having active configfs items
+Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
+---
+ drivers/staging/most/configfs.c | 80 +++++++++++++++++++++++------------------
+ 1 file changed, 45 insertions(+), 35 deletions(-)
 
- drivers/staging/most/cdev/cdev.c   |   1 +
- drivers/staging/most/configfs.c    | 118 +++++++++++++++++++++++++------------
- drivers/staging/most/core.h        |   1 +
- drivers/staging/most/net/net.c     |   1 +
- drivers/staging/most/sound/sound.c |   1 +
- drivers/staging/most/video/video.c |   1 +
- 6 files changed, 85 insertions(+), 38 deletions(-)
-
+diff --git a/drivers/staging/most/configfs.c b/drivers/staging/most/configfs.c
+index c06cf84..c292dd3 100644
+--- a/drivers/staging/most/configfs.c
++++ b/drivers/staging/most/configfs.c
+@@ -395,11 +395,12 @@ static const struct config_item_type mdev_link_type = {
+ 
+ struct most_common {
+ 	struct config_group group;
++	struct configfs_subsystem subsys;
+ };
+ 
+-static struct most_common *to_most_common(struct config_item *item)
++static struct most_common *to_most_common(struct configfs_subsystem *subsys)
+ {
+-	return container_of(to_config_group(item), struct most_common, group);
++	return container_of(subsys, struct most_common, subsys);
+ }
+ 
+ static struct config_item *most_common_make_item(struct config_group *group,
+@@ -426,7 +427,9 @@ static struct config_item *most_common_make_item(struct config_group *group,
+ 
+ static void most_common_release(struct config_item *item)
+ {
+-	kfree(to_most_common(item));
++	struct config_group *group = to_config_group(item);
++
++	kfree(to_most_common(group->cg_subsys));
+ }
+ 
+ static struct configfs_item_operations most_common_item_ops = {
+@@ -443,29 +446,35 @@ static const struct config_item_type most_common_type = {
+ 	.ct_owner	= THIS_MODULE,
+ };
+ 
+-static struct configfs_subsystem most_cdev_subsys = {
+-	.su_group = {
+-		.cg_item = {
+-			.ci_namebuf = "most_cdev",
+-			.ci_type = &most_common_type,
++static struct most_common most_cdev = {
++	.subsys = {
++		.su_group = {
++			.cg_item = {
++				.ci_namebuf = "most_cdev",
++				.ci_type = &most_common_type,
++			},
+ 		},
+ 	},
+ };
+ 
+-static struct configfs_subsystem most_net_subsys = {
+-	.su_group = {
+-		.cg_item = {
+-			.ci_namebuf = "most_net",
+-			.ci_type = &most_common_type,
++static struct most_common most_net = {
++	.subsys = {
++		.su_group = {
++			.cg_item = {
++				.ci_namebuf = "most_net",
++				.ci_type = &most_common_type,
++			},
+ 		},
+ 	},
+ };
+ 
+-static struct configfs_subsystem most_video_subsys = {
+-	.su_group = {
+-		.cg_item = {
+-			.ci_namebuf = "most_video",
+-			.ci_type = &most_common_type,
++static struct most_common most_video = {
++	.subsys = {
++		.su_group = {
++			.cg_item = {
++				.ci_namebuf = "most_video",
++				.ci_type = &most_common_type,
++			},
+ 		},
+ 	},
+ };
+@@ -597,16 +606,17 @@ int most_register_configfs_subsys(struct core_component *c)
+ {
+ 	int ret;
+ 
+-	if (!strcmp(c->name, "cdev"))
+-		ret = configfs_register_subsystem(&most_cdev_subsys);
+-	else if (!strcmp(c->name, "net"))
+-		ret = configfs_register_subsystem(&most_net_subsys);
+-	else if (!strcmp(c->name, "video"))
+-		ret = configfs_register_subsystem(&most_video_subsys);
+-	else if (!strcmp(c->name, "sound"))
++	if (!strcmp(c->name, "cdev")) {
++		ret = configfs_register_subsystem(&most_cdev.subsys);
++	} else if (!strcmp(c->name, "net")) {
++		ret = configfs_register_subsystem(&most_net.subsys);
++	} else if (!strcmp(c->name, "video")) {
++		ret = configfs_register_subsystem(&most_video.subsys);
++	} else if (!strcmp(c->name, "sound")) {
+ 		ret = configfs_register_subsystem(&most_sound_subsys.subsys);
+-	else
++	} else {
+ 		return -ENODEV;
++	}
+ 
+ 	if (ret) {
+ 		pr_err("Error %d while registering subsystem %s\n",
+@@ -635,11 +645,11 @@ void most_interface_register_notify(const char *mdev)
+ void most_deregister_configfs_subsys(struct core_component *c)
+ {
+ 	if (!strcmp(c->name, "cdev"))
+-		configfs_unregister_subsystem(&most_cdev_subsys);
++		configfs_unregister_subsystem(&most_cdev.subsys);
+ 	else if (!strcmp(c->name, "net"))
+-		configfs_unregister_subsystem(&most_net_subsys);
++		configfs_unregister_subsystem(&most_net.subsys);
+ 	else if (!strcmp(c->name, "video"))
+-		configfs_unregister_subsystem(&most_video_subsys);
++		configfs_unregister_subsystem(&most_video.subsys);
+ 	else if (!strcmp(c->name, "sound"))
+ 		configfs_unregister_subsystem(&most_sound_subsys.subsys);
+ }
+@@ -647,14 +657,14 @@ EXPORT_SYMBOL_GPL(most_deregister_configfs_subsys);
+ 
+ int __init configfs_init(void)
+ {
+-	config_group_init(&most_cdev_subsys.su_group);
+-	mutex_init(&most_cdev_subsys.su_mutex);
++	config_group_init(&most_cdev.subsys.su_group);
++	mutex_init(&most_cdev.subsys.su_mutex);
+ 
+-	config_group_init(&most_net_subsys.su_group);
+-	mutex_init(&most_net_subsys.su_mutex);
++	config_group_init(&most_net.subsys.su_group);
++	mutex_init(&most_net.subsys.su_mutex);
+ 
+-	config_group_init(&most_video_subsys.su_group);
+-	mutex_init(&most_video_subsys.su_mutex);
++	config_group_init(&most_video.subsys.su_group);
++	mutex_init(&most_video.subsys.su_mutex);
+ 
+ 	config_group_init(&most_sound_subsys.subsys.su_group);
+ 	mutex_init(&most_sound_subsys.subsys.su_mutex);
 -- 
 2.7.4
 
