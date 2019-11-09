@@ -1,76 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3B66CF5BE6
-	for <lists+driverdev-devel@lfdr.de>; Sat,  9 Nov 2019 00:38:58 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5748DF5E13
+	for <lists+driverdev-devel@lfdr.de>; Sat,  9 Nov 2019 09:36:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id F14A28808D;
-	Fri,  8 Nov 2019 23:38:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 285E42152A;
+	Sat,  9 Nov 2019 08:36:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id agtd+SozJmYQ; Fri,  8 Nov 2019 23:38:55 +0000 (UTC)
+	with ESMTP id m20uohvf0ssG; Sat,  9 Nov 2019 08:36:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2E18D88007;
-	Fri,  8 Nov 2019 23:38:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E2C3C20780;
+	Sat,  9 Nov 2019 08:36:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8C6BF1BF863
- for <devel@linuxdriverproject.org>; Fri,  8 Nov 2019 23:38:51 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C61131BF8B4
+ for <devel@linuxdriverproject.org>; Sat,  9 Nov 2019 08:36:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 8200E88007
- for <devel@linuxdriverproject.org>; Fri,  8 Nov 2019 23:38:51 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id BB23D87F1F
+ for <devel@linuxdriverproject.org>; Sat,  9 Nov 2019 08:36:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id c7BpE5QXrd6p for <devel@linuxdriverproject.org>;
- Fri,  8 Nov 2019 23:38:50 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
- [209.85.128.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A11A287F84
- for <devel@driverdev.osuosl.org>; Fri,  8 Nov 2019 23:38:50 +0000 (UTC)
-Received: by mail-wm1-f65.google.com with SMTP id q130so7872026wme.2
- for <devel@driverdev.osuosl.org>; Fri, 08 Nov 2019 15:38:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=+UKZTvPDWmsHFC7K6+7vln2Krr8NV+4r5IwFH4/g7iA=;
- b=SLXL7KbNgDVWhIt3g0CLKrweVuiQ2tecOMwO8rpkUBsBovmz2I8ATstZ1uqNx4rblY
- hQigefWrU//HnYrpiiAO22weqURFrH1sh3YkIGX0i9zpUpjydHkHqjojHrTBh0STRuno
- dgr0iglDwlLQZX+EEtmXT/6ros3pGxxWdH2bg/160JXeMLoyUUbyUt02e9D4Gqc63ttv
- zAjf+1AzUXbp/0XeFajdpDl1EzpEYEOjZnS1nxhP3Ra809Q2Inqfl0lZwZ/OFcytivrA
- M8Sv4/5gTCIlA3lYWu6uf8s0orsr3yg4oXP2jEj0Ub5RsJFquHQzYKLyPycTCaME45sf
- tiEA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=+UKZTvPDWmsHFC7K6+7vln2Krr8NV+4r5IwFH4/g7iA=;
- b=mRHeuU4sMm7C/8Jj5EU2CEu37Iu1Vv+vIsbYFwhTIpwaTvuhouIjt98yAa2seYOGwF
- teG4Ipbtxtt/35QLTrvytYV7Paq3bnbTepqXYS4KHltOxRx94KEX8HXVJPdSSEkZykOm
- Fwi36i0GkBX8sBDP1POIeExfFh/VRplwu4m7dTFasWgCllAATEO1N6zoT+DSuZTUqD5T
- LfKMyLt4cZSDuczmhvTwrGD3NivdEh6DAQTyt7PXGkDIaGBZZK6gHjQgX294wqq3u5yX
- z4gLgwvbFnUrmiimF2cWp8hsyxkdKkrHoYHSw6bz8dFYEvWUiUx+ijn9AjuetaqIXFW7
- UQiw==
-X-Gm-Message-State: APjAAAVadggiDcaZYPK1J9mt2OzOTY88azVX88GZoEWZH0c0C9zfMAZK
- lEQxPHiG63bodEg10K5z4w==
-X-Google-Smtp-Source: APXvYqzd6juKIlk88s6VVET1mp/VJ/opCbhwxL9kotGmWN5WNnELx+KCZuoqjKq8WrcMme3AAc79qQ==
-X-Received: by 2002:a1c:808d:: with SMTP id b135mr9989900wmd.175.1573256328772; 
- Fri, 08 Nov 2019 15:38:48 -0800 (PST)
-Received: from ninjahub.org.net ([94.119.64.34])
- by smtp.googlemail.com with ESMTPSA id t24sm11852431wra.55.2019.11.08.15.38.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Nov 2019 15:38:48 -0800 (PST)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: wfx: add gcc extension __force cast
-Date: Fri,  8 Nov 2019 23:38:37 +0000
-Message-Id: <20191108233837.33378-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.23.0
+ with ESMTP id RbZun0MzgahL for <devel@linuxdriverproject.org>;
+ Sat,  9 Nov 2019 08:36:10 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9436787F12
+ for <devel@driverdev.osuosl.org>; Sat,  9 Nov 2019 08:36:10 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id B4ECC21848;
+ Sat,  9 Nov 2019 08:36:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1573288570;
+ bh=Twvv3SnCCHk7pjSt9HqENuPTFyAh/jYwa0AK4ACbBLw=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=2JL2Pj0EnPAF/mh6hgPfwfrsqjFJomnaurivpy3Vz/op1tZu24nWW91vRVpJwpkEL
+ Nl7AJLoGanUHv9kpY8U/ehsJ8QIS1c/89SSQ1wjdg4mqgAuRBtH/dDd/sbfdy+coN1
+ bwmT7ySi2SNsMQfbmLq82gimKPOsk6SILKF+XKDI=
+Date: Sat, 9 Nov 2019 09:36:07 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Jules Irenge <jbi.octave@gmail.com>
+Subject: Re: [PATCH] staging: wfx: add gcc extension __force cast
+Message-ID: <20191109083607.GB1289162@kroah.com>
+References: <20191108233837.33378-1-jbi.octave@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20191108233837.33378-1-jbi.octave@gmail.com>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,35 +67,41 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, Boqun.Feng@microsoft.com,
- Jules Irenge <jbi.octave@gmail.com>, linux-kernel@vger.kernel.org
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Add gcc extension __force and __le32 cast to fix warning issued by Sparse tool."warning: cast to restricted __le32"
+On Fri, Nov 08, 2019 at 11:38:37PM +0000, Jules Irenge wrote:
+> Add gcc extension __force and __le32 cast to fix warning issued by Sparse tool."warning: cast to restricted __le32"
 
-Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
----
- drivers/staging/wfx/debug.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Can you wrap your lines properly please?
 
-diff --git a/drivers/staging/wfx/debug.c b/drivers/staging/wfx/debug.c
-index 0a9ca109039c..aa7b2dd691b9 100644
---- a/drivers/staging/wfx/debug.c
-+++ b/drivers/staging/wfx/debug.c
-@@ -72,7 +72,7 @@ static int wfx_counters_show(struct seq_file *seq, void *v)
- 		return -EIO;
- 
- #define PUT_COUNTER(name) \
--	seq_printf(seq, "%24s %d\n", #name ":", le32_to_cpu(counters.count_##name))
-+	seq_printf(seq, "%24s %d\n", #name ":", le32_to_cpu((__force __le32)(counters.count_##name)))
- 
- 	PUT_COUNTER(tx_packets);
- 	PUT_COUNTER(tx_multicast_frames);
--- 
-2.23.0
+> 
+> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> ---
+>  drivers/staging/wfx/debug.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/wfx/debug.c b/drivers/staging/wfx/debug.c
+> index 0a9ca109039c..aa7b2dd691b9 100644
+> --- a/drivers/staging/wfx/debug.c
+> +++ b/drivers/staging/wfx/debug.c
+> @@ -72,7 +72,7 @@ static int wfx_counters_show(struct seq_file *seq, void *v)
+>  		return -EIO;
+>  
+>  #define PUT_COUNTER(name) \
+> -	seq_printf(seq, "%24s %d\n", #name ":", le32_to_cpu(counters.count_##name))
+> +	seq_printf(seq, "%24s %d\n", #name ":", le32_to_cpu((__force __le32)(counters.count_##name)))
 
+That's usually a huge hint that something is wrong here.  If the data
+type isn't already le32, then why is the data needed to be printed out
+that way?  Shouldn't the data type itself be fixed instead?
+
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
