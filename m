@@ -1,81 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 80371F6ABC
-	for <lists+driverdev-devel@lfdr.de>; Sun, 10 Nov 2019 19:20:41 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 85FAAF6BA6
+	for <lists+driverdev-devel@lfdr.de>; Sun, 10 Nov 2019 22:35:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3CC53204EE;
-	Sun, 10 Nov 2019 18:20:39 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1C71C87B1D;
+	Sun, 10 Nov 2019 21:35:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Jo7U2pADziEJ; Sun, 10 Nov 2019 18:20:38 +0000 (UTC)
+	with ESMTP id UWSZHDYFYIrg; Sun, 10 Nov 2019 21:35:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 8D42D204F2;
-	Sun, 10 Nov 2019 18:20:36 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C7BC687A9C;
+	Sun, 10 Nov 2019 21:35:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 04F0C1BF418
- for <devel@linuxdriverproject.org>; Sun, 10 Nov 2019 18:20:18 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 766FC1BF297
+ for <devel@linuxdriverproject.org>; Sun, 10 Nov 2019 21:35:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 01B4C845A4
- for <devel@linuxdriverproject.org>; Sun, 10 Nov 2019 18:20:18 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6FA32857EB
+ for <devel@linuxdriverproject.org>; Sun, 10 Nov 2019 21:35:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jgpKOFUr5e3f for <devel@linuxdriverproject.org>;
- Sun, 10 Nov 2019 18:20:16 +0000 (UTC)
+ with ESMTP id Yzed+ywhu205 for <devel@linuxdriverproject.org>;
+ Sun, 10 Nov 2019 21:35:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.15.18])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D460A845A3
- for <devel@driverdev.osuosl.org>; Sun, 10 Nov 2019 18:20:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1573409992;
- bh=T62clJ7TWd59U0C/7J6xbgVZifeNADs/HOl/H6t3fUE=;
- h=X-UI-Sender-Class:Date:From:To:Cc:Subject:References:In-Reply-To;
- b=a8O39flUaNfJzbuouJ5nnyA3+PRA9eubRd29Zpc7ZunGhvSabXYHCr5NpbU6lb6Tp
- qBJ1R/tO0fZ2JwutADPYA+ALppQ9zygSPTyWG0ISJqKMafoS7TBWE+T6RWJglz8H1p
- F9WrCflMkEX4l8f2RAiFBa/e0AZSr/xG5uWwZz3Q=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from ubuntu ([79.150.153.135]) by mail.gmx.com (mrgmx005
- [212.227.17.184]) with ESMTPSA (Nemesis) id 1M7b2d-1iXQio3ISb-0082vF; Sun, 10
- Nov 2019 19:19:51 +0100
-Date: Sun, 10 Nov 2019 19:19:35 +0100
-From: Pedro Ortega <portega.kernel@gmx.com>
-To: Jonathan Cameron <jic23@kernel.org>
-Subject: Re: [PATCH] staging: iio: adc: ad7280: Add spaces around math operator
-Message-ID: <20191110181935.GA3378@ubuntu>
-References: <20191109151729.3792-1-portega.kernel@gmx.com>
- <20191110132710.0e9300dc@archlinux>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191110132710.0e9300dc@archlinux>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Provags-ID: V03:K1:SfKbQloHdW9MEqjlgG/XSX7dq1PBfp9P9YLBpahOovHPUXmK/lV
- P5zYqOlKTJhSQgG4/DE6qyB8buk6EVxiSWShg9bWzl3em2iA0Ga/7oWbXUKrL8RVzv6dCUs
- mutd50Ws4YTNTNCbROp3DuZ2Vbm9dTaZ+LfQJglty5S+6xhp0gR7HrrnSL+XjLrpb4zQYmf
- B+09anY5WhXZS+TnPygZg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:0DvFw5ZFExk=:8YZbfk4fmRhKscQRQvekoe
- oPML4/7UXvcwvj4dShA/pnjTXlCV2kc7bwXbgFdXjBIQM1ncUwV308iN8p+rJhVMyg30dO52L
- YdGwRm7DDKq/tCXuZFVMe4m/lzDt+ADiJby0oeEwagznyxHjP3iitrkXyr5H8OYilVmA7kBoa
- UOUGehZRC4ZIyOtDhfX5dkFyer+TtokSZxR5lox24e1C7r5wcBgdtiADWvQFgdvgoFJ9ptg56
- lecEI/RnYUyZ+buui3+XyaILHNYhsBKFuSBONvwmRYlp4wx+LuHciHOm6phtqB+9SpISHv0kK
- 4t8cC+iNcBft8MCWZ9i+LAx3I/zGFIKS+aP0cxY+Px+hvbayxKqpoXvoD9cAbK+IsZbA6+ThU
- ZBOeFk0djMiIBkedar6dTByYEc4NN+t8XeVKqdr5OC5mO2bFA5MOpKNWBGNBvfwQtL0uNSmOH
- aaQ1307mFSjjXToSGndGIGLXrDOfeLAI0lVMokBLHee0n3XmTVYG9i0KysXV2WdBxhDtf6cAx
- BaK1BHRh6nCvFwkBeW8YEfSw02VWz4HIZChh7ST8uDzfE3qONKHS7gUBXVWYyadmoJ5O904zZ
- SBavzX0UejwwqmKgy9ByYzvCCrm1DVdle+xLrBTWcN0Tpx+/sI71W5Ng3VqL6PXxmkovCA6uw
- Vhzm84BhJ0Gxkdudm0mEkXWMIKANsOtYMSr6pWwmMPEHN8/O+mElpU6TieFG4N3NZ1bKbQNT+
- Xu/FUX7cD7DXVduquA6aVDtIO6oyeHyuewFYfM0nE8HXDHkHJ/UVw1qrhdtPaOPtG0IlFJ2lO
- NSh7qjSiZhtuV1EKR8o4UYfguUQjZUQuLk1QsCPEZzK1OoY0FHVF4lPkdXpVquHiMGI4xJptU
- bOQ7jWNotpecqA6f/OXw/rCzOpbXQmsVjRtUXKs3GT444UsPlKsDhtEgCnzfBcjPKrfW4gOeh
- Wim9HSTporFWzCh7wjxWdPh/iXrjw2bRIsocEQ1PFAOdlPxN5QgyLzW+DzlgtihrMC9Kg3mtQ
- r1ZsLvixayb9lCXhFY49icrhd0WQNGIdL32x2pp9iUn1qECMTBhLI201zsoQDnweg3h+/hBFK
- oCX6izBizBEzzAWax5bIhf0G8c/1wAxwJ/xnbR8Y9V9ru1OJfkGfOgI7dp+DhhdX9g/Q0NpfG
- qmrZECO9/4sl69DHwkcXujxO1nB/Ar9uLwXYotvO79uCxHyF6OOV9AQQmiIQ5JZ3igNDSkCr4
- SAkyA52bwRSZaeCjca9vISI0Kea7xw8pfyD5bdilG1Tdae7qvdHmZOcG0ffw=
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 55E93839C1
+ for <devel@linuxdriverproject.org>; Sun, 10 Nov 2019 21:35:08 +0000 (UTC)
+Subject: Re: [GIT PULL] IIO fixes / Staging driver for 5.4-rc7
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1573421708;
+ bh=xZqUAhBa1XJbuk1g9QivLxHkD4LDzfnm732PnGqJ76I=;
+ h=From:In-Reply-To:References:Date:To:Cc:From;
+ b=G8tkBXql3Zze2mTheCxmgaVokjdRIhG20I2GFRvhtYP5xPct/zMZucKZBbfGmxqtP
+ O5PL51caVKgd4TOcRzHPN1KYQDCtVGoPfIjPSDD0c7oWaB7FDKqadz9Mzm95W4Kyqs
+ W2ne4SVjl41V5f08V8csV9zpVXeN7on7Fmdm3Npo=
+From: pr-tracker-bot@kernel.org
+In-Reply-To: <20191110154303.GA2867499@kroah.com>
+References: <20191110154303.GA2867499@kroah.com>
+X-PR-Tracked-List-Id: <linux-kernel.vger.kernel.org>
+X-PR-Tracked-Message-Id: <20191110154303.GA2867499@kroah.com>
+X-PR-Tracked-Remote: git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
+ tags/staging-5.4-rc7
+X-PR-Tracked-Commit-Id: e39fcaef7ed993950af74a584f8246022b551971
+X-PR-Merge-Tree: torvalds/linux.git
+X-PR-Merge-Refname: refs/heads/master
+X-PR-Merge-Commit-Id: dd892625d0e252d967387d0a2af6dd6a864b3fdf
+Message-Id: <157342170813.28901.805337468261635748.pr-tracker-bot@kernel.org>
+Date: Sun, 10 Nov 2019 21:35:08 +0000
+To: Greg KH <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,79 +65,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Lars-Peter Clausen <lars@metafoo.de>,
- Stefan Popa <stefan.popa@analog.com>,
- Michael Hennerich <Michael.Hennerich@analog.com>, linux-iio@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Hartmut Knaack <knaack.h@gmx.de>
+Cc: Stephen Rothwell <sfr@canb.auug.org.au>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Linus Torvalds <torvalds@linux-foundation.org>, linux-kernel@vger.kernel.org,
+ devel@linuxdriverproject.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Nov 10, 2019 at 01:27:10PM +0000, Jonathan Cameron wrote:
-> On Sat,  9 Nov 2019 16:17:28 +0100
-> Pedro Ortega <portega.kernel@gmx.com> wrote:
->
-> > Add spaces around the minus math operator to increase readability.
-> >
-> > Signed-off-by: Pedro Ortega <portega.kernel@gmx.com>
-> Hi Pedro,
->
-> Afraid not.  Look at what that macro is actually doing.  That's not a maths
-> operator at all.  I'm fairly sure we had a plan to actually hide these
-> examples away as we get a few people suggesting this 'fix' ever year.
-> Not sure what happened to them though, I'll have to check back.
+The pull request you sent on Sun, 10 Nov 2019 16:43:03 +0100:
 
-I'm sorry. Next time I will review the code much more carefully. The macro
-IIO_DEVICE_ATTR_NAMED expand the second parameter to a string. So, the hyphen
-is not a maths operator.
+> git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/staging-5.4-rc7
 
->
-> Sorry about this, but it is a good lesson in making sure you check
-> that the suggestion from checkpatch is actually correct.  It's a
-> pattern matcher, it can't always know enough to be able to tell what
-> is going on.
+has been merged into torvalds/linux.git:
+https://git.kernel.org/torvalds/c/dd892625d0e252d967387d0a2af6dd6a864b3fdf
 
-First lesson learned.
->
-> Thanks,
->
-> Jonathan
+Thank you!
 
-Thanks,
-
-Pedro
->
-> > ---
-> >  drivers/staging/iio/adc/ad7280a.c | 4 ++--
-> >  1 file changed, 2 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/drivers/staging/iio/adc/ad7280a.c b/drivers/staging/iio/adc/ad7280a.c
-> > index 19a5f244dcae..34ca0d09db85 100644
-> > --- a/drivers/staging/iio/adc/ad7280a.c
-> > +++ b/drivers/staging/iio/adc/ad7280a.c
-> > @@ -825,14 +825,14 @@ static irqreturn_t ad7280_event_handler(int irq, void *private)
-> >  }
-> >
-> >  static IIO_DEVICE_ATTR_NAMED(in_thresh_low_value,
-> > -			     in_voltage-voltage_thresh_low_value,
-> > +			     in_voltage - voltage_thresh_low_value,
-> >  			     0644,
-> >  			     ad7280_read_channel_config,
-> >  			     ad7280_write_channel_config,
-> >  			     AD7280A_CELL_UNDERVOLTAGE);
-> >
-> >  static IIO_DEVICE_ATTR_NAMED(in_thresh_high_value,
-> > -			     in_voltage-voltage_thresh_high_value,
-> > +			     in_voltage - voltage_thresh_high_value,
-> >  			     0644,
-> >  			     ad7280_read_channel_config,
-> >  			     ad7280_write_channel_config,
-> > --
-> > 2.17.1
-> >
->
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.wiki.kernel.org/userdoc/prtracker
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
