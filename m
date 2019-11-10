@@ -1,73 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7CFEEF6AA1
-	for <lists+driverdev-devel@lfdr.de>; Sun, 10 Nov 2019 18:56:36 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 80371F6ABC
+	for <lists+driverdev-devel@lfdr.de>; Sun, 10 Nov 2019 19:20:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4BEE18669A;
-	Sun, 10 Nov 2019 17:56:34 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3CC53204EE;
+	Sun, 10 Nov 2019 18:20:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Mr+zRNJMkD+b; Sun, 10 Nov 2019 17:56:33 +0000 (UTC)
+	with ESMTP id Jo7U2pADziEJ; Sun, 10 Nov 2019 18:20:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D7D1C8653D;
-	Sun, 10 Nov 2019 17:56:32 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8D42D204F2;
+	Sun, 10 Nov 2019 18:20:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3DF0A1BF5D7
- for <devel@linuxdriverproject.org>; Sun, 10 Nov 2019 17:56:31 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 04F0C1BF418
+ for <devel@linuxdriverproject.org>; Sun, 10 Nov 2019 18:20:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 39BDE8555A
- for <devel@linuxdriverproject.org>; Sun, 10 Nov 2019 17:56:31 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 01B4C845A4
+ for <devel@linuxdriverproject.org>; Sun, 10 Nov 2019 18:20:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3rW5X7pIKoih for <devel@linuxdriverproject.org>;
- Sun, 10 Nov 2019 17:56:28 +0000 (UTC)
+ with ESMTP id jgpKOFUr5e3f for <devel@linuxdriverproject.org>;
+ Sun, 10 Nov 2019 18:20:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
- [209.85.210.193])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 870958584F
- for <devel@driverdev.osuosl.org>; Sun, 10 Nov 2019 17:56:28 +0000 (UTC)
-Received: by mail-pf1-f193.google.com with SMTP id q26so8825392pfn.11
- for <devel@driverdev.osuosl.org>; Sun, 10 Nov 2019 09:56:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id;
- bh=PtqYt1fGL7WFdKH+RvL3PePfXJx2mou2pQEcrG9jbZU=;
- b=eVmU9oeMjmQDjIG/u141aHB4siTpgnOngq2Vm7FyIX5/WuPm6g8wB7QIkf6tc8DFZe
- TaZN211+gXNsTlie89ha1k3T7BEvzB5lOtuOoyDyISrPE/wyOPU3vKxPZoq7QVVTcsQG
- bbvVZtDkfVGV5GI76doDZTkUyYZoXgkIzs6R/+nHgc1LxIuKuHHwnG+lnuNyQPV1YtqU
- fmt4wtEWVthRJYtyvnbxaGzBPTMl4QDwd7L0JuqVHKuN4zavs3K0ZmTUaXPMn8hV/rHB
- TFnWY5PtwWQZRD9ulOPkIKIOzylqEoDf7q+YDkbfHt3PZTU2oHZq5tIqu8oPiMnHePcy
- 7F0w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
- bh=PtqYt1fGL7WFdKH+RvL3PePfXJx2mou2pQEcrG9jbZU=;
- b=bTsV5gAZlDqN+V9MtewQfBhTV0BIfMIOYwLQ/prOYEEr19jDu+yklVCWx3ujKnZemo
- NBhVQBvvthwuJOXxT+Sj/7YSmUPtxRS3dOhndpWb2XZmApOHcehiCVZjCvDHJW8+JdXP
- IOtCZoe0rS1y4/8nXZIE96EgghTbulnF57LWcBfRARA9hnUJ/awZ8HhwmaKMktJg0Whf
- 458PViQWEXxzF5Kv+9N+VfOopr7TZQfX3khFv8bLnKcvCjavEE/Emhy7tT7OZTQYSYpJ
- rL2bLLoRSItDbRYu7O58MlxxjfK9OHigNv95/P6iIQL8eT+NrZ/y/gT4gGbD1vJm8jCl
- MXAg==
-X-Gm-Message-State: APjAAAXA10Fi6F5o3Ku+eScaqBr4L8R2dNBiZ+FhfKlCyZJ3bN8tHEKl
- KGJxeLsvYV+i8CWNvpL4VwU=
-X-Google-Smtp-Source: APXvYqxcsOvCIMeB2vwv7Hk4q37bewW4KNu4hwZ+1YEdJWYKPnUYyheC3m5dhgqu8IxOz6admeV8xw==
-X-Received: by 2002:a63:5b1d:: with SMTP id p29mr24023814pgb.209.1573408588139; 
- Sun, 10 Nov 2019 09:56:28 -0800 (PST)
-Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id z14sm15104414pfq.66.2019.11.10.09.56.26
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Sun, 10 Nov 2019 09:56:27 -0800 (PST)
-From: Guenter Roeck <linux@roeck-us.net>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging/octeon: Fix test build on MIPS
-Date: Sun, 10 Nov 2019 09:56:20 -0800
-Message-Id: <20191110175620.20290-1-linux@roeck-us.net>
-X-Mailer: git-send-email 2.17.1
+Received: from mout.gmx.net (mout.gmx.net [212.227.15.18])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D460A845A3
+ for <devel@driverdev.osuosl.org>; Sun, 10 Nov 2019 18:20:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1573409992;
+ bh=T62clJ7TWd59U0C/7J6xbgVZifeNADs/HOl/H6t3fUE=;
+ h=X-UI-Sender-Class:Date:From:To:Cc:Subject:References:In-Reply-To;
+ b=a8O39flUaNfJzbuouJ5nnyA3+PRA9eubRd29Zpc7ZunGhvSabXYHCr5NpbU6lb6Tp
+ qBJ1R/tO0fZ2JwutADPYA+ALppQ9zygSPTyWG0ISJqKMafoS7TBWE+T6RWJglz8H1p
+ F9WrCflMkEX4l8f2RAiFBa/e0AZSr/xG5uWwZz3Q=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from ubuntu ([79.150.153.135]) by mail.gmx.com (mrgmx005
+ [212.227.17.184]) with ESMTPSA (Nemesis) id 1M7b2d-1iXQio3ISb-0082vF; Sun, 10
+ Nov 2019 19:19:51 +0100
+Date: Sun, 10 Nov 2019 19:19:35 +0100
+From: Pedro Ortega <portega.kernel@gmx.com>
+To: Jonathan Cameron <jic23@kernel.org>
+Subject: Re: [PATCH] staging: iio: adc: ad7280: Add spaces around math operator
+Message-ID: <20191110181935.GA3378@ubuntu>
+References: <20191109151729.3792-1-portega.kernel@gmx.com>
+ <20191110132710.0e9300dc@archlinux>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20191110132710.0e9300dc@archlinux>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Provags-ID: V03:K1:SfKbQloHdW9MEqjlgG/XSX7dq1PBfp9P9YLBpahOovHPUXmK/lV
+ P5zYqOlKTJhSQgG4/DE6qyB8buk6EVxiSWShg9bWzl3em2iA0Ga/7oWbXUKrL8RVzv6dCUs
+ mutd50Ws4YTNTNCbROp3DuZ2Vbm9dTaZ+LfQJglty5S+6xhp0gR7HrrnSL+XjLrpb4zQYmf
+ B+09anY5WhXZS+TnPygZg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:0DvFw5ZFExk=:8YZbfk4fmRhKscQRQvekoe
+ oPML4/7UXvcwvj4dShA/pnjTXlCV2kc7bwXbgFdXjBIQM1ncUwV308iN8p+rJhVMyg30dO52L
+ YdGwRm7DDKq/tCXuZFVMe4m/lzDt+ADiJby0oeEwagznyxHjP3iitrkXyr5H8OYilVmA7kBoa
+ UOUGehZRC4ZIyOtDhfX5dkFyer+TtokSZxR5lox24e1C7r5wcBgdtiADWvQFgdvgoFJ9ptg56
+ lecEI/RnYUyZ+buui3+XyaILHNYhsBKFuSBONvwmRYlp4wx+LuHciHOm6phtqB+9SpISHv0kK
+ 4t8cC+iNcBft8MCWZ9i+LAx3I/zGFIKS+aP0cxY+Px+hvbayxKqpoXvoD9cAbK+IsZbA6+ThU
+ ZBOeFk0djMiIBkedar6dTByYEc4NN+t8XeVKqdr5OC5mO2bFA5MOpKNWBGNBvfwQtL0uNSmOH
+ aaQ1307mFSjjXToSGndGIGLXrDOfeLAI0lVMokBLHee0n3XmTVYG9i0KysXV2WdBxhDtf6cAx
+ BaK1BHRh6nCvFwkBeW8YEfSw02VWz4HIZChh7ST8uDzfE3qONKHS7gUBXVWYyadmoJ5O904zZ
+ SBavzX0UejwwqmKgy9ByYzvCCrm1DVdle+xLrBTWcN0Tpx+/sI71W5Ng3VqL6PXxmkovCA6uw
+ Vhzm84BhJ0Gxkdudm0mEkXWMIKANsOtYMSr6pWwmMPEHN8/O+mElpU6TieFG4N3NZ1bKbQNT+
+ Xu/FUX7cD7DXVduquA6aVDtIO6oyeHyuewFYfM0nE8HXDHkHJ/UVw1qrhdtPaOPtG0IlFJ2lO
+ NSh7qjSiZhtuV1EKR8o4UYfguUQjZUQuLk1QsCPEZzK1OoY0FHVF4lPkdXpVquHiMGI4xJptU
+ bOQ7jWNotpecqA6f/OXw/rCzOpbXQmsVjRtUXKs3GT444UsPlKsDhtEgCnzfBcjPKrfW4gOeh
+ Wim9HSTporFWzCh7wjxWdPh/iXrjw2bRIsocEQ1PFAOdlPxN5QgyLzW+DzlgtihrMC9Kg3mtQ
+ r1ZsLvixayb9lCXhFY49icrhd0WQNGIdL32x2pp9iUn1qECMTBhLI201zsoQDnweg3h+/hBFK
+ oCX6izBizBEzzAWax5bIhf0G8c/1wAxwJ/xnbR8Y9V9ru1OJfkGfOgI7dp+DhhdX9g/Q0NpfG
+ qmrZECO9/4sl69DHwkcXujxO1nB/Ar9uLwXYotvO79uCxHyF6OOV9AQQmiIQ5JZ3igNDSkCr4
+ SAkyA52bwRSZaeCjca9vISI0Kea7xw8pfyD5bdilG1Tdae7qvdHmZOcG0ffw=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,47 +88,79 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Matthew Wilcox <willy@infradead.org>,
- linux-kernel@vger.kernel.org, Guenter Roeck <linux@roeck-us.net>
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, Lars-Peter Clausen <lars@metafoo.de>,
+ Stefan Popa <stefan.popa@analog.com>,
+ Michael Hennerich <Michael.Hennerich@analog.com>, linux-iio@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Hartmut Knaack <knaack.h@gmx.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-mips:allmodconfig fails to build.
+On Sun, Nov 10, 2019 at 01:27:10PM +0000, Jonathan Cameron wrote:
+> On Sat,  9 Nov 2019 16:17:28 +0100
+> Pedro Ortega <portega.kernel@gmx.com> wrote:
+>
+> > Add spaces around the minus math operator to increase readability.
+> >
+> > Signed-off-by: Pedro Ortega <portega.kernel@gmx.com>
+> Hi Pedro,
+>
+> Afraid not.  Look at what that macro is actually doing.  That's not a maths
+> operator at all.  I'm fairly sure we had a plan to actually hide these
+> examples away as we get a few people suggesting this 'fix' ever year.
+> Not sure what happened to them though, I'll have to check back.
 
-drivers/staging/octeon/ethernet-rx.c: In function 'cvm_oct_poll':
-drivers/staging/octeon/ethernet-defines.h:30:38: error:
-	'CONFIG_CAVIUM_OCTEON_CVMSEG_SIZE' undeclared
+I'm sorry. Next time I will review the code much more carefully. The macro
+IIO_DEVICE_ATTR_NAMED expand the second parameter to a string. So, the hyphen
+is not a maths operator.
 
-Octeon defines are only available if CONFIG_CPU_CAVIUM_OCTEON
-is enabled. Since the driver uses those defines, we have to use
-the dummy defines if this flag is not enabled.
+>
+> Sorry about this, but it is a good lesson in making sure you check
+> that the suggestion from checkpatch is actually correct.  It's a
+> pattern matcher, it can't always know enough to be able to tell what
+> is going on.
 
-Cc: Matthew Wilcox (Oracle) <willy@infradead.org>
-Fixes: 171a9bae68c7 ("staging/octeon: Allow test build on !MIPS")
-Signed-off-by: Guenter Roeck <linux@roeck-us.net>
----
- drivers/staging/octeon/octeon-ethernet.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+First lesson learned.
+>
+> Thanks,
+>
+> Jonathan
 
-diff --git a/drivers/staging/octeon/octeon-ethernet.h b/drivers/staging/octeon/octeon-ethernet.h
-index a8a864b40913..70848c6c86ec 100644
---- a/drivers/staging/octeon/octeon-ethernet.h
-+++ b/drivers/staging/octeon/octeon-ethernet.h
-@@ -14,7 +14,7 @@
- #include <linux/of.h>
- #include <linux/phy.h>
- 
--#ifdef CONFIG_MIPS
-+#ifdef CONFIG_CPU_CAVIUM_OCTEON
- 
- #include <asm/octeon/octeon.h>
- 
--- 
-2.17.1
+Thanks,
 
+Pedro
+>
+> > ---
+> >  drivers/staging/iio/adc/ad7280a.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/drivers/staging/iio/adc/ad7280a.c b/drivers/staging/iio/adc/ad7280a.c
+> > index 19a5f244dcae..34ca0d09db85 100644
+> > --- a/drivers/staging/iio/adc/ad7280a.c
+> > +++ b/drivers/staging/iio/adc/ad7280a.c
+> > @@ -825,14 +825,14 @@ static irqreturn_t ad7280_event_handler(int irq, void *private)
+> >  }
+> >
+> >  static IIO_DEVICE_ATTR_NAMED(in_thresh_low_value,
+> > -			     in_voltage-voltage_thresh_low_value,
+> > +			     in_voltage - voltage_thresh_low_value,
+> >  			     0644,
+> >  			     ad7280_read_channel_config,
+> >  			     ad7280_write_channel_config,
+> >  			     AD7280A_CELL_UNDERVOLTAGE);
+> >
+> >  static IIO_DEVICE_ATTR_NAMED(in_thresh_high_value,
+> > -			     in_voltage-voltage_thresh_high_value,
+> > +			     in_voltage - voltage_thresh_high_value,
+> >  			     0644,
+> >  			     ad7280_read_channel_config,
+> >  			     ad7280_write_channel_config,
+> > --
+> > 2.17.1
+> >
+>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
