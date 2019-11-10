@@ -1,59 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 76678F69DD
-	for <lists+driverdev-devel@lfdr.de>; Sun, 10 Nov 2019 16:43:19 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1E78CF69E6
+	for <lists+driverdev-devel@lfdr.de>; Sun, 10 Nov 2019 16:48:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3109D858FC;
-	Sun, 10 Nov 2019 15:43:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 60DE586501;
+	Sun, 10 Nov 2019 15:48:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 62amz6LvBsxW; Sun, 10 Nov 2019 15:43:16 +0000 (UTC)
+	with ESMTP id 0zt+HvI5500D; Sun, 10 Nov 2019 15:48:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8AF9285876;
-	Sun, 10 Nov 2019 15:43:15 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 61B3884BA5;
+	Sun, 10 Nov 2019 15:48:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E7FE31BF33E
- for <devel@linuxdriverproject.org>; Sun, 10 Nov 2019 15:43:07 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D343C1BF33E
+ for <devel@linuxdriverproject.org>; Sun, 10 Nov 2019 15:48:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id CABC1204CE
- for <devel@linuxdriverproject.org>; Sun, 10 Nov 2019 15:43:07 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id BE2E084BA5
+ for <devel@linuxdriverproject.org>; Sun, 10 Nov 2019 15:48:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id y0voRPPddZ65 for <devel@linuxdriverproject.org>;
- Sun, 10 Nov 2019 15:43:06 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+ with ESMTP id SO5+E7818zl6 for <devel@linuxdriverproject.org>;
+ Sun, 10 Nov 2019 15:48:09 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id C82282040B
- for <devel@linuxdriverproject.org>; Sun, 10 Nov 2019 15:43:06 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 5A5DA84770
+ for <devel@driverdev.osuosl.org>; Sun, 10 Nov 2019 15:48:09 +0000 (UTC)
+Received: from archlinux (cpc149474-cmbg20-2-0-cust94.5-4.cable.virginm.net
+ [82.4.196.95])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id EF2DC206DF;
- Sun, 10 Nov 2019 15:43:05 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id DEDEB2077C;
+ Sun, 10 Nov 2019 15:48:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1573400586;
- bh=3a18qqUhBkW4PUQrLLv6spd9GebwORwUzuDmnem1nKM=;
- h=Date:From:To:Cc:Subject:From;
- b=d7SbenSMIfm1D3v+SGjJLM4088aYrJ0ywZnwkcbd8xKmwyWXWkxhLUUchiDY07ewe
- dq3oMlCmycemAxLRf6CTmYB39aL2VRZcskUaNiATvMce1WMKen5R3xUsc8d+fv/o1w
- 9zQePStnoBj75c5jFbWtDxr7+riAjcqfuO6dsn0Y=
-Date: Sun, 10 Nov 2019 16:43:03 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Linus Torvalds <torvalds@linux-foundation.org>,
- Andrew Morton <akpm@linux-foundation.org>,
- Stephen Rothwell <sfr@canb.auug.org.au>
-Subject: [GIT PULL] IIO fixes / Staging driver for 5.4-rc7
-Message-ID: <20191110154303.GA2867499@kroah.com>
+ s=default; t=1573400889;
+ bh=84a/KFn1Z4HtP3z2FxytRiKrFTMmzmYKQNSC+fdNiXQ=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=D0QX64PbCf6hUJbpLN38K2xRzWujA/rBAiB1gSjsYHDDUEw0cZNVhywvjsch7oZDT
+ pTdvWrzoLVph0iaT7ucAVzDe9UbWDCJrdVXLqgoQaDEE9nNP9ZTv3J/UXNn1tjpyfo
+ xRuNXi047DM/LwnWvM6fWQHfXTT01mgY4ED7H3Aw=
+Date: Sun, 10 Nov 2019 15:48:02 +0000
+From: Jonathan Cameron <jic23@kernel.org>
+To: Beniamin Bia <beniamin.bia@analog.com>
+Subject: Re: [PATCH v3 1/4] iio: adc: Add support for AD7091R5 ADC
+Message-ID: <20191110154802.261dd63d@archlinux>
+In-Reply-To: <20191107150759.5937-1-beniamin.bia@analog.com>
+References: <20191107150759.5937-1-beniamin.bia@analog.com>
+X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.12.2 (2019-09-21)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,105 +65,517 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@linuxdriverproject.org, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, mark.rutland@arm.com, lars@metafoo.de,
+ biabeniamin@outlook.com, Michael.Hennerich@analog.com,
+ devicetree@vger.kernel.org, linux-iio@vger.kernel.org,
+ gregkh@linuxfoundation.org, linus.walleij@linaro.org,
+ linux-kernel@vger.kernel.org, nicolas.ferre@microchip.com, robh+dt@kernel.org,
+ pmeerw@pmeerw.net, mchehab+samsung@kernel.org, paulmck@linux.ibm.com,
+ Paul Cercueil <paul.cercueil@analog.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The following changes since commit d6d5df1db6e9d7f8f76d2911707f7d5877251b02:
+On Thu, 7 Nov 2019 17:07:56 +0200
+Beniamin Bia <beniamin.bia@analog.com> wrote:
 
-  Linux 5.4-rc5 (2019-10-27 13:19:19 -0400)
+> From: Paul Cercueil <paul.cercueil@analog.com>
+> 
+> AD7091 is 4-Channel, I2C, Ultra Low Power,12-Bit ADC.
+> 
 
-are available in the Git repository at:
+I'd like to see a bit of info here about what other ad7091r parts exist
+to explain the current split in files.
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/staging-5.4-rc7
+> Datasheet:
+> Link: https://www.analog.com/media/en/technical-documentation/data-sheets/ad7091r-5.pdf
+> 
+> Signed-off-by: Paul Cercueil <paul.cercueil@analog.com>
+> Co-developed-by: Beniamin Bia <beniamin.bia@analog.com>
+> Signed-off-by: Beniamin Bia <beniamin.bia@analog.com>
 
-for you to fetch changes up to e39fcaef7ed993950af74a584f8246022b551971:
+Was a close run thing, but there are just enough minor things between my
+review here and Dan's that I think we need a v4 rather than me just cleaning
+them up whilst applying.
 
-  staging: Fix error return code in vboxsf_fill_super() (2019-11-07 16:29:18 +0100)
+Thanks,
 
-----------------------------------------------------------------
-IIO fixes / Staging driver for 5.4-rc7
+Jonathan
 
-Here is a mix of a number of IIO driver fixes for 5.4-rc7, and a whole
-new staging driver.
+> ---
+> Changes in v3:
+> -parameters for functions calls were aligned
+> -iio_device_register replaced by devm_iio_device_register
+> -duplication of regmap_update_bits calls removed in set_mode
+> 
+>  drivers/iio/adc/Kconfig        |   7 +
+>  drivers/iio/adc/Makefile       |   1 +
+>  drivers/iio/adc/ad7091r-base.c | 261 +++++++++++++++++++++++++++++++++
+>  drivers/iio/adc/ad7091r-base.h |  25 ++++
+>  drivers/iio/adc/ad7091r5.c     | 102 +++++++++++++
+>  5 files changed, 396 insertions(+)
+>  create mode 100644 drivers/iio/adc/ad7091r-base.c
+>  create mode 100644 drivers/iio/adc/ad7091r-base.h
+>  create mode 100644 drivers/iio/adc/ad7091r5.c
+> 
+> diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
+> index 7e3286265a38..80b1b9551749 100644
+> --- a/drivers/iio/adc/Kconfig
+> +++ b/drivers/iio/adc/Kconfig
+> @@ -22,6 +22,13 @@ config AD7124
+>  	  To compile this driver as a module, choose M here: the module will be
+>  	  called ad7124.
+>  
+> +config AD7091R5
+> +	tristate "Analog Devices AD7091R5 ADC Driver"
+> +	depends on I2C
+> +	select REGMAP_I2C
+> +	help
+> +	  Say yes here to build support for Analog Devices AD7091R-5 ADC.
+> +
+>  config AD7266
+>  	tristate "Analog Devices AD7265/AD7266 ADC driver"
+>  	depends on SPI_MASTER
+> diff --git a/drivers/iio/adc/Makefile b/drivers/iio/adc/Makefile
+> index ef9cc485fb67..55e44735aaac 100644
+> --- a/drivers/iio/adc/Makefile
+> +++ b/drivers/iio/adc/Makefile
+> @@ -6,6 +6,7 @@
+>  # When adding new entries keep the list in alphabetical order
+>  obj-$(CONFIG_AD_SIGMA_DELTA) += ad_sigma_delta.o
+>  obj-$(CONFIG_AD7124) += ad7124.o
+> +obj-$(CONFIG_AD7091R5) += ad7091r5.o ad7091r-base.o
+>  obj-$(CONFIG_AD7266) += ad7266.o
+>  obj-$(CONFIG_AD7291) += ad7291.o
+>  obj-$(CONFIG_AD7298) += ad7298.o
+> diff --git a/drivers/iio/adc/ad7091r-base.c b/drivers/iio/adc/ad7091r-base.c
+> new file mode 100644
+> index 000000000000..2ebc40dfd927
+> --- /dev/null
+> +++ b/drivers/iio/adc/ad7091r-base.c
+> @@ -0,0 +1,261 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * AD7091RX Analog to Digital converter driver
+> + *
+> + * Copyright 2014-2019 Analog Devices Inc.
+> + */
+> +
+> +#include <linux/bitops.h>
+> +#include <linux/iio/events.h>
+> +#include <linux/iio/iio.h>
+> +#include <linux/interrupt.h>
+> +#include <linux/module.h>
+> +#include <linux/regmap.h>
+> +
+> +#include "ad7091r-base.h"
+> +
+> +#define AD7091R_REG_RESULT  0
+> +#define AD7091R_REG_CHANNEL 1
+> +#define AD7091R_REG_CONF    2
+> +#define AD7091R_REG_ALERT   3
+> +#define AD7091R_REG_CH_LOW_LIMIT(ch) ((ch) * 3 + 4)
+> +#define AD7091R_REG_CH_HIGH_LIMIT(ch) ((ch) * 3 + 5)
+> +#define AD7091R_REG_CH_HYSTERESIS(ch) ((ch) * 3 + 6)
+> +
+> +/* AD7091R_REG_RESULT */
+> +#define AD7091R_REG_RESULT_CH_ID(x)	    (((x) >> 13) & 0x3)
+> +#define AD7091R_REG_RESULT_CONV_RESULT(x)   ((x) & 0xfff)
+> +
+> +/* AD7091R_REG_CONF */
+> +#define AD7091R_REG_CONF_AUTO   BIT(8)
+> +#define AD7091R_REG_CONF_CMD    BIT(10)
+> +
+> +#define AD7091R_REG_CONF_MODE_MASK  \
+> +	(AD7091R_REG_CONF_AUTO | AD7091R_REG_CONF_CMD)
+> +
+> +enum ad7091r_mode {
+> +	AD7091R_MODE_SAMPLE,
+> +	AD7091R_MODE_COMMAND,
+> +	AD7091R_MODE_AUTOCYCLE,
+> +};
+> +
+> +struct ad7091r_state {
+> +	struct device *dev;
+> +	struct regmap *map;
+> +	const struct ad7091r_chip_info *chip_info;
+> +	enum ad7091r_mode mode;
+> +	struct mutex lock;
 
-The IIO fixes resolve some reported issues, all are tiny.
+Locks should always have documentation so we know exactly what their
+scope is.
 
-The staging driver addition is the vboxsf filesystem, which is the
-VirtualBox guest shared folder code.  Hans has been trying to get
-filesystem reviewers to review the code for many months now, and
-Christoph finally said to just merge it in staging now as it is
-stand-alone and the filesystem people can review it easier over time
-that way.
-I know it's late for this big of an addition, but it is stand-alone.
+> +};
+> +
+> +static int ad7091r_set_mode(struct ad7091r_state *st, enum ad7091r_mode mode)
+> +{
+> +	int ret, conf;
+> +
+> +	switch (mode) {
+> +	case AD7091R_MODE_SAMPLE:
+> +		conf = 0;
+> +		break;
+> +	case AD7091R_MODE_COMMAND:
+> +		conf = AD7091R_REG_CONF_CMD;
+> +		break;
+> +	case AD7091R_MODE_AUTOCYCLE:
+> +		conf = AD7091R_REG_CONF_AUTO;
+> +		break;
+> +	default:
+> +		ret = -EINVAL;
+> +		break;
+> +	}
+> +
+> +	ret = regmap_update_bits(st->map, AD7091R_REG_CONF,
+> +				 AD7091R_REG_CONF_MODE_MASK, conf);
+> +	if (ret)
+> +		return ret;
+> +
+> +	st->mode = mode;
+> +
+> +	return ret;
+> +}
+> +
+> +static int ad7091r_set_channel(struct ad7091r_state *st, unsigned int channel)
+> +{
+> +	unsigned int foo;
+> +	int ret;
+> +
+> +	/* AD7091R_REG_CHANNEL specified which channels to be converted */
+> +	ret = regmap_write(st->map, AD7091R_REG_CHANNEL,
+> +			BIT(channel) | (BIT(channel) << 8));
+> +	if (ret)
+> +		return ret;
+> +
+> +	/*
+> +	 * There is a latency of one conversion before the channel conversion
+> +	 * sequence is updated
+> +	 */
+> +	return regmap_read(st->map, AD7091R_REG_RESULT, &foo);
+> +}
+> +
+> +static int ad7091r_read_one(struct iio_dev *iio_dev,
+> +		unsigned int channel, unsigned int *read_val)
+> +{
+> +	struct ad7091r_state *st = iio_priv(iio_dev);
+> +	unsigned int val;
+> +	int ret;
+> +
+> +	ret = ad7091r_set_channel(st, channel);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = regmap_read(st->map, AD7091R_REG_RESULT, &val);
+> +	if (ret)
+> +		return ret;
+> +
+> +	if (AD7091R_REG_RESULT_CH_ID(val) != channel)
+> +		return -EIO;
+> +
+> +	*read_val = AD7091R_REG_RESULT_CONV_RESULT(val);
+> +
+> +	return 0;
+> +}
+> +
+> +static int ad7091r_read_raw(struct iio_dev *iio_dev,
+> +			   struct iio_chan_spec const *chan,
+> +			   int *val, int *val2, long m)
+> +{
+> +	struct ad7091r_state *st = iio_priv(iio_dev);
+> +	unsigned int read_val;
+> +	int ret;
+> +
+> +	mutex_lock(&st->lock);
+> +
+> +	switch (m) {
+> +	case IIO_CHAN_INFO_RAW:
+> +		if (st->mode != AD7091R_MODE_COMMAND) {
 
-The code has been in linux-next for a while, long enough to pick up a
-few tiny fixes for it already so people are looking at it.
+This is currently pointless as only that mode seems to be used.
+I guess we can leave it there ready for other modes to be implemented
+but I would have preferred it to be introduced at that point.
 
-All of these have been in linux-next with no reported issues.
+> +			ret = -EBUSY;
+> +			goto unlock;
+> +		}
+> +
+> +		ret = ad7091r_read_one(iio_dev, chan->channel, &read_val);
+> +		if (ret)
+> +			goto unlock;
+> +
+> +		*val = read_val;
+> +		ret = IIO_VAL_INT;
+> +		break;
+> +
+> +	default:
+> +		ret = -EINVAL;
+> +		break;
+> +	}
+> +
+> +unlock:
+> +	mutex_unlock(&st->lock);
+> +	return ret;
+> +}
+> +
+> +static const struct iio_info ad7091r_info = {
+> +	.read_raw = ad7091r_read_raw,
+> +};
+> +
+> +static irqreturn_t ad7091r_event_handler(int irq, void *private)
+> +{
+> +	struct ad7091r_state *st = (struct ad7091r_state *) private;
+> +	struct iio_dev *iio_dev = dev_get_drvdata(st->dev);
+> +	unsigned int i, read_val;
+> +	int ret;
+> +	s64 timestamp = iio_get_time_ns(iio_dev);
+> +
+> +	ret = regmap_read(st->map, AD7091R_REG_ALERT, &read_val);
+> +	if (ret)
+> +		return IRQ_HANDLED;
+> +
+> +	for (i = 0; i < st->chip_info->num_channels; i++) {
+> +		if (read_val & BIT(i * 2))
+> +			iio_push_event(iio_dev,
+> +					IIO_UNMOD_EVENT_CODE(IIO_VOLTAGE, i,
+> +						IIO_EV_TYPE_THRESH,
+> +						IIO_EV_DIR_RISING), timestamp);
+> +		if (read_val & BIT(i * 2 + 1))
+> +			iio_push_event(iio_dev,
+> +					IIO_UNMOD_EVENT_CODE(IIO_VOLTAGE, i,
+> +						IIO_EV_TYPE_THRESH,
+> +						IIO_EV_DIR_FALLING), timestamp);
+> +	}
+> +
+> +	return IRQ_HANDLED;
+> +}
+> +
+> +int ad7091r_probe(struct device *dev, const char *name,
+> +		const struct ad7091r_chip_info *chip_info,
+> +		struct regmap *map, int irq)
+> +{
+> +	struct iio_dev *iio_dev;
+> +	struct ad7091r_state *st;
+> +	int ret;
+> +
+> +	iio_dev = devm_iio_device_alloc(dev, sizeof(*st));
+> +	if (!iio_dev)
+> +		return -ENOMEM;
+> +
+> +	st = iio_priv(iio_dev);
+> +	st->dev = dev;
+> +	st->chip_info = chip_info;
+> +	st->map = map;
+> +
+> +	iio_dev->dev.parent = dev;
+> +	iio_dev->name = name;
+> +	iio_dev->info = &ad7091r_info;
+> +	iio_dev->modes = INDIO_DIRECT_MODE;
+> +
+> +	iio_dev->num_channels = chip_info->num_channels;
+> +	iio_dev->channels = chip_info->channels;
+> +
+> +	if (irq) {
+> +		ret = devm_request_threaded_irq(dev, irq, NULL,
+> +				ad7091r_event_handler,
+> +				IRQF_TRIGGER_FALLING | IRQF_ONESHOT, name, st);
+> +		if (ret)
+> +			return ret;
+> +	}
+> +
+> +	/* Use command mode by default to convert only desired channels*/
+> +	ret = ad7091r_set_mode(st, AD7091R_MODE_COMMAND);
+> +	if (ret)
+> +		return ret;
+> +
+> +	return devm_iio_device_register(dev, iio_dev);
+> +}
+> +EXPORT_SYMBOL_GPL(ad7091r_probe);
+> +
+> +static bool ad7091r_writeable_reg(struct device *dev, unsigned int reg)
+> +{
+> +	switch (reg) {
+> +	case AD7091R_REG_RESULT:
+> +	case AD7091R_REG_ALERT:
+> +		return false;
+> +	default:
+> +		return true;
+> +	}
+> +}
+> +
+> +static bool ad7091r_volatile_reg(struct device *dev, unsigned int reg)
+> +{
+> +	switch (reg) {
+> +	case AD7091R_REG_RESULT:
+> +	case AD7091R_REG_ALERT:
+> +		return true;
+> +	default:
+> +		return false;
+> +	}
+> +}
+> +
+> +const struct regmap_config ad7091r_regmap_config = {
+> +	.reg_bits = 8,
+> +	.val_bits = 16,
+> +	.writeable_reg = ad7091r_writeable_reg,
+> +	.volatile_reg = ad7091r_volatile_reg,
+> +};
+> +EXPORT_SYMBOL_GPL(ad7091r_regmap_config);
+> +
+> +MODULE_AUTHOR("Beniamin Bia <beniamin.bia@analog.com>");
+> +MODULE_DESCRIPTION("Analog Devices AD7091Rx multi-channel converters");
+> +MODULE_LICENSE("GPL v2");
+> diff --git a/drivers/iio/adc/ad7091r-base.h b/drivers/iio/adc/ad7091r-base.h
+> new file mode 100644
+> index 000000000000..5f1147735953
+> --- /dev/null
+> +++ b/drivers/iio/adc/ad7091r-base.h
+> @@ -0,0 +1,25 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * AD7091RX Analog to Digital converter driver
+> + *
+> + * Copyright 2014-2019 Analog Devices Inc.
+> + */
+> +
+> +#ifndef __DRIVERS_IIO_ADC_AD7091R_BASE_H__
+> +#define __DRIVERS_IIO_ADC_AD7091R_BASE_H__
+> +
+> +struct device;
+> +struct ad7091r_state;
+> +
+> +struct ad7091r_chip_info {
+> +	unsigned int num_channels;
+> +	const struct iio_chan_spec *channels;
+> +};
+> +
+> +extern const struct regmap_config ad7091r_regmap_config;
+> +
+> +int ad7091r_probe(struct device *dev, const char *name,
+> +		const struct ad7091r_chip_info *chip_info,
+> +		struct regmap *map, int irq);
+> +
+> +#endif /* __DRIVERS_IIO_ADC_AD7091R5_BASE_H__ */
 
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Comment doesn't match the define (R vs R5).
 
-----------------------------------------------------------------
-Alexandru Ardelean (1):
-      iio: imu: adis16480: make sure provided frequency is positive
+> diff --git a/drivers/iio/adc/ad7091r5.c b/drivers/iio/adc/ad7091r5.c
+> new file mode 100644
+> index 000000000000..f7b3326032e8
+> --- /dev/null
+> +++ b/drivers/iio/adc/ad7091r5.c
+> @@ -0,0 +1,102 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * AD7091R5 Analog to Digital converter driver
+> + *
+> + * Copyright 2014-2019 Analog Devices Inc.
+> + */
+> +
+> +#include <linux/i2c.h>
+> +#include <linux/iio/iio.h>
+> +#include <linux/module.h>
+> +#include <linux/regmap.h>
+> +
+> +#include "ad7091r-base.h"
+> +
+> +static const struct iio_event_spec ad7091r5_events[] = {
+> +	{
+> +		.type = IIO_EV_TYPE_THRESH,
+> +		.dir = IIO_EV_DIR_RISING,
+> +		.mask_separate = BIT(IIO_EV_INFO_VALUE) |
+> +				 BIT(IIO_EV_INFO_ENABLE),
+> +	},
+> +	{
+> +		.type = IIO_EV_TYPE_THRESH,
+> +		.dir = IIO_EV_DIR_FALLING,
+> +		.mask_separate = BIT(IIO_EV_INFO_VALUE) |
+> +				 BIT(IIO_EV_INFO_ENABLE),
+> +	},
+> +	{
+> +		.type = IIO_EV_TYPE_THRESH,
+> +		.dir = IIO_EV_DIR_EITHER,
+> +		.mask_separate = BIT(IIO_EV_INFO_HYSTERESIS),
+> +	},
+> +};
+> +
+> +#define AD7091R_CHANNEL(idx, bits, ev, num_ev) { \
+> +	.type = IIO_VOLTAGE, \
+> +	.info_mask_separate = BIT(IIO_CHAN_INFO_RAW), \
+> +	.indexed = 1, \
+> +	.channel = idx, \
+> +	.event_spec = ev, \
+> +	.num_event_specs = num_ev, \
+> +}
+> +static const struct iio_chan_spec ad7091r5_channels_irq[] = {
+> +	AD7091R_CHANNEL(0, 12, ad7091r5_events, ARRAY_SIZE(ad7091r5_events)),
+> +	AD7091R_CHANNEL(1, 12, ad7091r5_events, ARRAY_SIZE(ad7091r5_events)),
+> +	AD7091R_CHANNEL(2, 12, ad7091r5_events, ARRAY_SIZE(ad7091r5_events)),
+> +	AD7091R_CHANNEL(3, 12, ad7091r5_events, ARRAY_SIZE(ad7091r5_events)),
+> +};
+> +
+> +static const struct iio_chan_spec ad7091r5_channels_noirq[] = {
+> +	AD7091R_CHANNEL(0, 12, NULL, 0),
+> +	AD7091R_CHANNEL(1, 12, NULL, 0),
+> +	AD7091R_CHANNEL(2, 12, NULL, 0),
+> +	AD7091R_CHANNEL(3, 12, NULL, 0),
+> +};
+> +#undef AD7091R_CHANNEL
 
-Andreas Klinger (1):
-      iio: srf04: fix wrong limitation in distance measuring
+Why? 
 
-Colin Ian King (1):
-      staging: vboxsf: fix dereference of pointer dentry before it is null checked
+> +
+> +static const struct ad7091r_chip_info ad7091r5_chip_info_irq = {
+> +	.channels = ad7091r5_channels_irq,
+> +	.num_channels = ARRAY_SIZE(ad7091r5_channels_irq),
+> +};
+> +
+> +static const struct ad7091r_chip_info ad7091r5_chip_info_noirq = {
+> +	.channels = ad7091r5_channels_noirq,
+> +	.num_channels = ARRAY_SIZE(ad7091r5_channels_noirq),
+> +};
+> +
+> +static int ad7091r5_i2c_probe(struct i2c_client *i2c,
+> +		const struct i2c_device_id *id)
+> +{
+> +	const struct ad7091r_chip_info *chip_info;
+> +	struct regmap *map = devm_regmap_init_i2c(i2c, &ad7091r_regmap_config);
+> +
+> +	if (IS_ERR(map))
+> +		return PTR_ERR(map);
+> +
+> +	if (i2c->irq)
+> +		chip_info = &ad7091r5_chip_info_irq;
+> +	else
+> +		chip_info = &ad7091r5_chip_info_noirq;
+> +
+> +	return ad7091r_probe(&i2c->dev, id->name, chip_info, map, i2c->irq);
+> +}
+> +
+> +static const struct i2c_device_id ad7091r5_i2c_ids[] = {
+> +	{"ad7091r5", 0},
+> +	{}
+> +};
+> +MODULE_DEVICE_TABLE(i2c, ad7091r5_i2c_ids);
 
-Fabrice Gasnier (1):
-      iio: adc: stm32-adc: fix stopping dma
+Please add the devicetree specific table as well.
+In theory, one day we might get rid of the old i2c fallback paths
+that make this work.
 
-Greg Kroah-Hartman (1):
-      Merge tag 'iio-fixes-for-5.4b' of https://git.kernel.org/.../jic23/iio into staging-linus
+> +
+> +static struct i2c_driver ad7091r5_driver = {
+> +	.driver = {
+> +		.name = "ad7091r5",
+> +	},
+> +	.probe = ad7091r5_i2c_probe,
+> +	.id_table = ad7091r5_i2c_ids,
+> +};
+> +module_i2c_driver(ad7091r5_driver);
+> +
+> +MODULE_AUTHOR("Beniamin Bia <beniamin.bia@analog.com>");
+> +MODULE_DESCRIPTION("Analog Devices AD7091R5 multi-channel ADC driver");
+> +MODULE_LICENSE("GPL v2");
 
-Hans de Goede (1):
-      staging: Add VirtualBox guest shared folder (vboxsf) support
-
-Jean-Baptiste Maneyrol (1):
-      iio: imu: inv_mpu6050: fix no data on MPU6050
-
-Wei Yongjun (1):
-      staging: Fix error return code in vboxsf_fill_super()
-
-YueHaibing (1):
-      staging: vboxsf: Remove unused including <linux/version.h>
-
- MAINTAINERS                                |   6 +
- drivers/iio/adc/stm32-adc.c                |   4 +-
- drivers/iio/imu/adis16480.c                |   5 +-
- drivers/iio/imu/inv_mpu6050/inv_mpu_core.c |   9 +
- drivers/iio/imu/inv_mpu6050/inv_mpu_iio.h  |   2 +
- drivers/iio/imu/inv_mpu6050/inv_mpu_ring.c |  15 +-
- drivers/iio/proximity/srf04.c              |  29 +-
- drivers/staging/Kconfig                    |   2 +
- drivers/staging/Makefile                   |   1 +
- drivers/staging/vboxsf/Kconfig             |  10 +
- drivers/staging/vboxsf/Makefile            |   5 +
- drivers/staging/vboxsf/TODO                |   7 +
- drivers/staging/vboxsf/dir.c               | 418 +++++++++++++
- drivers/staging/vboxsf/file.c              | 370 ++++++++++++
- drivers/staging/vboxsf/shfl_hostintf.h     | 901 +++++++++++++++++++++++++++++
- drivers/staging/vboxsf/super.c             | 501 ++++++++++++++++
- drivers/staging/vboxsf/utils.c             | 551 ++++++++++++++++++
- drivers/staging/vboxsf/vboxsf_wrappers.c   | 371 ++++++++++++
- drivers/staging/vboxsf/vfsmod.h            | 137 +++++
- 19 files changed, 3324 insertions(+), 20 deletions(-)
- create mode 100644 drivers/staging/vboxsf/Kconfig
- create mode 100644 drivers/staging/vboxsf/Makefile
- create mode 100644 drivers/staging/vboxsf/TODO
- create mode 100644 drivers/staging/vboxsf/dir.c
- create mode 100644 drivers/staging/vboxsf/file.c
- create mode 100644 drivers/staging/vboxsf/shfl_hostintf.h
- create mode 100644 drivers/staging/vboxsf/super.c
- create mode 100644 drivers/staging/vboxsf/utils.c
- create mode 100644 drivers/staging/vboxsf/vboxsf_wrappers.c
- create mode 100644 drivers/staging/vboxsf/vfsmod.h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
