@@ -1,54 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 96F62F68E9
-	for <lists+driverdev-devel@lfdr.de>; Sun, 10 Nov 2019 13:22:44 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D6719F691E
+	for <lists+driverdev-devel@lfdr.de>; Sun, 10 Nov 2019 14:27:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 322AD86742;
-	Sun, 10 Nov 2019 12:22:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 13D1C858F5;
+	Sun, 10 Nov 2019 13:27:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id poo4Wo8SVrjh; Sun, 10 Nov 2019 12:22:41 +0000 (UTC)
+	with ESMTP id 4J11IfdnRad8; Sun, 10 Nov 2019 13:27:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BE3318648E;
-	Sun, 10 Nov 2019 12:22:40 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B174B8562A;
+	Sun, 10 Nov 2019 13:27:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 264621BF5F8
- for <devel@linuxdriverproject.org>; Sun, 10 Nov 2019 12:22:39 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5DD6D1BF39F
+ for <devel@linuxdriverproject.org>; Sun, 10 Nov 2019 13:27:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 20DC120360
- for <devel@linuxdriverproject.org>; Sun, 10 Nov 2019 12:22:39 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5A9928782A
+ for <devel@linuxdriverproject.org>; Sun, 10 Nov 2019 13:27:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id i--898fBWdjL for <devel@linuxdriverproject.org>;
- Sun, 10 Nov 2019 12:22:38 +0000 (UTC)
+ with ESMTP id 7dAefMQ8Hu33 for <devel@linuxdriverproject.org>;
+ Sun, 10 Nov 2019 13:27:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
- by silver.osuosl.org (Postfix) with ESMTPS id D2577204C1
- for <devel@driverdev.osuosl.org>; Sun, 10 Nov 2019 12:22:37 +0000 (UTC)
-Received: from localhost (unknown [IPv6:2a01:e0a:2c:6930:5cf4:84a1:2763:fe0d])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- (Authenticated sender: bbrezillon)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id AF26428A46F;
- Sun, 10 Nov 2019 12:22:34 +0000 (GMT)
-Date: Sun, 10 Nov 2019 13:22:32 +0100
-From: Boris Brezillon <boris.brezillon@collabora.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH] mtd: rawnand: driver for Mediatek MT7621 SoC NAND flash
- controller
-Message-ID: <20191110132232.3815f1af@collabora.com>
-In-Reply-To: <20191110123919.5c998839@collabora.com>
-References: <20191107073521.11413-1-gerg@kernel.org>
- <20191107084007.GA1203521@kroah.com>
- <20191110123919.5c998839@collabora.com>
-Organization: Collabora
-X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id B4A20877E9
+ for <devel@driverdev.osuosl.org>; Sun, 10 Nov 2019 13:27:15 +0000 (UTC)
+Received: from archlinux (cpc149474-cmbg20-2-0-cust94.5-4.cable.virginm.net
+ [82.4.196.95])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 7540220842;
+ Sun, 10 Nov 2019 13:27:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1573392435;
+ bh=4gBDujHHAOpGpaUZUSbRIfz6nvgA9ClvVnBskRh9zE0=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=dAJgmTY6XUDmcBXRdE2CM4pzNAUzAo2858X3WLg8vaXtlEaSzh3wv5uBfqj4hsNw2
+ UvOxe3zPV5v4fKi3tTf2K/ZdHy2G5nmqQHDdr22yXK+PUyHOBos9lZkZIEp5r36tas
+ QpshVRZlBvOY8MFMUOAVuEJAop7fyMZvuZKcLANU=
+Date: Sun, 10 Nov 2019 13:27:10 +0000
+From: Jonathan Cameron <jic23@kernel.org>
+To: Pedro Ortega <portega.kernel@gmx.com>
+Subject: Re: [PATCH] staging: iio: adc: ad7280: Add spaces around math operator
+Message-ID: <20191110132710.0e9300dc@archlinux>
+In-Reply-To: <20191109151729.3792-1-portega.kernel@gmx.com>
+References: <20191109151729.3792-1-portega.kernel@gmx.com>
+X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -62,66 +65,66 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, gerg@kernel.org,
- linux-mtd@lists.infradead.org, neil@brown.name,
- linux-mediatek@lists.infradead.org, blogic@openwrt.org
+Cc: devel@driverdev.osuosl.org, Lars-Peter Clausen <lars@metafoo.de>,
+ Stefan Popa <stefan.popa@analog.com>,
+ Michael Hennerich <Michael.Hennerich@analog.com>, linux-iio@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Hartmut Knaack <knaack.h@gmx.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, 10 Nov 2019 12:39:19 +0100
-Boris Brezillon <boris.brezillon@collabora.com> wrote:
+On Sat,  9 Nov 2019 16:17:28 +0100
+Pedro Ortega <portega.kernel@gmx.com> wrote:
 
-> On Thu, 7 Nov 2019 09:40:07 +0100
-> Greg KH <gregkh@linuxfoundation.org> wrote:
+> Add spaces around the minus math operator to increase readability.
 > 
-> > On Thu, Nov 07, 2019 at 05:35:21PM +1000, gerg@kernel.org wrote:  
-> > > From: Greg Ungerer <gerg@kernel.org>
-> > > 
-> > > Add a driver to support the NAND flash controller of the MediaTek MT7621
-> > > System-on-Chip device. (This one is the MIPS based parts from Mediatek).
-> > > 
-> > > This code is a re-working of the earlier patches for this hardware that
-> > > have been floating around the internet for years:
-> > > 
-> > > https://github.com/ReclaimYourPrivacy/cloak/blob/master/target/linux/ramips/patches-3.18/0045-mtd-add-mt7621-nand-support.patch
-> > > 
-> > > This is a much cleaned up version, put in staging to start with.
-> > > It does still have some problems, mainly that it still uses a lot of the
-> > > mtd raw nand legacy support.    
-> > 
-> > Is that an issue?  
-> 
-> Well, yes that's an issue since we decided that all new drivers should
-> implement ->exec_op() instead of the legacy hooks. But that would be an
-> issue even if we were merging the driver in staging.
-> 
-> > Why not just put it in the "real" part of the kernel
-> > then, if those apis are still in use?
-> >   
-> > > The driver not only compiles, but it works well on the small range of
-> > > hardware platforms that it has been used on so far. I have been using
-> > > for quite a while now, cleaning up as I get time.
-> > > 
-> > > So... I am looking for comments on the best approach forward with this.
-> > > At least in staging it can get some more eyeballs going over it.    
-> > 
-> > staging will just nit-pick it to death for coding style issues, it's not
-> > going to be get any major api changes/cleanups there usually.  I'd
-> > recommend just merging this to the "real" part of the kernel now if it's
-> > working for you.  
-> 
-> I agree on that point: we should merge this driver directly in the NAND
-> framework after it's been reworked to implement ->exec_op() instead of
+> Signed-off-by: Pedro Ortega <portega.kernel@gmx.com>
+Hi Pedro,
 
-  s/framework/subsystem/
+Afraid not.  Look at what that macro is actually doing.  That's not a maths
+operator at all.  I'm fairly sure we had a plan to actually hide these
+examples away as we get a few people suggesting this 'fix' ever year.
+Not sure what happened to them though, I'll have to check back.
 
-> the legacy hooks.
+Sorry about this, but it is a good lesson in making sure you check
+that the suggestion from checkpatch is actually correct.  It's a
+pattern matcher, it can't always know enough to be able to tell what
+is going on.
+
+Thanks,
+
+Jonathan
+
+> ---
+>  drivers/staging/iio/adc/ad7280a.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> ______________________________________________________
-> Linux MTD discussion mailing list
-> http://lists.infradead.org/mailman/listinfo/linux-mtd/
+> diff --git a/drivers/staging/iio/adc/ad7280a.c b/drivers/staging/iio/adc/ad7280a.c
+> index 19a5f244dcae..34ca0d09db85 100644
+> --- a/drivers/staging/iio/adc/ad7280a.c
+> +++ b/drivers/staging/iio/adc/ad7280a.c
+> @@ -825,14 +825,14 @@ static irqreturn_t ad7280_event_handler(int irq, void *private)
+>  }
+> 
+>  static IIO_DEVICE_ATTR_NAMED(in_thresh_low_value,
+> -			     in_voltage-voltage_thresh_low_value,
+> +			     in_voltage - voltage_thresh_low_value,
+>  			     0644,
+>  			     ad7280_read_channel_config,
+>  			     ad7280_write_channel_config,
+>  			     AD7280A_CELL_UNDERVOLTAGE);
+> 
+>  static IIO_DEVICE_ATTR_NAMED(in_thresh_high_value,
+> -			     in_voltage-voltage_thresh_high_value,
+> +			     in_voltage - voltage_thresh_high_value,
+>  			     0644,
+>  			     ad7280_read_channel_config,
+>  			     ad7280_write_channel_config,
+> --
+> 2.17.1
+> 
 
 _______________________________________________
 devel mailing list
