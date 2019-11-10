@@ -1,60 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 36BBFF69EE
-	for <lists+driverdev-devel@lfdr.de>; Sun, 10 Nov 2019 16:54:35 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7CFEEF6AA1
+	for <lists+driverdev-devel@lfdr.de>; Sun, 10 Nov 2019 18:56:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3AC7F87B36;
-	Sun, 10 Nov 2019 15:54:32 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4BEE18669A;
+	Sun, 10 Nov 2019 17:56:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1OTh31CbslAm; Sun, 10 Nov 2019 15:54:31 +0000 (UTC)
+	with ESMTP id Mr+zRNJMkD+b; Sun, 10 Nov 2019 17:56:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D884387A4D;
-	Sun, 10 Nov 2019 15:54:30 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D7D1C8653D;
+	Sun, 10 Nov 2019 17:56:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 723A01BF33E
- for <devel@linuxdriverproject.org>; Sun, 10 Nov 2019 15:54:29 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3DF0A1BF5D7
+ for <devel@linuxdriverproject.org>; Sun, 10 Nov 2019 17:56:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 6B26E86399
- for <devel@linuxdriverproject.org>; Sun, 10 Nov 2019 15:54:29 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 39BDE8555A
+ for <devel@linuxdriverproject.org>; Sun, 10 Nov 2019 17:56:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xaUcD3ILh-hC for <devel@linuxdriverproject.org>;
- Sun, 10 Nov 2019 15:54:28 +0000 (UTC)
+ with ESMTP id 3rW5X7pIKoih for <devel@linuxdriverproject.org>;
+ Sun, 10 Nov 2019 17:56:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A609E84368
- for <devel@driverdev.osuosl.org>; Sun, 10 Nov 2019 15:54:28 +0000 (UTC)
-Received: from archlinux (cpc149474-cmbg20-2-0-cust94.5-4.cable.virginm.net
- [82.4.196.95])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 3F96C2077C;
- Sun, 10 Nov 2019 15:54:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1573401268;
- bh=9f+F2pDHhZuvV3Ptr3aVhnnxpBR09tVWNZZnfBV8oR4=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=rpM6KPFBbSFEwlmP7PyDbYWIkY/o0J8QlxMy2O8hGL0Tu+2CvalYP+LNAY6yOzb4F
- +Cnxj2FAucokbL5ljrwWdeG/PygttDJ85mCvbdPvbRdBviCYFw2ESdFd/Db9/J2qC2
- 8BEpGNr7OjZlUteMBhBd4AXeAWIwvCjEeZ95PFrk=
-Date: Sun, 10 Nov 2019 15:54:22 +0000
-From: Jonathan Cameron <jic23@kernel.org>
-To: Beniamin Bia <beniamin.bia@analog.com>
-Subject: Re: [PATCH v3 2/4] iio: adc: ad7091r5: Add scale and external VREF
- support
-Message-ID: <20191110155422.7d8306e9@archlinux>
-In-Reply-To: <20191107150759.5937-2-beniamin.bia@analog.com>
-References: <20191107150759.5937-1-beniamin.bia@analog.com>
- <20191107150759.5937-2-beniamin.bia@analog.com>
-X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
-MIME-Version: 1.0
+Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
+ [209.85.210.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 870958584F
+ for <devel@driverdev.osuosl.org>; Sun, 10 Nov 2019 17:56:28 +0000 (UTC)
+Received: by mail-pf1-f193.google.com with SMTP id q26so8825392pfn.11
+ for <devel@driverdev.osuosl.org>; Sun, 10 Nov 2019 09:56:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id;
+ bh=PtqYt1fGL7WFdKH+RvL3PePfXJx2mou2pQEcrG9jbZU=;
+ b=eVmU9oeMjmQDjIG/u141aHB4siTpgnOngq2Vm7FyIX5/WuPm6g8wB7QIkf6tc8DFZe
+ TaZN211+gXNsTlie89ha1k3T7BEvzB5lOtuOoyDyISrPE/wyOPU3vKxPZoq7QVVTcsQG
+ bbvVZtDkfVGV5GI76doDZTkUyYZoXgkIzs6R/+nHgc1LxIuKuHHwnG+lnuNyQPV1YtqU
+ fmt4wtEWVthRJYtyvnbxaGzBPTMl4QDwd7L0JuqVHKuN4zavs3K0ZmTUaXPMn8hV/rHB
+ TFnWY5PtwWQZRD9ulOPkIKIOzylqEoDf7q+YDkbfHt3PZTU2oHZq5tIqu8oPiMnHePcy
+ 7F0w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
+ bh=PtqYt1fGL7WFdKH+RvL3PePfXJx2mou2pQEcrG9jbZU=;
+ b=bTsV5gAZlDqN+V9MtewQfBhTV0BIfMIOYwLQ/prOYEEr19jDu+yklVCWx3ujKnZemo
+ NBhVQBvvthwuJOXxT+Sj/7YSmUPtxRS3dOhndpWb2XZmApOHcehiCVZjCvDHJW8+JdXP
+ IOtCZoe0rS1y4/8nXZIE96EgghTbulnF57LWcBfRARA9hnUJ/awZ8HhwmaKMktJg0Whf
+ 458PViQWEXxzF5Kv+9N+VfOopr7TZQfX3khFv8bLnKcvCjavEE/Emhy7tT7OZTQYSYpJ
+ rL2bLLoRSItDbRYu7O58MlxxjfK9OHigNv95/P6iIQL8eT+NrZ/y/gT4gGbD1vJm8jCl
+ MXAg==
+X-Gm-Message-State: APjAAAXA10Fi6F5o3Ku+eScaqBr4L8R2dNBiZ+FhfKlCyZJ3bN8tHEKl
+ KGJxeLsvYV+i8CWNvpL4VwU=
+X-Google-Smtp-Source: APXvYqxcsOvCIMeB2vwv7Hk4q37bewW4KNu4hwZ+1YEdJWYKPnUYyheC3m5dhgqu8IxOz6admeV8xw==
+X-Received: by 2002:a63:5b1d:: with SMTP id p29mr24023814pgb.209.1573408588139; 
+ Sun, 10 Nov 2019 09:56:28 -0800 (PST)
+Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id z14sm15104414pfq.66.2019.11.10.09.56.26
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Sun, 10 Nov 2019 09:56:27 -0800 (PST)
+From: Guenter Roeck <linux@roeck-us.net>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging/octeon: Fix test build on MIPS
+Date: Sun, 10 Nov 2019 09:56:20 -0800
+Message-Id: <20191110175620.20290-1-linux@roeck-us.net>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,207 +80,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, mark.rutland@arm.com, lars@metafoo.de,
- biabeniamin@outlook.com, Michael.Hennerich@analog.com,
- devicetree@vger.kernel.org, linux-iio@vger.kernel.org,
- gregkh@linuxfoundation.org, linus.walleij@linaro.org,
- linux-kernel@vger.kernel.org, nicolas.ferre@microchip.com, robh+dt@kernel.org,
- pmeerw@pmeerw.net, mchehab+samsung@kernel.org, paulmck@linux.ibm.com,
- Paul Cercueil <paul.cercueil@analog.com>
+Cc: devel@driverdev.osuosl.org, Matthew Wilcox <willy@infradead.org>,
+ linux-kernel@vger.kernel.org, Guenter Roeck <linux@roeck-us.net>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, 7 Nov 2019 17:07:57 +0200
-Beniamin Bia <beniamin.bia@analog.com> wrote:
+mips:allmodconfig fails to build.
 
-> From: Paul Cercueil <paul.cercueil@analog.com>
-> 
-> The scale can now be obtained with the "in_voltage_scale" file.
-> By default, the scale returned corresponds to the internal VREF of 2.5V.
-> 
-> It is possible to use an external VREF (through the REFIN/REFOUT pin of
-> the chip), by passing a regulator to the driver. The scale will then be
-> calculated according to the voltage reported by the regulator.
-> 
-> Signed-off-by: Paul Cercueil <paul.cercueil@analog.com>
-> Co-developed-by: Beniamin Bia <beniamin.bia@analog.com>
-> Signed-off-by: Beniamin Bia <beniamin.bia@analog.com>
+drivers/staging/octeon/ethernet-rx.c: In function 'cvm_oct_poll':
+drivers/staging/octeon/ethernet-defines.h:30:38: error:
+	'CONFIG_CAVIUM_OCTEON_CVMSEG_SIZE' undeclared
 
-A suggestion inline for how to simplify the code a little by only
-registering the regulator disable if we actually have a regulator.
+Octeon defines are only available if CONFIG_CPU_CAVIUM_OCTEON
+is enabled. Since the driver uses those defines, we have to use
+the dummy defines if this flag is not enabled.
 
-Thanks,
+Cc: Matthew Wilcox (Oracle) <willy@infradead.org>
+Fixes: 171a9bae68c7 ("staging/octeon: Allow test build on !MIPS")
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+---
+ drivers/staging/octeon/octeon-ethernet.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Jonathan
-
-> ---
-> Changes in v3:
-> -type cast from void* in remove function removed
-> -error checking for devm_add_action_or_reset
-> 
->  drivers/iio/adc/ad7091r-base.c | 41 ++++++++++++++++++++++++++++++++++
->  drivers/iio/adc/ad7091r-base.h |  1 +
->  drivers/iio/adc/ad7091r5.c     |  5 +++++
->  3 files changed, 47 insertions(+)
-> 
-> diff --git a/drivers/iio/adc/ad7091r-base.c b/drivers/iio/adc/ad7091r-base.c
-> index 2ebc40dfd927..abb0d9c2ea9c 100644
-> --- a/drivers/iio/adc/ad7091r-base.c
-> +++ b/drivers/iio/adc/ad7091r-base.c
-> @@ -11,6 +11,7 @@
->  #include <linux/interrupt.h>
->  #include <linux/module.h>
->  #include <linux/regmap.h>
-> +#include <linux/regulator/consumer.h>
->  
->  #include "ad7091r-base.h"
->  
-> @@ -42,6 +43,7 @@ enum ad7091r_mode {
->  struct ad7091r_state {
->  	struct device *dev;
->  	struct regmap *map;
-> +	struct regulator *reg;
->  	const struct ad7091r_chip_info *chip_info;
->  	enum ad7091r_mode mode;
->  	struct mutex lock;
-> @@ -142,6 +144,21 @@ static int ad7091r_read_raw(struct iio_dev *iio_dev,
->  		ret = IIO_VAL_INT;
->  		break;
->  
-> +	case IIO_CHAN_INFO_SCALE:
-> +		if (st->reg) {
-> +			ret = regulator_get_voltage(st->reg);
-> +			if (ret < 0)
-> +				goto unlock;
-> +
-> +			*val = ret / 1000;
-> +		} else {
-> +			*val = st->chip_info->vref_mV;
-> +		}
-> +
-> +		*val2 = chan->scan_type.realbits;
-> +		ret = IIO_VAL_FRACTIONAL_LOG2;
-> +		break;
-> +
->  	default:
->  		ret = -EINVAL;
->  		break;
-> @@ -184,6 +201,14 @@ static irqreturn_t ad7091r_event_handler(int irq, void *private)
->  	return IRQ_HANDLED;
->  }
->  
-> +static void ad7091r_remove(void *data)
-> +{
-> +	struct ad7091r_state *st = data;
-> +
-> +	if (st->reg)
-> +		regulator_disable(st->reg);
-> +}
-> +
->  int ad7091r_probe(struct device *dev, const char *name,
->  		const struct ad7091r_chip_info *chip_info,
->  		struct regmap *map, int irq)
-> @@ -217,6 +242,22 @@ int ad7091r_probe(struct device *dev, const char *name,
->  			return ret;
->  	}
->  
-> +	st->reg = devm_regulator_get_optional(dev, "vref");
-> +	if (IS_ERR(st->reg)) {
-> +		if (PTR_ERR(st->reg) == EPROBE_DEFER)
-> +			return -EPROBE_DEFER;
-> +
-> +		st->reg = NULL;
-> +	} else {
-> +		ret = regulator_enable(st->reg);
-> +		if (ret)
-> +			return ret;
-> +	}
-> +
-> +	ret = devm_add_action_or_reset(dev, ad7091r_remove, st);
-> +	if (ret)
-> +		return ret;
-> +
-This is more complex than it needs to be...
-
-	st->reg = devm_regulator_get_optional(dev, "vref");
-	if (IS_ERR(st->reg)) {
-		if (PTR_ERR(st->reg) == EPROBE_DEFER)
-			return -EPROBE_DEFER;
-
-		st->reg = NULL;
-	} else {
-		ret = regulator_enable(st->reg);
-		if (ret)
-			return ret;
-		ret = devm_add_action_or_reset(dec, ad7091r_dis_reg, st);
-		if (ret)
-			return ret;
-	}
-
-with
-static void ad7091r_dis_reg(void *data)
-{
-	struct ad7091r_state *st = data;
-
-	regulator_disable(st->reg);
-}
-
-That way the disable is only registered if we actually have a reg
-and hence we don't need to check if we do.
-
-Also, give it a more specific name than reg.   Chances are someone
-will add the main power supply control sometime in the future.
-
-
->  	/* Use command mode by default to convert only desired channels*/
->  	ret = ad7091r_set_mode(st, AD7091R_MODE_COMMAND);
->  	if (ret)
-> diff --git a/drivers/iio/adc/ad7091r-base.h b/drivers/iio/adc/ad7091r-base.h
-> index 5f1147735953..76b76968d071 100644
-> --- a/drivers/iio/adc/ad7091r-base.h
-> +++ b/drivers/iio/adc/ad7091r-base.h
-> @@ -14,6 +14,7 @@ struct ad7091r_state;
->  struct ad7091r_chip_info {
->  	unsigned int num_channels;
->  	const struct iio_chan_spec *channels;
-> +	unsigned int vref_mV;
->  };
->  
->  extern const struct regmap_config ad7091r_regmap_config;
-> diff --git a/drivers/iio/adc/ad7091r5.c b/drivers/iio/adc/ad7091r5.c
-> index f7b3326032e8..73d18ddfd2c9 100644
-> --- a/drivers/iio/adc/ad7091r5.c
-> +++ b/drivers/iio/adc/ad7091r5.c
-> @@ -35,10 +35,13 @@ static const struct iio_event_spec ad7091r5_events[] = {
->  #define AD7091R_CHANNEL(idx, bits, ev, num_ev) { \
->  	.type = IIO_VOLTAGE, \
->  	.info_mask_separate = BIT(IIO_CHAN_INFO_RAW), \
-> +	.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_SCALE), \
->  	.indexed = 1, \
->  	.channel = idx, \
->  	.event_spec = ev, \
->  	.num_event_specs = num_ev, \
-> +	.scan_type.storagebits = 16, \
-> +	.scan_type.realbits = bits, \
->  }
->  static const struct iio_chan_spec ad7091r5_channels_irq[] = {
->  	AD7091R_CHANNEL(0, 12, ad7091r5_events, ARRAY_SIZE(ad7091r5_events)),
-> @@ -58,11 +61,13 @@ static const struct iio_chan_spec ad7091r5_channels_noirq[] = {
->  static const struct ad7091r_chip_info ad7091r5_chip_info_irq = {
->  	.channels = ad7091r5_channels_irq,
->  	.num_channels = ARRAY_SIZE(ad7091r5_channels_irq),
-> +	.vref_mV = 2500,
->  };
->  
->  static const struct ad7091r_chip_info ad7091r5_chip_info_noirq = {
->  	.channels = ad7091r5_channels_noirq,
->  	.num_channels = ARRAY_SIZE(ad7091r5_channels_noirq),
-> +	.vref_mV = 2500,
->  };
->  
->  static int ad7091r5_i2c_probe(struct i2c_client *i2c,
+diff --git a/drivers/staging/octeon/octeon-ethernet.h b/drivers/staging/octeon/octeon-ethernet.h
+index a8a864b40913..70848c6c86ec 100644
+--- a/drivers/staging/octeon/octeon-ethernet.h
++++ b/drivers/staging/octeon/octeon-ethernet.h
+@@ -14,7 +14,7 @@
+ #include <linux/of.h>
+ #include <linux/phy.h>
+ 
+-#ifdef CONFIG_MIPS
++#ifdef CONFIG_CPU_CAVIUM_OCTEON
+ 
+ #include <asm/octeon/octeon.h>
+ 
+-- 
+2.17.1
 
 _______________________________________________
 devel mailing list
