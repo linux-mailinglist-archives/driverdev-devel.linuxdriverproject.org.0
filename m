@@ -1,57 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0E9DBF7001
-	for <lists+driverdev-devel@lfdr.de>; Mon, 11 Nov 2019 10:00:14 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 791E786CDB;
-	Mon, 11 Nov 2019 09:00:11 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 53SHXa8OxV+M; Mon, 11 Nov 2019 09:00:10 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id F33B98359A;
-	Mon, 11 Nov 2019 09:00:09 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 96D721BF954
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 11 Nov 2019 09:00:07 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id E4173F733A
+	for <lists+driverdev-devel@lfdr.de>; Mon, 11 Nov 2019 12:39:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 93C4A87E14
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 11 Nov 2019 09:00:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id EFE1287E5C;
+	Mon, 11 Nov 2019 11:38:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id t4BPpAF03PBz; Mon, 11 Nov 2019 11:38:57 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id D01EB87E14;
+	Mon, 11 Nov 2019 11:38:56 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C86331BF3E0
+ for <devel@linuxdriverproject.org>; Mon, 11 Nov 2019 11:38:54 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id C39508631C
+ for <devel@linuxdriverproject.org>; Mon, 11 Nov 2019 11:38:54 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id h9-+QV-PR36M
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 11 Nov 2019 09:00:05 +0000 (UTC)
+ with ESMTP id mW2M3q7_hhXs for <devel@linuxdriverproject.org>;
+ Mon, 11 Nov 2019 11:38:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from blaine.gmane.org (195-159-176-226.customer.powertech.no
- [195.159.176.226])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 72A07876D8
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 11 Nov 2019 09:00:05 +0000 (UTC)
-Received: from list by blaine.gmane.org with local (Exim 4.89)
- (envelope-from <glddd-devel@m.gmane.org>) id 1iU5YI-000lGy-AT
- for driverdev-devel@linuxdriverproject.org; Mon, 11 Nov 2019 10:00:02 +0100
-X-Injected-Via-Gmane: http://gmane.org/
-To: driverdev-devel@linuxdriverproject.org
-From: "Andrey Jr. Melnikov" <temnota.am@gmail.com>
-Subject: Re: [PATCH] mtd: rawnand: driver for Mediatek MT7621 SoC NAND flash
- controller
-Date: Sun, 10 Nov 2019 20:37:45 +0300
-Message-ID: <7gul9g-je5.ln1@banana.localnet>
-References: <20191107073521.11413-1-gerg@kernel.org>
- <20191107092053.Horde.i3MVcW9RqZDOQBMADZX9fuc@www.vdorst.com>
- <20191110123531.5a27206a@collabora.com>
-Mime-Version: 1.0
-User-Agent: tin/2.2.1-20140504 ("Tober an Righ") (UNIX) (Linux/4.3.3-bananian
- (armv7l))
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com
+ [205.139.110.61])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 250DA86303
+ for <devel@driverdev.osuosl.org>; Mon, 11 Nov 2019 11:38:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1573472332;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=ZwWbKAicByQ7caf+4UMVGlXXUwIVp5v2QMtoVjYuVEo=;
+ b=bORSX6lUDsn105mhDruU61244zhuF7te9cPooYlytSWog4xhvp9u/XGUuFb31upDAMUHXS
+ m5qrSzwKvDkAU4LMVgVB+IO8+b0Puzp5TWiqGV6ldoST+S4mZuRy+dh13s2fAMf959GbSn
+ VMvYKt3hY0Wodigg0oHKBETZDj4AAKs=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-408-Nt4mKNmhMKKKZIUUB4C3ng-1; Mon, 11 Nov 2019 06:38:51 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 631EB801E68;
+ Mon, 11 Nov 2019 11:38:49 +0000 (UTC)
+Received: from shalem.localdomain.com (ovpn-117-121.ams2.redhat.com
+ [10.36.117.121])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3FF4219C4F;
+ Mon, 11 Nov 2019 11:38:48 +0000 (UTC)
+From: Hans de Goede <hdegoede@redhat.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH 1/2] staging: rtl8723bs: Add 024c:0525 to the list of SDIO
+ device-ids
+Date: Mon, 11 Nov 2019 12:38:45 +0100
+Message-Id: <20191111113846.24940-1-hdegoede@redhat.com>
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: Nt4mKNmhMKKKZIUUB4C3ng-1
+X-Mimecast-Spam-Score: 0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,39 +76,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-mtd@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, Hans de Goede <hdegoede@redhat.com>,
+ youling257 <youling257@gmail.com>, linux-wireless@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SW4gZ21hbmUubGludXguZHJpdmVycy5tdGQgQm9yaXMgQnJlemlsbG9uIDxib3Jpcy5icmV6aWxs
-b25AY29sbGFib3JhLmNvbT4gd3JvdGU6Cj4gK1JpY2hhcmQgYW5kIE1pcXVlbAoKPiBPbiBUaHUs
-IDA3IE5vdiAyMDE5IDA5OjIwOjUzICswMDAwCj4gUmVuw6kgdmFuIERvcnN0IDxvcGVuc291cmNl
-QHZkb3JzdC5jb20+IHdyb3RlOgoKPiA+IFF1b3RpbmcgZ2VyZ0BrZXJuZWwub3JnOgo+ID4gCj4g
-PiA+IEZyb206IEdyZWcgVW5nZXJlciA8Z2VyZ0BrZXJuZWwub3JnPgoKWy4uc2tpcHAuLl0KCj4g
-PiArQ0MgREVORyBRaW5nZmFuZywgQ2h1YW5ob25nIEd1bywgV2VpamllIEdhbyB0byB0aGUgbGlz
-dC4KPiA+IAo+ID4gSGkgR3JlZywKPiA+IAo+ID4gVGhhbmtzIGZvciBwb3N0aW5nIHRoaXMgZHJp
-dmVyLgo+ID4gCj4gPiBCdXQgSSB3b3VsZCBsaWtlIHRvIG1lbnRpb24gdGhhdCB0aGUgb3Blbndy
-dCBjb21tdW5pdHkgaXMgY3VycmVudGx5ICAKPiA+IHdvcmtpbmcgb24gYQo+ID4gbmV3IHZlcnNp
-b24gd2hpY2ggaXMgYmFzZWQgYSBuZXdlciB2ZXJzaW9uIG9mIHRoZSBNZWRpYVRlayB2ZW5kb3Ig
-ZHJpdmVyLgo+ID4gVGhhdCB2ZXJzaW9uIGlzIGN1cnJlbnRseSB0YXJnZXRlZCBmb3IgdGhlIG9w
-ZW53cnQgNC4xOSBrZXJuZWwuCj4gPiBTZWUgZnVsbCBwdWxsIHJlcXVlc3QgWzFdIGFuZCBOQU5E
-IGRyaXZlciBwYXRjaCBbMl0KPiA+IAo+ID4gSXQgd291bGQgYmUgYSBzaGFtZSBpZiBkdXBsaWNh
-dGUgd29yayBoYXMgYmVlbiBkb25lLgoKPiBTb3JyeSwgYnV0IGlmIHRoZXJlJ3MgZHVwbGljYXRl
-IGVmZm9ydCB0aGF0J3Mga2luZGEgeW91ciAoT3BlbldSVCBmb2xrcykKPiBmYXVsdDogc2luY2Ug
-d2hlbiBPcGVuV1JUIGlzIHRoZSBjZW50cmFsIHBvaW50IGZvciBrZXJuZWwgZHJpdmVycz8KPiBD
-b3JyZWN0IG1lIGlmIEknbSB3cm9uZywgYnV0IEkgZG9uJ3QgcmVtZW1iZXIgc2VlaW5nIHRoaXMg
-ZHJpdmVyIHBvc3RlZAo+IHRvIHRoZSBNVEQgTUwuIFBsdXMsIHRoZSBkcml2ZXIgeW91J3JlIHBv
-aW50aW5nIHRvIHN0aWxsIGltcGxlbWVudHMgdGhlCj4gbGVnYWN5IGhvb2tzIGFuZCBpcyBiYXNl
-ZCBvbiA0LjE5LCBhbmQgaXQgaGFzIGJlZW4gZGVjaWRlZCB0aGF0IGFsbCBuZXcKPiBOQU5EIGNv
-bnRyb2xsZXIgZHJpdmVycyBzaG91bGQgaW1wbGVtZW50IHRoZSBuZXcgLT5leGVjX29wKCkgaG9v
-awo+IGluc3RlYWQuCgpJJ20gYWxyZWFkeSBzZW50IHRvIEdyZWcgVW5nZXJlciA1LjMgdmFyaWFu
-dCBvZiB0aGlzIHBhdGNoLgpidXQgaXQ6Ci0gUElPIG9ubHkgKG9sZCBkcml2ZXIgZnJvbSAzLjQu
-eCBrZXJuZWwgaGF2ZSAiRE1BIikKLSBzdHJhbmdlIFNMT1cgKDQuMTkgb24gc2FtZSBoYXJkd2Fy
-ZSBpcyBmYXN0ZXIpCgp5b3UgbWF5IGdyYWIgaXQgZnJvbSBodHRwOi8vbGMudnJ0cHJvLnJ1L2xl
-ZGUvNS4zLW5ldy1tdGs3NjIxLW5hbmQtZHJpdmVyLnBhdGNoCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGlu
-dXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+Add 024c:0525 to the list of SDIO device-ids, based on a patch found
+in the Android X86 kernels. According to that patch this device id is
+used on the Alcatel Plus 10 device.
+
+Reported-and-tested-by: youling257 <youling257@gmail.com>
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+---
+ drivers/staging/rtl8723bs/os_dep/sdio_intf.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/staging/rtl8723bs/os_dep/sdio_intf.c b/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
+index 12f683e2e0e2..c48d2df97285 100644
+--- a/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
++++ b/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
+@@ -18,6 +18,7 @@
+ static const struct sdio_device_id sdio_ids[] =
+ {
+ 	{ SDIO_DEVICE(0x024c, 0x0523), },
++	{ SDIO_DEVICE(0x024c, 0x0525), },
+ 	{ SDIO_DEVICE(0x024c, 0x0623), },
+ 	{ SDIO_DEVICE(0x024c, 0x0626), },
+ 	{ SDIO_DEVICE(0x024c, 0xb723), },
+-- 
+2.23.0
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
