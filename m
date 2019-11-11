@@ -2,77 +2,77 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3FD9EF74F2
-	for <lists+driverdev-devel@lfdr.de>; Mon, 11 Nov 2019 14:31:32 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D169F7570
+	for <lists+driverdev-devel@lfdr.de>; Mon, 11 Nov 2019 14:51:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E523586470;
-	Mon, 11 Nov 2019 13:31:30 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2F9A6863AE;
+	Mon, 11 Nov 2019 13:51:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SatkCEmD0CAm; Mon, 11 Nov 2019 13:31:30 +0000 (UTC)
+	with ESMTP id hiji6YwvGnQ2; Mon, 11 Nov 2019 13:51:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 241FD863D9;
-	Mon, 11 Nov 2019 13:31:26 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D5F57862DB;
+	Mon, 11 Nov 2019 13:51:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DE6841BF3DE
- for <devel@linuxdriverproject.org>; Mon, 11 Nov 2019 13:31:21 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2BC211BF3DE
+ for <devel@linuxdriverproject.org>; Mon, 11 Nov 2019 13:51:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id DBEB320479
- for <devel@linuxdriverproject.org>; Mon, 11 Nov 2019 13:31:21 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2845C8245D
+ for <devel@linuxdriverproject.org>; Mon, 11 Nov 2019 13:51:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3DYwJKWRUZzS for <devel@linuxdriverproject.org>;
- Mon, 11 Nov 2019 13:31:21 +0000 (UTC)
+ with ESMTP id 7wMc10EPtraP for <devel@linuxdriverproject.org>;
+ Mon, 11 Nov 2019 13:51:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
- [209.85.128.66])
- by silver.osuosl.org (Postfix) with ESMTPS id E21772043D
- for <devel@driverdev.osuosl.org>; Mon, 11 Nov 2019 13:31:20 +0000 (UTC)
-Received: by mail-wm1-f66.google.com with SMTP id q70so13343949wme.1
- for <devel@driverdev.osuosl.org>; Mon, 11 Nov 2019 05:31:20 -0800 (PST)
+Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
+ [209.85.221.68])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 5BD93821EF
+ for <devel@driverdev.osuosl.org>; Mon, 11 Nov 2019 13:51:46 +0000 (UTC)
+Received: by mail-wr1-f68.google.com with SMTP id w9so7924331wrr.0
+ for <devel@driverdev.osuosl.org>; Mon, 11 Nov 2019 05:51:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=SBThM90ubuVDseSTLIwGRN+Zh5K8pDyfCSWgh066qac=;
- b=UFLFeXWjZpe238nQATmrZSX6QzTo7ltvTj5ThV5ANLfsbDa4iQIt8AaTSGLMJrMnEP
- qxULJX2W3orbIAtdRVN0zW00c6ZBXd2oxXVV1GVDekOOhYFzYWHftwYBqSuGATZBqGhJ
- dmSIJIuDTCJ0LnpR74pvCBYKf41K4TlC42KPIA1Ihq6/6YfyuLyqfu9JlfBIMQtwN2Am
- wtPi+c2FbFmAxObpAKUsonXeBxlIcRDhMTKuTff/UuM/AEohIzqnMJteKC7FQcTKMdP4
- 0V357WBwtwfnJX1udTnULxRilUVRR9T+a2fvoZWgLi20nRRHfyOPNwfhNnWNSYVmDiDW
- kuEw==
+ h=from:date:to:cc:subject:in-reply-to:message-id:references
+ :mime-version; bh=izNeXsLo3977cjjoeFa+PfRnLFlgVVkBlxrUA54lBXw=;
+ b=r7eVHomvCFzVgSqaPu00nXlvsu2CmwhRGSy/9iohJdDJnBVol4Z+rDZ7ZdiOUSHPbu
+ sb90/axg4jjubaawE429G6djgMnsbeU3QMfxKqPZ5Xq98wAs2ruK3K8okUopoAeJ5QXU
+ wCH+aBFH+PsJN8z7qTvhQlL8Ce3Vkpp4anXY9Yq1ywIxMBwppeGuKbHKHv+DrTr487he
+ o00mIMeeDqkD72OThJggPoj69+Cyi/sJ03CRp2FieaQZnvh4bCEsiSoEfPXNM+Kbuevv
+ tRXplBisRWKXLkp+Njtvtmw0k7U+vLOZR1lSsKjNHwDVyd5/4qEZzzHHNFK0qMGhdPL1
+ CvWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=SBThM90ubuVDseSTLIwGRN+Zh5K8pDyfCSWgh066qac=;
- b=CoKbULIwvgeJJrV2nTMr5xvjnGmkzjdngKbs3ZID+TZwkZ35NMEMYLMyYx1nJ61EBI
- yyxEN2eHazoNCZpv2WTB1ViPVjqbdFIKvhz6TImzm178WAfGtngInYBkeCXeZdxagG2n
- 2NHJJElxXDav5ibjQCWQyVZrgXuVN0u3t4IMm72S64HOf8LwJ28TpoUipN6JbDcpnnIV
- l4uiOPB9mgCrbmbtCW4VAqYzHznt8+YcBHm2eLCa4qV0F2Julcjind2xRs0KQXrKLbyj
- QOthKqV0FGz43pmsRB0/OHpn4yTpFqJlH4qGsb+XXZpKTGzKNH2YYmypVAPE/ZgUWGBD
- bQ1w==
-X-Gm-Message-State: APjAAAXwNKk0DOJ4ZIgP90bMYc+LR8fjwOY7b4eQZ7s/5MKYj5trs1lh
- o1/QDj3KZKDwKqhW6ymYqA==
-X-Google-Smtp-Source: APXvYqx0odl6vPnAhPz8C9KDrav40rpT5veoN0MIuwZ5rh9JGwF63rEXMH1iPkDRSvb5nvx3BUZVBQ==
-X-Received: by 2002:a7b:c347:: with SMTP id l7mr17125411wmj.48.1573479079116; 
- Mon, 11 Nov 2019 05:31:19 -0800 (PST)
+ h=x-gm-message-state:from:date:to:cc:subject:in-reply-to:message-id
+ :references:mime-version;
+ bh=izNeXsLo3977cjjoeFa+PfRnLFlgVVkBlxrUA54lBXw=;
+ b=Wu+H5UCizyrPTvOgGKgWpmeVokL6hUmZewaNwrNZ1zulkLOFw3skYBt3ktnijgjQMH
+ 4kkwvfzmY3iWOay1AOjYVRB/VvVz9hp7hTX+hHdDfwRcfM5ncsD2yVoBQbWvgXWqxuje
+ iJhx/ptnVepe8zlWHMeAlDZRcB9Tu4QSKz4GKSlQLS1NRfsp3L53pqkIw0SSXz58uS9j
+ f63g+5JI4KOKnwh6nYVD+WI1XXOFp+W+0SwM0P3v1a0jh4SHihlUX86Awz4/pMjJ7AeY
+ lFVlt5r+2hlM/RgQGE8ROnQTEz8QwvzynLY/cMvqrybJ9nSwDp0vH5vOxbgozQcsJHW9
+ O9iQ==
+X-Gm-Message-State: APjAAAWnj+hIGr2OBnhxYeMVHe3mVqKiNSJZ7vzQIDGTTc/Dd69IsmQ0
+ zmC1GrMh0p6RE1oY/Tn7yQ==
+X-Google-Smtp-Source: APXvYqxCQFT7SyzScJu8SHd3WkubL0M0n53zH1agqu9W+57Nbeeq21fbjboyYJHzMYczlKpnjcSMMA==
+X-Received: by 2002:adf:f44a:: with SMTP id f10mr5537827wrp.63.1573480304688; 
+ Mon, 11 Nov 2019 05:51:44 -0800 (PST)
 Received: from ninjahub.lan (79-73-36-243.dynamic.dsl.as9105.com.
  [79.73.36.243])
- by smtp.googlemail.com with ESMTPSA id w11sm8470143wra.83.2019.11.11.05.31.18
+ by smtp.gmail.com with ESMTPSA id a7sm16513703wrr.89.2019.11.11.05.51.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 Nov 2019 05:31:18 -0800 (PST)
+ Mon, 11 Nov 2019 05:51:44 -0800 (PST)
 From: Jules Irenge <jbi.octave@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH v2 3/3] staging: wfx: replace u32 by __le32
-Date: Mon, 11 Nov 2019 13:30:55 +0000
-Message-Id: <20191111133055.214410-3-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.23.0
-In-Reply-To: <20191111133055.214410-1-jbi.octave@gmail.com>
-References: <20191111133055.214410-1-jbi.octave@gmail.com>
+X-Google-Original-From: Jules Irenge <maxx@ninjahub.org>
+Date: Mon, 11 Nov 2019 13:51:33 +0000 (GMT)
+To: Al Viro <viro@zeniv.linux.org.uk>
+Subject: Re: [PATCH] staging: wfx: add gcc extension __force cast
+In-Reply-To: <20191109091913.GV26530@ZenIV.linux.org.uk>
+Message-ID: <alpine.LFD.2.21.1911111347380.226731@ninjahub.org>
+References: <20191108233837.33378-1-jbi.octave@gmail.com>
+ <20191109091913.GV26530@ZenIV.linux.org.uk>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -87,86 +87,48 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, Jules Irenge <jbi.octave@gmail.com>,
- linux-kernel@vger.kernel.org
+ gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+ Boqun.Feng@microsoft.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Replace u32 by __le32 to fix warning of cast from restricted __le32.
-Issue detected by sparse tool.
 
-Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
----
-v1 uses casting to fix the warnings
-v2 replace the declaration type of the variables
 
- drivers/staging/wfx/hif_api_mib.h | 48 +++++++++++++++----------------
- 1 file changed, 24 insertions(+), 24 deletions(-)
+On Sat, 9 Nov 2019, Al Viro wrote:
 
-diff --git a/drivers/staging/wfx/hif_api_mib.h b/drivers/staging/wfx/hif_api_mib.h
-index 94b789ceb4ff..e0a67410add2 100644
---- a/drivers/staging/wfx/hif_api_mib.h
-+++ b/drivers/staging/wfx/hif_api_mib.h
-@@ -295,31 +295,31 @@ struct hif_mib_stats_table {
- } __packed;
- 
- struct hif_mib_extended_count_table {
--	u32   count_plcp_errors;
--	u32   count_fcs_errors;
--	u32   count_tx_packets;
--	u32   count_rx_packets;
--	u32   count_rx_packet_errors;
--	u32   count_rx_decryption_failures;
--	u32   count_rx_mic_failures;
--	u32   count_rx_no_key_failures;
--	u32   count_tx_multicast_frames;
--	u32   count_tx_frames_success;
--	u32   count_tx_frame_failures;
--	u32   count_tx_frames_retried;
--	u32   count_tx_frames_multi_retried;
--	u32   count_rx_frame_duplicates;
--	u32   count_rts_success;
--	u32   count_rts_failures;
--	u32   count_ack_failures;
--	u32   count_rx_multicast_frames;
--	u32   count_rx_frames_success;
--	u32   count_rx_cmacicv_errors;
--	u32   count_rx_cmac_replays;
--	u32   count_rx_mgmt_ccmp_replays;
-+	__le32   count_plcp_errors;
-+	__le32   count_fcs_errors;
-+	__le32   count_tx_packets;
-+	__le32   count_rx_packets;
-+	__le32   count_rx_packet_errors;
-+	__le32   count_rx_decryption_failures;
-+	__le32   count_rx_mic_failures;
-+	__le32   count_rx_no_key_failures;
-+	__le32   count_tx_multicast_frames;
-+	__le32   count_tx_frames_success;
-+	__le32   count_tx_frame_failures;
-+	__le32   count_tx_frames_retried;
-+	__le32   count_tx_frames_multi_retried;
-+	__le32   count_rx_frame_duplicates;
-+	__le32   count_rts_success;
-+	__le32   count_rts_failures;
-+	__le32   count_rx_multicast_frames;
-+	__le32   count_rx_cmacicv_errors;
-+	__le32   count_rx_cmac_replays;
-+	__le32   count_rx_mgmt_ccmp_replays;
-+	__le32   count_rx_beacon;
-+	__le32   count_miss_beacon;
-+	__le32   count_ack_failures;
-+	__le32   count_rx_frames_success;
- 	u32   count_rx_bipmic_errors;
--	u32   count_rx_beacon;
--	u32   count_miss_beacon;
- 	u32   reserved[15];
- } __packed;
- 
--- 
-2.23.0
+> On Fri, Nov 08, 2019 at 11:38:37PM +0000, Jules Irenge wrote:
+> > Add gcc extension __force and __le32 cast to fix warning issued by Sparse tool."warning: cast to restricted __le32"
+> >
+> > Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> > ---
+> >  drivers/staging/wfx/debug.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/staging/wfx/debug.c b/drivers/staging/wfx/debug.c
+> > index 0a9ca109039c..aa7b2dd691b9 100644
+> > --- a/drivers/staging/wfx/debug.c
+> > +++ b/drivers/staging/wfx/debug.c
+> > @@ -72,7 +72,7 @@ static int wfx_counters_show(struct seq_file *seq, void *v)
+> >  		return -EIO;
+> >  
+> >  #define PUT_COUNTER(name) \
+> > -	seq_printf(seq, "%24s %d\n", #name ":", le32_to_cpu(counters.count_##name))
+> > +	seq_printf(seq, "%24s %d\n", #name ":", le32_to_cpu((__force __le32)(counters.count_##name)))
+> 
+> NAK.  force-cast (and it's not a gcc extension, BTW - it's sparse) is basically
+> "I know better; the code is right, so STFU already".  *IF* counters.count_...
+> is really little-endian 32bit, then why isn't it declared that way?  And if
+> it's host-endian, you've just papered over a real bug here.
+> 
+> As a general rule "fix" doesn't mean "tell it to shut up"...
+> 
 
+Thanks for the comments, I have updated  but I have a mixed mind on the 
+__le32. I have to read more about it. 
+
+I would appreciate if you can comment again on the update.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
