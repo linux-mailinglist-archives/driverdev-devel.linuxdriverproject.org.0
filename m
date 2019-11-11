@@ -1,43 +1,43 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A56A9F6C97
-	for <lists+driverdev-devel@lfdr.de>; Mon, 11 Nov 2019 03:17:47 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CDEAAF6C96
+	for <lists+driverdev-devel@lfdr.de>; Mon, 11 Nov 2019 03:17:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9E98E21517;
-	Mon, 11 Nov 2019 02:17:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B5CF085FA3;
+	Mon, 11 Nov 2019 02:17:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Yaf9+XzrkycS; Mon, 11 Nov 2019 02:17:45 +0000 (UTC)
+	with ESMTP id K3yvvNBcWV5d; Mon, 11 Nov 2019 02:17:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 41727204B3;
-	Mon, 11 Nov 2019 02:17:44 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C2C3985BD0;
+	Mon, 11 Nov 2019 02:17:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 057D81BF40B
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 092891BF954
  for <devel@linuxdriverproject.org>; Mon, 11 Nov 2019 02:17:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id EAE222107A
+ by whitealder.osuosl.org (Postfix) with ESMTP id E5CF986477
  for <devel@linuxdriverproject.org>; Mon, 11 Nov 2019 02:17:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1yj15peFph+l for <devel@linuxdriverproject.org>;
+ with ESMTP id VMtVcNj0SXqb for <devel@linuxdriverproject.org>;
  Mon, 11 Nov 2019 02:17:39 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from MAIL.isd.co.kr (unknown [211.53.128.215])
- by silver.osuosl.org (Postfix) with ESMTPS id 4B8D5204B3
- for <devel@linuxdriverproject.org>; Mon, 11 Nov 2019 02:17:39 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 588D28646F
+ for <devel@driverdev.osuosl.org>; Mon, 11 Nov 2019 02:17:39 +0000 (UTC)
 Received: from 192.168.1.163 (217.217.179.17) by MAIL.isd.co.kr (10.10.10.22)
  with Microsoft SMTP Server id 14.3.123.3;
  Mon, 11 Nov 2019 11:17:21 +0900
 Date: Mon, 11 Nov 2019 03:17:23 +0100
 From: Peter Wong <choimj@isd.co.kr>
-To: <devel@linuxdriverproject.org>
-Message-ID: <16170526.77650.1573438645078.JavaMail.cash@211.53.128.215>
+To: <devel@driverdev.osuosl.org>
+Message-ID: <450125.77628.1573438644906.JavaMail.cash@211.53.128.215>
 Subject: Investment opportunity
 MIME-Version: 1.0
 X-Originating-IP: [217.217.179.17]
