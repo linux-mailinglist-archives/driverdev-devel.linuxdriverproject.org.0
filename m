@@ -1,51 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 93B55F8352
-	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Nov 2019 00:17:16 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E89A9F83CB
+	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Nov 2019 00:55:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4B1FE22640;
-	Mon, 11 Nov 2019 23:17:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B6D9F8807C;
+	Mon, 11 Nov 2019 23:55:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vij8PMWfg2LX; Mon, 11 Nov 2019 23:17:13 +0000 (UTC)
+	with ESMTP id alK5+304g8Ka; Mon, 11 Nov 2019 23:55:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 24B5621FAC;
-	Mon, 11 Nov 2019 23:17:13 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0975487553;
+	Mon, 11 Nov 2019 23:55:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DCF0C1BF2C4
- for <devel@linuxdriverproject.org>; Mon, 11 Nov 2019 23:17:10 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 212E91BF381
+ for <devel@linuxdriverproject.org>; Mon, 11 Nov 2019 23:55:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D911721FAD
- for <devel@linuxdriverproject.org>; Mon, 11 Nov 2019 23:17:10 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 1DFC92000B
+ for <devel@linuxdriverproject.org>; Mon, 11 Nov 2019 23:55:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 040xr1BH1HkZ for <devel@linuxdriverproject.org>;
- Mon, 11 Nov 2019 23:17:09 +0000 (UTC)
+ with ESMTP id YlEfH5XpcwH2 for <devel@linuxdriverproject.org>;
+ Mon, 11 Nov 2019 23:55:36 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from ZenIV.linux.org.uk (zeniv.linux.org.uk [195.92.253.2])
- by silver.osuosl.org (Postfix) with ESMTPS id 476D821FAC
- for <devel@driverdev.osuosl.org>; Mon, 11 Nov 2019 23:17:09 +0000 (UTC)
-Received: from viro by ZenIV.linux.org.uk with local (Exim 4.92.3 #3 (Red Hat
- Linux)) id 1iUIvb-0006lL-JH; Mon, 11 Nov 2019 23:16:59 +0000
-Date: Mon, 11 Nov 2019 23:16:59 +0000
-From: Al Viro <viro@zeniv.linux.org.uk>
-To: Jules Irenge <jbi.octave@gmail.com>
-Subject: Re: [PATCH] staging: wfx: add gcc extension __force cast
-Message-ID: <20191111231659.GA22837@ZenIV.linux.org.uk>
-References: <20191108233837.33378-1-jbi.octave@gmail.com>
- <20191109091913.GV26530@ZenIV.linux.org.uk>
- <alpine.LFD.2.21.1911111347380.226731@ninjahub.org>
- <20191111202852.GX26530@ZenIV.linux.org.uk>
+Received: from smtprelay.hostedemail.com (smtprelay0106.hostedemail.com
+ [216.40.44.106])
+ by silver.osuosl.org (Postfix) with ESMTPS id 3054820006
+ for <devel@driverdev.osuosl.org>; Mon, 11 Nov 2019 23:55:36 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave06.hostedemail.com (Postfix) with ESMTP id 8893A800A327
+ for <devel@driverdev.osuosl.org>; Mon, 11 Nov 2019 23:16:14 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay02.hostedemail.com (Postfix) with ESMTP id DA04540E1;
+ Mon, 11 Nov 2019 23:16:11 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, :::::::::,
+ RULES_HIT:41:355:379:599:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2194:2198:2199:2200:2393:2551:2553:2559:2562:2693:2828:3138:3139:3140:3141:3142:3352:3622:3865:3866:3868:3871:3872:4250:4321:4605:5007:6691:7901:8828:10004:10400:11026:11232:11658:11914:12050:12297:12438:12740:12760:12895:13069:13311:13357:13439:14180:14659:21080:21627:21972:30054:30090:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:20, LUA_SUMMARY:none
+X-HE-Tag: nut53_18ddf32dd8d37
+X-Filterd-Recvd-Size: 2182
+Received: from XPS-9350.home (unknown [47.151.135.224])
+ (Authenticated sender: joe@perches.com)
+ by omf13.hostedemail.com (Postfix) with ESMTPA;
+ Mon, 11 Nov 2019 23:16:10 +0000 (UTC)
+Message-ID: <c2c803570b92fc18ac62902bd99075ccc33eb5b6.camel@perches.com>
+Subject: Re: [PATCH v2 3/3] staging: wfx: replace u32 by __le32
+From: Joe Perches <joe@perches.com>
+To: Jerome Pouiller <Jerome.Pouiller@silabs.com>, Jules Irenge
+ <jbi.octave@gmail.com>
+Date: Mon, 11 Nov 2019 15:15:54 -0800
+In-Reply-To: <3445403.d56fhTCmfW@pc-42>
+References: <20191111133055.214410-1-jbi.octave@gmail.com>
+ <20191111133055.214410-3-jbi.octave@gmail.com> <3445403.d56fhTCmfW@pc-42>
+User-Agent: Evolution 3.34.1-2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191111202852.GX26530@ZenIV.linux.org.uk>
-User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,89 +75,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- Boqun.Feng@microsoft.com, linux-kernel@vger.kernel.org
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Nov 11, 2019 at 08:28:52PM +0000, Al Viro wrote:
-
-> So it smells like a remote buffer overrun, little-endian or not.
-> And at that point I would start looking for driver original authors with
-> some rather pointed questions about the validation of data and lack
-> thereof.
+On Mon, 2019-11-11 at 16:58 +0000, Jerome Pouiller wrote:
+> On Monday 11 November 2019 14:30:55 CET Jules Irenge wrote:
+> [...]
+> > -       u32   count_rts_failures;
+> > -       u32   count_ack_failures;
+> > -       u32   count_rx_multicast_frames;
+> > -       u32   count_rx_frames_success;
+> > -       u32   count_rx_cmacicv_errors;
+> > -       u32   count_rx_cmac_replays;
+> > -       u32   count_rx_mgmt_ccmp_replays;
+> [...]
+> > +       __le32   count_rts_failures;
+> > +       __le32   count_rx_multicast_frames;
+> > +       __le32   count_rx_cmacicv_errors;
+> > +       __le32   count_rx_cmac_replays;
+> > +       __le32   count_rx_mgmt_ccmp_replays;
+> > +       __le32   count_rx_beacon;
+> > +       __le32   count_miss_beacon;
+> > +       __le32   count_ack_failures;
+> > +       __le32   count_rx_frames_success;
+> >         u32   count_rx_bipmic_errors;
+> > -       u32   count_rx_beacon;
+> > -       u32   count_miss_beacon;
 > 
-> BTW, if incoming packets are fixed-endian, I would expect more bugs on
-> big-endian hosts - wfx_tx_confirm_cb() does things like
->                 tx_info->status.tx_time =
->                 arg->media_delay - arg->tx_queue_delay;
-> with media_delay and tx_queue_delay both being 32bit fields in the
-> incoming packet.  So another question to the authors (or documentation,
-> or direct experiments) is what endianness do various fields in the incoming
-> data have.  We can try and guess, but...
+> Hello Jules,
+> 
+> Your patch reorders members of the structure. It will break API with the 
+> chip.
 
-More fun:
-int hif_read_mib(struct wfx_dev *wdev, int vif_id, u16 mib_id, void *val, size_t val_len)
-{
-        int ret;
-        struct hif_msg *hif;
-        int buf_len = sizeof(struct hif_cnf_read_mib) + val_len;
-        struct hif_req_read_mib *body = wfx_alloc_hif(sizeof(*body), &hif);
-        struct hif_cnf_read_mib *reply = kmalloc(buf_len, GFP_KERNEL);
+And if the hardware really is le, then almost certainly
+_all_ the members of the struct should be __le32
 
-OK, allocated request and reply buffers, by the look of it; request one
-being struct hif_msg with struct hif_req_read_mib for payload
-and reply - struct hif_cnf_read_mib {
-        uint32_t   status;
-        uint16_t   mib_id;
-        uint16_t   length;
-        uint8_t    mib_data[];
-} with val_len bytes in mib_data.
-
-        body->mib_id = cpu_to_le16(mib_id);
-        wfx_fill_header(hif, vif_id, HIF_REQ_ID_READ_MIB, sizeof(*body));
-
-Filled request, {.len = cpu_to_le16(4 + 4),
-		 .id = HIF_REQ_ID_READ_MIB,
-		 .interface = vif_id,
-		 .body = {
-			.mib_id = cpu_to_le16(mib_id)
-		}
-	}
-Note that mib_id is host-endian here; what we send is little-endian.
-
-        ret = wfx_cmd_send(wdev, hif, reply, buf_len, false);
-send it, get reply
-
-        if (!ret && mib_id != reply->mib_id) {
-Wha...?  Now we are comparing two bytes at offset 4 into reply with a host-endian
-value?  Oh, well...
-
-                dev_warn(wdev->dev, "%s: confirmation mismatch request\n", __func__);
-                ret = -EIO;
-        }
-        if (ret == -ENOMEM)
-                dev_err(wdev->dev, "buffer is too small to receive %s (%zu < %d)\n",
-                        get_mib_name(mib_id), val_len, reply->length);
-        if (!ret)
-                memcpy(val, &reply->mib_data, reply->length);
-What.  The.  Hell?
-
-We are copying data from the reply.  Into caller-supplied object.
-With length taken from the same reply and no validation even
-attempted?  Not even "um, maybe we shouldn't copy more than the caller
-told us to copy, especially since that's as much as there is in the
-source of that memcpy"?
-
-And that's besides the endianness questions.  Note that getting the
-endianness wrong here is just about certain to blow up - small value
-will be misinterpreted by factor of 256.
-
-In any case, even if this is talking to firmware on a card, that's
-an unhealthy degree of trust, especially since the same function
-does consider the possibility of bogus replies.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
