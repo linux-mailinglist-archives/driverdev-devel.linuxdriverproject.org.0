@@ -1,88 +1,128 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 45E59F90D3
-	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Nov 2019 14:41:02 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 920DDF9469
+	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Nov 2019 16:35:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 636B587916;
-	Tue, 12 Nov 2019 13:40:59 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3AB238586A;
+	Tue, 12 Nov 2019 15:35:43 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1MxAp4VSaH_8; Tue, 12 Nov 2019 15:35:41 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 94C1184480;
+	Tue, 12 Nov 2019 15:35:40 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 970D21BF59D
+ for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 15:35:36 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 67A7287592
+ for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 15:35:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hnOAuhsX5vz2; Tue, 12 Nov 2019 13:40:59 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9C32986E88;
-	Tue, 12 Nov 2019 13:40:58 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8CECF1BF295
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 12 Nov 2019 13:40:56 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 7E01785CE2
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 12 Nov 2019 13:40:56 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DoJdL-Cflx+G
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 12 Nov 2019 13:40:55 +0000 (UTC)
+ with ESMTP id RLnlsrT78sBh for <devel@linuxdriverproject.org>;
+ Tue, 12 Nov 2019 15:35:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa5.microchip.iphmx.com (esa5.microchip.iphmx.com
- [216.71.150.166])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 7FE4185CC7
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 12 Nov 2019 13:40:55 +0000 (UTC)
-Received-SPF: Pass (esa5.microchip.iphmx.com: domain of
- Christian.Gromm@microchip.com designates 198.175.253.82 as
- permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa5.microchip.iphmx.com;
- envelope-from="Christian.Gromm@microchip.com";
- x-sender="Christian.Gromm@microchip.com";
- x-conformance=spf_only; x-record-type="v=spf1";
- x-record-text="v=spf1 mx a:ushub1.microchip.com
- a:smtpout.microchip.com a:mx1.microchip.iphmx.com
- a:mx2.microchip.iphmx.com include:servers.mcsv.net
- include:mktomail.com include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa5.microchip.iphmx.com: no sender
- authenticity information available from domain of
- postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa5.microchip.iphmx.com;
- envelope-from="Christian.Gromm@microchip.com";
- x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa5.microchip.iphmx.com;
- dkim=none (message not signed) header.i=none;
- spf=Pass smtp.mailfrom=Christian.Gromm@microchip.com;
- spf=None smtp.helo=postmaster@email.microchip.com;
- dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: 7UHmR1iiB9beqOruZNVI+YtmpRu/rCGDF6RTFclVpCtki6a7oxUHUNfwt58NHOl+zfHOKJR2xn
- sxJE9OdWVFVcCV2VeDI+AqH/ps+N5A3u8TLo4m1UUn2ZlRto29zY7t/t9M1RVx8/CZf+kAObXb
- H12v0nDSbRjplHHgF0Bn9K4RvlxL4LUHkA5L2Ohj1XrqAYuHCi99LtvtsRC6QOFln0s7DAWPYN
- FQR5hnL6nBY4fqyQnXdKbU0NwyGf/rKkITsi68lf8mxBZmcmBUbJJAMJIKatwvMeGThpenl6jv
- irc=
-X-IronPort-AV: E=Sophos;i="5.68,296,1569308400"; d="scan'208";a="55150289"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa5.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 12 Nov 2019 06:40:41 -0700
-Received: from chn-vm-ex02.mchp-main.com (10.10.85.144) by
- chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Tue, 12 Nov 2019 06:40:40 -0700
-Received: from kar-sv-agl01.mchp-main.com (10.10.85.251) by
- chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server id
- 15.1.1713.5 via Frontend Transport; Tue, 12 Nov 2019 06:40:38 -0700
-From: Christian Gromm <christian.gromm@microchip.com>
-To: <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: most: core: add comments to mutex and spinlock
- definitions
-Date: Tue, 12 Nov 2019 14:40:36 +0100
-Message-ID: <1573566036-2279-1-git-send-email-christian.gromm@microchip.com>
-X-Mailer: git-send-email 2.7.4
+Received: from mx0b-00128a01.pphosted.com (mx0b-00128a01.pphosted.com
+ [148.163.139.77])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id F03FD8756C
+ for <devel@driverdev.osuosl.org>; Tue, 12 Nov 2019 15:35:34 +0000 (UTC)
+Received: from pps.filterd (m0167090.ppops.net [127.0.0.1])
+ by mx0b-00128a01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ xACFNvJM014840; Tue, 12 Nov 2019 10:35:30 -0500
+Received: from nam01-bn3-obe.outbound.protection.outlook.com
+ (mail-bn3nam01lp2059.outbound.protection.outlook.com [104.47.33.59])
+ by mx0b-00128a01.pphosted.com with ESMTP id 2w7prfs1g2-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 12 Nov 2019 10:35:29 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=G4XMiJh1HI3kQVfngANf1qTGt6Z9roJNpLClMf9gL0pAJpNdQ6P//9GPnk6C1NPMBL44m7FwXObJ3J1+4WEQy2OV/BpeZMMGJeoRyfZrK/U2/ecjQeFNgnMm7z4jDJXHrKYNQ6H4NPpj/LBmbdXM6QEGzp5Q98f6jS2jaRijkULr63NIlJb5HbOq5tJqJOJ3zjleB7bBt1ioilSE1YY/Xks/ENVsZQq98NGvXIfFNIR3BFGzpaTcJlSYFmIFDK+SucMII+5NyWdc2wrr2Xt1rhBdgeS5bEDF820Y+t1MHCkPoHh/sUrWEq9hkz/wDT4I+Z9ht3fSrjxWfKkLiXXRGg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=tiGm8K3lxAsmd6drp0bjxFiXoqzRz9/xLu3WuiT3Drc=;
+ b=TajOMrF12aiUOQCMujXN39HFfP+qnT6NbgryAQ8AYIku07DtpnLjtKdSn8gd/0hNblQPYe8xtzFvwvtVUd0SH0uk2iG4tnyq2q3olkY0m2FieoycX+Bktf1Uuzbafxb8r33KLGjhRPmYgEc3Rulx0dU3fmH7d156mPyHR7n40U73Ah/LYFoURREXddSZohg/+vwOAhzj3TS7jJ61Kh0ZlPFdABxvl/+8oRj4w6B6q+CFTDWodczjoPcpoGJ7zkiCPpjcxg7L0BSdY6VzrSRki3x7xPLGU/KEgSEij3DI++xvkrg1OrAU5+nuCr9gtoPJa1LQVIgSKFdCSCk83n2GCA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 137.71.25.57) smtp.rcpttodomain=vger.kernel.org smtp.mailfrom=analog.com;
+ dmarc=bestguesspass action=none header.from=analog.com; dkim=none (message
+ not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=analog.onmicrosoft.com; s=selector2-analog-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=tiGm8K3lxAsmd6drp0bjxFiXoqzRz9/xLu3WuiT3Drc=;
+ b=zLX9nx/6j9euJLbrmlKVlz7WQIr3oPUVOkbXtvkWar7MzurbcqVATOUVXkzWI3MvGQekDRNtZLwkHTegf+9mymLgkA0RPXHU4wRN0/1hmzyjQenzQSL126ZARinUyIvwoegmPVZX7Dme8I4/S5H4xBlR7F7GK6s3TwJZYP0mmoE=
+Received: from BN3PR03CA0098.namprd03.prod.outlook.com (2603:10b6:400:4::16)
+ by BN7PR03MB3618.namprd03.prod.outlook.com (2603:10b6:406:c3::27) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2430.20; Tue, 12 Nov
+ 2019 15:35:28 +0000
+Received: from BL2NAM02FT023.eop-nam02.prod.protection.outlook.com
+ (2a01:111:f400:7e46::205) by BN3PR03CA0098.outlook.office365.com
+ (2603:10b6:400:4::16) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2430.23 via Frontend
+ Transport; Tue, 12 Nov 2019 15:35:28 +0000
+Received-SPF: Pass (protection.outlook.com: domain of analog.com designates
+ 137.71.25.57 as permitted sender) receiver=protection.outlook.com;
+ client-ip=137.71.25.57; helo=nwd2mta2.analog.com;
+Received: from nwd2mta2.analog.com (137.71.25.57) by
+ BL2NAM02FT023.mail.protection.outlook.com (10.152.77.72) with Microsoft SMTP
+ Server (version=TLS1_0, cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.2430.20
+ via Frontend Transport; Tue, 12 Nov 2019 15:35:28 +0000
+Received: from NWD2HUBCAS7.ad.analog.com (nwd2hubcas7.ad.analog.com
+ [10.64.69.107])
+ by nwd2mta2.analog.com (8.13.8/8.13.8) with ESMTP id xACFZIBJ012255
+ (version=TLSv1/SSLv3 cipher=AES256-SHA bits=256 verify=OK);
+ Tue, 12 Nov 2019 07:35:19 -0800
+Received: from ben-Latitude-E6540.ad.analog.com (10.48.65.231) by
+ NWD2HUBCAS7.ad.analog.com (10.64.69.107) with Microsoft SMTP Server id
+ 14.3.408.0; Tue, 12 Nov 2019 10:35:26 -0500
+From: Beniamin Bia <beniamin.bia@analog.com>
+To: <jic23@kernel.org>
+Subject: [PATCH 1/3] iio: Add ADM1177 Hot Swap Controller and Digital Power
+ Monitor driver
+Date: Tue, 12 Nov 2019 17:35:50 +0200
+Message-ID: <20191112153552.27431-1-beniamin.bia@analog.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
+X-ADIRoutedOnPrem: True
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-HT: Tenant
+X-Forefront-Antispam-Report: CIP:137.71.25.57; IPV:NLI; CTRY:US; EFV:NLI;
+ SFV:NSPM;
+ SFS:(10009020)(39860400002)(136003)(376002)(346002)(396003)(199004)(189003)(44832011)(486006)(2616005)(126002)(107886003)(2351001)(356004)(6666004)(966005)(47776003)(478600001)(8936002)(50226002)(246002)(6916009)(305945005)(50466002)(70206006)(70586007)(8676002)(476003)(48376002)(7636002)(51416003)(1076003)(36756003)(16586007)(7696005)(316002)(2906002)(6306002)(5660300002)(14444005)(106002)(4326008)(54906003)(336012)(7416002)(426003)(186003)(86362001)(26005);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:BN7PR03MB3618; H:nwd2mta2.analog.com; FPR:;
+ SPF:Pass; LANG:en; PTR:nwd2mail11.analog.com; A:1; MX:1; 
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: c302acf6-daf7-4a07-863d-08d76785f1f8
+X-MS-TrafficTypeDiagnostic: BN7PR03MB3618:
+X-MS-Exchange-PUrlCount: 1
+X-Microsoft-Antispam-PRVS: <BN7PR03MB3618D09FDD3D66EE035BB7D1F0770@BN7PR03MB3618.namprd03.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:6108;
+X-Forefront-PRVS: 021975AE46
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: aGjr6jU4rIVrEV4iaZpFC1OGt81Z9mqk84EGR3NKn2qpVlKwOZv6jlFQ9vOLikHcRZ7MWAzov2flmG3TG5Ss3Nv3TkMbhfpMgpOlJ3Tzex0nna4iiXkrZtgVXWBAe5OzFX4CXDtQzJG1eeXR3166S6p6bx/RNWGLpmacuP4jHbsQfYhvZJh/5qYOGTLdC7Awb/caWPXKn6VEe7qEvKLrA3itb/4nhDSYzaVVGMfQ6CTllyIPGBtPcl7aQS3bio5PS9MAdlAb8SmLNjOgUgd8UKeZFvkEYlIbv5UQOfTK8uZ9i8Lkpm0P9+0JNn0wdDmWpOj2m//WTzr7l8niKjQaPqPZFVG+SNfBSY5VhE0DUxJdKob0EwtrZVPrFYcVx7db7gjZJQ8kH3uw//nffeZnUaSGERUoLGgzNa0ZqFc2xg9XBdzYtd8kEanokdHaDmrbZo1G/Dzr3WHxlVU4KC/0vLhPmNHJrLKC4mDbbWlx1Zo=
+X-OriginatorOrg: analog.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Nov 2019 15:35:28.3531 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: c302acf6-daf7-4a07-863d-08d76785f1f8
+X-MS-Exchange-CrossTenant-Id: eaa689b4-8f87-40e0-9c6f-7228de4d754a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=eaa689b4-8f87-40e0-9c6f-7228de4d754a; Ip=[137.71.25.57];
+ Helo=[nwd2mta2.analog.com]
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN7PR03MB3618
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.95,18.0.572
+ definitions=2019-11-12_05:2019-11-11,2019-11-12 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ suspectscore=0
+ mlxlogscore=999 bulkscore=0 clxscore=1015 adultscore=0 malwarescore=0
+ lowpriorityscore=0 priorityscore=1501 spamscore=0 mlxscore=0 phishscore=0
+ impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-1910280000 definitions=main-1911120134
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,45 +135,336 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Christian Gromm <christian.gromm@microchip.com>,
- driverdev-devel@linuxdriverproject.org
+Cc: devel@driverdev.osuosl.org, mark.rutland@arm.com, lars@metafoo.de,
+ biabeniamin@outlook.com, Michael Hennerich <michael.hennerich@analog.com>,
+ devicetree@vger.kernel.org, linux-iio@vger.kernel.org,
+ gregkh@linuxfoundation.org, linus.walleij@linaro.org,
+ linux-kernel@vger.kernel.org, nicolas.ferre@microchip.com, robh+dt@kernel.org,
+ pmeerw@pmeerw.net, mchehab+samsung@kernel.org, paulmck@linux.ibm.com,
+ Beniamin Bia <beniamin.bia@analog.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch adds a comment to the start_mutex and fifo_lock fields of
-the most_channel structure definition.
+From: Michael Hennerich <michael.hennerich@analog.com>
 
-Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
+ADM1177 is a Hot Swap Controller and Digital Power Monitor with
+Soft Start Pin.
+
+Datasheet:
+Link: https://www.analog.com/media/en/technical-documentation/data-sheets/ADM1177.pdf
+
+Signed-off-by: Michael Hennerich <michael.hennerich@analog.com>
+Co-developed-by: Beniamin Bia <beniamin.bia@analog.com>
+Signed-off-by: Beniamin Bia <beniamin.bia@analog.com>
 ---
- drivers/staging/most/core.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/iio/adc/Kconfig   |  12 ++
+ drivers/iio/adc/Makefile  |   1 +
+ drivers/iio/adc/adm1177.c | 257 ++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 270 insertions(+)
+ create mode 100644 drivers/iio/adc/adm1177.c
 
-diff --git a/drivers/staging/most/core.c b/drivers/staging/most/core.c
-index f7d2c78..79e66eb 100644
---- a/drivers/staging/most/core.c
-+++ b/drivers/staging/most/core.c
-@@ -52,7 +52,7 @@ struct most_channel {
- 	u16 channel_id;
- 	char name[STRING_SIZE];
- 	bool is_poisoned;
--	struct mutex start_mutex;
-+	struct mutex start_mutex; /* channel activation synchronization */
- 	struct mutex nq_mutex; /* nq thread synchronization */
- 	int is_starving;
- 	struct most_interface *iface;
-@@ -60,7 +60,7 @@ struct most_channel {
- 	bool keep_mbo;
- 	bool enqueue_halt;
- 	struct list_head fifo;
--	spinlock_t fifo_lock;
-+	spinlock_t fifo_lock; /* fifo access synchronization */
- 	struct list_head halt_fifo;
- 	struct list_head list;
- 	struct pipe pipe0;
+diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
+index 9554890a3200..4db8c6dcb595 100644
+--- a/drivers/iio/adc/Kconfig
++++ b/drivers/iio/adc/Kconfig
+@@ -228,6 +228,18 @@ config ASPEED_ADC
+ 	  To compile this driver as a module, choose M here: the module will be
+ 	  called aspeed_adc.
+ 
++config ADM1177
++	tristate "Analog Devices ADM1177 Digital Power Monitor driver"
++	depends on I2C
++	help
++	  Say yes here to build support for Analog Devices:
++	  ADM1177 Hot Swap Controller and Digital Power Monitor
++	  with Soft Start Pin. Provides direct access
++	  via sysfs.
++
++	  To compile this driver as a module, choose M here: the
++	  module will be called adm1177.
++
+ config AT91_ADC
+ 	tristate "Atmel AT91 ADC"
+ 	depends on ARCH_AT91
+diff --git a/drivers/iio/adc/Makefile b/drivers/iio/adc/Makefile
+index 5ecc481c2967..7899d6a158f3 100644
+--- a/drivers/iio/adc/Makefile
++++ b/drivers/iio/adc/Makefile
+@@ -24,6 +24,7 @@ obj-$(CONFIG_AD7887) += ad7887.o
+ obj-$(CONFIG_AD7949) += ad7949.o
+ obj-$(CONFIG_AD799X) += ad799x.o
+ obj-$(CONFIG_ASPEED_ADC) += aspeed_adc.o
++obj-$(CONFIG_ADM1177) += adm1177.o
+ obj-$(CONFIG_AT91_ADC) += at91_adc.o
+ obj-$(CONFIG_AT91_SAMA5D2_ADC) += at91-sama5d2_adc.o
+ obj-$(CONFIG_AXP20X_ADC) += axp20x_adc.o
+diff --git a/drivers/iio/adc/adm1177.c b/drivers/iio/adc/adm1177.c
+new file mode 100644
+index 000000000000..daec34566a65
+--- /dev/null
++++ b/drivers/iio/adc/adm1177.c
+@@ -0,0 +1,257 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * ADM1177 Hot Swap Controller and Digital Power Monitor with Soft Start Pin
++ *
++ * Copyright 2015-2019 Analog Devices Inc.
++ */
++
++#include <linux/device.h>
++#include <linux/err.h>
++#include <linux/i2c.h>
++#include <linux/kernel.h>
++#include <linux/module.h>
++#include <linux/mutex.h>
++#include <linux/regulator/consumer.h>
++#include <linux/slab.h>
++#include <linux/sysfs.h>
++
++#include <linux/iio/iio.h>
++#include <linux/iio/sysfs.h>
++#include <linux/iio/events.h>
++
++/*  Command Byte Operations */
++#define ADM1177_CMD_V_CONT	BIT(0)
++#define ADM1177_CMD_V_ONCE	BIT(1)
++#define ADM1177_CMD_I_CONT	BIT(2)
++#define ADM1177_CMD_I_ONCE	BIT(3)
++#define ADM1177_CMD_VRANGE	BIT(4)
++#define ADM1177_CMD_STATUS_RD	BIT(6)
++
++/* Extended Register */
++#define ADM1177_REG_ALERT_EN	1
++#define ADM1177_REG_ALERT_TH	2
++#define ADM1177_REG_CONTROL	3
++
++/* ADM1177_REG_ALERT_EN */
++#define ADM1177_EN_ADC_OC1	BIT(0)
++#define ADM1177_EN_ADC_OC4	BIT(1)
++#define ADM1177_EN_HS_ALERT	BIT(2)
++#define ADM1177_EN_OFF_ALERT	BIT(3)
++#define ADM1177_CLEAR		BIT(4)
++
++/* ADM1177_REG_CONTROL */
++#define ADM1177_SWOFF		BIT(0)
++
++#define ADM1177_BITS		12
++
++/**
++ * struct adm1177_state - driver instance specific data
++ * @client		pointer to i2c client
++ * @reg			regulator info for the the power supply of the device
++ * @command		internal control register
++ * @r_sense_uohm	current sense resistor value
++ * @alert_threshold_ua	current limit for shutdown
++ * @vrange_high		internal voltage divider
++ */
++struct adm1177_state {
++	struct i2c_client	*client;
++	struct regulator	*reg;
++	u8			command;
++	u32			r_sense_uohm;
++	u32			alert_threshold_ua;
++	bool			vrange_high;
++};
++
++static int adm1177_read(struct adm1177_state *st, u8 num, u8 *data)
++{
++	struct i2c_client *client = st->client;
++	int ret = 0;
++
++	ret = i2c_master_recv(client, data, num);
++	if (ret < 0) {
++		dev_err(&client->dev, "I2C read error\n");
++		return ret;
++	}
++
++	return 0;
++}
++
++static int adm1177_write_cmd(struct adm1177_state *st, u8 cmd)
++{
++	st->command = cmd;
++	return i2c_smbus_write_byte(st->client, cmd);
++}
++
++static int adm1177_write_reg(struct adm1177_state *st, u8 reg, u8 val)
++{
++	return i2c_smbus_write_byte_data(st->client, reg, val);
++}
++
++static int adm1177_read_raw(struct iio_dev *indio_dev,
++			   struct iio_chan_spec const *chan,
++			   int *val,
++			   int *val2,
++			   long mask)
++{
++	struct adm1177_state *st = iio_priv(indio_dev);
++	u8 data[3];
++
++	switch (mask) {
++	case IIO_CHAN_INFO_RAW:
++		adm1177_read(st, 3, data);
++		switch (chan->type) {
++		case IIO_VOLTAGE:
++			*val = (data[0] << 4) | (data[2] >> 4);
++			return IIO_VAL_INT;
++		case IIO_CURRENT:
++			*val = (data[1] << 4) | (data[2] & 0xF);
++			return IIO_VAL_INT;
++		default:
++			return -EINVAL;
++		}
++
++	case IIO_CHAN_INFO_SCALE:
++		switch (chan->type) {
++		case IIO_VOLTAGE:
++			if (st->command & ADM1177_CMD_VRANGE)
++				*val = 6650;
++			else
++				*val = 26350;
++
++			*val2 = ADM1177_BITS;
++			return IIO_VAL_FRACTIONAL_LOG2;
++		case IIO_CURRENT:
++			*val = 105840 / st->r_sense_uohm;
++
++			*val2 = ADM1177_BITS;
++			return IIO_VAL_FRACTIONAL_LOG2;
++		default:
++			return -EINVAL;
++		}
++	default:
++		return -EINVAL;
++	}
++}
++
++static const struct iio_chan_spec adm1177_channels[] = {
++	{
++		.type = IIO_VOLTAGE,
++		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW) |
++				      BIT(IIO_CHAN_INFO_SCALE),
++		.indexed = 1,
++		.channel = 0,
++	},
++	{
++		.type = IIO_CURRENT,
++		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW) |
++				      BIT(IIO_CHAN_INFO_SCALE),
++		.indexed = 1,
++		.channel = 0,
++	},
++};
++
++static const struct iio_info adm1177_info = {
++	.read_raw = &adm1177_read_raw,
++};
++static void adm1177_remove(void *data)
++{
++	struct adm1177_state *st = data;
++
++	if (st->reg)
++		regulator_disable(st->reg);
++}
++
++static int adm1177_probe(struct i2c_client *client,
++			 const struct i2c_device_id *id)
++{
++	int ret;
++	struct device_node *np;
++	struct adm1177_state *st;
++	struct iio_dev *indio_dev;
++
++	indio_dev = devm_iio_device_alloc(&client->dev, sizeof(*st));
++	if (!indio_dev)
++		return -ENOMEM;
++
++	st = iio_priv(indio_dev);
++	i2c_set_clientdata(client, indio_dev);
++	st->client = client;
++
++	np = client->dev.of_node;
++
++	st->reg = devm_regulator_get_optional(&client->dev, "vref");
++	if (IS_ERR(st->reg)) {
++		if (PTR_ERR(st->reg) == EPROBE_DEFER)
++			return -EPROBE_DEFER;
++
++		st->reg = NULL;
++	} else {
++		ret = regulator_enable(st->reg);
++		if (ret)
++			return ret;
++		ret = devm_add_action_or_reset(&client->dev, adm1177_remove,
++					       st);
++		if (ret)
++			return ret;
++	}
++
++	of_property_read_u32(np, "adi,r-sense-micro-ohms", &st->r_sense_uohm);
++	of_property_read_u32(np, "adi,shutdown-threshold-microamp",
++			     &st->alert_threshold_ua);
++	st->vrange_high = of_property_read_bool(np,
++				"adi,vrange-high-enable");
++	if (st->alert_threshold_ua) {
++		unsigned int val;
++
++		val = (st->alert_threshold_ua * st->r_sense_uohm * 0xFF);
++		val /= 105840000U;
++		if (val > 0xFF) {
++			dev_err(&client->dev,
++				"Requested shutdown current %d uA above limit\n",
++				st->alert_threshold_ua);
++
++			val = 0xFF;
++		}
++		adm1177_write_reg(st, ADM1177_REG_ALERT_TH, val);
++	}
++
++	adm1177_write_cmd(st, ADM1177_CMD_V_CONT |
++			      ADM1177_CMD_I_CONT |
++			      (st->vrange_high ? 0 : ADM1177_CMD_VRANGE));
++
++	indio_dev->name = id->name;
++	indio_dev->channels = adm1177_channels;
++	indio_dev->num_channels = ARRAY_SIZE(adm1177_channels);
++
++	indio_dev->dev.parent = &client->dev;
++	indio_dev->info = &adm1177_info;
++	indio_dev->modes = INDIO_DIRECT_MODE;
++
++	return devm_iio_device_register(&client->dev, indio_dev);
++}
++
++static const struct i2c_device_id adm1177_ids[] = {
++	{ "adm1177", 0 },
++	{}
++};
++MODULE_DEVICE_TABLE(i2c, adm1177_ids);
++
++static const struct of_device_id adm1177_dt_ids[] = {
++	{ .compatible = "adi,adm1177" },
++	{},
++};
++MODULE_DEVICE_TABLE(of, adm1177_dt_ids);
++
++static struct i2c_driver adm1177_driver = {
++	.driver = {
++		.name = "adm1177",
++		.of_match_table = adm1177_dt_ids,
++	},
++	.probe = adm1177_probe,
++	.id_table = adm1177_ids,
++};
++module_i2c_driver(adm1177_driver);
++
++MODULE_AUTHOR("Michael Hennerich <michael.hennerich@analog.com>");
++MODULE_DESCRIPTION("Analog Devices ADM1177 ADC driver");
++MODULE_LICENSE("GPL v2");
 -- 
-2.7.4
+2.17.1
 
 _______________________________________________
 devel mailing list
