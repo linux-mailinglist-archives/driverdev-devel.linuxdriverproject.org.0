@@ -1,63 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 77CE3F889D
-	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Nov 2019 07:34:48 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D769F8929
+	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Nov 2019 07:56:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5EF38842AC;
-	Tue, 12 Nov 2019 06:34:46 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A676586742;
+	Tue, 12 Nov 2019 06:56:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Yc-NtRAIPbXM; Tue, 12 Nov 2019 06:34:45 +0000 (UTC)
+	with ESMTP id wOMy0dh33EeJ; Tue, 12 Nov 2019 06:56:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 586AF84155;
-	Tue, 12 Nov 2019 06:34:45 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 81AC28646F;
+	Tue, 12 Nov 2019 06:56:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DA4091BF308
- for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 06:34:42 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 36CD61BF308
+ for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 06:56:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D2606842AC
- for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 06:34:42 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 296E584DD1
+ for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 06:56:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Wv8684YPJr1W for <devel@linuxdriverproject.org>;
- Tue, 12 Nov 2019 06:34:42 +0000 (UTC)
+ with ESMTP id BEEIHirA4Hok for <devel@linuxdriverproject.org>;
+ Tue, 12 Nov 2019 06:56:33 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from bombadil.infradead.org (bombadil.infradead.org
- [198.137.202.133])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 4661B84155
- for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 06:34:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20170209; h=In-Reply-To:Content-Type:MIME-Version
- :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=7abutWRYU4V+fTGc1DVabX8uQIzuLy5snVOekDPCHIU=; b=WqUT0oq3unGtVkO8rqqLMul8z
- iZQNGNzPLplyRJYINL1wNSRAK2a4cGphhV5IjgRDk417umk5HM76k3z4P+2Y9OionYyrpnrdV8mmo
- wslRIXvOmXfpQgK1GoKdK2dFETKDeeVlE5HvbGZAKm9D4/amRQoSHwLM9RR7fp4wO3ARVfrWo0m/a
- 4tgbAfKmVk1S84qOEtPc9G2d+CM2NfdI0s+huhguQ2BN4kRpSkx9FfxIZvQkxVxCSvoxJfy2cv/tv
- 8MVuq1LnJN0b5rsdNsrW6p+Zu8H3Pby1Da/PPmEZcMtOHYX8sjN3hEu73iSEPgvOg2MLOR+ubcFsq
- sjNOaywVQ==;
-Received: from hch by bombadil.infradead.org with local (Exim 4.92.3 #3 (Red
- Hat Linux)) id 1iUPlA-0004Kl-FV; Tue, 12 Nov 2019 06:34:40 +0000
-Date: Mon, 11 Nov 2019 22:34:40 -0800
-From: Christoph Hellwig <hch@infradead.org>
-To: Greg KH <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9BB278452F
+ for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 06:56:33 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 9A9E2206A3;
+ Tue, 12 Nov 2019 06:56:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1573541793;
+ bh=r0sc5/XzhNJIqfRx4BwQyUrbUeptifp8j9vAKXgaYjQ=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=zFKYlVXOsiL7FaaBRZj3pZQA+ljakifCep4BzkE7lHK14YdhMWhb1UeymOeCpXgtl
+ rUWylDHSGWblvFdlUHPUnGwrDUM5bkWW0oxbcahxseMrPioIyeyZCvkwXQSHvs2o6O
+ 39kxVd60E4PzxfJnJmVi6Tp5CoV02Q6X2PwRXCpg=
+Date: Tue, 12 Nov 2019 07:56:29 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Christoph Hellwig <hch@infradead.org>
 Subject: Re: [GIT PULL] IIO fixes / Staging driver for 5.4-rc7
-Message-ID: <20191112063440.GA15951@infradead.org>
+Message-ID: <20191112065629.GA1242198@kroah.com>
 References: <20191110154303.GA2867499@kroah.com>
+ <20191112063440.GA15951@infradead.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20191110154303.GA2867499@kroah.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
- bombadil.infradead.org. See http://www.infradead.org/rpr.html
+In-Reply-To: <20191112063440.GA15951@infradead.org>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,16 +74,24 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Nov 10, 2019 at 04:43:03PM +0100, Greg KH wrote:
-> The staging driver addition is the vboxsf filesystem, which is the
-> VirtualBox guest shared folder code.  Hans has been trying to get
-> filesystem reviewers to review the code for many months now, and
-> Christoph finally said to just merge it in staging now as it is
-> stand-alone and the filesystem people can review it easier over time
-> that way.
+On Mon, Nov 11, 2019 at 10:34:40PM -0800, Christoph Hellwig wrote:
+> On Sun, Nov 10, 2019 at 04:43:03PM +0100, Greg KH wrote:
+> > The staging driver addition is the vboxsf filesystem, which is the
+> > VirtualBox guest shared folder code.  Hans has been trying to get
+> > filesystem reviewers to review the code for many months now, and
+> > Christoph finally said to just merge it in staging now as it is
+> > stand-alone and the filesystem people can review it easier over time
+> > that way.
+> 
+> No, this is absolutely contrary to what I said.  I told Hans to just
+> send it to Linus because it is ready and not staging fodder a atll.
 
-No, this is absolutely contrary to what I said.  I told Hans to just
-send it to Linus because it is ready and not staging fodder a atll.
+Hah, ok, I got that totally wrong.  I'll send a patch moving it to the
+"real" part of the kernel now.
+
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
