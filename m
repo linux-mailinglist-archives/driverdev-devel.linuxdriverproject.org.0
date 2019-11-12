@@ -1,81 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CDA74F985F
-	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Nov 2019 19:17:46 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 28768F9BA0
+	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Nov 2019 22:13:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B871385A1E;
-	Tue, 12 Nov 2019 18:17:44 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4104587364;
+	Tue, 12 Nov 2019 21:13:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DYZB5bXek01B; Tue, 12 Nov 2019 18:17:42 +0000 (UTC)
+	with ESMTP id 8qjfNnhL+Cv5; Tue, 12 Nov 2019 21:13:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C96A6859EF;
-	Tue, 12 Nov 2019 18:17:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 82EF487360;
+	Tue, 12 Nov 2019 21:13:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 424471BF3D1
- for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 18:17:38 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 728871BF404
+ for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 21:13:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3EF87858DA
- for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 18:17:38 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 5C087203F2
+ for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 21:13:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AJYHWk3sqN79 for <devel@linuxdriverproject.org>;
- Tue, 12 Nov 2019 18:17:37 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
- [209.85.215.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1A40A858B3
- for <devel@driverdev.osuosl.org>; Tue, 12 Nov 2019 18:17:37 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id 15so12373099pgt.7
- for <devel@driverdev.osuosl.org>; Tue, 12 Nov 2019 10:17:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=qMsQt0jcDhpztgofcGsc5bCoKZDYwQPkmUyjgoLGTTY=;
- b=UsorXKwFTDchu+rJDaooN1/flhg3fQm1zt3MLjVuCwJrMc/E1PNVL+CbbX0rvQQvTn
- IQP03tY5FZtUJT0uqNRTD3nrjIQ2b2ghTVzKMESvxcuMMf3RGlm6xdSGB80chSvpgWHy
- nku96ThKfF4R7ud3KftdrlH9yVtBXGE22WMnKRLaSsucPm0Uw0ICD9CyxFGCdBvHoD1V
- zxUcyhUEv5AvldPYpmzmZQV35bAJWF+HDY0D92XJNQZhBwt1FSbS2CdbIe7xjK6sIPUb
- 9B9F4QQqHe6//h3yX+mnhzoDl5nef2RL79NcU8Kh3760uf7lOopIsXSamd440mS07SbL
- CCAg==
+ with ESMTP id Os72IfmWxKab for <devel@linuxdriverproject.org>;
+ Tue, 12 Nov 2019 21:13:03 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from omr1.cc.vt.edu (outbound.smtp.vt.edu [198.82.183.121])
+ by silver.osuosl.org (Postfix) with ESMTPS id A116A20368
+ for <devel@driverdev.osuosl.org>; Tue, 12 Nov 2019 21:13:03 +0000 (UTC)
+Received: from mr3.cc.vt.edu (mr3.cc.vt.edu
+ [IPv6:2607:b400:92:8500:0:7f:b804:6b0a])
+ by omr1.cc.vt.edu (8.14.4/8.14.4) with ESMTP id xACLD2kq012488
+ for <devel@driverdev.osuosl.org>; Tue, 12 Nov 2019 16:13:02 -0500
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197])
+ by mr3.cc.vt.edu (8.14.7/8.14.7) with ESMTP id xACLCvFp006202
+ for <devel@driverdev.osuosl.org>; Tue, 12 Nov 2019 16:13:02 -0500
+Received: by mail-qk1-f197.google.com with SMTP id q29so55500qkn.3
+ for <devel@driverdev.osuosl.org>; Tue, 12 Nov 2019 13:13:02 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :references:mime-version:content-disposition:in-reply-to:user-agent;
- bh=qMsQt0jcDhpztgofcGsc5bCoKZDYwQPkmUyjgoLGTTY=;
- b=EY/DqdPRhvUcjeQxETs7efspVLmBLce0izjOgN4ovkQwenzBxPFIO/P5SrEJCu6tRi
- 8kxixMWCi2kKULT9M5HRH4txJf5MnsqlaPl/JM74ENv6tD0VVP+rnfS7Kx/xWDnLvfhC
- EdNXqDsRIkXe+JAwZyPe/fAJlz4Jmxl1gIF39tHh5RF41X92H1wVZ24TLBKBXZiEfYqH
- u66Bar4SUYuD6kMnxe89YXljcmtDVdwKNLjf5Stskh/HVSNJxFTrB3l5fjvKq2Wj8kCn
- BlUAUAQOTu2Y3uysV7+VNz4AOViel75XYh4Hf0YkjjilFl9oFGYiCiJ4QxkIwqAJcoHF
- Yiwg==
-X-Gm-Message-State: APjAAAVFOIZ8250Ag1CHD4LV8XZxHesd/RnLUGyYE2gjTM5ETWfOJN7f
- OsTFfDGf6kJf1HwJqNKrnxo=
-X-Google-Smtp-Source: APXvYqzWFl0fwfnP5V9iELX1LF8mgG8uUdjNjfApZBKEYqpEHOJNl1I3aU34lWcuJ3CDwogqiU5SKw==
-X-Received: by 2002:a62:7b0e:: with SMTP id w14mr33280676pfc.177.1573582656395; 
- Tue, 12 Nov 2019 10:17:36 -0800 (PST)
-Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id j126sm22387615pfg.4.2019.11.12.10.17.35
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Tue, 12 Nov 2019 10:17:35 -0800 (PST)
-Date: Tue, 12 Nov 2019 10:17:34 -0800
-From: Guenter Roeck <linux@roeck-us.net>
-To: Jonathan Cameron <jonathan.cameron@huawei.com>
-Subject: Re: [PATCH 1/3] iio: Add ADM1177 Hot Swap Controller and Digital
- Power Monitor driver
-Message-ID: <20191112181734.GA30127@roeck-us.net>
-References: <20191112153552.27431-1-beniamin.bia@analog.com>
- <20191112173757.0000075b@huawei.com>
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=WJCGNCQuaefXamcTcKNT2rb/G1MBbPGc68q4Yzm/TOg=;
+ b=WgMlrXAhMk3iygNoMbvaFOalSexd84nBOU8GPOj9fq42XTcijZBnJ+C1aOVR/I0xYo
+ 3Fzz7DvVCqsoVFJ0BWcetfEJvHUozqEUrdrYZ7eusWN3UpSJWbYOzcm08+5RAUdnkDbv
+ pz2MZBO2YtB8OM9N0t6OX75v+SEK14QLktiG4G+A89Ao5DbTXbKGr/igJCYw4eUuGpsN
+ /JKAN7ZqzrKLGzuZXOjeoKh6r6toq7Yf+KzMI/WHHE5nEt2Oa0urjDLWjq6y2HHirtcE
+ 6kuR5zovieQy2gqIyHMoMJGc2UZAiCHQoqXlFYzKIQh+kApim6wSU+9aStozD8TYzUwe
+ +iVg==
+X-Gm-Message-State: APjAAAWoo46vgNnYWPZXxX4CZqneM5VerJeET/mSlbXv66KiETFUgp0E
+ AO58UclWWF/sOPXjCoRTog17MuhlThs8QCXpcIdBbrIvUMW5Jszyxag309TQm6nKvnnRB6mDGQB
+ ibPDhEjxd8s0xAoJ/2Yc/Rbp6JRhxelio
+X-Received: by 2002:a05:6214:852:: with SMTP id
+ dg18mr31121805qvb.8.1573593177299; 
+ Tue, 12 Nov 2019 13:12:57 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxsliWtv6xDWsmrevBQ5GtlwQfk6b3uvCdFIZKa5oLiD2vzGoyheoUDQPh5rXVBdDUZpoLpDA==
+X-Received: by 2002:a05:6214:852:: with SMTP id
+ dg18mr31121782qvb.8.1573593176974; 
+ Tue, 12 Nov 2019 13:12:56 -0800 (PST)
+Received: from turing-police.lan ([2601:5c0:c001:c9e1::359])
+ by smtp.gmail.com with ESMTPSA id 130sm9674214qkd.33.2019.11.12.13.12.55
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 12 Nov 2019 13:12:55 -0800 (PST)
+From: Valdis Kletnieks <valdis.kletnieks@vt.edu>
+X-Google-Original-From: Valdis Kletnieks <Valdis.Kletnieks@vt.edu>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH 00/12] staging: exfat: Heave FAT/VFAT over the side
+Date: Tue, 12 Nov 2019 16:12:26 -0500
+Message-Id: <20191112211238.156490-1-Valdis.Kletnieks@vt.edu>
+X-Mailer: git-send-email 2.24.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191112173757.0000075b@huawei.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,395 +86,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, mark.rutland@arm.com,
- Jean Delvare <jdelvare@suse.com>, lars@metafoo.de, biabeniamin@outlook.com,
- Michael.Hennerich@analog.com, devicetree@vger.kernel.org,
- linux-iio@vger.kernel.org, gregkh@linuxfoundation.org,
- linus.walleij@linaro.org, linux-kernel@vger.kernel.org,
- nicolas.ferre@microchip.com, robh+dt@kernel.org, pmeerw@pmeerw.net,
- mchehab+samsung@kernel.org, paulmck@linux.ibm.com,
- Beniamin Bia <beniamin.bia@analog.com>, jic23@kernel.org
+Cc: linux-fsdevel@vger.kernel.org, devel@driverdev.osuosl.org,
+ Valdis Kletnieks <Valdis.Kletnieks@vt.edu>, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Nov 12, 2019 at 05:37:57PM +0000, Jonathan Cameron wrote:
-> On Tue, 12 Nov 2019 17:35:50 +0200
-> Beniamin Bia <beniamin.bia@analog.com> wrote:
-> 
-> > From: Michael Hennerich <michael.hennerich@analog.com>
-> > 
-> > ADM1177 is a Hot Swap Controller and Digital Power Monitor with
-> > Soft Start Pin.
-> > 
-> > Datasheet:
-> > Link: https://www.analog.com/media/en/technical-documentation/data-sheets/ADM1177.pdf
-> > 
-> > Signed-off-by: Michael Hennerich <michael.hennerich@analog.com>
-> > Co-developed-by: Beniamin Bia <beniamin.bia@analog.com>
-> > Signed-off-by: Beniamin Bia <beniamin.bia@analog.com>
-> 
-> Hi Beniamin,
-> 
-> A couple immediate thoughts.
-> 
-> 1. That cc list has some rather non obvious people on it.  Unless something
->    fairly surprising is going on, probably better to cut it back a bit.
-> 
-> 2. Why IIO?  Not entirely obvious to me.  From first glance this is definitely
->    doing hardware monitoring.  If there is a reason there should be a clear
->    statement here on why.
-> 
+The first 4 patches iteratively remove more and more of the
+FAT/VFAT code.
 
-I don't see why this is implemented as iio driver. I think it should be implemented
-as hardware monitoring driver.
+The second 8 patches make a lot of functions static, and
+renames many of the rest to avoid namespace pollution.
 
-Some more comments below.
+Valdis Kletnieks (12):
+  staging: exfat: Remove FAT/VFAT mount support, part 1
+  staging: exfat: Remove FAT/VFAT mount support, part 2
+  staging: exfat: Remove FAT/VFAT mount support, part 3
+  staging: exfat: Remove FAT/VFAT mount support, part 4
+  staging: exfat: Clean up the namespace pollution part 1
+  staging: exfat: Clean up the namespace pollution part 2
+  staging: exfat: Clean up the namespace pollution part 3
+  staging: exfat: Clean up the namespace pollution part 4
+  staging: exfat: Clean up the namespace pollution part 5
+  staging: exfat: Clean up the namespace pollution part 6
+  staging: exfat: Clean up the namespace pollution part 7
+  staging: exfat: Clean up the namespace pollution part 8
 
-Guenter
+ drivers/staging/exfat/Kconfig        |    9 -
+ drivers/staging/exfat/exfat.h        |  160 +--
+ drivers/staging/exfat/exfat_blkdev.c |   10 +-
+ drivers/staging/exfat/exfat_cache.c  |  251 +---
+ drivers/staging/exfat/exfat_core.c   | 1896 ++++++--------------------
+ drivers/staging/exfat/exfat_nls.c    |  192 ---
+ drivers/staging/exfat/exfat_super.c  |  359 ++---
+ 7 files changed, 595 insertions(+), 2282 deletions(-)
 
-> +CC Guenter and Jean as hwmon maintainers.
-> 
-> Whilst I'm here, a very quick review below.
-> 
-> > ---
-> >  drivers/iio/adc/Kconfig   |  12 ++
-> >  drivers/iio/adc/Makefile  |   1 +
-> >  drivers/iio/adc/adm1177.c | 257 ++++++++++++++++++++++++++++++++++++++
-> >  3 files changed, 270 insertions(+)
-> >  create mode 100644 drivers/iio/adc/adm1177.c
-> > 
-> > diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
-> > index 9554890a3200..4db8c6dcb595 100644
-> > --- a/drivers/iio/adc/Kconfig
-> > +++ b/drivers/iio/adc/Kconfig
-> > @@ -228,6 +228,18 @@ config ASPEED_ADC
-> >  	  To compile this driver as a module, choose M here: the module will be
-> >  	  called aspeed_adc.
-> >  
-> > +config ADM1177
-> > +	tristate "Analog Devices ADM1177 Digital Power Monitor driver"
-> > +	depends on I2C
-> > +	help
-> > +	  Say yes here to build support for Analog Devices:
-> > +	  ADM1177 Hot Swap Controller and Digital Power Monitor
-> > +	  with Soft Start Pin. Provides direct access
-> > +	  via sysfs.
-> > +
-> > +	  To compile this driver as a module, choose M here: the
-> > +	  module will be called adm1177.
-> > +
-> >  config AT91_ADC
-> >  	tristate "Atmel AT91 ADC"
-> >  	depends on ARCH_AT91
-> > diff --git a/drivers/iio/adc/Makefile b/drivers/iio/adc/Makefile
-> > index 5ecc481c2967..7899d6a158f3 100644
-> > --- a/drivers/iio/adc/Makefile
-> > +++ b/drivers/iio/adc/Makefile
-> > @@ -24,6 +24,7 @@ obj-$(CONFIG_AD7887) += ad7887.o
-> >  obj-$(CONFIG_AD7949) += ad7949.o
-> >  obj-$(CONFIG_AD799X) += ad799x.o
-> >  obj-$(CONFIG_ASPEED_ADC) += aspeed_adc.o
-> > +obj-$(CONFIG_ADM1177) += adm1177.o
-> >  obj-$(CONFIG_AT91_ADC) += at91_adc.o
-> >  obj-$(CONFIG_AT91_SAMA5D2_ADC) += at91-sama5d2_adc.o
-> >  obj-$(CONFIG_AXP20X_ADC) += axp20x_adc.o
-> > diff --git a/drivers/iio/adc/adm1177.c b/drivers/iio/adc/adm1177.c
-> > new file mode 100644
-> > index 000000000000..daec34566a65
-> > --- /dev/null
-> > +++ b/drivers/iio/adc/adm1177.c
-> > @@ -0,0 +1,257 @@
-> > +// SPDX-License-Identifier: GPL-2.0
-> > +/*
-> > + * ADM1177 Hot Swap Controller and Digital Power Monitor with Soft Start Pin
-> > + *
-> > + * Copyright 2015-2019 Analog Devices Inc.
-> > + */
-> > +
-> > +#include <linux/device.h>
-> > +#include <linux/err.h>
-> > +#include <linux/i2c.h>
-> > +#include <linux/kernel.h>
-> > +#include <linux/module.h>
-> > +#include <linux/mutex.h>
-> > +#include <linux/regulator/consumer.h>
-> > +#include <linux/slab.h>
-> > +#include <linux/sysfs.h>
-> > +
-> > +#include <linux/iio/iio.h>
-> > +#include <linux/iio/sysfs.h>
-> > +#include <linux/iio/events.h>
-> > +
-> > +/*  Command Byte Operations */
-> > +#define ADM1177_CMD_V_CONT	BIT(0)
-> > +#define ADM1177_CMD_V_ONCE	BIT(1)
-> > +#define ADM1177_CMD_I_CONT	BIT(2)
-> > +#define ADM1177_CMD_I_ONCE	BIT(3)
-> > +#define ADM1177_CMD_VRANGE	BIT(4)
-> > +#define ADM1177_CMD_STATUS_RD	BIT(6)
-> > +
-> > +/* Extended Register */
-> > +#define ADM1177_REG_ALERT_EN	1
-> > +#define ADM1177_REG_ALERT_TH	2
-> > +#define ADM1177_REG_CONTROL	3
-> > +
-> > +/* ADM1177_REG_ALERT_EN */
-> > +#define ADM1177_EN_ADC_OC1	BIT(0)
-> > +#define ADM1177_EN_ADC_OC4	BIT(1)
-> > +#define ADM1177_EN_HS_ALERT	BIT(2)
-> > +#define ADM1177_EN_OFF_ALERT	BIT(3)
-> > +#define ADM1177_CLEAR		BIT(4)
-> > +
-> > +/* ADM1177_REG_CONTROL */
-> > +#define ADM1177_SWOFF		BIT(0)
-> > +
-> > +#define ADM1177_BITS		12
-> > +
-> > +/**
-> > + * struct adm1177_state - driver instance specific data
-> > + * @client		pointer to i2c client
-> > + * @reg			regulator info for the the power supply of the device
-> > + * @command		internal control register
-> > + * @r_sense_uohm	current sense resistor value
-> > + * @alert_threshold_ua	current limit for shutdown
-> > + * @vrange_high		internal voltage divider
-> > + */
-> > +struct adm1177_state {
-> > +	struct i2c_client	*client;
-> > +	struct regulator	*reg;
-> > +	u8			command;
-> > +	u32			r_sense_uohm;
-> > +	u32			alert_threshold_ua;
-> > +	bool			vrange_high;
-> > +};
-> > +
-> > +static int adm1177_read(struct adm1177_state *st, u8 num, u8 *data)
-> > +{
-> > +	struct i2c_client *client = st->client;
-> > +	int ret = 0;
-> > +
-> > +	ret = i2c_master_recv(client, data, num);
-> > +	if (ret < 0) {
-> > +		dev_err(&client->dev, "I2C read error\n");
+-- 
+2.24.0
 
-Seems a bit noisy (and inconsistent). It would make much more sense to
-report the error to userspace instead of ignoring it and reporting a random
-value (ie the stack content).
-
-> > +		return ret;
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int adm1177_write_cmd(struct adm1177_state *st, u8 cmd)
-> > +{
-> > +	st->command = cmd;
-> > +	return i2c_smbus_write_byte(st->client, cmd);
-> > +}
-> > +
-> > +static int adm1177_write_reg(struct adm1177_state *st, u8 reg, u8 val)
-> > +{
-> > +	return i2c_smbus_write_byte_data(st->client, reg, val);
-> 
-> These wrappers don't really add anything.  I'd just make the i2c
-> calls directly inline. They will be self explanatory.
-> 
-
-Plus, their return value is never checked.
-
-> > +}
-> > +
-> > +static int adm1177_read_raw(struct iio_dev *indio_dev,
-> > +			   struct iio_chan_spec const *chan,
-> > +			   int *val,
-> > +			   int *val2,
-> > +			   long mask)
-> > +{
-> > +	struct adm1177_state *st = iio_priv(indio_dev);
-> > +	u8 data[3];
-> > +
-> > +	switch (mask) {
-> > +	case IIO_CHAN_INFO_RAW:
-> > +		adm1177_read(st, 3, data);
-> > +		switch (chan->type) {
-> > +		case IIO_VOLTAGE:
-> > +			*val = (data[0] << 4) | (data[2] >> 4);
-> > +			return IIO_VAL_INT;
-> > +		case IIO_CURRENT:
-> > +			*val = (data[1] << 4) | (data[2] & 0xF);
-> > +			return IIO_VAL_INT;
-> > +		default:
-> > +			return -EINVAL;
-> > +		}
-> > +
-> > +	case IIO_CHAN_INFO_SCALE:
-> > +		switch (chan->type) {
-> > +		case IIO_VOLTAGE:
-> > +			if (st->command & ADM1177_CMD_VRANGE)
-> > +				*val = 6650;
-> > +			else
-> > +				*val = 26350;
-> > +
-> > +			*val2 = ADM1177_BITS;
-> > +			return IIO_VAL_FRACTIONAL_LOG2;
-> > +		case IIO_CURRENT:
-> > +			*val = 105840 / st->r_sense_uohm;
-> > +
-> > +			*val2 = ADM1177_BITS;
-> > +			return IIO_VAL_FRACTIONAL_LOG2;
-> > +		default:
-> > +			return -EINVAL;
-> > +		}
-> > +	default:
-> > +		return -EINVAL;
-> > +	}
-> > +}
-> > +
-> > +static const struct iio_chan_spec adm1177_channels[] = {
-> > +	{
-> > +		.type = IIO_VOLTAGE,
-> > +		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW) |
-> > +				      BIT(IIO_CHAN_INFO_SCALE),
-> > +		.indexed = 1,
-> > +		.channel = 0,
-> > +	},
-> > +	{
-> > +		.type = IIO_CURRENT,
-> > +		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW) |
-> > +				      BIT(IIO_CHAN_INFO_SCALE),
-> > +		.indexed = 1,
-> > +		.channel = 0,
-> > +	},
-> > +};
-> > +
-> > +static const struct iio_info adm1177_info = {
-> > +	.read_raw = &adm1177_read_raw,
-> > +};
-> 
-> blank line here.
-> 
-> > +static void adm1177_remove(void *data)
-> > +{
-> > +	struct adm1177_state *st = data;
-> > +
-> > +	if (st->reg)
-> > +		regulator_disable(st->reg);
-> 
-> Probe and remove should be mirror images of each other.
-> As you have a mixture of managed and non managed calls that
-> isn't the case here.
-> 
-> devm_add_action_or_reset will sort this out for you if
-> used to turn off the regulator at the right point on removal.
-> 
-
-On top of that, this function is added with devm_add_action_or_reset(),
-and it is only ever called if st->reg is not NULL.
-
-> > +}
-> > +
-> > +static int adm1177_probe(struct i2c_client *client,
-> > +			 const struct i2c_device_id *id)
-> > +{
-> > +	int ret;
-> > +	struct device_node *np;
-> > +	struct adm1177_state *st;
-> > +	struct iio_dev *indio_dev;
-> > +
-> > +	indio_dev = devm_iio_device_alloc(&client->dev, sizeof(*st));
-> > +	if (!indio_dev)
-> > +		return -ENOMEM;
-> > +
-> > +	st = iio_priv(indio_dev);
-> > +	i2c_set_clientdata(client, indio_dev);
-> > +	st->client = client;
-> > +
-> > +	np = client->dev.of_node;
-> > +
-> > +	st->reg = devm_regulator_get_optional(&client->dev, "vref");
-> > +	if (IS_ERR(st->reg)) {
-> > +		if (PTR_ERR(st->reg) == EPROBE_DEFER)
-> > +			return -EPROBE_DEFER;
-> > +
-> > +		st->reg = NULL;
-> > +	} else {
-> > +		ret = regulator_enable(st->reg);
-> > +		if (ret)
-> > +			return ret;
-> > +		ret = devm_add_action_or_reset(&client->dev, adm1177_remove,
-> > +					       st);
-> > +		if (ret)
-> > +			return ret;
-> > +	}
-> > +
-> > +	of_property_read_u32(np, "adi,r-sense-micro-ohms", &st->r_sense_uohm);
-
-shunt-resistor-micro-ohms
-
-> > +	of_property_read_u32(np, "adi,shutdown-threshold-microamp",
-> > +			     &st->alert_threshold_ua);
-> > +	st->vrange_high = of_property_read_bool(np,
-> > +				"adi,vrange-high-enable");
-> > +	if (st->alert_threshold_ua) {
-> > +		unsigned int val;
-> > +
-> > +		val = (st->alert_threshold_ua * st->r_sense_uohm * 0xFF);
-> > +		val /= 105840000U;
-> > +		if (val > 0xFF) {
-> > +			dev_err(&client->dev,
-> > +				"Requested shutdown current %d uA above limit\n",
-> > +				st->alert_threshold_ua);
-> > +
-> > +			val = 0xFF;
-> > +		}
-> > +		adm1177_write_reg(st, ADM1177_REG_ALERT_TH, val);
-> > +	}
-> > +
-> > +	adm1177_write_cmd(st, ADM1177_CMD_V_CONT |
-> > +			      ADM1177_CMD_I_CONT |
-> > +			      (st->vrange_high ? 0 : ADM1177_CMD_VRANGE));
-> > +
-> > +	indio_dev->name = id->name;
-> > +	indio_dev->channels = adm1177_channels;
-> > +	indio_dev->num_channels = ARRAY_SIZE(adm1177_channels);
-> > +
-> > +	indio_dev->dev.parent = &client->dev;
-> > +	indio_dev->info = &adm1177_info;
-> > +	indio_dev->modes = INDIO_DIRECT_MODE;
-> > +
-> > +	return devm_iio_device_register(&client->dev, indio_dev);
-> > +}
-> > +
-> > +static const struct i2c_device_id adm1177_ids[] = {
-> > +	{ "adm1177", 0 },
-> > +	{}
-> > +};
-> > +MODULE_DEVICE_TABLE(i2c, adm1177_ids);
-> > +
-> > +static const struct of_device_id adm1177_dt_ids[] = {
-> > +	{ .compatible = "adi,adm1177" },
-> > +	{},
-> > +};
-> > +MODULE_DEVICE_TABLE(of, adm1177_dt_ids);
-> > +
-> > +static struct i2c_driver adm1177_driver = {
-> > +	.driver = {
-> > +		.name = "adm1177",
-> > +		.of_match_table = adm1177_dt_ids,
-> > +	},
-> > +	.probe = adm1177_probe,
-> > +	.id_table = adm1177_ids,
-> > +};
-> > +module_i2c_driver(adm1177_driver);
-> > +
-> > +MODULE_AUTHOR("Michael Hennerich <michael.hennerich@analog.com>");
-> > +MODULE_DESCRIPTION("Analog Devices ADM1177 ADC driver");
-> > +MODULE_LICENSE("GPL v2");
-> 
-> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
