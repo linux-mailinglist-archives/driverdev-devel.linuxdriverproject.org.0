@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C4042F8624
-	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Nov 2019 02:28:16 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 31883F8689
+	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Nov 2019 02:41:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BB18E880C3;
-	Tue, 12 Nov 2019 01:28:14 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1237D8708C;
+	Tue, 12 Nov 2019 01:41:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yxLKfrCuQHd7; Tue, 12 Nov 2019 01:28:14 +0000 (UTC)
+	with ESMTP id O3W-h8qhS8KF; Tue, 12 Nov 2019 01:41:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BDB4E877FF;
-	Tue, 12 Nov 2019 01:28:13 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7E09C86420;
+	Tue, 12 Nov 2019 01:41:26 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 62C2F1BF2A6
- for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 01:28:09 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id A5A961BF584
+ for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 01:41:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 31474877FF
- for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 01:28:09 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8A13D862F4
+ for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 01:41:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Kefw0Kr-HTRS for <devel@linuxdriverproject.org>;
- Tue, 12 Nov 2019 01:28:07 +0000 (UTC)
+ with ESMTP id FfeqzW03UwgR for <devel@linuxdriverproject.org>;
+ Tue, 12 Nov 2019 01:41:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 69D7786E5B
- for <devel@driverdev.osuosl.org>; Tue, 12 Nov 2019 01:28:07 +0000 (UTC)
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C59AB862E8
+ for <devel@driverdev.osuosl.org>; Tue, 12 Nov 2019 01:41:21 +0000 (UTC)
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 11 Nov 2019 17:28:06 -0800
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 11 Nov 2019 17:41:21 -0800
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.68,294,1569308400"; 
- d="gz'50?scan'50,208,50";a="252192845"
+ d="gz'50?scan'50,208,50";a="404083642"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by FMSMGA003.fm.intel.com with ESMTP; 11 Nov 2019 17:28:04 -0800
+ by fmsmga005.fm.intel.com with ESMTP; 11 Nov 2019 17:41:19 -0800
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1iUKyS-000HJX-Dg; Tue, 12 Nov 2019 09:28:04 +0800
-Date: Tue, 12 Nov 2019 09:27:31 +0800
+ id 1iULBC-000Emt-UK; Tue, 12 Nov 2019 09:41:14 +0800
+Date: Tue, 12 Nov 2019 09:40:36 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Wambui Karuga <wambui.karugax@gmail.com>
-Subject: [staging:staging-testing 157/337]
- drivers/staging/octeon/ethernet.c:463:30: error: storage size of 'link_info'
- isn't known
-Message-ID: <201911120930.vdaECUhO%lkp@intel.com>
+Subject: [staging:staging-testing 159/337]
+ drivers/staging/octeon/ethernet-tx.c:130:31: error: storage size of
+ 'pko_command' isn't known
+Message-ID: <201911120934.xy0CzxYd%lkp@intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="7prxtok4yygcervc"
+Content-Type: multipart/mixed; boundary="minalsygn3ns4xoz"
 Content-Disposition: inline
 X-Patchwork-Hint: ignore
 User-Agent: NeoMutt/20170113 (1.7.2)
@@ -75,154 +75,36 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---7prxtok4yygcervc
+--minalsygn3ns4xoz
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
 tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
 head:   08283d30744434d8f30d386622372e8f5b03bcf2
-commit: 73aef0c9d2c6f746e8c84775b73ef374b7a2a4dc [157/337] staging: octeon: remove typedef declaration for cvmx_helper_link_info
+commit: 6cc5e1c700316c11b61975af3be8ebcab1e2f8b9 [159/337] staging: octeon: remove typedef declartion for cvmx_pko_command_word0
 config: mips-cavium_octeon_defconfig (attached as .config)
 compiler: mips64-linux-gcc (GCC) 7.4.0
 reproduce:
         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
         chmod +x ~/bin/make.cross
-        git checkout 73aef0c9d2c6f746e8c84775b73ef374b7a2a4dc
+        git checkout 6cc5e1c700316c11b61975af3be8ebcab1e2f8b9
         # save the attached .config to linux build tree
         GCC_VERSION=7.4.0 make.cross ARCH=mips 
 
 If you fix the issue, kindly add following tag
 Reported-by: kbuild test robot <lkp@intel.com>
 
-All error/warnings (new ones prefixed by >>):
+All errors (new ones prefixed by >>):
 
-   In file included from drivers/staging/octeon/ethernet-mem.c:12:0:
->> drivers/staging/octeon/octeon-ethernet.h:94:12: warning: 'union cvmx_helper_link_info' declared inside parameter list will not be visible outside of this definition or declaration
-         union cvmx_helper_link_info li);
-               ^~~~~~~~~~~~~~~~~~~~~
---
-   In file included from drivers/staging/octeon/ethernet.c:22:0:
->> drivers/staging/octeon/octeon-ethernet.h:94:12: warning: 'union cvmx_helper_link_info' declared inside parameter list will not be visible outside of this definition or declaration
-         union cvmx_helper_link_info li);
-               ^~~~~~~~~~~~~~~~~~~~~
-   drivers/staging/octeon/ethernet.c: In function 'cvm_oct_free_work':
-   drivers/staging/octeon/ethernet.c:177:21: error: dereferencing pointer to incomplete type 'struct cvmx_wqe'
-     int segments = work->word2.s.bufs;
-                        ^~
-   drivers/staging/octeon/ethernet.c: In function 'cvm_oct_common_open':
->> drivers/staging/octeon/ethernet.c:463:30: error: storage size of 'link_info' isn't known
-     union cvmx_helper_link_info link_info;
-                                 ^~~~~~~~~
-   drivers/staging/octeon/ethernet.c:463:30: warning: unused variable 'link_info' [-Wunused-variable]
-   drivers/staging/octeon/ethernet.c: In function 'cvm_oct_link_poll':
-   drivers/staging/octeon/ethernet.c:499:30: error: storage size of 'link_info' isn't known
-     union cvmx_helper_link_info link_info;
-                                 ^~~~~~~~~
->> drivers/staging/octeon/ethernet.c:516:29: error: type of formal parameter 2 is incomplete
-     cvm_oct_note_carrier(priv, link_info);
-                                ^~~~~~~~~
-   drivers/staging/octeon/ethernet.c:499:30: warning: unused variable 'link_info' [-Wunused-variable]
-     union cvmx_helper_link_info link_info;
-                                 ^~~~~~~~~
---
-   In file included from drivers/staging/octeon/ethernet-mdio.c:16:0:
->> drivers/staging/octeon/octeon-ethernet.h:94:12: warning: 'union cvmx_helper_link_info' declared inside parameter list will not be visible outside of this definition or declaration
-         union cvmx_helper_link_info li);
-               ^~~~~~~~~~~~~~~~~~~~~
->> drivers/staging/octeon/ethernet-mdio.c:68:12: warning: 'union cvmx_helper_link_info' declared inside parameter list will not be visible outside of this definition or declaration
-         union cvmx_helper_link_info li)
-               ^~~~~~~~~~~~~~~~~~~~~
->> drivers/staging/octeon/ethernet-mdio.c:68:34: error: parameter 2 ('li') has incomplete type
-         union cvmx_helper_link_info li)
-                                     ^~
-   drivers/staging/octeon/ethernet-mdio.c: In function 'cvm_oct_adjust_link':
->> drivers/staging/octeon/ethernet-mdio.c:84:30: error: storage size of 'link_info' isn't known
-     union cvmx_helper_link_info link_info;
-                                 ^~~~~~~~~
->> drivers/staging/octeon/ethernet-mdio.c:101:30: error: type of formal parameter 2 is incomplete
-      cvm_oct_note_carrier(priv, link_info);
-                                 ^~~~~~~~~
-   drivers/staging/octeon/ethernet-mdio.c:84:30: warning: unused variable 'link_info' [-Wunused-variable]
-     union cvmx_helper_link_info link_info;
-                                 ^~~~~~~~~
-   drivers/staging/octeon/ethernet-mdio.c: In function 'cvm_oct_common_stop':
-   drivers/staging/octeon/ethernet-mdio.c:109:30: error: storage size of 'link_info' isn't known
-     union cvmx_helper_link_info link_info;
-                                 ^~~~~~~~~
-   drivers/staging/octeon/ethernet-mdio.c:127:30: error: type of formal parameter 2 is incomplete
-      cvm_oct_note_carrier(priv, link_info);
-                                 ^~~~~~~~~
-   drivers/staging/octeon/ethernet-mdio.c:109:30: warning: unused variable 'link_info' [-Wunused-variable]
-     union cvmx_helper_link_info link_info;
-                                 ^~~~~~~~~
---
-   In file included from drivers/staging/octeon/ethernet-rgmii.c:15:0:
->> drivers/staging/octeon/octeon-ethernet.h:94:12: warning: 'union cvmx_helper_link_info' declared inside parameter list will not be visible outside of this definition or declaration
-         union cvmx_helper_link_info li);
-               ^~~~~~~~~~~~~~~~~~~~~
-   drivers/staging/octeon/ethernet-rgmii.c: In function 'cvm_oct_check_preamble_errors':
->> drivers/staging/octeon/ethernet-rgmii.c:56:30: error: storage size of 'link_info' isn't known
-     union cvmx_helper_link_info link_info;
-                                 ^~~~~~~~~
-   drivers/staging/octeon/ethernet-rgmii.c:56:30: warning: unused variable 'link_info' [-Wunused-variable]
-   drivers/staging/octeon/ethernet-rgmii.c: In function 'cvm_oct_rgmii_poll':
-   drivers/staging/octeon/ethernet-rgmii.c:106:30: error: storage size of 'link_info' isn't known
-     union cvmx_helper_link_info link_info;
-                                 ^~~~~~~~~
->> drivers/staging/octeon/ethernet-rgmii.c:128:29: error: type of formal parameter 2 is incomplete
-     cvm_oct_note_carrier(priv, link_info);
-                                ^~~~~~~~~
-   drivers/staging/octeon/ethernet-rgmii.c:106:30: warning: unused variable 'link_info' [-Wunused-variable]
-     union cvmx_helper_link_info link_info;
-                                 ^~~~~~~~~
---
-   In file included from drivers/staging/octeon/ethernet-rx.c:26:0:
->> drivers/staging/octeon/octeon-ethernet.h:94:12: warning: 'union cvmx_helper_link_info' declared inside parameter list will not be visible outside of this definition or declaration
-         union cvmx_helper_link_info li);
-               ^~~~~~~~~~~~~~~~~~~~~
-   drivers/staging/octeon/ethernet-rx.c:63:50: warning: 'struct cvmx_wqe' declared inside parameter list will not be visible outside of this definition or declaration
-    static inline int cvm_oct_check_rcv_error(struct cvmx_wqe *work)
-                                                     ^~~~~~~~
-   drivers/staging/octeon/ethernet-rx.c: In function 'cvm_oct_check_rcv_error':
-   drivers/staging/octeon/ethernet-rx.c:68:14: error: dereferencing pointer to incomplete type 'struct cvmx_wqe'
-      port = work->word0.pip.cn68xx.pknd;
-                 ^~
-   drivers/staging/octeon/ethernet-rx.c: At top level:
-   drivers/staging/octeon/ethernet-rx.c:138:41: warning: 'struct cvmx_wqe' declared inside parameter list will not be visible outside of this definition or declaration
-    static void copy_segments_to_skb(struct cvmx_wqe *work, struct sk_buff *skb)
-                                            ^~~~~~~~
-   drivers/staging/octeon/ethernet-rx.c: In function 'copy_segments_to_skb':
-   drivers/staging/octeon/ethernet-rx.c:140:21: error: dereferencing pointer to incomplete type 'struct cvmx_wqe'
-     int segments = work->word2.s.bufs;
-                        ^~
-   drivers/staging/octeon/ethernet-rx.c: In function 'cvm_oct_poll':
-   drivers/staging/octeon/ethernet-rx.c:222:9: error: assignment from incompatible pointer type [-Werror=incompatible-pointer-types]
-       work = cvmx_pow_work_response_async(CVMX_SCR_SCRATCH);
-            ^
-   drivers/staging/octeon/ethernet-rx.c:224:9: error: assignment from incompatible pointer type [-Werror=incompatible-pointer-types]
-       work = cvmx_pow_work_request_sync(CVMX_POW_NO_WAIT);
-            ^
-   drivers/staging/octeon/ethernet-rx.c:245:32: error: dereferencing pointer to incomplete type 'struct cvmx_wqe'
-       (cvm_oct_get_buffer_ptr(work->packet_ptr) -
-                                   ^~
-   drivers/staging/octeon/ethernet-rx.c:272:32: error: passing argument 1 of 'cvm_oct_check_rcv_error' from incompatible pointer type [-Werror=incompatible-pointer-types]
-       if (cvm_oct_check_rcv_error(work))
-                                   ^~~~
-   drivers/staging/octeon/ethernet-rx.c:63:19: note: expected 'struct cvmx_wqe *' but argument is of type 'struct cvmx_wqe *'
-    static inline int cvm_oct_check_rcv_error(struct cvmx_wqe *work)
-                      ^~~~~~~~~~~~~~~~~~~~~~~
-   drivers/staging/octeon/ethernet-rx.c:319:26: error: passing argument 1 of 'copy_segments_to_skb' from incompatible pointer type [-Werror=incompatible-pointer-types]
-        copy_segments_to_skb(work, skb);
-                             ^~~~
-   drivers/staging/octeon/ethernet-rx.c:138:13: note: expected 'struct cvmx_wqe *' but argument is of type 'struct cvmx_wqe *'
-    static void copy_segments_to_skb(struct cvmx_wqe *work, struct sk_buff *skb)
-                ^~~~~~~~~~~~~~~~~~~~
-   cc1: some warnings being treated as errors
---
    In file included from drivers/staging/octeon/ethernet-tx.c:25:0:
->> drivers/staging/octeon/octeon-ethernet.h:94:12: warning: 'union cvmx_helper_link_info' declared inside parameter list will not be visible outside of this definition or declaration
+   drivers/staging/octeon/octeon-ethernet.h:94:12: warning: 'union cvmx_helper_link_info' declared inside parameter list will not be visible outside of this definition or declaration
          union cvmx_helper_link_info li);
                ^~~~~~~~~~~~~~~~~~~~~
+   drivers/staging/octeon/ethernet-tx.c: In function 'cvm_oct_xmit':
+>> drivers/staging/octeon/ethernet-tx.c:130:31: error: storage size of 'pko_command' isn't known
+     union cvmx_pko_command_word0 pko_command;
+                                  ^~~~~~~~~~~
+   drivers/staging/octeon/ethernet-tx.c:130:31: warning: unused variable 'pko_command' [-Wunused-variable]
    drivers/staging/octeon/ethernet-tx.c: In function 'cvm_oct_xmit_pow':
    drivers/staging/octeon/ethernet-tx.c:562:7: error: dereferencing pointer to incomplete type 'struct cvmx_wqe'
       work->word0.pip.cn38xx.hw_chksum = skb->csum;
@@ -283,83 +165,351 @@ All error/warnings (new ones prefixed by >>):
                        ^~~~~~~~~~~~~~~~~~~~
    cc1: some warnings being treated as errors
 
-vim +463 drivers/staging/octeon/ethernet.c
+vim +130 drivers/staging/octeon/ethernet-tx.c
 
-   455	
-   456	int cvm_oct_common_open(struct net_device *dev,
-   457				void (*link_poll)(struct net_device *))
-   458	{
-   459		union cvmx_gmxx_prtx_cfg gmx_cfg;
-   460		struct octeon_ethernet *priv = netdev_priv(dev);
-   461		int interface = INTERFACE(priv->port);
-   462		int index = INDEX(priv->port);
- > 463		union cvmx_helper_link_info link_info;
-   464		int rv;
-   465	
-   466		rv = cvm_oct_phy_setup_device(dev);
-   467		if (rv)
-   468			return rv;
-   469	
-   470		gmx_cfg.u64 = cvmx_read_csr(CVMX_GMXX_PRTX_CFG(index, interface));
-   471		gmx_cfg.s.en = 1;
-   472		if (octeon_has_feature(OCTEON_FEATURE_PKND))
-   473			gmx_cfg.s.pknd = priv->port;
-   474		cvmx_write_csr(CVMX_GMXX_PRTX_CFG(index, interface), gmx_cfg.u64);
-   475	
-   476		if (octeon_is_simulation())
-   477			return 0;
-   478	
-   479		if (dev->phydev) {
-   480			int r = phy_read_status(dev->phydev);
-   481	
-   482			if (r == 0 && dev->phydev->link == 0)
-   483				netif_carrier_off(dev);
-   484			cvm_oct_adjust_link(dev);
-   485		} else {
-   486			link_info = cvmx_helper_link_get(priv->port);
-   487			if (!link_info.s.link_up)
-   488				netif_carrier_off(dev);
-   489			priv->poll = link_poll;
-   490			link_poll(dev);
-   491		}
-   492	
-   493		return 0;
-   494	}
-   495	
-   496	void cvm_oct_link_poll(struct net_device *dev)
-   497	{
-   498		struct octeon_ethernet *priv = netdev_priv(dev);
-   499		union cvmx_helper_link_info link_info;
-   500	
-   501		link_info = cvmx_helper_link_get(priv->port);
-   502		if (link_info.u64 == priv->link_info)
-   503			return;
-   504	
-   505		if (cvmx_helper_link_set(priv->port, link_info))
-   506			link_info.u64 = priv->link_info;
-   507		else
-   508			priv->link_info = link_info.u64;
-   509	
-   510		if (link_info.s.link_up) {
-   511			if (!netif_carrier_ok(dev))
-   512				netif_carrier_on(dev);
-   513		} else if (netif_carrier_ok(dev)) {
-   514			netif_carrier_off(dev);
-   515		}
- > 516		cvm_oct_note_carrier(priv, link_info);
-   517	}
-   518	
+    24	
+  > 25	#include "octeon-ethernet.h"
+    26	#include "ethernet-defines.h"
+    27	#include "ethernet-tx.h"
+    28	#include "ethernet-util.h"
+    29	
+    30	#define CVM_OCT_SKB_CB(skb)	((u64 *)((skb)->cb))
+    31	
+    32	/*
+    33	 * You can define GET_SKBUFF_QOS() to override how the skbuff output
+    34	 * function determines which output queue is used. The default
+    35	 * implementation always uses the base queue for the port. If, for
+    36	 * example, you wanted to use the skb->priority field, define
+    37	 * GET_SKBUFF_QOS as: #define GET_SKBUFF_QOS(skb) ((skb)->priority)
+    38	 */
+    39	#ifndef GET_SKBUFF_QOS
+    40	#define GET_SKBUFF_QOS(skb) 0
+    41	#endif
+    42	
+    43	static void cvm_oct_tx_do_cleanup(unsigned long arg);
+    44	static DECLARE_TASKLET(cvm_oct_tx_cleanup_tasklet, cvm_oct_tx_do_cleanup, 0);
+    45	
+    46	/* Maximum number of SKBs to try to free per xmit packet. */
+    47	#define MAX_SKB_TO_FREE (MAX_OUT_QUEUE_DEPTH * 2)
+    48	
+    49	static inline int cvm_oct_adjust_skb_to_free(int skb_to_free, int fau)
+    50	{
+    51		int undo;
+    52	
+    53		undo = skb_to_free > 0 ? MAX_SKB_TO_FREE : skb_to_free +
+    54							   MAX_SKB_TO_FREE;
+    55		if (undo > 0)
+    56			cvmx_fau_atomic_add32(fau, -undo);
+    57		skb_to_free = -skb_to_free > MAX_SKB_TO_FREE ? MAX_SKB_TO_FREE :
+    58							       -skb_to_free;
+    59		return skb_to_free;
+    60	}
+    61	
+    62	static void cvm_oct_kick_tx_poll_watchdog(void)
+    63	{
+    64		union cvmx_ciu_timx ciu_timx;
+    65	
+    66		ciu_timx.u64 = 0;
+    67		ciu_timx.s.one_shot = 1;
+    68		ciu_timx.s.len = cvm_oct_tx_poll_interval;
+    69		cvmx_write_csr(CVMX_CIU_TIMX(1), ciu_timx.u64);
+    70	}
+    71	
+    72	static void cvm_oct_free_tx_skbs(struct net_device *dev)
+    73	{
+    74		int skb_to_free;
+    75		int qos, queues_per_port;
+    76		int total_freed = 0;
+    77		int total_remaining = 0;
+    78		unsigned long flags;
+    79		struct octeon_ethernet *priv = netdev_priv(dev);
+    80	
+    81		queues_per_port = cvmx_pko_get_num_queues(priv->port);
+    82		/* Drain any pending packets in the free list */
+    83		for (qos = 0; qos < queues_per_port; qos++) {
+    84			if (skb_queue_len(&priv->tx_free_list[qos]) == 0)
+    85				continue;
+    86			skb_to_free = cvmx_fau_fetch_and_add32(priv->fau + qos * 4,
+    87							       MAX_SKB_TO_FREE);
+    88			skb_to_free = cvm_oct_adjust_skb_to_free(skb_to_free,
+    89								 priv->fau + qos * 4);
+    90			total_freed += skb_to_free;
+    91			if (skb_to_free > 0) {
+    92				struct sk_buff *to_free_list = NULL;
+    93	
+    94				spin_lock_irqsave(&priv->tx_free_list[qos].lock, flags);
+    95				while (skb_to_free > 0) {
+    96					struct sk_buff *t;
+    97	
+    98					t = __skb_dequeue(&priv->tx_free_list[qos]);
+    99					t->next = to_free_list;
+   100					to_free_list = t;
+   101					skb_to_free--;
+   102				}
+   103				spin_unlock_irqrestore(&priv->tx_free_list[qos].lock,
+   104						       flags);
+   105				/* Do the actual freeing outside of the lock. */
+   106				while (to_free_list) {
+   107					struct sk_buff *t = to_free_list;
+   108	
+   109					to_free_list = to_free_list->next;
+   110					dev_kfree_skb_any(t);
+   111				}
+   112			}
+   113			total_remaining += skb_queue_len(&priv->tx_free_list[qos]);
+   114		}
+   115		if (total_remaining < MAX_OUT_QUEUE_DEPTH && netif_queue_stopped(dev))
+   116			netif_wake_queue(dev);
+   117		if (total_remaining)
+   118			cvm_oct_kick_tx_poll_watchdog();
+   119	}
+   120	
+   121	/**
+   122	 * cvm_oct_xmit - transmit a packet
+   123	 * @skb:    Packet to send
+   124	 * @dev:    Device info structure
+   125	 *
+   126	 * Returns Always returns NETDEV_TX_OK
+   127	 */
+   128	int cvm_oct_xmit(struct sk_buff *skb, struct net_device *dev)
+   129	{
+ > 130		union cvmx_pko_command_word0 pko_command;
+   131		union cvmx_buf_ptr hw_buffer;
+   132		u64 old_scratch;
+   133		u64 old_scratch2;
+   134		int qos;
+   135		int i;
+   136		enum {QUEUE_CORE, QUEUE_HW, QUEUE_DROP} queue_type;
+   137		struct octeon_ethernet *priv = netdev_priv(dev);
+   138		struct sk_buff *to_free_list;
+   139		int skb_to_free;
+   140		int buffers_to_free;
+   141		u32 total_to_clean;
+   142		unsigned long flags;
+   143	#if REUSE_SKBUFFS_WITHOUT_FREE
+   144		unsigned char *fpa_head;
+   145	#endif
+   146	
+   147		/*
+   148		 * Prefetch the private data structure.  It is larger than the
+   149		 * one cache line.
+   150		 */
+   151		prefetch(priv);
+   152	
+   153		/*
+   154		 * The check on CVMX_PKO_QUEUES_PER_PORT_* is designed to
+   155		 * completely remove "qos" in the event neither interface
+   156		 * supports multiple queues per port.
+   157		 */
+   158		if ((CVMX_PKO_QUEUES_PER_PORT_INTERFACE0 > 1) ||
+   159		    (CVMX_PKO_QUEUES_PER_PORT_INTERFACE1 > 1)) {
+   160			qos = GET_SKBUFF_QOS(skb);
+   161			if (qos <= 0)
+   162				qos = 0;
+   163			else if (qos >= cvmx_pko_get_num_queues(priv->port))
+   164				qos = 0;
+   165		} else {
+   166			qos = 0;
+   167		}
+   168	
+   169		if (USE_ASYNC_IOBDMA) {
+   170			/* Save scratch in case userspace is using it */
+   171			CVMX_SYNCIOBDMA;
+   172			old_scratch = cvmx_scratch_read64(CVMX_SCR_SCRATCH);
+   173			old_scratch2 = cvmx_scratch_read64(CVMX_SCR_SCRATCH + 8);
+   174	
+   175			/*
+   176			 * Fetch and increment the number of packets to be
+   177			 * freed.
+   178			 */
+   179			cvmx_fau_async_fetch_and_add32(CVMX_SCR_SCRATCH + 8,
+   180						       FAU_NUM_PACKET_BUFFERS_TO_FREE,
+   181						       0);
+   182			cvmx_fau_async_fetch_and_add32(CVMX_SCR_SCRATCH,
+   183						       priv->fau + qos * 4,
+   184						       MAX_SKB_TO_FREE);
+   185		}
+   186	
+   187		/*
+   188		 * We have space for 6 segment pointers, If there will be more
+   189		 * than that, we must linearize.
+   190		 */
+   191		if (unlikely(skb_shinfo(skb)->nr_frags > 5)) {
+   192			if (unlikely(__skb_linearize(skb))) {
+   193				queue_type = QUEUE_DROP;
+   194				if (USE_ASYNC_IOBDMA) {
+   195					/*
+   196					 * Get the number of skbuffs in use
+   197					 * by the hardware
+   198					 */
+   199					CVMX_SYNCIOBDMA;
+   200					skb_to_free =
+   201						cvmx_scratch_read64(CVMX_SCR_SCRATCH);
+   202				} else {
+   203					/*
+   204					 * Get the number of skbuffs in use
+   205					 * by the hardware
+   206					 */
+   207					skb_to_free =
+   208					     cvmx_fau_fetch_and_add32(priv->fau +
+   209								      qos * 4,
+   210								      MAX_SKB_TO_FREE);
+   211				}
+   212				skb_to_free = cvm_oct_adjust_skb_to_free(skb_to_free,
+   213									 priv->fau +
+   214									 qos * 4);
+   215				spin_lock_irqsave(&priv->tx_free_list[qos].lock, flags);
+   216				goto skip_xmit;
+   217			}
+   218		}
+   219	
+   220		/*
+   221		 * The CN3XXX series of parts has an errata (GMX-401) which
+   222		 * causes the GMX block to hang if a collision occurs towards
+   223		 * the end of a <68 byte packet. As a workaround for this, we
+   224		 * pad packets to be 68 bytes whenever we are in half duplex
+   225		 * mode. We don't handle the case of having a small packet but
+   226		 * no room to add the padding.  The kernel should always give
+   227		 * us at least a cache line
+   228		 */
+   229		if ((skb->len < 64) && OCTEON_IS_MODEL(OCTEON_CN3XXX)) {
+   230			union cvmx_gmxx_prtx_cfg gmx_prt_cfg;
+   231			int interface = INTERFACE(priv->port);
+   232			int index = INDEX(priv->port);
+   233	
+   234			if (interface < 2) {
+   235				/* We only need to pad packet in half duplex mode */
+   236				gmx_prt_cfg.u64 =
+   237				    cvmx_read_csr(CVMX_GMXX_PRTX_CFG(index, interface));
+   238				if (gmx_prt_cfg.s.duplex == 0) {
+   239					int add_bytes = 64 - skb->len;
+   240	
+   241					if ((skb_tail_pointer(skb) + add_bytes) <=
+   242					    skb_end_pointer(skb))
+   243						__skb_put_zero(skb, add_bytes);
+   244				}
+   245			}
+   246		}
+   247	
+   248		/* Build the PKO command */
+   249		pko_command.u64 = 0;
+   250	#ifdef __LITTLE_ENDIAN
+   251		pko_command.s.le = 1;
+   252	#endif
+   253		pko_command.s.n2 = 1;	/* Don't pollute L2 with the outgoing packet */
+   254		pko_command.s.segs = 1;
+   255		pko_command.s.total_bytes = skb->len;
+   256		pko_command.s.size0 = CVMX_FAU_OP_SIZE_32;
+   257		pko_command.s.subone0 = 1;
+   258	
+   259		pko_command.s.dontfree = 1;
+   260	
+   261		/* Build the PKO buffer pointer */
+   262		hw_buffer.u64 = 0;
+   263		if (skb_shinfo(skb)->nr_frags == 0) {
+   264			hw_buffer.s.addr = XKPHYS_TO_PHYS((uintptr_t)skb->data);
+   265			hw_buffer.s.pool = 0;
+   266			hw_buffer.s.size = skb->len;
+   267		} else {
+   268			hw_buffer.s.addr = XKPHYS_TO_PHYS((uintptr_t)skb->data);
+   269			hw_buffer.s.pool = 0;
+   270			hw_buffer.s.size = skb_headlen(skb);
+   271			CVM_OCT_SKB_CB(skb)[0] = hw_buffer.u64;
+   272			for (i = 0; i < skb_shinfo(skb)->nr_frags; i++) {
+   273				skb_frag_t *fs = skb_shinfo(skb)->frags + i;
+   274	
+   275				hw_buffer.s.addr =
+   276					XKPHYS_TO_PHYS((uintptr_t)skb_frag_address(fs));
+   277				hw_buffer.s.size = skb_frag_size(fs);
+   278				CVM_OCT_SKB_CB(skb)[i + 1] = hw_buffer.u64;
+   279			}
+   280			hw_buffer.s.addr =
+   281				XKPHYS_TO_PHYS((uintptr_t)CVM_OCT_SKB_CB(skb));
+   282			hw_buffer.s.size = skb_shinfo(skb)->nr_frags + 1;
+   283			pko_command.s.segs = skb_shinfo(skb)->nr_frags + 1;
+   284			pko_command.s.gather = 1;
+   285			goto dont_put_skbuff_in_hw;
+   286		}
+   287	
+   288		/*
+   289		 * See if we can put this skb in the FPA pool. Any strange
+   290		 * behavior from the Linux networking stack will most likely
+   291		 * be caused by a bug in the following code. If some field is
+   292		 * in use by the network stack and gets carried over when a
+   293		 * buffer is reused, bad things may happen.  If in doubt and
+   294		 * you dont need the absolute best performance, disable the
+   295		 * define REUSE_SKBUFFS_WITHOUT_FREE. The reuse of buffers has
+   296		 * shown a 25% increase in performance under some loads.
+   297		 */
+   298	#if REUSE_SKBUFFS_WITHOUT_FREE
+   299		fpa_head = skb->head + 256 - ((unsigned long)skb->head & 0x7f);
+   300		if (unlikely(skb->data < fpa_head)) {
+   301			/* TX buffer beginning can't meet FPA alignment constraints */
+   302			goto dont_put_skbuff_in_hw;
+   303		}
+   304		if (unlikely
+   305		    ((skb_end_pointer(skb) - fpa_head) < CVMX_FPA_PACKET_POOL_SIZE)) {
+   306			/* TX buffer isn't large enough for the FPA */
+   307			goto dont_put_skbuff_in_hw;
+   308		}
+   309		if (unlikely(skb_shared(skb))) {
+   310			/* TX buffer sharing data with someone else */
+   311			goto dont_put_skbuff_in_hw;
+   312		}
+   313		if (unlikely(skb_cloned(skb))) {
+   314			/* TX buffer has been cloned */
+   315			goto dont_put_skbuff_in_hw;
+   316		}
+   317		if (unlikely(skb_header_cloned(skb))) {
+   318			/* TX buffer header has been cloned */
+   319			goto dont_put_skbuff_in_hw;
+   320		}
+   321		if (unlikely(skb->destructor)) {
+   322			/* TX buffer has a destructor */
+   323			goto dont_put_skbuff_in_hw;
+   324		}
+   325		if (unlikely(skb_shinfo(skb)->nr_frags)) {
+   326			/* TX buffer has fragments */
+   327			goto dont_put_skbuff_in_hw;
+   328		}
+   329		if (unlikely
+   330		    (skb->truesize !=
+   331		     sizeof(*skb) + skb_end_offset(skb))) {
+   332			/* TX buffer truesize has been changed */
+   333			goto dont_put_skbuff_in_hw;
+   334		}
+   335	
+   336		/*
+   337		 * We can use this buffer in the FPA.  We don't need the FAU
+   338		 * update anymore
+   339		 */
+   340		pko_command.s.dontfree = 0;
+   341	
+   342		hw_buffer.s.back = ((unsigned long)skb->data >> 7) -
+   343				   ((unsigned long)fpa_head >> 7);
+   344	
+   345		*(struct sk_buff **)(fpa_head - sizeof(void *)) = skb;
+   346	
+   347		/*
+   348		 * The skbuff will be reused without ever being freed. We must
+   349		 * cleanup a bunch of core things.
+   350		 */
+   351		dst_release(skb_dst(skb));
+   352		skb_dst_set(skb, NULL);
+   353		skb_ext_reset(skb);
+   354		nf_reset_ct(skb);
+   355	
 
 ---
 0-DAY kernel test infrastructure                 Open Source Technology Center
 https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org Intel Corporation
 
---7prxtok4yygcervc
+--minalsygn3ns4xoz
 Content-Type: application/gzip
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICKQJyl0AAy5jb25maWcAlDxdb+O2su/nVxhb4KLF6baJk81u70UeKIqyWUuilqRsJy+C
+H4sICBcNyl0AAy5jb25maWcAlDxdb+O2su/nVxhb4KLF6baJk81u70UeKIqyWUuilqRsJy+C
 m3i3QRMnsJ327L8/M9QXKZHOXuCcZsUZUuRwvmfkH/71w4S8Hp+fNseHu83j47fJ1+1uu98c
 t/eTLw+P2/+bxGKSCz1hMde/AHL6sHv9z69PDy+HyYdfLn85e7+/u5gstvvd9nFCn3dfHr6+
 wuyH592/fvgX/O8HGHx6gYX2/zvBSVeX7x9xhfdf7+4mP84o/WnyEZcBVCryhM8qSiuuKoBc
@@ -693,7 +843,7 @@ cXu2kEv1Qq7CmV2vyUV5Xjt6S9+E1eSmDMNJO3pNcnHqWG+pXPuS7TtpX730Ecp30wiJIGHk
 lhfxaRIzWzhgcFqHkTcVSIB4L49u6zvOzsNdHEQ8YXAFitNCo5fRvE6HaNBCIuHFbl0g/x9z
 hUnqOCUBAA==
 
---7prxtok4yygcervc
+--minalsygn3ns4xoz
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -704,4 +854,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---7prxtok4yygcervc--
+--minalsygn3ns4xoz--
