@@ -1,77 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E5075F9D2E
-	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Nov 2019 23:36:40 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 22B3FF9D84
+	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Nov 2019 23:54:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id B7B7B20419;
-	Tue, 12 Nov 2019 22:36:38 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4F92D86186;
+	Tue, 12 Nov 2019 22:54:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id l3mel0-3TmSm; Tue, 12 Nov 2019 22:36:38 +0000 (UTC)
+	with ESMTP id AXJlqbOwqVbs; Tue, 12 Nov 2019 22:54:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D6815203D5;
-	Tue, 12 Nov 2019 22:36:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7AF5585608;
+	Tue, 12 Nov 2019 22:54:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A7DE81BF3C6
- for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 22:36:34 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DD7761BF2B7
+ for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 22:54:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A47C784E77
- for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 22:36:34 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id DA56B83500
+ for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 22:54:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uKPgmjOouvVa for <devel@linuxdriverproject.org>;
- Tue, 12 Nov 2019 22:36:33 +0000 (UTC)
+ with ESMTP id DpW3z1NanP6I for <devel@linuxdriverproject.org>;
+ Tue, 12 Nov 2019 22:54:38 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from omr2.cc.vt.edu (outbound.smtp.vt.edu [198.82.183.121])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id BFBF584D62
- for <devel@driverdev.osuosl.org>; Tue, 12 Nov 2019 22:36:33 +0000 (UTC)
-Received: from mr3.cc.vt.edu (mr3.cc.vt.edu
- [IPv6:2607:b400:92:8500:0:7f:b804:6b0a])
- by omr2.cc.vt.edu (8.14.4/8.14.4) with ESMTP id xACMaWta030540
- for <devel@driverdev.osuosl.org>; Tue, 12 Nov 2019 17:36:32 -0500
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198])
- by mr3.cc.vt.edu (8.14.7/8.14.7) with ESMTP id xACMaRG7002962
- for <devel@driverdev.osuosl.org>; Tue, 12 Nov 2019 17:36:32 -0500
-Received: by mail-qt1-f198.google.com with SMTP id x50so21453154qth.4
- for <devel@driverdev.osuosl.org>; Tue, 12 Nov 2019 14:36:32 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=b3SMezw3KJOVVm/niCddVCl0DjKIk3OgqaEONN074B8=;
- b=aQ0jhdlEoe8PiZ/UVEUlAZajQ96GEPmPxJsaeQ3vNWH5QGrwTDJ+q4alpRA2CIb1zY
- kPSERW6xKJSLikqCM+M7+Yp7bgTA73nI2EErPqPDmTr27rjhAKL6kvuJmM4qJ3h53h4W
- jZ9QapLUWwL8/QFSxA2XCqoPAEiiQycP7S6KrV/ADXnJ7gUQ2FUv0nwYRQmxSlfZETcl
- 9e1ySZ/M6IIxQpoyQn1zmJwiwbISKDlSyPCmwI3QPb6GQDZZxeNdbhIL3CREgi5vtZ80
- pY8GvNFzGDAu9ZyBjw+OWCU/2zYZP6po90AbdPTIzabJhNmynluV9Y+p1YMF3qasmSgi
- t68w==
-X-Gm-Message-State: APjAAAUH/YbCfZG6NV7en3gdvXYZ2cAoviGXSx+2J0phTw4PtrjwJ0Zq
- og3m/Btwa+WtyXfzwSH+dwAXU8tPc/qVHUtOsYvq0ed/zLCkItvowGEhDy9EzUKW5yGczt9+xCO
- RW7uA3b0MZw+go1enCEmDqepyxaRuq2gC
-X-Received: by 2002:aed:2821:: with SMTP id r30mr34335462qtd.367.1573598186912; 
- Tue, 12 Nov 2019 14:36:26 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwVvq+wLMcWArLPgLTwIJ6gQIvDSAdqsKAyHrdpnSw7IXvoWUvqwWchRSSn79IkIOrXxMCf9Q==
-X-Received: by 2002:aed:2821:: with SMTP id r30mr34335437qtd.367.1573598186582; 
- Tue, 12 Nov 2019 14:36:26 -0800 (PST)
-Received: from turing-police.lan ([2601:5c0:c001:c9e1::359])
- by smtp.gmail.com with ESMTPSA id l132sm41647qke.38.2019.11.12.14.36.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Nov 2019 14:36:25 -0800 (PST)
-From: Valdis Kletnieks <valdis.kletnieks@vt.edu>
-X-Google-Original-From: Valdis Kletnieks <Valdis.Kletnieks@vt.edu>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: exfat: Update the TODO file
-Date: Tue, 12 Nov 2019 17:36:08 -0500
-Message-Id: <20191112223609.163501-1-Valdis.Kletnieks@vt.edu>
-X-Mailer: git-send-email 2.24.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3890C834EE
+ for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 22:54:38 +0000 (UTC)
+Received: from localhost (unknown [8.46.76.96])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id EF66F21925;
+ Tue, 12 Nov 2019 22:54:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1573599278;
+ bh=6JP0GOFxXqz7uPi1zfAbz6zNkUOAnyg5Tm8bHnXJUNQ=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=jZ3b0wvEkm+nOC8NXFdRzToZmE2dq9r0zUsUI6Jei7b8C/0acFa9LkaFNn8F8sidU
+ Y2JcsEHYazghknsDDPWlpUE89PhqGBTIDyqg6+FZht7Daz7X7EkXgTuwQ8QGpB1KcB
+ GBzucF3QA4pqmlV2+MC2tnvICriZfOgCuJMKzMXI=
+Date: Tue, 12 Nov 2019 23:54:27 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Christoph Hellwig <hch@infradead.org>
+Subject: [PATCH] vboxsf: move out of staging to fs/
+Message-ID: <20191112225427.GA1873491@kroah.com>
+References: <20191110154303.GA2867499@kroah.com>
+ <20191112063440.GA15951@infradead.org>
+ <20191112065629.GA1242198@kroah.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20191112065629.GA1242198@kroah.com>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,105 +67,152 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-fsdevel@vger.kernel.org, devel@driverdev.osuosl.org,
- Valdis Kletnieks <valdis.kletnieks@vt.edu>, linux-kernel@vger.kernel.org
+Cc: Hans de Goede <hdegoede@redhat.com>,
+ Linus Torvalds <torvalds@linux-foundation.org>, linux-kernel@vger.kernel.org,
+ devel@linuxdriverproject.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Updating with the current laundry list of things that need attention.
+When Christoph said this code was "good enough to go in now" I thought
+he ment to put it in drivers/staging/ for now, when in fact he ment to
+put it into the "real" part of the kernel instead.
 
-Signed-off-by: Valdis Kletnieks <Valdis.Kletnieks@vt.edu>
+So move the code to the "real" part of the kernel as it's good enough.
+
+Reported-by: Christoph Hellwig <hch@infradead.org>
+Cc: Hans de Goede <hdegoede@redhat.com>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/staging/exfat/TODO | 70 ++++++++++++++++++++++++++++++++------
- 1 file changed, 59 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/staging/exfat/TODO b/drivers/staging/exfat/TODO
-index b60e50b9cf4e..a283ce534cf4 100644
---- a/drivers/staging/exfat/TODO
-+++ b/drivers/staging/exfat/TODO
-@@ -1,17 +1,22 @@
-+A laundry list of things that need looking at, most of which will
-+require more work than the average checkpatch cleanup...
-+
-+Note that some of these entries may not be bugs - they're things
-+that need to be looked at, and *possibly* fixed.
-+
-+Clean up the ffsCamelCase function names.
-+
-+Fix (thing)->flags to not use magic numbers - multiple offenders
-+
-+Sort out all the s32/u32/u8 nonsense - most of these should be plain int.
-+
- exfat_core.c - ffsReadFile - the goto err_out seem to leak a brelse().
- same for ffsWriteFile.
+Christoph, this is what you mean, right?  If so, I'll send this to Linus
+later this week, or he can grab it right from this patch :)
+
+thanks,
+
+greg k-h
+
+ MAINTAINERS                                      | 2 +-
+ drivers/staging/Kconfig                          | 2 --
+ drivers/staging/Makefile                         | 1 -
+ fs/Kconfig                                       | 1 +
+ fs/Makefile                                      | 1 +
+ {drivers/staging => fs}/vboxsf/Kconfig           | 0
+ {drivers/staging => fs}/vboxsf/Makefile          | 0
+ {drivers/staging => fs}/vboxsf/TODO              | 0
+ {drivers/staging => fs}/vboxsf/dir.c             | 0
+ {drivers/staging => fs}/vboxsf/file.c            | 0
+ {drivers/staging => fs}/vboxsf/shfl_hostintf.h   | 0
+ {drivers/staging => fs}/vboxsf/super.c           | 0
+ {drivers/staging => fs}/vboxsf/utils.c           | 0
+ {drivers/staging => fs}/vboxsf/vboxsf_wrappers.c | 0
+ {drivers/staging => fs}/vboxsf/vfsmod.h          | 0
+ 15 files changed, 3 insertions(+), 4 deletions(-)
+ rename {drivers/staging => fs}/vboxsf/Kconfig (100%)
+ rename {drivers/staging => fs}/vboxsf/Makefile (100%)
+ rename {drivers/staging => fs}/vboxsf/TODO (100%)
+ rename {drivers/staging => fs}/vboxsf/dir.c (100%)
+ rename {drivers/staging => fs}/vboxsf/file.c (100%)
+ rename {drivers/staging => fs}/vboxsf/shfl_hostintf.h (100%)
+ rename {drivers/staging => fs}/vboxsf/super.c (100%)
+ rename {drivers/staging => fs}/vboxsf/utils.c (100%)
+ rename {drivers/staging => fs}/vboxsf/vboxsf_wrappers.c (100%)
+ rename {drivers/staging => fs}/vboxsf/vfsmod.h (100%)
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index eb19fad370d7..069dc018073d 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -17342,7 +17342,7 @@ VIRTUAL BOX SHARED FOLDER VFS DRIVER:
+ M:	Hans de Goede <hdegoede@redhat.com>
+ L:	linux-fsdevel@vger.kernel.org
+ S:	Maintained
+-F:	drivers/staging/vboxsf/*
++F:	fs/vboxsf/*
  
--exfat_core.c - fs_sync(sb,0) all over the place looks fishy as hell.
--There's only one place that calls it with a non-zero argument.
--Randomly removing fs_sync() calls is *not* the right answer, especially
--if the removal then leaves a call to fs_set_vol_flags(VOL_CLEAN), as that
--says the file system is clean and synced when we *know* it isn't.
--The proper fix here is to go through and actually analyze how DELAYED_SYNC
--should work, and any time we're setting VOL_CLEAN, ensure the file system
--has in fact been synced to disk.  In other words, changing the 'false' to
--'true' is probably more correct. Also, it's likely that the one current
--place where it actually does an bdev_sync isn't sufficient in the DELAYED_SYNC
--case.
-+All the calls to fs_sync() need to be looked at, particularly in the
-+context of EXFAT_DELAYED_SYNC. Currently, if that's defined, we only
-+flush to disk when sync() gets called.  We should be doing at least
-+metadata flushes at appropriate times.
+ VIRTUAL SERIO DEVICE DRIVER
+ M:	Stephen Chandler Paul <thatslyude@gmail.com>
+diff --git a/drivers/staging/Kconfig b/drivers/staging/Kconfig
+index 927d29eb92c6..6f1fa4c849a1 100644
+--- a/drivers/staging/Kconfig
++++ b/drivers/staging/Kconfig
+@@ -125,6 +125,4 @@ source "drivers/staging/exfat/Kconfig"
  
- ffsTruncateFile -  if (old_size <= new_size) {
- That doesn't look right. How did it ever work? Are they relying on lazy
-@@ -19,3 +24,46 @@ block allocation when actual writes happen? If nothing else, it never
- does the 'fid->size = new_size' and do the inode update....
+ source "drivers/staging/qlge/Kconfig"
  
- ffsSetAttr() is just dangling in the breeze, not wired up at all...
-+
-+Convert global mutexes to a per-superblock mutex.
-+
-+Right now, we load exactly one UTF-8 table. Check to see
-+if that plays nice with different codepage and iocharset values
-+for simultanous mounts of different devices
-+
-+exfat_rmdir() checks for -EBUSY but ffsRemoveDir() doesn't return it.
-+In fact, there's a complete lack of -EBUSY testing anywhere.
-+
-+There's probably a few missing checks for -EEXIST
-+
-+check return codes of sync_dirty_buffer()
-+
-+Why is remove_file doing a num_entries++??
-+
-+Double check a lot of can't-happen parameter checks (for null pointers for
-+things that have only one call site and can't pass a null, etc).
-+
-+All the DEBUG stuff can probably be tossed, including the ioctl(). Either
-+that, or convert to a proper fault-injection system.
-+
-+exfat_remount does exactly one thing.  Fix to actually deal with remount
-+options, particularly handling R/O correctly.  For that matter, allow
-+R/O mounts in the first place.
-+
-+Figure out why the VFAT code used multi_sector_(read|write) but the
-+exfat code doesn't use it. The difference matters on SSDs with wear leveling.
-+
-+exfat_fat_sync(), exfat_buf_sync(), and sync_alloc_bitmap()
-+aren't called anyplace....
-+
-+Create helper function for exfat_set_entry_time() and exfat_set_entry_type()
-+because it's sort of ugly to be calling the same functionn directly and
-+other code calling through the fs_func struc ponters...
-+
-+clean up the remaining vol_type checks, which are of two types:
-+some are ?: operators with magic numbers, and the rest are places
-+where we're doing stuff with '.' and '..'.
-+
-+Patches to:
-+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-+	Valdis Kletnieks <valdis.kletnieks@vt.edu>
+-source "drivers/staging/vboxsf/Kconfig"
+-
+ endif # STAGING
+diff --git a/drivers/staging/Makefile b/drivers/staging/Makefile
+index f01f04199073..a90f9b308c8d 100644
+--- a/drivers/staging/Makefile
++++ b/drivers/staging/Makefile
+@@ -53,4 +53,3 @@ obj-$(CONFIG_UWB)		+= uwb/
+ obj-$(CONFIG_USB_WUSB)		+= wusbcore/
+ obj-$(CONFIG_EXFAT_FS)		+= exfat/
+ obj-$(CONFIG_QLGE)		+= qlge/
+-obj-$(CONFIG_VBOXSF_FS)		+= vboxsf/
+diff --git a/fs/Kconfig b/fs/Kconfig
+index 2501e6f1f965..a6b57d790100 100644
+--- a/fs/Kconfig
++++ b/fs/Kconfig
+@@ -321,5 +321,6 @@ endif # NETWORK_FILESYSTEMS
+ source "fs/nls/Kconfig"
+ source "fs/dlm/Kconfig"
+ source "fs/unicode/Kconfig"
++source "fs/vboxsf/Kconfig"
+ 
+ endmenu
+diff --git a/fs/Makefile b/fs/Makefile
+index 14231b4cf383..aecbb088be47 100644
+--- a/fs/Makefile
++++ b/fs/Makefile
+@@ -132,3 +132,4 @@ obj-$(CONFIG_CEPH_FS)		+= ceph/
+ obj-$(CONFIG_PSTORE)		+= pstore/
+ obj-$(CONFIG_EFIVAR_FS)		+= efivarfs/
+ obj-$(CONFIG_EROFS_FS)		+= erofs/
++obj-$(CONFIG_VBOXSF_FS)		+= vboxsf/
+diff --git a/drivers/staging/vboxsf/Kconfig b/fs/vboxsf/Kconfig
+similarity index 100%
+rename from drivers/staging/vboxsf/Kconfig
+rename to fs/vboxsf/Kconfig
+diff --git a/drivers/staging/vboxsf/Makefile b/fs/vboxsf/Makefile
+similarity index 100%
+rename from drivers/staging/vboxsf/Makefile
+rename to fs/vboxsf/Makefile
+diff --git a/drivers/staging/vboxsf/TODO b/fs/vboxsf/TODO
+similarity index 100%
+rename from drivers/staging/vboxsf/TODO
+rename to fs/vboxsf/TODO
+diff --git a/drivers/staging/vboxsf/dir.c b/fs/vboxsf/dir.c
+similarity index 100%
+rename from drivers/staging/vboxsf/dir.c
+rename to fs/vboxsf/dir.c
+diff --git a/drivers/staging/vboxsf/file.c b/fs/vboxsf/file.c
+similarity index 100%
+rename from drivers/staging/vboxsf/file.c
+rename to fs/vboxsf/file.c
+diff --git a/drivers/staging/vboxsf/shfl_hostintf.h b/fs/vboxsf/shfl_hostintf.h
+similarity index 100%
+rename from drivers/staging/vboxsf/shfl_hostintf.h
+rename to fs/vboxsf/shfl_hostintf.h
+diff --git a/drivers/staging/vboxsf/super.c b/fs/vboxsf/super.c
+similarity index 100%
+rename from drivers/staging/vboxsf/super.c
+rename to fs/vboxsf/super.c
+diff --git a/drivers/staging/vboxsf/utils.c b/fs/vboxsf/utils.c
+similarity index 100%
+rename from drivers/staging/vboxsf/utils.c
+rename to fs/vboxsf/utils.c
+diff --git a/drivers/staging/vboxsf/vboxsf_wrappers.c b/fs/vboxsf/vboxsf_wrappers.c
+similarity index 100%
+rename from drivers/staging/vboxsf/vboxsf_wrappers.c
+rename to fs/vboxsf/vboxsf_wrappers.c
+diff --git a/drivers/staging/vboxsf/vfsmod.h b/fs/vboxsf/vfsmod.h
+similarity index 100%
+rename from drivers/staging/vboxsf/vfsmod.h
+rename to fs/vboxsf/vfsmod.h
 -- 
 2.24.0
 
