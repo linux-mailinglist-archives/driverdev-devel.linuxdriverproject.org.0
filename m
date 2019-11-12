@@ -1,129 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id ECBA6F946D
-	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Nov 2019 16:36:00 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A8FBAF9598
+	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Nov 2019 17:26:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 99A968561D;
-	Tue, 12 Nov 2019 15:35:59 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 41D97203D8;
+	Tue, 12 Nov 2019 16:26:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TOPIEQO8T3Q4; Tue, 12 Nov 2019 15:35:57 +0000 (UTC)
+	with ESMTP id zWVvBs8VRAjh; Tue, 12 Nov 2019 16:26:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 65852855CB;
-	Tue, 12 Nov 2019 15:35:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6DB2E203B5;
+	Tue, 12 Nov 2019 16:26:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id AC4E51BF59D
- for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 15:35:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1AA4B1BF479
+ for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 16:25:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A679D87598
- for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 15:35:52 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 177EE8757E
+ for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 16:25:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FZAKn8xGn+I2 for <devel@linuxdriverproject.org>;
- Tue, 12 Nov 2019 15:35:51 +0000 (UTC)
+ with ESMTP id k3Qa0QNjcT3F for <devel@linuxdriverproject.org>;
+ Tue, 12 Nov 2019 16:25:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx0a-00128a01.pphosted.com (mx0a-00128a01.pphosted.com
- [148.163.135.77])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 2B0D087592
- for <devel@driverdev.osuosl.org>; Tue, 12 Nov 2019 15:35:51 +0000 (UTC)
-Received: from pps.filterd (m0167088.ppops.net [127.0.0.1])
- by mx0a-00128a01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- xACFNqpX025476; Tue, 12 Nov 2019 10:35:47 -0500
-Received: from nam01-bn3-obe.outbound.protection.outlook.com
- (mail-bn3nam01lp2058.outbound.protection.outlook.com [104.47.33.58])
- by mx0a-00128a01.pphosted.com with ESMTP id 2w7prk91v3-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 12 Nov 2019 10:35:47 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Grr9YqRtBnu7Vw/wUNBvvYhml49rtNfs4mz9gBlYcN9DjXRa8MCgDdcRL6s+9tUc/+ns8zbclRJjVz6VU9mwsI/5ieEl2TXdxYCVx12HYsYlZRVbk/lGBWRv0SfbSIaN1eHjQGhG6VZMVnNaoXrhIPP+E2oytI/OKKl70lcya3Sa3cNXBOmysCtAt5O4AfTc1pDrmlZh09TGHJKrvbVHcEdGrYDiC9r2yd/hgQMTg09qo8PT4BRxCD6PFja313/DilLHSLjghykg0khpwkSP4Mi8VC+0a2PbkSNpFdv2i+3P0f0p0cdpnE1STOR1ZFuqTvJ1k5ddSu5vCycm7yHWHQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OQAKrxZtjG+3o2Lsn9HApsW4np8WSar24UvdmiYG9rU=;
- b=nM8QeoMu01QWUOkN6//FZ6EadWGm5Ud3X7R5k9wcwrdRUsoBk/Oruvv/3UZZ9RYn5E/Umyx4KUvrRra4fT4SCwJ2pDR8di3Rz9osPPq1XyGmKL2rXxHWfMIJWLq/g0Jgd55aJEWT7ZJTxRf+ze3f+esaEcnrV//adayTtN5qSm/RBl9nVq77bVWNv3uG1IpytqCggoHHC0xrsz5Og88czm8wF5bJj59wPtBUHDQ8+y2x7zc7BNofK+J+0f8EFTeE/JEGMrHbpHqMV0RUYuEiI5Ph5kXl+Vv78rH0iEhaYiW14Bob8421hVZ47Ixw3rN2UP15fKh/ruI0jU+VKAiqlQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 137.71.25.57) smtp.rcpttodomain=vger.kernel.org smtp.mailfrom=analog.com;
- dmarc=bestguesspass action=none header.from=analog.com; dkim=none (message
- not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=analog.onmicrosoft.com; s=selector2-analog-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OQAKrxZtjG+3o2Lsn9HApsW4np8WSar24UvdmiYG9rU=;
- b=KbzHN2v44wL7kWCHF3NvcQ2ob1eRPKg0f4WppoAn4sb9y4LwOkHfuB0w92bd8oNYwVtDtn/ndobtBmu6BbajMWHBsN+xyDMcf8Jp3Uvh8trB+dP1/lQ4Y60rtcSZfn/ZVpd+03tMTjKQbewAky1p/SBNfl4YDiXu+DJvK+9vi+M=
-Received: from CY1PR03CA0040.namprd03.prod.outlook.com (2603:10b6:600::50) by
- BN6PR03MB3170.namprd03.prod.outlook.com (2603:10b6:405:41::39) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2430.20; Tue, 12 Nov 2019 15:35:45 +0000
-Received: from CY1NAM02FT050.eop-nam02.prod.protection.outlook.com
- (2a01:111:f400:7e45::200) by CY1PR03CA0040.outlook.office365.com
- (2603:10b6:600::50) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2430.22 via Frontend
- Transport; Tue, 12 Nov 2019 15:35:45 +0000
-Received-SPF: Pass (protection.outlook.com: domain of analog.com designates
- 137.71.25.57 as permitted sender) receiver=protection.outlook.com;
- client-ip=137.71.25.57; helo=nwd2mta2.analog.com;
-Received: from nwd2mta2.analog.com (137.71.25.57) by
- CY1NAM02FT050.mail.protection.outlook.com (10.152.75.65) with Microsoft SMTP
- Server (version=TLS1_0, cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.2430.20
- via Frontend Transport; Tue, 12 Nov 2019 15:35:45 +0000
-Received: from NWD2HUBCAS7.ad.analog.com (nwd2hubcas7.ad.analog.com
- [10.64.69.107])
- by nwd2mta2.analog.com (8.13.8/8.13.8) with ESMTP id xACFZajO012488
- (version=TLSv1/SSLv3 cipher=AES256-SHA bits=256 verify=OK);
- Tue, 12 Nov 2019 07:35:36 -0800
-Received: from ben-Latitude-E6540.ad.analog.com (10.48.65.231) by
- NWD2HUBCAS7.ad.analog.com (10.64.69.107) with Microsoft SMTP Server id
- 14.3.408.0; Tue, 12 Nov 2019 10:35:43 -0500
-From: Beniamin Bia <beniamin.bia@analog.com>
-To: <jic23@kernel.org>
-Subject: [PATCH 3/3] MAINTAINERS: add entry for ADM1177 driver
-Date: Tue, 12 Nov 2019 17:35:52 +0200
-Message-ID: <20191112153552.27431-3-beniamin.bia@analog.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20191112153552.27431-1-beniamin.bia@analog.com>
-References: <20191112153552.27431-1-beniamin.bia@analog.com>
+Received: from mail-ed1-f66.google.com (mail-ed1-f66.google.com
+ [209.85.208.66])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 56744874AB
+ for <devel@driverdev.osuosl.org>; Tue, 12 Nov 2019 16:25:57 +0000 (UTC)
+Received: by mail-ed1-f66.google.com with SMTP id a24so11731336edt.0
+ for <devel@driverdev.osuosl.org>; Tue, 12 Nov 2019 08:25:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=qNdulMghwGPBvmgJ8scwCvXDFRwh4jWCkPxL6qrSIjQ=;
+ b=s0OtgEyBzfQDX6l8iBQ656aK39QT9cYJrK6j6UoM8p49K2fPKW+lTxH2miOW+ifKyj
+ EgnDTf2vYoyvMousqCqSfvE48FZ3pllh3Rl8BSfrN6LrYDdLlaYxolDctk1GAV1Dc5Ha
+ rjBNRq3QMDUEjQN6llJceHRYeZCIpbjOgVUOu5ltYM5HPsYUtrtS1xpUtchKOBWMyXlF
+ fI/xOEvBVdgh4UgxpuIcK/uKoHa2ydxQAth1DQZonHDQR53zY6EyvOIV8NnE+3duVFJ5
+ 9Fg5pah82j+3sEATgT+JUt6VVyeRs6ZQqyq7iFVH/iLTxqhrZpQwNaf2jdk9KH50OtNp
+ 8DMA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=qNdulMghwGPBvmgJ8scwCvXDFRwh4jWCkPxL6qrSIjQ=;
+ b=HIDKfIutwoao5xbc1Ls5S6RQNcV3Z1aywJhYWOm0y3M0gQQdaD4ptfsTcxcGGDz2ek
+ aaMidr69qTqi6xghFRYUvAMOPaDvFf7YoiByndS4T5dKoO3QOOhmU2rGsKvkPgvkoXmj
+ jx6TYlYWQogloOjRQbZmnWn9z5zs+TrWyR+0ZrndJ1OvkOVHsbKWbd2AcLuOu2x3YPfT
+ u11KwPSpcHXD9NaKWBCdpaMzUlxvOmS4ZEEwNVvcEtLNswTDrW7yt3E9kZ1bs1WzzP5X
+ LW/CguJ96h4mZbUTx9SzC9MRwJUZ/OLaxhaO/m46hBojQzv9E8h3scFPsa8ywMHBqZI9
+ n/9w==
+X-Gm-Message-State: APjAAAVhOm4gDcqt02TwMjVjYgi5n2pJewavNQqj0NNatObAmPb92CVs
+ PyA5SYC1FezGwTDESUDuxe3SGiZRRLHGwJdBNdo=
+X-Google-Smtp-Source: APXvYqwhqdRow05DXBj589Vp0KphTrjQ6ciBUn4XUPHVWtpvXM4UmtBTg9o5ymv8pW+npmlqSU6LWMvGS55XZEcH0aU=
+X-Received: by 2002:a17:906:2552:: with SMTP id
+ j18mr29694003ejb.244.1573575955519; 
+ Tue, 12 Nov 2019 08:25:55 -0800 (PST)
 MIME-Version: 1.0
-X-ADIRoutedOnPrem: True
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:137.71.25.57; IPV:NLI; CTRY:US; EFV:NLI;
- SFV:NSPM;
- SFS:(10009020)(376002)(39860400002)(396003)(346002)(136003)(189003)(199004)(107886003)(7416002)(4326008)(70586007)(50466002)(76176011)(50226002)(1076003)(44832011)(36756003)(8936002)(186003)(246002)(478600001)(8676002)(5660300002)(48376002)(4744005)(70206006)(51416003)(336012)(26005)(7696005)(54906003)(476003)(426003)(966005)(6306002)(2906002)(446003)(126002)(2616005)(7636002)(2351001)(356004)(6666004)(16586007)(316002)(486006)(86362001)(6916009)(11346002)(305945005)(47776003)(106002);
- DIR:OUT; SFP:1101; SCL:1; SRVR:BN6PR03MB3170; H:nwd2mta2.analog.com; FPR:;
- SPF:Pass; LANG:en; PTR:nwd2mail11.analog.com; MX:1; A:1; 
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: f42b5e02-6b57-43db-a244-08d76785fc02
-X-MS-TrafficTypeDiagnostic: BN6PR03MB3170:
-X-MS-Exchange-PUrlCount: 1
-X-Microsoft-Antispam-PRVS: <BN6PR03MB3170C33B6A0B02441148C2B8F0770@BN6PR03MB3170.namprd03.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:1303;
-X-Forefront-PRVS: 021975AE46
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: oNRNutGp1eNy7N5ZlWhQlZzO1+YKevrkg3ig3BxC+2T+MGTdvCkb9v8UmnUPBRi0eF6lc+27TNfRIgRFsfYwt/WY3OqxD+2Hew01gd+Ek6N/ssdFaPE+wV2rCSlPtKAlVT572VueEZt9rvtsfW5meyrMRkhP53Vu7/jdtZ2oxlmz09hb+myyJpcycpurj1SHcRVEu1ZljKD4uS6R1AsWq13afaODn8CftXZRH26x5AxRT1eqjdggcrOgQWkqeTPqpOEVLdXWdVk6DdfXRB7Yc2NpvQOskCkzFh6v6zZTOTYXAZ2myG2zd+XGbFz9LIsIG35ffaxywN3Pr/trPzcG4JLqgqxsYW55yYRDetf8hL6i0Tw2G/LYW/xVTgop5pm61MgoaoenwiC4xOM/XJJBgKz+uFsSuS2OhLrwYeoJcfXvt/iLaqbjUwCFVB5coQw8/rvZBYeB+HEQJmVXfVYo4NI0o6o/4bmyT3gqEYT4R2U=
-X-OriginatorOrg: analog.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Nov 2019 15:35:45.1025 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: f42b5e02-6b57-43db-a244-08d76785fc02
-X-MS-Exchange-CrossTenant-Id: eaa689b4-8f87-40e0-9c6f-7228de4d754a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=eaa689b4-8f87-40e0-9c6f-7228de4d754a; Ip=[137.71.25.57];
- Helo=[nwd2mta2.analog.com]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR03MB3170
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.95,18.0.572
- definitions=2019-11-12_05:2019-11-11,2019-11-12 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 bulkscore=0
- adultscore=0 mlxlogscore=999 phishscore=0 lowpriorityscore=0
- impostorscore=0 mlxscore=0 suspectscore=1 malwarescore=0 clxscore=1015
- priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-1910280000 definitions=main-1911120134
+Received: by 2002:a05:6402:1118:0:0:0:0 with HTTP; Tue, 12 Nov 2019 08:25:55
+ -0800 (PST)
+From: "MS. MARYANNA B. THOMASON" <eco.bank1204@gmail.com>
+Date: Tue, 12 Nov 2019 17:25:55 +0100
+Message-ID: <CAOE+jACK6QHRhhASVJWjC0bme2moy8jH40ErzPVPxpbcmo8RNQ@mail.gmail.com>
+Subject: CONTACT WALMART TRANSFER To pick up $5000 sent to you this morning
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -136,48 +80,41 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, mark.rutland@arm.com, lars@metafoo.de,
- biabeniamin@outlook.com, Michael.Hennerich@analog.com,
- devicetree@vger.kernel.org, linux-iio@vger.kernel.org,
- gregkh@linuxfoundation.org, linus.walleij@linaro.org,
- linux-kernel@vger.kernel.org, nicolas.ferre@microchip.com, robh+dt@kernel.org,
- pmeerw@pmeerw.net, mchehab+samsung@kernel.org, paulmck@linux.ibm.com,
- Beniamin Bia <beniamin.bia@analog.com>
+Reply-To: walmart.b100263@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Add Beniamin Bia and Michael Hennerich as a maintainer for ADM1177 ADC.
+ CONTACT WALMART TRANSFER To pick up $5000 sent to you this morning
 
-Signed-off-by: Beniamin Bia <beniamin.bia@analog.com>
----
- MAINTAINERS | 9 +++++++++
- 1 file changed, 9 insertions(+)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 0fca3b055985..41a34d7a802c 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -962,6 +962,15 @@ W:	http://ez.analog.com/community/linux-device-drivers
- F:	drivers/iio/imu/adis16460.c
- F:	Documentation/devicetree/bindings/iio/imu/adi,adis16460.yaml
- 
-+ANALOG DEVICES INC ADM1177 DRIVER
-+M:	Beniamin Bia <beniamin.bia@analog.com>
-+M:	Michael Hennerich <Michael.Hennerich@analog.com>
-+L:	linux-iio@vger.kernel.org
-+W:	http://ez.analog.com/community/linux-device-drivers
-+S:	Supported
-+F:	drivers/iio/adc/adm1177.c
-+F:	Documentation/devicetree/bindings/iio/adc/adi,adm1177.yaml
-+
- ANALOG DEVICES INC ADP5061 DRIVER
- M:	Stefan Popa <stefan.popa@analog.com>
- L:	linux-pm@vger.kernel.org
--- 
-2.17.1
-
+Attn Dear Beneficiary.
+Happy to inform you,I have deposited your payment funds
+$10.500,000MillionUS DollarsWith Walmart international money
+transfers.
+Receive the Money with Walmart | MoneyGram service.
+Walmart partners with MoneyGram to allow customers
+easily receive money transfers abroad,
+Contact Walmart international money transfers office -Benin
+Receive your approval payment funds $10.500,000MillionUS Dollars
+HERE IS WALMART CONTACT INFORMATIONS.
+Contact person. Mrs. Mary Anderson,Dir. Walmart transfers-Benin
+Email: walmart.b100263@gmail.com
+Telephone. +229 68823234
+Text Her on this international phone line. (256) 284-4886
+Ask Mrs. Mary Anderson,Dir. Walmart transfers-Benin to send the transfer
+as i instructed.
+we agreed to keep sending the transfer to you $5000.00 daily.
+Until you received your total payment $10.500,000 from the office
+Once again,
+make sure you contact Mrs. Mary Anderson,Dir. Walmart transfers-Benin
+today including your infos.
+(1) Your  Full Name==============
+(2) house address=============
+(3) Your Phone Numbers=============
+Urgent to receive your transfer now without any further delay.
+Thanks
+MS. MARYANNA B. THOMASON
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
