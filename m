@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 80E32F85E2
-	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Nov 2019 02:12:15 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C4042F8624
+	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Nov 2019 02:28:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1EAE08636D;
-	Tue, 12 Nov 2019 01:12:13 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BB18E880C3;
+	Tue, 12 Nov 2019 01:28:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id K797f03rI14z; Tue, 12 Nov 2019 01:12:10 +0000 (UTC)
+	with ESMTP id yxLKfrCuQHd7; Tue, 12 Nov 2019 01:28:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5AEA485AD6;
-	Tue, 12 Nov 2019 01:12:08 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BDB4E877FF;
+	Tue, 12 Nov 2019 01:28:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 827C31BF2A6
- for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 01:12:06 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 62C2F1BF2A6
+ for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 01:28:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7F3CB857E2
- for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 01:12:06 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 31474877FF
+ for <devel@linuxdriverproject.org>; Tue, 12 Nov 2019 01:28:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aNvgTbr0a1X0 for <devel@linuxdriverproject.org>;
- Tue, 12 Nov 2019 01:12:05 +0000 (UTC)
+ with ESMTP id Kefw0Kr-HTRS for <devel@linuxdriverproject.org>;
+ Tue, 12 Nov 2019 01:28:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 367008560E
- for <devel@driverdev.osuosl.org>; Tue, 12 Nov 2019 01:12:05 +0000 (UTC)
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 69D7786E5B
+ for <devel@driverdev.osuosl.org>; Tue, 12 Nov 2019 01:28:07 +0000 (UTC)
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 11 Nov 2019 17:12:03 -0800
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 11 Nov 2019 17:28:06 -0800
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.68,294,1569308400"; 
- d="gz'50?scan'50,208,50";a="287376787"
+ d="gz'50?scan'50,208,50";a="252192845"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga001.jf.intel.com with ESMTP; 11 Nov 2019 17:12:01 -0800
+ by FMSMGA003.fm.intel.com with ESMTP; 11 Nov 2019 17:28:04 -0800
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1iUKiu-0003rt-He; Tue, 12 Nov 2019 09:12:00 +0800
-Date: Tue, 12 Nov 2019 09:11:38 +0800
+ id 1iUKyS-000HJX-Dg; Tue, 12 Nov 2019 09:28:04 +0800
+Date: Tue, 12 Nov 2019 09:27:31 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Wambui Karuga <wambui.karugax@gmail.com>
-Subject: [staging:staging-testing 156/337]
- drivers/staging/octeon/ethernet.c:177:21: error: dereferencing pointer to
- incomplete type 'struct cvmx_wqe'
-Message-ID: <201911120932.euiuwnLW%lkp@intel.com>
+Subject: [staging:staging-testing 157/337]
+ drivers/staging/octeon/ethernet.c:463:30: error: storage size of 'link_info'
+ isn't known
+Message-ID: <201911120930.vdaECUhO%lkp@intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="f5ujv4zxzp5swjp5"
+Content-Type: multipart/mixed; boundary="7prxtok4yygcervc"
 Content-Disposition: inline
 X-Patchwork-Hint: ignore
 User-Agent: NeoMutt/20170113 (1.7.2)
@@ -75,23 +75,19 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---f5ujv4zxzp5swjp5
+--7prxtok4yygcervc
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-Hi Wambui,
-
-FYI, the error/warning still remains.
-
 tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
 head:   08283d30744434d8f30d386622372e8f5b03bcf2
-commit: ef1fe6b7369a822d86a2fb8a688c721ae7f4eed3 [156/337] staging: octeon: remove typedef declaration for cvmx_wqe
+commit: 73aef0c9d2c6f746e8c84775b73ef374b7a2a4dc [157/337] staging: octeon: remove typedef declaration for cvmx_helper_link_info
 config: mips-cavium_octeon_defconfig (attached as .config)
 compiler: mips64-linux-gcc (GCC) 7.4.0
 reproduce:
         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
         chmod +x ~/bin/make.cross
-        git checkout ef1fe6b7369a822d86a2fb8a688c721ae7f4eed3
+        git checkout 73aef0c9d2c6f746e8c84775b73ef374b7a2a4dc
         # save the attached .config to linux build tree
         GCC_VERSION=7.4.0 make.cross ARCH=mips 
 
@@ -100,16 +96,95 @@ Reported-by: kbuild test robot <lkp@intel.com>
 
 All error/warnings (new ones prefixed by >>):
 
+   In file included from drivers/staging/octeon/ethernet-mem.c:12:0:
+>> drivers/staging/octeon/octeon-ethernet.h:94:12: warning: 'union cvmx_helper_link_info' declared inside parameter list will not be visible outside of this definition or declaration
+         union cvmx_helper_link_info li);
+               ^~~~~~~~~~~~~~~~~~~~~
+--
+   In file included from drivers/staging/octeon/ethernet.c:22:0:
+>> drivers/staging/octeon/octeon-ethernet.h:94:12: warning: 'union cvmx_helper_link_info' declared inside parameter list will not be visible outside of this definition or declaration
+         union cvmx_helper_link_info li);
+               ^~~~~~~~~~~~~~~~~~~~~
    drivers/staging/octeon/ethernet.c: In function 'cvm_oct_free_work':
->> drivers/staging/octeon/ethernet.c:177:21: error: dereferencing pointer to incomplete type 'struct cvmx_wqe'
+   drivers/staging/octeon/ethernet.c:177:21: error: dereferencing pointer to incomplete type 'struct cvmx_wqe'
      int segments = work->word2.s.bufs;
                         ^~
+   drivers/staging/octeon/ethernet.c: In function 'cvm_oct_common_open':
+>> drivers/staging/octeon/ethernet.c:463:30: error: storage size of 'link_info' isn't known
+     union cvmx_helper_link_info link_info;
+                                 ^~~~~~~~~
+   drivers/staging/octeon/ethernet.c:463:30: warning: unused variable 'link_info' [-Wunused-variable]
+   drivers/staging/octeon/ethernet.c: In function 'cvm_oct_link_poll':
+   drivers/staging/octeon/ethernet.c:499:30: error: storage size of 'link_info' isn't known
+     union cvmx_helper_link_info link_info;
+                                 ^~~~~~~~~
+>> drivers/staging/octeon/ethernet.c:516:29: error: type of formal parameter 2 is incomplete
+     cvm_oct_note_carrier(priv, link_info);
+                                ^~~~~~~~~
+   drivers/staging/octeon/ethernet.c:499:30: warning: unused variable 'link_info' [-Wunused-variable]
+     union cvmx_helper_link_info link_info;
+                                 ^~~~~~~~~
 --
->> drivers/staging/octeon/ethernet-rx.c:63:50: warning: 'struct cvmx_wqe' declared inside parameter list will not be visible outside of this definition or declaration
+   In file included from drivers/staging/octeon/ethernet-mdio.c:16:0:
+>> drivers/staging/octeon/octeon-ethernet.h:94:12: warning: 'union cvmx_helper_link_info' declared inside parameter list will not be visible outside of this definition or declaration
+         union cvmx_helper_link_info li);
+               ^~~~~~~~~~~~~~~~~~~~~
+>> drivers/staging/octeon/ethernet-mdio.c:68:12: warning: 'union cvmx_helper_link_info' declared inside parameter list will not be visible outside of this definition or declaration
+         union cvmx_helper_link_info li)
+               ^~~~~~~~~~~~~~~~~~~~~
+>> drivers/staging/octeon/ethernet-mdio.c:68:34: error: parameter 2 ('li') has incomplete type
+         union cvmx_helper_link_info li)
+                                     ^~
+   drivers/staging/octeon/ethernet-mdio.c: In function 'cvm_oct_adjust_link':
+>> drivers/staging/octeon/ethernet-mdio.c:84:30: error: storage size of 'link_info' isn't known
+     union cvmx_helper_link_info link_info;
+                                 ^~~~~~~~~
+>> drivers/staging/octeon/ethernet-mdio.c:101:30: error: type of formal parameter 2 is incomplete
+      cvm_oct_note_carrier(priv, link_info);
+                                 ^~~~~~~~~
+   drivers/staging/octeon/ethernet-mdio.c:84:30: warning: unused variable 'link_info' [-Wunused-variable]
+     union cvmx_helper_link_info link_info;
+                                 ^~~~~~~~~
+   drivers/staging/octeon/ethernet-mdio.c: In function 'cvm_oct_common_stop':
+   drivers/staging/octeon/ethernet-mdio.c:109:30: error: storage size of 'link_info' isn't known
+     union cvmx_helper_link_info link_info;
+                                 ^~~~~~~~~
+   drivers/staging/octeon/ethernet-mdio.c:127:30: error: type of formal parameter 2 is incomplete
+      cvm_oct_note_carrier(priv, link_info);
+                                 ^~~~~~~~~
+   drivers/staging/octeon/ethernet-mdio.c:109:30: warning: unused variable 'link_info' [-Wunused-variable]
+     union cvmx_helper_link_info link_info;
+                                 ^~~~~~~~~
+--
+   In file included from drivers/staging/octeon/ethernet-rgmii.c:15:0:
+>> drivers/staging/octeon/octeon-ethernet.h:94:12: warning: 'union cvmx_helper_link_info' declared inside parameter list will not be visible outside of this definition or declaration
+         union cvmx_helper_link_info li);
+               ^~~~~~~~~~~~~~~~~~~~~
+   drivers/staging/octeon/ethernet-rgmii.c: In function 'cvm_oct_check_preamble_errors':
+>> drivers/staging/octeon/ethernet-rgmii.c:56:30: error: storage size of 'link_info' isn't known
+     union cvmx_helper_link_info link_info;
+                                 ^~~~~~~~~
+   drivers/staging/octeon/ethernet-rgmii.c:56:30: warning: unused variable 'link_info' [-Wunused-variable]
+   drivers/staging/octeon/ethernet-rgmii.c: In function 'cvm_oct_rgmii_poll':
+   drivers/staging/octeon/ethernet-rgmii.c:106:30: error: storage size of 'link_info' isn't known
+     union cvmx_helper_link_info link_info;
+                                 ^~~~~~~~~
+>> drivers/staging/octeon/ethernet-rgmii.c:128:29: error: type of formal parameter 2 is incomplete
+     cvm_oct_note_carrier(priv, link_info);
+                                ^~~~~~~~~
+   drivers/staging/octeon/ethernet-rgmii.c:106:30: warning: unused variable 'link_info' [-Wunused-variable]
+     union cvmx_helper_link_info link_info;
+                                 ^~~~~~~~~
+--
+   In file included from drivers/staging/octeon/ethernet-rx.c:26:0:
+>> drivers/staging/octeon/octeon-ethernet.h:94:12: warning: 'union cvmx_helper_link_info' declared inside parameter list will not be visible outside of this definition or declaration
+         union cvmx_helper_link_info li);
+               ^~~~~~~~~~~~~~~~~~~~~
+   drivers/staging/octeon/ethernet-rx.c:63:50: warning: 'struct cvmx_wqe' declared inside parameter list will not be visible outside of this definition or declaration
     static inline int cvm_oct_check_rcv_error(struct cvmx_wqe *work)
                                                      ^~~~~~~~
    drivers/staging/octeon/ethernet-rx.c: In function 'cvm_oct_check_rcv_error':
->> drivers/staging/octeon/ethernet-rx.c:68:14: error: dereferencing pointer to incomplete type 'struct cvmx_wqe'
+   drivers/staging/octeon/ethernet-rx.c:68:14: error: dereferencing pointer to incomplete type 'struct cvmx_wqe'
       port = work->word0.pip.cn68xx.pknd;
                  ^~
    drivers/staging/octeon/ethernet-rx.c: At top level:
@@ -121,7 +196,7 @@ All error/warnings (new ones prefixed by >>):
      int segments = work->word2.s.bufs;
                         ^~
    drivers/staging/octeon/ethernet-rx.c: In function 'cvm_oct_poll':
->> drivers/staging/octeon/ethernet-rx.c:222:9: error: assignment from incompatible pointer type [-Werror=incompatible-pointer-types]
+   drivers/staging/octeon/ethernet-rx.c:222:9: error: assignment from incompatible pointer type [-Werror=incompatible-pointer-types]
        work = cvmx_pow_work_response_async(CVMX_SCR_SCRATCH);
             ^
    drivers/staging/octeon/ethernet-rx.c:224:9: error: assignment from incompatible pointer type [-Werror=incompatible-pointer-types]
@@ -130,13 +205,13 @@ All error/warnings (new ones prefixed by >>):
    drivers/staging/octeon/ethernet-rx.c:245:32: error: dereferencing pointer to incomplete type 'struct cvmx_wqe'
        (cvm_oct_get_buffer_ptr(work->packet_ptr) -
                                    ^~
->> drivers/staging/octeon/ethernet-rx.c:272:32: error: passing argument 1 of 'cvm_oct_check_rcv_error' from incompatible pointer type [-Werror=incompatible-pointer-types]
+   drivers/staging/octeon/ethernet-rx.c:272:32: error: passing argument 1 of 'cvm_oct_check_rcv_error' from incompatible pointer type [-Werror=incompatible-pointer-types]
        if (cvm_oct_check_rcv_error(work))
                                    ^~~~
    drivers/staging/octeon/ethernet-rx.c:63:19: note: expected 'struct cvmx_wqe *' but argument is of type 'struct cvmx_wqe *'
     static inline int cvm_oct_check_rcv_error(struct cvmx_wqe *work)
                       ^~~~~~~~~~~~~~~~~~~~~~~
->> drivers/staging/octeon/ethernet-rx.c:319:26: error: passing argument 1 of 'copy_segments_to_skb' from incompatible pointer type [-Werror=incompatible-pointer-types]
+   drivers/staging/octeon/ethernet-rx.c:319:26: error: passing argument 1 of 'copy_segments_to_skb' from incompatible pointer type [-Werror=incompatible-pointer-types]
         copy_segments_to_skb(work, skb);
                              ^~~~
    drivers/staging/octeon/ethernet-rx.c:138:13: note: expected 'struct cvmx_wqe *' but argument is of type 'struct cvmx_wqe *'
@@ -144,11 +219,15 @@ All error/warnings (new ones prefixed by >>):
                 ^~~~~~~~~~~~~~~~~~~~
    cc1: some warnings being treated as errors
 --
+   In file included from drivers/staging/octeon/ethernet-tx.c:25:0:
+>> drivers/staging/octeon/octeon-ethernet.h:94:12: warning: 'union cvmx_helper_link_info' declared inside parameter list will not be visible outside of this definition or declaration
+         union cvmx_helper_link_info li);
+               ^~~~~~~~~~~~~~~~~~~~~
    drivers/staging/octeon/ethernet-tx.c: In function 'cvm_oct_xmit_pow':
->> drivers/staging/octeon/ethernet-tx.c:562:7: error: dereferencing pointer to incomplete type 'struct cvmx_wqe'
+   drivers/staging/octeon/ethernet-tx.c:562:7: error: dereferencing pointer to incomplete type 'struct cvmx_wqe'
       work->word0.pip.cn38xx.hw_chksum = skb->csum;
           ^~
->> drivers/staging/octeon/ethernet-tx.c:564:20: error: passing argument 1 of 'cvmx_wqe_set_port' from incompatible pointer type [-Werror=incompatible-pointer-types]
+   drivers/staging/octeon/ethernet-tx.c:564:20: error: passing argument 1 of 'cvmx_wqe_set_port' from incompatible pointer type [-Werror=incompatible-pointer-types]
      cvmx_wqe_set_port(work, priv->port);
                        ^~~~
    In file included from arch/mips/include/asm/octeon/cvmx-helper.h:39:0,
@@ -157,7 +236,7 @@ All error/warnings (new ones prefixed by >>):
    arch/mips/include/asm/octeon/cvmx-wqe.h:610:20: note: expected 'cvmx_wqe_t * {aka struct <anonymous> *}' but argument is of type 'struct cvmx_wqe *'
     static inline void cvmx_wqe_set_port(cvmx_wqe_t *work, int port)
                        ^~~~~~~~~~~~~~~~~
->> drivers/staging/octeon/ethernet-tx.c:565:19: error: passing argument 1 of 'cvmx_wqe_set_qos' from incompatible pointer type [-Werror=incompatible-pointer-types]
+   drivers/staging/octeon/ethernet-tx.c:565:19: error: passing argument 1 of 'cvmx_wqe_set_qos' from incompatible pointer type [-Werror=incompatible-pointer-types]
      cvmx_wqe_set_qos(work, priv->port & 0x7);
                       ^~~~
    In file included from arch/mips/include/asm/octeon/cvmx-helper.h:39:0,
@@ -166,7 +245,7 @@ All error/warnings (new ones prefixed by >>):
    arch/mips/include/asm/octeon/cvmx-wqe.h:650:20: note: expected 'cvmx_wqe_t * {aka struct <anonymous> *}' but argument is of type 'struct cvmx_wqe *'
     static inline void cvmx_wqe_set_qos(cvmx_wqe_t *work, int qos)
                        ^~~~~~~~~~~~~~~~
->> drivers/staging/octeon/ethernet-tx.c:566:19: error: passing argument 1 of 'cvmx_wqe_set_grp' from incompatible pointer type [-Werror=incompatible-pointer-types]
+   drivers/staging/octeon/ethernet-tx.c:566:19: error: passing argument 1 of 'cvmx_wqe_set_grp' from incompatible pointer type [-Werror=incompatible-pointer-types]
      cvmx_wqe_set_grp(work, pow_send_group);
                       ^~~~
    In file included from arch/mips/include/asm/octeon/cvmx-helper.h:39:0,
@@ -175,7 +254,7 @@ All error/warnings (new ones prefixed by >>):
    arch/mips/include/asm/octeon/cvmx-wqe.h:630:20: note: expected 'cvmx_wqe_t * {aka struct <anonymous> *}' but argument is of type 'struct cvmx_wqe *'
     static inline void cvmx_wqe_set_grp(cvmx_wqe_t *work, int grp)
                        ^~~~~~~~~~~~~~~~
->> drivers/staging/octeon/ethernet-tx.c:649:26: error: passing argument 1 of 'cvmx_wqe_get_qos' from incompatible pointer type [-Werror=incompatible-pointer-types]
+   drivers/staging/octeon/ethernet-tx.c:649:26: error: passing argument 1 of 'cvmx_wqe_get_qos' from incompatible pointer type [-Werror=incompatible-pointer-types]
             cvmx_wqe_get_qos(work), cvmx_wqe_get_grp(work));
                              ^~~~
    In file included from arch/mips/include/asm/octeon/cvmx-helper.h:39:0,
@@ -184,7 +263,7 @@ All error/warnings (new ones prefixed by >>):
    arch/mips/include/asm/octeon/cvmx-wqe.h:638:19: note: expected 'cvmx_wqe_t * {aka struct <anonymous> *}' but argument is of type 'struct cvmx_wqe *'
     static inline int cvmx_wqe_get_qos(cvmx_wqe_t *work)
                       ^~~~~~~~~~~~~~~~
->> drivers/staging/octeon/ethernet-tx.c:649:50: error: passing argument 1 of 'cvmx_wqe_get_grp' from incompatible pointer type [-Werror=incompatible-pointer-types]
+   drivers/staging/octeon/ethernet-tx.c:649:50: error: passing argument 1 of 'cvmx_wqe_get_grp' from incompatible pointer type [-Werror=incompatible-pointer-types]
             cvmx_wqe_get_qos(work), cvmx_wqe_get_grp(work));
                                                      ^~~~
    In file included from arch/mips/include/asm/octeon/cvmx-helper.h:39:0,
@@ -193,7 +272,7 @@ All error/warnings (new ones prefixed by >>):
    arch/mips/include/asm/octeon/cvmx-wqe.h:618:19: note: expected 'cvmx_wqe_t * {aka struct <anonymous> *}' but argument is of type 'struct cvmx_wqe *'
     static inline int cvmx_wqe_get_grp(cvmx_wqe_t *work)
                       ^~~~~~~~~~~~~~~~
->> drivers/staging/octeon/ethernet-tx.c:648:23: error: passing argument 1 of 'cvmx_pow_work_submit' from incompatible pointer type [-Werror=incompatible-pointer-types]
+   drivers/staging/octeon/ethernet-tx.c:648:23: error: passing argument 1 of 'cvmx_pow_work_submit' from incompatible pointer type [-Werror=incompatible-pointer-types]
      cvmx_pow_work_submit(work, work->word1.tag, work->word1.tag_type,
                           ^~~~
    In file included from arch/mips/include/asm/octeon/cvmx-pko.h:62:0,
@@ -204,55 +283,83 @@ All error/warnings (new ones prefixed by >>):
                        ^~~~~~~~~~~~~~~~~~~~
    cc1: some warnings being treated as errors
 
-vim +177 drivers/staging/octeon/ethernet.c
+vim +463 drivers/staging/octeon/ethernet.c
 
-80ff0fd3ab6451 David Daney   2009-05-05  165  
-80ff0fd3ab6451 David Daney   2009-05-05  166  /**
-ec977c5b473e29 David Daney   2010-02-16  167   * cvm_oct_free_work- Free a work queue entry
-ec977c5b473e29 David Daney   2010-02-16  168   *
-ec977c5b473e29 David Daney   2010-02-16  169   * @work_queue_entry: Work queue entry to free
-80ff0fd3ab6451 David Daney   2009-05-05  170   *
-80ff0fd3ab6451 David Daney   2009-05-05  171   * Returns Zero on success, Negative on failure.
-80ff0fd3ab6451 David Daney   2009-05-05  172   */
-80ff0fd3ab6451 David Daney   2009-05-05  173  int cvm_oct_free_work(void *work_queue_entry)
-80ff0fd3ab6451 David Daney   2009-05-05  174  {
-ef1fe6b7369a82 Wambui Karuga 2019-10-12  175  	struct cvmx_wqe *work = work_queue_entry;
-80ff0fd3ab6451 David Daney   2009-05-05  176  
-80ff0fd3ab6451 David Daney   2009-05-05 @177  	int segments = work->word2.s.bufs;
-80ff0fd3ab6451 David Daney   2009-05-05  178  	union cvmx_buf_ptr segment_ptr = work->packet_ptr;
-80ff0fd3ab6451 David Daney   2009-05-05  179  
-80ff0fd3ab6451 David Daney   2009-05-05  180  	while (segments--) {
-80ff0fd3ab6451 David Daney   2009-05-05  181  		union cvmx_buf_ptr next_ptr = *(union cvmx_buf_ptr *)
-80ff0fd3ab6451 David Daney   2009-05-05  182  			cvmx_phys_to_ptr(segment_ptr.s.addr - 8);
-80ff0fd3ab6451 David Daney   2009-05-05  183  		if (unlikely(!segment_ptr.s.i))
-80ff0fd3ab6451 David Daney   2009-05-05  184  			cvmx_fpa_free(cvm_oct_get_buffer_ptr(segment_ptr),
-80ff0fd3ab6451 David Daney   2009-05-05  185  				      segment_ptr.s.pool,
-c93b0e75a819e6 Aaro Koskinen 2015-04-04  186  				      CVMX_FPA_PACKET_POOL_SIZE / 128);
-80ff0fd3ab6451 David Daney   2009-05-05  187  		segment_ptr = next_ptr;
-80ff0fd3ab6451 David Daney   2009-05-05  188  	}
-c93b0e75a819e6 Aaro Koskinen 2015-04-04  189  	cvmx_fpa_free(work, CVMX_FPA_WQE_POOL, 1);
-80ff0fd3ab6451 David Daney   2009-05-05  190  
-80ff0fd3ab6451 David Daney   2009-05-05  191  	return 0;
-80ff0fd3ab6451 David Daney   2009-05-05  192  }
-80ff0fd3ab6451 David Daney   2009-05-05  193  EXPORT_SYMBOL(cvm_oct_free_work);
-80ff0fd3ab6451 David Daney   2009-05-05  194  
-
-:::::: The code at line 177 was first introduced by commit
-:::::: 80ff0fd3ab6451407a20c19b80c1643c4a6d6434 Staging: Add octeon-ethernet driver files.
-
-:::::: TO: David Daney <ddaney@caviumnetworks.com>
-:::::: CC: Ralf Baechle <ralf@linux-mips.org>
+   455	
+   456	int cvm_oct_common_open(struct net_device *dev,
+   457				void (*link_poll)(struct net_device *))
+   458	{
+   459		union cvmx_gmxx_prtx_cfg gmx_cfg;
+   460		struct octeon_ethernet *priv = netdev_priv(dev);
+   461		int interface = INTERFACE(priv->port);
+   462		int index = INDEX(priv->port);
+ > 463		union cvmx_helper_link_info link_info;
+   464		int rv;
+   465	
+   466		rv = cvm_oct_phy_setup_device(dev);
+   467		if (rv)
+   468			return rv;
+   469	
+   470		gmx_cfg.u64 = cvmx_read_csr(CVMX_GMXX_PRTX_CFG(index, interface));
+   471		gmx_cfg.s.en = 1;
+   472		if (octeon_has_feature(OCTEON_FEATURE_PKND))
+   473			gmx_cfg.s.pknd = priv->port;
+   474		cvmx_write_csr(CVMX_GMXX_PRTX_CFG(index, interface), gmx_cfg.u64);
+   475	
+   476		if (octeon_is_simulation())
+   477			return 0;
+   478	
+   479		if (dev->phydev) {
+   480			int r = phy_read_status(dev->phydev);
+   481	
+   482			if (r == 0 && dev->phydev->link == 0)
+   483				netif_carrier_off(dev);
+   484			cvm_oct_adjust_link(dev);
+   485		} else {
+   486			link_info = cvmx_helper_link_get(priv->port);
+   487			if (!link_info.s.link_up)
+   488				netif_carrier_off(dev);
+   489			priv->poll = link_poll;
+   490			link_poll(dev);
+   491		}
+   492	
+   493		return 0;
+   494	}
+   495	
+   496	void cvm_oct_link_poll(struct net_device *dev)
+   497	{
+   498		struct octeon_ethernet *priv = netdev_priv(dev);
+   499		union cvmx_helper_link_info link_info;
+   500	
+   501		link_info = cvmx_helper_link_get(priv->port);
+   502		if (link_info.u64 == priv->link_info)
+   503			return;
+   504	
+   505		if (cvmx_helper_link_set(priv->port, link_info))
+   506			link_info.u64 = priv->link_info;
+   507		else
+   508			priv->link_info = link_info.u64;
+   509	
+   510		if (link_info.s.link_up) {
+   511			if (!netif_carrier_ok(dev))
+   512				netif_carrier_on(dev);
+   513		} else if (netif_carrier_ok(dev)) {
+   514			netif_carrier_off(dev);
+   515		}
+ > 516		cvm_oct_note_carrier(priv, link_info);
+   517	}
+   518	
 
 ---
 0-DAY kernel test infrastructure                 Open Source Technology Center
 https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org Intel Corporation
 
---f5ujv4zxzp5swjp5
+--7prxtok4yygcervc
 Content-Type: application/gzip
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICIMFyl0AAy5jb25maWcAlDxdb+O2su/nVxhb4KLF6baJk81u70UeKIqyWUuilqRsJy+C
+H4sICKQJyl0AAy5jb25maWcAlDxdb+O2su/nVxhb4KLF6baJk81u70UeKIqyWUuilqRsJy+C
 m3i3QRMnsJ327L8/M9QXKZHOXuCcZsUZUuRwvmfkH/71w4S8Hp+fNseHu83j47fJ1+1uu98c
 t/eTLw+P2/+bxGKSCz1hMde/AHL6sHv9z69PDy+HyYdfLn85e7+/u5gstvvd9nFCn3dfHr6+
 wuyH592/fvgX/O8HGHx6gYX2/zvBSVeX7x9xhfdf7+4mP84o/WnyEZcBVCryhM8qSiuuKoBc
@@ -586,7 +693,7 @@ cXu2kEv1Qq7CmV2vyUV5Xjt6S9+E1eSmDMNJO3pNcnHqWG+pXPuS7TtpX730Ecp30wiJIGHk
 lhfxaRIzWzhgcFqHkTcVSIB4L49u6zvOzsNdHEQ8YXAFitNCo5fRvE6HaNBCIuHFbl0g/x9z
 hUnqOCUBAA==
 
---f5ujv4zxzp5swjp5
+--7prxtok4yygcervc
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -597,5 +704,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---f5ujv4zxzp5swjp5--
-
+--7prxtok4yygcervc--
