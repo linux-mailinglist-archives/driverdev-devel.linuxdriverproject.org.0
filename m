@@ -1,70 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 63FC4FC9D6
-	for <lists+driverdev-devel@lfdr.de>; Thu, 14 Nov 2019 16:23:42 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id DF1ECFC9D7
+	for <lists+driverdev-devel@lfdr.de>; Thu, 14 Nov 2019 16:24:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 658F9253A7;
-	Thu, 14 Nov 2019 15:23:40 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 52F9689DF4;
+	Thu, 14 Nov 2019 15:24:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ef8VDVJSsf-P; Thu, 14 Nov 2019 15:23:40 +0000 (UTC)
+	with ESMTP id lHUPMu3u2Ocp; Thu, 14 Nov 2019 15:24:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 08BA22420F;
-	Thu, 14 Nov 2019 15:23:39 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id E7AEA89A22;
+	Thu, 14 Nov 2019 15:24:03 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0D2641BF97F
- for <devel@linuxdriverproject.org>; Thu, 14 Nov 2019 15:23:35 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 553351BF400
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 14 Nov 2019 15:24:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 050A688D1D
- for <devel@linuxdriverproject.org>; Thu, 14 Nov 2019 15:23:35 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 51F0789976
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 14 Nov 2019 15:24:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mCHpd+4L1ykI for <devel@linuxdriverproject.org>;
- Thu, 14 Nov 2019 15:23:33 +0000 (UTC)
+ with ESMTP id AE7CcehogymX
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 14 Nov 2019 15:24:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f196.google.com (mail-il1-f196.google.com
- [209.85.166.196])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B8FF384FA4
- for <devel@linuxdriverproject.org>; Thu, 14 Nov 2019 15:23:33 +0000 (UTC)
-Received: by mail-il1-f196.google.com with SMTP id d83so5661789ilk.7
- for <devel@linuxdriverproject.org>; Thu, 14 Nov 2019 07:23:33 -0800 (PST)
+Received: from mail-il1-f193.google.com (mail-il1-f193.google.com
+ [209.85.166.193])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 325E789969
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 14 Nov 2019 15:24:00 +0000 (UTC)
+Received: by mail-il1-f193.google.com with SMTP id r9so5670984ilq.10
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 14 Nov 2019 07:24:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:reply-to:from:date:message-id:subject:to;
  bh=VgHib5p25couFj1QUfpO3Tvrh1VTOEUNoZKSgR4JQrY=;
- b=O9fezp1E8yTMEagmnrQ0SnNuk0dSOJvoB8vtEeM5aJGip8LloZpsqKyA47ZjD8TlRE
- Rf5I/ah9te7fa6lfhGDTt5hWM+v5IuC0EpNBdfk4Guf5ZzZXV/LwMk75SzgeKNN6DXPG
- yJUvrN6bOB9Q3zpLw6dCfhahSSxS+J7Tyk2SdNQBE5yh+fADtMElyS49s4Pzxe7eQGh8
- a5bfiIQldf3JZFO9enQG98V0jE5m+VULGlaXSHm6y4ILI38gqaB8Nsz7Wcrmtgv0qBe4
- 0wl36gae/O9w6qSsrN7AZNyUTvhyzuTW4cw//YbCGVsVXxaLFQNFW+4EQujk7/7P9tGU
- S+sA==
+ b=J4V+wV7xFTMgbKenszqDXf54rQ8LJ0kAy8W9Cd5Bkvp5pQKyVF1Qa4W0cVa2ne1E8b
+ T7hXyUIjYv5VPuAFRCwaVS6yFX2guhFBLeeR3diumXpQ6IPaY6tjjgkfOllCgE8gV9Nx
+ XwLTb2fXBiW4nzH7Dw2F7ceZk4TBLfZYKfhUXT3+h+g8pUFhknGz9/JVEo1zmCNZdl0z
+ D3FWn6CvD1mx8A9Hd+8kSEFEaZbhx4PmGuMRQfXwXdEBJCw634+YywL+ujFhVo8lJU5q
+ Pu9YdL7MB/KJI6HOldenOYZMv08Xdn9SUj7bSbpW9q6W4MzMceHi7PcaGodAmkMMwyYb
+ jV5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:reply-to:from:date:message-id
  :subject:to;
  bh=VgHib5p25couFj1QUfpO3Tvrh1VTOEUNoZKSgR4JQrY=;
- b=oDeWssfhL13p8i1N34/uwo6FjPpnJ50w2r0NRFlX7FWCSACwPgFqmqSh+q9N59/2nS
- T8aDk3Ludm2zy6PJ/AC0loyR2bYFgvMnnMN48lBOd855hkbs8cd9xFDz4Ldert/dKxvz
- eNC4mu8XRDgCVAbKYy64+ls7o/2HR94indc8rAmLX3KI3N1d4rPsHHojOSIm1+7ZLhhg
- A5DLm8HymJCWZnhOORO0L4ntG4KcN7nClCxuwQ6b7Ykhe7Oc0vHG/vXoZuoVp9R3SAdD
- PxxU7YxIN0D0iJSqc2cBMILVrl67pAclK8uIXatq3TushoNH/gPfosW9j+kLSnJHfkwS
- AeBg==
-X-Gm-Message-State: APjAAAXNMG8N4pfhrQhakWuZmJO0WSOwzRK2wxm1nJud9Kl/Vv7tmULD
- hNK+0yibmlfWQZQB9xqiG5vuFM4uEvkx+axWOXk=
-X-Google-Smtp-Source: APXvYqyapFrgC/HH7TvEKNq8KtnA2Ufak0IrRajioFtO1m6SuXLPEOZ5c7EyBMjokZqKOp61F0vXRdQDIdH9BPAlLYc=
-X-Received: by 2002:a92:c152:: with SMTP id b18mr10721426ilh.71.1573745012954; 
- Thu, 14 Nov 2019 07:23:32 -0800 (PST)
+ b=tRhajBFw+kBUZXl4v6Sa6xdlAA/w3tlTyaRZY0mwObiFRoGlDX+0/C500UePNJph7f
+ xoYzBIYFTq9En6oaoPz+4qGE4irTbKF4HTQAyp16glsFu+XS3NpSS5wBNmhMFk+wUfZh
+ mPPqH9ImmNU0KS85A0PB9HT7vOuyvu43up3l1kkRMc+Jy4/sMayHE3JUp42ZgPbxmXtv
+ T7F2Bb0AhzdYUvpWNCg30h9ndwgKneSTLE9p6Vx8jme2x90dgOzxQs9sZ/MUpdYteAWR
+ ZCh+VSdfO1aqMpR6TpMnaUEcqM/0kf31QON2cC9hQnyFOHkTNc4A1ZK5VUoKnwRH6kNv
+ iqrA==
+X-Gm-Message-State: APjAAAVVLB4ZaLBVJzlxmv6RrBJDuZk2ZR8FJcCWwxyvMO84mfOJ5SEV
+ qURbZKugUVGwVNM8O1E8/r0/3JqqHlKf2AvcDoU=
+X-Google-Smtp-Source: APXvYqwAe+ZnbVCncqvi5+6agVER8/LbPoN4YpqcVQrJ/DqiYMMi8I55I1ak3/IDPGO/EYlN1A7MnDlWCbypRXwfYYM=
+X-Received: by 2002:a92:5ac1:: with SMTP id b62mr11384316ilg.46.1573745039400; 
+ Thu, 14 Nov 2019 07:23:59 -0800 (PST)
 MIME-Version: 1.0
-Received: by 2002:a92:850a:0:0:0:0:0 with HTTP; Thu, 14 Nov 2019 07:23:32
+Received: by 2002:a92:850a:0:0:0:0:0 with HTTP; Thu, 14 Nov 2019 07:23:57
  -0800 (PST)
 From: "Mr. Abdoulaye DIALLO" <mr.seydououmar@gmail.com>
-Date: Thu, 14 Nov 2019 17:23:32 +0200
-Message-ID: <CAJQOeY+DOokDK_gwt85=84AK4JiaJjAtD7B9WosQYkHz=VBDmw@mail.gmail.com>
+Date: Thu, 14 Nov 2019 17:23:57 +0200
+Message-ID: <CAJQOeY+KAozq-oURiZr4KhKzzSr=cmhGxm7qNMkeXmAdiR+gpg@mail.gmail.com>
 Subject: I look forward to hear from you.
 To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
