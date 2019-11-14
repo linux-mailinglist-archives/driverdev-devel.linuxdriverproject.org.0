@@ -1,51 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 987B3FC647
-	for <lists+driverdev-devel@lfdr.de>; Thu, 14 Nov 2019 13:26:58 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id AB8C8FC621
+	for <lists+driverdev-devel@lfdr.de>; Thu, 14 Nov 2019 13:16:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5F3EC89E6C;
-	Thu, 14 Nov 2019 12:26:56 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3F07188324;
+	Thu, 14 Nov 2019 12:16:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id D+mqLn-P6A-Z; Thu, 14 Nov 2019 12:26:56 +0000 (UTC)
+	with ESMTP id Uyp0w1C9dhWt; Thu, 14 Nov 2019 12:16:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5EB1A89DFE;
-	Thu, 14 Nov 2019 12:26:55 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 618DB88346;
+	Thu, 14 Nov 2019 12:16:28 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B351F1BF5A3
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 14 Nov 2019 12:26:52 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 4A2F11BF358
+ for <devel@linuxdriverproject.org>; Thu, 14 Nov 2019 12:16:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id ABD8089DFE
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 14 Nov 2019 12:26:52 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 44E41891CB
+ for <devel@linuxdriverproject.org>; Thu, 14 Nov 2019 12:16:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VYY9cq0S9XYZ
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 14 Nov 2019 12:26:52 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+ with ESMTP id Nvs9r98fk8NT for <devel@linuxdriverproject.org>;
+ Thu, 14 Nov 2019 12:16:26 +0000 (UTC)
+X-Greylist: delayed 00:44:18 by SQLgrey-1.7.6
 Received: from mxz.fitenet.ne.jp (mxz.fitenet.ne.jp [210.196.122.10])
- by hemlock.osuosl.org (Postfix) with ESMTPS id BA0FE89DF5
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 14 Nov 2019 12:26:51 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 53693891BB
+ for <devel@linuxdriverproject.org>; Thu, 14 Nov 2019 12:16:26 +0000 (UTC)
 Received: from [10.255.117.117] (31-4-159-65.red-acceso.airtel.net
  [31.4.159.65] (may be forged)) (authenticated bits=0)
- by mxz.fitenet.ne.jp (8.14.4/8.14.4) with ESMTP id xAEAJ2cN027096
- for <driverdev-devel@linuxdriverproject.org>; Thu, 14 Nov 2019 20:30:36 +0900
-Message-Id: <201911141130.xAEAJ2cN027096@mxz.fitenet.ne.jp>
+ by mxz.fitenet.ne.jp (8.14.4/8.14.4) with ESMTP id xAEAJ2cO027096
+ for <devel@linuxdriverproject.org>; Thu, 14 Nov 2019 20:31:31 +0900
+Message-Id: <201911141131.xAEAJ2cO027096@mxz.fitenet.ne.jp>
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: RE:
-To: driverdev-devel@linuxdriverproject.org
+To: devel@linuxdriverproject.org
 From: "SGV INVESTMENT" <sgvinvest.group@gmail.com>
-Date: Thu, 14 Nov 2019 12:30:16 +0100
+Date: Thu, 14 Nov 2019 12:30:30 +0100
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
