@@ -2,128 +2,92 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1724AFDD5F
-	for <lists+driverdev-devel@lfdr.de>; Fri, 15 Nov 2019 13:23:29 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 663E7FDE88
+	for <lists+driverdev-devel@lfdr.de>; Fri, 15 Nov 2019 14:04:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 153BA22F05;
-	Fri, 15 Nov 2019 12:23:27 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 371E624E91;
+	Fri, 15 Nov 2019 13:04:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2jR6WLqTYY6Y; Fri, 15 Nov 2019 12:23:26 +0000 (UTC)
+	with ESMTP id twIi649QjO3x; Fri, 15 Nov 2019 13:04:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id DB0B4204D2;
-	Fri, 15 Nov 2019 12:23:25 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0B6D020469;
+	Fri, 15 Nov 2019 13:04:26 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D59021BF34D
- for <devel@linuxdriverproject.org>; Fri, 15 Nov 2019 12:23:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A36691BF34D
+ for <devel@linuxdriverproject.org>; Fri, 15 Nov 2019 13:04:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id D1BD588B6A
- for <devel@linuxdriverproject.org>; Fri, 15 Nov 2019 12:23:21 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 97951889DE
+ for <devel@linuxdriverproject.org>; Fri, 15 Nov 2019 13:04:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XesGDlfi5y7f for <devel@linuxdriverproject.org>;
- Fri, 15 Nov 2019 12:23:21 +0000 (UTC)
+ with ESMTP id BbUEEWSd9f4H for <devel@linuxdriverproject.org>;
+ Fri, 15 Nov 2019 13:04:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx0a-00128a01.pphosted.com (mx0a-00128a01.pphosted.com
- [148.163.135.77])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 15F0088B69
- for <devel@driverdev.osuosl.org>; Fri, 15 Nov 2019 12:23:20 +0000 (UTC)
-Received: from pps.filterd (m0167088.ppops.net [127.0.0.1])
- by mx0a-00128a01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- xAFCDTqU015446; Fri, 15 Nov 2019 07:23:16 -0500
-Received: from nam01-sn1-obe.outbound.protection.outlook.com
- (mail-sn1nam01lp2056.outbound.protection.outlook.com [104.47.32.56])
- by mx0a-00128a01.pphosted.com with ESMTP id 2w7prkhfx3-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 15 Nov 2019 07:23:16 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=i819LWIKYNeHJ1c0I/R0Du6DinKRK+IvBmgIgaphyXQVv/15z3OfDx08N+K4p1kYpacb1KBPQtil/Q2AZ5aQdU6KZoJ4KpK7/Yte5bb5EmVlFGxweZlyi01xzJ65DJeGlizq7LjEDZO/y65Eotmp2r6h+bj9yJy7ion8UaDOyVAI0j8NLGVFo2sDiQHZv8nLXBxBHQxzfbWqcg1iJ/pf3hQI5rCOliptb2kwGfQq91p9N2KaoRLWYf/c6002bf3ffbN5dhFksWRDeCRN7WKN5AhUZPfTCxQyechogNtou6OEuT1khA+6qd0OAdZQgMDX0ouMaziWSPWhH1eqpmze6w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=WzzAsV+iER8v9btEd2lE1Gt713KOHX0TsX7HabVHVck=;
- b=NdVOPMLdrSaK8EYfe91J5unO6jU8UDvAD/6kPpaIGhHgS9xGGvFI8MYsHZvhAM42MGxA7a5z8/EDzp3XudMgo167xANVJRlZu/V+ulf4a/rgByL1X70fGgVXcmGLQVHBXrJVDuVgUbjKdTz/YZutoWNoXyilT37RhPhQQ30nd0IVF7Vzk9b/WObBUVFuN6MXRp0722l5rjtFlRhHgUruCNztzgU1GlaU1Llq5gLsEN42R3EiCOb9p3hTKIIbVzf6OhVVLbS2YpZiS1+Xo2u78S9y1uktW12obW9lex5ODoWFxIR+Io2jteaoT6z3GVmo+JBKpDK2+H0wM9cx1zng6g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 137.71.25.55) smtp.rcpttodomain=linuxfoundation.org smtp.mailfrom=analog.com; 
- dmarc=bestguesspass action=none header.from=analog.com; dkim=none (message
- not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=analog.onmicrosoft.com; s=selector2-analog-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=WzzAsV+iER8v9btEd2lE1Gt713KOHX0TsX7HabVHVck=;
- b=4qzn64M+rQLK2pxYcQVkiL3wi/z20+RUmpvoumVavYG/WwGGioV0NgTHn7RhFk9mHCHPweDet2kYPLUNa0B5BNLlB5DQuTV1VWLoRL1RiY3FqLCdsKB8WD7xz5tU37X9G2Wl3qfPG5XbzCjvN6DJqs9Ubyo3tZvcDUlIfJv3XQ0=
-Received: from BN6PR03CA0084.namprd03.prod.outlook.com (2603:10b6:405:6f::22)
- by MWHPR03MB3005.namprd03.prod.outlook.com (2603:10b6:300:11d::22)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2430.24; Fri, 15 Nov
- 2019 12:23:12 +0000
-Received: from BL2NAM02FT058.eop-nam02.prod.protection.outlook.com
- (2a01:111:f400:7e46::203) by BN6PR03CA0084.outlook.office365.com
- (2603:10b6:405:6f::22) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2451.23 via Frontend
- Transport; Fri, 15 Nov 2019 12:23:11 +0000
-Received-SPF: Pass (protection.outlook.com: domain of analog.com designates
- 137.71.25.55 as permitted sender) receiver=protection.outlook.com;
- client-ip=137.71.25.55; helo=nwd2mta1.analog.com;
-Received: from nwd2mta1.analog.com (137.71.25.55) by
- BL2NAM02FT058.mail.protection.outlook.com (10.152.76.176) with Microsoft SMTP
- Server (version=TLS1_0, cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.2451.23
- via Frontend Transport; Fri, 15 Nov 2019 12:23:11 +0000
-Received: from NWD2HUBCAS7.ad.analog.com (nwd2hubcas7.ad.analog.com
- [10.64.69.107])
- by nwd2mta1.analog.com (8.13.8/8.13.8) with ESMTP id xAFCNBTP031812
- (version=TLSv1/SSLv3 cipher=AES256-SHA bits=256 verify=OK);
- Fri, 15 Nov 2019 04:23:11 -0800
-Received: from ben-Latitude-E6540.ad.analog.com (10.48.65.231) by
- NWD2HUBCAS7.ad.analog.com (10.64.69.107) with Microsoft SMTP Server id
- 14.3.408.0; Fri, 15 Nov 2019 07:23:11 -0500
-From: Beniamin Bia <beniamin.bia@analog.com>
-To: <jic23@kernel.org>
-Subject: [PATCH v4 4/4] MAINTAINERS: add entry for AD7091R5 driver
-Date: Fri, 15 Nov 2019 14:23:16 +0200
-Message-ID: <20191115122316.20893-4-beniamin.bia@analog.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20191115122316.20893-1-beniamin.bia@analog.com>
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D95EB88659
+ for <devel@driverdev.osuosl.org>; Fri, 15 Nov 2019 13:04:22 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id xAFCx9Ue167692;
+ Fri, 15 Nov 2019 13:04:16 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=NFSSVbjhEqElsrA73XhmCVdsI7Nss0hsHyVS7FwP2+Q=;
+ b=YQVJAjOD8u/DCdzbTWgjB6kB+86XbwfNvVG7HB4og2jcOuYIoorw9Q0nkqXYcYRYisSN
+ aepKCWa+8+eYyaAJ3vCuvuCAxqGNJYt/T/V07mfYHzTeQo0Gy/ggjPSc0Vc98o2b30ul
+ wtXquJGr3i3w8r/zQiIYaXbhGct+RBGyxizIoCLdpAGfNU8GwaV4T7UQQmWSLq6/hBwU
+ oP2OyO7QXXejzW08cEid5+zGbKT/76G/p51uxVcWg5xjdIWdMshHO9vtZzBKNhgff9a4
+ Vam6PKjXqF83Nz2Y/U7zL6RKBmqe40HuI9EQLO5rpaip/GGr3Qnm3sGc1oSR8u82aGyS mw== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by aserp2120.oracle.com with ESMTP id 2w9gxpk4b3-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 15 Nov 2019 13:04:16 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id xAFCx7p0167338;
+ Fri, 15 Nov 2019 13:04:15 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by userp3030.oracle.com with ESMTP id 2w9h14fam4-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 15 Nov 2019 13:04:15 +0000
+Received: from abhmp0009.oracle.com (abhmp0009.oracle.com [141.146.116.15])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id xAFD48Hx001873;
+ Fri, 15 Nov 2019 13:04:08 GMT
+Received: from kadam.lan (/129.205.23.165)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Fri, 15 Nov 2019 05:04:08 -0800
+Date: Fri, 15 Nov 2019 16:03:59 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Beniamin Bia <beniamin.bia@analog.com>
+Subject: Re: [PATCH v4 2/4] iio: adc: ad7091r5: Add scale and external VREF
+ support
+Message-ID: <20191115130359.GE19101@kadam.lan>
 References: <20191115122316.20893-1-beniamin.bia@analog.com>
+ <20191115122316.20893-2-beniamin.bia@analog.com>
 MIME-Version: 1.0
-X-ADIRoutedOnPrem: True
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:137.71.25.55; IPV:NLI; CTRY:US; EFV:NLI;
- SFV:NSPM;
- SFS:(10009020)(39860400002)(136003)(376002)(346002)(396003)(189003)(199004)(476003)(5660300002)(44832011)(50466002)(305945005)(7636002)(966005)(356004)(478600001)(8936002)(2616005)(47776003)(246002)(2351001)(126002)(6916009)(486006)(70586007)(50226002)(76176011)(4326008)(7696005)(51416003)(4744005)(70206006)(107886003)(1076003)(86362001)(106002)(8676002)(36756003)(48376002)(26005)(186003)(7416002)(2906002)(16586007)(426003)(6306002)(316002)(446003)(11346002)(54906003)(336012);
- DIR:OUT; SFP:1101; SCL:1; SRVR:MWHPR03MB3005; H:nwd2mta1.analog.com; FPR:;
- SPF:Pass; LANG:en; PTR:nwd2mail10.analog.com; MX:1; A:1; 
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: b04df5da-a437-46b9-c78b-08d769c694ee
-X-MS-TrafficTypeDiagnostic: MWHPR03MB3005:
-X-MS-Exchange-PUrlCount: 1
-X-Microsoft-Antispam-PRVS: <MWHPR03MB3005F2077531697B228BD967F0700@MWHPR03MB3005.namprd03.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:1303;
-X-Forefront-PRVS: 02229A4115
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: m25TT8G0jt9REbEOPI61CWb2AadSv870DezOaeRbA0yY7FmY+mgu3AroMd8lnfX/0yE4gdiiuErI9WKqy5tKDWN+srvBvCjXGolARCdgGswc99PBXvj5ttfSA3OSCZ1ZPya4Pa6rzHuiZOyoEQvQ43yAlGSfJCdLQ7/x7iSZoe3AAHP3culWSUTNdxuHc1A6SBzM/n2StvTPcafNgUJUH6jT8SJOjAv5l8cSvqZInoHDaV2siiiMUpoGistGs3JLniF5Mxh3wbUHkdQPeiU8tnZXqtrxvMjr/NzOnpsFkVltUw8A9RrcViC5HzYRb//oZbRm5jq7Z0090/Mmmi9RDfXfBmm/A1kILBfTDLydGhACVcUeA1HSgCK6kOEIDxyBldKxJDQJ/H9QntOKzZa9+XrbOiupC7kyTztBXjjJb4TTvA4niT9P54d6VH1LG4xKTYuOItdbaL5VWK7w0bn7dWIh1/KNrgPnBODoxxcIy3A=
-X-OriginatorOrg: analog.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Nov 2019 12:23:11.8761 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: b04df5da-a437-46b9-c78b-08d769c694ee
-X-MS-Exchange-CrossTenant-Id: eaa689b4-8f87-40e0-9c6f-7228de4d754a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=eaa689b4-8f87-40e0-9c6f-7228de4d754a; Ip=[137.71.25.55];
- Helo=[nwd2mta1.analog.com]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR03MB3005
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.95,18.0.572
- definitions=2019-11-15_03:2019-11-15,2019-11-15 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 bulkscore=0
- adultscore=0 mlxlogscore=999 phishscore=0 lowpriorityscore=0
- impostorscore=0 mlxscore=0 suspectscore=1 malwarescore=0 clxscore=1015
- priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-1910280000 definitions=main-1911150116
+Content-Disposition: inline
+In-Reply-To: <20191115122316.20893-2-beniamin.bia@analog.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9441
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1911140001 definitions=main-1911150120
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9441
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1911140001
+ definitions=main-1911150120
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -140,44 +104,40 @@ Cc: devel@driverdev.osuosl.org, mark.rutland@arm.com, lars@metafoo.de,
  biabeniamin@outlook.com, Michael.Hennerich@analog.com,
  devicetree@vger.kernel.org, linux-iio@vger.kernel.org,
  gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org,
- pmeerw@pmeerw.net, knaack.h@gmx.de, Beniamin Bia <beniamin.bia@analog.com>
+ pmeerw@pmeerw.net, knaack.h@gmx.de, Paul Cercueil <paul.cercueil@analog.com>,
+ jic23@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Add Beniamin Bia as a maintainer for AD7091R5 ADC.
+On Fri, Nov 15, 2019 at 02:23:14PM +0200, Beniamin Bia wrote:
+> @@ -216,6 +240,21 @@ int ad7091r_probe(struct device *dev, const char *name,
+>  			return ret;
+>  	}
+>  
+> +	st->vref = devm_regulator_get_optional(dev, "vref");
+> +	if (IS_ERR(st->vref)) {
+> +		if (PTR_ERR(st->vref) == EPROBE_DEFER)
+                                      ^^^^^^^^^^^^^^^
+Missing - on EPROBE_DEFER.
 
-Signed-off-by: Beniamin Bia <beniamin.bia@analog.com>
----
-Changes in v4:
--nothing changed
+> +			return -EPROBE_DEFER;
+> +
+> +		st->vref = NULL;
+> +	} else {
+> +		ret = regulator_enable(st->vref);
+> +		if (ret)
+> +			return ret;
+> +		ret = devm_add_action_or_reset(dev, ad7091r_remove, st);
+> +		if (ret)
+> +			return ret;
+> +		}
 
- MAINTAINERS | 8 ++++++++
- 1 file changed, 8 insertions(+)
+Curly brace is indented an extra tab.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 2e01d0f0b0e5..7f1e4b88688f 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -893,6 +893,14 @@ S:	Supported
- F:	drivers/iio/dac/ad5758.c
- F:	Documentation/devicetree/bindings/iio/dac/ad5758.txt
- 
-+ANALOG DEVICES INC AD7091R5 DRIVER
-+M:	Beniamin Bia <beniamin.bia@analog.com>
-+L:	linux-iio@vger.kernel.org
-+W:	http://ez.analog.com/community/linux-device-drivers
-+S:	Supported
-+F:	drivers/iio/adc/ad7091r5.c
-+F:	Documentation/devicetree/bindings/iio/adc/adi,ad7091r5.yaml
-+
- ANALOG DEVICES INC AD7124 DRIVER
- M:	Stefan Popa <stefan.popa@analog.com>
- L:	linux-iio@vger.kernel.org
--- 
-2.17.1
-
+regards,
+dan carpenter
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
