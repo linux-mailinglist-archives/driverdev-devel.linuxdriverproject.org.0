@@ -2,57 +2,90 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E31F8FD5EC
-	for <lists+driverdev-devel@lfdr.de>; Fri, 15 Nov 2019 07:16:21 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A100FD72A
+	for <lists+driverdev-devel@lfdr.de>; Fri, 15 Nov 2019 08:42:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 59BFF89763;
-	Fri, 15 Nov 2019 06:16:19 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 12BD68971B;
+	Fri, 15 Nov 2019 07:42:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lURF+F1QdK-V; Fri, 15 Nov 2019 06:16:19 +0000 (UTC)
+	with ESMTP id GIt-pkqyOch4; Fri, 15 Nov 2019 07:42:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 676AD89742;
-	Fri, 15 Nov 2019 06:16:18 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5026789630;
+	Fri, 15 Nov 2019 07:42:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B00CD1BF3FD
- for <devel@linuxdriverproject.org>; Fri, 15 Nov 2019 06:16:15 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id DE0AD1BF3BE
+ for <devel@linuxdriverproject.org>; Fri, 15 Nov 2019 07:42:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A99AE88C49
- for <devel@linuxdriverproject.org>; Fri, 15 Nov 2019 06:16:15 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D8ED987C04
+ for <devel@linuxdriverproject.org>; Fri, 15 Nov 2019 07:42:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vHvOkb25KSDK for <devel@linuxdriverproject.org>;
- Fri, 15 Nov 2019 06:16:12 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id EE67188814
- for <devel@driverdev.osuosl.org>; Fri, 15 Nov 2019 06:16:12 +0000 (UTC)
-Received: from localhost (unknown [104.132.150.99])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 52F1D2072B;
- Fri, 15 Nov 2019 06:16:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1573798572;
- bh=G+0cdXXTrcTHP5HHhkPRNjMmImcxewGysVtA+48G1lE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ZuuMgLeFQzo5L2g7WgAd8skDAoeSdstO8NckalfM7LIkAEM/9Hkm9v9OWS7aNDVMH
- OtEDWlLHRzX8nf8i/P3Qoya1aZItzH8IAlhpCw8c3oHc9SfuSpwkKgldI0DneCpe/+
- 97vWjyIfKOaEQpXgp5O1rBzfyL9oRxDYryelAJeY=
-Date: Fri, 15 Nov 2019 14:16:10 +0800
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+ with ESMTP id ZKno2qERRcao for <devel@linuxdriverproject.org>;
+ Fri, 15 Nov 2019 07:42:18 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D912987BFC
+ for <devel@driverdev.osuosl.org>; Fri, 15 Nov 2019 07:42:18 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id xAF7d6ib109361;
+ Fri, 15 Nov 2019 07:42:15 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=g8uThl8dkg+cj+2qFvpX4UHz2ZpNIXnP5NoBMB9GLqg=;
+ b=ZH1elWzwIglBNSmcB5X+wP0yf/LmUt1gwQ+BKmeAdqrKDHpR/B3VCP4gZCn+KMqZMs9o
+ VGHfMyBeXTtqPWxiohoxTx5o7AfdSifH5au/Bm2F7yVdLrt3SFvNiIu3Bmkqjm2Sh1FQ
+ PezEvg+YOhnSG5jhEdCiE5XV3iqHQhA9DYdcDAsrS43yoJzICjQ8HGET00MD1DelpZ0X
+ M+etngT3aPLHcBKyusqkOVVWdOf2MdHXjY7n+YHRfOY5MAx7YFmUmeiVh70iLUsFIgRv
+ KCSZWILoTsg5EdUjbLSi1zTrjbonXuFcKjTLQm2+RS4ZrBxPO9YIBIsDHfdo4Swj/sjF Qg== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by userp2130.oracle.com with ESMTP id 2w9gxphk9u-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 15 Nov 2019 07:42:15 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id xAF7brgj141487;
+ Fri, 15 Nov 2019 07:40:14 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by aserp3030.oracle.com with ESMTP id 2w9h149024-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 15 Nov 2019 07:40:14 +0000
+Received: from abhmp0008.oracle.com (abhmp0008.oracle.com [141.146.116.14])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id xAF7eBZl031896;
+ Fri, 15 Nov 2019 07:40:12 GMT
+Received: from kadam.lan (/129.205.23.165)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 14 Nov 2019 23:40:11 -0800
+Date: Fri, 15 Nov 2019 10:40:03 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
 To: Kees Cook <keescook@chromium.org>
 Subject: Re: [PATCH] staging: rtl*: Remove tasklet callback casts
-Message-ID: <20191115061610.GA1034830@kroah.com>
+Message-ID: <20191115074003.GB19101@kadam.lan>
 References: <201911142135.5656E23@keescook>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <201911142135.5656E23@keescook>
-User-Agent: Mutt/1.12.2 (2019-09-21)
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9441
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1911140001 definitions=main-1911150069
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9441
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1911140001
+ definitions=main-1911150069
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,7 +100,8 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org,
  Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
- kernel-hardening@lists.openwall.com, linux-kernel@vger.kernel.org,
+ kernel-hardening@lists.openwall.com,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
  Romain Perier <romain.perier@gmail.com>,
  Larry Finger <Larry.Finger@lwfinger.net>
 Content-Type: text/plain; charset="us-ascii"
@@ -85,28 +119,14 @@ On Thu, Nov 14, 2019 at 09:39:00PM -0800, Kees Cook wrote:
 > casts. Remove function casts for tasklet callbacks in the various drivers.
 > 
 > Signed-off-by: Kees Cook <keescook@chromium.org>
-> ---
->  drivers/staging/rtl8188eu/hal/rtl8188eu_recv.c        |  3 +--
->  drivers/staging/rtl8188eu/hal/rtl8188eu_xmit.c        |  3 +--
->  drivers/staging/rtl8188eu/include/rtl8188e_recv.h     |  2 +-
->  drivers/staging/rtl8188eu/include/rtl8188e_xmit.h     |  2 +-
->  drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c      |  4 ++--
->  drivers/staging/rtl8192e/rtllib_softmac.c             |  7 +++----
->  .../staging/rtl8192u/ieee80211/ieee80211_softmac.c    |  7 +++----
->  drivers/staging/rtl8192u/r8192U_core.c                |  8 ++++----
->  drivers/staging/rtl8712/rtl8712_recv.c                | 11 +++++------
->  drivers/staging/rtl8712/rtl871x_xmit.c                |  5 ++---
->  drivers/staging/rtl8712/rtl871x_xmit.h                |  2 +-
->  drivers/staging/rtl8712/usb_ops_linux.c               |  4 ++--
->  drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c        | 11 ++++-------
->  13 files changed, 30 insertions(+), 39 deletions(-)
 
-This fails to apply to my staging-next branch of staging.git.  Can you
-rebase and resend?
+Clang should treat void pointers as a special case.  If void pointers
+are bad, surely replacing them with unsigned long is even more ambigous
+and worse.
 
-thanks,
+regards,
+dan carpenter
 
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
