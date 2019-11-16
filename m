@@ -2,35 +2,35 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EA0DAFF798
-	for <lists+driverdev-devel@lfdr.de>; Sun, 17 Nov 2019 06:01:46 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 715D6FF799
+	for <lists+driverdev-devel@lfdr.de>; Sun, 17 Nov 2019 06:01:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 774F387EC4;
-	Sun, 17 Nov 2019 05:01:43 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DFF8887E99;
+	Sun, 17 Nov 2019 05:01:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cX1hhXfHqho0; Sun, 17 Nov 2019 05:01:43 +0000 (UTC)
+	with ESMTP id 1iuXK1a2s1G8; Sun, 17 Nov 2019 05:01:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E674587E56;
-	Sun, 17 Nov 2019 05:01:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 61BF287ECB;
+	Sun, 17 Nov 2019 05:01:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3B5D61BF34B
- for <devel@linuxdriverproject.org>; Sun, 17 Nov 2019 05:01:38 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 32B8C1BF34B
+ for <devel@linuxdriverproject.org>; Sun, 17 Nov 2019 05:01:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 37D9D87E58
- for <devel@linuxdriverproject.org>; Sun, 17 Nov 2019 05:01:38 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 2DF7D85FAE
+ for <devel@linuxdriverproject.org>; Sun, 17 Nov 2019 05:01:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZG5ZHflbw3zn for <devel@linuxdriverproject.org>;
- Sun, 17 Nov 2019 05:01:36 +0000 (UTC)
+ with ESMTP id UJnmfnULPIVK for <devel@linuxdriverproject.org>;
+ Sun, 17 Nov 2019 05:01:35 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from server.petroholics.com (server.petroholics.com [198.1.110.45])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C1AC787E56
- for <devel@linuxdriverproject.org>; Sun, 17 Nov 2019 05:01:36 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D03BA85F9C
+ for <devel@driverdev.osuosl.org>; Sun, 17 Nov 2019 05:01:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=petroholics.com; s=default; h=Reply-To:Date:From:To:Subject:
  Content-Description:Content-Transfer-Encoding:MIME-Version:Content-Type:
@@ -56,7 +56,7 @@ Date: Sat, 16 Nov 2019 04:20:21 -0800
 X-AntiAbuse: This header was added to track abuse,
  please include it with any abuse report
 X-AntiAbuse: Primary Hostname - server.petroholics.com
-X-AntiAbuse: Original Domain - linuxdriverproject.org
+X-AntiAbuse: Original Domain - driverdev.osuosl.org
 X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
 X-AntiAbuse: Sender Address Domain - petroholics.com
 X-Get-Message-Sender-Via: server.petroholics.com: authenticated_id:
@@ -65,7 +65,7 @@ X-Authenticated-Sender: server.petroholics.com: carla@petroholics.com
 X-Source: 
 X-Source-Args: 
 X-Source-Dir: 
-Message-Id: <20191117050138.37D9D87E58@hemlock.osuosl.org>
+Message-Id: <20191117050149.2DF7D85FAE@fraxinus.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
