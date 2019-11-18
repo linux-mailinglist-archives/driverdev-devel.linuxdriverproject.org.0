@@ -1,93 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 41D6B1007BC
-	for <lists+driverdev-devel@lfdr.de>; Mon, 18 Nov 2019 15:56:10 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0678B100AF2
+	for <lists+driverdev-devel@lfdr.de>; Mon, 18 Nov 2019 18:59:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9F87885EC4;
-	Mon, 18 Nov 2019 14:56:08 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CB81C87D7C;
+	Mon, 18 Nov 2019 17:59:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id u-uaAlVmdgvy; Mon, 18 Nov 2019 14:56:08 +0000 (UTC)
+	with ESMTP id aLhS01KtK8YJ; Mon, 18 Nov 2019 17:59:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5829D85CBC;
-	Mon, 18 Nov 2019 14:56:07 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0CBFA87C88;
+	Mon, 18 Nov 2019 17:59:06 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D73331BF314
- for <devel@linuxdriverproject.org>; Mon, 18 Nov 2019 14:56:04 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6E1781BF20F
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 18 Nov 2019 17:59:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D442885CBC
- for <devel@linuxdriverproject.org>; Mon, 18 Nov 2019 14:56:04 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 69FCB21537
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 18 Nov 2019 17:59:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rj5euMpco0-6 for <devel@linuxdriverproject.org>;
- Mon, 18 Nov 2019 14:56:02 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com
- [205.139.110.61])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C6CB685CAA
- for <devel@driverdev.osuosl.org>; Mon, 18 Nov 2019 14:56:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574088961;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Czfe8LxXhKNlOMEGZ0/2HSu9m2hQVtxcd/xFSnKoAZU=;
- b=VehsW3S2fbBX1HCtvSfjNzpM0FIPcQ1sSL6zS/gGkg6v4wSy7hWVVLVeTb90e3hSwe6w8w
- 44ALHPeip+GYdkWRdc/1mEbUO6nfQrA1YwWhduY4m5WM9EplyXlHAnp8tnVD8zcxgOPTmn
- OMWHfQfijvl3pNKIk3XHQclpt05wsUQ=
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-266-5-d65MoyOGaj7ZeqIJZIsQ-1; Mon, 18 Nov 2019 09:55:58 -0500
-Received: by mail-qk1-f197.google.com with SMTP id c4so11626214qkl.6
- for <devel@driverdev.osuosl.org>; Mon, 18 Nov 2019 06:55:58 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=9XWpSHAGS/LkOq4pxWl24kYZw1xJNm2K16IYOEgWWcU=;
- b=epjPxfwOArbGbPG6kg5XPuDb/f6EoUTJwPysY9SPx2fGYhNYp2NIvviF6hoBuYl5gW
- ZJFpElANzjtQvRYztXDiNkUMAsPayYKfCSEWUkDN7ZRW8c9Bp4bWDghlmXulvPFRWgUm
- 5jV4nzC8o+SE77IiGtBYg6BY2YZm3d0WcmtjGC3hkmJs0e6Aj6hncSEGdRx0pOliTSqd
- boALgkyZ5M9X43ibp87gsbaXjE9f5Z37IVJKD58Vy8pO/HWMHapQqBinDf5a/K6sAVe/
- zh2FnPGJOJcpNX79Mkm7pbsxISlWixq2MIyhfEieFAlpNx3FfYMRZDQEW9+8IAQt5okX
- 8tQg==
-X-Gm-Message-State: APjAAAWYJwBAjyxUK/8R0FTh73h+9wxSpAFJ7CYGdyeCTRclndrb/3PD
- xfPQRCXy9iZW+gOVrTIIgrF3/gTokD5ogGGmQPid+KA8bTeaY8cNlgsmkVEtWjMhiC8yyANa8qj
- 4WP9TD3f87tLrQyF3AJeEnw==
-X-Received: by 2002:aed:22b7:: with SMTP id p52mr27346898qtc.289.1574088957750; 
- Mon, 18 Nov 2019 06:55:57 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwQ2zLtsNPjhGQw+qC/tNWB8pkCVzPjy7p8sJe/UFhjlSYcxa7agBgFfSggwdfEjfuZQ4Zybw==
-X-Received: by 2002:aed:22b7:: with SMTP id p52mr27346863qtc.289.1574088957498; 
- Mon, 18 Nov 2019 06:55:57 -0800 (PST)
-Received: from [192.168.1.157] (pool-96-235-39-235.pitbpa.fios.verizon.net.
- [96.235.39.235])
- by smtp.gmail.com with ESMTPSA id a2sm8530549qkl.71.2019.11.18.06.55.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 18 Nov 2019 06:55:56 -0800 (PST)
-Subject: Re: [PATCH 04/15] staging/android/ion: delete dma_buf->kmap/unmap
- implemenation
-To: Daniel Vetter <daniel.vetter@ffwll.ch>,
- DRI Development <dri-devel@lists.freedesktop.org>
-References: <20191118103536.17675-1-daniel.vetter@ffwll.ch>
- <20191118103536.17675-5-daniel.vetter@ffwll.ch>
-From: Laura Abbott <labbott@redhat.com>
-Message-ID: <02ba16cd-ec38-d503-ca8a-c848f433f6b8@redhat.com>
-Date: Mon, 18 Nov 2019 09:55:55 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
-MIME-Version: 1.0
-In-Reply-To: <20191118103536.17675-5-daniel.vetter@ffwll.ch>
-Content-Language: en-US
-X-MC-Unique: 5-d65MoyOGaj7ZeqIJZIsQ-1
-X-Mimecast-Spam-Score: 0
+ with ESMTP id jHELjGFDMuvW
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 18 Nov 2019 17:59:03 +0000 (UTC)
+X-Greylist: delayed 00:37:00 by SQLgrey-1.7.6
+Received: from relay01.mail.daisygroup.com (relay01.mail.daisygroup.com
+ [195.147.249.207])
+ by silver.osuosl.org (Postfix) with ESMTPS id D84822094B
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 18 Nov 2019 17:59:02 +0000 (UTC)
+Received: from [194.153.15.5] (port=37798
+ helo=bp1-Precision-WorkStation-T5400.lan)
+ by relay01.mail.daisygroup.com with esmtp (Exim 4.92.3)
+ (envelope-from <mail@berndporr.me.uk>)
+ id 1iWkit-0001n5-7U; Mon, 18 Nov 2019 17:21:59 +0000
+From: Bernd Porr <mail@berndporr.me.uk>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: comedi: usbduxsigma: usbduxfast_ai_cmdtest rounding
+ error
+Date: Mon, 18 Nov 2019 17:21:55 +0000
+Message-Id: <20191118172155.5314-1-mail@berndporr.me.uk>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,66 +60,89 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Daniel Vetter <daniel.vetter@intel.com>,
- Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
- linaro-mm-sig@lists.linaro.org, Sumit Semwal <sumit.semwal@linaro.org>
+Cc: abbotti@mev.co.uk, driverdev-devel@linuxdriverproject.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 11/18/19 5:35 AM, Daniel Vetter wrote:
-> There's no callers in-tree anymore.
-> 
-> For merging probably best to stuff this into drm-misc, since that's
-> where the dma-buf heaps will land too. And the resulting conflict
-> hopefully ensures that dma-buf heaps wont have a new ->kmap/unmap
-> implemenation.
-> 
-> Signed-off-by: Daniel Vetter <daniel.vetter@intel.com>
-> Cc: Laura Abbott <labbott@redhat.com>
-> Cc: Sumit Semwal <sumit.semwal@linaro.org>
-> Cc: devel@driverdev.osuosl.org
-> Cc: linaro-mm-sig@lists.linaro.org
-> ---
->   drivers/staging/android/ion/ion.c | 14 --------------
->   1 file changed, 14 deletions(-)
-> 
-> diff --git a/drivers/staging/android/ion/ion.c b/drivers/staging/android/ion/ion.c
-> index e6b1ca141b93..bb4ededc1150 100644
-> --- a/drivers/staging/android/ion/ion.c
-> +++ b/drivers/staging/android/ion/ion.c
-> @@ -274,18 +274,6 @@ static void ion_dma_buf_release(struct dma_buf *dmabuf)
->   	_ion_buffer_destroy(buffer);
->   }
->   
-> -static void *ion_dma_buf_kmap(struct dma_buf *dmabuf, unsigned long offset)
-> -{
-> -	struct ion_buffer *buffer = dmabuf->priv;
-> -
-> -	return buffer->vaddr + offset * PAGE_SIZE;
-> -}
-> -
-> -static void ion_dma_buf_kunmap(struct dma_buf *dmabuf, unsigned long offset,
-> -			       void *ptr)
-> -{
-> -}
-> -
->   static int ion_dma_buf_begin_cpu_access(struct dma_buf *dmabuf,
->   					enum dma_data_direction direction)
->   {
-> @@ -349,8 +337,6 @@ static const struct dma_buf_ops dma_buf_ops = {
->   	.detach = ion_dma_buf_detatch,
->   	.begin_cpu_access = ion_dma_buf_begin_cpu_access,
->   	.end_cpu_access = ion_dma_buf_end_cpu_access,
-> -	.map = ion_dma_buf_kmap,
-> -	.unmap = ion_dma_buf_kunmap,
->   };
->   
->   static int ion_alloc(size_t len, unsigned int heap_id_mask, unsigned int flags)
-> 
+'get_cmd_generic_timed' fills the cmd structure with an informed
+guess and then calls 'usbduxfast_ai_cmdtest' repeatedly while
+'usbduxfast_ai_cmdtest' is modifying the cmd struct until it
+no longer changes. However, because of rounding errors this never
+converged because 'steps = (cmd->convert_arg * 30) / 1000' and then
+back to 'cmd->convert_arg = (steps * 1000) / 30' won't be the same
+because of rounding errors. 'Steps' should only be converted back to
+the 'convert_arg' if 'steps' has actually been modified. In addion
+the case of steps being 0 wasn't checked which is also now done.
 
-Acked-by: Laura Abbott <labbott@redhat.com>
+Signed-off-by: Bernd Porr <mail@berndporr.me.uk>
+---
+ drivers/staging/comedi/drivers/usbduxfast.c | 21 ++++++++++++++-------
+ 1 file changed, 14 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/staging/comedi/drivers/usbduxfast.c b/drivers/staging/comedi/drivers/usbduxfast.c
+index 04bc488385e6..4af012968cb6 100644
+--- a/drivers/staging/comedi/drivers/usbduxfast.c
++++ b/drivers/staging/comedi/drivers/usbduxfast.c
+@@ -1,6 +1,6 @@
+ // SPDX-License-Identifier: GPL-2.0+
+ /*
+- *  Copyright (C) 2004-2014 Bernd Porr, mail@berndporr.me.uk
++ *  Copyright (C) 2004-2019 Bernd Porr, mail@berndporr.me.uk
+  */
+ 
+ /*
+@@ -8,7 +8,7 @@
+  * Description: University of Stirling USB DAQ & INCITE Technology Limited
+  * Devices: [ITL] USB-DUX-FAST (usbduxfast)
+  * Author: Bernd Porr <mail@berndporr.me.uk>
+- * Updated: 10 Oct 2014
++ * Updated: 16 Nov 2019
+  * Status: stable
+  */
+ 
+@@ -22,6 +22,7 @@
+  *
+  *
+  * Revision history:
++ * 1.0: Fixed a rounding error in usbduxfast_ai_cmdtest
+  * 0.9: Dropping the first data packet which seems to be from the last transfer.
+  *      Buffer overflows in the FX2 are handed over to comedi.
+  * 0.92: Dropping now 4 packets. The quad buffer has to be emptied.
+@@ -350,6 +351,7 @@ static int usbduxfast_ai_cmdtest(struct comedi_device *dev,
+ 				 struct comedi_cmd *cmd)
+ {
+ 	int err = 0;
++	int err2 = 0;
+ 	unsigned int steps;
+ 	unsigned int arg;
+ 
+@@ -399,11 +401,16 @@ static int usbduxfast_ai_cmdtest(struct comedi_device *dev,
+ 	 */
+ 	steps = (cmd->convert_arg * 30) / 1000;
+ 	if (cmd->chanlist_len !=  1)
+-		err |= comedi_check_trigger_arg_min(&steps,
+-						    MIN_SAMPLING_PERIOD);
+-	err |= comedi_check_trigger_arg_max(&steps, MAX_SAMPLING_PERIOD);
+-	arg = (steps * 1000) / 30;
+-	err |= comedi_check_trigger_arg_is(&cmd->convert_arg, arg);
++		err2 |= comedi_check_trigger_arg_min(&steps,
++						     MIN_SAMPLING_PERIOD);
++	else
++		err2 |= comedi_check_trigger_arg_min(&steps, 1);
++	err2 |= comedi_check_trigger_arg_max(&steps, MAX_SAMPLING_PERIOD);
++	if (err2) {
++		err |= err2;
++		arg = (steps * 1000) / 30;
++		err |= comedi_check_trigger_arg_is(&cmd->convert_arg, arg);
++	}
+ 
+ 	if (cmd->stop_src == TRIG_COUNT)
+ 		err |= comedi_check_trigger_arg_min(&cmd->stop_arg, 1);
+-- 
+2.17.1
 
 _______________________________________________
 devel mailing list
