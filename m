@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6A91E101537
-	for <lists+driverdev-devel@lfdr.de>; Tue, 19 Nov 2019 06:41:55 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 42659101679
+	for <lists+driverdev-devel@lfdr.de>; Tue, 19 Nov 2019 06:55:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 36C072266C;
-	Tue, 19 Nov 2019 05:41:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 84F388827E;
+	Tue, 19 Nov 2019 05:55:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GBAqsfArxiOO; Tue, 19 Nov 2019 05:41:52 +0000 (UTC)
+	with ESMTP id 6B860eFDeGGB; Tue, 19 Nov 2019 05:55:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id F3E7421FFB;
-	Tue, 19 Nov 2019 05:41:47 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C99AF8825E;
+	Tue, 19 Nov 2019 05:55:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8FD561BF2BD
- for <devel@linuxdriverproject.org>; Tue, 19 Nov 2019 05:41:45 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2B9071BF2BD
+ for <devel@linuxdriverproject.org>; Tue, 19 Nov 2019 05:55:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6BFCA2045F
- for <devel@linuxdriverproject.org>; Tue, 19 Nov 2019 05:41:45 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 273CD22654
+ for <devel@linuxdriverproject.org>; Tue, 19 Nov 2019 05:55:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id s4Tm+F5NVh7C for <devel@linuxdriverproject.org>;
- Tue, 19 Nov 2019 05:41:40 +0000 (UTC)
+ with ESMTP id 3bj9LVgBnWTI for <devel@linuxdriverproject.org>;
+ Tue, 19 Nov 2019 05:55:03 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 77D2720020
- for <devel@linuxdriverproject.org>; Tue, 19 Nov 2019 05:41:40 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 32FED22005
+ for <devel@linuxdriverproject.org>; Tue, 19 Nov 2019 05:55:03 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id AFEDD21783;
- Tue, 19 Nov 2019 05:41:39 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 815F7208C3;
+ Tue, 19 Nov 2019 05:55:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1574142100;
- bh=LlzMNDJ0JCchkYkAHu29SOMVRQeTRHAAwXM9PKy8u+4=;
+ s=default; t=1574142903;
+ bh=XnRIcdZVlp6No/mC06k2e6r9GyXH2JlTE8agqW0ry2g=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=gmd1X9nnuM2kwiJCcQjM/4dLqZ/njsfobu0HIgEk8p4F5RS+4bJc+Zk4dHW3aPPTH
- GhGR/YM2PMieMp+HE/fTo6251/PUvGLVaMyhUeuSh1KcdrixK92XpKW4kVd2WMu1bM
- 5c0rPgLZ+3o0m5C0n3sGfTd2Qd/cO187gn6TVhi0=
+ b=v+5LacgwIOsKzdi4lBiPfXvwoYMFddsgOMcfKAStDHtdhxIiX5ylhJymm88hKL/UG
+ 6/bVhMcD6vCLDkx7+P0zJlohd6ljaOJFZzHSd4g1mWH3Veb1MLiaUN1QFcS+Tjrh4m
+ 8YfHOb9OJw95vcAsQryFvJKLuEOni7SL+GvtpGQ8=
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH 4.19 387/422] x86/hyperv: Suppress "PCI: Fatal: No config
+Subject: [PATCH 4.14 214/239] x86/hyperv: Suppress "PCI: Fatal: No config
  space access function found"
-Date: Tue, 19 Nov 2019 06:19:44 +0100
-Message-Id: <20191119051424.164699533@linuxfoundation.org>
+Date: Tue, 19 Nov 2019 06:20:14 +0100
+Message-Id: <20191119051338.898151241@linuxfoundation.org>
 X-Mailer: git-send-email 2.24.0
-In-Reply-To: <20191119051400.261610025@linuxfoundation.org>
-References: <20191119051400.261610025@linuxfoundation.org>
+In-Reply-To: <20191119051255.850204959@linuxfoundation.org>
+References: <20191119051255.850204959@linuxfoundation.org>
 User-Agent: quilt/0.66
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -112,7 +112,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 19 insertions(+)
 
 diff --git a/arch/x86/hyperv/hv_init.c b/arch/x86/hyperv/hv_init.c
-index 3fb8551552862..8a9cff1f129dc 100644
+index 2e9d58cc371e6..2653b7b25d176 100644
 --- a/arch/x86/hyperv/hv_init.c
 +++ b/arch/x86/hyperv/hv_init.c
 @@ -17,6 +17,7 @@
@@ -121,9 +121,9 @@ index 3fb8551552862..8a9cff1f129dc 100644
  
 +#include <linux/efi.h>
  #include <linux/types.h>
- #include <asm/apic.h>
- #include <asm/desc.h>
-@@ -257,6 +258,22 @@ static int hv_cpu_die(unsigned int cpu)
+ #include <asm/hypervisor.h>
+ #include <asm/hyperv.h>
+@@ -101,6 +102,22 @@ static int hv_cpu_init(unsigned int cpu)
  	return 0;
  }
  
@@ -146,9 +146,9 @@ index 3fb8551552862..8a9cff1f129dc 100644
  /*
   * This function is to be invoked early in the boot sequence after the
   * hypervisor has been detected.
-@@ -333,6 +350,8 @@ void __init hyperv_init(void)
+@@ -154,6 +171,8 @@ void hyperv_init(void)
  
- 	hv_apic_init();
+ 	hyper_alloc_mmu();
  
 +	x86_init.pci.arch_init = hv_pci_init;
 +
