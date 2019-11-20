@@ -1,58 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D54F5103411
-	for <lists+driverdev-devel@lfdr.de>; Wed, 20 Nov 2019 07:00:52 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id EA69523771;
-	Wed, 20 Nov 2019 06:00:49 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LEwDtMkGoT+y; Wed, 20 Nov 2019 06:00:49 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 839A4229A3;
-	Wed, 20 Nov 2019 06:00:48 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5723E1BF867
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 20 Nov 2019 06:00:45 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 928CD103716
+	for <lists+driverdev-devel@lfdr.de>; Wed, 20 Nov 2019 10:57:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 538C5884A1
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 20 Nov 2019 06:00:45 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E195B8855D;
+	Wed, 20 Nov 2019 09:57:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NMiMS5Cj8MQD
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 20 Nov 2019 06:00:43 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from senyo220x184.atw.ne.jp (senyo220x184.atw.ne.jp [219.99.220.184])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9D1908849C
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 20 Nov 2019 06:00:43 +0000 (UTC)
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id GdAk4gTdmfRn; Wed, 20 Nov 2019 09:57:26 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 523D58854A;
+	Wed, 20 Nov 2019 09:57:25 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E962A1BF97F
+ for <devel@linuxdriverproject.org>; Wed, 20 Nov 2019 09:57:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by senyo220x184.atw.ne.jp (Postfix) with ESMTP id 918DEE0591;
- Wed, 20 Nov 2019 15:00:40 +0900 (JST)
-Received: from User (unknown [13.88.242.187])
- by senyo220x184.atw.ne.jp (Postfix) with ESMTPA id D48B8E058D;
- Wed, 20 Nov 2019 15:00:31 +0900 (JST)
-From: "WBF"<ishiki-open@jyuji.co.jp>
-Date: Wed, 20 Nov 2019 06:00:40 -0000
+ by silver.osuosl.org (Postfix) with ESMTP id E6163204DA
+ for <devel@linuxdriverproject.org>; Wed, 20 Nov 2019 09:57:21 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ICayjf+k4124 for <devel@linuxdriverproject.org>;
+ Wed, 20 Nov 2019 09:57:21 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id 0D13D204A3
+ for <devel@driverdev.osuosl.org>; Wed, 20 Nov 2019 09:57:21 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 20 Nov 2019 01:57:20 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.69,221,1571727600"; d="scan'208";a="218559863"
+Received: from black.fi.intel.com ([10.237.72.28])
+ by orsmga002.jf.intel.com with ESMTP; 20 Nov 2019 01:57:18 -0800
+Received: by black.fi.intel.com (Postfix, from userid 1003)
+ id 87EDB42; Wed, 20 Nov 2019 11:57:17 +0200 (EET)
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ dri-devel@lists.freedesktop.org,
+ =?UTF-8?q?Noralf=20Tr=C3=B8nnes?= <noralf@tronnes.org>,
+ linux-fbdev@vger.kernel.org, Nishad Kamdar <nishadkamdar@gmail.com>,
+ devel@driverdev.osuosl.org
+Subject: [PATCH v1 2/5] fbtft: Describe function parameters in kernel-doc
+Date: Wed, 20 Nov 2019 11:57:13 +0200
+Message-Id: <20191120095716.26628-2-andriy.shevchenko@linux.intel.com>
+X-Mailer: git-send-email 2.24.0
+In-Reply-To: <20191120095716.26628-1-andriy.shevchenko@linux.intel.com>
+References: <20191120095716.26628-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Subject: [SPAM] 20/11/2019
-X-Spam-Method: R1
-X-Spam-Method: KAS
-X-Spam-ID: 07E30B14DB63DCB8D4
-Message-Id: <20191120060045.538C5884A1@hemlock.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,21 +67,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: wbfefft@aim.com
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Good day to you.
+Kernel documentation script complains that some of the function parameters
+are not described:
 
-We sent you an email yesterday about foundation project funding.
+drivers/staging/fbtft/fbtft-core.c:543: warning: Function parameter or member 'pdata' not described in 'fbtft_framebuffer_alloc'
 
-Do let me know if you received it so further details can be advised.
+Describe function parameters where it's appropriate.
 
-kindest regards,
-fred Anderson
-Email:wbfefft@aim.com
+Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+---
+ drivers/staging/fbtft/fbtft-core.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/staging/fbtft/fbtft-core.c b/drivers/staging/fbtft/fbtft-core.c
+index 61f0286fb157..2122c4407bdb 100644
+--- a/drivers/staging/fbtft/fbtft-core.c
++++ b/drivers/staging/fbtft/fbtft-core.c
+@@ -529,6 +529,7 @@ static void fbtft_merge_fbtftops(struct fbtft_ops *dst, struct fbtft_ops *src)
+  *
+  * @display: pointer to structure describing the display
+  * @dev: pointer to the device for this fb, this can be NULL
++ * @pdata: platform data for the display in use
+  *
+  * Creates a new frame buffer info structure.
+  *
+-- 
+2.24.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
