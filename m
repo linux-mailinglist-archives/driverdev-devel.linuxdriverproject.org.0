@@ -1,63 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 919DA103E71
-	for <lists+driverdev-devel@lfdr.de>; Wed, 20 Nov 2019 16:29:03 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9E5F7103EEC
+	for <lists+driverdev-devel@lfdr.de>; Wed, 20 Nov 2019 16:37:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 01641875A2;
-	Wed, 20 Nov 2019 15:29:01 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2B2FA8763F;
+	Wed, 20 Nov 2019 15:37:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bN7v0WuAZdfM; Wed, 20 Nov 2019 15:29:01 +0000 (UTC)
+	with ESMTP id dcFay0qYYeBc; Wed, 20 Nov 2019 15:37:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3F15B87CA4;
-	Wed, 20 Nov 2019 15:29:00 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 314628707A;
+	Wed, 20 Nov 2019 15:37:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 209AC1BF5EA
- for <devel@linuxdriverproject.org>; Wed, 20 Nov 2019 15:28:58 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 64EF81BF5EA
+ for <devel@linuxdriverproject.org>; Wed, 20 Nov 2019 15:37:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1DD8E87582
- for <devel@linuxdriverproject.org>; Wed, 20 Nov 2019 15:28:58 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5B01A85735
+ for <devel@linuxdriverproject.org>; Wed, 20 Nov 2019 15:37:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1TbRTnoKaAYU for <devel@linuxdriverproject.org>;
- Wed, 20 Nov 2019 15:28:54 +0000 (UTC)
+ with ESMTP id 7QmpnqiTmeZz for <devel@linuxdriverproject.org>;
+ Wed, 20 Nov 2019 15:37:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5936587589
- for <devel@driverdev.osuosl.org>; Wed, 20 Nov 2019 15:28:54 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 20 Nov 2019 07:28:53 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,222,1571727600"; d="scan'208";a="209568358"
-Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
- by orsmga003.jf.intel.com with ESMTP; 20 Nov 2019 07:28:51 -0800
-Received: from andy by smile with local (Exim 4.93-RC1)
- (envelope-from <andriy.shevchenko@linux.intel.com>)
- id 1iXRuU-0006qT-KF; Wed, 20 Nov 2019 17:28:50 +0200
-Date: Wed, 20 Nov 2019 17:28:50 +0200
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Noralf =?iso-8859-1?Q?Tr=F8nnes?= <noralf@tronnes.org>
-Subject: Re: [PATCH v1 3/5] fbtft: Drop useless #ifdef CONFIG_OF and dead code
-Message-ID: <20191120152850.GQ32742@smile.fi.intel.com>
-References: <20191120095716.26628-1-andriy.shevchenko@linux.intel.com>
- <20191120095716.26628-3-andriy.shevchenko@linux.intel.com>
- <37435de0-873d-d20c-ac66-420ba91356fd@tronnes.org>
- <676c3f0e-81b7-d9be-8b37-a38eb3d762fb@tronnes.org>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <676c3f0e-81b7-d9be-8b37-a38eb3d762fb@tronnes.org>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Received: from mail-yb1-f201.google.com (mail-yb1-f201.google.com
+ [209.85.219.201])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D055887DAC
+ for <devel@driverdev.osuosl.org>; Wed, 20 Nov 2019 15:36:51 +0000 (UTC)
+Received: by mail-yb1-f201.google.com with SMTP id f4so139867yba.22
+ for <devel@driverdev.osuosl.org>; Wed, 20 Nov 2019 07:36:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:in-reply-to:message-id:mime-version:references:subject:from:to
+ :cc; bh=9UqL212491HSYvTBtYxc6Q7H4ChdA0a5BFKHQkhH9HA=;
+ b=hZawc0KSPggyBxM1Y5h4P/OhNP06+Uc5erF8j1BvYCc1O0PS3DbJXQkgo5cyy7BW/j
+ 125LhNBJtgYvIx0hwBmHIpRne+1t1BnyW/cqxSbFH3Yo5HJKfOmHRk+tuIMc2dVvKejH
+ li0+65Yjg5Ed/rmPh4j7mhGStagSiXxGjhvFfIDOCT5j41a2wJD7tZR04F8xibttLUbt
+ NedD41OqZA6AdWgS0PB7+SricUqd8f2NS6Us65CAx9yO5ry8tcFVTDB+/w5LFicYnsUi
+ IELKj123Aa4LaH1cE/dyMjQafQx8mSRId70Vbie3L7xHN9gb/IiYSv+5x3QUGQDAZgPs
+ EL5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:in-reply-to:message-id:mime-version
+ :references:subject:from:to:cc;
+ bh=9UqL212491HSYvTBtYxc6Q7H4ChdA0a5BFKHQkhH9HA=;
+ b=Ti3JuqUAwypI/xke+2mbPBIk2hM0TrgGQCl71yPzPL3Jr5joMZnVjy6EoT1beqjq0b
+ o/5gWvCPoq3hXlaOfd19FPDG2leRd9FELlxYazfPAWaSKC4as+At8wlfzNAF47BiH5P3
+ gPto5EJMUlhC5nH5807C6XPL8/UdeL82vx6kVplmNwagjzWjvceZ2aaSwemBf7QcbrSI
+ +HmFldQBGFh/rmYExIrxONC4tsDTDN6O05D+j/NV0xTYsKXSGRxp6r92H9HS1yb5egas
+ c4IKnTRXoDNPCOIUk9yum6yyE3NinsniyQRgtQ286XrI540qLdpi6yLS9+j3yIL2D1nN
+ cyeg==
+X-Gm-Message-State: APjAAAWkoiU3++d41f2RZxIa3hyUZUV0NiVLesLFpvoSegjg3+nuAp8o
+ TH4OfybwIhE+zrn+PjwdbFXWVnpaqrATCEcuCrM=
+X-Google-Smtp-Source: APXvYqx2mKPn0/kxf9R+AdrmiQP4TnON1gauhsCTmqwR4GZg9Xs9DCqi7yQWBp8gBNpIPGIIAaRE6uNUCcSZnMraAto=
+X-Received: by 2002:a25:9cc6:: with SMTP id z6mr2190034ybo.46.1574264210745;
+ Wed, 20 Nov 2019 07:36:50 -0800 (PST)
+Date: Wed, 20 Nov 2019 10:36:46 -0500
+In-Reply-To: <cover.1574253964.git.marcgonzalez@google.com>
+Message-Id: <d38c33e15a5cdffd2d49243574fee46be8caee92.1574253964.git.marcgonzalez@google.com>
+Mime-Version: 1.0
+References: <cover.1574253964.git.marcgonzalez@google.com>
+X-Mailer: git-send-email 2.24.0.432.g9d3f5f5b63-goog
+Subject: [PATCH 1/3] staging: vchiq_dump: Replace min with min_t
+From: Marcelo Diop-Gonzalez <marcgonzalez@google.com>
+To: gregkh@linuxfoundation.org, eric@anholt.net, wahrenst@gmx.net
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,78 +80,59 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-fbdev@vger.kernel.org, Nishad Kamdar <nishadkamdar@gmail.com>,
- dri-devel@lists.freedesktop.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: devel@driverdev.osuosl.org, linux-rpi-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Nov 20, 2019 at 04:04:17PM +0100, Noralf Tr=F8nnes wrote:
-> Den 20.11.2019 15.43, skrev Noralf Tr=F8nnes:
-> > Den 20.11.2019 10.57, skrev Andy Shevchenko:
+Replacing this and fixing the block comment format in this
+function fixes checkpatch warnings.
 
-> >> First of all there is no need to guard GPIO request by CONFIG_OF.
-> >> It works for everybody independently on resource provider. While here,
-> >> rename the function to reflect the above.
-> >>
-> >> Moreover, since we have a global dependency to OF, the rest of
-> >> conditional compilation is no-op, i.e. it's always be true.
-> >>
-> >> Due to above drop useless #ifdef CONFIG_OF and therefore dead code.
-> >>
-> >> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> >> ---
-> >>  drivers/staging/fbtft/fbtft-core.c | 19 ++-----------------
-> >>  1 file changed, 2 insertions(+), 17 deletions(-)
-> >>
-> >> diff --git a/drivers/staging/fbtft/fbtft-core.c b/drivers/staging/fbtf=
-t/fbtft-core.c
-> > =
+Signed-off-by: Marcelo Diop-Gonzalez <marcgonzalez@google.com>
+---
+ .../vc04_services/interface/vchiq_arm/vchiq_arm.c    | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
 
-> > <snip>
-> > =
-
-> >> @@ -1184,17 +1176,10 @@ static struct fbtft_platform_data *fbtft_probe=
-_dt(struct device *dev)
-> >>  		pdata->display.backlight =3D 1;
-> >>  	if (of_find_property(node, "init", NULL))
-> >>  		pdata->display.fbtftops.init_display =3D fbtft_init_display_dt;
-> >> -	pdata->display.fbtftops.request_gpios =3D fbtft_request_gpios_dt;
-> >> +	pdata->display.fbtftops.request_gpios =3D fbtft_request_gpios;
-> > =
-
-> > You can ditch the .request_gpios callback and call fbtft_request_gpios()
-> > directly in fbtft_register_framebuffer(). That will make it safe to drop
-> > the OF dependency, otherwise .request_gpios will be NULL in the non-DT
-> > case. This is one of the bugs that follwed the gpio refactoring.
-> =
-
-> Really difficult to read this fbtft code (that I wrote...).
-> The NULL deref can only happen when dev->platform_data is set. That
-> can't happen, in mainline at least, now that fbtft_device is gone.
-
-Hmm... If I read code correctly this patch doesn't change this logic. We ha=
-ve
-non-NULL ->request_gpios() in case of pdata !=3D NULL if and only if suppli=
-er
-gives it to us.
-
-The above assignment happens only for DT case (fbtft_properties_read() is
-guarded against non-DT, okay non-fwnode, cases).
-
-> > You can also ditch the .request_gpios_match callback if you want, it
-> > isn't called anymore (it is set in fb_agm1264k-fl).
-
-I guess both improvements can be done later since they are not affecting the
-logic in this series.
-
--- =
-
-With Best Regards,
-Andy Shevchenko
-
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+index 319e7aa0e0e0..942b4768c88e 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+@@ -2081,7 +2081,7 @@ vchiq_dump(void *dump_context, const char *str, int len)
+ 		int copy_bytes;
+ 
+ 		if (context->offset > 0) {
+-			int skip_bytes = min(len, (int)context->offset);
++			int skip_bytes = min_t(int, len, context->offset);
+ 
+ 			str += skip_bytes;
+ 			len -= skip_bytes;
+@@ -2089,7 +2089,7 @@ vchiq_dump(void *dump_context, const char *str, int len)
+ 			if (context->offset > 0)
+ 				return;
+ 		}
+-		copy_bytes = min(len, (int)(context->space - context->actual));
++		copy_bytes = min_t(int, len, context->space - context->actual);
+ 		if (copy_bytes == 0)
+ 			return;
+ 		if (copy_to_user(context->buf + context->actual, str,
+@@ -2098,9 +2098,11 @@ vchiq_dump(void *dump_context, const char *str, int len)
+ 		context->actual += copy_bytes;
+ 		len -= copy_bytes;
+ 
+-		/* If tne terminating NUL is included in the length, then it
+-		** marks the end of a line and should be replaced with a
+-		** carriage return. */
++		/*
++		 * If the terminating NUL is included in the length, then it
++		 * marks the end of a line and should be replaced with a
++		 * carriage return.
++		 */
+ 		if ((len == 0) && (str[copy_bytes - 1] == '\0')) {
+ 			char cr = '\n';
+ 
+-- 
+2.20.1
 
 _______________________________________________
 devel mailing list
