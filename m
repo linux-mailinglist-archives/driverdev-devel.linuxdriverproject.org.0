@@ -1,76 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8092F105BE2
-	for <lists+driverdev-devel@lfdr.de>; Thu, 21 Nov 2019 22:25:40 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B245410606A
+	for <lists+driverdev-devel@lfdr.de>; Fri, 22 Nov 2019 06:48:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C767188942;
-	Thu, 21 Nov 2019 21:25:37 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 283A9855D1;
+	Fri, 22 Nov 2019 05:48:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id B6V+8PClU6Hk; Thu, 21 Nov 2019 21:25:37 +0000 (UTC)
+	with ESMTP id ahX6rL63S_bI; Fri, 22 Nov 2019 05:48:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 01B768842D;
-	Thu, 21 Nov 2019 21:25:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 06EEC8506B;
+	Fri, 22 Nov 2019 05:48:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E52AB1BF343
- for <devel@linuxdriverproject.org>; Thu, 21 Nov 2019 21:25:32 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 71CC31BF5DD
+ for <devel@linuxdriverproject.org>; Fri, 22 Nov 2019 05:48:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DCF5B8810D
- for <devel@linuxdriverproject.org>; Thu, 21 Nov 2019 21:25:32 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6E4F58653D
+ for <devel@linuxdriverproject.org>; Fri, 22 Nov 2019 05:48:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WT6K8MEf6i4E for <devel@linuxdriverproject.org>;
- Thu, 21 Nov 2019 21:25:32 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
- [209.85.214.195])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 62EB5880E9
- for <devel@driverdev.osuosl.org>; Thu, 21 Nov 2019 21:25:32 +0000 (UTC)
-Received: by mail-pl1-f195.google.com with SMTP id o9so2166721plk.6
- for <devel@driverdev.osuosl.org>; Thu, 21 Nov 2019 13:25:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=kBYoGW6pslzpDWF+e4NaY7GXTypsHdcIulpf1km4Z08=;
- b=D4NaKQFWFIx1FJkfG2zVoB6NEmd758nicUXM4RLquUXKlfCEh5OyD9dHvLpH0Huwh7
- 0chf6G9m1hDwDeXAn9vS2s4jyUw7c648YOaaq+GVdRrIVZ0nZyQQflC13lKt58rILz7I
- /R4NNBLvouI6fSS0DVflVUiYgdBbmEk517cRYiq+acNX9e3nLq8Xq3+5XP4zLh8/Kada
- hj1CiaqneKtdlEbKwyXRdCjfiFlSEybat4kvhQKmQTf62KzqRLTsv7BtZzBPktfY8hWg
- BpinsX+F/7sUe97sIGHtwRadnDB65GJPmiSa+ZnYswTTsk1GuYXlVfgvvQMc1LR2pX8y
- FxjQ==
+ with ESMTP id T3Df+FbmOjy7 for <devel@linuxdriverproject.org>;
+ Fri, 22 Nov 2019 05:48:09 +0000 (UTC)
+X-Greylist: delayed 00:31:51 by SQLgrey-1.7.6
+Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
+ [209.85.215.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id CA0A387F9A
+ for <devel@driverdev.osuosl.org>; Fri, 22 Nov 2019 05:48:09 +0000 (UTC)
+Received: by mail-pg1-f195.google.com with SMTP id b1so2804408pgq.10
+ for <devel@driverdev.osuosl.org>; Thu, 21 Nov 2019 21:48:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Pur8D56rYiQ0M1ceqnI28F7eCh0YYOJc2gZei1cSwYw=;
+ b=QUuL2c+xQxdrPyysEXsec8QavmH64GVr/WK5Xy2ffOtjwjSkRDU8nM231KQZ55gTT+
+ o95OPytdoXojkQe06wVttIqQ+d8ikveWepYkDjh3szE/vnrqQQwCVhIHbokE9ohTbJBr
+ Qir9fZmE4Y8oLlw+ShfjvkYD9U9A5TCKfg4Jw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=kBYoGW6pslzpDWF+e4NaY7GXTypsHdcIulpf1km4Z08=;
- b=KuK6TNV2wBilnzEEVRWTjvYeloQ4aApP4+U27X/mTwKS884F5gaLK1nJiNgDlOQ6Jg
- Kua7EBpreXQQZOzpBoxQJqrvtP6LeiCkEQdAb1B7ugs6rR/NVP4bHTuVHWaXx5sA4Sn1
- AzTBcbWTlY33rGtlpN2zHniSHobsVtD8m87Xe/C1Br3gCsOkr+IjxZqF7FWJvY97MLwr
- CIvQfNpxhgBcWJxxEHydTOUtd9dTzOpoqgpQ1LNuRZfPxz5rC9SLPgzLAku/fHcnTXS9
- izFUjHWbDzDSymSkZu8gYAyiXd2AkR4QrXhkIu9KOoIGvB3hPmBEhD+wFwlfOLv8vVN9
- 94fw==
-X-Gm-Message-State: APjAAAU/v/kE2SVrYDwAXGiG71DM3T2AcHYKRDaZasvVB9BccHFOnhvx
- RYYWo5AWRPf006R2MmRdA0ShLCf3PIw4YGu4grOZ7+tXXQs=
-X-Google-Smtp-Source: APXvYqy7/OGRq/YShQ3QVFQiadGctIcoLXl6MaICG/3+wS54kuULTu2WiucVQ75Pfzbe/yte8Z+TfrHvR7m4lBc8odY=
-X-Received: by 2002:a17:90a:80cc:: with SMTP id
- k12mr14633384pjw.58.1574371531606; 
- Thu, 21 Nov 2019 13:25:31 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Pur8D56rYiQ0M1ceqnI28F7eCh0YYOJc2gZei1cSwYw=;
+ b=HJ37HEl0W5CnuqDlwWQDsXKtVNTxXwMgIEEUM4OfRybv9Ri7R6LvNsWd617s20ep7f
+ C+ZqR8dzAIhg18U7/acIJps9J2yPgyEB0KZD1z7VYfeW2rGHONB9yty1rDrodAXtrGbh
+ stBHHtmkEFVIV7Ivut7zBvo6/I4tFEso8ni5CImoLOsk/FPXZNnnJrsH+v2bh0X+IOsT
+ 3o4YfqwZ2BNNB8hr83i8Ys9lkxRVc3FxkrEvYgejVt68s5bmkrwEMm8wrmiNoNyabWT+
+ QHIUKg7oWkZ2U7nK+nYt9PQbF5q3RIj15ttdXFesG8PbfWbs+/CcqMTDolRpJyXIIaR7
+ Q7WA==
+X-Gm-Message-State: APjAAAUmrRVF09cOfX3N/4sbF+xJg0aIIHyg89o8lae/I6V5kHfBIlZK
+ 0kKDDzEFNXIZ9TGstOGBG2kpysOstiI=
+X-Google-Smtp-Source: APXvYqwm6Bo6Fpvepq74mr6KZ7xSHs2WiOshfDeBDm7ixVWj28grrqSlnrpqRI/kf/OPwZ6eICDjRg==
+X-Received: by 2002:a63:fa0d:: with SMTP id y13mr13431599pgh.18.1574399777846; 
+ Thu, 21 Nov 2019 21:16:17 -0800 (PST)
+Received: from hiroh.tok.corp.google.com ([2401:fa00:8f:2:3bf4:6372:5b56:dd4c])
+ by smtp.gmail.com with ESMTPSA id m7sm5756049pfb.153.2019.11.21.21.16.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 21 Nov 2019 21:16:17 -0800 (PST)
+From: Hirokazu Honda <hiroh@chromium.org>
+To: ezequiel@collabora.com, mchehab@kernel.org, gregkh@linuxfoundation.org,
+ linux-media@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, tfiga@chromium.org
+Subject: [PATCH] media: hantro: Support H264 profile control
+Date: Fri, 22 Nov 2019 14:16:08 +0900
+Message-Id: <20191122051608.128717-1-hiroh@chromium.org>
+X-Mailer: git-send-email 2.24.0.432.g9d3f5f5b63-goog
 MIME-Version: 1.0
-References: <cover.1574253964.git.marcgonzalez@google.com>
- <b4b5b1c7ec61a25fb3ca3c90687dc80db8a21e90.1574253964.git.marcgonzalez@google.com>
- <20191120185047.GE5604@kadam>
-In-Reply-To: <20191120185047.GE5604@kadam>
-From: Marcelo Diop-Gonzalez <marcgonzalez@google.com>
-Date: Thu, 21 Nov 2019 16:25:20 -0500
-Message-ID: <CAKvFj6q8wrnmWBqnw8btYwoFzF4dkL2+L2EzBytR+PiVu5sFxQ@mail.gmail.com>
-Subject: Re: [PATCH 3/3] staging: vchiq: Have vchiq_dump_* functions return an
- error code
-To: Dan Carpenter <dan.carpenter@oracle.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,59 +82,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg KH <gregkh@linuxfoundation.org>,
- linux-rpi-kernel@lists.infradead.org, Stefan Wahren <wahrenst@gmx.net>,
- eric@anholt.net
+Cc: Hirokazu Honda <hiroh@chromium.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Nov 20, 2019 at 1:51 PM Dan Carpenter <dan.carpenter@oracle.com> wrote:
->
-> Thanks for the patch.  Looks good.
->
-> Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
+The Hantro G1 decoder supports H.264 profiles from Baseline to High, with
+the exception of the Extended profile.
 
-Appreciate the review!
+Expose the V4L2_CID_MPEG_VIDEO_H264_PROFILE control, so that the
+applications can query the driver for the list of supported profiles.
 
--Marcelo
->
-> On Wed, Nov 20, 2019 at 10:36:48AM -0500, Marcelo Diop-Gonzalez wrote:
-> >       copy_bytes = min_t(int, len, context->space - context->actual);
-> >       if (copy_bytes == 0)
-> > -             return;
-> > +             return 0;
-> >       if (copy_to_user(context->buf + context->actual, str,
-> >                        copy_bytes))
-> > -             context->actual = -EFAULT;
->                 ^^^^^^^^^^^^^^^^^^^^^^^^^
->
-> > +             return -EFAULT;
-> >       context->actual += copy_bytes;
->         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->
-> In the original code we saved the error code to context->actual, then
-> we added some bytes
->
-> >       len -= copy_bytes;
-> >
-> > @@ -2109,8 +2108,9 @@ vchiq_dump(void *dump_context, const char *str, int len)
-> >
-> >               if (copy_to_user(context->buf + context->actual - 1,
->                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-> and then we tried to use the result to corrupt the user space program.
-> So this patch is a nice bug fix.
->
-> >                                &cr, 1))
-> > -                     context->actual = -EFAULT;
-> > +                     return -EFAULT;
-> >       }
-> > +     return 0;
-> >  }
->
-> regards,
-> dan carpenter
+Signed-off-by: Hirokazu Honda <hiroh@chromium.org>
+---
+ drivers/staging/media/hantro/hantro_drv.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+index 6d9d41170832..9387619235d8 100644
+--- a/drivers/staging/media/hantro/hantro_drv.c
++++ b/drivers/staging/media/hantro/hantro_drv.c
+@@ -355,6 +355,16 @@ static const struct hantro_ctrl controls[] = {
+ 			.def = V4L2_MPEG_VIDEO_H264_START_CODE_ANNEX_B,
+ 			.max = V4L2_MPEG_VIDEO_H264_START_CODE_ANNEX_B,
+ 		},
++	}, {
++		.codec = HANTRO_H264_DECODER,
++		.cfg = {
++			.id = V4L2_CID_MPEG_VIDEO_H264_PROFILE,
++			.min = V4L2_MPEG_VIDEO_H264_PROFILE_BASELINE,
++			.max = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH,
++			.menu_skip_mask =
++			BIT(V4L2_MPEG_VIDEO_H264_PROFILE_EXTENDED),
++			.def = V4L2_MPEG_VIDEO_H264_PROFILE_MAIN,
++		}
+ 	}, {
+ 	},
+ };
+-- 
+2.24.0.432.g9d3f5f5b63-goog
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
