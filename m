@@ -1,87 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 899EB107169
-	for <lists+driverdev-devel@lfdr.de>; Fri, 22 Nov 2019 12:32:27 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 505291074AD
+	for <lists+driverdev-devel@lfdr.de>; Fri, 22 Nov 2019 16:16:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8602B88236;
-	Fri, 22 Nov 2019 11:32:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C1145888F6;
+	Fri, 22 Nov 2019 15:16:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id m9PK6RzkzUmt; Fri, 22 Nov 2019 11:32:25 +0000 (UTC)
+	with ESMTP id k0zG2tkoz9ZC; Fri, 22 Nov 2019 15:16:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 53A6D8811A;
-	Fri, 22 Nov 2019 11:32:24 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2D6C5888B3;
+	Fri, 22 Nov 2019 15:16:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A98B21BF425
- for <devel@linuxdriverproject.org>; Fri, 22 Nov 2019 11:32:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4AFBD1BF2CC
+ for <devel@linuxdriverproject.org>; Fri, 22 Nov 2019 15:16:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A5C3688AE8
- for <devel@linuxdriverproject.org>; Fri, 22 Nov 2019 11:32:21 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 45E7288866
+ for <devel@linuxdriverproject.org>; Fri, 22 Nov 2019 15:16:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sUSfjAz6TIjH for <devel@linuxdriverproject.org>;
- Fri, 22 Nov 2019 11:32:21 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by hemlock.osuosl.org (Postfix) with ESMTPS id EC24A888E5
- for <devel@driverdev.osuosl.org>; Fri, 22 Nov 2019 11:32:20 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id xAMBT9Uk156708;
- Fri, 22 Nov 2019 11:32:19 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : mime-version : content-type; s=corp-2019-08-05;
- bh=JmL0CFln1gb8GKNlxFUBDthYLpQkxi+UoOrwYV1q6BU=;
- b=qtRkj0I3x3PXuFvBNFB4QBbgj3ZkZQTwvNLBnTZ9OfAmLIkAAIH/U2zn8k9dHGriMRRg
- m2w6lv+2FxtjR6XqdQHsOESue+TRNF6J1bvgGWtPaALzW9TXbmWbG7iVdtR/2qH25h7B
- hvNS2+s+HfSBH4Tp1FaIcHrwpMf/mPc3Jtc4BXa4bQvcRpQrULkdGG67UssjTFqZkDpp
- WZJT9upCfOE1Wd/51ehm9dI8x8+OBDLZgj+r9fcJEllGCbtNew1TYRs9g+mPUkA+yQ98
- 7qDO2GgFtFGkxXP8Rra1yRz6kgpF1IMzDiSDlkjuByMJ/guv5jMJEpkj1cr/OaRyjoGF 1Q== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by aserp2120.oracle.com with ESMTP id 2wa92qa171-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 22 Nov 2019 11:32:19 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id xAMBNUFN111619;
- Fri, 22 Nov 2019 11:32:18 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by userp3030.oracle.com with ESMTP id 2wec28r6yr-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 22 Nov 2019 11:32:18 +0000
-Received: from abhmp0006.oracle.com (abhmp0006.oracle.com [141.146.116.12])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id xAMBWHqx028821;
- Fri, 22 Nov 2019 11:32:17 GMT
-Received: from kadam (/41.210.154.155) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Fri, 22 Nov 2019 03:32:16 -0800
-Date: Fri, 22 Nov 2019 14:32:05 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: dvyukov@google.com
-Subject: monthly summary emails
-Message-ID: <20191122113205.GH5604@kadam>
+ with ESMTP id aULoBYmP0zNY for <devel@linuxdriverproject.org>;
+ Fri, 22 Nov 2019 15:16:37 +0000 (UTC)
+X-Greylist: delayed 00:07:11 by SQLgrey-1.7.6
+Received: from mail-qt1-f194.google.com (mail-qt1-f194.google.com
+ [209.85.160.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 75EFF887DD
+ for <devel@driverdev.osuosl.org>; Fri, 22 Nov 2019 15:16:37 +0000 (UTC)
+Received: by mail-qt1-f194.google.com with SMTP id 59so2661366qtg.8
+ for <devel@driverdev.osuosl.org>; Fri, 22 Nov 2019 07:16:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ndufresne-ca.20150623.gappssmtp.com; s=20150623;
+ h=message-id:subject:from:to:date:in-reply-to:references:user-agent
+ :mime-version:content-transfer-encoding;
+ bh=g5NUe7vlbEe2wgfNr66lt2YquPFqR05ke44iUlyinlU=;
+ b=YB/UzBGOwUoXBzOrmcmzXISuMyursMtRnjg5a7p/fdYK+/DyPLb/40VRF9XWScfcGz
+ xk80Cp/0W8vxIbTT9v4P1MpvrRTk794Qd/t6gFDmn5/Fy25IDRNmEnNLkYaUgJrV6q6B
+ N/MPCdJvPY81oc1zHDlVYOi3VMQVJ2sv374uH74hYXkvjnb7/jaD+sHLy2y7MuC8odee
+ xhxVxze/dTdua7AWxfk0P4nKulmMv8VsMuxBK/Sb6M/MA79onUv4a0Yx3vaG3bu+ael1
+ kc2DY3xoyoqL3B+ZKPkPmh5TvvAAOELQusgdTguCjyWXA7UJSjw/x6+rhXWuVaWZ/xOB
+ QxFg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:message-id:subject:from:to:date:in-reply-to
+ :references:user-agent:mime-version:content-transfer-encoding;
+ bh=g5NUe7vlbEe2wgfNr66lt2YquPFqR05ke44iUlyinlU=;
+ b=eVzhAv/9bCB/B3eTW+lybeRPWu2Odwm8GlZvU8bV9KKJFAYrOWPCfgicWgyoZnjxAi
+ IkiPRtDwcm8MMlNdIsxQangG0E786NYS8sCI2WvjcaXYjfw8NRFppWEmX99ZWVI2ndZS
+ CuigujhLrzrKFAcNL7Xy/fRXaDMkON3GpfpolklB0XDKh4tpXHPCjXepKyQKEixTEGwJ
+ q6jON36VDDJDIObVz9lv5XtuXtxOm+R9n5IpFTWwEwP/FbnglfgBrP8azPEG0YhtujP4
+ Mr+DRazZuMMcrfAfBQg/3rkq1/JARWxqV9BX10WFupfL7np55iP7+Tx7IQ20A1KTQ//o
+ yocg==
+X-Gm-Message-State: APjAAAUYK3ZNLvdt9g0/ZoetiWmBHcwEETMkuO/iVQhx2KBhK8I9zfl3
+ tmiEcbMYYNUhAG3G8zuGUfEeHew04uw=
+X-Google-Smtp-Source: APXvYqzzaa1j6TzEWV7XVpPIlvEC8vo0OuVoYXDbGKbWsl9Gpc97/tOwGGj51dxMHx/44cMCTJ0MfA==
+X-Received: by 2002:ac8:89c:: with SMTP id v28mr3765148qth.156.1574435365519; 
+ Fri, 22 Nov 2019 07:09:25 -0800 (PST)
+Received: from skullcanyon ([192.222.193.21])
+ by smtp.gmail.com with ESMTPSA id c19sm3583774qtb.30.2019.11.22.07.09.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 22 Nov 2019 07:09:24 -0800 (PST)
+Message-ID: <767528be59275265072896e5c679e97575615fdd.camel@ndufresne.ca>
+Subject: Re: [PATCH] media: hantro: Support H264 profile control
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Hirokazu Honda <hiroh@chromium.org>, ezequiel@collabora.com, 
+ mchehab@kernel.org, gregkh@linuxfoundation.org,
+ linux-media@vger.kernel.org,  devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, tfiga@chromium.org
+Date: Fri, 22 Nov 2019 10:09:23 -0500
+In-Reply-To: <20191122051608.128717-1-hiroh@chromium.org>
+References: <20191122051608.128717-1-hiroh@chromium.org>
+User-Agent: Evolution 3.34.1 (3.34.1-1.fc31) 
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9448
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=1
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=592
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1911140001 definitions=main-1911220103
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9448
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=1 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=659 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1911140001
- definitions=main-1911220104
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,21 +89,41 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, syzkaller-bugs@googlegroups.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Dmitry,
-
-I help maintain drivers/staging.  Would it be possible to send us a
-monthly summary of outstanding staging bugs?  I never remember to check
-the website.
-
-regards,
-dan carpenter
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+TGUgdmVuZHJlZGkgMjIgbm92ZW1icmUgMjAxOSDDoCAxNDoxNiArMDkwMCwgSGlyb2thenUgSG9u
+ZGEgYSDDqWNyaXQgOgo+IFRoZSBIYW50cm8gRzEgZGVjb2RlciBzdXBwb3J0cyBILjI2NCBwcm9m
+aWxlcyBmcm9tIEJhc2VsaW5lIHRvIEhpZ2gsIHdpdGgKPiB0aGUgZXhjZXB0aW9uIG9mIHRoZSBF
+eHRlbmRlZCBwcm9maWxlLgo+IAo+IEV4cG9zZSB0aGUgVjRMMl9DSURfTVBFR19WSURFT19IMjY0
+X1BST0ZJTEUgY29udHJvbCwgc28gdGhhdCB0aGUKPiBhcHBsaWNhdGlvbnMgY2FuIHF1ZXJ5IHRo
+ZSBkcml2ZXIgZm9yIHRoZSBsaXN0IG9mIHN1cHBvcnRlZCBwcm9maWxlcy4KClRoYW5rcyBmb3Ig
+dGhpcyBwYXRjaC4gRG8geW91IHRoaW5rIHdlIGNvdWxkIGFsc28gYWRkIHRoZSBMRVZFTCBjb250
+cm9sCnNvIHRoZSBwcm9maWxlL2xldmVsIGVudW1lcmF0aW9uIGJlY29tZXMgY29tcGxldGUgPwoK
+SSdtIHRoaW5raW5nIGl0IHdvdWxkIGJlIG5pY2UgaWYgdGhlIHY0bDIgY29tcGxpYW5jZSB0ZXN0
+IG1ha2Ugc3VyZQp0aGF0IGNvZGVjcyBkbyBpbXBsZW1lbnQgdGhlc2UgY29udHJvbHMgKGJvdGgg
+c3RhdGVmdWwgYW5kIHN0YXRlbGVzcyksCml0J3MgZXNzZW50aWFsIGZvciBzdGFjayB3aXRoIHNv
+ZnR3YXJlIGZhbGxiYWNrLCBvciBtdWx0aXBsZSBjYXBhYmxlCmNvZGVjIGhhcmR3YXJlIGJ1dCB3
+aXRoIGRpZmZlcmVudCBjYXBhYmlsaXRpZXMuCgo+IAo+IFNpZ25lZC1vZmYtYnk6IEhpcm9rYXp1
+IEhvbmRhIDxoaXJvaEBjaHJvbWl1bS5vcmc+Cj4gLS0tCj4gIGRyaXZlcnMvc3RhZ2luZy9tZWRp
+YS9oYW50cm8vaGFudHJvX2Rydi5jIHwgMTAgKysrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwg
+MTAgaW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEv
+aGFudHJvL2hhbnRyb19kcnYuYyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJv
+X2Rydi5jCj4gaW5kZXggNmQ5ZDQxMTcwODMyLi45Mzg3NjE5MjM1ZDggMTAwNjQ0Cj4gLS0tIGEv
+ZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZHJ2LmMKPiArKysgYi9kcml2ZXJz
+L3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19kcnYuYwo+IEBAIC0zNTUsNiArMzU1LDE2IEBA
+IHN0YXRpYyBjb25zdCBzdHJ1Y3QgaGFudHJvX2N0cmwgY29udHJvbHNbXSA9IHsKPiAgCQkJLmRl
+ZiA9IFY0TDJfTVBFR19WSURFT19IMjY0X1NUQVJUX0NPREVfQU5ORVhfQiwKPiAgCQkJLm1heCA9
+IFY0TDJfTVBFR19WSURFT19IMjY0X1NUQVJUX0NPREVfQU5ORVhfQiwKPiAgCQl9LAo+ICsJfSwg
+ewo+ICsJCS5jb2RlYyA9IEhBTlRST19IMjY0X0RFQ09ERVIsCj4gKwkJLmNmZyA9IHsKPiArCQkJ
+LmlkID0gVjRMMl9DSURfTVBFR19WSURFT19IMjY0X1BST0ZJTEUsCj4gKwkJCS5taW4gPSBWNEwy
+X01QRUdfVklERU9fSDI2NF9QUk9GSUxFX0JBU0VMSU5FLAo+ICsJCQkubWF4ID0gVjRMMl9NUEVH
+X1ZJREVPX0gyNjRfUFJPRklMRV9ISUdILAo+ICsJCQkubWVudV9za2lwX21hc2sgPQo+ICsJCQlC
+SVQoVjRMMl9NUEVHX1ZJREVPX0gyNjRfUFJPRklMRV9FWFRFTkRFRCksCj4gKwkJCS5kZWYgPSBW
+NEwyX01QRUdfVklERU9fSDI2NF9QUk9GSUxFX01BSU4sCj4gKwkJfQo+ICAJfSwgewo+ICAJfSwK
+PiAgfTsKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRl
+dmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2
+ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1k
+ZXZlbAo=
