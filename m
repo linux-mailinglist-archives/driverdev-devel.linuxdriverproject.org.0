@@ -1,176 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 682121079A5
-	for <lists+driverdev-devel@lfdr.de>; Fri, 22 Nov 2019 21:52:17 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1F98E107CF8
+	for <lists+driverdev-devel@lfdr.de>; Sat, 23 Nov 2019 06:20:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2CCDF87562;
-	Fri, 22 Nov 2019 20:52:15 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8A2FE88C64;
+	Sat, 23 Nov 2019 05:20:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wjoXG5AEhdZQ; Fri, 22 Nov 2019 20:52:14 +0000 (UTC)
+	with ESMTP id QlN1GrBDYPeU; Sat, 23 Nov 2019 05:20:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8103887554;
-	Fri, 22 Nov 2019 20:52:13 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B49C888C07;
+	Sat, 23 Nov 2019 05:20:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DD3231BF354
- for <devel@linuxdriverproject.org>; Fri, 22 Nov 2019 20:52:09 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 3DE2E1BF471
+ for <devel@linuxdriverproject.org>; Sat, 23 Nov 2019 05:20:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D9D8D87556
- for <devel@linuxdriverproject.org>; Fri, 22 Nov 2019 20:52:09 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 31813881A6
+ for <devel@linuxdriverproject.org>; Sat, 23 Nov 2019 05:20:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Kalryc95IF4d for <devel@linuxdriverproject.org>;
- Fri, 22 Nov 2019 20:52:09 +0000 (UTC)
+ with ESMTP id xjNqcF2yDlH6 for <devel@linuxdriverproject.org>;
+ Sat, 23 Nov 2019 05:20:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa4.microchip.iphmx.com (esa4.microchip.iphmx.com
- [68.232.154.123])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 0F09A87554
- for <devel@driverdev.osuosl.org>; Fri, 22 Nov 2019 20:52:09 +0000 (UTC)
-Received-SPF: Pass (esa4.microchip.iphmx.com: domain of
- Adham.Abozaeid@microchip.com designates 198.175.253.82 as
- permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa4.microchip.iphmx.com;
- envelope-from="Adham.Abozaeid@microchip.com";
- x-sender="Adham.Abozaeid@microchip.com";
- x-conformance=spf_only; x-record-type="v=spf1";
- x-record-text="v=spf1 mx a:ushub1.microchip.com
- a:smtpout.microchip.com -exists:%{i}.spf.microchip.iphmx.com
- include:servers.mcsv.net include:mktomail.com
- include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa4.microchip.iphmx.com: no sender
- authenticity information available from domain of
- postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa4.microchip.iphmx.com;
- envelope-from="Adham.Abozaeid@microchip.com";
- x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa4.microchip.iphmx.com;
- spf=Pass smtp.mailfrom=Adham.Abozaeid@microchip.com;
- spf=None smtp.helo=postmaster@email.microchip.com;
- dkim=pass (signature verified) header.i=@microchiptechnology.onmicrosoft.com;
- dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: 2VsuERo88KvkSTiznPcmZxmLeiUpZXgTLDr68AqqV06oGz8D3tpgpWEt4kwDUcvSE1N7785QjH
- ahAP11HF4gbfOnm6dfDfqxiJUeYLRUf4AqcJSrIK1NB/JAqNDJjLew57rFysd8Caa37Vor2/lj
- u6me/SaCmlQ7SLRIzWwszTR2Y28h+QCYZKDwkvqoeWtwnxTIa2IwvaK5+dHa4EsT/BoVyXdk6w
- yKsbvE8J05Ef/gm/cFGyXeTcmbtdwXfTwqvQg4ar2F4o5ekHjJ14WpYCZvHXb37cIQeITRp6EY
- 4r0=
-X-IronPort-AV: E=Sophos;i="5.69,231,1571727600"; d="scan'208";a="56399344"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa4.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 22 Nov 2019 13:52:08 -0700
-Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
- chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Fri, 22 Nov 2019 13:52:07 -0700
-Received: from NAM05-DM3-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.71) with Microsoft SMTP Server
- (version=TLS1_2, 
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5 via Frontend
- Transport; Fri, 22 Nov 2019 13:52:08 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=bzhWYtL3BSIkHkwUI2UJwblh20zLkVaiycJf55dptNtQTAgUttN5paF9QsVslCmjkfxgxskSGUF8rlEZoxdDGiuub3HC5m8FqC31szpwFRqLwtOH/iquklOHobvdvZih6GbXdIT3RMAaWp9TxUnYfgPz/XBeAfl0rH8k6kFFuavN/jQUC3yMKSC3e7CKBOfPVre5QcwGlGhfIMeO+HS/AOoFVMEniwcxFI9QeDYpF7fq1Ph1SnkuMJPc6Pzh1UsEr6W+aCUvH7X3zQAoRNZTPNBs6qikvAF+zJDL7B2jOnhAi8PSqzjJhLJujrbMy0IQEhJjlK0dTceKtTrsseifNw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=M+rJy+E+vyIjv5Zd8uCHQWY1b18mmojJR5+5sFKc3Hg=;
- b=ONfG61f6aGmU24uq9RG3aiT+BiKxpIUZBfQgeBEZco5vv5Fbvf+NkB3AhUuqpAsOzMpmdki7oYim03dCEZiUdXains577bhEWloplNwsA3vciytcniTAcX8JXFeN10KJU+GAVY6vLIYC4ij/eldTdlV8Y9xf+Vv65AU82gqBx2y6VJvy00xh7WrYGoO+QVrP6WoGpJ3d7i0gktqqj+cmPnA+B0exGcmPuGwOPQUb9U1W0KdqAA0yIPHv2AaB40nolmkDIPutTPZRH+lEMKihpSqyOkTmRs8a0ottpvn3pBGeJ3iAHjIbVLRm35Ztckh9IhEZ0jdDib/+4fyhrK9iig==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microchip.com; dmarc=pass action=none
- header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector2-microchiptechnology-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=M+rJy+E+vyIjv5Zd8uCHQWY1b18mmojJR5+5sFKc3Hg=;
- b=LUc1tTrIAjGHGaxccB3AKCby/VJc9kcjKtXL50Mr4XIALgYtTk2j94l+RZfxZvqI3i1uwBDhOs6iubm+mbNXvTdqCEZdyABhLKpsahXKbdYJ/yNNniNOCRLz1kF/HPtFRBxYVcBsnDo6SFzv1xhl8AZ1deNvLbWyt4tTJJZifzs=
-Received: from MWHPR11MB1373.namprd11.prod.outlook.com (10.169.234.141) by
- MWHPR11MB1472.namprd11.prod.outlook.com (10.172.54.144) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2451.22; Fri, 22 Nov 2019 20:52:05 +0000
-Received: from MWHPR11MB1373.namprd11.prod.outlook.com
- ([fe80::fc6d:2ed:d470:fb56]) by MWHPR11MB1373.namprd11.prod.outlook.com
- ([fe80::fc6d:2ed:d470:fb56%8]) with mapi id 15.20.2474.019; Fri, 22 Nov 2019
- 20:52:05 +0000
-From: <Adham.Abozaeid@microchip.com>
-To: <linux-wireless@vger.kernel.org>
-Subject: [PATCH 4/4] staging: wilc1000: use GENMASK to extract wid type
-Thread-Topic: [PATCH 4/4] staging: wilc1000: use GENMASK to extract wid type
-Thread-Index: AQHVoXaykYuCp0pyik2Th735RqUfjg==
-Date: Fri, 22 Nov 2019 20:52:05 +0000
-Message-ID: <20191122205153.30723-4-adham.abozaeid@microchip.com>
-References: <20191122205153.30723-1-adham.abozaeid@microchip.com>
-In-Reply-To: <20191122205153.30723-1-adham.abozaeid@microchip.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [198.175.253.81]
-x-clientproxiedby: BYAPR03CA0028.namprd03.prod.outlook.com
- (2603:10b6:a02:a8::41) To MWHPR11MB1373.namprd11.prod.outlook.com
- (2603:10b6:300:25::13)
-x-ms-exchange-messagesentrepresentingtype: 1
-x-mailer: git-send-email 2.17.1
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 4e994b37-0009-4411-d9c2-08d76f8dd545
-x-ms-traffictypediagnostic: MWHPR11MB1472:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <MWHPR11MB147264DCC36C305F2E2B93318D490@MWHPR11MB1472.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:288;
-x-forefront-prvs: 02296943FF
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(39860400002)(396003)(136003)(346002)(366004)(376002)(189003)(199004)(316002)(66946007)(7736002)(8936002)(107886003)(81156014)(81166006)(186003)(66556008)(6486002)(26005)(66066001)(99286004)(6506007)(76176011)(5640700003)(4326008)(6436002)(52116002)(71190400001)(71200400001)(1076003)(5660300002)(14454004)(6916009)(11346002)(2501003)(102836004)(2906002)(386003)(6512007)(446003)(25786009)(54906003)(66446008)(50226002)(3846002)(36756003)(66476007)(256004)(64756008)(2351001)(2616005)(8676002)(6116002)(86362001)(478600001)(305945005);
- DIR:OUT; SFP:1101; SCL:1; SRVR:MWHPR11MB1472;
- H:MWHPR11MB1373.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: microchip.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: =?iso-8859-1?Q?FWu0gRWB+0H0WLGkwSO5PfGTgxa6FbIWP58F92tA9GWzdrKyqaQFW8/fR4?=
- =?iso-8859-1?Q?Qs64Rf6sy45oqjJWDYl9uOGzeKH/aqVdDYOvMkkt3X/Az1FOTSVFSLaumt?=
- =?iso-8859-1?Q?8iW0uVwwfUkprKrWD72FmEGBMKvF8j93MLljPfpDwvHDltkuGGCz9Iinuw?=
- =?iso-8859-1?Q?HIEMsqbpbTl0EK0Pg16ZElHUs3IDSOW+c8faZSJsieS2/pqy8HCUvfVGYV?=
- =?iso-8859-1?Q?bzuZwsKj6ploUzPQjwA/us0N39BlrtctcbCdswEKyCs8kKlIUVP+feowkg?=
- =?iso-8859-1?Q?u6vd542hO7ucryb/dMA19yGoVxGepTG1Ux3/mGlkJPcZgOZeZ6Ek4LEdgw?=
- =?iso-8859-1?Q?ooPmzSJ8CICDM3hR6jayazNxSgAF+fdYZ6WZPLrGHjPWbGn70csfGYNCSp?=
- =?iso-8859-1?Q?U8jTjbnsBpQqWybUYc907NZOoDZItqKqwN6TvFMzOd5OjK4fu57LMvsoqv?=
- =?iso-8859-1?Q?YHtY4jOYzWayOaaB/aoAV2M7YBIgYImzz0OKklOjlF9XqFTU4QY21OiFQI?=
- =?iso-8859-1?Q?NsPt4PxI5mn+FwSdPXVKvMpFMbhTVi1mEXeHw5FlVj2GpyJN8/LH3pZ2GL?=
- =?iso-8859-1?Q?WdIDKKoCrV0ci5ND1Y3sxUDoGPkgEaXdMB7WLIzYqiiFkrgexCqGdYay2s?=
- =?iso-8859-1?Q?crSo2+zxWyuXOynEtkbEH5fw4OYTwvIwz1MfN+SmTNonI+XQB/sLUYbyn9?=
- =?iso-8859-1?Q?+cyartXD+K+qfnJ/DgmUuVNCshmgn1OW40zzwJ8VtP4vYkGbEclWv8y/Zr?=
- =?iso-8859-1?Q?g4d8s2VR1fAdAMiHri+UFzKCrBVzVVSGbo7R/7FERltvpinPnzLVnrP1Vr?=
- =?iso-8859-1?Q?G9L4Bc79+sKf/0CX1mZVY8QYq6bMPrfBv2k3c2PY/gL1Me+3BMSW1yT1uH?=
- =?iso-8859-1?Q?gidD8GvW2ppdvlJ44ewMUpmCH/l67x83G0kjuM0HYuDtR8Ac0N7TYTFzmZ?=
- =?iso-8859-1?Q?+Ut432UFXuMgHpS8YMZfqq/lABpXdnaYk0dx/KvsoFafH4/XDgh9gkKoZh?=
- =?iso-8859-1?Q?mL0NlE4dxF1EagVWzozTrF80iD4vrCSVKRphO1d5FfJMdd4rRhU4uUFiMj?=
- =?iso-8859-1?Q?dEVoTsmWdwCbL9v552kdyT0Nz18ruKbj18KvRxrjHCBac27s8tBzCUgUSq?=
- =?iso-8859-1?Q?6NRIPvjdrvENJJAqm9nebx9tkJ2pFXyknJcAc1l9/lvao/VXio5DVdPyM2?=
- =?iso-8859-1?Q?TVOfusrO9Yii3nAG4oCZxLi8WKnLv72ed3hWRbzmczZxOGtWTJiaoUT4mf?=
- =?iso-8859-1?Q?owp7aIcC+pJa9qKhGpmCw9A6id2HKCtZ6QkLqndSYND9DqTl83VwATshVw?=
- =?iso-8859-1?Q?iD1ZwsJ7VAisBBosRzVJmil7CmzfF+a4gNcWTNZQyI/zVgGm1dnZ+OtGlg?=
- =?iso-8859-1?Q?5v6vZsDOT8tGozwq8RdQdP2q8hyk04FS8yVdZm15dtWStJ/zzh4yX+5iPQ?=
- =?iso-8859-1?Q?0Ol8Z8BXLYjTCtytFHCKPCnkHZXnqHLMg8m6PVVQ5eo4A/aLn5KVGg47y4?=
- =?iso-8859-1?Q?O9LS3JXvajkC90ZSaX0VRv7vMznEcqtMpiNEtxeDjQTYo2Zk4ewyvdjpxn?=
- =?iso-8859-1?Q?hASEdhG6r1suw+e1i7yc1taNXWnQgduJRR5wc4Wt3ymYHStpYvcfD0PMQo?=
- =?iso-8859-1?Q?0T6tCSf6F4PuLaL5a0LlnQMWHWi1gxEU2FWI29lW8B5PuOi55PyJ+ObqKo?=
- =?iso-8859-1?Q?Rkx78eWoAOrxjTBzYKU8/A4Je3gtMsV/Av/pQ/VqglVLa93GSx2a8rrPID?=
- =?iso-8859-1?Q?hiXUzJSRr0J5XOw3SF5NmiviEoT57Xao41iNVnpSWYXGzW5r3GLeCI1Bz9?=
- =?iso-8859-1?Q?D5qIE+Y9Tg=3D=3D?=
+Received: from mail-qk1-f196.google.com (mail-qk1-f196.google.com
+ [209.85.222.196])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 515138819D
+ for <devel@driverdev.osuosl.org>; Sat, 23 Nov 2019 05:20:35 +0000 (UTC)
+Received: by mail-qk1-f196.google.com with SMTP id d13so8261514qko.3
+ for <devel@driverdev.osuosl.org>; Fri, 22 Nov 2019 21:20:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=dSJiW8z0Nr8ieUsuKFAIjeRJ7R7kZTaybvOXtSJez8Y=;
+ b=lXYB2eRGlNxuE0Q92udIpIYYLqwUTkfcYVkiJ/UFbMufnWibKPiLkAjHcaFFCW4Z1T
+ DPZ0hweJfKL5jW9a8x6fJjokWUgO8KiiPTKgB0J4M8dHNLGa0l6f539towW+estUsC5A
+ TaR72yHkwBerFYw/wktS9eNI9xOoj8qNMwxzq4dEYPf5i1BaODO7WdsZRGWVDJFBTvvp
+ cdbN3XxUlXHtYRTpEmLQbRBuK9k7XGHuBOaPUfUNDkjJDHObe4Y/84WjlKacImHOqAT3
+ wGD0DePhU7oOzIeQMe1ID58w5aJVK7zXMwA+yZUE23A6CclmQAWp35WJr1Gp4Conww5V
+ 2ihg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=dSJiW8z0Nr8ieUsuKFAIjeRJ7R7kZTaybvOXtSJez8Y=;
+ b=QOfJ5BsDGNDcCfXqle12H1/kFlO91emn1m6M2y3wEOTxRnN72Ae0ubemHR4yzDRJqP
+ IK7eAj+/zNxDYkBTOtifw4nHObeTl89nwgBM1Mrr/+6Oug+QwmKA6stWvq5p0fsO4WL+
+ NgW/PTxcwcJG4kSvwtYZIE6LpWg6egfOXIyDpadLyb2pDKBX2PJ1/jME/T5JMW6LG1Sf
+ Y5NSGyJoGeoY9D29v9VbF+2GSTs3ygjsty3ITDIQTHF0JhUbrF4sJnlvWde1wGy0hj3r
+ DzmpjyXwoKxX+jnFk71lmT7Mjtvk7O7P3T1Lfuh+GvADaYhWRGVD6mpbB1Dg9pQR9gP6
+ mNRg==
+X-Gm-Message-State: APjAAAUSiCFd2Bt584r7OmUWEpHMVneyn4KrV79PSaC14V+3qgdOhPrF
+ yuKcNursdQ3lJUVWzTpQxC4=
+X-Google-Smtp-Source: APXvYqwcdIV4A8Q6CT/LktHtIuaaggY3aC//hpkQKzpsZhjuegjpeIoGV1oucIHmJrnUVMq8ZMTfSg==
+X-Received: by 2002:a05:620a:1472:: with SMTP id
+ j18mr12346580qkl.184.1574486434275; 
+ Fri, 22 Nov 2019 21:20:34 -0800 (PST)
+Received: from localhost.localdomain ([177.76.215.166])
+ by smtp.gmail.com with ESMTPSA id e10sm145506qte.51.2019.11.22.21.20.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 22 Nov 2019 21:20:33 -0800 (PST)
+From: Rodrigo Carvalho <rodrigorsdc@gmail.com>
+To: alexandru.ardelean@analog.com, Lars-Peter Clausen <lars@metafoo.de>,
+ Michael Hennerich <Michael.Hennerich@analog.com>,
+ Stefan Popa <stefan.popa@analog.com>, Jonathan Cameron <jic23@kernel.org>,
+ Hartmut Knaack <knaack.h@gmx.de>,
+ Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH v4] dt-bindings: iio: accel: add binding documentation for
+ ADIS16240
+Date: Sat, 23 Nov 2019 02:19:27 -0300
+Message-Id: <20191123051927.5016-1-rodrigorsdc@gmail.com>
+X-Mailer: git-send-email 2.24.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4e994b37-0009-4411-d9c2-08d76f8dd545
-X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Nov 2019 20:52:05.7400 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Tl/KMXhP/uAWritZtN3e8JaX1J28IbLKvwZShFEmLjMJOBDSS5WUUl5DuWWCPpS9NTH2HKkiX7FRB19TGRUjDtkDbQ4B6qfnevbR7EJyY9E=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1472
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -183,83 +90,80 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- johannes@sipsolutions.net, Ajay.Kathat@microchip.com
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Rodrigo Carvalho <rodrigorsdc@gmail.com>, kernel-usp@googlegroups.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Ajay Singh <ajay.kathat@microchip.com>
+This patch add device tree binding documentation for ADIS16240.
 
-Refactor code by make use of 'GENMASK' to extract the WID type from
-buffer received from firmware.
-
-Signed-off-by: Ajay Singh <ajay.kathat@microchip.com>
+Signed-off-by: Rodrigo Ribeiro Carvalho <rodrigorsdc@gmail.com>
 ---
- drivers/staging/wilc1000/wlan.h     | 1 +
- drivers/staging/wilc1000/wlan_cfg.c | 8 ++++----
- 2 files changed, 5 insertions(+), 4 deletions(-)
+V4:
+   - Remove spi-cpha and spi-cpol in binding example, since this driver
+supports only one timing mode.
+ .../bindings/iio/accel/adi,adis16240.yaml     | 49 +++++++++++++++++++
+ 1 file changed, 49 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/iio/accel/adi,adis16240.yaml
 
-diff --git a/drivers/staging/wilc1000/wlan.h b/drivers/staging/wilc1000/wlan.h
-index 1f6957cf2e9c..44ae6ed6882c 100644
---- a/drivers/staging/wilc1000/wlan.h
-+++ b/drivers/staging/wilc1000/wlan.h
-@@ -197,6 +197,7 @@
- #define IS_MANAGMEMENT_CALLBACK	0x080
- #define IS_MGMT_STATUS_SUCCES	0x040
- 
-+#define WILC_WID_TYPE		GENMASK(15, 12)
- /********************************************
-  *
-  *      Tx/Rx Queue Structure
-diff --git a/drivers/staging/wilc1000/wlan_cfg.c b/drivers/staging/wilc1000/wlan_cfg.c
-index 6f6b286788d1..2538435b82fd 100644
---- a/drivers/staging/wilc1000/wlan_cfg.c
-+++ b/drivers/staging/wilc1000/wlan_cfg.c
-@@ -4,6 +4,7 @@
-  * All rights reserved.
-  */
- 
-+#include <linux/bitfield.h>
- #include "wlan_if.h"
- #include "wlan.h"
- #include "wlan_cfg.h"
-@@ -132,7 +133,6 @@ static int wilc_wlan_cfg_set_bin(u8 *frame, u32 offset, u16 id, u8 *b, u32 size)
-  *
-  ********************************************/
- 
--#define GET_WID_TYPE(wid)		(((wid) >> 12) & 0x7)
- static void wilc_wlan_parse_response_frame(struct wilc *wl, u8 *info, int size)
- {
- 	u16 wid;
-@@ -142,7 +142,7 @@ static void wilc_wlan_parse_response_frame(struct wilc *wl, u8 *info, int size)
- 		i = 0;
- 		wid = get_unaligned_le16(info);
- 
--		switch (GET_WID_TYPE(wid)) {
-+		switch (FIELD_GET(WILC_WID_TYPE, wid)) {
- 		case WID_CHAR:
- 			do {
- 				if (wl->cfg.b[i].id == WID_NIL)
-@@ -244,7 +244,7 @@ static void wilc_wlan_parse_info_frame(struct wilc *wl, u8 *info)
- 
- int wilc_wlan_cfg_set_wid(u8 *frame, u32 offset, u16 id, u8 *buf, int size)
- {
--	u8 type = (id >> 12) & 0xf;
-+	u8 type = FIELD_GET(WILC_WID_TYPE, id);
- 	int ret = 0;
- 
- 	switch (type) {
-@@ -290,7 +290,7 @@ int wilc_wlan_cfg_get_wid(u8 *frame, u32 offset, u16 id)
- int wilc_wlan_cfg_get_val(struct wilc *wl, u16 wid, u8 *buffer,
- 			  u32 buffer_size)
- {
--	u32 type = (wid >> 12) & 0xf;
-+	u8 type = FIELD_GET(WILC_WID_TYPE, wid);
- 	int i, ret = 0;
- 
- 	i = 0;
+diff --git a/Documentation/devicetree/bindings/iio/accel/adi,adis16240.yaml b/Documentation/devicetree/bindings/iio/accel/adi,adis16240.yaml
+new file mode 100644
+index 000000000000..8e902f7c49e6
+--- /dev/null
++++ b/Documentation/devicetree/bindings/iio/accel/adi,adis16240.yaml
+@@ -0,0 +1,49 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/iio/accel/adi,adis16240.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: ADIS16240 Programmable Impact Sensor and Recorder driver
++
++maintainers:
++  - Alexandru Ardelean <alexandru.ardelean@analog.com>
++
++description: |
++  ADIS16240 Programmable Impact Sensor and Recorder driver that supports
++  SPI interface.
++    https://www.analog.com/en/products/adis16240.html
++
++properties:
++  compatible:
++    enum:
++      - adi,adis16240
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - interrupts
++
++examples:
++  - |
++    #include <dt-bindings/gpio/gpio.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    spi0 {
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        /* Example for a SPI device node */
++        accelerometer@0 {
++            compatible = "adi,adis16240";
++            reg = <0>;
++            spi-max-frequency = <2500000>;
++            interrupt-parent = <&gpio0>;
++            interrupts = <0 IRQ_TYPE_LEVEL_HIGH>;
++        };
++    };
 -- 
 2.24.0
 
