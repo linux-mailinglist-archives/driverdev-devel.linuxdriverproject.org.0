@@ -1,89 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7EBED109154
-	for <lists+driverdev-devel@lfdr.de>; Mon, 25 Nov 2019 16:52:09 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A704110936A
+	for <lists+driverdev-devel@lfdr.de>; Mon, 25 Nov 2019 19:21:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9FD228671B;
-	Mon, 25 Nov 2019 15:52:06 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 66FFF87A5E;
+	Mon, 25 Nov 2019 18:21:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id J7K34JqkP+8l; Mon, 25 Nov 2019 15:52:04 +0000 (UTC)
+	with ESMTP id gLljUt0PVZHB; Mon, 25 Nov 2019 18:21:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8BF1C86566;
-	Mon, 25 Nov 2019 15:51:59 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3977E87A52;
+	Mon, 25 Nov 2019 18:21:50 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9875B1BF3BF
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 25 Nov 2019 15:51:56 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6FC781BF23F
+ for <devel@linuxdriverproject.org>; Mon, 25 Nov 2019 18:21:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 952CF852FF
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 25 Nov 2019 15:51:56 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 6CD8487670
+ for <devel@linuxdriverproject.org>; Mon, 25 Nov 2019 18:21:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id h0wRNArgeT7w
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 25 Nov 2019 15:51:54 +0000 (UTC)
+ with ESMTP id bJCDDsbulAov for <devel@linuxdriverproject.org>;
+ Mon, 25 Nov 2019 18:21:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa2.microchip.iphmx.com (esa2.microchip.iphmx.com
- [68.232.149.84])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 64A20851E0
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 25 Nov 2019 15:51:54 +0000 (UTC)
-Received-SPF: Pass (esa2.microchip.iphmx.com: domain of
- Christian.Gromm@microchip.com designates 198.175.253.82 as
- permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa2.microchip.iphmx.com;
- envelope-from="Christian.Gromm@microchip.com";
- x-sender="Christian.Gromm@microchip.com";
- x-conformance=spf_only; x-record-type="v=spf1";
- x-record-text="v=spf1 mx a:ushub1.microchip.com
- a:smtpout.microchip.com -exists:%{i}.spf.microchip.iphmx.com
- include:servers.mcsv.net include:mktomail.com
- include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa2.microchip.iphmx.com: no sender
- authenticity information available from domain of
- postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa2.microchip.iphmx.com;
- envelope-from="Christian.Gromm@microchip.com";
- x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa2.microchip.iphmx.com;
- dkim=none (message not signed) header.i=none;
- spf=Pass smtp.mailfrom=Christian.Gromm@microchip.com;
- spf=None smtp.helo=postmaster@email.microchip.com;
- dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: MtUJ+nKIOpVDZgBUJ+fD/jMFi1Z1xJ07l1K9YnanpkVb0tBEdXUWvXQbr+5R01huP53tVFqBPQ
- /AzV2xz1pSAy5+CrMfeKFrAarqx39S+yhj8E1nE/51wzmFCtwn85JltlrTz8thxXe/mNIc8fLD
- 6A6FbfzGFiLhdAKHBGA1m1kv3cc1/N9ZdMzdipam0K4LmqSOhMk4+RGaTeYdOCPimVz8qYNX++
- dw3JB/7E4YBvqPxgqjiVFdrbjr2oGqvHA3sYtWFGIkTubmu9xmw08zC72MqG4EVB9gTpETzF9r
- TIU=
-X-IronPort-AV: E=Sophos;i="5.69,241,1571727600"; d="scan'208";a="57842002"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa2.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 25 Nov 2019 08:51:53 -0700
-Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
- chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Mon, 25 Nov 2019 08:51:52 -0700
-Received: from kar-sv-agl01.mchp-main.com (10.10.85.251) by
- chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server id
- 15.1.1713.5 via Frontend Transport; Mon, 25 Nov 2019 08:51:52 -0700
-From: Christian Gromm <christian.gromm@microchip.com>
-To: <gregkh@linuxfoundation.org>
-Subject: [PATCH RFC 6/6] staging: most: Documentation: move ABI description
- files out of staging area
-Date: Mon, 25 Nov 2019 16:51:36 +0100
-Message-ID: <1574697096-2942-7-git-send-email-christian.gromm@microchip.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1574697096-2942-1-git-send-email-christian.gromm@microchip.com>
-References: <1574697096-2942-1-git-send-email-christian.gromm@microchip.com>
+Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
+ [209.85.221.68])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id EAB5D87629
+ for <devel@driverdev.osuosl.org>; Mon, 25 Nov 2019 18:21:46 +0000 (UTC)
+Received: by mail-wr1-f68.google.com with SMTP id t1so19337857wrv.4
+ for <devel@driverdev.osuosl.org>; Mon, 25 Nov 2019 10:21:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Vb72jc4spAcABwLaDNL79fswtIsTkbWjFqxfZ/KoMkQ=;
+ b=jTbZqiu4pU5t9GAi8Ew/rS5jX46DbqBzjHRiabZ3RX6fpWN7MkfBhZARlKYohl81N3
+ w7lGxUzXCP7hOom9OqIFyluDH4P/t4qdshPMJR4leAIVBzM9ObZPjo1NJQZ2mG56PWYc
+ 0nMyX7+fYZtre7TM6jaIhfMxEFvRiPPb5R5+47bqjeOx3CC3eEXj2I2NlWZyaWGwx4MU
+ IGpD/yEQoSNT5FM3dMqLEMK7+gox/omJkkOB348XLeZ0aIls3831Lc6KOgIzphKMvuuv
+ VtPjyeKGqsJ+zVQJfO5/MONQSovoGnXHpnG0gB+/2uIv851mi4epMdOaJ7jMMrvaCcYr
+ uIWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Vb72jc4spAcABwLaDNL79fswtIsTkbWjFqxfZ/KoMkQ=;
+ b=KQW5zPSOmJb6yK7/okwyAeMeqUQ0zjZohapo2TICgm4qK7/J2hVZe7+L3UrKiT/Ny9
+ QhwQEmsXI7D+BLaWRUsq1+ncBoq3v+taliQQUwYE9KVYzgaIEzLWc5eGtDLpVLDgpmGP
+ ln1rMZrcmH7Rsyjdua8jnIF5bvSPD84PeyyJsOkWuDnni+Tf0Ui+EKD/jZMws6LxUkjb
+ C0VgTGiNctVDt/LsgA02P3ecaRXfa7pmyOa2nGkj6oFnWCzBJ/45Y6tSNVDtOGcG709g
+ j+xUbWvEex33wYBkWH5oH+ceyhJVGmVYSCLMTIZnZJhGLsZ7oO4Gv6sxUrjLv9YogSou
+ CRBQ==
+X-Gm-Message-State: APjAAAXph6SOmxrz9UqJ7Tn10n5s2Ka6Ksw8mPxD7B45zF1qEj7IcTGQ
+ LCbnJUnz3mGqD21LKd34BLA=
+X-Google-Smtp-Source: APXvYqzFCMPW3yedym/OwFKYzbEU6lEjZLmdWeKNuMK3SyTNIMk/VE9izvqB4jw39WFQtaVgVV3V+A==
+X-Received: by 2002:a5d:4983:: with SMTP id r3mr16384651wrq.134.1574706105297; 
+ Mon, 25 Nov 2019 10:21:45 -0800 (PST)
+Received: from localhost.localdomain
+ (dslb-002-204-142-242.002.204.pools.vodafone-ip.de. [2.204.142.242])
+ by smtp.gmail.com with ESMTPSA id e16sm111294wme.35.2019.11.25.10.21.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 25 Nov 2019 10:21:44 -0800 (PST)
+From: Michael Straube <straube.linux@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: rtl8188eu: use break to exit while loop
+Date: Mon, 25 Nov 2019 19:21:30 +0100
+Message-Id: <20191125182130.172602-1-straube.linux@gmail.com>
+X-Mailer: git-send-email 2.24.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -97,1036 +84,53 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Christian Gromm <christian.gromm@microchip.com>,
- driverdev-devel@linuxdriverproject.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Larry.Finger@lwfinger.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch moves the ABI description fils sysfs-bus-most and
-configfs-most to the kernel's documentation folder.
+The variable bContinual in Efuse_PgPacketRead() is only used to break
+out of a while loop. Remove the variable and use break instead.
 
-Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
+Signed-off-by: Michael Straube <straube.linux@gmail.com>
 ---
- Documentation/ABI/testing/configfs-most            | 196 ++++++++++++++
- Documentation/ABI/testing/sysfs-bus-most           | 295 +++++++++++++++++++++
- .../most/Documentation/ABI/configfs-most.txt       | 196 --------------
- .../most/Documentation/ABI/sysfs-bus-most.txt      | 295 ---------------------
- 4 files changed, 491 insertions(+), 491 deletions(-)
- create mode 100644 Documentation/ABI/testing/configfs-most
- create mode 100644 Documentation/ABI/testing/sysfs-bus-most
- delete mode 100644 drivers/staging/most/Documentation/ABI/configfs-most.txt
- delete mode 100644 drivers/staging/most/Documentation/ABI/sysfs-bus-most.txt
+ drivers/staging/rtl8188eu/core/rtw_efuse.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/Documentation/ABI/testing/configfs-most b/Documentation/ABI/testing/configfs-most
-new file mode 100644
-index 0000000..ed67a4d
---- /dev/null
-+++ b/Documentation/ABI/testing/configfs-most
-@@ -0,0 +1,196 @@
-+What: 		/sys/kernel/config/most_<component>
-+Date: 		March 8, 2019
-+KernelVersion:  5.2
-+Description: 	Interface is used to configure and connect device channels
-+		to component drivers.
-+
-+		Attributes are visible only when configfs is mounted. To mount
-+		configfs in /sys/kernel/config directory use:
-+		# mount -t configfs none /sys/kernel/config/
-+
-+
-+What: 		/sys/kernel/config/most_cdev/<link>
-+Date: 		March 8, 2019
-+KernelVersion:  5.2
-+Description:
-+		The attributes:
-+
-+		buffer_size	configure the buffer size for this channel
-+
-+		subbuffer_size	configure the sub-buffer size for this channel
-+				(needed for synchronous and isochrnous data)
-+
-+
-+		num_buffers	configure number of buffers used for this
-+				channel
-+
-+		datatype	configure type of data that will travel over
-+				this channel
-+
-+		direction	configure whether this link will be an input
-+				or output
-+
-+		dbr_size	configure DBR data buffer size (this is used
-+				for MediaLB communication only)
-+
-+		packets_per_xact
-+				configure the number of packets that will be
-+				collected from the network before being
-+				transmitted via USB (this is used for USB
-+				communication only)
-+
-+		device		name of the device the link is to be attached to
-+
-+		channel		name of the channel the link is to be attached to
-+
-+		comp_params	pass parameters needed by some components
-+
-+		create_link	write '1' to this attribute to trigger the
-+				creation of the link. In case of speculative
-+				configuration, the creation is post-poned until
-+				a physical device is being attached to the bus.
-+
-+		destroy_link	write '1' to this attribute to destroy an
-+				active link
-+
-+What: 		/sys/kernel/config/most_video/<link>
-+Date: 		March 8, 2019
-+KernelVersion:  5.2
-+Description:
-+		The attributes:
-+
-+		buffer_size	configure the buffer size for this channel
-+
-+		subbuffer_size	configure the sub-buffer size for this channel
-+				(needed for synchronous and isochrnous data)
-+
-+
-+		num_buffers	configure number of buffers used for this
-+				channel
-+
-+		datatype	configure type of data that will travel over
-+				this channel
-+
-+		direction	configure whether this link will be an input
-+				or output
-+
-+		dbr_size	configure DBR data buffer size (this is used
-+				for MediaLB communication only)
-+
-+		packets_per_xact
-+				configure the number of packets that will be
-+				collected from the network before being
-+				transmitted via USB (this is used for USB
-+				communication only)
-+
-+		device		name of the device the link is to be attached to
-+
-+		channel		name of the channel the link is to be attached to
-+
-+		comp_params	pass parameters needed by some components
-+
-+		create_link	write '1' to this attribute to trigger the
-+				creation of the link. In case of speculative
-+				configuration, the creation is post-poned until
-+				a physical device is being attached to the bus.
-+
-+		destroy_link	write '1' to this attribute to destroy an
-+				active link
-+
-+What: 		/sys/kernel/config/most_net/<link>
-+Date: 		March 8, 2019
-+KernelVersion:  5.2
-+Description:
-+		The attributes:
-+
-+		buffer_size	configure the buffer size for this channel
-+
-+		subbuffer_size	configure the sub-buffer size for this channel
-+				(needed for synchronous and isochrnous data)
-+
-+
-+		num_buffers	configure number of buffers used for this
-+				channel
-+
-+		datatype	configure type of data that will travel over
-+				this channel
-+
-+		direction	configure whether this link will be an input
-+				or output
-+
-+		dbr_size	configure DBR data buffer size (this is used
-+				for MediaLB communication only)
-+
-+		packets_per_xact
-+				configure the number of packets that will be
-+				collected from the network before being
-+				transmitted via USB (this is used for USB
-+				communication only)
-+
-+		device		name of the device the link is to be attached to
-+
-+		channel		name of the channel the link is to be attached to
-+
-+		comp_params	pass parameters needed by some components
-+
-+		create_link	write '1' to this attribute to trigger the
-+				creation of the link. In case of speculative
-+				configuration, the creation is post-poned until
-+				a physical device is being attached to the bus.
-+
-+		destroy_link	write '1' to this attribute to destroy an
-+				active link
-+
-+What: 		/sys/kernel/config/most_sound/<card>
-+Date: 		March 8, 2019
-+KernelVersion:  5.2
-+Description:
-+		The attributes:
-+
-+		create_card	write '1' to this attribute to trigger the
-+                                registration of the sound card with the ALSA
-+				subsystem.
-+
-+What: 		/sys/kernel/config/most_sound/<card>/<link>
-+Date: 		March 8, 2019
-+KernelVersion:  5.2
-+Description:
-+		The attributes:
-+
-+		buffer_size	configure the buffer size for this channel
-+
-+		subbuffer_size	configure the sub-buffer size for this channel
-+				(needed for synchronous and isochrnous data)
-+
-+
-+		num_buffers	configure number of buffers used for this
-+				channel
-+
-+		datatype	configure type of data that will travel over
-+				this channel
-+
-+		direction	configure whether this link will be an input
-+				or output
-+
-+		dbr_size	configure DBR data buffer size (this is used
-+				for MediaLB communication only)
-+
-+		packets_per_xact
-+				configure the number of packets that will be
-+				collected from the network before being
-+				transmitted via USB (this is used for USB
-+				communication only)
-+
-+		device		name of the device the link is to be attached to
-+
-+		channel		name of the channel the link is to be attached to
-+
-+		comp_params	pass parameters needed by some components
-+
-+		create_link	write '1' to this attribute to trigger the
-+				creation of the link. In case of speculative
-+				configuration, the creation is post-poned until
-+				a physical device is being attached to the bus.
-+
-+		destroy_link	write '1' to this attribute to destroy an
-+				active link
-diff --git a/Documentation/ABI/testing/sysfs-bus-most b/Documentation/ABI/testing/sysfs-bus-most
-new file mode 100644
-index 0000000..6b1d06e
---- /dev/null
-+++ b/Documentation/ABI/testing/sysfs-bus-most
-@@ -0,0 +1,295 @@
-+What:		/sys/bus/most/devices/.../description
-+Date:		March 2017
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		Provides information about the interface type and the physical
-+		location of the device. Hardware attached via USB, for instance,
-+		might return <1-1.1:1.0>
-+Users:
-+
-+What:		/sys/bus/most/devices/.../interface
-+Date:		March 2017
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		Indicates the type of peripheral interface the device uses.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../dci
-+Date:		June 2016
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		If the network interface controller is attached via USB, a dci
-+		directory is created that allows applications to read and
-+		write the controller's DCI registers.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../dci/arb_address
-+Date:		June 2016
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		This is used to set an arbitrary DCI register address an
-+		application wants to read from or write to.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../dci/arb_value
-+Date:		June 2016
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		This is used to read and write the DCI register whose address
-+		is stored in arb_address.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../dci/mep_eui48_hi
-+Date:		June 2016
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		This is used to check and configure the MAC address.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../dci/mep_eui48_lo
-+Date:		June 2016
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		This is used to check and configure the MAC address.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../dci/mep_eui48_mi
-+Date:		June 2016
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		This is used to check and configure the MAC address.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../dci/mep_filter
-+Date:		June 2016
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		This is used to check and configure the MEP filter address.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../dci/mep_hash0
-+Date:		June 2016
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		This is used to check and configure the MEP hash table.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../dci/mep_hash1
-+Date:		June 2016
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		This is used to check and configure the MEP hash table.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../dci/mep_hash2
-+Date:		June 2016
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		This is used to check and configure the MEP hash table.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../dci/mep_hash3
-+Date:		June 2016
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		This is used to check and configure the MEP hash table.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../dci/ni_state
-+Date:		June 2016
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		Indicates the current network interface state.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../dci/node_address
-+Date:		June 2016
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		Indicates the current node address.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../dci/node_position
-+Date:		June 2016
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		Indicates the current node position.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../dci/packet_bandwidth
-+Date:		June 2016
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		Indicates the configured packet bandwidth.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../dci/sync_ep
-+Date:		June 2016
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		Triggers the controller's synchronization process for a certain
-+		endpoint.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../<channel>/
-+Date:		March 2017
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		For every channel of the device a directory is created, whose
-+		name is dictated by the HDM. This enables an application to
-+		collect information about the channel's capabilities and
-+		configure it.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../<channel>/available_datatypes
-+Date:		March 2017
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		Indicates the data types the current channel can transport.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../<channel>/available_directions
-+Date:		March 2017
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		Indicates the directions the current channel is capable of.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../<channel>/number_of_packet_buffers
-+Date:		March 2017
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		Indicates the number of packet buffers the current channel can
-+		handle.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../<channel>/number_of_stream_buffers
-+Date:		March 2017
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		Indicates the number of streaming buffers the current channel can
-+		handle.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../<channel>/size_of_packet_buffer
-+Date:		March 2017
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		Indicates the size of a packet buffer the current channel can
-+		handle.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../<channel>/size_of_stream_buffer
-+Date:		March 2017
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		Indicates the size of a streaming buffer the current channel can
-+		handle.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../<channel>/set_number_of_buffers
-+Date:		March 2017
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		This is to configure the number of buffers of the current channel.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../<channel>/set_buffer_size
-+Date:		March 2017
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		This is to configure the size of a buffer of the current channel.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../<channel>/set_direction
-+Date:		March 2017
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		This is to configure the direction of the current channel.
-+		The following strings will be accepted:
-+			'dir_tx',
-+			'dir_rx'
-+Users:
-+
-+What:		/sys/bus/most/devices/.../<channel>/set_datatype
-+Date:		March 2017
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		This is to configure the data type of the current channel.
-+		The following strings will be accepted:
-+			'control',
-+			'async',
-+			'sync',
-+			'isoc_avp'
-+Users:
-+
-+What:		/sys/bus/most/devices/.../<channel>/set_subbuffer_size
-+Date:		March 2017
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		This is to configure the subbuffer size of the current channel.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../<channel>/set_packets_per_xact
-+Date:		March 2017
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		This is to configure the number of packets per transaction of
-+		the current channel. This is only needed network interface
-+		controller is attached via USB.
-+Users:
-+
-+What:		/sys/bus/most/devices/.../<channel>/channel_starving
-+Date:		March 2017
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		Indicates whether current channel ran out of buffers.
-+Users:
-+
-+What:		/sys/bus/most/drivers/most_core/components
-+Date:		March 2017
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		This is used to retrieve a list of registered components.
-+Users:
-+
-+What:		/sys/bus/most/drivers/most_core/links
-+Date:		March 2017
-+KernelVersion:	4.15
-+Contact:	Christian Gromm <christian.gromm@microchip.com>
-+Description:
-+		This is used to retrieve a list of established links.
-+Users:
-diff --git a/drivers/staging/most/Documentation/ABI/configfs-most.txt b/drivers/staging/most/Documentation/ABI/configfs-most.txt
-deleted file mode 100644
-index ed67a4d..0000000
---- a/drivers/staging/most/Documentation/ABI/configfs-most.txt
-+++ /dev/null
-@@ -1,196 +0,0 @@
--What: 		/sys/kernel/config/most_<component>
--Date: 		March 8, 2019
--KernelVersion:  5.2
--Description: 	Interface is used to configure and connect device channels
--		to component drivers.
--
--		Attributes are visible only when configfs is mounted. To mount
--		configfs in /sys/kernel/config directory use:
--		# mount -t configfs none /sys/kernel/config/
--
--
--What: 		/sys/kernel/config/most_cdev/<link>
--Date: 		March 8, 2019
--KernelVersion:  5.2
--Description:
--		The attributes:
--
--		buffer_size	configure the buffer size for this channel
--
--		subbuffer_size	configure the sub-buffer size for this channel
--				(needed for synchronous and isochrnous data)
--
--
--		num_buffers	configure number of buffers used for this
--				channel
--
--		datatype	configure type of data that will travel over
--				this channel
--
--		direction	configure whether this link will be an input
--				or output
--
--		dbr_size	configure DBR data buffer size (this is used
--				for MediaLB communication only)
--
--		packets_per_xact
--				configure the number of packets that will be
--				collected from the network before being
--				transmitted via USB (this is used for USB
--				communication only)
--
--		device		name of the device the link is to be attached to
--
--		channel		name of the channel the link is to be attached to
--
--		comp_params	pass parameters needed by some components
--
--		create_link	write '1' to this attribute to trigger the
--				creation of the link. In case of speculative
--				configuration, the creation is post-poned until
--				a physical device is being attached to the bus.
--
--		destroy_link	write '1' to this attribute to destroy an
--				active link
--
--What: 		/sys/kernel/config/most_video/<link>
--Date: 		March 8, 2019
--KernelVersion:  5.2
--Description:
--		The attributes:
--
--		buffer_size	configure the buffer size for this channel
--
--		subbuffer_size	configure the sub-buffer size for this channel
--				(needed for synchronous and isochrnous data)
--
--
--		num_buffers	configure number of buffers used for this
--				channel
--
--		datatype	configure type of data that will travel over
--				this channel
--
--		direction	configure whether this link will be an input
--				or output
--
--		dbr_size	configure DBR data buffer size (this is used
--				for MediaLB communication only)
--
--		packets_per_xact
--				configure the number of packets that will be
--				collected from the network before being
--				transmitted via USB (this is used for USB
--				communication only)
--
--		device		name of the device the link is to be attached to
--
--		channel		name of the channel the link is to be attached to
--
--		comp_params	pass parameters needed by some components
--
--		create_link	write '1' to this attribute to trigger the
--				creation of the link. In case of speculative
--				configuration, the creation is post-poned until
--				a physical device is being attached to the bus.
--
--		destroy_link	write '1' to this attribute to destroy an
--				active link
--
--What: 		/sys/kernel/config/most_net/<link>
--Date: 		March 8, 2019
--KernelVersion:  5.2
--Description:
--		The attributes:
--
--		buffer_size	configure the buffer size for this channel
--
--		subbuffer_size	configure the sub-buffer size for this channel
--				(needed for synchronous and isochrnous data)
--
--
--		num_buffers	configure number of buffers used for this
--				channel
--
--		datatype	configure type of data that will travel over
--				this channel
--
--		direction	configure whether this link will be an input
--				or output
--
--		dbr_size	configure DBR data buffer size (this is used
--				for MediaLB communication only)
--
--		packets_per_xact
--				configure the number of packets that will be
--				collected from the network before being
--				transmitted via USB (this is used for USB
--				communication only)
--
--		device		name of the device the link is to be attached to
--
--		channel		name of the channel the link is to be attached to
--
--		comp_params	pass parameters needed by some components
--
--		create_link	write '1' to this attribute to trigger the
--				creation of the link. In case of speculative
--				configuration, the creation is post-poned until
--				a physical device is being attached to the bus.
--
--		destroy_link	write '1' to this attribute to destroy an
--				active link
--
--What: 		/sys/kernel/config/most_sound/<card>
--Date: 		March 8, 2019
--KernelVersion:  5.2
--Description:
--		The attributes:
--
--		create_card	write '1' to this attribute to trigger the
--                                registration of the sound card with the ALSA
--				subsystem.
--
--What: 		/sys/kernel/config/most_sound/<card>/<link>
--Date: 		March 8, 2019
--KernelVersion:  5.2
--Description:
--		The attributes:
--
--		buffer_size	configure the buffer size for this channel
--
--		subbuffer_size	configure the sub-buffer size for this channel
--				(needed for synchronous and isochrnous data)
--
--
--		num_buffers	configure number of buffers used for this
--				channel
--
--		datatype	configure type of data that will travel over
--				this channel
--
--		direction	configure whether this link will be an input
--				or output
--
--		dbr_size	configure DBR data buffer size (this is used
--				for MediaLB communication only)
--
--		packets_per_xact
--				configure the number of packets that will be
--				collected from the network before being
--				transmitted via USB (this is used for USB
--				communication only)
--
--		device		name of the device the link is to be attached to
--
--		channel		name of the channel the link is to be attached to
--
--		comp_params	pass parameters needed by some components
--
--		create_link	write '1' to this attribute to trigger the
--				creation of the link. In case of speculative
--				configuration, the creation is post-poned until
--				a physical device is being attached to the bus.
--
--		destroy_link	write '1' to this attribute to destroy an
--				active link
-diff --git a/drivers/staging/most/Documentation/ABI/sysfs-bus-most.txt b/drivers/staging/most/Documentation/ABI/sysfs-bus-most.txt
-deleted file mode 100644
-index 6b1d06e..0000000
---- a/drivers/staging/most/Documentation/ABI/sysfs-bus-most.txt
-+++ /dev/null
-@@ -1,295 +0,0 @@
--What:		/sys/bus/most/devices/.../description
--Date:		March 2017
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		Provides information about the interface type and the physical
--		location of the device. Hardware attached via USB, for instance,
--		might return <1-1.1:1.0>
--Users:
--
--What:		/sys/bus/most/devices/.../interface
--Date:		March 2017
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		Indicates the type of peripheral interface the device uses.
--Users:
--
--What:		/sys/bus/most/devices/.../dci
--Date:		June 2016
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		If the network interface controller is attached via USB, a dci
--		directory is created that allows applications to read and
--		write the controller's DCI registers.
--Users:
--
--What:		/sys/bus/most/devices/.../dci/arb_address
--Date:		June 2016
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		This is used to set an arbitrary DCI register address an
--		application wants to read from or write to.
--Users:
--
--What:		/sys/bus/most/devices/.../dci/arb_value
--Date:		June 2016
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		This is used to read and write the DCI register whose address
--		is stored in arb_address.
--Users:
--
--What:		/sys/bus/most/devices/.../dci/mep_eui48_hi
--Date:		June 2016
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		This is used to check and configure the MAC address.
--Users:
--
--What:		/sys/bus/most/devices/.../dci/mep_eui48_lo
--Date:		June 2016
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		This is used to check and configure the MAC address.
--Users:
--
--What:		/sys/bus/most/devices/.../dci/mep_eui48_mi
--Date:		June 2016
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		This is used to check and configure the MAC address.
--Users:
--
--What:		/sys/bus/most/devices/.../dci/mep_filter
--Date:		June 2016
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		This is used to check and configure the MEP filter address.
--Users:
--
--What:		/sys/bus/most/devices/.../dci/mep_hash0
--Date:		June 2016
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		This is used to check and configure the MEP hash table.
--Users:
--
--What:		/sys/bus/most/devices/.../dci/mep_hash1
--Date:		June 2016
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		This is used to check and configure the MEP hash table.
--Users:
--
--What:		/sys/bus/most/devices/.../dci/mep_hash2
--Date:		June 2016
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		This is used to check and configure the MEP hash table.
--Users:
--
--What:		/sys/bus/most/devices/.../dci/mep_hash3
--Date:		June 2016
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		This is used to check and configure the MEP hash table.
--Users:
--
--What:		/sys/bus/most/devices/.../dci/ni_state
--Date:		June 2016
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		Indicates the current network interface state.
--Users:
--
--What:		/sys/bus/most/devices/.../dci/node_address
--Date:		June 2016
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		Indicates the current node address.
--Users:
--
--What:		/sys/bus/most/devices/.../dci/node_position
--Date:		June 2016
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		Indicates the current node position.
--Users:
--
--What:		/sys/bus/most/devices/.../dci/packet_bandwidth
--Date:		June 2016
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		Indicates the configured packet bandwidth.
--Users:
--
--What:		/sys/bus/most/devices/.../dci/sync_ep
--Date:		June 2016
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		Triggers the controller's synchronization process for a certain
--		endpoint.
--Users:
--
--What:		/sys/bus/most/devices/.../<channel>/
--Date:		March 2017
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		For every channel of the device a directory is created, whose
--		name is dictated by the HDM. This enables an application to
--		collect information about the channel's capabilities and
--		configure it.
--Users:
--
--What:		/sys/bus/most/devices/.../<channel>/available_datatypes
--Date:		March 2017
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		Indicates the data types the current channel can transport.
--Users:
--
--What:		/sys/bus/most/devices/.../<channel>/available_directions
--Date:		March 2017
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		Indicates the directions the current channel is capable of.
--Users:
--
--What:		/sys/bus/most/devices/.../<channel>/number_of_packet_buffers
--Date:		March 2017
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		Indicates the number of packet buffers the current channel can
--		handle.
--Users:
--
--What:		/sys/bus/most/devices/.../<channel>/number_of_stream_buffers
--Date:		March 2017
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		Indicates the number of streaming buffers the current channel can
--		handle.
--Users:
--
--What:		/sys/bus/most/devices/.../<channel>/size_of_packet_buffer
--Date:		March 2017
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		Indicates the size of a packet buffer the current channel can
--		handle.
--Users:
--
--What:		/sys/bus/most/devices/.../<channel>/size_of_stream_buffer
--Date:		March 2017
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		Indicates the size of a streaming buffer the current channel can
--		handle.
--Users:
--
--What:		/sys/bus/most/devices/.../<channel>/set_number_of_buffers
--Date:		March 2017
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		This is to configure the number of buffers of the current channel.
--Users:
--
--What:		/sys/bus/most/devices/.../<channel>/set_buffer_size
--Date:		March 2017
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		This is to configure the size of a buffer of the current channel.
--Users:
--
--What:		/sys/bus/most/devices/.../<channel>/set_direction
--Date:		March 2017
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		This is to configure the direction of the current channel.
--		The following strings will be accepted:
--			'dir_tx',
--			'dir_rx'
--Users:
--
--What:		/sys/bus/most/devices/.../<channel>/set_datatype
--Date:		March 2017
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		This is to configure the data type of the current channel.
--		The following strings will be accepted:
--			'control',
--			'async',
--			'sync',
--			'isoc_avp'
--Users:
--
--What:		/sys/bus/most/devices/.../<channel>/set_subbuffer_size
--Date:		March 2017
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		This is to configure the subbuffer size of the current channel.
--Users:
--
--What:		/sys/bus/most/devices/.../<channel>/set_packets_per_xact
--Date:		March 2017
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		This is to configure the number of packets per transaction of
--		the current channel. This is only needed network interface
--		controller is attached via USB.
--Users:
--
--What:		/sys/bus/most/devices/.../<channel>/channel_starving
--Date:		March 2017
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		Indicates whether current channel ran out of buffers.
--Users:
--
--What:		/sys/bus/most/drivers/most_core/components
--Date:		March 2017
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		This is used to retrieve a list of registered components.
--Users:
--
--What:		/sys/bus/most/drivers/most_core/links
--Date:		March 2017
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		This is used to retrieve a list of established links.
--Users:
+diff --git a/drivers/staging/rtl8188eu/core/rtw_efuse.c b/drivers/staging/rtl8188eu/core/rtw_efuse.c
+index d9b0f9e6235c..0b86ae8338d9 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_efuse.c
++++ b/drivers/staging/rtl8188eu/core/rtw_efuse.c
+@@ -402,7 +402,6 @@ static u16 Efuse_GetCurrentSize(struct adapter *pAdapter)
+ int Efuse_PgPacketRead(struct adapter *pAdapter, u8 offset, u8 *data)
+ {
+ 	u8 ReadState = PG_STATE_HEADER;
+-	int	bContinual = true;
+ 	int	bDataEmpty = true;
+ 	u8 efuse_data, word_cnts = 0;
+ 	u16	efuse_addr = 0;
+@@ -422,7 +421,7 @@ int Efuse_PgPacketRead(struct adapter *pAdapter, u8 offset, u8 *data)
+ 	/*  <Roger_TODO> Efuse has been pre-programmed dummy 5Bytes at the end of Efuse by CP. */
+ 	/*  Skip dummy parts to prevent unexpected data read from Efuse. */
+ 	/*  By pass right now. 2009.02.19. */
+-	while (bContinual && AVAILABLE_EFUSE_ADDR(efuse_addr)) {
++	while (AVAILABLE_EFUSE_ADDR(efuse_addr)) {
+ 		/*   Header Read ------------- */
+ 		if (ReadState & PG_STATE_HEADER) {
+ 			if (efuse_OneByteRead(pAdapter, efuse_addr, &efuse_data) && (efuse_data != 0xFF)) {
+@@ -464,7 +463,7 @@ int Efuse_PgPacketRead(struct adapter *pAdapter, u8 offset, u8 *data)
+ 					ReadState = PG_STATE_HEADER;
+ 				}
+ 			} else {
+-				bContinual = false;
++				break;
+ 			}
+ 		} else if (ReadState & PG_STATE_DATA) {
+ 			/*   Data section Read ------------- */
 -- 
-2.7.4
+2.24.0
 
 _______________________________________________
 devel mailing list
