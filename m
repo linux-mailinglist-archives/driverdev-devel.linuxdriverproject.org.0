@@ -1,73 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B3EEC1085F5
-	for <lists+driverdev-devel@lfdr.de>; Mon, 25 Nov 2019 01:34:24 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7CFAD1088C9
+	for <lists+driverdev-devel@lfdr.de>; Mon, 25 Nov 2019 07:54:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 76D39863D5;
-	Mon, 25 Nov 2019 00:34:21 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 35D5D87BD7;
+	Mon, 25 Nov 2019 06:54:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lfWxoJffiLL9; Mon, 25 Nov 2019 00:34:20 +0000 (UTC)
+	with ESMTP id D0tIazbNbvZT; Mon, 25 Nov 2019 06:54:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id AA3B8860A3;
-	Mon, 25 Nov 2019 00:34:18 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2F9D087B8E;
+	Mon, 25 Nov 2019 06:54:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CAA561BF95C
- for <devel@linuxdriverproject.org>; Mon, 25 Nov 2019 00:34:15 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 66FAD1BF3A6
+ for <devel@linuxdriverproject.org>; Mon, 25 Nov 2019 06:54:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 916B88573E
- for <devel@linuxdriverproject.org>; Mon, 25 Nov 2019 00:34:15 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 628302049A
+ for <devel@linuxdriverproject.org>; Mon, 25 Nov 2019 06:54:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YS5jnwL8tyQW for <devel@linuxdriverproject.org>;
- Mon, 25 Nov 2019 00:34:15 +0000 (UTC)
+ with ESMTP id wXQ1PfaKge-t for <devel@linuxdriverproject.org>;
+ Mon, 25 Nov 2019 06:54:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f68.google.com (mail-ot1-f68.google.com
- [209.85.210.68])
- by whitealder.osuosl.org (Postfix) with ESMTPS id F290A85B9D
- for <devel@driverdev.osuosl.org>; Mon, 25 Nov 2019 00:34:14 +0000 (UTC)
-Received: by mail-ot1-f68.google.com with SMTP id l14so11055698oti.10
- for <devel@driverdev.osuosl.org>; Sun, 24 Nov 2019 16:34:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=m4t9YVjynZf0AR8Va6Z1la9JyW9CTSQufaX/nbf2sfA=;
- b=PWUaSZDPvqv4PrLtDvHCBjoC9k2Wv9/boTHtiOzcBiyJRrn+LS7w9Py70afmDFOxlE
- a2hjqbjgyz6VRLyIsvBnQS0nWbJj55WqBDe4QlkR242ltZWnj2R4QlaJaVT0SoKyvZqH
- 7pW1r/u/ClJaimtf/FpN716DqUlzGN4vghk0M4Lq8M4KLIsIv2AE6nDXC//sWr2+eb+v
- ckNiZNpwsZEvtYgnVICD0E6oFeudBVV0AgxCbkJSWB16+RcYT7XQlqCz2Ii4V0+nN9gb
- vckiwOJ/ILrQZmZS21hyR2dSCVqL8CJG4mFEnKDJgMJ5CKTgnlwc1OWyji2rtpSagfW1
- kR9g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to:content-transfer-encoding;
- bh=m4t9YVjynZf0AR8Va6Z1la9JyW9CTSQufaX/nbf2sfA=;
- b=bC4YfNfMkglImpVWi4KKAi85j/YWP6aIYeZ/cWeQ+dafjUxA2uTC092S0p57ueX+R0
- mydQsEOinksSYAImtWzjwLtZaFhOyRKMPO1jI18FX0IEmr4roAoo/nVG9k5kp7quEXJv
- XsBY1BBT36yyFB86v7X2GemJt3/9H0BafLqoisVzz1VEf10gvnYFvKeks+cLc+KSBAmd
- 8KCLKKfatCWq2iF+1gi3u0u3jx9ORKCxQVlLm9MaMsSXwYybwGO7SFVU6fUeS3ePZWtn
- CHitoo8RjxJ9lfqjpY//QE+DCOgeWBv4HHZYQMEtFgirWchjGsNasdNTyoEKyK0BFAZD
- hFig==
-X-Gm-Message-State: APjAAAXG/qDwApRnmygpRudpUmli+xkTzj9ZgiiYF6z2evPe9fzWiS3F
- U1JOhtlteY8l+F1pKAAkVzqxvwZTgUUG/KeYppk=
-X-Google-Smtp-Source: APXvYqz6+j2p8SSfTXVblZs6eARAJoC0S6MkpS4daZLQ2xzPwvgaNoyLsell/XFBJIpH7hGewAkbCalZsIWuZX5UuiE=
-X-Received: by 2002:a9d:3782:: with SMTP id x2mr17968626otb.21.1574642054251; 
- Sun, 24 Nov 2019 16:34:14 -0800 (PST)
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by silver.osuosl.org (Postfix) with ESMTPS id B16962048D
+ for <devel@driverdev.osuosl.org>; Mon, 25 Nov 2019 06:54:37 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id xAP6sDEp028057;
+ Mon, 25 Nov 2019 06:54:35 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=l/PZc/dlwG4EAD6FdzK2zvGCN4xk8EscxXrPQL25xkE=;
+ b=MfCLIu10rN5rqDV/Cx/Z4560dJqUaaIoGOSdqx+XrO744F2EAUEg2I3cFoflM5cWcSme
+ o969klq7bDx9AxK3cIzKRdq8z9vpIROYW/+Vjubit7BNvBRQRtIDDCrzbQI4TTSkZ9Qg
+ In3Vt3hJbWnhC5O0c+MLrCzx0EJph29iiSjoPeienOsEjOgw/lpXLBsodHp2A//JcLXv
+ x1UwlfEZTi1OZr5pGP236d8ZZfskaBj+ksnpFqaoG7rep0LbV9QrrCF0PP8mGwhJJtf3
+ kvz1Eb+QssOLRlM+6t8pKiH/JaQPuDb9U26+DovNvVo4uASYNJAF2YsbFGnIiWZJ+NSh Gg== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by userp2130.oracle.com with ESMTP id 2wev6twj2g-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 25 Nov 2019 06:54:34 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id xAP6sDHV016407;
+ Mon, 25 Nov 2019 06:54:34 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by aserp3020.oracle.com with ESMTP id 2wfe9dnv8c-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 25 Nov 2019 06:54:33 +0000
+Received: from abhmp0005.oracle.com (abhmp0005.oracle.com [141.146.116.11])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id xAP6sVvg001498;
+ Mon, 25 Nov 2019 06:54:32 GMT
+Received: from kadam (/129.205.23.165) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Sun, 24 Nov 2019 22:54:30 -0800
+Date: Mon, 25 Nov 2019 09:54:23 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Adham.Abozaeid@microchip.com
+Subject: Re: [PATCH 1/4] staging: wilc1000: use runtime configuration for
+ sdio oob interrupt
+Message-ID: <20191125065423.GA1774@kadam>
+References: <20191122205153.30723-1-adham.abozaeid@microchip.com>
 MIME-Version: 1.0
-Received: by 2002:ac9:1287:0:0:0:0:0 with HTTP; Sun, 24 Nov 2019 16:34:13
- -0800 (PST)
-From: AISHA GADDAFI <mahasaliou95@gmail.com>
-Date: Sun, 24 Nov 2019 16:34:13 -0800
-Message-ID: <CAON_=owDKh__ygkQsYZyZmpJWm9n2YrDejaxiBU4zk2-2ugcJA@mail.gmail.com>
-Subject: Lieber Freund (Assalamu Alaikum),
-To: undisclosed-recipients:;
+Content-Disposition: inline
+In-Reply-To: <20191122205153.30723-1-adham.abozaeid@microchip.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9451
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=1
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=697
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1911140001 definitions=main-1911250062
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9451
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=1 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=778 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1911140001
+ definitions=main-1911250062
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,35 +98,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: aishagaddafi969@aol.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ johannes@sipsolutions.net, linux-wireless@vger.kernel.org,
+ Ajay.Kathat@microchip.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-LS0gCkxpZWJlciBGcmV1bmQgKEFzc2FsYW11IEFsYWlrdW0pLAoKSWNoIGJpbiB2b3IgZWluZXIg
-cHJpdmF0ZW4gU3VjaGUgYXVmIElocmVuIEUtTWFpbC1Lb250YWt0IGdlc3Rvw59lbgpJaHJlIEhp
-bGZlLiBNZWluIE5hbWUgaXN0IEFpc2hhIEFsLVFhZGRhZmksIGFsbGVpbmVyemllaGVuZGUgTXV0
-dGVyIHVuZCBXaXR3ZQptaXQgZHJlaSBLaW5kZXJuLiBJY2ggYmluIGRpZSBlaW56aWdlIGJpb2xv
-Z2lzY2hlIFRvY2h0ZXIgZGVzIHNww6R0ZW4gTGlieWVycwpQcsOkc2lkZW50IChPYmVyc3QgTXVh
-bW1hciBHYWRkYWZpKS4KCkljaCBoYWJlIEludmVzdG1lbnRmb25kcyBpbSBXZXJ0IHZvbiBzaWVi
-ZW51bmR6d2FuemlnIE1pbGxpb25lbiB1bmQKZsO8bmZodW5kZXJ0dGF1c2VuZApVbml0ZWQgU3Rh
-dGUgRG9sbGFyICgyNy41MDAuMDAwLDAwICQpIHVuZCBpY2ggYnJhdWNoZSBlaW5lCnZlcnRyYXVl
-bnN3w7xyZGlnZSBJbnZlc3RpdGlvbgpNYW5hZ2VyIC8gUGFydG5lciB3ZWdlbiBtZWluZXMgYWt0
-dWVsbGVuIEZsw7xjaHRsaW5nc3N0YXR1cyBiaW4gaWNoIGplZG9jaApJbnRlcmVzc2UgYW4gSWhu
-ZW4gZsO8ciBkaWUgVW50ZXJzdMO8dHp1bmcgdm9uIEludmVzdGl0aW9uc3Byb2pla3RlbiBpbgpJ
-aHJlbSBMYW5kLCBrYW5uIHNlaW4KVm9uIGRvcnQgYXVzIGvDtm5uZW4gd2lyIGluIG7DpGNoc3Rl
-ciBadWt1bmZ0IGVpbmUgR2VzY2jDpGZ0c2JlemllaHVuZyBhdWZiYXVlbi4KCkljaCBiaW4gZ2Vy
-bmUgYmVyZWl0LCBtaXQgSWhuZW4gZGFzIFZlcmjDpGx0bmlzIGRlciBCZXRlaWxpZ3VuZ3NxdW90
-ZSB6dSB0ZWlsZW4Kc3TDvHR6ZW4gU2llIHNpY2ggYXVmIGRpZSB6dWvDvG5mdGlnZW4gSW52ZXN0
-aXRpb25lbiwgZGllIEdld2lubmUgZXJ6aWVsZW4uCgpXZW5uIFNpZSBiZXJlaXQgc2luZCwgZGll
-c2VzIFByb2pla3QgaW4gbWVpbmVtIE5hbWVuIGR1cmNoenVmw7xocmVuLAphbnR3b3J0ZW4gU2ll
-IGJpdHRlIGRyaW5nZW5kCkRhbWl0IGljaCBJaG5lbiBtZWhyIEluZm9ybWF0aW9uZW4gw7xiZXIg
-ZGllIEludmVzdG1lbnRmb25kcyBnZWJlbiBrYW5uLgoKSWhyZSBkcmluZ2VuZGUgQW50d29ydCB3
-aXJkIGdlc2Now6R0enQuIFNjaHJlaWJlbiBTaWUgbWlyIGFuIGRpZXNlCkUtTWFpbC1BZHJlc3Nl
-ICgKYWlzaGFnYWRkYWZpOTY5QGFvbC5jb20gKSB6dXIgd2VpdGVyZW4gRGlza3Vzc2lvbi4KCkZy
-ZXVuZGxpY2hlIEdyw7zDn2UKRnJhdSBBaXNoYSBBbC1HYWRkYWZpCkFudHdvcnQgYW46IGFpc2hh
-Z2FkZGFmaTk2OUBhb2wuY29tCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3Jn
-Cmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2RyaXZlcmRldi1kZXZlbAo=
+On Fri, Nov 22, 2019 at 08:52:02PM +0000, Adham.Abozaeid@microchip.com wrote:
+> From: Ajay Singh <ajay.kathat@microchip.com>
+> 
+> Set SDIO Out-of-band interrupt configuration at run time by passing
+> parameter during module load.
+> 
+
+This is barely an improvement at all...  Why not just make it auto
+detect?
+
+regards,
+dan carpenter
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
