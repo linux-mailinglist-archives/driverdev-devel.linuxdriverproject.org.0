@@ -1,62 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 55FC810D369
-	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Nov 2019 10:45:15 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6614810D3CF
+	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Nov 2019 11:20:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 240C387DC7;
-	Fri, 29 Nov 2019 09:45:13 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0302386C29;
+	Fri, 29 Nov 2019 10:20:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id scdhHabVc099; Fri, 29 Nov 2019 09:45:12 +0000 (UTC)
+	with ESMTP id Qd3pNOKm_QnU; Fri, 29 Nov 2019 10:20:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6763787DA3;
-	Fri, 29 Nov 2019 09:45:10 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E1DE186C04;
+	Fri, 29 Nov 2019 10:19:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C22A01BF48D
- for <devel@linuxdriverproject.org>; Fri, 29 Nov 2019 09:45:07 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8635E1BF349
+ for <devel@linuxdriverproject.org>; Fri, 29 Nov 2019 10:19:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BEA9388531
- for <devel@linuxdriverproject.org>; Fri, 29 Nov 2019 09:45:07 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8280D87D6F
+ for <devel@linuxdriverproject.org>; Fri, 29 Nov 2019 10:19:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qiF8JM452C5l for <devel@linuxdriverproject.org>;
- Fri, 29 Nov 2019 09:45:06 +0000 (UTC)
+ with ESMTP id 3vFixkfzgGRt for <devel@linuxdriverproject.org>;
+ Fri, 29 Nov 2019 10:19:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from faui03.informatik.uni-erlangen.de
- (faui03.informatik.uni-erlangen.de [131.188.30.103])
- by hemlock.osuosl.org (Postfix) with ESMTPS id E1D3D884D6
- for <devel@driverdev.osuosl.org>; Fri, 29 Nov 2019 09:45:05 +0000 (UTC)
-Received: from faui04d.informatik.uni-erlangen.de
- (faui04d.informatik.uni-erlangen.de [IPv6:2001:638:a000:4130:131:188:30:134])
- by faui03.informatik.uni-erlangen.de (Postfix) with ESMTP id B7681241800;
- Fri, 29 Nov 2019 10:39:55 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=stud.informatik.uni-erlangen.de; s=dkim2019; t=1575020395;
- bh=zrAETYs9jGviDqcQkaBJZVlKefmCZVDo8s3N3rrsojc=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=iKyTFto0VsfktS1uDh2o2Fu+hqfxXwiDzoUj3f6MqDwpMBv1fuYz5bW5CDW3+Spo4
- yvxnMDC48eySyb7s1W23s3xfVDEjYoPjoGrh4Vw3t+1G+MgAFA9R2JB4361YY/Lg9A
- nPaXcB1rQHEPJga8Po8yK7NjZodbgAiXJIl7GJTgqFcHmEaKdBcRKZ3g2c/vestdOy
- EbR2HQLChfW/fjnheigORS5OEehZopblbapJDb06mbxB2mUpEiCkXVGSW7jfL5sU5U
- xHxGgZY4ZVgl4MKgVtRW08fjed/BzwLi92sCdW4CTg6Xdllk4lHi+4qJQCxZ6J9Hc4
- 59uGK4trQGwNw==
-Received: by faui04d.informatik.uni-erlangen.de (Postfix, from userid 66711)
- id AB909AA5157; Fri, 29 Nov 2019 10:39:55 +0100 (CET)
-From: Andreas Hellmich <dy26hofu@stud.informatik.uni-erlangen.de>
-To: gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org
-Subject: [PATCH 2/2] rtl8723bs: Fix line length
-Date: Fri, 29 Nov 2019 10:39:41 +0100
-Message-Id: <20191129093939.2782-2-dy26hofu@stud.informatik.uni-erlangen.de>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20191129093939.2782-1-dy26hofu@stud.informatik.uni-erlangen.de>
-References: <20191129093939.2782-1-dy26hofu@stud.informatik.uni-erlangen.de>
+Received: from mail-lj1-f196.google.com (mail-lj1-f196.google.com
+ [209.85.208.196])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9EC5087D47
+ for <devel@driverdev.osuosl.org>; Fri, 29 Nov 2019 10:19:56 +0000 (UTC)
+Received: by mail-lj1-f196.google.com with SMTP id e28so7210583ljo.9
+ for <devel@driverdev.osuosl.org>; Fri, 29 Nov 2019 02:19:56 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Nkz44mhoHDVLzUp+/+JjQSxpcp30cfW8CdRZ0pMQCHA=;
+ b=C8qqMwiUg2EQQIyQWENXq2kGZsqOFbOYYAPq3mnPaWPE55qYXi6+1tgUhei2DmGqKe
+ Cxo5Go9pZI7p3sLcnIBVMwPxMTywujcJBTi0koiOXiDEAWKvWKYgrQrAPVQifKz2EuwL
+ M3yEbAEJoaZeXtze1X5rs81GIMo+5EqbzL7zB4gp39+03Djv1rO3vu/UnzkVsCUUGI0R
+ +4L+p3DWxRP9y+kBCW/jv8qoqWPntgpfDL2/8iG+oNv90vmmNfldvcEmYL1VS+vMXw4s
+ ETos6k4KdC0/9vfpO/RN/KBmH0MyfLWgK5TAK5df5QYbavfqHH5JNHpa91x1PFfKTjK1
+ pGIw==
+X-Gm-Message-State: APjAAAWheSqk6khMVPnXH+YlWG2Re3Aa/lt4FZq9H7jYpBP+maT5++S2
+ 0vMh7o7ACgJsWaZ2fY4Wu4s=
+X-Google-Smtp-Source: APXvYqxAfvdzr+rRXM1jO65af/PU54ixUlxEaF5CH6lMjYgGG/YUfbUODMZ7BHGj1brVNpUmRRyjAQ==
+X-Received: by 2002:a2e:88c4:: with SMTP id a4mr56115ljk.174.1575022794828;
+ Fri, 29 Nov 2019 02:19:54 -0800 (PST)
+Received: from xi.terra (c-14b8e655.07-184-6d6c6d4.bbcust.telenor.se.
+ [85.230.184.20])
+ by smtp.gmail.com with ESMTPSA id a9sm5432369lfi.50.2019.11.29.02.19.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 29 Nov 2019 02:19:54 -0800 (PST)
+Received: from johan by xi.terra with local (Exim 4.92.3)
+ (envelope-from <johan@xi.terra>)
+ id 1iadNU-0002YX-72; Fri, 29 Nov 2019 11:19:56 +0100
+From: Johan Hovold <johan@kernel.org>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH 0/4] staging: gigaset: fix crashes on probe
+Date: Fri, 29 Nov 2019 11:17:49 +0100
+Message-Id: <20191129101753.9721-1-johan@kernel.org>
+X-Mailer: git-send-email 2.24.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -70,186 +77,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Andreas Hellmich <dy26hofu@stud.informatik.uni-erlangen.de>,
- Annika Knepper <av91obul@stud.informatik.uni-erlangen.de>,
- linux-kernel@i4.cs.fau.de
+Cc: devel@driverdev.osuosl.org, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Johan Hovold <johan@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix some line length errors.
+Syzbot has been reporting a GPF on probe in the gigaset ISDN driver,
+which have since been moved to staging.
 
-Co-developed-by: Annika Knepper <av91obul@stud.informatik.uni-erlangen.de>
-Signed-off-by: Annika Knepper <av91obul@stud.informatik.uni-erlangen.de>
-Signed-off-by: Andreas Hellmich <dy26hofu@stud.informatik.uni-erlangen.de>
----
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 24 +++++++-------
- .../staging/rtl8723bs/hal/HalPhyRf_8723B.c    | 10 ++++--
- .../staging/rtl8723bs/hal/rtl8723b_hal_init.c | 32 ++++++++++---------
- 3 files changed, 37 insertions(+), 29 deletions(-)
+The first patch fixes that issue, and the next one fixes a second crash
+found during testing.
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index 81062ec3f086..c642825ca8ef 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -207,10 +207,10 @@ static RT_CHANNEL_PLAN_MAP	RTW_ChannelPlanMap[RT_CHANNEL_DOMAIN_MAX] = {
- 	{0x02, 0x1F},	/* 0x57, RT_CHANNEL_DOMAIN_FCC1_FCC10 */
- };
- 
--static RT_CHANNEL_PLAN_MAP	RTW_CHANNEL_PLAN_MAP_REALTEK_DEFINE = {0x03, 0x02}; /* use the combination for max channel numbers */
-+ /* use the combination for max channel numbers */
-+static RT_CHANNEL_PLAN_MAP RTW_CHANNEL_PLAN_MAP_REALTEK_DEFINE = {0x03, 0x02};
- 
--/*
-- * Search the @param ch in given @param ch_set
-+/* Search the @param ch in given @param ch_set
-  * @ch_set: the given channel set
-  * @ch: the given channel number
-  *
-@@ -229,8 +229,7 @@ int rtw_ch_set_search_ch(RT_CHANNEL_INFO *ch_set, const u32 ch)
- 	return i;
- }
- 
--/*
-- * Check the @param ch is fit with setband setting of @param adapter
-+/* Check the @param ch is fit with setband setting of @param adapter
-  * @adapter: the given adapter
-  * @ch: the given channel number
-  *
-@@ -3356,9 +3355,11 @@ void issue_assocreq(struct adapter *padapter)
- 					(!memcmp(pIE->data, WPS_OUI, 4))) {
- 				vs_ie_length = pIE->Length;
- 				if ((!padapter->registrypriv.wifi_spec) && (!memcmp(pIE->data, WPS_OUI, 4))) {
--					/* Commented by Kurt 20110629 */
--					/* In some older APs, WPS handshake */
--					/* would be fail if we append vender extensions information to AP */
-+					/* Commented by Kurt 20110629
-+					 * In some older APs, WPS handshake
-+					 * would be fail if we append vendor
-+					 * extensions information to AP
-+					 */
- 
- 					vs_ie_length = 14;
- 				}
-@@ -5379,8 +5380,7 @@ static void rtw_mlmeext_disconnect(struct adapter *padapter)
- 
- 	/* set_opmode_cmd(padapter, infra_client_with_mlme); */
- 
--	/*
--	 * For safety, prevent from keeping macid sleep.
-+	/* For safety, prevent from keeping macid sleep.
- 	 * If we can sure all power mode enter/leave are paired,
- 	 * this check can be removed.
- 	 * Lucas@20131113
-@@ -6385,7 +6385,9 @@ u8 sitesurvey_cmd_hdl(struct adapter *padapter, u8 *pbuf)
- 		Save_DM_Func_Flag(padapter);
- 		Switch_DM_Func(padapter, DYNAMIC_FUNC_DISABLE, false);
- 
--		/* config the initial gain under scanning, need to write the BB registers */
-+		/* config the initial gain under scanning, need to write the BB
-+		 * registers
-+		 */
- 		initialgain = 0x1e;
- 
- 		rtw_hal_set_hwreg(padapter, HW_VAR_INITIAL_GAIN, (u8 *)(&initialgain));
-diff --git a/drivers/staging/rtl8723bs/hal/HalPhyRf_8723B.c b/drivers/staging/rtl8723bs/hal/HalPhyRf_8723B.c
-index 106bfd670701..338dd0b7a6eb 100644
---- a/drivers/staging/rtl8723bs/hal/HalPhyRf_8723B.c
-+++ b/drivers/staging/rtl8723bs/hal/HalPhyRf_8723B.c
-@@ -1,5 +1,5 @@
- // SPDX-License-Identifier: GPL-2.0
--/******************************************************************************
-+/*****************************************************************************
-  *
-  * Copyright(c) 2007 - 2011 Realtek Corporation. All rights reserved.
-  *
-@@ -82,7 +82,9 @@ static void setIqkMatrix_8723B(
- 		/* if (RFPath == ODM_RF_PATH_A) */
- 		switch (RFPath) {
- 		case ODM_RF_PATH_A:
--			/* write new elements A, C, D to regC80 and regC94, element B is always 0 */
-+			/* write new elements A, C, D to regC80 and regC94,
-+			 * element B is always 0
-+			 */
- 			value32 = (ele_D<<22)|((ele_C&0x3F)<<16)|ele_A;
- 			PHY_SetBBReg(pDM_Odm->Adapter, rOFDM0_XATxIQImbalance, bMaskDWord, value32);
- 
-@@ -93,7 +95,9 @@ static void setIqkMatrix_8723B(
- 			PHY_SetBBReg(pDM_Odm->Adapter, rOFDM0_ECCAThreshold, BIT24, value32);
- 			break;
- 		case ODM_RF_PATH_B:
--			/* write new elements A, C, D to regC88 and regC9C, element B is always 0 */
-+			/* write new elements A, C, D to regC88 and regC9C,
-+			 * element B is always 0
-+			 */
- 			value32 = (ele_D<<22)|((ele_C&0x3F)<<16)|ele_A;
- 			PHY_SetBBReg(pDM_Odm->Adapter, rOFDM0_XBTxIQImbalance, bMaskDWord, value32);
- 
-diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
-index 06c22ccfb2fd..de8caa6cd418 100644
---- a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
-+++ b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
-@@ -3191,22 +3191,26 @@ static void rtl8723b_fill_default_txdesc(
- 	if (bmcst)
- 		ptxdesc->bmc = 1;
- 
--	/*  2009.11.05. tynli_test. Suggested by SD4 Filen for FW LPS. */
--	/*  (1) The sequence number of each non-Qos frame / broadcast / multicast / */
--	/*  mgnt frame should be controlled by Hw because Fw will also send null data */
--	/*  which we cannot control when Fw LPS enable. */
--	/*  --> default enable non-Qos data sequense number. 2010.06.23. by tynli. */
--	/*  (2) Enable HW SEQ control for beacon packet, because we use Hw beacon. */
--	/*  (3) Use HW Qos SEQ to control the seq num of Ext port non-Qos packets. */
--	/*  2010.06.23. Added by tynli. */
-+	/* 2009.11.05. tynli_test. Suggested by SD4 Filen for FW LPS.
-+	 * (1) The sequence number of each non-Qos frame / broadcast /
-+	 * multicast / mgnt frame should be controlled by Hw because Fw
-+	 * will also send null data which we cannot control when Fw LPS
-+	 * enable.
-+	 * --> default enable non-Qos data sequense number. 2010.06.23.
-+	 * by tynli.
-+	 * (2) Enable HW SEQ control for beacon packet, because we use
-+	 * Hw beacon.
-+	 * (3) Use HW Qos SEQ to control the seq num of Ext port non-Qos
-+	 * packets.
-+	 * 2010.06.23. Added by tynli.
-+	 */
- 	if (!pattrib->qos_en) /*  Hw set sequence number */
- 		ptxdesc->en_hwseq = 1; /*  HWSEQ_EN */
- }
- 
--/*
-- *Description:
-+/* Description:
-  *
-- *Parameters:
-+ * Parameters:
-  *	pxmitframe	xmitframe
-  *	pbuf		where to fill tx desc
-  */
-@@ -4329,8 +4333,7 @@ void GetHwReg8723B(struct adapter *padapter, u8 variable, u8 *val)
- 	}
- }
- 
--/*
-- *Description:
-+/* Description:
-  *	Change default setting of specified variable.
-  */
- u8 SetHalDefVar8723B(struct adapter *padapter, enum HAL_DEF_VARIABLE variable, void *pval)
-@@ -4348,8 +4351,7 @@ u8 SetHalDefVar8723B(struct adapter *padapter, enum HAL_DEF_VARIABLE variable, v
- 	return bResult;
- }
- 
--/*
-- *Description:
-+/* Description:
-  *	Query setting of specified variable.
-  */
- u8 GetHalDefVar8723B(struct adapter *padapter, enum HAL_DEF_VARIABLE variable, void *pval)
+The third patch addresses a benign warning in USB core which syzbot is
+bound to report once the crashes have been fixed.
+
+And while I hate playing checkpatch games, the final patch addresses a
+checkpatch warning introduced on purpose by the third patch.
+
+Johan
+
+
+Johan Hovold (4):
+  staging: gigaset: fix general protection fault on probe
+  staging: gigaset: fix illegal free on probe errors
+  staging: gigaset: add endpoint-type sanity check
+  staging: gigaset: rename endpoint-descriptor identifier
+
+ drivers/staging/isdn/gigaset/usb-gigaset.c | 39 ++++++++++++++--------
+ 1 file changed, 26 insertions(+), 13 deletions(-)
+
 -- 
-2.20.1
+2.24.0
 
 _______________________________________________
 devel mailing list
