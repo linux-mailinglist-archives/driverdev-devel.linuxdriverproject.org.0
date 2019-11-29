@@ -1,68 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2877F10D3D8
-	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Nov 2019 11:20:10 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8DBB587E0E;
-	Fri, 29 Nov 2019 10:20:08 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tm5DsFT5Bb7L; Fri, 29 Nov 2019 10:20:07 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E5F8A87DD7;
-	Fri, 29 Nov 2019 10:20:04 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B9E331BF9BD
- for <devel@linuxdriverproject.org>; Fri, 29 Nov 2019 10:19:59 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A6AA10D3D1
+	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Nov 2019 11:20:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id B4973203A9
- for <devel@linuxdriverproject.org>; Fri, 29 Nov 2019 10:19:59 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8379B230F3;
+	Fri, 29 Nov 2019 10:20:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id wUY93NOYA1aT; Fri, 29 Nov 2019 10:20:04 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 8E5A82041A;
+	Fri, 29 Nov 2019 10:20:03 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9E5E81BF349
+ for <devel@linuxdriverproject.org>; Fri, 29 Nov 2019 10:19:59 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 99C8287D6F
+ for <devel@linuxdriverproject.org>; Fri, 29 Nov 2019 10:19:59 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id A4H+Bl5d-lG6 for <devel@linuxdriverproject.org>;
- Fri, 29 Nov 2019 10:19:58 +0000 (UTC)
+ with ESMTP id GZAVA8VxhK-i for <devel@linuxdriverproject.org>;
+ Fri, 29 Nov 2019 10:19:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lj1-f195.google.com (mail-lj1-f195.google.com
- [209.85.208.195])
- by silver.osuosl.org (Postfix) with ESMTPS id 1E20D20356
+Received: from mail-lj1-f194.google.com (mail-lj1-f194.google.com
+ [209.85.208.194])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id AA59787D47
  for <devel@driverdev.osuosl.org>; Fri, 29 Nov 2019 10:19:58 +0000 (UTC)
-Received: by mail-lj1-f195.google.com with SMTP id s22so12381801ljs.7
+Received: by mail-lj1-f194.google.com with SMTP id c19so4382691lji.11
  for <devel@driverdev.osuosl.org>; Fri, 29 Nov 2019 02:19:58 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=o4x724Do8urT6OaZpBWsj3Wi4vFYKy69gf8Bt4EpD18=;
- b=GIa9+75QaVpXTAYUokpYh1OHdf8yCWW9nCxTi7aikHHIhv/lTI+VhQrA5+DYZViqI+
- 3/X2MDcsvQaSf1avQXgMLT6vcxSU12ZmYjpFn6GCChNZzFkK1k/w/g0un97t1LWrMDfA
- dCAgnl3rd4hvONQnHf4jY/UZqbKMx84aMeNv+oFkorgYkQZhlXhsWlNEj916R946YSVd
- Xjm9Gk8qBehCcOIZ2PdSEwEL0hld+1uSsnszNO934uOoA4NDOs+1Aqv/B/QOFBCcVz/t
- wRST7Ph7EoBrdeFT/Ukt3irN3gljK0GO6yiyaMlYah93g8yhs0SLF/eaDuIb/oJt11EO
- lfyg==
-X-Gm-Message-State: APjAAAX3RDAA7MYaVsTGLoNkoDNOe1DFsv17+1IYUUJ86GxgjGFoOrly
- 98ckTrqN0diBaHhAkLcSgwqXSfUP
-X-Google-Smtp-Source: APXvYqxUKJ2Ry6AfAHcKf0XABmShcowXhlWbcGdZsRZNCePAZURUZrhHereMSi2W5VFWNaDdMgny5Q==
-X-Received: by 2002:a2e:8745:: with SMTP id q5mr7995655ljj.208.1575022796310; 
+ bh=YQ9NZqfEPBjz3KOdFZmTMVER3EPMPaak6R0HUkbsMbw=;
+ b=X71nJ61S3WWFyqGU108dbRx6RvzhXZyb2yPfMg931wkpoNxY1pdLwy4qPRj00NjG8u
+ W6dII0IB54JXRTQu5Rj4fFlRv6Y00C2PEpEt4bISMkYFMlrq/zktkbpRwVN37zW6BCtm
+ Ht7TMMUAMvtMYcofvzuQciZqAlohvMMgB76AiD9AQB6D5nfymhALsVlwg1quOZxsEm3v
+ PzGZGLT5TXeq+2YLthTjMCruLz8s5bR+kfv1N8RTehQoGfWUqNMuafKBmZ8jtuT0Ihzi
+ NzHBJtTv2CG4CevWmvyf4YWGsFFhIdsmGvkoJaTyv+b3p9xjZ5n7iz15U91FAiJCCZHN
+ lY6A==
+X-Gm-Message-State: APjAAAWO4UBN1S0ardDn8bGs3Eyfqudv7jow56dNl3OmUiaBpWS4QJa+
+ Gtn2ytwKT4Cep6Ds8glNo6E=
+X-Google-Smtp-Source: APXvYqzJB4YmHHDLdWxGw/gxHtBIsdyjdqqfFfBq0afNUwu5NbJ0VZT2+sgpIvQC3mGQpJOi7q44FA==
+X-Received: by 2002:a2e:8016:: with SMTP id j22mr989015ljg.24.1575022796898;
  Fri, 29 Nov 2019 02:19:56 -0800 (PST)
 Received: from xi.terra (c-14b8e655.07-184-6d6c6d4.bbcust.telenor.se.
  [85.230.184.20])
- by smtp.gmail.com with ESMTPSA id u16sm11279263lfi.36.2019.11.29.02.19.54
+ by smtp.gmail.com with ESMTPSA id g85sm9990868lfd.66.2019.11.29.02.19.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Fri, 29 Nov 2019 02:19:54 -0800 (PST)
 Received: from johan by xi.terra with local (Exim 4.92.3)
  (envelope-from <johan@xi.terra>)
- id 1iadNU-0002Yl-F7; Fri, 29 Nov 2019 11:19:56 +0100
+ id 1iadNU-0002Yq-Hx; Fri, 29 Nov 2019 11:19:56 +0100
 From: Johan Hovold <johan@kernel.org>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 3/4] staging: gigaset: add endpoint-type sanity check
-Date: Fri, 29 Nov 2019 11:17:52 +0100
-Message-Id: <20191129101753.9721-4-johan@kernel.org>
+Subject: [PATCH 4/4] staging: gigaset: rename endpoint-descriptor identifier
+Date: Fri, 29 Nov 2019 11:17:53 +0100
+Message-Id: <20191129101753.9721-5-johan@kernel.org>
 X-Mailer: git-send-email 2.24.0
 In-Reply-To: <20191129101753.9721-1-johan@kernel.org>
 References: <20191129101753.9721-1-johan@kernel.org>
@@ -86,44 +86,84 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Add endpoint type-sanity checks to prevent a warning in USB core on URB
-submission.
+Rename an endpoint-descriptor pointer to shut up a checkpatch warning
+about a line being over 80 columns, which is bound to generate a bunch
+of clean up patches otherwise.
 
 Signed-off-by: Johan Hovold <johan@kernel.org>
 ---
- drivers/staging/isdn/gigaset/usb-gigaset.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ drivers/staging/isdn/gigaset/usb-gigaset.c | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/staging/isdn/gigaset/usb-gigaset.c b/drivers/staging/isdn/gigaset/usb-gigaset.c
-index a84722d83bc6..6c07c8379711 100644
+index 6c07c8379711..d5fab2ea25b4 100644
 --- a/drivers/staging/isdn/gigaset/usb-gigaset.c
 +++ b/drivers/staging/isdn/gigaset/usb-gigaset.c
-@@ -705,6 +705,12 @@ static int gigaset_probe(struct usb_interface *interface,
+@@ -652,7 +652,7 @@ static int gigaset_probe(struct usb_interface *interface,
+ 	struct usb_host_interface *hostif = interface->cur_altsetting;
+ 	struct cardstate *cs = NULL;
+ 	struct usb_cardstate *ucs = NULL;
+-	struct usb_endpoint_descriptor *endpoint;
++	struct usb_endpoint_descriptor *epd;
+ 	int buffer_size;
  
- 	endpoint = &hostif->endpoint[0].desc;
+ 	gig_dbg(DEBUG_ANY, "%s: Check if device matches ...", __func__);
+@@ -703,17 +703,17 @@ static int gigaset_probe(struct usb_interface *interface,
+ 	/* save address of controller structure */
+ 	usb_set_intfdata(interface, cs);
  
-+	if (!usb_endpoint_dir_out(endpoint) || !usb_endpoint_xfer_bulk(endpoint)) {
-+		dev_err(&interface->dev, "missing bulk-out endpoint\n");
-+		retval = -ENODEV;
-+		goto error;
-+	}
-+
- 	buffer_size = le16_to_cpu(endpoint->wMaxPacketSize);
+-	endpoint = &hostif->endpoint[0].desc;
++	epd = &hostif->endpoint[0].desc;
+ 
+-	if (!usb_endpoint_dir_out(endpoint) || !usb_endpoint_xfer_bulk(endpoint)) {
++	if (!usb_endpoint_dir_out(epd) || !usb_endpoint_xfer_bulk(epd)) {
+ 		dev_err(&interface->dev, "missing bulk-out endpoint\n");
+ 		retval = -ENODEV;
+ 		goto error;
+ 	}
+ 
+-	buffer_size = le16_to_cpu(endpoint->wMaxPacketSize);
++	buffer_size = le16_to_cpu(epd->wMaxPacketSize);
  	ucs->bulk_out_size = buffer_size;
- 	ucs->bulk_out_epnum = usb_endpoint_num(endpoint);
-@@ -724,6 +730,12 @@ static int gigaset_probe(struct usb_interface *interface,
+-	ucs->bulk_out_epnum = usb_endpoint_num(endpoint);
++	ucs->bulk_out_epnum = usb_endpoint_num(epd);
+ 	ucs->bulk_out_buffer = kmalloc(buffer_size, GFP_KERNEL);
+ 	if (!ucs->bulk_out_buffer) {
+ 		dev_err(cs->dev, "Couldn't allocate bulk_out_buffer\n");
+@@ -728,9 +728,9 @@ static int gigaset_probe(struct usb_interface *interface,
+ 		goto error;
+ 	}
  
- 	endpoint = &hostif->endpoint[1].desc;
+-	endpoint = &hostif->endpoint[1].desc;
++	epd = &hostif->endpoint[1].desc;
  
-+	if (!usb_endpoint_dir_in(endpoint) || !usb_endpoint_xfer_int(endpoint)) {
-+		dev_err(&interface->dev, "missing int-in endpoint\n");
-+		retval = -ENODEV;
-+		goto error;
-+	}
-+
- 	ucs->busy = 0;
+-	if (!usb_endpoint_dir_in(endpoint) || !usb_endpoint_xfer_int(endpoint)) {
++	if (!usb_endpoint_dir_in(epd) || !usb_endpoint_xfer_int(epd)) {
+ 		dev_err(&interface->dev, "missing int-in endpoint\n");
+ 		retval = -ENODEV;
+ 		goto error;
+@@ -744,7 +744,7 @@ static int gigaset_probe(struct usb_interface *interface,
+ 		retval = -ENOMEM;
+ 		goto error;
+ 	}
+-	buffer_size = le16_to_cpu(endpoint->wMaxPacketSize);
++	buffer_size = le16_to_cpu(epd->wMaxPacketSize);
+ 	ucs->rcvbuf_size = buffer_size;
+ 	ucs->rcvbuf = kmalloc(buffer_size, GFP_KERNEL);
+ 	if (!ucs->rcvbuf) {
+@@ -754,10 +754,10 @@ static int gigaset_probe(struct usb_interface *interface,
+ 	}
+ 	/* Fill the interrupt urb and send it to the core */
+ 	usb_fill_int_urb(ucs->read_urb, udev,
+-			 usb_rcvintpipe(udev, usb_endpoint_num(endpoint)),
++			 usb_rcvintpipe(udev, usb_endpoint_num(epd)),
+ 			 ucs->rcvbuf, buffer_size,
+ 			 gigaset_read_int_callback,
+-			 cs, endpoint->bInterval);
++			 cs, epd->bInterval);
  
- 	ucs->read_urb = usb_alloc_urb(0, GFP_KERNEL);
+ 	retval = usb_submit_urb(ucs->read_urb, GFP_KERNEL);
+ 	if (retval) {
 -- 
 2.24.0
 
