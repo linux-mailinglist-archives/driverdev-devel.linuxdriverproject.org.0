@@ -2,83 +2,101 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A4F510D024
-	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Nov 2019 01:17:20 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0562F10D097
+	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Nov 2019 04:06:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 29ECB20426;
-	Fri, 29 Nov 2019 00:17:18 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5A11C22F26;
+	Fri, 29 Nov 2019 03:06:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pq9aImLEr3WN; Fri, 29 Nov 2019 00:17:17 +0000 (UTC)
+	with ESMTP id 9b1BMFpVme-r; Fri, 29 Nov 2019 03:06:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4875D203A4;
-	Fri, 29 Nov 2019 00:17:16 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by silver.osuosl.org (Postfix) with ESMTP id 7AB1322D55;
+	Fri, 29 Nov 2019 03:06:45 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 165A11BF3AE
- for <devel@linuxdriverproject.org>; Fri, 29 Nov 2019 00:17:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 145BC1BF3C8
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 29 Nov 2019 03:06:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0C74F86758
- for <devel@linuxdriverproject.org>; Fri, 29 Nov 2019 00:17:14 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D9EF4884DE
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 29 Nov 2019 03:06:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id m4eNSDOV57vm for <devel@linuxdriverproject.org>;
- Fri, 29 Nov 2019 00:17:13 +0000 (UTC)
+ with ESMTP id JRX1Wp5gOCO9
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 29 Nov 2019 03:06:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ed1-f68.google.com (mail-ed1-f68.google.com
- [209.85.208.68])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 137E0865A1
- for <devel@driverdev.osuosl.org>; Fri, 29 Nov 2019 00:17:13 +0000 (UTC)
-Received: by mail-ed1-f68.google.com with SMTP id b5so24228922eds.12
- for <devel@driverdev.osuosl.org>; Thu, 28 Nov 2019 16:17:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=hKdxAEvC9giOVo+5fI8UhBseDYEwGbYsXK3mw9tmIQY=;
- b=hVlmWmpzm8h9AJJ3dV8J/Vq5S3tr8XdfS5TULH7gtd+QDlFhFvJl5GIs3pVRxbpuAr
- vb1xpQaVDVwJEn8ubFxWrx0Sy+N9ZDlY0LzWfmLkB4krIK6/YmWQQ+vvqvlvkaGE6nAX
- DPJPCbcwVfWu0Kox3IVCt7MSklSiOlMkMdfDc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=hKdxAEvC9giOVo+5fI8UhBseDYEwGbYsXK3mw9tmIQY=;
- b=GoAOYgCKGzpIgX4iGB2z4L6OC3mvPXdCCW4U88lsdUCVmcqdF+c3uNVmQSfn2sF1j2
- eMlU7BjDmZ+vjLA4aJKTmtaiEloFJwgr6aI3LwXKj6UesBpRo4wSmE6qtnhAQKBDAi4A
- dst1/fTLLgSOnobmkUrGKi1XHfMZ6NqKitL/ECpTyeC7VfITS7SGaIDKFj/V/W06aW4T
- 7kOJiC+JSVS9dXpELTT/eYQ6T+rfzpY/P/BIdTuNe5j6p+stqxXJrZO0Dlclxe2jvaXW
- Bh2/yIluVuz0Wo9ZH2sEotFgW5udl8iYXb3Gmkn/gKLXKcfSp0KksomZWK9bWY12Ms3g
- xIDA==
-X-Gm-Message-State: APjAAAXqqeZHnolQGTnczuH5SdIyPA4Dn4KhLg0PbvtXoFnv1Azh8uYa
- CJUjHNCKi5JlhNgJOVvRe8saXKKgKXSjDQ==
-X-Google-Smtp-Source: APXvYqwPk5Ogn4HQB7k8S0lu0Me9LFNhIqsZS6DHuVqCKx+KjIdybTeDj1+Eu8m15VV5e095laT3RA==
-X-Received: by 2002:a17:906:641:: with SMTP id t1mr41261956ejb.1.1574986630753; 
- Thu, 28 Nov 2019 16:17:10 -0800 (PST)
-Received: from mail-wm1-f48.google.com (mail-wm1-f48.google.com.
- [209.85.128.48])
- by smtp.gmail.com with ESMTPSA id m26sm1233015edr.16.2019.11.28.16.17.09
- for <devel@driverdev.osuosl.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Nov 2019 16:17:09 -0800 (PST)
-Received: by mail-wm1-f48.google.com with SMTP id g206so12484815wme.1
- for <devel@driverdev.osuosl.org>; Thu, 28 Nov 2019 16:17:09 -0800 (PST)
-X-Received: by 2002:a1c:3c42:: with SMTP id j63mr12611006wma.90.1574986628632; 
- Thu, 28 Nov 2019 16:17:08 -0800 (PST)
+Received: from APC01-SG2-obe.outbound.protection.outlook.com
+ (mail-oln040092253081.outbound.protection.outlook.com [40.92.253.81])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D1254880F9
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 29 Nov 2019 03:06:24 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=SHTqBkTfrPZDztNezpFuQ8jMiW3loZESSNEeAncI3Vt0nej65GIUvSnQk2jf1jQnAgk7DPGcp+IUry5IDY5bnsLNMwbV3P2GYM8yvshw0a4TU/XSb0+4P69BFS4GIrGgVj/ieE+yhljDicfr6jza0ikKsMhYDqMni4moJqMrcGNleKtUgrhlOSDayR3HW3UMUOuR5PgoPq56x4/V7GuVUN2Ise0+75jcc0LIMyKIFStcgEGkOr7RNfdVFVQCEfw9PWd2rj1BWDLlSZFkGteYp/sgcrfv+fDKOe90wlSyctfrJlbQY9SC9log21qtRUgztBpLPDUmL5xs05hmbhN9VA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ryQCbwJEf/k6OOQr/1QWusE4c2M89BseJ8g1zfuJXrs=;
+ b=aIY8keuJRsP5J6/oUaqN2455jAVs1/PrvUVTGDanfRGMOErXBroW5qsWVVXauSj7tooKPsysnTbNNGDJEKl5EDdWgdcTFMAxs9ODHEkLIJFrXPd83jgNL3cX8fneMhvyGe3g6HpajeExdc4UqByoY2wfuqO4tttCOtnHEsKaY5dxlSBYgnQvhewYH7cqUWqmhYpWtje+g6+1+GzH+jBxOD5xGZPLStcg8s5fI8Sfl6Er98cLNkODEpM8NrXqKWYX93SZ9I2RbDPZo5p6onA1ma50KSvVfBHYwkg945LhATWbry0iyzxVsK2ayWI18y0Pv7DC+XO7XGoHecRVRmmKmQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ryQCbwJEf/k6OOQr/1QWusE4c2M89BseJ8g1zfuJXrs=;
+ b=FFCXqimE4Cg0Mr43LWH2ERHLz2wNgTz5jxgoWy6dQuZUZ8d1lhEjGAb67YWxMU6GV8adlZ8u87EJsx/JXuthKYPqS7eKJPwIgjqW4Iwihn6+oLa3jXyvjPJoXDBdRvCmYYjAZancgm1APk6Yh6rO39UHtQvGxsh0hE28En0u+A91fkTXalA+lJ0CdtJw9CG9Sosyci+QwKXNoc1mimfh+BQpa5bm9OZHSJ7lkO7YUYFn0zrZ6EKQg33HYtmzqqRvwUPGwET84SzzG2W8lSjlW0KcUpwmucnLor/qt+4aEcMF31MAPnEYNORt9NAWdGsgTpqao/gm22vvPCoT69bVdw==
+Received: from PU1APC01FT008.eop-APC01.prod.protection.outlook.com
+ (10.152.252.60) by PU1APC01HT237.eop-APC01.prod.protection.outlook.com
+ (10.152.253.155) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2474.17; Fri, 29 Nov
+ 2019 03:06:04 +0000
+Received: from SL2P216MB0905.KORP216.PROD.OUTLOOK.COM (10.152.252.56) by
+ PU1APC01FT008.mail.protection.outlook.com (10.152.252.66) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2474.17 via Frontend Transport; Fri, 29 Nov 2019 03:06:03 +0000
+Received: from SL2P216MB0905.KORP216.PROD.OUTLOOK.COM
+ ([fe80::1dac:12c7:67b3:a062]) by SL2P216MB0905.KORP216.PROD.OUTLOOK.COM
+ ([fe80::1dac:12c7:67b3:a062%6]) with mapi id 15.20.2495.014; Fri, 29 Nov 2019
+ 03:06:03 +0000
+From: top top <top-manufacturer27@hotmail.com>
+Subject: Handles Limited
+Thread-Topic: Handles Limited
+Thread-Index: AQHVpl+UgYOHG5umS0q+BMN1ERx0ew==
+Date: Fri, 29 Nov 2019 03:06:03 +0000
+Message-ID: <eb5796e044524f7680a9f7285798ff09SL2P216MB090524513A5CE7608AFCCD409B460@SL2P216MB0905.KORP216.PROD.OUTLOOK.COM>
+Accept-Language: zh-CN, en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-incomingtopheadermarker: OriginalChecksum:6F86837F74C5F6B6190DD7ED45F36474C8CAB336B4ADD6E6E529935A008DC2E4;
+ UpperCasedChecksum:EC8528209E3A510ABD8BCF6D1AFEB19F984C3E58622D59B7363E97D290E70B1F;
+ SizeAsReceived:6796; Count:42
+x-ms-exchange-messagesentrepresentingtype: 1
+x-tmn: [3AGv4gdZ66ztqtTG4TJLFw+Sn8YY+RM0]
+x-ms-publictraffictype: Email
+x-incomingheadercount: 42
+x-eopattributedmessage: 0
+x-ms-office365-filtering-correlation-id: 9ebed4b3-6cd2-49b1-2758-08d7747911e6
+x-ms-exchange-slblob-mailprops: 0FgZtA3W0emHHkQcSAGtj46vkbOtMABi5s6ZXXlzUJcavqzvKWDCL6w/mKX4XQkHNd8kBqDnwlai6fWy5nTsMT4aIdzk81ZTxDElLtxR9R86KG3AAfLIX37r6jnQX7Kk1rn8MhbPvqhvTUZooJNkaWkKEWb6ns8ctB9nbNgWb+MIesNEkr2WjNEV1z6ty/xK6F5QO8SKnUo0Esj/SdS0tBnAjzuG6+gpPwIWXJvyuCHHWix1dyZNpwhPcp/SaVDaJ5lQBr3t1Q9zpHdOTIcsXUmrV+9qt29QMaCwPdfy0yedCWuvLQwgGvwD5Zq4zpyKLBSU66zndxKGEuQkczgKOp+8/s+E4McExjt+l2AXkJ/ZlIEUTVnS1dIeD2lmP14ZiD/oKYWwIbindhT/cm/uTEL0NiKy09yvdcX7jWyaizDZX9s2ZCWO6QdGAfGL9IAtigC9HtsAtzKLs8Yd9h1siuCW5S7HMr88YqXCuL2kTPJLRglRRyWnXu7eQHIdNxSuj42VPwit0q9gJOM4zIK4ru87Mgm1p/BaGflrJAdrRbG8jmEGf4yXzKoNF+oyzDBL58MDX5b5qC/S7F3CMamu4A==
+x-ms-traffictypediagnostic: PU1APC01HT237:
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: e3tlRbD849L+Gd8Ng7QBvUWCLKureF2pqsysz62HzgQmMG+Ny7HrdXC+4COjtIdkdpGeIu8lPF8yM32yFbuSHGIhamgGmRWFkyuBJDarDxCpQ9waTBnGlTNVF6pNmMOBIcA1paZzGSVNCA0D3N6+YE7ulz3HSCRPe3xrBwDKmfvSsLtyy1WFN9ezbvXBaWEW
+x-ms-exchange-transport-forked: True
+Content-ID: <1072CEB1E566BF4BA4707FE31F119EEE@KORP216.PROD.OUTLOOK.COM>
 MIME-Version: 1.0
-References: <20191122051608.128717-1-hiroh@chromium.org>
- <767528be59275265072896e5c679e97575615fdd.camel@ndufresne.ca>
- <CAAFQd5D3OpAAtX7_0ktz4-aAgWN_G4YBQMR=Vwp7JPopjvRkRA@mail.gmail.com>
- <f5341ed837529bd38d466d4b655e261d64065912.camel@ndufresne.ca>
-In-Reply-To: <f5341ed837529bd38d466d4b655e261d64065912.camel@ndufresne.ca>
-From: Tomasz Figa <tfiga@chromium.org>
-Date: Fri, 29 Nov 2019 09:16:57 +0900
-X-Gmail-Original-Message-ID: <CAAFQd5Cpk8qG+VgE6+aznBmXu11YG0gNQyCRanZghds-TPKvyg@mail.gmail.com>
-Message-ID: <CAAFQd5Cpk8qG+VgE6+aznBmXu11YG0gNQyCRanZghds-TPKvyg@mail.gmail.com>
-Subject: Re: [PATCH] media: hantro: Support H264 profile control
-To: Nicolas Dufresne <nicolas@ndufresne.ca>
+X-OriginatorOrg: hotmail.com
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9ebed4b3-6cd2-49b1-2758-08d7747911e6
+X-MS-Exchange-CrossTenant-rms-persistedconsumerorg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-CrossTenant-originalarrivaltime: 29 Nov 2019 03:06:03.5545 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Internet
+X-MS-Exchange-CrossTenant-id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PU1APC01HT237
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,92 +109,20 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg KH <gregkh@linuxfoundation.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Hirokazu Honda <hiroh@chromium.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Ezequiel Garcia <ezequiel@collabora.com>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gU2F0LCBOb3YgMjMsIDIwMTkgYXQgMTo1MiBBTSBOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFz
-QG5kdWZyZXNuZS5jYT4gd3JvdGU6Cj4KPiBMZSBzYW1lZGkgMjMgbm92ZW1icmUgMjAxOSDDoCAw
-MTowMCArMDkwMCwgVG9tYXN6IEZpZ2EgYSDDqWNyaXQgOgo+ID4gT24gU2F0LCBOb3YgMjMsIDIw
-MTkgYXQgMTI6MDkgQU0gTmljb2xhcyBEdWZyZXNuZSA8bmljb2xhc0BuZHVmcmVzbmUuY2E+IHdy
-b3RlOgo+ID4gPiBMZSB2ZW5kcmVkaSAyMiBub3ZlbWJyZSAyMDE5IMOgIDE0OjE2ICswOTAwLCBI
-aXJva2F6dSBIb25kYSBhIMOpY3JpdCA6Cj4gPiA+ID4gVGhlIEhhbnRybyBHMSBkZWNvZGVyIHN1
-cHBvcnRzIEguMjY0IHByb2ZpbGVzIGZyb20gQmFzZWxpbmUgdG8gSGlnaCwgd2l0aAo+ID4gPiA+
-IHRoZSBleGNlcHRpb24gb2YgdGhlIEV4dGVuZGVkIHByb2ZpbGUuCj4gPiA+ID4KPiA+ID4gPiBF
-eHBvc2UgdGhlIFY0TDJfQ0lEX01QRUdfVklERU9fSDI2NF9QUk9GSUxFIGNvbnRyb2wsIHNvIHRo
-YXQgdGhlCj4gPiA+ID4gYXBwbGljYXRpb25zIGNhbiBxdWVyeSB0aGUgZHJpdmVyIGZvciB0aGUg
-bGlzdCBvZiBzdXBwb3J0ZWQgcHJvZmlsZXMuCj4gPiA+Cj4gPiA+IFRoYW5rcyBmb3IgdGhpcyBw
-YXRjaC4gRG8geW91IHRoaW5rIHdlIGNvdWxkIGFsc28gYWRkIHRoZSBMRVZFTCBjb250cm9sCj4g
-PiA+IHNvIHRoZSBwcm9maWxlL2xldmVsIGVudW1lcmF0aW9uIGJlY29tZXMgY29tcGxldGUgPwo+
-ID4gPgo+ID4gPiBJJ20gdGhpbmtpbmcgaXQgd291bGQgYmUgbmljZSBpZiB0aGUgdjRsMiBjb21w
-bGlhbmNlIHRlc3QgbWFrZSBzdXJlCj4gPiA+IHRoYXQgY29kZWNzIGRvIGltcGxlbWVudCB0aGVz
-ZSBjb250cm9scyAoYm90aCBzdGF0ZWZ1bCBhbmQgc3RhdGVsZXNzKSwKPiA+ID4gaXQncyBlc3Nl
-bnRpYWwgZm9yIHN0YWNrIHdpdGggc29mdHdhcmUgZmFsbGJhY2ssIG9yIG11bHRpcGxlIGNhcGFi
-bGUKPiA+ID4gY29kZWMgaGFyZHdhcmUgYnV0IHdpdGggZGlmZmVyZW50IGNhcGFiaWxpdGllcy4K
-PiA+ID4KPiA+Cj4gPiBMZXZlbCBpcyBhIGRpZmZpY3VsdCBzdG9yeSwgYmVjYXVzZSBpdCBhbHNv
-IHNwZWNpZmllcyB0aGUgbnVtYmVyIG9mCj4gPiBtYWNyb2Jsb2NrcyBwZXIgc2Vjb25kLCBidXQg
-Zm9yIGRlY29kZXJzIGxpa2UgdGhpcyB0aGUgbnVtYmVyIG9mCj4gPiBtYWNyb2Jsb2NrcyBwZXIg
-c2Vjb25kIGl0IGNhbiBoYW5kbGUgZGVwZW5kcyBvbiB0aGluZ3MgdGhlIGRyaXZlcgo+ID4gbWln
-aHQgYmUgbm90IGF3YXJlIG9mIC0gY2xvY2sgZnJlcXVlbmNpZXMsIEREUiB0aHJvdWdocHV0LCBz
-eXN0ZW0KPiA+IGxvYWQsIGV0Yy4KPiA+Cj4gPiBNeSB0YWtlIG9uIHRoaXMgaXMgdGhhdCB0aGUg
-ZGVjb2RlciBkcml2ZXIgc2hvdWxkIGFkdmVydGlzZSB0aGUKPiA+IGhpZ2hlc3QgcmVzb2x1dGlv
-biB0aGUgZGVjb2RlciBjYW4gaGFuZGxlIGR1ZSB0byBoYXJkd2FyZSBjb25zdHJhaW50cy4KPiA+
-IFBlcmZvcm1hbmNlIHJlbGF0ZWQgdGhpbmdzIGRlcGVuZCBvbiB0aGUgaW50ZWdyYXRpb24gZGV0
-YWlscyBhbmQKPiA+IHNob3VsZCBiZSBtYW5hZ2VkIGVsc2V3aGVyZS4gRm9yIGV4YW1wbGUgQW5k
-cm9pZCBhbmQgQ2hyb21lIE9TIG1hbmFnZQo+ID4gZXhwZWN0ZWQgZGVjb2RpbmcgcGVyZm9ybWFu
-Y2UgaW4gcGVyLWJvYXJkIGNvbmZpZ3VyYXRpb24gZmlsZXMuCj4KPiBXaGVuIHlvdSByZWFkIGRh
-dGFzaGVldCwgdGhlIEhXIGlzIGFsd2F5cyByYXRlZCB0byBtYXhpbXVtIGxldmVsIChhbmQKPiBp
-dCdzIGEgcmFuZ2UpIHdpdGggdGhlIGFzc3VtcHRpb24gb2YgYSBzaW5nbGUgc3RyZWFtLiBJdCBz
-ZWVtcyBtdWNoCj4gZWFzaWVyIHRvIGV4cG9zZSB0aGlzIGFzLWlzLCBzdGF0aWNhbGx5IHRoZW4g
-dG8gc3RhcnQgZG9pbmcgc29tZSBtYXRoCj4gd2l0aCBkYXRhIHRoYXQgaXNuJ3QgZnVsbHkgZXhw
-b3NlZCB0byB0aGUgdXNlci4gVGhpcyBpcyBhYm91dCBmaWx0ZXJpbmcKPiBvZiBtdWx0aXBsZSBD
-T0RFQyBpbnN0YW5jZXMsIGl0IGRvZXMgbm90IG5lZWQgdG8gYmUgcm9ja2V0IHNjaWVuY2UsCj4g
-c3BlY2lhbGx5IHRoYXQgdGhlIGFtb3VudCBvZiBtaXNzaW5nIGRhdGEgaXMgaW1wb3J0YW50IChl
-LmcuIHVzYWdlIG9mCj4gdGlsZXMsIGNvbXByZXNzaW9uLCBJUFAgYWxsIGhhdmUgYW4gaW1wYWN0
-IG9uIHRoZSBmaW5hbCBwZXJmb3JtYW5jZSkuCj4gQWxsIHdlIHdhbnQgdG8ga25vdyBpbiB1c2Vy
-c3BhY2UgaXMgaWYgdGhpcyBIVyBpcyBldmVuIHBvc3NpYmx5IGNhcGFibGUKPiBvZiBMRVZFTCBY
-LCBhbmQgaWYgbm90LCB3ZSdsbCBsb29rIGZvciBhbm90aGVyIG9uZS4KPgoKQWdyZWVkLCBvbmUg
-Y291bGQgcG90ZW50aWFsbHkgZGVmaW5lIGl0IHRoaXMgd2F5LCBidXQgd291bGQgaXQgYmUKcmVh
-bGx5IHVzZWZ1bCBmb3IgdGhlIHVzZXJzcGFjZSBhbmQgdGhlIHVzZXJzPyBJIGd1ZXNzIGl0IGNv
-dWxkIGVuYWJsZQpzbGlnaHRseSBmYXN0ZXIgZmFsbGJhY2sgdG8gc29mdHdhcmUgZGVjb2Rpbmcg
-aW4gdGhlIGV4dHJlbWUgY2FzZSBvZgp0aGUgaGFyZHdhcmUgbm90IHN1cHBvcnRpbmcgdGhlIGxl
-dmVsIGF0IGFsbCwgYnV0IEkgc3VzcGVjdCB0aGF0IHRoZQptYWpvcml0eSBvZiBjYXNlcyB3b3Vs
-ZCBiZSB0aGUgaGFyZHdhcmUganVzdCBiZWluZyB1bnVzYWJseSBzbG93LgoKQWxzbywgYXMgSSBt
-ZW50aW9uZWQgYmVmb3JlLCB3ZSBhbHJlYWR5IHJldHVybiB0aGUgcmFuZ2Ugb2Ygc3VwcG9ydGVk
-CnJlc29sdXRpb25zLCB3aGljaCBpbiBwcmFjdGljZSBzaG91bGQgbWFwIHRvIHRoZSBwYXJ0IG9m
-IHRoZSBsZXZlbAp0aGF0IG1heSBkZXBlbmQgb24gaGFyZHdhcmUgY2FwYWJpbGl0aWVzIHJhdGhl
-ciB0aGFuIHBlcmZvcm1hbmNlLCBzbwpleHBvc2luZyBsZXZlbHMgYXMgd2VsbCB3b3VsZCBhZGQg
-cmVkdW5kYW5jeSB0byB0aGUgaW5mb3JtYXRpb24KZXhwb3NlZC4KCj4gPgo+ID4gPiA+IFNpZ25l
-ZC1vZmYtYnk6IEhpcm9rYXp1IEhvbmRhIDxoaXJvaEBjaHJvbWl1bS5vcmc+Cj4gPiA+ID4gLS0t
-Cj4gPiA+ID4gIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2Rydi5jIHwgMTAg
-KysrKysrKysrKwo+ID4gPiA+ICAxIGZpbGUgY2hhbmdlZCwgMTAgaW5zZXJ0aW9ucygrKQo+ID4g
-PiA+Cj4gPiA+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFu
-dHJvX2Rydi5jIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZHJ2LmMKPiA+
-ID4gPiBpbmRleCA2ZDlkNDExNzA4MzIuLjkzODc2MTkyMzVkOCAxMDA2NDQKPiA+ID4gPiAtLS0g
-YS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19kcnYuYwo+ID4gPiA+ICsrKyBi
-L2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2Rydi5jCj4gPiA+ID4gQEAgLTM1
-NSw2ICszNTUsMTYgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBoYW50cm9fY3RybCBjb250cm9sc1td
-ID0gewo+ID4gPiA+ICAgICAgICAgICAgICAgICAgICAgICAuZGVmID0gVjRMMl9NUEVHX1ZJREVP
-X0gyNjRfU1RBUlRfQ09ERV9BTk5FWF9CLAo+ID4gPiA+ICAgICAgICAgICAgICAgICAgICAgICAu
-bWF4ID0gVjRMMl9NUEVHX1ZJREVPX0gyNjRfU1RBUlRfQ09ERV9BTk5FWF9CLAo+ID4gPiA+ICAg
-ICAgICAgICAgICAgfSwKPiA+ID4gPiArICAgICB9LCB7Cj4gPiA+ID4gKyAgICAgICAgICAgICAu
-Y29kZWMgPSBIQU5UUk9fSDI2NF9ERUNPREVSLAo+ID4gPiA+ICsgICAgICAgICAgICAgLmNmZyA9
-IHsKPiA+ID4gPiArICAgICAgICAgICAgICAgICAgICAgLmlkID0gVjRMMl9DSURfTVBFR19WSURF
-T19IMjY0X1BST0ZJTEUsCj4gPiA+ID4gKyAgICAgICAgICAgICAgICAgICAgIC5taW4gPSBWNEwy
-X01QRUdfVklERU9fSDI2NF9QUk9GSUxFX0JBU0VMSU5FLAo+ID4gPiA+ICsgICAgICAgICAgICAg
-ICAgICAgICAubWF4ID0gVjRMMl9NUEVHX1ZJREVPX0gyNjRfUFJPRklMRV9ISUdILAo+ID4gPiA+
-ICsgICAgICAgICAgICAgICAgICAgICAubWVudV9za2lwX21hc2sgPQo+ID4gPiA+ICsgICAgICAg
-ICAgICAgICAgICAgICBCSVQoVjRMMl9NUEVHX1ZJREVPX0gyNjRfUFJPRklMRV9FWFRFTkRFRCks
-Cj4gPiA+ID4gKyAgICAgICAgICAgICAgICAgICAgIC5kZWYgPSBWNEwyX01QRUdfVklERU9fSDI2
-NF9QUk9GSUxFX01BSU4sCj4gPiA+ID4gKyAgICAgICAgICAgICB9Cj4gPiA+ID4gICAgICAgfSwg
-ewo+ID4gPiA+ICAgICAgIH0sCj4gPiA+ID4gIH07Cl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZl
-cnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+Hello,
+Good day!
+This is Top a Handles Co.,ltd. from China.
+We specialize in a Handles for 15 years,capable production,promised delivery time and high level quality!
+Also we have our own professional designers to meet any of your requirements.
+Please sent purchase detail info(as type/specifications/quantity Ect).We can provide you with the best price.
+Sincerely,
+John
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
