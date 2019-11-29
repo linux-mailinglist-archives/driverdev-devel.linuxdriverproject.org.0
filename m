@@ -1,102 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0562F10D097
-	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Nov 2019 04:06:50 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0D6EE10D1CC
+	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Nov 2019 08:24:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5A11C22F26;
-	Fri, 29 Nov 2019 03:06:47 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AF5A986BB5;
+	Fri, 29 Nov 2019 07:24:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9b1BMFpVme-r; Fri, 29 Nov 2019 03:06:46 +0000 (UTC)
+	with ESMTP id Y3gslG1RgpI3; Fri, 29 Nov 2019 07:24:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7AB1322D55;
-	Fri, 29 Nov 2019 03:06:45 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C423786B6D;
+	Fri, 29 Nov 2019 07:24:33 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 145BC1BF3C8
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 29 Nov 2019 03:06:43 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 43C571BF584
+ for <devel@linuxdriverproject.org>; Fri, 29 Nov 2019 07:24:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D9EF4884DE
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 29 Nov 2019 03:06:42 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3D8BF87D95
+ for <devel@linuxdriverproject.org>; Fri, 29 Nov 2019 07:24:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JRX1Wp5gOCO9
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 29 Nov 2019 03:06:41 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from APC01-SG2-obe.outbound.protection.outlook.com
- (mail-oln040092253081.outbound.protection.outlook.com [40.92.253.81])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D1254880F9
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 29 Nov 2019 03:06:24 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=SHTqBkTfrPZDztNezpFuQ8jMiW3loZESSNEeAncI3Vt0nej65GIUvSnQk2jf1jQnAgk7DPGcp+IUry5IDY5bnsLNMwbV3P2GYM8yvshw0a4TU/XSb0+4P69BFS4GIrGgVj/ieE+yhljDicfr6jza0ikKsMhYDqMni4moJqMrcGNleKtUgrhlOSDayR3HW3UMUOuR5PgoPq56x4/V7GuVUN2Ise0+75jcc0LIMyKIFStcgEGkOr7RNfdVFVQCEfw9PWd2rj1BWDLlSZFkGteYp/sgcrfv+fDKOe90wlSyctfrJlbQY9SC9log21qtRUgztBpLPDUmL5xs05hmbhN9VA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ryQCbwJEf/k6OOQr/1QWusE4c2M89BseJ8g1zfuJXrs=;
- b=aIY8keuJRsP5J6/oUaqN2455jAVs1/PrvUVTGDanfRGMOErXBroW5qsWVVXauSj7tooKPsysnTbNNGDJEKl5EDdWgdcTFMAxs9ODHEkLIJFrXPd83jgNL3cX8fneMhvyGe3g6HpajeExdc4UqByoY2wfuqO4tttCOtnHEsKaY5dxlSBYgnQvhewYH7cqUWqmhYpWtje+g6+1+GzH+jBxOD5xGZPLStcg8s5fI8Sfl6Er98cLNkODEpM8NrXqKWYX93SZ9I2RbDPZo5p6onA1ma50KSvVfBHYwkg945LhATWbry0iyzxVsK2ayWI18y0Pv7DC+XO7XGoHecRVRmmKmQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ryQCbwJEf/k6OOQr/1QWusE4c2M89BseJ8g1zfuJXrs=;
- b=FFCXqimE4Cg0Mr43LWH2ERHLz2wNgTz5jxgoWy6dQuZUZ8d1lhEjGAb67YWxMU6GV8adlZ8u87EJsx/JXuthKYPqS7eKJPwIgjqW4Iwihn6+oLa3jXyvjPJoXDBdRvCmYYjAZancgm1APk6Yh6rO39UHtQvGxsh0hE28En0u+A91fkTXalA+lJ0CdtJw9CG9Sosyci+QwKXNoc1mimfh+BQpa5bm9OZHSJ7lkO7YUYFn0zrZ6EKQg33HYtmzqqRvwUPGwET84SzzG2W8lSjlW0KcUpwmucnLor/qt+4aEcMF31MAPnEYNORt9NAWdGsgTpqao/gm22vvPCoT69bVdw==
-Received: from PU1APC01FT008.eop-APC01.prod.protection.outlook.com
- (10.152.252.60) by PU1APC01HT237.eop-APC01.prod.protection.outlook.com
- (10.152.253.155) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2474.17; Fri, 29 Nov
- 2019 03:06:04 +0000
-Received: from SL2P216MB0905.KORP216.PROD.OUTLOOK.COM (10.152.252.56) by
- PU1APC01FT008.mail.protection.outlook.com (10.152.252.66) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2474.17 via Frontend Transport; Fri, 29 Nov 2019 03:06:03 +0000
-Received: from SL2P216MB0905.KORP216.PROD.OUTLOOK.COM
- ([fe80::1dac:12c7:67b3:a062]) by SL2P216MB0905.KORP216.PROD.OUTLOOK.COM
- ([fe80::1dac:12c7:67b3:a062%6]) with mapi id 15.20.2495.014; Fri, 29 Nov 2019
- 03:06:03 +0000
-From: top top <top-manufacturer27@hotmail.com>
-Subject: Handles Limited
-Thread-Topic: Handles Limited
-Thread-Index: AQHVpl+UgYOHG5umS0q+BMN1ERx0ew==
-Date: Fri, 29 Nov 2019 03:06:03 +0000
-Message-ID: <eb5796e044524f7680a9f7285798ff09SL2P216MB090524513A5CE7608AFCCD409B460@SL2P216MB0905.KORP216.PROD.OUTLOOK.COM>
-Accept-Language: zh-CN, en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-incomingtopheadermarker: OriginalChecksum:6F86837F74C5F6B6190DD7ED45F36474C8CAB336B4ADD6E6E529935A008DC2E4;
- UpperCasedChecksum:EC8528209E3A510ABD8BCF6D1AFEB19F984C3E58622D59B7363E97D290E70B1F;
- SizeAsReceived:6796; Count:42
-x-ms-exchange-messagesentrepresentingtype: 1
-x-tmn: [3AGv4gdZ66ztqtTG4TJLFw+Sn8YY+RM0]
-x-ms-publictraffictype: Email
-x-incomingheadercount: 42
-x-eopattributedmessage: 0
-x-ms-office365-filtering-correlation-id: 9ebed4b3-6cd2-49b1-2758-08d7747911e6
-x-ms-exchange-slblob-mailprops: 0FgZtA3W0emHHkQcSAGtj46vkbOtMABi5s6ZXXlzUJcavqzvKWDCL6w/mKX4XQkHNd8kBqDnwlai6fWy5nTsMT4aIdzk81ZTxDElLtxR9R86KG3AAfLIX37r6jnQX7Kk1rn8MhbPvqhvTUZooJNkaWkKEWb6ns8ctB9nbNgWb+MIesNEkr2WjNEV1z6ty/xK6F5QO8SKnUo0Esj/SdS0tBnAjzuG6+gpPwIWXJvyuCHHWix1dyZNpwhPcp/SaVDaJ5lQBr3t1Q9zpHdOTIcsXUmrV+9qt29QMaCwPdfy0yedCWuvLQwgGvwD5Zq4zpyKLBSU66zndxKGEuQkczgKOp+8/s+E4McExjt+l2AXkJ/ZlIEUTVnS1dIeD2lmP14ZiD/oKYWwIbindhT/cm/uTEL0NiKy09yvdcX7jWyaizDZX9s2ZCWO6QdGAfGL9IAtigC9HtsAtzKLs8Yd9h1siuCW5S7HMr88YqXCuL2kTPJLRglRRyWnXu7eQHIdNxSuj42VPwit0q9gJOM4zIK4ru87Mgm1p/BaGflrJAdrRbG8jmEGf4yXzKoNF+oyzDBL58MDX5b5qC/S7F3CMamu4A==
-x-ms-traffictypediagnostic: PU1APC01HT237:
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: e3tlRbD849L+Gd8Ng7QBvUWCLKureF2pqsysz62HzgQmMG+Ny7HrdXC+4COjtIdkdpGeIu8lPF8yM32yFbuSHGIhamgGmRWFkyuBJDarDxCpQ9waTBnGlTNVF6pNmMOBIcA1paZzGSVNCA0D3N6+YE7ulz3HSCRPe3xrBwDKmfvSsLtyy1WFN9ezbvXBaWEW
-x-ms-exchange-transport-forked: True
-Content-ID: <1072CEB1E566BF4BA4707FE31F119EEE@KORP216.PROD.OUTLOOK.COM>
+ with ESMTP id 47nJn4vtdeYk for <devel@linuxdriverproject.org>;
+ Fri, 29 Nov 2019 07:24:29 +0000 (UTC)
+X-Greylist: delayed 00:06:31 by SQLgrey-1.7.6
+Received: from faui40.informatik.uni-erlangen.de
+ (faui40.informatik.uni-erlangen.de [131.188.34.40])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9C5C387D87
+ for <devel@driverdev.osuosl.org>; Fri, 29 Nov 2019 07:24:29 +0000 (UTC)
+Received: from [10.188.34.154] (i4laptop03.informatik.uni-erlangen.de
+ [10.188.34.154])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ (No client certificate requested) (Authenticated sender: langer)
+ by faui40.informatik.uni-erlangen.de (Postfix) with ESMTPSA id 90EC6548055;
+ Fri, 29 Nov 2019 08:17:52 +0100 (CET)
+Subject: Re: [i4passt] [PATCH 1/5] staging/qlge: remove initialising of static
+ local variable
+To: Dorothea Ehrl <dorothea.ehrl@fau.de>, manishc@marvell.com,
+ GR-Linux-NIC-Dev@marvell.com, gregkh@linuxfoundation.org,
+ netdev@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+References: <20191127123052.16424-1-dorothea.ehrl@fau.de>
+From: Tobias Langer <langer@cs.fau.de>
+Message-ID: <cac212e9-2412-7919-223c-0193df74ba2a@cs.fau.de>
+Date: Fri, 29 Nov 2019 08:17:52 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.1
 MIME-Version: 1.0
-X-OriginatorOrg: hotmail.com
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9ebed4b3-6cd2-49b1-2758-08d7747911e6
-X-MS-Exchange-CrossTenant-rms-persistedconsumerorg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-CrossTenant-originalarrivaltime: 29 Nov 2019 03:06:03.5545 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Internet
-X-MS-Exchange-CrossTenant-id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PU1APC01HT237
+In-Reply-To: <20191127123052.16424-1-dorothea.ehrl@fau.de>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,20 +65,189 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Vanessa Hack <vanessa.hack@fau.de>, linux-kernel@i4.cs.fau.de
+Content-Type: multipart/mixed; boundary="===============1178694472602642556=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,
-Good day!
-This is Top a Handles Co.,ltd. from China.
-We specialize in a Handles for 15 years,capable production,promised delivery time and high level quality!
-Also we have our own professional designers to meet any of your requirements.
-Please sent purchase detail info(as type/specifications/quantity Ect).We can provide you with the best price.
-Sincerely,
-John
+This is a cryptographically signed message in MIME format.
+
+--===============1178694472602642556==
+Content-Type: multipart/signed; protocol="application/pkcs7-signature"; micalg=sha-512; boundary="------------ms080704000207010000040300"
+
+This is a cryptographically signed message in MIME format.
+
+--------------ms080704000207010000040300
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+the patch series looks fine to me, I think you can go ahead and send it
+to the kernel.
+
+Kind regards
+Tobias
+
+On 27.11.19 13:30, Dorothea Ehrl wrote:
+> This patch fixes "ERROR: do not initialise statics to 0" by checkpatch.=
+pl.
+>=20
+> Signed-off-by: Dorothea Ehrl <dorothea.ehrl@fau.de>
+> Co-developed-by: Vanessa Hack <vanessa.hack@fau.de>
+> Signed-off-by: Vanessa Hack <vanessa.hack@fau.de>
+> ---
+>  drivers/staging/qlge/qlge_main.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/staging/qlge/qlge_main.c b/drivers/staging/qlge/ql=
+ge_main.c
+> index 6ad4515311f7..587102aa7fbf 100644
+> --- a/drivers/staging/qlge/qlge_main.c
+> +++ b/drivers/staging/qlge/qlge_main.c
+> @@ -4578,7 +4578,7 @@ static int qlge_probe(struct pci_dev *pdev,
+>  {
+>  	struct net_device *ndev =3D NULL;
+>  	struct ql_adapter *qdev =3D NULL;
+> -	static int cards_found =3D 0;
+> +	static int cards_found;
+>  	int err =3D 0;
+>=20
+>  	ndev =3D alloc_etherdev_mq(sizeof(struct ql_adapter),
+> --
+> 2.20.1
+>=20
+
+
+--------------ms080704000207010000040300
+Content-Type: application/pkcs7-signature; name="smime.p7s"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Description: S/MIME Cryptographic Signature
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgMFADCABgkqhkiG9w0BBwEAAKCC
+EckwggUSMIID+qADAgECAgkA4wvV+K8l2YEwDQYJKoZIhvcNAQELBQAwgYIxCzAJBgNVBAYT
+AkRFMSswKQYDVQQKDCJULVN5c3RlbXMgRW50ZXJwcmlzZSBTZXJ2aWNlcyBHbWJIMR8wHQYD
+VQQLDBZULVN5c3RlbXMgVHJ1c3QgQ2VudGVyMSUwIwYDVQQDDBxULVRlbGVTZWMgR2xvYmFs
+Um9vdCBDbGFzcyAyMB4XDTE2MDIyMjEzMzgyMloXDTMxMDIyMjIzNTk1OVowgZUxCzAJBgNV
+BAYTAkRFMUUwQwYDVQQKEzxWZXJlaW4genVyIEZvZXJkZXJ1bmcgZWluZXMgRGV1dHNjaGVu
+IEZvcnNjaHVuZ3NuZXR6ZXMgZS4gVi4xEDAOBgNVBAsTB0RGTi1QS0kxLTArBgNVBAMTJERG
+Ti1WZXJlaW4gQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkgMjCCASIwDQYJKoZIhvcNAQEBBQAD
+ggEPADCCAQoCggEBAMtg1/9moUHN0vqHl4pzq5lN6mc5WqFggEcVToyVsuXPztNXS43O+FZs
+FVV2B+pG/cgDRWM+cNSrVICxI5y+NyipCf8FXRgPxJiZN7Mg9mZ4F4fCnQ7MSjLnFp2uDo0p
+eQcAIFTcFV9Kltd4tjTTwXS1nem/wHdN6r1ZB+BaL2w8pQDcNb1lDY9/Mm3yWmpLYgHurDg0
+WUU2SQXaeMpqbVvAgWsRzNI8qIv4cRrKO+KA3Ra0Z3qLNupOkSk9s1FcragMvp0049ENF4N1
+xDkesJQLEvHVaY4l9Lg9K7/AjsMeO6W/VRCrKq4Xl14zzsjz9AkH4wKGMUZrAcUQDBHHWekC
+AwEAAaOCAXQwggFwMA4GA1UdDwEB/wQEAwIBBjAdBgNVHQ4EFgQUk+PYMiba1fFKpZFK4OpL
+4qIMz+EwHwYDVR0jBBgwFoAUv1kgNgB5oKAia4zV8mHSuCzLgkowEgYDVR0TAQH/BAgwBgEB
+/wIBAjAzBgNVHSAELDAqMA8GDSsGAQQBga0hgiwBAQQwDQYLKwYBBAGBrSGCLB4wCAYGZ4EM
+AQICMEwGA1UdHwRFMEMwQaA/oD2GO2h0dHA6Ly9wa2kwMzM2LnRlbGVzZWMuZGUvcmwvVGVs
+ZVNlY19HbG9iYWxSb290X0NsYXNzXzIuY3JsMIGGBggrBgEFBQcBAQR6MHgwLAYIKwYBBQUH
+MAGGIGh0dHA6Ly9vY3NwMDMzNi50ZWxlc2VjLmRlL29jc3ByMEgGCCsGAQUFBzAChjxodHRw
+Oi8vcGtpMDMzNi50ZWxlc2VjLmRlL2NydC9UZWxlU2VjX0dsb2JhbFJvb3RfQ2xhc3NfMi5j
+ZXIwDQYJKoZIhvcNAQELBQADggEBAIcL/z4Cm2XIVi3WO5qYi3FP2ropqiH5Ri71sqQPrhE4
+eTizDnS6dl2e6BiClmLbTDPo3flq3zK9LExHYFV/53RrtCyD2HlrtrdNUAtmB7Xts5et6u5/
+MOaZ/SLick0+hFvu+c+Z6n/XUjkurJgARH5pO7917tALOxrN5fcPImxHhPalR6D90Bo0fa3S
+PXez7vTXTf/D6OWST1k+kEcQSrCFWMBvf/iu7QhCnh7U3xQuTY+8npTD5+32GPg8SecmqKc2
+2CzeIs2LgtjZeOJVEqM7h0S2EQvVDFKvaYwPBt/QolOLV5h7z/0HJPT8vcP9SpIClxvyt7bP
+ZYoaorVyGTkwggWsMIIElKADAgECAgcbY7rQHiw9MA0GCSqGSIb3DQEBCwUAMIGVMQswCQYD
+VQQGEwJERTFFMEMGA1UEChM8VmVyZWluIHp1ciBGb2VyZGVydW5nIGVpbmVzIERldXRzY2hl
+biBGb3JzY2h1bmdzbmV0emVzIGUuIFYuMRAwDgYDVQQLEwdERk4tUEtJMS0wKwYDVQQDEyRE
+Rk4tVmVyZWluIENlcnRpZmljYXRpb24gQXV0aG9yaXR5IDIwHhcNMTYwNTI0MTEzODQwWhcN
+MzEwMjIyMjM1OTU5WjCBjTELMAkGA1UEBhMCREUxRTBDBgNVBAoMPFZlcmVpbiB6dXIgRm9l
+cmRlcnVuZyBlaW5lcyBEZXV0c2NoZW4gRm9yc2NodW5nc25ldHplcyBlLiBWLjEQMA4GA1UE
+CwwHREZOLVBLSTElMCMGA1UEAwwcREZOLVZlcmVpbiBHbG9iYWwgSXNzdWluZyBDQTCCASIw
+DQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJ07eRxH3h+Gy8Zp1xCeOdfZojDbchwFfylf
+S2jxrRnWTOFrG7ELf6Gr4HuLi9gtzm6IOhDuV+UefwRRNuu6cG1joL6WLkDh0YNMZj0cZGnl
+m6Stcq5oOVGHecwX064vXWNxSzl660Knl5BpBb+Q/6RAcL0D57+eGIgfn5mITQ5HjUhfZZkQ
+0tkqSe3BuS0dnxLLFdM/fx5ULzquk1enfnjK1UriGuXtQX1TX8izKvWKMKztFwUkP7agCwf9
+TRqaA1KgNpzeJIdl5Of6x5ZzJBTN0OgbaJ4YWa52fvfRCng8h0uwN89Tyjo4EPPLR22MZD08
+WkVKusqAfLjz56dMTM0CAwEAAaOCAgUwggIBMBIGA1UdEwEB/wQIMAYBAf8CAQEwDgYDVR0P
+AQH/BAQDAgEGMCkGA1UdIAQiMCAwDQYLKwYBBAGBrSGCLB4wDwYNKwYBBAGBrSGCLAEBBDAd
+BgNVHQ4EFgQUazqYi/nyU4na4K2yMh4JH+iqO3QwHwYDVR0jBBgwFoAUk+PYMiba1fFKpZFK
+4OpL4qIMz+EwgY8GA1UdHwSBhzCBhDBAoD6gPIY6aHR0cDovL2NkcDEucGNhLmRmbi5kZS9n
+bG9iYWwtcm9vdC1nMi1jYS9wdWIvY3JsL2NhY3JsLmNybDBAoD6gPIY6aHR0cDovL2NkcDIu
+cGNhLmRmbi5kZS9nbG9iYWwtcm9vdC1nMi1jYS9wdWIvY3JsL2NhY3JsLmNybDCB3QYIKwYB
+BQUHAQEEgdAwgc0wMwYIKwYBBQUHMAGGJ2h0dHA6Ly9vY3NwLnBjYS5kZm4uZGUvT0NTUC1T
+ZXJ2ZXIvT0NTUDBKBggrBgEFBQcwAoY+aHR0cDovL2NkcDEucGNhLmRmbi5kZS9nbG9iYWwt
+cm9vdC1nMi1jYS9wdWIvY2FjZXJ0L2NhY2VydC5jcnQwSgYIKwYBBQUHMAKGPmh0dHA6Ly9j
+ZHAyLnBjYS5kZm4uZGUvZ2xvYmFsLXJvb3QtZzItY2EvcHViL2NhY2VydC9jYWNlcnQuY3J0
+MA0GCSqGSIb3DQEBCwUAA4IBAQCBeEWkTqR/DlXwCbFqPnjMaDWpHPOVnj/z+N9rOHeJLI21
+rT7H8pTNoAauusyosa0zCLYkhmI2THhuUPDVbmCNT1IxQ5dGdfBi5G5mUcFCMWdQ5UnnOR7L
+n8qGSN4IFP8VSytmm6A4nwDO/afr0X9XLchMX9wQEZc+lgQCXISoKTlslPwQkgZ7nu7YRrQb
+tQMMONncsKk/cQYLsgMHM8KNSGMlJTx6e1du94oFOO+4oK4v9NsH1VuEGMGpuEvObJAaguS5
+Pfp38dIfMwK/U+d2+dwmJUFvL6Yb+qQTkPp8ftkLYF3sv8pBoGH7EUkp2KgtdRXYShjqFu9V
+NCIaE40GMIIG/zCCBeegAwIBAgIMH+UmdDCCl51BXwcTMA0GCSqGSIb3DQEBCwUAMIGNMQsw
+CQYDVQQGEwJERTFFMEMGA1UECgw8VmVyZWluIHp1ciBGb2VyZGVydW5nIGVpbmVzIERldXRz
+Y2hlbiBGb3JzY2h1bmdzbmV0emVzIGUuIFYuMRAwDgYDVQQLDAdERk4tUEtJMSUwIwYDVQQD
+DBxERk4tVmVyZWluIEdsb2JhbCBJc3N1aW5nIENBMB4XDTE4MTAxNjA5MDEyNloXDTIxMTAx
+NTA5MDEyNlowgYcxCzAJBgNVBAYTAkRFMQ8wDQYDVQQIDAZCYXllcm4xETAPBgNVBAcMCEVy
+bGFuZ2VuMTwwOgYDVQQKDDNGcmllZHJpY2gtQWxleGFuZGVyLVVuaXZlcnNpdGFldCBFcmxh
+bmdlbi1OdWVybmJlcmcxFjAUBgNVBAMMDVRvYmlhcyBMYW5nZXIwggIiMA0GCSqGSIb3DQEB
+AQUAA4ICDwAwggIKAoICAQCkEpfEHPcqSunVL3AZa5s78RuxtdiYwXOlZXd/7FupacTEF27z
+cAKQSPixda8H6cTi54QlOd12rUMi533/zGthVe+abNEmt86vS1I071BxVmQOrwiCukFG+yxT
+Hh53ijvGNIfnEmYFjmAtj9lZiqWBa+JLLPbErl8LwpelJ8uyHT5KHFOzHbM0qC4phZVw2XP8
+lvv75krTJi096ZDxc8lo57oxJn9K6nDQjisHbgwz3Ba06c5JHrSGq7Aihi4MZ7gUoCpY9fXD
+enYyn9peZf+WSWDPtyiFDjA2YvpdsqOqQVdrSUHlxAGLDzK9RC065Ti4i2hWZREQ8nSv2Qko
+v5thudy2c1U9P1Lwr8o6ImijHHadMOqVP0uJhoYFGX800C3OAEjwbn+JMV2lDmUS++9MphNw
+Lc+fwYhAE1yfzMWdL7CIfMGX7Ni80NoKOookSx9XrHOWidtYEjDsyKWncQv7fSeLO/0SlRFR
+f+gfEGyP0VT0x2OCsS1Fd0qPPZZ8iVcueFDwMUZYvSycPJFaRlMUCEriqOW01Gqkkg8z/Bp3
+RdYS1rwfbLFbhfYS6NY3WHOKFP98oeI4ivK1WcORi3zACw4wLEjyzDUmzrlmTjwutS+18H3W
+StVvuMVzaTu0un27R5+0s4KPO0yMCfqXYK9KriIG6wFMSWyYXeqyOIqreQIDAQABo4ICYTCC
+Al0wQAYDVR0gBDkwNzAPBg0rBgEEAYGtIYIsAQEEMBEGDysGAQQBga0hgiwBAQQDCDARBg8r
+BgEEAYGtIYIsAgEEAwgwCQYDVR0TBAIwADAOBgNVHQ8BAf8EBAMCBeAwHQYDVR0lBBYwFAYI
+KwYBBQUHAwIGCCsGAQUFBwMEMB0GA1UdDgQWBBQkI6El8omMxRHRj4zdAcDFM1a5uzAfBgNV
+HSMEGDAWgBRrOpiL+fJTidrgrbIyHgkf6Ko7dDAxBgNVHREEKjAogRBsYW5nZXJAY3MuZmF1
+LmRlgRR0b2JpYXMubGFuZ2VyQGZhdS5kZTCBjQYDVR0fBIGFMIGCMD+gPaA7hjlodHRwOi8v
+Y2RwMS5wY2EuZGZuLmRlL2Rmbi1jYS1nbG9iYWwtZzIvcHViL2NybC9jYWNybC5jcmwwP6A9
+oDuGOWh0dHA6Ly9jZHAyLnBjYS5kZm4uZGUvZGZuLWNhLWdsb2JhbC1nMi9wdWIvY3JsL2Nh
+Y3JsLmNybDCB2wYIKwYBBQUHAQEEgc4wgcswMwYIKwYBBQUHMAGGJ2h0dHA6Ly9vY3NwLnBj
+YS5kZm4uZGUvT0NTUC1TZXJ2ZXIvT0NTUDBJBggrBgEFBQcwAoY9aHR0cDovL2NkcDEucGNh
+LmRmbi5kZS9kZm4tY2EtZ2xvYmFsLWcyL3B1Yi9jYWNlcnQvY2FjZXJ0LmNydDBJBggrBgEF
+BQcwAoY9aHR0cDovL2NkcDIucGNhLmRmbi5kZS9kZm4tY2EtZ2xvYmFsLWcyL3B1Yi9jYWNl
+cnQvY2FjZXJ0LmNydDANBgkqhkiG9w0BAQsFAAOCAQEARKzW5ehUd8BQRZ0X/JaMQKoerCEC
+FA+MnirgbzrWOd7RZCLBjO3XHZcByTPcYtlh5zMjruRkyrHAdZ/OPea7L+zodmE3T/dK4BaE
+qX4mBf3t5/Xu1LRtPr12umVXozRhxWSDae8Vjt/Rv0czyd8X8X2/gtzNVxRhZyy3PYG23icV
+ATv86QLP/64ADSPs7OgElAOVJoLvS45qh4TXvWwQSIVfv4+JMzpv9C9uW3debdTeJ32S115H
+D1b60eaqj5U3CsQdqNTbHGRkUoWpL3IAZrCi7rm7AIR/meqv1U6MG7vAFdfJcYibl4A7mI6B
+fCOXoBD0OxKAQBskqv8nENtnWDGCBSswggUnAgEBMIGeMIGNMQswCQYDVQQGEwJERTFFMEMG
+A1UECgw8VmVyZWluIHp1ciBGb2VyZGVydW5nIGVpbmVzIERldXRzY2hlbiBGb3JzY2h1bmdz
+bmV0emVzIGUuIFYuMRAwDgYDVQQLDAdERk4tUEtJMSUwIwYDVQQDDBxERk4tVmVyZWluIEds
+b2JhbCBJc3N1aW5nIENBAgwf5SZ0MIKXnUFfBxMwDQYJYIZIAWUDBAIDBQCgggJdMBgGCSqG
+SIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTE5MTEyOTA3MTc1MlowTwYJ
+KoZIhvcNAQkEMUIEQIRp9vrHLBDAAAcKazDeBQ5qT3S+UpRZmVoS2jET8KDmaC/TZsN+O9cZ
+VaEd0LOigXyr93vHOrRzCEEJZRUC6VYwbAYJKoZIhvcNAQkPMV8wXTALBglghkgBZQMEASow
+CwYJYIZIAWUDBAECMAoGCCqGSIb3DQMHMA4GCCqGSIb3DQMCAgIAgDANBggqhkiG9w0DAgIB
+QDAHBgUrDgMCBzANBggqhkiG9w0DAgIBKDCBrwYJKwYBBAGCNxAEMYGhMIGeMIGNMQswCQYD
+VQQGEwJERTFFMEMGA1UECgw8VmVyZWluIHp1ciBGb2VyZGVydW5nIGVpbmVzIERldXRzY2hl
+biBGb3JzY2h1bmdzbmV0emVzIGUuIFYuMRAwDgYDVQQLDAdERk4tUEtJMSUwIwYDVQQDDBxE
+Rk4tVmVyZWluIEdsb2JhbCBJc3N1aW5nIENBAgwf5SZ0MIKXnUFfBxMwgbEGCyqGSIb3DQEJ
+EAILMYGhoIGeMIGNMQswCQYDVQQGEwJERTFFMEMGA1UECgw8VmVyZWluIHp1ciBGb2VyZGVy
+dW5nIGVpbmVzIERldXRzY2hlbiBGb3JzY2h1bmdzbmV0emVzIGUuIFYuMRAwDgYDVQQLDAdE
+Rk4tUEtJMSUwIwYDVQQDDBxERk4tVmVyZWluIEdsb2JhbCBJc3N1aW5nIENBAgwf5SZ0MIKX
+nUFfBxMwDQYJKoZIhvcNAQEBBQAEggIAoZAT/5fz+XRHubZvRDyVFc6uWAOQXrrQXmTU54Xp
+Ruhw9Ao5lOO2BmbK7+EizcTHubH9yd/WuPdO30qJUazjNMgM0aGW70hu38EmBIkJwh0csWmk
+FyKT++3niuGjBoOyZOm1hfidVexhIL6Mf4QyV9Fb6+TLtg+u4Ge6ge/b95p6Te3fEbeLGTLq
+5WjrnZ7QYho8SZ9digeBJPZTVhSDaQmjUV4PtL4rKqyZLqiv8GNDKTCL2mZvoKT9ahexuaYf
+sQIx3oiG9W4ELA5cW5+RXYArFlJQ2QTl/tflanOaR1RSfyswztwuvb/oa+fkhu5gx5DkvySv
+W9OBxg/QCLTrCDyr9Ekw958yGFBZRr277+0lOwlGZ7M8y9XMQR4Kanw/RirZIxNRRLj3rMtg
+kGtRPPDHeWDgsX4Vu9WQvAyQF1dqBdBfo4itCHM+ObeJUutFB9HwW8orpkCpQ5A6xm19kL9c
+udDvH/cdifwjNg8+T1wsO9t+wXHLZthudpAL9+KMx0pafjj/tqTLBNz3OJHOYB38fO8V8zEN
+Vy9htwVPz6jp5aO1K62ZWcmmX2GUgnT4BDijMNi+Hrckqylk3Yw30lDlT7wkfAMdYbTm8XDL
+un9QOagjxXhjbtVwcXhTffx1w+rf2S94tDkn9fkyFELQCQfjhf03oqo7OVUZFBngyQ0AAAAA
+AAA=
+--------------ms080704000207010000040300--
+
+--===============1178694472602642556==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============1178694472602642556==--
