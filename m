@@ -1,72 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E55C710E72D
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Dec 2019 09:56:34 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D9BE210EB73
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Dec 2019 15:18:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8CC4F88884;
-	Mon,  2 Dec 2019 08:56:33 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 42BFD214FD;
+	Mon,  2 Dec 2019 14:18:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SVY-3B1QHZdo; Mon,  2 Dec 2019 08:56:33 +0000 (UTC)
+	with ESMTP id uDal8Q+jDnmL; Mon,  2 Dec 2019 14:18:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D4391887D1;
-	Mon,  2 Dec 2019 08:56:32 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E303B20029;
+	Mon,  2 Dec 2019 14:18:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 12B091BF2A6
- for <devel@linuxdriverproject.org>; Mon,  2 Dec 2019 08:56:29 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0359C1BF3F7
+ for <devel@linuxdriverproject.org>; Mon,  2 Dec 2019 14:18:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0F987870DE
- for <devel@linuxdriverproject.org>; Mon,  2 Dec 2019 08:56:29 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 00126859D6
+ for <devel@linuxdriverproject.org>; Mon,  2 Dec 2019 14:18:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id e5kBGjgMcj3s for <devel@linuxdriverproject.org>;
- Mon,  2 Dec 2019 08:56:28 +0000 (UTC)
+ with ESMTP id VueQTjwAhjTX for <devel@linuxdriverproject.org>;
+ Mon,  2 Dec 2019 14:18:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f68.google.com (mail-lf1-f68.google.com
- [209.85.167.68])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3CAAF86FEE
- for <devel@driverdev.osuosl.org>; Mon,  2 Dec 2019 08:56:28 +0000 (UTC)
-Received: by mail-lf1-f68.google.com with SMTP id m30so25427190lfp.8
- for <devel@driverdev.osuosl.org>; Mon, 02 Dec 2019 00:56:28 -0800 (PST)
+Received: from mail-oi1-f195.google.com (mail-oi1-f195.google.com
+ [209.85.167.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3689E859D2
+ for <devel@driverdev.osuosl.org>; Mon,  2 Dec 2019 14:18:41 +0000 (UTC)
+Received: by mail-oi1-f195.google.com with SMTP id 14so32487374oir.12
+ for <devel@driverdev.osuosl.org>; Mon, 02 Dec 2019 06:18:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id;
+ bh=O46JpsiVxHvaxS9r0mmnF1X/0tTav9FJHQ6vC2vquJw=;
+ b=g2QYFcaKIw/JDRmMvOZflR5+0GUDYg7cmf7W8uyyyHlmAHecHOqGRDXGbXgrevGLVm
+ dvZ3OQg3PixAB6iHLoVO/aYmXN4Y3nSx/JgztQdyTWiOZV1sEDrATSUMOHd3LYMU8sJj
+ RtvJ8HNPoOBWkiZIdsoPhVneamKnd1Zf2M1pDpXWFr92A+z3qzQbj6F5oX05HVUOzr/l
+ JBVRUiUAWjOgvAJLO6Xks3Org+ESsdydQlG/bc0m8/9vAMsI3SPhiOD1NXGGbbjIzRlQ
+ gCDE/gotWIkTUw45CCm4scIw/E8b2RTg+LZD9LnJ0i5k+BQjBsFMeVCBWhLevC/DsbY9
+ x/gg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Vgj7PGsaCd+QK5EW8HOwKnXzkNAAF8dwOAUSS+ipPTs=;
- b=LRtX8d/KGjrkJb1+0QQMaQU5/LqZaWc5pS697CXf4nXhN6SI+CRCPnFxlhcaPoI1oM
- LYPtT3B+pCkRy6pERPL60I6h1ktQ1t2JeDMWznnLTF0pDD6J3LTtTyWdrLcwYKvAbPot
- OTErRE5TJ3zPuaV1XeQb4KumMzIqsNLdYEzAbzSPun3Ojlcsa2nQze27C1Fj15w40tJ8
- DDI4Aqa/YOaKhhhctGYz5P/G/pKMyCE4+COR/B/6UC9PeNh/uLPOSonHNQTxKnX8t2A/
- ti4Ar4JmJFaSmnvWZLEwBO/ZBZ554RWBgRd7Wim+OGdqTpTSSu1tAS93FmR3brTBpBR4
- DPow==
-X-Gm-Message-State: APjAAAWwtHEOqBFzBkjw3H6ndwne1zY2+3eSY57EPAhoL7Qi4G0mcwVH
- WigqgCFWMcXts/Wkyvi9jq8=
-X-Google-Smtp-Source: APXvYqwjI7A2nNfjVQ/adXNCF5IUWlHXA/tLmM97n2/NNaRd1GaOCFHc8A1kKyESx/7NfA4ZkO2/Pw==
-X-Received: by 2002:ac2:5462:: with SMTP id e2mr33337163lfn.181.1575276986428; 
- Mon, 02 Dec 2019 00:56:26 -0800 (PST)
-Received: from xi.terra (c-14b8e655.07-184-6d6c6d4.bbcust.telenor.se.
- [85.230.184.20])
- by smtp.gmail.com with ESMTPSA id e7sm14595995lja.5.2019.12.02.00.56.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 02 Dec 2019 00:56:25 -0800 (PST)
-Received: from johan by xi.terra with local (Exim 4.92.3)
- (envelope-from <johan@xi.terra>)
- id 1ibhVM-0003KA-45; Mon, 02 Dec 2019 09:56:28 +0100
-From: Johan Hovold <johan@kernel.org>
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
+ bh=O46JpsiVxHvaxS9r0mmnF1X/0tTav9FJHQ6vC2vquJw=;
+ b=K+oqni+uu6ya0k5O7FkdQXGtw1QHbozg2c8/VrcYL2Dqamh89MDbCE/BT7xTqfumDV
+ 54MI2K8TQiOegoFyB2LKJ2ivz1dwfoVU5aaaB2bdy2KvC8P0cLtuQn5dITTAkrUyMbWK
+ E2FKzeOgogyHsIVVw+v2teu03DTGkJ09cZcCvm6tjL3kDCnaBSqhFkPoSU57t8Cv3Y4C
+ 6UfgpfRDGdM0D0Dz5gEPUGVFomPsWfOaEy4g8Khjc+/Tchx4c2bDpxONbzlZCslNnTaL
+ /RPYCc3vsMVlmymGDZjrOQfDLCk8gYJ93GCGCTpcR1LwzhB8NTKJaowxrgwlWALhwcQS
+ cqGQ==
+X-Gm-Message-State: APjAAAXaSqrOT0g5OszHTEKQAIjMxwdQhln0q4DDGL8bTFpUk7z3dNZf
+ OR+9qcV8NYxgRBW7Bv97KJ8=
+X-Google-Smtp-Source: APXvYqxyrI1tz3YpJ7VUSwiwzYbkct9KmqvLK02ptOCkAvbtQJ0paKYrFJPLjOWCJiPYFEsncZwvEg==
+X-Received: by 2002:a05:6808:98d:: with SMTP id
+ a13mr1786184oic.7.1575296320344; 
+ Mon, 02 Dec 2019 06:18:40 -0800 (PST)
+Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id y16sm7758914otq.60.2019.12.02.06.18.38
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Mon, 02 Dec 2019 06:18:39 -0800 (PST)
+From: Guenter Roeck <linux@roeck-us.net>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v2 3/3] staging: gigaset: add endpoint-type sanity check
-Date: Mon,  2 Dec 2019 09:56:10 +0100
-Message-Id: <20191202085610.12719-4-johan@kernel.org>
-X-Mailer: git-send-email 2.24.0
-In-Reply-To: <20191202085610.12719-1-johan@kernel.org>
-References: <20191202085610.12719-1-johan@kernel.org>
-MIME-Version: 1.0
+Subject: [PATCH] staging/octeon: Mark Ethernet driver as BROKEN
+Date: Mon,  2 Dec 2019 06:18:36 -0800
+Message-Id: <20191202141836.9363-1-linux@roeck-us.net>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,55 +81,52 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org, Johan Hovold <johan@kernel.org>
+Cc: devel@driverdev.osuosl.org, Julia Lawall <julia.lawall@lip6.fr>,
+ linux-kernel@vger.kernel.org, Guenter Roeck <linux@roeck-us.net>,
+ Wambui Karuga <wambui.karugax@gmail.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Add missing endpoint-type sanity checks to probe.
+The code doesn't compile due to incompatible pointer errors such as
 
-This specifically prevents a warning in USB core on URB submission when
-fuzzing USB descriptors.
+drivers/staging/octeon/ethernet-tx.c:649:50: error:
+	passing argument 1 of 'cvmx_wqe_get_grp' from incompatible pointer type
 
-Signed-off-by: Johan Hovold <johan@kernel.org>
+This is due to mixing, for example, cvmx_wqe_t with 'struct cvmx_wqe'.
+
+Unfortunately, one can not just revert the primary offending commit, as doing so
+results in secondary errors. This is made worse by the fact that the "removed"
+typedefs still exist and are used widely outside the staging directory,
+making the entire set of "remove typedef" changes pointless and wrong.
+
+Reflect reality and mark the driver as BROKEN.
+
+Fixes: ef1fe6b7369a ("staging: octeon: remove typedef declaration for cvmx_wqe")
+Fixes: 73aef0c9d2c6 ("staging: octeon: remove typedef declaration for cvmx_helper_link_info")
+Cc: Wambui Karuga <wambui.karugax@gmail.com>
+Cc: Julia Lawall <julia.lawall@lip6.fr>
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 ---
- drivers/staging/isdn/gigaset/usb-gigaset.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ drivers/staging/octeon/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/staging/isdn/gigaset/usb-gigaset.c b/drivers/staging/isdn/gigaset/usb-gigaset.c
-index a84722d83bc6..a20c0bfa68f3 100644
---- a/drivers/staging/isdn/gigaset/usb-gigaset.c
-+++ b/drivers/staging/isdn/gigaset/usb-gigaset.c
-@@ -705,6 +705,12 @@ static int gigaset_probe(struct usb_interface *interface,
- 
- 	endpoint = &hostif->endpoint[0].desc;
- 
-+	if (!usb_endpoint_is_bulk_out(endpoint)) {
-+		dev_err(&interface->dev, "missing bulk-out endpoint\n");
-+		retval = -ENODEV;
-+		goto error;
-+	}
-+
- 	buffer_size = le16_to_cpu(endpoint->wMaxPacketSize);
- 	ucs->bulk_out_size = buffer_size;
- 	ucs->bulk_out_epnum = usb_endpoint_num(endpoint);
-@@ -724,6 +730,12 @@ static int gigaset_probe(struct usb_interface *interface,
- 
- 	endpoint = &hostif->endpoint[1].desc;
- 
-+	if (!usb_endpoint_is_int_in(endpoint)) {
-+		dev_err(&interface->dev, "missing int-in endpoint\n");
-+		retval = -ENODEV;
-+		goto error;
-+	}
-+
- 	ucs->busy = 0;
- 
- 	ucs->read_urb = usb_alloc_urb(0, GFP_KERNEL);
+diff --git a/drivers/staging/octeon/Kconfig b/drivers/staging/octeon/Kconfig
+index 5319909eb2f6..e7f4ddcc1361 100644
+--- a/drivers/staging/octeon/Kconfig
++++ b/drivers/staging/octeon/Kconfig
+@@ -3,6 +3,7 @@ config OCTEON_ETHERNET
+ 	tristate "Cavium Networks Octeon Ethernet support"
+ 	depends on CAVIUM_OCTEON_SOC || COMPILE_TEST
+ 	depends on NETDEVICES
++	depends on BROKEN
+ 	select PHYLIB
+ 	select MDIO_OCTEON
+ 	help
 -- 
-2.24.0
+2.17.1
 
 _______________________________________________
 devel mailing list
