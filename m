@@ -1,74 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D9BE210EB73
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Dec 2019 15:18:48 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2A16610EBE7
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Dec 2019 15:55:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 42BFD214FD;
-	Mon,  2 Dec 2019 14:18:46 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B373886BC5;
+	Mon,  2 Dec 2019 14:55:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uDal8Q+jDnmL; Mon,  2 Dec 2019 14:18:45 +0000 (UTC)
+	with ESMTP id ld5d-mnbFEWO; Mon,  2 Dec 2019 14:55:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E303B20029;
-	Mon,  2 Dec 2019 14:18:44 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D834E86B55;
+	Mon,  2 Dec 2019 14:55:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0359C1BF3F7
- for <devel@linuxdriverproject.org>; Mon,  2 Dec 2019 14:18:42 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 146001BF3F7
+ for <devel@linuxdriverproject.org>; Mon,  2 Dec 2019 14:55:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 00126859D6
- for <devel@linuxdriverproject.org>; Mon,  2 Dec 2019 14:18:41 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 0C4FA883E1
+ for <devel@linuxdriverproject.org>; Mon,  2 Dec 2019 14:55:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VueQTjwAhjTX for <devel@linuxdriverproject.org>;
- Mon,  2 Dec 2019 14:18:41 +0000 (UTC)
+ with ESMTP id m1F2++bWcC2w for <devel@linuxdriverproject.org>;
+ Mon,  2 Dec 2019 14:55:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f195.google.com (mail-oi1-f195.google.com
- [209.85.167.195])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3689E859D2
- for <devel@driverdev.osuosl.org>; Mon,  2 Dec 2019 14:18:41 +0000 (UTC)
-Received: by mail-oi1-f195.google.com with SMTP id 14so32487374oir.12
- for <devel@driverdev.osuosl.org>; Mon, 02 Dec 2019 06:18:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id;
- bh=O46JpsiVxHvaxS9r0mmnF1X/0tTav9FJHQ6vC2vquJw=;
- b=g2QYFcaKIw/JDRmMvOZflR5+0GUDYg7cmf7W8uyyyHlmAHecHOqGRDXGbXgrevGLVm
- dvZ3OQg3PixAB6iHLoVO/aYmXN4Y3nSx/JgztQdyTWiOZV1sEDrATSUMOHd3LYMU8sJj
- RtvJ8HNPoOBWkiZIdsoPhVneamKnd1Zf2M1pDpXWFr92A+z3qzQbj6F5oX05HVUOzr/l
- JBVRUiUAWjOgvAJLO6Xks3Org+ESsdydQlG/bc0m8/9vAMsI3SPhiOD1NXGGbbjIzRlQ
- gCDE/gotWIkTUw45CCm4scIw/E8b2RTg+LZD9LnJ0i5k+BQjBsFMeVCBWhLevC/DsbY9
- x/gg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
- bh=O46JpsiVxHvaxS9r0mmnF1X/0tTav9FJHQ6vC2vquJw=;
- b=K+oqni+uu6ya0k5O7FkdQXGtw1QHbozg2c8/VrcYL2Dqamh89MDbCE/BT7xTqfumDV
- 54MI2K8TQiOegoFyB2LKJ2ivz1dwfoVU5aaaB2bdy2KvC8P0cLtuQn5dITTAkrUyMbWK
- E2FKzeOgogyHsIVVw+v2teu03DTGkJ09cZcCvm6tjL3kDCnaBSqhFkPoSU57t8Cv3Y4C
- 6UfgpfRDGdM0D0Dz5gEPUGVFomPsWfOaEy4g8Khjc+/Tchx4c2bDpxONbzlZCslNnTaL
- /RPYCc3vsMVlmymGDZjrOQfDLCk8gYJ93GCGCTpcR1LwzhB8NTKJaowxrgwlWALhwcQS
- cqGQ==
-X-Gm-Message-State: APjAAAXaSqrOT0g5OszHTEKQAIjMxwdQhln0q4DDGL8bTFpUk7z3dNZf
- OR+9qcV8NYxgRBW7Bv97KJ8=
-X-Google-Smtp-Source: APXvYqxyrI1tz3YpJ7VUSwiwzYbkct9KmqvLK02ptOCkAvbtQJ0paKYrFJPLjOWCJiPYFEsncZwvEg==
-X-Received: by 2002:a05:6808:98d:: with SMTP id
- a13mr1786184oic.7.1575296320344; 
- Mon, 02 Dec 2019 06:18:40 -0800 (PST)
-Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id y16sm7758914otq.60.2019.12.02.06.18.38
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Mon, 02 Dec 2019 06:18:39 -0800 (PST)
-From: Guenter Roeck <linux@roeck-us.net>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging/octeon: Mark Ethernet driver as BROKEN
-Date: Mon,  2 Dec 2019 06:18:36 -0800
-Message-Id: <20191202141836.9363-1-linux@roeck-us.net>
-X-Mailer: git-send-email 2.17.1
+Received: from faui03.informatik.uni-erlangen.de
+ (faui03.informatik.uni-erlangen.de [131.188.30.103])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 19FD4883BF
+ for <devel@driverdev.osuosl.org>; Mon,  2 Dec 2019 14:55:36 +0000 (UTC)
+Received: from faui0df.informatik.uni-erlangen.de
+ (faui0df.informatik.uni-erlangen.de [IPv6:2001:638:a000:4160:131:188:60:75])
+ by faui03.informatik.uni-erlangen.de (Postfix) with ESMTP id 12A54241797;
+ Mon,  2 Dec 2019 15:55:34 +0100 (CET)
+Received: by faui0df.informatik.uni-erlangen.de (Postfix, from userid 66565)
+ id 062183C0736; Mon,  2 Dec 2019 15:55:34 +0100 (CET)
+From: Julian Preis <julian.preis@fau.de>
+To: devel@driverdev.osuosl.org
+Subject: [PATCH] drivers/staging/exfat: Fix spelling mistakes
+Date: Mon,  2 Dec 2019 15:55:17 +0100
+Message-Id: <20191202145517.14488-1-julian.preis@fau.de>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <n>
+References: <n>
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,52 +59,96 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Julia Lawall <julia.lawall@lip6.fr>,
- linux-kernel@vger.kernel.org, Guenter Roeck <linux@roeck-us.net>,
- Wambui Karuga <wambui.karugax@gmail.com>
-MIME-Version: 1.0
+Cc: Johannes Weidner <johannes.weidner@fau.de>,
+ Julian Preis <julian.preis@fau.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The code doesn't compile due to incompatible pointer errors such as
+Fix spelling mistakes in exfat_core.c and exfat_super.c.
 
-drivers/staging/octeon/ethernet-tx.c:649:50: error:
-	passing argument 1 of 'cvmx_wqe_get_grp' from incompatible pointer type
-
-This is due to mixing, for example, cvmx_wqe_t with 'struct cvmx_wqe'.
-
-Unfortunately, one can not just revert the primary offending commit, as doing so
-results in secondary errors. This is made worse by the fact that the "removed"
-typedefs still exist and are used widely outside the staging directory,
-making the entire set of "remove typedef" changes pointless and wrong.
-
-Reflect reality and mark the driver as BROKEN.
-
-Fixes: ef1fe6b7369a ("staging: octeon: remove typedef declaration for cvmx_wqe")
-Fixes: 73aef0c9d2c6 ("staging: octeon: remove typedef declaration for cvmx_helper_link_info")
-Cc: Wambui Karuga <wambui.karugax@gmail.com>
-Cc: Julia Lawall <julia.lawall@lip6.fr>
-Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+Co-developed-by: Johannes Weidner <johannes.weidner@fau.de>
+Signed-off-by: Johannes Weidner <johannes.weidner@fau.de>
+Signed-off-by: Julian Preis <julian.preis@fau.de>
 ---
- drivers/staging/octeon/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/staging/exfat/exfat_core.c  |  6 +++---
+ drivers/staging/exfat/exfat_super.c | 10 +++++-----
+ 2 files changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/staging/octeon/Kconfig b/drivers/staging/octeon/Kconfig
-index 5319909eb2f6..e7f4ddcc1361 100644
---- a/drivers/staging/octeon/Kconfig
-+++ b/drivers/staging/octeon/Kconfig
-@@ -3,6 +3,7 @@ config OCTEON_ETHERNET
- 	tristate "Cavium Networks Octeon Ethernet support"
- 	depends on CAVIUM_OCTEON_SOC || COMPILE_TEST
- 	depends on NETDEVICES
-+	depends on BROKEN
- 	select PHYLIB
- 	select MDIO_OCTEON
- 	help
+diff --git a/drivers/staging/exfat/exfat_core.c b/drivers/staging/exfat/exfat_core.c
+index d2d3447083c7..2c688cf91eac 100644
+--- a/drivers/staging/exfat/exfat_core.c
++++ b/drivers/staging/exfat/exfat_core.c
+@@ -1156,7 +1156,7 @@ static s32 __write_partial_entries_in_entry_set(struct super_block *sb,
+ 	num_entries = count;
+ 
+ 	while (num_entries) {
+-		/* white per sector base */
++		/* write per sector base */
+ 		remaining_byte_in_sector = (1 << p_bd->sector_size_bits) - off;
+ 		copy_entries = min_t(s32,
+ 				     remaining_byte_in_sector >> DENTRY_SIZE_BITS,
+@@ -1392,7 +1392,7 @@ struct entry_set_cache_t *get_entry_set_in_dir(struct super_block *sb,
+ 	while (num_entries) {
+ 		/*
+ 		 * instead of copying whole sector, we will check every entry.
+-		 * this will provide minimum stablity and consistency.
++		 * this will provide minimum stability and consistency.
+ 		 */
+ 		entry_type = p_fs->fs_func->get_entry_type(ep);
+ 
+@@ -1683,7 +1683,7 @@ static s32 extract_uni_name_from_name_entry(struct name_dentry_t *ep, u16 *unina
+ }
+ 
+ /* return values of exfat_find_dir_entry()
+- * >= 0 : return dir entiry position with the name in dir
++ * >= 0 : return dir entry position with the name in dir
+  * -1 : (root dir, ".") it is the root dir itself
+  * -2 : entry with the name does not exist
+  */
+diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
+index 6e481908c59f..02548335ec82 100644
+--- a/drivers/staging/exfat/exfat_super.c
++++ b/drivers/staging/exfat/exfat_super.c
+@@ -984,7 +984,7 @@ static int ffsWriteFile(struct inode *inode, struct file_id_t *fid,
+ 
+ 	brelse(tmp_bh);
+ 
+-	/* (3) update the direcoty entry */
++	/* (3) update the directory entry */
+ 	es = get_entry_set_in_dir(sb, &fid->dir, fid->entry,
+ 				  ES_ALL_ENTRIES, &ep);
+ 	if (!es)
+@@ -1481,7 +1481,7 @@ static int ffsReadStat(struct inode *inode, struct dir_entry_t *info)
+ 
+ 			count = count_dos_name_entries(sb, &dir, TYPE_DIR);
+ 			if (count < 0) {
+-				ret = count; /* propogate error upward */
++				ret = count; /* propagate error upward */
+ 				goto out;
+ 			}
+ 			info->NumSubdirs = count;
+@@ -1548,7 +1548,7 @@ static int ffsReadStat(struct inode *inode, struct dir_entry_t *info)
+ 
+ 		count = count_dos_name_entries(sb, &dir, TYPE_DIR);
+ 		if (count < 0) {
+-			ret = count; /* propogate error upward */
++			ret = count; /* propagate error upward */
+ 			goto out;
+ 		}
+ 		info->NumSubdirs += count;
+@@ -3689,7 +3689,7 @@ static int exfat_fill_super(struct super_block *sb, void *data, int silent)
+ 
+ 	/*
+ 	 * GFP_KERNEL is ok here, because while we do hold the
+-	 * supeblock lock, memory pressure can't call back into
++	 * superblock lock, memory pressure can't call back into
+ 	 * the filesystem, since we're only just about to mount
+ 	 * it and have no inodes etc active!
+ 	 */
 -- 
-2.17.1
+2.20.1
 
 _______________________________________________
 devel mailing list
