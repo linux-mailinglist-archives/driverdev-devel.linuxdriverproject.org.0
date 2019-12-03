@@ -1,71 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BB8C5110190
-	for <lists+driverdev-devel@lfdr.de>; Tue,  3 Dec 2019 16:52:13 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BD86E87E5F;
-	Tue,  3 Dec 2019 15:52:11 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hwRrRyFoYbSZ; Tue,  3 Dec 2019 15:52:11 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DCED087D05;
-	Tue,  3 Dec 2019 15:52:10 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 371E21BF378
- for <devel@linuxdriverproject.org>; Tue,  3 Dec 2019 15:52:09 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id B75A611033B
+	for <lists+driverdev-devel@lfdr.de>; Tue,  3 Dec 2019 18:16:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 33EBE86931
- for <devel@linuxdriverproject.org>; Tue,  3 Dec 2019 15:52:09 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4A55986D42;
+	Tue,  3 Dec 2019 17:16:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RZRyeXMiBBYM; Tue,  3 Dec 2019 17:16:12 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E492A86781;
+	Tue,  3 Dec 2019 17:16:11 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 479C71BF3A1
+ for <devel@linuxdriverproject.org>; Tue,  3 Dec 2019 17:16:09 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 44A50227CC
+ for <devel@linuxdriverproject.org>; Tue,  3 Dec 2019 17:16:09 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fYkUQCtJR9E3 for <devel@linuxdriverproject.org>;
- Tue,  3 Dec 2019 15:52:08 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f69.google.com (mail-io1-f69.google.com
- [209.85.166.69])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 870E686783
- for <devel@driverdev.osuosl.org>; Tue,  3 Dec 2019 15:52:08 +0000 (UTC)
-Received: by mail-io1-f69.google.com with SMTP id y16so2711028ior.14
- for <devel@driverdev.osuosl.org>; Tue, 03 Dec 2019 07:52:08 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:date:in-reply-to:message-id:subject
- :from:to;
- bh=qWkyIPu2o6vdgwTgEGOSkN6/EDBPIm6eU4NPNmjP8sE=;
- b=T8MaNfjTuBgeViYRCbuSYdSOCLyFK+tyMLwTbDUZ4sBrhvHA7GS9IoIdf9UGMEu3Td
- 7xuNjJTL1WW5TPmehiToEvvcLqNeRz9VvJE9UPAAsZtTDj/drjJrjIFobtJNFuu9Z5/C
- Y6gTFQn2E6LqteXnKm3JWZjd3c9jslvv0rIFIR93xybaHmGjKQMATh+YYmbQfa3CQtD4
- ZxV5F/ndwOAfAhB2BeAPeLfpYfzRJbeoIGPzkaF3n/BMEQq3q49Lz5QPuZcrlQP7CHsG
- S8cqPQOscvIySv1F3NWWnjS/8C9Hed2VPbYqkW12Q4cetoeBlzplNkI0nJe9Ikt77fMe
- 97xw==
-X-Gm-Message-State: APjAAAX/RdBP3brHJ/37MxhYjMLLdT+Ee2cJeCvExqpWcPI+EHv0qINS
- MqCGDqg4gu86D+1x4biMx2ENTiU4tOnHEG+c9FtR21ORZgDj
-X-Google-Smtp-Source: APXvYqxRRjmcvHXXtfC8p3VqmQ496e1KHf7+NJNVYy0YhwBf9iB2IDre8Q3CFKBUOS2QdbxjInzY+v+6Xr9pVZTGUYCg05DmeGFs
+ with ESMTP id cdK8Im4cw5qz for <devel@linuxdriverproject.org>;
+ Tue,  3 Dec 2019 17:16:08 +0000 (UTC)
+X-Greylist: delayed 00:37:14 by SQLgrey-1.7.6
+Received: from heliosphere.sirena.org.uk (heliosphere.sirena.org.uk
+ [172.104.155.198])
+ by silver.osuosl.org (Postfix) with ESMTPS id 65808227A3
+ for <devel@driverdev.osuosl.org>; Tue,  3 Dec 2019 17:16:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=sirena.org.uk; s=20170815-heliosphere; h=In-Reply-To:Content-Type:
+ MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=7Kcuy/fn6cSz/SJB4bZWplLo8InyBESqnNDB0HH+CV8=; b=su4IqbsC0yREzmmrtcBG8C4NJ
+ jwHmKeSMVKlOq7kOKOB6G4d6NJpXJO5ZFZIYz5JpTgyikZR9Y9xQIqAK2Hc8hiI8azARrelzowpyb
+ VYvG+AQ0HD9EuV0UESrOcdBACQFiWJC5Fuyz/H10BlOsHdtazC3MxKaVLcsJv4ju1mAAg=;
+Received: from fw-tnat-cam1.arm.com ([217.140.106.49]
+ helo=fitzroy.sirena.org.uk) by heliosphere.sirena.org.uk with esmtpsa
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <broonie@sirena.org.uk>)
+ id 1icBCN-0003Hr-DU; Tue, 03 Dec 2019 16:38:51 +0000
+Received: by fitzroy.sirena.org.uk (Postfix, from userid 1000)
+ id E42A5D003B4; Tue,  3 Dec 2019 16:38:50 +0000 (GMT)
+Date: Tue, 3 Dec 2019 16:38:50 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Jonathan Cameron <jic23@kernel.org>
+Subject: Re: [PATCH v4] dt-bindings: iio: accel: add binding documentation
+ for ADIS16240
+Message-ID: <20191203163850.GN1998@sirena.org.uk>
+References: <20191123051927.5016-1-rodrigorsdc@gmail.com>
+ <20191123114119.7b0c3447@archlinux>
+ <a55b9c576eded8c91a985aabbba89180561ab156.camel@analog.com>
+ <20191201114032.1a972dda@archlinux>
 MIME-Version: 1.0
-X-Received: by 2002:a5d:8744:: with SMTP id k4mr2936669iol.227.1575388327907; 
- Tue, 03 Dec 2019 07:52:07 -0800 (PST)
-Date: Tue, 03 Dec 2019 07:52:07 -0800
-In-Reply-To: <00000000000080f1d305988bb8ba@google.com>
-X-Google-Appengine-App-Id: s~syzkaller
-X-Google-Appengine-App-Id-Alias: syzkaller
-Message-ID: <000000000000ab3afd0598cead51@google.com>
-Subject: Re: BUG: unable to handle kernel paging request in
- ion_heap_clear_pages
-From: syzbot <syzbot+be6ccf3081ce8afd1b56@syzkaller.appspotmail.com>
-To: arve@android.com, christian@brauner.io, devel@driverdev.osuosl.org, 
- dja@axtens.net, dri-devel@lists.freedesktop.org, dvyukov@google.com, 
- gregkh@linuxfoundation.org, joel@joelfernandes.org, 
- kasan-dev@googlegroups.com, labbott@redhat.com, 
- linaro-mm-sig-owner@lists.linaro.org, linaro-mm-sig@lists.linaro.org, 
- linux-kernel@vger.kernel.org, maco@android.com, sumit.semwal@linaro.org, 
- syzkaller-bugs@googlegroups.com, tkjos@android.com
+In-Reply-To: <20191201114032.1a972dda@archlinux>
+X-Cookie: Cleanliness is next to impossible.
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,89 +74,74 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"; DelSp="yes"
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "lars@metafoo.de" <lars@metafoo.de>, "Hennerich,
+ Michael" <Michael.Hennerich@analog.com>,
+ "linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "rodrigorsdc@gmail.com" <rodrigorsdc@gmail.com>,
+ "kernel-usp@googlegroups.com" <kernel-usp@googlegroups.com>,
+ "pmeerw@pmeerw.net" <pmeerw@pmeerw.net>, "knaack.h@gmx.de" <knaack.h@gmx.de>,
+ "Ardelean, Alexandru" <alexandru.Ardelean@analog.com>, "Popa,
+ Stefan Serban" <StefanSerban.Popa@analog.com>
+Content-Type: multipart/mixed; boundary="===============4160267725535614144=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-syzbot has found a reproducer for the following crash on:
 
-HEAD commit:    76bb8b05 Merge tag 'kbuild-v5.5' of git://git.kernel.org/p..
-git tree:       upstream
-console output: https://syzkaller.appspot.com/x/log.txt?x=159d0f36e00000
-kernel config:  https://syzkaller.appspot.com/x/.config?x=dd226651cb0f364b
-dashboard link: https://syzkaller.appspot.com/bug?extid=be6ccf3081ce8afd1b56
-compiler:       gcc (GCC) 9.0.0 20181231 (experimental)
-syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=171f677ae00000
-C reproducer:   https://syzkaller.appspot.com/x/repro.c?x=11db659ce00000
+--===============4160267725535614144==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Ll0BBk1HBk/f94B0"
+Content-Disposition: inline
 
-IMPORTANT: if you fix the bug, please add the following tag to the commit:
-Reported-by: syzbot+be6ccf3081ce8afd1b56@syzkaller.appspotmail.com
 
-BUG: unable to handle page fault for address: fffff52000680000
-#PF: supervisor read access in kernel mode
-#PF: error_code(0x0000) - not-present page
-PGD 21ffee067 P4D 21ffee067 PUD aa51c067 PMD a8372067 PTE 0
-Oops: 0000 [#1] PREEMPT SMP KASAN
-CPU: 1 PID: 3666 Comm: ion_system_heap Not tainted 5.4.0-syzkaller #0
-Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS  
-Google 01/01/2011
-RIP: 0010:memory_is_nonzero mm/kasan/generic.c:121 [inline]
-RIP: 0010:memory_is_poisoned_n mm/kasan/generic.c:135 [inline]
-RIP: 0010:memory_is_poisoned mm/kasan/generic.c:166 [inline]
-RIP: 0010:check_memory_region_inline mm/kasan/generic.c:182 [inline]
-RIP: 0010:check_memory_region+0x9c/0x1a0 mm/kasan/generic.c:192
-Code: c9 4d 0f 49 c1 49 c1 f8 03 45 85 c0 0f 84 10 01 00 00 41 83 e8 01 4e  
-8d 44 c0 08 eb 0d 48 83 c0 08 4c 39 c0 0f 84 a7 00 00 00 <48> 83 38 00 74  
-ed 4c 8d 40 08 eb 09 48 83 c0 01 49 39 c0 74 53 80
-RSP: 0018:ffffc9000cf87ab8 EFLAGS: 00010212
-RAX: fffff52000680000 RBX: fffff52000681600 RCX: ffffffff85d95629
-RDX: 0000000000000001 RSI: 000000000000b000 RDI: ffffc90003400000
-RBP: ffffc9000cf87ad0 R08: fffff52000681600 R09: 0000000000001600
-R10: fffff520006815ff R11: ffffc9000340afff R12: fffff52000680000
-R13: 000000000000b000 R14: 0000000000000000 R15: ffffc9000cf87d08
-FS:  0000000000000000(0000) GS:ffff8880ae900000(0000) knlGS:0000000000000000
-CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-CR2: fffff52000680000 CR3: 00000000a6755000 CR4: 00000000001406e0
-DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
-Call Trace:
-  memset+0x24/0x40 mm/kasan/common.c:107
-  memset include/linux/string.h:365 [inline]
-  ion_heap_clear_pages+0x49/0x70 drivers/staging/android/ion/ion_heap.c:106
-  ion_heap_sglist_zero+0x245/0x270 drivers/staging/android/ion/ion_heap.c:130
-  ion_heap_buffer_zero+0xf5/0x150 drivers/staging/android/ion/ion_heap.c:145
-  ion_system_heap_free+0x1eb/0x250  
-drivers/staging/android/ion/ion_system_heap.c:163
-  ion_buffer_destroy+0x159/0x2d0 drivers/staging/android/ion/ion.c:93
-  ion_heap_deferred_free+0x29d/0x630  
-drivers/staging/android/ion/ion_heap.c:239
-  kthread+0x361/0x430 kernel/kthread.c:255
-  ret_from_fork+0x24/0x30 arch/x86/entry/entry_64.S:352
-Modules linked in:
-CR2: fffff52000680000
----[ end trace 6d0e26662c48296a ]---
-RIP: 0010:memory_is_nonzero mm/kasan/generic.c:121 [inline]
-RIP: 0010:memory_is_poisoned_n mm/kasan/generic.c:135 [inline]
-RIP: 0010:memory_is_poisoned mm/kasan/generic.c:166 [inline]
-RIP: 0010:check_memory_region_inline mm/kasan/generic.c:182 [inline]
-RIP: 0010:check_memory_region+0x9c/0x1a0 mm/kasan/generic.c:192
-Code: c9 4d 0f 49 c1 49 c1 f8 03 45 85 c0 0f 84 10 01 00 00 41 83 e8 01 4e  
-8d 44 c0 08 eb 0d 48 83 c0 08 4c 39 c0 0f 84 a7 00 00 00 <48> 83 38 00 74  
-ed 4c 8d 40 08 eb 09 48 83 c0 01 49 39 c0 74 53 80
-RSP: 0018:ffffc9000cf87ab8 EFLAGS: 00010212
-RAX: fffff52000680000 RBX: fffff52000681600 RCX: ffffffff85d95629
-RDX: 0000000000000001 RSI: 000000000000b000 RDI: ffffc90003400000
-RBP: ffffc9000cf87ad0 R08: fffff52000681600 R09: 0000000000001600
-R10: fffff520006815ff R11: ffffc9000340afff R12: fffff52000680000
-R13: 000000000000b000 R14: 0000000000000000 R15: ffffc9000cf87d08
-FS:  0000000000000000(0000) GS:ffff8880ae900000(0000) knlGS:0000000000000000
-CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-CR2: fffff52000680000 CR3: 00000000a6755000 CR4: 00000000001406e0
-DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+--Ll0BBk1HBk/f94B0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Sun, Dec 01, 2019 at 11:40:32AM +0000, Jonathan Cameron wrote:
+
+> +CC Mark as we probably need a more general view point on
+> the question of whether SPI mode should be enforced by binding
+> or in the driver.
+
+Not sure I see the question here, I think I was missing a bit of
+the conversation?  It's perfectly fine for a driver to specify a
+mode, if the hardware always uses some unusual mode then there's
+no sense in forcing every single DT to set the same mode.  On the
+other hand if there's some configuration for the driver that was
+handling some board specific configuration that there's already
+some generic SPI support for setting then it seems odd to have a
+custom driver specific configuration mechanism.
+
+--Ll0BBk1HBk/f94B0
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl3mj5oACgkQJNaLcl1U
+h9C/sgf/QxvazMVP9zm49jfiS4yHBJmRZeuDac6ZLwJIaSFBBjGWId42DRoQBXU+
+1gZ9GH+tgeT7lGT1w+JXAky7yrNuwA0ERHAOQ1TzT0VF9DKqY+omAYwzBNC1P3A/
+pldGP1I/5VsTcsJLVQemowwMzsNo4i3QTDDr07ENM5HAM4IvGVmCwJEfcCy9/q/8
+fCpigQGTQRkfA12KD+KnN/87eUKwV93DB3mQ/Hgo9HvE3/BWF7Ra8TvfPCt0EKlV
+NZQ4ohTyRRkuu8mwQnwJj5XhEAOa2+ueFH2WLhODhGDz58smKbv3cNASdq+t3Jg7
+skZw6qsqmI38m+TAhRr33Kps+gZ8+g==
+=JKhy
+-----END PGP SIGNATURE-----
+
+--Ll0BBk1HBk/f94B0--
+
+--===============4160267725535614144==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============4160267725535614144==--
