@@ -1,70 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C061411305F
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Dec 2019 18:01:14 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D41411362F
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Dec 2019 21:13:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B35B588499;
-	Wed,  4 Dec 2019 17:01:12 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8DFAB23524;
+	Wed,  4 Dec 2019 20:13:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cRm2IjQDZIZ8; Wed,  4 Dec 2019 17:01:12 +0000 (UTC)
+	with ESMTP id Gv3m1R-+XyG7; Wed,  4 Dec 2019 20:13:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id F137888416;
-	Wed,  4 Dec 2019 17:01:11 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5513B232D2;
+	Wed,  4 Dec 2019 20:13:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B19661BF336
- for <devel@linuxdriverproject.org>; Wed,  4 Dec 2019 17:01:08 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E91DF1BF5AE
+ for <devel@linuxdriverproject.org>; Wed,  4 Dec 2019 20:13:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A407687D36
- for <devel@linuxdriverproject.org>; Wed,  4 Dec 2019 17:01:08 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id DDFFB87D33
+ for <devel@linuxdriverproject.org>; Wed,  4 Dec 2019 20:13:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rX1D+rSYvO0r for <devel@linuxdriverproject.org>;
- Wed,  4 Dec 2019 17:01:08 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from heliosphere.sirena.org.uk (heliosphere.sirena.org.uk
- [172.104.155.198])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E31ED87865
- for <devel@driverdev.osuosl.org>; Wed,  4 Dec 2019 17:01:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sirena.org.uk; s=20170815-heliosphere; h=In-Reply-To:Content-Type:
- MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=asdcy8EJ6DybeaXz0S+Y5PU/41Q6cNiuOXJn7dxF4fs=; b=RMkJ8v/vMPBYXFddlJ8CE2112
- o4Fd/fPh6+Bw1xmhc1H9D6wwiNrIo4vGlB2SeEGjk4i6KbYGYqJpgHwwX+jFkI3ixAcjn8Tf09h8M
- r9RbqBnpf/UjAoT445k1I5a5JqzzncUtD3rIGyt4GsgN3r6ohV1Qen6+tMoStISjfOUP8=;
-Received: from 92.40.248.27.threembb.co.uk ([92.40.248.27]
- helo=fitzroy.sirena.org.uk) by heliosphere.sirena.org.uk with esmtpsa
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <broonie@sirena.org.uk>)
- id 1icY1P-0001Kc-QP; Wed, 04 Dec 2019 17:01:03 +0000
-Received: by fitzroy.sirena.org.uk (Postfix, from userid 1000)
- id 5DE17D0046D; Wed,  4 Dec 2019 17:00:59 +0000 (GMT)
-Date: Wed, 4 Dec 2019 17:00:59 +0000
-From: Mark Brown <broonie@kernel.org>
-To: "Ardelean, Alexandru" <alexandru.Ardelean@analog.com>
-Subject: Re: [PATCH v4] dt-bindings: iio: accel: add binding documentation
- for ADIS16240
-Message-ID: <20191204170059.GX1998@sirena.org.uk>
-References: <20191123051927.5016-1-rodrigorsdc@gmail.com>
- <20191123114119.7b0c3447@archlinux>
- <a55b9c576eded8c91a985aabbba89180561ab156.camel@analog.com>
- <20191201114032.1a972dda@archlinux>
- <20191203163850.GN1998@sirena.org.uk>
- <20191203165154.00005793@Huawei.com>
- <c725b1b1475148ded6168667fa0227bc18de0854.camel@analog.com>
+ with ESMTP id uIk-aUU-ihWr for <devel@linuxdriverproject.org>;
+ Wed,  4 Dec 2019 20:13:26 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mx1.suse.de (mx2.suse.de [195.135.220.15])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id EFD6C87BC8
+ for <devel@driverdev.osuosl.org>; Wed,  4 Dec 2019 20:13:25 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx1.suse.de (Postfix) with ESMTP id 48F3BB1EC;
+ Wed,  4 Dec 2019 20:13:23 +0000 (UTC)
+Message-ID: <f0f68c001a94f72b05d188f1089f24e78552f276.camel@suse.de>
+Subject: Re: [PATCH] staging: vchiq: call unregister_chrdev_region() when
+ driver registration fails
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+To: Marcelo Diop-Gonzalez <marcgonzalez@google.com>, 
+ gregkh@linuxfoundation.org, wahrenst@gmx.net
+Date: Wed, 04 Dec 2019 21:13:21 +0100
+In-Reply-To: <20191203153921.70540-1-marcgonzalez@google.com>
+References: <20191203153921.70540-1-marcgonzalez@google.com>
+User-Agent: Evolution 3.34.1 
 MIME-Version: 1.0
-In-Reply-To: <c725b1b1475148ded6168667fa0227bc18de0854.camel@analog.com>
-X-Cookie: Cleanliness is next to impossible.
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,78 +58,72 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "lars@metafoo.de" <lars@metafoo.de>, "Hennerich,
- Michael" <Michael.Hennerich@analog.com>,
- "linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "knaack.h@gmx.de" <knaack.h@gmx.de>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "rodrigorsdc@gmail.com" <rodrigorsdc@gmail.com>,
- "kernel-usp@googlegroups.com" <kernel-usp@googlegroups.com>,
- "pmeerw@pmeerw.net" <pmeerw@pmeerw.net>,
- "Jonathan.Cameron@huawei.com" <Jonathan.Cameron@huawei.com>, "Popa,
- Stefan Serban" <StefanSerban.Popa@analog.com>,
- "jic23@kernel.org" <jic23@kernel.org>
-Content-Type: multipart/mixed; boundary="===============9148133337934171091=="
+Cc: devel@driverdev.osuosl.org, linux-rpi-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============2078908422313341673=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---===============9148133337934171091==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="z3PcgjD2qOzdkXVS"
-Content-Disposition: inline
+--===============2078908422313341673==
+Content-Type: multipart/signed; micalg="pgp-sha256";
+	protocol="application/pgp-signature"; boundary="=-5919c0yuJGALPpC6G7SP"
 
 
---z3PcgjD2qOzdkXVS
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+--=-5919c0yuJGALPpC6G7SP
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On Wed, Dec 04, 2019 at 07:18:15AM +0000, Ardelean, Alexandru wrote:
+On Tue, 2019-12-03 at 10:39 -0500, Marcelo Diop-Gonzalez wrote:
+> This undoes the previous call to alloc_chrdev_region() on failure,
+> and is probably what was meant originally given the label name.
+>=20
+> Signed-off-by: Marcelo Diop-Gonzalez <marcgonzalez@google.com>
+> ---
+>  drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.=
+c
+> b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+> index 02148a24818a..4458c1e60fa3 100644
+> --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+> +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+> @@ -3309,7 +3309,7 @@ static int __init vchiq_driver_init(void)
+>  	return 0;
+> =20
+>  region_unregister:
+> -	platform_driver_unregister(&vchiq_driver);
+> +	unregister_chrdev_region(vchiq_devid, 1);
+> =20
+>  class_destroy:
+>  	class_destroy(vchiq_class);
 
-> One example (for spi-cpha):
->         if (of_property_read_u32(nc, "spi-cpha", &tmp) == 0) {
->                 spi->mode |= SPI_CPHA_OVERRIDE;
->                 if (tmp)
->                     spi->mode |= SPI_CPHA;
+Thanks!
 
-We could also do this with a separate flag saying that the wire
-format is forced from DT rather than having one per setting.
+Reviewed-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 
-> Or maybe, a more complete solution would be an "spi-mode-conv" driver.
-> Similar to the fixed-factor-clock clk driver, which just does a computation
-> based on values from the DT.
 
-> To tell the truth, this would be a great idea, because we have something
-> like a passive 3-wire-to-4-wire HDL converter. This requires that the
-> driver be configured in 3-wire mode, the SPI controller in normal 4-wire.
-> That's because the SPI framework does a validation of the supported modes
-> (for the SPI controller) and invalidates what the device wants (which is
-> very reasonable).
-
-This is harder to achieve here because we don't have drivers for
-random bits of the wire format...
-
---z3PcgjD2qOzdkXVS
+--=-5919c0yuJGALPpC6G7SP
 Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl3n5koACgkQJNaLcl1U
-h9DYmAf+LJFYyW1Y0Lbiqs9/Nt03tZeA+6ImdccknWsoJohuCVeKHXZWA7YFquKx
-5WeuRir2eKQQGpCiv5W95qcwpv/QUVpYMTGevZECSnOQHym1pgTknVFIc51RzD/m
-OEG8gVZ1zeSVoGg/2/DvipOFUuj2QToLRFP26tGIIaceY6MGpCDrMg4cLYuGr2ir
-ro5NXmvHrLyD6Yic6GWpwCwSegaX7hFQrQ46Bbvzi1fRFdQOixFqXS8AdtRupmK5
-7Aw1laczA+/C3Ceox6s8UfkOVwJAEt0KAy/afe6tTREtRVtB9rAoT6HmECHk7xgd
-VDDIhbiunTvPZZEsyIlXg1/WZYn4+g==
-=a7mZ
+iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl3oE2EACgkQlfZmHno8
+x/6+sgf9HmeLpXdYIHDUZKujikIFbM9ru2J+O3FWdI+1K+j0y98IptQKpGiIj+H2
+sEywi2FeYJ1a9IeApE1yIpiLJv+tASrVe6jd+Z3E3InVg5iaadKe17Ce0ngZYeww
+xKDomH5Iz3KKT/wyvPhvJSFTltdXNlWFpJ6G9TzUSewg5Hu3PGVYFbaV891HC7yq
+125Qs2DdDSJXK/8T/KIjEb0uVSFILXnQgc0tuJIWtWUSl/WJpxPHXSefg3Ujm2Dn
+CRR+MJUNM+a9zu2rasusqtUrUMrukYCs3brQSdaAXs0m4Gc0TJSjrJ0ex7uwN30T
+GS0hj1/CJspm74dduNb0xFN6IkPAZQ==
+=fFRZ
 -----END PGP SIGNATURE-----
 
---z3PcgjD2qOzdkXVS--
+--=-5919c0yuJGALPpC6G7SP--
 
---===============9148133337934171091==
+
+--===============2078908422313341673==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -159,4 +134,5 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---===============9148133337934171091==--
+--===============2078908422313341673==--
+
