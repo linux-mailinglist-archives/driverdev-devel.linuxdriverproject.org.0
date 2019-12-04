@@ -2,76 +2,70 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 915FE113847
-	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Dec 2019 00:34:43 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 381EF1138F6
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Dec 2019 01:47:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7656A88461;
-	Wed,  4 Dec 2019 23:34:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CB6E2886BE;
+	Thu,  5 Dec 2019 00:47:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ayBuc-q99NrP; Wed,  4 Dec 2019 23:34:41 +0000 (UTC)
+	with ESMTP id IJXJ78noFe08; Thu,  5 Dec 2019 00:47:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 172BE88455;
-	Wed,  4 Dec 2019 23:34:40 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1E9018869E;
+	Thu,  5 Dec 2019 00:47:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9C6591BF36F
- for <devel@linuxdriverproject.org>; Wed,  4 Dec 2019 23:34:37 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 7A7531BF9B6
+ for <devel@linuxdriverproject.org>; Thu,  5 Dec 2019 00:46:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 8E2A488456
- for <devel@linuxdriverproject.org>; Wed,  4 Dec 2019 23:34:37 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7714A88021
+ for <devel@linuxdriverproject.org>; Thu,  5 Dec 2019 00:46:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QZeEOvzusSIr for <devel@linuxdriverproject.org>;
- Wed,  4 Dec 2019 23:34:36 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lj1-f196.google.com (mail-lj1-f196.google.com
- [209.85.208.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5A86088455
- for <devel@driverdev.osuosl.org>; Wed,  4 Dec 2019 23:34:36 +0000 (UTC)
-Received: by mail-lj1-f196.google.com with SMTP id h23so1276812ljc.8
- for <devel@driverdev.osuosl.org>; Wed, 04 Dec 2019 15:34:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=gxeCqonFj2e3ybgD2LvSWZrZzpHP0tVbGUcNe3MMgJw=;
- b=NuDEfc2bl1jJ8z9f2AWuhS7GN34ZN2VwN91arwYD6DdxEBTbNV7eqA1kO/vhS0ZLHT
- D2vwoh1c7HXvsqGcq0jpjcb+LLF6+xTRA0HJQyxvQ+hnW5TDzuCygiDkJzvz/Sl7v0JR
- vuGwQglEsl3M4RDGaY2A1jxdvfMflQZfnCZvg7iT8x8/FlA1c/ifchB8p6uJQAKsu20d
- T/Zv62RlUsq9/1iq5JguKNz8aQPNpbIum9A8pq2jKb5VXH7uqRX1D7MfXzzVK3H7HSQz
- fTIBkGGllA5JvQPYlOKJps0+kyBIJR2Z+oVSMfa0WErzE//4IE4rDUml0dVxlQvZGK6G
- 79fg==
+ with ESMTP id 82IDCHSxKl2y for <devel@linuxdriverproject.org>;
+ Thu,  5 Dec 2019 00:46:58 +0000 (UTC)
+X-Greylist: delayed 00:30:31 by SQLgrey-1.7.6
+Received: from mail-il1-f201.google.com (mail-il1-f201.google.com
+ [209.85.166.201])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9B04A88007
+ for <devel@driverdev.osuosl.org>; Thu,  5 Dec 2019 00:46:58 +0000 (UTC)
+Received: by mail-il1-f201.google.com with SMTP id d3so1170104ilg.20
+ for <devel@driverdev.osuosl.org>; Wed, 04 Dec 2019 16:46:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:message-id:mime-version:subject:from:to:cc;
+ bh=XbMDMBiURPy3ztmL5BAB2zOV5tyLvPs4cZrgza5Nb04=;
+ b=vvoOr97XSjgqRQXRYI8xsRGNB6sMUmPJTH35AVLEBHzUCUIf4TKeH576HHqX2DdT0w
+ DhkNeyy0KVEz2UHvNOJCElCM2pXaipK4dATie/v1T8VW/ccwD1N0GFTfowS08R32R1SI
+ +apUVj/M3+8f8mDGLFFC94QGu82UmZUQrHi0cMEPAnZ9V/l7nxaNUos7BqQ8bONSu77b
+ elzOYuGfWpDdmLcLjbijtSEn/4qf5nzJdt1AFxRQsf3rOyD09xoS07pye9fewtGQ/USy
+ M9kZ2gfcTq7zc9Bwb/bv3Z0+6u7faqvqCb6Zr0iadYYGSy5kwc/GvSJ90Btej1GZgtnk
+ 2m1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=gxeCqonFj2e3ybgD2LvSWZrZzpHP0tVbGUcNe3MMgJw=;
- b=tk2NW48RSMKgsXgOrJwvj1piSXIRKLrqNvVkbAoTDErafUeqWjbvI7Qwt0dhUVV7g0
- PLBHT2cAi0hHQ9wsrMew69nONu0PEmg7PE+WRCsj3EGy5kIuQJhfxGUCw4QIrbmWo0Ai
- Wph+QKFcuO4gD5n24Ks0kLf5PTpTULhw7QuhTFNtpqvxAP8EEJiZTaIFHP7DOdfH9IUh
- 4FMFcyUCiMbYBceSP1VxQi4SjkFV3Yr+ZEZujmVopWobVVIhRY+yx5fwjfTQIRhrrTnG
- AYXQ/DKVyb/ycj0eFBRqaSDekVlWHxKpsN0LuwFYPjKmziyQOcRAwWGSxER8bgJ9c693
- rvaQ==
-X-Gm-Message-State: APjAAAWLFKfrdQKeXQd8Y0cQx+sKemOeKXry+UzRH0rK9j/JQW+1R/+2
- TBED83lKP69wbnzqfvFVLr+9lw==
-X-Google-Smtp-Source: APXvYqz3aDI20APC52U0BiJvhpVHW0EwH4gTg2p20P6fu+D5yXlC7G9e6SWLiWSOUh7Xi4L7krIVkQ==
-X-Received: by 2002:a2e:580c:: with SMTP id m12mr3678296ljb.252.1575502474013; 
- Wed, 04 Dec 2019 15:34:34 -0800 (PST)
-Received: from localhost.localdomain
- (c-21cd225c.014-348-6c756e10.bbcust.telenor.se. [92.34.205.33])
- by smtp.gmail.com with ESMTPSA id e8sm4609240ljb.45.2019.12.04.15.34.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Dec 2019 15:34:32 -0800 (PST)
-From: Linus Walleij <linus.walleij@linaro.org>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: fbtft: Do not hardcode SPI CS polarity inversion
-Date: Thu,  5 Dec 2019 00:32:30 +0100
-Message-Id: <20191204233230.22309-1-linus.walleij@linaro.org>
-X-Mailer: git-send-email 2.23.0
-MIME-Version: 1.0
+ h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
+ bh=XbMDMBiURPy3ztmL5BAB2zOV5tyLvPs4cZrgza5Nb04=;
+ b=nVoHJgQxjzaOobg+MqdjPAOSTfk8QM3ijpd4AO8pgfasxTfKyAMlanmeVXWpLibPtj
+ cDHbPn1Q2kVsUmeBChemQTdiumJhk4A+Yd7UrCoSwH1JXLrdhKW035qIDd2X9qG0w55C
+ 8yheWHh6PiD69CEUXGlmJWVYk6rsi6iUHlnbZEQdi0H6wpwyZX546/0zPeoi72LQYls3
+ EPn6kUwYyekNXGoDxZ+42i8R9BOu5yu2djhtVoR2ayLHOhWdR0WBUGGoN2oDvTGU6bDQ
+ GbPr9tlUv3y5+v2xL7qEwFgZaF46HNxHqC7vDd38xh42Murbbv/UYaf6jWwASwJxIKMk
+ P1TQ==
+X-Gm-Message-State: APjAAAV5eCgOeCzN+78vppC/W0JlVFbhs4nhuQrJcPLiyoduK1iG7bfy
+ u0OCtWsKAja1mb4lLpEJPlkI/RFaFtAUBhOsnOgckg==
+X-Google-Smtp-Source: APXvYqz47avrpcjXVQ+1KDiyygY87m+93a0IsuajGxXEGgl8sxMDZj0iTIaMcFs25SnHdkR0uy27q47QcmEbuf3o5rKViw==
+X-Received: by 2002:a65:56c9:: with SMTP id w9mr6061182pgs.296.1575503193275; 
+ Wed, 04 Dec 2019 15:46:33 -0800 (PST)
+Date: Wed,  4 Dec 2019 15:45:22 -0800
+Message-Id: <20191204234522.42855-1-brendanhiggins@google.com>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.24.0.393.g34dc348eaf-goog
+Subject: [PATCH v1] staging: exfat: fix multiple definition error of
+ `rename_file'
+From: Brendan Higgins <brendanhiggins@google.com>
+To: valdis.kletnieks@vt.edu
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,82 +78,88 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Linus Walleij <linus.walleij@linaro.org>,
- Mark Brown <broonie@kernel.org>
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Brendan Higgins <brendanhiggins@google.com>, linux-kernel@vger.kernel.org,
+ davidgow@google.com, linux-fsdevel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The current use of the mode flag SPI_CS_HIGH is fragile: it
-overwrites anything already assigned by the SPI core.
+`rename_file' was exported but not properly namespaced causing a
+multiple definition error because `rename_file' is already defined in
+fs/hostfs/hostfs_user.c:
 
-Assign ^= SPI_CS_HIGH since we might be active high
-already, and that is usually the case with GPIOs used
-for chip select, even if they are in practice active low.
+ld: drivers/staging/exfat/exfat_core.o: in function `rename_file':
+drivers/staging/exfat/exfat_core.c:2327: multiple definition of
+`rename_file'; fs/hostfs/hostfs_user.o:fs/hostfs/hostfs_user.c:350:
+first defined here
+make: *** [Makefile:1077: vmlinux] Error 1
 
-Add a comment clarifying why ^= SPI_CS_HIGH is the right
-choice here.
+This error can be reproduced on ARCH=um by selecting:
 
-Reported-by: Mark Brown <broonie@kernel.org>
-Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
+CONFIG_EXFAT_FS=y
+CONFIG_HOSTFS=y
+
+Add a namespace prefix exfat_* to fix this error.
+
+Reported-by: Brendan Higgins <brendanhiggins@google.com>
+Signed-off-by: Brendan Higgins <brendanhiggins@google.com>
+Cc: Valdis Kletnieks <valdis.kletnieks@vt.edu>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/staging/fbtft/fb_uc1611.c    | 12 +++++++++---
- drivers/staging/fbtft/fb_watterott.c | 13 ++++++++++---
- 2 files changed, 19 insertions(+), 6 deletions(-)
+ drivers/staging/exfat/exfat.h       | 4 ++--
+ drivers/staging/exfat/exfat_core.c  | 4 ++--
+ drivers/staging/exfat/exfat_super.c | 4 ++--
+ 3 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/fbtft/fb_uc1611.c b/drivers/staging/fbtft/fb_uc1611.c
-index e763205e9e4f..f61e373c75e9 100644
---- a/drivers/staging/fbtft/fb_uc1611.c
-+++ b/drivers/staging/fbtft/fb_uc1611.c
-@@ -63,11 +63,17 @@ static int init_display(struct fbtft_par *par)
+diff --git a/drivers/staging/exfat/exfat.h b/drivers/staging/exfat/exfat.h
+index 2aac1e000977e..51c665a924b76 100644
+--- a/drivers/staging/exfat/exfat.h
++++ b/drivers/staging/exfat/exfat.h
+@@ -805,8 +805,8 @@ s32 create_dir(struct inode *inode, struct chain_t *p_dir,
+ s32 create_file(struct inode *inode, struct chain_t *p_dir,
+ 		struct uni_name_t *p_uniname, u8 mode, struct file_id_t *fid);
+ void remove_file(struct inode *inode, struct chain_t *p_dir, s32 entry);
+-s32 rename_file(struct inode *inode, struct chain_t *p_dir, s32 old_entry,
+-		struct uni_name_t *p_uniname, struct file_id_t *fid);
++s32 exfat_rename_file(struct inode *inode, struct chain_t *p_dir, s32 old_entry,
++		      struct uni_name_t *p_uniname, struct file_id_t *fid);
+ s32 move_file(struct inode *inode, struct chain_t *p_olddir, s32 oldentry,
+ 	      struct chain_t *p_newdir, struct uni_name_t *p_uniname,
+ 	      struct file_id_t *fid);
+diff --git a/drivers/staging/exfat/exfat_core.c b/drivers/staging/exfat/exfat_core.c
+index d2d3447083c7b..7017e22b0f7a8 100644
+--- a/drivers/staging/exfat/exfat_core.c
++++ b/drivers/staging/exfat/exfat_core.c
+@@ -2322,8 +2322,8 @@ void remove_file(struct inode *inode, struct chain_t *p_dir, s32 entry)
+ 	fs_func->delete_dir_entry(sb, p_dir, entry, 0, num_entries);
+ }
+ 
+-s32 rename_file(struct inode *inode, struct chain_t *p_dir, s32 oldentry,
+-		struct uni_name_t *p_uniname, struct file_id_t *fid)
++s32 exfat_rename_file(struct inode *inode, struct chain_t *p_dir, s32 oldentry,
++		      struct uni_name_t *p_uniname, struct file_id_t *fid)
  {
- 	int ret;
+ 	s32 ret, newentry = -1, num_old_entries, num_new_entries;
+ 	sector_t sector_old, sector_new;
+diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
+index 6e481908c59f6..9f91853b189b0 100644
+--- a/drivers/staging/exfat/exfat_super.c
++++ b/drivers/staging/exfat/exfat_super.c
+@@ -1262,8 +1262,8 @@ static int ffsMoveFile(struct inode *old_parent_inode, struct file_id_t *fid,
+ 	fs_set_vol_flags(sb, VOL_DIRTY);
  
--	/* Set CS active high */
--	par->spi->mode |= SPI_CS_HIGH;
-+	/*
-+	 * Set CS active inverse polarity: just setting SPI_CS_HIGH does not
-+	 * work with GPIO based chip selects that are logically active high
-+	 * but inverted inside the GPIO library, so enforce inverted
-+	 * semantics.
-+	 */
-+	par->spi->mode ^= SPI_CS_HIGH;
- 	ret = spi_setup(par->spi);
- 	if (ret) {
--		dev_err(par->info->device, "Could not set SPI_CS_HIGH\n");
-+		dev_err(par->info->device,
-+			"Could not set inverse CS polarity\n");
- 		return ret;
- 	}
- 
-diff --git a/drivers/staging/fbtft/fb_watterott.c b/drivers/staging/fbtft/fb_watterott.c
-index 27cc8eabcbe9..76b25df376b8 100644
---- a/drivers/staging/fbtft/fb_watterott.c
-+++ b/drivers/staging/fbtft/fb_watterott.c
-@@ -150,10 +150,17 @@ static int init_display(struct fbtft_par *par)
- 
- 	/* enable SPI interface by having CS and MOSI low during reset */
- 	save_mode = par->spi->mode;
--	par->spi->mode |= SPI_CS_HIGH;
--	ret = spi_setup(par->spi); /* set CS inactive low */
-+	/*
-+	 * Set CS active inverse polarity: just setting SPI_CS_HIGH does not
-+	 * work with GPIO based chip selects that are logically active high
-+	 * but inverted inside the GPIO library, so enforce inverted
-+	 * semantics.
-+	 */
-+	par->spi->mode ^= SPI_CS_HIGH;
-+	ret = spi_setup(par->spi);
- 	if (ret) {
--		dev_err(par->info->device, "Could not set SPI_CS_HIGH\n");
-+		dev_err(par->info->device,
-+			"Could not set inverse CS polarity\n");
- 		return ret;
- 	}
- 	write_reg(par, 0x00); /* make sure mode is set */
+ 	if (olddir.dir == newdir.dir)
+-		ret = rename_file(new_parent_inode, &olddir, dentry, &uni_name,
+-				  fid);
++		ret = exfat_rename_file(new_parent_inode, &olddir, dentry,
++					&uni_name, fid);
+ 	else
+ 		ret = move_file(new_parent_inode, &olddir, dentry, &newdir,
+ 				&uni_name, fid);
 -- 
-2.23.0
+2.24.0.393.g34dc348eaf-goog
 
 _______________________________________________
 devel mailing list
