@@ -1,69 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E34051129DF
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Dec 2019 12:12:43 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id AA68E112BD6
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Dec 2019 13:44:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3F3FD86C19;
-	Wed,  4 Dec 2019 11:12:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A2EF28836C;
+	Wed,  4 Dec 2019 12:44:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QgvI1AjIok17; Wed,  4 Dec 2019 11:12:41 +0000 (UTC)
+	with ESMTP id 3vTzlE6Qj4r6; Wed,  4 Dec 2019 12:44:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 110DD86B57;
-	Wed,  4 Dec 2019 11:12:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DD7008835A;
+	Wed,  4 Dec 2019 12:44:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A78F81BF2C0
- for <devel@linuxdriverproject.org>; Wed,  4 Dec 2019 11:12:38 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 7475B1BF2A3
+ for <devel@linuxdriverproject.org>; Wed,  4 Dec 2019 12:44:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A3E9C86B57
- for <devel@linuxdriverproject.org>; Wed,  4 Dec 2019 11:12:38 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7188D8832F
+ for <devel@linuxdriverproject.org>; Wed,  4 Dec 2019 12:44:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IJNBbtMpIjkD for <devel@linuxdriverproject.org>;
- Wed,  4 Dec 2019 11:12:38 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from heliosphere.sirena.org.uk (heliosphere.sirena.org.uk
- [172.104.155.198])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1149E86B2C
- for <devel@driverdev.osuosl.org>; Wed,  4 Dec 2019 11:12:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sirena.org.uk; s=20170815-heliosphere; h=In-Reply-To:Content-Type:
- MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=E7qPmeZQCeZnBw7vktfSs91ft3ZUnMQS1eNsGHChlmw=; b=UxkLwO10l/Ds2GlFZA+ElLv8V
- R0UVJexSJ9SC2MVnhtpYihYSxQTBZlyzv+ebb/zQDjGfg152RTJVfa+gwaDagc01+Pv+Hq2dJ04Nw
- FmumjGBHINg0Jo3H4K5yyiGvn4GBzdOqhvEGaPuQXXVU0dlSHAactCMA5QkJ/O81XVpUY=;
-Received: from fw-tnat-cam3.arm.com ([217.140.106.51]
- helo=fitzroy.sirena.org.uk) by heliosphere.sirena.org.uk with esmtpsa
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <broonie@sirena.org.uk>)
- id 1icSa8-0008Ao-Rm; Wed, 04 Dec 2019 11:12:32 +0000
-Received: by fitzroy.sirena.org.uk (Postfix, from userid 1000)
- id E1C66D003B4; Wed,  4 Dec 2019 11:12:31 +0000 (GMT)
-Date: Wed, 4 Dec 2019 11:12:31 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-Subject: Re: [PATCH v4] dt-bindings: iio: accel: add binding documentation
- for ADIS16240
-Message-ID: <20191204111231.GO1998@sirena.org.uk>
-References: <20191123051927.5016-1-rodrigorsdc@gmail.com>
- <20191123114119.7b0c3447@archlinux>
- <a55b9c576eded8c91a985aabbba89180561ab156.camel@analog.com>
- <20191201114032.1a972dda@archlinux>
- <20191203163850.GN1998@sirena.org.uk>
- <20191203165154.00005793@Huawei.com>
+ with ESMTP id zFViunr0E-TG for <devel@linuxdriverproject.org>;
+ Wed,  4 Dec 2019 12:44:22 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-qt1-f195.google.com (mail-qt1-f195.google.com
+ [209.85.160.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id DF24C8832D
+ for <devel@driverdev.osuosl.org>; Wed,  4 Dec 2019 12:44:21 +0000 (UTC)
+Received: by mail-qt1-f195.google.com with SMTP id w47so7579429qtk.4
+ for <devel@driverdev.osuosl.org>; Wed, 04 Dec 2019 04:44:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=SWzs3svZdfoJNhQZue5B0UPApGf3QNVhTsPQAsjB3v0=;
+ b=YNKqFnrX9A37VXTiRJQeKr0TVoVFMlrNSYgUkn0licj+UoOJvZ+HJ8IjWp12nh0vJD
+ oytTss+Gq8P5m3/QMSk9JCuAV6wkVFMmzaroivqVDnEVM61FXNyCf9yJ9ShxtjiQAzs3
+ oP+XEYn8LB8uuNxPWuzgRGTKnRgL3GKoHUk8Ul/OCIn4gK08h9XtnXbtuPmEnWwV1n17
+ a54f8OonjvTFoOebCLtjTpqwEMalcfNKNaE5nCr8IHZsPF65G7ohSjT1TQyQmetMSyZK
+ 5y7qzS9EGQgzC1cntwO4RcFJmjQnBSkiD9BmH/gb+uUzXGA+574DNCTpz9glICml7wve
+ 5HNw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=SWzs3svZdfoJNhQZue5B0UPApGf3QNVhTsPQAsjB3v0=;
+ b=FXt8d3JVeG3TjlSvT30dzzk2Vrv8dbzBJsLV6uAN9DhyjU6y7Yei1mCgqtf+WatMH5
+ +S6rY6Cki9BdqCsbkhqt1+gfoHo2NJkAJ+6ZrVCTp+5qW3LfJlzQFquS0d8aOsOczNE3
+ ZMiFudhD9hQFXutYV5zDFw19RqJ42DuERoPQ+qz8Q+Ftnen7Eq5/Ty/mnZRhskDTJT03
+ nYvN6pDnfQgcdyUFUmN85xwMIf9gNNaoKXOQXayb0x3QATFHjbjQTaBsG0Eyd3wByAmh
+ GnhjQBuqQLCG2j7JHaZWq6v/TZjavIF6ijXFsqlSIpOQwvfsLeIvHP1grcYTkr/xHUaJ
+ GPkQ==
+X-Gm-Message-State: APjAAAW6MWjgxZHimnjGfDhbQXbYjVN0N7c7x8QEWIb935f+HiRYXXaW
+ EZ5de+LhhesJAh8N3dCXobE9dc10udcMDCx3PWA=
+X-Google-Smtp-Source: APXvYqxWzKOteDVh9XQL6m/8aKKtTfjBsArmcTuuA2whuVyRtJyctpUk/k0WpughITz8sXR5uhrYJxmexMBU0sOD298=
+X-Received: by 2002:ac8:67cb:: with SMTP id r11mr2394254qtp.54.1575463460895; 
+ Wed, 04 Dec 2019 04:44:20 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20191203165154.00005793@Huawei.com>
-X-Cookie: Cleanliness is next to impossible.
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Received: by 2002:ac8:2f0c:0:0:0:0:0 with HTTP;
+ Wed, 4 Dec 2019 04:44:20 -0800 (PST)
+From: "Rev.Dr Emmanuel Okoye CEO Ecobank-benin"
+ <westernunion.benin982@gmail.com>
+Date: Wed, 4 Dec 2019 13:44:20 +0100
+Message-ID: <CAP=nHBKe8nF-LP3f1956UTMeq15bm+xDr11wyG0H-FNEsu4NzQ@mail.gmail.com>
+Subject: Attn, dear Beneficiary. God has remembered your prayers
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,73 +80,67 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "lars@metafoo.de" <lars@metafoo.de>, "Hennerich,
- Michael" <Michael.Hennerich@analog.com>,
- "linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "rodrigorsdc@gmail.com" <rodrigorsdc@gmail.com>,
- "kernel-usp@googlegroups.com" <kernel-usp@googlegroups.com>,
- "pmeerw@pmeerw.net" <pmeerw@pmeerw.net>, "knaack.h@gmx.de" <knaack.h@gmx.de>,
- "Ardelean, Alexandru" <alexandru.Ardelean@analog.com>, "Popa,
- Stefan Serban" <StefanSerban.Popa@analog.com>,
- Jonathan Cameron <jic23@kernel.org>
-Content-Type: multipart/mixed; boundary="===============2518394951592456421=="
+Reply-To: moneygram.1820@outlook.fr
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+Attn, dear Beneficiary.
 
---===============2518394951592456421==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="TYjWXklH5JTzT8n9"
-Content-Disposition: inline
+God has remembered your prayers
+I have already sent you Money Gram payment of $5000.00 today, MG 1029-8096
+This is because we have finally concluded to effect your transfer
+funds of $4.8,000.000usd
+through MONEY GRAM International Fund transfer Service
+Each payment will be sending to you by $5000.00 daily until the
+($4.8,000.000usd) is completely transferred
+we have this morning sent  MONEY GRAM payment of $5,000.00 in your name today
+So contact the MONEY GRAM Agent to pick up this first payment of $5000 now
 
+Contact person Mrs. Alan Ude
+Dir. MONEY GRAM Service,Benin
+Phone number: +229 98856728
+E-mail: moneygram.1820@outlook.fr
 
---TYjWXklH5JTzT8n9
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Ask him to give you the complete mtcn, sender name, question and
+answer to enable you
+pick up the $5000.00 sent today,
+Also you are instructed to re-confirm your information's
+to Mrs.Alan Ude as listed below to avoid wrong transactions.
 
-On Tue, Dec 03, 2019 at 04:51:54PM +0000, Jonathan Cameron wrote:
+(1Your Full name:............................................
+(2 Phone number.....................................................
+(3 Contact address:.....................................
+(4 Age:..................................................................
+(5 Country..............................................
+(6) Sex .................................................................
+(7) your occupation...........................................
 
-> If the driver picks a mode because that's what it says on the datasheet
-> it prevents odd board configurations from working.  The question
-> becomes whether it makes sense in general to assume those odd board
-> conditions don't exist until we actually have one, or to assume that
-> they might and push the burden on to all DT files.
+(8)Passport/By Attach or Drivers License Number:
+Contact Mrs. Alan Ude for your MONEY GRAM payment of $4.8,000.000usd
+Note please: I have paid service fees for you but the only money you
+are required
+to send to Mrs. Alan Ude is $90.00 only Transfer fee before you can
+pick up your transfer today.
 
-The cost should be for the weird boards, not everything.  If you
-just wire up a device with a normally connected SPI bus without
-throwing random inverters or whatever into the system then you
-shouldn't need to do anything special.
+Send it to via Money Gram
+Receiver's Name-----Alan Ude
+Country----------Benin
+Address-----------Cotonou
+Quest--------Honest
+Ans-----------Trust
 
---TYjWXklH5JTzT8n9
-Content-Type: application/pgp-signature; name="signature.asc"
+I done all my best for you to receive your transfer now ok.
+We need your urgent reply
+Best Regards
+Rev.Dr Emmanuel Okoye
+CEO Ecobank-benin
 
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl3nlJ0ACgkQJNaLcl1U
-h9A7LAf6ArffahUWag0IWm38Zvw8s67pu0SYN7jM4XCObUNoeV5QsckVPwodOPAg
-NSAhJb7SIYuo+lqhEXB032ubmEj9Y/W07D73riDqCbQ+Gzw6vD/9IjKxWo71xzHb
-Y8wi3KtLpaHMsAHGXUwSJEj77RsQnx+GpuIqFH2SETfGhDWrpkz7haS4BxPSHPKk
-iYd8tPh06asd+F761p4EkwwMe4d9U1AcvLN0U3mf4HMw7f28xBcYA8fDAUbx9xAf
-BAak3S7zi+PLn3kldPDpJMiMVube3MB6E84b5CPoTOx6+4AS3q0Rq3FRYKO113QE
-WtWei5N/N1Sxxy84HIJu2xuGh8Kliw==
-=kH9y
------END PGP SIGNATURE-----
-
---TYjWXklH5JTzT8n9--
-
---===============2518394951592456421==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+If we did not receive it urgent from you today,
+I will go ahead and release you funds to Mrs. Lyndia Ppaulson as your
+representative.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============2518394951592456421==--
