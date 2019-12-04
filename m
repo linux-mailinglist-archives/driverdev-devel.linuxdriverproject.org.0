@@ -1,50 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6D41411362F
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Dec 2019 21:13:34 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 915FE113847
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Dec 2019 00:34:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 8DFAB23524;
-	Wed,  4 Dec 2019 20:13:32 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7656A88461;
+	Wed,  4 Dec 2019 23:34:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Gv3m1R-+XyG7; Wed,  4 Dec 2019 20:13:32 +0000 (UTC)
+	with ESMTP id ayBuc-q99NrP; Wed,  4 Dec 2019 23:34:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 5513B232D2;
-	Wed,  4 Dec 2019 20:13:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 172BE88455;
+	Wed,  4 Dec 2019 23:34:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E91DF1BF5AE
- for <devel@linuxdriverproject.org>; Wed,  4 Dec 2019 20:13:26 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9C6591BF36F
+ for <devel@linuxdriverproject.org>; Wed,  4 Dec 2019 23:34:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id DDFFB87D33
- for <devel@linuxdriverproject.org>; Wed,  4 Dec 2019 20:13:26 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 8E2A488456
+ for <devel@linuxdriverproject.org>; Wed,  4 Dec 2019 23:34:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uIk-aUU-ihWr for <devel@linuxdriverproject.org>;
- Wed,  4 Dec 2019 20:13:26 +0000 (UTC)
+ with ESMTP id QZeEOvzusSIr for <devel@linuxdriverproject.org>;
+ Wed,  4 Dec 2019 23:34:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx1.suse.de (mx2.suse.de [195.135.220.15])
- by hemlock.osuosl.org (Postfix) with ESMTPS id EFD6C87BC8
- for <devel@driverdev.osuosl.org>; Wed,  4 Dec 2019 20:13:25 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 48F3BB1EC;
- Wed,  4 Dec 2019 20:13:23 +0000 (UTC)
-Message-ID: <f0f68c001a94f72b05d188f1089f24e78552f276.camel@suse.de>
-Subject: Re: [PATCH] staging: vchiq: call unregister_chrdev_region() when
- driver registration fails
-From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-To: Marcelo Diop-Gonzalez <marcgonzalez@google.com>, 
- gregkh@linuxfoundation.org, wahrenst@gmx.net
-Date: Wed, 04 Dec 2019 21:13:21 +0100
-In-Reply-To: <20191203153921.70540-1-marcgonzalez@google.com>
-References: <20191203153921.70540-1-marcgonzalez@google.com>
-User-Agent: Evolution 3.34.1 
+Received: from mail-lj1-f196.google.com (mail-lj1-f196.google.com
+ [209.85.208.196])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 5A86088455
+ for <devel@driverdev.osuosl.org>; Wed,  4 Dec 2019 23:34:36 +0000 (UTC)
+Received: by mail-lj1-f196.google.com with SMTP id h23so1276812ljc.8
+ for <devel@driverdev.osuosl.org>; Wed, 04 Dec 2019 15:34:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=gxeCqonFj2e3ybgD2LvSWZrZzpHP0tVbGUcNe3MMgJw=;
+ b=NuDEfc2bl1jJ8z9f2AWuhS7GN34ZN2VwN91arwYD6DdxEBTbNV7eqA1kO/vhS0ZLHT
+ D2vwoh1c7HXvsqGcq0jpjcb+LLF6+xTRA0HJQyxvQ+hnW5TDzuCygiDkJzvz/Sl7v0JR
+ vuGwQglEsl3M4RDGaY2A1jxdvfMflQZfnCZvg7iT8x8/FlA1c/ifchB8p6uJQAKsu20d
+ T/Zv62RlUsq9/1iq5JguKNz8aQPNpbIum9A8pq2jKb5VXH7uqRX1D7MfXzzVK3H7HSQz
+ fTIBkGGllA5JvQPYlOKJps0+kyBIJR2Z+oVSMfa0WErzE//4IE4rDUml0dVxlQvZGK6G
+ 79fg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=gxeCqonFj2e3ybgD2LvSWZrZzpHP0tVbGUcNe3MMgJw=;
+ b=tk2NW48RSMKgsXgOrJwvj1piSXIRKLrqNvVkbAoTDErafUeqWjbvI7Qwt0dhUVV7g0
+ PLBHT2cAi0hHQ9wsrMew69nONu0PEmg7PE+WRCsj3EGy5kIuQJhfxGUCw4QIrbmWo0Ai
+ Wph+QKFcuO4gD5n24Ks0kLf5PTpTULhw7QuhTFNtpqvxAP8EEJiZTaIFHP7DOdfH9IUh
+ 4FMFcyUCiMbYBceSP1VxQi4SjkFV3Yr+ZEZujmVopWobVVIhRY+yx5fwjfTQIRhrrTnG
+ AYXQ/DKVyb/ycj0eFBRqaSDekVlWHxKpsN0LuwFYPjKmziyQOcRAwWGSxER8bgJ9c693
+ rvaQ==
+X-Gm-Message-State: APjAAAWLFKfrdQKeXQd8Y0cQx+sKemOeKXry+UzRH0rK9j/JQW+1R/+2
+ TBED83lKP69wbnzqfvFVLr+9lw==
+X-Google-Smtp-Source: APXvYqz3aDI20APC52U0BiJvhpVHW0EwH4gTg2p20P6fu+D5yXlC7G9e6SWLiWSOUh7Xi4L7krIVkQ==
+X-Received: by 2002:a2e:580c:: with SMTP id m12mr3678296ljb.252.1575502474013; 
+ Wed, 04 Dec 2019 15:34:34 -0800 (PST)
+Received: from localhost.localdomain
+ (c-21cd225c.014-348-6c756e10.bbcust.telenor.se. [92.34.205.33])
+ by smtp.gmail.com with ESMTPSA id e8sm4609240ljb.45.2019.12.04.15.34.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 04 Dec 2019 15:34:32 -0800 (PST)
+From: Linus Walleij <linus.walleij@linaro.org>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: fbtft: Do not hardcode SPI CS polarity inversion
+Date: Thu,  5 Dec 2019 00:32:30 +0100
+Message-Id: <20191204233230.22309-1-linus.walleij@linaro.org>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -58,81 +84,84 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-rpi-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============2078908422313341673=="
+Cc: devel@driverdev.osuosl.org, Linus Walleij <linus.walleij@linaro.org>,
+ Mark Brown <broonie@kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+The current use of the mode flag SPI_CS_HIGH is fragile: it
+overwrites anything already assigned by the SPI core.
 
---===============2078908422313341673==
-Content-Type: multipart/signed; micalg="pgp-sha256";
-	protocol="application/pgp-signature"; boundary="=-5919c0yuJGALPpC6G7SP"
+Assign ^= SPI_CS_HIGH since we might be active high
+already, and that is usually the case with GPIOs used
+for chip select, even if they are in practice active low.
 
+Add a comment clarifying why ^= SPI_CS_HIGH is the right
+choice here.
 
---=-5919c0yuJGALPpC6G7SP
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Reported-by: Mark Brown <broonie@kernel.org>
+Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
+---
+ drivers/staging/fbtft/fb_uc1611.c    | 12 +++++++++---
+ drivers/staging/fbtft/fb_watterott.c | 13 ++++++++++---
+ 2 files changed, 19 insertions(+), 6 deletions(-)
 
-On Tue, 2019-12-03 at 10:39 -0500, Marcelo Diop-Gonzalez wrote:
-> This undoes the previous call to alloc_chrdev_region() on failure,
-> and is probably what was meant originally given the label name.
->=20
-> Signed-off-by: Marcelo Diop-Gonzalez <marcgonzalez@google.com>
-> ---
->  drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.=
-c
-> b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-> index 02148a24818a..4458c1e60fa3 100644
-> --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-> +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-> @@ -3309,7 +3309,7 @@ static int __init vchiq_driver_init(void)
->  	return 0;
-> =20
->  region_unregister:
-> -	platform_driver_unregister(&vchiq_driver);
-> +	unregister_chrdev_region(vchiq_devid, 1);
-> =20
->  class_destroy:
->  	class_destroy(vchiq_class);
-
-Thanks!
-
-Reviewed-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-
-
---=-5919c0yuJGALPpC6G7SP
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl3oE2EACgkQlfZmHno8
-x/6+sgf9HmeLpXdYIHDUZKujikIFbM9ru2J+O3FWdI+1K+j0y98IptQKpGiIj+H2
-sEywi2FeYJ1a9IeApE1yIpiLJv+tASrVe6jd+Z3E3InVg5iaadKe17Ce0ngZYeww
-xKDomH5Iz3KKT/wyvPhvJSFTltdXNlWFpJ6G9TzUSewg5Hu3PGVYFbaV891HC7yq
-125Qs2DdDSJXK/8T/KIjEb0uVSFILXnQgc0tuJIWtWUSl/WJpxPHXSefg3Ujm2Dn
-CRR+MJUNM+a9zu2rasusqtUrUMrukYCs3brQSdaAXs0m4Gc0TJSjrJ0ex7uwN30T
-GS0hj1/CJspm74dduNb0xFN6IkPAZQ==
-=fFRZ
------END PGP SIGNATURE-----
-
---=-5919c0yuJGALPpC6G7SP--
-
-
---===============2078908422313341673==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+diff --git a/drivers/staging/fbtft/fb_uc1611.c b/drivers/staging/fbtft/fb_uc1611.c
+index e763205e9e4f..f61e373c75e9 100644
+--- a/drivers/staging/fbtft/fb_uc1611.c
++++ b/drivers/staging/fbtft/fb_uc1611.c
+@@ -63,11 +63,17 @@ static int init_display(struct fbtft_par *par)
+ {
+ 	int ret;
+ 
+-	/* Set CS active high */
+-	par->spi->mode |= SPI_CS_HIGH;
++	/*
++	 * Set CS active inverse polarity: just setting SPI_CS_HIGH does not
++	 * work with GPIO based chip selects that are logically active high
++	 * but inverted inside the GPIO library, so enforce inverted
++	 * semantics.
++	 */
++	par->spi->mode ^= SPI_CS_HIGH;
+ 	ret = spi_setup(par->spi);
+ 	if (ret) {
+-		dev_err(par->info->device, "Could not set SPI_CS_HIGH\n");
++		dev_err(par->info->device,
++			"Could not set inverse CS polarity\n");
+ 		return ret;
+ 	}
+ 
+diff --git a/drivers/staging/fbtft/fb_watterott.c b/drivers/staging/fbtft/fb_watterott.c
+index 27cc8eabcbe9..76b25df376b8 100644
+--- a/drivers/staging/fbtft/fb_watterott.c
++++ b/drivers/staging/fbtft/fb_watterott.c
+@@ -150,10 +150,17 @@ static int init_display(struct fbtft_par *par)
+ 
+ 	/* enable SPI interface by having CS and MOSI low during reset */
+ 	save_mode = par->spi->mode;
+-	par->spi->mode |= SPI_CS_HIGH;
+-	ret = spi_setup(par->spi); /* set CS inactive low */
++	/*
++	 * Set CS active inverse polarity: just setting SPI_CS_HIGH does not
++	 * work with GPIO based chip selects that are logically active high
++	 * but inverted inside the GPIO library, so enforce inverted
++	 * semantics.
++	 */
++	par->spi->mode ^= SPI_CS_HIGH;
++	ret = spi_setup(par->spi);
+ 	if (ret) {
+-		dev_err(par->info->device, "Could not set SPI_CS_HIGH\n");
++		dev_err(par->info->device,
++			"Could not set inverse CS polarity\n");
+ 		return ret;
+ 	}
+ 	write_reg(par, 0x00); /* make sure mode is set */
+-- 
+2.23.0
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============2078908422313341673==--
-
