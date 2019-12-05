@@ -1,90 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E6F4E1142B9
-	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Dec 2019 15:32:30 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4C0701142FC
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Dec 2019 15:49:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D6E218786C;
-	Thu,  5 Dec 2019 14:32:28 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C820F882A7;
+	Thu,  5 Dec 2019 14:49:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5LXBoyuMf1Zb; Thu,  5 Dec 2019 14:32:28 +0000 (UTC)
+	with ESMTP id FPBFTvERGTXc; Thu,  5 Dec 2019 14:49:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1E0A487952;
-	Thu,  5 Dec 2019 14:32:28 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 39BFE88220;
+	Thu,  5 Dec 2019 14:49:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 008091BF316
- for <devel@linuxdriverproject.org>; Thu,  5 Dec 2019 14:32:26 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9D99B1BF316
+ for <devel@linuxdriverproject.org>; Thu,  5 Dec 2019 14:49:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id EB0A5879CC
- for <devel@linuxdriverproject.org>; Thu,  5 Dec 2019 14:32:25 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 9374E881BE
+ for <devel@linuxdriverproject.org>; Thu,  5 Dec 2019 14:49:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wcB0X+-ExkGz for <devel@linuxdriverproject.org>;
- Thu,  5 Dec 2019 14:32:25 +0000 (UTC)
-X-Greylist: delayed 00:14:03 by SQLgrey-1.7.6
-Received: from mail1.bemta26.messagelabs.com (mail1.bemta26.messagelabs.com
- [85.158.142.116])
- by hemlock.osuosl.org (Postfix) with ESMTPS id EA7D38788D
- for <devel@driverdev.osuosl.org>; Thu,  5 Dec 2019 14:32:24 +0000 (UTC)
-Received: from [85.158.142.199] (using TLSv1.2 with cipher
- DHE-RSA-AES256-GCM-SHA384 (256 bits))
- by server-5.bemta.az-b.eu-central-1.aws.symcld.net id 59/7B-19907-BA119ED5;
- Thu, 05 Dec 2019 14:18:19 +0000
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFprDKsWRWlGSWpSXmKPExsVyU+ECq+4qwZe
- xBieOmlrsOfOL3YHR496+wywBjFGsmXlJ+RUJrBmfLqYV7Ges2NWn1MC4h7GLkZNDSGAvo8Sp
- paxdjFxA9hlGifN3u9lAEmwCWhLr5t9kBrFFBGwlFj09wwpiCwtwSOw7OI8JIq4ncenlS7B6F
- gEViZ/LXgPVcHDwCnhITJjMDRJmFJCV+NK4GmwMs4C4xK0n88FaJQQEJJbsOc8MYYtKvHz8D2
- y8qICSxMaJ56FqdCTOXn/CCGEbSGxduo8FwlaQOPbuLRvIKgkBa4kbD/hBTGYBTYn1u/QhNil
- KTOl+yA5i8woISpyc+YRlAqPILCRHzELomIWkYxaSjgWMLKsYLZOKMtMzSnITM3N0DQ0MdA0N
- jXVNdI2MTPQSq3ST9FJLdZNT80qKEoGyeonlxXrFlbnJOSl6eaklmxiB0ZJSyPJgB2PH17d6h
- xglOZiURHnFmF7GCvEl5adUZiQWZ8QXleakFh9ilOHgUJLgNeYHygkWpaanVqRl5gAjFyYtwc
- GjJMKrIQCU5i0uSMwtzkyHSJ1itOe4+2TuImaOCS9B5Omj84DkkblLFzELseTl56VKifNyAlO
- FkABIW0ZpHtxQWKK5xCgrJczLyMDAIMRTkFqUm1mCKv+KUZyDUUmY9y7Icp7MvBK43a+AzmIC
- OutA5TOQs0oSEVJSDUxF9x8231hcarNp+s8ySf1oIQvDYyX2DQ26C6ee2HnU7/q5sKU62eWc2
- hM38R6d/3Bqxb/1XtOnrdxV8GxeQtKXphdp9c8FUuK9lx1VDGYw6H/4gnPuyzk/dyYaeR14yP
- B23rTX/p+urb80v8g4s3mfcWjgraKDa5cWJC+67/TozKy87YWJydErt+xVe7Rp34fs5SmbMxZ
- MkbbKe6/d4rPlzNIPXksv2KlwNtvKplsUe3EvzfnVtvflrmkvlWVdvr+QvlUnk6b/fKal/II2
- nYSurEUi7QV3emJ3vOBZZ7tS+fVjLaXs4x4/1RQvMDAVP271a587qfby1mcz+GZOkstvctj5N
- 9Cy+YPa/IyifK4rSizFGYmGWsxFxYkAtFJEK68DAAA=
-X-Env-Sender: tim.magee@ncipher.com
-X-Msg-Ref: server-30.tower-244.messagelabs.com!1575555498!23114!1
-X-Originating-IP: [217.32.208.5]
-X-SYMC-ESS-Client-Auth: outbound-route-from=pass
-X-StarScan-Received: 
-X-StarScan-Version: 9.44.22; banners=-,-,-
-X-VirusChecked: Checked
-Received: (qmail 15380 invoked from network); 5 Dec 2019 14:18:18 -0000
-Received: from unknown (HELO exukdagfar02.INTERNAL.ROOT.TES) (217.32.208.5)
- by server-30.tower-244.messagelabs.com with ECDHE-RSA-AES256-SHA384 encrypted
- SMTP; 5 Dec 2019 14:18:18 -0000
-Received: from exukdagfar01.INTERNAL.ROOT.TES (10.194.2.70) by
- exukdagfar02.INTERNAL.ROOT.TES (10.194.2.71) with Microsoft SMTP Server (TLS)
- id 15.0.1497.2; Thu, 5 Dec 2019 14:18:18 +0000
-Received: from exukdagfar01.INTERNAL.ROOT.TES ([fe80::48de:aa33:fc4c:d1f5]) by
- exukdagfar01.INTERNAL.ROOT.TES ([fe80::48de:aa33:fc4c:d1f5%14]) with
- mapi id 15.00.1497.000; Thu, 5 Dec 2019 14:18:18 +0000
-From: "Magee, Tim" <tim.magee@ncipher.com>
-To: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>
-Subject: 
-Thread-Index: AQHVq3bW3ZB0EobypEOEOsc5ElCQnw==
-Date: Thu, 5 Dec 2019 14:18:17 +0000
-Message-ID: <c38ac3664aab9e6ac020c7005b5e03cc22d58189.camel@ncipher.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-user-agent: Evolution 3.34.1-2+b1 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-ms-exchange-transport-fromentityheader: Hosted
-x-originating-ip: [172.23.136.4]
-x-exclaimer-md-config: 7ae4f661-56ee-4cc7-9363-621ce9eeb65f
+ with ESMTP id zfcWoqUHszW1 for <devel@linuxdriverproject.org>;
+ Thu,  5 Dec 2019 14:49:49 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from rere.qmqm.pl (rere.qmqm.pl [91.227.64.183])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 5CB828815B
+ for <devel@driverdev.osuosl.org>; Thu,  5 Dec 2019 14:49:49 +0000 (UTC)
+Received: from remote.user (localhost [127.0.0.1])
+ by rere.qmqm.pl (Postfix) with ESMTPSA id 47TJTZ2DSpz3c;
+ Thu,  5 Dec 2019 15:47:14 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=rere.qmqm.pl; s=1;
+ t=1575557234; bh=SdhSC4B4qnY5nHTEIulHuGXWpsS6ubKaRhfb6FXv6F0=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=GCisWDnMuiO3s6XgyfUW7VxaCIffzvteDBYLehPFGJmBQ7sCFAxEo0JlWNfjhUUqB
+ qOYihABrLOYXEB5eqOOKRvwBxKW+8aE9+so1fOaxzEaISx5ddWVcoD8aBEzsk6VF4x
+ l4Oh96a3/d4OCPJO+UCYI0d9nSYDJT2UaQrBoweb9d0cmTTymjgCFnh+FJQiDi+kQG
+ kzX/wobFQGBLP2KPV5HWgAKkv5MRlITMyfEOwAKcOQ3OKxzn/xAZcGDfLbTnPkW4oV
+ Zrxt/L+2dADI/MRLaIKI8vcTqYrkEuGzy6VRZvmvJ7VwIjXARVe3owcNtHr0W6uz4S
+ Q4Ef4IBICDL8g==
+X-Virus-Status: Clean
+X-Virus-Scanned: clamav-milter 0.101.4 at mail
+Date: Thu, 5 Dec 2019 15:49:41 +0100
+From: =?iso-8859-2?Q?Micha=B3_Miros=B3aw?= <mirq-linux@rere.qmqm.pl>
+To: =?iso-8859-2?B?Suly9G1l?= Pouiller <Jerome.Pouiller@silabs.com>
+Subject: Re: [PATCH] staging: wfx: fix reset GPIO polarity
+Message-ID: <20191205144941.GA12859@qmqm.qmqm.pl>
+References: <f9ebb05f4a13cce4a8724dfb17f8383ec9b2d468.1575478705.git.mirq-linux@rere.qmqm.pl>
+ <3343657.nOMI9WY9u8@pc-42>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <3343657.nOMI9WY9u8@pc-42>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,24 +68,68 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="iso-8859-2"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-help
+On Thu, Dec 05, 2019 at 02:08:23PM +0000, J=E9r=F4me Pouiller wrote:
+> On Wednesday 4 December 2019 17:59:46 CET Micha=B3 Miros=B3aw wrote:
+> > Driver inverts meaning of GPIO_ACTIVE_LOW/HIGH. Fix it to prevent
+> > confusion.
+> > =
 
+> > Signed-off-by: Micha=B3 Miros=B3aw <mirq-linux@rere.qmqm.pl>
+> > ---
+> >  drivers/staging/wfx/bus_spi.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > =
 
+> > diff --git a/drivers/staging/wfx/bus_spi.c b/drivers/staging/wfx/bus_sp=
+i.c
+> > index ab0cda1e124f..73d0157a86ba 100644
+> > --- a/drivers/staging/wfx/bus_spi.c
+> > +++ b/drivers/staging/wfx/bus_spi.c
+> > @@ -199,9 +199,9 @@ static int wfx_spi_probe(struct spi_device *func)
+> >         if (!bus->gpio_reset) {
+> >                 dev_warn(&func->dev, "try to load firmware anyway\n");
+> >         } else {
+> > -               gpiod_set_value(bus->gpio_reset, 0);
+> > -               udelay(100);
+> >                 gpiod_set_value(bus->gpio_reset, 1);
+> > +               udelay(100);
+> > +               gpiod_set_value(bus->gpio_reset, 0);
+> >                 udelay(2000);
+> >         }
+> Hello Micha=B3,
+> =
 
-Tim Magee
-Software Engineer
-Tel: +44 1223 723723
+> I did not find real consensus in kernel code. My personal taste would
+> be to keep this gpio "ACTIVE_HIGH" and rename it gpio_nreset. What do
+> you think about it?
+> =
 
-nCipher Security
-One Station Square
-Cambridge CB1 2GA
-United Kingdom
+> (in add, this solution would explicitly change the name of the DT
+> attribute instead of changing the semantic of the existing attribute)
 
+As a user (board developer) I would expect that DT describes the
+GPIO meaning directly: so when I specify GPIO_ACTIVE_HIGH flag I also
+wire up the board so that outputing 1 would match the active state of
+the chip's signal (that might be inverted for some reason). I think we
+should stick to what is said in Documentation/devicetree/bindings/gpio.txt
+(section 1.1).
+
+Since this is a new driver in kernel I would prefer to fix it at the start.
+Changing the name of the GPIO would also be ok, but since there is no DT
+binding yet, I guess there will come up an issue of 'compatible' string
+format that does not match 'vendor,chip' now, so we can use the difference
+for backwards compatibility with out-of-tree driver if needed.
+
+Best Regards,
+Micha=B3=A0Miros=B3aw
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
