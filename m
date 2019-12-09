@@ -1,55 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A65A5117284
-	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Dec 2019 18:11:37 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 909EE117433
+	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Dec 2019 19:29:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2255686A01;
-	Mon,  9 Dec 2019 17:11:36 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id EB53221FA9;
+	Mon,  9 Dec 2019 18:29:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rhHyuctxy7Dq; Mon,  9 Dec 2019 17:11:35 +0000 (UTC)
+	with ESMTP id Vk4o5G-dv11K; Mon,  9 Dec 2019 18:29:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 25532869D9;
-	Mon,  9 Dec 2019 17:11:35 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CC86120014;
+	Mon,  9 Dec 2019 18:29:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D77CB1BF389
- for <devel@linuxdriverproject.org>; Mon,  9 Dec 2019 17:11:31 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E15441BF383
+ for <devel@linuxdriverproject.org>; Mon,  9 Dec 2019 18:29:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D3BD1869D9
- for <devel@linuxdriverproject.org>; Mon,  9 Dec 2019 17:11:31 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id DD1862039C
+ for <devel@linuxdriverproject.org>; Mon,  9 Dec 2019 18:29:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sOolRncuV2Kp for <devel@linuxdriverproject.org>;
- Mon,  9 Dec 2019 17:11:30 +0000 (UTC)
+ with ESMTP id 2k2bKCYWTtG1 for <devel@linuxdriverproject.org>;
+ Mon,  9 Dec 2019 18:29:51 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from shards.monkeyblade.net (shards.monkeyblade.net [23.128.96.9])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 6593B86914
- for <devel@driverdev.osuosl.org>; Mon,  9 Dec 2019 17:11:30 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id EAA7820014
+ for <devel@driverdev.osuosl.org>; Mon,  9 Dec 2019 18:29:51 +0000 (UTC)
 Received: from localhost (unknown [IPv6:2601:601:9f00:1c3::3d5])
  (using TLSv1 with cipher AES256-SHA (256/256 bits))
  (Client did not present a certificate)
  (Authenticated sender: davem-davemloft)
- by shards.monkeyblade.net (Postfix) with ESMTPSA id 587FC15433951;
- Mon,  9 Dec 2019 09:11:29 -0800 (PST)
-Date: Mon, 09 Dec 2019 09:11:26 -0800 (PST)
-Message-Id: <20191209.091126.397853146180657876.davem@davemloft.net>
-To: gregkh@linuxfoundation.org
-Subject: Re: [PATCH 1/2] staging: remove isdn capi drivers
+ by shards.monkeyblade.net (Postfix) with ESMTPSA id A4CDA1543B41A;
+ Mon,  9 Dec 2019 10:29:50 -0800 (PST)
+Date: Mon, 09 Dec 2019 10:29:50 -0800 (PST)
+Message-Id: <20191209.102950.2248756181772063368.davem@davemloft.net>
+To: arnd@arndb.de
+Subject: Re: [PATCH 4/4] [RFC] staging/net: move AF_X25 into drivers/staging
 From: David Miller <davem@davemloft.net>
-In-Reply-To: <20191209153743.GA1284708@kroah.com>
-References: <20191209151114.2410762-1-arnd@arndb.de>
- <20191209153743.GA1284708@kroah.com>
+In-Reply-To: <20191209151256.2497534-4-arnd@arndb.de>
+References: <20191209151256.2497534-1-arnd@arndb.de>
+ <20191209151256.2497534-4-arnd@arndb.de>
 X-Mailer: Mew version 6.8 on Emacs 26.1
 Mime-Version: 1.0
 X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.5.12
  (shards.monkeyblade.net [149.20.54.216]);
- Mon, 09 Dec 2019 09:11:29 -0800 (PST)
+ Mon, 09 Dec 2019 10:29:51 -0800 (PST)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,35 +62,30 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, johan.hedberg@gmail.com, arnd@arndb.de,
- netdev@vger.kernel.org, marcel@holtmann.org, linux-kernel@vger.kernel.org,
- linux-bluetooth@vger.kernel.org, isdn4linux@listserv.isdn4linux.de
+Cc: devel@driverdev.osuosl.org, linux-x25@vger.kernel.org,
+ gregkh@linuxfoundation.org, bob.dunlop@farsite.com,
+ linux-kernel@vger.kernel.org, kevin.curtis@farsite.com, ebiggers@kernel.org,
+ syzbot+429c200ffc8772bfe070@syzkaller.appspotmail.com, netdev@vger.kernel.org,
+ syzbot+eec0c87f31a7c3b66f7b@syzkaller.appspotmail.com, andrew.hendry@gmail.com,
+ qiang.zhao@nxp.com, khc@pm.waw.pl
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Date: Mon, 9 Dec 2019 16:37:43 +0100
+From: Arnd Bergmann <arnd@arndb.de>
+Date: Mon,  9 Dec 2019 16:12:56 +0100
 
-> On Mon, Dec 09, 2019 at 04:11:13PM +0100, Arnd Bergmann wrote:
->> As described in drivers/staging/isdn/TODO, the drivers are all
->> assumed to be unmaintained and unused now, with gigaset being the
->> last one to stop being maintained after Paul Bolle lost access
->> to an ISDN network.
->> 
->> The CAPI subsystem remains for now, as it is still required by
->> bluetooth/cmtp.
->> 
->> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> 
-> Nice!  You beat me to it :)
-> 
-> I'll go queue this up soon.
-> 
-> David, any objection for me taking patch 2/2 here as well?
+> syzbot keeps finding issues in the X.25 implementation that nobody is
+> interested in fixing.  Given that all the x25 patches of the past years
+> that are not global cleanups tend to fix user-triggered oopses, is it
+> time to just retire the subsystem?
 
-No objections.
+I have a bug fix that I'm currently applying to 'net' right now actually:
+
+	https://patchwork.ozlabs.org/patch/1205973/
+
+So your proposal might be a bit premature.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
