@@ -1,74 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B5DC1168BC
-	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Dec 2019 09:58:25 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3A3611168BE
+	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Dec 2019 09:58:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8FC6E8768C;
-	Mon,  9 Dec 2019 08:58:23 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4A2EF881F9;
+	Mon,  9 Dec 2019 08:58:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lga3qzIo17RS; Mon,  9 Dec 2019 08:58:23 +0000 (UTC)
+	with ESMTP id aE1F4KrH6FPl; Mon,  9 Dec 2019 08:58:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 892FE8757D;
-	Mon,  9 Dec 2019 08:58:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 81C81881CC;
+	Mon,  9 Dec 2019 08:58:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3E84A1BF20D
- for <devel@linuxdriverproject.org>; Mon,  9 Dec 2019 08:58:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A9A0B1BF20D
+ for <devel@linuxdriverproject.org>; Mon,  9 Dec 2019 08:58:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3B40286502
- for <devel@linuxdriverproject.org>; Mon,  9 Dec 2019 08:58:20 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A6B6386502
+ for <devel@linuxdriverproject.org>; Mon,  9 Dec 2019 08:58:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NecA1TQGWcvR for <devel@linuxdriverproject.org>;
- Mon,  9 Dec 2019 08:58:19 +0000 (UTC)
+ with ESMTP id cyWE9ja3iBwS for <devel@linuxdriverproject.org>;
+ Mon,  9 Dec 2019 08:58:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
- [209.85.210.194])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D460985FC1
- for <devel@driverdev.osuosl.org>; Mon,  9 Dec 2019 08:58:19 +0000 (UTC)
-Received: by mail-pf1-f194.google.com with SMTP id x185so6872218pfc.5
- for <devel@driverdev.osuosl.org>; Mon, 09 Dec 2019 00:58:19 -0800 (PST)
+Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
+ [209.85.215.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 5EA1985FC1
+ for <devel@driverdev.osuosl.org>; Mon,  9 Dec 2019 08:58:44 +0000 (UTC)
+Received: by mail-pg1-f195.google.com with SMTP id l24so6777637pgk.2
+ for <devel@driverdev.osuosl.org>; Mon, 09 Dec 2019 00:58:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=quNuOEA5nR90xmqWledAif7nMZZ8pn2xX9YiOvl0uw0=;
- b=fo27XehCDDbswYaVMrVS3nFC5fQNhbJvjBxrxywhppJb1Zx38ogCnq4fjMo8KORfeJ
- h8NFbK7iYONX1EbBDib/Jtt0rg7xRGJ2OaQtXkV9+dJ/SQjYAG02K/Gmv+IYLW2vlkky
- QJbidaEb+oNlc//YsQ6fMZGWdpPvFky7dXVhEpTpIyZLmnDDcOdgHr307GzMq78GiFuT
- e0KhZpanYNHBejQaYYzMp+cULfoE2ii15zS1R3qb/vTQ6U9/3u8TM0cKMjQsqwxILm8E
- FvoWdQPP611RPWjDdcJzy1j4zSx+QD2bAV/tfB1hkx+ebyas5LApdiofRK2vQ7JQ8usg
- TnSw==
+ bh=J5879LZ/Pi63QwYbKH9FG7q4Bl0Ds4fjn/Pvg7Od1Ec=;
+ b=RZaX0ioqUEqw0QfmHP6faFSw/t94WFmFghK9AEN6Yv+N/+UKM772AHLpfMdRLslZCz
+ A1LJv9UNjP5cXmhnRr/SWM/veawKnW1O+iElSUa5ANIA9akzRPw9A9t+sr4xuTp1CnLW
+ 2QueHSGHz/xh0Mpg5C31KZN2D/Uyu1LKQGTzO5S1a+AUG1Ky+qPl3uhZrOB1i+QBEEfV
+ hSI2mvJvTb1hQga8wCfn6zUhQpldlomq2PprONFxrzqDnyb58T+3YlJ0Rk+HInqAqvor
+ QkjLVHbIAEPN5qD75BlwVNmISorFFWMfXJvZfx0Tm0GEN5OmLmpcdGrqnt/LAq1VDAqb
+ isTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=quNuOEA5nR90xmqWledAif7nMZZ8pn2xX9YiOvl0uw0=;
- b=pkvK09AIzsrD7UZGkWjKRlTxdn9IUNlUv7iFNX9YazXT1iPh25RW3OmEIqT1Dseqkh
- Jvz6zxOfqqwFBKqk0FJS5pBK7TmACf4bp7Yh/iCq9/qYNhaImqgy1WopeoBftba6Z/WB
- wlzAm3gfVJtue8Sj0nTn+qAW8k4jtu2lZqu0mSpajiqNy9+yVxghEOzL8krghS3LPd75
- CXm/EGaRoIlAviuW1K9h1xht+wA+FkwSzZd3p7fAV/fkxBLIAuN0GFCmg4zkyDBAz94d
- 68NUqnQIRD2sxkgbjy0sa+7I6XqUAS14mlniQoZU1nJ4gkzX5NGD8nBA/eCvou86NrmE
- ya1A==
-X-Gm-Message-State: APjAAAVP/7QaO1eD43MsUKSvzYHCADHCE9zPuq041MQWFcGcCHrdaojc
- w1bOJ8XRSjjH6WMm4xTTKyI=
-X-Google-Smtp-Source: APXvYqzbq2tEfloswSTy+xvQ5tNqSUT2de/+TYI91+6etQ4PkAsLeGZFrDwv+JrtVlf0dyvHnNxnzg==
-X-Received: by 2002:a63:d041:: with SMTP id s1mr17863747pgi.363.1575881899517; 
- Mon, 09 Dec 2019 00:58:19 -0800 (PST)
+ bh=J5879LZ/Pi63QwYbKH9FG7q4Bl0Ds4fjn/Pvg7Od1Ec=;
+ b=FmE2I7Frd20zeEqVcbCJMK7M3cFCY17Cqj0VgzAkKa6TDtSpDeYmguJWxdKzQWYXKj
+ snBrw0oN6ZAlGqfSklPeYmKy4Y79Ly53ssdUkeO2bx4ir2mcdTSnxDfP9RB89rJ3GtJX
+ VM+L9qYWoMT6wz4oYeSnzDtMyz7WXOHOuyuJ58tAqKfU650XqgIX/eUVjSJoNN8l20dn
+ ErJGM2ZQti0dHuTr8T4gy/19bHm/ZrubT05gnw9yQ2hwSzVmHwliLULgrXEVjrkgMscH
+ jhoiA2ITv+3ZMkyrNIpkJq4Fgcw3gVxHcDMkzJCRR2HWSFxpHyIDRnhy19EtMsuYzQdW
+ 0L0w==
+X-Gm-Message-State: APjAAAUdn9iTaXK4Jjl+cHwU3yCrQ1U746vkdkq64cEcOp3yXmNP5jfl
+ x84RkzPL89d/ZBWxSvyrBT0=
+X-Google-Smtp-Source: APXvYqyOgxCtG+slALBSZvCRJBZ2STsFf/PiiOls9fa04H+mWGLjYNLpGc90OOQE5vNvxiYdGKoleQ==
+X-Received: by 2002:a63:cc02:: with SMTP id x2mr17928600pgf.114.1575881923958; 
+ Mon, 09 Dec 2019 00:58:43 -0800 (PST)
 Received: from suzukaze.ipads-lab.se.sjtu.edu.cn ([202.120.40.82])
- by smtp.gmail.com with ESMTPSA id m13sm23596045pga.70.2019.12.09.00.58.13
+ by smtp.gmail.com with ESMTPSA id f24sm11681569pjp.12.2019.12.09.00.58.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Dec 2019 00:58:18 -0800 (PST)
+ Mon, 09 Dec 2019 00:58:43 -0800 (PST)
 From: Chuhong Yuan <hslester96@gmail.com>
 To: 
-Subject: [PATCH] media: allegro: add the missed check for v4l2_m2m_ctx_init
-Date: Mon,  9 Dec 2019 16:58:07 +0800
-Message-Id: <20191209085807.16126-1-hslester96@gmail.com>
+Subject: [PATCH] media: imx7-mipi-csis: Add the missed
+ v4l2_async_notifier_cleanup in remove
+Date: Mon,  9 Dec 2019 16:58:28 +0800
+Message-Id: <20191209085828.16183-1-hslester96@gmail.com>
 X-Mailer: git-send-email 2.24.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -83,45 +84,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Chuhong Yuan <hslester96@gmail.com>,
- Michael Tretter <m.tretter@pengutronix.de>, linux-kernel@vger.kernel.org,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Chuhong Yuan <hslester96@gmail.com>,
+ linux-kernel@vger.kernel.org, NXP Linux Team <linux-imx@nxp.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Steve Longerbeam <slongerbeam@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-allegro_open() misses a check for v4l2_m2m_ctx_init().
-Add a check and error handling code to fix it.
+All drivers in imx call v4l2_async_notifier_cleanup() after unregistering
+the notifier except this driver.
+This should be a miss and we need to add the call to fix it.
 
-Fixes: f20387dfd065 ("media: allegro: add Allegro DVT video IP core driver")
 Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
 ---
- drivers/staging/media/allegro-dvt/allegro-core.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ drivers/staging/media/imx/imx7-mipi-csis.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/staging/media/allegro-dvt/allegro-core.c b/drivers/staging/media/allegro-dvt/allegro-core.c
-index 6f0cd0784786..5f1d454b41bb 100644
---- a/drivers/staging/media/allegro-dvt/allegro-core.c
-+++ b/drivers/staging/media/allegro-dvt/allegro-core.c
-@@ -2341,6 +2341,13 @@ static int allegro_open(struct file *file)
- 	channel->fh.m2m_ctx = v4l2_m2m_ctx_init(dev->m2m_dev, channel,
- 						allegro_queue_init);
+diff --git a/drivers/staging/media/imx/imx7-mipi-csis.c b/drivers/staging/media/imx/imx7-mipi-csis.c
+index 99166afca071..2bfa85bb84e7 100644
+--- a/drivers/staging/media/imx/imx7-mipi-csis.c
++++ b/drivers/staging/media/imx/imx7-mipi-csis.c
+@@ -1105,6 +1105,7 @@ static int mipi_csis_remove(struct platform_device *pdev)
+ 	mipi_csis_debugfs_exit(state);
+ 	v4l2_async_unregister_subdev(&state->mipi_sd);
+ 	v4l2_async_notifier_unregister(&state->subdev_notifier);
++	v4l2_async_notifier_cleanup(&state->subdev_notifier);
  
-+	if (IS_ERR(channel->fh.m2m_ctx)) {
-+		v4l2_fh_del(&channel->fh);
-+		v4l2_fh_exit(&channel->fh);
-+		kfree(channel);
-+		return PTR_ERR(channel->fh.m2m_ctx);
-+	}
-+
- 	return 0;
- }
- 
+ 	pm_runtime_disable(&pdev->dev);
+ 	mipi_csis_pm_suspend(&pdev->dev, true);
 -- 
 2.24.0
 
