@@ -2,92 +2,58 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A0FF61170B8
-	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Dec 2019 16:42:04 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 130DD1170D4
+	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Dec 2019 16:46:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5B572869D9;
-	Mon,  9 Dec 2019 15:42:03 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 30441864C3;
+	Mon,  9 Dec 2019 15:46:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id U-xYj-d6X9le; Mon,  9 Dec 2019 15:42:01 +0000 (UTC)
+	with ESMTP id HsxbMogqzonO; Mon,  9 Dec 2019 15:46:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6F86586709;
-	Mon,  9 Dec 2019 15:41:59 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 283FF86190;
+	Mon,  9 Dec 2019 15:46:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 16DFB1BF3BD
- for <devel@linuxdriverproject.org>; Mon,  9 Dec 2019 15:41:58 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6DCC01BF3BD
+ for <devel@linuxdriverproject.org>; Mon,  9 Dec 2019 15:46:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 109C38687B
- for <devel@linuxdriverproject.org>; Mon,  9 Dec 2019 15:41:58 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 6822187113
+ for <devel@linuxdriverproject.org>; Mon,  9 Dec 2019 15:46:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fXxgzj4IDg5y for <devel@linuxdriverproject.org>;
- Mon,  9 Dec 2019 15:41:55 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail1.bemta25.messagelabs.com (mail1.bemta25.messagelabs.com
- [195.245.230.2])
- by whitealder.osuosl.org (Postfix) with ESMTPS id CEFCD86866
- for <devel@driverdev.osuosl.org>; Mon,  9 Dec 2019 15:41:54 +0000 (UTC)
-Received: from [46.226.52.100] (using TLSv1.2 with cipher
- DHE-RSA-AES256-GCM-SHA384 (256 bits))
- by server-2.bemta.az-a.eu-west-1.aws.symcld.net id 0D/F2-12145-04B6EED5;
- Mon, 09 Dec 2019 15:41:52 +0000
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFtrCKsWRWlGSWpSXmKPExsVyU+ECq65D9rt
- Yg+ULZS32nPnFbtG8eD2bA5PHvX2HWTz2z13DHsAUxZqZl5RfkcCasebSYaaCh84VZyZPY21g
- /ODUxcjJISSwl1HiVoNNFyMXkH2GUeJ82zpGkASbgJbEjK1TwWwRAVuJicu6mUGKmAWWMEocv
- bqaCSQhLOAlsWbGCSaIIm+JDTt+sXYxcgDZVhL/bqmDhFkEVCSedhxnBbF5BXQlbt99wwyxOE
- jixJUrYK2cAoYSl+5/ZwexGQVkJR6t/AVmMwuIS9x6Mh+sRkJAQGLJnvPMELaoxMvH/1ghbAO
- JrUv3sUDYihLX5p9gBDlBQsBa4sYDfhCTWUBTYv0ufYiJihJTuh+yQ1wjKHFy5hOWCYxis5As
- m4XQMQtJxywkHQsYWVYxWiQVZaZnlOQmZuboGhoY6BoaGukaWhrrGpqa6iVW6SbqpZbqlqcWl
- +ga6iWWF+sVV+Ym56To5aWWbGIERl1KwcHZOxg7P73VO8QoycGkJMo76dSrWCG+pPyUyozE4o
- z4otKc1OJDjDIcHEoSvOcy38UKCRalpqdWpGXmABMATFqCg0dJhDceJM1bXJCYW5yZDpE6xWj
- MMeHl3EXMHEfmLl3ELMSSl5+XKiXOywBSKgBSmlGaBzcIlpguMcpKCfMyMjAwCPEUpBblZpag
- yr9iFOdgVBLmnQIyhSczrwRu3yugU5iATulMATulJBEhJdXAZG7svlRpvmir2TMv9lLmcqeXI
- teCpkU8v3yp2+bG9YxD0d/6nhY8+PFW4fDrm7aiolP3BjVYFa/o9VxkrMh7zOl6U7veNJGXVY
- GtG5ocPyRXv0n5viHizDXhW+02SZ8TEhMecU51PPjD9slM4w0dP+J3OSfuqm80ENqvxedx/X9
- Rw5vr1/y5r5T/mu2aeP1usoHoDtWtr1xe2rpeDCz97JisqWb4XfKEoai+5PX8XSbin6f93WDu
- cORp5eHtT95tXPl8r+HWMgXfGVPey57+9OXPt8luNetOXynw2qFdt8VpQ4MI55Etz9yc3fQmX
- z/E76Rw7fC32eXLnislcz5+4WS4aW/OjjaDo5r1d3eb7lBiKc5INNRiLipOBADinaAbxwMAAA
- ==
-X-Env-Sender: david.kim@ncipher.com
-X-Msg-Ref: server-29.tower-264.messagelabs.com!1575906112!603882!1
-X-Originating-IP: [217.32.208.5]
-X-SYMC-ESS-Client-Auth: outbound-route-from=pass
-X-StarScan-Received: 
-X-StarScan-Version: 9.44.22; banners=-,-,-
-X-VirusChecked: Checked
-Received: (qmail 4642 invoked from network); 9 Dec 2019 15:41:52 -0000
-Received: from unknown (HELO exukdagfar02.INTERNAL.ROOT.TES) (217.32.208.5)
- by server-29.tower-264.messagelabs.com with ECDHE-RSA-AES256-SHA384 encrypted
- SMTP; 9 Dec 2019 15:41:52 -0000
-Received: from exukdagfar01.INTERNAL.ROOT.TES (10.194.2.70) by
- exukdagfar02.INTERNAL.ROOT.TES (10.194.2.71) with Microsoft SMTP Server (TLS)
- id 15.0.1497.2; Mon, 9 Dec 2019 15:41:51 +0000
-Received: from exukdagfar01.INTERNAL.ROOT.TES ([fe80::48de:aa33:fc4c:d1f5]) by
- exukdagfar01.INTERNAL.ROOT.TES ([fe80::48de:aa33:fc4c:d1f5%14]) with
- mapi id 15.00.1497.000; Mon, 9 Dec 2019 15:41:51 +0000
-From: "Kim, David" <david.kim@ncipher.com>
-To: "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>
+ with ESMTP id IwHX4ncL6EPT for <devel@linuxdriverproject.org>;
+ Mon,  9 Dec 2019 15:46:45 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id EF64E86762
+ for <devel@driverdev.osuosl.org>; Mon,  9 Dec 2019 15:46:45 +0000 (UTC)
+Received: from localhost (unknown [89.205.132.23])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 246A92080D;
+ Mon,  9 Dec 2019 15:46:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1575906405;
+ bh=FQT5qAplvWxm9rmIcDlCpOO8ikZGnr0otysWddS45n0=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Zj8HrSPvNcD7Gau13WsrTIo/Dzr98IgmMUia2nUncuM86n4sy+IRy/wInLYaYz1vr
+ VvmXXQKkhx6ms8/b+kdepoibElCA433LpSFLi91B7PebT/USq+bxzEaKSJLpiTuYsW
+ NoJ9jJI/xutnWVA/JCkMYKx2uEKNyJWWi6qzFz1M=
+Date: Mon, 9 Dec 2019 16:46:42 +0100
+From: "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>
+To: "Kim, David" <david.kim@ncipher.com>
 Subject: Re: [PATCH] drivers: staging: Add support for nCipher HSM devices
-Thread-Topic: [PATCH] drivers: staging: Add support for nCipher HSM devices
-Thread-Index: AQHVrpiE4uqHhgJk30y3nRGskfuqA6ex7rsAgAAAzyA=
-Date: Mon, 9 Dec 2019 15:41:51 +0000
-Message-ID: <1575906111248.24322@ncipher.com>
-References: <1575899815003.20486@ncipher.com>,
+Message-ID: <20191209154642.GA1285695@kroah.com>
+References: <1575899815003.20486@ncipher.com>
  <20191209153310.GD1280846@kroah.com>
-In-Reply-To: <20191209153310.GD1280846@kroah.com>
-Accept-Language: en-US, en-GB
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-exchange-transport-fromentityheader: Hosted
-x-originating-ip: [172.23.136.54]
-x-exclaimer-md-config: 7ae4f661-56ee-4cc7-9363-621ce9eeb65f
+ <1575906111248.24322@ncipher.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1575906111248.24322@ncipher.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,124 +69,30 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>, "Magee,
  Tim" <tim.magee@ncipher.com>,
  "linux-crypto@vger.kernel.org" <linux-crypto@vger.kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SGkgR3JlZywNCg0KVGhhbmtzIGZvciB0aGUgc3BlZWR5IHJlcGx5LiBJIHdhcyBob3BpbmcgdGhh
-dCBzZXR0aW5nIG15IGNsaWVudCB0byBwbGFpbiB0ZXh0IG9ubHkgd291bGQgYWN0dWFsbHkgZG8g
-cGxhaW4gdGV4dCBvbmx5IGJ1dCBJIHdpbGwgdHJ5IGFnYWluIHdpdGggZ2l0IHNlbmQtZW1haWwu
-DQoNClRoaXMgaXMgb3VyIGZpcnN0IGRyaXZlciB1cHN0cmVhbWluZyBhbmQgd2UgdGFyZ2V0ZWQg
-c3RhZ2luZyBhcyBhIGZpcnN0IGVudHJ5IHBvaW50LiBJZiB5b3UgZmVlbCBpdCdzIG1vcmUgYXBw
-cm9wcmlhdGUgd2hlbiBJIHJlLXN1Ym1pdCBJIGNhbiBnbyBkaXJlY3RseSB0byBkcml2ZXJzL2Ny
-eXB0byBpbnN0ZWFkLg0KDQpUaGFua3MsDQpEYXZlDQoNCg0KDQpEYXZpZCBLaW0NClNlbmlvciBT
-b2Z0d2FyZSBFbmdpbmVlcg0KVGVsOiArNDQgMTIyMyA3MDM0NDkNCg0KbkNpcGhlciBTZWN1cml0
-eQ0KT25lIFN0YXRpb24gU3F1YXJlDQpDYW1icmlkZ2UgQ0IxIDJHQQ0KVW5pdGVkIEtpbmdkb20N
-Cg0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KRnJvbTogbGludXgt
-Y3J5cHRvLW93bmVyQHZnZXIua2VybmVsLm9yZyA8bGludXgtY3J5cHRvLW93bmVyQHZnZXIua2Vy
-bmVsLm9yZz4gb24gYmVoYWxmIG9mIGdyZWdraEBsaW51eGZvdW5kYXRpb24ub3JnIDxncmVna2hA
-bGludXhmb3VuZGF0aW9uLm9yZz4NClNlbnQ6IE1vbmRheSwgRGVjZW1iZXIgOSwgMjAxOSAzOjMz
-IFBNDQpUbzogS2ltLCBEYXZpZA0KQ2M6IGRldmVsQGRyaXZlcmRldi5vc3Vvc2wub3JnOyBsaW51
-eC1jcnlwdG9Admdlci5rZXJuZWwub3JnOyBNYWdlZSwgVGltDQpTdWJqZWN0OiBSZTogW1BBVENI
-XSBkcml2ZXJzOiBzdGFnaW5nOiBBZGQgc3VwcG9ydCBmb3IgbkNpcGhlciBIU00gZGV2aWNlcw0K
-DQpPbiBNb24sIERlYyAwOSwgMjAxOSBhdCAwMTo1Njo1NVBNICswMDAwLCBLaW0sIERhdmlkIHdy
-b3RlOg0KPg0KPiBIaSBldmVyeWJvZHksDQo+IOKAiw0KPiBUaGlzIHBhdGNoIGludHJvZHVjZXMg
-YSBkcml2ZXIgZm9yIG5DaXBoZXIncyBTb2xvIGFuZCBTb2xvIFhDIHJhbmdlIG9mIFBDSWUNCj4g
-aGFyZHdhcmUgc2VjdXJpdHkgbW9kdWxlcyAoSFNNKSwgd2hpY2ggcHJvdmlkZSBrZXkgY3JlYXRp
-b24vbWFuYWdlbWVudA0KPiBhbmQgY3J5cHRvZ3JhcGh5IHNlcnZpY2VzLg0KPg0KPiBVcHN0cmVh
-bWluZyB0aGUgbkNpcGhlciBkcml2ZXIgaW50byB0aGUga2VybmVsIHdpbGwgYWxsb3cgZWFybHkg
-YWRvcHRlcnMNCj4gb2YgdGhlIGxhdGVzdCBrZXJuZWwgdG8gdXBncmFkZSBhbmQgbWFpbnRhaW4g
-dGhlaXIgd29ya2luZyBzeXN0ZW1zIHdoZW4NCj4gdXNpbmcgYW4gbkNpcGhlciBQQ0llIEhTTS4g
-RnVydGhlciwgaGF2aW5nIHRoaXMgZHJpdmVyIGluIHRoZSBrZXJuZWwgd2lsbCBiZQ0KPiBtb3Jl
-IGNvbnZlbmllbnQgdG8gb3VyIHVzZXJzIGFuZCBtYWtlIGEgTGludXggYmFzZWQgc29sdXRpb24g
-YSBtb3JlDQo+IGF0dHJhY3RpdmUgb3B0aW9uIGZvciBvdGhlcnMu4oCLDQoNCk9kZCBjaGFyYWN0
-ZXJzIGF0IHlvdXIgbGluZS1lbmQgaGVyZSA6KA0KDQo+DQo+IFJlZ2FyZHMsDQo+IERhdmUgS2lt
-DQoNCg0KTm8gbmVlZCBmb3IgdGhlICJIaSIgYW5kICJyZWdhcmRzIiBpbiBhIGNoYW5nZWxvZyB0
-ZXh0IDopDQoNCk1vc3QgaW1wb3J0YW50bHksIHdoeSBpcyB0aGlzIGJlaW5nIHN1Ym1pdHRlZCBm
-b3IgdGhlIHN0YWdpbmcgZGlyZWN0b3J5Pw0KV2hhdCBpcyBrZWVwaW5nIGl0IGZyb20gYmVpbmcg
-YWRkZWQgdG8gdGhlICJyZWFsIiBwYXJ0IG9mIHRoZSBrZXJuZWwNCm5vdz8NCg0KSWYgeW91IG5l
-ZWQvd2FudCBpdCBpbiBkcml2ZXJzL3N0YWdpbmcvIHRoZW4geW91IG5lZWQgYSBUT0RPIGZpbGUg
-dGhhdA0KbGlzdHMgd2hhdCBuZWVkcyB0byBiZSBkb25lIHRvIGl0IGluIG9yZGVyIHRvIGdldCBv
-dXQgb2YNCmRyaXZlcnMvc3RhZ2luZy8NCg0KdGhhbmtzLA0KDQpncmVnIGstaA0KDQo+DQo+IENv
-LWRldmVsb3BlZC1ieTogVGltIE1hZ2VlIDx0aW0ubWFnZWVAbmNpcGhlci5jb20+DQo+IFNpZ25l
-ZC1vZmYtYnk6IFRpbSBNYWdlZSA8dGltLm1hZ2VlQG5jaXBoZXIuY29tPg0KPiBTaWduZWQtb2Zm
-LWJ5OiBEYXZpZCBLaW0gPGRhdmlkLmtpbUBuY2lwaGVyLmNvbT7igIsNCg0KT2RkIGxpbmUtZW5k
-IGhlcmUgOigNCg0KDQo+DQo+DQo+ICBNQUlOVEFJTkVSUyAgICAgICAgICAgICAgICAgICAgICAg
-fCAgICA4ICsNCj4gIGRyaXZlcnMvc3RhZ2luZy9LY29uZmlnICAgICAgICAgICB8ICAgIDEgKw0K
-PiAgZHJpdmVycy9zdGFnaW5nL01ha2VmaWxlICAgICAgICAgIHwgICAgMSArDQo+ICBkcml2ZXJz
-L3N0YWdpbmcvbmNpcGhlci9LY29uZmlnICAgfCAgICA4ICsNCj4gIGRyaXZlcnMvc3RhZ2luZy9u
-Y2lwaGVyL01ha2VmaWxlICB8ICAgIDcgKw0KPiAgZHJpdmVycy9zdGFnaW5nL25jaXBoZXIvZnNs
-LmMgICAgIHwgIDkxMSArKysrKysrKysrKysrKysrKysrKysrDQo+ICBkcml2ZXJzL3N0YWdpbmcv
-bmNpcGhlci9mc2wuaCAgICAgfCAgMTE3ICsrKw0KPiAgZHJpdmVycy9zdGFnaW5nL25jaXBoZXIv
-aG9zdGlmLmMgIHwgMTUyMSArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrDQo+
-ICBkcml2ZXJzL3N0YWdpbmcvbmNpcGhlci9pMjE1NTUuYyAgfCAgNTUzICsrKysrKysrKysrKysr
-DQo+ICBkcml2ZXJzL3N0YWdpbmcvbmNpcGhlci9pMjE1NTUuaCAgfCAgIDY4ICsrDQo+ICBkcml2
-ZXJzL3N0YWdpbmcvbmNpcGhlci9zb2xvLmggICAgfCAgMzE2ICsrKysrKysrDQo+ICBpbmNsdWRl
-L3VhcGkvbGludXgvbnNoaWVsZF9zb2xvLmggfCAgMTgxICsrKysrDQo+ICAxMiBmaWxlcyBjaGFu
-Z2VkLCAzNjkyIGluc2VydGlvbnMoKykNCj4NCj4NCj4NCj4gZGlmZiAtLWdpdCBhL01BSU5UQUlO
-RVJTIGIvTUFJTlRBSU5FUlMNCj4gaW5kZXggMDYxZDU5YTRhODBiLi5jMTEyNWM5OTliOTUgMTAw
-NjQ0DQo+IC0tLSBhL01BSU5UQUlORVJTDQo+ICsrKyBiL01BSU5UQUlORVJTDQo+IEBAIC0xMjYw
-NSw2ICsxMjYwNSwxNCBAQCBMOiBsaW51eC1wY2lAdmdlci5rZXJuZWwub3JnDQo+ICBTOiBTdXBw
-b3J0ZWQNCj4gIEY6IGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvdm1kLmMNCj4NCj4gK1BDSSBEUklW
-RVIgRk9SIE5TSElFTEQgU09MTyBBTkQgU09MTyBYQyBIQVJEV0FSRSBTRUNVUklUWSBNT0RVTEVT
-IChIU00pDQo+ICtNOiBUaW0gTWFnZWUgPHRpbS5tYWdlZUBuY2lwaGVyLmNvbT4NCj4gK006IERh
-dmlkIEtpbSA8ZGF2aWQua2ltQG5jaXBoZXIuY29tPg0KPiArTTogSGFtaXNoIENhbWVyb24gPGhh
-bWlzaC5jYW1lcm9uQG5jaXBoZXIuY29tPg0KPiArTDogbGludXgtY3J5cHRvQHZnZXIua2VybmVs
-Lm9yZw0KPiArUzogU3VwcG9ydGVkDQo+ICtGOiBkcml2ZXJzL3N0YWdpbmcvbmNpcGhlci8NCj4g
-Kw0KPiAgUENJIERSSVZFUiBGT1IgTUlDUk9TRU1JIFNXSVRDSFRFQw0KPiAgTTogS3VydCBTY2h3
-ZW1tZXIgPGt1cnQuc2Nod2VtbWVyQG1pY3Jvc2VtaS5jb20+DQo+ICBNOiBMb2dhbiBHdW50aG9y
-cGUgPGxvZ2FuZ0BkZWx0YXRlZS5jb20+DQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcv
-S2NvbmZpZyBiL2RyaXZlcnMvc3RhZ2luZy9LY29uZmlnDQo+IGluZGV4IGVhZjc1M2I3MGVjNS4u
-MGI1NDk4ZDI0MTVjIDEwMDY0NA0KPiAtLS0gYS9kcml2ZXJzL3N0YWdpbmcvS2NvbmZpZw0KPiAr
-KysgYi9kcml2ZXJzL3N0YWdpbmcvS2NvbmZpZw0KPiBAQCAtMTI0LDYgKzEyNCw3IEBAIHNvdXJj
-ZSAiZHJpdmVycy9zdGFnaW5nL3V3Yi9LY29uZmlnIg0KPiAgc291cmNlICJkcml2ZXJzL3N0YWdp
-bmcvZXhmYXQvS2NvbmZpZyINCj4NCj4gIHNvdXJjZSAiZHJpdmVycy9zdGFnaW5nL3FsZ2UvS2Nv
-bmZpZyINCj4gK3NvdXJjZSAiZHJpdmVycy9zdGFnaW5nL25jaXBoZXIvS2NvbmZpZyINCj4NCj4g
-IHNvdXJjZSAiZHJpdmVycy9zdGFnaW5nL2hwL0tjb25maWciDQo+DQo+IGRpZmYgLS1naXQgYS9k
-cml2ZXJzL3N0YWdpbmcvTWFrZWZpbGUgYi9kcml2ZXJzL3N0YWdpbmcvTWFrZWZpbGUNCj4gaW5k
-ZXggMGE0Mzk2YzkwNjdiLi5iZTlmMmU4MTE1MjggMTAwNjQ0DQo+IC0tLSBhL2RyaXZlcnMvc3Rh
-Z2luZy9NYWtlZmlsZQ0KPiArKysgYi9kcml2ZXJzL3N0YWdpbmcvTWFrZWZpbGUNCj4gQEAgLTU1
-LDMgKzU1LDQgQEAgb2JqLSQoQ09ORklHX0VYRkFUX0ZTKSArPSBleGZhdC8NCj4gIG9iai0kKENP
-TkZJR19RTEdFKSArPSBxbGdlLw0KPiAgb2JqLSQoQ09ORklHX05FVF9WRU5ET1JfSFApICs9IGhw
-Lw0KPiAgb2JqLSQoQ09ORklHX1dGWCkgKz0gd2Z4Lw0KPiArb2JqLSQoQ09ORklHX05DSVBIRVIp
-ICs9IG5jaXBoZXIvDQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbmNpcGhlci9LY29u
-ZmlnIGIvZHJpdmVycy9zdGFnaW5nL25jaXBoZXIvS2NvbmZpZw0KPiBuZXcgZmlsZSBtb2RlIDEw
-MDY0NA0KPiBpbmRleCAwMDAwMDAwMDAwMDAuLjViNDY2Y2QxODk2YQ0KPiAtLS0gL2Rldi9udWxs
-DQo+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9uY2lwaGVyL0tjb25maWcNCj4gQEAgLTAsMCArMSw4
-IEBADQo+ICsjIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wDQo+ICsjIEVuYWJsZSBz
-dXBwb3J0IGZvciBuQ2lwaGVyJ3MgblNoaWVsZCBTb2xvIGFuZCBTb2xvIFhDDQo+ICtjb25maWcg
-SFNNX05DSVBIRVJfTlNISUVMRF9TT0xPDQo+ICsgdHJpc3RhdGUgIm5DaXBoZXIgU29sbyBhbmQg
-U29sbyBYQyBmYW1pbHkgb2YgUENJZSBIU01zIg0KPiArIGRlcGVuZHMgb24gUENJDQo+ICsgaGVs
-cA0KPiArICAgU2VsZWN0IHRoaXMgYXMgYnVpbHQtaW4gb3IgbW9kdWxlIGlmIHlvdSBleHBlY3Qg
-dG8gdXNlDQo+ICsgICBhIEhhcmR3YXJlIFNlY3VyaXR5IE1vZHVsZSBmcm9tIG5DaXBoZXIncyBT
-b2xvIG9yIFNvbG8gWEMgcmFuZ2UuDQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbmNp
-cGhlci9NYWtlZmlsZSBiL2RyaXZlcnMvc3RhZ2luZy9uY2lwaGVyL01ha2VmaWxlDQo+IG5ldyBm
-aWxlIG1vZGUgMTAwNjQ0DQo+IGluZGV4IDAwMDAwMDAwMDAwMC4uYjRkNWY5MmFkZGVlDQo+IC0t
-LSAvZGV2L251bGwNCj4gKysrIGIvZHJpdmVycy9zdGFnaW5nL25jaXBoZXIvTWFrZWZpbGUNCj4g
-QEAgLTAsMCArMSw3IEBADQo+ICsjIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wDQo+
-ICsjDQo+ICsjIE1ha2VmaWxlIGZvciBuQ2lwaGVyIG5TaGllbGQgSFNNIGRyaXZlcnMNCj4gKyMN
-Cj4gKw0KPiArb2JqLSQoQ09ORklHX0hTTV9OQ0lQSEVSX05TSElFTERfU09MTykgOj0gbnNoaWVs
-ZF9zb2xvLm8NCj4gK25zaGllbGRfc29sby15IDo9IGhvc3RpZi5vIGZzbC5vIGkyMTU1NS5vDQo+
-IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbmNpcGhlci9mc2wuYyBiL2RyaXZlcnMvc3Rh
-Z2luZy9uY2lwaGVyL2ZzbC5jDQo+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0DQo+IGluZGV4IDAwMDAw
-MDAwMDAwMC4uNWM0ZWRlZWY2NGMwDQo+IC0tLSAvZGV2L251bGwNCj4gKysrIGIvZHJpdmVycy9z
-dGFnaW5nL25jaXBoZXIvZnNsLmMNCj4gQEAgLTAsMCArMSw5MTEgQEANCj4gKy8vIFNQRFgtTGlj
-ZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wKw0KPiArLyoNCj4gKyAqDQo+ICsgKiBmc2wuYzogbkNp
-cGhlciBQQ0kgSFNNIEZTTCBjb21tYW5kIGRyaXZlcg0KPiArICogQ29weXJpZ2h0IDIwMTkgbkNp
-cGhlciBTZWN1cml0eSBMdGQNCj4gKyAqDQo+ICsgKi8NCj4gKw0KPiArI2luY2x1ZGUgInNvbG8u
-aCINCj4gKyNpbmNsdWRlICJmc2wuaCINCj4gKw0KPiArLyoqDQo+ICsgKiBSZXNldHMgRlNMIGRl
-dmljZS4NCj4gKyAqDQo+ICsgKiBFeHRyYSBkZXZpY2UgaW5mbyBpcyBpbml0aWFsaXplZCB0aGUg
-Zmlyc3QgdGltZSBjcmVhdGVkLg0KPiArICoNCj4gKyAqIEBwYXJhbSBuZGV2IGNvbW1vbiBkZXZp
-Y2UuDQo+ICsgKiBAcmV0dXJucyAwIGlmIHN1Y2Nlc3NmdWwsIG90aGVyIHZhbHVlIGlmIGVycm9y
-Lg0KPiArICovDQo+ICtzdGF0aWMgaW50IGZzbF9jcmVhdGUoc3RydWN0IG5mcF9kZXYgKm5kZXYp
-DQo+ICt7DQo+ICsgLyogY2hlY2sgZm9yIGRldmljZSAqLw0KPiArIGlmICghbmRldikgew0KPiAr
-IHByX2VycigiJXM6IGVycm9yOiBubyBkZXZpY2UiLCBfX2Z1bmNfXyk7DQo+ICsgcmV0dXJuIC1F
-Tk9ERVY7DQo+ICsgfQ0KDQpQYXRjaCBpcyB0b3RhbGx5IGNvcnJ1cHRlZCBhbmQgY291bGQgbm90
-IGJlIGFwcGxpZWQgZXZlbiBpZiBJIHdhbnRlZCB0bw0KOigNCg0KQ2FuIHlvdSBqdXN0IHVzZSAn
-Z2l0IHNlbmQtZW1haWwnIHRvIHNlbmQgcGF0Y2hlcyBvdXQ/ICB3ZWIgY2xpZW50cyBkbw0Kbm90
-IHdvcmsgYXQgYWxsIChhcyB5b3Ugc2F3IHdpdGggeW91ciBmaXJzdCBhdHRlbXB0IGluIGh0bWwg
-Zm9ybWF0Li4uKQ0KDQp0aGFua3MsDQoNCmdyZWcgay1oDQpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhk
-cml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+On Mon, Dec 09, 2019 at 03:41:51PM +0000, Kim, David wrote:
+> Hi Greg,
+> 
+> Thanks for the speedy reply. I was hoping that setting my client to
+> plain text only would actually do plain text only but I will try again
+> with git send-email.
+> 
+> This is our first driver upstreaming and we targeted staging as a
+> first entry point. If you feel it's more appropriate when I re-submit
+> I can go directly to drivers/crypto instead.
+
+Well why wouldn't it go to drivers/crypto instead?  What is wrong with
+it that still needs to be done?  Only stuff that needs work belongs in
+drivers/staging/.
+
+thanks,
+
+greg k-h
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
