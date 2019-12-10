@@ -2,55 +2,55 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 26B0211935D
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 22:10:31 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B5E48119361
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 22:11:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B0F2287CCB;
-	Tue, 10 Dec 2019 21:10:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 378D387CAE;
+	Tue, 10 Dec 2019 21:11:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ArbVMRmHE4CT; Tue, 10 Dec 2019 21:10:29 +0000 (UTC)
+	with ESMTP id DZ3JS0iwerh1; Tue, 10 Dec 2019 21:11:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id AB34987C8A;
-	Tue, 10 Dec 2019 21:10:28 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3C7B487C8A;
+	Tue, 10 Dec 2019 21:11:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 41E3B1BF580
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 21:10:26 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2037C1BF580
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 21:11:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3C87987C8A
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 21:10:26 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1AF4A87C8B
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 21:11:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bm5PEYTsoC2m for <devel@linuxdriverproject.org>;
- Tue, 10 Dec 2019 21:10:25 +0000 (UTC)
+ with ESMTP id CFl3-Mi2+ipz for <devel@linuxdriverproject.org>;
+ Tue, 10 Dec 2019 21:10:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 9B1A287C7E
- for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 21:10:25 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9CEA187C8A
+ for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 21:10:59 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B60172077B;
- Tue, 10 Dec 2019 21:10:24 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 9241B246B8;
+ Tue, 10 Dec 2019 21:10:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1576012225;
- bh=pDb99hDHnLaIQT5+IsVMp+MuY1aORJ5mKqZBYwYdPOI=;
+ s=default; t=1576012259;
+ bh=4AT+BhJk04uH2Tcdyxf4+IP04hgHCY4zWu3WRrHazF0=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=tK+H1tzd2f6QJYRM10FV0BQOWxIdCa7PcB1bzzSFEpmYwTSfc6axC4OM95bUezzQK
- fyqFwGIfavKx+e9C2OIFh0IPoL50INauhb3uCtmI2q3YapMpZm6NUQmmKl5iE4D8Ya
- zEpCDpthwRU/np4F62og/ObXsb4at2Q2WGC9egA0=
+ b=fziFEhL0rEKr08sgpZ/w3Ha1aiwS8uDZgXMnOyWheyn+4ZKHTE5ZFMHt2Io6mZRX5
+ 3ItYlQAVmcX1ztNAY5eYKyPjl2P13ve7A7pbntB/uoiK2nazvWtkzMcC5/oWF9B8Zd
+ wx3sdrX1BldUpVWCqsn3XqsuqHOWcVEt3hvsFlVA=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.4 175/350] staging: wilc1000: check if device is
- initialzied before changing vif
-Date: Tue, 10 Dec 2019 16:04:40 -0500
-Message-Id: <20191210210735.9077-136-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 205/350] media: staging/imx: Use a shorter name
+ for driver
+Date: Tue, 10 Dec 2019 16:05:10 -0500
+Message-Id: <20191210210735.9077-166-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191210210735.9077-1-sashal@kernel.org>
 References: <20191210210735.9077-1-sashal@kernel.org>
@@ -69,74 +69,65 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
- linux-wireless@vger.kernel.org, Adham Abozaeid <adham.abozaeid@microchip.com>
+Cc: Sasha Levin <sashal@kernel.org>, devel@driverdev.osuosl.org,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Adham Abozaeid <adham.abozaeid@microchip.com>
+From: Fabio Estevam <festevam@gmail.com>
 
-[ Upstream commit 6df6f3849bb8f317bf2d52711aacea4292237ede ]
+[ Upstream commit ce22c6f242b6d7b5e0318da2c92b5b00b5bbc698 ]
 
-When killing hostapd, the interface is closed which deinitializes the
-device, then change virtual interface is called.
-This change checks if the device is initialized before sending the
-interface change command to the device
+Currently v4l2-compliance tool returns the following output:
 
-Signed-off-by: Adham Abozaeid <adham.abozaeid@microchip.com>
-Link: https://lore.kernel.org/r/20191028184019.31194-1-adham.abozaeid@microchip.com
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Compliance test for imx-media-captu device /dev/video0:
+
+Driver Info:
+        Driver name      : imx-media-captu
+        Card type        : imx-media-capture
+...
+
+The driver name string is limited to 16 characters, so provide
+a shorter name so that we can have a better output.
+
+While at it, use the same shorter name for driver and card.
+
+Signed-off-by: Fabio Estevam <festevam@gmail.com>
+Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- .../staging/wilc1000/wilc_wfi_cfgoperations.c  | 18 ++++++++++++------
- 1 file changed, 12 insertions(+), 6 deletions(-)
+ drivers/staging/media/imx/imx-media-capture.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-index 22f21831649bd..c3cd6f389a989 100644
---- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-+++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-@@ -1419,8 +1419,10 @@ static int change_virtual_intf(struct wiphy *wiphy, struct net_device *dev,
- 		if (vif->iftype == WILC_AP_MODE || vif->iftype == WILC_GO_MODE)
- 			wilc_wfi_deinit_mon_interface(wl, true);
- 		vif->iftype = WILC_STATION_MODE;
--		wilc_set_operation_mode(vif, wilc_get_vif_idx(vif),
--					WILC_STATION_MODE, vif->idx);
-+
-+		if (wl->initialized)
-+			wilc_set_operation_mode(vif, wilc_get_vif_idx(vif),
-+						WILC_STATION_MODE, vif->idx);
+diff --git a/drivers/staging/media/imx/imx-media-capture.c b/drivers/staging/media/imx/imx-media-capture.c
+index b33a07bc9105d..46576e32581f0 100644
+--- a/drivers/staging/media/imx/imx-media-capture.c
++++ b/drivers/staging/media/imx/imx-media-capture.c
+@@ -26,6 +26,8 @@
+ #include <media/imx.h>
+ #include "imx-media.h"
  
- 		memset(priv->assoc_stainfo.sta_associated_bss, 0,
- 		       WILC_MAX_NUM_STA * ETH_ALEN);
-@@ -1432,8 +1434,10 @@ static int change_virtual_intf(struct wiphy *wiphy, struct net_device *dev,
- 		priv->wdev.iftype = type;
- 		vif->monitor_flag = 0;
- 		vif->iftype = WILC_CLIENT_MODE;
--		wilc_set_operation_mode(vif, wilc_get_vif_idx(vif),
--					WILC_STATION_MODE, vif->idx);
++#define IMX_CAPTURE_NAME "imx-capture"
 +
-+		if (wl->initialized)
-+			wilc_set_operation_mode(vif, wilc_get_vif_idx(vif),
-+						WILC_STATION_MODE, vif->idx);
- 		break;
+ struct capture_priv {
+ 	struct imx_media_video_dev vdev;
  
- 	case NL80211_IFTYPE_AP:
-@@ -1450,8 +1454,10 @@ static int change_virtual_intf(struct wiphy *wiphy, struct net_device *dev,
- 		dev->ieee80211_ptr->iftype = type;
- 		priv->wdev.iftype = type;
- 		vif->iftype = WILC_GO_MODE;
--		wilc_set_operation_mode(vif, wilc_get_vif_idx(vif),
--					WILC_AP_MODE, vif->idx);
-+
-+		if (wl->initialized)
-+			wilc_set_operation_mode(vif, wilc_get_vif_idx(vif),
-+						WILC_AP_MODE, vif->idx);
- 		break;
+@@ -69,8 +71,8 @@ static int vidioc_querycap(struct file *file, void *fh,
+ {
+ 	struct capture_priv *priv = video_drvdata(file);
  
- 	default:
+-	strscpy(cap->driver, "imx-media-capture", sizeof(cap->driver));
+-	strscpy(cap->card, "imx-media-capture", sizeof(cap->card));
++	strscpy(cap->driver, IMX_CAPTURE_NAME, sizeof(cap->driver));
++	strscpy(cap->card, IMX_CAPTURE_NAME, sizeof(cap->card));
+ 	snprintf(cap->bus_info, sizeof(cap->bus_info),
+ 		 "platform:%s", priv->src_sd->name);
+ 
 -- 
 2.20.1
 
