@@ -1,61 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2524B118385
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 10:27:55 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1FDCE118392
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 10:31:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id C448922122;
-	Tue, 10 Dec 2019 09:27:53 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C50F18757F;
+	Tue, 10 Dec 2019 09:31:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0IPHkGvejmzh; Tue, 10 Dec 2019 09:27:53 +0000 (UTC)
+	with ESMTP id JBDGAmS6mYLB; Tue, 10 Dec 2019 09:31:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id AB04C20780;
-	Tue, 10 Dec 2019 09:27:52 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 929AA8732C;
+	Tue, 10 Dec 2019 09:31:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2D3FA1BF2A0
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 09:27:50 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CF02E1BF2A0
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 09:31:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 2A48084B6F
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 09:27:50 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id CA82885F89
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 09:31:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id L8f4m7hF7Ygl for <devel@linuxdriverproject.org>;
- Tue, 10 Dec 2019 09:27:49 +0000 (UTC)
+ with ESMTP id m7Z2h6hpK08Q for <devel@linuxdriverproject.org>;
+ Tue, 10 Dec 2019 09:31:20 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B30CE84B08
- for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 09:27:49 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 19A68857D6
+ for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 09:31:20 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 17D1920726;
- Tue, 10 Dec 2019 09:27:48 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 7B2CA2073D;
+ Tue, 10 Dec 2019 09:31:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1575970069;
- bh=FXwGmlP7i/ZGQ9Iif2A4jfF4n1WNZuzQofHTptkaPcE=;
+ s=default; t=1575970280;
+ bh=F9zbYw4QoH+VxLbWXNRiNT675hB3jGQPv2pn866Wypk=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=aeeBMHyr1E204MPUijGvJJF2bDOP+Hw74l6LisLPKzrGhOtXGPUEKSXhJPRlXxnRz
- K33VP4P7cLH/Ve4QdevGNa3mBLb1ZeNX4VMHRYe2GXUf7xO4q0+ld96OBoIgNkXev5
- fQrAvwyRmZKBbliWrRP8oUk+zH8wmxM9k82DmYt8=
-Date: Tue, 10 Dec 2019 10:27:47 +0100
+ b=Ph+o4iv2hHNcOGIN1iNsCwK4uyuSIgVenOpeNZmqHFiYvnobnsJSpqpMazGFPuMNk
+ EpyA/WiNd9N4EKi2iPekdDjkPVJTVl9b/VrZgRujHpdB8tXtXcKxfCYJPZzdCRRMQp
+ N0XxC1vpHC8CMlrdVIMEgQNCbpnORvZiN9ybzcbw=
+Date: Tue, 10 Dec 2019 10:31:17 +0100
 From: Greg KH <gregkh@linuxfoundation.org>
-To: Adham.Abozaeid@microchip.com
-Subject: Re: [PATCH 1/4] staging: wilc1000: use runtime configuration for
- sdio oob interrupt
-Message-ID: <20191210092747.GA3548978@kroah.com>
-References: <20191122205153.30723-1-adham.abozaeid@microchip.com>
- <CAGRGNgV=zW8xpgHfj99m9LHN=dtUBH_36_kQSnnBOrd_6WpDoA@mail.gmail.com>
- <a174f958-ddda-b57f-060b-ca4ed7c36ea1@microchip.com>
+To: Julian Preis <julian.preis@fau.de>
+Subject: Re: [PATCH] drivers/staging/exfat: Fix spelling mistakes
+Message-ID: <20191210093117.GA3571029@kroah.com>
+References: <n>
+ <20191202145517.14488-1-julian.preis@fau.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <a174f958-ddda-b57f-060b-ca4ed7c36ea1@microchip.com>
+In-Reply-To: <20191202145517.14488-1-julian.preis@fau.de>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,28 +66,32 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, julian.calaby@gmail.com,
- johannes@sipsolutions.net, linux-wireless@vger.kernel.org,
- Ajay.Kathat@microchip.com
+Cc: devel@driverdev.osuosl.org, Johannes Weidner <johannes.weidner@fau.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Dec 03, 2019 at 07:10:26PM +0000, Adham.Abozaeid@microchip.com wrote:
+On Mon, Dec 02, 2019 at 03:55:17PM +0100, Julian Preis wrote:
+> Fix spelling mistakes in exfat_core.c and exfat_super.c.
 > 
-> 
-> On 11/25/19 2:26 AM, Julian Calaby wrote:
-> > Hi Adham,
-> >
-> > The OOB interrupt is a GPIO and this is an SDIO card, so why not just
-> > set the relevant pin in the devicetree and detect it based on that?
-> >
-> > I'm pretty sure that the Broadcom fmac driver does something like this.
-> Thanks Julian and Dan for your feedback. We will go through the fmac driver to see how to improve OOB selection based on that, and send v2 of this patch.
-> Greg, will it be possible to ignore this patch for now and merge the rest of the patch series?
+> Co-developed-by: Johannes Weidner <johannes.weidner@fau.de>
+> Signed-off-by: Johannes Weidner <johannes.weidner@fau.de>
+> Signed-off-by: Julian Preis <julian.preis@fau.de>
+> ---
+>  drivers/staging/exfat/exfat_core.c  |  6 +++---
+>  drivers/staging/exfat/exfat_super.c | 10 +++++-----
+>  2 files changed, 8 insertions(+), 8 deletions(-)
 
-Now ignored!
+Any reason you forgot to cc: the maintainer of these files?
+
+Please fix up and resend both of your patches, and remember to use
+scripts/get_maintainer.pl for when you send patches to know who to send
+them to, and to what list.
+
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
