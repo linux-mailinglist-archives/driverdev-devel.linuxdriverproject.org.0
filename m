@@ -1,56 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C97A119CC2
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 23:33:32 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id BEDAF119CCD
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 23:34:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 37E7D228B4;
-	Tue, 10 Dec 2019 22:33:31 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8873B87D36;
+	Tue, 10 Dec 2019 22:34:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Q3M3zpQ-MxPh; Tue, 10 Dec 2019 22:33:30 +0000 (UTC)
+	with ESMTP id 1QZc8bvRs5oJ; Tue, 10 Dec 2019 22:34:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 1517A22851;
-	Tue, 10 Dec 2019 22:33:30 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 14B6687D41;
+	Tue, 10 Dec 2019 22:34:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0828B1BF3D7
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 22:33:25 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C011D1BF3D7
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 22:34:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 05AED85B12
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 22:33:25 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id AFB6622851
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 22:34:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JIqTCFZdVDGy for <devel@linuxdriverproject.org>;
- Tue, 10 Dec 2019 22:33:23 +0000 (UTC)
+ with ESMTP id 1eNRYXn+kR6K for <devel@linuxdriverproject.org>;
+ Tue, 10 Dec 2019 22:34:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 517D886934
- for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 22:33:23 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 3DB8C22735
+ for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 22:34:34 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6F11A20828;
- Tue, 10 Dec 2019 22:33:22 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 45C1C214AF;
+ Tue, 10 Dec 2019 22:34:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1576017203;
- bh=njnz3j6pYfNJoPuu2YVlShJ7EsxzQc64B/Gnc2iE8kU=;
+ s=default; t=1576017274;
+ bh=jCzLfAggXpyzRbW0s/0dOx18Kynq/fRmLOPTebHAvn0=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=CPrLTSzU1mVurBysgSnHcyMZplWxdIgHCgUtLFZnOhitXvD1V3UWdOJb+WhwO3W+i
- tvI3M82IAWwQsuohMix+iuYTObTM1Jq7C3lOLgxacNkIExOfdyfQqVqFwlolLnqNdz
- nwO6zgBNUI2XG8lA6Fh9emvI/kz3y2CVFneDXLXg=
+ b=ISFwKY4g/begc+eXA4+yKblipVbD6YATUW+7S3m5H5lVsCMrF7WmcxxZhJrMMuutz
+ E2QzW76T0v4Rc7tX+urt5vp6Fi8Nz1glA1Li7Q5fVVVE3oZsBpW4PCIi2hFmDn1jeP
+ wkaqFYJJfNVCT1d1ghKTs6yIaAuTikQAdPM598rc=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.4 05/71] staging: rtl8188eu: fix possible null
- dereference
-Date: Tue, 10 Dec 2019 17:32:10 -0500
-Message-Id: <20191210223316.14988-5-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.4 65/71] fbtft: Make sure string is NULL terminated
+Date: Tue, 10 Dec 2019 17:33:10 -0500
+Message-Id: <20191210223316.14988-65-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191210223316.14988-1-sashal@kernel.org>
 References: <20191210223316.14988-1-sashal@kernel.org>
@@ -69,65 +68,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Larry Finger <Larry.Finger@lwfinger.net>, devel@driverdev.osuosl.org,
- Connor Kuehl <connor.kuehl@canonical.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Sasha Levin <sashal@kernel.org>, devel@driverdev.osuosl.org,
+ linux-fbdev@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ dri-devel@lists.freedesktop.org,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Connor Kuehl <connor.kuehl@canonical.com>
-
-[ Upstream commit 228241944a48113470d3c3b46c88ba7fbe0a274b ]
-
-Inside a nested 'else' block at the beginning of this function is a
-call that assigns 'psta' to the return value of 'rtw_get_stainfo()'.
-If 'rtw_get_stainfo()' returns NULL and the flow of control reaches
-the 'else if' where 'psta' is dereferenced, then we will dereference
-a NULL pointer.
-
-Fix this by checking if 'psta' is not NULL before reading its
-'psta->qos_option' data member.
-
-Addresses-Coverity: ("Dereference null return value")
-
-Signed-off-by: Connor Kuehl <connor.kuehl@canonical.com>
-Acked-by: Larry Finger <Larry.Finger@lwfinger.net>
-Link: https://lore.kernel.org/r/20190926150317.5894-1-connor.kuehl@canonical.com
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/staging/rtl8188eu/core/rtw_xmit.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/rtl8188eu/core/rtw_xmit.c b/drivers/staging/rtl8188eu/core/rtw_xmit.c
-index cabb810369bdf..c6bf8933648d3 100644
---- a/drivers/staging/rtl8188eu/core/rtw_xmit.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_xmit.c
-@@ -822,7 +822,7 @@ s32 rtw_make_wlanhdr(struct adapter *padapter, u8 *hdr, struct pkt_attrib *pattr
- 			memcpy(pwlanhdr->addr2, get_bssid(pmlmepriv), ETH_ALEN);
- 			memcpy(pwlanhdr->addr3, pattrib->src, ETH_ALEN);
- 
--			if (psta->qos_option)
-+			if (psta && psta->qos_option)
- 				qos_option = true;
- 		} else if (check_fwstate(pmlmepriv, WIFI_ADHOC_STATE) ||
- 			   check_fwstate(pmlmepriv, WIFI_ADHOC_MASTER_STATE)) {
-@@ -830,7 +830,7 @@ s32 rtw_make_wlanhdr(struct adapter *padapter, u8 *hdr, struct pkt_attrib *pattr
- 			memcpy(pwlanhdr->addr2, pattrib->src, ETH_ALEN);
- 			memcpy(pwlanhdr->addr3, get_bssid(pmlmepriv), ETH_ALEN);
- 
--			if (psta->qos_option)
-+			if (psta && psta->qos_option)
- 				qos_option = true;
- 		} else {
- 			RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("fw_state:%x is not allowed to xmit frame\n", get_fwstate(pmlmepriv)));
--- 
-2.20.1
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RnJvbTogQW5keSBTaGV2Y2hlbmtvIDxhbmRyaXkuc2hldmNoZW5rb0BsaW51eC5pbnRlbC5jb20+
+CgpbIFVwc3RyZWFtIGNvbW1pdCAyMWY1ODU0ODBkZWI0YmNmMGQ5MmIwODg3OWMzNWQwNjZkZmVl
+MDMwIF0KCk5ldyBHQ0Mgd2FybnMgYWJvdXQgaW5hcHByb3ByaWF0ZSB1c2Ugb2Ygc3RybmNweSgp
+OgoKZHJpdmVycy9zdGFnaW5nL2ZidGZ0L2ZidGZ0LWNvcmUuYzogSW4gZnVuY3Rpb24g4oCYZmJ0
+ZnRfZnJhbWVidWZmZXJfYWxsb2PigJk6CmRyaXZlcnMvc3RhZ2luZy9mYnRmdC9mYnRmdC1jb3Jl
+LmM6NjY1OjI6IHdhcm5pbmc6IOKAmHN0cm5jcHnigJkgc3BlY2lmaWVkIGJvdW5kIDE2IGVxdWFs
+cyBkZXN0aW5hdGlvbiBzaXplIFstV3N0cmluZ29wLXRydW5jYXRpb25dCiAgNjY1IHwgIHN0cm5j
+cHkoaW5mby0+Zml4LmlkLCBkZXYtPmRyaXZlci0+bmFtZSwgMTYpOwogICAgICB8ICBefn5+fn5+
+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fgoKTGF0ZXIgb24gdGhlIGNvcHkg
+aXMgYmVpbmcgdXNlZCB3aXRoIHRoZSBhc3N1bXB0aW9uIHRvIGJlIE5VTEwgdGVybWluYXRlZC4K
+TWFrZSBzdXJlIHN0cmluZyBpcyBOVUxMIHRlcm1pbmF0ZWQgYnkgc3dpdGNoaW5nIHRvIHNucHJp
+bnRmKCkuCgpTaWduZWQtb2ZmLWJ5OiBBbmR5IFNoZXZjaGVua28gPGFuZHJpeS5zaGV2Y2hlbmtv
+QGxpbnV4LmludGVsLmNvbT4KTGluazogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvci8yMDE5MTEy
+MDA5NTcxNi4yNjYyOC0xLWFuZHJpeS5zaGV2Y2hlbmtvQGxpbnV4LmludGVsLmNvbQpTaWduZWQt
+b2ZmLWJ5OiBHcmVnIEtyb2FoLUhhcnRtYW4gPGdyZWdraEBsaW51eGZvdW5kYXRpb24ub3JnPgpT
+aWduZWQtb2ZmLWJ5OiBTYXNoYSBMZXZpbiA8c2FzaGFsQGtlcm5lbC5vcmc+Ci0tLQogZHJpdmVy
+cy9zdGFnaW5nL2ZidGZ0L2ZidGZ0LWNvcmUuYyB8IDIgKy0KIDEgZmlsZSBjaGFuZ2VkLCAxIGlu
+c2VydGlvbigrKSwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9m
+YnRmdC9mYnRmdC1jb3JlLmMgYi9kcml2ZXJzL3N0YWdpbmcvZmJ0ZnQvZmJ0ZnQtY29yZS5jCmlu
+ZGV4IDE1OTM3ZTBlZjRkOTYuLjM2YmY3MTk4OTYzN2QgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3Rh
+Z2luZy9mYnRmdC9mYnRmdC1jb3JlLmMKKysrIGIvZHJpdmVycy9zdGFnaW5nL2ZidGZ0L2ZidGZ0
+LWNvcmUuYwpAQCAtNzY1LDcgKzc2NSw3IEBAIHN0cnVjdCBmYl9pbmZvICpmYnRmdF9mcmFtZWJ1
+ZmZlcl9hbGxvYyhzdHJ1Y3QgZmJ0ZnRfZGlzcGxheSAqZGlzcGxheSwKIAlmYmRlZmlvLT5kZWZl
+cnJlZF9pbyA9ICAgICBmYnRmdF9kZWZlcnJlZF9pbzsKIAlmYl9kZWZlcnJlZF9pb19pbml0KGlu
+Zm8pOwogCi0Jc3RybmNweShpbmZvLT5maXguaWQsIGRldi0+ZHJpdmVyLT5uYW1lLCAxNik7CisJ
+c25wcmludGYoaW5mby0+Zml4LmlkLCBzaXplb2YoaW5mby0+Zml4LmlkKSwgIiVzIiwgZGV2LT5k
+cml2ZXItPm5hbWUpOwogCWluZm8tPmZpeC50eXBlID0gICAgICAgICAgIEZCX1RZUEVfUEFDS0VE
+X1BJWEVMUzsKIAlpbmZvLT5maXgudmlzdWFsID0gICAgICAgICBGQl9WSVNVQUxfVFJVRUNPTE9S
+OwogCWluZm8tPmZpeC54cGFuc3RlcCA9CSAgIDA7Ci0tIAoyLjIwLjEKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZl
+bEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9q
+ZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
