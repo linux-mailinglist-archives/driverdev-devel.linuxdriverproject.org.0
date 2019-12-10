@@ -2,55 +2,54 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 102E911938D
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 22:13:14 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 41077119390
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 22:13:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 713E222855;
-	Tue, 10 Dec 2019 21:13:12 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E274B221FB;
+	Tue, 10 Dec 2019 21:13:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EM1Zvn5hJMyU; Tue, 10 Dec 2019 21:13:12 +0000 (UTC)
+	with ESMTP id uvTV+gHwbi6R; Tue, 10 Dec 2019 21:13:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E2D4D22773;
-	Tue, 10 Dec 2019 21:13:10 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E6EAD22773;
+	Tue, 10 Dec 2019 21:13:24 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2D75E1BF580
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 21:12:42 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D83461BF580
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 21:13:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 29CEC88391
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 21:12:42 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D51A488395
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 21:13:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 10SEy3OR4HKH for <devel@linuxdriverproject.org>;
- Tue, 10 Dec 2019 21:12:41 +0000 (UTC)
+ with ESMTP id s8xV2e2WdSob for <devel@linuxdriverproject.org>;
+ Tue, 10 Dec 2019 21:13:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 52C0588390
- for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 21:12:41 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7643C88391
+ for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 21:13:22 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id D94682464B;
- Tue, 10 Dec 2019 21:12:39 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 84AE12077B;
+ Tue, 10 Dec 2019 21:13:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1576012361;
- bh=nrKFeK8ZfpA0LOttrffsxHf9XaNKRKS8gtS1ILBWzz4=;
+ s=default; t=1576012402;
+ bh=V+vvRML/SZghVHDbOg+jjdRXMepQC3mzOMs2iv2J2Dw=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=E4O4kVDTPfBp933OWfwDW+Rj692YBkJeJvKNQfrc5jZ5VY+Qgbs7Aeuz35vkpYkkG
- RYEz+jcPbNEc6+3k4fBoBbSb7gKKILzGlDH3K0mqfTL19pNRALNLD9aVk7oms3/hcx
- XmG+zw6AFWqTAQputvb0IdAfvBPkt2ovO7nNZP4I=
+ b=CnEGJDfuJCzGFwb+YLJoHTIwYzeddXQW6q1wJfTiyXuqCautXgmMYUBME6jNN/ZBi
+ 1E+cpzdWsFmzZ72N4oD83e2A91JBbL3YeQBjxwhfzMXXPyP+JUI6SQ4NUS8XveXiDC
+ e3v7rI0RiMwCN8YMhFdTVDaZEaaBChHWfWnhEiSQ=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.4 288/350] MIPS: ralink: enable PCI support only if
- driver for mt7621 SoC is selected
-Date: Tue, 10 Dec 2019 16:06:33 -0500
-Message-Id: <20191210210735.9077-249-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 321/350] fbtft: Make sure string is NULL terminated
+Date: Tue, 10 Dec 2019 16:07:06 -0500
+Message-Id: <20191210210735.9077-282-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191210210735.9077-1-sashal@kernel.org>
 References: <20191210210735.9077-1-sashal@kernel.org>
@@ -70,71 +69,43 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: Sasha Levin <sashal@kernel.org>, devel@driverdev.osuosl.org,
- Hauke Mehrtens <hauke@hauke-m.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, jhogan@kernel.org,
- linux-mips@vger.kernel.org, ralf@linux-mips.org,
- linux-mediatek@lists.infradead.org, john@phrozen.org,
- NeilBrown <neil@brown.name>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ linux-fbdev@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ dri-devel@lists.freedesktop.org,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-
-[ Upstream commit 3b2fa0c92686562ac0b8cf00c0326a45814f8e18 ]
-
-Some versions of SoC MT7621 have three PCI express hosts. Some boards
-make use of those PCI through the staging driver mt7621-pci. Recently
-PCI support has been removed from MT7621 Soc kernel configuration due
-to a build error. This makes imposible to compile staging driver and
-produces a regression for gnubee based boards. Enable support for PCI
-again but enable it only if staging mt7621-pci driver is selected.
-
-Fixes: c4d48cf5e2f0 ("MIPS: ralink: deactivate PCI support for SOC_MT7621")
-Cc: Hauke Mehrtens <hauke@hauke-m.de>
-Cc: ralf@linux-mips.org
-Cc: jhogan@kernel.org
-Cc: john@phrozen.org
-Cc: NeilBrown <neil@brown.name>
-Cc: linux-mips@vger.kernel.org
-Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Link: https://lore.kernel.org/r/20191019081233.7337-1-sergio.paracuellos@gmail.com
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- arch/mips/ralink/Kconfig           | 1 +
- drivers/staging/mt7621-pci/Kconfig | 1 -
- 2 files changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/arch/mips/ralink/Kconfig b/arch/mips/ralink/Kconfig
-index 1434fa60f3db1..94e9ce9944944 100644
---- a/arch/mips/ralink/Kconfig
-+++ b/arch/mips/ralink/Kconfig
-@@ -51,6 +51,7 @@ choice
- 		select MIPS_GIC
- 		select COMMON_CLK
- 		select CLKSRC_MIPS_GIC
-+		select HAVE_PCI if PCI_MT7621
- endchoice
- 
- choice
-diff --git a/drivers/staging/mt7621-pci/Kconfig b/drivers/staging/mt7621-pci/Kconfig
-index af928b75a9403..ce58042f2f211 100644
---- a/drivers/staging/mt7621-pci/Kconfig
-+++ b/drivers/staging/mt7621-pci/Kconfig
-@@ -2,7 +2,6 @@
- config PCI_MT7621
- 	tristate "MediaTek MT7621 PCI Controller"
- 	depends on RALINK
--	depends on PCI
- 	select PCI_DRIVERS_GENERIC
- 	help
- 	  This selects a driver for the MediaTek MT7621 PCI Controller.
--- 
-2.20.1
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RnJvbTogQW5keSBTaGV2Y2hlbmtvIDxhbmRyaXkuc2hldmNoZW5rb0BsaW51eC5pbnRlbC5jb20+
+CgpbIFVwc3RyZWFtIGNvbW1pdCAyMWY1ODU0ODBkZWI0YmNmMGQ5MmIwODg3OWMzNWQwNjZkZmVl
+MDMwIF0KCk5ldyBHQ0Mgd2FybnMgYWJvdXQgaW5hcHByb3ByaWF0ZSB1c2Ugb2Ygc3RybmNweSgp
+OgoKZHJpdmVycy9zdGFnaW5nL2ZidGZ0L2ZidGZ0LWNvcmUuYzogSW4gZnVuY3Rpb24g4oCYZmJ0
+ZnRfZnJhbWVidWZmZXJfYWxsb2PigJk6CmRyaXZlcnMvc3RhZ2luZy9mYnRmdC9mYnRmdC1jb3Jl
+LmM6NjY1OjI6IHdhcm5pbmc6IOKAmHN0cm5jcHnigJkgc3BlY2lmaWVkIGJvdW5kIDE2IGVxdWFs
+cyBkZXN0aW5hdGlvbiBzaXplIFstV3N0cmluZ29wLXRydW5jYXRpb25dCiAgNjY1IHwgIHN0cm5j
+cHkoaW5mby0+Zml4LmlkLCBkZXYtPmRyaXZlci0+bmFtZSwgMTYpOwogICAgICB8ICBefn5+fn5+
+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fgoKTGF0ZXIgb24gdGhlIGNvcHkg
+aXMgYmVpbmcgdXNlZCB3aXRoIHRoZSBhc3N1bXB0aW9uIHRvIGJlIE5VTEwgdGVybWluYXRlZC4K
+TWFrZSBzdXJlIHN0cmluZyBpcyBOVUxMIHRlcm1pbmF0ZWQgYnkgc3dpdGNoaW5nIHRvIHNucHJp
+bnRmKCkuCgpTaWduZWQtb2ZmLWJ5OiBBbmR5IFNoZXZjaGVua28gPGFuZHJpeS5zaGV2Y2hlbmtv
+QGxpbnV4LmludGVsLmNvbT4KTGluazogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvci8yMDE5MTEy
+MDA5NTcxNi4yNjYyOC0xLWFuZHJpeS5zaGV2Y2hlbmtvQGxpbnV4LmludGVsLmNvbQpTaWduZWQt
+b2ZmLWJ5OiBHcmVnIEtyb2FoLUhhcnRtYW4gPGdyZWdraEBsaW51eGZvdW5kYXRpb24ub3JnPgpT
+aWduZWQtb2ZmLWJ5OiBTYXNoYSBMZXZpbiA8c2FzaGFsQGtlcm5lbC5vcmc+Ci0tLQogZHJpdmVy
+cy9zdGFnaW5nL2ZidGZ0L2ZidGZ0LWNvcmUuYyB8IDIgKy0KIDEgZmlsZSBjaGFuZ2VkLCAxIGlu
+c2VydGlvbigrKSwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9m
+YnRmdC9mYnRmdC1jb3JlLmMgYi9kcml2ZXJzL3N0YWdpbmcvZmJ0ZnQvZmJ0ZnQtY29yZS5jCmlu
+ZGV4IGEwYTY3YWE1MTdmMGUuLjYxZjAyODZmYjE1N2UgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3Rh
+Z2luZy9mYnRmdC9mYnRmdC1jb3JlLmMKKysrIGIvZHJpdmVycy9zdGFnaW5nL2ZidGZ0L2ZidGZ0
+LWNvcmUuYwpAQCAtNjY2LDcgKzY2Niw3IEBAIHN0cnVjdCBmYl9pbmZvICpmYnRmdF9mcmFtZWJ1
+ZmZlcl9hbGxvYyhzdHJ1Y3QgZmJ0ZnRfZGlzcGxheSAqZGlzcGxheSwKIAlmYmRlZmlvLT5kZWZl
+cnJlZF9pbyA9ICAgICBmYnRmdF9kZWZlcnJlZF9pbzsKIAlmYl9kZWZlcnJlZF9pb19pbml0KGlu
+Zm8pOwogCi0Jc3RybmNweShpbmZvLT5maXguaWQsIGRldi0+ZHJpdmVyLT5uYW1lLCAxNik7CisJ
+c25wcmludGYoaW5mby0+Zml4LmlkLCBzaXplb2YoaW5mby0+Zml4LmlkKSwgIiVzIiwgZGV2LT5k
+cml2ZXItPm5hbWUpOwogCWluZm8tPmZpeC50eXBlID0gICAgICAgICAgIEZCX1RZUEVfUEFDS0VE
+X1BJWEVMUzsKIAlpbmZvLT5maXgudmlzdWFsID0gICAgICAgICBGQl9WSVNVQUxfVFJVRUNPTE9S
+OwogCWluZm8tPmZpeC54cGFuc3RlcCA9CSAgIDA7Ci0tIAoyLjIwLjEKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZl
+bEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9q
+ZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
