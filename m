@@ -2,55 +2,55 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4975011974C
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 22:32:41 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id CD47D11974D
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 22:32:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 768BD86460;
-	Tue, 10 Dec 2019 21:32:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BDFE7868C6;
+	Tue, 10 Dec 2019 21:32:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uPyD2dt6OND7; Tue, 10 Dec 2019 21:32:35 +0000 (UTC)
+	with ESMTP id MUDsQQlW+7LZ; Tue, 10 Dec 2019 21:32:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A53C6811F3;
-	Tue, 10 Dec 2019 21:32:34 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3C580867DF;
+	Tue, 10 Dec 2019 21:32:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 841121BF580
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 21:32:32 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D3CE31BF580
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 21:32:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7D3CF86AFD
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 21:32:32 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id CF2AC2283C
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 21:32:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Z8rCIMuxdj0P for <devel@linuxdriverproject.org>;
- Tue, 10 Dec 2019 21:32:32 +0000 (UTC)
+ with ESMTP id bbOIyXof+9Ap for <devel@linuxdriverproject.org>;
+ Tue, 10 Dec 2019 21:32:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 040F185B3D
- for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 21:32:32 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 2FC81227A0
+ for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 21:32:33 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 380A720836;
- Tue, 10 Dec 2019 21:32:31 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 42E412073B;
+ Tue, 10 Dec 2019 21:32:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1576013551;
- bh=bEyk+gtjrnXarnY2DI1X7CsKCXjRltX/mgvzMBW2EJM=;
+ s=default; t=1576013553;
+ bh=KJh5vYh77g3ucGq8Feg7JBwxd4Gl7DDHaUILR3azn0M=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=YrnG9igblVksqkP9NkRczd7myvC8Mejfbur+r9bsj9EZOhtTw1/oPUKZcg88U8x94
- CFXX1BTyC0DKj6OE7sQ/E2iIaHtV4vb1m/VdvGUrZyjZEU65qk7lzDYZDTAacaxKcZ
- HwP55VsqHbaBMgXHQrUbV+meQ36ezwdEmnWt9hVg=
+ b=K6onerVCmlMQSbnAG/1WF9xPtA+eT/QFsrN2iDd/U5wSrmTCMiXKdm56I/r33br0m
+ n3G+2o52TL2KyI7Cmrjs50qh/awq0jZ5InOTDl/YwvoRfxqO1TMQ9eyhcVhze1XHYP
+ PmbdRM4hmZGxUMDio5nQ370Q/V+QJVgj8V0nObC0=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 008/177] staging: rtl8192u: fix multiple memory
- leaks on error path
-Date: Tue, 10 Dec 2019 16:29:32 -0500
-Message-Id: <20191210213221.11921-8-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 009/177] staging: rtl8188eu: fix possible null
+ dereference
+Date: Tue, 10 Dec 2019 16:29:33 -0500
+Message-Id: <20191210213221.11921-9-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191210213221.11921-1-sashal@kernel.org>
 References: <20191210213221.11921-1-sashal@kernel.org>
@@ -70,77 +70,60 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: Sasha Levin <sashal@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
- Navid Emamdoost <navid.emamdoost@gmail.com>
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Larry Finger <Larry.Finger@lwfinger.net>, devel@driverdev.osuosl.org,
+ Connor Kuehl <connor.kuehl@canonical.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Navid Emamdoost <navid.emamdoost@gmail.com>
+From: Connor Kuehl <connor.kuehl@canonical.com>
 
-[ Upstream commit ca312438cf176a16d4b89350cade8789ba8d7133 ]
+[ Upstream commit 228241944a48113470d3c3b46c88ba7fbe0a274b ]
 
-In rtl8192_tx on error handling path allocated urbs and also skb should
-be released.
+Inside a nested 'else' block at the beginning of this function is a
+call that assigns 'psta' to the return value of 'rtw_get_stainfo()'.
+If 'rtw_get_stainfo()' returns NULL and the flow of control reaches
+the 'else if' where 'psta' is dereferenced, then we will dereference
+a NULL pointer.
 
-Signed-off-by: Navid Emamdoost <navid.emamdoost@gmail.com>
-Link: https://lore.kernel.org/r/20190920025137.29407-1-navid.emamdoost@gmail.com
+Fix this by checking if 'psta' is not NULL before reading its
+'psta->qos_option' data member.
+
+Addresses-Coverity: ("Dereference null return value")
+
+Signed-off-by: Connor Kuehl <connor.kuehl@canonical.com>
+Acked-by: Larry Finger <Larry.Finger@lwfinger.net>
+Link: https://lore.kernel.org/r/20190926150317.5894-1-connor.kuehl@canonical.com
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/staging/rtl8192u/r8192U_core.c | 17 ++++++++++++-----
- 1 file changed, 12 insertions(+), 5 deletions(-)
+ drivers/staging/rtl8188eu/core/rtw_xmit.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
-index e218b5c20642d..2066a1d9bc84e 100644
---- a/drivers/staging/rtl8192u/r8192U_core.c
-+++ b/drivers/staging/rtl8192u/r8192U_core.c
-@@ -1467,7 +1467,7 @@ short rtl8192_tx(struct net_device *dev, struct sk_buff *skb)
- 		(struct tx_fwinfo_819x_usb *)(skb->data + USB_HWDESC_HEADER_LEN);
- 	struct usb_device *udev = priv->udev;
- 	int pend;
--	int status;
-+	int status, rt = -1;
- 	struct urb *tx_urb = NULL, *tx_urb_zero = NULL;
- 	unsigned int idx_pipe;
+diff --git a/drivers/staging/rtl8188eu/core/rtw_xmit.c b/drivers/staging/rtl8188eu/core/rtw_xmit.c
+index dd9b02d316f30..c6a5b62cb3639 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_xmit.c
++++ b/drivers/staging/rtl8188eu/core/rtw_xmit.c
+@@ -778,7 +778,7 @@ s32 rtw_make_wlanhdr(struct adapter *padapter, u8 *hdr, struct pkt_attrib *pattr
+ 			memcpy(pwlanhdr->addr2, get_bssid(pmlmepriv), ETH_ALEN);
+ 			memcpy(pwlanhdr->addr3, pattrib->src, ETH_ALEN);
  
-@@ -1611,8 +1611,10 @@ short rtl8192_tx(struct net_device *dev, struct sk_buff *skb)
- 		}
- 		if (bSend0Byte) {
- 			tx_urb_zero = usb_alloc_urb(0, GFP_ATOMIC);
--			if (!tx_urb_zero)
--				return -ENOMEM;
-+			if (!tx_urb_zero) {
-+				rt = -ENOMEM;
-+				goto error;
-+			}
- 			usb_fill_bulk_urb(tx_urb_zero, udev,
- 					  usb_sndbulkpipe(udev, idx_pipe),
- 					  &zero, 0, tx_zero_isr, dev);
-@@ -1622,7 +1624,7 @@ short rtl8192_tx(struct net_device *dev, struct sk_buff *skb)
- 					 "Error TX URB for zero byte %d, error %d",
- 					 atomic_read(&priv->tx_pending[tcb_desc->queue_index]),
- 					 status);
--				return -1;
-+				goto error;
- 			}
- 		}
- 		netif_trans_update(dev);
-@@ -1633,7 +1635,12 @@ short rtl8192_tx(struct net_device *dev, struct sk_buff *skb)
- 	RT_TRACE(COMP_ERR, "Error TX URB %d, error %d",
- 		 atomic_read(&priv->tx_pending[tcb_desc->queue_index]),
- 		 status);
--	return -1;
-+
-+error:
-+	dev_kfree_skb_any(skb);
-+	usb_free_urb(tx_urb);
-+	usb_free_urb(tx_urb_zero);
-+	return rt;
- }
+-			if (psta->qos_option)
++			if (psta && psta->qos_option)
+ 				qos_option = true;
+ 		} else if (check_fwstate(pmlmepriv, WIFI_ADHOC_STATE) ||
+ 			   check_fwstate(pmlmepriv, WIFI_ADHOC_MASTER_STATE)) {
+@@ -786,7 +786,7 @@ s32 rtw_make_wlanhdr(struct adapter *padapter, u8 *hdr, struct pkt_attrib *pattr
+ 			memcpy(pwlanhdr->addr2, pattrib->src, ETH_ALEN);
+ 			memcpy(pwlanhdr->addr3, get_bssid(pmlmepriv), ETH_ALEN);
  
- static short rtl8192_usb_initendpoints(struct net_device *dev)
+-			if (psta->qos_option)
++			if (psta && psta->qos_option)
+ 				qos_option = true;
+ 		} else {
+ 			RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("fw_state:%x is not allowed to xmit frame\n", get_fwstate(pmlmepriv)));
 -- 
 2.20.1
 
